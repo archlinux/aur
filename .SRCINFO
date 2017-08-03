@@ -1,6 +1,6 @@
 pkgbase = telegram-purple-git
 	pkgdesc = Adds support for Telegram to Pidgin, Adium, Finch and other Libpurple based messengers.
-	pkgver = 1.4.0.ceec1a9
+	pkgver = 1.4.0.af200e0
 	pkgrel = 1
 	url = https://github.com/majn/telegram-purple
 	arch = i686
