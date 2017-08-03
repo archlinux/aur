@@ -4,7 +4,7 @@
 # Contributor: Michel Brabants <michel.linux@tiscali.be>
 pkgname=vips
 pkgver=8.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A free image processing system"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -15,7 +15,7 @@ optdepends=('python2: vipsprofile')
 # optional makedepends: 'v4l-utils' 'python2'
 # minimal depends: 'libxml2'
 options=('!libtool')
-source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/jcupitt/libvips/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('a6c70794a240c64dbaa0b03902d25f1f82fd2d4d657878df901f1fc98bf77bf1')
 
 build() {
