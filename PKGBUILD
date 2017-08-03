@@ -1,9 +1,10 @@
-# Maintainer: carloratm <carlo.ratm@gmail.com>
+# Maintainer: kaptoxic
+# Contributor: carloratm <carlo.ratm@gmail.com>
 
 pkgname=barman
 _realname=barman
 pkgver=1.4.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('i686' 'x86_64')
 url="http://www.pgbarman.org"
