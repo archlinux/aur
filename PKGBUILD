@@ -4,6 +4,7 @@ _pkgname=x2goclient
 pkgname=${_pkgname}-qt5
 pkgver=4.1.0.0
 pkgrel=1
+pkgdesc="A graphical client (Qt5) for the X2Go system"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://www.x2go.org"
