@@ -11,7 +11,9 @@ license=('GPL')
 depends=('vapoursynth'
          'ocl-icd'
          )
-makedepends=('git')
+makedepends=('git'
+             'boost'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TCanny.git")
