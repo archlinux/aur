@@ -15,15 +15,12 @@ add_user_group() {
     if [ $_changed == 1 ]; then
         gpasswd -a hostsblock hostsblock
         gpasswd -A hostsblock hostsblock
-        chmod 750 /var/lib/hostsblock
-        chmod -R 640 /var/lib/hostsblock/*
-        chown -R hostsblock:hostsblock /var/lib/hostsblock
+        chown hostsblock:hostsblock /var/lib/hostsblock
     fi
 }
 
 post_install() {
     add_user_group
-    chown hostsblock:hostsblock /usr/bin/hostsblock
     cat << EOF
 
 As of 0.999.4, hostsblock requires additional sudo permissions.

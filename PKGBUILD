@@ -1,6 +1,6 @@
 # Maintainer/Originator: Jake VanderKolk <jakevanderkolk@gmail.com>
 pkgname=hostsblock
-pkgver=0.999.5
+pkgver=0.999.6
 pkgrel=1
 pkgdesc="A script that downloads, sorts, and compiles multiple ad- and malware-blocking hosts files."
 arch=(any)
@@ -17,7 +17,7 @@ backup=('var/lib/hostsblock/hostsblock.conf' 'var/lib/hostsblock/black.list' 'va
 changelog=$pkgname.changelog
 install=$pkgname.install
 source=('hostsblock.sh' 'hostsblock.conf' 'black.list' 'white.list' 'hosts.head' 'hostsblock.service' 'hostsblock.timer')
-sha1sums=('798fe7d07a9fab689c44243b025f4bfa4da345ed'
+sha1sums=('5bb46b63a3371494cbd1ccc5b955583c635267d7'
           'd9db54fb078ff0e674a1f32a886ad29969830459'
           '30fdaad1ee0497b9b88b61cfbd958d20c644801b'
           '11ab0a6bac002879a04872ec06a3611c32c80e1d'
@@ -26,12 +26,13 @@ sha1sums=('798fe7d07a9fab689c44243b025f4bfa4da345ed'
           'f57b1cd082e29631b6fbaae5a7191dbc3ddf176b')
 
 package() {
-  install -Dm750 "$srcdir"/hostsblock.sh "$pkgdir"/usr/bin/hostsblock
+  mkdir -p -m 750 "$pkgdir"/var/lib/hostsblock
+  install -o hostsblock -Dm750 "$srcdir"/hostsblock.sh "$pkgdir"/usr/bin/hostsblock
   ln -sf /usr/bin/hostsblock "$pkgdir"/usr/bin/hostsblock-urlcheck
-  install -Dm640 "$srcdir"/hostsblock.conf "$pkgdir"/var/lib/hostsblock/hostsblock.conf
-  install -Dm640 "$srcdir"/black.list "$pkgdir"/var/lib/hostsblock/black.list
-  install -Dm640 "$srcdir"/white.list "$pkgdir"/var/lib/hostsblock/white.list
-  install -Dm640 "$srcdir"/hosts.head "$pkgdir"/var/lib/hostsblock/hosts.head
+  install -o hostsblock -Dm640 "$srcdir"/hostsblock.conf "$pkgdir"/var/lib/hostsblock/hostsblock.conf
+  install -o hostsblock -Dm640 "$srcdir"/black.list "$pkgdir"/var/lib/hostsblock/black.list
+  install -o hostsblock -Dm640 "$srcdir"/white.list "$pkgdir"/var/lib/hostsblock/white.list
+  install -o hostsblock -Dm640 "$srcdir"/hosts.head "$pkgdir"/var/lib/hostsblock/hosts.head
   install -Dm640 "$srcdir"/hostsblock.service "$pkgdir"/usr/lib/systemd/system/hostsblock.service
   install -Dm640 "$srcdir"/hostsblock.timer "$pkgdir"/usr/lib/systemd/system/hostsblock.timer
 }

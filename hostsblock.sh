@@ -98,16 +98,16 @@ _check_url() {
             echo "Unblocking just $@"
             echo " $@" >> "$whitelist"
             _strip_entries " $@ \!" "$annotate"
-            _strip_entries " $@$" "$blacklist"
-            _strip_entries " $@$" "$hostsfile"
+            sed -i "/ $@$/d" "$blacklist"
+            sed -i "/ $@$/d" "$hostsfile"
             [ ! -d "$tmpdir"/hostsblock ] && mkdir $_v -p "$tmpdir"/hostsblock
             touch "$tmpdir"/hostsblock/changed
         elif [[ $b == 2 || "$b" == "2" ]]; then
             echo "Unblocking all sites containing url $@"
             echo "$@" >> "$whitelist"
             _strip_entries "$@" "$annotate"
-            _strip_entries "$@" "$blacklist"
-            _strip_entries "$@" "$hostsfile"
+            sed -i "/$@/d" "$blacklist"
+            sed -i "/$@/d" "$hostsfile"
             [ ! -d "$tmpdir"/hostsblock ] && mkdir $_v -p "$tmpdir"/hostsblock
             touch "$tmpdir"/hostsblock/changed
         fi
@@ -129,7 +129,7 @@ _check_url() {
               fi
               rm -f "$_v" -- "$tmpdir"/hostsblock/"${annotate##*/}".tmp
             ) &
-            _strip_entries "^$@$" "$whitelist" &
+            sed -i "/^$@$/d" "$whitelist" &
             echo "$redirecturl $@" >> "$hostsfile" &
             [ ! -d "$tmpdir"/hostsblock ] && mkdir $_v -p "$tmpdir"/hostsblock
             touch "$tmpdir"/hostsblock/changed
@@ -149,7 +149,7 @@ _check_url() {
               fi
               rm -f "$_v" -- "$tmpdir"/hostsblock/"${annotate##*/}".tmp
             ) &
-            _strip_entries "$@" "$whitelist" &
+            sed -i "/$@/d" "$whitelist" &
             echo "$redirecturl $@" >> "$hostsfile" &
             [ ! -d "$tmpdir"/hostsblock ] && mkdir $_v -p "$tmpdir"/hostsblock
             touch "$tmpdir"/hostsblock/changed
@@ -283,6 +283,23 @@ if [ $_check -eq 1 ] || [ "${0##*/}" == "hostsblock-urlcheck" ]; then
     # If run from symlink "hostsblock-urlcheck" _URL will not be set by getopts
     [ "$_URL" == "" ] && _URL="$1"
     _check_url $(echo "$_URL" | sed -e "s/.*https*:\/\///g" -e "s/[\/?'\" :<>\(\)].*//g")
+    if [ -f "$tmpdir"/hostsblock/changed ]; then
+        if [ $_verbosity -ge 1 ]; then
+            postprocess
+        else
+            postprocess &>/dev/null
+        fi
+    fi
+    read -p "Page domain verified. Scan the whole page for other domains for (un)blocking? [y/N] " a
+    if [[ $a == "y" || $a == "Y" ]]; then
+        for LINE in $(curl -L --location-trusted -s "$_URL" | tr ' ' '\n' | grep "https*:\/\/" | sed -e "s/.*https*:\/\/\(.*\)$/\1/g" \
+          -e "s/\//\n/g" | grep "\." | grep -vFe '"' -e ")" -e "(" -e "&" -e "?" -e "<" -e ">" -e "'" -e "_" | \
+          grep -Fv -e "\.php$" -e "\.html*$" | grep "[a-z]$" | sort -u | tr "\n" " "); do
+            _check_url "$LINE"
+        done
+        _notify 1 "Whole-page scan completed."
+    fi
+
     if [ -f "$tmpdir"/hostsblock/changed ]; then
         if [ $_verbosity -ge 1 ]; then
             postprocess

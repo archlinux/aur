@@ -1,6 +1,6 @@
 pkgbase = hostsblock
 	pkgdesc = A script that downloads, sorts, and compiles multiple ad- and malware-blocking hosts files.
-	pkgver = 0.999.5
+	pkgver = 0.999.6
 	pkgrel = 1
 	url = http://gaenserich.github.com/hostsblock/
 	install = hostsblock.install
@@ -30,7 +30,7 @@ pkgbase = hostsblock
 	source = hosts.head
 	source = hostsblock.service
 	source = hostsblock.timer
-	sha1sums = 798fe7d07a9fab689c44243b025f4bfa4da345ed
+	sha1sums = 5bb46b63a3371494cbd1ccc5b955583c635267d7
 	sha1sums = d9db54fb078ff0e674a1f32a886ad29969830459
 	sha1sums = 30fdaad1ee0497b9b88b61cfbd958d20c644801b
 	sha1sums = 11ab0a6bac002879a04872ec06a3611c32c80e1d

@@ -1,5 +1,11 @@
 See https://github.com/gaenserich/hostsblock/commits/master for a complete list of updates
 
+Version 0.999.6 (Alpha 6) (03.08.2017)
+*Fixed parsing function that falsely expected gzip
+*Fixed verbosity typo
+*Fixed issue with hostsblock-urlblock symlink not reading from $1
+*Moved raw annotation file to cache space to improve performance and reduce non-transitory space requirements
+
 Version 0.999.5 (Alpha 5) (01.08.2017)
 *Fixed issues with hostsblock-urlblock symlink
 *Fixed typo that prevented the annotation file from correctly writing
