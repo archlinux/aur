@@ -1,7 +1,7 @@
 # Contributor: shyokou <shyokou at gmail dot com>
 # Maintainer: N. Izumi aka izmntuk
 pkgname=meek
-pkgver=0.27
+pkgver=0.28
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A pluggable transport proxy written in Go'
