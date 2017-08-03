@@ -1,7 +1,7 @@
 # Maintainer: Nikita Puzyryov <PuzyryovN@gmail.com>
 pkgname=casync
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Content-Addressable Data Synchronization Tool"
 arch=(x86 x86_64)
 url="https://github.com/systemd/casync"
@@ -15,7 +15,7 @@ sha256sums=('a5f79ee3ccae2df42cce662c36edc7047aebacd3a9c029ee9a859adfa7a68d00')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  meson --buildtype=release --prefix=/usr build/
+  meson --buildtype=release --prefix=/usr -Db_lto=true build/
   ninja -C build/
 }
 
