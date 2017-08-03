@@ -7,7 +7,7 @@
 
 pkgname=yabause-qt
 pkgver=0.9.15
-pkgrel=1
+pkgrel=2
 pkgdesc='A Sega Saturn emulator'
 arch=('i686' 'x86_64')
 url="http://yabause.org/"
