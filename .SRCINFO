@@ -1,6 +1,6 @@
 pkgbase = icewm-git
 	pkgdesc = A window manager designed for speed, usability, and consistency
-	pkgver = 1.4.2.47
+	pkgver = 1.4.2.62
 	pkgrel = 1
 	url = https://github.com/bbidulock/icewm
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = icewm-git
 	depends = libsndfile
 	depends = libsm
 	depends = fribidi
+	optdepends = icewm-extra-themes: extra themes
 	provides = icewm
 	provides = icewm2
 	conflicts = icewm
