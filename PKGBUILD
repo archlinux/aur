@@ -2,7 +2,7 @@
 
 pkgname=ygopro-bin
 pkgver=1.033.D
-pkgrel=4
+pkgrel=5
 _pkgrel=1
 pkgdesc="YGOPRO is a free online dueling system made for playing Yu-Gi-Oh! duels."
 arch=('x86_64')
@@ -31,11 +31,11 @@ package() {
 	find "$pkgdir/opt/ygopro" -type f -exec chmod 777 {} \;
 	mkdir -pv "$pkgdir/usr/lib"
 	cd "$pkgdir/usr/lib"
-	ln -s libsfml-audio.so.2.4 libsfml-audio.so.2.3
-	ln -s libsfml-system.so.2.4 libsfml-system.so.2.3
-	ln -s libgit2.so.25 libgit2.so.24
-	ln -s libevent-2.1.so.6 libevent-2.0.so.5
-	ln -s libevent_pthreads-2.1.so.6 libevent_pthreads-2.0.so.5
+	ln -s libsfml-audio.so libsfml-audio.so.2.3
+	ln -s libsfml-system.so libsfml-system.so.2.3
+	ln -s libgit2.so libgit2.so.24
+	ln -s libevent.so libevent-2.0.so.5
+	ln -s libevent_pthreads.so libevent_pthreads-2.0.so.5
 
 	mkdir -p "$pkgdir/opt/ygopro/expansions/live2017"
 	cd "$pkgdir/opt/ygopro/expansions/live2017"
