@@ -3,7 +3,7 @@
 pkgname=include-what-you-use
 epoch=1
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for use with clang to analyze #includes in C and C++ source files"
 url="http://include-what-you-use.org"
 license=('LLVM Release License')
@@ -12,8 +12,8 @@ sha512sums=('f14e404e5d03f13022243db4707dbbeda43956b71018439b3d1d8fcf3f173c1706d
 arch=('i686' 'x86_64')
 _lower=4.0
 _upper=5.0
-depends=('clang>='$_lower 'clang<='$_upper)
-makedepends=('clang>='$_lower 'clang<='$_upper 'cmake' 'llvm>='$_lower 'llvm<='$_upper)
+depends=("clang>=$_lower" "clang<$_upper")
+makedepends=("clang>=$_lower" "clang<$_upper" "cmake" "llvm>=$_lower" "llvm<$_upper")
 optdepends=('python2')
 
 build() {
