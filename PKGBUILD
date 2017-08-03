@@ -6,7 +6,7 @@
 # Contributor: Malte Rabenseifner <malte@zearan.de>
 
 pkgname=murmur-snapshot-ice
-pkgver=1.3.0_2466_gfcb367f
+pkgver=1.3.0_2460_gc93b087
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble (development snapshot)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,11 +18,12 @@ makedepends=('boost' 'python')
 conflicts=('murmur' 'murmur-static' 'murmur-ice' 'murmur-snapshot-noice')
 provides=('murmur')
 backup=("etc/murmur.ini")
-install="murmur.install"
-source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"
-        "https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz.sig")
+install=murmur.install
+source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig}
+         murmur.tmpfilesd)
 sha256sums=('a212d7984222a16ba62bf340c2e75f63a6d2177f93f8d52ed521b9dd72596c1b'
-            'SKIP')
+            'SKIP'
+            '25bf2dbd7574459724b4621fb93c09484dc7520297fa1d0f247a19b592d8cb8e')
 validpgpkeys=('C4666C6767A26017CE68406988048D0D625297A0')
 
 
@@ -54,4 +55,5 @@ package() {
     install -Dm644 scripts/murmur.service ${pkgdir}/usr/lib/systemd/system/murmur.service
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     install -Dm644 src/murmur/Murmur.ice ${pkgdir}/usr/share/murmur/Murmur.ice
+    install -Dm644 ${srcdir}/murmur.tmpfilesd ${pkgdir}/usr/lib/tmpfiles.d/murmur.conf
 }
