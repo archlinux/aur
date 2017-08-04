@@ -5,7 +5,7 @@ _pkgname="${_pkgbase}-doc"
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 pkgver=1.0.14_8+g4476b3c
-pkgrel=3
+pkgrel=4
 pkgdesc="Documentation for python package 'prompt_toolkit'."
 makedepends=(
   'git'
@@ -13,10 +13,14 @@ makedepends=(
 )
 provides=(
   # "python-prompt_toolkit-tutorial=${pkgver}"
-  "${_pkgname}="
+  "${_pkgname}=${pkgver}"
 )
 replaces=(
   # "python-prompt_toolkit-tutorial<=${pkgver}"
+  "${_pkgname}<=${pkgver}"
+)
+conflicts=(
+  "${_pkgname}"
 )
 arch=('any')
 url='http://github.com/jonathanslenders/python-prompt-toolkit'
