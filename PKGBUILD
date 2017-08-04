@@ -5,7 +5,7 @@ _ver=1.14
 _pkgbase=mate-terminal
 pkgname=(${_pkgbase}-gtk2)
 pkgver=${_ver}.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The MATE Terminal Emulator (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
@@ -15,8 +15,15 @@ makedepends=('intltool' 'itstool')
 groups=('mate-extra-gtk2')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
-source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('092bee6c43910c2d038095c268979ea3f6fdd2ef')
+source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz"
+        exitcode.patch)
+sha1sums=('092bee6c43910c2d038095c268979ea3f6fdd2ef'
+          '6218f0c765725bbaf705afd6d7d7b0e2ff920f25')
+
+prepare() {
+    cd "${srcdir}/${_pkgbase}-${pkgver}"
+    patch -Np1 -i "${srcdir}/exitcode.patch"
+}
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"

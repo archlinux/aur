@@ -1,7 +1,7 @@
 pkgbase = mate-terminal-gtk2
 	pkgdesc = The MATE Terminal Emulator (GTK2 version)
 	pkgver = 1.14.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,9 @@ pkgbase = mate-terminal-gtk2
 	provides = mate-terminal
 	conflicts = mate-terminal
 	source = http://pub.mate-desktop.org/releases/1.14/mate-terminal-1.14.1.tar.xz
+	source = exitcode.patch
 	sha1sums = 092bee6c43910c2d038095c268979ea3f6fdd2ef
+	sha1sums = 6218f0c765725bbaf705afd6d7d7b0e2ff920f25
 
 pkgname = mate-terminal-gtk2
 
