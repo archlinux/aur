@@ -1,13 +1,14 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=diffoscope-git
-pkgver=82+57+gcdd1673
+pkgver=85+4+g9f868ab
 pkgrel=1
 pkgdesc='Tool for in-depth comparison of files, archives, and directories'
 url='https://diffoscope.org/'
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('python-magic' 'python-libarchive-c' 'python-setuptools')
+depends=('python-magic' 'python-libarchive-c' 'python-setuptools' 'python-distro' 'python-progressbar' 'python-defusedxml')
+# TODO: python-argcomplete
 optdepends=(
   'acl: access control list utilities support'
   'binutils: binary utilities support'
@@ -54,7 +55,7 @@ checkdepends=(
   'tlsh' 'unzip' 'gzip' 'tar' 'tcpdump' 'vim' 'xz' 'llvm' 'colord' 'fpc' 'openssh' 'odt2txt' 'docx2txt' 'r' 'dtc' 'giflib')
 provides=('diffoscope')
 conflicts=('diffoscope')
-source=(${pkgname}::"git+https://anonscm.debian.org/git/reproducible/diffoscope.git#branch=experimental")
+source=(${pkgname}::"git+https://anonscm.debian.org/git/reproducible/diffoscope.git")
 sha512sums=('SKIP')
 
 pkgver() {

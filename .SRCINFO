@@ -1,6 +1,6 @@
 pkgbase = diffoscope-git
 	pkgdesc = Tool for in-depth comparison of files, archives, and directories
-	pkgver = 82+57+gcdd1673
+	pkgver = 85+4+g9f868ab
 	pkgrel = 1
 	url = https://diffoscope.org/
 	arch = i686
@@ -47,6 +47,9 @@ pkgbase = diffoscope-git
 	depends = python-magic
 	depends = python-libarchive-c
 	depends = python-setuptools
+	depends = python-distro
+	depends = python-progressbar
+	depends = python-defusedxml
 	optdepends = acl: access control list utilities support
 	optdepends = binutils: binary utilities support
 	optdepends = bzip2: bzip2 utilities support
@@ -85,7 +88,7 @@ pkgbase = diffoscope-git
 	optdepends = xz: XZ and LZMA utilities support
 	provides = diffoscope
 	conflicts = diffoscope
-	source = diffoscope-git::git+https://anonscm.debian.org/git/reproducible/diffoscope.git#branch=experimental
+	source = diffoscope-git::git+https://anonscm.debian.org/git/reproducible/diffoscope.git
 	sha512sums = SKIP
 
 pkgname = diffoscope-git
