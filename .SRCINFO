@@ -1,0 +1,22 @@
+pkgbase = stormchecker-git
+	pkgdesc = Storm is a tool for the analysis of systems involving random or probabilistic phenomena
+	pkgver = 1.0.1.r247.g3f241280e
+	pkgrel = 1
+	url = http://www.stormchecker.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = glpk
+	depends = hwloc
+	depends = xerces-c
+	depends = z3
+	depends = carl-git
+	provides = stormchecker
+	conflicts = stormchecker
+	source = stormchecker-git::git+https://github.com/moves-rwth/storm.git
+	md5sums = SKIP
+
+pkgname = stormchecker-git
+
