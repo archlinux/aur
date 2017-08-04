@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Comment=You can grep dead trees
+Name=Paperwork
+GenericName=Personal Document Manager
+Categories=Office;Scanning;
+Icon=paperwork
+Terminal=false
+Version=1.2
+Keywords=document;scanner;ocr;
+Exec=paperwork
