@@ -1,6 +1,6 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.91.2.r411.g5e7894feb9
+	pkgver = 3.91.2.r462.g0740fb5c64
 	pkgrel = 1
 	url = http://www.gtk.org/
 	arch = i686
@@ -36,7 +36,7 @@ pkgbase = gtk4-git
 	depends = pango-git>=1.37.3
 	depends = shared-mime-info
 	depends = wayland-git>=1.9.91
-	depends = wayland-protocols-git>=1.7
+	depends = wayland-protocols-git>=1.9
 	depends = graphene>=1.5.1
 	optdepends = gnome-icon-theme: Default icon theme
 	optdepends = gnome-themes-standard: Default widget theme
@@ -84,7 +84,7 @@ pkgname = gtk4-git
 	depends = pango-git>=1.37.3
 	depends = shared-mime-info
 	depends = wayland-git>=1.9.91
-	depends = wayland-protocols-git>=1.7
+	depends = wayland-protocols-git>=1.9
 	depends = graphene>=1.5.1
 	depends = gtk-update-icon-cache
 
