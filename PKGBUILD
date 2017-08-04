@@ -2,13 +2,14 @@
 
 pkgbase=medusa-emu-git
 pkgname=('libmedusa-emu-git' 'medusa-emu-sdl-git' 'medusa-emu-qt-git')
-pkgver=r4835.a688e621
+pkgver=r5203.bfb8e02e
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://mgba.io/'
 license=('custom:MPL2')
 makedepends=('git' 'cmake' 'qt5-base' 'qt5-multimedia' 'sdl2' 'zlib' 'libpng'
-             'libzip' 'libedit' 'ffmpeg' 'imagemagick' 'desktop-file-utils' 'libepoxy')
+             'libzip' 'libedit' 'ffmpeg' 'imagemagick' 'desktop-file-utils' 'libepoxy'
+             'libelf' 'sqlite')
 source=("medusa::git+https://github.com/mgba-emu/mgba.git#branch=medusa")
 sha1sums=('SKIP')
 
@@ -33,7 +34,7 @@ build() {
 
 package_libmedusa-emu-git() {
   pkgdesc='Shared library of The Medusa Emulator'
-  depends=('zlib' 'libpng' 'libzip' 'libedit' 'ffmpeg' 'imagemagick')
+  depends=('zlib' 'libpng' 'libzip' 'libedit' 'libelf' 'ffmpeg' 'imagemagick' 'sqlite')
   conflicts=('libmgba' 'libmedusa-emu')
   provides=('libmedusa-emu')
 
