@@ -1,8 +1,8 @@
 # Maintainer: Atnanasis <ys2000pro@gmail.com>
 # Contributor: Youngbin Han <sukso96100@gmail.com>
 pkgname=micro-nightly-bin
-pkgver=20170804
-pkgrel=2
+pkgver=1.3.1-dev.17
+pkgrel=1
 _hash="1.3.1-dev.18"
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
