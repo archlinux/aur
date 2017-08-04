@@ -8,8 +8,8 @@ _lang=it
 pkgname=${_name}-${_channel}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=56.0a1
-pkgver=56.0a1.20170613
+_version=57.0a1
+pkgver=57.0a1.20170803
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -38,7 +38,7 @@ sha512sums=('3ec0f118d778b5d2a655edbbb66e9dc572e6d8cf85d954f95c08d4e57b0c0bd3aa5
 # sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
 sha512sums_i686=('SKIP' 'SKIP')
 sha512sums_x86_64=('SKIP' 'SKIP')
-validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla's GnuPG release key
 
 pkgver() {
   echo "${_version}.$(head -n1 ${_srcUS}-${CARCH}.txt | cut -c-8)"
