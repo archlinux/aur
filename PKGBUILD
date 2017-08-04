@@ -36,10 +36,10 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-backend-${pkgver}"
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
   
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
