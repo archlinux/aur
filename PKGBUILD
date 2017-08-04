@@ -1,9 +1,9 @@
 # Contributor: Alexander Mamzikov <av.mamzikov@gmail.com>
 
 pkgname=stereophotoview
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
-pkgdesc="Viewer/editor for stereoscopic photo, and viewer for stereoscopic video"
+pkgdesc="Viewer/editor for stereoscopic 3d photo and video"
 arch=('i686' 'x86_64')
 url="https://stereophotoview.bitbucket.io"
 license=('GPL3')
@@ -19,7 +19,7 @@ options=()
 install=.install
 source=(https://bitbucket.org/av-mamzikov/stereophotoview/get/${pkgver}.zip)
 noextract=()
-md5sums=('d46deaf2a52a183bb469f60142f15830') #generate with 'makepkg -g'
+md5sums=('cf3c705ef25e0a4927742107fe0b0b07') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir"
