@@ -61,7 +61,7 @@ pkgbase=linux-bfq-mq
 _srcname=linux-4.12
 _srcpatch=4
 pkgver=4.12.4
-pkgrel=6
+pkgrel=7
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -126,8 +126,8 @@ prepare() {
   msg "Fix naming schema in BFQ-MQ patch"
   sed -i -e "s|PATCHLEVEL = 13|PATCHLEVEL = 12|g" "${srcdir}/${_bfq_mq_patch}"
   sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" "${srcdir}/${_bfq_mq_patch}"
-  sed -i -e "s|EXTRAVERSION = -rc1|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
-  sed -i -e "s|EXTRAVERSION = -bfq-rc1|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
+  sed -i -e "s|EXTRAVERSION = -rc3|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
+  sed -i -e "s|EXTRAVERSION = -bfq-rc3|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
   sed -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
 
   msg "Patch source with block and BFQ-MQ patches"
