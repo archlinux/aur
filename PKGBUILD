@@ -61,9 +61,9 @@ _kyber_disable=
 ### Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bfq-mq-git
-_pkgver=4.13-rc1
+_pkgver=4.13-rc3
 _srcname=bfq-mq
-pkgver=4.13rc1.8a2cd370c12b
+pkgver=4.13rc3.6dff163f7ddf
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -73,7 +73,7 @@ options=('!strip')
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 source=('git+https://github.com/Algodev-github/bfq-mq'
         # patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
-        "${_bfqgroup}/6646a2679ff98/0001-Check-presence-on-tree-of-every-entity-after-every-a.patch?part=0.1&authuser=0&view=1"
+        "0001-Check-presence-on-tree-of-every-entity-after-every-a.patch::${_bfqgroup}/6646a2679ff98/0001-Check-presence-on-tree-of-every-entity-after-every-a.patch?part=0.1&authuser=0&view=1"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -82,8 +82,8 @@ source=('git+https://github.com/Algodev-github/bfq-mq'
         'linux.preset')
 sha256sums=('SKIP'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            '5ee9eccf242465d2d5fd0f4b9e149aa4dc97b5bf540cc16f090e5b4d48a23667'
-            '4bdbdf4e3e05efeb688d8afe713a16871cb07bc301554abf8547079067e4f5ce'
+            'baff5c7eb82c1e10d05a9575d95004da7855f7f69de3af30f780b31ead3dfe9d'
+            'bb799d15e72c379fb25a76e060f907444351336bfd9eeaf46168f991cea6d7ec'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
