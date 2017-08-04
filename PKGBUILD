@@ -21,6 +21,7 @@ md5sums=('9edb695128abd99b44f9d38fa3a8e5bc'
 md5sums_i386=('66bddb8515e096c80b11bfb12e7ee965')
 md5sums_x86_64=('9bf0768915505013c8214551da942f08')
 
+
 package() {
   dir="$srcdir"
   install -Dm644 filemanager.service ${pkgdir}/usr/lib/systemd/system/filemanager.service
