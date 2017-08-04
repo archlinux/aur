@@ -1,0 +1,39 @@
+pkgbase = qutebrowser-qtwebengine
+	pkgdesc = A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
+	pkgver = 0.11.0
+	pkgrel = 2
+	url = http://www.qutebrowser.org/
+	arch = any
+	license = GPL
+	makedepends = asciidoc
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = libxkbcommon-x11
+	depends = python-jinja
+	depends = python-opengl
+	depends = python-pygments
+	depends = python-pypeg2
+	depends = python-pyqt5>=5.2
+	depends = python-yaml
+	depends = qt5-base>=5.2
+	depends = qt5-webengine
+	depends = xdg-utils
+	optdepends = python-colorlog: colored logging output
+	optdepends = gst-libav: media playback
+	optdepends = gst-plugins-base: media playback
+	optdepends = gst-plugins-good: media playback
+	optdepends = gst-plugins-bad: media playback
+	optdepends = gst-plugins-ugly: media playback
+	optdepends = pdfjs: displaying PDF in-browser
+	optdepends = python-opengl: required when QtWebengine is used
+	provides = qutebrowser
+	conflicts = qutebrowser
+	options = !emptydirs
+	source = https://github.com/qutebrowser/qutebrowser/releases/download/v0.11.0/qutebrowser-0.11.0.tar.gz
+	source = https://github.com/qutebrowser/qutebrowser/releases/download/v0.11.0/qutebrowser-0.11.0.tar.gz.asc
+	validpgpkeys = E04E560002401B8EF0E76F0A916EB0C8FD55A072
+	sha256sums = dbb7de2d54f3849b03db11c2417a725ab8bf26a8f7f48bfa36ad852a8de9308e
+	sha256sums = SKIP
+
+pkgname = qutebrowser-qtwebengine
+
