@@ -32,7 +32,6 @@ In your `$XDG_CONFIG_HOME` (or `$HOME/.config`) create `iosevka/config`, in INI 
 ```
 
 Note:
-  - `name` is valid only on `common`
   - `spacing = term` is equivalent to `ligset =;`, i.e. empty, or a comment (`;`)
 
 Details of the (growing) options available can be found in the [font's readme][Iosevka].
