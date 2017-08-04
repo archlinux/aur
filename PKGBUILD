@@ -1,13 +1,13 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 pkgname=libarcus-git
-pkgver=r298.4d7ffa0
+pkgver=r329.ecf6995
 pkgrel=1
 pkgdesc="A library designed to facilitate the communication between Cura and its backend and similar code."
 arch=('i686' 'x86_64')
 url="https://github.com/Ultimaker/libArcus"
 license=('GPL2')
-provides=('libarcus')
-conflicts=('libarcus')
+provides=('arcus' 'libarcus')
+conflicts=('arcus' 'libarcus')
 depends=('protobuf')
 makedepends=('git' 'cmake' 'sip')
 source=('git+https://github.com/Ultimaker/libArcus.git')
