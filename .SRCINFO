@@ -1,0 +1,14 @@
+pkgbase = makehuman
+	pkgdesc = Parametrical modeling program for creating human bodies
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://www.makehuman.org/
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = makehuman
+	source = https://github.com/makehumancommunity/community-plugins/
+	md5sums = SKIP
+
+pkgname = makehuman
+
