@@ -3,7 +3,7 @@
 # Contributor: George Eleftheriou <eleftg>
 # Contributor: Andrew Fischer <andrew_at_apastron.co>
 
-pkgname=openfoam
+pkgname=openfoam-4.x
 
 # The distributors package name
 _distpkgname=OpenFOAM
