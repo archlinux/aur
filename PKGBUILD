@@ -3,19 +3,22 @@
 
 pkgname=gtkspell
 pkgver=2.0.16
-pkgrel=3
+pkgrel=4
 url="http://gtkspell.sourceforge.net/"
 pkgdesc="Provides word-processor-style highlighting and replacement of misspelled words in a GtkTextView widget"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk2' 'enchant')
 makedepends=('intltool' 'gtk-doc')
-source=(http://gtkspell.sourceforge.net/download/${pkgname}-${pkgver}.tar.gz)
-md5sums=('f75dcc9338f182c571b321d37c606a94')
+validpgpkeys=('7C70E4D9927061BD840E82DB6BA6197569B23319') #Daniel Atallah <daniel.atallah@gmail.com>
+source=(https://downloads.sourceforge.net/sourceforge/gtkspell/${pkgname}-${pkgver}.tar.gz{,.asc})
+sha256sums=('8fc7dc560167b2cb7193e76aca625a152dc19b0ebf49816b78539cbb90d80d02'
+            'SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --disable-static
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
