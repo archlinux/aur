@@ -138,9 +138,13 @@ prepare() {
     v8_enable_i18n_support=$V8_I18N_SUPPORT
     v8_use_external_startup_data=\"$V8_USE_EXTERNAL_STARTUP_DATA\"
     use_sysroot=$V8_USE_SYSROOT"
+
+  deactivate
 }
 
 build() {
+  source venv/bin/activate > /dev/null
+
   cd v8
 
   # Fixes bug in generate_shim_headers.py that fails to create these dirs
@@ -150,9 +154,13 @@ build() {
 
   msg2 "Building, this will take a while..."
   ninja -C $OUTFLD
+
+  deactivate
 }
 
 check() {
+  source venv/bin/activate > /dev/null
+
   cd v8
 
   msg2 "Testing, this will take also a while..."
@@ -161,6 +169,8 @@ check() {
                      --buildbot \
                      --arch=$V8_ARCH \
                      --mode=Release
+
+  deactivate
 }
 
 package() {
