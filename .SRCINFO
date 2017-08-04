@@ -1,35 +1,28 @@
 pkgbase = pop-gtk-theme-git
-	pkgdesc = An adaptive Gtk+ theme based on the Adapta GTK+ theme.
-	pkgver = 3.90.0.53
+	pkgdesc = An adaptive Gtk+ theme based on the Flat-Plat GTK+ theme.
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/system76/pop-gtk-theme
 	arch = any
 	license = GPL2
 	license = CCPL
-	makedepends = parallel
-	makedepends = inkscape
-	makedepends = glib2>=2.48.0
-	makedepends = librsvg>=2.40.13
 	makedepends = libsass>=3.3.6
-	makedepends = libxml2
 	makedepends = sassc>=3.3.2
 	makedepends = git
 	depends = gtk3>=3.18.9
 	depends = gtk2>=2.24.30
-	depends = gdk-pixbuf2>=2.32.2
+	depends = gdk-pixbuf2>=2.24.30
 	depends = gtk-engine-murrine>=0.98.1
 	optdepends = gnome-shell>=3.18.3
 	optdepends = gnome-flashback>=3.18.2
 	optdepends = budgie-desktop>=10.2.7
 	optdepends = xfce4-session>=4.12.2
 	optdepends = mate-desktop>=1.14.0
-	optdepends = mate-desktop>=1.14.0
 	optdepends = lxde-common>=0.99.1
+	optdepends = pop-icon-theme-git: Recommended icon theme
 	optdepends = ttf-fira-sans: Recommended font for window titles and interface
 	optdepends = ttf-fira-mono: Recommended monospace font
 	optdepends = ttf-roboto-slab: Recommended font for documents
-	optdepends = pop-icon-theme-git: Recommended icon theme
-	optdepends = plank: Elegant, simple, clean dock
 	provides = pop-gtk-theme
 	conflicts = pop-gtk-theme
 	source = git+https://github.com/system76/pop-gtk-theme.git
