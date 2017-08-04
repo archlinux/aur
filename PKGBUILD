@@ -2,7 +2,7 @@
 pkgname=makehuman-community-plugins
 pkgver=1.1.1
 pkgrel=1
-pkgdesc="Parametrical modeling program for creating human bodies"
+pkgdesc="Supplemental community plugins for the MakeHuman program."
 arch=('any')
 url="http://www.makehuman.org/"
 depends=('makehuman' 'python')
