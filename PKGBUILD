@@ -5,7 +5,7 @@ _pkgname="${_pkgbase}-doc"
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 pkgver=1.0.14_8+g4476b3c
-pkgrel=2
+pkgrel=3
 pkgdesc="Documentation for python package 'prompt_toolkit'."
 makedepends=(
   'git'
@@ -25,7 +25,6 @@ options=('emptydirs')
 source=(
   'python-prompt-toolkit::git+http://github.com/jonathanslenders/python-prompt-toolkit.git'
 )
-noextract=("$pkgname-$pkgver.zip")
 sha256sums=(
   'SKIP'
 )
