@@ -52,21 +52,9 @@ pkgbase = vtk-py3-qt4
 	source = http://www.vtk.org/files/release/7.0/VTK-7.0.0.tar.gz
 	source = http://www.vtk.org/files/release/7.0/VTKData-7.0.0.tar.gz
 	source = http://www.vtk.org/files/release/7.0/VTKLargeData-7.0.0.tar.gz
-	source = gdal2.patch
-	source = ffmpeg3_compat.patch
-	source = remove_args.patch
-	source = find_gcc6.patch
-	source = fix-possible-segfault.patch
-	source = fix-qt4-moc.patch
 	sha1sums = 7719fac36b36965eaf5076542166ba49bbe7afbb
 	sha1sums = 1bbaa642a3e3676a58a08c956df73645326c2859
 	sha1sums = 8d16a1fba15e4eb95c03fe97937488ddcdd7fbd0
-	sha1sums = c60610e7c8cf0ad93d7c02cbf8a20fc415f59b3e
-	sha1sums = a78177f8dd6dedd9ad189fa12730ec53c7d02508
-	sha1sums = d880f0f7d979cc9efa9246eda82880fef29172c2
-	sha1sums = 127d302f46e2691980af83350542243ab76ca75f
-	sha1sums = 1b04eadd40b823092d620914ce5bc8314e1e4980
-	sha1sums = 9b1523da7b111a02390e85a5eee2b015680d05ea
 
 pkgname = vtk-py3-qt4
 
