@@ -5,18 +5,16 @@ _pkgname="${_pkgbase}-doc"
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 pkgver=1.0.14_8+g4476b3c
-pkgrel=4
+pkgrel=5
 pkgdesc="Documentation for python package 'prompt_toolkit'."
 makedepends=(
   'git'
   'python-sphinx'
 )
 provides=(
-  # "python-prompt_toolkit-tutorial=${pkgver}"
   "${_pkgname}=${pkgver}"
 )
 replaces=(
-  # "python-prompt_toolkit-tutorial<=${pkgver}"
   "${_pkgname}<=${pkgver}"
 )
 conflicts=(
