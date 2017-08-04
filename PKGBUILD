@@ -1,21 +1,14 @@
 pkgname=renderdoc
-pkgver=0.34
-pkgrel=3
+pkgver=0.90
+pkgrel=1
 pkgdesc="OpenGL and Vulkan debugging tool"
 arch=(i686 x86_64)
 url="https://github.com/baldurk/renderdoc"
 license=("MIT")
 makedepends=("cmake")
 depends=("libx11" "libxcb" "mesa" "libgl" "qt5-base" "qt5-svg" "qt5-x11extras" "xcb-util-keysyms")
-source=("https://github.com/baldurk/renderdoc/archive/v${pkgver}.tar.gz"
-        "0001-Avoid-calling-XOpenDisplay-multiple-times-fixes-cras.patch")
-sha384sums=("1e507108fd1b4bcbf1161a66095ffa19a38a099fc301fd5ed206769f7609c4da4b45522dd63ad7825bfd523b7c35442a"
-            "4113c5bf7293e9fdc1cf140a79620a53ee1a7d08b9ba932088a5c2112d43cddd4425a6bbc134409eb8e2969e68c86c19")
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}/0001-Avoid-calling-XOpenDisplay-multiple-times-fixes-cras.patch"
-}
+source=("https://github.com/baldurk/renderdoc/archive/v${pkgver}.tar.gz")
+sha384sums=("c9a49c4b3faf59fe52d64b83204862231230258f048c255c11b0320eb42333576f7d6e8ee637ecf7a605b5e7166411a8")
 
 build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
