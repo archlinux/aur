@@ -8,7 +8,7 @@ pkgdesc='Very low footprint JSON parser written in portable ANSI C'
 arch=('i686' 'x86_64')
 url='https://github.com/udp/json-parser'
 license=('BSD')
-source=('json-parser::git+https://github.com/udp/json-parser')
+source=('json-parser-git::git+https://github.com/udp/json-parser')
 sha512sums=('SKIP')
 
 pkgver() {
