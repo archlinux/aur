@@ -1,0 +1,20 @@
+pkgbase = carl-git
+	pkgdesc = CArL - the Computer ARithmetic and Logic library.
+	pkgver = 17.06.r180.g477d100e
+	pkgrel = 1
+	url = https://smtrat.github.io/carl
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = boost
+	depends = eigen
+	depends = ginac
+	provides = carl
+	conflicts = carl
+	source = carl-git::git+https://github.com/smtrat/carl.git
+	md5sums = SKIP
+
+pkgname = carl-git
+
