@@ -1,6 +1,6 @@
 # Maintainer: axionl <axionl@aosc.io>
 pkgname=filemanager-bin
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Web File Manager which can be used as a middleware or standalone app."
 arch=('i386' 'x86_64')
@@ -18,8 +18,8 @@ source_x86_64=(linux-amd64-filemanager.tar.gz::https://github.com/hacdias/filema
 md5sums=('9edb695128abd99b44f9d38fa3a8e5bc'
          '158da0caf1696c91157605a7a968883e'
          '2d3a0fe85d0564db2467a85b3da7c52c')
-md5sums_i386=('1fca78d31ef563f926471e2cafa97129')
-md5sums_x86_64=('3406da0520989b4b642e2a94d0889be3')
+md5sums_i386=('66bddb8515e096c80b11bfb12e7ee965')
+md5sums_x86_64=('9bf0768915505013c8214551da942f08')
 
 package() {
   dir="$srcdir"
