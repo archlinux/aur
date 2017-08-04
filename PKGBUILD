@@ -1,7 +1,7 @@
 # Maintainer: Tom Wambold <tom5760@gmail.com>
 pkgname=oauth2_proxy
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A reverse proxy that provides authentication with Google, Github or other providers."
 arch=('i686' 'x86_64')
 url="https://github.com/bitly/oauth2_proxy"
