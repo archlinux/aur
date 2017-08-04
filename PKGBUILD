@@ -1,13 +1,13 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=strip-nondeterminism-git
-pkgver=0.028+5+gb9d5b06
+pkgver=0.038
 pkgrel=1
 pkgdesc='Tool for stripping bits of non-deterministic information from files'
 url='https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git'
 arch=('any')
 license=('GPL3')
-depends=("perl" 'perl-archive-zip')
+depends=("perl" 'perl-archive-zip' 'perl-archive-cpio')
 makedepends=('git')
 options=('!emptydirs')
 provides=('strip-nondeterminism')
@@ -39,7 +39,7 @@ check() {
 package() {
   cd ${pkgname}
   make DESTDIR="${pkgdir}" install
-  install -Dm 644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm 644 README -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:

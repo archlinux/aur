@@ -1,6 +1,6 @@
 pkgbase = strip-nondeterminism-git
 	pkgdesc = Tool for stripping bits of non-deterministic information from files
-	pkgver = 0.028+5+gb9d5b06
+	pkgver = 0.038
 	pkgrel = 1
 	url = https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = strip-nondeterminism-git
 	makedepends = git
 	depends = perl
 	depends = perl-archive-zip
+	depends = perl-archive-cpio
 	provides = strip-nondeterminism
 	conflicts = strip-nondeterminism
 	options = !emptydirs
