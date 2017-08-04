@@ -1,6 +1,6 @@
 pkgbase = vtk-py3-qt4
 	pkgdesc = A software system for 3D computer graphics, image processing, and visualization, build with python3 and qt4 bindings
-	pkgver = 7.0.0
+	pkgver = 8.0.0
 	pkgrel = 4
 	url = http://www.vtk.org/
 	arch = i686
@@ -49,12 +49,12 @@ pkgbase = vtk-py3-qt4
 	optdepends = jsoncpp
 	options = staticlibs
 	options = !strip
-	source = http://www.vtk.org/files/release/7.0/VTK-7.0.0.tar.gz
-	source = http://www.vtk.org/files/release/7.0/VTKData-7.0.0.tar.gz
-	source = http://www.vtk.org/files/release/7.0/VTKLargeData-7.0.0.tar.gz
-	sha1sums = 7719fac36b36965eaf5076542166ba49bbe7afbb
-	sha1sums = 1bbaa642a3e3676a58a08c956df73645326c2859
-	sha1sums = 8d16a1fba15e4eb95c03fe97937488ddcdd7fbd0
+	source = http://www.vtk.org/files/release/8.0/VTK-8.0.0.tar.gz
+	source = http://www.vtk.org/files/release/8.0/VTKData-8.0.0.tar.gz
+	source = http://www.vtk.org/files/release/8.0/VTKLargeData-8.0.0.tar.gz
+        sha1sums = a1bc6a8335b02f01a23cb6e96c4613d12ab598ed
+        sha1sums = e4d7315f27f42ce0820721b5d4304913fd4720c3
+        sha1sums = 2167822c8ebda61e04c3fce71692621f2b24d06b
 
 pkgname = vtk-py3-qt4
 
