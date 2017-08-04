@@ -42,7 +42,7 @@ package() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m644 "data/${pkgname}_halo.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
+  install -D -m644 "data/${pkgname}_halo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
   install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
