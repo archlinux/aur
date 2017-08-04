@@ -2,20 +2,20 @@
 # Co-Maintainer: thatgeek
 pkgname=torguard
 pkgver=0.3.70
-pkgrel=1
+pkgrel=2
 pkgdesc="TorGuard VPN Software
  Stay private online with TorGuard's anonymous VPN software and connect to 37+ countries worldwide."
 arch=('x86_64')
 url="www.torguard.com"
 depends=('iproute2')
 license=(custom)
-source=(http://updates.torguard.biz/Software/Linux/torguard-v0.3.70-amd64-arch.tar.gz)
+source=("https://updates.torguard.biz/Software/Linux/torguard-v0.3.70-amd64-arch.tar.gz")
 md5sums=('224802da0a684b94f48678a4d3f5ae58')
 
 package() {
-
-        mkdir -p "$pkgdir/opt/${pkgname}"
-        cp -r "${srcdir}/${pkgname}-v0.3.70-amd64-arch/"* "${pkgdir}/opt/${pkgname}" -R
+	tar -xf "${srcdir}/${pkgname}-v0.3.70-amd64-arch/torguard-v0.3.70-amd64-arch.tar"
+        cp -r "${srcdir}/${pkgname}-v0.3.70-amd64-arch/opt" "${pkgdir}/" -R
+        cp -r "${srcdir}/${pkgname}-v0.3.70-amd64-arch/usr" "${pkgdir}/" -R
         find "$pkgdir"/opt/torguard/ -type f -exec chmod 644 {} \;
         find "$pkgdir"/opt/torguard/ -name torguard -exec chmod 755 {} \;
         find "$pkgdir"/opt/torguard/ -name torguard-wrapper -exec chmod 755 {} \;
