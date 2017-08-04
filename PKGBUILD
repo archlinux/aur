@@ -4,13 +4,12 @@
 _pkgbasename=libsecret
 pkgname=lib32-$_pkgbasename
 pkgver=0.18.5+14+g9980655
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for storing and retrieving passwords and other secrets"
 arch=(x86_64)
 license=(LGPL)
 url="https://wiki.gnome.org/Projects/Libsecret"
 depends=(lib32-glib2 lib32-libgcrypt $_pkgbasename=$pkgver)
-checkdepends=(python-dbus dbus-glib python-gobject gjs)
 makedepends=(intltool gobject-introspection vala git gtk-doc)
 optdepends=('gnome-keyring: key storage service (or use any other service implementing org.freedesktop.secrets)')
 _commit=998065599c66055dcffa1ef1ddebb947ccd68248  # master
@@ -29,14 +28,13 @@ prepare() {
 
 build() {
   cd $_pkgbasename
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
+  export LDFLAGS+=' -m32'
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --disable-static --disable-gtk-doc --libdir=/usr/lib32
   make
-}
-
-check() {
-  cd $_pkgbasename
-  dbus-run-session make -k check 
 }
 
 package() {
