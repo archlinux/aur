@@ -1,6 +1,6 @@
 pkgbase = libressl
 	pkgdesc = FREE version of the SSL/TLS protocol forked from OpenSSL - EXPRIMENTAL ONLY
-	pkgver = 2.5.3
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = http://www.libressl.org/
 	arch = i686
@@ -11,11 +11,11 @@ pkgbase = libressl
 	provides = openssl
 	conflicts = openssl
 	backup = etc/ssl/openssl.cnf
-	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.5.3.tar.gz
-	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.5.3.tar.gz.asc
+	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.6.0.tar.gz
+	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.6.0.tar.gz.asc
 	source = libressl-dummy-rand-egd.patch
 	validpgpkeys = A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5
-	sha512sums = e5ba2abb8a0835a025d2777d9c0e8e95813777af8167e322d8e5ae20485c32b628ced77141b156fd3619b65a5afae1a5bc90a7252166a9a54f7e3d23388b3bd0
+	sha512sums = e195c6a2c9680cfaaca31bb6d3392fc6f725efd2a2d18b9a24d457d035a581c88630e6a066a4a4e0903e71f3ae3c30a031eb4f58281e483fdf1d877227452e9a
 	sha512sums = SKIP
 	sha512sums = 73ca8a924a23f874287503453d939ecffa40f05760cd539b4773f3f28687ee1f2fa463ca3f2cad4ac5f57a49f3b6a918c015c8829112c61cb3ea7b798c0d110b
 
