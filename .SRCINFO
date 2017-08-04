@@ -38,7 +38,7 @@ pkgbase = paperwork
 	source = paperwork.desktop
 	source = paperwork-gui-1.2.post3.tgz::https://github.com/openpaperwork/paperwork/archive/1.2.post3.tar.gz
 	source = paperwork-backend-1.2.tgz::https://github.com/openpaperwork/paperwork-backend/archive/1.2.tar.gz
-	md5sums = c2b01a3aba99515ee42835818a2bc177
+	md5sums = 4496dc70b2f159c7ea28160d2ebb60fe
 	md5sums = deba5b9454db998588f83cfb31c99e3b
 	md5sums = a55cd895b2e2e5826fffe67dd25234a5
 

@@ -22,7 +22,7 @@ optdeps=('cuneiform: alternativer OCR')
 source=("paperwork.desktop"
         "paperwork-gui-${_pkgver}.tgz::https://github.com/openpaperwork/paperwork/archive/${_pkgver}.tar.gz"
         "paperwork-backend-${pkgver}.tgz::https://github.com/openpaperwork/paperwork-backend/archive/${pkgver}.tar.gz")
-md5sums=('c2b01a3aba99515ee42835818a2bc177'
+md5sums=('4496dc70b2f159c7ea28160d2ebb60fe'
          'deba5b9454db998588f83cfb31c99e3b'
          'a55cd895b2e2e5826fffe67dd25234a5')
 install=paperwork.install
