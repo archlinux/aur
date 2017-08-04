@@ -1,6 +1,6 @@
 pkgbase=python-pathos
 pkgname=('python-pathos' 'python2-pathos')
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="parallel graph management and execution in heterogeneous computing"
 url="http://trac.mystic.cacr.caltech.edu/project/pathos/wiki.html"
@@ -8,7 +8,7 @@ arch=(any)
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-ppft' 'python2-ppft' 'python-pox' 'python2-pox' 'python-multiprocess' 'python2-multiprocess')
 source=("https://github.com/uqfoundation/pathos/archive/pathos-${pkgver}.tar.gz")
-sha1sums=('5005eb6b56e1c0f67f9e95b51adf369865c1a6cd')
+sha1sums=('e00d5ac3712a2ec02f54749815117dc1afab82e6')
 
 build() {
   cp -r "${srcdir}"/pathos-pathos-$pkgver "${srcdir}"/pathos-$pkgver
