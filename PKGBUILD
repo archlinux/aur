@@ -1,7 +1,7 @@
 # Maintainer: Erik Wallström <erik.wallstrom@live.com>
 pkgname=pop-gtk-theme-git
 _pkgname=pop-gtk-theme
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on the Flat-Plat GTK+ theme."
 arch=("any")
@@ -14,6 +14,8 @@ depends=(
 	"gtk-engine-murrine>=0.98.1"
 )
 makedepends=(
+	"inkscape"
+	"optipng"
 	"libsass>=3.3.6"
 	"sassc>=3.3.2"
 	"git"
