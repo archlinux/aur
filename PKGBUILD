@@ -7,7 +7,7 @@
 #
 
 pkgname=platformio
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
@@ -19,13 +19,13 @@ depends=('python2'
          'python2-click-5.1' # https://github.com/platformio/platformio/issues/349
          'python2-colorama'
          'python2-lockfile'
-         'python2-pyserial'
+         'python2-pyserial<3.3' # https://github.com/platformio/platformio-core/commit/a37eb9868f3b20e982d0c3cd1a742fcb8ab60efc
          'python2-requests'
          'python2-semantic-version'
          'python2-setuptools')
 conflicts=('platformio-git')
 source=("https://github.com/platformio/platformio-core/archive/v${pkgver}.tar.gz")
-sha256sums=('1ab75d4a907c001d36c5773124862c4524c93c8a9551ad8c5c1f689b20b1328c')
+sha256sums=('dd202e7a18a2032999e304fe6ab6f6decc16541dfae5c25adc46768da1f1b730')
 
 package() {
     cd "$srcdir/platformio-core-$pkgver"
