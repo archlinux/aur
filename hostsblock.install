@@ -15,8 +15,8 @@ add_user_group() {
     if [ $_changed == 1 ]; then
         gpasswd -a hostsblock hostsblock
         gpasswd -A hostsblock hostsblock
-        chown hostsblock:hostsblock /var/lib/hostsblock
     fi
+    chown -R hostsblock:hostsblock /var/lib/hostsblock
 }
 
 post_install() {

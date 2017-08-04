@@ -1,7 +1,7 @@
 # Maintainer/Originator: Jake VanderKolk <jakevanderkolk@gmail.com>
 pkgname=hostsblock
 pkgver=0.999.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A script that downloads, sorts, and compiles multiple ad- and malware-blocking hosts files."
 arch=(any)
 url="http://gaenserich.github.com/hostsblock/"
@@ -27,12 +27,12 @@ sha1sums=('5bb46b63a3371494cbd1ccc5b955583c635267d7'
 
 package() {
   mkdir -p -m 750 "$pkgdir"/var/lib/hostsblock
-  install -o hostsblock -Dm750 "$srcdir"/hostsblock.sh "$pkgdir"/usr/bin/hostsblock
+  install -Dm750 "$srcdir"/hostsblock.sh "$pkgdir"/usr/bin/hostsblock
   ln -sf /usr/bin/hostsblock "$pkgdir"/usr/bin/hostsblock-urlcheck
-  install -o hostsblock -Dm640 "$srcdir"/hostsblock.conf "$pkgdir"/var/lib/hostsblock/hostsblock.conf
-  install -o hostsblock -Dm640 "$srcdir"/black.list "$pkgdir"/var/lib/hostsblock/black.list
-  install -o hostsblock -Dm640 "$srcdir"/white.list "$pkgdir"/var/lib/hostsblock/white.list
-  install -o hostsblock -Dm640 "$srcdir"/hosts.head "$pkgdir"/var/lib/hostsblock/hosts.head
-  install -Dm640 "$srcdir"/hostsblock.service "$pkgdir"/usr/lib/systemd/system/hostsblock.service
-  install -Dm640 "$srcdir"/hostsblock.timer "$pkgdir"/usr/lib/systemd/system/hostsblock.timer
+  install -Dm640 "$srcdir"/hostsblock.conf "$pkgdir"/var/lib/hostsblock/hostsblock.conf
+  install -Dm640 "$srcdir"/black.list "$pkgdir"/var/lib/hostsblock/black.list
+  install -Dm640 "$srcdir"/white.list "$pkgdir"/var/lib/hostsblock/white.list
+  install -Dm640 "$srcdir"/hosts.head "$pkgdir"/var/lib/hostsblock/hosts.head
+  install -Dm644 "$srcdir"/hostsblock.service "$pkgdir"/usr/lib/systemd/system/hostsblock.service
+  install -Dm644 "$srcdir"/hostsblock.timer "$pkgdir"/usr/lib/systemd/system/hostsblock.timer
 }
