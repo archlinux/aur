@@ -1,7 +1,7 @@
 # Maintainer: Roshless <aur@roshless.com>
 pkgname=yt-rss-watcher
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Automation tool for listening to music on youtube"
 arch=('any')
 url="https://git.roshless.me/Roshless/yt-rss-watcher"
