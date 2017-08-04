@@ -3,7 +3,7 @@
 _with_extra=y
 
 pkgname=arc-kde-git
-pkgver=20170622
+pkgver=20170731
 pkgrel=3
 pkgdesc='Arc customization mainly for Plasma 5 (git version)'
 arch=('any')
