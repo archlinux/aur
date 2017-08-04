@@ -2,5 +2,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!dkms.conf
 !rtl8188eu.install
