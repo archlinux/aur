@@ -1,7 +1,7 @@
 # Maintainer: Eirik Albrigtsen <analsandblaster at gmail dot com>
 
 pkgname=blackbox-vcs
-pkgver=1.20170309
+pkgver=1.20170611
 pkgrel=1
 pkgdesc="Safely store secrets in Git/Mercurial/Subversion"
 arch=('any')
