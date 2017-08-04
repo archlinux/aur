@@ -1,0 +1,22 @@
+pkgbase = dolphin-seafile-plugin
+	pkgdesc = A plugin for dolphin to show the seafile synchronization status
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Skycoder42/dolphin-seafile-plugin
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = qt5-tools
+	makedepends = git
+	depends = qt5-base
+	depends = kio
+	depends = dolphin
+	depends = seafile
+	optdepends = repkg: Automatically rebuild the package on dependency updates
+	source = dolphin-seafile-plugin-1.0.0::git+https://github.com/Skycoder42/dolphin-seafile-plugin.git#tag=1.0.0
+	source = dolphin-seafile-plugin.rule
+	sha256sums = SKIP
+	sha256sums = e4826f9c5fce256f6637f0246923b191c5d0eb6b0dc17d8839a4e4fc0ebbee4f
+
+pkgname = dolphin-seafile-plugin
+
