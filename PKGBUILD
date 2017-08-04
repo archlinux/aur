@@ -1,7 +1,7 @@
 # Maintainer: Tom Wambold <tom5760@gmail.com>
 pkgname=oauth2_proxy
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A reverse proxy that provides authentication with Google, Github or other providers."
 arch=('i686' 'x86_64')
 url="https://github.com/bitly/oauth2_proxy"
@@ -33,7 +33,9 @@ build() {
 package() {
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/etc"
+  mkdir -p "$pkgdir/usr/lib/systemd/system"
 
   install dist/oauth2_proxy "$pkgdir/usr/bin/oauth2_proxy"
   install github.com/bitly/oauth2_proxy/contrib/oauth2_proxy.cfg.example "$pkgdir/etc/oauth2_proxy.cfg"
+  install oauth2_proxy.service "$pkgdir/usr/lib/systemd/system/oauth2_proxy.service"
 }
