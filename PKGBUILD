@@ -13,6 +13,7 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'boost'
+             'opencl-headers'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
