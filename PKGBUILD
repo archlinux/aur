@@ -1,13 +1,13 @@
+# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 # Contributor: Benjamin Chrétien <chretien+aur [at] lirmm [dot] fr>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: Rasi <rasi@xssn.at>
 # Contributor: Sean Pringle <sean.pringle@gmail.com>
 # Contributor: SanskritFritz (gmail)
-# Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname=rofi-git
 _gitname=rofi
-pkgver=1.3.1.r712.gc4530f97
+pkgver=1.3.1.r720.g9d98fe3b
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement'
 arch=('i686' 'x86_64')
