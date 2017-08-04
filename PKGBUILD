@@ -2,14 +2,14 @@
 pkgname=graylog
 replaces=(graylog2-server graylog-web-interface)
 conflicts=(${replaces[*]})
-pkgver=2.2.3
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
 arch=('any')
 url="https://www.graylog.org/"
 license=(GPL)
 depends=('java-runtime-headless>8')
-optdepends=('elasticsearch<5.0' mongodb)
+optdepends=(elasticsearch mongodb)
 install=graylog.install
 backup=(
 	etc/graylog/server/server.conf
@@ -19,7 +19,7 @@ source=(
 	graylog-tmpfiles.conf
 	graylog.service
 )
-sha256sums=('3de01e7cb8ebc02a7f06cec1c88eded3b717762447bf1b56bff8744f7f5ea80b'
+sha256sums=('3f96f50c949a0f843300c7f5ed7461dff7fd0583fd263377481c0e090b455b0e'
             'SKIP'
             'SKIP')
 
