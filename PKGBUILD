@@ -4,7 +4,7 @@
 _pkgbasename=webkitgtk
 pkgname=lib32-$_pkgbasename
 pkgver=2.4.11
-pkgrel=6
+pkgrel=7
 pkgdesc="Legacy Web content engine for GTK+ 3"
 arch=(x86_64)
 url="https://webkitgtk.org/"
@@ -15,9 +15,9 @@ makedepends=(gperf gobject-introspection python2 mesa ruby)
 optdepends=('gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
-provides=("webkitgtk3=${pkgver}" "libwebkit3=${pkgver}")
-conflicts=(webkitgtk3 libwebkit3)
-replaces=(webkitgtk3 libwebkit3)
+provides=("lib32-webkitgtk3=${pkgver}" "lib32-libwebkit3=${pkgver}")
+conflicts=(lib32-webkitgtk3 lib32-libwebkit3)
+replaces=(lib32-webkitgtk3 lib32-libwebkit3)
 
 options=(!emptydirs)
 install=webkitgtk.install

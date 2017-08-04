@@ -1,7 +1,7 @@
 pkgbase = lib32-webkitgtk
 	pkgdesc = Legacy Web content engine for GTK+ 3
 	pkgver = 2.4.11
-	pkgrel = 6
+	pkgrel = 7
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
 	arch = x86_64
@@ -24,12 +24,12 @@ pkgbase = lib32-webkitgtk
 	optdepends = gst-plugins-base: free media decoding
 	optdepends = gst-plugins-good: media decoding
 	optdepends = gst-libav: nonfree media decoding
-	provides = webkitgtk3=2.4.11
-	provides = libwebkit3=2.4.11
-	conflicts = webkitgtk3
-	conflicts = libwebkit3
-	replaces = webkitgtk3
-	replaces = libwebkit3
+	provides = lib32-webkitgtk3=2.4.11
+	provides = lib32-libwebkit3=2.4.11
+	conflicts = lib32-webkitgtk3
+	conflicts = lib32-libwebkit3
+	replaces = lib32-webkitgtk3
+	replaces = lib32-libwebkit3
 	options = !emptydirs
 	source = https://webkitgtk.org/releases/webkitgtk-2.4.11.tar.xz
 	source = webkitgtk-2.4.9-abs.patch
