@@ -4,7 +4,7 @@
 
 pkgname=('nvidia-utils-vulkan-developer-beta' 'nvidia-egl-wayland-vulkan-developer-beta' 'nvidia-libgl-vulkan-developer-beta' 'opencl-nvidia-vulkan-developer-beta')
 pkgver=381.26.08
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -107,7 +107,7 @@ package_nvidia-libgl-vulkan-developer-beta() {
 
 package_nvidia-egl-wayland-vulkan-developer-beta() {
   pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.1) for 'nvidia-utils-vulkan-developer-beta'"
-  depends=('nvidia-utils-beta')
+  depends=('nvidia-utils-vulkan-developer-beta')
   provides=('egl-wayland')
   conflicts=('egl-wayland')
   cd $_pkg_dir

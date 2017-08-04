@@ -1,6 +1,6 @@
 pkgbase = nvidia-utils-vulkan-developer-beta
 	pkgver = 381.26.08
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	arch = i686
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgname = nvidia-utils-vulkan-developer-beta
 
 pkgname = nvidia-egl-wayland-vulkan-developer-beta
 	pkgdesc = NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.1) for 'nvidia-utils-vulkan-developer-beta'
-	depends = nvidia-utils-beta
+	depends = nvidia-utils-vulkan-developer-beta
 	provides = egl-wayland
 	conflicts = egl-wayland
 
