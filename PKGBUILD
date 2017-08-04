@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=visual-studio-code-insiders
-pkgver=1.15.0.1499927182
+pkgver=1.15.0.1501823518
 pkgrel=1
 pkgdesc="Editor for building and debugging modern web and cloud applications (insiders version)"
 arch=('x86_64' 'i686')
@@ -15,10 +15,10 @@ source_x86_64=(code_x64_${pkgver}.tar.gz::https://vscode-update.azurewebsites.ne
 source_i686=(code_ia32_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-ia32/insider
               ${pkgname}.desktop
               )
-md5sums_x86_64=('c22ab461c7375089af6443199374ecd4'
-                '0b89723c1a9af40ca16dfc90e7eeb1da')
-md5sums_i686=('21685ad17d95336bc169eac4b4429f9c'
-              '0b89723c1a9af40ca16dfc90e7eeb1da')
+sha256sums_x86_64=('c58ed90d7c904203386e6689baa3c4953a1f5e7f7038dc0cc27593166022e726'
+                   '42bf4de14fe47e9510c8aac4545a776b0bb51307097034dd0348f59dda76c920')
+sha256sums_i686=('2156fb63d463ace81d4ede6aa08ed192dd7461aa58ce32aa85ef21667ac9496e'
+                 '42bf4de14fe47e9510c8aac4545a776b0bb51307097034dd0348f59dda76c920')
 pkgver() {
     if [ "${CARCH}" = "x86_64" ]; then
         IFS='/' read -ra ADDR <<< $(curl -ILs -o /dev/null -w %{url_effective} https://vscode-update.azurewebsites.net/latest/linux-x64/insider); echo "${ADDR[5]}" | sed 's/code-insider-//g' | sed 's/_amd64.tar.gz//g' | sed 's/-/./g'
