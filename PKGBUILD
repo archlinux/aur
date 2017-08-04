@@ -4,14 +4,14 @@
 _pkgbasename=libsecret
 pkgname=lib32-$_pkgbasename
 pkgver=0.18.5+14+g9980655
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for storing and retrieving passwords and other secrets"
 arch=(x86_64)
 license=(LGPL)
 url="https://wiki.gnome.org/Projects/Libsecret"
 depends=(lib32-glib2 lib32-libgcrypt $_pkgbasename=$pkgver)
 checkdepends=(python-dbus dbus-glib python-gobject gjs)
-makedepends=(intltool gobject-introspection vala git)
+makedepends=(intltool gobject-introspection vala git gtk-doc)
 optdepends=('gnome-keyring: key storage service (or use any other service implementing org.freedesktop.secrets)')
 _commit=998065599c66055dcffa1ef1ddebb947ccd68248  # master
 source=("git+https://git.gnome.org/browse/libsecret#commit=$_commit")
