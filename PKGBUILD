@@ -2,21 +2,13 @@
 pkgname=dingtalk-electron
 _pkgname=${pkgname//-/_}
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="钉钉Linux版本"
 arch=('x86_64')
 url="https://github.com/nashaofu/dingtalk#readme"
 license=('MIT')
 depends=('gconf' 'libnotify' 'libappindicator-sharp' 'libxtst' 'nss' 'libxss')
 source=("https://github.com/nashaofu/dingtalk/releases/download/v1.2.0/dingtalk_1.2.0_amd64.deb")
-
-pkgver() {
-	cd "${srcdir}"
-
-	tar xzvf control.tar.gz -C "${srcdir}" 2>&1 >/dev/null
-
-	echo "$(sed -ne 's/^Version: \([^-]\+\).*/\1/p' ${srcdir}/control)"
-}
 
 package() {
 	tar xJvf data.tar.xz -C "${pkgdir}"
