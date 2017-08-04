@@ -19,7 +19,8 @@ depends=('python2'
          'python2-click-5.1' # https://github.com/platformio/platformio/issues/349
          'python2-colorama'
          'python2-lockfile'
-         'python2-pyserial<3.3' # https://github.com/platformio/platformio-core/commit/a37eb9868f3b20e982d0c3cd1a742fcb8ab60efc
+         'python2-pyserial>=3.4' 
+# https://github.com/platformio/platformio-core/commit/a37eb9868f3b20e982d0c3cd1a742fcb8ab60efc
          'python2-requests'
          'python2-semantic-version'
          'python2-setuptools')
