@@ -1,0 +1,15 @@
+pkgbase = madbomber
+	pkgdesc = Clone of Activision's classic Atari 2600 game Kaboom!
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://www.newbreedsoftware.com/madbomber/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_image
+	depends = sdl_mixer
+	source = ftp://ftp.tuxpaint.org/unix/x/madbomber/src/madbomber-0.2.5.tar.gz
+	sha256sums = 951ec8cfde3965255ceafa92fdbbbb50a1981b71afcf359c58c7d22dbf122f48
+
+pkgname = madbomber
+
