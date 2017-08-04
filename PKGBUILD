@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kglobalaccel
-pkgver=5.21.0
+pkgver=5.36.0
 pkgrel=1
 arch=(any)
 pkgdesc="Add support for global workspace shortcuts (mingw-w64)"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kglobalaccel-${pkgver}.tar.xz")
-md5sums=('e3c726f8b0ba7254dbda63125362ce17')
+md5sums=('2e48a4c3d6db9215e18ba79737e5419b')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
