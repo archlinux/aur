@@ -8,7 +8,7 @@ url="https://git.roshless.me/Roshless/yt-rss-watcher"
 license=('GPL')
 depends=('python' 'youtube-dl' 'mpv' 'python-feedparser' 'python-arrow')
 source=(${pkgname}-${pkgver}.tar.gz::https://git.roshless.me/Roshless/yt-rss-watcher/archive/${pkgver}.tar.gz)                                                          
-sha256sums=('c19b48e58c84ef5dfe75f8b4e063da15820e23aef95b371408ce9fb73d7d1bc5')
+sha256sums=('7e88302f9d0045050976f7134d5d11b35e7a438f9816ae566ffd3f16d11179d5')
 
 package() {
   cd "${srcdir}/${pkgname}"
