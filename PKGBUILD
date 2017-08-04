@@ -9,7 +9,7 @@ url="https://github.com/StackExchange/blackbox"
 license=('MIT')
 depends=('gnupg' 'bash')
 source=("https://github.com/StackExchange/blackbox/archive/v${pkgver}.tar.gz")
-sha256sums=('c5f75252ab298b6b7b12d9407228a29112df85a228d7ee56a7bc6b0c807da284')
+sha256sums=('dcdc7a9b7c9fd7144c90baa5f48041af434ed4c8f77c8e41f1017789a2f9c017')
 
 package() {
   cd "${srcdir}/blackbox-${pkgver}"
