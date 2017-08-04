@@ -1,0 +1,14 @@
+pkgbase = python2-sockjs-tornado
+	pkgdesc = SockJS python server implementation on top of Tornado framework
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://github.com/mrjoes/sockjs-tornado/
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-tornado
+	source = https://files.pythonhosted.org/packages/source/s/sockjs-tornado/sockjs-tornado-1.0.3.tar.gz
+	sha256sums = 6d726e61bd1d884bd1c1788727fce1b9f24fd69062dda0daf61a476b01718e99
+
+pkgname = python2-sockjs-tornado
+
