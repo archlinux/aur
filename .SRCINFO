@@ -20,9 +20,9 @@ pkgbase = wavebox-bin-beta
 	options = !strip
 	source = wavebox.desktop
 	sha512sums = a6a55a0b0597eea63e2869ab27e3ddab802b020c89059b0b32399b63e64f0271e4685e363448da71c6ba90c810b83542cd0c9f40e2ce49057a8e33c54b82663b
-	source_x86_64 = https://github.com/wavebox/waveboxapp/releases/download/v3.2.1/Wavebox_3_2_1_linux_x86_64.tar.gz
+	source_x86_64 = https://github.com/wavebox/waveboxapp/releases/download/v3.2.2/Wavebox_3_2_2_linux_x86_64.tar.gz
 	sha512sums_x86_64 = f3e4ec843d1cc4d7b19e72120dcc8e14296243f8f45d6f847c9c5670bfd355cf826e084c15f9fec7b093a307b76625865e92912a13f237c88c743dd56348d7bc
-	source_i686 = https://github.com/wavebox/waveboxapp/releases/download/v3.2.1/Wavebox_3_2_1_linux_ia32.tar.gz
+	source_i686 = https://github.com/wavebox/waveboxapp/releases/download/v3.2.2/Wavebox_3_2_2_linux_ia32.tar.gz
 	sha512sums_i686 = 85b6da1ab7eadd4d379ef99140676b259fe62c2db2964558385f3841472314d03994fa76209e9af1bec7dcc704f4c4640a6a455d3fca15de3f233a71a917ab8b
 
 pkgname = wavebox-bin-beta
