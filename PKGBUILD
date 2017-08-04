@@ -4,7 +4,7 @@ _with_extra=y
 
 pkgname=arc-kde-git
 pkgver=20170622
-pkgrel=2
+pkgrel=3
 pkgdesc='Arc customization mainly for Plasma 5 (git version)'
 arch=('any')
 url='https://github.com/PapirusDevelopmentTeam/arc-kde'
@@ -16,9 +16,7 @@ optdepends=(
   "gtk-theme-arc-git: A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell (git version)"
   "arc-firefox-theme-git: Arc Firefox theme (git version)"
   "kwin: For Aurorae decorations"
-  "qt4-style-kvantum-svn: For Kvantum Theme"
-  "qt5-style-kvantum-svn: For Kvantum Theme"
-  "kvantum-tools-qt5-svn: For Kvantum Theme"
+  "kvantum-qt5: For Kvantum Theme"
   "konsole: For Konsole color schemes"
   "konversation: For konversation theme"
   "yakuake: For Yakuake theme"
