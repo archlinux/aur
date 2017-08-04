@@ -2,12 +2,12 @@
 
 pkgname=eggnogg+
 pkgver=20151221
-pkgrel=1
+pkgrel=2
 pkgdesc="A competitive arcade game of immortals sword-fighting to the death"
 arch=('i686' 'x86_64')
 url="https://madgarden.itch.io/eggnogg"
 license=('nonfree')
-makedepends=('unzip' 'curl')
+makedepends=('unzip' 'curl' 'gendesk')
 depends=()
 source=('http://madgarden.net/junkz/madgarden/eggnogg/icon-1.png')
 md5sums=('a6eb8862c233b3a85a70ada0f8542edc')
