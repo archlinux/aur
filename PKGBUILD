@@ -7,22 +7,14 @@
 
 pkgname=eagle
 pkgver=8.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful suite for schematic capture and printed circuit board design (aka eaglecad)"
 arch=('x86_64')
 url="http://www.autodesk.com/products/eagle"
 license=('custom')
 depends=(
-  'alsa-lib'
   'desktop-file-utils'
-  'libxcomposite'
-  'libxcursor'
-  'libxrandr'
-  'libxslt'
-  'libxtst'
-  'nss'
-  'qt5-location'
-  'qt5-webchannel'
+  'qt5-webengine'
   'shared-mime-info'
 )
 options=(!emptydirs !strip)
