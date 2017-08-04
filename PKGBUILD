@@ -61,7 +61,7 @@ pkgbase=linux-bfq-mq
 _srcname=linux-4.12
 _srcpatch=4
 pkgver=4.12.4
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -78,10 +78,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # mainline block merges and bfq-mq patches
         "${_bfqpath}/4.13-uuid-block-merge.patch"
+        "${_bfqpath}/4.13-irq-core-for-linus.patch"
         "${_bfqpath}/4.13-linux-block-for-linus_sir_lucjan.patch"
+        "${_bfqpath}/4.13-linux-block-for-linus_2.patch"
+        "${_bfqpath}/4.13-linux-block-for-linus_3.patch"
         "${_bfqpath}/${_bfq_mq_patch}"
         # tentative patches
-        "${_bfqgroup}/6646a2679ff98/0001-Check-presence-on-tree-of-every-entity-after-every-a.patch?part=0.1&authuser=0&view=1"
+        "0001-Check-presence-on-tree-of-every-entity-after-every-a.patch::${_bfqgroup}/6646a2679ff98/0001-Check-presence-on-tree-of-every-entity-after-every-a.patch?part=0.1&authuser=0&view=1"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -95,7 +98,10 @@ sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
             '37c9f788ab7bfe91171bd678138befc2691f8ab68e17bd921215d17b38f2836a'
+            '9747953d7d4d021ca1dbb16a2bec92f01a3d725d7991dc8c7788c385535cf63a'
             'fbb5f70bb456a7a17f4d16dfb1bd8b5b2e8fd64fa36f650811774b492bb3719c'
+            'ec9b27fbb6fffd06651b66c58d2c4bf1aaacb672f01ca3992396001d5666685a'
+            'c2118b2c2eacda2e28e45becde1d50851fc833b58075e5b7dd7af20a504341e1'
             'bec62b120c470703109cafb1d2b142f0a141bc0a094522b9975ac1fa64a60829'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             'cca8c6ff580c2726c6f24ab8a24b8b9fdc77cf279d42182f6ad6c5354e845bb3'
@@ -125,17 +131,28 @@ prepare() {
   sed -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
 
   msg "Patch source with block and BFQ-MQ patches"
-  msg "-> Apply for-4.13/block merge"
-  patch -Np1 -i "${srcdir}/4.13-uuid-block-merge.patch"
-  msg "-> Apply for-linus linux-block merge"
-  patch -Np1 -i "${srcdir}/4.13-linux-block-for-linus_sir_lucjan.patch"
-  msg "-> Apply bfq-mq patch"
-  patch -Np1 -i "${srcdir}/${_bfq_mq_patch}"
+    msg "-> Apply for-4.13/block merge"
+    patch -Np1 -i "${srcdir}/4.13-uuid-block-merge.patch"
+
+    msg "-> Apply irq-core-for-linus merge"
+    patch -Np1 -i "${srcdir}/4.13-irq-core-for-linus.patch"
+
+    msg "-> Apply for-linus linux-block merge 1"
+    patch -Np1 -i "${srcdir}/4.13-linux-block-for-linus_sir_lucjan.patch"
+
+    msg "-> Apply for-linus linux-block merge 2"
+    patch -Np1 -i "${srcdir}/4.13-linux-block-for-linus_2.patch"
+
+    msg "-> Apply for-linus linux-block merge 3"
+    patch -Np1 -i "${srcdir}/4.13-linux-block-for-linus_3.patch"
+
+    msg "-> Apply bfq-mq patch"
+    patch -Np1 -i "${srcdir}/${_bfq_mq_patch}"
 
   # Patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
   if [ -n "$_use_tentative_patches" ]; then
     msg "Apply tentative patches"
-    for p in "${srcdir}"/0001*.patch*; do patch -Np1 -i "$p"; done
+    for p in "${srcdir}"/0001*.patch; do patch -Np1 -i "$p"; done
   fi
 
   # add latest fixes from stable queue, if needed
