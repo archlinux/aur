@@ -1,0 +1,27 @@
+diff --git a/test/cctest/compiler/graph-builder-tester.h b/test/cctest/compiler/graph-builder-tester.h
+index a2436ad1d2..5305060896 100644
+--- a/test/cctest/compiler/graph-builder-tester.h
++++ b/test/cctest/compiler/graph-builder-tester.h
+@@ -168,9 +168,6 @@ class GraphBuilderTester : public HandleAndZoneScope,
+   Node* ChangeUint32ToTagged(Node* a) {
+     return NewNode(simplified()->ChangeUint32ToTagged(), a);
+   }
+-  Node* ChangeFloat64ToTagged(Node* a) {
+-    return NewNode(simplified()->ChangeFloat64ToTagged(), a);
+-  }
+   Node* ChangeTaggedToBit(Node* a) {
+     return NewNode(simplified()->ChangeTaggedToBit(), a);
+   }
+diff --git a/test/cctest/BUILD.gn b/test/cctest/BUILD.gn
+index d5365df606..c39b1bc46c 100644
+--- a/test/cctest/BUILD.gn
++++ b/test/cctest/BUILD.gn
+@@ -177,6 +177,6 @@ v8_executable("cctest") {
+     "test-typedarrays.cc",
+     "test-types.cc",
+     "test-unbound-queue.cc",
+-    "test-unboxed-doubles.cc",
++    #"test-unboxed-doubles.cc",
+     "test-unique.cc",
+     "test-unscopables-hidden-prototype.cc",
+     "test-usecounters.cc",
