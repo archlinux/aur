@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://www.kde.org/"
 license=('LGPL2')
 buildDepends=('git' 'cmake' 'extra-cmake-modules')
-depends=('qt5-base' 'qt5-serialport' 'qt5-charts' 'solid' 'kxmlgui' ) #Qt5)
+depends=('qt5-base' 'qt5-serialport' 'qt5-charts' ) #Qt5)
 source=('git://anongit.kde.org/atcore.git')
 md5sums=(SKIP)
 
