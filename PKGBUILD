@@ -12,7 +12,7 @@ depends=('gcc-libs')
 pkgdesc="Adjusts the volume of music files (mp4/m4a/QT/mp3) using ReplayGain algorithm."
 url="http://altosdesign.com/aacgain"
 license=('GPL')
-source=(http://mp4v2.googlecode.com/files/mp4v2-1.9.1.tar.bz2
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-1.9.1.tar.bz2
         http://downloads.sourceforge.net/sourceforge/faac/faad2-2.7.tar.bz2)
 
 sha256sums=('5c381caeab2326fc48cfda0fe202bdb8ba0ae624d9c97ad7680a2b07e2c2e3b4'
@@ -47,6 +47,7 @@ build() {
     msg "Building mp4v2..."
     patch -d ../ -p1 <mp4v2.patch
     cd ../mp4v2
+    patch -p0 <../../fix_missing_ptr_deref.patch
     ./configure
     make libmp4v2.la
 
