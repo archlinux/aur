@@ -124,7 +124,7 @@ sha1sums=('21eaac6e0f0f4d5ca56f4a4b809d550776950852'
 package() {
 	# This package is optional as the xscreensaver will stream the videos directly
 	# from apple which will save approx 11.9 GB of disk space but know that you
-	# will be using bandwidth everytime your screensaver comes on which might
+	# will be using bandwidth every time your screensaver comes on which might
 	# impact you if your ISP caps your bandwidth
 	cd "$srcdir"
   for i in *.mov; do
