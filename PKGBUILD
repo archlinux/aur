@@ -1,11 +1,12 @@
 # Maintainer: Adam Goldsmith <adam@adamgoldsmith.name>
 pkgname=python2-pylru-git
-pkgver=r62.eca0254
+pkgver=r67.66163a3
 pkgrel=1
 pkgdesc="A least recently used (LRU) cache for Python."
 arch=('any')
 url="https://github.com/jlhutch/pylru"
 license=('GPL')
+makedepends=(git)
 depends=(python2)
 provides=(python2-pylru)
 conflicts=(python2-pylru)
