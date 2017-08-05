@@ -69,5 +69,6 @@ package()
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/influxdb/LICENSE
 
   # Install man pages
+  install -d $pkgdir/usr/share/man/man1
   install -Dm644 man/*.1 $pkgdir/usr/share/man/man1/
 }
