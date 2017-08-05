@@ -1,6 +1,6 @@
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=openmsx
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="The MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
@@ -36,4 +36,4 @@ package() {
   install -m 644 "${pkgdir}/usr/share/doc/openmsx/cbios.txt" "${pkgdir}/usr/share/licenses/openmsx/"
 }
 
-md5sums=('995ad158a3796bf576d6ce7722c87d82')
+md5sums=('5407cae76a3e5a4ce808b4ded2255eba')
