@@ -1,6 +1,6 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 pkgname=csvtools-git
-pkgver=r308.fb4b222
+pkgver=r309.eb0315a
 pkgrel=1
 pkgdesc="GNU-alike tools for parsing RFC 4180 CSVs at high speed: csvcut, csvgrep, csvawk, csvpipe, csvunpipe"
 arch=('any')
