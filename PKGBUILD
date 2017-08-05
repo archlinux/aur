@@ -7,7 +7,7 @@ pkgname=('wxbase-light'
          'wxcommon-light'
          )
 pkgver=3.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('i686' 'x86_64')
 url='http://wxwidgets.org'
@@ -45,6 +45,7 @@ build() {
     --with-regex=builtin \
     --enable-unicode \
     --disable-{precomp-headers,gui}
+
   make
   make -C ../wxwidgets/locale allmo
 
@@ -59,6 +60,7 @@ build() {
     --enable-{unicode,graphics_ctx} \
     --without-{libnotify,gnome{vfs,print}} \
     --disable-{precomp-headers,mediactrl,webview}
+
   make
   make -C ../wxwidgets/locale allmo
 
@@ -73,17 +75,18 @@ build() {
     --enable-{unicode,graphics_ctx} \
     --without-{libnotify,gnome{vfs,print}} \
     --disable-{precomp-headers,mediactrl,webview}
+
   make
   make -C ../wxwidgets/locale allmo
 }
 
 package_wxbase-light() {
   pkgdesc="wxWidgets Base (GNOME/GStreamer free!)"
-  depends=('wxcommon-light'
+  depends=('bash'
            'expat'
            'zlib'
            )
-  provides=("wxbase=${pkgver}")
+  provides=('wxbase')
   conflicts=('wxbase')
   options=('!emptydirs')
 
@@ -91,19 +94,20 @@ package_wxbase-light() {
 
   mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-base"
   rm -fr "${pkgdir}/usr/include"
-  rm -fr "${pkgdir}/usr/share/"
+  rm -fr "${pkgdir}/usr/share"
 
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxbase-light/LICENSE"
 }
 
 package_wxgtk2-light() {
   pkgdesc="wxWidgets GTK2 Toolkit (GNOME/GStreamer free!)"
-  depends=('gtk2'
+  depends=('wxcommon-light'
+           'gtk2'
            'libsm'
            'sdl2'
            )
-  provides=("wxgtk=${pkgver}"
-            'wxgtk-light'
+  provides=('wxgtk'
+            'wxgtk2'
             )
   conflicts=('wxgtk')
   options=('!emptydirs')
@@ -121,11 +125,12 @@ package_wxgtk2-light() {
 
 package_wxgtk3-light() {
   pkgdesc="wxWidgets GTK3 Toolkit (GNOME/GStreamer free!)"
-  depends=('gtk3'
+  depends=('wxcommon-light'
+           'gtk3'
            'libsm'
            'sdl2'
            )
-  provides=("wxgtk3=${pkgver}")
+  provides=('wxgtk3')
   conflicts=('wxgtk3')
   options=('!emptydirs')
 
@@ -142,10 +147,10 @@ package_wxgtk3-light() {
 
 package_wxcommon-light() {
   pkgdesc="wxWidgets common (GNOME/GStreamer free!)"
-  depends=('bash'
-           'wxbase-light'
-           )
-  provides=("wxcommon=${pkgver}")
+  depends=('wxbase-light')
+  provides=('wxcommon'
+            'wxgtk-common'
+            )
   conflicts=('wxcommon')
   options=('!emptydirs')
 
