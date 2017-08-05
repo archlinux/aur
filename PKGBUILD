@@ -1,4 +1,4 @@
-# Maintainer: Rebecca Jones <hakusdream+aur at gmail dot com>
+# Maintainer: Rebecca Jones <hakusdream+aur@gmail.com>
 pkgname=makehuman-community-plugins
 pkgver=1.1.1
 pkgrel=1
