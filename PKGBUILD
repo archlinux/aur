@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=eternity-engine
-pkgver=3.42.03
+pkgver=3.42.03.a
 pkgrel=1
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
@@ -9,11 +9,11 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('sdl' 'sdl_mixer' 'sdl_net' 'zlib')
 makedepends=('cmake')
-source=(https://github.com/team-eternity/eternity/archive/$pkgver.tar.gz)
-sha512sums=('d1c71c018e25e33c8641d357bb32b83e9e6ef582f07e649025635f0fcd4eab7fa5de9df169529be0026c2cef3d57a6de94fe971228ba5634b3b6834d4770b9a3')
+source=(https://github.com/team-eternity/eternity/archive/${pkgver/\.a/a}.tar.gz)
+sha512sums=('89fe30774fb249d9bf26946d84818f5ff41593538a6157ebf7d80f8ad8cbf17ac41016462976b344363608dda2f638f0cf1688ae3d7499d9b882d5a97894da94')
 
 prepare() {
-  cd "eternity-$pkgver"
+  cd "eternity-${pkgver/\.a/a}"
 
   for patch in ../*.patch; do
     if [ ! -f "$patch" ]; then
@@ -28,7 +28,7 @@ build() {
   # Cannot do in-tree build.
   mkdir "ee-build"
   cd "ee-build"
-  cmake ../eternity-$pkgver -DCMAKE_INSTALL_PREFIX=/usr
+  cmake ../eternity-${pkgver/\.a/a} -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
