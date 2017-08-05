@@ -24,7 +24,7 @@ build()
   # the FPC stuff seems to be extremely baked-in
   # has difficulty linking Noteye, console only for now
 
-  make -f makefile.std multiconsole
+  make -f makefile.std -j1 multiconsole
 }
 
 package()
