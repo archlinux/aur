@@ -4,32 +4,33 @@
 # Contributor: 4javier <4javier4@gmail.com>
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
 # Contributor: cameel <cameel2/gmail/com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: SanskritFritz (gmail)
 
 pkgname=rednotebook
-pkgver=1.15
+pkgver=2.1
 pkgrel=1
-pkgdesc="A simple desktop diary"
+pkgdesc="A simple desktop diary."
 arch=('any')
 url="http://rednotebook.sourceforge.net"
 license=('GPL2')
-depends=('python2-yaml' 'pywebkitgtk' 'hicolor-icon-theme')
-optdepends=('python-chardet: Python3 module for character encoding auto-detection'
-	   'python2-gtkspellcheck: for spellchecking')
+depends=('python-yaml' 'pywebkitgtk' 'hicolor-icon-theme')
+optdepends=('python-chardet: Python module for character encoding auto-detection'
+            'python-gtkspellcheck: for spellchecking')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('605c4a2798e042f0fa85390ee7d4d698e3bf1566366250c433695c60248e22ac')
+sha256sums=('cad203b69a032969289a9394065076fed7ce5b0e8e5d3d8f50e297969aa4a28a')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  python2 setup.py build
+	cd ${srcdir}/${pkgname}-${pkgver}
+	python setup.py build
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  python2 setup.py install --root="${pkgdir}" --prefix=/usr
+	cd ${srcdir}/${pkgname}-${pkgver}
+	python setup.py install --root="${pkgdir}" --prefix=/usr
   
-  for _res in 16 22 32 64 128; do
-    install -D -m644 build/lib/rednotebook/images/rednotebook-icon/rn-${_res}.png \
-    ${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/${pkgname}.png
-  done
+	for _res in 16 22 32 64 128; do
+		install -D -m644 build/lib/rednotebook/images/rednotebook-icon/rn-${_res}.png \
+		${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/${pkgname}.png
+	done
 }
