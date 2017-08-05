@@ -10,7 +10,6 @@ pkgbase = vam
 	depends = grep
 	depends = bash
 	depends = coreutils
-	optdepends = base-devel: install aur packages
 	source = git+https://github.com/cheertarts/vam.git
 	md5sums = SKIP
 
