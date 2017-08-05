@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=blackmagic-decklink-sdk
-pkgver=10.9.3
-pkgrel=4
+pkgver=10.9.5
+pkgrel=1
 pkgdesc='Blackmagic DeckLink SDK'
 arch=('any')
-url='https://www.blackmagicdesign.com/support/family/capture-and-playback'
+url='https://www.blackmagicdesign.com/support/family/capture-and-playback/'
 license=('custom')
 provides=('decklink-sdk')
 conflicts=('decklink-sdk')
@@ -13,14 +13,14 @@ source=('LICENSE')
 sha256sums=('cc90e53ac2ef2442d2d0adfe9214119baa31ec080e75c3b087365efdbccc23df')
 
 _srcfile="Blackmagic_DeckLink_SDK_${pkgver}.zip"
-_downloadid='07f27b20a4934e98a104e87cbdce746a'
-_referid='8de2ef2e14414ad49f7da5fe687d72f3'
+_downloadid='627a3b1bcfdb4996a2bcc0d70af9ee3b'
+_referid='c4985c77ccb24b48b4be5ae7e309e92d'
 _srcurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
-_expected_sha256sum='ce7e925f862633cbec79c302c10eba672bbed773a56349f09e86eefb8c4529fe'
+_expected_sha256sum='1aa0fd45714ee955badbe986254cd6c7537f25e6ff596cbc1b9499bf5dcaf32b'
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/59.0.3071.115 \
+                        Chrome/60.0.3112.90 \
                         Safari/537.36"
 _reqjson="{ \
     \"platform\": \"Linux\", \
