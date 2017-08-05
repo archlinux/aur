@@ -1,7 +1,7 @@
 pkgbase = umonitor-git
 	pkgdesc = Dynamic monitor configuration
 	pkgver = 20170805
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rliou92/umonitor
 	install = umonitor.install
 	arch = i686
