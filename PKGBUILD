@@ -5,7 +5,7 @@
 
 pkgname=circuslinux
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Clone of the Atari 2600 game Circus Atari'
 arch=('i686' 'x86_64')
 url='http://www.newbreedsoftware.com/circus-linux/'
@@ -19,7 +19,7 @@ prepare() {
   cd $pkgname-$pkgver
   sed -i 's/-D$(TARGET_DEF)//' Makefile.in
   sed -i 's/#ifdef LINUX/#ifdef __linux/g' circuslinux.c
-  gendesk -f -n --pkgname=$pkgname --pkgdesc="$pkgdesc"
+  gendesk -f -n --pkgname=$pkgname --pkgdesc="$pkgdesc" --name="Circus Linux!"
 }
 
 build() {
