@@ -6,7 +6,7 @@ _pkgname=python-plotly
 _pypiname=plotly
 pkgbase=python-plotly
 pkgname=('python-plotly' 'python2-plotly')
-pkgver=2.0.12
+pkgver=2.0.13
 pkgrel=1
 url="https://plot.ly/python/"
 license=('MIT')
@@ -14,7 +14,7 @@ arch=("any")
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::https://pypi.org/packages/source/p/${_pypiname}/${_pypiname}-${pkgver}.tar.gz"
         "LICENSE")
-sha512sums=('0570ba9e329b8f0582451b33c618c48e96404a06e7c6ea5b0b65e56d0e9ba63f744fec8d33de25bfcf429c8f85c01050e7c6943534f725d02f94fce43e8c90a3'
+sha512sums=('e378a16dab8f4d5aa63429c208d50a39d23f111682097af87034c09785a1d7061da41c667f298ee773dc0519c5121b1676b6153926353381eb1570d5113efc3b'
             '1f27d546f594955e443a3d8a72aa4f18afa9d946336a9fd0585de3c8120e3ef262ce109eea0ee8d97510616864b8d01f8e4d48ebc0fc1486fd490bf8ba3a7f89')
 #validpgpkeys=('') # TODO https://github.com/plotly/plotly.py/issues/764
 
