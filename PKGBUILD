@@ -4,7 +4,7 @@ pkgbase=smack-utils
 pkgname=('smack-utils' 'libsmack')
 pkgdesc='SMACK Userspace'
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 url='http://schaufler-ca.com/'
 license=('LGPL')
 makedepends=('doxygen')
@@ -55,9 +55,11 @@ package_libsmack() {
 	cd "${srcdir}/smack-${pkgver}"
 
 	make DESTDIR="${pkgdir}" \
-		install-data
+		install-data \
+		install-exec
 	
 	rm -r "${pkgdir}/usr/share/man/man1"
 	rm -r "${pkgdir}/usr/share/man/man8"
+	rm -r "${pkgdir}/usr/bin"
 }
 
