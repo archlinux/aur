@@ -11,7 +11,7 @@ pkgrel=1
 url="https://github.com/mdomlop/${pkgname}"
 
 source=("https://github.com/mdomlop/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('0fdbe0b423724f01e21294a626f8791b')
+sha512sums=('6fa1e207fcd9f5257d835e8ed57bd53aaf4d5bde6a2fe58c56336da934612ca91d39f19e11b49cdfa2f5269d70bb76be7823f77db2522e884b035a8e53551c65')
 
 license=('GPL2')
 depends=('libx11')
