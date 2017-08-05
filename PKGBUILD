@@ -1,5 +1,5 @@
 # Maintainer: axionl <axionl@aosc.io>
-pkgname=ciel
+pkgname=ciel-git
 pkgver=r165.00c837e
 pkgrel=1
 pkgdesc="A tool for controlling multi-layer file systems and containers."
@@ -13,7 +13,6 @@ md5sums=('SKIP')
 
 package() {
     dir="$srcdir/$pkgname/"
-    mkdir -p pkg/ciel/usr/bin
     cd $dir
     git submodule update --init --recursive
     make && make PREFIX=${pkgdir}/usr install && make clean

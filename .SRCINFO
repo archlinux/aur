@@ -1,4 +1,4 @@
-pkgbase = ciel
+pkgbase = ciel-git
 	pkgdesc = A tool for controlling multi-layer file systems and containers.
 	pkgver = r165.00c837e
 	pkgrel = 1
@@ -9,8 +9,8 @@ pkgbase = ciel
 	makedepends = git
 	makedepends = make
 	makedepends = go
-	source = ciel::git+https://github.com/AOSC-Dev/ciel.git
+	source = ciel-git::git+https://github.com/AOSC-Dev/ciel.git
 	md5sums = SKIP
 
-pkgname = ciel
+pkgname = ciel-git
 
