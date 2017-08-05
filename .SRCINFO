@@ -7,7 +7,7 @@ pkgbase = python-chainmap
 	license = PSF
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/c/chainmap/chainmap-1.0.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/chainmap/chainmap-1.0.2.tar.gz
 	sha256sums = 405da3bce9913bfb33e6e497803b447b60d12ab44031ca357626143e087e0526
 
 pkgname = python-chainmap
