@@ -1,15 +1,15 @@
 pkgbase = kapow
 	pkgdesc = Punch clock to track time spent on projects
-	pkgver = 1.5.2
-	pkgrel = 3
+	pkgver = 1.5.3
+	pkgrel = 1
 	url = https://gottcode.org/kapow/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-tools
 	depends = qt5-base
-	source = https://gottcode.org/kapow/kapow-1.5.2-src.tar.bz2
-	sha256sums = 29d7a83f9351bd83dfc9e2c933187e6fa3274be1530976e05d201bb65bce23cf
+	source = https://gottcode.org/kapow/kapow-1.5.3-src.tar.bz2
+	sha256sums = 73953d980e248ccf74c8b94c62ee1dbeaa9843481ca87a8e6af7fe1c2eb8c712
 
 pkgname = kapow
 
