@@ -10,6 +10,7 @@ makedepends=('python-setuptools')
 license=('custom')
 arch=('any')
 install='python-gdbgui.install'
+install='python-gdbgui.install'
 source=("https://files.pythonhosted.org/packages/source/g/gdbgui/gdbgui-${pkgver}.tar.gz")
 md5sums=('122a574f7a1fcff6c37187a1a00ec969')
 
