@@ -1,6 +1,6 @@
 # Maintainer: Kai Yuan <kent.yuan @t gmail d@t com>
 pkgname=retmux-git
-pkgver=r87.75e1129
+pkgver=r101.640ae5a
 pkgrel=1
 pkgdesc="tmux sessions backup and restore tool"
 arch=('any')
