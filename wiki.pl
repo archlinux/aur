@@ -8,7 +8,15 @@ use MediaWiki::API;
 
 binmode STDOUT, ":utf8";
 
-my $mw = MediaWiki::API->new({ api_url => 'http://en.wikiquote.org/w/api.php' });
+my $mw = MediaWiki::API->new({ api_url => 'https://en.wikiquote.org/w/api.php' });
+
+$mw->{config}->{on_error} = \&on_error;
+
+sub on_error {
+  print "Error code: $mw->{error}->{code}\n";
+  print "$mw->{error}->{stacktrace}\n";
+  die;
+}
 
 # TODO fetch a specific, stable revision
 # TODO add series numbers + episode names to the end?
@@ -17,7 +25,7 @@ my $mw = MediaWiki::API->new({ api_url => 'http://en.wikiquote.org/w/api.php' })
 my $page = $mw->get_page( { title => 'Farscape' } );
 
 if ($#ARGV == 0 && $ARGV[0] eq "revision") {
-  print $page->{ 'revid' };
+  print "$page->{revid}";
   exit;
 }
 
