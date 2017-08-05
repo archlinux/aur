@@ -1,6 +1,6 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare
-pkgver=4.1r4
+pkgver=4.1r5
 pkgrel=1
 conflicts=("kshare-git")
 pkgdesc="The free and open source and cross platform screen sharing software."
@@ -26,6 +26,6 @@ package() {
   mkdir -p "$pkgdir/usr/share/pixmaps"
   install "${srcdir}/KShare/icons/icon.png" "$pkgdir/usr/share/pixmaps"
   mkdir -p "$pkgdir/usr/share/applications"
-  install KShare.desktop "$pkgdir/usr/share/applications"
+#  install KShare.desktop "$pkgdir/usr/share/applications"
 }
 
