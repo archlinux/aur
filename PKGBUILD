@@ -14,11 +14,9 @@ backup=('etc/telegraf/telegraf.conf')
 install="telegraf.install"
 options=('emptydirs')
 source=("git+https://github.com/influxdata/telegraf#tag=$pkgver"
-        'telegraf.install'
         'telegraf.sysusers'
         'telegraf.tmpfiles')
 md5sums=('SKIP'
-         'd552ccaa62f0e839281641d07ebd397e'
          '58cc9edf8fbf07e7d3a0357db78121b1'
          '9c7a4df3556cab94837c432f5e46cf04')
 
