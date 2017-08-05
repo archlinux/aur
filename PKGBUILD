@@ -7,7 +7,7 @@ pkgname=('lib32-wxbase-light'
          'lib32-wxcommon-light'
          )
 pkgver=3.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!) (32 bits)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -58,6 +58,7 @@ build() {
       --with-regex=builtin \
       --enable-unicode \
       --disable-{precomp-headers,gui}
+
   make
   make -C ../wxwidgets/locale allmo
 
@@ -72,6 +73,7 @@ build() {
       --enable-{unicode,graphics_ctx} \
       --without-{libnotify,gnome{vfs,print}} \
       --disable-{precomp-headers,mediactrl,webview}
+
   make
   make -C ../wxwidgets/locale allmo
 
@@ -86,18 +88,20 @@ build() {
       --enable-{unicode,graphics_ctx} \
       --without-{libnotify,gnome{vfs,print}} \
       --disable-{precomp-headers,mediactrl,webview}
+
   make
   make -C ../wxwidgets/locale allmo
 }
 
 package_lib32-wxbase-light() {
   pkgdesc="wxWidgets Base (GNOME/GStreamer free!) (32 bits)"
-  depends=('lib32-gcc-libs'
-           'lib32-wxcommon-light'
+  depends=('bash'
+           'wxbase-light'
+           'lib32-gcc-libs'
            'lib32-expat'
            'lib32-zlib'
            )
-  provides=("lib32-wxbase=${pkgver}")
+  provides=('lib32-wxbase')
   conflicts=('lib32-wxbase')
   options=('!emptydirs')
 
@@ -114,15 +118,18 @@ package_lib32-wxbase-light() {
 
 package_lib32-wxgtk2-light() {
   pkgdesc="wxWidgets GTK2 Toolkit (GNOME/GStreamer free!) (32 bits)"
-  depends=('lib32-wxbase-light'
+  depends=('wxgtk2-light'
+           'lib32-wxbase-light'
            'lib32-gtk2'
            'lib32-libsm'
            'lib32-sdl2'
            )
-  provides=("lib32-wxgtk=${pkgver}"
-            'lib32-wxgtk-light'
+  provides=('lib32-wxgtk'
+            'lib32-wxgtk2'
             )
-  conflicts=('lib32-wxgtk')
+  conflicts=('lib32-wxgtk'
+             'lib32-wxgtk2'
+             )
   options=('!emptydirs')
 
   make -C build-gtk2 DESTDIR="${pkgdir}" install
@@ -139,12 +146,13 @@ package_lib32-wxgtk2-light() {
 
 package_lib32-wxgtk3-light() {
   pkgdesc="wxWidgets GTK3 Toolkit (GNOME/GStreamer free!) (32 bits)"
-  depends=('lib32-wxbase-light'
+  depends=('wxgtk3-light'
+           'lib32-wxbase-light'
            'lib32-gtk3'
            'lib32-libsm'
            'lib32-sdl2'
            )
-  provides=("lib32-wxgtk3=${pkgver}")
+  provides=('lib32-wxgtk3')
   conflicts=('lib32-wxgtk3')
   options=('!emptydirs')
 
@@ -166,8 +174,12 @@ package_lib32-wxcommon-light() {
   depends=('wxcommon-light'
            'lib32-wxbase-light'
            )
-  provides=("lib32-wxcommon=${pkgver}")
-  conflicts=('lib32-wxcommon')
+  provides=('lib32-wxcommon'
+            'lib32-wxgtk-common'
+            )
+  conflicts=('lib32-wxcommon'
+             'lib32-wxgtk-common'
+            )
   options=('!emptydirs')
 
   make -C build-gtk2 DESTDIR="${pkgdir}" install
