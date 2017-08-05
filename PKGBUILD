@@ -1,8 +1,8 @@
 # Maintainer: North Crescent <north-crescent@tuta.io>
 
 pkgname="mira"
-pkgver="0.2.0_beta"
-pkgrel="2"
+pkgver="0.2.1_beta"
+pkgrel="1"
 pkgdesc="An abstract workflow assistant for Git"
 
 arch=("any")
