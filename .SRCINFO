@@ -1,15 +1,15 @@
 pkgbase = gs-media-bot
 	pkgdesc = Bot for posting media to GNU Social.
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
-	url = https://gitgud.io/dtluna/gs_media_bot
+	url = https://source.heropunch.io/dtluna/gs_media_bot
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
 	depends = python-gnusocial
-	source = https://gitgud.io/dtluna/gs_media_bot/repository/archive.tar.gz?ref=1.3.0
-	sha256sums = be5d2e963a3af57eb8c81228a1425f5cb4736042f94536dc0737aa4262972087
+	source = https://source.heropunch.io/dtluna/gs_media_bot/repository/archive.tar.gz?ref=1.4.0
+	sha256sums = f8850266c8667575cf683fc417356beb5c72ff54790316fd492801f58344712d
 
 pkgname = gs-media-bot
 
