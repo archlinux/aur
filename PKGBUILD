@@ -1,29 +1,28 @@
 # Maintainer: Nicolas Leclercq <nicolas.private@gmail.com>
+# Contributor: Adam S. Levy <adam@aslevy.com>
 # Contributor: Charles B. Johnson <mail@cbjohnson.info>
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # Contributor: Ben Alex <ben.alex@acegi.com.au>
 
 pkgname='influxdb'
 _gitname='influxdb'
-pkgver='1.2.4'
+pkgver='1.3.1'
 pkgrel='1'
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://influxdb.org/'
 license=('MIT')
 depends=('')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'asciidoc' 'xmlto')
 provides=('influxdb')
 backup=('etc/influxdb/influxdb.conf')
 install='influxdb.install'
 source=("git+https://github.com/influxdata/influxdb#tag=v$pkgver"
-        "influxdb.install"
         "influxdb.sysusers"
         "influxdb.tmpfiles")
 md5sums=('SKIP'
-         '0efb615d8319009fb767c4905ba80388'
-         '349ecdadb3035718a57e781913a01cf6'
-         '175d54bf6a82222ffe491f4a684582bd')
+         'SKIP'
+         'SKIP')
 build()
 {
   export GOPATH="$srcdir"
@@ -41,23 +40,34 @@ build()
   revision=`git rev-parse HEAD`
   version=`git describe --tags`
   echo "Building influxdb version=$version commit=$revision branch=master"
-  go install -ldflags="-X main.version=$version -X main.commit=$revision -X main.branch=master" ./...
+  _LDFLAGS="-X main.version=$version -X main.commit=$revision -X main.branch=master"
+  go install -ldflags="$_LDFLAGS" ./...
 
+  # Build man pages
+  cd man/
+  make
 }
+
 package()
 {
   cd $srcdir
-  install -Dm644 influxdb.sysusers "$pkgdir/usr/lib/sysusers.d/influxdb.conf"
-  install -Dm644 influxdb.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/influxdb.conf"
+  install -Dm644 influxdb.sysusers $pkgdir/usr/lib/sysusers.d/influxdb.conf
+  install -Dm644 influxdb.tmpfiles $pkgdir/usr/lib/tmpfiles.d/influxdb.conf
 
   cd $GOBIN
-  install -Dsm755 influxd "$pkgdir/usr/bin/influxd"
-  install -Dsm755 influx "$pkgdir/usr/bin/influx"
-  install -Dsm755 influx_tsm "$pkgdir/usr/bin/influx_tsm"
-  install -Dsm755 influx_inspect "$pkgdir/usr/bin/influx_inspect"
+  install -d $pkgdir/usr/bin/
+  install -Dsm755 influxd        $pkgdir/usr/bin/
+  install -Dsm755 influx         $pkgdir/usr/bin/
+  install -Dsm755 influx_tsm     $pkgdir/usr/bin/
+  install -Dsm755 influx_stress  $pkgdir/usr/bin/
+  install -Dsm755 influx_inspect $pkgdir/usr/bin/
 
   cd "$GOPATH/src/github.com/influxdata/influxdb"
-  install -Dm644 scripts/influxdb.service "$pkgdir/usr/lib/systemd/system/influxdb.service"
-  install -Dm644 "etc/config.sample.toml" "$pkgdir/etc/influxdb/influxdb.conf"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/influxdb/LICENSE"
+  install -Dm644 scripts/influxdb.service $pkgdir/usr/lib/systemd/system/influxdb.service
+  install -Dm644 etc/config.sample.toml $pkgdir/etc/influxdb/influxdb.conf
+  install -Dm644 scripts/logrotate $pkgdir/etc/logrotate.d/influxdb
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/influxdb/LICENSE
+
+  # Install man pages
+  install -Dm644 man/*.1 $pkgdir/usr/share/man/man1/
 }
