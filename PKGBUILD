@@ -2,7 +2,7 @@
 
 pkgname=slic3r-server
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A small program to control the slicing program Slic3r with a RESTful API"
 arch=('i686' 'x86_64')
 url="https://github.com/zethra/slic3rServer"
@@ -18,10 +18,6 @@ build() {
     export GOPATH=$srcdir
     go get github.com/gorilla/mux
     go build -o bin/slic3rServer github.com/zethra/slic3rServer
-}
-
-check() {
-    go test github.com/zethra/slic3rServer
 }
 
 package() {

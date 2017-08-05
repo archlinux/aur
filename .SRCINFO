@@ -1,7 +1,7 @@
 pkgbase = slic3r-server
 	pkgdesc = A small program to control the slicing program Slic3r with a RESTful API
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zethra/slic3rServer
 	arch = i686
 	arch = x86_64
