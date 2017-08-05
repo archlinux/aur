@@ -34,7 +34,7 @@ prepare() {
 build() {
   cd "$srcdir/$_name"
   "$srcdir/$_name/configure" --prefix="/usr" PYTHON_VERSION="$_py2ver"
-  PYTHON_VERSION="$_py2ver" make -j"${nproc}"
+  PYTHON_VERSION="$_py2ver" make -j"$(nproc)"
 }
 
 package() {
