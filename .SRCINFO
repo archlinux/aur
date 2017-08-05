@@ -1,0 +1,35 @@
+pkgbase = gerbera-git
+	pkgdesc = UPnP Media Server (Based on MediaTomb)
+	pkgver = 2529.e0c8e2d5
+	pkgrel = 1
+	url = https://github.com/v00d00/gerbera
+	install = gerbera.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	makedepends = cmake
+	depends = taglib
+	depends = curl
+	depends = sqlite
+	depends = file
+	depends = libmariadbclient
+	depends = gcc-libs
+	depends = pupnp
+	depends = duktape
+	depends = libexif
+	depends = expat
+	provides = gerbera
+	conflicts = gerbera
+	options = emptydirs
+	source = gerbera-git::git+https://github.com/v00d00/gerbera.git
+	source = gerbera-mysql.service
+	source = gerbera.service
+	source = gerbera.sysusers
+	sha256sums = SKIP
+	sha256sums = f8abf002308fabb8327f3bff0fd100357360921fcbfde61795f044af96ab9257
+	sha256sums = 766383ece7e5fc308b52d8c9df3924e31c65e0ac0a954033248c7d80a8c40140
+	sha256sums = b3f956a6eaee8753cff7a04b51091b8b283dd0da054190ced13362a5b050d73f
+
+pkgname = gerbera-git
+
