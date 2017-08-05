@@ -1,15 +1,15 @@
 pkgbase = jdk-devel-docs
 	pkgdesc = Documentation for Oracle Java 9 Development Kit Snapshot
-	pkgver = 9b180
+	pkgver = 9b181
 	pkgrel = 1
 	url = http://jdk.java.net/9/
 	arch = any
 	license = custom
 	optdepends = java-environment>=9: Compile and run examples
 	options = !strip
-	source = http://download.java.net/java/jdk9/archive/180/binaries/jdk-9_doc-api-spec.tar.gz
+	source = http://download.java.net/java/jdk9/archive/181/binaries/jdk-9_doc-api-spec.tar.gz
 	source = LICENSE-Early-Adopter-Terms.txt
-	sha256sums = 6dc1f6f79eadb8f9824bb48c4f4e5968dc61030253533f20c90b0520eb89faab
+	sha256sums = 1d83f4ede5da2472651ae8c2b9e61d55c9ac2e89e3e27a0c3c9826e0f8a10ebd
 	sha256sums = a8b0ecff3221f39c53092d910dfd903ff243a185835ad6d121abbbe82225d335
 
 pkgname = jdk-devel-docs
