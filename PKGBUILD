@@ -1,11 +1,12 @@
 # Maintainer: Carlos Henrique Merces Moreira "chmercesmoreira" <ch.mercesmoreira@gmail.com>
 pkgname=plexdrive
 pkgver=5.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Plexdrive mounts your Google Drive FUSE filesystem (optimized for media playback)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/dweidenfeld/plexdrive"
 license=('MIT')
+depends=('fuse2')
 source_i686=("https://github.com/dweidenfeld/"$pkgname"/releases/download/"$pkgver"/"$pkgname"-linux-386")
 source_x86_64=("https://github.com/dweidenfeld/"$pkgname"/releases/download/"$pkgver"/"$pkgname"-linux-amd64")
 source_arm=("https://github.com/dweidenfeld/"$pkgname"/releases/download/"$pkgver"/"$pkgname"-linux-arm5")
