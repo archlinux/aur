@@ -1,4 +1,4 @@
-post_install(){
+post_upgrade(){
 	echo 'If you were using the previous version on umonitor, there have been two major changes:'
 	echo '1. umon2.conf has been renamed to umon.conf'
 	echo '2. umonitor daemonizes itself when called with --listen. In your .xinitrc you should call umonitor --listen without running it in the background.'
