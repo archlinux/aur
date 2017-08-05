@@ -5,7 +5,7 @@ post_install() {
     groupadd -g 72 courier >/dev/null 2>&1
   fi
 
-  if getent passwd courier >/dev/null; then
+  if ! getent passwd courier >/dev/null; then
     useradd -u 72 -d /var/spool/courier -g courier -s /bin/false courier >/dev/null 2>&1
   fi
 
