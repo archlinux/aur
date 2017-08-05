@@ -1,7 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=sgopherd
 pkgname=$_pkgname-git
-pkgver=15.03
+pkgver=17.02.1.g5f96939
 pkgrel=1
 pkgdesc="A gopher server written in Bash"
 arch=('any')
@@ -33,8 +33,6 @@ package() {
     "$pkgdir"/usr/lib/systemd/system/sgopherd@.service
   install -Dm644 systemd/sgopherd.socket \
     "$pkgdir"/usr/lib/systemd/system/sgopherd.socket
-  install -Dm755 systemd/sgopherd-systemd \
-    "$pkgdir"/usr/bin/sgopherd-systemd
 
   install -Dm644 man8/sgopherd.8 "$pkgdir"/usr/share/man/man8/sgopherd.8
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
