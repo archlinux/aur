@@ -10,6 +10,8 @@ pkgbase = python-flask-socketio-git
 	depends = python-flask
 	depends = python-socketio
 	depends = python-engineio
+	provides = python-flask-socketio
+	conflicts = python-flask-socketio
 	source = https://files.pythonhosted.org/packages/source/f/flask-socketio/Flask-SocketIO-2.9.1.tar.gz
 	md5sums = f95e187a8013fbdd7aeb09560785d98b
 
