@@ -4,11 +4,11 @@ pkgver=2.4a
 pkgrel=1
 pkgdesc="A sci-fi roguelike, based on ZAPM."
 arch=('i686' 'x86_64')
-url="http://pesky-reticulans.org/"
+url="http://prime-rogue.net/"
 license=('GPL')
 depends=('ncurses' 'gcc-libs' 'libsigsegv' 'lua51' 'sdl_net' 'sdl_mixer')
 makedepends=('fpc')  # whhhhyyyyy
-source=("http://pesky-reticulans.org/game/prime_src-$pkgver.tar.bz2")
+source=("http://prime-rogue.net/game/prime_src-$pkgver.tar.bz2")
 md5sums=('321beb1cff617d41b37ca33968512442')
 
 build()
