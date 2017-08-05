@@ -43,7 +43,7 @@ build()
   _LDFLAGS="-X main.version=$version -X main.commit=$revision -X main.branch=master"
   go install -ldflags="$_LDFLAGS" ./...
 
-  # Build man pages
+  echo "Building man pages"
   cd man/
   make
 }
