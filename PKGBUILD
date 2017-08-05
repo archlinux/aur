@@ -1,20 +1,19 @@
-# Maintainer: David Manouchehri <manouchehri@riseup.net>
+# Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
+# Contributor: David Manouchehri <manouchehri@riseup.net>
 # Contributor: Philipp 'TamCore' B. <philipp {at} tamcore {dot} eu>
 
-pkgname=android-apktool-git
 _gitname=Apktool
-_gitbranch=master
-_gitauthor=iBotPeaches
-pkgver=2.0.0.RC4.r20.gbbc6023
+pkgname=android-apktool-git
+pkgver=2.2.4.r5.g2f387288
 pkgrel=1
 pkgdesc="a tool for reengineering Android apk files"
-arch=('i686' 'x86_64')
-url="https://code.google.com/p/android-apktool/"
-license=('Apache 2.0')
-depends=('java-runtime' 'android-sdk-build-tools')
-conflicts=('android-apktool')
-makedepends=('git' 'java-environment') # openjdk has had issues in the past, be warned!
-source=("git://github.com/$_gitauthor/$_gitname.git#branch=$_gitbranch")
+arch=(any)
+url="https://ibotpeaches.github.io/Apktool/"
+license=(Apache)
+depends=(bash java-runtime android-sdk-build-tools)
+conflicts=(android-apktool)
+makedepends=(git java-environment) # openjdk has had issues in the past, be warned!
+source=("git+https://github.com/iBotPeaches/$_gitname.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -30,10 +29,8 @@ build() {
 
   cd "$srcdir/$_gitname"
 
-  ./gradlew applyPatches
-
   # Build (OpenJDK sometimes fails to find aapt)
-  ./gradlew build fatJar proguard # proguard isn't needed, but makes the binary a little bit smaller
+  ./gradlew build proguard # proguard isn't needed, but makes the binary a little bit smaller
 }
 
 package() {
