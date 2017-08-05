@@ -145,7 +145,10 @@ def main(argv):
 				pickle.dump(pkgdistcache_clients, f, -1)
 	
 		for client in pkgdistcache_clients:
-			url = "http://" + client.ip + ":" + str(client.port) + "/" + pkg
+			clientip = client.ip
+			if ":" in clientip:
+				clientip = "[" + clientip + "]"
+			url = "http://" + clientip + ":" + str(client.port) + "/" + pkg
 			dst = argv[2]
 			printmsg("Downloading " + pkg + " from host '" + client.host + "'")
 			download_cmd = download_cmd_template.substitute({'u': url, 'o': dst})
