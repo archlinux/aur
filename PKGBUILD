@@ -1,4 +1,5 @@
-# Maintainer: Atnanasis <ys2000pro@gmail.com>
+# Maintainer: tommyshem
+# Previous Maintainer: Atnanasis <ys2000pro@gmail.com>
 # Contributor: Youngbin Han <sukso96100@gmail.com>
 pkgname=micro-nightly-bin
 pkgver=1.3.1.dev.18
