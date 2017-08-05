@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/goatpig/BitcoinArmory"
 license=('AGPL3')
 depends=('crypto++' 'swig' 'python2' 'qt4' 'python2-pyqt4' 'python2-bsddb' 'python2-psutil' 'rsync')
-makedepends=('git' 'gcc' 'make' 'icoutils')
+makedepends=('git' 'gcc' 'make')
 optdepends=('bitcoin-daemon: Communicate with the Bitcoin network')
 install="${_name}.install"
 provides=('armory')
@@ -42,9 +42,9 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   mkdir -p "$pkgdir/usr/share/pixmaps"
-  icotool -x -w 256 "$pkgdir/usr/share/armory/img/armory256x256.ico" \
-                 -o "$pkgdir/usr/share/pixmaps/armory.png"
-  cp "$pkgdir/usr/share/armory/img/armory_icon_green_64x64.png" \
+  cp "$pkgdir/usr/share/armory/img/armory_icon_fullres.png" \
+     "$pkgdir/usr/share/pixmaps/armory.png"
+  cp "$pkgdir/usr/share/armory/img/armory_icon_green_fullres.png" \
      "$pkgdir/usr/share/pixmaps/armory_green.png"
 
   desktop-file-install -m 644 \
