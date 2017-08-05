@@ -3,18 +3,17 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=virtualbox-headless
-pkgver=5.1.22
+pkgver=5.1.26
 _tarver=${pkgver}
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL' 'custom')
-depends=('libxml2' 'libvpx' 'libpng' 'python2')
+depends=('curl' 'libxml2' 'libvpx' 'libpng' 'python2')
 makedepends=('iasl' 'libxslt' 'cdrkit' 'libidl2' 'libpulse' 'device-mapper' 'libvncserver' 'gsoap')
 makedepends_x86_64=('gcc-multilib')
 optdepends=('vde2: Virtual Distributed Ethernet support'
-            'net-tools: Host-only or bridged networking support'
             'virtualbox-guest-iso: Guest Additions CD image'
             'virtualbox-ext-vnc: VNC server support'
             'virtualbox-sdk: Developer kit')
@@ -39,22 +38,23 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${_tarve
         '007-python2-path.patch'
         '008-no-vboxvideo.patch'
         )
-sha256sums=('fcc918000b8c5ece553541ec10a9182410a742b7266257c76dda895dcd389899'
-            '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
-            '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
-            '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
-            'ce3aaf938f13ee32c2595159aafd65f723f8df6360025958aa2af4d350ccca8d'
-            '94a808f46909a51b2d0cf2c6e0a6c9dea792034943e6413bf9649a036c921b21'
-            '01dbb921bd57a852919cc78be5b73580a564f28ebab2fe8d6c9b8301265cbfce'
-            'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
-            '2a9d7748dc58f9d091f791da06b733a696943114f7c0d580fa00a0752eb1d2ac'
-            'ee54fe188e27b6e80e2044ea9ba1874db2ca2c026ad04f393be1be69c18d440d'
-            '188014070bce4f6fb9b2535bcd64d066119e182e848c521407ea891ab41a995b'
-            '7d2da8fe10a90f76bbfc80ad1f55df4414f118cd10e10abfb76070326abebd46'
-            '5d5af2de5b1f1c61ec793503350f2440661cf8fd640f11b8a86f10bce499c0dc'
-            '6bdb017459532537199c399eefd3d84d8dc7f1786e79997caebd3b6eb5c75d9f'
-            '8b7f241107863f82a5b0ae336aead0b3366a40103ff72dbebf33f54b512a0cbc'
-            )
+sha256sums=(
+    'b5715035e681a11ef1475f83f9503d34a00f0276b89c572eebec363dda80c8a9'
+    '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
+    '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
+    '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
+    'ce3aaf938f13ee32c2595159aafd65f723f8df6360025958aa2af4d350ccca8d'
+    '94a808f46909a51b2d0cf2c6e0a6c9dea792034943e6413bf9649a036c921b21'
+    '01dbb921bd57a852919cc78be5b73580a564f28ebab2fe8d6c9b8301265cbfce'
+    'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
+    '2a9d7748dc58f9d091f791da06b733a696943114f7c0d580fa00a0752eb1d2ac'
+    'ee54fe188e27b6e80e2044ea9ba1874db2ca2c026ad04f393be1be69c18d440d'
+    '188014070bce4f6fb9b2535bcd64d066119e182e848c521407ea891ab41a995b'
+    '7d2da8fe10a90f76bbfc80ad1f55df4414f118cd10e10abfb76070326abebd46'
+    '5d5af2de5b1f1c61ec793503350f2440661cf8fd640f11b8a86f10bce499c0dc'
+    '6bdb017459532537199c399eefd3d84d8dc7f1786e79997caebd3b6eb5c75d9f'
+    '8b7f241107863f82a5b0ae336aead0b3366a40103ff72dbebf33f54b512a0cbc'
+)
 
 prepare() {
     cd "VirtualBox-$pkgver"
