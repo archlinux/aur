@@ -1,32 +1,39 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare-git
-pkgver=cfe86bfe178f5b924597eca61392ccba963eb2653
+pkgver=v4.1.139.gfe86bfe
 pkgrel=1
-conflicts=("kshare")
 pkgdesc="The free and open source and cross platform screen sharing software."
 arch=('i686' 'x86_64')
 url="https://github.com/ArsenArsen/KShare"
 license=('MIT')
-provides=('kshare=$pkgver')
+provides=(kshare)
+conflicts=(kshare)
 depends=(qt5-base qt5-x11extras xcb-util-cursor ffmpeg libxfixes)
-source=(git+https://github.com/ArsenArsen/KShare.git)
+source=(git+https://github.com/ArsenArsen/KShare.git#branch=dev)
 sha1sums=('SKIP')
 
+pkgver() {
+  cd KShare
+  echo "$(git describe --long --tags | tr - .)"
+}
+
+prepare() {
+  cd KShare
+  git submodule update --init --recursive
+}
+
 build() {
-  cd "${srcdir}/KShare"
-  git checkout dev
-  git submodule update --init --recursive  
+  cd KShare
   qmake
-  make -j$(($(nproc) + 1))
+  make
 }
 
 package() {
-  cd "${srcdir}/KShare"
-  mkdir -p "$pkgdir/usr/bin"
-  install ./KShare "$pkgdir/usr/bin/kshare"
-  mkdir -p "$pkgdir/usr/share/pixmaps"
-  install "${srcdir}/KShare/icons/icon.png" "$pkgdir/usr/share/pixmaps"
-  mkdir -p "$pkgdir/usr/share/applications"
-  install KShare.desktop "$pkgdir/usr/share/applications"
+  cd KShare
+  install -Dm755 KShare "$pkgdir/usr/bin/kshare"
+  install -Dm644 icons/icon.png "$pkgdir/usr/share/pixmaps/kshare.png"
+  install -Dm644 KShare.desktop "$pkgdir/usr/share/applications"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 
