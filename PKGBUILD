@@ -15,10 +15,10 @@ source_x86_64=(code_x64_${pkgver}.tar.gz::https://vscode-update.azurewebsites.ne
 source_i686=(code_ia32_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-ia32/insider
               ${pkgname}.desktop
               )
-sha256sums_x86_64=('c58ed90d7c904203386e6689baa3c4953a1f5e7f7038dc0cc27593166022e726'
-                   '42bf4de14fe47e9510c8aac4545a776b0bb51307097034dd0348f59dda76c920')
-sha256sums_i686=('2156fb63d463ace81d4ede6aa08ed192dd7461aa58ce32aa85ef21667ac9496e'
-                 '42bf4de14fe47e9510c8aac4545a776b0bb51307097034dd0348f59dda76c920')
+sha256sums_x86_64=('8d99a53d5e90e535f06ce6f514bc622f6a13732d79c9df8b85a2f9227e5c7062'
+                   '30b52316f7ac7b30d9e1dea65dbc1c8c66a8ce450dadda84798542990f3f2e87')
+sha256sums_i686=('4779d5f1d63ef340f830fb6715bfa015741bc1f87c1d64c8a71ea31ea8f4ab3c'
+                 '30b52316f7ac7b30d9e1dea65dbc1c8c66a8ce450dadda84798542990f3f2e87')
 pkgver() {
     if [ "${CARCH}" = "x86_64" ]; then
         IFS='/' read -ra ADDR <<< $(curl -ILs -o /dev/null -w %{url_effective} https://vscode-update.azurewebsites.net/latest/linux-x64/insider); echo "${ADDR[5]}" | sed 's/code-insider-//g' | sed 's/_amd64.tar.gz//g' | sed 's/-/./g'
