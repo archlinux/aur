@@ -18,11 +18,15 @@ prepare() {
 }
 
 package_python-chainmap() {
+	depends=('python')
+
 	cd "${srcdir}/${_name}-${pkgver}"
 	python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python2-chainmap() {
+	depends=('python2')
+
 	cd "${srcdir}/${_name}-${pkgver}-python2"
 	python2 setup.py install --root="$pkgdir/" --optimize=1
 }

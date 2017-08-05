@@ -11,6 +11,8 @@ pkgbase = python-chainmap
 	sha256sums = 405da3bce9913bfb33e6e497803b447b60d12ab44031ca357626143e087e0526
 
 pkgname = python-chainmap
+	depends = python
 
 pkgname = python2-chainmap
+	depends = python2
 
