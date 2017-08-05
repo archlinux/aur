@@ -1,0 +1,7 @@
+/csvtools-git-*.pkg.tar
+/csvtools
+/src
+/pkg
+
+*~
+\#*\#
