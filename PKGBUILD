@@ -109,7 +109,9 @@ package_wxgtk2-light() {
   provides=('wxgtk'
             'wxgtk2'
             )
-  conflicts=('wxgtk')
+  conflicts=('wxgtk'
+             'wxgtk2'
+             )
   options=('!emptydirs')
 
   make -C build-gtk2 DESTDIR="${pkgdir}" install
@@ -151,7 +153,9 @@ package_wxcommon-light() {
   provides=('wxcommon'
             'wxgtk-common'
             )
-  conflicts=('wxcommon')
+  conflicts=('wxcommon'
+             'wxgtk-common'
+             )
   options=('!emptydirs')
 
   make -C build-gtk2 DESTDIR="${pkgdir}" install
