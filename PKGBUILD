@@ -1,29 +1,35 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Niklas <dev@n1klas.net>
 
-pkgname=python-pylru
+pkgbase=python-pylru
+pkgname=('python-pylru' 'python2-pylru')
+_name=pylru
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A least recently used (LRU) cache implementation"
 arch=('any')
-depends=('python')
-makedepends=('python-setuptools')
 url="https://github.com/jlhutch/pylru"
 license=('GPL2')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/c0/7d/0de1055632f3871dfeaabe5a3f0510317cd98b93e7b792b44e4c7de2b17b/pylru-1.0.9.tar.gz)
-md5sums=('41369d58a1c4391c5cc36f84262abcdc')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('71376192671f0ad1690b2a7427d39a29b1df994c8469a9b46b03ed7e28c0172c')
 
-build() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
-
-  msg2 'Building...'
-  python setup.py build
+prepare() {
+  cp -a $_name-$pkgver{,-python2}
 }
 
-package() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
+package_python-pylru() {
+  depends=('python')
+  makedepends=('python-setuptools')
 
-  msg2 'Installing...'
+  cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1
+}
+
+package_python2-pylru() {
+  depends=('python2')
+  makedepends=('python2-setuptools')
+
+  cd "${srcdir}/${_name}-${pkgver}-python2"
+  python2 setup.py install --root="$pkgdir" --optimize=1
 }
