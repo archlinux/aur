@@ -65,7 +65,6 @@ package()
   cd "$GOPATH/src/github.com/influxdata/influxdb"
   install -Dm644 scripts/influxdb.service $pkgdir/usr/lib/systemd/system/influxdb.service
   install -Dm644 etc/config.sample.toml $pkgdir/etc/influxdb/influxdb.conf
-  install -Dm644 scripts/logrotate $pkgdir/etc/logrotate.d/influxdb
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/influxdb/LICENSE
 
   # Install man pages
