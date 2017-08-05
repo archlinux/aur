@@ -1,6 +1,6 @@
 pkgbase = iqoption-bin
 	pkgdesc = Ultimate trading experience
-	pkgver = 778.5.7351
+	pkgver = 780.13.9275
 	pkgrel = 1
 	url = https://iqoption.com
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = iqoption-bin
 	depends = mesa
 	depends = libnotify
 	source = iqoption.deb::https://updates.iqoption.com/api/v1/build/current/pkg/LinuxGL
-	sha256sums = 93d15f07e95a7748b032b12056d92ee79bfb0fe37268372e8746225309c71f93
+	sha256sums = SKIP
 
 pkgname = iqoption-bin
 
