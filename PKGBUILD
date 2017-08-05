@@ -9,8 +9,8 @@ depends=('iproute2>=2.4.7')
 backup=("etc/$pkgname.d/${pkgname}d.conf"
         "etc/$pkgname.d/$pkgname")
 source=("$url$pkgname/$pkgname-$pkgver.tar.bz2"
-        "http://pkgs.fedoraproject.org/cgit/$pkgname.git/plain/${pkgname}d.service"
-        "http://pkgs.fedoraproject.org/cgit/$pkgname.git/plain/$pkgname-$pkgver-man.patch")
+        "http://pkgs.fedoraproject.org/rpms/$pkgname/raw/master/f/${pkgname}d.service"
+        "http://pkgs.fedoraproject.org/rpms/$pkgname/raw/master/f/$pkgname-$pkgver-man.patch")
 md5sums=('1d6db99536bdf875ce441f2c0e45ebf2'
          '4482ef8c71bfb0b0335e9426d2852056'
          '7c44d211426ef68af4b4896b2b870882')
