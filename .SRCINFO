@@ -10,7 +10,6 @@ pkgbase = yam
 	depends = grep
 	depends = bash
 	depends = coreutils
-	optdepends = base-devel: install aur packages
 	source = git+https://github.com/cheertarts/yam.git
 	md5sums = SKIP
 

@@ -7,7 +7,6 @@ arch=('any')
 url="https://github.com/cheertarts/yam"
 license=('MIT')
 depends=('git' 'jshon' 'grep' 'bash' 'coreutils')
-optdepends=('base-devel: install aur packages')
 source=('git+https://github.com/cheertarts/yam.git')
 md5sums=('SKIP')
 
