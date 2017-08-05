@@ -10,7 +10,7 @@ makedepends=('git')
 depends=('python2' 'tmux' 'python2-setuptools')
 sha256sums=('SKIP')
 sha512sums=('SKIP')
-source="$pkgname::git+http://github.com/sk1418/${pkgname%-*}.git#branch=bleeding"
+source=("$pkgname::git+http://github.com/sk1418/${pkgname%-*}.git#branch=bleeding")
 
 package() {
   cd ${pkgname}
