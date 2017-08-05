@@ -1,5 +1,5 @@
 post_install(){
-	# echo 'To enable autostart of umonitor, run systemctl --user enable umonitor.service'
-	# echo 'To enable refreshing of screen configuration after suspend or hibernation, run systemctl enable udev_trigger.service'
-
+	echo 'If you were using the previous version on umonitor, there have been two major changes:'
+	echo '1. umon2.conf has been renamed to umon.conf'
+	echo '2. umonitor daemonizes itself when called with --listen. In your .xinitrc you should call umonitor --listen without running it in the background.'
 }
