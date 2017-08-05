@@ -1,0 +1,19 @@
+pkgbase = gog-jotun
+	pkgdesc = Jotun is a hand—drawn action—exploration game set in Norse mythology.
+	pkgver = 2.2.0.4
+	pkgrel = 1
+	url = http://jotungame.com/
+	arch = i686
+	arch = x86_64
+	groups = games
+	groups = gog
+	license = custom
+	source = gog-jotun
+	source = gog-jotun.desktop
+	source = file://gog_jotun_2.2.0.4.sh
+	sha256sums = 15730c6bddfb776b8c9bbde0439b8ba67c783f2d94457b8965b9d3d22b6d03a8
+	sha256sums = c68e6416957174c6194b4d38d773b122a635a8e4579b69c995c8f2709cb77840
+	sha256sums = ea53d18d79f40bd56dff587a995af9b56bf71593c49a02e4e4923b434fc678e8
+
+pkgname = gog-jotun
+

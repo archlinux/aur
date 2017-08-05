@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Jotun
+Comment=Jotun is a hand—drawn action—exploration game set in Norse mythology.
+Exec=gog-jotun
+Icon=gog-jotun
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
