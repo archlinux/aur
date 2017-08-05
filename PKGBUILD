@@ -1,8 +1,9 @@
+# Maintainer: Alexandre Macabies <web+oss@zopieux.com>
 # Maintainer: Antoine Pietri <antoine.pietri@lrde.epita.fr>
 # Maintainer: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=isolate-git
-pkgver=r98.8d6435e
+pkgver=r106.f8acf05
 pkgrel=1
 pkgdesc="Sandbox for securely executing untrusted programs"
 arch=('i686' 'x86_64')
