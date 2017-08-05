@@ -1,0 +1,18 @@
+pkgbase = yam
+	pkgdesc = The simplest AUR helper
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/cheertarts/yam
+	arch = any
+	license = MIT
+	depends = git
+	depends = jshon
+	depends = grep
+	depends = bash
+	depends = coreutils
+	optdepends = base-devel: install aur packages
+	source = git+https://github.com/cheertarts/yam.git
+	md5sums = SKIP
+
+pkgname = yam
+
