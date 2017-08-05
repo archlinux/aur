@@ -1,0 +1,14 @@
+pkgbase = rtl8812au_8821au_linux-dkms-git
+	pkgdesc = Realtek 8812AU/8821AU USB WiFi driver for AC1200 (801.11ac) Wireless Dual-Band USB Adapter
+	pkgver = 4.3.14.r166.0292aa6
+	pkgrel = 1
+	url = https://github.com/abperiasamy/rtl8812AU_8821AU_linux
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	source = rtl8812au::git+https://github.com/abperiasamy/rtl8812AU_8821AU_linux.git
+	md5sums = SKIP
+
+pkgname = rtl8812au_8821au_linux-dkms-git
+
