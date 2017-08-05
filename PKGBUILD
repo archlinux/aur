@@ -17,9 +17,9 @@ source_x86_64=("https://github.com/zyedidia/micro/releases/download/nightly/micr
 source_i686=("https://github.com/zyedidia/micro/releases/download/nightly/micro-${_hash}-linux32.tar.gz")
 # Not checking as only upstream has write access to github binary. 
 # Check sums for files downloaded
-#sha256sums_i686=('dc6a523c63e5ec225bfd01ec2ec3483f8ec1ea60b616536fd9bdc7ec4f021434')
-#sha256sums_x86_64=('d651ade8722fa5e2386e6f2ccbb37ca6e28abea3265a6444ab16267bf6e1c4d5')
-md5sums=(SKIP)
+sha256sums_i686=(SKIP)
+sha256sums_x86_64=(SKIP)
+
 
 package(){
  install -Dm755 $srcdir/micro-${_hash}/micro "$pkgdir/usr/bin/micro"
