@@ -2,7 +2,7 @@
 # original maintainer : Fabien Devaux <fdev31@gmail.com>
 
 pkgname=blender-plugin-miratools
-pkgver=r569.87031bc # commit-num.commit-hash 
+pkgver=r606.898cd55 # commit-num.commit-hash 
 pkgrel=2
 pkgdesc="Modern modeling and retopology tools"
 url="https://github.com/mifth/mifthtools/wiki/Mira-Tools"
