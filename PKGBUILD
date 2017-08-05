@@ -1,21 +1,22 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
-# From python-cement
+# Contributor: polyzen
 
 set -u
 _pyver="python"
 _pybase='pathspec'
 pkgname="${_pyver}-${_pybase}"
-pkgver='0.5.0'
+pkgver='0.5.3'
 pkgrel='1'
 pkgdesc='Utility library for gitignore style pattern matching of file paths'
 arch=('any')
 url='https://github.com/cpburnz/python-path-specification'
-license=('custom') #MPL 2.0
+license=('custom:MPLv2')
+depends=('python')
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 _verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("https://pypi.io/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('aa3a071054d4740b963c91a3127a5e0e1358351718bae2a3f731ec24fb0bdd1f')
+sha256sums=('54478a66a360f4ebe4499c9235e4206fca5dec837b8e272d1ce37e0a626cc64d')
 
 build() {
   set -u
