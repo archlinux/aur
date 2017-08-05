@@ -2,12 +2,12 @@
 # Contributor: Etienne Perot <etienne at perot dot me>
 
 pkgname=parcimonie-sh-git
-pkgver=48.9344ede
+pkgver=67.f9f1f77
 pkgrel=1
 pkgdesc='Bash reimplementation of parcimonie - Refresh your GnuPG keyring without disclosing your whole contact list to the world'
 arch=('any')
 url='https://github.com/EtiennePerot/parcimonie.sh'
-license=('WTFPL')
+license=('custom:WTFPL')
 depends=('bash' 'torsocks' 'tor' 'gnupg')
 makedepends=('git')
 source=('git://perot.me/parcimonie.sh'
@@ -22,7 +22,7 @@ pkgver() {
 
 check() {
 	cd "$srcdir/parcimonie.sh"
-		msg2 'Verifying GPG signature on HEAD commit.'
+	msg2 'Verifying GPG signature on HEAD commit.'
 	export GNUPGHOME="$(pwd)/.gnupg"
 	mkdir -p "$GNUPGHOME"
 	chmod 700 "$GNUPGHOME"
@@ -42,6 +42,7 @@ check() {
 
 package() {
 	cd "$srcdir/parcimonie.sh"
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m644 README.md "${pkgdir}/usr/share/parcimonie.sh/README.md"
 	install -D -m755 parcimonie.sh "${pkgdir}/usr/share/parcimonie.sh/parcimonie.sh"
 	install -D -m644 pkg/parcimonie.sh@.service "${pkgdir}/usr/lib/systemd/system/parcimonie.sh@.service"
