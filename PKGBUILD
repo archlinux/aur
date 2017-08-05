@@ -1,7 +1,7 @@
 pkgname=cava-gui-git
 _pkgname=cava
-pkgver=r.
-pkgrel=2
+pkgver=0.4.3
+pkgrel=3
 pkgdesc='Console/GUI Audio Visualizer for Alsa/Pulseaudio'
 arch=('i686' 'x86_64')
 url='https://github.com/nikp123/cava-gui'
@@ -15,7 +15,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s-%s" "$(pkgver)" "$(pkgrel)"
 }
 
 build() {
