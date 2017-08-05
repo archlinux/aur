@@ -11,7 +11,7 @@ _commit='d52e2bb9c20216972754c054e8534bca28baab66'
 # Bump this to latest major release for signed tag verification,
 # the commit count is handled by pkgver() function.
 pkgver=234.11
-pkgrel=1
+pkgrel=4
 arch=('i686' 'x86_64')
 url="https://www.github.com/systemd/systemd"
 groups=('selinux')
@@ -54,6 +54,13 @@ validpgpkeys=(
 )
 
 _backports=(
+  # cryptsetup: fix infinite timeout (#6486)
+  '0864d311766498563331f486909a0d950ba7de87'
+
+  # process-util: add getpid_cached() as a caching wrapper for getpid()
+  '5c30a6d2b805ae9b5dd0ad003b9ee86b8965bc47'
+  # tree-wide: make use of getpid_cached() wherever we can
+  'df0ff127758809a45105893772de76082d12a26d'
 )
 
 _reverts=(
@@ -123,11 +130,13 @@ build() {
   local timeservers=({0..3}.arch.pool.ntp.org)
 
   local meson_options=(
+    --buildtype=release
+    -Db_lto=true
+
     -Daudit=true
     -Dgnuefi=true
     -Dima=false
     -Dlz4=true
-    -Db_lto=true
     -Dselinux=true
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
