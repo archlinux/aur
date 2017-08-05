@@ -1,6 +1,6 @@
 pkgbase = vam
 	pkgdesc = The simplest AUR helper
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/cheertarts/vam
 	arch = any

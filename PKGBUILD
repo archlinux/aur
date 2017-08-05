@@ -1,6 +1,6 @@
 # Maintainer: Caleb Butler <cheertarts@github.com>
 pkgname=vam
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="The simplest AUR helper"
 arch=('any')
