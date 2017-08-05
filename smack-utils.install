@@ -1,0 +1,21 @@
+#!/bin/sh
+
+post_install() {
+	cat <<EOF
+To start SMACK at boot time, enable the smack service:
+
+# systemctl enable smack.service
+
+To mount the SMACK filesystem now, you can use the mount unit:
+
+# systemctl start smack.mount
+EOF
+}
+
+pre_remove() {
+	echo "Clearing SMACK..."
+	systemctl stop smack.service
+	systemctl stop smack.mount
+
+	systemctl disable smack.{service,mount}
+}
