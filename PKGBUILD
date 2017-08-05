@@ -2,7 +2,7 @@
 
 _gemname=rouge
 pkgname=ruby-$_gemname
-pkgver=2.0.7
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Rouge aims to a be a simple, easy-to-extend drop-in replacement for pygments.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=('ruby')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('9baf3e3170f0fdba9693eee52e7a730dead7319828416aaf8b13541cf761e265af42a116adda19d982cae141cbbd27119fe09f88b68211fb1f2ca73822b9689f')
+sha512sums=('4635e65e8a2dfb05e1bd969b137622e3754931308d23c61dfcee1f604256e5f81ddc633898cda67b66f2bb1b70e9ebc4e79f4057c168579b7b31f6b24b7cf209')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
