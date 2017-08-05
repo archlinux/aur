@@ -1,7 +1,7 @@
 # Maintainer: Carlos Henrique Merces Moreira "chmercesmoreira" <ch.mercesmoreira@gmail.com>
 pkgname=plexdrive
 pkgver=5.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Plexdrive mounts your Google Drive FUSE filesystem (optimized for media playback)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/dweidenfeld/plexdrive"
@@ -20,5 +20,5 @@ md5sums_armv7h=('4d3691f0ab29dd2ce332d234130d4bfb')
 md5sums_aarch64=('2af4d2b4596492c52dd0e0f88f542a81')
 
 package () {
-	install -m755 "$pkgname"-linux-{386,amd64,arm5,arm6,arm7,arm64} "$pkgdir/usr/bin/plexdrive"
+	install -m755 "$pkgname"-linux-* "$pkgdir/usr/bin/plexdrive"
 }
