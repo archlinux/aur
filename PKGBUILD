@@ -1,6 +1,6 @@
 # Maintainer: David Matson <gitcoder at outlook dot com>
 pkgname=freeswitch-config-demo
-pkgver=1.6.18
+pkgver=1.6.19
 pkgrel=1
 pkgdesc='Sample configuration for demonstrating FreeSWITCH'
 arch=('any')
@@ -223,7 +223,7 @@ backup=('etc/freeswitch/autoload_configs/abstraction.conf.xml'
         'etc/freeswitch/voicemail.tpl'
         'etc/freeswitch/web-vm.tpl')
 source=("https://files.freeswitch.org/releases/freeswitch/freeswitch-$pkgver.tar.xz")
-sha256sums=('ac1b32f61e5c35680c5a2d6f145bc480cf26e6527af07d8b8b9fa2d5280252cd')
+sha256sums=('e8d271a0d876ba4cca551682af0a4f5047bfd79438fcebdcc17d00711c04a8ff')
 
 build() {
   cd "freeswitch-$pkgver"
