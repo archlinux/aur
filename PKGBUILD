@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=hop-git
-pkgver=3.1.0r1102.6cbbc95
+pkgver=3.1.0r1103.425ac43
 pkgrel=1
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
@@ -31,10 +31,10 @@ build() {
   make doc
 }
 
-# check() {
-#   cd ${srcdir}/${pkgname%-git}
-#   make tes
-# }
+check() {
+  cd ${srcdir}/${pkgname%-git}
+  make test
+}
   
 package() {
   cd ${srcdir}/${pkgname%-git}
