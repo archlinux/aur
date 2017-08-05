@@ -1,15 +1,15 @@
 pkgbase = tanglet
 	pkgdesc = A single player word finding game
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://gottcode.org/tanglet/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-tools
 	depends = qt5-base
-	source = https://gottcode.org/tanglet/tanglet-1.4.0-src.tar.bz2
-	sha256sums = b2b211f1576a8a4a1c314294fcae931ca0b62eec43b85308ce44fe5c5725b805
+	source = https://gottcode.org/tanglet/tanglet-1.5.0-src.tar.bz2
+	sha256sums = 225aec0814b7c65070002093c2df86f8d1cc5ffcb83b26811f029a0f2a97040e
 
 pkgname = tanglet
 
