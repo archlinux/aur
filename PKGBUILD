@@ -1,6 +1,6 @@
 pkgname=rocksdb
 pkgver=5.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Embedded key-value store for fast storage'
 arch=(i686 x86_64)
 url='http://rocksdb.org'
@@ -40,5 +40,6 @@ package() {
   install -d "$pkgdir"/usr/include
   cp -r include/rocksdb "$pkgdir"/usr/include
   install -m755 -D librocksdb.so "$pkgdir"/usr/lib/librocksdb.so
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 LICENSE.Apache "$pkgdir/usr/share/licenses/$pkgname/LICENSE.Apache"
+  install -D -m644 LICENSE.leveldb "$pkgdir/usr/share/licenses/$pkgname/LICENSE.leveldb"
 }
