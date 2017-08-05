@@ -1,7 +1,7 @@
 pkgbase = plexdrive
 	pkgdesc = Plexdrive mounts your Google Drive FUSE filesystem (optimized for media playback)
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dweidenfeld/plexdrive
 	arch = i686
 	arch = x86_64
