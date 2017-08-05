@@ -1,0 +1,15 @@
+--- Makefile	2017-08-05 11:57:48.002413580 +0200
++++ Makefile.new	2017-08-05 11:57:18.012051717 +0200
+@@ -1,8 +1,10 @@
+-LIBS=-lpcre -lcrypto -lm -lpthread
+-CFLAGS=-ggdb -O3 -Wall
++LIBS=-lpcre -lcrypto -lm -lpthread -L/usr/lib/openssl-1.0 -lssl
++CFLAGS=-ggdb -O3 -Wall -I/usr/include/openssl-1.0
+ OBJS=vanitygen.o oclvanitygen.o oclvanityminer.o oclengine.o keyconv.o pattern.o util.o
+ PROGS=vanitygen keyconv oclvanitygen oclvanityminer
+ 
++PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig"
++
+ PLATFORM=$(shell uname -s)
+ ifeq ($(PLATFORM),Darwin)
+ OPENCL_LIBS=-framework OpenCL
