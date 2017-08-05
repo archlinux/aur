@@ -1,0 +1,21 @@
+# Maintainer: Niklas <dev@n1klas.net>
+pkgname=python2-semanticversion
+_name=semantic_version
+pkgver=2.6.0
+pkgrel=1
+pkgdesc="A library implementing the 'SemVer' scheme"
+arch=(any)
+url="https://github.com/rbarrois/python-semanticversion"
+license=('BSD')
+depends=('python2')
+makedepends=('python2-setuptools')
+provides=('python2-semanticversion')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=("2a4328680073e9b243667b201119772aefc5fc63ae32398d6afafff07c4f54c0")
+
+package() {
+	cd "$_name-$pkgver"
+	python2 setup.py install --root="$pkgdir/" --optimize=1
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
