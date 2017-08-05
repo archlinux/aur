@@ -1,7 +1,7 @@
 # Maintainer: Chris Down <chris@chrisdown.name>
 
 pkgname=prompter
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Dumb prompter'
 url="http://github.com/cdown/$pkgname"
@@ -10,7 +10,7 @@ license=('Public Domain')
 depends=()
 
 source=("https://github.com/cdown/${pkgname}/archive/${pkgver}.zip")
-md5sums=('1f21783af14c41a23043b9c111d0ed5e')
+md5sums=('ca800c15e410f6d945c7b955d1cf1560')
 
 package() {
     install -D -m755 \
