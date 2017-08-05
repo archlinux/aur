@@ -10,7 +10,7 @@ license=('MIT')
 url="https://pypi.python.org/pypi/iniparse"
 depends=('python' 'python-six')
 source=("https://pypi.python.org/packages/source/i/iniparse/iniparse-$pkgver.tar.gz"
-        "http://pkgs.fedoraproject.org/cgit/$pkgname.git/plain/$pkgname-python3-compat.patch")
+        "http://pkgs.fedoraproject.org/rpms/$pkgname/raw/master/f/$pkgname-python3-compat.patch")
 md5sums=('5e573e9e9733d97623881ce9bbe5eca6'
          'e0eaf5cc93b73983aab71be56613ae7b')
 

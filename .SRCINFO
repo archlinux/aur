@@ -8,7 +8,7 @@ pkgbase = python-iniparse
 	depends = python
 	depends = python-six
 	source = https://pypi.python.org/packages/source/i/iniparse/iniparse-0.4.tar.gz
-	source = http://pkgs.fedoraproject.org/cgit/python-iniparse.git/plain/python-iniparse-python3-compat.patch
+	source = http://pkgs.fedoraproject.org/rpms/python-iniparse/raw/master/f/python-iniparse-python3-compat.patch
 	md5sums = 5e573e9e9733d97623881ce9bbe5eca6
 	md5sums = e0eaf5cc93b73983aab71be56613ae7b
 
