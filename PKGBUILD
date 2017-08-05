@@ -19,7 +19,7 @@ makedepends_x86_64=('cuda')
 optdepends=('cuda: cycles renderer cuda support')
 options=(!strip)
 install=fluid-designer.install
-source=("git+https://github.com/Microvellum/BlenderFD-2.78a/")
+source=("https://github.com/Microvellum/BlenderFD-2.78a/archive/master.tar.gz")
 sha512sums=('SKIP')
 
 prepare() {
