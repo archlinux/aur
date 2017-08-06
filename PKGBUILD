@@ -1,8 +1,10 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=terminus-terminal
 _pkgname=terminus
-pkgver=1.0.0
-pkgrel=4
+_pkgver=1.0.0
+pkgver=1.0.0.27
+pkgrel=1
+alpha=27
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
 url="https://github.com/Eugeny/terminus"
@@ -12,8 +14,8 @@ makedepends=('git' 'npm' 'yarn') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("terminus-terminal")
 conflicts=("terminus-terminal")
 replaces=('terminus-terminal')
-source=("$url/releases/download/v${pkgver}-alpha.22/${_pkgname}_${pkgver}-alpha.22_amd64.deb")
-sha256sums=('SKIP')
+source=("$url/releases/download/v${_pkgver}-alpha.$alpha/${_pkgname}_${_pkgver}-alpha.${alpha}_amd64.deb")
+sha256sums=('8df8dcbe7d83a82cfb318768dfc943862f2d977edf5a20bb31120e45dc33dc6c')
 
 package() {
 	cd "$srcdir/"
