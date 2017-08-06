@@ -4,7 +4,7 @@ pkgdesc="ROS - Python implementation of bond, a mechanism for checking when anot
 url='http://www.ros.org/wiki/bondpy'
 
 pkgname='ros-lunar-bondpy'
-pkgver='1.7.19'
+pkgver='1.8.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="bond_core-release-release-lunar-bondpy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/lunar/bondpy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d167fea0c88e4da6cbe0ed7689a291d7be64d379b5a902852ae32658b19881c9')
+sha256sums=('24b01914d182eff1d619fd8f9de711290429e8970f1b419570fe66017a9cb918')
 
 build() {
   # Use ROS environment variables
