@@ -4,7 +4,7 @@ pkgdesc="ROS - Unit-testing package for ROS."
 url='http://ros.org/wiki/rosunit'
 
 pkgname='ros-lunar-rosunit'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros-release-release-lunar-rosunit-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/lunar/rosunit/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ef900a068ff8cddd3b4cd3a52b936e191b6c8ff49716be0e8529ff4ffb6b3d68')
+sha256sums=('de7133158869eb9e03fd45196e2bbc3ab6cfd9ecf9801c802384df82b36937e3')
 
 build() {
   # Use ROS environment variables
