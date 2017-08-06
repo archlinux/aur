@@ -2,12 +2,12 @@ pkgbase = kickshaw
 	pkgdesc = A menu editor for openbox
 	pkgver = 0.5
 	pkgrel = 2
-	url = https://github.com/natemaia/kickshaw-aur/raw/master
+	url = https://github.com/natemaia/kickshaw/raw/master
 	arch = x86_64
 	license = GPL2
 	depends = gtk3
 	depends = gcc
-	source = https://github.com/natemaia/kickshaw-aur/raw/master/kickshaw_0.5_RC2_source_only.tar.bz2
+	source = https://github.com/natemaia/kickshaw/raw/master/kickshaw_0.5_RC2_source_only.tar.bz2
 	validpgpkeys = 6DD4217456569BA711566AC7F06E8FDE7B45DAAC
 	md5sums = SKIP
 
