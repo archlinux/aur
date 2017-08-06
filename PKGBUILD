@@ -3,7 +3,7 @@
 
 pkgname=bridge-utils
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for configuring the Linux ethernet bridge"
 arch=('i686' 'x86_64')
 url="http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge"
