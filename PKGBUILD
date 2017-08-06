@@ -4,7 +4,7 @@ pkgdesc="ROS - C++ implementation of bond, a mechanism for checking when another
 url='http://www.ros.org/wiki/bondcpp'
 
 pkgname='ros-lunar-bondcpp'
-pkgver='1.7.19'
+pkgver='1.8.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,7 +36,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="bond_core-release-release-lunar-bondcpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/lunar/bondcpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('dbf64fb9164560d5a93d9be51b811d2575297e8fc7fb66e532a84317061657d6')
+sha256sums=('d30bc7ebd990b6d96d860b37482fe7a37943b69e8e9d912f881a6123829c8f60')
 
 build() {
   # Use ROS environment variables
