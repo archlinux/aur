@@ -1,4 +1,5 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 
 _commit=b16a2c2b5b137f538f0992cd5553c83955257a3a
 pkgname=i3status-rust
@@ -12,7 +13,7 @@ depends=('dbus' 'i3-wm')
 makedepends=('cargo')
 optdepends=('alsa-utils: for the volume block'
             'lm_sensors: for the temperature block'
-            'powerline-fonts: for all themes using the powerline arrow char'
+            'powerline-fonts: for all themes using the Powerline arrow char'
             'speedtest-cli: for the speedtest block'
             'ttf-font-awesome: for the Awesome icons')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
