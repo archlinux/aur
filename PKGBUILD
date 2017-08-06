@@ -4,7 +4,7 @@ pkgdesc="ROS - A collection of .mk include files for building ROS architectural 
 url='http://www.ros.org/wiki/ROS'
 
 pkgname='ros-lunar-mk'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-lunar-mk-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/lunar/mk/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1486bbb23f7addd2cce0a10bb52aacd9a1dc4e53417913756b2bac473dfbaff0')
+sha256sums=('115352f4cc563b0cbe5cf7aa83cfe42c6e66ce9cc51b2159ed78b01778962e7a')
 
 build() {
   # Use ROS environment variables
