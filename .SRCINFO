@@ -1,0 +1,31 @@
+pkgbase = emby-server-unlocked
+	pkgdesc = Emby Server compiled with a patch to unlock Emby Premiere features
+	pkgver = 3.2.26.0
+	pkgrel = 1
+	url = http://emby.media
+	install = emby-server.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = ffmpeg
+	depends = imagemagick
+	depends = mono
+	depends = referenceassemblies-pcl
+	depends = sqlite
+	provides = emby-server
+	backup = etc/conf.d/emby-server
+	source = emby-server-3.2.26.0.tar.gz::https://github.com/MediaBrowser/Emby/archive/3.2.26.0.tar.gz
+	source = emby-server
+	source = emby-migrate-database
+	source = emby-server.conf
+	source = emby-server.service
+	source = PluginSecurityManager.cs.patch
+	sha256sums = 8d1ee6e5da6589dbdda52df13ffe9ef0a9a5025159e0efcb36334214f3c7246c
+	sha256sums = 7b1974f7bba8ac4b76e51ef7fe1257d165c7c4abbd0915e192391336048a3d74
+	sha256sums = b25bf83a0ab371aff3b13b82f7af71b51bfe6d7e51eb8a8a3dd8f0774ffce6a5
+	sha256sums = c9ad78f3e2f0ffcb4ee66bb3e99249fcd283dc9fee17895b9265dc733288b953
+	sha256sums = 8a91ea49a1699c820c4a180710072cba1d6d5c10e45df97477ff6a898f4e1d70
+	sha256sums = 9df64aaafae5d75e4dbb592d9b35c3f376c221bddf303f147407bc676423b35e
+
+pkgname = emby-server-unlocked
+
