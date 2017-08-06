@@ -3,7 +3,7 @@
 pkgname=green-recorder-git
 pkgver=3.0.1.2.r2.ge7f877d
 pkgrel=1
-pkgdesc='A simple yet functional desktop recorder for Linux systems.'
+pkgdesc='A simple screen recorder for Linux desktop. Supports Wayland & Xorg'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/foss-project/${pkgname%-git}"
