@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS communications-related packages, including core client librar
 url='http://www.ros.org/wiki/ros_comm'
 
 pkgname='ros-lunar-ros-comm'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -47,7 +47,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-ros_comm-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/ros_comm/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c3aeaa5e8ba820bb34894e075779348d70c17dfcb81c30c29fba2e675834a797')
+sha256sums=('e56334ac910a0b8989d72ab3ccd16b79ba580cd10f4d1a930e243742f2dfdb4a')
 
 build() {
   # Use ROS environment variables
