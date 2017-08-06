@@ -1,6 +1,6 @@
 # Maintainer: Matthias Blaicher <matthias[at]blaicher[dot]com>
 pkgname=gsvit
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Open Source FDTD solver with graphics card computing support."
 url="http://gsvit.net/"
@@ -8,17 +8,17 @@ arch=('x86_64' 'i686')
 license=('GPLv3')
 depends=('cuda' 'gwyddion' 'gtk2')
 optdepends=()
-makedepends=()
+makedepends=('gcc5')
 conflicts=()
 replaces=()
 backup=()
 
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f40a9206c40a460c9af68fa2a883147962fc057c3ee303a246ba3c20e89061ed')
+sha256sums=('df7032d46931a8bd0505f74ecdafdf47ddf5d01d0e76bc88135dd1cefb6fb9e3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --with-cuda=/opt/cuda --prefix="${pkgdir}/usr"
+  ./configure --with-cuda=/opt/cuda --prefix="${pkgdir}/usr"  CC=gcc-5  CXX=c++-5
   make
 }
 
