@@ -1,6 +1,6 @@
 pkgbase = tclmpi-git
 	pkgdesc = OpenMPI bindings for Tcl
-	pkgver = r141.5889616
+	pkgver = r159.7c08646
 	pkgrel = 1
 	url = https://sites.google.com/site/akohlmey/software/tclmpi
 	arch = any
