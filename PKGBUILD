@@ -4,7 +4,7 @@ pkgdesc="ROS - Python ROS message and service generators."
 url='http://www.ros.org/'
 
 pkgname='ros-lunar-genpy'
-pkgver='0.6.5'
+pkgver='0.6.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,7 +16,8 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-lunar-genmsg)
-depends=(${ros_depends[@]})
+depends=(${ros_depends[@]}
+  python2-yaml)
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/genpy/${pkgver}-${_pkgver_patch}
@@ -27,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="genpy-release-release-lunar-genpy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/genpy-release/archive/release/lunar/genpy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('8b90f24cb7884b9349340a54e24887d2d42e35fe08d09349784eda76ba0002f2')
+sha256sums=('2718f6ba98119f26c55442d64c18fed70797045c412d717746f2a063165e79f2')
 
 build() {
   # Use ROS environment variables
