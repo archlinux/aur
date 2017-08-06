@@ -4,7 +4,7 @@ pkgdesc="ROS - rosgraph contains the rosgraph command-line tool, which prints in
 url='http://ros.org/wiki/rosgraph'
 
 pkgname='ros-lunar-rosgraph'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,7 +17,8 @@ makedepends=('cmake' 'ros-build-tools'
 ros_depends=()
 depends=(${ros_depends[@]}
   python2-rospkg
-  python2-netifaces)
+  python2-netifaces
+  python2-yaml)
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rosgraph/${pkgver}-${_pkgver_patch}
@@ -28,7 +29,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosgraph-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosgraph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('dd070c4ddb7a0b1a5a7f1398539ca4e83388dd7b2d72cf3f67112db0a863be60')
+sha256sums=('6dd6e0aa005d2e726b3978ac2f37b175b958b42a7d929c76fe97b32d51fb978e')
 
 build() {
   # Use ROS environment variables
