@@ -4,7 +4,7 @@ pkgdesc="ROS - roswtf is a tool for diagnosing issues with a running ROS system.
 url='http://ros.org/wiki/roswtf'
 
 pkgname='ros-lunar-roswtf'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-roswtf-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/roswtf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0c25c84583a8737b33ba8c409b6674ad9582ed32f71914dd3a19fbbee0ad272a')
+sha256sums=('46e33927e6ae4b0c278adb7ab1d7a1e6c7bfa7bc816d7118ea7e46f683f90a91')
 
 build() {
   # Use ROS environment variables
