@@ -4,7 +4,7 @@ pkgdesc="ROS - roslaunch is a tool for easily launching multiple ROS nodes local
 url='http://ros.org/wiki/roslaunch'
 
 pkgname='ros-lunar-roslaunch'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-roslaunch-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/roslaunch/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('cef63ddb2aefa00bb619090f3ec62c5f410c5dae453aa817f24513b13af86caf')
+sha256sums=('aee85b9f5eee4f96b0f5bfec09c6a605d88ce90d0c1d4a06d59c68833c6a5641')
 
 build() {
   # Use ROS environment variables
