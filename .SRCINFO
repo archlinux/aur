@@ -1,0 +1,15 @@
+pkgbase = nasa-wallpaper
+	pkgdesc = Change your desktop background with a NASA image. You can set an image from both the APOD (Astronomical Picture of the Day) and the NASA Image Library.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://davidpob99.github.io/nasa-wallpaper/
+	arch = any
+	license = Apache
+	depends = jq
+	depends = curl
+	depends = wget
+	source = https://github.com/davidpob99/nasa-wallpaper/archive/1.0.tar.gz
+	md5sums = dbf20439b5c6fdc26cb141912167c172
+
+pkgname = nasa-wallpaper
+
