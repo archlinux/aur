@@ -4,7 +4,7 @@ pkgdesc="ROS - Contains a set of tools that can be used from a hard realtime thr
 url='http://ros.org/wiki/realtime_tools'
 
 pkgname='ros-lunar-realtime-tools'
-pkgver='1.9.2'
+pkgver='1.10.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="realtime_tools-release-release-lunar-realtime_tools-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/realtime_tools-release/archive/release/lunar/realtime_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1b33377574c90affd7c4fc831e6f669f93ae0a7d9404bb3dc350aa6282a70c9f')
+sha256sums=('08cf2961a536dd3f94057c1f632d035653103bddea05fbe445b4f514f0c14fd1')
 
 build() {
   # Use ROS environment variables
