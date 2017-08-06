@@ -4,7 +4,7 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back ROS me
 url='http://www.ros.org/'
 
 pkgname='ros-lunar-rosbag-storage'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -41,7 +41,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosbag_storage-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosbag_storage/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('472da59307a47547c95397dfb6ab76d31518ed736089ea7dec699a7892079f3e')
+sha256sums=('5a5c6d16ec992829b22b2a9ccec9d2042353c56b638ea25c80b92cddb999eddd')
 
 build() {
   # Use ROS environment variables
