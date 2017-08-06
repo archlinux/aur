@@ -4,7 +4,7 @@ pkgdesc="ROS - Command to print aggregated diagnostic contents to the command li
 url='http://www.ros.org/'
 
 pkgname='ros-lunar-rosdiagnostic'
-pkgver='1.9.0'
+pkgver='1.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="diagnostics-release-release-lunar-rosdiagnostic-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/lunar/rosdiagnostic/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a1948cefa56512507ead781a789a5286112f89fd12f0fb88fc84ab215dba1d0b')
+sha256sums=('010d5caed5cf54ddd26be3c22a5616e4a59832176a15ed2bac6ea16cb656aff9')
 
 build() {
   # Use ROS environment variables
