@@ -4,7 +4,7 @@ pkgdesc="ROS - rosnode is a command-line tool for displaying debug information a
 url='http://ros.org/wiki/rosnode'
 
 pkgname='ros-lunar-rosnode'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosnode-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosnode/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f5377fa5efa72be124e8a462c15f51ee551f611ee5474b5d1a5fe28a767b5b23')
+sha256sums=('70fb63dfb6a8c94fffb2d00c457e54731a94dc361b65089a017e8f793018c181')
 
 build() {
   # Use ROS environment variables
