@@ -4,7 +4,7 @@ pkgdesc="ROS - Tools for directing, throttling, selecting, and otherwise messing
 url='http://ros.org/wiki/topic_tools'
 
 pkgname='ros-lunar-topic-tools'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -40,7 +40,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-topic_tools-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/topic_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('688c1730932bb47e6df47ee3b0cafb9ec565dfe057fe0114147294e3f323bddf')
+sha256sums=('7f839ca112e37aab8b63ca45072b49006fb7b6eb844ac24961f1e0bce0b5201e')
 
 build() {
   # Use ROS environment variables
