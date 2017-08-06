@@ -1,7 +1,7 @@
 #Maintainer: M. Mastroeni <the_maxtro@hotmail.it>
 pkgname=gimp-gap
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Gimp Animation Package, gimp's plugin for animation"
 url="https://www.gimp.org/tutorials/Using_GAP/"
 arch=('x86_64' 'i686')
@@ -14,12 +14,10 @@ optdepends=('xvidcore: compression codec'
 			'faad2: audio decoder' 
 			'lame: mpeg layer 3 codec' 
 			'libx264: H264 codec')
-md5sums=()
-_gitroot="https://github.com/GNOME/gimp-gap"
-_gitname=""
+source=('git+https://github.com/GNOME/gimp-gap')
+md5sums=('SKIP')
 
 package() {
-  git clone ${_gitroot}
   cd "${srcdir}/gimp-gap"
  ./autogen.sh CC="gcc" CXX="g++" LDFLAGS="-lm" CFLAGS="-g"
  cmake
