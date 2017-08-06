@@ -4,7 +4,7 @@ pkgdesc="ROS - Conversion functions between KDL and geometry_msgs types."
 url='http://ros.org/wiki/kdl_conversions'
 
 pkgname='ros-lunar-kdl-conversions'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geometry-release-release-lunar-kdl_conversions-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/lunar/kdl_conversions/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3ddacec3aa35e6e427695744c2486802c13c35fd75fb3140475f3e8c4e7b94b2')
+sha256sums=('5615e6f50ae396f2c886e3bf74e6eb714ed4b2762ed44d4e5c642a0d88db8c7d')
 
 build() {
   # Use ROS environment variables
