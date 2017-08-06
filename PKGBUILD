@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a set of conversion functions to convert co
 url='http://www.ros.org/wiki/tf_conversions'
 
 pkgname='ros-lunar-tf-conversions'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry-release-release-lunar-tf_conversions-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/lunar/tf_conversions/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6c1f89060d662457cbce9a4f8f1a029addf1b97c5d20308de2d4993dd088b25d')
+sha256sums=('f445a43badb7a4a164e7e05e8622cfa0a037bfa4b845f7e9ae95e6e8bebac2a5')
 
 build() {
   # Use ROS environment variables
