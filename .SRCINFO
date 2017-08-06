@@ -8,6 +8,7 @@ pkgbase = java-jnumbernamer-git
 	license = LGPL3
 	makedepends = git
 	makedepends = java-environment
+	depends = java-runtime
 	source = git+https://github.com/jackxuanliu/java-jnumbernamer.git
 	sha256sums = SKIP
 
