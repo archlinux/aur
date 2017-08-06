@@ -4,7 +4,7 @@ pkgdesc="ROS - The diagnostic_analysis package can convert a log of diagnostics 
 url='http://www.ros.org/wiki/diagnostics_analysis'
 
 pkgname='ros-lunar-diagnostic-analysis'
-pkgver='1.9.0'
+pkgver='1.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="diagnostics-release-release-lunar-diagnostic_analysis-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/lunar/diagnostic_analysis/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('026d14d380ec4a570ed48945b95003a30c998c1c59f01d59735db5528996395f')
+sha256sums=('acc00ff538b26a682b70e8d5b1d093d5738764f81fa4e9186e41ef2d6eb97bae')
 
 build() {
   # Use ROS environment variables
