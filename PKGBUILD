@@ -1,7 +1,7 @@
 # Maintainer: Michael Koloberdin <koloberdin@gmail.com>
 pkgname=urweb
-pkgver=20170105
-pkgrel=2
+pkgver=20170720
+pkgrel=1
 pkgdesc="Ur/Web: purely functional language/framework for web programming"
 arch=('i686' 'x86_64')
 url="http://www.impredicative.com/ur/"
@@ -10,7 +10,7 @@ makedepends=('curl' 'mlton')
 depends=('libmariadbclient' 'postgresql-client' 'sqlite3' 'openssl' 'uthash')
 source=("http://www.impredicative.com/ur/$pkgname-$pkgver.tgz"
 	"use-system-uthash.patch")
-md5sums=('2b7038feec03eef5761c5641bc28c176'
+md5sums=('b7d278fc8778408c955b6335e836dbdf'
          '23f6f18b7bdbb7ff7c1497734513737e')
 
 prepare() {
