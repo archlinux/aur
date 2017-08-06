@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=
+Type=Application
+Name=Rider
+Icon=
+Exec=
+Comment=
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-rider
+OnlyShowIn=Old;
