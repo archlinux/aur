@@ -16,7 +16,7 @@ _thumbnailer="no" # GNOME Thumbnailer support
 
 _pkgname=evince
 pkgname=${_pkgname}-light
-pkgver=3.24.0
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="GNOME document viewer, built with minimal dependencies by default but configurable."
 url="https://wiki.gnome.org/Apps/Evince"
@@ -37,7 +37,7 @@ makedepends=('itstool' 'intltool' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://download.gnome.org/sources/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('043895af7bbd6f1b57f9ab8778e78cf9c0af5dfcc347eaa94a17bf864c04dc8f')
+sha256sums=('9ca0c5213407b37be55fddb04a85d9301b692c4412c5920319d975403bff0f37')
 
 build() {
     cd ${_pkgname}-${pkgver}
