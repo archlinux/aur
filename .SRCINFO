@@ -6,13 +6,10 @@ pkgbase = python-magic-ahupp
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	provides = python-magic
 	conflicts = python-magic
 	source = https://github.com/ahupp/python-magic/archive/0.4.13.tar.gz
 	sha256sums = fd476aeab18792985b18e51c4356677e5a396576bc21717360fc6c81587e872e
 
 pkgname = python-magic-ahupp
-
-pkgname = python2-magic-ahupp
 
