@@ -4,7 +4,7 @@ pkgdesc="ROS - rostopic contains the rostopic command-line tool for displaying d
 url='http://ros.org/wiki/rostopic'
 
 pkgname='ros-lunar-rostopic'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rostopic-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rostopic/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c81961ccdd0723c3b09a96e618ae118d73b17d44139c9599720fdde054db214a')
+sha256sums=('a6bb8565b8797e1cece6e908a41941bf4283ee038e8b435a723d9a8fb0b32adf')
 
 build() {
   # Use ROS environment variables
