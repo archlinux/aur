@@ -1,7 +1,7 @@
 pkgbase = python-prompt_toolkit-doc-git
 	pkgdesc = Documentation for python package 'prompt_toolkit'.
 	pkgver = 1.0.14_8+g4476b3c
-	pkgrel = 5
+	pkgrel = 6
 	url = http://github.com/jonathanslenders/python-prompt-toolkit
 	arch = any
 	license = BSD

@@ -5,7 +5,7 @@ _pkgname="${_pkgbase}-doc"
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 pkgver=1.0.14_8+g4476b3c
-pkgrel=5
+pkgrel=6
 pkgdesc="Documentation for python package 'prompt_toolkit'."
 makedepends=(
   'git'
