@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains common nodelet tools such as a mux, demux a
 url='http://ros.org/wiki/nodelet_topic_tools'
 
 pkgname='ros-lunar-nodelet-topic-tools'
-pkgver='1.9.10'
+pkgver='1.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="nodelet_core-release-release-lunar-nodelet_topic_tools-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/lunar/nodelet_topic_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('546201af50963ad6357dda9c85bfb589a685b177b05e77754eef2e939ab3ab5e')
+sha256sums=('e32d90737eba678a2656893266c2b6210a07a691f16a591906e6027d4db7fb3c')
 
 build() {
   # Use ROS environment variables
