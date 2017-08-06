@@ -4,7 +4,7 @@ pkgdesc="ROS - Nodelet Core Metapackage."
 url='http://www.ros.org/wiki/nodelet_core'
 
 pkgname='ros-lunar-nodelet-core'
-pkgver='1.9.10'
+pkgver='1.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="nodelet_core-release-release-lunar-nodelet_core-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/lunar/nodelet_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('313fd0914438b8cd3a35890370e4e77437aafa8eda23e59522c4df2387e21e88')
+sha256sums=('1f530c654939ea4b905f8c382d4673aca864c31b485e90af881a8875358334ea')
 
 build() {
   # Use ROS environment variables
