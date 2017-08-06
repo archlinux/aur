@@ -4,7 +4,7 @@ pkgdesc="ROS - Integration test suite based on roslaunch that is compatible with
 url='http://ros.org/wiki/rostest'
 
 pkgname='ros-lunar-rostest'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rostest-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rostest/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9bd208b6c9937f0cd3b812ba6a4a3323e330ef66220ffc7a01a393e6e5c92bad')
+sha256sums=('f903e00738254a0e2918ba1e34604315f93dc74e04e1001bffcf0064c07dba82')
 
 build() {
   # Use ROS environment variables
