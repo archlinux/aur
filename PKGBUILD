@@ -4,7 +4,7 @@ pkgdesc="ROS - Base dependencies and support libraries for ROS."
 url='http://ros.org/wiki/roslib'
 
 pkgname='ros-lunar-roslib'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros-release-release-lunar-roslib-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/lunar/roslib/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('875c4ea9b694761dca93de89aa9e8cd3bc4129e4d5a96b99d918cbfed467fcd9')
+sha256sums=('937d8177d970df7d790bacc1ea7a58e6d1355f64b7eba2b3d243f207802a4582')
 
 build() {
   # Use ROS environment variables
