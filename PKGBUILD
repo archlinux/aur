@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS console output library."
 url='http://www.ros.org/wiki/rosconsole'
 
 pkgname='ros-lunar-rosconsole'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosconsole-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosconsole/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7b75f1655d4cd295b9856d6756847dd0eb0200bdf5276700186301bcb360ddec')
+sha256sums=('c6356cf95845d4bf744b79d6a4d2c8e92eac317c964aeec2db6ea6ef4212ca1b')
 
 build() {
   # Use ROS environment variables
