@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -21,7 +21,7 @@ options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'yasm')
 source=(https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('1998de1ab32616cbf2ff86efc3f1f26e76805ec5dc51e24c041c79edd8262785'
+sha256sums=('d2a9002cdc6b533b59728827186c044ad02ba64841f1b7cd6c21779875453a1e'
             'SKIP')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
