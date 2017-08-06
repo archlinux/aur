@@ -4,7 +4,7 @@ pkgdesc="ROS - rosbuild contains scripts for managing the CMake-based build syst
 url='http://ros.org/wiki/rosbuild'
 
 pkgname='ros-lunar-rosbuild'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-lunar-rosbuild-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/lunar/rosbuild/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4a2cfdab2ff730259be2522c96cd1adffdbd435d51962e3f3a15c1ca5f8183e3')
+sha256sums=('584ab4c26fd0f497e6d7b8af3cf1d9a8572682125a6b3026273104f4e807373d')
 
 build() {
   # Use ROS environment variables
