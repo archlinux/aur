@@ -1,41 +1,29 @@
-# Maintainer: Thomas Ascher <thomas.ascher@gmx.at>
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
+
 pkgname=jigsaw.app
-_pkgname=Jigsaw
-pkgrel=1
+pkgrel=2
 pkgver=0.8
-pkgdesc="A game for GNUstep."
+pkgdesc='A puzzle game for GNUstep'
 arch=('i686' 'x86_64')
-url="http://www.nongnu.org/gap/jigsaw/index.html"
+url='http://www.nongnu.org/gap/jigsaw/index.html'
 license=('GPL')
 groups=('gnustep')
-depends=('gnustep-base'
-         'gnustep-gui')
-makedepends=('gcc-objc'
-             'gnustep-make')
-source=("http://savannah.nongnu.org/download/gap/$_pkgname-$pkgver.tar.gz")
+depends=('gnustep-base' 'gnustep-gui' 'gnustep-back')
+makedepends=('gcc-objc')
+source=("https://savannah.nongnu.org/download/gap/Jigsaw-$pkgver.tar.gz")
 sha256sums=('35aaddd5582edb07c302496f9a70bc9c344755c321eebf30feb540d0c993e6c3')
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd Jigsaw-$pkgver
+  export GNUSTEP_MAKEFILES="$(gnustep-config --variable=GNUSTEP_MAKEFILES)"
   make
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
-  install -D -m644 "$pkgdir/usr/lib/GNUstep/Applications/$_pkgname.app/Resources/$_pkgname.desktop" \
-    "$pkgdir/usr/share/applications/$_pkgname.desktop"
-}
-
-post_install() {
-  update-desktop-database -q
-}
-
-post_upgrade() {
-  post_install $1
-}
-
-post_remove() {
-  post_install $1
+  cd Jigsaw-$pkgver
+  make DESTDIR="$pkgdir" install
+  install -d "$pkgdir"/usr/share/applications
+  ln -s /usr/lib/GNUstep/Applications/Jigsaw.app/Resources/Jigsaw.desktop \
+    "$pkgdir"/usr/share/applications/Jigsaw.desktop
 }
