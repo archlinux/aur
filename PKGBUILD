@@ -4,7 +4,7 @@ pkgdesc="ROS - Standalone Python library for generating ROS message and service 
 url='http://www.ros.org/wiki/genmsg'
 
 pkgname='ros-lunar-genmsg'
-pkgver='0.5.8'
+pkgver='0.5.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="genmsg-release-release-lunar-genmsg-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/genmsg-release/archive/release/lunar/genmsg/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('32f4892f1abc271c06a5a7e5965ecaeaeec776569e5c156134e1523921a160d6')
+sha256sums=('d5fad7fa4eeb1cb4cbc6d0f379f306509e49c2b1d45e969bb2900a62a438a6bf')
 
 build() {
   # Use ROS environment variables
