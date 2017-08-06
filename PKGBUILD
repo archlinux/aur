@@ -4,7 +4,7 @@ pkgdesc="ROS - rosmsg contains two command-line tools: rosmsg and rossrv."
 url='http://ros.org/wiki/rosmsg'
 
 pkgname='ros-lunar-rosmsg'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,8 @@ ros_makedepends=(ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-lunar-catkin
+ros_depends=(ros-lunar-genpy
+  ros-lunar-catkin
   ros-lunar-rosbag
   ros-lunar-genmsg
   ros-lunar-roslib)
@@ -30,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosmsg-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosmsg/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b9b4d9d280df76027251220fab15b39375538005c3399a09acda81e10b8c9653')
+sha256sums=('b103bd2a1b56bf91dc040dff33c72736bd7a0513412b7ac227557c16b2ddee8c')
 
 build() {
   # Use ROS environment variables
