@@ -4,7 +4,7 @@ pkgdesc="ROS - roslang is a common package that all ROS client libraries depend 
 url='http://ros.org/wiki/roslang'
 
 pkgname='ros-lunar-roslang'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-lunar-roslang-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/lunar/roslang/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9341639a6ed9c0e3a2e6f53df5aebf90372070f02bfcc2ada2e2f298d4ad42f0')
+sha256sums=('97d8e8587427d4e89ae88c7b94f0e510b6bc828b9ee4af7a4d7e3924ec0d3fc7')
 
 build() {
   # Use ROS environment variables
