@@ -4,7 +4,7 @@ pkgdesc="ROS - rosservice contains the rosservice command-line tool for listing 
 url='http://ros.org/wiki/rosservice'
 
 pkgname='ros-lunar-rosservice'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosservice-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosservice/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e5da7a3cc4efaf5da02a3cca167a6278039c0e508785116565ac395614f5f455')
+sha256sums=('2dcc8515e6be36ccff3ee34aff45be0837f58593f4053fee14c8465b9383cf2c')
 
 build() {
   # Use ROS environment variables
