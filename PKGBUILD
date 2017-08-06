@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostic_updater contains tools for easily updating diagnostics
 url='http://www.ros.org/wiki/diagnostic_updater'
 
 pkgname='ros-lunar-diagnostic-updater'
-pkgver='1.9.0'
+pkgver='1.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="diagnostics-release-release-lunar-diagnostic_updater-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/lunar/diagnostic_updater/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1def96db0b5c11b86673e3c75f3d6a0460d282e2152cca0d4d7e7a7562a11376')
+sha256sums=('0bd0399a95ce493ba05dc0986e8fed440705ad9107e25a7ea9e6ba899a458edb')
 
 build() {
   # Use ROS environment variables
