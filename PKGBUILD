@@ -4,7 +4,7 @@ pkgdesc="ROS - robot_model contains packages for modeling various aspects of rob
 url='http://ros.org/wiki/robot_model'
 
 pkgname='ros-lunar-robot-model'
-pkgver='1.12.9'
+pkgver='1.12.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_model-release-release-lunar-robot_model-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/lunar/robot_model/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('30579517c45979bbfa3dece4c4ca1479e43eed12ee2b38d585b19b1341f0411c')
+sha256sums=('0c2b36a12518adfb90c4fa3a662ab3432e01f92a234b222e8bdea3ccbdfb0929')
 
 build() {
   # Use ROS environment variables
