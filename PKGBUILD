@@ -4,7 +4,7 @@ pkgdesc="ROS - rospy is a pure Python client library for ROS."
 url='http://ros.org/wiki/rospy'
 
 pkgname='ros-lunar-rospy'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rospy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rospy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7fbe96b20034262379e199f5be7aed09212ca02ce8be5c9edab854b63b2d8f53')
+sha256sums=('e4e5d5bd7bf7f433802ea7d6f300065e4f3f318a92c1de90d4307ca18eb8e10d')
 
 build() {
   # Use ROS environment variables
