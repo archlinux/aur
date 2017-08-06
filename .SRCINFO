@@ -12,7 +12,7 @@ pkgbase = openpht
 	makedepends = git
 	makedepends = java-environment
 	makedepends = shairplay
-	makedepends = libcec
+	makedepends = libcec<=3.1.0
 	makedepends = libplist
 	makedepends = nasm
 	makedepends = swig
