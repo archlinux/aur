@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-openblas-lapack
 _pkgname=OpenBLAS
-pkgver=0.2.19
+pkgver=0.2.20
 pkgrel=1
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD, providing optimized blas, lapack, and cblas. (mingw-w64)"
 arch=('any')
@@ -15,7 +15,7 @@ provides=('mingw-w64-openblas' 'mingw-w64-blas' 'mingw-w64-lapack' 'mingw-w64-cb
 conflicts=('mingw-w64-openblas' 'mingw-w64-blas' 'mingw-w64-lapack' 'mingw-w64-cblas')
 options=('!buildflags' '!makeflags' '!strip' 'staticlibs')
 source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/xianyi/${_pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('9c40b5e4970f27c5f6911cb0a28aa26b6c83f17418b69f8e5a116bb983ca8557')
+sha256sums=('5ef38b15d9c652985774869efd548b8e3e972e1e99475c673b25537ed7bcf394')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
