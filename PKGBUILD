@@ -4,7 +4,7 @@ pkgdesc="ROS - roscreate contains a tool that assists in the creation of ROS fil
 url='http://ros.org/wiki/roscreate'
 
 pkgname='ros-lunar-roscreate'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros-release-release-lunar-roscreate-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/lunar/roscreate/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c9472bbccfe4ca6e49d65167523a40696cbc434d26434c0dd4ffad01e5fbe68f')
+sha256sums=('4d2852d285df312fdeed4a60bc1ef8274d5906e8765196fd29910344f5557fd5')
 
 build() {
   # Use ROS environment variables
