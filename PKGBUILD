@@ -4,7 +4,7 @@ pkgdesc="ROS - XmlRpc++ is a C++ implementation of the XML-RPC protocol."
 url='http://xmlrpcpp.sourceforge.net'
 
 pkgname='ros-lunar-xmlrpcpp'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-xmlrpcpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/xmlrpcpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ba7a0007598c092ebf6b641deb2da20325866c03d05524422c04f8f2f92f78a4')
+sha256sums=('794fb108f9a378c26ba1b80bdc49e6a111923bed6df14af7aeaecf50f7369b89')
 
 build() {
   # Use ROS environment variables
