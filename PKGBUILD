@@ -4,7 +4,7 @@ pkgdesc="ROS - Basic diagnostic_aggregator tests are in the."
 url='http://ros.org/wiki/test_diagnostic_aggregator'
 
 pkgname='ros-lunar-test-diagnostic-aggregator'
-pkgver='1.9.0'
+pkgver='1.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,7 +36,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="diagnostics-release-release-lunar-test_diagnostic_aggregator-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/lunar/test_diagnostic_aggregator/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('29ab50b5afdf4da781b01adb8523e238c5040f12b62cd9dcbe95eb28e9f58aee')
+sha256sums=('f63cfd5187fbb4dbf9110818a813bef4c86cf7f388e46b8cd1da7f942a9cb504')
 
 build() {
   # Use ROS environment variables
