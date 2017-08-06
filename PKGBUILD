@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains a tool to convert Unified Robot Description
 url='http://ros.org/wiki/collada_urdf'
 
 pkgname='ros-lunar-collada-urdf'
-pkgver='1.12.9'
-_pkgver_patch=0
+pkgver='1.12.10'
+_pkgver_patch=2
 arch=('any')
-pkgrel=1
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin
@@ -42,13 +42,13 @@ depends=(${ros_depends[@]}
 # Git version (e.g. for debugging)
 # _tag=release/lunar/collada_urdf/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# source=("${_dir}"::"git+https://github.com/ros-gbp/collada_urdf-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="robot_model-release-release-lunar-collada_urdf-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/lunar/collada_urdf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('27accd5e25db121b523b8b681e76b5bd55befafc346cdc80bd0e938bf7360c4c')
+_dir="collada_urdf-release-release-lunar-collada_urdf-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/collada_urdf-release/archive/release/lunar/collada_urdf/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('1942ac13908a30ab9db831f4fc57b7f463c0ac4617f77183a740e036392a0200')
 
 build() {
   # Use ROS environment variables
