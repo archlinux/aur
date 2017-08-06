@@ -8,7 +8,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=tclmpi-git
-pkgver=r141.5889616
+pkgver=r159.7c08646
 pkgrel=1
 pkgdesc="OpenMPI bindings for Tcl"
 arch=(any)
@@ -35,11 +35,12 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
+## this isn't necessary any more??
+#prepare() {
 	## gotta patch up the Makefile to use the latest version of Tcl
-	cd "$srcdir/${pkgname%-git}"
-	sed -i -e 's/8\.5/8.6/g' Makefile
-}
+	#cd "$srcdir/${pkgname%-git}"
+	#sed -i -e 's/8\.5/8.6/g' Makefile
+#}
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
@@ -61,6 +62,6 @@ package() {
 	mkdir -p "$pkgdir/usr/share/tclmpi/"
 	cp -r examples "$pkgdir/usr/share/tclmpi/"
 	install LICENSE "$pkgdir/usr/share/tclmpi/"
-	install README "$pkgdir/usr/share/tclmpi/"
+	install README.md "$pkgdir/usr/share/tclmpi/" 
 
 }
