@@ -4,7 +4,7 @@
 pkgname=lib32-icu48
 _pkgname=icu
 pkgver=4.8.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="International Components for Unicode library, version 4.8"
 arch=(i686 x86_64)
 url="http://www.icu-project.org/"
@@ -31,7 +31,7 @@ prepare() {
   cd ${srcdir}/icu/source
 
   # apply security patches + fixes for Malayalan encoding
-  # patches taken from the Debian package, 
+  # patches taken from the Debian package,
   # http://ftp.us.debian.org/debian/pool/main/i/icu/icu_4.8.1.1-12.debian.tar.gz
 
   patch -p2 -i ../../malayalam-rendering.patch
@@ -43,9 +43,6 @@ prepare() {
 }
 
 build() {
-  _cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
-  _jc=$((${_cpucount:-1}))
-
   cd ${srcdir}/icu/source
 
   export CC='gcc -m32'
@@ -56,7 +53,7 @@ build() {
               --sysconfdir=/etc \
               --mandir=/usr/share/man \
               --libdir=/usr/lib32
-  make -j $_jc
+  make
 }
 
 check() {
