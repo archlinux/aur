@@ -4,7 +4,7 @@ pkgdesc="ROS - This unary stack contains the dynamic_reconfigure package which p
 url='http://ros.org/wiki/dynamic_reconfigure'
 
 pkgname='ros-lunar-dynamic-reconfigure'
-pkgver='1.5.48'
+pkgver='1.5.49'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="dynamic_reconfigure-release-release-lunar-dynamic_reconfigure-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/dynamic_reconfigure-release/archive/release/lunar/dynamic_reconfigure/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1236a1919fa4b2724b780399732d455897a60ab11c9d20aa3e05dfa33f546b29')
+sha256sums=('a8deb9f9b0b7486b1979557adbc96fae7de91f5106a2d3460eb61d808523b235')
 
 build() {
   # Use ROS environment variables
