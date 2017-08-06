@@ -4,7 +4,7 @@ pkgdesc="ROS - Conversion functions between: - Eigen and KDL - Eigen and geometr
 url='http://ros.org/wiki/eigen_conversions'
 
 pkgname='ros-lunar-eigen-conversions'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry-release-release-lunar-eigen_conversions-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/lunar/eigen_conversions/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('8ad36ceee949a079988675253023b7ee2a42a19563f7f4632a3155dfce6c1a9b')
+sha256sums=('54df48e20601db8b369c7bcbefa4e914d8db04675851a4eb80ec01101691e566')
 
 build() {
   # Use ROS environment variables
