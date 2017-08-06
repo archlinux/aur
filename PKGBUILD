@@ -1,7 +1,7 @@
-# Author: Dominic Radermacher <dominic.radermacher@gmail.com>
+# Author: Dominic Radermacher <blip@mockmoon-cybernetics.ch>
 pkgname=lan951x-led-ctl
 pkgver=1.0r3.0291b91
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool to control the LED's of a LAN9512/LAN9514 ethernet controller"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="http://mockmoon-cybernetics.ch/computer/raspberry-pi/lan951x-led-ctl/"
