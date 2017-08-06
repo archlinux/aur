@@ -1,0 +1,18 @@
+pkgbase = stratisd-git
+	pkgdesc = Stratis is a new tool that meets the needs of Red Hat Enterprise Linux (RHEL) users calling for an easily configured, tightly integrated solution for storage that works within the existing Red Hat storage management stack.
+	pkgver = 0.1.0.r7.g9204a4d
+	pkgrel = 1
+	url = https://stratis-storage.github.io/
+	arch = i686
+	arch = x86_64
+	license = MPL2
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	provides = stratisd
+	conflicts = stratisd
+	source = git+https://github.com/stratis-storage/stratisd.git
+	sha256sums = SKIP
+
+pkgname = stratisd-git
+
