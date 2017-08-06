@@ -1,10 +1,10 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - Geometry Library."
+pkgdesc="ROS - A metapackage for geometry library suite."
 url='http://www.ros.org/wiki/geometry'
 
 pkgname='ros-lunar-geometry'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geometry-release-release-lunar-geometry-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/lunar/geometry/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('94aa20d1f47e80c30ea95665b292b2f81541e745d326012de9f6eadd0a8f4c1f')
+sha256sums=('5cf136d087facac2aadb2762084d398740d762638e55834c0153cbafad52c17c')
 
 build() {
   # Use ROS environment variables
