@@ -4,7 +4,7 @@ pkgdesc="ROS - A Python and C++ implementation of the LZ4 streaming format."
 url='http://www.ros.org/'
 
 pkgname='ros-lunar-roslz4'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-roslz4-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/roslz4/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('aaa491987e800afb424fe0a59376d90b929513e88be18b1d008484c92700a375')
+sha256sums=('33e7e4b05047e45073bbc5de8e62fa3d3c23fc95927a1a1c7c2a55ca565974c1')
 
 build() {
   # Use ROS environment variables
