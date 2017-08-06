@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=hexchat-git
-pkgver=v2.12.4.r72.gc6f3fbd1
+pkgver=2.12.4.r45.gc6f3fbd1
 pkgrel=1
 pkgdesc='A GTK+ based IRC client'
 arch=('i686' 'x86_64' 'armv6h')
@@ -24,9 +24,7 @@ _gitname='hexchat'
 pkgver() {
   cd "$_gitname"
 
-  _ver=`git describe --tags $(git rev-list --tags --max-count=1)`
-  _rev=`git describe | sed 's/^v[^-]*-/r/; s/-/./'`
-  echo "$_ver.$_rev"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
