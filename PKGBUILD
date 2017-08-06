@@ -4,7 +4,7 @@
 
 pkgname=meandmyshadow
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Puzzle/platform game in which you try to reach the exit by solving puzzles."
 arch=('i686' 'x86_64')
 url="http://meandmyshadow.sourceforge.net/"
