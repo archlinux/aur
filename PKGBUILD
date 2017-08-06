@@ -4,14 +4,14 @@
 _pkgbasename=webkitgtk
 pkgname=lib32-$_pkgbasename
 pkgver=2.4.11
-pkgrel=7
+pkgrel=8
 pkgdesc="Legacy Web content engine for GTK+ 3"
 arch=(x86_64)
 url="https://webkitgtk.org/"
 license=(custom)
 depends=(lib32-libxt lib32-libxslt lib32-sqlite lib32-libsoup lib32-libgl lib32-gst-plugins-base-libs
          lib32-libsecret lib32-libwebp lib32-harfbuzz-icu lib32-gtk3)
-makedepends=(gperf gobject-introspection python2 mesa ruby)
+makedepends=(gcc-multilib gperf gobject-introspection python2 mesa ruby)
 optdepends=('gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')

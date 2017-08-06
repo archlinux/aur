@@ -1,11 +1,12 @@
 pkgbase = lib32-webkitgtk
 	pkgdesc = Legacy Web content engine for GTK+ 3
 	pkgver = 2.4.11
-	pkgrel = 7
+	pkgrel = 8
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
 	arch = x86_64
 	license = custom
+	makedepends = gcc-multilib
 	makedepends = gperf
 	makedepends = gobject-introspection
 	makedepends = python2
