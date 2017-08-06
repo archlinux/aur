@@ -9,12 +9,11 @@ post_install() {
       chown -R kodi:kodi /var/lib/kodi/.kodi
   fi
 
-  echo ">>  Some drivers including Xorg's native modesetting may require the addition"
-  echo ">>  of /etc/X11/Xwrapper.config for X to initialize. If kodi.service fails to"
-  echo ">>  start, create that file containing the following single line:"
-  echo ">>  needs_root_rights = yes"
-  echo ">>"
-  echo ">>  See: https://wiki.archlinux.org/index.php/Xorg#Rootless_Xorg_.28v1.16.29"
+  echo "==>  Some drivers including Xorg's native modesetting may require the addition"
+  echo "==>  of /etc/X11/Xwrapper.config for X to initialize. If kodi.service fails to"
+  echo "==>  start, create that file containing the following single line:"
+  echo "==>  needs_root_rights = yes"
+  echo "==>  See: https://wiki.archlinux.org/index.php/Xorg#Rootless_Xorg_.28v1.16.29"
 }
 
 post_upgrade() {
@@ -25,52 +24,19 @@ post_upgrade() {
   if ! id -u kodi | grep 420 > /dev/null 2>&1; then
     usermod -u 420 kodi > /dev/null 2>&1
     if [[ $? -ne 0 ]]; then
-      echo "Changing uid of user kodi failed."
-      echo "It is recommended that the uid is changed."
-      echo "Stop all processes running under the kodi user and reinstall kodi"
-      echo "or change the uid manually. (usermod -u 420 kodi)"
+      echo "==> Changing uid of user kodi failed."
+      echo "==> It is recommended that the uid is changed."
+      echo "==> Stop all processes running under the kodi user and reinstall kodi"
+      echo "==> or change the uid manually. (usermod -u 420 kodi)"
     fi
     chown -R kodi:kodi /var/lib/kodi
-  fi
-
-  if [[ -d /var/lib/xbmc ]]; then
-    echo "If you are upgrading from xbmc->kodi and wish to keep your"
-    echo "settings, simply follow these steps after the install:"
-    echo
-    echo "cp -a /var/lib/xbmc/.xbmc/* /var/lib/kodi/.kodi"
-    echo "chown -R kodi:kodi /var/lib/kodi"
   fi
 }
 
 post_remove() {
-  getent passwd kodi > /dev/null 2>&1 && userdel kodi
-  getent group kodi > /dev/null 2>&1 && groupdel kodi
-}
-
-pre_install() {
-  if [ -f /usr/lib/systemd/system/xbmc.service ]; then
-    /usr/bin/systemctl status xbmc.service &>/dev/null
-    if [[ $? -eq 0 ]]; then
-      # xbmc is running via this service
-      /usr/bin/systemctl stop xbmc.service &>/dev/null
-    else
-      /bin/true
-    fi
-  else
-    /bin/true
-  fi
-
-  if [ -f /usr/lib/systemd/system/kodi.service ]; then
-    /usr/bin/systemctl status kodi.service &>/dev/null
-    if [[ $? -eq 0 ]]; then
-      # kodi is running via this service
-      /usr/bin/systemctl stop kodi.service &>/dev/null
-    else
-      /bin/true
-    fi
-  else
-    /bin/true
-  fi
+  echo "==> Delete the kodi user if you are certain no processes are running under it."
+  echo "==> userdel kodi"
+  echo "==> groupdel kodi"
 }
 
 # vim:set ts=2 sw=2 et:
