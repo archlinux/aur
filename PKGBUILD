@@ -19,16 +19,15 @@ sha1sums=('7b9cb47fc2a007c26fedc99d22a7fc1dc2f5f914')
 
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
-  export CC=musl-gcc
+  export CC="musl-gcc -static"
   export CFLAGS='-Os -static'
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
     --mandir=/usr/share/man \
-    --exec-prefix="" \
-    --with-libedit
-    
-  make CC=$CC CFLAGS=$CFLAGS
+    --exec-prefix="" 
+
+  make
 }
 
 package() {
