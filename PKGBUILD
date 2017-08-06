@@ -4,20 +4,19 @@ pkgdesc="ROS - tf is a package that lets the user keep track of multiple coordin
 url='http://www.ros.org/wiki/tf'
 
 pkgname='ros-lunar-tf'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-tf2
-  ros-lunar-message-filters
+ros_makedepends=(ros-lunar-message-filters
   ros-lunar-roscpp
+  ros-lunar-rostime
   ros-lunar-catkin
   ros-lunar-rosconsole
   ros-lunar-angles
   ros-lunar-geometry-msgs
-  ros-lunar-rostest
   ros-lunar-sensor-msgs
   ros-lunar-std-msgs
   ros-lunar-message-generation
@@ -25,8 +24,7 @@ ros_makedepends=(ros-lunar-tf2
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-lunar-tf2
-  ros-lunar-message-filters
+ros_depends=(ros-lunar-message-filters
   ros-lunar-roscpp
   ros-lunar-rosconsole
   ros-lunar-geometry-msgs
@@ -47,7 +45,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry-release-release-lunar-tf-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/lunar/tf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('67961bde93dd205672dc03de1706146af06e2bc8c9bdf03c1217fc4a825dda21')
+sha256sums=('350e4ddfc5d16246e4d43d047a70495f1c7942ac64d7176c486cbf664712b716')
 
 build() {
   # Use ROS environment variables
