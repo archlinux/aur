@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a number of URDF tutorials."
 url='http://ros.org/wiki/urdf_tutorial'
 
 pkgname='ros-lunar-urdf-tutorial'
-pkgver='0.2.5'
+pkgver='0.3.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,17 +16,9 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-lunar-joint-state-publisher
-  ros-lunar-gazebo-ros-control
   ros-lunar-robot-state-publisher
-  ros-lunar-gazebo-ros
-  ros-lunar-joint-state-controller
-  ros-lunar-urdf
   ros-lunar-xacro
-  ros-lunar-rqt-robot-steering
-  ros-lunar-rviz
-  ros-lunar-diff-drive-controller
-  ros-lunar-controller-manager
-  ros-lunar-position-controllers)
+  ros-lunar-rviz)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
@@ -38,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="urdf_tutorial-release-release-lunar-urdf_tutorial-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/urdf_tutorial-release/archive/release/lunar/urdf_tutorial/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('cf18a275417184871f2a2a89372982186254caa06788b7acd68526709e7b8bae')
+sha256sums=('891c634f5f4385043671dff8090ed67a1a9cb4bbc3a45b54492e5efe1ffddb01')
 
 build() {
   # Use ROS environment variables
