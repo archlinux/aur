@@ -2,7 +2,7 @@
 
 pkgname=caffe2-git
 pkgver=0.7.0.r686.gb8f66c1c
-pkgrel=1
+pkgrel=2
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -41,7 +41,6 @@ options=('!emptydirs')
 source=(
     # main source:
         "$pkgname"::'git+https://github.com/caffe2/caffe2.git'
-        'external-nnpack-fix.patch'
     # git submodules:
         'submodule-pybind11'::'git+https://github.com/pybind/pybind11.git'
         'submodule-nccl'::'git+https://github.com/nvidia/nccl.git'
@@ -62,7 +61,6 @@ source=(
         'submodule-NNPACK_deps-psimd'::'git+https://github.com/Maratyszcza/psimd.git'
 )
 sha256sums=('SKIP'
-            '1c94a1ecc0fe2a52c50c9d1a7bfca655d60c08d48995b27c73aa22b6c375da54'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -101,11 +99,6 @@ prepare() {
     # https://github.com/facebookincubator/gloo/issues/43
     cd third_party/gloo
     git checkout 21a5c8ea5e02edca03068790df3d7f7ba4e2d75b
-    
-    # avoid compile errors with nnpack if system library is found
-    # https://github.com/caffe2/caffe2/pull/808
-    cd "${srcdir}/${pkgname}"
-    patch -Np1 -i "${srcdir}/external-nnpack-fix.patch"
 }
 
 pkgver() {
