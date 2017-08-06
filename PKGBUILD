@@ -25,6 +25,7 @@ pkgver() {
 }
 
 package() {
-	install -D "${srcdir}/$_pkgname/dkms.conf" "$pkgdir/usr/src/$_pkgname-$_pkgver/dkms.conf"
-	cp -dr --no-preserve=ownership "$srcdir/$_pkgname"/* "$pkgdir/usr/src/$_pkgname-$_pkgver"
+	mkdir -p "$pkgdir/usr/src/$_pkgname-$_pkgver"
+	cd "$srcdir/$_pkgname"
+	cp -r dkms.conf Kconfig Makefile.dkms Makefile platform core hal include os_dep "$pkgdir/usr/src/$_pkgname-$_pkgver"
 }
