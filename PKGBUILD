@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostics."
 url='http://www.ros.org/wiki/diagnostics'
 
 pkgname='ros-lunar-diagnostics'
-pkgver='1.9.0'
+pkgver='1.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="diagnostics-release-release-lunar-diagnostics-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/lunar/diagnostics/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('8def5bddea7260534364e8d0b53addcb2873cf0b9987cf082df66a471626eb42')
+sha256sums=('78309343cd1097e67cff7412a9973c43f3f242e97f77e9b522d956f7dd8e33da')
 
 build() {
   # Use ROS environment variables
