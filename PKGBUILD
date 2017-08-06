@@ -1,5 +1,4 @@
-# Maintainer: Your name <natemaia10@gmail.com>
-# Maintainer: Eric Vidal <eric@obarun.org>
+# Maintainer: Nathaniel Maia <natemaia10@gmail.com>
 # Contributor: Eric Vidal <eric@obarun.org>
 
 pkgname=kickshaw
