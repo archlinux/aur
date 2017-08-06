@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a C++ base class for URDF parsers."
 url='http://ros.org/wiki/urdf'
 
 pkgname='ros-lunar-urdf-parser-plugin'
-pkgver='1.12.9'
+pkgver='1.12.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_model-release-release-lunar-urdf_parser_plugin-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/lunar/urdf_parser_plugin/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d411bfa60c43a26e4b97254b27ede9aad6bd285f1546f2925f150832c79ad237')
+sha256sums=('2011e80de9e6c4e5567b726604e4cf274f184d2061bfc8e386c8ee0e70746a50')
 
 build() {
   # Use ROS environment variables
