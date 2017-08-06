@@ -4,7 +4,7 @@ pkgdesc="ROS - Time and Duration implementations for C++ libraries, including ro
 url='http://ros.org/wiki/rostime'
 
 pkgname='ros-lunar-rostime'
-pkgver='0.6.4'
+pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-lunar-rostime-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/lunar/rostime/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3b14af20d9108a953b66e2a8264a8f6d07935e997884241f951fb9129900a64d')
+sha256sums=('6eb33a33f745b9762b705f9cd02c6cb7145da223468596a41ddeb6459af45c90')
 
 build() {
   # Use ROS environment variables
