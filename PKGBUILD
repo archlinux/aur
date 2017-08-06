@@ -4,10 +4,10 @@ pkgdesc="ROS - Low-level build system macros and infrastructure for ROS."
 url='http://www.ros.org/wiki/catkin'
 
 pkgname='ros-lunar-catkin'
-pkgver='0.7.6'
-_pkgver_patch=0
+pkgver='0.7.7'
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=()
@@ -19,9 +19,9 @@ makedepends=('cmake' 'ros-build-tools'
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  python2-catkin_pkg
   gtest
   python2-nose
+  python2-catkin_pkg
   python2-empy
   python2)
 
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="catkin-release-release-lunar-catkin-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/catkin-release/archive/release/lunar/catkin/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('772ffc437ec93cc783addfffb8cdaaeabd7eb14a33cc6acf28e8eca511fa4bf5')
+sha256sums=('d8b99f19875f73b3c21e0a08bb35ed21ea83848734da6fc08947a3ab87b4d885')
 
 build() {
   # Use ROS environment variables
