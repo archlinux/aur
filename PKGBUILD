@@ -3,11 +3,11 @@
  
 pkgname=('visual-sfm')
 pkgver=0.5.26
-pkgrel=3
+pkgrel=4
 pkgdesc='A Visual Structure from Motion System; create 3d models from photos.'
 arch=('x86_64')
 url='http://ccwu.me/vsfm/'
-depends=('lapack' 'blas' 'f2c' 'libjpeg' 'gtk2' 'glu' 'cmvs-pmvs-git' 'siftgpu' 'cuda')
+depends=('gcc5' 'lapack' 'blas' 'f2c' 'libjpeg' 'gtk2' 'glu' 'cmvs-pmvs-git' 'siftgpu' 'cuda')
 optdepends=(
   'opencl-nvidia: nvidia gpu support'
   'opencl-mesa: amd gpu support (mesa)'
@@ -39,7 +39,7 @@ build() {
   sed -i 's:$(LIB_DIR)/lapack.a:-llapack:' makefile
   sed -i 's:$(LIB_DIR)/blas.a:-lblas:' makefile
   sed -i 's:$(LIB_DIR)/libf2c.a:-lf2c:' makefile
-  sed -i 's:$(LIB_DIR)/libjpeg.a:-ljpeg:' makefile
+  sed -i 's:g++:g++-5:' makefile
   make
 }
  
