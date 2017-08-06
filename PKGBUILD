@@ -1,6 +1,6 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare
-pkgver=4.1r5
+pkgver=4.1r6
 pkgrel=1
 conflicts=("kshare-git")
 pkgdesc="The free and open source and cross platform screen sharing software."
@@ -16,7 +16,7 @@ build() {
   cd "${srcdir}/KShare"
   git submodule update --init --recursive  
   qmake
-  make -j$(($(nproc) + 1))
+  make
 }
 
 package() {
