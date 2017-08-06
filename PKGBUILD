@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_graph provides a GUI plugin for visualizing the ROS computati
 url='http://wiki.ros.org/rqt_graph'
 
 pkgname='ros-lunar-rqt-graph'
-pkgver='0.4.8'
+pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rqt_graph-release-release-lunar-rqt_graph-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_graph-release/archive/release/lunar/rqt_graph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('113bb8298af2e3fb3513171f895a8c540daf405f30736fde0787f3847a7c9531')
+sha256sums=('7c25ab92d9b82a4fa51fe4526f6a7edb83f4344cda7c8ad620aae62c186cce23')
 
 build() {
   # Use ROS environment variables
