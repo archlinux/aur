@@ -4,7 +4,7 @@ pkgdesc="ROS - cpp_common contains C++ code for doing things that are not necess
 url='http://www.ros.org/wiki/cpp_common'
 
 pkgname='ros-lunar-cpp-common'
-pkgver='0.6.4'
+pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-lunar-cpp_common-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/lunar/cpp_common/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ae94578505eaa28b651663f536b58f1f1b584a4e8ebb368f3ac8d8c8b210c4df')
+sha256sums=('d54bf1f9a455b9a1a8fb5aaf5cdb6931c301e715eaaff14ebb69d97ef6781e68')
 
 build() {
   # Use ROS environment variables
