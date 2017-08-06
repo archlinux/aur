@@ -61,7 +61,7 @@ pkgbase=linux-bfq-mq
 _srcname=linux-4.12
 _srcpatch=4
 pkgver=4.12.4
-pkgrel=7
+pkgrel=8
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -77,11 +77,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # mainline block merges and bfq-mq patches
-        "${_bfqpath}/4.13-uuid-block-merge.patch"
-        "${_bfqpath}/4.13-irq-core-for-linus.patch"
-        "${_bfqpath}/4.13-linux-block-for-linus_sir_lucjan.patch"
-        "${_bfqpath}/4.13-linux-block-for-linus_2.patch"
-        "${_bfqpath}/4.13-linux-block-for-linus_3.patch"
+        "${_bfqpath}/merges/Merge-tag-uuid-for-4.13-of-uuid.patch"
+        "${_bfqpath}/merges/Merge-branch-for-4.13-block-of-linux-block_1.patch"
+        "${_bfqpath}/merges/Merge-branch-irq-core-for-linus.patch"
+        "${_bfqpath}/merges/Merge-branch-for-linus-s390.patch"
+        "${_bfqpath}/merges/Merge-tag-for-linus-v4.13-2-jlayton.patch"
+        "${_bfqpath}/merges/Merge-branch-for-4.13-block-of-linux-block_2.patch"
+        "${_bfqpath}/merges/Merge-branch-for-4.13-block-of-linux-block_3.patch"
+        "${_bfqpath}/merges/Merge-branch-for-4.13-block-of-linux-block_4.patch"
         "${_bfqpath}/${_bfq_mq_patch}"
         # tentative patches
         "0001-Check-presence-on-tree-of-every-entity-after-every-a.patch::${_bfqgroup}/6646a2679ff98/0001-Check-presence-on-tree-of-every-entity-after-every-a.patch?part=0.1&authuser=0&view=1"
@@ -97,15 +100,18 @@ sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             '7cabddeaba0f9bd85278254ddd6e8af883539df70ec0ed1bda18ce83f57b304a'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
-            '37c9f788ab7bfe91171bd678138befc2691f8ab68e17bd921215d17b38f2836a'
-            '9747953d7d4d021ca1dbb16a2bec92f01a3d725d7991dc8c7788c385535cf63a'
-            'fbb5f70bb456a7a17f4d16dfb1bd8b5b2e8fd64fa36f650811774b492bb3719c'
-            'ec9b27fbb6fffd06651b66c58d2c4bf1aaacb672f01ca3992396001d5666685a'
+            'b8745ca529c03c1d20473cb45cda3ea25da49a73e522cd834c32b9316b5f9f12'
+            '8669c61f669e2fd25f3e4add2017081d4cdca41741f80858b9569388e53f5b80'
+            'a5b095f1b1f0ce0534b3bc2cf54e34a19727575c8ee359ab320ebbef4792de4f'
+            'e7cba5ea08ca33644548a856c8014ec633021c5ad7a0ada3fe3567da94dd5cdf'
+            'b863c975168c38576fe7900a521a4d2795e5cd8b39626814191e00d4258cdd1b'
+            '6d2c59f99f1ec0889ef16bf8017c6be0b09c7e7a388258198ecff92036167456'
+            '284c7f88b3a3b8ec5219bf0fefd21f5b8d8970e1db64e49c135e8764856f27d3'
             'c2118b2c2eacda2e28e45becde1d50851fc833b58075e5b7dd7af20a504341e1'
             '2c07dd4ef153694f7f30dffb6bdf7f0358679434a213fb530fb5ffaa9c0d059a'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            'cca8c6ff580c2726c6f24ab8a24b8b9fdc77cf279d42182f6ad6c5354e845bb3'
-            '3364f97d63126c3c365ba55f699c33d73a3f7e15fdccc796937e2456ed99308a'
+            '1ec464d33d8e4c1abe50adb0e38152f93c89967c6a8537ffe9d4f1fbab647a59'
+            'd83ad4071a50027cc83d16311c6ec1b58ec75949d19245f7248c8767df25dfad'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -131,20 +137,29 @@ prepare() {
   sed -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
 
   msg "Patch source with block and BFQ-MQ patches"
-    msg "-> Apply for-4.13/block merge"
-    patch -Np1 -i "${srcdir}/4.13-uuid-block-merge.patch"
+    msg "-> Apply uuid merges"
+    patch -Np1 -i "${srcdir}/Merge-tag-uuid-for-4.13-of-uuid.patch"
 
-    msg "-> Apply irq-core-for-linus merge"
-    patch -Np1 -i "${srcdir}/4.13-irq-core-for-linus.patch"
+    msg "-> Apply block merges 1"
+    patch -Np1 -i "${srcdir}/Merge-branch-for-4.13-block-of-linux-block_1.patch"
 
-    msg "-> Apply for-linus linux-block merge 1"
-    patch -Np1 -i "${srcdir}/4.13-linux-block-for-linus_sir_lucjan.patch"
+    msg "-> Apply irq-core merges"
+    patch -Np1 -i "${srcdir}/Merge-branch-irq-core-for-linus.patch"
 
-    msg "-> Apply for-linus linux-block merge 2"
-    patch -Np1 -i "${srcdir}/4.13-linux-block-for-linus_2.patch"
+    msg "-> Apply s390 merges"
+    patch -Np1 -i "${srcdir}/Merge-branch-for-linus-s390.patch"
 
-    msg "-> Apply for-linus linux-block merge 3"
-    patch -Np1 -i "${srcdir}/4.13-linux-block-for-linus_3.patch"
+    msg "-> Apply jlayton merges"
+    patch -Np1 -i "${srcdir}/Merge-tag-for-linus-v4.13-2-jlayton.patch"
+
+    msg "-> Apply block merges 2"
+    patch -Np1 -i "${srcdir}/Merge-branch-for-4.13-block-of-linux-block_2.patch"
+
+    msg "-> Apply block merges 3"
+    patch -Np1 -i "${srcdir}/Merge-branch-for-4.13-block-of-linux-block_3.patch"
+
+    msg "-> Apply block merges 4"
+    patch -Np1 -i "${srcdir}/Merge-branch-for-4.13-block-of-linux-block_4.patch"
 
     msg "-> Apply bfq-mq patch"
     patch -Np1 -i "${srcdir}/${_bfq_mq_patch}"
