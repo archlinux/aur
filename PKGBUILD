@@ -6,6 +6,7 @@ pkgdesc="A command-line utility to name arbitrarily sized numbers using the Conw
 arch=('i686' 'x86_64')
 url="https://github.com/jackxuanliu/java-jnumbernamer"
 license=('LGPL3')
+depends=('java-runtime')
 makedepends=('git' 'java-environment')
 source=("git+https://github.com/jackxuanliu/java-jnumbernamer.git")
 sha256sums=('SKIP')
