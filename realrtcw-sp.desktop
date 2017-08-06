@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RealRTCW SP
+Comment=RealRTCW (Single Player)
+Exec=/usr/bin/realrtcw-sp
+Icon=/usr/share/pixmaps/realrtcw.svg
+Terminal=false
+Categories=Game
+
