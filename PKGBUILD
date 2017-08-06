@@ -1,4 +1,4 @@
-# Maintainer: Guten Ye
+# Maintainer: Tim Hellhake
 
 pkgname="k810-conf"
 _pkgname="k810_conf"
@@ -11,7 +11,7 @@ license=("Unkown")
 backup=("etc/udev/rules.d/10-k810-conf.rules")
 install=install
 source=(
-  "http://www.trial-n-error.de/static/articles/k810/$_pkgname-v$pkgver.tar.bz2"
+  "http://blog.chschmid.com/media/${_pkgname}-v${pkgver}.tar.bz2"
   "10-k810-conf.rules")
 md5sums=('858a8de02d5b8db27e4da22833b54d20'
          'babd83a86abf11e0966cc9d20f592501')
@@ -28,5 +28,3 @@ package() {
   install -D -m755 k810-conf "$pkgdir/usr/bin/k810-conf"
   install -D -m644 10-k810-conf.rules "$pkgdir/etc/udev/rules.d/10-k810-conf.rules"
 }
-
-# vim:set ts=2 sw=2 et:
