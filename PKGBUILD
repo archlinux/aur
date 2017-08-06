@@ -4,7 +4,7 @@ pkgdesc="ROS - rosmake is a ros dependency aware build tool which can be used to
 url='http://ros.org/wiki/rosmake'
 
 pkgname='ros-lunar-rosmake'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros-release-release-lunar-rosmake-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/lunar/rosmake/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1655a592fd908559314429750009f458ac81fac1e0c443d83baf7a99ecb8e374')
+sha256sums=('fdecea2ac5f8928f55271b08ffa6fd3f83fe776e7f3cbd6916416c37b09f678a')
 
 build() {
   # Use ROS environment variables
