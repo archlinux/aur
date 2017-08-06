@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS packaging system."
 url='http://www.ros.org/wiki/ROS'
 
 pkgname='ros-lunar-ros'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,7 +36,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-lunar-ros-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/lunar/ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('26da359fe112b76f0e7ccb819bf234321f5a0723abf575efb7c46d761a9ac93e')
+sha256sums=('450f403b700517ab87cdfc4ec810819385d05621ed29e4216585706ab335f666')
 
 build() {
   # Use ROS environment variables
