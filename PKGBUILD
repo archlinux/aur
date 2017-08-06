@@ -4,7 +4,7 @@ pkgdesc="ROS - This package attempts to show the features of ROS python API step
 url='http://www.ros.org/wiki/rospy_tutorials'
 
 pkgname='ros-lunar-rospy-tutorials'
-pkgver='0.8.0'
+pkgver='0.8.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_tutorials-release-release-lunar-rospy_tutorials-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/lunar/rospy_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('03e2ce137e0f5aabf72886cbbd38bc4718a9d74951911295070e9a21b35ab81a')
+sha256sums=('2da4db1ef54e7df2d352cd6d797fa1228beb860b64bb1745b4acff37a8d18c11')
 
 build() {
   # Use ROS environment variables
