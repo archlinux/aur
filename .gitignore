@@ -1,3 +1,7 @@
 *.swp
 *.swo
 *.xz
+cepl/
+src/
+pkg/
+*.tar.xz

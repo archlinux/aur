@@ -3,9 +3,9 @@
 
 pkgname=cepl-git
 _pkgname=${pkgname%-*}
-pkgver=1.3.0.r0.g3fab2fa
+pkgver=1.5.1.r0.gd8fc4c9
 pkgrel=1
-pkgdesc='CEPL is a command-line C11 Read-Eval-Print Loop supporting multiple compilers, readline key-bindings/tab-completion, and the ability to specify additional shared libraries to link against.'
+pkgdesc='C11 (ISO/IEC 9899:2011) read–eval–print loop (REPL) currently supporting multiple compilers, readline key-bindings/tab-completion, and incremental undo.'
 url='https://github.com/alyptik/cepl'
 arch=('i686' 'x86_64')
 license=('GPL3')
