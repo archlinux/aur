@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF fram
 url='http://wiki.ros.org/rqt_tf_tree'
 
 pkgname='ros-lunar-rqt-tf-tree'
-pkgver='0.5.7'
+pkgver='0.5.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,7 +36,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rqt_tf_tree-release-release-lunar-rqt_tf_tree-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_tf_tree-release/archive/release/lunar/rqt_tf_tree/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c1e5d340c5f745c9fa2d25f2d98b51eb08b0087180e6934dc7db63da36f53591')
+sha256sums=('e89829caa836cd7426d696ae8a178441faa1cf66fc0918448fd1b399437a2394')
 
 build() {
   # Use ROS environment variables
