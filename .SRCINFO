@@ -1,0 +1,21 @@
+pkgbase = pulse-connect-secure
+	pkgdesc = Pulse Connect Secure (PCS) Client
+	pkgver = 8.2R5
+	pkgrel = 2
+	url = https://www.pulsesecure.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = https://secure.nis.vt.edu/resources/downloads/pulse-8.2R5.i386.rpm
+	source = pulseUi.sh
+	source = EULA.txt
+	sha256sums = 40d2d8dbafff4b2689ace8ecaa1d1275a5c252c266cc5b90c5d426983ccd690d
+	sha256sums = 1d34fe84a6eb8ad1967b48893911f104b62a00df60f063d6daa662a66d2e2007
+	sha256sums = 823b298db462d9963148888287ebde2eb013c9b7d0635f3893d18a35776fa8c3
+	depends_i686 = gcc-libs
+	optdepends_i686 = webkitgtk: for pulseUi frontend
+	depends_x86_64 = lib32-gcc-libs
+	optdepends_x86_64 = lib32-webkitgtk: for pulseUi frontend
+
+pkgname = pulse-connect-secure
+
