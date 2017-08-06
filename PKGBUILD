@@ -3,7 +3,7 @@
 
 pkgname=openpht-ffmpeg
 pkgver=2.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc='FFMPEGmodified for OpenPHT 1.8'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org'
@@ -15,7 +15,7 @@ depends=('alsa-lib' 'avahi' 'boost-libs' 'curl' 'expat' 'freetype2' 'fribidi'
          'libssh' 'libtiff' 'libusb-compat' 'libva' 'libvdpau' 'libx11'
          'libxext' 'libxrandr' 'lzo' 'pcre' 'python2' 'sdl' 'sdl_image'
          'sdl_mixer' 'sqlite' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'zlib')
-makedepends=('boost' 'cmake' 'doxygen' 'git' 'java-environment'
+makedepends=('boost' 'cmake' 'doxygen' 'svn' 'java-environment'
              'libcec' 'libplist' 'nasm' 'swig' 'unzip' 'zip')
 optdepends=('libplist: AirPlay support'
             'libcec: Pulse-Eight USB-CEC adapter support'
@@ -23,16 +23,9 @@ optdepends=('libplist: AirPlay support'
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2"
   'openpht.conf'
 )
+
 prepare() {
-  rm -rf 
-  mkdir patches
-  cd patches 
-  git init
-  git remote add openpht git://github.com/RasPlex/OpenPHT.git
-  git fetch openpht
-  git checkout tags/${openpht} -- lib/ffmpeg/patches/
-  install -D -m 644 -t "${srcdir}"/ffmpeg-"${pkgver}"/patches "${srcdir}"/patches/lib/ffmpeg/patches/*
-  cd "${srcdir}"
+  svn export https://github.com/RasPlex/OpenPHT.git/tags/"${openpht}"/lib/ffmpeg/patches "${srcdir}"/ffmpeg-"${pkgver}"/patches
 }
 
 build() {

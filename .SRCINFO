@@ -1,7 +1,7 @@
 pkgbase = openpht-ffmpeg
 	pkgdesc = FFMPEG modified for OpenPHT 1.8
 	pkgver = 2.8.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ffmpeg.org
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = openpht-ffmpeg
 	makedepends = boost
 	makedepends = cmake
 	makedepends = doxygen
-	makedepends = git
+	makedepends = svn
 	makedepends = java-environment
 	makedepends = libcec
 	makedepends = libplist
