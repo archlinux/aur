@@ -1,11 +1,11 @@
-# Maintainer: Gustav Hansen <kusti8@gmail.com>
+# Maintainer: Emilien Devos <contact@emiliendevos.be>
 pkgname=harmony-player
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A next-gen music player built with Electron."
 arch=('x86_64')
 url="http://getharmony.xyz/"
-license=('GPL')
+license=('')
 groups=()
 depends=('gnuplot' 'gconf' 'libxss' 'libxtst' 'alsa-lib' 'nss' 'gtk2')
 makedepends=()
@@ -21,7 +21,7 @@ source=("harmony-$pkgver.tar.xz::https://github.com/vincelwt/harmony/releases/do
         "harmony-32.png"
         "harmony-256.png"
         "harmony")
-md5sums=('da99f5a1cc690dd31aa0408f1b4b4f4a'
+md5sums=('950e6cfce30094758b46648b96df0f18'
          '776af71320e401646bf96a7d4c721d27'
          '9ff4e602debeaf6d88c625189342db52'
          'd3ff15f6c1dd18a81a933242aae9c892'
