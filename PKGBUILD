@@ -1,7 +1,7 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
 pkgname=('python-aiosmtpd')
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A reimplementation of the Python stdlib smtpd.py based on asyncio"
 arch=(any)
@@ -11,7 +11,7 @@ options=(!emptydirs)
 makedepends=('python-setuptools')
 depends=('python-atpublic')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aio-libs/aiosmtpd/archive/${pkgver}.tar.gz")
-sha256sums=('bcaafd67f274e7b40cca226f90aef7fd84cf0501eb629866692def4c19f87412')
+sha256sums=('5a3925a0c7609005e5cfd96e916a644e20b201b6743ffe0e095addb2b146a198')
 
 package() {
   cd "${srcdir}/aiosmtpd-${pkgver}"
