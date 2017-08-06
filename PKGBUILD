@@ -4,7 +4,7 @@
 
 pkgname=dash-static-musl
 _pkgbase=dash
-pkgver=0.5.8
+pkgver=0.5.9.1
 pkgrel=1
 pkgdesc="A POSIX compliant shell that aims to be as small as possible, statically linked to musl libc"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=("$_pkgbase")
 makedepends=('musl') #we are static
 install=dash.install
 source=("http://gondor.apana.org.au/~herbert/dash/files/${_pkgbase}-${pkgver}.tar.gz")
-sha1sums=('cd058935bba545427caa375337afe8a6309477d2')
+sha1sums=('7b9cb47fc2a007c26fedc99d22a7fc1dc2f5f914')
 
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
@@ -28,7 +28,7 @@ build() {
     --exec-prefix="" \
     --with-libedit
     
-  make
+  make CC=$CC CFLAGS=$CFLAGS
 }
 
 package() {
