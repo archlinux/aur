@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='http://ros.org/wiki/message_filters'
 
 pkgname='ros-lunar-message-filters'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-message_filters-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/message_filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1169f02cff4bce94e57f18a057a05125c5b9f0143c1161164c948edbc8c45cc1')
+sha256sums=('c0edb52fc489009fe2e53f3b0c75ba414fd43328ced1b6f3874835cfaeb79bf7')
 
 build() {
   # Use ROS environment variables
