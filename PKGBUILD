@@ -2,13 +2,13 @@
 
 pkgname=zget-git
 _gitname=zget
-pkgver=0.11.1.r15.g7116e03
+pkgver=0.11.1.r18.g0e4309e
 pkgrel=1
 pkgdesc="Zeroconf based peer to peer file transfer"
 arch=('any')
 url="https://github.com/nils-werner/zget"
 license=('MIT')
-depends=('python' 'python-netifaces' 'python-progressbar2' 'python-requests' 'python-zeroconf')
+depends=('python' 'python-netifaces' 'python-progressbar' 'python-requests' 'python-zeroconf')
 makedepends=('git' 'python-setuptools')
 provides=('zget')
 conflicts=('zget')
