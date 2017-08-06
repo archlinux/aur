@@ -14,7 +14,7 @@ source=(
   "http://blog.chschmid.com/media/${_pkgname}-v${pkgver}.tar.bz2"
   "10-k810-conf.rules")
 md5sums=('858a8de02d5b8db27e4da22833b54d20'
-         'babd83a86abf11e0966cc9d20f592501')
+         '7b619f8949cbc4d7ee85f8459967ad2a')
 
 build() {
 	cd "$srcdir"
