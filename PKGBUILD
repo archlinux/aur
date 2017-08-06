@@ -4,7 +4,7 @@ pkgdesc="ROS - Lisp client library for ROS, the Robot Operating System."
 url='http://ros.org/wiki/roslisp'
 
 pkgname='ros-lunar-roslisp'
-pkgver='1.9.20'
+pkgver='1.9.21'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="roslisp-release-release-lunar-roslisp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roslisp-release/archive/release/lunar/roslisp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1c2e50a3a6a860af2cc09fcacb332433c99dae8913706478ad9307436925d622')
+sha256sums=('be8e2166d143607ddd870f74793668f22053a40575878a571a3f897bddd50bba')
 
 build() {
   # Use ROS environment variables
