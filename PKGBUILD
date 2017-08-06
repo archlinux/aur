@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostic_common_diagnostics."
 url='http://ros.org/wiki/diagnostic_common_diagnostics'
 
 pkgname='ros-lunar-diagnostic-common-diagnostics'
-pkgver='1.9.0'
+pkgver='1.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,6 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-lunar-diagnostic-updater
   ros-lunar-catkin
+  ros-lunar-rostest
   ros-lunar-rospy)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
@@ -20,6 +21,7 @@ ros_depends=(ros-lunar-diagnostic-updater
   ros-lunar-tf
   ros-lunar-rospy)
 depends=(${ros_depends[@]}
+  python2-psutil
   hddtemp)
 
 # Git version (e.g. for debugging)
@@ -31,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="diagnostics-release-release-lunar-diagnostic_common_diagnostics-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/lunar/diagnostic_common_diagnostics/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('62acb68314ca78da574944385287c1cae1255727e84d447b86f72c230fefa313')
+sha256sums=('200e795cfa883b844a40ee63127fc1120f12c4dcec0757bef2d8f63de872f047')
 
 build() {
   # Use ROS environment variables
