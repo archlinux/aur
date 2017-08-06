@@ -4,7 +4,7 @@ pkgdesc="ROS - Assorted shell commands for using ros with bash."
 url='http://www.ros.org/wiki/rosbash'
 
 pkgname='ros-lunar-rosbash'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-lunar-rosbash-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/lunar/rosbash/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('cb34fcd89d1cd0006408590c7a2adfa6a7d5b71ccb2ca8cd8d7a92b961d7b2c2')
+sha256sums=('26c9f148df28f8b48ed2e8ad3cf8812f9eaab294b0ca4d801183d0b419c647e0')
 
 build() {
   # Use ROS environment variables
