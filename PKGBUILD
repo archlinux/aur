@@ -1,7 +1,7 @@
 # Maintainer/Originator: Jake VanderKolk <jakevanderkolk@gmail.com>
 pkgname=hostsblock
 pkgver=0.999.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A script that downloads, sorts, and compiles multiple ad- and malware-blocking hosts files."
 arch=(any)
 url="http://gaenserich.github.com/hostsblock/"

@@ -16,7 +16,7 @@ add_user_group() {
         gpasswd -a hostsblock hostsblock
         gpasswd -A hostsblock hostsblock
     fi
-    chown -R hostsblock:hostsblock /var/lib/hostsblock
+    chown -R hostsblock:hostsblock /var/lib/hostsblock /usr/bin/hostsblock
 }
 
 post_install() {
