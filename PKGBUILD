@@ -4,7 +4,7 @@ pkgdesc="ROS - rosclean: cleanup filesystem resources (e.g."
 url='http://ros.org/wiki/rosclean'
 
 pkgname='ros-lunar-rosclean'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros-release-release-lunar-rosclean-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/lunar/rosclean/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3d2b804fa3c59d56b741bcc54cbbecafacbe826392f2e9e83971686daad908a2')
+sha256sums=('67ff56f35b08c2be45dad9c40ff1a23919b136f9204da1adc69bb1b67e478478')
 
 build() {
   # Use ROS environment variables
