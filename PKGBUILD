@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Package Tool."
 url='http://wiki.ros.org/rospack'
 
 pkgname='ros-lunar-rospack'
-pkgver='2.4.1'
+pkgver='2.4.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,9 +22,9 @@ makedepends=('cmake' 'ros-build-tools'
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  python2-catkin_pkg
   tinyxml2
   python2-rosdep
+  python2-catkin_pkg
   python2
   boost
   pkg-config)
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rospack-release-release-lunar-rospack-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/lunar/rospack/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f97a5bd428d54d9c4f67279b03625a35b16c77b728e9fd7fd510574384b4965c')
+sha256sums=('20b330a021ac08268f9964e3246f7b938790082de6b4828cbb8fd1db4039c7e3')
 
 build() {
   # Use ROS environment variables
