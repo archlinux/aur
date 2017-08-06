@@ -1,4 +1,4 @@
-pkgbase = java-jnumbernamer
+pkgbase = java-jnumbernamer-git
 	pkgdesc = A command-line utility to name arbitrarily sized numbers using the Conway-Wechsler system
 	pkgver = r5.22fb83d
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = java-jnumbernamer
 	source = git+https://github.com/jackxuanliu/java-jnumbernamer.git
 	sha256sums = SKIP
 
-pkgname = java-jnumbernamer
+pkgname = java-jnumbernamer-git
 

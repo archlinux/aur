@@ -1,5 +1,5 @@
 # Maintainer: Jack Liu <jackxuanliu@gmail.com>
-pkgname=java-jnumbernamer
+pkgname=java-jnumbernamer-git
 pkgver=r5.22fb83d
 pkgrel=1
 pkgdesc="A command-line utility to name arbitrarily sized numbers using the Conway-Wechsler system"
