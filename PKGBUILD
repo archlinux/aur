@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='http://ros.org/wiki/roscpp'
 
 pkgname='ros-lunar-roscpp'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -45,7 +45,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-roscpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/roscpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('8a5512f7b31070fc710e279969cee9c0eadde67354ec7fcf6703ed147cb0b04f')
+sha256sums=('74b18af79544f673a6c17cf0b63f8c3cd47e47b0ffaab7c877dd9343048c1bfe')
 
 build() {
   # Use ROS environment variables
