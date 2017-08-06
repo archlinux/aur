@@ -4,7 +4,7 @@ pkgdesc="ROS - Underlying data libraries for roscpp messages."
 url='http://www.ros.org/wiki/roscpp_core'
 
 pkgname='ros-lunar-roscpp-core'
-pkgver='0.6.4'
+pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-lunar-roscpp_core-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/lunar/roscpp_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9c95da7b594e82a6d89cc4eac0ed22dd8c612a9d739de6d290cab225767def49')
+sha256sums=('0ee081b9b5c06f87ab644723ca8f3211b4d9711531bcd9425e7ac8c4353d1af3')
 
 build() {
   # Use ROS environment variables
