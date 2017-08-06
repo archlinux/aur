@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=netmap
-pkgver=r2463.d93db47d
+pkgver=r2536.3d28f704
 pkgrel=1
 pkgdesc="A framework for high speed network packet I/O, using kernel bypass"
 arch=('any')
@@ -37,7 +37,7 @@ build() {
     NESTEDDIR="$srcdir/asp/linux"
     cd $NESTEDDIR
     grep "pkgver[ ]*=" PKGBUILD > .ksver
-    KSVER=$(sed 's|pkgver[ ]*=[ ]*||g' .ksver | sed 's|\.[^.]*$||')
+    KSVER=$(sed 's|pkgver[ ]*=[ ]*||g' .ksver | sed 's|\([1-9]\.[0-9]\+\).*|\1|g')
     rm .ksver
     RKVER=$(uname -r | sed 's|\.[^.]*$||')
     if [ "$KSVER" != "$RKVER" ]; then
@@ -69,14 +69,14 @@ build() {
     # unpatched drivers
     msg "Starting to build netmap and netmap applications"
     cd "$srcdir/netmap"
-    msg "PREFIX=$pkgdir/usr/local"
+    msg "PREFIX=$pkgdir/usr"
     msg "KERNEL-SOURCES=$NESTEDDIR/src/linux-$KSVER"
     msg "INSTALL-MOD-PATH=$pkgdir"
     ./configure --kernel-sources=$NESTEDDIR/src/linux-$KSVER \
                 --no-ext-drivers \
                 --driver-suffix="_netmap" \
                 --install-mod-path="$pkgdir/usr" \
-                --prefix="$pkgdir/usr/local"
+                --prefix="$pkgdir/usr"
     make || return 1
     msg "Build complete"
 }
