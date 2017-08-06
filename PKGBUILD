@@ -1,13 +1,13 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
-# third_party with no stable release at the needed commit
+# third_party with no stable release at the target commit
 _android_cmake_commit='556cc14296c226f753a3778d99d8b60778b7df4f'
 _benchmark_commit='4bf28e611b55de8a2d4eece3c335e014f8b0f630'
 _cnmem_commit='28a182d49529da49f4ac4e3941cec3edf16b3540'
 _cub_commit='89de7ab20167909bc2c4f8acd397671c47cf3c0d'
-_gloo_commit='f67ab32d3439061946ce2c1bed8baa0e1b5d367f'
+_gloo_commit='21a5c8ea5e02edca03068790df3d7f7ba4e2d75b'
 _googletest_commit='5e7fd50e17b6edf1cadff973d0ec68966cf3265e'
-_ios_cmake_commit='e3a7695d1d68ef4eca716031f94e8475b1589b1f'
+_ios_cmake_commit='e24081928d9ceec4f4adfcf12293f1e2a20eaedc'
 _nccl_commit='2a974f5ca2aa12b178046b2206b43f1fd69d9fae'
 _nervanagpu_commit='d4eefd50fbd7d34a17dddbc829888835d67b5f4a'
 _nnpack_commit='02bfa475d64040cd72b7c01daa9e862523ae87da'
@@ -17,13 +17,19 @@ _nnpackdeps_fxdiv_commit='8f85044fb41e560508cd69ed26c9afb9cc120e8a'
 _nnpackdeps_psimd_commit='0b26a3fb98dd6af7e1f4e0796c56df6b32b1c016'
 _nnpackdeps_pthreadpool_commit='9e17903a3fc963fe86b151aaddae7cf1b1d34815'
 
- # third_party with stable release at the needed commit
+ # third_party with stable release at the target commit
 _eigen_version='3.3.2'    # commit 'ae9889a130bd0a9d3007f41d015563c2e8ac605f' is version '3.3.2'
 _protobuf_version='3.1.0' # commit 'a428e42072765993ff674fda72863c9f1aa2d268' is version '3.1.0'
 
+# note about modified gloo commit:
+# the gloo target commit is 7ea9d9af4e82d20c7c6cee5edd3c52f9bcb42821, but
+# it's necessary to use a newer commit to avoid compile errors if using
+# '-march=native' in a cpu with AVX2:
+# https://github.com/facebookincubator/gloo/issues/43
+
 pkgname=caffe2
-pkgver=0.7.0
-pkgrel=13
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -32,7 +38,7 @@ depends=(
     # official repositories:
         # required:
             'google-glog' 'protobuf' 'python2' 'python2-numpy' 'python2-protobuf' 'cuda'
-            'cudnn'
+            'cudnn>=5.1' 'cudnn<7.0'
         # not required but enabled in build:
             'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'openmpi' 'snappy' 'zeromq'
             'hiredis'
@@ -83,7 +89,7 @@ source=(
 )
 noextract=("thirdparty-eigen-${_eigen_version}.tar.gz"
            "thirdparty-protobuf-${_protobuf_version}.tar.gz")
-sha256sums=('b8f266ed283efc172fa96c06c878ed7f125755f89cde480580b754c1f03c0bab'
+sha256sums=('3c46d2324046774e96601bad737cdce05084cab80b9109c48a09f332438b921c'
             '1c94a1ecc0fe2a52c50c9d1a7bfca655d60c08d48995b27c73aa22b6c375da54'
             'SKIP'
             'SKIP'
@@ -135,7 +141,7 @@ prepare() {
     unset _component
     
     # avoid compile errors with nnpack if system library is found
-    # https://github.com/caffe2/caffe2/pull/808
+    # https://github.com/caffe2/caffe2/commit/f070eb99a4a36f12abbdb9af98bb68ff485c840b
     cd "${srcdir}/${pkgname}-${pkgver}"
     patch -Np1 -i "${srcdir}/external-nnpack-fix.patch"
 }
@@ -181,7 +187,6 @@ build() {
         -DCUDA_TOOLKIT_ROOT_DIR:PATH='/opt/cuda' \
         -DCUDA_USE_STATIC_CUDA_RUNTIME:BOOL='OFF' \
         -DCUDA_VERBOSE_BUILD:BOOL='OFF' \
-        -DCUDA_VERSION:STRING='8.0' \
         -DCUDNN_INCLUDE_DIR:PATH='/opt/cuda/include' \
         -DCUDNN_ROOT_DIR:PATH='/opt/cuda' \
         \
@@ -236,7 +241,6 @@ package() {
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     
     # move/rename folders to the right location
-    mv -f "${pkgdir}/usr/binaries" "${pkgdir}/usr/bin"
     mv -f "${pkgdir}/usr/caffe"    "${pkgdir}/usr/lib/python2.7/site-packages"
     mv -f "${pkgdir}/usr/caffe2"   "${pkgdir}/usr/lib/python2.7/site-packages"
     
