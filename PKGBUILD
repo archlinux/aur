@@ -2,7 +2,7 @@
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=yle-dl-git
-pkgver=2.20.r2.g74df6a1
+pkgver=2.21.r11.g312c29f
 pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=("any")
@@ -27,7 +27,7 @@ prepare() {
   # Enable required PHP extensions by directly
   #  appending them to the hds_binary arguments list.
   # OR enable them globaly in php.ini
-  sed -i "s|^hds_binary = \['php'|hds_binary = \['php', '-dextension=bcmath.so', '-dextension=curl.so', '-dextension=mcrypt.so'|" yledl/yledl.py
+  sed -i "s|\['php'|\['php', '-dextension=bcmath.so', '-dextension=curl.so', '-dextension=mcrypt.so'|" yledl/downloaders.py
 }
 
 package() {
