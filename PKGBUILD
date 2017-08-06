@@ -7,7 +7,7 @@ pkgname='ros-lunar-gazebo-dev'
 pkgver='2.7.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Apache 2.0')
 
 ros_makedepends=(ros-lunar-catkin)
@@ -16,7 +16,7 @@ makedepends=('cmake' 'ros-build-tools'
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  gazebo)
+  gazebo-ogre-1.10)
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/gazebo_dev/${pkgver}-${_pkgver_patch}
