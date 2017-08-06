@@ -2,7 +2,7 @@
 
 pkgname=caffe2-git
 pkgver=0.7.0.r686.gb8f66c1c
-pkgrel=2
+pkgrel=3
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -149,7 +149,6 @@ build() {
         -DCUDA_TOOLKIT_ROOT_DIR:PATH='/opt/cuda' \
         -DCUDA_USE_STATIC_CUDA_RUNTIME:BOOL='OFF' \
         -DCUDA_VERBOSE_BUILD:BOOL='OFF' \
-        -DCUDA_VERSION:STRING='8.0' \
         -DCUDNN_INCLUDE_DIR:PATH='/opt/cuda/include' \
         -DCUDNN_ROOT_DIR:PATH='/opt/cuda' \
         \
