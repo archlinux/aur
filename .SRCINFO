@@ -1,6 +1,6 @@
 pkgbase = rgssad
 	pkgdesc = Extract rgssad/rgss2a/rgss3a files.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/luxrck/rgssad
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = rgssad
 	makedepends = cargo
 	makedepends = rust
 	makedepends = git
-	source = rgssad::git+https://github.com/luxrck/rgssad.git#tag=0.1.0
+	source = rgssad::git+https://github.com/luxrck/rgssad.git#tag=0.1.1
 	md5sums = SKIP
 
 pkgname = rgssad
