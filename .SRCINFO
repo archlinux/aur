@@ -1,18 +1,18 @@
 pkgbase = terminal.app
-	pkgdesc = A terminal emulator for GNUstep.
-	pkgver = 0.9.8
+	pkgdesc = A terminal emulator for GNUstep
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = http://www.nongnu.org/gap/terminal/index.html
 	arch = i686
 	arch = x86_64
 	groups = gnustep
-	license = GPL
+	license = GPL2
 	makedepends = gcc-objc
-	makedepends = gnustep-make
 	depends = gnustep-base
 	depends = gnustep-gui
-	source = http://savannah.nongnu.org/download/gap/Terminal-0.9.8.tar.gz
-	sha256sums = 488428fcc8c25eb3d0b29419f12f48d1dc893dbf89aa71a80743fba31e18eace
+	depends = gnustep-back
+	source = https://savannah.nongnu.org/download/gap/Terminal-0.9.9.tar.gz
+	sha256sums = 27f81bbecdbd10cde8c080012cde4973bec20e551c58c29f353733cf03c220e9
 
 pkgname = terminal.app
 
