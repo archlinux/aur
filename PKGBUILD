@@ -4,7 +4,7 @@ pkgdesc="ROS - A bond allows two processes, A and B, to know when the other has 
 url='http://www.ros.org/wiki/bond_core'
 
 pkgname='ros-lunar-bond-core'
-pkgver='1.7.19'
+pkgver='1.8.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="bond_core-release-release-lunar-bond_core-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/lunar/bond_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('40035bce831fe4d6f7ff49d740b05841a59401052fbae431ca17b28f7dfd278b')
+sha256sums=('d90b876687793cec499467cdd1db1fe19c4e519815c9fcf23d27572fef058a13')
 
 build() {
   # Use ROS environment variables
