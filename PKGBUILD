@@ -2,7 +2,8 @@
 
 pkgname=singularityviewer-alpha
 pkgver=1.8.7.6937
-pkgrel=1
+pkgrel=2
+_harfbuzzver=1.3.4-1
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (alpha version)"
 url="http://www.singularityviewer.org/"
 license=('custom')
@@ -24,10 +25,12 @@ provides=("singularityviewer")
 
 source=("http://sourceforge.net/projects/singularityview/files/alphas/SingularityAlpha-x86_64-$pkgver.tar.bz2"
 	"singularityviewer.desktop"
-	"singularityviewer.launcher")
+	"singularityviewer.launcher"
+	"http://archive.archlinux.org/repos/2016/12/06/extra/os/x86_64/harfbuzz-1.3.4-1-x86_64.pkg.tar.xz")
 md5sums=('d52e582343b5f173fa10aef7b5eb5ce1'
          'ff7aa34dcd7548e3acdb3c2d44ae6604'
-         'eb596f5cf7b6f2d0c55c0082fb99a905')
+         'eb596f5cf7b6f2d0c55c0082fb99a905'
+         '0a3e4654c3009d740a6be09e58a2d451')
 
 package() {
 cd $srcdir
@@ -65,5 +68,8 @@ chmod g+x $pkgdir/opt/singularityviewer/singularity
 # Do not re-register the application with the desktop system at every launch, saves from locally installed desktop files.
 sed -i 's|./refresh_desktop_app_entry.sh|#./refresh_desktop_app_entry.sh|' $pkgdir/opt/singularityviewer/singularity
 
-    
+# Install harfbuzz binaries
+cd $srcdir/usr/lib/
+cp *harfbuzz.so* $pkgdir/opt/singularityviewer/lib64/
+
 }
