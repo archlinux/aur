@@ -4,7 +4,7 @@ pkgdesc="ROS - The nodelet package is designed to provide a way to run multiple 
 url='http://ros.org/wiki/nodelet'
 
 pkgname='ros-lunar-nodelet'
-pkgver='1.9.10'
+pkgver='1.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,7 +13,6 @@ license=('BSD')
 ros_makedepends=(ros-lunar-catkin
   ros-lunar-bondcpp
   ros-lunar-pluginlib
-  ros-lunar-rospy
   ros-lunar-rosconsole
   ros-lunar-cmake-modules
   ros-lunar-roscpp
@@ -24,10 +23,11 @@ makedepends=('cmake' 'ros-build-tools'
   util-linux
   boost)
 
-ros_depends=(ros-lunar-bondcpp
+ros_depends=(ros-lunar-roscpp
   ros-lunar-pluginlib
+  ros-lunar-rospy
   ros-lunar-rosconsole
-  ros-lunar-roscpp
+  ros-lunar-bondcpp
   ros-lunar-std-msgs
   ros-lunar-message-runtime)
 depends=(${ros_depends[@]}
@@ -43,7 +43,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="nodelet_core-release-release-lunar-nodelet-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/lunar/nodelet/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('13754aa4ae5eb8da4bd8dffe683e1f3f26199a003f2c7deeb2107f0dbe45d48a')
+sha256sums=('991fc5851769b565e5ffaf28e6b6b24b4f2b815c3937ee43cbb661131e770552')
 
 build() {
   # Use ROS environment variables
