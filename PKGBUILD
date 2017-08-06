@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a tool for setting and publishing joint sta
 url='http://www.ros.org/wiki/joint_state_publisher'
 
 pkgname='ros-lunar-joint-state-publisher'
-pkgver='1.12.9'
+pkgver='1.12.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="robot_model-release-release-lunar-joint_state_publisher-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/lunar/joint_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5749bd14effbfc0677b3a4b182c303fdea904ca16100cf91b4b0c5677f5668cc')
+sha256sums=('ec2d60d0a904a679eba2a5437afc0f56f407a153ac87552de8a0ec4966380d22')
 
 build() {
   # Use ROS environment variables
