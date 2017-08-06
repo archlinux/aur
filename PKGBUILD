@@ -4,7 +4,7 @@ pkgdesc="ROS - The pluginlib package provides tools for writing and dynamically 
 url='http://www.ros.org/wiki/pluginlib'
 
 pkgname='ros-lunar-pluginlib'
-pkgver='1.10.5'
+pkgver='1.11.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,15 +17,15 @@ ros_makedepends=(ros-lunar-catkin
   ros-lunar-rosconsole)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  boost
-  tinyxml)
+  tinyxml2
+  boost)
 
 ros_depends=(ros-lunar-class-loader
   ros-lunar-roslib
   ros-lunar-rosconsole)
 depends=(${ros_depends[@]}
-  boost
-  tinyxml)
+  tinyxml2
+  boost)
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/pluginlib/${pkgver}-${_pkgver_patch}
@@ -36,7 +36,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="pluginlib-release-release-lunar-pluginlib-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/pluginlib-release/archive/release/lunar/pluginlib/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('52757ac820e93b77a2151428c44099b7b0a995d7e1480a99105679e944f83daa')
+sha256sums=('80f12a589133f55cfba980f52d806c55f10d6cde3353a6c142414403eb5db483')
 
 build() {
   # Use ROS environment variables
