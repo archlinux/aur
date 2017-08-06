@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Master implementation."
 url='http://ros.org/wiki/rosmaster'
 
 pkgname='ros-lunar-rosmaster'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosmaster-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosmaster/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3c8e7f3897824f9bd31035ef8b7d9eb9ee6f840c345a6a26b8dd0b066a815f2c')
+sha256sums=('67e5c2e2b1a8a54f5e26be84d4e94803aaef521882abb0c0f2f51042bea75911')
 
 build() {
   # Use ROS environment variables
