@@ -5,11 +5,11 @@
 pkgbase=python-factory_boy
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-factory_boy python2-factory_boy)
-pkgver=2.8.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="A fixtures replacement based on thoughtbot's factory_girl for Ruby."
 arch=(any)
-url='https://github.com/rbarrois/factory_boy'
+url='https://github.com/FactoryBoy/factory_boy'
 license=(MIT)
 makedepends=(
   python-distribute
@@ -18,8 +18,8 @@ makedepends=(
   'python2-faker>=0.7.0'
 )
 options=(!emptydirs)
-source=("https://github.com/rbarrois/${_pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('6582b9342bf260c375144575f56f0378141cd368a67d2d11972b9208258c8f4d')
+source=("https://github.com/FactoryBoy/${_pkgbase}/archive/${pkgver}.tar.gz")
+sha256sums=('c5f27acda3787fb556dc26a50cbfa3ce9ee86a88b1a96b72fa31aca47257c7dd')
 
 package_python-factory_boy() {
   depends=(python-faker)
