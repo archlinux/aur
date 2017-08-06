@@ -8,7 +8,7 @@ post_upgrade() {
 }
 
 post_remove() {
-  sed -i '/^(\/usr)?\/bin\/mksh$/d' /etc/shells
+  sed -i -r '/^(\/usr)?\/bin\/mksh$/d' /etc/shells
 }
 
 # vim:set ts=2 sw=2 et:
