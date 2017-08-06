@@ -4,7 +4,7 @@ pkgdesc="ROS - The State Machine Compiler (SMC) from http://smc.sourceforge.net/
 url='http://smc.sourceforge.net/'
 
 pkgname='ros-lunar-smclib'
-pkgver='1.7.19'
+pkgver='1.8.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="bond_core-release-release-lunar-smclib-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/lunar/smclib/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1c122e2f2464ab5c0a114b2590bf0d88c77c829bfccb02d8973c0c6c1839856d')
+sha256sums=('57659227e6082a57d6ed9499fb150b455cbc399aed4aed3a1c9d02ae9c163ad2')
 
 build() {
   # Use ROS environment variables
