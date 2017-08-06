@@ -4,7 +4,7 @@ pkgdesc="ROS - turtlesim is a tool made for teaching ROS and ROS packages."
 url='http://www.ros.org/wiki/turtlesim'
 
 pkgname='ros-lunar-turtlesim'
-pkgver='0.8.0'
+pkgver='0.8.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -45,7 +45,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_tutorials-release-release-lunar-turtlesim-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/lunar/turtlesim/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ae0502f33573619603b38534231d4155fb089a6f76b412f61b3f72e0ecf4320e')
+sha256sums=('ce15b5cb9dd8c7b43bd5082bd62f713e09fdc55d0bcb081fd462df88e14fda1f')
 
 build() {
   # Use ROS environment variables
