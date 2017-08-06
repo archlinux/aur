@@ -4,7 +4,7 @@ pkgdesc="ROS - Contains scripts used by the rosboost-cfg tool for determining cf
 url='http://ros.org/wiki/rosboost_cfg'
 
 pkgname='ros-lunar-rosboost-cfg'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-lunar-rosboost_cfg-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/lunar/rosboost_cfg/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b67ef970c65197cb75886376aff1085eff089c83163901aa7c2598944f5fe77b')
+sha256sums=('cae8f5071d9f230da9b24b0db4a6348e090cacc5dff1ccd3909d11b999e1f310')
 
 build() {
   # Use ROS environment variables
