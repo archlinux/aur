@@ -4,7 +4,7 @@ pkgdesc="ROS - System-wide logging mechanism for messages sent to the /rosout to
 url='http://ros.org/wiki/rosout'
 
 pkgname='ros-lunar-rosout'
-pkgver='1.13.0'
+pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosout-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosout/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7ae62287cf9fd2a708fa2975d7c07a108bccf953a735c09d7522f61938b7ca85')
+sha256sums=('c35a4bcf95bd26afdaba473468a0eb245a348ad365b8314b4e28e152d502088d')
 
 build() {
   # Use ROS environment variables
