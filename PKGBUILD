@@ -4,7 +4,7 @@ pkgdesc="ROS - self_test."
 url='http://www.ros.org/wiki/self_test'
 
 pkgname='ros-lunar-self-test'
-pkgver='1.9.0'
+pkgver='1.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="diagnostics-release-release-lunar-self_test-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/lunar/self_test/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('54d50ec554bc9c42113f47647d75aae06e1c4a78fbc33d13ec1d066adee790b7')
+sha256sums=('b70116a77b9b3e36857e5fa4dd70368babb6ca60d08aacbf5f2ee2ed024fff9a')
 
 build() {
   # Use ROS environment variables
