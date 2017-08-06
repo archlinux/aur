@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp_serialization contains the code for serialization as descr
 url='http://ros.org/wiki/roscpp_serialization'
 
 pkgname='ros-lunar-roscpp-serialization'
-pkgver='0.6.4'
+pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-lunar-roscpp_serialization-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/lunar/roscpp_serialization/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('843ccb3782bf8ced6975d49b3fb1733fcd688069861b46b96e7da3f67de35b7f')
+sha256sums=('af2ecf45a78b9e3fb82cd3b7db12dd8e35348b3910a0eae5daf33dbdec127350')
 
 build() {
   # Use ROS environment variables
