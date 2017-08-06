@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains a C++ parser for the Collada robot descript
 url='http://ros.org/wiki/collada_parser'
 
 pkgname='ros-lunar-collada-parser'
-pkgver='1.12.9'
-_pkgver_patch=0
+pkgver='1.12.10'
+_pkgver_patch=2
 arch=('any')
-pkgrel=1
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-lunar-urdf
@@ -30,13 +30,13 @@ depends=(${ros_depends[@]}
 # Git version (e.g. for debugging)
 # _tag=release/lunar/collada_parser/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# source=("${_dir}"::"git+https://github.com/ros-gbp/collada_urdf-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="robot_model-release-release-lunar-collada_parser-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/lunar/collada_parser/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('dbf44f8f4db4b255eb05eaca1c65494e5eba71c4572a3444602bdedb7e323563')
+_dir="collada_urdf-release-release-lunar-collada_parser-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/collada_urdf-release/archive/release/lunar/collada_parser/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('619d55872496995196a0f96776d218c1f4b03eeaf0db8db71793976cdbbd3ec2')
 
 build() {
   # Use ROS environment variables
