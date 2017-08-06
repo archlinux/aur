@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_image_view provides a GUI plugin for displaying images using 
 url='http://wiki.ros.org/rqt_image_view'
 
 pkgname='ros-lunar-rqt-image-view'
-pkgver='0.4.8'
+pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="rqt_image_view-release-release-lunar-rqt_image_view-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_image_view-release/archive/release/lunar/rqt_image_view/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ac5f1281c3422079ef7d11362934ae418820a1be33250b0a5f48fd46ea9529b4')
+sha256sums=('2531400cd8a4e72c62b49d3b3545b23db4121ce7de2d1378ac14f5a4a7c01978')
 
 build() {
   # Use ROS environment variables
