@@ -4,7 +4,7 @@ pkgdesc="ROS - This package attempts to show the features of ROS step-by-step, i
 url='http://www.ros.org/wiki/roscpp_tutorials'
 
 pkgname='ros-lunar-roscpp-tutorials'
-pkgver='0.8.0'
+pkgver='0.8.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_tutorials-release-release-lunar-roscpp_tutorials-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/lunar/roscpp_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1e106f9e6f8661edba104e8cfb8df6f8807571d686413c9928042c4c70abf468')
+sha256sums=('5bdadf81ecfc4be9dbbcfad7462569326471dd0e7a24ed94a9adbb112f5b1604')
 
 build() {
   # Use ROS environment variables
