@@ -3,7 +3,7 @@
 
 pkgname=caffe
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -11,7 +11,7 @@ license=('BSD')
 depends=(
     # official repositories:
         'boost-libs' 'protobuf' 'google-glog' 'gflags' 'hdf5' 'opencv' 'leveldb'
-        'lmdb' 'cuda' 'python' 'boost' 'cython' 'python-numpy' 'python-scipy'
+        'lmdb' 'cuda' 'cudnn' 'python' 'boost' 'cython' 'python-numpy' 'python-scipy'
         'python-matplotlib' 'ipython' 'python-h5py' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
         'python-yaml' 'python-pillow' 'python-six'
@@ -19,7 +19,7 @@ depends=(
         # required:
             'openblas-lapack'
         # not required but enabled in build:
-            'cudnn' 'nccl'
+            'nccl'
         # python:
             'python-leveldb' 'python-scikit-image' 'python-pydotplus'
     # NOTE:
