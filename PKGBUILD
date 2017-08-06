@@ -4,7 +4,7 @@ pkgdesc="ROS - The class_loader package is a ROS-independent package for loading
 url='http://ros.org/wiki/class_loader'
 
 pkgname='ros-lunar-class-loader'
-pkgver='0.3.6'
+pkgver='0.3.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="class_loader-release-release-lunar-class_loader-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/class_loader-release/archive/release/lunar/class_loader/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('033b5bff257a38df68fc73d5cf702e9a3e388ec96976ad370e3a1cec105eb730')
+sha256sums=('34be4f8b38e2ebdea9456b96f16d9a491423f0ddf30eca91f7c9b5fcffde0a09')
 
 build() {
   # Use ROS environment variables
