@@ -1,6 +1,6 @@
 pkgbase = digilent-agent
 	pkgdesc = enables browser based applications to communicate with Digilent hardware (e.g. the OpenScopeMZ)
-	pkgver = 6e2057e
+	pkgver = 997734c
 	pkgrel = 1
 	url = https://github.com/Digilent/digilent-agent
 	install = digilent-agent.install
@@ -10,7 +10,7 @@ pkgbase = digilent-agent
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-serialport
-	source = digilent-agent::git+https://github.com/Digilent/digilent-agent.git#commit=6e2057e441c650fbd522a6033c2810386363941f
+	source = digilent-agent::git+https://github.com/Digilent/digilent-agent.git#commit=997734c6de37115ccc5959013c1dc2846df633e1
 	sha256sums = SKIP
 
 pkgname = digilent-agent

@@ -1,7 +1,7 @@
 # Maintainer: chuvke <chuvke AT gmail DOT com>
 pkgname=digilent-agent
-pkgver=6e2057e
-_pkgrevision=6e2057e441c650fbd522a6033c2810386363941f
+pkgver=997734c
+_pkgrevision=997734c6de37115ccc5959013c1dc2846df633e1
 pkgrel=1
 epoch=
 pkgdesc="enables browser based applications to communicate with Digilent hardware (e.g. the OpenScopeMZ)"
