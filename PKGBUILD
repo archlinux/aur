@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libmysofa
-pkgver=0.5
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc='C library to read HRTFs if they are stored in the AES69-2015 SOFA format'
 arch=('i686' 'x86_64')
 url='https://hoene.github.io/libmysofa/'
@@ -11,7 +11,7 @@ depends=('glibc' 'zlib')
 makedepends=('cmake')
 conflicts=('libmysofa-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/hoene/libmysofa/archive/v${pkgver}.tar.gz")
-sha256sums=('c4ffef39c24b14ea91f5631058adfd192e491e2d5c48bf7f5678e6fb02daa814')
+sha256sums=('e39c34bd40d17aecdb962ba6ae533a3fa9d291da4db6972d0d6e023974a1c169')
 
 build() {
     cd "${pkgname}-${pkgver}/build"
