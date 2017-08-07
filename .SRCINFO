@@ -1,0 +1,17 @@
+pkgbase = librtmfp-git
+	pkgdesc = LGPL implementation of RTMFP (client part)
+	pkgver = r162.eac2eb6
+	pkgrel = 1
+	url = https://github.com/MonaSolutions/librtmfp
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = openssl
+	provides = librtmfp
+	conflicts = librtmfp
+	source = librtmfp::git+https://github.com/MonaSolutions/librtmfp.git
+	md5sums = SKIP
+
+pkgname = librtmfp-git
+
