@@ -1,16 +1,22 @@
 # arg 1:  the new package version
 post_install() {
-   # creates group and user on virgin systems
+  # create courier group and user
   if ! getent group courier >/dev/null; then
     groupadd -g 72 courier >/dev/null 2>&1
   fi
 
   if ! getent passwd courier >/dev/null; then
-    useradd -u 72 -d /var/spool/courier -g courier -s /bin/false courier >/dev/null 2>&1
+    useradd -u 72 -d /var/spool/courier -g courier -s /bin/false courier >/dev/null 2>&1;
   fi
 
-  useradd courier -g courier
+   if ! (grep -q '^courier:.*:72:72:' /etc/passwd); then echo courier user has incorrect uid:gid - please fix!; fi;
+
+  # set correct ownership & permissions on /run/authdaemon
   systemd-tmpfiles --create /usr/lib/tmpfiles.d/courier-authlib.conf
+
+  # make sure the system can see authlib libraries
+  echo /usr/lib/courier-authlib > /etc/ld.so.conf.d/courier-authlib
+  ldconfig
 }
 
 # arg 1:  the new package version
@@ -21,7 +27,10 @@ post_upgrade() {
 
 # arg 1:  the old package version
 pre_remove() {
+  systemd-tmpfiles --remove /usr/lib/tmpfiles.d/courier-authlib.conf
+  rm -f /etc/ld.so.conf.d/courier-authlib
+  ldconfig
   userdel courier
-  groupdel courier
+  if getent group courier >/dev/null; then groupdel courier; fi
 } >/dev/null 2>&1
 

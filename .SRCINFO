@@ -1,7 +1,7 @@
 pkgbase = courier-authlib
-	pkgdesc = Authentification library for the courier mailserver(s)
+	pkgdesc = Authentication library for the Courier mailserver(s)
 	pkgver = 0.68.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://courier-mta.org/authlib/
 	install = courier-authlib.install
 	arch = i686
@@ -24,6 +24,8 @@ pkgbase = courier-authlib
 	optdepends = postgresql-libs: With support for the authpgsql authentication module
 	optdepends = pam: With support for the authpam authentication module
 	options = !libtool
+	options = !staticlibs
+	options = emptydirs
 	backup = etc/authlib/authdaemonrc
 	backup = etc/authlib/authldaprc
 	backup = etc/authlib/authmysqlrc
@@ -32,8 +34,8 @@ pkgbase = courier-authlib
 	source = courier-authlib.tmpfiles
 	source = authdaemond.service
 	sha512sums = 5c4adaf0fd69f4b9e780962aa3f9eeac6b15cea3f302288ff4549ce2b0be9ea0808b4501670ef3c4e0419c3d27505c256c082f795dea4683dd5265fd7dcab93b
-	sha512sums = 6fa87f52a3a26ae470bc28f9ff6d5f7c16afc5ccaf0d3209378e7339271d568dc59ca9fc9d0b5bbfc4155e76702f5de18899237252860a4a3636eabb94a770d7
-	sha512sums = 923b501bd250068956d304c2ab922af4e22f2828eae9fb17dc5945bbd2af3d0eb641ba8783a91a20f970bdda95e97f6ef2801e0b50d767c626ca38de6cb140b4
+	sha512sums = 5047fea9990cd2cd415e11c81fbd8ff83b70dadf0fc178b2398b2c9930843a4669abb3c6801f2953c1ebfdae73c1f82d0ee8c24e900f3876ee6b3aa689363b62
+	sha512sums = 2168a3d2f92bbc4c24ba80030236dd39a871ccd0f945ea9481518356f6ddfeec3661f161cd6a65d852bce6d9b089d7fa4860337615b9157199aaef336c58d268
 
 pkgname = courier-authlib
 

@@ -9,3 +9,4 @@ PIDFile=/var/run/authdaemon/pid
 
 [Install]
 WantedBy=multi-user.target
+
