@@ -21,6 +21,7 @@ build() {
   cd "${pkgname}-${pkgver}"
 
   cargo build --release
+  cargo doc --no-deps
 }
 
 check() {
@@ -32,10 +33,13 @@ check() {
 package() {
   cd "${pkgname}-${pkgver}"
 
-  install -D -m 755 \
-    target/release/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
-  install -D -m 644 \
-    LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d -m 755 "${pkgdir}/usr/bin/"
+  install -d -m 755 "${pkgdir}/usr/share/doc/"
+  install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  install -m 755 target/release/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+  install -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cp -r target/doc/* "${pkgdir}/usr/share/doc/"
 }
 
 # vim: ts=2 sw=2 et:
