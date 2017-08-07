@@ -13,11 +13,6 @@ conflicts=($_pkgname)
 provides=($_pkgname)
 sha1sums=('SKIP')
 
-pkgver() {
-  cd $_pkgname
-  printf "r%s-%s" "$(pkgver)" "$(pkgrel)"
-}
-
 build() {
   cd $_pkgname/branches/gui
   ./autogen.sh
