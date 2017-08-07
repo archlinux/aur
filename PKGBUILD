@@ -1,6 +1,6 @@
 # Maintainer:  <simonfxr@gmail.com>
 pkgname=stack-static
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 epoch=
 pkgdesc="The Haskell Tool Stack (linked statically)"
@@ -14,13 +14,13 @@ depends=( ncurses5-compat-libs ) # needed for working ghc downloaded by stack
 optdepends=( bash-completion )
 source=(
     "stack.bash"
-    "https://github.com/commercialhaskell/stack/releases/download/v1.5.0/stack-${pkgver}-linux-x86_64-static.tar.gz"
-    "https://github.com/commercialhaskell/stack/releases/download/v1.5.0/stack-${pkgver}-linux-x86_64-static.tar.gz.asc"
+    "https://github.com/commercialhaskell/stack/releases/download/v${pkgver}/stack-${pkgver}-linux-x86_64-static.tar.gz"
+    "https://github.com/commercialhaskell/stack/releases/download/v${pkgver}/stack-${pkgver}-linux-x86_64-static.tar.gz.asc"
 )
 sha256sums=(
     'df46833a748574d01f38d4120e5021ee6fac9b8a70995674ca0bd2cacbd3e3c2'
-    '720bdacf4f83a739826f7d94306a45c56bd29fdc366ee4d0fa5aa645f87753e0'
-    '7ce61a53483ff6e87d5cef8c0d95c3f1dae686690ab3c5254e14b277b4a4221d'
+    '6a250cbab60870f6b933c780c96c5cafb02d066a6f2d7182bb00ec005262842b'
+    '317e12c63b19f4323a8387c157c1fc3d5cb0b062f90ed479c96a85ecb3a24dd8'
 )
 validpgpkeys=('C5705533DA4F78D8664B5DC0575159689BEFB442')
 
