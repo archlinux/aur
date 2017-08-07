@@ -1,7 +1,7 @@
 pkgbase = kompose-bin
 	pkgdesc = Takes a Docker Compose file and translates it into Kubernetes resources
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kompose.io/
 	arch = x86_64
 	license = Apache
