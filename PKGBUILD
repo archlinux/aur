@@ -2,12 +2,12 @@
 
 pkgname=perl6-rpi-device-ds18b20
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides support for the DS18B20 family of temperature sensors"
 arch=('any')
 depends=('perl6' 'perl6-rpi')
 checkdepends=('perl')
-makedepends=('alacryd' 'git')
+makedepends=('git')
 groups=('perl6')
 url="https://github.com/cspencer/perl6-raspberry-pi-device-ds18b20"
 license=('PerlArtistic')
@@ -28,30 +28,13 @@ package() {
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 
   msg2 'Installing...'
-  install -dm 755 "$pkgdir/usr/share/perl6/vendor"
   export RAKUDO_LOG_PRECOMP=1
-  export PERL6LIB="inst#$pkgdir/usr/share/perl6/vendor"
-  alacryd install
-
-  msg2 'Removing redundant precomp file dependencies...'
-  _precomp=($(pacman -Qqg perl6 | pacman -Qql - | grep -E 'dist|precomp' || true))
-  for _pc in "${_precomp[@]}"; do
-    [[ -f "$pkgdir/$_pc" ]] && rm -f "$pkgdir/$_pc"
-  done
-  _short=($(pacman -Qg perl6 \
-    | awk '{print $2}' \
-    | xargs pacman -Ql \
-    | awk '{print $2}' \
-    | grep short))
-  for _s in "${_short[@]}"; do
-    [[ -f "$pkgdir/$_s" ]] && rm -f "$pkgdir/$_s"
-  done
+  export RAKUDO_RERESOLVE_DEPENDENCIES=0
+  perl6-install-dist \
+    --to="$pkgdir/usr/share/perl6/vendor" \
+    --for=vendor \
+    --from=.
 
   msg2 'Removing test bin examples...'
   rm -rf "$pkgdir/usr/share/perl6/vendor/bin"
-
-  msg2 'Cleaning up pkgdir...'
-  rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
-  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir,,g"
 }
