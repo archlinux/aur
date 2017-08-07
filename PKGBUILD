@@ -21,6 +21,7 @@ pkgver() {
 build() {
     cd "$srcdir/${pkgname%-git}"
     make
+    make librtmfp.pc
 }
 
 package() {
