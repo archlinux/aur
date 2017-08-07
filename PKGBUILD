@@ -3,32 +3,47 @@
 
 pkgname=mantid
 pkgver=3.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Data analysis toolkit for neutron based instrument data"
 url="http://www.mantidproject.org/"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=(
-  'libnexus'
-  'qwt5'
-  'qwtplot3d'
-  'qscintilla'
-  'boost'
-  'poco'
-  'muparser'
-  'qtwebkit'
+  'boost-libs'
+  'glu'
+  'gperftools'
+  'gsl'
+  'hdf4'
+  'hdf5'
+  'intel-tbb'
   'jsoncpp'
-  'ipython2'
+  'libnexus'
+  'libxslt'
+  'muparser'
+  'opencascade'
+  'poco'
   'python2'
+  'python2-dateutil'
+  'python2-h5py'
   'python2-numpy'
   'python2-pyqt4'
   'python2-pyzmq'
+  'python2-qtconsole'
   'python2-scipy'
   'python2-sip'
-  'hdf5'
-  'gsl'
+  'python2-yaml'
+  'qscintilla'
+  'qtwebkit'
+  'qwt5'
+  'qwtplot3d'
   )
-makedepends=('cmake')
+
+makedepends=(
+  'boost'
+  'cmake'
+  'python2-sphinx'
+  'python2-sphinx-bootstrap-theme'
+  )
 source=("$pkgname::git+https://github.com/mantidproject/mantid.git#tag=v${pkgver}"
   "https://github.com/mantidproject/mantid/pull/19889.patch")
 sha1sums=('SKIP'
