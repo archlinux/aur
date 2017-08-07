@@ -4,7 +4,7 @@ pkgdesc="ROS - The nodelet package is designed to provide a way to run multiple 
 url='http://ros.org/wiki/nodelet'
 
 pkgname='ros-lunar-nodelet'
-pkgver='1.9.11'
+pkgver='1.9.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -43,7 +43,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="nodelet_core-release-release-lunar-nodelet-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/lunar/nodelet/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('991fc5851769b565e5ffaf28e6b6b24b4f2b815c3937ee43cbb661131e770552')
+sha256sums=('c80c2a4486c96d58871891e6ed6436fee60b2caa2c681ba49ab991cd571c7896')
 
 build() {
   # Use ROS environment variables
