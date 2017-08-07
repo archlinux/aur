@@ -2,8 +2,8 @@
 
 pkgname=mkchromecast-git
 _gitname=mkchromecast
-pkgver=0.3.7.r9.g6aef35bf
-pkgrel=1
+pkgver=r1008.ea1b49a7
+pkgrel=2
 pkgdesc="Python application to cast your audio to your Google Cast
 devices."
 arch=('any')
@@ -15,6 +15,8 @@ optdepends=('ffmpeg'
             'python-pyqt5: system tray menu support'
             'youtube-dl: youtube URLs casting support'
             'socos: cast to Sonos speakers')
+provides=('mkchromecast')
+conflicts=('mkchromecast')
 options=('!emptydirs')
 source=("git+https://github.com/muammar/${_gitname}.git#branch=devel"
 "mkchromecast.sh" "mkchromecast.desktop" "mkchromecast.png")
