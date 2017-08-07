@@ -4,16 +4,26 @@
 
 pkgname=xephem
 pkgver=3.7.7
-pkgrel=4
+pkgrel=5
 pkgdesc="The Serious Interactive Astronomical Software Ephemeris"
 arch=('i686' 'x86_64')
 url="http://www.clearskyinstitute.com/xephem/xephem.html"
 license=("custom")
 depends=(libxmu lesstif)
+optdepends=(perl openssl)
 makedepends=()
 optdepends=(perl)
-source=(http://www.clearskyinstitute.com/xephem/$pkgname-$pkgver.tgz)
-md5sums=('27c67061a89085bf2b0d4e9deb758a79')
+source=(http://www.clearskyinstitute.com/xephem/$pkgname-$pkgver.tgz
+http://www.clearskyinstitute.com/xephem/contrib/xephem-3.7.7_openssl.patch)
+md5sums=('27c67061a89085bf2b0d4e9deb758a79'
+'9315ccb614b9415d29115a23c314babc')
+
+prepare() {
+  cd ${srcdir}/${pkgname}-${pkgver}/GUI/$pkgname
+  chmod u+w Makefile net.h netmenu.c sunmenu.c ucac.c usno.c xephem.h
+  patch -p5 -i ../../../xephem-3.7.7_openssl.patch
+  chmod u-w Makefile net.h netmenu.c sunmenu.c ucac.c usno.c xephem.h
+}
 
 build() {
   #cd ${srcdir}/$pkgname-$pkgver/
