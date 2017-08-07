@@ -2,12 +2,12 @@
 
 pkgname=perl6-test-output
 pkgver=1.001001
-pkgrel=1
+pkgrel=2
 pkgdesc="Test the output to STDOUT and STDERR your program generates"
 arch=('any')
 depends=('perl6')
 checkdepends=('perl' 'perl6-test-meta')
-makedepends=('alacryd' 'git')
+makedepends=('git')
 groups=('perl6')
 url="https://github.com/zoffixznet/perl6-Test-Output"
 license=('PerlArtistic')
@@ -31,18 +31,10 @@ package() {
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 
   msg2 'Installing...'
-  install -dm 755 "$pkgdir/usr/share/perl6/vendor"
   export RAKUDO_LOG_PRECOMP=1
-  export PERL6LIB="inst#$pkgdir/usr/share/perl6/vendor"
-  alacryd install
-
-  msg2 'Removing redundant precomp file dependencies...'
-  _precomp=($(pacman -Qqg perl6 | pacman -Qql - | grep -E 'dist|precomp' || true))
-  for _pc in "${_precomp[@]}"; do
-    [[ -f "$pkgdir/$_pc" ]] && rm -f "$pkgdir/$_pc"
-  done
-
-  msg2 'Cleaning up pkgdir...'
-  rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  export RAKUDO_RERESOLVE_DEPENDENCIES=0
+  perl6-install-dist \
+    --to="$pkgdir/usr/share/perl6/vendor" \
+    --for=vendor \
+    --from=.
 }
