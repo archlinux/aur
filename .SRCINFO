@@ -1,7 +1,7 @@
 pkgbase = gdal-hdf4
 	pkgdesc = A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)
-	pkgver = 2.1.1
-	pkgrel = 4
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = http://www.gdal.org/
 	changelog = gdal.changelog
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = gdal-hdf4
 	depends = libspatialite
 	depends = libtiff
 	depends = netcdf
+	depends = hdf4-nonetcdf
 	depends = openjpeg2
 	depends = poppler
 	depends = python2
@@ -29,15 +30,14 @@ pkgbase = gdal-hdf4
 	depends = sqlite
 	depends = libmariadbclient
 	depends = postgresql-libs
-	depends = hdf4-nonetcdf
 	optdepends = postgresql: postgresql database support
 	optdepends = mariadb: mariadb database support
 	optdepends = perl: perl binding support
 	provides = gdal
 	conflicts = gdal
 	options = !emptydirs
-	source = http://download.osgeo.org/gdal/2.1.1/gdal-2.1.1.tar.xz
-	sha256sums = 87ce516ce757ad1edf1e21f007fbe232ed2e932af422e9893f40199711c41f92
+	source = http://download.osgeo.org/gdal/2.2.1/gdal-2.2.1.tar.xz
+	sha256sums = 927098d54083ac919a497f787b835b099e9a194f2e5444dbff901f7426b86066
 
 pkgname = gdal-hdf4
 

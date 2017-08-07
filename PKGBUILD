@@ -1,28 +1,28 @@
-# $Id: PKGBUILD 199904 2016-12-17 00:25:38Z foutrelis $
+# $Id$
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=gdal-hdf4
 _pkgname=gdal
-pkgver=2.1.1
-pkgrel=4
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
 license=('custom')
-depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf'
-         'openjpeg2' 'poppler' 'python2' 'python2-numpy' 'cfitsio' 'sqlite' 'libmariadbclient' 'postgresql-libs' 'hdf4-nonetcdf')
+depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf' 'hdf4-nonetcdf'
+         'openjpeg2' 'poppler' 'python2' 'python2-numpy' 'cfitsio' 'sqlite' 'libmariadbclient' 'postgresql-libs')
+provides=('gdal')
+conflicts=('gdal')
 makedepends=('perl' 'swig' 'chrpath' 'doxygen')
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
             'perl:  perl binding support')
 options=('!emptydirs')
-provides=('gdal')
-conflicts=('gdal')
 changelog=$_pkgname.changelog
 source=(http://download.osgeo.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz)
-sha256sums=('87ce516ce757ad1edf1e21f007fbe232ed2e932af422e9893f40199711c41f92')
+sha256sums=('927098d54083ac919a497f787b835b099e9a194f2e5444dbff901f7426b86066')
 
 prepare() {
   cd "${srcdir}"/$_pkgname-$pkgver
@@ -64,17 +64,13 @@ package () {
 # install license
   install -Dm644 LICENSE.TXT "${pkgdir}"/usr/share/licenses/$_pkgname/LICENSE
 
-#FS15477 clean up junks
-  rm -f "${pkgdir}"/usr/bin/*.dox
+#FS15477 clean up junks - still present in 2.2.1
   rm -f "${pkgdir}"/usr/share/man/man1/_build_gdal_src_gdal-${pkgver}_apps_.1
-  rm -f "${pkgdir}"/usr/share/man/man1/_home_rouault_dist_wrk_gdal_apps_.1
-#FS#46581 no better way found yet
-  mv "${pkgdir}"/usr/man/man3 "${pkgdir}"/usr/share/man
-  rm -rf "${pkgdir}"/usr/man
 
 # Remove RPATH
   chrpath --delete "${pkgdir}"/usr/lib/perl5/${CARCH}-linux-thread-multi/auto/Geo/OSR/OSR.so
   chrpath --delete "${pkgdir}"/usr/lib/perl5/${CARCH}-linux-thread-multi/auto/Geo/OGR/OGR.so
   chrpath --delete "${pkgdir}"/usr/lib/perl5/${CARCH}-linux-thread-multi/auto/Geo/GDAL/GDAL.so
   chrpath --delete "${pkgdir}"/usr/lib/perl5/${CARCH}-linux-thread-multi/auto/Geo/GDAL/Const/Const.so
+  chrpath --delete "${pkgdir}"/usr/lib/perl5/${CARCH}-linux-thread-multi/auto/Geo/GNM/GNM.so
 }
