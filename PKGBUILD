@@ -1,6 +1,7 @@
 # Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 pkgname=signing-party
-pkgver=2.5
+pkgver=2.6
+_debrel=1
 pkgrel=1
 pkgdesc="Collection for all kinds of pgp related things, including signing scripts, party preparation scripts etc."
 url="http://pgp-tools.alioth.debian.org/"
@@ -23,13 +24,15 @@ optdepends=('python: keyart support'
             'texlive-latexextra: QR code support in gpg-key2latex'
 	    'noto-fonts: fonts for pretty printouts'
 	    'noto-fonts-cjk: fonts for pretty printouts')
-conflicts=(caff mutt sig2dot signing-party-svn)
+conflicts=(caff sig2dot signing-party-svn)
 install=$pkgname.install
 source=("http://httpredir.debian.org/debian/pool/main/s/signing-party/signing-party_$pkgver.orig.tar.gz"
+        "http://httpredir.debian.org/debian/pool/main/s/signing-party/signing-party_$pkgver-$_debrel.debian.tar.xz"
         "series"
         "gpgwrap_makefile.patch")
 
-sha256sums=('62db91ccbde650ffbb332beab9cba0676b0d42fc46034fa3c28a471cc0ec4bf8'
+sha256sums=('d9458db6c5a01298838af99655c0edbebd0c955f50866c6e0f6f277a1dbbabd8'
+            'fab68f490887c5208a4f436f008645c4d1318a6941070bf025a0cba4c4ab34a2'
             'ca79e24dfd09a261e32a51382c81340b47fee0b0d34287adb4c0974eb33d06ea'
             '2816acc843c914b60110c7829cf44eb350f140df664998f3837d2731028c2f34')
 
@@ -61,6 +64,7 @@ build() {
 
 package() {
   make DESTDIR="$pkgdir" install
+  mv $pkgdir/usr/bin/{pgpring,pgpring-debian}
   # manually install all files the Makefiles in the subpackages are not installing
   install -D -m644 README $pkgdir/usr/share/doc/signing-party/README
   install -D caff/caff $pkgdir/usr/bin/caff
