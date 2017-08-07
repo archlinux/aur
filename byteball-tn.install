@@ -1,0 +1,11 @@
+post_install() {
+	ln -s /usr/share/byteball-tn/Byteball-TN /usr/bin/byteball-tn
+}
+
+post_upgrade() {
+	ln -s /usr/share/byteball-tn/Byteball-TN /usr/bin/byteball-tn
+}
+
+post_remove() {
+	rm -f /usr/bin/byteball-tn
+}
