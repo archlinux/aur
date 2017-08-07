@@ -58,9 +58,9 @@ _kyber_disable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.12
-_srcpatch=5
 pkgver=4.12.5
+_srcpatch=5
+_srcname="${pkgbase%%\b*}${pkgver%%\.${_srcpatch}}"
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
