@@ -1,7 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgname=deepin-wechat
 pkgver=2.4.5.48deepin0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tencent WeChat Client on Deepin Wine"
 arch=("x86_64")
 url="http://www.deepin.com/"
@@ -18,5 +18,5 @@ package() {
   mv usr/local/share usr/share
   rmdir usr/local
   chmod -x usr/share/applications/deepin.com.wechat.desktop
-  sed '30a\sed -i "s/deepin-wine/wine/" $1/drive_c/deepin/EnvInit.sh' -i opt/deepinwine/apps/Deepin-WeChat/run.sh
+  sed '30a\sed -i "s/deepin-wine/LANG=zh_CN.UTF-8 wine/" $1/drive_c/deepin/EnvInit.sh' -i opt/deepinwine/apps/Deepin-WeChat/run.sh
 }
