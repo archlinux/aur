@@ -2,12 +2,12 @@
 
 pkgname=('byteball')
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Byteball cryptocurrency wallet client."
 arch=('x86_64')
 url='byteball.org'
 license=('MIT')
-source=(https://github.com/byteball/bytecall/releases/download/v${pkgver}/byteball-linux64.zip)
+source=(https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/byteball-linux64.zip)
 sha256sums=('f45c9603885217b4097ccdc173e4993cbe3fcdff64182cb7b6897bc4093ae0c2')
 install="$pkgname.install"
 package() {
