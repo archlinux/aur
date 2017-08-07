@@ -30,7 +30,7 @@ makedepends=('cmake' 'doxygen' 'pkg-config>=0.26')
 install="gazebo.install"
 source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-${pkgver}.tar.bz2" "ogre-1.10.patch")
 sha256sums=('ea733be6946ac5c538bf207ba01f3a6d6afa456d0b70455f7066b19d722f0d12'
-            'afe0fb0acd62bdc16eb95c2f1467f8a2aa6a58a91553340fbe88832f1aa2d530')
+            '2fceb2e3797eb85d60b892957121cefb159d432d614a91004b6cbd9ce867b30c')
 provides=("gazebo=8.0.0")
 
 prepare() {
