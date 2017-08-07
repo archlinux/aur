@@ -4,10 +4,10 @@ pkgdesc="ROS - qt_gui provides the infrastructure for an integrated graphical us
 url='http://ros.org/wiki/qt_gui'
 
 pkgname='ros-lunar-qt-gui'
-pkgver='0.3.4'
-_pkgver_patch=2
+pkgver='0.3.6'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin)
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="qt_gui_core-release-release-lunar-qt_gui-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/lunar/qt_gui/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3b1948c3198652b03f4f9532d76a21790eecad90c6f8b5126378d1961d158da8')
+sha256sums=('4910be5b60798859948ac6cce10cc0e3f99ac30004c4a1e3c1b6ff94bef0e703')
 
 build() {
   # Use ROS environment variables
