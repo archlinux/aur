@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2_eigen."
 url='http://www.ros.org/'
 
 pkgname='ros-lunar-tf2-eigen'
-pkgver='0.5.15'
+pkgver='0.5.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,12 +16,12 @@ ros_makedepends=(ros-lunar-tf2
   ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen3)
+  eigen)
 
 ros_depends=(ros-lunar-tf2
-  ros-lunar-cmake-modules
   ros-lunar-geometry-msgs)
-depends=(${ros_depends[@]})
+depends=(${ros_depends[@]}
+  eigen)
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/tf2_eigen/${pkgver}-${_pkgver_patch}
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geometry2-release-release-lunar-tf2_eigen-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/lunar/tf2_eigen/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ff86c6d6752c86a2ada471dec61ff86084c3fa0e54fd30e9e989075f80ce4737')
+sha256sums=('505d13a61aeb828bb10f02c2cb4a5bb8bb00fe7a2e86190c1b0808d3100176ba')
 
 build() {
   # Use ROS environment variables
