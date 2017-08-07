@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-extras
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Extras DNF Plugins"
 arch=('any')
@@ -14,7 +14,7 @@ backup=('etc/dnf/plugins/rpmconf.conf'
         'etc/dnf/plugins/torproxy.conf')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('bbb34b86c53c2bc86b398a5755a55651')
+md5sums=('1ef3aeea6b79987d3f94dd2fab0db6fe')
 
 prepare() {
 	cd "$pkgname-$pkgver"
