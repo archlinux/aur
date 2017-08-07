@@ -4,7 +4,7 @@ pkgdesc="ROS - The tf2_py package."
 url='http://ros.org/wiki/tf2_py'
 
 pkgname='ros-lunar-tf2-py'
-pkgver='0.5.15'
+pkgver='0.5.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geometry2-release-release-lunar-tf2_py-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/lunar/tf2_py/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('75bbeb366b6b4b2a4f7cfa989882453c00203a16dab498d1b52e3b251d8dcabf')
+sha256sums=('2343da2f82ac93cc45fe917578d132d288c97ecf7e9c6902938de9acef26cba1')
 
 build() {
   # Use ROS environment variables
