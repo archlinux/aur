@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2_geometry_msgs."
 url='http://www.ros.org/wiki/tf2_ros'
 
 pkgname='ros-lunar-tf2-geometry-msgs'
-pkgver='0.5.15'
+pkgver='0.5.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geometry2-release-release-lunar-tf2_geometry_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/lunar/tf2_geometry_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3325155ee6a75f75777c24b99f277f187c435d257211a1e158e051f0e7fc6dd6')
+sha256sums=('b391aa086528e0b2184243cbc158d32423593d9bb180d94cce070d1cec1ae88d')
 
 build() {
   # Use ROS environment variables
