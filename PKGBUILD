@@ -5,7 +5,7 @@
 # Contributor: Guillem Rieu <guillemr@gmx.net>
 pkgname=ocamlnet
 pkgver=4.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for Web and Internet programming in OCaml"
 arch=('i686' 'x86_64')
 url="http://projects.camlcity.org/projects/ocamlnet.html"
@@ -20,9 +20,6 @@ md5sums=('06edf1d41cba8160704798fc3a40b586')
 build(){
   cd "$srcdir/$pkgname-$pkgver"
   ./configure -enable-gnutls -enable-gssapi -enable-pcre -bindir /usr/bin
-  echo -n "pwd: "; pwd
-  echo -n "ls -l ../.. => "; ls -l ../..
-  cp -av ../../netsys_posix.ml src/netsys/netsys_posix.ml   # overwrite file with changed one
 
   # You also could configure to add some more support,
   # if you have installed the according modules:
@@ -48,6 +45,5 @@ package(){
   install -dm755 "$OCAMLFIND_DESTDIR/stublibs"
   env DESTDIR="$pkgdir" make install
   install -d -m 0755 "${pkgdir}/usr/share/doc/$pkgname"
-  #install -t "${pkgdir}/usr/share/doc/$pkgname/" doc/html-main/*
   install -m 0644 -t "${pkgdir}/usr/share/doc/$pkgname/" doc/html-main/*
 }
