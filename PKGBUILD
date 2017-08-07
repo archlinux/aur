@@ -4,7 +4,7 @@ pkgdesc="ROS - Interface for enforcing joint limits."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-lunar-joint-limits-interface'
-pkgver='0.11.4'
+pkgver='0.12.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_control-release-release-lunar-joint_limits_interface-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/lunar/joint_limits_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b2ee248c512da21ddb9b840638b6b21d7f36650f8e39c3ce63ff6de69468ccf1')
+sha256sums=('e0b168b8e8d281021b9bfc66c6e94578e495a88bc12f92f62a45cfad15ccb7ac')
 
 build() {
   # Use ROS environment variables
