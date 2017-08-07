@@ -2,12 +2,12 @@
 
 pkgname=('byteball-tn')
 pkgver=1.9.1t
-pkgrel=1
+pkgrel=2
 pkgdesc="Byteball cryptocurrency testnet wallet client."
 arch=('x86_64')
 url='byteball.org'
 license=('MIT')
-source=(https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/byteball-tn-linux64.zip)
+source=(https://github.com/byteball/byteball/releases/download/v${pkgver}/byteball-tn-linux64.zip)
 sha256sums=('1d0f28db0f593299c41c003723c88c11f1df6f3f1e9680b114bb0a06e6cb8042')
 install="$pkgname.install"
 package() {
