@@ -1,16 +1,19 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-adaptive-git
-pkgver=r27.fc86263
+pkgver=r157.0b93432
 pkgrel=1
 pkgdesc="InputStream client for adaptive streams for Kodi 17+"
 arch=('x86_64' 'i686')
-url="https://github.com/liberty-developer/inputstream.adaptive"
+url="https://github.com/peak3d/inputstream.adaptive"
 license=('GPL2')
-depends=('kodi-platform-git>=r53')
+depends=('kodi-platform' 'kodi-dev')
 optdepends=('chromium-widevine: widevine drm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/liberty-developer/inputstream.adaptive.git')
+# kodi 17
+source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git#branch=k17_2')
+# kodi 18
+# source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git')
 md5sums=('SKIP')
 
 pkgver() {
