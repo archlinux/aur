@@ -32,6 +32,7 @@ source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-${pkg
 sha256sums=('ea733be6946ac5c538bf207ba01f3a6d6afa456d0b70455f7066b19d722f0d12'
             '2fceb2e3797eb85d60b892957121cefb159d432d614a91004b6cbd9ce867b30c')
 provides=("gazebo=8.0.0")
+conflicts=("gazebo")
 
 prepare() {
   cd "${srcdir}"
