@@ -2,14 +2,14 @@
 
 pkgname=('python-elektronn2' 'python2-elektronn2')
 _gitname='ELEKTRONN2'
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=0
 pkgdesc='A highly configurable toolkit for training 3D/2D CNNs and general Neural Networks'
 url='https://github.com/ELEKTRONN/ELEKTRONN2'
 license=('GPLv3')
 arch=('any')
 source=("https://github.com/ELEKTRONN/ELEKTRONN2/archive/v${pkgver}.tar.gz")
-sha256sums=('101b1d5dbe9d0f2cd77320d020e9b215a146e953e355b96ce3a6f8b870cc1000')
+sha256sums=('566bf9142b4eebc8154ce69f01223605b00d50fc11c48b516839b622780fe906')
 
 
 package_python-elektronn2() {
