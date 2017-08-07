@@ -3,7 +3,7 @@
 
 pkgname=apache-spark
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
@@ -42,7 +42,8 @@ prepare() {
 package() {
         cd "$srcdir/spark-${pkgver}-bin-without-hadoop"
 
-        install -d "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/var/log/apache-spark"
+        install -d "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/var/log/apache-spark" "$pkgdir/var/lib/apache-spark/work"
+        chmod 2775 "$pkgdir/var/log/apache-spark" "$pkgdir/var/lib/apache-spark/work"
 
         cp -r "$srcdir/spark-${pkgver}-bin-without-hadoop" "$pkgdir/opt/apache-spark/"
 
