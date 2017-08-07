@@ -2,7 +2,7 @@
 
 pkgname=Bash-Snippets
 pkgver=1.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of small bash scripts for heavy terminal users"
 arch=('any')
 url="https://github.com/alexanderepstein/Bash-Snippets"
@@ -14,5 +14,5 @@ sha256sums=("61602551a999448e9142489ad62d1e5da72a3b1354e010f1ee7135e4524d2eae")
 package() {
     tar -xf v$pkgver.tar.gz
     cd Bash-Snippets-$pkgver
-    ./install.sh all
+    ./install.sh --prefix=/usr all
 }
