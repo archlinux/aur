@@ -6,7 +6,7 @@
 # The source is over 8 GiB, with an extra 3 GiB of dependencies downloaded in build(), and may take several hours to compile.
 
 pkgname='unreal-engine'
-pkgver=4.16.3
+pkgver=4.17.0
 pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
@@ -19,7 +19,6 @@ source=(
   "git+ssh://git@github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
   'UE4Editor.desktop'
   'ignore-return-value-error.patch'
-  'LMStats.patch'
   'disable-pie.patch'
 )
 
@@ -27,7 +26,6 @@ sha256sums=(
   'SKIP'
   '46871ed662a3c97698be609d27da280d9000ec97183f1fa6592986f9910a2118'
   'd0a43ec1958790be11c3260d6b93c8fd29d9c7fd3c3f57574d5807b9390a95fa'
-  '84730f07cc501b65e015b1ff5d860e596b40c43ad37101aeacb681cc95205a9c'
   '32ab20e37f5595eff73fb7ee7916ecae19a47f72875f448663941621d166c13b'
 )
 
@@ -36,7 +34,6 @@ options=(!strip)
 
 prepare() {
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" ignore-return-value-error.patch
-  patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealLightmass/Private/LightmassCore/Misc/LMStats.h" LMStats.patch
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" disable-pie.patch
 
   cd $srcdir/UnrealEngine
