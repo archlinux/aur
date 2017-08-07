@@ -4,7 +4,7 @@ pkgdesc="ROS - Hardware Interface base class."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-lunar-hardware-interface'
-pkgver='0.11.4'
+pkgver='0.12.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_control-release-release-lunar-hardware_interface-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/lunar/hardware_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('596db64a68f4d6453fe6995c00e45b540d8d5c503aef883122454a00bdc81113')
+sha256sums=('6d3d85fec6ee147abae45357005db2ebcb6b628c1dd167e5421f92d092e5ef5f')
 
 build() {
   # Use ROS environment variables
