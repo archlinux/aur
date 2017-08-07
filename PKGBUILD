@@ -6,7 +6,7 @@ _ver=1.19
 _pkgbase=atril
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
-pkgrel=5
+pkgrel=6
 pkgdesc="MATE document viewer"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dconf' 'dbus' 'desktop-file-utils' 'glib2' 'gtk3' 'gtk-update-icon-cache' 
          'libsecret' 'libsm' 'libspectre' 'mate-desktop>=1.19' 'mathjax' 
-         'poppler-glib' 'webkitgtk' 'zlib')
+         'poppler-glib' 'webkit2gtk' 'zlib')
 makedepends=('caja>=1.19' 'djvulibre' 'gtk-doc>=1.13' 'intltool>=0.50.1' 'gobject-introspection' 'libgxps'
              'texlive-bin' 'yelp-tools' 'webkit2gtk')
 optdepends=('caja: Document Properties extension'
