@@ -4,7 +4,7 @@ pkgdesc="ROS - The controller manager."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-lunar-controller-manager'
-pkgver='0.11.4'
+pkgver='0.12.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_control-release-release-lunar-controller_manager-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/lunar/controller_manager/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('45c1ea51673139f9bf98cbff52f21c4063c1a0d96b26e606232e9286e32b334a')
+sha256sums=('966d534fc42c2cec9a1d856338b98e397f6f83a0b53740f5cd4abcab1b1c2396')
 
 build() {
   # Use ROS environment variables
@@ -58,8 +58,7 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCATKIN_ENABLE_TESTING=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
 
