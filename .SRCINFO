@@ -1,0 +1,22 @@
+pkgbase = python-pulse-control-git
+	pkgdesc = Python bindings for pulseaudio
+	pkgver = r146.0d14c59
+	pkgrel = 1
+	url = https://github.com/mk-fg/python-pulse-control
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-pulse-control-git::git+https://github.com/mk-fg/python-pulse-control.git
+	md5sums = SKIP
+
+pkgname = python-pulse-control-git
+	depends = python
+	depends = pulseaudio
+
+pkgname = python2-pulse-control-git
+	depends = python2
+	depends = pulseaudio
+
