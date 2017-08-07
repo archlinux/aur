@@ -1,5 +1,13 @@
 post_install() {
 	getent group netflow &>/dev/null || groupadd -r -g 44 netflow >/dev/null
-	getent passwd netflow &>/dev/null || useradd -r -u 44 -g netflow -d /var/lib/nfsen -s /bin/false -G http netflow >/dev/null
+	getent passwd netflow &>/dev/null || useradd -r -u 44 -g netflow -d /var/lib/nfsen -s /bin/false -G netflow http >/dev/null
 	usr/bin/systemd-tmpfiles --create nfsen.conf || true
+        echo ''
+        echo '::'
+        echo ':: NOTE:'
+        echo ':: To complete the installation, run:'
+        echo '::    cd /usr/share/webapps'
+        echo '::    su -c "./install.pl /etc/nfsen.conf"'
+        echo '::'
+        echo ''
 }
