@@ -1,6 +1,6 @@
 pkgbase = thunderbolt-dkms-git
 	pkgdesc = DKMS Package for the thunderbolt driver
-	pkgver = 14d71aa
+	pkgver = r19.14d71aa
 	pkgrel = 1
 	url = https://github.com/dell/thunderbolt-dkms
 	arch = x86_64

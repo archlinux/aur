@@ -2,7 +2,7 @@
 
 _pkgname=thunderbolt-dkms
 pkgname=thunderbolt-dkms-git
-pkgver=14d71aa
+pkgver=r19.14d71aa
 pkgrel=1
 pkgdesc="DKMS Package for the thunderbolt driver"
 arch=('x86_64')
