@@ -7,7 +7,7 @@
 
 pkgname=cin-git
 _pkgname=cinelerra-gg
-pkgver=5.1.20170429
+pkgver=5.1.20170731
 _pkgver=5.1
 pkgrel=1
 pkgdesc="Cinelerra maintained by Good Guy (git version)"
@@ -16,13 +16,13 @@ url="https://cinelerra-cv.org/"
 license=('GPL')
 depends=('xorg-server' 'libpng' 'libxv' 'libva'
          'libxft' 'freetype2' 'alsa-lib' 'inkscape' 'dvdauthor'
-         'libvorbis')
+         'libvorbis' 'openexr')
 makedepends=('yasm' 'nasm' 'cmake' 'git'
 	           'libxml2' 'perl-xml-libxml' 'perl-xml-parser')
 source=("${_pkgname}::git+git://git.cinelerra-cv.org/goodguy/cinelerra.git"
         "dep.patch")
 md5sums=('SKIP'
-         'eb86df252747ac8ff399953fc999f9b4')
+         'd232b7c72c5cf94fc352323e5580260c')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}/cinelerra-${_pkgver}"
@@ -33,8 +33,9 @@ prepare() {
   cd "${srcdir}"
 
   # Patches
-  # do not build libvorbis when libvorbis is installed
-  # building failure when texlive installed
+  # 1. do not build libvorbis when libvorbis is installed
+  #    building failure when texlive installed
+  # 2. fix wrong openexr detection
   patch -Np0 -i dep.patch
 
   cd "${srcdir}/${_pkgname}/cinelerra-${_pkgver}"
