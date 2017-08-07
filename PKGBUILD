@@ -4,10 +4,10 @@ pkgdesc="ROS - qt_dotgraph provides helpers to work with dot graphs."
 url='http://ros.org/wiki/qt_dotgraph'
 
 pkgname='ros-lunar-qt-dotgraph'
-pkgver='0.3.4'
-_pkgver_patch=2
+pkgver='0.3.6'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin)
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="qt_gui_core-release-release-lunar-qt_dotgraph-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/lunar/qt_dotgraph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('634be9b006d01be86afe04a937c021191de7a6bfe05df05a65ac580ef75f4c4a')
+sha256sums=('13e1686146ffbad1264fd9eed27a24dbdf52d2c3af9026e8ae50d8fb5a2cb3ae')
 
 build() {
   # Use ROS environment variables
