@@ -3,7 +3,7 @@
 # Contributor: Teteros <teteros -at- opmbx -dot- org>
 
 pkgname=radium
-pkgver=4.8.5
+pkgver=4.9.14
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -30,25 +30,29 @@ makedepends=(
     'cmake'
     'boost'
     'llvm'
+    'lld'
     'qt5-tools'
     'libxrandr'
     'steinberg-vst36'
 )
 options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
-        "dont-empty-qt-library-paths.patch"
+        "radium"
         "use-system-libxcb.patch"
-        "use-system-vstsdk.patch")
-md5sums=('393127add9c944e98768930b0179c4fa'
-         'd63cea387564fa21dee775e764206a45'
-         'd798d5655e2899dc1b54f797d9b2bda3'
-         'd068d4bc99360cd4ec933c57ab9f5159')
+        "use-system-vstsdk.patch"
+        "use-new-cxx11-abi.patch"
+)
+md5sums=('e12d11c59d4365af87fbaa3fbacf636c'
+         '092735a1ff69f02e41b28a0e849179f4'
+         'ec8251af460ad72ebba82c718615de1b'
+         'e587c15b18f761ae9af31d86162355ad'
+         'ecc15fbbf114b44a657cfc3c6bf64fb8')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
 
-    msg2 "Fixing QT_QPA_PLATFORM_PLUGIN_PATH problem"
-    patch -Nsp1 < "${srcdir}/dont-empty-qt-library-paths.patch"
+    msg2 "Fixing faust2 LLVM ABI problem"
+    patch -Nsp1 < "${srcdir}/use-new-cxx11-abi.patch"
 
     msg2 "Switching to system-wide libxcb"
     patch -Nsp1 < "${srcdir}/use-system-libxcb.patch"
@@ -77,14 +81,19 @@ package() {
     # Copy everything from bin except packages
     find "bin" -mindepth 1 -maxdepth 1 -name packages -o -exec cp -a "{}" "${pkgdir}/opt/radium/" \;
 
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/radium/radium_linux.bin" "${pkgdir}/usr/bin/radium"
+    msg2 "Installing Radium binary wrapper"
+    install -Dm755 "${srcdir}/radium" "${pkgdir}/usr/bin/radium"
 
     # Needed to make the Scheme parts of Radium work
     msg2 "Installing s7 sources"
     install -dm755 "${pkgdir}/opt/radium/packages"
     tar -xf "bin/packages/s7.tar.gz" -C "${pkgdir}/opt/radium/packages" \
         --no-same-owner --no-same-permissions --wildcards '*.scm'
+
+    msg2 "Installing libpd-master pure-data"
+    install -dm755 "${pkgdir}/opt/radium/packages/libpd-master/"
+    cp -a "bin/packages/libpd-master/pure-data/" \
+        "${pkgdir}/opt/radium/packages/libpd-master/"
 
     # Radium will complain if these are missing
     msg2 "Installing Faust GUI styles"
