@@ -2,7 +2,7 @@
 
 _pkgname=composer-cli
 pkgname=hyperledger-${_pkgname}
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A framework for building Blockchain business networks: Contains the Hyperledger composer CLIs for administering business networks"
 arch=(x86_64)
