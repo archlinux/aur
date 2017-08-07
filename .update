@@ -1,3 +1,3 @@
 #!/bin/bash
 # get info for the lastest build
-curl -i https://api.github.com/repos/zyedidia/micro/releases/tags/nightly | grep -P "\B\"micro.*linux\d\d.tar.gz" > version.info
+curl -i https://api.github.com/repos/zyedidia/micro/releases/tags/nightly | grep -P -o "\B\"micro.*linux\d\d.tar.gz" > version.info
