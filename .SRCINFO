@@ -1,6 +1,6 @@
 pkgbase = bash-snippets
 	pkgdesc = A collection of small bash scripts for heavy terminal users
-	pkgver = 1.17.3
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/alexanderepstein/Bash-Snippets
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = bash-snippets
   	depends = openssl
     depends = git
 	depends = bc
-	source = https://github.com/alexanderepstein/Bash-Snippets/archive/v1.17.3.tar.gz
-	sha256sums = 84d9b06c956552c0bf0ba36c208596bb9d335f67ff2ef379c07f611e4aa080a3
+	source = https://github.com/alexanderepstein/Bash-Snippets/archive/v1.18.0.tar.gz
+	sha256sums = 61602551a999448e9142489ad62d1e5da72a3b1354e010f1ee7135e4524d2eae
 
 pkgname = bash-snippets
