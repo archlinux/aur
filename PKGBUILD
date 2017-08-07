@@ -1,6 +1,6 @@
 # Maintainer: Sagittarius A* <lux.r.ck@gmail.com>
 pkgname=rgssad
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Extract rgssad/rgss2a/rgss3a files."
 arch=('i686' 'x86_64')
