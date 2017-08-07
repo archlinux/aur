@@ -2,7 +2,7 @@
 
 pkgname=python2-translate-toolkit-lib
 _name=translate-toolkit
-pkgver=2.1.0
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="A toolkit to convert between various different translation formats, help process and validate localisations"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('bash' 'python2-lxml' 'python2-six' 'python2-diff-match-patch')
 makedepends=('python2-setuptools' 'python2-setuptools')
 optdepends=('python2-iniparse: for ini2po'
             'gaupol: for po2sub')
-source=("https://github.com/translate/translate/releases/download/$pkgver/$_name-${pkgver}.tar.bz2")
-md5sums=('302d20ad12a34da9992ef14f4ba13261')
+source=("https://github.com/translate/translate/releases/download/$pkgver/$_name-${pkgver}.tar.gz")
+md5sums=('4ff21c47bf16e0855b913246ae397a58')
 
 prepare() {
   cd $_name-$pkgver
