@@ -1,8 +1,8 @@
 post_install() {
    echo "Add this line to /etc/environment"
-   echo "	export FABRIC_CFG_PATH=/etc/hyperledger/fabric/"
-   echo "	export CORE_PEER_MSPCONFIGPATH=$FABRIC_CFG_PATH/msp"
-   echo "	export CORE_LOGGING_LEVEL=DEBUG"
+   echo "	FABRIC_CFG_PATH=/etc/hyperledger/fabric"
+   echo "	CORE_PEER_MSPCONFIGPATH:=$FABRIC_CFG_PATH/msp"
+   echo "	CORE_LOGGING_LEVEL=DEBUG"
 }
 
 
