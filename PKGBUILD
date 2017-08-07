@@ -9,7 +9,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=($pkgname-$pkgver.tgz)
-sha1sums=('5282d532bb430d2295a055d6e2a4015d6e911f76')
+sha1sums=('89840b3efda54efa5655376290f69c2e9a323e17')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
