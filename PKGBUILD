@@ -2,12 +2,12 @@
 
 pkgname=perl6-svg-plot
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Perl 6 charting and plotting library that produces SVG output"
 arch=('any')
 depends=('perl6' 'perl6-svg')
 checkdepends=('perl')
-makedepends=('alacryd' 'git')
+makedepends=('git')
 groups=('perl6')
 url="https://github.com/moritz/svg-plot"
 license=('PerlArtistic')
@@ -31,19 +31,10 @@ package() {
   install -Dm 644 README -t "$pkgdir/usr/share/doc/$pkgname"
 
   msg2 'Installing...'
-  install -dm 755 "$pkgdir/usr/share/perl6/vendor"
   export RAKUDO_LOG_PRECOMP=1
-  export PERL6LIB="inst#$pkgdir/usr/share/perl6/vendor"
-  alacryd install
-
-  msg2 'Removing redundant precomp file dependencies...'
-  _precomp=($(pacman -Qqg perl6 | pacman -Qql - | grep -E 'dist|precomp' || true))
-  for _pc in "${_precomp[@]}"; do
-    [[ -f "$pkgdir/$_pc" ]] && rm -f "$pkgdir/$_pc"
-  done
-
-  msg2 'Cleaning up pkgdir...'
-  rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
-  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir,,g"
+  export RAKUDO_RERESOLVE_DEPENDENCIES=0
+  perl6-install-dist \
+    --to="$pkgdir/usr/share/perl6/vendor" \
+    --for=vendor \
+    --from=.
 }
