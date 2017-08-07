@@ -3,13 +3,16 @@
 _with_extra=y
 
 pkgname=arc-kde-git
-pkgver=20170731
-pkgrel=3
+epoch=1
+pkgver=r11.5485068
+pkgrel=1
 pkgdesc='Arc customization mainly for Plasma 5 (git version)'
 arch=('any')
 url='https://github.com/PapirusDevelopmentTeam/arc-kde'
 license=('GPLv3')
 options=('!strip')
+conflicts=('arc-kde')
+provides=('arc-kde')
 makedepends=('git')
 optdepends=(
   "plasma-desktop: For Plasma desktop theme"
@@ -41,8 +44,8 @@ sha256sums=('SKIP')
 install=${pkgname}.install
 
 pkgver() {
-    cd ${pkgname}
-    git log -1 --format="%cd" --date=short | tr -d '-'
+    cd "${srcdir}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
