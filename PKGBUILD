@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=lte-cell-scanner-git
-pkgver=r331.cbb5acb
+pkgver=r335.ef1ad25
 pkgrel=1
 pkgdesc="An OpenCL accelerated TDD/FDD LTE Scanner"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/rxseger/LTE-Cell-Scanner"
 license=('GPL')
 depends=('git')
 makedepends=('cmake' 'hackrf' 'fftw' 'itpp' 'boost-libs')
-source=("${pkgname}::git+https://github.com/rxseger/LTE-Cell-Scanner")
+source=("${pkgname}::git+https://github.com/JiaoXianjun/LTE-Cell-Scanner")
 
 sha256sums=('SKIP')
 
