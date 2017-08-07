@@ -6,8 +6,8 @@ pkgdesc="InputStream client for adaptive streams for Kodi 17+"
 arch=('x86_64' 'i686')
 url="https://github.com/peak3d/inputstream.adaptive"
 license=('GPL2')
-depends=('kodi-platform' 'kodi-dev')
-optdepends=('chromium-widevine: widevine drm')
+depends=('kodi-platform')
+makedepends=('kodi-dev')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 # kodi 17
@@ -38,7 +38,5 @@ build() {
 package() {
         cd "$srcdir/$pkgname"
         make DESTDIR="$pkgdir/" install
-#         sed -i 's|special://home/cdm|/usr/lib/kodi/addons/inputstream.adaptive/lib|g' "$pkgdir/usr/share/kodi/addons/inputstream.adaptive/resources/settings.xml"
         install -Dm644 wvdecrypter/libssd_wv.so "$pkgdir/usr/lib/kodi/addons/inputstream.adaptive/lib/libssd_wv.so"
-        ln -sf /usr/lib/chromium/libwidevinecdm.so "$pkgdir/usr/lib/kodi/addons/inputstream.adaptive/lib/libwidevinecdm.so"
 }
