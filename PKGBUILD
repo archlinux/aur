@@ -1,4 +1,4 @@
-# Maintainer: Vincent Ambo <tazjin@gmail.com>
+# Maintainer: Gabriel Tremblay <gabriel@delvelabs.ca> 
 
 _pkgname=thunderbolt-dkms
 pkgname=thunderbolt-dkms-git
