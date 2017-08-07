@@ -4,7 +4,7 @@ pkgdesc="ROS - Messages and services for the controller manager."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-lunar-controller-manager-msgs'
-pkgver='0.11.4'
+pkgver='0.12.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_control-release-release-lunar-controller_manager_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/lunar/controller_manager_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c0d1d188767e7b61a844b3d6c2bf03a4fb8ae34c49183db3afe57897aa205fb1')
+sha256sums=('58d12a6a3fed929f2fde11cc13fd34b9ef237cda35e8f90e68056d69499e9048')
 
 build() {
   # Use ROS environment variables
