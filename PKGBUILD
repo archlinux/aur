@@ -2,7 +2,7 @@
 
 pkgname=nfsen
 pkgver=1.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Netflow visualisation and investigation tool"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/nfsen"
@@ -26,6 +26,7 @@ prepare() {
 	cd "$pkgname-$pkgver"
         sed -i 's|%%PERL%%|/usr/bin/perl|' bin/* libexec/* plugins/backend/*.pm plugins/*.pm
         sed -i 's|%%LIBEXECDIR%%|/opt/nfsen/libexec|' bin/* plugins/backend/*.pm plugins/*.pm
+        sed -i 's|%%CONFDIR%%|/etc|' libexec/*
 }
 
 package() {
