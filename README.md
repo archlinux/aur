@@ -10,9 +10,8 @@ In your `$XDG_CONFIG_HOME` (or `$HOME/.config`) create `iosevka/config`, in INI 
 ```ini
 [options]
     name = myosevka
-    sans =
-    stress-fw =
-    type =
+    sans
+    stress-fw
     ligset = haskell
 
 [common]
@@ -30,9 +29,6 @@ In your `$XDG_CONFIG_HOME` (or `$HOME/.config`) create `iosevka/config`, in INI 
     g = opendoublestory
     numbersign = slanted
 ```
-
-Note:
-  - `spacing = term` is equivalent to `ligset =;`, i.e. empty, or a comment (`;`)
 
 Details of the (growing) options available can be found in the [font's readme][Iosevka].
 

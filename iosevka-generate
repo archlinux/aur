@@ -87,9 +87,9 @@ def parse_config(config_file: os.PathLike) -> Tuple[str, Dict[str, Set[str]]]:
         if option == 'name':
             font_name = value
         elif value is None:
-            font_styles['common'].update(option)
+            font_styles['common'].add(option)
         else:
-            font_styles['common'].update(f'{option}-{value}')
+            font_styles['common'].add(f'{option}-{value}')
 
     return (font_name, font_styles)
 
