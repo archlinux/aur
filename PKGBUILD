@@ -47,15 +47,10 @@ build() {
   cd "keyanalyze/pgpring"
 #  sed -e '/AM_C_PROTOTYPES/d' -i configure.in
   touch NEWS README AUTHORS ChangeLog
-  echo "before aclocal"
   aclocal
-  echo "before autoconf"
   autoconf
-  echo "before autoheader"
   autoheader
-  echo "before automake"
   automake --add-missing
-  echo "before configure"
   ./configure
   make
   cd $srcdir
