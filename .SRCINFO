@@ -1,0 +1,15 @@
+pkgbase = gr-keyfob-git
+	pkgdesc = Transceiver for Hella wireless car key fobs
+	pkgver = r14.910064c
+	pkgrel = 1
+	url = https://github.com/bastibl/gr-keyfob
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = git
+	source = gr-keyfob-git::git+https://github.com/bastibl/gr-keyfob
+	sha256sums = SKIP
+
+pkgname = gr-keyfob-git
+
