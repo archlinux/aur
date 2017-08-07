@@ -4,10 +4,10 @@ pkgdesc="ROS - qt_gui_py_common provides common functionality for GUI plugins wr
 url='http://ros.org/wiki/qt_gui_py_common'
 
 pkgname='ros-lunar-qt-gui-py-common'
-pkgver='0.3.4'
-_pkgver_patch=2
+pkgver='0.3.6'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin)
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="qt_gui_core-release-release-lunar-qt_gui_py_common-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/lunar/qt_gui_py_common/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('690db34b093385843588deb9d36da6e97f99d6b9deec31cb1d492936af322336')
+sha256sums=('4bc26d422f343c2b7e55475bff78e1da38e980c7ffdbf7f3266d7f277721a470')
 
 build() {
   # Use ROS environment variables
