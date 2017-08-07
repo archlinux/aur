@@ -1,0 +1,15 @@
+pkgbase = thunderbolt-dkms-git
+	pkgdesc = DKMS Package for the thunderbolt driver
+	pkgver = 14d71aa
+	pkgrel = 1
+	url = https://github.com/dell/thunderbolt-dkms
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	optdepends = linux-headers
+	optdepends = linux-lts-headers
+	source = git+https://github.com/dell/thunderbolt-dkms.git
+	sha1sums = SKIP
+
+pkgname = thunderbolt-dkms-git
+
