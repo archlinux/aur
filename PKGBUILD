@@ -2,7 +2,7 @@
 
 _pkgname=composer-playground
 pkgname=hyperledger-${_pkgname}
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A framework for building Blockchain business networks: The UI for Hyperledger Composer"
 arch=(x86_64)
