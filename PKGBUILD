@@ -7,7 +7,7 @@ pkgdesc="Network recon framework"
 url="https://ivre.rocks/"
 arch=('any')
 license=('GPL3')
-depends=('python' 'python-crypto' 'python-pymongo')
+depends=('python' 'python-crypto' 'python-pymongo' 'python-future')
 optdepends=('python-py2neo: flow analysis support'
             'python-sqlalchemy: PostgreSQL backend support'
             'python-psycopg2: PostgreSQL backend support'

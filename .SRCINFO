@@ -9,6 +9,7 @@ pkgbase = ivre
 	depends = python
 	depends = python-crypto
 	depends = python-pymongo
+	depends = python-future
 	optdepends = python-py2neo: flow analysis support
 	optdepends = python-sqlalchemy: PostgreSQL backend support
 	optdepends = python-psycopg2: PostgreSQL backend support
