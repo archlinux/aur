@@ -32,7 +32,7 @@ makedepends=('python-setuptools')
 backup=('etc/httpd/conf/extra/ivre.conf')
 source=(https://github.com/cea-sec/$pkgname/archive/v$pkgver.tar.gz
         'apache.example.conf')
-sha256sums=('d82d20ec0dc8fcb8e521061636b99367faf5c2bf2051c6dfaa85fac8abf72f3b'
+sha256sums=('4b8cda9dfb05493ee19fd334e7872bff39333b623974e6eafa976ec938d84d07'
             '3e372f51f2ad441baf8268ce29d35b3a1cb9ef4cb29e7864fab389759694f72e')
 
 build() {
