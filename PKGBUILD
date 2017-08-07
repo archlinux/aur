@@ -1,9 +1,10 @@
 # Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: Andrej Gelenberg <andrej.gelenberg@udo.edu>
+# Contributor: Alexander Konarev <AVKonarev@gmail.com>
 
 pkgname=brother-dcp7030
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Brother cupd and lpd driver for DCP-7030"
 arch=('i686' 'x86_64')
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html#DCP-7030"
@@ -47,7 +48,7 @@ build() {
   pstops=/usr/bin/pstops
 END
 
-  patch $srcdir/usr/local/Brother/cupswrapper/cupswrapperDCP7030-2.0.2 < cupswrapper-systemd.patch
+  patch $srcdir/usr/local/Brother/cupswrapper/cupswrapperDCP7030-2.0.2 < $startdir/cupswrapper-systemd.patch
 }
 
 package() {
