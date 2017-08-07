@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2 is the second generation of the transform library, which lets
 url='http://www.ros.org/wiki/tf2'
 
 pkgname='ros-lunar-tf2'
-pkgver='0.5.15'
+pkgver='0.5.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry2-release-release-lunar-tf2-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/lunar/tf2/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b3cd7e7bd1887d545657a4c449ea84e8b78b00349d78a41d17b999e994a2f9fb')
+sha256sums=('5c3731bd35d64a15cc8f935aef430f12424f23eca239f5474df2f036d4ca1d77')
 
 build() {
   # Use ROS environment variables
