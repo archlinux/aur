@@ -4,7 +4,7 @@ pkgdesc="ROS - Interface base class for controllers."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-lunar-controller-interface'
-pkgver='0.11.4'
+pkgver='0.12.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_control-release-release-lunar-controller_interface-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/lunar/controller_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('91167169290e7cff6c4c1abf4459fc1805d9439012c030495448975f03a32b20')
+sha256sums=('793a1f3d104d6e1e2c909dc808b2a42541dd17c844bfa8ca2f434c382bf4f508')
 
 build() {
   # Use ROS environment variables
