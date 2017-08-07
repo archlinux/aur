@@ -4,7 +4,7 @@
 # Report all package issues to `https://github.com/SShrike/pkgbuilds`
 
 pkgname='gtkd'
-pkgver='3.6.5'
+pkgver='3.6.6'
 pkgrel=1
 pkgdesc='D bindings for GTK+ and related libraries.'
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ depends=('liblphobos' 'gtk3')
 makedepends=('ldc')
 optdepends=('pango' 'atk' 'gdk-pixbuf2' 'gtksourceview3' 'gstreamer' 'vte3' 'libpeas')
 source=("https://github.com/gtkd-developers/GtkD/archive/v${pkgver}.tar.gz")
-sha512sums=('0f6ca339eee83c3c3ce59c8a36f98c660f0f6cfc735fa260a8f5ed375c314bc6ecb51937ab60d0089ce9ed9119fc1011cbb02ade6179305fd4ba28eb104f5f83')
+sha512sums=('fb0747b1e320507671369982f94a50c0180799a7ab7979ad4696ffed3b21d047e00d310c3a5d16c4f4f90b817ba25074987cce0a12c8a7af4ba429e402ce6314')
 
 build() {
   cd ${srcdir}/GtkD-${pkgver}
