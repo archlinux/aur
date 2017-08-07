@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libmysofa-git
-pkgver=0.5.r1.gb915602
+pkgver=0.6.r3.g00c6e62
 pkgrel=1
 pkgdesc='C library to read HRTFs if they are stored in the AES69-2015 SOFA format (git version)'
 arch=('i686' 'x86_64')
@@ -41,7 +41,11 @@ package() {
     
     # library
     cd "${srcdir}/${pkgname}/build/src"
-    install -D -m755 libmysofa.so "${pkgdir}/usr/lib/libmysofa.so"
+    mkdir -p "${pkgdir}/usr/lib"
+    for _file in libmysofa.so*
+    do
+        cp -a "$_file" "${pkgdir}/usr/lib"
+    done
     
     # license
     cd "${srcdir}/${pkgname}"
