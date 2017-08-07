@@ -4,7 +4,7 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='http://ros.org/wiki/rviz'
 
 pkgname='ros-lunar-rviz'
-pkgver='1.12.10'
+pkgver='1.12.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -85,7 +85,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rviz-release-release-lunar-rviz-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/lunar/rviz/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6505a6d518592469d22e2d1b800d85b2f2fa17acfcbc4b048295425e8d480beb')
+sha256sums=('b492f6d9ae9451beedcf4f66fedf4371158e25e1e3531b438249e19c8fc5bf17')
 
 build() {
   # Use ROS environment variables
