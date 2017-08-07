@@ -2,12 +2,12 @@
 
 pkgname=perl6-config-simple
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple module for your configuration file needs"
 arch=('any')
 depends=('perl6' 'perl6-config-ini' 'perl6-data-dump' 'perl6-json-pretty')
 checkdepends=('perl' 'perl6-test-meta')
-makedepends=('alacryd' 'git')
+makedepends=('git')
 groups=('perl6')
 url="https://github.com/Skarsnik/perl6-config-simple"
 license=('PerlArtistic')
@@ -28,19 +28,10 @@ package() {
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 
   msg2 'Installing...'
-  install -dm 755 "$pkgdir/usr/share/perl6/vendor"
   export RAKUDO_LOG_PRECOMP=1
-  export PERL6LIB="inst#$pkgdir/usr/share/perl6/vendor"
-  alacryd install
-
-  msg2 'Removing redundant precomp file dependencies...'
-  _precomp=($(pacman -Qqg perl6 | pacman -Qql - | grep -E 'dist|precomp' || true))
-  for _pc in "${_precomp[@]}"; do
-    [[ -f "$pkgdir/$_pc" ]] && rm -f "$pkgdir/$_pc"
-  done
-
-  msg2 'Cleaning up pkgdir...'
-  rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
-  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir,,g"
+  export RAKUDO_RERESOLVE_DEPENDENCIES=0
+  perl6-install-dist \
+    --to="$pkgdir/usr/share/perl6/vendor" \
+    --for=vendor \
+    --from=.
 }
