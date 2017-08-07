@@ -2,7 +2,7 @@
 
 pkgname=ivre
 pkgver=0.9.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Network recon framework"
 url="https://ivre.rocks/"
 arch=('any')

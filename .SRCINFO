@@ -1,7 +1,7 @@
 pkgbase = ivre
 	pkgdesc = Network recon framework
 	pkgver = 0.9.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ivre.rocks/
 	arch = any
 	license = GPL3
