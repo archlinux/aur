@@ -5,7 +5,7 @@
 # Report all package issues to `https://github.com/SShrike/pkgbuilds`
 
 pkgname=gtkd-git
-pkgver=3.6.1.r0.ec0292f0
+pkgver=3.6.5.r37.61f507ef
 pkgrel=1
 pkgdesc='D bindings for GTK+ and related libraries.'
 url='http://gtkd.org/'
