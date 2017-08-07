@@ -1,29 +1,26 @@
-# Maintainer: J0k3r <moebius282 at gmail dot com>
+# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
+# Contributor: Spike29 <leguen.yannick@gmail.com>
+# Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r1355.e38c7bf
-pkgrel=1
+pkgver=r1620.0311de36
+pkgrel=2
 epoch=1
 pkgdesc="A Stabilized Q3 Map Editor - git version"
-url="http://dev.xonotic.org/projects/xonotic/wiki/Netradiant"
+url="https://gitlab.com/xonotic/netradiant"
 license=('GPL' 'BSD' 'LGPL')
 arch=('i686' 'x86_64')
-changelog="${pkgname}.changelog"
-depends=('gtkglext')
-makedepends=('git' 'svn' 'wget' 'unzip')
+depends=('gtkglext' 'minizip' 'libjpeg-turbo')
+makedepends=('git' 'svn' 'wget' 'unzip' 'cmake')
 provides=('netradiant')
-conflicts=('netradiant-bin32' 'netradiant-svn' 'netradiant-latest' 'netradiant-unfree-svn')
 source=("${pkgname}::git://git.xonotic.org/xonotic/netradiant.git"
-        "${pkgname}.desktop"
-        "${pkgname}.changelog")
+        "${pkgname}.desktop")
 sha256sums=("SKIP"
-            "ec5829cf3a88f3ff63e45b9e412576cb65463932984953f8698162abaea40e09"
-            "SKIP")
+            "ff4020c38d2e832081ee440817319d116289c62aaea1881de442d485639ea06d")
 
 pkgver()
 {
 	cd "${srcdir}/${pkgname}/"
-
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -32,7 +29,8 @@ build()
 	cd "${srcdir}/${pkgname}/"
 
 	## Needs Internet; Downloads gamepacks
-	make
+	cmake -G "Unix Makefiles" -H. -Bbuild -DCMAKE_BUILD_TYPE=Release
+	cmake --build build --target install `DOWNLOAD_GAMEPACKS=ON` -- -j$(nproc)
 }
 
 package()
@@ -64,6 +62,7 @@ package()
 	sed -i -e '/enginepath_linux/c\  enginepath_linux="/opt/warsow/"'  "${pkgdir}/opt/netradiant/games/warsow.game"
 	sed -i -e '/enginepath_linux/c\  enginepath_linux="/usr/share/xonotic/"' "${pkgdir}/opt/netradiant/games/xonotic.game"
 
+	install -Dm644 icons/radiant-src.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
