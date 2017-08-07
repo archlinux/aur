@@ -8,19 +8,19 @@
 # files will be provided in '/opt'.
 
 _year=2017
-_release=R2
-_sdkver=16.5.1
+_release=R3
+_sdkver=16.5.2
 pkgname=intel-media-sdk
 pkgver="${_year}.${_release}"
-pkgrel=4
+pkgrel=1
 pkgdesc='Intel Media SDK (only SDK files, no kernel patches, no system modifications)'
 arch=('x86_64')
 url='https://software.intel.com/en-us/intel-media-server-studio/'
 license=('custom')
 makedepends=('poppler')
-options=('staticlibs')
-source=("http://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/11167/MediaServerStudioEssentials${_year}${_release}.tar.gz")
-sha256sums=('5f32f7abddec54751203f2937c4ad7748013dee9849d7c61786091c38bffdaf4')
+options=('!strip' 'staticlibs')
+source=("http://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/11800/MediaServerStudioEssentials${_year}${_release}.tar.gz")
+sha256sums=('3037eabad6621c43e1b4ba3e85a06fafd7d494924e0c3b94fbaf3bc675852960')
 
 prepare() {
     cd "MediaServerStudioEssentials${_year}${_release}"
@@ -66,8 +66,8 @@ package() {
     install -D -m644  'redist.txt'                            "${pkgdir}/usr/share/licenses/${pkgname}/redist.txt"
     
     # create a pkgconfig file for libmfx
-    local _mfxver_major="$(grep 'MFX_VERSION_MAJOR' "${pkgdir}/opt/intel/mediasdk/include/mfx/mfxvideo.h" | cut -d ' ' -f3)"
-    local _mfxver_minor="$(grep 'MFX_VERSION_MINOR' "${pkgdir}/opt/intel/mediasdk/include/mfx/mfxvideo.h" | cut -d ' ' -f3)"
+    local _mfxver_major="$(grep '#define MFX_VERSION_MAJOR' "${pkgdir}/opt/intel/mediasdk/include/mfx/mfxvideo.h" | cut -d' ' -f3)"
+    local _mfxver_minor="$(grep '#define MFX_VERSION_MINOR' "${pkgdir}/opt/intel/mediasdk/include/mfx/mfxvideo.h" | cut -d' ' -f3)"
     local _mfxver="${_mfxver_major}.${_mfxver_minor}"
     mkdir -p  "${pkgdir}/opt/intel/mediasdk/lib/pkgconfig"
     touch     "${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
