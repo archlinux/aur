@@ -1,11 +1,13 @@
 pkgbase = ruby-rouge-2.0
 	pkgdesc = Rouge aims to a be a simple, easy-to-extend drop-in replacement for pygments.
 	pkgver = 2.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rouge.jneen.net/
 	arch = any
 	license = MIT
 	depends = ruby
+	provides = ruby-rouge=2.0
+	conflicts = ruby-rouge
 	noextract = rouge-2.0.7.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/rouge-2.0.7.gem

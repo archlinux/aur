@@ -3,11 +3,13 @@
 _gemname=rouge
 pkgname=ruby-$_gemname-2.0
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Rouge aims to a be a simple, easy-to-extend drop-in replacement for pygments.'
 arch=(any)
 url='http://rouge.jneen.net/'
 license=(MIT)
+provides=('ruby-rouge=2.0')
+conflicts=('ruby-rouge')
 depends=('ruby')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
