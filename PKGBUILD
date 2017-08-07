@@ -9,7 +9,7 @@ url=https://tsl0922.github.io/ttyd/
 license=('MIT')
 depends=('json-c' 'libwebsockets')
 makedepends=('cmake' 'libwebsockets-static')
-source=("https://github.com/tsl0922/ttyd/archive/$pkgver.tar.gz")
+source=("ttyd-$pkgver.tar.gz::https://github.com/tsl0922/ttyd/archive/$pkgver.tar.gz")
 sha512sums=('52591fa5a0a6bda623f0437b5900d7f22ad87a904a0d04710ac2f3d5fddbb9e1311b764339483b0820e416e646a62133c7598b88573120c86dd20f98aea0dfed')
 
 build() {
