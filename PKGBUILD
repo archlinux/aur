@@ -1,6 +1,6 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 pkgname=dgsh-git
-pkgver=r1333.89be4ad
+pkgver=r1422.0e51cfd
 pkgrel=1
 pkgdesc="Directed Graph Shell"
 arch=('any')
@@ -54,4 +54,6 @@ check() {
 package() {
     cd 'dgsh'
     make DESTDIR="$pkgdir/" install
+    # the build leaves over some empty directories and sometimes the permissions differ, which produces warnings on install, so clean those up
+    find "$pkgdir" -type d -empty -delete
 }
