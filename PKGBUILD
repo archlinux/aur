@@ -9,14 +9,15 @@
 pkgname=plex-media-server
 pkgver=1.7.5.4035
 _pkgsum=313f93718
-pkgrel=1
+pkgrel=2
 pkgdesc='Plex Media Server'
 arch=('armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
 license=('custom')
 depends=('systemd')
-makedepends_i686=('prelink')
-makedepends_x86_64=('prelink')
+# Removed 8/7/17 due to prelink abandonment upstream
+# makedepends_i686=('prelink')
+# makedepends_x86_64=('prelink')
 provides=('plex-media-server')
 conflicts=('plex-media-server-plexpass')
 backup=('etc/conf.d/plexmediaserver')
@@ -31,7 +32,7 @@ source_x86_64=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}
 sha256sums=('7ab1ee8da9012d257b7f473fb79d76b201ca592cbe3722f977a43b58bfad180e'
             '9a214a37cc8dd5fd912d5bcca16445f023f892aafd4ca54226aeb2b4910d23a2'
             'ebf153d5789f9d24cb98ae607d227286e1da6ce54e149c8be4f47e08ee729573'
-            '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
+            'dbfb5a9a7146a975863c0932f1a68c4b040ec5d7e693361f39ddfbf60885e631')
 sha256sums_armv7h=('e2d0be1b0a2c97bd7739170ab2e7b53492fe68e6ad6a498b3c033087985aa065')
 sha256sums_i686=('03d5425fa487f4edbd086a1f6cde83d6b116653b8658367b4897d8ad266a0506')
 sha256sums_x86_64=('89b8585e561046a8422d520ebcdae784f5dc3c895aac8d313c435cc6b58795b8')
@@ -40,8 +41,9 @@ prepare() {
 
 case "$CARCH" in
   arm*) mkdir -p usr/lib/plexmediaserver && tar -zxf package.tgz -C usr/lib/plexmediaserver/;;
-        #Fix for SELinux and Grsecurity
-     *) execstack -c usr/lib/plexmediaserver/libgnsdk_dsp.so*;;
+        # Fix for SELinux and Grsecurity
+        # Removed 8/7/17 due to prelink abandonment upstream
+     # *) execstack -c usr/lib/plexmediaserver/libgnsdk_dsp.so*;;
 esac
 
 }
