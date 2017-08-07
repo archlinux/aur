@@ -9,13 +9,13 @@ url=https://github.com/tiffany352/rink-rs
 license=('Custom:MPLv2' 'GPL3')
 makedepends=('cargo')
 source=("rink-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        'https://patch-diff.githubusercontent.com/raw/tiffany352/rink-rs/pull/22.patch')
+        'https://github.com/tiffany352/rink-rs/commit/b91f9c1031fc39e298d25efde8b27f26f1061542.patch')
 sha512sums=('fa35afd1ea25a0bb3d2963281205f61fb585dd03f60c74771dca8958583389c48d1919c411c8232a8d1da1d6ed06fed9543f200796a682066875d38c69a63218'
             'b2d78026052fdeb86402a6384e15a2edc441426d03ea4cdba0beb37930a5aa004043d33ba93d2b8b76dffa687f5b681adfee5b69939a48fd840fd6b66f76bbdf')
 
 prepare() {
   cd rink-rs-$pkgver
-  patch -p1 -i ../22.patch
+  patch -p1 -i ../b91f9c1031fc39e298d25efde8b27f26f1061542.patch
 }
 
 build() {
