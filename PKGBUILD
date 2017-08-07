@@ -7,14 +7,15 @@ pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=$pkgbase
 _kernel_rel=4.11
 _branch=amd-staging-${_kernel_rel}
-pkgver=4.11.665258.308514e6861e
+_kernelname=${pkgbase#linux}
+pkgver=4.11.665436.67d4108f7de2
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
-source=("linux-amd-staging-git::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
+source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
         # the main kernel config files
         'config.x86_64' 'config.i686'
         # pacman hook for initramfs regeneration
@@ -26,9 +27,6 @@ sha256sums=('SKIP'
             '475eb1b7c8fea7630be8379aef60979f381c461468f0a7ffac32d4bbc68d924c'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
-
-_kernelname=${pkgbase#linux}
-
 pkgver() {
   cd "${srcdir}/${_srcname}"
 
