@@ -4,13 +4,14 @@ pkgdesc="ROS - qt_gui_cpp provides the foundation for C++-bindings for qt_gui an
 url='http://ros.org/wiki/qt_gui_cpp'
 
 pkgname='ros-lunar-qt-gui-cpp'
-pkgver='0.3.4'
-_pkgver_patch=2
+pkgver='0.3.6'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin
+  ros-lunar-cmake-modules
   ros-lunar-python-qt-binding
   ros-lunar-pluginlib)
 makedepends=('cmake' 'ros-build-tools'
@@ -21,7 +22,8 @@ makedepends=('cmake' 'ros-build-tools'
 
 ros_depends=(ros-lunar-qt-gui
   ros-lunar-pluginlib)
-depends=(${ros_depends[@]})
+depends=(${ros_depends[@]}
+  tinyxml)
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/qt_gui_cpp/${pkgver}-${_pkgver_patch}
@@ -32,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="qt_gui_core-release-release-lunar-qt_gui_cpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/lunar/qt_gui_cpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('58b32dedd5c384952bd475a03491100dcf70f4320144e878a4d9a96840ab841b')
+sha256sums=('a09a1c8a1e45e5c1c8afaf2baa68ba0f65f2d12daa32732c222a0e1ce8b0926c')
 
 build() {
   # Use ROS environment variables
