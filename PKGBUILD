@@ -5,8 +5,8 @@
 _branch='-ptb'
 
 pkgname='discord-ptb'
-pkgver=0.0.1
-pkgrel=5
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -24,7 +24,7 @@ source=(DiscordPTB.desktop LICENSE)
 source_x86_64=("https://dl${_branch}.discordapp.net/apps/linux/${pkgver}/discord${_branch}-${pkgver}.tar.gz")
 md5sums=('6a23b54347910ff151fce2023589b27e'
          '9a481caa5a223defd608f5505202f595')
-md5sums_x86_64=('97c0b016d1aace174493cb18e949abd7')
+md5sums_x86_64=('3113e48243c020e061b2a8d0f6ca9d77')
 
 
 
