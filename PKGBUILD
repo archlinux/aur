@@ -88,7 +88,7 @@ After=network.target
 
 [Service]
 Type=notify
-ExecStart=/usr/bin/sh -c 'source /etc/bbportinst.conf; systemd-notify --ready'
+ExecStart=/usr/bin/sh -c 'source /etc/bbportinst.local; systemd-notify --ready'
 RemainAfterExit=yes
 
 [Install]
