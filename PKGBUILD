@@ -2,7 +2,7 @@
 
 pkgname=morebin
 pkgver=2.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="'more' for binary files"
 url="https://github.com/peterfpeterson/morebin"
 source=("https://github.com/peterfpeterson/morebin/archive/v$pkgver.tar.gz")
@@ -14,7 +14,7 @@ sha1sums=('8d1b7db395104e35a0ad88a8288ba88e57d06848')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    cmake .
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
     make
 }
 
