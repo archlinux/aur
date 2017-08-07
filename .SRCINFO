@@ -1,13 +1,13 @@
 pkgbase = netclix
 pkgdesc = A simple cli tool to get movie streaming link.
-pkgver = 0.2.5
+pkgver = 0.2.6
 pkgrel = 1
 url = https://github.com/stoneo/netclix
 arch = any
 license = MIT
 makedepends = npm
 depends = nodejs
-noextract = netclix-0.2.5.tgz
-source = https://registry.npmjs.org/netclix/-/netclix-0.2.5.tgz
-sha1sums = f18243bf644d9d4fe19c1f9b17e2819ad9b5209a
+noextract = netclix-0.2.6.tgz
+source = https://registry.npmjs.org/netclix/-/netclix-0.2.6.tgz
+sha1sums = 5282d532bb430d2295a055d6e2a4015d6e911f76
 pkgname = netclix
