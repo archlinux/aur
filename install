@@ -6,7 +6,7 @@ post_install() {
         echo '::'
         echo ':: NOTE:'
         echo ':: To complete the installation, run:'
-        echo '::    cd /usr/share/webapps'
+        echo '::    cd /usr/share/webapps/nfsen'
         echo '::    su -c "./install.pl /etc/nfsen.conf"'
         echo '::'
         echo ''

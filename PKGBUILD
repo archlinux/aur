@@ -2,7 +2,7 @@
 
 pkgname=nfsen
 pkgver=1.3.8
-pkgrel=6
+pkgrel=7
 pkgdesc="Netflow visualisation and investigation tool"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/nfsen"
@@ -31,7 +31,7 @@ prepare() {
 
 package() {
 	install -dm755 "$pkgdir/usr/share/webapps" 
-        cp -a "$pkgname-$pkgver" "$pkgdir/usr/share/webapps/"
+        cp -a "$pkgname-$pkgver" "$pkgdir/usr/share/webapps/$pkgname"
 	cd "$pkgname-$pkgver"
 	install -Dm644 "$srcdir/service" "$pkgdir/usr/lib/systemd/system/nfsen.service" 
 	install -Dm644 "$srcdir/tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/nfsen.conf" 
