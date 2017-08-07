@@ -1,6 +1,6 @@
 pkgbase = osquery-git
 	pkgdesc = SQL powered operating system instrumentation, monitoring, and analytics.
-	pkgver = 2.5.2.r4.ga36d6342
+	pkgver = 2.6.1.r6.gb4316a57
 	pkgrel = 1
 	url = https://osquery.io
 	arch = i686
@@ -33,6 +33,8 @@ pkgbase = osquery-git
 	makedepends = python-psutil
 	makedepends = python-pexpect
 	makedepends = rocksdb-lite
+	makedepends = gtest
+	makedepends = gmock
 	makedepends = augeas
 	makedepends = boost
 	makedepends = boost-libs
@@ -43,17 +45,15 @@ pkgbase = osquery-git
 	makedepends = rpm-org
 	depends = wget
 	depends = unzip
-	conflicts = gtest
-	conflicts = gmock
 	options = !strip
 	backup = etc/osquery/osquery.conf
-	source = osquery-git::git+https://github.com/facebook/osquery#commit=e17584f44f86b14ee6638ddb23a3a38fa7a0c7e7
+	source = osquery-git::git+https://github.com/facebook/osquery#commit=b4316a57a04a6efb6b56dc23593cae3c10ad7118
 	source = osqueryd.conf.d
 	source = osqueryd.service
 	source = arch-linux.patch
 	sha256sums = SKIP
-	sha256sums = 3aea1799571f6ddab8d4c9820686fb64e7989e8121a98747a65326cd9f62f7e1
-	sha256sums = 7b1082c9a74e11b02fa6d8410e987db64be2e097f84fcd346e7feef8c1e8a104
+	sha256sums = 6a5522f9058fc3d142dd3642f73ccd2758cc0b43bd28644a0f4eee3e5d7aea55
+	sha256sums = 9fcfe9db909c664f7dfeeb7c56c9d964eb6d7673dbe5a4858c09a3953f13cd4b
 	sha256sums = f993130c1612474a692ec2bf6f853d47b283c94a52e90d1036c8ac60ddd0d3df
 
 pkgname = osquery-git

@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=2.5.2.r4.ga36d6342
+pkgver=2.6.1.r6.gb4316a57
 pkgrel=1
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
@@ -13,19 +13,20 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 			 'llvm' 'lsb-release' 'beecrypt' 'python-jinja' 'python-pip'
 			 'sleuthkit' 'snappy' 'yara' 'thrift' 'magic' 'cpp-netlib'
 			 'python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
-			 'augeas' 'boost' 'boost-libs' 'lldpd' 'lld' 'apt' 'dpkg' 'rpm-org')
-conflicts=('gtest' 'gmock')
+			 'gtest' 'gmock' 'augeas' 'boost' 'boost-libs' 'lldpd' 'lld'
+			 'apt' 'dpkg' 'rpm-org')
+conflicts=()
 backup=('etc/osquery/osquery.conf')
 options=(!strip)
-_gitcommit="e17584f44f86b14ee6638ddb23a3a38fa7a0c7e7"
+_gitcommit="b4316a57a04a6efb6b56dc23593cae3c10ad7118"
 #source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
 		"osqueryd.service"
 		"arch-linux.patch")
 sha256sums=('SKIP'
-            '3aea1799571f6ddab8d4c9820686fb64e7989e8121a98747a65326cd9f62f7e1'
-            '7b1082c9a74e11b02fa6d8410e987db64be2e097f84fcd346e7feef8c1e8a104'
+            '6a5522f9058fc3d142dd3642f73ccd2758cc0b43bd28644a0f4eee3e5d7aea55'
+            '9fcfe9db909c664f7dfeeb7c56c9d964eb6d7673dbe5a4858c09a3953f13cd4b'
             'f993130c1612474a692ec2bf6f853d47b283c94a52e90d1036c8ac60ddd0d3df')
 
 _gitname=${pkgname}
@@ -66,6 +67,7 @@ build() {
 	cmake -Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_CXX_FLAGS="-I/usr/include/libxml2" \
+		-DBUILD_GMOCK=OFF \
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 
 	find . -type f -name link.txt -exec sed -i -re 's/Bstatic -lgflags/Bdynamic	-lgflags/g' "{}" \;
