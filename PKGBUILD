@@ -1,7 +1,8 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 name=colmap
+fragment=dev
 pkgname=${name}-git
-pkgver=3.1.r34.gb44473e
+pkgver=3.1.r84.g3c7fd57
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -9,15 +10,15 @@ url="https://colmap.github.io/"
 license=('GPL')
 groups=()
 depends=('gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'boost-libs' 'qt5-base')
-makedepends=('ceres-solver' 'boost' 'git' 'cmake' 'eigen')
+makedepends=('ceres-solver' 'boost' 'git' 'cmake' 'eigen' 'cuda')
 optdepends=('cuda: for cuda sfm/mvs acceleration')
 provides=()
 # Fix: -fno-plt flag not supported by cuda host compiler (gcc5)
-options=(!makeflags)
+options=(!buildflags)
 CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong"
 CXXFLAGS="${CFLAGS}"
 install=${pkgname}.install
-source=("${pkgname}::git+https://github.com/colmap/colmap.git"
+source=("${pkgname}::git+https://github.com/colmap/colmap.git#branch=${fragment}"
         "nvm-export.patch"
         "${pkgname}.install"
         "${name}.desktop"

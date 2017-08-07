@@ -1,6 +1,6 @@
 pkgbase = colmap-git
 	pkgdesc = COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
-	pkgver = 3.1.r34.gb44473e
+	pkgver = 3.1.r84.g3c7fd57
 	pkgrel = 1
 	url = https://colmap.github.io/
 	install = colmap-git.install
@@ -12,6 +12,7 @@ pkgbase = colmap-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = eigen
+	makedepends = cuda
 	depends = gflags
 	depends = suitesparse
 	depends = freeglut
@@ -21,7 +22,8 @@ pkgbase = colmap-git
 	depends = boost-libs
 	depends = qt5-base
 	optdepends = cuda: for cuda sfm/mvs acceleration
-	source = colmap-git::git+https://github.com/colmap/colmap.git
+	options = !buildflags
+	source = colmap-git::git+https://github.com/colmap/colmap.git#branch=dev
 	source = nvm-export.patch
 	source = colmap-git.install
 	source = colmap.desktop
