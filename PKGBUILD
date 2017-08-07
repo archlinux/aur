@@ -4,7 +4,7 @@ pkgdesc="ROS - KDL binding for tf2."
 url='http://ros.org/wiki/tf2'
 
 pkgname='ros-lunar-tf2-kdl'
-pkgver='0.5.15'
+pkgver='0.5.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -20,7 +20,6 @@ makedepends=('cmake' 'ros-build-tools'
   eigen3)
 
 ros_depends=(ros-lunar-tf2
-  ros-lunar-cmake-modules
   ros-lunar-orocos-kdl
   ros-lunar-tf2-ros)
 depends=(${ros_depends[@]}
@@ -35,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry2-release-release-lunar-tf2_kdl-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/lunar/tf2_kdl/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6259449d9ddc4ea7f685cebb32cecc3c278c9d168d2e55b147087aad6476b617')
+sha256sums=('2b072d5b8d1f6788735553b5a10088e7e8d4f17c9eae26f9fa46c34ebe2429f7')
 
 build() {
   # Use ROS environment variables
