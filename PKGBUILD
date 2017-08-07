@@ -4,7 +4,7 @@
 pkgname=mesasdk
 pkgdesc="Software development kit for use with the MESA stellar evolution code"
 pkgver=20170802
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.astro.wisc.edu/~townsend/static.php?ref=mesasdk"
 provides=('mesasdk')
