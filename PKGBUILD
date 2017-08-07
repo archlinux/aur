@@ -2,7 +2,7 @@
 
 pkgname=realrtcw
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="RealRTCW brings some realism to the classic Wolfenstein game. You can expect ruthless AI, new weapons and rebalanced gameplay"
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
@@ -114,7 +114,7 @@ package() {
 md5sums=('0b40f6d1e2f31fe42d3a54359694dc03'
          '0e0ef11b046ced39e880638d41c65dd4'
          '6856b2ec43abce7be5d92233ef3ddaa1'
-         '239c6f562a497f8cbfb21cb5989396cc'
-         'f96be860f03255238d64ebe4870739a7'
+         'd21e21ce9b1c6c802de8c58d5622a108'
+	 '7af8743526ef76102af23f0107bb71bf'
          '33f08bc165906164461420e1cc6dd86a'
          'f164bb4457675fd05897e2945e2d8c9d')

@@ -1,4 +1,4 @@
 #!/bin/sh
 cd "/opt/realrtcw"
-exec ./iowolfsp.ARCH +set cl_renderer rend2 "$@"
+exec ./iowolfsp.ARCH +set cl_renderer rend2 +set fs_homepath "/opt/realrtcw" "$@"
  
