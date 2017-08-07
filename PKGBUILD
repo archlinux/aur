@@ -4,7 +4,7 @@ pkgdesc="ROS - Transmission Interface."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-lunar-transmission-interface'
-pkgver='0.11.4'
+pkgver='0.12.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_control-release-release-lunar-transmission_interface-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/lunar/transmission_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('69637b0c120529b93ce5548a22822beab66b1d0d9df53ee0ad6348853e56bfff')
+sha256sums=('c3799c0452099ed0fec3f8ee4977666a001e004e72a597b04f49976040623e43')
 
 build() {
   # Use ROS environment variables
