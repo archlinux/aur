@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url="http://lxsplit.sourceforge.net/"
 license=('GPL')
 depends=('glibc')
-source=("http://downloads.sourceforge.net/sourceforge/lxsplit/lxsplit-${pkgver}.tar.gz")
-sha256sums=('858fa939803b2eba97ccc5ec57011c4f4b613ff299abbdc51e2f921016845056')
+source=("https://downloads.sourceforge.net/sourceforge/lxsplit/lxsplit-${pkgver}.tar.gz")
+sha512sums=('2483010752177232801029b969a01a2702830c47e5d6a185784d9d945b792aecb778241d08d97cc0c02977afec02bf3f6a20e24da2fdbecad2dcef1de95b0575')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
