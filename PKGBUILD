@@ -1,7 +1,7 @@
 #Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=cyberfox-bin
-pkgver=52.2.1
+pkgver=52.3.0
 pkgrel=1
 pn=cyberfox
 pkgdesc="Fast and privacy oriented fork of Mozilla Firefox"
@@ -14,7 +14,7 @@ source=("${pn}.desktop"
         "http://downloads.sourceforge.net/project/cyberfox/Zipped%20Format/Cyberfox-$pkgver.en-US.linux-${arch}.tar.bz2")
 
 md5sums=('66568212abb7563bf390db5762924815'
-         'b105399289572dd02a256b4015ddf55c')
+         'ec266f0983e75dfebc4007cac31ebe33')
 
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
 
