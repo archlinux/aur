@@ -1,19 +1,19 @@
 pkgbase = torrench
 	pkgdesc = Command-line torrent search tool
-	pkgver = 1.0.1.20170807
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/kryptxy/torrench
 	arch = any
 	license = GPL
+	depends = python-tabulate
 	depends = python-setuptools
 	depends = python-beautifulsoup4
 	depends = python-lxml
 	depends = python-requests
-	depends = python-termcolor
-	depends = python-tabulate
+	depends = python-colorama
 	provides = torrench
 	conflicts = torrench
-	source = torrench-1.0.1.20170807.tar.gz::https://github.com/kryptxy/torrench/archive/v1.0.1.20170807.tar.gz
+	source = torrench-1.0.2.tar.gz::https://github.com/kryptxy/torrench/archive/v1.0.2.tar.gz
 	md5sums = SKIP
 
 pkgname = torrench
