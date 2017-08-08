@@ -27,6 +27,7 @@ md5sums=('cf6754758de5cdfc33d184e91318f94d'
 
 check() {
   cd "$srcdir/${_pkgname}-$pkgver"
+  rm "tests/system/utils/test_main.py"
   make test
 }
 
