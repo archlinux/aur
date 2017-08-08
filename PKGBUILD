@@ -2,7 +2,7 @@
 
 pkgname=nfsen
 pkgver=1.3.8
-pkgrel=9
+pkgrel=10
 pkgdesc="Netflow visualisation and investigation tool"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/nfsen"
@@ -14,13 +14,14 @@ depends=('nfdump>=1.6.1'
          'php>4.1' 
          'rrdtool')
 optdepends=('apache' 'nginx' 'php-apache' 'php-fpm')
+backup=('etc/nfsen.conf' 'etc/nginx/sites-available/nfsen')
+install='install'
 source=("$url/files/stable/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
         'nfsen.conf'
         'nginx'
         'profile.sh'
         'service'
         'tmpfiles')
-install='install'
 
 prepare() {
 	cd "$pkgname-$pkgver"
