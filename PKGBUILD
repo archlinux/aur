@@ -1,7 +1,7 @@
 _pkgname="kst"
 pkgname="${_pkgname}-git"
 pkgrel=1
-pkgver=2.0.8r3108.084d3ad
+pkgver=2.0.8r3268.540a599a
 pkgdesc="Fast real-time large-dataset viewing and plotting tool for KDE"
 arch=('i686' 'x86_64')
 url="http://kst-plot.kde.org"
@@ -13,8 +13,8 @@ optdepends=(
 )
 makedepends=('cmake')
 #install=$pkgname.install
-source=("git://github.com/Kst-plot/kst.git" "0001-Fixed-compilation-error-for-ambiguous-overload-off-a.patch" "0001-fixed-issue-where-src-kst-CMakeLists.txt-was-referri.patch")
-md5sums=('SKIP' '43dad5d63cf1d3415a5dda3df2e02c08' '7e908388bf2127b499fb2f60c1e9907f')
+source=("git://github.com/Kst-plot/kst.git")
+md5sums=('SKIP' )
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
@@ -36,8 +36,6 @@ build() {
 }
 prepare(){
 	cd "${srcdir}/${_pkgname}"
-	patch -p1 < ../0001-Fixed-compilation-error-for-ambiguous-overload-off-a.patch
-	patch -p1 < ../0001-fixed-issue-where-src-kst-CMakeLists.txt-was-referri.patch
 }
 package() {
   cd "${srcdir}/${_pkgname}"
