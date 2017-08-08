@@ -1,6 +1,6 @@
 pkgbase = artifactory-oss
 	pkgdesc = Artifactory is an advanced Binary Repository Manager for use by build tools, dependency management tools and build servers
-	pkgver = 5.3.0
+	pkgver = 5.4.6
 	pkgrel = 1
 	url = https://bintray.com/jfrog/product/JFrog-Artifactory-Oss/view
 	install = artifactory-oss.install
@@ -10,7 +10,7 @@ pkgbase = artifactory-oss
 	depends = net-tools
 	depends = bash
 	options = !strip
-	source = jfrog-artifactory-oss-5.3.0.zip::https://bintray.com/jfrog/artifactory/download_file?file_path=jfrog-artifactory-oss-5.3.0.zip
+	source = jfrog-artifactory-oss-5.4.6.zip::https://bintray.com/jfrog/artifactory/download_file?file_path=jfrog-artifactory-oss-5.4.6.zip
 	source = artifactory.service
 	source = artifactory.conf
 	source = artifactory.default

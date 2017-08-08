@@ -1,7 +1,7 @@
 # Maintainer: Yegorius <yegorius@domic.us>
 
 pkgname=artifactory-oss
-pkgver=5.3.0
+pkgver=5.4.6
 pkgrel=1
 pkgdesc='Artifactory is an advanced Binary Repository Manager for use by build tools, dependency management tools and build servers'
 arch=('any')
@@ -13,7 +13,7 @@ source=("jfrog-artifactory-oss-${pkgver}.zip::https://bintray.com/jfrog/artifact
         'artifactory.service'
         'artifactory.conf'
         'artifactory.default')
-sha256sums=('7ede1581dde6d45bd766eec9881e9b2927bf084ca4ae9804352a2fa9d95e08bd'
+sha256sums=('43fb4b14ad5350daa200e0282a36903495505ccb536b5f0ac7d7b5487dcdfca6'
             '8ba1287f4d062f57a5cf9e5426d4affcfcc00ca2680cd603f41c603957a42c20'
             '48bc1cddf9fa64f0d62a519470a490719398d67b6baeef6a3e647b737d6484df'
             '54617cc75624db3a03dbed62898b2f438cb8145983a034d72f12ca259c8218a4')
