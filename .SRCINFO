@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-adaptive-git
 	pkgdesc = InputStream client for adaptive streams for Kodi 17+
-	pkgver = r29.47038df
+	pkgver = r164.a02656d
 	pkgrel = 1
 	url = https://github.com/peak3d/inputstream.adaptive
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kodi-addon-inputstream-adaptive-git
 	depends = kodi-platform
 	provides = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive
-	source = kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git#branch=1.0.8_k17
+	source = kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git#branch=k17_2
 	md5sums = SKIP
 
 pkgname = kodi-addon-inputstream-adaptive-git
