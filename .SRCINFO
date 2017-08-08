@@ -1,8 +1,8 @@
 pkgbase = hugo-bin
 	pkgdesc = A Fast and Flexible Static Site Generator built in Go - Precompiled binary from official repository
-	pkgver = 0.25.1
+	pkgver = 0.26
 	pkgrel = 1
-	url = https://gohugo.io/
+	url = https://github.com/spf13/hugo
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -15,12 +15,12 @@ pkgbase = hugo-bin
 	optdepends = python-docutils: reStructuredText support
 	provides = hugo
 	conflicts = hugo
-	source_x86_64 = https://github.com/spf13/hugo/releases/download/v0.25.1/hugo_0.25.1_Linux-64bit.tar.gz
-	sha256sums_x86_64 = fbf8ca850aaaaad331f5b40bbbe8e797115dab296a8486a53c0561f253ca7b00
-	source_i686 = https://github.com/spf13/hugo/releases/download/v0.25.1/hugo_0.25.1_Linux-32bit.tar.gz
-	sha256sums_i686 = 2686f37ad3e34d788d2c245a0a056ba4d122236c7416048afd0c791559995578
-	source_arm = https://github.com/spf13/hugo/releases/download/v0.25.1/hugo_0.25.1_linux_ARM.tar.gz
-	sha256sums_arm = 4d0c9a18a39c11d28b5501f07bea8308954db3068e21391e7b124330996e7db7
+	source_x86_64 = https://github.com/spf13/hugo/releases/download/v0.26/hugo_0.26_Linux-64bit.tar.gz
+	sha256sums_x86_64 = 67e4ba5ec2a02c8164b6846e30a17cc765b0165a5b183d5e480149baf54e1a50
+	source_i686 = https://github.com/spf13/hugo/releases/download/v0.26/hugo_0.26_Linux-32bit.tar.gz
+	sha256sums_i686 = d5a57378cf63710f50434bb492c80f61144b83778f79125d2eeea3cb7c728e34
+	source_arm = https://github.com/spf13/hugo/releases/download/v0.26/hugo_0.26_linux_ARM.tar.gz
+	sha256sums_arm = c81adacf05848fb7ffe83b0554f54d27ea4346a61bbd543f75a19ec1722573d2
 
 pkgname = hugo-bin
 
