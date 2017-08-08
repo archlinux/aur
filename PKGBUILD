@@ -2,16 +2,17 @@
 # Contributor: Jakub Luzny <limoto94@gmail.com>
 
 pkgname=x86info
-_commit=27ace37d
-pkgver=1.30.137
-pkgrel=2
+_commit='9501749231164135db25c72cbeb42bf32af1519b'
+pkgver=1.30.158
+pkgrel=1
 pkgdesc='A CPU identification utility. Provides more info than /proc/cpuinfo'
 arch=('i686' 'x86_64')
-url="http://www.codemonkey.org.uk/projects/x86info/"
+depends=('pciutils')
+url='https://github.com/kernelslacker/x86info'
 license=('GPL')
 install=x86info.install
 makedepends=('git')
-source=("git://github.com/dankamongmen/x86info.git#commit=${_commit}")
+source=("git://github.com/kernelslacker/x86info.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
