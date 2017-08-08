@@ -1,8 +1,8 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=opencollada
-pkgver=20150702
-_commit=3335ac164e68b2512a40914b14c74db260e6ff7d # Magic blender commit
-pkgrel=3
+pkgver=1.6.51
+pkgrel=1
+epoch=1
 pkgdesc="Stream based reader and writer library for COLLADA files"
 arch=(i686 x86_64)
 url="https://github.com/KhronosGroup/OpenCOLLADA"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libxml2' 'pcre')
 makedepends=('git' 'cmake')
 source=('opencollada.conf'
-        "git://github.com/KhronosGroup/OpenCOLLADA.git#commit=$_commit")
+        "git://github.com/KhronosGroup/OpenCOLLADA.git#tag=v${pkgver}")
 md5sums=('5f7e9d79ab86756648b648ee5ed6ce1d'
          'SKIP')
 
