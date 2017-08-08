@@ -1,9 +1,9 @@
-# Maintainer: Grey Christoforo <grey@christoforo.net>
+# Maintainer: Bert Peters <bert@bertptrs.nl>
 
 _gemname=gollum
 pkgname=ruby-$_gemname
-pkgver=4.1.1
-pkgrel=3
+pkgver=4.1.2
+pkgrel=1
 pkgdesc='A simple, Git-powered wiki.'
 arch=(any)
 url='http://github.com/gollum/gollum'
@@ -22,4 +22,4 @@ package() {
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('fa70f19bb0e43a239d672bc9a38b79a8bc9bed344fc80794dfefa68b3c742a4b')
+sha256sums=('aa4c33e72fb2eefd3851ccd0ca792c89919e0022581de431c35135509ca83714')
