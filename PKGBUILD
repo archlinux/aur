@@ -1,27 +1,32 @@
 # Maintainer: Mikołaj Baranowski <mikolajb@gmail.com>
 
 pkgname=wallpaper-switch
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc='Runs in backgroud and changes Gnome backgroud to NASA picture of the day.'
 license=('MIT')
 arch=('x86_64' 'i686')
 url='https://github.com/mikolajb/wallpaper-switch'
 depends=()
-makedepends=('go' 'glide')
+makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mikolajb/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('ef78605575b5466d4e0974a44efbb3b0c53542cbaa559cf9d3b01776e083da24')
+sha256sums=('aed1758ddcad789ea5b564c66e2c201d85a4e2122d068e70389a86fc2abdd883')
 
 build() {
   msg2 'Settgin GOPATH'
   cd "${srcdir}/${pkgname}-${pkgver}"
-  export GOPATH="${srcdir}"
+  mkdir -p "${srcdir}/gopath"
+  export GOPATH="${srcdir}/gopath"
+
+  msg2 'Getting go dep tool'
+  go get github.com/golang/dep/cmd/dep
+
   mkdir -p "${GOPATH}/src/github.com/mikolajb"
   ln -sf "$(pwd)" "${GOPATH}/src/github.com/mikolajb/${pkgname}"
   cd "${GOPATH}/src/github.com/mikolajb/${pkgname}"
 
   msg2 'Fetching dependencies...'
-  glide install
+  "$GOPATH/bin/dep" ensure
 
   msg2 'Compiling...'
   go build -o wallpaper-switch
