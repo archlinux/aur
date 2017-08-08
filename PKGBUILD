@@ -1,16 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.2.r482.9c547d5ee
+pkgver=0.0.3.r101.e9b020bea
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
 url='https://github.com/RPCS3/rpcs3'
 license=('GPL2')
-depends=('alsa-lib' 'gcc-libs' 'glew' 'glibc' 'glu' 'libgl' 'libpng' 'libx11'
-         'llvm-libs' 'openal' 'qt5-base' 'vulkan-icd-loader' 'yaml-cpp' 'zlib'
-         'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswresample.so'
-         'libswscale.so' 'libudev.so')
+depends=('alsa-lib' 'gcc-libs' 'glew' 'glibc' 'glu' 'libevdev' 'libgl' 'libpng'
+         'libx11' 'openal' 'qt5-base' 'vulkan-icd-loader' 'yaml-cpp' 'zlib'
+         'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libncursesw.so'
+         'libswresample.so' 'libswscale.so' 'libudev.so')
 makedepends=('boost' 'cereal' 'cmake' 'git' 'llvm')
 provides=('rpcs3')
 conflicts=('rpcs3')
@@ -66,7 +66,7 @@ build() {
   cmake ../rpcs3 \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_EXE_LINKER_FLAGS='-ldl -lyaml-cpp -no-pie' \
+    -DCMAKE_EXE_LINKER_FLAGS='-ldl -lyaml-cpp' \
     -DCMAKE_SKIP_RPATH='ON' \
     -DUSE_SYSTEM_FFMPEG='ON' \
     -DUSE_SYSTEM_LIBPNG='ON'
