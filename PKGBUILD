@@ -6,8 +6,8 @@
 # CUDA is x86_64 only and so it will not be available in i686 builds.
 
 pkgname=mpv-full-git
-pkgver=0.25.0.r372.gc1dcf74458
-pkgrel=3
+pkgver=0.26.0.r134.g7397e8ab42
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -16,7 +16,7 @@ depends=(
     # official repositories:
         'lcms2' 'libgl' 'libxss' 'libxinerama' 'libxv' 'libxkbcommon' 'wayland'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-        'libxrandr' 'jack' 'vapoursynth' 'libarchive' 'uchardet'
+        'libxrandr' 'jack' 'vapoursynth' 'libarchive' 'uchardet' 'zlib'
     # AUR:
         'mujs' 'rsound' 'sndio'
 )
@@ -60,9 +60,9 @@ build() {
     ./bootstrap.py
     
     ./waf configure \
-        --color=yes \
-        --prefix=/usr \
-        --confdir=/etc/mpv \
+        --color='yes' \
+        --prefix='/usr' \
+        --confdir='/etc/mpv' \
         --progress \
         \
         --enable-libmpv-shared \
@@ -79,6 +79,8 @@ build() {
         --disable-test \
         --disable-clang-database \
         \
+        --disable-android \
+        --disable-uwp \
         --disable-win32-internal-pthreads \
         --enable-iconv \
         --enable-termios \
@@ -88,6 +90,7 @@ build() {
         --enable-javascript \
         --enable-libass \
         --enable-libass-osd \
+        --enable-zlib \
         --enable-encoding \
         --enable-libbluray \
         --enable-dvdread \
@@ -100,7 +103,7 @@ build() {
         --enable-vapoursynth-lazy \
         --enable-libarchive \
         --enable-libavdevice \
-        --lua=52arch \
+        --lua='52arch' \
         \
         --enable-sdl2 \
         --disable-sdl1 \
@@ -131,6 +134,7 @@ build() {
         --disable-gl-dxinterop \
         --disable-egl-angle \
         --disable-egl-angle-lib \
+        --disable-egl-angle-win32 \
         --enable-vdpau \
         --enable-vdpau-gl-x11 \
         --enable-vaapi \
@@ -156,6 +160,8 @@ build() {
         --enable-vdpau-hwaccel \
         --disable-d3d-hwaccel \
         --disable-d3d-hwaccel-new \
+        --disable-d3d9-hwaccel \
+        --disable-gl-dxinterop-d3d9 \
         "$_cuda" \
         \
         --enable-tv \
