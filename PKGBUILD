@@ -8,7 +8,7 @@ url="https://github.com/lvillani/i3-gnome/"
 license=('MIT')
 depends=('i3-wm')
 #source=(i3-gnome-5.1.zip::https://github.com/TheMarex/i3-gnome/archive/5.1.zip)
-source=(i3-gnome-2.0.zip::https://github.com/lvillani/i3-gnome/archive/2.1.zip)
+source=(i3-gnome-2.1.zip::https://github.com/lvillani/i3-gnome/archive/2.1.zip)
 md5sums=('21b832c7faedd11373343362a244c6b9')
 
 build() {
