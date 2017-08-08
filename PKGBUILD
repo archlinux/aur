@@ -15,7 +15,7 @@ source=("http://dl.exactcode.de/oss/exact-image/$pkgname-$pkgver.tar.bz2"
 md5sums=('bb9c8be82a4b5126be0224529ea7c4c7'
          '6d006542aad588c07fd88030c556470d'
          'c169fcbfb3cbe5778cff4522f5ce0d83'
-         'b8f5455b065f08956166c26bbab78df3')
+         '31801f23031626f0cb35f6b9d146206e')
 
 prepare() {
 	cd "$pkgname-$pkgver"

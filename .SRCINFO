@@ -14,7 +14,7 @@ pkgbase = exact-image
 	md5sums = bb9c8be82a4b5126be0224529ea7c4c7
 	md5sums = 6d006542aad588c07fd88030c556470d
 	md5sums = c169fcbfb3cbe5778cff4522f5ce0d83
-	md5sums = b8f5455b065f08956166c26bbab78df3
+	md5sums = 31801f23031626f0cb35f6b9d146206e
 
 pkgname = exact-image
 

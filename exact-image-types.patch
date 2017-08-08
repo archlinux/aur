@@ -1,11 +1,59 @@
---- exact-image-0.9.2/gfx/X11Helper.cc.bak	2017-08-08 17:40:39.798903664 +0100
-+++ exact-image-0.9.2/gfx/X11Helper.cc	2017-08-08 17:41:56.479284193 +0100
-@@ -138,7 +138,7 @@
-   return ob;
+From: Sven Eckelmann <sven@narfation.org>
+Date: Sun, 16 Mar 2014 15:08:49 +0100
+Subject: Disable unused Evas Helper function to avoid FTBFS
+
+Evas_Object and Evas are defined as the same type. Thus it is not possible to
+overload a function with the only difference (beside the return type) that one
+has a parameter from type Evas_Object and the other one from type Evas.
+
+These function are never used and thus can be removed without problems.
+---
+ gfx/X11Helper.cc | 4 ++--
+ gfx/X11Helper.hh | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/gfx/X11Helper.cc b/gfx/X11Helper.cc
+index 7b94e3e..ee969fe 100644
+--- a/gfx/X11Helper.cc
++++ b/gfx/X11Helper.cc
+@@ -123,7 +123,7 @@ Visual* X11Window::ColorVisual (Display* dpy, Window window) {
+   XGetWindowAttributes (dpy, window, &xgwa);
+   return xgwa.visual;
  }
+-  
++#if 0
+ Evas_Object* X11Window::CaptureIntoEvasImage (Evas* evas,
+ 					      Display* dpy,
+ 					      Window window,
+@@ -232,7 +232,7 @@ void X11Window::CaptureIntoEvasImage (Evas_Object* ob,
+   XDestroyImage (ximage2);
+   XDestroyImage (ximage);
+ }
+-
++#endif
+ int X11Window::screen_number (Screen *screen)
+ {
+   Display *dpy = DisplayOfScreen (screen);
+diff --git a/gfx/X11Helper.hh b/gfx/X11Helper.hh
+index a29e65f..5750e94 100644
+--- a/gfx/X11Helper.hh
++++ b/gfx/X11Helper.hh
+@@ -73,7 +73,7 @@ class X11Window
    
--void X11Window::CaptureIntoEvasImage (Evas_Object* ob,
-+static void X11Window::CaptureIntoEvasImage (Evas_Object* ob,
- 				      Display* dpy,
- 				      Window window,
- 				      int x, int y, int w, int h)
+   static int Depth (Display* dpy, Window window);
+   static Visual* ColorVisual (Display* dpy, Window window);
+-
++#if 0
+   static Evas_Object* CaptureIntoEvasImage (Evas* evas,
+ 					    Display* dpy,
+ 					    Window window,
+@@ -83,7 +83,7 @@ class X11Window
+ 				    Display* dpy,
+ 				    Window window,
+ 				    int x, int y, int w, int h);
+-  
++#endif
+   static void StayOnTop (Display* dpy, Window win);
+   
+ private:
+
