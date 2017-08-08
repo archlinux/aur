@@ -1,5 +1,5 @@
 #
-# PKGBUILD for fastforward
+# PKGBUILD for view64
 #
 # Contributor: Uffe Jakobsen <microtop@starion.dk>
 # Maintainer: Uffe Jakobsen <microtop@starion.dk>
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="http://view64.sourceforge.net/"
 license=('GPL2')
 groups=()
-depends=('sdl2')
+depends=('sdl2' 'fltk')
 makedepends=()
 checkdepends=()
 optdepends=()
