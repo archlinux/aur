@@ -3,11 +3,11 @@
 # Contributor: dserban <dserban01@yahoo.com>
 
 pkgname=switchboard
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='The Pantheon Control Center'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/switchboard'
+url='https://github.com/elementary/switchboard'
 license=('GPL3')
 groups=('pantheon')
 depends=('clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'wayland'
@@ -26,12 +26,10 @@ optdepends=('switchboard-plug-about: About plug'
             'switchboard-plug-power: Power plug'
             'switchboard-plug-security-privacy: Security & Privacy plug')
 provides=('libswitchboard-2.0.so')
-source=("https://launchpad.net/switchboard/2.x/${pkgver}/+download/switchboard-${pkgver}.tar.xz")
-sha256sums=('1526abf7729c9552e4a878b1108f766b5ec8f304f34fb75bd75fe3b7ba4e6ab7')
+source=("switchboard-${pkgver}.tar.gz::https://github.com/elementary/switchboard/archive/${pkgver}.tar.gz")
+sha256sums=('3ad8a145691a91c708c17919683eee533f0fbf3ce9bc04298e723a7b750c2166')
 
 prepare() {
-  cd switchboard-${pkgver}
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -39,21 +37,19 @@ prepare() {
 }
 
 build() {
-  cd switchboard-${pkgver}/build
+  cd build
 
-  cmake .. \
+  cmake ../switchboard-${pkgver} \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DGSETTINGS_COMPILE='FALSE' \
-    -DUSE_UNITY='FALSE'
+    -DGSETTINGS_COMPILE='OFF' \
+    -DUSE_UNITY='OFF'
   make
 }
 
 package() {
-  cd switchboard-${pkgver}/build
-
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" -C build install
 }
 
 # vim: ts=2 sw=2 et:
