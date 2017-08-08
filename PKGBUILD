@@ -20,7 +20,7 @@ _language='it'
 
 _pkgname='tor-browser'
 pkgname="${_pkgname}-${_language,,}"
-pkgver='7.0.3'
+pkgver='7.0.4'
 pkgrel='1'
 pkgdesc="Tor Browser Bundle: Anonymous browsing using firefox and tor (${_language})"
 url='https://www.torproject.org/projects/torbrowser.html'
