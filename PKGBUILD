@@ -1,25 +1,18 @@
-# Maintainer: Marco Pompili <marcs.pompili@gmail.com>
+# Maintainer: Marco Pompili <aur (at) emarcs (dot) org>
 
 pkgname=proxydriver
 pkgver=1.61
-pkgrel=2
+pkgrel=3
 pkgdesc="Sets GNOME or KDE proxy settings using NetworkManager's informations"
-arch=('any')
+arch=("any")
 url="http://marin.jb.free.fr/proxydriver/"
-license=('GPL')
-depends=('networkmanager')
-optdepends=('gconf' 'kdebase-runtime')
-source=(http://downloads.sourceforge.net/sourceforge/proxydriver/proxydriver_${pkgver}_all.deb)
-md5sums=('0c27ce986156e8842747c07bec85876a')
+license=("GPL")
+depends=("networkmanager")
+optdepends=("gconf" "kdebase-runtime")
+source=("https://raw.githubusercontent.com/j1ml/proxydriver/master/proxydriver.sh")
+sha256sums=('adf16ba2642b02434c828863710282ba344e1aa147524154d1a2bd630c7513b6')
 
 package() {
-    ar -xv proxydriver_${pkgver}_all.deb
-    tar -xvf data.tar.gz
-    
-    mv "$srcdir/usr" "$pkgdir"
-    mv "$srcdir/etc" "$pkgdir"
-    
-    install -m755 "$pkgdir/usr/share/doc/proxydriver/proxydriver.sh" \
-     "$pkgdir/etc/NetworkManager/dispatcher.d/99-proxydriver.sh"
+    install -Dm755 "${srcdir}/proxydriver.sh" \
+     "${pkgdir}/etc/NetworkManager/dispatcher.d/99-proxydriver.sh"
 }
-
