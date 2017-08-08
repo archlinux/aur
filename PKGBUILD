@@ -1,8 +1,8 @@
 # Maintainer: desbma
 pkgname=mpv-scripts
 pkgver=0.26.0
-pkgrel=1
-pkgdesc="LUA scripts for the MPV media player maintained by the MPV authors"
+pkgrel=2
+pkgdesc="Scripts for the mpv media player officially maintained by the mpv authors"
 arch=('any')
 url="https://github.com/mpv-player/mpv/tree/master/TOOLS/lua"
 license=('GPL')

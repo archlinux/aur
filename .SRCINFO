@@ -1,7 +1,7 @@
 pkgbase = mpv-scripts
-	pkgdesc = LUA scripts for the MPV media player maintained by the MPV authors
+	pkgdesc = Scripts for the mpv media player officially maintained by the mpv authors
 	pkgver = 0.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mpv-player/mpv/tree/master/TOOLS/lua
 	install = mpv-scripts.install
 	arch = any
