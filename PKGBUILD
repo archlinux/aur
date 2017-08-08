@@ -3,7 +3,7 @@
 pkgname=cura-resources-materials
 pkgver=2.6.0
 pkgrel=1
-pkgdesc="A software solution for 3D printing aimed at RepRaps and the Ultimaker."
+pkgdesc="Missing materials resources for Cura"
 depends=("cura")
 provides=("cura-resource-materials")
 url="https://ultimaker.com/en/products/cura-software"
