@@ -1,14 +1,14 @@
 pkgbase = gog-dont-starve-rog
 	pkgdesc = Don't Starve: Reign of Giants DLC
-	pkgver = 2.0.0.3
+	pkgver = 2.1.0.4
 	pkgrel = 1
 	url = https://www.kleientertainment.com/games/dont-starve
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = gog-dont-starve
-	source = file://gog_don_t_starve_reign_of_giants_dlc_2.0.0.3.sh
-	sha256sums = 814ef06c04d372077480dfea4d132d1613297f4f01722a9a324a4aee7af6cd22
+	source = file://gog_don_t_starve_reign_of_giants_dlc_2.1.0.4.sh
+	sha256sums = a041e88a7be055d99f65eec1bdfc998eb744dc8d6a3a234fffe68a00ccd6065a
 
 pkgname = gog-dont-starve-rog
 
