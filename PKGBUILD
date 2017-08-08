@@ -22,7 +22,7 @@ conflicts=("${_pkgname}")
 options=('!emptydirs')
 groups=('gnome')
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
-_frepourl='http://pkgs.fedoraproject.org/cgit/rpms/gnome-terminal.git'
+_frepourl='http://pkgs.fedoraproject.org/rpms/gnome-terminal'
 _frepobranch='f26'
 _fcommit='2744f1268183790484a978702ff19c57a67dc5fe'
 _fpatchfile1='0001-build-Don-t-treat-warnings-as-errors.patch'
@@ -30,9 +30,9 @@ _fpatchfile2='gnome-terminal-notify-open-title-transparency.patch'
 _fgsoverridefile='org.gnome.Terminal.gschema.override'
 source=(
 	"https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
-	"${_fpatchfile1}-${_fcommit}::${_frepourl}/plain/${_fpatchfile1}?h=${_frepobranch}&id=${_fcommit}"
-	"${_fpatchfile2}-${_fcommit}::${_frepourl}/plain/${_fpatchfile2}?h=${_frepobranch}&id=${_fcommit}"
-	"${_fgsoverridefile}-${_fcommit}::${_frepourl}/plain/${_fgsoverridefile}?h=${_frepobranch}&id=${_fcommit}"
+	"${_fpatchfile1}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile1}"
+	"${_fpatchfile2}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile2}"
+	"${_fgsoverridefile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fgsoverridefile}"
 )
 sha256sums=('281edac30a07ca45beaaaf0a13fe2219cf8b87ece5e55dccbfc49ef769dfec0f'
             '83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
