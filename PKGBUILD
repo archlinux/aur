@@ -1,6 +1,6 @@
 pkgname=capnproto-java
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cap'n Proto for Java"
 arch=('i686' 'x86_64')
 url="https://github.com/capnproto/capnproto-java"
@@ -19,6 +19,7 @@ package() {
     cd "$pkgname-$pkgver"
     
     install -D capnpc-java "$pkgdir"/usr/bin/capnpc-java
+    install -Dm644 compiler/src/main/schema/capnp/java.capnp "$pkgdir"/usr/include/capnp/java.capnp
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
