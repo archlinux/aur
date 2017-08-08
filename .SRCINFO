@@ -7,10 +7,12 @@ pkgbase = yle-dl-git
 	license = GPL3
 	makedepends = git
 	makedepends = python2-setuptools
-	depends = ffmpeg
 	depends = php
 	depends = php-mcrypt
 	depends = python2-crypto
+	depends = python2-requests
+	depends = python2-progress
+	optdepends = ffmpeg: might be needed very rarely for some Areena video streams
 	optdepends = python2-youtube-dl: an alternative downloader backend
 	optdepends = rtmpdump: for downloading Areena audio streams
 	provides = yle-dl=2.21.r11.g312c29f
