@@ -1,8 +1,13 @@
 post_install() {
   echo "To use Warsaw, start its service using:"
-  echo "# systemctl start warsaw"
+  echo "systemd: # systemctl start warsaw"
+  echo "openrc: # rc-service warsaw stop"
 }
 
 pre_remove() {
-    systemctl stop warsaw  
+    if (pacman -Q openrc &> /dev/null); then
+        rc-service warsaw stop
+    else
+        systemctl stop warsaw
+    fi
 }

@@ -1,0 +1,54 @@
+#!/usr/bin/openrc-run
+### BEGIN INIT INFO
+# Provides:          warsaw
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Handles Warsaw - core
+# Description:       Warsaw Technology - core
+#  Developed by GAS Tecnologia<info@gastecnologia.com.br>
+#  Copyright 2015 GAS Tecnologia
+#
+#  Adapted to be a OpenRC script by: Manoel Vilela <manoel_vilela@engineer.com>
+### END INIT INFO
+
+PACKAGE=warsaw
+NAME=core
+DAEMON=/usr/local/bin/warsaw/$NAME
+TIMEOUT=5
+
+description="This service start the warsaw core daemon for Banking Security."
+
+depend() {
+    need localmount syslog-ng
+    after bootmisc dbus
+}
+
+checkconfig() {
+    if [ ! -f ${DAEMON} ]; then
+        eerror "The ${DAEMON} doesn't exists. Ensure {PACKAGE} is installed correctly."
+        return 1
+    fi
+}
+
+start() {
+    checkconfig || return 1
+
+    ebegin "Starting ${NAME} daemon from ${PACKAGE}"
+    /usr/local/bin/warsaw/wscertmgr
+    start-stop-daemon --start \
+                      --exec $DAEMON -- $DAEMON_OPTS
+
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${NAME} daemon from ${PACKAGE}"
+
+    start-stop-daemon --stop \
+                      --retry "TERM/${TIMEOUT}/KILL/5" \
+                      --exec ${DAEMON} -- ${DAEMON_OPTS}
+
+    eend $?
+}
