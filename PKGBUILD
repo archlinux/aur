@@ -8,7 +8,7 @@
 _srcname=mpv
 pkgname=mpv-full
 pkgver=0.26.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -52,9 +52,9 @@ build() {
     ./bootstrap.py
     
     ./waf configure \
-        --color=yes \
-        --prefix=/usr \
-        --confdir=/etc/mpv \
+        --color='yes' \
+        --prefix='/usr' \
+        --confdir='/etc/mpv' \
         --progress \
         \
         --enable-libmpv-shared \
@@ -92,7 +92,7 @@ build() {
         --enable-vapoursynth-lazy \
         --enable-libarchive \
         --enable-libavdevice \
-        --lua=52arch \
+        --lua='52arch' \
         \
         --enable-sdl2 \
         --disable-sdl1 \
