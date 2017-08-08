@@ -13,7 +13,7 @@ license=('GPL')
 groups=('qt')
 depends=('qt5-base' 'qt5-svg' 'qt5-x11extras' 'libx11' 'libxext>')
 makedepends=('cmake' 'qt5-tools')
-conflicts=("qt5-style-kvantum-svn" "qt4-style-kvantum-svn" "kvantum-kde4-colorscheme-svn" "kvantum-tools-qt5-svn")
+conflicts=("kvantum-qt5-git")
 source=("https://github.com/tsujan/Kvantum/archive/V"$pkgver".tar.gz")
 sha256sums=('0fda33ebca0708435eb2a03f04a850bc7490ba415122e442820a11ce6511bc58')
 
