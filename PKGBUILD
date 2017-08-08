@@ -7,7 +7,7 @@
 #       - https://github.com/Sude-/lgogdownloader
 
 pkgname='gog-hollow-knight'
-pkgver=2.2.0.3
+pkgver=2.5.0.6
 pkgrel=1
 pkgdesc="Hollow Knight is a challenging 2D action-adventure. You’ll explore twisting caverns, battle tainted creatures and escape intricate traps, all to solve an ancient long-hidden mystery."
 url='http://hollowknight.com/'
@@ -22,8 +22,12 @@ source=(
 sha256sums=(
   '5cd14be9e18be6277fc0daa39dd416d78d4e4445fe8998d3ddcf37a201a843b0'
   '8860a0daf52181f78711c2b1099d7a09a30ba09331c68e8aae71182a996a0acd'
-  'd579673c106f0a28bffe69f68d3999b21653fb671dcbee73ecc7366b7206f207'
+  'd40d0661be4af4aca6bd049c783fcbe52dbd0971ce0f7bbac44768640a0e9d74'
 )
+
+prepare() {
+  find . -type d -exec chmod 755 {} \;
+}
 
 package() {
   install -d "${pkgdir}/opt/${pkgname}/"
@@ -34,7 +38,6 @@ package() {
   install -d "${pkgdir}/usr/share/pixmaps/"
 
   cp -r data/noarch/game "${pkgdir}/opt/${pkgname}/"
-  find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
 
   install -m 755           \
     "${srcdir}/${pkgname}" \
