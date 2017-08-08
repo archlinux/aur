@@ -1,7 +1,7 @@
 pkgbase = discord-ptb
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discordapp.com/
 	install = DiscordPTB.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = discord-ptb
 	depends = alsa-lib
 	depends = nspr
 	depends = nss
+	depends = libc++
 	optdepends = libpulse: For pulseaudio support
 	optdepends = noto-fonts-emoji: Google font for emoji support.
 	optdepends = ttf-symbola: Font for emoji support.
