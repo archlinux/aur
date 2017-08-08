@@ -20,7 +20,9 @@ pkgbase = python-portend
 
 pkgname = python-portend
 	depends = python
+	depends = python-tempora
 
 pkgname = python2-portend
 	depends = python2
+	depends = python2-tempora
 

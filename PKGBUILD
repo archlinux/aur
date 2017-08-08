@@ -27,13 +27,13 @@ build() {
 }
 
 package_python-portend() {
-    depends=('python')
+    depends=('python' 'python-tempora')
     cd "$srcdir/portend-$pkgver"
     python ./setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-portend() {
-    depends=('python2')
+    depends=('python2' 'python2-tempora')
     cd "$srcdir/portend-$pkgver-py2"
     python2 ./setup.py install --root="${pkgdir}" --optimize=1
 }
