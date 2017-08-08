@@ -1,6 +1,6 @@
 pkgbase = gog-dont-starve
 	pkgdesc = An uncompromising wilderness survival game full of science and magic
-	pkgver = 2.6.0.8
+	pkgver = 2.7.0.9
 	pkgrel = 1
 	url = https://www.kleientertainment.com/games/dont-starve
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = gog-dont-starve
 	optdepends = gog-dont-starve-shipwrecked: Shipwrecked DLC
 	source = gog-dont-starve
 	source = gog-dont-starve.desktop
-	source = file://gog_don_t_starve_2.6.0.8.sh
+	source = file://gog_don_t_starve_2.7.0.9.sh
 	sha256sums = 9827bed58903e8a351b4f52f4728b37c6e7b31abb206f2fff99e1467ae967179
 	sha256sums = 609856aae2d19877f8afb764a8db15a8932e535b719cc342f4b42c3d0e4b1956
-	sha256sums = 6cb3f1572f7b1d25d7b561cab7b144b3ad8ade0b84a9b5dbcfdaf42ede5cc28d
+	sha256sums = da86a26e8daad539d5ad340c9606021b7798249c6daa5efa629aae9dc1a1083b
 
 pkgname = gog-dont-starve
 
