@@ -10,7 +10,7 @@ url='https://github.com/EtiennePerot/parcimonie.sh'
 license=('custom:WTFPL')
 depends=('bash' 'torsocks' 'tor' 'gnupg')
 makedepends=('git')
-source=('git://perot.me/parcimonie.sh'
+source=('https://github.com/EtiennePerot/parcimonie.sh'
         'pgp-key::https://perot.me/pgp-minimal.asc')
 sha512sums=('SKIP'
             'c5aaa5de31174ee0d1d8937aa5ec17fab3784688f65d7046210b37f9c3a55eee97c1c5dc7ee43c34f961fb043e59cdfd1788ea7dbca1a0e94b3fa996952bc286')
