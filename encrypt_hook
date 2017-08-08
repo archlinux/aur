@@ -1,4 +1,4 @@
-#!/usr/bin/ash
+#!/usr/bin/bash
 
 run_hook() {
     modprobe -a -q dm-crypt >/dev/null 2>&1

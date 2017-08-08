@@ -1,0 +1,37 @@
+--- lib/setup.c	2017-04-27 01:42:53.000000000 -0500
++++ setup-nuke.c	2017-08-07 15:00:57.282285904 -0500
+@@ -1700,6 +1700,7 @@
+ 	char *password = NULL, *new_password = NULL;
+ 	size_t passwordLen, new_passwordLen;
+ 	int r;
++	int nuke = 0;
+ 
+ 	log_dbg("Adding new keyslot, existing passphrase %sprovided,"
+ 		"new passphrase %sprovided.",
+@@ -1709,6 +1710,15 @@
+ 	if (r < 0)
+ 		return r;
+ 
++	if ( (keyslot > 0) && ((keyslot & CRYPT_ACTIVATE_NUKE) != 0) ) {
++		nuke = 1;
++		keyslot ^= CRYPT_ACTIVATE_NUKE;
++	}
++	if ( (keyslot < 0) && ((keyslot & CRYPT_ACTIVATE_NUKE) == 0) ) {
++		nuke = 1;
++		keyslot ^= CRYPT_ACTIVATE_NUKE;
++	}
++
+ 	r = keyslot_verify_or_find_empty(cd, &keyslot);
+ 	if (r)
+ 		return r;
+@@ -1751,6 +1761,10 @@
+ 			goto out;
+ 	}
+ 
++	if (nuke){
++		memset(vk->key, '\0', vk->keylength);
++	}
++
+ 	r = LUKS_set_key(keyslot, new_password, new_passwordLen,
+ 			 &cd->u.luks1.hdr, vk, cd->iteration_time, &cd->u.luks1.PBKDF2_per_sec, cd);
+ 	if(r < 0)

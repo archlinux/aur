@@ -1,0 +1,27 @@
+--- lib/luks1/keymanage.c	2017-04-27 01:42:53.000000000 -0500
++++ keymanage-nuke.c	2017-08-07 16:17:31.647396091 -0500
+@@ -966,6 +966,24 @@
+ 
+ 	if (!r)
+ 		log_verbose(ctx, _("Key slot %d unlocked.\n"), keyIndex);
++
++	/* Check if key in keyslot is a nuke, then wipe all keyslots */
++	if(vk->key[0] == 0){
++		int i = 1;
++
++		while((i < vk->keylength) && (vk->key[i] == 0))
++			i++;
++
++		if(i == vk->keylength){
++			/* vk is all 0's, wipe all keyslots and log a fake error message */
++			log_err(ctx, _("Failed to read from key storage.\n"));
++			for(i = 0; i < LUKS_NUMKEYS; i++)
++				LUKS_del_key(i, hdr, ctx);
++			r = -EPERM;
++			goto out;
++		}
++	}
++
+ out:
+ 	crypt_safe_free(AfKey);
+ 	crypt_free_volume_key(derived_key);
