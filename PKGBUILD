@@ -11,8 +11,10 @@ depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 makedepends=('cargo' 'npm' 'python2' 'git')
 optdepends=('hunspell-en: for English spellcheck support')
 provides=('wire-desktop')
-source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz")        
-sha256sums=('a58894b3fa8421fbce96e0a608e71b978e1d58c14c3c95fab1a29675a8c6560a')
+source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz"
+        "${pkgname}.desktop")
+sha256sums=('a58894b3fa8421fbce96e0a608e71b978e1d58c14c3c95fab1a29675a8c6560a'
+            '84d869ca111010a5f45f3d5cb8ef4320fa46ac01104773559fb3a7c501f8313b')
 
 build() {
   cd "${srcdir}/${pkgname}-release-${pkgver}"
