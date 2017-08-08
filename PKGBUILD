@@ -20,18 +20,14 @@ sha256sums=('22b30638536d20d387e1adff62aa4b9ddebd8ac7ab812a36c699d72df9f7f570')
 prepare() {
   cd "$srcdir/"
 
+  cd "${_pkgname}-${pkgver}"
   # Uncomment and modify these lines to enable Intel MKL support
-  #cd "${_pkgname}-${pkgver}"
   #sed -i -e '59i-DINTEL_MKL_DIR="/opt/intel/mkl" \\' torch/lib/build_all.sh
   #sed -i -e '86d' -e '89d' torch/lib/TH/cmake/FindMKL.cmake
-  #cd ..
+  sed -i -e '144icp -r nccl gloo/third-party/' torch/lib/build_all.sh
+  cd ..
 
   cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
-  cd "${_pkgname}-${pkgver}"
-  sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-      -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-      -e "s|#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
-      -i $(find . -name '*.py')
 }
 
 build() {
