@@ -1,8 +1,8 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=albion-online-launcher-bin
-pkgver=1.0.34.162
-pkgrel=3
+pkgver=1.0.34.164
+pkgrel=1
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("https://live.albiononline.com/autoupdate/launcher-linux-setup-${pkgver}
 
 install=albion-online-launcher-bin.install
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-md5sums=('aa2dc29a5b3ec07d9e7cdbbb87209e0f'
+md5sums=('4c647ef8c0e74fe67afa3e1e339a7fe3'
          '14b5dfae0a7b3b0dc5e2f2975aa4892c')
 
 prepare() {
