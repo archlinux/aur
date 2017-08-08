@@ -12,9 +12,9 @@ arch=(x86_64)
 url="https://github.com/openshift/origin"
 license=('Apache')
 
-source_x86_64=("https://github.com/openshift/origin/releases/download/v$pkgver/openshift-origin-client-tools-v$pkgver-$_hash-linux-64bit.tar.gz")
+source=("https://github.com/openshift/origin/releases/download/v$pkgver/openshift-origin-client-tools-v$pkgver-$_hash-linux-64bit.tar.gz")
 
-sha256sums_x86_64=("ecb0f52560ac766331052a0052b1de646011247f637c15063f4d74432e1ce389")
+sha256sums=("ecb0f52560ac766331052a0052b1de646011247f637c15063f4d74432e1ce389")
 
 package() {
 	install -D -m755 $srcdir/*/oc $pkgdir/usr/bin/oc

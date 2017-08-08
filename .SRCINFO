@@ -5,8 +5,8 @@ pkgbase = origin-client-bin
 	url = https://github.com/openshift/origin
 	arch = x86_64
 	license = Apache
-	source_x86_64 = https://github.com/openshift/origin/releases/download/v3.6.0/openshift-origin-client-tools-v3.6.0-c4dd4cf-linux-64bit.tar.gz
-	sha256sums_x86_64 = 1e5f73098c3e3bf6f887c8678c078f650e62c477eca255c0f131d6b6be805c6c
+	source = https://github.com/openshift/origin/releases/download/v3.6.0/openshift-origin-client-tools-v3.6.0-c4dd4cf-linux-64bit.tar.gz
+	sha256sums = ecb0f52560ac766331052a0052b1de646011247f637c15063f4d74432e1ce389
 
 pkgname = origin-client-bin
 
