@@ -3,16 +3,14 @@
 pkgname=glassfish5
 pkgver=5.0_b18_08_07_2017
 _oraver=5.0-b18-08_07_2017
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source Java EE 8 Reference Implementation."
 url="https://javaee.github.io/glassfish/"
 license=("CDDL")
-provides=("glassfish5")
-conflicts=("glassfish5")
 depends=("java-environment>=8")
 arch=("any")
 options=(!strip)
-source=("http://download.oracle.com/glassfish/${pkgver}/nightly/glassfish-${_oraver}.zip"
+source=("http://download.oracle.com/glassfish/5.0/nightly/glassfish-${_oraver}.zip"
 		"glassfish5.service")
 
 sha256sums=('790b3395da69934059b3e099993dfd92e4e7381437edec715221109de1c93233'
