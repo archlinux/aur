@@ -1,0 +1,9 @@
+post_install() {
+  echo "Scripts have been installed in /usr/share/mpv/scripts
+
+To enable a script you can either start mpv with:
+  mpv --script=/usr/share/mpv/scripts/xxx.lua
+or create a symlink to a script in your user mpv folder:
+  mkdir -p ~/.config/mpv/scripts
+  ln -s /usr/share/mpv/scripts/xxx.lua ~/.config/mpv/scripts"
+}
