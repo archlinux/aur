@@ -3,7 +3,7 @@
 
 pkgname=apache-spark
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
@@ -27,7 +27,7 @@ source=("http://d3kbcqa49mib13.cloudfront.net/spark-${pkgver}-bin-without-hadoop
 sha1sums=('15b9577049638fc1afe8d2843ac1ae9dec470962'
           'ac71d12070a9a10323e8ec5aed4346b1dd7f21c6'
           'a191e4f8f7f8bbc596f4fadfb3c592c3efbc4fc0'
-          '05372135ef26de3c75231731d1a56a11431f5496'
+          'e52d327571e84b9b350bc594131fcaf50a3dd0f4'
           '08557d2d5328d5c99e533e16366fd893fffaad78'
           '323445b8d64aea0534a2213d2600d438f406855b'
           '65b1bc5fce63d1fa7a1b90f2d54a09acf62012a4')
