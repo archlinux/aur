@@ -1,9 +1,9 @@
 # Maintainer: Constantin Lorenz <Cons27773964@aol.com>
 
 pkgname=sandboxed-tor-browser
-pkgver=0.0.9
+pkgver=0.0.12
 pkgrel=1
-torbrowserver=7.5a2	# for easier source access
+torbrowserver=7.5a4	# for easier source access
 epoch=
 pkgdesc="A sandboxed version of the Tor Browser, currently in alpha!"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source+=("${pkgname}.desktop"
 noextract=()
 md5sums=('49042133dbfad9f06df48c934dc123e6'
          '494afbfa60fb4ce21840244cc3f7208c')
-md5sums_x86_64=('7b55a4331e9750c662f96216ef2fbfaa'
+md5sums_x86_64=('24297ff410b3107d4ddc4374495f7efc'
                 'SKIP')
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 
