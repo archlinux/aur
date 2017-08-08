@@ -2,7 +2,7 @@
 
 pkgname=emby-server-unlocked
 pkgver=3.2.26.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
 url='http://emby.media'
