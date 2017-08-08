@@ -20,8 +20,8 @@ _gtk3=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=54.0.1
-pkgrel=2
+pkgver=55.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -41,20 +41,20 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=53443ffb496a
+_patchrev=74bc4d049531
 options=('!emptydirs'  'strip')
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         mozconfig firefox.desktop firefox-install-dir.patch vendor.js kde.js firefox-fixed-loading-icon.png
 	# Firefox patchset
-	$_patchurl/firefox-branded-icons.patch
-	$_patchurl/firefox-kde.patch
-	$_patchurl/firefox-no-default-ualocale.patch
+	firefox-branded-icons-$_patchrev.patch::$_patchurl/firefox-branded-icons.patch
+	firefox-kde-$_patchrev.patch::$_patchurl/firefox-kde.patch
+	firefox-no-default-ualocale-$_patchrev.patch::$_patchurl/firefox-no-default-ualocale.patch
 	# Gecko/toolkit patchset
-	$_patchurl/mozilla-kde.patch
-	$_patchurl/mozilla-language.patch
-	$_patchurl/mozilla-nongnome-proxies.patch
+	mozilla-kde-$_patchrev.patch::$_patchurl/mozilla-kde.patch
+	mozilla-language-$_patchrev.patch::$_patchurl/mozilla-language.patch
+	mozilla-nongnome-proxies-$_patchrev.patch::$_patchurl/mozilla-nongnome-proxies.patch
 	unity-menubar.patch
 	add_missing_pgo_rule.patch
         pgo_fix_missing_kdejs.patch
@@ -97,13 +97,13 @@ prepare() {
   echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
   
   msg "Patching for KDE"
-  patch -Np1 -i "$srcdir/mozilla-nongnome-proxies.patch"
-  patch -Np1 -i "$srcdir/mozilla-kde.patch"
-  patch -Np1 -i "$srcdir/mozilla-language.patch"
+  patch -Np1 -i "$srcdir/mozilla-nongnome-proxies-$_patchrev.patch"
+  patch -Np1 -i "$srcdir/mozilla-kde-$_patchrev.patch"
+  patch -Np1 -i "$srcdir/mozilla-language-$_patchrev.patch"
 
-  patch -Np1 -i "$srcdir/firefox-kde.patch"
-  patch -Np1 -i "$srcdir/firefox-no-default-ualocale.patch"
-  patch -Np1 -i "$srcdir/firefox-branded-icons.patch"
+  patch -Np1 -i "$srcdir/firefox-kde-$_patchrev.patch"
+  patch -Np1 -i "$srcdir/firefox-no-default-ualocale-$_patchrev.patch"
+  patch -Np1 -i "$srcdir/firefox-branded-icons-$_patchrev.patch"
   
   # add globalmenu support
   patch -Np1 -i "$srcdir/unity-menubar.patch"
@@ -222,12 +222,12 @@ md5sums=('SKIP'
          '05bb69d25fb3572c618e3adf1ee7b670'
          '6e335a517c68488941340ee1c23f97b0'
          '46a4971f26c990a66b913ba700c7f3fa'
-         '8f49836b3ad6d40dc490c3bf703f71d6'
+         'ec5bf2759be835054e9d1d803e9b5897'
          '1fad9a988826d69fe712ea973e43f6da'
-         'c09024c0bea0f3224d3e45f74ddc4d6b'
+         '1d3a8171492b6e1c672f639fd44d4cf4'
          'fa6ac817f576b486419b5f308116a7cd'
          '0c684360f1df4536512d51873c1d243d'
-         'ca0532e1b9e55186496868b0b18b4a98'
+         '730e43106f0a4b19066c9c1e15ff7888'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3fa8bd22d97248de529780f5797178af'
          'e2396b9918aa602427f80d48caf319b4'
