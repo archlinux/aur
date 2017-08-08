@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/jaraco/tempora"
 license=('MIT')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools' 'python-setuptools-scm' 'python2-setuptools-scm')
-checkdepends=('python-tox' 'python2-tox' 'python-backports.unittest_mock' 'python2-backports.unittest_mock')
+checkdepends=('python-tox' 'python2-tox' 'python2-backports.unittest_mock')
 source=("https://github.com/jaraco/tempora/archive/$pkgver.tar.gz")
 md5sums=('b1bc1e3d2374b229d5fae1938d54364c')
 
