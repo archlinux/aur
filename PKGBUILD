@@ -3,7 +3,7 @@
 
 pkgname=git-buildpackage
 pkgver=0.8.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools from Debian to integrate the package build system with Git"
 arch=(any)
 url="https://honk.sigxcpu.org/piki/projects/git-buildpackage/"
@@ -29,7 +29,7 @@ build() {
 }
 
 
-build() {
+check() {
   cd git-buildpackage
   python2 setup.py check
 }
