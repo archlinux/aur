@@ -3,7 +3,7 @@
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python2-pytorch")
 _pkgname="pytorch"
-pkgver=0.1.12
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
@@ -14,11 +14,17 @@ makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools'
              'gcc5' 'cmake')
 depends=('cuda' 'cudnn')
 source=("https://github.com/pytorch/pytorch/archive/v${pkgver}.tar.gz")
-sha256sums=('ace32cc277c2f59b1e496e326bf504d800061edde9b6c2af29bbb2f08728ca30')
+sha256sums=('22b30638536d20d387e1adff62aa4b9ddebd8ac7ab812a36c699d72df9f7f570')
 
 
 prepare() {
   cd "$srcdir/"
+
+  # Uncomment and modify these lines to enable Intel MKL support
+  #cd "${_pkgname}-${pkgver}"
+  #sed -i -e '59i-DINTEL_MKL_DIR="/opt/intel/mkl" \\' torch/lib/build_all.sh
+  #sed -i -e '86d' -e '89d' torch/lib/TH/cmake/FindMKL.cmake
+  #cd ..
 
   cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
   cd "${_pkgname}-${pkgver}"
