@@ -15,7 +15,7 @@ post_install() {
   systemd-tmpfiles --create /usr/lib/tmpfiles.d/courier-authlib.conf
 
   # make sure the system can see authlib libraries
-  echo /usr/lib/courier-authlib > /etc/ld.so.conf.d/courier-authlib
+  echo /usr/lib/courier-authlib > /etc/ld.so.conf.d/courier-authlib.conf
   ldconfig
 }
 
@@ -28,7 +28,7 @@ post_upgrade() {
 # arg 1:  the old package version
 pre_remove() {
   systemd-tmpfiles --remove /usr/lib/tmpfiles.d/courier-authlib.conf
-  rm -f /etc/ld.so.conf.d/courier-authlib
+  rm -f /etc/ld.so.conf.d/courier-authlib.conf
   ldconfig
   userdel courier
   if getent group courier >/dev/null; then groupdel courier; fi
