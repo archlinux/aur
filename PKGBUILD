@@ -7,10 +7,10 @@
 
 pkgname=mpv-full-git
 pkgver=0.25.0.r372.gc1dcf74458
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL3')
 url='http://mpv.io/'
 depends=(
     # official repositories:
