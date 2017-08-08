@@ -2,7 +2,7 @@
 
 pkgname=emby-server-unlocked
 pkgver=3.2.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
 url='http://emby.media'
@@ -22,7 +22,7 @@ sha256sums=('8d1ee6e5da6589dbdda52df13ffe9ef0a9a5025159e0efcb36334214f3c7246c'
             'b25bf83a0ab371aff3b13b82f7af71b51bfe6d7e51eb8a8a3dd8f0774ffce6a5'
             'c9ad78f3e2f0ffcb4ee66bb3e99249fcd283dc9fee17895b9265dc733288b953'
             '8a91ea49a1699c820c4a180710072cba1d6d5c10e45df97477ff6a898f4e1d70'
-            '9df64aaafae5d75e4dbb592d9b35c3f376c221bddf303f147407bc676423b35e')
+            'c501e359a7c1268374e8b1cb8be6afe324d8a16788ba27c980efc7bf286ce9d5')
 
 prepare() {
   cd Emby-${pkgver}
