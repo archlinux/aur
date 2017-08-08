@@ -8,10 +8,10 @@
 _srcname=mpv
 pkgname=mpv-full
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL3')
 url='http://mpv.io/'
 depends=(
     # official repositories:
