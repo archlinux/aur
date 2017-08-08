@@ -10,7 +10,7 @@
 
 _name=vlc
 pkgname=vlc-git
-pkgver=3.0.0.r12907.gf7b8d2ee8b
+pkgver=3.0.0.r14231.g3d329b56eb
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -93,6 +93,7 @@ build() {
               --enable-sftp \
               --enable-upnp \
               --enable-vcdx \
+              --enable-wayland \
               --prefix=/usr \
               --sysconfdir=/etc \
               LUAC=/usr/bin/luac  LUA_LIBS="`pkg-config --libs lua`" \
