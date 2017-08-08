@@ -2,7 +2,7 @@
 # Disclaimer: I have no idea if this works, I only packaged it.
 pkgname=rasdaemon
 pkgver=0.5.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog"
 arch=(i686 x86_64)
 url="http://www.infradead.org/~mchehab/rasdaemon/"
@@ -14,6 +14,7 @@ sha256sums=('ef7045b3ce6f9deb593d9e93be42b37672806c399332769d665a63e99dfbc29c')
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   autoreconf -fi
+  sed -i '/^Exec/ s/ -r//' misc/rasdaemon.service.in
 }
 
 build() {

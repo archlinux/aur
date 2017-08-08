@@ -1,7 +1,7 @@
 pkgbase = rasdaemon
 	pkgdesc = Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog
 	pkgver = 0.5.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.infradead.org/~mchehab/rasdaemon/
 	arch = i686
 	arch = x86_64
