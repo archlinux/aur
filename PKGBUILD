@@ -7,7 +7,7 @@
 
 pkgname=courier-authlib
 pkgver=0.68.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Authentication library for the Courier mailserver(s)"
 arch=(i686 x86_64)
 license=('GPL2')

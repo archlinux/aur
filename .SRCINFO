@@ -1,7 +1,7 @@
 pkgbase = courier-authlib
 	pkgdesc = Authentication library for the Courier mailserver(s)
 	pkgver = 0.68.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://courier-mta.org/authlib/
 	install = courier-authlib.install
 	arch = i686
