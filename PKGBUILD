@@ -1,7 +1,7 @@
 # Maintainer: helix <stargr@gmail.com>
 pkgname=subedit
-pkgver=1.01
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='Subtitle editor written in bash'
 arch=('any')
 license=('GPL2')
@@ -10,13 +10,13 @@ url="https://github.com/helixarch/subedit"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/helixarch/subedit/archive/$pkgver.tar.gz"
         "subedit.install")
 
-sha512sums=('064343660830d94b2d6eed1937ff3e53f4abda39bf1a6b73648380e5685523d682c5740aed3d43dd83e8d409157dbbc1f5e9690720ab9eac6a739647babda243'
-            'cb9ff39ade9dd0a408bd5fb21cb00ad1c4382790e20f1656961b56bc9adb61cd6cbe9c668239389f2fa469433defc22da83dfefcf89062015ea38e0f2391918a')
+sha512sums=('f36d91d0ba5aaf13a3bf3b5c38f7525f09de6dc4f6e30a81c8bfc8b4e93d49a50d0896ecf0ee04497f0bee2f279dbe99bbf7876ada5fd40078657bbe943e2377'
+            'baee56c87a9ed1974c6c5793472290d3302e0236a7bdcc585a841c5455463fba43ec2a6c10fa5945b39f60917eb88c0b6c1b2187ddbdcea6da758783df702d14')
 
 install=subedit.install
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 subedit "$pkgdir/usr/bin/subedit"
-  install -Dm6s44 subeditrc "$pkgdir/etc/subeditrc"
+  install -Dm644 subeditrc "$pkgdir/etc/subeditrc"
 }
