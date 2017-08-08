@@ -23,7 +23,7 @@ source=('http://gdlp01.c-wss.com/gds/4/0100003954/01/cnijfilter-mg5300series-3.6
 md5sums=('bd38b2c2bb495b836689403e0c484763'
          'c5ab24d4811ec72579ea5b8b9170f58b'
          'd8faf0e75ee3d1989eed39d55cb3e8fb'
-         '26ebae4fc269fa9d3efa56373345921f'
+         'b971d9b730a1984258ae557530749416'
          '3feefd413092d7152f47b7451ba79efe')
 
 _printDrvSrc='cnijfilter-mg5300series-3.60-1-deb'

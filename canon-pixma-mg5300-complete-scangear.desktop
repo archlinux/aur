@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Cannon Scangear (MG5300 series)
+Name=Canon ScanGear (MG5300 series)
 Exec=/usr/bin/scangearmp
 Icon=/usr/share/pixmaps/canon-pixma-mg5300-complete-scangear-icon.png
 Categories=Graphics;2DGraphics;
