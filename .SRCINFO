@@ -1,0 +1,16 @@
+pkgbase = archisomod-git
+	pkgdesc = Python script to remaster Arch Linux ISOs with option to add 32-bit EFI
+	pkgver = r37.3491ee5
+	pkgrel = 1
+	url = https://github.com/HOMEINFO/archiso-tools
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-docopt
+	depends = libisoburn
+	optdepends = grub: 32-bit EFI image generation
+	source = git+https://github.com/HOMEINFO/archiso-tools.git
+	sha256sums = SKIP
+
+pkgname = archisomod-git
+
