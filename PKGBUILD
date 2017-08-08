@@ -1,4 +1,4 @@
-# Maintainer: Kabir Sala <kabirsala.arch AT airmail DOT cc>
+# Maintainer: Kabir Sala <aur AT mail DOT ksala DOT eu>
 # Inspired by the 'scrt' package by Remy van Elst (https://aur.archlinux.org/packages/scrt/)
 #
 # How to install:
@@ -6,8 +6,8 @@
 #    With Pacaur: AURDEST=. pacaur -d scrt-sfx
 #    Or just download all the files manually from AUR
 # 2. Download
-#    scrt-sfx-8.1.2.1362.ubuntu16.tar.gz
-#    scrt-sfx-8.1.2.1362.ubuntu16-64.tar.gz
+#    scrt-sfx-8.1.3.1382.ubuntu16.tar.gz
+#    scrt-sfx-8.1.3.1382.ubuntu16-64.tar.gz
 #    From https://vandyke.com/download/securecrt/download.html
 #    (You'll need a free account, SecureCRT/FX will ask for the license at startup)
 #    And put in the same folder as the PKGBUILD
