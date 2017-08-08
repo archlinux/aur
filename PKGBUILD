@@ -10,15 +10,18 @@ license=('GPL2')
 depends=('agg')
 source=("http://dl.exactcode.de/oss/exact-image/$pkgname-$pkgver.tar.bz2"
         "$pkgname-c-98.patch"
-        "$pkgname-syntax.patch")
+        "$pkgname-syntax.patch"
+        "$pkgname-types.patch")
 md5sums=('bb9c8be82a4b5126be0224529ea7c4c7'
          '6d006542aad588c07fd88030c556470d'
-         'c169fcbfb3cbe5778cff4522f5ce0d83')
+         'c169fcbfb3cbe5778cff4522f5ce0d83'
+         'b8f5455b065f08956166c26bbab78df3')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	patch -p1 -i "$srcdir/$pkgname-c-98.patch"
 	patch -p1 -i "$srcdir/$pkgname-syntax.patch"
+	patch -p1 -i "$srcdir/$pkgname-types.patch"
 }
 
 build() {

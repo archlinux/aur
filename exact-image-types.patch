@@ -1,0 +1,11 @@
+--- exact-image-0.9.2/gfx/X11Helper.cc.bak	2017-08-08 17:40:39.798903664 +0100
++++ exact-image-0.9.2/gfx/X11Helper.cc	2017-08-08 17:41:56.479284193 +0100
+@@ -138,7 +138,7 @@
+   return ob;
+ }
+   
+-void X11Window::CaptureIntoEvasImage (Evas_Object* ob,
++static void X11Window::CaptureIntoEvasImage (Evas_Object* ob,
+ 				      Display* dpy,
+ 				      Window window,
+ 				      int x, int y, int w, int h)
