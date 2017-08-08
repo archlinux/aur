@@ -1,5 +1,5 @@
 # Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
-
+# Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=img2pdf
 pkgver=0.2.4
 pkgrel=1
@@ -12,19 +12,10 @@ makedepends=('python-setuptools')
 conflicts=("$pkgname-git")
 provides=("python-img2pdf=${pkgver}")
 replaces=('python-img2pdf')
-source=("https://pypi.python.org/packages/7e/a2/4f06081f674920be757d894b4bab874e6a3b5227e730cb7618430b366e69/$pkgname-$pkgver.tar.gz")
-md5sums=('bc8fca44a80af45e90f72d6b9003f5e1')
-
-build() {
-	cd "$srcdir/$pkgname-$pkgver"
-
-	msg "Starting setup.py..."
-
-	python setup.py build
-}
+source=("https://pypi.python.org/packages/7e/a2/4f06081f674920be757d894b4bab874e6a3b5227e730cb7618430b366e69/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('140b70fa3a3bfb54e92947818cee01483a4f1492b5d1d02b0f649257f5ffc9ae')
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-
-	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
