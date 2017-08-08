@@ -4,8 +4,8 @@ _with_extra=y
 
 pkgname=arc-kde-git
 epoch=1
-pkgver=r11.5485068
-pkgrel=1
+pkgver=r93.5cd2489
+pkgrel=2
 pkgdesc='Arc customization mainly for Plasma 5 (git version)'
 arch=('any')
 url='https://github.com/PapirusDevelopmentTeam/arc-kde'
@@ -44,7 +44,7 @@ sha256sums=('SKIP')
 install=${pkgname}.install
 
 pkgver() {
-    cd "${srcdir}"
+    cd "${srcdir}/${pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
