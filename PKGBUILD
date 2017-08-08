@@ -9,6 +9,7 @@ license=('MIT')
 depends=('python-daemonize' 'python-terminaltables-git' 'python-colorclass-git' 'mediainfo' 'pueue' 'python-lxml')
 makedepends=('python-setuptools')
 provides=('encarne')
+conflicts=('encarne-git')
 url='https://github.com/nukesor/encarne'
 source=("https://github.com/Nukesor/encarne/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
