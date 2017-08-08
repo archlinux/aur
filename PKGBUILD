@@ -1,7 +1,7 @@
 # Maintainer: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
-pkgver=1.22.0
-pkgrel=2
+pkgver=1.23.0
+pkgrel=1
 pkgdesc=".NET development platform based on on Roslyn workspaces."
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
@@ -23,11 +23,8 @@ package() {
 	  find $pkgdir/opt -type d | xargs chmod 755
 	  chmod 755 $pkgdir/opt/$pkgname/OmniSharp.exe
 
-	  #https://github.com/OmniSharp/omnisharp-roslyn/issues/600
-	  rm $pkgdir/opt/$pkgname/System.Runtime.InteropServices.RuntimeInformation.dll
-
 #license
 	  install -D -m644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('32afe48e39df8feb3ba3da3a2a954445'
+md5sums=('0cf6d3ea9f3b231a9eaa5aedff859a4f'
          '19a620e118d664537fb9dac578810f8d')
