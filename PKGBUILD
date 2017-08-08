@@ -1,6 +1,6 @@
 # Maintainer: Michael Alexander <beefsack@gmail.com>
 pkgname=hhvm-hack-git
-pkgver=3.20.2
+pkgver=3.21.0
 pkgrel=1
 pkgdesc="HHVM's Hack tools (hh_client, hh_server, hh_format et al.)"
 arch=('x86_64')
