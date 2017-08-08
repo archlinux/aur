@@ -2,7 +2,7 @@
 # Contributor: sh4nks <sh4nks7@gmail.com
 
 pkgname=lightdm-pantheon-greeter-git
-pkgver=r770.8f93282
+pkgver=r807.5cd5756
 pkgrel=1
 pkgdesc='Pantheon greeter for LightDM'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ install='lightdm-pantheon-greeter.install'
 source=('lightdm-pantheon-greeter::git+https://github.com/elementary/greeter.git'
         'lightdm-pantheon-greeter-paths.patch')
 sha256sums=('SKIP'
-            '2277e4a11c8945b72cca0ab116aaae86099ccd90833c18b7f74b400f6f674b7f')
+            '64911a77369693a85563459ff372c4f7daba09825e7f66f2b98b60ab2b7ecd76')
 
 pkgver() {
   cd lightdm-pantheon-greeter
