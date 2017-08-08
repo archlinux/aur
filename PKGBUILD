@@ -15,7 +15,7 @@ makedepends=('intltool' 'gobject-introspection' 'gtk-doc' 'vala' 'gperf' 'glade'
 options=('!emptydirs')
 
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
-_frepourl='http://pkgs.fedoraproject.org/cgit/rpms/vte291.git'
+_frepourl='http://pkgs.fedoraproject.org/rpms/vte291'
 _frepobranch='f26'
 _fpatchfile='vte291-command-notify-scroll-speed.patch'
 _fcommit='d8ae8b98633dc0bbe18946b55ac89414bda09938'
@@ -26,11 +26,10 @@ _vtetag=${_vtever}
 
 _tilixpatchfile1='alternate-screen.patch'
 _tilixpatchfile2='disable-bg-draw.patch'
-
 source=(
 	#"git+https://git.gnome.org/browse/vte#commit=$_vtecommit"
 	"git+https://git.gnome.org/browse/vte#tag=$_vtetag"
-	"${_fpatchfile}-${_fcommit}::${_frepourl}/plain/${_fpatchfile}?h=${_frepobranch}&id=${_fcommit}"
+	"${_fpatchfile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile}"
 	'add-zsh-notfication-support.patch'
 	"${_tilixpatchfile1}-${_tilixver}::https://github.com/gnunn1/tilix/raw/${_tilixver}/experimental/vte/${_tilixpatchfile1}"
 	"${_tilixpatchfile2}-${_tilixver}::https://github.com/gnunn1/tilix/raw/${_tilixver}/experimental/vte/${_tilixpatchfile2}"
