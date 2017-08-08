@@ -1,0 +1,22 @@
+pkgbase = xfmedia
+	pkgdesc = A lightweighted multimedia player designed for Xfce based on xine
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://www.spurint.org/projects/xfmedia/
+	arch = i686
+	arch = x86_64
+	depends = gtk2
+	depends = xine-lib
+	depends = libxfcegui4
+	depends = exo
+	source = https://www.spurint.org/files/xfmedia/xfmedia-0.9.2.tar.bz2
+	source = 01-xfmedia-exo-0.6.patch
+	source = 02-xfmedia-dbus-0.6-support.patch
+	source = 03-xfmedia-empty-prev-next-fix.patch
+	md5sums = 6eb8bd1f67201f829e0f45e733c02bd5
+	md5sums = f5e17fcdf2056dcc8ca8aae8600c0132
+	md5sums = 8f2aa12eea584de65d8ed28179e56b51
+	md5sums = d6d59079e8a9d30010b42ec23a44826d
+
+pkgname = xfmedia
+
