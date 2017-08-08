@@ -2,6 +2,7 @@
 # Maintainer: Pascal Bach
 # Maintainer: Achilleas Pipinellis <axilleas@archlinux.info>
 # Maintainer: Tomas Kral <tomas.kral@gmail.com>
+# Maintainer: Mathias Merscher <archlinux@rheinekopfsache.de>
 
 pkgname=origin-client-bin
 pkgver=3.6.0

@@ -1,7 +1,7 @@
 pkgbase = origin-client-bin
 	pkgdesc = The client tools for the Origin platform that powers OpenShift
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openshift/origin
 	arch = x86_64
 	license = Apache
