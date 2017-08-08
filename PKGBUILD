@@ -1,81 +1,78 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=devkitarm
-pkgver=r46
-_binutilsver=2.27
-_gccver=6.3.0
+pkgver=r47
+_buildscriptsver=20170715
+_binutilsver=2.28
+_gccver=7.1.0
 _newlibver=2.5.0
-_gdbver=7.12
+_gdbver=8.0
 _generaltoolsver=1.0.0
-_islver=0.16.1
+_islver=0.18
 _gbatoolsver=1.0.0
-_gp32toolsver=1.0.2
+_gp32toolsver=1.0.3
 _dstoolsver=1.1.0
 _gritver=0.8.14
-_ndstoolver=2.0.1
+_ndstoolver=2.0.3
 _dlditoolver=1.24.0
 _mmutilver=1.8.6
 _dfuutilver=0.9.1
-_stlinkver=1.2.1
-_3dslinkver=0.5.1
+_stlinkver=1.2.2
+_3dslinkver=0.5.2
 _3dstoolsver=1.1.4
-_picassover=2.5.0
+_picassover=2.6.2
 pkgrel=1
 pkgdesc="ARM toolchain for GP32, Nintendo (3)DS and GBA homebrew development"
 arch=('i686' 'x86_64')
 url="http://devkitpro.org"
 license=('GPL')
 options=(!strip libtool staticlibs emptydirs)
-depends=('freeimage' 'python' 'flex' 'libmpc' 'libusb' 'guile')
+depends=('freeimage' 'python' 'flex' 'libmpc' 'libusb')
 install=devkitarm.install
-source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-20170126.tar.bz2"
+source=("https://github.com/devkitPro/buildscripts/releases/download/v$_buildscriptsver/buildscripts-$_buildscriptsver.tar.bz2"
         "http://isl.gforge.inria.fr/isl-$_islver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/binutils-$_binutilsver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/gcc-$_gccver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/newlib-$_newlibver.tar.gz"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/gdb-$_gdbver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/general-tools-$_generaltoolsver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/gbatools-$_gbatoolsver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/gp32tools-$_gp32toolsver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/dstools-$_dstoolsver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/grit-$_gritver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/ndstool-$_ndstoolver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/dlditool-$_dlditoolver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/mmutil-$_mmutilver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/dfu-util-$_dfuutilver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/stlink-$_stlinkver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/3dslink-$_3dslinkver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/3dstools-$_3dstoolsver.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/picasso-$_picassover.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/binutils-$_binutilsver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/gcc-$_gccver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/newlib-$_newlibver.tar.gz"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/gdb-$_gdbver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/general-tools-$_generaltoolsver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/gbatools-$_gbatoolsver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/gp32tools-$_gp32toolsver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/dstools-$_dstoolsver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/grit-$_gritver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/ndstool-$_ndstoolver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/dlditool-$_dlditoolver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/mmutil-$_mmutilver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/dfu-util-$_dfuutilver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/stlink-$_stlinkver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/3dslink-$_3dslinkver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/3dstools-$_3dstoolsver.tar.bz2"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/picasso-$_picassover.tar.bz2"
         "devkitarm-skip-libs.patch"
         "devkitarm-add-patches.patch"
-        "fix-gcc-6.3.0-compilation-on-gcc-7.patch"
-        "fix-gdb-7.12-compilation-on-gcc-7.patch"
         "devkitarm.sh"
         "devkitarm.fish")
-sha256sums=('6b142f265bc9c7fc9449f5b539198f140d231725b2ed0828749d8a1e0fad73ff'
-            '412538bb65c799ac98e17e8cfcdacbb257a57362acfaaff254b0fcae970126d2'
-            '369737ce51587f92466041a97ab7d2358c6d9e1b6490b3940eb09fb0a9a6ac88'
-            'f06ae7f3f790fbf0f018f6d40e844451e6bc3b7bc96e128e63b09825c1f8b29f'
+sha256sums=('e2bfb7363d1504387e33383416d09b4fc7a5753332eb09890872d3456d5ba3d8'
+            '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
+            '6297433ee120b11b4b0a1c8f3512d7d73501753142ab9e2daa13c5a3edd32a72'
+            '8a8136c235f64c6fef69cac0d73a46a1a09bb250776a050aec8f9fc880bebc17'
             '5b76a9b97c9464209772ed25ce55181a7bb144a66e5669aaec945aa64da3189b'
-            'dca6461fb6c78a662766d54580737e643b4b6dc43c26a197a8e9d7cb58872de2'
+            'ae4b7d082fac39895c18c2e55a1b0554f242689577473f4275908868598139cd'
             '09474dfc1537e1008ee95b1a39a53715b8a740ee5ee37f4376607d6b110343c4'
             '5e39c58f610410f19312d3fd4380418929912d2173dfa79fb7fe36a192988632'
-            '2a4adcd1ea1359fe401fde63384c553513ecc789a3ce1cf61c0d5ed7828edf9f'
+            '8a376c0c7102753adf69ce3bdc189b306b7df8894181dd515299bd6930b6ed49'
             'd36fce5cc8c8be0c6ba506517ca769ba8311b8a9310c525b20c80131b96251cb'
             '9b60af9f8a462155213d50fe69b670587de60537f5fbb449a09db6418a3ffad6'
-            '164d41e4499a9079ca7bf3b2feae8dbd3b8a599cc81164e8160462d47f762423'
+            '45fd42cbf95d7d44059748f4af7c94191aff2723a04d249d85fcd60ef3e7dbc3'
             '5ecf67bcd5e2088ad31cd27fa14db575001388abc19510c4297aae42e9cd5d2f'
             '5b9182accb99abc03c1a31c39c003fbc5cb0d4af65a44102ede6098828cd045e'
             'fdcee458cc5ca482810852cfce7fecf2e671d3881c329cd63c6a9030ffa9426e'
-            'fb8b9cc974849e074a9e8694d62c383ffee6470e17459178de23d215f16bc57a'
-            '056bed0a85ad4d044f60a13752d721769fe0631cda0cc6d6831bf30e808f8e95'
+            '696127e85fffbfb520ed0f1d8fcc56097f7add88ffc42e70e110032f831ef06f'
+            '9b6ada97fd80c4693e5cae77a0376b02cb3964395010f8220468d9b2cd98c475'
             'b54002b86e3a6005a204153d7567876f920a1a5c0a2bc288d95d98189ef0f5e3'
-            '2af6d351b8b1d3c107ab31463eca8e73f88f201e580c448bfc71876f4ebe314d'
-            '3ba88e36a690f45baf642afbb49bd40e7fc7fb53e3f2eb69b594057cd6071e6d'
-            'c525872f266457e2e8195781193fb59c302b6fb920ad7b1ed227b8f126395526'
-            'e7013af51af0cb1e088f7fc25576471076780bc97e05e7921fe819a3c87fce8b'
-            'bd61f5c2a9edcf899a1640d18ba0f858b4ecd800b6311e17e53838405a7b3748'
+            '48da1407d85e11158e62e39f05b9b10498a40e8aec29206ef5b427bde6742b36'
+            '743a744a1939040e779f3c660184bd29dde11998761ca9fd6cde6c0759a5d1d7'
+            '4909165bef4458415598165a553d70499926ec49a86b79e49d237aceaf7f709b'
             '9448465b2de6b6aefc5e0a8404f780f737cb86b4b1280d653712271b892908f9'
             'c4cc42b085be7c48f06f75c934e846a61749d9ba5e31ee463a03ba27a01c8afd')
 noextract=("binutils-$_binutilsver.tar.bz2" "gcc-$_gccver.tar.bz2"
@@ -113,15 +110,11 @@ END
     buildscripts/build-devkit.sh
 
   # use in-tree isl
-  # add patch to build gcc 6.3.0 on gcc >7
   # disable guile for gdb
   patch -Np0 < devkitarm-add-patches.patch
 
-  # isl needlessly wants automake-14, upgrading
+  # isl needlessly wants automake-15, upgrading
   autoreconf -Wnone -fi isl-$_islver
-
-  # update gp32tools
-  sed 's/GP32_TOOLS_VER=1.0.1/GP32_TOOLS_VER=1.0.2/' -i buildscripts/build-devkit.sh
 
   # disable building of libraries, we have separate packages
   patch -Np0 < devkitarm-skip-libs.patch
