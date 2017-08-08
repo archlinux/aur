@@ -1,8 +1,8 @@
 # Maintainer:  Stefan Husmann <stefan-husmann@t-online.de>>
 
 pkgname=('texlive-minionpro-git' 'texlive-myriadpro-git')
-pkgver=r129.ee53cd4
-pkgrel=3
+pkgver=r132.056f384
+pkgrel=1
 pkgdesc="generate all necessary files to use Adobe Minion Pro and Adobe Myriad Pro with (pdf)latex."
 arch=('any')
 url="https://github.com/sebschub/FontPro.git"
