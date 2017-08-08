@@ -4,7 +4,7 @@ pkgrel=2
 pkgdesc='Embedded key-value store for fast storage'
 arch=(i686 x86_64)
 url='http://rocksdb.org'
-license=(Apace)
+license=(Apache leveldb)
 depends=(
 	'bzip2'
 	'gcc-libs'
