@@ -1,8 +1,8 @@
 # Maintainer: Bruno Renié <brutasse@gmail.com>
 pkgname=vaudtax
 pkgver=2016
-_pkgver=1.1.3-production
-pkgrel=3
+_pkgver=1.2.0-production
+pkgrel=4
 pkgdesc="VaudTax"
 url="http://www.vd.ch/themes/etat-droit-finances/impots/vaudtax/"
 depends=('webkitgtk2' 'jre8-openjdk' 'gnome-vfs')
@@ -33,5 +33,5 @@ package() {
 	cp ${pkgname}-${pkgver} "${pkgdir}"${_app_home}/bin/${pkgname}
 	ln -s ${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
-md5sums=('6383b8b3327a661eb1deb47be7a2ed40'
+md5sums=('a21646b0e100fdeb26694b16748f1811'
          '50de86f022910871d336571832e5f810')
