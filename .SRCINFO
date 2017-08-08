@@ -6,10 +6,13 @@ pkgbase = libctru
 	arch = any
 	license = custom: zlib
 	depends = devkitarm
+	noextract = 3ds-examples-20170714.tar.bz2
 	options = !strip
 	options = staticlibs
 	source = libctru-1.3.0.tar.gz::https://github.com/smealum/ctrulib/archive/v1.3.0.tar.gz
+	source = https://github.com/devkitPro/3ds-examples/releases/download/v20170714/3ds-examples-20170714.tar.bz2
 	sha256sums = 320f4fd04654d40484a719b7cba69350107520e1aa42ca0daff00f03bbf53362
+	sha256sums = 533dcf4ee6e7c0117e04ad30fe8436d19df786915ff6f3ade27bc9cad6924bde
 
 pkgname = libctru
 
