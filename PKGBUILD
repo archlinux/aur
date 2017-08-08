@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-photos
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='The Pantheon Photos Manager'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('cairo' 'gdk-pixbuf2' 'geocode-glib' 'glib2' 'glibc'
          'libgranite.so' 'libgudev-1.0.so')
 makedepends=('cmake' 'intltool' 'vala')
 source=("pantheon-photos-${pkgver}.tar.gz::https://github.com/elementary/photos/archive/${pkgver}.tar.gz")
-sha256sums=('1aa5387a778c1eed55b40cd2e117c01879c4c2c10491adbaa2ee1cca072cb1d2')
+sha256sums=('99761b9d6c05292671edef498483ac802d89acf848898bf2c8876825415845e4')
 
 prepare() {
   cd photos-${pkgver}
