@@ -1,6 +1,6 @@
 pkgbase = python-flask-socketio-git
 	pkgdesc = Socket.IO integration for Flask applications
-	pkgver = 2.9.1
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = http://github.com/miguelgrinberg/Flask-SocketIO/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-flask-socketio-git
 	depends = python-engineio
 	provides = python-flask-socketio
 	conflicts = python-flask-socketio
-	source = https://files.pythonhosted.org/packages/source/f/flask-socketio/Flask-SocketIO-2.9.1.tar.gz
-	md5sums = f95e187a8013fbdd7aeb09560785d98b
+	source = https://files.pythonhosted.org/packages/source/f/flask-socketio/Flask-SocketIO-2.9.2.tar.gz
+	md5sums = 1f8521101d2c9b4155cf521fbce3740c
 
 pkgname = python-flask-socketio-git
 	depends = python
