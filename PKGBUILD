@@ -2,9 +2,9 @@
 pkgname=i3-match-git
 pkgver=0.1.17.rdd4cc8c
 pkgrel=1
-pkgdesc="Command-line utility for i3 window manager's IPC interface"
+pkgdesc="Match and query i3 window properties and events"
 arch=('i686' 'x86_64')
-url='http://github.com/ferreum/i3-match'
+url='https://github.com/ferreum/i3-match'
 license=('BSD')
 depends=('xcb-util' 'yajl')
 makedepends=('i3-wm')
