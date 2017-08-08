@@ -7,7 +7,7 @@
 
 pkgname=mpv-full-git
 pkgver=0.25.0.r372.gc1dcf74458
-pkgrel=2
+pkgrel=3
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -16,9 +16,9 @@ depends=(
     # official repositories:
         'lcms2' 'libgl' 'libxss' 'libxinerama' 'libxv' 'libxkbcommon' 'wayland'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-        'libxrandr' 'jack' 'vapoursynth' 'libarchive'
+        'libxrandr' 'jack' 'vapoursynth' 'libarchive' 'uchardet'
     # AUR:
-        'mujs' 'uchardet' 'rsound' 'sndio'
+        'mujs' 'rsound' 'sndio'
 )
 depends_i686=(
     'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
