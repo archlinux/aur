@@ -2,8 +2,8 @@
 
 pkgname=vdirsyncer
 _pkgname=vdirsyncer
-pkgver=0.16.0
-pkgrel=2
+pkgver=0.16.1
+pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('any')
 url="https://vdirsyncer.readthedocs.org/"
@@ -21,13 +21,12 @@ checkdepends=('python-pytest' 'python-wsgi-intercept'
 source=("https://pypi.io/packages/source/v/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/pimutils/vdirsyncer/${pkgver}/contrib/vdirsyncer.service"
         "https://raw.githubusercontent.com/pimutils/vdirsyncer/${pkgver}/contrib/vdirsyncer.timer")
-md5sums=('cf6754758de5cdfc33d184e91318f94d'
+md5sums=('c379b4762b0a6301d941e8e56f6494ac'
          '749db7df09404e77ee249b0f8c8636b9'
          'bcc302fb3a6552a41acc1c82fba688f5')
 
 check() {
   cd "$srcdir/${_pkgname}-$pkgver"
-  rm "tests/system/utils/test_main.py"
   make test
 }
 
