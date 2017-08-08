@@ -1,7 +1,7 @@
 # Maintainer: Sasasu <lizhaolong0123@gmail.com>
 pkgbase=python-sonnet-git
 pkgname=(python-sonnet-git python-sonnet-cuda-git)
-pkgver=20170718.170829
+pkgver=20170808.170829
 tf_pkgver=1.2.1
 pkgrel=4
 pkgdesc="TensorFlow-based neural network library."
@@ -69,10 +69,10 @@ build() {
   configure_tensorflow
   cd $srcdir/sonnet
   msg2 "Building sonnet ..."
-  bazel build  --ignore_unsupported_sandboxing --config=opt :install 
+  bazel build  --ignore_unsupported_sandboxing :install 
   mkdir -p tmp
   msg2 "Building pip package ..."
-  ./bazel-bin/install $srcdir/sonnet
+  ./bazel-bin/install $srcdir/sonnet python3
   
   # CUDA 
   cd $srcdir/sonnet-cuda/tensorflow
@@ -80,22 +80,20 @@ build() {
   configure_tensorflow_cuda
   cd $srcdir/sonnet-cuda
   msg2 "Building sonnet-cuda ..."
-  bazel build  --ignore_unsupported_sandboxing --config=opt :install 
+  bazel build  --ignore_unsupported_sandboxing :install 
   mkdir -p tmp
   msg2 "Building pip package ..."
-  ./bazel-bin/install $srcdir/sonnet-cuda
+  ./bazel-bin/install $srcdir/sonnet-cuda python3
 }
 
 package_python-sonnet-git() {
   cd "${srcdir}/sonnet"
-  PKG=$(find . -name "*sonnet-*.whl")
-  pip install --ignore-installed --upgrade --root "$pkgdir/" "$PKG" --no-dependencies
+  pip install --ignore-installed --upgrade --root "$pkgdir/" *.whl --no-dependencies
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 package_python-sonnet-cuda-git(){
   cd "${srcdir}/sonnet-cuda"
-  PKG=$(find . -name "*sonnet-*.whl")
-  pip install --ignore-installed --upgrade --root "$pkgdir/" "$PKG" --no-dependencies
+  pip install --ignore-installed --upgrade --root "$pkgdir/" *.whl --no-dependencies
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
