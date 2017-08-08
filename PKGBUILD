@@ -8,7 +8,7 @@
 _srcname=mpv
 pkgname=mpv-full
 pkgver=0.26.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -17,9 +17,9 @@ depends=(
     # official repositories:
         'lcms2' 'libgl' 'libxss' 'libxinerama' 'libxv' 'libxkbcommon' 'wayland'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-        'libxrandr' 'jack' 'vapoursynth' 'libarchive' 'uchardet' 'rsound' 'sndio'
+        'libxrandr' 'jack' 'vapoursynth' 'libarchive' 'uchardet'
     # AUR:
-        'mujs' 'uchardet' 'rsound' 'sndio'
+        'mujs' 'rsound' 'sndio'
 )
 depends_i686=(
     'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
