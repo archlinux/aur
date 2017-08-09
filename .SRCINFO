@@ -1,0 +1,15 @@
+pkgbase = libminigbm-git
+	pkgdesc = The Chromium OS shell for Linux
+	pkgver = r182.4df286c
+	pkgrel = 1
+	url = https://www.chromium.org/chromium-os
+	arch = x86_64
+	license = GPL
+	provides = libminigbm
+	source = git+https://chromium.googlesource.com/chromiumos/platform/minigbm
+	source = minigbm.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libminigbm-git
+
