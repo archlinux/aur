@@ -4,13 +4,13 @@
 pkgname=smokinguns-git
 _pkgname=smokinguns
 pkgver=1.1.r859.gf5d9ecf2
-pkgrel=1
+pkgrel=2
 pkgdesc='A semi-realistic simulation of the old west great atmosphere built on id Tech 3.'
 url="http://www.smokin-guns.org"
 arch=('i686' 'x86_64')
 license=('GPL2')
 changelog=.CHANGELOG
-depends=('sdl' 'speex' 'hicolor-icon-theme')
+depends=('sdl' 'speex' 'hicolor-icon-theme' 'freetype2' 'libglvnd' 'libjpeg-turbo')
 makedepends=('gendesk')
 conflicts=('smokinguns-bin' 'smokinguns' 'smokinguns-data')
 provides=('smokinguns-data' 'smokinguns')
