@@ -3,8 +3,8 @@
 
 pkgbase=freetype2-git
 pkgname=('freetype2-git' 'freetype2-demos-git')
-pkgver=2.8+p0+ga12a3445
-pkgrel=3
+pkgver=2.8+p86+g410f3799
+pkgrel=2
 epoch=1
 pkgdesc="Font rasterization library (from git)"
 arch=(i686 x86_64)
@@ -17,7 +17,6 @@ makedepends=('libx11' 'git' 'python2')
 source=(git://git.sv.gnu.org/freetype/freetype2.git
         git://git.sv.gnu.org/freetype/freetype2-demos.git
         0001-Enable-table-validation-modules.patch
-        0002-Enable-subpixel-rendering.patch
         0003-Enable-infinality-subpixel-hinting.patch
         0004-Enable-long-PCF-family-names.patch
         0005-freetype-2.5.2-more-demos.patch
@@ -25,7 +24,6 @@ source=(git://git.sv.gnu.org/freetype/freetype2.git
 sha1sums=('SKIP'
           'SKIP'
           'c3e91e668936206d3c158bffde0f69788a086a5b'
-          '4ff958229a7f87e04a9894d5a6ed2df227071931'
           '81586014ea44375ddc85dd9dbcabae6e91c34d62'
           '334f229875039794adeb574e27d365bb445fb314'
           '72cfecbe738085eec475e012617661ad0cc9b76f'
@@ -38,7 +36,6 @@ prepare() {
 
   cd freetype2
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
-  patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
   patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
 
