@@ -7,7 +7,7 @@
 # Contributor: Florian Richter <Florian_Richter@gmx.de>
 pkgname=('python-cherrypy' 'python2-cherrypy')
 pkgver=11.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A pythonic, object-oriented web development framework"
 arch=('any')
 url="http://www.cherrypy.org"

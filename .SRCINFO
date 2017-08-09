@@ -1,7 +1,7 @@
 pkgbase = python-cherrypy
 	pkgdesc = A pythonic, object-oriented web development framework
 	pkgver = 11.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.cherrypy.org
 	arch = any
 	license = BSD
