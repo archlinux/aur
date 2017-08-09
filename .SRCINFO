@@ -1,7 +1,7 @@
 pkgbase = notes
 	pkgdesc = Note taking application, write down your thoughts.
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 0
 	url = https://github.com/nuttyartist/notes
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = notes
 	depends = qt5-base
 	provides = notes
 	conflicts = notes
-	source = notes-0.9.0.tar.gz::https://github.com/nuttyartist/notes/archive/v0.9.0.tar.gz
-	md5sums = db29395c1e156aeaf8f51c9dfbb1bdc8
+	source = notes-1.0.0.tar.gz::https://github.com/nuttyartist/notes/archive/v1.0.0.tar.gz
+	md5sums = 63e42d1b8337c2c3f3d4a53754938b3b
 
 pkgname = notes
 
