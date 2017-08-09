@@ -1,8 +1,8 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-dbus
-pkgver=1.10.18
+pkgver=1.10.22
 pkgrel=1
-_commit=73961ee58cf47315b14e30fbde6d0eea825c987b
+_commit=2f8f4d619b16b134671521c2b4aea3a94fb47848  # tags/dbus-1.10.22^0
 arch=(any)
 pkgdesc="Freedesktop.org message bus system (mingw-w64)"
 depends=(mingw-w64-expat)
