@@ -1,17 +1,17 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=python-git
-pkgver=3.7.0a0.r99150.a5c62a8e9f
+pkgver=3.7.0a0.r99720.e3510d74aa
 pkgrel=1
 _pybasever=3.7
 _pkgname=cpython
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('i686' 'x86_64')
 license=('custom')
-url="http://www.python.org/"
+url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
-makedepends=('tk>=8.6.0' 'sqlite' 'valgrind' 'bluez-libs' 'git')
-optdepends=('tk: for tkinter' 'sqlite')
+makedepends=('tk>=8.6.0' 'sqlite' 'valgrind' 'bluez-libs' 'xz' 'git')
+optdepends=('tk: for tkinter' 'sqlite' 'xz: for lzma')
 options=(debug !strip !makeflags)
 source=("git+https://github.com/python/cpython#branch=master")
 sha256sums=('SKIP')
