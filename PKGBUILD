@@ -8,11 +8,11 @@ arch=('x86_64' 'i686')
 license=('GPL2')
 makedepends=(cmake)
 depends=('python')
-source=("https://github.com/greatscottgadgets/libbtbb/archive/2017-03-R2.tar.gz")
-sha1sums=('76d063471c41de24f071700238badbebcc20ee5f')
+source=("https://github.com/greatscottgadgets/libbtbb/archive/master.zip")
+sha1sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${_gitname}-2017-03-R2/"
+  cd "${srcdir}/${_gitname}-master/"
   mkdir build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr ..
@@ -20,6 +20,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_gitname}-2017-03-R2/build/"
+  cd "${srcdir}/${_gitname}-master/build/"
   make install
 }

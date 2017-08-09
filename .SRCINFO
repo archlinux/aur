@@ -8,8 +8,8 @@ pkgbase = libbtbb-git
 	license = GPL2
 	makedepends = cmake
 	depends = python
-	source = https://github.com/greatscottgadgets/libbtbb/archive/2017-03-R2.tar.gz
-	sha1sums = 76d063471c41de24f071700238badbebcc20ee5f
+	source = https://github.com/greatscottgadgets/libbtbb/archive/master.zip
+	sha1sums = SKIP
 
 pkgname = libbtbb-git
 
