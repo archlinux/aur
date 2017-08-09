@@ -4,7 +4,7 @@
 
 pkgname=dunst-git
 _gitname=dunst
-pkgver=1.2.0.16.866.gf8aaa21
+pkgver=1.2.0.18.868.g68aa1f2
 pkgrel=1
 pkgdesc="a lightweight notification-daemon - git version"
 arch=('i686' 'x86_64' 'armv7h')
