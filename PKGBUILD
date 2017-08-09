@@ -1,22 +1,20 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-printers
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Printers plug for Switchboard'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/switchboard-plug-printers'
+url='https://github.com/elementary/switchboard-plug-printers'
 license=('GPL3')
 groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3' 'libcups' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'vala')
-source=("https://launchpad.net/switchboard-plug-printers/loki/${pkgver}/+download/switchboard-plug-printers-${pkgver}.tar.xz")
-sha256sums=('6eb10258ac7c93a3bbd175c1b941fabacd90983ffee5b5952ebdd6d0421c29a9')
+source=("switchboard-plug-printers-${pkgver}.tar.gz::https://github.com/elementary/switchboard-plug-printers/archive/${pkgver}.tar.gz")
+sha256sums=('b6dc3fac39e7dfa67baf507d932a1b6b0ead227bc36d09a08575ce0cb748209d')
 
 prepare() {
-  cd switchboard-plug-printers-${pkgver}
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -24,9 +22,9 @@ prepare() {
 }
 
 build() {
-  cd switchboard-plug-printers-${pkgver}/build
+  cd build
 
-  cmake .. \
+  cmake ../switchboard-plug-printers-${pkgver} \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib'
@@ -34,9 +32,7 @@ build() {
 }
 
 package() {
-  cd switchboard-plug-printers-${pkgver}/build
-
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" -C build install
 }
 
 # vim: ts=2 sw=2 et:
