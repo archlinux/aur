@@ -1,6 +1,6 @@
 pkgbase = rofi-git
 	pkgdesc = A window switcher, run dialog and dmenu replacement
-	pkgver = 1.3.1.r720.g9d98fe3b
+	pkgver = 1.3.1.r723.g96c70813
 	pkgrel = 1
 	url = https://davedavenport.github.io/rofi/
 	arch = i686

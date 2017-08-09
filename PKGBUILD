@@ -5,9 +5,9 @@
 # Contributor: Sean Pringle <sean.pringle@gmail.com>
 # Contributor: SanskritFritz (gmail)
 
-pkgname=rofi-git
-_gitname=rofi
-pkgver=1.3.1.r720.g9d98fe3b
+pkgname='rofi-git'
+_gitname='rofi'
+pkgver=1.3.1.r723.g96c70813
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement'
 arch=('i686' 'x86_64')
