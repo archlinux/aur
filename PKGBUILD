@@ -25,35 +25,36 @@ sha256sums=(
   '7084d6e39774396e115fb5f9951cfd74ea16cf5610c2bff37cfc4cc831990bb0'
 )
 
-prepare() {
-  find . -type d -exec chmod 755 {} \;
-}
-
 package() {
-  cd "${srcdir}"
-
   install -d "${pkgdir}/opt/${pkgname}/"
   install -d "${pkgdir}/opt/${pkgname}/support/"
   install -d "${pkgdir}/usr/bin/"
+  install -d "${pkgdir}/usr/share/applications/"
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -d "${pkgdir}/usr/share/pixmaps/"
 
   cp -r data/noarch/game/ "${pkgdir}/opt/${pkgname}/"
+  find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
 
-  install -D -m 755        \
+  install -m 755           \
     "${srcdir}/${pkgname}" \
     "${pkgdir}/usr/bin/${pkgname}"
-  install -D -m 755      \
+  install -m 755         \
     data/noarch/start.sh \
     "${pkgdir}/opt/${pkgname}/"
-  install -D -m 755                     \
+  install -m 755         \
+    data/noarch/gameinfo \
+    "${pkgdir}/opt/${pkgname}/"
+  install -m 755                        \
     data/noarch/support/*.{sh,shlib} -t \
     "${pkgdir}/opt/${pkgname}/support/"
-  install -D -m 644                                   \
+  install -m 644                                      \
     'data/noarch/docs/End User License Agreement.txt' \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m 644                \
+  install -m 644                   \
     "data/noarch/support/icon.png" \
     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -D -m 644                \
+  install -m 644                   \
     "${srcdir}/${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
