@@ -4,7 +4,7 @@
 
 pkgname='mono-git'
 _gitname='mono'
-pkgver=r112054.2a3006438d4
+pkgver=r112204.ee8c7c80b70
 pkgrel=1
 pkgdesc='Free implementation of the .NET platform including runtime and compiler'
 url='http://www.mono-project.com/'

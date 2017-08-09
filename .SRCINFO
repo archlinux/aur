@@ -1,6 +1,6 @@
 pkgbase = mono-git
 	pkgdesc = Free implementation of the .NET platform including runtime and compiler
-	pkgver = r112054.2a3006438d4
+	pkgver = r112204.ee8c7c80b70
 	pkgrel = 1
 	url = http://www.mono-project.com/
 	install = mono.install
