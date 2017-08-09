@@ -2,7 +2,7 @@
 # Maintainer: Patrice Peterson <runiq@archlinux.us>
 # Contributor: linus.cl <linus.vivaldi@gmail.com>
 # Contributor: Stefan Husmann
-# Contributor: YamashitaRen <lemaitre.dulotus@gmail.com>
+# Contributor: YamashitaRen <lemaitre.dulotus@yahoo.fr>
 # Contributor: Sławomir Kowalski <suawekk+aur@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Timm Preetz <timm@preetz.us>
@@ -11,8 +11,8 @@
 
 pkgname=anki20-bin
 _pkgname=anki
-pkgver=2.0.45
-pkgrel=3
+pkgver=2.0.46
+pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
 license=('AGPL3')
@@ -26,8 +26,8 @@ source=("anki")
 source_i686=("https://apps.ankiweb.net/downloads/current/${_pkgname}-${pkgver}-i386.tar.bz2")
 source_x86_64=("https://apps.ankiweb.net/downloads/current/${_pkgname}-${pkgver}-amd64.tar.bz2")
 sha256sums=('fc2316cf2428af18562cc13c6277ff70f8a974f1e7ef32631b8d7f81af60e0c4')
-sha256sums_i686=('369e7ba80aced7b7aa961003ec9a7b21740fc4324cc65a61385e1426e16201e8')
-sha256sums_x86_64=('2371131a05ebf46816e933a452b8ec41d91af86dae91eb3ccc164240619450bb')
+sha256sums_i686=('a38b2df569daca2373d44e7e6a1678334c2f60cc7500cc9a09ec031de76ac774')
+sha256sums_x86_64=('47a760ff8050aad389eba2ebe4843de2bf4c9a6aa145e129d5a14ab18ac1502b')
 options=(!strip)
 
 package() {
