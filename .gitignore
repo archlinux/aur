@@ -1,0 +1,7 @@
+/*.log
+*.swp
+/*.tar
+/*.tar.gz
+/*.tar.xz
+/src
+/pkg
