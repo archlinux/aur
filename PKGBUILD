@@ -2,7 +2,7 @@
 
 pkgname=libmysofa-git
 pkgver=0.6.r3.g00c6e62
-pkgrel=1
+pkgrel=2
 pkgdesc='C library to read HRTFs if they are stored in the AES69-2015 SOFA format (git version)'
 arch=('i686' 'x86_64')
 url='https://hoene.github.io/libmysofa/'
@@ -35,19 +35,9 @@ build() {
 }
 
 package() {
-    # includes
-    cd "${pkgname}/src/hrtf"
-    install -D -m644 mysofa.h  "${pkgdir}/usr/include/mysofa.h"
+    cd "${pkgname}/build"
+    make DESTDIR="$pkgdir" install
     
-    # library
-    cd "${srcdir}/${pkgname}/build/src"
-    mkdir -p "${pkgdir}/usr/lib"
-    for _file in libmysofa.so*
-    do
-        cp -a "$_file" "${pkgdir}/usr/lib"
-    done
-    
-    # license
     cd "${srcdir}/${pkgname}"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
