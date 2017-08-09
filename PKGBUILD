@@ -3,43 +3,43 @@
 # Contributors:
 # - veger 
 pkgname=capt-src
-pkgver=2.70
-pkgrel=2
+pkgver=2.71
+pkgrel=1
 pkgdesc="Canon CAPT Printer Driver for Linux. Compiled from source code."
 arch=('i686' 'x86_64')
 url='http://support-asia.canon-asia.com/'
 license=('custom')
-depends=('cups' 'libglade' 'libxml2' 'popt' 'ghostscript')
-[ "${CARCH}" == "x86_64" ] && depends=('cups' 'libglade' 'lib32-libxml2' 'lib32-popt' 'lib32-gcc-libs')
-optdepends=('gtk2: for gui')
+depends=('cups' 'glib2' 'libglade' 'gtk2' 'atk' 'libxml2' 'popt' 'ghostscript')
+depends_x86_64=('lib32-libxml2' 'lib32-popt' 'lib32-gcc-libs')
 install=${pkgname}.install
-_tardir=Linux_CAPT_PrinterDriver_V270_uk_EN
-source=("http://gdlp01.c-wss.com/gds/6/0100004596/04/${_tardir}.tar.gz"
+_tardir=linux-capt-drv-v271-uken
+source=("http://gdlp01.c-wss.com/gds/6/0100004596/05/${_tardir}.tar.gz"
         'ccpd.service')
-options=(!strip !zipman)
+options=(!strip !zipman !buildflags)
 
-package() {
-    unset LDFLAGS
-    _pkgcommonver=3.20
-    _common_dir=${srcdir}/cndrvcups-common-${_pkgcommonver}
+_pkgcommonver=3.21
+_endlibdir=/usr/lib
+
+prepare() {
     _capt_dir=${srcdir}/cndrvcups-capt-${pkgver}
-    _endlibdir=/usr/lib
-
-    # Decompressing source and proprietary code packages
+    
     cd ${srcdir}
     tar xvzf ${srcdir}/${_tardir}/Src/cndrvcups-common-${_pkgcommonver}-1.tar.gz
     tar xvzf ${srcdir}/${_tardir}/Src/cndrvcups-capt-${pkgver}-1.tar.gz
 
-    # Starting source code compilation
-    # (based on the official Debian rules/Red Hat spec file of the driver)
+    # Enables compilation
+    sed -i 's@#include <cups/cups.h>@#include <cups/cups.h>\n#include <cups/ppd.h>@' "${_capt_dir}/statusui/src/ppapdata.c"
+}
 
-    # cndrvcups-common package
+_build_cndrvcups_common() {
+    _common_dir=${srcdir}/cndrvcups-common-${_pkgcommonver}
+
     msg "cndrvcups-common package"
     msg "Configuring cndrvcups-common package"
     msg "Configuring: buftool"
     cd ${_common_dir}/buftool && /usr/bin/autoreconf -fi && ./autogen.sh --prefix=/usr --libdir=/usr/lib
     msg "Configuring: cngplp"
-    cd ${_common_dir}/cngplp && /usr/bin/autoreconf -fi && LIBS=-lgmodule-2.0 ./autogen.sh --prefix=/usr --libdir=/usr/lib
+    cd ${_common_dir}/cngplp && /usr/bin/autoreconf -fi && LIBS='-lgmodule-2.0 -lgtk-x11-2.0 -lglib-2.0 -lgobject-2.0' ./autogen.sh --prefix=/usr --libdir=/usr/lib
     msg "Configuring: backend"
     cd ${_common_dir}/backend && /usr/bin/autoreconf -fi && ./autogen.sh --prefix=/usr --libdir=/usr/lib
 
@@ -49,6 +49,10 @@ package() {
 
     cd ${_common_dir}/c3plmod_ipc
     make
+}
+
+_package_cndrvcups_common() {
+    _common_dir=${srcdir}/cndrvcups-common-${_pkgcommonver}
 
     msg "Installing cndrvcups-common package"
     for _dir in buftool cngplp backend
@@ -60,51 +64,7 @@ package() {
     msg "Installing: c3plmod_ipc"
     cd ${_common_dir}/c3plmod_ipc/
     make install DESTDIR=${pkgdir} LIBDIR=/usr/lib
-
-    # cndrvcups-capt package
-    msg "cndrvcups-capt package"
-
-    #Patching statusui
-    sed -i 's@#include <cups/cups.h>@#include <cups/cups.h>\n#include <cups/ppd.h>@' "${_capt_dir}/statusui/src/ppapdata.c"
-    sed -i 's@char req_header\[4\];@char req_header\[5\];@' "${_capt_dir}/statusui/cnsktmodule/cnsktmodule.h"
-
-    msg "Configuring cndrvcups-capt package"
     
-    for _dir in driver backend pstocapt pstocapt2 pstocapt3
-    do
-        msg "Configuring: "${_dir}
-        cd ${_capt_dir}/$_dir && /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --enable-progpath=/usr/bin --disable-static
-    done
-        
-    msg "Configuring: ppd"
-    cd ${_capt_dir}/ppd && /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr
-        
-    msg "Configuring: statusui"
-    cd ${_capt_dir}/statusui && /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib LIBS=-lpthread CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --disable-static
-    
-    msg "Configuring: cngplp"
-    cd ${_capt_dir}/cngplp/ && LDFLAGS=-L${pkgdir}/usr/lib /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --libdir=/usr/lib
-    msg "Configuring: cngplp/files"
-    cd ${_capt_dir}/cngplp/files && LDFLAGS=-L${pkgdir}/usr/lib /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh
-
-    msg "Compiling cndrvcups-capt package"
-    cd ${_capt_dir}
-    make
-
-    msg "Installing cndrvcups-capt package"
-    for _dir in driver ppd backend pstocapt pstocapt2 pstocapt3 statusui cngplp
-    do
-        msg "installing: $_dir"
-        cd ${_capt_dir}/$_dir && make DESTDIR=${pkgdir} install
-    done
-    # End of the source code compilation
-
-    # Starting copying of proprietary binaries...
-    # (based on the official Debian rules of the driver)
-
-    msg "Finished source code compilation... copying rest of files"
-
-    # For the cndrvcups-common package...
     cd ${_common_dir}
     install -dm755 ${pkgdir}/usr/bin
     install -c -m 755 libs/c3pldrv ${pkgdir}/usr/bin
@@ -126,6 +86,8 @@ package() {
     ln -s libcaiowrap.so.1.0.0 libcaiowrap.so
     ln -s libcaiousb.so.1.0.0 libcaiousb.so.1
     ln -s libcaiousb.so.1.0.0 libcaiousb.so
+    ln -s libcanonc3pl.so.1.0.0 libcanonc3pl.so.1
+    ln -s libcanonc3pl.so.1.0.0 libcanonc3pl.so
     ln -s libcanon_slim.so.1.0.0 libcanon_slim.so.1
     ln -s libcanon_slim.so.1.0.0 libcanon_slim.so
     ln -s libColorGear.so.0.0.0 libColorGear.so.0
@@ -133,23 +95,56 @@ package() {
     ln -s libColorGearC.so.0.0.0 libColorGearC.so.0
     ln -s libColorGearC.so.0.0.0 libColorGearC.so
 
-    cd ${pkgdir}/usr/lib
-    ln -s libcanonc3pl.so.1.0.0 libcanonc3pl.so.1
-    ln -s libcanonc3pl.so.1.0.0 libcanonc3pl.so
-
     install -dm755 ${pkgdir}/usr/share/caepcm
+    
     cd ${_common_dir}
     install -c -m 644 data/*.ICC  ${pkgdir}/usr/share/caepcm
+}
 
-    # Debian postinst
+_build_cndrvcups_capt() {
+    _capt_dir=${srcdir}/cndrvcups-capt-${pkgver}
 
-    # For the cndrvcups-capt package...
+    msg "cndrvcups-capt package"
+
+    msg "Configuring cndrvcups-capt package"
+    
+    for _dir in driver ppd backend pstocapt pstocapt2 pstocapt3
+    do
+        msg "Configuring: "${_dir}
+        cd ${_capt_dir}/$_dir && /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --enable-progpath=/usr/bin --disable-static
+    done
+        
+    msg "Configuring: statusui"
+    cd ${_capt_dir}/statusui && /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib LIBS='-lpthread -lgdk-x11-2.0 -lgobject-2.0 -lglib-2.0 -latk-1.0 -lgdk_pixbuf-2.0' CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --disable-static
+    
+    msg "Configuring: cngplp"
+    cd ${_capt_dir}/cngplp/ && LDFLAGS=-L${pkgdir}/usr/lib /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --libdir=/usr/lib
+
+    msg "Configuring: cngplp/files"
+    cd ${_capt_dir}/cngplp/files && LDFLAGS=-L${pkgdir}/usr/lib /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh
+
+    msg "Compiling cndrvcups-capt package"
+    cd ${_capt_dir}
+    make
+}
+
+_package_cndrvcups_capt() {
+    _capt_dir=${srcdir}/cndrvcups-capt-${pkgver}
+
+    msg "Installing cndrvcups-capt package"
+    for _dir in driver ppd backend pstocapt pstocapt2 pstocapt3 statusui cngplp
+    do
+        msg "installing: $_dir"
+        cd ${_capt_dir}/$_dir && make install DESTDIR=${pkgdir}
+    done
+    
     cd ${_capt_dir}
     install -dm755 ${pkgdir}${_endlibdir}
     install -c libs/libcaptfilter.so.1.0.0  ${pkgdir}${_endlibdir}
     install -c libs/libcaiocaptnet.so.1.0.0 ${pkgdir}${_endlibdir}
     install -c libs/libcncaptnpm.so.2.0.1   ${pkgdir}${_endlibdir}
     install -c -m 755 libs/libcnaccm.so.1.0   ${pkgdir}${_endlibdir}
+    
     cd ${pkgdir}${_endlibdir}
     ln -s libcaptfilter.so.1.0.0 libcaptfilter.so.1
     ln -s libcaptfilter.so.1.0.0 libcaptfilter.so
@@ -168,6 +163,7 @@ package() {
     install -c libs/captmon/captmon         ${pkgdir}/usr/bin
     install -c libs/captmon2/captmon2       ${pkgdir}/usr/bin
     install -c libs/captemon/captmon*       ${pkgdir}/usr/bin
+  
     if [ "${CARCH}" == "x86_64" ]; then
         install -c libs64/ccpd                    ${pkgdir}/usr/bin
         install -c libs64/ccpdadmin               ${pkgdir}/usr/bin
@@ -175,6 +171,7 @@ package() {
         install -c libs/ccpd                    ${pkgdir}/usr/bin
         install -c libs/ccpdadmin               ${pkgdir}/usr/bin
     fi
+
     install -dm755 ${pkgdir}/etc
     install -c samples/ccpd.conf            ${pkgdir}/etc
     install -dm755 ${pkgdir}/usr/share/ccpd
@@ -195,7 +192,13 @@ package() {
     install -c -m 644 data/C*   ${pkgdir}/usr/share/caepcm
     install -dm755 ${pkgdir}/usr/share/doc/capt-src
     install -c -m 644 *capt*.txt ${pkgdir}/usr/share/doc/capt-src
-    # End of copying the proprietary source
+}
+
+package() {
+    _build_cndrvcups_common
+    _package_cndrvcups_common
+    _build_cndrvcups_capt
+    _package_cndrvcups_capt
 
     # Other dirs...
     install -dm755 ${pkgdir}/usr/share/ppd/cupsfilters
@@ -216,8 +219,8 @@ package() {
 
     # Guide & README
     install -Dm664 ${srcdir}/${_tardir}/Doc/guide-capt-2.7xUK.tar.gz ${pkgdir}/usr/share/doc/capt-src/guide-capt-2.7xUK.tar.gz
-    install -Dm664 ${srcdir}/${_tardir}/Doc/README-capt-2.7xUK.txt ${pkgdir}/usr/share/doc/capt-src/README-capt-2.7xUK.txt
+    install -Dm664 ${srcdir}/${_tardir}/Doc/README-capt-${pkgver}UK.txt ${pkgdir}/usr/share/doc/capt-src/README-capt-${pkgver}UK.txt
 }
 
-md5sums=('52bfd331278457cf63cb4a1a0730b14a'
+md5sums=('2421628aac9c6000d08c46a1204f08be'
          '4a6e0263535e96c119feafdbfd62cdd0')
