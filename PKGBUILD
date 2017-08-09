@@ -1,6 +1,6 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 pkgname=libminigbm-git
-pkgver=r182.4df286c
+pkgver=latest
 pkgrel=1
 pkgdesc="The Chromium OS shell for Linux"
 arch=('x86_64')

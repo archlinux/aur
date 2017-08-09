@@ -1,6 +1,6 @@
 pkgbase = libminigbm-git
 	pkgdesc = The Chromium OS shell for Linux
-	pkgver = r182.4df286c
+	pkgver = latest
 	pkgrel = 1
 	url = https://www.chromium.org/chromium-os
 	arch = x86_64
