@@ -1,7 +1,7 @@
 pkgbase = pam-face-authentication
 	pkgdesc = PAM face auth
 	pkgver = 0.3
-	pkgrel = 7
+	pkgrel = 8
 	url = http://code.google.com/p/pam-face-authentication
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = pam-face-authentication
 	depends = opencv2
 	depends = libx11
 	depends = qt4
-	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pam-face-authentication/pam-face-authentication-${pkgver}.tar.gz
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pam-face-authentication/pam-face-authentication-0.3.tar.gz
 	sha512sums = a140aa6c2662c83e656727c92db61d9f8df6061e222b0934bb0bf73b6472e14b124027e2b3da1a3f5d7fa8b4d3d7d9b198bb3132f5a79f8ad0847f567ff0c79d
 
 pkgname = pam-face-authentication
