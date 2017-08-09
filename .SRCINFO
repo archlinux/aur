@@ -1,0 +1,16 @@
+pkgbase = stratis-cli-git
+	pkgdesc = ???
+	pkgver = v0.0.2.r3.gbf0beb6
+	pkgrel = 1
+	url = https://github.com/stratis-storage/stratis-cli.git
+	arch = any
+	license = apache2
+	makedepends = git
+	depends = python-argparse
+	provides = stratis-cli
+	conflicts = stratis-cli
+	source = git+https://github.com/stratis-storage/stratis-cli.git
+	sha256sums = SKIP
+
+pkgname = stratis-cli-git
+
