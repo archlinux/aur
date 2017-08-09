@@ -28,8 +28,8 @@ if [[ $_build = ? ]]; then
   source_x86_64=("firefox-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2")
 fi
 sha512sums=('865c832fe683f4ebeca7704058d56f834ec5d9d56391d31912cf4a928c56a268cf25064965cf8bbf935a45f638d0a8b24ffa744a47934e5ed8b8bb78883db4c0')
-sha512sums_i686=('b2f94fd5515dae8ea8b03ff88a1aa6d33c8b3e41ed96e27ac0872dfb4f647c8baeb429ad069aa63990eb96be12773c713d029cda8b8648ba5a1c05567a453c6a')
-sha512sums_x86_64=('5969afb518ad05a8659dc6078143a6062d7799200875451cfd7dbc3f6b95b1e98aa2bb5f49f60a01bc1e83a3f187a8a6793971eae7f24788d162c65421a56e1b')
+sha512sums_i686=('d6b7d5674106fd9600f9fb7f21254b675d3caeef9abc8072f37a2f0767d93654c90c2acb29b67bec96a62251c487fc59cda89b02119feb0e77c0e65addc11ede')
+sha512sums_x86_64=('eec82b64a9806099b4c9c26f67240b1609c0241b83d2c19a71d19a3e288d7b953f9e5f6e97c4e28bda69443e436f16ada5721c7a0e22d1709cc9fc2b09152431')
 
 package() {
   # Create directories
