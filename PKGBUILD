@@ -1,7 +1,7 @@
 # Maintainer:  Lukas K. <lukas@carrotIndustries.net>
 
 pkgname=mspdebug
-pkgver=0.24
+pkgver=0.25
 pkgrel=1
 pkgdesc="A free debugger and firmware downloader for the MSP430/CC430 MCU family"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ conflicts=('mspdebug-git')
 source=(https://github.com/dlbeer/$pkgname/archive/v$pkgver.tar.gz
 82-eZ430.rules)
 
-md5sums=('e213cc064972e07ed28f9522d67ffb94'
+md5sums=('94f62469dbb6c16e04d54d71e3acf678'
          '40f337b67e1b35f4061822e96b284a0c')
 
 build() {
