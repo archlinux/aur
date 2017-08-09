@@ -1,7 +1,7 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=gnome-shell-extension-freon-git
-pkgver=23.r0.g6c3c05a
+pkgver=26.r0.gd9bf184
 pkgrel=1
 pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in a GNOME Shell top bar pop-down."
 arch=('any')
@@ -12,6 +12,7 @@ makedepends=('git' 'gnome-common' 'intltool')
 optdepends=(
   'udisks2: optional backend for storage temperature sensors.'
   'hddtemp: optional backend for S.M.A.R.T. temperature sensors.'
+  'nvidia-settings: optional backend for nVidia temperature sensors.'
 )
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" 'gnome-shell-extensions-git')
