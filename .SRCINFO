@@ -45,7 +45,7 @@ pkgbase = firefox-esr-bin
 	source = http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/52.2.0esr/linux-x86_64/en-US/firefox-52.2.0esr.tar.bz2
 	source = firefox-esr.desktop
 	source = firefox-esr-safe.desktop
-	sha512sums = 664c6d95fc2d31f1ce4470b3a4719c16116d26b785c69268c311a15c2b7b4934981988e27ecb4c243f6cefd3338d3f6abf2b83688446e5b87124a59b11bfdfe5
+	sha512sums = d6786042efe364853fd61035795f1d77d5fa5690c33469c1d5dfa6a0ec050b538d70b87caf827a3bb4467865a00e5d0cbcce29e9d6e017d0e5dcd938d0be38bd
 	sha512sums = 2c2c70cb48202d47e7d3b376b8181e7398b23bb83f5da7724f6290709fe1ff3dca9d9c5666310982569beeeba39ec2d55a4372819f9914c79c6583de7eec06ba
 	sha512sums = 8942b11a7cb3761de1185491397185743adf49daa27a2806d14a328a2be8e2cb566c71dc6449016549cb3bd0d328cfe15944490be749a4add213194f6153c3d0
 
