@@ -2,7 +2,7 @@
 pkgname=antlr3-cpp-headers-git
 pkgver=r572.5c2a916
 pkgrel=1
-pkgdesc="C++ headers for Antlr3 runtime"
+pkgdesc="C++ headers for ANTLR v3 runtime"
 arch=('any')
 url="http://www.antlr3.org/"
 license=('BSD')
