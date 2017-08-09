@@ -10,10 +10,8 @@ depends=('kodi-platform')
 makedepends=('kodi-dev')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-# kodi 17
-# source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git#branch=1.0.8_k17')
 # kodi 17 2.0
-source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git#branch=k17_2')
+source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git#branch=Krypton')
 # kodi 18
 # source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git')
 md5sums=('SKIP')
@@ -24,11 +22,6 @@ pkgver() {
 }
 
 build() {
-#         cd "$srcdir/$pkgname/wvdecrypter"
-#         cmake \
-#             -DCMAKE_INSTALL_PREFIX=/usr
-#         make
-
         cd "$srcdir/$pkgname"
         cmake \
             -DCMAKE_INSTALL_PREFIX=/usr
