@@ -30,8 +30,9 @@ backup=('etc/bbportinst'{.conf,.local} 'etc/modprobe.d/parport_bb.conf')
 options=('!strip')
 install="${pkgname}-install.sh"
 _srcdir='bbportinst'
-source=('http://www.brainboxes.com/files/pages/support/faqs/drivers%20and%20firmware/bbportinst.zip')
-sha256sums=('d5ac2012bae944d398517511b55cd43d920c79de910cae8e60ca05eaa1408b70')
+source=('http://www.brainboxes.com/files/pages/support/faqs/drivers%20and%20firmware/bbportinst.zip' '0000-restore-deprecated-pcie-cards.patch')
+sha256sums=('d5ac2012bae944d398517511b55cd43d920c79de910cae8e60ca05eaa1408b70'
+            'ba1481741952faa9399df8f16a4808e89322c079bf248d664579ae7882bc2726')
 
 _servicename="${pkgname}.service"
 
@@ -58,6 +59,33 @@ prepare() {
 
   sed -e 's:\s*\r$::g' -i $(grep -rlFe $'\r')
   chmod 755 'bbportinst'
+
+  if ! :; then
+    # Pull the commented PCIe cards in from an old version
+    gunzip < '$tf/13/9638928d-f5c9-4b4e-8050-fb2d8fc6aac4.gz' > 'bbportinst.9638928d-f5c9-4b4e-8050-fb2d8fc6aac4'
+    sed -e 's:\s*\r$::g' -i 'bbportinst.9638928d-f5c9-4b4e-8050-fb2d8fc6aac4'
+
+    # Extract table out and insert it into the new file. This gives us a clean diff without the other unwanted code changes.
+    sed -ne '/^my @card_info_table/,/^);$/ p' 'bbportinst.9638928d-f5c9-4b4e-8050-fb2d8fc6aac4' > 'bbportinst.oldtable'
+    rm 'bbportinst.9638928d-f5c9-4b4e-8050-fb2d8fc6aac4'
+
+    sed -e '# Insert marker for new table' \
+        -e '/^my @card_info_table/ i #@TABLE_PLACE@' \
+        -e '# Remove old table leaving only marker' \
+        -e '/^my @card_info_table/,/^);$/ d' 'bbportinst' |
+    sed -e '# Insert old table at marker' \
+        -e '/^#@TABLE_PLACE@$/ r bbportinst.oldtable' |
+    sed -e '# Remove marker' \
+        -e '/^#@TABLE_PLACE@$/ d' > 'bbportinst.new.oldtable'
+    rm 'bbportinst.oldtable'
+
+    diff -pNau5 bbportinst{,.new.oldtable} > '0000-restore-deprecated-pcie-cards.patch' || :
+    rm 'bbportinst.new.oldtable'
+    set +u
+    msg 'Move supplied patch to PKGBUILD'
+    false
+  fi
+  patch -Nup0 -i '../0000-restore-deprecated-pcie-cards.patch'
 
   # Fix path
   sed -e 's:/bin/setserial:/usr/bin/setserial:g' -i 'bbportinst'
