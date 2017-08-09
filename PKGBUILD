@@ -14,8 +14,10 @@ depends=('dkms' 'patchutils' 'perl-proc-processtable')
 conflicts=("${_pkgbase}" 'tbs-dvb-drivers')
 provides=("${_pkgbase}" 'linux_media')
 source=('dkms.conf'
+        'modules.list'
         'media_build::git+https://github.com/tbsdtv/media_build.git')
-sha256sums=('91b3834952b370cca204562542a7dd603d98353a042554ff64014608285bddb7'
+sha256sums=('b60332de6b42145c994d1c4ef8c540340d0ea9217491aa984700f74c7a61a4aa'
+            '5a1608e1d638c3daeaa759cd04c56b6b3fce1c5ee82dfce5ed6fa48cecf30e4e'
             'SKIP')
 options=('!strip')
 
@@ -42,6 +44,9 @@ package() {
     sed -e "s/@_PKGBASE@/${_pkgbase}/" \
         -e "s/@PKGVER@/${pkgver}/" \
         -i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
+
+    # Append module list
+    cat "${srcdir}/modules.list" >> "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 
     # Copy sources
     mkdir -p "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/media/"
