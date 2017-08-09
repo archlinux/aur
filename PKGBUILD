@@ -1,8 +1,8 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 name=colmap
-fragment=dev
+fragment="#commit=9786c6"
 pkgname=${name}-git
-pkgver=3.1.r84.g3c7fd57
+pkgver=3.1.r33.g9786c6e
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ options=(!buildflags)
 CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong"
 CXXFLAGS="${CFLAGS}"
 install=${pkgname}.install
-source=("${pkgname}::git+https://github.com/colmap/colmap.git#branch=${fragment}"
+source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
         "nvm-export.patch"
         "${pkgname}.install"
         "${name}.desktop"
