@@ -6,13 +6,13 @@
 
 pkgname=coursera-dl-git
 _gitname=${pkgname/-git/}
-pkgver=0.5.2.r12.gb8596ea
+pkgver=0.9.0.r0.g154ef8d
 pkgrel=1
 pkgdesc="Script for downloading Coursera.org videos and naming them"
 arch=('any')
 url="https://github.com/coursera-dl/coursera-dl/"
 license=('LGPL3')
-depends=('python' 'python-pyasn1' 'python-html5lib' 'python-beautifulsoup4' 'python-setuptools' 'python-requests' 'python-six')
+depends=('python' 'python-pyasn1' 'python-html5lib' 'python-beautifulsoup4' 'python-setuptools' 'python-requests' 'python-six' 'python-configargparse')
 makedepends=('git' 'pandoc')
 provides=('coursera-dl')
 conflicts=('coursera-dl')
