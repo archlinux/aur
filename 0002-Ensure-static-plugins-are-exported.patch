@@ -1,0 +1,22 @@
+From d974e620811a07888c0205d5ca7940c6d1f9be5b Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 23 Oct 2016 01:18:13 +0200
+Subject: [PATCH 2/3] Ensure static plugins are exported
+
+---
+ src/qml/Qt5QmlConfigExtras.cmake.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/qml/Qt5QmlConfigExtras.cmake.in b/src/qml/Qt5QmlConfigExtras.cmake.in
+index 9ddb9885c..9775d85e0 100644
+--- a/src/qml/Qt5QmlConfigExtras.cmake.in
++++ b/src/qml/Qt5QmlConfigExtras.cmake.in
+@@ -1,4 +1,4 @@
+-file(GLOB _qt5qml_other_plugins "${CMAKE_CURRENT_LIST_DIR}/Qt5Qml_*Factory.cmake")
++file(GLOB _qt5qml_other_plugins "${CMAKE_CURRENT_LIST_DIR}/*Qt5Qml_*Factory.cmake")
+ 
+ foreach(_other_plugin ${_qt5qml_other_plugins})
+     include(${_other_plugin} OPTIONAL)
+-- 
+2.13.2
+
