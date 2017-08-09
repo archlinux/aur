@@ -1,7 +1,7 @@
 pkgbase = openboardview-git
 	pkgdesc = Linux SDL/ImGui edition software for viewing .brd files
-	pkgver = r564.27817bd
-	pkgrel = 2
+	pkgver = r567.d3e4daf
+	pkgrel = 1
 	url = http://openboardview.org/
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = openboardview-git
 	makedepends = fontconfig
 	makedepends = sqlite
 	makedepends = libpng
+	makedepends = python
 	depends = sdl2
 	depends = fontconfig
 	depends = sqlite
