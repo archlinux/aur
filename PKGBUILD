@@ -4,7 +4,7 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python2-pytorch")
 _pkgname="pytorch"
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="http://pytorch.org"
@@ -35,6 +35,8 @@ build() {
   cd "$srcdir/${_pkgname}-${pkgver}-py2"
   CC=gcc-5 \
   CXX=g++-5 \
+  CFLAGS="${CFLAGS/-fno-plt/}" \
+  CXXFLAGS="${CXXFLAGS/-fno-plt/}" \
   WITH_CUDA=1 \
   CUDA_HOME=/opt/cuda \
   WITH_CUDNN=1 \
@@ -46,6 +48,8 @@ build() {
   cd "$srcdir/${_pkgname}-${pkgver}"
   CC=gcc-5 \
   CXX=g++-5 \
+  CFLAGS="${CFLAGS/-fno-plt/}" \
+  CXXFLAGS="${CXXFLAGS/-fno-plt/}" \
   WITH_CUDA=1 \
   CUDA_HOME=/opt/cuda \
   WITH_CUDNN=1 \
