@@ -1,14 +1,14 @@
 pkgbase = ocaml-result-git
 	pkgdesc = Compatibility Result module (git master)
 	pkgver = r10.e762be3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/result
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = BSD
 	makedepends = ocaml-findlib
-	makedepends = jbuilder
+	makedepends = jbuilder-git
 	depends = ocaml
 	provides = ocaml-result
 	conflicts = ocaml-result
