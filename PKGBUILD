@@ -31,7 +31,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # additional fixes
         '001_change-default-console-loglevel.patch'
         '002_criu-no-expert.patch'
-        '003_gcc5-asmlinkage-fix.patch')
+        '003_gcc5-asmlinkage-fix.patch'
+        '004_disable-pie-when-gcc-has-it-enabled-by-default.patch')
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'SKIP'
             'cc71150009ec821a2bdb45acca6243961dd51f207744bd4358219680c7920eb5'
@@ -42,7 +43,8 @@ sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '56bd99e54429a25a144f2d221718b67f516344ffd518fd7dcdd752206ec5be69'
             'daa75228a4c45a925cc5dbfeba884aa696a973a26af7695adc198c396474cbd5'
-            '2696c43b1b42504f58657205a100defb8002b5055986cf363fc8fbe8e63e5923')
+            '2696c43b1b42504f58657205a100defb8002b5055986cf363fc8fbe8e63e5923'
+            '237b8d05c6bf0219396a485e6a8acdb1cc83d41084d4120e4e8138715700a7b4')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds  <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
@@ -71,6 +73,9 @@ prepare() {
     #https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/patch/drivers/lguest/x86/core.c?id=cdd77e87eae52b7251acc5990207a1c4500a84ce
     patch -Np1 -i "${srcdir}/003_gcc5-asmlinkage-fix.patch"
   fi
+
+  # Fix build with pie enabled gcc
+  patch -Np1 -i "${srcdir}/004_disable-pie-when-gcc-has-it-enabled-by-default.patch"
 	
   ### Clean tree and copy ARCH config over
   make mrproper
