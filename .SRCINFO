@@ -1,0 +1,23 @@
+pkgbase = notes-up
+	pkgdesc = Notes Up is a notes manager written for elementary OS
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://github.com/Philip-Scott/Notes-up
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = gtksourceview3
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = gtksourceview3
+	depends = glib2
+	depends = sqlite
+	depends = webkit2gtk
+	depends = libgee
+	source = Notes-up-1.4.5.tar.gz::https://github.com/Philip-Scott/Notes-up/archive/1.4.5.tar.gz
+	sha512sums = 0a07d9eed326cadecdb32987878e1cb1dd57d7a9591218fc5bffbd976662272001f6b111c73f0733e91af11cdcde516568314505d44ca7f815444026ac2ff9a2
+
+pkgname = notes-up
+
