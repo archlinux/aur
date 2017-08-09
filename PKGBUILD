@@ -5,7 +5,7 @@
 
 gitname=uBlock
 pkgname=chromium-ublock-origin-git
-pkgver=1.11.5b1.2.g64c92a96
+pkgver=1.13.9b7.1.g90470414
 pkgrel=1
 pkgdesc="An efficient blocker for Chromium"
 arch=('any')
