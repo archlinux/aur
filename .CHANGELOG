@@ -1,0 +1,83 @@
+* commit f5d9ecf2ff10d4ebdf27782cd8c262cd98c19de5
+| Author: Tequila <tequila@smokin-guns.org>
+| Date:   Sat Apr 19 22:33:28 2014 +0200
+| 
+|     Set commit ref after synchro with ioQ3 upstream
+| 
+* commit b3495b7b87df7d9bad0abedec8738a0e5a4f8088
+| Author: MAN-AT-ARMS <donny@ecgnetwork.com>
+| Date:   Wed Apr 16 15:08:21 2014 -0500
+| 
+|     Rebuilt MSVC SDL 1.2.15 Revision 8040 import libs
+|     
+|     (cherry picked from commit b9b67036f3370b2e5f216eaf5ba68f3461267f02)
+| 
+* commit 55526efc257a2f9f67f683c28494a573c49d37f9
+| Author: SmileTheory <SmileTheory@gmail.com>
+| Date:   Wed Apr 16 05:26:03 2014 -0700
+| 
+|     OpenGL2: Remove sRGB support, replace with gamma cvars.
+|     
+|     (cherry picked from commit 4fe69cb41835575af576d7b67ef1488266141c4b)
+| 
+* commit 1daf264807470a468dd8f3b2bfb18603e4666f8c
+| Author: MAN-AT-ARMS <donny@ecgnetwork.com>
+| Date:   Mon Apr 7 22:28:18 2014 -0500
+| 
+|     Add MSVC SDL 1.2.15 Revision 8040 import libs
+|     
+|     (cherry picked from commit 880a7c6becf9072ac721904d155f8929b06b6a32)
+| 
+* commit ef6f5502584b961c421a0f893aecd62624d35496
+| Author: Tequila <tequila@smokin-guns.org>
+| Date:   Thu Mar 27 21:56:32 2014 +0100
+| 
+|     Thanks to xhairball vorbis codec can now be included in mingw32 build
+| 
+* commit ba25b04ff0fbeee89a4961416ec15b289c8d73ea
+| Author: Tobias Kuehnhammer <kuehnhammertobias@gmail.com>
+| Date:   Mon Mar 24 17:10:16 2014 -0500
+| 
+|     Fix compiling game VM with OBSTACLEDEBUG defined
+|     
+|     (cherry picked from commit 63463d1bcffae247b555afc71c65c472030dd333)
+| 
+* commit 95b091fc2ff4659d8744cc1b73598048d1f4aef5
+| Author: Zack Middleton <zturtleman@gmail.com>
+| Date:   Mon Mar 24 13:09:49 2014 -0500
+| 
+|     Remove -falign-loops and -falign-jumps from Makefile
+|     
+|     Clang warns and errors because of them on various platforms.
+|     
+|     Based on pull request #43 by @xhairball.
+|     
+|     (cherry picked from commit cf7d8ef9cfea13cc4ced637f731a87d0d3989de9)
+| 
+* commit df271d86d5c5cd5f37b9d92ec1d7f1c800f3b165
+| Author: Zack Middleton <zturtleman@gmail.com>
+| Date:   Mon Mar 24 12:47:14 2014 -0500
+| 
+|     Remove unused extern qboolean charSet
+|     
+|     No variable even exists.
+|     
+|     (cherry picked from commit 9f3fd12501fe3b6e7e3be13c7b3726debedb4faf)
+| 
+* commit dbc7796988d2be91851f174c3e016d6e934f7f7f
+| Author: MAN-AT-ARMS <donny@ecgnetwork.com>
+| Date:   Sat Feb 22 21:18:34 2014 -0500
+| 
+|     Release netowrk bindings on shutdown
+|     
+|     (cherry picked from commit 8661e0509b2a0fa27736dadeae5fba697d16a64e)
+| 
+* commit 7cafd35499a398d4f9381c149fd32d44dd9475de
+| Author: hairball <xhairball@gmail.com>
+| Date:   Sat Feb 8 22:02:24 2014 +0000
+| 
+|     Remove unnecessary NEED_VORBIS since you have USE_CODEC_VORBIS
+|     
+|     Thanks zturtleman for catching this
+|     
+|     (cherry picked from commit 31d8f954276ad9b252e6b6f2ac96371f01519d2b)
