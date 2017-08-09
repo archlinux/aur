@@ -28,8 +28,8 @@ sha256sums=('7dd4a57a37815b7d7513f7b429e0e936c2e9ddb9b4a0b7b2b2fdc41681b81392'
             '59a8b1e48cbfe5589a298dedaa5503d188a1a2ca2520cdffce390a271f0791ef')
 
 package() {
-    install -d ${pkgdir}/usr/share/fonts/TTF/
-    install -m644 ${srcdir}/ttf/*.ttf ${pkgdir}/usr/share/fonts/${pkgname}/
+    install -d ${pkgdir}/usr/share/fonts/${pkgname}/
+    install -m644 ${srcdir}/iosevka-haskell/ttf/*.ttf ${pkgdir}/usr/share/fonts/${pkgname}/
     install -D -m644 ${srcdir}/LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
     install -D -m644 ${srcdir}/iosevka-haskell.el ${pkgdir}/usr/share/fonts/${pkgname}/iosevka-haskell.el
 }
