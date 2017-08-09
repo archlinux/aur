@@ -1,4 +1,12 @@
 #!/bin/bash
 # get info for the lastest build of micro editor
+cat version.info > old-version.info
 curl -i https://api.github.com/repos/zyedidia/micro/releases/tags/nightly | grep -P -o "\B\"micro.*linux64.tar.gz" > name.info
 grep -P -o "\d.*-" name.info | head --bytes -2 > version.info
+# check version numbers
+if [ $(<version.info) == $(<old-version.info) ]
+then
+    echo "Version numbers same so no change needed."
+else
+    echo "version does not match - AUR PKGBUILD needs updating."
+fi
