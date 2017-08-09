@@ -1,0 +1,24 @@
+pkgbase = wpa_supplicant-git
+	pkgdesc = A daemon program controlling the wireless connection
+	pkgver = 2.6.r1113.gb0fc2ef3a
+	pkgrel = 1
+	url = https://w1.fi/wpa_supplicant/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	depends = openssl
+	depends = libdbus
+	depends = libnl
+	depends = readline
+	optdepends = wpa_supplicant_gui: GUI frontend
+	provides = wpa_supplicant
+	conflicts = wpa_supplicant
+	source = git://w1.fi/hostap.git
+	source = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/wpa_supplicant
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = wpa_supplicant-git
+
