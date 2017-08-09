@@ -2,15 +2,15 @@
 
 pkgbase=python-lmdb
 pkgname=('python-lmdb' 'python2-lmdb')
-pkgver=0.92
-pkgrel=3
+pkgver=0.93
+pkgrel=1
 arch=('any')
 url='https://github.com/dw/py-lmdb/'
 license=('custom')
 depends=('python2' 'lmdb')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 source=("https://github.com/dw/py-lmdb/archive/py-lmdb_${pkgver}.tar.gz")
-sha256sums=('8bed442e5b3dae112613c5f305547575941a7dac2aaa70b2ce68506dd4371a0e')
+sha256sums=('7bf1b8051b08cde927ed8f33973f2bca0a85e85181c187a63669d036024eeed9')
 
 prepare() {
     cp -a "py-lmdb-py-lmdb_${pkgver}" "py-lmdb-py-lmdb_${pkgver}-py2"
