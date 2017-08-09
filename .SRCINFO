@@ -1,7 +1,7 @@
 pkgbase = mnemosyne
 	pkgdesc = A flash-card tool with a sophisticated card review algorithm
 	pkgver = 2.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.mnemosyne-proj.org
 	install = mnemosyne.install
 	arch = i686

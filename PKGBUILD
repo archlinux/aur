@@ -3,7 +3,7 @@
 
 pkgname=mnemosyne
 pkgver=2.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A flash-card tool with a sophisticated card review algorithm"
 arch=('i686' 'x86_64')
 url='http://www.mnemosyne-proj.org'
@@ -27,5 +27,5 @@ build() {
 
 package() {
   cd "Mnemosyne-${pkgver}/"
-  python setup.py install --root="${pkgdir}"
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
