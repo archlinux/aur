@@ -9,7 +9,7 @@ license=('GPL')
 depends=('s3cmd' 'xsel' 'slop' 'imagemagick' 'ffmpeg')
 makedepends=('cargo')
 source=("https://github.com/gilbertw1/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('69472136f75297999db9ab23f24682a899b09d2447f4809b4b1ddd91513ea3ab')
+sha256sums=('d6121a0079877d1e9480d194f9eb7e58813c23edb9186be5111d68c00ca9759b')
 
 build() {
   cd "$pkgname-$pkgver"
