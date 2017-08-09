@@ -3,7 +3,7 @@
 
 _pkgbase=tbs-linux_media-git
 pkgname=${_pkgbase}-dkms
-pkgver=r20170623.031410.f563cede
+pkgver=r20170809.031501.f51964675
 pkgrel=1
 pkgdesc="TBS linux open source drivers (DKMS)"
 arch=('i686' 'x86_64')
