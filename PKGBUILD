@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=hub-git
-pkgver=v2.2.0.preview1.r547.g1150e67
+pkgver=v2.3.0.pre10.r12.g5e811d3b
 pkgrel=1
 pkgdesc="cli interface for Github"
 url="https://hub.github.com"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname/-git/}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
