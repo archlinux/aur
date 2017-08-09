@@ -4,10 +4,10 @@ pkgname='stratis-cli-git'
 _gitname='stratis-cli'
 pkgver=v0.0.2.r3.gbf0beb6
 pkgrel=1
-pkgdesc='???'
+pkgdesc='stratis-cli is a tool that provides a command-line interface (CLI) for interacting with the Stratis daemon, stratisd.'
 arch=('any')
 license=('apache2')
-url='https://github.com/stratis-storage/stratis-cli.git'
+url='stratis-storage.github.io'
 depends=('python-argparse')
 makedepends=('git')
 provides=("${_gitname}")
@@ -22,8 +22,9 @@ sha256sums=(
 pkgver() {
   cd "${_gitname}"
 
-  git describe --tags --long \
-    | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long           \
+    | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
+    | sed 's/v//'
 }
 
 package() {
