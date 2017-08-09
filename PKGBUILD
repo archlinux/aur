@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}" 'tbs-dvb-drivers')
 provides=("${_pkgbase}" 'linux_media')
 source=('dkms.conf'
         'media_build::git+https://github.com/tbsdtv/media_build.git')
-sha256sums=('bac31083b4dc1a3ccda628b2bc6d156b477d53b1bb47822e5018bb4e882d016b'
+sha256sums=('91b3834952b370cca204562542a7dd603d98353a042554ff64014608285bddb7'
             'SKIP')
 options=('!strip')
 
