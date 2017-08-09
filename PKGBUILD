@@ -3,7 +3,7 @@
 _basename=chromaprint
 pkgname="lib32-$_basename"
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library that implements a custom algorithm for extracting fingerprints from any audio source (32-bit)'
 url='https://acoustid.org/chromaprint'
 arch=('x86_64')
