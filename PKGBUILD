@@ -1,8 +1,8 @@
 pkgbase=mingw-w64-harfbuzz
 pkgname=(mingw-w64-harfbuzz mingw-w64-harfbuzz-icu)
-pkgver=1.4.7
+pkgver=1.4.8
 pkgrel=1
-_commit=fc15e60eadfc89aca5b8815262b8ee888f285169  # tags/1.4.7^0
+_commit=7917792f01603f91b703d12e12d8baced655a615  # tags/1.4.8^0
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=(any)
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
