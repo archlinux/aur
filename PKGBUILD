@@ -1,33 +1,24 @@
-# Maintainer: Raphael Nestler <raphael.nestler@gmail.com>
-
-_gitname=libbtbb
 pkgname=libbtbb-git
-pkgver=2014.02.R2.r53.gac7dabc
-epoch=2
+pkgver=2017.03.R2
 pkgrel=1
 pkgdesc='Bluetooth baseband decoding library'
-arch=('i686' 'x86_64')
-url="https://github.com/greatscottgadgets/libbtbb"
+url='https://github.com/greatscottgadgets/libbtbb'
+arch=('x86_64' 'i686')
 license=('GPL2')
-depends=(python)
-makedepends=(cmake python2 git)
-provides=('libbtbb')
-conflicts=('libbtbb')
-source=(git://github.com/greatscottgadgets/libbtbb)
-md5sums=(SKIP)
-
-pkgver() {
-  cd $_gitname
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//'
-}
+makedepends=(cmake)
+depends=('python')
+source=("https://github.com/greatscottgadgets/libbtbb/archive/2017-03-R2.tar.gz")
+sha1sums=('76d063471c41de24f071700238badbebcc20ee5f')
 
 build() {
-  cd $_gitname
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-    -DTHREADSAFE=ON -DPYTHON_EXECUTABLE=/usr/bin/python2
+  cd "${srcdir}/${pkgname}-2017-03-R2/"
+  mkdir build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr ..
   make
 }
 
 package() {
-  make -C $_gitname DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}-2017-03-R2/build/"
+  make install
 }
