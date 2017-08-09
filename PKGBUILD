@@ -3,7 +3,7 @@
 _basename=gst-plugins-bad
 pkgname="lib32-$_basename"
 pkgver=1.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=('x86_64')
