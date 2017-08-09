@@ -1,0 +1,31 @@
+pkgbase = ttf-iosevka-haskell
+	pkgdesc = A slender monospace typeface. Shape: Pragmata Pro + Haskell
+	pkgver = 1.13.2
+	pkgrel = 1
+	url = https://github.com/jimmyhuco/Iosevka
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = ttf-iosevka
+	conflicts = ttf-iosevka-pack
+	conflicts = ttf-iosevka-ss01
+	conflicts = ttf-iosevka-ss02
+	conflicts = ttf-iosevka-ss03
+	conflicts = ttf-iosevka-ss04
+	conflicts = ttf-iosevka-ss05
+	conflicts = ttf-iosevka-ss06
+	conflicts = ttf-iosevka-ss07
+	conflicts = ttf-iosevka-ss08
+	conflicts = ttf-iosevka-ss09
+	conflicts = ttf-iosevka-ss10
+	conflicts = ttf-iosevka-ss11
+	source = https://github.com/jimmyhuco/Iosevka/releases/download/v1.13.2-haskell/iosevka-haskell.zip
+	source = https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	source = https://raw.githubusercontent.com/jimmyhuco/Iosevka/master/iosevka-haskell.el
+	sha256sums = 7dd4a57a37815b7d7513f7b429e0e936c2e9ddb9b4a0b7b2b2fdc41681b81392
+	sha256sums = a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af
+	sha256sums = 59a8b1e48cbfe5589a298dedaa5503d188a1a2ca2520cdffce390a271f0791ef
+
+pkgname = ttf-iosevka-haskell
+
