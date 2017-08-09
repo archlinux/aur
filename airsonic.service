@@ -1,0 +1,12 @@
+[Unit]
+Description=Airsonic
+After=network.target
+ 
+[Service]
+User=airsonic
+ExecStart=/var/lib/airsonic/airsonic.sh
+ExecStop=/bin/kill -15 $MAINPID
+Type=forking
+ 
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,55 @@
+_homedir=/var/lib/airsonic
+_playlistdir=${_homedir}/playlists
+
+post_install() {
+
+    getent group airsonic &>/dev/null || groupadd --system airsonic > /dev/null
+    getent passwd airsonic &>/dev/null || useradd --system \
+                                                  --home-dir /var/lib/airsonic \
+                                                  --shell /usr/bin/nologin \
+                                                  --gid airsonic \
+                                                  --groups audio \
+                                                  --comment "Airsonic user" \
+                                                  airsonic > /dev/null
+    passwd --lock airsonic &> /dev/null
+
+    fix_permissions
+    echo "*************************************************"
+    echo "* Edit /etc/airsonic.conf to configure airsonic *"
+    echo "*************************************************"
+
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    if [[ `systemctl is-active airsonic` == 'active' ]]; then
+        systemctl stop airsonic
+    fi
+}
+
+post_remove() {
+    getent passwd airsonic &>/dev/null && userdel airsonic &>/dev/null
+}
+
+fix_permissions() {
+    chown -R airsonic:airsonic ${_homedir}
+    chown airsonic:airsonic ${_playlistdir}
+}
+
+pre_upgrade() {
+    rm -f /tmp/airsonic-was-active
+    if [[ `systemctl is-active airsonic` == 'active' ]]; then
+        touch /tmp/airsonic-was-active
+        echo "Stopping airsonic"
+        systemctl stop airsonic
+    fi
+}
+
+post_upgrade() {
+    post_install
+    if [ -e /tmp/airsonic-was-active ]; then
+        echo "Starting airsonic"
+        systemctl start airsonic
+        rm /tmp/airsonic-was-active
+    fi
+}
