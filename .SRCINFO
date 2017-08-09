@@ -1,0 +1,16 @@
+pkgbase = lib32-libzip
+	pkgdesc = A C library for reading, creating, and modifying zip archives
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.nih.at/libzip/index.html
+	arch = x86_64
+	license = BSD
+	makedepends = gcc-multilib
+	depends = lib32-zlib
+	depends = lib32-glibc
+	options = !libtool
+	source = http://www.nih.at/libzip/libzip-1.2.0.tar.gz
+	sha256sums = 6cf9840e427db96ebf3936665430bab204c9ebbd0120c326459077ed9c907d9f
+
+pkgname = lib32-libzip
+
