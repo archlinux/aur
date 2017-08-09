@@ -4,7 +4,7 @@
 pkgname=smokinguns-git
 _pkgname=smokinguns
 pkgver=1.1.r859.gf5d9ecf2
-pkgrel=2
+pkgrel=3
 pkgdesc='A semi-realistic simulation of the old west great atmosphere built on id Tech 3.'
 url="http://www.smokin-guns.org"
 arch=('i686' 'x86_64')
@@ -70,7 +70,7 @@ package()
   install -Dm 644 "build/release-linux-${SUFFIX}/renderer_opengl2_${SUFFIX}.so" "${pkgdir}/usr/share/${_pkgname}"
 
   install -Dm 644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm 644 "misc/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/${_pkgname}.png"
+  install -Dm 644 "misc/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
 }
 
 # vim:set ts=2 sw=2 et:
