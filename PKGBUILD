@@ -1,13 +1,13 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 pkgname=nrsc5-git 
-pkgver=r79.89b155a
-pkgrel=3
+pkgver=r101.320784d
+pkgrel=1
 pkgdesc="NRSC-5 (HD Radio) receiver for rtl-sdr"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/theori-io/nrsc5"
 license=('GPL')
 depends=('rtl-sdr' 'fftw' 'libao')
-makedepends=('git') 
+makedepends=('git' 'cmake') 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
