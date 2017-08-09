@@ -1,7 +1,7 @@
 # Maintainer: Gökberk Yaltıraklı <webdosusb at gmail dot com>
 pkgname=notes
-pkgver=0.9.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=0
 pkgdesc="Note taking application, write down your thoughts."
 arch=('i686' 'x86_64')
 url="https://github.com/nuttyartist/notes"
@@ -11,7 +11,7 @@ makedepends=()
 provides=('notes')
 conflicts=('notes')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/nuttyartist/notes/archive/v$pkgver.tar.gz")
-md5sums=('db29395c1e156aeaf8f51c9dfbb1bdc8')
+md5sums=('63e42d1b8337c2c3f3d4a53754938b3b')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -26,7 +26,7 @@ Name=Notes
 Comment=$pkgdesc
 Categories=Utility;Application;
 Exec=/usr/bin/${pkgname}
-Icon=/usr/share/pixmaps/${pkgname}_icon.png
+Icon=/usr/share/pixmaps/${pkgname}_icon.ico
 EOF
 
   mkdir build
@@ -37,8 +37,8 @@ EOF
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 build/Notes $pkgdir/usr/bin/$pkgname
-  install -Dm644 src/images/notes_icon.png $pkgdir/usr/share/pixmaps/${pkgname}_icon.png
+  install -Dm755 build/notes $pkgdir/usr/bin/$pkgname
+  install -Dm644 src/images/notes_icon.ico $pkgdir/usr/share/pixmaps/${pkgname}_icon.ico
   install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
