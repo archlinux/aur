@@ -2,7 +2,7 @@
 
 pkgname=nfsen
 pkgver=1.3.8
-pkgrel=10
+pkgrel=11
 pkgdesc="Netflow visualisation and investigation tool"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/nfsen"
@@ -14,7 +14,7 @@ depends=('nfdump>=1.6.1'
          'php>4.1' 
          'rrdtool')
 optdepends=('apache' 'nginx' 'php-apache' 'php-fpm')
-backup=('etc/nfsen.conf' 'etc/nginx/sites-available/nfsen')
+backup=('etc/nfsen.conf')
 install='install'
 source=("$url/files/stable/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
         'nfsen.conf'
@@ -40,7 +40,7 @@ package() {
 	install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README" 
 	install -Dm644 README.plugins "$pkgdir/usr/share/doc/$pkgname/README.plugins" 
 	install -Dm644 "$srcdir/nfsen.conf" "$pkgdir/etc/nfsen.conf"
-	install -Dm644 "$srcdir/nginx" "$pkgdir/etc/nginx/sites-available/nfsen"
+	install -Dm644 "$srcdir/nginx" "$pkgdir/usr/share/doc/$pkgname/vhost-nginx.conf"
 	install -Dm755 "$srcdir/profile.sh" "$pkgdir/etc/profile.d/nfsen.sh"
 }
 md5sums=('fc45b3f44a66c2ed65d1269e479c2414'
