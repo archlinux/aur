@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-pkgver=59.0.3071.115
+pkgver=60.0.3112.78
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('i686' 'x86_64')
@@ -16,13 +16,13 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-dma-buf-r1.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r1.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r8.patch'
 )
-sha512sums=('f30d54dedd43ba11321db1bcd443bb44a550ffca24ebb579727b98a15b6a3f6f598f20f0ef0889eab6820e6faacba0aa567927fd36d5ed0e61d7bd4f760e9993'
+sha512sums=('d6cccf2537233c12d7b0254b45adbf0abdf9ca43688ceed28b3d915290478563be30d30879018fd4d6f2acc9654d9911c0c6bbebba0cdeacd16d748e18296c41'
             '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
-            '279185af77d504a9be7fb3f0f8c85ebbb422fa15a716614989288921d546179ed04d238c7b176a8eb64e6e4a7ae5147d200d694d7df1647fc0382c884a53f3cd'
-            'd404976ebeca7ffe4e07770055aa9ec8db8761fcbbbf1e463523232a135e11d201c6263d468124190372b3178fda4ea36bdf9be34c50183b7ca93f14ab9d83b0')
+            'ab16fdbae0bbbb5756d46492025c7f29a0c78648026ae4bfcca77bf400fea4fb6b4f5ac45b40351c36dd17c81a3a636a13622a7791370c753a112f36418f841b'
+            '792b436802fda8427312ef482fb7dc78c1ec6a6c1e39f2637cc379cd5b8bb2dd1b17d495fdaea2beec35305e3e910bed67c9f1824155131def708c923a4cf1c6')
 
 
 prepare() {
@@ -41,8 +41,8 @@ prepare() {
   touch chrome/test/data/webui/i18n_process_css_test.html
 
   patch -p1 -i "$srcdir/chromium-last-commit-position-r1.patch"
-  patch -p1 -i "$srcdir/chromium-dma-buf-r1.patch"
-  patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE.patch"
+  patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r1.patch"
+  patch -p1 -i "$srcdir/chromium-gn-bootstrap-r8.patch"
 }
 
 build() {
