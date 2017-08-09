@@ -1,16 +1,16 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=clutter-gtk
-pkgver=1.8.2
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Clutter integration with GTK+"
 arch=('i686' 'x86_64')
 url="https://git.gnome.org/browse/clutter-gtk"
 license=(LGPL)
 depends=(clutter)
-makedepends=(gobject-introspection gtk-doc git)
-_commit=d48408a24672fa553034a0b3749bee930ad7c49d
-source=("git://git.gnome.org/clutter-gtk#commit=$_commit")
+makedepends=(gobject-introspection gtk-doc git meson)
+_commit=77483ba46384adde76f6c4599eae77eeec852c56  # tags/1.8.4^0
+source=("git+https://git.gnome.org/browse/clutter-gtk#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -19,21 +19,18 @@ pkgver() {
 }
 
 prepare() {
+  mkdir build
   cd $pkgname
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $pkgname
-  ./configure --prefix=/usr --enable-gtk-doc
-
-  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-  make
+  cd build
+  meson --prefix=/usr --buildtype=release ../$pkgname \
+    -Denable_docs=true
+  ninja
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  cd build
+  DESTDIR="$pkgdir" ninja install
 }
