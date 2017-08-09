@@ -1,0 +1,59 @@
+From 5ea2e056ca85c35e717279d3ea15678f8f569ee0 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 30 Jul 2017 22:26:38 +0200
+Subject: [PATCH 3/8] Remove error handling for Xcode detection
+
+* Don't know where this Xcode stuff under osxcross is
+* So just get rid of the error messages by removing
+  the error handling
+* Let's see what this will break :-)
+---
+ mkspecs/features/mac/default_pre.prf | 32 --------------------------------
+ 1 file changed, 32 deletions(-)
+
+diff --git a/mkspecs/features/mac/default_pre.prf b/mkspecs/features/mac/default_pre.prf
+index e21e749ee9..1157a6ae05 100644
+--- a/mkspecs/features/mac/default_pre.prf
++++ b/mkspecs/features/mac/default_pre.prf
+@@ -1,38 +1,6 @@
+ CONFIG = asset_catalogs rez $$CONFIG
+ load(default_pre)
+ 
+-isEmpty(QMAKE_XCODE_DEVELOPER_PATH) {
+-    # Get path of Xcode's Developer directory
+-    QMAKE_XCODE_DEVELOPER_PATH = $$system("/usr/bin/xcode-select --print-path 2>/dev/null")
+-    isEmpty(QMAKE_XCODE_DEVELOPER_PATH): \
+-        error("Xcode path is not set. Please use xcode-select to choose Xcode installation path.")
+-
+-    # Make sure Xcode path is valid
+-    !exists($$QMAKE_XCODE_DEVELOPER_PATH): \
+-        error("Xcode is not installed in $${QMAKE_XCODE_DEVELOPER_PATH}. Please use xcode-select to choose Xcode installation path.")
+-
+-    # Make sure Xcode is set up properly
+-    isEmpty($$list($$system("/usr/bin/xcrun -find xcodebuild 2>/dev/null"))): \
+-        error("Xcode not set up properly. You may need to confirm the license agreement by running /usr/bin/xcodebuild.")
+-}
+-
+-isEmpty(QMAKE_XCODE_VERSION) {
+-    # Extract Xcode version using xcodebuild
+-    xcode_version = $$system("/usr/bin/xcodebuild -version")
+-    QMAKE_XCODE_VERSION = $$member(xcode_version, 1)
+-    isEmpty(QMAKE_XCODE_VERSION): error("Could not resolve Xcode version.")
+-    unset(xcode_version)
+-}
+-
+-isEmpty(QMAKE_TARGET_BUNDLE_PREFIX) {
+-    QMAKE_XCODE_PREFERENCES_FILE = $$(HOME)/Library/Preferences/com.apple.dt.Xcode.plist
+-    exists($$QMAKE_XCODE_PREFERENCES_FILE): \
+-        QMAKE_TARGET_BUNDLE_PREFIX = $$system("/usr/libexec/PlistBuddy -c 'print IDETemplateOptions:bundleIdentifierPrefix' $$QMAKE_XCODE_PREFERENCES_FILE 2>/dev/null")
+-
+-    !isEmpty(_QMAKE_CACHE_):!isEmpty(QMAKE_TARGET_BUNDLE_PREFIX): \
+-        cache(QMAKE_TARGET_BUNDLE_PREFIX)
+-}
+-
+ QMAKE_ASSET_CATALOGS_APP_ICON = AppIcon
+ 
+ # Make the default debug info format for static debug builds
+-- 
+2.13.4
+

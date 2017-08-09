@@ -1,0 +1,35 @@
+From 3381229855389d88f3599a4e1f1a42ac0f1b86e5 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 6 Aug 2017 20:14:11 +0200
+Subject: [PATCH 8/8] Prevent error when qmlimportscanner not available
+
+When using `make qmake_all` the qmlimportscanner is not
+built when creating Makefiles for targets depending on
+QML so the error must be ignored.
+
+BTW: Using `make qmake_all` is required to fix Makefiles
+using sed because qmake fails to set library search paths
+for host standard library correctly.
+
+Not sure why this error does not occur when cross
+compiling static Qt for Windows.
+---
+ mkspecs/features/qt.prf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
+index 3ccbbe7061..c547c89910 100644
+--- a/mkspecs/features/qt.prf
++++ b/mkspecs/features/qt.prf
+@@ -305,7 +305,7 @@ contains(all_qt_module_deps, qml): \
+     #message(run $$QMLIMPORTSCANNER $$_PRO_FILE_PWD_  $$IMPORTPATHS)
+     JSON = $$system($$QMLIMPORTSCANNER $$system_quote($$_PRO_FILE_PWD_) $$IMPORTPATHS)
+ 
+-    parseJson(JSON, IMPORTS)| error("Failed to parse qmlimportscanner output.")
++    parseJson(JSON, IMPORTS)#| error("Failed to parse qmlimportscanner output.")
+ 
+     !isEmpty(IMPORTS._KEYS_) {
+         # add import plugins to LIBS line
+-- 
+2.13.4
+

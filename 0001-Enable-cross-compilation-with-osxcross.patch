@@ -1,0 +1,76 @@
+From 83b2cce640be5314e768d121fd0b407245325c0d Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 30 Jul 2017 02:00:34 +0200
+Subject: [PATCH 1/8] Enable cross compilation with osxcross
+
+Change-Id: I1d4044991b34165314acaf729ec503f83ca9d5ab
+---
+ mkspecs/common/clang.conf    |  4 ++--
+ mkspecs/common/g++-base.conf |  4 ++--
+ mkspecs/common/mac.conf      | 16 ++++++++++------
+ 3 files changed, 14 insertions(+), 10 deletions(-)
+
+diff --git a/mkspecs/common/clang.conf b/mkspecs/common/clang.conf
+index e003b947aa..0fb84bc1b3 100644
+--- a/mkspecs/common/clang.conf
++++ b/mkspecs/common/clang.conf
+@@ -4,8 +4,8 @@
+ 
+ QMAKE_COMPILER          = gcc clang llvm   # clang pretends to be gcc
+ 
+-QMAKE_CC                = clang
+-QMAKE_CXX               = clang++
++QMAKE_CC                = $${CROSS_COMPILE}clang
++QMAKE_CXX               = $${CROSS_COMPILE}clang++
+ 
+ QMAKE_LINK_C            = $$QMAKE_CC
+ QMAKE_LINK_C_SHLIB      = $$QMAKE_CC
+diff --git a/mkspecs/common/g++-base.conf b/mkspecs/common/g++-base.conf
+index c42c46b0ec..5b584e4fd5 100644
+--- a/mkspecs/common/g++-base.conf
++++ b/mkspecs/common/g++-base.conf
+@@ -10,12 +10,12 @@
+ 
+ QMAKE_COMPILER          = gcc
+ 
+-QMAKE_CC                = gcc
++QMAKE_CC                = $${CROSS_COMPILE}gcc
+ 
+ QMAKE_LINK_C            = $$QMAKE_CC
+ QMAKE_LINK_C_SHLIB      = $$QMAKE_CC
+ 
+-QMAKE_CXX               = g++
++QMAKE_CXX               = $${CROSS_COMPILE}g++
+ 
+ QMAKE_LINK              = $$QMAKE_CXX
+ QMAKE_LINK_SHLIB        = $$QMAKE_CXX
+diff --git a/mkspecs/common/mac.conf b/mkspecs/common/mac.conf
+index 5208379f9a..b237530775 100644
+--- a/mkspecs/common/mac.conf
++++ b/mkspecs/common/mac.conf
+@@ -33,12 +33,16 @@ QMAKE_LIBS_DYNLOAD      =
+ QMAKE_LIBS_OPENGL       = -framework OpenGL -framework AGL
+ QMAKE_LIBS_THREAD       =
+ 
+-QMAKE_ACTOOL            = actool
++QMAKE_ACTOOL            = $${CROSS_COMPILE}actool
+ 
+-QMAKE_DSYMUTIL          = dsymutil
+-QMAKE_STRIP             = strip
++QMAKE_DSYMUTIL          = $${CROSS_COMPILE}dsymutil
++QMAKE_STRIP             = $${CROSS_COMPILE}strip
+ QMAKE_STRIPFLAGS_LIB   += -S -x
+ 
+-QMAKE_AR                = ar cq
+-QMAKE_RANLIB            = ranlib -s
+-QMAKE_NM                = nm -P
++QMAKE_AR                = $${CROSS_COMPILE}ar cq
++QMAKE_RANLIB            = $${CROSS_COMPILE}ranlib -s
++QMAKE_NM                = $${CROSS_COMPILE}nm -P
++
++!isEmpty(CROSS_COMPILE_CFLAGS) {
++    QMAKE_CXXFLAGS += -fpch-preprocess
++}
+-- 
+2.13.4
+

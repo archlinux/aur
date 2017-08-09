@@ -1,0 +1,39 @@
+From be78c416c070a8a87fe8f449a717c5a7b800f683 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 30 Jul 2017 21:17:41 +0200
+Subject: [PATCH 2/8] Allow overriding stdlib under MacOS
+
+---
+ mkspecs/common/clang-mac.conf | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/mkspecs/common/clang-mac.conf b/mkspecs/common/clang-mac.conf
+index cbae2e6262..bdf855fed2 100644
+--- a/mkspecs/common/clang-mac.conf
++++ b/mkspecs/common/clang-mac.conf
+@@ -6,8 +6,20 @@ QMAKE_OBJCXXFLAGS_USE_PRECOMPILE = $$QMAKE_CFLAGS_USE_PRECOMPILE
+ 
+ QMAKE_XCODE_GCC_VERSION = com.apple.compilers.llvm.clang.1_0
+ 
+-QMAKE_CXXFLAGS += -stdlib=libc++
+-QMAKE_LFLAGS   += -stdlib=libc++
++# Use libc++ by default under MacOS/Clang
++isEmpty(QMAKE_MACOSX_STDLIB) {
++    QMAKE_MACOSX_STDLIB = libc++
++}
++isEqual(QMAKE_MACOSX_STDLIB, libstdc++) {
++    # To enable libstdc++, passing -stdlib=XXX is not enough - at least under osxcross the stdheaders are otherwise not found
++    # It is also required to disable GCC extensions by defining __STRICT_ANSI__ because not all GCC extensions are supported by Clang
++    QMAKE_CXXFLAGS += -D__STRICT_ANSI__ -foc-use-gcc-libstdc++
++    QMAKE_LFLAGS   += -D__STRICT_ANSI__ -foc-use-gcc-libstdc++
++} else {
++    QMAKE_CXXFLAGS += -stdlib=$${QMAKE_MACOSX_STDLIB}
++    QMAKE_LFLAGS   += -stdlib=$${QMAKE_MACOSX_STDLIB}
++}
++
+ QMAKE_AR_LTCG  = libtool -static -o
+ 
+ QMAKE_CFLAGS_APPLICATION_EXTENSION  = -fapplication-extension
+-- 
+2.13.4
+

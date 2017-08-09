@@ -1,0 +1,41 @@
+From 9301437563029764ce405330fe148b759769b27c Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Tue, 1 Aug 2017 00:34:32 +0200
+Subject: [PATCH 4/8] Fix build errors under 32-bit MacOS
+
+Fix build errors like
+ `no known conversion from 'CGRect' to 'const _NSRect &'`
+under 32-bit MacOS
+---
+ src/plugins/platforms/cocoa/cocoa.pro | 2 ++
+ src/widgets/styles/styles.pri         | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/src/plugins/platforms/cocoa/cocoa.pro b/src/plugins/platforms/cocoa/cocoa.pro
+index 62935210be..ce4795fb0e 100644
+--- a/src/plugins/platforms/cocoa/cocoa.pro
++++ b/src/plugins/platforms/cocoa/cocoa.pro
+@@ -104,6 +104,8 @@ qtHaveModule(widgets) {
+     QT += widgets-private printsupport-private
+ }
+ 
++DEFINES += NS_BUILD_32_LIKE_64
++
+ OTHER_FILES += cocoa.json
+ 
+ # Acccessibility debug support
+diff --git a/src/widgets/styles/styles.pri b/src/widgets/styles/styles.pri
+index 481123f0d4..c72d75b407 100644
+--- a/src/widgets/styles/styles.pri
++++ b/src/widgets/styles/styles.pri
+@@ -43,6 +43,7 @@ qtConfig(style-mac) {
+         styles/qmacstyle_mac_p_p.h
+     OBJECTIVE_SOURCES += styles/qmacstyle_mac.mm
+     LIBS_PRIVATE += -framework Carbon
++    DEFINES += NS_BUILD_32_LIKE_64
+ }
+ 
+ qtConfig(style-windowsvista) {
+-- 
+2.13.4
+

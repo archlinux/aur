@@ -1,0 +1,41 @@
+From b9322fe12b92b92853659e43061bce5198a602e2 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 3 Aug 2017 11:13:15 +0200
+Subject: [PATCH 7/8] Fix finding gl.h when cross compiling with osxcross
+
+* Make sure find_path ignores the CMAKE_FIND_ROOT_PATH
+  because paths are "sysrootified" in sdk.prf anyways
+* Add directory of gl.h in "MacOSX10.11.sdk" to search
+  paths
+---
+ mkspecs/common/mac.conf             | 1 +
+ src/gui/Qt5GuiConfigExtras.cmake.in | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/mkspecs/common/mac.conf b/mkspecs/common/mac.conf
+index b237530775..6f3b1b2d37 100644
+--- a/mkspecs/common/mac.conf
++++ b/mkspecs/common/mac.conf
+@@ -18,6 +18,7 @@ QMAKE_LIBDIR            =
+ 
+ # sdk.prf will prefix the proper SDK sysroot
+ QMAKE_INCDIR_OPENGL     = \
++    /System/Library/Frameworks/OpenGL.framework/Versions/A \
+     /System/Library/Frameworks/OpenGL.framework/Headers \
+     /System/Library/Frameworks/AGL.framework/Headers/
+ 
+diff --git a/src/gui/Qt5GuiConfigExtras.cmake.in b/src/gui/Qt5GuiConfigExtras.cmake.in
+index 07869efd7d..8c3afe4b51 100644
+--- a/src/gui/Qt5GuiConfigExtras.cmake.in
++++ b/src/gui/Qt5GuiConfigExtras.cmake.in
+@@ -57,6 +57,7 @@ set(Qt5Gui_OPENGL_LIBRARIES Qt5::Gui_GLESv2)
+ set(_GL_INCDIRS $$CMAKE_GL_INCDIRS)
+ find_path(_qt5gui_OPENGL_INCLUDE_DIR $$CMAKE_GL_HEADER_NAME
+     PATHS ${_GL_INCDIRS}
++    NO_CMAKE_FIND_ROOT_PATH
+ )
+ if (NOT _qt5gui_OPENGL_INCLUDE_DIR)
+     message(FATAL_ERROR \"Failed to find \\\"$$CMAKE_GL_HEADER_NAME\\\" in \\\"${_GL_INCDIRS}\\\".\")
+-- 
+2.13.4
+
