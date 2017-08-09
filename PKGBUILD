@@ -6,31 +6,41 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-git
-pkgver=5.0.0.r23652.f9b262c
-pkgrel=2
+pkgver=5.1.40.r39311.22db7c2e9d
+pkgrel=3
 pkgdesc="A C/C++ development environment for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
 url='http://www.kdevelop.org'
 license=('GPL')
-depends=('qt5-tools'
-         'kdevplatform-git'
-         'krunner'
-         'hicolor-icon-theme'
-         )
-optdepends=('krunner: For enabling the KDevelop runner'
-            'plasma-framework: Plasma libraries for enabling the plasma addons'
-            'okteta: hex editor integration'
+depends=('clang'
+         'libksysguard'
+         'grantlee'
+         'kcmutils'
+         'threadweaver'
+         'kitemmodels'
+         'ktexteditor'
+         'knotifyconfig'
+         'knewstuff'
+         'libkomparediff2'
+         'qt5-webengine'
+        )
+optdepends=(
             'konsole: embedded terminal'
-            'subversion: SVN support'
             'git: Git support'
-            'cvs: Concurrent Versions System support'
+            'subversion: SVN support'
+            'cvs: CVS support'
             'gdb: GNU Debugger support'
             'lldb: LLDB Debugger support'
+            'cmake: CMake integration'
             'qt4-doc: qt4 documentation integration'
             'qt5-doc: qt5 documentation integration'
-            'cmake: build system'
+            'qt5-tools: qthelp plugin'
+            'purpose: patch review plugin'
+            'okteta: hex editor integration'
             'kdevelop-pg-qt-git: Parser Generator'
-            'clang: LLVM compiler plugin'
+            'krunner: For enabling the KDevelop runner'
+            'plasma-framework: for enabling the plasma addons'
+            'cppcheck: code analyzer'
             )
 makedepends=('extra-cmake-modules'
              'git'
@@ -39,11 +49,11 @@ makedepends=('extra-cmake-modules'
              'plasma-framework'
              'kdevelop-pg-qt-git'
              'clang')
-conflicts=('kdevelop')
-provides=('kdevelop')
+conflicts=('kdevelop' 'kdevplatform')
+provides=('kdevelop' 'kdevplatform' 'kdevplatform-git')
+replaces=('kdevplatform-git')
 source=('git://anongit.kde.org/kdevelop.git')
 sha1sums=('SKIP')
-install=kdevelop-git.install
 
 pkgver() {
   cd kdevelop
