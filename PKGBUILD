@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.0.r126.g21d0d767
+pkgver=0.8.1.r19.gf0ea8046
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
@@ -48,7 +48,7 @@ source=(
         'submodule-nervanagpu'::'git+https://github.com/NervanaSystems/nervanagpu.git'
         'submodule-benchmark'::'git+https://github.com/google/benchmark.git'
         'submodule-protobuf'::'git+https://github.com/google/protobuf.git'
-        'submodule-android-cmake'::'git+https://github.com/taka-no-me/android-cmake.git'
+        'submodule-android-cmake'::'git+https://github.com/Yangqing/android-cmake.git'
         'submodule-ios-cmake'::'git+https://github.com/Yangqing/ios-cmake.git'
         'submodule-NNPACK'::'git+https://github.com/Maratyszcza/NNPACK.git'
         'submodule-gloo'::'git+https://github.com/facebookincubator/gloo'
@@ -91,11 +91,6 @@ prepare() {
     done
     unset _submodule
     git submodule update
-    
-    # avoid compile errors with gloo if using '-march=native' in a cpu with AVX2
-    # https://github.com/facebookincubator/gloo/issues/43
-    cd third_party/gloo
-    git checkout 21a5c8ea5e02edca03068790df3d7f7ba4e2d75b
 }
 
 pkgver() {
