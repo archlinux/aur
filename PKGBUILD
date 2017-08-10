@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-citra-git
-pkgver=r4851.ae8cfe69
+pkgver=r5017.070430ed
 pkgrel=1
 pkgdesc='Nintendo 3DS core'
 arch=('i686' 'x86_64')
@@ -9,20 +9,26 @@ url='https://github.com/libretro/citra'
 license=('GPL2')
 groups=('libretro-unstable')
 depends=('gcc-libs' 'glibc')
-makedepends=('boost' 'cmake' 'git')
+makedepends=('cmake' 'git')
 provides=('libretro-citra')
 conflicts=('libretro-citra')
 source=('libretro-citra::git+https://github.com/libretro/citra.git'
-        'git+https://github.com/philsquared/Catch#tag=v1.9.5'
+        'citra-boost::git+https://github.com/citra-emu/ext-boost'
+        'git+https://github.com/philsquared/Catch#tag=v1.9.6'
+        'git+https://github.com/whoshuu/cpr#tag=1.3.0'
         'git+https://github.com/weidai11/cryptopp'
         'git+https://github.com/MerryMage/dynarmic'
-        'git+https://github.com/fmtlib/fmt#tag=3.0.2'
+        'git+https://github.com/lsalzman/enet'
+        'git+https://github.com/fmtlib/fmt#tag=4.0.0'
         'git+https://github.com/svn2github/inih'
         'git+https://github.com/neobrain/nihstro'
         'citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch'
-        'git+https://github.com/herumi/xbyak#tag=v5.43'
+        'git+https://github.com/herumi/xbyak#tag=v5.50'
         'https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/citra_libretro.info')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -47,9 +53,14 @@ prepare() {
   fi
   mkdir build
 
-  for submodule in externals/{catch,cryptopp/cryptopp,dynarmic,fmt,inih/inih,nihstro,soundtouch,xbyak}; do
+  for submodule in externals/{catch,cpr,cryptopp/cryptopp,dynarmic,enet,fmt,inih/inih,nihstro,xbyak}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule##*/}
+    git submodule update
+  done
+  for submodule in externals/{boost,soundtouch}; do
+    git submodule init ${submodule}
+    git config submodule.${submodule}.url ../citra-${submodule##*/}
     git submodule update
   done
 }
