@@ -1,0 +1,13 @@
+pkgbase = python-rubymarshal
+	pkgdesc = Read and write serialized data from the Ruby Marshal library
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/d9pouces/RubyMarshal
+	arch = any
+	license = custom:WTFPL
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/rubymarshal/rubymarshal-1.0.3.tar.gz
+	md5sums = df3c6b114637993adc5d3941c941f0d3
+
+pkgname = python-rubymarshal
+
