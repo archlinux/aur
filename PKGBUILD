@@ -5,8 +5,8 @@
 # Contributor: Romain Bazile <gromain {dot} baz {at} gmail {dot} com>
 pkgname=boostnote
 _pkgname=Boostnote
-pkgver=0.8.12
-pkgrel=2
+pkgver=0.8.13
+pkgrel=1
 pkgdesc="Open source note-taking app for programmers"
 arch=('any')
 url="https://boostnote.io/"
@@ -19,22 +19,22 @@ source=(
   "${pkgname}.js"
   "${pkgname}.desktop"
   "warning-fix.patch"
-  "no-analytics.patch"
+  "disable-analytics.patch"
   )
 
 sha512sums=(
-  'aca35f68c7d579191e0019db873352b9cbce1206b4728cd0e1d609dcffc8bd02236aa6d383b97738950837eecb7ee1d14b91a03c6666f80445bfd5db2891e6dc'
+  '6eaec13fd30a3eda0b0e0bca8ad8111b5c6ee4e58ee9390e5e121a4ffff288e3f74bb5a4322ebaf2e72be877b578d225c457ec00039eb5c6cb9e78aba282ad2d'
   'f0abbdcca34d7f74d3dc66ffc2d0995416e7708c715d55fa58c4c2abc31d191ea42f3434e3105292b4817f83ac0ca89f456f5f93007ae80ab2426c8941f615f9'
   '18bcda13580da8ceeaa86793a77ec00a053b8fd51451dad7e2b1a19553fe1a467ac647b44b789212e783f3f6a80968cc9404e884ef7ff6b1f6588473b3229d40'
   '64fb4c4823744322b5777736fc1792fb377e433608b5456cb0e0b7053507d104a1bbe3fdc6fe193b41dfddadc1943e8220a27e26ec6d4166704f3e61e2572437'
-  '90880e017bc0ad55ca2e0e7e27cdc2424e8cefce3f7363c1a2edd998b0af7075b28d98257ed8a9eed0a9744392aba8d6cfa52189891224f8784bc4c7699ad8b9'
+  '951a57d051d6961563915bd480155bdb28b0e779716311c657f5cfca63b4fdaa9d71de2dc3a12cdf3d57f4a0b0a735a7599781a8085c7189be40d5974f065fb9'
   )
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
   patch -Np1 -i "${srcdir}/warning-fix.patch"
-  patch -Np1 -i "${srcdir}/no-analytics.patch"
+  patch -Np1 -i "${srcdir}/disable-analytics.patch"
 }
 
 build() {
