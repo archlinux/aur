@@ -209,6 +209,7 @@ int main(int argc, char *argv[]) {
                             if( listTodo.at(i).str.find(argv[j]) == string::npos)
                                 active = false;
                         if( active ) {
+                            cout << " - " << listTodo.at(i).str << endl;
                             listTodo.erase(begin(listTodo)+i);
                             active = true;
                         }
@@ -221,8 +222,10 @@ int main(int argc, char *argv[]) {
                     for( int i = 2 ; i < argc && active ; i++ )
                         if( it->str.find(argv[i]) == string::npos)
                             active = false;
-                    if( active )
+                    if( active ) {
+                        cout << " # " << it->str << endl;
                         it->etat = DONE_STATE;
+                    }
                 }
 
                 break;
@@ -233,6 +236,7 @@ int main(int argc, char *argv[]) {
                         if( it->str.find(argv[i]) == string::npos)
                             active = false;
                     if( active ) {
+                        cout << " # " << it->str << endl;
                         it->priorite = atoi(argv[2]);
                     }
                 }
@@ -251,8 +255,10 @@ int main(int argc, char *argv[]) {
                 {
                     for ( int i =  listTodo.size()-1; i >= 0 ; --i) {
                         if( listTodo.at(i).etat == DONE_STATE ||
-                            listTodo.at(i).etat == MISSED_STATE)
+                            listTodo.at(i).etat == MISSED_STATE) {
+                            cout << " - " << listTodo.at(i).str << endl;
                             listTodo.erase(begin(listTodo)+i);
+                        }
                     }
                     break;
                 }
@@ -267,8 +273,10 @@ int main(int argc, char *argv[]) {
                     for( int i = 2 ; i < argc && active ; i++ )
                         if( it->str.find(argv[i]) == string::npos)
                             active = false;
-                    if( active )
+                    if( active ) {
+                        cout << " # " << it->str << endl;
                         it->etat = TODO_STATE;
+                    }
                 }
                 break;
             case 10:  // standby
@@ -277,8 +285,10 @@ int main(int argc, char *argv[]) {
                     for( int i = 2 ; i < argc && active ; i++ )
                         if( it->str.find(argv[i]) == string::npos)
                             active = false;
-                    if( active )
+                    if( active ) {
+                        cout << " # " << it->str << endl;
                         it->etat = STANDBY_STATE;
+                    }
                 }
                 break;
             case 11:  // miss
@@ -287,8 +297,10 @@ int main(int argc, char *argv[]) {
                     for( int i = 2 ; i < argc && active ; i++ )
                         if( it->str.find(argv[i]) == string::npos)
                             active = false;
-                    if( active )
+                    if( active ) {
+                        cout << " # " << it->str << endl;
                         it->etat = MISSED_STATE;
+                    }
                 }
                 break;
             case 12: // Edit
@@ -347,6 +359,7 @@ int main(int argc, char *argv[]) {
 
                         unlink( fileName );
                         delete[] cmd;
+                        cout << " # " << it->str << endl;
                     }
                 }
                 break;
