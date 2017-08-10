@@ -18,7 +18,7 @@ source=('git+https://github.com/Tomas-M/xlunch.git'
         'xlunch-conf-install.hook'
         'xlunch-conf-remove.hook')
 md5sums=('SKIP'
-         '58a813e6c232489f887a32966addde8a'
+         'a7fdfc89153e0ae50665484e8d02d069'
          '5cedcafe1ba39961a84f1634958ca478'
          'ccaf7547b8ceeb11badb2a08b3c592f7'
          '832317d10246dd7b2ac17c599b19f441')
