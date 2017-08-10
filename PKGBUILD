@@ -61,7 +61,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.12.5
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -142,7 +142,7 @@ prepare() {
       -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
 
   msg "Patch source with block and BFQ-MQ patches"
-  for p in "${srcdir}"/000*-Merge*.patch; do
+  for p in "${srcdir}"/*-Merge*.patch; do
     msg "-> $p"
     patch -Np1 -i "$p"
   done
