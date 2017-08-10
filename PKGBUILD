@@ -3,8 +3,8 @@
 
 _pkgname=setBfree
 pkgname=${_pkgname,,}
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.8.5
+pkgrel=1
 pkgdesc="A DSP tonewheel organ emulator"
 arch=('i686' 'x86_64')
 url="http://setbfree.org/"

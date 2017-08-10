@@ -1,7 +1,7 @@
 pkgbase = setbfree
 	pkgdesc = A DSP tonewheel organ emulator
-	pkgver = 0.8.4
-	pkgrel = 2
+	pkgver = 0.8.5
+	pkgrel = 1
 	url = http://setbfree.org/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = setbfree
 	depends = pango
 	depends = ttf-bitstream-vera
 	conflicts = setbfree-git
-	source = setbfree::git+https://github.com/pantherb/setBfree#tag=v0.8.4
+	source = setbfree::git+https://github.com/pantherb/setBfree#tag=v0.8.5
 	sha256sums = SKIP
 
 pkgname = setbfree
