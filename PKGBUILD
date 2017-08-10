@@ -1,6 +1,6 @@
 # Maintainer: Dimitri Merejkowsky <d.merej@gmail.com>
 pkgname=replacer
-pkgver='1.0.4'
+pkgver='1.1.1'
 pkgrel='1'
 pkgdesc='Replace text in files'
 arch=('any')
@@ -9,8 +9,8 @@ license=('BSD')
 depends=('python')
 makedepends=('python' 'python-setuptools')
 
-source=("https://pypi.python.org/packages/source/r/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('2791e8f2f1f607ffab301bc91178a1b0')
+source=('https://files.pythonhosted.org/packages/7b/25/6419ec652d171552fe8dbc880f42cdf914b54ef8532502b9f398f87ee6de/replacer-1.1.1.tar.gz')
+md5sums=('376df23adb228c4327f65e7658b3baa2')
 
 
 build() {
