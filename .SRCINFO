@@ -1,0 +1,16 @@
+pkgbase = shiftsub-cli
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/imla/shiftsub-cli
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = shiftsub-cli
+	conflicts = shiftsub-cli
+	source = git+https://github.com/imla/shiftsub-cli.git
+	md5sums = SKIP
+
+pkgname = shiftsub-cli
+
