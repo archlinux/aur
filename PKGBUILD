@@ -11,7 +11,7 @@ install='retroarch-standalone.install'
 source=('retroarch-standalone.service'
         'retroarch-standalone.sysuser'
         'retroarch-standalone.cfg')
-md5sums=('f73e83f0b6d17f06354d7c3db840afa1'
+md5sums=('3a0ec662646862e513fe7a1cd72369b0'
          'dff58d483453816a80dcdbc8d272e8b8'
          'ac40311816ee094e98f957db77cea241')
 
