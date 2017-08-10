@@ -1,13 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-roboto-mono
 pkgver=2.000985
-pkgrel=5
+pkgrel=6
 epoch=1
-depends=('fontconfig' 'xorg-font-utils')
 pkgdesc='Roboto Mono is a monospaced addition to the Roboto type family.'
 arch=('any')
 url='https://www.google.com/fonts/specimen/Roboto+Mono'
 license=('Apache')
+depends=('fontconfig' 'xorg-font-utils')
 source=('https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/LICENSE.txt'
         'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Bold.ttf'
         'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-BoldItalic.ttf'
@@ -19,7 +19,6 @@ source=('https://raw.githubusercontent.com/google/fonts/master/apache/robotomono
         'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Regular.ttf'
         'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Thin.ttf'
         'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-ThinItalic.ttf')
-install=${pkgname}.install
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
             '6250e98e33a56ab2ca07bc61835a8f53ed85d231347fc9c74136c2d356b63875'
             '1810ae41851032119f44f6988d90a308c9e117e075d69cbb7ffd63a3af75f815'
@@ -33,8 +32,7 @@ sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
             '5c851cc4efc0ce509394ea637e2dd9c9429c457a80245fc6a144fc04a8f63efe')
 
 package() {
-  cd ${srcdir}
-  install -d ${pkgdir}/usr/share/fonts/TTF/
-  install -m644 *.ttf ${pkgdir}/usr/share/fonts/TTF/
-  install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    install -d ${pkgdir}/usr/share/fonts/TTF/
+    install -m644 ${srcdir}/*.ttf ${pkgdir}/usr/share/fonts/TTF/
+    install -D -m644 ${srcdir}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
