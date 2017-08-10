@@ -3,14 +3,13 @@
 
 pkgname=mkv-extractor-qt
 pkgver=5.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
 url='http://forum.ubuntu-fr.org/viewtopic.php?id=1508741'
 license=('GPL3')
 depends=('python-pyqt5'
          'mkvtoolnix-cli'
-         'hicolor-icon-theme'
          )
 optdepends=('ffmpeg: for DTS conversion'
             'mkclean: MKV optimisation'
@@ -32,6 +31,8 @@ prepare() {
   sed -e '/Encoding/d' \
       -e 's|video/webm|video/webm;|g' \
       -e 's|audio/x-matroska;audio/x-matroska|audio/x-matroska|g' \
+      -e 's|/usr/share/icons/hicolor/scalable/apps/||g' \
+      -e 's|mkv-extractor-qt5|mkv-extractor-qt|g' \
       -i mkv-extractor-qt5.desktop
 
   export IFS=$'\n'
@@ -60,9 +61,8 @@ package() {
   install -Dm644 WhatsUp/WhatsUp.py "${pkgdir}/usr/share/${pkgname}/WhatsUp/WhatsUp.py"
 
   install -Dm644 mkv-extractor-qt5.desktop "${pkgdir}/usr/share/applications/mkv-extractor-qt.desktop"
-  sed 's|mkv-extractor-qt5|mkv-extractor-qt|g' -i "${pkgdir}/usr/share/applications/mkv-extractor-qt.desktop"
 
-  install -Dm644 icons/scalable/apps/mkv-extractor-qt5.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mkv-extractor-qt.svg"
+  install -Dm644 icons/scalable/apps/mkv-extractor-qt5.svg "${pkgdir}/usr/share/pixmaps/mkv-extractor-qt.svg"
 
   install -Dm644 man/mkv-extractor-qt5.1 "${pkgdir}/usr/share/man/man1/mkv-extractor-qt.1"
   install -Dm644 man/mkv-extractor-qt5.fr.1 "${pkgdir}/usr/share/man/fr/man1/mkv-extractor-qt.1"
