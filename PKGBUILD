@@ -1,14 +1,14 @@
 # Maintainer: Tudor Roman <tudurom@gmail.com>
 
 pkgname=windowchef-git
-pkgver=0.2.r0.g02d95a4
+pkgver=0.3.2.r22.gcdfabe2
 pkgrel=1
 pkgdesc="A stacking window manager that cooks windows with orders from the Waitron."
 arch=("i686" "x86_64" "armv7h" "aarch64")
 url="https://github.com/tudurom/windowchef"
 license=('ISC')
 depends=("libxcb" "xcb-util-wm")
-makedepends=("git")
+makedepends=("git" "xproto")
 optdepends=("sxhkd" "wmutils-git" "lemonbar")
 conflicts=('windowchef')
 source=("$pkgname::git+https://github.com/tudurom/windowchef.git")
