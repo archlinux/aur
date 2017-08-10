@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-data-zsr-europe+sk
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2017_06_01
+pkgver=2017_08_09
 pkgrel=1
 pkgdesc="Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by ŽSR."
 arch=(any)
