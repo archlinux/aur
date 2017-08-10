@@ -4,7 +4,7 @@ pkgdesc="ROS - Controller to publish joint state."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-lunar-joint-state-controller'
-pkgver='0.12.3'
+pkgver='0.13.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-lunar-joint_state_controller-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/lunar/joint_state_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('495e95f8660b07db750c6e755ff028a2b4e2b1837a1dabaa1cd363b9f5a47a8a')
+sha256sums=('991ee8e5d59283747259f05b2eb029c1f9d99804f213d3d8e90908e651ff4b6a')
 
 build() {
   # Use ROS environment variables
