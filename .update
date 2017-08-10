@@ -6,7 +6,7 @@ grep -P -o "\d.*-" name.info | head --bytes -2 > version.info
 # check version numbers
 if [ $(<version.info) == $(<old-version.info) ]
 then
-    echo "Version numbers same so no change needed."
+    echo "Micro Editor version numbers are the same, so no changes needed."
 else
-    echo "version does not match - AUR PKGBUILD needs updating."
+    echo "Micro Editor version differ - so PKGBUILD and .SRCINFO needs updating to latest version info."
 fi
