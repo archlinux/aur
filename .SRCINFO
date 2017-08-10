@@ -1,7 +1,7 @@
 pkgbase = xdm-minimalist
 	pkgdesc = a minimalist xdm setup.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xorg.freedesktop.org
 	install = xdm-minimalist.install
 	arch = any
