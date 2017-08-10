@@ -16,7 +16,7 @@ source=("rbundle.R"
         )
 noextract=()
 md5sums=('47804c91eefab8d14f3ad1af7486e11f'
-         '1ee17071cf13a1b642c378c0e0f46092'
+         '7e1ed80a57388f65fe5bf071ee1c877e'
          'SKIP'
          'SKIP')
 validpgpkeys=()
@@ -48,4 +48,5 @@ package() {
 
 	# jmv
 	cp -r $srcdir/jmvBundle/jmv $pkgdir/usr/lib/jamovi/Resources/modules/
+	rm -rf $pkgdir/usr/lib/jamovi/Resources/modules/jmv/R/jmvcore
 }
