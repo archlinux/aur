@@ -1,4 +1,5 @@
-# Maintainer: Boohbah <boohbah at gmail.com>
+# Maintainer: Timofonic timofonic at gmail.com
+# Contribute: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: Jonathan Chan <jyc@fastmail.fm>
@@ -179,8 +180,9 @@ _package-headers() {
   cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
 
   # add docbook makefile
-  install -D -m644 Documentation/DocBook/Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+  # Workaround to make it build
+ # install -D -m644 Documentation/DocBook/Makefile \
+ #    "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 
   # add dm headers
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
@@ -260,22 +262,25 @@ _package-headers() {
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
-_package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)"
-  provides=('linux-docs')
+#Massive dirty workaround to avoid all possible errors
+#_package-docs() {
+#  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)"
+#  provides=('linux-docs')
 
-  cd "${_srcname}"
+#  cd "${_srcname}"
 
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  find "${pkgdir}" -type f -exec chmod 444 {} \;
-  find "${pkgdir}" -type d -exec chmod 755 {} \;
+#  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
+# Workaround to make it build
+#  cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
+#  find "${pkgdir}" -type f -exec chmod 444 {} \;
+#  find "${pkgdir}" -type d -exec chmod 755 {} \;
 
   # remove a file already in linux package
-  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
-}
+  # Workaround to make it build
+#  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+#}
 
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
+pkgname=("${pkgbase}" "${pkgbase}-headers") # "${pkgbase}-docs") # Workaround to make it build
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
     $(declare -f "_package${_p#${pkgbase}}")
@@ -284,3 +289,4 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+#nano rulez

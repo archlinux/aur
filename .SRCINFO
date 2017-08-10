@@ -37,7 +37,7 @@ pkgname = linux-drm-tip-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
 	provides = linux-headers
 
-pkgname = linux-drm-tip-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
-	provides = linux-docs
+#pkgname = linux-drm-tip-git-docs
+#	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
+#	provides = linux-docs
 
