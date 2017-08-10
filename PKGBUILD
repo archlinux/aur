@@ -7,12 +7,12 @@ _codename=date
 pkgname="${_name}-dev"
 pkgdesc='Mozilla Firefox Developer Edition'
 url='http://www.mozilla.org/firefox/developer'
-pkgver=55.0b14_20170731163103
-_ffver=55.0b14
-_ffbid=20170731163103
+pkgver=56.0b1_20170808170225
+_ffver=56.0b1
+_ffbid=20170808170225
 locale="en-US"
-# Next version: 55.0b14
-# Current BID: 20170731163103
+# Next version: 56.0b1
+# Current BID: 20170808170225
 year=${_ffbid:0:4}
 month=${_ffbid:4:2}
 day=${_ffbid:6:2}
