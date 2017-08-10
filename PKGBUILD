@@ -1,4 +1,5 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Infy <eugene.yudin@gmail.com>
 
 pkgname=pcsxr-git
@@ -6,7 +7,7 @@ pkgver=1.9.93.r1697.6484236c
 pkgrel=1
 pkgdesc='A Sony PlayStation emulator based on the PCSX-df Project'
 arch=('i686' 'x86_64')
-url='http://pcsxr.codeplex.com/'
+url='https://github.com/pcsxr/PCSX-Reloaded/tree/master/pcsxr'
 license=('GPL')
 depends=('ffmpeg' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libarchive' 'libcdio'
          'libgl' 'libpulse' 'libx11' 'libxext' 'libxtst' 'libxv' 'libxxf86vm'
@@ -16,7 +17,7 @@ makedepends=('cmake' 'git' 'intltool' 'mesa')
 provides=('pcsxr')
 conflicts=('pcsxr' 'pcsx-df')
 replaces=('pcsxr-svn')
-source=('git+https://git01.codeplex.com/pcsxr')
+source=('pcsxr::git+https://github.com/pcsxr/PCSX-Reloaded.git')
 sha256sums=('SKIP')
 
 pkgver() {
