@@ -7,15 +7,15 @@
 
 _pkgname=elinks
 pkgname=${_pkgname}-git
-pkgver=0.13.1467.re957e60d
-pkgrel=1
+pkgver=0.13.1481.rf86be659
+pkgrel=2
 pkgdesc="An advanced and well-established feature-rich text mode web browser. Git version."
 arch=("i686" "x86_64")
 url="http://elinks.or.cz"
 provides=(${_pkgname})
 license=('GPL')
 conflicts=(${_pkgname})
-depends=('bzip2' 'expat>=2.0' 'gpm>=1.20.4' 'openssl' 'lua51' 'libidn' 'js185' 'gc' 'tre')
+depends=('bzip2' 'expat>=2.0' 'gpm>=1.20.4' 'openssl' 'lua51' 'libidn' 'gc' 'tre')
 source=("git+http://elinks.cz/elinks.git"
         "lua_strlen_fix.patch")
 md5sums=('SKIP'
