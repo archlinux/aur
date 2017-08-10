@@ -2,8 +2,8 @@
 pkgname=cross-mips64-linux-gnu-gcc
 _pkgname=gcc
 _target="mips64-linux-gnu"
-pkgver=4.9.2
-pkgrel=1
+pkgver=7.1.0
+pkgrel=0
 pkgdesc="The GNU Compiler Collection for the MIPS64 architecture(Big endian)"
 url="http://www.gnu.org/software/gcc/"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('mpfr' 'gmp' 'libmpc' 'sh' "cross-${_target}-binutils")
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
 source=("ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('4df8ee253b7f3863ad0b86359cd39c43')
+md5sums=('6bf56a2bca9dac9dbbf8e8d1036964a8')
 _sysroot="/usr/lib/cross-${_target}"
 
 prepare() {
