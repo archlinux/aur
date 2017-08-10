@@ -1,0 +1,15 @@
+pkgbase = udp2raw-tunnel
+	pkgdesc = An Encrpyted,Anti-Replay,Multiplexed Udp Tunnel,tunnels udp traffic through fake-tcp or icmp by using raw socket
+	pkgver = 20170809.0
+	pkgrel = 1
+	url = https://github.com/wangyu-/udp2raw-tunnel
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	source = udp2raw-tunnel-20170809.0.tar.gz::https://github.com/wangyu-/udp2raw-tunnel/archive/20170809.0.tar.gz
+	md5sums = d08220400cf60adb0775b5d01645efd6
+
+pkgname = udp2raw-tunnel
+
