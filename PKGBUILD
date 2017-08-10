@@ -5,7 +5,7 @@
 # Contributor: Alexander <chronischzuspaet at gmail dot com> Kempen
 
 pkgname=scidavis
-pkgver=1.19
+pkgver=1.21
 pkgrel=1
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ depends=('gsl' 'glu' 'mesa' 'muparser' 'python2-pyqt4' 'shared-mime-info'
          'qwt5' 'qwtplot3d')
 source=("http://prdownloads.sourceforge.net/sourceforge/scidavis/${pkgname}-${pkgver}.tar.gz"
         "scidavis-python2.patch")
-md5sums=('5c4af1e3bb1e1b9adaf1c839892c5382'
+md5sums=('148f73fb596f121dcfe5d929470ca97a'
          '70665013c8f456c0ebbff8373d4c8d30')
 install="${pkgname}.install"
 
@@ -41,9 +41,5 @@ package() {
 
   # remove liborigin files since it uses static library
   rm -rf "${pkgdir}/usr/local"
-
-  # install desktop file and icon
-  install -Dm644 "scidavis/scidavis.desktop" "${pkgdir}/usr/share/applications/scidavis.desktop"
-  install -Dm644 "scidavis/icons/scidavis.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/scidavis.svg"
 }
 
