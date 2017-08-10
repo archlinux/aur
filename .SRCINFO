@@ -1,5 +1,5 @@
 pkgbase = latex2e-help-texinfo
-	pkgdesc = Inofficial LaTeX2e Reference Manual in info format
+	pkgdesc = Inofficial LaTeX2e Reference Manual in info format - spanish
 	pkgver = 2017_07_30
 	pkgrel = 1
 	url = https://ctan.org/pkg/latex2e-help-texinfo
