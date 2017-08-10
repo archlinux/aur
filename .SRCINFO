@@ -1,0 +1,15 @@
+pkgbase = onerng
+	pkgdesc = Files to make the Onerng work
+	pkgver = 3.5
+	pkgrel = 1
+	url = http://onerng.info
+	install = onerng.install
+	arch = any
+	license = GPL3
+	license = LGPL3
+	backup = etc/onerng.conf
+	source = https://github.com/OneRNG/onerng.github.io/raw/master/sw/onerng_3.5.orig.tar.gz
+	sha256sums = afd6d0b64ad8e5557d10b497a9afb4ddeaf5e8d967069921941927f49b93fb16
+
+pkgname = onerng
+
