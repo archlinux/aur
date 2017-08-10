@@ -1,0 +1,21 @@
+pkgbase = mips64-linux-gnu-glibc
+	pkgdesc = GNU C Library MIPS64 target
+	pkgver = 2.26
+	pkgrel = 1
+	url = http://www.gnu.org/software/libc/
+	arch = any
+	license = GPL
+	license = LGPL
+	depends = mips64-linux-gnu-gcc
+	depends = mips64-linux-gnu-linux-api-headers
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.26.tar.xz
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.26.tar.xz.sig
+	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
+	sha1sums = 7cf7d521f5ebece5dd27cfb3ca5e5f6b84da4bfd
+	sha1sums = SKIP
+
+pkgname = mips64-linux-gnu-glibc
+
