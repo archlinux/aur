@@ -7,7 +7,7 @@
 pkgname=luakit-git
 gitname=luakit
 pkgver=2017.08.10.r0.gc5328c22
-pkgrel=1
+pkgrel=2
 pkgdesc='Luakit: now updated for WebKit 2'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://github.com/luakit/luakit'
@@ -29,10 +29,7 @@ md5sums=('SKIP')
 
 pkgver() {
    cd "$srcdir/$gitname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -40,10 +37,11 @@ build() {
   make  DEVELOPMENT_PATHS=0 USE_LUAJIT=1 PREFIX=/usr all
 }
 
-#check(){
- #cd "${srcdir}/${gitname}"
- #make run-tests
-#}
+check(){
+ cd "${srcdir}/${gitname}"
+ make run-tests
+}
+
 package() {
   cd "${srcdir}/${gitname}"
   make PREFIX=/usr DESTDIR="$pkgdir" install
