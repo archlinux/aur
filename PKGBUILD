@@ -1,7 +1,7 @@
 # Maintainer: Raimar Bühmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=anki-drive-sdk-git
-pkgver=0.3.0.r30.20161116
+pkgver=0.3.0.r38.20170808
 pkgrel=1
 pkgdesc="C implementation of message protocols and data parsing to communicate with Anki Drive vehicles"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 	_commitCount=$(git rev-list --count HEAD)
 	# get time of last git commit
 	_commitTime=$(git show -s --format="%ci" | grep -o "....-..-.." | sed "s/-//g")
-	# add ".r*.*" from package version
+	# add ".r*.*" to package version
 	echo "$_pkgverTriple.r$_commitCount.$_commitTime"
 }
 prepare() {
