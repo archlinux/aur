@@ -5,13 +5,13 @@
 _pkgname=my-weather-indicator
 pkgname=my-weather-indicator-git
 pkgver=r44.e5c76af
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple indicator for the weather'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/my-weather-indicator'
 license=('GPL3')
 depends=('libappindicator-gtk3' 'libnotify' 'webkitgtk' 'geocode-glib' 'python-pytz'
-         'python-cairo' 'python-lxml' 'python-dateutil'
+         'python-cairo' 'python-lxml' 'python-dateutil' 'osm-gps-map'
          'python-requests-oauthlib' 'geoclue2' 'geoip')
 makedepends=('git' 'python2-distutils-extra' 'python2-polib')
 provides=("${_pkgname}")
