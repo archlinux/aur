@@ -1,3 +1,5 @@
+# Contributor: nikita <krikita77@gamil.com>
+
 pkgname=mingw-w64-irrlicht
 pkgver=1.8.4
 pkgrel=1
