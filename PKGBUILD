@@ -2,7 +2,7 @@
 
 pkgname=firefox-nightly-zh-cn
 _pkgname=firefox-nightly
-pkgver=55.0a1
+pkgver=57.0a1
 pkgrel=1
 pkgdesc="Chinese Simplified For Firefox Nightly"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ provides=("firefox=$pkgver")
 install=$pkgname.install
 _baseurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/"
 _filename="firefox-${pkgver}.zh-CN.linux-${CARCH}"
-_sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.tar.bz2" | grep sha512 | cut -d " " -f1)"
+_sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.tar.bz2$" | grep sha512 | cut -d " " -f1)"
 source=("$pkgname.desktop"
         "vendor.js"
         "${_baseurl}${_filename}.tar.bz2")
