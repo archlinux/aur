@@ -1,0 +1,14 @@
+pkgbase = tebu-flat-icon-theme
+	pkgdesc = Official icon sets from BlankOn
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://blankonlinux.or.id
+	arch = any
+	license = GPL3
+	depends = gtk3
+	depends = tebu-icon-theme
+	source = tebu-flat-icon-theme::git+https://github.com/BlankOn/tebu-flat.git
+	md5sums = SKIP
+
+pkgname = tebu-flat-icon-theme
+
