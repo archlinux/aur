@@ -4,7 +4,7 @@ pkgdesc="ROS - forward_command_controller."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-lunar-forward-command-controller'
-pkgver='0.12.3'
+pkgver='0.13.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-lunar-forward_command_controller-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/lunar/forward_command_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e8d7391b7a4737e7ae8c7b5d49a37f5ab48be1cc5368ffb4832ff78a46fbd277')
+sha256sums=('a2db3764a9dc99e5681037634d0c40193754fe0202555c39f6b659fe1237f372')
 
 build() {
   # Use ROS environment variables
