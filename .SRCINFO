@@ -1,0 +1,17 @@
+pkgbase = parsec-bin
+	pkgdesc = Remotely connect to a gaming pc for a low latency remote computing experience
+	pkgver = 131_4
+	pkgrel = 1
+	url = http://parsec.tv
+	arch = x86_64
+	depends = glibc
+	depends = sndio-git
+	depends = pulseaudio-module-sndio
+	provides = parsec
+	conflicts = parsec
+	noextract = parsec-linux.deb
+	source = https://s3.amazonaws.com/parsec-build/package/parsec-linux.deb
+	md5sums = 0283e54e5943b8c2550818d16dd7fe93
+
+pkgname = parsec-bin
+
