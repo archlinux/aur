@@ -2,7 +2,7 @@
 
 pkgname=pulse-connect-secure
 pkgver=8.2R5
-pkgrel=2
+pkgrel=3
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(i686 x86_64)
 license=(custom)
@@ -40,7 +40,10 @@ package() {
   install -Dm755 pulse/pulseUi_centos_7 "${pkgdir}"/opt/pulsesecure/pulseUi
   install -Dm755 pulse/libpulseui.so_centos_7 "${pkgdir}"/opt/pulsesecure/libpulseui.so
   install -Dm644 pulse/pulseUi.desktop "${pkgdir}"/usr/share/applications/
+
+  # Wrappers & symlinks
   install -Dm755 pulseUi.sh "${pkgdir}"/usr/bin/pulseUi
+  ln -s /opt/pulsesecure/pulsesvc "${pkgdir}"/usr/bin/pulsesvc
 
   cp -dr --no-preserve=ownership pulse/html "${pkgdir}"/opt/pulsesecure/html
 
