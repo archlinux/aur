@@ -17,24 +17,24 @@
 #
 pkgbase="zfs-linux-hardened"
 pkgname=("zfs-linux-hardened" "zfs-linux-hardened-headers")
-pkgver=0.7.0_4.12.4.a_1
-pkgrel=2
-makedepends=("linux-hardened-headers=4.12.4.a-1" "spl-linux-hardened-headers")
+pkgver=0.7.1_4.12.5.a_1
+pkgrel=1
+makedepends=("linux-hardened-headers=4.12.5.a-1" "spl-linux-hardened-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.0/zfs-0.7.0.tar.gz")
-sha256sums=("6907524f5ca4149b799fe65cd31b552b0ae90dba5dc20524e1a24fc708d807d2")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.1/zfs-0.7.1.tar.gz")
+sha256sums=("231b104979ddacfeb1889e1dec175337276e7b3b109d40656089744b5caf3ef6")
 license=("CDDL")
-depends=("kmod" "spl-linux-hardened" "zfs-utils-common>=0.7.0" "linux-hardened=4.12.4.a-1")
+depends=("kmod" "spl-linux-hardened" "zfs-utils-common>=0.7.1" "linux-hardened=4.12.5.a-1")
 
 build() {
-    cd "${srcdir}/zfs-0.7.0"
+    cd "${srcdir}/zfs-0.7.1"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.7.0 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.12.4-1-hardened/build \
-                --with-linux-obj=/usr/lib/modules/4.12.4-1-hardened/build
+                --libexecdir=/usr/lib/zfs-0.7.1 --with-config=kernel \
+                --with-linux=/usr/lib/modules/4.12.5-1-hardened/build \
+                --with-linux-obj=/usr/lib/modules/4.12.5-1-hardened/build
     make
 }
 
@@ -44,7 +44,7 @@ package_zfs-linux-hardened() {
     provides=("zfs")
     groups=("archzfs-linux-hardened")
     conflicts=('zfs-linux-hardened-git')
-    cd "${srcdir}/zfs-0.7.0"
+    cd "${srcdir}/zfs-0.7.1"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
@@ -54,10 +54,10 @@ package_zfs-linux-hardened() {
 
 package_zfs-linux-hardened-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
-    conflicts=('zfs-archiso-linux-headers' 'zfs-utils-common-git-headers'  'zfs-linux-hardened-git-headers' 'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' )
-    cd "${srcdir}/zfs-0.7.0"
+    conflicts=('zfs-archiso-linux-headers'  'zfs-linux-hardened-git-headers' 'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' )
+    cd "${srcdir}/zfs-0.7.1"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.12.4-1-hardened/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.12.5-1-hardened/Module.symvers
 }
