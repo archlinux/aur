@@ -3,7 +3,7 @@
 
 pkgname=git-buildpackage
 pkgver=0.8.18
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools from Debian to integrate the package build system with Git"
 arch=(any)
 url="https://honk.sigxcpu.org/piki/projects/git-buildpackage/"
@@ -14,6 +14,7 @@ depends=('git'
          'python2-dateutil'
 	 'python2-six'
          'rpm-org')
+
 makedepends=('python2-distribute'
              'python2-coverage'
 	     'python2-flake8'
@@ -37,6 +38,6 @@ check() {
 package() {
   cd git-buildpackage/
   python2 setup.py install --root="$pkgdir" --prefix=/usr -O1
-  install -d "$pkgdir/etc/git-buildpackage/"
-  install "gbp.conf" "$pkgdir/etc/git-buildpackage/gbp.conf"
+  install -m 644 -D -T "gbp.conf" "$pkgdir/etc/git-buildpackage/gbp.conf"
+  install -m 644 -D -T debian/gbp.completion "$pkgdir/usr/share/bash-completion/completions/gbp"
 }
