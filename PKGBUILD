@@ -1,7 +1,7 @@
 # Maintainer: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=zesarux
-pkgver=4.2
+pkgver=5.0
 pkgrel=1
 pkgdesc="A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('pulseaudio: for support Pulseaudio'
 	'sdl: for support sdl video and audio output')
 	
 source=("http://sourceforge.net/projects/zesarux/files/ZEsarUX-${pkgver}/ZEsarUX_src-${pkgver}.tar.gz")
-md5sums=('9d6cb640bd805e9b24b9ddc2e39d20e8')
+md5sums=('438004aac06df5b70eab4496e031252d')
 install="zesarux.install"
 
 build() {
