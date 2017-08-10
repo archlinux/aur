@@ -1,9 +1,9 @@
 # Maintainer: artemtech <sofyanartem@gmail.com>
 pkgname=bromo-gtk-theme
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A theme for Manokwari on BlankOn. Based on Arc Theme."
-arch=('x86_64')
+arch=('any')
 url="https://blankonlinux.or.id"
 license=('GPL3')
 depends=('gtk3' 'gtk-engine-murrine')

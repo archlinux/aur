@@ -1,9 +1,9 @@
 pkgbase = bromo-gtk-theme
 	pkgdesc = A theme for Manokwari on BlankOn. Based on Arc Theme.
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blankonlinux.or.id
-	arch = x86_64
+	arch = any
 	license = GPL3
 	depends = gtk3
 	depends = gtk-engine-murrine
