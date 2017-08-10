@@ -1,6 +1,6 @@
 pkgbase = xlunch-git
 	pkgdesc = Graphical app launcher for X with little dependencies
-	pkgver = 2.4.2.r10.g6232b65
+	pkgver = 2.4.2.r45.g1687e4c
 	pkgrel = 2
 	url = http://xlunch.org/
 	arch = i686
@@ -20,10 +20,10 @@ pkgbase = xlunch-git
 	source = xlunch-conf-install.hook
 	source = xlunch-conf-remove.hook
 	md5sums = SKIP
-	md5sums = 40ad36fdfdba2889033bd2d7582f9643
+	md5sums = 58a813e6c232489f887a32966addde8a
 	md5sums = 5cedcafe1ba39961a84f1634958ca478
-	md5sums = b3e91a3ded90c24d56a42df84124df29
-	md5sums = aa9654e2adae39523d5d56abd4cbca92
+	md5sums = ccaf7547b8ceeb11badb2a08b3c592f7
+	md5sums = 832317d10246dd7b2ac17c599b19f441
 
 pkgname = xlunch-git
 
