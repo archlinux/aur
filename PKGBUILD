@@ -12,7 +12,7 @@ url="https://bempp.com/"
 license=(MIT)
 options=('!strip')
 depends=('python-scipy' 'python-mpi4py')
-makedepends=('dune-common' 'dune-geometry' 'doxygen' 'intel-tbb' 'dune-uggrid')
+makedepends=('dune-common' 'dune-geometry' 'doxygen' 'intel-tbb' 'dune-uggrid' 'cython>=0.22')
 optdepends=('ipython: interactive console'
 	    'gmsh: external plots'
 )
