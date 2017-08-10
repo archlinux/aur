@@ -4,7 +4,7 @@
 _pkgbasename=webkitgtk
 pkgname=lib32-$_pkgbasename
 pkgver=2.4.11
-pkgrel=8
+pkgrel=9
 pkgdesc="Legacy Web content engine for GTK+ 3"
 arch=(x86_64)
 url="https://webkitgtk.org/"
@@ -54,6 +54,7 @@ build() (
     --disable-webkit2 \
     --disable-gtk-doc \
     --disable-geolocation \
+    --disable-spellcheck
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
