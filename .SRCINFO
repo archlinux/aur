@@ -1,0 +1,20 @@
+pkgbase = ros-kinetic-bfl
+	pkgdesc = ROS - This package contains a recent version of the Bayesian Filtering Library (BFL), distributed by the Orocos Project.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://ros.org/wiki/bfl
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = boost
+	makedepends = cppunit
+	depends = ros-kinetic-catkin
+	depends = boost
+	depends = cppunit
+	source = ros-kinetic-bfl-0.7.0-2.tar.gz::https://github.com/ros-gbp/bfl-release/archive/release/kinetic/bfl/0.7.0-2.tar.gz
+	sha256sums = 54d9c8ae3cd477fa0a413e2100233e5f450760df4ad7dd8f63723889d913cea6
+
+pkgname = ros-kinetic-bfl
+
