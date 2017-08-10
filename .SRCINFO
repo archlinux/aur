@@ -1,0 +1,25 @@
+pkgbase = mips64-linux-gnu-gcc
+	pkgdesc = The GNU Compiler Collection - cross compiler for MIPS64 target (Big Endian)
+	pkgver = 7.1.0
+	pkgrel = 1
+	url = http://gcc.gnu.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = gmp
+	makedepends = mpfr
+	depends = mips64-linux-gnu-binutils
+	depends = mips64-linux-gnu-glibc
+	depends = libmpc
+	depends = zlib
+	options = !emptydirs
+	options = !strip
+	source = ftp://gcc.gnu.org/pub/gcc/snapshots/7-20170504/gcc-7-20170504.tar.bz2
+	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
+	sha256sums = 0a179b9fe8e90215d7b2385c40a2e36ba7f823193531847eb7fcff866df556ba
+	sha256sums = 6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b
+
+pkgname = mips64-linux-gnu-gcc
+
