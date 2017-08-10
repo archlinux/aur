@@ -1,7 +1,7 @@
-From d178c1add79d48cd639bf5c387067c0e4d5fae09 Mon Sep 17 00:00:00 2001
+From d511b3d61c8c99633c1a012883931c2eeff9fe3f Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Mon, 2 May 2016 15:56:37 +0200
-Subject: [PATCH 1/7] gl-renderer: Add EGLDevice enumeration support
+Subject: [PATCH 2/9] gl-renderer: Add EGLDevice enumeration support
 X-NVConfidentiality: public
 
 EGLDevice provides means to enumerate native devices.
@@ -22,10 +22,10 @@ Reviewed-by: James Jones <jajones@nvidia.com>
  2 files changed, 96 insertions(+), 1 deletion(-)
 
 diff --git a/libweston/gl-renderer.c b/libweston/gl-renderer.c
-index c6091af0..7a840a35 100644
+index da29b072..ecb19f13 100644
 --- a/libweston/gl-renderer.c
 +++ b/libweston/gl-renderer.c
-@@ -3357,6 +3357,90 @@ gl_renderer_setup(struct weston_compositor *ec, EGLSurface egl_surface)
+@@ -3478,6 +3478,90 @@ gl_renderer_setup(struct weston_compositor *ec, EGLSurface egl_surface)
  	return 0;
  }
  
@@ -116,7 +116,7 @@ index c6091af0..7a840a35 100644
  WL_EXPORT struct gl_renderer_interface gl_renderer_interface = {
  	.opaque_attribs = gl_renderer_opaque_attribs,
  	.alpha_attribs = gl_renderer_alpha_attribs,
-@@ -3367,5 +3451,8 @@ WL_EXPORT struct gl_renderer_interface gl_renderer_interface = {
+@@ -3488,5 +3572,8 @@ WL_EXPORT struct gl_renderer_interface gl_renderer_interface = {
  	.output_destroy = gl_renderer_output_destroy,
  	.output_surface = gl_renderer_output_surface,
  	.output_set_border = gl_renderer_output_set_border,
@@ -152,5 +152,5 @@ index b47ea07f..9ff4e21e 100644
  };
  
 -- 
-2.11.1
+2.13.3
 

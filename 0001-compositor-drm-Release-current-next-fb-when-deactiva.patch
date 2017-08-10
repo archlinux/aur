@@ -1,8 +1,8 @@
-From 812868a91f8c9c42167bf3bf2c66f6ec1f049c41 Mon Sep 17 00:00:00 2001
+From f2da0e2f686ee16ddd3a4e92e06ef3a55ec80472 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Tue, 4 Apr 2017 14:39:47 -0700
-Subject: [PATCH] compositor-drm: Release current & next fb when deactivating
- the session
+Subject: [PATCH 1/9] compositor-drm: Release current & next fb when
+ deactivating the session
 X-NVConfidentiality: public
 
 With
@@ -30,24 +30,24 @@ Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
  1 file changed, 8 insertions(+)
 
 diff --git a/libweston/compositor-drm.c b/libweston/compositor-drm.c
-index 0236d196..7283d0ff 100644
+index 8e1e788f..63153271 100644
 --- a/libweston/compositor-drm.c
 +++ b/libweston/compositor-drm.c
-@@ -3058,6 +3058,14 @@ session_notify(struct wl_listener *listener, void *data)
+@@ -3164,6 +3164,14 @@ session_notify(struct wl_listener *listener, void *data)
  		wl_list_for_each(output, &compositor->output_list, base.link) {
- 			output->base.repaint_needed = 0;
+ 			output->base.repaint_needed = false;
  			drmModeSetCursor(b->drm.fd, output->crtc_id, 0, 0, 0);
-+			if (output->current != NULL) {
-+				drm_output_release_fb(output, output->current);
-+				output->current = NULL;
++			if (output->fb_current != NULL) {
++				drm_fb_unref(output->fb_current);
++				output->fb_current = NULL;
 +			}
-+			if (output->next != NULL) {
-+				drm_output_release_fb(output, output->next);
-+				output->next = NULL;
++			if (output->fb_pending != NULL) {
++				drm_fb_unref(output->fb_pending);
++				output->fb_pending = NULL;
 +			}
  		}
  
  		output = container_of(compositor->output_list.next,
 -- 
-2.12.1
+2.13.3
 

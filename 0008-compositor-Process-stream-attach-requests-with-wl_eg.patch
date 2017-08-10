@@ -1,7 +1,7 @@
-From 0c3c2b77d486f90e19bd6fcfdefc42b143e40b1d Mon Sep 17 00:00:00 2001
+From a044287897d3646440644555f7ac1d756e39e0d2 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Thu, 18 May 2017 14:35:36 -0700
-Subject: [PATCH] compositor: Process stream attach requests with
+Subject: [PATCH 8/9] compositor: Process stream attach requests with
  wl_eglstream_controller
 X-NVConfidentiality: public
 
@@ -32,7 +32,7 @@ Signed-off-by: Ashutosh Agarwal <asagarwal@nvidia.com>
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 ---
  Makefile.am                               |   5 ++
- Makefile.in                               |   4 +
+ Makefile.in                               |   4 ++++
  libweston/compositor.c                    |  78 ++++++++++++++++
  libweston/compositor.h                    |   4 +
  libweston/gl-renderer.c                   | 145 +++++++++++++++++++-----------
@@ -41,10 +41,10 @@ Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
  create mode 100644 protocol/wayland-eglstream-controller.xml
 
 diff --git a/Makefile.am b/Makefile.am
-index cdf82ab4..6b706c96 100644
+index e9679e68..59a8ffbc 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -182,6 +182,11 @@ nodist_libweston_@LIBWESTON_MAJOR@_la_SOURCES =				\
+@@ -185,6 +185,11 @@ nodist_libweston_@LIBWESTON_MAJOR@_la_SOURCES =				\
  
  BUILT_SOURCES += $(nodist_libweston_@LIBWESTON_MAJOR@_la_SOURCES)
  
@@ -57,18 +57,18 @@ index cdf82ab4..6b706c96 100644
  
  weston_LDFLAGS = -export-dynamic
 diff --git a/Makefile.in b/Makefile.in
-index 0202bfb..4de3f53 100644
+index e24003b3..c8c3df10 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -2107,6 +2107,7 @@ noinst_LTLIBRARIES = libsession-helper.la $(am__append_31) \
+@@ -2135,6 +2135,7 @@ noinst_LTLIBRARIES = libsession-helper.la $(am__append_33) \
  BUILT_SOURCES =  \
  	$(nodist_libweston_desktop_@LIBWESTON_MAJOR@_la_SOURCES) \
  	$(nodist_libweston_@LIBWESTON_MAJOR@_la_SOURCES) \
 +	$(nodist_libweston_eglstreams_@LIBWESTON_MAJOR@_la_SOURCES) \
- 	$(am__append_28) $(am__append_30) $(am__append_32) \
+ 	$(am__append_30) $(am__append_32) $(am__append_34) \
  	protocol/weston-screenshooter-protocol.c \
  	protocol/weston-screenshooter-client-protocol.h \
-@@ -2270,6 +2271,9 @@ nodist_libweston_@LIBWESTON_MAJOR@_la_SOURCES = \
+@@ -2302,6 +2303,9 @@ nodist_libweston_@LIBWESTON_MAJOR@_la_SOURCES = \
  	protocol/pointer-constraints-unstable-v1-protocol.c		\
  	protocol/pointer-constraints-unstable-v1-server-protocol.h
  
@@ -79,7 +79,7 @@ index 0202bfb..4de3f53 100644
  weston_CPPFLAGS = $(AM_CPPFLAGS) -DIN_WESTON 		\
  				 -DMODULEDIR='"$(moduledir)"' \
 diff --git a/libweston/compositor.c b/libweston/compositor.c
-index 9ded23f3..ecc0f841 100644
+index 813b6634..bb0cee70 100644
 --- a/libweston/compositor.c
 +++ b/libweston/compositor.c
 @@ -2,6 +2,7 @@
@@ -98,7 +98,7 @@ index 9ded23f3..ecc0f841 100644
  
  #define DEFAULT_REPAINT_WINDOW 7 /* milliseconds */
  
-@@ -4991,6 +4993,80 @@ bind_presentation(struct wl_client *client,
+@@ -5170,6 +5172,80 @@ bind_presentation(struct wl_client *client,
  	wp_presentation_send_clock_id(resource, compositor->presentation_clock);
  }
  
@@ -179,7 +179,7 @@ index 9ded23f3..ecc0f841 100644
  static void
  compositor_bind(struct wl_client *client,
  		void *data, uint32_t version, uint32_t id)
-@@ -5102,6 +5178,8 @@ weston_compositor_create(struct wl_display *display, void *user_data)
+@@ -5281,6 +5357,8 @@ weston_compositor_create(struct wl_display *display, void *user_data)
  			      ec, bind_presentation))
  		goto fail;
  
@@ -189,13 +189,13 @@ index 9ded23f3..ecc0f841 100644
  		goto fail;
  
 diff --git a/libweston/compositor.h b/libweston/compositor.h
-index 08e728a9..a9105534 100644
+index 769203a1..dbd95035 100644
 --- a/libweston/compositor.h
 +++ b/libweston/compositor.h
-@@ -732,6 +732,10 @@ struct weston_renderer {
- 	/** See weston_compositor_import_dmabuf() */
- 	bool (*import_dmabuf)(struct weston_compositor *ec,
- 			      struct linux_dmabuf_buffer *buffer);
+@@ -754,6 +754,10 @@ struct weston_renderer {
+ 	bool (*query_dmabuf_modifiers)(struct weston_compositor *ec,
+ 				int format, uint64_t **modifiers,
+ 				int *num_modifiers);
 +
 +	/** Create weston endpoint of an EGLStream & attach a consumer to it */
 +	bool (*attach_eglstream_consumer)(struct weston_surface *es,
@@ -204,7 +204,7 @@ index 08e728a9..a9105534 100644
  
  enum weston_capability {
 diff --git a/libweston/gl-renderer.c b/libweston/gl-renderer.c
-index 6bcfe40f..34f7842f 100644
+index a9ed723f..19f96ae4 100644
 --- a/libweston/gl-renderer.c
 +++ b/libweston/gl-renderer.c
 @@ -1,7 +1,7 @@
@@ -216,7 +216,7 @@ index 6bcfe40f..34f7842f 100644
   *
   * Permission is hereby granted, free of charge, to any person obtaining
   * a copy of this software and associated documentation files (the
-@@ -2059,18 +2059,9 @@ gl_renderer_attach_dmabuf(struct weston_surface *surface,
+@@ -2165,18 +2165,9 @@ gl_renderer_attach_dmabuf(struct weston_surface *surface,
  	gs->y_inverted = buffer->y_inverted;
  }
  
@@ -238,7 +238,7 @@ index 6bcfe40f..34f7842f 100644
  {
  #ifdef EGL_NV_stream_attrib
  	struct weston_compositor *ec = es->compositor;
-@@ -2079,65 +2070,109 @@ gl_renderer_attach_stream_texture(struct weston_surface *es,
+@@ -2185,65 +2176,109 @@ gl_renderer_attach_stream_texture(struct weston_surface *es,
  	EGLStreamKHR stream = EGL_NO_STREAM_KHR;
  	EGLAttrib stream_attribs[] = {
  #ifdef EGL_WL_wayland_eglstream
@@ -389,7 +389,7 @@ index 6bcfe40f..34f7842f 100644
  	}
  
  	/* At this point we should have a valid stream handle */
-@@ -3485,6 +3520,8 @@ gl_renderer_display_create(struct weston_compositor *ec, EGLenum platform,
+@@ -3601,6 +3636,8 @@ gl_renderer_display_create(struct weston_compositor *ec, EGLenum platform,
  	gr->base.surface_get_content_size =
  		gl_renderer_surface_get_content_size;
  	gr->base.surface_copy_content = gl_renderer_surface_copy_content;
@@ -442,5 +442,5 @@ index 00000000..dea072e6
 +  </interface>
 +</protocol>
 -- 
-2.12.2
+2.13.3
 
