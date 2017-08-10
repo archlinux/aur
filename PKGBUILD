@@ -4,7 +4,7 @@ pkgdesc="ROS - position_controllers."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-lunar-position-controllers'
-pkgver='0.12.3'
+pkgver='0.13.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-lunar-position_controllers-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/lunar/position_controllers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('401fb1d1ec430c06d8ea0af795622d62972cb329577e30f187064003b46da35c')
+sha256sums=('e3748c06681d722566614bd03ab66d389cd378225949ec50771a4472661075f2')
 
 build() {
   # Use ROS environment variables
