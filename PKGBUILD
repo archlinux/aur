@@ -7,13 +7,13 @@
 pkgname=luakit-git
 gitname=luakit
 pkgver=2017.08.10.r0.gc5328c22
-pkgrel=2
+pkgrel=3
 pkgdesc='Luakit: now updated for WebKit 2'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://github.com/luakit/luakit'
 license=('GPL3')
 makedepends=('git' 'pkg-config')
-checkdepends=('lua51-luacheck' 'lua51-luassert' )
+checkdepends=('xorg-server-xvfb' 'lua51-luacheck' 'lua51-luassert' )
 provides=('luakit')
 conflicts=('luakit')
 depends=('webkit2gtk' 'lua51-filesystem' 'luajit')
