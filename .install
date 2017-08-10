@@ -1,0 +1,47 @@
+## arg 1:  the new package version
+pre_install() {
+    echo "Creating 'scylla' group..."
+    getent group scylla || /usr/sbin/groupadd scylla 2> /dev/null || :
+    echo "Creating 'scylla' user..."
+    getent passwd scylla || /usr/sbin/useradd -g scylla -s /sbin/nologin -r -d /var/lib/scylla scylla 2> /dev/null || :
+}
+
+## arg 1:  the new package version
+post_install() {
+    # Patch Scylla YAML config for Swagger UI and Doc directories
+    grep -v api_ui_dir /etc/scylla/scylla.yaml | grep -v api_doc_dir > /tmp/scylla.yaml
+    echo "api_ui_dir: /usr/lib/scylla/swagger-ui/dist/" >> /tmp/scylla.yaml
+    echo "api_doc_dir: /usr/lib/scylla/api/api-doc/" >> /tmp/scylla.yaml
+    mv /tmp/scylla.yaml /etc/scylla/scylla.yaml
+
+    echo
+    echo "ScyllaDB installation is complete. To configure ScyllaDB, please run:"
+    echo "    >> sudo scylla_setup"
+    echo "After configuration is done, start ScyllaDB using systemctl:"
+    echo "    >> sudo systemctl start scylla-server.service"
+    echo
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+	:
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	ln -sfT /etc/scylla /var/lib/scylla/conf
+    systemctl restart collectd
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	systemctl stop scylla-server.service
+	systemctl disable scylla-server.service
+}
+
+## arg 1:  the old package version
+post_remove() {
+    :
+}
