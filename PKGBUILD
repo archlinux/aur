@@ -7,7 +7,7 @@ url=http://parsec.tv
 arch=('x86_64')
 provides=('parsec')
 conflicts=('parsec')
-depends=('glibc' 'sndio-git' 'pulseaudio-module-sndio')
+depends=('glibc' 'pulseaudio-module-sndio')
 source=("https://s3.amazonaws.com/parsec-build/package/parsec-linux.deb")
 noextract=('parsec-linux.deb')
 package() {

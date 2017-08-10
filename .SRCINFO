@@ -5,7 +5,6 @@ pkgbase = parsec-bin
 	url = http://parsec.tv
 	arch = x86_64
 	depends = glibc
-	depends = sndio-git
 	depends = pulseaudio-module-sndio
 	provides = parsec
 	conflicts = parsec
