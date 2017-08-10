@@ -4,7 +4,7 @@ pkgdesc="ROS - Controller for a differential drive mobile base."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-lunar-diff-drive-controller'
-pkgver='0.12.3'
+pkgver='0.13.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-lunar-diff_drive_controller-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/lunar/diff_drive_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9439016639fd6bec926a6054d1cf2cecff4223a7906db693fcad5e98bbc5abb0')
+sha256sums=('b580fec26d1af40dd8b9ae5391cdfed78e0dd3fd0e3d165763a379515bc6b318')
 
 build() {
   # Use ROS environment variables
