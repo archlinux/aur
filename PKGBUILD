@@ -2,14 +2,14 @@
 
 pkgname=lua51-luassert
 pkgver=1.7.10
-pkgrel=1
+pkgrel=2
 _rockname=luassert
 _rockrel=0
 pkgdesc="Assertion library for Lua"
 arch=('i686' 'x86_64')
 url="https://github.com/Olivine-Labs/luassert"
 license=('MIT')
-depends=('lua' 'lua-filesystem')
+depends=('lua51-say' 'lua' 'lua51-filesystem')
 makedepends=('luarocks5.1')
 conflicts=()
 source=("https://github.com/Olivine-Labs/luassert/archive/v${pkgver}.tar.gz")
