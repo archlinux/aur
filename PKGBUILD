@@ -1,9 +1,9 @@
 # Maintainer: artemtech <sofyanartem@gmail.com>
 pkgname=manokwari
 pkgver=1.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML5 desktop shell for GNOME 3 from BlankOn Projects"
-arch=('x86_64')
+arch=('x86_64' 'i386')
 url="https://manokwari.blankonlinux.or.id"
 license=('GPL3')
 depends=('gnome-common' 'mutter' 'libunique3' 'gnome-session' 'glib2' 'gtk3' 'libwnck3' 'libgee' 'webkitgtk' 'gnome-menus' 'libnotify')

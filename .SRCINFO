@@ -1,9 +1,10 @@
 pkgbase = manokwari
 	pkgdesc = HTML5 desktop shell for GNOME 3 from BlankOn Projects
 	pkgver = 1.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://manokwari.blankonlinux.or.id
 	arch = x86_64
+	arch = i386
 	license = GPL3
 	makedepends = make
 	makedepends = git
