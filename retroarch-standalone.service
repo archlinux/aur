@@ -9,7 +9,7 @@ Group=retroarch
 PAMName=login
 TTYPath=/dev/tty1
 ExecStartPre=/usr/bin/sleep 2s
-ExecStart=/usr/bin/xinit /usr/bin/retroarch --appendconfig=/etc/retroarch-standalone.cfg -- :0 -nolisten tcp vt1
+ExecStart=/usr/bin/xinit -- :0 -nolisten tcp vt1
 Restart=always
 StandardInput=tty
 

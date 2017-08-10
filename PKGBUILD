@@ -6,16 +6,21 @@ pkgdesc="Systemd service and user to run Retroarch in stand-alone mode"
 url=""
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('MIT')
-depends=('retroarch' 'retroarch-assets-xmb' 'retroarch-autoconfig-udev' 'xorg-server' 'xorg-xinit')
+depends=('retroarch' 'retroarch-assets-xmb' 'retroarch-autoconfig-udev' 'xorg-server' 'xorg-xinit' 'unclutter')
 install='retroarch-standalone.install'
 source=('retroarch-standalone.service'
         'retroarch-standalone.sysuser'
-        'retroarch-standalone.cfg')
-md5sums=('3a0ec662646862e513fe7a1cd72369b0'
+        'retroarch-standalone.cfg'
+        'retroarch-standalone.xinitrc')
+md5sums=('8dd1a467e961630eff4f1d532fe7763a'
          'dff58d483453816a80dcdbc8d272e8b8'
-         'ac40311816ee094e98f957db77cea241')
+         'ac40311816ee094e98f957db77cea241'
+         '3999db10036381e2cba57c21a62186c8')
 
 package() {
+  # Copy autorun script
+  install -Dm644 ${srcdir}/retroarch-standalone.xinitrc "$pkgdir/home/retroarch/.xinitrc"
+
   # Copy additional configuration file to /etc
   install -Dm644 ${srcdir}/retroarch-standalone.cfg "$pkgdir/etc/retroarch-standalone.cfg"
 
