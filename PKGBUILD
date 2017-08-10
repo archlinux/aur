@@ -2,13 +2,13 @@
 
 pkgname=minecraft-linux
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft launcher for Linux"
 arch=('x86_64')
 url="https://kris27mc.github.io"
 license=('BSD')
 groups=()
-depends=('lib32-zlib' 'lib32-ncurses' 'libglvnd' 'gts' 'lib32-libglvnd' 'lib32-libxext' 'lib32-libx11' 'lib32-libpng' 'lib32-util-linux' 'lib32-glibc')
+depends=('lib32-zlib' 'libglvnd' 'lib32-libglvnd' 'lib32-libxext' 'lib32-libx11' 'lib32-libpng' 'lib32-util-linux' 'lib32-glibc')
 makedepends=('wget' 'cmake' 'gcc-multilib')
 optdepends=()
 source=("git+https://github.com/kris27mc/minecraft-linux.git")
