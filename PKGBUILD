@@ -1,8 +1,8 @@
 # Maintainer: artemtech <sofyanartem@gmail.com>
 pkgname=tebu-flat-icon-theme
 pkgver=0.1.4
-pkgrel=1
-pkgdesc="Official icon sets from BlankOn"
+pkgrel=2
+pkgdesc="flat version of tebu-icon-theme from BlankOn"
 arch=('any')
 url="https://blankonlinux.or.id"
 license=('GPL3')
