@@ -3,7 +3,7 @@ DisplayManager.pidFile:		/var/run/xdm.pid
 DisplayManager.keyFile:		/etc/X11/xdm/xdm-keys
 DisplayManager.servers:		/etc/X11/xdm/Xservers
 DisplayManager.accessFile:	/etc/X11/xdm/Xaccess
-DisplayManager.willing:		su nobody -c /etc/X11/xdm/Xwilling
+DisplayManager.willing:		su nobody -s /bin/sh -c /etc/X11/xdm/Xwilling
 
 DisplayManager*authorize:	true
 
@@ -15,5 +15,8 @@ DisplayManager*chooser:		/usr/lib/X11/xdm/chooser
 DisplayManager*resources:	/etc/X11/xdm/minimalist/Xresources
 DisplayManager*session:		/etc/X11/xdm/Xsession
 DisplayManager*authComplain:	true
+DisplayManager*startup:		/etc/X11/xdm/minimalist/Xstartup
+DisplayManager*reset:		/etc/X11/xdm/Xreset
+DisplayManager*loginmoveInterval:	10
 
 DisplayManager.requestPort:	0

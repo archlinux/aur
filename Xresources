@@ -1,17 +1,17 @@
-geXlogin*login.translations:#override \
-                                      CtrlR:abort-display()\n\
-                                      F1:set-session-argument(failsafe) finish-field()\n\
-                                      Return:set-session-argument() finish-field()
-                                      CtrlReturn:set-session-argument(failsafe) finish-field()\n\
+Xlogin*login.translations:#override \
+	Ctrl<Key>R:abort-display()\n\
+	<Key>F1:set-session-argument(failsafe) finish-field()\n\
+	<Key>Return:set-session-argument() finish-field()\n\
+	Ctrl<Key>Return:set-session-argument(failsafe) finish-field()\n\
 
 Xlogin*greeting:login
 Xlogin*namePrompt:user:\040
 Xlogin*passwdPrompt:password:\040
 Xlogin*fail:incorrect
-Xlogin*greetFace:-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1 
-Xlogin*promptFace:-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
-Xlogin*face:-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
-Xlogin*failFace:-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
+Xlogin*greetFace:Terminus:foundry=xos4:pixelsize=28
+Xlogin*promptFace:Terminus:foundry=xos4:pixelsize=28
+Xlogin*face:Terminus:foundry=xos4:pixelsize=28
+Xlogin*failFace:Terminus:foundry=xos4:pixelsize=28
 Xlogin*shdColor:#2D2D2D
 Xlogin*hiColor:#2D2D2D
 Xlogin*greetColor:#D8D8D8
@@ -22,14 +22,21 @@ Xlogin*failColor:red
 *foreground:grey80
 *background:#2D2D2D
 
-Xmessage*message.scrollVertical:auto
-Xmessage*message.scrollHorizontal:never
+XClock*analog:false
+XClock*strftime:(%A)\040%F\040%T
+XClock*update:1
+XClock*render:false
+XClock*font:-xos4-terminus-medium-r-normal--28-280-72-72-c-140-iso10646-1
+XClock.width:640
+
+Xmessage*message.scrollVertical:whenNeeded
+Xmessage*message.scrollHorizontal:Never
 Xmessage*Command.highlightThickness:2
 Xmessage*Command.internalWidth:8
 Xmessage*Command.internalHeight:8
 Xmessage*Command.shapeStyle:rectangle
-Xmessage*Command.font:-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
-Xmessage*font:-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
+Xmessage*Command.font:-xos4-terminus-medium-r-normal--28-280-72-72-c-140-iso10646-1
+Xmessage*font:-xos4-terminus-medium-r-normal--28-280-72-72-c-140-iso10646-1
 
 XConsole*verbose:true
 XConsole*exitOnFail:true
@@ -37,7 +44,7 @@ XConsole*exitOnFail:true
 Chooser*geometry:700x500
 Chooser*allowShellResize:false
 Chooser*viewport.forceBars:true
-Chooser*label.font:-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
+Chooser*label.font:-*-terminus-*-*-*-*-*-*-*-*-*-*-*
 Chooser*label.label:XDMCP\040Host\040Menu\040from\040CLIENTHOST
-Chooser*list.font:-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
-Chooser*Command.font:-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
+Chooser*list.font:-*-terminus-*-*-*-*-*-*-*-*-*-*-*
+Chooser*Command.font:-*-terminus-*-*-*-*-*-*-*-*-*-*-*

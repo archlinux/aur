@@ -1,6 +1,6 @@
 #!/bin/sh
 
-xmessage -buttons reboot,halt "$@" ""
+xmessage -buttons reboot,halt,poweroff "$@" ""
 
 case "$?" in
 	101)
@@ -8,5 +8,8 @@ case "$?" in
 		;;
 	102)
 		/sbin/halt
+		;;
+	103)
+		/sbin/poweroff
 		;;
 esac

@@ -1,3 +1,5 @@
+# Comaintainer: pancho horrillo <pancho at pancho dot name>
+# Maintainer: Brian Bidulock <bidulock at openss7 dot org>
 # Contributor: Bernardo Barros <mail-*-AT-*-bbarros.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Truls Becken <becken@stud.ntnu.no>
@@ -6,14 +8,15 @@
 # Based on xdm-archlinux
 
 pkgname=xdm-minimalist
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc="a minimalist xdm setup."
 arch=(any)
 license=('GPL')
 url="http://xorg.freedesktop.org"
-depends=('xorg-xdm' 'bash' 'xorg-xmessage' 'xorg-xclock' 
-  'xorg-xsetroot' 'xorg-xwininfo' 'xorg-xkill' 'terminus-font')
+depends=('xorg-xdm' 'bash'
+	 'xorg-xmessage' 'xorg-xclock' 'xorg-xsetroot' 'xorg-xwininfo' 'xorg-xkill' 'terminus-font')
+optdepends=('systemd-sysvcompat: if you use systemd')
 backup=(etc/X11/xdm/minimalist/Xsetup
 	etc/X11/xdm/minimalist/Xresources)
 install=xdm-minimalist.install
@@ -21,14 +24,18 @@ source=(xdm-config
 	Xsetup
 	Xstartup
 	Xresources
-	buttons)
-md5sums=('e420ef106f97ba5b866164feb031bb14'
-         'd3637c5aca0e787b54db2b78fe99621d'
-         '1628c6cf77d5da2528265dbaf2eaacf4'
-         '9c63f8eec798fc13ff7caeb2e628c2a2'
-         'e145d6eee0bbdb5cb674944bc3a09a88')
+	buttons
+	xdm-minimalist.service)
+sha512sums=('9f363425d331dd52d54350e677004227048c0e1e3a373cf28f17b84cc19af261d05c3254161c43d8e37dc9bcfce7947589d102751beb00a33dbbee7a159707ce'
+            '07753a2a538ff18fed5f8501fbf4def2d2cb11170c3d38e10c4c506dbbaf3c03c8585d7250dee68bc9dadd673814be9d55e6e68f9abc611adb22534fdec2bb68'
+            '72d3a9c18e6ed1a7906840d9cbcffd45f11b416e13228875c9ecc2603cef9c51535e0fe4ab57658f070f0e7241cd844e2bc652b09fcdc3b5c288ac2ec5bd571d'
+            'd62479243828565690f298f3b4ddb0516d874a75ade33ad611b882ee06f92fdb2c86f68c1a33f3263011c755c19badf553cef0bd546418c6478d4f9853fca846'
+            'e501b934761a9bb780f16d46801789ff668a21429d67403c1867a6b9bae19a9bfbf71342b5534547fa54d8d79846d5235d7543ba85430e3b4e6e79ac7768d4f8'
+            '5de4629d0bfa890be30817b8549ea27c762b258e6dbba41d56f5ff43971e67a8011e9ef0d8a5065e8e7ebb090b31c28ff24cf40d569f15d3135befd84f388d30')
 
 package() {
-  mkdir -p $pkgdir/etc/X11/xdm/minimalist
-  cp * $pkgdir/etc/X11/xdm/minimalist
+  mkdir -p "$pkgdir"/etc/X11/xdm/minimalist
+  cp buttons xdm-config Xresources Xsetup Xstartup "$pkgdir"/etc/X11/xdm/minimalist
+  chmod 0755 "$pkgdir"/etc/X11/xdm/minimalist/{Xsetup,Xstartup,buttons}
+  install -Dm0644 "$srcdir"/xdm-minimalist.service "$pkgdir"/usr/lib/systemd/system/xdm-minimalist.service
 }
