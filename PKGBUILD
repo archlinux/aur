@@ -135,11 +135,11 @@ prepare() {
 
   ### Patch source with BFQ-MQ
   msg "Fix naming schema in BFQ-MQ patch"
-  sed -i -e "s|PATCHLEVEL = 13|PATCHLEVEL = 12|g" "${srcdir}/${_bfq_mq_patch}"
-  sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" "${srcdir}/${_bfq_mq_patch}"
-  sed -i -e "s|EXTRAVERSION = -rc3|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
-  sed -i -e "s|EXTRAVERSION = -bfq-rc3|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
-  sed -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
+  sed -i -e "s|PATCHLEVEL = 13|PATCHLEVEL = 12|g" \
+      -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
+      -i -e "s|EXTRAVERSION = -rc3|EXTRAVERSION =|g" \
+      -i -e "s|EXTRAVERSION = -bfq-rc3|EXTRAVERSION =|g" \
+      -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
 
   msg "Patch source with block and BFQ-MQ patches"
   for p in "${srcdir}"/000*-Merge*.patch; do
