@@ -61,13 +61,14 @@ pkgbase=linux-bfq-mq
 pkgver=4.12.5
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
+_mergepath="${_bfqpath}/merges/${pkgver}"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
 _bfq_mq_patch='4.12-bfq-mq-20170804.patch'
@@ -77,17 +78,19 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # mainline block merges and bfq-mq patches
-        "${_bfqpath}/merges/Merge-tag-uuid-for-4.13-of-uuid.patch"
-        "${_bfqpath}/merges/Merge-branch-for-4.13-block-of-linux-block_1.patch"
-        "${_bfqpath}/merges/Merge-branch-irq-core-for-linus.patch"
-        "${_bfqpath}/merges/Merge-branch-for-linus-s390.patch"
-        "${_bfqpath}/merges/Merge-tag-for-linus-v4.13-2-jlayton.patch"
-        "${_bfqpath}/merges/Merge-branch-for-4.13-block-of-linux-block_2.patch"
-        "${_bfqpath}/merges/Merge-branch-for-4.13-block-of-linux-block_3.patch"
-        "${_bfqpath}/merges/Merge-branch-for-4.13-block-of-linux-block_4.patch"
+        "${_mergepath}/0001-Merge-tag-uuid-for-4.13-of-git-git.infradead.org-use.patch"
+        "${_mergepath}/0002-Merge-branch-for-4.13-block-of-git-git.kernel.dk-lin.patch"
+        "${_mergepath}/0003-Merge-branch-irq-core-for-linus-of-git-git.kernel.or.patch"
+        "${_mergepath}/0004-Merge-branch-for-linus-of-git-git.kernel.org-pub-scm.patch"
+        "${_mergepath}/0005-Merge-tag-for-linus-v4.13-2-of-git-git.kernel.org-pu.patch"
+        "${_mergepath}/0006-Merge-branch-for-linus-of-git-git.kernel.dk-linux-bl.patch"
+        "${_mergepath}/0007-Merge-tag-mmc-v4.13-2-of-git-git.kernel.org-pub-scm-.patch"
+        "${_mergepath}/0008-Merge-branch-for-linus-of-git-git.kernel.dk-linux-bl.patch"
+        "${_mergepath}/0009-Merge-tag-uuid-for-4.13-2-of-git-git.infradead.org-u.patch"
+        "${_mergepath}/0010-Merge-branch-for-linus-of-git-git.kernel.dk-linux-bl.patch"
         "${_bfqpath}/${_bfq_mq_patch}"
         # tentative patches
-        "0001-Check-presence-on-tree-of-every-entity-after-every-a.patch::${_bfqgroup}/6646a2679ff98/0001-Check-presence-on-tree-of-every-entity-after-every-a.patch?part=0.1&authuser=0&view=1"
+        "${_bfqpath}/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -100,14 +103,16 @@ sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             '8eb42889cd1f41a4350a0227e0dae544acdfa0ddf5a5ec671dd9c64ca917c132'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
-            'b8745ca529c03c1d20473cb45cda3ea25da49a73e522cd834c32b9316b5f9f12'
-            '8669c61f669e2fd25f3e4add2017081d4cdca41741f80858b9569388e53f5b80'
-            'a5b095f1b1f0ce0534b3bc2cf54e34a19727575c8ee359ab320ebbef4792de4f'
-            'e7cba5ea08ca33644548a856c8014ec633021c5ad7a0ada3fe3567da94dd5cdf'
-            'b863c975168c38576fe7900a521a4d2795e5cd8b39626814191e00d4258cdd1b'
-            '6d2c59f99f1ec0889ef16bf8017c6be0b09c7e7a388258198ecff92036167456'
-            '284c7f88b3a3b8ec5219bf0fefd21f5b8d8970e1db64e49c135e8764856f27d3'
-            'c2118b2c2eacda2e28e45becde1d50851fc833b58075e5b7dd7af20a504341e1'
+            'f88271de8693ba8e95be3501b5d16045d0716dc6b173ca90599b34a6da6350a1'
+            'd8696f580617e8e4437a79b57d505dfe5b63fcdf20e883e7efecb00da0bd8871'
+            '84f0eebf999be8a5488d1e9ebcb6e509714e58a478cc3314e04c601b81962859'
+            '1d95f30b38f57008d5f92dea6865bcb131ac4dfd1dd19c0eb029624d79d115e9'
+            'f9968510a9b18009a7186414415805416a38f93ec68fa448344393dae7a0db26'
+            '9ae5a2339f81ad59608c1c313c481c18da79b88faf275cebd4054f2e03cf6b04'
+            'dc4ec272046e53b30a10ccae822d67ec1047aae506b7258b76983cd88090045f'
+            'ab3a1cf93c617261c6c234e5c147ac64e6aa4b18fb14d2a5b0f58c5112a547c9'
+            '9a11a8766640c61028c4a60c37fb26cb684da9d6a869340e239f5ba38c4857b9'
+            'fecd145afc02ab8d98ee9976781892353d9cffcaa3f269a2db730dbe3dba2b5c'
             '2c07dd4ef153694f7f30dffb6bdf7f0358679434a213fb530fb5ffaa9c0d059a'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             '1ec464d33d8e4c1abe50adb0e38152f93c89967c6a8537ffe9d4f1fbab647a59'
@@ -137,37 +142,18 @@ prepare() {
   sed -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
 
   msg "Patch source with block and BFQ-MQ patches"
-    msg "-> Apply uuid merges"
-    patch -Np1 -i "${srcdir}/Merge-tag-uuid-for-4.13-of-uuid.patch"
+  for p in "${srcdir}"/000*-Merge*.patch; do
+    msg "-> $p"
+    patch -Np1 -i "$p"
+  done
 
-    msg "-> Apply block merges 1"
-    patch -Np1 -i "${srcdir}/Merge-branch-for-4.13-block-of-linux-block_1.patch"
-
-    msg "-> Apply irq-core merges"
-    patch -Np1 -i "${srcdir}/Merge-branch-irq-core-for-linus.patch"
-
-    msg "-> Apply s390 merges"
-    patch -Np1 -i "${srcdir}/Merge-branch-for-linus-s390.patch"
-
-    msg "-> Apply jlayton merges"
-    patch -Np1 -i "${srcdir}/Merge-tag-for-linus-v4.13-2-jlayton.patch"
-
-    msg "-> Apply block merges 2"
-    patch -Np1 -i "${srcdir}/Merge-branch-for-4.13-block-of-linux-block_2.patch"
-
-    msg "-> Apply block merges 3"
-    patch -Np1 -i "${srcdir}/Merge-branch-for-4.13-block-of-linux-block_3.patch"
-
-    msg "-> Apply block merges 4"
-    patch -Np1 -i "${srcdir}/Merge-branch-for-4.13-block-of-linux-block_4.patch"
-
-    msg "-> Apply bfq-mq patch"
-    patch -Np1 -i "${srcdir}/${_bfq_mq_patch}"
+  msg "-> Apply bfq-mq patch"
+  patch -Np1 -i "${srcdir}/${_bfq_mq_patch}"
 
   # Patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
   if [ -n "$_use_tentative_patches" ]; then
     msg "Apply tentative patches"
-    for p in "${srcdir}"/0001*.patch; do patch -Np1 -i "$p"; done
+    for p in "${srcdir}"/T000*.patch; do patch -Np1 -i "$p"; done
   fi
 
   # add latest fixes from stable queue, if needed
