@@ -1,0 +1,12 @@
+pkgbase = mips64-linux-gnu-linux-api-headers
+	pkgdesc = Kernel headers sanitized for use in userspace (mips64-linux-gnu)
+	pkgver = 4.11
+	pkgrel = 1
+	url = http://www.kernel.org
+	arch = any
+	license = GPL2
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.11.tar.xz
+	sha1sums = 0d2594b7aa3e79521f229569f9e14dc56bdcbd78
+
+pkgname = mips64-linux-gnu-linux-api-headers
+
