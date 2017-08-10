@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-irrlicht
+	pkgdesc = An open source high performance realtime 3D graphics engine. (mingw-w64)
+	pkgver = 1.8.4
+	pkgrel = 1
+	url = http://irrlicht.sourceforge.net/
+	arch = any
+	license = ZLIB
+	makedepends = mingw-w64-libzip
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-libjpeg
+	depends = mingw-w64-bzip2
+	depends = mingw-w64-libpng
+	optdepends = libxcursor: run examples
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://downloads.sourceforge.net/irrlicht/irrlicht-1.8.4.zip
+	source = git+git://github.com/ZahlGraf/IrrlichtCMake.git
+	md5sums = 9401cfff801395010b0912211f3cbb4f
+	md5sums = SKIP
+
+pkgname = mingw-w64-irrlicht
+
