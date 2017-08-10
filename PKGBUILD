@@ -1,33 +1,35 @@
 # Maintainer: muzhed <chustokes@126.com>
 
 pkgname=din
-pkgver=27a
+pkgver=28
 pkgrel=1
 pkgdesc="A sound synthesizer and musical instrument."
 arch=("i686" "x86_64")
 url="http://dinisnoise.org/"
 license=('GPL2')
 depends=('jack' 'libgl' 'sdl' 'tcl')
-makedepends=('boost' 'subversion')
+makedepends=('boost')
 install=$pkgname.install
-source=('svn+svn://jagernot.website/home/svn/din/tags/27a'
+source=("https://archive.org/download/dinisnoise_source_code/$pkgname-$pkgver.tar.gz"
         din.png
         din.desktop)
-md5sums=('SKIP'
+md5sums=('8d7740358735febc10df72086ea2a09d'
          '50ca4dc107eaa0d5b6a1efe21c469bd7'
          'e38840354b0f197079e6bbeda03c8613')
 
 
 build() {
-  cd "$srcdir"/27a
+  cd "$srcdir"/"$pkgname-$pkgver"
 
   autoreconf -fvi
-  ./configure CXXFLAGS=-O3 CFLAGS=-O3
+  # use alsa instead of jack
+  # ./configure CXXFLAGS="-O3 -D__UNIX_ALSA__" CFLAGS=-O3
+  ./configure CXXFLAGS="-O3 -D__UNIX_JACK__" CFLAGS=-O3
   make
 }
 
 package() {
-  cd "$srcdir"/27a
+  cd "$srcdir"/"$pkgname-$pkgver"
   install -Dm755 src/din "$pkgdir/usr/lib/din/din"
   cp -r "src/factory" "$pkgdir/usr/lib/din"
   ln -s "/usr/lib/din/factory" "$pkgdir/usr/lib/din/user"

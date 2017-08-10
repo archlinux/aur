@@ -1,6 +1,6 @@
 pkgbase = din
 	pkgdesc = A sound synthesizer and musical instrument.
-	pkgver = 27a
+	pkgver = 28
 	pkgrel = 1
 	url = http://dinisnoise.org/
 	install = din.install
@@ -8,15 +8,14 @@ pkgbase = din
 	arch = x86_64
 	license = GPL2
 	makedepends = boost
-	makedepends = subversion
 	depends = jack
 	depends = libgl
 	depends = sdl
 	depends = tcl
-	source = svn+svn://jagernot.website/home/svn/din/tags/27a
+	source = https://archive.org/download/dinisnoise_source_code/din-28.tar.gz
 	source = din.png
 	source = din.desktop
-	md5sums = SKIP
+	md5sums = 8d7740358735febc10df72086ea2a09d
 	md5sums = 50ca4dc107eaa0d5b6a1efe21c469bd7
 	md5sums = e38840354b0f197079e6bbeda03c8613
 
