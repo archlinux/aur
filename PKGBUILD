@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-cgal
-pkgver=4.9
+pkgver=4.10
 pkgrel=1
 arch=('any')
 pkgdesc="Computational Geometry Algorithms Library (mingw-w64)"
@@ -9,14 +9,17 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-eigen')
 options=('!buildflags' '!strip' 'staticlibs')
 license=('GPL', 'LGPL')
 url="http://www.cgal.org"
-source=("https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.9/CGAL-$pkgver.tar.xz")
-md5sums=('ee31343dbc4bf7b5b7501ec1650e9233')
+source=("https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-${pkgver}/CGAL-${pkgver}.tar.xz")
+sha1sums=('b399c21862628d6f9179cf44fa1f23590d28774a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare()
 {
   cd "$srcdir/CGAL-${pkgver}"
+  # https://github.com/CGAL/cgal/pull/2306
+  sed -i "s|target_link_libraries( CGAL_Core CGAL \${CGAL_3RD_PARTY_LIBRARIES} )|target_link_libraries( CGAL_Core CGAL \${CGAL_3RD_PARTY_LIBRARIES} \${CGAL_Core_3RD_PARTY_LIBRARIES})|g" src/CGAL_Core/CMakeLists.txt
+  sed -i "s|target_link_libraries( CGAL_Core INTERFACE ${CGAL_3RD_PARTY_LIBRARIES} )|target_link_libraries( CGAL_Core INTERFACE ${CGAL_3RD_PARTY_LIBRARIES} \${CGAL_Core_3RD_PARTY_LIBRARIES})|g" src/CGAL_Core/CMakeLists.txt
 }
 
 build()
@@ -26,6 +29,7 @@ build()
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DWITH_CGAL_Qt5=OFF \
+      -DCMAKE_CXX_FLAGS_RELEASE="" \
       ..
     make
     popd
