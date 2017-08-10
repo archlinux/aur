@@ -1,10 +1,9 @@
 # Maintainer: Echizen Ryoma <echizenryoma.zhang@gmail.com>
-# Contributor: Echizen Ryoma <echizenryoma.zhang@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 
 pkgname=networkmanager-sstp
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="SSTP support for NetworkManager"
 arch=('i686' 'x86_64')
 url="http://sstp-client.sourceforge.net/#Network_Manager_Plugin"
@@ -27,10 +26,9 @@ build() {
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
-    --libexecdir=/usr/lib/networkmanager \
     --with-pppd-plugin-dir=/usr/lib/pppd/${pppd_version} \
     --libdir=/usr/lib \
-    --enable-maintainer-mode
+    --libexecdir=/usr/lib/NetworkManager
 
   make
 }
