@@ -7,7 +7,7 @@ pkgdesc="an open source wireless development platform suitable for Bluetooth exp
 url="https://github.com/greatscottgadgets/ubertooth"
 arch=('x86_64' 'i686')
 license=('GPL2')
-depends=('libbtbb' 'libusbx' 'libpcap' 'python')
+depends=('libbtbb-git' 'libusbx' 'libpcap' 'python')
 source=("https://github.com/greatscottgadgets/ubertooth/archive/master.zip")
 md5sums=('SKIP')
 
