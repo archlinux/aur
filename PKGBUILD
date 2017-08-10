@@ -2,7 +2,7 @@
 
 pkgname=md-to-rst
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to convert markdown to restructed text (md to rst)"
 arch=('any')
 license=('GPLv3')
