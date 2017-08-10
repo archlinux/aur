@@ -48,7 +48,7 @@ prepare() {
 
 build() {
   cd ${srcdir}
-  
+
   # determine whether we can precompile CUDA kernels
     _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
     if [ "$_CUDA_PKG" != "" ]; then
@@ -70,7 +70,7 @@ package() {
   install -d -m755 "${pkgdir}/usr/share/applications"
   install -m644 "${srcdir}/${name}.desktop" "${pkgdir}/usr/share/applications"
   sed -i "s#Version=.*#Version=$pkgver#" "${pkgdir}/usr/share/applications/${name}.desktop"
-  
+
   # install vocabulary trees for sequential,vocabulary matching
   install -d -m755 ${pkgdir}/usr/share/${name}
   for vocab_tree in ${srcdir}/vocabulary-tree-*.bin ; do
