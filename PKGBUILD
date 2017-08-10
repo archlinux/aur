@@ -3,10 +3,10 @@ pkgdesc="ROS - A ROS node that simply forwards odometry information."
 url='http://wiki.ros.org/fake_localization'
 
 pkgname='ros-kinetic-fake-localization'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-rospy
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-fake_localization-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/fake_localization/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('97d96134755441e836d73599bf1a71dcda7f9cacb3bcb52395cb7d292d10dad9')
+sha256sums=('6bae98b732255c3ba9a20d550372230aea5f50dba8a7e887b9e83d49ef384b4a')
 
 build() {
   # Use ROS environment variables
