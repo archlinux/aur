@@ -13,8 +13,9 @@ pkgbase = nheko-git
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = lmdb
-	source = git://github.com/mujx/nheko.git
+	source = nheko-git::git://github.com/mujx/nheko.git
 	source = git://github.com/bendiken/lmdbxx.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = nheko-git

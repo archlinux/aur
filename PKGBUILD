@@ -12,12 +12,11 @@ license=("GPL3")
 depends=("qt5-base" "lmdb")
 makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools")
 
-source=("git://github.com/mujx/nheko.git"
-        "git://github.com/bendiken/lmdbxx.git")
-md5sums=("SKIP")
+source=($pkgname::git://github.com/mujx/nheko.git git://github.com/bendiken/lmdbxx.git)
+md5sums=("SKIP" "SKIP")
 
 prepare() {
-  cd nheko
+  cd "$pkgname"
   git submodule init
   git config submodule.lmdbxx.url $srcdir/libs/lmdbxx
   git submodule update
