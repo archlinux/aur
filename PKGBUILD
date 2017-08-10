@@ -5,32 +5,31 @@
 pkgbase=linux-amd-staging-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=$pkgbase
-_kernel_rel=4.11
+_kernel_rel=4.12
 _branch=amd-staging-${_kernel_rel}
 _kernelname=${pkgbase#linux}
-pkgver=4.11.665436.67d4108f7de2
+pkgver=4.12.680772.06b85147cc7f
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
 source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
         # the main kernel config files
-        'config.x86_64' 'config.i686'
+        'config.x86_64'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset')
 sha256sums=('SKIP'
-            'a20c952c4eeefef9346cb0edbeaf97dfe3bed10775bba6cb817dc712e9850a7c'
-            '475eb1b7c8fea7630be8379aef60979f381c461468f0a7ffac32d4bbc68d924c'
+            '63313d4e3311b5b2195f7bc6cb531362d93e1e355746190ea4610315d2efc5dd'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
   cd "${srcdir}/${_srcname}"
 
-  echo 4.11.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo ${_kernel_rel}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
