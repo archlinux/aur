@@ -96,7 +96,7 @@ build() {
 		#--enable-lto \
 		#--enable-gold \
 
-	make -j 8
+	make $MAKEFLAGS
 }
 
 package_gdc() {
