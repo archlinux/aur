@@ -1,12 +1,11 @@
 pkgbase = rootmp-hook
 	pkgdesc = Initcpio hook for copyng root files or overlayfs in tmpfs or zram
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jim945
 	install = rootmp-hook.install
 	arch = any
 	license = GPL3
-	depends = mkinitcpio
 	depends = util-linux
 	depends = rsync
 	source = rootmp-hook::git+http://github.com/jim945/rootmp-hook.git

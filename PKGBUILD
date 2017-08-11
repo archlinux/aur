@@ -1,13 +1,13 @@
 # Contributor: jim945 [at] mail . r [u]
 pkgname=rootmp-hook
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Initcpio hook for copyng root files or overlayfs in tmpfs or zram"
 url="https://github.com/jim945"
 arch=(any)
 license=('GPL3')
 install=${pkgname}.install
-depends=('mkinitcpio' 'util-linux' 'rsync')
+depends=('util-linux' 'rsync')
 source=(${pkgname%-git}::git+http://github.com/jim945/rootmp-hook.git)
 
 package() {
