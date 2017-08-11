@@ -2,8 +2,8 @@
 
 pkgname=lib32-imagemagick
 _basename=imagemagick
-pkgver=6.9.8.10
-pkgrel=2
+pkgver=6.9.9.5
+pkgrel=1
 pkgdesc="An image viewing/manipulation program (32-bit)"
 arch=('x86_64')
 url="http://www.imagemagick.org/"
@@ -12,7 +12,7 @@ depends=('lib32-libltdl' 'lib32-lcms2' 'lib32-libxt' 'lib32-fontconfig'
          'lib32-libxext' 'lib32-liblqr' 'lib32-ocl-icd')
 makedepends=('lib32-libltdl' 'lib32-lcms2' 'lib32-libxt' 'lib32-fontconfig'
              'lib32-libxext' 'ghostscript' 'lib32-openexr' 'lib32-libwmf'
-             'lib32-librsvg' 'lib32-libxml2' 'lib32-liblqr' 'lib32-openjpeg2'
+             'lib32-librsvg' 'lib32-libxml2' 'lib32-liblqr' 'lib32-openjpeg2' 'lib32-libraw'
              'opencl-headers' 'lib32-ocl-icd' 'lib32-libwebp' 'subversion' 'lib32-glu' 'git' 'imagemagick')
 optdepends=('imagemagick-doc: for additional information'
             'ghostscript: for Ghostscript support' 
@@ -27,7 +27,7 @@ options=('!docs' 'libtool' '!emptydirs')
 
 source=(http://www.imagemagick.org/download/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz{,.asc}
         perlmagick.rpath.patch)
-sha1sums=('cf2411cdf8e53b2ff7745497d0b56d7d159c45ce'
+sha1sums=('1241b0cbc87fffb471a30cade2d87dea533eeba3'
           'SKIP'
           'e143cf9d530fabf3b58023899b5cc544ba93daec')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')
