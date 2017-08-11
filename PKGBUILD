@@ -7,7 +7,7 @@
 pkgname=libselinux
 pkgver=2.7
 pkgrel=1
-pkgdesc="SELinux library and simple utilities and selabel patches"
+pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h')
 url='http://userspace.selinuxproject.org'
 license=('custom')

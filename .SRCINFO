@@ -1,5 +1,5 @@
 pkgbase = libselinux
-	pkgdesc = SELinux library and simple utilities and selabel patches
+	pkgdesc = SELinux library and simple utilities
 	pkgver = 2.7
 	pkgrel = 1
 	url = http://userspace.selinuxproject.org
