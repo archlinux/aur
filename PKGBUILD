@@ -2,7 +2,7 @@
 
 pkgname=xf86-video-vmware
 pkgver=13.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="X.org vmware video driver"
 arch=(i686 x86_64)
 url="https://xorg.freedesktop.org/"
@@ -19,6 +19,14 @@ validpgpkeys=('90D027AEAF33CBABC140735BC1F5D3CDF5176580') #  Thomas Hellstrom (V
 
 build() {
   cd ${pkgname}-${pkgver}
+
+  # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
+  # With them, module fail to load with undefined symbol.
+  # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
+  export CFLAGS=${CFLAGS/-fno-plt}
+  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  export LDFLAGS=${LDFLAGS/,-z,now}
+
   ./configure --prefix=/usr --enable-vmwarectrl-client
   make
 }
