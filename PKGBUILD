@@ -1,8 +1,8 @@
 # Maintainer: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=minecraft-linux
-pkgver=1.0
-pkgrel=3
+pkgver=1.2
+pkgrel=1
 pkgdesc="Minecraft launcher for Linux"
 arch=('x86_64')
 url="https://kris27mc.github.io"
@@ -64,6 +64,7 @@ package(){
   cp -r "libs" "$pkgdir/usr/share/minecraft-linux"
   chmod -R 777 "$pkgdir/usr/share/minecraft-linux/libs"
   install -Dm777 "extract.sh" "$pkgdir/usr/share/minecraft-linux"
+  install -Dm777 "updater.sh" "$pkgdir/usr/share/minecraft-linux"
 
   #Extracts apk
   cd "$srcdir/"
