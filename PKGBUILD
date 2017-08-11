@@ -3,7 +3,7 @@
 pkgname=lib32-xine-lib
 _basename=xine-lib
 pkgver=1.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A multimedia playback engine (32-bit)"
 arch=('x86_64')
 url="http://www.xine-project.org"
