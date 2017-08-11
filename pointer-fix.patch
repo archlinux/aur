@@ -1,0 +1,12 @@
+diff --ignore-space-change -u -r manatee-open-2.151.5/src/mkdynattr.cc manatee-open-2.151.5-patched/src/mkdynattr.cc
+--- manatee-open-2.151.5/src/mkdynattr.cc	2017-04-03 11:46:44.000000000 +0200
++++ manatee-open-2.151.5-patched/src/mkdynattr.cc	2017-08-09 18:22:59.887680320 +0200
+@@ -27,7 +27,7 @@
+                      write_lexicon &wl, RevFileConsumer *rev)
+ {
+     int did;
+-    if (!multisep || multisep == '\0') {
++    if (!multisep || *multisep == '\0') {
+         // multisep = "" --> store characters
+         char value[2];
+         value[1] = 0;

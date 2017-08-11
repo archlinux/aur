@@ -1,0 +1,167 @@
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/addwcattr manatee-open-2.151.5-patched/api/addwcattr
+--- manatee-open-2.151.5/api/addwcattr	2017-04-03 11:46:44.000000000 +0200
++++ manatee-open-2.151.5-patched/api/addwcattr	2017-08-09 21:30:27.401720314 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ # Copyright 2007-2015  Pavel Rychly, Milos Jakubicek
+ 
+ """
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/compilecorp manatee-open-2.151.5-patched/api/compilecorp
+--- manatee-open-2.151.5/api/compilecorp	2017-07-12 17:36:48.000000000 +0200
++++ manatee-open-2.151.5-patched/api/compilecorp	2017-08-09 21:29:42.537082322 +0200
+@@ -300,7 +300,7 @@
+     # check whether the corpus exists
+     corpinfo "$CORPUS" >/dev/null
+ 
+-    MANATEE_VERSION=`python -c 'import manatee; print manatee.version()'`
++    MANATEE_VERSION=`python2 -c 'import manatee; print manatee.version()'`
+     echo "Manatee version: $MANATEE_VERSION"
+ 
+     echo "Reading corpus configuration..."
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/concinfo manatee-open-2.151.5-patched/api/concinfo
+--- manatee-open-2.151.5/api/concinfo	2017-04-03 11:46:44.000000000 +0200
++++ manatee-open-2.151.5-patched/api/concinfo	2017-08-09 21:29:51.190376025 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ # Copyright (c) 2006-2009  Pavel Rychly
+ 
+ """
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/corpcheck manatee-open-2.151.5-patched/api/corpcheck
+--- manatee-open-2.151.5/api/corpcheck	2017-07-12 17:36:28.000000000 +0200
++++ manatee-open-2.151.5-patched/api/corpcheck	2017-08-09 21:30:20.918174093 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ import sys, manatee, subprocess, re, os, urllib2
+ 
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/corpquery manatee-open-2.151.5-patched/api/corpquery
+--- manatee-open-2.151.5/api/corpquery	2017-04-03 11:46:44.000000000 +0200
++++ manatee-open-2.151.5-patched/api/corpquery	2017-08-09 21:29:53.943825819 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Copyright 2007-2016  Pavel Rychly, Milos Jakubicek
+ 
+ import manatee
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/decodevert manatee-open-2.151.5-patched/api/decodevert
+--- manatee-open-2.151.5/api/decodevert	2017-07-12 17:36:28.000000000 +0200
++++ manatee-open-2.151.5-patched/api/decodevert	2017-08-09 21:30:40.588787186 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  Copyright (c) 2014  Pavel Rychly
+ 
+ """Decode a corpus -- creates a vertical file from encoded data
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/devirt manatee-open-2.151.5-patched/api/devirt
+--- manatee-open-2.151.5/api/devirt	2017-04-03 11:46:44.000000000 +0200
++++ manatee-open-2.151.5-patched/api/devirt	2017-08-09 21:29:47.180386615 +0200
+@@ -16,7 +16,7 @@
+ STRUCTLIST=`corpinfo -g STRUCTLIST $CORPUS`
+ STRUCTATTRLIST=`corpinfo -g STRUCTATTRLIST $CORPUS`
+ CPATH=`corpinfo -p $CORPUS`
+-CONFFILE=`python -c "import manatee; c=manatee.Corpus(\"$CORPUS\"); print c.get_confpath();"`
++CONFFILE=`python2 -c "import manatee; c=manatee.Corpus(\"$CORPUS\"); print c.get_confpath();"`
+ 
+ [ -d "$OUTDIR" ] || mkdir -p "$OUTDIR"
+ 
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/dumpalign manatee-open-2.151.5-patched/api/dumpalign
+--- manatee-open-2.151.5/api/dumpalign	2017-04-03 11:46:44.000000000 +0200
++++ manatee-open-2.151.5-patched/api/dumpalign	2017-08-09 21:30:24.178282529 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Copyright (c) 2014-2016  Milos Jakubicek
+ 
+ import sys
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/freqs manatee-open-2.151.5-patched/api/freqs
+--- manatee-open-2.151.5/api/freqs	2017-04-03 11:46:44.000000000 +0200
++++ manatee-open-2.151.5-patched/api/freqs	2017-08-09 21:29:32.780476633 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ #  Copyright (c) 2010-2015  Pavel Rychly
+ 
+ import manatee, os, sys
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/lslexarf manatee-open-2.151.5-patched/api/lslexarf
+--- manatee-open-2.151.5/api/lslexarf	2017-04-03 11:46:44.000000000 +0200
++++ manatee-open-2.151.5-patched/api/lslexarf	2017-08-09 21:30:37.102018825 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # Copyright 2007-2015  Pavel Rychly
+ 
+ import manatee
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/lsslex manatee-open-2.151.5-patched/api/lsslex
+--- manatee-open-2.151.5/api/lsslex	2017-04-03 11:46:44.000000000 +0200
++++ manatee-open-2.151.5-patched/api/lsslex	2017-08-09 21:29:36.067122765 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # Copyright 2007-2013  Pavel Rychly
+ 
+ import manatee
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/mkstats manatee-open-2.151.5-patched/api/mkstats
+--- manatee-open-2.151.5/api/mkstats	2017-04-03 11:46:44.000000000 +0200
++++ manatee-open-2.151.5-patched/api/mkstats	2017-08-09 21:29:14.437257758 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ #  Copyright (c) 2008-2013  Pavel Rychly, Milos Jakubicek
+ 
+ import sys
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/mksubc manatee-open-2.151.5-patched/api/mksubc
+--- manatee-open-2.151.5/api/mksubc	2017-07-12 17:36:28.000000000 +0200
++++ manatee-open-2.151.5-patched/api/mksubc	2017-08-09 21:30:46.795627983 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ #  Copyright (c) 2008-2015  Pavel Rychly, Milos Jakubicek, Vit Baisa
+ 
+ import sys
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/parencodevert manatee-open-2.151.5-patched/api/parencodevert
+--- manatee-open-2.151.5/api/parencodevert	2017-04-03 11:46:44.000000000 +0200
++++ manatee-open-2.151.5-patched/api/parencodevert	2017-08-09 21:30:16.934704338 +0200
+@@ -58,8 +58,8 @@
+ fi
+ DOCSTRUCTURE=`corpinfo -g DOCSTRUCTURE $CORPUS`
+ PATH_=`corpinfo -p $CORPUS`
+-CONFFILE=`python -c "import manatee; c=manatee.Corpus(\"$CORPUS\"); print c.get_confpath();"`
+-SCALE=`python -c "import math; print int(math.ceil(math.log10($JOBS))) or 1"`
++CONFFILE=`python2 -c "import manatee; c=manatee.Corpus(\"$CORPUS\"); print c.get_confpath();"`
++SCALE=`python2 -c "import math; print int(math.ceil(math.log10($JOBS))) or 1"`
+ ZEROS=`printf '0%.0s' {1..$SCALE}`
+ 
+ echo "Preparing vertical files..."
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/par2tokens manatee-open-2.151.5-patched/api/par2tokens
+--- manatee-open-2.151.5/api/par2tokens	2017-04-03 11:46:44.000000000 +0200
++++ manatee-open-2.151.5-patched/api/par2tokens	2017-08-09 21:30:33.488577000 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Copyright (c) 2015-2016  Milos Jakubicek
+ 
+ import sys, array
+diff --ignore-space-change -u -r manatee-open-2.151.5/api/tokens2dict manatee-open-2.151.5-patched/api/tokens2dict
+--- manatee-open-2.151.5/api/tokens2dict	2017-04-03 11:46:44.000000000 +0200
++++ manatee-open-2.151.5-patched/api/tokens2dict	2017-08-09 21:30:43.365532831 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Copyright (c) 2015  Vojtech Kovar, Milos Jakubicek
+ 
+ import sys, array, manatee
+diff --ignore-space-change -u -r manatee-open-2.151.5/config/py-compile manatee-open-2.151.5-patched/config/py-compile
+--- manatee-open-2.151.5/config/py-compile	2017-04-03 11:47:58.000000000 +0200
++++ manatee-open-2.151.5-patched/config/py-compile	2017-08-09 21:27:10.284683067 +0200
+@@ -28,7 +28,7 @@
+ # <automake-patches@gnu.org>.
+ 
+ if [ -z "$PYTHON" ]; then
+-  PYTHON=python
++  PYTHON=python2
+ fi
+ 
+ me=py-compile
