@@ -1,3 +1,4 @@
+# vim:set ts=2 sw=2 et:
 # Maintainer graysky <graysky AT archlinux DOT us>
 # Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: DonVla <donvla@users.sourceforge.net>
@@ -18,7 +19,7 @@
 pkgbase=kodi-pre-release
 _suffix=pre-release
 pkgname=("kodi-$_suffix" "kodi-eventclients-$_suffix" "kodi-tools-texturepacker-$_suffix" "kodi-dev-$_suffix")
-pkgver=17.1rc1
+pkgver=17.4rc1
 _codename=Krypton
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -36,16 +37,21 @@ makedepends=(
 )
 source=(
   "kodi-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
+  'fix-python-lib-path.patch'
 )
-sha256sums=('a614128c065d561fccd4167f25eddbad3875328f1e81f627ffe3d0b17958aa07')
+sha256sums=('dd0604419528e00e14669c5c2ae9285ea60a7588eebf203bd2f399f9b8033e8c'
+            '1c07c9fdd8e2958262cf917e4266c4933fcd06529c111e3cb0cbaaa05c934033')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir kodi-build
+
+  cd "xbmc-$pkgver-$_codename"
+  patch -p1 -i "$srcdir/fix-python-lib-path.patch"
 }
 
 build() {
-  cd "kodi-build"
+  cd kodi-build
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DENABLE_EVENTCLIENTS=ON \
@@ -61,10 +67,11 @@ build() {
 package_kodi-pre-release() {
   pkgdesc="Beta or RC versions of a media player and entertainment hub for digital media."
   depends=(
-    'python2-pillow' 'python2-simplejson' 'xorg-xdpyinfo' 'bluez-libs' 'fribidi'
-    'freetype2' 'glew' 'hicolor-icon-theme' 'libcdio' 'libjpeg-turbo' 'libmariadbclient'
-    'libmicrohttpd' 'libpulse' 'libssh' 'libva' 'libvdpau' 'libxrandr' 'libxslt' 'lzo'
-    'smbclient' 'taglib' 'tinyxml' 'yajl' 'mesa' 'desktop-file-utils'
+    'python2-pillow' 'python2-simplejson' 'xorg-xdpyinfo' 'bluez-libs'
+    'fribidi' 'freetype2' 'glew' 'hicolor-icon-theme' 'libcdio' 'libjpeg-turbo'
+    'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh' 'libva' 'libvdpau'
+    'libxrandr' 'libxslt' 'lzo' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'mesa'
+    'desktop-file-utils'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
@@ -99,10 +106,10 @@ package_kodi-pre-release() {
   done
 
   # Licenses
-  install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   for licensef in LICENSE.GPL copying.txt; do
-    mv ${pkgdir}/usr/share/doc/kodi/${licensef} \
-      ${pkgdir}/usr/share/licenses/${pkgname}
+    mv "$pkgdir/usr/share/doc/kodi/$licensef" \
+      "$pkgdir/usr/share/licenses/$pkgname"
   done
 
   # python2 is being used
@@ -114,7 +121,7 @@ package_kodi-pre-release() {
 # components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-wiiremote kodi-eventclients-xbmc-send
 
 package_kodi-eventclients-pre-release() {
-  pkgdesc="Kodi Event Clients (master branch)"
+  pkgdesc="Kodi Event Clients (Beta or RC versions)"
   conflicts=('kodi-eventclients')
 
   depends=('cwiid')
@@ -143,7 +150,7 @@ package_kodi-eventclients-pre-release() {
 # components: kodi-tools-texturepacker
 
 package_kodi-tools-texturepacker-pre-release() {
-  pkgdesc="Kodi Texturepacker tool (master branch)"
+  pkgdesc="Kodi Texturepacker tool (Beta or RC versions)"
   depends=('libpng' 'giflib' 'libjpeg-turbo' 'lzo')
 
   _components=(
@@ -163,7 +170,7 @@ package_kodi-tools-texturepacker-pre-release() {
 # components: kodi-addon-dev kodi-audio-dev kodi-eventclients-dev kodi-game-dev kodi-inputstream-dev kodi-peripheral-dev kodi-pvr-dev kodi-screensaver-dev kodi-visualization-dev
 
 package_kodi-dev-pre-release() {
-  pkgdesc="Kodi dev files (master branch)"
+  pkgdesc="Kodi dev files (Beta or RC versions)"
   depends=('kodi')
 
   _components=(
