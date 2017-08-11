@@ -1,0 +1,12 @@
+pkgbase = cura2-lulzbot
+	pkgdesc = This is the development version of Cura 2 for LulzBot 3D Printers by Aleph Objects, Inc.
+	pkgver = 2.6.22
+	pkgrel = 1
+	url = https://code.alephobjects.com
+	arch = x86_64
+	license = AGPLv3
+	source = http://devel.alephobjects.com/ao/aodeb/dists/stretch/main/binary-amd64/cura2_2.6.22_amd64.deb
+	md5sums = 30612c9f76097dc968c725c7e2ddea1d
+
+pkgname = cura2-lulzbot
+
