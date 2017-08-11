@@ -2,14 +2,14 @@
 
 _pkgname=composer-cli
 pkgname=hyperledger-${_pkgname}
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="A framework for building Blockchain business networks: Contains the Hyperledger composer CLIs for administering business networks"
 arch=(x86_64)
 url="https://github.com/hyperledger/fabric"
 license=('APACHE')
 groups=('hyperledger-composer')
-depends=('nodejs-lts-boron')
+depends=('nodejs')
 makedepends=('npm')
 
 package() {
