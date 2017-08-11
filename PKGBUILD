@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/flozz/rivalcfg"
 license=("custom:WTFPL")
 depends=("python" "python-pyudev")
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 conflicts=("rivalctl")
 provides=("${pkgname%-git}")
 source=("${pkgname%-git}"::'git+https://github.com/flozz/rivalcfg#branch=master')

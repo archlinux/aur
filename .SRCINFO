@@ -7,6 +7,7 @@ pkgbase = rivalcfg-git
 	arch = any
 	license = custom:WTFPL
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pyudev
 	provides = rivalcfg
