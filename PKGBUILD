@@ -4,8 +4,8 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=3.65
-pkgrel=2
+pkgver=4.00
+pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
 url='http://www.microchip.com/mplabx'
@@ -33,7 +33,7 @@ source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.ta
         "LICENSE")
 source_x86_64=("fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/")
 
-md5sums=('c73ac7afbfe079c5ec389b7eed2d1f50'
+md5sums=('715cf579561669c8dc7514e4f86a2599'
          'a34a85b2600a26f1c558bcd14c2444bd')
 md5sums_x86_64=('a12f5c06479f3cd0678e705e08b95233')
 
@@ -103,20 +103,20 @@ EOF
 
   _mplabcomm_pkgdir=("${pkgdir}${_mplabcomm_dir}"/v*)
   _mplabcomm_version=$(basename "${_mplabcomm_pkgdir}")
-  _mplabcomm_srcdir="${_mplabcomm_dir}/${_mplabcomm_version}"
+  _mplabcomm_dstdir="${_mplabcomm_dir}/${_mplabcomm_version}"
 
   # Symlink executables
   ln -sf "${_mplabx_dir}/mplab_ide/bin/mplab_ide" "${pkgdir}/usr/bin/"
   ln -sf "${_mplabx_dir}/mplab_ide/bin/mdb.sh" "${pkgdir}/usr/bin/mdb"
   ln -sf "${_mplabx_dir}/mplab_ide/bin/prjMakefilesGenerator.sh" "${pkgdir}/usr/bin/prjMakefilesGenerator"
   ln -sf "${_mplabx_dir}/mplab_ipe/mplab_ipe" "${pkgdir}/usr/bin/"
-  ln -sf "${_mplabcomm_srcdir}/lib/mchplinusbdevice" "${pkgdir}/etc/.mplab_ide/"
+  ln -sf "${_mplabcomm_dstdir}/lib/mchplinusbdevice" "${pkgdir}/etc/.mplab_ide/"
 
   # Symlink libs from MPLABCOMM
   local lib
   for lib in "${_mplabcomm_pkgdir}/lib/"*.so{,.*}; do
     local bname=$(basename "$lib")
-    ln -sf "${_mplabcomm_srcdir}/lib/${bname}"  "${pkgdir}/usr/lib/"
+    ln -sf "${_mplabcomm_dstdir}/lib/${bname}"  "${pkgdir}/usr/lib/"
   done
 
   # Correctly link .so.* -> .so for all libs
@@ -135,12 +135,12 @@ EOF
 
   # Install license files
   install -Dm 644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 "${pkgdir}${_mplabcomm_dir}"/v*/MPLABCOMMLicense.txt "${pkgdir}/usr/share/licenses/${pkgname}/MPLABCOMMLicense.txt"
+  install -Dm 644 "${_mplabcomm_pkgdir}"/MPLABCOMMLicense.txt "${pkgdir}/usr/share/licenses/${pkgname}/MPLABCOMMLicense.txt"
 
   # Cleanup
   rm "${pkgdir}"/{bin,etc/{group,passwd}}
   rm -r "${pkgdir}/tmp"
   # wtf
-  rm -f "${pkgdir}${_mplabcomm_dir}"/v*/MPLABCOMM-*.run
+  rm -f "${_mplabcomm_pkgdir}"/MPLABCOMM-*.run
 }
 
