@@ -5,36 +5,24 @@
 # Contributor: Zezadas
 
 pkgname=libselinux
-pkgver=2.6
-pkgrel=2
-pkgdesc="SELinux library and simple utilities"
+pkgver=2.7
+pkgrel=1
+pkgdesc="SELinux library and simple utilities and selabel patches"
 arch=('i686' 'x86_64' 'armv6h')
 url='http://userspace.selinuxproject.org'
-license=('GPL')
+license=('custom')
 groups=('selinux')
 makedepends=('python2' 'python' 'ruby' 'xz' 'swig')
-depends=('libsepol' 'pcre')
+depends=('libsepol>=2.7' 'pcre')
 optdepends=('python2: python2 bindings'
             'python: python bindings'
             'ruby: ruby bindings')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-options=(!emptydirs)
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20161014/${pkgname}-${pkgver}.tar.gz"
-        "libselinux.tmpfiles.d"
-        '0001-libselinux-fix-pointer-handling-in-realpath_not_fina.patch'
-        '0002-Revert-libselinux-support-new-python3-functions.patch')
-sha256sums=('4ea2dde50665c202253ba5caac7738370ea0337c47b251ba981c60d24e1a118a'
-            'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc'
-            '4d7998c5368a6d13f5b730184b4e9ddb28dd42e1576f8daf12676ca468a935b3'
-            '82f598ab5c5d21b8b76e887fea43e5d8549f4e9a4047ba3a4cf1a6980ff22eec')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-
-  patch -Np2 -i '../0001-libselinux-fix-pointer-handling-in-realpath_not_fina.patch'
-  patch -Np2 -i '../0002-Revert-libselinux-support-new-python3-functions.patch'
-}
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/${pkgname}-${pkgver}.tar.gz"
+        "libselinux.tmpfiles.d")
+sha256sums=('d0fec0769b3ad60aa7baf9b9a4b7a056827769dc2dadda0dc0eb59b3d1c18c57'
+            'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -49,17 +37,35 @@ build() {
   make RUBY=/usr/bin/ruby rubywrap
 }
 
-package(){
+package() {
   cd "${pkgname}-${pkgver}"
 
   export DISABLE_RPM=y
 
-  make DESTDIR="${pkgdir}" USRBINDIR="${pkgdir}"/usr/bin LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib install
-  make DESTDIR="${pkgdir}" USRBINDIR="${pkgdir}"/usr/bin LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib PYTHON=/usr/bin/python2 install-pywrap
-  make DESTDIR="${pkgdir}" USRBINDIR="${pkgdir}"/usr/bin LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib PYTHON=/usr/bin/python3 install-pywrap
-  make DESTDIR="${pkgdir}" USRBINDIR="${pkgdir}"/usr/bin LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib RUBY=/usr/bin/ruby install-rubywrap
+  make DESTDIR="${pkgdir}" \
+    LIBSEPOLA=/usr/lib/libsepol.a \
+    SBINDIR="${pkgdir}/usr/bin" \
+    SHLIBDIR="${pkgdir}/usr/lib" \
+    install
+  make DESTDIR="${pkgdir}" PYTHON=/usr/bin/python2 \
+    LIBSEPOLA=/usr/lib/libsepol.a \
+    SBINDIR="${pkgdir}/usr/bin" \
+    SHLIBDIR="${pkgdir}/usr/lib" \
+    install-pywrap
+  make DESTDIR="${pkgdir}" PYTHON=/usr/bin/python3 \
+    LIBSEPOLA=/usr/lib/libsepol.a \
+    SBINDIR="${pkgdir}/usr/bin" \
+    SHLIBDIR="${pkgdir}/usr/lib" \
+    install-pywrap
+  make DESTDIR="${pkgdir}" RUBY=/usr/bin/ruby \
+    LIBSEPOLA=/usr/lib/libsepol.a \
+    SBINDIR="${pkgdir}/usr/bin" \
+    SHLIBDIR="${pkgdir}/usr/lib" \
+    install-rubywrap
   /usr/bin/python2 -m compileall "${pkgdir}/$(/usr/bin/python2 -c 'import site; print(site.getsitepackages()[0])')"
   /usr/bin/python3 -m compileall "${pkgdir}/$(/usr/bin/python3 -c 'import site; print(site.getsitepackages()[0])')"
 
   install -Dm 0644 "${srcdir}"/libselinux.tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/libselinux.conf
+
+  install -Dm 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
