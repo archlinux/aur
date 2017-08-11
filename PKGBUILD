@@ -4,55 +4,56 @@
 # Contributor: Sergej Pupykin (pupykin <dot> s+arch <at> gmail <dot> com)
 
 pkgname=libsemanage
-pkgver=2.6
-pkgrel=2
+pkgver=2.7
+pkgrel=1
 pkgdesc="SELinux binary policy manipulation library"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
-license=('GPL')
+license=('LGPL2.1')
 groups=('selinux')
-makedepends=('flex' 'python2' 'python' 'swig')
-depends=('ustr-selinux' 'libselinux>=2.6' 'audit')
+makedepends=('flex' 'python2' 'python' 'ruby' 'swig')
+depends=('libselinux>=2.7' 'audit')
 optdepends=('python2: python2 bindings'
-            'python: python bindings')
-options=(!emptydirs)
+            'python: python bindings'
+            'ruby: ruby bindings')
+options=(!emptydirs) # For /var/lib/selinux
 install=libsemanage.install
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20161014/${pkgname}-${pkgver}.tar.gz"
-        "semanage.conf"
-        '0001-libsemanage-genhomedircon-only-set-MLS-level-if-MLS-.patch'
-        '0002-libsemanage-fix-kernel-pathname-in-semanage_verify_k.patch'
-        '0003-libsemanage-semanage_seuser_key_create-copy-name.patch')
-sha256sums=('4f81541047290b751f2ffb926fcd381c186f22db18d9fe671b0b4a6a54e8cfce'
-            '5b0e6929428e095b561701ccdfa9c8b0c3d70dad3fc46e667eb46a85b246a4a0'
-            '035aefa177493f61a3f5744cd82dabef4779a9b6c8954439c802bed0f2f21de2'
-            '08a62dcfcb263355d6ec0d83a00ce27442ada70c7471838ca9c54c5648f55d9f'
-            '78cc14c549b3ce92e53b27d68beb95b4b3478f0bcd1c6c7c06f19afb6cbddd81')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-
-  patch -Np2 -i '../0001-libsemanage-genhomedircon-only-set-MLS-level-if-MLS-.patch'
-  patch -Np2 -i '../0002-libsemanage-fix-kernel-pathname-in-semanage_verify_k.patch'
-  patch -Np2 -i '../0003-libsemanage-semanage_seuser_key_create-copy-name.patch'
-}
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/${pkgname}-${pkgver}.tar.gz"
+        "semanage.conf")
+sha256sums=('07e9477714ce6a4557a1fe924ea4cb06501b62d0fa0e3c0dc32a2cf47cb8d476'
+            '5b0e6929428e095b561701ccdfa9c8b0c3d70dad3fc46e667eb46a85b246a4a0')
 
 build() {
   cd "${pkgname}-${pkgver}"
   make swigify
   make all
-  make PYTHON=python2 pywrap
-  make PYTHON=python3 pywrap
+  make PYTHON=/usr/bin/python2 pywrap
+  make PYTHON=/usr/bin/python3 pywrap
+  make RUBY=/usr/bin/ruby rubywrap
 }
 
-package(){
+package() {
   cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" LIBDIR="${pkgdir}/usr/lib" LIBEXECDIR="${pkgdir}/usr/lib" SHLIBDIR="${pkgdir}/usr/lib" install
-  make DESTDIR="${pkgdir}" LIBDIR="${pkgdir}/usr/lib" LIBEXECDIR="${pkgdir}/usr/lib" SHLIBDIR="${pkgdir}/usr/lib" PYTHON=python2 install-pywrap
-  make DESTDIR="${pkgdir}" LIBDIR="${pkgdir}/usr/lib" LIBEXECDIR="${pkgdir}/usr/lib" SHLIBDIR="${pkgdir}/usr/lib" PYTHON=python3 install-pywrap
-  python2 -m compileall "${pkgdir}/$(python2 -c 'import site; print(site.getsitepackages()[0])')"
-  python3 -m compileall "${pkgdir}/$(python3 -c 'import site; print(site.getsitepackages()[0])')"
+  make DESTDIR="${pkgdir}" \
+    LIBEXECDIR="${pkgdir}/usr/lib" \
+    SHLIBDIR="${pkgdir}/usr/lib" \
+    install
+  make DESTDIR="${pkgdir}" PYTHON=python2 \
+    LIBEXECDIR="${pkgdir}/usr/lib" \
+    SHLIBDIR="${pkgdir}/usr/lib" \
+    install-pywrap
+  make DESTDIR="${pkgdir}" PYTHON=python3 \
+    LIBEXECDIR="${pkgdir}/usr/lib" \
+    SHLIBDIR="${pkgdir}/usr/lib" \
+    install-pywrap
+  make DESTDIR="${pkgdir}" RUBY=/usr/bin/ruby \
+    LIBEXECDIR="${pkgdir}/usr/lib" \
+    SHLIBDIR="${pkgdir}/usr/lib" \
+    install-rubywrap
+  /usr/bin/python2 -m compileall "${pkgdir}/$(/usr/bin/python2 -c 'import site; print(site.getsitepackages()[0])')"
+  /usr/bin/python3 -m compileall "${pkgdir}/$(/usr/bin/python3 -c 'import site; print(site.getsitepackages()[0])')"
 
   install -D -m0644 "${srcdir}/semanage.conf" "${pkgdir}/etc/selinux/semanage.conf"
 
