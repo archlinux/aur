@@ -3,24 +3,28 @@
 
 pkgname=dakota
 pkgver=6.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A flexible, extensible interface between analysis codes and
 iterative systems analysis methods"
 arch=(i686 x86_64)
 url="https://dakota.sandia.gov/"
 license=('LGPL')
-depends=('boost' 'icu' 'lapack' 'tinyxml')
+depends=('boost' 'icu' 'lapack' 'lesstif' 'tinyxml')
 makedepends=('cmake' 'gcc-fortran' 'python2')
 options=(!strip)
 source=("https://dakota.sandia.gov/sites/default/files/distributions/public/$pkgname-6.6-public.src.tar.gz")
 
 build() {
   cd "$srcdir/$pkgname-${pkgver}.src"
-  mkdir build
+  if [ ! -d build ]; then
+    mkdir build
+  fi  
+  
   cd build
   cmake .. -Wno-dev -DPYTHON_EXECUTABLE=/usr/bin/python2 \
                     -DCMAKE_INSTALL_PREFIX=/usr \
-                    -DDAKOTA_F90=OFF
+                    -DDAKOTA_F90=OFF \
+		    -DCMAKE_CXX_FLAGS="-fpermissive"
   make
 }
 
