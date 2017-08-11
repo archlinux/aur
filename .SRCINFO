@@ -28,3 +28,12 @@ pkgname = python-pre-commit
 	depends = python-cached-property
 	depends = python-identify
 
+pkgname = python2-pre-commit
+	pkgdesc = Python 2 client for pre-commit
+	depends = python2
+	depends = python-nodeenv
+	depends = python2-aspy-yaml
+	depends = python2-virtualenv
+	depends = python2-cached-property
+	depends = python2-identify
+

@@ -1,6 +1,7 @@
 # Contributor: Serkan Hosca <serkan@hosca.com>
 
-pkgname=python-pre-commit
+pkgbase=python-pre-commit
+pkgname=(python-pre-commit python2-pre-commit)
 pypi_name=pre_commit
 pkgver=0.16.2
 pkgrel=2
