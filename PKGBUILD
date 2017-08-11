@@ -14,9 +14,10 @@ conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
-source=('nanovg::git+https://github.com/memononen/nanovg')
+source=('nanovg::git+https://github.com/memononen/nanovg'
+	'disable_examples.patch')
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
