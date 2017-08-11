@@ -1,21 +1,21 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=ctk-widgets-git
-pkgver=0.1.0.r5170.b8587e55
+pkgver=0.1.0.r5270.cfbb46a7
 pkgrel=1
-pkgdesc="A collection of Qt Widgets for usage in biomedical imaging applications"
+pkgdesc='A collection of Qt Widgets for usage in biomedical imaging applications'
 arch=('i686' 'x86_64')
 url="https://github.com/commontk/CTK/"
 license=('APACHE')
 depends=('qt5-tools')
 makedepends=('git' 'cmake>=2.8.12')
 conflicts=('ctk')
-source=("git://github.com/commontk/CTK.git")
+source=('git://github.com/commontk/CTK.git')
 sha512sums=('SKIP')
 
 pkgver() {
   cd CTK
-  echo "0.1.0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "$(grep "set(CTK_MAJOR_VERSION" CMakeLists.txt | cut -d ' ' -f2 | cut -d ')' -f1).$(grep "set(CTK_MINOR_VERSION" CMakeLists.txt | cut -d ' ' -f2 | cut -d ')' -f1).$(grep "set(CTK_PATCH_VERSION" CMakeLists.txt | cut -d ' ' -f2 | cut -d ')' -f1).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -44,6 +44,6 @@ package() {
     CMake/ctkFunctionGetTargetDependencies.cmake \
     CMake/ctkFunctionGetPluginDependencies.cmake \
     CMake/ctkMacroSetupPlugins.cmake \
-    ${pkgdir}/usr/lib/ctk-0.1/CMake
+    ${pkgdir}/usr/lib/ctk-*/CMake
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/ctk-widgets-git/LICENSE
 }
