@@ -4,7 +4,7 @@ pkgdesc="ROS - map_server provides the map_server ROS Node, which offers map dat
 url='http://wiki.ros.org/map_server'
 
 pkgname='ros-kinetic-map-server'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ sha256sums=('SKIP')
 # Tarball version (faster download)
 #_dir="navigation-release-release-kinetic-map_server-${pkgver}-${_pkgver_patch}"
 #source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/map_server/${pkgver}-${_pkgver_patch}.tar.gz")
-#sha256sums=('2c3b8325ef0abb2ea1c91ed2849fb56bebb8b52caebf01b1820cef2457efb7fe')
+#sha256sums=('6bfcf41b39db218d89b82d77d3a68ace674def7f9fc8bf712dfdf017ea94182f')
 
 build() {
   # Use ROS environment variables
