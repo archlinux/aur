@@ -46,12 +46,12 @@ source=('git+https://github.com/scylladb/scylla.git'
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
     git submodule update --init --recursive
 }
 
@@ -87,9 +87,8 @@ package() {
     mkdir -p "${pkgdir}${_docdir}/scylla/"
     mkdir -p "${pkgdir}${_unitdir}"
     mkdir -p "${pkgdir}${_libdir}"
-    # Nothing to do here
 
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
     install -m644 dist/common/sysconfig/scylla-server "${pkgdir}${_sysconfdir}/sysconfig/"
     install -m644 dist/common/limits.d/scylla.conf "${pkgdir}${_sysconfdir}/security/limits.d/"
     install -m644 dist/common/collectd.d/scylla.conf "${pkgdir}${_sysconfdir}/collectd.d/"
