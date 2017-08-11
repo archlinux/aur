@@ -3,14 +3,15 @@ _name="parsimonious"
 
 pkgbase="python-${_name}"
 pkgname=("python-${_name}" "python2-${_name}")
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 arch=('any')
 url="https://pypi.python.org/pypi/${_name}/${pkgver}"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
+pkgdesc="Fast parser based on parsing expression grammars (PEGs)"
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('396d424f64f834f9463e81ba79a331661507a21f1ed7b644f7f6a744006fd938')
+sha256sums=('ae0869d72a6e57703f24313a5f5748e73ebff836e6fe8b3ddf34ea0dc00d086b')
 
 prepare() {
     cp -r "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
@@ -25,7 +26,7 @@ build() {
 
 package_python-parsimonious() {
   pkgdesc="Fast parser based on parsing expression grammars (PEGs) - Python 3 version."
-  depends=('python>=3.2')
+  depends=('python>=3.3')
 
   cd "${srcdir}/${_name}-${pkgver}"
 
@@ -35,7 +36,7 @@ package_python-parsimonious() {
 
 package_python2-parsimonious() {
   pkgdesc="Fast parser based on parsing expression grammars (PEGs) - Python 2 version."
-  depends=('python>=2.6')
+  depends=('python>=2.7')
 
   cd "${srcdir}/${_name}-${pkgver}-python2"
 
