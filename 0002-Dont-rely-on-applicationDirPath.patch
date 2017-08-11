@@ -1,27 +1,27 @@
 diff --git a/src/sambacommon/sambaengine.cpp b/src/sambacommon/sambaengine.cpp
-index fb5b48c..d831490 100644
+index 8f36080..2fda3c2 100644
 --- a/src/sambacommon/sambaengine.cpp
 +++ b/src/sambacommon/sambaengine.cpp
-@@ -25,9 +25,6 @@ SambaEngine::SambaEngine(QObject *parent)
- 					 this, &SambaEngine::engineQuit, Qt::QueuedConnection);
+@@ -26,9 +26,6 @@ SambaEngine::SambaEngine(QObject *parent)
  	QObject::connect(&m_qmlEngine, &QQmlEngine::warnings,
  					 this, &SambaEngine::engineWarnings);
--
+ 
 -	// add import path
 -	m_qmlEngine.addImportPath(QCoreApplication::applicationDirPath() + "/qml");
+-
+ 	// create metadata object
+ 	m_metadata = new SambaMetadata(this);
  }
+diff --git a/src/sambacommon/sambametadata.cpp b/src/sambacommon/sambametadata.cpp
+index 1c65370..577303d 100644
+--- a/src/sambacommon/sambametadata.cpp
++++ b/src/sambacommon/sambametadata.cpp
+@@ -122,7 +122,7 @@ void SambaMetadata::loadAllMetadata()
+ #endif
+ 		paths = QString::fromLatin1(envImportPath).split(pathSep, QString::SkipEmptyParts);
+ 	}
+-	paths << (QCoreApplication::applicationDirPath() + "/metadata");
++	paths << "/usr/share/sam-ba/metadata";
  
- void SambaEngine::engineQuit()
-diff --git a/src/tools/sam-ba/sambatool.cpp b/src/tools/sam-ba/sambatool.cpp
-index fb359ce..51dff52 100644
---- a/src/tools/sam-ba/sambatool.cpp
-+++ b/src/tools/sam-ba/sambatool.cpp
-@@ -71,7 +71,7 @@ static bool portCompare(const SambaConnection* p1, const SambaConnection* p2)
- 
- bool SambaTool::loadAllMetadata()
- {
--	QDir metadataDir(applicationDirPath() + "/metadata");
-+	QDir metadataDir("/usr/share/sam-ba/metadata");
- 	foreach (QString fileName, metadataDir.entryList(QStringList() << "*.json",
- 	                                                 QDir::Files))
- 	{
+ 	foreach (QString path, paths) {
+ 		QDir metadataDir(path);
