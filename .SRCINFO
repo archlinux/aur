@@ -1,18 +1,15 @@
 pkgbase = freelarn
 	pkgdesc = The officially maintained version of Larn that is developed by Gibbon
-	pkgver = Xvart
-	pkgrel = 1
-	url = https://github.com/atsb/RL_M/releases/tag/Xvart
+	pkgver = LamaNobe
+	pkgrel = 2
+	url = https://github.com/atsb/RL_M/releases/tag/FreeLarn-LamaNobe
 	arch = i686
 	arch = x86_64
-	license = custom
-	makedepends = git
-	makedepends = ncurses
-	makedepends = jsoncpp
+	license = Apache 2.0
 	depends = ncurses
 	depends = jsoncpp
-	source = https://github.com/atsb/RL_M/releases/download/Xvart/RL_M-Xvart.tar.gz
-	md5sums = c2820e243af9bb73b62f5a93b0f5850b
+	source = https://github.com/atsb/RL_M/releases/download/FreeLarn-LamaNobe/FreeLarn-LamaNobe.tar.gz
+	md5sums = 92c3f1e558d7823ad881bd2b7ab84fe5
 
 pkgname = freelarn
 
