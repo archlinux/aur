@@ -1,6 +1,6 @@
 pkgbase = pomodoneapp
 	pkgdesc = Pomodoro timer for your favourite productivity tool
-	pkgver = 1.5.1032
+	pkgver = 1.5.1084
 	pkgrel = 1
 	url = https://pomodoneapp.com/
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = pomodoneapp
 	depends = nss
 	source = pomodoneapp.sh
 	sha256sums = f35ab3bcd2c99d89edb1636d6359af1cf2b3e7af0e890ae525a23b55535b3860
-	source_i686 = https://app.pomodoneapp.com/installers/PomoDoneApp-1.5.1032-ia32.deb
-	sha256sums_i686 = 8e1dc491dfe0c989b6e1ceb00825cf0adf7d6fd0cd0fbf2233f9995bd3418de5
-	source_x86_64 = https://app.pomodoneapp.com/installers/PomoDoneApp-1.5.1032.deb
-	sha256sums_x86_64 = 7122adc4bb7612709c2e1eca328d9b251ca25cb483f57ebb5f3c43ced16b8593
+	source_i686 = https://app.pomodoneapp.com/installers/PomoDoneApp-1.5.1084-ia32.deb
+	sha256sums_i686 = e0afa6772b11baeef051429736a63517c8a82e3df4eeb4890a89282262f9203c
+	source_x86_64 = https://app.pomodoneapp.com/installers/PomoDoneApp-1.5.1084.deb
+	sha256sums_x86_64 = ce57986028c1fe1bc7e64236c36ab2b6ca6f47075ab7cac0f347affc99061f7d
 
 pkgname = pomodoneapp
 
