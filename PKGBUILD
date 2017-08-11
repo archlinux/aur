@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=mingw-w64-ctk-widgets-git
-pkgver=0.1.0.r5218.8afaca8b
+pkgver=0.1.0.r5270.cfbb46a7
 pkgrel=1
 pkgdesc='A collection of Qt Widgets for usage in biomedical imaging applications (mingw-w64)'
 url='https://github.com/commontk/CTK'
