@@ -1,0 +1,21 @@
+diff --git a/slack.c b/slack.c
+index 0e03a0e..a3f434f 100644
+--- a/slack.c
++++ b/slack.c
+@@ -87,9 +87,13 @@ static void slack_login(PurpleAccount *account) {
+ 	const gchar *token = purple_account_get_string(account, "api_token", NULL);
+ 	if (!token || !*token)
+ 	{
+-		purple_connection_error_reason(gc,
+-			PURPLE_CONNECTION_ERROR_INVALID_SETTINGS, "API token required");
+-		return;
++		token = purple_account_get_password(account);
++		if (!token || !*token)
++		{
++			purple_connection_error_reason(gc,
++				PURPLE_CONNECTION_ERROR_INVALID_SETTINGS, "API token required");
++			return;
++		}
+ 	}
+ 
+ 	SlackAccount *sa = g_new0(SlackAccount, 1);
