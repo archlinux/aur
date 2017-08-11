@@ -3,7 +3,7 @@ pkgname=terminus-terminal
 _pkgname=terminus
 _pkgver=1.0.0
 pkgver=1.0.0.27
-pkgrel=1
+pkgrel=2
 alpha=27
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -18,9 +18,8 @@ source=("$url/releases/download/v${_pkgver}-alpha.$alpha/${_pkgname}_${_pkgver}-
 sha256sums=('8df8dcbe7d83a82cfb318768dfc943862f2d977edf5a20bb31120e45dc33dc6c')
 
 package() {
-	cd "$srcdir/"
-  unp *.deb
-  unp data.tar.xz
+  cd "$srcdir/"
+  tar -xf data.tar.xz
   cp -r usr/ $pkgdir
   cp -r opt/ $pkgdir
 
