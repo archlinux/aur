@@ -1,8 +1,8 @@
 pkgbase = inferno
 	pkgdesc = A compact operating system designed for building distributed and networked systems. (Prebuilt)
 	pkgver = 20150328
-	pkgrel = 1
-	url = https://bitbucket.org/inferno-os/inferno-os
+	pkgrel = 2
+	url = http://www.vitanuova.com/inferno/
 	install = inferno.install
 	arch = any
 	license = GPL2

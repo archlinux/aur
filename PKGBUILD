@@ -2,14 +2,14 @@
 
 pkgname=inferno
 pkgver=20150328
-pkgrel=1
+pkgrel=2
 pkgdesc='A compact operating system designed for building distributed and networked systems. (Prebuilt)'
 arch=('any')
-url='https://bitbucket.org/inferno-os/inferno-os'
+url='http://www.vitanuova.com/inferno/'
 license=('GPL2')
-#depends=('gcc-libs' 'libx11' 'libext')
+depends_i686=('gcc-libs' 'libx11' 'libext')
 depends_x86_64=('lib32-gcc-libs' 'lib32-libx11' 'lib32-libxext')
-#makedepends=('gcc' 'glibc' 'mercurial')
+#makedepends_i686=('gcc' 'glibc' 'mercurial')
 #makedepends_x86_64=('gcc-multilib' 'lib32-glibc' 'mercurial')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
