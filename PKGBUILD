@@ -1,13 +1,13 @@
 # Maintainer: pandada8 <pandada8@gmail.com>
 pkgname=v2ray
 pkgver=2.34
-pkgrel=2
+pkgrel=3
 pkgdesc="A platform for building proxies to bypass network restrictions."
 arch=('i686' 'x86_64')
 url="https://github.com/v2ray/v2ray-core"
 license=('MIT')
 
-source=('v2ray.service' 'LICENSE')
+source=('v2ray.service' 'https://raw.githubusercontent.com/v2ray/v2ray-core/master/LICENSE')
 
 source_i686=(v2ray-linux-32.zip::https://github.com/v2ray/v2ray-core/releases/download/v$pkgver/v2ray-linux-32.zip)
 source_x86_64=(v2ray-linux-64.zip::https://github.com/v2ray/v2ray-core/releases/download/v$pkgver/v2ray-linux-64.zip)
