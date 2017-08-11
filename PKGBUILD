@@ -1,4 +1,6 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Chris Clonch <chris at theclonchs dot com>
+# Contributor: Justin Dray <justin@dray.be>
 pkgname='chronograf'
 pkgver='1.3.6.0'
 pkgrel='1'
