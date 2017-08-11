@@ -1,20 +1,21 @@
 pkgbase = selinux-refpolicy-src
 	pkgdesc = SELinux reference policy sources
-	pkgver = 20170204
+	pkgver = 20170805
 	pkgrel = 1
 	url = https://github.com/TresysTechnology/refpolicy/wiki
 	arch = any
 	groups = selinux
 	groups = selinux-policies
 	license = GPL
-	makedepends = checkpolicy>=2.1.8
-	makedepends = policycoreutils>=2.1.10
-	makedepends = libsepol>=2.1.4
-	makedepends = libsemanage>=2.0.29
+	makedepends = python
+	makedepends = checkpolicy>=2.6
+	makedepends = policycoreutils>=2.6
+	makedepends = libsepol>=2.7
+	makedepends = libsemanage>=2.6
 	optdepends = linux-hardened: Linux kernel with SELinux support
 	optdepends = linux-selinux: Linux kernel with SELinux support
-	source = https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20170204.tar.bz2
-	sha256sums = 5e4daee61d89dfdc8c7bf369f81c99845931e337916dc6401e301c5de57ea336
+	source = https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20170805.tar.bz2
+	sha256sums = 045709f5e44199f402149b31c6aab9666bdb1540a5c5ed0312a46c90dedfa52d
 
 pkgname = selinux-refpolicy-src
 
