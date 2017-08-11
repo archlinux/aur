@@ -6,11 +6,11 @@
 
 pkgname=unity-editor-beta
 _version=2017.2.0
-_build=b2
-_buildtag=20170707
-_randomstring=b6e0e521da90
+_build=b6
+_buildtag=20170809
+_randomstring=2b451a7da81d
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=3
+pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 url='https://unity3d.com/'
@@ -33,13 +33,13 @@ optdepends=('ffmpeg: for WebGL exporting'
             'java-environment: for Android and Tizen exporting'
             'android-sdk: for Android Remote'
             'android-udev: for Android Remote')
-noextract=("unity-editor-installer-${_version}${_build}.sh")
-source=("http://beta.unity3d.com/download/${_randomstring}/unity-editor-installer-${_version}${_build}.sh"
+noextract=("unity-editor-installer-${_version}x${_build}Linux.sh")
+source=("http://beta.unity3d.com/download/${_randomstring}/${noextract}"
         'EULA'
         'unity-editor-beta'
         'monodevelop-unity-beta'
         'unity-monodevelop-beta.png')
-sha256sums=('470c8254b66a74bd38215907bff3f303705ff87630eedddf127d63af049e7487'
+sha256sums=('efbfb04b104fa15769ae618160eb692e54bc8a2565cb986a0a3e8ada12e04b38'
             'd855b6ffb61b53680f98823b5225bc6ffe504557a00f650fbe1cf58ae8555195'
             'a6183b216e30a472b9592059f64a3a6279a9d3e56c5c343c93713b03fa863c4c'
             '336ffc3f63e622aa394e1022c15a58ce94865d7b6d9465cbcca4ce943285763a'
@@ -62,7 +62,7 @@ build() {
 }
 
 package() {
-  local extraction_dir="${srcdir}/unity-editor-${_version}${_build}"
+  local extraction_dir="${srcdir}/unity-editor-${_version}x${_build}Linux"
 
   mkdir -p "${pkgdir}/opt/"
   mv ${extraction_dir} ${pkgdir}/opt/UnityBeta
@@ -71,18 +71,7 @@ package() {
   ln -s /usr/bin/python2 ${pkgdir}/opt/UnityBeta/Editor/python
 
   # Fix permissions
-  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/*
-  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/WindowsStoreApps/*
-  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/HolographicSimulation/Rooms
-  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/OSXUniversal/AudioPluginOculusSpatializer.bundle
-  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/OSXUniversal/AudioPluginOculusSpatializer.bundle/Contents
-  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/OSXUniversal/AudioPluginOculusSpatializer.bundle/Contents/MacOS
-  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/OSXUniversal/OVRPlugin.bundle
-  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/OSXUniversal/OVRPlugin.bundle/Contents
-  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/OSXUniversal/OVRPlugin.bundle/Contents/MacOS
-  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/PlaybackEngines/WebGLSupport/BuildTools/Emscripten_Linux/node/
-  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/PlaybackEngines/WebGLSupport/BuildTools/Emscripten_Linux/node/0.10.18_64bit
-  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/PlaybackEngines/WebGLSupport/BuildTools/Emscripten_Linux/node/0.10.18_64bit/bin
+  find ${pkgdir}/opt/UnityBeta/Editor/Data -type d -exec chmod ga+rx {} \;
 
   mv "${pkgdir}/opt/UnityBeta/unity-editor.desktop" "${pkgdir}/opt/UnityBeta/unity-editor-beta.desktop"
   mv "${pkgdir}/opt/UnityBeta/unity-monodevelop.desktop" "${pkgdir}/opt/UnityBeta/unity-monodevelop-beta.desktop"
