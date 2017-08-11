@@ -1,0 +1,16 @@
+pkgbase = selinux-dbus-config
+	pkgdesc = SELinux GUI tools
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://github.com/SELinuxProject/selinux/wiki
+	arch = any
+	groups = selinux
+	license = GPL2
+	depends = python
+	depends = selinux-python
+	conflicts = policycoreutils<2.7
+	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/selinux-dbus-2.7.tar.gz
+	sha256sums = a7f3dbe68c0d02cd1cbe6aac06e87c2957668cb88083389654fabacb79641ae4
+
+pkgname = selinux-dbus-config
+
