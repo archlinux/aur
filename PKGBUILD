@@ -6,8 +6,8 @@
 
 pkgname=luakit-git
 gitname=luakit
-pkgver=2017.08.10.r0.gc5328c22
-pkgrel=3
+pkgver=2017.08.10.r6.gc32dc344
+pkgrel=1
 pkgdesc='Luakit: now updated for WebKit 2'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://github.com/luakit/luakit'
