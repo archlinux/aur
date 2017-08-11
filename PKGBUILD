@@ -1,6 +1,6 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 pkgname=nanovg-git
-pkgver=r324.c75fc0b
+pkgver=r334.a2784ba
 pkgrel=1
 pkgdesc="NanoVG is small antialiased vector graphics rendering library for OpenGL."
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/memononen/nanovg"
 license=('ZLIB')
 groups=()
 depends=()
-makedepends=('git' 'premake')
+makedepends=('git' 'premake' 'patch')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -29,6 +29,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
+	patch premake4.lua < "$startdir/disable_examples.patch"
 	premake4 gmake
 	cd build
 	make
