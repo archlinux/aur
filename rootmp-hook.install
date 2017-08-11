@@ -1,0 +1,9 @@
+post_install() 
+{
+  echo "To use this hook add hooks copytoram or overlay"
+}
+
+post_remove() 
+{
+  echo "remember to remove copytoram or overlay from your mkinitcpio hooks array if you added it"
+}
