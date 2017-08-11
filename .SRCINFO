@@ -1,6 +1,6 @@
 pkgbase = blis-git
 	pkgdesc = BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group
-	pkgver = 0.2.2.47.g60a1eeb2
+	pkgver = 0.2.2.48.gf86ce54d
 	pkgrel = 1
 	url = https://github.com/flame/blis
 	arch = i686
