@@ -3,7 +3,7 @@
 _pkgname=gimp
 pkgname=${_pkgname}-devel
 pkgver=2.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Image Manipulation Program (Development version)"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org/"
@@ -24,6 +24,18 @@ source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.t
 sha256sums=('c13ac540fd0bd566d7bdd404afe8a04ec0cb1e547788995cd4e8b218c1057b8a'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  _mypaintver=$( ls /usr/lib/libmypaint-*.so | grep -o -E '\-[0-9]+(\.[0-9]+)*' | head -1 )
+  sed -i "s:\(libmypaint\)\( >= libmypaint_required_version\):\1${_mypaintver}\2:g" configure.ac
+  
+  autoreconf -vi
+  # python2 fixes
+  sed -i 's:PYTHON=python$:&2:' plug-ins/pygimp/py-compile
+  find ./plug-ins -type f -name *py -exec \
+    sed -i 's|#!.*python$|&2|' '{}' \;
+}
+  
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   PYTHON=/usr/bin/python2 ./configure --prefix=/usr --sysconfdir=/etc \
@@ -36,7 +48,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' "${pkgdir}"/usr/lib/gimp/2.0/plug-ins/*.py
   install -D -m644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.0/palettes/Linux.gpl"
 
   #rm "${pkgdir}/usr/share/man/man1/gimp-console-${pkgver%.*}.1"
