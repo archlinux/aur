@@ -1,0 +1,14 @@
+pkgbase = xerox-workcentre-5845-5855
+	pkgdesc = Xerox WorkCentre 5845/5855 printer driver for CUPS
+	pkgver = 5.482.0.0
+	pkgrel = 1
+	url = http://www.support.xerox.com/support/workcentre-5845-5855
+	arch = x86_64
+	license = custom
+	makedepends = unrar
+	depends = libcups
+	source = http://download.support.xerox.com/pub/drivers/WC58XA/drivers/win10/en_GB/WC58XX_5.482.0.0_PPD_English.exe
+	sha512sums = b965a5131f6e655e9c2229071c73b575e58ae9b3f2e2284511f6b5cea8c492c754366c007d69ae34ba87d405bedb3e54847619a877901262da57b177cdb37d2d
+
+pkgname = xerox-workcentre-5845-5855
+
