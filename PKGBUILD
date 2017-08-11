@@ -5,8 +5,8 @@
 
 _pkgname=terminus-font
 pkgname=${_pkgname}-ll2-td1-ttf
-pkgver=4.40
-pkgrel=2
+pkgver=4.46
+pkgrel=1
 pkgdesc="A superb, monospace bitmap font (for X11 and console) with ll2 patch (pass the il1I test) and td1 patch (centered ascii tilde) (TTF version)"
 arch=("any")
 url="http://files.ax86.net/terminus-ttf"
@@ -18,8 +18,8 @@ provides=("terminus-font-ttf")
 install="terminus-font.install"
 source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "git+https://github.com/Tblue/mkttf")
-md5sums=("1e1df0d2c612c374ebe7966f90f04e0c"
-         "SKIP")
+md5sums=('368f512a88b5855fe2f12a9262da52f2'
+         'SKIP')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
