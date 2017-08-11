@@ -17,10 +17,7 @@
 
 pkgbase=grpc
 pkgname=('grpc' 'php-grpc')
-pkgver=1.4.2
-#_pkgver=release-$(echo $pkgver | tr . _)
-_pkgprefix=v
-_pkgver="$(echo "$pkgver" | tr _ -)"
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
@@ -30,13 +27,13 @@ makedepends=('re2c' 'openssl-1.0' 'protobuf>=3' 'php' 'c-ares'
              'chrpath'
 )
 source=(
-    https://github.com/$pkgname/$pkgname/archive/$_pkgprefix$_pkgver.tar.gz
+    https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz
 )
-noextract=("nanopb-$_nanopbver.tar.gz")
-md5sums=('de84c023389b7c36025f4bd0703c5a1e')
+noextract=()
+md5sums=('09be11cb134ae53a5697294b402941f2')
 
 prepare() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # We are not interested in being strict here
   # regardless of warning type.
@@ -44,7 +41,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # gRPC is not compatible yet with openssl-1.1
   export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
@@ -54,16 +51,16 @@ build() {
   env --unset=BUILDDIR make $MAKEFLAGS prefix=/usr
 
   # PHP
-  cd "$srcdir/$pkgbase-$_pkgver/src/php/ext/$pkgbase"
+  cd "$srcdir/$pkgbase-$pkgver/src/php/ext/$pkgbase"
   phpize
-  LDFLAGS=-L"$srcdir/$pkgname-$_pkgver/libs/opt" ./configure --enable-grpc="$srcdir/$pkgname-$_pkgver"
+  LDFLAGS=-L"$srcdir/$pkgname-$pkgver/libs/opt" ./configure --enable-grpc="$srcdir/$pkgname-$pkgver"
   make $MFLAGS
 }
 
 check() {
   true
   # PHP
-  cd "$srcdir/$pkgbase-$_pkgver/src/php/ext/$pkgbase"
+  cd "$srcdir/$pkgbase-$pkgver/src/php/ext/$pkgbase"
   yes n | make test # Do not send reports.
   echo # Fix end of line.
 }
@@ -77,7 +74,7 @@ _install_dir() (
 package_grpc() {
   depends=('c-ares' 'openssl-1.0' 'protobuf>=3')
 
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   _install_dir 755 bins/opt usr/bin
   _install_dir 755 libs/opt usr/lib
   _install_dir 644 include usr/include
@@ -89,12 +86,12 @@ package_php-grpc() {
   depends=("grpc=${pkgver}-${pkgrel}" 'php')
 
   # Install PHP extension.
-  cd "$srcdir/$pkgbase-$_pkgver/src/php/ext/$pkgbase"
+  cd "$srcdir/$pkgbase-$pkgver/src/php/ext/$pkgbase"
   make install "INSTALL_ROOT=$pkgdir"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   # Fix wrong RPATH.
   chrpath -r '/usr/lib' "$pkgdir/usr/lib/php/modules/grpc.so"
   # Do we need to install something else? Contributions are welcome.
-  cd "$srcdir/$pkgbase-$_pkgver/src/php"
+  cd "$srcdir/$pkgbase-$pkgver/src/php"
 }
