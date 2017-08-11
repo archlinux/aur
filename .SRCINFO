@@ -1,0 +1,16 @@
+pkgbase = deepin.com.qq.im.light
+	pkgdesc = Deepin Wine QQ Light 7.9.
+	pkgver = 7.9.14308deepin8
+	pkgrel = 2
+	url = http://im.qq.com/
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	makedepends = tar
+	depends = deepin-wine
+	noextract = deepin.com.qq.im.light_7.9.14308deepin8_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.qq.im.light/deepin.com.qq.im.light_7.9.14308deepin8_i386.deb
+	md5sums = SKIP
+
+pkgname = deepin.com.qq.im.light
+
