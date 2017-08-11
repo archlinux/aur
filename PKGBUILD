@@ -5,7 +5,7 @@
 # Contributor: J. W. Birdsong <jwbirdsong@gmail.com>
 
 pkgname=luakit-git
-gitname=luakit
+_gitname=luakit
 pkgver=2017.08.10.r6.gc32dc344
 pkgrel=1
 pkgdesc='Luakit: now updated for WebKit 2'
@@ -28,21 +28,21 @@ source=("git://github.com/luakit/luakit#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
-   cd "$srcdir/$gitname"
+   cd "$srcdir/$_gitname"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${gitname}"
+  cd "${srcdir}/${_gitname}"
   make  DEVELOPMENT_PATHS=0 USE_LUAJIT=1 PREFIX=/usr all
 }
 
 check(){
- cd "${srcdir}/${gitname}"
+ cd "${srcdir}/${_gitname}"
  make run-tests
 }
 
 package() {
-  cd "${srcdir}/${gitname}"
+  cd "${srcdir}/${_gitname}"
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
