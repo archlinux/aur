@@ -1,0 +1,13 @@
+pkgbase = project-lemon
+	pkgdesc = A tiny judging environment for OI contest
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://code.google.com/p/project-lemon/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt4
+
+pkgname = project-lemon
+
