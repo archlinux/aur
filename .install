@@ -8,6 +8,10 @@ pre_install() {
 
 ## arg 1:  the new package version
 post_install() {
+    # Set permissions to the data directories
+    chown -R scylla:scylla /var/lib/scylla
+    chown -R scylla:scylla /var/lib/scylla-housekeeping
+
     # Patch Scylla YAML config for Swagger UI and Doc directories
     grep -v api_ui_dir /etc/scylla/scylla.yaml | grep -v api_doc_dir > /tmp/scylla.yaml
     echo "api_ui_dir: /usr/lib/scylla/swagger-ui/dist/" >> /tmp/scylla.yaml

@@ -17,7 +17,7 @@ depends=('hwloc' 'systemd' 'collectd' 'python-yaml' 'python2-yaml' 'python-urwid
 makedepends=('git' 'gcc' 'antlr3-cpp-headers-git' 'libyaml' 'yaml-cpp'
                 'lz4' 'zlib' 'snappy' 'jsoncpp' 'gnutls' 'ninja'
                 'ragel' 'libaio' 'crypto++' 'xfsprogs' 'jre8-openjdk-headless'
-                'numactl' 'libpciaccess' 'libxml2' 'boost-libs'
+                'numactl' 'libpciaccess' 'libxml2' 'boost-libs' 'thrift'
                 'lksctp-tools' 'protobuf' 'libunwind' 'systemtap')
 # Relations
 provides=('scylla')
@@ -57,10 +57,10 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    sed -i -e "s@#!/usr/bin/python@#!/usr/bin/python2@" scylla-housekeeping
-    sed -i -e "s@#!/usr/bin/python@#!/usr/bin/python2@" seastar/scripts/dpdk_nic_bind.py
-    sed -i -e "s@#!/usr/bin/python@#!/usr/bin/python2@" dist/common/scripts/scylla_config_get.py
-    sed -i -e "s@#!/usr/bin/python@#!/usr/bin/python2@" dist/common/scripts/scylla_io_setup
+    sed -i -e 's@#!/usr/bin/python$@#!/usr/bin/python2@' scylla-housekeeping
+    sed -i -e 's@#!/usr/bin/python$@#!/usr/bin/python2@' seastar/scripts/dpdk_nic_bind.py
+    sed -i -e 's@#!/usr/bin/python$@#!/usr/bin/python2@' dist/common/scripts/scylla_config_get.py
+    sed -i -e 's@#!/usr/bin/python$@#!/usr/bin/python2@' dist/common/scripts/scylla_io_setup
     ./configure.py --mode=release --cflags="-fvisibility=default -Wno-error=maybe-uninitialized -Wno-error=unused-function"
     ninja -j`nproc --all` build/release/scylla build/release/iotune
     cp dist/common/systemd/scylla-server.service.in build/scylla-server.service
@@ -118,11 +118,11 @@ package() {
     install -m644 ORIGIN "${pkgdir}${_docdir}/scylla/"
     install -d -m755 "${pkgdir}${_docdir}/scylla/licenses/"
     install -m644 licenses/* "${pkgdir}${_docdir}/scylla/licenses/"
-    install -o scylla -g scylla -d -m755 "${pkgdir}${_sharedstatedir}/scylla/"
-    install -o scylla -g scylla -d -m755 "${pkgdir}${_sharedstatedir}/scylla/data"
-    install -o scylla -g scylla -d -m755 "${pkgdir}${_sharedstatedir}/scylla/commitlog"
-    install -o scylla -g scylla -d -m755 "${pkgdir}${_sharedstatedir}/scylla/coredump"
-    install -o scylla -g scylla -d -m755 "${pkgdir}${_sharedstatedir}/scylla-housekeeping"
+    install -d -m755 "${pkgdir}${_sharedstatedir}/scylla/"
+    install -d -m755 "${pkgdir}${_sharedstatedir}/scylla/data"
+    install -d -m755 "${pkgdir}${_sharedstatedir}/scylla/commitlog"
+    install -d -m755 "${pkgdir}${_sharedstatedir}/scylla/coredump"
+    install -d -m755 "${pkgdir}${_sharedstatedir}/scylla-housekeeping"
     install -d -m755 "${pkgdir}${_libdir}/swagger-ui"
     cp -r swagger-ui/dist "${pkgdir}${_libdir}/swagger-ui"
     install -d -m755 "${pkgdir}${_libdir}/api"
