@@ -1,6 +1,6 @@
 #Maintainer Mike Harris <mike.a.harris@outlook.com>
 pkgname=plasma5-applets-kde-arch-update-notifier-git
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="A KDE plasmoid for your system tray notifying you of available updates"
 url="https://github.com/I-Dream-in-Code/kde-arch-update-plasmoid"
@@ -22,6 +22,6 @@ build() {
 }
 package(){
 	cd ${srcdir}/kde-arch-update-plasmoid/build
-	sudo make install
+	make DESTDIR="$pkgdir" install
 	
 }
