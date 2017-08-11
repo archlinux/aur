@@ -1,7 +1,7 @@
 # Mantainer: M0Rf30
 _name=drbl
 pkgname=${_name}-experimental
-pkgver=2.21.1
+pkgver=2.25.10
 pkgrel=1
 pkgdesc="Diskless Remote Boot in Linux: manage the deployment of the GNU/Linux operating system across many clients"
 arch=('i686' 'x86_64')
@@ -33,4 +33,6 @@ package() {
 }
 
 md5sums=('883215a326def7dad3d4434db65150b2'
+         'f01eac478f1ae62f505de645de96c68a')
+md5sums=('9bebdca9b20b0309d6b7c4b2378e11d6'
          'f01eac478f1ae62f505de645de96c68a')
