@@ -1,10 +1,10 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - This package provides an implementation of a 2D costmap"
+pkgdesc="ROS - This package provides an implementation of a 2D costmap."
 url='http://wiki.ros.org/costmap_2d'
 
 pkgname='ros-kinetic-costmap-2d'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,6 @@ ros_makedepends=(ros-kinetic-message-filters
   ros-kinetic-voxel-grid
   ros-kinetic-catkin
   ros-kinetic-pcl-ros
-  ros-kinetic-rostest
   ros-kinetic-laser-geometry)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
@@ -43,7 +42,6 @@ ros_depends=(ros-kinetic-message-filters
   ros-kinetic-std-msgs
   ros-kinetic-pluginlib
   ros-kinetic-dynamic-reconfigure
-  ros-kinetic-rostest
   ros-kinetic-map-msgs
   ros-kinetic-sensor-msgs
   ros-kinetic-voxel-grid
@@ -61,7 +59,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-costmap_2d-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/costmap_2d/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9feba9845d06711e12d90b28300db2a05fc3e0d2f6c318d1e218674b71cd70c2')
+sha256sums=('2529d2bbbc039d752a6932636f128713d44db0674ef1759a473f30c6c101aee7')
 
 build() {
   # Use ROS environment variables
