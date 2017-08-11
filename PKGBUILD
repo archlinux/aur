@@ -6,7 +6,7 @@
 
 pkgname="brother-mfc-j5330dw"
 pkgver="1.0.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="LPR and CUPS driver for the Brother MFC-J5330DW"
 arch=('i686' 'x86_64')
 url="http://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=mfcj5330dw_us_eu_as"
@@ -40,7 +40,6 @@ prepare() {
 
   # patch an error (?) in the perl script from brother
   patch -p1 "${srcdir}"/opt/brother/Printers/mfcj5330dw/cupswrapper/brother_lpdwrapper_mfcj5330dw < brother_lpdwrapper_mfcj5330dw.patch
-  patch -p1 "${srcdir}"/usr/lib/cups/filter/brother_lpdwrapper_mfcj5330dw < brother_lpdwrapper_mfcj5330dw.patch
 
   # go to the cupswrapper directory and find the source file from which to generate a ppd and wrapperfile
   cd `find . -type d -name 'cupswrapper'`
