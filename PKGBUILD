@@ -4,7 +4,7 @@ pkgdesc="ROS - voxel_grid provides an implementation of an efficient 3D voxel gr
 url='http://wiki.ros.org/voxel_grid'
 
 pkgname='ros-kinetic-voxel-grid'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-voxel_grid-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/voxel_grid/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5fc87cfcae3a3f00c3b7c8e62b3a7cbbf04b2f459578694628e63fba981690d2')
+sha256sums=('fc15d2fd64342ec8504374f9a98a6b686b82379734a989602a63bf9da0336790')
 
 build() {
   # Use ROS environment variables
