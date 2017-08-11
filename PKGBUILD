@@ -11,7 +11,7 @@ license=('AGPL')
 
 # Dependencies
 depends=('hwloc' 'systemd' 'collectd' 'python-yaml' 'python2-yaml' 'python-urwid'
-            'pciutils' 'python-pyparsing' 'python2-requests' 'curl'
+            'pciutils' 'python-pyparsing' 'python2-requests'
             'util-linux' 'python-pyudev' 'python-setuptools')
 
 makedepends=('git' 'gcc' 'antlr3-cpp-headers-git' 'libyaml' 'yaml-cpp'
