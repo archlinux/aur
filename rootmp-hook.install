@@ -1,9 +1,9 @@
 post_install() 
 {
-  echo "To use this hook add hooks copytoram or overlay"
+  echo "To use this hook add rootmp in mkinitcio hooks"
 }
 
 post_remove() 
 {
-  echo "remember to remove copytoram or overlay from your mkinitcpio hooks array if you added it"
+  echo "remember to remove rootmp from your mkinitcpio hooks array if you added it"
 }
