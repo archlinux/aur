@@ -2,7 +2,7 @@
 
 pkgname='hopper'
 _pkgname='hopperv4'
-pkgver='4.2.11'
+pkgver='4.2.12'
 pkgrel='1'
 pkgdesc='Reverse engineering tool that lets you disassemble, decompile and debug your applications'
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('hicolor-icon-theme' 'libbsd' 'python2' 'qt5-base')
 provides=("${pkgname}" "${_pkgname}")
 conflicts=("${pkgname}" "${_pkgname}")
 source=("https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-${pkgver}-Linux.pkg.tar.xz")
-sha1sums=('e9341070d208c100031141614968b0635886c722')
-sha256sums=('f8ce4dba08631c7b84900df1822dfd4d8adade459db31c9916d677d65a8d40a3')
+sha1sums=('f13e3ce7acfd33f1290ccd63f398d4f9b9cb62b7')
+sha256sums=('1dcd5a6be2326d4e12348e26778b59fa31c7f1ce615eb0ab7d53a8abcac9f1f2')
 
 package() {
   # Copy package content
@@ -26,8 +26,6 @@ package() {
 
   # Remove launcher from Accessories
   sed -i '10s|Utility;||' ${pkgdir}/usr/share/applications/hopper-v4.desktop
-  # Pass launcher script args forward
-  sed -i '3s|Hopper|Hopper "$@"|' ${pkgdir}/opt/hopper-v4/bin/hopper-launcher.sh
 
   #TODO locate license file
   #install -Dm644 license ${pkgdir}/usr/share/licenses/${pkgname}/license
