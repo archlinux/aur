@@ -1,0 +1,24 @@
+pkgbase = devrantron
+	pkgdesc = DevRant client written in NodeJS
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/tahnik/devrantron
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = wget
+	makedepends = jq
+	makedepends = binutils
+	makedepends = tar
+	makedepends = xz
+	depends = gconf
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = libxtst
+	depends = nss
+	depends = libxss
+	provides = devrantron
+	source = https://api.github.com/repos/tahnik/devrantron/releases/latest
+	sha1sums = SKIP
+
+pkgname = devrantron
+
