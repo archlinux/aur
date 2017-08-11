@@ -1,23 +1,17 @@
 pkgbase = clearlooks-phenix-gtk-theme-git
 	pkgdesc = Clearlooks-Phénix project aims at creating a GTK3 port of Clearlooks
 	pkgver = 6.0.3.r389
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jpfleury/clearlooks-phenix
 	arch = any
 	license = LGPL
-	license = GPL3) depends=(gtk-engine-murrine) makedepends=(git) optdepends=(mist-icon-theme:
-	license = The
-	license = original
-	license = clearlooks
-	license = icon
-	license = theme lib32-gtk-engine-murrine:
-	license = Required
-	license = for
-	license = 32-bit
-	license = apps
-	license = in
-	license = 64-bit
-	license = environments) provides=(clearlooks-phenix-gtk-theme) conflicts=(clearlooks-phenix-gtk-theme
+	license = GPL3
+	makedepends = git
+	depends = gtk-engine-murrine
+	optdepends = mist-icon-theme: The original clearlooks icon theme
+	optdepends = lib32-gtk-engine-murrine: Required for 32-bit apps in 64-bit environments
+	provides = clearlooks-phenix-gtk-theme
+	conflicts = clearlooks-phenix-gtk-theme
 	options = !strip
 	source = Clearlooks-Phenix::git+https://github.com/jpfleury/clearlooks-phenix.git
 	md5sums = SKIP
