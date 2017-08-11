@@ -29,7 +29,6 @@ build()
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DWITH_CGAL_Qt5=OFF \
-      -DCMAKE_CXX_FLAGS_RELEASE="" \
       ..
     make
     popd
