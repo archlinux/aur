@@ -5,6 +5,5 @@
 !chromium-dev.install
 !chromium-dev.svg
 !chromium-widevine-r1.patch
-!BUILD.gn
 !minizip.patch
 !vaapi_patch_r2.patch

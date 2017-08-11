@@ -12,13 +12,13 @@
 _use_clang=1     # Use clang compiler (downloaded binaries from google). Results in faster build and smaller chromium.
 _use_ccache=0    # Use ccache when build.
 _debug_mode=0    # Build in debug mode.
-_enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some graphic cards, for example, NVIDIA
+_enable_vaapi=0  # Patch for VA-API HW acceleration NOTE: don't work in some graphic cards, for example, NVIDIA
 
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=61.0.3163.25
+pkgver=62.0.3178.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
@@ -74,38 +74,39 @@ if [ "${_enable_vaapi}" = "1" ]; then
                'libva-mesa-driver: HW video acceleration for Nouveau, R600 and RadeonSI users'
                'libva-intel-driver: HW video acceleration for Intel users'
                )
+  depends+=('libva')
 fi
 source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "git+https://github.com/foutrelis/chromium-launcher.git"
         'chromium-dev.svg'
-        'BUILD.gn'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r14.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc-r1.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-atk-r1.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-zlib-r1.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r15.patch'
         # Misc Patches
         'minizip.patch'
         'vaapi_patch_r2.patch'
-        # Patch from crbug (chromium bugtracker)
+        # Patch from crbug (chromium bugtracker) or Arch chromium package
         'chromium-widevine-r1.patch'
+        'chromium-blink-gcc7.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-blink-gcc7.patch?h=packages/chromium' # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=853347
+        'chromium-v8-gcc7.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-v8-gcc7.patch?h=packages/chromium' # https://bugs.chromium.org/p/chromium/issues/detail?id=614289
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-55.0.2873.0.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             'SKIP'
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
-            '07df380530299b0450045edd655f924f0e0442abccb05c2336ed2aea9d5ee044'
             # Patch form Gentoo
             'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
-            '98784c4a0a793ecf34987bc8f91ae360d78596a4a59dd47651411381f752a080'
-            '11cffe305dd49027c91638261463871e9ecb0ecc6ecc02bfa37b203c5960ab58'
-            'fc0e9abb77b6f8e21a7601ff53f267a854736d711b530be5bbd80d976678e98d'
+            '5de85a0e1be742ad629443655730028ee918826ae8e0dcade927b8877c5a3ad5'
+            '8aee756a778e98b722cc55421e58466b3b35a132fc91d8f8a309a2df9ca559ac'
             # Misc Patches
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             '4ec8b2df4859b9d26b8ea4afc205f563f59844c54a6659bb279776b93163a0ce'
             # Patch from crbug (chromium bugtracker)
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
+            'f94310a7ba9b8b777adfb4442bcc0a8f0a3d549b2cf4a156066f8e2e28e2f323'
+            '46dacc4fa52652b7d99b8996d6a97e5e3bac586f879aefb9fb95020d2c4e5aec'
             )
 options=('!strip')
 install=chromium-dev.install
@@ -223,7 +224,6 @@ _keeplibs=(
   'third_party/libsecret'
   'third_party/libsrtp'
   'third_party/libudev'
-  'third_party/libva'
   'third_party/libvpx'
   'third_party/libvpx/source/libvpx/third_party/x86inc'
   'third_party/libwebm'
@@ -236,7 +236,7 @@ _keeplibs=(
   'third_party/modp_b64'
   'third_party/mt19937ar'
   'third_party/node'
-  'third_party/node/node_modules/vulcanize/third_party/UglifyJS2'
+  'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
   'third_party/openmax_dl'
   'third_party/ots'
   'third_party/pdfium'
@@ -288,7 +288,6 @@ _keeplibs=(
 )
 
 # Set build flags.
-
 _flags=(
   'is_debug=false'
   'enable_widevine=true'
@@ -315,9 +314,13 @@ _flags=(
   'use_custom_libcxx=false'
 )
 
+# Enable VA-API, see https://chromium-review.googlesource.com/c/569529
+if [ "${_enable_vaapi}" = 1 ]; then
+  _flags+=('use_vaapi=true')
+fi
+
 # Set the bundled/external components.
 # TODO: need ported to GN as GYP doing before. see status page: https://crbug.com/551343
-
 _use_system=(
   'ffmpeg'
   'flac'
@@ -347,29 +350,24 @@ _use_system=(
 
 # Conditionals.
 if [ "${_debug_mode}" = "1" ]; then
-  _keeplibs+=(
-    'native_client/src/third_party/valgrind'
-  )
+  _keeplibs+=('native_client/src/third_party/valgrind')
 fi
 
 # https://crbug.com/678661
 if [ "${_build_nacl}" = "1" ]; then
-  _keeplibs+=(
-    'third_party/icu' # https://crbug.com/678661
-  )
+  _keeplibs+=('third_party/icu') # https://crbug.com/678661
 elif [ "${_build_nacl}" = "0" ]; then
-   depends+=('icu')
-   _use_system+=('icu')
+  depends+=('icu')
+  _use_system+=('icu')
 fi
 
 ################################################
 
 prepare() {
-
   # Use custom toolchain.
   _flags+=(
-    "custom_toolchain=\"${srcdir}:default\""
-    "host_toolchain=\"${srcdir}:default\""
+    "custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
+    "host_toolchain=\"//build/toolchain/linux/unbundle:default\""
   )
 
   # Set Python2 path.
@@ -389,8 +387,8 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r2.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r14.patch"
-  patch -p1 -i "${srcdir}/chromium-atk-r1.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r15.patch"
+  patch -p1 -i "${srcdir}/chromium-system-zlib-r1.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
@@ -448,9 +446,6 @@ prepare() {
   # Use the file at run time instead of effectively compiling it in.
   sed 's|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g' -i device/usb/BUILD.gn
 
-  msg2 "Update libaddressinput strings."
-  python2 third_party/libaddressinput/chromium/tools/update-strings.py
-
   if [ "${_build_nacl}" = "1" ]; then
     msg2 "Setup NaCl/PNaCl SDK: Download and install NaCl/PNaCl toolchains"
     python2 build/download_nacl_toolchains.py --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator sync --extract
@@ -459,17 +454,20 @@ prepare() {
   fi
 
 _set_gcc() {
-    _flags+=(
-      'is_clang=false'
-      'clang_use_chrome_plugins=false'
-    )
-    export CC="${_ccache} gcc -Wall"
-    export CXX="${_ccache} g++ -Wall"
-    patch -p1 "${srcdir}/chromium-gcc-r1.patch"
+  _flags+=(
+    'is_clang=false'
+    'clang_use_chrome_plugins=false'
+  )
+  export CC="${_ccache} gcc -Wall"
+  export CXX="${_ccache} g++ -Wall"
+  patch -p1 "${srcdir}/chromium-v8-gcc7.patch"
+  patch -p1 "${srcdir}/chromium-blink-gcc7.patch"
 }
 
   # Setup compilers.
   # Use system/bundled Clang? or GCC?.
+  export AR=ar
+  export NM=nm
   if [ "${_use_clang}" = "0" ]; then
     _set_gcc
   elif [ "${_use_clang}" = "1" ]; then
@@ -519,8 +517,8 @@ package() {
 
   pushd "chromium-${pkgver}/out/Release" &> /dev/null
 
+  # Build with debug needs a tons of space. remove this save that space, but break the rebuild process.
   if [ "${_debug_mode}" = "1" ]; then
-    # Build with debug needs a tons of space. remove this save that space, but break the rebuild process.
     rm -fr "chromium-${pkgver}/third_party"
   fi
 
@@ -581,6 +579,7 @@ package() {
     esac
     install -Dm644 "${_branding}/product_logo_${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/chromium-dev.png"
   done
+    install -Dm644 "${srcdir}/chromium-dev.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/chromium-dev.svg"
 
   # Install NaCL stuff if is detected.
   if [ "${_build_nacl}" = "1" ]; then
@@ -599,7 +598,6 @@ package() {
       -e 's|@@USR_BIN_SYMLINK_NAME@@|chromium-dev|g' \
       -e 's|@@PACKAGE@@|chromium-dev|g' \
       -i "${pkgdir}/usr/share/applications/chromium-dev.desktop"
-  install -Dm644 chromium-dev.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/chromium-dev.svg"
   install -Dm644 "chromium-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE"
 
   if [ "${_debug_mode}" = "0" ]; then
