@@ -6,7 +6,7 @@
 _qt_module=qtdeclarative
 pkgname='apple-darwin-qt5-declarative'
 pkgver=5.9.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Classes for QML and JavaScript languages (apple-darwin)"
 depends=('apple-darwin-qt5-base')
@@ -64,6 +64,9 @@ package() {
     for _config in "${_configurations[@]}"; do
       pushd build-${_arch}-${_config##*=}
       make INSTALL_ROOT="$pkgdir" install
+
+      # QmlDebuggerServiceFactory plugin is not available so remove CMake plugin file for it
+      rm "${pkgdir}/${_osxcrossprefix}/${_arch}/lib/cmake/Qt5Qml/Qt5Qml_QQmlDebuggerServiceFactory.cmake"
 
       # Strip the binaries, remove debug libraries
       find "${pkgdir}/${_osxcrossprefix}" -name "*.dylib" -a -not -iname '*_debug*' -exec ${_osxcrossprefix}/bin/${_arch}-strip -S -x {} \;
