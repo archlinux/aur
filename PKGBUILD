@@ -3,6 +3,7 @@
 
 pkgname=wireshark-git
 pkgver=2.3.0rc0+1510+gc274046
+pkgver=2.5.0rc0+667+gef24608db1
 pkgrel=1
 pkgdesc="A free network protocol analyzer for Unix/Linux. GIT version"
 arch=('i686' 'x86_64')
@@ -30,8 +31,10 @@ depends=(
         'krb5'
         #'libsmi'
         'nghttp2'               # for HTTP/2 dissector
-        'sbc'                   # Bluetooth audio codec
+        'sbc'                   # Bluetooth audio codec in RTP player
         'snappy' 'lz4'          # for cql dissector
+        'spandsp'               # for G.722/G.726 codec support in RTP player
+        'bcg729'                # for G.729 codec support in RTP player
 
         # extcap (sshdump, etc.)
         'libssh'
@@ -46,7 +49,11 @@ provides=('wireshark')
 conflicts=('wireshark-common' 'wireshark-gtk' 'wireshark-qt' 'wireshark-cli')
 replaces=('ethereal')
 install=$pkgname.install
-source=("git+https://code.wireshark.org/git/wireshark")
+# The review site should be used for development, but as makepkg VCS uses "git
+# clone --mirror", it pulls 830MB including all draft patches... As a
+# workaround, use the Github mirror which should pull in "only" 424M.
+#source=("git+https://code.wireshark.org/git/wireshark")
+source=("git+https://github.com/wireshark/wireshark")
 sha256sums=('SKIP')
 
 
