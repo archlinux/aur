@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 install=${pkgname}.install
 provides=('vidcutter')
 conflicts=('vidcutter-git')
-md5sums=('d095757fc24cec83e0a965cc02de41ed')
+sha256sums=('18686af2454480f6aa2ba2c27cd32f8a1b580309460c6b3ee9fb03ccfeecf513')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
