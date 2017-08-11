@@ -1,0 +1,15 @@
+pkgbase = libgwavi-git
+	pkgver = r46.ac72de4
+	pkgrel = 1
+	url = https://github.com/Rolinh/libgwavi
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = git
+	provides = libgwavi
+	conflicts = libgwavi
+	source = libgwavi::git+https://github.com/Rolinh/libgwavi
+	md5sums = SKIP
+
+pkgname = libgwavi-git
+
