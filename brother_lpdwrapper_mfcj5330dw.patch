@@ -1,0 +1,12 @@
+--- pkg/brother-mfc-j5330dw/opt/brother/Printers/mfcj5330dw/cupswrapper/brother_lpdwrapper_mfcj5330dw	2017-08-11 03:35:59.886046392 +0200
++++ brother_lpdwrapper_mfcj5330dw.patch	2017-08-11 03:34:33.771215905 +0200
+@@ -89,6 +89,9 @@
+ $PRINTER =~ s/\/cupswrapper//g;
+ $PRINTER =~ s/\///g;
+ 
++my $PRINTER = "mfcj5330dw";
++my $basedir = "/opt/brother/Printers/mfcj5330dw";
++
+ for  (my $i = 0 ; $i < @ARGV ; $i ++){
+     logprint( 0 , "ARG$i      = $ARGV[$i]\n");
+ }

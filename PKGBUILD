@@ -17,11 +17,13 @@ install="$pkgname.install"
 source=("http://download.brother.com/welcome/dlf103003/mfcj5330dwlpr-$pkgver-0.i386.rpm"
         "http://download.brother.com/welcome/dlf103027/mfcj5330dwcupswrapper-$pkgver-0.i386.rpm"
         'cupswrapper-license.txt'
-        'lpr-license.txt')
+        'lpr-license.txt'
+        'brother_lpdwrapper_mfcj5330dw.patch')
 md5sums=(1d84cf8b3db7d2598ed0a0e15d44b947
          db6ce4717c3110134a20bbfb251ee9c5
          310f8424517f3df127d39393ceaebb6f
-         bf894a1a51baf6055a6c58ecf43c9782)
+         bf894a1a51baf6055a6c58ecf43c9782
+         3903b9b3f9e225cb481b1468f49e1268)
 
 prepare() {
   # do not install in /usr/local
@@ -35,6 +37,10 @@ prepare() {
   # setup cups directories
   install -d "${srcdir}"/usr/share/cups/model
   install -d "${srcdir}"/usr/lib/cups/filter
+
+  # patch an error (?) in the perl script from brother
+  patch -p1 "${srcdir}"/opt/brother/Printers/mfcj5330dw/cupswrapper/brother_lpdwrapper_mfcj5330dw < brother_lpdwrapper_mfcj5330dw.patch
+  patch -p1 "${srcdir}"/usr/lib/cups/filter/brother_lpdwrapper_mfcj5330dw < brother_lpdwrapper_mfcj5330dw.patch
 
   # go to the cupswrapper directory and find the source file from which to generate a ppd and wrapperfile
   cd `find . -type d -name 'cupswrapper'`
