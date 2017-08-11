@@ -3,15 +3,18 @@
 pkgbase=python-pre-commit
 pkgname=(python-pre-commit python2-pre-commit)
 pypi_name=pre_commit
-pkgver=0.15.2
+pkgver=0.16.2
 pkgrel=1
 pkgdesc="A framework for managing and maintaining multi-language pre-commit hooks."
 arch=('any')
 license=('MIT')
 url="http://pre-commit.com/"
-depends=('python')
+makedepends=(
+  'python' 'python-nodeenv' 'python-aspy-yaml' 'python-virtualenv' 'python-cached-property' 'python-identify'
+  'python2' 'python2-nodeenv' 'python2-aspy-yaml' 'python2-virtualenv' 'python2-cached-property' 'python2-identify'
+)
 source=("https://pypi.io/packages/source/p/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
-md5sums=('d76c01ca37c2daeddbb8f79d3d46060e')
+md5sums=('84bc0bd93d090f1e51bf825c54e2643c')
 
 prepare() {
   cp -a ${pypi_name}-${pkgver}{,-python2}
@@ -27,7 +30,7 @@ build() {
 
 package_python-pre-commit() {
   pkgdesc='Python 3 client for pre-commit'
-  depends=('python' 'python-nodeenv' 'python-aspy-yaml' 'python-virtualenv' 'python-cached-property')
+  depends=('python' 'python-nodeenv' 'python-aspy-yaml' 'python-virtualenv' 'python-cached-property' 'python-identify')
 
   cd "${srcdir}/${pypi_name}-${pkgver}"
   python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
@@ -35,7 +38,7 @@ package_python-pre-commit() {
 
 package_python2-pre-commit() {
   pkgdesc='Python 2 client for pre-commit'
-  depends=('python2' 'python2-nodeenv' 'python2-aspy-yaml' 'python-virtualenv' 'python-cached-property')
+  depends=('python2' 'python2-nodeenv' 'python2-aspy-yaml' 'python2-virtualenv' 'python2-cached-property' 'python2-identify')
 
   cd "${srcdir}/${pypi_name}-${pkgver}-python2"
   python2 setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
