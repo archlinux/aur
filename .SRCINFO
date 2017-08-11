@@ -1,7 +1,7 @@
 pkgbase = selinux-alpm-hook
 	pkgdesc = SELinux ALPM hook
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archlinuxhardened/selinux
 	arch = any
 	groups = selinux

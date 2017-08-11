@@ -2,7 +2,7 @@
 
 pkgname=selinux-alpm-hook
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux ALPM hook"
 arch=('any')
 url="https://github.com/archlinuxhardened/selinux"

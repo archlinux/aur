@@ -40,6 +40,7 @@ GEN_DIRS=(
     '/etc/ld.so.cache' # glibc install: ldconfig -r .
     '/etc/pacman.d/gnupg/' # archlinux-keyring install: pacman-key --populate archlinux
     '/etc/ssl/certs/' # ca-certificates-utils:update-ca-trust.hook
+    '/etc/systemd/user/' # gnupg install: install units in /etc/systemd/user/sockets.target.wants
     '/etc/texmf/ls-R' # texlive-bin install: mktexlsr
     '/etc/udev/hwdb.bin' # systemd:udev-hwdb.hook
     '/etc/unbound/trusted-key.key' # unbound:unbound-key.hook
@@ -62,6 +63,7 @@ GEN_DIRS=(
     '/usr/share/glib-2.0/schemas/' # glib2:glib-compile-schemes.hook
     '/usr/share/icons/' # gtk-update-icon-cache:gtk-update-icon-cache.hook
     '/usr/share/info/dir' # texinfo:texinfo-install.hook
+    '/usr/share/keepass/' # keepass install
     '/usr/share/mime/' # shared-mime-info:update-mime-database.hook
     '/usr/share/texmf*/ls-R' # texlive-bin:mktexlsr.hook
     '/usr/share/vim/vimfiles/doc/tags' # vim-runtime:vimdoc.hook
