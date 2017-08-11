@@ -1,0 +1,14 @@
+pkgbase = eclipse-jd
+	pkgdesc = Java decompiler (JD-Eclipse) to display sources for compiled classes and libraries.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://jd.benow.ca/
+	arch = any
+	license = GPL3
+	depends = eclipse>=4.5.0
+	options = !strip
+	source = download.zip::https://github.com/java-decompiler/jd-eclipse/releases/download/v1.0.0/jd-eclipse-site-1.0.0-RC2.zip
+	sha256sums = 6a127dac2742538f572edcf21b1aa116313d87a5e06a4541570c49ec995cc368
+
+pkgname = eclipse-jd
+
