@@ -4,8 +4,8 @@
 
 pkgname=mksh-static
 _pkgname=mksh
-_pkgver=R55
-pkgver=55
+_pkgver=R56
+pkgver=56
 pkgrel=1
 pkgdesc='The MirBSD Korn Shell - an enhanced version of the public domain ksh (statically-linked version)'
 url='https://www.mirbsd.org/mksh.htm'
@@ -16,7 +16,7 @@ conflicts=('mksh' 'mksh-git' 'mksh-static-git')
 install=mksh.install
 source=("https://www.mirbsd.org/MirOS/dist/mir/mksh/$_pkgname-$_pkgver.tgz"
         'https://www.mirbsd.org/TaC-mksh.txt')
-md5sums=('718c44251b52c48e7312903273e263f4'
+md5sums=('fedd42b11d2bda84921afcc8de3912e3'
          'SKIP')
 
 check() {
