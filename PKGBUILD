@@ -1,13 +1,13 @@
 # Maintainer: M0Rf30
 
 pkgname=pump.io
-pkgver=4.0.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="This is pump.io. It's a stream server that does most of what people really want from a social network"
 url='http://pump.io'
 license=('Apache')
 arch=('i686' 'x86_64')
-depends=('nodejs6-bin' 'graphicsmagick')
+depends=('nodejs-lts-boron' 'graphicsmagick')
 optdepends=('mongodb' 'redis')
 provides=('pumpio')
 conflicts=('pumpio-git' 'pumpio')
@@ -15,23 +15,17 @@ install=${pkgname}.install
 backup=(etc/webapps/$pkgname/$pkgname.json)
 source=(https://github.com/pump-io/pump.io/archive/v$pkgver.tar.gz)
 
-build() {
-  cd $srcdir/$pkgname-$pkgver
-  npm install
-  npm install bunyan
-  npm install databank-mongodb
-  npm install databank-redis
-  npm prune --production
+package() {
+cd $srcdir
+  local _npmdir="$pkgdir/usr/lib/node_modules/"
+  mkdir -p $_npmdir
+  cd $_npmdir
+  npm install -g --prefix "$pkgdir/usr" $pkgname@$pkgver
+
+msg2 "Installing systemd service"
+  install -Dm755 -d "$srcdir/$pkgname-$pkgver/$pkgname\@.service" "${pkgdir}/usr/lib/systemd/system/"
+  install -Dm755 -d "$pkgname.json.sample" "$pkgdir/etc/$pkgname.json"
+  rm -rf $pkgdir/usr/etc
 }
 
-package() {
-  cd $srcdir/$pkgname-$pkgver
-  mkdir -p $pkgdir/usr/share/webapps/
-  mkdir -p $pkgdir/usr/lib/systemd/system/
-  mkdir -p $pkgdir/etc/webapps/$pkgname/
-  cp -r ../$pkgname-$pkgver $pkgdir/usr/share/webapps/$pkgname
-  cp $pkgname.json.sample $pkgdir/etc/webapps/$pkgname/$pkgname.json
-  cp $pkgname\@.service $pkgdir/usr/lib/systemd/system/
-  cp -r bin $pkgdir/usr
-}
-md5sums=('1125fd041dc6330fe1561b2fb39dbc74')
+md5sums=('27235551c29b90240cc98ce3604e34e2')
