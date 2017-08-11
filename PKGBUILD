@@ -1,8 +1,8 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
 # Maintainer: Arkli <LFZ0107@outlook.com>
 pkgname=deepin-libwine
-pkgvers=1.9-42
-pkgver=1.9_42
+pkgvers=1.9-44
+pkgver=1.9_44
 pkgrel=2
 epoch=
 pkgdesc="Deepin Libwine"
