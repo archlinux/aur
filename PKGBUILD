@@ -6,7 +6,7 @@ pkgname=xf86-video-openchrome
 #_commit=8c819ed # 7 digits # = 0.6.0 RC1
 #pkgver=0.5.0+279+g8c819ed
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="X.Org Openchrome drivers"
 arch=(i686 x86_64)
 license=('custom')
@@ -41,6 +41,14 @@ validpgpkeys=('CDA92E38A7A7A82237E9AB61C922784178BFFDB0') # "Kevin Brace <kevinb
 
 build() {
   cd ${pkgname}-${pkgver}
+
+  # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
+  # With them, module fail to load with undefined symbol.
+  # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
+  export CFLAGS=${CFLAGS/-fno-plt}
+  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  export LDFLAGS=${LDFLAGS/,-z,now}
+
   ./configure --prefix=/usr
   make
 }
