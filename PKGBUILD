@@ -14,7 +14,7 @@ conflicts=('policycoreutils<2.7')
 source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('a7f3dbe68c0d02cd1cbe6aac06e87c2957668cb88083389654fabacb79641ae4')
 
-=build() {
+build() {
   cd "${_pkgname}-${pkgver}"
   make=
 }
