@@ -1,0 +1,13 @@
+pkgbase = antu-icon-theme
+	pkgdesc = An icon theme (mainly for Plasma Desktop)
+	pkgver = 0.0.1.g80368f2
+	pkgrel = 1
+	url = https://github.com/fabianalexisinostroza/Antu-icons
+	arch = any
+	license = Custom: LIMA
+	options = !strip
+	source = https://github.com/fabianalexisinostroza/Antu-icons/archive/80368f22e924f1c6a91872af359bd2078f355094.zip
+	sha256sums = 5159c70333ad9f0e38c09075ca5ffd0582a5958cae6be58991d9ea78eeec7a2d
+
+pkgname = antu-icon-theme
+
