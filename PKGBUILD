@@ -1,6 +1,6 @@
 pkgname=devrantron
 _pkgname=devrantron
-pkgver=latest
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='DevRant client written in NodeJS'
 arch=('x86_64')
