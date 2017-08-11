@@ -1,19 +1,19 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=emojione-fonts
-pkgver=3.1.1
-pkgrel=2
+pkgver=3.1.2
+pkgrel=1
 pkgdesc="Colored emoji fonts from EmojiOne project."
 url="https://github.com/emojione/emojione"
 arch=(any)
 license=(custom)
 depends=('fontconfig')
 optdepends=('cairo-coloredemoji: (Recommended) display color emoji in all GTK+ apps.')
-provides=("$pkgname" 'ttf-emojione')
-conflicts=("$pkgname" 'noto-fonts-emoji' 'ttf-emojione')
-source=("https://github.com/emojione/emojione/raw/v${pkgver}/extras/fonts/emojione-android.ttf"
-        "https://github.com/emojione/emojione/raw/v${pkgver}/extras/fonts/emojione-svg.otf"
-        "https://github.com/emojione/emojione/raw/v${pkgver}/extras/fonts/emojione-svg.woff"
-        "https://github.com/emojione/emojione/raw/v${pkgver}/extras/fonts/emojione-svg.woff2"
+provides=('ttf-emojione')
+conflicts=('noto-fonts-emoji' 'ttf-emojione')
+source=("https://github.com/emojione/emojione-assets/releases/download/${pkgver}/emojione-android.ttf"
+        "https://github.com/emojione/emojione-assets/releases/download/${pkgver}/emojione-svg.otf"
+        "https://github.com/emojione/emojione-assets/releases/download/${pkgver}/emojione-svg.woff"
+        "https://github.com/emojione/emojione-assets/releases/download/${pkgver}/emojione-svg.woff2"
         "70-emojione-color.conf"
         "license-free.pdf")
 sha256sums=('6efb1a43873876bcc9476562e20cf8d875eca20bab456d83a580f46a39321139'
