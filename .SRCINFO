@@ -1,6 +1,6 @@
 pkgbase = devrantron
 	pkgdesc = DevRant client written in NodeJS
-	pkgver = latest
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/tahnik/devrantron
 	arch = x86_64
