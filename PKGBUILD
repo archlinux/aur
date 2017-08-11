@@ -7,7 +7,7 @@ arch=('any')
 url="https://www.chromium.org/chromium-os"
 license=('unknown')
 makedepends=('xorg-xcursorgen')
-provides=('chromeos-cursors')
+provides=('xcursor-chromeos')
 source=("https://chromium.googlesource.com/chromium/src/+archive/master/ui/resources.tar.gz"
         "makefile")
 md5sums=('SKIP'
