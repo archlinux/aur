@@ -4,7 +4,7 @@ pkgdesc="ROS - navfn provides a fast interpolated navigation function that can b
 url='http://wiki.ros.org/navfn'
 
 pkgname='ros-kinetic-navfn'
-pkgver='1.14.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -49,7 +49,7 @@ sha256sums=('SKIP')
 # Tarball version (faster download)
 # _dir="navigation-release-release-kinetic-navfn-${pkgver}-${_pkgver_patch}"
 # source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/navfn/${pkgver}-${_pkgver_patch}.tar.gz")
-# sha256sums=('2994daa1e4a36f0769723f735f408c325e22f143a9b7a7b1b9972db79c239219')
+# sha256sums=('61819cd8d1b7043f7cdfef83f9f63e60d862968e697993e3c78aa3c5ba99c824')
 
 build() {
   # Use ROS environment variables
