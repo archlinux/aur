@@ -12,7 +12,7 @@ depends=('policycoreutils')
 source=('relabel-selinux.hook'
         'selinux-alpm-hook')
 sha256sums=('4df844a89a50fe1caebe0cb92fc925b3dedf7a1a8258eef53f0dd328c1cc089e'
-            '983695a355aeec32bd4dc16a4586f560d730e269cef3fe9aaede82ea0245862b')
+            '61df36242f62a8434756d96fd6639f0fbdea9a4bb64f0d6c3a673e64546bc5d7')
 
 package() {
   cd "${srcdir}"
