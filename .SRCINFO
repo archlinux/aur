@@ -1,0 +1,31 @@
+pkgbase = selinux-python
+	pkgdesc = SELinux python tools and libraries
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://github.com/SELinuxProject/selinux/wiki
+	arch = i686
+	arch = x86_64
+	groups = selinux
+	license = GPL2
+	makedepends = python2
+	makedepends = python
+	makedepends = python-ipy
+	makedepends = libsemanage>=2.7
+	makedepends = setools>=4.0.0
+	provides = sepolgen=2.7-1
+	conflicts = sepolgen<2.7
+	conflicts = policycoreutils<2.7
+	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/selinux-python-2.7.tar.gz
+	sha256sums = 4217cb965ecda96c91e15ffcc2e7ddd13ecc2bf5631100f3cd072a7616f140ed
+
+pkgname = selinux-python
+	depends = python
+	depends = python-ipy
+	depends = libsemanage>=2.7
+	depends = setools>=4.0.0
+
+pkgname = selinux-python2
+	depends = python2
+	depends = libsemanage>=2.7
+	depends = setools>=4.0.0
+
