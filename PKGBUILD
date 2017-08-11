@@ -2,7 +2,7 @@
 # Contributor: Samuel Walladge <samuel at swalladge dot id dot au>
 
 pkgname=clipster
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Python clipboard manager"
 arch=("any")
