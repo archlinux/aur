@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-cachetools
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Extensible memoizing collections and decorators"
 arch=('any')
@@ -10,9 +10,9 @@ makedepends=('python-setuptools')
 url="https://github.com/tkem/cachetools"
 license=('MIT')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/dc/64/16cbf95e0ac473503c5dcd61aefbbab9f12e1875f40a0aaff566a1236ac4/cachetools-2.0.0.tar.gz)
-md5sums=('fbca1d46878fa493a0b03bca99ace328')
-sha256sums=('715a7202240dc20dbe83abdb2d804d543e2d4f07af146f53c82166bd75f3a628')
+source=(https://pypi.python.org/packages/54/e4/ddaa319bf53f04cda4ef99201de1c402871151b6edefe631bd426dc621a3/cachetools-2.0.1.tar.gz)
+md5sums=('d9ffa584355aa9b69a664bf8a82c4890')
+sha256sums=('ede01f2d3cbd6ddc9e35e16c2b0ce011d8bb70ce0dbaf282f5b4df24b213bc5d')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
