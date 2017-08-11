@@ -1,0 +1,14 @@
+pkgbase = gtop
+	pkgdesc = System monitoring dashboard for terminal.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/aksakalli/gtop
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = https://github.com/aksakalli/gtop/archive/v0.1.1.tar.gz
+	md5sums = ad2ae15e47a7809605fc38a5e496a750
+
+pkgname = gtop
+
