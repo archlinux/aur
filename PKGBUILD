@@ -2,8 +2,8 @@
 
 _pkgname=powder-player
 pkgname=${_pkgname}-bin
-pkgver=1.00
-pkgrel=2
+pkgver=1.10
+pkgrel=1
 pkgdesc="Hybrid between a Torrent Client and a Player (torrent streaming)"
 arch=('x86_64')
 url="http://powder.media/"
@@ -14,7 +14,7 @@ provides=('powder-player')
 conflicts=('powder-player')
 options=('!strip')
 install=${_pkgname}.install
-source=("http://powder.media/nightly/PowderPlayer_v$pkgver.tar.gz"
+source=("https://github.com/jaruba/PowderPlayer/releases/download/v$pkgver/PowderPlayer_v$pkgver.tar.gz"
 	powder.desktop
 	https://raw.githubusercontent.com/jaruba/PowderPlayer/react-polymer/images/icons/powder-icon.png)
 package() {
@@ -41,6 +41,6 @@ package() {
   install -Dm644 powder-icon.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
 
-md5sums=('5264873f41bf3b8e1aa582cb853aa7ca'
+md5sums=('174ed07422fe5075212c83dd5ed2bfea'
          '40e4478fcfca9cfc32c2ae65279f35b8'
          '687feb9e0d2ce0395b455b85a39a0753')
