@@ -1,6 +1,6 @@
 pkgbase = purple-battlenet-hg
-	pkgdesc = A plugin to login and send whispers to Battle.net v2 users.
-	pkgver = r34.f57c99dd7396
+	pkgdesc = A Pidgin plugin to login and send whispers to Battle.net v2 users.
+	pkgver = r35.9e01c8ef9b3e
 	pkgrel = 1
 	url = https://bitbucket.org/EionRobb/purple-battlenet/
 	arch = i686
