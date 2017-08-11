@@ -1,0 +1,24 @@
+pkgbase = inferno-hg
+	pkgdesc = A compact operating system designed for building distributed and networked systems. (Mercurial)
+	pkgver = 832+.62ae0f75aa71+
+	pkgrel = 1
+	url = https://bitbucket.org/inferno-os/inferno-os
+	install = inferno.install
+	arch = any
+	license = GPL2
+	makedepends = gcc
+	makedepends = glibc
+	makedepends = mercurial
+	depends = gcc-libs
+	depends = libx11
+	depends = libext
+	provides = inferno
+	conflicts = inferno
+	options = !strip
+	source = inferno::hg+https://bitbucket.org/inferno-os/inferno-os
+	source = make-install-root.sh
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = inferno-hg
+

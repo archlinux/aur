@@ -1,0 +1,19 @@
+post_install() {
+  groupadd inferno
+  IROOT=/usr/local/inferno
+  find $IROOT -path $IROOT/Linux -prune -o -exec chgrp inferno {} +
+  cat << 'END'
+  Permissions for a user to modify the files are needed.
+  This can be done adding a user to the group inferno with:
+  # usermod -a -G inferno $USER
+  For how to procceed you can read the doc/install.ms manual.
+  On the host system this can be done as:
+  # nroff -ms /usr/local/inferno/doc/install.ms | less
+  After invoking inferno (an emu wrapper) this can be dones as:
+  ; man -f /doc/install.ms | p
+END
+}
+
+post_remove() {
+  groupdel inferno
+}
