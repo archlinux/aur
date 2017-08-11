@@ -2,13 +2,13 @@
 
 pkgname=latex2e-help-texinfo-fr  
 pkgver=2017_08
-pkgrel=1
+pkgrel=2
 pkgdesc="Inofficial LaTeX2e Reference Manual in info format - french"
 url="https://ctan.org/pkg/latex2e-help-texinfo-fr"
 arch=('i686' 'x86_64')
 license=('custom')
 source=("http://mirrors.ctan.org/info/$pkgname.zip")
-md5sums=('522e96cf8e4194dc0fd6d3fa3fb5d769')
+md5sums=('d5bba6db01ce3e19476ce6271aa27d95')
 
 package() {
   cd "$srcdir/$pkgname"
