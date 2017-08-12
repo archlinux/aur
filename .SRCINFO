@@ -1,6 +1,6 @@
 pkgbase = python-nbstripout
 	pkgdesc = Strips outputs from Jupyter and IPython notebooks
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/nbstripout/
 	arch = any
@@ -9,8 +9,10 @@ pkgbase = python-nbstripout
 	checkdepends = python-pytest-flake8
 	depends = git
 	depends = jupyter-nbformat
-	source = https://pypi.org/packages/source/n/nbstripout/nbstripout-0.3.0.tar.gz
-	sha256sums = 9b1801e81c59e2fad03bff2b738a0251e5b1207d784154f03b1328a2aa84dd88
+	source = https://pypi.org/packages/source/n/nbstripout/nbstripout-0.3.1.tar.gz
+	source = https://raw.githubusercontent.com/kynan/nbstripout/master/LICENSE.txt
+	sha256sums = b997c99b8bbb865988202d2f005cdaabb2598b07dad891c302a147a5871a4a95
+	sha256sums = 9842167c4bf9aa4662a669e8638d299a2460f6015ef0a98d4745871938bc1cd4
 
 pkgname = python-nbstripout
 
