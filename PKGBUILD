@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libtorrent-rasterbar-1_1-git
-pkgver=1.1.4.r7.gcedd46830
+pkgver=1.1.4.r16.g50c2aee8e
 pkgrel=1
 pkgdesc="A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git branch RC_1_1)"
 arch=('i686' 'x86_64')
