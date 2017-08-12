@@ -1,7 +1,7 @@
 # Contributer: giacomogiorgianni@gmail.com 
 
 pkgname=httraqt-git
-pkgver=1.4.7.34.r328.33b1852
+pkgver=1.4.9.r339.9c51175
 pkgrel=1
 pkgdesc="Is the clone from WinHTTrack tool. GUI is based on Qt libriaries. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -14,8 +14,7 @@ makedepends=('git'
              'cmake'
               )
 source=('httraqt::git://git.code.sf.net/p/httraqt/code')
-sha1sums=('SKIP')
-install=httraqt-git.install
+sha256sums=('SKIP')
 
 pkgver(){
   cd httraqt
