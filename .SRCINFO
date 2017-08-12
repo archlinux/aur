@@ -1,0 +1,15 @@
+pkgbase = python-pyexcel-io
+	pkgdesc = A python library to read and write structured data in csv, zipped csv format and to/from databases
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/pyexcel/pyexcel-io
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	depends = python
+	depends = python-lml
+	source = https://github.com/pyexcel/pyexcel-io/archive/v0.4.4.tar.gz
+	md5sums = 2e7940daa14d1112c0c67a51478e686c
+
+pkgname = python-pyexcel-io
+
