@@ -3,7 +3,7 @@
 pkgname="gws-git"
 _pkgname="gws"
 pkgver=0.1.13.r1.g13123d9
-pkgrel=2
+pkgrel=3
 pkgdesc="Colorful KISS helper for git workspaces"
 url="https://github.com/StreakyCobra/gws"
 license=('MIT')
