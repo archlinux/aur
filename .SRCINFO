@@ -1,0 +1,18 @@
+pkgbase = kwstyle-git
+	pkgdesc = The Kitware Style Checker
+	pkgver = r3211.8148e5ac
+	pkgrel = 1
+	url = https://kitware.github.io/KWStyle/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake>=2.8.4
+	makedepends = git
+	depends = gcc-libs
+	provides = kwstyle
+	conflicts = kwstyle
+	source = kwstyle::git+https://github.com/Kitware/KWStyle.git
+	sha256sums = SKIP
+
+pkgname = kwstyle-git
+
