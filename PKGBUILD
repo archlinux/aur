@@ -3,9 +3,8 @@
 
 _target=arm-none-eabi
 pkgname=$_target-newlib-linaro-git
-_gitver=443e554aca9069f42f8082440584c09eb836e7af
 pkgver=20170623
-pkgrel=1
+pkgrel=2
 _libname=newlib
 _upstream_ver=snapshot-"${pkgver}"
 pkgdesc='A C standard library implementation intended for use on embedded systems (ARM bare metal) Linaro Git Version'
@@ -15,8 +14,17 @@ license=(BSD)
 makedepends=($_target-gcc 'cloog')
 options=(!emptydirs !strip)
 provides=('"${_target}"-newlib')
-source=("git+http://git.linaro.org/toolchain/newlib.git#tag=newlib-snapshot-${pkgver}")
+source=("git+http://git.linaro.org/toolchain/newlib.git#tag=newslib-snapshot-")
 sha1sums=('SKIP')
+
+
+pkgver() {
+  cd ${_libname}
+  printf "%s.%s.%s" \
+    "$(git tag -l|grep -P '.+\..+\.\d+'|sed -r 's|v?([0-9\.]+)(-.+)?|\1|g'|sort -V -r|head -n1)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
+}
 
 build() {
 
