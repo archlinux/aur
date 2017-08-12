@@ -2,12 +2,12 @@
 
 pkgname=autofirma
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Spanish Government digital signature client'
 arch=('i686' 'x86_64')
 url='http://firmaelectronica.gob.es'
 license=('GPL' 'EUPL')
-depends=('java-runtime' 'nss' 'firefox')
+depends=('java-runtime=8' 'nss' 'firefox')
 makedepends=('binutils')
 source=('http://estaticos.redsara.es/comunes/autofirma/currentversion/AutoFirma_Linux.zip')
 md5sums=('47484315881ac761e855ebf6a28d0c52')
