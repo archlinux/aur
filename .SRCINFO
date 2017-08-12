@@ -1,0 +1,39 @@
+pkgbase = python-tornado-4.4
+	pkgdesc = open source version of the scalable, non-blocking web server and tools
+	pkgver = 4.4.3
+	pkgrel = 1
+	url = http://www.tornadoweb.org/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	checkdepends = python-pycurl
+	checkdepends = python2-pycurl
+	checkdepends = python-mock
+	checkdepends = python2-mock
+	checkdepends = python-twisted
+	checkdepends = python2-twisted
+	checkdepends = python2-futures
+	checkdepends = python2-singledispatch
+	checkdepends = python2-backports-abc
+	checkdepends = python2-trollius
+	checkdepends = python2-monotonic
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-tornado-4.4-4.4.3.tar.gz::https://github.com/tornadoweb/tornado/archive/v4.4.3.tar.gz
+	source = 0001-use_system_ca_certificates.patch
+	sha512sums = 280503bce6b3517beace3dcf55b3e671b74064dd022b7f846fd697335f720a8f445d7ba1ffe230dff612a9160a1ed48b333b77dda3249207fc7f3c5a30948d57
+	sha512sums = a6422735bdce26246088d38aec55042627a1800329847aba54ca85453dcefcdde631519b57088dd441a42a4c341e7f07c73ab6b73d8404869b67ee4107bde912
+
+pkgname = python-tornado-4.4
+	depends = python
+	optdepends = python-pycurl: for tornado.curl_httpclient
+	optdepends = python-twisted: for tornado.platform.twisted
+
+pkgname = python2-tornado-4.4
+	depends = python2-singledispatch
+	depends = python2-backports-abc
+	optdepends = python2-futures: recommended thread pool and for tornado.netutil.ThreadedResolver
+	optdepends = python2-monotonic: enable support for a monotonic clock
+	optdepends = python2-pycurl: for tornado.curl_httpclient
+	optdepends = python2-twisted: for tornado.platform.twisted
+
