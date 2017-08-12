@@ -2,7 +2,7 @@
 # Contributor: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=jwm-git
 pkgver=s1636
-pkgrel=1
+pkgrel=2
 pkgdesc="JWM is a light-weight window manager for the X11 Window System. Git version."
 arch=('i686' 'x86_64')
 url="http://joewing.net/projects/jwm/"
@@ -56,7 +56,8 @@ build() {
 package() {
   cd $pkgname
   make BINDIR="$pkgdir/usr/bin" MANDIR="$pkgdir/usr/share/man" \
-       DESTDIR="$pkgdir" SYSCONF="$pkgdir/etc" install
+       DESTDIR="$pkgdir" SYSCONF="$pkgdir/etc" \
+       mkdir_p="/usr/bin/mkdir -p" install
   install -Dm644 "$srcdir/jwm.desktop" "$pkgdir/usr/share/xsessions/jwm.desktop"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
