@@ -1,6 +1,6 @@
 pkgbase = firefox-developer-it
 	pkgdesc = Standalone web browser from mozilla.org, Developer Edition - Italian
-	pkgver = 56.0b1
+	pkgver = 56.0b2
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/developer/
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = firefox-developer-it
 	optdepends = hyphen: hyphenation
 	provides = firefox-developer
 	conflicts = firefox-developer
-	source = https://ftp.mozilla.org/pub/devedition/releases/56.0b1/linux-x86_64/it/firefox-56.0b1.tar.bz2
+	source = https://ftp.mozilla.org/pub/devedition/releases/56.0b2/linux-x86_64/it/firefox-56.0b2.tar.bz2
 	source = firefox-developer.desktop
 	source = vendor.js
-	sha512sums = 2ce0dae79b4306ed3cb9a26b5b7b850f76cca09a9dd2a51403bc901e89cfae332c1a66c2483b56157814a1c03cf2c54c0f4155f3836408e1c211739b874bf45a
+	sha512sums = 29120864c12b898f836dafcad1fda2ad5e08b8a291058d32e9a361ff03f6ddbb9e49f2d8771e0683127b45bd3b4913ee6ebf29f4841175e0c4260b2408c8806e
 	sha512sums = 9e7bb3b08d58c7ec50fd24a5ecab9a6462084a37deb8ec61b089e2c1ad5364c82f71e3fcba918738ded9c61d58bfe8b2dea24abb48e53175332b03727c26c33a
 	sha512sums = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
 
