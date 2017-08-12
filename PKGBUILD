@@ -1,6 +1,6 @@
 # Maintainer: Peter Cai <peter at typeblog dot net>
 pkgname=udp2raw-tunnel
-pkgver=20170809.0
+pkgver=20170811.0
 pkgrel=1
 pkgdesc='An Encrpyted,Anti-Replay,Multiplexed Udp Tunnel,tunnels udp traffic through fake-tcp or icmp by using raw socket'
 arch=('x86_64' 'i686')
@@ -22,4 +22,4 @@ package() {
   mkdir -p $pkgdir/usr/bin/
   install -m755 udp2raw $pkgdir/usr/bin/
 }
-md5sums=('d08220400cf60adb0775b5d01645efd6')
+md5sums=('c835d86988d344659fd40fa671f4f2c4')
