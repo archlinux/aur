@@ -1,20 +1,21 @@
 # Maintainer: Ian Brunelli <ian@brunelli.me>
+# Maintainer: Falk Alexander Seidl <fa@terminal.run>
 
 pkgname=transmission-csd
 _gitname=transmission
 _gitbranch="wip/gtk-3.14"
-pkgver=r63.eb72f30
-pkgrel=1
+pkgver=2.92
+pkgrel=2
 pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI), CSD port"
 arch=('i686' 'x86_64')
 license=('GPL2')
-url="https://github.com/derekstavis/${_gitname}/tree/${_gitbranch}"
+url="https://github.com/transmission/${_gitname}/tree/${_gitbranch}"
 depends=('curl' 'libevent' 'gtk3' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('gtk3' 'intltool' 'curl' 'libevent' 'autoconf')
+makedepends=('gtk3' 'intltool' 'curl' 'libevent' 'autoconf' 'cmake' 'git')
 optdepends=('notification-daemon: Desktop notification support'
             'transmission-cli: daemon and web support')
 options=('!emptydirs')
-source=("git://github.com/derekstavis/${_gitname}.git#branch=${_gitbranch}")
+source=("git://github.com/transmission/${_gitname}.git#branch=${_gitbranch}")
 install="transmission-gtk.install"
 conflicts=('transmission-gtk')
 provides=('transmission-gtk')
@@ -27,14 +28,16 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_gitname}/"
-	rm m4/glib-gettext.m4
-	./autogen.sh --prefix=/usr
+	git submodule update --init
+	mkdir build
+	cd build
+	cmake ..
 	make
 }
 
 package() {
 	cd "${srcdir}/${_gitname}/"
+	cd build
 	make -C gtk DESTDIR="$pkgdir" install
 	make -C po DESTDIR="$pkgdir" install
-	install -D -m644 COPYING "$pkgdir/usr/share/licenses/transmission-gtk/COPYING"
 }
