@@ -1,6 +1,6 @@
 pkgbase = unshield-git
 	pkgdesc = Extracts CAB files from InstallShield installers
-	pkgver = r155.24bdf98
+	pkgver = 1.4.2.r12.g148d510
 	pkgrel = 1
 	url = https://github.com/twogood/unshield
 	arch = i686

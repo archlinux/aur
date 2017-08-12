@@ -1,8 +1,8 @@
-# Maintainer: maz-1 < ohmygod19993@gmail.com >
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Contributor: maz-1 < ohmygod19993@gmail.com >
 
-_pkgname=unshield
-pkgname=${_pkgname}-git
-pkgver=r159.ef73f41
+pkgname=unshield-git
+pkgver=1.4.2.r12.g148d510
 pkgrel=1
 pkgdesc="Extracts CAB files from InstallShield installers"
 arch=('i686' 'x86_64')
@@ -10,29 +10,33 @@ url="https://github.com/twogood/unshield"
 license=('MIT')
 depends=('zlib' 'openssl')
 makedepends=('cmake' 'git')
-provides=${_pkgname}
-conflicts=${_pkgname}
+provides=('unshield')
+conflicts=('unshield')
 source=("git+https://github.com/twogood/unshield")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	cd unshield
+  git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
+prepare() {
+  rm -rf build
+  mkdir build
+}
 
 build() {
-  cd ${srcdir}/${_pkgname}
-  cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    .
+  cd build
+
+  cmake ../unshield -DCMAKE_INSTALL_PREFIX=/usr \
+                    -DCMAKE_INSTALL_LIBDIR=lib \
+                    -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
-  make DESTDIR=${pkgdir} install
-  ln -s libunshield.so ${pkgdir}/usr/lib/libunshield.so.0
-  install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/unshield/LICENSE
+  make -C build DESTDIR="$pkgdir/" install
+
+  # license
+  install -Dm644 unshield/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
