@@ -1,0 +1,95 @@
+From 87c8a898fabae68ff6234b2f4f35a8a00e87cd06 Mon Sep 17 00:00:00 2001
+From: StMartin81 <martin.stolpe@gmail.com>
+Date: Sat, 12 Aug 2017 12:48:43 +0200
+Subject: [PATCH] Try to fix kernel 4.12.0 build
+
+---
+ os_dep/linux/ioctl_cfg80211.c | 27 ++++++++++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/os_dep/linux/ioctl_cfg80211.c b/os_dep/linux/ioctl_cfg80211.c
+index 7d1ce83..0b7b0c6 100644
+--- a/os_dep/linux/ioctl_cfg80211.c
++++ b/os_dep/linux/ioctl_cfg80211.c
+@@ -725,6 +725,9 @@ void rtw_cfg80211_indicate_connect(_adapter *padapter)
+ {
+ 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+ 	struct wlan_network  *cur_network = &(pmlmepriv->cur_network);
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0))
++	struct cfg80211_roam_info roam_info = {};
++#endif
+ 	struct wireless_dev *pwdev = padapter->rtw_wdev;
+ #ifdef CONFIG_P2P
+ 	struct wifidirect_info *pwdinfo= &(padapter->wdinfo);
+@@ -800,6 +803,15 @@ check_bss:
+ 		#endif
+ 
+ 		DBG_871X(FUNC_ADPT_FMT" call cfg80211_roamed\n", FUNC_ADPT_ARG(padapter));
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0))
++		roam_info.channel = notify_channel;
++		roam_info.bssid = cur_network->network.MacAddress;
++		roam_info.req_ie = pmlmepriv->assoc_req+sizeof(struct rtw_ieee80211_hdr_3addr)+2;
++		roam_info.req_ie_len = pmlmepriv->assoc_req_len-sizeof(struct rtw_ieee80211_hdr_3addr)-2;
++		roam_info.resp_ie = pmlmepriv->assoc_rsp+sizeof(struct rtw_ieee80211_hdr_3addr)+6;
++		roam_info.resp_ie_len = pmlmepriv->assoc_rsp_len-sizeof(struct rtw_ieee80211_hdr_3addr)-6;
++		cfg80211_roamed(padapter->pnetdev, &roam_info, GFP_ATOMIC);
++#else
+ 		cfg80211_roamed(padapter->pnetdev
+ 			#if LINUX_VERSION_CODE > KERNEL_VERSION(2, 6, 39) || defined(COMPAT_KERNEL_RELEASE)
+ 			, notify_channel
+@@ -810,6 +822,7 @@ check_bss:
+ 			, pmlmepriv->assoc_rsp+sizeof(struct rtw_ieee80211_hdr_3addr)+6
+ 			, pmlmepriv->assoc_rsp_len-sizeof(struct rtw_ieee80211_hdr_3addr)-6
+ 			, GFP_ATOMIC);
++#endif
+ 	}
+ 	else
+ 	{
+@@ -1879,7 +1892,11 @@ enum nl80211_iftype {
+ */
+ static int cfg80211_rtw_change_iface(struct wiphy *wiphy,
+ 				     struct net_device *ndev,
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0))
++				     enum nl80211_iftype type,
++#else
+ 				     enum nl80211_iftype type, u32 *flags,
++#endif
+ 				     struct vif_params *params)
+ {
+ 	enum nl80211_iftype old_type;
+@@ -4036,7 +4053,11 @@ static int
+ 	#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 0))
+ 		unsigned char name_assign_type,
+ 	#endif
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0))
++		enum nl80211_iftype type, struct vif_params *params)
++#else
+ 		enum nl80211_iftype type, u32 *flags, struct vif_params *params)
++#endif
+ {
+ 	int ret = 0;
+ 	struct net_device* ndev = NULL;
+@@ -4473,7 +4494,7 @@ static int	cfg80211_rtw_change_station(struct wiphy *wiphy, struct net_device *n
+ 
+ struct sta_info *rtw_sta_info_get_by_idx(const int idx, struct sta_priv *pstapriv)
+ 
+-{
++{
+ 	_list	*phead, *plist;
+ 	struct sta_info *psta = NULL;
+ 	int i = 0;
+@@ -6432,7 +6453,11 @@ static void rtw_cfg80211_preinit_wiphy(_adapter *adapter, struct wiphy *wiphy)
+ #endif
+ 
+ #if defined(CONFIG_PM) && (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 0, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0))
++  wiphy->max_sched_scan_reqs = 1;
++#else
+ 	wiphy->flags |= WIPHY_FLAG_SUPPORTS_SCHED_SCAN;
++#endif
+ #ifdef CONFIG_PNO_SUPPORT
+ 	wiphy->max_sched_scan_ssids = MAX_PNO_LIST_COUNT;
+ #endif
+-- 
+2.14.1
+
