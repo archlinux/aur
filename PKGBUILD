@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=chewing-editor-git
-pkgver=0.1.1.r30.g637be39
-pkgrel=2
+pkgver=0.1.1.r37.g9f25170
+pkgrel=1
 pkgdesc="Cross platform chewing user phrase editor"
 arch=('i686' 'x86_64')
 url="http://chewing.im"
@@ -11,16 +11,13 @@ depends=('libchewing' 'qt5-base' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'qt5-tools' 'help2man')
 provides=('chewing-editor')
 conflicts=('chewing-editor')
-source=("git+https://github.com/chewing/chewing-editor.git"
-         qtchooser-notfound.patch)
-sha256sums=('SKIP'
-            'aea1b4df5654394aa41aac08048d5d60a0b5bd735eb4ed246b219ded9ea62fd2')
+source=("git+https://github.com/chewing/chewing-editor.git")
+sha256sums=('SKIP')
 
 
 prepare() {
     cd "chewing-editor"
 
-    patch -Np1 -i "../qtchooser-notfound.patch"
     mkdir -p "build"
 }
 
