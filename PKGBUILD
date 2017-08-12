@@ -3,7 +3,7 @@
 
 pkgname=blender-2.8-git
 pkgver=2.8_r70965.673c9dce085
-pkgrel=1
+pkgrel=2
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
 url="http://blender.org/"
@@ -26,13 +26,15 @@ source=('git://git.blender.org/blender.git#branch=blender2.8' \
         'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git' \
         'blender-translations.git::git://git.blender.org/blender-translations.git' \
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git' \
-        blender-2.8.desktop)
+        blender-2.8.desktop \
+        SelectCudaComputeArch.cmake.patch)
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'cd108dca1c77607c6a7cc45aa284ea97')
+         'cd108dca1c77607c6a7cc45aa284ea97'
+         'd1ee53ea71d0617c28caba2774eaf3e0')
 
 # determine whether we can precompile CUDA kernels
 _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
@@ -52,6 +54,7 @@ prepare() {
   git submodule update --init --recursive
   git submodule foreach git checkout master
   git submodule foreach git pull --rebase origin master
+  patch -Np1 -i ../SelectCudaComputeArch.cmake.patch
 }
 
 build() {
