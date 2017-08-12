@@ -2,8 +2,8 @@
 
 pkgname="gws-git"
 _pkgname="gws"
-pkgver=0.1.4.r14.gb6c9766
-pkgrel=1
+pkgver=0.1.13.r1.g13123d9
+pkgrel=2
 pkgdesc="Colorful KISS helper for git workspaces"
 url="https://github.com/StreakyCobra/gws"
 license=('MIT')
@@ -12,7 +12,7 @@ depends=('bash>4.0' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 changelog="ChangeLog"
-source=("${_pkgname}::git+https://github.com/StreakyCobra/${_pkgname}.git#branch=develop")
+source=("${_pkgname}::git+https://github.com/StreakyCobra/${_pkgname}.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
