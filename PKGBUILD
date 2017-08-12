@@ -17,17 +17,17 @@ sha256sums=('SKIP'
             'aea1b4df5654394aa41aac08048d5d60a0b5bd735eb4ed246b219ded9ea62fd2')
 
 
-pkgver() {
-    cd "chewing-editor"
-
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
     cd "chewing-editor"
 
     patch -Np1 -i "../qtchooser-notfound.patch"
     mkdir -p "build"
+}
+
+pkgver() {
+    cd "chewing-editor"
+
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
