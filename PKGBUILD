@@ -15,17 +15,17 @@ source=('git+https://github.com/arvidn/libtorrent.git#branch=RC_1_1')
 sha256sums=('SKIP')
 
 
-pkgver() {
-  cd "libtorrent"
-
-  git describe --long --tags | sed 's/^[A-Za-z]*-//;s/\([^-]*-g\)/r\1/;s/[_-]/./g'
-}
-
 prepare() {
   mkdir -p py2 py3
   cd "libtorrent"
 
   ./autotool.sh
+}
+
+pkgver() {
+  cd "libtorrent"
+
+  git describe --long --tags | sed 's/^[A-Za-z]*-//;s/\([^-]*-g\)/r\1/;s/[_-]/./g'
 }
 
 _build() (
