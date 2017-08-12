@@ -19,17 +19,17 @@ sha256sums=('SKIP'
             '5a6d74de56e67613c4887e3fe9102aadfce4cd4a9a477fb2c1ed1a26f11fdff6')
 
 
-pkgver() {
-  cd "vorbis-tools"
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
   cd "vorbis-tools"
 
   patch -p1 -i "$srcdir/vorbis-tools-CVE-2015-6749.patch"
   patch -p1 -i "$srcdir/vorbis-tools-cve9638-cve9639.patch"
+}
+
+pkgver() {
+  cd "vorbis-tools"
+
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
