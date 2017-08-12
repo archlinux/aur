@@ -14,6 +14,7 @@ md5sums=('SKIP')
 
 package() {
     cd "${srcdir}/${pkgname}"
+    git checkout $pkgver
     for dir in *; do
         if [ -d $dir ] && [ "$dir" != "UltiSnips" ]; then
             for file in $(find $dir -name "*.vim"); do                                 
