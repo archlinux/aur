@@ -1,0 +1,14 @@
+post_install() {
+    echo
+    echo "==> To enable Rounded Corners add this line to the \'<theme>\' section of your Openbox config."
+    echo "==> \'<cornerRadius>8</cornerRadius>\'"
+    echo "==> The patch also takes an argument for menu corners."
+    echo "==> \'<cornerRadius menu=\"yes\">8</cornerRadius>\'"
+    echo
+    echo "==> The rounded corners patch was taken from here:"
+    echo "==> https://forums.bunsenlabs.org/viewtopic.php?pid=46711#p46711"
+    echo
+    echo "==> See this post for caveats of the rounded corners patch:"
+    echo "==> https://forums.bunsenlabs.org/viewtopic.php?pid=42814#p42814"
+    echo
+}
