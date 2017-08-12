@@ -1,7 +1,7 @@
 # Maintainer: Eugene Zinoviev (me@ch1p.com)
 
 pkgname=vk-messenger
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="VK Messenger for Linux"
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://vk.com/messenger"
 license=('custom')
 depends=('alsa-lib' 'expat' 'gconf' 'gtk2' 'libgcrypt' 'libgnome-keyring' 'libnotify' 'libxss' 'libxtst' 'nss' 'xdg-utils')
 optdepends=('gnome-keyring')
-source=("https://desktop.userapi.com/linux64/master/vk.zip")
-sha256sums=('67f4c4baf835a7f142e0faa28e1fec44fc3e8ebc51c4616221519cbe38b3a8c6')
+source=("vk-${pkgver}-${pkgrel}.zip::https://desktop.userapi.com/linux64/master/vk.zip")
+sha256sums=('4aaf1f1d3831907a7ebe137d3d060812745ad54ab99ddd8700ce5d47235a1bd2')
 
 package() {
     # Creating directory structure
@@ -26,7 +26,7 @@ package() {
     fi
     
     # Create symlink to executable
-    ln -s "../lib/vk/vk" "${pkgdir}/usr/bin/vk"
+    ln -s "../lib/vk/vk" "${pkgdir}/usr/bin/vk-messenger"
 
     # Copy resources
     cp "${startdir}/vk.desktop" "${pkgdir}/usr/share/applications"
