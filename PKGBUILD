@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=auctex-git
 pkgver=11.91.7.gb43ec94b
-pkgrel=1
+pkgrel=2
 pkgdesc="TeX/LaTeX writing environment for Emacs - git checkout"
 arch=('any')
 url="http://savannah.gnu.org/projects/auctex"
@@ -11,7 +11,6 @@ makedepends=('git' 'texinfo' 'perl')
 provides=('auctex')
 conflicts=('auctex')
 install=auctex.install
-backup=(var/auctex/.nosearch)
 options=('!makeflags')
 source=('git://git.sv.gnu.org/auctex.git')
 md5sums=('SKIP')
@@ -38,4 +37,5 @@ build() {
 package() {
   cd "$srcdir/$_gitname"
   make DESTDIR="$pkgdir" install
+  rm -rf $pkgdir/var/auctex
 }
