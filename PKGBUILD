@@ -7,7 +7,7 @@
 pkgname=octoprint
 _reponame=OctoPrint
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(any)
 url="http://octoprint.org/"
@@ -46,7 +46,6 @@ depends=(
 optdepends=(
     'ffmpeg: timelapse support'
     'mjpg-streamer: stream images from webcam'
-    'v4l-mjpg-stream: stream images from a Video4Linux capable camera'
 )
 provides=('octoprint')
 install="octoprint.install"
