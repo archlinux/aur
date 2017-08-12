@@ -2,15 +2,15 @@
 # Contributor: Nezmer <Nezmer@allurelinux.org>
 
 pkgname=libsoup-gnome-git
-pkgver=2.50.0.r11.gb4120b5
-pkgrel=2
+pkgver=2.59.90.1.r0.gf7c7054b
+pkgrel=1
 pkgdesc="Gnome HTTP Library with gnome integration enabled /git repo"
 epoch=1
 arch=('i686' 'x86_64')
 url="http://live.gnome.org/LibSoup"
 license=('LGPL')
-depends=('gnome-keyring' 'libproxy')
-makedepends=('intltool' 'gtk-doc' 'git' 'gnome-common')
+depends=('gnome-keyring' 'libproxy' 'glib-networking' 'sqlite')
+makedepends=('intltool' 'gtk-doc' 'git' 'gnome-common' 'vala' 'python')
 provides=('libsoup' 'libsoup-gnome')
 conflicts=('libsoup' 'libsoup-gnome')
 options=('!libtool')
