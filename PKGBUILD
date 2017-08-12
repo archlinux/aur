@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gflags-git
-pkgver=2.2.0.r5.g30dbc81
+pkgver=2.2.1.r2.gaa2d0f7
 pkgrel=1
 pkgdesc="C++ Library for commandline flag processing"
 arch=('i686' 'x86_64')
@@ -15,16 +15,16 @@ source=("git+https://github.com/gflags/gflags.git")
 sha256sums=('SKIP')
 
 
-pkgver() {
-  cd "gflags"
-
-  git describe --long --tags | sed 's/^[A-Za-z]*//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
   cd "gflags"
 
   mkdir -p "build"
+}
+
+pkgver() {
+  cd "gflags"
+
+  git describe --long --tags | sed 's/^[A-Za-z]*//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

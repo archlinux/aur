@@ -1,6 +1,6 @@
 pkgbase = gflags-git
 	pkgdesc = C++ Library for commandline flag processing
-	pkgver = 2.2.0.r5.g30dbc81
+	pkgver = 2.2.1.r2.gaa2d0f7
 	pkgrel = 1
 	url = https://github.com/gflags/gflags
 	arch = i686
