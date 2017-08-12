@@ -13,8 +13,9 @@ arch=('armv7h' 'i686' 'x86_64')
 makedepends=('git')
 depends=('dkms')
 
-source=("git+https://github.com/bsdfirst/${_reponame}.git#branch=v${pkgver}" 'dkms.conf')
+source=("git+https://github.com/bsdfirst/${_reponame}.git#branch=v${pkgver}" '0001-Add-support-for-kernel-4.11.9.patch' 'dkms.conf')
 sha256sums=('SKIP'
+            '03f60ddc06f0d6499b40414ff428b39b99dabe43e3701cbf05bb05c25be97dbb'
             'be3fe911a32f3235c87653cb2652c3fc14d044e5c869ace46bac1c25750b001b')
 install="${pkgname}.install"
 
@@ -22,6 +23,8 @@ prepare() {
   sed -e "s/@PKGNAME@/${_pkgbase}/" \
       -e "s/@PKGVER@/${pkgver}/" \
       -i "${srcdir}/dkms.conf"
+      
+  (cd ${srcdir}/${_reponame} && git apply -v ${srcdir}/0001-Add-support-for-kernel-4.11.9.patch)
 }
 
 package() {
