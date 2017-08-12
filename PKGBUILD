@@ -1,9 +1,9 @@
 # Maintainer: CrocoDuck <crocoduck dot oducks at gmail dot com>
 
 pkgname=gmsh-bin
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
-pkgdesc="A free 3D finite element grid generator with a build-in CAD engine and post-processor"
+pkgdesc="A free 3D finite element grid generator with a build-in CAD engine and post-processor."
 arch=('x86_64')
 url="http://gmsh.info/"
 license=('GPL')
@@ -12,7 +12,7 @@ makedepends=('wget' 'tar' 'gendesk' 'chrpath')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("http://gmsh.info/bin/Linux/gmsh-${pkgver}-Linux64.tgz")
-sha256sums=('5ef9d6dc78f0fa84f81643d8e5963a77c15f02c46e1fca0d2cc816567e24c0d5')
+sha256sums=('70c26de0585a55db8b525fb7ad578e68ed6abe0ec783c816dfd89e3933345a4e')
 
 prepare() {
     # Set Icon and Launcher:
