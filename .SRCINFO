@@ -1,0 +1,28 @@
+pkgbase = plexdrive-bin
+	pkgdesc = Plexdrive mounts your Google Drive FUSE filesystem (optimized for media playback)
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/dweidenfeld/plexdrive
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = fuse2
+	source_i686 = https://github.com/dweidenfeld/plexdrive-bin/releases/download/5.0.0/plexdrive-bin-linux-386
+	md5sums_i686 = ad566b861397499b2bffc5e4ea036394
+	source_x86_64 = https://github.com/dweidenfeld/plexdrive-bin/releases/download/5.0.0/plexdrive-bin-linux-amd64
+	md5sums_x86_64 = 5ff225e47c72431c440c251d39c6d2ef
+	source_arm = https://github.com/dweidenfeld/plexdrive-bin/releases/download/5.0.0/plexdrive-bin-linux-arm5
+	md5sums_arm = 17d84966b994787afb7e8741a2a8f08a
+	source_armv6h = https://github.com/dweidenfeld/plexdrive-bin/releases/download/5.0.0/plexdrive-bin-linux-arm6
+	md5sums_armv6h = 611d9b2d6053dd8e8a33952b5e34c6e4
+	source_armv7h = https://github.com/dweidenfeld/plexdrive-bin/releases/download/5.0.0/plexdrive-bin-linux-arm7
+	md5sums_armv7h = 4d3691f0ab29dd2ce332d234130d4bfb
+	source_aarch64 = https://github.com/dweidenfeld/plexdrive-bin/releases/download/5.0.0/plexdrive-bin-linux-arm64
+	md5sums_aarch64 = 2af4d2b4596492c52dd0e0f88f542a81
+
+pkgname = plexdrive-bin
+
