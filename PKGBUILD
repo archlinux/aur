@@ -1,7 +1,7 @@
 # Maintainer: Fabien Dubosson <fabien.dubosson@gmail.com>
 
 pkgname="gws"
-pkgver="0.1.11"
+pkgver="0.1.13"
 pkgrel="1"
 pkgdesc="Colorful KISS helper for git workspaces"
 url="https://github.com/StreakyCobra/gws"
@@ -9,9 +9,13 @@ license=('MIT')
 arch=('any')
 depends=('bash>4.0' 'git')
 changelog="ChangeLog"
-source=("https://github.com/StreakyCobra/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('36eeca3594cc6d62e3ca034369b2ba34')
-sha256sums=('8a688b20b6f2a9c2228bd498dd68f2058a54429d89c0f6200997dd90c134b832')
+source=(
+  "https://github.com/StreakyCobra/${pkgname}/archive/${pkgver}.tar.gz"
+  "${pkgver}.tar.gz.sig"
+)
+validpgpkeys=('EB8627616EC1971DF076F2FF2BF5FD22FCABDE73')
+sha256sums=('f5c6ef7322bc44bf87798828df0ebbfef5b5826d4e2103ba92e168d4dce72a66'
+            'SKIP')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
