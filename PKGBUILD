@@ -1,20 +1,22 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=jwm-git
-pkgver=s1550
+pkgver=s1636
 pkgrel=1
 pkgdesc="JWM is a light-weight window manager for the X11 Window System. Git version."
 arch=('i686' 'x86_64')
 url="http://joewing.net/projects/jwm/"
-license=('GPL')
+license=('MIT')
 groups=('x11')
-license=('GPL2')
 provides=('jwm')
 conflicts=('jwm' 'jwm-snapshot' 'jwm-flashfixed' 'jwm-snapshot-lite')
-depends=('fribidi' 'librsvg'  'libxinerama' 'libxmu' 'libxext' 'libpng' 'libx11' 'libxft' 'libjpeg>=7' 'libxpm')
+depends=('libx11' 'libxft' 'libjpeg>=7' 'libxpm' 'libxinerama' 'libpng' 'cairo' 'librsvg' 'fribidi')
+backup=('etc/system.jwmrc')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/joewing/jwm.git")
-md5sums=('SKIP') 
+source=("$pkgname::git+https://github.com/joewing/jwm.git"
+        jwm.desktop)
+md5sums=('SKIP'
+         'ad898472f7538ffc3ff511c055fee535')
 
 pkgver() {
   cd $pkgname
@@ -25,7 +27,10 @@ pkgver() {
 prepare() {
   cd $pkgname
   /usr/bin/cp -f /usr/share/automake-1.15/config.guess .
-  /usr/bin/cp -f /usr/share/automake-1.15/config.sub   .
+  /usr/bin/cp -f /usr/share/automake-1.15/config.sub .
+  /usr/bin/cp -f /usr/share/automake-1.15/install-sh .
+  /usr/bin/cp -f /usr/share/gettext/config.rpath .
+  /usr/bin/cp -f /usr/share/gettext/po/Makefile.in.in po/
   autoreconf
 }
 
@@ -50,5 +55,8 @@ build() {
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir/" install
+  make BINDIR="$pkgdir/usr/bin" MANDIR="$pkgdir/usr/share/man" \
+       DESTDIR="$pkgdir" SYSCONF="$pkgdir/etc" install
+  install -Dm644 "$srcdir/jwm.desktop" "$pkgdir/usr/share/xsessions/jwm.desktop"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
