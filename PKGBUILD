@@ -2,7 +2,7 @@
 
 
 pkgname=blender-2.8-git
-pkgver=70444.4c835b9168d
+pkgver=2.8_r70965.673c9dce085
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ fi
 
 pkgver() {
   cd "$srcdir/blender"
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "2.8_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -65,7 +65,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_INSTALL_PORTABLE=OFF \
         -DWITH_GAMEENGINE=ON \
-        -DWITH_PLAYER=ON \
+        -DWITH_PLAYER=OFF \
         -DWITH_OPENCOLORIO=ON \
         -DWITH_FFTW3=ON \
         -DWITH_SYSTEM_GLEW=ON \
@@ -97,7 +97,7 @@ package() {
   msg "add -2.8 sufix to binaries"
   mv ${pkgdir}/usr/bin/blender ${pkgdir}/usr/bin/blender-2.8
   mv ${pkgdir}/usr/bin/blender-thumbnailer.py ${pkgdir}/usr/bin/blender-2.8-thumbnailer.py
-  mv ${pkgdir}/usr/bin/blenderplayer ${pkgdir}/usr/bin/blenderplayer-2.8
+#  mv ${pkgdir}/usr/bin/blenderplayer ${pkgdir}/usr/bin/blenderplayer-2.8
 
   msg "mv doc/blender to doc/blender-2.8"
   mv ${pkgdir}/usr/share/doc/blender ${pkgdir}/usr/share/doc/blender-2.8
