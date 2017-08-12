@@ -37,17 +37,17 @@ sha256sums=('SKIP'
             'SKIP')
 
 
-pkgver() {
-  cd "ppp"
-
-  git describe --long --tags | sed 's/^ppp-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
   cd "ppp"
 
   patch -p1 -i "$srcdir/ppp-2.4.6-makefiles.patch"
   patch -p1 -i "$srcdir/CVE-2015-3310.patch"
+}
+
+pkgver() {
+  cd "ppp"
+
+  git describe --long --tags | sed 's/^ppp-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
