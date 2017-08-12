@@ -15,7 +15,6 @@ arch=('i686' 'x86_64')
 provides=("saga-gis")
 conflicts=("saga-gis")
 depends=('wxgtk'
-         'webkitgtk'
          'proj'
          'gdal'
          'libtiff'

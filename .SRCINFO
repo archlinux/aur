@@ -7,7 +7,6 @@ pkgbase = saga-gis-ltr
 	arch = x86_64
 	license = GPL3
 	depends = wxgtk
-	depends = webkitgtk
 	depends = proj
 	depends = gdal
 	depends = libtiff
