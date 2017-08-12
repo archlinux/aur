@@ -1,14 +1,14 @@
 # Maintainer: Daurnimator <quae@daurnimator.com>
 
 pkgname=lua51-compat53
-pkgver=0.3
+pkgver=0.4
 pkgrel=0
 arch=('i686' 'x86_64')
 url='https://github.com/keplerproject/lua-compat-5.3'
 license=('MIT')
 makedepends=('lua51')
 source=("https://github.com/keplerproject/lua-compat-5.3/archive/v$pkgver.tar.gz")
-md5sums=('98f93f9de24b26ee5f6f7053979599f8')
+md5sums=('21d27a6edcb677e78cea365ac275bcc9')
 
 build() {
 	cd lua-compat-5.3-"$pkgver"
