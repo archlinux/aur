@@ -7,7 +7,7 @@
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
 pkgname=yabause-qt5-git
-pkgver=0.9.15.r3231.ee28cc7
+pkgver=0.9.15.r3257.8b1b7685
 pkgrel=1
 pkgdesc="A Sega Saturn emulator. Qt5 port (GIT version)"
 arch=('x86_64' 'i386')
@@ -32,9 +32,9 @@ provides=('yabause-qt5')
 source=('git+https://github.com/Yabause/yabause.git'
         'rwx.patch'
         )
-sha1sums=('SKIP'
-          '749276456a137ab913c631b9c61d113d7b67c854'
-          )
+sha256sums=('SKIP'
+            'd29997d3249683081a2687f31e777f917093101d56815d22103aaaf22ac786b1'
+            )
 
 pkgver() {
   cd yabause/yabause
@@ -44,8 +44,13 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
   cd yabause/yabause
   patch -Np1 -i "${srcdir}/rwx.patch"
+
+  # Install .svg icon instead .png
+  cp src/logo.svg src/qt/resources/icons/yabause.svg
+  sed 's|yabause.png|yabause.svg|g' -i src/qt/CMakeLists.txt
 }
 
 build() {
@@ -57,6 +62,7 @@ build() {
     -DYAB_PORTS=qt \
     -DYAB_NETWORK=ON \
     -DYAB_OPTIMIZED_DMA=ON
+
   make
 }
 
