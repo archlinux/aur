@@ -1,0 +1,18 @@
+pkgbase = multicat-git
+	pkgdesc = Easily and efficiently manipulate multicast streams
+	pkgver = 2.2.r7.g105d45f
+	pkgrel = 1
+	url = https://www.videolan.org/projects/multicat.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = bitstream
+	depends = glibc
+	provides = multicat
+	conflicts = multicat
+	source = git+https://code.videolan.org/videolan/multicat.git
+	sha256sums = SKIP
+
+pkgname = multicat-git
+
