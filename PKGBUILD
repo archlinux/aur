@@ -3,7 +3,7 @@
 #Contributor: truh <truhgoj[äT]truh(O)in>
 
 pkgname=aerospike-server-ce
-pkgver=3.14.0.2
+pkgver=3.14.1.2
 pkgrel=1
 pkgdesc="High performance NoSQL database"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ depends=('openssl-1.0')
 source=("http://www.aerospike.com/download/server/${pkgver}/artifact/tgz"
         aerospike.service
        )
-sha512sums=('d2be7c206328b7ee1b6b23a8c0a6caad22b1913b25c2e68f8993c472e6f15e92b73792296ed2de0f6677828347772c32c41682437513f333d9260aac49006280'
+sha512sums=('f76941c81909f8cae4d4e94c9a78f4c4232d710b5493053289fabba5ce2040afb6dcb81e0d456be068abe78dafee3aa2c304d6c89937434d6c184a6e0dce139b'
             '88829d7152fc2dfddb309c4aee96079243f3ee76f98a56adf2b0c6f9a91573bb7367740e1c7f5fc0c93386b3794b462b5792433e6d91e4a418fb5c3e8a23f986')
 options=("!zipman")
 
