@@ -2,7 +2,7 @@
 
 pkgname=onerng
 pkgver=3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="driver for the OneRNG open hardware random number generator and entropy source"
 arch=('any')
 url="http://onerng.info"

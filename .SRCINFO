@@ -1,7 +1,7 @@
 pkgbase = onerng
 	pkgdesc = driver for the OneRNG open hardware random number generator and entropy source
 	pkgver = 3.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://onerng.info
 	install = onerng.install
 	arch = any
