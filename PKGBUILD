@@ -1,6 +1,6 @@
 # Maintainer: Eloy Garcia Almaden <eloy.garcia.pca@gmail.com>
 pkgname=wallpaperdownloader
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 epoch=
 pkgdesc="Download, manage and change automatically your favorite wallpapers from the Internet"
