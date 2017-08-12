@@ -1,7 +1,7 @@
 # Maintainer: Timo Sarawinski <t.sarawinski@gmail.com>
 pkgname=8723bs-git
 _pkgname=8723bs
-pkgver=16b2121fe13eca88653cd23a61640b043d0c5887
+pkgver=4.4.1.16.16b2121
 pkgrel=1
 pkgdesc="RTL8723BS WIFI driver working on baytrail tablets. This driver uses an older codebase. kernel 4.12+ will include a newer version"
 url="http://www.realtek.com.tw/"
@@ -14,6 +14,14 @@ source=("${_pkgname}::git+https://github.com/muhviehstah/rtl8723bs"
 	'blacklist-r8723bs.conf')
 sha256sums=('SKIP'
             '7b269bda4c697037ff71647ada8591c887184d51c247f7a5d00cfacf787319d6')
+
+pkgver() {
+  cd ${_pkgname}
+  printf "%s.%s.%s" \
+    "$(git tag -l|grep -P '.+\..+\.\d+'|sed -r 's|v?([0-9\.]+)(-.+)?|\1|g'|sort -V -r|head -n1)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	
