@@ -2,7 +2,7 @@
 
 _plug=remapframes
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.1.gdec8c9e
+pkgver=v1.0.4.g8669000
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
@@ -18,31 +18,28 @@ pkgver() {
 }
 
 prepare(){
+  mkdir -p build
+
   cd "${_plug}"
 
   sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
     -i Common.h
-
-  echo "all:
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o Common.o Common.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o RemapFrames.o RemapFrames.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o RemapFramesSimple.o RemapFramesSimple.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o ReplaceFramesSimple.o ReplaceFramesSimple.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o VSPlugin.o VSPlugin.cpp
-
-	  g++ -shared -L. -fPIC ${LDFLAGS} -o libvs${_plug}.so Common.o RemapFrames.o RemapFramesSimple.o ReplaceFramesSimple.o VSPlugin.o"> Makefile
 }
 
 build() {
-  cd "${_plug}"
-  make
+  cd build
+  meson \
+    "../${_plug}" \
+    --prefix=/usr \
+    --buildtype=release
+
+  ninja
 }
 
 package() {
-  cd "${_plug}"
-  install -Dm755 "libvs${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/libvs${_plug}.so"
+  DESTDIR="${pkgdir}" ninja -C build install
 
-  install -Dm644 README.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${pkgname}/README.rst"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${_plug}/README.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${pkgname}/README.rst"
+  install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
