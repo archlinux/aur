@@ -3,15 +3,15 @@
 
 pkgname=xiphos-gtk3
 pkgver=4.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Bible study tool - This version is built to use GTK3 and WebKit2GTK+."
 arch=('i686' 'x86_64')
 url="http://xiphos.org"
 license=('GPL')
 depends=('webkit2gtk' 'libgsf' 'gconf' 'sword' 'biblesync' 'gtkhtml4' 'festival')
-makedepends=('gnome-common' 'gnome-doc-utils' 'intltool' 'subversion')
-provides=('gnomesword' 'xiphos' 'xiphos-svn')
-conflicts=('gnomesword' 'xiphos' 'xiphos-svn')
+makedepends=('gnome-common' 'gnome-doc-utils' 'intltool' 'python2')
+provides=('gnomesword' 'xiphos')
+conflicts=('gnomesword' 'xiphos')
 source=("https://github.com/crosswire/xiphos/releases/download/$pkgver/xiphos-$pkgver-20170810.tar.gz")
 sha512sums=('a7e645c2aa6f098c4888d63d3bbfa57009924d9594e89fd003d9ab47c03e25571e8a982ac640c29be02412d10baad08ff51b2bd25807d3a4a7b3abba16c9112a')
 
