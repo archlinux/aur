@@ -16,12 +16,6 @@ source=("git+https://github.com/facebook/wdt.git")
 sha256sums=('SKIP')
 
 
-pkgver() {
-  cd "wdt"
-
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
   cd "$srcdir"
   rm -rf "folly"
@@ -31,6 +25,12 @@ prepare() {
 
   cd "$srcdir/wdt"
   mkdir -p "_build"
+}
+
+pkgver() {
+  cd "wdt"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
