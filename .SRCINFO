@@ -1,0 +1,20 @@
+pkgbase = libsamplerate-git
+	pkgdesc = A Sample Rate Converter for audio
+	pkgver = 83a9482
+	pkgrel = 1
+	epoch = 1
+	url = http://www.mega-nerd.com/SRC/index.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = fftw
+	makedepends = git
+	depends = glibc
+	depends = libsndfile
+	provides = libsamplerate
+	conflicts = libsamplerate
+	source = git+https://github.com/erikd/libsamplerate.git
+	sha256sums = SKIP
+
+pkgname = libsamplerate-git
+
