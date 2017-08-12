@@ -1,0 +1,35 @@
+pkgbase = peppercarrot-fonts-git
+	pkgdesc = Fonts required to correctly view Pepper&Carrot SVG sources
+	pkgver = r38.20afd31
+	pkgrel = 1
+	url = https://github.com/Deevad/peppercarrot_fonts
+	arch = any
+	license = GPL3
+	license = Apache
+	license = Custom:OFL10
+	license = Custom:OFL11
+	license = Custom:MITX11
+	license = Custom:MplusFont
+	license = Custom:CCBY3
+	depends = fontconfig
+	depends = xorg-font-utils
+	depends = otf-pecita
+	depends = otf-yanone-kaffeesatz
+	depends = ttf-droid-nonlatin-ib
+	depends = ttf-impallari-lobster-font
+	depends = lohit-fonts
+	source = git+https://github.com/Deevad/peppercarrot_fonts.git
+	source = OFL10
+	source = OFL11
+	source = MITX11
+	source = MPlusFont
+	source = CCBY3
+	sha256sums = SKIP
+	sha256sums = 1e615a572b4d92e1d98e04722ceda6c73d1b160afe6e518fec0171fe336dc0df
+	sha256sums = 7f18ec1ebb6b50e3ed0f74b2c61f25b8d7cd69e43f4de66e991bcfd3c419a8bb
+	sha256sums = f9c4c77baa3828004ee54b8a4f2db2e88ed44a6237a493965bf551fac0fcb62d
+	sha256sums = faec1e722fd066a741d447bfff06e26e4daaa72b7796cbed7d416a27ddc751a3
+	sha256sums = e6bc9e9c474700b708f568bac9e5a8a9bcb2b1dad53442f5ba449fcb848b8e76
+
+pkgname = peppercarrot-fonts-git
+
