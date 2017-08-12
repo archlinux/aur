@@ -1,0 +1,17 @@
+pkgbase = chromium-runner
+	pkgdesc = Run a Chromium profile or application
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/synaptiko/chromium-runner
+	arch = any
+	license = BSD
+	depends = chromium
+	depends = fzf
+	depends = nodejs
+	depends = npm
+	provides = chromium-runner
+	source = https://github.com/synaptiko/chromium-runner/archive/v0.0.1.tar.gz
+	sha256sums = 5e4bbfaf40b06380c06e176c781e29a04f9756821d74f97d9bf990bdc8c25154
+
+pkgname = chromium-runner
+
