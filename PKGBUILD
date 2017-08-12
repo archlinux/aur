@@ -1,7 +1,7 @@
 # Maintainer: Jesin <Jesin00@gmail.com>
 pkgname=libb2
 pkgver=0.0.15.g9a0d006
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 pkgdesc='C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp hash functions'
 url=https://blake2.net/
@@ -38,4 +38,5 @@ build() {
 package() {
 	cd "$pkgname"
 	make "DESTDIR=$pkgdir" install
+	install -Dm644 "-t$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
