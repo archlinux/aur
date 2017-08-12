@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=editorconfig-core-c-git
-pkgver=0.12.1.r13.g1f2c30e
-pkgrel=2
+pkgver=0.12.1.r16.g6f3c40d
+pkgrel=1
 pkgdesc="EditorConfig core library written in C (for use by plugins supporting EditorConfig parsing)"
 arch=('i686' 'x86_64')
 url="https://github.com/editorconfig/editorconfig-core-c"
@@ -15,16 +15,16 @@ source=('git+https://github.com/editorconfig/editorconfig-core-c.git')
 sha256sums=('SKIP')
 
 
-pkgver() {
-  cd "editorconfig-core-c"
-
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
   cd "editorconfig-core-c"
 
   mkdir -p "build"
+}
+
+pkgver() {
+  cd "editorconfig-core-c"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
