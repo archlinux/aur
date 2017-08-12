@@ -3,7 +3,7 @@
 
 pkgname=cepl-git
 _pkgname=${pkgname%-*}
-pkgver=1.6.0.r0.g14a25dd
+pkgver=1.6.0.r10.g82ccc49
 pkgrel=1
 pkgdesc='C11 (ISO/IEC 9899:2011) read–eval–print loop (REPL) currently supporting multiple compilers, readline key-bindings/tab-completion, and incremental undo.'
 url='https://github.com/alyptik/cepl'
