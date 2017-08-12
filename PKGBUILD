@@ -4,10 +4,10 @@ pkgdesc="ROS - This package provides ROS specific hooks for stage."
 url='http://ros.org/wiki/stage_ros'
 
 pkgname='ros-kinetic-stage-ros'
-pkgver='1.7.5'
+pkgver='1.8.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-roscpp
