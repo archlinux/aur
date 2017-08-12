@@ -58,7 +58,7 @@
  }
  
  /* Callback used from GtkSearchEngine when the query is done running */
-@@ -7502,6 +7494,7 @@
+@@ -7481,6 +7473,7 @@
    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (priv->recent_model),
                                          GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
                                          GTK_SORT_DESCENDING);
@@ -66,7 +66,7 @@
  }
  
  typedef struct
-@@ -7519,7 +7512,7 @@
+@@ -7498,7 +7491,7 @@
  
    gtk_tree_view_set_model (GTK_TREE_VIEW (priv->browse_files_tree_view),
                             GTK_TREE_MODEL (priv->recent_model));
