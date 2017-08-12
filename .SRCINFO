@@ -12,17 +12,12 @@ pkgbase = retroarch-standalone-service
 	depends = retroarch
 	depends = retroarch-assets-xmb
 	depends = retroarch-autoconfig-udev
-	depends = xorg-server
-	depends = xorg-xinit
-	depends = unclutter
 	source = retroarch-standalone.service
 	source = retroarch-standalone.sysuser
 	source = retroarch-standalone.cfg
-	source = retroarch-standalone.xinitrc
 	md5sums = 8dd1a467e961630eff4f1d532fe7763a
 	md5sums = dff58d483453816a80dcdbc8d272e8b8
 	md5sums = ac40311816ee094e98f957db77cea241
-	md5sums = 3999db10036381e2cba57c21a62186c8
 
 pkgname = retroarch-standalone-service
 
