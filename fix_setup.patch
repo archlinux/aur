@@ -1,0 +1,21 @@
+diff -urN ng-numpy-randomstate-1.13.2-orig/setup.py ng-numpy-randomstate-1.13.2/setup.py
+--- ng-numpy-randomstate-1.13.2-orig/setup.py	2017-08-12 09:31:16.987628524 -0400
++++ ng-numpy-randomstate-1.13.2/setup.py	2017-08-12 09:30:44.500099958 -0400
+@@ -37,7 +37,7 @@
+ compile_rngs = rngs[:]
+ 
+ extra_defs = [('_CRT_SECURE_NO_WARNINGS', '1')] if os.name == 'nt' else []
+-extra_link_args = ['/LTCG', 'Advapi32.lib', 'Kernel32.lib'] if os.name == 'nt' else []
++extra_link_args = ['/LTCG', 'Advapi32.lib', 'Kernel32.lib'] if os.name == 'nt' else ['-Wl,--strip-all']
+ base_extra_compile_args = [] if os.name == 'nt' else ['-std=c99']
+ if USE_SSE2:
+     if os.name == 'nt':
+@@ -271,8 +271,6 @@
+       classifiers=classifiers,
+       packages=find_packages(),
+       package_dir={'randomstate': './randomstate'},
+-      package_data={'': ['*.c', '*.h', '*.pxi', '*.pyx', '*.pxd'],
+-                    'randomstate.tests.data': ['*.csv']},
+       include_package_data=True,
+       license='NSCA',
+       author='Kevin Sheppard',
