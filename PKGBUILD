@@ -1,7 +1,7 @@
 # Maintainer: Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=fscrypt-git
-pkgver=0.1.0.53.g1f29458
+pkgver=0.1.0.57.g8e234ec
 pkgrel=1
 pkgdesc='A tool for managing Linux filesystem encryption'
 arch=('x86_64' 'i686')
@@ -18,8 +18,15 @@ pkgver() {
 	git describe --tags --long | tr - .
 }
 
+prepare() {
+	export GOPATH="${srcdir}/go"
+	mkdir -p "${GOPATH}/src/github.com/google"
+	ln -sf "${srcdir}/fscrypt" "${GOPATH}/src/github.com/google/"
+}
+
 build() {
-	cd "${srcdir}/fscrypt"
+	export GOPATH="${srcdir}/go"
+	cd "${GOPATH}/src/github.com/google/fscrypt"
 	make
 }
 
