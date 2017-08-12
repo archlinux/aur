@@ -12,6 +12,7 @@ pkgbase = latte-dock-git
 	makedepends = python
 	depends = plasma-framework
 	depends = plasma-desktop
+	optdepends = libunity: quicklists, counters, and progress bars for apps using libunity
 	conflicts = latte-dock
 	source = git+https://github.com/psifidotos/Latte-Dock.git
 	sha256sums = SKIP

@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/psifidotos/Latte-Dock'
 license=('GPL')
 depends=('plasma-framework' 'plasma-desktop')
+optdepends=('libunity: quicklists, counters, and progress bars for apps using libunity')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'python')
 conflicts=('latte-dock')
 source=("git+https://github.com/psifidotos/Latte-Dock.git")
