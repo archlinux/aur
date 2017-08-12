@@ -1,7 +1,7 @@
 post_install() {
 	local HOMEDIR=/var/lib/octoprint
-	getent group octoprint > /dev/null || groupadd octoprint
-	getent passwd octoprint > /dev/null || useradd -d $HOMEDIR -g octoprint -s /usr/bin/nologin octoprint
+	getent group octoprint > /dev/null || groupadd -r octoprint
+	getent passwd octoprint > /dev/null || useradd -d $HOMEDIR -r -g octoprint -s /usr/bin/nologin octoprint
 	usermod -a -G octoprint,network,uucp,tty octoprint
 	mkdir -p $HOMEDIR
 	chmod 700 $HOMEDIR

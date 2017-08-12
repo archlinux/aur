@@ -1,111 +1,80 @@
-# Maintainer: Yunhui Fu <yhfudev@gmail.com>
+# Maintainer: Niklas <dev@n1klas.net>
+# Contributor: Yunhui Fu <yhfudev@gmail.com>
 # Contributor: Doug Richardson <dougie.richardson@gmail.com>
 # Contributor: feilen <feilen1000@gmail.com>
 # Contributor: Thermionix <thermionix@gmail.com>
 
 pkgname=octoprint
-pkgver=1.2.16
+_reponame=OctoPrint
+pkgver=1.3.4
 pkgrel=1
-pkgdesc="OctoPrint provides a responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
+pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(any)
-url="https://github.com/foosel/OctoPrint"
-license=('GPL')
+url="http://octoprint.org/"
+license=('AGPL3')
 depends=(
+    'python2-awesome-slugify'
     'python2-blinker'
+    'python2-chainmap'
+    'python2-click'
+    'python2-dateutil'
+    'python2-feedparser'
     'python2-flask'
+    'python2-flask-assets'
     'python2-flask-babel'
     'python2-flask-login'
-    #'python2-flask-markdown'
     'python2-flask-principal'
+    'python2-future'
+    'python2-markdown'
     'python2-netaddr'
-    'python2-numpy'
-    'python2-pkginfo'
-    'python2-pylru-git' # 'python2-pylru'
-    'python2-pyserial'
-    'python2-rsa'
-    'python2-sarge-git' # 'python2-sarge'
-    'python2-tornado'
-    'python2-tornadio2'
-    'python2-sockjs-tornado-git'
-    'python2-webassets'
-    'python2-watchdog'
-    'python2-yaml'
-    'python2-flask-assets'
-    'python2-psutil'
-    'python2-requests'
-    'polkit'
     'python2-netifaces'
-    'python2-awesome-slugify'
-    )
-makedepends=( 'git' )
-optdepends=( 
+    'python2-pkginfo'
+    'python2-psutil'
+    'python2-pylru'
+    'python2-pyserial'
+    'python2-requests'
+    'python2-rsa'
+    'python2-sarge'
+    'python2-scandir'
+    'python2-semanticversion'
+    'python2-sockjs-tornado'
+    'python2-tornado'
+    'python2-watchdog'
+    'python2-websocket-client'
+    'python2-yaml'
+)
+optdepends=(
     'ffmpeg: timelapse support'
     'mjpg-streamer: stream images from webcam'
     'v4l-mjpg-stream: stream images from a Video4Linux capable camera'
 )
-provides=( 'octoprint' )
-conflicts=( 'octoprint' )
+provides=('octoprint')
 install="octoprint.install"
 source=(
-    #"${pkgname}::git+https://github.com/foosel/OctoPrint.git#commit=${pkgver}"
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/foosel/OctoPrint/archive/${pkgver}.tar.gz"
+    "https://github.com/foosel/OctoPrint/archive/${pkgver}.tar.gz"
     octoprint.run
     octoprint.service
-    octoprint-tornado401.patch
-    )
-md5sums=('SKIP'
-         '3bee9901c9eabed94b7f9236f83bf053'
-         'ec5e51f876bb5fb223801bf28850908a'
-         '88d6fb3a61a4ab990fb6cca39c830a6c'
-         )
+    octoprint-deps.patch
+    octoprint-jinja29.patch
+)
+sha512sums=('df22247796b46f270f7525777194e983a12be3c5f719ffc4ed864d6012d2050b813df9e8f9ee95bdc7687838c96f7c102327a7b802d42abd84481ddd77c8ebea'
+            '5c22c76e4089958ff42e2627f29c360fa0f9a73b849f1fe5092cdd9ae800323263b75ac7e23d7189badac9baa7daa850183bf2491680a0ac01c605531728da62'
+            '89a8703cbc8b8802eb6a360359f92904357a99bf5b1174c85d4555f88a816d4c008d077fe4f3fed4db0b23e8a662359bcfafaf7750a2ed50a81104f04d04c056'
+            'cb4190c0a24499fdac2d48e89ba20229ac7d11df0d6bb56b8930fadde3595e70387868374d93c49aa0230b276f7bc061969ca64d92de995aea403150d156969f'
+            '41e03bcc2111d1000ca0d62634009dc2030bae52b6623cd58a595f570e0f99e524613d52785b50098fe044fe5355b26221ce7a286148d9bdd95fb3f220bb5568')
 
-pkgver_git() {
-    cd "${srcdir}/${pkgname}"
-    #local ver="$(git show | grep commit | awk '{print $2}' )"
-    #printf "r%s" "${ver//[[:alpha:]]}"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-pkgver_svn() {
-    cd "${srcdir}/${pkgname}"
-    local ver="$(svn info | grep Revision | awk '{print $2}' )"
-    #printf "r%s" "${ver//[[:alpha:]]}"
-    echo ${ver:0:7}
-}
-
-#pkgver() {
-#    pkgver_git
-#}
 
 prepare() {
-    cd ${srcdir}/OctoPrint-${pkgver}
+    cd ${srcdir}/${_reponame}-${pkgver}
 
-    # check the version of python2-tornado required by the OctoPrint
-    # if it not python2-tornado 4.0.1, we need to switch back to new version!
-    # If use the latest tornado, you don't need to patch the octoprint.
-    VER=$(grep -Hrn '"tornado==' setup.py | awk -F= '{print $3}' | awk -F\" '{print $1}')
-    VAL=$(echo $VER | awk -F. '{print 10000 * $1 + 100 * $2 + $3}')
-    if (( $VAL <= 40001 )) ; then
-        patch -p1 < "$srcdir/octoprint-tornado401.patch"
-    else
-        echo "The required version of tornado is now changed." 1>&2
-    fi
+    patch -p1 < "$srcdir/octoprint-deps.patch"
+    patch -p1 < "$srcdir/octoprint-jinja29.patch"
 }
 
 package() {
-    #cd ${srcdir}/${pkgname}
-    cd ${srcdir}/OctoPrint-${pkgver}
+    cd ${srcdir}/${_reponame}-${pkgver}
 
     python2 setup.py install --root="$pkgdir/" --optimize=1
-
-    mkdir -p ${pkgdir}/usr/share/octoprint/
-    cp -a * ${pkgdir}/usr/share/octoprint/
-    #install -D -m755 run ${pkgdir}/usr/share/octoprint/run
-    rm -rf ${pkgdir}/usr/share/octoprint/src/
-    rm -rf ${pkgdir}/usr/share/octoprint/build/
-    rm -rf ${pkgdir}/usr/share/octoprint/docs/
-    rm -rf ${pkgdir}/usr/share/octoprint/tests/
-    rm -rf ${pkgdir}/usr/share/octoprint/translations/
 
     install -D -m755 ${srcdir}/octoprint.run ${pkgdir}/usr/bin/octoprint
     install -D -m644 ${srcdir}/octoprint.service ${pkgdir}/usr/lib/systemd/system/octoprint.service

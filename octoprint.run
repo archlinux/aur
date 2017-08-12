@@ -1,3 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env python2
 
-exec /usr/bin/env python2 /usr/share/octoprint/run $@
+import octoprint
+octoprint.main()

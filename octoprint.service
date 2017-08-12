@@ -1,13 +1,12 @@
 [Unit]
-Description=Octoprint 3d Printing Web Server
+Description=Responsive web interface for controlling a 3D printer
 After=network.target
 
 [Service]
 User=octoprint
 Group=octoprint
 Type=simple
-ExecStart=/usr/bin/octoprint
-Restart=on-failure
+ExecStart=/usr/bin/octoprint serve
 
 [Install]
 WantedBy=multi-user.target
