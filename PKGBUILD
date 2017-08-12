@@ -1,6 +1,6 @@
 # Maintainer: Arif Roktim <arifrroktim at gmail dot com>
 pkgname=mir.qualia
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Automatically comment and uncomment config file sections"
 arch=('any')
@@ -8,8 +8,8 @@ url="https://github.com/darkfeline/mir.qualia"
 license=('Apache')
 depends=('python' 'python-setuptools')
 makedepends=()
-source=('https://github.com/darkfeline/mir.qualia/archive/v1.0.0.tar.gz')
-md5sums=('84943e0cb444d197c135504a33bca4df')
+source=('https://github.com/darkfeline/mir.qualia/archive/v2.0.0.tar.gz')
+md5sums=('1cc8feffacd1898ba338956ad80c30f0')
 
 build() {
   cd "$pkgname-$pkgver"
