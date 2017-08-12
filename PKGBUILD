@@ -46,7 +46,7 @@ _use_current=
 pkgbase=linux-ck
 _srcname=linux-4.12
 pkgver=4.12.6
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -74,8 +74,8 @@ sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
             'c20ca8b06355fd923a6b942d573e74118fd2abbc8a5ea282d994967122a04a2d'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
-            'df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1'
-            '6897f728f13d3f3f18cde837cfa71e231107487b3989af8d80cf73df04fc6ce0'
+            'df5d939f8768c6ec45e5fc7460bb1a7a97926607191515ed0f898dd5db7cd8f2'
+            'e4f51aa3abb886f52314bdadc7e7cd037e4f2140769fa2a5d57135fae6bb6685'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
