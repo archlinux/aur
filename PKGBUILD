@@ -1,9 +1,9 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=igb
-pkgver=5.3.5.4
-pkgrel=4
-pkgdesc="Linux* Base Driver for Intel(R) Ethernet Network Connection"
+pkgver=5.3.5.10
+pkgrel=1
+pkgdesc="Driver for Intel Ethernet Network Connection"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/e1000/files/igb%20stable/"
 license=('GPL')
@@ -11,17 +11,14 @@ depends=('linux>=2.6.30')
 makedepends=('linux-headers>=2.6.30')
 install=$pkgname.install
 source=("$pkgname-$pkgver-src.tar.gz::https://downloads.sourceforge.net/project/e1000/igb%20stable/$pkgver/$pkgname-$pkgver.tar.gz"
-        kernel4.9.patch
-        kernel4.10.patch)
-sha256sums=('804fe3c5c3a65b4ce8681569175b62efd648240f5fbbc349689f14de0d3dee6d'
-            'c6dc82cf45b09271cae1818130ac215a64d96a5e9237c11f2b5bc757603111a2'
-            '8e3b8473cf379246574962e985f474bb53b786be218ba8574071fd845c3e1396')
+        "pci_enable_msix.patch")
+sha256sums=('0c3fc7ace88c2f76bb41696f5f57c6d724dbad2067db6c92625b6725930807d5'
+            '5bd88953545099e6c4595b3dc25c947c52ecd8c65f06e0d2f3d1fda606b525d6')
 
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
-    patch -p1 -i "../kernel4.9.patch"
-    patch -p1 -i "../kernel4.10.patch"
+    patch -p1 -i "../pci_enable_msix.patch"
 }
 
 build() {
