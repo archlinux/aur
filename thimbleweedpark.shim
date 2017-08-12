@@ -1,0 +1,2 @@
+#!/bin/bash
+exec "/opt/gog/thimbleweedpark/start.sh" "$@"
