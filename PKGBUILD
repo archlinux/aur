@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=wart-git
-pkgver=4126.91356d93
+pkgver=4128.0b64c0ba
 pkgrel=1
 pkgdesc="A small, readable lisp with thorough unit tests and extensible functions/macros."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP'
 optdepends=('which: for using rlwrap'
   'rlwrap: for better REPL editing'
   'zsh: for using zsh')
-options=('!strip')
+options=('!strip' '!makeflags')
 _gitname="wart"
 
 pkgver() {
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  make -q || make 
+  make 
 }
 
 package() {
