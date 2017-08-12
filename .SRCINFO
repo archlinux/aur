@@ -15,7 +15,7 @@ pkgbase = rpcs3
 	depends = qt5-base
 	depends = vulkan-icd-loader
 	options = !strip
-	source = rpcs3-v0.0.3.AppImage::https://rpcs3.net/cdn/builds/rpcs3-v0.0.3-2017-07-25-ff772dd-7380_linux64.AppImage
+	source = https://rpcs3.net/cdn/builds/rpcs3-v0.0.3-2017-07-25-ff772dd-7380_linux64.AppImage
 	sha256sums = 928e7538bd5a189e4c914a33836bcd9649ae18fb1968bcb188e487f374ecddab
 
 pkgname = rpcs3

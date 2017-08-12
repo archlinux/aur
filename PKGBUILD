@@ -1,6 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
 pkgver=0.0.3
+_pkgbuild='2017-07-25-ff772dd-7380'
 pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
@@ -10,14 +11,14 @@ depends=('alsa-lib' 'glew1.13' 'hicolor-icon-theme' 'libudev.so'
     'ncurses5-compat-libs' 'openal' 'qt5-base' 'vulkan-icd-loader')
 makedepends=('p7zip')
 options=('!strip')
-source=("$pkgname-v$pkgver.AppImage::https://rpcs3.net/cdn/builds/rpcs3-v$pkgver-2017-07-25-ff772dd-7380_linux64.AppImage")
+source=("https://rpcs3.net/cdn/builds/rpcs3-v$pkgver-${_pkgbuild}_linux64.AppImage")
 sha256sums=('928e7538bd5a189e4c914a33836bcd9649ae18fb1968bcb188e487f374ecddab')
 
 prepare()
 {
     cd "$srcdir"
 
-    7z x -y "$srcdir/$pkgname-v$pkgver.AppImage"
+    7z x -y "$srcdir/$pkgname-v$pkgver-${_pkgbuild}_linux64.AppImage"
 }
 
 package()
