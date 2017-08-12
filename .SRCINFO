@@ -1,0 +1,14 @@
+pkgbase = python-tlsfuzzer-git
+	pkgdesc = TLS test suite and fuzzer
+	pkgver = r323.21da007
+	pkgrel = 1
+	url = https://github.com/tomato42/tlsfuzzer
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	source = git://github.com/tomato42/tlsfuzzer.git
+	md5sums = SKIP
+
+pkgname = python-tlsfuzzer-git
+
