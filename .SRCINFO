@@ -1,0 +1,18 @@
+pkgbase = gzip-git
+	pkgdesc = A data compression program
+	pkgver = 1.8.r21.ge360d37
+	pkgrel = 1
+	url = https://www.gnu.org/software/gzip/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rsync
+	depends = glibc
+	provides = gzip
+	conflicts = gzip
+	source = git+https://git.savannah.gnu.org/git/gzip.git
+	sha256sums = SKIP
+
+pkgname = gzip-git
+
