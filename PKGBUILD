@@ -1,9 +1,9 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=httperf-git
-pkgver=cc88843
-pkgrel=2
-epoch=1
+pkgver=0c7d127
+pkgrel=1
+epoch=2
 pkgdesc="The HTTP load generator"
 arch=('i686' 'x86_64')
 url="https://github.com/httperf/httperf"
@@ -17,12 +17,6 @@ sha256sums=('SKIP'
             '14e17f66425dc8433255b6ba893e933dce3fabb37e860290f4cfaf3a24c36ac0')
 
 
-pkgver() {
-    cd "httperf"
-
-    git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
     cd "httperf"
 
@@ -30,6 +24,12 @@ prepare() {
 
     autoreconf -i
     mkdir -p "build"
+}
+
+pkgver() {
+    cd "httperf"
+
+    git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
