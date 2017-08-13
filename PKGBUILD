@@ -44,7 +44,7 @@ check() {
 
 package() {
 	cd "${srcdir}/src/github.com/kryptco/kr"
-    install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/kr-git/LICENSE"
+    install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/kr/LICENSE"
     install -D -m 755 "bin/kr" "${pkgdir}/usr/bin/kr"
     install -D -m 755 "bin/krd" "${pkgdir}/usr/bin/krd"
     install -D -m 755 "bin/krssh" "${pkgdir}/usr/bin/krssh"
