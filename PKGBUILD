@@ -78,7 +78,7 @@ build() {
 
   cp -R build/lib "${srcdir}/fakeroot"
   cp -R include "${srcdir}/fakeroot"
-  install -Dm644 build/src/caffe/proto/caffe.pb.h ${srcdir}/fakeroot/include/caffe/proto/caffe.pb.h
+  install -Dm644 build/src/caffe/proto/caffe.pb.h "${srcdir}/fakeroot/include/caffe/proto/caffe.pb.h"
 
   cd "../${_plug}"
   CXXFLAGS+=" -I${srcdir}/fakeroot/include" \
@@ -100,6 +100,6 @@ package(){
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_plug}/LICENSE"
 
-  install -Dm755 ${srcdir}/fakeroot/lib/libcaffe.so.1.0.0-rc3 ${pkgdir}/usr/lib/libcaffe.so.1.0.0-rc3
-  (cd ${pkgdir}/usr/lib/; ln -s libcaffe.so.1.0.0-rc3 libcaffe.so)
+  install -Dm755 "${srcdir}/fakeroot/lib/libcaffe.so.1.0.0-rc3" "${pkgdir}/usr/lib/libcaffe.so.1.0.0-rc3"
+  (cd "${pkgdir}/usr/lib/"; ln -s libcaffe.so.1.0.0-rc3 libcaffe.so)
 }
