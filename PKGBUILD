@@ -3,7 +3,7 @@ pkgname=tigcap
 pkgver=0.0.2
 pkgrel=1
 pkgdesc="A powerful screenshot tool"
-arch=('x86_64')
+arch=('x86_64' 'armv7h')
 url="https://github.com/theimgguru/tigcap/"
 license=('GPL')
 groups=()
@@ -37,6 +37,4 @@ package() {
   mkdir -p "$pkgdir/usr/share/applications"
   install TIGCap.desktop "$pkgdir/usr/share/applications"
 }
-md5sums=('5b7e20e4c71d6176e0d40545591fd8ff')
-md5sums=('5b7e20e4c71d6176e0d40545591fd8ff')
 md5sums=('5b7e20e4c71d6176e0d40545591fd8ff')

@@ -4,6 +4,7 @@ pkgbase = tigcap
 	pkgrel = 1
 	url = https://github.com/theimgguru/tigcap/
 	arch = x86_64
+	arch = armv7h
 	license = GPL
 	makedepends = npm
 	makedepends = nodejs
