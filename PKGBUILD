@@ -2,15 +2,15 @@
 
 pkgbase=python-sphinx-quark-theme
 pkgname=($pkgbase 'python2-sphinx-quark-theme')
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A Sphinx theme for QTextBrowser'
 arch=('any')
 url='https://bitbucket.org/fk/quark-sphinx-theme'
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/d4/b9/30c4a27fad539562c152c6940a6a1ab0ef3b0e339ad903c42980b50d6799/quark-sphinx-theme-0.4.1.tar.bz2")
-sha256sums=('2eb766e0c5dcb4d837894f81dd3cdd4cb05cd689b3749e32646d6f3236a4f306')
+source=("https://pypi.python.org/packages/30/e7/2c9b618589dee281bd7991bbe7ee2fa8fb76ac0f91a5b8fa74134f6c4f00/quark-sphinx-theme-0.5.0.tar.bz2")
+sha256sums=('da144c1b264344ba71fab5096687b03a226f9ea27a8c1a29a85456a87a7935ed')
 
 prepare() {
     cp -r quark-sphinx-theme-$pkgver quark-sphinx-theme-$pkgver-python2
