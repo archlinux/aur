@@ -46,8 +46,8 @@ prepare() {
   if [ "$(nvcc --version | tail -1 | cut -d ' ' -f5 | tr -d ,)" != "9.0" ]; then
     # use gcc5 (CUDA 8.0 requires gcc5)
     sed -e '/CUSTOM_CXX/s/^# //' \
-           '/CUSTOM_CXX/s/$/-5/' \
-           -i Makefile.config
+        -e '/CUSTOM_CXX/s/$/-5/' \
+        -i Makefile.config
   fi
 
   # set CUDA directory
@@ -63,6 +63,11 @@ prepare() {
   # disable python
   sed -e '/PYTHON_INCLUDE/s/^P/# P/g' \
       -e '/PYTHON_LIB/s/^P/# P/g' \
+      -i Makefile.config
+
+  # avoid conflicts with /usr/local/foo
+  sed -e 's|/usr/local/include||g' \
+      -e 's|/usr/local/lib||g' \
       -i Makefile.config
 
   cd ../waifu2x-caffe
@@ -101,5 +106,5 @@ package(){
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_plug}/LICENSE"
 
   install -Dm755 "${srcdir}/fakeroot/lib/libcaffe.so.1.0.0-rc3" "${pkgdir}/usr/lib/libcaffe.so.1.0.0-rc3"
-  (cd "${pkgdir}/usr/lib/"; ln -s libcaffe.so.1.0.0-rc3 libcaffe.so)
+  ln -s libcaffe.so.1.0.0-rc3 "${pkgdir}/usr/lib/libcaffe.so"
 }
