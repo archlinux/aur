@@ -18,6 +18,6 @@ sha256sums_x86_64=('4c55d43eb6f0277a07d075d29cdd468c7bc932b4864eacc673e141eba578
 sha256sums_i686=('8e3cb24715fecf35a4e3e51fa0b083576d10e1483b3e651bde4d37831984e576')
 
 package(){
- install -Dm755 "${srcdir}/${pkgname}-${pkgver}/micro" "${pkgdir}/usr/bin/micro"
- install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+ install -Dm755 "${srcdir}/micro-${pkgver}/micro" "${pkgdir}/usr/bin/micro"
+ install -Dm644 "${srcdir}/micro-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
