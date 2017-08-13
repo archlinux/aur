@@ -3,7 +3,7 @@
 
 pkgname=dump1090-fa-git
 _gitname=dump1090
-pkgver=1.15.r298.g2b47fe5
+pkgver=1.15.r327.gb155fdb
 pkgrel=1
 epoch=1
 pkgdesc="FlightAware/Mutability fork of dump1090, a simple Mode S decoder for RTLSDR devices."
@@ -16,10 +16,12 @@ provides=('dump1090' 'dump1090-fa')
 makedepends=('git')
 source=('dump1090::git+git://github.com/mutability/dump1090'
 	'dump1090.service'
-	'lighttpd.conf')
+	'lighttpd.conf'
+	'gcc7.patch')
 md5sums=('SKIP'
          'b0b8292df98aab3f514c43f03eb71d06'
-         'e01a5f1b57d5d553bf595f9c0f83ceb9')
+         'e01a5f1b57d5d553bf595f9c0f83ceb9'
+         '7dcde2919cc82fb87d7ff0e92bebb1cb')
 install='dump1090-fa.install'
  
 pkgver() {
@@ -29,6 +31,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
+  patch -p1 < ${srcdir}/gcc7.patch
 }
 
 build() {
