@@ -2,8 +2,8 @@
 
 pkgname=firefox-eme-free-ru-bin
 _pkgname=${pkgname/-bin/}
-pkgver=54.0.1
-pkgrel=2
+pkgver=55.0.1
+pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org - EME free release (RU)'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('firefox')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
 sha512sums=(
- '95aea54824d9043dec49744137810fcab3fd684a09f1e135c8644bf62bf122d1d4eb9959531091c220609402b8025d9b88e91d1f1addd6c32d93aacd83e20192'
+ '7017395950ed5bb55e985efdec8639116a923b7dbd2da50458dd061c0e6f1b0d4c4e179c2353c00557db04fbe9aff7512069ec2f3a716a60d5370675747a60f6'
  'b20dc825c4a0fe6a14481f0309d74a43124d28d96519ed7b83a44ba3656c3a7cbe09d6ea89e8ca941f72db58e580aaa29aeb12b9c285bffde1ff73a46396227f'
 )
 source=(http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}/linux-x86_64-EME-free/ru/firefox-${pkgver}.tar.bz2
