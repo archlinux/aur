@@ -1,0 +1,17 @@
+pkgbase = diskscan-git
+	pkgdesc = CLI tool to scan block devices for unreadable sectors
+	pkgver = 0.19.r7.gd3433ce
+	pkgrel = 1
+	url = https://github.com/baruch/diskscan
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = python-yaml
+	conflicts = diskscan
+	replaces = diskscan
+	source = git://github.com/baruch/diskscan.git
+	sha256sums = SKIP
+
+pkgname = diskscan-git
+
