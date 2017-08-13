@@ -2,7 +2,7 @@
 
 pkgname=mattermost-git
 _pkgname="${pkgname%-git}"
-pkgver=4.0.0.rc2.r0.ge5912d4f9
+pkgver=4.0.0.rc2.r214.ga6ba5a5e7
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ source=(
     # For local tests, simply replace this git URL by
     # For the URL syntax, please check this link:
     # https://wiki.archlinux.org/index.php/VCS_package_guidelines#VCS_sources
-    # platform::git+file:///home/whatever/repo
+    #'platform::git+file:///home/user/whatever/mattermost-platform#branch=release-4.1'
     'git+https://github.com/mattermost/platform'
     'mattermost.service'
     'mattermost.sh'
@@ -43,22 +43,14 @@ sha512sums=(
     'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9'
     'b95bf2c0d840d0e85baebc1051c872056fa4990d263334fecc7b11d96085cb65a69dd866f18889e209336028f17c02152c13a92d2be1c21848939f22203439f0')
 
-# Take the latest tag available even if that tag is not reachable from the
-# branch we are currently in. Indeed, tags are only made available in master as
-# soon the branch containing this tag is removed. The code from the latest
-# branch is anyway always made available in master. For this use case, this is
-# actually better to take the lastest version available instead of the latest
-# from master.
-# src.: https://github.com/jquery/jquery/issues/1854#issuecomment-62739082
-# Not documented in:
-# https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
+# Using the most recent un-annotated tag reachable from the last commit
+# src.: https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
 # Remove the v prefix:
 # src.: http://stackoverflow.com/a/7979255/3514658
 pkgver() {
     cd "$srcdir"/src/github.com/mattermost/platform
-    git describe --long \
-        $(git for-each-ref --format="%(refname)" --sort=-authordate --count=1 refs/tags) \
-        | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | \
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
