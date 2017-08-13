@@ -9,8 +9,9 @@ arch=('i686' 'x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/vapoursynth-descale.git'
 license=('custom:WTFPL')
 depends=('vapoursynth')
-conflicts=('vapoursynth-plugin-descale')
-provides=('vapoursynth-plugin-descale')
+makedepends=('git')
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vapoursynth-descale.git")
 sha256sums=('SKIP')
 
