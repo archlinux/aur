@@ -17,22 +17,22 @@
 #
 pkgbase="spl-linux-lts-git"
 pkgname=("spl-linux-lts-git" "spl-linux-lts-git-headers")
-pkgver=0.7.0_r8_g9243b0f_4.9.41_1
+pkgver=0.7.0.r12.g9df9692.4.9.42.1
 pkgrel=1
-makedepends=("linux-lts-headers=4.9.41-1" "libelf" "git")
+makedepends=("linux-lts-headers=4.9.42-1" "libelf" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git>=0.7.0_r8_g9243b0f" "kmod" "linux-lts=4.9.41-1")
+depends=("spl-utils-common-git>=0.7.0.r12.g9df9692" "kmod" "linux-lts=4.9.42-1")
 
 build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.9.41-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.9.41-1-lts/build \
+                --with-linux=/usr/lib/modules/4.9.42-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.9.42-1-lts/build \
                 --with-config=kernel
     make
 }
@@ -52,10 +52,10 @@ package_spl-linux-lts-git() {
 
 package_spl-linux-lts-git-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
-    conflicts=('spl-archiso-linux-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers'  'spl-linux-headers' 'spl-linux-git-headers' )
+    conflicts=('spl-archiso-linux-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers'  'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
     cd "${srcdir}/spl"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.41-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.42-1-lts/Module.symvers
 }
