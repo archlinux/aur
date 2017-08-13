@@ -1,18 +1,18 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-pysha3
-pkgver=0.3
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="SHA-3 wrapper (keccak) for Python"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6')
 depends=('python2')
 makedepends=('python2-setuptools')
-url="https://bitbucket.org/tiran/pykeccak"
+url="https://github.com/tiran/pysha3"
 license=('PSFL')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/p/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('150ef07e47b6ef79bdf7717036ceccc7')
-sha256sums=('191c5f1f77de11fb847c6c825b72f33c81ce67f72055038175fccbbeb891f04d')
+source=("https://github.com/tiran/pysha3/archive/${pkgver}.tar.gz")
+md5sums=('8e705c4e0b3e6cf4d108a3c9d8a2ac3d')
 
 prepare(){
   cd "$srcdir/${pkgname#python2-}-$pkgver"
