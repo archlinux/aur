@@ -9,8 +9,9 @@ arch=('i686' 'x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/vapoursynth-autocrop'
 license=('GPL')
 depends=('vapoursynth')
-conflicts=('vapoursynth-plugin-autocrop')
-provides=('vapoursynth-plugin-autocrop')
+makedepends=('git')
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vapoursynth-autocrop.git")
 sha256sums=('SKIP')
 
