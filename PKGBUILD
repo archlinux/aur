@@ -1,7 +1,7 @@
 # Maintainer: Ruben De Smet <me at rubdos dot be>
 
 pkgname='artifact'
-pkgver="0.6.5"
+pkgver="0.9.1"
 pkgrel=1
 pkgdesc='The design doc tool made for developers'
 url='http://vitiral.github.io/artifact/'
@@ -10,10 +10,10 @@ license=(
  'CC0'
 )
 source=(
- "https://github.com/vitiral/artifact/archive/v${pkgver}.tar.gz"
+ "https://github.com/vitiral/artifact/archive/${pkgver}.tar.gz"
 )
 sha512sums=(
- '146530a6cf56226047a5b14bb9f5c7421ccecb1cb93a3d81d55a3b5a54765c43178a0a6546cff2cab7b33aa8f90a70b1ba73f6c722dc327c14e06a283702b884'
+ 'dfdcf31966b254218a5bb1eace186549988faac8a803e98e4d8f3fb7b8f81d149d958870f3880cffe9f70f63042fe0c8c4e428f6842e8b9a5ba5d76b9217820d'
 )
 arch=(
  'x86_64'
