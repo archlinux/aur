@@ -6,8 +6,8 @@
 # Maintainer: Luka Karinja <luka.karinja@gmail.com>
 pkgname=oscam-emu
 pkgver=11380
-pkgrel=1
-dir=OSCam-with-emu-branch
+pkgrel=2
+dir=oscam-emu
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -18,7 +18,7 @@ conflicts=('oscam-git' 'oscam-svn')
 optdepends=('pcsclite: for use with PC/SC readers'
             'ccid: PC/SC reader generic driver')
 install='oscam.install'
-source=("git+git://github.com/joeusercz/OSCam-with-emu-branch.git#branch=oscam-emu-merged"
+source=("git+git://github.com/pinkflozd/oscam-emu.git#branch=oscam-emu"
         'oscam.service'
         'oscam.sysuser')
 md5sums=('SKIP'
