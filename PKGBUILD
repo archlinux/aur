@@ -1,7 +1,7 @@
 # Maintainer: lilydjwg <lilydjwg@gmail.com>
 pkgname=you-get-git
 pkgdesc="A YouTube/Youku/Sohu/Tudou/QQ/Sina/PPTV/Xiami/Vimeo/ifeng/AcFun/bilibili/CNTV/... video downloader written in Python 3."
-pkgver=0.4.803.20170812.1703
+pkgver=0.4.803.20170813.1704
 pkgrel=1
 arch=('any')
 url="http://www.soimort.org/you-get/"
@@ -34,7 +34,7 @@ build() {
 
 package() {
   cd "$srcdir/$_repo_name"
-  python3 setup.py install --root=$pkgdir/ --optimize=1
+  python3 setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 contrib/completion/_you-get "$pkgdir/usr/share/zsh/site-functions/_you-get"
   install -Dm644 contrib/completion/you-get-completion.bash "$pkgdir/usr/share/bash-completion/completions/you-get"
   install -Dm644 contrib/completion/you-get.fish "$pkgdir/usr/share/fish/completions/you-get.fish"
