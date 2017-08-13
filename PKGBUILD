@@ -18,7 +18,8 @@ sha256sums=('0c3fc7ace88c2f76bb41696f5f57c6d724dbad2067db6c92625b6725930807d5'
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
-    patch -p1 -i "../pci_enable_msix.patch"
+
+    patch -p1 -i "$srcdir/pci_enable_msix.patch"
 }
 
 build() {
