@@ -1,12 +1,12 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=kickoff-player-git
-pkgver=r147.e4fbd44
+pkgver=r151.95e1223
 pkgrel=1
 pkgdesc="Stream football matches and channels with acestream and sopcast"
 arch=("any")
 url="https://github.com/jonian/kickoff-player"
 license=("GPL")
-depends=("gtk3" "gstreamer" "python" "python-gobject" "python-psutil" "python-pexpect" "python-peewee" "python-requests" "python-fuzzywuzzy" "python-dateutil" "python-lxml" "acestream-engine" "sopcast")
+depends=("gtk3" "gstreamer" "python" "python-gobject" "python-psutil" "python-pexpect" "python-peewee" "python-requests" "python-fuzzywuzzy" "python-levenshtein" "python-dateutil" "python-lxml" "acestream-engine" "sopcast")
 makedepends=("git")
 provides=("kickoff-player-git")
 source=("$pkgname::git+https://github.com/jonian/kickoff-player")
