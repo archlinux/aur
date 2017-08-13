@@ -4,8 +4,8 @@
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: F. Miñano <cicely@algofacil.info>
 pkgname=mindi-busybox
-pkgver=1.18.5
-pkgrel=5
+pkgver=1.21.1
+pkgrel=1
 pkgdesc="This package provides a busybox version suited for Mindi"
 arch=('i686' 'x86_64')
 url="http://www.mondorescue.org/"
@@ -14,14 +14,27 @@ depends=(gcc)
 
 #There are two official mirrors. If one is not working try the other. The muskokamug.org seems faster.
 source=("ftp://ftp.mondorescue.org/src/${pkgname}-${pkgver}.tar.gz"
-	"${pkgname}-${pkgver}.tar.gz.sig")
-sha512sums=('f7962b4b327536437d1ec91821ddf660afff74d84de6268ce026593c233e0ecb1c2b611c4e2a9132d9803ebe22ebdc87b965d8c2f6f9a0efe27939ce55033bf7'
-            'SKIP')
+	"dhcpc.patch"
+	"${pkgname}-${pkgver}.tar.gz.sig"
+	"dhcpc.patch.sig")
+sha512sums=('d2111a0a58cad148ce34827ee2c6fb86296e88b3615b8e3150330dfec205e64e074706370b59d24c1308eb4dcf883317deecb96de32152ef93b6d6fa35438c61'
+	    'ba1d110e4207481d02f05cc5e79b927270439c97d1ec1455e5a173c903fed7fd91cc0953279873da61fe4a7b4b8a51e29ab48d2d531be3d2b861d92586728b3d'
+            'SKIP'
+	    'SKIP')
 
-package() {
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 < ${srcdir}/dhcpc.patch
+}
+
+build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make oldconfig || return 1
   make busybox || return 1
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make CONFIG_PREFIX=${pkgdir}/usr/lib/mindi/rootfs install
 }
 
