@@ -17,22 +17,22 @@
 #
 pkgbase="spl-linux-hardened-git"
 pkgname=("spl-linux-hardened-git" "spl-linux-hardened-git-headers")
-pkgver=0.7.0_r8_g9243b0f_4.12.5.a_1
+pkgver=0.7.0.r12.g9df9692.4.12.7.a.1
 pkgrel=1
-makedepends=("linux-hardened-headers=4.12.5.a-1" "git")
+makedepends=("linux-hardened-headers=4.12.7.a-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git>=0.7.0_r8_g9243b0f" "kmod" "linux-hardened=4.12.5.a-1")
+depends=("spl-utils-common-git>=0.7.0.r12.g9df9692" "kmod" "linux-hardened=4.12.7.a-1")
 
 build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.12.5-1-hardened/build \
-                --with-linux-obj=/usr/lib/modules/4.12.5-1-hardened/build \
+                --with-linux=/usr/lib/modules/4.12.7-1-hardened/build \
+                --with-linux-obj=/usr/lib/modules/4.12.7-1-hardened/build \
                 --with-config=kernel
     make
 }
@@ -52,10 +52,10 @@ package_spl-linux-hardened-git() {
 
 package_spl-linux-hardened-git-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
-    conflicts=('spl-archiso-linux-headers' 'spl-linux-hardened-headers'  'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers' )
+    conflicts=('spl-archiso-linux-headers' 'spl-linux-hardened-headers'  'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
     cd "${srcdir}/spl"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.12.5-1-hardened/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.12.7-1-hardened/Module.symvers
 }
