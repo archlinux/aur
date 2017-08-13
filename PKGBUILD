@@ -10,7 +10,7 @@ url='https://forum.doom9.org/showthread.php?t=174711'
 license=('BSD')
 depends=('vapoursynth')
 makedepends=('meson')
-source=("${_plug}::git+https://github.com/blaze077/Vapoursynth-VFRToCFR.git")
+source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/Vapoursynth-VFRToCFR.git")
 sha256sums=('SKIP')
 
 pkgver() {
