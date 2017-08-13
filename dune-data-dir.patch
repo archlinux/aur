@@ -1,0 +1,13 @@
+diff --git a/src/file.c b/src/file.c
+index fbc882ca..ce6b49a6 100644
+--- a/src/file.c
++++ b/src/file.c
+@@ -24,6 +24,8 @@
+ /* Set DUNE_DATA_DIR at compile time.  e.g. */
+ /* #define DUNE_DATA_DIR "/usr/local/share/opendune" */
+ 
++#define DUNE_DATA_DIR "/usr/share/games/dune2"
++
+ #ifndef DUNE_DATA_DIR
+ #ifdef TOS
+ #define DUNE_DATA_DIR "DATA"
