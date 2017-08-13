@@ -1,7 +1,7 @@
 pkgbase = openminemods
 	pkgdesc = An open source, GNU plus Linux compatible alternative to the Twitch Launcher
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/joonatoona/OpenMineMods/tree/v1.0.1
 	arch = any
 	license = GNU Affero GPL
@@ -12,7 +12,7 @@ pkgbase = openminemods
 	depends = python-beautifulsoup4
 	depends = python-pyqt5
 	depends = python-requests
-	optdepends = multimc: the program just manages MultiMC instances for you. You will want this to actually run the packs.
+	optdepends = multimc5: the program just manages MultiMC instances for you. You will want this to actually run the packs.
 	provides = openminemods
 	conflicts = openminemods
 	source = openminemods::git+https://github.com/joonatoona/OpenMineMods#tag=v1.0.1
