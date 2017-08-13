@@ -1,6 +1,6 @@
-# Maintainer: Danilo <aur ät dbrgn döt ch>
-pkgname=kr-git
-pkgver=r512.598fd9c
+# Maintainer: krypt.co <aur@>
+pkgname=kr
+pkgver=2.2.7
 pkgrel=1
 pkgdesc="SSH using a key stored in Kryptonite"
 arch=('i686' 'x86_64')
@@ -16,14 +16,14 @@ conflicts=('kr')
 backup=()
 options=()
 install=kr.install
-changelog=
-source=("git+https://github.com/kryptco/kr")
+changelog="https://krypt.co/app/krd_changelog/"
+source=("git+https://github.com/kryptco/kr#tag=$pkgver")
 md5sums=('SKIP') 
 validpgpkeys=()
 
 pkgver() {
   cd ${srcdir}/src/github.com/kryptco/kr
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -48,5 +48,6 @@ package() {
     install -D -m 755 "bin/kr" "${pkgdir}/usr/bin/kr"
     install -D -m 755 "bin/krd" "${pkgdir}/usr/bin/krd"
     install -D -m 755 "bin/krssh" "${pkgdir}/usr/bin/krssh"
+    install -D -m 755 "bin/krgpg" "${pkgdir}/usr/bin/krgpg"
     install -D -m 755 "bin/kr-pkcs11.so" "${pkgdir}/usr/lib/kr-pkcs11.so"
 }
