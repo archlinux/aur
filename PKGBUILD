@@ -2,16 +2,16 @@
 # Contributor: Daniel Ehlers <danielehlers@mindeye.net>
 
 pkgname=latex-beamer
-pkgver=3.41
+pkgver=3.42
 pkgrel=1
 pkgdesc='Beamer is a LaTeX class for creating slides for presentations.'
 arch=('any')
-url='http://bitbucket.org/rivanvx/beamer/wiki/Home'
+url='https://github.com/josephwright/beamer'
 license=('GPL')
 install='latex-beamer.install'
 depends=('texlive-core')
 source=("https://github.com/josephwright/beamer/archive/v${pkgver}.tar.gz")
-sha256sums=('e6e989e34347c15de875ddb1dc2423b1608777eb85f88118551229deb38789c8')
+sha256sums=('6ac3708cd44638d2fb237c33e871cb1d2616d6e10597266bb1ea443341141bda')
 
 
 package() {
