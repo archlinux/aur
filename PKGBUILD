@@ -1,7 +1,7 @@
 # Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
 
 pkgname=mariadb-connector-c
-pkgver=2.3.3
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=("LGPL")
 depends=('openssl' 'zlib')
 makedepends=('cmake')
 source=("https://downloads.mariadb.org/interstitial/connector-c-${pkgver}/mariadb-connector-c-${pkgver}-src.tar.gz")
-sha1sums=('6fbf541a4465cd729c7f790a3d9cd337e8dd2666')
+sha1sums=('bc1fd6c20610822abdb67fe300bd723fe9225e50')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}-src"
@@ -38,6 +38,8 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}-src/build"
 
   make DESTDIR="${pkgdir}" install
+  # for compatibility with mariadb-connector-c version 2 and other programs (e.g. teamspeak-server)
+  ln -sf /usr/lib/mariadb/libmariadb.so.3 ${pkgdir}/usr/lib/mariadb/libmariadb.so.2
 }
 
 # vim:set ts=2 sw=2 et:
