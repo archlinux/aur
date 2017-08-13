@@ -6,15 +6,17 @@ _CompName=zfw-module-320r1
 pkgname=zfw-module
 pkgver=3.2.0
 pkgrel=1
-arch=("x86_64")
+arch=('x86_64')
 pkgdesc="It's a module for calculate a aircraft's Z.F.W." 
 url="https://github.com/CompFile/My_AUR_PKG/tree/master/Sources/$pkgname/$pkgname-$pkgver.r$pkgrel"
-license=("GPL3")
-groups=("MBC")
-depends=("qt5-base")
-makedepends=("gcc" "qt5-base")
-source=("https://github.com/CompFile/My_AUR_PKG/raw/master/PKG/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz")
-md5sums=('caf084cf43769a27d2b84fa77b8aab3c')
+license=('GPL3')
+groups=('MBC')
+depends=('qt5-base')
+makedepends=('gcc' 'qt5-base')
+validpgpkeys=('94832C0DBAC3B295A91C5F4081D2921276951309')
+source=("https://github.com/CompFile/My_AUR_PKG/raw/master/PKG/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz"{,.sig})
+md5sums=('caf084cf43769a27d2b84fa77b8aab3c'
+         'SKIP')
 
 
 build()
