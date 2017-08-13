@@ -2,8 +2,9 @@
 
 sudo echo "Installing dependencies..."
 
-sudo apt-get update > /dev/null
-sudo apt-get install cups-client cups-server-common smbclient > /dev/null
+# the following lines are for Ubuntu only
+# sudo apt-get update > /dev/null
+# sudo apt-get install cups-client cups-server-common smbclient > /dev/null
 
 echo "Done installing dependencies."
 
