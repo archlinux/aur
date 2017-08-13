@@ -1,8 +1,9 @@
 # Maintainer: oozyslug <oozyslug at gmail dot com>
+# Maintainer: chliny <chliny11 at gmail dot com>
 # Contributor: oozyslug <oozyslug at gmail dot com>
 
 pkgname=neobundle-git
-pkgver=3.0.32.g2f94664
+pkgver=4.0.15.gc6fa48c
 pkgrel=1
 pkgdesc="Ultimate Vim plugin manager inspired by Vundle"
 arch=('any')
