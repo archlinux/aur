@@ -1,0 +1,24 @@
+pkgbase = workrave-next-gtk3-git
+	pkgdesc = a tool to help RSI (bleeding-edge gtk3 including mutter/wayland support)
+	pkgver = v1_10_16.r644.7ede0462
+	pkgrel = 1
+	url = https://github.com/rcaelers/workrave/tree/next
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = gtkmm3
+	depends = gstreamer
+	depends = libxss
+	depends = boost-libs
+	depends = libpulse
+	depends = gtk2
+	optdepends = mutter: wayland/mutter support
+	conflicts = workrave
+	source = workrave-next-gtk3-git::git+https://github.com/rcaelers/workrave.git#branch=next
+	md5sums = SKIP
+
+pkgname = workrave-next-gtk3-git
+
