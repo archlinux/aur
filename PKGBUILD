@@ -1,7 +1,7 @@
 # Maintainer: chuvke <chuvke AT gmail DOT com>
 pkgname=pygrid
-pkgver=3d61181
-_pkgrevision=3d6118103c469d1166725b4cbd226bda68893b4f
+pkgver=08f434a
+_pkgrevision=08f434ac1376639b9c40dcc9aa527eb7c9fc07c5
 pkgrel=1
 pkgdesc="Quickly place and move windows around the X11 desktop using a grid"
 arch=('i686' 'x86_64')
