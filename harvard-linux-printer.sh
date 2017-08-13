@@ -33,6 +33,9 @@ while [[ $papercut_username != ${papercut_username/ /} || $papercut_password != 
 done
 
 
+if [ ! -a /etc/samba/smb.conf ]; then
+	cp /etc/samba/smb.conf.default /etc/samba/smb.conf
+fi
 sudo sed -i '/syslog/d' /etc/samba/smb.conf
 # sudo echo "logging = syslog@0 file" >> /etc/samba/smb.conf
 
