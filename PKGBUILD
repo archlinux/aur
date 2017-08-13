@@ -2,12 +2,12 @@
 # Maintainer: Dan Fuhry <dan@fuhry.us>
 pkgname=kcrap-lnf
 pkgver=0.2.3+grawity1
-pkgrel=2
+pkgrel=3
 _krbver=1.13.2
 arch=('i686' 'x86_64')
 pkgdesc="Kerberos Challenge Response Authentication Protocol"
 license=('MIT')
-depends=('krb5')
+depends=('krb5' 'openssl-1.0')
 url="http://www.spock.org/kcrap/"
 conflicts=('kcrap')
 provides=("kcrap=${pkgver%+*}")
@@ -17,15 +17,21 @@ source=("git://github.com/grawity/kcrap-lnf"
 sha1sums=(SKIP SKIP)
 backup=('etc/kcrap_server.conf')
 
+prepare() {
+  cd "${srcdir}/kcrap-lnf"
+  autoreconf -fi
+}
+
 build() {
   cd "${srcdir}/kcrap-lnf"
   ./configure \
     --prefix=/usr             \
     --sbindir=/usr/bin        \
     --sysconfdir=/etc         \
-    --with-mit-krb5-src="${srcdir}/krb5/src/include" \
-    CFLAGS=-I/usr/include/et  \
-    LIBS=-lkadm5srv           \
+    --with-mit-krb5-src="${srcdir}/krb5/src/include"        \
+    CFLAGS="-I/usr/include/et -I/usr/include/openssl-1.0"   \
+    LDFLAGS="-L/usr/lib/openssl-1.0"                        \
+    LIBS="-lkadm5srv"                                       \
     ;
   make -j1
 }
