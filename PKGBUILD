@@ -8,6 +8,8 @@ pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='https://forum.doom9.org/showthread.php?t=174711'
 license=('BSD')
+conflicts=('vapoursynth-plugin-remapframes')
+provides=('vapoursynth-plugin-remapframes')
 depends=('vapoursynth')
 makedepends=('meson')
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/Vapoursynth-VFRToCFR.git")
