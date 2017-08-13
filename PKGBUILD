@@ -2,9 +2,9 @@
 # Maintainer: kryptxy <kryptxy@protonmail.com>
 
 pkgname=torrench
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
-pkgdesc="Command-line torrent search tool"
+pkgdesc="Command-line torrent search program"
 arch=('any')
 url="https://github.com/kryptxy/torrench"
 license=('GPL')
