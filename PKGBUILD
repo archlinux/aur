@@ -2,7 +2,7 @@
 
 pkgname=pulse-connect-secure
 pkgver=8.2R5
-pkgrel=3
+pkgrel=4
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(i686 x86_64)
 license=(custom)
@@ -25,7 +25,9 @@ prepare() {
 
     # HACK: patch binary
     # Idea from https://lists.archlinux.org/pipermail/aur-general/2017-August/033452.html
-    sed -i 's#/usr/local/pulse#/opt/pulsesecure#' pulse/pulseUi_centos_7
+    for f in pulse/pulseUi_centos_7 pulse/pulseUi.desktop ; do
+        sed -i 's#/usr/local/pulse#/opt/pulsesecure#g' $f
+    done
 }
 
 package() {

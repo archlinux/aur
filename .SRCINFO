@@ -1,7 +1,7 @@
 pkgbase = pulse-connect-secure
 	pkgdesc = Pulse Connect Secure (PCS) Client
 	pkgver = 8.2R5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.pulsesecure.net/
 	arch = i686
 	arch = x86_64
