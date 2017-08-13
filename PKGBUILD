@@ -8,7 +8,7 @@
 
 pkgname=tt-rss-git
 epoch=1
-pkgver=r7938.9232283
+pkgver=r8329.03c56b04
 pkgrel=1
 pkgdesc='Web-based news feed (RSS/Atom) aggregator (Git version)'
 arch=(any)
@@ -23,7 +23,7 @@ optdepends=('mysql'
             'php-gd: for coloured feed badges')
 makedepends=('git')
 options=('!strip')
-source=('git+https://tt-rss.org/gitlab/fox/tt-rss.git'
+source=('git+https://git.tt-rss.org/git/tt-rss.git'
         service)
 sha256sums=('SKIP'
             'c9eb3acb18ab15562e3c3b8f1e3092f5699f5281fc40e04400615469aa39f217')
