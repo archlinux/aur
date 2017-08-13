@@ -6,14 +6,14 @@ _gitname=evopop-icon-theme
 
 pkgname=evopop-icon-theme
 pkgbase=${pkgname}
-pkgver=0.8
-pkgrel=3
+pkgver=0.9
+pkgrel=1
 pkgdesc='Icon theme from Solus OS and Budgie Desktop'
 arch=('any')
 url="https://github.com/$_gituser/$_gitname"
 license=('GPL')
 source=("https://github.com/$_gituser/$_gitname/archive/$pkgver.tar.gz")
-md5sums=('d5e585c6ec6d9ec2292c146d2facbaab')
+md5sums=('a71400de84607f49f8fa1c8169bf18c2')
 
 
 
