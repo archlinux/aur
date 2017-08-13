@@ -1,6 +1,6 @@
 pkgbase = oscam-emu
 	pkgdesc = OSCam-emu is an Oscam addon module to include emulator support and other functionality
-	pkgver = 739-11380
+	pkgver = 741-11390
 	pkgrel = 1
 	url = https://github.com/oscam-emu/oscam-emu
 	install = oscam.install
@@ -16,7 +16,7 @@ pkgbase = oscam-emu
 	depends = openssl
 	optdepends = pcsclite: for use with PC/SC readers
 	optdepends = ccid: PC/SC reader generic driver
-	source = git+https://github.com/oscam-emu/oscam-emu
+	source = git+https://github.com/pinkflozd/oscam-emu
 	source = oscam.service
 	source = oscam.sysuser
 	md5sums = SKIP
