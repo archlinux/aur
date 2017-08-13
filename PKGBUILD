@@ -16,7 +16,7 @@ conflicts=('kr')
 backup=()
 options=()
 install=kr.install
-changelog="https://krypt.co/app/krd_changelog/"
+changelog=()
 source=("git+https://github.com/kryptco/kr#tag=$pkgver")
 md5sums=('SKIP') 
 validpgpkeys=()
