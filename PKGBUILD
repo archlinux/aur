@@ -56,12 +56,9 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-    sed -i -e 's@#!/usr/bin/python$@#!/usr/bin/python2@' scylla-housekeeping
+    cd "$srcdir/${pkgname%-git}"
     sed -i -e 's@#!/usr/bin/python$@#!/usr/bin/python2@' seastar/scripts/dpdk_nic_bind.py
-    sed -i -e 's@#!/usr/bin/python$@#!/usr/bin/python2@' dist/common/scripts/scylla_config_get.py
-    sed -i -e 's@#!/usr/bin/python$@#!/usr/bin/python2@' dist/common/scripts/scylla_io_setup
-    ./configure.py --mode=release --cflags="-fvisibility=default -Wno-error=maybe-uninitialized -Wno-error=unused-function"
+    ./configure.py --mode=release
     ninja -j`nproc --all` build/release/scylla build/release/iotune
     cp dist/common/systemd/scylla-server.service.in build/scylla-server.service
     sed -i -e "s#@@SYSCONFDIR@@#${_sysconfdir}/sysconfig#g" build/scylla-server.service
