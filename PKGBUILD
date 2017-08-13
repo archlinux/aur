@@ -18,12 +18,12 @@ source=("${_pkgname}::git+https://github.com/lukasmonk/lucaschess_11.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd ${srcdir}/${_pkgname}
+    cd "${srcdir}/${_pkgname}"
     git rev-list --count HEAD
 }
 
 build() {
-    cd "$srcdir/${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
     rm -f Lucas
     echo "#!/bin/bash" >> Lucas
     echo "cd /opt/${_pkgname}" >> Lucas
