@@ -1,6 +1,6 @@
 # Maintainer: nycko123 <nycko123 at gmail com>
 # Previous Maintainer: Youngbin Han <sukso96100 at gmail com>
-# Contributor: blainester <theblainestory at gmail com>
+# Previous Contributor: blainester <theblainestory at gmail com>
 pkgname=micro-bin
 pkgver=1.3.1
 pkgrel=1
