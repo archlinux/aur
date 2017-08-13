@@ -7,7 +7,7 @@ pkgname='ros-lunar-cv-bridge'
 pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-lunar-sensor-msgs
@@ -24,7 +24,8 @@ ros_depends=(ros-lunar-sensor-msgs
   opencv)
 depends=(${ros_depends[@]}
   boost
-  python2)
+  python2
+  hdf5)
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/cv_bridge/${pkgver}-${_pkgver_patch}
