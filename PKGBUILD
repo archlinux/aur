@@ -6,20 +6,15 @@ pkgrel=1
 pkgdesc="Fonts required to correctly view Pepper&Carrot SVG sources"
 arch=('any')
 url="https://github.com/Deevad/peppercarrot_fonts"
-license=('GPL3' 'Apache' 'Custom:OFL10' 'Custom:OFL11' 'Custom:MITX11' 'Custom:MplusFont' 'Custom:CCBY3')
-depends=(
-  'fontconfig' 'xorg-font-utils'
-  # Already packaged OTF fonts
-  'otf-pecita' 'otf-yanone-kaffeesatz'
-  # Already packaged TTF fonts
-  'ttf-droid-nonlatin-ib' 'ttf-impallari-lobster-font' 'lohit-fonts'
-)
+license=('GPL3' 'Apache' 'Custom:OFL10' 'Custom:OFL11' 'Custom:MITX11'
+         'Custom:MplusFont' 'Custom:CCBY3')
+depends=('fontconfig' 'xorg-font-utils'
+         # Already packaged OTF fonts
+         'otf-pecita' 'otf-yanone-kaffeesatz'
+         # Already packaged TTF fonts
+         'ttf-droid-nonlatin-ib' 'ttf-impallari-lobster-font' 'lohit-fonts')
 
-_licensefiles=('OFL10'
-               'OFL11'
-               'MITX11'
-               'MPlusFont'
-               'CCBY3')
+_licensefiles=('OFL10' 'OFL11' 'MITX11' 'MPlusFont' 'CCBY3')
 source=('git+https://github.com/Deevad/peppercarrot_fonts.git'
         "${_licensefiles[@]}")
 sha256sums=('SKIP'
@@ -55,13 +50,11 @@ package() {
       local filename="${i##*/}"
 
       case "${filename,,}" in
-        # Already packaged OTF
-        pecita*|yanonekaffeesatz*) :; ;;
-        # Already packaged TTF
-        droidkufi*|lobster*|lohit*) :; ;;
+        pecita*|yanonekaffeesatz*)  ;; # Already packaged OTF
+        droidkufi*|lobster*|lohit*) ;; # Already packaged TTF
 
         *) install -D -m644 "${i}" \
-          "${pkgdir}/usr/share/fonts/${dest}/${filename}" ; ;;
+          "${pkgdir}/usr/share/fonts/${dest}/${filename}"; ;;
       esac
     fi
   done
@@ -70,12 +63,13 @@ package() {
   local licdir="${pkgdir}/usr/share/licenses/${pkgname}"
   install -dm755 "${licdir}"
   sed -nr '
-  # sed script to extract the license section
-  /^# License/,$ { # Start at the license heading
-    /^# [^L]/q     # Stop when we reach the next section
-    p
-  }
-  ' "${srcdir}/peppercarrot_fonts/README.md" > "${licdir}/README.md"
+    # sed script to extract the license section
+    /^# License/,$ { # Start at the license heading
+      /^# [^L]/q     # Stop when we reach the next section
+      p
+    }
+    ' "${srcdir}/peppercarrot_fonts/README.md" > "${licdir}/README.md"
+  chmod 644 "${licdir}/README.md"
   install -m644 "${_licensefiles[@]}" "${licdir}"
 }
 
