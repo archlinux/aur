@@ -1,6 +1,6 @@
 [Unit]
 Description=OpenNebula management
-After=network.target local-fs.target remote-fs.target mysqld.service 
+After=network.target local-fs.target remote-fs.target mysqld.service
 
 [Service]
 User=oneadmin
@@ -13,6 +13,7 @@ ExecStartPre=/usr/bin/chown -R oneadmin:cloud /var/run/one
 ExecStartPre=/usr/bin/chown -R oneadmin:cloud /var/lock/one
 ExecStart=/usr/bin/one start
 ExecStop=/usr/bin/one stop
+Restart=on-abnormal
 
 [Install]
 WantedBy=multi-user.target

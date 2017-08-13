@@ -1,13 +1,12 @@
-Index: opennebula-4.14.2/src/vmm_mad/exec/vmm_exec_kvm.conf
-===================================================================
---- opennebula-4.14.2.orig/src/vmm_mad/exec/vmm_exec_kvm.conf
-+++ opennebula-4.14.2/src/vmm_mad/exec/vmm_exec_kvm.conf
+Index: src/vmm_mad/exec/vmm_exec_kvm.conf
+--- src/vmm_mad/exec/vmm_exec_kvm.conf
++++ src/vmm_mad/exec/vmm_exec_kvm.conf
 @@ -27,7 +27,7 @@
  #  - hyperv_options: options used for FEATURES = [ HYPERV = yes ]
  # NOTE: raw attribute value is appended to that on the VM template
- 
+
 -#EMULATOR = /usr/libexec/qemu-kvm
 +EMULATOR = /usr/bin/qemu-system-x86_64
- 
+
  #VCPU = 1
- 
+

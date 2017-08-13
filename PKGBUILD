@@ -7,34 +7,32 @@
 
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
-pkgver=5.0.2
-pkgrel=3
+pkgver=5.4.0
+pkgrel=1
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
 url='http://docs.opennebula.org/stable'
 license=('Apache')
-depends=('ruby>=1.8.7'
-         'xmlrpc-c>=1.31'
-         'openssl>=0.9.8'
-         'sqlite3>=3.6'
+depends=('ruby'
+         'xmlrpc-c'
+         'openssl'
+         'sqlite3'
          'openssh'
-         'libxml2>=2.7'
+         'libxml2'
          'curl'
          'libxslt'
          'expat'
+         'nfs-utils'
          'cdrkit'
-         'log4cpp>=1.0'
-         'ruby-opennebula>=4.14.2'
-         'ruby-sinatra'
-         'ruby-builder'
-         'ruby-nokogiri')
-makedepends=('xmlrpc-c>=1.31'
+         'log4cpp'
+         'mariadb'
+         'libmariadbclient')
+makedepends=('xmlrpc-c'
              'pkgconfig'
-             'scons>=0.98'
+             'scons'
+             'mariadb'
              'libmariadbclient')
 optdepends=('nfs-utils: for using the shared file system storage model'
-            'mariadb>=5.1: optional replacement for SQLite as the DB back-end'
-            'libmariadbclient>=5.1: required if using MariaDB/MySQL instead of SQLite'
             'ruby-sequel: required when upgrading the database'
             'ruby-sqlite3: required when upgrading the database')
 conflicts=('opennebula-unstable')
@@ -96,16 +94,20 @@ source=("http://downloads.opennebula.org/packages/${pkgname}-${pkgver}/${pkgname
         'opennebula-onegate.service'
         'chown_fix.patch'
         'set_locations.patch'
-        'fix_kvm_emulator.patch')
-sha512sums=('95d61476538e32b75c3ac870c4ba19e4f352a90e1d6e76355efab4f4679291ba2fcd223ec39f9b3cbd29bc5c5c7a5388c1c402c5c84b22f81729ff240b6d34b6'
-            'f91678e5de6f5b980b6b50c7d1922ee9a836df416236ab9cde9e8a9352cdbb9f4102f47870d5405514173c1c9a510feefa191b55644269aee859c559beb8f600'
-            '2d1921ccacb222b0c652be6f4f7f74bd3ba482754a9cf19db63c51b7a62b803e4de9b90284e16d51b1b4db215d65ad3fed7269d55cc57135ddfd050fd32b7407'
-            '79a778c3086bdd1ef286252add60922d61384f193a44facc47442516e21b6997560326e2a4f6dc9a554615bbd78bf343a1a29569966f25d30238ead346da29d7'
-            'ab5b458f53047d1c1320f5fc3fb134b19c391ad85332577b5ffadfb8cedd299a4d47bb0973a6bfb1394ab9d15d7e92c7d1e22c269c0aeeb833a2a140ece8d06e'
-            '497683976be3dcdc087e8d059fb08487d90010b28d0025e48b8e5becab568fd1d60de51a2a88cd43a3e7cc696e620b6c50f364a06a08d4d39f2965aaba10547f'
-            '8d6a311072da61ca49458aaf787daf4ef5c5969a9aa282f2276d679dc38e14e5fd1c23bc51b12a29d2d40b65aa45bd2c38d6741726b09d75a38565b7d4ad4677'
-            '1f20e688a0f6d36a6bc875392473e75c7de77b159b9cbdf262ac0f093b4d65555231ab15897156e2558d0df6ae631f8d79a3265073ea8c0546586937544e47c9'
-            '997218a2dbc807cf2114fc5bb68a3da8d17cdf38aa3d7b51afaab52cf2638cc46293d42799a6d805b799c7748e326ab2780f81ca73121ebdf320ec046c41407d')
+        'fix_kvm_emulator.patch'
+        'vip.sh.patch'
+        'opennebula.install')
+sha512sums=('4d7d4f6c20a6185539a88006e4d15681d90cee45506d36017a538415a3b3cce809f02ff248013f9e2daa5f1d20afd308a0a014853b8462723ad6ba5acaa84626'
+            'd86b01dd0b0718e1f2c75ffa1220a621ce4953d2cb722defef51c9cb0ec7b3f7709c7cd760c87da9ecb16468ffed2eb7ecb40295f0d24f275648758784ecb745'
+            '165232dfcae58a19dac689cf11c3b49ec0dea5c98835f7ced2c3cc32819204ffd16b90ac67e421730339613cc306577cebfe305d19ed5ea5edbfca70785f52f5'
+            'f3b9bad7c234010b3aab20df17a4c2ab74242e2305acc2cdfa3e36130674c8804aa5c89bdd8ca952d3d188541570da9841fa308d6f5e8dfc9c433628c7628898'
+            'a8e9c781f575d57ba8badb4491ffb4ed1dd5b2b5b7434735974516f2a1533aca5b64a898759b861ca0aff72fe1c629547d8dcbbc29ad45429d3e29f4e7a01160'
+            '0fcfa0990623f6df0d48f24d1bcbc7482e589a454f33e47b4832633f064475d69f1784d87588d66e6d8b37ee448ab64e9a73442c56fcdd3eca66e4b487ea7b84'
+            '01aaf2d6019003ab69cd2e9886618d59bed27062f68fe72f29662f70af9206ce3921053c4cab30c370da958be243a6b19e85094af40ff93b6e370505ddd8bbe2'
+            'cee672a3fb9bffdac836a9aa00c898a38303144be44521363ad8e5109aebaa00e31fc0ae921e3a71a87e734fc614f6b3350009d5ec899bc5d78e6fe6d6c8fc01'
+            '18b1964cb4e3fc2eaa93a7ef79e4b9b185584d33ad4f7fa33cd33a74516334136d9cf0ee25921c189250420b751c753cb0142227e8de39e14f8d110e97cd8e30'
+            'ad649b9671d55280485000f2f74beb676065dda7596d0dbc879a3323495b8e0384454692e2d380a055dc72d5056b2020826d056e163d64b85762ad84438e2509'
+            '235d47ab6b7342db65b73533fab8084484cb95914604ffc68a419a13b41540b5e7983f46808f9b9cfc90bfeb69dfb1dfd8be61167791246e1631e93296a6ac7e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -115,7 +117,9 @@ prepare() {
   # We do our own chown in post_install().
   patch < "${srcdir}/chown_fix.patch"
   patch < "${srcdir}/set_locations.patch"
-  patch -p1 < "${srcdir}/fix_kvm_emulator.patch"
+  patch -p0 < "${srcdir}/fix_kvm_emulator.patch"
+  # Patch for https://dev.opennebula.org/issues/5309
+  patch -p0 < "${srcdir}/vip.sh.patch"
 }
 
 build() {
@@ -130,7 +134,7 @@ build() {
   ###########################################################################
 
   # This builds the vanilla OpenNebula package. Tweak this line as desired.
-  scons -j "$(nproc)" new_xmlrpc=yes mysql=yes
+  scons -j "$(nproc)" new_xmlrpc=yes mysql=yes sqlite=yes
 }
 
 package() {
@@ -144,3 +148,4 @@ package() {
 
   DESTDIR="${pkgdir}" ./install.sh -u oneadmin -g cloud
 }
+

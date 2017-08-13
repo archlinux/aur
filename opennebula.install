@@ -13,6 +13,8 @@ post_install() {
 		echo ">> You must edit the password in /var/lib/one/.one/one_auth"
 	fi
 	chown oneadmin:cloud -R /var/log/one /var/lib/one /run/one /run/lock/one
+	echo ">> To install required gems run as root:"
+	echo ">> '/usr/share/one/install_gems --showallgems | xargs -l gem install --no-user-install --no-document --conservative'"
 }
 
 post_upgrade(){

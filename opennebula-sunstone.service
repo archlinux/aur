@@ -10,6 +10,7 @@ Type=forking
 PermissionsStartOnly=true
 ExecStart=/usr/bin/sunstone-server start
 ExecStop=/usr/bin/sunstone-server stop
+Restart=on-abnormal
 
 [Install]
 WantedBy=multi-user.target
