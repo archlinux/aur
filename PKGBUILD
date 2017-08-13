@@ -6,10 +6,12 @@ pkgver=r2.2.gee3ac31
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url='https://github.com/Frechdachs/vapoursynth-descale.git'
+url='https://github.com/Irrational-Encoding-Wizardry/vapoursynth-descale.git'
 license=('custom:WTFPL')
 depends=('vapoursynth')
-source=("${_plug}::git+https://github.com/Frechdachs/vapoursynth-descale.git")
+conflicts=('vapoursynth-plugin-descale')
+provides=('vapoursynth-plugin-descale')
+source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vapoursynth-descale.git")
 sha256sums=('SKIP')
 
 pkgver() {
