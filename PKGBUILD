@@ -2,8 +2,8 @@
 # Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=gcompris-qt
-pkgver=0.70
-pkgrel=3
+pkgver=0.80
+pkgrel=1
 pkgdesc="Educational software suite comprising of numerous activities for children aged 2 to 10"
 arch=('i686' 'x86_64')
 url="http://gcompris.net/"
@@ -13,23 +13,12 @@ depends=('qt5-declarative' 'qt5-multimedia' 'qt5-svg' 'qt5-sensors'
          'hicolor-icon-theme')
 makedepends=('cmake' 'extra-cmake-modules' 'qt5-tools' 'kdoctools')
 replaces=('gcompris' 'gcompris-data')
-source=(http://gcompris.net/download/qt/src/$pkgname-$pkgver.tar.xz
-        0001-chess-Qt-bug-in-5.8-with-do-while-loop-https-bugrepo.patch
-        0002-chess-Qt-bug-in-5.8-with-do-while-loop-https-bugrepo.patch
-        0003-chess-allow-to-move-again-the-same-piece-after-undo.patch)
-sha256sums=('8a475ac354dad320dee1c1f6835fb1bb36ef91fe157870bda3562c5e1b8a2707'
-            'd9788a7c9df61be76a1ac47186fbfe565b4c66d7cbae769e11dba3401b28a05d'
-            'bdf09a6b11204d9e2c97e56b1bff64b0faa65f2ce46c840a35262c5e7b86acee'
-            'b5cb2dfe1f6103488afdf1196216b27b503a9b4724212c502dad75ea2f46f8a8')
+source=(http://gcompris.net/download/qt/src/$pkgname-$pkgver.tar.xz)
+sha256sums=('ddfad320a5170f4061b8dc55815e4bf344aa87ba6e6a4bdff597b99ec3f7b494')
 
 prepare() {
   cd $pkgname-$pkgver
   mkdir build
-
-  # Fix bugs in the chess activity
-  patch -Np1 -i ../0001-chess-Qt-bug-in-5.8-with-do-while-loop-https-bugrepo.patch
-  patch -Np1 -i ../0002-chess-Qt-bug-in-5.8-with-do-while-loop-https-bugrepo.patch
-  patch -Np1 -i ../0003-chess-allow-to-move-again-the-same-piece-after-undo.patch
 }
 
 build() {
