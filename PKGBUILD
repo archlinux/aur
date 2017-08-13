@@ -27,7 +27,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.0.21
+pkgver=7.0.22
 pkgrel=3
 pkgdesc="PHP scripting language package for stable release of 7.0 series"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ makedepends=('apache' 'aspell' 'db' 'enchant' 'gd' 'gmp' 'icu'
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         )
-sha256sums=('6713fe3024365d661593235b525235045ef81f18d0043654658c9de1bcb8b9e3'
+sha256sums=('408c3fbc235ec940433bfac1f3ed4bf797f61b4a1693b9fb0b6a04b2c1832501'
             'SKIP'
             '819f05d2fd5a75c96e93c863517ca77dbd021a1224dc2d8096f758fb2937df6a'
             'df075b89484eb3a08402788580de16d23123f95541b2e9aed8d928105de9b874'
