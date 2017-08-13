@@ -3,10 +3,9 @@
 
 _gitname=archtorify
 pkgname=archtorify-git
-pkgver=1.8.3
-pkgrel=2
-pkgdesc="Program for simplify the configuration of transparent proxy through Tor 
-Network"
+pkgver=1.9.0
+pkgrel=3
+pkgdesc="Program for simplify the configuration of transparent proxy through Tor Network"
 arch=('any')
 url="https://github.com/brainfucksec/archtorify/"
 license=('GPL3')
@@ -22,9 +21,10 @@ pkgver() {
 
 package() {
 	cd "$_gitname"
-	
+
 	install -Dm644 README.md $pkgdir/usr/share/doc/$_gitname/README.md
 	install -Dm755 archtorify.sh $pkgdir/usr/bin/archtorify
+	mkdir -p $pkgdir/opt/$_gitname/backups
 }
 
 # vim:set ts=2 sw=2
