@@ -23,12 +23,12 @@ source=(http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}/linux-
         $_pkgname.desktop)
 
 package() {
-    cd $srcdir
+    cd "$srcdir"
 
-    install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
-    cp -r firefox/ $pkgdir/opt/$_pkgname
+    install -d "$pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}"
+    cp -r firefox/ "$pkgdir/opt/$_pkgname"
 
-    ln -s /opt/$_pkgname/firefox $pkgdir/usr/bin/$_pkgname
-    install -m644 $srcdir/$_pkgname.desktop $pkgdir/usr/share/applications/
-    install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$_pkgname.png
+    ln -s /opt/$_pkgname/firefox "$pkgdir/usr/bin/$_pkgname"
+    install -m644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/"
+    install -m644 "$srcdir/firefox/browser/icons/mozicon128.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
