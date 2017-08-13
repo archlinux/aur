@@ -40,22 +40,29 @@ pkgver() {
 
 prepare() {
   mkdir -p fakeroot
+
   cd caffe
-  # use gcc5 (CUDA code requires gcc5)
-  sed '/CUSTOM_CXX/s/^#[[:space:]]//;/CUSTOM_CXX/s/$/-5/' -i Makefile.config
+
+  if [ "$(nvcc --version | tail -1 | cut -d ' ' -f5 | tr -d ,)" != "9.0" ]; then
+    # use gcc5 (CUDA 8.0 requires gcc5)
+    sed -e '/CUSTOM_CXX/s/^# //' \
+           '/CUSTOM_CXX/s/$/-5/' \
+           -i Makefile.config
+  fi
 
   # set CUDA directory
   sed '/CUDA_DIR/s/\/usr\/local\/cuda/\/opt\/cuda/' -i Makefile.config
 
   # set OpenBLAS as the BLAS provider and adjust its directories
-  sed "s|# BLAS_INCLUDE := /path/to/your/blas|BLAS_INCLUDE := "/usr/include/openblas"|" -i Makefile.config
-  sed "s|# BLAS_LIB := /path/to/your/blas|BLAS_LIB := "/usr/lib"|" -i Makefile.config
+  sed -e '/BLAS_INCLUDE := \/path/s/^# //' \
+      -e '/^BLAS_INCLUDE/s/\/path\/to\/your\/blas/\/usr\/include\/openblas/' \
+      -e '/BLAS_LIB := \/path/s/^# //' \
+      -e '/^BLAS_LIB/s/\/path\/to\/your\/blas/\/usr\/lib/' \
+      -i Makefile.config
 
   # disable python
-  sed -e '/PYTHON_INCLUDE/s/P/# P/g' \
-      -e '/PYTHON_LIB/s/P/# P/g' \
-      -e 's|# #|#|g' \
-      -e 's|(# |(|g' \
+  sed -e '/PYTHON_INCLUDE/s/^P/# P/g' \
+      -e '/PYTHON_LIB/s/^P/# P/g' \
       -i Makefile.config
 
   cd ../waifu2x-caffe
@@ -63,10 +70,12 @@ prepare() {
 }
 
 build() {
-
   cd caffe
+  if [ "$(nvcc --version | tail -1 | cut -d ' ' -f5 | tr -d ,)" != "9.0" ]; then
+    export CXXFLAGS="${CXXFLAGS//-fno-plt/}"
+  fi
+  make lib --trace
 
-  make lib
   cp -R build/lib "${srcdir}/fakeroot"
   cp -R include "${srcdir}/fakeroot"
   install -Dm644 build/src/caffe/proto/caffe.pb.h ${srcdir}/fakeroot/include/caffe/proto/caffe.pb.h
