@@ -31,6 +31,5 @@ build() {
 package() {
 	cd "${srcdir}/${_gitname}/"
 	cd build
-	make -C gtk DESTDIR="$pkgdir" install
-	make -C po DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" install
 }
