@@ -10,7 +10,7 @@ depends=('jre8-openjdk' 'java-openjfx')
 
 source=("https://github.com/AWildBeard/WildChat/releases/download/v1.1.31/wild-chat.tar")
 
-md5sums=('fe3246334522b5d9f3cc87d55e4625e8')
+md5sums=('1206544011ecd45f66080ff9e71f6e3f')
 
 package() {
 		mkdir -p "${pkgdir}/usr/share/wildchat"
