@@ -16,7 +16,7 @@ optdepends=(
 )
 conflicts=('gnome-shell-extensions-git')
 install="gschemas.install"
-source=("${pkgname}::https://github.com/UshakovVasilii/gnome-shell-extension-freon/archive/EGO-${pkgver}.tar.gz")
+source=("${pkgname}.tar.gz::https://github.com/UshakovVasilii/gnome-shell-extension-freon/archive/EGO-${pkgver}.tar.gz")
 sha512sums=('f1a7f41b7270e7e60002ae1990667c554d1cbe4baaa886482d4058f4add5e8a053dfd75edfd08ea9f508f2d8577dd333ec92c2a534e9f6d4258b53e140294ad3')
 
 package() {
