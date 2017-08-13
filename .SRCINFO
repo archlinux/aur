@@ -1,0 +1,19 @@
+pkgbase = iw-git
+	pkgdesc = A nl80211 based CLI configuration utility for wireless devices
+	pkgver = 4.9.r11.g8a9e0b3
+	pkgrel = 1
+	url = https://wireless.wiki.kernel.org/en/users/Documentation/iw
+	arch = i686
+	arch = x86_64
+	license = Custom
+	makedepends = git
+	makedepends = linux-api-headers
+	depends = glibc
+	depends = libnl
+	provides = iw
+	conflicts = iw
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/jberg/iw.git
+	sha256sums = SKIP
+
+pkgname = iw-git
+
