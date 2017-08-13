@@ -1,0 +1,37 @@
+pkgbase = lucaschess-git
+	pkgdesc = Play Train Compete
+	pkgver = 26
+	pkgrel = 1
+	url = http://www-lucaschess.rhcloud.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cython2
+	depends = python2-pyaudio
+	depends = swig
+	depends = python2-psutil
+	depends = python2-chardet
+	depends = python2-pygal
+	depends = python2-pocketsphinx
+	depends = python2-pyqt4
+	depends = python2-pillow
+	depends = python2-chess
+	optdepends = crafty
+	optdepends = cutechess
+	optdepends = fairymax
+	optdepends = fruit
+	optdepends = gnuchess
+	optdepends = hoichess
+	optdepends = pychess
+	optdepends = stockfish
+	optdepends = toga2
+	optdepends = xboard
+	optdepends = scid_vs_pc
+	provides = lucaschess
+	conflicts = lucaschess
+	source = lucaschess::git+https://github.com/lukasmonk/lucaschess_11.git
+	md5sums = SKIP
+
+pkgname = lucaschess-git
+
