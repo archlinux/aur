@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 prepare() {
     cd "httperf"
 
-    patch -Np1 -i "../openssl-1.0.patch"
+    patch -Np1 -i "$srcdir/openssl-1.0.patch"
 
     autoreconf -i
     mkdir -p "build"
