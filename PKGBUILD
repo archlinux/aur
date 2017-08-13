@@ -4,9 +4,7 @@
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-git
 pkgver=55.0.2+fdf9f824473c
-_realpkgver=49.0b10
-_rcbuild=1
-pkgrel=1
+pkgrel=2
 pkgdesc="64-Bit optimized Firefox fork, no data collection, allows unsigned extensions"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -25,13 +23,26 @@ source=(git://github.com/MrAlex94/Waterfox
         waterfox.desktop
         firefox-install-dir.patch
         clang-profile.patch
-        vendor.js)
+        vendor.js
+        default16.png
+		default22.png
+		default24.png
+		default256.png
+		default32.png
+		default48.png)
 sha512sums=('SKIP'
-            '897218e7d2e66846aa2686570f947d9eddc53e2ed9243e78fd8f1316a823591df0e4c5f5f6b545f1d9e48b8ec1425c86e68c37505b3ad051d8b860f673b3a32b'
+            '39ed75251c164e737c9d50ddd5647ec82145dae83d1af7c8f0c53c29d61214ca58f22a8691206b0c8678f0c38c83ffcf94b56dec16b6f33879b1b1189c7ae701'
             '93937770fa66d63f69c6283ed1f19ac83b9c9c4f5cc34e79d11ac31676462be9f7f37bcd35e785ceb8c7d234a09236d1f26b21e551b622854076fb21bcda44d3'
             '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
             'c17dceeefd58447917e27a33d6688a28158b919c41867909b11478d8be7f155b61ae8fda2e0381c14210583f1c6ecf678dfb469c4826f34e24b8ee0b96a8aaa5'
-            'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
+            'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7'
+            '625ea754e70793d80da38878e345fefce579416d9daa04439f1c13885aa2a9620307010fe4cf09460677fe2918bd32b62f4ad52b24bab78d82b4e6487cbe5347'
+            '02e844d1a97dd756d185f7258a6c18d52cf7433f3366e147e5ef0cc0b6c023d177b3021521403237162782993d2a27d4459fa5d383e7bf8a034e7f5836351f9d'
+            'a038a805a41e55c89cd601a07e6ae756e7017f4eb9eb65525f6cb9d86e2f94bda559961b6ab1e66a0dfa7436db6f1da166c2fc84bfc6cad5fcaec6a82ffb0a96'
+            '33afbb1ec2eb62412965bc698bdf1cc3c177645c51369397e92bdba7a7891709ccf1f3d2f9e234866e7c452a3ae8bfe289e0cbfd6047ec5efa1c7c568b9e7888'
+            '64f9e8b812d00d39239f9aa00aa51c937113fa3833652d2da318ae8c9627ac7b0372bffc2c1c0a2c1ea69ec97a3dc11fafee58175cbdab503aef299543f3fd90'
+            'e5000a4e25bf6a15eae99a1e9b3cc4f9a1712b7aacc783eb0c25b20d04d8bbc9e9e80e95ce8c709aba595f699aa2dc4ba6104ea0f0375b00ff2cc2353d93c8f1')
+            
 # don't compress the package - we're just going to uncompress during install in a moment
 PKGEXT='.pkg.tar'   
 
@@ -60,6 +71,14 @@ prepare() {
   #if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
   #  echo "mk_add_options PROFILE_GEN_SCRIPT='EXTRA_TEST_ARGS=10 \$(MAKE) -C \$(MOZ_OBJDIR) pgo-profile-run'" >>.mozconfig 
   #fi
+  
+  # fix missing icons
+  for i in 16 22 24 32 48 256; do
+	  if [ ! -f "${srcdir}/Waterfox/browser/branding/unofficial/default$i.png" ]; then
+		cp "${srcdir}/default$i.png" "${srcdir}/Waterfox/browser/branding/unofficial/default$i.png"
+	  fi
+  done
+
 
   mkdir -p "$srcdir/path"
 }

@@ -22,8 +22,8 @@ ac_add_options --enable-application=browser
 ac_add_options --enable-eme=widevine
 ac_add_options --with-app-name=waterfox
 ac_add_options --with-app-basename=Waterfox
-ac_add_options --with-branding=browser/branding/official
-ac_add_options --with-distribution-id=org.Waterfoxproject
+ac_add_options --with-branding=browser/branding/unofficial
+ac_add_options --with-distribution-id=org.waterfoxproject
 
 ac_add_options --enable-startup-notification
 ac_add_options --enable-pulseaudio
