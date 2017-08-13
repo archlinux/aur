@@ -1,7 +1,7 @@
 # Maintainer: Luca Cristiano<lucamaker@gmail.com>
 pkgname="openminemods"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, GNU plus Linux compatible alternative to the Twitch Launcher"
 arch=('any')
 url="https://github.com/joonatoona/OpenMineMods/tree/v1.0.1"
@@ -9,6 +9,8 @@ license=('GNU Affero GPL')
 groups=()
 depends=('python3' 'python-beautifulsoup4' 'python-pyqt5' 'python-requests')
 makedepends=('git' 'imagemagick' 'gendesk')
+optdepends=('multimc: the program just manages MultiMC instances for you. You will want this to actually run the 
+packs.')
 provides=("openminemods")
 conflicts=("openminemods")
 replaces=()
