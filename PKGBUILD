@@ -3,44 +3,37 @@
 # Generator  : CPANPLUS::Dist::Arch 1.19
 
 pkgname='perl-moosex-role-parameterized'
-pkgver=1.08
-pkgrel=2
+pkgver=1.10
+pkgrel=1
 pkgdesc="roles with composition parameters"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.8.1' 'perl-namespace-autoclean')
 makedepends=('perl-moose' 'perl-test-fatal')
+checkdepends=('perl-test-requires')
 url='http://search.cpan.org/dist/MooseX-Role-Parameterized'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Role-Parameterized-1.08.tar.gz')
-md5sums=('e89538edd84513c090914c7c1fa7e321')
-sha512sums=('2ee0a9c98090a2e82f360eb1276114bca243ec7676899830d06416cb378745d38ede5021eeb788b6c3499ba12969138dffadbbce34fe391778469ef3c5f4afdd')
+source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Role-Parameterized-$pkgver.tar.gz")
+md5sums=('28072021d14dcd8ba40d5a0f08ddfbc8')
+sha512sums=('10f6b51dd6e09c30e36496469c4a213e0ab6d12529e0b91161f680ae595b312e9dbff035d6c8a2d10dbff7fa55cf7ca6b53cd66b848f75f7e6ac43b6e6eb9e84')
 _distdir="MooseX-Role-Parameterized-${pkgver}"
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "$_distdir"
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
 }
 
 check() {
   cd "$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  make test
 }
 
 package() {
   cd "$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  make DESTDIR="$pkgdir" install
+  find "$pkgdir" -name '.packlist' -delete
+  find "$pkgdir" -name '*.pod' -delete
 }
 
 # Local Variables:
