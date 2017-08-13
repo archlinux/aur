@@ -3,7 +3,7 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-git
-pkgver=54.0.1+d3e9b4534ab9
+pkgver=55.0.2+fdf9f824473c
 _realpkgver=49.0b10
 _rcbuild=1
 pkgrel=1
