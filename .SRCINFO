@@ -1,12 +1,13 @@
 pkgbase = kcrap-lnf
 	pkgdesc = Kerberos Challenge Response Authentication Protocol
 	pkgver = 0.2.3+grawity1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.spock.org/kcrap/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = krb5
+	depends = openssl-1.0
 	provides = kcrap=0.2.3
 	conflicts = kcrap
 	replaces = kcrap
