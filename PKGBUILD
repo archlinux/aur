@@ -9,7 +9,7 @@ pkgbase=gcc6
 _ver=6
 pkgname=('gcc6' 'gcc6-libs' 'gcc6-fortran' 'gcc6-objc' 'gcc6-ada' 'gcc6-go' 'gcc6-gcj')
 pkgver=6.4.0
-pkgrel=2
+pkgrel=3
 _islver=0.17
 _cloogver=0.18.4
 _commit=45dd06cef49fe00a7839d7dff312b09e88910a51
@@ -17,7 +17,7 @@ pkgdesc="The GNU Compiler Collection"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-makedepends=('binutils>=2.28' 'libmpc'  'doxygen')
+makedepends=('binutils>=2.28' 'libmpc'  'doxygen' 'gcc-ada' 'java-environment-common' 'zip' 'jdk8-openjdk' 'gtk2' 'libart-lgpl' 'libxtst')
 checkdepends=('dejagnu' 'inetutils')
 options=(!emptydirs)
 source=(https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz
