@@ -5,12 +5,12 @@
 pkgname=imgp
 _pkgauthor=jarun
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Resize or rotate JPEG and PNG images. Official releases only."
 arch=('any')
 url="https://github.com/${_pkgauthor}/${pkgname}"
 license=('GPL3')
-depends=('python3' 'python-pillow')
+depends=('python' 'python-pillow')
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/v$pkgver.tar.gz")
 conflicts=('imgp-git')
 provides=('imgp')
