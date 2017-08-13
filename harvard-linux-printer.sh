@@ -5,8 +5,10 @@ sudo echo "Installing dependencies..."
 # the following lines are for Ubuntu only
 # sudo apt-get update > /dev/null
 # sudo apt-get install cups-client cups-server-common smbclient > /dev/null
+# echo "Done installing dependencies."
 
-echo "Done installing dependencies."
+sudo systemctl enable org.cups.cupsd.service
+sudo systemctl start org.cups.cupsd.service
 
 printf "\n"
 
