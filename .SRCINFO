@@ -1,0 +1,31 @@
+pkgbase = kodi-wayland-git
+	pkgdesc = Kodi mediacenter with wayland support
+	pkgver = 13082018
+	pkgrel = 1
+	url = https://github.com/MaxKellermann/xbmc
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = libfmt-git
+	makedepends = rapidjson-git
+	makedepends = tinyxml
+	makedepends = java-runtime
+	makedepends = swig
+	depends = wayland
+	depends = libevent
+	depends = dmxproto
+	depends = libdmx
+	depends = libmariadbclient
+	depends = libmicrohttpd
+	depends = python2-olefile
+	depends = python2-pillow
+	provides = kodi
+	conflicts = kodi
+	conflicts = kodi-git
+	source = git://github.com/MaxKellermann/xbmc.git
+	md5sums = SKIP
+
+pkgname = kodi-wayland-git
+
