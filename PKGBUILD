@@ -8,10 +8,10 @@ pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='https://forum.doom9.org/showthread.php?t=174727'
 license=('BSD')
-conflicts=('vapoursynth-plugin-remapframes')
-provides=('vapoursynth-plugin-remapframes')
 depends=('vapoursynth')
 makedepends=('meson')
+conflicts=('vapoursynth-plugin-remapframes')
+provides=('vapoursynth-plugin-remapframes')
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/Vapoursynth-RemapFrames.git")
 sha256sums=('SKIP')
 
