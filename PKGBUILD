@@ -19,7 +19,6 @@ url='http://openbox.org'
 license=('GPL')
 provides=('libobrender.so' $_pkgname)
 conflicts=($_pkgname)
-provides=()
 depends=('startup-notification' 'libxml2' 'libxinerama' 'libxrandr'
          'libxcursor' 'pango' 'imlib2' 'librsvg' 'libsm')
 optdepends=('plasma-workspace: for the KDE/Openbox xsession'
@@ -29,18 +28,16 @@ backup=('etc/xdg/openbox/menu.xml'
         'etc/xdg/openbox/rc.xml'
         'etc/xdg/openbox/autostart'
         'etc/xdg/openbox/environment')
-source=("http://openbox.org/dist/openbox/${_pkgname}-${pkgver}.tar.gz"{,.asc}
+source=("http://openbox.org/dist/openbox/${_pkgname}-${pkgver}.tar.gz"
         "openbox-3.5.0-title-matching.patch"
         "openbox-3.5.0-which-2.20.patch"
         "openbox-3.6.2-rounded-corners.patch"
         "openbox-3.6.2-fix-out-of-bounds.patch")
 md5sums=('b72794996c6a3ad94634727b95f9d204'
-        'SKIP'
-        '0a11d7149da210a31ef88f8a9c717711'
-        '5be4554431e555084026631898f167aa'
-        '401270e7d8d09cb8cb866411867e41b3'
-        '4c28a1482a2aeb58415cec39f7f3a694')
-validpgpkeys=('4B71379A9D5263D112A85620A5A4E99C711D3B61')
+         '0a11d7149da210a31ef88f8a9c717711'
+         '5be4554431e555084026631898f167aa'
+         '401270e7d8d09cb8cb866411867e41b3'
+         '4c28a1482a2aeb58415cec39f7f3a694')
 install="${pkgname}.install"
 
 prepare() {
