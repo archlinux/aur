@@ -11,6 +11,7 @@ pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
 url="https://lastpass.com"
 license=('custom')
+makedepends=('unzip')
 optdepends=('firefox'
             'chromium'
             'google-chrome'

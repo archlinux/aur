@@ -6,6 +6,7 @@ pkgbase = lastpass
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = unzip
 	optdepends = firefox
 	optdepends = chromium
 	optdepends = google-chrome
