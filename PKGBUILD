@@ -1,7 +1,7 @@
 # Maintainer: Peter Cai <peter at typeblog dot net>
 
 pkgname=gtop
-pkgver=0.1.1
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='System monitoring dashboard for terminal.'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
 source=(
   "https://github.com/aksakalli/gtop/archive/v${pkgver}.tar.gz"
 )
-md5sums=('ad2ae15e47a7809605fc38a5e496a750')
+md5sums=('78bf87051bb64b7f56c2d8d355431aa1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
