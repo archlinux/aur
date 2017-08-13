@@ -1,0 +1,18 @@
+pkgbase = soccer-cli-git
+	pkgdesc = Soccer for Hackers - a CLI for all the football scores.
+	pkgver = 20170813_r262.429f2d3
+	pkgrel = 1
+	url = https://github.com/architv/soccer-cli
+	install = soccer-cli-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-click
+	depends = python2-requests
+	provides = soccer-cli
+	source = git+https://github.com/architv/soccer-cli.git
+	md5sums = SKIP
+
+pkgname = soccer-cli-git
+

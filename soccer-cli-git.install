@@ -1,0 +1,6 @@
+post_install() {
+  echo ""
+  echo "The env variable SOCCER_CLI_API_TOKEN is required, with an API key from football-data.org"
+  echo ""
+}
+
