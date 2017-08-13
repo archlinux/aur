@@ -1,22 +1,23 @@
 # Original Maintainer: Vladimir Tsanev <tsachev@gmail.com>
 # Maintainer: MoeRT09 <https://aur.archlinux.org/account/MoeRT09>
+# Maintainer: jlkon13 <internet@devpi.de>
 
 pkgname=coturn
 _portname=turnserver
-pkgver=4.5.0.5
+pkgver=4.5.0.6
 pkgrel=1
 pkgdesc="Free open source implementation of TURN and STUN Server"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/coturn/coturn"
 license=('custom:New BSD')
-depends=('libevent' 'postgresql-libs' 'libmysqlclient' 'hiredis' 'sqlite')
+depends=('libevent' 'postgresql-libs' 'libmariadbclient' 'hiredis' 'sqlite')
 conflicts=('rfc5766-turn-server')
 provides=('rfc5766-turn-server')
 install="$_portname.install"
 backup=("etc/turnserver.conf")
 source=(http://$_portname.open-sys.org/downloads/v$pkgver/$_portname-$pkgver.tar.gz $_portname.service $_portname.tmpfiles.d)
 
-sha256sums=('8484fa6c8d4aab43e1161c02eb8914154a21178b05f8a285e04094ddbb64acf4'
+sha256sums=('c0ff3224084ff9a9504147a7b87431ee815ebeea0de7c7cb67126859da7e25a6'
             '319030c1916d353bfc3375626cc7f60d6eeca762fe4fce354f010212902c49dc'
             'fe7ed64dc6844aabdfa00b76134b22d69d9097bd3f77120d704d0ee08c036c21')
 
