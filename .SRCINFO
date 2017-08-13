@@ -1,12 +1,12 @@
 pkgbase = r8723bs-git
-	pkgver = 3dba47f12f8f3faadde8263a8ebbac673c6db87d
-	pkgrel = 6
+	pkgver = .804.e12be86
+	pkgrel = 1
 	url = http://www.realtek.com.tw/
 	install = r8723bs-git.install
 	arch = any
 	license = GPL
 	provides = r8723bs
-	source = r8723bs::git+https://github.com/hadess/rtl8723bs
+	source = r8723bs::git+https://github.com/muhviehstah/r8723bs
 	source = blacklist-8723bs.conf
 	source = osdep_includes.patch
 	sha256sums = SKIP
