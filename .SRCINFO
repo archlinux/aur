@@ -1,0 +1,23 @@
+pkgbase = openjpeg-git
+	pkgdesc = An open-source JPEG 2000 codec written in C language
+	pkgver = 2.2.0.r9.g0b4c3ce7
+	pkgrel = 1
+	url = https://github.com/uclouvain/openjpeg
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	depends = glibc
+	depends = zlib
+	depends = libpng
+	depends = libtiff
+	depends = lcms2
+	provides = openjpeg2
+	conflicts = openjpeg2
+	source = git+https://github.com/uclouvain/openjpeg.git
+	sha256sums = SKIP
+
+pkgname = openjpeg-git
+
