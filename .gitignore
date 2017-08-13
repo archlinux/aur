@@ -1,5 +1,5 @@
 *.tar
-*.gz
+*.gz*
 *.xz
 *.bz2
 src/

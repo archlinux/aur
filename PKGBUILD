@@ -3,14 +3,14 @@
 # Contributor: Hendrik Luup <hendrik at luup dot info>
 
 pkgname=dvorakng
-pkgver=0.6.0rc1
-pkgrel=4
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="A Dvorak typing tutor. It's heavily based on Dvorak7min, but adds many improvements."
-url="http://freshmeat.net/projects/${pkgname}/"
+url='https://gitlab.com/atsb/dvorakng'
 license=('GPL')
 makedepends=('make' 'gcc')
-source=("http://www.free.of.pl/n/nopik/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('87f0bb2199188093ea4223d7dc47232f53b266aa9498170b643c25e724f547fa1ce5d0e1d4e7f275c712f6ec4850d825827b66f84407f186eb80b73ac973ded7')
+source=("https://gitlab.com/atsb/${pkgname}/repository/archive.tar.gz?ref=${pkgver}")
+sha512sums=('622a1c107f0d650209ff588190e96d08ca61500cd9ea6c286f43ea98b152afe41e7c3772ff15d2acacca8ba9e723cf5ac52a8ef4ea22713924fee8044a0f2613')
 arch=('i686' 'x86_64')
 
 build() {
