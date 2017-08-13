@@ -1,6 +1,6 @@
 pkgbase = inwx_update_dyndns-git
 	pkgdesc = Update A and AAAA records for your INWX DynDNS account
-	pkgver = r7.ef73578
+	pkgver = r19.32d98aa
 	pkgrel = 1
 	url = https://github.com/nroi/inwx_update_dyndns
 	arch = any
