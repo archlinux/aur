@@ -1,10 +1,10 @@
 # Maintainer: Luca Cristiano<lucamaker@gmail.com>
 pkgname="openminemods"
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="An open source, GNU plus Linux compatible alternative to the Twitch Launcher"
 arch=('any')
-url=""
+url="https://github.com/joonatoona/OpenMineMods/tree/v1.0.1"
 license=('GNU Affero GPL')
 groups=()
 depends=('python3' 'python-beautifulsoup4' 'python-pyqt5' 'python-requests')
@@ -15,17 +15,14 @@ replaces=()
 backup=()
 options=()
 install=
-source=('openminemods::git+https://github.com/joonatoona/OpenMineMods#tag=v1.0')
+source=('openminemods::git+https://github.com/joonatoona/OpenMineMods#tag=v1.0.1')
 noextract=()
 md5sums=('SKIP')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 build() {
     cd "$pkgname"
     convert OMM.ico OMM.png
-    gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name="Open Mine Mods" --exec=omm-ui --categories=Games
+    gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name="Open Mine Mods" --exec="omm-ui" --categories="Application;Game"
     echo -e "#!/bin/bash\npython3 /opt/openminemods/openminemods/GUI.py" > omm-ui
 }
 

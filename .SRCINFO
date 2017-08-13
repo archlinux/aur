@@ -1,7 +1,8 @@
 pkgbase = openminemods
 	pkgdesc = An open source, GNU plus Linux compatible alternative to the Twitch Launcher
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
+	url = https://github.com/joonatoona/OpenMineMods/tree/v1.0.1
 	arch = any
 	license = GNU Affero GPL
 	makedepends = git
@@ -13,7 +14,7 @@ pkgbase = openminemods
 	depends = python-requests
 	provides = openminemods
 	conflicts = openminemods
-	source = openminemods::git+https://github.com/joonatoona/OpenMineMods#tag=v1.0
+	source = openminemods::git+https://github.com/joonatoona/OpenMineMods#tag=v1.0.1
 	md5sums = SKIP
 
 pkgname = openminemods
