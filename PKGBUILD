@@ -1,7 +1,8 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=pyethereum
-pkgver=0.9.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Ethereum Python client"
 arch=('any')
@@ -18,9 +19,9 @@ groups=('ethereum')
 url="https://github.com/ethereum/pyethereum"
 license=('MIT')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('960aef4540f63ccca4667f0382ad2019')
-sha256sums=('0f086fcef6369f50b763f902440d2ec14645fe606ea1a5a290a50011bf579fa4')
+source=("https://github.com/ethereum/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('ed488fb2fb46efdc9dfdbc643b4dc181')
+sha256sums=('21486b6c6430c79b61405508353d3aeae6ad70ec646849501d5a44779769be82')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
