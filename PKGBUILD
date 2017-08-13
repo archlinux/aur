@@ -31,33 +31,33 @@ sha256sums=('2365f1457c276649f5b08204873480a305083012c987be043a3bd2779f16cfc3'
             '7fd36db71f39fde3d515c697101190f979b308d910b3c4210b90422669683ab0')
 
 package() {
-  mkdir -p $pkgdir/opt/ums
-  mkdir $pkgdir/opt/ums/database
-  mkdir -p $pkgdir/usr/bin
-  chmod -R 755 $srcdir/ums-$pkgver/plugins $srcdir/ums-$pkgver/documentation
-  rm -R $srcdir/ums-$pkgver/linux/*
-  cp -r $srcdir/ums-$pkgver/* $pkgdir/opt/ums/
-  ln -s /usr/bin/ffmpeg $pkgdir/opt/ums/linux/ffmpeg
-  ln -s /usr/bin/ffmpeg $pkgdir/opt/ums/linux/ffmpeg64
-  ln -s /usr/bin/tsMuxeR $pkgdir/opt/ums/linux/tsMuxeR
-  ln -s /usr/bin/tsMuxeR $pkgdir/opt/ums/linux/tsMuxeR-new
-  chmod +x $pkgdir/opt/ums/UMS.sh
-  touch $pkgdir/opt/ums/UMS.conf
-  touch $pkgdir/opt/ums/debug.log
-  chgrp users $pkgdir/opt/ums/UMS.conf \
-              $pkgdir/opt/ums/WEB.conf \
-              $pkgdir/opt/ums/debug.log \
-              $pkgdir/opt/ums/database
+  mkdir -p ${pkgdir}/opt/ums
+  mkdir ${pkgdir}/opt/ums/database
+  mkdir -p ${pkgdir}/usr/bin
+  chmod -R 755 ${srcdir}/ums-$pkgver/plugins ${srcdir}/ums-$pkgver/documentation
+  rm -R ${srcdir}/ums-$pkgver/linux/*
+  cp -r ${srcdir}/ums-$pkgver/* ${pkgdir}/opt/ums/
+  ln -s /usr/bin/ffmpeg ${pkgdir}/opt/ums/linux/ffmpeg
+  ln -s /usr/bin/ffmpeg ${pkgdir}/opt/ums/linux/ffmpeg64
+  ln -s /usr/bin/tsMuxeR ${pkgdir}/opt/ums/linux/tsMuxeR
+  ln -s /usr/bin/tsMuxeR ${pkgdir}/opt/ums/linux/tsMuxeR-new
+  chmod +x ${pkgdir}/opt/ums/UMS.sh
+  touch ${pkgdir}/opt/ums/UMS.conf
+  touch ${pkgdir}/opt/ums/debug.log
+  chgrp users ${pkgdir}/opt/ums/UMS.conf \
+              ${pkgdir}/opt/ums/WEB.conf \
+              ${pkgdir}/opt/ums/debug.log \
+              ${pkgdir}/opt/ums/database
 
-  chmod g+w $pkgdir/opt/ums/UMS.conf \
-            $pkgdir/opt/ums/WEB.conf \
-            $pkgdir/opt/ums/debug.log \
-            $pkgdir/opt/ums/database 
+  chmod g+w ${pkgdir}/opt/ums/UMS.conf \
+            ${pkgdir}/opt/ums/WEB.conf \
+            ${pkgdir}/opt/ums/debug.log \
+            ${pkgdir}/opt/ums/database 
 
-  unzip -q -u $srcdir/ums-$pkgver/ums.jar -d ums_jar
-  install -d -m 755 $pkgdir/usr/share/pixmaps
-  install -D -m 644 $srcdir/ums_jar/resources/images/logo.png $pkgdir/usr/share/pixmaps/ums.png
-  install -D -m 644 $srcdir/ums.desktop $pkgdir/usr/share/applications/ums.desktop
-  install -D -m 644 $srcdir/ums.service $pkgdir/usr/lib/systemd/system/ums@.service
-  install -D -m 644 $srcdir/ums.timer $pkgdir/usr/lib/systemd/system/ums@.timer
+  unzip -q -u ${srcdir}/ums-$pkgver/ums.jar -d ums_jar
+  install -d -m 755 ${pkgdir}/usr/share/pixmaps
+  install -D -m 644 ${srcdir}/ums_jar/resources/images/logo.png ${pkgdir}/usr/share/pixmaps/ums.png
+  install -D -m 644 ${srcdir}/ums.desktop ${pkgdir}/usr/share/applications/ums.desktop
+  install -D -m 644 ${srcdir}/ums.service ${pkgdir}/usr/lib/systemd/system/ums@.service
+  install -D -m 644 ${srcdir}/ums.timer ${pkgdir}/usr/lib/systemd/system/ums@.timer
 }
