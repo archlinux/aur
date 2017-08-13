@@ -3,7 +3,7 @@
 _basename=GENie
 pkgname=${_basename,,}-git
 pkgver=r844.84204ee
-pkgrel=1
+pkgrel=2
 pkgdesc="GENie project generator tool (a fork of premake by Branimir Karadžić)"
 arch=('x86_64' 'arm' 'i686')
 url='https://github.com/bkaradzic/GENie'
@@ -20,7 +20,8 @@ build() {
 	cd "${_basename}"
 	make
 	./bin/linux/genie release
-	make -C build/gmake.linux clean all
+	make -C build/gmake.linux clean
+	make -C build/gmake.linux all
 }
 
 package() {
