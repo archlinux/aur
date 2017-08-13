@@ -16,7 +16,7 @@ package() {
     cd "${srcdir}/${pkgname}"
     git checkout "${pkgver}"
     for _dir in *; do
-        if [ -d "${_dir0}" ] && [ "${_dir}" != "UltiSnips" ]; then
+        if [ -d "${_dir}" ] && [ "${_dir}" != "UltiSnips" ]; then
             for _file in $(find "${_dir}" -name "*.vim"); do
                 install -D -m644 "${_file}" "${pkgdir}"/usr/share/vim/vimfiles/"${_file}"
             done
