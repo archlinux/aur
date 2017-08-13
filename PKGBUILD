@@ -38,7 +38,7 @@ prepare() {
   sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
   ./script/build
 
-	sed -i -e "s/<%=Desc=%>/$pkgdesc/g" ${srcdir}/${_pkgname}-${_version}.desktop
+	sed -i -e "s/<%=Desc=%>/${pkgdesc}/g" ${srcdir}/${_pkgname}-${_version}.desktop
 }
 
 build() {
@@ -60,18 +60,18 @@ package() {
   install -dm755 ${pkgdir}/usr/bin
   install -dm755 ${pkgdir}/usr/share/${_pkgname}-${_version}
   install -dm755 ${pkgdir}/usr/share/applications
-  install -dm755 ${pkgdir}/usr/share/licenses/$pkgname
+  install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
   install -dm755 ${pkgdir}/usr/share/pixmaps
 
   cp -r out/${_pkgname}-${_version}-${_ver}-${_arch}/* ${pkgdir}/usr/share/${_pkgname}-${_version}/
   mv ${pkgdir}/usr/share/${_pkgname}-${_version}/atom.png ${pkgdir}/usr/share/pixmaps/${_pkgname}-${_version}.png
-  mv ${pkgdir}/usr/share/${_pkgname}-${_version}/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 $srcdir/${_pkgname}-${_version}.desktop ${pkgdir}/usr/share/applications/${_pkgname}-${_version}.desktop
+  mv ${pkgdir}/usr/share/${_pkgname}-${_version}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 ${srcdir}/${_pkgname}-${_version}.desktop ${pkgdir}/usr/share/applications/${_pkgname}-${_version}.desktop
   cp ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/atom.sh ${pkgdir}/usr/bin/atom-beta
   rm -rf ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app.asar.unpacked/resources
   ln -sf "/usr/share/${_pkgname}-${_version}/resources/app/apm/node_modules/.bin/apm" "${pkgdir}/usr/bin/apm-${_version}"
 
-  find "$pkgdir" \
+  find "${pkgdir}" \
     -name "*.a" -exec rm '{}' \; \
     -or -name "*.bat" -exec rm '{}' \; \
     -or -name "benchmark" -prune -exec rm -r '{}' \; \
@@ -80,5 +80,5 @@ package() {
     -or -name "man" -prune -exec rm -r '{}' \; \
     -or -path "*/less/gradle" -prune -exec rm -r '{}' \; \
     -or -path "*/task-lists/src" -prune -exec rm -r '{}' \; \
-    -or -name "package.json" -exec sed -i -e "s|${srcdir}/atom-${_ver}/apm|/usr/share/${_pkgname}-${_version}/resources/app/apm|g" '{}' +
+    -or -name "package.json" -exec sed -i -e "s|${srcdir//|/\\|}/atom-${_ver}/apm|/usr/share/${_pkgname}-${_version}/resources/app/apm|g" '{}' +
 }
