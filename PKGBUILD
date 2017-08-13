@@ -40,7 +40,6 @@ sha256sums=('e4640ef69d7bb912649ed7986fca3aabb093ead1d3736a7a4a58d0340ec696ea'
 
 prepare() {
   cd ${srcdir}
-  #patch -p1 < ${srcdir}/hdf5.patch
   patch -p1 < hdf5.patch
 }
 
