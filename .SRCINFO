@@ -1,14 +1,14 @@
 pkgbase = xerial-sqlite-jdbc
 	pkgdesc = Xerial implementation of SqliteJDBC
-	pkgver = 3.16.1
+	pkgver = 3.20.0
 	pkgrel = 1
 	url = https://bitbucket.org/xerial/sqlite-jdbc
 	arch = i686
 	arch = x86_64
 	license = Apache
 	depends = java-runtime
-	source = https://bitbucket.org/xerial/sqlite-jdbc/downloads/sqlite-jdbc-3.16.1.jar
-	sha256sums = 211a0cb1694e53b7a120034ee33bd7b719bc7d0f5b619af2be26f2e5fb66e763
+	source = https://bitbucket.org/xerial/sqlite-jdbc/downloads/sqlite-jdbc-3.20.0.jar
+	sha256sums = 143b1c0a453c9a8f77be14209ea15391d1e0eb93348fcfabf03cc227b0edae73
 
 pkgname = xerial-sqlite-jdbc
 
