@@ -3,7 +3,7 @@
 # Based on PMS PKGBUILD
 
 pkgname=ums
-pkgver=6.7.2
+pkgver=6.7.3
 pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 8."
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Rele
         'ums.desktop'
         'ums.service'
         'ums.timer')
-sha256sums=('53c50b33bbd3344841006d2a55a46beb308adaa274d31d357d4bdd3a1deb8084'
+sha256sums=('2365f1457c276649f5b08204873480a305083012c987be043a3bd2779f16cfc3'
             '0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
             '1f6efefa58dde9148396bd9236a6985db0fa27f1c767067b52bfae1832f32284'
             '7fd36db71f39fde3d515c697101190f979b308d910b3c4210b90422669683ab0')
