@@ -46,23 +46,24 @@ sha512sums=('b1fc217b8fca88e8c81aaac930892a8ccd56e425aa375a695a3e13b136a52ce6a6a
             '04be4dfba3a21f3ab9d9e439a64958bd8e844a9f151b798383bd9e0dd6ebc416783ae7cb1d1dbb27fb7288ab9756b13b8338cdb8ceb41a10949c852ad45ab1f2')
 
 build() {
-  OLD_PATH=$PATH
+  local OLD_PATH="$PATH"
   export PATH="$srcdir:$PATH"
   echo "#!/bin/bash" > antlr3
-  echo "exec java -cp $srcdir/antlr-3.4-complete.jar org.antlr.Tool \"\$@\"" >> antlr3
+  local safequotedsrcdir="'${srcdir//\'/\'\\\'\'}'"
+  echo "exec java -cp ${safequotedsrcdir}/antlr-3.4-complete.jar org.antlr.Tool \"\$@\"" >> antlr3
   chmod a+x ./antlr3
   cd "$srcdir/$pkgname-$pkgver"
-  echo $PATH
+  echo "$PATH"
   autoreconf -i
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-itunes --enable-chromecast --enable-lastfm --sbindir=/usr/bin
   make
-  export PATH=$OLD_PATH
+  export PATH="$OLD_PATH"
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -D -m644 $srcdir/forked-daapd.service $pkgdir/usr/lib/systemd/system/forked-daapd.service
-  install -D -m644 $srcdir/forked-daapd.avahi $pkgdir/etc/avahi/services/forked-daapd.service
+  install -D -m644 "$srcdir/forked-daapd.service" "$pkgdir/usr/lib/systemd/system/forked-daapd.service"
+  install -D -m644 "$srcdir/forked-daapd.avahi" "$pkgdir/etc/avahi/services/forked-daapd.service"
   make DESTDIR="$pkgdir/" install
 }
