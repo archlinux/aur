@@ -1,4 +1,4 @@
-# Maintainer: midgard <arch.midgard@janmaes.com>
+# Maintainer: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 
 pkgname=peppercarrot-fonts-git
 pkgver=r38.20afd31
