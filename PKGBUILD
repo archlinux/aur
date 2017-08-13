@@ -9,9 +9,11 @@ arch=('i686' 'x86_64')
 url='https://forum.doom9.org/showthread.php?t=174711'
 license=('BSD')
 depends=('vapoursynth')
-makedepends=('meson')
-conflicts=('vapoursynth-plugin-vfrtocfr')
-provides=('vapoursynth-plugin-vfrtocfr')
+makedepends=('git'
+             'meson'
+             )
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/Vapoursynth-VFRToCFR.git")
 sha256sums=('SKIP')
 
