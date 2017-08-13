@@ -1,7 +1,7 @@
 pkgname=opendune
 _pkgname=OpenDUNE
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source re-creation of the popular game Dune II"
 arch=('i686' 'x86_64')
 url="http://opendune.org"
