@@ -1,7 +1,7 @@
 # Maintainer: RubenKelevra <ruben@vfn-nrw.de>
 
 pkgname=netalyzr-cli
-pkgver=1
+pkgver=57861
 pkgrel=1
 pkgdesc='Debug your internet.'
 arch=('any')

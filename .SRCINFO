@@ -1,6 +1,6 @@
 pkgbase = netalyzr-cli
 	pkgdesc = Debug your internet.
-	pkgver = 1
+	pkgver = 57861
 	pkgrel = 1
 	url = http://netalyzr.icsi.berkeley.edu/
 	arch = any
