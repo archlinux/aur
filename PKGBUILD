@@ -4,7 +4,7 @@
 
 pkgname=neobundle-git
 pkgver=4.0.15.gc6fa48c
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultimate Vim plugin manager inspired by Vundle"
 arch=('any')
 url="https://github.com/Shougo/neobundle.vim"
@@ -27,16 +27,16 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
 
-  vimpath="${pkgdir}/usr/share/vim/vimfiles/"
+  local _vimpath="${pkgdir}/usr/share/vim/vimfiles"
 
-  mkdir -p ${vimpath}/doc
-  cp -R doc ${vimpath}
+  mkdir -p "${_vimpath}/doc"
+  cp -R doc "${_vimpath}/"
 
-  mkdir -p ${vimpath}/autoload
-  cp -R autoload ${vimpath}
+  mkdir -p "${_vimpath}/autoload"
+  cp -R autoload "${_vimpath}/"
 
-  install -Dm644 LICENSE-MIT.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README
-  install -Dm644 ${srcdir}/neobundle.vimrc ${pkgdir}/usr/share/neobundle/vimrc.sample
+  install -Dm644 LICENSE-MIT.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm644 "${srcdir}/neobundle.vimrc" "${pkgdir}/usr/share/neobundle/vimrc.sample"
 }
 

@@ -1,7 +1,7 @@
 pkgbase = neobundle-git
 	pkgdesc = Ultimate Vim plugin manager inspired by Vundle
 	pkgver = 4.0.15.gc6fa48c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Shougo/neobundle.vim
 	install = neobundle.install
 	arch = any
