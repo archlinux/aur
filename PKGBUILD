@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=kickoff-player-git
-pkgver=r144.ab112e8
+pkgver=r147.e4fbd44
 pkgrel=1
 pkgdesc="Stream football matches and channels with acestream and sopcast"
 arch=("any")
