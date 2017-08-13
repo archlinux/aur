@@ -6,10 +6,12 @@ pkgver=0.1.3.g24626e1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url='https://github.com/Infiziert90/vapoursynth-autocrop'
+url='https://github.com/Irrational-Encoding-Wizardry/vapoursynth-autocrop'
 license=('GPL')
 depends=('vapoursynth')
-source=("${_plug}::git+https://github.com/Infiziert90/vapoursynth-autocrop.git")
+conflicts=('vapoursynth-plugin-autocrop')
+provides=('vapoursynth-plugin-autocrop')
+source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vapoursynth-autocrop.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,7 +23,7 @@ prepare() {
 
   echo "all:
 	  g++ -c -std=c++98 -Wall -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o autocrop.o autocrop/autocrop.cpp
-	  g++ -shared -fPIC ${LDFLAGS} -o libautocrop.so autocrop.o" > Makefile
+	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so autocrop.o" > Makefile
 }
 
 build() {
