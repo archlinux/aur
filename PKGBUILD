@@ -15,7 +15,7 @@ sha256sums=('143b1c0a453c9a8f77be14209ea15391d1e0eb93348fcfabf03cc227b0edae73')
 
 package() {
   install -D -m644 \
-    $srcdir/${_fullname}.jar \
-    $pkgdir/usr/share/java/${pkgname}/${_fullname}.jar
-  ln -s ${_fullname}.jar $pkgdir/usr/share/java/${pkgname}/${pkgname}.jar
+    "$srcdir/${_fullname}.jar" \
+    "$pkgdir/usr/share/java/${pkgname}/${_fullname}.jar"
+  ln -s "${_fullname}.jar" "$pkgdir/usr/share/java/${pkgname}/${pkgname}.jar"
 }
