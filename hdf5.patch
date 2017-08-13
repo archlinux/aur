@@ -1,0 +1,33 @@
+diff -ura src/vision_opencv-release-release-lunar-cv_bridge-1.12.4-0/CMakeLists.txt src2/vision_opencv-release-release-lunar-cv_bridge-1.12.4-0/CMakeLists.txt
+--- src/vision_opencv-release-release-lunar-cv_bridge-1.12.4-0/CMakeLists.txt	2017-03-13 22:50:18.000000000 +0100
++++ src2/vision_opencv-release-release-lunar-cv_bridge-1.12.4-0/CMakeLists.txt	2017-08-13 13:11:08.629954737 +0200
+@@ -13,7 +13,13 @@
+ else()
+ find_package(Boost REQUIRED)
+ endif()
+-find_package(OpenCV REQUIRED)
++find_package(OpenCV 3 REQUIRED
++  COMPONENTS
++    opencv_core
++    opencv_imgproc
++    opencv_imgcodecs
++  CONFIG
++)
+ 
+ catkin_package(
+   INCLUDE_DIRS include
+diff -ura src/vision_opencv-release-release-lunar-cv_bridge-1.12.4-0/src/cv_bridge.cpp src2/vision_opencv-release-release-lunar-cv_bridge-1.12.4-0/src/cv_bridge.cpp
+--- src/vision_opencv-release-release-lunar-cv_bridge-1.12.4-0/src/cv_bridge.cpp	2017-03-13 22:50:18.000000000 +0100
++++ src2/vision_opencv-release-release-lunar-cv_bridge-1.12.4-0/src/cv_bridge.cpp	2017-08-13 13:12:00.615948618 +0200
+@@ -40,10 +40,9 @@
+ #include <boost/make_shared.hpp>
+ #include <boost/regex.hpp>
+ 
++#include <opencv2/imgcodecs.hpp>
+ #include <opencv2/imgproc/imgproc.hpp>
+ 
+-#include <opencv2/highgui/highgui.hpp>
+-
+ #include <sensor_msgs/image_encodings.h>
+ 
+ #include <cv_bridge/cv_bridge.h>

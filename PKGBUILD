@@ -24,8 +24,7 @@ ros_depends=(ros-lunar-sensor-msgs
   opencv)
 depends=(${ros_depends[@]}
   boost
-  python2
-  hdf5)
+  python2)
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/cv_bridge/${pkgver}-${_pkgver_patch}
@@ -35,8 +34,15 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-lunar-cv_bridge-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/lunar/cv_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e4640ef69d7bb912649ed7986fca3aabb093ead1d3736a7a4a58d0340ec696ea')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/lunar/cv_bridge/${pkgver}-${_pkgver_patch}.tar.gz" "hdf5.patch")
+sha256sums=('e4640ef69d7bb912649ed7986fca3aabb093ead1d3736a7a4a58d0340ec696ea'
+            '0c67b512e0531f189978a81ef3927a5bc6764a1d6f42e53ab67c73cd91bb85f3')
+
+prepare() {
+  cd ${srcdir}
+  #patch -p1 < ${srcdir}/hdf5.patch
+  patch -p1 < hdf5.patch
+}
 
 build() {
   # Use ROS environment variables
