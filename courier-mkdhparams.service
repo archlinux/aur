@@ -1,0 +1,6 @@
+[Unit]
+Description=Generate Diffie Hellman parameters for Courier MTA
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mkdhparams

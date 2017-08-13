@@ -1,46 +1,32 @@
-# arg 1:  the new package version
 post_install() {
-  cat << EOM
- --> if you are using LDAP services to provide lookup in sqwebmail or aliases
- --> then you have to install:
-          libldap
-EOM
-   # create the *.dat files
+  #set up the /var/run directory
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/courier-mta.conf
+
+  # perform all the tasks required of a standard Courier install
+  echo Performing install-configure...
+  /usr/lib/courier/sysconftool /etc/courier/*.dist > /etc/courier/upgrade-$1.log
+  echo ...output saved to /etc/courier/upgrade-$1.log
+  echo "Do not forget to choose an account to receive postmaster mail."
   makealiases
   makesmtpaccess
+  /usr/bin/mkdhparams
 }
 
 pre_upgrade() {
-  pre_remove $1
+  # the file courier-imapd.conf is renamed to courier-mta.conf for version 0.77.0-2
+  [ "$1" != "0.77.0-2" ] && rm -f /usr/lib/tmpfiles.d/courier-imapd.conf
 }
-
-# arg 1:  the new package version
-# arg 2:  the old package version
-post_upgrade() {
-  post_install $1
-}
-
 
 pre_remove() {
-   # manual backup, since courier is always processing the whole directory
-   # - so it would process "system" AND "system.pacsave" -> bad
-  [ ! -d /etc/courier/_backup ] && mkdir /etc/courier/_backup
-  cp /etc/courier/aliases/system /etc/courier/_backup/aliases.system
-  cp /etc/courier/smtpaccess/default /etc/courier/_backup/smtpaccess.default
+  # there may be many files not part of the original installation that would be useful to save
+  # so save the whole configuration directory rather than try to list all possibilities
+  # in backup(). Also avoids creation of .pacsave files in alias and smtpaccess directories that
+  # process all files
+  mv -f /etc/courier /etc/courier-$1
   cat << EOM
- --> the /etc/courier/aliases/system and the /etc/courier/smtpaccess/default
- --> files have been backed up to /etc/courier/_backup since the *.pacsave
- --> files cannot stay in place. Read about couriers alias handling from the
- --> documentation!
+ --> /etc/courier has been saved as /etc/courier-$1
 EOM
+
+  # clean up the /run and /var/spool directories
+  systemd-tmpfiles --remove /usr/lib/tmpfiles.d/courier-mta.conf
 }
-
-# arg 1:  the old package version
-post_remove() {
-  /bin/true
-}
-
-op=$1
-shift
-
-$op $*

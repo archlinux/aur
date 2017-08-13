@@ -1,0 +1,11 @@
+[Unit]
+Description=Generate Diffie Hellman parameters for Courier MTA
+
+[Timer]
+OnCalendar=monthly
+RandomizedDelaySec=3h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+
