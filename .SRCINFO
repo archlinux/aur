@@ -1,0 +1,25 @@
+pkgbase = grep-git
+	pkgdesc = A string search utility
+	pkgver = 3.1.r5.ge183886
+	pkgrel = 1
+	url = https://www.gnu.org/software/grep/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gettext
+	makedepends = gperf
+	makedepends = gzip
+	makedepends = perl
+	makedepends = rsync
+	makedepends = tar
+	makedepends = texinfo
+	depends = glibc
+	depends = pcre
+	provides = grep
+	conflicts = grep
+	source = git+https://git.savannah.gnu.org/git/grep.git
+	sha256sums = SKIP
+
+pkgname = grep-git
+
