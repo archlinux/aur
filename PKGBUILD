@@ -28,17 +28,15 @@ sha256sums=('54ecf411ca2ee5c5c35a591d8b415e59bb212d1c17c7013165d350359f4ef42b'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6')
 prepare() {
 	cd "$srcdir/${_pkgname}-${_pkgver}-${_version}${_pkgrel}"
-
-  sed -i -e "/exception-reporting/d" \
-         -e "/metrics/d" \
-         package.json
+	sed -i -e "/exception-reporting/d" \
+	-e "/metrics/d" \
+	package.json
 
 	chmod 755 -R package.json
+	sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
+	./script/build
 
-  sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
-  ./script/build
-
-	sed -i -e "s/<%=Desc=%>/${pkgdesc}/g" ${srcdir}/${_pkgname}-${_version}.desktop
+	sed -i -e "s/<%=Desc=%>/${pkgdesc}/g" "${srcdir}/${_pkgname}-${_version}.desktop"
 }
 
 build() {
@@ -57,18 +55,18 @@ package() {
   if [ "${CARCH}" = "i686" ]; then
   _arch=i386
   fi
-  install -dm755 ${pkgdir}/usr/bin
-  install -dm755 ${pkgdir}/usr/share/${_pkgname}-${_version}
-  install -dm755 ${pkgdir}/usr/share/applications
-  install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
-  install -dm755 ${pkgdir}/usr/share/pixmaps
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}-${_version}"
+  install -dm755 "${pkgdir}/usr/share/applications"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/pixmaps"
 
-  cp -r out/${_pkgname}-${_version}-${_ver}-${_arch}/* ${pkgdir}/usr/share/${_pkgname}-${_version}/
-  mv ${pkgdir}/usr/share/${_pkgname}-${_version}/atom.png ${pkgdir}/usr/share/pixmaps/${_pkgname}-${_version}.png
-  mv ${pkgdir}/usr/share/${_pkgname}-${_version}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm644 ${srcdir}/${_pkgname}-${_version}.desktop ${pkgdir}/usr/share/applications/${_pkgname}-${_version}.desktop
-  cp ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/atom.sh ${pkgdir}/usr/bin/atom-beta
-  rm -rf ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app.asar.unpacked/resources
+  cp -r "out/${_pkgname}-${_version}-${_ver}-${_arch}/*" "${pkgdir}/usr/share/${_pkgname}-${_version}/"
+  mv "${pkgdir}/usr/share/${_pkgname}-${_version}/atom.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}-${_version}.png"
+  mv "${pkgdir}/usr/share/${_pkgname}-${_version}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgname}-${_version}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-${_version}.desktop"
+  cp "${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/atom.sh" "${pkgdir}/usr/bin/atom-beta"
+  rm -rf "${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app.asar.unpacked/resources"
   ln -sf "/usr/share/${_pkgname}-${_version}/resources/app/apm/node_modules/.bin/apm" "${pkgdir}/usr/bin/apm-${_version}"
 
   find "${pkgdir}" \
