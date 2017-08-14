@@ -4,14 +4,13 @@
 # From core package
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
-# TODO: How to get rid of the relinking during make install
-
 set -u
 _pkgname='imagemagick'
 pkgbase="${_pkgname}-git"
-_srcdir="${pkgbase}"
+#_srcdir="${pkgbase}"
+_srcdir='ImageMagick'
 pkgname=("${pkgbase}"{,-doc})
-pkgver=7.0.5.9.r11959.g13b8ea1e7
+pkgver=7.0.6.7.r12351.geaada474d
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
 arch=('i686' 'x86_64')
@@ -22,9 +21,12 @@ makedepends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript'
              'opencl-headers' 'ocl-icd' 'libwebp' 'patch' 'git')
 _verwatch=("${url/script/download/}" 'ImageMagick-\([-0-9\.]\+\)\.tar\.bz2' 'l')
 _archlink="@@@::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
-source=("${_srcdir}::git+http://git.imagemagick.org/repos/ImageMagick.git"
-    'libpng_mmx_patch_x86_64.patch'
-    "${_archlink//@@@/perlmagick.rpath.patch}")
+source=(
+  #"${_srcdir}::git+http://git.imagemagick.org/repos/ImageMagick.git"
+  "git+https://github.com/ImageMagick/ImageMagick.git"
+  'libpng_mmx_patch_x86_64.patch'
+  "${_archlink//@@@/perlmagick.rpath.patch}"
+)
 sha256sums=('SKIP'
             '4f3ab23349fd3958a88eb09a7107e08c2c6f3953287907103ec48cfa83575e87'
             '17218bbecc17f3c7a86935a09d5a47e46113a1fc28f7d91c2fe495019cc36088')
