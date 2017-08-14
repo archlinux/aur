@@ -4,7 +4,7 @@
 
 pkgbase=python-ioflo
 pkgname=('python-ioflo' 'python2-ioflo')
-pkgver=1.6.9
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Flo based programming interface in python'
 arch=('any')
@@ -13,7 +13,7 @@ license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools' 'python2-enum34')
 checkdepends=('python-pytest-runner' 'python2-pytest-runner')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ioflo/ioflo/archive/v$pkgver.tar.gz")
-sha512sums=('e359ff07bd1bbeb11ad28f4b200d0454ef5cf3007095d97e8eafa40f5beb36170d952b6371503bfc1b56cd6480c7ab4aa1be313475ee080f7aae1a0d05d6ed06')
+sha512sums=('b7f3ba0511ed5f2cf8031aa11a660ccee8eef0674c8df17ec09ff32268b5c9d34dd2d79956ddf24ab2fcbf4fe8fc7bb5e521f9636f013b7ed6365960b4cabe48')
 
 prepare() {
   cp -a ioflo-$pkgver{,-py2}
