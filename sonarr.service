@@ -3,6 +3,7 @@ Description=Sonarr Service
 After=network.target
 
 [Service]
+Environment=MONO_TLS_PROVIDER=legacy
 User=sonarr
 Group=sonarr
 ExecStart=/usr/bin/sonarr -nobrowser -data=/var/lib/sonarr
