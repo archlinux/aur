@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
 	pkgver = 234.11
-	pkgrel = 4
+	pkgrel = 6
 	url = https://www.github.com/systemd/systemd
 	arch = i686
 	arch = x86_64
@@ -48,7 +48,7 @@ pkgbase = systemd-selinux
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73
-	sha512sums = 691acebb243b9cd7fb63272662f34bdb9aead710c69aee9361ab2322f9f108600ad5b0214fc00b7cb2d9c95db8abd748030625d60d6567efd98663c56ba28c65
+	sha512sums = a70a779828e03c91275df1e046f78bdface08e2a8df0245a3f6e8d5904e3dbbe5d498cbf7f32d5ce61f2fb0d0a3d440d47ce9e41352a5547d80fa1bc29687159
 	sha512sums = a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a
 	sha512sums = 61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648
 	sha512sums = c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5
@@ -90,7 +90,7 @@ pkgname = systemd-selinux
 	provides = nss-myhostname
 	provides = systemd-tools=234.11
 	provides = udev=234.11
-	provides = systemd=234.11-4
+	provides = systemd=234.11-6
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -119,15 +119,15 @@ pkgname = libsystemd-selinux
 	depends = libselinux
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = libsystemd=234.11-4
+	provides = libsystemd=234.11-6
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=234.11-4
-	provides = selinux-systemd-sysvcompat=234.11-4
+	provides = systemd-sysvcompat=234.11-6
+	provides = selinux-systemd-sysvcompat=234.11-6
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
