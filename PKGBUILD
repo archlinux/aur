@@ -27,13 +27,6 @@ _NUMAdisable=y
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
-# Alternative I/O scheduler by Paolo Valente
-# Set this if you want it enabled globally i.e. for all devices in your system
-# If you want it enabled on a device-by-device basis, leave this unset and see:
-# https://wiki.archlinux.org/index.php/Improving_performance#Tuning_IO_schedulers
-
-_BFQ_enable_=
-
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
 # the ARCH defaults. Useful when the package gets updated and you already went
@@ -45,8 +38,8 @@ _use_current=
 
 pkgbase=linux-ck
 _srcname=linux-4.12
-pkgver=4.12.6
-pkgrel=2
+pkgver=4.12.7
+pkgrel=1
 _ckpatchversion=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -70,7 +63,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '60938af0f95ae794f879294f2393c48077c01bdba851e80b085fdc0418eeca44'
+            'fe0a0b7c071978839f4b941d655df93e3c0e60bd3e49237f7e7a8635cb38ff8e'
             'SKIP'
             'c20ca8b06355fd923a6b942d573e74118fd2abbc8a5ea282d994967122a04a2d'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
@@ -105,6 +98,9 @@ prepare() {
   make mrproper
 
   cat "${srcdir}/config.${CARCH}" > ./.config
+
+  # CK's suggestion to fix the stalled boot on some systems
+  sed -i 's/# CONFIG_SCSI_MQ_DEFAULT is not set/CONFIG_SCSI_MQ_DEFAULT=y/' ./.config
 
   ### Optionally disable NUMA for 64-bit kernels only
   # (x86 kernels do not support NUMA)
@@ -142,13 +138,6 @@ prepare() {
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-  fi
-
-  ### Optionally enable BFQ as the default I/O scheduler
-  if [ -n "$_BFQ_enable_" ]; then
-    msg "Setting BFQ as default I/O scheduler..."
-    sed -i -e '/CONFIG_DEFAULT_IOSCHED/ s,cfq,bfq,' \
-      -i -e s'/CONFIG_DEFAULT_CFQ=y/# CONFIG_DEFAULT_CFQ is not set\nCONFIG_DEFAULT_BFQ=y/' ./.config
   fi
 
   # set extraversion to pkgrel
