@@ -1,7 +1,7 @@
 # Maintainer: Albert Mikaelyan <tahvok at gmail dot com>
 
 pkgname=gridcoinresearchd
-pkgver=3.5.9.9
+pkgver=3.6.0.0
 pkgrel=1
 pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC - daemon"
 depends=('boost-libs' 'libzip' 'miniupnpc' 'curl' 'boinc')
@@ -18,7 +18,7 @@ _sourcename="Gridcoin-Research-$pkgver"
 
 source=("gridcoinresearch-${pkgver}.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/${pkgver}.tar.gz")
 
-sha256sums=('369889b106ec8614b9666cf819a8bfb37dbbf5986451dc3256c1986b6e23a9c9')
+sha256sums=('61adac9007479e1dce387a453558de9f44102dba045a69ed60eef9c7cf3013af')
 
 prepare() {
   mkdir -p "$srcdir/$_sourcename/src/obj"
