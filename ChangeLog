@@ -1,3 +1,8 @@
+2017-08-14 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* v0.6.2-2:
+	Remove unneeded `lib32-glibc` dependency
+
 2016-09-02 Fabien Dubosson <fabien.dubosson@gmail.com>
 
 	* v0.6.2-1:
