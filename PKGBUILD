@@ -1,14 +1,14 @@
 # Maintainer: HabarNam <habarnam@gmail.com>
 # Improvements by: hamzadis <adis@hamzadis.com>
-pkgname=orion-git 
-pkgver=r429.beafd26
+pkgname=orion-git
+pkgver=v1.6.1.r23.b2825c2
 pkgrel=1
 pkgdesc="QML/C++-written desktop client for Twitch.tv"
 arch=('x86_64' 'x86')
 url="https://github.com/alamminsalo/orion"
 license=('GPL')
 groups=()
-depends=('qt5-base' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' 'qt5-svg')
+depends=('qt5-base' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-graphicaleffects')
 makedepends=('git' 'qt5-webengine' 'qt5-svg' 'qt5-multimedia')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -27,13 +27,14 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
-# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	qmake CONFIG+=multimedia
+	#qmake CONFIG+=qtav
+	#qmake CONFIG+=mpv
 	make
 }
 
