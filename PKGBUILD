@@ -1,6 +1,6 @@
 # Maintainer: Jesus Alvarez <jeezusjr@gmail.com>
 pkgname=pacnews-neovim
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Find .pacnew files and merge them with neovim diff"
 arch=(any)
