@@ -3,7 +3,7 @@ pkgbase = onedrive-fork-git
 	pkgver = r188.g6cc823c
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/skilion/onedrive
+	url = https://github.com/kingtiger01/onedrive
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = onedrive-fork-git
 	provides = onedrive=r188.g6cc823c
 	provides = onedrive-fork-git
 	conflicts = onedrive
-	source = git+https://github.com/kingtiger01/onedrive.git
+	source = onedrive::git+https://github.com/kingtiger01/onedrive.git
 	sha256sums = SKIP
 
 pkgname = onedrive-fork-git

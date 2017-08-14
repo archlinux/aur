@@ -9,13 +9,13 @@ pkgrel=1
 epoch=1
 pkgdesc='Free OneDrive client written in D. - My fork with merges from other forks.(graceful continuing on upload errors)'
 arch=('i686' 'x86_64')
-url='https://github.com/skilion/onedrive'
+url='https://github.com/kingtiger01/onedrive'
 license=('GPL3')
 depends=('curl' 'gcc-libs' 'glibc' 'sqlite')
 makedepends=('dmd' 'git')
 provides=("onedrive=$pkgver" "$pkgname")
 conflicts=('onedrive')
-source=('git+https://github.com/kingtiger01/onedrive.git')
+source=('onedrive::git+https://github.com/kingtiger01/onedrive.git')
 sha256sums=('SKIP')
 
 pkgver() {
