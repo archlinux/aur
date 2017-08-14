@@ -1,0 +1,33 @@
+From fe0b297420fc1de8a7fab28457d0864b3182e967 Mon Sep 17 00:00:00 2001
+From: Eric Anholt <eric@anholt.net>
+Date: Wed, 15 Mar 2017 17:51:46 -0700
+Subject: glamor: Fix dashed line rendering.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We were binding the screen pixmap as the dash and sampling its alpha,
+which is usually just 1.0 (no dashing at all).
+
+Please cherry-pick this to active stable branches.
+
+Signed-off-by: Eric Anholt <eric@anholt.net>
+Reviewed-by: Keith Packard <keithp@keithp.com>
+Reviewed-by: Michel Dänzer <michel.daenzer@amd.com>
+
+diff --git a/glamor/glamor_dash.c b/glamor/glamor_dash.c
+index 78a4fa3..b53ce5c 100644
+--- a/glamor/glamor_dash.c
++++ b/glamor/glamor_dash.c
+@@ -147,7 +147,7 @@ glamor_dash_setup(DrawablePtr drawable, GCPtr gc)
+         goto bail;
+ 
+     dash_pixmap = glamor_get_dash_pixmap(gc);
+-    dash_priv = glamor_get_pixmap_private(pixmap);
++    dash_priv = glamor_get_pixmap_private(dash_pixmap);
+ 
+     if (!GLAMOR_PIXMAP_PRIV_HAS_FBO(dash_priv))
+         goto bail;
+-- 
+cgit v0.10.2
+
