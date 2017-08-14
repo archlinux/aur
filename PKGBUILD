@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=tsschecker-git
-pkgver=r177.3ec5811
+pkgver=r244.0f19839
 pkgrel=1
 pkgdesc="a powerfull tool to check tss signing status of various [Apple] devices and firmwares"
 arch=(i686 x86_64)
@@ -12,13 +12,34 @@ depends=(libfragmentzip-git libirecovery-git libplist-git curl)
 makedepends=('git')
 provides=(tsschecker)
 conflicts=(tsschecker)
-source=("git://github.com/tihmstar/tsschecker")
-md5sums=('SKIP')
+source=(
+  "git+https://github.com/tihmstar/tsschecker"
+  "git+https://github.com/tihmstar/jssy"
+)
+md5sums=(
+  'SKIP'
+  'SKIP'
+)
+
 
 function pkgver() {
   cd tsschecker
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+function prepare() {
+  cd tsschecker
+
+  local submodules=(
+    'external/jssy'
+  )
+
+  for submodule in "${submodules[@]}"; do
+    git submodule init "$submodule"
+    git config "submodule.$submodule.url" "$srcdir/${submodule##*/}"
+    git submodule update "$submodule"
+  done
 }
 
 build() {
