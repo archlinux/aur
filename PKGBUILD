@@ -58,7 +58,7 @@ _kyber_disable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.12.6
+pkgver=4.12.7
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
 pkgrel=1
@@ -99,7 +99,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '60938af0f95ae794f879294f2393c48077c01bdba851e80b085fdc0418eeca44'
+            'fe0a0b7c071978839f4b941d655df93e3c0e60bd3e49237f7e7a8635cb38ff8e'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
             'b8745ca529c03c1d20473cb45cda3ea25da49a73e522cd834c32b9316b5f9f12'
