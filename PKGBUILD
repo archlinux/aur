@@ -66,14 +66,14 @@ sha512sums=('df22247796b46f270f7525777194e983a12be3c5f719ffc4ed864d6012d2050b813
 prepare() {
     cd ${srcdir}/${_reponame}-${pkgver}
 
-    patch -p1 < "$srcdir/octoprint-deps.patch"
-    patch -p1 < "$srcdir/octoprint-jinja29.patch"
+    patch -p1 < "${srcdir}/octoprint-deps.patch"
+    patch -p1 < "${srcdir}/octoprint-jinja29.patch"
 }
 
 package() {
     cd ${srcdir}/${_reponame}-${pkgver}
 
-    python2 setup.py install --root="$pkgdir/" --optimize=1
+    python2 setup.py install --root="${pkgdir}/" --optimize=1
 
     install -D -m755 ${srcdir}/octoprint.run ${pkgdir}/usr/bin/octoprint
     install -D -m644 ${srcdir}/octoprint.service ${pkgdir}/usr/lib/systemd/system/octoprint.service
