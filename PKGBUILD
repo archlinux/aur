@@ -52,14 +52,14 @@ package() {
   install -Dm755 list_smargo "$pkgdir/usr/bin/list_smargo"
 
   #Install man-pages
-  mkdir -p $pkgdir/usr/share/man/man1/
-  mkdir -p $pkgdir/usr/share/man/man5/
+  mkdir -p "$pkgdir/usr/share/man/man1/"
+  mkdir -p "$pkgdir/usr/share/man/man5/"
   install -Dm644 Distribution/doc/man/*.1 "$pkgdir/usr/share/man/man1"
   install -Dm644 Distribution/doc/man/*.5 "$pkgdir/usr/share/man/man5"
 
   #Install service file
-  install -Dm644 ${srcdir}/oscam.service "$pkgdir/usr/lib/systemd/system/oscam.service"
+  install -Dm644 "${srcdir}/oscam.service" "$pkgdir/usr/lib/systemd/system/oscam.service"
 
   #Install sysuser config
-  install -Dm644 ${srcdir}/oscam.sysuser "$pkgdir/usr/lib/sysusers.d/oscam.conf"
+  install -Dm644 "${srcdir}/oscam.sysuser" "$pkgdir/usr/lib/sysusers.d/oscam.conf"
 }
