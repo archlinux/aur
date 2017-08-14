@@ -9,7 +9,7 @@ pkgbase = otf-hack
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = https://github.com/chrissimpkins/Hack/releases/download/v2.020/Hack-v2_020-otf.tar.xz
+	source = https://github.com/source-foundry/Hack/releases/download/v2.020/Hack-v2_020-otf.tar.xz
 	sha256sums = d35c178915e7a474e0cd69333353db4be9758bf38d61474caa8922e8e5d3ce32
 
 pkgname = otf-hack
