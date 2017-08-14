@@ -12,8 +12,14 @@ command -v smbclient >/dev/null 2>&1 || { echo >&2 "I require smbclient but it's
 command -v lpadmin >/dev/null 2>&1 || { echo >&2 "I require lpadmin but it's not installed.  Aborting."; exit 1; }
 command -v cupsd >/dev/null 2>&1 || { echo >&2 "I require cupsd but it's not installed.  Aborting."; exit 1; }
 
-sudo systemctl enable org.cups.cupsd.service
-sudo systemctl start org.cups.cupsd.service
+if [ -f /etc/os-release ]; then
+	. /etc/os-release
+	ID=$ID
+	if [ "$ID" == "arch" ] 
+		sudo systemctl enable org.cups.cupsd.service
+		sudo systemctl start org.cups.cupsd.service
+	fi
+fi
 
 printf "\n"
 
