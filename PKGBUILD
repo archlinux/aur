@@ -14,12 +14,12 @@ depends=('glibc')
 makedepends=('go' 'git' 'make' 'npm' 'yarn' 'nodejs')
 
 prepare() {
-        GOPATH=${srcdir}
+	export GOPATH=${srcdir}
 	/usr/bin/go get -d github.com/influxdata/${pkgname}
 }
 
 build() {
-	GOPATH=${srcdir}
+	export GOPATH=${srcdir}
 	PATH="$PATH:$GOPATH/bin"
 	/usr/bin/go get -d github.com/influxdata/${pkgname}
 	cd "${GOPATH}"/src/github.com/influxdata/${pkgname}
