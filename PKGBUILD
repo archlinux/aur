@@ -22,9 +22,9 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd openjpeg-$pkgver
   sed -i '/add_subdirectory(thirdparty)/d' CMakeLists.txt
-  patch -p1 -i ${srcdir}/0001-fix-install-for-dlls.all.patch
-  patch -p1 -i ${srcdir}/0003-versioned-dlls.mingw.patch
-  patch -p1 -i ${srcdir}/0005-sock-jpip.all.patch
+  patch -p1 -i "${srcdir}"/0001-fix-install-for-dlls.all.patch
+  patch -p1 -i "${srcdir}"/0003-versioned-dlls.mingw.patch
+  patch -p1 -i "${srcdir}"/0005-sock-jpip.all.patch
 }
 
 build() {
