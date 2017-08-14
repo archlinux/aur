@@ -17,13 +17,13 @@ package() {
 	mkdir -p "$pkgdir/usr"
 	
 	# Provides the init script for those whom need it
-	cp -dr --no-preserve=ownership "$srcdir/4.1.5/etc"		"$pkgdir"
+	cp -dr --no-preserve=ownership "$srcdir/nxfilter/etc"		"$pkgdir"
 
 	# Provides the systemd scripts
-	cp -dr --no-preserve=ownership "$srcdir/4.1.5/lib"	"$pkgdir/usr"
+	cp -dr --no-preserve=ownership "$srcdir/nxfilter/lib"	"$pkgdir/usr"
 
 	# Provides the program itself
-	cp -dr --no-preserve=ownership "$srcdir/4.1.5/nxfilter"	"$pkgdir"
+	cp -dr --no-preserve=ownership "$srcdir/nxfilter/nxfilter"	"$pkgdir"
 
 }
 
