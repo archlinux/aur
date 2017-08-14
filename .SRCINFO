@@ -1,0 +1,21 @@
+pkgbase = ros-kinetic-executive-smach-visualization-smach-viewer
+	pkgdesc = ROS - This metapackage depends on the SMACH visualization tools.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://ros.org/wiki/smach
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-catkin
+	depends = ros-kinetic-smach
+	depends = ros-kinetic-smach-msgs
+	depends = ros-kinetic-smach-ros
+	depends = ros-kinetic-xdot
+	depends = ros-kinetic-executive-smach-visualization-rqt-smach
+	depends = xdot
+	source = git+https://github.com/mcgill-robotics/executive_smach_visualization.git#branch=kinetic-devel
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-executive-smach-visualization-smach-viewer
+
