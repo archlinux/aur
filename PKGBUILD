@@ -12,7 +12,7 @@ makedepends=('libmilter')
 
 install=milter-spamd.install
 
-source=("https://www.benzedrine.ch/${pkgname}-${pkgver}.tar.gz" "milter-spamd.service")
+source=("http://www.benzedrine.ch/${pkgname}-${pkgver}.tar.gz" "milter-spamd.service")
 
 sha256sums=('84acfa4ba3b84927f94b2bea427ac3e52d8079f553792bbf24bf96331235dec9' '8214094704464d6cc15f9365b48f60c79b5c450f25d45c25585f41b308a27827')
 
