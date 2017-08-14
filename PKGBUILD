@@ -1,11 +1,11 @@
-# Maintainer: Markus Tacker <m@cto.hiv>
+# Maintainer: Markus Tacker <m@coderbyheart.com>
 # Contributor: Peter Hoeg <peter@hoeg.com>
 
 _pkgver_major=2
 _pkgver_minor=020
 pkgname=otf-hack
 pkgver=${_pkgver_major}.${_pkgver_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Source Foundry Hack is is hand groomed and optically balanced typeface to be your go-to code face based on the Bitstream Vera Mono font."
 arch=('any')
 license=('SIL Open Font License 1.1 and Bitstream Vera License')
