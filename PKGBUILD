@@ -2,7 +2,7 @@
 # Contributor: Chuan Ji <ji@chu4n.com>
 
 pkgname=jfbview
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="a PDF and image viewer for the Linux framebuffer"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('libmupdf' 'imlib2' 'openjpeg2' 'jbig2dec')
 conflicts=('jfbpdf')
 replaces=('jfbpdf')
 source=("https://github.com/jichu4n/JFBView/archive/${pkgver}.tar.gz")
-sha512sums=('873c4d717e573ea0bd22a9e620ac7e369aeef34fac9a97af2b8ac13a24f291d997a646bc9397c380a280b61875930e1ecc5d4e3240bab4ebf45ac02a3000c486')
+sha512sums=('06f5956a434c86c56a1c05172ef7683248274327639b21075bb1d705d5fa5f73074cd0b138c08c4b89da4305a502521c930605c5858e28b0d1c6cf089ef06b54')
 
 _pkgname='JFBView'
 _binname='jfbview'
