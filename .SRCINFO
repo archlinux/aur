@@ -1,7 +1,7 @@
 pkgbase = nxfilter
 	pkgdesc = NxFilter DNS filter
 	pkgver = 4.1.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://nxfilter.org/p3/
 	install = nxfilter.install
 	arch = i686
