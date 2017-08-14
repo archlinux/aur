@@ -3,7 +3,7 @@
 
 pkgbase=linux-vfio
 _srcname=linux-4.12
-pkgver=4.12.3
+pkgver=4.12.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'i915-vga-arbiter.patch')
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '13ad942e5144acafb849942c320aa6ab887cd2ffbba033c622f7a88eb2c32143'
+            '60938af0f95ae794f879294f2393c48077c01bdba851e80b085fdc0418eeca44'
             'SKIP'
             'df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1'
             'bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586'
