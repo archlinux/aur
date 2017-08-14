@@ -5,7 +5,7 @@ pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/jwilm/alacritty"
 license=('Apache-2.0')
-makedepends=('rust' 'cargo' 'cmake' 'git' 'ncurses')
+makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'freetype2' 'git' 'ncurses')
 source=("$_pkgname::git+https://github.com/jwilm/alacritty.git")
 sha256sums=('SKIP')
 
@@ -17,7 +17,6 @@ pkgver() {
 package_alacritty-git() {
 	pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
 	depends=('freetype2' 'fontconfig' 'xclip')
-	makedepends=('rust' 'cargo' 'cmake' 'git')
 	provides=('alacritty')
 	conflicts=('alacritty')
 
@@ -31,7 +30,6 @@ package_alacritty-git() {
 
 package_alacritty-terminfo-git() {
 	pkgdesc="Terminfo files for the alacritty terminal emulator"
-	makedepends=('ncurses')
 	provides=('alacritty-terminfo')
 	conflicts=('alacritty-terminfo')
 
