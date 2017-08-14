@@ -4,7 +4,7 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash-gtk3-git
-pkgver=2.6.17b.r1411.g0bb51ffa9
+pkgver=2.6.17b.r1524.g723530a9b
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application (GTK3 development version)"
 arch=('i686' 'x86_64')
@@ -32,10 +32,9 @@ build() {
 
   # the line in the boost includes is actually correct.
   # the check fails for a different reason (-D_FORTIFY_SOURCE without -O)
-  sed -i '203s#-Werror ##' configure.ac
+  sed -i '180s#-Werror ##' configure.ac
 
-  autoreconf -fi
-  intltoolize
+  ./autogen.sh
   ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
     --libexecdir=/usr/lib --disable-schemas-compile --enable-ofx --enable-aqbanking \
     --disable-error-on-warning
@@ -46,7 +45,7 @@ build() {
 package() {
   cd "${srcdir}/gnucash"
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
-  cd src/doc/design
+  cd libgnucash/doc/design
   make DESTDIR="${pkgdir}" install-info
 
   install -dm755 "${pkgdir}/usr/share/gconf/schemas"
