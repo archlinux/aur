@@ -14,7 +14,7 @@ post_install() {
 
 pre_upgrade() {
   # the file courier-imapd.conf is renamed to courier-mta.conf for version 0.77.0-2
-  [ "$1" = "0.77.0-2" ] && rm -f /usr/lib/tmpfiles.d/courier-imapd.conf
+  [ -f /usr/lib/tmpfiles.d/courier-imapd.conf ] && rm -f /usr/lib/tmpfiles.d/courier-imapd.conf
 }
 
 post_upgrade() {

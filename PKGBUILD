@@ -8,7 +8,7 @@
 
 pkgname=courier-mta
 pkgver=0.77.0
-pkgrel=2
+pkgrel=3
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -50,7 +50,7 @@ sha1sums=('6a79c331e2b2ac771455d4333947bfbc7d381b57'
           'b5aa73e428d568b20c8d59ef029e1740e8f9ef34')
 
 build() {
-  cd ${srcdir}/courier-${pkgver}
+  cd "${srcdir}/courier-${pkgver}"
 
   LDFLAGS+=",-L /usr/lib/courier-authlib -lcourierauth"
 
@@ -75,21 +75,21 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/courier-${pkgver}
+  cd "${srcdir}/courier-${pkgver}"
 
-  make DESTDIR=${pkgdir} install
+  make "DESTDIR=${pkgdir} install"
 
   # install the perftest-script for testings
-  install -Dm 755 courier/perftest1 ${pkgdir}/usr/lib/courier/perftest1
+  install -Dm 755 courier/perftest1 "${pkgdir}/usr/lib/courier/perftest1"
 
   # install sysconftool to perform the install-configure step after installation
-  install -Dm 755 sysconftool ${pkgdir}/usr/lib/courier/sysconftool
+  install -Dm 755 sysconftool "${pkgdir}/usr/lib/courier/sysconftool"
 
   # install pam files according to the layout used in Arch linux
-  for pamfile in ${pkgdir}/etc/courier/*.authpam; do
-    sed -i 's|/lib/security/pam_pwdb\.so|pam_unix.so|' ${pamfile}
-    install -Dm 644 ${pamfile} ${pkgdir}/etc/pam.d/$(basename ${pamfile} .authpam | sed "s/d$//")
-    rm -f ${pamfile}
+  for _pamfile in "${pkgdir}/etc/courier/*.authpam"; do
+    sed -i 's|/lib/security/pam_pwdb\.so|pam_unix.so|' "${_pamfile}"
+    install -Dm 644 "${_pamfile}" "${pkgdir}"/etc/pam.d/$(basename "${_pamfile}" .authpam | sed "s/d$//")
+    rm -f "${_pamfile}"
   done
 
   # Install systemd service files
@@ -108,7 +108,7 @@ package() {
   install -Dm 644 "${srcdir}/courier-mkdhparams.timer"		"${pkgdir}/usr/lib/systemd/system/courier-mkdhparams.timer"
 
   # pacman gives an error for /var/run file conflict. Circumvent this by removing the directory
-  rm -rf ${pkgdir}/var/run
+  rm -rf "${pkgdir}/var/run"
 
   # Install systemd configuration file which will set up empty /run/courier directory (and clean up after uninstall)
 
@@ -116,9 +116,9 @@ package() {
 
   # create password file for webadmin -> standard archwebadmin
 
-  echo archwebadmin > ${pkgdir}/etc/courier/webadmin/password
-  chown courier:courier ${pkgdir}/etc/courier/webadmin/password
-  chmod 400 ${pkgdir}/etc/courier/webadmin/password
+  echo archwebadmin > "${pkgdir}/etc/courier/webadmin/password"
+  chown courier:courier "${pkgdir}/etc/courier/webadmin/password"
+  chmod 400 "${pkgdir}/etc/courier/webadmin/password"
 
   # install the imapd binary as /usr/lib/courier/courierimapd and modify usr/share scripts.
   # courier-mta by default installs usr/bin/imapd as the binary, usr/share/imapd as script file and usr/sbin/imapd as link to /usr/share/imapd
