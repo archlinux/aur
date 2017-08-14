@@ -11,6 +11,8 @@ pkgbase = wpgtk-git
 	depends = gtk3
 	depends = libxslt
 	depends = python-pywal
+	optdepends = feh: set wallpaper
+	optdepends = nitrogen: set wallpaper
 	provides = wpgtk
 	conflicts = wpgtk
 	source = git://github.com/deviantfero/wpgtk#branch=master

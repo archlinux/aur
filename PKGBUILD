@@ -13,7 +13,8 @@ source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}")
 sha512sums=('SKIP')
 arch=('any')
 depends=('python' 'python-pillow' 'python-gobject' 'gtk3' 'libxslt' 'python-pywal')
-optdepends=()
+optdepends=('feh: set wallpaper'
+            'nitrogen: set wallpaper')
 conflicts=("${_gitname}")
 provides=("${_gitname}")
 
