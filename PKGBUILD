@@ -1,12 +1,12 @@
 # Contributor: vantu5z <vantu5z@mail.ru>
 pkgname=rhvoice-dictionary-git
-pkgver=r821.20170712
+pkgver=r843.20170813
 pkgrel=1
 pkgdesc="Русский словарь для RHVoice"
 arch=('i686' 'x86_64')
 url="https://github.com/vantu5z/RHVoice-dictionary"
 license=('GPL3')
-depends=('rhvoice')
+depends=('rhvoice-git')
 makedepends=('git')
 
 source=($pkgname::git+https://github.com/vantu5z/RHVoice-dictionary.git)

@@ -1,13 +1,13 @@
 pkgbase = rhvoice-dictionary-git
 	pkgdesc = Русский словарь для RHVoice
-	pkgver = r821.20170712
+	pkgver = r843.20170813
 	pkgrel = 1
 	url = https://github.com/vantu5z/RHVoice-dictionary
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = rhvoice
+	depends = rhvoice-git
 	source = rhvoice-dictionary-git::git+https://github.com/vantu5z/RHVoice-dictionary.git
 	sha256sums = SKIP
 
