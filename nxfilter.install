@@ -9,7 +9,6 @@ post_upgrade() {
 	chmod 755 /nxfilter/bin/*.sh
 	/nxfilter/post_upgrade.sh
 	chmod 644 /nxfilter/post_upgrade.sh
-	find $HOME/.cache -name "nxfilter.zip" -type f -exec rm "{}" \;
 }
 
 post_remove() {

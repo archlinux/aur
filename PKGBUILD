@@ -1,7 +1,7 @@
 # Maintainer: Erwin
 pkgname=nxfilter
 pkgver=4.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="NxFilter DNS filter"
 arch=('i686' 'x86_64')
 url=http://nxfilter.org/p3/
@@ -24,6 +24,9 @@ package() {
 
 	# Provides the program itself
 	cp -dr --no-preserve=ownership "$srcdir/nxfilter/nxfilter"	"$pkgdir"
+
+	# remove zip file
+	find $srcdir -name "nxfilter.zip" -type f -exec rm "{}" \;
 
 }
 
