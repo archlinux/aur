@@ -10,7 +10,7 @@ license=('MIT')
 depends=('cups' 'samba' 'smbclient' 'bash') 
 makedepends=('git' 'coreutils')
 optdepends=('gtk3-print-backends:	to print from GTK3 applications')
-source=("git://github.com/djsavvy/harvard-linux-printer#branch=aur-package")
+source=("git://github.com/djsavvy/harvard-linux-printer")
 md5sums=('SKIP')
 
 pkgver() {

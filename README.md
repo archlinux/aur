@@ -6,6 +6,13 @@ Harvard University IT does not currently offer Linux users any way to connect to
 
 ## Instructions
 
+### Arch Linux
+
+This package is available in the [Arch User Repository](https://aur.archlinux.org/) as [harvard-linux-printer](https://aur.archlinux.org/packages/harvard-linux-printer/).
+
+
+### Other Distributions
+
 **Note:** *Do not run this script on an insecure Wi-Fi network (like Harvard Guest or Harvard University).*
 
 Download `harvard-linux-printer.sh` to some directory. 
