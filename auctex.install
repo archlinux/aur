@@ -1,6 +1,3 @@
-infodir=/usr/share/info
-filelist=(auctex.info.gz preview-latex.info.gz)
-
 post_install() {
 cat << EOF
 ==> For GNU Emacs, the recommended way to activate 
@@ -9,4 +6,5 @@ cat << EOF
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
 EOF
+The file /var/auctex/.nosearch was removed from this package.
 }
