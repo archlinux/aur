@@ -140,8 +140,20 @@ build() {
     -Dsysvrcnd-path=
   )
 
-  arch-meson "${pkgbase/-selinux}-stable" build "${meson_options[@]}"
+  # meson needs a UTF-8 locale. Otherwise it displays the following error message:
+  #   WARNING: You are using 'ANSI_X3.4-1968' which is not a a Unicode-compatible locale.
+  #   WARNING: You might see errors if you use UTF-8 strings as filenames, as strings, or as file contents.
+  #   WARNING: Please switch to a UTF-8 locale for your platform.
+  # c.f. https://github.com/mesonbuild/meson/blob/0.42.0/meson.py#L21
+  if ! (echo "$LANG" | grep -i '\.utf-\?8' > /dev/null) ; then
+    export LANG="$(locale -a | grep -i '\.utf-\?8' | head -n1)"
+    if [ -z "$LANG" ] ; then
+      echo >&2 "Unable to find a UTF-8 locale on the system"
+      return 1
+    fi
+  fi
 
+  arch-meson "${pkgbase/-selinux}-stable" build "${meson_options[@]}"
   ninja -C build
 }
 
