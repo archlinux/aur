@@ -9,10 +9,10 @@ depends=('glibc' 'dkms')
 optdepends=('linux-headers: Needed for build the module for Arch kernel'
 	'linux-lts-headers: Needed for build the module for LTS Arch kernel'
 	'linux-zen-headers: Needed for build the module for ZEN Arch kernel')
-source=(https://raw.githubusercontent.com/angelsl/linux/aad33b89d5735a156512f5d1052ade7cbd070fce/drivers/platform/x86/ideapad-laptop.c
+source=(https://raw.githubusercontent.com/angelsl/linux/db129e471a7184188a0b898fa3f79ac5be82a5b8/drivers/platform/x86/ideapad-laptop.c
         Kbuild
         dkms.conf)
-sha256sums=('26b1de6f4e9d7e72fd0f6fc2cf286eefb497cf3bc4ce94e83f99d91e1b815196'
+sha256sums=('fa496f0b39afdaf42ea119c250055f1e81d2fd8857aae1daa01372e27d5bc3f3'
             'fac0c89fb000f8d1474c61202a60135389f3ebee6d434c21460cf19f9f149fa2'
             '43e57b38be0e304a81290041cfb3466c779053d0085e8eaa0b20f3c2cb528048')
 
