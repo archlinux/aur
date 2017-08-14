@@ -27,5 +27,5 @@ pkgver() {
 package() {
 	mkdir -p "$pkgdir/usr/src/$_pkgname-$_pkgver"
 	cd "$srcdir/$_pkgname"
-	cp -r dkms.conf Kconfig Makefile.dkms Makefile platform core hal include os_dep "$pkgdir/usr/src/$_pkgname-$_pkgver"
+	cp -r dkms.conf Kconfig Makefile platform core hal include os_dep "$pkgdir/usr/src/$_pkgname-$_pkgver"
 }
