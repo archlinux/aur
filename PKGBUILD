@@ -97,7 +97,7 @@ license=('custom')
 depends=('bash')
 depends_i686=('alsa-lib' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'libice' 'libsm' 'libxdamage' 'libxrandr' 'libxtst' 'pcre' 'zlib' 'libxinerama' 'libpng12' 'qt4')
 # From Debian: 'libjpeg6-turbo' 'expat' 'libxau' 'libxdmcp' 'libxcb'      'libx11' 'libxfixes' 'libxext' 'libxrender' 'libxi' 'libxtst' 'util-linux'
-depends_i686+=('libjpeg6-turbo' 'expat' 'libxau' 'libxdmcp' 'libxcb' 'libx11' 'libxfixes' 'libxext' 'libxrender' 'libxi' 'libxtst')
+depends_i686+=('libjpeg6-turbo' 'expat' 'libxau' 'libxdmcp' 'libxcb' 'libx11' 'libxfixes' 'libxext' 'libxrender' 'libxi' 'libxtst' 'qtwebkit')
 depends_x86_64=("${depends_i686[@]/#/lib32-}")
 provides=("teamviewer=${_pkgver_major}")
 conflicts=('teamviewer')
