@@ -7,22 +7,22 @@ post_install() {
 	getent passwd netflow &>/dev/null || useradd -r -u 44 -g netflow -d /var/lib/nfsen -s /bin/false -G netflow http >/dev/null
 	usr/bin/systemd-tmpfiles --create nfsen.conf || true
         
-        note "To complete the installation, run:"
-        note "    cd /usr/share/webapps/nfsen"
-        note "    su -c "./install.pl /etc/nfsen/nfsen.conf""
-        note ""
-        note "For more information on installation and configuration, see:"
-        note "    /usr/share/doc/nfsen/README.pkg and others"
-        note ""
+        note 'To complete the installation, run:'
+        note '    cd /usr/share/webapps/nfsen'
+        note '    su -c "./install.pl /etc/nfsen/nfsen.conf"'
+        note ''
+        note 'For more information on installation and configuration, see:'
+        note '    /usr/share/doc/nfsen/README.pkg and others'
+        note ''
 }
 
 post_upgrade() {
-        note ""
-        note "To complete the update, run:"
-        note "    cd /usr/share/webapps/nfsen"
-        note "    su -c "./install.pl /etc/nfsen/nfsen.conf""
-        note ""
-        note "For more information on installation and configuration, see:"
-        note "    /usr/share/doc/nfsen/README.pkg and others"
-        note ""
+        note ''
+        note 'To complete the update, run:'
+        note '    cd /usr/share/webapps/nfsen'
+        note '    su -c "./install.pl /etc/nfsen/nfsen.conf"'
+        note ''
+        note 'For more information on installation and configuration, see:'
+        note '    /usr/share/doc/nfsen/README.pkg and others'
+        note ''
 }
