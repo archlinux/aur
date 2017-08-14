@@ -37,7 +37,7 @@ sed -i "$(rplcsum ${_pkgnames[*]})" PKGBUILD
 rm -rfv src/ United-Arch/ United-*.tar.gz
 
 namcap PKGBUILD && makepkg --printsrcinfo > .SRCINFO || exit 1
-git add . || exit 1 # PKGBUILD prepare4uploadpkg.sh .SRCINFO
+git add . || exit 1
 git commit -am "New revision commit" || exit 1
 git push --set-upstream origin master || exit 1
 
