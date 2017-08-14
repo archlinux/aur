@@ -1,0 +1,17 @@
+pkgbase = ros-kinetic-xdot
+	pkgdesc = ROS - xdot
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://ros.org/wiki/smach
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-catkin
+	depends = wxpython
+	depends = graphviz
+	source = git+https://github.com/matt3o/xdot.git#branch=kinetic-devel
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-xdot
+
