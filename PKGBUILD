@@ -2,7 +2,7 @@
 
 pkgname=nfsen
 pkgver=1.3.8
-pkgrel=15
+pkgrel=16
 pkgdesc="Netflow visualisation and investigation tool"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/nfsen"
@@ -40,8 +40,8 @@ package() {
 	install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$pkgname/ChangeLog" 
 	install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README" 
 	install -Dm644 README.plugins "$pkgdir/usr/share/doc/$pkgname/README.plugins" 
-	install -Dm644 "$srcdir/nfsen.conf" "$pkgdir/etc/nfesn/nfsen.conf"
-	install -Dm644 "$srcdir/ports.desc" "$pkgdir/etc/nfesn/ports.desc"
+	install -Dm644 "$srcdir/nfsen.conf" "$pkgdir/etc/nfsen/nfsen.conf"
+	install -Dm644 "$srcdir/ports.desc" "$pkgdir/etc/nfsen/ports.desc"
 	install -Dm644 "$srcdir/nginx" "$pkgdir/usr/share/doc/$pkgname/vhost-nginx.conf"
 	install -Dm755 "$srcdir/profile.sh" "$pkgdir/etc/profile.d/nfsen.sh"
 }
