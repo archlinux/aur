@@ -12,7 +12,11 @@
 # Use tentative patches from https://groups.google.com/forum/#!forum/bfq-iosched
 _use_tentative_patches=
 
-# Running with a 1000 HZ tick rate 
+### Use mailing-list patches; many thanks to Lucjan "sir_lucjan" Lucjanov
+# ML1 - [PATCH V2 00/20] blk-mq-sched: improve SCSI-MQ performance: http://marc.info/?l=linux-block&m=150191624318513&w=2
+_use_ml_patches=
+
+# Running with a 1000 HZ tick rate
 _1k_HZ_ticks=
 
 ### Enable fancontrol for DELL
@@ -64,27 +68,78 @@ pkgbase=linux-bfq-mq-git
 _pkgver=4.13-rc3
 _srcname=bfq-mq
 pkgver=4.13rc3.27af2752129c
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
+
+_bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
+_mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
-source=('git+https://github.com/Algodev-github/bfq-mq'
-        # patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
-        "0001-Check-presence-on-tree-of-every-entity-after-every-a.patch::${_bfqgroup}/6646a2679ff98/0001-Check-presence-on-tree-of-every-entity-after-every-a.patch?part=0.1&authuser=0&view=1"
+source=(# bfq-mq repository
+        'git+https://github.com/Algodev-github/bfq-mq'
+        # tentative patches
+        "${_bfqpath}/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch"
+        # mailing-list (ML1) patches
+        "${_mlpath_1}/ML1-0001-blk-mq-sched-fix-scheduler-bad-performance.patch"
+        "${_mlpath_1}/ML1-0002-sbitmap-introduce-__sbitmap_for_each_set.patch"
+        "${_mlpath_1}/ML1-0003-blk-mq-introduce-blk_mq_dispatch_rq_from_ctx.patch"
+        "${_mlpath_1}/ML1-0004-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
+        "${_mlpath_1}/ML1-0005-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
+        "${_mlpath_1}/ML1-0006-blk-mq-sched-don-t-dequeue-request-until-all-in-disp.patch"
+        "${_mlpath_1}/ML1-0007-blk-mq-sched-introduce-blk_mq_sched_queue_depth.patch"
+        "${_mlpath_1}/ML1-0008-blk-mq-sched-use-q-queue_depth-as-hint-for-q-nr_requ.patch"
+        "${_mlpath_1}/ML1-0009-blk-mq-introduce-BLK_MQ_F_SHARED_DEPTH.patch"
+        "${_mlpath_1}/ML1-0010-blk-mq-sched-introduce-helpers-for-query-change-busy.patch"
+        "${_mlpath_1}/ML1-0011-blk-mq-introduce-helpers-for-operating-dispatch-list.patch"
+        "${_mlpath_1}/ML1-0012-blk-mq-introduce-pointers-to-dispatch-lock-list.patch"
+        "${_mlpath_1}/ML1-0013-blk-mq-pass-request_queue-to-several-helpers-of-oper.patch"
+        "${_mlpath_1}/ML1-0014-blk-mq-sched-improve-IO-scheduling-on-SCSI-devcie.patch"
+        "${_mlpath_1}/ML1-0015-block-introduce-rqhash-helpers.patch"
+        "${_mlpath_1}/ML1-0016-block-move-actual-bio-merge-code-into-__elv_merge.patch"
+        "${_mlpath_1}/ML1-0017-block-add-check-on-elevator-for-supporting-bio-merge.patch"
+        "${_mlpath_1}/ML1-0018-block-introduce-.last_merge-and-.hash-to-blk_mq_ctx.patch"
+        "${_mlpath_1}/ML1-0019-blk-mq-sched-refactor-blk_mq_sched_try_merge.patch"
+        "${_mlpath_1}/ML1-0020-blk-mq-improve-bio-merge-from-blk-mq-sw-queue.patch"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset')
-sha256sums=('SKIP'
+sha256sums=(# bfq-mq repository
+            'SKIP'
+            # tentative patches
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
+            # mailing-list (ML1) patches
+            '65e96b9922da50fafbb20e1f466fac00fa467fba032f9cee40e87f4f352623c5'
+            '2065492541ffa62d7cf88b11428dc47de2089645f9bb3030dbb46bb496726960'
+            '1a120273880249ca9e04aef713e2f2dbd96e020cf2e2ab6b6750524afee68d26'
+            'f7faa4d3246b220d79ad2f17ecf5872ac4b7ee6c7b20e967a53ac7fec22a73e1'
+            'ea250a90e9c654bd28f84f7d2441eebe255aa0df338691451097403390902dbc'
+            'a9eba2301546ddce09b758c8680064f724aec1c1f5b3f537e8386441186c4908'
+            'e7c330bdf9348f6b9b91a7450bbf86b08b4090b63004c9d0ae2517cebba36f10'
+            '7a2bf65e7929bfd0d9d330b45f5f0a65749a2063e8e40e8bfebebbf9a295c95d'
+            '7e33f1ac2e4e455a204352b1ce57982b78644b1d201d6a8390165e81e900d90e'
+            'e1e3603c08134bbea1268fc013179cc8bbccae6c8a5bc14c5a6c6ef9fd8d33bb'
+            '084d1d69bfa199659ca05ec41dc0767e8a0bd0fc9a211cd5cd3b32b267c3f4db'
+            '07d2bd9e0f9f4e8daabf98361479148b82224d5bf85981fdc86efbe66c7fc050'
+            '050a3bc2c418440cb07d59af04a158cdc738f1995f9fbf55435cacc5b327cdc1'
+            '0dac1e1b66af0ce386fccd637088a23548b663d235e0d177f1e463d156062d1f'
+            '712d1325ddda8645e7bf2dd3c25464b71bbe936776cde0b796c804d04d6db2c4'
+            '67e5d9d1cef1e24bb33fff731ddba09d696c8f24fa7a9831ed4cf54ed6401f1e'
+            '038288b840ea24f70ba2114a0e7c27597855b102ddaa9b806e78fb9edef60bdc'
+            '29d9e8140d36e637cf8c4ccaafc80a163bfd15a9db24259d4c6c6b7c7241243f'
+            'd729b76f056e022876d78d2a6b50e2287c2c7b44712ab959ecf2a1075e1ad533'
+            'acb932dca6cff9ea0f678161eb96e3bf90ce8db2bc7d3a2fac44e9ad585a94dc'
+            # the main kernel config files
             'baff5c7eb82c1e10d05a9575d95004da7855f7f69de3af30f780b31ead3dfe9d'
             'bb799d15e72c379fb25a76e060f907444351336bfd9eeaf46168f991cea6d7ec'
+            # pacman hook for initramfs regeneration
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            # standard config files for mkinitcpio ramdisk
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 _kernelname=${pkgbase#linux}
@@ -105,12 +160,21 @@ prepare() {
     for p in "${srcdir}"/0001*.patch*; do patch -Np1 -i "$p"; done
   fi
 
+  ### Patches from mailing-list
+  # ML1 - [PATCH V2 00/20] blk-mq-sched: improve SCSI-MQ performance: http://marc.info/?l=linux-block&m=150191624318513&w=2
+  if [ -n "$_use_ml_patches" ]; then
+    msg "Apply mailing-list patches"
+    for p in "${srcdir}"/ML*.patch; do
+      msg " $p"
+    patch -Np1 -i "$p"; done
+  fi
+
   # Clean tree and copy ARCH config over
   make mrproper
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
-  ### Optionally set tickrate to 1000 
+  ### Optionally set tickrate to 1000
   if [ -n "$_1k_HZ_ticks" ]; then
     msg "Setting tick rate to 1k..."
     sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
@@ -298,7 +362,7 @@ _package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 
   # add System.map
   install -D -m644 System.map "${pkgdir}/boot/System.map-${_kernver}"
