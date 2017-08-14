@@ -1,5 +1,5 @@
 post_upgrade() {
-	EXTRAMODULES='extramodules-4.11-ARCH'
+	EXTRAMODULES='extramodules-4.12-ARCH'
 	depmod -a $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
 
