@@ -1,7 +1,7 @@
 pkgbase = opennebula
 	pkgdesc = Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)
 	pkgver = 5.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://docs.opennebula.org/stable
 	install = opennebula.install
 	changelog = ChangeLog
@@ -25,9 +25,12 @@ pkgbase = opennebula
 	depends = nfs-utils
 	depends = cdrkit
 	depends = log4cpp
+	depends = python2
 	depends = mariadb
 	depends = libmariadbclient
+	optdepends = nfs-utils: for using the shared file system storage model
 	optdepends = ruby-sequel: required when upgrading the database
+	optdepends = ruby-sqlite3: required when upgrading the database
 	conflicts = opennebula-unstable
 	backup = etc/one/oned.conf
 	backup = etc/one/sunstone-server.conf
@@ -98,7 +101,7 @@ pkgbase = opennebula
 	sha512sums = cee672a3fb9bffdac836a9aa00c898a38303144be44521363ad8e5109aebaa00e31fc0ae921e3a71a87e734fc614f6b3350009d5ec899bc5d78e6fe6d6c8fc01
 	sha512sums = 18b1964cb4e3fc2eaa93a7ef79e4b9b185584d33ad4f7fa33cd33a74516334136d9cf0ee25921c189250420b751c753cb0142227e8de39e14f8d110e97cd8e30
 	sha512sums = ad649b9671d55280485000f2f74beb676065dda7596d0dbc879a3323495b8e0384454692e2d380a055dc72d5056b2020826d056e163d64b85762ad84438e2509
-	sha512sums = 75f83115a23959777e5763fbe5287304eca2adda4c91e719c9f4fbede6e40cd2122b2b9ecbdb6bd69827eb1949823e9a1894180054c66d0ab294d73d0bc45b4d
+	sha512sums = 235d47ab6b7342db65b73533fab8084484cb95914604ffc68a419a13b41540b5e7983f46808f9b9cfc90bfeb69dfb1dfd8be61167791246e1631e93296a6ac7e
 
 pkgname = opennebula
 

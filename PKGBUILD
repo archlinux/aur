@@ -8,7 +8,7 @@
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
 pkgver=5.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
 url='http://docs.opennebula.org/stable'
@@ -25,6 +25,7 @@ depends=('ruby'
          'nfs-utils'
          'cdrkit'
          'log4cpp'
+         'python2' #needed for novnc
          'mariadb'
          'libmariadbclient')
 makedepends=('xmlrpc-c'
