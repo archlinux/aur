@@ -3,7 +3,7 @@
 # Contributor (Parabola): Luke Shumaker <lukeshu@sbcglobal.net>
 
 pkgname=linux-libre-firmware
-_pkgver=4.11-gnu
+_pkgver=4.13-gnu
 
 _srcname=linux-${_pkgver%-*}
 pkgver=${_pkgver//-/_}
@@ -30,7 +30,7 @@ conflicts=('linux-firmware'
            'amd-ucode')
 source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz.sign")
-sha512sums=('f1d9138024b127385248de5c8eb72123b717bbbaba3e80bded20f073acac816a7ea979c4677ddc72252a8ec77c6a6c1d1738b1c20106f7d53ef39c9cf64c1853'
+sha512sums=('9ad6866c68f29f7e4f8b53d0b857f9b3c7f6abd0054460675c76f3100db34a77c2777d7f4191831008b532cb2ab6f686d8c4f457a4d005226c73f90937963518'
             'SKIP')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
