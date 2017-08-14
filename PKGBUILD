@@ -30,7 +30,6 @@ makedepends=('git'
 provides=('subliminal-git' 'subliminal' 'subliminal-git-doc')
 conflicts=('subliminal' 'subliminal-git')
 replaces=('subliminal' 'subliminal-git')
-pkgdesc="Python library and CLI tool for searching and downloading subtitles. (python3 version)"
 source=("${_gitname}::git+${_gitroot}.git#branch=develop"
         'sphinx-manpages.patch')
 md5sums=('SKIP'

@@ -1,5 +1,5 @@
 pkgbase = subliminal-develop-git
-	pkgdesc = Python library and CLI tool for searching and downloading subtitles. (python3 version)
+	pkgdesc = Python library and CLI tool for searching and downloading subtitles (develop branch).
 	pkgver = 2.0.5.r39.g2c34541
 	pkgrel = 1
 	url = https://github.com/Diaoul/subliminal
