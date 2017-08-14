@@ -16,8 +16,8 @@
 #
 pkgbase="zfs-linux-zen"
 pkgname=("zfs-linux-zen" "zfs-linux-zen-headers")
-pkgver=0.7.1_4.12.5.1
-pkgrel=1
+pkgver=0.7.1.4.12.5.1
+pkgrel=2
 makedepends=("linux-zen-headers=4.12.5-1" "spl-linux-zen-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
