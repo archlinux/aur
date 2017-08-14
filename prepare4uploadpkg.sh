@@ -17,7 +17,7 @@ rplcsum() {
 }
 
 rplcrev() {
-	echo "s/^_revision=.*/_revision=$(( ${1}+1 ))/"
+	echo "s/^_myrevision=.*/_myrevision=$(( ${1}+1 ))/"
 }
 
 declare -a _pkgnames=('United-Antergos-Compact.tar.gz'
@@ -28,7 +28,7 @@ declare -a _pkgnames=('United-Antergos-Compact.tar.gz'
 	'United-Manjaro.tar.gz'
 )
 
-sed -i "$(rplcrev $(grep "^_revision=" PKGBUILD | cut -d= -f2))" PKGBUILD
+sed -i "$(rplcrev $(grep "^_myrevision=" PKGBUILD | cut -d= -f2))" PKGBUILD
 
 makepkg --nobuild --skipinteg
 
