@@ -1,0 +1,23 @@
+pkgbase = onedrive-fork-git
+	pkgdesc = Free OneDrive client written in D. - My fork with merges from other forks.(graceful continuing on upload errors)
+	pkgver = r188.g6cc823c
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/skilion/onedrive
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = dmd
+	makedepends = git
+	depends = curl
+	depends = gcc-libs
+	depends = glibc
+	depends = sqlite
+	provides = onedrive=r188.g6cc823c
+	provides = onedrive-fork-git
+	conflicts = onedrive
+	source = git+https://github.com/kingtiger01/onedrive.git
+	sha256sums = SKIP
+
+pkgname = onedrive-fork-git
+
