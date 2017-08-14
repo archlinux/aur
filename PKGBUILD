@@ -5,8 +5,8 @@
 # Contributor: Artem Sereda <overmind88 at gmail dot com>
 
 pkgname="flacon"
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="Extracts individual tracks from one big audio file containing the \
  entire album of music and saves them as separate audio files."
 arch=('i686' 'x86_64')
@@ -26,14 +26,14 @@ optdepends=('flac: For FLAC support'
 conflicts=('flacon-git')
 provides=("${pkgname}")
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5349fdc29c6cb173e7d40260e7ea4ba13ae39f4a144c22028fbfa132ceef5bb3')
+sha256sums=('ca5bd24ba61fc06a39e95b4b7fda188af437ad3eff666b55071895bde11bd15a')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	mkdir build
-	
-	cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    mkdir build
+
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
@@ -41,8 +41,7 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}/build"
     install -d ${pkgdir}/usr/share/licenses/${pkgname}
     install -m 644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-	make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install
 }
-
 
 # vim:set ts=4 sw=2 ft=sh et:
