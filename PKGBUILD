@@ -1,7 +1,7 @@
 # Maintainer: Maxime Vincent <maxime.vince@gmail.com>
 
 pkgname=wolfssl
-pkgver=3.10.2
+pkgver=3.12.0
 pkgrel=2
 pkgdesc='A small, fast, portable implementation of TLS/SSL for embedded devices to the cloud. (formerly CyaSSL) '
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ license=(GPL)
 depends=('bash')
 url='https://www.wolfssl.com/'
 source=(https://github.com/wolfSSL/wolfssl/archive/v$pkgver-stable.tar.gz)
-sha256sums=('2107635718d25f1aafbeb8b07513ed5feda9afc42de7ce0f2508ce17f2a06b9e')
+sha256sums=('5045f6dc4221a8cf4fa993d020dda0886be4028d0e2cefbf9713b58f6eb0e635')
 
 build() {
   cd $pkgname-$pkgver-stable
