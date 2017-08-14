@@ -5,6 +5,7 @@ pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/jwilm/alacritty"
 license=('Apache-2.0')
+makedepends=('rust' 'cargo' 'cmake' 'git' 'ncurses')
 source=("$_pkgname::git+https://github.com/jwilm/alacritty.git")
 sha256sums=('SKIP')
 
