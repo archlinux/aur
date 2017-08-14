@@ -2,7 +2,7 @@
 
 pkgname=nfsen
 pkgver=1.3.8
-pkgrel=18
+pkgrel=20
 pkgdesc="Netflow visualisation and investigation tool"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/nfsen"
@@ -54,6 +54,7 @@ package() {
 	install -Dm755 "$srcdir/create_top_protocols" "$pkgdir/opt/$pkgname/bin/create_top_protocols"
 }
 
+
 md5sums=('fc45b3f44a66c2ed65d1269e479c2414'
          '7ce142a55af2e18d5db8e419dcc85d3d'
          '106f4e354e42d44e64d24d7e16ca8b4a'
@@ -61,7 +62,7 @@ md5sums=('fc45b3f44a66c2ed65d1269e479c2414'
          'e8ffd8c767aca866050d679b609a0db9'
          '69d219f123963071f89f3d55cda489d9'
          'ad1b4a004dacd0508033fcfca763a2fe'
-         '22b95f9cb8f2cf3aa340d2c468a0fafd'
+         '19e7acd1c98f32009de6541f4e5e39f9'
          'ba000ec98e02b4baec2afd9aa5f52854'
          '69898397995d35b1d53d6a61b16b24a8'
          'd60d7334fb00e85ea3230f059ae660aa')

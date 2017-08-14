@@ -2,14 +2,24 @@
 # README.pkg
 #
 
+#
+# INSTALL:
+#
 To complete the installation, run:
     cd /usr/share/webapps/nfsen
     su -c "./install.pl /etc/nfsen/nfsen.conf"
 
+#
+# UPDATES:
+#
 If you edited /etc/nfsen.conf you also need to run:
     cd /usr/share/webapps/nfsen
     su -c "./install.pl /etc/nfsen/nfsen.conf"
 
+
+#
+# WEB:
+#
 If you want to use the nginx to access the web, run:
     sudo pacman -S nginx php-fpm
     Edit /etc/php/php.ini:
@@ -22,11 +32,27 @@ If you want to use the nginx to access the web, run:
 If you are using a web server Apache you know what to do :)
 
 
+#
+# PROFILES:
+#
 To build a profile by protocols, run:
     sudo create_top_protocols --consumers 8 --divide-up-down --profile-name top_8_protocols
 
 To build a profile in the directions, run:
     sudo create_top_directions --consumers 10 --divide-up-down --profile-name top_10_directions
-    WARNING!!! - Required file /etc/nfsen/asnum.desc
+WARNING!!! - Required file /etc/nfsen/asnum.desc
+It should look something like this:
+    cat /etc/nfsen/asnum.desc
+42140	DISPLAY-AS
+42141	GERMES-TELECOM-AS
+42142	ANPM
+42144	NTIK-AS
+42145	BSTV-AS
+42146	UNICA-BRANCH
+42147	GISADTELEKOM
+42148	BEIREL-AS
 
-# End:
+
+#
+# End README.pkg:
+
