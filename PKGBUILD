@@ -1,6 +1,6 @@
 # Contributor: Marek Kubica <marek@xivilization.net>
 pkgname=homeshick-git
-pkgver=r374.8f752a5
+pkgver=1.0.0.r35.g23cb8a7
 pkgrel=1
 pkgdesc="bash stand-in for homesick by technicalpickles"
 arch=(any)
@@ -20,13 +20,14 @@ pkgver() {
 
 build() {
   # patch the location of the library scripts
-  sed -i 's|homeshick="\$repos/homeshick"|homeshick=/usr/lib/homeshick|' \
+  sed -i 's|\$homeshick/lib|\$homeshick/lib/homeshick/lib|' \
     "$srcdir"/$pkgname/bin/homeshick
-  # patch the location of the binary
-  sed -i 's|\$HOME/.homesick/repos/homeshick/bin/homeshick|/usr/bin/homeshick|' \
+  # patch the location of the homeshick installation
+  sed -i 's|\$HOME/.homesick/repos/homeshick|/usr|' \
     "$srcdir"/$pkgname/bin/homeshick.csh \
     "$srcdir"/$pkgname/homeshick.sh \
-    "$srcdir"/$pkgname/homeshick.fish
+    "$srcdir"/$pkgname/homeshick.fish \
+    "$srcdir"/$pkgname/bin/homeshick
 }
 
 package() {
