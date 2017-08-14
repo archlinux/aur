@@ -1,0 +1,28 @@
+pkgbase = libglvnd-git
+	pkgdesc = The GL Vendor-Neutral Dispatch library
+	pkgver = 0.2.999.r538.3ed1275
+	pkgrel = 1
+	url = https://github.com/NVIDIA/libglvnd
+	arch = i686
+	arch = x86_64
+	license = custom:BSD-like
+	makedepends = libxext
+	makedepends = libx11
+	makedepends = glproto
+	makedepends = git
+	makedepends = python
+	provides = libgl
+	provides = libegl
+	provides = libgles
+	provides = libglvnd=0.2.999.r538.3ed1275
+	conflicts = libglvnd
+	source = git+https://github.com/NVIDIA/libglvnd.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 1a99f7487849c41fc3520e0af3dfcf28a0df05e78956d9ec58c2c52b1f20a77d
+
+pkgname = libglvnd-git
+	depends = libxext
+	depends = mesa
+	depends = opengl-driver
+
