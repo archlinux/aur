@@ -4,7 +4,7 @@
 
 pkgname=batman-adv
 pkgver=2017.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='batman kernel module'
 arch=('i686' 'x86_64' 'armv7h')
@@ -23,8 +23,6 @@ sha256sums=('d487974e21cb53d39f139e93a2cf297807df5b7bf63ba6d810bad6d91537394f'
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  sed -i -e 's/export CONFIG_BATMAN_ADV_MCAST=y/export CONFIG_BATMAN_ADV_MCAST=n/g' Makefile
 }
 
 build() {
