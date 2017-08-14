@@ -37,7 +37,7 @@ prepare() {
 
   for submodule in "${submodules[@]}"; do
     git submodule init "${submodule}"
-    git config "submodule.${submodule}.url" "${srcdir}/${module}"
+    git config "submodule.${submodule}.url" "${srcdir}/${submodule}"
     git submodule update "${submodule}"
   done
 }
