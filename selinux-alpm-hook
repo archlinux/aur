@@ -22,12 +22,13 @@ fi
 echo 'Relabeling package files...'
 while read -r FILE; do
     if [ -e "$FILE" ] || [ -L "$FILE" ] ; then
-        /usr/bin/restorecon -F "$FILE" || die "Error while relabeling $FILE"
+        # Transmit existing files to restorecon
+        printf '%s\0' "$FILE"
     else
         # Only show a warning when a file does not exist as this is not fatal
-        echo "Ugh, an installed file does not exist: $FILE"
+        echo >&2 "Ugh, an installed file does not exist: $FILE"
     fi
-done
+done | xargs -0 /usr/bin/restorecon -F || die "Error while relabeling files"
 
 # The install hooks of packages create files which got labelled with the wrong SELinux user
 # (e.g. sysadm_u instead of system_u). Relabel all these files too.
