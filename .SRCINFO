@@ -13,7 +13,7 @@ pkgbase = jfbview
 	conflicts = jfbpdf
 	replaces = jfbpdf
 	source = https://github.com/jichu4n/JFBView/archive/0.5.4.tar.gz
-	sha512sums = 06f5956a434c86c56a1c05172ef7683248274327639b21075bb1d705d5fa5f73074cd0b138c08c4b89da4305a502521c930605c5858e28b0d1c6cf089ef06b54
+	sha512sums = 1b0220084227aca2f92e85a27b67f7b9849231a43cf86d361c463301cf486cbc23a83dc85135469bb29c46540766e15d8fc3b46f109d522dbf45bd55d2eec224
 
 pkgname = jfbview
 
