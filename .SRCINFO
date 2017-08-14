@@ -1,6 +1,6 @@
 pkgbase = ums-headless
 	pkgdesc = Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems. Build based on Java 8.
-	pkgver = 6.7.2
+	pkgver = 6.7.3
 	pkgrel = 1
 	url = http://www.universalmediaserver.com/
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = ums-headless
 	conflicts = ums
 	backup = opt/ums/UMS.conf
 	backup = opt/ums/WEB.conf
-	source = http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-6.7.2.tgz
+	source = http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-6.7.3.tgz
 	source = ums.desktop
 	source = ums.service
-	sha256sums = cadfd435915e3ef5c506bbbd81c49ec5811522ebc405779974f013ee94f3adcb
+	sha256sums = 2365f1457c276649f5b08204873480a305083012c987be043a3bd2779f16cfc3
 	sha256sums = 0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9
 	sha256sums = 6444b0ad9a61c1f7d450d79497bbdd80d5b6d2da893550cd7260e6e233c8d886
 
