@@ -5,7 +5,7 @@
 _pkgname=firefox
 _channel=nightly
 _lang=zh-TW
-_pkgver=55.0a1
+_pkgver=57.0a1
 
 pkgname=${_pkgname}-${_channel}-${_lang/TW/tw}
 pkgver=55.0a1.20170407100252
