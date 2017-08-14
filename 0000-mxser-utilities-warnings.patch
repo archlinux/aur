@@ -1,0 +1,31 @@
+diff -pNaru5 src.old/mxser/utility/conf/conftool.c src/mxser/utility/conf/conftool.c
+--- src.old/mxser/utility/conf/conftool.c	2014-03-03 03:51:38.000000000 -0500
++++ src/mxser/utility/conf/conftool.c	2017-07-24 21:12:54.873703708 -0400
+@@ -27,10 +27,11 @@
+ #include	<stdio.h>
+ #include        <string.h>
+ #include        <fcntl.h>
+ #include	<getopt.h>
+ #include	<unistd.h>
++#include <stropts.h>
+ #include	<errno.h>
+ #include	"cpld_param.h"
+ #include 	<termios.h>
+ #include 	<linux/version.h>
+ #define VERSION_CODE(ver,rel,seq)   ((ver << 16) | (rel << 8) | seq)
+diff -pNaru5 src.old/mxser/utility/diag/diag.c src/mxser/utility/diag/diag.c
+--- src.old/mxser/utility/diag/diag.c	2014-02-26 04:06:52.000000000 -0500
++++ src/mxser/utility/diag/diag.c	2017-07-24 21:13:07.857036801 -0400
+@@ -17,10 +17,12 @@
+ /*     8/5/99   Casper                                                       */
+ /*     3/9/2001 Casper     add Industio                                      */
+ /*****************************************************************************/
+ 
+ #include <stdio.h>
++#include <unistd.h>
++#include <stropts.h>
+ #include <fcntl.h>
+ #include <errno.h>
+ 
+ char DIAG_VER[] = "1.4";
+ #include "../global.h"

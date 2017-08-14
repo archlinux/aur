@@ -1,0 +1,29 @@
+diff -pNaru5 src.old/mxser/driver/mxpcie.h src/mxser/driver/mxpcie.h
+--- src.old/mxser/driver/mxpcie.h	2014-02-25 21:53:56.000000000 -0500
++++ src/mxser/driver/mxpcie.h	2017-08-07 01:46:47.231457643 -0400
+@@ -360,7 +360,11 @@
+ 
+ #ifndef UCHAR
+ typedef unsigned char	UCHAR;
+ #endif
+ 
++#ifndef IRQF_DISABLED
++#define IRQF_DISABLED (0)
++#endif
++
+ 
+ #endif
+diff -pNaru5 src.old/mxser/driver/mxser.h src/mxser/driver/mxser.h
+--- src.old/mxser/driver/mxser.h	2014-02-25 08:06:30.000000000 -0500
++++ src/mxser/driver/mxser.h	2017-08-07 01:46:53.814505694 -0400
+@@ -513,7 +513,10 @@
+ 
+ #ifndef UCHAR
+ typedef unsigned char	UCHAR;
+ #endif
+ 
++#ifndef IRQF_DISABLED
++#define IRQF_DISABLED (0)
++#endif
+ 
+ #endif
