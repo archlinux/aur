@@ -20,7 +20,7 @@ options=('!emptydirs' '!ccache')
 install='foo2zjs.install'
 
 pkgver() {
-	local date=$(wget -qO- 'http://foo2zjs.rkkda.com' | sed -nre 's|.*Tarball last modified: <i>(.+)</i>.*|\1|p')
+	local date=$(curl -s 'http://foo2zjs.rkkda.com' | sed -nre 's|.*Tarball last modified: <i>(.+)</i>.*|\1|p') # '
 	if ! [[ "$date" ]]; then
 		error "Could not extract package last modification date '$date', please report this to the maintainer"
 		return 1
