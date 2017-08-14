@@ -10,6 +10,8 @@ pkgbase = python2-goobook
 	depends = python2-gdata
 	depends = python2-simplejson
 	depends = python2-keyring
+	depends = python2-httplib2
+	depends = python2-oauth2client>1.4.11
 	source = https://pypi.python.org/packages/source/g/goobook/goobook-1.9.tar.gz
 	md5sums = 41f2246336ea713591e7d912d9d05193
 
