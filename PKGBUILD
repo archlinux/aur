@@ -4,7 +4,7 @@ pkgbase=python-identify
 pkgname=('python-identify' 'python2-identify')
 pkgname=python-identify
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="File identification library for Python."
 arch=(any)
 url="https://github.com/chriskuehl/identify"
@@ -21,6 +21,7 @@ package_python2-identify() {
   cd "${srcdir}/identify-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 
+  mv "${pkgdir}/usr/bin/identify-cli" "${pkgdir}/usr/bin/identify-cli2"
   install -v -m755 -d "${pkgdir}/usr/share/doc/python2-identify"
   install -v -m644 README.md "${pkgdir}/usr/share/doc/python2-identify/"
 }
