@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.4.1
-pkgrel=7
+pkgrel=8
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
@@ -40,5 +40,5 @@ package() {
 		install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
 	done
 }
-sha256sums=('5b73f98004c302fb8e4a172abf046d9ce77739a82487e4873b39f9b0dcbb0d72'
+sha256sums=('de21f3c49ba65c611329d8759a63d72e5fcf719bc6f2a3270e2541348ef1fbba'
             '2b00d8e0ad2a67152a9cee7b7ee67990c742d501412df912baaf1eee9bb6dc71')
