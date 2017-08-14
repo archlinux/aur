@@ -1,6 +1,6 @@
 # Maintainer: M0Rf30
 pkgname=xplico
-pkgver=v1.1.2.r133.gfb70f26
+pkgver=v1.2.0.r5.g1ed30f3
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="Internet Traffic Decoder. Network Forensic Analysis Tool (NFAT)"
