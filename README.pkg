@@ -1,0 +1,32 @@
+#
+# README.pkg
+#
+
+To complete the installation, run:
+    cd /usr/share/webapps/nfsen
+    su -c "./install.pl /etc/nfsen/nfsen.conf"
+
+If you edited /etc/nfsen.conf you also need to run:
+    cd /usr/share/webapps/nfsen
+    su -c "./install.pl /etc/nfsen/nfsen.conf"
+
+If you want to use the nginx to access the web, run:
+    sudo pacman -S nginx php-fpm
+    Edit /etc/php/php.ini:
+    Remove comment from ";extension=sockets.so" string
+    Set up virtualhost in nginx
+    An example of the setting for nginx is in the file /usr/share/doc/nfsen/vhost-nginx.conf
+    And run:
+    sudo systemctl start nginx php-fpm
+
+If you are using a web server Apache you know what to do :)
+
+
+To build a profile by protocols, run:
+    sudo create_top_protocols --consumers 8 --divide-up-down --profile-name top_8_protocols
+
+To build a profile in the directions, run:
+    sudo create_top_directions --consumers 10 --divide-up-down --profile-name top_10_directions
+    WARNING!!! - Required file /etc/nfsen/asnum.desc
+
+# End:
