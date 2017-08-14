@@ -5,13 +5,14 @@
 
 pkgname=pristine-tar
 pkgver=1.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to regenerate a pristine upstream tarball using only a small binary delta file and a copy of the source which can be a revision control checkout."
 arch=('i686' 'x86_64')
 url="https://packages.debian.org/sid/pristine-tar"
 license=('GPL')
 depends=('perl' 'xdelta' 'xdelta3')
 conflicts=('pristine-tar-git')
+checkdepends=('shunit2' 'diffoscope')
 source=(http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.tar.xz)
 sha256sums=('03e45374f908bf7821a9244f9555d68257070865585574bc5b4cf9d4d39b4e54')
 
@@ -22,6 +23,13 @@ build() {
 
   perl Makefile.PL
   make
+}
+
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  make test
 }
 
 package() {
