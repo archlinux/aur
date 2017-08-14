@@ -1,0 +1,305 @@
+#!/bin/bash
+
+#
+# NOTE:
+#
+# The script is taken from the link on the website http://vasexperts.ru
+# Edited by 4le34n
+#
+
+#
+# Load configuration
+.   /etc/nfsen/scripts.conf
+
+#
+# Subroutines
+#   $1 - line
+perform_action ()
+{
+    if [ $write_script = "y" ]
+    then
+        if [ "x$script_file" = "x" ]
+        then
+            echo $1;
+        else
+            echo $1 >> $script_file;
+        fi;
+
+    else
+        eval $1;
+    fi;
+}
+
+#
+# Set default options
+self=$0
+show_usage="n"
+consumers=10;
+divide_up_down="n"
+exclude_others_ports="n"
+begin_coll_date=`date +%F-00-00`;
+end_coll_date="";
+profile_name=""
+shadow=1;
+ports_desc="/etc/nfsen/ports.desc"
+write_script="n"
+script_file=""
+
+#
+# Process command line 
+while [ "$#" != "0" ]
+do
+    case "$1" in
+        "-h" | "--help")
+            show_usage="y";
+            break;
+        ;;
+
+        "-c" | "--consumers")
+            shift;
+
+            if [ "$#" = "0" ]
+            then
+                echo "The number of consumers is missed."
+                show_usage="y";
+                break;
+            fi;
+
+            consumers=$1;
+        ;;
+
+        "-b" | "--begin-collecting")
+            shift;
+
+            if [ "$#" = "0" ]
+            then
+                echo "The date is missed."
+                show_usage="y";
+                break;
+            fi;
+
+            begin_coll_date=$1;
+        ;;
+
+        "-e" | "--end-collecting")
+            shift;
+
+            if [ "$#" = "0" ]
+            then
+                echo "The date is missed."
+                show_usage="y";
+                break;
+            fi;
+
+            end_coll_date=$1;
+        ;;
+
+        "-d" | "--divide-up-down")
+            divide_up_down="y";
+        ;;
+
+        "-x" | "--exclude-others-flows")
+            exclude_others_ports="y";
+        ;;
+
+        "-n" | "--profile-name")
+            shift;
+
+            if [ "$#" = "0" ]
+            then
+                echo "The profile name is missed."
+                show_usage="y";
+                break;
+            fi;
+
+            profile_name=$1;
+        ;;
+
+        "-m" | "--non-shadow-profile")
+            shadow=0;
+        ;;
+
+        "-p" | "--ports-description")
+            shift;
+
+            if [ "$#" = "0" ]
+            then
+                echo "The file name is missed."
+                show_usage="y";
+                break;
+            fi;
+
+            ports_desc=$1;
+        ;;
+
+        "-s" | "--script")
+            write_script="y";
+
+            if [ "$#" != "1" ]
+            then
+                shift;
+                script_file=$1;
+                echo "#!/bin/bash" >  $script_file;
+                echo "#"          >> $script_file;
+                chmod ugo+x $script_file;
+            fi;
+        ;;
+
+        *)
+            echo "Unknown option \"$1\"";
+            show_usage="y";
+            break;
+        ;;
+    esac;
+
+    shift;
+done;
+
+#
+# Show usage
+if [ "$show_usage" = "y" ]
+then
+cat << USAGE_EOF
+Usage: $self [OPTIONS]...
+  Options:
+    -h, --help                                  print this help, then exit
+    -c, --consumers N                           specify number of top consumers,
+                                                N must be less or equal to $MAX_CONSUMERS,
+                                                default $MAX_CONSUMERS
+    -b, --begin-collecting YYYY-MM-DD-HH-MI     specify begin collecting date,
+                                                default last midnight
+    -e, --end-collecting YYYY-MM-DD-HH-MI       specify end collecting date,
+                                                default unspecified (continuous)
+    -d, --divide-up-down                        divide uplaod and download flows
+                                                characteristics, default flows
+                                                characteristics are aggregated
+    -x, --exclude-others-flows                  exclude others flows from profile
+    -n, --profile-name NAME                     define profile name, by default
+                                                the profile name is constructed
+                                                from the others options
+                                                and look like
+                                                    "top_<N>_protocols_[up_down]",
+                                                    where:
+                                                        N       - number of top consumers
+                                                                  which is defined
+                                                                  by -c option
+                                                        up_down - suffix which is added
+                                                                  when -d option
+                                                                  is specified
+    -m, --non-shadow-profile                    create non-shadow profile
+    -p, --ports-description FILE                define ports description file,
+                                                default ./ports.desc
+    -s, --script [FILE]                         write script file instead of
+                                                creation profile, if FILE is omitted,
+                                                STDOUT will been used
+
+  Examples:
+    $self
+    $self --consumers 5 --divide-up-down --profile-name top_5_protocols
+
+USAGE_EOF
+exit 0
+fi;
+
+#
+# Define profile name
+if [ "x$profile_name" = "x" ]
+then
+    if [ "$divide_up_down" = "y" ]
+    then
+        profile_name="top_${consumers}_protocols_up_down";
+    else
+        profile_name="top_${consumers}_protocols";
+    fi;
+fi;
+
+#
+# Create profile
+if [ "x$end_coll_date" = "x" ]
+then
+    perform_action "$NFSEN --add-profile $profile_name tstart=$begin_coll_date shadow=$shadow"
+else
+    perform_action "$NFSEN --add-profile $profile_name tstart=$begin_coll_date tend=$end_coll_date shadow=$$shadow"
+fi;
+
+#
+# Analyze netflows and generate profile's chanells
+consumers_plus_1=`expr $consumers + 1 2>/dev/null`;
+
+if [ $? != 0 ]
+then
+    echo "Invalid number of consumers is specified: \"$consumers\"";
+    exit 1;
+fi;
+
+if [ $consumers -lt 1 -o $consumers -gt $MAX_CONSUMERS ]
+then
+    echo "Invalid number of consumers is specified: \"$consumers\", value must be in range [1 .. $MAX_CONSUMERS]";
+    exit 1;
+fi;
+
+all_ports="0";
+channel_number=1;
+
+for port in `$NFDUMP -R $VARDIR/profiles-data/live/protocols -n $consumers_plus_1 -s port/bytes -o csv | grep any | $HEAD -$consumers_plus_1 | $CUT -d , -f 5`
+do
+    if [ $channel_number -gt $consumers ]
+    then
+        break;
+    fi;
+
+    if [ $port -eq 0 ]
+    then
+        continue;
+    fi;
+
+    all_ports="$all_ports $port";
+
+    desc=`$GREP "^$port;" $ports_desc | $CUT -d \; -f 2`;
+
+    if [ "x$desc" = "x" ]
+    then
+        desc="port_$port";
+    fi;
+
+    colour_name=`echo COLOUR_1_$channel_number`;
+    main_colour=`eval echo "$"$colour_name`;
+
+    colour_name=`echo COLOUR_2_$channel_number`;
+    supl_colour=`eval echo "$"$colour_name`;
+
+    if [ "$divide_up_down" = "y" ]
+    then
+        perform_action "$NFSEN --add-channel $profile_name/${desc}_down order=$channel_number sign=+ colour=$main_colour sourcelist=protocols filter=\"src port $port\""
+        perform_action "$NFSEN --add-channel $profile_name/${desc}_up order=$channel_number sign=- colour=$supl_colour sourcelist=protocols filter=\"dst port $port\""
+    else
+        perform_action "$NFSEN --add-channel $profile_name/$desc order=$channel_number sign=+ colour=$main_colour sourcelist=protocols filter=\"port $port\""
+    fi;
+
+    channel_number=`expr $channel_number + 1`;
+done;
+
+#
+# Add others ports
+if [ "$exclude_others_ports" != "y" ]
+then
+    colour_name=`echo COLOUR_1_$channel_number`;
+    main_colour=`eval echo "$"$colour_name`;
+
+    colour_name=`echo COLOUR_2_$channel_number`;
+    supl_colour=`eval echo "$"$colour_name`;
+
+    if [ "$divide_up_down" = "y" ]
+    then
+        perform_action "$NFSEN --add-channel $profile_name/others_down order=$channel_number sign=+ colour=$main_colour sourcelist=protocols filter=\"not src port in [ $all_ports ]\""
+        perform_action "$NFSEN --add-channel $profile_name/others_up   order=$channel_number sign=- colour=$supl_colour sourcelist=protocols filter=\"not dst port in [ $all_ports ]\""
+    else
+        perform_action "$NFSEN --add-channel $profile_name/others order=$channel_number sign=+ colour=$main_colour sourcelist=protocols filter=\"not port in [ $all_ports ]\""
+    fi;
+fi;
+
+#
+# Commit changes
+perform_action "$NFSEN --commit-profile $profile_name"
+
+exit 0;
