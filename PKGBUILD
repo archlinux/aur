@@ -11,7 +11,7 @@ license=('GPL')
 optdepends=('ssmtp' 'python-matplotlib')
 source=("https://github.com/gavinlyonsrepo/raspberrypi_tempmon/archive/$pkgver.tar.gz")
 
-md5sums=('7e41ee0d5a6beaad3ac2a5ddd5a6ec26')
+md5sums=('0b2b1e0f7e06d4e4aacb27255cf6a951')
 package() {
     cd "$srcdir/raspberrypi_tempmon-${pkgver}"
     install -D -m755 src/rpi_tempmon.sh "$pkgdir"/usr/bin/"${pkgname}" 
