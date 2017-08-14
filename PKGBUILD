@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
          'libx264.so' 'libx265.so' 'libxvidcore.so'
          'libfdk-aac')
-makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
+makedepends=('ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
