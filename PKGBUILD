@@ -1,4 +1,4 @@
-# Maintainer: Wang Jiajun <amesists AT gmail DOT com>
+# Maintainer: Wang Jiajun <amesists ATgmail DOT com>
 pkgname=python2-goobook
 _pkgname=goobook
 pkgver=1.9
@@ -7,7 +7,7 @@ pkgdesc="Search your google contacts from the command-line or mutt."
 url="https://gitlab.com/goobook/goobook"
 arch=('any')
 license=('GPLv3')
-depends=('python2' 'python2-gdata' 'python2-simplejson' 'python2-keyring' 'python2-httplib2' 'python2-oauth2client')
+depends=('python2' 'python2-gdata' 'python2-simplejson' 'python2-keyring' 'python2-httplib2' 'python2-oauth2client>1.4.11')
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/g/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('41f2246336ea713591e7d912d9d05193')
