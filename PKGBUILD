@@ -3,7 +3,7 @@
 
 pkgname=inkscape-092-git
 pkgver=20170813.18109
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, from git branch 0.92.x"
 url="https://gitlab.com/inkscape/inkscape"
 arch=('i686' 'x86_64')
@@ -58,5 +58,5 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname/build"
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
