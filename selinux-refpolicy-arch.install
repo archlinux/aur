@@ -1,5 +1,20 @@
 post_install() {
-  echo ">>> Loading refpolicy-arch. Please wait ..."
+  # Configure /etc/selinux/config
+  if [ -e /etc/selinux/config ]
+  then
+    echo ">>> In order to use this policy, set SELINUXTYPE=refpolicy-arch in /etc/selinux/config."
+  else
+    /usr/bin/ln -v -s config.refpolicy-arch /etc/selinux/config
+  fi
+
+  # In release 20170805, apm module has been renamed to acpi. This causes a
+  # conflict when rebuilding the policy
+  if /usr/bin/semodule -s refpolicy-arch -l 2>/dev/null | /usr/bin/grep -q '^apm$'
+  then
+    semodule --noreload -s refpolicy-arch -r apm
+  fi
+
+  echo ">>> Building refpolicy-arch policy store. Please wait..."
   /usr/bin/semodule -s refpolicy-arch -i /usr/share/selinux/refpolicy-arch/*.pp
   echo ">>> Relabeling the filesystem may be needed."
   echo ">>> This can be done with: /usr/bin/restorecon -rF /"
@@ -11,5 +26,11 @@ post_upgrade() {
 
 post_remove() {
   echo ">>> Removing refpolicy left-over files."
-  /bin/rm -rf /etc/selinux/refpolicy-arch
+  /usr/bin/rm -rf /etc/selinux/refpolicy-arch
+
+  if [ -L /etc/selinux/config ] && ! [ -e /etc/selinux/config ]
+  then
+    echo ">>> Removing now-broken symbolic link /etc/selinux/config"
+    /usr/bin/rm /etc/selinux/config
+  fi
 }
