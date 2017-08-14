@@ -9,11 +9,11 @@ post_install() {
         
         note "To complete the installation, run:"
         note "    cd /usr/share/webapps/nfsen"
-        note "    su -c "./install.pl /etc/nfsen.conf""
+        note "    su -c "./install.pl /etc/nfsen/nfsen.conf""
         note ""
         note "If you edited /etc/nfsen.conf you also need to run:"
         note "    cd /usr/share/webapps/nfsen"
-        note "    su -c "./install.pl /etc/nfsen.conf""
+        note "    su -c "./install.pl /etc/nfsen/nfsen.conf""
         note ""
         note "If you want to use the nginx to access the web, run:"
         note "    sudo pacman -S nginx php-fpm"
@@ -31,5 +31,5 @@ post_install() {
 post_upgrade() {
         note "To complete the update, run:"
         note "    cd /usr/share/webapps/nfsen"
-        note "    su -c "./install.pl /etc/nfsen.conf""
+        note "    su -c "./install.pl /etc/nfsen/nfsen.conf""
 }
