@@ -1,7 +1,7 @@
 pkgname=devrantron
 _pkgname=devrantron
-pkgver=1.2.2
-pkgrel=1
+pkgver=1.3.1
+pkgrel=2
 pkgdesc='DevRant client written in NodeJS'
 arch=('x86_64')
 url='https://github.com/tahnik/devrantron'
