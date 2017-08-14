@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Mindomo
+Comment=Mindomo Desktop
+Exec=mindomo
+Terminal=false
+Type=Application
+Icon=Mindomo
