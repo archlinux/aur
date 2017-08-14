@@ -1,21 +1,22 @@
 # Maintainer: NexAdn
 pkgname=obs-linuxbrowser
-pkgver=0.2.0
+pkgver=0.3.0
+_obsver=20.0.1
 pkgrel=1
 pkgdesc="Browser source plugin for obs-studio based on CEF. Alternative to obs-qtwebkit."
 arch=("x86_64")
 url="https://github.com/bazukas/obs-linuxbrowser"
 license=("GPL")
 depends=(
-	"obs-studio>=18.0.1"
+	"obs-studio>=${_obsver}"
 	"gconf" "nss" "libxss" "pango" "atk" "libxrandr" "libxcomposite"
 )
 optdepends=("pepper-flash: Flash support")
 source=(
-    "https://github.com/bazukas/${pkgname}/releases/download/${pkgver}/linuxbrowser${pkgver}-obs18.0.1-64bit.tgz"
+    "https://github.com/bazukas/${pkgname}/releases/download/${pkgver}/linuxbrowser${pkgver}-obs20.0.1-64bit.tgz"
 )
 sha256sums=(
-    "45a2f2ded502b753c20aa4ac00bf9fcfdf91c6b1065231a67edd45c455bfb914"
+    "d455b4e36f8b4ec7c12ac255a0fc0bedf3572a5c74754a14f26150e5c95edff9"
 )
 package() {
     cd ${srcdir}/${pkgname}
