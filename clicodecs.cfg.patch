@@ -1,0 +1,17 @@
+--- clicodecs.cfg.orig	2017-08-15 18:22:51.058028918 +0200
++++ clicodecs.cfg	2017-08-15 18:55:48.622136729 +0200
+@@ -1,8 +1,10 @@
+ flac, flac -d -s -o %o %i
+-mpc, mppdec --silent %i %o
++mpc, mpcdec %i %o
+ mp4, faad -o %o %i
+ ape, mac %i %o -d
+ ogg, oggdec -b 16 -o %o %i
+-mp3, madplay -o wave:%o %i
++mp3, lame -S --decode %i %o
+ m4a, faad -o %o %i
+-wv, wvunpack -q %i %o
+\ Pas de fin de ligne à la fin du fichier
++wv, wvunpack -q %i %o
++aac, faad -o %o %i
++opus, opusdec --quiet %i %o

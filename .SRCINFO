@@ -1,0 +1,26 @@
+pkgbase = abchr
+	pkgdesc = Tool to do ABC/HR or ABX blind tests on audio files
+	pkgver = 0.5b
+	pkgrel = 1
+	url = http://www.rarewares.org/others.php#java-abc-hr
+	arch = any
+	license = LGPL
+	depends = bash
+	depends = java-runtime>=6
+	optdepends = faad2: AAC (MP4, M4A) decoding support
+	optdepends = flac: FLAC decoding support
+	optdepends = lame: MP3 decoding support
+	optdepends = mac: Monkeys Audio (APE) decoding support
+	optdepends = musepack-tools: Musepack (MPC) decoding support
+	optdepends = opus-tools: Opus decoding support
+	optdepends = vorbis-tools: Vorbis (OGG) decoding support
+	optdepends = wavpack: WavPack (WV) decoding support
+	source = http://www.rarewares.org/files/others/abchr-java-0.5b.zip
+	source = abchr
+	source = clicodecs.cfg.patch
+	sha512sums = 322b3ba473dd39ed3c75a82d932ba67f8d651492e7a2adb2ea8d106372e79ac4b002452e06da56fa36ebfd5282d7bd2986d8f5bf079695bbfb2992011aaea889
+	sha512sums = 4cc54936858fd30728431443f4eea6698dc87eee03a53077d4cf784abe471fd6e78f573770bd77c3d20bd248656aa3579e7c43de4003c9380a9f9fd45f4404c7
+	sha512sums = b1ec7600fc23ebb54ef2aec20065bde9c6ff66a70d1dabdb04c56e2cba6fae5cce0cf451d9cd37bcccc9212a60766424b0e8a21b9fe25d998033aacde771afb3
+
+pkgname = abchr
+
