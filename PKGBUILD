@@ -7,8 +7,8 @@
 # SELinux Contributor: Zezadas
 
 pkgname=shadow-selinux
-pkgver=4.4
-pkgrel=3
+pkgver=4.5
+pkgrel=2
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('i686' 'x86_64')
 url='https://github.com/shadow-maint/shadow'
@@ -38,8 +38,7 @@ source=("git+https://github.com/shadow-maint/shadow.git#tag=$pkgver"
         shadow.{timer,service}
         useradd.defaults
         xstrdup.patch
-        shadow-strncpy-usage.patch
-        lastlog.tmpfiles)
+        shadow-strncpy-usage.patch)
 sha1sums=('SKIP'
           '33a6cf1e44a1410e5c9726c89e5de68b78f5f922'
           '4ad0e059406a305c8640ed30d93c2a1f62c2f4ad'
@@ -52,8 +51,7 @@ sha1sums=('SKIP'
           '7372dfd8a3030bee4ec39c79bad4f9b9c6f8687a'
           '9ae93de5987dd0ae428f0cc1a5a5a5cd53583f19'
           '6010fffeed1fc6673ad9875492e1193b1a847b53'
-          '21e12966a6befb25ec123b403cd9b5c492fe5b16'
-          'f57ecde3f72b4738fad75c097d19cf46a412350f')
+          '21e12966a6befb25ec123b403cd9b5c492fe5b16')
 
 pkgver() {
   cd "${pkgname/-selinux}"
@@ -67,9 +65,6 @@ prepare() {
   # need to offer these upstream
   patch -Np1 <"$srcdir/xstrdup.patch"
   patch -Np1 <"$srcdir/shadow-strncpy-usage.patch"
-
-  # Fix regression in useradd not loading defaults properly.
-  git cherry-pick -n '507f96cdeb54079fb636c7ce21e371f7a16a520e'
 
   autoreconf -v -f --install
 
@@ -128,9 +123,6 @@ package() {
       useradd usermod userdel; do
     install -Dm644 "$srcdir/defaults.pam" "$pkgdir/etc/pam.d/$file"
   done
-
-  # lastlog log file creation
-  install -Dm644 "$srcdir/lastlog.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/lastlog.conf"
 
   # Remove evil/broken tools
   rm "$pkgdir"/usr/sbin/logoutd
