@@ -1,6 +1,6 @@
 pkgbase = pinegrow
 	pkgdesc = A website development tool for building responsive websites
-	pkgver = 3.04
+	pkgver = 3.06
 	pkgrel = 1
 	url = https://pinegrow.com
 	install = pinegrow.install
@@ -8,7 +8,7 @@ pkgbase = pinegrow
 	license = custom
 	noextract = Pinegrow_EULA.pdf
 	options = !strip
-	source = http://download.pinegrow.com/PinegrowLinux64.3.04.zip
+	source = http://download.pinegrow.com/PinegrowLinux64.3.06.zip
 	source = https://pinegrow.com/Pinegrow_EULA.pdf
 	sha1sums = 31f64bbc344023ec37419896982a9f90dca5cdd2
 	sha1sums = a69404f2d55d4c8dd8d47c54dbadad9e08573e6c

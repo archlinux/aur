@@ -1,7 +1,7 @@
 # Maintainer <tianyu at vt dot edu>
 
 pkgname=pinegrow
-pkgver=3.04
+pkgver=3.06
 pkgrel=1
 pkgdesc='A website development tool for building responsive websites'
 arch=('x86_64')
