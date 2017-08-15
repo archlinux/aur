@@ -1,0 +1,21 @@
+pkgbase = openlte
+	pkgdesc = An open source 3GPP LTE implementation.
+	pkgver = v00_20_05
+	pkgrel = 1
+	url = http://openlte.sourceforge.net
+	install = openlte.install
+	arch = any
+	license = GPL
+	license = AGPL
+	depends = gnuradio
+	depends = gnuradio-osmosdr
+	depends = libuhd
+	depends = bladerf
+	depends = mbedtls
+	source = https://sourceforge.net/projects/openlte/files/openlte_v00-20-05.tgz
+	source = openlte.patch
+	sha512sums = SKIP
+	sha512sums = 8238256add59aad3ec2752a9afa231036e8eb5f54ada3c13f42044ea84af96cecc9ec8bbb7b795d2f8dc7e6deb53df3efa0c1b335bad6f7e7e543b71f0731619
+
+pkgname = openlte
+

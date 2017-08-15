@@ -1,0 +1,215 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1526670..48e7880 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -94,7 +94,7 @@ find_package(GnuradioOsmosdr)
+ find_package(Uhd)
+ find_package(LibbladeRF)
+ find_package(FFTW3F)
+-find_package(Polarssl)
++find_package(MbedTLS)
+ 
+ if(NOT GNURADIO_RUNTIME_FOUND)
+     message(FATAL_ERROR "GNURadio required to compile openLTE")
+diff --git a/LTE_fdd_enodeb/CMakeLists.txt b/LTE_fdd_enodeb/CMakeLists.txt
+index 176bac2..ac71479 100755
+--- a/LTE_fdd_enodeb/CMakeLists.txt
++++ b/LTE_fdd_enodeb/CMakeLists.txt
+@@ -24,7 +24,7 @@ add_executable(LTE_fdd_enodeb
+   src/LTE_fdd_enb_mme.cc
+   src/LTE_fdd_enb_gw.cc
+ )
+-target_link_libraries(LTE_fdd_enodeb lte fftw3f tools pthread rt ${POLARSSL_LIBRARIES} ${UHD_LIBRARIES} ${LIBBLADERF_LIBRARIES} ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES} ${GNURADIO_PMT_LIBRARIES})
++target_link_libraries(LTE_fdd_enodeb lte fftw3f tools pthread rt ${MBEDTLS_LIBRARIES} ${UHD_LIBRARIES} ${LIBBLADERF_LIBRARIES} ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES} ${GNURADIO_PMT_LIBRARIES})
+ install(TARGETS LTE_fdd_enodeb DESTINATION bin)
+ install(CODE "execute_process(COMMAND chmod +x \"${CMAKE_SOURCE_DIR}/enodeb_nat_script.sh\")")
+-install(CODE "execute_process(COMMAND \"${CMAKE_SOURCE_DIR}/enodeb_nat_script.sh\")")
++#install(CODE "execute_process(COMMAND \"${CMAKE_SOURCE_DIR}/enodeb_nat_script.sh\")")
+diff --git a/cmake/Modules/FindMbedTLS.cmake b/cmake/Modules/FindMbedTLS.cmake
+new file mode 100755
+index 0000000..9979e19
+--- /dev/null
++++ b/cmake/Modules/FindMbedTLS.cmake
+@@ -0,0 +1,48 @@
++INCLUDE(FindPkgConfig)
++PKG_CHECK_MODULES(PC_MBEDTLS mbedtls)
++
++FIND_PATH(
++    MBEDTLS_INCLUDE_DIRS
++    NAMES mbedtls/version.h
++    HINTS $ENV{MBEDTLS_DIR}/include
++        ${PC_MBEDTLS_INCLUDEDIR}
++        ${CMAKE_INSTALL_PREFIX}/include
++    PATHS /usr/local/include
++          /usr/include
++)
++
++FIND_LIBRARY(
++    MBEDTLS_LIBRARY
++    NAMES mbedtls
++    HINTS $ENV{MBEDTLS_DIR}/lib
++        ${PC_MBEDTLS_LIBDIR}
++        ${CMAKE_INSTALL_PREFIX}/lib
++        ${CMAKE_INSTALL_PREFIX}/lib64
++    PATHS /usr/local/lib
++          /usr/local/lib64
++          /usr/lib
++          /usr/lib64
++)
++
++FIND_LIBRARY(
++    MBEDCRYPTO_LIBRARY
++    NAMES mbedcrypto
++    HINTS $ENV{MBEDTLS_DIR}/lib
++        ${PC_MBEDTLS_LIBDIR}
++        ${CMAKE_INSTALL_PREFIX}/lib
++        ${CMAKE_INSTALL_PREFIX}/lib64
++    PATHS /usr/local/lib
++          /usr/local/lib64
++          /usr/lib
++          /usr/lib64
++)
++
++set(MBEDTLS_INCLUDE_DIRS ${MBEDTLS_INCLUDE_DIR})
++set(MBEDTLS_LIBRARIES ${MBEDTLS_LIBRARY} ${MBEDCRYPTO_LIBRARY})
++
++message(STATUS "MBEDTLS LIBRARIES " ${MBEDTLS_LIBRARIES})
++message(STATUS "MBEDTLS INCLUDE DIRS " ${MBEDTLS_INCLUDE_DIRS})
++
++INCLUDE(FindPackageHandleStandardArgs)
++FIND_PACKAGE_HANDLE_STANDARD_ARGS(MBEDTLS DEFAULT_MSG MBEDTLS_LIBRARY MBEDCRYPTO_LIBRARY MBEDTLS_INCLUDE_DIRS)
++MARK_AS_ADVANCED(MBEDTLS_LIBRARY MBEDCRYPTO_LIBRARY MBEDTLS_INCLUDE_DIRS)
+diff --git a/cmake/Modules/FindPolarssl.cmake b/cmake/Modules/FindPolarssl.cmake
+deleted file mode 100755
+index 40f1f7b..0000000
+--- a/cmake/Modules/FindPolarssl.cmake
++++ /dev/null
+@@ -1,32 +0,0 @@
+-INCLUDE(FindPkgConfig)
+-PKG_CHECK_MODULES(PC_POLARSSL polarssl)
+-
+-FIND_PATH(
+-    POLARSSL_INCLUDE_DIRS
+-    NAMES polarssl/version.h
+-    HINTS $ENV{POLARSSL_DIR}/include
+-        ${PC_POLARSSL_INCLUDEDIR}
+-        ${CMAKE_INSTALL_PREFIX}/include
+-    PATHS /usr/local/include
+-          /usr/include
+-)
+-
+-FIND_LIBRARY(
+-    POLARSSL_LIBRARIES
+-    NAMES polarssl
+-    HINTS $ENV{POLARSSL_DIR}/lib
+-        ${PC_POLARSSL_LIBDIR}
+-        ${CMAKE_INSTALL_PREFIX}/lib
+-        ${CMAKE_INSTALL_PREFIX}/lib64
+-    PATHS /usr/local/lib
+-          /usr/local/lib64
+-          /usr/lib
+-          /usr/lib64
+-)
+-
+-message(STATUS "POLARSSL LIBRARIES " ${POLARSSL_LIBRARIES})
+-message(STATUS "POLARSSL INCLUDE DIRS " ${POLARSSL_INCLUDE_DIRS})
+-
+-INCLUDE(FindPackageHandleStandardArgs)
+-FIND_PACKAGE_HANDLE_STANDARD_ARGS(POLARSSL DEFAULT_MSG POLARSSL_LIBRARIES POLARSSL_INCLUDE_DIRS)
+-MARK_AS_ADVANCED(POLARSSL_LIBRARIES POLARSSL_INCLUDE_DIRS)
+diff --git a/liblte/src/liblte_security.cc b/liblte/src/liblte_security.cc
+index 7f968b8..2b320e5 100755
+--- a/liblte/src/liblte_security.cc
++++ b/liblte/src/liblte_security.cc
+@@ -35,8 +35,9 @@
+ *******************************************************************************/
+ 
+ #include "liblte_security.h"
+-#include "polarssl/compat-1.2.h"
+-#include "polarssl/aes.h"
++#include "mbedtls/aes.h"
++#include "mbedtls/compat-1.3.h"
++#include "mbedtls/ssl.h"
+ #include "math.h"
+ 
+ /*******************************************************************************
+@@ -257,7 +258,8 @@ LIBLTE_ERROR_ENUM liblte_security_generate_k_asme(uint8  *ck,
+         }
+ 
+         // Derive Kasme
+-        sha2_hmac(key, 32, s, 14, k_asme, 0);
++        //sha2_hmac(key, 32, s, 14, k_asme, 0);
++        md_hmac(md_info_from_type(MBEDTLS_MD_SHA256), key, 32, s, 14, k_asme);
+ 
+         err = LIBLTE_SUCCESS;
+     }
+@@ -292,7 +294,8 @@ LIBLTE_ERROR_ENUM liblte_security_generate_k_enb(uint8  *k_asme,
+         s[6] = 0x04; // Second byte of L0
+ 
+         // Derive Kenb
+-        sha2_hmac(k_asme, 32, s, 7, k_enb, 0);
++        //sha2_hmac(k_asme, 32, s, 7, k_enb, 0);
++        md_hmac(md_info_from_type(MBEDTLS_MD_SHA256), k_asme, 32, s, 7, k_enb);
+ 
+         err = LIBLTE_SUCCESS;
+     }
+@@ -330,7 +333,8 @@ LIBLTE_ERROR_ENUM liblte_security_generate_k_nas(uint8
+         s[6] = 0x01; // Second byte of L1
+ 
+         // Derive KNASenc
+-        sha2_hmac(k_asme, 32, s, 7, k_nas_enc, 0);
++        //sha2_hmac(k_asme, 32, s, 7, k_nas_enc, 0);
++        md_hmac(md_info_from_type(MBEDTLS_MD_SHA256), k_asme, 32, s, 7, k_nas_enc);
+ 
+         // Construct S for KNASint
+         s[0] = 0x15; // FC
+@@ -342,7 +346,8 @@ LIBLTE_ERROR_ENUM liblte_security_generate_k_nas(uint8
+         s[6] = 0x01; // Second byte of L1
+ 
+         // Derive KNASint
+-        sha2_hmac(k_asme, 32, s, 7, k_nas_int, 0);
++        //sha2_hmac(k_asme, 32, s, 7, k_nas_int, 0);
++        md_hmac(md_info_from_type(MBEDTLS_MD_SHA256), k_asme, 32, s, 7, k_nas_int);
+ 
+         err = LIBLTE_SUCCESS;
+     }
+@@ -380,7 +385,8 @@ LIBLTE_ERROR_ENUM liblte_security_generate_k_rrc(uint8
+         s[6] = 0x01; // Second byte of L1
+ 
+         // Derive KRRCenc
+-        sha2_hmac(k_enb, 32, s, 7, k_rrc_enc, 0);
++        //sha2_hmac(k_enb, 32, s, 7, k_rrc_enc, 0);
++        md_hmac(md_info_from_type(MBEDTLS_MD_SHA256), k_enb, 32, s, 7, k_rrc_enc);
+ 
+         // Construct S for KRRCint
+         s[0] = 0x15; // FC
+@@ -392,7 +398,8 @@ LIBLTE_ERROR_ENUM liblte_security_generate_k_rrc(uint8
+         s[6] = 0x01; // Second byte of L1
+ 
+         // Derive KRRCint
+-        sha2_hmac(k_enb, 32, s, 7, k_rrc_int, 0);
++        //sha2_hmac(k_enb, 32, s, 7, k_rrc_int, 0);
++        md_hmac(md_info_from_type(MBEDTLS_MD_SHA256), k_enb, 32, s, 7, k_rrc_int);
+ 
+         err = LIBLTE_SUCCESS;
+     }
+@@ -431,7 +438,8 @@ LIBLTE_ERROR_ENUM liblte_security_generate_k_up(uint8
+         s[6] = 0x01; // Second byte of L1
+ 
+         // Derive KUPenc
+-        sha2_hmac(k_enb, 32, s, 7, k_up_enc, 0);
++        //sha2_hmac(k_enb, 32, s, 7, k_up_enc, 0);
++        md_hmac(md_info_from_type(MBEDTLS_MD_SHA256), k_enb, 32, s, 7, k_up_enc);
+ 
+         // Construct S for KUPint
+         s[0] = 0x15; // FC
+@@ -443,7 +451,8 @@ LIBLTE_ERROR_ENUM liblte_security_generate_k_up(uint8
+         s[6] = 0x01; // Second byte of L1
+ 
+         // Derive KUPint
+-        sha2_hmac(k_enb, 32, s, 7, k_up_int, 0);
++        //sha2_hmac(k_enb, 32, s, 7, k_up_int, 0);
++        md_hmac(md_info_from_type(MBEDTLS_MD_SHA256), k_enb, 32, s, 7, k_up_int);
+ 
+         err = LIBLTE_SUCCESS;
+     }

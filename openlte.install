@@ -1,0 +1,8 @@
+post_install() {
+    echo "To use openLTE. please execute script /usr/share/openlte/enodeb_nat_script.sh"
+    echo "and check /usr/share/openlte/README for more information"
+}
+
+post_upgrade() {
+  post_install $1
+}
