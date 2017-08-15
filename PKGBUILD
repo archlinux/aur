@@ -21,9 +21,10 @@ sha256sums=('d75ba8b558988b3fdffa12ff62a55f0f1aaff8aa73b708bff3701ff88a2b8757')
 
 build() {
   cd "${_realname}-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-           PERL_AUTOINSTALL=--skipdeps                            \
-           PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='${pkgdir}'"     \
+  ( export PERL_MM_USE_DEFAULT=1 \
+           PERL5LIB="" \
+           PERL_AUTOINSTALL=--skipdeps \
+           PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='${pkgdir}'" \
            PERL_MB_OPT="--installdirs vendor --destdir '${pkgdir}'" \
            MODULEBUILDRC=/dev/null
 
@@ -35,7 +36,9 @@ build() {
 
 check() {
   cd "${_realname}-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  ( export PERL_MM_USE_DEFAULT=1 \
+           PERL5LIB=""
+
     ./Build test
   )
 }
