@@ -5,7 +5,7 @@ pkgname=otf-vollkorn
 pkgdesc="Vollkorn typeface by Friedrich Althausen (OpenType)"
 url='http://vollkorn-typeface.com/'
 license=('custom:SIL Open Font License')
-pkgver=4.012
+pkgver=4.015
 pkgrel=1
 changelog=ChangeLog.${pkgname}
 depends=('fontconfig' 'xorg-font-utils')
@@ -13,7 +13,7 @@ arch=('any')
 install=$pkgname.install
 
 source=(http://vollkorn-typeface.com/download/vollkorn-${pkgver//./-}.zip)
-sha512sums=('e25a3932e37a5706b5b849bacc36fa2be972fcd35e5f9d4274c19c07c75629d4ebdc30497e85157a3cdb2a357437b8f310c6ce583a754cdb5da40db5d2935940')
+sha512sums=('0f17cd06e670a34ae8e6a891c24494624bac2208b9bdf4add7d80229c22c4dce4ea5af835f2f9d1ae7133272563e372913926f72ea6d399effc605c2b00ef21e')
 
 package() {
   install -d "${pkgdir}/usr/share/fonts/OTF"
