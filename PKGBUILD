@@ -147,7 +147,7 @@ _package() {
 
   # install mkinitcpio preset file for kernel
   
-    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/${pkgbase}.preset" |
     install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
 # Older code. I put here because of idk and as reference.
