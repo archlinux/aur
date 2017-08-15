@@ -1,12 +1,12 @@
 pkgbase = webtorrent-desktop
 	pkgdesc = Streaming torrent client.
 	pkgver = 0.18.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://webtorrent.io/desktop
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = npm
+	makedepends = yarn
 	depends = gconf
 	depends = electron
 	conflicts = webtorrent-desktop-git

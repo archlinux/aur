@@ -2,13 +2,13 @@
 
 pkgname=webtorrent-desktop
 pkgver=0.18.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Streaming torrent client."
 arch=('i686' 'x86_64')
 url="https://webtorrent.io/desktop"
 license=('MIT')
 depends=('gconf' 'electron')
-makedepends=('npm')
+makedepends=('yarn')
 conflicts=('webtorrent-desktop-git' 'webtorrent-desktop-bin')
 options=(!strip)
 source=("https://github.com/feross/${pkgname}/archive/v${pkgver}.tar.gz"
@@ -30,10 +30,9 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  npm install
-  npm dedupe
-  npm run build
-  npm prune --production
+  yarn install
+  yarn run build
+  yarn install --production --ignore-scripts --prefer-offline --force
 }
 
 package() {
