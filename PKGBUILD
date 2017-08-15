@@ -30,11 +30,9 @@ source=('git+https://anongit.freedesktop.org/git/drm-tip.git'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
-	    '22b97ddae916298b12d411cd501b7dc2b4dd1043ca77ddd5b2230cba19513e5f' # .SRCINFO
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0' # 90-linux.hook
 	    'df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1' # config.i686
 	    'bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586' # config.x86_64
-	    '07cf2e14bc20cb6439956b84aa16ae65029afe3de209041184e8673313ba77bc' # linux.install
 	    'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65' # linux-drm-tip-git.preset
 	    'd75bf4d300266586f0332181accc6dce4c331f856791f76514210abc773a6eeb' # PKGBUILD
             )
