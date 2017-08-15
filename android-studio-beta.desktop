@@ -8,5 +8,5 @@ Comment=The Official Android IDE (Beta branch)
 Categories=Development;IDE;
 Terminal=false
 StartupNotify=true
-StartupWMClass=jetbrains-studio
+StartupWMClass=jetbrains-studio-beta
 MimeType=application/x-extension-iml;
