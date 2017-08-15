@@ -20,11 +20,13 @@ prepare() {
 }
 
 build() {
+  export GOPATH=$srcdir/go
   cd "$GOPATH/src/$gopackagepath"
   make
 }
 
 package() {
+  export GOPATH=$srcdir/go
   cd "$GOPATH/src/$gopackagepath"
   make install DESTDIR=$pkgdir/usr
 }
