@@ -1,6 +1,6 @@
 # Maintainer: Alex "grevus" Lobtsov <alex@lobtsov.com>
 pkgname=php-redis
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=3
 pkgdesc="PHP extension for interfacing with Redis"
 url="http://pecl.php.net/package/redis"
@@ -20,7 +20,7 @@ source=(
     http://pecl.php.net/get/redis-${pkgver}.tgz
 )
 
-sha256sums=('a7687d007e48bef92049b8f53b425244d663da57d6b646d139248839e01f4ea3')
+sha256sums=('92907f40bdd8d56607ba5c1593289c34c08f7dae460bd05e79603a4247b6cbf6')
 
 build() {
   cd "$srcdir/redis-$pkgver"
