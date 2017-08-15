@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=plastex-git
 pkgver=1.0.0.117.g7803cc5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python-based LaTeX document processing framework"
 arch=('any')
 url="http://tiarno.github.io/plastex/"
@@ -15,22 +15,22 @@ md5sums=('SKIP')
 _gitname="plastex"
 
 pkgver() {
- cd "$srcdir/$_gitname"
+ cd ${pkgname%-git}
  git describe --tags | sed 's|-|.|g'
 }
 
 prepare() {
-  cd "$srcdir/$_gitname"
+  cd ${pkgname%-git}
   find  . -name "*.py" -exec sed -i '1s+python+python2+' {} \;
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  python2 setup.py install --root=$pkgdir/ 
+  cd ${pkgname%-git}
+  python2 setup.py install --root="$pkgdir"/ 
   install -Dm644 LICENSE \
-    $pkgdir/usr/share/licenses/$pkgname/LICENSE 
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE 
   for _i in  licenses/*
   do 
-    install -Dm644 ${_i} $pkgdir/usr/share/licenses/$pkgname/${_i}
+    install -Dm644 ${_i} "$pkgdir"/usr/share/licenses/$pkgname/${_i}
   done
 }
