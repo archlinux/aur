@@ -2,7 +2,7 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-pkgver=1.11.917.35
+pkgver=1.12.933.3
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
@@ -13,12 +13,13 @@ depends=('gtk3' 'libcups' 'nss' 'gconf' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-
 makedepends=('w3m')
 optdepends=(
     'vivaldi-snapshot-ffmpeg-codecs: playback of proprietary video/audio'
+    'pepper-flash: flash support'
     'google-chrome: Widevine DRM Plugin'
     'vivaldi-widevine: Widevine DRM Plugin'
     'libnotify: native notifications'
 )
 source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-1.x86_64.rpm")
-sha512sums=('2d85ad52e0e509e157b48a092d4925eb0daa7ad420a5fd11eaeaa89d75aba5c30f11a90acc7358fb27ce4116e1b3e553aab89aeed55bc4f3ccdd9f5926bba64b')
+sha512sums=('f34f569c9baa6a06b8d1bef81088fd7c1f9d95f64f07b4ff004f2523ef8d937a6e68e334a81584aa96745ae59b353d536039abe26816f8e12ba24261edf81b1c')
 
 package() {
     cp -a {opt,usr} "$pkgdir"
