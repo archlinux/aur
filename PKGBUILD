@@ -14,7 +14,7 @@ changelog=$pkgname.Changelog
 source=(git+https://github.com/DisplayLink/evdi/)
 md5sums=(SKIP)
 conflicts=(evdi)
-provides=(evdi)
+provides=(evdi=1.4.1)
 
 pkgver() {
 	cd ${pkgname/-git/}
