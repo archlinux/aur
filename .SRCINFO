@@ -1,6 +1,6 @@
 pkgbase = signify
 	pkgdesc = OpenBSD tool to signs and verify signatures on files. Portable version.
-	pkgver = 21
+	pkgver = 22
 	pkgrel = 1
 	url = https://github.com/aperezdc/signify
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = signify
 	arch = arm
 	license = custom:BSD
 	depends = libbsd>=0.8
-	source = signify-21.tar.gz::https://github.com/aperezdc/signify/archive/v21.tar.gz
+	source = signify-22.tar.gz::https://github.com/aperezdc/signify/archive/v22.tar.gz
 	source = LICENSE
-	sha512sums = eb341d4808da9d8aa783cb339136e5aa059c13ebf4398102056938aa11d3a1276dc60a4b63728dbf0e8afe1359c42edd84b83b4af729ddc1ed09bccde7a511b8
+	sha512sums = a8ddbb032dd95fbec2d032a155b90a9f93d109122f707dace219007c2d89e2ed1cfc33e7b32c542cbaa182ca5015bb33a93a814ea960628d209addc84eddfbb2
 	sha512sums = a587ef19d5481a81945475a2c1dde0fbf8022e0a28db06389c73df1b7118fb94399f5e4523b91df3d846707dcaffff482ae6e58902b6620bf7b2019a8e15efec
 
 pkgname = signify
