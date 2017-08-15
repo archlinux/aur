@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.12.6-2 Kernel Configuration
+# Linux/x86 4.12.7-2 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -2166,12 +2166,12 @@ CONFIG_HAVE_IDE=y
 #
 # SCSI device support
 #
-CONFIG_SCSI_MOD=m
+CONFIG_SCSI_MOD=y
 CONFIG_RAID_ATTRS=m
-CONFIG_SCSI=m
+CONFIG_SCSI=y
 CONFIG_SCSI_DMA=y
 CONFIG_SCSI_NETLINK=y
-# CONFIG_SCSI_MQ_DEFAULT is not set
+CONFIG_SCSI_MQ_DEFAULT=y
 CONFIG_SCSI_PROC_FS=y
 
 #

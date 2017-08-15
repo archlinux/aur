@@ -39,8 +39,8 @@ _use_current=
 pkgbase=linux-ck
 _srcname=linux-4.12
 pkgver=4.12.7
-pkgrel=1
-_ckpatchversion=1
+pkgrel=2
+_ckpatchversion=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -65,10 +65,10 @@ sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
             'fe0a0b7c071978839f4b941d655df93e3c0e60bd3e49237f7e7a8635cb38ff8e'
             'SKIP'
-            'c20ca8b06355fd923a6b942d573e74118fd2abbc8a5ea282d994967122a04a2d'
+            '6d15f95ca23b46f7abdfa1315600daed7ed6843acc29587fd84c2be7937c8564'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
-            'df5d939f8768c6ec45e5fc7460bb1a7a97926607191515ed0f898dd5db7cd8f2'
-            'e4f51aa3abb886f52314bdadc7e7cd037e4f2140769fa2a5d57135fae6bb6685'
+            '200320c08e5c469b28be2b8b74de14397c9cfccb11ce3add07536e050c27a180'
+            '8a7a3ec9dec36c6b30c0d8de9bc6beb418e6d3346225d2d85c7d6b77c4d00a78'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -98,9 +98,6 @@ prepare() {
   make mrproper
 
   cat "${srcdir}/config.${CARCH}" > ./.config
-
-  # CK's suggestion to fix the stalled boot on some systems
-  sed -i 's/# CONFIG_SCSI_MQ_DEFAULT is not set/CONFIG_SCSI_MQ_DEFAULT=y/' ./.config
 
   ### Optionally disable NUMA for 64-bit kernels only
   # (x86 kernels do not support NUMA)
@@ -179,8 +176,8 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.157"
-  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.157"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck2 patchset featuring MuQSS CPU scheduler v0.160"
+  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck2 patchset featuring MuQSS CPU scheduler v0.160"
   #pkgdesc="${_Kpkgdesc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
