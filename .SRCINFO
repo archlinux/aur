@@ -1,7 +1,7 @@
 pkgbase = android-studio-beta
 	pkgdesc = The Official Android IDE (Beta branch)
 	pkgver = 3.0.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tools.android.com/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = android-studio-beta
 	source = https://dl.google.com/dl/android/studio/ide-zips/3.0.0.10/android-studio-ide-171.4263559-linux.zip
 	source = android-studio-beta.desktop
 	sha256sums = 9c109f5cb3732cd9c31edb94657c10ba47c3cb4229ac4ff76a4683a27032ca2f
-	sha256sums = 60edb7937f6c0fd1ad724574ff3c63fa69cedd2fdfcedf788f39a443c76743b6
+	sha256sums = 368b5287efcfd2b421bdd10e1bdd39a8bffeb84500745c4a88729609c841bcf7
 
 pkgname = android-studio-beta
 
