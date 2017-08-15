@@ -12,7 +12,7 @@ url="http://www.enlightenment.org"
 license=('BSD')
 depends=('efl-git' 'xcb-util-keysyms' 'shared-mime-info'
          'desktop-file-utils' 'udisks2' 'ttf-font'
-	 'wayland' 'xorg-server-xwayland')
+	 'xorg-server-xwayland')
   [[ ! $(pacman -T bluez-libs) ]] && depends+=('bluez-libs') #l2ping support in enlightenment_sys is detected at build time
 makedepends=('git')
 optdepends=('acpid: power events on laptop lid close'
@@ -21,8 +21,7 @@ optdepends=('acpid: power events on laptop lid close'
             'connman: network module'
             'gdb: create backtraces on crash'
             'geoclue2: geolocation module'
-            'packagekit: packagekit module'
-            'xorg-server-xwayland: xwayland module')
+            'packagekit: packagekit module')
 provides=("$_pkgname=$pkgver" 'notification-daemon')
 conflicts=("$_pkgname")
 backup=('etc/enlightenment/sysactions.conf'
