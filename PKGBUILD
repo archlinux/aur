@@ -2,20 +2,20 @@
 # Maintainer : Matteo Rossillol <mbasiccomputing@gmail.com>
 
 
-_CompName=zfw-module-330r2
+_CompName=zfw-module-330r3
 pkgname=zfw-module
 pkgver=3.3.0
-pkgrel=2
-arch=('x86_64')
+pkgrel=3
+arch=('i686' 'x86_64')
 pkgdesc="It's a module for calculate a aircraft's Z.F.W." 
-url="https://github.com/CompFile/My_AUR_PKG/tree/master/Sources/$pkgname/$pkgname-$pkgver.r$pkgrel"
+url="https://github.com/CompFile/My_AUR_PKG/"
 license=('GPL3')
 groups=('MBC')
 depends=('qt5-base')
 makedepends=('gcc' 'qt5-base')
-validpgpkeys=('94832C0DBAC3B295A91C5F4081D2921276951309')
+validpgpkeys=('94832C0DBAC3B295A91C5F4081D2921276951309')   # Mattéo Rossillol
 source=("https://github.com/CompFile/My_AUR_PKG/raw/master/PKG/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz"{,.sig})
-md5sums=('9d3ff27f7dc244d3c6c246d78261549c'
+md5sums=('8821e0f5f7ae086238760b2eb90c10bf'
          'SKIP')
 
 
