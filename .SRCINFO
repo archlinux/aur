@@ -1,0 +1,17 @@
+pkgbase = drawio-desktop-bin
+	pkgdesc = Diagram drawing application built on web technology
+	pkgver = 7.1.0
+	pkgrel = 1
+	url = https://github.com/jgraph/drawio-desktop
+	arch = x86_64
+	license = apache
+	depends = gconf
+	depends = libnotify
+	depends = libxtst
+	depends = nss
+	depends = libxss
+	source = drawio-desktop-bin-7.1.0.deb::https://github.com/jgraph/drawio-desktop/releases/download/v7.1.0/draw.io-amd64-7.1.0.deb
+	sha256sums = 75f0c3a69b28de2a2bb68c11562f645df9321358e3164923445d0911ce6b4355
+
+pkgname = drawio-desktop-bin
+
