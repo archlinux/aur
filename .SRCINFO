@@ -19,13 +19,8 @@ pkgbase = lxtask-git
 	provides = lxtask
 	conflicts = lxtask
 	replaces = lxtask
-	replaces = lxtask-git=20120117-1
-	source = lxtask-git::git+https://git.lxde.org/git/lxde/lxtask.git
-	source = Added-key-binding-Del-to-terminate-and-Shift-Del-to-kill-task.patch
-	source = Changed-default-button-for-terminate-to-Yes.patch
+	source = lxtask-git::git+https://github.com/OpenHelios/lxtask.git
 	sha256sums = SKIP
-	sha256sums = 34d35d40522d9758cb875cd40eaf5d4afeedffaafb7ca0efedbc431a163fa55b
-	sha256sums = 23e7ae15e32622fffdac883beb49a1745478e05f8089a78a64670eea9aa753c0
 
 pkgname = lxtask-git
 

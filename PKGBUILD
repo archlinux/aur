@@ -11,20 +11,19 @@ depends=('gtk2')
 makedepends=('autoconf' 'automake' 'gcc' 'libtool' 'make' 'pkgconfig' 'git' 'intltool')
 provides=('lxtask')
 conflicts=('lxtask')
-replaces=('lxtask' 'lxtask-git=20120117-1')
+replaces=('lxtask')
 url="http://lxde.org/"
 source=(
-	$pkgname::git+https://git.lxde.org/git/lxde/lxtask.git
+	$pkgname::git+https://github.com/OpenHelios/lxtask.git
+#	https://downloads.sourceforge.net/lxde/lxtask-0.1.8.tar.xz
+#	$pkgname::git+https://git.lxde.org/git/lxde/lxtask.git
 #	$pkgname::git+git://git.lxde.org/git/lxde/lxtask.git
-	Added-key-binding-Del-to-terminate-and-Shift-Del-to-kill-task.patch
-	Changed-default-button-for-terminate-to-Yes.patch
 )
 sha256sums=(
 	'SKIP'
-	'34d35d40522d9758cb875cd40eaf5d4afeedffaafb7ca0efedbc431a163fa55b'
-	'23e7ae15e32622fffdac883beb49a1745478e05f8089a78a64670eea9aa753c0')
+)
 
-_gitroot=$pkgname
+#_gitroot=$pkgname
 
 pkgver() {
 	# remove ".r*.*" from package version
@@ -35,19 +34,11 @@ pkgver() {
 	# get time of last git commit
 	_commitTime=$(git show -s --format="%ci" | grep -o "....-..-.." | sed "s/-//g")
 	# add ".r*.*" from package version
-	echo "$_pkgverTriple.r$_commitCount.$_commitTime"
-}
-
-prepare() {
-	cd $_gitroot
-	patch -Np1 -i ../Added-key-binding-Del-to-terminate-and-Shift-Del-to-kill-task.patch
-	patch -Np1 -i ../Changed-default-button-for-terminate-to-Yes.patch
+	echo "$_pkgverTriple.r411.$_commitTime"
 }
 
 build() {
 	cd $_gitroot
-	msg "Starting make..."
-	./autogen.sh
 	./configure --prefix=/usr --sysconfdir=/etc
 	make
 }
