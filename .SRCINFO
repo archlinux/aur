@@ -1,12 +1,11 @@
 pkgbase = nerd-fonts-complete
 	pkgdesc = collection of over 20 patched fonts (complete variant) for powerline, devicons, and vim-devicons: includes Droid Sans, Meslo, AnonymousPro, ProFont, Inconsolta, and many more
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ryanoasis/nerd-fonts
 	install = nerd-fonts-complete.install
 	arch = any
 	license = MIT
-	makedepends = wget
 	depends = fontconfig
 	depends = xorg-font-utils
 	conflicts = nerd-fonts-git
