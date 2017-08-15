@@ -1,0 +1,14 @@
+pkgbase = monocypher
+	pkgdesc = Monocypher is an easy to use crypto library inspired by libsodium and TweetNaCl
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://loup-vaillant.fr/projects/monocypher/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	depends = glibc
+	source = http://loup-vaillant.fr/projects/monocypher/monocypher-1.0.1.tar.gz
+	sha512sums = 9e5542a3e853a1e786dbf67c020fecb9c066ed272175a57b12fb8b80b0faef2441c4c11c506a00215f13477ee0b96614597dc80a8c38f29bc53313610d0f8cec
+
+pkgname = monocypher
+
