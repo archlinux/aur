@@ -2,7 +2,7 @@
 
 pkgname=python-pywal-git
 _gitname=pywal
-pkgver=0.6.3.r1.g5f41551
+pkgver=0.6.4.r5.g270de57
 pkgrel=1
 pkgdesc='Generate and change colorschemes on the fly'
 arch=('any')
