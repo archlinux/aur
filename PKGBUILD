@@ -3,21 +3,20 @@
 pkgname=openlte
 _pkgver=v00-20-05
 pkgver=v00_20_05
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source 3GPP LTE implementation."
 arch=('any')
 url="http://openlte.sourceforge.net"
-license=('GPL' 'AGPL')
+license=('AGPL')
 depends=('gnuradio' 'gnuradio-osmosdr' 'libuhd' 'bladerf' 'mbedtls')
-#optdepends=('git')
 install=openlte.install
 source=(
     "https://sourceforge.net/projects/${pkgname}/files/${pkgname}_${_pkgver}.tgz"
     "${pkgname}.patch"
     )
 sha512sums=(
-    'SKIP'
-    '8238256add59aad3ec2752a9afa231036e8eb5f54ada3c13f42044ea84af96cecc9ec8bbb7b795d2f8dc7e6deb53df3efa0c1b335bad6f7e7e543b71f0731619'
+    '396969c118fb6ed63727a38a8ada368463fa8a9e7ca239be7b2a29a29ad55ba3add4172624972f31d1a14d0707f4ae2dd50b3a1d288d0943bebe3a381aa27b87'
+    '8b531969eae0f86dffeb10a208ef2ba67fa197d9e36db714c5af6e139b9369eec7068759a190ae187f81c2d42a67d36c59cefd1c469af71fed1d297c6b5dc707'
     )
 
 build() {

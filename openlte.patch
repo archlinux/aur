@@ -25,12 +25,25 @@ index 176bac2..ac71479 100755
  install(CODE "execute_process(COMMAND chmod +x \"${CMAKE_SOURCE_DIR}/enodeb_nat_script.sh\")")
 -install(CODE "execute_process(COMMAND \"${CMAKE_SOURCE_DIR}/enodeb_nat_script.sh\")")
 +#install(CODE "execute_process(COMMAND \"${CMAKE_SOURCE_DIR}/enodeb_nat_script.sh\")")
+diff --git a/README b/README
+index 169e9ad..81ff3d3 100755
+--- a/README
++++ b/README
+@@ -25,7 +25,7 @@ openLTE is dependant on the following:
+ 4) UHD
+ 5) HackRF
+ 6) bladeRF
+-7) polarssl
++7) mbedtls
+ 8) iptables
+ 
+ To build the C++ and python code use the following:
 diff --git a/cmake/Modules/FindMbedTLS.cmake b/cmake/Modules/FindMbedTLS.cmake
 new file mode 100755
-index 0000000..9979e19
+index 0000000..5f9ab86
 --- /dev/null
 +++ b/cmake/Modules/FindMbedTLS.cmake
-@@ -0,0 +1,48 @@
+@@ -0,0 +1,47 @@
 +INCLUDE(FindPkgConfig)
 +PKG_CHECK_MODULES(PC_MBEDTLS mbedtls)
 +
@@ -70,15 +83,14 @@ index 0000000..9979e19
 +          /usr/lib64
 +)
 +
-+set(MBEDTLS_INCLUDE_DIRS ${MBEDTLS_INCLUDE_DIR})
 +set(MBEDTLS_LIBRARIES ${MBEDTLS_LIBRARY} ${MBEDCRYPTO_LIBRARY})
 +
 +message(STATUS "MBEDTLS LIBRARIES " ${MBEDTLS_LIBRARIES})
 +message(STATUS "MBEDTLS INCLUDE DIRS " ${MBEDTLS_INCLUDE_DIRS})
 +
 +INCLUDE(FindPackageHandleStandardArgs)
-+FIND_PACKAGE_HANDLE_STANDARD_ARGS(MBEDTLS DEFAULT_MSG MBEDTLS_LIBRARY MBEDCRYPTO_LIBRARY MBEDTLS_INCLUDE_DIRS)
-+MARK_AS_ADVANCED(MBEDTLS_LIBRARY MBEDCRYPTO_LIBRARY MBEDTLS_INCLUDE_DIRS)
++FIND_PACKAGE_HANDLE_STANDARD_ARGS(MBEDTLS DEFAULT_MSG MBEDTLS_LIBRARIES MBEDTLS_INCLUDE_DIRS)
++MARK_AS_ADVANCED(MBEDTLS_LIBRARIES MBEDTLS_INCLUDE_DIRS)
 diff --git a/cmake/Modules/FindPolarssl.cmake b/cmake/Modules/FindPolarssl.cmake
 deleted file mode 100755
 index 40f1f7b..0000000
