@@ -15,7 +15,7 @@ depends=('qt5-base')
 makedepends=('gcc' 'qt5-base')
 validpgpkeys=('94832C0DBAC3B295A91C5F4081D2921276951309')
 source=("https://github.com/CompFile/My_AUR_PKG/raw/master/PKG/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz"{,.sig})
-md5sums=('261d43214c37b7ae579ddf148817c08a'
+md5sums=('fef425a653f74ffb1c9ee57fedba1c2e'
          'SKIP')
 
 
