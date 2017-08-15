@@ -34,7 +34,6 @@ sha256sums=('SKIP'
 	    'df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1' # config.i686
 	    'bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586' # config.x86_64
 	    'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65' # linux-drm-tip-git.preset
-	    'd75bf4d300266586f0332181accc6dce4c331f856791f76514210abc773a6eeb' # PKGBUILD
             )
 
 _kernelname=${pkgbase#linux}
