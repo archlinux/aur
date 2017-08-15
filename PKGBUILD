@@ -2,11 +2,11 @@
 # Git: https://github.com/nogo/archlinux-pkgbuild
 
 # Uncomment, if you want tha last release
-_version=2.3.1
+_version=2.3.2
 
 pkgname=nextcloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Nextloud client for linux"
 arch=('i686' 'x86_64')
@@ -60,9 +60,6 @@ build() {
         -DCMAKE_INSTALL_SYSCONFDIR=/etc/${_name} \
         -DWITH_DOC=FALSE \
         ../client
-
-  #	-DQTKEYCHAIN_LIBRARY=/usr/lib/libqt5keychain.so \
-#        -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
 
   make
 }
