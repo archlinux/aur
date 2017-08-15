@@ -11,13 +11,13 @@ license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wangyu-/udp2raw-tunnel/archive/$pkgver.tar.gz")
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
   make fast
 }
 
 package() {
-  cd $pkgname-$pkgver
-  mkdir -p $pkgdir/usr/bin/
-  install -m755 udp2raw $pkgdir/usr/bin/
+  cd "$srcdir/$pkgname-$pkgver"
+  mkdir -p "$pkgdir/usr/bin/"
+  install -m755 udp2raw "$pkgdir/usr/bin/"
 }
 md5sums=('423b6b97ea60ec768966227ddbb17fdb')
