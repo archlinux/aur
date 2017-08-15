@@ -4,7 +4,7 @@
 
 _pkgname=pithos
 pkgname=$_pkgname-git
-pkgver=1.2.1.r28.g5bc9671
+pkgver=1.3.1.r30.g5837cff
 pkgrel=1
 pkgdesc='Native Pandora Radio client'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('libkeybinder3: for media keys plugin'
             'python-pacparser: PAC proxy support'
             'python-pylast: Last.fm scrobbling support'
             'python-systemd: Logging to the system journal')
-makedepends=('git' 'automake' 'autoconf' 'intltool' 'appstream-glib')
+makedepends=('git' 'meson' 'intltool' 'appstream-glib')
 provides=("$_pkgname")
 conflicts=("$_pkgname-bzr" "$_pkgname")
 sha256sums=('SKIP')
@@ -29,12 +29,15 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  ./autogen.sh --prefix=/usr
-  make
+  cd "$srcdir"
+  if [[ -d ./build/ ]]; then
+         rm -rf ./build/
+  fi
+  mkdir build
+  meson "$_pkgname" build --prefix=/usr
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  DESTDIR="$pkgdir" make install
+  cd "$srcdir/build"
+  DESTDIR="$pkgdir" ninja install
 }
