@@ -1,0 +1,18 @@
+pkgbase = mos-git
+	pkgdesc = Mongoose-OS build tool
+	pkgver = 20170814.3586_761f3601
+	pkgrel = 1
+	url = https://mongoose-os.com/software.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	makedepends = govendor
+	depends = libftdi-compat
+	depends = libusb
+	source = git+https://github.com/cesanta/mongoose-os.git#branch=master
+	md5sums = SKIP
+
+pkgname = mos-git
+
