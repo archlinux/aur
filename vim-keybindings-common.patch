@@ -1,0 +1,182 @@
+diff --git a/Action.c b/Action.c
+index ee34a4b..effa033 100644
+--- a/Action.c
++++ b/Action.c
+@@ -382,7 +382,7 @@ static Htop_Reaction actionRedraw() {
+ }
+ 
+ static struct { const char* key; const char* info; } helpLeft[] = {
+-   { .key = " Arrows: ", .info = "scroll process list" },
++   { .key = "   hjkl: ", .info = "scroll process list" },
+    { .key = " Digits: ", .info = "incremental PID search" },
+    { .key = "   F3 /: ", .info = "incremental name search" },
+    { .key = "   F4 \\: ",.info = "incremental name filtering" },
+@@ -411,11 +411,11 @@ static struct { const char* key; const char* info; } helpRight[] = {
+ #endif
+    { .key = "      e: ", .info = "show process environment" },
+    { .key = "      i: ", .info = "set IO priority" },
+-   { .key = "      l: ", .info = "list open files with lsof" },
++   { .key = "      L: ", .info = "list open files with lsof" },
+    { .key = "      s: ", .info = "trace syscalls with strace" },
+    { .key = "         ", .info = "" },
+    { .key = "   F2 S: ", .info = "setup" },
+-   { .key = "   F1 h: ", .info = "show this help screen" },
++   { .key = "   F1 ?: ", .info = "show this help screen" },
+    { .key = "  F10 q: ", .info = "quit" },
+    { .key = NULL, .info = NULL }
+ };
+@@ -543,6 +543,7 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['I'] = actionInvertSortOrder;
+    keys[KEY_F(6)] = actionExpandCollapseOrSortColumn;
+    keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
++   keys['o'] = actionExpandCollapseOrSortColumn;
+    keys['<'] = actionSetSortColumn;
+    keys[','] = actionSetSortColumn;
+    keys['>'] = actionSetSortColumn;
+@@ -561,12 +562,11 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['S'] = actionSetup;
+    keys['C'] = actionSetup;
+    keys[KEY_F(2)] = actionSetup;
+-   keys['l'] = actionLsof;
++   keys['L'] = actionLsof;
+    keys['s'] = actionStrace;
+    keys[' '] = actionTag;
+    keys['\014'] = actionRedraw; // Ctrl+L
+    keys[KEY_F(1)] = actionHelp;
+-   keys['h'] = actionHelp;
+    keys['?'] = actionHelp;
+    keys['U'] = actionUntagAll;
+    keys['c'] = actionTagAllChildren;
+diff --git a/Panel.c b/Panel.c
+index 579a82c..c2a854c 100644
+--- a/Panel.c
++++ b/Panel.c
+@@ -376,10 +376,12 @@ bool Panel_onKey(Panel* this, int key) {
+    int size = Vector_size(this->items);
+    switch (key) {
+    case KEY_DOWN:
++   case 'j':
+    case KEY_CTRL('N'):
+       this->selected++;
+       break;
+    case KEY_UP:
++   case 'k':
+    case KEY_CTRL('P'):
+       this->selected--;
+       break;
+@@ -394,23 +396,33 @@ bool Panel_onKey(Panel* this, int key) {
+       break;
+    #endif
+    case KEY_LEFT:
+-   case KEY_CTRL('B'):
++   case 'h':
+       if (this->scrollH > 0) {
+          this->scrollH -= MAX(CRT_scrollHAmount, 0);
+          this->needsRedraw = true;
+       }
+       break;
+    case KEY_RIGHT:
+-   case KEY_CTRL('F'):
++   case 'l':
+       this->scrollH += CRT_scrollHAmount;
+       this->needsRedraw = true;
+       break;
++   case KEY_CTRL('U'):
++      this->selected -= (this->h - 1) / 2;
++      this->needsRedraw = true;
++      break;
++   case KEY_CTRL('D'):
++      this->selected += (this->h - 1) / 2;
++      this->needsRedraw = true;
++      break;
+    case KEY_PPAGE:
++   case KEY_CTRL('B'):
+       this->selected -= (this->h - 1);
+       this->scrollV -= (this->h - 1);
+       this->needsRedraw = true;
+       break;
+    case KEY_NPAGE:
++   case KEY_CTRL('F'):
+       this->selected += (this->h - 1);
+       this->scrollV = MIN(MAX(0, Vector_size(this->items) - this->h), this->selected - this->h);
+       this->needsRedraw = true;
+@@ -454,7 +466,7 @@ bool Panel_onKey(Panel* this, int key) {
+    if (this->selected < 0 || size == 0) {
+       this->selected = 0;
+       this->needsRedraw = true;
+-   } else if (this->selected >= size) {   
++   } else if (this->selected >= size) {
+       this->selected = size - 1;
+       this->needsRedraw = true;
+    }
+diff --git a/README b/README
+index 1af7377..92a76be 100644
+--- a/README
++++ b/README
+@@ -17,6 +17,44 @@ but we also have code for running under FreeBSD and Mac OS X
+ This software has evolved considerably over the years,
+ and is reasonably complete, but there is always room for improvement.
+ 
++Vim keybindings
++----------------
++
++These are the keybindings added in this fork of htop:
++
++```
++    g        to the top (gg in vim)
++
++  <C-b>      up 1 page
++
++  <C-u>      up 1/2 page
++
++    k
++
++h       l    one character
++
++    j
++
++  <C-d>      down 1/2 page
++
++  <C-f>      down 1 page
++
++    G        to the end
++
++--------------------------------------------------
++
++    o        Expand/collapse (like in NERDTree)
++```
++
++In order to accomodate these keybindings, the following changes
++were made to the original keybindings:
++
++* Ctrl+F and Ctrt+B can now longer be used to navigate horizontally
++* 'h' can no longer be used to access the help, leaving Ctrl+F1 & '?'
++* 'k' can no longer be used to kill processes, being replaced with 'x'
++* 'l' can no longer be used to list open files, being replaced with 'L'
++
++
+ Comparison between `htop` and classic `top`
+ -------------------------------------------
+ 
+diff --git a/ScreenManager.c b/ScreenManager.c
+index 05e1c02..df2ac4a 100644
+--- a/ScreenManager.c
++++ b/ScreenManager.c
+@@ -279,7 +279,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+          continue;
+       }
+       case KEY_LEFT:
+-      case KEY_CTRL('B'):
++      case 'h':
+          if (this->panelCount < 2) {
+             goto defaultHandler;
+          }
+@@ -293,7 +293,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+             goto tryLeft;
+          break;
+       case KEY_RIGHT:
+-      case KEY_CTRL('F'):
++      case 'l':
+       case 9:
+          if (this->panelCount < 2) {
+             goto defaultHandler;
