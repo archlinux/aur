@@ -4,12 +4,12 @@
 
 pkgname=stuntrally
 pkgver=2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A 3D racing game based on VDrift and OGRE with track editor"
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="http://stuntrally.tuxfamily.org"
-depends=('ogre>=1.9' 'mygui' 'sdl2' 'libvorbis' 'enet' 'bullet' 'openal' 'hicolor-icon-theme')
+depends=('ogre-1.9' 'mygui-ogre1.9' 'sdl2' 'libvorbis' 'enet' 'bullet' 'openal' 'hicolor-icon-theme')
 makedepends=('cmake' 'boost')
 source=("stuntrally-$pkgver.tar.gz::https://github.com/stuntrally/stuntrally/archive/$pkgver.tar.gz"
         "stuntrally-tracks-$pkgver.tar.gz::https://github.com/stuntrally/tracks/archive/$pkgver.tar.gz"
@@ -39,7 +39,10 @@ prepare() {
 build() {
   cd $pkgname-$pkgver/build
 
+  export PKG_CONFIG_PATH="/opt/OGRE-1.9/lib/pkgconfig:/opt/MyGUI-OGRE1.9/lib/pkgconfig:$PKG_CONFIG_PATH"
+
   cmake .. \
+    -DMYGUI_LIBDIR=/opt/MyGUI-OGRE1.9/lib \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DSHARE_INSTALL=share/stuntrally \

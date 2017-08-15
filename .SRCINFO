@@ -1,15 +1,15 @@
 pkgbase = stuntrally
 	pkgdesc = A 3D racing game based on VDrift and OGRE with track editor
 	pkgver = 2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://stuntrally.tuxfamily.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = boost
-	depends = ogre>=1.9
-	depends = mygui
+	depends = ogre-1.9
+	depends = mygui-ogre1.9
 	depends = sdl2
 	depends = libvorbis
 	depends = enet
