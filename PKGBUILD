@@ -7,14 +7,14 @@
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc-headers
 pkgver=2.25
-pkgrel=5
+pkgrel=7
 _commit=adc7e06fb412a2a1ee52f8cb788caf436335b9f3  # release/2.25/master
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
 url="http://www.gnu.org/software/libc/"
 license=('GPL' 'LGPL')
 depends=("${_target}-linux-api-headers>=4.10.1-1")
-makedepends=("${_target}-gcc-stage1>=6.3.1-2")
+makedepends=("${_target}-gcc-stage1>=7.1.1-4")
 options=('!buildflags' '!strip' 'staticlibs')
 source=(http://ftp.gnu.org/gnu/libc/glibc-${pkgver}.tar.xz{,.sig}
         glibc-${_commit}.patch)
