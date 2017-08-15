@@ -2,8 +2,8 @@
 
 pkgbase=intellij-idea-ultimate-edition
 pkgname=(intellij-idea-ultimate-edition intellij-idea-ultimate-edition-jre)
-pkgver=2017.2.1
-_buildver=172.3544.35
+pkgver=2017.2.2
+_buildver=172.3757.52
 pkgrel=1
 arch=('any')
 pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity."
@@ -15,7 +15,7 @@ source=(https://download.jetbrains.com/idea/ideaIU-$pkgver.tar.gz \
         intellijidea.sh \
         jetbrains-idea.desktop
 )
-sha256sums=('136674855d26fb7f07a914eecc7236b177ef8349c23aa7811b9670da43d62ae2'
+sha256sums=('b5f33894abbf31786a17779bc11bfbe05f46cbbcd516fc2d48590411c44be95c'
             'ed7883b33b6fa9f2e303e5549bd238ceb552ec11ca116730271a58aca685229a'
             '83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b')
 package_intellij-idea-ultimate-edition() {
