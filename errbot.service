@@ -1,0 +1,12 @@
+[Unit]
+Description=ErrBot
+After=network.target
+
+[Service]
+User=jabber
+Type=simple
+ExecStart=/usr/bin/errbot
+WorkingDirectory=/etc/errbot
+
+[Install]
+WantedBy=multi-user.target
