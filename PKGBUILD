@@ -2,32 +2,29 @@
 
 pkgbase=postgresql-beta
 pkgname=('postgresql-beta-libs' 'postgresql-beta-docs' 'postgresql-beta')
-pkgver=9.6rc1
-_majorver=9.6
+pkgver=10beta3
+_majorver=10
 pkgrel=1
+pkgdesc='Sophisticated object-relational DBMS'
+url='https://www.postgresql.org/'
 arch=('aarch64' 'i686' 'x86_64')
-url="http://www.postgresql.org/"
 license=('custom:PostgreSQL')
 makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0')
 source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
-        postgresql.pam postgresql.logrotate
-        postgresql.service postgresql-check-db-dir)
-md5sums=('ee9f4ee46f2e0c8c2e4e44ca310c4a86'
-         '75c579eed03ffb2312631f0b649175b4'
-         '96f82c38f3f540b53f3e5144900acf17'
-         'd28e443f9f65a5712c52018b84e27137'
-         '5a7933453a572bbe12320b088272ee71'
-         '6eb990a98cdd2e385de2c53c288a388c')
-sha256sums=('9e260252f04b7f6abe3877eb1cb8affa4ecc2abbadadf9bd874ad257e9a01a1d'
+        postgresql.pam
+        postgresql.logrotate
+        postgresql.service
+        postgresql-check-db-dir)
+sha256sums=('6722546739f8e2dd379e8031784e86c5c588638df6c477046ebdd479586bcb3e'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
             'b48fe97f8e43ed0d2041d519119a4dafb70fcae72870951bf4fb7350fe169ac8'
-            '40da687da4fb1f6b35f406dd0f48922065d8c905d678e2a27da05806f874b780')
+            '888a1d44f03fccfa4bf344ee45824fefb846ae3c1c0c40113ad6020b4be3b0cf')
 
 build() {
-  cd "${srcdir}/postgresql-${pkgver}"
+  cd postgresql-${pkgver}
 
   patch -Np1 < ../postgresql-run-socket.patch
 
@@ -57,10 +54,10 @@ package_postgresql-beta-libs() {
   provides=('postgresql-client' 'postgresql-libs')
   conflicts=('postgresql-client' 'postgresql-libs')
 
-  cd "${srcdir}/postgresql-${pkgver}"
+  cd postgresql-${pkgver}
 
   # install license
-  install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/postgresql-libs/LICENSE"
+  install -Dm 644 COPYRIGHT "${pkgdir}/usr/share/licenses/postgresql-libs/LICENSE"
 
   # install libs and non-server binaries
   for dir in src/interfaces src/bin/pg_config src/bin/pg_dump src/bin/psql src/bin/scripts; do
@@ -68,8 +65,8 @@ package_postgresql-beta-libs() {
   done
 
   for util in pg_config pg_dump pg_dumpall pg_restore psql \
-      clusterdb createdb createlang createuser dropdb droplang dropuser pg_isready reindexdb vacuumdb; do
-    install -D -m644 doc/src/sgml/man1/${util}.1 "${pkgdir}"/usr/share/man/man1/${util}.1
+      clusterdb createdb createuser dropdb dropuser pg_isready reindexdb vacuumdb; do
+    install -Dm 644 doc/src/sgml/man1/${util}.1 "${pkgdir}"/usr/share/man/man1/${util}.1
   done
 
   cd src/include
@@ -77,18 +74,18 @@ package_postgresql-beta-libs() {
   mkdir -p "${pkgdir}"/usr/include/{libpq,postgresql/internal/libpq}
 
   # these headers are needed by the public headers of the interfaces
-  install -m644 pg_config.h "${pkgdir}/usr/include/"
-  install -m644 pg_config_os.h "${pkgdir}/usr/include/"
-  install -m644 pg_config_ext.h "${pkgdir}/usr/include/"
-  install -m644 postgres_ext.h "${pkgdir}/usr/include/"
-  install -m644 libpq/libpq-fs.h "${pkgdir}/usr/include/libpq/"
-  install -m644 pg_config_manual.h "${pkgdir}/usr/include/"
+  install -m 644 pg_config.h "${pkgdir}/usr/include"
+  install -m 644 pg_config_os.h "${pkgdir}/usr/include"
+  install -m 644 pg_config_ext.h "${pkgdir}/usr/include"
+  install -m 644 postgres_ext.h "${pkgdir}/usr/include"
+  install -m 644 libpq/libpq-fs.h "${pkgdir}/usr/include/libpq"
+  install -m 644 pg_config_manual.h "${pkgdir}/usr/include"
 
-  # these headers are needed by the not-so-public headers of the interfaces
-  install -m644 c.h "${pkgdir}/usr/include/postgresql/internal/"
-  install -m644 port.h "${pkgdir}/usr/include/postgresql/internal/"
-  install -m644 postgres_fe.h "${pkgdir}/usr/include/postgresql/internal/"
-  install -m644 libpq/pqcomm.h "${pkgdir}/usr/include/postgresql/internal/libpq/"
+  # these he aders are needed by the not-so-public headers of the interfaces
+  install -m 644 c.h "${pkgdir}/usr/include/postgresql/internal"
+  install -m 644 port.h "${pkgdir}/usr/include/postgresql/internal"
+  install -m 644 postgres_fe.h "${pkgdir}/usr/include/postgresql/internal"
+  install -m 644 libpq/pqcomm.h "${pkgdir}/usr/include/postgresql/internal/libpq"
 }
 
 package_postgresql-beta-docs() {
@@ -100,10 +97,10 @@ package_postgresql-beta-docs() {
   cd "${srcdir}/postgresql-${pkgver}"
 
   # install license
-  install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/postgresql-docs/LICENSE"
+  install -Dm 644 COPYRIGHT "${pkgdir}/usr/share/licenses/postgresql-docs/LICENSE"
 
   make -C doc/src/sgml DESTDIR="${pkgdir}" install-html
-  chown -R root:root "${pkgdir}/usr/share/doc/postgresql/html/"
+  chown -R root:root "${pkgdir}/usr/share/doc/postgresql/html"
 
   # clean up
   rmdir "${pkgdir}"/usr/share/man/man{1,3,7}
@@ -111,7 +108,7 @@ package_postgresql-beta-docs() {
 }
 
 package_postgresql-beta() {
-  pkgdesc="A sophisticated object-relational DBMS"
+  pkgdesc='Sophisticated object-relational DBMS'
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
   depends=("postgresql-beta-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'pam')
   optdepends=('python: for PL/Python support'
@@ -123,7 +120,7 @@ package_postgresql-beta() {
   conflicts=('postgresql')
   install=postgresql.install
 
-  cd "${srcdir}/postgresql-${pkgver}"
+  cd postgresql-${pkgver}
 
   # install
   make DESTDIR="${pkgdir}" install
@@ -135,12 +132,12 @@ package_postgresql-beta() {
     make -C ${dir} DESTDIR="${pkgdir}" uninstall
   done
   for util in pg_config pg_dump pg_dumpall pg_restore psql \
-      clusterdb createdb createlang createuser dropdb droplang dropuser pg_isready reindexdb vacuumdb; do
+      clusterdb createdb createuser dropdb dropuser pg_isready reindexdb vacuumdb; do
     rm "${pkgdir}"/usr/share/man/man1/${util}.1
   done
 
   # install license
-  install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+  install -Dm 644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 
   # clean up unneeded installed items
   rm -rf "${pkgdir}/usr/include/postgresql/internal"
@@ -148,14 +145,16 @@ package_postgresql-beta() {
   find "${pkgdir}/usr/include" -maxdepth 1 -type f -execdir rm {} +
   rmdir "${pkgdir}/usr/share/doc/postgresql/html"
 
-  install -D -m644 "${srcdir}/postgresql.service" \
+  install -Dm 644 "${srcdir}/postgresql.service" \
     "${pkgdir}/usr/lib/systemd/system/postgresql.service"
-  install -D -m755 "${srcdir}/postgresql-check-db-dir" \
+  install -Dm 755 "${srcdir}/postgresql-check-db-dir" \
     "${pkgdir}/usr/bin/postgresql-check-db-dir"
 
-  install -D -m644 "${srcdir}/postgresql.pam" \
+  install -Dm 644 "${srcdir}/postgresql.pam" \
     "${pkgdir}/etc/pam.d/postgresql"
 
-  install -D -m644 "${srcdir}/postgresql.logrotate" \
+  install -Dm 644 "${srcdir}/postgresql.logrotate" \
     "${pkgdir}/etc/logrotate.d/postgresql"
 }
+
+# vim: ts=2 sw=2 et:
