@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.0.0b6.r2.g3b512d9
+pkgver=3.2.1.r683.g96bdd0e52
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -12,7 +12,6 @@ license=('MIT')
 makedepends=('python2-sphinx' 'python2-setuptools' 
              'python-sphinx' 'python-setuptools'
              'git')
-install=$pkgname.install
 source=($_pkgname2::git://github.com/spyder-ide/spyder.git)
 md5sums=('SKIP')
 
@@ -38,12 +37,10 @@ build() {
 
 package_spyder-git() {
   pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 2 version)"
-  # Note: 'ipython2-notebook' contains QTConsole
-  # Note: 'ipython2' (dependency of 'ipython2-notebook') contains Pickleshare
   # Note: 'ipython2-notebook' nor 'jupyter'/'jupyter-nbconvert' contain a Python 2 version of Nbconvert
   # 'icu'
   depends=('python2-pyqt5'
-           'ipython2-notebook'
+           'python2-qtconsole'
            'python2-rope'
            'python2-jedi'
            'python2-pyflakes'
@@ -53,6 +50,7 @@ package_spyder-git() {
            'python2-pycodestyle'
            'python2-psutil'
            'python2-qtawesome'
+           'python2-pickleshare'
            'python2-pyzmq'
            'desktop-file-utils'
            'gtk-update-icon-cache')
@@ -78,11 +76,9 @@ package_spyder-git() {
 
 package_spyder3-git() {
   pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 3 version)"
-  # Note: 'jupyter' (dependency of 'jupyter-nbconvert') contains QTConsole
-  # Note: 'ipython' (dependency of 'jupyter-nbconvert') contains Pickleshare
   # 'icu'
   depends=('python-pyqt5'
-           'jupyter-nbconvert'
+           'python-qtconsole'
            'python-rope'
            'python-jedi'
            'python-pyflakes'
@@ -91,7 +87,9 @@ package_spyder3-git() {
            'python-pylint'
            'python-pycodestyle'
            'python-psutil'
+           'jupyter-nbconvert'
            'python-qtawesome'
+           'python-pickleshare'
            'python-pyzmq'
            'desktop-file-utils'
            'gtk-update-icon-cache')
