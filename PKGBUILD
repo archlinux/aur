@@ -4,7 +4,7 @@
 pkgname=visit
 pkgver=2.12.3
 _pkgver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
 arch=('i686' 'x86_64')
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
