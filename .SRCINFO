@@ -1,0 +1,14 @@
+pkgbase = ctk
+	pkgdesc = A Curses implementation of Tk / Make your Tk apps CUI apps
+	pkgver = 8.0.4001
+	pkgrel = 1
+	url = http://rkeene.org/devel/ctk/
+	arch = any
+	license = MIT
+	depends = tcl
+	depends = ncurses
+	source = http://rkeene.org/devel/ctk/ctk-8.0.4001.tar.gz
+	md5sums = 3d2746f499cf0d2158dfbedfad0afc47
+
+pkgname = ctk
+
