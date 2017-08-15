@@ -1,37 +1,44 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=matrix-synapse-git
-pkgver=0.19.3.r181.g8a240e4f
+pkgver=0.22.1.r36.geae04f19
 pkgrel=1
+
 pkgdesc="Matrix reference homeserver"
-license=('Apache')
-arch=('any')
 url="https://github.com/matrix-org/synapse"
-depends=('python2-twisted' 'python2-service-identity'
+arch=('any')
+license=('Apache')
+
+depends=('python2-jsonschema' 'python2-twisted' 'python2-service-identity'
          'python2-pyopenssl' 'python2-yaml' 'python2-pyasn1' 'python2-pynacl'
-         'python2-daemonize' 'python2-py-bcrypt' 'python2-frozendict'
+         'python2-daemonize' 'python2-bcrypt' 'python2-frozendict'
          'python2-pillow' 'python2-pydenticon' 'python2-ujson' 'python2-blist'
          'python2-pysaml2' 'python2-setuptools'
          'python2-systemd' 'python2-unpaddedbase64' 'python2-canonicaljson'
          'python2-signedjson' 'python2-pymacaroons-pynacl'
-	 'python2-service-identity' 'python2-msgpack' 'python2-phonenumbers'
-         'python2-jsonschema')
+         'python2-service-identity' 'python2-msgpack'
+         'python2-phonenumbers'
+         'systemd')
 makedepends=('python2-mock' 'git')
 optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)'
-            'python2-matrix-angular-sdk-git: built-in web client (UNMAINTAINED)'
             'python2-netaddr: URL previewing'
             'python2-jinja: e-mail notifications'
             'python2-bleach: e-mail notifications'
             'python2-matrix-synapse-ldap3: LDAP support'
-            'python2-psutil: metrics')
+            'python2-psutil: metrics'
+	    'python2-matrix-angular-sdk-git: built-in web client (UNMAINTAINED)')
+
 source=("git://github.com/matrix-org/synapse.git#branch=develop"
         'sysusers-synapse.conf'
         'deps-relax-checks.patch')
+
 md5sums=('SKIP'
-         'dfbffdd307c5559357a2ff51a1906700'
+         'ecd9f66fb57fe1a2e1e2df07a460a35b'
          '74d3d018e588d70ff0a22863d3d7aa4e')
+
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
+
 provides=('matrix-synapse')
 conflicts=('matrix-synapse')
 
@@ -58,12 +65,8 @@ package() {
 		sed -re 's|env python$|&2.7|' -i "${file}"
 	done
 
-	install -Dm644 "contrib/systemd/log_config.yaml" \
-		"${pkgdir}/etc/synapse/log_config.yaml"
-
-	install -Dm644 "contrib/systemd/synapse.service" \
-		"${pkgdir}/usr/lib/systemd/system/synapse.service"
-
-	install -Dm644 "${srcdir}/sysusers-synapse.conf" \
-		"${pkgdir}/usr/lib/sysusers.d/synapse.conf"
+	install -dm755 -o 198 -g 198 "$pkgdir"/etc/synapse
+	install -Dm644 contrib/systemd/log_config.yaml "$pkgdir"/etc/synapse/log_config.yaml
+	install -Dm644 contrib/systemd/synapse.service "$pkgdir"/usr/lib/systemd/system/synapse.service
+	install -Dm644 "$srcdir"/sysusers-synapse.conf "$pkgdir"/usr/lib/sysusers.d/synapse.conf
 }
