@@ -33,8 +33,8 @@ package()
     install -d $pkgdir/usr/share/applications
     install -d $pkgdir/usr/share/zfw-module
     cd "$srcdir/$pkgname-$pkgver.r$pkgrel"
-    install -m755 -s $_CompName $pkgdir/usr/bin/ZFW-Module
+    install -m755 -s $_CompName $pkgdir/usr/bin/zfw-module
     install -m644 _Install/_Desktop/zfw-module.png $pkgdir/usr/share/pixmaps
-    install -m644 _Install/_Desktop/ZFW-Module.desktop $pkgdir/usr/share/applications
+    install -m644 _Install/_Desktop/zfw-module.desktop $pkgdir/usr/share/applications
     install -m644 _Install/_Share/* $pkgdir/usr/share/zfw-module
 }
