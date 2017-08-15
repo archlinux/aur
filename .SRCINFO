@@ -1,7 +1,7 @@
 pkgbase = workrave-next-gtk3-git
 	pkgdesc = a tool to help RSI (bleeding-edge gtk3 including mutter/wayland support)
 	pkgver = v1_10_16.r644.7ede0462
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rcaelers/workrave/tree/next
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = workrave-next-gtk3-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
+	makedepends = intltool
 	depends = gtkmm3
 	depends = gstreamer
 	depends = libxss
