@@ -1,7 +1,7 @@
 pkgbase = abchr
 	pkgdesc = Tool to do ABC/HR or ABX blind tests on audio files
 	pkgver = 0.5b
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rarewares.org/others.php#java-abc-hr
 	arch = any
 	license = LGPL
@@ -19,7 +19,7 @@ pkgbase = abchr
 	source = abchr
 	source = clicodecs.cfg.patch
 	sha512sums = 322b3ba473dd39ed3c75a82d932ba67f8d651492e7a2adb2ea8d106372e79ac4b002452e06da56fa36ebfd5282d7bd2986d8f5bf079695bbfb2992011aaea889
-	sha512sums = 4cc54936858fd30728431443f4eea6698dc87eee03a53077d4cf784abe471fd6e78f573770bd77c3d20bd248656aa3579e7c43de4003c9380a9f9fd45f4404c7
+	sha512sums = 4bfe670dee0f44bf137599f99b3238f6dee16bc4e9edb47dff75d88f9dd2a005809a48dbe6a8228cb87d750b5e15dd2447e4d200b1ce113d62265303795ec9bf
 	sha512sums = b1ec7600fc23ebb54ef2aec20065bde9c6ff66a70d1dabdb04c56e2cba6fae5cce0cf451d9cd37bcccc9212a60766424b0e8a21b9fe25d998033aacde771afb3
 
 pkgname = abchr

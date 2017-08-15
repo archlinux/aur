@@ -1,3 +1,19 @@
-#!/bin/sh
+#!/bin/bash -eu
 
-cd /usr/share/abchr && exec /usr/bin/java -jar /usr/share/java/abchr/abchr.jar
+# auto cleanup
+at_exit() {
+  set +u
+  rm -Rf "$TMP_DIR"
+  set -u
+}
+trap at_exit EXIT
+
+readonly TMP_DIR=$(mktemp -d /tmp/$(basename -- $0).XXXXXXXXXX)
+
+ln -s {/usr/share/abchr,"$TMP_DIR"}/clicodecs.cfg
+
+pushd $TMP_DIR > /dev/null
+
+/usr/bin/java -jar /usr/share/java/abchr/abchr.jar
+
+popd > /dev/null
