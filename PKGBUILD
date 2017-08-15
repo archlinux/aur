@@ -1,7 +1,7 @@
 pkgname=ghdl
 pkgver=0.34
-pkgrel=2
-_gccver=7.1.0
+pkgrel=3
+_gccver=7.2.0
 _islver=0.18
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator'
@@ -12,13 +12,13 @@ install=ghdl.install
 options=(!emptydirs staticlibs)
 
 source=(
-  "git+https://github.com/tgingold/ghdl#tag=GHDL-v${pkgver}"
-  "https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.bz2"
+  "git+https://github.com/tgingold/ghdl#tag=GHDL-${pkgver}"
+  "https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 )
 md5sums=(
   'SKIP'
-  '6bf56a2bca9dac9dbbf8e8d1036964a8'
+  'ff370482573133a7fcdd96cd2f552292'
   '11436d6b205e516635b666090b94ab32'
 )
 
