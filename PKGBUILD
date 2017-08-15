@@ -1,6 +1,6 @@
 # Maintainer: Dan McCurry <dan.mccurry at linux dot com>
 pkgname=fullprof-suite
-pkgver=2017.03
+pkgver=2017.07
 pkgrel=1
 pkgdesc="Crystallographic tools for Rietveld, profile matching & integrated intensity refinements of X-Ray and/or neutron data."
 arch=('x86_64')
@@ -16,10 +16,10 @@ install=${pkgname}.install
 # You will need to download the .tgz file from the webpage directly:
 # https://www.ill.eu/sites/fullprof/php/downloads.html
 
-source=("file://FullProf_Suite_March2017_Linux64.tgz"
+source=("file://FullProf_Suite_July2017_Linux64.tgz"
 	"fullprof-bin")
 noextract=("${source##*/}")
-md5sums=('26e75738ffe284fb1399279c46f88391'
+md5sums=('2042ff640d1c47958809ef3a19d6725c'
          'e91280ece6411983c74b3a8071402eb9')
 PKGEXT=.pkg.tar
 
