@@ -12,6 +12,6 @@
  m4a, faad -o %o %i
 -wv, wvunpack -q %i %o
 \ Pas de fin de ligne à la fin du fichier
-+wv, wvunpack -q %i %o
++wv, wvunpack -q -o %o %i
 +aac, faad -o %o %i
 +opus, opusdec --quiet %i %o

@@ -1,7 +1,7 @@
 # Maintainer: desbma
 pkgname=abchr
 pkgver=0.5b
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to do ABC/HR or ABX blind tests on audio files"
 arch=('any')
 url="http://www.rarewares.org/others.php#java-abc-hr"
@@ -21,7 +21,7 @@ source=(http://www.rarewares.org/files/others/$pkgname-java-$pkgver.zip
         'clicodecs.cfg.patch')
 sha512sums=('322b3ba473dd39ed3c75a82d932ba67f8d651492e7a2adb2ea8d106372e79ac4b002452e06da56fa36ebfd5282d7bd2986d8f5bf079695bbfb2992011aaea889'
             '4bfe670dee0f44bf137599f99b3238f6dee16bc4e9edb47dff75d88f9dd2a005809a48dbe6a8228cb87d750b5e15dd2447e4d200b1ce113d62265303795ec9bf'
-            'b1ec7600fc23ebb54ef2aec20065bde9c6ff66a70d1dabdb04c56e2cba6fae5cce0cf451d9cd37bcccc9212a60766424b0e8a21b9fe25d998033aacde771afb3')
+            '40c74828e6d63829945c9d5660f925c85acf721ebe5e61451fcd7386a31583917bbae319ce3d7a1f1b6d9dfe2cfd93f7e6b593caa5deb98c85bab641e3aeb02f')
 
 prepare() {
     cd "abchr-java"
