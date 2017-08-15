@@ -1,6 +1,6 @@
 pkgbase = atril-dev
 	pkgdesc = MATE document viewer
-	pkgver = 1.19.0
+	pkgver = 1.19.1
 	pkgrel = 6
 	url = http://mate-desktop.org
 	arch = i686
@@ -39,8 +39,8 @@ pkgbase = atril-dev
 	provides = atril-gtk3
 	conflicts = atril
 	conflicts = atril-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/atril-1.19.0.tar.xz
-	sha1sums = 8310ef0e6cf020a2c9c73fd9831e3d93866ffb37
+	source = http://pub.mate-desktop.org/releases/1.19/atril-1.19.1.tar.xz
+	sha1sums = 46c31e0cc17b9b67cee2f1e943b62774e1f3b59c
 
 pkgname = atril-dev
 	pkgdesc = MATE document viewer (GTK3 version)
