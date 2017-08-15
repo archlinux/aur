@@ -1,11 +1,11 @@
 pkgname=open-phd-guiding-git
 pkgver=r2016.6240b87a
-pkgrel=3
+pkgrel=4
 pkgdesc="Open PHD Guiding - PHD2 astrophotography autoguiding tool"
 url="http://openphdguiding.org/"
 arch=('i686' 'x86_64')
 license=('BSD3')
-depends=('wxgtk' 'v4l-utils' 'zlib' 'cfitsio' 'opencv')
+depends=('wxgtk' 'v4l-utils' 'zlib' 'cfitsio' 'opencv' 'libnova' 'libindi')
 makedepends=('git' 'cmake')
 source=("git+https://github.com/OpenPHDGuiding/phd2.git")
 sha1sums=('SKIP')
