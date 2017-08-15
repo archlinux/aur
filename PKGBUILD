@@ -9,9 +9,9 @@
 pkgname=plex-media-server
 pkgver=1.7.5.4035
 _pkgsum=313f93718
-pkgrel=4
+pkgrel=5
 pkgdesc='Plex Media Server'
-arch=('armv7h' 'i686' 'x86_64')
+arch=('i686' 'x86_64')
 url='https://plex.tv/'
 license=('custom')
 depends=('systemd')
@@ -23,14 +23,12 @@ source=('plexmediaserver.conf.d'
         'plexmediaserver.service'
         'plex.sysusers'
         'terms.txt')
-source_armv7h=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/PlexMediaServer-${pkgver}-${_pkgsum}-arm7.spk")
 source_i686=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.i386.rpm")
 source_x86_64=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm")
 sha256sums=('7ab1ee8da9012d257b7f473fb79d76b201ca592cbe3722f977a43b58bfad180e'
             '9a214a37cc8dd5fd912d5bcca16445f023f892aafd4ca54226aeb2b4910d23a2'
             'ebf153d5789f9d24cb98ae607d227286e1da6ce54e149c8be4f47e08ee729573'
             'dbfb5a9a7146a975863c0932f1a68c4b040ec5d7e693361f39ddfbf60885e631')
-sha256sums_armv7h=('e2d0be1b0a2c97bd7739170ab2e7b53492fe68e6ad6a498b3c033087985aa065')
 sha256sums_i686=('03d5425fa487f4edbd086a1f6cde83d6b116653b8658367b4897d8ad266a0506')
 sha256sums_x86_64=('89b8585e561046a8422d520ebcdae784f5dc3c895aac8d313c435cc6b58795b8')
 
