@@ -7,8 +7,8 @@ pkgdesc="Objects and routines pertaining to date and time (tempora)."
 arch=('any')
 url="https://github.com/jaraco/tempora"
 license=('MIT')
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools' 'python-setuptools-scm' 'python2-setuptools-scm')
-checkdepends=('python-tox' 'python2-tox' 'python2-backports.unittest_mock' 'python-setuptools' 'python2-setuptools' 'python-setuptools-scm' 'python2-setuptools-scm')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-setuptools-scm' 'python2-setuptools-scm')
+checkdepends=('python-tox' 'python2-tox' 'python2-backports.unittest_mock')
 source=("https://github.com/jaraco/tempora/archive/$pkgver.tar.gz")
 md5sums=('b1bc1e3d2374b229d5fae1938d54364c')
 
@@ -19,7 +19,6 @@ build() {
     export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
     cd "$srcdir/tempora-$pkgver"
     python ./setup.py build
-    # setuptools wont find version from git tag
 
     cd "${srcdir}/tempora-${pkgver}-py2"
     python2 ./setup.py build
