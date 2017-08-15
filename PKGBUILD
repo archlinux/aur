@@ -1,8 +1,9 @@
 # Maintainer: Max Liebkies <mail at maxliebkies dot de>
 
 pkgname=dotnet-runtime-2.0
-pkgver=2.0.0_preview2_25407_01
-pkgrel=1
+pkgver=2.0.0
+pkgrel=2
+epoch=1
 pkgdesc="A command line utility for building, testing, packaging and running .NET Core applications and libraries"
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
@@ -12,9 +13,9 @@ options=('staticlibs')
 
 conflicts=('dotnet-lts')
 
-source=("https://download.microsoft.com/download/8/5/8/85896F6E-C7F5-4ECA-ADF7-CCE8EFAD9AA6/dotnet-runtime-2.0.0-preview2-25407-01-linux-x64.tar.gz")
+source=("https://download.microsoft.com/download/5/F/0/5F0362BD-7D0A-4A9D-9BF9-022C6B15B04D/dotnet-runtime-2.0.0-linux-x64.tar.gz")
 
-sha256sums=('1fe615f179fef606b97d43ce07a491da9067716ff594f929b82d8772d461c027')
+sha256sums=('69ecad24bce4f2132e0db616b49e2c35487d13e3c379dabc3ec860662467b714')
 
 package() {
   mkdir -p "${pkgdir}/opt/dotnet/shared/Microsoft.NETCore.App/"
