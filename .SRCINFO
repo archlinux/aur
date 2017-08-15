@@ -1,6 +1,6 @@
 pkgbase = mssql-server
 	pkgdesc = Microsoft SQL Server for Linux
-	pkgver = 14.0.800.90
+	pkgver = 14.0.900.75
 	pkgrel = 1
 	url = https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux
 	install = mssql-server.install
@@ -10,14 +10,18 @@ pkgbase = mssql-server
 	depends = numactl
 	depends = sssd
 	depends = openssl-1.0>=1.0.2.l
-	noextract = libjemalloc1_3.6.0-9ubuntu1_amd64.deb
-	noextract = libc++1_3.7.0-1_amd64.deb
-	source = https://packages.microsoft.com/ubuntu/16.04/mssql-server/pool/main/m/mssql-server/mssql-server_14.0.800.90-2_amd64.deb
-	source = http://mirrors.kernel.org/ubuntu/pool/universe/j/jemalloc/libjemalloc1_3.6.0-9ubuntu1_amd64.deb
-	source = http://mirrors.kernel.org/ubuntu/pool/universe/libc/libc++/libc++1_3.7.0-1_amd64.deb
-	sha256sums = d6090108af8788df23fd54fffc41876a39372a51a7abf2afed58fc8978c7b9cb
-	sha256sums = 50fd3720d129ad7d659b311bb8436169b851f3671112ef53bf5d03580d4947f1
-	sha256sums = 416f5c17bd9ac8727808918dd2e1af04078691772c5f3f16afb497e33dfc9fd6
+	noextract = ${pkgname}_${_prodver}_amd64.deb
+	noextract = ${_jemalloc}
+	noextract = ${_libcpp}
+	noextract = ${_libcppabi}
+	source = https://packages.microsoft.com/ubuntu/16.04/mssql-server/pool/main/m/mssql-server/mssql-server_14.0.900.75-1_amd64.deb
+	source = http://mirrors.kernel.org/ubuntu/pool/universe/j/jemalloc/libjemalloc1_3.6.0-10_amd64.deb
+	source = http://mirrors.kernel.org/ubuntu/pool/universe/libc/libc++/libc++1_3.9.1-3_amd64.deb
+	source = http://mirrors.kernel.org/ubuntu/pool/universe/libc/libc++/libc++abi1_3.9.1-3_amd64.deb
+	sha256sums = 6365e7a479d94a07e074093e895b02b6dc2a3a158f0d5e22aa70a246cd9a7094
+	sha256sums = 5e31b5dfb21525b9207ff0c70c34c69366300de342edb37070e816e0fbc27ad0
+	sha256sums = acf4594581ff04532c8da7427646e904393791ef7671fff95cde480d7269eafd
+	sha256sums = a3c8214afae4fd966ba277f47ae8554641999634f2b7d40e27705eb7c0d52be3
 
 pkgname = mssql-server
 
