@@ -2,7 +2,7 @@
 # Maintainer : Matteo Rossillol <mbasiccomputing@gmail.com>
 
 
-_CompName=zfw-module-330r1
+_CompName=zfw-module-330r2
 pkgname=zfw-module
 pkgver=3.3.0
 pkgrel=2
