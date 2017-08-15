@@ -9,15 +9,12 @@
 pkgname=plex-media-server
 pkgver=1.7.5.4035
 _pkgsum=313f93718
-pkgrel=2
+pkgrel=3
 pkgdesc='Plex Media Server'
 arch=('armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
 license=('custom')
 depends=('systemd')
-# Removed 8/7/17 due to prelink abandonment upstream
-# makedepends_i686=('prelink')
-# makedepends_x86_64=('prelink')
 provides=('plex-media-server')
 conflicts=('plex-media-server-plexpass')
 backup=('etc/conf.d/plexmediaserver')
@@ -41,9 +38,6 @@ prepare() {
 
 case "$CARCH" in
   arm*) mkdir -p usr/lib/plexmediaserver && tar -zxf package.tgz -C usr/lib/plexmediaserver/;;
-        # Fix for SELinux and Grsecurity
-        # Removed 8/7/17 due to prelink abandonment upstream
-     # *) execstack -c usr/lib/plexmediaserver/libgnsdk_dsp.so*;;
 esac
 
 }
