@@ -4,7 +4,7 @@ pkgname=pgi-compilers
 _release='17.4'
 _REL_VERSION='2017'
 pkgver=${_release}
-pkgrel=2
+pkgrel=3
 pkgdesc='PGI compilers and tools (Community Edition)'
 arch=('x86_64')
 url="https://www.pgroup.com/products/community.htm"
@@ -16,7 +16,7 @@ source=("file://pgilinux-${_REL_VERSION}-${_release//./}-x86_64.tar.gz"
         "pgi-compilers.sh")
 sha256sums=('115c212d526695fc116fe44f1e722793e60b6f7d1b341cd7e77a95da8e7f6c34'
             '78abb626ddb93482b9169e2b6da205067702c8da40a201f9b1a557c261c47270'
-            '941e9c0e5591b8f33e61d8d0d0834f3251d784d49a83c9cc38f2455d4c40d951')
+            '23d71aa379bed34f72eb47cc3e03ef189261b172d3a07bc9c7e472d34288a244')
 options=(!strip)
 
 package(){
