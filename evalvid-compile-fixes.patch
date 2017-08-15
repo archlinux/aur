@@ -1,0 +1,47 @@
+diff --git a/Makefile b/Makefile
+index 5f035e6..2faa337 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,17 +4,17 @@ OBJ=$(SRC:.c=.o)
+ PRF=-pg
+ COP=-W -Wall -Wno-sign-compare -Wno-multichar -Wno-pointer-sign -Wno-parentheses -Wno-missing-field-initializers -Wno-missing-braces -O3
+ DST=mp4trace etmp4 psnr hist mos miv eg vsgen
+-INSTDIR=/usr/local/bin
++LDFLAGS=-lpthread -lgpac_static -lz -lm -lpng -ljpeg -lssl -lcrypto
+ 
+ all: $(DST)
+ 
+ mp4trace: bits.o error.o lock.o misc.o queue.o socket.o thread.o timing.o mp4trace.o
+ 	@echo L $@ ...
+-	@$(CC) $^ -o $@ -lpthread -lgpac_static 
++	@$(CC) $^ -o $@ ${LDFLAGS}
+ 
+ etmp4: bits.o misc.o read.o stat.o writemp4.o etmp4.o
+ 	@echo L $@ ...
+-	@$(CC) $^ -o $@ -lgpac_static -lm
++	@$(CC) $^ -o $@ ${LDFLAGS}
+ 
+ psnr: psnr.o
+ 	@echo L $@ ...
+@@ -38,7 +38,7 @@ eg: misc.o random.o read.o eg.o
+ 
+ vsgen: vsgen.o
+ 	@echo L $@ ...
+-	@$(CC) $^ -o $@
++	@$(CC) $^ -o $@ -lm
+ 
+ %.o: %.c
+ 	@echo C $< ...
+diff --git a/types.h b/types.h
+index 0b26e8b..228b86a 100644
+--- a/types.h
++++ b/types.h
+@@ -7,7 +7,7 @@
+   typedef SOCKET sock_t;
+ #elif defined(__linux__)
+   typedef int sock_t;
+-  typedef unsigned long long u64;
++#include <gpac/setup.h>
+ #else
+   #include <stdint.h>
+   typedef int sock_t;
