@@ -8,7 +8,7 @@ _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
 pkgver=2.28.0
 _basever=2.28
-pkgrel=3
+pkgrel=4
 _commit=09e514a92b6bb7c910051a7fafc9fded8a687848
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=('i686' 'x86_64')
@@ -47,6 +47,7 @@ build() {
       --enable-ld=default \
       --enable-gold \
       --enable-plugins \
+      --enable-relro \
       --enable-deterministic-archives \
       --with-pic \
       --disable-werror \
