@@ -15,17 +15,17 @@ prepare() {
   [[ -f /etc/profile.d/go.sh ]] && source /etc/profile.d/go.sh
   export GOPATH=$srcdir/go
 
-  mkdir -p "$GOPATH/$(dirname "$gopackagepath")"
-  mv "$srcdir/$pkgname-$pkgver" "$GOPATH/$gopackagepath"
+  mkdir -p "$GOPATH/src/$(dirname "$gopackagepath")"
+  mv "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$gopackagepath"
 }
 
 build() {
-  cd "$GOPATH/$gopackagepath"
+  cd "$GOPATH/src/$gopackagepath"
   make
 }
 
 package() {
-  cd "$GOPATH/$gopackagepath"
+  cd "$GOPATH/src/$gopackagepath"
   make install DESTDIR=$pkgdir/usr
 }
 
