@@ -1,7 +1,7 @@
 # Maintainer: Raimar Buehmann (raimar)
 
 pkgname=lxtask-git
-pkgver=0.1.8.r411.20170125
+pkgver=0.1.8.r411.20170815
 pkgrel=1
 pkgdesc="Lightweight X11 task manager and system monitor for LXDE"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ sha256sums=(
 	'SKIP'
 )
 
-#_gitroot=$pkgname
+_gitroot=$pkgname
 
 pkgver() {
 	# remove ".r*.*" from package version
