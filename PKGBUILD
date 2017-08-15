@@ -8,8 +8,8 @@ url="http://www.pogo.org.uk/~mark/bpm-tools/"
 license=('GPL2')
 depends=('sox')
 optdepends=('gnuplot: for bpm-graph usage'
-            'flac: flac tagging support for bpm-tag'
-            'vorbis-tools: vorbis tagging support for bpm-tag'
+            'flac: FLAC tagging support for bpm-tag'
+            'vorbis-tools: Vorbis tagging support for bpm-tag'
             'id3v2: MP3 tagging support for bpm-tag')
 source=(http://www.pogo.org.uk/~mark/${pkgname}/releases/${pkgname}-${pkgver}.tar.gz
         'fix-bpm-graph-man.patch')
