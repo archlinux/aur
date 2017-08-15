@@ -1,0 +1,21 @@
+--- archive_files/common/lib/modules/fglrx/build_mod/firegl_public.c	2015-12-18 19:47:41.000000000 +0100
++++ archive_filesb/common/lib/modules/fglrx/build_mod/firegl_public.c	2017-08-15 21:14:37.288814512 +0200
+@@ -6508,8 +6508,6 @@
+ #else
+          __save_init_fpu(cur_task);
+ #endif
+-    else
+-         clts();
+ 
+ #else
+     /* TS_USEDFPU is removed in kernel 3.3+ and 3.2.8+ with the commit below:
+@@ -6534,8 +6532,7 @@
+ #else
+         __save_init_fpu(cur_task);
+ #endif
+-    else
+-         clts();
++
+ #endif
+ #endif
+ }
