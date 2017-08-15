@@ -2,20 +2,20 @@
 
 _pkgname=xfce4-appfinder
 pkgname=${_pkgname}-devel
-pkgver=4.11.0
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="An application finder for Xfce"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4')
-depends=('libxfce4ui>=4.11' 'garcon>=0.3.0' 'hicolor-icon-theme')
+depends=('libxfce4ui' 'garcon' 'hicolor-icon-theme')
 makedepends=('intltool')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=('xfce-utils')
-source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('49bfe38623b5a6e65b8a654d353f439e6dcf981aaf831fe2e31d59dacd95c618')
+source=("http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
+sha256sums=('c0eb3b29eba3cfa9175ed35174e83a21faa2a2423ddb79501fe8846cc430e3ae')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
