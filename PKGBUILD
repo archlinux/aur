@@ -22,8 +22,8 @@
 # option will force the rebuild of all git sources.
 
 pkgname=mupen64plus-git
-pkgver=2.5.r374.g1d6d57e.20170529.153246
-pkgrel=2
+pkgver=2.5.r462.ga0672bb.20170813.001839
+pkgrel=1
 pkgdesc='Nintendo64 Emulator (git version)'
 arch=('i686' 'x86_64')
 url='http://www.mupen64plus.org/'
@@ -201,6 +201,11 @@ build() {
                 _previous_version="$_prev_ver_uiconsole"
                 _current_version="$_curr_ver_uiconsole"
                 _current_date="$_curr_date_uiconsole"
+                
+                # fix for 'ui-console' component (it needs to be compiled with -fPIC)
+                _target_line="$(sed -n '/^ifeq ($(OS), LINUX)/='   "mupen64plus-${_component}/projects/unix/Makefile")"
+                sed -i "$((_target_line + 1))i\  \CFLAGS += -fPIC" "mupen64plus-${_component}/projects/unix/Makefile"
+                
                 ;;
             *)
                 printf '%s\n' "error: invalid component '${_component}' (this should not happen!)"
