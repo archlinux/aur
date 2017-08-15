@@ -1,20 +1,16 @@
 pkgbase = python-portend
 	pkgdesc = Use portend to monitor TCP ports for bound or unbound states.
 	pkgver = 2.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jaraco/portend
 	arch = any
 	license = MIT
 	checkdepends = python-tox
 	checkdepends = python2-tox
-	makedepends = python
-	makedepends = python2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python2-setuptools-scm
-	depends = python-tempora
-	depends = python2-tempora
 	source = https://github.com/jaraco/portend/archive/2.1.2.tar.gz
 	md5sums = cb13025e66b05b891ac7a2b428e35456
 
