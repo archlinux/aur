@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-092-git
-pkgver=20170813.18109
+pkgver=20170815.18110
 pkgrel=2
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, from git branch 0.92.x"
 url="https://gitlab.com/inkscape/inkscape"
@@ -24,12 +24,12 @@ md5sums=('SKIP')
 _gitname="inkscape.git"
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$_gitname"
   printf %s.%s $(git log -1 --format="%cd" --date=short|tr -d -) $(git rev-list --count HEAD)
 }
 
 prepare() {
-  cd "$srcdir/$_gitname"
+  cd "$_gitname"
   #fix for inkscape to use python2 with the python 3 package installed.
   sed -i '1s|/usr/bin/python\>|/usr/bin/python2|' cxxtest/*.py
   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
@@ -42,7 +42,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd "$_gitname"
   [[ -d build ]] || mkdir build
   cd build
   
@@ -57,6 +57,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname/build"
+  cd "$_gitname/build"
   make DESTDIR="$pkgdir" install
 }
