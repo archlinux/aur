@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -46,7 +46,7 @@ depends=("$_pkgbasename"
       'lib32-libx264'
       'lib32-libvpx'
       )
-makedepends=('hardening-wrapper' 'lib32-ladspa' 'yasm')
+makedepends=('lib32-ladspa' 'lib32-libvdpau' 'yasm')
 optdepends=('lib32-ladspa: LADSPA filters')
 provides=(
       'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
