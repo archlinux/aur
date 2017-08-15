@@ -1,14 +1,14 @@
 # Maintainer: Max Liebkies <mail at maxliebkies dot de>
 
 pkgname=dotnet
-pkgver=1.1.2
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Meta package to pull in the latest stable dotnet package"
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
 license=('MIT')
 groups=()
-depends=('dotnet-runtime-1.1')
+depends=('dotnet-runtime-2.0')
 conflicts=('dotnet-bin')
 replaces=('dotnet-cli')
 
