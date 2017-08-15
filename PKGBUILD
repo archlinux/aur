@@ -9,21 +9,35 @@
 pkgbase=linux-drm-tip-git
 _srcname=drm-tip
 pkgver=r662284.035f22af3e97
+kernelver=4.12 # Dirty hack. Necessary. If yes, how to do it properly?
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
+# Is it ok to remove these packages? Is it ok to not provide docs?
+makedepends=( 'kmod' 'inetutils' 'bc' 'git' 'libelf') # Removed: 'xmlto' 'docbook-xsl'
+
 options=('!strip')
 source=('git+https://anongit.freedesktop.org/git/drm-tip.git'
+        # Patches. Not sure if they are necessary
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${kernelver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${kernelver}.sign"
+
         # the main kernel config files
-        'config' 'config.x86_64'
+        'config.i686' 'config.x86_64'
+        # pacman hook for initramfs regeneration
+        '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
-            'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
-            'd3bd627d1bde0982afbf23a0ad5f242efd531228f9e771b642f3247cc096ad28'
-            '2275b3e5642f86b27c6acfcf694fb7dc3220fd364d4158a4393c86046b691779')
+	    '22b97ddae916298b12d411cd501b7dc2b4dd1043ca77ddd5b2230cba19513e5f' # .SRCINFO
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0' # 90-linux.hook
+	    'df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1' # config.i686
+	    'bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586' # config.x86_64
+	    '07cf2e14bc20cb6439956b84aa16ae65029afe3de209041184e8673313ba77bc' # linux.install
+	    'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65' # linux-drm-tip-git.preset
+	    'd75bf4d300266586f0332181accc6dce4c331f856791f76514210abc773a6eeb' # PKGBUILD
+            )
 
 _kernelname=${pkgbase#linux}
 
@@ -42,15 +56,34 @@ pkgver() {
 prepare() {
   cd "${_srcname}"
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
-  fi
+ # add upstream patch
+ # I'm sure I did this wrong
+  patch -p1 -i "${srcdir}/patch-${_kernelver}"
+
+  # security patches
+
+  # add latest fixes from stable queue, if needed
+  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  cat "${srcdir}/config.${CARCH}" > ./.config
 
   # set localversion to git commit
-  sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config
-  sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
+  if [ "${_kernelname}" != "" ]; then
+    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${pkgver##*.}\"|g" ./.config
+    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
+  fi
+
+#Old old old
+
+#  if [ "${CARCH}" = "x86_64" ]; then
+#    cat "${srcdir}/config.x86_64" > ./.config
+#  else
+#    cat "${srcdir}/config" > ./.config
+#  fi
+
+ # set extraversion to pkgrel
+  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -69,7 +102,7 @@ prepare() {
 }
 
 build() {
-  cd "${_srcname}"
+  cd "${srcdir}/${_srcname}"
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
@@ -82,7 +115,7 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-  cd "${_srcname}"
+  cd "${srcdir}/${_srcname}"
 
   KARCH=x86
 
@@ -96,21 +129,42 @@ _package() {
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
+
+
+# Use this new stuff from upstream or the older one?
+  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+    "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${install}"
+
+# Older stuff
+
+#  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
+#  true && install=${install}.pkg
+#  sed \
+#    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
+#    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
+#    -i "${startdir}/${install}"
+    
+
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  
+    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+# Older code. I put here because of idk and as reference.
+
+#  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+#  sed \
+#    -e "1s|'linux.*'|'${pkgbase}'|" \
+#    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
+#    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
+#    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
+#    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+ # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -132,8 +186,9 @@ _package() {
   # add vmlinux
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
 
+  # New core linux PKGBUILD lacks this. Remove?
   # add System.map
-  install -D -m644 System.map "${pkgdir}/boot/System.map-${_kernver}"
+ # install -D -m644 System.map "${pkgdir}/boot/System.map-${_kernver}"
 }
 
 _package-headers() {
@@ -153,7 +208,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+    media net pcmcia rdma scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
@@ -239,9 +294,11 @@ _package-headers() {
   # Fix file conflict with -doc package
   rm "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild"/Kconfig.*-*
 
-  # Add objtool for CONFIG_STACK_VALIDATION
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
-  cp -a tools/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool
+  fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
@@ -278,6 +335,11 @@ _package-headers() {
   # remove a file already in linux package
   # Workaround to make it build
 #  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+
+  # remove a files already in linux-docs package
+#  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion
+#  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion
+#  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-br
 #}
 
 pkgname=("${pkgbase}" "${pkgbase}-headers") # "${pkgbase}-docs") # Workaround to make it build

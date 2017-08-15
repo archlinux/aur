@@ -1,12 +1,10 @@
 pkgbase = linux-drm-tip-git
-	pkgver = 4.11rc1.r0.gc1ae3cfa0e89
+	pkgver = r662284.035f22af3e97
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = docbook-xsl
 	makedepends = kmod
 	makedepends = inetutils
 	makedepends = bc
@@ -14,13 +12,17 @@ pkgbase = linux-drm-tip-git
 	makedepends = libelf
 	options = !strip
 	source = git+https://anongit.freedesktop.org/git/drm-tip.git
-	source = config
+	source = config.i686
 	source = config.x86_64
+	source = 90-linux.hook
 	source = linux-drm-tip-git.preset
 	sha256sums = SKIP
-	sha256sums = becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc
-	sha256sums = d3bd627d1bde0982afbf23a0ad5f242efd531228f9e771b642f3247cc096ad28
-	sha256sums = 2275b3e5642f86b27c6acfcf694fb7dc3220fd364d4158a4393c86046b691779
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
+	sha256sums = df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1
+	sha256sums = bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586
+	sha256sums = 07cf2e14bc20cb6439956b84aa16ae65029afe3de209041184e8673313ba77bc
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = d75bf4d300266586f0332181accc6dce4c331f856791f76514210abc773a6eeb
 
 pkgname = linux-drm-tip-git
 	pkgdesc = The Linux kernel and modules (git version)
@@ -36,8 +38,4 @@ pkgname = linux-drm-tip-git
 pkgname = linux-drm-tip-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
 	provides = linux-headers
-
-#pkgname = linux-drm-tip-git-docs
-#	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
-#	provides = linux-docs
 
