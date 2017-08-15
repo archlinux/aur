@@ -1,13 +1,13 @@
 # Maintainer: M0Rf30
 
 pkgname=partclone-utils
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Utility for use with partclone generated images."
 arch=('i686' 'x86_64')
 url="http://www.idealworldinc.com/partclone-utils/"
 license=(GPL)
-source=(http://www.idealworldinc.com/$pkgname/$pkgname.tar.gz)
+source=("https://sourceforge.net/projects/partclone-utils/files/$pkgname-$pkgver.tar.gz")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -20,4 +20,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('4c27d7fb4680cdcfe5871f2bdcd4475d')
+md5sums=('8ab22dfad00559533bc6694f756d6070')
