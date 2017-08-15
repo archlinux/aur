@@ -7,9 +7,9 @@ arch=('i686' 'x86_64')
 url="http://www.rstudio.com/shiny/server/install-opensource"
 license=('AGPL')
 depends=('r')
-makedepends=('git' 'python2' 'cmake' 'r')
+makedepends=('git' 'python2' 'cmake' 'r' 'gcc5')
 install='accounts.install'
-backup=('etc/shiny-server.conf')
+backup=('etc/shiny-server/shiny-server.conf')
 source=('shiny-server::git+https://github.com/rstudio/shiny-server.git' 
         'shiny-server.service')
 pkver(){
@@ -20,6 +20,7 @@ pkver(){
 _gitroot=https://github.com/rstudio/shiny-server.git
 _gitname=shiny-server
 prepare(){
+  # Vigorously force the use of python2
   cd $srcdir
   find -type f -exec sed \
         -e 's_^#!/usr/bin/env python$_&2_' \
@@ -32,18 +33,24 @@ build() {
   cd "$srcdir/$_gitname"
   mkdir tmp
   cd tmp
+  # More python2 hackery
   DIR=`pwd`
   PATH=$DIR/../bin/:$PATH
   ln -s `which python2` ../bin/python
   export _PYTHON=`which python2`
-  
   export PYTHON=`which python2`
+
+  # Node fails with gcc7
+  export CC=/bin/gcc-5
+  export CXX=/bin/g++-5
+
+  # CMake
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON="$_PYTHON" ../
   make
 
   mkdir ../build
   (cd .. && bin/npm --python="$PYTHON" install)
-  (cd .. && ext/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js --python="$PYTHON" rebuild)
+  (cd .. && bin/node ext/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js --python="$PYTHON" rebuild)
 }
 
 package() {
