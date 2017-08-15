@@ -1,7 +1,7 @@
 # Maintainer: Ethan Madison (aur<at>ethanmad<dot>com)
 
 pkgname=pia-tools
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="OpenVPN hook for privateinternetaccess.com"
 arch=("any")

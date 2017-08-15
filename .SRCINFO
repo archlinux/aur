@@ -1,6 +1,6 @@
 pkgbase = pia-tools
 	pkgdesc = OpenVPN hook for privateinternetaccess.com
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/pschmitt/pia-tools
 	install = pia-tools.install
@@ -15,8 +15,8 @@ pkgbase = pia-tools
 	depends = ufw
 	depends = unzip
 	depends = sed
-	source = pia-tools-1.1.1.tar.gz::https://github.com/pschmitt/pia-tools/archive/1.1.1.tar.gz
-	sha256sums = ce1b8acd7fd46c6e597b0ea09261115b83082c49262b2311f5edfb13bc05fb3a
+	source = pia-tools-1.1.2.tar.gz::https://github.com/pschmitt/pia-tools/archive/1.1.2.tar.gz
+	sha256sums = a884dc99e06b9c4dcb72ea8e4c661ac9b775838ccca6b4aff1526bd4daaccaf9
 
 pkgname = pia-tools
 
