@@ -3,7 +3,7 @@
 _pkgbase=libomxil-bellagio
 pkgname=lib32-$_pkgbase
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An opensource implementation of the OpenMAX Integration Layer API"
 arch=('x86_64')
 url="http://omxil.sourceforge.net"
@@ -23,16 +23,13 @@ prepare() {
 }
 
 build() {
-  _cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
-  _jc=$((${_cpucount:-1}))
-
   export CC="gcc -m32"
   cd ${srcdir}/${_pkgbase}-${pkgver}
 
   autoreconf -fiv
   ./configure --prefix=/usr --disable-static --libdir=/usr/lib32
 
-  make -j $_jc
+  make -j
 }
 
 package() {
