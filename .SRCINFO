@@ -1,22 +1,20 @@
 pkgbase = wings3d
 	pkgdesc = 3D modeling program
 	pkgver = 2.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.wings3d.com/
 	arch = x86_64
 	arch = i686
 	license = GPL
 	makedepends = gendesk
 	makedepends = imagemagick
+	depends = desktop-file-utils
 	depends = erlang-sdl
 	depends = erlang-cl
-	depends = bash
-	depends = desktop-file-utils
-	depends = erlang
 	optdepends = povray: rendering support via POV-Ray
-	source = http://downloads.sourceforge.net/project/wings/wings/2.1.5/wings-2.1.5.tar.bz2
+	source = https://downloads.sourceforge.net/project/wings/wings/2.1.5/wings-2.1.5.tar.bz2
 	source = wings3d.sh
 	sha256sums = f0f03cfe9f0ee0ee6c734a2b7e50410d5f21238441cb1f34422b0ecde25b582c
-	sha256sums = 9f91da23a91bd5808a4f3ce38472e262706f648804628648703ad3695df22e27
+	sha256sums = b44102a5c4f9f3cf71c17ef45ce534c5723b3aeb2f78298abdaf77b401982128
 
 pkgname = wings3d
