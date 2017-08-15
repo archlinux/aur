@@ -1,0 +1,171 @@
+diff --git archive_files/common/lib/modules/fglrx/build_mod/firegl_public.c archive_files/common/lib/modules/fglrx/build_mod/firegl_public.c
+index b2c9e7c..2e9a112 100755
+--- archive_files/common/lib/modules/fglrx/build_mod/firegl_public.c
++++ archive_files/common/lib/modules/fglrx/build_mod/firegl_public.c
+@@ -208,6 +208,10 @@
+ #include <linux/sched/signal.h>
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++#include <asm/set_memory.h>
++#endif
++
+ #include "firegl_public.h"
+ #include "kcl_osconfig.h"
+ #include "kcl_io.h"
+@@ -2752,6 +2756,9 @@ int ATI_API_CALL KCL_MEM_VerifyWriteAccess(void* addr, kcl_size_t size)
+ unsigned long ATI_API_CALL KCL_GetInitKerPte(unsigned long address)
+ {
+     pgd_t *pgd_p;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++    p4d_t *p4d_p;
++#endif
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,11)
+     pud_t *pud_p;
+ #endif
+@@ -2766,7 +2773,13 @@ unsigned long ATI_API_CALL KCL_GetInitKerPte(unsigned long address)
+ #endif
+     PGD_PRESENT(pgd_p);
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,11)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++    P4D_OFFSET(p4d_p, pgd_p, address);
++    P4D_PRESENT(p4d_p);
++    PUD_OFFSET(pud_p, p4d_p, address);
++#else
+     PUD_OFFSET(pud_p, pgd_p, address);
++#endif
+     PUD_PRESENT(pud_p);
+     PMD_OFFSET(pmd_p, pud_p, address);
+ #else
+@@ -2823,6 +2836,9 @@ unsigned long ATI_API_CALL KCL_GetPageTableByVirtAddr(
+         unsigned long * page_addr)
+ {
+     pgd_t* pgd_p;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++    p4d_t *p4d_p;
++#endif
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,11)
+     pud_t* pud_p;
+ #endif
+@@ -2835,7 +2851,13 @@ unsigned long ATI_API_CALL KCL_GetPageTableByVirtAddr(
+     KCL_DEBUG2(FN_FIREGL_KCL,"pgd_p=0x%08lx\n", (unsigned long)pgd_p);
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,11)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++    P4D_OFFSET(p4d_p, pgd_p, virtual_addr);
++    P4D_PRESENT(p4d_p);
++    PUD_OFFSET(pud_p, p4d_p, virtual_addr);
++#else
+     PUD_OFFSET(pud_p, pgd_p, virtual_addr);
++#endif
+     PUD_PRESENT(pud_p);
+     KCL_DEBUG2(FN_FIREGL_KCL,"pud_p=0x%08lx\n", (unsigned long)pud_p);
+     PMD_OFFSET(pmd_p, pud_p, virtual_addr);
+@@ -2892,6 +2914,9 @@ unsigned int ATI_API_CALL KCL_GetPageSizeByVirtAddr(
+         unsigned int  * page_size)
+ {
+     pgd_t* pgd_p;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++    p4d_t *p4d_p;
++#endif
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,11)
+     pud_t* pud_p;
+ #endif
+@@ -2904,7 +2929,13 @@ unsigned int ATI_API_CALL KCL_GetPageSizeByVirtAddr(
+     KCL_DEBUG2(FN_FIREGL_KCL,"pgd_p=0x%08lx\n", (unsigned long)pgd_p);
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,11)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++    P4D_OFFSET(p4d_p, pgd_p, virtual_addr);
++    P4D_PRESENT(p4d_p);
++    PUD_OFFSET(pud_p, p4d_p, virtual_addr);
++#else
+     PUD_OFFSET(pud_p, pgd_p, virtual_addr);
++#endif
+     PUD_PRESENT(pud_p);
+     KCL_DEBUG2(FN_FIREGL_KCL,"pud_p=0x%08lx\n", (unsigned long)pud_p);
+     PMD_OFFSET(pmd_p, pud_p, virtual_addr);
+@@ -3083,6 +3114,9 @@ int ATI_API_CALL KCL_TestAndClearPageDirtyFlag(unsigned long virtual_addr, unsig
+ {
+     int ret = -1; // init with page not present
+     pgd_t* pgd_p;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++    p4d_t *p4d_p;
++#endif
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,11)
+     pud_t* pud_p;
+ #endif
+@@ -3135,7 +3169,16 @@ int ATI_API_CALL KCL_TestAndClearPageDirtyFlag(unsigned long virtual_addr, unsig
+          KCL_DEBUG1(FN_FIREGL_KCL,"pgd_p=0x%08lx\n", (unsigned long)pgd_p);
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,11)
+-         PUD_OFFSET(pud_p, pgd_p, page_addr);
++        #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++        P4D_OFFSET(p4d_p, pgd_p, page_addr);
++        if (!p4d_present(*p4d_p)) {
++            KCL_DEBUG1(FN_FIREGL_KCL,"ERROR: !p4d_present\n");
++            continue;
++        }
++        PUD_OFFSET(pud_p, p4d_p, page_addr);
++        #else
++        PUD_OFFSET(pud_p, pgd_p, page_addr);
++        #endif
+          if (!pud_present(*pud_p))
+          {
+              KCL_DEBUG1(FN_FIREGL_KCL,"ERROR: !pud_present\n");
+@@ -4077,6 +4120,9 @@ char* ATI_API_CALL KCL_MEM_VM_GetRegionPhysAddrStr(struct vm_area_struct* vma,
+                             kcl_dma_addr_t* phys_address)
+ {
+     pgd_t* pgd_p;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++    p4d_t *p4d_p;
++#endif
+     pmd_t* pmd_p;
+     pte_t  pte;
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,11)
+@@ -4090,7 +4136,17 @@ char* ATI_API_CALL KCL_MEM_VM_GetRegionPhysAddrStr(struct vm_area_struct* vma,
+         return buf;
+     }
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,11)
++    #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++    p4d_p = p4d_offset(pgd_p, virtual_addr);
++    if (!p4d_present(*p4d_p))
++    {
++        *buf = 0;
++        return buf;
++    }
++    pud_p = pud_offset(p4d_p, virtual_addr);
++    #else
+     pud_p = pud_offset(pgd_p, virtual_addr);
++    #endif
+     if (!pud_present(*pud_p))
+     {
+         *buf = 0;
+diff --git archive_files/common/lib/modules/fglrx/build_mod/firegl_public.h archive_files/common/lib/modules/fglrx/build_mod/firegl_public.h
+index 14e25f9..aca2940 100755
+--- archive_files/common/lib/modules/fglrx/build_mod/firegl_public.h
++++ archive_files/common/lib/modules/fglrx/build_mod/firegl_public.h
+@@ -91,6 +91,23 @@ do { \
+     } \
+ } while(0)
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++#define P4D_OFFSET(p4d_p, pgd_p, pte_linear)  \
++do { \
++    p4d_p = p4d_offset(pgd_p, pte_linear); \
++} while(0)
++
++#define P4D_PRESENT(p4d_p) \
++do { \
++    if (!p4d_present(*(p4d_p))) \
++    { \
++        return PAGING_FAULT_SIGBUS_INT;   /* Something bad happened; generate SIGBUS */ \
++        /* alternatively we could generate a NOPAGE_OOM "out of memory" */ \
++    } \
++} while(0)
++
++#endif // LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,11)
+ #define PUD_PRESENT(pud_p) \
+ do { \
