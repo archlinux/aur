@@ -17,7 +17,7 @@ optdepends=('libkeybinder3: for media keys plugin'
             'python-pacparser: PAC proxy support'
             'python-pylast: Last.fm scrobbling support'
             'python-systemd: Logging to the system journal')
-makedepends=('git' 'meson' 'intltool' 'appstream-glib')
+makedepends=('git' 'meson' 'appstream-glib')
 provides=("$_pkgname")
 conflicts=("$_pkgname-bzr" "$_pkgname")
 sha256sums=('SKIP')
