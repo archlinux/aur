@@ -9,13 +9,13 @@ pkgname=${_target}-gcc-stage2
 pkgver=7.1.1
 _pkgver=${pkgver:0:1}
 _islver=0.18
-pkgrel=3
-_commit=81fc9125b24bba5f2761b7986ff4e3de14740291
+pkgrel=4
+_commit=d791474f3fc2133fa0c310e566988b0cbdff321e
 pkgdesc="The GNU Compiler Collection. Stage 2 for toolchain building (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-depends=("${_target}-binutils>=2.28.0-3" "${_target}-glibc-headers>=2.25-5" 'libmpc' 'zlib')
+depends=("${_target}-binutils>=2.28.0-4" "${_target}-glibc-headers>=2.25-7" 'libmpc' 'zlib')
 options=('!emptydirs' '!distcc' '!strip')
 conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
@@ -23,7 +23,7 @@ provides=("${_target}-gcc-stage1=${pkgver}")
 source=(https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         Revert-eeb6872bf.patch)
-md5sums=('491bb12933ea303bb7313541348032ce'
+md5sums=('22748db692c5e409b7f3fa9482faa9cb'
          '11436d6b205e516635b666090b94ab32'
          'e4c9c8b498b04c0f51d219d025ca8407')
 
@@ -84,6 +84,8 @@ build() {
       --disable-multilib \
       --disable-werror \
       --enable-checking=release \
+      --enable-default-pie \
+      --enable-default-ssp \
       --target=${_target} \
       --host=${CHOST} \
       --build=${CHOST} \
