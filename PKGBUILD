@@ -1,4 +1,4 @@
-# Maintainer: Dan McCurry <dan.mccurry at linux dot com>
+# Maintainer: Dan McCurry <dan.mc at protonmail dot com>
 pkgname=fullprof-suite
 pkgver=2017.07
 pkgrel=1
