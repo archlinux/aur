@@ -6,7 +6,7 @@ arch=(any)
 url="https://github.com/errbotio/errbot"
 license=('GPL')
 depends=('python-daemonize' 'python-dnspython3' 'python-pygments-markdown-lexer'
-	 'python-ansi' 'python-markdown' 'python-yapsy' 'python-colorlogs'
+	 'python-ansi' 'python-markdown' 'python-yapsy' 'python-colorlog'
 	 'python-pyopenssl' 'python-rocket-errbot' 'python-bottle' 'python-webtest'
 	 'python-sleekxmpp')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/errbotio/errbot/archive/$pkgver.tar.gz")
