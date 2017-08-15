@@ -1,7 +1,7 @@
 pkgbase = open-phd-guiding-git
 	pkgdesc = Open PHD Guiding - PHD2 astrophotography autoguiding tool
-	pkgver = r1421.1f798c6
-	pkgrel = 2
+	pkgver = r2016.6240b87a
+	pkgrel = 3
 	url = http://openphdguiding.org/
 	arch = i686
 	arch = x86_64

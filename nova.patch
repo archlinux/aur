@@ -1,0 +1,20 @@
+diff --git a/thirdparty/thirdparty.cmake b/thirdparty/thirdparty.cmake
+index c4aed28..3f14bd4 100644
+--- a/thirdparty/thirdparty.cmake
++++ b/thirdparty/thirdparty.cmake
+@@ -1050,10 +1050,13 @@ if(UNIX AND NOT APPLE)
+   find_library(mathlib NAMES m)
+   set(PHD_LINK_EXTERNAL ${PHD_LINK_EXTERNAL} ${mathlib})
+ 
++  # INDI depends on libnova
++  find_package(Nova REQUIRED)
++  include_directories(${NOVA_INCLUDE_DIR})
++  set(PHD_LINK_EXTERNAL ${PHD_LINK_EXTERNAL} ${NOVA_LIBRARIES})
++  add_definitions("-DLIBNOVA")
+ endif()
+ 
+-
+-
+ #############################################
+ #
+ # gettext and msgmerge tools for documentation/internationalization

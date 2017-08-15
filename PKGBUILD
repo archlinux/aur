@@ -1,6 +1,6 @@
 pkgname=open-phd-guiding-git
-pkgver=r1421.1f798c6
-pkgrel=2
+pkgver=r2016.6240b87a
+pkgrel=3
 pkgdesc="Open PHD Guiding - PHD2 astrophotography autoguiding tool"
 url="http://openphdguiding.org/"
 arch=('i686' 'x86_64')
@@ -18,7 +18,10 @@ pkgver() {
 }
 
 prepare() {
-	mkdir -p build
+	cd $_gitname
+	patch -p1 < ../../nova.patch
+	cd -
+	mkdir build
 	cd build
 	cmake ../$_gitname
 }
