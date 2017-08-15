@@ -19,7 +19,8 @@ makedepends=( 'kmod' 'inetutils' 'bc' 'git' 'libelf') # Removed: 'xmlto' 'docboo
 
 options=('!strip')
 source=('git+https://anongit.freedesktop.org/git/drm-tip.git'
-        # Patches. Not sure if they are necessary
+        # Patches. Not needed as they are used to download a vanilla version and apply 
+        # patches instead downloading newer tarballs. Here we use Git
         #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${kernelver}.xz"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${kernelver}.sign"
 
@@ -54,8 +55,8 @@ prepare() {
   cd "${_srcname}"
 
  # add upstream patch
- # I'm sure I did this wrong
-  patch -p1 -i "${srcdir}/patch-${_kernelver}"
+ # Not required as we use Git
+ # patch -p1 -i "${srcdir}/patch-${_kernelver}"
 
   # security patches
 
