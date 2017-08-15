@@ -16,7 +16,7 @@ pkgbase = pia-tools
 	depends = unzip
 	depends = sed
 	source = pia-tools-1.1.2.tar.gz::https://github.com/pschmitt/pia-tools/archive/1.1.2.tar.gz
-	sha256sums = a884dc99e06b9c4dcb72ea8e4c661ac9b775838ccca6b4aff1526bd4daaccaf9
+	sha256sums = 7245683f2c4eff290d6ed0c84386fa38534482a86cea202e1808e251db55bf2d
 
 pkgname = pia-tools
 

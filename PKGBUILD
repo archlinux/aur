@@ -9,7 +9,7 @@ url="https://github.com/pschmitt/pia-tools"
 license=("GPL3")
 depends=("transmission-cli" "bind-tools" "openvpn" "systemd" "sudo" "wget" "ufw" "unzip" "sed")
 source=("pia-tools-$pkgver.tar.gz::https://github.com/pschmitt/pia-tools/archive/$pkgver.tar.gz")
-sha256sums=('a884dc99e06b9c4dcb72ea8e4c661ac9b775838ccca6b4aff1526bd4daaccaf9')
+sha256sums=('7245683f2c4eff290d6ed0c84386fa38534482a86cea202e1808e251db55bf2d')
 install="${pkgname}.install"
 
 package() {
