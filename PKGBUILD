@@ -9,7 +9,7 @@
 pkgname=plex-media-server
 pkgver=1.7.5.4035
 _pkgsum=313f93718
-pkgrel=3
+pkgrel=4
 pkgdesc='Plex Media Server'
 arch=('armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
@@ -33,14 +33,6 @@ sha256sums=('7ab1ee8da9012d257b7f473fb79d76b201ca592cbe3722f977a43b58bfad180e'
 sha256sums_armv7h=('e2d0be1b0a2c97bd7739170ab2e7b53492fe68e6ad6a498b3c033087985aa065')
 sha256sums_i686=('03d5425fa487f4edbd086a1f6cde83d6b116653b8658367b4897d8ad266a0506')
 sha256sums_x86_64=('89b8585e561046a8422d520ebcdae784f5dc3c895aac8d313c435cc6b58795b8')
-
-prepare() {
-
-case "$CARCH" in
-  arm*) mkdir -p usr/lib/plexmediaserver && tar -zxf package.tgz -C usr/lib/plexmediaserver/;;
-esac
-
-}
 
 package() {
   install -dm 755 "${pkgdir}"/{opt,etc/conf.d,usr/lib/systemd/system}
