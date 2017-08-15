@@ -1,6 +1,6 @@
 pkgbase = icewm-git
 	pkgdesc = A window manager designed for speed, usability, and consistency
-	pkgver = 1.4.2.105
+	pkgver = 1.4.2.134
 	pkgrel = 1
 	url = https://github.com/bbidulock/icewm
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = icewm-git
 	makedepends = asciidoctor
 	depends = libxft
 	depends = libxinerama
-	depends = gdk-pixbuf2-xlib
+	depends = gdk-pixbuf2
 	depends = libxrandr
 	depends = libsndfile
 	depends = libsm
