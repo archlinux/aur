@@ -1,11 +1,10 @@
-# Maintainer: Ian Brunelli <ian@brunelli.me>
 # Maintainer: Falk Alexander Seidl <fa@terminal.run>
 
 pkgname=transmission-csd
 _gitname=transmission
 _gitbranch="wip/gtk-3.14"
-pkgver=2.92
-pkgrel=2
+pkgver=r1000
+pkgrel=3
 pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI), CSD port"
 arch=('i686' 'x86_64')
 license=('GPL2')
