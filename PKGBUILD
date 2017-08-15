@@ -1,7 +1,7 @@
 # Maintainer: Duy Truong <jimreynold2nd@yahoo.com>
 
 pkgname=unlinkmkv-git
-pkgver=r29.639bea0
+pkgver=r38.cadb872
 pkgrel=1
 pkgdesc="Merges ordered chapters / segmented MKVs back into a single file."
 arch=('any')

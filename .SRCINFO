@@ -1,6 +1,6 @@
 pkgbase = unlinkmkv-git
 	pkgdesc = Merges ordered chapters / segmented MKVs back into a single file.
-	pkgver = r29.639bea0
+	pkgver = r38.cadb872
 	pkgrel = 1
 	url = https://github.com/gnoling/UnlinkMKV
 	arch = any
