@@ -11,7 +11,7 @@ depends_x86_64+=(gtk2 gconf alsa-lib nss libxss libxtst gendesk)
 source=("http://download.pinegrow.com/PinegrowLinux64.${pkgver}.zip"
         "${url}/Pinegrow_EULA.pdf")
 noextract=("Pinegrow_EULA.pdf")
-sha1sums=("ddfb4a82d968b66744eb56fb8d5fbcf3b9c67d47"
+sha1sums=("31f64bbc344023ec37419896982a9f90dca5cdd2"
           "a69404f2d55d4c8dd8d47c54dbadad9e08573e6c")
 options=('!strip')
 install=${pkgname}.install
