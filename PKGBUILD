@@ -1,5 +1,4 @@
-# $Id$
-# Maintainer: Kamalavelan <sskamalavelan@gmail.com>
+# Maintainer: Kamalavelan aka demonshreder <sskamalavelan@gmail.com>
 
 pkgname=monocypher
 _pkgname=monocypher
@@ -24,5 +23,3 @@ package() {
   install -m 644 LICENCE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   
 }
-
-# vim:set ts=2 sw=2 et:
