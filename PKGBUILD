@@ -4,8 +4,9 @@
 # This package is a modified version of extra/ffmpeg with --enable-decklink
 
 pkgname=ffmpeg-decklink
+_srcname=ffmpeg
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('i686' 'x86_64')
@@ -16,9 +17,9 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau'
          'libwebp' 'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus'
          'schroedinger' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
-         'libass.so' 'libbluray.so' 'libfreetype.so' 'libnetcdf.so'
-         'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
-         'libx264.so' 'libx265.so' 'libxvidcore.so')
+         'libass.so' 'libbluray.so' 'libfreetype.so' 'libvidstab.so'
+         'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so'
+         'libx265.so' 'libxvidcore.so')
 makedepends=(
     # binary repositories:
        'ladspa' 'yasm'
@@ -31,14 +32,21 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so' 'ffmpeg')
 conflicts=('ffmpeg' 'ffmpeg-git')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
+        'ffmpeg-openjpeg2.2.patch'
         'LICENSE')
 sha256sums=('d2a9002cdc6b533b59728827186c044ad02ba64841f1b7cd6c21779875453a1e'
+            '490598f78d7879af8ef5b8d7f92ada83d0ee64f9609f6c7b989eb331c2539f68'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
-build() {
-  cd "ffmpeg-${pkgver}"
+prepare() {
+    cd "${_srcname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/ffmpeg-openjpeg2.2.patch"
+}
 
-  msg2 "Running ffmpeg configure script. Please wait..."
+build() {
+  cd "${_srcname}-${pkgver}"
+
+  msg2 'Running ffmpeg configure script. Please wait...'
   
   ./configure \
     --prefix='/usr' \
@@ -79,7 +87,6 @@ build() {
     --enable-libx265 \
     --enable-libxcb \
     --enable-libxvid \
-    --enable-netcdf \
     --enable-shared \
     --enable-version3 \
     --enable-nonfree \
@@ -87,11 +94,10 @@ build() {
 
   make
   make tools/qt-faststart
-  make doc/ff{mpeg,play,server}.1
 }
 
 package() {
-  cd "ffmpeg-${pkgver}"
+  cd "${_srcname}-${pkgver}"
   make DESTDIR="$pkgdir" install
   
   install -D -m755 tools/qt-faststart  "${pkgdir}/usr/bin/qt-faststart"
