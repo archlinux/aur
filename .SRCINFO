@@ -1,0 +1,17 @@
+pkgbase = flite-cmu-us-rms
+	pkgdesc = A lightweight speech synthesis engine (cmu-us-rms library)
+	pkgver = 2.0.0
+	pkgrel = 3
+	url = http://cmuflite.org
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = flite=2.0.0
+	source = http://festvox.org/flite/packed/flite-2.0/flite-2.0.0-release.tar.bz2
+	source = flite-ldflags.patch
+	md5sums = 645db96ffc296cbb6d37f231cc1cc6b2
+	md5sums = 937197bf549c92e5ce6dd9f0d3a5cafa
+
+pkgname = flite-cmu-us-rms
+
