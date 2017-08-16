@@ -2,7 +2,7 @@
 # Contributor: svalo <me@valo.space>
 
 pkgname=dino-git
-pkgver=r128.e3e6a42
+pkgver=r135.30818b3
 pkgrel=1
 pkgdesc="Simple and modern Jabber/XMPP client written in vala"
 arch=('i686' 'x86_64' 'aarch64')
@@ -22,11 +22,20 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    ./configure --prefix="/usr"
+    ./configure --prefix="/usr" --with-tests CC="$CC" CFLAGS="$CFLAGS" VALACFLAGS="$VALACFLAGS"
     make
 }
 
 package() {
     cd "${srcdir}/${pkgname%-git}"
     make DESTDIR="${pkgdir}/" install
+}
+
+check() {
+    cd "${srcdir}/${pkgname%-git}"
+    echo "Executing xmpp-vala-test:"
+    build/xmpp-vala-test
+    echo
+    echo "Executing signal-protocol-vala-test:"
+    build/signal-protocol-vala-test
 }
