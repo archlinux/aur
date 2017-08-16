@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -47,9 +47,16 @@ conflicts=(
     'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-semifull-git' 'ffmpeg-qsv-git'
 )
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
+        'ffmpeg-openjpeg2.2.patch'
         'LICENSE')
 sha256sums=('d2a9002cdc6b533b59728827186c044ad02ba64841f1b7cd6c21779875453a1e'
+            '490598f78d7879af8ef5b8d7f92ada83d0ee64f9609f6c7b989eb331c2539f68'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
+
+prepare() {
+    cd "${_srcname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/ffmpeg-openjpeg2.2.patch"
+}
 
 build() {
     cd "${_srcname}-${pkgver}"
@@ -67,7 +74,7 @@ build() {
     msg2 'Running ffmpeg configure script. Please wait...'
     
     ./configure \
-        --prefix=/usr \
+        --prefix='/usr' \
         $_cflags \
         "$_ldflags" \
         \
