@@ -35,8 +35,8 @@ package() {
   install -Dm644 libtoupcam.so libtoupnam.so -t "${pkgdir}/usr/local/lib"
   install -Dm755 ToupLite "${pkgdir}/usr/local/ToupLite/ToupLite"
 
-  mkdir -p "${pkgdir}/usr/bin/ToupLite"
-  ln -s "${pkgdir}/usr/local/ToupLite/ToupLite" "${pkgdir}/usr/bin/ToupLite"
+  mkdir -p "${pkgdir}/usr/bin/"
+  ln -s "/usr/local/ToupLite/ToupLite" "${pkgdir}/usr/bin/ToupLite"
 
   install -Dm644 res/*.xml res/ToupLite.png -t "${pkgdir}/usr/local/ToupLite/res/"
   install -Dm644 99-toupcam.rules -t "${pkgdir}/usr/lib/udev/rules.d/"
