@@ -1,10 +1,10 @@
 
 pkgname=mingw-w64-cgal
 pkgver=4.10
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Computational Geometry Algorithms Library (mingw-w64)"
-depends=('mingw-w64-crt' 'mingw-w64-mpfr' 'mingw-w64-boost' 'mingw-w64-zlib')
+depends=('mingw-w64-crt' 'mingw-w64-mpfr' 'mingw-w64-boost' 'mingw-w64-zlib' 'mingw-w64-qt5-svg')
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen')
 options=('!buildflags' '!strip' 'staticlibs')
 license=('GPL', 'LGPL')
@@ -28,7 +28,6 @@ build()
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
-      -DWITH_CGAL_Qt5=OFF \
       ..
     make
     popd
