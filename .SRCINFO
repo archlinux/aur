@@ -7,7 +7,6 @@ pkgbase = fetchmirrors
 	license = GPL
 	depends = curl
 	source = https://raw.githubusercontent.com/deadhead420/fetchmirrors/master/fetchmirrors.sh
-	md5sums = 37400ce967268db68017a77b13315df8
 
 pkgname = fetchmirrors
 
