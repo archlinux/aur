@@ -23,7 +23,7 @@ build() {
 
 package() {
   mkdir -p "$pkgdir/usr/share/dynagen"
-  cp -dpr --no-preserve=ownership "$srcdir/$pkgname-$pkgver/*" "$pkgdir/usr/share/dynagen"
+  cp -dpr --no-preserve=ownership "$srcdir/$pkgname-$pkgver/"* "$pkgdir/usr/share/dynagen"
 
   mkdir -p "$pkgdir/usr/bin"
   cd "$pkgdir/usr/bin"
@@ -31,7 +31,7 @@ package() {
 
   mkdir "$pkgdir/etc"
   mv "$pkgdir/usr/share/dynagen/dynagen.ini" "$pkgdir/etc"
-  chmod 644 "$pkgdir/usr/share/dynagen/*"
+  chmod 644 "$pkgdir/usr/share/dynagen/"*
   chmod 755 "$pkgdir/usr/share/dynagen/dynagen"
   chmod 755 "$pkgdir/usr/share/dynagen/pemu-start.sh"
 }
