@@ -1,6 +1,6 @@
 # Maintainer: Piotr Żurek (phitherek@gmail.com)
 pkgname=auto-display-manager-cr-git
-pkgver=v.0.1.1.cr.r0.6064fc3
+pkgver=v.0.1.2.cr.r0.c55ff77
 pkgrel=1
 pkgdesc="A Crystal program for managing multiple screens (displays) via XRandR."
 arch=('any')
