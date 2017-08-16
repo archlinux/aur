@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=secp256k1-git
-pkgver=20160128
-pkgrel=2
+pkgver=20170809
+pkgrel=1
 pkgdesc="Optimized C library for EC operations on curve secp256k1"
 arch=('i686' 'x86_64')
 url="https://github.com/libbitcoin/secp256k1"
