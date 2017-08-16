@@ -130,8 +130,8 @@ sha256sums=(# mainline kernel patches
             'SKIP'
             'fe0a0b7c071978839f4b941d655df93e3c0e60bd3e49237f7e7a8635cb38ff8e'
             'SKIP'
-            # mainline block merges
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
+            # mainline block merges
             'b8745ca529c03c1d20473cb45cda3ea25da49a73e522cd834c32b9316b5f9f12'
             '497a268278e9ebf27ce104bfa9e483686d3285fb8e96e8cd09774042cd8a7c45'
             'b029d1cc6c26c7148ffbe753bc959f774a49d4195e3b9b5926e2631f50cf6ef6'
