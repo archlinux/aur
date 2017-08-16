@@ -1,7 +1,7 @@
 pkgbase = monocypher
 	pkgdesc = Monocypher is an easy to use crypto library inspired by libsodium and TweetNaCl
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://loup-vaillant.fr/projects/monocypher/
 	arch = i686
 	arch = x86_64
