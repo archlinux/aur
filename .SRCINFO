@@ -1,7 +1,7 @@
 pkgbase = flite-cmu-us-rms
 	pkgdesc = A lightweight speech synthesis engine (cmu-us-rms library)
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 1
 	url = http://cmuflite.org
 	arch = i686
 	arch = x86_64
