@@ -7,11 +7,13 @@ pkgbase = rdworks-wine-bin
 	license = GPL
 	makedepends = unrar
 	depends = wine
+	depends = winetricks
+	optdepends = wine-mono: or take directx
 	noextract = add732140c983267.rar
-	source = http://0.0.0.0:8000/add732140c983267.rar
+	source = http://en.rd-acs.com/Private/Files/add732140c983267.rar
 	source = rdworks-wine-bin
 	md5sums = 3102d7217a72c9b95e4a93898aefc173
-	md5sums = 699ab282b3fd4c73b7bc2aa845e5681e
+	md5sums = 29101780536e645ec479e49ead7266aa
 
 pkgname = rdworks-wine-bin
 
