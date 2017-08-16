@@ -23,7 +23,7 @@ declare -rgA _system_libs=(
 )
 
 pkgname=chromium-vaapi-bin
-pkgver=60.0.3112.90
+pkgver=60.0.3112.101
 pkgrel=1
 pkgdesc='Chromium compiled with VA-API support for Intel Graphics'
 url='https://www.chromium.org/Home'
@@ -43,7 +43,7 @@ optdepends=('pepper-flash: support for Flash content'
             'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
 
 source_x86_64=("https://github.com/maximbaz/$pkgname/raw/master/$arch/chromium-vaapi-$pkgver-$pkgrel-$arch.pkg.tar.xz")
-sha256sums_x86_64=('e10b368a71e8248f67f4eea519be99183bb93e591d8a5bdf42bc511296ed40cb')
+sha256sums_x86_64=('013ac37e5dc054a196af8f57e875c6c3d613826f5632fe1c29c0bbc7d5bcc768')
 
 package() {
   cp -ar "$srcdir/usr" "$pkgdir/usr"
