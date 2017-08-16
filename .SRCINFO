@@ -1,6 +1,6 @@
 pkgbase = auto-display-manager-cr-git
 	pkgdesc = A Crystal program for managing multiple screens (displays) via XRandR.
-	pkgver = v.0.1.cr.r5.600f75c
+	pkgver = v.0.1.1.cr.r0.6064fc3
 	pkgrel = 1
 	url = https://github.com/Phitherek/auto-display-manager-cr
 	arch = any
