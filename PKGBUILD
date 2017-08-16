@@ -2,14 +2,14 @@
 
 pkgbase=cheroot
 pkgname=(python-${pkgbase} python2-${pkgbase})
-pkgver=5.8.1
+pkgver=5.8.3
 pkgrel=1
 pkgdesc="Highly-optimized, pure-python HTTP server"
 arch=('any')
 url="https://github.com/cherrypy/cheroot"
 license=('BSD')
 source=("https://files.pythonhosted.org/packages/source/${pkgbase::1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
-md5sums=('af93778590b24e6b97de8ee720ae53da')
+md5sums=('b4cba234ec42ae9cdc182abb8be06855')
 
 prepare() {
   cp -a "$srcdir/$pkgbase-$pkgver"{,-py2}
