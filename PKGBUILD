@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=tsscreenlock
-pkgver=1.10
+pkgver=2.0
 pkgrel=0
 pkgdesc="Screen Locker for theShell"
 arch=("x86_64")
@@ -19,6 +19,6 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/lib"
-	cp "$pkgname-$pkgver/tsscreenlock" "$pkgdir/usr/lib/"
+	cd "$pkgname-$pkgver"
+	make install INSTALL_ROOT=$pkgdir
 }
