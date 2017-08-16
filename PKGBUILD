@@ -8,14 +8,14 @@
 _gitname=alot
 pkgname=alot-git
 pkgrel=1
-pkgver=r2869.3995747c
+pkgver=r2930.33fb2b66
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
 license=('GPL3')
 depends=(notmuch
          python2
-         python2-pygpgme
+         python2-gpg
          python2-magic
          python2-configobj
          python2-urwid
