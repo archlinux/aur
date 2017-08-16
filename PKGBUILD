@@ -3,7 +3,7 @@
 #
 _pkgname="archalien"
 pkgname="${_pkgname}"-git
-pkgver=19181e8
+pkgver=7e909c9
 pkgrel=1
 pkgdesc="A tool you can use to convert a Debian package .deb to an Arch Linux package."
 url="https://github.com/Asher256/archalien"
