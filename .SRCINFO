@@ -1,0 +1,17 @@
+pkgbase = rdworks-wine-bin
+	pkgdesc = A powerful program that allows you to perform laser cutting engraving operations
+	pkgver = 8.01.18
+	pkgrel = 1
+	url = http://en.rd-acs.com/prod_view.aspx?TypeId=50105&Id=148
+	arch = any
+	license = GPL
+	makedepends = unrar
+	depends = wine
+	noextract = add732140c983267.rar
+	source = http://0.0.0.0:8000/add732140c983267.rar
+	source = rdworks-wine-bin
+	md5sums = 3102d7217a72c9b95e4a93898aefc173
+	md5sums = 699ab282b3fd4c73b7bc2aa845e5681e
+
+pkgname = rdworks-wine-bin
+

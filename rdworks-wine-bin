@@ -1,0 +1,33 @@
+#!/bin/sh
+
+export WINEPREFIX="$HOME/.rdworks-wine-bin"
+export WINEARCH=win32
+export WINEDEBUG=fixme-all
+export WINEDLLOVERRIDES="mshtml="
+
+function setpath(){
+    # PathExt
+    keyname="HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
+    valuename="PATHEXT"
+    value="$(wine reg query "$keyname" -v "$valuename" | sed 's|\r||g' | awk  '$1 == "PATHEXT" {print $3 ";."}')"
+    wine reg add "$keyname" /f /v "$valuename" /t REG_SZ /d "$value"
+    # Path
+    keyname="HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
+    valuename="PATH"
+    value="$(wine reg query "$keyname" -v "$valuename" | sed 's|\r||g' | awk  '$1 == "PATH" {print $3}')$(echo $(for i in $(echo $PATH | sed 's|:|\n|g') ; do echo -n \;$(winepath -w $i) ; done 2>/dev/null))"
+    wine reg add "$keyname" /f /v "$valuename" /t REG_SZ /d "$value"
+}
+
+function setup(){
+    mkdir -p `dirname $WINEPREFIX`
+    setpath
+    winetricks -q mfc42 cmd
+}
+
+if [ ! -d "$WINEPREFIX" ] || [ "-s" = "$1" ] ; then
+    setup
+    wine "/usr/share/rdworks-wine-bin/RDWorksV8Setup8.01.18.exe" "`winepath -w "$@"`"
+fi
+
+# Run the actual rdworks
+wine "$WINEPREFIX/drive_c/RDWorksV8/RDWorksV8.exe" "`winepath -w "$@"`"
