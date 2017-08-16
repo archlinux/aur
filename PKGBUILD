@@ -1,30 +1,31 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
+_digest='http://www.imagemagick.org/download/delegates/digest.rdf'
+_srcver=$(curl -s "$_digest" | grep -o 'libfpx-.*\.tar\.xz' | sed 's/[^0-9\.-]*//g' | sed -r 's/.//;s/.{2}$//')
+_srcver_regex=$(printf '%s' "$_srcver" | sed 's/\./\\\./g') # translate $_srcver to a regular expression
+
 pkgname=libfpx
-_digest="http://www.imagemagick.org/download/delegates/digest.rdf"
-_srcver=$(curl -s "$_digest" | grep -o "${pkgname}-.*\.tar\.xz" | sed 's/[^0-9\.-]*//g' | sed -r 's/.//;s/.{2}$//')
-_srcverregex=$(echo "$_srcver" | sed 's/\./\\\./g') # translate $_srcver to a regular expression
-pkgver="${_srcver//-/.}"
-pkgrel=1
-pkgdesc="FlashPIX OpenSource Toolkit"
+pkgver="$(printf '%s' "$_srcver"| tr '-' '.')" # there is no download archive of all previous versions
+pkgrel=2
+pkgdesc='FlashPIX OpenSource Toolkit'
 arch=('i686' 'x86_64')
-url="http://www.imagemagick.org/download/delegates/"
+url='http://www.imagemagick.org/download/delegates/'
 license=('custom')
 depends=('gcc-libs')
 makedepends=('curl')
 provides=('libfpx.so')
 source=("http://www.imagemagick.org/download/delegates/${pkgname}-${_srcver}.tar.xz")
-sha256sums=("$(curl -s "$_digest" | grep -A5 "${pkgname}-${_srcverregex}\.tar\.xz" | \
-                                    grep 'sha256'                                  | \
-                                    grep -oE '>[[:alnum:]]*?<'                     | \
+sha256sums=("$(curl -s "$_digest" | grep -A5 "${pkgname}-${_srcver_regex}\.tar\.xz" |
+                                    grep 'sha256'                                   |
+                                    grep -oE '>[[:alnum:]]*?<'                      |
                                     sed 's/[><]//g')")
 
 build() {
     cd "${pkgname}-${_srcver}"
     ./configure \
-        --prefix=/usr \
-        --enable-static=no \
-        --enable-shared=yes
+        --prefix='/usr' \
+        --enable-static='no' \
+        --enable-shared='yes'
     make
 }
 
