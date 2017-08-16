@@ -5,15 +5,15 @@
 
 _pkgname=libxfce4ui
 pkgname=${_pkgname}-git
-pkgver=4.13.3.r14.ga4089e7
+pkgver=4.13.3.r26.gbffab34
 pkgrel=1
-pkgdesc="Commonly used Xfce widgets among Xfce applications - git checkout"
+pkgdesc="Commonly used Xfce widgets among Xfce applications (git checkout)"
 arch=('i686' 'x86_64')
 url="https://git.xfce.org/xfce/libxfce4ui/tree/README"
 license=('GPL2')
-depends=('libxfce4util' 'gtk2' 'xfconf' 'libsm' 'startup-notification'
+depends=('libxfce4util>=4.13.0' 'gtk2' 'xfconf' 'libsm' 'startup-notification'
          'hicolor-icon-theme' 'gtk3')
-makedepends=('intltool' 'gtk-doc' 'xfce4-dev-tools' 'gobject-introspection' 'git')
+makedepends=('intltool' 'gtk-doc' 'xfce4-dev-tools' 'gobject-introspection' 'git' 'vala')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}" "${_pkgname}-devel")
 source=("${_pkgname}::git://git.xfce.org/xfce/libxfce4ui")
