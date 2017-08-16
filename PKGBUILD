@@ -2,7 +2,7 @@
 
 pkgname=imagemagick-full-doc-git
 pkgver=7.0.6.0.r11980.g717789c2a
-pkgrel=1
+pkgrel=2
 pkgdesc="The ImageMagick documentation (utilities manuals and libraries API)"
 arch=('any')
 url="http://www.imagemagick.org/"
@@ -10,7 +10,7 @@ license=('custom')
 makedepends=('git')
 provides=('imagemagick-doc' 'imagemagick-full-doc' 'imagemagick-git-doc')
 conflicts=('imagemagick-doc' 'imagemagick-full-doc' 'imagemagick-git-doc')
-source=("$pkgname"::'git+http://git.imagemagick.org/repos/ImageMagick.git')
+source=("$pkgname"::'git+https://github.com/ImageMagick/ImageMagick.git')
 sha256sums=('SKIP')
 
 pkgver() {
