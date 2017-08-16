@@ -1,6 +1,6 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thebeat
-pkgver=0.6
+pkgver=1.0
 pkgrel=0
 pkgdesc="Audio Player based on Phonon"
 arch=("x86_64")
@@ -18,10 +18,6 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
-	cp "$pkgname-$pkgver/thebeat" "$pkgdir/usr/bin"
-	mkdir -p "$pkgdir/usr/share/applications"
-	cp "$pkgname-$pkgver/thebeat.desktop" "$pkgdir/usr/share/applications"
-	mkdir -p "$pkgdir/usr/share/icons"
-	cp "$srcdir/$pkgname-$pkgver/icon.svg" "$pkgdir/usr/share/icons/thebeat.svg"
+	cd "$pkgname-$pkgver"
+	make install INSTALL_ROOT=$pkgdir
 }
