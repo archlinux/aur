@@ -16,7 +16,7 @@ pkgbase = kicadlibrarian-git
 	depends = libharu
 	provides = kicadlibrarian
 	conflicts = kicadlibrarian
-	source = kicadlibrarian-git::git+git://github.com/melak/KiCad-Librarian.git#branch=fix/update_unqlite
+	source = kicadlibrarian-git::git+git://github.com/randrej/KiCad-Librarian.git
 	md5sums = SKIP
 
 pkgname = kicadlibrarian-git

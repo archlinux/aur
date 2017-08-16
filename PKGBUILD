@@ -11,7 +11,7 @@ makedepends=(git make cmake)
 install=kicadlibrarian-git.install
 provides=("kicadlibrarian")
 conflicts=("kicadlibrarian")
-source=("${pkgname}"'::git+git://github.com/melak/KiCad-Librarian.git#branch=fix/update_unqlite')
+source=("${pkgname}"'::git+git://github.com/randrej/KiCad-Librarian.git')
 md5sums=('SKIP')
 
 pkgver() {
