@@ -1,7 +1,7 @@
 # Maintainer: Dea1993 <andrea.deangelis93@gmail.com>
 
 pkgname=dmmediaconverter
-pkgver=1.8.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="a FFmpeg frontend (GUI) with video stream copy (pass-through) and other features"
 arch=('i686' 'x86_64')
@@ -9,25 +9,32 @@ url="http://dmsimpleapps.blogspot.ro/2014/04/dmmediaconverter.html"
 license=('custom')
 depends=('gtk2' 'desktop-file-utils')
 install="${pkgname}.install"
+#DLAGENTS=("https::wget -O dmMediaConverter_v2.1.0_linux_x64.tar %u")
+DLAGENTS=("http::/usr/bin/wget -O %o %u" "https::/usr/bin/wget %u")
 source=(
-	"dmMediaConverter_v${pkgver}_linux_x86.tar.gz"::"https://www.mdonline.ro/FileHosting/Blogger/dmSimpleApps/dmMediaConverter/dmMediaConverter_v1.8.0_linux_x86.tar.gz"
 	"license.zip"::"https://docs.google.com/document/d/1U2xjYwX4VMckRzWc0ol98arPGCb0oaPx6Rw6adRwTjo/export?format=zip"
 	"license.txt"::"https://docs.google.com/document/d/1U2xjYwX4VMckRzWc0ol98arPGCb0oaPx6Rw6adRwTjo/export?format=txt"
 	"${pkgname}.desktop"::"https://docs.google.com/uc?authuser=0&id=0B8AHSEMWV-pnOEJoeGNPNXBnZ0U&export=download"
 	"${pkgname}.png"::"https://docs.google.com/uc?authuser=0&id=0B8AHSEMWV-pnTExiZnpkVHlleGc&export=download"
 )
-md5sums=(
-	'1243462ce6b895dc95a6c3d7488d9d13'
-	'SKIP' 
-	'16c60312c92ae94e0b2dbd801d4ebeb6'
-	'9d88ba18721ca9114a25fa670cdb5ff1'
-	'e76a2f880abad88751d2aa7f3d8c8a45'
+
+source_x86_64=(
+	"dmMediaConverter_v${pkgver}_linux_x64.tar.gz"::"https://drive.google.com/uc?export=download&id=0B1MiTYJef5a9dlZYR0d4Tl9RQlE"
 )
 
-if [ "$CARCH" = x86_64 ]; then
-	source[0]="dmMediaConverter_v${pkgver}_linux_x64.tar.gz"::"https://www.mdonline.ro/FileHosting/Blogger/dmSimpleApps/dmMediaConverter/dmMediaConverter_v1.8.0_linux_x64.tar.gz"
-	md5sums[0]='58b89c50656b808477d673a19efbb02f'
-fi
+source_i686=(
+	"dmMediaConverter_v${pkgver}_linux_x86.tar.gz"::"https://drive.google.com/uc?export=download&id=0B1MiTYJef5a9blJNbEJJZmp1Ums"
+)
+
+md5sums=('SKIP'
+         '16c60312c92ae94e0b2dbd801d4ebeb6'
+         '9d88ba18721ca9114a25fa670cdb5ff1'
+         'e76a2f880abad88751d2aa7f3d8c8a45')
+
+md5sums_i686=('b1f0318e9fb26820a07fc3973e182324')
+
+md5sums_x86_64=('3447d8b01622087e001ecf62270da18c')
+
 
 package() {
 	install -m 755 -d "${pkgdir}/usr/share/applications/${pkgname}"
