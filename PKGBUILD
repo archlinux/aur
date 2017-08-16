@@ -1,13 +1,12 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theterminal
-pkgver=2.0
+pkgver=2.1
 pkgrel=0
 pkgdesc="Simple Terminal Emulator"
 arch=("x86_64")
 url="https://github.com/vicr123/theterminal"
 license=('GPL2')
-depends=('kwidgetsaddons' 'xdg-utils' 'qtermwidget' 
-'qt5-base')
+depends=('xdg-utils' 'qtermwidget' 'qt5-base' 'qt5-x11extras')
 makedepends=('git' 'clang')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theterminal#branch=master')
 md5sums=('SKIP')
@@ -19,9 +18,6 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
-	cp "$pkgname-$pkgver/theterminal" "$pkgdir/usr/bin"
-	mkdir -p "$pkgdir/usr/share/applications"
-	cp "$pkgname-$pkgver/theterminal.desktop" "$pkgdir/usr/share/applications"
-	cp "$pkgname-$pkgver/theterminaldd.desktop" "$pkgdir/usr/share/applications"
+	cd "$pkgname-$pkgver"
+	make install INSTALL_ROOT=$pkgdir
 }
