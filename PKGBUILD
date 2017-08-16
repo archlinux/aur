@@ -4,7 +4,7 @@
 # Contributor: Matthew Bowra-Dean <matthew@ijw.co.nz>
 #
 pkgname=openra-git
-pkgver=BLEED.20170524.5dd6aa7a3
+pkgver=BLEED.20170815.944dfeb47
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL. DuneII and Red Alert 2, mods Included. -GIT VERSION"
 arch=('any')
@@ -65,19 +65,19 @@ package() {
   mkdir -p $pkgdir/usr/lib/openra/mods/ra2
   fi
   cp -rf $srcdir/RA2/OpenRA.Mods*  $pkgdir/usr/lib/openra/mods/ra2
-  cp -rf $srcdir/RA2/*.yaml $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/*.png  $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/audio $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/chrome $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/bits $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/installer $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/languages $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/maps $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/rules $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/sequences $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/tilesets $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/uibits $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/weapons $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2/*.yaml $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2/*.png  $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2/audio $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2/chrome $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2/bits $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2/installer $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2/languages $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2/maps $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2/rules $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2/sequences $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2/tilesets $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2/uibits $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2/weapons $pkgdir/usr/lib/openra/mods/ra2 
   #########################################################
   
   ### adding DuneII to OpenRA
