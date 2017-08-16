@@ -9,7 +9,7 @@ pkgdesc="WhatsApp protocol implementation for libpurple (Pidgin)"
 arch=(i686 x86_64)
 url="https://github.com/davidgfnet/whatsapp-purple"
 license=('GPL')
-depends=()
+depends=('libpurple' 'freeimage')
 source=("git+https://github.com/davidgfnet/whatsapp-purple.git")
 sha256sums=('SKIP')
 
