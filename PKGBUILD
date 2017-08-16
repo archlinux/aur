@@ -3,7 +3,7 @@
 # Contributor: Nicolas Doualot <packages at slubman.info>
 
 pkgname='litecoin-qt'
-pkgver=0.13.2
+pkgver=0.14.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
@@ -16,7 +16,7 @@ conflicts=(litecoin)
 install=litecoin-qt.install
 source=("https://github.com/litecoin-project/litecoin/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('b3cef44f3136fc1049c0be70fdb4562accad75b98096e76787bfcc48c91b745f'
+sha256sums=('953fd6cee2da3ed63779b2dbce8a775e76d7a926be3de5b906d40f6641a2b4d5'
             'cfc53dc9028745358235698ddd562d3e6b4a3ea9f896f5efc1aa8cd81f595559')
 
 build() {
