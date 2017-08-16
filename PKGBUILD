@@ -60,7 +60,7 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  for _distfile in "${pkgdir}/etc/authlib/*.dist"; do
+  for _distfile in "${pkgdir}/etc/authlib/"*.dist; do
     # change ownership - this is usually done by the Makefile where it is assumed the user & group already exist
     chown 72:72 "${_distfile}"
     # remove the .dist suffix - mimics the install-configure step of a standard Courier installation
