@@ -58,17 +58,17 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # cleanup - provided by courier-maildrop
-  rm "${pkgdir}/usr/bin/{deliverquota,maildirmake,makedat}"
-  rm "${pkgdir}/usr/share/man/man1/maildirmake*"
-  rm "${pkgdir}/usr/share/man/man8/deliverquota*"
+  rm "${pkgdir}/usr/bin/"{deliverquota,maildirmake,makedat}
+  rm "${pkgdir}/usr/share/man/man1/"maildirmake*
+  rm "${pkgdir}/usr/share/man/man8/"deliverquota*
   ###############################################################################
   # this is what usually "make install-configure" does
   # *.dist files get rid of "dist"
-  for _distfile in "${pkgdir}/etc/courier-imap/*.dist"; do
+  for _distfile in "${pkgdir}/etc/courier-imap/"*.dist; do
      mv "${_distfile}" "${pkgdir}/etc/courier-imap/"$(basename "${_distfile}" .dist)
   done
   sed -i 's|TLS_CERTFILE=/usr/share/|TLS_CERTFILE=/etc/courier-imap/|' \
-    "${pkgdir}/etc/courier-imap/*-ssl"
+    "${pkgdir}/etc/courier-imap/"*-ssl
   #for _pamfile in imap/*.pam; do
   #  sed -i "s|/lib/security/||;s|pam_pwdb|pam_unix|" "${_pamfile}"
   #  install -Dm 644 "${_pamfile}" \
