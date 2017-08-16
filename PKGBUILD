@@ -11,7 +11,7 @@ set -u
 _pkgname='pcre2'
 pkgname="${_pkgname}-svn"
 _srcdir="${pkgname}"
-pkgver=10.23.r554
+pkgver=10.30.r854
 pkgrel=1
 pkgdesc='A regex library that implements Perl 5-style regular expressions, 2nd version, includes pcregrep'
 arch=('i686' 'x86_64')
@@ -55,7 +55,7 @@ build() {
   set -u
   cd "${_srcdir}"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  make -s -j "${_nproc}"
+  nice make -s -j "${_nproc}"
   set +u
 }
 
@@ -63,14 +63,14 @@ check() {
   set -u
   cd "${_srcdir}"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  make -s -j "${_nproc}" check
+  make -s -j1 check
   set +u
 }
 
 package() {
   set -u
   cd "${_srcdir}"
-  make -s DESTDIR="${pkgdir}" install
+  make -s -j1 DESTDIR="${pkgdir}" install
 
   install -Dpm644 'LICENCE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   set +u
