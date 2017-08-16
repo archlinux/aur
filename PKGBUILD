@@ -48,7 +48,7 @@ sed -i 's/    majorFedoraVersion.*/    majorFedoraVersion=23/' "$srcdir/NX/scrip
 gzip -d "$srcdir/NX/etc/NX/server/packages/nxclient.tar.gz"
 tar -rf "$srcdir/NX/etc/NX/server/packages/nxclient.tar" NX/scripts/setup/nxclient  -C "$srcdir/NX/scripts/setup/nxclient"
 gzip "$srcdir/NX/etc/NX/server/packages/nxclient.tar"
-rm -fr "$srcdir/NX/scripts*"
+rm -fr "$srcdir/NX/scripts"*
 #Change Automatic Service Start And/Or Firewall Automatic Rules If Apply
 if [ $_autoservice = y ] && [ $_autofirewall = y ]; then
 echo "####################################################################"
@@ -79,7 +79,7 @@ gzip -d "$srcdir/NX/etc/NX/server/packages/nxclient.tar.gz"
 tar -rf "$srcdir/NX/etc/NX/server/packages/nxclient.tar" NX/share/src/nxusb/message_queue.c -C "$srcdir/NX/share/src/nxusb/message_queue.c"
 tar -rf "$srcdir/NX/etc/NX/server/packages/nxclient.tar" NX/share/src/nxusb/utils.h -C "$srcdir/NX/share/src/nxusb/utils.h"
 gzip "$srcdir/NX/etc/NX/server/packages/nxclient.tar"
-rm -fr "$srcdir/NX/share*"
+rm -fr "$srcdir/NX/share"*
 }
 
 package()
