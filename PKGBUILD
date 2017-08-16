@@ -15,12 +15,12 @@ install="${pkgname}.install"
 sha256sums=('4057224ff1173e0ac5dfbe69170b4fa71106db976cd0db617405ef272cf8ed3e')
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
   install -Dm755 ubridge "${pkgdir}"/usr/bin/ubridge
   install -Dm644 README.rst "${pkgdir}"/usr/share/doc/ubridge/README.rst
 }
