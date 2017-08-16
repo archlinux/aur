@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emscripten-git
-pkgver=1.37.18.19.gb6a3c226b
+pkgver=1.37.19.11.g0fecba887
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -27,16 +27,16 @@ md5sums=('SKIP'
          'c8b7db20a44edb41c8675812e17b5c42')
 
 pkgver() {
-  cd $srcdir/emscripten
+  cd "$srcdir"/${pkgname%-git}
   git describe --tags |  sed 's+[_-]+.+g'
 }
 
 prepare() {
   # fix an upstream typo 
   sed -i 's+intinsics_gen+intrinsics_gen+' \
-      $srcdir/emscripten-fastcomp/lib/Bitcode/Writer/CMakeLists.txt
+      "$srcdir"/${pkgname%-git}-fastcomp/lib/Bitcode/Writer/CMakeLists.txt
 
-  cd $srcdir/emscripten
+  cd "$srcdir"/${pkgname%-git}
   
   # adapt config file template to use our custom environment variable and path
   sed -e "s|getenv('LLVM')|getenv('EMSCRIPTEN_FASTCOMP')|" \
@@ -45,12 +45,12 @@ prepare() {
   
   # python2 shebang fixes
   sed '1s|python$|python2|' -i $(find third_party tools -name \*.py) emrun emcc{,.py} em++{,.py} emconfigure emmake emcmake emar emranlib
-  sed '1s|python$|python2|' -i $srcdir/emscripten-fastcomp-clang/tools/scan-view/bin/scan-view 
-  cd $srcdir/emscripten-fastcomp
+  sed '1s|python$|python2|' -i "$srcdir"/${pkgname%-git}-fastcomp-clang/tools/scan-view/bin/scan-view 
+  cd "$srcdir"/${pkgname%-git}-fastcomp
   
   # put clang source into the right place (http://git.io/i1GBkg)
   [[ -d tools/clang ]] && rm -rf tools/clang
-  ln -s $srcdir/emscripten-fastcomp-clang tools/clang
+  ln -s "$srcdir"/${pkgname%-git}-fastcomp-clang tools/clang
 
   # reset folder for out-of-source build
   [[ -d build ]] && rm -rf build
@@ -58,7 +58,7 @@ prepare() {
 }
 
 build() {
-  cd $srcdir/emscripten-fastcomp/build
+  cd "$srcdir"/${pkgname%-git}-fastcomp/build
   cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DCMAKE_BUILD_TYPE=Release \
     -DLLVM_TARGETS_TO_BUILD="X86;JSBackend" \
@@ -70,41 +70,41 @@ build() {
 
 package() {
   # exported variables
-  install -Dm755 "$srcdir"/emscripten.sh "$pkgdir"/etc/profile.d/emscripten.sh
-  install -d $pkgdir/usr/lib/emscripten-fastcomp
-  install -d $pkgdir/usr/lib/emscripten
-  install -d $pkgdir/usr/bin
+  install -Dm755 "$srcdir"/${pkgname%-git}.sh "$pkgdir"/etc/profile.d/${pkgname%-git}.sh
+  install -d "$pkgdir"/usr/lib/${pkgname%-git}-fastcomp
+  install -d "$pkgdir"/usr/lib/${pkgname%-git}
+  install -d "$pkgdir"/usr/bin
 
-  cp -R $srcdir/emscripten-fastcomp/build/bin/* \
-     $pkgdir/usr/lib/emscripten-fastcomp
-  install -m 0755 $srcdir/emscripten-fastcomp/emscripten-version.txt \
-	  $pkgdir/usr/lib/emscripten-fastcomp
+  cp -R "$srcdir"/${pkgname%-git}-fastcomp/build/bin/* \
+     "$pkgdir"/usr/lib/${pkgname%-git}-fastcomp
+  install -m 0755 "$srcdir"/${pkgname%-git}-fastcomp/${pkgname%-git}-version.txt \
+	  "$pkgdir"/usr/lib/${pkgname%-git}-fastcomp
 
-  cd "$srcdir/emscripten"/src
+  cd "$srcdir"/${pkgname%-git}/src
   for i in em++ emar emcc em-config emconfigure emmake emranlib \
 		emrun emscons
   do
-    ln -s /usr/lib/emscripten/$i "$pkgdir/usr/bin/$i"
+    ln -s /usr/lib/${pkgname%-git}/$i "$pkgdir/usr/bin/$i"
   done
   cd ..
   cp -R em* cmake/ site/ src/ system/ third_party/ tools/ \
      $pkgdir/usr/lib/emscripten
-  install -m 0755 $srcdir/emscripten.config \
-	  $pkgdir/usr/lib/emscripten/tools/settings_template_readonly.py
-  install -Dm0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -m 0755 "$srcdir"/${pkgname%-git}.config \
+	  "$pkgdir"/usr/lib/${pkgname%-git}/tools/settings_template_readonly.py
+  install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   
   # copy structure
-  cd "$srcdir"/emscripten
-  cp -rup em* cmake site src system third_party tools "$pkgdir"/usr/lib/emscripten
+  cd "$srcdir"/${pkgname%-git}
+  cp -rup em* cmake site src system third_party tools "$pkgdir"/usr/lib/${pkgname%-git}
 
   # remove clutter
-  rm "$pkgdir"/usr/lib/emscripten-fastcomp/{*-test,llvm-lit}
-  rm "$pkgdir"/usr/lib/emscripten/*.bat
+  rm "$pkgdir"/usr/lib/${pkgname%-git}-fastcomp/{*-test,llvm-lit}
+  rm "$pkgdir"/usr/lib/${pkgname%-git}/*.bat
 
   # docs
   install -d "$pkgdir"/usr/share/doc
-  ln -s /usr/lib/emscripten/site/source/docs "$pkgdir"/usr/share/doc/$pkgname
+  ln -s /usr/lib/${pkgname%-git}/site/source/docs "$pkgdir"/usr/share/doc/$pkgname
 
   # delete stray link
-  rm "$pkgdir"/usr/lib/emscripten/system/include/libc/bits
+  rm "$pkgdir"/usr/lib/${pkgname%-git}/system/include/libc/bits
 }
