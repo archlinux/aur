@@ -1,13 +1,13 @@
 # AUR/linux-tomoyo PKGBUILD
 # Maintainer: dysphoria <>
 
-# core/linux PKGBUILD 296742 2017-05-30 06:30:52Z tpowa
+# core/linux PKGBUILD
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-tomoyo
-_srcname=linux-4.11
-pkgver=4.11.12
+_srcname=linux-4.12
+pkgver=4.12.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -26,12 +26,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-tomoyo.preset'
         )
 
-sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
+sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '707c5f18dfb795761b0b7ac6f946f03774f9f99317306fd54d8724d17d9c7729'
+            'fe0a0b7c071978839f4b941d655df93e3c0e60bd3e49237f7e7a8635cb38ff8e'
             'SKIP'
-            'f330007da72867bb86556d1f8b84b8a4c8148a5ed5195ae25570a5da61428733'
-            '9dd9aa4a8ec613cc8261e40db897685d75e3d426219ed8d21fa3a6bc72a27a32'
+            'df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1'
+            'bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -46,6 +46,8 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # security patches
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
