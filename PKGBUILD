@@ -3,7 +3,7 @@
 
 pkgname=vterm
 _pkgname=Vterm
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Yet Another Terminal, a Terminal Emulator written with the web languages of the future. Today. Extensible, themeable."
 arch=("i686" "x86_64")
@@ -13,11 +13,11 @@ depends=('nodejs')
 provides=("vterm")
 conflicts=('vterm')
 source=("https://raw.githubusercontent.com/vterm/vterm/master/LICENSE.md")
-  source_i686=("$url/releases/download/v$pkgver/${pkgname}_${pkgver}_i386.deb")
+source_i686=("$url/releases/download/v$pkgver/${pkgname}_${pkgver}_i386.deb")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname}_${pkgver}_amd64.deb")
 sha512sums=('aba0946300754a54c429d74360d41c1e394a40c55f721449ee27f5a1b912100fd26c7f04f2f215d3986bcd97ee24943ed3b333830830f46f029d0f2d1f881bb6')
-sha512sums_i686=('58ba38f58cb0693ae69137679d52cf27b3ce5b97300aee395f7d9a187ecc307b1e1d7ea220d5f4c72ca420483075754e69dac98d185ab8c2d9a539af1b06c0f9')
-sha512sums_x86_64=('fa4662b7b2d3c255eb11e9e8d9af25a8731afe3c52524f7f23ec8a04de7c9fe84937dbbde4cc2d39a5f71ad1f8b0e90dbd7ba7a8efe23bce32f7f12df608465f')
+sha512sums_i686=('18aff3323038bbf72710ca7808ff52862cdf0153c1084a4c7577f90f4ee34bed61971375efb12c321014f9f69b021c775776fa80add9ca07a36dee8668b9e0c8')
+sha512sums_x86_64=('6f2d4feb113021c92fd65707536f2693c9812411f9c3fe5b4348c24c675c12d40ad869e629bd485b674d5bf76fd868345258351226ac4bfdf15f14fe18e3879e')
 
  
 prepare() {
@@ -25,8 +25,6 @@ prepare() {
 
   msg2 "  -> Extracting files..."
   tar -xf data.tar.xz
-
-  msg2 "  -> Fixing executable stack..."
 }
 
 package() {
