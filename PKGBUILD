@@ -3,7 +3,7 @@
 _pkgsrcname=p4python
 pkgname=(python-p4python python2-p4python)
 pkgver=2017.1.1526044
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface to Perforce API for Python"
 url="https://www.perforce.com/perforce/doc.current/manuals/p4script/03_python.html"
 arch=('any')
