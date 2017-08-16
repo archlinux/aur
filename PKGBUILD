@@ -2,47 +2,32 @@
 pkgname=wire-desktop-beta
 _pkgname=${pkgname%-beta}
 pkgver=2.15.2751
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop-bin' 'wire-desktop' 'wire-desktop-git')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
-makedepends=('cargo' 'gendesk' 'grunt-cli' 'npm' 'python2')
+makedepends=('cargo' 'npm' 'python2' 'git')
 optdepends=('hunspell-en: for English spellcheck support')
 provides=('wire-desktop')
-source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz")
-sha256sums=('a58894b3fa8421fbce96e0a608e71b978e1d58c14c3c95fab1a29675a8c6560a')
-
-prepare() {
-  gendesk -f -n --name=Wire --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Network"
-}
+source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz"
+        "${_pkgname}.desktop")
+sha256sums=('a58894b3fa8421fbce96e0a608e71b978e1d58c14c3c95fab1a29675a8c6560a'
+            '84d869ca111010a5f45f3d5cb8ef4320fa46ac01104773559fb3a7c501f8313b')
 
 build() {
   cd "${srcdir}/${_pkgname}-release-${pkgver}"
   npm install
-  grunt 'clean:linux' 'update-keys' 'release-internal' 'bundle'
-  if [ $CARCH == 'x86_64' ]; then
-    build_arch="x64"
-  elif [ $CARCH == 'i686' ]; then
-    build_arch="ia32"
-  else
-    echo "Unknown architecture"; exit 1;
-  fi
-  grunt --arch=${build_arch} --target="dir" "electronbuilder:linux_other"
+  $(npm bin)/grunt 'clean:linux' 'update-keys' 'release-internal' 'bundle'
+  $(npm bin)/grunt "electronbuilder:linux_other"
 }
 
 package() {
   # Place files
   install -d "${pkgdir}/usr/lib/${_pkgname}"
-  if [ $CARCH == 'x86_64' ]; then
-    cp -a "${srcdir}/${_pkgname}-release-${pkgver}/wrap/dist/linux-unpacked/"* "${pkgdir}/usr/lib/${_pkgname}"
-  elif [ $CARCH == 'i686' ]; then
-    cp -a "${srcdir}/${_pkgname}-release-${pkgver}/wrap/dist/linux-ia32-unpacked/"* "${pkgdir}/usr/lib/${_pkgname}"
-  else
-    echo "Unknown architecture"; exit 1;
-  fi
+  cp -a "${srcdir}/${_pkgname}-release-${pkgver}"/wrap/dist/linux*unpacked/* "${pkgdir}/usr/lib/${_pkgname}"  
 
   # Symlink main binary
   install -d "${pkgdir}/usr/bin"
