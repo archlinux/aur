@@ -29,7 +29,7 @@ _1st_apple_font_dir="/usr/share/fonts/TTF"
 _2nd_apple_font_dir="/usr/share/fonts/Type1"
 pkgname=imagemagick-full-git
 pkgver=7.0.6.0.r11980.g717789c2a
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features, Git version)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -59,7 +59,7 @@ backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-ghostscript.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-windows.xml")
 options=('!docs' 'libtool' '!emptydirs')
-source=("$pkgname"::'git+http://git.imagemagick.org/repos/ImageMagick.git')
+source=("$pkgname"::'git+https://github.com/ImageMagick/ImageMagick.git')
 sha256sums=('SKIP')
 
 pkgver() {
