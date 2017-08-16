@@ -17,6 +17,7 @@ pkgbase = courier-imap
 	provides = pop3-server
 	conflicts = courier-mta
 	options = !libtool
+	options = !staticlibs
 	backup = etc/courier-imap/imapd.cnf
 	backup = etc/courier-imap/pop3d.cnf
 	backup = etc/courier-imap/imapd
