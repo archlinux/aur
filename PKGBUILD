@@ -6,7 +6,7 @@ _srcver_regex=$(printf '%s' "$_srcver" | sed 's/\./\\\./g') # translate $_srcver
 
 pkgname=libfpx
 pkgver="$(printf '%s' "$_srcver"| tr '-' '.')" # there is no download archive of all previous versions
-pkgrel=2
+pkgrel=1
 pkgdesc='FlashPIX OpenSource Toolkit'
 arch=('i686' 'x86_64')
 url='http://www.imagemagick.org/download/delegates/'
