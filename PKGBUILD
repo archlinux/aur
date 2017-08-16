@@ -1,15 +1,15 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=rest
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Helper library for RESTful services"
-arch=(i686 x86_64)
 url="https://wiki.gnome.org/Projects/Librest"
+arch=(i686 x86_64)
 license=(LGPL2.1)
 depends=(glib2 libxml2 libsoup)
-makedepends=(gobject-introspection gtk-doc git glib2-docs)
-_commit=47502e1f9444bef18e833c5f3a18e29a7945c0e8  # tags/0.8.0^0
+makedepends=(gobject-introspection gtk-doc git)
+_commit=2971b3b92701f70fc368ad64bd25cefaea043f87  # tags/0.8.1^0
 source=("git+https://git.gnome.org/browse/librest#commit=$_commit")
 sha256sums=('SKIP')
 
