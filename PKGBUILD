@@ -15,23 +15,23 @@ source=(http://downloads.sourceforge.net/dyna-gen/${pkgname}-${pkgver}.tar.gz)
 md5sums=('3f88b3449b17096dca84d007f0b91b3f')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
   sed -i 's/\/usr\/bin\/python/\/usr\/bin\/python2/' *.py dynagen
   sed -i 's/\/usr\/bin\/env python/\/usr\/bin\/python2/' *.py
   rm -R docs/ sample_labs/ COPYING README.txt
 }
 
 package() {
-  mkdir -p $pkgdir/usr/share/dynagen
-  cp -dpr --no-preserve=ownership $srcdir/$pkgname-$pkgver/* $pkgdir/usr/share/dynagen
+  mkdir -p "$pkgdir/usr/share/dynagen"
+  cp -dpr --no-preserve=ownership "$srcdir/$pkgname-$pkgver/*" "$pkgdir/usr/share/dynagen"
 
-  mkdir -p $pkgdir/usr/bin
-  cd $pkgdir/usr/bin
+  mkdir -p "$pkgdir/usr/bin"
+  cd "$pkgdir/usr/bin"
   ln -s ../share/dynagen/dynagen
 
-  mkdir $pkgdir/etc
-  mv $pkgdir/usr/share/dynagen/dynagen.ini $pkgdir/etc
-  chmod 644 $pkgdir/usr/share/dynagen/*
-  chmod 755 $pkgdir/usr/share/dynagen/dynagen
-  chmod 755 $pkgdir/usr/share/dynagen/pemu-start.sh
+  mkdir "$pkgdir/etc"
+  mv "$pkgdir/usr/share/dynagen/dynagen.ini" "$pkgdir/etc"
+  chmod 644 "$pkgdir/usr/share/dynagen/*"
+  chmod 755 "$pkgdir/usr/share/dynagen/dynagen"
+  chmod 755 "$pkgdir/usr/share/dynagen/pemu-start.sh"
 }
