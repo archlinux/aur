@@ -3,12 +3,12 @@
 _pkgname=libxfce4ui
 pkgname=${_pkgname}-devel
 pkgver=4.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Commonly used Xfce widgets among Xfce applications"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
 license=('GPL2')
-depends=('libxfce4util' 'gtk2' 'xfconf' 'libsm' 'startup-notification'
+depends=('libxfce4util>=4.13.0' 'gtk2' 'xfconf' 'libsm' 'startup-notification'
          'hicolor-icon-theme' 'gtk3')
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection')
 provides=("${_pkgname}=${pkgver}")
