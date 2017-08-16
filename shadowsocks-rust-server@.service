@@ -1,0 +1,12 @@
+[Unit]
+Description=Shadowsocks-Rust Server Service
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/usr/bin/ssserver-rust -c /etc/shadowsocks/%i.json
+
+[Install]
+WantedBy=multi-user.target
+
