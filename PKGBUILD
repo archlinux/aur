@@ -30,7 +30,7 @@ _qdepth='32'
 
 pkgname=imagemagick-full
 pkgver="$(printf '%s' "$_srcver"| tr '-' '.')" # ImageMagick does not provide a download archive of all previous versions
-pkgrel=2
+pkgrel=1
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url='http://www.imagemagick.org/'
