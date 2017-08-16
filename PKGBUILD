@@ -32,7 +32,7 @@ declare -rgA _system_libs=(
 )
 
 pkgname=chromium-vaapi
-pkgver=60.0.3112.90
+pkgver=60.0.3112.101
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
@@ -59,15 +59,17 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-blink-gcc7.patch
         chromium-v8-gcc7.patch
         chromium-widevine.patch
+        vaapi_patch_charles_r10.patch
         vaapi_patch_r2.patch)
 
-sha256sums=('b42f7965764b4528116622a71a60f52becd4186ff8854f3051bf45c6368739e6'
+sha256sums=('0bfb6318af1c3cf82e8ac872e3da34cd3c013aadaab446d5097228101cec065e'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '06345804c00d9618dad98a2dc04f31ef19912cdf6e9d6e577ef7ffb1fa57003f'
             'f94310a7ba9b8b777adfb4442bcc0a8f0a3d549b2cf4a156066f8e2e28e2f323'
             '46dacc4fa52652b7d99b8996d6a97e5e3bac586f879aefb9fb95020d2c4e5aec'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
+            'c454d6200e51f052dc301a98cf13e1c6989395975997d3d9671dd186a23bb709'
             '4ec8b2df4859b9d26b8ea4afc205f563f59844c54a6659bb279776b93163a0ce')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
@@ -106,7 +108,8 @@ prepare() {
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
 
   # VA-API patch
-  patch -p1 -i "${srcdir}/vaapi_patch_r2.patch"
+  patch -p1 -i "${srcdir}/vaapi_patch_charles_r10.patch"
+
   # Fix paths.
   sed -e 's|i386-linux-gnu/||g' \
       -e 's|x86_64-linux-gnu/||g' \
