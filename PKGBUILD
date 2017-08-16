@@ -2,14 +2,14 @@
 
 _pkgsrcname=p4python
 pkgname=(python-p4python python2-p4python)
-pkgver=2016.2.1498648
+pkgver=2017.1.1526044
 pkgrel=1
 pkgdesc="Python interface to Perforce API"
 url="https://www.perforce.com/perforce/doc.current/manuals/p4script/03_python.html"
 arch=('any')
 license=('custom')
-source=($pkgname-$pkgver.tar.gz::"https://pypi.python.org/packages/ad/f8/5d31e3b042eee7c8f6e09d482a3816d8b5c2d01a66073d4e48960afdd101/${_pkgsrcname}-${pkgver}.tar.gz")
-md5sums=('d958a7501ade5331a6d889689a5dc862')
+source=($pkgname-$pkgver.tar.gz::"https://pypi.python.org/packages/0c/8f/96d49332fcf60434c92df0d6df4290b3ce930e25a99d7b5acdc131fb2e16/${_pkgsrcname}-${pkgver}.tar.gz")
+md5sums=('8d1142270531d98913046380f266be80')
 
 prepare() {
   # Copy folder, so we can cleanly build for both python versions
