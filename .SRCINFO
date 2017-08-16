@@ -1,6 +1,6 @@
 pkgbase = debtap
 	pkgdesc = A script to convert .deb packages to Arch Linux packages, focused on accuracy. Do not use it to convert packages that already exist on official repositories or can be built from AUR!
-	pkgver = 3.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/helixarch/debtap
 	install = debtap.install
@@ -10,10 +10,10 @@ pkgbase = debtap
 	depends = binutils
 	depends = pkgfile
 	depends = fakeroot
-	source = debtap-3.0.tar.gz::https://github.com/helixarch/debtap/archive/3.0.tar.gz
+	source = debtap-3.1.1.tar.gz::https://github.com/helixarch/debtap/archive/3.1.1.tar.gz
 	source = debtap.install
-	sha512sums = 37f4654bc4632ff5dc6fb569766da70dc3947ca2d69670b913c012b0d8d0f7c0c36c2040484d0d299a93af0b5276a2cd4ba5983fafc3f7ae605e1826c9405161
-	sha512sums = 5317cf5da1142ed83b1b11c60ee4a70ad74d21f6f98c59b0ec45ad4026d4db4952fe061fb493e3a92675e6bb558ea059677db2bcf42b620cb71d5b772b288008
+	sha512sums = 1185818cc14df9e935a808f5b7f7a1ba25c0f1bfcb4bb7fe6d28ddad288a651003bb9a1b2faa4d25d91f11cfc0f45c37d532e01d3709c55810d04d88c80f0182
+	sha512sums = 38f01b04e7e04335c0f4012d003e9c8a118e65a61fa6d0e288a547a9a63377d911dad14fc26ef559c1354629f86df0f9a16457fb105089c7ea364fc426db475c
 
 pkgname = debtap
 
