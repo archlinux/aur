@@ -4,7 +4,7 @@
 _pkgname=flite
 pkgname=$_pkgname-cmu-us-rms
 pkgver=2.0.0
-pkgrel=3
+pkgrel=1
 pkgdesc="A lightweight speech synthesis engine (cmu-us-rms library)"
 arch=(i686 x86_64)
 url="http://cmuflite.org"
