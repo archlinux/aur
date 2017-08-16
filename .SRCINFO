@@ -1,7 +1,7 @@
 pkgbase = wild-chat
 		pkgdesc = A Customizable Twich Chat Client
 		pkgver = v1.1.32
-		pkgrel = v1.1.32-3
+		pkgrel = 3
 		url = https://github.com/AWildBeard/WildChat
 		arch = any
 		license = Apache License 2.0

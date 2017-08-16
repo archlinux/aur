@@ -1,7 +1,7 @@
 # Maintainer: Michael Mitchell <mmitc@protonmail.com>
 pkgname=wild-chat
 pkgver=v1.1.32
-pkgrel=v1.1.32-3
+pkgrel=3
 pkgdesc="A Customizable Twitch Chat Client"
 arch=('any')
 url="https://github.com/AWildBeard/WildChat"
