@@ -1,15 +1,15 @@
 # Maintainer: Martin Nyolt <8e3b3cde: google>
 pkgname=linphone-plugin-mssilk
 _pkgname=mssilk
-pkgver=1.0.2
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Linphone / mediastreamer plugin that enables Skype's SILK audio codec"
 url="http://www.linphone.org/"
 arch=('i686' 'x86_64')
 license=('GPL')
-source=(http://download-mirror.savannah.gnu.org/releases/linphone/plugins/sources/$_pkgname-$pkgver.tar.gz)
+source=(https://www.linphone.org/releases/sources/plugins/mssilk/$_pkgname-$pkgver.tar.gz)
 depends=('mediastreamer')
-md5sums=('f1df83849b8e355e4c6a4c29c44250cb')
+md5sums=('ad0b441fdd4d6b6a6db41c2b322d5691')
  
 build() {
  
