@@ -1,13 +1,13 @@
 pkgbase = wild-chat
-	pkgdesc = Customizable twitch chat client
-	pkgver = 1.1.32
-	pkgrel = 2
-	url = https://github.com/AWildBeard/WildChat
-	arch = any
-	license = Apache License 2.0
-	depends = jre8-openjdk
-	depends = java-openjfx
-	source = https://github.com/AWildBeard/WildChat/releases/download/v1.1.32/wild-chat.tar
-	md5sums = 1520401601e00581fd3d825598a70721
+		pkgdesc = A Customizable Twich Chat Client
+		pkgver = v1.1.32
+		pkgrel = 3
+		url = https://github.com/AWildBeard/WildChat
+		arch = any
+		license = Apache License 2.0
+		depends = jre8-openjdk
+		depends = java-openjfx
+		source = https://github.com/AWildBeard/WildChat/releases/download/v1.1.32-3/wild-chat.tar
+		md5sums = d41d8cd98f00b204e9800998ecf8427e
 
 pkgname = wild-chat
