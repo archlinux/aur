@@ -2,7 +2,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=the-libs
 pkgver=1.3
-pkgrel=0
+pkgrel=1
 pkgdesc="Common libraries for the- applications by Victor Tran"
 arch=("x86_64")
 url="https://github.com/vicr123/the-libs"
@@ -19,10 +19,6 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/lib/"
-	cp "$pkgname-$pkgver/"*.so* "$pkgdir/usr/lib"
-	mkdir -p "$pkgdir/usr/lib/qt/mkspecs/modules/"
-	cp "$pkgname-$pkgver/qt_thelib.pri" "$pkgdir/usr/lib/qt/mkspecs/modules/"
-	mkdir -p "$pkgdir/usr/include/the-libs/"
-	cp "$pkgname-$pkgver/"*.h "$pkgdir/usr/include/the-libs/"
+	cd "$pkgname-$pkgver"
+	make install INSTALL_ROOT=$pkgdir
 }

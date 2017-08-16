@@ -1,7 +1,7 @@
 pkgbase = the-libs
 	pkgdesc = Common libraries for the- applications by Victor Tran
 	pkgver = 1.3
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/vicr123/the-libs
 	arch = x86_64
 	license = GPL3
