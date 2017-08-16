@@ -7,7 +7,7 @@
 set -u
 _pkgname='relax-and-recover'
 pkgname="${_pkgname}-git"
-pkgver=2.00.r2367.g82325fbe
+pkgver=2.2.r27.g448bedec
 pkgrel=1
 pkgdesc='bootable Linux disaster recovery, formerly rear'
 arch=('any')
