@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-client
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="Bitcoin Client Query Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -23,7 +23,7 @@ groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-client"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('186fed5a3a0107aa2c229aa078493d4aa658db2d779e36e96214d5d44a180bc4')
+sha256sums=('ac22793201a269789a5d10e92333a2f59e887256c87c2e72b20ccd023d618757')
 
 # half of available processing units or one if only one is available
 _nproc=$(($(nproc)/2))
