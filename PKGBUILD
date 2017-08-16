@@ -3,7 +3,7 @@
 pkgname=monocypher
 _pkgname=monocypher
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Monocypher is an easy to use crypto library inspired by libsodium and TweetNaCl"
 arch=('i686' 'x86_64')
 url="http://loup-vaillant.fr/projects/monocypher/"
