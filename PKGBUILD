@@ -13,12 +13,12 @@ license=('GPL2')
 url="http://courier-mta.org/maildrop/"
 depends=('courier-authlib>=0.68.0' 'gamin' 'pcre' 'gdbm' 'courier-unicode>=2.0')
 conflicts=('courier-mta')
-options=(!libtool)
+options=('!libtool' '!staticlibs')
 source=(http://downloads.sourceforge.net/project/courier/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.bz2)
 sha512sums=('366a04d1e6e10ef1c824fbb5dfe406ff74fe17b80a46619fd8aa8cde3b4fef9a10b4ed3cc6329ed04632582d58104aaf16134c6dc82e17917b82fb6f18316dd6')
 
 build() {
-  cd ${srcdir}/${_srcname}-${pkgver}
+  cd "${srcdir}/${_srcname}-${pkgver}"
 
   ./configure --prefix=/usr \
     --sysconfdir=/etc/courier \
@@ -30,17 +30,13 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${_srcname}-${pkgver}
+  cd "${srcdir}/${_srcname}-${pkgver}"
 
-  make DESTDIR=${pkgdir} install
-  chmod u+s ${pkgdir}/usr/bin/maildrop
-  cd ${pkgdir}/usr/share/doc/maildrop/html
-  for files in *; do
-    install -Dm644 ${files} ${pkgdir}/usr/share/htmldoc/${files}
+  make DESTDIR="${pkgdir}" install
+  chmod u+s "${pkgdir}/usr/bin/maildrop"
+  cd "${pkgdir}/usr/share/doc/maildrop/html"
+  for _files in *; do
+    install -Dm644 "${_files}" "${pkgdir}/usr/share/htmldoc/${_files}"
   done
-  rm -rf ${pkgdir}/usr/share/maildrop
-
-  # docs say we can remove .a files after make
-  cd ${pkgdir}
-  find ${pkgdir} -name '*\.a' -exec rm -f {} \;
+  rm -rf "${pkgdir}/usr/share/maildrop"
 }

@@ -14,6 +14,7 @@ pkgbase = courier-maildrop
 	conflicts = courier-mta
 	source = http://downloads.sourceforge.net/project/courier/maildrop/2.9.0/maildrop-2.9.0.tar.bz2
 	options = !libtool
+	options = !staticlibs
 
 pkgname = courier-maildrop
 
