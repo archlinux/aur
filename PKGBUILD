@@ -173,7 +173,7 @@ set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
 pkgver='5.5.9'
-pkgrel='2'
+pkgrel='3'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
 arch=('i686' 'x86_64')
@@ -640,14 +640,14 @@ EOF
 set -e
 set -u
 
-newfolder=(/usr/share/ghostscript/*/Resource/)
+newfolder=(/usr/share/ghostscript/[0-9]*/Resource/)
 if [ "\${EUID}" -eq 0 ]; then
   if [ "\${#newfolder[@]}" -ne 1 ]; then
     echo "\$0: unable to upgrade ghostscript folder"
   else
     newfolder="\${newfolder%/}"
     newfolder="\${newfolder%/*}/"
-    sed -e "s:/usr/share/ghostscript/[^/]\+/:\${newfolder}:g" -i '/usr/lib/fax/hyla.conf' '/var/spool/hylafax/etc/setup.cache'
+    sed -e "s:/usr/share/ghostscript/[0-9][^/]\+/:\${newfolder}:g" -i '/usr/lib/fax/hyla.conf' '/var/spool/hylafax/etc/setup.cache'
   fi
 fi
 EOF
