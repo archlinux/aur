@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/plietar/librespot"
 license=('MIT')
 depends=('rust' 'protobuf')
-makedepends=('git' 'cargo' 'portaudio')
+makedepends=('git' 'cargo')
 provides=('librespot')
 conflicts=('librespot')
 source=('git+https://github.com/plietar/librespot'
@@ -28,6 +28,7 @@ build()
 {
     cd "$_pkgname"
     cargo build \
+        --no-default-features \
         --features alsa-backend \
         --release
 }
