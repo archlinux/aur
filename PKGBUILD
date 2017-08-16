@@ -1,7 +1,7 @@
 # Maintainer: Viliam Ganz <viliam.ganz@gmail.com>
 pkgname=kafkatool
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 epoch=
 pkgdesc="The Ultimate Kafka UI Tool"
 arch=("x86_64")
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("http://www.kafkatool.com/download/kafkatool.sh")
 noextract=("kafkatool.sh")
-md5sums=('d620a3911f24964a191aa44d28edf587')
+md5sums=('8f2c0c6928b4d721058cf44e8292ce52')
 validpgpkeys=()
 
 package() {
