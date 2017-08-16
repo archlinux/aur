@@ -1,4 +1,4 @@
 pkg/
 src/
 gitkraken*.tar*
-*.tar*
+v*.tar.gz*
