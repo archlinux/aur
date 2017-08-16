@@ -17,7 +17,7 @@ backup=('etc/courier-imap/imapd.cnf' 'etc/courier-imap/pop3d.cnf' \
         'etc/courier-imap/pop3d' 'etc/courier-imap/pop3d-ssl')
 conflicts=('courier-mta')
 provides=('imap-server' 'pop3-server')
-options=('!libtool')
+options=('!libtool' '!staticlibs')
 source=(http://downloads.sourceforge.net/project/courier/imap/${pkgver}/${pkgname}-${pkgver}.tar.bz2
 	courier-imapd-ssl.service
 	courier-imapd.service
@@ -30,11 +30,11 @@ sha512sums=('16dedefe8a43ef48f76388c65ee7f100aaf12c30d9610f4c85f9adbd1adab374f9a
 	    '337639e7c666e972ffc9d9fe58a897b3643582c80c22cf2503d616319c3e69969bba2fc629b4ae7f94a6f6a97ae0524b8c12426c5f05be4240e742a1f7c9d934')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   # fix a tiny bug
   sed -i -e \
-    's|--with-authchangepwdir=/var/tmp/dev/null|--with-authchangepwdir=$libexecdir/authlib|' \
+    's|--with-authchangepwdir=/var/tmp/dev/null|--with-authchangepwdir="$libexecdir"/authlib|' \
     configure && chmod 755 configure
 
   ./configure --prefix=/usr \
@@ -53,27 +53,26 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 
   # cleanup - provided by courier-maildrop
-  rm ${pkgdir}/usr/bin/{deliverquota,maildirmake,makedat}
-  rm ${pkgdir}/usr/share/man/man1/maildirmake*
-  rm ${pkgdir}/usr/share/man/man8/deliverquota*
-  find ${pkgdir} -name '*\.a' -exec -rm -f {} \;
+  rm "${pkgdir}/usr/bin/{deliverquota,maildirmake,makedat}"
+  rm "${pkgdir}/usr/share/man/man1/maildirmake*"
+  rm "${pkgdir}/usr/share/man/man8/deliverquota*"
   ###############################################################################
   # this is what usually "make install-configure" does
   # *.dist files get rid of "dist"
-  for distfile in ${pkgdir}/etc/courier-imap/*.dist; do
-     mv ${distfile} ${pkgdir}/etc/courier-imap/$(basename ${distfile} .dist)
+  for _distfile in "${pkgdir}/etc/courier-imap/*.dist"; do
+     mv "${_distfile}" "${pkgdir}/etc/courier-imap/"$(basename "${_distfile}" .dist)
   done
   sed -i 's|TLS_CERTFILE=/usr/share/|TLS_CERTFILE=/etc/courier-imap/|' \
-    ${pkgdir}/etc/courier-imap/*-ssl
-  #for pamfile in imap/*.pam; do
-  #  sed -i "s|/lib/security/||;s|pam_pwdb|pam_unix|" ${pamfile}
-  #  install -Dm 644 ${pamfile} \
-  #    ${pkgdir}/etc/pam.d/$(basename ${pamfile} .pam | sed "s/d$//")
+    "${pkgdir}/etc/courier-imap/*-ssl"
+  #for _pamfile in imap/*.pam; do
+  #  sed -i "s|/lib/security/||;s|pam_pwdb|pam_unix|" "${_pamfile}"
+  #  install -Dm 644 "${_pamfile}" \
+  #    "${pkgdir}/etc/pam.d/"$(basename "${_pamfile}" .pam | sed "s/d$//")
   #done
 
   # Install systemd service files
@@ -87,5 +86,5 @@ package() {
   echo "D /run/courier 0755 courier courier" > "$pkgdir/usr/lib/tmpfiles.d/courier-imapd.conf"
   echo "D /run/courier 0755 courier courier" > "$pkgdir/usr/lib/tmpfiles.d/courier-imapd-ssl.conf"
 
-  mkdir -p ${pkgdir}/run/courier
+  mkdir -p "${pkgdir}/run/courier"
 }
