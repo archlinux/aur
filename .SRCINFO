@@ -17,9 +17,9 @@ pkgbase = linux-drm-tip-git
 	source = 90-linux.hook
 	source = linux-drm-tip-git.preset
 	sha256sums = SKIP
-	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1
 	sha256sums = bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-drm-tip-git
