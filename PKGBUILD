@@ -1,7 +1,7 @@
 # Maintainer: Fabian Muscariello <nroi@mailbox.org>
 
 pkgname=inwx_update_dyndns-git
-pkgver=r19.32d98aa
+pkgver=r24.83e7482
 pkgrel=1
 pkgdesc="Update A and AAAA records for your INWX DynDNS account"
 arch=('any')
