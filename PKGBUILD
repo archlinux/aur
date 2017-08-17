@@ -2,12 +2,12 @@
 
 pkgname=php-pecl-pthreads
 pkgver=3.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP PECL extension for Threading API"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/pthreads"
 license=('BSD')
-depends=('php-zts' 'php-pear')
+depends=('php-zts')
 source=("http://pecl.php.net/get/pthreads-${pkgver}.tgz")
 sha256sums=('bb13da909a7a7ae1f9e499166103a2d24628993238ce03a8aae3eaa492c0b736')
 
