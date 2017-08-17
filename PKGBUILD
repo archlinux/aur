@@ -3,7 +3,7 @@
 # Contributor: Daenyth <Daenyth+Arch [at] gmail [dot] com>
 pkgname=rakudo
 pkgver=2017.07
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl6 compiler for MoarVM"
 arch=('i686' 'x86_64')
 url='http://rakudo.org/'
@@ -27,4 +27,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
+	install -Dm755 tools/install-dist.pl "$pkgdir/usr/bin/perl6-install-dist"
 }
