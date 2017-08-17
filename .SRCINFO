@@ -1,5 +1,5 @@
 pkgbase = opensmtpd-table-sqlite
-	pkgdesc = table-sqlite for using a passwd file with OpenSMTPd
+	pkgdesc = table-sqlite for using sqlite with OpenSMTPd
 	pkgver = 201607122008
 	pkgrel = 1
 	url = https://opensmtpd.org

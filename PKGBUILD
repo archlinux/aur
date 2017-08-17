@@ -2,7 +2,7 @@
 pkgname=opensmtpd-table-sqlite
 pkgver=201607122008
 pkgrel=1
-pkgdesc="table-sqlite for using a passwd file with OpenSMTPd"
+pkgdesc="table-sqlite for using sqlite with OpenSMTPd"
 arch=('i686' 'x86_64')
 url="https://opensmtpd.org"
 license=('custom:opensmtpd')
