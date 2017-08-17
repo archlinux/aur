@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Medis
+Comment=Management application for Redis
+Icon=medis
+Exec=medis %U
+Categories=Development;
+StartupNotify=false
+Terminal=false

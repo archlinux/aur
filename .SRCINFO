@@ -1,0 +1,20 @@
+pkgbase = medis
+	pkgdesc = Medis is a beautiful, easy-to-use database management application for Redis.
+	pkgver = 0.6.1.39
+	pkgrel = 1
+	url = https://github.com/luin/medis
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = asar
+	makedepends = git
+	depends = electron
+	source = medis-git::git+https://github.com/luin/medis.git
+	source = medis.desktop
+	source = medis
+	md5sums = SKIP
+	md5sums = F9B462B94D50FB4086D94FD420558B34
+	md5sums = 05074FDFE9D1FAA78550ED6551CF447B
+
+pkgname = medis
+
