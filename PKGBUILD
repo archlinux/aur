@@ -11,12 +11,22 @@ _lang=es-MX
 pkgname="${_name}-${_channel}-${_lang,,}"
 pkgdesc="Standalone web browser from mozilla.org, nightly build (${_lang})"
 url='http://www.mozilla.org/projects/firefox'
-pkgver=55.0a1.20170307
-_version=55.0a1
+pkgver=57.0a1.20170816
+_version=57.0a1
 pkgrel=1
 arch=('i686' 'x86_64')
 conflicts=('firefox-nightly')
 license=('MPL' 'GPL' 'LGPL')
+depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
+optdepends=('pulseaudio: audio support'
+  'ffmpeg: h.264 video'
+  'gtk2: flash plugin support'
+  'hunspell: spell checking'
+  'hyphen: hyphenation'
+  'libnotify: notification integration'
+  'networkmanager: location detection via available WiFi networks'
+  'speech-dispatcher: text-to-speech'
+  'startup-notification: support for FreeDesktop Startup Notification')
 _file="${_name}-${_version}.en-US.linux"
 _file_l10n="${_name}-${_version}.${_lang}.linux"
 _srcurl="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central"
@@ -29,11 +39,9 @@ sha512sums=(
   '2d8feaf128775efbab958e2614613cd45a7a172a3c687b6af054d61eabd3592cf1dd1c85ca92bff82834f43eb7ebedeb4f8c2fe6f116b6a22eb14a7ff98a1f25'
   '88510ea986776bb8ed9fc8c1217728f8cf0f8b3a8aa4dbc07608e7b2803cd13dcb6809363208fd9531ccee5a9ba2cee39af498a1279d3e1268511982ecb559ec'
   'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
-  'SKIP'
-  'SKIP')
+  '47f6f4f8e5830492b602acd6563f6bc2736793faad243f00b6118e3ace0517b9f4ee755b07767878639f87910b96a357731c74707c12345be9a11a7dfc8ee369'
+  '0bc94b7d8a96d5384e916afc5500c04cab32b4db8549e175f38e430aaec18e6c35bff72aea8afe3b762aaa1a02321fd1274c3f8744ce73e5c4634af6d075d47f')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
-depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3'
-          'sqlite' 'dbus-glib')
 
 pkgver() {
   echo "${_version}.$(head -n1 "${srcdir}/${_file}-${CARCH}.txt" | cut -c-8)"
