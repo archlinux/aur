@@ -9,7 +9,7 @@ license=('unknown')
 groups=()
 depends=()
 makedepends=(bash)
-conflicts=(maven)
+provides=(maven)
 source=(
     https://bitbucket.org/mjensen/mvnvm/raw/mvnvm-${pkgver}/mvn
 )
