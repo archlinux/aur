@@ -1,0 +1,17 @@
+pkgbase = php-beast-git
+	pkgdesc = PHP Beast for source entryption
+	pkgver = r357.250c49c
+	pkgrel = 1
+	url = https://github.com/liexusong/${_pkgname}
+	arch = x86_64
+	license = PHP
+	makedepends = git
+	depends = php
+	provides = php-beast=r357.250c49c
+	conflicts = php-beast
+	backup = etc/php/conf.d/beast.ini
+	source = php-beast::git+https://github.com/liexusong/php-beast.git
+	md5sums = SKIP
+
+pkgname = php-beast-git
+
