@@ -3,7 +3,7 @@
 # To install, run `makepkg -is`
 
 pkgname=ulauncher-git
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Application launcher for Linux'
 arch=('any')
@@ -11,7 +11,7 @@ url="http://ulauncher.io"
 license=('GPL3')
 depends=('gobject-introspection-runtime' 'libappindicator-gtk3' 'libkeybinder3' 'webkit2gtk'
          "python2-"{dbus,gobject,pyinotify,pysqlite,levenshtein,xdg,websocket-client})
-makedepends=('git' 'npm' "python2-"{distutils-extra,setuptools})
+makedepends=('git' 'yarn' "python2-"{distutils-extra,setuptools})
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("ulauncher::git+https://github.com/Ulauncher/Ulauncher.git")
