@@ -31,8 +31,8 @@ _use_32bit_pae="no"	# "yes": Use the PAE config for 32-bit
 ###########################################################################################################
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
-__basekernel=4.11
-_minor=12
+__basekernel=4.12
+_minor=8
 pkgver=${__basekernel}.${_minor}
 pkgrel=1
 lqxrel=1
@@ -60,12 +60,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.
         "linux.preset"
         "90-linux.hook")
 
-sha512sums=('6610eed97ffb7207c71771198c36179b8244ace7222bebb109507720e26c5f17d918079a56d5febdd8605844d67fb2df0ebe910fa2f2f53690daf6e2a8ad09c3'
+sha512sums=('8e81b41b253e63233e92948941f44c6482acb52aa3a3fd172f03a38a86f2c35b2ad4fd407acd1bc3964673eba344fe104d3a03e3ff4bf9cd1f22bd44263bd728'
             'SKIP'
-            'aeea80bf828322cd480489c8a17177d26e294d4f044dcc6758c4b94c71b7c8b77864862d1ca06e2403b7789733eb12eab3efd26f315f72011fdcdf1ee4ea34e1'
-            '2b407e542ebbb5b6d86db0d27987bbea249d1429b5bc7ebec2b5941322d34d50635a0b3a46927fe6304cd5038961706a9413f7772383ced7c77f0c8bcdd4e316'
-            '471669506ad80ca379fac61e59d6c4718a5a2c215862fbdcae814b1cfda89df2dcaf5fb52ed1fc5d8b6eb0bf3076e418a55323ac07e0096f9ca055da8142a4c7'
-            '003788d289c16cf904ce01b5f06357af787c6995bbf7f561844ea24f5722698861b1943c3a7078745cc7689fefb60b3025b2208ea0e551f938fbc6d82bc707a6'
+            '29ff09b23f3acb8b94968ddcee3febec0af0f1108dd775649a615b1f9e661bcfa81cbe386f1b5f1f2cbf962816625d354cbfce9245b1ea8966e53262f5c14c3a'
+            'bad74ca0c515d91b9007cead4c4b22577dcfd6be7177e6688ecb20a8381b4083b7514f9ea995e17b48892cb5b22a17922272644e8c56af9f95f3600103e428ce'
+            '52da5e310f5302fc6ad1ce418b9e25d61b6d72b2300e0c83c8c6f34e2796316afbe4d8f79e1b419fdcd3fc6070419d8a7af705d045c7339cd6aee828d3c1fc22'
+            'e84bf2870fe946ca981eda99966e4727f6bf11d3a05f3feb84fbc49a3045be6f0a2f01d54dd251565211dc8b65f0caed65c65bbfb8305abb1893e38d9ba147d1'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22')
             
