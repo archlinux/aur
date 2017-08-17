@@ -61,7 +61,7 @@ os.system("curl https://ftp.mozilla.org/pub/devedition/releases/{0}/SHA512SUMS.a
 os.system("curl https://ftp.mozilla.org/pub/devedition/releases/{0}/SHA512SUMS > SHA512SUMS".format(parser.version))
 
 #check SHA512SUMS file's signature
-print("Checking SHA512SUMS file's signature...\n")
+print("\nChecking SHA512SUMS file's signature...\n")
 subprocess.run(["gpg", "--verify", "SHA512SUMS.asc"], check=True)
 
 #check SHA512SUM
@@ -110,8 +110,9 @@ print("Updating .SRCINFO...\n")
 os.system("makepkg --printsrcinfo > .SRCINFO")
 
 #commit changes
+print("Commiting changes...\n")
 os.system("git add PKGBUILD .SRCINFO")
 os.system("git commit -m 'Automatic upgrade to version {}.'".format(parser.version))
-os.system("git push")
+os.system("git push origin master")
 
 print("DONE")
