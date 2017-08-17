@@ -5,8 +5,8 @@
 #
 
 pkgname=plymouth
-pkgver=0.9.2
-pkgrel=15
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support"
 url="http://www.freedesktop.org/wiki/Software/Plymouth/"
 
@@ -23,7 +23,7 @@ provides=('plymouth')
 conflicts=('plymouth-git')
 backup=('etc/plymouth/plymouthd.conf')
 
-source=("http://www.freedesktop.org/software/${pkgname}/releases/${pkgname}-${pkgver}.tar.bz2"
+source=("http://www.freedesktop.org/software/${pkgname}/releases/${pkgname}-${pkgver}.tar.xz"
         'arch-logo.png'
 	'plymouth.encrypt_hook'
 	'plymouth.encrypt_install'
@@ -42,7 +42,7 @@ source=("http://www.freedesktop.org/software/${pkgname}/releases/${pkgname}-${pk
 	'plymouth-set-default-theme.in.patch'
 	'plymouth-update-initrd.patch')
 
-md5sums=('ff420994deb7ea203df678df92e7ab7d'
+md5sums=('b261c720888a5431cdfce8494805eab3'
          '65fa2763d5c9bb9f80973ea5e6e3db3e'
          'fbdd5d04e3089a214b9056357434df86'
          '65eb269910f1b81e3f0970af456394ca'
