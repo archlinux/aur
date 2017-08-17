@@ -18,7 +18,7 @@ provides=('emscripten')
 source=('git://github.com/kripken/emscripten.git#branch=incoming'
         'git://github.com/kripken/emscripten-fastcomp.git#branch=incoming'
         'git://github.com/kripken/emscripten-fastcomp-clang.git#branch=incoming'
-        'emscripten.sh'
+        'emscripten.sh::https://git.archlinux.org/svntogit/community.git/tree/trunk/emscripten.sh?h=packages/emscripten'
         'emscripten.config')
 md5sums=('SKIP'
          'SKIP'
