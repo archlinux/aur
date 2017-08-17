@@ -1,7 +1,7 @@
 # Maintainer: Avi Knoll <aknoll@atlassian.com>
 pkgname=mvnvm
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="Run different versions of maven for different projects."
 arch=('any')
 url="http://mvnvm.org/"
