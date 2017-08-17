@@ -4,8 +4,8 @@
 
 pkgname=uim-debian
 pkgver=1.8.6+gh20161003.0.d63dadd
-_debrel=2.1
-pkgrel=2.1
+_debrel=4
+pkgrel=4
 pkgdesc='Multilingual input method library with Debian patches (supports gtk3 and qt5)'
 url='https://packages.debian.org/sid/uim'
 license=('custom:BSD')
@@ -22,28 +22,17 @@ install=${pkgname}.install
 source=("http://http.debian.net/debian/pool/main/u/uim/uim_${pkgver}.orig.tar.gz"
         "http://http.debian.net/debian/pool/main/u/uim/uim_${pkgver}-${_debrel}.debian.tar.xz")
 sha256sums=('7a2d1667553afc0bca4cc33f9bc8fb01a6867177d2a3e13b1b85c7add16110e9'
-            'dcb22e33d1891932da6a3d8a35fee758535d080fda78312afd79d201ad5fb31d')
+            'dc72a2d995a8334ff7ca2e9494c463dd5ecf8be76be21ce2ad39cdd2d0e172ec')
 
 prepare() {
     cd "${srcdir}/uim-${pkgver}"
 
     while read p; do
 
-      if [[ "$p" == "qt5-immodule-qmake-conf.patch" ]]; then
-          ispushed="yes"
-          pushd qt5/immodule/
-      else
-          ispushed="no"
-      fi
-
       patch -p1 -i "${srcdir}/debian/patches/${p}"
-
-      [[ "$ispushed" == "yes" ]] && popd
 
     done < "${srcdir}/debian/patches/series"
 
-    sed -i.bak 's/load(qt_plugin)/TEMPLATE = lib\nCONFIG += plugin/' \
-        "${srcdir}/uim-${pkgver}/qt5/immodule/quimplatforminputcontextplugin.pro.in"
 }
 
 build() {
