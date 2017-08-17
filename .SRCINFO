@@ -1,0 +1,16 @@
+pkgbase = opensmtpd-table-sqlite
+	pkgdesc = table-sqlite for using a passwd file with OpenSMTPd
+	pkgver = 201607122008
+	pkgrel = 1
+	url = https://opensmtpd.org
+	arch = i686
+	arch = x86_64
+	license = custom:opensmtpd
+	makedepends = openssl
+	depends = opensmtpd
+	conflicts = opensmtpd-extras
+	source = https://www.opensmtpd.org/archives/opensmtpd-extras-201607122008.tar.gz
+	sha256sums = 00a41fd9d468908f0863443acc4af99a894b44e9b6ca0cb6c93079447be2c5d0
+
+pkgname = opensmtpd-table-sqlite
+
