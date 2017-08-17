@@ -1,5 +1,5 @@
 _pkgname='moxa-mxser-mxupcie'
-_modulenames=('mxupcie' 'mxser')
+_modulenames=('mxupcie')
 _origmodname='8250_moxa'
 
 post_upgrade() {
@@ -23,8 +23,8 @@ post_upgrade() {
 post_install() {
   set -u
   post_upgrade
-  systemctl enable 'moxa-mxser-settings.service'
-  systemctl start 'moxa-mxser-settings.service'
+  systemctl enable "${_pkgname}.service"
+  systemctl start "${_pkgname}.service"
   set +u
 }
 
@@ -36,7 +36,7 @@ pre_remove() {
       rmmod "${_modulename}"
     done
   fi
-  systemctl disable 'moxa-mxser-settings.service'
+  systemctl disable "${_pkgname}.service"
   set +u
 }
 

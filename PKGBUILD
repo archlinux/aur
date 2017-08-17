@@ -1,6 +1,6 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 
-# TODO: Test msdiag for Smartio/Industio card
+# TODO: Test msdiag for Smartio/Industio card. Can't test until mxser works.
 # TODO: Test mxser with supported PCI card
 # TODO: Get remaining tools mon and term that use mxlib.a and wlib.a to compile. Nothing in the headers look secret so Moxa should release the source code.
 # TODO: mxupcie does not report itself for lspci -k Kernel driver in use:
@@ -8,6 +8,7 @@
 # TODO: Test CP-114EL on Syba cable
 
 _opt_DKMS=1           # This can be toggled between installs
+_opt_MXSER=0          # Old PCI and ISA cards, with C168H IRQ error then crashed on unload
 
 # mxser
 # C104 C168
@@ -33,7 +34,10 @@ _opt_DKMS=1           # This can be toggled between installs
 
 set -u
 
-_modulenames=('mxupcie' 'mxser')
+_modulenames=('mxupcie')
+if [ "${_opt_MXSER}" -ne 0 ]; then
+  _modulenames+=('mxser')
+fi
 _origmodname='8250_moxa'
 
 pkgname='moxa-mxser-mxupcie'
@@ -126,7 +130,9 @@ build() {
   set -u
   cd "${_srcdir}"
   make -C 'utility/conf' -s -j1 # too small for parallel make
-  make -C 'utility/diag' -s -j1 # too small for parallel make
+  if [ "${_opt_MXSER}" -ne 0 ]; then
+    make -C 'utility/diag' -s -j1 # too small for parallel make
+  fi
   make -C 'driver' -s -j1 module # too small for parallel make
   set +u
 }
@@ -136,7 +142,9 @@ package() {
   cd "${_srcdir}"
 
   install -Dpm755 'utility/conf/muestty' "${pkgdir}/usr/bin/moxa-muestty"
-  install -Dpm755 'utility/diag/msdiag' "${pkgdir}/usr/bin/moxa-msdiag"
+  if [ "${_opt_MXSER}" -ne 0 ]; then
+    install -Dpm755 'utility/diag/msdiag' "${pkgdir}/usr/bin/moxa-msdiag"
+  fi
   make -C 'driver' -s -j1 install DESTDIR="${pkgdir}"
 
   # Don't install twice
@@ -153,13 +161,13 @@ After=network.target
 
 [Service]
 Type=notify
-ExecStart=/usr/bin/bash -c 'source /etc/moxa-mxser-settings.sh; systemd-notify --ready'
+ExecStart=/usr/bin/bash -c 'source /etc/${pkgname}.sh; systemd-notify --ready'
 RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
 EOF
-  ) "${pkgdir}/usr/lib/systemd/system/moxa-mxser-settings.service"
+  ) "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
   install -Dm644 <(cat << EOF
 # From driver/rx.mxser
@@ -170,7 +178,7 @@ EOF
 # moxa-muestty -t xxx /dev/ttyMUE0
 # moxa-muestty -p xxx /dev/ttyMUE0
 EOF
-  ) "${pkgdir}/etc/moxa-mxser-settings.sh"
+  ) "${pkgdir}/etc/${pkgname}.sh"
 
   # Blacklist exiting incomplete built in module
   install -Dm644 <(cat << EOF
@@ -237,13 +245,17 @@ BUILT_MODULE_NAME[0]="${_modulenames[0]}"
 BUILT_MODULE_LOCATION[0]="driver"
 # The install version is .ko.gz. The DKMS version is .ko. No conflicts.
 DEST_MODULE_LOCATION[0]="/kernel/drivers/char"
+EOF
+    ) "${_dkms}/dkms.conf"
+    if [ "${_opt_MXSER}" -ne 0 ]; then
+      cat >> "${_dkms}/dkms.conf" << EOF
 
 BUILT_MODULE_NAME[1]="${_modulenames[1]}"
 BUILT_MODULE_LOCATION[1]="driver"
 # The install version is .ko.gz. The DKMS version is .ko. No conflicts.
 DEST_MODULE_LOCATION[1]="/kernel/drivers/char"
 EOF
-    ) "${_dkms}/dkms.conf"
+    fi
     cp -pr 'driver/' "${_dkms}/"
     rm "${_dkms}/driver"/{msmknod,mxconf,rc.mxser}
     sed -e '/^KERNEL_/ s:shell uname -r:shell echo "$(KERNELRELEASE)":g' \
@@ -258,6 +270,10 @@ EOF
         -e '# Disable non kernel utilities' \
         -e 's:^UTILS:# &:g' \
       -i "${_dkms}/driver/Makefile"
+    if [ "${_opt_MXSER}" -eq 0 ]; then
+      sed -e '/obj/ s:$(TARGET_DRIVER1).o::g' -i "${_dkms}/driver/Makefile"
+      rm "${_dkms}/driver"/mxser.*
+    fi
     make -s -C "${_dkms}/driver/" clean KERNELRELEASE="$(uname -r)"
   fi
   set +u
