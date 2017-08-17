@@ -1,6 +1,6 @@
 pkgbase = qtcreator-opt-git
 	pkgdesc = Lightweight, cross-platform integrated development environment
-	pkgver = 4.4.0.beta1.r72.g6979a8f2f5
+	pkgver = 4.4.0.beta1.r394.g2a62a72c69
 	pkgrel = 1
 	url = https://www.qt.io/ide/
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = qtcreator-opt-git
 	options = docs
 	options = debug
 	options = strip
-	source = git+https://code.qt.io/qt-creator/qt-creator.git#commit=6979a8f2f5f622edcf08efd337d62d5c62eac926
+	source = git+https://code.qt.io/qt-creator/qt-creator.git#commit=2a62a72c6964513b845f6e7bd4e10a0a47c5eb88
 	source = git+https://code.qt.io/qt-labs/qbs.git
 	source = QtProject-QtCreator-opt-git.xml
 	source = qtcreator-opt-git.1
