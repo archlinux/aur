@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='http://ros.org/wiki/message_filters'
 
 pkgname='ros-lunar-message-filters'
-pkgver='1.13.1'
+pkgver='1.13.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-message_filters-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/message_filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c0edb52fc489009fe2e53f3b0c75ba414fd43328ced1b6f3874835cfaeb79bf7')
+sha256sums=('aa2b54639fdba614b9b1de304a7b49a834fd7ac6d7d7fe051002ade5b6c4343a')
 
 build() {
   # Use ROS environment variables
@@ -42,14 +42,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
