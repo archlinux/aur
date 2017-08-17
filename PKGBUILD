@@ -6,8 +6,8 @@
 
 pkgbase=linux-mptcp
 _srcname=mptcp
-pkgver=0.92
-pkgrel=2
+pkgver=0.92.1
+pkgrel=1
 epoch=1
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
@@ -22,7 +22,7 @@ source=("https://github.com/multipath-tcp/mptcp/archive/v${pkgver}/${pkgbase}-${
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
-sha256sums=('6a2b7a68ee9522d256eaf9a837419d24f53b2b27d1567dc84d569dd4527abc1f'
+sha256sums=('ff59aa467296b7c7fb778ef2eb6628a4db8bebe8eb00934df6afdc847bc5d2a9'
             'fd08d8ae23138ed4f8f2b164988d33d0d5a1bd73a61971295b3388147e2bba6b'
             'b587dd89f69508f3016193b1bb362263daa0af00726e1d1137193329d3bd85cb'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
@@ -77,7 +77,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 4.4.70)"
+  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 4.4.83)"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
