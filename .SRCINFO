@@ -1,0 +1,17 @@
+pkgbase = prismmodelchecker-git
+	pkgdesc = PRISM is a probabilistic model checker, a tool for formal modelling and analysis of systems that exhibit random or probabilistic behaviour
+	pkgver = r3365.a8999396
+	pkgrel = 1
+	url = http://www.prismmodelchecker.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = java-environment
+	depends = python
+	provides = prismmodelchecker
+	conflicts = prismmodelchecker
+	source = prismmodelchecker-git::git+https://github.com/prismmodelchecker/prism.git
+	md5sums = SKIP
+
+pkgname = prismmodelchecker-git
+
