@@ -1,0 +1,24 @@
+pkgbase = fusioninventory-agent-bin
+	pkgdesc = An application for keeping track of the hardware and software
+	pkgver = 2.3.21
+	pkgrel = 2
+	url = http://fusioninventory.org
+	install = .INSTALL
+	arch = any
+	license = GPL
+	depends = perl>=5.8
+	depends = perl-module-build
+	depends = perl-file-which
+	depends = perl-libwww>=5.8
+	depends = perl-net-ip
+	depends = perl-text-template
+	depends = perl-data-structure-util
+	provides = fusioninventory-agent
+	conflicts = fusioninventory-agent
+	source = http://debian.fusioninventory.org/downloads/fusioninventory-agent_2.3.21-2_all.deb
+	source = agent.cfg
+	md5sums = 6ede95612470907f1964fa9f00732c4f
+	md5sums = eaf2c13c8adb7e57da038f3ae521ab35
+
+pkgname = fusioninventory-agent-bin
+

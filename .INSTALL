@@ -1,0 +1,4 @@
+post_install() {
+  cpan install UNIVERSAL::require
+  cpan install FusionInventory::Agent
+}
