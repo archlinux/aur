@@ -47,4 +47,7 @@ package_python-pulp() {
 
 package_python2-pulp() {
 	_package_for_python_version python2
+
+	# Uncomment the following line if you want to install both versions at the same time:
+	# rm "$pkgdir"/usr/bin/pulp{,doc}test
 }
