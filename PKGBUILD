@@ -2,9 +2,9 @@
 
 _pkgname=instant-rst
 pkgname="vim-${_pkgname}"
-_commit=490ede9 # 7 digits
-pkgver=20160308
-pkgrel=2
+_commit=2d32636 # 7 digits
+pkgver=20170628
+pkgrel=1
 pkgdesc="A local server for preview rst document instantly"
 arch=('any')
 url="https://github.com/Rykka/instant-rst.py"

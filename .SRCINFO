@@ -1,7 +1,7 @@
 pkgbase = vim-instant-rst
 	pkgdesc = A local server for preview rst document instantly
-	pkgver = 20160308
-	pkgrel = 2
+	pkgver = 20170628
+	pkgrel = 1
 	url = https://github.com/Rykka/instant-rst.py
 	arch = any
 	license = CPL
@@ -13,7 +13,7 @@ pkgbase = vim-instant-rst
 	depends = python2-socketio
 	optdepends = vim
 	optdepends = neovim
-	source = instant-rst::git+https://github.com/Rykka/instant-rst.py.git#commit=490ede9
+	source = instant-rst::git+https://github.com/Rykka/instant-rst.py.git#commit=2d32636
 	md5sums = SKIP
 
 pkgname = vim-instant-rst
