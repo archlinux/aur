@@ -5,11 +5,12 @@
 
 # Uncomment for a debug build
 #_qmake_args="CONFIG+=debug"
+_building=true
 pkgname=qtcreator-prerelease
 _pkgvermajmin=4.4
 pkgver=${_pkgvermajmin}.0
-_verpostfix="beta1"
-pkgrel=1
+_verpostfix="rc1"
+pkgrel=2
 _pkgver=${pkgver}
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
@@ -37,13 +38,17 @@ optdepends=('qbs'
             'valgrind: analyze support')
 makedepends=('qbs' 'clang' 'qt5-base')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha256sums=('163e729a0c4a78f4cd8acb9c82cae806bd66d6e1612aa52b94c1345a85384460')
+sha256sums=('f44cc84b4d5a6444cf71634d30c39f2fd1d29df83073ad5c04d881cce410eed7')
 
 _qmake_cmd=qmake
 _tmp_dir=$(mktemp -d)
 _qbs_settings="--settings-dir ${_tmp_dir}"
 _qbs_profile="sysqtprofile"
 _qbs_args="profile:${_qbs_profile}"
+
+if [[ -z ${startdir} ]]; then
+  _building=false
+fi
 
 build() {
   set -o nounset
@@ -72,4 +77,6 @@ package() {
   set +o nounset
 }
 
-qbs setup-qt ${_qbs_settings} /usr/bin/qmake ${_qbs_profile}
+if $_building; then
+  qbs setup-qt ${_qbs_settings} /usr/bin/qmake ${_qbs_profile}
+fi
