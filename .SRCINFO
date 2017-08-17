@@ -1,0 +1,20 @@
+pkgbase = yarn-nightly
+	pkgdesc = Fast, reliable, and secure dependency management
+	pkgver = 1.0.0.20170817.1516
+	pkgrel = 1
+	url = http://yarnpkg.com
+	arch = any
+	license = BSD
+	makedepends = jq
+	makedepends = curl
+	depends = nodejs
+	provides = yarn
+	conflicts = yarn
+	source = https://nightly.yarnpkg.com/yarn-v1.0.0-20170817.1516.tar.gz
+	source = https://nightly.yarnpkg.com/yarn-v1.0.0-20170817.1516.tar.gz.asc
+	validpgpkeys = 72ECF46A56B4AD39C907BBB71646B01B86E50310
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = yarn-nightly
+
