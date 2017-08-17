@@ -2,7 +2,7 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 pkgname=google-drive-ocamlfuse
 pkgver=0.6.21
-pkgrel=1
+pkgrel=2
 pkgdesc='FUSE-based file system backed by Google Drive, written in OCaml'
 arch=('x86_64' 'i686')
 url='https://astrada.github.io/google-drive-ocamlfuse/'
@@ -22,7 +22,7 @@ md5sums=('96d5a7c877d9f93b8f04dde67f96b725')
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	ocaml setup.ml -configure --prefix /usr --destdir "$pkgdir" --exec-prefix "$pkgdir/usr"
+	ocaml setup.ml -configure --prefix /usr --destdir "$pkgdir" --exec-prefix "/usr"
 
 	ocaml setup.ml -build
 }
