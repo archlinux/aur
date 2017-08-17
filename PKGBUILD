@@ -1,8 +1,8 @@
 # Contributor: ant32 <antreimer@gmail.com>
 
 pkgname=mingw-w64-curl
-pkgver=7.52.1
-pkgrel=3
+pkgver=7.55.1
+pkgrel=1
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
 url="http://curl.haxx.se"
@@ -16,7 +16,7 @@ depends=('mingw-w64-crt'
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!strip' '!buildflags')
 source=("$url/download/curl-$pkgver.tar.bz2")
-md5sums=('dd014df06ff1d12e173de86873f9f77a')
+md5sums=('8c153f282bbe482495214654cdcd4182')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
