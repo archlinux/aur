@@ -5,9 +5,9 @@
 pkgbase=reduce-svn
 _pkgbase=reduce
 pkgname=(reduce-csl-svn reduce-psl-svn reduce-common-svn reduce-addons-svn)
-pkgver=20170613.4082
+pkgver=20170813.4150
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://reduce-algebra.sourceforge.net/"
 license=('BSD')
 groups=('science')
@@ -38,16 +38,18 @@ prepare() {
 
   cd "${srcdir}/${_pkgbase}-build"
   patch -Np0 -i "${srcdir}/qreduce-file-location.patch"
-  sed -i 's/redcsl/redpsl/' generic/qreduce/{qrdefaults,qrmodel}.py
-
+  #sed -i 's/redcsl/redpsl/' generic/qreduce/{qrdefaults,qrmodel}.py
+  sed -i 's/\(enable_examples\)="yes"/\1="no"/' libraries/libedit-*/configure.ac
   sed -i 's/python-config/python2-config/g' generic/libreduce/src/Makefile.in
 }
 
 build() {
   cd "${srcdir}/${_pkgbase}-build"
-  ./configure --with-csl
-  ./configure --with-psl
-  make
+  ./autogen.sh
+  ./configure --prefix=/usr --with-csl
+  (cd cslbuild/${arch}-pc-linux-gnu && make)
+  ./configure --prefix=/usr --with-psl
+  (cd pslbuild/${arch}-pc-linux-gnu && make)
   # (cd generic/redfront && make)
   (cd generic/casefold && cc casefold.c -o casefold)
   (cd generic/libreduce && make PYTHON=/usr/bin/python2)
@@ -73,10 +75,10 @@ package_reduce-csl-svn() {
   install -d ${pkgdir}/usr/lib/reduce/cslbuild/csl
   install -d ${pkgdir}/usr/share/reduce/
 
-  install -t ${pkgdir}/usr/lib/reduce/cslbuild/csl/ cslbuild/${CARCH}-unknown-linux-gnu/csl/{csl,reduce}
+  install -t ${pkgdir}/usr/lib/reduce/cslbuild/csl/ cslbuild/${CARCH}-pc-linux-gnu/csl/{csl,reduce}
 
-  cp -r cslbuild/${CARCH}-unknown-linux-gnu/csl/reduce.resources ${pkgdir}/usr/lib/reduce/cslbuild/csl/
-  cp -r cslbuild/${CARCH}-unknown-linux-gnu/csl/reduce.fonts ${pkgdir}/usr/share/reduce/fonts
+  cp -r cslbuild/${CARCH}-pc-linux-gnu/csl/reduce.resources ${pkgdir}/usr/lib/reduce/cslbuild/csl/
+  cp -r cslbuild/${CARCH}-pc-linux-gnu/csl/reduce.fonts ${pkgdir}/usr/share/reduce/fonts
 
   install -Dm644 debianbuild/reduce/debian/copyright ${pkgdir}/usr/share/doc/reduce-csl/copyright
   install -Dm644 debianbuild/reduce/debian/redcsl.1 ${pkgdir}/usr/share/man/man1/redcsl.1
@@ -101,7 +103,7 @@ package_reduce-psl-svn() {
   install -d ${pkgdir}/usr/lib/reduce/pslbuild
   install -d ${pkgdir}/usr/share/reduce
 
-  cp -r pslbuild/${CARCH}-unknown-linux-gnu/{psl,red} ${pkgdir}/usr/lib/reduce/pslbuild/
+  cp -r pslbuild/${CARCH}-pc-linux-gnu/{psl,red} ${pkgdir}/usr/lib/reduce/pslbuild/
 
   install -Dm644 debianbuild/reduce/debian/copyright ${pkgdir}/usr/share/doc/reduce-psl/copyright
   install -Dm644 debianbuild/reduce/debian/redpsl.1 ${pkgdir}/usr/share/man/man1/redpsl.1
@@ -146,7 +148,7 @@ package_reduce-addons-svn() {
   install -d ${pkgdir}/usr/share/doc/reduce-addons
   install -d ${pkgdir}/usr/share/emacs/site-lisp/reduce
 
-  # install -D generic/redfront/${CARCH}-unknown-linux-gnu/redfront/redfront ${pkgdir}/usr/bin/redfront
+  # install -D generic/redfront/${CARCH}-pc-linux-gnu/redfront/redfront ${pkgdir}/usr/bin/redfront
   # install -Dm644 generic/redfront/src/redfront.1 ${pkgdir}/usr/share/man/man1/redfront.1
 
   install -D generic/breduce/breduce ${pkgdir}/usr/bin/breduce
@@ -156,7 +158,7 @@ package_reduce-addons-svn() {
   install -D generic/casefold/casefold ${pkgdir}/usr/bin/casefold
   install -Dm644 generic/casefold/README ${pkgdir}/usr/share/doc/reduce-addons/README.casefold
 
-  install -t ${pkgdir}/usr/lib/reduce generic/libreduce/${CARCH}-unknown-linux-gnu/{libreduce.so,RedPy.so}
+  install -t ${pkgdir}/usr/lib/reduce generic/libreduce/${CARCH}-pc-linux-gnu/{libreduce.so,RedPy.so}
 
   cp -r generic/qreduce ${pkgdir}/usr/share/
 
