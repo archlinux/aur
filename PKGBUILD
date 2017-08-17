@@ -4,7 +4,8 @@
 # Contributor: Jose Valecillos <valecillosjg@gmail.com>
 
 pkgname=dosbox-multilib-patched
-pkgver=0.74.4018
+_rev=4034
+pkgver=0.74.$_rev
 pkgrel=1
 pkgdesc="An emulator with builtin DOS for running DOS Games. 32-bit build with selected patches"
 arch=(x86_64)
@@ -14,7 +15,7 @@ depends=(lib32-alsa-lib hicolor-icon-theme lib32-libgl lib32-libpng lib32-mesa l
 makedepends=(subversion munt-git libgl)
 provides=(dosbox)
 conflicts=(dosbox)
-source=("$pkgname::svn+https://dosbox.svn.sourceforge.net/svnroot/dosbox/dosbox/trunk#revision=4018"
+source=("$pkgname::svn+https://dosbox.svn.sourceforge.net/svnroot/dosbox/dosbox/trunk#revision=$_rev"
 	$pkgname.desktop
 	dosbox-16.png 
 	dosbox-48.png 
@@ -27,12 +28,11 @@ source=("$pkgname::svn+https://dosbox.svn.sourceforge.net/svnroot/dosbox/dosbox/
 #install=$pkgname.install
 prepare() {
 	cd "$srcdir/$pkgname"
-	mkdir "$srcdir/$pkgname/include/GL/"
-	cp "/usr/include/GL/gl.h" "$srcdir/$pkgname/include/GL/gl.h"
-	patch -p1 <"../patches/gl.patch"
+	#mkdir "$srcdir/$pkgname/include/GL/"
+	#cp "/usr/include/GL/gl.h" "$srcdir/$pkgname/include/GL/gl.h"
 	patch -p0 <"../patches/dosbox_r3995_digi_pcspkr.diff"
-	patch -p1 <"../patches/dosbox-SVN-r4000-mt32-patch.diff"
-	patch -p1 <"../patches/voodoo_linux_r4006.diff"
+	patch -p1 <"../patches/dosbox-SVN-r4025-mt32-patch.diff"
+	patch -p1 <"../patches/1_voodoo_gl.diff"
 }
 build() {
 	cd $pkgname/
@@ -59,4 +59,4 @@ sha256sums=('SKIP'
             'e657254e56dd7d66cb1cefbf37f0f360e13a221bc60b1638c00dcda508f7fd56'
             'e71a3984170b3bf7af7d9cfbec0752187d70be76602721a1227b60980d7c380a'
             '228593e97732eaa31e0202b7d46da9d7529672369c17312db3f97784601b5d81'
-            'a24043dc0bb59060effc2aac3f0aa1618c43dcd824d1ab3330330e44bb287632')
+            '4463075b8be563a77fcac54b55f2b5fd46e40e013babbb65f31817a8f6f8cc0e')
