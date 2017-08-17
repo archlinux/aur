@@ -1,0 +1,24 @@
+pkgbase = networkmanager-openconnect-multiprotocol-git
+	pkgdesc = NetworkManager VPN plugin for OpenConnect - multiprotocol version
+	pkgver = r805.e86c9b3
+	pkgrel = 1
+	url = https://github.com/dlenski/network-manager-openconnect
+	install = networkmanager-openconnect.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libnm-gtk
+	makedepends = intltool
+	makedepends = python
+	makedepends = git
+	depends = gcr
+	depends = libnm-glib
+	depends = libsecret
+	depends = openconnect-palo-git
+	provides = networkmanager-openconnect
+	conflicts = networkmanager-openconnect
+	source = networkmanager-openconnect-multiprotocol-git::git+https://github.com/dlenski/network-manager-openconnect.git
+	sha256sums = SKIP
+
+pkgname = networkmanager-openconnect-multiprotocol-git
+

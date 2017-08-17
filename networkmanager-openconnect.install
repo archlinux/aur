@@ -1,0 +1,9 @@
+post_install() {
+  if ! getent passwd nm-openconnect >/dev/null; then
+    useradd -r -U -d / -c 'NetworkManager OpenConnect' -s /usr/bin/nologin nm-openconnect
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
