@@ -1,0 +1,17 @@
+pkgbase = kscript
+	pkgdesc = Enhanced scripting support for Kotlin on *nix-based systems
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/holgerbrandl/kscript
+	arch = any
+	license = custom
+	depends = kotlin
+	source = https://raw.githubusercontent.com/holgerbrandl/kscript/v1.6.0/kscript
+	source = https://raw.githubusercontent.com/holgerbrandl/kscript/v1.6.0/README.md
+	source = https://raw.githubusercontent.com/holgerbrandl/kscript/v1.6.0/LICENSE.txt
+	sha256sums = fb43043a60be53f3d8e3cf93d173fb9119c87e9ba89e3b0cdb02029826149ccc
+	sha256sums = d1c0c387aa6f3781da1c84b567637fe889374068cb1efa838b1568d8e9570846
+	sha256sums = 9f17c220a84297bff2720e11849ab0eacfdb564f5e6b7f1e1d768619787bf2d9
+
+pkgname = kscript
+
