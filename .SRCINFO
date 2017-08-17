@@ -1,16 +1,16 @@
 pkgbase = nvidia-304xx-lqx
 	pkgdesc = NVIDIA 304xx drivers for linux-lqx.
 	pkgver = 304.135
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.nvidia.com/
 	install = nvidia-304xx-lqx.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-lqx-headers>=4.11
-	makedepends = linux-lqx-headers<4.12
-	depends = linux-lqx>=4.11
-	depends = linux-lqx<4.12
+	makedepends = linux-lqx-headers>=4.12
+	makedepends = linux-lqx-headers<4.13
+	depends = linux-lqx>=4.12
+	depends = linux-lqx<4.13
 	depends = nvidia-304xx-libgl
 	depends = nvidia-304xx-utils=304.135
 	conflicts = nvidia-lqx
@@ -18,10 +18,12 @@ pkgbase = nvidia-304xx-lqx
 	options = !strip
 	source = drm-driver-legacy.patch
 	source = kernel_4.10.patch
-	source = unfuck-4.11_for_304xx.patch
+	source = kernel_4.11.patch
+	source = kernel_4.12.patch
 	sha256sums = f52406b17d2e0dc1c20a61b62bb734ee7f2a3b8f71d0608cbef35aa301654729
 	sha256sums = 7d35792528cade28232a2a0f582d36975c271de6fe99a6f3a4046b9637b9739a
 	sha256sums = 125995702eb2fd4ed43bc53e1f385ef4d47f14dc2da23a52061fb7b875ea9eaa
+	sha256sums = c8256018c14b8e6e9287e426a0f6befddf75941c2bce0ff96823a3b314b5ccb0
 	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/304.135/NVIDIA-Linux-x86-304.135.run
 	sha256sums_i686 = 5cb0a191ddca7b4c72b3c26cd57b7d719878ce628d24b5b026a0e5c8d3a00d93
 	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/304.135/NVIDIA-Linux-x86_64-304.135-no-compat32.run
