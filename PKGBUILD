@@ -3,8 +3,8 @@
 
 pkgname=waterfox-kde
 _pkgname=Waterfox
-pkgver=54.0.1
-pkgrel=3
+pkgver=55.0.1
+pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -22,9 +22,9 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=("waterfox=${pkgver}")
 conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
-_patchrev=53443ffb496a
+_patchrev=fde25c29562d
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=d3e9b4534ab9069eb661097e3aff896ef6ada0f5
+_commit=e57df0da9107b905df21fff86496e19ed1358603
 source=("waterfox-$pkgver.source.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_commit.tar.gz"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
@@ -36,19 +36,25 @@ source=("waterfox-$pkgver.source.tar.gz::https://github.com/MrAlex94/Waterfox/ar
         pgo_fix_missing_kdejs.patch
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/distribution.ini"
-        "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.1")
-sha256sums=('0e415a856339b72ee6ad4b420a425b0da25b50400d0ca1255189914aaf33846d'
+        "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.1"
+        default22.png
+        default24.png
+        default256.png)
+sha256sums=('92d84a98a94baa168bd0a8cdd7cc9e043c0768a9b6ad04ba5f3e6011a34f761f'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
-            '193f7a6e0f422e24b1a3c1f02fa445c088e3c0665841a689511a95e923c1db29'
-            'a8b49c56f4dfe371af6c3e1b214fb8274258823d702d334dbdec55e5a43671cd'
+            '512d9a06acdb30b023a0601ecf2f7b5104e2838d4431957b97910f24d98b5bef'
+            'a3af6d55c07fd4cd06c044bc1bf289caf16f40d8eb150bc505e035e37696bfa2'
             '774d13c0d319b83a3f90d15ceed093e80ff07a2794038c95ffa79539ca2819cc'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
             'e144a6fac4466acdba86194b43fb41c185c38e296d6262f26c3bff3d2b6db3be'
-            '03a25b7bde971ecfa35326b3c6e45450da325babed29d9cc2e10dd639f816ef6')
+            '03a25b7bde971ecfa35326b3c6e45450da325babed29d9cc2e10dd639f816ef6'
+            '57c68bd9fd2e06d9e683f223fa2e8a09bdbaef3cca63f1f5b9bd73ef3faedefa'
+            '84155ad7e6eff928acdc37a15c7075f78f44589771741ffbeaf159076114cda0'
+            '08a31d8c172f2cd04e9f1c8a417cccee77c084e3a85560fbb104239774f4e7a3')
 
 prepare() {
   mkdir path
@@ -101,8 +107,8 @@ ac_add_options --libdir=/opt
 
 ac_add_options --with-app-name=waterfox
 ac_add_options --with-app-basename=Waterfox
-ac_add_options --with-branding=browser/branding/official
-ac_add_options --with-distribution-id=org.Waterfoxproject
+ac_add_options --with-branding=browser/branding/unofficial
+ac_add_options --with-distribution-id=org.waterfoxproject
 
 # Library and chrome format
 ac_add_options --enable-chrome-format=omni
@@ -126,7 +132,6 @@ ac_add_options --disable-libproxy
 
 # Disable unwanted features
 ac_add_options --disable-crashreporter
-ac_add_options --disable-eme
 ac_add_options --disable-js-shell
 ac_add_options --disable-maintenance-service
 ac_add_options --disable-updater
@@ -136,6 +141,7 @@ ac_add_options --disable-mobile-optimize
 ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-profiling
+ac_add_options --disable-signmar
 ac_add_options --disable-tests
 ac_add_options --disable-parental-controls
 ac_add_options --disable-accessibility
@@ -154,7 +160,6 @@ ac_add_options --disable-gamepad
 
 # Enable wanted features
 ac_add_options --enable-jemalloc
-ac_add_options --enable-gio 
 ac_add_options --with-pthreads
 ac_add_options --enable-strip
 ac_add_options --enable-startup-notification
@@ -171,6 +176,13 @@ END
 
   msg "Add missing file in Makefile for pgo builds"
   patch -Np1 -i "$srcdir/pgo_fix_missing_kdejs.patch"
+  
+  # Fix missing icons
+  for i in 22 24 256; do
+	  if [ ! -f "${srcdir}/$pkgname-$pkgver/browser/branding/unofficial/default$i.png" ]; then
+		cp "${srcdir}/default$i.png" "${srcdir}/$pkgname-$pkgver/browser/branding/unofficial/default$i.png"
+	  fi
+  done
 }
 
 build() {
@@ -215,16 +227,16 @@ END
   install -Dm644 "$srcdir/kde.js" "$pkgdir/opt/waterfox/browser/defaults/preferences/kde.js"
 
   for i in 16 22 24 32 48 256; do
-    install -Dm644 browser/branding/official/default$i.png \
+    install -Dm644 browser/branding/unofficial/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/waterfox.png"
   done
-  install -Dm644 browser/branding/official/content/icon64.png \
+  install -Dm644 browser/branding/unofficial/content/icon64.png \
     "$pkgdir/usr/share/icons/hicolor/64x64/apps/waterfox.png"
-  install -Dm644 browser/branding/official/mozicon128.png \
+  install -Dm644 browser/branding/unofficial/mozicon128.png \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/waterfox.png"
-  install -Dm644 browser/branding/official/content/about-logo.png \
+  install -Dm644 browser/branding/unofficial/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/waterfox.png"
-  install -Dm644 browser/branding/official/content/about-logo@2x.png \
+  install -Dm644 browser/branding/unofficial/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/waterfox.png"
 
   install -Dm644 $srcdir/waterfox.desktop \
