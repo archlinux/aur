@@ -2,8 +2,8 @@
 
 _pkgname=nativefier-freedesktop
 pkgname=${_pkgname}-git
-_commit=b94b0e2 # 7 digits
-pkgver=20170324
+_commit=9dde2b2 # 7 digits
+pkgver=20170430
 pkgrel=1
 pkgdesc="Script to automate the installation of Nativefier (Electron) web apps"
 arch=('any')

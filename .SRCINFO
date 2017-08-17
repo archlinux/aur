@@ -1,12 +1,13 @@
 pkgbase = nativefier-freedesktop-git
 	pkgdesc = Script to automate the installation of Nativefier (Electron) web apps
-	pkgver = 20170324
+	pkgver = 20170430
 	pkgrel = 1
 	url = https://github.com/alxlg/nativefier-freedesktop
 	install = nativefier-freedesktop-git.install
 	arch = any
+	license = CPL
 	depends = nodejs-nativefier
-	source = nativefier-freedesktop::git+https://github.com/alxlg/nativefier-freedesktop.git#commit=b94b0e2
+	source = nativefier-freedesktop::git+https://github.com/alxlg/nativefier-freedesktop.git#commit=9dde2b2
 	sha256sums = SKIP
 
 pkgname = nativefier-freedesktop-git
