@@ -42,5 +42,5 @@ package() {
   mkdir "${pkgdir}/opt"
   cp -a "${srcdir}/universal-gcode-sender-git/ugs-platform/application/target/ugsplatform" "${pkgdir}/opt/${pkgname}"
 
-  ln -s /opt/universal-gcode-sender-git/bin /usr/bin/ugs2
+  ln -s /opt/universal-gcode-sender-git/bin "${pkgdir}/usr/bin/ugs2"
 }
