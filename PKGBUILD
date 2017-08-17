@@ -1,10 +1,10 @@
 
 pkgname=mingw-w64-cmake
 pkgver=1
-pkgrel=17
+pkgrel=18
 arch=('any')
 pkgdesc="CMake wrapper for MinGW (mingw-w64)"
-depends=('cmake' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'wine')
+depends=('cmake' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=("GPL")
 url="http://fedoraproject.org/wiki/MinGW"
 source=("mingw-cmake.sh"
