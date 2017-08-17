@@ -1,7 +1,7 @@
 # Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
 
 _npmname=testee
-_npmver=0.5.0
+_npmver=0.7.0
 pkgname="nodejs-${_npmname}"
 pkgver="${_npmver}"
 pkgrel=1
@@ -13,7 +13,7 @@ depends=('nodejs' 'npm')
 optdepends=('phantomjs: Headless WebKit JavaScript API, used as default browser')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=("${_npmname}-${_npmver}.tgz")
-sha1sums=('7847eee9b71dc78b2c44666ef686964145b618cb')
+sha1sums=('15b576545fda6fa9b92262989716eaab083f54c9')
 
 package() {
   cd "${srcdir}"
