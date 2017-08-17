@@ -8,7 +8,7 @@
 _gitname=alot
 pkgname=alot-git
 pkgrel=1
-pkgver=r2930.33fb2b66
+pkgver=r2938.8fabf1cf
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
@@ -49,6 +49,11 @@ build() {
 package() {
     cd "$srcdir/$_gitname"
     python2 setup.py install --optimize=1 --root="$pkgdir"
+
+    # Delete tests
+    rm -rvf "$pkgdir/usr/lib/python2.7/site-packages/tests"
+
+    # Install extra data
     install -Dm644 extra/completion/alot-completion.zsh \
         "$pkgdir/usr/share/zsh/functions/_alot"
     install -dm755 "$pkgdir/usr/share/alot/themes"
