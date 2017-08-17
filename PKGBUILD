@@ -11,6 +11,7 @@ arch=("any")
 license=("BSD")
 url="https://github.com/coin-or/pulp"
 depends=("python-pyparsing")
+makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/b5/87/71293d89377341551f2f331d259c0b7e7324b60ce37c597d0a42f0ebc18d/$_pkgname-$pkgver.tar.gz")
 sha512sums=('e78b33f331144f458a585fda396b5c9d1d09e25199d29fc2de39027d6cbee74dfa3325878c77ca01164102adf22ee5bb31beea5af54500c1ad917cedb2dbf783')
 
