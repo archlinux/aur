@@ -1,8 +1,8 @@
 # Maintainer: Sascha Wunderlich <archlinux at saschawunderlich dot de>
 pkgname=carl-git
-pkgver=17.06.r180.g477d100e
+pkgver=17.08.r2.g8f78930b
 pkgrel=1
-pkgdesc="CArL - the Computer ARithmetic and Logic library."
+pkgdesc="CArL - the Computer ARithmetic and Logic library"
 arch=(i686 x86_64)
 url="https://smtrat.github.io/carl"
 license=('MIT')

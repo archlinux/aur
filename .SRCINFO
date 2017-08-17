@@ -1,6 +1,6 @@
 pkgbase = carl-git
-	pkgdesc = CArL - the Computer ARithmetic and Logic library.
-	pkgver = 17.06.r180.g477d100e
+	pkgdesc = CArL - the Computer ARithmetic and Logic library
+	pkgver = 17.08.r2.g8f78930b
 	pkgrel = 1
 	url = https://smtrat.github.io/carl
 	arch = i686
