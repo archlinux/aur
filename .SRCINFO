@@ -1,7 +1,7 @@
 pkgbase = st-solarized-dark
 	pkgdesc = A simple virtual terminal emulator for X. Patched for solarized dark and Inconsolata font.
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://st.suckless.org
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = st-solarized-dark
 	makedepends = ncurses
 	depends = libxext
 	depends = libxft
+	provides = st
+	conflicts = st
 	source = http://dl.suckless.org/st/st-0.7.tar.gz
 	source = http://st.suckless.org/patches/solarized/st-no_bold_colors-0.7.diff
 	source = http://st.suckless.org/patches/solarized/st-solarized-dark-0.7.diff

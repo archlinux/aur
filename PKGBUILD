@@ -2,8 +2,10 @@
 
 pkgname=st-solarized-dark
 appname='st'
+provides=('st')
+conflicts=('st')
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple virtual terminal emulator for X. Patched for solarized dark and Inconsolata font.'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -23,7 +25,7 @@ prepare() {
   patch -i "$srcdir/st-no_bold_colors-$pkgver.diff"
   patch -i "$srcdir/st-solarized-dark-$pkgver.diff"
   cp config.def.h config.h
-  sed -i 's/Liberation Mono:pixelsize=12:antialias=true:autohint=true/Inconsolata:pixelsize=16:antialias=true:autohint=true/' config.h 
+  sed -i 's/Liberation Mono:pixelsize=12:antialias=true:autohint=true/Inconsolata:pixelsize=20:antialias=true:autohint=true/' config.h 
 }
 
 build() {
@@ -33,10 +35,10 @@ build() {
 
 package() {
   cd "$srcdir/$appname-$pkgver"
-  make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
   # Avoid conflict with ncurses package
-  rm "$pkgdir/usr/share/terminfo/s/st"
-  rm "$pkgdir/usr/share/terminfo/s/st-256color"
+  # rm "$pkgdir/usr/share/terminfo/s/st"
+  # rm "$pkgdir/usr/share/terminfo/s/st-256color"
+  make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
 }
