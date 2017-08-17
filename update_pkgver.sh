@@ -1,3 +1,3 @@
 #!/bin/sh
 
-makepkg -od && ./update_srcinfo.sh
+makepkg -ocd && ./update_srcinfo.sh
