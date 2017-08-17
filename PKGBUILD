@@ -12,7 +12,7 @@ install=ghdl.install
 options=(!emptydirs staticlibs)
 
 source=(
-  "git+https://github.com/tgingold/ghdl#tag=GHDL-${pkgver}"
+  "git+https://github.com/tgingold/ghdl#tag=v${pkgver}"
   "https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 )
