@@ -4,7 +4,7 @@ pkgdesc="ROS - roslaunch is a tool for easily launching multiple ROS nodes local
 url='http://ros.org/wiki/roslaunch'
 
 pkgname='ros-lunar-roslaunch'
-pkgver='1.13.1'
+pkgver='1.13.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-roslaunch-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/roslaunch/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('aee85b9f5eee4f96b0f5bfec09c6a605d88ce90d0c1d4a06d59c68833c6a5641')
+sha256sums=('f2957c783008a0544402e03e34b2818f07ac428d14541ac20a235bee0c46478e')
 
 build() {
   # Use ROS environment variables
@@ -43,14 +43,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
