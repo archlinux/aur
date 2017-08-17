@@ -2,7 +2,7 @@
 
 pkgname=cnet
 pkgver=3.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Enables development of / experimentation with a variety of protocols in networks"
 arch=('i686' 'x86_64')
 url="http://www.csse.uwa.edu.au/cnet/"

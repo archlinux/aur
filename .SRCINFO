@@ -1,7 +1,7 @@
 pkgbase = cnet
 	pkgdesc = Enables development of / experimentation with a variety of protocols in networks
-	pkgver = 3.3.1
-	pkgrel = 1
+	pkgver = 3.3.4
+	pkgrel = 2
 	url = http://www.csse.uwa.edu.au/cnet/
 	install = cnet.install
 	arch = i686
