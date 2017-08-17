@@ -1,21 +1,21 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname=pology-svn
-pkgver=1423025
+pkgver=1495839
 pkgrel=1
 pkgdesc='A framework for custom processing of PO files.'
 arch=('any')
 license=('GPL3')
 url='http://techbase.kde.org/Localization/Tools/Pology'
-depends=('python2' 'gettext')
+depends=('python2' 'gettext' 'python2-pyenchant')
 makedepends=('subversion' 'cmake' 'libxml2' 'docbook-xsl' 'epydoc' 'python2-pygments')
 options=(!makeflags)
 optdepends=('python2-dbus: to communicate with external applications'
-	    'python2-pyenchant: spell checking functionality (needs a dictionary)'
 	    'hunspell-lang: a spell-checking dictionary for your language(s)'
 	    'aspell-lang: a spell-checking dictionary for your language(s)'
 	    'ispell-lang: a spell-checking dictionary for your language(s)'
 	    'languagetool: used by the check-grammar sieve'
+	    'katepart4: for synder syntax highlighting in KDE editors'
 	    'apertium: used by the pomtrans script'
 	    'git: for processing files under version control'
 	    'subversion: for processing files under version control')
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
   cd ${srcdir}/pology
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DDOCBOOK_XSL_DIR=/usr/share/xml/docbook/xsl-stylesheets-1.78.1/
+  cmake -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
