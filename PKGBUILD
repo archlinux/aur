@@ -1,47 +1,48 @@
-# Maintainer: Aleksey Vasilenko <aleksey.vasilenko@gmail.com>
+# Maintainer:  Andrew Shelyakov <andrew.shelyakov@ya.ru>
 
-pkgbase=php-zts
-pkgname=('php-zts'
-         'php-zts-cgi'
-         'php-zts-apache'
-         'php-zts-fpm'
-         'php-zts-embed'
-         'php-zts-phpdbg'
-         'php-zts-dblib'
-         'php-zts-enchant'
-         'php-zts-gd'
-         'php-zts-imap'
-         'php-zts-intl'
-         'php-zts-mcrypt'
-         'php-zts-odbc'
-         'php-zts-pgsql'
-         'php-zts-pspell'
-         'php-zts-snmp'
-         'php-zts-sqlite'
-         'php-zts-tidy'
-         'php-zts-xsl')
-pkgver=7.0.13
+_pkgbase='php'
+pkgbase="${_pkgbase}-zts"
+pkgname=("${pkgbase}"
+         "${pkgbase}-cgi"
+         "${pkgbase}-apache"
+         "${pkgbase}-fpm"
+         "${pkgbase}-embed"
+         "${pkgbase}-phpdbg"
+         "${pkgbase}-dblib"
+         "${pkgbase}-enchant"
+         "${pkgbase}-gd"
+         "${pkgbase}-imap"
+         "${pkgbase}-intl"
+         "${pkgbase}-mcrypt"
+         "${pkgbase}-odbc"
+         "${pkgbase}-pgsql"
+         "${pkgbase}-pspell"
+         "${pkgbase}-snmp"
+         "${pkgbase}-sqlite"
+         "${pkgbase}-tidy"
+         "${pkgbase}-xsl")
+pkgver=7.1.8
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
 makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libmcrypt' 'libxslt' 'libzip' 'net-snmp'
-             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds')
+             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre')
 checkdepends=('procps-ng')
-source=("http://www.php.net/distributions/php-${pkgver}.tar.xz"{,.asc}
+source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
-sha256sums=('357ba7f93975d7d836abed0852dc3ed96a988af539e87750613294cbee82f1bf'
+sha256sums=('8943858738604acb33ecedb865d6c4051eeffe4e2d06f3a3c8f794daccaa2aab'
             'SKIP'
-            '819f05d2fd5a75c96e93c863517ca77dbd021a1224dc2d8096f758fb2937df6a'
+            '258b33b6531b1128d9804c8b608b6013423a421edcf764747042d07e79ec6df3'
             'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
-            '136e197384255420c73678aef812e70aa86320f6dbefcc5a952df1a65fdd53fa'
+            '7d982a3cefb3eaec0b3458340e4991c2959c10d1518ecb7c1d041884b14efc73'
             '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5'
-            'd37ce253f1096df1702fe2b0272a0919e8a02cc9e05b868d5f54b506fc6ce0d3')
-validpgpkeys=('1A4E8B7277C42E53DBA9C7B9BCAA30EA9C0D5763'
-              '6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3')
+            '78f60b1d9f3a0ef8af77208feed76e303b3a13e93b80613c1e5a729004a5343c')
+validpgpkeys=('A917B1ECDA84AEC2B568FED6F50ABC807BD5DCD0'
+              '528995BFEDFBA7191D46839EF9BA0ADA31CBD89E')
 
 prepare() {
-	cd ${srcdir}/php-${pkgver}
+	cd ${srcdir}/${_pkgbase}-${pkgver}
 
 	patch -p0 -i ${srcdir}/apache.patch
 	patch -p0 -i ${srcdir}/php-fpm.patch
@@ -49,7 +50,7 @@ prepare() {
 }
 
 build() {
-	local _phpconfig="--srcdir=../php-${pkgver} \
+	local _phpconfig="--srcdir=../${_pkgbase}-${pkgver} \
 		--config-cache \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
@@ -61,8 +62,6 @@ build() {
 		--disable-rpath \
 		--mandir=/usr/share/man \
 		--without-pear \
-		--enable-zend-signals \
-		--enable-maintainer-zts \
 		"
 
 	local _phpextensions="\
@@ -119,6 +118,7 @@ build() {
 		--with-xsl=shared \
 		--with-zlib \
 		--enable-pcntl \
+		--enable-maintainer-zts \
 		"
 
 	EXTENSION_DIR=/usr/lib/php/modules
@@ -126,7 +126,7 @@ build() {
 
 	mkdir ${srcdir}/build
 	cd ${srcdir}/build
-	ln -s ../php-${pkgver}/configure
+	ln -s ../${_pkgbase}-${pkgver}/configure
 	./configure ${_phpconfig} \
 		--enable-cgi \
 		--enable-fpm \
@@ -157,7 +157,7 @@ build() {
 }
 
 check() {
-	cd ${srcdir}/php-${pkgver}
+	cd ${srcdir}/${_pkgbase}-${pkgver}
 
 	# Check if sendmail was configured correctly (FS#47600)
 	${srcdir}/build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
@@ -172,15 +172,15 @@ check() {
 
 package_php-zts() {
 	pkgdesc='PHP with ZTS enabled'
-	depends=('libxml2' 'curl' 'libzip')
-	conflicts=('php')
-	replaces=('php')
-	provides=('php')
+	depends=('libxml2' 'curl' 'libzip' 'pcre')
+	replaces=("${_pkgbase}" 'php-ldap')
+	conflicts=("${_pkgbase}" 'php-ldap')
+	provides=("${_pkgbase}" "php-ldap=${pkgver}")
 	backup=('etc/php/php.ini')
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
-	install -D -m644 ${srcdir}/php-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
+	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
 	install -d -m755 ${pkgdir}/etc/php/conf.d/
 
 	# remove static modules
@@ -193,7 +193,7 @@ package_php-zts() {
 
 package_php-zts-cgi() {
 	pkgdesc='CGI and FCGI SAPI for PHP'
-	depends=('php-zts')
+	depends=("${pkgbase}")
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} install-cgi
@@ -201,7 +201,7 @@ package_php-zts-cgi() {
 
 package_php-zts-apache() {
 	pkgdesc='Apache SAPI for PHP'
-	depends=('php-zts' 'apache')
+	depends=("${pkgbase}" 'apache')
 	backup=('etc/httpd/conf/extra/php7_module.conf')
 
 	install -D -m755 ${srcdir}/build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/libphp7.so
@@ -210,9 +210,8 @@ package_php-zts-apache() {
 
 package_php-zts-fpm() {
 	pkgdesc='FastCGI Process Manager for PHP'
-	depends=('php-zts' 'systemd')
+	depends=("${pkgbase}" 'systemd')
 	backup=('etc/php/php-fpm.conf' 'etc/php/php-fpm.d/www.conf')
-	install='php-fpm.install'
 	options=('!emptydirs')
 
 	cd ${srcdir}/build
@@ -223,7 +222,7 @@ package_php-zts-fpm() {
 
 package_php-zts-embed() {
 	pkgdesc='Embedded PHP SAPI library'
-	depends=('php-zts' 'libsystemd')
+	depends=("${pkgbase}" 'libsystemd')
 	options=('!emptydirs')
 
 	cd ${srcdir}/build
@@ -232,7 +231,7 @@ package_php-zts-embed() {
 
 package_php-zts-phpdbg() {
 	pkgdesc='Interactive PHP debugger'
-	depends=('php-zts')
+	depends=("${pkgbase}")
 	options=('!emptydirs')
 
 	cd ${srcdir}/build-phpdbg
@@ -241,49 +240,49 @@ package_php-zts-phpdbg() {
 
 package_php-zts-dblib() {
 	pkgdesc='dblib module for PHP'
-	depends=('php-zts' 'freetds')
+	depends=("${pkgbase}" 'freetds')
 
 	install -D -m755 ${srcdir}/build/modules/pdo_dblib.so ${pkgdir}/usr/lib/php/modules/pdo_dblib.so
 }
 
 package_php-zts-enchant() {
 	pkgdesc='enchant module for PHP'
-	depends=('php-zts' 'enchant')
+	depends=("${pkgbase}" 'enchant')
 
 	install -D -m755 ${srcdir}/build/modules/enchant.so ${pkgdir}/usr/lib/php/modules/enchant.so
 }
 
 package_php-zts-gd() {
 	pkgdesc='gd module for PHP'
-	depends=('php-zts' 'gd')
+	depends=("${pkgbase}" 'gd')
 
 	install -D -m755 ${srcdir}/build/modules/gd.so ${pkgdir}/usr/lib/php/modules/gd.so
 }
 
 package_php-zts-imap() {
 	pkgdesc='imap module for PHP'
-	depends=('php-zts' 'c-client')
+	depends=("${pkgbase}" 'c-client')
 
 	install -D -m755 ${srcdir}/build/modules/imap.so ${pkgdir}/usr/lib/php/modules/imap.so
 }
 
 package_php-zts-intl() {
 	pkgdesc='intl module for PHP'
-	depends=('php-zts' 'icu')
+	depends=("${pkgbase}" 'icu')
 
 	install -D -m755 ${srcdir}/build/modules/intl.so ${pkgdir}/usr/lib/php/modules/intl.so
 }
 
 package_php-zts-mcrypt() {
 	pkgdesc='mcrypt module for PHP'
-	depends=('php-zts' 'libmcrypt' 'libtool')
+	depends=("${pkgbase}" 'libmcrypt' 'libtool')
 
 	install -D -m755 ${srcdir}/build/modules/mcrypt.so ${pkgdir}/usr/lib/php/modules/mcrypt.so
 }
 
 package_php-zts-odbc() {
 	pkgdesc='ODBC modules for PHP'
-	depends=('php-zts' 'unixodbc')
+	depends=("${pkgbase}" 'unixodbc')
 
 	install -D -m755 ${srcdir}/build/modules/odbc.so ${pkgdir}/usr/lib/php/modules/odbc.so
 	install -D -m755 ${srcdir}/build/modules/pdo_odbc.so ${pkgdir}/usr/lib/php/modules/pdo_odbc.so
@@ -291,7 +290,7 @@ package_php-zts-odbc() {
 
 package_php-zts-pgsql() {
 	pkgdesc='PostgreSQL modules for PHP'
-	depends=('php-zts' 'postgresql-libs')
+	depends=("${pkgbase}" 'postgresql-libs')
 
 	install -D -m755 ${srcdir}/build/modules/pgsql.so ${pkgdir}/usr/lib/php/modules/pgsql.so
 	install -D -m755 ${srcdir}/build/modules/pdo_pgsql.so ${pkgdir}/usr/lib/php/modules/pdo_pgsql.so
@@ -299,21 +298,21 @@ package_php-zts-pgsql() {
 
 package_php-zts-pspell() {
 	pkgdesc='pspell module for PHP'
-	depends=('php-zts' 'aspell')
+	depends=("${pkgbase}" 'aspell')
 
 	install -D -m755 ${srcdir}/build/modules/pspell.so ${pkgdir}/usr/lib/php/modules/pspell.so
 }
 
 package_php-zts-snmp() {
 	pkgdesc='snmp module for PHP'
-	depends=('php-zts' 'net-snmp')
+	depends=("${pkgbase}" 'net-snmp')
 
 	install -D -m755 ${srcdir}/build/modules/snmp.so ${pkgdir}/usr/lib/php/modules/snmp.so
 }
 
 package_php-zts-sqlite() {
 	pkgdesc='sqlite module for PHP'
-	depends=('php-zts' 'sqlite')
+	depends=("${pkgbase}" 'sqlite')
 
 	install -D -m755 ${srcdir}/build/modules/sqlite3.so ${pkgdir}/usr/lib/php/modules/sqlite3.so
 	install -D -m755 ${srcdir}/build/modules/pdo_sqlite.so ${pkgdir}/usr/lib/php/modules/pdo_sqlite.so
@@ -321,14 +320,14 @@ package_php-zts-sqlite() {
 
 package_php-zts-tidy() {
 	pkgdesc='tidy module for PHP'
-	depends=('php-zts' 'tidy')
+	depends=("${pkgbase}" 'tidy')
 
 	install -D -m755 ${srcdir}/build/modules/tidy.so ${pkgdir}/usr/lib/php/modules/tidy.so
 }
 
 package_php-zts-xsl() {
 	pkgdesc='xsl module for PHP'
-	depends=('php-zts' 'libxslt')
+	depends=("${pkgbase}" 'libxslt')
 
 	install -D -m755 ${srcdir}/build/modules/xsl.so ${pkgdir}/usr/lib/php/modules/xsl.so
 }

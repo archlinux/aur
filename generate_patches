@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 . PKGBUILD
 
 makepkg -o --nodeps --noprepare --skipinteg
 
-pushd src/${pkgbase}-${pkgver}
+pushd src/${_pkgbase}-${pkgver}
 
 sed '/APACHE_THREADED_MPM=/d' -i.orig sapi/apache2handler/config.m4 -i.orig configure
 

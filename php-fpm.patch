@@ -1,16 +1,16 @@
 --- sapi/fpm/Makefile.frag.orig
 +++ sapi/fpm/Makefile.frag
-@@ -12,8 +12,8 @@
- 
- 	@echo "Installing PHP FPM config:        $(INSTALL_ROOT)$(sysconfdir)/" && \
- 	$(mkinstalldirs) $(INSTALL_ROOT)$(sysconfdir)/php-fpm.d || :
--	@$(INSTALL_DATA) sapi/fpm/php-fpm.conf $(INSTALL_ROOT)$(sysconfdir)/php-fpm.conf.default || :
--	@$(INSTALL_DATA) sapi/fpm/www.conf $(INSTALL_ROOT)$(sysconfdir)/php-fpm.d/www.conf.default || :
-+	@$(INSTALL_DATA) sapi/fpm/php-fpm.conf $(INSTALL_ROOT)$(sysconfdir)/php-fpm.conf || :
-+	@$(INSTALL_DATA) sapi/fpm/www.conf $(INSTALL_ROOT)$(sysconfdir)/php-fpm.d/www.conf || :
- 
+@@ -15,8 +15,8 @@
+ 	else \
+ 		echo "Installing PHP FPM defconfig:     $(INSTALL_ROOT)$(sysconfdir)/" && \
+ 		$(mkinstalldirs) $(INSTALL_ROOT)$(sysconfdir)/php-fpm.d; \
+-		$(INSTALL_DATA) sapi/fpm/php-fpm.conf $(INSTALL_ROOT)$(sysconfdir)/php-fpm.conf.default; \
+-		$(INSTALL_DATA) sapi/fpm/www.conf $(INSTALL_ROOT)$(sysconfdir)/php-fpm.d/www.conf.default; \
++		$(INSTALL_DATA) sapi/fpm/php-fpm.conf $(INSTALL_ROOT)$(sysconfdir)/php-fpm.conf; \
++		$(INSTALL_DATA) sapi/fpm/www.conf $(INSTALL_ROOT)$(sysconfdir)/php-fpm.d/www.conf; \
+ 	fi
+ 	
  	@echo "Installing PHP FPM man page:      $(INSTALL_ROOT)$(mandir)/man8/"
- 	@$(mkinstalldirs) $(INSTALL_ROOT)$(mandir)/man8
 --- sapi/fpm/php-fpm.conf.in.orig
 +++ sapi/fpm/php-fpm.conf.in
 @@ -14,14 +14,14 @@
@@ -22,7 +22,7 @@
  
  ; Error log file
  ; If it's set to "syslog", log is sent to syslogd instead of being written
- ; in a local file.
+ ; into a local file.
  ; Note: the default prefix is @EXPANDED_LOCALSTATEDIR@
  ; Default Value: log/php-fpm.log
 -;error_log = log/php-fpm.log
@@ -63,12 +63,12 @@
  ; stderr will be redirected to /dev/null according to FastCGI specs.
 --- sapi/fpm/php-fpm.service.in.orig
 +++ sapi/fpm/php-fpm.service.in
-@@ -4,7 +4,7 @@
+@@ -8,7 +8,7 @@
  
  [Service]
  Type=@php_fpm_systemd@
--PIDFile=@localstatedir@/run/php-fpm.pid
+-PIDFile=@EXPANDED_LOCALSTATEDIR@/run/php-fpm.pid
 +PIDFile=/run/php-fpm/php-fpm.pid
- ExecStart=@sbindir@/php-fpm --nodaemonize --fpm-config @sysconfdir@/php-fpm.conf
+ ExecStart=@EXPANDED_SBINDIR@/php-fpm --nodaemonize --fpm-config @EXPANDED_SYSCONFDIR@/php-fpm.conf
  ExecReload=/bin/kill -USR2 $MAINPID
- 
+ PrivateTmp=true
