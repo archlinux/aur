@@ -4,7 +4,7 @@ pkgdesc="ROS - roswtf is a tool for diagnosing issues with a running ROS system.
 url='http://ros.org/wiki/roswtf'
 
 pkgname='ros-lunar-roswtf'
-pkgver='1.13.1'
+pkgver='1.13.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-roswtf-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/roswtf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('46e33927e6ae4b0c278adb7ab1d7a1e6c7bfa7bc816d7118ea7e46f683f90a91')
+sha256sums=('b73d50765dcb1c71d68265359054dff49a3acbc48dbbd27d3082df3e97429764')
 
 build() {
   # Use ROS environment variables
@@ -42,14 +42,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
