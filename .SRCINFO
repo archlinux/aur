@@ -18,7 +18,9 @@ pkgbase = stack-client
 	provides = owncloud-client-ngs
 	conflicts = stack-client-bin
 	source = http://mirror.transip.net/stack/software/source/stackclient-2.2.4-sources.zip
+	source = SSLeay_OpenSSL.diff
 	sha256sums = 65540597542b2af3f195742ffb4983cdb9030370f44482451d7a622d033ae661
+	sha256sums = fd07efe4d09a086ec827e9618818a7839fae43db6192b693307977fa84842582
 
 pkgname = stack-client
 

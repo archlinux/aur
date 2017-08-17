@@ -1,0 +1,12 @@
+--- a/transipclient-2.2.4/src/3rdparty/certificates/p12topem.cpp
++++ b/transipclient-2.2.4/src/3rdparty/certificates/p12topem.cpp
+@@ -65,7 +65,7 @@ resultP12ToPem p12ToPem(string p12File,
+     ret.PrivateKey = "";
+     ret.Certificate = "";
+     
+-    SSLeay_add_all_algorithms();
++    OpenSSL_add_all_algorithms();
+     ERR_load_crypto_strings();
+     if(!(fp = fopen(p12File.c_str(), "rb"))) {
+         ret.ErrorCode = 1;
+

@@ -11,12 +11,15 @@ integration with Nemo')
 makedepends=('cmake' 'qt5-tools')
 conflicts=('stack-client-bin')
 provides=('mirall-git' 'owncloud-client' 'owncloud-client-ngs')
-source=("http://mirror.transip.net/stack/software/source/stackclient-${pkgver}-sources.zip")
-sha256sums=('65540597542b2af3f195742ffb4983cdb9030370f44482451d7a622d033ae661')
+source=("http://mirror.transip.net/stack/software/source/stackclient-${pkgver}-sources.zip"
+        "SSLeay_OpenSSL.diff")
+sha256sums=('65540597542b2af3f195742ffb4983cdb9030370f44482451d7a622d033ae661'
+            'fd07efe4d09a086ec827e9618818a7839fae43db6192b693307977fa84842582')
  
 prepare() {
   tar xzf ${pkgname}_${pkgver}.orig.tar.gz
   gunzip ${pkgname}_${pkgver}-1.1.diff.gz
+  patch -p1 < SSLeay_OpenSSL.diff
 }
  
 build() {
