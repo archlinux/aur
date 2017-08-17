@@ -1,5 +1,5 @@
 pkgname=electrum-ltc
-pkgver=2.8.3.5
+pkgver=2.9.3.1
 pkgrel=1
 pkgdesc="Lightweight Litecoin client"
 arch=(any)
@@ -24,7 +24,7 @@ makedepends=(python2-pycurl)
 source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz
         https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz.asc)
 validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
-sha256sums=(b43ca7f86937e56acc35d6c507302ba9f44efe919a2ad6d51194455cc91581bc
+sha256sums=(d931a5376b7f38fba7221b01b1010f172c4d662668adae5c38885a646d5ee530
             SKIP)
 
 prepare() {
@@ -36,10 +36,6 @@ prepare() {
   do convert $i $i
   done
   pyrcc4 icons.qrc >gui/qt/icons_rc.py
-
-  sed -i '/fee_widgets.append((rbf_label, rbf_combo))/d
-          s/set_rbf(True)/set_rbf(False)/' gui/qt/main_window.py
-  sed -i 's/, rbf=False//; s/, rbf//' lib/commands.py
 }
 
 build() {
@@ -50,7 +46,7 @@ build() {
 package() {
   cd Electrum-LTC-$pkgver/
 
-  ./setup.py install -O1 --root=$pkgdir
+  ./setup.py install -O1 --root=$pkgdir/
 
   mkdir -p $pkgdir/usr/share/doc/electrum-ltc/
   cp AUTHORS README.rst RELEASE-NOTES electrum-ltc.conf.sample $pkgdir/usr/share/doc/electrum-ltc/
