@@ -62,10 +62,10 @@ _kyber_disable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.12.7
+pkgver=4.12.8
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -82,6 +82,7 @@ source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        # gcc cpu optimizatons from graysky and ck
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # mainline block merges
         "${_mergepath}/0001-Merge-tag-uuid-for-4.13-of-uuid.patch"
@@ -128,8 +129,9 @@ source=(# mainline kernel patches
 sha256sums=(# mainline kernel patches
             'a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            'fe0a0b7c071978839f4b941d655df93e3c0e60bd3e49237f7e7a8635cb38ff8e'
+            '32b860911a3bafd5cd5bc813a427c90fad6eafdf607fa64e1b763b16ab605636'
             'SKIP'
+            # gcc cpu optimizatons from graysky and ck
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
             # mainline block merges
             'b8745ca529c03c1d20473cb45cda3ea25da49a73e522cd834c32b9316b5f9f12'
