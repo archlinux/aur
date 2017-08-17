@@ -10,7 +10,7 @@ groups=()
 depends=('wine'
          'winetricks')
 makedepends=('unrar')
-optdepends=('wine-mono: or take directx')
+optdepends=('wine-mono: or take dotnet')
 provides=()
 conflicts=()
 replaces=()
