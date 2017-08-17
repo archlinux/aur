@@ -1,7 +1,7 @@
 # Maintainer:  Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-x265
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc='Open Source H265/HEVC video encoder (mingw-w64)'
 arch=('any')
@@ -12,8 +12,8 @@ options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-cmake' 'yasm')
 source=("https://bitbucket.org/multicoreware/x265/downloads/x265_${pkgver}.tar.gz"
         mingw.patch)
-sha256sums=('9c2aa718d78f6fecdd783f08ab83b98d3169e5f670404da4c16439306907d729'
-            '90b8e81cd5228d2b147fbd6c000921d5b7593819e378d0e73c11c8de390796bc')
+sha256sums=('2e53259b504a7edb9b21b9800163b1ff4c90e60c74e23e7001d423c69c5d3d17'
+            'b1953c70b734b91e7916448c4636b70305c1d5bfaf86f17f94b769499635a191')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -57,6 +57,7 @@ build() {
       ${_arch}-cmake \
          -DLIB_INSTALL_DIR="lib" \
          -DENABLE_SHARED='TRUE' \
+         -DENABLE_HDR10_PLUS='TRUE' \
          -DEXTRA_LIB='x265_main10.a;x265_main12.a' \
          -DEXTRA_LINK_FLAGS='-L.' \
          -DLINKED_10BIT='TRUE' \

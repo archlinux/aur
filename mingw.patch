@@ -1,20 +1,22 @@
-diff -ru multicoreware-x265-d6257335c537/source/CMakeLists.txt patched/source/CMakeLists.txt
---- multicoreware-x265-d6257335c537/source/CMakeLists.txt	2014-07-09 10:25:15.000000000 +0200
-+++ patched/source/CMakeLists.txt	2014-07-11 02:30:52.574683624 +0200
-@@ -283,6 +283,7 @@
-         # shared library is not installed if a tag is not found
-         set_target_properties(x265-shared PROPERTIES VERSION ${X265_LATEST_TAG} SOVERSION ${X265_BUILD})
-         install(TARGETS x265-shared
-+                RUNTIME DESTINATION ${BIN_INSTALL_DIR}
-                 LIBRARY DESTINATION ${LIB_INSTALL_DIR}
-                 ARCHIVE DESTINATION ${LIB_INSTALL_DIR})
+diff -ruN x265_2.5/source/CMakeLists.txt patched/source/CMakeLists.txt
+--- x265_2.5/source/CMakeLists.txt	2017-07-13 13:20:07.000000000 +0200
++++ patched/source/CMakeLists.txt	2017-08-17 17:04:43.903541062 +0200
+@@ -607,7 +607,8 @@
+     if(ENABLE_HDR10_PLUS)
+         install(TARGETS hdr10plus-shared
+             LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+-            ARCHIVE DESTINATION ${LIB_INSTALL_DIR})
++            ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
++            RUNTIME DESTINATION ${BIN_INSTALL_DIR})
      endif()
-diff -ru multicoreware-x265-d6257335c537/source/common/CMakeLists.txt patched/source/common/CMakeLists.txt
---- multicoreware-x265-d6257335c537/source/common/CMakeLists.txt	2014-07-09 10:25:15.000000000 +0200
-+++ patched/source/common/CMakeLists.txt	2014-07-11 02:32:59.046579781 +0200
-@@ -117,10 +117,16 @@
-     source_group(Assembly FILES ${ASM_PRIMITIVES})
- endif(ENABLE_ASSEMBLY)
+     if(LINKER_OPTIONS)
+         # set_target_properties can't do list expansion
+diff -ruN x265_2.5/source/common/CMakeLists.txt patched/source/common/CMakeLists.txt
+--- x265_2.5/source/common/CMakeLists.txt	2017-07-13 13:20:07.000000000 +0200
++++ patched/source/common/CMakeLists.txt	2017-08-17 17:02:32.291048935 +0200
+@@ -116,10 +116,16 @@
+ string(REPLACE ";" " " VERSION_FLAGS "${VFLAGS}")
+ set_source_files_properties(version.cpp PROPERTIES COMPILE_FLAGS ${VERSION_FLAGS})
  
 -check_symbol_exists(strtok_r "string.h" HAVE_STRTOK_R)
 -if(HAVE_STRTOK_R)
@@ -33,12 +35,12 @@ diff -ru multicoreware-x265-d6257335c537/source/common/CMakeLists.txt patched/so
  
  if(GCC AND CC_HAS_NO_NARROWING)
      set_source_files_properties(cpu.cpp PROPERTIES COMPILE_FLAGS -Wno-narrowing)
-diff -ru multicoreware-x265-d6257335c537/source/common/param.cpp patched/source/common/param.cpp
---- multicoreware-x265-d6257335c537/source/common/param.cpp	2014-07-09 10:25:15.000000000 +0200
-+++ patched/source/common/param.cpp	2014-07-11 02:36:54.809974684 +0200
-@@ -28,6 +28,9 @@
+diff -ruN x265_2.5/source/common/param.cpp patched/source/common/param.cpp
+--- x265_2.5/source/common/param.cpp	2017-07-13 13:20:07.000000000 +0200
++++ patched/source/common/param.cpp	2017-08-17 17:02:32.291048935 +0200
+@@ -29,6 +29,9 @@
+ #include "cpu.h"
  #include "x265.h"
- #include "TLibCommon/TComSlice.h"
  
 +//FIXME For strtok_r in Mingw-w64 (see CMakeLists.txt)
 +#include <pthread.h>
