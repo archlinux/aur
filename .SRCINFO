@@ -1,7 +1,7 @@
 pkgbase = firefox-eme-free-ru-bin
 	pkgdesc = Standalone web browser from mozilla.org - EME free release (RU)
 	pkgver = 55.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mozilla.org/en-US/firefox/organizations/
 	install = firefox-eme-free-ru.install
 	arch = x86_64

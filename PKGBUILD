@@ -3,7 +3,7 @@
 pkgname=firefox-eme-free-ru-bin
 _pkgname=${pkgname/-bin/}
 pkgver=55.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone web browser from mozilla.org - EME free release (RU)'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}/linux-
 package() {
     cd "$srcdir"
 
-    install -d "$pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}"
+    install -d "$pkgdir"/{usr/{bin,share/{applications,pixmaps}},opt}
     cp -r firefox/ "$pkgdir/opt/$_pkgname"
 
     ln -s /opt/$_pkgname/firefox "$pkgdir/usr/bin/$_pkgname"
