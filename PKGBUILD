@@ -8,7 +8,7 @@
 
 pkgname=shutter
 pkgver=0.94
-pkgrel=1
+pkgrel=2
 pkgdesc="A featureful screenshot tool (formerly gscrot)"
 arch=('any')
 url="http://shutter-project.org/"
@@ -28,7 +28,7 @@ optdepends=('gnome-web-photo: web screenshot support'
 		'perl-net-oauth: Imgur and Dropbox upload support'
 		'bc: 3D Rotate and 3D Reflection plugins support')
 source=("https://launchpad.net/shutter/0.9x/$pkgver/+download/shutter-$pkgver.tar.gz")
-sha512sums=('6e42a23e56d39b1a2de46a0faebc53ba7a2f3f8fa48750c9961d6d8f060177b1757ff22642eaf6bbdfc30f68825b2b8789fed00d9e19354cc40f7e27d4890984')
+sha512sums=('7eb097523f0a696d7c1d5dfe236b0ef8c8e5f26477df688be786f2a4ef0121b64acc5d9abf96a4cab08bbae6b9c441f309aa30dd92eaea4ed64a9ebef09e6d39')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
