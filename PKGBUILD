@@ -1,6 +1,6 @@
 pkgbase=tmkernel-bfq       # Build kernel with a different name
 _srcname=linux-4.12
-pkgver=4.12.3
+pkgver=4.12.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -17,7 +17,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '13ad942e5144acafb849942c320aa6ab887cd2ffbba033c622f7a88eb2c32143'
+            '32b860911a3bafd5cd5bc813a427c90fad6eafdf607fa64e1b763b16ab605636'
             'SKIP'
             'dfb53fb48bad4d9f61bbea5e364d5619137460e7224bdf0e7bde5e137bc512d5'
             'e61601ba911d957c149d52b1b1bca8c841b31ab800ac930bae9677e74a508c3f'
