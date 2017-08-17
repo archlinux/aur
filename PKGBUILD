@@ -3,14 +3,14 @@
 _pkgsrcname=p4python
 pkgname=(python-p4python python2-p4python)
 pkgver=2017.1.1526044
-pkgrel=2
+pkgrel=3
 pkgdesc="Interface to Perforce API for Python"
 url="https://www.perforce.com/perforce/doc.current/manuals/p4script/03_python.html"
 arch=('any')
 license=('custom')
 source=($pkgname-$pkgver.tar.gz::"https://pypi.python.org/packages/0c/8f/96d49332fcf60434c92df0d6df4290b3ce930e25a99d7b5acdc131fb2e16/${_pkgsrcname}-${pkgver}.tar.gz")
 md5sums=('8d1142270531d98913046380f266be80')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools' 'openssl-1.0')
 
 prepare() {
   # Clean up if needed
@@ -33,7 +33,7 @@ build() {
 }
 
 package_python-p4python() {
-  depends=('python' 'openssl-1.0')
+  depends=('python')
   pkgdesc+=" 3"
 
   cd $srcdir/python-$_pkgsrcname-$pkgver
@@ -43,7 +43,7 @@ package_python-p4python() {
 }
 
 package_python2-p4python() {
-  depends=('python2' 'openssl-1.0')
+  depends=('python2')
   pkgdesc+=" 2"
 
   cd $srcdir/python2-$_pkgsrcname-$pkgver
