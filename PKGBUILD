@@ -14,8 +14,8 @@ url="http://ardour.org/"
 license=('GPL')
 depends=('aubio' 'cwiid' 'gtkmm' 'liblo' 'liblrdf' 'lilv' 'suil' 'rubberband' 'taglib' 'libarchive')
 makedepends=('git' 'python2' 'boost' 'cppunit' 'doxygen' 'graphviz' 'itstool')
-provides=(ardour)
-conflicts=("${ardour-*}")
+provides=('ardour')
+conflicts=('ardour' 'ardour-git')
 source=("${pkgname%-*}::git://github.com/Ardour/ardour.git"
         'ardour.desktop')
 md5sums=('SKIP'
