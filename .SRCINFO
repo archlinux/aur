@@ -1,23 +1,20 @@
 pkgbase = cnet
 	pkgdesc = Enables development of / experimentation with a variety of protocols in networks
 	pkgver = 3.3.1
-	pkgrel = 4
+	pkgrel = 1
 	url = http://www.csse.uwa.edu.au/cnet/
 	install = cnet.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = tk>=8.4
-	depends = elfutils
+	depends = libelf
 	options = staticlibs
 	source = Makefile.patch
 	source = src.Makefile.linux.patch
-	source = support.Makefile.common.patch
 	source = cnet.sh
 	md5sums = c24a6296f95fdd02121cce557949eaee
 	md5sums = 0b70b1ad53ed27a5aec71f2dc93d7125
-	md5sums = 76282da17f289352657ab0dd927b9167
 	md5sums = d1c2b8e09ee6b2a811ed79505dce6c70
 
 pkgname = cnet
-
