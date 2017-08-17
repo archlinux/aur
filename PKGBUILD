@@ -11,12 +11,22 @@ _lang=es-ES
 pkgname="${_name}-${_channel}-${_lang,,}"
 pkgdesc="Standalone web browser from mozilla.org, nightly build (${_lang})"
 url='http://www.mozilla.org/projects/firefox'
-pkgver=55.0a1.20170307
-_version=55.0a1
+pkgver=57.0a1.20170816
+_version=57.0a1
 pkgrel=1
 arch=('i686' 'x86_64')
 conflicts=('firefox-nightly')
 license=('MPL' 'GPL' 'LGPL')
+depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
+optdepends=('pulseaudio: audio support'
+  'ffmpeg: h.264 video'
+  'gtk2: flash plugin support'
+  'hunspell: spell checking'
+  'hyphen: hyphenation'
+  'libnotify: notification integration'
+  'networkmanager: location detection via available WiFi networks'
+  'speech-dispatcher: text-to-speech'
+  'startup-notification: support for FreeDesktop Startup Notification')
 _file="${_name}-${_version}.en-US.linux"
 _file_l10n="${_name}-${_version}.${_lang}.linux"
 _srcurl="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central"
@@ -32,8 +42,6 @@ sha512sums=(
   'SKIP'
   'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
-depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3'
-          'sqlite' 'dbus-glib')
 
 pkgver() {
   echo "${_version}.$(head -n1 "${srcdir}/${_file}-${CARCH}.txt" | cut -c-8)"
