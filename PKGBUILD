@@ -2,11 +2,11 @@
 
 pkgname=sshtunnel-git
 _gitname=sshtunnel
-pkgver=0.1.1.1.g76e9320
+pkgver=0.1.1.14.g0d16eaf
 pkgrel=1
 pkgdesc="A tool to manage SSH tunnel to different hosts via systemd"
 arch=('any')
-url="http://g.cmpl.cc/sshtunnel"
+url="https://g.cmpl.cc/sshtunnel"
 license=('GPL')
 depends=('openssh')
 optdepends=('autossh: More stabile connections'
@@ -17,7 +17,7 @@ conflicts=('sshtunnel')
 backup=('etc/sshtunnel.conf')
 options=('emptydirs')
 install=$pkgname.install
-source=('git+http://git.the-compiler.org/sshtunnel')
+source=('git+https://git.the-compiler.org/sshtunnel')
 sha1sums=('SKIP')
 
 pkgver() {
