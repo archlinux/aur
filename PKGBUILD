@@ -8,7 +8,7 @@ arch=('any')
 url='https://liri.io'
 license=('BSD')
 depends=('qbs')
-makedepends=('git' 'qbs')
+makedepends=('git')
 conflicts=('liri-qbs-shared')
 replaces=('liri-qbs-shared')
 provides=('liri-qbs-shared')
@@ -41,4 +41,7 @@ build() {
 package() {
 	cd ${srcdir}/${_gitname}
 	qbs install -d build --no-build -v --install-root $pkgdir profile:qt5
+
+	mkdir -p $pkgdir/usr/share/licenses/liri-qbs-shared
+	cp LICENSE.BSD $pkgdir/usr/share/licenses/liri-qbs-shared
 }
