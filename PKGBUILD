@@ -8,6 +8,7 @@ pkgdesc='A QtQuick based components set'
 arch=(i686 x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
+groups=(kf5)
 depends=(qt5-quickcontrols2)
 makedepends=(extra-cmake-modules qt5-tools plasma-framework)
 source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"{,.sig})
