@@ -1,10 +1,10 @@
 pkgbase = arm-frc-linux-gnueabi-linux-api-headers
 	pkgdesc = Kernel headers sanitized for use in userspace (arm-frc-linux-gnueabi)
 	pkgver = 3.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/libc
 	arch = any
-	groups = frc-2017
+	groups = frc-toolchain
 	license = GPL2
 	provides = arm-frc-linux-gnueabi-linux-api-headers=3.19
 	provides = arm-frc-linux-gnueabi-linux-api-headers30

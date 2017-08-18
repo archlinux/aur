@@ -5,12 +5,12 @@ _target=${_target_arch}-frc-linux-gnueabi
 pkgname=${_target}-linux-api-headers
 pkgver=3.19
 _basever=3.19-r0.36
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel headers sanitized for use in userspace (${_target})"
 arch=(any)
 url="http://www.gnu.org/software/libc"
 license=('GPL2')
-groups=('frc-2017')
+groups=('frc-toolchain')
 provides=("${_target}-linux-api-headers=${pkgver}"
   "${_target}-linux-api-headers30")
 conflicts=("${_target}-linux-api-headers26")
