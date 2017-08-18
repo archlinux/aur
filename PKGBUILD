@@ -1,24 +1,38 @@
 pkgname='holo'
-pkgver=1.3.1
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc='Minimalistic configuration management'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://holocm.org'
 license=('GPL3')
-depends=(
-    'git' # holo uses git-diff for file diffs
+depends=()
+optdepends=(
+    'git: to display diffs using git-diff(1)'
+    'openssh: to provision SSH public keys'
+    'shadow: to provision user accounts and groups'
 )
 makedepends=('go' 'perl')
 provides=(
-    "holo-files=${pkgver}" # required for holo-build packages that have a holo-files dependency when there are files below /usr/share/holo/files
-    'HOLO_API_VERSION=3'
+    # required for holo-build packages that have a holo-$PLUGIN dependency when there are files below /usr/share/holo/$PLUGIN/
+    "holo-files=${pkgver}"
+    "holo-run-scripts=${pkgver}"
+    "holo-ssh-keys=${pkgver}"
+    "holo-users-groups=${pkgver}"
+)
+replaces=(
+    'holo-run-scripts'
+    'holo-ssh-keys'
+    'holo-users-groups'
 )
 backup=(
     'etc/holorc'
     'etc/holorc.d/10-files'
+    'etc/holorc.d/20-users-groups'
+    'etc/holorc.d/25-ssh-keys'
+    'etc/holorc.d/95-holo-run-scripts'
 )
 source=("https://github.com/holocm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('1ec8795df0a5a579bdcf88875db10ccb016044865096fdbf38d6ae6ed590aa63')
+sha256sums=('c6a9170b41e40c630bdbd4cb70e73d2fa5ebe0a8c8da4fb7a07c99ba849c3d6b')
 
 options=('!strip') # binaries are already stripped inside the Makefile
 
