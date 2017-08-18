@@ -2,8 +2,9 @@
 # Original Author: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=curaengine-git
-pkgver=2.1.0.458.g0288f08
+pkgver=r4668.9104a94f
 pkgrel=1
+epoch=1
 pkgdesc="CuraEngine is a powerful, fast and robust engine for processing 3D models into 3D printing instruction for Ultimaker and other GCode based 3D printers. It is part of the larger open source project called Cura."
 url="https://github.com/Ultimaker/CuraEngine"
 arch=('i686' 'x86_64')
@@ -17,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd CuraEngine
-  git describe --tags | sed 's/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
