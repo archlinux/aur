@@ -7,7 +7,7 @@
 
 pkgname=wxformbuilder-git
 _gitname=wxFormBuilder
-pkgver=3.6.0.r47eac39
+pkgver=3.6.0.rf7cb4ad
 pkgrel=1
 pkgdesc="Designer, GUI builder, and RAD tool For wxWidgets"
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ build() {
   ./create_build_files4.sh
   cd build/$(wx-config --release)/gmake
 
-  make config=release
+  make config=release CXXFLAG=-fPIC
 }
 
 package() {
