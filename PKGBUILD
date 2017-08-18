@@ -6,7 +6,7 @@ url="https://launchpad.net/livewallpaper"
 license=('GPL3')
 
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686')
 
 makedepends=('intltool' 'xcftools' 'cmake' 'vala')
@@ -17,34 +17,39 @@ depends=(
 
 source=(
     'https://launchpad.net/livewallpaper/0.5/0.5.0/+download/livewallpaper-0.5.0.tar.gz'
+    'livewallpaper.patch'
 )
 
 sha256sums=(
     'f4ce97a721015b135eb675915eb306c1fb256e680d480fe13e4fe6ca81c7e04e'
+    'a7e2c63c98f574fc0a64dcffd478e3ba534a7805d5416c9089a2fdf8f869c694'
 )
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
-    # Add inexisting folder
-    sed -i '/add_subdirectory(debian)/d' CMakeLists.txt
-    # Disable doc generation (needs gtk-doc)
-    sed -i '/add_subdirectory(doc)/d' CMakeLists.txt
-    # Please use python3
-    sed -i '1i #!/usr/bin/python3'          plugins/circles/circles.py
-    sed -i '1i #!/usr/bin/python3'          plugins/photoslide/photoslide.py
-    # Fix old API
-    sed -i -e 's/fromstring/frombytes/g'    plugins/photoslide/photoslide.py
-    sed -i -e 's/tostring/tobytes/g'        plugins/photoslide/photoslide.py
+    # Patches:
+    # * Please use python3
+    # * Fix ref
+    # * Fix old API (fromstring/tostring to frombytes/tobytes)
+    # * CMake : remove debian dir
+    # * CMake : disable doc generation (needs gtk-doc)
+    patch -p2 -i "${srcdir}/livewallpaper.patch"
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver/cmake"
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ../
-    make DESTDIR="$pkgdir/"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    rm -rf "build"
+    mkdir  "build"
+    pushd  "build"
+
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    make DESTDIR="${pkgdir}"
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver/cmake"
-	make DESTDIR="$pkgdir/" install
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    pushd "build"
+
+    make DESTDIR="${pkgdir}" install
 }
