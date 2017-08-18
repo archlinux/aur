@@ -11,6 +11,8 @@ provides=('heroku-cli')
 conflicts=('heroku-cli' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source_x86_64=('https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x64.tar.gz')
 source_i686=('https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x86.tar.gz')
+md5sums_i686=('0001f16626470677639085119ecd3045')
+md5sums_x86_64=('c04612612e42c21485222d9261bb108e')
 
 prepare() {
     cd "${srcdir}"
@@ -28,5 +30,3 @@ package() {
     mv heroku-cli "${pkgdir}"/opt/heroku-cli
     ln -s /opt/heroku-cli/bin/heroku "${pkgdir}"/usr/bin/heroku
 }
-md5sums_i686=('0001f16626470677639085119ecd3045')
-md5sums_x86_64=('c04612612e42c21485222d9261bb108e')
