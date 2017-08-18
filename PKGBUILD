@@ -2,7 +2,7 @@
 
 pkgbase=decred-git
 pkgname=('dcrd-git' 'dcrwallet-git')
-pkgver=20170622
+pkgver=20170818
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
@@ -56,7 +56,7 @@ package_dcrd-git() {
           -t "$pkgdir/usr/share/licenses/dcrd"
 
   msg2 'Installing dcrd docs...'
-  for _doc in CHANGES README.md sample-dcrd.conf; do
+  for _doc in CHANGES README.md cmd/dcrctl/sample-dcrctl.conf; do
     install -Dm 644 "$srcdir/src/github.com/decred/dcrd/$_doc" \
             -t "$pkgdir/usr/share/doc/dcrd"
   done
