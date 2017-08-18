@@ -1,14 +1,13 @@
 pkgbase = 3to2
 	pkgdesc = Script to convert python3 code to python2. Counterpart to 2to3
-	pkgver = 1.0
-	pkgrel = 4
-	url = https://bitbucket.org/amentajo/lib3to2
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/3to2
 	arch = any
 	license = Apache
-	makedepends = mercurial
-	depends = python2
-	source = https://bitbucket.org/amentajo/lib3to2/downloads/3to2-1.0.tar.gz
-	md5sums = c23a3841fdd5ca0493533c74d6c4de5c
+	depends = python
+	source = https://pypi.python.org/packages/8f/ab/58a363eca982c40e9ee5a7ca439e8ffc5243dde2ae660ba1ffdd4868026b/3to2-1.1.1.zip
+	md5sums = cbeed28e350dbdaef86111ace3052824
 
 pkgname = 3to2
 
