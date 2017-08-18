@@ -1,6 +1,6 @@
 pkgbase = physfs-hg
 	pkgdesc = A library to provide abstract access to various archives (development version)
-	pkgver = 2.1.0.r1355.52a7487e505c
+	pkgver = 2.1.1.r1590.5aa450209e6a
 	pkgrel = 1
 	url = http://icculus.org/physfs/
 	arch = i686

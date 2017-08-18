@@ -2,7 +2,7 @@
 # Contributor: Tai Chi Minh Ralph Eastwood <tcmreastwood@gmail.com>
 
 pkgname=physfs-hg
-pkgver=2.1.0.r1355.52a7487e505c
+pkgver=2.1.1.r1590.5aa450209e6a
 pkgrel=1
 pkgdesc="A library to provide abstract access to various archives (development version)"
 arch=('i686' 'x86_64')
@@ -23,18 +23,11 @@ pkgver() {
   printf "%s.r%s.%s" "$_ver" "$(hg identify -n)" "$(hg identify -i)"
 }
 
-prepare() {
-  cd ${pkgname%-*}
-
-  # avoid abort in docs target
-  sed -i 's/-Werror//' CMakeLists.txt
-}
-
 build() {
   cd ${pkgname%-*}
 
   cmake ./ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPHYSFS_BUILD_TEST=OFF
+    -DPHYSFS_BUILD_TEST=FALSE
   make all docs
 }
 
