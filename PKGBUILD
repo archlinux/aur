@@ -1,6 +1,6 @@
 # Maintainer: Philipp Claen <philipp.classen@posteo.de>
 pkgname=benchmark
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A microbenchmark support library, by Google"
 arch=('any')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('cmake')
 
 source=("https://github.com/google/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('e7334dd254434c6668e33a54c8f839194c7c61840d52f4b6258eee28e9f3b20e')
+sha256sums=('3dcc90c158838e2ac4a7ad06af9e28eb5877cf28252a81e55eb3c836757d3070')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
