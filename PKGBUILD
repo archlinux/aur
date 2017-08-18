@@ -3,7 +3,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=6.1.1
+pkgver=6.1.2
 pkgrel=1
 pkgdesc="The web end of seafile server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -13,7 +13,7 @@ depends=("seafile-server" "python2-virtualenv")
 makedepends=('python2-pip')
 source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
         "seahub-preupgrade")
-sha256sums=('988f2fea7ac3ad9e3537dcdadd96c55edf5bb6bfaee3ada42190386c9dea10bf'
+sha256sums=('9a4cbb13d14bf00a81540c5bfaac6206b3ed722697b309c899bfffd8a4da42d5'
             'd3b0d33848ab9e0dbb9ea6e6e385fc4ffa82a77193af447edef7646d68e396b1')
 # Strip is not happy on precompiled libs in virtualenv, temporary disable
 options=("!strip")
