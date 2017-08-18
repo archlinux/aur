@@ -2,7 +2,7 @@
 
 pkgbase=decred
 pkgname=('dcrd' 'dcrwallet')
-pkgver=1.0.5
+pkgver=1.0.7
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
@@ -12,8 +12,8 @@ license=('ISC')
 options=('!strip' '!emptydirs')
 source=(dcrd-$pkgver.tar.gz::https://codeload.github.com/decred/dcrd/tar.gz/v$pkgver
         dcrwallet-$pkgver.tar.gz::https://codeload.github.com/decred/dcrwallet/tar.gz/v$pkgver)
-sha256sums=('d2492faf5166f224af7f7fd73730d36432c2acf584994a68b372fd5e321f4b18'
-            '18a9dcc9c30828225401d908a902485a411c2f5098526268b67763e32b193229')
+sha256sums=('b30de053862f9dec2a507da09a64a40fe49aac75b0714c0797165e9b14207f48'
+            '441e9d4cd5101e53e656cd73d0433eec9b0fb2ab99ddd9c9944a38ca8e6c3ae5')
 
 prepare() {
   export GOPATH="$srcdir"
@@ -56,7 +56,7 @@ package_dcrd() {
           -t "$pkgdir/usr/share/licenses/dcrd"
 
   msg2 'Installing dcrd docs...'
-  for _doc in CHANGES README.md sample-dcrd.conf; do
+  for _doc in CHANGES README.md cmd/dcrctl/sample-dcrctl.conf; do
     install -Dm 644 "$srcdir/src/github.com/decred/dcrd/$_doc" \
             -t "$pkgdir/usr/share/doc/dcrd"
   done
