@@ -6,7 +6,7 @@ url="https://launchpad.net/livewallpaper"
 license=('GPL3')
 
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 
 makedepends=('intltool' 'xcftools' 'cmake' 'vala')
