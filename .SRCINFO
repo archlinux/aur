@@ -1,7 +1,7 @@
 pkgbase = f1spirit
 	pkgdesc = Classic MSX race game remade by Brain Games
 	pkgver = 0.rc9.1615
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.braingames.getput.com/f1spirit
 	arch = i686
 	arch = x86_64

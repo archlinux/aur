@@ -2,7 +2,7 @@
 
 pkgname=f1spirit
 pkgver=0.rc9.1615
-pkgrel=3
+pkgrel=4
 pkgdesc="Classic MSX race game remade by Brain Games"
 arch=('i686' 'x86_64')
 license=('unknown')
@@ -19,8 +19,8 @@ prepare() {
   # fix compile errors and bin path
   patch -p0 < ../f1spirit.patch
 
-  # use Arch's CFLAGS
   sed -i "s/-g3 -O3/$CFLAGS/" build/linux/Makefile
+  sed -i "/LDFLAGS =/s/$/ $LDFLAGS/" build/linux/Makefile
 }
 
 build() {
