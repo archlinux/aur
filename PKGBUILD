@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=auctex-git
-pkgver=11.91.7.gb43ec94b
-pkgrel=2
+pkgver=11.91.10.g075eab75
+pkgrel=1
 pkgdesc="TeX/LaTeX writing environment for Emacs - git checkout"
 arch=('any')
 url="http://savannah.gnu.org/projects/auctex"
