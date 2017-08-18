@@ -1,6 +1,6 @@
 pkgbase = docker-bin
 	pkgdesc = Pack, ship and run any application as a lightweight container, using official binaries
-	pkgver = 17.06.0
+	pkgver = 17.06.1
 	pkgrel = 1
 	url = https://www.docker.com/
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = docker-bin
 	conflicts = docker-ce
 	conflicts = docker-git
 	options = !strip
-	source = https://download.docker.com/linux/static/edge/x86_64/docker-17.06.0-ce.tgz
-	source = https://github.com/docker/docker-ce/archive/v17.06.0-ce.tar.gz
+	source = https://download.docker.com/linux/static/edge/x86_64/docker-17.06.1-ce.tgz
+	source = https://github.com/docker/docker-ce/archive/v17.06.1-ce.tar.gz
 	source = docker.sysusers
-	md5sums = ecc2f2d99b64b35d8ad478eafcc6f502
-	md5sums = 1eb7761b77dc328e6b0a9c481bcd7514
+	md5sums = 86d259bbd9a48de6897b6e9439a6c5a3
+	md5sums = a0d638496215364a7eec4d280dba62f1
 	md5sums = 9a8b2744db23b14ca3cd350fdf73c179
 
 pkgname = docker-bin
