@@ -3,7 +3,7 @@
 # have to change $pkgname, $_language, $pkgdesc and $url in PKGBUILD
 # AND (!) the first line in the .install file!
 
-pkgname='tor-browser-en-iran'
+pkgname='tor-browser-en'
 pkgver='7.0.4'
 _language='en-US'
 pkgrel=1
