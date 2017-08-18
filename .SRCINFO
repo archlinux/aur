@@ -1,0 +1,17 @@
+pkgbase = logtalk
+	pkgdesc = Prolog OOP extension and frontend compiler - stable
+	pkgver = 3.11.1
+	pkgrel = 1
+	url = http://logtalk.org/
+	arch = x86_64
+	arch = i686
+	license = APACHE
+	optdepends = swi-prolog: Prolog environment
+	optdepends = gprolog: GNU Prolog
+	optdepends = yap: A prolog backend
+	provides = logtalk
+	source = https://github.com/LogtalkDotOrg/logtalk3/archive/lgt3111stable.tar.gz
+	sha256sums = ae3829fede61125ab5ea2aefc5fe03a0a46ceee1f3fca75fe8a484272630bb20
+
+pkgname = logtalk
+

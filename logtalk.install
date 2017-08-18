@@ -1,0 +1,14 @@
+post_install() {
+	echo ""
+	echo "NOTE: You MUST run \`/usr/lib/logtalk/bin/logtalk_user_setup\` to complete this installation."
+	echo ""
+	echo "Also, If you haven't already, add the lines below to your \`.profile\`, \`.bash_profile\`, or \`.bashrc\`.":
+	echo ""
+	echo "LOGTALKHOME=/usr/lib/logtalk/share/logtalk"
+	echo "LOGTALKUSER=\$HOME/logtalk"
+	echo "PATH=\$PATH:\$LOGTALKHOME/tools/lgtdoc/xml:\$LOGTALKHOME/scripts:\$LOGTALKHOME/integration:\$HOME/bin"
+	echo "MANPATH=\$MANPATH:\$LOGTALKHOME/man"
+	echo "export LOGTALKHOME LOGTALKUSER PATH MANPATH"
+	echo "-----------------------------------------------------------------------------------------------------------------"
+	echo ""
+}
