@@ -5,7 +5,7 @@
 # Contributor: denn
 
 pkgname=i2pd
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64' 'armv7h')
@@ -26,7 +26,8 @@ build() {
   cd build
   cmake . -DCMAKE_CXX_FLAGS="-w" \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DWITH_UPNP=1 -DWITH_PCH=0 \
+	  -DWITH_UPNP=ON -DWITH_PCH=OFF \
+	  -DWITH_AVX=ON \
 	  -DCMAKE_BUILD_TYPE=Release
   make
 }
@@ -73,7 +74,6 @@ package(){
 
   chmod -R o= $pkgdir/${_home_dest}
 }
-
-md5sums=('d13139cad7e327506f5281ccd28cd640'
+md5sums=('8d37d0eacc2bf1f4be6d70250f5542d2'
          '6e9869d619464902e635e520d21a8a56'
          '384658d2792ef6433d2de70ebc9d40d4')
