@@ -2,7 +2,7 @@
 
 _pkgname=murmur
 pkgname=${_pkgname}-snapshot-minimal
-pkgver=1.3.0_2407_g3754898
+pkgver=1.3.0_2569_gd196a4b
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble"
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,7 +18,7 @@ source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"
         "murmur.service"
         "murmur.logrotate"
         "murmur.conf.dbus")
-sha512sums=('a6af48b1f972a2885ed38bcb60c9b2b532f74bc2e06acb237f30c934e1d6c41f26cd5b4dafcd06cb9bdceed1c0259124233b32ab3eef60e5bbfb8dd5bdcd6f5b'
+sha512sums=('08c2c9d173e834f7da2309daaf4b6e2407f9f1cf02a84606ce59e996657493a0debe4e4c73cc9a5aae7780c78a762220e583fe358f825bfd879ccb6fbae22df5'
             'SKIP'
             'SKIP'
             'SKIP')
