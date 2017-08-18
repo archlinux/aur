@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kjobwidgets
-pkgver=5.36.0
+pkgver=5.37.0
 pkgrel=1
 arch=(any)
 pkgdesc="Widgets for tracking KJob instances (mingw-w64)"
@@ -9,8 +9,10 @@ groups=(mingw-w64-kf5)
 makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
-source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kjobwidgets-${pkgver}.tar.xz")
-md5sums=('5c53678ceb2c2c6f868ccd1a93e4ddc9')
+source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kjobwidgets-${pkgver}.tar.xz"{,.sig})
+sha256sums=('8b645c1dded5ec2c6628a6b8638804abe49eab02f7da324eb8a75d7d616fc284'
+            'SKIP')
+validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
