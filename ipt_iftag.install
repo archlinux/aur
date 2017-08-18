@@ -1,0 +1,13 @@
+post_install() {
+  kernver="`pacman -Ql linux|gawk 'match($0, /^(.*)modules\/([0-9.-]+-ARCH)\/$/, a) {print a[2]}'`"
+  echo -e "Probe modules"
+  depmod ${kernver}
+}
+
+post_remove() {
+  post_install
+}
+
+post_upgrade() {
+  post_install
+}
