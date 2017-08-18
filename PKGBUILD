@@ -13,6 +13,7 @@ makedepends=('python' 'boost')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 install=murmur-snapshot-minimal.install
+backup=("etc/murmur/murmur.ini")
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"
         "murmur.service"
         "murmur.logrotate"
