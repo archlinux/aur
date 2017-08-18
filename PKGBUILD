@@ -2,7 +2,7 @@
 # Contributor: Thorsten Toepper <atsutane@freethoughts.de>
 
 pkgname=newsbeuter-git
-pkgver=1747.f6eba7c
+pkgver=2278.96e9506
 pkgrel=1
 pkgdesc='A RSS feed reader for the text console with special Podcast support.'
 url='http://www.newsbeuter.org'
@@ -13,7 +13,7 @@ optdepends=('ruby')
 makedepends=('git' 'swig' 'asciidoc' 'docbook-xsl' 'pkgconfig')
 options=('docs' '!libtool')
 conflicts=('newsbeuter')
-source=('git://github.com/akrennmair/newsbeuter.git')
+source=('git+https://github.com/akrennmair/newsbeuter.git')
 sha256sums=('SKIP')
 
 pkgver() {
