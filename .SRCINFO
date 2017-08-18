@@ -1,8 +1,9 @@
 pkgbase = logtalk
-	pkgdesc = Prolog OOP extension and frontend compiler - stable
+	pkgdesc = Object-Oriented Logic Programming Language
 	pkgver = 3.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://logtalk.org/
+	install = logtalk.install
 	arch = x86_64
 	arch = i686
 	license = APACHE
