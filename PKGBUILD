@@ -14,5 +14,5 @@ md5sums=('b2a7c050216c3822314705f41f673097')
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 autoload/pathogen.vim "$pkgdir"/usr/share/vim/vimfiles/autoload/pathogen.vim
+  install -Dm644 autoload/pathogen.vim "$pkgdir"/usr/share/vim/vimfiles/autoload/pathogen.vim
 }
