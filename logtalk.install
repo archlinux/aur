@@ -6,7 +6,7 @@ post_install() {
 	echo ""
 	echo "LOGTALKHOME=/usr/lib/logtalk/share/logtalk"
 	echo "LOGTALKUSER=\$HOME/logtalk"
-	echo "PATH=\$PATH:\$LOGTALKHOME/tools/lgtdoc/xml:\$LOGTALKHOME/scripts:\$LOGTALKHOME/integration:\$HOME/bin"
+	echo "PATH=\$PATH:\$LOGTALKHOME/tools/lgtdoc/xml:\$LOGTALKHOME/scripts:\$LOGTALKHOME/integration"
 	echo "MANPATH=\$MANPATH:\$LOGTALKHOME/man"
 	echo "export LOGTALKHOME LOGTALKUSER PATH MANPATH"
 	echo "-----------------------------------------------------------------------------------------------------------------"
@@ -14,4 +14,37 @@ post_install() {
 	echo "2) run \`source ~/.bashrc\`"
 	echo ""
 	echo "3) run \`/usr/lib/logtalk/bin/logtalk_user_setup\`"
+	echo ""
+}
+
+post_upgrade() {
+	echo ""
+	echo "Finish these last three steps in order to complete this installation:"
+	echo ""
+	echo "1) Ensure that the lines below are in your \`.bashrc\`.":
+	echo ""
+	echo "LOGTALKHOME=/usr/lib/logtalk/share/logtalk"
+	echo "LOGTALKUSER=\$HOME/logtalk"
+	echo "PATH=\$PATH:\$LOGTALKHOME/tools/lgtdoc/xml:\$LOGTALKHOME/scripts:\$LOGTALKHOME/integration"
+	echo "MANPATH=\$MANPATH:\$LOGTALKHOME/man"
+	echo "export LOGTALKHOME LOGTALKUSER PATH MANPATH"
+	echo "-----------------------------------------------------------------------------------------------------------------"
+	echo ""
+	echo ""
+	echo "2) run \`source ~/.bashrc\`"
+	echo ""
+	echo "3) run \`/usr/lib/logtalk/bin/logtalk_user_setup\`"
+	echo ""
+	echo "IMPORTANT: Please remember to remove any \`logtalk-backup\` directories from your \$HOME path if you no longer need them."
+	echo ""
+}
+
+post_remove() {
+	echo ""
+	echo "Finish these last two steps in order to complete this installation:"
+	echo ""
+	echo "1) IMPORTANT: Please remember to remove the \`logtalk\` directory and any \`logtalk-backup\` variants from your \$HOME path to completely remove Logtalk from your system."
+	echo ""
+	echo "2) Remove all Logtalk PATH variables from your \`.bashrc\`."
+	echo ""
 }
