@@ -1,12 +1,27 @@
 [Desktop Entry]
 Name=Firefox Developer
 GenericName=Web Browser
+GenericName[hu]=Webböngésző
+Comment=Browse the Web
+Comment[hu]=A világháló böngészése
 Icon=firefox-developer-icon
 Type=Application
-Categories=Application;Network;
-MimeType=text/html
+Categories=Application;Network;WebBrowser;
+Keywords=web;browser;internet;
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
 Encoding=UTF-8
 Exec=firefox-developer --class=firefox-developer %u
 Terminal=false
 MultipleArgs=false
 StartupNotify=true
+Actions=new-window;new-private-window;
+
+[Desktop Action new-window]
+Name=New Window
+Name[hu]=Új ablak
+Exec=firefox-developer --class=firefox-developer --new-window %u
+
+[Desktop Action new-private-window]
+Name=New Private Window
+Name[hu]=Új privát ablak
+Exec=firefox-developer --class=firefox-developer --private-window %u
