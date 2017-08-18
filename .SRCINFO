@@ -1,0 +1,13 @@
+pkgbase = python-pyqtdatavis
+	pkgdesc = Python bindings for the Qt Data Visualisation library
+	pkgver = 5.9
+	pkgrel = 1
+	url = https://www.riverbankcomputing.com/software/pyqtdatavisualization
+	arch = any
+	license = GPLv3
+	depends = python-pyqt5
+	source = https://sourceforge.net/projects/pyqt/files/PyQtDataVisualization/PyQtDataVisualization-5.9/PyQtDataVisualization_gpl-5.9.tar.gz
+	sha1sums = 22b7e07060db42760e93d17381beed8dbcbfebe5
+
+pkgname = python-pyqtdatavis
+
