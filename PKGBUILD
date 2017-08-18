@@ -1,6 +1,6 @@
 # Maintainer: Joshua Hardy <joshinsilico@gmail.com>
 pkgname=relion-git
-pkgver=r21.d401f24
+pkgver=r55.e7607a8
 pkgrel=1
 pkgdesc="REgularised LIkelihood OptimisatioN: employs an empirical Bayesian approach to refinement of 3D reconstructions or 2D class averages in electron cryo-microscopy"
 arch=(x86_64)
@@ -32,9 +32,9 @@ build() {
 }
 
 package() {
-	cd "$srcdir/relion"
-	install -d $pkgdir/opt/relion $pkgdir/opt/relion/bin $pkgdir/opt/relion/lib  $pkgdir/etc/profile.d/
-	cp -r * $pkgdir/opt/relion/.
+	cd "$srcdir"
+	install -d $pkgdir/opt/relion/bin  $pkgdir/opt/relion/lib $pkgdir/etc/profile.d/
+#	cp -r * $pkgdir/opt/relion/.
 	install -D -m755 $srcdir/relion/build/bin/* $pkgdir/opt/relion/bin/.
 	install -D -m755 $srcdir/relion/build/lib/* $pkgdir/opt/relion/lib/.
 	install -D -m755 $srcdir/relion.* $pkgdir/etc/profile.d/.
