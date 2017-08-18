@@ -3,12 +3,12 @@
 _pkgnum=3111
 pkgname=logtalk
 pkgver=3.11.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Object-Oriented Logic Programming Language'
 arch=('x86_64' 'i686')
 url='http://logtalk.org/'
 license=('APACHE')
-depends=()
+depends=('bash')
 makedepends=()
 optdepends=(
 	'swi-prolog: Prolog backend for logtalk'

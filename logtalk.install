@@ -13,13 +13,13 @@ post_install() {
 	echo ""
 	echo "2) run \`source ~/.bashrc\`"
 	echo ""
-	echo "3) run \`/usr/lib/logtalk/bin/logtalk_user_setup\`"
+	echo "3) run \`logtalk_user_setup\`"
 	echo ""
 }
 
 post_upgrade() {
 	echo ""
-	echo "Finish these last three steps in order to complete this installation:"
+	echo "Finish these last three steps in order to complete this upgrade:"
 	echo ""
 	echo "1) Ensure that the lines below are in your \`.bashrc\`.":
 	echo ""
@@ -33,7 +33,7 @@ post_upgrade() {
 	echo ""
 	echo "2) run \`source ~/.bashrc\`"
 	echo ""
-	echo "3) run \`/usr/lib/logtalk/bin/logtalk_user_setup\`"
+	echo "3) run \`logtalk_user_setup\`"
 	echo ""
 	echo "IMPORTANT: Please remember to remove any \`logtalk-backup\` directories from your \$HOME path if you no longer need them."
 	echo ""
@@ -41,7 +41,7 @@ post_upgrade() {
 
 post_remove() {
 	echo ""
-	echo "Finish these last two steps in order to complete this installation:"
+	echo "Finish these last two steps in order to completely uninstall Logtalk:"
 	echo ""
 	echo "1) IMPORTANT: Please remember to remove the \`logtalk\` directory and any \`logtalk-backup\` variants from your \$HOME path to completely remove Logtalk from your system."
 	echo ""
