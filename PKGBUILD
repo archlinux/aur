@@ -1,6 +1,6 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=zyn-fusion
-pkgver=3.0.1.99.rc2
+pkgver=3.0.2.patch4
 pkgrel=1
 pkgdesc="ZynAddSubFX with a new interactive UI"
 arch=('x86_64')
@@ -11,8 +11,8 @@ makedepends=('chrpath')
 provides=('zynaddsubfx')
 conflicts=('zynaddsubfx')
 options=('!strip')
-source=("file://zyn-fusion-linux-64bit-3.0.2-rc2-release.tar.bz2")
-sha512sums=('2e677b152af00aa6543d7b63f545bc186adb508be51b0a9361ef505d173d3c2ed14a4de955c29343d83702e37668d61a1a495b82c748cc11ee7c824a3bf55ef5')
+source=("file://zyn-fusion-linux-64bit-3.0.2-patch4-release.tar.bz2")
+sha512sums=('8379f2e15f74b18dfa110752a248e509c40e1d4ed314a3ccd95bd94f8a8d78afa01e28ac8a7285fcbc6f62e229672611f7baf2cdf42e8ae9a6b1c8357282a2db')
 
 build() {
 	cd "$pkgname"
