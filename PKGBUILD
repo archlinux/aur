@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('LGPL3')
 depends=('qt5-declarative')
-makedepends=('git' 'qbs')
+makedepends=('git' 'liri-qbs-shared-git')
 conflicts=('qtaccountsservice-git' 'qt5-accountsservice')
 replaces=('qtaccountsservice-git' 'qt5-accountsservice')
 provides=('qt5-accountsservice')
@@ -23,11 +23,6 @@ md5sums=('SKIP')
 pkgver() {
 	cd ${srcdir}/${_gitname}
 	echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
-}
-
-prepare() {
-	cd ${srcdir}/${_gitname}
-	git submodule update --init
 }
 
 build() {
