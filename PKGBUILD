@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-qbs-shared-git
-pkgver=20170818.6e79af2
+pkgver=20170818.8b136a5
 pkgrel=1
 pkgdesc="Extra imports and modules for Qbs"
 arch=('any')
@@ -42,6 +42,6 @@ package() {
 	cd ${srcdir}/${_gitname}
 	qbs install -d build --no-build -v --install-root $pkgdir profile:qt5
 
-	mkdir -p $pkgdir/usr/share/licenses/liri-qbs-shared
-	cp LICENSE.BSD $pkgdir/usr/share/licenses/liri-qbs-shared
+	mkdir -p $pkgdir/usr/share/licenses/${pkgname}
+	cp LICENSE.BSD $pkgdir/usr/share/licenses/${pkgname}
 }
