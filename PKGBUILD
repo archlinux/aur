@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 sha256sums=('5f91c1ecf0c87801081ab862c2cd5d486b8b18a65c1d00bb505239f87d29a3fe')
 depends=('libpeas' 'budgie-desktop') 
-makedepends=('gobject-introspection' 'gnome-common' 'intltool' 'meson' 'ninja' 'vala')
+makedepends=('gobject-introspection' 'meson' 'ninja' 'vala')
 source=(https://github.com/danielpinto8zz6/${pkgname}/archive/${pkgver}.tar.gz)
 url="https://github.com/danielpinto8zz6/${pkgname}"
 
