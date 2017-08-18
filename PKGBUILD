@@ -8,12 +8,21 @@
 # http://bitcoin-otc.com/viewgpg.php?nick=ThomasV
 #
 
-pkgname=electron-cash-git
-pkgver=2.9.2.r5.g8b2bdb6b
+pkgname='electron-cash'
+_tarname='electrum'
+pkgdesc='Lightweight Bitcoin Cash wallet'
+pkgver=2.9.2
 pkgrel=1
-pkgdesc="Lightweight Bitcoin Cash wallet"
 url='http://www.electroncash.org/'
+install="${pkgname}.install"
 arch=('any')
+license=('MIT')
+makedepends=(
+  'git'
+  'protobuf'
+  'python2-pycurl'
+  'python2-setuptools'
+)
 depends=(
   'hicolor-icon-theme'
   'python2'
@@ -29,12 +38,6 @@ depends=(
   'python2-requests'
   'python2-six'
   'qt4')
-makedepends=(
-  'git'
-  'protobuf'
-  'python2-pycurl'
-  'python2-setuptools'
-)
 optdepends=(
   'desktop-file-utils: update desktop icon'
   'gtk-update-icon-cache: update desktop icon'
@@ -48,22 +51,13 @@ optdepends=(
   'xdg-utils: update desktop icon'
   'zbar: QR code reading support'
 )
-license=('MIT')
-provides=('electron-cash')
-conflicts=('electron-cash')
-source=('electron-cash::git+https://github.com/fyookball/electrum.git')
-sha256sums=('SKIP')
-install=electron-cash.install
-
-pkgver() {
-  cd "${pkgname/-git/}"
-
-  git describe --long --tags \
-    | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fyookball/electrum/archive/2.9.2.tar.gz")
+sha256sums=('1e598a0979a6b7f382acb41e6afda2a09a690741440b15f5cebc0814cb609c78')
 
 build() {
-  cd ${pkgname/-git/}
+  cd "${_tarname}-${pkgver}"
 
   msg2 'Compiling icons...'
   pyrcc4 icons.qrc -o gui/qt/icons_rc.py
@@ -79,14 +73,9 @@ build() {
 }
 
 package() {
-  cd ${pkgname/-git/}
+  cd "${_tarname}-${pkgver}"
 
-  msg2 'Installing...'
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-
-  msg2 'Cleaning up pkgdir...'
-  find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
-  find "${pkgdir}" -type f -name .gitignore -exec rm -r '{}' +
+  python2 setup.py install --root="${pkgdir}"
 }
 
 # vim: ts=2 sw=2 et:

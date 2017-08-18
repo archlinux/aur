@@ -1,10 +1,15 @@
 post_install() {
-  ( [[ -x /usr/bin/update-desktop-database ]] && update-desktop-database -q ) \
-    || true
-  ( [[ -x /usr/bin/xdg-icon-resource ]] && xdg-icon-resource forceupdate --theme hicolor ) \
-    || true
-  ( [[ -x /usr/bin/gtk-update-icon-cache ]] && gtk-update-icon-cache -f -q /usr/share/icons/hicolor ) \
-    || true
+  if [[ -x /usr/bin/update-desktop-database ]]; then
+    update-desktop-database -q
+  fi
+  
+  if [[ -x /usr/bin/xdg-icon-resource ]]; then
+    xdg-icon-resource forceupdate --theme hicolor
+  fi
+  
+  if [[ -x /usr/bin/gtk-update-icon-cache ]]; then
+    gtk-update-icon-cache -f -q /usr/share/icons/hicolor
+ fi
 }
 
 post_upgrade() {
@@ -14,3 +19,5 @@ post_upgrade() {
 post_remove() {
   post_install
 }
+
+# vim: ts=2 sw=2 et:
