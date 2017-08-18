@@ -1,14 +1,14 @@
 pkgbase = nextcloud-app-totp
 	pkgdesc = Two factor TOTP provider for ownCloud
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/nextcloud/twofactor_totp/
 	arch = any
 	license = AGPL
 	depends = nextcloud
 	options = !strip
-	source = https://github.com/nextcloud/twofactor_totp//releases/download/1.3.0/twofactor_totp.tar.gz
-	sha256sums = b1977d9d014a7d228651a3409c616ac72a857eb2dff62c5fe43239e61b1379eb
+	source = https://github.com/nextcloud/twofactor_totp//releases/download/1.3.1/twofactor_totp.tar.gz
+	sha256sums = 145c450cbd509ffd29d7969f6d0a361dc857cc7dd6ead5d593a5902d5a60b204
 
 pkgname = nextcloud-app-totp
 
