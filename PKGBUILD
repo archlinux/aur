@@ -2,10 +2,10 @@
 # Contributor: Matthew Wardrop <mister.wardrop@gmail.com>
 
 pkgbase=linux-surfacepro3-rt
-_srcname=linux-4.9.20
+_srcname=linux-4.11.12
 pkgver=${_srcname#linux-}
-_rtver=rt16
-pkgrel=2.6
+_rtver=rt9
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -15,41 +15,26 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-${_rtver}.patch.xz"
         "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-${_rtver}.patch.sign"
-        # Brain Fuck Scheduler & other personal patches
-        'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfq.patch'
-        'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs.patch'
-        'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes1.patch'
-        'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes2.patch'
-        'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes3.patch'
         'init.patch' 'kconfig.patch' 'xattr.patch'
-        'multitouch.patch'
 	'touchscreen_multitouch_fixes1.patch' 'touchscreen_multitouch_fixes2.patch'
-        'change-default-console-loglevel.patch'
         # the main kernel config files
         'config' 'config.x86_64' 'config.sp3'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
 )
 
-sha256sums=('48660806dd32fb8dcbcf5932291bf6cc7d29240070372230871e0f56fea81341'
+sha256sums=('2e37d4e18094f66b8bd632cac0a3c08a39a14a1ada4a1c78a5e336c4d3036192'
             'SKIP'
-            '14473bfbf91aae9a998d96267a3b575e3eae9f9dcbb9caef1ba0f0a5b5109442'
+            '6e6112ec9c076c9a7a6ee6fe623d5059e2944622062307ecaca8a874e8908a0e'
             'SKIP'
-            '242d32d0fe819852e74d93b8a044cf24a40a9474d6f00ca93a19aa98298dcefa'
-            '51f91681b708149fe91e565f5c40811477428e2aa86f8726a20e0e7c55c5407c'
-            'cec65d71766429be99bdc9da7897584fdc4bf4df3a4b26d228ff55a76ea3d8ea'
-            '48d0d2e549ceddc18a59cc5f0d9325db5727ac82a9a4829c99a781ce979e1a6d'
-            '1a178463958f6b7f05a32c437f2674ecb25f2b1a0bf0cb2880d504efd8ba59c6'
             'ec655100ebc32d6699a258d7682953f928d1eb1042b895b04283d85ae57b80c1'
             'f479a5ca6abe4d50ca4c09e6e83a027369fcd3efff8d5ce60f0699d8fa47beb8'
             '4633ae19b9a9871a3cfffba98ec7c3cd240f64bef8a0eebcf1212219c80972fd'
-            '87bde6cc0f45629aa8406b364dfbbe2c59bce2621b451b6e504160f96cf9475f'
             'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
             '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '1cd39cdbb20bb58d81e1cd466d714ab45d7f67d97c231b7ef900868440168cca'
             'ed9b9e6efaf4f23e7ae3406322b4d1d3080e8dbc7ab3f03bcbf728ca2010e21b'
-            'ade9fe646309e156beae5534053dfa9d592eda29364658c600aeed0e01f81e1f'
+            '4cacf3d594496dd514d2a5b3b0bf4501e266f4088ebe93c15d147f16688543a4'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c')
 
 validpgpkeys=(
@@ -59,7 +44,6 @@ validpgpkeys=(
               'A2F5DE1C32B6B93E3E4884BF2E02D725AF202DC1' # Joey Pabalinas
              )
 
-multitouch='y'
 personal='y'
 sp3config='y'
 
@@ -76,22 +60,12 @@ prepare() {
   patch -p1 -i "${srcdir}/touchscreen_multitouch_fixes1.patch"
   patch -p1 -i "${srcdir}/touchscreen_multitouch_fixes2.patch"
 
-  # Trackpad multitouch patches
-  if [ "$multitouch" = 'y' ]; then
-    patch -p1 -i "${srcdir}/multitouch.patch"
-  fi
-
   # Personal patches
   if [ "$personal" = 'y' ]; then
     for i in init kconfig xattr; do
       patch -p1 -i "${srcdir}/${i}.patch"
     done
   fi
-
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   ## If sp3config='y' use personal config as a base
   if [ "$sp3config" = 'y' ]; then
@@ -350,7 +324,7 @@ _package-docs() {
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
-for _p in ${pkgname[@]}; do
+for _p in "${pkgname[@]}"; do
   eval "package_${_p}() {
     $(declare -f "_package${_p#${pkgbase}}")
     _package${_p#${pkgbase}}

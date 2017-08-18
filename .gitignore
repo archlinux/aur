@@ -5,3 +5,6 @@ bfs-fixes3.patch
 bfs.patch
 *.sign
 *.xz
+linux.install.pkg
+pkg/
+src/
