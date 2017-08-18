@@ -1,10 +1,10 @@
 
 pkgname=mingw-w64-cgal
 pkgver=4.10
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Computational Geometry Algorithms Library (mingw-w64)"
-depends=('mingw-w64-crt' 'mingw-w64-mpfr' 'mingw-w64-boost' 'mingw-w64-zlib' 'mingw-w64-qt5-svg')
+depends=('mingw-w64-crt' 'mingw-w64-mpfr' 'mingw-w64-boost' 'mingw-w64-zlib')
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'wine')
 options=('!buildflags' '!strip' 'staticlibs')
 license=('GPL', 'LGPL')
