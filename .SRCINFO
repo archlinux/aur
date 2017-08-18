@@ -1,4 +1,4 @@
-pkgbase = tor-browser-en-iran
+pkgbase = tor-browser-en
 	pkgdesc = Tor Browser Bundle: Anonymous browsing using firefox and tor
 	pkgver = 7.0.4
 	pkgrel = 1
@@ -50,5 +50,5 @@ pkgbase = tor-browser-en-iran
 	sha512sums = 0a68a0a8cfeea630a91036d86b167cf640ab378e64e0d8ab55e9f99cde3c9d6a2d762ea0f5528f8a8e1579600fcc59eaa72ba499d95daeb4334e81ab644bfb02
 	sha512sums = 87ceaa0fc03e43bd5cd591514ca9f5ad583982a80607180c8e3633ceb76de8a39e49fe37eb7f407e1e4c24ac4e6954b328699cbd714884bd80b6a0ef243e0946
 
-pkgname = tor-browser-en-iran
+pkgname = tor-browser-en
 
