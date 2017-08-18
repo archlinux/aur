@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dcraddrgen
-pkgver=20170328
+pkgver=20170815
 pkgrel=1
 pkgdesc="Simple offline address generator for Decred"
 arch=('i686' 'x86_64')
