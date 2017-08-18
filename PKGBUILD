@@ -1,5 +1,5 @@
 pkgname=python-pyqtchart
-pkgver=5.8
+pkgver=5.9
 pkgrel=1
 pkgdesc="Python bindings for the Qt Charts library"
 url="https://www.riverbankcomputing.com/software/pyqtchart/"
@@ -7,7 +7,7 @@ depends=('python-pyqt5')
 license=('GPLv3')
 arch=('any')
 source=(https://sourceforge.net/projects/pyqt/files/PyQtChart/PyQtChart-$pkgver/PyQtChart_gpl-$pkgver.tar.gz)
-md5sums=('4c7939b70f3fa6e9418057fb08af7d52')
+sha1sums=('b9abda947da2752efdc5268271f9fdf7f942e1dd')
 
 package() {
   cd $srcdir/PyQtChart_gpl-$pkgver
