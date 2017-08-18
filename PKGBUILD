@@ -2,8 +2,8 @@
 # Maintainer: David C. Rankin <drankinatty @ gmail.com>
 
 pkgname=gtkwrite_git
-pkgver=0.1.5
-pkgrel=2
+pkgver=0.1.7
+pkgrel=1
 pkgdesc="GTKwrite Text Editor with Syntax Highlight written in C, GTK+2 & GtkSourceView2 (development version)"
 url="https://github.com/drankinatty/${pkgname%_git}"
 license=('GPL-2.0+')
