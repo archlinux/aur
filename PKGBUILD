@@ -3,7 +3,7 @@
 
 pkgname=kore-git
 _gitname=kore
-pkgver=2.0.0.release.r80.g261fb3c
+pkgver=2.0.0.release.r189.gae4201c
 pkgrel=1
 pkgdesc="An easy to use, scalable and secure web application framework for writing web APIs in C."
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ build() {
 package() {
   cd "${srcdir}/${_gitname}"
 
-  make INSTALL_DIR="${pkgdir}/usr/bin" INCLUDE_DIR="${pkgdir}/usr/include/kore" install
+  make PREFIX="${pkgdir}/usr" install
 
   mkdir -p "${pkgdir}/usr/share/doc/kore/"
   install -m 644 "${srcdir}/${_gitname}/conf/kore.conf.example" "${pkgdir}/usr/share/doc/kore/"
