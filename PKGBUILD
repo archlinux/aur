@@ -1,6 +1,6 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=vega10-firmware
-pkgver="1.0.0"
+pkgver="1.0.20170816"
 pkgrel=1
 options=(!strip)
 pkgdesc="Firmware blobs for AMD Vega10 GPUs"
@@ -23,8 +23,8 @@ source=("${_base}_acg_smc.bin"
         "${_base}_sos.bin"
         "${_base}_uvd.bin"
         "${_base}_vce.bin")
-sha256sums=('f5fd91e6e3e6407108e7d8f925774f1822a7d9d9b98071bccaab45a559a85b1c'
-            'aeb484adb365e4b51b7f974da96ea45480e6111fe10be57f28dada67ec56cc41'
+sha256sums=('13d8d34a1ec4d1d9aedf6a063a248a5722ea49cba82614799ee5951379f05bb7'
+            '0c3f28e5e019900af07efd8dd13db885fecb26fd8a18c0a190eca811e32db9df'
             'a1d3670850c6efc58247ed844d0c6bf3ad0f45234177c838af7f6062e716be52'
             '92c3d1d7422c9771a7ff7fc8457884407a1c455150fd70a37badc6cbf7504c58'
             '80884c5ff453332a5feb36a5e7f88d008474ea8ca5ed8d0a81562c06ae9438fe'
@@ -35,8 +35,8 @@ sha256sums=('f5fd91e6e3e6407108e7d8f925774f1822a7d9d9b98071bccaab45a559a85b1c'
             '173a40ba8dc537c4ca4edf898dcfeb1ec241fe14af52723d1a305499dc4dcd73'
             '173a40ba8dc537c4ca4edf898dcfeb1ec241fe14af52723d1a305499dc4dcd73'
             '44f79a9b6bf1eeb59321a3db719757f21e18e3ccc45fc758a7319287187d2013'
-            'bb5bb35d30565178c3611a6e4a171ba2c5410fbebcdba784378275b527da96b7'
-            '78e562e23ef146bdef5dccd272883632cb383cc3c1608cf8f439635da4b55acd'
+            '1beddd1525eaa8f4af922a191ee64122073b172dcecefab0e5cc54f94e347f4b'
+            '80b6e0717cf16efa8a8ceb959ff6267e0c15fad0b4cad85cf377ef096d037174'
             '58221e6515a45a82ec6901ded87a334d3311f9625ce4c2f2a79cdb0651e20f2d')
 
 package() {
