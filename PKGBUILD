@@ -5,7 +5,7 @@ _gitname=fofix
 pkgname=fofix-git
 pkgver=v4.0.0alpha2.r324.g0f69173
 epoch=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Frets on Fire X (FoFiX). Highly improved version of Frets on Fire (Git Version)"
 arch=('i686' 'x86_64')
 url="https://github.com/fofix/fofix"
@@ -65,7 +65,7 @@ package() {
     cp fofix-git.png ${pkgdir}/usr/share/pixmaps/
     mv ${srcdir}/fofix $pkgdir/opt/fofix-git
     cd $pkgdir/usr/bin/
-    echo "#/bin/sh" > fofix-git
+    echo "#!/bin/sh" > fofix-git
     echo "cd /opt/fofix-git/" >> fofix-git
     echo "python2 ./FoFiX.py" >> fofix-git
     chmod +x fofix-git
