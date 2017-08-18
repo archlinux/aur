@@ -3,7 +3,7 @@
 
 pkgname=fofix
 pkgver=3.121
-pkgrel=10
+pkgrel=11
 pkgdesc="Frets on Fire X (FoFiX). Highly improved version of Frets on Fire"
 url="https://github.com/fofix/fofix"
 arch=(any)
@@ -50,7 +50,7 @@ package() {
     cp fofix.png ${pkgdir}/usr/share/pixmaps/
     mv ${srcdir}/${pkgname}-Release_${pkgver} $pkgdir/opt/fofix
     cd $pkgdir/usr/bin/
-    echo "#/bin/sh" > fofix
+    echo "#!/bin/sh" > fofix
     echo "cd /opt/fofix/src/" >> fofix
     echo "python2 ./FoFiX.py" >> fofix
     chmod +x fofix
