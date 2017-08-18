@@ -1,6 +1,6 @@
 pkgbase = fcitx-xxm
 	pkgdesc = XiaoXima for fcitx.
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	arch = any
 	license = GPL

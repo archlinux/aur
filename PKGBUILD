@@ -1,7 +1,7 @@
 # Maintainer: chengen12 <googledrive70@aaedu.edu.pl>
 
 pkgname=fcitx-xxm
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='XiaoXima for fcitx.'
 arch=('any')
