@@ -3,7 +3,7 @@
 
 pkgname=multimc5
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 __pkgver_libnbtplusplus=multimc-0.5.0
 __install_dir="/usr/lib/multimc5"
 pkgdesc="Minecraft launcher with ability to manage multiple instances."

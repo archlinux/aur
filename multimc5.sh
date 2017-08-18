@@ -3,7 +3,7 @@
 set -e
 set -x
 function variables() {
-	NAME="${2:-multimc5}"
+	NAME="${2:-multimc}"
 	if [ "${1}" ]; then
 		DATA_DIR="${1}"
 	else
