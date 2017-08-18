@@ -7,7 +7,7 @@ pkgdesc="Wallpapers for Liri OS"
 arch=('any')
 url='https://liri.io'
 license=('CCPL')
-makedepends=('git' 'qbs')
+makedepends=('git' 'liri-qbs-shared-git')
 conflicts=('hawaii-wallpapers-git' 'liri-wallpapers')
 replaces=('hawaii-wallpapers-git' 'liri-wallpapers')
 provides=('liri-wallpapers')
@@ -22,11 +22,6 @@ md5sums=('SKIP')
 pkgver() {
 	cd ${srcdir}/${_gitname}
 	echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
-}
-
-prepare() {
-	cd ${srcdir}/${_gitname}
-	git submodule update --init
 }
 
 build() {
