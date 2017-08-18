@@ -2,12 +2,12 @@
 
 pkgname=arm-frc-linux-gnueabi-wpilib
 pkgver=2017.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The WPI FIRST Robotics Competition C/C++ library for the arm-frc-linux-gnueabi toolchain"
 arch=(i686 x86_64)
 url="https://usfirst.collab.net/sf/projects/wpilib/"
 license=('custom=FRC-BSD')
-groups=('frc-2017')
+groups=('frc-toolchain')
 depends=('arm-frc-linux-gnueabi-gcc' 'gazebo')
 makedepends=('git' 'java-environment=8' 'doxygen' 'unzip')
 options=('!strip' 'libtool' 'staticlibs' '!emptydirs')
