@@ -13,7 +13,7 @@ makedepends=('python' 'boost')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 install=murmur-snapshot-minimal.install
-backup=("etc/murmur/murmur.ini")
+backup=("etc/murmur.ini")
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"
         "murmur.service"
         "murmur.logrotate"
@@ -39,8 +39,7 @@ package() {
 
   cat ${murmur}/release/murmurd ${murmur}/release/libmumble_proto.a > "${murmur}/release/murmurd_new"
 
-  install -m750 -d "${pkgdir}/etc/murmur"
-  install -m640 -D "${murmur}/scripts/murmur.ini" "${pkgdir}/etc/murmur/murmur.ini"
+  install -m640 -D "${murmur}/scripts/murmur.ini" "${pkgdir}/etc/murmur.ini"
 
   install -m755 -D "${murmur}/release/murmurd_new" "${pkgdir}/usr/bin/murmurd" 
 
@@ -57,7 +56,7 @@ package() {
       -e "s|;pidfile=|pidfile=/run/murmur/murmur.pid|" \
       -e "s|;uname=|uname=murmur|" \
       -e "s|;sendversion=True|sendversion=False|" \
-      -i "${pkgdir}/etc/murmur/murmur.ini"
+      -i "${pkgdir}/etc/murmur.ini"
 }
 
 # vim: sw=2:ts=2 et:
