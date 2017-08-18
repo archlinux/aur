@@ -16,22 +16,22 @@
 #
 pkgbase="spl-linux-zen-git"
 pkgname=("spl-linux-zen-git" "spl-linux-zen-git-headers")
-pkgver=0.7.0.r12.g9df9692.4.12.5.1
-pkgrel=2
-makedepends=("linux-zen-headers=4.12.5-1" "git")
+pkgver=0.7.0.r12.g9df9692.4.12.8.1
+pkgrel=1
+makedepends=("linux-zen-headers=4.12.8-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git" "kmod" "linux-zen=4.12.5-1")
+depends=("spl-utils-common-git" "kmod" "linux-zen=4.12.8-1")
 
 build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.12.5-1-zen/build \
-                --with-linux-obj=/usr/lib/modules/4.12.5-1-zen/build \
+                --with-linux=/usr/lib/modules/4.12.8-1-zen/build \
+                --with-linux-obj=/usr/lib/modules/4.12.8-1-zen/build \
                 --with-config=kernel
     make
 }
@@ -56,5 +56,5 @@ package_spl-linux-zen-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.12.5-1-zen/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.12.8-1-zen/Module.symvers
 }
