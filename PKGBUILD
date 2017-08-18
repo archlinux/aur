@@ -31,7 +31,7 @@ build() {
 package() {
   cd KShare
   install -Dm755 KShare "$pkgdir/usr/bin/kshare"
-  install -Dm644 icons/icon.png "$pkgdir/usr/share/pixmaps/kshare.png"
+  install -Dm644 icons/icon.png "$pkgdir/usr/share/pixmaps/KShare.png"
   install -Dm644 KShare.desktop "$pkgdir/usr/share/applications/KShare.desktop"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
