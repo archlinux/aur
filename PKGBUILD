@@ -1,13 +1,13 @@
 # Maintainer:  Andrew Shelyakov <andrew.shelyakov@ya.ru>
 
-pkgname=php-pecl-pthreads
+pkgname='php-pecl-pthreads'
 # Latest commit working with php 7.1.*
 _commit='527286336ffcf5fffb285f1bfeb100bb8bf5ec32'
 pkgver=r1334.5272863
-pkgrel=1
-pkgdesc="PHP PECL extension for Threading API"
+pkgrel=2
+pkgdesc='PHP PECL extension for Threading API'
 arch=('i686' 'x86_64')
-url="https://github.com/krakjoe/pthreads"
+url='https://github.com/krakjoe/pthreads'
 license=('BSD')
 depends=('php-zts')
 makedepends=('git')
