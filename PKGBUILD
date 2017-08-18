@@ -3,11 +3,10 @@
 # Contributor: juergen <juergen@archlinux.org>
 # Contributor: John Proctor <jproctor@prium.net>
 
-_commit=3f6d725379337d0b9bde2e5e350fdfc249216be7
-
 pkgname=text2pdf
 pkgver=1.1
-pkgrel=2
+pkgrel=3
+_commit=3f6d725379337d0b9bde2e5e350fdfc249216be7
 pkgdesc='Convert text files to PDF'
 arch=('i686' 'x86_64')
 url='http://www.eprg.org/pdfcorner/text2pdf/'
@@ -23,7 +22,7 @@ prepare() {
 
 build() {
   cd $pkgname-$_commit
-  gcc $CFLAGS -v -o text2pdf text2pdf.c
+  gcc $CFLAGS -o text2pdf text2pdf.c $LDFLAGS
 }
 
 package() {
