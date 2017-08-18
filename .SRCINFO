@@ -13,7 +13,7 @@ pkgbase = budgie-calendar-applet
 	depends = libpeas
 	depends = budgie-desktop
 	source = https://github.com/danielpinto8zz6/budgie-calendar-applet/archive/4.0.tar.gz
-	sha256sums = 6a9f2a7da37cb293606ac3e876bc10c6b75e9d88080a738e31695699ca75bf80
+	sha256sums = a0bc635ba86568b44cf84450877b7a05462ebb7d5e13ed99af48950011f70a74
 
 pkgname = budgie-calendar-applet
 
