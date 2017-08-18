@@ -22,7 +22,7 @@ source=(
 
 sha256sums=(
     'f4ce97a721015b135eb675915eb306c1fb256e680d480fe13e4fe6ca81c7e04e'
-    'a7e2c63c98f574fc0a64dcffd478e3ba534a7805d5416c9089a2fdf8f869c694'
+    '09945264707109bbebca632b40a7607b3ef882fe2fadd15d235f18ef0763a279'
 )
 
 prepare() {
@@ -34,14 +34,14 @@ prepare() {
     # * Fix old API (fromstring/tostring to frombytes/tobytes)
     # * CMake : remove debian dir
     # * CMake : disable doc generation (needs gtk-doc)
-    patch -p2 -i "${srcdir}/livewallpaper.patch"
+    patch -p1 -l -i "${srcdir}/livewallpaper.patch"
 }
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     rm -rf "build"
     mkdir  "build"
-    pushd  "build"
+    pushd  "build" >/dev/null
 
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     make DESTDIR="${pkgdir}"
@@ -49,7 +49,7 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    pushd "build"
+    pushd "build" >/dev/null
 
     make DESTDIR="${pkgdir}" install
 }
