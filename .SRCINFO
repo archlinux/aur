@@ -1,7 +1,7 @@
 pkgbase = logtalk
 	pkgdesc = Object-Oriented Logic Programming Language
 	pkgver = 3.11.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://logtalk.org/
 	install = logtalk.install
 	arch = x86_64

@@ -3,7 +3,7 @@
 _pkgnum=3111
 pkgname=logtalk
 pkgver=3.11.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Object-Oriented Logic Programming Language'
 arch=('x86_64' 'i686')
 url='http://logtalk.org/'
@@ -23,12 +23,17 @@ install=logtalk.install
 
 
 package() {
-	LOGTALKHOME="$pkgdir/usr/lib/$pkgname"
-	mkdir -p "$LOGTALKHOME"
+	LOGTALKPREFIX="$pkgdir/usr/lib/$pkgname"
+	mkdir -p "$LOGTALKPREFIX"
+	mkdir -p "$pkgdir/usr/bin"
 
 	cd "logtalk3-lgt${_pkgnum}stable"
 
-	scripts/install.sh -p "$LOGTALKHOME" > /dev/null 2>&1
+	scripts/install.sh -p "$LOGTALKPREFIX" > /dev/null 2>&1
+
+	for file in $LOGTALKPREFIX/bin/*; do
+		cp $file $pkgdir/usr/bin
+	done
 
 	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
