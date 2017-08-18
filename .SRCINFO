@@ -1,15 +1,15 @@
 pkgbase = selenium-server-standalone
 	pkgdesc = Test automation server for web applications
-	pkgver = 3.4.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = http://seleniumhq.org/
 	arch = any
 	license = APACHE
 	depends = java-runtime>=8
-	noextract = selenium-server-standalone-3.4.0.jar
-	source = https://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar
+	noextract = selenium-server-standalone-3.5.1.jar
+	source = https://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.1.jar
 	source = Selenium.desktop
-	md5sums = a7ace476df475dfff49567774605bdf2
+	md5sums = 75ebe18b25993da8a291fe35017c3884
 	md5sums = 3346b64141247b38e79e8e0b9481aad6
 
 pkgname = selenium-server-standalone
