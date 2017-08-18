@@ -1,19 +1,18 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=glassfish5
-pkgver=5.0_b18_08_07_2017
-_oraver=5.0-b18-08_07_2017
-pkgrel=3
+pkgver=5.0_b21
+pkgrel=1
 pkgdesc="The Open Source Java EE 8 Reference Implementation."
 url="https://javaee.github.io/glassfish/"
 license=("CDDL")
 depends=("java-environment>=8")
 arch=("any")
 options=(!strip)
-source=("http://download.oracle.com/glassfish/5.0/nightly/glassfish-${_oraver}.zip"
+source=("http://download.oracle.com/glassfish/5.0/promoted/glassfish-${pkgver//_/-}.zip"
 		"glassfish5.service")
 
-sha256sums=('790b3395da69934059b3e099993dfd92e4e7381437edec715221109de1c93233'
+sha256sums=('69231fadc1a5edb5c2d08f768a75bc2923291b1cbfab5de58377724c04d96beb'
             '9be6b53df62a719e4cac1b54703f0abcc6c22389d1b46e3e85ed38d6f1453cdc')
 
 package() {
