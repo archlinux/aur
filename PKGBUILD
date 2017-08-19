@@ -3,8 +3,8 @@
 # Based on [aur]'s nvidia-utils-beta: https://aur.archlinux.org/packages/nvidia-utils-beta/
 
 pkgname=('nvidia-utils-vulkan-developer-beta' 'nvidia-egl-wayland-vulkan-developer-beta' 'nvidia-libgl-vulkan-developer-beta' 'opencl-nvidia-vulkan-developer-beta')
-pkgver=381.26.08
-pkgrel=2
+pkgver=381.26.13
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -25,8 +25,8 @@ source_x86_64=("https://developer.nvidia.com/${pkgver//./}-linux-64bit")
 md5sums=('4f5562ee8f3171769e4638b35396c55d'
          '2640eac092c220073f0668a7aaff61f7'
          '58cb234fd413dd7f1ccec0d096c6c37c')
-md5sums_i686=('25e6bf04e32ddfe34a09a137c784e7e6')
-md5sums_x86_64=('9710ef4fd5ead6670f67f3cb3aea39c1')
+md5sums_i686=('0ef358844c12a774da099e906d70da9a')
+md5sums_x86_64=('c5c3e841d975c96eae264ad9840dc762')
 
 _create_links() {
   # create missing soname links
