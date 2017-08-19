@@ -5,14 +5,14 @@
 
 pkgname=virtuoso
 pkgver=7.2.4.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://virtuoso.openlinksw.com/wiki/main/Main/'
 license=('GPL')
 pkgdesc='Virtuoso is a scalable cross-platform server that combines Relational,\
  Graph, and Document Data Management with Web Application Server and Web \
  Services Platform functionality.'
-depends=('libldap' 'imagemagick' 'java-environment')
+depends=('libldap' 'imagemagick' 'java-environment' 'openssl-1.0')
 makedepends=('bison' 'flex' 'gperf' 'net-tools' 'optipng')
 replaces=('virtuoso-base')
 provides=('virtuoso-base')
@@ -33,10 +33,10 @@ build() {
   
   cd ${pkgname}-opensource-${pkgver}
 
-  ./configure --with-layout=debian \
-    --program-transform-name='s/isql$$/isql-vt/;s/isqlw/isqlw-vt/' \
-    --with-readline
-  
+  CFLAGS="-I/usr/include/openssl-1.0" LDFLAGS="-L/usr/lib/openssl-1.0" \
+            ./configure --with-layout=debian \
+                        --program-transform-name='s/isql$$/isql-vt/;s/isqlw/isqlw-vt/' \
+                        --with-readline
   make
 }
 
