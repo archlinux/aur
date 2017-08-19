@@ -8,6 +8,12 @@ pkgdesc="A digital logic simulator"
 arch=('x86_64')
 url="https://github.com/GGBRW/BOOLR"
 license=('MIT')
+depends=('alsa-lib'
+         'gconf'
+         'gtk2'
+         'nss'
+         'libxss'
+         'libxtst')
 source=("$url/releases/download/$pkgver/BOOLR-$pkgver-linux-x86_64.zip"
         boolr.desktop)
 sha256sums=('94fa88d65442687aa6aa4ac2d3f5a0c76ed13d45adf98bcc6609f3118c90bb29'
@@ -25,6 +31,9 @@ package() {
   install -D $srcdir/BOOLR-linux-x64/resources/app/build/icon.png $pkgdir/$_icon_dir/128x128/apps/boolr.png
 
   install -D $srcdir/boolr.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
+
+  install -Dm644 $srcdir/BOOLR-linux-x64/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 $srcdir/BOOLR-linux-x64/LICENSES.chromium.html $pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html
 
   ln -s /opt/boolr/BOOLR $pkgdir/usr/bin/$pkgname
 }
