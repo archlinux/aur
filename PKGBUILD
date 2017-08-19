@@ -2,7 +2,7 @@
 
 pkgname=libdvbcsa-git
 pkgver=bc6c0b1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An implementation of the DVB Common Scrambling Algorithm"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ depends=('glibc')
 makedepends=('git')
 provides=('libdvbcsa')
 conflicts=('libdvbcsa')
+options=('staticlibs')
 source=("git+https://code.videolan.org/videolan/libdvbcsa.git")
 sha256sums=('SKIP')
 
