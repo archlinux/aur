@@ -2,7 +2,7 @@
 
 pkgname=libdeflate
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Heavily optimized library for DEFLATE/zlib/gzip compression and decompression"
 arch=('i686' 'x86_64')
 url="https://github.com/ebiggers/libdeflate"
@@ -30,7 +30,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   install -Dm755 "gzip" "$pkgdir/usr/bin/libdeflate-gzip"
-  ln -s "$pkgdir/usr/bin/libdeflate-gzip" "$pkgdir/usr/bin/libdeflate-gunzip"
+  ln -s "/usr/bin/libdeflate-gzip" "$pkgdir/usr/bin/libdeflate-gunzip"
 
   install -Dm755 "libdeflate.so" "$pkgdir/usr/lib/libdeflate.so"
   install -Dm644 "libdeflate.h" "$pkgdir/usr/include/libdeflate.h"
