@@ -1,4 +1,5 @@
 /pkg
+/*.tar.gz
 /*.pkg.tar.xz
 /*.AppImage
 /src
