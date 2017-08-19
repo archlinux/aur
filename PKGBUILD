@@ -2,7 +2,7 @@
 
 pkgname=libsamplerate-git
 pkgver=83a9482
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A Sample Rate Converter for audio"
 arch=('i686' 'x86_64')
@@ -13,6 +13,7 @@ makedepends=('git')
 checkdepends=('fftw')
 provides=('libsamplerate')
 conflicts=('libsamplerate')
+options=('staticlibs')
 source=("git+https://github.com/erikd/libsamplerate.git")
 sha256sums=('SKIP')
 
