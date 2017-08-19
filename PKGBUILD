@@ -1,11 +1,11 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-mcode-git
-pkgver=0.34dev.git20161030
+pkgver=0.35dev.git20170819
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator - mcode backend'
-url='http://sourceforge.net/projects/ghdl-updates/'
+url='https://github.com/tgingold/ghdl'
 license=('GPLv2')
 
 provides=('ghdl')
@@ -13,7 +13,6 @@ conflicts=('ghdl' 'ghdl-gcc-git' 'ghdl-llvm-git')
 makedepends=('gcc-ada' 'git')
 
 source=(
-	#"ghdl::git://git.code.sf.net/p/ghdl-updates/ghdl-updates.git"
 	"ghdl::git://github.com/tgingold/ghdl.git"
 )
 md5sums=(
