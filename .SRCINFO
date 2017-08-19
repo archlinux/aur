@@ -1,6 +1,6 @@
 pkgbase = php70-phalcon
 	pkgdesc = PHP Extension package for a faster web site framework.
-	pkgver = 3.2.1
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = http://phalconphp.com
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = php70-phalcon
 	license = PHP
 	makedepends = gcc
 	depends = php70
-	source = https://github.com/phalcon/cphalcon/archive/v3.2.1.zip
-	sha256sums = e1c91786153e40cdaa050052aea20128f599a1647274285ce48517a993c006ad
+	source = https://github.com/phalcon/cphalcon/archive/v3.2.2.zip
+	sha256sums = 749bec90480dc89f25de96880f48be75b9ddc4731dedf2db58f7db95b6e7671d
 
 pkgname = php70-phalcon
 	backup = etc/php70/conf.d/phalcon.ini
