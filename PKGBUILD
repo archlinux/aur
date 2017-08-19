@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libpcap-git
-pkgver=1.8.1.r199.gc955dc6f
+pkgver=1.8.1.r205.g69fcdc66
 pkgrel=1
 pkgdesc="A portable C/C++ library for network traffic capture"
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ depends=('glibc' 'libnl' 'libusbx' 'dbus')
 makedepends=('git' 'bluez-libs')
 provides=('libpcap')
 conflicts=('libpcap')
+options=('staticlibs')
 source=("git+https://github.com/the-tcpdump-group/libpcap.git")
 sha256sums=('SKIP')
 

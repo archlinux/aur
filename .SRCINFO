@@ -1,6 +1,6 @@
 pkgbase = libpcap-git
 	pkgdesc = A portable C/C++ library for network traffic capture
-	pkgver = 1.8.1.r199.gc955dc6f
+	pkgver = 1.8.1.r205.g69fcdc66
 	pkgrel = 1
 	url = http://www.tcpdump.org/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = libpcap-git
 	depends = dbus
 	provides = libpcap
 	conflicts = libpcap
+	options = staticlibs
 	source = git+https://github.com/the-tcpdump-group/libpcap.git
 	sha256sums = SKIP
 
