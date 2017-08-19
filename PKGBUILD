@@ -1,6 +1,6 @@
 # Maintainer: Michael Mitchell <mmitc@protonmail.com>
 pkgname=wild-chat
-pkgver=v1.1.33
+pkgver=v1.1.34
 pkgrel=1
 pkgdesc="A Customizable Twitch Chat Client"
 arch=('any')
@@ -8,9 +8,9 @@ url="https://github.com/AWildBeard/WildChat"
 license=('Apache License 2.0')
 depends=('jre8-openjdk' 'java-openjfx')
 
-source=("https://github.com/AWildBeard/WildChat/releases/download/v1.1.33-1/wild-chat.tar")
+source=("https://github.com/AWildBeard/WildChat/releases/download/v1.1.34-1/wild-chat.tar")
 
-md5sums=('53ec1c64a405edb7c1621cf6d1bbd9a1')
+md5sums=('b9a26f19835f0154694b5c66069a1e0b')
 
 package() {
 		mkdir -p "${pkgdir}/usr/share/wildchat"
