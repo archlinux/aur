@@ -1,6 +1,6 @@
-diff -aur cnijfilter-source-3.20-1/cnijfilter/src/bjfimage.c cnijfilter-source-3.20-1.new/cnijfilter/src/bjfimage.c
---- cnijfilter-source-3.20-1/cnijfilter/src/bjfimage.c	2009-03-26 06:11:05.000000000 +0100
-+++ cnijfilter-source-3.20-1.new/cnijfilter/src/bjfimage.c	2012-02-10 09:33:52.512334139 +0100
+diff -aur cnijfilter-source-3.80_old/cnijfilter/src/bjfimage.c cnijfilter-source-3.80_new/cnijfilter/src/bjfimage.c
+--- cnijfilter-source-3.80_old/cnijfilter/src/bjfimage.c	2012-03-22 02:50:19.000000000 +0100
++++ cnijfilter-source-3.80_new/cnijfilter/src/bjfimage.c	2013-03-31 19:27:17.768357145 +0200
 @@ -1520,8 +1520,8 @@
  	short			tmpformat;
  	short			retbyte = 0;
