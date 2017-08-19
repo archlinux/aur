@@ -11,7 +11,7 @@
 
 pkgname=strongswan-pkcs11
 pkgver=5.6.0
-pkgrel=0
+pkgrel=1
 provides=("${pkgname/-pkcs11}=${pkgver}-${pkgrel}")
 pkgdesc="The best OpenSource IPsec implementation with PKCS11 support"
 url='http://www.strongswan.org'
@@ -23,6 +23,7 @@ conflicts=('openswan', "${pkgname/-pkcs11}")
 options=(!libtool)
 backup=(
 	etc/ipsec.conf 
+	etc/ipsec.secrets 
 	etc/swanctl/swanctl.conf
 	etc/strongswan.conf 
 	etc/strongswan.d/{charon-logging.conf,charon.conf,pki.conf,pool.conf,scepclient.conf,starter.conf,swanctl.conf}

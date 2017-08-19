@@ -3,7 +3,7 @@
 pkgbase = strongswan-pkcs11
 	pkgdesc = The best OpenSource IPsec implementation with PKCS11 support
 	pkgver = 5.6.0
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.strongswan.org
 	arch = i686
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = strongswan-pkcs11
 	conflicts = strongswan
 	options = !libtool
 	backup = etc/ipsec.conf
+	backup = etc/ipsec.secrets
 	backup = etc/swanctl/swanctl.conf
 	backup = etc/strongswan.conf
 	backup = etc/strongswan.d/charon-logging.conf
