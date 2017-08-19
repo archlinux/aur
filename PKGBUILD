@@ -3,7 +3,7 @@
 
 _pkgname=libchewing
 pkgname=libchewing-git
-pkgver=0.5.1.r49.g09108b2
+pkgver=0.5.1.r73.g7282e05
 pkgrel=1
 epoch=1
 pkgdesc='Intelligent Chinese phonetic input method'
@@ -42,7 +42,8 @@ build() {
 
 check() {
   cd "${_pkgname}"
-  make check
+  # parallel testing is broken
+  make -j1 check
 }
 
 package() {
