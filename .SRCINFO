@@ -1,6 +1,6 @@
 pkgbase = libidn2-git
 	pkgdesc = An implementation of IDNA 2008 and TR46
-	pkgver = 2.0.3.r11.g015135e
+	pkgver = 2.0.3.r13.g8c3d4f8
 	pkgrel = 1
 	url = https://www.gnu.org/software/libidn/#libidn2
 	arch = i686
@@ -9,11 +9,11 @@ pkgbase = libidn2-git
 	license = LGPL
 	makedepends = git
 	makedepends = gengetopt
-	makedepends = gtk-doc
 	depends = glibc
 	depends = libunistring
 	provides = libidn2
 	conflicts = libidn2
+	options = staticlibs
 	source = git+https://gitlab.com/libidn/libidn2.git
 	sha256sums = SKIP
 
