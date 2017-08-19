@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Zoin
+Comment=The Zoin Cryptocurrency
+Exec=/usr/bin/zoin
+Terminal=false
+Icon=zoin
+Categories=Network

@@ -1,0 +1,32 @@
+pkgbase = zoin
+	pkgdesc = The Zoin Cryptocurrency wallet, Qt GUI
+	pkgver = 0.8.7.5
+	pkgrel = 1
+	url = https://github.com/zoincoin/zoin
+	arch = any
+	license = MIT
+	makedepends = wget
+	makedepends = unzip
+	depends = db4.8
+	depends = boost
+	depends = miniupnpc
+	depends = qt5-base
+	depends = qt5-tools
+	depends = openssl-1.0
+	provides = zoin
+	conflicts = zoin
+	source = https://github.com/zoincoin/zoin/releases/download/v0.8.7.5/zoin-master-src-0875.zip
+	source = quotefix.patch
+	source = miniupnpc.patch
+	source = db48.patch
+	source = checkpoints.patch
+	source = zoin.desktop
+	md5sums = 5f933ebb8d3c24a5552acd59fa99c05a
+	md5sums = 71e2036b56f992edee08003ea39491e3
+	md5sums = 5b05afe70742e8c607171281416961dc
+	md5sums = 4f0de069be24574687f1d21f4ea720b5
+	md5sums = 82f69b71a43b2cae83e7936e9135a27b
+	md5sums = 9e64ccc6310db035e153e7606a1b481b
+
+pkgname = zoin
+

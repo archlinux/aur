@@ -1,0 +1,178 @@
+From 81dde399ead44df1b0b433586c5e61be2eea7a84 Mon Sep 17 00:00:00 2001
+From: roarde <roarde@example.net>
+Date: Fri, 5 May 2017 02:04:12 -0400
+Subject: [PATCH 1/2] zoin.pro: Fix "make" option quoting; fix UPnP, QREncode,
+ and IPv6 defaults
+
+---
+ COPYING                                 |  0
+ INSTALL                                 |  0
+ README.md                               |  0
+ doc/readme-qt.rst                       | 19 +++++++++++++++----
+ src/libzerocoin/bitcoin_bignum/hash.cpp |  0
+ zoin.pro                                | 24 ++++++++++++++++--------
+ 6 files changed, 31 insertions(+), 12 deletions(-)
+ mode change 100755 => 100644 COPYING
+ mode change 100755 => 100644 INSTALL
+ mode change 100755 => 100644 README.md
+ mode change 100755 => 100644 src/libzerocoin/bitcoin_bignum/hash.cpp
+ mode change 100755 => 100644 zoin.pro
+
+diff --git a/COPYING b/COPYING
+old mode 100755
+new mode 100644
+diff --git a/INSTALL b/INSTALL
+old mode 100755
+new mode 100644
+diff --git a/README.md b/README.md
+old mode 100755
+new mode 100644
+diff --git a/doc/readme-qt.rst b/doc/readme-qt.rst
+index 6a2998b..5dfd5dd 100644
+--- a/doc/readme-qt.rst
++++ b/doc/readme-qt.rst
+@@ -85,7 +85,16 @@ Build configuration options
+ UPnP port forwarding
+ ---------------------
+ 
+-To use UPnP for port forwarding behind a NAT router (recommended, as more connections overall allow for a faster and more stable zoin experience), pass the following argument to qmake:
++The use of UPnP for port forwarding behind a NAT router is now the default for 
++Qt builds: More connections overall allow for a faster and more stable zcoin
++experience.
++
++To build with UPnP, but have its use disabled by default, pass the
++"USE_UPNP=0" argument to qmake:
++
++	qmake "USE_UPNP=0"
++
++To build without UPnP, pass "USE_UPNP=-", instead.
+ 
+ ::
+ 
+@@ -101,9 +110,10 @@ Set USE_UPNP to a different value to control this:
+ +------------+--------------------------------------------------------------------------+
+ | USE_UPNP=- | no UPnP support, miniupnpc not required;                                 |
+ +------------+--------------------------------------------------------------------------+
+-| USE_UPNP=0 | (the default) built with UPnP, support turned off by default at runtime; |
++| USE_UPNP=0 | build with UPnP, support turned off by default at runtime;               |
+ +------------+--------------------------------------------------------------------------+
+ | USE_UPNP=1 | build with UPnP support turned on by default at runtime.                 |
++|(or not set)| (the default)                                                            |
+ +------------+--------------------------------------------------------------------------+
+ 
+ Notification support for recent (k)ubuntu versions
+@@ -119,14 +129,15 @@ FreeDesktop notification interface through DBUS using the following qmake option
+ Generation of QR codes
+ -----------------------
+ 
++The use of libqrencode is now the default.
+ libqrencode may be used to generate QRCode images for payment requests.
+ It can be downloaded from http://fukuchi.org/works/qrencode/index.html.en, or installed via your package manager. Pass the USE_QRCODE
+ flag to qmake to control this:
+ 
+ +--------------+--------------------------------------------------------------------------+
+-| USE_QRCODE=0 | (the default) No QRCode support - libarcode not required                 |
++| USE_QRCODE=0 | No QRCode support - libarcode not required                               |
+ +--------------+--------------------------------------------------------------------------+
+-| USE_QRCODE=1 | QRCode support enabled                                                   |
++| USE_QRCODE=1 | QRCode support enabled (the default)                                     |
+ +--------------+--------------------------------------------------------------------------+
+ 
+ 
+diff --git a/src/libzerocoin/bitcoin_bignum/hash.cpp b/src/libzerocoin/bitcoin_bignum/hash.cpp
+old mode 100755
+new mode 100644
+diff --git a/zoin.pro b/zoin.pro
+old mode 100755
+new mode 100644
+index 09013b2..1266ac9
+--- a/zoin.pro
++++ b/zoin.pro
+@@ -12,9 +12,16 @@ CONFIG += no_include_pwd
+ CONFIG += thread
+ CONFIG += static
+ 
+-USE_QRCODE=1
+-USE_UPNP=1
+-USE_IPV6=1
++## New Defaults: Use QRCodes; build and enable UPNP and IPV6
++isEmpty( USE_QRCODE ) {
++  USE_QRCODE = 1
++}
++isEmpty( USE_UPNP ) {
++  USE_UPNP = 1
++}
++isEmpty( USE_IPV6 ) {
++  USE_IPV6=1
++}
+ 
+ # for boost 1.37, add -mt to the boost libraries
+ # use: qmake BOOST_LIB_SUFFIX=-mt
+@@ -38,8 +45,8 @@ win32 {
+ 	OPENSSL_LIB_PATH=C:/deps/openssl-1.0.2k
+ 	MINIUPNPC_INCLUDE_PATH=C:/deps
+ 	MINIUPNPC_LIB_PATH=C:/deps/miniupnpc
+-	QRENCODE_INCLUDE_PATH=C:\deps\qrencode-3.4.4
+-	QRENCODE_LIB_PATH=C:\deps\qrencode-3.4.4\.libs
++	QRENCODE_INCLUDE_PATH=C:/deps/qrencode-3.4.4
++	QRENCODE_LIB_PATH=C:/deps/qrencode-3.4.4/.libs
+ }
+ 
+ 
+@@ -104,7 +111,7 @@ contains(USE_UPNP, -) {
+ 
+ # use: qmake "USE_DBUS=1"
+ contains(USE_DBUS, 1) {
+-    message(Building with DBUS (Freedesktop notifications) support)
++    message(Building with DBUS \(Freedesktop notifications\) support)
+     DEFINES += USE_DBUS
+     QT += dbus
+ }
+@@ -115,6 +122,7 @@ contains(USE_DBUS, 1) {
+ contains(USE_IPV6, -) {
+     message(Building without IPv6 support)
+ } else {
++    message(Building with IPv6 support)
+     count(USE_IPV6, 0) {
+         USE_IPV6=1
+     }
+@@ -130,14 +138,14 @@ INCLUDEPATH += src/leveldb/include src/leveldb/helpers
+ LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
+ !win32 {
+     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
+-    genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT="$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE" libleveldb.a libmemenv.a
++    genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a
+ } else {
+     # make an educated guess about what the ranlib command is called
+     isEmpty(QMAKE_RANLIB) {
+         QMAKE_RANLIB = $$replace(QMAKE_STRIP, strip, ranlib)
+     }
+     LIBS += -lshlwapi 
+-    ###genleveldb.commands = cd \"$$PWD\"/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a && $$QMAKE_RANLIB \"$$PWD\"/src/leveldb/libleveldb.a && $$QMAKE_RANLIB \"$$PWD\"/src/leveldb/libmemenv.a
++    ###genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a && $$QMAKE_RANLIB $$PWD/src/leveldb/libleveldb.a && $$QMAKE_RANLIB $$PWD/src/leveldb/libmemenv.a
+ }
+ genleveldb.target = $$PWD/src/leveldb/libleveldb.a
+ genleveldb.depends = FORCE
+
+From cf7a0d4fe4462af8f1e11628bf955e009725e3c5 Mon Sep 17 00:00:00 2001
+From: roarde <roarde@example.net>
+Date: Fri, 16 Jun 2017 02:33:08 -0400
+Subject: [PATCH 2/2] zcoin/zoin typo
+
+---
+ doc/readme-qt.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/readme-qt.rst b/doc/readme-qt.rst
+index 5dfd5dd..29ac82b 100644
+--- a/doc/readme-qt.rst
++++ b/doc/readme-qt.rst
+@@ -86,7 +86,7 @@ UPnP port forwarding
+ ---------------------
+ 
+ The use of UPnP for port forwarding behind a NAT router is now the default for 
+-Qt builds: More connections overall allow for a faster and more stable zcoin
++Qt builds: More connections overall allow for a faster and more stable zoin
+ experience.
+ 
+ To build with UPnP, but have its use disabled by default, pass the

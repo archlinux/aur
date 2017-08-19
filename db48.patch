@@ -1,0 +1,10 @@
+--- zoin-master.orig/zoin.pro	2017-08-15 14:55:00.418339681 +0300
++++ zoin-master/zoin.pro	2017-08-15 13:27:58.340418391 +0300
+@@ -33,6 +33,7 @@ isEmpty( USE_IPV6 ) {
+ #    BOOST_INCLUDE_PATH, BOOST_LIB_PATH, BDB_INCLUDE_PATH,
+ #    BDB_LIB_PATH, OPENSSL_INCLUDE_PATH and OPENSSL_LIB_PATH respectively
+ 
++BDB_INCLUDE_PATH=/usr/include/db4.8
+ BDB_LIB_SUFFIX=-4.8
+ 
+ win32 {
