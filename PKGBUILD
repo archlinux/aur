@@ -2,7 +2,7 @@
 _npmscope=@dicy
 _npmname=cli
 pkgname=nodejs-dicy-cli
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A JavaScript based builder for LaTeX, knitr and literate Haskell that automatically builds dependencies."
 arch=(any)
