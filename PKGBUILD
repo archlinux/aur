@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "cmocka"
 
-  mkdir -p "build"
+  mkdir -p "_build"
 }
 
 pkgver() {
@@ -29,20 +29,20 @@ pkgver() {
 }
 
 build() {
-  cd "cmocka/build"
+  cd "cmocka/_build"
 
   cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release -DUNIT_TESTING=ON ../
   make
 }
 
 check() {
-  cd "cmocka/build"
+  cd "cmocka/_build"
 
   make test
 }
 
 package() {
-  cd "cmocka/build"
+  cd "cmocka/_build"
 
   make DESTDIR="$pkgdir" install
 }
