@@ -2,7 +2,7 @@
 
 pkgname=gptrixie
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Generate Perl6 NativeCall code from C headers file"
 arch=('any')
 depends=('gccxml' 'perl6' 'perl6-xml')
@@ -13,13 +13,6 @@ url="https://github.com/Skarsnik/gptrixie"
 license=('PerlArtistic')
 source=($pkgname-$pkgver::git+https://github.com/Skarsnik/gptrixie)
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Fixing META.info...'
-  mv META6.info META.info
-}
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
