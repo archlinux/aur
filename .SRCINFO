@@ -13,6 +13,7 @@ pkgbase = hardcode-tray-git
 	depends = python-cairosvg
 	depends = librsvg
 	depends = gtk3
+	depends = gobject-introspection
 	optdepends = sni-qt-patched-git: patched qt4 sni plugin to enable icon modification
 	optdepends = inkscape: to convert svg to png with inkscape
 	provides = hardcode-tray-git
