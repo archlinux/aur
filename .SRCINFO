@@ -1,15 +1,15 @@
 pkgbase = teamsql
 	pkgdesc = Multi-Platform SQL Client
-	pkgver = 1.2.113
+	pkgver = 1.3.116
 	pkgrel = 2
 	install = teamsql.install
 	arch = x86_64
 	depends = libappindicator
 	depends = libnotify
 	depends = gconf
-	source = TeamSQL-1.2.113.deb::https://dlpuop5av9e02.cloudfront.net/linux/stable/1.2.113/TeamSQL-1.2.113.deb
+	source = TeamSQL-1.3.116.deb::https://dlpuop5av9e02.cloudfront.net/linux/stable/1.3.116/TeamSQL-1.3.116.deb
 	source = teamsql.sh
-	md5sums = a5f5fa7e59f15f30bd1479b4b8534a9c
+	md5sums = 121d0741d78a8243c739271348b03fc1
 	md5sums = 7262cf67a1e2634401d6012d8d34e7d8
 
 pkgname = teamsql
