@@ -2,7 +2,7 @@
 
 _gitname=Pokemon-Terminal
 pkgname=pokemon-terminal-git
-pkgver=r286.854ae82
+pkgver=r7.f91225e
 pkgrel=1
 pkgdesc="Pokemon terminal themes"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('gnome-shell: support changing GNOME wallpaper'
             'terminology: support changing Terminology background'
             'tilix: support changing Tilix background')
 makedepends=('git')
-source=("git://github.com/LazoCoder/$_gitname.git")
+source=("https://github.com/LazoCoder/$_gitname/archive/master.zip")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,10 +22,10 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$_gitname-master"
 
   rm .npmignore .gitignore LICENSE package.json README.md unittest.py .travis.yml test_* load_all_pokemon.py
-  rm -r .git/ Samples/
+  rm -r Samples/
 
   IFS=$'\n'
   for file in `find -type f`
