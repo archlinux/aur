@@ -1,13 +1,13 @@
 pkgbase = python-webcolors
 	pkgdesc = Library for working with HTML/CSS color formats in Python
-	pkgver = 1.5
+	pkgver = 1.7
 	pkgrel = 1
-	url = http://blockdiag.com/en/seqdiag/index.html
+	url = https://github.com/ubernostrum/webcolors
 	arch = any
 	license = bsd
 	depends = python
-	source = https://github.com/ubernostrum/webcolors/archive/1.5.tar.gz
-	md5sums = 02f5985cd0600090b3afdecd649abccc
+	source = https://pypi.python.org/packages/1c/11/d9fb5a7c872a941ad8b30a4be191253d5a9028834c4d69eab55bb6bc60be/webcolors-1.7.tar.gz#md5=4733fa1077f680bbdd918cdef1e32c11
+	md5sums = 4733fa1077f680bbdd918cdef1e32c11
 
 pkgname = python-webcolors
 
