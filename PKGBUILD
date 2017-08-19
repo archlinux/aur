@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emscripten-git
-pkgver=1.37.19.11.g0fecba887
+pkgver=1.37.19.16.g00f279bae
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=('git://github.com/kripken/emscripten.git#branch=incoming'
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '99ad755a0e9ccf5620e05e1293cdbffa'
+         '8f39613404c78d608de08a5559da9b23'
          'c8b7db20a44edb41c8675812e17b5c42')
 
 pkgver() {
