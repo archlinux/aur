@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=kickoff-player-git
-pkgver=r155.6c6bac4
+pkgver=9.884c97f
 pkgrel=1
 pkgdesc="Stream football matches and channels with acestream and sopcast"
 arch=("any")
@@ -13,11 +13,8 @@ source=("$pkgname::git+https://github.com/jonian/kickoff-player")
 md5sums=("SKIP")
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed "s/\([^-]*-g\)/r\1/;s/-/./g" ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "${srcdir}/${_pkgname}"
+  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
