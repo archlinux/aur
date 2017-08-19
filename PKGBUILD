@@ -2,7 +2,7 @@
 
 pkgname=libnet-git
 pkgver=1.2.rc3.r7.gbda4288
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable framework for low-level network packet construction"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/libnet-dev/"
@@ -11,6 +11,7 @@ depends=('glibc')
 makedepends=('git')
 provides=('libnet')
 conflicts=('libnet')
+options=('staticlibs')
 source=("git+https://github.com/sam-github/libnet.git")
 sha256sums=('SKIP')
 
