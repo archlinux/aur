@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-shell-git
-pkgver=20161016.c2269e8
+pkgver=20170818.1a4cde2f
 pkgrel=1
 pkgdesc="QtQuick and Wayland based shell for convergence"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
