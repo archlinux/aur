@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0.3
+Name=BOOLR
+Comment=A digital logic simulator
+Path=/opt/boolr
+Exec=boolr
+Icon=boolr

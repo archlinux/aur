@@ -1,0 +1,14 @@
+pkgbase = boolr
+	pkgdesc = A digital logic simulator
+	pkgver = v1.0.3
+	pkgrel = 1
+	url = https://github.com/GGBRW/BOOLR
+	arch = x86_64
+	license = MIT
+	source = https://github.com/GGBRW/BOOLR/releases/download/v1.0.3/BOOLR-v1.0.3-linux-x86_64.zip
+	source = boolr.desktop
+	sha256sums = 94fa88d65442687aa6aa4ac2d3f5a0c76ed13d45adf98bcc6609f3118c90bb29
+	sha256sums = 0a0d5da05c8e3c5f1c8f72a383503fffc9933972a6dc780d817027180c782e90
+
+pkgname = boolr
+
