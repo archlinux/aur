@@ -3,7 +3,7 @@
 pkgbase=brotli-git
 pkgname=('brotli-git' 'python-brotli-git' 'python2-brotli-git')
 pkgver=0.6.0.r29.g019091f
-pkgrel=1
+pkgrel=2
 pkgdesc="Brotli compression library"
 arch=('i686' 'x86_64')
 url="https://github.com/google/brotli"
@@ -38,6 +38,7 @@ check() {
 }
 
 package_brotli-git() {
+  depends=('glibc')
   provides=('brotli')
   conflicts=('brotli')
 
