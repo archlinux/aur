@@ -1,0 +1,18 @@
+pkgbase = automake-git
+	pkgdesc = A tool for automatically generating Makefiles
+	pkgver = 1.15.r180.gcc7231cc3
+	pkgrel = 1
+	url = https://www.gnu.org/software/automake/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = sh
+	depends = perl
+	provides = automake
+	conflicts = automake
+	source = git+https://git.savannah.gnu.org/git/automake.git
+	sha256sums = SKIP
+
+pkgname = automake-git
+
