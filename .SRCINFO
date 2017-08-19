@@ -1,7 +1,7 @@
 pkgbase = leave
 	pkgdesc = Reminds you when you have to leave
 	pkgver = 1.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://launchpad.net/ubuntu/+source/leave/1.12-2.1
 	arch = i686
 	arch = x86_64

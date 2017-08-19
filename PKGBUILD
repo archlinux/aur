@@ -1,8 +1,8 @@
-# Contributor: Michael Straube <straubem@gmx.de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 
 pkgname=leave
 pkgver=1.12
-pkgrel=3
+pkgrel=4
 pkgdesc="Reminds you when you have to leave"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ubuntu/+source/leave/1.12-2.1"
@@ -15,15 +15,13 @@ prepare() {
   cd $pkgname-$pkgver
 
   sed -i 's|getprogname()|"leave"|' leave.c
-
-  # extract license from leave.c
   cut -c 4- leave.c | sed -n '4,29p' > LICENSE
 }
 
 build() {
   cd $pkgname-$pkgver
 
-  gcc -v -o leave leave.c $CFLAGS -D__COPYRIGHT\(x\)= -D__RCSID\(x\)=
+  gcc -o leave leave.c $CFLAGS -D__COPYRIGHT\(x\)= -D__RCSID\(x\)= $LDFLAGS
 }
 
 package() {
