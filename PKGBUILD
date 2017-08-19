@@ -2,7 +2,7 @@
 
 pkgname=libuv-git
 pkgver=1.13.1.r67.g9834c4f7
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform support library with a focus on asynchronous I/O"
 arch=('i686' 'x86_64')
 url="http://libuv.org/"
@@ -11,6 +11,7 @@ depends=('glibc')
 makedepends=('git' 'python-sphinx')
 provides=('libuv')
 conflicts=('libuv')
+options=('staticlibs')
 source=("git+https://github.com/libuv/libuv.git#branch=master")
 sha256sums=('SKIP')
 
