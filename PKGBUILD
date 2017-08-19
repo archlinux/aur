@@ -3,7 +3,7 @@
 
 pkgname='telegraf'
 pkgver='1.3.5'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Server-level metric gathering agent for InfluxDB'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://influxdb.org/'
@@ -26,8 +26,8 @@ build()
   export GOPATH="$srcdir"
   export GOBIN="$GOPATH/bin"
   export PATH="$GOBIN:$PATH"
-  mkdir -p $GOPATH/src/github.com/influxdata
-  mv -f $srcdir/telegraf $GOPATH/src/github.com/influxdata/
+  mkdir -p "$GOPATH/src/github.com/influxdata"
+  mv -f "$srcdir/telegraf" "$GOPATH/src/github.com/influxdata/"
 
   cd "$GOPATH/src/github.com/influxdata/telegraf"
 
@@ -44,16 +44,16 @@ build()
 
 package()
 {
-  cd $srcdir
-  install -Dm644 telegraf.sysusers $pkgdir/usr/lib/sysusers.d/telegraf.conf
-  install -Dm644 telegraf.tmpfiles $pkgdir/usr/lib/tmpfiles.d/telegraf.conf
+  cd "$srcdir"
+  install -Dm644 telegraf.sysusers "$pkgdir/usr/lib/sysusers.d/telegraf.conf"
+  install -Dm644 telegraf.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/telegraf.conf"
 
-  cd $GOBIN
-  install -Dsm755 telegraf $pkgdir/usr/bin/telegraf
+  cd "$GOBIN"
+  install -Dsm755 telegraf "$pkgdir/usr/bin/telegraf"
 
-  cd $GOPATH/src/github.com/influxdata/telegraf
-  install -d $pkgdir/etc/telegraf/telegraf.d/
-  install -Dm644 scripts/telegraf.service $pkgdir/usr/lib/systemd/system/telegraf.service
-  install -Dm644 etc/telegraf.conf $pkgdir/etc/telegraf/telegraf.conf
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/telegraf/LICENSE
+  cd "$GOPATH/src/github.com/influxdata/telegraf"
+  install -d "$pkgdir/etc/telegraf/telegraf.d/"
+  install -Dm644 scripts/telegraf.service "$pkgdir/usr/lib/systemd/system/telegraf.service"
+  install -Dm644 etc/telegraf.conf        "$pkgdir/etc/telegraf/telegraf.conf"
+  install -Dm644 LICENSE                  "$pkgdir/usr/share/licenses/telegraf/LICENSE"
 }
