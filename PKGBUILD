@@ -4,7 +4,7 @@
 
 _pkgname=knotifications
 pkgname=${_pkgname}-light
-pkgver=5.36.0
+pkgver=5.37.0
 pkgrel=1
 pkgdesc="Abstraction for system notifications, light version without Text-to-Speech"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 groups=('kf5')
 source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('e4004df99c6b470c0454e6c7a0e94ed540549ce6e6cc848f7c97b4e620a59ec2' 'SKIP')
+sha256sums=('66cdfddaa31f773a538d429026d0117e60f8a0a7f2a90c861f95d84395347b3f' 'SKIP')
 validpgpkeys=('53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB') # David Faure <faure@kde.org>
 
 prepare() {
