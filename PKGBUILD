@@ -2,48 +2,51 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-minimal
-pkgver=3.0.1
-pkgrel=3
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="A fully-featured word processor"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.abisource.com"
 makedepends=('boost')
-depends=('fribidi' 'wv' 'enchant' 'desktop-file-utils' 'goffice')
+depends=('fribidi' 'wv' 'enchant' 'desktop-file-utils' 'goffice' 'libical' 'redland' 'libchamplain')
 conflicts=('abiword' 'abiword-plugins')
 provides=('abiword')
 options=('!makeflags' '!libtool')
 source=("http://www.abisource.com/downloads/abiword/${pkgver}/source/abiword-${pkgver}.tar.gz"
-	abiword-3.0.0-librevenge.patch
-        abiword-3.0.0-link-grammar-5.patch
-        abiword-3.0.0-link-grammar-5-second.patch
-        link-grammar-panic.patch
-        aiksaurus-plugin.m4
-        gnutls-3.4.0.patch)
-sha256sums=('e094f6fbf0afc5c5538b4894888e7c346f8ee8f49c9d24821dd696d0734865c6'
-            '77b52a3722096cec3bfbe4fff3802f51b6c9e0ff7aaa30028c29825fd4e6a65f'
-            '6d88800f1e16becd69ed93d5f070793a56b9f162f7d886c71756643bcaed7ef5'
-            'd2c80da81a339634a7a4ee4cef12f7ee968f2c2a8c2f75533b6713b71f0d61fd'
-            '94d1e638f7b85123dc2282d2e59b982bde6ad0dbbe1b6b54351e610c5a0ea578'
-            '5f80a2f94f9929cdba9809c5e1a87cd5d537a2518bb879bfb9eab51a71c8dac1'
-            'b393e26c19f92901f64d2bae54c86708ea7dd0b647572088a8ac0cd2eec89100')
-
+	'abiword-3.0.0-librevenge.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/abiword-3.0.0-librevenge.patch?h=packages/abiword'
+	'abiword-3.0.1-libwps-0.4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/abiword-3.0.1-libwps-0.4.patch?h=packages/abiword'
+	'aiksaurus-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/aiksaurus-plugin.m4?h=packages/abiword'
+	'command-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/command-plugin.m4?h=packages/abiword'
+	'python-override.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/python-override.patch?h=packages/abiword'
+        'bug13815.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/bug13815.patch?h=packages/abiword')
+md5sums=('cda6dd58c747c133b421cc7eb18f5796'
+         '6fc2d653d3b814bbfd9b0d71c69c4796'
+         'd7fd4dfc77879781883f48c63f979dac'
+         '8d780c2559a18d0dad5a02b11932b88c'
+         '06131a46d9d537249db0d107296f4a4e'
+         'bf7ed8608b790886433c1f2cc23348ce'
+         '385e359cc05e149b0d56e8bb59048b4a')
 
 prepare() {
   cd "${srcdir}/abiword-${pkgver}"
 
   # fix build with librevenge based import filters
-  patch -Np0 -i ../abiword-3.0.0-librevenge.patch
+  patch -Np0 -i "${srcdir}"/abiword-3.0.0-librevenge.patch
 
-  # Fix build with recent versions of link-grammar
-  patch -Np1 -i ../abiword-3.0.0-link-grammar-5.patch
-  patch -Np1 -i ../abiword-3.0.0-link-grammar-5-second.patch
-  patch -Np0 -i ../link-grammar-panic.patch
-  # Fix build with new gnutls 3.4.x
-  patch -Np0 -i ../gnutls-3.4.0.patch
+  # Fix libwpd 0.4 detection
+  patch -Np1 -i "${srcdir}"/abiword-3.0.1-libwps-0.4.patch
   
-  # Install missing m4 file
-  install -m644 ../aiksaurus-plugin.m4 plugins/aiksaurus/plugin.m4
+  # Fix python override code to work with Python 3.x
+  patch -Np1 -i "${srcdir}"/python-override.patch
+
+  # Fix black on black (FS#51667)
+  # http://bugzilla.abisource.com/show_bug.cgi?id=13815
+  patch -Np1 -i "${srcdir}"/bug13815.patch
+
+  # Install missing m4 files
+  install -m644 "${srcdir}"/aiksaurus-plugin.m4 plugins/aiksaurus/plugin.m4
+  install -m644 "${srcdir}"/command-plugin.m4 plugins/command/plugin.m4
 
   # Generate m4 file for configure
   find plugins -name plugin.m4 | xargs cat > plugin-configure.m4
