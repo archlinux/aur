@@ -2,7 +2,7 @@
 
 _gitname=Pokemon-Terminal
 pkgname=pokemon-terminal-git
-pkgver=r151.d0d46ce
+pkgver=r286.854ae82
 pkgrel=1
 pkgdesc="Pokemon terminal themes"
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 package() {
   cd "$srcdir/$_gitname"
 
-  rm .npmignore .gitignore LICENSE package.json README.md unittest.py
+  rm .npmignore .gitignore LICENSE package.json README.md unittest.py .travis.yml test_* load_all_pokemon.py
   rm -r .git/ Samples/
 
   IFS=$'\n'

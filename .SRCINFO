@@ -1,6 +1,6 @@
 pkgbase = pokemon-terminal-git
 	pkgdesc = Pokemon terminal themes
-	pkgver = r151.d0d46ce
+	pkgver = r286.854ae82
 	pkgrel = 1
 	url = https://github.com/LazoCoder/Pokemon-Terminal
 	arch = any
