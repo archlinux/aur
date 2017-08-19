@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "libexpat/expat"
 
-  mkdir -p "build"
+  mkdir -p "_build"
 }
 
 pkgver() {
@@ -28,20 +28,20 @@ pkgver() {
 }
 
 build() {
-  cd "libexpat/expat/build"
+  cd "libexpat/expat/_build"
 
   cmake -DCMAKE_INSTALL_PREFIX="/usr" ../
   make
 }
 
 check() {
-  cd "libexpat/expat/build"
+  cd "libexpat/expat/_build"
 
   make test
 }
 
 package() {
-  cd "libexpat/expat/build"
+  cd "libexpat/expat/_build"
 
   make DESTDIR="$pkgdir" install
   install -Dm644 "../COPYING" "$pkgdir/usr/share/licenses/expat/COPYING"
