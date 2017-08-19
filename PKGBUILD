@@ -1,28 +1,22 @@
-# Maintainer: Milo Mirate <mmirate@gmx.com>
+# Maintainer: Tarn Burton <twburton at gmail dot com>
+# Contributor: Milo Mirate <mmirate at gmx.com>
+
 _pkgname=Pweave
 pkgname=python-pweave
-pkgver=0.23
+pkgver=0.25
 pkgrel=1
 pkgdesc="A scientific report generator and literate programming tool for Python."
 arch=(any)
 url="http://mpastell.com/pweave/"
-license=('GPL')
-groups=()
+license=('BSD')
 depends=('python')
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!emptydirs)
-install=
-source=("http://pypi.python.org/packages/source/P/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=('0bc76bd90f3a0380f3c8975e10544815')
+makedepends=('python-setuptools')
+source=("https://pypi.python.org/packages/f6/2f/e9735b04747ae5ef29d64e0b215fb0e11f1c89826097ac17342efebbbb84/$_pkgname-$pkgver.tar.gz")
+sha256sums=('1c0f6921196646243eb7ff9eee742305909be2bc7a5eeeb06a7d1f66cc9758c7')
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
   rename P p "$pkgdir/usr/bin/P"*
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:

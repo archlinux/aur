@@ -1,14 +1,14 @@
 pkgbase = python-pweave
 	pkgdesc = A scientific report generator and literate programming tool for Python.
-	pkgver = 0.23
+	pkgver = 0.25
 	pkgrel = 1
 	url = http://mpastell.com/pweave/
 	arch = any
-	license = GPL
+	license = BSD
+	makedepends = python-setuptools
 	depends = python
-	options = !emptydirs
-	source = http://pypi.python.org/packages/source/P/Pweave/Pweave-0.23.tar.gz
-	md5sums = 0bc76bd90f3a0380f3c8975e10544815
+	source = https://pypi.python.org/packages/f6/2f/e9735b04747ae5ef29d64e0b215fb0e11f1c89826097ac17342efebbbb84/Pweave-0.25.tar.gz
+	sha256sums = 1c0f6921196646243eb7ff9eee742305909be2bc7a5eeeb06a7d1f66cc9758c7
 
 pkgname = python-pweave
 
