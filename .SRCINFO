@@ -1,6 +1,6 @@
 pkgbase = libogg-git
 	pkgdesc = Reference implementation of the Ogg media container
-	pkgver = 1.3.2.r36.gcab46b1
+	pkgver = 1.3.2.r41.gdd85929
 	pkgrel = 1
 	url = https://www.xiph.org/ogg/
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = libogg-git
 	makedepends = git
 	provides = libogg
 	conflicts = libogg
+	options = staticlibs
 	source = git+https://git.xiph.org/ogg.git
 	sha256sums = SKIP
 

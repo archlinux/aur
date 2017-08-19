@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libogg-git
-pkgver=1.3.2.r36.gcab46b1
+pkgver=1.3.2.r41.gdd85929
 pkgrel=1
 pkgdesc="Reference implementation of the Ogg media container"
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ license=('BSD')
 makedepends=('git')
 provides=('libogg')
 conflicts=('libogg')
+options=('staticlibs')
 source=("git+https://git.xiph.org/ogg.git")
 sha256sums=('SKIP')
 
