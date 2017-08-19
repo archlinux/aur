@@ -1,0 +1,22 @@
+pkgbase = brother-hl3142cw
+	pkgdesc = LPR and CUPS driver for the Brother DCP585CW
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-hl3142cw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlf101630/hl3142cwlpr-1.1.3-0.i386.rpm
+	source = http://download.brother.com/welcome/dlf101631/hl3142cwcupswrapper-1.1.4-0.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	sha256sums = 74bbd0006e44f75fd12362279e6a71c4e3f27f5441ab14d9511a887affd0dbf0
+	sha256sums = 440e16b3a43015b84cd212517b74dc54a8878c92a193a88dc4fbce2ad0e7f3e0
+	sha256sums = 353433180a29a5dd67b94cbe626362d5a152b85f40b2b920696389e2e100c06c
+	sha256sums = 9e71d8f28a8d9e2cde6b329ac56eac8ef23b53e36531f1b83d7ef4d94b303bf4
+
+pkgname = brother-hl3142cw
+

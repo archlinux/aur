@@ -1,0 +1,14 @@
+post_install() {
+	post_upgrade;
+	echo "You can now register your new printer using the web interface at:"
+	echo "  http://localhost:631/"
+}
+
+post_upgrade() {
+	systemctl restart org.cups.cupsd.service
+}
+
+post_remove() {
+	post_upgrade;
+}
+
