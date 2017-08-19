@@ -2,7 +2,7 @@
 
 pkgname=libtheora-git
 pkgver=1.2.0alpha1.r129.gfa5707d
-pkgrel=1
+pkgrel=2
 pkgdesc="An open video codec developed by the Xiph.org"
 arch=('i686' 'x86_64')
 url="https://www.theora.org/"
@@ -11,6 +11,7 @@ depends=('glibc' 'libogg')
 makedepends=('git' 'libvorbis')
 provides=('libtheora')
 conflicts=('libtheora')
+options=('staticlibs')
 source=("git+https://git.xiph.org/theora.git")
 sha256sums=('SKIP')
 
