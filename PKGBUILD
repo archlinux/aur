@@ -9,10 +9,11 @@
 # Contributor: Praekon <praekon@googlemail.com>
 
 # Based on the plex-media-server package by Maxime Gauduin.
+#https://downloads.plex.tv/plex-media-server/1.8.1.4140-82ea538ca/plexmediaserver_1.8.1.4140-82ea538ca_amd64.deb
 
 pkgname=plex-media-server-plexpass-hwenc
-pkgver=1.6.0.3720
-_pkgsum=d82f85387
+pkgver=1.8.1.4140
+_pkgsum=82ea538ca
 pkgrel=1
 pkgdesc='Plex Media Server (PlexPass version) w/ Hardware Encoding'
 arch=('armv7h' 'i686' 'x86_64')
@@ -36,9 +37,9 @@ sha256sums=('7ab1ee8da9012d257b7f473fb79d76b201ca592cbe3722f977a43b58bfad180e'
             'f0c915b49c6259761e2476c8388d1a744533bf3b0c21e569187fd000ebc76e0d'
             '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
 
-sha256sums_armv7h=('f85cbbb6335c51b5091ffe9e1a2339a327def29eb4959023357bd28f010bfb55')
-sha256sums_i686=('d82e61a96adef22bc926604555e209db31641324d1be5ff42c4537c4b8633ae8')
-sha256sums_x86_64=('6550232f6bcc092563da882b1d3b3268502c44af886d6edfdfe20976c805be30')
+sha256sums_armv7h=('e0ce4c02324d0b73caeb3482a3006a2f1b4a968cdedd048de8506887b820e82f')
+sha256sums_i686=('1d8466995af4abc724733c0c3fd29ab0f30ae98f17ccac4ece4d73838a3a55f0')
+sha256sums_x86_64=('28fed608fa01288577fbf8cc2ddc7ff59b74f316195660fc6d7ca60038289018')
 
 prepare() {
   if [[ $CARCH =~ arm* ]]; then
