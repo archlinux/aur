@@ -12,7 +12,7 @@ depends=('python>=3.5')
 optdepends=('gnome-shell: support changing GNOME wallpaper'
             'terminology: support changing Terminology background'
             'tilix: support changing Tilix background')
-makedepends=('git' 'jq')
+makedepends=('git' 'jq' 'curl')
 source=("https://github.com/LazoCoder/$_gitname/archive/master.zip" "get-commit-count.sh")
 sha256sums=('SKIP' '714f2e21a5b77d8b72d6f75da1f1c2fac93f15e2ddd3829a3fbd6dc7307779d0')
 

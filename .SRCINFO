@@ -7,6 +7,7 @@ pkgbase = pokemon-terminal-git
 	license = GPL3
 	makedepends = git
 	makedepends = jq
+	makedepends = curl
 	depends = python>=3.5
 	optdepends = gnome-shell: support changing GNOME wallpaper
 	optdepends = terminology: support changing Terminology background
