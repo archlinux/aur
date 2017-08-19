@@ -2,12 +2,12 @@
 
 pkgname=editorconfig-core-c-git
 pkgver=0.12.1.r16.g6f3c40d
-pkgrel=1
+pkgrel=2
 pkgdesc="EditorConfig core library written in C (for use by plugins supporting EditorConfig parsing)"
 arch=('i686' 'x86_64')
 url="https://github.com/editorconfig/editorconfig-core-c"
 license=('BSD')
-depends=('pcre')
+depends=('glibc' 'pcre')
 makedepends=('git' 'cmake>=2.8.7')
 provides=('editorconfig-core-c')
 conflicts=('editorconfig-core-c')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "editorconfig-core-c"
 
-  mkdir -p "build"
+  mkdir -p "_build"
 }
 
 pkgver() {
@@ -28,14 +28,14 @@ pkgver() {
 }
 
 build() {
-  cd "editorconfig-core-c/build"
+  cd "editorconfig-core-c/_build"
 
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="lib" -DINSTALL_HTML_DOC=ON ../
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_BUILD_TYPE=Release -DINSTALL_HTML_DOC=ON ../
   make
 }
 
 package() {
-  cd "editorconfig-core-c/build"
+  cd "editorconfig-core-c/_build"
 
   make DESTDIR="$pkgdir" install
   install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/editorconfig-core-c/LICENSE"
