@@ -5,8 +5,8 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=opensimulator
-pkgver=0.8.2.1
-pkgrel=2
+pkgver=0.9.0.0
+pkgrel=1
 pkgdesc="A 3D application server used to create a virtual environment or world"
 arch=('i686' 'x86_64')
 url="http://opensimulator.org/wiki/Main_Page"
@@ -20,7 +20,7 @@ source=("http://opensimulator.org/dist/opensim-${pkgver}-source.tar.gz"
 		"opensimulator.service"
 		"opensimulator-robust.service")
 backup=(opt/$pkgname/bin/OpenSim.ini)
-md5sums=('99b10f06b8fc77725c45c5c40e2cfb24'
+md5sums=('366ee2e355538ffeecfc1c6413076b0b'
          '58270c537e91b85c1121aacc2ccb194e'
          'cb3b9d774a9973bb438c9052dbe77112'
          'c2686291b848bf584c9a05fbc6bac303'
@@ -66,7 +66,7 @@ find "$pkgdir"/opt/$pkgname/bin -name "*.exe" -exec chmod 755 {} +
 find "$pkgdir"/opt/$pkgname/bin -name "*.ini" -exec chmod 666 {} +
 find "$pkgdir"/opt/$pkgname/bin -name "*.xml" -exec chmod 666 {} +
 chmod 777 "$pkgdir"/opt/$pkgname/bin/{,*/}
-chmod 755 "$pkgdir"/opt/$pkgname/bin/opensim-ode.sh
+#chmod 755 "$pkgdir"/opt/$pkgname/bin/opensim-ode.sh
 chmod 666 "$pkgdir"/opt/$pkgname/bin/OpenSim.log
 
 # install scripts, service and license files
