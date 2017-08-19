@@ -1,17 +1,20 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=paxchange
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to synchronize installed packages across multiple machines"
 arch=('i686' 'x86_64')
 url="https://github.com/Baum42/$pkgname"
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'qt5-jsonserializer' 'pacman' )
 makedepends=('qt5-tools' 'git' 'qpm' 'python')
-optdepends=("pacaur: Adds support for synchronizing AUR packages")
+optdepends=("pacaur: Adds support for synchronizing AUR packages"
+			"repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
-source=("$_pkgfqn::git+https://github.com/Baum42/$pkgname.git#tag=$pkgver")
-md5sums=('SKIP')
+source=("$_pkgfqn::git+https://github.com/Baum42/$pkgname.git#tag=$pkgver"
+		'paxchange.rule')
+sha256sums=('SKIP'
+            'a30602ce3d02e36374c60bcb61bb97ed68ef580eddc86e4c1ac82dcdd90ebb6a')
 
 prepare() {
   mkdir -p build
@@ -48,4 +51,5 @@ package() {
   install -D -m755 plugins/pacman/${pkgname}.sh "$pkgdir/usr/share/libalpm/scripts/${pkgname}.sh"
 
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
 }
