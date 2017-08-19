@@ -1,0 +1,19 @@
+pkgbase = cmocka-git
+	pkgdesc = An unit testing framework for C with support for mock objects
+	pkgver = 1.1.1.r2.g2142576
+	pkgrel = 1
+	url = https://cmocka.org/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = cmocka
+	conflicts = cmocka
+	options = staticlibs
+	source = git://git.cryptomilk.org/projects/cmocka.git
+	sha256sums = SKIP
+
+pkgname = cmocka-git
+
