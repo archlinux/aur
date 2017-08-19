@@ -6,12 +6,15 @@ pkgbase = pokemon-terminal-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = perl
 	depends = python>=3.5
 	optdepends = gnome-shell: support changing GNOME wallpaper
 	optdepends = terminology: support changing Terminology background
 	optdepends = tilix: support changing Tilix background
-	source = git://github.com/LazoCoder/Pokemon-Terminal.git
+	source = https://github.com/LazoCoder/Pokemon-Terminal/archive/master.zip
+	source = get-commit-count.pl
 	sha256sums = SKIP
+	sha256sums = 6d4cc3bfb1f1b737c2f6ea1fac66302028f887056d0183b4c8ae2ed89ae70ef8
 
 pkgname = pokemon-terminal-git
 
