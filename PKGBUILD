@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libvorbis-git
-pkgver=1.3.5.r47.g143caf4
+pkgver=1.3.5.r55.g8a8f858
 pkgrel=1
 pkgdesc="Reference implementation of the Ogg Vorbis audio format"
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ depends=('libogg')
 makedepends=('git')
 provides=('libvorbis' 'libvorbisfile.so' 'libvorbis.so' 'libvorbisenc.so')
 conflicts=('libvorbis')
+options=('staticlibs')
 source=("git+https://git.xiph.org/vorbis.git")
 sha256sums=('SKIP')
 
