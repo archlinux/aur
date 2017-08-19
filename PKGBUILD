@@ -6,7 +6,7 @@ pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
 _pkgver=5.6.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -15,14 +15,19 @@ makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost
              'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble-common' 'kdesignerplugin'
              'kfilemetadata' 'akonadi-contacts' 'qtav' 'threadweaver' 'kcalcore'
              'knotifyconfig' 'libmediawiki' 'libkvkontakte')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
-sha256sums=('65bdd3f15668e314b852d523a0bf95da32450f31fcfda60da62e57d4622a663c')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
+        digikam-cmake-3.9.patch::"https://cgit.kde.org/digikam.git/patch/?id=7e00441c")
+sha256sums=('65bdd3f15668e314b852d523a0bf95da32450f31fcfda60da62e57d4622a663c'
+            'f7efc50dd63711388b6b119a7b3413f49deca233687e7ef1bafecf4c76491eff')
 
 prepare() {
   mkdir -p build
 
 # sv docs fail to build
   sed -e '/sv/d' -i $pkgname-$pkgver/doc-translated/CMakeLists.txt
+# fix build with cmake 3.9
+  cd $pkgbase-$pkgver/core
+  patch -p1 -i ../../digikam-cmake-3.9.patch
 }
 
 build() {
