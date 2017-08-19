@@ -2,7 +2,7 @@
 
 _pkgname=wechat_web_devtools
 pkgname=wechat-web-devtools-git
-pkgver=0.20.191100
+pkgver=0.21.201800
 pkgrel=1
 pkgdesc="Wechat Web Developer Tools"
 arch=("any")
