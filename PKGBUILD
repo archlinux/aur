@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Qt frontend of waifu2x."
 arch=('x86_64' 'i686')
 url='https://github.com/khws4v1/waifu2x-converter-qt'
-license=('GPL2')
+license=('MIT')
 depends=('waifu2x'
          'qt5-base'
          'libnotify'
@@ -43,4 +43,5 @@ package() {
   install -Dm755 build/waifu2x-converter-qt "${pkgdir}/usr/bin/waifu2x-converter-qt"
   install -Dm644 waifu2x.png "${pkgdir}/usr/share/pixmaps/waifu2x.png"
   install -Dm644 waifu2x-converter-qt.desktop "${pkgdir}/usr/share/applications/waifu2x-converter-qt.desktop"
+  install -Dm644 waifu2x-converter-qt/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
