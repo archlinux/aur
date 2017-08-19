@@ -1,7 +1,7 @@
 pkgbase = libidn-git
 	pkgdesc = An implementation of the Stringprep, Punycode and IDNA 2003 specifications
 	pkgver = 1.33.r47.g13f07cbf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/libidn/
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,12 @@ pkgbase = libidn-git
 	makedepends = gengetopt
 	makedepends = gperf
 	makedepends = gtk-doc
+	makedepends = fig2dev
+	makedepends = ghostscript
 	depends = glibc
 	provides = libidn
 	conflicts = libidn
+	options = staticlibs
 	source = git+https://git.savannah.gnu.org/git/libidn.git
 	sha256sums = SKIP
 
