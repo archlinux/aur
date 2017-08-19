@@ -8,7 +8,7 @@ license=("BSD")
 makedepends=(mingw-w64-configure mingw-w64-readline mingw-w64-bzip2 mingw-w64-zlib)
 depends=(mingw-w64-crt)
 options=(staticlibs !strip !buildflags)
-optdepends=(mingw-w64-wineditline mingw-w64-bzip2 mingw-w64-zlib)
+optdepends=(mingw-w64-readline mingw-w64-bzip2 mingw-w64-zlib)
 source=("ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre2-$pkgver.tar.bz2"
 "bug_2067.patch")
 md5sums=('b2cd00ca7e24049040099b0a46bb3649'
