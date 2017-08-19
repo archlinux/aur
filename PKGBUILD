@@ -2,7 +2,7 @@
 
 pkgname=libtorrent-rasterbar-1_1-git
 pkgver=1.1.4.r16.g50c2aee8e
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git branch RC_1_1)"
 arch=('i686' 'x86_64')
 url="http://www.libtorrent.org/"
@@ -11,6 +11,7 @@ depends=('boost-libs')
 makedepends=('git' 'boost' 'python2' 'python')
 provides=('libtorrent-rasterbar')
 conflicts=('libtorrent-rasterbar')
+options=('staticlibs')
 source=('git+https://github.com/arvidn/libtorrent.git#branch=RC_1_1')
 sha256sums=('SKIP')
 
@@ -41,7 +42,6 @@ _build() (
   ../libtorrent/configure \
     --prefix=/usr \
     --enable-python-binding \
-    --disable-static \
     --with-libiconv \
     --with-boost-python="$_boost"
 
