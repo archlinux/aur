@@ -30,7 +30,6 @@ source=('googleearth.sh'
 #source_x86_64=("google-earth-pro-stable_${pkgver}_amd64.deb::https://dl.google.com/earth/client/current/google-earth-pro-stable_current_amd64.deb")
 source_i686=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_$pkgver-r0_i386.deb")
 source_x86_64=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_$pkgver-r0_amd64.deb")
-
 md5sums=('34c413a93b06010e66a1a1c4c9386696'
          '598d579a1c3199c77850d86ba78f7b44'
          'SKIP'
