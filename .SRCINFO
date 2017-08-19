@@ -1,6 +1,6 @@
 pkgbase = qgis
 	pkgdesc = Geographic Information System (GIS) that supports vector, raster & database formats
-	pkgver = 2.18.11
+	pkgver = 2.18.12
 	pkgrel = 1
 	url = http://qgis.org/
 	arch = i686
@@ -43,8 +43,8 @@ pkgbase = qgis
 	optdepends = python2-psycopg2: Processing plugin
 	optdepends = python2-pyspatialite: Processing plugin
 	optdepends = python2-yaml: Processing plugin
-	source = https://qgis.org/downloads/qgis-2.18.11.tar.bz2
-	md5sums = 17198afc84d5ed3722383ae4bef38fc6
+	source = https://qgis.org/downloads/qgis-2.18.12.tar.bz2
+	md5sums = cdd07ba6c4b3599d8de1048af148121b
 
 pkgname = qgis
 
