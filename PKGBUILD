@@ -65,7 +65,7 @@ package() {
 		./archdroid.sh \
 		./colors \
 		./gnome-colors \
-		./gnome-colors.sh \
+		./gnome_colors.sh \
 		./gui.sh \
 		./locale \
 		./oomox_gui \
