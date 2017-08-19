@@ -11,6 +11,7 @@ depends=('boost-libs')
 makedepends=('git' 'boost' 'python2' 'python')
 provides=('libtorrent-rasterbar')
 conflicts=('libtorrent-rasterbar')
+options=('staticlibs')
 source=('git+https://github.com/arvidn/libtorrent.git#branch=RC_1_0')
 sha256sums=('SKIP')
 
@@ -41,7 +42,6 @@ _build() (
   ../libtorrent/configure \
     --prefix=/usr \
     --enable-python-binding \
-    --disable-static \
     --with-libiconv \
     --with-boost-python="$_boost"
 
