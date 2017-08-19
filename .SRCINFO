@@ -1,15 +1,13 @@
 pkgbase = build2-toolchain
-	pkgdesc = Open source, cross-platform toolchain for building and packaging C++ code
+	pkgdesc = build2 build toolchain (build system and package manager)
 	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://build2.org/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
-	makedepends = gcc>=4.8
-	depends = gcc-libs
-	source = https://download.build2.org/0.6.0/build2-toolchain-0.6.0.tar.gz
-	sha256sums = 7c1749abdd145254fadfe3684567767a785e3f78b094a5850d2c3d152e32a264
+	license = BSD
+	depends = build2=0.6.0
+	depends = bpkg=0.6.0
 
 pkgname = build2-toolchain
 
