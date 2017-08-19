@@ -25,8 +25,8 @@ build() {
   python ./setup.py build
   python2 ./setup.py build
 
-  mkdir -p "build"
-  cd "build"
+  mkdir -p "_build"
+  cd "_build"
   cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_BUILD_TYPE=Release ../
   make
 }
@@ -42,7 +42,7 @@ package_brotli-git() {
   provides=('brotli')
   conflicts=('brotli')
 
-  cd "brotli/build"
+  cd "brotli/_build"
 
   make DESTDIR="$pkgdir" install
   install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/brotli/LICENSE"
