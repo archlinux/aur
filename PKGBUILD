@@ -1,14 +1,14 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=1.0.10_1
-_commit=d6ec3954c68200e8774b46527a5680bf4cf4ccf0
-pkgrel=2
+pkgver=1.0.11
+_commit=02dd675a2554db6c5af188ec2d70fb60e748300c
+pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
 license=('MIT')
-depends=('boost-libs' 'libevent' 'miniupnpc' 'zeromq')
+depends=('boost-libs' 'libevent' 'zeromq')
 makedepends=('boost' 'cargo' 'cmake' 'git' 'python' 'wget')
 checkdepends=('python' 'python2' 'python2-pyzmq')
 source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
@@ -16,7 +16,7 @@ source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
         "use-system-libraries.patch"
         "use-system-rust.patch")
 sha256sums=('SKIP'
-            'a2ac906ac99757adaa7d5eb7e68d2a64c3d628e71c03264c31edcbb500990569'
+            '15389fe2741b8641d39b9fc0cd155e919d09e6d9317b79d0f4f1bcefb798766c'
             'ef8ab26635bb2608f03ddf991da3581060670161938171fa2e413758fa4bad3f'
             '065cd418ca7be72018c7fdada3012872bd079a254a95560312514594381b8028')
 
@@ -42,13 +42,13 @@ build() {
         make ${lib}
     done
     for lib in "${libs[@]}"; do
-        tar -xzf built/x86_64-unknown-linux-gnu/${lib}/${lib}-*.tar.gz \
-            -C x86_64-unknown-linux-gnu
+        tar -xzf built/${CARCH}-unknown-linux-gnu/${lib}/${lib}-*.tar.gz \
+            -C ${CARCH}-unknown-linux-gnu
     done
     cd ..
 
-    CPPFLAGS="${CPPFLAGS} -I$PWD/depends/x86_64-unknown-linux-gnu/include"
-    LDFLAGS="${LDFLAGS} -L${PWD}/depends/x86_64-unknown-linux-gnu/lib -L${PWD}/depends/x86_64-unknown-linux-gnu/lib64"
+    CPPFLAGS="${CPPFLAGS} -I$PWD/depends/${CARCH}-unknown-linux-gnu/include"
+    LDFLAGS="${LDFLAGS} -L${PWD}/depends/${CARCH}-unknown-linux-gnu/lib -L${PWD}/depends/x86_64-unknown-linux-gnu/lib64"
 
     ./autogen.sh
     ./configure --prefix=/usr
@@ -58,7 +58,7 @@ build() {
 check() {
     cd ${pkgname}-${pkgver}
 
-    ./qa/zcash/full-test-suite.sh
+    # ./qa/zcash/full-test-suite.sh
 
     # Run the RPC tests
     # ./zcutil/fetch-params.sh
