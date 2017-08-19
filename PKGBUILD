@@ -3,11 +3,11 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=0.34dev.git20170619
+pkgver=0.35dev.git20170803
 pkgrel=1
 arch=('any')
 pkgdesc='VHDL simulator - GCC flavour'
-url='http://sourceforge.net/projects/ghdl-updates/'
+url='https://github.com/tgingold/ghdl'
 license=('GPLv2')
 
 provides=('ghdl')
@@ -16,22 +16,18 @@ makedepends=('gcc-ada' 'git')
 install=ghdl.install
 options=(!emptydirs staticlibs)
 
-_gccver=4.9.3
-_islver=0.12.2
-_cloogver=0.18.1
+_gccver=7.1.0
+_islver=0.18
 
 source=(
-	#"ghdl::git://git.code.sf.net/p/ghdl-updates/ghdl-updates.git"
 	"ghdl::git://github.com/tgingold/ghdl.git"
 	"ftp://ftp.gnu.org/gnu/gcc/gcc-${_gccver}/gcc-${_gccver}.tar.bz2"
-	"ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
-	"ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-${_cloogver}.tar.gz"
+	"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 )
 md5sums=(
 	'SKIP'
-	'6f831b4d251872736e8e9cc09746f327'
-	'e039bfcfb6c2ab039b8ee69bf883e824'
-	'e34fca0540d840e5d0f6427e98c92252'
+	'6bf56a2bca9dac9dbbf8e8d1036964a8'
+	'11436d6b205e516635b666090b94ab32'
 )
 
 pkgver() {
@@ -46,26 +42,35 @@ pkgver() {
 }
 
 prepare() {
-	# Note: Nothing to do in the ghdl directory
-	#cd "${srcdir}/ghdl"
+	cd "${srcdir}/ghdl"
+
+	./configure \
+		--prefix=/usr \
+		--with-gcc="${srcdir}/gcc-${_gccver}"
+
+	make copy-sources
 
 	cd "${srcdir}/gcc-${_gccver}"
-	# link isl/cloog for in-tree builds
+
+	# Link isl for in-tree build
 	ln -sf ../isl-${_islver} isl
-	ln -sf ../cloog-${_cloogver} cloog
 
 	# Do not run fixincludes - FIXME Why?
 	sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
 	# Arch Linux installs x86_64 libraries in /lib
 	[[ $CARCH == "x86_64" ]] && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+
+	# hack! - some configure tests for header files using "$CPP $CPPFLAGS"
+	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+
+	# Remove all previously built stuff (optional)
+	rm -rf "${srcdir}/gcc-build"
+	mkdir -p "${srcdir}/gcc-build"
 }
 
 build() {
-	cd "${srcdir}/ghdl"
-
-	# FIXME Why should Fortify be disabled?
-	CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
+	cd "${srcdir}/gcc-build"
 
 	# Using -pipe causes spurious test-suite failures
 	# http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
@@ -76,34 +81,34 @@ build() {
 	#CFLAGS=${DEBUG_CFLAGS/-pipe/}
 	#CXXFLAGS=${DEBUG_CXXFLAGS/-pipe/}
 
-	./configure --prefix=/usr \
-		--with-gcc="${srcdir}/gcc-${_gccver}"
-
-	make copy-sources
-
-	# Optional: remove all previously built stuff
-	rm -rf "${srcdir}/gcc-build"
-
-	mkdir -p "${srcdir}/gcc-build"
-	cd "${srcdir}/gcc-build"
-
-	"${srcdir}"/gcc-${_gccver}/configure --prefix=/usr \
-		--libdir=/usr/lib --libexecdir=/usr/lib \
-		--mandir=/usr/share/man --infodir=/usr/share/info \
+	"${srcdir}"/gcc-${_gccver}/configure \
+		--prefix=/usr \
+		--libdir=/usr/lib  \
+		--libexecdir=/usr/lib \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info \
 		--disable-bootstrap \
 		--enable-languages=vhdl \
-		--enable-shared --enable-threads=posix \
-		--with-system-zlib --enable-__cxa_atexit \
-		--disable-libunwind-exceptions --enable-clocale=gnu \
-		--disable-libstdcxx-pch --disable-libssp \
-		--enable-gnu-unique-object --enable-linker-build-id \
+		--enable-shared \
+		--enable-threads=posix \
+		--with-system-zlib \
+		--enable-__cxa_atexit \
+		--disable-libunwind-exceptions \
+		--enable-clocale=gnu \
+		--disable-libstdcxx-pch \
+		--disable-libssp \
+		--enable-gnu-unique-object \
+		--enable-linker-build-id \
 		--enable-cloog-backend=isl \
-		--enable-plugin --enable-install-libiberty \
+		--enable-plugin \
+		--enable-install-libiberty \
 		--with-linker-hash-style=gnu \
-		--disable-multilib --disable-werror \
+		--disable-multilib \
+		--disable-werror \
 		--enable-checking=release \
-		--enable-lto \
-		#--without-cloog --without-isl
+		--enable-default-pie \
+		--enable-default-ssp \
+		--enable-lto
 
 	# Build GHDL
 	make
@@ -112,13 +117,16 @@ build() {
 
 	# Build VHDL libraries and runtime,
 	# with some tweaks to enable running GHDL without installing it
-	make \
+	make -j1 \
 		GHDL_GCC_BIN="${srcdir}/gcc-build/gcc/ghdl" \
 		GHDL1_GCC_BIN="--GHDL1=${srcdir}/gcc-build/gcc/ghdl1" \
 		ghdllib
 }
 
 package() {
+  local _xgcc="${srcdir}/gcc-build/gcc/xgcc"
+  local _machine=$(${_xgcc} -dumpmachine)
+  local _version=$(${_xgcc} -dumpversion)
 
 	# Install GHDL
 	cd "${srcdir}/gcc-build"
@@ -129,17 +137,15 @@ package() {
 	make DESTDIR="${pkgdir}" install
 
 	# Remove gcc-specific files, keep only what is related to ghdl
-	cd "${srcdir}/gcc-build"
-	rm -rf "${pkgdir}"/usr/{share/{locale,gcc-${_gccver},man/man7},include}
-	find "${pkgdir}"/usr/lib \
+	cd "${pkgdir}"
+	rm -rf "usr/"{include,share/{locale,man}}
+	find "usr/lib" \
 		-maxdepth 1 -mindepth 1 -not -name 'gcc' -not -name 'ghdl' \
-		-exec rm -rf '{}' +
-	find "${pkgdir}"/usr/lib/gcc/$(./gcc/xgcc -dumpmachine)/${_gccver} \
-		-maxdepth 1 -mindepth 1 -not -name 'vhdl' -not -name 'ghdl1' \
-		-exec rm -rf '{}' +
-	find "${pkgdir}"/usr/bin \
-		"${pkgdir}"/usr/share/man/man1 \
-		"${pkgdir}"/usr/share/info \
+		-exec rm -rf {} +
+	find "usr/lib/gcc/${_machine}/${_version}" \
 		-maxdepth 1 -mindepth 1 -not -name 'ghdl*' \
-		-exec rm -rf '{}' +
+		-exec rm -rf {} +
+	find "usr/bin" "usr/share/info" \
+		-maxdepth 1 -mindepth 1 -not -name 'ghdl*' \
+		-exec rm -rf {} +
 }
