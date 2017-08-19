@@ -11,13 +11,9 @@ license=('APACHE')
 groups=('hyperledger-composer')
 depends=('nodejs')
 makedepends=('npm')
-source=('hyperledger.sh')
 
 package() {
   cd $srcdir
-
-msg2 "Installing profile for global vars..."
-  install -Dm755 hyperledger.sh $pkgdir/etc/profile.d/hyperledger.sh
 
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
@@ -27,4 +23,4 @@ msg2 "Installing profile for global vars..."
 msg2 "Renaming composer to composer-cli (it's not php composer)"
   mv $pkgdir/usr/bin/composer $pkgdir/usr/bin/composer-cli
 }
-md5sums=('9f64f077d16502caf9dfcce138ffbb4e')
+
