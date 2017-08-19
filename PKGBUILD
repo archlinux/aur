@@ -23,7 +23,7 @@ prepare() {
     patch -Np1 -i "$srcdir/openssl-1.0.patch"
 
     autoreconf -i
-    mkdir -p "build"
+    mkdir -p "_build"
 }
 
 pkgver() {
@@ -33,14 +33,14 @@ pkgver() {
 }
 
 build() {
-    cd "httperf/build"
+    cd "httperf/_build"
 
     ../configure --prefix=/usr
     make
 }
 
 package() {
-    cd "httperf/build"
+    cd "httperf/_build"
 
     make DESTDIR="$pkgdir" install
 }
