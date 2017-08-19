@@ -1,6 +1,6 @@
 pkgbase = brotli-git
 	pkgdesc = Brotli compression library
-	pkgver = 0.6.0.r11.g19dc934
+	pkgver = 0.6.0.r29.g019091f
 	pkgrel = 1
 	url = https://github.com/google/brotli
 	arch = i686

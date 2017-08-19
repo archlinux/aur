@@ -2,7 +2,7 @@
 
 pkgbase=brotli-git
 pkgname=('brotli-git' 'python-brotli-git' 'python2-brotli-git')
-pkgver=0.6.0.r11.g19dc934
+pkgver=0.6.0.r29.g019091f
 pkgrel=1
 pkgdesc="Brotli compression library"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ build() {
 
   mkdir -p "build"
   cd "build"
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="lib" ../
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_BUILD_TYPE=Release ../
   make
 }
 
