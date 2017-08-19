@@ -3,7 +3,7 @@
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 
 pkgname=xfce-theme-greybird-git
-pkgver=3.22.3.r724
+pkgver=3.22.4.r738
 pkgrel=1
 pkgdesc="Desktop theme suite from Xubuntu, with support for Xfce, Metacity and Unity"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('elementary-xfce-icons: Matching icon set; use the dark icon theme'
 provides=('xfce-theme-greybird')
 conflicts=('xfce-theme-greybird')
 options=('!strip')
-source=('Greybird::git+http://github.com/shimmerproject/Greybird.git')
+source=('Greybird::git+https://github.com/shimmerproject/Greybird.git')
 #branch=gtk3.20')
 md5sums=('SKIP')
 
