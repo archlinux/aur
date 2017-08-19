@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kproperty
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A property editing framework with editor widget similar to what is known from Qt Designer"
 arch=(i686 x86_64)
@@ -10,8 +10,8 @@ license=(GPL2)
 depends=(kwidgetsaddons kguiaddons kcoreaddons kconfig)
 makedepends=(extra-cmake-modules python ki18n)
 source=("http://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
-sha1sums=('1a707aa036764514e35c2c435b7dbb44ba29147a'
-          'SKIP')
+sha256sums=('d5fa71ee621a30221f427b53282abe124347842bcf657269b7f7b77355dbf3c3'
+            'SKIP')
 validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <staniek@kde.org>
 
 
