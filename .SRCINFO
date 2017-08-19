@@ -1,7 +1,7 @@
 pkgbase = courier-mta
 	pkgdesc = IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig
-	pkgver = 0.77.0
-	pkgrel = 3
+	pkgver = 0.78.0
+	pkgrel = 1
 	url = http://courier-mta.org
 	install = courier-mta.install
 	arch = i686
@@ -34,7 +34,7 @@ pkgbase = courier-mta
 	conflicts = ucspi-tcp
 	options = !libtool
 	options = !staticlibs
-	source = http://downloads.sourceforge.net/project/courier/courier/0.77.0/courier-0.77.0.tar.bz2
+	source = http://downloads.sourceforge.net/project/courier/courier/0.78.0/courier-0.78.0.tar.bz2
 	source = courier-imapd.service
 	source = courier-imapd-ssl.service
 	source = courier-pop3d.service
@@ -48,7 +48,7 @@ pkgbase = courier-mta
 	source = webmaild.service
 	source = courier-courierfilter.service
 	source = courier-mta.conf
-	sha1sums = 6a79c331e2b2ac771455d4333947bfbc7d381b57
+	sha1sums = f45eac5679e977591101f9f0fc7417e8ccf513e0
 	sha1sums = 160f270d8214ac39adc0d1618bc981c59f080adf
 	sha1sums = 71d07d57d3c211abf267be140ffb074ac2492448
 	sha1sums = 6b06348e019e8883bcac314169e920f156ed1fa4
@@ -61,7 +61,7 @@ pkgbase = courier-mta
 	sha1sums = 7c6e687d1cefe3139274b39c659351a503a3adb3
 	sha1sums = 94703b7bb090754e78710df42f658407a5c0a798
 	sha1sums = 2c9a51fac9adb1bfb71a9d2b00e417dba4a0c249
-	sha1sums = b5aa73e428d568b20c8d59ef029e1740e8f9ef34
+	sha1sums = ba376789c8c5db6a709d2c4657b5bcf090417221
 
 pkgname = courier-mta
 

@@ -7,8 +7,8 @@
 # Go read http://www.courier-mta.org/install.html b4 running or building courier
 
 pkgname=courier-mta
-pkgver=0.77.0
-pkgrel=3
+pkgver=0.78.0
+pkgrel=1
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -34,7 +34,7 @@ source=(http://downloads.sourceforge.net/project/courier/courier/${pkgver}/couri
 	webmaild.service
 	courier-courierfilter.service
 	courier-mta.conf)
-sha1sums=('6a79c331e2b2ac771455d4333947bfbc7d381b57'
+sha1sums=('f45eac5679e977591101f9f0fc7417e8ccf513e0'
           '160f270d8214ac39adc0d1618bc981c59f080adf'
           '71d07d57d3c211abf267be140ffb074ac2492448'
           '6b06348e019e8883bcac314169e920f156ed1fa4'
@@ -47,7 +47,7 @@ sha1sums=('6a79c331e2b2ac771455d4333947bfbc7d381b57'
           '7c6e687d1cefe3139274b39c659351a503a3adb3'
           '94703b7bb090754e78710df42f658407a5c0a798'
           '2c9a51fac9adb1bfb71a9d2b00e417dba4a0c249'
-          'b5aa73e428d568b20c8d59ef029e1740e8f9ef34')
+          'ba376789c8c5db6a709d2c4657b5bcf090417221')
 
 build() {
   cd "${srcdir}/courier-${pkgver}"
@@ -77,7 +77,7 @@ build() {
 package() {
   cd "${srcdir}/courier-${pkgver}"
 
-  make "DESTDIR=${pkgdir} install"
+  make DESTDIR="${pkgdir}" install
 
   # install the perftest-script for testings
   install -Dm 755 courier/perftest1 "${pkgdir}/usr/lib/courier/perftest1"
@@ -86,7 +86,7 @@ package() {
   install -Dm 755 sysconftool "${pkgdir}/usr/lib/courier/sysconftool"
 
   # install pam files according to the layout used in Arch linux
-  for _pamfile in "${pkgdir}/etc/courier/*.authpam"; do
+  for _pamfile in "${pkgdir}"/etc/courier/*.authpam; do
     sed -i 's|/lib/security/pam_pwdb\.so|pam_unix.so|' "${_pamfile}"
     install -Dm 644 "${_pamfile}" "${pkgdir}"/etc/pam.d/$(basename "${_pamfile}" .authpam | sed "s/d$//")
     rm -f "${_pamfile}"

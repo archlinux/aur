@@ -13,7 +13,7 @@ post_install() {
 }
 
 pre_upgrade() {
-  # the file courier-imapd.conf is renamed to courier-mta.conf for version 0.77.0-2
+  # the file courier-imapd.conf is renamed to courier-mta.conf from version 0.77.0-2
   [ -f /usr/lib/tmpfiles.d/courier-imapd.conf ] && rm -f /usr/lib/tmpfiles.d/courier-imapd.conf
 }
 
@@ -33,6 +33,6 @@ pre_remove() {
  --> /etc/courier has been saved as /etc/courier-$1
 EOM
 
-  # clean up the /run and /var/spool directories
-  systemd-tmpfiles --remove /usr/lib/tmpfiles.d/courier-mta.conf
+  # clean up temporary storage
+  rm -rf /run/courier /var/spool/courier
 }
