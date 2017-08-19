@@ -1,5 +1,5 @@
 pkgname=pgroonga
-pkgver=1.2.1
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Fast fulltext search on PostgreSQL."
 arch=('i686' 'x86_64' 'armv7h')
@@ -30,4 +30,4 @@ package() {
 	echo "http://pgroonga.github.io/upgrade/"
 
 }
-sha1sums=('938a53b9394ad789b1c6339ea2359a39c53262e2')
+sha1sums=('6f3231e2276f27f1a8c9f8808405ad642203c5bb')
