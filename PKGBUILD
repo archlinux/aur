@@ -1,12 +1,12 @@
 # Maintainer: SaMaLerO <smlr[at]ukr[dot]net>
 pkgname=tlauncher
 pkgver=1.80.20
-pkgrel=1
+pkgrel=2
 pkgdesc="TLauncher is freeware launcher of Minecraft."
 url="https://tlaun.ch"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=("java-runtime=8")
+depends=("java-runtime=8" "xorg-xrandr")
 makedepends=()
 conflicts=()
 replaces=()
