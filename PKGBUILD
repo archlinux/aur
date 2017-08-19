@@ -4,7 +4,7 @@
 pkgname=odoo8
 pkgver=8.0
 _pkgsubver=20170819
-pkgrel=4
+pkgrel=5
 pkgdesc="Web-based Open Source Business Apps"
 url=http://odoo.com/
 arch=('any')
@@ -24,7 +24,6 @@ depends=(
     'python2-egenix-mx-base'
     'python2-feedparser'
     'python2-gdata'
-    'python2-gevent'
     'python2-ldap'
     'python2-lxml'
     'python2-mako'
@@ -63,6 +62,7 @@ depends=(
 )
 optdepends=(
     'antiword'
+    'python2-gevent'
 )
 
 source=(
