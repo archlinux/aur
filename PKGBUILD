@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j8-git
-pkgver=8.06.02.20170601
+pkgver=8.06.04.20170819
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=('wget: for web/gethttp addon'
 source=('jsource.zip::https://github.com/jsoftware/jsource/archive/master.zip'
         'qtide.zip::https://github.com/jsoftware/qtide/archive/master.zip'
         'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j806_env_20170601.tar.gz')
-md5sums=('SKIP' 'SKIP' '1782b39d100cb1d7534ca96025c90a7c')
+md5sums=('SKIP' 'SKIP' '5a289cce07f59e940ec5a3e920dea214')
 install=j8-git.install
 if [ "${CARCH}" = x86_64 ]; then
 _xarch=x86_64
@@ -32,7 +32,7 @@ echo "$(head -c 7 jenv/usr/lib/j8/system/config/version.txt)"."$(date +%Y%m%d)"
 
 prepare() {
 cd ${srcdir}/jsource-master
-echo '#define jversion "805"' > jsrc/jversion.h
+echo '#define jversion "806"' > jsrc/jversion.h
 echo '#define jplatform "linux"' >> jsrc/jversion.h
 echo '#define jtype "build"' >> jsrc/jversion.h
 echo '#define jlicense "GPL3"' >> jsrc/jversion.h
