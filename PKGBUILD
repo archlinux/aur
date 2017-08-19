@@ -1,19 +1,18 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 
 pkgname=cocoa
-pkgver=0.99540
+pkgver=0.99550
 pkgrel=1
 pkgdesc="A C++ library for doing Computations in Commutative Algebra. Also includes the CoCoA-5 Interpreter."
 arch=('i686' 'x86_64')
 url="http://cocoa.dima.unige.it/"
-provides=('cocoa' 'cocoalib')
 license=('GPL')
 depends=('cddlib' 'gsl' 'boost-libs' 'normaliz' 'cblas' 'lapack' 'readline') #'qt4')
 makedepends=('frobby' 'boost')
 source=("http://cocoa.dima.unige.it/cocoalib/tgz/CoCoALib-$pkgver.tgz" "package.patch" "cocoa5")
-md5sums=('615ce32eae1ed47bf0ee2bf764bbebb0'
-         '6d9a1314bf0a0748be605080121edfbd'
-         'adff6de15ca7383da1e825e70c6c1af6')
+sha256sums=('92d068b49150f3545e5b0715bc8f480b56b335b288727a8e94f99d8a4c792ec2'
+            '69d6a3fd82ff57e931a92c20fc33253fb0b834dfde8e42fd5dfe2c68bfecb1e2'
+            'e9cc79cb1e35f28399afe8c2fd8f521da7566a996363e9789ed76d55093511b3')
 
 prepare() {
   cd "$srcdir/CoCoALib-$pkgver"
@@ -22,7 +21,7 @@ prepare() {
 
 build() {
   cd "$srcdir/CoCoALib-$pkgver"
-  ./configure --with-readline=/usr/lib/libreadline.so \
+  ./configure --with-libreadline=/usr/lib/libreadline.so \
               --with-libcddgmp=/usr/lib/libcddgmp.so \
               --with-libfrobby=/usr/lib/libfrobby.a \
               --with-libnormaliz=/usr/lib/libnormaliz.so \
