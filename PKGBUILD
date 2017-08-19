@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=conflip
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to synchronize settings/configurations across multiple machines"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/Conflip"
