@@ -1,20 +1,15 @@
 pkgname=pass-botp
-pkgver=1.0.0.r0.g06518a4
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A pass extension for managing TOTP Backup Codes"
 arch=(any)
-url="https://github.com/msmol/pass-botp"
+url="https://github.com/msmol/$pkgname"
 license=('GPL2')
 depends=('pass')
 makedepends=('git')
-source=("git+https://github.com/msmol/$pkgname.git")
+source=("https://github.com/msmol/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
 
-pkgver() {
-  cd $pkgname
-  git describe --long --tags | sed -r "s/^v//;s/([^-]*-g)/r\1/;s/-/./g"
-}
-
 package() {
-    install -Dm755 "$srcdir/pass-botp/src/botp.bash" "$pkgdir/usr/lib/password-store/extensions/botp.bash"
+    install -Dm755 "$srcdir/pass-botp-$pkgver/src/botp.bash" "$pkgdir/usr/lib/password-store/extensions/botp.bash"
 }
