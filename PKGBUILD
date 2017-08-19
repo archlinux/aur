@@ -18,12 +18,12 @@ provides=('emscripten')
 source=('git://github.com/kripken/emscripten.git#branch=incoming'
         'git://github.com/kripken/emscripten-fastcomp.git#branch=incoming'
         'git://github.com/kripken/emscripten-fastcomp-clang.git#branch=incoming'
-        'emscripten.sh::https://git.archlinux.org/svntogit/community.git/tree/trunk/emscripten.sh?h=packages/emscripten'
+        'emscripten.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/emscripten.sh?h=packages/emscripten'
         'emscripten.config')
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '8f39613404c78d608de08a5559da9b23'
+         '99ad755a0e9ccf5620e05e1293cdbffa'
          'c8b7db20a44edb41c8675812e17b5c42')
 
 pkgver() {
