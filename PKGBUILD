@@ -2,12 +2,12 @@
 
 pkgname=autoconf-git
 pkgver=2.69.r185.gb502e350
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible package of M4 macros that produce shell scripts to automatically configure software source code packages"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/autoconf/autoconf.html"
 license=('GPL2' 'Custom')
-depends=('glibc' 'perl' 'texinfo')
+depends=('sh' 'perl' 'awk' 'm4' 'texinfo')
 makedepends=('git')
 provides=('autoconf')
 conflicts=('autoconf')
