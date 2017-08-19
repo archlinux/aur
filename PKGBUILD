@@ -50,24 +50,24 @@ build()
 
 package()
 {
-  cd $srcdir
-  install -Dm644 influxdb.sysusers $pkgdir/usr/lib/sysusers.d/influxdb.conf
-  install -Dm644 influxdb.tmpfiles $pkgdir/usr/lib/tmpfiles.d/influxdb.conf
+  cd "$srcdir"
+  install -Dm644 influxdb.sysusers "$pkgdir/usr/lib/sysusers.d/influxdb.conf"
+  install -Dm644 influxdb.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/influxdb.conf"
 
-  cd $GOBIN
-  install -d $pkgdir/usr/bin/
-  install -Dsm755 influxd        $pkgdir/usr/bin/
-  install -Dsm755 influx         $pkgdir/usr/bin/
-  install -Dsm755 influx_tsm     $pkgdir/usr/bin/
-  install -Dsm755 influx_stress  $pkgdir/usr/bin/
-  install -Dsm755 influx_inspect $pkgdir/usr/bin/
+  cd "$GOBIN"
+  install -d "$pkgdir/usr/bin/"
+  install -Dsm755 influxd        "$pkgdir/usr/bin/"
+  install -Dsm755 influx         "$pkgdir/usr/bin/"
+  install -Dsm755 influx_tsm     "$pkgdir/usr/bin/"
+  install -Dsm755 influx_stress  "$pkgdir/usr/bin/"
+  install -Dsm755 influx_inspect "$pkgdir/usr/bin/"
 
   cd "$GOPATH/src/github.com/influxdata/influxdb"
-  install -Dm644 scripts/influxdb.service $pkgdir/usr/lib/systemd/system/influxdb.service
-  install -Dm644 etc/config.sample.toml $pkgdir/etc/influxdb/influxdb.conf
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/influxdb/LICENSE
+  install -Dm644 scripts/influxdb.service "$pkgdir/usr/lib/systemd/system/influxdb.service"
+  install -Dm644 etc/config.sample.toml   "$pkgdir/etc/influxdb/influxdb.conf"
+  install -Dm644 LICENSE                  "$pkgdir/usr/share/licenses/influxdb/LICENSE"
 
   # Install man pages
-  install -d $pkgdir/usr/share/man/man1
-  install -Dm644 man/*.1 $pkgdir/usr/share/man/man1/
+  install -d "$pkgdir/usr/share/man/man1"
+  install -Dm644 man/*.1 "$pkgdir/usr/share/man/man1/"
 }
