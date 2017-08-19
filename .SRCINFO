@@ -1,10 +1,9 @@
 pkgbase = purple-discord-git
-	pkgdesc = A purple-based (Pidgin) plugin for Discord.
-	pkgver = v0.0.r190.22f49ce
+	pkgdesc = A libpurple/Pidgin plugin for Discord.
+	pkgver = v0.0.r308.0589abe
 	pkgrel = 1
 	url = https://github.com/EionRobb/purple-discord
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = git
 	depends = libpurple
@@ -12,7 +11,7 @@ pkgbase = purple-discord-git
 	provides = purple-discord
 	conflicts = purple-discord
 	replaces = purple-discord
-	source = pidgin-discord::git+https://github.com/EionRobb/purple-discord.git
+	source = purple-discord::git+https://github.com/EionRobb/purple-discord.git
 	sha512sums = SKIP
 
 pkgname = purple-discord-git
