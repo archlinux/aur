@@ -7,7 +7,7 @@
 
 pkgname=yum
 pkgver=3.4.3
-pkgrel=6
+pkgrel=7
 pkgdesc="a popular channel based package manager for RPM distros."
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -15,7 +15,7 @@ url="http://yum.baseurl.org/"
 groups=('system')
 depends=('python2' 'intltool' 'urlgrabber' 'rpm-org' 'python2-pysqlite' 'yum-metadata-parser' 'python2-iniparse' 'python2-pyliblzma')
 source=("http://yum.baseurl.org/download/3.4/yum-${pkgver}.tar.gz"
-        "yum.patch::http://pkgs.fedoraproject.org/cgit/yum.git/plain/yum-HEAD.patch?h=f21"
+        "yum.patch::https://src.fedoraproject.org/rpms/yum/raw/f21/f/yum-HEAD.patch"
         'remove-init-dir-makefile.patch')
 md5sums=('7c8ea8beba5b4e7fe0c215e4ebaa26ed'
          '3ed35721daf75fd56590bd2d2b993ddc'

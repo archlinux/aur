@@ -1,7 +1,7 @@
 pkgbase = yum
 	pkgdesc = a popular channel based package manager for RPM distros.
 	pkgver = 3.4.3
-	pkgrel = 6
+	pkgrel = 7
 	url = http://yum.baseurl.org/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = yum
 	depends = python2-iniparse
 	depends = python2-pyliblzma
 	source = http://yum.baseurl.org/download/3.4/yum-3.4.3.tar.gz
-	source = yum.patch::http://pkgs.fedoraproject.org/cgit/yum.git/plain/yum-HEAD.patch?h=f21
+	source = yum.patch::https://src.fedoraproject.org/rpms/yum/raw/f21/f/yum-HEAD.patch
 	source = remove-init-dir-makefile.patch
 	md5sums = 7c8ea8beba5b4e7fe0c215e4ebaa26ed
 	md5sums = 3ed35721daf75fd56590bd2d2b993ddc
