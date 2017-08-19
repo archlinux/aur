@@ -2,12 +2,13 @@
 
 pkgname=wdt
 pkgver=1.27.1612021
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to transfer data between 2 systems as fast as possible over multiple TCP paths"
 arch=('i686' 'x86_64')
 url="https://github.com/facebook/wdt"
 license=('BSD')
-makedepends=('git' 'cmake' 'glog' 'gflags')
+depends=('glibc')
+makedepends=('git' 'cmake' 'google-glog' 'gflags')
 checkdepends=('gtest')
 source=("git+https://github.com/facebook/wdt.git")
 sha256sums=('SKIP')
@@ -15,6 +16,7 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$srcdir"
+
   rm -rf "folly"
   git clone "https://github.com/facebook/folly.git"
   cd "folly"
@@ -28,7 +30,7 @@ prepare() {
 build() {
   cd "$srcdir/wdt/_build"
 
-  cmake -DBUILD_TESTING=on -DCMAKE_INSTALL_PREFIX="/usr" ../
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=on ../
   make
 }
 
