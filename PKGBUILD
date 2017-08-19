@@ -2,7 +2,7 @@
 
 pkgname=libsndfile-git
 pkgver=1.0.28.r74.gbeee21e5
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for reading and writing files containing sampled sound"
 arch=('i686' 'x86_64')
 url="http://www.mega-nerd.com/libsndfile/"
@@ -11,6 +11,7 @@ depends=('glibc' 'alsa-lib' 'flac' 'libogg' 'libvorbis')
 makedepends=('git' 'autogen')
 provides=('libsndfile')
 conflicts=('libsndfile')
+options=('staticlibs')
 source=("git+https://github.com/erikd/libsndfile.git")
 sha256sums=('SKIP')
 
