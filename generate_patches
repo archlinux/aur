@@ -26,10 +26,10 @@ sed \
 	-e 's#^PIDFile=.*#PIDFile=/run/php-fpm/php-fpm.pid#' \
 	-i.orig sapi/fpm/php-fpm.service.in
 
-extensions=";extension=bcmath.so\n;extension=bz2.so\n;extension=calendar.so\nextension=curl.so\n;extension=dba.so\n;extension=enchant.so\n;extension=exif.so\n;extension=ftp.so\n;extension=gd.so\n;extension=gettext.so\n;extension=gmp.so\n;extension=iconv.so\n;extension=imap.so\n;extension=intl.so\n;extension=ldap.so\n;extension=mcrypt.so\n;extension=mysqli.so\n;extension=odbc.so\n;zend_extension=opcache.so\n;extension=pdo_dblib.so\n;extension=pdo_mysql.so\n;extension=pdo_odbc.so\n;extension=pdo_pgsql.so\n;extension=pdo_sqlite.so\n;extension=pgsql.so\n;extension=pspell.so\n;extension=shmop.so\n;extension=snmp.so\n;extension=soap.so\n;extension=sockets.so\n;extension=sqlite3.so\n;extension=sysvmsg.so\n;extension=sysvsem.so\n;extension=sysvshm.so\n;extension=tidy.so\n;extension=xmlrpc.so\n;extension=xsl.so\nextension=zip.so\n"
+extensions=";extension=bcmath\n;extension=bz2\n;extension=calendar\nextension=curl\n;extension=dba\n;extension=enchant\n;extension=exif\n;extension=ftp\n;extension=gd\n;extension=gettext\n;extension=gmp\n;extension=iconv\n;extension=imap\n;extension=intl\n;extension=ldap\n;extension=mysqli\n;extension=odbc\n;zend_extension=opcache\n;extension=pdo_dblib\n;extension=pdo_mysql\n;extension=pdo_odbc\n;extension=pdo_pgsql\n;extension=pdo_sqlite\n;extension=pgsql\n;extension=pspell\n;extension=shmop\n;extension=snmp\n;extension=soap\n;extension=sockets\n;extension=sqlite3\n;extension=sysvmsg\n;extension=sysvsem\n;extension=sysvshm\n;extension=tidy\n;extension=xmlrpc\n;extension=xsl\nextension=zip\n"
 
 sed \
-	-r ":a;N;\$!ba;s/; Windows Extensions\n.+;?extension=php_[a-z]+\.dll\n/${extensions}/g" \
+	-r ":a;N;\$!ba;s/;extension=bz2\n.+;?extension=[a-z]+\n/${extensions}/g" \
 	-i.orig php.ini-production
 sed \
 	-e 's#^; extension_dir = "\./"$#extension_dir = "/usr/lib/php/modules/"#g' \

@@ -13,7 +13,6 @@ pkgname=("${pkgbase}"
          "${pkgbase}-gd"
          "${pkgbase}-imap"
          "${pkgbase}-intl"
-         "${pkgbase}-mcrypt"
          "${pkgbase}-odbc"
          "${pkgbase}-pgsql"
          "${pkgbase}-pspell"
@@ -21,25 +20,24 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.1.8
-pkgrel=2
+pkgver=7.2.0beta3
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
-makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libmcrypt' 'libxslt' 'libzip' 'net-snmp'
+makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libxslt' 'libzip' 'net-snmp'
              'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre')
 checkdepends=('procps-ng')
-source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
+source=("https://downloads.php.net/~remi/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
-sha256sums=('8943858738604acb33ecedb865d6c4051eeffe4e2d06f3a3c8f794daccaa2aab'
+sha256sums=('86ab60f96223768d2cb6b3669ce5d048ce904beccf532119aa02058e7cc9e498'
             'SKIP'
-            '258b33b6531b1128d9804c8b608b6013423a421edcf764747042d07e79ec6df3'
+            'bd26c9be85e30334369d9d12e623842e1c0552f424d857641318883dfe1f83a3'
             'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
-            '7d982a3cefb3eaec0b3458340e4991c2959c10d1518ecb7c1d041884b14efc73'
+            'd62ffe6a693336752d4decb2acba09b67bdf7cad19807eccf8795f9386303923'
             '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5'
-            '78f60b1d9f3a0ef8af77208feed76e303b3a13e93b80613c1e5a729004a5343c')
-validpgpkeys=('A917B1ECDA84AEC2B568FED6F50ABC807BD5DCD0'
-              '528995BFEDFBA7191D46839EF9BA0ADA31CBD89E')
+            '8ab87630a2e1e031a1f42ce6063a1d9646b0d4299a9260fe4ebeb5cfc38e6972')
+validpgpkeys=('B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F')
 
 prepare() {
 	cd ${srcdir}/${_pkgbase}-${pkgver}
@@ -70,7 +68,6 @@ build() {
 		--enable-dba=shared \
 		--enable-exif=shared \
 		--enable-ftp=shared \
-		--enable-gd-native-ttf \
 		--enable-intl=shared \
 		--enable-mbstring \
 		--enable-shmop=shared \
@@ -96,7 +93,6 @@ build() {
 		--with-ldap=shared \
 		--with-ldap-sasl \
 		--with-libzip \
-		--with-mcrypt=shared \
 		--with-mhash \
 		--with-mysql-sock=/run/mysqld/mysqld.sock \
 		--with-mysqli=shared,mysqlnd \
@@ -186,7 +182,7 @@ package_php-zts() {
 	# remove static modules
 	rm -f ${pkgdir}/usr/lib/php/modules/*.a
 	# remove modules provided by sub packages
-	rm -f ${pkgdir}/usr/lib/php/modules/{enchant,gd,imap,intl,mcrypt,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+	rm -f ${pkgdir}/usr/lib/php/modules/{enchant,gd,imap,intl,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
 	# remove empty directory
 	rmdir ${pkgdir}/usr/include/php/include
 }
@@ -301,16 +297,6 @@ package_php-zts-intl() {
 	provides=("${_pkgbase}-intl=${pkgver}")
 
 	install -D -m755 ${srcdir}/build/modules/intl.so ${pkgdir}/usr/lib/php/modules/intl.so
-}
-
-package_php-zts-mcrypt() {
-	pkgdesc='mcrypt module for PHP'
-	depends=("${pkgbase}" 'libmcrypt' 'libtool')
-	replaces=("${_pkgbase}-mcrypt")
-	conflicts=("${_pkgbase}-mcrypt")
-	provides=("${_pkgbase}-mcrypt=${pkgver}")
-
-	install -D -m755 ${srcdir}/build/modules/mcrypt.so ${pkgdir}/usr/lib/php/modules/mcrypt.so
 }
 
 package_php-zts-odbc() {
