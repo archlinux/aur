@@ -2,13 +2,13 @@
 
 pkgname='dirvish'
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dirvish is a fast, disk based, rotating network backup system."
 arch=('any')
 url="http://www.dirvish.org/"
 license=('OSLv2')
 groups=()
-depends=('perl' 'perl-time-parsedate' 'perl-time-period')
+depends=('perl' 'perl-time-parsedate' 'perl-time-period' 'rsync')
 makedepends=('perl')
 optdepends=()
 provides=()
