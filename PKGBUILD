@@ -3,7 +3,7 @@
 # Based on [aur]'s nvidia-beta: https://aur.archlinux.org/packages/nvidia-beta/
 
 pkgname=nvidia-vulkan-developer-beta-lts
-pkgver=381.26.08
+pkgver=381.26.13
 pkgrel=1
 pkgdesc="NVIDIA driver for Arch's official 'linux-lts' package (vulkan developer beta version)"
 arch=('i686' 'x86_64')
@@ -25,8 +25,8 @@ esac
 # Source
 source_i686=("https://developer.nvidia.com/${pkgver//./}-linux-32bit")
 source_x86_64=("https://developer.nvidia.com/${pkgver//./}-linux-64bit")
-md5sums_i686=('25e6bf04e32ddfe34a09a137c784e7e6')
-md5sums_x86_64=('9710ef4fd5ead6670f67f3cb3aea39c1')
+md5sums_i686=('0ef358844c12a774da099e906d70da9a')
+md5sums_x86_64=('c5c3e841d975c96eae264ad9840dc762')
 
 # Auto-detect patches (e.g. linux-4.1.patch)
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
