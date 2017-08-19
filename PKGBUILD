@@ -2,7 +2,7 @@
 
 pkgname=libunistring-git
 pkgver=0.9.7.r5.gdd8fabb
-pkgrel=1
+pkgrel=2
 pkgdesc="A library provides functions for manipulating Unicode strings and for manipulating C strings"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/libunistring/"
@@ -11,6 +11,7 @@ depends=('glibc')
 makedepends=('git' 'gperf')
 provides=('libunistring')
 conflicts=('libunistring')
+options=('staticlibs')
 source=("git+https://git.savannah.gnu.org/git/libunistring.git")
 sha256sums=('SKIP')
 
