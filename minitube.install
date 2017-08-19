@@ -1,9 +1,0 @@
-post_upgrade() {
-  cat << EOF
-
-  # Google is now requiring an API key in order to access YouTube Data web services.
-  # Create a "Browser Key" at https://console.developers.google.com and put it in
-  # /etc/profile.d/minitube.sh as the GOOGLE_API_KEY environmental variable.
-
-EOF
-}

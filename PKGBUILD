@@ -3,18 +3,15 @@
 
 pkgname=minitube
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A native YouTube client in Qt. Watch YouTube videos without Flash Player"
 arch=('i686' 'x86_64')
 url='http://flavio.tordini.org/minitube'
 license=('GPL3')
 depends=('phonon-qt5' 'qt5-declarative' 'hicolor-icon-theme')
 makedepends=('qt5-tools')
-install="$pkgname.install"
-backup=('etc/profile.d/minitube.sh')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/flaviotordini/minitube/archive/$pkgver.tar.gz" $pkgname.sh)
-md5sums=('b1a327ce71c304d63b0b2cf1e1e7c2b0'
-         '01d1d532dd7f4670cf7f33f007863b7a')
+source=($pkgname-$pkgver.tar.gz::"https://github.com/flaviotordini/minitube/archive/$pkgver.tar.gz")
+sha256sums=('c8e7c39d5125027d076440830c6cc33d2782e0d65047d639dfa55e839e64d88c')
 
 build() {
   cd $pkgname-$pkgver
@@ -24,8 +21,4 @@ build() {
 package() {
   cd $pkgname-$pkgver
   make install INSTALL_ROOT="$pkgdir/"
-
-  # GOOGLE_API_KEY
-  install -Dm644 ../$pkgname.sh \
-    "$pkgdir/etc/profile.d/$pkgname.sh"
 }
