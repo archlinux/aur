@@ -8,7 +8,7 @@ url="https://github.com/Skycoder42/Conflip"
 license=('BSD')
 depends=('qt5-base' 'qt5-datasync')
 source=("https://install.skycoder42.de/pkg/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('56385fe73d85be0272067e92c3e8f97268a4d13f13e58e3a4b50277cabb950d1')
+sha256sums=('7df165d6bb488b693e5f985d31324a28df381555e01e1150a82912cf7465554a')
 
 package() {
 	#create symlink to prevent settings LD_LIBRARY_PATH
