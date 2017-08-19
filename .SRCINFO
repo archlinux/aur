@@ -29,9 +29,9 @@ pkgbase = google-earth-pro
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	source_i686 = google-earth-pro-stable_7.3.0.3832_i386.deb::https://dl.google.com/earth/client/current/google-earth-pro-stable_current_i386.deb
+	source_i686 = https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_7.3.0.3832-r0_i386.deb
 	md5sums_i686 = 5c298610ae4bd604fcfd54fdc32e53dd
-	source_x86_64 = google-earth-pro-stable_7.3.0.3832_amd64.deb::https://dl.google.com/earth/client/current/google-earth-pro-stable_current_amd64.deb
+	source_x86_64 = https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_7.3.0.3832-r0_amd64.deb
 	md5sums_x86_64 = b9d8281257b7ebf0dfac1ab1d3578681
 
 pkgname = google-earth-pro
