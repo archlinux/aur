@@ -11,7 +11,7 @@ depends=('glibc' 'openssl' 'zlib')
 makedepends=('git' 'cmake' 'cmocka')
 provides=('libssh')
 conflicts=('libssh')
-source=("git+git://git.libssh.org/projects/libssh.git")
+source=("git://git.libssh.org/projects/libssh.git")
 sha256sums=('SKIP')
 
 
