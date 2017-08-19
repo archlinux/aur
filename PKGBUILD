@@ -7,7 +7,7 @@ _model=e510
 _model_dir=403
 
 pkgver=3.80
-pkgrel=1
+pkgrel=2
 _pkgreview=2
 
 pkgdesc="Canon IJ Printer Driver (For PIXMA E510 series)"
@@ -23,7 +23,7 @@ makedepends_i686=('gcc' 'popt')
 depends_i686=('gtk2' 'libxml2')
 
 makedepends=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make')
-depends=("${_pkgname}-common=4.00")
+depends=("${_pkgname}-common>=4.00")
 
 install=cnijfilter-${_model}.install
 
@@ -53,6 +53,8 @@ build() {
   cd ${srcdir}/${_pkgname}-source-${pkgver}-${_pkgreview}
 
   export CC="gcc -m32"
+  # Required for the glib2
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   make ${_model}
 }
 
