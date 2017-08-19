@@ -1,7 +1,7 @@
 pkgbase = libsigsegv-git
 	pkgdesc = A library for handling page faults in user mode
 	pkgver = 2.11.r1.g4154472
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/libsigsegv/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = libsigsegv-git
 	depends = glibc
 	provides = libsigsegv
 	conflicts = libsigsegv
+	options = staticlibs
 	source = git+https://git.savannah.gnu.org/git/libsigsegv.git
 	sha256sums = SKIP
 
