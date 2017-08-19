@@ -1,0 +1,21 @@
+pkgbase = busybox-git
+	pkgdesc = Tiny versions of many common UNIX utilities
+	pkgver = 1.30.0.r84.gd712edc6d
+	pkgrel = 1
+	url = https://www.busybox.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = kernel-headers-musl
+	makedepends = musl
+	makedepends = ncurses
+	provides = busybox
+	conflicts = busybox
+	source = git://git.busybox.net/busybox
+	source = config::https://git.archlinux.org/svntogit/community.git/plain/trunk/config?h=packages/busybox
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = busybox-git
+
