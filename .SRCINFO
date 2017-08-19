@@ -1,6 +1,6 @@
 pkgbase = shotcut-bin
 	pkgdesc = A free, open source, cross-platform video editor.
-	pkgver = 170601
+	pkgver = 170801
 	pkgrel = 1
 	url = https://www.shotcut.org/
 	install = shotcut-bin.install
@@ -11,7 +11,7 @@ pkgbase = shotcut-bin
 	depends = desktop-file-utils
 	depends = gstreamer
 	provides = shotcut
-	source = https://github.com/mltframework/shotcut/releases/download/v17.06/shotcut-linux-x86_64-170601.tar.bz2
+	source = https://github.com/mltframework/shotcut/releases/download/v17.08/shotcut-linux-x86_64-170801.tar.bz2
 	source = shotcut.png
 	md5sums = 53b6bbbc688161ded1baa4c762506787
 	md5sums = 457bc6ae5a299dee017521ec058e833b
