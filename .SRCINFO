@@ -1,0 +1,13 @@
+pkgbase = gn-osx-hsierra
+	pkgdesc = Gn-OSX H.Sierra
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1180505/
+	arch = any
+	depends = gnome-themes-standard
+	depends = gtk-engine-murrine
+	source = https://dl.opendesktop.org/api/files/download/id/1500587974/Gn-OSX-HSierra-1.2.1-sidebar-issue.tar.gz
+	md5sums = 21ae1e4995848e1ae7387a689f6f50e0
+
+pkgname = gn-osx-hsierra
+
