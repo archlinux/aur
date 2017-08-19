@@ -1,20 +1,21 @@
 # Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=dav
-pkgver=0.8.5
-pkgrel=3
+pkgver=0.8.6
+pkgrel=1
 pkgdesc="An ncurses-based console text editor"
 arch=('i686' 'x86_64')
 url="http://dav-text.sourceforge.net"
 license=('GPL2')
 depends=('ncurses')
-source=("${url}/files/${pkgname}-${pkgver}.tar.gz")
-md5sums=('992ddc8a72b2840bdbaaeb243d2b32c3')
-sha1sums=('ec43ac1314ea740e909f149203845d5071084d76')
-sha256sums=('af3835c31f7fb28815bc9b5fcc76e229d0e389d13b178858d120664af486a9ba')
+#source=("${url}/files/${pkgname}-${pkgver}.tar.gz")
+source=($pkgname-$pkgver"https://gitlab.com/atsb/dav-text/repository/$pkgname-text-$pkgver/archive.tar.gz")
+md5sums=('c352004d0552210e93d569dfd49d34df')
+sha1sums=('a1e3e5b1b34f7706561ac0503db7bae9cdd4fa7c')
+sha256sums=('d9ac3991621c0799e813277b87e0a9e666c92041c1e257c9b351a8db62956ee8')
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname*
   # fix for env LDFLAGS
   sed -i '/^LDFLAGS/d' Makefile
   sed -i 's/$(CC)/$(CC) -lncurses/' Makefile
@@ -23,13 +24,13 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make -e
+  cd $srcdir/$pkgname*
+  make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR=$pkgdir install
+  cd $srcdir/$pkgname*
+  make prefix="$pkgdir/usr" install
   install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
 }
 
