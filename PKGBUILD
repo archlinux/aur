@@ -3,7 +3,7 @@
 # Contributor: Mikhail felixoid Shiryaev <mr dot felixoid na gmail com>
 
 pkgname=neovim-kotlin
-pkgver=r55.01e3a4c
+pkgver=r56.7fa99d0
 pkgrel=1
 pkgdesc='NeoVim plugin for Kotlin'
 arch=('any')

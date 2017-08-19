@@ -1,6 +1,6 @@
 pkgbase = neovim-kotlin
 	pkgdesc = NeoVim plugin for Kotlin
-	pkgver = r55.01e3a4c
+	pkgver = r56.7fa99d0
 	pkgrel = 1
 	url = https://github.com/udalov/kotlin-vim
 	arch = any
