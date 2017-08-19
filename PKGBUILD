@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libnl-git
-pkgver=3.3.0.r36.gcda0d80
+pkgver=3.3.0.r50.g27c404a
 pkgrel=1
 pkgdesc="A collection of libraries providing APIs to netlink protocol based Linux kernel interfaces"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ makedepends=('git')
 provides=('libnl')
 conflicts=('libnl')
 backup=('etc/libnl/classid' 'etc/libnl/pktloc')
+options=('staticlibs')
 source=("git+https://github.com/thom311/libnl.git")
 sha256sums=('SKIP')
 
