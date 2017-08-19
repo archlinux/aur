@@ -1,0 +1,17 @@
+pkgbase = astyle-svn
+	pkgdesc = A free, fast, and small automatic code formatter
+	pkgver = r605
+	pkgrel = 1
+	url = http://astyle.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = svn
+	depends = glibc
+	provides = astyle
+	conflicts = astyle
+	source = svn+https://svn.code.sf.net/p/astyle/code/trunk
+	sha256sums = SKIP
+
+pkgname = astyle-svn
+
