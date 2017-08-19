@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kexi
-pkgver=3.0.1.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A visual database applications creator"
 arch=(i686 x86_64)
@@ -13,8 +13,8 @@ optdepends=('qt5-webkit: Web browser plugin')
 conflicts=(calligra-kexi)
 replaces=(calligra-kexi)
 source=("http://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
-sha1sums=('3ca4195b55f4a92907bf975e5dded013274f6eec'
-          'SKIP')
+sha256sums=('8eaea8ba6b833d9413a05496c9099d278f0ea410cf7d2af42bfdf9125d945bba'
+            'SKIP')
 validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <staniek@kde.org>
 
 
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgname-${pkgver%.*} \
+  cmake ../$pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF \
