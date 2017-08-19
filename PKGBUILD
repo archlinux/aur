@@ -2,7 +2,7 @@
 # Contributor: Leonard König <leonard.r.koenig at googlemail dot com>
 
 pkgname='endless-sky'
-pkgver=0.9.6
+pkgver=0.9.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://endless-sky.github.io/"
@@ -17,7 +17,7 @@ source=(
 "https://github.com/endless-sky/endless-sky/archive/v${pkgver}.tar.gz"
         "${pkgname}.install")
 
-md5sums=('d786e59f0419449826afc87f78006fe7'
+md5sums=('7e5be32a89834d47fca216ab81a1f2ca'
          '737bc185c599447d4eef7c215dabecc9')
 #
 # PKGEXT='.pkg.tar'
