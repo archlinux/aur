@@ -40,7 +40,7 @@ source=("waterfox-$pkgver.source.tar.gz::https://github.com/MrAlex94/Waterfox/ar
         default22.png
         default24.png
         default256.png)
-sha256sums=('92d84a98a94baa168bd0a8cdd7cc9e043c0768a9b6ad04ba5f3e6011a34f761f'
+sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
