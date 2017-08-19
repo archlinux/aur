@@ -1,42 +1,46 @@
-# Maintainer: maz-1 <loveayawaka@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: maz-1 <loveayawaka@gmail.com>
 
-_pkgname=waifu2x-converter-qt
-pkgname=$_pkgname-git
+pkgname=waifu2x-converter-qt-git
 pkgver=26.8707e34
 pkgrel=1
 pkgdesc="Qt frontend of waifu2x."
 arch=('x86_64' 'i686')
-url="https://github.com/khws4v1/waifu2x-converter-qt"
+url='https://github.com/khws4v1/waifu2x-converter-qt'
 license=('GPL2')
-depends=('waifu2x' 'qt5-base' 'libnotify')
+depends=('waifu2x'
+         'qt5-base'
+         'libnotify'
+         )
 makedepends=('git')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=("git+https://github.com/khws4v1/waifu2x-converter-qt.git"
-        "waifu2x.png"
-        "waifu2x-converter-qt.desktop")
-md5sums=('SKIP'
-            '08f2ccd67e567d0fa9feb53c15b9de46'
-            '9fb5356615674e93caa8520e6f3717f5')
-_gitname=$_pkgname
+provides=('waifu2x-converter-qt')
+conflicts=('waifu2x-converter-qt')
+source=('git+https://github.com/khws4v1/waifu2x-converter-qt.git'
+        'waifu2x.png'
+        'waifu2x-converter-qt.desktop'
+        )
+sha256sums=('SKIP'
+            'bc428c18612786a89c2240866f7c96cee617c3ee9c9c3c0695463f7732c081b8'
+            'd6fddf442cf217da3f71c08989276b8a7c1f00740cc2c6df49aab958b6abf8ba'
+            )
 
 pkgver() {
-	cd "$srcdir/$_gitname"
-	echo "$(git rev-list --count HEAD).$(git describe --always)"
+  cd waifu2x-converter-qt
+  echo "$(git rev-list --count HEAD).$(git describe --always)"
 }
+
 prepare() {
-        rm -rf ${srcdir}/build
-        mkdir ${srcdir}/build
+  mkdir -p build
 }
+
 build() {
-	cd "${srcdir}/build"
-	qmake-qt5 ../${_gitname}/waifu2x-converter-qt.pro
-	make -j4
+  cd build
+  qmake-qt5 ../waifu2x-converter-qt
+  make
 }
 
 package() {
-	cd "$srcdir/build"
-	install -Dm755 waifu2x-converter-qt "${pkgdir}/usr/bin/waifu2x-converter-qt"
-	install -Dm755 "$srcdir/waifu2x.png" "${pkgdir}/usr/share/pixmaps/waifu2x.png"
-	install -Dm755 "$srcdir/waifu2x-converter-qt.desktop" "${pkgdir}/usr/share/applications/waifu2x-converter-qt.desktop"
+  install -Dm755 build/waifu2x-converter-qt "${pkgdir}/usr/bin/waifu2x-converter-qt"
+  install -Dm644 waifu2x.png "${pkgdir}/usr/share/pixmaps/waifu2x.png"
+  install -Dm644 waifu2x-converter-qt.desktop "${pkgdir}/usr/share/applications/waifu2x-converter-qt.desktop"
 }
