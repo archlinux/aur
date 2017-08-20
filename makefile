@@ -22,8 +22,12 @@ mrpropest: mrproper
 	cp ./todo /usr/bin/
 
 install: todo
-	[ -e /usr/bin/todo ] && sudo cp todo /usr/bin/todo
-	echo 'Installation success'
+	@if [ `id -u` == "0" ] ; then cp -f todo /usr/bin/todo ; else \
+		if which sudo > /dev/null ; then sudo cp -f todo /usr/bin/todo ; else \
+			@echo must be run by superuser ;\
+		fi \
+	fi
+	@echo 'Installation success'
 
 uninstall: /usr/bin/todo
 	rm /usr/bin/todo
