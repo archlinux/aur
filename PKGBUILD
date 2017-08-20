@@ -1,7 +1,7 @@
 # Maintainer: jun7 <jun7@hush.com>
 pkgname=wyeb-git
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A vim-like webkit2gtk browser"
 arch=('x86_64')
 url="https://github.com/jun7/wyeb"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver(){
 	cd "$srcdir/wyeb"
-	printf "$pkgver.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
