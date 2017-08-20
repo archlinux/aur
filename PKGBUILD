@@ -6,12 +6,11 @@ pkgname=mksh-static-git
 _pkgname=mksh
 _pkgver=R56
 pkgver=56.r3154.3a4eaf6
-pkgrel=2
+pkgrel=3
 pkgdesc='The MirBSD Korn Shell - an enhanced version of the public domain ksh (statically-linked development version)'
 url='https://www.mirbsd.org/mksh.htm'
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('musl') # Make namcap happy.
 makedepends=('git')
 conflicts=('mksh' 'mksh-static' 'mksh-git')
 install=mksh.install
@@ -40,7 +39,7 @@ package() {
   install -D -m 755 mksh "$pkgdir/usr/bin/mksh"
   install -D -m 644 mksh.1 "$pkgdir/usr/share/man/man1/mksh.1"
   install -D -m 644 dot.mkshrc "$pkgdir/etc/skel/.mkshrc"
-  install -D -m 644 "$srcdir/TaC-mksh.txt" "$pkgdir/usr/share/licenses/mksh/TaC-mksh.txt"
+  install -D -m 644 "$srcdir/TaC-mksh.txt" "$pkgdir/usr/share/licenses/mksh-static-git/TaC-mksh.txt"
 }
 
 # vim:set ts=2 sw=2 et:
