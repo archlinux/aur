@@ -2,15 +2,15 @@
 
 _gitname=enlightenment-arc-theme
 pkgname=${_gitname}-git
-pkgver=r96.e268617
+pkgver=r105.a4646e2
 pkgrel=1
 pkgdesc="A flat theme for enlightenment (Warning: will pull latest revision of efl to compile the theme)"
 arch=('any')
-url="https://github.com/LeBlue/${_gitname}"
+url="https://github.com/charlesmilette/${_gitname}"
 license=('GPL3')
 depends=('efl')
-makedepends=('git')
-source=("git://github.com/LeBlue/${_gitname}.git")
+makedepends=('git' 'efl')
+source=("git://github.com/charlesmilette/${_gitname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
