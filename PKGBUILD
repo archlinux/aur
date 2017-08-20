@@ -11,7 +11,7 @@
 
 pkgname=networkmanager-consolekit
 pkgver=1.8.3dev+18+gf43222d41
-pkgrel=1
+pkgrel=2
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/Network
         20-connectivity.conf
         )
 sha256sums=('SKIP'
-            'dd2d3a9c8a08ce961e263e1847453890f1b24c72a806d8c83a5b69b227a5ccec'
+            '535f9c54ee29c35ca7b44c15f8de2e781c10d6f3324338c483bef360ad777efc'
             'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc'
             '477d609aefd991c48aca93dc7ea5a77ebebf46e0481184530cceda4c0d8d72c6')
 
