@@ -11,10 +11,10 @@ optdepends=('postgresql-libs')
 install='t-lasku.install'
 if test "$CARCH" == x86_64; then
   source=(http://helineva.net/t-lasku/t-lasku-$pkgver-amd64.tar.gz)
-  sha1sums=('48fd5a1d65fcabc4143ceb4733c2b1837fd1ef19')
+  sha1sums=('a6f9854111cc5ff3e806e18c3658f1065e7ebadc')
 else
   source=(http://helineva.net/t-lasku/t-lasku-$pkgver-i386.tar.gz)
-  sha1sums=('a77ebedc5ed78be76300f44f657566e7be74ac1e')
+  sha1sums=('3b2036715b598dd59836761e041e7412a3258c1d')
 fi
 
 build() {
