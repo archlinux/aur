@@ -1,17 +1,17 @@
 pkgbase = pirate-get
 	pkgdesc = A command line interface for the Pirate Bay
-	pkgver = 0.2.10
+	pkgver = 0.2.11
 	pkgrel = 1
 	url = https://github.com/vikstrous/pirate-get/
 	arch = any
 	license = AGPL
-	depends = python
 	depends = python-setuptools
-	optdepends = python-colorama: for colored output
-	provides = pirate-get
-	conflicts = pirate-get-git
-	source = pirate-get-0.2.10.tar.gz::https://github.com/vikstrous/pirate-get/archive/v0.2.10.tar.gz
-	sha256sums = d7b76bba4d34c0366c05773a2548367061bd9371fa8713f2ac2b39d347872c81
+	depends = python-veryprettytable
+	depends = python-beautifulsoup4
+	depends = python-termcolor
+	depends = python-colorama
+	source = pirate-get-0.2.11.tar.gz::https://github.com/vikstrous/pirate-get/archive/v0.2.11.tar.gz
+	sha256sums = b568e94f463e99e0f9b6751c67090a63ed00c2b340be9100ff7105cb5a42f429
 
 pkgname = pirate-get
 
