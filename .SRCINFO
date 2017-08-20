@@ -9,6 +9,7 @@ pkgbase = planck
 	makedepends = cmake
 	makedepends = leiningen
 	makedepends = unzip
+	makedepends = vim
 	depends = webkit2gtk
 	depends = libzip
 	depends = zlib
