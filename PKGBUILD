@@ -26,7 +26,7 @@ check() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  CC='musl-gcc -static'CC='musl-gcc -static' sh Build.sh -r
+  CC='musl-gcc -static' sh Build.sh -r
 }
 
 package() {
