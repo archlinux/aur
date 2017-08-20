@@ -3,7 +3,7 @@
 pkgname=restorecond
 pkgver=2.7
 pkgrel=1
-pkgdesc="sandboxing tool for SELinux"
+pkgdesc="SELinux restorecon daemon"
 arch=('i686' 'x86_64')
 url='https://github.com/SELinuxProject/selinux/wiki'
 license=('GPL2')

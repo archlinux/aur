@@ -1,5 +1,5 @@
 pkgbase = restorecond
-	pkgdesc = sandboxing tool for SELinux
+	pkgdesc = SELinux restorecon daemon
 	pkgver = 2.7
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/selinux/wiki
