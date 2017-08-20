@@ -8,7 +8,7 @@ pkgdesc="Purple/Violet Dark Theme for Enlightenment and Terminology"
 arch=('any')
 url="https://github.com/Obsidian-StudiosInc/${_gitname}"
 license=('GPL3')
-source=("https://github.com/Obsidian-StudiosInc/${_gitname}/releases/download/v${pkgver}/eminence-elementary.edj" "https://github.com/Obsidian-StudiosInc/${_gitname}/releases/download/v{$pkgver}/eminence-terminology.edj")
+source=("https://github.com/Obsidian-StudiosInc/${_gitname}/releases/download/v${pkgver}/eminence-elementary.edj" "https://github.com/Obsidian-StudiosInc/${_gitname}/releases/download/v${pkgver}/eminence-terminology.edj")
 md5sums=('9ae1099a991b089527a56dc845c79450' '5ce4630747160f677c9bed11ba853f70')
 
 package() {

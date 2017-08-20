@@ -6,7 +6,7 @@ pkgbase = enlightenment-eminence-theme-bin
 	arch = any
 	license = GPL3
 	source = https://github.com/Obsidian-StudiosInc/eminence/releases/download/v0.1.10/eminence-elementary.edj
-	source = https://github.com/Obsidian-StudiosInc/eminence/releases/download/v{0.1.10}/eminence-terminology.edj
+	source = https://github.com/Obsidian-StudiosInc/eminence/releases/download/v0.1.10/eminence-terminology.edj
 	md5sums = 9ae1099a991b089527a56dc845c79450
 	md5sums = 5ce4630747160f677c9bed11ba853f70
 
