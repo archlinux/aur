@@ -1,6 +1,6 @@
 pkgbase = dotgit
 	pkgdesc = A comprehensive solution to managing your dotfiles
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = http://github.com/Cube777/dotgit
 	arch = any
