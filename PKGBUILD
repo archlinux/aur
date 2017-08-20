@@ -11,11 +11,11 @@ url="https://github.com/Rivalo/discord-cli"
 license=('GPL')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("$pkgname::git+https://github.com/Rivalo/discord-cli")
+source=('git+https://github.com/Rivalo/discord-cli')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -30,13 +30,11 @@ prepare() {
 
 build() {
   export GOPATH=$srcdir
-  cd $pkgname
+  cd $_pkgname
   go build
 }
 
 package() {
-  echo packaging
-  cd $srcdir
   install -Dm755 "$srcdir/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }

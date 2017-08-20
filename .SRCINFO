@@ -9,7 +9,7 @@ pkgbase = discord-cli-git
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = discord-cli-git::git+https://github.com/Rivalo/discord-cli
+	source = git+https://github.com/Rivalo/discord-cli
 	md5sums = SKIP
 
 pkgname = discord-cli-git
