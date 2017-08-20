@@ -2,7 +2,7 @@
 
 _name=pyxstitch
 pkgname=python-$_name
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="takes source code files and produces syntax-highlighted patterns for cross stitching."
 arch=("any")
@@ -10,10 +10,9 @@ url="https://github.com/enckse/$_name"
 license=('MIT')
 depends=('python' 'python-webcolors' 'python-pillow' 'python-pygments')
 source=("https://github.com/enckse/$_name/archive/v$pkgver.tar.gz")
-md5sums=('db4847a30628d7ae51e53cb5583339e8')
+md5sums=('7f9ff6ffd6bbfec2d58d0c267c3b99f5')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-
