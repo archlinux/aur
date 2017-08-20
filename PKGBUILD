@@ -11,7 +11,8 @@ arch=('x86_64' 'i686' 'armv7h')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
 
-depends=('boost-libs>=1.45'  'unbound>=1.4.16'  'miniupnpc>=1.6' 'libunwind' 'openssl')
+depends=('boost-libs>=1.45'  'unbound>=1.4.16'  'miniupnpc>=1.6' 'libunwind'
+         'readline' 'openssl')
 makedepends=('git' 'cmake' 'boost' 'gtest')
 
 
