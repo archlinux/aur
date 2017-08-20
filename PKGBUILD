@@ -4,7 +4,7 @@
 # PKGBUILD reference: https://wiki.archlinux.org/index.php/PKGBUILD
 
 pkgname=bash-it-git
-pkgver=r1716.64abb64
+pkgver=r1842.acb98c3
 pkgrel=1
 pkgdesc='A community Bash framework'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   'hub: completion, plugin'
   'irssi: integration'
   'java-environment-common: plugin'
-  'python: plugin'
+  'python2: plugin'
   'python3: plugin, `django` completion, `proxy` plugin'
   'packer: completion'
   'ruby: theme integration, plugin'
