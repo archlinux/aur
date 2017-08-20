@@ -11,7 +11,7 @@ pkgbase = t-lasku
 	depends = qt5-script
 	optdepends = postgresql-libs
 	source = http://helineva.net/t-lasku/t-lasku-1.24.0-amd64.tar.gz
-	sha1sums = 48fd5a1d65fcabc4143ceb4733c2b1837fd1ef19
+	sha1sums = a6f9854111cc5ff3e806e18c3658f1065e7ebadc
 
 pkgname = t-lasku
 
