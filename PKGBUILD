@@ -22,6 +22,12 @@ pkgver() {
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
+prepare() {
+  cd mpc-qt
+  git submodule init
+  git submodule update
+}
+
 build() {
   cd mpc-qt
   qmake-qt5 PREFIX=/usr mpc-qt.pro
