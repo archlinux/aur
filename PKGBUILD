@@ -11,7 +11,7 @@ license=('AGPL')
 depends=('nextcloud')
 makedepends=()
 options=('!strip')
-source=("${url}/releases/download/${pkgver}/${_releasename}.tar.gz")
+source=("${_releasename}-${pkgver}.tar.gz"::"${url}/releases/download/${pkgver}/${_releasename}.tar.gz")
 
 package() {
     install -d --owner=root --group=root $pkgdir/usr/share/webapps/nextcloud/apps/
