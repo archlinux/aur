@@ -1,13 +1,13 @@
 pkgbase = x3dna
 	pkgdesc = 3DNA is a versatile, integrated software system for the analysis, rebuilding and visualization of three-dimensional nucleic-acid-containing structures. Please see: http://forum.x3dna.org/site-announcements/download-instructions/
-	pkgver = 2.3_20170208
+	pkgver = 2.3_20170624
 	pkgrel = 1
 	url = http://x3dna.org/
 	arch = x86_64
 	license = custom
 	depends = ruby
 	source = x3dna.md5
-	md5sums = 38c78f0d94749ffaa1b55a0bee6a90b8
+	md5sums = 623604f828f7eeeb3d4d865291cb7cfd
 
 pkgname = x3dna
 
