@@ -4,18 +4,20 @@
 pkgname=firefox-beta-bin-all-localizations
 _mypkgn=firefox-beta
 pkgdesc='Perl script for installing latest FF beta in the language of your choice'
-url='http://www.mozilla.com/firefox/channel/'
+url='https://www.mozilla.com/firefox/channel/#beta'
 pkgver=56.0b3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
-license=('MPL' 'GPL' 'LGPL' 'GPL3')
-depends=('gtk2' 'gtk3' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme')
+license=('MPL' 'GPL' 'LGPL')
+depends=('gtk3' 'libxt' 'dbus-glib' 'nss')
 optdepends=('networkmanager: Location detection via available WiFi networks'
-            'ffmpeg: additional video and audio decoders'
-            'libpulse: PulseAudio audio driver')
+            'ffmpeg: additional video and audio decoders'  # Not sure this is useful
+            'libnotify: Notification integration'
+            'pulseaudio: Audio support')
 makedepends=('perl-file-slurp' 'perl-lwp-protocol-https' 'perl-switch')
-source=('firefox-beta-bin.desktop' 'firefox-beta-bin-safe.desktop' 'ff-downloader.pl')
+provides=("firefox=$pkgver")
+source=('firefox-beta-bin.desktop' 'ff-downloader.pl')
+
 build() {
   perl ff-downloader.pl -v $pkgver
 }
@@ -27,9 +29,8 @@ package() {
   cp -r firefox "${pkgdir}/usr/lib/${_mypkgn}"
   ln -s /usr/lib/${_mypkgn}/firefox ${pkgdir}/usr/bin/firefox-beta
 
-  install -m644 {firefox-beta-bin.desktop,firefox-beta-bin-safe.desktop} ${pkgdir}/usr/share/applications/
+  install -m644 firefox-beta-bin.desktop ${pkgdir}/usr/share/applications/
   install -m644 ${srcdir}/firefox/browser/icons/mozicon128.png ${pkgdir}/usr/share/pixmaps/${_mypkgn}-icon.png
 }
 md5sums=('09569434d20ceb6c7e6a267249f8ab48'
-         '6fc7dee182dd7cca644c9d8a5861cf62'
          '4a72be5298e90bc487009cdd00e3a0e0')
