@@ -1,6 +1,6 @@
 pkgbase = peppercarrot-fonts-git
-	pkgdesc = Fonts required to correctly view Pepper&Carrot SVG sources
-	pkgver = r38.20afd31
+	pkgdesc = Fonts required to correctly view and edit Pepper&Carrot SVGs
+	pkgver = r41.3d2511e
 	pkgrel = 1
 	url = https://github.com/Deevad/peppercarrot_fonts
 	arch = any

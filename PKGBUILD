@@ -1,9 +1,9 @@
 # Maintainer: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 
 pkgname=peppercarrot-fonts-git
-pkgver=r38.20afd31
+pkgver=r41.3d2511e
 pkgrel=1
-pkgdesc="Fonts required to correctly view Pepper&Carrot SVG sources"
+pkgdesc="Fonts required to correctly view and edit Pepper&Carrot SVGs"
 arch=('any')
 url="https://github.com/Deevad/peppercarrot_fonts"
 license=('GPL3' 'Apache' 'Custom:OFL10' 'Custom:OFL11' 'Custom:MITX11'
@@ -64,8 +64,8 @@ package() {
   install -dm755 "${licdir}"
   sed -nr '
     # sed script to extract the license section
-    /^# License/,$ { # Start at the license heading
-      /^# [^L]/q     # Stop when we reach the next section
+    /^## License/,$ { # Start at the license heading
+      /^##? [^L]/q    # Stop when we reach the next section
       p
     }
     ' "${srcdir}/peppercarrot_fonts/README.md" > "${licdir}/README.md"
