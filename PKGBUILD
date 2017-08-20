@@ -2,7 +2,7 @@
 
 pkgname=peppercarrot-fonts-git
 pkgver=r41.3d2511e
-pkgrel=1
+pkgrel=2
 pkgdesc="Fonts required to correctly view and edit Pepper&Carrot SVGs"
 arch=('any')
 url="https://github.com/Deevad/peppercarrot_fonts"
@@ -18,8 +18,8 @@ _licensefiles=('OFL10' 'OFL11' 'MITX11' 'MPlusFont' 'CCBY3')
 source=('git+https://github.com/Deevad/peppercarrot_fonts.git'
         "${_licensefiles[@]}")
 sha256sums=('SKIP'
-            '1e615a572b4d92e1d98e04722ceda6c73d1b160afe6e518fec0171fe336dc0df'
-            '7f18ec1ebb6b50e3ed0f74b2c61f25b8d7cd69e43f4de66e991bcfd3c419a8bb'
+            '51e1e3abf7ac7cb4129254cb32ff87fac06827db94caafe081589ab1613b3467'
+            'e564f06d018e7b95bc3594c96a17f1d41865af4038c375e7aa974dd69df38602'
             'f9c4c77baa3828004ee54b8a4f2db2e88ed44a6237a493965bf551fac0fcb62d'
             'faec1e722fd066a741d447bfff06e26e4daaa72b7796cbed7d416a27ddc751a3'
             'e6bc9e9c474700b708f568bac9e5a8a9bcb2b1dad53442f5ba449fcb848b8e76')
