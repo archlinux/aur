@@ -1,15 +1,15 @@
 pkgbase = rundeck
 	pkgdesc = Open source automation service with a web console, command line tools and a WebAPI
-	pkgver = 2.8.2
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = https://github.com/rundeck/rundeck/
 	arch = any
 	license = APACHE
 	makedepends = java-environment
 	depends = java-runtime
-	source = rundeck-2.8.2.tar.gz::https://github.com/rundeck/rundeck/archive/v2.8.2.tar.gz
+	source = rundeck-2.9.2.tar.gz::https://github.com/rundeck/rundeck/archive/v2.9.2.tar.gz
 	source = start.sh
-	sha256sums = 36beea56c322d7c37469395b32b4d755b7d47fef3582887364b1bdff3f028578
+	sha256sums = e54bc6085db6c754a16dee83e73e57993a5bb21f625b1556da3c824266d5ecad
 	sha256sums = 02f7b0b770e44c182e9aa79f4381e0ded19b538dc6248708638dc3dfd01d64b9
 
 pkgname = rundeck
