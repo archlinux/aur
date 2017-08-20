@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-  bsdtar -jxf firefox-${pkgver//rc*/}.tar.bz2
+  bsdtar -jxf firefox-${pkgver}.tar.bz2
   mkdir -p $pkgdir/usr/{lib,bin,share/{applications,pixmaps}}
 
   cp -r firefox "${pkgdir}/usr/lib/${_mypkgn}"
@@ -33,4 +33,4 @@ package() {
   install -m644 ${srcdir}/firefox/browser/icons/mozicon128.png ${pkgdir}/usr/share/pixmaps/${_mypkgn}-icon.png
 }
 md5sums=('09569434d20ceb6c7e6a267249f8ab48'
-         '4a72be5298e90bc487009cdd00e3a0e0')
+         'b4d5afd97c8ac229f6027d7853c73c0c')

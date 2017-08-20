@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# ff-downloader v0.6.0.1
+# ff-downloader v0.7.0
 ## Copyright 2011-15 Simone Sclavi 'Ito'
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@ use feature 'say';
 use Getopt::Long qw(:config no_ignore_case);
 use LWP;
 use Digest::SHA;
+use File::Copy;
 use File::Slurp;
 use Env 'HOME';
 
@@ -29,11 +30,13 @@ my $browser;
 sub get_url
 {
     my ($url, $file) = @_;
+    my $tmp_file = "${file}.part";
     $browser = LWP::UserAgent->new unless $browser;
     $browser->timeout(30);
     $browser->show_progress(1);
     $browser->env_proxy( );
-    my $resp = $browser->get($url, ':content_file' => $file);
+    my $resp = $browser->get($url, ':content_file' => $tmp_file);
+    move($tmp_file, $file);
     return $resp->is_success;
 }
 
@@ -59,7 +62,7 @@ sub read_config
     foreach my $path (@conf_paths) {
         if (-e $path) {
             $conf_file = $path;
-            print "Using config file: $conf_file\n";
+            print ":: Using config file: $conf_file\n";
             last;
         }
     }
@@ -83,13 +86,13 @@ sub read_config
 }
 
 
-my ($VER, $BUILD, $LANG);
-my $res = GetOptions("version|v=s" => \$VER);
+my ($FULLVER, $VER, $BUILD, $LANG);
+my $res = GetOptions("version|v=s" => \$FULLVER);
 die ":: usage: $0 -v|--version=<version number>\n" unless $res and (scalar @ARGV == 0);
-die qq{:: "--version" option is mandatory!\n} unless $VER;
+die qq{:: "--version" option is mandatory!\n} unless $FULLVER;
 
 # Keep the version and build number (when there is one) separate
-($VER, $BUILD) = split("rc", $VER);
+($VER, $BUILD) = split("rc", $FULLVER);
 
 $LANG = read_config();
 
@@ -223,7 +226,7 @@ chomp $ARCH;
 
 $| = 1; # turn on autoflush;
 
-my $ff_bz2 = "firefox-${VER}.tar.bz2";
+
 my $ff_basepath;
 if (!$BUILD) {
     $ff_basepath = "/pub/firefox/releases/${VER}";
@@ -231,25 +234,35 @@ if (!$BUILD) {
     # build candidate
     $ff_basepath = "/pub/firefox/candidates/${VER}-candidates/build${BUILD}";
 }
-my $ff_path = "${ff_basepath}/linux-${ARCH}/${LANG}/${ff_bz2}";
-my $ff_url = URI->new('https://ftp.mozilla.org');
-my $ff_cdn_url = URI->new('http://releases.mozilla.org');
-$ff_url->path($ff_path);
-$ff_cdn_url->path($ff_path);
-# both URLs host the same files, but the CDN is not reachable via HTTPS
-
 
 ##Downloading firefox##
-get_url( $ff_cdn_url, $ff_bz2 ) or die qq(:: ERROR - can't download $ff_bz2\n);
+my $ff_destname = "firefox-${FULLVER}.tar.bz2";
+my $ff_bz2 = "firefox-${VER}.tar.bz2";
+if (! -e $ff_destname) {
+    # Use HTTP because it downloads much faster in practice.
+    # This is not a security issue because checksums are downloaded via HTTPS.
+    my $ff_url = URI->new('http://releases.mozilla.org');
+    my $ff_path = "${ff_basepath}/linux-${ARCH}/${LANG}/${ff_bz2}";
+    $ff_url->path($ff_path);
+    get_url( $ff_url, $ff_destname ) or die qq(:: ERROR - can't download $ff_destname\n);
+} else {
+    say qq{:: "$ff_destname" already present in the filesystem, skip download}
+}
 
 ##downloading sha512sums##
-$ff_url->path("${ff_basepath}/SHA512SUMS");
-get_url( $ff_url, 'SHA512SUMS' ) or die qq(:: ERROR - can't download SHA512SUMS\n);
+my $checksums_fname = "firefox-${FULLVER}-SHA512SUMS";
+if (! -e $checksums_fname) {
+    my $ff_url = URI->new('https://releases.mozilla.org');
+    $ff_url->path("${ff_basepath}/SHA512SUMS");
+    get_url( $ff_url, $checksums_fname ) or die qq(:: ERROR - can't download $checksums_fname\n);
+} else {
+    say qq{:: "$checksums_fname" already present in the filesystem, skip download}
+}
 
 ## calculating & comparing sha512 digest
-print ':: verifying sha512 checksum ... ';
+say ':: verifying sha512 checksum ... ';
 
-my @sha512_file = read_file('SHA512SUMS');
+my @sha512_file = read_file($checksums_fname);
 my $search_string = "linux-${ARCH}/${LANG}/${ff_bz2}";
 my $sha512s;
 for (@sha512_file)
@@ -260,11 +273,16 @@ for (@sha512_file)
         last;
     }
 }
-die qq{:: ERROR - can't find a valid SHA512 checksum in file 'SHA512SUMS'!\n} unless $sha512s;
+$sha512s or die qq{:: ERROR - can't find a valid SHA512 checksum in file "$checksums_fname"!};
 
-open(FILE, $ff_bz2) or die qq{:: ERROR - can't open "$ff_bz2": $!};
+open(FILE, $ff_destname) or die qq{:: ERROR - can't open "$ff_destname": $!};
 binmode(FILE);
 my $digest = Digest::SHA->new(512)->addfile(*FILE)->hexdigest;
 close(FILE);
 
-( $digest eq $sha512s ) ? say 'DONE' : do {say 'FAILED'; exit 1};
+if ( $digest eq $sha512s ) {
+    say 'DONE';
+} else {
+    say qq{:: ERROR - checksum does not match. Try to delete "$ff_destname" and start again.};
+    exit 1;
+}
