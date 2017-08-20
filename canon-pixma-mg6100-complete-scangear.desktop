@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Cannon Scangear (MG6100 series)
+Exec=/usr/bin/scangearmp
+Icon=/usr/share/pixmaps/canon-pixma-mg6100-complete-scangear-icon.png
+Categories=Graphics;2DGraphics;
+Name[en_US]=canon-pixma-mg6100-complete-scangear

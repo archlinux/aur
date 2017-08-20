@@ -1,0 +1,36 @@
+pkgbase = canon-pixma-mg6100-complete
+	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MG6100 series
+	pkgver = 3.40
+	pkgrel = 1
+	url = http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MG_series/PIXMA_MG6350.aspx
+	install = canon-pixma-mg6100-complete.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = deb2targz
+	makedepends = sed
+	source = http://files.canon-europe.com/files/soft40261/Software/MG6100series-printer_driver.tar
+	source = http://files.canon-europe.com/files/soft40264/Software/MG6100series-scanner_driver.tar
+	source = canon-pixma-mg6100-complete.license
+	source = canon-pixma-mg6100-complete-scangear.desktop
+	source = canon-pixma-mg6100-complete-scangear-icon.png
+	md5sums = c2f392ccc1dd18ad9117c89a4775b4d6
+	md5sums = 955482838b658333bb224c47dd7bd268
+	md5sums = d8faf0e75ee3d1989eed39d55cb3e8fb
+	md5sums = fe2f73b5004130608faa993bd9ca2294
+	md5sums = 3feefd413092d7152f47b7451ba79efe
+	depends_i686 = popt
+	depends_i686 = libpng12
+	depends_i686 = libusb-compat
+	depends_i686 = libtiff4
+	depends_i686 = libxml2
+	depends_i686 = gtk2
+	depends_x86_64 = lib32-popt
+	depends_x86_64 = lib32-libpng12
+	depends_x86_64 = lib32-libusb-compat
+	depends_x86_64 = lib32-libtiff4
+	depends_x86_64 = lib32-libxml2
+	depends_x86_64 = lib32-gtk2
+
+pkgname = canon-pixma-mg6100-complete
+
