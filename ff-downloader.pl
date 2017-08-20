@@ -95,7 +95,7 @@ $LANG = read_config();
 
 if (!$LANG)
 {
-    my @ff_i18n = (
+    my @ff_langs = (
     { language => 'Acholi', code => 'ach' },
     { language => 'Afrikaans (South Africa)', code => 'af' },
     { language => 'Netherlands Antilles', code => 'an' },
@@ -193,28 +193,28 @@ if (!$LANG)
     { language => 'Chinese (Traditional)', code => 'zh-TW' },
     );
 
-    my @i18n = sort { $a->{language} cmp $b->{language} } @ff_i18n;
-    my $size = scalar @i18n;
-    print "\n";
+    my @langs = sort { $a->{language} cmp $b->{language} } @ff_langs;
+    my %langs_hash = map { $_->{code} => $_->{language} } @langs;
 
-    for (my $i = 0; $i < $size; $i++ )
-    {
-	    say '[', $i + 1, "] $i18n[$i]{language}";
+    say '';
+    say 'CODE    LANGUAGE';
+    say '----------------';
+    for my $lang (@langs) {
+        printf "%-7s %s\n", $lang->{code}, $lang->{language};
     }
 
-    print "\n:: please select your language (type corresponding number)\n> ";
+    print "\n:: Please select your language (type language code)\n> ";
     my $choice;
-    while (  $choice =  <STDIN> )
+    while ( $choice =  <STDIN> )
     {
-	    no warnings;
-	    chomp $choice;
-	    $choice =~ s/^\s+//;
-	    $choice =~ s/\s+$//;
-	    last if $choice ~~ [ 1 .. $size ];
-	    print ":: WRONG SELECTION!\n:: please select your language (type corresponding number)\n> ";
+        chomp $choice;
+        $choice =~ s/^\s+//;
+        $choice =~ s/\s+$//;
+        last if exists($langs_hash{$choice});
+        print ":: WRONG SELECTION!\n:: Please select your language (type language code)\n> ";
     }
-    $LANG = $i18n[$choice - 1]{code};
-    say ":: \"$i18n[$choice - 1]{language}\" selected\n::";
+    $LANG = $choice;
+    say qq{:: "$langs_hash{$choice}" selected\n::};
     my ($user_conf_dir,) = xdg_config_dirs;
     say qq{:: HINT: put "ff=$LANG" (without quotes) in $user_conf_dir/ff-downloader.conf to avoid being asked about your language each time you build the package\n::};
 }
