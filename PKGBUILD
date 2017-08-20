@@ -1,7 +1,7 @@
 # Maintainer: yantene <contact at yantene dot net>
 pkgname=ttf-mizutama-emoji
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A dot-patterned emoji font based on Twemoji"
 arch=('any')
 url="https://github.com/yantene/mizutama-emoji-font"
@@ -28,4 +28,4 @@ package() {
   install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README
 }
 
-md5sums=('97a3efd1e0a79788d1d2ccb8ffb9847d')
+md5sums=('fba24b3aabe57447a902bd41eff4b9fc')
