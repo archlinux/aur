@@ -40,15 +40,13 @@ sub get_url
 
 sub read_config
 {
-    my $p = shift;
     my $conf_file = "${HOME}/.ff-downloader";
     my $lang_code;
     if (! -e $conf_file )
     {
         my @file = (
-            "# Define here your preferred language(s) for Firefox and Thunderbird.\n",
+            "# Define here your preferred language(s) for Firefox.\n",
             "# ff=en-US\n",
-            "# tb=en-US\n"
             );
        write_file($conf_file, @file);
        return
@@ -60,7 +58,7 @@ sub read_config
        {
            chomp $line; $line =~ s/^\s+//; $line =~ s/\s+$//;
            next if $line =~ /^#/;
-           if ($line =~ /^$p=([-a-zA-Z]+)$/)
+           if ($line =~ /^ff=([-a-zA-Z]+)$/)
            {
                $lang_code = $1;
            }
@@ -68,23 +66,15 @@ sub read_config
        return $lang_code;
    }
 }
-my ($VER, $BUILD, $PACKAGE, $LANG);
-my $pkg = 'ff'; #default value for "--package"
-my $res = GetOptions("version|v=s" => \$VER,
-                     "package|p=s" => \$pkg );
-
-die ":: usage: $0 -p|--package=<package name [ff|tb]> -v|--version=<version number>\n" unless $res and (scalar @ARGV == 0);
-given ($pkg)
-{
-    when ('ff')  { $PACKAGE = 'firefox' }
-    when ('tb')  { $PACKAGE = 'thunderbird'}
-    default { die qq{:: "$pkg" is not a valid value for "--package"! Please use "ff" or "tb"\n}}
-}
+my ($VER, $BUILD, $LANG);
+my $res = GetOptions("version|v=s" => \$VER);
+die ":: usage: $0 -v|--version=<version number>\n" unless $res and (scalar @ARGV == 0);
 die qq{:: "--version" option is mandatory!\n} unless $VER;
+
 # Keep the version and build number (when there is one) separate
 ($VER, $BUILD) = split("rc", $VER);
 
-$LANG = read_config($pkg);
+$LANG = read_config();
 
 if (!$LANG)
 {
@@ -186,66 +176,7 @@ if (!$LANG)
     { language => 'Chinese (Traditional)', code => 'zh-TW' },
     );
 
-    my @tb_i18n = (
-    { language => 'Aarabic', code => 'ar' },
-    { language => 'Asturian', code => 'ast' },
-    { language => 'Belarusian', code => 'be' },
-    { language => 'Bulgarian', code => 'bg' },
-    { language => 'Bengali (Bangladesh)', code => 'bn-BD' },
-    { language => 'Breton', code => 'br' },
-    { language => 'Catalan', code => 'ca' },
-    { language => 'Czech', code => 'cs' },
-    { language => 'Danish', code => 'da' },
-    { language => 'German', code => 'de' },
-    { language => 'Greek', code => 'el' },
-    { language => 'English (United Kingdom)', code => 'en-GB' },
-    { language => 'English (US)', code => 'en-US' },
-    { language => 'Spanish (Argentina)', code => 'es-AR' },
-    { language => 'Spanish (Spain)', code => 'es-ES' },
-    { language => 'Estonian', code => 'et' },
-    { language => 'Basque', code => 'eu' },
-    { language => 'Finnish', code => 'fi' },
-    { language => 'French', code => 'fr' },
-    { language => 'Frisian', code => 'fy-NL' },
-    { language => 'Irish', code => 'ga-IE' },
-    { language => 'Gaelic (Scotland)', code => 'gd' },
-    { language => 'Galician', code => 'gl' },
-    { language => 'Hebrew', code => 'he' },
-    { language => 'Croatian', code => 'hr' },
-    { language => 'Hungarian', code => 'hu' },
-    { language => 'Armenian', code => 'hy-AM' },
-    { language => 'Indonesian', code => 'id' },
-    { language => 'Icelandic', code => 'is' },
-    { language => 'Italian', code => 'it' },
-    { language => 'Japanese', code => 'ja' },
-    { language => 'Korean', code => 'ko' },
-    { language => 'Lithuanian', code => 'lt' },
-    { language => 'Norwegian (Bokmal)', code => 'nb-NO' },
-    { language => 'Dutch', code => 'nl' },
-    { language => 'Norwegian (Nynorsk)', code => 'nn-NO' },
-    { language => 'Punjabi', code => 'pa-IN' },
-    { language => 'Polish', code => 'pl' },
-    { language => 'Portuguese (Brazil)', code => 'pt-BR' },
-    { language => 'Portuguese (Portugal)', code => 'pt-PT' },
-    { language => 'Romansh', code => 'rm' },
-    { language => 'Romanian', code => 'ro' },
-    { language => 'Russian', code => 'ru' },
-    { language => 'Sinhalese', code => 'si' },
-    { language => 'Slovak', code => 'sk' },
-    { language => 'Slovenian', code => 'sl' },
-    { language => 'Albanian', code => 'sq' },
-    { language => 'Serbian', code => 'sr' },
-    { language => 'Swedish', code => 'sv-SE' },
-    { language => 'Tamil (Sri Lanka)', code => 'ta-LK' },
-    { language => 'Turkish', code => 'tr' },
-    { language => 'Ukrainan', code => 'uk' },
-    { language => 'Vietnamese', code => 'vi' },
-    { language => 'Chinese (Simplified)', code => 'zh-CN' },
-    { language => 'Chinese (Traditional)', code => 'zh-TW' },
-    );
-    my @u_i18n;
-    ( $pkg eq 'ff' ) ? ( @u_i18n = @ff_i18n ) : (@u_i18n = @tb_i18n );
-    my @i18n = sort { $a->{language} cmp $b->{language} } @u_i18n;
+    my @i18n = sort { $a->{language} cmp $b->{language} } @ff_i18n;
     my $size = scalar @i18n;
     print "\n";
 
@@ -267,20 +198,20 @@ if (!$LANG)
     }
     $LANG = $i18n[$choice - 1]{code};
     say ":: \"$i18n[$choice - 1]{language}\" selected\n::";
-    say qq{:: HINT: put "$pkg=$LANG" (without quotes) in $HOME/.ff-downloader to avoid being asked about your language each time you build the package\n::};
+    say qq{:: HINT: put "ff=$LANG" (without quotes) in $HOME/.ff-downloader to avoid being asked about your language each time you build the package\n::};
 }
 my $ARCH = qx(uname -m);
 chomp $ARCH;
 
 $| = 1; # turn on autoflush;
 
-my $ff_bz2 = "${PACKAGE}-${VER}.tar.bz2";
+my $ff_bz2 = "firefox-${VER}.tar.bz2";
 my $ff_basepath;
 if (!$BUILD) {
-    $ff_basepath = "/pub/${PACKAGE}/releases/${VER}";
+    $ff_basepath = "/pub/firefox/releases/${VER}";
 } else {
     # build candidate
-    $ff_basepath = "/pub/${PACKAGE}/candidates/${VER}-candidates/build${BUILD}";
+    $ff_basepath = "/pub/firefox/candidates/${VER}-candidates/build${BUILD}";
 }
 my $ff_path = "${ff_basepath}/linux-${ARCH}/${LANG}/${ff_bz2}";
 my $ff_url = URI->new('https://ftp.mozilla.org');
