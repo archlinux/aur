@@ -6,7 +6,7 @@ pkgdesc="DeepOnion (ONION) is a new PoW/PoS altcoin that is most secure. All the
 arch=('i686' 'x86_64')
 url="https://github.com/deeponion/deeponion"
 license=('MIT')
-depends=('miniupnpc' 'libpng' 'boost' 'openssl-1.0' 'libevent' 'db')
+depends=('miniupnpc' 'boost' 'openssl-1.0' 'libevent' 'db')
 source=("deeponion::git+https://github.com/deeponion/deeponion"
 "upnp_2.patch")
 md5sums=('SKIP'
