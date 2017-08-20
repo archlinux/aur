@@ -1,5 +1,5 @@
 pkgbase = selinux-dbus-config
-	pkgdesc = SELinux GUI tools
+	pkgdesc = DBus service which allows managing SELinux configuration
 	pkgver = 2.7
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/selinux/wiki
