@@ -1,7 +1,7 @@
 #Maintainer: Raimar Buehmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=eclipse-jboss
-pkgver=4.4.4.Final
+pkgver=4.5.0.Final
 eclipsever=neon
 pkgrel=1
 pkgdesc='JBoss application server developer tools plugins for Eclipse IDE'
