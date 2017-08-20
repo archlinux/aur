@@ -3,7 +3,7 @@
 pkgname='planck'
 conflicts=('planck-git')
 pkgver=2.7.3
-pkgrel=1
+pkgrel=2
 _pkgnamever=${pkgname}-${pkgver}
 pkgdesc="A stand-alone ClojureScript REPL"
 arch=('x86_64')
