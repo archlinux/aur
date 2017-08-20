@@ -1,0 +1,19 @@
+pkgbase = planck
+	pkgdesc = A stand-alone ClojureScript REPL
+	pkgver = 2.7.3
+	pkgrel = 1
+	url = http://planck-repl.org/
+	arch = x86_64
+	license = EPL-1.0
+	makedepends = java-environment
+	makedepends = cmake
+	makedepends = leiningen
+	depends = webkitgtk
+	depends = libzip
+	depends = zlib
+	conflicts = planck-git
+	source = https://github.com/mfikes/planck/archive/2.7.3.tar.gz
+	sha256sums = 16a620c33bc15c2f74ce1e80726c55c85f634443c9675c0c08292a964eb01780
+
+pkgname = planck
+
