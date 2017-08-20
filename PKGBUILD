@@ -2,7 +2,7 @@
 
 _pkgname='agensgraph'
 pkgname="${_pkgname}-git"
-pkgver=1.1.0.r41.gaf9b283
+pkgver=1.1.0.r49.g379649b2
 pkgrel=1
 pkgdesc="A multi-model graph database based on PostgreSQL."
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ source=("git+https://github.com/bitnine-oss/agensgraph"
 install=postgresql.install
 sha256sums=('SKIP'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
-            '0cfec996d06aa83d0ddd08d0ced3ebc9187d26fd05f90d54788a85bf6b7bd7b3'
+            '7d267a6d40ef3d34db476eabb53363d47e17f0b3797ef2b763a6f50f587b0e22'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
             'daab6220ef01c729574384a3095f0659bf25617d6c195248a0cd28ede9b6c054'

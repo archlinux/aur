@@ -1,6 +1,16 @@
---- agensgraph/contrib/hadoop_fdw/Makefile	2017-07-18 01:38:12.548453982 +0300
-+++ agensgraph.new/contrib/hadoop_fdw/Makefile	2017-07-18 03:55:46.723320712 +0300
-@@ -33,7 +33,7 @@
+--- agensgraph/contrib/hadoop_fdw/Makefile	2017-08-20 16:03:13.185671931 +0300
++++ agensgraph.new/contrib/hadoop_fdw/Makefile  2017-08-20 15:58:09.490727006 +0300
+@@ -24,6 +24,9 @@
+ ifeq ($(UNAME), Darwin)
+ 	SHLIB_LINK = -L$(shell /usr/libexec/java_home)/jre/lib/server -ljvm
+ endif
++ifeq ($(UNAME), Linux)
++	SHLIB_LINK =
++endif
+ 
+ TRGTS = JAVAFILES
+ 
+@@ -33,7 +36,7 @@
   
  PG_CPPFLAGS=-D'PKG_LIB_DIR=$(pkglibdir)'
  
@@ -8,3 +18,4 @@
 +JFLAGS = -d ../../../
  
  all:$(TRGTS)
+ 
