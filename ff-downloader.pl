@@ -38,22 +38,37 @@ sub get_url
 }
 
 
+# Return XDG config dirs by decreasing priority
+# The first element always is user's config dir
+sub xdg_config_dirs
+{
+    my @system_dirs = split(':', $ENV{XDG_CONFIG_DIRS} || '/etc/xdg');
+    my $user_dir = $ENV{XDG_CONFIG_HOME} || "${HOME}/.config";
+    return reverse (@system_dirs, $user_dir);
+}
+
+
 sub read_config
 {
-    my $conf_file = "${HOME}/.ff-downloader";
-    my $lang_code;
-    if (! -e $conf_file )
-    {
-        my @file = (
-            "# Define here your preferred language(s) for Firefox.\n",
-            "# ff=en-US\n",
-            );
-       write_file($conf_file, @file);
-       return
-   }
-   else
+    # Retrieve config file
+
+    my @conf_paths = map { "$_/ff-downloader.conf" } xdg_config_dirs;
+    # Read config from deprecated path for backwards compatibility
+    push @conf_paths, "${HOME}/.ff-downloader";
+    my $conf_file;
+    foreach my $path (@conf_paths) {
+        if (-e $path) {
+            $conf_file = $path;
+            print "Using config file: $conf_file\n";
+            last;
+        }
+    }
+
+    # Try to read language code from config file
+   if ($conf_file)
    {
        my @file = read_file($conf_file);
+       my $lang_code;
        for my $line(@file)
        {
            chomp $line; $line =~ s/^\s+//; $line =~ s/\s+$//;
@@ -66,6 +81,8 @@ sub read_config
        return $lang_code;
    }
 }
+
+
 my ($VER, $BUILD, $LANG);
 my $res = GetOptions("version|v=s" => \$VER);
 die ":: usage: $0 -v|--version=<version number>\n" unless $res and (scalar @ARGV == 0);
@@ -198,7 +215,8 @@ if (!$LANG)
     }
     $LANG = $i18n[$choice - 1]{code};
     say ":: \"$i18n[$choice - 1]{language}\" selected\n::";
-    say qq{:: HINT: put "ff=$LANG" (without quotes) in $HOME/.ff-downloader to avoid being asked about your language each time you build the package\n::};
+    my ($user_conf_dir,) = xdg_config_dirs;
+    say qq{:: HINT: put "ff=$LANG" (without quotes) in $user_conf_dir/ff-downloader.conf to avoid being asked about your language each time you build the package\n::};
 }
 my $ARCH = qx(uname -m);
 chomp $ARCH;
