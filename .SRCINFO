@@ -1,7 +1,7 @@
 pkgbase = setools
 	pkgdesc = Policy analysis tools for SELinux
 	pkgver = 4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TresysTechnology/setools/wiki
 	arch = i686
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = setools
 	optdepends = python2-enum34: Python2 support
 	optdepends = python2-networkx: Python2 support
 	optdepends = qt5-tools: display apol help with Qt Assistant
-	provides = selinux-setools=4.1.1-1
+	provides = selinux-setools=4.1.1-2
 	conflicts = selinux-setools
 	source = setools-4.1.1.tar.gz::https://github.com/TresysTechnology/setools/archive/4.1.1.tar.gz
 	sha256sums = 46a927ea2b163cbe1d35cc35da43e45853e13720c7e02d4cf75a498783c19610

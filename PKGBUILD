@@ -16,7 +16,7 @@
 
 pkgname=setools
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Policy analysis tools for SELinux"
 groups=('selinux')
 arch=('i686' 'x86_64')
@@ -52,7 +52,9 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
+  python2 setup.py build_ext
   python2 setup.py build
+  python setup.py build_ext
   python setup.py build
 }
 
