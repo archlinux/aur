@@ -1,6 +1,6 @@
 pkgname=python34
 pkgver=3.4.6
-pkgrel=2
+pkgrel=3
 _pybasever=3.4
 _pymajver=3
 pkgdesc="Major release 3.4 of the Python high-level programming language"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl-1.0' 'libffi' 'zlib')
-makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'hardening-wrapper')
+makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
 source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
