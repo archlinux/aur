@@ -32,7 +32,7 @@ package() {
 
   install -D $srcdir/boolr.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
 
-  install -Dm644 $srcdir/BOOLR-linux-x64/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 $srcdir/BOOLR-linux-x64/resources/app/app/LINCENCE $pkgdir/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 $srcdir/BOOLR-linux-x64/LICENSES.chromium.html $pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html
 
   ln -s /opt/boolr/BOOLR $pkgdir/usr/bin/$pkgname
