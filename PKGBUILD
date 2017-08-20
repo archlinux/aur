@@ -1,7 +1,7 @@
 # Maintainer: Austin Haedicke <austin.haedicke@gmail.com>
 
 # If you find errors or have suggestions feel free to file an issue
-# or submit a pull request @ https://gtbjj.com/gtbjj/pkgbuild 
+# or submit a pull request @ https://gtbjj.com/savagezen/pkgbuild 
 
 _pkgname=phoronix-test-suite
 pkgname=phoronix-test-suite-git
