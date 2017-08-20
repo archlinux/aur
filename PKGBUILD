@@ -64,6 +64,10 @@ check() {
 	EXCLUDED_UNIT_TESTS+='DNSResolver.IPv4Failure'
 	EXCLUDED_UNIT_TESTS+=':DNSResolver.DNSSECSuccess'
 	EXCLUDED_UNIT_TESTS+=':AddressFromURL.Failure'
+	EXCLUDED_UNIT_TESTS+=':Serialization.portability_wallet'
+	EXCLUDED_UNIT_TESTS+=':Serialization.portability_outputs'
+	EXCLUDED_UNIT_TESTS+=':Serialization.portability_unsigned_tx'
+	EXCLUDED_UNIT_TESTS+=':Serialization.portability_signed_tx'
 	tests/unit_tests/unit_tests --gtest_filter="-$EXCLUDED_UNIT_TESTS"
 
 	# Temporarily disable some a tests:
