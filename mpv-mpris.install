@@ -1,0 +1,12 @@
+post_install() {
+  echo
+  echo '>>> To load this plugin, specify the following option when starting mpv:'
+  echo
+  echo '    --script /usr/lib/mpv/mpris.so'
+  echo
+  echo '>>> To load this plugin automatically whenever mpv runs, do the following:'
+  echo
+  echo '    mkdir -p $HOME/.config/mpv/scripts'
+  echo '    ln -s /usr/lib/mpv/mpris.so $HOME/.config/mpv/scripts/mpris.so'
+  echo
+}
