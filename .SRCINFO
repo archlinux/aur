@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-extended-gestures-git
+	pkgdesc = Better touchpad gesture handling for GNOME
+	pkgver = 45.25f6044
+	pkgrel = 1
+	url = https://github.com/mpiannucci/gnome-shell-extended-gestures
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = zip
+	makedepends = unzip
+	depends = gnome-shell>=3.24
+	source = git://github.com/mpiannucci/gnome-shell-extended-gestures.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-extended-gestures-git
+
