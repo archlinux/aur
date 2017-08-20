@@ -1,15 +1,15 @@
---- Minwaita-Light-Shell/gnome-shell/gnome-shell.css	2017-05-04 17:22:53.000000000 +0100
-+++ Minwaita-Light-Shell/gnome-shell/gnome-shell.css	2017-06-02 14:41:30.538634337 +0100
-@@ -337,7 +337,7 @@
+--- Minwaita-Light-Shell/gnome-shell/gnome-shell.css~	2017-08-20 12:30:31.043364821 +0100
++++ Minwaita-Light-Shell/gnome-shell/gnome-shell.css	2017-08-20 12:30:35.349805965 +0100
+@@ -333,7 +333,7 @@
  
  .modal-dialog .run-dialog-label {
    font-size: 11pt;
 -  font-weight: bold;
 +  font-weight: normal;
-   color: black;
-   padding-bottom: .4em;
+   color: #2e3436;
+   padding-bottom: 0.4em;
  }
-@@ -411,7 +411,7 @@
+@@ -407,7 +407,7 @@
  }
  
  .end-session-dialog-list-header {
@@ -18,7 +18,7 @@
  }
  
  .end-session-dialog-list-header:rtl {
-@@ -425,7 +425,7 @@
+@@ -421,7 +421,7 @@
  
  .end-session-dialog-app-list-item-name,
  .end-session-dialog-session-list-item-name {
@@ -27,7 +27,7 @@
  }
  
  .end-session-dialog-app-list-item-description {
-@@ -527,7 +527,7 @@
+@@ -523,7 +523,7 @@
  }
  
  .prompt-dialog-headline {
@@ -36,7 +36,7 @@
    color: black;
  }
  
-@@ -593,7 +593,7 @@
+@@ -589,7 +589,7 @@
  }
  
  .audio-selection-title {
@@ -45,7 +45,7 @@
    text-align: center;
  }
  
-@@ -640,12 +640,12 @@
+@@ -636,12 +636,12 @@
  }
  
  .access-dialog-title {
@@ -60,7 +60,7 @@
  }
  
  /* Geolocation Dialog */
-@@ -666,12 +666,12 @@
+@@ -662,12 +662,12 @@
  }
  
  .geolocation-dialog-title {
@@ -75,7 +75,7 @@
  }
  
  /* Network Agent Dialog */
-@@ -783,7 +783,7 @@
+@@ -785,7 +785,7 @@
  /* OSD */
  .osd-window {
    text-align: center;
@@ -84,7 +84,7 @@
    spacing: 1em;
    margin: 32px;
    min-width: 64px;
-@@ -949,7 +949,7 @@
+@@ -953,7 +953,7 @@
  
  /* TOP BAR */
  #panel {
@@ -92,35 +92,35 @@
 +  font-weight: normal;
    height: 1.86em;
    background-color: transparent;
-   border-image: url("light-assets/panel.png");
-@@ -1016,7 +1016,7 @@
+   border-image: url("assets/panel.png");
+@@ -1000,7 +1000,7 @@
+ }
+ 
  #panel .panel-button {
-   -natural-hpadding: 10px;
-   -minimum-hpadding: 5px;
 -  font-weight: bold;
 +  font-weight: normal;
-   color: black;
-   transition-duration: 100ms;
+   color: #2e3436;
+   box-shadow: inset 0 -2px #4a90d9;
  }
-@@ -1165,7 +1165,7 @@
+@@ -1179,7 +1179,7 @@
  .weather-header,
- .events-section-title {
-   color: black;
+ .world-clocks-header {
+   color: #2e3436;
 -  font-weight: bold;
 +  font-weight: normal;
  }
  
- .world-clocks-grid {
-@@ -1178,7 +1178,7 @@
+ .message-list-section-close > StIcon {
+@@ -1207,7 +1207,7 @@
  
  .calendar-month-label {
-   color: black;
+   color: #222728;
 -  font-weight: bold;
 +  font-weight: normal;
    padding: 8px 0;
  }
  
-@@ -1257,13 +1257,13 @@
+@@ -1286,13 +1286,13 @@
  }
  
  .calendar-today {
@@ -133,10 +133,10 @@
    color: #4a90d9;
 -  font-weight: bold;
 +  font-weight: normal;
-   background-image: url("light-assets/calendar-today.svg");
+   background-image: url("assets/calendar-today.svg");
  }
  
-@@ -1274,7 +1274,7 @@
+@@ -1303,7 +1303,7 @@
  
  .calendar-week-number {
    font-size: 70%;
@@ -145,7 +145,7 @@
    width: 2.3em;
    height: 1.8em;
    border-radius: 2px;
-@@ -1495,7 +1495,7 @@
+@@ -1541,7 +1541,7 @@
  }
  
  .nm-dialog-airplane-headline {
@@ -154,7 +154,7 @@
    text-align: center;
  }
  
-@@ -1512,7 +1512,7 @@
+@@ -1558,7 +1558,7 @@
  }
  
  .nm-dialog-header {
@@ -163,7 +163,7 @@
  }
  
  .nm-dialog-item {
-@@ -2391,7 +2391,7 @@
+@@ -2446,7 +2446,7 @@
  
  .search-statustext, .no-frequent-applications-label {
    font-size: 2em;
@@ -172,7 +172,7 @@
    color: #eeeeec;
  }
  
-@@ -2492,7 +2492,7 @@
+@@ -2588,7 +2588,7 @@
  
  .summary-source-counter {
    font-size: 10pt;
@@ -181,7 +181,7 @@
    height: 1.6em;
    width: 1.6em;
    -shell-counter-overlap-x: 3px;
-@@ -2546,7 +2546,7 @@
+@@ -2642,7 +2642,7 @@
  .chat-meta-message {
    padding-left: 4px;
    font-size: 9pt;
@@ -190,7 +190,7 @@
    color: black;
  }
  
-@@ -2688,7 +2688,7 @@
+@@ -2787,7 +2787,7 @@
    min-height: 2em;
    min-width: 2em;
    font-size: 14pt;
@@ -198,8 +198,8 @@
 +  font-weight: normal;
    border-radius: 5px;
    border: 1px solid #a0a097;
-   color: black;
-@@ -2908,7 +2908,7 @@
+   color: #2e3436;
+@@ -3057,7 +3057,7 @@
  
  .login-dialog-not-listed-label {
    font-size: 90%;
@@ -208,34 +208,34 @@
    color: black;
    padding-top: 1em;
  }
-@@ -2965,7 +2965,7 @@
+@@ -3114,7 +3114,7 @@
  .user-widget-label {
-   color: black;
+   color: #2e3436;
    font-size: 120%;
 -  font-weight: bold;
 +  font-weight: normal;
    text-align: left;
    padding-left: 15px;
  }
-@@ -3022,7 +3022,7 @@
+@@ -3171,7 +3171,7 @@
  .screen-shield-clock {
    color: white;
-   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
+   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 -  font-weight: bold;
 +  font-weight: normal;
    text-align: center;
    padding-bottom: 1.5em;
  }
-@@ -3062,7 +3062,7 @@
+@@ -3211,7 +3211,7 @@
  }
  
  .screen-shield-notification-label {
 -  font-weight: bold;
 +  font-weight: normal;
-   padding: 0px 0px 0px 12px;
+   padding: 0 0 0 12px;
  }
  
-@@ -3117,7 +3117,7 @@
+@@ -3270,7 +3270,7 @@
  #LookingGlassDialog .notebook-tab {
    -natural-hpadding: 12px;
    -minimum-hpadding: 6px;
@@ -243,8 +243,8 @@
 +  font-weight: normal;
    color: #ccc;
    transition-duration: 100ms;
-   padding-left: .3em;
-@@ -3193,7 +3193,7 @@
+   padding-left: 0.3em;
+@@ -3346,7 +3346,7 @@
  }
  
  .lg-extension-name {
