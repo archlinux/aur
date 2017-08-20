@@ -1,6 +1,6 @@
 pkgbase = sagemath-git
 	pkgdesc = Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab
-	pkgver = 8.0.rc0.r0.g7de256c24f
+	pkgver = 8.0.r0.g74b03027bc
 	pkgrel = 1
 	url = http://www.sagemath.org
 	arch = i686
@@ -92,7 +92,7 @@ pkgbase = sagemath-git
 	optdepends = sirocco: for computing the fundamental group of the complement of a plane curve
 	optdepends = three.js: alternative 3D plots engine
 	optdepends = tachyon: alternative 3D plots engine
-	source = git://git.sagemath.org/sage.git#branch=develop
+	source = git://git.sagemath.org/sage.git
 	source = env.patch
 	source = package.patch
 	source = latte-count.patch
@@ -101,8 +101,6 @@ pkgbase = sagemath-git
 	source = test-optional.patch
 	source = r-no-readline.patch
 	source = fes02.patch
-	source = create_extension.patch
-	source = include_dirs_from_externs.patch
 	source = sagemath-ecl-no-sigfpe.patch
 	sha256sums = SKIP
 	sha256sums = e0b5b8673300857fde823209a7e90faecf9e754ab812cc5e54297eddc0c79571
@@ -113,8 +111,6 @@ pkgbase = sagemath-git
 	sha256sums = 81d08c6a760f171f3381455b66a6c84789c9f0eefddbe6ca5794075514ad8c3a
 	sha256sums = ef9f401fa84fe1772af9efee6816643534f2896da4c23b809937b19771bdfbbf
 	sha256sums = a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea
-	sha256sums = 362bd7603e14f729c87eebc9d3f56eb8a9ec94456038f0cb17591e81c459ef8e
-	sha256sums = 19603251870e308e824d130611d5211482bc5912579780a527748d7f8d2ef560
 	sha256sums = c31809f887bf9acc45c5bd9dd30bb93e73601d3efbf3016594c3c1d241731c8a
 
 pkgname = sagemath-git
@@ -159,6 +155,4 @@ pkgname = sagemath-jupyter-git
 	depends = python2-ipywidgets
 	depends = mathjax
 	optdepends = sage-notebook-exporter: convert flask notebooks to Jupyter
-	provides = sagemath-jupyter
-	conflicts = sagemath-jupyter
 

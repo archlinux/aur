@@ -1,5 +1,5 @@
-# Maintainer: Evgeniy Alekseev <arcanis.arch at gmail dot com>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Evgeniy Alekseev <arcanis.arch at gmail dot com>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Thomas Dziedzic <gostrc at gmail dot com>
 # Contributor: Osman Ugus <ugus11 at yahoo dot com>
@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.0.rc0.r0.g7de256c24f
+pkgver=8.0.r0.g74b03027bc
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -33,11 +33,9 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'three.js: alternative 3D plots engine' 'tachyon: alternative 3D plots engine')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
   mcqd coxeter3 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
-source=("git://git.sagemath.org/sage.git#branch=develop" 
-        env.patch package.patch latte-count.patch
-        jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch r-no-readline.patch fes02.patch
-        create_extension.patch include_dirs_from_externs.patch
-        sagemath-ecl-no-sigfpe.patch)
+source=(git://git.sagemath.org/sage.git
+        env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
+        r-no-readline.patch fes02.patch sagemath-ecl-no-sigfpe.patch)
 sha256sums=('SKIP'
             'e0b5b8673300857fde823209a7e90faecf9e754ab812cc5e54297eddc0c79571'
             '4a2297e4d9d28f0b3a1f58e1b463e332affcb109eafde44837b1657e309c8212'
@@ -47,8 +45,6 @@ sha256sums=('SKIP'
             '81d08c6a760f171f3381455b66a6c84789c9f0eefddbe6ca5794075514ad8c3a'
             'ef9f401fa84fe1772af9efee6816643534f2896da4c23b809937b19771bdfbbf'
             'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea'
-            '362bd7603e14f729c87eebc9d3f56eb8a9ec94456038f0cb17591e81c459ef8e'
-            '19603251870e308e824d130611d5211482bc5912579780a527748d7f8d2ef560'
             'c31809f887bf9acc45c5bd9dd30bb93e73601d3efbf3016594c3c1d241731c8a')
 
 pkgver() {
@@ -90,13 +86,6 @@ prepare(){
   sed -e 's|exec ipython|exec ipython2|' -e 's|cygdb|cygdb2|g' -i src/bin/sage
   sed -e "s|'cython'|'cython2'|" -i src/bin/sage-cython
   sed -e 's|bin/python|bin/python2|g' -i src/bin/sage-env
-
-# Add necessary patches to cython
-  mkdir -p local-python
-  cp -r /usr/lib/python2.7/site-packages/{Cython,cython.*,pyximport} local-python
-  cd local-python
-  patch -p1 -i "$srcdir"/create_extension.patch
-  patch -p1 -i "$srcdir"/include_dirs_from_externs.patch
 }
 
 build() {
@@ -105,11 +94,11 @@ build() {
   ./configure --prefix=/usr || true
 
   cd src
+
   export SAGE_LOCAL="/usr"
   export SAGE_ROOT="$PWD"
   export SAGE_SRC="$PWD"
   export CC=gcc
-  export PYTHONPATH="$PWD"/../local-python
 
   python2 setup.py build
 }
@@ -150,14 +139,15 @@ package_sagemath-git() {
 
 # Split jupyter kernel
   rm -r "$pkgdir"/usr/share/jupyter
+
+# Drop meataxe extension, it segfaults
+  rm "$pkgdir"/usr/lib/python2.7/site-packages/sage/matrix/matrix_gfpn_dense.*
 }
 
 package_sagemath-jupyter-git() {
   pkgdesc='Jupyter kernel for SageMath'
   depends=(sagemath python2-jupyter_client python2-ipywidgets mathjax)
   optdepends=('sage-notebook-exporter: convert flask notebooks to Jupyter')
-  conflicts=(sagemath-jupyter)
-  provides=(sagemath-jupyter)
 
   cd sage/src
 
