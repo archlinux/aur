@@ -5,7 +5,7 @@
 # Contributor: sigbjorn
 
 pkgname=amdapp-codexl
-pkgver=2.3.605
+pkgver=2.4.60
 pkgrel=1
 pkgdesc="AMD CodeXL is an OpenCL, Vulkan and OpenGL Debugger and Profiler, with static OpenCL kernel analyzer. It supports OpenCL 2.0"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=("https://github.com/GPUOpen-Tools/CodeXL/releases/download/v${pkgver:0:3
       CodeXL.sh
       codexl.png
       codexl.desktop)
-md5sums=('7bb380fc9bad953894bb534ece9aa6d3'
+md5sums=('c0f51ce09d8b6d0914f42c04cfe8033f'
          'aa9e53ea4c6fca125fbedaf6d968a76a'
          '34792207ff65c7b2314a9bd8cbeb4e1f'
          'a80e16b7378abdd3e0d6d34e485246e1')
