@@ -1,0 +1,19 @@
+pkgbase = dex2jar-git
+	pkgdesc = Tools to work with android .dex and java .class files, git version
+	pkgver = 2.1.nightly.26.r49.g1d51507
+	pkgrel = 2
+	url = https://github.com/pxb1988/dex2jar
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = java-environment>=7
+	makedepends = git
+	makedepends = gradle
+	depends = java-runtime
+	provides = dex2jar=2.1.nightly.26.r49.g1d51507
+	conflicts = dex2jar
+	source = dex2jar::git+https://github.com/pxb1988/dex2jar
+	md5sums = SKIP
+
+pkgname = dex2jar-git
+
