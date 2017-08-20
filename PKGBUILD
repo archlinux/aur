@@ -3,7 +3,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=bdisk
-pkgver=3.06
+pkgver=3.07
 pkgrel=1
 _pkgver=${pkgver}
 #_pkgver=${pkgver}-BETA
@@ -38,7 +38,7 @@ optdepends=('rsync: for rsync syncing'
 	'syslinux: for ipxe support')
 source=("https://git.square-r00t.net/${_pkgname}/snapshot/${_pkgname}-${_pkgver}.tar.xz"
         "${_pkgname}-${_pkgver}.tar.xz.sig")
-sha512sums=('83489a99e257e5f0fbe0bbff6186511b4771c775be679b702c1df97142777e2a8bc82ea11176e5bdeecfbebd09263ae2129799e4fc746f0ff58a8ef03f103e1c'
+sha512sums=('5dede1a54f29b485ae2407b19e21114eaff76d52b60abc64825c166a6dd71c19f932046885cf09e8f0d4349f627b1fe65ab39ac0ada0c1fe2330c61109fbe31f'
             'SKIP')
 package() {
 
