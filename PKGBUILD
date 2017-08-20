@@ -39,7 +39,7 @@ _use_current=
 pkgbase=linux-ck
 _srcname=linux-4.12
 pkgver=4.12.8
-pkgrel=1
+pkgrel=2
 _ckpatchversion=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -60,6 +60,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
+        'bonding-require-speed-duplex-only-for-802.3ad-alb-an.patch'
+        'bonding-ratelimit-failed-speed-duplex-update-warning.patch'
+        'mm-Revert-x86_64-and-arm64-ELF_ET_DYN_BASE-base.patch'
         )
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
@@ -70,7 +73,10 @@ sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             '200320c08e5c469b28be2b8b74de14397c9cfccb11ce3add07536e050c27a180'
             '8a7a3ec9dec36c6b30c0d8de9bc6beb418e6d3346225d2d85c7d6b77c4d00a78'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
+            '48e0505438bb4ccc7a0e050a896122b490e8f1b1446aa3833841a9d4d7853d68'
+            'fc606711a922638d5cc4358f47f69f554d9e6eab1cec91f0b49f00911f399722'
+            'b830ce777543c0edd20a77d70f204c095f2429bb37151cd4a8c9dfae2af8d51a')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -83,6 +89,14 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # https://bugzilla.kernel.org/show_bug.cgi?id=196547
+  patch -Np1 -i ../bonding-ratelimit-failed-speed-duplex-update-warning.patch
+  patch -Np1 -i ../bonding-require-speed-duplex-only-for-802.3ad-alb-an.patch
+
+  # https://github.com/google/sanitizers/issues/837
+  # https://patchwork.kernel.org/patch/9886105/
+  patch -Np1 -i ../mm-Revert-x86_64-and-arm64-ELF_ET_DYN_BASE-base.patch
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
