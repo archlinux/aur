@@ -1,0 +1,22 @@
+pkgbase = libxml2-git
+	pkgdesc = The XML C parser and toolkit of Gnome
+	pkgver = 2.9.4.r99.g27f310d4
+	pkgrel = 1
+	url = https://libxml2.freedesktop.org/wiki/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = icu
+	depends = xz
+	depends = zlib
+	depends = sh
+	provides = libxml2
+	conflicts = libxml2
+	options = staticlibs
+	source = git+https://git.gnome.org/browse/libxml2
+	sha256sums = SKIP
+
+pkgname = libxml2-git
+
