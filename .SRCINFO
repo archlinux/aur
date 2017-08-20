@@ -7,7 +7,6 @@ pkgbase = deeponion
 	arch = x86_64
 	license = MIT
 	depends = miniupnpc
-	depends = libpng
 	depends = boost
 	depends = openssl-1.0
 	depends = libevent
