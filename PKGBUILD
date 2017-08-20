@@ -2,13 +2,13 @@
 
 pkgname=dotnet-runtime-2.0
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 epoch=1
-pkgdesc="A command line utility for building, testing, packaging and running .NET Core applications and libraries"
+pkgdesc="The .NET Core runtime, called CoreCLR, and the base library, called mscorlib. It includes the garbage collector, JIT compiler, base .NET data types and many low-level classes."
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
 license=('MIT')
-depends=('lldb' 'libunwind' 'icu' 'lttng-ust' 'openssl' 'curl' 'dotnet-host')
+depends=('lldb' 'libunwind' 'icu' 'lttng-ust' 'dotnet-host' 'curl' 'openssl-1.0')
 options=('staticlibs')
 
 conflicts=('dotnet-lts')
