@@ -8,16 +8,16 @@ arch=('i686' 'x86_64')
 url="http://chessprogramming.wikispaces.com/Texel"
 license=('GPL')
 depends=('gcc-libs')
-source=("http://dl.dropboxusercontent.com/u/89684995/texel106.7z")
-md5sums=('05d491853e43c25d2fc69fcb1a14d8eb')
+source=("https://github.com/B4dT0bi/texel/archive/${pkgver}.zip")
+md5sums=('3ae1db48a1b70b0fe8cff0772ac5a2dc')
 _bits=32 ; [[ "$CARCH" = 'x86_64' ]] && _bits=64
 
 build() {
-	cd "${srcdir}/"
+	cd "${srcdir}/texel-${pkgver}/"
 	make texel$_bits
 }
 
 package() {
-	cd "${srcdir}/"
+	cd "${srcdir}/texel-${pkgver}/"
 	install -Dm0755 $pkgname$_bits ${pkgdir}/usr/bin/$pkgname
 }
