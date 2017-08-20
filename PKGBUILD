@@ -18,7 +18,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugi
          'sdl2' 'smbclient' 'speex' 'shine' 'tesseract' 'twolame' 'v4l-utils'
          'vid.stab' 'vo-amrwbenc' 'libxcb' 'xvidcore' 'xz' 'wavpack' 'zeromq' 'zimg'
          'zlib' 'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so'
-         'x265' 'snappy' 'sndio' 'xavs')
+         'libx265.so' 'snappy' 'sndio' 'xavs')
 depends_x86_64=('cuda')
 makedepends=('flite' 'libmfx' 'libvdpau' 'yasm' 'opencl-headers')
 optdepends=('avxsynth-git: for Avisynth support'
@@ -46,11 +46,18 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg' 'qt-faststart')
 source=(https://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.xz{,.asc}
-        'UNREDISTRIBUTABLE.txt')
+        'UNREDISTRIBUTABLE.txt'
+        'ffmpeg-openjpeg2.2.patch')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=('d2a9002cdc6b533b59728827186c044ad02ba64841f1b7cd6c21779875453a1e'
             'SKIP'
-            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
+            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
+            '490598f78d7879af8ef5b8d7f92ada83d0ee64f9609f6c7b989eb331c2539f68')
+
+prepare() {
+  cd $_pkgbasename-$pkgver
+  patch -Np1 -i ../ffmpeg-openjpeg2.2.patch
+}
 
 build() {
   cd $_pkgbasename-$pkgver
