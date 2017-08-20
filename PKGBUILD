@@ -14,11 +14,11 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 			 'sleuthkit' 'snappy' 'yara' 'thrift' 'magic' 'cpp-netlib'
 			 'python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
 			 'gtest' 'gmock' 'augeas' 'boost' 'boost-libs' 'lldpd' 'lld'
-			 'apt' 'dpkg' 'rpm-org')
+			 'zstd' 'rapidjson' 'apt' 'dpkg' 'rpm-org')
 conflicts=()
 backup=('etc/osquery/osquery.conf')
 options=(!strip)
-_gitcommit="b4316a57a04a6efb6b56dc23593cae3c10ad7118"
+_gitcommit="cf170c4278fe09301b4910fd9aae548fb0fc6799"
 #source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
@@ -27,7 +27,7 @@ source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit
 sha256sums=('SKIP'
             '6a5522f9058fc3d142dd3642f73ccd2758cc0b43bd28644a0f4eee3e5d7aea55'
             '9fcfe9db909c664f7dfeeb7c56c9d964eb6d7673dbe5a4858c09a3953f13cd4b'
-            'f993130c1612474a692ec2bf6f853d47b283c94a52e90d1036c8ac60ddd0d3df')
+            '75c2c600752caf66bf5457d4bd08fba9c0b7e14918bf21ca8704640a5894bdcd')
 
 _gitname=${pkgname}
 

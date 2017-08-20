@@ -85,3 +85,16 @@ index 4444a9a2..b9c2640d 100644
  elseif(OSQUERY_BUILD_PLATFORM STREQUAL "debian")
    LOG_PLATFORM("Debian")
  elseif(OSQUERY_BUILD_PLATFORM STREQUAL "ubuntu")
+diff --git a/osquery/tables/CMakeLists.txt b/osquery/tables/CMakeLists.txt
+index 99477c69..d07730e2 100644
+--- a/osquery/tables/CMakeLists.txt
++++ b/osquery/tables/CMakeLists.txt
+@@ -67,7 +67,7 @@ if(LINUX)
+   set(TABLE_PLATFORM "linux")
+
+   ADD_OSQUERY_LINK_ADDITIONAL("libresolv.so")
+-  ADD_OSQUERY_LINK_ADDITIONAL("cryptsetup devmapper lvm2app lvm-internal daemonclient")
++  ADD_OSQUERY_LINK_ADDITIONAL("cryptsetup devmapper lvm2app")
+   ADD_OSQUERY_LINK_ADDITIONAL("gcrypt gpg-error")
+   ADD_OSQUERY_LINK_ADDITIONAL("blkid")
+   ADD_OSQUERY_LINK_ADDITIONAL("ip4tc")
