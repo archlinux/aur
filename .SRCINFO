@@ -8,6 +8,7 @@ pkgbase = planck
 	makedepends = java-environment
 	makedepends = cmake
 	makedepends = leiningen
+	makedepends = unzip
 	depends = webkit2gtk
 	depends = libzip
 	depends = zlib
