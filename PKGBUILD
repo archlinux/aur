@@ -16,7 +16,7 @@ depends=('boost-libs>=1.45'  'unbound>=1.4.16'  'miniupnpc>=1.6' 'libunwind'
 makedepends=('git' 'cmake' 'boost' 'gtest')
 
 
-pkgdesc="Peer-to-peer network based anonymous digital currency (includes deaemon, wallet and miner)"
+pkgdesc="Peer-to-peer anonymous digital currency (daemon, CLI wallet, and wallet API library)"
 source=("$_gitname::git+https://github.com/monero-project/monero.git"
         "monerod.service"
         "monerod.conf"
