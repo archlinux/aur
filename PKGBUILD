@@ -1,7 +1,7 @@
 # Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
 pkgname=shellinabox-git
 pkgver=r428.98e6eeb
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of a web server that can export arbitrary command line tools to a web based terminal emulator"
 arch=('any')
 url="https://github.com/shellinabox/shellinabox"
@@ -38,7 +38,7 @@ package() {
   make
 
   make DESTDIR="$pkgdir/" install
-  install -Dm655 "${srcdir}/shellinabox@.service"  "${pkgdir}/usr/lib/systemd/system/shellinabox@.service"
+  install -Dm644 "${srcdir}/shellinabox@.service"  "${pkgdir}/usr/lib/systemd/system/shellinabox@.service"
 }
 
 # vim:set ts=2 sw=2 et:
