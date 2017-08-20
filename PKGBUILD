@@ -1,9 +1,8 @@
 # Maintainer: Onishin <onishin at onishin dot org>
 # Co-maintainer: redfish <redfish at galactica dot pw>
 
-# TODO: rename package to monero-git in a few weeks
-pkgbase=('bitmonero-git')
-pkgname=('bitmonero-git' 'libmonero-wallet-git')
+pkgbase=('monero-git')
+pkgname=('monero-git' 'libmonero-wallet-git')
 _gitname='monero'
 pkgver=0.10.3.1
 pkgrel=1
@@ -80,10 +79,9 @@ check() {
 	make ARGS="$CTEST_ARGS" test
 }
 
-package_bitmonero-git() {
+package_monero-git() {
 
-	provides=('bitmonero')
-	conflicts=('bitmonero')
+	provides=('monero')
 
 	backup=('etc/monerod.conf')
 	install=monero.install
@@ -103,8 +101,7 @@ package_bitmonero-git() {
 
 package_libmonero-wallet-git() {
 
-	provides=('libmonero-wallet' 'libmonerowallet-git')
-	conflicts=('libmonero-wallet' 'libmonerowallet-git')
+	provides=('libmonero-wallet')
 
         # NOTE: this is crucial, otherwise stripping breaks the .a archive:
         # monero-core (GUI) fails to link against it (it can't find symbols
