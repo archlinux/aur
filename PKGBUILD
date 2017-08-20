@@ -2,7 +2,7 @@
 # Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=kitch
-pkgver=23.3.7
+pkgver=24.1.7
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
@@ -11,15 +11,15 @@ url="https://github.com/itchio/kitch"
 license=('MIT')
 
 depends=('alsa-lib' 'libnotify' 'nss' 'gconf' 'gtk2' 'libxtst' 'desktop-file-utils' 'gtk-update-icon-cache' 'libxss')
-makedepends=('nodejs' 'nodejs-grunt-cli' 'npm' 'python2' 'gcc')
+makedepends=('nodejs' 'npm' 'python2' 'gcc')
 options=('!strip')
 install="kitch.install"
 
 # sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
 source=("https://github.com/itchio/itch/archive/v${pkgver}-canary.tar.gz")
-sha256sums=('34a5937b13a06f7f46d83bbbed4dff4d5d09a76978aa42c301bdfeed01dd4ddc')
+sha256sums=('001a489b8dd4d34c87cf45f980fb9487efa58505f493c504030e63917fd3bfe2')
 
-[ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32; _ITCH_ARCH=i386
+[ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32; _ITCH_ARCH=386
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64;  _ITCH_ARCH=amd64
 
 prepare() {
@@ -28,31 +28,28 @@ prepare() {
   export PYTHON=/usr/bin/python2
 
   # Get dependencies
-  # (npm3's progress indicator is notoriously slow, disable)
-  npm install --no-progress --quiet
+  npm install
 }
 
 build() {
   cd "${srcdir}/itch-${pkgver}-canary"
-  export CI_BUILD_TAG="v23.3.7-canary"
+  export CI_BUILD_TAG="v24.1.7-canary"
   export CI_CHANNEL="canary"
 
   release/ci-compile.js
   release/ci-generate-linux-extras.js
-
-  grunt -v "electron:linux-${_ELECTRON_ARCH}"
+  release/ci-package.js --build-only linux "${_ITCH_ARCH}"
 }
 
-check() {
-  cd "${srcdir}/itch-${pkgver}-canary"
-  node app/tests/runner.js
-}
+# about the absence of check():
+# tests are run with electron and, trust me, you don't
+# want this in your PKGBUILD
 
 package() {
   cd "${srcdir}/itch-${pkgver}-canary"
 
   install -d "${pkgdir}/usr/lib/kitch"
-  cp -a "build/v${pkgver}-canary/kitch-linux-${_ELECTRON_ARCH}/." "${pkgdir}/usr/lib/kitch"
+  cp -a "build/v${pkgver}/kitch-linux-${_ELECTRON_ARCH}/." "${pkgdir}/usr/lib/kitch"
 
   install -d "${pkgdir}/usr/share/applications"
   install -Dm644 linux-extras/io.itch.kitch.desktop "${pkgdir}/usr/share/applications/kitch.desktop"
