@@ -2,14 +2,14 @@
 
 pkgname=grisbi
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal financial management program"
 arch=('i686' 'x86_64')
 url="http://www.grisbi.org"
 license=('GPL')
 depends=('desktop-file-utils' 'gtk2')
 makedepends=('gettext' 'grep' 'intltool')
-optdepends=('goffice8.0: for drawing charts' 'libofx: support for the OFX banking standard')
+optdepends=('goffice0.8: for drawing charts' 'libofx: support for the OFX banking standard')
 options=(!libtool)
 install=grisbi.install
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
