@@ -40,11 +40,11 @@ package() {
     LIBEXECDIR="${pkgdir}/usr/lib" \
     SHLIBDIR="${pkgdir}/usr/lib" \
     install
-  make DESTDIR="${pkgdir}" PYTHON=python2 \
+  make DESTDIR="${pkgdir}" PYTHON=/usr/bin/python2 \
     LIBEXECDIR="${pkgdir}/usr/lib" \
     SHLIBDIR="${pkgdir}/usr/lib" \
     install-pywrap
-  make DESTDIR="${pkgdir}" PYTHON=python3 \
+  make DESTDIR="${pkgdir}" PYTHON=/usr/bin/python3 \
     LIBEXECDIR="${pkgdir}/usr/lib" \
     SHLIBDIR="${pkgdir}/usr/lib" \
     install-pywrap
