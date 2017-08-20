@@ -1,7 +1,7 @@
 # Maintainer: Dave Reisner <d@falconindy.com>
 
 pkgname=asp
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Arch Linux build source file management tool"
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(awk bash jq git libarchive)
 makedepends=(asciidoc)
 source=($pkgname-$pkgver.tar.gz::https://github.com/falconindy/asp/archive/v$pkgver.tar.gz)
-sha256sums=('df92416a2a991f0c89a7c152de99a41608a4810d45b8dc58613695e17a971fc3')
+sha256sums=('e136e4c16850a97a510fb98a169f4a401adad7fc0575af2202e926327265dd4b')
 
 build() {
   make -C asp-$pkgver
