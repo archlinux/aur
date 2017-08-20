@@ -6,7 +6,6 @@ pkgbase = dotnet-host
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	license = MIT
-	depends = libcurl-openssl-1.0
 	provides = dotnet-cli
 	conflicts = dotnet-bin
 	conflicts = dotnet-cli
