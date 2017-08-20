@@ -1,7 +1,7 @@
 # Maintainer: Gökberk Yaltıraklı <webdosusb at gmail dot com>
 pkgname=notes
 pkgver=1.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Note taking application, write down your thoughts."
 arch=('i686' 'x86_64')
 url="https://github.com/nuttyartist/notes"
@@ -11,7 +11,7 @@ makedepends=()
 provides=('notes')
 conflicts=('notes')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/nuttyartist/notes/archive/v$pkgver.tar.gz")
-md5sums=('63e42d1b8337c2c3f3d4a53754938b3b')
+md5sums=('5731d46b15a3ed0666254bbfcb304f8e')
 
 build() {
   cd "$pkgname-$pkgver"
