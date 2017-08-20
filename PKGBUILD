@@ -29,6 +29,10 @@ md5sums=('485033b32452c9c6a28a9d7762588911'
          'SKIP'
          'ca16d5162eed85b1ba4e6b9fc37f9e35')
 
+## Previous versions (also see: /var/cache/pacman/pkg/google-chrome-beta-*):
+#source[0]="https://dl.google.com/linux/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
+#md5sums[0]='SKIP'
+
 package() {
   msg2 "Extracting the data.tar.xz..."
   bsdtar -xf data.tar.xz -C "$pkgdir/"
