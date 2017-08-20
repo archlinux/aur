@@ -2,17 +2,17 @@
 # austin.haedicke@gamil.com
 
 pkgname=dnd-tools
-pkgver=ec678ea
+pkgver=84718f4
 pkgrel=1
 pkgdesc='Interactive CLI tools for Dungeons and Dragons 5e'
 depends=('python>=3.6')
 makedepends=('git' 'python')
 arch=('i686' 'x86_64')
-url='https://github.com/gtbjj/dnd-tools'
+url='https://github.com/savagezen/dnd-tools'
 license=('AGPLv3')
 conflicts=('')
 provides=('dnd-tools')
-source=(git://github.com/gtbjj/dnd-tools.git)
+source=(git://github.com/savagezen/dnd-tools.git)
 sha256sums=('SKIP')
 
 pkgver() {
