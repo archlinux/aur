@@ -1,7 +1,7 @@
 # Contributor: Figue <ffigue at gmail dot com>
 
 pkgname=abrowser-bin
-pkgver=54.0
+pkgver=55.0.2
 pkgrel=1
 pkgdesc="Binary version of Abrowser, safe and easy web browser from Mozilla"
 arch=('i686' 'x86_64')
@@ -13,14 +13,14 @@ depends=('gtk2' 'gtk3' 'gcc-libs' 'libidl2' 'mozilla-common' 'nss>=3.12.10' 'lib
          'libvpx' 'lcms' 'nspr>=4.8.8' 'libevent' 'libpng' 'cairo')
 
 s_pkgname=abrowser
-build=build3
+build=build1
 ubuntu_ver=16.04.1
 trisquel_ver=8.0trisquel48
 
-sha256sums_i686=('683fc76d89a51a563e7b335dcb8b80141f5960dbf7806e0c5cab707508de1d56')
-sha256sums_x86_64=('62006ad22e0337a00bc6cc2063d765f4df817141d74c0bdadfffdd4de666881d')
-source_x86_64=("http://us.archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${build}-0ubuntu0.${ubuntu_ver}+${trisquel_ver}_amd64.deb")
-source_i686=("http://us.archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${build}-0ubuntu0.${ubuntu_ver}+${trisquel_ver}_i386.deb")
+sha256sums_i686=('9246d290021393da96b340c14d71c40140a7c041c83743a82e163cff9e146185')
+sha256sums_x86_64=('5d6e6edbed2a33edb91d146a3fd773dc94e06a0b183658a2bcaf29bcbfe10240')
+source_x86_64=("http://archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${build}-0ubuntu0.${ubuntu_ver}+${trisquel_ver}_amd64.deb")
+source_i686=("http://archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${build}-0ubuntu0.${ubuntu_ver}+${trisquel_ver}_i386.deb")
 
 package() {
   tar xJf ${srcdir}/data.tar.xz -C ${pkgdir}/
