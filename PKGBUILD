@@ -7,7 +7,7 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-dsd
-pkgver=0.19.19
+pkgver=0.19.21
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music with DSD patches and Sox enabled'
 url='https://github.com/lintweaker/mpd-dsd-019'
