@@ -1,0 +1,10 @@
+--- archive_files/common/lib/modules/fglrx/build_mod/kcl_ioctl.c	2015-12-18 19:47:41.000000000 +0100
++++ archive_filesb/common/lib/modules/fglrx/build_mod/kcl_ioctl.c	2017-08-20 19:44:10.356564038 +0200
+@@ -30,6 +30,7 @@
+  *
+  */
+ 
++#include <linux/cache.h>
+ #include <linux/version.h>
+ #include <asm/uaccess.h>
+ 

@@ -32,11 +32,11 @@ _old_control=n #for pre-GCN users who has problems with default config, pick =y 
 
 pkgname=catalyst-test
 pkgver=15.12
-pkgrel=16
+pkgrel=17
 # _betano=1.0
 _amdver=15.302
 pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons are optionally supported"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
@@ -106,7 +106,8 @@ source=(
     4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
     4.11-npfeiler-signal_vmf.patch
     4.12-npfeiler-PUD_OFFSET.patch
-    4.12-arch-remove_clts.patch)
+    4.12-arch-remove_clts.patch
+    4.12-npfeiler-movsl_mask.patch)
 
 md5sums=('39808c8a9bcc9041f1305e3531b60622'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
@@ -139,7 +140,8 @@ md5sums=('39808c8a9bcc9041f1305e3531b60622'
 	 '05f6364db877d9c4bdf1592deda905b7'
 	 '8e53ba65a0aad42eb2ff771c1ace6609'
 	 'f090e47160403e4ba65d1e0de69973c9'
-	 '782769206ed12ded10c347be3e476729')
+	 '782769206ed12ded10c347be3e476729'
+	 'cb25bc7fbb7d5cb1c07d2f3fa5fda826')
 
 
 build() {
@@ -338,6 +340,7 @@ package() {
       patch -Np1 -i ../4.11-npfeiler-signal_vmf.patch
       patch -Np1 -i ../4.12-npfeiler-PUD_OFFSET.patch
       patch -Np1 -i ../4.12-arch-remove_clts.patch
+      patch -Np1 -i ../4.12-npfeiler-movsl_mask.patch
 
     # Prepare modules source files
       install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
