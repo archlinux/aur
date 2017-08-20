@@ -2,13 +2,13 @@
 
 pkgname=dotnet-host
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A command line utility for building, testing, packaging and running .NET Core applications and libraries"
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
 license=('MIT')
-depends=()
+depends=('libcurl-openssl-1.0')
 options=('staticlibs')
 conflicts=('dotnet-bin' 'dotnet-cli')
 replaces=('dotnet-cli')
