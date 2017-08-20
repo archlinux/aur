@@ -1,0 +1,21 @@
+pkgbase = deeponion
+	pkgdesc = DeepOnion (ONION) is a new PoW/PoS altcoin that is most secure. All the communications in DeepOnion network is done through the TOR network.
+	pkgver = r6.d0d33df
+	pkgrel = 1
+	url = https://github.com/deeponion/deeponion
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = miniupnpc
+	depends = libpng
+	depends = boost
+	depends = openssl-1.0
+	depends = libevent
+	depends = db
+	source = deeponion::git+https://github.com/deeponion/deeponion
+	source = upnp_2.patch
+	md5sums = SKIP
+	md5sums = 3c6aec679a55744df1fac1a8cb502505
+
+pkgname = deeponion
+
