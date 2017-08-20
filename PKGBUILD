@@ -1,7 +1,7 @@
 # Maintainer: jun7 <jun7@hush.com>
 pkgname=wyebadblock-git
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An adblock extension for webkit2gtk browsers."
 arch=('x86_64')
 url="https://github.com/jun7/wyebadblock"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver(){
 	cd "$srcdir/wyebadblock"
-	printf "$pkgver.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
