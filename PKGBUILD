@@ -3,12 +3,14 @@
 _pkgname=gtk-wave-cleaner
 pkgname=gwc
 pkgver=0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Gtk Wave Cleaner is a digital audio editor to denoise, dehiss and amplify audio files"
 arch=("i686" "x86_64")
 url="http://gwc.sourceforge.net/"
 license=("GPL")
 depends=("libsndfile" "gtk2" "fftw")
+optdepends=("vorbis-tools: for ogg support"
+            "lame: for mp3 support")
 makedepends=("make")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
