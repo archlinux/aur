@@ -3,7 +3,7 @@
 
 pkgbase=django-allauth
 pkgname=('python-django-allauth' 'python2-django-allauth')
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication."
 arch=('any')
@@ -12,10 +12,10 @@ url="http://www.intenct.nl/projects/django-allauth/"
 makedepends=('python-setuptools'
              'python2-setuptools')
 source=("https://github.com/pennersr/${pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('6ac06a191afd1e23a2d2f37dae09fbfd35d0943cd217dce7b97f21861594815f')
+sha256sums=('9c935d7d9aab8f01f2e857408e6a5e389e44745804b87b739903e878f0bbaf06')
 
 package_python-django-allauth() {
-  depends=('python' 'python-django' 'python-openid' 'python-requests-oauthlib'
+  depends=('python' 'python-django>=1.10' 'python-openid' 'python-requests-oauthlib'
            'python-requests')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -25,7 +25,7 @@ package_python-django-allauth() {
 }
 
 package_python2-django-allauth() {
-  depends=('python2' 'python2-django' 'python2-openid'
+  depends=('python2' 'python2-django>=1.10' 'python2-openid'
            'python2-requests-oauthlib' 'python2-requests')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
