@@ -6,8 +6,8 @@
 
 _pkgname=get_iplayer
 pkgname=$_pkgname-git
-pkgver=3.01
-pkgrel=2
+pkgver=3.02
+pkgrel=1
 pkgdesc="Download TV and radio programmes from BBC iPlayer"
 arch=('any')
 url="https://github.com/get-iplayer/get_iplayer"
@@ -16,8 +16,7 @@ license=('GPL3')
 # perl-libwww is the LWP module
 depends=('perl-libwww'
          'perl-lwp-protocol-https'
-         'perl-xml-libxml'
-         'perl-xml-simple')
+         'perl-xml-libxml')
 
 optdepends=(
   'atomicparsley: metadata tagging for MP4 and M4A files'
