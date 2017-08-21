@@ -1,8 +1,8 @@
 pkgbase = prewikka
 	pkgdesc = Graphical front-end analysis console for the Prelude Framework
-	pkgver = 3.0.0
+	pkgver = 4.0.0
 	pkgrel = 1
-	url = http://www.prelude-siem.org
+	url = https://www.prelude-siem.org
 	arch = i686
 	arch = x86_64
 	license = GPLv2
@@ -18,8 +18,8 @@ pkgbase = prewikka
 	depends = libprelude
 	depends = libpreludedb
 	backup = etc/prewikka/prewikka.conf
-	source = https://www.prelude-siem.org/pkg/src/3.0.0/prewikka-3.0.0.tar.gz
-	md5sums = a0827a7740061830ac639e7d5d86f5a9
+	source = https://www.prelude-siem.org/pkg/src/4.0.0/prewikka-4.0.0.tar.gz
+	md5sums = abbb29ef626e2ee18d8659c2b6013f9d
 
 pkgname = prewikka
 
