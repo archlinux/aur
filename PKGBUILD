@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-dav-ext
-pkgver=0.0.3
-pkgrel=6
+pkgver=0.1.0
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.13.3
@@ -16,17 +16,10 @@ license=('CUSTOM')
 source=(
 	https://nginx.org/download/nginx-$_nginxver.tar.gz
 	https://github.com/arut/nginx-dav-ext-module/archive/v$pkgver/nginx-dav-ext-module-$pkgver.tar.gz
-	nginx-dav-ext-dynamic-module.patch::https://patch-diff.githubusercontent.com/raw/arut/nginx-dav-ext-module/pull/26.patch
 )
 
 sha256sums=('5b73f98004c302fb8e4a172abf046d9ce77739a82487e4873b39f9b0dcbb0d72'
-            'd428a0236c933779cb40ac8c91afb19d5c25a376dc3caab825bfd543e1ee530d'
-            '722e12ff18ded5266f9ca29f5d9db79205d8247f82981c928663fbbe39d20833')
-
-prepare() {
-	cd "$srcdir"/nginx-dav-ext-module-$pkgver
-	patch -p1 -i "$srcdir"/nginx-dav-ext-dynamic-module.patch
-}
+            '6b004eed8ea16ad8de4d304027bf0413cc323a95914e58625a7dc066481aae3a')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
