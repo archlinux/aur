@@ -1,0 +1,21 @@
+pkgbase = attr-git
+	pkgdesc = Provides useful functions commonly found on BSD systems
+	pkgver = 2.4.47.r49.gc1a7b53
+	pkgrel = 1
+	url = https://savannah.nongnu.org/projects/attr
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	makedepends = gettext
+	depends = glibc
+	provides = xfsattr
+	conflicts = xfsattr
+	replaces = xfsattr
+	options = staticlibs
+	source = git+https://git.savannah.gnu.org/git/attr.git
+	sha256sums = SKIP
+
+pkgname = attr-git
+
