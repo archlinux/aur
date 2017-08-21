@@ -1,0 +1,26 @@
+pkgbase = mlocate-git
+	pkgdesc = A locate/updatedb implementation
+	pkgver = 0.26.r14.gc98bf65
+	pkgrel = 1
+	url = https://pagure.io/mlocate
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	provides = mlocate
+	conflicts = mlocate
+	backup = etc/updatedb.conf
+	source = git+https://pagure.io/mlocate.git
+	source = sysusers.d::https://git.archlinux.org/svntogit/packages.git/plain/trunk/sysusers.d?h=packages/mlocate
+	source = updatedb.conf::https://git.archlinux.org/svntogit/packages.git/plain/trunk/updatedb.conf?h=packages/mlocate
+	source = updatedb.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/updatedb.service?h=packages/mlocate
+	source = updatedb.timer::https://git.archlinux.org/svntogit/packages.git/plain/trunk/updatedb.timer?h=packages/mlocate
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mlocate-git
+
