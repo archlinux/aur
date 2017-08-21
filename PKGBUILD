@@ -1,14 +1,14 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=libhdhomerun
-pkgver=20161107
+pkgver=20170815
 pkgrel=1
 pkgdesc="Library and command line utility for interfacing with HDHomeRun device"
 arch=('any')
 url="http://www.silicondust.com/downloads"
 license=('LGPL')
 source=("http://download.silicondust.com/hdhomerun/${pkgname}_${pkgver}.tgz")
-md5sums=('9835301755c12a2596e12360f5b5a507')
+md5sums=('1d180328794ad968135f860d7ea5a547')
 depends=('glibc')
 optdepends=('hdhomerun-firmware-bin: firmware for hdhomerun devices'
 'hdhomerun_config_gui: hdhomerun configuration gui')
