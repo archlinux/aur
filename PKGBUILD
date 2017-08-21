@@ -2,7 +2,7 @@
 
 pkgname=auracle-git-patched
 pkgver=r23.90b1793
-pkgrel=1
+pkgrel=2
 pkgdesc='A flexible client for the AUR'
 arch=('x86_64' 'i686')
 url='https://github.com/falconindy/auracle.git'
@@ -31,4 +31,5 @@ build () {
 package () {
   cd "${pkgname}"
   DESTDIR="${pkgdir}" ninja -C _build install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
