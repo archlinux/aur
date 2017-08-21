@@ -11,7 +11,9 @@ url='http://invisible-island.net/ncurses/ncurses.html'
 license=('MIT')
 depends=('lib32-glibc' "lib32-${_pkgbasename}")
 makedepends=("gcc-multilib")
-source=(http://invisible-mirror.net/archives/ncurses/current/ncurses-${_pkgver}.tgz{,.asc})
+# Temporary URL, the upstream invisible-island URL will be used again when the
+# core ncurses package is updated to a more recent version.
+source=(https://www.mirrorservice.org/sites/lynx.isc.org/ncurses/current/ncurses-${_pkgver}.tgz{,.asc})
 md5sums=('c0e32e50ed6fd81af7ecc4910de9fa3f'
          'SKIP')
 validpgpkeys=('C52048C0C0748FEE227D47A2702353E0F7E48EDB') # Thomas Dickey
