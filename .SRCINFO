@@ -1,8 +1,8 @@
 pkgbase = prelude-manager
 	pkgdesc = Bus communication for all Prelude modules
-	pkgver = 3.0.0
+	pkgver = 4.0.0
 	pkgrel = 1
-	url = http://www.prelude-siem.org
+	url = https://www.prelude-siem.org
 	install = prelude-manager.install
 	arch = i686
 	arch = x86_64
@@ -13,14 +13,12 @@ pkgbase = prelude-manager
 	depends = libprelude
 	depends = libpreludedb
 	backup = etc/prelude-manager/prelude-manager.conf
-	source = https://www.prelude-siem.org/pkg/src/3.0.0/prelude-manager-3.0.0.tar.gz
+	source = https://www.prelude-siem.org/pkg/src/4.0.0/prelude-manager-4.0.0.tar.gz
 	source = prelude-manager.run
-	source = prelude-manager-conf.patch
 	source = prelude-manager.service
-	md5sums = cf412ea1d5768fd76f0922036445d677
-	md5sums = 322d772d96107414152b926c5650b6b6
-	md5sums = c51ab90ed0c242ae3ce752db97ac24cc
-	md5sums = 8217d594e84867d077a007fe42cfef15
+	md5sums = e7e34b76b0c0d3d6924f012107f570a5
+	md5sums = 8e2009544ddf286eab60e6b322d89c1e
+	md5sums = c93f36811d69bbd35fcbb7af580dc5f2
 
 pkgname = prelude-manager
 

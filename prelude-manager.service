@@ -1,14 +1,9 @@
 [Unit]
-Description=Prelude-Manager service
-DefaultDependencies=no
-After=remode_fs.target
-Before=prelude-lml.service prelude-correlator.service
+Description=Prelude bus communicator
+Documentation=man:prelude-manager(1)
 
 [Service]
-ExecStart=/usr/bin/prelude-manager -d -P /run/prelude-manager/prelude-manager.pid
-Type=forking
-PIDFile=/run/prelude-manager/prelude-manager.pid
-Restart=always
+ExecStart=/usr/sbin/prelude-manager
 
 [Install]
-WantedBy=prelude-lml.service prelude-correlator.service multi-user.target
+WantedBy=multi-user.target
