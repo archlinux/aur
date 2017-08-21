@@ -1,7 +1,7 @@
 pkgbase = attr-git
-	pkgdesc = Provides useful functions commonly found on BSD systems
+	pkgdesc = Commands for manipulating filesystem extended attributes
 	pkgver = 2.4.47.r49.gc1a7b53
-	pkgrel = 1
+	pkgrel = 2
 	url = https://savannah.nongnu.org/projects/attr
 	arch = i686
 	arch = x86_64
