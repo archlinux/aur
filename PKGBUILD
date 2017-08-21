@@ -12,7 +12,7 @@ license=('LGPL')
 groups=('MBC')
 replaces=('breath-icon-theme')
 validpgpkeys=('94832C0DBAC3B295A91C5F4081D2921276951309')   # Mattéo Rossillol
-source=("https://github.com/CompFile/My_AUR_PKG/raw/master/PKG/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz"{,.sig})
+source=("https://github.com/CompFile/My_AUR_PKG/raw/master/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz"{,.sig})
 md5sums=('992a3a82c501b3dd4f5e3589feb3cbdb'
          'SKIP')
 
