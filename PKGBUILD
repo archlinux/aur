@@ -3,7 +3,7 @@
 pkgbase=('python-scikit-umfpack')
 pkgname=('python-scikit-umfpack' 'python2-scikit-umfpack')
 _module='scikit-umfpack'
-pkgver='0.2.3'
+pkgver='0.3.0'
 pkgrel=1
 pkgdesc="Python interface to UMFPACK sparse direct solver."
 url="https://scikit-umfpack.github.io/scikit-umfpack"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python2-setuptools' 'swig' 'python-pypandoc' '
 license=('BSD')
 arch=('any')
 source=("https://pypi.io/packages/source/s/scikit-umfpack/scikit-umfpack-${pkgver}.tar.gz")
-md5sums=('eccb5e4864e85fc7ed8c4ae4c86b6245')
+md5sums=('16e5add0931e6b075e570df24d709d63')
 
 prepare() {
     cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
