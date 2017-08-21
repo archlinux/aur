@@ -1,23 +1,23 @@
 # Maintainer: Oliver Mangold omangold at gmail dot com
 
 pkgname=python-spark-parser
-pkgver=1.5.1
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="An Early-Algorithm Context-free grammar Parser"
 arch=('any')
 url="https://github.com/rocky/python-spark/"
 license=('MIT')
 makedepends=('python')
-source=("https://pypi.python.org/packages/c6/dc/6d7e50a390ef3677d064eea7506669cb1a14fb0a389accd6d66901bc8e7e/spark_parser-${pkgver}.tar.gz")
-sha256sums=('b6753103f3744deefde7f841c275e4d15d813059a5b575ca7df28fa45480f83a')
+depends=('python-click')
+source=(python-spark-parser::'git://github.com/rocky/python-spark.git#commit=9da5c8b7e9bd2bf6dce4bb0a8bd6875498153c32')
+sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/spark_parser-${pkgver}"
+    cd "$srcdir/$pkgname"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/spark_parser-${pkgver}"
+    cd "$srcdir/$pkgname"
     python setup.py install --root="$pkgdir"
 }
-
