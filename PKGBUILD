@@ -1,23 +1,23 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=synclinks
-pkgver=2016.4.20
+pkgver=2017
 pkgrel=1
 pkgdesc='A tool that synchronizes hierarchies of symlinks.'
 arch=(i686 x86_64)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/synclinks"
+url="https://xyne.archlinux.ca/projects/synclinks"
 depends=(glibc)
 source=(
-  http://xyne.archlinux.ca/projects/synclinks/src/synclinks-2016.4.20.tar.xz
-  http://xyne.archlinux.ca/projects/synclinks/src/synclinks-2016.4.20.tar.xz.sig
+  https://xyne.archlinux.ca/projects/synclinks/src/synclinks-2017.tar.xz
+  https://xyne.archlinux.ca/projects/synclinks/src/synclinks-2017.tar.xz.sig
 )
 sha512sums=(
-  551a6e150e01b89af1d0ad135dbadc0fe33d7636aef2239cb140910d7bead7fc963832428bf34422abac0646f4029584816fa7d319a7faaec84930783ff24d33
-  a6b590b07c5feee42a5672ebb52b427a0bab3b4117320932443a53cb7a0c52f95a78099ccee5c790db37f89cb3f9774ba72808bddb602887889aea587fafa69d
+  a1913ff7d18ced042b204161c1fd6e93a83a6c385383577844c588eda7781b736df5fc322e23c6f0de306c439e529a1c464ae9dbe1cacb627f48184a80ee3223
+  b9ae205cfe370feb1dc78600a1964e79020e826bb6d593738794dd7e67ad647a101ccc5669550cc910bba7f3a3e98e9c81d0268243467cc85e4b57b157918242
 )
 md5sums=(
-  d8180834e8b5b6dd81a51deab2251910
-  1549e04d0b97ba36eb9689892ad175b1
+  baad1249eef7be6f8b7a1644520a8a6b
+  dc051f763621f491950d5509fb50d376
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
