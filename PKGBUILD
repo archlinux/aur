@@ -6,16 +6,16 @@
 #    With Pacaur: AURDEST=. pacaur -d scrt-sfx
 #    Or just download all the files manually from AUR
 # 2. Download
-#    scrt-sfx-8.1.3.1382.ubuntu16.tar.gz
-#    scrt-sfx-8.1.3.1382.ubuntu16-64.tar.gz
+#    scrt-sfx-8.1.4.1443.ubuntu16.tar.gz	(for 32bit systems)
+#    scrt-sfx-8.1.4.1443.ubuntu16-64.tar.gz	(for 64bit systems)
 #    From https://vandyke.com/download/securecrt/download.html
 #    (You'll need a free account, SecureCRT/FX will ask for the license at startup)
 #    And put in the same folder as the PKGBUILD
 # 3. Run makepkg -i and enjoy!
 
 pkgname=scrt-sfx
-pkgver=8.1.3
-incrver=1382
+pkgver=8.1.4
+incrver=1443
 pkgrel=1
 pkgdesc="Vandyke SecureCRT & SecureFX SSH Client"
 arch=('x86_64' 'i686')
@@ -29,8 +29,8 @@ source=("run_securecrt.sh" "run_securefx.sh")
 md5sums=('f46dbfcf871ed5056742ad2b4d0a6051' 'e64a26ecdc092367dfd5bbd4035e9923')
 source_i686=("${pkgname}-${pkgver}.${incrver}.ubuntu16.tar.gz::file://${pkgname}-${pkgver}.${incrver}.ubuntu16.tar.gz")
 source_x86_64=("${pkgname}-${pkgver}.${incrver}.ubuntu16-64.tar.gz::file://${pkgname}-${pkgver}.${incrver}.ubuntu16-64.tar.gz")
-md5sums_i686=('8d3b0ca4af6c289346490b9ae267281c')
-md5sums_x86_64=('75c49b2dfa79fc2ac745cc03ed744a08')
+md5sums_i686=('64b52eb4cbb4190f2cec8737977bc1dc')
+md5sums_x86_64=('0ae3a8ae3df9927cc457b7566af70d62')
 
 package() {
 	install -Dm 755 ./run_securecrt.sh ${pkgdir}/usr/bin/SecureCRT
