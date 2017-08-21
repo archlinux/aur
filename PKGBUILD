@@ -15,7 +15,7 @@ provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
 
 source=(
-	"https://downloads.lxqt.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
+	"https://github.com/lxde/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
 	'desktop_entry.patch'
 )
 validpgpkeys=(
