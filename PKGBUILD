@@ -6,7 +6,7 @@ pkgname=brother-mfc-7860dw
 pkgver=2.1.0
 _wrapper_ver=2.0.4
 pkgrel=4
-pkgdesc="CUPS driver for Brother MFC-7860DW printer"
+pkgdesc="LPR and CUPSwrapper driver for the Brother MFC-7860DW."
 arch=('i686' 'x86_64')
 url="http://support.brother.com/g/b/producttop.aspx?c=us_ot&lang=en&prod=mfc7860dw_all"
 license=('GPL')
