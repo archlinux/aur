@@ -8,20 +8,20 @@ pkgbase = gog-undertale
 	groups = games
 	groups = gog
 	license = custom
+	depends = lib32-alsa-plugins
+	depends = lib32-curl
 	depends = lib32-glu
 	depends = lib32-libxrandr
 	depends = lib32-openal
-	depends = lib32-openssl
+	depends = lib32-openssl-1.0
+	depends = lib32-gtk2
+	optdepends = lib32-libpulse: PulseAudio support
 	source = gog-undertale
 	source = gog-undertale.desktop
 	source = file://gog_undertale_2.0.0.1.sh
 	sha256sums = c4053af037e1a80c692a7caf2519a98efd2390ed40fc42810143c016dec12116
 	sha256sums = df3e93c98a0f0f9fd99d57284aadae0d313d64584384dcba68b880374cbe9476
 	sha256sums = dd47d4418c7c3b1b971123d2364f988f29ca78b8a7687742e8937e9ffc3bc297
-	depends_i686 = glu
-	depends_i686 = libxrandr
-	depends_i686 = openal
-	depends_i686 = openssl
 
 pkgname = gog-undertale
 
