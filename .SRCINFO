@@ -1,0 +1,24 @@
+pkgbase = ebtables-git
+	pkgdesc = A filtering tool for a Linux-based bridging firewall
+	pkgver = 2.0.10.4.r12.g73c2371
+	pkgrel = 1
+	url = http://ebtables.netfilter.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	depends = perl
+	depends = iptables
+	provides = ebtables
+	conflicts = ebtables
+	backup = etc/ebtables-git.conf
+	source = git://git.netfilter.org/ebtables
+	source = ebtables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ebtables.service?h=packages/ebtables
+	source = ebtables.systemd::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ebtables.systemd?h=packages/ebtables
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ebtables-git
+
