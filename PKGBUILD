@@ -18,7 +18,9 @@ build() {
   if test -z "$(command -v b && b --version | grep '^build2 0.6.0')"
   then
     cd build2
-    ./bootstrap.sh g++
+    if ! test -x build2/b-boot; then
+      ./bootstrap.sh g++
+    fi
     cd ..
     export BCMD="$(pwd)/build2/build2/b-boot"
   else
