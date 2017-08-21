@@ -1,6 +1,6 @@
 pkgbase = pspp
 	pkgdesc = Statistical analysis program. Free replacement for SPSS.
-	pkgver = 0.11.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://www.gnu.org/software/pspp/
 	install = pspp.install
@@ -15,8 +15,8 @@ pkgbase = pspp
 	optdepends = libxml2: GNUMERIC support
 	options = !libtool
 	options = !emptydirs
-	source = ftp://ftp.gnu.org/gnu/pspp/pspp-0.11.0.tar.gz
-	md5sums = 4856badd6b3965c51eb126bf46d3e602
+	source = ftp://ftp.gnu.org/gnu/pspp/pspp-1.0.0.tar.gz
+	md5sums = 8c34cb0a3c8a08c92595c647d42a0a85
 
 pkgname = pspp
 
