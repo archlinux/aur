@@ -1,8 +1,8 @@
 pkgbase = libprelude
 	pkgdesc = Provides the framework for using the Prelude system
-	pkgver = 3.0.0
+	pkgver = 4.0.0
 	pkgrel = 1
-	url = http://www.prelude-siem.org
+	url = https://www.prelude-siem.org
 	arch = i686
 	arch = x86_64
 	license = GPLv2
@@ -16,14 +16,8 @@ pkgbase = libprelude
 	backup = etc/prelude/default/global.conf
 	backup = etc/prelude/default/idmef-client.conf
 	backup = etc/prelude/default/tls.conf
-	source = https://www.prelude-siem.org/pkg/src/3.0.0/libprelude-3.0.0.tar.gz
-	source = ruby.patch
-	source = ruby_swig.patch
-	source = python_swig.patch
-	md5sums = c93f5735c3dd162835b5597542f05282
-	md5sums = 76a67088c8fc3b09cf47faa4b5d82d6b
-	md5sums = 5c6260da1c4de6c7779e0f572994df51
-	md5sums = 7a841d6ec5b2657a2a8d991a00f17a05
+	source = https://www.prelude-siem.org/pkg/src/4.0.0/libprelude-4.0.0.tar.gz
+	md5sums = f4bd0ece58245797db14c971133536a2
 
 pkgname = libprelude
 
