@@ -1,0 +1,25 @@
+From 54350f0176e23a7270297d1ca1d051e610218cd6 Mon Sep 17 00:00:00 2001
+From: Matt Coffin <mcoffin13@gmail.com>
+Date: Mon, 21 Aug 2017 14:01:13 -0600
+Subject: [PATCH] Fix libvlc-qt library naming
+
+---
+ src/FlySightViewer.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/FlySightViewer.pro b/src/FlySightViewer.pro
+index 01107d9..83630f9 100644
+--- a/src/FlySightViewer.pro
++++ b/src/FlySightViewer.pro
+@@ -158,7 +158,7 @@ else:macx {
+ }
+ else {
+     LIBS += -L/usr/local/lib
+-    LIBS += -lvlc-qt -lvlc-qt-widgets
++    LIBS += -lVLCQtCore -lVLCQtWidgets
+     LIBS += -lwwwidgets4
+ }
+ 
+-- 
+2.13.4
+

@@ -1,0 +1,24 @@
+pkgbase = flysight-viewer-qt-git
+	pkgdesc = Viewer application for flysight GPS log data
+	pkgver = r540.131f465
+	pkgrel = 1
+	url = https://github.com/flysight/flysight-viewer-qt
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = wwwidgets
+	depends = libvlc-qt
+	provides = flysight-viewer-qt
+	conflicts = flysight-viewer-qt
+	source = flysight-viewer-qt::git+https://github.com/flysight/flysight-viewer-qt#branch=master
+	source = 0001-Fix-flarescoring-include-casing.patch
+	source = 0002-Fix-libvlc-qt-library-naming.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = flysight-viewer-qt-git
+
