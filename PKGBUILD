@@ -3,7 +3,7 @@
 pkgname=brave-bin
 pkgver=0.18.23
 _pkgver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="A web browser that stops ads and trackers by default. Binary release."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -17,7 +17,7 @@ source=("$pkgname-$_pkgver".tar.bz2::https://github.com/brave/browser-laptop/rel
         "MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt")
 options=(!strip)
 sha512sums=('0fa35159a0fb41a33671d0c24e2c86884dddc9f564be4d7ba18dfd608aa01d5acbe07b60dc79f9759cabb1625bfe5f1646d1def06f4a624541f3f702f6575bc0'
-            'c1e3a0c8f5267fb5c0b65733bda037c62d914ed989bee0f510d8196b1029eec00d40f415ce1514a4996d420ba02d856d04db0915b64573ef4a36033cc5efb94e')
+            'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f')
 
 _bdir=Brave-linux-x64
 
