@@ -7,9 +7,10 @@ pkgbase = mariadb-connector-odbc
 	arch = x86_64
 	arch = i686
 	license = LGPL
-	makedepends = mariadb-connector-c<3.0.0
-	depends = unixodbc
+	makedepends = libmariadbclient
+	depends = unixodbc>=2.3
 	depends = openssl
+	depends = mariadb-connector-c<3
 	conflicts = mariadb-connector-odbc-bin
 	options = staticlibs
 	source = https://downloads.mariadb.org/interstitial/connector-odbc-2.0.15/mariadb-connector-odbc-2.0.15-ga-src.tar.gz

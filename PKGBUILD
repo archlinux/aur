@@ -8,8 +8,8 @@ pkgdesc="MariaDB Connector/ODBC is a standardized, LGPL licensed database driver
 arch=('x86_64' 'i686')
 url="https://mariadb.com/kb/en/mariadb/mariadb-connector-odbc/"
 license=('LGPL')
-depends=('unixodbc' 'openssl')
-makedepends=('mariadb-connector-c<3.0.0')
+depends=('unixodbc>=2.3' 'openssl' 'mariadb-connector-c<3')
+makedepends=('libmariadbclient')
 options=('staticlibs')
 
 source=("https://downloads.mariadb.org/interstitial/connector-odbc-${pkgver}/${pkgname}-${pkgver}-ga-src.tar.gz")
