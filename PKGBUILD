@@ -1,6 +1,6 @@
 # Maintainer: helix <stargr@gmail.com>
 pkgname=debtap
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc='A script to convert .deb packages to Arch Linux packages, focused on accuracy. Do not use it to convert packages that already exist on official repositories or can be built from AUR!'
 arch=('any')
