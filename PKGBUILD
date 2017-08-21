@@ -5,8 +5,8 @@
 # Contributor: funkyou
 
 # Set this to 'true' to build and install the plugins
-_build_feedreader=true
-_build_voip=true
+_plugin_feedreader=true
+_plugin_voip=true
 
 # Set this to 'true' to enable auto login
 #_autologin='true'
@@ -14,10 +14,13 @@ _build_voip=true
 # set this to 'true' to use clang for compiling (experimental)
 #_clang='true'
 
+# Unofficial plugins
+#_plugin_lua4rs='true'
+
 ### Nothing to be changed below this line ###
 
 pkgname=retroshare
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -25,19 +28,17 @@ url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
 depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libxss' 'libmicrohttpd' 'sqlcipher')
 makedepends=('git' 'qt5-tools')
-
 optdepends=('tor: tor hidden node support'
             'i2p: i2p hidden node support')
-
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz")
-sha256sums=('76a3ae2f2089b14562d5be34602f5ae3c73a8549aecee246ea5e67d03018de2b')
+sha256sums=('ddb64aa5148fdc950d4426f52f1cbb11578619b1242614e3c4ca4792ee5ce30b')
 
 # Add missing dependencies if needed
-[[ "$_build_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
-[[ "$_build_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
+[[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
+[[ "$_plugin_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
 [[ "$_clang" == 'true' ]] && makedepends=(${makedepends[@]} 'clang')
 [[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libgnome-keyring')
 
@@ -47,12 +48,26 @@ _optAutol=''
 [[ "$_clang" == 'true' ]] && _optClang='-spec linux-clang CONFIG+=c++11'
 [[ "$_autologin" == 'true' ]] && _optAutol='CONFIG+=rs_autologin'
 
+# Handle unofficial plugins
+if [[ "$_plugin_lua4rs" == 'true' ]] ; then
+	depends=(${depends[@]} 'lua')
+        source=(${source[@]} 'Lua4RS::git+https://github.com/RetroShare/Lua4RS.git')
+        sha256sums=(${sha256sums[@]} 'SKIP')
+fi
+
 build() {
 	cd "${srcdir}/RetroShare-${pkgver}"
 
+	# Handle unofficial plugins
+	if [[ "$_plugin_lua4rs" == 'true' ]] ; then
+		[[ -d 'plugins/Lua4RS' ]] &&  rm -r plugins//Lua4RS
+		cp -r -l "${srcdir}/Lua4RS" plugins/
+		sed -i -e 's/SUBDIRS += \\/SUBDIRS += \\\n\t\tLua4RS \\/g' plugins/plugins.pro
+	fi
+
 	# remove unwanted plugins
-	[[ "$_build_voip" != 'true' ]] && sed -i '/VOIP \\/d' plugins/plugins.pro
-	[[ "$_build_feedreader" != 'true' ]] && sed -i '/FeedReader/d' plugins/plugins.pro
+	[[ "$_plugin_voip" != 'true' ]] && sed -i '/VOIP \\/d' plugins/plugins.pro
+	[[ "$_plugin_feedreader" != 'true' ]] && sed -i '/FeedReader/d' plugins/plugins.pro
 
 	# call version scripts
 	cd libretroshare/src
@@ -64,7 +79,6 @@ build() {
 	cd ../..
 
 	qmake   CONFIG-=debug CONFIG+=release \
-		CONFIG+=rs_nodeprecatedwarning \
 		${_optAutol} ${_optClang} \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
