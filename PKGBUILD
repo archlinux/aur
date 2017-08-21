@@ -1,8 +1,8 @@
 # Maintainer: hdhoang <arch@hdhoang.space>
 
 pkgname=nginx-mainline-mod-fancyindex
-pkgver=0.4.1
-pkgrel=8
+pkgver=0.4.2
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
@@ -41,4 +41,4 @@ package() {
 	done
 }
 sha256sums=('de21f3c49ba65c611329d8759a63d72e5fcf719bc6f2a3270e2541348ef1fbba'
-            '2b00d8e0ad2a67152a9cee7b7ee67990c742d501412df912baaf1eee9bb6dc71')
+            '8327150864ca267b735d550d3304030efbbd863fdddfe0a94e970f249a8827ee')
