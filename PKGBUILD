@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=xiphos-gtk3
-pkgver=4.0.6
-pkgrel=2
+pkgver=4.0.6a
+pkgrel=1
 pkgdesc="A Bible study tool - This version is built to use GTK3 and WebKit2GTK+."
 arch=('i686' 'x86_64')
 url="http://xiphos.org"
@@ -12,17 +12,17 @@ depends=('webkit2gtk' 'libgsf' 'gconf' 'sword' 'biblesync' 'gtkhtml4' 'festival'
 makedepends=('gnome-common' 'gnome-doc-utils' 'intltool' 'python2')
 provides=('gnomesword' 'xiphos')
 conflicts=('gnomesword' 'xiphos')
-source=("https://github.com/crosswire/xiphos/releases/download/$pkgver/xiphos-$pkgver-20170810.tar.gz")
-sha512sums=('a7e645c2aa6f098c4888d63d3bbfa57009924d9594e89fd003d9ab47c03e25571e8a982ac640c29be02412d10baad08ff51b2bd25807d3a4a7b3abba16c9112a')
+source=("https://github.com/crosswire/xiphos/releases/download/$pkgver/xiphos-$pkgver-20170820.tar.gz")
+sha512sums=('a0577521c6b9033b74b3b0a0fd7a88222de00dc2e9db100d66e1bb60bc117173badd26c47d2e896ffa167c52a263c9bf9046d650a9b4ae497bec6164bfb0a29b')
 
 build() {
-  cd "$srcdir/xiphos-$pkgver"
+  cd "xiphos-$pkgver"
   CXX=g++ python2 ./waf --prefix=/usr --gtk=3 --enable-webkit2 configure 
   python2 ./waf --prefix=/usr --gtk=3 --enable-webkit2 build 
 }
 
 package() {
-  cd "$srcdir/xiphos-$pkgver"
+  cd "xiphos-$pkgver"
   python2 ./waf --destdir=$pkgdir --no-post-install install 
 }
 
