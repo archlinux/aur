@@ -4,7 +4,7 @@ pkgbase=python-librosa
 #pkgname=(python-librosa python2-librosa)
 pkgname=(python-librosa)
 _pkgname=librosa
-pkgver=0.4.3
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Python library for music and audio analysis"
 arch=('any')
@@ -12,7 +12,7 @@ url="http://librosa.github.io/librosa"
 license=('ISC')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/librosa/librosa/archive/${pkgver}.tar.gz")
-md5sums=('e812b8882fc7d07de4b0037f6dfda723')
+md5sums=('becda2de46f06ac15866a312933e3ae5')
 
 prepare() {
   cd "$srcdir/"
@@ -35,14 +35,14 @@ build() {
 }
 
 package_python2-librosa() {
-  depends=('python2')
+  depends=('python2-joblib' 'python2-matplotlib' 'python2-audioread' 'python2-resampy')
   cd "$srcdir/${_pkgname}-${pkgver}-py2"
   python2 setup.py install --root="$pkgdir"/ --optimize=1
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python-librosa() {
-  depends=('python')
+  depends=('python-joblib' 'python-matplotlib')
   cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir"/ --optimize=1
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
