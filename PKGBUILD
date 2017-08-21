@@ -3,7 +3,7 @@
 
 _number_of_bits=8
 pkgname=microchip-mplabxc${_number_of_bits}-bin
-pkgver=1.42
+pkgver=1.43
 pkgrel=1
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for their PIC10/12/16/18 microcontroller families and their PIC14000 device"
 arch=(i686 x86_64)
@@ -18,7 +18,7 @@ makedepends_i686=(tclkit)
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
 source=("http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run" "bitrock-unpacker.tcl")
 
-md5sums=('cd4dc1dbebd4495799678663086f3482'
+md5sums=('50b604019b9e088cd36749cdc38f0dbd'
          '70dedba4c417f8c0bb07c32d19e9d197')
 install=$pkgname.install
 
