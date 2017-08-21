@@ -3,12 +3,13 @@
 
 pkgname=zotero
 pkgver=5.0.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
 arch=('i686' 'x86_64')
 url="http://www.zotero.org/download"
 license=('GPL3')
 depends=('dbus-glib' 'gtk2' 'gtk3' 'nss' 'java-environment' 'libxt')
+optdepends=('xpdf: PDF indexing')
 
 md5sums=('f227abe95940abd63367716928c6e379')
 md5sums_i686=('2a12233e693021d3b672395df6c4ca27')
