@@ -1,43 +1,107 @@
-# Original contributor: Karro <karolina.lindqvist@kramnet.se>
-#
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Jiří Klimeš <blueowl@centrum.cz>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: SneakySnake <radiantstatue@gmail.com>
+# Contributor: Karro <karolina.lindqvist@kramnet.se>
 
-pkgname=libim
+pkgbase=libim
+pkgname=('libim' 'lua-im' 'lua51-im' 'lua52-im')
 pkgver=3.12
-pkgrel=5
-pkgdesc="Toolkit for Digital Imaging"
+pkgrel=6
+pkgdesc="Toolkit for digital imaging"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/im/"
-depends=('gcc-libs' 'zlib' 'libpng')
-optdepends=('lua51: bindings for Lua are available'
-            'fftw: for fft support')
-license=('custom')
+makedepends=('lua' 'lua51' 'lua52')
+license=('MIT')
 source=(
   "http://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Sources.tar.gz"
   "http://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Docs.pdf"
-  LICENSE
 )
 md5sums=('50d6a03bb1e73fcc62633f2535494733'
-         '4e5ba38f84cb7a107110318764707d87'
-         '214b5ab19962418fa755a45b35504219')
+         '4e5ba38f84cb7a107110318764707d87')
 noextract=(im-${pkgver}_Sources.tar.gz)
-options=('staticlibs')
 
-build() {
+prepare() {
   tar xf im-${pkgver}_Sources.tar.gz # sources have a problem with bsdtar, use gnutar instead
-  cd im
-  make -k || true
 }
 
-package() {
+build() {
+  cd "$srcdir"/im/src
+  msg2 'Building libim without Lua'
+  make -k im im_jp2 im_process im_process_omp im_fftw im_lzo
+
+  msg2 'Building Lua 5.3 bindings'
+  make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw5 \
+   STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.3,--enable-new-dtags,--as-needed" \
+   USE_LUA53=Yes LUA_SFX=5.3
+
+  msg2 'Building Lua 5.2 bindings'
+  make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw5 \
+   STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.2,--enable-new-dtags,--as-needed" \
+   LUA_INC=/usr/include/lua5.2 \
+   USE_LUA52=Yes LUA_SFX=5.2
+
+  msg2 'Building Lua 5.1 bindings'
+  make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw5 \
+   STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.1,--enable-new-dtags,--as-needed" \
+   LUA_INC=/usr/include/lua5.1 \
+   USE_LUA51=Yes LUA_SFX=5.1
+}
+
+package_libim() {
+  pkgdesc="Imaging toolkit library"
+  depends=('zlib' 'libpng')
+
   install -m755 -d "$pkgdir"/usr/lib
   install -m644 "$srcdir"/im/lib/Linux*/libim* "$pkgdir"/usr/lib
   install -m755 -d "$pkgdir"/usr/share/$pkgname
   install -m644 "$srcdir"/im-${pkgver}_Docs.pdf "$pkgdir"/usr/share/$pkgname
   install -m755 -d "$pkgdir"/usr/include/im
   install -m644 "$srcdir"/im/include/* "$pkgdir"/usr/include/im
-  install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/libim/LICENSE
-  install -d "$pkgdir"/usr/lib/lua/5.1/
-  install -Dm644 "$srcdir"/im/lib/Linux*_??/Lua51/*.so "$pkgdir"/usr/lib/lua/5.1/
+  install -Dm644 "$srcdir"/im/COPYRIGHT "$pkgdir"/usr/share/licenses/libim/LICENSE
 }
+
+_lua_im_package_helper() {
+  # $1 ... Lua version ("5.1", "5.2" or "5.3")
+
+  _lua_ver=$1
+  _lua_ver_nodot=`echo $1 | cut -c1,3`
+
+  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 "$srcdir"/im/COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -d "$pkgdir"/usr/lib/lua/${_lua_ver}
+  install -Dm644 "$srcdir"/im/lib/Linux*_??/Lua${_lua_ver_nodot}/*.so "$pkgdir"/usr/lib/lua/${_lua_ver}
+
+  # create symlinks required for Lua modules
+  for name in \
+    imlua \
+    imlua_process \
+    imlua_process_omp \
+    imlua_jp2 \
+    imlua_fftw ; do
+      _lib=lib${name}${_lua_ver_nodot}.so
+      ln -s /usr/lib/lua/${_lua_ver}/${_lib} "${pkgdir}"/usr/lib/lua/${_lua_ver}/${name}.so
+  done
+}
+
+package_lua-im() {
+  pkgdesc="Lua (5.3) bindings for IM toolkit"
+  depends=('libim')
+
+  _lua_im_package_helper "5.3"
+}
+
+package_lua52-im() {
+  pkgdesc="Lua (5.2) bindings for IM toolkit"
+  depends=('libim')
+
+  _lua_im_package_helper "5.2"
+}
+
+package_lua51-im() {
+  pkgdesc="Lua (5.1) bindings for IM toolkit"
+  depends=('libim')
+
+  _lua_im_package_helper "5.1"
+}
+
+# vim:set ts=2 sw=2 et:

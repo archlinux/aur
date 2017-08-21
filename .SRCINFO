@@ -1,24 +1,34 @@
 pkgbase = libim
-	pkgdesc = Toolkit for Digital Imaging
+	pkgdesc = Toolkit for digital imaging
 	pkgver = 3.12
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.tecgraf.puc-rio.br/im/
 	arch = i686
 	arch = x86_64
-	license = custom
-	depends = gcc-libs
-	depends = zlib
-	depends = libpng
-	optdepends = lua51: bindings for Lua are available
-	optdepends = fftw: for fft support
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
 	noextract = im-3.12_Sources.tar.gz
-	options = staticlibs
 	source = http://downloads.sourceforge.net/project/imtoolkit/3.12/Docs%20and%20Sources/im-3.12_Sources.tar.gz
 	source = http://downloads.sourceforge.net/project/imtoolkit/3.12/Docs%20and%20Sources/im-3.12_Docs.pdf
-	source = LICENSE
 	md5sums = 50d6a03bb1e73fcc62633f2535494733
 	md5sums = 4e5ba38f84cb7a107110318764707d87
-	md5sums = 214b5ab19962418fa755a45b35504219
 
 pkgname = libim
+	pkgdesc = Imaging toolkit library
+	depends = zlib
+	depends = libpng
+
+pkgname = lua-im
+	pkgdesc = Lua (5.3) bindings for IM toolkit
+	depends = libim
+
+pkgname = lua51-im
+	pkgdesc = Lua (5.1) bindings for IM toolkit
+	depends = libim
+
+pkgname = lua52-im
+	pkgdesc = Lua (5.2) bindings for IM toolkit
+	depends = libim
 
