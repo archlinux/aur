@@ -1,0 +1,21 @@
+pkgbase = findutils-git
+	pkgdesc = Basic directory searching utilities of the GNU operating system
+	pkgver = 4.6.0.r115.g9530e31f
+	pkgrel = 1
+	url = https://www.gnu.org/software/findutils/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	checkdepends = dejagnu
+	makedepends = git
+	makedepends = gettext
+	depends = glibc
+	depends = sh
+	provides = findutils
+	conflicts = findutils
+	options = staticlibs
+	source = git+https://git.savannah.gnu.org/git/findutils.git
+	sha256sums = SKIP
+
+pkgname = findutils-git
+
