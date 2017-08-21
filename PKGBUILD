@@ -14,7 +14,7 @@ groups=('MBC')
 depends=('qt5-base')
 makedepends=('gcc' 'qt5-base')
 validpgpkeys=('94832C0DBAC3B295A91C5F4081D2921276951309')   # Mattéo Rossillol
-source=("https://github.com/CompFile/My_AUR_PKG/raw/master/PKG/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz"{,.sig})
+source=("https://github.com/CompFile/My_AUR_PKG/raw/master/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz"{,.sig})
 md5sums=('8821e0f5f7ae086238760b2eb90c10bf'
          'SKIP')
 
