@@ -2,14 +2,14 @@
 
 pkgname=dosbox-x-git
 pkgver=2124.721f08f5
-pkgrel=1
+pkgrel=3
 pkgdesc="x86 emulator with builtin DOS, with patches with more features"
 arch=(i686 x86_64)
 url="http://dosbox.sourceforge.net"
 license=(GPL)
-depends=(sdl_net sdl_sound libpng mesa)
-makedepends=(git glu fluidsynth)
-optdepends=(fluidsynth)
+depends=(fluidsynth sdl_net sdl_sound libpng mesa)
+makedepends=(git glu)
+optdepends=()
 source=(dosbox::git://github.com/joncampbell123/dosbox-x.git
 	dosbox-x.png
 	dosbox-x.desktop)
