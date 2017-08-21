@@ -1,50 +1,89 @@
 diff -Naur old/usr/local/Brother/Printer/MFC7860DW/cupswrapper/cupswrapperMFC7860DW-2.0.4 new/usr/local/Brother/Printer/MFC7860DW/cupswrapper/cupswrapperMFC7860DW-2.0.4
---- old/usr/local/Brother/Printer/MFC7860DW/cupswrapper/cupswrapperMFC7860DW-2.0.4	2010-06-11 10:55:18.000000000 +0300
-+++ new/usr/local/Brother/Printer/MFC7860DW/cupswrapper/cupswrapperMFC7860DW-2.0.4	2013-01-28 13:15:21.000000000 +0200
-@@ -18,6 +18,7 @@
+--- old/usr/local/Brother/Printer/MFC7860DW/cupswrapper/cupswrapperMFC7860DW-2.0.4	2010-06-11 00:55:18.000000000 -0700
++++ new/usr/local/Brother/Printer/MFC7860DW/cupswrapper/cupswrapperMFC7860DW-2.0.4	2017-08-21 11:45:55.081640259 -0700
+@@ -18,54 +18,7 @@
  # Place, Suite 330, Boston, MA  02111-1307  USA
  #
  
-+if /bin/false; then
- if [ "$1" = '-e' ]; then
-   lpadmin -x MFC7860DW
-   rm -f /usr/share/cups/model/MFC7860DW.ppd
-@@ -65,7 +66,8 @@
-    ppd_file_name=/usr/share/ppd/MFC7860DW.ppd
- fi
- 
+-if [ "$1" = '-e' ]; then
+-  lpadmin -x MFC7860DW
+-  rm -f /usr/share/cups/model/MFC7860DW.ppd
+-  rm -f /usr/lib/cups/filter/brlpdwrapperMFC7860DW
+-  rm -f /usr/lib64/cups/filter/brlpdwrapperMFC7860DW
+-  rm -f /usr/local/Brother/Printer/MFC7860DW/cupswrapper/brcupsconfig4
+-  if [ -f /usr/share/ppd/MFC7860DW.ppd ];then
+-  rm -f /usr/share/ppd/MFC7860DW.ppd
+-  fi
+-  if [ -e /etc/init.d/cups ]; then
+-    /etc/init.d/cups restart
+-  fi
+-  if [ -e /etc/init.d/cupsys ]; then
+-    /etc/init.d/cupsys restart
+-  fi
+-  exit 0 
+-fi
+-if [ "$1" = "-r" ]; then
+-  lpadmin -x MFC7860DW
+-  if [ -e /etc/init.d/cups ]; then
+-    /etc/init.d/cups restart
+-  fi
+-  if [ -e /etc/init.d/cupsys ]; then
+-    /etc/init.d/cupsys restart
+-  fi
+-  exit 0 
+-fi
+-if [ "$1" = "help" ] || [ "$1" = "-h" ]; then
+-  echo   'option -h : help'
+-  echo   '       -i : install'
+-  echo   '       -e : uninstall'
+-  echo   '       -r : remove printer'
+-  exit 0
+-fi
+-mkdir -p /usr/lib/cups/filter
+-
+-if [ -e "/usr/local/Brother/Printer/MFC7860DW/lpd/filterMFC7860DW" ]; then
+-  :
+-else
+-  echo "ERROR : Brother LPD filter is not installed."
+-fi
+-rm -f /usr/share/cups/model/MFC7860DW.ppd
+-ppd_file_name=/usr/share/cups/model/MFC7860DW.ppd
+-if [ ! -e /usr/share/cups/model ]; then
+-   ppd_file_name=/usr/share/ppd/MFC7860DW.ppd
+-fi
+-
 -cat <<ENDOFPPDFILE >$ppd_file_name
-+fi
 +cat <<ENDOFPPDFILE > ppd_file
  *PPD-Adobe: "4.3"
  *%================================================
  *%	Copyright Brother Industries,Ltd 2006-2008
-@@ -347,10 +349,11 @@
+@@ -347,24 +300,8 @@
  
  ENDOFPPDFILE
  
 -chmod 755  $ppd_file_name
-+if /bin/false; then
-+chmod 755  ppd_file
- if [ -e '/usr/share/ppd' ];then
-   if [ -e '/usr/share/cups/model' ];then
+-if [ -e '/usr/share/ppd' ];then
+-  if [ -e '/usr/share/cups/model' ];then
 -    cp  $ppd_file_name  /usr/share/ppd
-+    cp  ppd_file /usr/share/ppd
-   fi
- fi
- 
-@@ -363,8 +366,8 @@
-   fi
- fi
+-  fi
+-fi
+-
+-brotherlpdwrapper=/usr/lib/cups/filter/brlpdwrapperMFC7860DW
+-brotherlpdwrapper64=/usr/lib64/cups/filter/brlpdwrapperMFC7860DW
+-rm -f  $brotherlpdwrapper
+-if [ ! -e /usr/lib/cups/filter ];then
+-  if [ -e /usr/lib64/cups/filter ];then
+-    brotherlpdwrapper=/usr/lib64/cups/filter/brlpdwrapperMFC7860DW
+-  fi
+-fi
  
 -
 -cat <<!ENDOFWFILTER! >$brotherlpdwrapper
-+fi
 +cat <<!ENDOFWFILTER! > wrapper
  #! /bin/sh
  #
  # Brother Print filter  >>  $brotherlpdwrapper
-@@ -493,25 +496,25 @@
+@@ -493,25 +430,25 @@
  fi
  
  
@@ -76,32 +115,47 @@ diff -Naur old/usr/local/Brother/Printer/MFC7860DW/cupswrapper/cupswrapperMFC786
  fi
  
  if [ \$DEBUG -ge 2 ];  then
-@@ -527,7 +530,7 @@
+@@ -526,40 +463,3 @@
+ exit \$errorcode
  
  !ENDOFWFILTER!
- 
 -
-+if /bin/false; then
- chmod 755 $brotherlpdwrapper
- if [ -e /usr/lib/cups/filter ]; then
-  if [ -e /usr/lib64/cups/filter ]; then
-@@ -535,8 +538,8 @@
-  fi
- fi
- 
+-
+-chmod 755 $brotherlpdwrapper
+-if [ -e /usr/lib/cups/filter ]; then
+- if [ -e /usr/lib64/cups/filter ]; then
+-   cp $brotherlpdwrapper  $brotherlpdwrapper64
+- fi
+-fi
+-
 -chmod a+w /usr/local/Brother/Printer/MFC7860DW/inf/brMFC7860DWrc
 -chmod a+w /usr/local/Brother/Printer/MFC7860DW/inf
-+chmod a+w /usr/share/brother/printer/MFC7860DW/inf/brMFC7860DWrc
-+chmod a+w /usr/share/brother/printer/MFC7860DW/inf
- if [ -e /etc/init.d/lpd ]; then
-    /etc/init.d/lpd stop
- fi
-@@ -563,3 +566,5 @@
- fi
- lpadmin -p MFC7860DW -E -v $port -P $ppd_file_name
-   exit 0 
-+fi
-+
+-if [ -e /etc/init.d/lpd ]; then
+-   /etc/init.d/lpd stop
+-fi
+-if [  -e /etc/init.d/lprng ]; then
+-   /etc/init.d/lprng stop
+-fi
+-  if [ -e /etc/init.d/cups ]; then
+-    /etc/init.d/cups restart
+-  fi
+-  if [ -e /etc/init.d/cupsys ]; then
+-    /etc/init.d/cupsys restart
+-  fi
+-sleep 2s
+-port2=`lpinfo -v | grep -i 'usb://Brother/MFC7860DW' | head -1`
+-if [ "$port2" = '' ];then
+-  port2=`lpinfo -v | grep -i 'usb://Brother/' | head -1`
+-  if [ "$port2" = '' ];then
+-	   port2=`lpinfo -v | grep 'usb://' | head -1`
+-  fi
+-fi
+-port=`echo $port2| sed s/direct//g`
+-if [ "$port" = '' ];then
+-	port=usb:/dev/usb/lp0
+-fi
+-lpadmin -p MFC7860DW -E -v $port -P $ppd_file_name
+-  exit 0 
 diff -Naur old/usr/local/Brother/Printer/MFC7860DW/inf/brMFC7860DWfunc new/usr/local/Brother/Printer/MFC7860DW/inf/brMFC7860DWfunc
 --- old/usr/local/Brother/Printer/MFC7860DW/inf/brMFC7860DWfunc	2010-05-24 06:10:10.000000000 +0300
 +++ new/usr/local/Brother/Printer/MFC7860DW/inf/brMFC7860DWfunc	2013-01-28 12:59:40.000000000 +0200
