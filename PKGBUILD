@@ -1,7 +1,7 @@
 # Maintainer: Martin Trigaux <me@mart-e.be>
 pkgname=nxt
-pkgver=1.11.7
-pkgrel=2
+pkgver=1.11.8
+pkgrel=1
 pkgdesc="The Nxt Reference Software Client for use with the Nxt Cryptocurrency."
 arch=()
 url="https://nxt.org"
@@ -15,7 +15,7 @@ source=(
 	nxt.service
 )
 sha256sums=(
-	'bfed4c5c2df82e876f88885c1d0501810edf49fc4998d694e74852d6ab176d57'
+	'2433cb9e166bba76b1f09e0897fb48f2d6cc5a106140e80a84c72ffece9ee29c'
 	'70717985b18b8af10b68aa6adc205912664ffccdddc52272e80bb02a19bc15fb'
 )
 
