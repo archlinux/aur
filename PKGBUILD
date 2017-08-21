@@ -2,17 +2,17 @@
 
 pkgname=tako-git
 _gitname=tako
-pkgver=0.0.20
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A command language and shell based on Python"
 arch=('any')
-url="https://notabug.org/adqm/$_gitname"
+url="https://gitlab.com/adqm/$_gitname"
 license=('custom:Soopycat2')
 depends=('python')
 makedepends=('python-setuptools' 'git')
 conflicts=('tako')
 install=tako.install
-source=("git+https://notabug.org/adqm/$_gitname.git")
+source=("git+https://gitlab.com/adqm/$_gitname.git")
 sha256sums=('SKIP')
 
 pkgver() {
