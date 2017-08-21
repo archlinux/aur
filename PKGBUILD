@@ -10,15 +10,15 @@
 _pkgname=synergy
 pkgname=$_pkgname-git
 pkgver=20170809.r3131.d0ded4e56
-pkgrel=1
+pkgrel=2
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('avahi' 'curl' 'libxinerama' 'libxrandr' 'libxtst' 'qt5-base')
-makedepends=('cmake' 'git' 'libxt' 'qt5-base' 'unzip')
+depends=('avahi' 'curl' 'libxinerama' 'libxrandr' 'libxtst')
+makedepends=('cmake' 'git' 'libxt')
 optdepends=('openssl: encryption support')
 
 source=(
@@ -44,11 +44,6 @@ pkgver() {
     "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd $_pkgname
-  sed -i 's|/usr/share/icons/synergy.ico|/usr/share/pixmaps/synergy.png|' res/synergy.desktop
-}
-
 build() {
   # Build Synergy
   cd $_pkgname
@@ -60,9 +55,6 @@ package() {
   # Install systemd service and socket
   install -Dm644 ${_pkgname}s_at.service "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.service"
   install -Dm644 ${_pkgname}s_at.socket "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.socket"
-
-  # Install icon (extracted from synergy.ico)
-  install -Dm644 $_pkgname.png "$pkgdir/usr/share/pixmaps/synergy.png"
 
   # Install binary
   cd $_pkgname
@@ -79,8 +71,4 @@ package() {
   # Install manfiles
   install -Dm644 doc/${_pkgname}c.man "$pkgdir/usr/share/man/man1/${_pkgname}c.1"
   install -Dm644 doc/${_pkgname}s.man "$pkgdir/usr/share/man/man1/${_pkgname}s.1"
-
-  # Install desktop/icon stuff
-  install -Dm644 res/$_pkgname.ico "$pkgdir/usr/share/icons/$_pkgname.ico"
-  install -Dm644 res/$_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
