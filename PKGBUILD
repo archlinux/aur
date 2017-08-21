@@ -11,7 +11,7 @@ pkgname=('vmware-horizon-client'
 pkgver=4.5.0
 _build=5650368
 _cart='CART17Q2'
-pkgrel=8
+pkgrel=9
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('i686' 'x86_64')
 url='https://my.vmware.com/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/4_0'
@@ -120,7 +120,7 @@ package_vmware-horizon-client() {
 		'vmware-horizon-pcoip')
 	replaces=('vmware-horizon-pcoip')
 	depends=('gnome-icon-theme' 'gtk2' 'libpng12' 'libudev0-shim' 'libxml2' 'libxss'
-		'libxtst' 'openssl')
+		'libxtst' 'openssl' 'binutils')
 	optdepends=('alsa-lib: audio support via alsa'
 		'freerdp: RDP remote desktop connections'
 		'libpulse: audio support via pulse sound server'
