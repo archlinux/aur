@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=theFile
+GenericName=File Manager
+Exec=thefile-b
+Icon=system-file-manager
+MimeType=inode/directory

@@ -1,0 +1,17 @@
+pkgbase = thefile-blueprint
+	pkgdesc = Simple File Manager
+	pkgver = 4.0
+	pkgrel = 0
+	url = https://github.com/vicr123/thefile
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = xdg-utils
+	depends = qt5-base
+	source = thefile-blueprint-4.0::git+https://github.com/vicr123/thefile#branch=rewrite
+	source = thefile-b.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = thefile-blueprint
+
