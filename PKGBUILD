@@ -1,6 +1,6 @@
 # Maintainer: Evgeniy Filimonov <evgfilim1@gmail.com>
 pkgname=('python-telegram-bot-git')
-pkgver=7.0.1.r19.915cd64
+pkgver=7.0.1.r22.16a49ec
 pkgrel=1
 pkgdesc="A Python wrapper around the Telegram Bot API"
 arch=('any')
@@ -39,4 +39,6 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     python setup.py install --root="$pkgdir" --optimize=1
+
+    install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
 }
