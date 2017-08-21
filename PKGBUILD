@@ -4,8 +4,8 @@
 
 pkgname=neovim-kotlin
 pkgver=r56.7fa99d0
-pkgrel=1
-pkgdesc='NeoVim plugin for Kotlin'
+pkgrel=2
+pkgdesc='Kotlin highlighting and indentation for NeoVim'
 arch=('any')
 license=('LGPL3')
 url='https://github.com/udalov/kotlin-vim'
