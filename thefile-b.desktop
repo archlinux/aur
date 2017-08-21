@@ -2,7 +2,7 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=theFile
+Name=theFile Blueprint
 GenericName=File Manager
 Exec=thefile-b
 Icon=system-file-manager
