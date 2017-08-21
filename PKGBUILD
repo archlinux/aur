@@ -1,33 +1,46 @@
-# Maintainer: Artem Bezsmertnyi <artem.bezsmertny@gmail.com>
+# Maintainer: Md. Jahidul Hamid <jahidulhamid@yahoo.com>
 pkgname=pacget
-pkgver=0.1.0
-pkgrel=0
-pkgdesc="A script using the mirrors from /etc/pacman.d/mirrorlist for speeding up pacman"
-arch=(any)
-url="https://wiki.archlinux.org/index.php/Improve_pacman_performance"
-license=('FREE')
-depends=('aria2' 'pacman')
-options=(!emptydirs)
-install="pacget.install"
-source=("improve_pacman_performance.wiki::https://wiki.archlinux.org/index.php/Improve_pacman_performance?action=raw"
-        "pacget.install")
-md5sums=('eff13d58f819ccc5ff1a428c6db7062a'
-         '3eafc809dc489595c5afa03a12d1ef09')
+pkgver=1.0.3
+pkgrel=1
+epoch=
+pkgdesc="A wrapper around pacaur to mimic yaourt's search feature"
+arch=('any')
+url=""
+license=('GPL')
+groups=()
+depends=('pacaur')
+makedepends=()
+checkdepends=()
+optdepends=('pkgfile: support for package search by file name')
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://github.com/neurobin/$pkgname/archive/$pkgver.tar.gz")
+noextract=()
+md5sums=('SKIP')
+validpgpkeys=()
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	#patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+}
 
 build() {
-  cd "${srcdir}"
+	cd "$pkgname-$pkgver"
+	#./configure --prefix=/usr
+	#make
+}
 
-  # Get all lines between {{hc|/usr/bin/pacget|<nowiki> and the following </nowiki>}}
-  grep -ozP '(?s)\{\{hc\|\/usr\/bin\/pacget\|<nowiki>\n\K.*?(?=\n<\/nowiki>)' improve_pacman_performance.wiki > "${srcdir}/pacget"
-  # Get all lines between {{hc|/etc/pacget.conf|<nowiki> and the following </nowiki>}}A
-  grep -ozP '(?s)\{\{hc\|\/etc\/pacget.conf\|<nowiki>\n\K.*?(?=\n<\/nowiki>)' improve_pacman_performance.wiki > "${srcdir}/pacget.conf"
+check() {
+	cd "$pkgname-$pkgver"
+	#make -k check
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin"
-  mkdir -p "${pkgdir}/etc"
-
-  install -D -m 755 "${srcdir}/pacget" "${pkgdir}/usr/bin/pacget"
-  install -D -m 644 "${srcdir}/pacget.conf" "${pkgdir}/etc/pacget.conf"
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
 }
-# vim:set ts=2 sw=2 et:

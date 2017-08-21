@@ -1,18 +1,13 @@
 pkgbase = pacget
-	pkgdesc = A script using the mirrors from /etc/pacman.d/mirrorlist for speeding up pacman
-	pkgver = 0.1.0
-	pkgrel = 0
-	url = https://wiki.archlinux.org/index.php/Improve_pacman_performance
-	install = pacget.install
+	pkgdesc = A wrapper around pacaur to mimic yaourt's search feature
+	pkgver = 1.0.3
+	pkgrel = 1
 	arch = any
-	license = FREE
-	depends = aria2
-	depends = pacman
-	options = !emptydirs
-	source = improve_pacman_performance.wiki::https://wiki.archlinux.org/index.php/Improve_pacman_performance?action=raw
-	source = pacget.install
-	md5sums = eff13d58f819ccc5ff1a428c6db7062a
-	md5sums = 3eafc809dc489595c5afa03a12d1ef09
+	license = GPL
+	depends = pacaur
+	optdepends = pkgfile: support for package search by file name
+	source = https://github.com/neurobin/pacget/archive/1.0.3.tar.gz
+	md5sums = SKIP
 
 pkgname = pacget
 
