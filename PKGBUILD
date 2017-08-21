@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=3.3.3
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=('i686' 'x86_64')
@@ -31,10 +31,18 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so'
           "ffmpeg=$pkgver")
 conflicts=("$_name")
-source=(https://ffmpeg.org/releases/$_name-$pkgver.tar.xz{,.asc})
+source=(https://ffmpeg.org/releases/$_name-$pkgver.tar.xz{,.asc}
+        'ffmpeg-openjpeg2.2.patch')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
 sha256sums=('d2a9002cdc6b533b59728827186c044ad02ba64841f1b7cd6c21779875453a1e'
-            'SKIP')
+            'SKIP'
+            '490598f78d7879af8ef5b8d7f92ada83d0ee64f9609f6c7b989eb331c2539f68')
+
+prepare() {
+  cd $_name-$pkgver
+
+  patch -Np1 -i ../ffmpeg-openjpeg2.2.patch
+}
 
 build() {
   cd $_name-$pkgver
