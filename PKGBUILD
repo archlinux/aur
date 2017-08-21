@@ -4,7 +4,7 @@
 pkgname=e1000e-dkms
 _modname=e1000e
 pkgver=3.3.5.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel e1000e Ethernet adapter driver (latest version from Intel) (DKMS version)"
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -15,9 +15,16 @@ optdepends=('linux-headers: build the module against Arch kernel [requires at le
 install=e1000e-dkms.install
 url='http://sourceforge.net/projects/e1000/'
 source=("http://downloads.sourceforge.net/project/e1000/${_modname}%20stable/${pkgver}/${_modname}-${pkgver}.tar.gz"
-        'dkms.conf.in')
+        'dkms.conf.in'
+        'build-fix.patch')
 sha256sums=('d18ec1ff96f570a732bcec0204478e29427e07ad6354c6d0aedf3fb79314bcad'
-            '635b6c312c18db94e852248e0f5a1238e179ef1c0ebba2cdd0983afdb56efaf4')
+            '635b6c312c18db94e852248e0f5a1238e179ef1c0ebba2cdd0983afdb56efaf4'
+            'd30c5d46d9f9b5e9c7ddcb3bd21303f585e04545571156fe3130d9f72922d0e0')
+
+prepare() {
+  cd ${srcdir}/${_modname}-${pkgver}
+  patch -p1 <"$srcdir"/build-fix.patch
+}
 
 package() {
   cd ${srcdir}/${_modname}-${pkgver}
