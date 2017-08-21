@@ -1,15 +1,15 @@
 pkgbase = sogo
 	pkgdesc = groupware server built around OpenGroupware.org (OGo) and the SOPE application server
 	pkgver = 3.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sogo.nu/
 	install = sogo.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = libmemcached
-	makedepends = sope>=3.2.10
-	depends = sope>=3.2.10
+	makedepends = gcc-objc
+	makedepends = gnustep-make
+	depends = sope=3.2.10
 	depends = gnustep-base
 	depends = libmemcached
 	depends = memcached
@@ -23,11 +23,7 @@ pkgbase = sogo
 	optdepends = nginx: webserver to provide web interface locally
 	optdepends = apache: webserver to provide web interface locally
 	optdepends = lighttpd: webserver to provide web interface locally
-	conflicts = sogo-openchange
-	conflicts = sogo2-openchange
 	replaces = sogo2
-	replaces = sogo-activesync
-	replaces = sogo2-activesync
 	options = !strip
 	backup = etc/sogo/sogo.conf
 	backup = etc/httpd/conf/extra/SOGo.conf

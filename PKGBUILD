@@ -5,45 +5,36 @@
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
 pkgver=3.2.10
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
 options=('!strip')
-depends=("sope>=${pkgver}" 
+replaces=('sogo2')
+install=sogo.install
+makedepends=('gcc-objc'
+             'gnustep-make')
+depends=("sope=${pkgver}" 
          'gnustep-base'
          'libmemcached'
          'memcached'
          'libwbxml')
-makedepends=('libmemcached'
-             "sope>=${pkgver}")
-optdepends=(
-        'postgresql: run database server for sogo locally'
-        'mariadb: run database server for sogo locally'
-        'openldap: run directory server for sogo locally'
-        'postfix: run smtp server for sogo locally'
-        'dovecot: run imap server for sogo locally'
-        'courier-imap: run imap server for sogo locally'
-        'nginx: webserver to provide web interface locally'
-        'apache: webserver to provide web interface locally'
-        'lighttpd: webserver to provide web interface locally')
-replaces=('sogo2'
-          'sogo-activesync'
-          'sogo2-activesync')
-conflicts=('sogo-openchange'
-           'sogo2-openchange')
+optdepends=('postgresql: run database server for sogo locally'
+            'mariadb: run database server for sogo locally'
+            'openldap: run directory server for sogo locally'
+            'postfix: run smtp server for sogo locally'
+            'dovecot: run imap server for sogo locally'
+            'courier-imap: run imap server for sogo locally'
+            'nginx: webserver to provide web interface locally'
+            'apache: webserver to provide web interface locally'
+            'lighttpd: webserver to provide web interface locally')
 backup=('etc/sogo/sogo.conf'
         'etc/httpd/conf/extra/SOGo.conf'
         'etc/conf.d/sogo')
-install=sogo.install
-
-source=(
-  http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-${pkgver}.tar.gz
-  sogo_configure.patch
-  sogo.service
-  sogo.confd
-)
-
+source=("http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-${pkgver}.tar.gz"
+        "sogo_configure.patch"
+        "sogo.service"
+        "sogo.confd")
 sha256sums=('63828a93d15c30c84a7955d44962373d428697770e875ce5a9a5367378caf04e'
             'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
             '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
@@ -61,7 +52,6 @@ build() {
 }
 
 package() {
-
   cd "${srcdir}/SOGo-${pkgver}"
   make install DESTDIR="${pkgdir}"
   install -D -m 0644 "${srcdir}"/sogo.service \
@@ -81,5 +71,4 @@ package() {
                      "${pkgdir}"/etc/conf.d/sogo
   cd "${srcdir}/SOGo-${pkgver}/ActiveSync"
   make PYTHON=/usr/bin/python2 install DESTDIR="${pkgdir}" GNU_SYSTEM_ADMIN_TOOLS="/usr/bin"
-
 }
