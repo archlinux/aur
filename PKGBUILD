@@ -6,12 +6,12 @@ pkgname=mksh-static-git
 _pkgname=mksh
 _pkgver=R56
 pkgver=56.r3154.3a4eaf6
-pkgrel=3
+pkgrel=4
 pkgdesc='The MirBSD Korn Shell - an enhanced version of the public domain ksh (statically-linked development version)'
 url='https://www.mirbsd.org/mksh.htm'
 license=('custom')
 arch=('i686' 'x86_64')
-makedepends=('git')
+makedepends=('git' 'musl')
 conflicts=('mksh' 'mksh-static' 'mksh-git')
 install=mksh.install
 source=('mksh::git+http://github.com/MirBSD/mksh#branch=master'
