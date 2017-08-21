@@ -2,7 +2,7 @@
 
 pkgname=findutils-git
 pkgver=4.6.0.r115.g9530e31f
-pkgrel=1
+pkgrel=2
 pkgdesc="Basic directory searching utilities of the GNU operating system"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/findutils/"
@@ -12,7 +12,6 @@ makedepends=('git' 'gettext')
 checkdepends=('dejagnu')
 provides=('findutils')
 conflicts=('findutils')
-options=('staticlibs')
 source=("git+https://git.savannah.gnu.org/git/findutils.git")
 sha256sums=('SKIP')
 
