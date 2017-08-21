@@ -1,9 +1,9 @@
 # Maintainer: Marco Pompili <pompilimrc (at) gmail (dot) com>
 
 _npmname=lumo-cljs
-_npmver=1.6.0
+_npmver=1.7.0
 pkgname=nodejs-lumo-cljs # All lowercase
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Fast, cross-platform, standalone ClojureScript REPL"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs>=8.1.3' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('cccc997f1acf9733c2e4e4b40fe7632132da29b575b1f6fd9b97fbfa22352f48')
+sha256sums=('cd97fbd2349b01a92c046ce3ed68bcdc8df226c28f10e1929de9e6ca52c2ea78')
 
 package() {
   cd $srcdir
