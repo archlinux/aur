@@ -1,0 +1,15 @@
+pkgbase = wwwidgets
+	pkgdesc = professional set of useful widgets for qt4 and qt5
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.wysota.eu.org/wwwidgets/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = qt5-tools
+	source = http://www.wysota.eu.org/wwwidgets/wwWidgets-1.0-qt5.tar.gz
+	sha256sums = 81d797e7493a23ee50d695180026cb2a14b0519c834982fee00d3fa63733cd7f
+
+pkgname = wwwidgets
+
