@@ -2,7 +2,7 @@
 
 pkgname=ubuntu-kylin-theme
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The official theme for Ubuntu Kylin"
 arch=('any')
 url="https://launchpad.net/ubuntukylin-theme"
@@ -12,7 +12,8 @@ depends=('gnome-icon-theme' 'hicolor-icon-theme' 'ttf-droid') # 'ubuntu-mono')
 optdepends=('plymouth: Contrain a theme for this login splash screen'
 	'grub: Contain a theme for this bootloader manager'
 	'lightdm-unity-greeter: Contain a theme for this lightdm greeter'
-	'chinese-calendar: Official calendary for Ubuntu Kylin')
+	'chinese-calendar: Official calendary for Ubuntu Kylin'
+	'fcitx: Contain 4 themes for the Qimpanel version')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/ubuntukylin-theme_$pkgver.tar.xz")
 sha256sums=('d1f9087e67b0c39c55b7a63f013472f05d3228eba99db295494d392b4540e876')
 
@@ -21,8 +22,10 @@ package() {
 
   mkdir -p "${pkgdir}/usr/share/"  
   cp -rv --no-preserve=ownership kylin-greeter	"${pkgdir}/usr/share/"
-  cp -rv --no-preserve=ownership usr/share/fcitx-qimpanel "${pkgdir}/usr/share/"
   cp -rv --no-preserve=ownership usr/share/plymouth "${pkgdir}/usr/share/"
+
+  mkdir -p "${pkgdir}/usr/share/fcitx/"
+  cp -rv --no-preserve=ownership usr/share/fcitx-qimpanel/* "${pkgdir}/usr/share/fcitx/"
 
   mkdir -p "${pkgdir}/usr/share/icons/"
   cp -rv --no-preserve=ownership ubuntukylin-icon-theme "${pkgdir}/usr/share/icons/"
