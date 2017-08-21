@@ -1,0 +1,14 @@
+pkgbase = protoc-gen-grpc-java
+	pkgdesc = Protobuf gRPC compiler for Java.
+	pkgver = 0.15.0
+	pkgrel = 1
+	epoch = 0
+	url = http://central.maven.org/
+	arch = x86_64
+	license = MIT
+	validpgpkeys = 54024A1AD00BE5EA
+	source_x86_64 = http://central.maven.org/maven2/io/grpc/protoc-gen-grpc-java/0.15.0/protoc-gen-grpc-java-0.15.0-linux-x86_64.exe
+	md5sums_x86_64 = efe26959a9af989402834eefac1ec78b
+
+pkgname = protoc-gen-grpc-java
+
