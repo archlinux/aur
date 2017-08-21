@@ -1,13 +1,8 @@
 [Unit]
-Description=Prelude-LML service
-DefaultDependencies=no
-After=remode_fs.target prelude-manager.service
+Description=Log analyzer sensor with IDMEF output
 
 [Service]
-ExecStart=/usr/bin/prelude-lml -d -P /run/prelude-lml/prelude-lml.pid
-Type=forking
-PIDFile=/run/prelude-lml/prelude-lml.pid
-Restart=always
+ExecStart=/usr/sbin/prelude-lml
 
 [Install]
 WantedBy=multi-user.target

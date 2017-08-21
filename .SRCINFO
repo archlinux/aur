@@ -1,8 +1,8 @@
 pkgbase = prelude-lml
 	pkgdesc = The prelude log analyzer
-	pkgver = 3.0.0
+	pkgver = 4.0.0
 	pkgrel = 1
-	url = http://www.prelude-siem.org
+	url = https://www.prelude-siem.org
 	install = prelude-lml.install
 	arch = i686
 	arch = x86_64
@@ -13,14 +13,16 @@ pkgbase = prelude-lml
 	depends = libprelude
 	optdepends = syslog-ng: store logs in syslog files to let prelude-lml read it
 	optdepends = rsyslog: store logs in syslog files to let prelude-lml read it
-	source = https://www.prelude-siem.org/pkg/src/3.0.0/prelude-lml-3.0.0.tar.gz
+	backup = etc/prelude-lml/prelude-lml.conf
+	backup = etc/prelude-lml/plugins.rules
+	source = https://www.prelude-siem.org/pkg/src/4.0.0/prelude-lml-4.0.0.tar.gz
 	source = prelude-lml.run
 	source = prelude-lml.service
 	source = prelude-lml-conf.patch
-	md5sums = a3a78973f38d290918b2525d0334f148
-	md5sums = 00192275d77f9ee2ebbb7f03ead213b4
-	md5sums = 6afec530104f971f73a21d84e557c015
-	md5sums = 8095b31d0f0d970813c59fbd6cd4297d
+	md5sums = 67d4bbdc8679c2a3db6bf9deb45c8700
+	md5sums = 826320a9f19db7e179d7cccb0828eb36
+	md5sums = 6418c224e5053f6383bdb625bb5ab03f
+	md5sums = 8e7cffb467e5556a816252cef4a8abd4
 
 pkgname = prelude-lml
 
