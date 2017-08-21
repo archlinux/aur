@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=IOTA Wallet
+Comment=Official IOTA desktop wallet
+Exec=/usr/bin/iota-wallet
+Icon=iota
+Terminal=false
+Type=Application
+Categories=Utility;Application;Finance;
