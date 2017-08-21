@@ -4,7 +4,7 @@
 
 _pkgbase='openage'
 pkgname="$_pkgbase-git"
-pkgver=v0.3.0.r932.ga7c98afe
+pkgver=v0.3.0.r986.g87f68683
 pkgrel=1
 pkgdesc='A free (as in freedom) clone of the Age of Empires II engine'
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ package() {
   cd "$srcdir/$_pkgbase/build"
   make DESTDIR="$pkgdir/" install
   install -d $pkgdir/usr/bin
-  cp "$srcdir/$_pkgbase/run" $pkgdir/usr/bin/openage
+  cp "$srcdir/$_pkgbase/run.py" $pkgdir/usr/bin/openage
   mv $pkgdir/usr/lib64/* $pkgdir/usr/lib/
   rm -r $pkgdir/usr/lib64
 }
