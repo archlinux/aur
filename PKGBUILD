@@ -27,11 +27,11 @@ sha256sums=('SKIP'
 prepare() {
   cd "mlocate"
 
-	mkdir -p "gl"
+  mkdir -p "gl"
   pushd "gl"
-	git clone https://git.savannah.gnu.org/git/gnulib.git
+  git clone https://git.savannah.gnu.org/git/gnulib.git
   cd "gnulib"
-	git checkout "5861339993f3014cfad1b94fc7fe366fc2573598"
+  git checkout "5861339993f3014cfad1b94fc7fe366fc2573598"
   popd
 
   gl/gnulib/gnulib-tool --import
@@ -46,7 +46,7 @@ pkgver() {
 build() {
   cd "mlocate"
 
-	autoreconf -fis
+  autoreconf -fis
   sed -i '/^groupname /s/mlocate/locate/' "Makefile.in"
   ./configure --prefix="/usr" --localstatedir="/var/lib"
   make
@@ -64,17 +64,17 @@ package() {
   make DESTDIR="$pkgdir" install
 
   chgrp 21 "$pkgdir/usr/bin/locate"
-	chmod 2755 "$pkgdir/usr/bin/locate"
-	ln -s "locate" "$pkgdir/usr/bin/slocate"
+  chmod 2755 "$pkgdir/usr/bin/locate"
+  ln -s "locate" "$pkgdir/usr/bin/slocate"
 
   install -dm755 "$pkgdir/var/lib"
-	install -dm750 -g21 "$pkgdir/var/lib/locate"
+  install -dm750 -g21 "$pkgdir/var/lib/locate"
 
   install -Dm644 "$srcdir/updatedb.conf" "$pkgdir/etc/updatedb.conf"
-	install -Dm644 "$srcdir/sysusers.d" "$pkgdir/usr/lib/sysusers.d/locate.conf"
-	install -Dm644 "$srcdir/updatedb.timer" "$pkgdir/usr/lib/systemd/system/updatedb.timer"
-	install -Dm644 "$srcdir/updatedb.service" "$pkgdir/usr/lib/systemd/system/updatedb.service"
+  install -Dm644 "$srcdir/sysusers.d" "$pkgdir/usr/lib/sysusers.d/locate.conf"
+  install -Dm644 "$srcdir/updatedb.timer" "$pkgdir/usr/lib/systemd/system/updatedb.timer"
+  install -Dm644 "$srcdir/updatedb.service" "$pkgdir/usr/lib/systemd/system/updatedb.service"
 
-	install -d "$pkgdir/usr/lib/systemd/system/multi-user.target.wants"
-	ln -s "../updatedb.timer" "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/updatedb.timer"
+  install -d "$pkgdir/usr/lib/systemd/system/multi-user.target.wants"
+  ln -s "../updatedb.timer" "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/updatedb.timer"
 }
