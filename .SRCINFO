@@ -1,8 +1,8 @@
 pkgbase = urbanterror
 	pkgdesc = A team-based tactical shooter based on the Quake 3 Engine
 	pkgver = 4.3.2
-	pkgrel = 2
-	epoch = 2
+	pkgrel = 1
+	epoch = 1
 	url = http://www.urbanterror.info
 	arch = i686
 	arch = x86_64
