@@ -1,0 +1,17 @@
+pkgbase = yozo-office-stable
+	pkgdesc = Yozo Office - An MS Office Compatible Office Suit
+	pkgver = 7.0.0299.131ZH.CL01_ZH_CN
+	pkgrel = 1
+	url = http://www.yozosoft.com/
+	install = yozo-office.install
+	arch = i686
+	arch = x86_64
+	depends = libxtst
+	depends = libxt
+	optdepends = ttf-ms-fonts: Arial, Times, Courier etc.
+	options = !strip
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/y/yozo-office-zh-cn/yozo-office-zh-cn_7.0.0299.131ZH.CL01_amd64.deb
+	md5sums = SKIP
+
+pkgname = yozo-office-stable
+
