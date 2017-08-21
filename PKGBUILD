@@ -5,7 +5,7 @@
 
 pkgname=nwn-gog
 pkgver=2.1.0.21
-pkgrel=3
+pkgrel=4
 pkgdesc="Neverwinter Nights is an RPG from Bioware. This requires the GOG version."
 url="https://www.gog.com/game/neverwinter_nights_diamond_edition"
 license=('custom')
@@ -22,7 +22,7 @@ install=nwn.install
 PKGEXT='.pkg.tar'
 
 source=("setup_nwn_diamond_$pkgver.exe::gogdownloader://neverwinter_nights_diamond_edition/en1installer0" \
-        "setup_nwn_diamond_$pkgver-1.bin::gogdownloader://neverwinter_nights_diamond_edition/eninstaller1" \
+        "setup_nwn_diamond_$pkgver-1.bin::gogdownloader://neverwinter_nights_diamond_edition/en1installer1" \
         "nvn_KingmakerSetup.zip::gogdownloader://neverwinter_nights_diamond_edition/9213" \
         "https://lutris.net/files/games/neverwinter-nights/nwclientgold.tar.gz" \
         "https://lutris.net/files/games/neverwinter-nights/nwclienthotu.tar.gz" \
