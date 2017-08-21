@@ -1,15 +1,15 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=beautify-css
 pkgver=2013
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line stream parser for beautifying CSS.'
 arch=(i686 x86_64)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/beautify-css"
+url="https://xyne.archlinux.ca/projects/beautify-css"
 makedepends=(ghc haskell-parsec)
 source=(
-  http://xyne.archlinux.ca/projects/beautify-css/src/beautify-css-2013.tar.xz
-  http://xyne.archlinux.ca/projects/beautify-css/src/beautify-css-2013.tar.xz.sig
+  https://xyne.archlinux.ca/projects/beautify-css/src/beautify-css-2013.tar.xz
+  https://xyne.archlinux.ca/projects/beautify-css/src/beautify-css-2013.tar.xz.sig
 )
 sha512sums=(
   9d29b07795f2fb26c8b884014b5907f465240cd2cdb1b774214c1f57871d5e6df321ef54a223fca0cb4c8f90e4f92a9cde440bf59a686c2f66c347df3496dea8
@@ -24,7 +24,7 @@ validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 build ()
 {
   cd "$srcdir/$pkgname-$pkgver"
-  ghc --make beautify-css.hs
+  ghc -dynamic --make beautify-css.hs
 #   upx beautify-css
 }
 
