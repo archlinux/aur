@@ -1,0 +1,19 @@
+pkgbase = patch-git
+	pkgdesc = A utility to apply patch files to original sources
+	pkgver = 2.7.5.r17.g817d7d1
+	pkgrel = 1
+	url = https://www.gnu.org/software/patch/patch.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gettext
+	depends = glibc
+	depends = attr
+	provides = patch
+	conflicts = patch
+	source = git+https://git.savannah.gnu.org/git/patch.git
+	sha256sums = SKIP
+
+pkgname = patch-git
+
