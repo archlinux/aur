@@ -1,6 +1,6 @@
 pkgbase = evopop-gtk-theme
 	pkgdesc = GTK theme from Solus OS and Budgie Desktop
-	pkgver = 2.9.90
+	pkgver = 2.9.95
 	pkgrel = 1
 	url = https://github.com/solus-project/evopop-gtk-theme
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = evopop-gtk-theme
 	provides = evopop-gtk-theme
 	provides = evopop-azure-gtk-theme
 	conflicts = evopop-gtk-theme-git
-	source = https://github.com/solus-project/evopop-gtk-theme/archive/2.9.90.tar.gz
-	sha1sums = 89c2bde5330584e8821923e60f5bf751e8de3241
+	source = https://github.com/solus-project/evopop-gtk-theme/archive/2.9.95.tar.gz
+	sha1sums = 5de18328caaa55ff31a69dade2b245a9fdba068f
 
 pkgname = evopop-gtk-theme
 
