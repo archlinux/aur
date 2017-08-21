@@ -1,0 +1,20 @@
+pkgbase = opusfile-git
+	pkgdesc = Stand-alone decoder library for .opus streams
+	pkgver = 0.9.r0.g2c239eb
+	pkgrel = 1
+	url = https://opus-codec.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	depends = openssl
+	depends = opus
+	provides = opusfile
+	conflicts = opusfile
+	options = staticlibs
+	source = git+https://git.xiph.org/opusfile.git
+	sha256sums = SKIP
+
+pkgname = opusfile-git
+
