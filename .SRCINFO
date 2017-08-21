@@ -1,0 +1,13 @@
+pkgbase = pbqp
+	pkgdesc = Bernhard Scholz' PBQP solver tool
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.complang.tuwien.ac.at/scholz/pbqp
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	source = http://www.complang.tuwien.ac.at/scholz/pbqp/pbqp.tar.gz
+	sha1sums = bc6b169aeb66cddc040af5d7d7b6c957f4d95cfd
+
+pkgname = pbqp
+
