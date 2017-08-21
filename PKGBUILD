@@ -1,7 +1,7 @@
 # Maintainer: Muhkoenig
 
 pkgname=nerd-fonts-bitstream-vera-mono
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Patched font Bitstream Vera Mono from nerd-fonts library"
 arch=('any')
@@ -13,8 +13,8 @@ source=(
     "https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/BitstreamVeraSansMono.zip"
     "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
 sha256sums=(
-    '3bda2c91fa310646255ce8e143e108e517f7569c3e16689fa1a92db4f6655e97'
-    '25f0b18305451ab7353c534098d9daf4051fbedfac6d5ef9be5de42e007e1c3f')
+    'e984c2c1e9971555c061b95c8c247c391cb3c0795346d8a56e2f36790e62ac44'
+    'd2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF
