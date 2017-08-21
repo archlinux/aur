@@ -11,16 +11,19 @@ url="https://www.gog.com/game/neverwinter_nights_diamond_edition"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('binkplayer' 'perl' 'elfutils' 'icoutils')
-depends_x86_64=('lib32-elfutils' 'lib32-libgl' 'lib32-glu' 'lib32-libstdc++5' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-sdl_mixer')
+depends_x86_64=('lib32-elfutils' 'lib32-libgl' 'lib32-glu' 'lib32-libstdc++5' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-sdl_mixer' 'gcc-multilib')
 depends_i686=('libgl' 'glu' 'libstdc++5' 'libxcursor' 'sdl_mixer')
 makedepends=('git' 'innoextract' 'p7zip' 'perl' 'unzip')
 optdepends=('xdg-utils: xdg .desktop file support')
 provides=('nwn')
 conflicts=('nwn')
 install=nwn.install
-source=("gog://neverwinter_nights_diamond_edition/setup_nwn_diamond_$pkgver.exe" \
-        "gog://neverwinter_nights_diamond_edition/setup_nwn_diamond_$pkgver-1.bin" \
-        "gog://neverwinter_nights_diamond_edition/extras/nvn_KingmakerSetup.zip" \
+
+PKGEXT='.pkg.tar'
+
+source=("setup_nwn_diamond_$pkgver.exe::gogdownloader://neverwinter_nights_diamond_edition/en1installer0" \
+        "setup_nwn_diamond_$pkgver-1.bin::gogdownloader://neverwinter_nights_diamond_edition/eninstaller1" \
+        "nvn_KingmakerSetup.zip::gogdownloader://neverwinter_nights_diamond_edition/9213" \
         "https://lutris.net/files/games/neverwinter-nights/nwclientgold.tar.gz" \
         "https://lutris.net/files/games/neverwinter-nights/nwclienthotu.tar.gz" \
         "https://lutris.net/files/games/neverwinter-nights/English_linuxclient169_xp2.tar.gz" \
@@ -32,6 +35,9 @@ source=("gog://neverwinter_nights_diamond_edition/setup_nwn_diamond_$pkgver.exe"
         "git+https://github.com/nwnlinux/nwlogger.git" \
         "git+https://github.com/nwnlinux/nwmovies.git")
 noextract=("nwclientgold.tar.gz" "nwclienthotu.tar.gz" "English_linuxclient169_xp2.tar.gz" "setup_nwn_diamond_$pkgver-1.bin")
+
+DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
+
 md5sums=('cd809b9d22022adb01b0d1d70c5afa8e'
          'ce60bf104cc6082fe79d6f0bd7b48f51'
          '57be8c593db88db6b6ee78ba9201ec53'
@@ -52,6 +58,9 @@ prepare()
     innoextract -e $srcdir/setup_nwn_diamond_${pkgver}.exe -d $srcdir --gog || return 1
 
     # Extract game icons
+    if [ -d $srcdir/icons ]; then
+        rm -r $srcdir/icons
+    fi
     mkdir $srcdir/icons
     icotool -x -p 0 $srcdir/game/goggame-1207658890.ico -o $srcdir/icons
 
