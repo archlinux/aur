@@ -11,7 +11,7 @@
 pkgname='electron-cash'
 _tarname='electrum'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
@@ -53,8 +53,8 @@ optdepends=(
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fyookball/electrum/archive/2.9.2.tar.gz")
-sha256sums=('1e598a0979a6b7f382acb41e6afda2a09a690741440b15f5cebc0814cb609c78')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fyookball/electrum/archive/${pkgver}.tar.gz")
+sha256sums=('406bc77c9a6f8a1fb69cdbe2873ad6fb2956afbb6ec0f1da71b9d6ee9f8bf8bc')
 
 build() {
   cd "${_tarname}-${pkgver}"
