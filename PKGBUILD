@@ -7,7 +7,7 @@ arch=(x86_64)
 url="https://iota.org"
 license=('GPL')
 depends=(gconf nss libxss libxtst gtk2 alsa-lib java-environment)
-provides=(iota)
+provides=(iota-wallet)
 source=("https://github.com/iotaledger/wallet/releases/download/v$pkgver/iota-$pkgver.tar.gz"
 				"iota-wallet.sh"
 				"iota-wallet.desktop"
