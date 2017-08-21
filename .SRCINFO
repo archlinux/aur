@@ -1,6 +1,6 @@
 pkgbase = firefox-eme-free-bin
 	pkgdesc = Standalone web browser from mozilla.org - EME free release
-	pkgver = 54.0
+	pkgver = 55.0.2
 	pkgrel = 1
 	url = http://www.mozilla.org/en-US/firefox/organizations/
 	install = firefox-eme-free.install
@@ -20,9 +20,9 @@ pkgbase = firefox-eme-free-bin
 	optdepends = gstreamer0.10: HTML5 video
 	optdepends = gstreamer0.10-good-plugins: h.264 video
 	provides = firefox-eme-free
-	source = http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/54.0/linux-x86_64-EME-free/en-US/firefox-54.0.tar.bz2
+	source = http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/55.0.2/linux-x86_64-EME-free/en-US/firefox-55.0.2.tar.bz2
 	source = firefox-eme-free.desktop
-	sha512sums = 97bca771a86d65b27d55a53cf28821794899f8eefa21cd2a4fbaf8fd780f81624501817ac80b0ee8042a9498421cfc36092349bbf82e93d63db9713ded0820f2
+	sha512sums = 34e4d4ea1ac2bb6b2762dd2dd5a75d5f8e7ba57143d65e14092ebb90ae2b7ae9fcecdd451402bcdc92109728c94f36f664c4b220001d9edb9eb97ce4026b61e2
 	sha512sums = faecc006b7c7d95d20430492530a598f4a69e71461833082ba6de68fe17d3b76e64f416fe0e00b06ded5e658c59a3e7b9c6fb24628a9944724d46e05545f1a18
 
 pkgname = firefox-eme-free-bin
