@@ -3,7 +3,7 @@
 pkgname=deepin-wine
 pkgvers=1.9-44
 pkgver=1.9_44
-pkgrel=2
+pkgrel=5
 epoch=
 pkgdesc="Deepin Wine"
 arch=('i686' 'x86_64')

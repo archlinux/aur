@@ -1,7 +1,7 @@
 pkgbase = deepin-wine
 	pkgdesc = Deepin Wine
 	pkgver = 1.9_44
-	pkgrel = 2
+	pkgrel = 5
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
