@@ -1,0 +1,8 @@
+*.tar.gz
+*.tar.xz
+*.tar
+*.zip
+*.fik
+*.lic
+src/
+pkg/

@@ -1,12 +1,11 @@
-# Maintainer: Daniel E. Shub <daniel.e.shub@gmail.com>
-# Maintainer: Ido Rosen <ido@kernel.org>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 
-## This PKGBUILD creates an Arch Linux package for the proprietary MATLAB application. A license from The MathWorks is needed in order to both build the package and to run MATLAB once the package is installed. In order to build the package the user must supply a plain text file installation key and the software. For network installations, in addition to the file installation key, a license file needs to be used for the installation. The ISO file can be downloaded from The MathWorks, generated from the official DVD, or created by using the interactive installer to download the toolboxes (installation can be made to a temporary directory and canceled once the toolboxes are downloaded). The contents of the ISO file must include: ./archives/ ./bin/ ./etc/ ./help/ ./java/ /sys ./activate.ini ./install ./installer_input.txt
+## This PKGBUILD creates an Arch Linux package for the proprietary MATLAB application. A license from The MathWorks is needed in order to both build the package and to run MATLAB once the package is installed. In order to build the package the user must supply a plain text file installation key and the software. For network installations, in addition to the file installation key, a license file needs to be used for the installation. The tar archive file can be generated from an ISO downloaded from The MathWorks, generated from the official DVD, or created by using the interactive installer to download the toolboxes (installation can be made to a temporary directory and canceled once the toolboxes are downloaded). The contents of the tar archive must include: ./archives/ ./bin/ ./etc/ ./help/ ./java/ /sys ./activate.ini ./install ./installer_input.txt
 
-## The default installation behavior is to install all licensed products whether or not they are available in the iso file. To install only a subset of licensed products either provide a $_products array or set $_partialinstall and remove unwanted entries from the provided $_products array. To perform a network install set $_networkinstall.
+## The default installation behavior is to install all licensed products whether or not they are available in the tar file. To install only a subset of licensed products either provide a $_products array or set $_partialinstall and remove unwanted entries from the provided $_products array. To perform a network install set $_networkinstall.
 
 pkgname=matlab
-pkgver=08.06.00
+pkgver=9.2.0.556344
 pkgrel=1
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=('x86_64')
@@ -23,6 +22,7 @@ depends=('gconf'
          'libxtst'
          'ncurses5-compat-libs'
          'nss'
+	 'gcc5'
          'portaudio'
          'python2'
          'qt5-svg'
@@ -32,8 +32,8 @@ depends=('gconf'
          'xerces-c')
 optdepends=('gcc47: For MEX support'
             'gcc47-fortran: For MEX support')
-source=("file://${pkgname}.iso"
-        "file://${pkgname}.fik")
+source=("file://matlab.tar"
+        "file://matlab.fik")
 md5sums=('SKIP'
          'SKIP')
 
@@ -88,7 +88,10 @@ package() {
 
   ## See $MATLABROOT/sys/os/glnxa64/README.libstdc++
   msg2 'Removing unused library files'
-  rm ${pkgdir}/opt/tmw/${pkgname}/sys/os/glnxa64/{libstdc++.so.6.0.17,libstdc++.so.6,libgcc_s.so.1,libgfortran.so.3.0.0,libgfortran.so.3,libquadmath.so.0.0.0,libquadmath.so.0}
+  rm ${pkgdir}/opt/tmw/${pkgname}/sys/os/glnxa64/{libstdc++.so.6.0.20,libstdc++.so.6,libgcc_s.so.1,libgfortran.so.3.0.0,libgfortran.so.3,libquadmath.so.0.0.0,libquadmath.so.0}
+
+  # make sure MATLAB can find libgfortran.so.3
+  sed -i 's,LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`",LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`:/usr/lib/gcc/x86_64-pc-linux-gnu/5.4.0",g' "${pkgdir}/opt/tmw/matlab/bin/matlab"
 }
 
 ## For network installations, apparently, a license file needs to be used for the installation.
