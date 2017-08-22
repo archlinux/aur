@@ -1,7 +1,6 @@
 # Maintainer: Md. Jahidul Hamid <jahidulhamid@yahoo.com>
 pkgname=rnm
 pkgver=4.0.2
-_pkgver="$pkgver-arch"
 pkgrel=1
 epoch=
 pkgdesc="Bulk rename utility"
@@ -20,28 +19,28 @@ backup=()
 options=()
 install=
 changelog=
-source=( "https://github.com/neurobin/$pkgname/archive/$_pkgver.tar.gz" )
+source=( "https://github.com/neurobin/$pkgname/archive/$pkgver.tar.gz" )
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-$_pkgver"
-	#patch -p1 -i "$srcdir/$pkgname-$_pkgver.patch"
+	cd "$pkgname-$pkgver"
+	#patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
 }
 
 build() {
-	cd "$pkgname-$_pkgver"
+	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr
 	make
 }
 
 check() {
-	cd "$pkgname-$_pkgver"
+	cd "$pkgname-$pkgver"
 	make -k check
 }
 
 package() {
-	cd "$pkgname-$_pkgver"
+	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }

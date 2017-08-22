@@ -9,7 +9,7 @@ pkgbase = rnm
 	makedepends = jpcre2
 	depends = gmp
 	depends = pcre2
-	source = https://github.com/neurobin/rnm/archive/4.0.2-arch.tar.gz
+	source = https://github.com/neurobin/rnm/archive/4.0.2.tar.gz
 	md5sums = SKIP
 
 pkgname = rnm
