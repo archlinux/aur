@@ -1,13 +1,13 @@
 pkgbase = pacget
 	pkgdesc = A wrapper around pacaur to mimic yaourt's search feature
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/neurobin/pacget
 	arch = any
 	license = GPL
 	depends = pacaur
 	optdepends = pkgfile: support for package search by file name
-	source = https://github.com/neurobin/pacget/archive/1.0.3.tar.gz
+	source = https://github.com/neurobin/pacget/archive/1.0.4.tar.gz
 	md5sums = SKIP
 
 pkgname = pacget

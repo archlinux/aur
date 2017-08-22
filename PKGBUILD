@@ -1,6 +1,6 @@
 # Maintainer: Md. Jahidul Hamid <jahidulhamid@yahoo.com>
 pkgname=pacget
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 epoch=
 pkgdesc="A wrapper around pacaur to mimic yaourt's search feature"
