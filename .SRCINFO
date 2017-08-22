@@ -1,0 +1,16 @@
+pkgbase = el-general-icon-theme-git
+	pkgdesc = El General Icon Theme by Fabián Alexis
+	pkgver = 14.4d410d6
+	pkgrel = 1
+	url = https://github.com/Mikail70/El-General
+	arch = any
+	license = LGPL3
+	makedepends = git
+	depends = gtk-update-icon-cache
+	provides = el-general-icon-theme-git
+	conflicts = el-general-icon-theme-git
+	source = git+https://github.com/Mikail70/El-General
+	sha256sums = SKIP
+
+pkgname = el-general-icon-theme-git
+
