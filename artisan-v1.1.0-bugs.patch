@@ -1,0 +1,8 @@
+8944c8944
+<                     if self.temp_decay_weights == None or len(self.temp_decay_weights) != cf: # recompute only on changes
+---
+>                     if self.temp_decay_weights is None or len(self.temp_decay_weights) != cf: # recompute only on changes
+8986c8986
+<                                 if self.decay_weights == None or len(self.decay_weights) != user_filter: # recompute only on changes
+---
+>                                 if self.decay_weights is None or len(self.decay_weights) != user_filter: # recompute only on changes

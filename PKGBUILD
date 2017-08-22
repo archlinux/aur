@@ -1,7 +1,7 @@
 # Maintainer: Christian Schwarz <me@cschwarz.com>
 pkgname=artisan-roaster-scope
 pkgver=1.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Artisan is a software that helps coffee roasters record, analyze, and control roast profiles."
 arch=("any")
 url="https://github.com/artisan-roaster-scope/artisan"
@@ -10,10 +10,9 @@ depends=( "python2"
           "python2-sip"
           "python2-scipy"
           "python2-numpy"
-          "python2-cx_freeze"
           "python2-pyserial"
           "python2-requests"
-          "python2-pyqt4"
+          "python2-pyqt5"
           "python2-matplotlib"
           "python2-qrcode"
           "python2-bottle"
@@ -25,9 +24,14 @@ depends=( "python2"
           "python2-unidecode"
 )
 makedepends=('git')
-source=("https://github.com/artisan-roaster-scope/artisan/archive/v${pkgver}.tar.gz"
+source=(
+"https://github.com/artisan-roaster-scope/artisan/archive/v${pkgver}.tar.gz"
+"artisan-v1.1.0-bugs.patch"
 )
-md5sums=('87d84a79537c3c66fafa367d779eeb17')
+md5sums=(
+'87d84a79537c3c66fafa367d779eeb17'
+'72da7888224102ee896a1d1ebebaa1b5'
+)
 #generate with 'makepkg -g'
 
 install="$pkgname.install"
@@ -47,6 +51,8 @@ prepare() {
 package() {
   
   cd "$srcdir/artisan-${pkgver}/src"
+  patch artisanlib/main.py "$srcdir/artisan-v1.1.0-bugs.patch"
+
 
   # Copy the relevant project files to usr/share/artisan  
   cp -r debian/usr "$pkgdir/"
