@@ -5,19 +5,19 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=0.0.99.r242.6c82c43
+pkgver=0.0.99.r347.228bf6d
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('elementary' 'xorg-xauth' 'sudo')
+depends=('efl' 'xorg-xauth' 'sudo')
 optdepends=('ekbd-git: For virtual keyboard')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 backup=('etc/entrance/entrance.conf')
-source=("git://git.enlightenment.org/misc/$_pkgname.git")
+source=("git://github.com/Obsidian-StudiosInc/entrance")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -45,7 +45,6 @@ build() {
     --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
-    --disable-grub2 \
     --disable-consolekit
 
   make
@@ -58,9 +57,6 @@ package() {
 
 # install correct PAM file
   install -Dm644 "data/entrance.arch" "$pkgdir/etc/pam.d/entrance"
-
-# fix permissions on /etc/sudoers.d/ to match sudo package
-  chmod 750 "$pkgdir/etc/sudoers.d/"
 
 # install text files
   install -d "$pkgdir/usr/share/doc/$_pkgname/"
