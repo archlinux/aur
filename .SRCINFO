@@ -1,0 +1,15 @@
+pkgbase = ozon-icon-theme
+	pkgdesc = Ozon OS default icon set
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/ozonos/ozon-icon-theme
+	arch = any
+	license = GPL3
+	depends = gtk-update-icon-cache
+	provides = ozon-icon-theme
+	conflicts = ozon-icon-theme
+	source = https://github.com/ozonos/ozon-icon-theme/archive/v0.3.tar.gz
+	sha256sums = d3fb3443c861283ac7bd6a318a74bad38f0206f39d3add4e36299d71326bc24d
+
+pkgname = ozon-icon-theme
+
