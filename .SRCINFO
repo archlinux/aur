@@ -1,6 +1,6 @@
 pkgbase = courier-maildrop
 	pkgdesc = mail delivery agent - procmail like but nicer syntax
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = http://courier-mta.org/maildrop/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = courier-maildrop
 	depends = gdbm
 	depends = courier-unicode>=2.0
 	conflicts = courier-mta
-	source = http://downloads.sourceforge.net/project/courier/maildrop/2.9.0/maildrop-2.9.0.tar.bz2
+	source = http://downloads.sourceforge.net/project/courier/maildrop/2.9.1/maildrop-2.9.1.tar.bz2
 	options = !libtool
 	options = !staticlibs
 
