@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-hicolor-icon-theme
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="Freedesktop.org Hicolor icon theme (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ license=('GPL')
 makedepends=('mingw-w64-configure')
 options=(!strip !buildflags staticlibs)
 source=("http://icon-theme.freedesktop.org/releases/hicolor-icon-theme-${pkgver}.tar.xz")
-sha256sums=('9cc45ac3318c31212ea2d8cb99e64020732393ee7630fa6c1810af5f987033cc')
+sha256sums=('b0f8e770815fc80f7719d367608a2eb05572570cfca2734f986deae73e7d1f39')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
