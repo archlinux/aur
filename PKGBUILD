@@ -2,8 +2,8 @@
 
 pkgname=pkg-config-git
 pkgver=0.29.2.r1.g2dd2b19
-pkgrel=1
-pkgdesc="Provides useful functions commonly found on BSD systems"
+pkgrel=2
+pkgdesc="A system for managing library compile/link flags"
 arch=('i686' 'x86_64')
 url="https://www.freedesktop.org/wiki/Software/pkg-config/"
 license=('GPL2')

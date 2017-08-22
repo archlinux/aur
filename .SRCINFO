@@ -1,7 +1,7 @@
 pkgbase = pkg-config-git
-	pkgdesc = Provides useful functions commonly found on BSD systems
+	pkgdesc = A system for managing library compile/link flags
 	pkgver = 0.29.2.r1.g2dd2b19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/pkg-config/
 	arch = i686
 	arch = x86_64
