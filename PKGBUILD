@@ -10,7 +10,7 @@ arch=('any')
 url='http://www.kde.org/'
 license=('LGPL')
 makedepends=('kdelibs' 'cmake' 'automoc4')
-source=("http://download.kde.org/stable/applications/${pkgver}/src/${pkgname}-${pkgver}.tar.xz")
+source=("https://download.kde.org/Attic/applications/${pkgver}/src/${pkgname}-${pkgver}.tar.xz")
 sha1sums=('c08dd2b5e88a3357215d020d522ce83f2f75101a')
 
 build() {
