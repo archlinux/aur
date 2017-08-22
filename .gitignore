@@ -1,0 +1,4 @@
+/[Ee]tcher-*
+/*.log
+/src/
+/pkg/
