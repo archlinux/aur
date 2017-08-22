@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=jemalloc-git
-pkgver=5.0.0.r4.g84f6c2ca
+pkgver=5.0.1.r25.gea91dfa5
 pkgrel=1
 pkgdesc="General purpose malloc implementation"
 arch=('i686' 'x86_64')
 url="http://jemalloc.net/"
 license=('BSD')
-depends=('glibc')
+depends=('glibc' 'sh')
 makedepends=('git' 'docbook-xsl')
 optdepends=('perl: for running jeprof')
 provides=('jemalloc')
