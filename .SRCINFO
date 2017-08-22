@@ -1,26 +1,40 @@
 pkgbase = libcd
-	pkgdesc = Platform-independent graphics library
+	pkgdesc = Canvas Draw - 2D vector graphics library
 	pkgver = 5.11
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.tecgraf.puc-rio.br/cd/
 	arch = i686
 	arch = x86_64
-	license = custom
-	makedepends = lua
-	depends = ftgl
-	depends = gtk3
-	depends = libxmu
-	depends = libim
+	license = MIT
+	makedepends = glu
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua-im
+	makedepends = lua51-im
+	makedepends = lua52-im
 	source = http://downloads.sourceforge.net/project/canvasdraw/5.11/Docs%20and%20Sources/cd-5.11_Sources.tar.gz
+	source = http://downloads.sourceforge.net/project/canvasdraw/5.11/Docs%20and%20Sources/ftgl-2.1.5_Sources.tar.gz
 	source = http://downloads.sourceforge.net/project/canvasdraw/5.11/Docs%20and%20Sources/cd-5.11_Docs.pdf
-	source = LICENSE
-	source = cdpdf.mak.patch
-	source = cdluaim5.patch
 	md5sums = fe722e1217412135b1be7752ee59958f
+	md5sums = f8104a4bea1a4c9a77d562293926ad6a
 	md5sums = b5869667080daba6ecfdd5ba0f54f8bb
-	md5sums = 3b326faf9f9ab35096453525b55bd8c8
-	md5sums = eec4463334ef927ed6c4ccb81086c6df
-	md5sums = ed8a4b981b24f38d82efd8aa5b3dea87
 
 pkgname = libcd
+	pkgdesc = Canvas Draw - 2D vector graphics library
+	depends = libim
+	depends = glu
+	depends = libxmu
+	depends = gtk3
+
+pkgname = lua-cd
+	pkgdesc = Lua (5.3) bindings for Canvas Draw library
+	depends = libcd
+
+pkgname = lua51-cd
+	pkgdesc = Lua (5.1) bindings for Canvas Draw library
+	depends = libcd
+
+pkgname = lua52-cd
+	pkgdesc = Lua (5.2) bindings for Canvas Draw library
+	depends = libcd
 

@@ -1,42 +1,123 @@
-# Original contributor: Karro <karolina.lindqvist@kramnet.se>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Jiří Klimeš <blueowl@centrum.cz>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Karro <karolina.lindqvist@kramnet.se>
 
-pkgname=libcd
+pkgbase=libcd
+pkgname=('libcd' 'lua-cd' 'lua51-cd' 'lua52-cd')
+pkgdesc="Canvas Draw - 2D vector graphics library"
 pkgver=5.11
-pkgrel=6
-pkgdesc="Platform-independent graphics library"
+pkgrel=7
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/cd/"
-depends=('ftgl' 'gtk3' 'libxmu' 'libim')
-makedepends=('lua')
-license=('custom')
+makedepends=('glu' 'lua51' 'lua52' 'lua-im' 'lua51-im' 'lua52-im')
+license=('MIT')
+_ftglver=2.1.5
 source=(
   "http://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/cd-${pkgver}_Sources.tar.gz"
+  "http://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/ftgl-${_ftglver}_Sources.tar.gz"
   "http://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/cd-${pkgver}_Docs.pdf"
-  LICENSE
-  cdpdf.mak.patch
-  cdluaim5.patch
 )
 md5sums=('fe722e1217412135b1be7752ee59958f'
-         'b5869667080daba6ecfdd5ba0f54f8bb'
-         '3b326faf9f9ab35096453525b55bd8c8'
-         'eec4463334ef927ed6c4ccb81086c6df'
-         'ed8a4b981b24f38d82efd8aa5b3dea87')
+         'f8104a4bea1a4c9a77d562293926ad6a'
+         'b5869667080daba6ecfdd5ba0f54f8bb')
 
-build() {
-  cd "$srcdir"/cd
-  make FLAGS="-I/usr/include/im" LFLAGS="-L/usr/lua/5.1" || true
+prepare() {
+  # Statically link internal ftgl library. It contains Tecgraf's extensions needed by libcdgl.so
+  sed '/LIBS += ftgl/{ N; s/.*/SLIB += $(FTGL_LIB)\/libftgl.a/; }' -i "$srcdir"/cd/tecmake.mak
 }
 
-package() {
-  cd "$srcdir"/cd
+build() {
+  msg2 'Building libcd'
+  cd "$srcdir"/ftgl
+  make
+
+  cd "$srcdir"/cd/src
+  make cd cd_pdflib cdpdf cdgl cdim cdcontextplus \
+    IM_INC=/usr/include/im \
+    IM_LIB=/usr/lib \
+    USE_FTGL=Yes
+
+  msg2 'Building Lua 5.3 bindings'
+  make cdlua5 cdluapdf5 cdluagl5 cdluacontextplus5 cdluaim5 \
+    STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.3,--enable-new-dtags,--as-needed" \
+    IM_INC=/usr/include/im \
+    IM_LIB=/usr/lib \
+    IMLUA_LIB=/usr/lib/lua/5.3 \
+    USE_LUA53=Yes
+
+  msg2 'Building Lua 5.2 bindings'
+  make cdlua5 cdluapdf5 cdluagl5 cdluacontextplus5 cdluaim5 \
+    STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.2,--enable-new-dtags,--as-needed" \
+    IM_INC=/usr/include/im \
+    IM_LIB=/usr/lib \
+    IMLUA_LIB=/usr/lib/lua/5.2 \
+    LUA_INC=/usr/include/lua5.2 \
+    USE_LUA52=Yes
+
+  msg2 'Building Lua 5.1 bindings'
+  make cdlua5 cdluapdf5 cdluagl5 cdluacontextplus5 cdluaim5 \
+    STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.1,--enable-new-dtags,--as-needed" \
+    IM_INC=/usr/include/im \
+    IM_LIB=/usr/lib \
+    IMLUA_LIB=/usr/lib/lua/5.1 \
+    LUA_INC=/usr/include/lua5.1 \
+    USE_LUA51=Yes
+}
+
+package_libcd() {
+  pkgdesc="Canvas Draw - 2D vector graphics library"
+  depends=('libim' 'glu' 'libxmu' 'gtk3')
+
   install -m755 -d "$pkgdir"/usr/lib
-  install -m644 lib/L*/*.{a,so} "$pkgdir"/usr/lib
+  install -m644 "$srcdir"/cd/lib/Linux*/lib*.so "$pkgdir"/usr/lib
   install -m755 -d "$pkgdir"/usr/share/$pkgname
   install -m644 "$srcdir"/cd-${pkgver}_Docs.pdf "$pkgdir"/usr/share/$pkgname
   install -m755 -d "$pkgdir"/usr/include/cd
   install -m644 "$srcdir"/cd/include/* "$pkgdir"/usr/include/cd
-  install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -d "$pkgdir"/usr/lib/lua/5.1/
-  install -Dm644 "$srcdir"/cd/lib/Linux*_??/Lua51/*.so "$pkgdir"/usr/lib/lua/5.1/
+  install -Dm644 "$srcdir"/cd/COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+
+_lua_cd_package_helper() {
+  # $1 ... Lua version ("5.1", "5.2" or "5.3")
+
+  _lua_ver=$1
+  _lua_ver_nodot=`echo $1 | cut -c1,3`
+
+  install -d "$pkgdir"/usr/lib/lua/${_lua_ver}/
+  install -Dm644 "$srcdir"/cd/lib/Linux*_??/Lua${_lua_ver_nodot}/*.so "$pkgdir"/usr/lib/lua/${_lua_ver}/
+  install -Dm644 "$srcdir"/cd/COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  # create symlinks required for Lua modules
+  for name in \
+    cdlua \
+    cdluapdf \
+    cdluagl \
+    cdluaim \
+    cdluacontextplus ; do
+      _lib=lib${name}${_lua_ver_nodot}.so
+      ln -s /usr/lib/lua/${_lua_ver}/${_lib} "$pkgdir"/usr/lib/lua/${_lua_ver}/${name}.so
+  done
+}
+
+package_lua-cd() {
+  pkgdesc="Lua (5.3) bindings for Canvas Draw library"
+  depends=('libcd')
+
+  _lua_cd_package_helper "5.3"
+}
+
+package_lua52-cd() {
+  pkgdesc="Lua (5.2) bindings for Canvas Draw library"
+  depends=('libcd')
+
+  _lua_cd_package_helper "5.2"
+}
+
+package_lua51-cd() {
+  pkgdesc="Lua (5.1) bindings for Canvas Draw library"
+  depends=('libcd')
+
+  _lua_cd_package_helper "5.1"
+}
+
+# vim:set ts=2 sw=2 et:
