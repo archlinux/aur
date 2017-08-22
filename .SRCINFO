@@ -1,13 +1,19 @@
 pkgbase = mcuxpresso-config-tools
 	pkgdesc = Integrated suite of configuration tools for NXP's microcontrollers. From RPM package distributed by NXP.
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nxp.com/products/software-and-tools/run-time-software/mcuxpresso-software-and-tools/mcuxpresso-config-tools:MCUXpresso-Config-Tools
 	arch = x86_64
 	license = custom:"NXP"
 	depends = java-environment
+	depends = libxslt
+	depends = libxtst
+	depends = gcc-libs-multilib
+	depends = gtk2
+	depends = alsa-lib
+	depends = libnet
 	options = !strip
-	source = https://cache.nxp.com/secured/bsps/mcuxpresso-config-tools-v3-1.x86_64.rpm?__gda__=1500290871_ebbad8cd1cce336a1f91b07e225dc941&fileExt=.rpm
+	source = https://cache.nxp.com/secured/bsps/mcuxpresso-config-tools-v3-1.x86_64.rpm?__gda__=1503412477_d1e44dec7df2676f361c64b99dc67452&fileExt=.rpm
 	source = LICENSE
 	source = mcuxpresso-config-tools.install
 	sha256sums = 34b6606d653355b88a1857e787e2d321a702936ba10da94d7c3dd97589fb9951
