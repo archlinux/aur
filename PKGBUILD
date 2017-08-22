@@ -4,7 +4,7 @@
 _gemname=gollum-lib
 pkgname=ruby-$_gemname
 pkgver=4.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, Git-powered wiki, external library dependencies.'
 arch=(any)
 url='http://github.com/gollum/gollum-lib'
@@ -26,7 +26,6 @@ _packagefixes=(
 'kramdown=1.9.0'
 'rack=1.6.8'
 'mustache=0.99.8'
-'useragent=0.16.8'
 )
 
 for _buggeddep in ${_packagefixes[@]}; do
@@ -58,6 +57,4 @@ sha256sums=('d809bff03538ec4526845350b175aec099664654e4084cb8a90217e9e4e634ba'
             '38828ee5b49a2f645919d08fc4b6bdd888500117251f6b50c4e52726264bcbdb'
             'e00ef90f083f845118577dd6a040b4a4aa475bd7a2a645b2ad6944da0555598b'
             'eae37ccb7686b2c672f64bc6be366cfda4d828ea58e1086cb82766b17a54a7a6'
-            '826a96db895819c13fffa4fa3c20b85e80b60aaec1f28f79e7db80092abdb0bc'
-            '18e23793f52862597576757bb61e9ecae329a50a6826c4190e1386edb1646984')
-
+            '826a96db895819c13fffa4fa3c20b85e80b60aaec1f28f79e7db80092abdb0bc')
