@@ -21,8 +21,8 @@ install=
 changelog=
 source=( "https://github.com/neurobin/$pkgname/archive/$pkgver.tar.gz" )
 noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
+md5sums=('e88a5575d5aa96ace9e4a0788404b418')
+validpgpkeys=('3331 6137 5B22 27AC F7AA  6351 A4A2 CA5B 6BDA A871')
 
 prepare() {
 	cd "$pkgname-$pkgver"
