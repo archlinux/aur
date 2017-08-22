@@ -3,7 +3,7 @@
 
 pkgname=blender-plugin-miratools
 pkgver=r606.898cd55 # commit-num.commit-hash 
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern modeling and retopology tools"
 url="https://github.com/mifth/mifthtools/wiki/Mira-Tools"
 license=("GPL")
@@ -20,9 +20,8 @@ pkgver() {
 }
 
 package() {
-    addons="$pkgdir/usr/share/blender/$(blender -v | head -n1 | cut -f2 -d ' ')/scripts/addons/"
-  install -d 755 ${addons}/${name}
+  addons="$pkgdir/usr/share/blender/$(blender -v | head -n1 | cut -f2 -d ' ')/scripts/addons/"
+  install -dm755 ${addons}/${name}
   cp -a ${srcdir}/${pkgname}/blender/addons/* ${addons}/${name}
-#  cp -r "$srcdir/mifthtools-$_h/blender/addons/"* "$addons"
 }
 
