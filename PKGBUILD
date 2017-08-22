@@ -4,10 +4,10 @@
 
 pkgname=python2-webhelpers
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A library of helper functions to make writing templates in web applications easier"
 depends=('python2')
-makedepends=('setuptools')
+makedepends=('python2-setuptools')
 conflicts=('python-webhelpers')
 source=("http://pypi.python.org/packages/source/W/WebHelpers/WebHelpers-$pkgver.tar.gz")
 url="http://pypi.python.org/pypi/WebHelpers/1.3"
