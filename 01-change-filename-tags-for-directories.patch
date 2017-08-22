@@ -1,0 +1,21 @@
+--- a/docs/rblcheck.sgml	(revision 71)
++++ b/docs/rblcheck.sgml	(revision 72)
+@@ -160,7 +160,7 @@
+ <Para>
+ When you are done, you can type <Application>make install</Application> to
+ install the software (by default, everything will be installed in
+-<Filename>/usr/local</Filename>.
++<Filename class="directory">/usr/local</Filename>.
+ </Para>
+ 
+ <Para>
+@@ -397,7 +397,8 @@
+ A recent addition to the rblcheck package is the <Application>rbl</Application>
+ shell script, which is a simple wrapper around rblcheck, with one special
+ feature: it will read a global <Filename>rblcheckrc</Filename> (usually
+-in <Filename>/etc</Filename> or <Filename>/usr/etc</Filename>), and then
++in <Filename class="directory">/etc</Filename> or
++<Filename class="directory">/usr/etc</Filename>), and then
+ a <Filename>.rblcheckrc</Filename> from the current user's home directory.
+ These files can contain any of the usual <Application>rblcheck</Application>
+ command-line arguments (see <XRef linkend="using_rblcheck">), but are most

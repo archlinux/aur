@@ -1,0 +1,12 @@
+# Copyright © Sébastien Luttringer
+--- a/rblcheck.c	2012-06-23 20:11:05.508352459 +0200
++++ b/rblcheck.c	2014-03-27 02:20:45.286918851 +0100
+@@ -30,6 +30,8 @@
+ #include <arpa/nameser.h>
+ #include <resolv.h>
+ #include <netdb.h>
++#include <unistd.h>
++#include <stdlib.h>
+ 
+ /*-- PORTABILITY ------------------------------------------------------------*/
+ 

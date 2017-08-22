@@ -1,0 +1,17 @@
+--- a/sites.h
++++ b/sites.h
+@@ -62,3 +62,14 @@
+ /* ORDB: Open Relay DataBase
+    http://www.ordb.org/ */
+ /* SITE("relays.ordb.org") */
++
++
++SITE("zen.spamhaus.org");
++SITE("sbl.spamhaus.org");
++SITE("xbl.spamhaus.org");
++SITE("pbl.spamhaus.org");
++SITE("bl.spamcop.net");
++SITE("psbl.surriel.com");
++SITE("dnsbl.njabl.org");
++SITE("dnsbl.sorbs.net");
++
