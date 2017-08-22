@@ -1,16 +1,16 @@
 # Maintainer: Can Celasun <can[at]dcc[dot]im>
 pkgname=writerscafe
-pkgver=2.39
-pkgrel=2
+pkgver=2.42
+pkgrel=1
 pkgdesc="A set of power tools for all fiction writers, whether experienced or just starting out"
 url="http://writerscafe.co.uk/"
 license=("custom")
 arch=('i686' 'x86_64')
-depends=('libpng12')
+depends=('libpng12' 'gtk2' 'libsm')
 source_x86_64=(http://writerscafe.co.uk/WritersCafe-${pkgver}-x86_64.tar.gz)
 source_i686=(http://writerscafe.co.uk/WritersCafe-${pkgver}-i386.tar.gz)
-md5sums_i686=('86c3ea90c51a78f381ff346f6db795d2')
-md5sums_x86_64=('c075b3a95da870307dbd102676b20416')
+md5sums_i686=('5cb5a833a83448668e89047c47b4dd6a')
+md5sums_x86_64=('10d2439f045622223d8b16b98ab185aa')
 
 package() {
     cd "$srcdir"
