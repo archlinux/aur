@@ -1,0 +1,14 @@
+pkgbase = python-wal_steam-git
+	pkgdesc = Generate and change steam colorscheme on the fly
+	pkgver = 1.0.1.r0.g7250820
+	pkgrel = 1
+	url = https://github.com/kotajacob/wal_steam
+	arch = any
+	license = MIT
+	depends = python-pywal-git
+	depends = steam
+	source = git+https://github.com/kotajacob/wal_steam.git
+	md5sums = SKIP
+
+pkgname = python-wal_steam-git
+
