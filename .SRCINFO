@@ -1,6 +1,6 @@
 pkgbase = libmpack
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/libmpack/libmpack
 	arch = i686
 	arch = x86_64
