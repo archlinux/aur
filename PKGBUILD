@@ -2,13 +2,13 @@
 # Contributor: Giancarlo Bianchi <giancarlobianchi76-[remove this]-@-[and this]-gmail-[and this]-.com>
 pkgname=subcli
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI program to modify text based subtitles"
 arch=('any')
 url="https://code.google.com/p/subcli"
 license=('GPL')
 depends=('python2')
-source=("https://subcli.googlecode.com/files/${pkgname}_v${pkgver}.tar.gz")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}_v${pkgver}.tar.gz")
 md5sums=('2a69e2db27f048abf2e97f957f83fb7d')
 
 package() {
