@@ -3,7 +3,7 @@
 pkgname=openmsx-git
 _pkgname=openMSX
 pkgver=13046.93a3f55c3
-pkgrel=1
+pkgrel=2
 pkgdesc="The MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org/"
