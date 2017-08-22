@@ -3,7 +3,7 @@
 name=uvsquares
 pkgname=blender-plugin-${name}-git
 pkgver=r63.db80da3
-pkgrel=2
+pkgrel=3
 pkgdesc="Blender addon for reshaping UV selection into grid."
 arch=('any')
 url="https://cgcookiemarkets.com/blender/all-products/uv-squares/"
@@ -22,7 +22,7 @@ pkgver() {
 package() {
   cd ${srcdir}
   addons="$pkgdir/usr/share/blender/$(blender -v | head -n1 | cut -f2 -d ' ')/scripts/addons"
-  install -d 755 ${addons}/${name}
+  install -dm755 ${addons}/${name}
   cp -a ${name}/* ${addons}/${name}
 }
 
