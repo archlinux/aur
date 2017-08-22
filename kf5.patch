@@ -1,17 +1,16 @@
-diff --git a/src/MEGAShellExtDolphin/CMakeLists_kde5.txt b/src/MEGAShellExtDolphin/CMakeLists_kde5.txt
-index 83224966..7a7a936d 100644
+diff --git a/MEGAsync/src/MEGAShellExtDolphin/CMakeLists_kde5.txt b/MEGAsync/src/MEGAShellExtDolphin/CMakeLists_kde5.txt
+index 83224966..3814d073 100644
 --- a/MEGAsync/src/MEGAShellExtDolphin/CMakeLists_kde5.txt
 +++ b/MEGAsync/src/MEGAShellExtDolphin/CMakeLists_kde5.txt
-@@ -38,7 +38,7 @@ add_definitions(-DWITH_KF5)
+@@ -38,7 +38,6 @@ add_definitions(-DWITH_KF5)
  if (KF5_VERSION)
  	if (NOT KF5_VERSION VERSION_LESS 5.16.0)
  		set(MEGASYNCDOLPHINOVERLAYPLUGIN megasyncdolphinoverlayplugin)
 -		set(PLUGIN_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/qt5/plugins) #so that kcoreaddons install in the right path (see https://github.com/KDE/kcoreaddons/blob/master/KF5CoreAddonsMacros.cmake)
-+		set(PLUGIN_INSTALL_DIR ${PLUGIN_INSTALL_DIR}) #so that kcoreaddons install in the right path (see https://github.com/KDE/kcoreaddons/blob/master/KF5CoreAddonsMacros.cmake)
  		kcoreaddons_add_plugin(${MEGASYNCDOLPHINOVERLAYPLUGIN} INSTALL_NAMESPACE "kf5/overlayicon"
  							   JSON megasync-plugin-overlay.json SOURCES megasync-plugin-overlay.cpp)
  		#target_link_libraries(${MEGASYNCDOLPHINOVERLAYPLUGIN} KF5::CoreAddons KF5::KIOCore KF5::KIOWidgets ${MEGASYNCDOLPHINHELPER})
-@@ -60,6 +60,6 @@ add_library(${MEGASYNCPLUGIN} MODULE megasync-plugin.cpp)
+@@ -60,6 +59,6 @@ add_library(${MEGASYNCPLUGIN} MODULE megasync-plugin.cpp)
  target_link_libraries(${MEGASYNCPLUGIN} KF5::CoreAddons KF5::KIOCore KF5::KIOWidgets)
  #configure_file(megasync-plugin.desktop.in ${MEGASYNCPLUGIN}.desktop ESCAPE_QUOTES @ONLY)
  

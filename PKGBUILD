@@ -18,7 +18,7 @@ source=('git+https://github.com/meganz/MEGAsync.git'
         'kf5.patch'
         )
 sha256sums=('SKIP'
-            '7865a2504abe3de6435269a941ad7e737afe37bbbfe81d869d4dac061415c0b0'
+            '1637e860d76a179420c2a58667bae8fc67e944c7216c765e6ce5794b58974fc5'
             )
 
 pkgver() {
