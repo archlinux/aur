@@ -1,0 +1,23 @@
+pkgbase = blogilo-kde4
+	pkgdesc = Blogilo is a blog client in KDE platform, this is a legacy version for those who can not input in visual editor in the KDE5 version. It is an older version comes from KDE4.5 and there might be some bugs.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/KDE/kdepim/tree/KDE/4.5
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = boost
+	makedepends = boost-libs
+	makedepends = kdelibs
+	makedepends = kdelibs4support
+	makedepends = kdepimlibs4
+	provides = blogilo
+	conflicts = blogilo
+	source = https://github.com/KDE/kdepim/archive/KDE/4.5.zip
+	md5sums = 12711f557c0929f00ce2a5be00d08973
+
+pkgname = blogilo-kde4
+
