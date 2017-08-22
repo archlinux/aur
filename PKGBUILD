@@ -33,7 +33,6 @@ package() {
 	chmod +x "initscript.sh"
 	mkdir -p "$pkgdir/usr/bin"
 	cp "$pkgname-$pkgver/theshell" "$pkgdir/usr/bin/theshellb"
-	cp "initscript.sh" "$pkgdir/usr/bin/init_theshellb"
 	mkdir -p "$pkgdir/usr/share/xsessions"
 	cp "theshellb.desktop" "$pkgdir/usr/share/xsessions"
 }
