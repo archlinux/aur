@@ -42,12 +42,6 @@ build() {
   make
 }
 
-check() {
-  cd "icecast-libshout"
-
-  make check
-}
-
 package() {
   cd "icecast-libshout"
 
