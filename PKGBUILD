@@ -2,7 +2,7 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=r38.29.ge25a845
+pkgver=r38.50.gccca638
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('libzimg.so'
          )
 makedepends=('git'
              'cython'
-             'yasm'
+             'nasm'
              'python-sphinx'
              'imagemagick'
              'libass.so'
