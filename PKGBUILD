@@ -1,14 +1,14 @@
-# $Id: PKGBUILD 291740 2017-03-28 06:36:10Z tpowa $
+# Maintainer: Shadoukun <shadoukun@gmail.com>
+# Contributor: SuperBo <supernbo@gmail.com>
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
-# Maintainer: Super Bo <supernbo@gmail.com>
 
-#pkgbase=linux               # Build stock -ARCH kernel
+#pkgbase=linux            # Build stock -ARCH kernel
 pkgbase=linux-surface4       # Build kernel with a different name
-_srcname=linux-4.10
-pkgver=4.10.8
+_srcname=linux-4.12
+pkgver=4.12.8
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
@@ -17,23 +17,38 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        'bonding-require-speed-duplex-only-for-802.3ad-alb-an.patch'
+        'bonding-ratelimit-failed-speed-duplex-update-warning.patch'
+        'mm-Revert-x86_64-and-arm64-ELF_ET_DYN_BASE-base.patch'
+        # surface patches
+        '0002-ipts.patch'
+        '0003-wifi.patch'
+        # touchscreen udev rules
+        '99-ipts.rules'
+        # IPTS firmware config.
+        'ipts_fw_config.bin'
         # the main kernel config files
-        'config.i686' 'config.x86_64'
+        'config.x86_64'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-        '0001-surface4-typecover.patch')
+        'linux.preset')
 
-sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
+sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            'ceb385486e34084dd53425e5ba50b9fba4a8e380d8f2815bfde142852d797da0'
+            '32b860911a3bafd5cd5bc813a427c90fad6eafdf607fa64e1b763b16ab605636'
             'SKIP'
-            '386051f19482672c871e7865fc62f5e2c8010d857729134ba13044734962e42c'
-            '12a87284e2935cd17e2846a207cc76f1728531416523735d66ef8a0ae690884c'
+            '48e0505438bb4ccc7a0e050a896122b490e8f1b1446aa3833841a9d4d7853d68'
+            'fc606711a922638d5cc4358f47f69f554d9e6eab1cec91f0b49f00911f399722'
+            'b830ce777543c0edd20a77d70f204c095f2429bb37151cd4a8c9dfae2af8d51a'
+            'e3b91f55d351612394e14c99631601978f3d8b560203b3467797b758eebf777e'
+            '0faba3f84e262ef16ff5a78943025d172f466066d2e5c5e5035d5915fa90ba01'
+            '6360955b657947693cd57a702ad84f7fa730e20d3d6b3c48f4ec92f4eba27d79'
+            '6db350669dd2250f465e2259c3d7f75316dc448d849a60ef701e5e77ca7a95b0'
+            'eed5c04a5f8841d52292fbb321990c79316ce98cd21324c71226cdc95cc20d09'
+            '585cdf04b6c27b8124e5ce582d2d0d63e020f8e53fc3d794305a96e61e8cc8ab'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'fb005f85ce86b14418ddb427a7fda766e7824283f1b7a458cd2348b0b9dce390')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -47,11 +62,27 @@ prepare() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
+  # surface Patches
+  patch -Np1 -i "${srcdir}/0002-ipts.patch"
+  patch -Np1 -i "${srcdir}/0003-wifi.patch"
+
+  mkdir -p "firmware/intel/ipts"
+  cp "${srcdir}/ipts_fw_config.bin" "firmware/intel/ipts/"
+
+  # security patches
+
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # Apply Surface Pro 4 patch
-  patch -p1 -i "${srcdir}/0001-surface4-typecover.patch"
+  # https://bugzilla.kernel.org/show_bug.cgi?id=196547
+  patch -Np1 -i ../bonding-ratelimit-failed-speed-duplex-update-warning.patch
+  patch -Np1 -i ../bonding-require-speed-duplex-only-for-802.3ad-alb-an.patch
+
+  # https://github.com/google/sanitizers/issues/837
+  # https://patchwork.kernel.org/patch/9886105/
+  patch -Np1 -i ../mm-Revert-x86_64-and-arm64-ELF_ET_DYN_BASE-base.patch
+
+  
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
@@ -88,7 +119,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules for Microsoft Surface Pro 4"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -140,6 +171,9 @@ _package() {
 
   # add vmlinux
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+
+  # install surface touchscreen udev rules
+  install -D -C -m644 "${srcdir}/99-ipts.rules" "${pkgdir}/usr/lib/udev/rules.d/99-ipts.rules"
 }
 
 _package-headers() {
@@ -158,7 +192,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi soc sound trace uapi video xen; do
+    media net pcmcia rdma scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 

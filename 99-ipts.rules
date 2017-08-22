@@ -1,0 +1,5 @@
+# IPTS Touchscreen
+SUBSYSTEMS=="input", ATTRS{name}=="ipts 1B96:005E SingleTouch", ENV{ID_INPUT_TOUCHSCREEN}="1", SYMLINK+="input/touchscreen"
+
+# IPTS Pen
+SUBSYSTEMS=="input", ATTRS{name}=="ipts 1B96:005E Pen", ENV{ID_INPUT_TOUCHSCREEN}="1", SYMLINK+="input/pen"
