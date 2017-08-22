@@ -3,7 +3,7 @@
 
 _gemname=useragent
 pkgname=ruby-$_gemname
-pkgver=0.14.0
+pkgver=0.16.8
 pkgrel=1
 pkgdesc='HTTP User Agent parser'
 arch=(any)
@@ -13,7 +13,6 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('b012fd5285ed327e42cf44d1cea85b476586dba9')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
@@ -21,3 +20,5 @@ package() {
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+sha256sums=('18e23793f52862597576757bb61e9ecae329a50a6826c4190e1386edb1646984')
