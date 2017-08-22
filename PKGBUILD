@@ -1,9 +1,9 @@
 # Maintainer: steelstrings <steelstring.of.a{at}gmail{dot}com>
 
 pkgname=ozon-icon-theme
-_pkgname=ozon-icon-theme-$pkgver
 pkgver=0.3
-pkgrel=1
+_pkgname=ozon-icon-theme-$pkgver
+pkgrel=2
 pkgdesc="Ozon OS default icon set"
 arch=('any')
 url="https://github.com/ozonos/ozon-icon-theme"
