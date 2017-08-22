@@ -1,0 +1,14 @@
+pkgbase = ts-startsession
+	pkgdesc = theShell Session Manager
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/vicr123/ts-startsession
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	source = ts-startsession-1.0::git+https://github.com/vicr123/ts-startsession.git
+	md5sums = SKIP
+
+pkgname = ts-startsession
+
