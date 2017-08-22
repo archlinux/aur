@@ -1,0 +1,18 @@
+pkgbase = wallsplash
+	pkgdesc = Set unsplash wallpapers with colorschemes
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://github.com/filalex77/wallsplash/
+	arch = x86_64
+	arch = x86
+	license = GPL
+	makedepends = nodejs
+	makedepends = npm
+	depends = feh
+	depends = wal-git
+	depends = nodejs-unsplash-wallpaper
+	source = wallsplash-0.1.tar.gz
+	sha1sums = SKIP
+
+pkgname = wallsplash
+
