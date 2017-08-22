@@ -1,0 +1,14 @@
+pkgbase = nodejs-unsplash-wallpaper
+	pkgdesc = Set an image from Unsplash as your wallpaper.
+	pkgver = 6.1.0
+	pkgrel = 1
+	url = https://github.com/cuth/unsplash-wallpaper#readme
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = unsplash-wallpaper-6.1.0.tgz
+	source = http://registry.npmjs.org/unsplash-wallpaper/-/unsplash-wallpaper-6.1.0.tgz
+	sha1sums = c7dca9c14b2e427a4574f4dac50524fe8891d655
+
+pkgname = nodejs-unsplash-wallpaper
+
