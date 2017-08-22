@@ -36,10 +36,7 @@ source=("waterfox-$pkgver.source.tar.gz::https://github.com/MrAlex94/Waterfox/ar
         pgo_fix_missing_kdejs.patch
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/distribution.ini"
-        "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.1"
-        default22.png
-        default24.png
-        default256.png)
+        "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.1")
 sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
