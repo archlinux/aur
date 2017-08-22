@@ -15,18 +15,18 @@
 # of /tmp if you have less than 16G of RAM.
 
 pkgname=clickhouse
-pkgver=1.1.54245
+pkgver=1.1.54276
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
 url='https://clickhouse.yandex/'
 license=('Apache')
 depends=('ncurses' 'readline' 'unixodbc' 'termcap')
-makedepends=('poco' 'cmake' 'gcc63')
+makedepends=('poco' 'cmake')
 source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         clickhouse-server.service
         re2-length.patch)
-md5sums=('9d19d2ec452688186f3ca49a7f7bdc10'
+md5sums=('62f37ed7c09f2f11f277550d255e606f'
          'f9f5663b0a9a58e99f481efe9d193e85'
          '143f0146c3ef3a6832191fba352b70c4')
 backup=('etc/clickhouse-client/config.xml' 'etc/clickhouse-server/config.xml' 'etc/clickhouse-server/users.xml')
@@ -36,8 +36,6 @@ build() {
   cd ClickHouse-$pkgver-stable
   sed -e 's/mysqlxx common\(.*\) \(\${Z_LIB}\)/mysqlxx \2 common\1/' -i libs/libmysqlxx/CMakeLists.txt
   patch -p1 < ../re2-length.patch
-  export CC=gcc-6.3
-  export CXX=g++-6.3
   cmake -D CMAKE_BUILD_TYPE:STRING=Release -D USE_STATIC_LIBRARIES:BOOL=False -D ENABLE_TESTS:BOOL=False -D UNBUNDLED:BOOL=False .
   make clickhouse
 }
