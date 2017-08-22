@@ -2,21 +2,20 @@
 # Contributor: Tomasz Hamerla <tomasz.hamerla@outlook.com>
 
 pkgname=powershell-bin
-_pkgver=6.0.0-beta.4
+_pkgver=6.0.0-beta.5
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework (binary package)"
 arch=('x86_64')
 url="https://github.com/Powershell/Powershell"
 license=('MIT')
-provides=('powershell' 'powershell-bin' 'powershell-git')
+provides=('powershell')
 options=(staticlibs !strip)
 depends=('libunwind' 'icu55' 'libcurl-openssl-1.0')
 makedepends=('rsync')
-conflicts=('powershell' 'powershell-git')
 install=powershell.install
 
-md5sums=('95dcb4c3c18993e05ae35b2fa7001d87')
+md5sums=('a9473349320d7544a3fbdba793c66f54')
 
 source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell_${_pkgver}-1ubuntu1.16.04.1_amd64.deb")
 
