@@ -1,14 +1,16 @@
 pkgbase = cryptop
 	pkgdesc = command line crypto portfolio
-	pkgver = 0.1.0
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/cryptop/
 	arch = any
 	license = MIT
 	depends = python
+	depends = python-requests
+	depends = python-requests-cache
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/c/cryptop/cryptop-0.1.0.tar.gz
-	sha512sums = 3e6db0bae16754274a40ff83528837276d1166a4d94db1c4d79ea40c778deb7faa95102f9285e082e0943da18957043f3cb8cd491b6d1cad52afd0eca8bf1e22
+	source = https://files.pythonhosted.org/packages/source/c/cryptop/cryptop-0.1.9.tar.gz
+	sha512sums = 081c86945582ea1e17c043cfae7e9b806c88303f8ade92666e952f23113a04837ad51d5379c0c9bd196902ed72023b47b1ccaa4e539386c8a3518a92cc6c49e4
 
 pkgname = cryptop
 
