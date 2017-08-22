@@ -1,10 +1,11 @@
 # maintained by: bartus szczepaniak <aur@bartus.33mail.com>
 
 name=molecular
+version=1.03
 #fragment="#commit=7e49329 "
 files=(__init__.py cmolcore*.so cmolcore*.html)
 pkgname=blender-plugin-${name}
-pkgver=r193.7f8282e
+pkgver=1.03_r193.7f8282e
 pkgrel=1
 pkgdesc="Blender addon for advance particle physics, multithreaded."
 arch=(i686 x86_64)
@@ -17,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${name}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "${version}_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
