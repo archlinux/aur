@@ -2,14 +2,14 @@
 
 pkgname=collectl
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for viewing and gethering system performance metrics."
 arch=('any')
 url="http://collectl.sourceforge.net/"
 license=('GPL2' 'custom:artistic')
 depends=('perl')
 backup=('etc/collectl.conf')
-source=("http://sourceforge.net/projects/collectl/files/collectl/${pkgname}-${pkgver}/${pkgname}-${pkgver}.src.tar.gz")
+source=("https://sourceforge.net/projects/collectl/files/collectl/${pkgname}-${pkgver}/${pkgname}-${pkgver}.src.tar.gz")
 md5sums=('172e2b6f8c862f0be01e7f5b7f4d397b')
 
 package() {
