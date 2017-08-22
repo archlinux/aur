@@ -3,7 +3,7 @@
 
 pkgname=waterfox-kde
 _pkgname=Waterfox
-pkgver=55.0.1
+pkgver=55.0.2
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=fde25c29562d
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=e57df0da9107b905df21fff86496e19ed1358603
+_commit=fc102d1a70bbb4baf8e6adfc899623031b55192f
 source=("waterfox-$pkgver.source.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_commit.tar.gz"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
@@ -176,13 +176,6 @@ END
 
   msg "Add missing file in Makefile for pgo builds"
   patch -Np1 -i "$srcdir/pgo_fix_missing_kdejs.patch"
-  
-  # Fix missing icons
-  for i in 22 24 256; do
-	  if [ ! -f "${srcdir}/$pkgname-$pkgver/browser/branding/unofficial/default$i.png" ]; then
-		cp "${srcdir}/default$i.png" "${srcdir}/$pkgname-$pkgver/browser/branding/unofficial/default$i.png"
-	  fi
-  done
 }
 
 build() {
