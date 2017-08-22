@@ -11,6 +11,7 @@ depends=(
 	'lz4'
 	'snappy'
 	'zlib'
+	'gflags'
 	)
 makedepends=('gcc' 'make')
 checkdepends=(python2)
@@ -30,7 +31,7 @@ prepare() {
 build() {
   cd rocksdb-$pkgver
   make clean
-  DEBUG_LEVEL=0 make shared_lib sst_dump -j4
+  DEBUG_LEVEL=0 make shared_lib sst_dump db_bench -j4
 }
 
 #check() {
@@ -43,6 +44,7 @@ package() {
   install -d "$pkgdir"/usr/include
   cp -r include/rocksdb "$pkgdir"/usr/include
   install -m755 -D sst_dump "$pkgdir"/usr/bin/sst_dump
+  install -m755 -D db_bench "$pkgdir"/usr/bin/db_bench
   install -m755 -D librocksdb.so "$pkgdir"/usr/lib/librocksdb.so
   install -D -m644 LICENSE.Apache "$pkgdir/usr/share/licenses/$pkgname/LICENSE.Apache"
   install -D -m644 LICENSE.leveldb "$pkgdir/usr/share/licenses/$pkgname/LICENSE.leveldb"
