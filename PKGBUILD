@@ -1,7 +1,6 @@
 # Maintainer : Andres Urquijo <alfagalileox@gmail.com>
-
 pkgname=mathgl
-pkgver=2.4
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="A library for making high-quality scientific graphics"
 arch=('i686' 'x86_64')
@@ -10,8 +9,8 @@ license=('GPL3')
 depends=('libpng' 'libharu' 'python2' 'hdf5' 'texlive-bin' 'texlive-core' 'python2-numpy' 
         'freeglut' 'gsl' 'wxgtk' 'qt5-base' )
 makedepends=( 'cmake' 'swig')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('5b23345d322df18a326f1ce40b38ab37')
+source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname%20$pkgver/$pkgname-$pkgver.tar.gz")
+md5sums=('4e11da39d6157f204163ae610162918d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -22,8 +21,8 @@ build() {
            -Denable-double=ON \
            -Denable-mgltex=ON \
            -Denable-opengl=ON \
-           -Denable-doc-pdf-en=ON \
-           -Denable-all-docs=ON \
+           -Denable-doc-info=ON \
+           -Denable-doc-html=ON \
            -Denable-gif=ON \
            -Denable-glut=ON \
            -Denable-hdf5=ON \
@@ -32,8 +31,11 @@ build() {
            -Denable-gsl=ON \
            -Denable-pdf=ON \
            -Denable-png=ON \
-           -Denable-qt5=ON
+           -Denable-qt5=ON \
+           -Denable-python=ON
+  
   make
+  cp ../translations/mathgl_en.mo .
 }
 
 package() {
