@@ -1,6 +1,6 @@
 # Maintainer: steelstrings <steelstring.of.a{at}gmail{dot}com>
 
-pkgname=ozon-colors-icon-theme
+pkgname=ozon-colors-icon-theme-git
 _pkgname=ozon-icon-theme-folders
 pkgver=r4.4fa2a1e
 pkgrel=1
@@ -12,7 +12,7 @@ depends=('gtk-update-icon-cache')
 makedepends=('git')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=('git+https://github.com/mrlamud/ozon-icon-theme-folders.git')
+source=("git+https://github.com/mrlamud/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
