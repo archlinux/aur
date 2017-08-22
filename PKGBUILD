@@ -44,7 +44,7 @@ NOGZ="YES"        # Don't compress el files. Info and man pages are
 #######################################################################
 pkgname=emacs-git-shallow
 pkgver=26.0.50.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs [master] (shallow clone [20% disk space])"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -138,7 +138,10 @@ pkgver() {
 # Doing so, breaks incremental compilation.
 prepare() {
   cd "$srcdir"
+
+  rm -rf $pkgname
   git clone --depth=1 https://github.com/emacs-mirror/emacs.git $pkgname
+
   cd "$pkgname"
 
   [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
