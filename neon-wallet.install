@@ -1,0 +1,13 @@
+post_install() {
+	echo "Symlink has been installed for /usr/bin/neon-wallet"
+	ln -s /opt/Neon/neon /usr/bin/neon-wallet
+}
+
+post_upgrade() {
+	ln -s /opt/Neon/neon /usr/bin/neon-wallet
+}
+
+post_remove() {
+	echo "Symlink to /usr/bin/neon-wallet has been removed"
+	rm -f /usr/bin/neon-wallet
+}
