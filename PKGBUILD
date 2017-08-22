@@ -1,10 +1,10 @@
 # Maintainer: Loic Blot <loic.blot@unix-experience.fr>
 pkgname=libluasandbox
-pkgver=1.2.5
-pkgrel=3
+pkgver=1.2.6
+pkgrel=1
 pkgdesc="Generic Lua sandbox for dynamic data analysis"
 source=("https://github.com/mozilla-services/lua_sandbox/archive/v$pkgver.tar.gz")
-sha256sums=('9a63b37f1b9b6d40afa45f92e3777f3baf770d195cb41fad04a0e020d398ebed')
+sha256sums=('1d58a9087fb1f0f75db23c02cc91ec429dc9c6c46f2e0fadadbeca108f43c3c7')
 arch=('i686' 'x86_64')
 license=('MPL')
 makedepends=('cmake')
