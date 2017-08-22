@@ -6,7 +6,9 @@ pkgdesc="Flexible and extensible framework for the modelling of build pipelines 
 arch=('any')
 url="https://wiki.gnome.org/Projects/BuildStream/"
 license=('LGPL')
-depends=('python-gobject' 'bubblewrap' 'ostree' 'python-ruamel-yaml')
+depends=('bubblewrap' 'ostree' 'python-blessings' 'python-click'
+         'python-fusepy' 'python-gobject' 'python-pluginbase'
+         'python-psutil' 'python-ruamel-yaml')
 makedepends=('python-setuptools' 'git')
 provides=('buildstream')
 conflicts=('buildstream')
