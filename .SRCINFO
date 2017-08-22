@@ -10,6 +10,7 @@ pkgbase = pince-git
 	depends = python-psutil
 	depends = python-pyqt5
 	depends = python-distorm
+	depends = python-pygdbmi
 	depends = gdb
 	depends = sudo
 	source = pince-git::git+https://github.com/korcankaraokcu/PINCE.git
