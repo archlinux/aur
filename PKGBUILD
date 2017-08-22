@@ -21,11 +21,16 @@ source=(
 md5sums=('26058d6ce10ba57a2494bd66640d74a3'
          'fa83211e0e9a510e21602c86dbf02ff1')
 
+prepare() {
+  # Link iupview statically
+  sed 's/USE_STATIC = Yes/USE_STATIC =/' -i "$srcdir"/iup/srcview/config.mak
+}
+
 build() {
+  # Build iup package (without Lua bindings)
   cd "$pkgname"
-  # iupview not built due to needing static libraries
-  # iuplua5 and iupconsole not built due to libcd package not installing libcdlua53
-  make iup \
+  make \
+    iup \
     iupgtk \
     iupmot \
     iupcd \
@@ -42,25 +47,24 @@ build() {
     iuptuio \
     iupimglib \
     ledc \
+    iupview \
     CD_LIB=/usr/lib \
     CD_INC=/usr/include/cd \
     IM_LIB=/usr/lib \
     IM_INC=/usr/include/im \
     ZLIB_LIB=/usr/lib \
-    IUPLIB="$srcdir/$pkgname"/lib \
-    USE_GTK3=Yes \
-    USE_LUA53=Yes \
-    LUA_LIB=/usr/lib \
-    NO_LUALINK=1
+    USE_GTK3=Yes
 }
 
 package() {
-  install -m755 -d $pkgdir/usr/lib
-  install -m644 iup/lib/*/* $pkgdir/usr/lib
-  install -m755 -d $pkgdir/usr/include/iup
-  install -m644 iup/include/* $pkgdir/usr/include/iup
-  install -m755 -d $pkgdir/usr/share/$pkgname
-  install -m644 iup-${pkgver}_Docs.pdf $pkgdir/usr/share/$pkgname
-  mkdir -p $pkgdir/usr/share/licenses/iup
-  install -m644 $srcdir/iup/COPYRIGHT $pkgdir/usr/share/licenses/iup
+  install -m755 -d "$pkgdir"/usr/lib
+  install -m755 "$srcdir"/iup/lib/Linux*_??/libiup* "$pkgdir"/usr/lib
+  install -m755 -d "$pkgdir"/usr/bin
+  install -m755 "$srcdir"/iup/bin/Linux*_??/[^Lua]* "$pkgdir"/usr/bin || true
+  install -m755 -d "$pkgdir"/usr/include/iup
+  install -m644 "$srcdir"/iup/include/* "$pkgdir"/usr/include/iup
+  install -m755 -d "$pkgdir"/usr/share/$pkgname
+  install -m644 "$srcdir"/iup-${pkgver}_Docs.pdf "$pkgdir"/usr/share/$pkgname
+  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
+  install -m644 "$srcdir"/iup/COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname
 }
