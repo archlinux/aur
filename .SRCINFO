@@ -3,23 +3,20 @@ pkgbase = powershell-git
 	pkgver = 6.0.0.beta.2.14.gf04d2fd2
 	pkgrel = 1
 	url = https://github.com/PowerShell/PowerShell
+	install = powershell.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = proot
-	makedepends = dotnet-cli-git
+	makedepends = dotnet-sdk-2.0
 	depends = icu
 	provides = powershell
-	conflicts = powershell
 	source = powershell::git+https://github.com/PowerShell/PowerShell.git
 	source = pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
 	source = googletest::git+https://github.com/google/googletest.git
-	source = os-release
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = f5841baa62b1322c07f9394940cec818
 
 pkgname = powershell-git
 
