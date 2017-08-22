@@ -1,0 +1,30 @@
+pkgbase = openmsx-git
+	pkgdesc = The MSX emulator that aims for perfection.
+	pkgver = 13046.93a3f55c3
+	pkgrel = 1
+	url = http://openmsx.org/
+	install = openmsx.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libxml2
+	depends = sdl
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = tcl
+	depends = libpng
+	depends = zlib
+	optdepends = python2
+	optdepends = jack-audio-connection-kit
+	optdepends = glew
+	optdepends = libgl
+	optdepends = catalyst-utils
+	optdepends = nvidia-utils
+	optdepends = nvidia-304xx-utils
+	provides = openmsx
+	conflicts = openmsx
+	source = git://github.com/openMSX/openMSX
+	md5sums = SKIP
+
+pkgname = openmsx-git
+
