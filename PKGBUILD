@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libraqm
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='A library that encapsulates the logic for complex text layout'
 arch=('i686' 'x86_64')
 url='https://github.com/HOST-Oman/libraqm/'
@@ -12,7 +12,7 @@ makedepends=('gtk-doc')
 provides=('libraqm.so')
 conflicts=('libraqm-git')
 source=("$pkgname"-"$pkgver".tar.gz::"https://github.com/HOST-Oman/libraqm/archive/v${pkgver}.tar.gz")
-sha256sums=('a12a8428e18b4e35b4984a8f5afc225c8ec0ca7aeb64455a47671316c3e29cdb')
+sha256sums=('52cb1d0dcb09b2bbc50c2c347e9581191baacfd3dce3ae3f45b52ab038f946a8')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
