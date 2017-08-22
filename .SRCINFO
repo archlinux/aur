@@ -1,0 +1,33 @@
+pkgbase = icecast-git
+	pkgdesc = A streaming media (audio/video) server
+	pkgver = 2.5.0.beta.1.r179.gfa86f2d
+	pkgrel = 1
+	url = http://www.icecast.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	depends = openssl
+	depends = curl>=7.10
+	depends = libxml2
+	depends = libxslt
+	depends = libtheora
+	depends = libvorbis>=1.0
+	depends = speex
+	depends = libkate
+	provides = icecast
+	conflicts = icecast
+	backup = etc/icecast.xml
+	backup = etc/logrotate.d/icecast
+	source = git+https://git.xiph.org/icecast-server.git
+	source = icecast.logrotate::https://git.archlinux.org/svntogit/community.git/plain/trunk/icecast.logrotate?h=packages/icecast
+	source = icecast.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/icecast.service?h=packages/icecast
+	source = start-by-nobody.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/start-by-nobody.patch?h=packages/icecast
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = icecast-git
+
