@@ -3,8 +3,8 @@
 name=gaffer
 git_user_name=gregzaal
 pkgname=blender-plugin-${name}-git
-pkgver=v3.0.2.r0.g529be83
-pkgrel=2
+pkgver=v3.0.3.r1.gdef0717
+pkgrel=1
 pkgdesc="Blender addon for light and hdri managament."
 arch=('any')
 url="https://blendermarket.com/products/gaffer-light-manager/"
@@ -23,7 +23,7 @@ pkgver() {
 package() {
   cd ${srcdir}
   addons="$pkgdir/usr/share/blender/$(blender -v | head -n1 | cut -f2 -d ' ')/scripts/addons"
-  install -d 755 ${addons}/${name}
+  install -dm755 ${addons}/${name}
   cp -a -t ${addons}/${name} ${name}/*
 }
 
