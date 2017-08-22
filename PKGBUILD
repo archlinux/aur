@@ -2,9 +2,9 @@
 pkgname=blender-plugin-animation-nodes
 name=animation_nodes
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Node based visual scripting system designed for motion graphics in Blender."
-arch=('x86_64')
+arch=(i686 x86_64)
 url="https://github.com/JacquesLucke/animation_nodes"
 license=('GPL')
 depends=(blender python-numpy)
@@ -22,7 +22,7 @@ build() {
 package() {
   cd ${srcdir}
   addons="$pkgdir/usr/share/blender/$(blender -v | head -n1 | cut -f2 -d ' ')/scripts/addons"
-  install -d 755 ${addons}/${name}
+  install -dm755 ${addons}/${name}
   cp -a -t ${addons}/${name} ${name}-${pkgver}/${name}/*
 }
 
