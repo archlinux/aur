@@ -17,6 +17,7 @@ pkgbase = theshell-blueprint
 	depends = libcups
 	depends = qt5-base
 	depends = ts-qtplatform
+	depends = ts-startsession
 	depends = qt5-location
 	depends = kscreen
 	depends = kdepimlibs4
@@ -29,8 +30,6 @@ pkgbase = theshell-blueprint
 	optdepends = festival: for theWave
 	source = theshell-blueprint-6.2b::git+https://github.com/vicr123/theshell#branch=blueprint
 	source = theshellb.desktop
-	source = initscript.sh
-	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 

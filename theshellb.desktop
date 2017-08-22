@@ -1,8 +1,8 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=XSession
-Exec=/usr/bin/init_theshellb
-TryExec=/usr/bin/init_theshellb
+Exec=/usr/bin/ts-startsession --blueprint
+TryExec=/usr/bin/ts-startsession --blueprint
 DesktopNames=theShell
 Name=theShell Blueprint
 Comment=Desktop Shell for theOS

@@ -9,16 +9,15 @@ url="https://github.com/vicr123/theshell"
 license=('GPL3')
 depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 
 'networkmanager' 'xorg-xbacklight' 'redshift' 'tsscreenlock' 
-'libcups' 'qt5-base' 'ts-qtplatform'
+'libcups' 'qt5-base' 'ts-qtplatform' 'ts-startsession'
 'qt5-location' 'kscreen' 'kdepimlibs4' 'akonadi' 'ts-polkitagent' 'ts-bt' 'ts-bugreport')
 optdepends=('alsa-utils: for volume controls'
 	    'pocketsphinx: for theWave'
 	    'festival: for theWave')
 makedepends=('git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theshell#branch=blueprint'
-	"theshellb.desktop"
-	"initscript.sh")
-md5sums=('SKIP' 'SKIP' 'SKIP')
+	"theshellb.desktop")
+md5sums=('SKIP' 'SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -37,6 +36,4 @@ package() {
 	cp "initscript.sh" "$pkgdir/usr/bin/init_theshellb"
 	mkdir -p "$pkgdir/usr/share/xsessions"
 	cp "theshellb.desktop" "$pkgdir/usr/share/xsessions"
-	#mkdir -p "$pkgdir/usr/share/theshell/translations"
-	#cp "$pkgname-$pkgver/translations/"* "$pkgdir/usr/share/theshell/translations"
 }

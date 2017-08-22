@@ -1,5 +1,0 @@
-export XDG_CURRENT_DESKTOP=KDE
-export DE=kde
-export KDE_SESSION_VERSION=5
-export QT_QPA_PLATFORMTHEME=ts
-theshellb
