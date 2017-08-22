@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-_pkgver=1.4.3
+_pkgver=1.4.4
 _rpmrel=1
 _pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
@@ -20,6 +20,7 @@ depends=('distribution-gpg-keys' 'python' 'python-distro')
 optdepends=('createrepo_c: for mockchain command'
             'dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia'
             'lvm2: for lvm_root plugin'
+            'nosync: to speed up yum/dnf database access'
             'pigz: for parallel compression of chroot cache'
             'python-requests: for mockchain command'
             'yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)')
@@ -28,7 +29,7 @@ backup=("etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('b0998111d9136b3e8824dcc5e44095c9'
+md5sums=('9f1cc57333cbe0eea0f5aa0551556bf2'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
 
@@ -53,10 +54,10 @@ build() {
 	    -e 's|^PKGPYTHONDIR\s*=.*|PKGPYTHONDIR="'$python_sitelib'/mockbuild"|'
 
 	# Replace /usr/libexec path in help message
-	sed -r -i py/${pkgname}.py \
+	sed -r -i py/$pkgname.py \
 	    -e 's|/usr/libexec/mock/mock|/usr/bin/mock.py|'
 
-	sed -e "s|@VERSION@|$pkgver|" -i docs/${pkgname}{,chain}.1
+	sed -e "s|@VERSION@|$_pkgver|" -i docs/${pkgname}{,chain}.1
 
 	python    -m compileall py/ -q
 	python -O -m compileall py/ -q
