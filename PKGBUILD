@@ -6,23 +6,23 @@ _pkgbase='engauge-digitizer'
 
 pkgname=('engauge' 'engauge-samples')
 pkgbase='engauge'
-pkgver=10.1
+pkgver=10.2
 pkgrel=1
 url="http://markummitchell.github.io/engauge-digitizer/"
 arch=('i686' 'x86_64')
 license=('GPL')
-makedepends=('qt5-tools' 'fftw' 'log4cpp' 'libjpeg-turbo' 'libpng' 'openjpeg2<2.2' 'poppler-qt5')
+makedepends=('qt5-tools' 'fftw' 'log4cpp' 'libjpeg-turbo' 'libpng' 'openjpeg2' 'poppler-qt5')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/markummitchell/$_pkgbase/archive/v$pkgver.tar.gz"
         "$pkgbase.sh"
         "$pkgbase.desktop")
-md5sums=('c02fe1888923bf8de3a2793648c7dc3c'
+md5sums=('dc1fb57151051ce60df29d8602198e27'
          'baa6e2963962785d145b63510ba4ee51'
          '95398291d4e0bb4adc1fec22a16625b9')
 install=engauge.install
 
 build() {
   cd "$srcdir/${_pkgbase}-$pkgver"
-  export OPENJPEG_INCLUDE=/usr/include/openjpeg-2.1 OPENJPEG_LIB=/usr/lib # openjpeg2 2.1.x
+  export OPENJPEG_INCLUDE=/usr/include/openjpeg-2.2 OPENJPEG_LIB=/usr/lib 
   export POPPLER_INCLUDE=/usr/include/poppler/qt5 POPPLER_LIB=/usr/lib
   qmake-qt5 engauge.pro "CONFIG+=jpeg2000 pdf"
   make -j2

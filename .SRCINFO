@@ -1,5 +1,5 @@
 pkgbase = engauge
-	pkgver = 10.1
+	pkgver = 10.2
 	pkgrel = 1
 	url = http://markummitchell.github.io/engauge-digitizer/
 	install = engauge.install
@@ -11,12 +11,12 @@ pkgbase = engauge
 	makedepends = log4cpp
 	makedepends = libjpeg-turbo
 	makedepends = libpng
-	makedepends = openjpeg2<2.2
+	makedepends = openjpeg2
 	makedepends = poppler-qt5
-	source = engauge-10.1.tar.gz::https://github.com/markummitchell/engauge-digitizer/archive/v10.1.tar.gz
+	source = engauge-10.2.tar.gz::https://github.com/markummitchell/engauge-digitizer/archive/v10.2.tar.gz
 	source = engauge.sh
 	source = engauge.desktop
-	md5sums = c02fe1888923bf8de3a2793648c7dc3c
+	md5sums = dc1fb57151051ce60df29d8602198e27
 	md5sums = baa6e2963962785d145b63510ba4ee51
 	md5sums = 95398291d4e0bb4adc1fec22a16625b9
 
