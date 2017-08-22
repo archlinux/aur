@@ -3,7 +3,7 @@
 pkgname='powershell-git'
 _pkgname='powershell'
 pkgver=6.0.0.beta.5.78.gcdbbb7a4b
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform automation and configuration tool/framework (git version)"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
@@ -11,6 +11,7 @@ license=('MIT')
 makedepends=('git' 'cmake' 'dotnet-sdk-2.0')
 depends=('icu')
 provides=('powershell')
+conflicts=('powershell')
 source=($_pkgname::'git+https://github.com/PowerShell/PowerShell.git'
         'pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop'
         'googletest::git+https://github.com/google/googletest.git')
