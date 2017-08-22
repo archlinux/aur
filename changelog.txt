@@ -1,80 +1,40 @@
- Version 2.14.0 - 08 Jul 2017
-- Update translations.
-- Fix typo in error catching - base_efiction
-- XenForo alternatehistory.com follows QQ more than SV/SB.
-- Remove 9 defunct sites - occlumency.sycophanthex.com,
-  lumos.sycophanthex.com, erosnsappho.sycophanthex.com,
-  chaos.sycophanthex.com, ashwinder.sycophanthex.com, pommedesang.com,
-  dramione.org, www.indeath.net and fanfiction.lucifael.com.
-- Fixes for fanfiktion.de site changes.
-- fimfiction adapter: views/total_views fix for site change -- thanks
-  FaceDeer!
-- Fix for XenForo(SB/SV) threadmarks with non-ascii chars. (web & CLI)
-- Fix plugin config check for _filelist.
-- Add `include_author_notes` option to collect Fimfiction author's notes,
-  thanks FaceDeer.
-- Changes to base_xenforoforum_adapter to use threadmarks.rss for SV/SB,
-  separate threadmark collection for QQ.
-- Also add show_chapter_authors option.
-- Fix for XenForo Threadmarks change on SB & SV--not on QQ.
+Version 2.16.0 - 18 Aug 2017
+- Restore sycophanthex.com sites.
+- Fix for gravitytales.com--thanks cryzed!
+- AO3 - drop out of use_view_full_work when missing chapters.
+- Escape webnovel.com chapter texts for HTML, thanks cryzed
+- Add AO3 inspiredlinks after last chapter.
+- Fix AO3 always_login and bookmarktags/bookmarksummary site metadata.
+- Save AO3 'associations' link 'inspired by' links -- included with
+  authorheadnotes.
+- Limit adapter_wuxiaworldcom removed links to prev/next chapter.
+- Don't cache metadata list while building from include_in_ -- Calibre version
+  causes problems with removeallentities=True vs False cache.
+- Calibre image processing chokes on SVG images. Rejects svg images--use
+  no_image_processing to include svg images.
+- Make default for fanfic.hu https, thanks botmtl.
+- Fixes for webnovel.com site changes (PR #206), thanks cryzed.
+- Fix xenforo threadmarks change for SB/SV.
+- Calibre removed sanitize_html function.
+- Explicitly (instead of implicitly) set is_adult:false in defaults.ini.
+- Comment out bookmarks for AO3 temporarily.
+- Fix for adapter_asianfanficscom caching vs login issue.
 
-Version 2.13.0 - 22 Jun 2017
-- Update translations.
-- Fix for finestories.com using Modern theme rather than Classic, thanks,
-  davidfor!
-- Fix for adapter_fimfictionnet -- missed the "st" ordinal case when parsing
-  dates, thanks FaceDeer!
-- Fix for webnovel.com site change, thanks Etana!
-- Fix for storiesonline.net site change, thanks davidfor!
-- Allow multiple range URLs (url[1-5]) for same story in one download.
-- Change adapter_fimfictionnet to use makeDate for non-USEnglish locales.
-- Add keep_prequel_in_description option for fimfiction.net.
-- Fix base_xenforoforum_adapter for QQ--it doesn't have threadmark categories
-  or reader mode.
-- Fix fimfiction datePublished (Merge pull request #190 from FaceDeer/master)
-- http->https for adapter_midnightwhispers
-- Update adapter_webnovelcom for site changes. Thanks, Ser4nb2LUY6e
-- Tweak skip_threadmarks_categories comments in INI.
-- Special error msg for storiesonline.net about Listing Theme.
-- Change adapter_fanfiktionde to https.
-- Extend base_xenforoforum_adapter Reader Mode to other Threadmark Categories.
-- Correct an error log message.
-- Additional updates for fimfiction.net for changes, thanks FaceDeer!
-2017-06-06
-- Add skip_threadmarks_categories option to base_xenforoforum_adapter.
-- Update adapter_fimfictionnet for site changes.
-- Fix for get-story-urls from page, affected adapter_adultfanfictionorg.
-2017-06-04
-- Fix for RoyalRoadL adapter - thanks, cryzed!
-- Update translations.
-2017-05-31
-- Reduce debug output from replace_br_with_p.
-- Apply minimum_threadmarks in base_xenforoforum based on all threadmarks, not
-  marks per category.
-- Change AO3 to https, normalize chapter URLs, remove view_adult from chapter
-  URLs.
-- Update translations.
-2017-05-28
-- Add rating for starslibrarynet, fix [www.starslibrary.net] as section name.
-- Add apocrypha_to_omake option for base_xenforoforum_adapter threadmark
-  category.
-2017-05-26
-- wattpad - Separate category from tags, include rags in genre by default, use
-  larger cover image. - Thanks, botmtl!
-- wattpad - need to pass utf8FromSoup a soup...
-- Add comma_entries option to add commas to metadata entries--numbers only.
-- wattpad - add defaults slow_down_sleep_time:2 and comma reads.
-- Update translations.
-2017-05-25
-- adapter_storiesofardacom - td->div in description, catch parse excpetion
-  after bad html in description.
-- Adapters' getSiteExampleURLs() value has to be able to pass their own
-  getSiteURLPattern() for geturls.get_urls_from_page() to work correctly.
-2017-05-24
-- Add xenforoforum Categorized threadmarks after regular threadmarks.
-- Fix processing for <center> <u> etc, soup.recursiveChildGenerator() not
-  working anymore.
-- Take image .ext from end of whole URL if not found at end of path.
-2017-05-21
-- Fix for asianfanficscom site change.
-- New site wattpad.com -- thanks, botmtl!
+Version 2.15.0 - 26 Jul 2017
+- Restore adapter_dramioneorg after site came back.
+- Fix for AO3 login change.
+- Fixes for // problem in images.
+- Fix replace_br_with_p creating nested div tags, does NOT remove ones added
+  previously.
+- Make utf8FromSoup() copy soup to avoid side effects.
+- Add markers and check to prevent replace_br_with_p running more than once on
+  the same text.
+- Adding replace_failed_smilies_with_alt_text option for base_xenforo.
+- Consolidate and display some aggregate times for perf prof.
+- Fix published and update date for gravitytales.com adapter - import
+  feedparser (#204)
+- adapter_fanficauthorsnet replace 'In progress' with 'In-Progress' to match
+  standard.
+- adapter_finestoriescom and adapter_storiesonlinenet share code, but they
+  need different Themes set now.
+- Fix to adapter_asexstoriescom for site change.
