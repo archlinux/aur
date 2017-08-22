@@ -2,32 +2,15 @@
 pkgname=rnm
 pkgver=4.0.2
 pkgrel=1
-epoch=
 pkgdesc="Bulk rename utility"
 arch=('i686' 'x86_64')
 url="https://github.com/neurobin/rnm"
 license=('GPL3')
-groups=()
 depends=(gmp pcre2)
 makedepends=(jpcre2)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=( "https://github.com/neurobin/$pkgname/archive/$pkgver.tar.gz" )
-noextract=()
 md5sums=('e88a5575d5aa96ace9e4a0788404b418')
 validpgpkeys=('3331 6137 5B22 27AC F7AA  6351 A4A2 CA5B 6BDA A871')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	#patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
 
 build() {
 	cd "$pkgname-$pkgver"
