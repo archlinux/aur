@@ -2,7 +2,7 @@
 
 pkgname=dosbox-x-git
 pkgver=2124.721f08f5
-pkgrel=3
+pkgrel=4
 pkgdesc="x86 emulator with builtin DOS, with patches with more features"
 arch=(i686 x86_64)
 url="http://dosbox.sourceforge.net"
@@ -10,17 +10,17 @@ license=(GPL)
 depends=(fluidsynth sdl_net sdl_sound libpng mesa)
 makedepends=(git glu)
 optdepends=()
-source=(dosbox::git://github.com/joncampbell123/dosbox-x.git
+source=(dosbox-x::git://github.com/joncampbell123/dosbox-x.git
 	dosbox-x.png
 	dosbox-x.desktop)
 
 pkgver() {
-  cd "$SRCDEST/dosbox"
+  cd "$SRCDEST/dosbox-x"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "$srcdir/dosbox"
+  cd "$srcdir/dosbox-x"
   
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc/dosbox-x
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/dosbox"
+  cd "$srcdir/dosbox-x"
   make DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir/dosbox-x.png" \
 	"$pkgdir/usr/share/pixmaps/dosbox-x.png"
