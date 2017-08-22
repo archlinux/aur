@@ -4,7 +4,7 @@ pkgname="cstore_fdw"
 pkgver=1.6.0
 pkgrel=1
 pkgdesc="Columnar store for analytics with PostgreSQL"
-url="https://github.com/citusdata/cstore_fdw"
+url="https://citusdata.github.io/cstore_fdw/"
 license=("Apache")
 arch=('i686' 'x86_64')
 depends=('protobuf-c' 'postgresql>=9.3')
