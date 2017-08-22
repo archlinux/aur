@@ -1,5 +1,5 @@
 # Maintainer: Ethan McTague <ethan@tague.me>
-pkgname=python-wal_steam-git
+pkgname=python-wal-steam-git
 _gitname=wal_steam
 pkgver=1.0.1.r0.g7250820
 pkgrel=1

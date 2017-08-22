@@ -1,4 +1,4 @@
-pkgbase = python-wal_steam-git
+pkgbase = python-wal-steam-git
 	pkgdesc = Generate and change steam colorscheme on the fly
 	pkgver = 1.0.1.r0.g7250820
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = python-wal_steam-git
 	source = git+https://github.com/kotajacob/wal_steam.git
 	md5sums = SKIP
 
-pkgname = python-wal_steam-git
+pkgname = python-wal-steam-git
 
