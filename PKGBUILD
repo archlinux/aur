@@ -4,12 +4,13 @@
 pkgname=powershell-bin
 _pkgver=6.0.0-beta.5
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform automation and configuration tool/framework (binary package)"
 arch=('x86_64')
 url="https://github.com/Powershell/Powershell"
 license=('MIT')
 provides=('powershell')
+conflicts=('powershell')
 options=(staticlibs !strip)
 depends=('libunwind' 'icu55' 'libcurl-openssl-1.0')
 makedepends=('rsync')
