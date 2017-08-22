@@ -6,7 +6,7 @@
 
 pkgname=matlab
 pkgver=9.2.0.556344
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -36,6 +36,15 @@ source=("file://matlab.tar"
         "file://matlab.fik")
 md5sums=('SKIP'
          'SKIP')
+PKGEXT='.pkg.tar'
+
+#_networkinstall=true
+
+## For network installations, apparently, a license file needs to be used for the installation.
+if [ ! -z ${_networkinstall+isSet} ]; then
+  source+=("file://license.dat")
+  md5sums+=('SKIP')
+fi
 
 prepare() {
   msg2 'Creating desktop file'
@@ -51,7 +60,7 @@ prepare() {
   sed -i "s,^# mode=,mode=silent," "${srcdir}/installer_input.txt"
   sed -i "s,^# fileInstallationKey=,fileInstallationKey=${_fik}," "${srcdir}/installer_input.txt"
   if [ ! -z ${_networkinstall+isSet} ]; then
-    sed -i "s,^# licensePath=,licensePath=${srcdir}/${pkgname}.lic," "${srcdir}/installer_input.txt"
+    sed -i "s,^# licensePath=,licensePath=${srcdir}/license.dat," "${srcdir}/installer_input.txt"
   fi
   if [ ! -z ${_products+isSet} ]; then
     msg2 'Building a package with a subset of the licensed products.'
@@ -68,7 +77,7 @@ package() {
   msg2 'Installing license'
   install -D -m644 "${pkgdir}/opt/tmw/${pkgname}/license_agreement.txt" "${pkgdir}/usr/share/licenses/tmw/${pkgname}/LICENSE"
 
-  msg2 'Creating links for license.lic'
+  msg2 'Creating links for license.dat'
   ln -s "/etc/tmw/${pkgname}/licenses/" "${pkgdir}/opt/tmw/${pkgname}/licenses"
 
   msg2 'Creating links for executables'
@@ -93,12 +102,6 @@ package() {
   # make sure MATLAB can find libgfortran.so.3
   sed -i 's,LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`",LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`:/usr/lib/gcc/x86_64-pc-linux-gnu/5.4.0",g' "${pkgdir}/opt/tmw/matlab/bin/matlab"
 }
-
-## For network installations, apparently, a license file needs to be used for the installation.
-if [ ! -z ${_networkinstall+isSet} ]; then
-  source+="file://${pkgname}.lic"
-  md5sums+='SKIP'
-fi
 
 if [ ! -z ${_partialinstall+isSet} ] && [ -z ${_products+isSet} ]; then
   _products=(
