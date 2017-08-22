@@ -3,7 +3,7 @@
 
 name=retopoflow
 pkgname=blender-plugin-${name}-git
-pkgver=1.2.1.r0.g0e11d2d
+pkgver=1.3.1.r0.g9fc2227
 pkgrel=1
 pkgdesc="A suite of retopology tools for Blender"
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 package() {
   cd ${srcdir}
   addons="$pkgdir/usr/share/blender/$(blender -v | head -n1 | cut -f2 -d ' ')/scripts/addons"
-  install -d ${addons}/${name}
+  install -dm755 ${addons}/${name}
   cp -r ${name}/* ${addons}/${name}
 }
 
