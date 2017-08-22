@@ -1,7 +1,7 @@
 pkgbase = rocketchat-server
 	pkgdesc = An open source web chat platform
 	pkgver = 0.57.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocket.chat
 	install = rocketchat-server.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = rocketchat-server
 	depends = mongodb
 	depends = graphicsmagick
 	depends = curl
+	depends = python
 	backup = etc/rocketchat/rocketchat-server.conf
 	source = https://rocket.chat/releases/0.57.3/download
 	source = rocketchat-server.install
