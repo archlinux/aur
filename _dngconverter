@@ -1,0 +1,39 @@
+#compdef dngconverter
+
+# currently just a basic overview of command line options
+# see: https://wwwimages.adobe.com/content/dam/Adobe/en/products/photoshop/pdfs/dng_commandline.pdf
+#
+command_opts="\
+  -c\\:'output compressed (default)'\
+  -u\\:'output uncompressed'\
+  -l\\:'output linear'\
+  -e\\:'embed original'\
+  -p0\\:'no preview'\
+  -p1\\:'medium size preview (default)'\
+  -p2\\:'full size preview'\
+  -fl\\:'embed fast load data'\
+  -lossy\\:'use lossy compression (preserves pixel count by default)'\
+  -side\\:'<pixels> long-side pixels value (32 to 65000)'\
+  -count\\:'<pixels> megapixels limit (1024 or greater)'\
+  -cr2.4\\:'raw compability 2.4 or later'\
+  -cr4.1\\:'raw compability 2.4 or later'\
+  -cr4.6\\:'raw compability 2.4 or later'\
+  -cr5.4\\:'raw compability 2.4 or later'\
+  -cr6.6\\:'raw compability 2.4 or later'\
+  -cr7.1\\:'raw compability 2.4 or later (default)'\
+  -dng1.1\\:'backward version 1.1'\
+  -dng1.3\\:'backward version 1.3'\
+  -dng1.4\\:'backward version 1.4 (default)'\
+  -x\\:'extract embedded raw'\
+  -d\\:'<directory> output directory (defaults to parent directory of input files)'\
+  -o\\:'<filename> (base-)name of output file(s)'\
+"
+
+_dngconverter() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+
+  _arguments "*: :(($command_opts))"
+}
+
+_dngconverter

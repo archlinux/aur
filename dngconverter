@@ -1,0 +1,9 @@
+#!/bin/bash
+export WINEPREFIX="${HOME}/.dngconverter/wine"
+
+if [ ! -d "${HOME}"/.dngconverter ] ; then
+  mkdir -p "${HOME}/.dngconverter/wine/drive_c/users/Public/Application Data/Adobe" || exit 1
+  ln -s /usr/share/dngconverter/CameraRaw "${HOME}/.dngconverter/wine/drive_c/users/Public/Application Data/Adobe/CameraRaw"
+fi
+
+wine "/usr/share/dngconverter/Adobe DNG Converter.exe" "$@"
