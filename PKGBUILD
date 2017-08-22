@@ -1,7 +1,7 @@
 # Maintainer: Oleksii Filonenko <filalex77@gmail.com>
 pkgname=wallsplash
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Set unsplash wallpapers with colorschemes"
 url="https://github.com/filalex77/wallsplash/"
 license=('GPL')
@@ -15,6 +15,6 @@ sha1sums=(SKIP)
 package() {
 	install -d "$pkgdir/usr/bin"
 	cd "$pkgname-$pkgver"
-	install -Dm644 wallsplash \
+	install -Dm755 wallsplash \
 		"$pkgdir/usr/bin/wallsplash"
 }

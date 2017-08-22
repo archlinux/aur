@@ -1,7 +1,7 @@
 pkgbase = wallsplash
 	pkgdesc = Set unsplash wallpapers with colorschemes
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/filalex77/wallsplash/
 	arch = x86_64
 	arch = x86
