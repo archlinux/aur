@@ -1,4 +1,5 @@
 # $Id$
+# Maintainer: Marcin Mikołajczak <me@m4sk.in>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=topmenu-gtk
@@ -8,11 +9,11 @@ pkgdesc="Gtk+ module and Mate/Xfce panel applets for a global menubar"
 arch=('i686' 'x86_64')
 url="https://git.javispedro.com/cgit/topmenu-gtk.git/about/"
 license=('GPL')
-makedepends=('lxpanel' 'mate-panel-gtk3' 'xfce4-panel')
+makedepends=('lxpanel' 'mate-panel' 'xfce4-panel')
 optdepends=('gtk2: Module for GTK+ 2'
             'gtk3: Module for GTK+ 3'
             'lxpanel: Topmenu Applet for LXPanel'
-            'mate-panel-gtk3: Topmenu Applet for MATE panel'
+            'mate-panel: Topmenu Applet for MATE panel'
             'xfce4-panel: Topmenu Applet for Xfce4 panel')
 source=("$pkgname-$pkgver.tar.xz::https://git.javispedro.com/cgit/$pkgname.git/snapshot/release_$pkgver.tar.xz"
         "topmenu.xinit")
