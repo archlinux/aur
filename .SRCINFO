@@ -1,0 +1,22 @@
+pkgbase = python-rpyc-330
+	pkgdesc = Remote Python Call (RPyC), a transparent and symmetric RPC library
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://rpyc.readthedocs.org
+	arch = any
+	license = MIT
+	source = https://pypi.io/packages/source/r/rpyc/rpyc-3.3.0.tar.gz
+	md5sums = 6931cb92c41f547591b525142ccaeef1
+
+pkgname = python-rpyc-330
+	depends = python
+	depends = python-plumbum
+	provides = python-rpyc=3.3.0
+	conflicts = python-rpyc
+
+pkgname = python2-rpyc-330
+	depends = python2
+	depends = python2-plumbum
+	provides = python2-rpyc=3.3.0
+	conflicts = python2-rpyc
+
