@@ -1,6 +1,6 @@
 pkgbase = antigen-git
 	pkgdesc = A plugin manager for zsh, inspired by oh-my-zsh and vundle.
-	pkgver = v2.0.0.r0.g5a70b51
+	pkgver = v2.2.1.r0.g1d212d1
 	pkgrel = 1
 	url = https://github.com/zsh-users/antigen
 	install = antigen.install
