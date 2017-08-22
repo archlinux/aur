@@ -30,7 +30,6 @@ build() {
 }
 
 package() {
-	chmod +x "initscript.sh"
 	mkdir -p "$pkgdir/usr/bin"
 	cp "$pkgname-$pkgver/theshell" "$pkgdir/usr/bin/theshellb"
 	mkdir -p "$pkgdir/usr/share/xsessions"
