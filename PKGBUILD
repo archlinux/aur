@@ -9,7 +9,7 @@ url="http://www.kexi-project.org/"
 license=(GPL2)
 depends=(kwidgetsaddons kguiaddons kcoreaddons kconfig)
 makedepends=(extra-cmake-modules python ki18n)
-source=("http://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
+source=("https://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('d5fa71ee621a30221f427b53282abe124347842bcf657269b7f7b77355dbf3c3'
             'SKIP')
 validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <staniek@kde.org>
