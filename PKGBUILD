@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-perl-tokenizer'
-pkgver='0.05'
+pkgver='0.06'
 pkgrel='1'
 pkgdesc="A tiny Perl code tokenizer."
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl-html-parser')
 makedepends=()
 url='https://metacpan.org/release/Perl-Tokenizer'
 source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Perl-Tokenizer-$pkgver.tar.gz")
-md5sums=('b5ef77b951f6c04cf035951ddeb10a89')
-sha512sums=('6384abc2d90e2daa91a9114a0855851fd8cb8d0f3fec04ca87a69fe3352380c0c43f4c7c0aeefb2820bd65d4d289a921ff33d4f6e1710198dfdbd2c9370b1fb5')
+md5sums=('a65df7cc8c374ef267ab4991c708cf91')
+sha512sums=('ff3aafd18b0b76fed6891a429ff4e6d5e847b3091f9f4722758c4125f63c82a583de9781911d69ed5da4780ff58b7095c60158497686d2b3f1e6866df3913d4f')
 _distdir="Perl-Tokenizer-$pkgver"
 
 build() {
