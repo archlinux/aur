@@ -7,7 +7,7 @@
 
 pkgname=davinci-resolve-beta
 _pkgname=resolve
-pkgver=14.0b6
+pkgver=14.0b7
 pkgrel=0
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
@@ -79,7 +79,7 @@ if [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
 fi
 
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('8d499d7a33343a43ddd9e61e9beae2df4dd4b8ae3a31a30a1434f1f6104fc465')
+sha256sums=('97453f7a50842f3227e43631c674dfca8936aa6383589701704fceea47e0ed25')
 
 package() {
 	mkdir -p "${pkgdir}/opt/${_pkgname}/"{bin,configs,Media}
