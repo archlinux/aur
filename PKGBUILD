@@ -10,7 +10,7 @@ license=(GPL2)
 depends=(kcoreaddons)
 makedepends=(extra-cmake-modules python2 libmariadbclient postgresql qt5-tools)
 optdepends=('libmariadbclient: MySQL plugin' 'postgresql: PostgreSQL plugin')
-source=("http://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
+source=("https://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('896804959f4e203cbafb3d345127c6d80721d79136dbfd6d51c4e93131ec21d8'
             'SKIP')
 validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <staniek@kde.org>
