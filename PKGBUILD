@@ -22,4 +22,5 @@ package() {
   # install icon theme
   cd $srcdir/$_pkgname/
   cp -dr --no-preserve='ownership' ./ "$pkgdir"/usr/share/icons/$_pkgname
+  find "$pkgdir"/usr/share/icons/$_pkgname -type d -exec chmod 755 {} +
 }
