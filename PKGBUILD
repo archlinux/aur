@@ -3,7 +3,7 @@
 pkgname=matrilineare-icon-theme
 _pkgname=Matrilineare
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Matrilineare Icon Theme by Andrea Soragna"
 arch=('any')
 url="https://sora-meliae.deviantart.com/art/Matrilineare-version-0-3-321379531"
