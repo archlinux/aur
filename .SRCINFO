@@ -1,0 +1,16 @@
+pkgbase = rnm
+	pkgdesc = Bulk rename utility
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://github.com/neurobin/rnm
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = jpcre2
+	depends = gmp
+	depends = pcre2
+	source = https://github.com/neurobin/rnm/archive/4.0.2-arch.tar.gz
+	md5sums = SKIP
+
+pkgname = rnm
+
