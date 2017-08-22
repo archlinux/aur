@@ -2,12 +2,11 @@
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: Daniel Hommel <dhommel@gmail.com>
 
-pkgbase=mksh-static
+pkgname=mksh-static
 _pkgname=mksh
-pkgname=(mksh-static-musl mksh-static-glibc)
 _pkgver=R56
 pkgver=56
-pkgrel=5
+pkgrel=6
 pkgdesc='The MirBSD Korn Shell - an enhanced version of the public domain ksh (statically-linked version)'
 url='https://www.mirbsd.org/mksh.htm'
 license=('custom')
@@ -24,27 +23,13 @@ check() {
   ./test.sh
 }
 
-build_mksh-static-musl() {
+build() {
   cd "$srcdir/$_pkgname"
   CC='musl-gcc -static' sh Build.sh -r
 }
 
-build_mksh-static-glibc() {
-  cd "$srcdir/$_pkgname"
-  LDSTATIC='-static' sh Build.sh -r
-}
-
-package_mksh-static-musl() {
+package() {
   makedepends=('musl')
-  cd "$srcdir/$_pkgname"
-  install -D -m 755 mksh "$pkgdir/usr/bin/mksh"
-  install -D -m 644 mksh.1 "$pkgdir/usr/share/man/man1/mksh.1"
-  install -D -m 644 dot.mkshrc "$pkgdir/etc/skel/.mkshrc"
-  install -D -m 644 "$srcdir/TaC-mksh.txt" "$pkgdir/usr/share/licenses/mksh-static/TaC-mksh.txt"
-}
-
-package_mksh-static-glibc() {
-  depends=('glibc')
   cd "$srcdir/$_pkgname"
   install -D -m 755 mksh "$pkgdir/usr/bin/mksh"
   install -D -m 644 mksh.1 "$pkgdir/usr/share/man/man1/mksh.1"
