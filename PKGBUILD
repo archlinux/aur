@@ -1,12 +1,12 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=bcnc
-pkgver=0.9.7
+pkgver=0.9.10
 pkgrel=1
 pkgdesc="GRBL CNC command sender, autoleveler and g-code editor"
 arch=('any')
 url="https://github.com/vlachoudis/bCNC"
 license=('GPL-2.0')
-depends=('python2-pyserial')
+depends=('python2-pyserial' 'python2-pillow')
 provides=("bcnc")
 conflicts=("bcnc-git")
 source=("https://github.com/vlachoudis/bCNC/archive/0.9.7.tar.gz"
