@@ -1,4 +1,4 @@
-pkgbase = ozon-colors-icon-theme
+pkgbase = ozon-colors-icon-theme-git
 	pkgdesc = Additional folder colors for the default Ozon OS icon theme
 	pkgver = r4.4fa2a1e
 	pkgrel = 1
@@ -7,10 +7,10 @@ pkgbase = ozon-colors-icon-theme
 	license = GPL3
 	makedepends = git
 	depends = gtk-update-icon-cache
-	provides = ozon-colors-icon-theme
-	conflicts = ozon-colors-icon-theme
+	provides = ozon-colors-icon-theme-git
+	conflicts = ozon-colors-icon-theme-git
 	source = git+https://github.com/mrlamud/ozon-icon-theme-folders.git
 	sha256sums = SKIP
 
-pkgname = ozon-colors-icon-theme
+pkgname = ozon-colors-icon-theme-git
 
