@@ -1,6 +1,6 @@
 pkgbase = cyclone-scheme
 	pkgdesc = A brand-new compiler that allows practical application development using R7RS Scheme
-	pkgver = 0.6
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/justinethier/cyclone-bootstrap
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = cyclone-scheme
 	depends = libtommath
 	depends = gcc
 	depends = make
-	source = https://github.com/justinethier/cyclone-bootstrap/archive/v0.6.tar.gz
-	md5sums = 2b1ca0790a0f2ead883aad602749a94a
+	source = https://github.com/justinethier/cyclone-bootstrap/archive/v0.6.1.tar.gz
+	md5sums = 1ccaaf81d503b6c001eeaee9dd791561
 
 pkgname = cyclone-scheme
 
