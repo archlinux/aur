@@ -9,9 +9,9 @@ license=('GPL-2.0')
 depends=('python2-pyserial' 'python2-pillow')
 provides=("bcnc")
 conflicts=("bcnc-git")
-source=("https://github.com/vlachoudis/bCNC/archive/0.9.7.tar.gz"
+source=("https://github.com/vlachoudis/bCNC/archive/${pkgver}.tar.gz"
         "bcnc.desktop")
-md5sums=('eeb78f853abee215e79a139b466bfb2d'
+md5sums=('86c78473c896197add1ca11e52a78e42'
          '96bb9218018772b0de84d257452295c0')
 
 
