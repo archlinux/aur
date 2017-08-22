@@ -6,7 +6,6 @@ pkgbase = jpcre2
 	arch = any
 	groups = jpcre2
 	license = BSD
-	checkdepends = gcc
 	depends = pcre2
 	provides = libjpcre2
 	source = https://github.com/jpcre2/jpcre2/archive/10.31.01.tar.gz
