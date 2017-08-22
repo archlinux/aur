@@ -1,6 +1,6 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 pkgname=mve-git
-pkgver=r1192.5657454
+pkgver=r1197.435b733
 pkgrel=1
 pkgdesc="Image-based geometry reconstruction pipeline, structure-from-motion, (shading-aware) multi-view-stereo, surface-reconstruction, texturing,"
 arch=('i686' 'x86_64')
@@ -111,7 +111,7 @@ package() {
   install -Dm644 -t ${pkgdir}/usr/share/man/man1 umve.1 fssrecon.1
   cd ${srcdir}/smvs
   install -Dm755 -t ${pkgdir}/usr/bin smvsrecon
-  install -Dm644 LICENSE ${pkgdir}/usr/share/license/smvs/LICENSE.txt
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/smvs/LICENSE.txt
   install -Dm644 -t ${pkgdir}/usr/share/man/man1 smvsrecon.1
 }
 
