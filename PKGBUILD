@@ -10,7 +10,7 @@ depends=('java-runtime>=8' 'sh')
 source=("https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/${pkgver}/presto-cli-${pkgver}-executable.jar"
         'https://raw.githubusercontent.com/prestodb/presto/master/LICENSE')
 noextract=("presto-cli-${pkgver}-executable.jar")
-sha256sums=('8f6404accc90d372324b5e5abbd95b2ccecea87a4c5c3ef85804452c05679811'
+sha256sums=('ff2ff3e628c8385fd6563a35b645c9c009c74c529a3e319cbe7873acab124350'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
