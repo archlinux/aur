@@ -1,6 +1,6 @@
 pkgbase = lua-mpack-git
 	pkgver = 1.0.6.r4.g5d34594
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/libmpack/libmpack-lua
 	arch = i686
 	arch = x86_64

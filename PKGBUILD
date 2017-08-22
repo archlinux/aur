@@ -6,7 +6,7 @@ pkgbase='lua-mpack-git'
 pkgname=('lua51-mpack-git')
 #pkgname=('lua51-mpack-git' 'lua52-mpack-git' 'lua-mpack-git')
 pkgver=1.0.6.r4.g5d34594
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="https://github.com/libmpack/libmpack-lua"
 license=('MIT')
@@ -53,6 +53,8 @@ package_lua51-mpack-git() {
     USE_SYSTEM_MPACK=YES \
     MPACK_LUA_VERSION=5.1 \
     install
+
+  install -Dm644 /usr/share/licenses/libmpack/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # package_lua52-mpack-git() {
@@ -66,6 +68,8 @@ package_lua51-mpack-git() {
 #     USE_SYSTEM_MPACK=YES \
 #     MPACK_LUA_VERSION=5.2 \
 #     install
+#
+#   install -Dm644 /usr/share/licenses/libmpack/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 # }
 # 
 # package_lua-mpack-git() {
@@ -79,4 +83,6 @@ package_lua51-mpack-git() {
 #     USE_SYSTEM_MPACK=YES \
 #     MPACK_LUA_VERSION=5.3 \
 #     install
+#
+#   install -Dm644 /usr/share/licenses/libmpack/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 # }
