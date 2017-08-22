@@ -1,19 +1,6 @@
 # $Id: $
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
-# If you have issues with gcc63, build a split package:
-#    sudo pacman -S devtools
-#    CHROOT=/tmp/chroot
-#    mkdir $CHROOT
-#    sudo mount /tmp -o remount,suid
-#    mkarchroot $CHROOT/root base-devel
-#    git clone https://aur.archlinux.org/gcc63.git
-#    cd gcc63
-#    makechrootpkg -c -r $CHROOT
-#    sudo pacman -U gcc63-6.3.1-5-x86_64.pkg.tar.xz
-# This would consume 8.5G of tmp space. Use /var/tmp instead
-# of /tmp if you have less than 16G of RAM.
-
 pkgname=clickhouse
 pkgver=1.1.54276
 pkgrel=1
