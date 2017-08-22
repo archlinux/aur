@@ -10,7 +10,7 @@ license=(GPL2)
 depends=(kproperty qt5-declarative)
 makedepends=(extra-cmake-modules python2 ki18n marble-common)
 optdepends=('marble-common: support for maps in reports')
-source=("http://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
+source=("https://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('e04ea806381ec9fe40f63103e6ef45685a586faa5c85807347d733231cdca3fd'
             'SKIP')
 validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <staniek@kde.org>
