@@ -19,7 +19,7 @@ pkgbase = clickhouse
 	source = https://github.com/yandex/ClickHouse/archive/v1.1.54276-stable.tar.gz
 	source = clickhouse-server.service
 	source = re2-length.patch
-	md5sums = 9d19d2ec452688186f3ca49a7f7bdc10
+	md5sums = 62f37ed7c09f2f11f277550d255e606f
 	md5sums = f9f5663b0a9a58e99f481efe9d193e85
 	md5sums = 143f0146c3ef3a6832191fba352b70c4
 
