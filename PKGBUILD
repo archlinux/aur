@@ -2,7 +2,7 @@
 
 _pkgname=audacious-plugins
 pkgname=${_pkgname}-qt5
-pkgver=3.8.2
+pkgver=3.9
 pkgrel=1
 pkgdesc="Plugins for Audacious (qt5 interface)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=("audacious-qt5>=$pkgver" 'qt5-multimedia'
              'alsa-lib' 'pulseaudio' 'jack2' 'lame' 'libvorbis' 'flac'
              'mpg123' 'faad2' 'ffmpeg' 'libmodplug' 'fluidsynth' 'libcdio-paranoia' 'libsidplayfp' 'wavpack'
              'dbus-glib' 'libnotify' 'lirc' 'curl' 'libmtp'
-             'neon' 'libmms' 'libcue')
+             'neon' 'libmms' 'libcue') #libbs2b sndio ampache sdl2
 
 optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
             'pulseaudio: PulseAudio output'
@@ -22,7 +22,6 @@ optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
             'lame: FileWriter MP3 output'
             'libvorbis: Vorbis input, FileWriter Vorbis output'
             'flac: FLAC input, FileWriter FLAC output'
-
             'mpg123: MP3 input'
             'faad2: AAC input'
             'ffmpeg: ffaudio input'
@@ -31,23 +30,20 @@ optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
             'libcdio-paranoia: CD Digital Audio input'
             'libsidplayfp: Commodore 64 audio input'
             'wavpack: WavPack input'
-
             'dbus-glib: Gnome Shortcuts Plugin'
             'libnotify: libnotify OSD'
             'lirc: LIRC'
             'curl: AudioScrobbler Client'
             'libmtp: Upload to MTP device'
-
             'neon: neon-based http transport'
             'libmms: libmms-based mms transport'
             'libcue: CUE playlist format'
-
             'qt5-multimedia: qtaudio support')
 
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(http://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('d7cefca7a0e32bf4e58bb6e84df157268b5e9a6771a0e8c2da98b03f92a5fdd4')
+sha256sums=('8bf7f21089cb3406968cc9c71307774aee7100ec4607f28f63cf5690d5c927b8')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
