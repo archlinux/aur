@@ -4,15 +4,14 @@
 # Contributor: Eimantas Bunevičius <eimantaster@gmail.com>
 _cfgdir=/opt/openresty/nginx/conf
 _tmpdir=/var/lib/openresty
-_openssl_ver=1.0.2l
 pkgname=openresty
 pkgver=1.11.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A Fast and Scalable Web Platform by Extending NGINX with Lua"
 arch=('i686' 'x86_64')
 url="http://openresty.org/"
 license=('BSD')
-depends=('perl>=5.6.1' 'readline' 'pcre')
+depends=('perl>=5.6.1' 'readline' 'pcre' 'openssl-1.0')
 install=$pkgname.install
 options=(!purge)
 validpgpkeys=(
@@ -23,7 +22,6 @@ source=(https://openresty.org/download/$pkgname-$pkgver.tar.gz{,.asc}
         service
         $pkgname.logrotate
         $pkgname.install
-        https://www.openssl.org/source/openssl-${_openssl_ver}.tar.gz
         $pkgname.sh
         )
 noextract=()
@@ -32,7 +30,6 @@ sha256sums=('07679171450a6c083f983f6130056de3c4e13cc2d117dea68e1c6990e2e49ac9'
             'ec55ac7da98f5f5ec54d096c5f79b656edec0ebca835b6b9f1d20fb7be7119c5'
             '613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23'
             'f071e0fd8d0d588f03fcc7db6f3cb3f7ea1b870d3416a0bde142d9aeb839d0f6'
-            'ce07195b659e75f4e1db43552860070061f156a98bb37b672b101ba6e3ddf30c'
             'bf628aa47fb85f036f250416f13900be61dccac89736434498a80989b16ae85a')
 backup=(${_cfgdir:1}/fastcgi.conf
         ${_cfgdir:1}/fastcgi_params
@@ -51,16 +48,17 @@ build() {
   ./configure \
     --prefix=/opt/openresty \
     --conf-path=$_cfgdir/nginx.conf \
+    --with-cc-opt="-I/usr/include/openssl-1.0/" \
+    --with-ld-opt="-L/usr/lib/openssl-1.0/" \
     --user=http --group=http \
-    --with-openssl=$srcdir/openssl-${_openssl_ver} \
     --with-file-aio \
     --with-http_dav_module \
     --with-http_gzip_static_module \
     --with-http_realip_module \
     --with-http_ssl_module \
     --with-http_stub_status_module \
-    --with-imap \
-    --with-imap_ssl_module \
+    --with-mail \
+    --with-mail_ssl_module \
     --with-ipv6 \
     --with-luajit \
     --with-pcre-jit \
