@@ -1,7 +1,7 @@
 # Maintainer: Ian Brunelli <ian@brunelli.me>
 
 pkgname=gnome-shell-extension-installer
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A bash script to search and install GNOME Shell extensions"
 arch=(any)
@@ -11,7 +11,7 @@ depends=("bash" "curl" "dbus" "glib2")
 optdepends=("git: update installed extensions cloned from git"
             "less: to display comments and long descriptions more elegantly")
 source=("$pkgname-$pkgver"::"$url/releases/download/v$pkgver/gnome-shell-extension-installer")
-sha256sums=(b3c301d3f9edd648a85155ab25b0715bc8995c5d029df73fd07be2158274aa18)
+sha256sums=(4c1dfbdc94692ae8db1fdf26c66209170ca6fa4cacb6875d7e5bbb3e5be1864f)
 
 package() {
   mkdir -p "$pkgdir/usr/bin"

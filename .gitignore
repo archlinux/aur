@@ -1,4 +1,4 @@
-gnome-shell-extension-installer
+gnome-shell-extension-installer-*
 pkg/
 src/
 *.pkg.tar.xz
