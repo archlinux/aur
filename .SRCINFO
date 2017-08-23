@@ -1,6 +1,6 @@
 pkgbase = nvidia-beta-all
 	pkgdesc = NVIDIA drivers for all kernels on the system (beta)
-	pkgver = 384.59
+	pkgver = 384.69
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-beta-all.install
@@ -8,17 +8,17 @@ pkgbase = nvidia-beta-all
 	arch = x86_64
 	license = custom:NVIDIA
 	makedepends = linux-headers
-	depends = nvidia-utils-beta>=384.59
+	depends = nvidia-utils-beta>=384.69
 	depends = libgl
-	provides = nvidia=384.59
+	provides = nvidia=384.69
 	conflicts = nvidia-96xx
 	conflicts = nvidia-173xx
 	conflicts = nvidia
 	options = !strip
-	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/384.59/NVIDIA-Linux-x86-384.59.run
-	md5sums_i686 = 8d2a2049d0509875c5dc0d9a0275aee4
-	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/384.59/NVIDIA-Linux-x86_64-384.59-no-compat32.run
-	md5sums_x86_64 = 778318b0fd2d5d511474a8987cc7dbe5
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/384.69/NVIDIA-Linux-x86-384.69.run
+	md5sums_i686 = 53039e5fe898d405f3ea1725751045b6
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/384.69/NVIDIA-Linux-x86_64-384.69-no-compat32.run
+	md5sums_x86_64 = 0bee5889e14a653df35d6b9700363ff9
 
 pkgname = nvidia-beta-all
 
