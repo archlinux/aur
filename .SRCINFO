@@ -1,0 +1,20 @@
+pkgbase = autoconf-archive-git
+	pkgdesc = A collection of freely re-usable Autoconf macros
+	pkgver = 2017.03.21.r134.g24821df
+	pkgrel = 1
+	url = https://www.gnu.org/software/autoconf-archive/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = custom
+	makedepends = git
+	makedepends = python2
+	depends = autoconf
+	optdepends = automake: macros for use with it
+	provides = autoconf-archive
+	conflicts = autoconf-archive
+	source = git+https://git.savannah.gnu.org/git/autoconf-archive.git
+	sha256sums = SKIP
+
+pkgname = autoconf-archive-git
+
