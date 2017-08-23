@@ -19,7 +19,7 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'lame'
          'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
          'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
          'v4l-utils' 'xvidcore' 'zlib' 'cuda' 'nvidia-sdk-manjaro' 'mhwd-nvidia' 'vid.stab' 'libvorbis' 'libvorbisenc.so' 'libvpx' 'libx264' 'x265')
-makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm' 'nvidia-sdk-manjaro' 'mhwd-nvidia' 'jre8-openjdk')
+makedepends=('ladspa' 'libvdpau' 'yasm' 'nvidia-sdk-manjaro' 'mhwd-nvidia' 'jre8-openjdk')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so=57-64' 'libavdevice.so' 'libavfilter.so' 'libavformat.so=57-64'
           'libavresample.so' 'libavutil.so=55-64' 'libpostproc.so' 'libswresample.so'

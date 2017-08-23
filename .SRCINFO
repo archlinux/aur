@@ -6,7 +6,6 @@ pkgbase = ffmpeg-nvenc-manjaro
 	url = http://ffmpeg.org/
 	arch = x86_64
 	license = custom
-	makedepends = hardening-wrapper
 	makedepends = ladspa
 	makedepends = libvdpau
 	makedepends = yasm
