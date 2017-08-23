@@ -16,7 +16,7 @@ pkgdesc="Heroes of Newerth is a Real Time Strategy game heavily influcenced by D
 arch=('i686' 'x86_64')
 url="http://www.heroesofnewerth.com/"
 license=('custom:HoN')
-depends=('alsa-lib' 'gconf' 'gtk2'  'nss' 'libxss' 'libjpeg-turbo' 'cgmanager' 'ncurses5-compat-libs' 'libgcrypt15')
+depends=('alsa-lib' 'gconf' 'gtk2'  'nss' 'libxss' 'libjpeg-turbo' 'cgmanager' 'ncurses5-compat-libs' 'libgcrypt15' 'freetype2')
 makedepends=('unzip')
 options=(!strip)
 install=hon.install
@@ -55,5 +55,7 @@ package() {
     # remove some unwanted libraries
     # (some info: http://forums.heroesofnewerth.com/showthread.php?546434-Crash-HoN-is-unable-to-start-with-xorg-edge-amd-(how-to-fix-also))
     rm -f "${pkgdir}"/opt/hon/libs-x86_64/{libstdc++.so.6,libspeex.so.1,libspeexdsp.so.1,libgcrypt.so.11,libgcc_s.so.1,libfreetype.so.6,libcurl.so.4,libbz2.so.1.0}
+    # don't use old freetype
+    rm -f "${pkgdir}"/opt/hon/libs-x86_64/libfreetype.so.6
 }
 
