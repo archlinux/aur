@@ -13,7 +13,7 @@ backup=('usr/lib/systemd/system/pacman-files.service'
         'usr/lib/systemd/system/pacman-files.timer')
 install=find-the-command.install
 source=("https://github.com/agur4ik/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('c41b4776da6ff3c5a8a73091932ea68f')
+md5sums=('a389b63732d44f5ab77dad3c524fa6d4')
 
 package() {
 	cd "$pkgname-$pkgver"
