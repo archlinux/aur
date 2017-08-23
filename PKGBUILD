@@ -4,7 +4,7 @@
 pkgname=waterfox-kde
 _pkgname=Waterfox
 pkgver=55.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -12,7 +12,7 @@ url="https://www.waterfoxproject.org/"
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'nss' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'libvpx' 'kwaterfoxhelper' 'libevent' 'nspr' 'hicolor-icon-theme')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf' 'inetutils' 'xorg-server-xvfb'
-             'autoconf2.13' 'cargo' 'rust' 'clang' 'llvm')
+             'autoconf2.13' 'cargo' 'rust' 'clang' 'llvm' 'ccache')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -48,10 +48,7 @@ sha256sums=('SKIP'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
             'e144a6fac4466acdba86194b43fb41c185c38e296d6262f26c3bff3d2b6db3be'
-            '03a25b7bde971ecfa35326b3c6e45450da325babed29d9cc2e10dd639f816ef6'
-            '57c68bd9fd2e06d9e683f223fa2e8a09bdbaef3cca63f1f5b9bd73ef3faedefa'
-            '84155ad7e6eff928acdc37a15c7075f78f44589771741ffbeaf159076114cda0'
-            '08a31d8c172f2cd04e9f1c8a417cccee77c084e3a85560fbb104239774f4e7a3')
+            '03a25b7bde971ecfa35326b3c6e45450da325babed29d9cc2e10dd639f816ef6')
 
 prepare() {
   mkdir path
@@ -84,17 +81,9 @@ ac_add_options --enable-optimize="-O3 -msse2 -mfpmath=sse -march=native -mtune=n
 ac_add_options --target=x86_64-pc-linux-gnu
 ac_add_options --with-ccache=ccache
 
-# If you have pulse audio, uncomment this line:
-# ac_add_options --enable-pulseaudio
-
-# If you have pulse audio, comment this line:
-ac_add_options --disable-pulseaudio 
-
-# If you don't have alsa, comment this line:
 ac_add_options --enable-alsa
-
-# If you have jack, uncomment this line:
-# ac_add_options --enable-jack
+ac_add_options --enable-pulseaudio
+ac_add_options --enable-jack
 
 mk_add_options AUTOCLOBBER=1
 mk_add_options MOZ_MAKE_FLAGS=-j6
