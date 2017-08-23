@@ -7,7 +7,6 @@ pkgbase = jumpfm-bin
 	license = ISC
 	makedepends = jq
 	makedepends = curl
-	makedepends = p7zip
 	provides = jumpfm
 	conflicts = jumpfm
 	source = https://github.com/Gilad-Kutiel-App/jumpfm/releases/download/v0.16.1/jumpfm-0.16.1-x86_64.AppImage

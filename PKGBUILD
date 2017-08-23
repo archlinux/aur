@@ -9,7 +9,7 @@ arch=(x86_64)
 url='https://jumpfm.org/'
 license=('ISC')
 depends=()
-makedepends=('jq' 'curl' 'p7zip')
+makedepends=('jq' 'curl')
 provides=('jumpfm')
 conflicts=('jumpfm')
 
