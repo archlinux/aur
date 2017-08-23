@@ -4,7 +4,7 @@
 # Contributor: American_Jesus
 pkgname=palemoon
 pkgver=27.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
@@ -20,10 +20,11 @@ optdepends=('libpulse: PulseAudio audio driver'
 source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=${pkgver}_Release"
         mozconfig.in)
 md5sums=('SKIP'
-         '033551ecd40cc00580ed77fa00f31559')
+         '3b1d2eff90892a99ff6a0e078b35a839')
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
+  sed -i 's#xlocale#locale#' Pale-Moon/intl/icu/source/i18n/digitlst.cpp
 }
 
 build() {
