@@ -3,18 +3,16 @@
 
 pkgname=hydrogen-git
 _pkgname=hydrogen
-pkgver=0.9.7.beta2.r2544.1ab9bf5
+pkgver=0.9.7.r2953.9c99b935
 pkgrel=1
 pkgdesc="An advanced drum machine - git version"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/hydrogen-music/hydrogen"
-depends=('desktop-file-utils' 'liblrdf' 'qt4' 'jack' 'libpulse'
-         'lash' 'liblo')
+depends=('libarchive' 'liblrdf' 'qt5-xmlpatterns' 'libpulse' 'lash' 'liblo')
 optdepends=('rubberband: Audio Time Stretcher Library')
 makedepends=('git' 'cmake')
 source=("$_pkgname"::'git://github.com/hydrogen-music/hydrogen.git')
-install=$_pkgname.install
 provides=('hydrogen')
 conflicts=('hydrogen')
 md5sums=('SKIP')
@@ -58,6 +56,12 @@ package() {
   cd "$srcdir/$_pkgname"
 
   make DESTDIR="${pkgdir}" install
+
+  # Fix none FHS-compliant installation paths
+  rm -rf "${pkgdir}/usr/share/man"
+  mv "${pkgdir}/usr/man" "${pkgdir}/usr/share/man"
+  # Remove empty dir
+  rmdir "${pkgdir}/usr/share/hydrogen/data/doc"
 }
 
 # vim:set ts=2 sw=2 et:
