@@ -7,7 +7,7 @@ _orga=gogits
 _gourl=github.com/gogits/$_pkgname
 
 pkgname=$_pkgname
-pkgver=0.11.19
+pkgver=0.11.29
 pkgrel=1
 epoch=1
 pkgdesc='Self Hosted Git Service written in Go'
@@ -23,13 +23,13 @@ optdepends=('sqlite: SQLite support'
             'openssh: GIT over SSH support')
 makedepends=('go>=1.3')
 conflicts=("$_pkgname-bin" "$_pkgname-git" "$_pkgname-dev-git")
-options=('!strip' '!emptydirs')
+options=('!strip')
 backup=("etc/$_pkgname/app.ini")
 install=$_pkgname.install
 source=("$_pkgname-$pkgver::https://github.com/$_orga/$_pkgname/archive/v${pkgver}.tar.gz"
         '0001-Adjust-config-for-Arch-Linux-package.patch'
         '0002-Adjust-service-file-for-Arch-Linux-package.patch')
-sha512sums=('80339daefe9c4eb9e39af4ab90b6803e9d86648565c0f109a34c00aad9bd40e2edfc77d58e18ad1192ce2e8bc7322113a407e7a02c0116229e1cecf8e67fc8b5'
+sha512sums=('094dd6b5010128b8a68c3b4a2be389593380be527dd1f1c37882cbd7762ae31ff8da824d047acecb9ef31233ab3c576bc5030c90763adfa32d01b5830d12c04b'
             'a3632ed26abb634711c0c51defcf7288053845dfebcf27712de49319cfe80c5f7f7ef725c1a20413b1550a866f106818b5f2fd041c5b2a9158d77eae11897ef4'
             'fbb75efd69740638cbb2ce2f0fde3710a466c1128c6afddfd54028b04bb69e7e1f983aba60bbba378c35a854ef1bc7d6fd066acf3846aa48d424784dc15beb4d')
 _goroot='/usr/lib/go'
@@ -84,4 +84,7 @@ package() {
   install -Dm0644 "$pkgdir/usr/share/$_pkgname/conf/app.ini" "$pkgdir/etc/$_pkgname/app.ini"
   install -Dm0644 "$srcdir/build/src/${_gourl}/scripts/systemd/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
   install -Dm0644 "$srcdir/build/src/${_gourl}/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname"
+
+  install -dm0700 "$pkgdir/var/log/$_pkgname"
+  install -dm0700 "$pkgdir/var/lib/$_pkgname"
 }

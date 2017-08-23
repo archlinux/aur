@@ -9,7 +9,6 @@ pre_install() {
 }
 
 post_install(){
-  mkdir -p /var/log/gogs
   chown -R gogs:gogs /var/log/gogs
   chown -R gogs:gogs /var/lib/gogs
 
