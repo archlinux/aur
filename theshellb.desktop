@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Type=XSession
 Exec=/usr/bin/ts-startsession --blueprint
-TryExec=/usr/bin/ts-startsession --blueprint
+TryExec=/usr/bin/ts-startsession
 DesktopNames=theShell
 Name=theShell Blueprint
 Comment=Desktop Shell for theOS

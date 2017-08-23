@@ -1,7 +1,7 @@
 pkgbase = theshell-blueprint
 	pkgdesc = Desktop Shell that gets out of your way
 	pkgver = 6.2b
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/vicr123/theshell
 	arch = x86_64
 	license = GPL3
