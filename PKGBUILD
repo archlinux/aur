@@ -14,7 +14,7 @@ depends=('gtk2'
          'libxxf86vm'
          )
 makedepends=('nasm')
-conclicts=('xnp2')
+conflicts=('xnp2')
 provides=('xnp2')
 source=("xnp2::svn+http://amethyst.yui.ne.jp/svn/pc98/np2/trunk/")
 sha256sums=('SKIP')
