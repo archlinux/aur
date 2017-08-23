@@ -2,7 +2,7 @@
 
 pkgbase=viennarna
 pkgname=('viennarna' 'python-rna' 'python2-rna' 'perl-rna')
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="RNA Secondary Structure Prediction and Comparison"
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.
 
 options=('staticlibs' '!strip')
 
-sha256sums=('d0f5837cb8b5c4a0297cc5d84d01c73e877e82dadfe8bcccfb6996e306721bba')
+sha256sums=('7f02b2e6ac8d006d147ad36c8fbe678cffb0eb2dfc417aa8908577880963d949')
 
 build() {
   cd "${srcdir}/ViennaRNA-${pkgver}"
@@ -36,7 +36,7 @@ package_viennarna() {
   depends=('perl')
   optdepends=('gsl: use a variety of optimization methods in RNApvmin'
               'gri: create 2D plots of secondary structure landscape with RNA2Dfold')
-  provides=('Kinfold=1.3' 'RNAforester=2.0' "viennarna2=${pkgver}" "libRNA=${pkgver}")
+  provides=('Kinfold=1.3' 'RNAforester=2.0' 'RNAlocmin=2.1' "viennarna2=${pkgver}" "libRNA=${pkgver}")
 
   cd "${srcdir}/ViennaRNA-${pkgver}"
 
@@ -51,6 +51,8 @@ package_viennarna() {
   cd ../Utils
   make DESTDIR="${pkgdir}" install
   cd ../Cluster
+  make DESTDIR="${pkgdir}" install
+  cd ../RNAlocmin
   make DESTDIR="${pkgdir}" install
   cd ../..
 
