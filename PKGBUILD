@@ -1,4 +1,4 @@
-# Maintainer: Kalentia <kalentia.git@gmail.com>
+# Maintainer: sansation <sansation.git@gmail.com>
 pkgname=latexcalc
 pkgver=1.0.1
 pkgrel=1
@@ -7,7 +7,6 @@ arch=('any')
 url="http://latexcalc.sourceforge.net"
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar")
 makedepends=('tar')
-
 sha256sums=('SKIP')
 
 package() {
