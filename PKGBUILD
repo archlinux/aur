@@ -24,7 +24,7 @@ _protobuf_version='3.1.0' # commit 'a428e42072765993ff674fda72863c9f1aa2d268' is
 _srcname=caffe2
 pkgname=caffe2-cpu
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe2.ai/'
@@ -37,15 +37,14 @@ depends=(
             'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'openmpi' 'snappy' 'zeromq'
             'hiredis'
         # python2:
-            'python2-pydot' 'python2-flask' 'graphviz' 'python2-hypothesis'
-            'python2-jupyter_core' 'python2-matplotlib' 'python2-yaml' 'python2-requests'
-            'python2-scipy' 'python2-setuptools' 'python2-tornado' 'python2-pyzmq'
-            'python2-gflags'
+            'python2-flask' 'python2-future' 'graphviz' 'python2-hypothesis'
+            'python2-jupyter_core' 'python2-matplotlib' 'python2-pydot' 'python2-yaml'
+            'python2-requests' 'python2-scipy' 'python2-setuptools' 'python2-six'
+            'python2-tornado' 'python2-gflags' 'python2-pyzmq'
     # AUR:
         # python2:
-            'python2-scikit-image' 'python2-leveldb' 'python2-lmdb' 'python2-glog'
-    # missing:
-        # 'python2-nvd3'
+            'python2-nvd3' 'python2-scikit-image' 'python2-glog' 'python2-leveldb'
+            'python2-lmdb'
 )
 makedepends=(
     # official repositories:
