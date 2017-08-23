@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.10.19.r12388.152a8670d
+pkgver=2.10.83.r12681.be710f266
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -15,37 +15,37 @@ url="http://flexget.com/"
 license=('MIT')
 
 depends=('python2'
-         # documented in FlexGet.egg-info/requires.txt
+         # documented in requirements.in
          'python2-feedparser>=5.2.1'
          'python2-sqlalchemy>=1.0.9'
-         'python2-sqlalchemy<=1.999'
+         'python2-sqlalchemy<1.999'
          'python2-yaml'
          'python2-beautifulsoup4>=4.5'
          'python2-html5lib>=0.11'
-         'python2-pyrss2gen' #AUR#
-         'python2-pynzb' #AUR#
-         'python2-rpyc' #AUR#
+         'python2-pyrss2gen'
+         'python2-pynzb'
+         'python2-rpyc=3.3.0'
          'python2-jinja'
-         'python2-requests>=2.8.0'
-         'python2-requests<3.0'
+         'python2-requests>=2.16.3'
          'python2-dateutil>=2.5.3'
-         'python2-jsonschema>=2.0' #AUR#
+         'python2-jsonschema>=2.0'
          'python2-path>=8.1.1'
          'python2-pathlib>=1.0'
          'python2-guessit<=2.0.4'
+         'python2-rebulk=0.8.2'
          'python2-apscheduler>=3.2.0'
+         'python2-terminaltables>=3.1.0'
+         'python2-colorclass>=2.2.0'
          'python2-cherrypy>=3.7.0'
          'python2-flask>=0.7'
-         'python2-flask-restful>=0.3.3' #AUR#
-         'python2-flask-restplus=0.8.6'
+         'python2-flask-restful>=0.3.3'
+         'python2-flask-restplus=0.10.1'
          'python2-flask-compress>=1.2.1'
          'python2-flask-login>=0.4.0'
          'python2-flask-cors>=2.1.2'
          'python2-pyparsing>=2.0.3'
          'python2-zxcvbn'
          'python2-future>=0.15.2'
-         'python2-terminaltables>=3.1.0'
-         'python2-colorclass>=2.2.0'
          )
 optdepends=('python2-guppy: for memusage plugin' #AUR#
             'python2-transmissionrpc: Transmission support' #AUR#
@@ -83,6 +83,12 @@ prepare() {
 
   msg "Patching shebangs to point to python2"
   sed -i 's/\(python\)/\12/' flexget{,/ui}/__init__.py
+
+  #pip-compile --output-file requirements.txt requirements.in
+  #pip-compile give too stricts requirements...
+  cp requirements.in requirements.txt
+  #flexget works fine with newer versions of requests
+  sed -i 's!requests~=2.16.3!requests>=2.16.3!' requirements.txt
 }
 
 build() {
@@ -90,6 +96,8 @@ build() {
   yarn
   XDG_CONFIG_HOME="${_srcdir}" bower --config.analytics=false install
   XDG_CONFIG_HOME="${_srcdir}" gulp
+
+
 }
 
 #check() {
