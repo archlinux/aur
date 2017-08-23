@@ -1,0 +1,18 @@
+pkgbase = plasma5-applets-hoppla-sa-git
+	pkgdesc = Plasmoid for Plasma 5 for controlling Phillips Hue lights
+	pkgver = r147.5866048
+	pkgrel = 1
+	url = https://github.com/Fuchs/hoppla-sa
+	arch = any
+	license = LGPL-2.1
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = qt5-graphicaleffects
+	provides = plasma5-applets-hoppla-sa
+	conflicts = plasma5-applets-hoppla-sa
+	source = git+https://github.com/Fuchs/hoppla-sa.git
+	md5sums = SKIP
+
+pkgname = plasma5-applets-hoppla-sa-git
+
