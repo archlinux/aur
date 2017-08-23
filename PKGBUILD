@@ -7,8 +7,10 @@ pkgdesc="IIO blocks for GNU Radio"
 url="https://github.com/analogdevicesinc/gr-iio"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('libad9361-iio-git')
+depends=('libad9361-iio')
 makedepends=('git' 'cmake' 'boost' 'swig')
+provides=('gnuradio-iio')
+conflicts=('gnuradio-iio')
 source=("git+https://github.com/analogdevicesinc/gr-iio.git")
 md5sums=('SKIP')
 
@@ -23,8 +25,6 @@ build() {
   mkdir -p build
   cd build
   export PYTHON=python2
-  # AD9361_INCLUDE_DIRS ?
-  # AD9361_LIBRARIES ?
   cmake \
     -DPYTHON_EXECUTABLE=$(which python2) \
     -DPYTHON_INCLUDE_DIR=$(echo /usr/include/python2*) \
