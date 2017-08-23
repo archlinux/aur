@@ -1,0 +1,27 @@
+diff -Nur original/plasma/generic/applets/CMakeLists.txt modified/plasma/generic/applets/CMakeLists.txt
+--- original/plasma/generic/applets/CMakeLists.txt	2015-08-12 07:03:15.000000000 +0000
++++ modified/plasma/generic/applets/CMakeLists.txt	2017-08-22 23:38:59.880383160 +0000
+@@ -12,10 +12,6 @@
+ add_subdirectory(digital-clock)
+ add_subdirectory(quicklaunch)
+ 
+-if(QT_QTWEBKIT_FOUND)
+-   add_subdirectory(webbrowser)
+-endif(QT_QTWEBKIT_FOUND)
+-
+ if(NOT WIN32)
+    add_subdirectory(system-monitor)
+    #notifications
+diff -Nur original/plasma/generic/scriptengines/CMakeLists.txt modified/plasma/generic/scriptengines/CMakeLists.txt
+--- original/plasma/generic/scriptengines/CMakeLists.txt	2015-08-12 07:03:15.000000000 +0000
++++ modified/plasma/generic/scriptengines/CMakeLists.txt	2017-08-22 23:57:04.857049819 +0000
+@@ -1,9 +1,5 @@
+ macro_optional_add_subdirectory(ruby)
+ 
+-if(QT_QTWEBKIT_FOUND)
+-    macro_optional_add_subdirectory(webkit)
+-endif(QT_QTWEBKIT_FOUND)
+-
+ if (PYTHONLIBRARY_FOUND AND NOT WIN32)
+     macro_optional_add_subdirectory(python)
+ endif (PYTHONLIBRARY_FOUND AND NOT WIN32)

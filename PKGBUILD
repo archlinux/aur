@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 253960 2015-12-08 15:40:43Z allan $
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Charles Bos <charlesbos1 AT gmail>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=kdebase-workspace
 _pkgname=kde-workspace
 pkgver=4.11.22
 _pkgver=15.08.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Provides the interface and basic tools for the KDE workspace"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -20,16 +20,18 @@ depends=('kdebase-runtime' 'kdepimlibs4' 'lm_sensors' 'libraw1394'
          'libxklavier' 'xorg-xsetroot' 'libxcomposite' 'libxinerama'
          'xorg-xrdb' 'libxres' 'xorg-xrandr' 'xorg-xmessage' 'libusb-compat'
          'kde-base-artwork' 'xcb-util-renderutil' 'xcb-util-image' 'ttf-font'
-         'xcb-util-keysyms' 'xcb-util-wm' 'pciutils' 'glu')
+         'xcb-util-keysyms' 'xcb-util-wm' 'pciutils' 'glu' 'kactivities4'
+         'strigi' 'qtwebkit')
 makedepends=('cmake' 'automoc4' 'boost' 'kdebindings-python2' 'networkmanager')
 optdepends=('kde-wallpapers: wallpapers for KDE Plasma Workspaces'
             'appmenu-qt: menu applications over dbus' 'kdepim4-runtime: to display events in the calendar')
 install="${pkgname}.install"
 backup=('usr/share/config/kdm/kdmrc' 'etc/pam.d/kde' 'etc/pam.d/kde-np' 'etc/pam.d/kscreensaver')
-source=("http://download.kde.org/stable/applications/${_pkgver}/src/${_pkgname}-${pkgver}.tar.xz"
+source=("http://download.kde.org/Attic/applications/${_pkgver}/src/${_pkgname}-${pkgver}.tar.xz"
         'kde.pam' 'kde-np.pam' 'kscreensaver.pam' 'kdm.service' 'kdm.logrotate'
         'etc-scripts.patch' 'terminate-server.patch' 'kdm-xinitrd.patch'
-        'khotkeys-qt4.patch' 'dbus-update-environment.patch')
+        'khotkeys-qt4.patch' 'dbus-update-environment.patch'
+        'no-webkit.patch')
 sha1sums=('f08fbe309ed16c51ad31b0b260b2adeb7af1bb37'
           '660eae40a707d2711d8d7f32a93214865506b795'
           '6aeecc9e0e221f0515c6bf544f9a3c11cb6961fe'
@@ -40,10 +42,11 @@ sha1sums=('f08fbe309ed16c51ad31b0b260b2adeb7af1bb37'
           'ac7bc292c865bc1ab8c02e6341aa7aeaf1a3eeee'
           'd509dac592bd8b310df27991b208c95b6d907514'
           'aa9d2e5a69986c4c3d47829721ea99edb473be12'
-          '410311314b1ccb1ed5607dcf8bd418074d8c4019')
+          '410311314b1ccb1ed5607dcf8bd418074d8c4019'
+          '9a9b4ed07da06b8f02ce0ba9bc1958ae89c8a926')
 
 prepare() {
-        mkdir build
+        if [ ! -d build ]; then mkdir build; fi
 
         cd ${_pkgname}-${pkgver}
 
@@ -58,6 +61,11 @@ prepare() {
 
         # KDEBUG#202629
         patch -p0 -i "${srcdir}"/terminate-server.patch
+
+        # Disable compilation of some webkit-related components.
+        # We cannot build these anymore as kdelibs in arch no
+        # longer provides kdewebkit
+        patch -p1 -i "${srcdir}/no-webkit.patch" 
 }
 
 build() {
@@ -72,7 +80,8 @@ build() {
           -DPYTHON_EXECUTABLE=/usr/bin/python2 \
           -DWITH_CkConnector=OFF \
           -DWITH_NepomukCore=OFF \
-          -DWITH_Soprano=OFF
+          -DWITH_Soprano=OFF \
+          -DCMAKE_CXX_FLAGS="-fpermissive"
         make
 }
 
