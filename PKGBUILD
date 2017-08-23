@@ -9,6 +9,8 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('libiio')
 makedepends=('git' 'cmake')
+provides=('libad9361-iio')
+conflicts=('libad9361-iio')
 source=("git+https://github.com/analogdevicesinc/libad9361-iio.git")
 md5sums=('SKIP')
 
