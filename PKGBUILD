@@ -1,4 +1,4 @@
-# Maintainer: Kalentia <kalentia.git@gmail.com>
+# Maintainer: sansation <sansation.git@gmail.com>
 _pkgname=astrosound-redux
 pkgname=astrosound-redux-git
 pkgver=r49.a6c1853
