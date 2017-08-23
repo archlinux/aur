@@ -3,7 +3,7 @@
 
 _gemname=fastlane
 pkgname=$_gemname
-pkgver=2.53.1
+pkgver=2.54.0
 pkgrel=1
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
@@ -24,8 +24,7 @@ depends=(
   'ruby-faraday_middleware<1' 'ruby-faraday_middleware>=0.9'
   'ruby-fastimage>=2.1.0' 'ruby-fastimage<3'
   'ruby-gh_inspector<2' 'ruby-gh_inspector>=1.0.1'
-  # 'ruby-google-api-client>=0.9.2' 'ruby-google-api-client<0.10'
-  ruby-google-api-client-0.12
+  'ruby-google-api-client>=0.12' 'ruby-google-api-client<1'
   'ruby-highline<2' 'ruby-highline>=1.7.2'
   'ruby-json<3'
   # 'ruby-mini_magick<4.6' 'ruby-mini_magick>=4.5.1'
@@ -42,14 +41,14 @@ depends=(
   'ruby-terminal-table<2' 'ruby-terminal-table>=1.4.5'
   'ruby-tty-screen>=0.5' 'ruby-tty-screen<0.6'
   'ruby-word_wrap<1.1' 'ruby-word_wrap>=1'
-  'ruby-xcodeproj<2' 'ruby-xcodeproj>=1.4.4'
+  'ruby-xcodeproj>=1.5' 'ruby-xcodeproj<2'
   'ruby-xcpretty<1' 'ruby-xcpretty>=0.2.4' 
   'ruby-xcpretty-travis-formatter>=0.0.3'
 )
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('7c3ca454494d7120485bc9a5a2f220f69edae59a')
+sha1sums=('972588e30b9ab54fa811fbb5c299db24cecc1479')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
