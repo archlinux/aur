@@ -1,0 +1,11 @@
+diff -Nur original/CMakeLists.txt modified/CMakeLists.txt
+--- original/CMakeLists.txt	2014-08-14 20:17:11.000000000 +0000
++++ modified/CMakeLists.txt	2017-08-22 16:07:59.029025174 +0000
+@@ -87,7 +87,6 @@
+     ${QT_QTSQL_INCLUDE_DIR}
+     ${QT_QTXML_INCLUDE_DIR}
+     ${QT_QTSVG_INCLUDE_DIR}
+-    ${QT_QTWEBKIT_INCLUDE_DIR}
+     ${KDE4_INCLUDE_DIR}
+     ${KDE4_INCLUDE_DIR}/solid
+     ${KDE4_INCLUDE_DIR}/kio
