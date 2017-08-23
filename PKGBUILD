@@ -47,7 +47,7 @@ package_rtl8188eu-git() {
 
 	cd "${pkgbase}-${pkgver}"
 
-	install -Dm644 8188eu.ko "${pkgdir}"/usr/lib/modules/${_extramodules}/8188eu.ko
+	install -Dm644 8188eu.ko "${pkgdir}/usr/lib/modules/${_extramodules}/8188eu.ko"
 	gzip "${pkgdir}/usr/lib/modules/${_extramodules}/8188eu.ko"
 }
 
@@ -63,7 +63,7 @@ package_rtl8188eu-dkms-git() {
 	local install_dir="${pkgdir}/usr/src/${pkgbase}-${pkgver}"
 
 	# Copy dkms.conf
-	install -Dm644 ${pkgbase}-${pkgver}/dkms.conf "${install_dir}/dkms.conf"
+	install -Dm644 "${pkgbase}-${pkgver}/dkms.conf" "${install_dir}/dkms.conf"
 
 	# Copy sources
 	cd "${pkgbase}-${pkgver}"
