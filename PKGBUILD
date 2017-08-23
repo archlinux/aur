@@ -3,7 +3,8 @@
 # Submitter: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=jabref-git
-pkgver=4.0.0_v_2.9.2.r6747.e9a4c7065
+pkgver=2.9.2.r7259.g47b949a80
+epoch=1
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('any')
@@ -23,8 +24,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd ${srcdir}/${pkgname%-git}
-  _release=$(sed -n 's/.*version = \"\(.*\)-dev\"/\1/p' build.gradle)
-  printf "%s" "${_release}_$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  git describe --long | sed 's/^v_//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -37,8 +37,10 @@ build() {
 package() {
   cd "${srcdir}/${pkgname%-git}"
 
+  _release=$(sed -n 's/.*version = \"\(.*-dev\)\"/\1/p' build.gradle)
+
   find "${srcdir}/${pkgname%-git}/build/releases" \
-	  -iname "JabRef-${pkgver%%_*}-dev.jar" \
+	  -iname "JabRef-${_release}.jar" \
 	  -exec install -Dm644 {} ${pkgdir}/usr/share/java/jabref/JabRef.jar \;
 
   install -Dm755 $srcdir/jabref.sh ${pkgdir}/usr/bin/jabref
