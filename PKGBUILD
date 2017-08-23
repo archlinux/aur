@@ -1,5 +1,5 @@
 pkgname=mrpt
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Provides an extensive set of libraries, algorithms, and applications employed in a number of mobile robotics research areas."
 arch=('i686' 'x86_64' 'armv7h')
@@ -17,11 +17,6 @@ _tag=${pkgver}
 source=("${_dir}"::"git+https://github.com/MRPT/mrpt.git"#tag=${_tag})
 md5sums=('SKIP')
 
-prepare() {
-  #patch howMany() to howMany
-  sed -i "s/howMany[(][)]/howMany/g" ${srcdir}/${pkgname}-${pkgver}/libs/base/include/mrpt/math/matrix_adaptors.h
-}
-
 build() {
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
@@ -31,7 +26,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_CXX_FLAGS="-fpermissive" \
         -DMRPT_OPTIMIZE_NATIVE=ON 
-  make -j1
+  make 
 }
 
 package() {
