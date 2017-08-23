@@ -1,6 +1,7 @@
-# Maintainer: Jingbei Li <i@jingbei.li>
-pkgdesc='Torch-7 FFI bindings for NVIDIA CuDNN'
-pkgname='torch7-cudnn-git'
+# Maintainer: Émilien Tlapale <emilien@tlapale.com>
+# Contributor: Jingbei Li <i@jingbei.li>
+pkgdesc='Torch-7 FFI bindings for NVIDIA CuDNN 7'
+pkgname='torch7-cudnn-r7-git'
 pkgver=r353.440f0d5
 pkgrel=1
 makedepends=('cmake' 'git')
@@ -24,6 +25,7 @@ pkgver () {
 
 build () {
 	cd "${pkgname}"
+        git checkout R7
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
 	make
 }
