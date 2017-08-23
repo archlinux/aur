@@ -1,7 +1,7 @@
 # Maintainer: Marcel Radzio <info@nordgedanken.de>
 pkgbase=riot-desktop-git
-pkgver=r3963.cf5cf025
-pkgrel=5
+pkgver=r4523.9e57c9d7
+pkgrel=1
 pkgname=riot-desktop-git
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=('any')
@@ -33,7 +33,20 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname}"
 	npm install --cache "${srcdir}/npm-cache"
+
+        # Build matrix-js-sdk manualy as npm@5 doesn't trigger the build
+        cd "$srcdir/${pkgname}/node_modules/matrix-js-sdk"
+        npm install --cache "${srcdir}/npm-cache"
+        npm run build --cache "${srcdir}/npm-cache"
+
+        # Build matrix-react-sdk manualy as npm@5 doesn't trigger the build
+        cd "$srcdir/${pkgname}/node_modules/matrix-react-sdk"
+        npm install --cache "${srcdir}/npm-cache"
 	npm run build --cache "${srcdir}/npm-cache"
+
+
+        cd "$srcdir/${pkgname}"
+        npm run build --cache "${srcdir}/npm-cache"
 }
 
 package() {
