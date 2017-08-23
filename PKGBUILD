@@ -1,6 +1,6 @@
 # Maintainer: Alexander Agura <agur4ik09@gmail.com>
 pkgname=find-the-command
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Advanced command-not-found hook for bash and zsh using the power of pacman"
 arch=('any')
