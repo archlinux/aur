@@ -1,13 +1,13 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=forked-daapd
 pkgver=25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="iTunes-compatible media server, originally intended as a rewrite of Firefly Media Server (mt-daapd)."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/ejurgensen/forked-daapd"
 license=('GPL')
 groups=()
-depends=(avahi sqlite3 ffmpeg confuse libevent mxml libunistring libplist libantlr3c protobuf-c)
+depends=(avahi sqlite3 ffmpeg confuse libevent mxml libunistring libplist libantlr3c libsodium protobuf-c)
 makedepends=(gperf java-runtime-headless)
 optdepends=()
 provides=()
