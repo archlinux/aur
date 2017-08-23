@@ -3,7 +3,7 @@
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 
 pkgname=watchman
-pkgver=4.7.0
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
@@ -14,7 +14,7 @@ makedepends=('glibc')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/facebook/watchman/archive/v$pkgver.tar.gz"
         "$pkgname.tmpfiles")
-sha256sums=('77c7174c59d6be5e17382e414db4907a298ca187747c7fcb2ceb44da3962c6bf'
+sha256sums=('1f6402dc70b1d056fffc3748f2fdcecff730d8843bb6936de395b3443ce05322'
             '2b061865e10578a0477b9c7991a00594bc839c846b98896e93c75743dbf6a379')
 
 build() {
