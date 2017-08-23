@@ -11,7 +11,6 @@ url='https://projects.kde.org/projects/kde/kdelibs/kactivities'
 license=('GPL' 'FDL')
 depends=('kdelibs')
 makedepends=('cmake' 'automoc4' 'mesa')
-replaces=('kactivities')
 conflicts=('kactivities' 'kactivities-frameworks')
 provides=("kactivities==${pkgver}")
 source=("http://download.kde.org/Attic/${pkgver}/src/kactivities-${pkgver}.tar.xz")
