@@ -1,7 +1,7 @@
 pkgbase = heroku-cli
 	pkgdesc = a tool for creating and managing Heroku apps from the command line
-	pkgver = 6.13.18
-	pkgrel = 2
+	pkgver = 6.13.19
+	pkgrel = 3
 	url = https://devcenter.heroku.com/articles/heroku-cli
 	arch = i686
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = heroku-cli
 	conflicts = heroku-toolbelt
 	conflicts = ruby-heroku
 	source_i686 = https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x86.tar.gz
-	md5sums_i686 = 0001f16626470677639085119ecd3045
+	md5sums_i686 = 2862a4017d88cf4794c67219af8978b4
 	source_x86_64 = https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x64.tar.gz
-	md5sums_x86_64 = c04612612e42c21485222d9261bb108e
+	md5sums_x86_64 = 6260a8dc2bd0002b75b4b23d8bebd3f9
 
 pkgname = heroku-cli
 
