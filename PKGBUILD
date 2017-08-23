@@ -1,4 +1,4 @@
-# Maintainer: Kalentia <kalentia.git@gmail.com>
+# Maintainer: sansation <sansation.git@gmail.com>
 
 # requires that you already have a full copy of this font
 
