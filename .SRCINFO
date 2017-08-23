@@ -1,0 +1,30 @@
+pkgbase = python-rebulk-082
+	pkgdesc = Define simple search patterns in bulk to perform advanced matching on any string.
+	pkgver = 0.8.2
+	pkgrel = 2
+	url = https://github.com/Toilal/rebulk
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-pytest-runner
+	makedepends = python2-pytest-runner
+	options = !emptydirs
+	source = https://github.com/Toilal/rebulk/archive/0.8.2.tar.gz
+	md5sums = 10c00f7ad785bfb577941876fea41d82
+
+pkgname = python-rebulk-082
+	depends = python-six
+	depends = python-regex
+	provides = python-rebulk=0.8.2
+	conflicts = python-rebulk
+
+pkgname = python2-rebulk-082
+	depends = python2-six
+	depends = python2-regex
+	depends = python2-ordereddict
+	provides = python2-rebulk=0.8.2
+	conflicts = python2-rebulk
+
