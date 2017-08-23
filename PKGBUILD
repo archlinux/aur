@@ -2,8 +2,8 @@
 # Contributor: Dominik Heidler <dheidler@gmail.com>
 
 pkgname=gqrx
-pkgver=2.6.1
-pkgrel=3
+pkgver=2.7
+pkgrel=1
 pkgdesc="Interactive SDR receiver waterfall for many devices."
 arch=('i686' 'x86_64')
 url="http://gqrx.dk/"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('qt5-svg' 'libpulse' 'gnuradio-osmosdr' 'libxkbcommon-x11')
 makedepends=('boost')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/csete/gqrx/archive/v$pkgver.tar.gz")
-md5sums=('94a9fd361a0715c1abf43ce7e523f10b')
+md5sums=('cc9d918fab02e94457d9c85582ca3929')
 
 prepare() {
   cd "$srcdir"
