@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sawfish-pager-git
-pkgver=0.90.4.4.gcdd763b
+pkgver=0.90.4.5.g2c017bb
 pkgrel=1
 pkgdesc='A pager for the git-version of sawfish'
 arch=('i686' 'x86_64')
