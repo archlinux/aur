@@ -1,6 +1,6 @@
 pkgbase = python-cli_helpers
 	pkgdesc = Python helpers for common CLI tasks.
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/dbcli/cli_helpers
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-cli_helpers
 	depends = python-terminaltables
 	provides = python-cli_helpers
 	options = !emptydirs
-	source = python-cli_helpers-0.2.2.zip::https://github.com/dbcli/cli_helpers/archive/v0.2.2.zip
-	md5sums = fba797154253a45c62ef7c37ea69f9f8
+	source = python-cli_helpers-0.2.3.zip::https://github.com/dbcli/cli_helpers/archive/v0.2.3.zip
+	md5sums = 6152f0d4393152025c9d97c11e302aab
 
 pkgname = python-cli_helpers
 
