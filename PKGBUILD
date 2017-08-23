@@ -9,6 +9,7 @@ license=("GPL")
 depends=("gnome-shell" "xorg-xprop")
 makedepends=("git")
 provides=("gnome-shell-extension-unite")
+conflicts=("gnome-shell-extension-unite")
 source=("$pkgname::git+https://github.com/jonian/unite-shell")
 md5sums=("SKIP")
 
