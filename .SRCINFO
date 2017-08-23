@@ -1,0 +1,55 @@
+pkgbase = linux-surfacepro3-git
+	pkgver = 4.13rc6.r65.g2acf097f16ab
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	options = !strip
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+	source = init.patch
+	source = kconfig.patch
+	source = xattr.patch
+	source = config
+	source = config.x86_64
+	source = config.sp3
+	source = touchscreen_multitouch_fixes1.patch
+	source = touchscreen_multitouch_fixes2.patch
+	source = linux-surfacepro3-git.preset
+	sha256sums = SKIP
+	sha256sums = ec655100ebc32d6699a258d7682953f928d1eb1042b895b04283d85ae57b80c1
+	sha256sums = f479a5ca6abe4d50ca4c09e6e83a027369fcd3efff8d5ce60f0699d8fa47beb8
+	sha256sums = 4633ae19b9a9871a3cfffba98ec7c3cd240f64bef8a0eebcf1212219c80972fd
+	sha256sums = becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc
+	sha256sums = 56152d1f7cac31d0a9a7414e950106c3945d5de8d50bc75cf7385fa46078b1de
+	sha256sums = ed733c7e96de009eebb9d9148716c48f1597b67aa365a7cd3243eaded0ce081c
+	sha256sums = cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52
+	sha256sums = 34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113
+	sha256sums = 31d109a2f5864d865b3ce3c310158b2e9ae77f9c424f2af5a7e45548d62a2eb3
+
+pkgname = linux-surfacepro3-git
+	pkgdesc = The Linux-surfacepro3 kernel and modules (git version)
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-surfacepro3-git.preset
+
+pkgname = linux-surfacepro3-git-headers
+	pkgdesc = Header files and scripts for building modules for Linux-surfacepro3 kernel (git version)
+	provides = linux-headers
+
+pkgname = linux-surfacepro3-git-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-surfacepro3 kernel (git version)
+	provides = linux-docs
+

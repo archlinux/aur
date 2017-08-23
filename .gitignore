@@ -1,0 +1,23 @@
+*.swp
+*.swo
+pkg/
+src/
+*.tar.xz
+config.sp3.*
+linux.install.*
+
+# config
+# config.sp3
+# config.x86_64
+# init.patch
+# kconfig.patch
+# xattr.patch
+# linux.install
+# linux-surfacepro3-git.preset
+# PKGBUILD
+# .SRCINFO
+# touchscreen_multitouch_fixes1.patch
+# touchscreen_multitouch_fixes2.patch
+
+# vi:ft=cfg:
+linux/
