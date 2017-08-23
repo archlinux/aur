@@ -7,6 +7,8 @@ arch=("any")
 url="https://github.com/jonian/unite-shell"
 license=("GPL")
 depends=("gnome-shell" "xorg-xprop")
+provides=("gnome-shell-extension-unite")
+conflicts=("gnome-shell-extension-unite-git")
 source=("https://github.com/jonian/unite-shell/archive/v$pkgver.tar.gz")
 md5sums=("SKIP")
 
@@ -16,4 +18,3 @@ package() {
   cd "$srcdir/unite-shell-$pkgver"
   cp -af "unite@hardpixel.eu" "$pkgdir/usr/share/gnome-shell/extensions/"
 }
-
