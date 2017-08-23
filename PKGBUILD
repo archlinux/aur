@@ -2,11 +2,11 @@
 
 pkgname=iputils-git
 pkgver=s20161105.r31.gef740f5
-pkgrel=1
+pkgrel=2
 pkgdesc="Network monitoring tools, including ping"
 arch=('i686' 'x86_64')
 url="https://github.com/iputils/iputils"
-license=('Custom')
+license=('GPL' 'BSD' 'custom')
 depends=('glibc' 'libcap' 'libidn' 'openssl')
 optdepends=('xinetd: for tftpd')
 makedepends=('git' 'libxslt')

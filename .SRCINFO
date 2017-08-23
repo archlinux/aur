@@ -1,12 +1,14 @@
 pkgbase = iputils-git
 	pkgdesc = Network monitoring tools, including ping
 	pkgver = s20161105.r31.gef740f5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iputils/iputils
 	install = iputils.install
 	arch = i686
 	arch = x86_64
-	license = Custom
+	license = GPL
+	license = BSD
+	license = custom
 	makedepends = git
 	makedepends = libxslt
 	depends = glibc
