@@ -1,0 +1,26 @@
+pkgbase = iputils-git
+	pkgdesc = Network monitoring tools, including ping
+	pkgver = s20161105.r31.gef740f5
+	pkgrel = 1
+	url = https://github.com/iputils/iputils
+	install = iputils.install
+	arch = i686
+	arch = x86_64
+	license = Custom
+	makedepends = git
+	makedepends = libxslt
+	depends = glibc
+	depends = libcap
+	depends = libidn
+	depends = openssl
+	optdepends = xinetd: for tftpd
+	provides = iputils
+	conflicts = iputils
+	backup = etc/xinetd.d/tftp
+	source = git+https://github.com/iputils/iputils.git
+	source = tftp.xinetd::https://git.archlinux.org/svntogit/packages.git/plain/trunk/tftp.xinetd?h=packages/iputils
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = iputils-git
+
