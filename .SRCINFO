@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-zh-tw
 	pkgdesc = Standalone web browser from mozilla.org, nightly build (zh-TW)
-	pkgver = 55.0a1.20170407100252
+	pkgver = 57.0a1.20170823100553
 	pkgrel = 1
 	url = http://www.mozilla.org/projects/firefox
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = firefox-nightly-zh-tw
 	source = firefox-nightly.desktop
 	source = firefox-nightly-safe.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha512sums = 89fd8c9e255ce687817eb355ed409d117512c75e91ec2b13e5932c08adce3a398cda4dcc813544ef418c381a4bb769b50f2f9bcdb3a5e0ef6c01a6e0a2f74411
+	sha512sums = a42df24f1a701d2b23be042c9e455bff42da8c674590da719503b57be1f90079b33f70b0fdac9d5ef2e7efad5287cfe09d1254e458774b588b3d26059dab4d0d
 	sha512sums = SKIP
 	sha512sums = 8591fdea03adac7f2a52bc10631730a2bbc15e1d5f254768fb161176ad8fe1059f253bcb8fa17d8d63ca3c27f0580520c7ebfc4415ffd7061cc479b3a369d659
 	sha512sums = dadbd2daaaf6470f62a4f847a9c9ef9e171eb7359113c47f9d31cf100475d48422aca6a236c9ee7a996971d867ed421c7079bd2b069aef12c6745663092b1e38

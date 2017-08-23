@@ -8,7 +8,7 @@ _lang=zh-TW
 _pkgver=57.0a1
 
 pkgname=${_pkgname}-${_channel}-${_lang/TW/tw}
-pkgver=55.0a1.20170407100252
+pkgver=57.0a1.20170823100553
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org, nightly build (zh-TW)'
 url='http://www.mozilla.org/projects/firefox'
@@ -42,7 +42,7 @@ package() {
   install -d $pkgdir/{opt,usr/{bin,share/applications}}
   cp -r firefox $pkgdir/opt/firefox-nightly
   ln -s /opt/firefox-nightly/firefox $pkgdir/usr/bin/firefox-nightly
-  install -Dm644 $srcdir/{$pkgname.desktop,$pkgname-safe.desktop} $pkgdir/usr/share/applications/
+  install -Dm644 $srcdir/{${_pkgname}-${_channel}.desktop,${_pkgname}-${_channel}-safe.desktop} $pkgdir/usr/share/applications/
   install -Dm644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$pkgname-icon.png
   
   _vendorjs="$pkgdir/opt/firefox-nightly/browser/defaults/preferences/vendor.js"
