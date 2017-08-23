@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgbase=micropython
 pkgname=(micropython micropython-lib)
-pkgver=1.9.1
+pkgver=1.9.2
 _libver=1.9
 # stupid submodules
 _axver=1.8.2
@@ -21,7 +21,7 @@ source=("mpy-$pkgver.tgz::https://github.com/micropython/micropython/archive/v$p
         "bdb.tgz::https://github.com/pfalcon/berkeley-db-1.xx/archive/embedded.tar.gz")  # submodule with no releases!
 # What about the lwip submodule?  The repo is GONE.  You didn't need an IP stack anyway.
 # Maybe http://download.savannah.gnu.org/releases/lwip/lwip-2.0.0.zip is it?
-md5sums=('fab14570403953aca1ef526c7ea3a175'
+md5sums=('2aa8cbe99ea94982f9bb6ab2489ffbd8'
          '56dff4526bc435bd5a4c74bf52cbd5e1'
          'e11da4ef04499030d1eff69b474f34f0'
          '9066486bcab807f7ddaaf2596348c1db'
