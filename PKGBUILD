@@ -7,7 +7,7 @@ _tmpdir=/var/lib/openresty
 _openssl_ver=1.0.2l
 pkgname=openresty
 pkgver=1.11.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Fast and Scalable Web Platform by Extending NGINX with Lua"
 arch=('i686' 'x86_64')
 url="http://openresty.org/"
@@ -15,7 +15,7 @@ license=('BSD')
 depends=('perl>=5.6.1' 'readline' 'pcre')
 install=$pkgname.install
 options=(!purge)
-validgpgkeys=(
+validpgpkeys=(
 '25451EB088460026195BD62CB550E09EA0E98066'
 )
 
