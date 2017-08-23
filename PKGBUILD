@@ -7,8 +7,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-nvenc-manjaro
-pkgver=3.3.2
-pkgrel=9
+pkgver=3.3.3
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video with Nvidia CUDA Hardware Acceleration'
 arch=('x86_64')
@@ -26,7 +26,7 @@ provides=('libavcodec.so=57-64' 'libavdevice.so' 'libavfilter.so' 'libavformat.s
           'libswscale.so=4-64' 'ffmpeg' 'ffmpeg-nvenc')
 conflicts=('ffmpeg' 'ffmpeg-nvenc' 'ffmpeg-full-nvenc')
 source=(http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2)
-sha256sums=('216900d5c0af9017bb8f76b0ad23f0ac53cf7fc618cf04b40d989bd99b088e6a')
+sha256sums=('1069ac8fc7f52e566bea28b41b9c437246aeb5096f82fb26fa96dc7d5a10a473')
 
 build() {
   cd ffmpeg-${pkgver}
