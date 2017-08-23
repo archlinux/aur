@@ -1,4 +1,5 @@
-# Maintainer: Gavin Fernandes <gavinfernandes2012@gmail.com>
+# Maintainer: Carsten Haitzler <raster@rasterman.com>
+# Contributor: Gavin Fernandes <gavinfernandes2012@gmail.com>
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
