@@ -58,7 +58,7 @@ diff --git a/js/src/old-configure.in b/js/src/old-configure.in
  AC_SUBST(JS_CONFIG_MOZ_JS_LIBS)
  AC_SUBST(JS_CONFIG_LIBS)
  
-+JS_MOZ_GLUE_LIBS="-Wl,--whole-archive -lmozglue -Wl,--no-whole-archive"
++JS_MOZ_GLUE_LIBS='-Wl,--whole-archive -Wl,${libdir}/libmozglue.a -Wl,--no-whole-archive'
 +AC_SUBST(JS_MOZ_GLUE_LIBS)
 +
  MOZ_SUBCONFIGURE_JEMALLOC()
