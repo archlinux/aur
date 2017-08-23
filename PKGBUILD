@@ -6,7 +6,7 @@ _ver2=14
 _ver3=0
 # codename changes when one of the first three numbers changes
 _vercodename=weierstrass
-_ver4=1
+_ver4=2
 pkgver=$_ver1.$_ver2.$_ver3.$_ver4
 source=("http://h2o-release.s3.amazonaws.com/h2o/rel-$_vercodename/$_ver4/h2o-$pkgver.zip"
         "h2o-ai.sh")
@@ -24,5 +24,5 @@ package() {
   install -Dm755 $srcdir/h2o-ai.sh "$pkgdir/usr/bin/h2o-ai"
 }
 
-md5sums=('56311618c2d09fe21201595490c7b1b8'
+md5sums=('6ddc368402fda286a34fd1f65ff9a1ba'
          '008aadd36da7ad0d0b8a31a21ac3975d')
