@@ -8,7 +8,10 @@ arch=('any')
 url='https://github.com/jimsalterjrs/sanoid'
 license=('GPL')
 backup=('etc/sanoid/sanoid.conf')
-depends=('perl' 'perl-config-inifiles' 'pv' 'lzop' 'mbuffer')
+depends=('perl' 'perl-config-inifiles')
+optdepends=('pv: progress bars'
+            'lzop: compression'
+            'mbuffer: stream buffering')
 conflicts=('sanoid')
 provides=('sanoid')
 source=("sanoid-git::git+https://github.com/jimsalterjrs/sanoid.git")
