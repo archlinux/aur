@@ -1,0 +1,17 @@
+pkgbase = jumpfm-bin
+	pkgdesc = A file manager that lets you jump
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://jumpfm.org/
+	arch = x86_64
+	license = ISC
+	makedepends = jq
+	makedepends = curl
+	makedepends = p7zip
+	provides = jumpfm
+	conflicts = jumpfm
+	source = https://github.com/Gilad-Kutiel-App/jumpfm/releases/download/v0.16.1/jumpfm-0.16.1-x86_64.AppImage
+	sha512sums = SKIP
+
+pkgname = jumpfm-bin
+
