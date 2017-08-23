@@ -1,8 +1,8 @@
 # Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
 
 pkgbase=gtk4-git
-pkgname=(gtk4-update-icon-cache-git gtk4-git gtk4-print-backends-git)
-pkgver=3.91.2.r462.g0740fb5c64
+pkgname=(gtk4-git)
+pkgver=3.91.2.r136.g84bcf7d4d3
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('i686' 'x86_64')
@@ -39,7 +39,8 @@ makedepends=('gobject-introspection-git'
              'colord'
              'rest'
              'libcups'
-             'autoconf-archive')
+             'meson'
+             'ninja')
 optdepends=('gnome-icon-theme: Default icon theme'
             'gnome-themes-standard: Default widget theme')
 backup=('usr/share/gtk-4.0/settings.ini')
@@ -59,72 +60,33 @@ sha512sums=('SKIP'
 pkgver() {
   cd gtk+
 
-  printf "%s.r%s.g%s" "$(grep -m1 'gtk_major_version' configure.ac | sed -r 's/([^0-9]*([0-9]*)){2}.*/\2/').$(grep -m1 'gtk_minor_version' configure.ac | sed -r 's/([^0-9]*([0-9]*)){2}.*/\2/').$(grep -m1 'gtk_micro_version' configure.ac | sed -r 's/([^0-9]*([0-9]*)){2}.*/\2/')" \
+  printf "%s.r%s.g%s" "$(grep -m1 'version' meson.build | sed -r 's/([^0-9]*([0-9.]+)).*/\2/')" \
                       "$(git describe --tags --long | cut -d '-' -f 2)" \
                       "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd gtk+
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd gtk+
 
-  CXX=/bin/false ./configure --prefix=/usr \
+  meson --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --disable-schemas-compile \
-    --enable-x11-backend \
-    --enable-broadway-backend \
-    --enable-wayland-backend \
-    --disable-gtk-doc
+    -Denable-broadway-backend=true \
+    _build .
 
-  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  cd _build
 
-  make
+  ninja
 }
 
 package_gtk4-git() {
-  depends+=(gtk-update-icon-cache)
   install="gtk4.install"
 
-  cd gtk+
+  cd gtk+/_build
 
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja install
 
-  install -Dm644 "../settings.ini" "$pkgdir/usr/share/gtk-4.0/settings.ini"
-  install -Dm644 ../gtk4-query-immodules.hook "$pkgdir/usr/share/libalpm/hooks/gtk4-query-immodules.hook"
-
-  rm "$pkgdir/usr/bin/gtk4-update-icon-cache"
-
-  cd "$pkgdir"
-  for _f in usr/lib/*/*/printbackends/*; do
-    case $_f in
-        *-file.so|*-lpr.so) continue;;
-    esac
-
-    mkdir -p "$srcdir/print-backends/${_f%/*}"
-    mv "$_f" "$srcdir/print-backends/$_f"
-  done
+  install -Dm644 "../../settings.ini" "$pkgdir/usr/share/gtk-4.0/settings.ini"
+  install -Dm644 ../../gtk4-query-immodules.hook "$pkgdir/usr/share/libalpm/hooks/gtk4-query-immodules.hook"
 }
 
-package_gtk4-update-icon-cache-git() {
-  pkgdesc="GTK+ icon cache updater"
-  depends=(gdk-pixbuf2 hicolor-icon-theme)
-
-  cd gtk+
-  install -D gtk/gtk4-update-icon-cache "$pkgdir/usr/bin/gtk4-update-icon-cache"
-  install -Dm644 ../gtk4-update-icon-cache.hook "$pkgdir/usr/share/libalpm/hooks/gtk4-update-icon-cache.hook"
-  install -D ../gtk4-update-icon-cache.script "$pkgdir/usr/share/libalpm/scripts/gtk4-update-icon-cache"
-}
-
-package_gtk4-print-backends-git() {
-  pkgdesc="Print backends for GTK4"
-  depends=(gtk4-git rest colord libcups)
-  groups=(gnome)
-
-  mv print-backends/* "$pkgdir"
-}
