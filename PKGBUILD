@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.26.0.r60.g12ee13101b
+pkgver=0.26.0.r207.gb62150bd6b
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -17,7 +17,7 @@ license=('GPL3')
 url='http://mpv.io'
 screenshot='http://i.imgur.com/6TacA5I.png'
 _undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
-depends=('pulseaudio' 'lcms2' 'mujs' 'libdvdread' 'libgl' 'libvdpau'
+depends=('pulseaudio' 'lcms2' 'ffmpeg-semifull-git' 'mujs' 'libdvdread' 'libgl' 'libvdpau'
          'libxinerama' 'libxv' 'libxkbcommon' 'libva'  'libass' 'uchardet' 
 	 'wayland' 'v4l-utils' 'lua52' 'rsound' 'sndio' 'libdvdnav' 'libcdio-paranoia' 'libbluray' 'libxss'
          'enca' 'libguess' 'harfbuzz' 'libxrandr' 'rubberband' 'smbclient' "${_undetected_depends[@]}")
@@ -26,7 +26,6 @@ depends_i686=(
   'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
   'libbluray' 'sdl2' 'openal' 'ffmpeg-full'
 )
-depends_x86_64=('ffmpeg-full-git')
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
             'livestreamer: to watch live video streams (twitch.tv)'
