@@ -10,7 +10,7 @@
 
 _name=vlc
 pkgname=vlc-git
-pkgver=3.0.0.r14231.g3d329b56eb
+pkgver=3.0.0.r14290.gf99dec8643
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -60,7 +60,7 @@ conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
 provides=("${_name}=${pkgver}")
 options=('!emptydirs')
 install="${_name}.install"
-source=('git://git.videolan.org/vlc.git'
+source=('git+https://github.com/videolan/vlc.git'
         'lua53_compat.patch')
 sha512sums=('SKIP'
             '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f')
