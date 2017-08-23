@@ -4,7 +4,7 @@
 pkgname=pacmanager-git
 _pkgname=${pkgname%-git}
 pkgver=4.5.5.8
-pkgrel=10
+pkgrel=11
 arch=('any')
 license=('GPL3')
 pkgdesc="Perl Auto Connector PAC Manager. GIT version with fixed FreeRDP interface."
@@ -13,15 +13,20 @@ depends=('perl-gnome2-gconf' 'glade-perl' 'openssh' 'perl-crypt-blowfish' 'perl-
 makedepends=('git')
 conflicts=(pacmanager-bin)
 source=("git+https://github.com/perseo22/pacmanager.git"
-       "fix_xfreerdp_embed_window.patch")
+       "fix_xfreerdp_embed_window.patch"
+       "fix-pacmanager-crash-getXWindowsList.patch")
 sha256sums=('SKIP'
-            '15c5208214c6ecc4b3a3525efa00dbef31402a59ad14c05f3f7af0135c781973')
+            '15c5208214c6ecc4b3a3525efa00dbef31402a59ad14c05f3f7af0135c781973'
+            'b2bd4fcdc9e16869f990ae4be47f2a23e81e25fff8a7169a03792864caee1606')
 
 prepare() {
 	cd ${srcdir}/${_pkgname}
 
 	# Ugly fix to fix xfreerdp embed window
-	patch -Np1 -i $srcdir/fix_xfreerdp_embed_window.patch
+	patch -Np1 -i "$srcdir"/fix_xfreerdp_embed_window.patch
+
+	# Fix for https://github.com/perseo22/pacmanager/issues/25
+	patch -Np1 -i "$srcdir"/fix-pacmanager-crash-getXWindowsList.patch
 }
 
 build() {
