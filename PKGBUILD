@@ -1,7 +1,7 @@
 # Maintainer: Dan McCurry <dan.mc at protonmail dot com>
 pkgname=fullprof-suite
 pkgver=2017.07
-pkgrel=1
+pkgrel=2
 pkgdesc="Crystallographic tools for Rietveld, profile matching & integrated intensity refinements of X-Ray and/or neutron data."
 arch=('x86_64')
 url="https://www.ill.eu/sites/fullprof"
