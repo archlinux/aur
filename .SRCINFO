@@ -1,7 +1,7 @@
 pkgbase = dropbox
 	pkgdesc = A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
 	pkgver = 32.4.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dropbox.com
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = dropbox
 	depends = libxmu
 	optdepends = ufw-extras: ufw rules for dropbox
 	optdepends = perl-file-mimeinfo: opening dropbox folder on some desktop environments
+	optdepends = xdg-utils: for "Launch Dropbox Website" and file manager integration
 	conflicts = dropbox-experimental
 	options = !strip
 	options = !upx
