@@ -13,7 +13,7 @@ depends=('kdelibs')
 makedepends=('cmake' 'automoc4' 'mesa')
 replaces=('kactivities')
 conflicts=('kactivities' 'kactivities-frameworks')
-provides=('kactivities')
+provides=("kactivities==${pkgver}")
 source=("http://download.kde.org/Attic/${pkgver}/src/kactivities-${pkgver}.tar.xz")
 sha1sums=('54813db8808da63dda7980711ba5d4e01e56d2b0')
 
