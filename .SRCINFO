@@ -12,7 +12,7 @@ pkgbase = find-the-command
 	backup = usr/lib/systemd/system/pacman-files.service
 	backup = usr/lib/systemd/system/pacman-files.timer
 	source = https://github.com/agur4ik/find-the-command/archive/1.2.1.tar.gz
-	md5sums = c41b4776da6ff3c5a8a73091932ea68f
+	md5sums = a389b63732d44f5ab77dad3c524fa6d4
 
 pkgname = find-the-command
 
