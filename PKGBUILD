@@ -3,7 +3,7 @@
 
 pkgname=neovim-plug
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Neovim plugin manager"
 arch=('any')
 url="http://github.com/junegunn/${pkgname#neo}"
@@ -14,7 +14,7 @@ source=("${url}/archive/$pkgver.tar.gz"
         "$pkgname.init.vim")
 
 sha512sums=('87a205ff5c102489041c07df3922634b8552fdaa58155481216c0fe8f9d177ac4ad03ce2936bfd9d6e81695ec2978b1d51e84d72c9b636423791ca9e80c417cc'
-            '8e15c2074d0ce36daa0568167bcbcaf1038b8f65edcab661c9d41a9a18714b27accab28f5065408852329827ff4c84c03102c17bd542962cde1f057e88c4044c')
+            'fb943ed92e20277bed6ff29da973cd96ba05c89dbde438d1bf7821cd810151a08101a67338381fac5ce0df8716c71313f30aa8202b1a75054a9d343f873a9414')
 install=neovim-plug.install
 
 package() {
