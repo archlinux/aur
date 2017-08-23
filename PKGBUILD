@@ -2,17 +2,17 @@
 
 pkgname=rpw
 
-pkgver=4.3.0
-pkgrel=3
+pkgver=4.4.0
+pkgrel=1
 
 # jar filename on dropbox
-FNAME="RPW-4-3-0.jar"
+FNAME="ResourcePackWorkbench.jar"
 # icon file in the jar
 ICONFILE="icon-96.png"
 
 pkgdesc="Minecraft resource pack editor by MightyPork"
 arch=("any")
-url="http://rpw.ondrovo.com/"
+url="http://mcrpw.github.io/"
 license=("RPW license")
 
 # Gendesk entries
@@ -22,8 +22,8 @@ _comment="$pkgdesc"
 _exec=("rpw")
 _categories="Application;Development"
 
-source=("https://dl.dropboxusercontent.com/u/64454818/RPW/$FNAME"
-        "https://raw.githubusercontent.com/MightyPork/rpw/master/LICENSE.txt")
+source=("https://github.com/mcRPW/rpw/releases/download/v4.4.0/$FNAME"
+        "https://raw.githubusercontent.com/mcRPW/rpw/master/LICENSE.txt")
 
 depends=('java-runtime')
 
@@ -36,8 +36,8 @@ makedepends=("unzip"
 
 provides=("rpw")
 
-md5sums=('314d5fe7db04ca774d59982d95f23024'
-         '34ccc931e00e0e1354d2409159824290')
+md5sums=('804aa7850d427c4651d5536b19bd61ca'
+         '604f46ee27f8c28ba680499f436b80b6')
 
 prepare() {
 	# extract icon as rpw.png
