@@ -1,6 +1,6 @@
 pkgbase = xorg-server-dev
 	pkgver = 1.19.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xorg.freedesktop.org
 	arch = i686
 	arch = x86_64
@@ -60,6 +60,9 @@ pkgbase = xorg-server-dev
 	source = nvidia-add-modulepath-support.patch
 	source = xserver-autobind-hotplug.patch
 	source = modesetting-Set-correct-DRM-event-context-version.patch
+	source = CVE-2017-10971.patch
+	source = CVE-2017-10972.patch
+	source = bug99708.patch
 	source = xvfb-run
 	source = xvfb-run.1
 	sha256sums = 677a8166e03474719238dfe396ce673c4234735464d6dadf2959b600d20e5a98
@@ -67,6 +70,9 @@ pkgbase = xorg-server-dev
 	sha256sums = 914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8
 	sha256sums = fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57
 	sha256sums = 831a70809e6bec766138d7a1c96643732df9a2c0c5f77ee44b47ce4be882e0af
+	sha256sums = 3950d5d64822b4a34ca0358389216eed25e159751006d674e7cb491aa3b54d0b
+	sha256sums = 700af48c541f613b376eb7a7e567d13c0eba7a835d0aaa9d4b0431ebdd9f397c
+	sha256sums = 67013743ba8ff1663b233f50fae88989d36504de83fca5f93af5623f2bef6920
 	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
 	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
 
@@ -166,7 +172,7 @@ pkgname = xorg-server-common-dev
 	depends = xorg-xkbcomp
 	depends = xorg-setxkbmap
 	depends = xorg-fonts-misc
-	provides = xorg-server-common=1.19.3-2
+	provides = xorg-server-common=1.19.3-3
 	conflicts = xorg-server-common
 
 pkgname = xorg-server-devel-dev
