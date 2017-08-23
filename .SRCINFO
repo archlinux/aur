@@ -1,0 +1,26 @@
+pkgbase = memcached-git
+	pkgdesc = Distributed memory object caching system
+	pkgver = 1.5.0.4.gb5ab581
+	pkgrel = 1
+	url = https://memcached.org/
+	install = memcached.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libevent
+	optdepends = perl: for memcached-tool usage
+	provides = memcached
+	conflicts = memcached
+	source = memcached-git::git+https://github.com/memcached/memcached#branch=next
+	source = memcached.service
+	source = memcached.tmpfiles
+	sha256sums = SKIP
+	sha256sums = fd60fde92b959dc4160facc0d165f04319d2ece4d2c59b68d8ae24824abea7dd
+	sha256sums = c4d0ae2218b99a276ff6e0084ae81e66add0ca9347e4bde70e9172db6e44002a
+	sha512sums = SKIP
+	sha512sums = 5b006064b3ab31a6982f5c7b1ab4a49d64118a459913bd4be18ca63bf606dcae3550121d05a34ac8932d28b367e18fa76699c46e311b0b6a22f36ab1885ebebe
+	sha512sums = 960705ff74d25afed477e0b2a5872a3a4fb49ed3105a351f0d0224abc947778f9dbda81e80be94ab636da4a8411a9dd56a8fd4513e5b86a3096a14fa67f1548b
+
+pkgname = memcached-git
+
