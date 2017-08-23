@@ -2,12 +2,12 @@
 # Contributor: Igor Mosyagin <c6h10o5 at gmail dot com>
 pkgname=brother-mfc-7840w
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="CUPS driver for Brother MFC-7840W printer"
 arch=('i686' 'x86_64')
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 license=('GPL')
-depends=('cups' 'ghostscript' 'gsfonts' 'foomatic-filters')
+depends=('cups' 'ghostscript' 'gsfonts')
 depends_x86_64=('lib32-glibc')
 install="brother-mfc-7840w.install"
 source=(http://www.brother.com/pub/bsc/linux/dlf/brmfc7840wlpr-$pkgver-1.i386.rpm
