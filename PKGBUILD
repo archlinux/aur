@@ -23,7 +23,7 @@ _protobuf_version='3.1.0' # commit 'a428e42072765993ff674fda72863c9f1aa2d268' is
 
 pkgname=caffe2
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -35,7 +35,7 @@ depends=(
             'cudnn'
         # not required but enabled in build:
             'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'openmpi' 'snappy' 'zeromq'
-            'hiredis'
+            'hiredis' 'ffmpeg'
         # python2:
             'python2-flask' 'python2-future' 'graphviz' 'python2-hypothesis'
             'python2-jupyter_core' 'python2-matplotlib' 'python2-pydot' 'python2-yaml'
@@ -198,8 +198,9 @@ build() {
         -DUSE_NCCL:BOOL='ON' \
         -DUSE_NERVANA_GPU:BOOL='ON' \
         -DUSE_NNPACK:BOOL='ON' \
+        -DUSE_OBSERVERS:BOOL='ON' \
         -DUSE_OPENCV:BOOL='OFF' \
-        -DUSE_FFMPEG:BOOL='OFF' \
+        -DUSE_FFMPEG:BOOL='ON' \
         -DUSE_OPENMP:BOOL='ON' \
         -DUSE_REDIS:BOOL='ON' \
         -DUSE_ROCKSDB:BOOL='OFF' \
