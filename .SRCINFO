@@ -1,0 +1,18 @@
+pkgbase = pip2-tools
+	pkgdesc = A set of tools to keep your pinned Python dependencies fresh.
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/jazzband/pip-tools/
+	arch = any
+	license = BSD
+	depends = python2-click
+	depends = python2-first
+	depends = python2-pip
+	depends = python2-six
+	source = https://pypi.io/packages/source/p/pip-tools/pip-tools-1.9.0.tar.gz
+	source = LICENSE.txt
+	md5sums = 28401a367a9a9c37cac56f76cf7f91d9
+	md5sums = b542fe20de254615b3ab48020bc73441
+
+pkgname = pip2-tools
+
