@@ -2,7 +2,7 @@
 
 pkgname=rider
 pkgver='2017.1'
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='A cross-platform C# IDE by JetBrains.'
 arch=('any')
@@ -19,7 +19,7 @@ _srcfile="JetBrains.Rider-${pkgver}.tar.gz"
 source=("https://download-cf.jetbrains.com/resharper/${_srcfile}"
         'rider.desktop')
 sha256sums=('f018c9bda072adac8e83af16ee200f8a9364c2245cf71649ad1a9e05e81268ed'
-            'd039d85d40fcf03e2694d7321151984de6209596290a3d8257a6f1c3c780a5df')
+            '91f41e1a5deae9f66bab7d7798a679a39350120aa229b4093415ef8269449714')
 
 package() {
     cd "${srcdir}"
