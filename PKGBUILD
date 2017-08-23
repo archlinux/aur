@@ -2,13 +2,13 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-mail-git
-pkgver=0.2.0.r1093.g3540188
+pkgver=0.2.0.r1546.g975f3b21
 pkgrel=1
 pkgdesc="An email app for NextCloud"
 arch=('any')
 url="https://github.com/nextcloud/mail"
 license=('AGPL')
-makedepends=('npm' 'nodejs' 'php')
+makedepends=('npm' 'nodejs' 'php' 'mercurial')
 depends=('nextcloud')
 options=('!strip')
 provides=('nextcloud-app-mail')
