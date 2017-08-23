@@ -1,0 +1,28 @@
+pkgbase = dbus-git
+	pkgdesc = Message bus system
+	pkgver = 1.11.16.r31.gd82378fd
+	pkgrel = 1
+	url = https://wiki.freedesktop.org/www/Software/dbus/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = systemd
+	depends = glibc
+	depends = expat
+	depends = gettext
+	depends = libsystemd
+	provides = libdbus
+	provides = dbus
+	conflicts = libdbus
+	conflicts = dbus
+	options = staticlibs
+	source = git+https://anongit.freedesktop.org/git/dbus/dbus.git
+	source = dbus.sysusers::https://git.archlinux.org/svntogit/packages.git/plain/trunk/dbus.sysusers?h=packages/dbus
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dbus-git
+
