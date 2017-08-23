@@ -1,9 +1,8 @@
-# $Id: PKGBUILD 242345 2017-07-04 23:53:29Z seblu $
-# Maintainer: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
-# Contributor: Frederik Schwan frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Contributor: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
 
 pkgname=unifi
-pkgver=5.5.19
+pkgver=5.5.20
 pkgrel=1
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
 arch=('any')
@@ -17,39 +16,37 @@ source=("UniFi-$pkgver.zip::https://dl.ubnt.com/unifi/$pkgver/UniFi.unix.zip"
         'unifi.service'
         'unifi.sysusers'
         'LICENSE')
-md5sums=('1f784ada6d9d28b9c258325df9accc25'
-         '79998cabf110d9a96ba4d3367101c94c'
-         'a92291a0074a5dcf414da4dfe812bc2a'
-         '63a6f9e67db6a466f31a40c228c16d63')
+sha512sums=('f0feb90ef764562760c52c2c48e263a4b353fcf19c5f27b956a287fdb825e7560d370211dccb46c769f759fffa9378c8c9386ff7b225626425b5cd23b11c6120'
+            '4b77e480dac9acef58e2d8f088491aa056a55edc9ca613c1b707d53ca802579513082e7c16f5a59689813609b97c2391253c99d77709be4a536abb683e5106ed'
+            '0fdd04112236bb3f4d96e4e1c43e0a9d97412831b44837466d70e15521336275a0496dbd47dd28873dc85ba4982ef2234e31c78146eb45c20b158dadf2cec7b8'
+            '22e0a4d5be7645e7f1dd760a1b93fa5a49a7e92ce6f23f2a7d0f72043cd0be057bd3faecabd1d3048ecf93480b47d278926b99b5abc17ecbe91a5b15763f0a9c')
 
 package() {
-  # lib
-  install -dm755 "$pkgdir/usr/lib/unifi"
-  cp -r UniFi/{bin,dl,lib,webapps} "$pkgdir/usr/lib/unifi"
-  rm -r "$pkgdir/usr/lib/unifi/lib/native"
+    # lib
+    install -dm755 "${pkgdir}/usr/lib/unifi"
+    cp -r UniFi/{bin,dl,lib,webapps} "${pkgdir}/usr/lib/unifi"
+    rm -r "${pkgdir}/usr/lib/unifi/lib/native"
 
-  # data
-  install -dm750 "$pkgdir/var/lib/unifi"
-  for _d in data run work; do
-    install -dm750 "$pkgdir/var/lib/unifi/$_d"
-    ln -s "../../../var/lib/unifi/$_d" "$pkgdir/usr/lib/unifi/$_d"
-  done
-  chown -R 113:113 "$pkgdir/var/lib/unifi"
+    # data
+    install -dm750 "${pkgdir}/var/lib/unifi"
+    for _d in data run work; do
+        install -dm750 "${pkgdir}/var/lib/unifi/$_d"
+        ln -s "../../../var/lib/unifi/$_d" "${pkgdir}/usr/lib/unifi/$_d"
+    done
+    chown -R 113:113 "${pkgdir}/var/lib/unifi"
 
-  # log
-  install -dm750 "$pkgdir/var/log/unifi"
-  ln -s ../../../var/log/unifi "$pkgdir/usr/lib/unifi/logs"
-  chown -R 113:113 "$pkgdir/var/log/unifi"
+    # log
+    install -dm750 "${pkgdir}/var/log/unifi"
+    ln -s ../../../var/log/unifi "${pkgdir}/usr/lib/unifi/logs"
+    chown -R 113:113 "${pkgdir}/var/log/unifi"
 
-  # readme
-  install -Dm644 UniFi/readme.txt "$pkgdir/usr/share/doc/$pkgname/README"
+    # readme
+    install -Dm644 UniFi/readme.txt "${pkgdir}/usr/share/doc/${pkgname}/README"
 
-  # license
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # license
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # systemd
-  install -Dm644 $pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-  install -Dm644 $pkgname.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+    # systemd
+    install -Dm644 ${pkgname}.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 ${pkgname}.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }
-
-# vim:set ts=2 sw=2 ft=sh et:
