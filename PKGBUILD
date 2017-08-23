@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=bitcoin-classic-daemon
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='Bitcoin Classic with bitcoind, bitcoin-tx, and bitcoin-cli'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ backup=("etc/bitcoin/bitcoin.conf")
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/bitcoinclassic/bitcoinclassic/archive/v${pkgver}.tar.gz"
     "bitcoin.logrotate"
     "bitcoin.conf")
-sha256sums=('4a3accaec57aca90c2167230daeb3b8aba10c5a10e73b3383582910ab77741cd'
+sha256sums=('d87206e34bb98848f835e8e96f896b6c5c018b9a087874a87b58000bee3a7858'
     "7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73"
     "c8787560c6423605796c8d3e080cb522ed849cea12b5c23293c22e405a015a53")
 
