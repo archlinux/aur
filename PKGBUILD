@@ -8,8 +8,8 @@
 
 pkgname=ffmpeg-nvenc
 pkgver=3.3.3
-pkgrel=1
-epoch=1
+pkgrel=2
+epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video with Nvidia CUDA Hardware Acceleration'
 arch=('x86_64')
 url='http://ffmpeg.org/'
@@ -21,7 +21,7 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'lame'
          'v4l-utils' 'xvidcore' 'zlib' 'cuda' 'nvidia-sdk' 
          'nvidia' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
          'libx264.so' 'libx265.so')
-makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm' 'jre8-openjdk')
+makedepends=('ladspa' 'libvdpau' 'yasm' 'jre8-openjdk')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
