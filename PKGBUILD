@@ -2,7 +2,7 @@
 # PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 
 pkgname=arduino-avr-core
-pkgver=1.6.19
+pkgver=1.6.20
 pkgrel=1
 pkgdesc="Arduino AVR core with upstream avr-gcc and avrdude"
 arch=('any')
@@ -13,7 +13,7 @@ options=(!strip !emptydirs)
 source=("https://downloads.arduino.cc/cores/avr-${pkgver}.tar.bz2"
         "https://downloads.arduino.cc/cores/avr-${pkgver}.tar.bz2.asc"
         "platform.patch")
-sha512sums=('8ad43e69876e8600f4ca4b61295021e251e49724480d9f882d3a10f876a1d35aa2ebf494461cd0471ba08381f524694d58282da2b9fdaef9ad73e2d6512d616d'
+sha512sums=('a70b5cff026afcfe61e7e659eee469488da8e68eea1854546a84b6dda811c8f1af793c76ba3f9fc6ed9232837dd68f948455d8752ec66b3e9b16269fc9071a42'
             'SKIP'
             '306c121028a6e82f1b4e8a801776af14519741b1a657c23f755ad1e1b4c3b50db1e64b512c7e476f74f9331a2fbc31035134609e6af28b1beb4a75db5154b611')
 validpgpkeys=('326567C1C6B288DF32CB061A95FA6F43E21188C4') # Arduino Packages <support@arduino.cc>
