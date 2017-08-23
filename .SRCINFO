@@ -1,18 +1,17 @@
 pkgbase = whatsapp-desktop
 	pkgdesc = Unofficial whatsapp web desktop client. Build with Electron.
-	pkgver = 0.3.10
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = https://github.com/Enrico204/Whatsapp-Desktop
 	arch = x86_64
 	license = MIT
-	makedepends = unzip
 	depends = libnotify
 	depends = gconf
 	provides = whatsapp-desktop
-	source = https://github.com/Enrico204/Whatsapp-Desktop/releases/download/v0.3.10/Whatsapp-linux-x64.zip
+	source = https://github.com/Enrico204/Whatsapp-Desktop/releases/download/v0.3.12/Whatsapp-linux-x64.tar.gz
 	source = whatsapp-desktop.desktop
 	source = whatsapp-desktop.png
-	sha256sums = e7e78f62b3fbe48b80b6b60bf6e9811f6f4c73ef975bc13565c9f9f80784dfa9
+	sha256sums = a86a3d240b48c8260a9bb04d6286179622a7b93507e630270aa66cf7444ed257
 	sha256sums = 8153a94ecaff2f7466f1621571505a1f55135299cdcf4604fdfd2e7805cb94dc
 	sha256sums = c128bdf1366f26b203c2a97b1284d66bd28d63c45812a7456385e1bf4afa27e4
 
