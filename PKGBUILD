@@ -3,9 +3,9 @@
 pkgname=guile-git
 _gitname=guile
 pkgver=2.2.2.19.gcfe2279fe
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
 makedepends=('git')
 optdepends=('texinfo: for using texinfo scheme sources')
