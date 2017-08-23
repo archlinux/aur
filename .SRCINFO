@@ -8,6 +8,7 @@ pkgbase = fullprof-suite
 	groups = science
 	license = custom
 	depends = gcc-libs
+	depends = libpng12
 	optdepends = xterm: Needed to launch some programs from GUI
 	provides = fullprof
 	conflicts = fullprof
