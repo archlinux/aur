@@ -1,8 +1,8 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.1.r19.gf0ea8046
-pkgrel=2
+pkgver=0.8.1.r120.g898ba8bf
+pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe2.ai/'
@@ -13,7 +13,7 @@ depends=(
             'google-glog' 'protobuf' 'python2' 'python2-numpy' 'python2-protobuf'
         # not required but enabled in build:
             'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'openmpi' 'snappy' 'zeromq'
-            'hiredis'
+            'hiredis' 'ffmpeg'
         # python2:
             'python2-flask' 'python2-future' 'graphviz' 'python2-hypothesis'
             'python2-jupyter_core' 'python2-matplotlib' 'python2-pydot' 'python2-yaml'
@@ -133,7 +133,6 @@ build() {
         -DPYTHON_INCLUDE_DIR:PATH='/usr/include/python2.7' \
         -DPYTHON_LIBRARY:FILEPATH='/usr/lib/libpython2.7.so' \
         \
-        -DUSE_CNMEM:BOOL='OFF' \
         -DUSE_CUDA:BOOL='OFF' \
         -DUSE_GFLAGS:BOOL='ON' \
         -DUSE_GLOG:BOOL='ON' \
@@ -141,12 +140,15 @@ build() {
         -DUSE_LEVELDB:BOOL='ON' \
         -DUSE_LITE_PROTO:BOOL='OFF' \
         -DUSE_LMDB:BOOL='ON' \
+        -DUSE_METAL:BOOL='OFF' \
+        -DUSE_MOBILE_OPENGL:BOOL='OFF' \
         -DUSE_MPI:BOOL='ON' \
         -DUSE_NCCL:BOOL='OFF' \
         -DUSE_NERVANA_GPU:BOOL='OFF' \
         -DUSE_NNPACK:BOOL='ON' \
+        -DUSE_OBSERVERS:BOOL='ON' \
         -DUSE_OPENCV:BOOL='OFF' \
-        -DUSE_FFMPEG:BOOL='OFF' \
+        -DUSE_FFMPEG:BOOL='ON' \
         -DUSE_OPENMP:BOOL='ON' \
         -DUSE_REDIS:BOOL='ON' \
         -DUSE_ROCKSDB:BOOL='OFF' \
