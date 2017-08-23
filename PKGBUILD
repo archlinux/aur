@@ -24,7 +24,7 @@ source=('hon.desktop' 'license' "http://dl.heroesofnewerth.com/installers/linux/
 noextract=("HoNClient.sh")
 md5sums=('25fb5ab8c49be0f1269c79520ccee789'
          'dd2c8cd0f5bcafa25cfb583a92e21aec'
-         '06034eeafc436b3a63202e85c995077a')
+         '5b7b4e098606b1797a4eb5ffa8863188')
 
 package() {    
     #mv HoNClient-${pkgver}-${pkgrel}.sh HoNClient-${pkgver}.sh
