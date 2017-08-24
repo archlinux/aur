@@ -37,15 +37,23 @@ package_ocaml-atd() {
 	opam-installer --prefix=$pkgdir/usr \
 		--libdir $pkgdir$(ocamlfind printconf destdir) \
 		--docdir $pkgdir/usr/share/doc atd.install
+	
+	mv $pkgdir/usr/share/doc/atd $pkgdir/usr/share/doc/$pkgname
+	mkdir -p $pkgdir/usr/share/licenses/$pkgname/
+	mv $pkgdir/usr/share/doc/$pkgname/LICENSE $pkgdir/usr/share/licenses/$pkgname/
 }
 
 package_ocaml-atdgen() {
 	# options and directives overrides
 	pkgdesc="Efficient JSON serializer, deserializer and validator generator for OCaml"
-	depends=('ocaml-atd')
+	depends=('ocaml-atd' 'bash')
 
 	cd $srcdir/$_oname-$pkgver
 	opam-installer --prefix=$pkgdir/usr \
 		--libdir $pkgdir$(ocamlfind printconf destdir) \
 		--docdir $pkgdir/usr/share/doc atdgen.install
+	
+	mv $pkgdir/usr/share/doc/atdgen $pkgdir/usr/share/doc/$pkgname
+	mkdir -p $pkgdir/usr/share/licenses/$pkgname/
+	mv $pkgdir/usr/share/doc/$pkgname/LICENSE $pkgdir/usr/share/licenses/$pkgname/
 }

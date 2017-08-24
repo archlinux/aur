@@ -23,4 +23,5 @@ pkgname = ocaml-atd
 pkgname = ocaml-atdgen
 	pkgdesc = Efficient JSON serializer, deserializer and validator generator for OCaml
 	depends = ocaml-atd
+	depends = bash
 
