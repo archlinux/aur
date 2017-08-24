@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = docker
+
+[Action]
+Description = restarting docker
+When = PostTransaction
+Exec = /bin/sh -c "systemctl is-active docker.service || exit 0;systemctl daemon-reload && systemctl restart docker.service"

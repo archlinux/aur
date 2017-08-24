@@ -1,0 +1,13 @@
+pkgbase = docker-hook
+	pkgdesc = Pacman hook to restart docker
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/docker-hook
+	arch = any
+	license = CC0
+	depends = docker
+	source = docker.hook
+	md5sums = c88a2183af92372d327d6d69b37dc306
+
+pkgname = docker-hook
+
