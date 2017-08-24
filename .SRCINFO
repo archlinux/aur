@@ -1,0 +1,46 @@
+pkgbase = mupdf-seccomp
+	pkgdesc = Mupdf with seccomp filter
+	pkgver = 1.11
+	pkgrel = 1
+	url = http://mupdf.com
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = curl
+	makedepends = desktop-file-utils
+	makedepends = freetype2
+	makedepends = glfw
+	makedepends = harfbuzz
+	makedepends = jbig2dec
+	makedepends = libjpeg
+	makedepends = mesa-libgl
+	makedepends = openjpeg2
+	makedepends = openssl
+	makedepends = libxext
+	conflicts = libmupdf
+	conflicts = mupdf
+	source = https://mupdf.com/downloads/mupdf-1.11-source.tar.gz
+	source = 0001-mupdf-openjpeg.patch
+	source = mupdf.desktop
+	source = mupdf.xpm
+	source = seccomp.patch
+	sha256sums = 209474a80c56a035ce3f4958a63373a96fad75c927c7b1acdc553fc85855f00a
+	sha256sums = 01ad0365bc7be670a7a11603cb48ef89d85d804029dcf5420aa70846fe5dce4a
+	sha256sums = 70f632e22902ad4224b1d88696702b3ba4eb3c28eb7acf735f06d16e6884a078
+	sha256sums = a435f44425f5432c074dee745d8fbaeb879038ec1f1ec64f037c74662f09aca8
+	sha256sums = 7b2936c31fea61b9623eb9a40d81818d1d1dd12f029222d2722b9002e723e5b4
+
+pkgname = libmupdf-seccomp
+	pkgdesc = Library for Lightweight PDF viewer
+
+pkgname = mupdf-seccomp
+	pkgdesc = Lightweight PDF viewer with seccomp filter
+	depends = curl
+	depends = desktop-file-utils
+	depends = freetype2
+	depends = harfbuzz
+	depends = jbig2dec
+	depends = libjpeg
+	depends = openjpeg2
+	depends = openssl
+
