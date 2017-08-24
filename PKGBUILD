@@ -9,8 +9,8 @@ arch=('any')
 url="https://gitlab.com/madflow/shrr"
 license=(MIT)
 groups=()
-depends=('python>=3.3' 'python-flask' 'python-netifaces' 'python-colorama')
-makedepends=('python-setuptools' 'python-pip')
+depends=('python>=3.3' 'python-flask' 'python-netifaces' 'python-colorama' 'python-qrcode')
+makedepends=('python-setuptools' 'python-pip' 'nodejs', 'yarn')
 optdepends=()
 provides=()
 conflicts=()
@@ -19,11 +19,12 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://gitlab.com/madflow/shrr/repository/0e915c059ecd5012d8a823292cc3a57e020196b9/archive.tar.gz)
+source=(https://gitlab.com/madflow/shrr/repository/778ca99a109ccf69cc4c78786ae5eec501d83afe/archive.tar.gz)
 noextract=()
-md5sums=(6b3771a78f96229d82d8af3029cb0007)
+md5sums=(aaa79beceeb65385b49480a2d12ee285)
 
 package() {
-  cd "$srcdir/$pkgname-0e915c059ecd5012d8a823292cc3a57e020196b9-0e915c059ecd5012d8a823292cc3a57e020196b9"
+  cd "$srcdir/$pkgname-778ca99a109ccf69cc4c78786ae5eec501d83afe-778ca99a109ccf69cc4c78786ae5eec501d83afe"
+  python setup.py yarn run build:prod
   python setup.py install --root="$pkgdir/" --optimize=1
 }

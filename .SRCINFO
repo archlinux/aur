@@ -7,12 +7,15 @@ pkgbase = shrr
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-pip
+	makedepends = nodejs,
+	makedepends = yarn
 	depends = python>=3.3
 	depends = python-flask
 	depends = python-netifaces
 	depends = python-colorama
-	source = https://gitlab.com/madflow/shrr/repository/0e915c059ecd5012d8a823292cc3a57e020196b9/archive.tar.gz
-	md5sums = 6b3771a78f96229d82d8af3029cb0007
+	depends = python-qrcode
+	source = https://gitlab.com/madflow/shrr/repository/778ca99a109ccf69cc4c78786ae5eec501d83afe/archive.tar.gz
+	md5sums = aaa79beceeb65385b49480a2d12ee285
 
 pkgname = shrr
 
