@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenNebula noVNC Server
+After=syslog.target network.target remote-fs.target
+Before=opennebula-sunstone.service
+
+[Service]
+User=oneadmin
+Group=cloud
+Type=forking
+
+ExecStart=/usr/bin/novnc-server start
+PIDFile=/var/lock/one/.novnc.lock
+
+[Install]
+WantedBy=multi-user.target

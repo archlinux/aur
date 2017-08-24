@@ -1,6 +1,11 @@
+2017-08-24 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
+
+  * 5.4.0-3:
+  Drop the old service units in favor of the upstream versions
+
 2017-08-13 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
 
-  * 5.4.0
+  * 5.4.0-1:
   Takeover and upgrade to current release (5.4.0)
 
 2015-05-05 Jason St. John <jstjohn .. purdue . edu>

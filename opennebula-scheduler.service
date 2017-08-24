@@ -1,5 +1,5 @@
 [Unit]
-Description=OpenNebula Flow Service
+Description=OpenNebula Cloud Scheduler Daemon
 After=syslog.target network.target remote-fs.target opennebula.service
 BindsTo=opennebula.service
 
@@ -8,9 +8,9 @@ User=oneadmin
 Group=cloud
 Type=simple
 
-ExecStart=/usr/bin/ruby /usr/lib/one/ruby/cloud/econe/econe-server.rb
+ExecStart=/usr/bin/mm_sched
 ExecStop=/bin/kill -TERM $MAINPID
-PIDFile=/var/run/one/oneflow.pid
+PIDFile=/var/run/one/sched.pid
 Restart=on-abnormal
 
 [Install]

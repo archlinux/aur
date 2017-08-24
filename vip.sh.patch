@@ -1,11 +1,17 @@
 --- share/hooks/raft/vip.sh
 +++ share/hooks/raft/vip.sh
-@@ -17,7 +17,7 @@ fi
+@@ -16,11 +16,14 @@
+
  case $ACTION in
  leader)
++    logger -t opennebula-raft -p alert "Taking over floating IP $IP on $INTERFACE"
      sudo ip address add $IP dev $INTERFACE
 -    arping -c 5 -A -I $INTERFACE ${IP%%/*}
-+    arping -c 5 -U -I $INTERFACE ${IP%%/*}
++    sudo arping -c 3 -U -I $INTERFACE ${IP%%/*}
++    sudo arping -c 3 -UA -I $INTERFACE ${IP%%/*}
      ;;
 
  follower)
++    logger -t opennebula-raft -p alert "Giving up floating IP $IP on $INTERFACE"
+     sudo ip address del $IP dev $INTERFACE
+     ;;

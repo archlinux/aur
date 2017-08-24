@@ -1,15 +1,16 @@
 [Unit]
 Description=OpenNebula econe Server
-After=network.target local-fs.target remote-fs.target opennebula.service
-Requires=opennebula.service
+After=syslog.target network.target remote-fs.target opennebula.service
+BindsTo=opennebula.service
 
 [Service]
 User=oneadmin
 Group=cloud
-Type=forking
-PermissionsStartOnly=true
-ExecStart=/usr/bin/econe-server start
-ExecStop=/usr/bin/econe-server stop
+Type=simple
+
+ExecStart=/usr/bin/ruby /usr/lib/one/ruby/cloud/econe/econe-server.rb
+ExecStop=/bin/kill -TERM $MAINPID
+PIDFile=/var/run/one/econe-server.pid
 Restart=on-abnormal
 
 [Install]

@@ -1,15 +1,16 @@
 [Unit]
-Description=OpenNebula onegate Server
-After=network.target local-fs.target remote-fs.target opennebula.service
-Requires=opennebula.service
+Description=OpenNebula Gate Service
+After=syslog.target network.target remote-fs.target opennebula.service
+BindsTo=opennebula.service
 
 [Service]
 User=oneadmin
 Group=cloud
-Type=forking
-PermissionsStartOnly=true
-ExecStart=/usr/bin/onegate-server start
-ExecStop=/usr/bin/onegate-server stop
+Type=simple
+
+ExecStart=/usr/bin/ruby /usr/lib/one/onegate/onegate-server.rb
+ExecStop=/bin/kill -TERM $MAINPID
+PIDFile=/var/run/one/onegate.pid
 Restart=on-abnormal
 
 [Install]

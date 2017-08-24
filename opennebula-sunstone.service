@@ -1,15 +1,17 @@
 [Unit]
 Description=OpenNebula Web Interface
-After=network.target local-fs.target remote-fs.target opennebula.service
-Requires=opennebula.service
+After=syslog.target network.target remote-fs.target opennebula.service opennebula-novnc.service
+BindsTo=opennebula.service
 
 [Service]
 User=oneadmin
 Group=cloud
-Type=forking
+Type=simple
 PermissionsStartOnly=true
-ExecStart=/usr/bin/sunstone-server start
-ExecStop=/usr/bin/sunstone-server stop
+
+ExecStart=/usr/bin/ruby /usr/lib/one/sunstone/sunstone-server.rb
+ExecStartPre=/usr/bin/logrotate -s /tmp/logrotate.state -f /etc/logrotate.d/opennebula
+PIDFile=/var/run/one/sunstone.pid
 Restart=on-abnormal
 
 [Install]
