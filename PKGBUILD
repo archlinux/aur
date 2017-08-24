@@ -3,8 +3,9 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-intel-git
+_pkgname=xf86-video-intel
 _branch=master
-pkgver=2.99.917+777+g6babcf15
+pkgver=2.99.917+781+gc8990575
 pkgrel=1
 epoch=1
 arch=(i686 x86_64)
@@ -27,10 +28,9 @@ replaces=('xf86-video-intel-uxa' 'xf86-video-intel-sna' 'xf86-video-intel')
 provides=('xf86-video-intel-uxa' 'xf86-video-intel-sna' 'xf86-video-intel')
 conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24'
            'xf86-video-intel-sna' 'xf86-video-intel-uxa' 'xf86-video-i810' 'xf86-video-intel-legacy'
-           'xf86-video-intel')
+           "${_pkgname}")
 groups=('xorg-drivers')
-#source=(${url}/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2)
-source=("$pkgname::git://anongit.freedesktop.org/xorg/driver/xf86-video-intel#branch=${_branch}")
+source=("$pkgname::git://anongit.freedesktop.org/xorg/driver/${_pkgname}#branch=${_branch}")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -45,6 +45,14 @@ prepare() {
 
 build() {
   cd $pkgname
+
+  # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
+  # With them, module fail to load with undefined symbol.
+  # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
+  export CFLAGS=${CFLAGS/-fno-plt}
+  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  export LDFLAGS=${LDFLAGS/,-z,now}
+
   ./configure --prefix=/usr \
     --libexecdir=/usr/lib \
     --with-default-dri=3
