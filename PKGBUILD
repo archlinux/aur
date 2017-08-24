@@ -1,4 +1,4 @@
-# Maintainer: DATSD <dastudiodirector at gmail dot com>
+# Maintainer: DATSD <DAStudio *dot* 71e6fd52 *at* gmail *dot* com>
 _basename=avhttp
 pkgname=${_basename}-git
 pkgver=2.9.9.r99
@@ -9,8 +9,8 @@ url='http://avplayer.org/avhttp.html'
 license=('custom')
 depends=('boost')
 optdepends=(
-  'zlib: gzip support'
-  'openssl: https support'
+'zlib: gzip support'
+'openssl: https support'
 )
 makedepends=('cmake' 'git')
 provides=("${_basename}=${pkgver}")
@@ -20,33 +20,27 @@ sha256sums=('SKIP')
 
 pkgver()
 {
-	cd "${srcdir}/${_basename}"
-	git describe --long --tags | sed 's/\([^-]*\)-g.*/r\1/;s/-/./g' | cut -c2-
+  cd "${srcdir}/${_basename}"
+  git describe --long --tags | sed 's/\([^-]*\)-g.*/r\1/;s/-/./g' | cut -c2-
 }
 
 build()
 {
-	cd "${srcdir}/${_basename}"
-	
-	if [[ -d build ]]; then
-		rm -rf build
-	fi
-	mkdir -p build && cd build
+  cd "${srcdir}/${_basename}"
 
-	cmake -DCMAKE_INSTALL_PREFIX="/usr" ..
-	make
+  rm -rf build
+  mkdir build
+  cd build
+
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" ..
+  make
 }
 
 package()
 {
-	cd "${srcdir}/${_basename}/build"
-	make install DESTDIR="${pkgdir}/"
+  cd "${srcdir}/${_basename}/build"
+  make install DESTDIR="${pkgdir}/"
 
-	# Install the documentation
-	install -D -m644 "${srcdir}/${_basename}/README.md" \
-					 "${pkgdir}/usr/share/doc/${_basename}/README"
-
-	# Install the license
-	install -D -m644 "${srcdir}/${_basename}/LICENSE" \
-					 "${pkgdir}/usr/share/licenses/${_basename}/LICENSE"
+  install -D -m644 "${srcdir}/${_basename}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${_basename}/LICENSE"
 }
