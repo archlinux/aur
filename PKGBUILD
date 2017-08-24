@@ -1,6 +1,6 @@
 # Maintainer:   Razer <razer[AT]neuf[DOT]fr>
 pkgname=rf24
-pkgver='1.2.0'
+pkgver='1.3.0'
 pkgrel=1
 pkgdesc='Linux support for RF24 radio modules'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,10 +11,6 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/RF24"
-  if [ ! -e /dev/spidev0.0 ] && [ -e /dev/spidev1.0 ]; then
-    sed 's/spidev0.0/spidev1.0/' utility/SPIDEV/spi.cpp > utility/SPIDEV/spi.cpp.new
-    mv utility/SPIDEV/spi.cpp.new utility/SPIDEV/spi.cpp
-  fi
   ./configure --driver=SPIDEV --prefix="$pkgdir/usr" --ldconfig=''
 }
 

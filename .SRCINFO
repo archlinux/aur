@@ -1,6 +1,6 @@
 pkgbase = rf24
 	pkgdesc = Linux support for RF24 radio modules
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = http://tmrh20.github.io/RF24/
 	arch = i686
