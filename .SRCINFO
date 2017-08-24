@@ -1,7 +1,7 @@
 pkgbase = freedoko
-	pkgdesc = Free version of the german card game Doppelkopf
+	pkgdesc = Free implementation of the card game Doppelkopf
 	pkgver = 0.7.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://free-doko.sourceforge.net/en/FreeDoko.html
 	arch = i686
 	arch = x86_64
@@ -14,9 +14,15 @@ pkgbase = freedoko
 	depends = gnet
 	depends = freealut
 	source = https://downloads.sourceforge.net/free-doko/FreeDoko_0.7.16.src.zip
-	source = freedoko-0.7.16-archlinux.patch
+	source = freedoko-archlinux.patch
 	sha256sums = 6fdcee22b3e9a76d44d8c3a582d068452290ec4c24f8f2f9e4498adf4daf40af
-	sha256sums = 329b77525f18d3c1837b78d1b4bd1c8446afb9cd530458345e23a39423f9598b
+	sha256sums = af53095c0de32ee01cec8eeb8e34b722b206de5b5e13bf8553bf2cf91ef91bab
 
 pkgname = freedoko
+	optdepends = freedoko-docs: HTML manual
+
+pkgname = freedoko-docs
+	pkgdesc = HTML manual for FreeDoko
+	arch = any
+	depends = 
 

@@ -1,6 +1,6 @@
 diff -ru FreeDoko_0.7.16-orig/Makefile FreeDoko_0.7.16/Makefile
---- FreeDoko_0.7.16-orig/Makefile	2017-01-10 21:25:58.000000000 +0100
-+++ FreeDoko_0.7.16/Makefile	2017-01-11 20:14:15.784486029 +0100
+--- FreeDoko_0.7.16-orig/Makefile	2017-08-24 17:28:46.103502383 +0200
++++ FreeDoko_0.7.16/Makefile	2017-08-24 17:28:23.150516129 +0200
 @@ -78,8 +78,12 @@
  .PHONY: compile
  compile:
@@ -59,8 +59,8 @@ diff -ru FreeDoko_0.7.16-orig/Makefile FreeDoko_0.7.16/Makefile
  .PHONY: uninstall
  uninstall :
 diff -ru FreeDoko_0.7.16-orig/Makefile.install.directories FreeDoko_0.7.16/Makefile.install.directories
---- FreeDoko_0.7.16-orig/Makefile.install.directories	2017-01-10 21:25:58.000000000 +0100
-+++ FreeDoko_0.7.16/Makefile.install.directories	2017-01-11 20:11:16.054912482 +0100
+--- FreeDoko_0.7.16-orig/Makefile.install.directories	2017-08-24 17:28:46.103502383 +0200
++++ FreeDoko_0.7.16/Makefile.install.directories	2017-08-24 17:28:23.150516129 +0200
 @@ -4,13 +4,13 @@
  # the different directories for the files
  
@@ -104,8 +104,8 @@ diff -ru FreeDoko_0.7.16-orig/Makefile.install.directories FreeDoko_0.7.16/Makef
  
  # release
 diff -ru FreeDoko_0.7.16-orig/bin/FreeDoko.desktop FreeDoko_0.7.16/bin/FreeDoko.desktop
---- FreeDoko_0.7.16-orig/bin/FreeDoko.desktop	2017-01-10 21:25:58.000000000 +0100
-+++ FreeDoko_0.7.16/bin/FreeDoko.desktop	2017-01-11 20:10:07.293020016 +0100
+--- FreeDoko_0.7.16-orig/bin/FreeDoko.desktop	2017-08-24 17:28:46.106835666 +0200
++++ FreeDoko_0.7.16/bin/FreeDoko.desktop	2017-08-24 17:28:23.153849412 +0200
 @@ -6,7 +6,7 @@
  Comment=game of Doppelkopf
  Comment[de]=Doppelkopf-Spiel
@@ -116,8 +116,8 @@ diff -ru FreeDoko_0.7.16-orig/bin/FreeDoko.desktop FreeDoko_0.7.16/bin/FreeDoko.
  Icon=FreeDoko
  Categories=Application;Game;CardGame;
 diff -ru FreeDoko_0.7.16-orig/data/Makefile FreeDoko_0.7.16/data/Makefile
---- FreeDoko_0.7.16-orig/data/Makefile	2017-01-10 21:25:58.000000000 +0100
-+++ FreeDoko_0.7.16/data/Makefile	2017-01-11 20:10:31.185852514 +0100
+--- FreeDoko_0.7.16-orig/data/Makefile	2017-08-24 17:28:46.106835666 +0200
++++ FreeDoko_0.7.16/data/Makefile	2017-08-24 17:28:23.153849412 +0200
 @@ -40,8 +40,7 @@
  	for d in cardsets iconsets backgrounds sounds; do \
  	  $(MAKE) -C $$d install; \
@@ -129,8 +129,8 @@ diff -ru FreeDoko_0.7.16-orig/data/Makefile FreeDoko_0.7.16/data/Makefile
  
  ifeq ($(SHELLTYPE), sh)
 diff -ru FreeDoko_0.7.16-orig/doc/Makefile FreeDoko_0.7.16/doc/Makefile
---- FreeDoko_0.7.16-orig/doc/Makefile	2017-01-10 21:25:58.000000000 +0100
-+++ FreeDoko_0.7.16/doc/Makefile	2017-01-11 20:10:50.722109807 +0100
+--- FreeDoko_0.7.16-orig/doc/Makefile	2017-08-24 17:28:46.406831142 +0200
++++ FreeDoko_0.7.16/doc/Makefile	2017-08-24 17:28:23.153849412 +0200
 @@ -36,8 +36,7 @@
  	fi
  	cp -a Bugs GPL Roadmap hpux.required_libs-ia64.txt $(DESTDIR)$(HELP_DIRECTORY)/
@@ -140,4 +140,15 @@ diff -ru FreeDoko_0.7.16-orig/doc/Makefile FreeDoko_0.7.16/doc/Makefile
 +	chmod -R o-rwx,g+rX,g-w,+rX $(DESTDIR)$(HELP_DIRECTORY)
  	cd $(DESTDIR)$(DATA_DIRECTORY) && ln -sf $(HELP_DIRECTORY)/ doc
  endif
+ 
+diff -ru FreeDoko_0.7.16-orig/src/Makefile FreeDoko_0.7.16/src/Makefile
+--- FreeDoko_0.7.16-orig/src/Makefile	2017-08-24 17:28:46.523496049 +0200
++++ FreeDoko_0.7.16/src/Makefile	2017-08-24 17:29:56.515781593 +0200
+@@ -252,6 +252,7 @@
+ 	  $(INCLUDE_ALL) \
+ 	  $(LIBS_ALL) \
+ 	  $(CXXFLAGS) \
++	  $(LDFLAGS) \
+ 	  -o $@
+ 	@echo "$(PROGRAM) compiled successfully"
  
