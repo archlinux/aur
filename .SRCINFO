@@ -1,6 +1,6 @@
 pkgbase = bcoin-git
 	pkgdesc = An alternative implementation of the bitcoin protocol, written in node.js.
-	pkgver = 1.0.0.beta.12.100.gf0b43764
+	pkgver = 1.0.0.beta.14.202.gc54ba4c5
 	pkgrel = 1
 	url = http://bcoin.io/
 	arch = i686
