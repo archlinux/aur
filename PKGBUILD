@@ -8,23 +8,18 @@ pkgdesc="Share files via HTTP"
 arch=('any')
 url="https://gitlab.com/madflow/shrr"
 license=(MIT)
-groups=()
 depends=('python>=3.3' 'python-flask' 'python-netifaces' 'python-colorama' 'python-qrcode')
 makedepends=('python-setuptools' 'python-pip' 'nodejs' 'yarn')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=(https://gitlab.com/madflow/shrr/repository/778ca99a109ccf69cc4c78786ae5eec501d83afe/archive.tar.gz)
-noextract=()
-md5sums=(aaa79beceeb65385b49480a2d12ee285)
+source=(https://gitlab.com/madflow/shrr/repository/52fb65d80110496a86512f0932818954f7bfe5d1/archive.tar.gz)
+md5sums=(8b4065b281093068516cf87ec695d420)
+
+build() {
+  cd "$srcdir/$pkgname-52fb65d80110496a86512f0932818954f7bfe5d1-52fb65d80110496a86512f0932818954f7bfe5d1"
+  python setup.py yarn install --dev --emoji
+  python setup.py yarn run build:prod
+}
 
 package() {
-  cd "$srcdir/$pkgname-778ca99a109ccf69cc4c78786ae5eec501d83afe-778ca99a109ccf69cc4c78786ae5eec501d83afe"
-  python setup.py yarn run build:prod
+  cd "$srcdir/$pkgname-52fb65d80110496a86512f0932818954f7bfe5d1-52fb65d80110496a86512f0932818954f7bfe5d1"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
