@@ -1,0 +1,20 @@
+pkgbase = lib32-openni2
+	pkgdesc = Open source SDK used for the development of 3D sensing middleware libraries and applications
+	pkgver = 2.2beta2
+	pkgrel = 6
+	url = https://github.com/occipital/OpenNI2
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = doxygen
+	makedepends = java-environment
+	makedepends = lib32-freeglut
+	depends = openni2
+	depends = lib32-glu
+	source = https://github.com/occipital/OpenNI2/archive/2.2-beta2.tar.gz
+	source = libopenni2.pc
+	md5sums = 3f2cd6a64776821fb2837c442539f65b
+	md5sums = SKIP
+
+pkgname = lib32-openni2
+
