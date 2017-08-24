@@ -13,8 +13,8 @@ url="http://zbar.sourceforge.net/"
 license=('LGPL')
 depends=('lib32-imagemagick' 'lib32-libxv' 'lib32-python2' 'lib32-gtk2' 'pygtk' 'lib32-v4l-utils')
 makedepends=()
-conflicts=('zbar-gtk' 'zbar-qt')
-provides=("zbar-gtk=$pkgver" "zbar-qt=$pkgver")
+conflicts=()
+provides=()
 optdepends=('lib32-qt4: for libzbarqt')
 source=("http://downloads.sourceforge.net/project/zbar/zbar/$pkgver/zbar-$pkgver.tar.bz2"
         v4l1.patch)
