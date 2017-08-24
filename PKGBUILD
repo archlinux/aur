@@ -15,7 +15,7 @@ groups=()
 depends=(curl log4cxx popt sqlite)
 makedepends=('protobuf' 'swiften>=3' 'libpqxx' 'libpurple' 'avahi' 'boost'
 'cmake' 'cppunit' 'expat' 'libcommuni' 'libidn' 'sqlite' 'log4cxx' 'libevent'
-'libmariadbclient' 'popt' 'libev' 'dbus-glib' 'curl')
+'libmariadbclient' 'popt' 'libev' 'dbus-glib' 'curl' 'qt4')
 checkdepends=()
 optdepends=('swiften>=3: XMPP backend support'
             'libpqxx: PostgreSQL support'
