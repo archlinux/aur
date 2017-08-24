@@ -15,5 +15,5 @@ sha256sums_x86_64=('6427eb329ef045489440d73ee2c4c43dd14900e1ee88533aef13d5b4582d
 
 package() {
     cd "$pkgdir"
-    tar xf "$srcdir/data.tar.xz"
+    tar xf "$srcdir/data.tar.gz"
 }
