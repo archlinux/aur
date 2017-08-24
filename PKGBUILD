@@ -1,11 +1,12 @@
-# Maintainer: David Manouchehri <manouchehri@riseup.net>
+# Maintainer: David Manouchehri
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 # Contributor: veox <veox at wemakethings dot net>
+# Contributor: megamoth
 
 _gitname='pulseview'
 pkgname="${_gitname}-git"
-pkgver=0.3.0.r86.g55547a4
-pkgrel=1
+pkgver=0.3.0.r436.g753c8f0
+pkgrel=2
 pkgdesc="A Qt based logic analyzer GUI for sigrok. (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="http://sigrok.org/wiki/Main_Page"
@@ -33,5 +34,5 @@ package() {
   cd "${srcdir}/${_gitname}"
 
   make DESTDIR="${pkgdir}" PREFIX=/usr install
-  install -Dm644 contrib/pulseview.desktop "${pkgdir}/usr/share/applications/pulseview.desktop"
+  install -Dm644 contrib/org.sigrok.PulseView.desktop "${pkgdir}/usr/share/applications/pulseview.desktop"
 }
