@@ -4,8 +4,8 @@
 #	- moved optional depenceses from depends to optdepends
 
 pkgname=spectrum2
-pkgver=2.0.3
-pkgrel=5
+pkgver=2.0.5
+pkgrel=1
 #epoch=
 pkgdesc="Create C++ transports easily"
 arch=('any')
@@ -33,7 +33,7 @@ install=
 changelog=
 source=("https://github.com/hanzz/$pkgname/archive/$pkgver.tar.gz"
         'spectrum2.service')
-sha256sums=('694172dfbf62d7de19bbcc06ba11113d238c86e36d39297b2f80d4b277e03933'
+sha256sums=('28bfa04c4220fd29fada0a9551798177a07bc1fcd627d05eafb05db31a6799cf'
             '8b95ddcf90449dcd0dec111276c69d04a92d09a0f9e1815009b2179a8050c9d1')
 noextract=()
 validpgpkeys=()
