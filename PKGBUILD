@@ -2,16 +2,16 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel
-pkgver=2.9.4
-pkgrel=2
+pkgver=2.9.6
+pkgrel=1
 pkgdesc="GNU Image Manipulation Program (Development version)"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org/"
 license=('GPL' 'LGPL')
 depends=('pygtk' 'lcms' 'libxpm' 'libwmf' 'libxmu' 'librsvg' 'libmng' 'dbus-glib'
-         'libexif' 'gegl' 'jasper' 'desktop-file-utils' 'hicolor-icon-theme' 'babl'
-         'openexr' 'libgudev' 'libgexiv2' 'libmypaint>=1.3.0')
-makedepends=('intltool' 'poppler-glib' 'alsa-lib' 'iso-codes' 'curl' 'ghostscript')
+         'libexif' 'gegl>=0.3.20' 'jasper' 'desktop-file-utils' 'hicolor-icon-theme' 'babl>=0.1.30'
+         'openexr' 'libgudev' 'libgexiv2' 'libmypaint>=1.3.0' 'libwebp' 'aalib')
+makedepends=('intltool' 'poppler-glib' 'alsa-lib' 'iso-codes' 'curl' 'ghostscript' 'gtk-doc')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
             'poppler-glib: for pdf support'
             'alsa-lib: for MIDI event controller module'
@@ -21,10 +21,11 @@ options=('!makeflags')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=$pkgver")
 source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2 linux.gpl)
-sha256sums=('c13ac540fd0bd566d7bdd404afe8a04ec0cb1e547788995cd4e8b218c1057b8a'
+sha256sums=('b46f31d822a33ab416dcb15e33e10b5b98430814fa34f5ea4036230e845dfc9f'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
 prepare() {
+  export PYTHON=/usr/bin/python2
   cd "${srcdir}/${_pkgname}-${pkgver}"
   _mypaintver=$( ls /usr/lib/libmypaint-*.so | grep -o -E '\-[0-9]+(\.[0-9]+)*' | head -1 )
   sed -i "s:\(libmypaint\)\( >= libmypaint_required_version\):\1${_mypaintver}\2:g" configure.ac
@@ -37,15 +38,21 @@ prepare() {
 }
   
 build() {
+  export PYTHON=/usr/bin/python2
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  PYTHON=/usr/bin/python2 ./configure --prefix=/usr --sysconfdir=/etc \
-    --enable-mp --enable-gimp-console --enable-gimp-remote \
-    --enable-python --with-gif-compression=lzw --with-libcurl \
-    --without-aa --without-hal --without-gvfs --without-gnomevfs
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --enable-mp \
+    --enable-gimp-console \
+    --enable-gimp-remote \
+    --enable-python \
+    --enable-gtk-doc
   make
 }
 
 package() {
+  export PYTHON=/usr/bin/python2
   cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -D -m644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.0/palettes/Linux.gpl"
