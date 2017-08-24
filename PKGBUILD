@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-nginx'
-pkgver='0.25'
+pkgver='0.26'
 pkgrel='1'
 pkgdesc="Data-driven test scaffold for Nginx C module and OpenResty Lua library development"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl-http-message>=0' 'perl-list-moreutils>=0' 'perl-test-base>=0' 'pe
 makedepends=()
 url='https://metacpan.org/release/Test-Nginx'
 source=("http://search.cpan.org/CPAN/authors/id/A/AG/AGENT/Test-Nginx-$pkgver.tar.gz")
-md5sums=('0e8ffc428748277c656b55d24eeb1a65')
-sha512sums=('2a78dd22fa6661314e525bd9ae5bccca0f287713064a2e934422465b334adc4226a33a773d23606b38f1ea7f349fa6f233c2aade18e885553050b532adcfbedc')
+md5sums=('a5d8e40a4c0b495c32ccf6beae109c13')
+sha512sums=('8f5f244d98a20e9a125b2fb56753e77eb3f4a3390f01d46e9e565ef4cb2667725421322cda7ac3933f1fcb6f7863477769c18797cbe7b3eb3f7398590593fd01')
 _distdir="Test-Nginx-$pkgver"
 
 build() {
