@@ -2,14 +2,14 @@
 
 pkgname=dreamchess-git
 _pkgname=dreamchess
-pkgver=365.55ffa1b
-pkgrel=2
+pkgver=396.5f6cc6c
+pkgrel=1
 pkgdesc="DreamChess - OpenGL Chess Game"
 arch=('i686' 'x86_64')
 url="https://github.com/dreamchess/dreamchess"
 license=('GPL')
 
-depends=(mxml sdl_mixer sdl_image glew hicolor-icon-theme)
+depends=(mxml sdl2_mixer sdl2_image glew hicolor-icon-theme)
 makedepends=(git cmake)
 
 source=('git://github.com/dreamchess/dreamchess.git')
