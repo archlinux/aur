@@ -7,7 +7,7 @@ pkgbase = shrr
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-pip
-	makedepends = nodejs,
+	makedepends = nodejs
 	makedepends = yarn
 	depends = python>=3.3
 	depends = python-flask
