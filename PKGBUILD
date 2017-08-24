@@ -1,7 +1,7 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 _pkgname=desktop
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('npm')
 source=("https://github.com/standardnotes/desktop/archive/v$pkgver.tar.gz"
         'standardnotes-desktop.desktop'
         'standardnotes-desktop.js')
-sha256sums=('7d55443e943595f1e1031a87783e105bebc1c7fca58e4b293258dbfc3f8b604d'
+sha256sums=('88e9f32cbf35f654cbe6ef220d8b19cf0d53198f5380b91720976b0b375899b0'
             'eadf8fe7d871557d733db53fdaefd57fd7c06f21dcaa99a72b3dd6b768d7d969'
             '16934b1dc1d88d668dd657e991cc58c7292a398fec3aab193478e9988882673d')
 
