@@ -3,7 +3,7 @@
 # Contributor: Daniel Oliveira <psykond@gmail.com>
 pkgname=guile-gnome-platform-git
 _pkgname=guile-gnome-platform
-pkgver=2.16.4.r0.g646ced9
+pkgver=2.16.5.r0.gf775d62
 pkgrel=1
 epoch=1
 pkgdesc="Binding between Guile Scheme and the Gnome stack of libraries. (fe. Pango, GTK+, Cairo, GStreamer, Glade, GtkSourceView and else). To build wrappers for GTK+ and higher in the stack, you will first need Guile-Cairo."
