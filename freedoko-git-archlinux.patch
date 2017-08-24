@@ -1,6 +1,6 @@
-diff -ru --no-dereference FreeDoko-orig/Makefile FreeDoko/Makefile
---- FreeDoko-orig/Makefile	2017-07-13 16:49:07.085302628 +0200
-+++ FreeDoko/Makefile	2017-07-13 16:51:38.287585354 +0200
+diff -ru --no-dereference -x .git FreeDoko-orig/Makefile FreeDoko/Makefile
+--- FreeDoko-orig/Makefile	2017-08-24 17:40:29.768795447 +0200
++++ FreeDoko/Makefile	2017-08-24 17:41:13.635388245 +0200
 @@ -78,8 +78,12 @@
  .PHONY: compile
  compile:
@@ -58,9 +58,9 @@ diff -ru --no-dereference FreeDoko-orig/Makefile FreeDoko/Makefile
  
  .PHONY: uninstall
  uninstall :
-diff -ru --no-dereference FreeDoko-orig/Makefile.install.directories FreeDoko/Makefile.install.directories
---- FreeDoko-orig/Makefile.install.directories	2017-07-13 16:49:07.085302628 +0200
-+++ FreeDoko/Makefile.install.directories	2017-07-13 16:50:26.458118481 +0200
+diff -ru --no-dereference -x .git FreeDoko-orig/Makefile.install.directories FreeDoko/Makefile.install.directories
+--- FreeDoko-orig/Makefile.install.directories	2017-08-24 17:40:29.768795447 +0200
++++ FreeDoko/Makefile.install.directories	2017-08-24 17:41:13.642054898 +0200
 @@ -4,14 +4,14 @@
  # the different directories for the files
  
@@ -107,9 +107,9 @@ diff -ru --no-dereference FreeDoko-orig/Makefile.install.directories FreeDoko/Ma
  
  
  # release
-diff -ru --no-dereference FreeDoko-orig/bin/FreeDoko.desktop FreeDoko/bin/FreeDoko.desktop
---- FreeDoko-orig/bin/FreeDoko.desktop	2017-07-13 16:49:07.085302628 +0200
-+++ FreeDoko/bin/FreeDoko.desktop	2017-07-13 16:49:19.431888615 +0200
+diff -ru --no-dereference -x .git FreeDoko-orig/bin/FreeDoko.desktop FreeDoko/bin/FreeDoko.desktop
+--- FreeDoko-orig/bin/FreeDoko.desktop	2017-08-24 17:40:29.772128776 +0200
++++ FreeDoko/bin/FreeDoko.desktop	2017-08-24 17:41:13.642054898 +0200
 @@ -6,7 +6,7 @@
  Comment=game of Doppelkopf
  Comment[de]=Doppelkopf-Spiel
@@ -119,9 +119,9 @@ diff -ru --no-dereference FreeDoko-orig/bin/FreeDoko.desktop FreeDoko/bin/FreeDo
  Path=
  Icon=FreeDoko
  Categories=Application;Game;CardGame;
-diff -ru --no-dereference FreeDoko-orig/data/Makefile FreeDoko/data/Makefile
---- FreeDoko-orig/data/Makefile	2017-07-13 16:49:07.781964743 +0200
-+++ FreeDoko/data/Makefile	2017-07-13 16:49:49.281693559 +0200
+diff -ru --no-dereference -x .git FreeDoko-orig/data/Makefile FreeDoko/data/Makefile
+--- FreeDoko-orig/data/Makefile	2017-08-24 17:40:32.352125362 +0200
++++ FreeDoko/data/Makefile	2017-08-24 17:41:13.642054898 +0200
 @@ -32,8 +32,7 @@
  	for d in cardsets iconsets backgrounds sounds; do \
  	  $(MAKE) -C $$d install; \
@@ -132,9 +132,9 @@ diff -ru --no-dereference FreeDoko-orig/data/Makefile FreeDoko/data/Makefile
  endif
  
  ifeq ($(SHELLTYPE), sh)
-diff -ru --no-dereference FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefile
---- FreeDoko-orig/doc/Makefile	2017-07-13 16:49:08.661958992 +0200
-+++ FreeDoko/doc/Makefile	2017-07-13 16:50:05.354921861 +0200
+diff -ru --no-dereference -x .git FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefile
+--- FreeDoko-orig/doc/Makefile	2017-08-24 17:40:35.312121299 +0200
++++ FreeDoko/doc/Makefile	2017-08-24 17:41:13.642054898 +0200
 @@ -34,8 +34,7 @@
  	fi
  	cp -a Bugs GPL Roadmap hpux.required_libs-ia64.txt $(DESTDIR)$(HELP_DIRECTORY)/
@@ -144,4 +144,15 @@ diff -ru --no-dereference FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefile
 +	chmod -R o-rwx,g+rX,g-w,+rX $(DESTDIR)$(HELP_DIRECTORY)
  	cd $(DESTDIR)$(DATA_DIRECTORY) && ln -sf $(HELP_DIRECTORY)/ doc
  endif
+ 
+diff -ru --no-dereference -x .git FreeDoko-orig/src/Makefile FreeDoko/src/Makefile
+--- FreeDoko-orig/src/Makefile	2017-08-24 17:40:38.752116381 +0200
++++ FreeDoko/src/Makefile	2017-08-24 17:48:59.716407508 +0200
+@@ -232,6 +232,7 @@
+ 	  $(INCLUDE_ALL) \
+ 	  $(LIBS_ALL) \
+ 	  $(CXXFLAGS) \
++	  $(LDFLAGS) \
+ 	  -o $@
+ 	@echo "$(PROGRAM) compiled successfully"
  
