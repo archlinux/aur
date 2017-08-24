@@ -2,7 +2,7 @@
 
 pkgname=oce
 pkgver=0.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open CASCADE Community Edition: patches/improvements/experiments contributed by users over the official Open CASCADE library."
 url="https://github.com/tpaviot/oce"
 arch=('i686' 'x86_64')
@@ -13,6 +13,10 @@ source=(https://github.com/tpaviot/${pkgname}/archive/OCE-${pkgver}.tar.gz 99_oc
 md5sums=('6dfd68e459e2c62387579888a867281f'
          '606e400a97d9947459e4de2eca65f04c'
          '167a9f5c94a16d7855c3ac99e34a4506')
+
+prepare() {
+  sed -i 's,  #include <xlocale.h>,  #include <locale.h>,g' "oce-OCE-${pkgver}/src/Standard/Standard_CLocaleSentry.hxx"
+}
 
 build() {
   cd oce-OCE-${pkgver}
