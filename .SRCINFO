@@ -1,7 +1,7 @@
 pkgbase = telepresence
 	pkgdesc = Local development against a remote Kubernetes or OpenShift cluster - http://www.telepresence.io
-	pkgver = 0.63
-	pkgrel = 5
+	pkgver = 0.64
+	pkgrel = 6
 	url = https://github.com/datawire/telepresence
 	arch = any
 	license = Apache
@@ -12,7 +12,7 @@ pkgbase = telepresence
 	depends = socat
 	depends = sshfs
 	depends = torsocks
-	source = https://github.com/datawire/telepresence/archive/0.63.tar.gz
+	source = https://github.com/datawire/telepresence/archive/0.64.tar.gz
 	md5sums = SKIP
 
 pkgname = telepresence
