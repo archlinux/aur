@@ -3,12 +3,12 @@
 
 pkgname=pharo
 pkgver=6.0.510
-pkgrel=2
+pkgrel=3
 pkgdesc="a fork of Squeak, an implementation of the object-oriented, dynamically typed, reflective programming language Smalltalk"
 arch=(x86_64)
 url="http://www.pharo-project.org/"
 license=('MIT')
-depends=('lib32-alsa-lib' 'lib32-libvorbis' 'lib32-pango' 'lib32-mesa' 'nas' 'lib32-dbus' 'lib32-libxml2')
+depends=('alsa-lib' 'libvorbis' 'pango' 'mesa' 'nas' 'dbus' 'libxml2')
 
 _imageversion=${pkgver//./}
 _vmversion="20170703"
