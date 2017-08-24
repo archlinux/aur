@@ -19,11 +19,11 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://gitlab.com/madflow/shrr/repository/acc5ec347ade01657de4b663b055d28404d25cab/archive.tar.gz)
+source=(https://gitlab.com/madflow/shrr/repository/0e915c059ecd5012d8a823292cc3a57e020196b9/archive.tar.gz)
 noextract=()
-md5sums=(e9619487a193e4a92c4216e061e2ab47)
+md5sums=(6b3771a78f96229d82d8af3029cb0007)
 
 package() {
-  cd "$srcdir/$pkgname-*"
+  cd "$srcdir/$pkgname-0e915c059ecd5012d8a823292cc3a57e020196b9-0e915c059ecd5012d8a823292cc3a57e020196b9"
   python setup.py install --root="$pkgdir/" --optimize=1
 }

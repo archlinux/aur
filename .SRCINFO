@@ -11,8 +11,8 @@ pkgbase = shrr
 	depends = python-flask
 	depends = python-netifaces
 	depends = python-colorama
-	source = https://gitlab.com/madflow/shrr/repository/acc5ec347ade01657de4b663b055d28404d25cab/archive.tar.gz
-	md5sums = e9619487a193e4a92c4216e061e2ab47
+	source = https://gitlab.com/madflow/shrr/repository/0e915c059ecd5012d8a823292cc3a57e020196b9/archive.tar.gz
+	md5sums = 6b3771a78f96229d82d8af3029cb0007
 
 pkgname = shrr
 
