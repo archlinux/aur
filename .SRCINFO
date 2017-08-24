@@ -1,7 +1,7 @@
 pkgbase = python-asgi-ipc
 	pkgdesc = Posix IPC-backed ASGI channel layer implementation
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/asgi_ipc
 	arch = any
 	license = BSD
@@ -10,8 +10,8 @@ pkgbase = python-asgi-ipc
 	depends = python-msgpack
 	depends = python-posix_ipc
 	depends = python-asgiref
-	source = https://pypi.io/packages/source/a/asgi_ipc/asgi_ipc-1.4.0.tar.gz
-	md5sums = bdefbc5eaa661d775116868555c74033
+	source = https://pypi.io/packages/source/a/asgi_ipc/asgi_ipc-1.4.1.tar.gz
+	md5sums = e38a22bcbcdba56b2effa121c96a73f5
 
 pkgname = python-asgi-ipc
 
