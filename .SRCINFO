@@ -1,9 +1,8 @@
 pkgbase = linux-amd-staging-drm-next-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
 	pkgver = 4.13rc2.r1097.g58e5ccdc343d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cgit.freedesktop.org/~agd5f/linux/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -11,33 +10,35 @@ pkgbase = linux-amd-staging-drm-next-git
 	makedepends = kmod
 	makedepends = inetutils
 	makedepends = bc
-	makedepends = git
 	makedepends = libelf
+	makedepends = git
+	optdepends = vega10-firmware
 	options = !strip
 	source = linux-amd-staging-drm-next-git::git://people.freedesktop.org/~agd5f/linux#branch=amd-staging-drm-next
 	source = config.x86_64
-	source = config.i686
 	source = 90-linux.hook
 	source = linux.preset
 	sha256sums = SKIP
 	sha256sums = 6d7a52b0ae947fe0984e11f1d88c701ceaa535eb176b3e905a78aa3ead656197
-	sha256sums = becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-amd-staging-drm-next-git
-	pkgdesc = The Linux-amd-staging-drm-next-git kernel and modules with AMDGPU DC patches
+	pkgdesc = The Linux kernel and modules with AMDGPU DC patches
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
 	backup = etc/mkinitcpio.d/linux-amd-staging-drm-next-git.preset
 
 pkgname = linux-amd-staging-drm-next-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux-amd-staging-drm-next-git kernel with AMDGPU DC patches
+	pkgdesc = Header files and scripts for building modules for Linux kernel with AMDGPU DC patches
+	provides = linux-headers
 
 pkgname = linux-amd-staging-drm-next-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-amd-staging-drm-next-git kernel with AMDGPU DC patches
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel with AMDGPU DC patches
+	provides = linux-docs
 
