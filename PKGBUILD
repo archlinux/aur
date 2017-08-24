@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://gitlab.com/madflow/shrr/repository/master-c1a5f222/archive.tar.gz)
+source=(https://gitlab.com/madflow/shrr/repository/3e7bc82cdc8bd7fb2f25ec7bcf2cf87d1beb86ef/archive.tar.gz)
 noextract=()
-md5sums=(4ba5d15f55eb0e74a27a1801eef00833)
+md5sums=(698db547cfd7a3332b9b6d2b43f9d701)
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
