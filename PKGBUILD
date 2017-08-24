@@ -2,8 +2,8 @@
 
 _pkgname=wolfssl
 pkgname=${_pkgname}-git
-pkgver=20160319.52215b3
-pkgrel=1
+pkgver=20170824.73b8be8f
+pkgrel=2
 pkgdesc='A small, fast, portable implementation of TLS/SSL for embedded devices to the cloud. (formerly CyaSSL) '
 arch=(i686 x86_64)
 license=(GPL)
@@ -23,7 +23,7 @@ build() {
               --disable-fasthugemath --disable-bump \
               --enable-opensslextra --enable-fortress \
               --enable-keygen --enable-certgen \
-              --disable-debug --disable-ntru --disable-examples
+              --disable-debug --disable-ntru --disable-examples --enable-distro
   make
 }
 

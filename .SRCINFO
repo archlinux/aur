@@ -1,7 +1,7 @@
 pkgbase = wolfssl-git
 	pkgdesc = A small, fast, portable implementation of TLS/SSL for embedded devices to the cloud. (formerly CyaSSL)
-	pkgver = 20160319.52215b3
-	pkgrel = 1
+	pkgver = 20170824.73b8be8f
+	pkgrel = 2
 	url = https://www.wolfssl.com/
 	arch = i686
 	arch = x86_64
