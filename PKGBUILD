@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=librep-git
-pkgver=0.92.6.13.ga3615321
+pkgver=0.92.6.17.gc622c991
 pkgrel=1
 pkgdesc='A lisp system for sawfish - git version.'
 arch=('i686' 'x86_64')
