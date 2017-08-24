@@ -17,15 +17,15 @@
 #
 pkgbase="zfs-linux-hardened"
 pkgname=("zfs-linux-hardened" "zfs-linux-hardened-headers")
-pkgver=0.7.1_4.12.8.a.1
+pkgver=0.7.1_4.12.8.b.1
 pkgrel=1
-makedepends=("linux-hardened-headers=4.12.8.a-1" "spl-linux-hardened-headers")
+makedepends=("linux-hardened-headers=4.12.8.b-1" "spl-linux-hardened-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.1/zfs-0.7.1.tar.gz")
 sha256sums=("231b104979ddacfeb1889e1dec175337276e7b3b109d40656089744b5caf3ef6")
 license=("CDDL")
-depends=("kmod" "spl-linux-hardened" "zfs-utils-common>=0.7.1" "linux-hardened=4.12.8.a-1")
+depends=("kmod" "spl-linux-hardened" "zfs-utils-common>=0.7.1" "linux-hardened=4.12.8.b-1")
 
 build() {
     cd "${srcdir}/zfs-0.7.1"
