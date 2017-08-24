@@ -1,6 +1,6 @@
 ## Maintainer: realasking
 pkgname=essential-pathway-git
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='A tool that helps people quickly access to their most commonly used folders in command line in some operation systems like linux,written in python3.'
 arch=(x86_64 i686)
