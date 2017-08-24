@@ -7,7 +7,6 @@ pkgrel=1
 pkgdesc="A font for highly legible text on computer screens"
 url="https://rsms.me/interface/"
 arch=(any)
-makedepends=('unzip')
 license=(custom:"SIL Open Font License")
 # https://github.com/rsms/interface/releases/download/v1.1/Interface-1.1.zip
 source=("interface-${_relver}.zip::https://github.com/rsms/interface/releases/download/v${_relver}/Interface-${_relver}.zip" "OFL.txt::http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt")
