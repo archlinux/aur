@@ -1,0 +1,26 @@
+pkgbase = ocaml-atd
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://github.com/mjambon/atd
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ocaml-findlib
+	makedepends = jbuilder
+	makedepends = opam
+	depends = ocaml>=3.11
+	depends = ocaml-menhir
+	depends = ocaml-easy-format
+	depends = ocaml-biniou
+	depends = ocaml-yojson
+	options = !strip
+	source = https://github.com/mjambon/atd/archive/v1.12.0.tar.gz
+	md5sums = f85f590714edcdd4b847aa242b6c5747
+
+pkgname = ocaml-atd
+	pkgdesc = Adaptable type definitions for OCaml
+
+pkgname = ocaml-atdgen
+	pkgdesc = Efficient JSON serializer, deserializer and validator generator for OCaml
+	depends = ocaml-atd
+
