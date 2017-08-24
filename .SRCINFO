@@ -1,5 +1,5 @@
 pkgbase = lib32-x265
-	pkgdesc = Open Source H265/HEVC video encoder
+	pkgdesc = Open Source H265/HEVC video encoder. 32bit version. Libraries only.
 	pkgver = 2.5
 	pkgrel = 1
 	url = https://bitbucket.org/multicoreware/x265

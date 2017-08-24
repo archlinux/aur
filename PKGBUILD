@@ -1,11 +1,13 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: kfgz <kfgz@interia.pl>
+# Mantainer: Lorenzo Ferrillo <lorenzofer at live dot it>
+
 _basename=x265
 pkgname=lib32-x265
 pkgver=2.5
 pkgrel=1
-pkgdesc='Open Source H265/HEVC video encoder'
+pkgdesc='Open Source H265/HEVC video encoder. 32bit version. Libraries only.'
 arch=('x86_64')
 url='https://bitbucket.org/multicoreware/x265'
 license=('GPL')
