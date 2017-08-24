@@ -1,6 +1,6 @@
 # Maintainer: M0Rf30
 pkgname=iortcw-git
-pkgver=1.51.r32.g87b51011
+pkgver=1.51b.r6.ge422b432
 pkgrel=1
 pkgdesc="Merge of ioquake3 features and fixes into Return to Castle Wolfenstein"
 arch=('i686' 'x86_64')
