@@ -1,0 +1,22 @@
+pkgbase = ayojs-git
+	pkgdesc = It's pronounced like "IO"
+	pkgver = 8.4.0
+	pkgrel = 1
+	url = https://github.com/ayojs/ayo
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2
+	makedepends = procps-ng
+	depends = openssl-1.0
+	depends = zlib
+	depends = icu
+	depends = libuv
+	depends = http-parser
+	depends = c-ares
+	conflicts = nodejs
+	source = ayo::git://github.com/ayojs/ayo
+	sha512sums = SKIP
+
+pkgname = ayojs-git
+
