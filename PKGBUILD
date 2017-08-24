@@ -76,7 +76,7 @@ _pkgvermajmin="5.9"
 _pkgverpatch=".1"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
-pkgrel=2
+pkgrel=3
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -85,7 +85,7 @@ if [[ -n ${_dev_suffix} ]]; then
 fi
 _release_type="development_releases"
 _mkspec="linux-rpi${_piver}-g++"
-_additional_configure_flags=""
+_additional_configure_flags="-skip qt3d"
 _profiled_gpu_fn=qpi-proprietary.sh
 
 __pkgconfigpath=${_sysroot}/usr/lib/pkgconfig
