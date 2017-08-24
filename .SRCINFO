@@ -1,7 +1,7 @@
 pkgbase = encuentro
 	pkgdesc = Busque, descargue, y vea el maravilloso contenido ofrecido por el Canal Encuentro. Search, download and see the wonderful content ofered by Encuentro (Argentine TV channel)
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://launchpad.net/encuentro
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = encuentro
 	depends = python2-xdg
 	depends = youtube-dl
 	optdepends = python2-notify: provides notifications
-	source = http://encuentro.taniquetil.com.ar/download/encuentro-5.0.tar.gz
+	source = https://launchpad.net/encuentro/trunk/5.0/+download/encuentro-5.0.tar.gz
 	md5sums = 8709b7200607efc895b5e847bff432f2
 
 pkgname = encuentro
