@@ -1,6 +1,6 @@
 pkgbase = linux-amd-staging-drm-next-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 4.11.692986.58e5ccdc343d
+	pkgver = 4.13rc2.r1097.g58e5ccdc343d
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = linux-amd-staging-drm-next-git
 	makedepends = kmod
 	makedepends = inetutils
 	makedepends = bc
-	makedepends = libelf
 	makedepends = git
+	makedepends = libelf
 	options = !strip
 	source = linux-amd-staging-drm-next-git::git://people.freedesktop.org/~agd5f/linux#branch=amd-staging-drm-next
 	source = config.x86_64

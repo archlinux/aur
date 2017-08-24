@@ -5,15 +5,14 @@
 pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=$pkgbase
-_kernel_rel=4.11
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=4.11.692986.58e5ccdc343d
+pkgver=4.13rc2.r1097.g58e5ccdc343d
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
         # the main kernel config files
@@ -30,7 +29,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${srcdir}/${_srcname}"
 
-  echo 4.11.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
 }
 
 prepare() {
