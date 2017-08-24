@@ -2,7 +2,7 @@
 # Contributor: tantalum <tantalum at online dot de>
 pkgname=g-wrap
 pkgver=1.9.15
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool and guile library, for generating function wrappers for inter-language calls'
 arch=(i686 x86_64)
 license=(LGPL)
