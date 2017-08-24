@@ -2,7 +2,7 @@
 # contributor: tantalum <tantalum@online.de>
 pkgname=guile-cairo
 pkgver=1.9.91
-pkgrel=3
+pkgrel=4
 pkgdesc='Guile Scheme bindings for the cairo graphics library'
 arch=(x86_64 i686)
 license=(LGPL3)
