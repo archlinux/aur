@@ -1,6 +1,6 @@
 pkgbase = riot-desktop-git
 	pkgdesc = A glossy Matrix collaboration client for the desktop.
-	pkgver = r4523.9e57c9d7
+	pkgver = r4528.65f0bd04
 	pkgrel = 1
 	url = https://riot.im
 	arch = any
