@@ -1,0 +1,12 @@
+pkgbase = funktion
+	pkgdesc = AWS Lambda style programming model on top of Kubernetes
+	pkgver = v1.0.14
+	pkgrel = 1
+	url = https://github.com/funktionio/funktion
+	arch = x86_64
+	license = Apache
+	source = https://github.com/funktionio/funktion/releases/download/v1.0.14/funktion-linux-amd64
+	sha512sums = 2ed17f80b606de6674b9afd764f4124ae632371861e9a5271d40a42da66e6b7fa6c50f0c7da1c43f64014e4b203b8b96c04b3fac3c828a86bc02bbe26763fc7a
+
+pkgname = funktion
+
