@@ -3,7 +3,7 @@
 
 _pkgname=spectacle
 pkgname=${_pkgname}-light
-pkgver=17.04.3
+pkgver=17.08.0
 pkgrel=1
 pkgdesc="KDE screenshot capture utility, without purpose"
 arch=('i686' 'x86_64')
@@ -14,10 +14,7 @@ makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 groups=('kde-applications' 'kdegraphics')
-source=("https://download.kde.org/stable/applications/${pkgver}/src/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('1b4792cb908047ea30f780f13ab25c296e6f38718c8cdf005603bb1237a34c76' 'SKIP')
-validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7'  # Albert Astals Cid <aacid@kde.org>
-              'F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87') # Christoph Feck <cfeck@kde.org>
+source=("https://download.kde.org/stable/applications/${pkgver}/src/${_pkgname}-${pkgver}.tar.xz")
 
 prepare() {
     mkdir -p build
@@ -39,3 +36,4 @@ package() {
     make DESTDIR="${pkgdir}" install
 }
 
+sha256sums=('ee5b374a850f214cdd1fda61b73bfd501fc8bb66b085d97b406fae07f328b0d2')
