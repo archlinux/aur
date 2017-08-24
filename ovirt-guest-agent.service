@@ -1,6 +1,7 @@
 [Unit]
 Description=oVirt Guest Agent
-After=network.target
+Wants=qemu-ga.service
+After=qemu-ga.service
 
 [Service]
 Type=simple

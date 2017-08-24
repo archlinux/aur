@@ -6,7 +6,7 @@ pkgname=("${pkgbase}" "${pkgbase}-common")
 _mainver='1.0.13'
 _subrel=''
 pkgver="${_mainver}${_subrel}"
-pkgrel='3'
+pkgrel='4'
 pkgdesc='The oVirt Guest Agent'
 arch=('x86_64')
 url="http://ovirt.org/develop/developer-guide/vdsm/guest-agent"
@@ -30,7 +30,7 @@ sha256sums=('3b4d429d3e5ca1a369cc0868217910eadc70178156bb62e9d68cb1a9fde8afcc'
             'f9afb37eb23e77cf59d34f8783d3cacc509ed9400936c3dc95d6db629b3b58a1'
             '7c4ef4e3a9a31e243c8d95991e8e0cea2eed92a3a6066fef1642ef9e1fb8b2fa'
             'fab3d62ecd8f6546d5b193f4ca22919de20451678b4cce2c53aa0977fed4f483'
-            '9d80826cb331ecbf1a3f979cbe30de3ae1704322f137e49250ce620eaf64cfc7')
+            '45864cbe0576d33962ee57bf4ac0c5f70e67c423278bf291e8ecefe2668ff538')
 backup=("etc/${pkgbase}.conf")
 
 prepare() {
