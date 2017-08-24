@@ -14,7 +14,7 @@ depends=('networkmanager' 'network-manager-applet' 'intltool' 'gconf')
 makedepends=('git')
 provides=("${_gitname}")
 source=(
-"${_gitname}::git://mbm.git.sourceforge.net/gitroot/mbm/${_gitname}/"
+"${_gitname}::git://git.code.sf.net/p/mbm/${_gitname}/"
 0001-Remove-call-to-g_type_init.patch
 )
 md5sums=('SKIP'
