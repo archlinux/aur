@@ -4,7 +4,7 @@
 
 pkgname=todotxt-git
 pkgver=2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="lifehacker.com's todo.sh script for maintaining a todo.txt file"
 url="https://github.com/todotxt/todo.txt-cli"
 depends=('bash')
