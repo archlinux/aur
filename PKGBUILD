@@ -11,6 +11,8 @@ depends=()
 makedepends=()
 source=("http://www.tedunangst.com/flak/files/sct.c")
 md5sums=('1d110264e8a13f7f9259643c2fa402b4')
+# Upstream uses an invalid cert. This is okay since we validate md5sum:
+DLAGENTS=("http::/usr/bin/curl -Ok")
 
 build() {
   cd "$srcdir/"
