@@ -1,0 +1,19 @@
+pkgbase = rsbep-backup-git
+	pkgdesc = A customized version of rsbep used to create resilient backups
+	pkgver = r6.1a6da31
+	pkgrel = 1
+	url = https://www.thanassis.space/rsbep.html
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python2
+	makedepends = python2-fuse
+	provides = rsbep-backup
+	conflicts = rsbep-backup
+	source = rsbep-backup::git+https://github.com/ttsiodras/rsbep-backup.git
+	md5sums = SKIP
+
+pkgname = rsbep-backup-git
+
