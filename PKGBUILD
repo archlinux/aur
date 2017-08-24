@@ -10,7 +10,7 @@ url="https://gitlab.com/madflow/shrr"
 license=(MIT)
 groups=()
 depends=('python>=3.3' 'python-flask' 'python-netifaces' 'python-colorama' 'python-qrcode')
-makedepends=('python-setuptools' 'python-pip' 'nodejs', 'yarn')
+makedepends=('python-setuptools' 'python-pip' 'nodejs' 'yarn')
 optdepends=()
 provides=()
 conflicts=()
