@@ -1,0 +1,77 @@
+diff -Nur colunar-0.1.orig/colunar.c colunar-0.1/colunar.c
+--- colunar-0.1.orig/colunar.c	2010-01-31 14:02:29.000000000 +0800
++++ colunar-0.1/colunar.c	2017-08-24 13:41:25.315205745 +0800
+@@ -64,6 +64,16 @@
+     "四", "五", "六"
+ };
+ 
++static char *numHanzi[] = {
++    "初一", "初二", "初三", "初四","初五", "初六", "初七", "初八", "初九", "初十",
++    "十一", "十二", "十三", "十四","十五", "十六", "十七", "十八", "十九", "二十",
++    "廿一", "廿二", "廿三", "廿四","廿五", "廿六", "廿七", "廿八", "廿九", "三十"
++};
++
++static char *monthHanzi[] = {
++ "正", "杏", "蚕", "槐", "蒲", "伏", 
++ "巧", "桂", "玄", "良", "冬", "腊" 
++};
+ 
+ Date solar, lunar, gan, zhi, gan2, zhi2, lunar2;
+ 
+@@ -453,16 +463,17 @@
+       solar.year, "年", solar.month, "月", solar.day,
+       "日", solar.hour, "时　",
+       "星期", weekdayHanzi[solar.weekday]); 
+-  printf("%s%d%s%s%2d%s%2d%s%s%s%s%s\n", "阴历: ",
+-      lunar.year, "年", (lunar.leap? "闰":""),
+-      lunar.month, "月", lunar.day, "日", 
++  printf("%s%d%s%s%s%s%s%s%s%s%s%s\n", "阴历: ",
++      lunar.year, "年 ", (lunar.leap? " 闰":""),
++      monthHanzi[lunar.month-1], "月 ",
++      numHanzi[lunar.day-1], " ",
+       ZhiHanzi[zhi.hour], "时 ",
+       "生肖属", ShengXiaoHanzi[zhi.year]);
+   printf("%s%s%s%s%s%s%s%s%s%s%s%s%s\n", "干支: ",
+-      GanHanzi[gan.year], ZhiHanzi[zhi.year], "年 ",
+-      GanHanzi[gan.month], ZhiHanzi[zhi.month], "月 ",
+-      GanHanzi[gan.day], ZhiHanzi[zhi.day], "日 ",
+-      GanHanzi[gan.hour], ZhiHanzi[zhi.hour], "时 ");
++      GanHanzi[gan2.year], ZhiHanzi[zhi2.year], "年 ",
++      GanHanzi[gan2.month], ZhiHanzi[zhi2.month], "月 ",
++      GanHanzi[gan2.day], ZhiHanzi[zhi2.day], "日 ",
++      GanHanzi[gan2.hour], ZhiHanzi[zhi2.hour], "时 ");
+   printf("%s%s%s%s%s%s%s%s%s%s%s%s%s\n",
+       "用四柱神算推算之时辰八字: \n",
+       GanHanzi[gan2.year], ZhiHanzi[zhi2.year], "年 ",
+@@ -482,17 +493,17 @@
+ {
+   printf("Solar : %d.%d.%d.%d\t%s\n", solar.year, solar.month, solar.day,
+       solar.hour, weekday[solar.weekday]);
+-  printf("Lunar : %d.%d%s.%d.%d\tShengXiao: %s\n",
+-      lunar.year, lunar.month, (lunar.leap?"Leap":""), lunar.day,
++  printf("Lunar : %d.%s%s.%s.%d\tShengXiao: %s\n",
++      lunar.year, monthHanzi[lunar.month], (lunar.leap?"Leap":""), numHanzi[lunar.day],
+       lunar.hour, ShengXiao[zhi.year] );
+   printf("GanZhi: %s-%s.%s-%s.%s-%s.%s-%s\n",
+-      Gan[gan.year], Zhi[zhi.year], Gan[gan.month], Zhi[zhi.month],
++      Gan[gan.year], Zhi[zhi.year], Gan[gan2.month], Zhi[zhi2.month],
+       Gan[gan.day], Zhi[zhi.day], Gan[gan.hour], Zhi[zhi.hour]);
+   printf("        (GanZhi Order)\t%d-%d.%d-%d.%d-%d.%d-%d\n",
+-      gan.year+1, zhi.year+1, gan.month+1, zhi.month+1,
++      gan.year+1, zhi.year+1, gan2.month+1, zhi2.month+1,
+       gan.day+1, zhi.day+1, gan.hour+1, zhi.hour+1);
+   printf("        (JiaZi Cycle)\t%d.%d.%d.%d\n\n",
+-      GZcycle(gan.year, zhi.year), GZcycle(gan.month, zhi.month),
++      GZcycle(gan.year, zhi.year), GZcycle(gan2.month, zhi2.month),
+       GZcycle(gan.day, zhi.day), GZcycle(gan.hour, zhi.hour));
+   printf("BaZi (8-characters) according to 'Four Column Calculation':\n");
+   printf("        %s-%s.%s-%s.%s-%s.%s-%s\n",
+diff -Nur colunar-0.1.orig/Makefile colunar-0.1/Makefile
+--- colunar-0.1.orig/Makefile	2010-01-31 14:02:29.000000000 +0800
++++ colunar-0.1/Makefile	2017-08-24 13:42:22.863278790 +0800
+@@ -13,3 +13,5 @@
+ clean:
+ 	rm -f *.o colunar
+ 
++install: 
++	cp colunar /usr/bin/
