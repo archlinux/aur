@@ -6,6 +6,7 @@ pkgbase = clipster
 	arch = any
 	license = AGPL
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-gobject
 	depends = libwnck3

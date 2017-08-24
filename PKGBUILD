@@ -9,7 +9,7 @@ arch=("any")
 url="https://github.com/mrichar1/clipster"
 license=("AGPL")
 depends=("python" "python-gobject" "libwnck3")
-makedepends=("git")
+makedepends=("git" "python-setuptools")
 source=("${pkgname}-${pkgver}::git+https://github.com/mrichar1/clipster.git#tag=${pkgver}")
 sha256sums=("SKIP")
 provides=("clipster")
