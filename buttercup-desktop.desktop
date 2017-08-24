@@ -2,8 +2,8 @@
 Version=1.1
 Name=Buttercup
 Comment=Javascript Password Vault
-Exec=buttercup-desktop %f
-Icon=buttercup-desktop
+Exec=/usr/share/buttercup-desktop/buttercup %f
+Icon=buttercup
 Terminal=false
 Type=Application
 Categories=Utility;

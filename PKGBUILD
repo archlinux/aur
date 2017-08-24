@@ -1,7 +1,7 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 # Contributor: j1simon
 pkgname=buttercup-desktop
-pkgver=0.18.2
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='Javascript Password Vault - Multi-Platform Desktop Application'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('gtk2' 'gconf' 'libxtst' 'alsa-lib' 'libxss' 'nss')
 makedepends=('npm' 'sed')
 source=("https://github.com/buttercup/buttercup-desktop/archive/v$pkgver.tar.gz"
 "buttercup-desktop.desktop")
-sha512sums=('e41c81a297f7f4d26cef57f30e4107ba123aebeb09cd9256d6eb5ae98d38d10ca55267c80d12f80c835173872907360149530840128977ea720db2783b65aefa'
-            '29ffc70d18e05639a67f03d79023ce899f82b7ad04ea239518b7b1809c147ecbe86ecc8f72551828b4df35781e2c0803440e688d751ef2e0e8c537112d7d70b9')
+sha512sums=('414ae944b5a42729df35b4cb1d1190930a55cc924cd37061442f6003c5c6d6b7e0225ab5bc1fd9703441522ba9ebf6e60b1cd1e7f003c3617a6652be92025166'
+            '4113fd636c3e1cd596d1805555951dbcd0b05971af2968a5617268b3c1f84be46581a02c89a6edffe37eb1ff7b8ea3fd086f8f0327c25b8fce53fa978fe762a0')
 prepare(){
   sed -i '/"rpm",/d' "$srcdir/$pkgname-$pkgver/package.json"
   sed -i '/"AppImage",/d' "$srcdir/$pkgname-$pkgver/package.json"
@@ -23,16 +23,18 @@ prepare(){
 }
 build(){
     cd "$srcdir/$pkgname-$pkgver/"
-    npm install && npm run build && npm run package:linux
+    npm install --cache "$srcdir/npm-cache"
+    npm run build
+    npm run package:linux
 }
 package() {
-  mkdir -p "$pkgdir"/usr/{lib,bin,share/{applications,icons/hicolor/scalable/apps}}/
-  install -m644 "$srcdir/$pkgname-$pkgver/build/badge.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/buttercup-desktop.svg"
-  install -m644 "$srcdir/buttercup-desktop.desktop" "$pkgdir/usr/share/applications/"
-  ln -s /usr/lib/$pkgname/buttercup "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/build/badge.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/buttercup.svg"
+  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   if [[ $CARCH = "i686" ]]; then
-    mv "$srcdir/$pkgname-$pkgver/release/linux-ia32-unpacked" "$pkgdir/usr/lib/$pkgname"
+    _distname="linux-ia32-unpacked"
   else
-    mv "$srcdir/$pkgname-$pkgver/release/linux-unpacked" "$pkgdir/usr/lib/$pkgname"
+    _distname="linux-unpacked"
   fi
+  mkdir -p "$pkgdir/usr/share"
+  mv "$srcdir/$pkgname-$pkgver/release/$_distname" "$pkgdir/usr/share/$pkgname"
 }
