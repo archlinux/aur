@@ -1,8 +1,13 @@
 _sdktool="/usr/lib/qtcreator/sdktool"
+_altsdktool="/usr/libexec/qtcreator/sdktool"
 _devicefamily="raspberrypi"
 _devicename="${_devicefamily}${_piver}"
 _familytext="Raspberry Pi"
 _devicetext="${_familytext} ${_piver}"
+
+if [[ -x ${_altsdktool} ]]; then
+    _sdktool=${_altsdktool}
+fi
 
 setup_toolchain() {
     echo "Registering toolchain with Qt Creator"
