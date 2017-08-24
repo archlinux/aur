@@ -1,0 +1,46 @@
+From c76d327a063514935696b7db321e42854cd55d08 Mon Sep 17 00:00:00 2001
+From: Xavier Leune <xleune@ccmbenchmark.com>
+Date: Mon, 24 Jul 2017 14:44:26 +0200
+Subject: [PATCH] Update to new struct
+
+---
+ executors/lxc/executor_lxc.go |  9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/executors/lxc/executor_lxc.go b/executors/lxc/executor_lxc.go
+index f043efb..73af6b6 100644
+--- a/executors/lxc/executor_lxc.go
++++ b/executors/lxc/executor_lxc.go
+@@ -13,8 +13,8 @@ type executor struct {
+ 	command lxc.Client
+ }
+ 
+-func (e *executor) Prepare(globalConfig *common.Config, config *common.RunnerConfig, build *common.Build) error {
+-	err := e.AbstractExecutor.Prepare(globalConfig, config, build)
++func (e *executor) Prepare(options common.ExecutorPrepareOptions) error {
++	err := e.AbstractExecutor.Prepare(options)
+ 	if err != nil {
+ 		return err
+ 	}
+@@ -33,8 +33,8 @@ func (e *executor) Prepare(globalConfig *common.Config, config *common.RunnerCon
+ 	// Create LXC command
+ 	e.command = lxc.Client{
+ 		Config: *e.Config.LXC,
+-		Stdout: e.BuildTrace,
+-		Stderr: e.BuildTrace,
++		Stdout: e.Trace,
++		Stderr: e.Trace,
+ 	}
+ 
+ 	e.Debugln("Connecting to LXC server...")
+@@ -50,7 +50,6 @@ func (e *executor) Run(cmd common.ExecutorCommand) error {
+ 		Environment: e.BuildShell.Environment,
+ 		Command:     e.BuildShell.GetCommandWithArguments(),
+ 		Stdin:       cmd.Script,
+-		Abort:       cmd.Abort,
+ 	})
+ 	return err
+ }
+--
+libgit2 0.26.0
+

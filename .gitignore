@@ -7,5 +7,6 @@
 !gitlab-runner.sysusers
 !gitlab-runner.tmpfiles
 !lxc_executor.patch
+!lxc_update.patch
 !PKGBUILD
 !.SRCINFO
