@@ -2,7 +2,7 @@
 
 pkgname=('byteball')
 pkgver=1.10.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Byteball cryptocurrency wallet client."
 arch=('x86_64')
 url='byteball.org'

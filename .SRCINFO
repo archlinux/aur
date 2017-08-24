@@ -1,7 +1,7 @@
 pkgbase = byteball
 	pkgdesc = Byteball cryptocurrency wallet client.
 	pkgver = 1.10.1
-	pkgrel = 3
+	pkgrel = 4
 	url = byteball.org
 	install = byteball.install
 	arch = x86_64

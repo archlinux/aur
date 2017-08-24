@@ -1,5 +1,22 @@
 post_install() {
 	ln -s /usr/share/byteball/Byteball /usr/bin/byteball
+        echo "##############################"
+        echo "##############################"
+        echo "######IMPORTANT NOTICE########"
+        echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        echo "According to the official release: "
+        echo "Linux users who upgrade from 1.10.0"
+        echo "will have to delete all files"
+        echo "(but not subdirectories!) in "
+        echo "~/.config/byteball/Default in order"
+        echo "to get rid of the annoying (but harmless)"
+        echo "popup about profile format. This is "
+        echo "because we had to revert to an older"
+        echo "version of nwjs to address #201."
+        echo " ****Backup before deleting. ***"
+        echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        echo "As this is a destructive action,"
+        echo "I won't do this on your behalf."
 }
 
 post_upgrade() {
