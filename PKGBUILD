@@ -23,6 +23,9 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
   sed -i 's/python$/python2/' apps/osmocom_siggen_base.py
+
+  # make it work with the old drivers
+  sed -i 's/rtlsdr_set_bias_tee.*;/0;/' lib/rtl/rtl_source_c.cc
 }
 
 build() {
