@@ -1,0 +1,68 @@
+From ad729bc9acfb7c47112964b4877ef5404578ed13 Mon Sep 17 00:00:00 2001
+From: Andreas Born <futur.andy@googlemail.com>
+Date: Thu, 10 Aug 2017 06:41:44 +0200
+Subject: [PATCH] bonding: require speed/duplex only for 802.3ad, alb and tlb
+
+The patch c4adfc822bf5 ("bonding: make speed, duplex setting consistent
+with link state") puts the link state to down if
+bond_update_speed_duplex() cannot retrieve speed and duplex settings.
+Assumably the patch was written with 802.3ad mode in mind which relies
+on link speed/duplex settings. For other modes like active-backup these
+settings are not required. Thus, only for these other modes, this patch
+reintroduces support for slaves that do not support reporting speed or
+duplex such as wireless devices. This fixes the regression reported in
+bug 196547 (https://bugzilla.kernel.org/show_bug.cgi?id=196547).
+
+Fixes: c4adfc822bf5 ("bonding: make speed, duplex setting consistent
+with link state")
+Signed-off-by: Andreas Born <futur.andy@googlemail.com>
+Acked-by: Mahesh Bandewar <maheshb@google.com>
+Signed-off-by: David S. Miller <davem@davemloft.net>
+---
+ drivers/net/bonding/bond_main.c | 6 ++++--
+ include/net/bonding.h           | 5 +++++
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/bonding/bond_main.c b/drivers/net/bonding/bond_main.c
+index 9bee6c1c70cc..85bb272d2a34 100644
+--- a/drivers/net/bonding/bond_main.c
++++ b/drivers/net/bonding/bond_main.c
+@@ -1569,7 +1569,8 @@ int bond_enslave(struct net_device *bond_dev, struct net_device *slave_dev)
+ 	new_slave->delay = 0;
+ 	new_slave->link_failure_count = 0;
+ 
+-	if (bond_update_speed_duplex(new_slave))
++	if (bond_update_speed_duplex(new_slave) &&
++	    bond_needs_speed_duplex(bond))
+ 		new_slave->link = BOND_LINK_DOWN;
+ 
+ 	new_slave->last_rx = jiffies -
+@@ -2140,7 +2141,8 @@ static void bond_miimon_commit(struct bonding *bond)
+ 			continue;
+ 
+ 		case BOND_LINK_UP:
+-			if (bond_update_speed_duplex(slave)) {
++			if (bond_update_speed_duplex(slave) &&
++			    bond_needs_speed_duplex(bond)) {
+ 				slave->link = BOND_LINK_DOWN;
+ 				netdev_warn(bond->dev,
+ 					    "failed to get link speed/duplex for %s\n",
+diff --git a/include/net/bonding.h b/include/net/bonding.h
+index b00508d22e0a..b2e68657a216 100644
+--- a/include/net/bonding.h
++++ b/include/net/bonding.h
+@@ -277,6 +277,11 @@ static inline bool bond_is_lb(const struct bonding *bond)
+ 	       BOND_MODE(bond) == BOND_MODE_ALB;
+ }
+ 
++static inline bool bond_needs_speed_duplex(const struct bonding *bond)
++{
++	return BOND_MODE(bond) == BOND_MODE_8023AD || bond_is_lb(bond);
++}
++
+ static inline bool bond_is_nondyn_tlb(const struct bonding *bond)
+ {
+ 	return (BOND_MODE(bond) == BOND_MODE_TLB)  &&
+-- 
+2.14.1
+

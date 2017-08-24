@@ -1,0 +1,25 @@
+diff --git a/drivers/input/mouse/synaptics.c b/drivers/input/mouse/synaptics.c
+index 16c3046..ca912ce 100644
+--- a/drivers/input/mouse/synaptics.c
++++ b/drivers/input/mouse/synaptics.c
+@@ -173,6 +173,7 @@ static const char * const smbus_pnp_ids[] = {
+ 	"LEN0046", /* X250 */
+ 	"LEN004a", /* W541 */
+ 	"LEN200f", /* T450s */
++	"LEN0073", /* X1 Carbon 5 (Elantech) */
+ 	NULL
+ };
+ 
+diff --git a/drivers/input/rmi4/rmi_smbus.c b/drivers/input/rmi4/rmi_smbus.c
+index 225025a..2939a2f 100644
+--- a/drivers/input/rmi4/rmi_smbus.c
++++ b/drivers/input/rmi4/rmi_smbus.c
+@@ -322,7 +322,7 @@ static int rmi_smb_probe(struct i2c_client *client,
+ 	rmi_dbg(RMI_DEBUG_XPORT, &client->dev, "Smbus version is %d",
+ 		smbus_version);
+ 
+-	if (smbus_version != 2) {
++	if (smbus_version != 2 && smbus_version != 3) {
+ 		dev_err(&client->dev, "Unrecognized SMB version %d\n",
+ 				smbus_version);
+ 		return -ENODEV;
