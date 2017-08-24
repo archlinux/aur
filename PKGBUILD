@@ -2,7 +2,7 @@
 # Contributor: Justin R. St-Amant <jstamant24 at gmail dot com>
 
 pkgname=draftsight
-pkgver=2017SP02
+pkgver=2017SP03
 pkgrel=1
 pkgdesc="Freeware CAD software for DWG/DXF files."
 arch=('x86_64')
@@ -31,7 +31,7 @@ depends=('alsa-lib'
          'zlib')
 source=("http://dl-ak.solidworks.com/nonsecure/$pkgname/$pkgver/draftSight.rpm"
         "$pkgname.desktop")
-md5sums=('edbec9b17df96e14a59ce7955bba49c3'
+md5sums=('0e479cf3b6c9ef8511cf3e4ebcabc4ff'
          '19b26d423cae7ec0e1e6c6d78c94915d')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
