@@ -1,0 +1,15 @@
+pkgbase = socketcand-git
+	pkgdesc = Provide access to CAN interfaces on a machine via a network interface.
+	pkgver = 0.4.2.r6.gdf7fb4f
+	pkgrel = 1
+	url = https://github.com/dschanoeh/socketcand
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = autoconf
+	makedepends = libconfig
+	provides = socketcand
+
+pkgname = socketcand-git
+
