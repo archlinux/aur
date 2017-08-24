@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=iortcw-data
-pkgver=1.5a
+pkgver=1.51b
 pkgrel=1
 pkgdesc="Return to Castle Wolfenstein Single Player pk3s files (shared use)"
 arch=('any')
