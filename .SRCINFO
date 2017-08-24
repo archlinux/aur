@@ -1,7 +1,7 @@
 pkgbase = firefox-esr
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
 	pkgver = 52.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = i686
 	arch = x86_64
@@ -44,7 +44,6 @@ pkgbase = firefox-esr
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
-	options = !strip
 	source = https://ftp.mozilla.org/pub/firefox/releases/52.3.0esr/source/firefox-52.3.0esr.source.tar.xz
 	source = firefox.desktop
 	source = firefox-symbolic.svg
@@ -52,6 +51,7 @@ pkgbase = firefox-esr
 	source = 0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
 	source = firefox-install-dir.patch
 	source = fix-wifi-scanner.diff
+	source = use-noexcept-instead-of-an-exception-specification-in-mozalloc.patch
 	validpgpkeys = 2B90598A745E992F315E22C58AB132963A06537A
 	sha256sums = c16bc86d6cb8c2199ed1435ab80a9ae65f9324c820ea0eeb38bf89a97d253b5b
 	sha256sums = c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826
@@ -60,6 +60,7 @@ pkgbase = firefox-esr
 	sha256sums = 93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593
 	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
 	sha256sums = 9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8
+	sha256sums = 37e127dbed0285dc48e8033959a84e241c3e5cf0ce9544a172e640b54d3dfe0e
 
 pkgname = firefox-esr
 

@@ -5,7 +5,7 @@
 
 pkgname=firefox-esr
 pkgver=52.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -19,19 +19,21 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech')
 provides=(firefox)
 conflicts=(firefox)
-options=(!emptydirs !makeflags !strip)
+options=(!emptydirs !makeflags)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg
         0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
         0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
-        firefox-install-dir.patch fix-wifi-scanner.diff)
+        firefox-install-dir.patch fix-wifi-scanner.diff
+		use-noexcept-instead-of-an-exception-specification-in-mozalloc.patch)
 sha256sums=('c16bc86d6cb8c2199ed1435ab80a9ae65f9324c820ea0eeb38bf89a97d253b5b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
             '93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
+            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
+            '37e127dbed0285dc48e8033959a84e241c3e5cf0ce9544a172e640b54d3dfe0e')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -63,6 +65,9 @@ prepare() {
   # https://bugs.archlinux.org/task/54395 // https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
   patch -Np1 -i ../0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
 
+  # https://hg.mozilla.org/mozilla-central/rev/ae7e3082d862
+  patch -Np1 -i ../use-noexcept-instead-of-an-exception-specification-in-mozalloc.patch
+
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
@@ -92,10 +97,8 @@ ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-icu
-ac_add_options --with-system-jpeg
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
-ac_add_options --with-system-libvpx
 ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
@@ -103,7 +106,7 @@ ac_add_options --enable-system-pixman
 
 # Features
 ac_add_options --enable-startup-notification
-ac_add_options --enable-crashreporter
+ac_add_options --disable-crashreporter
 ac_add_options --enable-alsa
 ac_add_options --disable-updater
 
@@ -124,8 +127,9 @@ build() {
 
   # Do PGO
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
-  #  make -f client.mk build MOZ_PGO=1
-  make -f client.mk build
+  #  MOZ_PGO=1 ./mach build
+  ./mach build
+  ./mach buildsymbols
 }
 
 package() {
@@ -153,7 +157,7 @@ END
 [Global]
 id=archlinux
 version=1.0
-about=Mozilla Firefox for Arch Linux
+about=Mozilla Firefox ESR for Arch Linux
 
 [Preferences]
 app.distributor=archlinux
