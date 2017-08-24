@@ -12,13 +12,12 @@
 _use_clang=1     # Use clang compiler (downloaded binaries from google). Results in faster build and smaller chromium.
 _use_ccache=0    # Use ccache when build.
 _debug_mode=0    # Build in debug mode.
-_enable_vaapi=0  # Patch for VA-API HW acceleration NOTE: don't work in some graphic cards, for example, NVIDIA
 
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=62.0.3178.0
+pkgver=62.0.3192.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
@@ -63,11 +62,11 @@ optdepends=(
             'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel)'
             #
             'kdialog: Needed for file dialogs in KF5'
-            'kwalletmanager: Needed for storing passwords in KWallet'
+            'kwalletmanager: Needed for storing passwords in KWallet5, needs add "--password-store=kwallet5" into $HOME/config/chromium-dev.conf'
             #
             'ttf-font: For some typography'
             #
-            'libappindicator-gtk3: Needed for show systray icon in the panel'
+            'libappindicator-gtk3: Needed for show systray icon in the panel on GTK3 Desktop based'
             )
 if [ "${_enable_vaapi}" = "1" ]; then
   optdepends+=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
@@ -82,15 +81,16 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-dev.svg'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-zlib-r1.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r15.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r16.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc5-r2.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-icu-r2.patch'
         # Misc Patches
         'minizip.patch'
-        'vaapi_patch_r2.patch'
+        'vaapi_patch-r3.patch::https://sl1pkn07.wtf/paste/view/raw/918a2c94' #'vaapi_patch-r3.base64::https://chromium-review.googlesource.com/changes/532294/revisions/53b93dfe87fd10cced5d2a2a63072dfc7a2af6e4/patch?download'
+        'https://raw.githubusercontent.com/OSSystems/meta-browser/master/recipes-browser/chromium/files/0002-replace-struct-ucontext-with-ucontext_t.patch' # from https://github.com/OSSystems/meta-browser/tree/master/recipes-browser/chromium
         # Patch from crbug (chromium bugtracker) or Arch chromium package
         'chromium-widevine-r1.patch'
-        'chromium-blink-gcc7.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-blink-gcc7.patch?h=packages/chromium' # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=853347
-        'chromium-v8-gcc7.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-v8-gcc7.patch?h=packages/chromium' # https://bugs.chromium.org/p/chromium/issues/detail?id=614289
+        'chromium-blink-gcc7-r1.patch' #::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-blink-gcc7.patch?h=packages/chromium' # https://bugs.chromium.org/p/chromium/issues/detail?id=614289
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-55.0.2873.0.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -98,15 +98,16 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             # Patch form Gentoo
             'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
-            '5de85a0e1be742ad629443655730028ee918826ae8e0dcade927b8877c5a3ad5'
-            '8aee756a778e98b722cc55421e58466b3b35a132fc91d8f8a309a2df9ca559ac'
+            '0dc153c76900a1a4ab3a33af767aad22b833c657a9acec8f8fbf0be2ed57b993'
+            'd44b90fc7313afaa6d6f77cde72c0e9a5e4a1cc792216cbca2ed45c39658c472'
+            '9128edb5a29ba1a5ad21be4a7b83eb07965b172425064c12c4abcc431deea2b4'
             # Misc Patches
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
-            '4ec8b2df4859b9d26b8ea4afc205f563f59844c54a6659bb279776b93163a0ce'
+            'a67a1c086ed54047b568fda7b62070e6cfb04e087820729b7553e972fcfe9ba8' #'4696ff0eb1b33e97958f4eb677e2f5d88bf72b3d454a2c8f0dadb5abbe1ae439'
+            '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
             # Patch from crbug (chromium bugtracker)
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
-            'f94310a7ba9b8b777adfb4442bcc0a8f0a3d549b2cf4a156066f8e2e28e2f323'
-            '46dacc4fa52652b7d99b8996d6a97e5e3bac586f879aefb9fb95020d2c4e5aec'
+            'fab4c65e2802e709a32d059784182be5a89bc3ca862a7e27810714ea7b86f868'
             )
 options=('!strip')
 install=chromium-dev.install
@@ -144,9 +145,6 @@ fi
 # Need you use ccache?.
 if [ "${_use_ccache}" = "1" ]; then
   makedepends+=('ccache')
-  export CCACHE_CPP2=yes
-  export CCACHE_SLOPPINESS=time_macros
-  _ccache='ccache'
 fi
 
 # Are you use gnome-keyring/gnome?.
@@ -205,7 +203,6 @@ _keeplibs=(
   'third_party/flatbuffers'
   'third_party/flot'
   'third_party/freetype'
-  'third_party/glslang-angle'
   'third_party/google_input_tools'
   'third_party/google_input_tools/third_party/closure_library'
   'third_party/google_input_tools/third_party/closure_library/third_party/closure'
@@ -227,8 +224,8 @@ _keeplibs=(
   'third_party/libvpx'
   'third_party/libvpx/source/libvpx/third_party/x86inc'
   'third_party/libwebm'
-  'third_party/libyuv'
   'third_party/libxml'
+  'third_party/libyuv'
   'third_party/lss'
   'third_party/lzma_sdk'
   'third_party/markupsafe'
@@ -245,7 +242,7 @@ _keeplibs=(
   'third_party/pdfium/third_party/build'
   'third_party/pdfium/third_party/bigint'
   'third_party/pdfium/third_party/freetype'
-  'third_party/pdfium/third_party/lcms2-2.6'
+  'third_party/pdfium/third_party/lcms'
   'third_party/pdfium/third_party/libopenjpeg20'
   'third_party/pdfium/third_party/libpng16'
   'third_party/pdfium/third_party/libtiff'
@@ -256,18 +253,17 @@ _keeplibs=(
   'third_party/qcms'
   'third_party/sfntly'
   'third_party/skia'
+  'third_party/skia/third_party/gif'
   'third_party/skia/third_party/vulkan'
   'third_party/smhasher'
   'third_party/spirv-headers'
   'third_party/spirv-tools-angle'
+  'third_party/sqlite'
   'third_party/swiftshader'
   'third_party/swiftshader/third_party/llvm-subzero'
   'third_party/swiftshader/third_party/subzero'
-  'third_party/sqlite'
   'third_party/tcmalloc'
   'third_party/usrsctp'
-  'third_party/vulkan'
-  'third_party/vulkan-validation-layers'
   'third_party/web-animations-js'
   'third_party/webdriver'
   'third_party/webrtc'
@@ -285,6 +281,15 @@ _keeplibs=(
   'third_party/usb_ids'
   'third_party/xdg-utils'
   'third_party/yasm/run_yasm.py'
+
+  # VULKAN!!
+  'third_party/SPIRV-Tools'
+  'third_party/angle/src/third_party/compiler'
+  'third_party/glslang-angle'
+  'third_party/glslang'
+  'third_party/shaderc'
+  'third_party/vulkan-validation-layers'
+  'third_party/vulkan'
 )
 
 # Set build flags.
@@ -312,12 +317,22 @@ _flags=(
   "enable_nacl=${_nacl}"
   "enable_nacl_nonsfi=${_nacl}"
   'use_custom_libcxx=false'
+  # VULKAN!! disable at the moment (fail build)
+  #'enable_vulkan=true'
 )
 
-# Enable VA-API, see https://chromium-review.googlesource.com/c/569529
-if [ "${_enable_vaapi}" = 1 ]; then
-  _flags+=('use_vaapi=true')
-fi
+# Enable VAAPI, see https://chromium-review.googlesource.com/532294
+# NOTE  : The detector is Experimental, Can kill you kitty/doggy/waifu/husbando
+# NOTE 2: vfio-pci is for avoid systems with KVM VGA passtrought enabled
+# NOTE 3: Nvidia (bloob drivers) seems have problem with this patch. disable it
+_vga_drivers="$(lspci -vk | grep -A10 VGA | grep  'Kernel driver in use' | cut -d ' ' -f5)"
+for _driver in ${_vga_drivers}; do
+  if [ "${_driver}" != "vfio-pci" ] && [ "${_driver}" != "nvidia" ]; then
+    _enable_vaapi=1
+    _flags+=('use_vaapi=true')
+    break
+  fi
+done
 
 # Set the bundled/external components.
 # TODO: need ported to GN as GYP doing before. see status page: https://crbug.com/551343
@@ -326,7 +341,6 @@ _use_system=(
   'flac'
 #  'freetype'   # https://bugs.chromium.org/p/pdfium/issues/detail?id=733
   'harfbuzz-ng'
-#  'hunspell'   # Needs ustream changes
 #  'icu'        # https://crbug.com/678661
   'libdrm'
 #  'libevent'   # Get segfaults and other problems https://bugs.gentoo.org/593458
@@ -339,11 +353,8 @@ _use_system=(
   'libxslt'
   'openh264'
   'opus'
-#  'protobuf'   # https://bugs.gentoo.org/525560
   're2'
-#  'sqlite'     # https://crbug.com/58087
   'snappy'
-#   'ssl'       # https://crbug.com/22208
   'yasm'
   'zlib'
 )
@@ -387,12 +398,21 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r2.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r15.patch"
-  patch -p1 -i "${srcdir}/chromium-system-zlib-r1.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r16.patch"
+  patch -p1 -i "${srcdir}/chromium-gcc5-r2.patch"
+  patch -p1 -i "${srcdir}/chromium-system-icu-r2.patch"
 
   # Misc Patches:
+  patch -p1 -i "${srcdir}/chromium-blink-gcc7-r1.patch"
+  patch -p1 -i "${srcdir}/0002-replace-struct-ucontext-with-ucontext_t.patch"
+
+  # VULKAN!!!
+  sed 's|base/||' -i cc/output/vulkan_renderer.h
+
+  # Apply VAAPI patch
   if [ "${_enable_vaapi}" = 1 ]; then
-    patch -p1 -i "${srcdir}/vaapi_patch_r2.patch"
+    msg2 "Enable VAAPI"
+    patch -p1 -i "${srcdir}/vaapi_patch-r3.patch" # base64 -d "${srcdir}/vaapi_patch-r3.base64" | patch -p1 -i -
   fi
 
   # Fix paths.
@@ -453,40 +473,54 @@ prepare() {
     python2 tools/clang/scripts/update.py
   fi
 
-_set_gcc() {
-  _flags+=(
-    'is_clang=false'
-    'clang_use_chrome_plugins=false'
-  )
-  export CC="${_ccache} gcc -Wall"
-  export CXX="${_ccache} g++ -Wall"
-  patch -p1 "${srcdir}/chromium-v8-gcc7.patch"
-  patch -p1 "${srcdir}/chromium-blink-gcc7.patch"
-}
-
   # Setup compilers.
-  # Use system/bundled Clang? or GCC?.
-  export AR=ar
-  export NM=nm
+  if [ "${_use_ccache}" = "1" ]; then
+    export CCACHE_CPP2=yes
+    export CCACHE_SLOPPINESS=time_macros
+    _ccache='ccache'
+    _ccache_flags='-Qunused-arguments'
+  fi
+
+  _set_gcc() {
+    _compiler=GCC
+    _flags+=(
+      'is_clang=false'
+      'clang_use_chrome_plugins=false'
+    )
+    _c_compiler="gcc"
+    _cpp_compiler="g++"
+    CFLAGS+=" -fno-delete-null-pointer-checks"
+    CXXFLAGS+=" -fno-delete-null-pointer-checks"
+  }
+
   if [ "${_use_clang}" = "0" ]; then
     _set_gcc
   elif [ "${_use_clang}" = "1" ]; then
     if [ "${CARCH}" = 'i686' ]; then
-      msg2 "Build with (bundled) clang is not possible in 32bit systems. then, Use system GCC"
       _set_gcc
+      _compiler_msg=": Build with (bundled) clang is not possible in 32bit systems."
     elif [ "${CARCH}" = 'x86_64' ]; then
-      msg2 "Setup for use clang"
+      _compiler=Clang
       _flags+=(
         'is_clang=true'
         'clang_use_chrome_plugins=true'
       )
       _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin"
-      export CXXFLAGS="${CXXFLAGS//-fno-plt/} -Wno-unknown-warning-option"
-      export CFLAGS="${CXXFLAGS//-fno-plt/}"
-      export CC="${_ccache} ${_clang_path}/clang -Qunused-arguments"
-      export CXX="${_ccache} ${_clang_path}/clang++ -Qunused-arguments"
+      _c_compiler="${_clang_path}/clang"
+      _cpp_compiler="${_clang_path}/clang++"
+      export CXXFLAGS="${CXXFLAGS//-fno-plt/}"
+      export CFLAGS="${CFLAGS//-fno-plt/}"
+      CFLAGS+=' -Wno-unknown-warning-option'
+      CXXFLAGS+=' -Wno-unknown-warning-option'
     fi
   fi
+
+  # Export compilers
+  msg2 "Setup ${_compiler} compiler${_compiler_msg}"
+  export AR=ar
+  export NM=nm
+  export CC="${_ccache} ${_c_compiler} ${_ccache_flags}"
+  export CXX="${_ccache} ${_cpp_compiler} ${_ccache_flags}"
 }
 
 build() {
@@ -579,7 +613,7 @@ package() {
     esac
     install -Dm644 "${_branding}/product_logo_${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/chromium-dev.png"
   done
-    install -Dm644 "${srcdir}/chromium-dev.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/chromium-dev.svg"
+  install -Dm644 "${srcdir}/chromium-dev.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/chromium-dev.svg"
 
   # Install NaCL stuff if is detected.
   if [ "${_build_nacl}" = "1" ]; then
