@@ -4,7 +4,7 @@
 
 _pkgname=nss
 pkgname=nss-hg
-pkgver=r13443.d68d2b44082f
+pkgver=r13715.485fa499b698
 pkgrel=1
 pkgdesc="Mozilla Network Security Services"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 license=('MPL' 'GPL')
 _nsprver=4.15
 depends=("nspr>=${_nsprver}" sqlite zlib sh p11-kit)
-makedepends=(gyp perl python2 ninja git python2 mercurial python2-setuptools python2-virtualenv)
+makedepends=(gyp perl python ninja mercurial)
 options=('!strip' '!makeflags' 'staticlibs')
 source=("hg+https://hg.mozilla.org/projects/nss")
 sha256sums=('SKIP')
@@ -26,9 +26,10 @@ pkgver() {
 
 build() {
   cd nss
-  hg up default
-  PATH=:$PWD/../:$PATH ./build.sh --opt --system-sqlite --system-nspr \
-                                  --disable-tests --enable-libpkix
+  tag=$(hg id https://hg.mozilla.org/projects/nss#default)
+  hg up $tag
+  ./build.sh --opt --system-sqlite --system-nspr \
+             --disable-tests --enable-libpkix
 }
 
 package() {
