@@ -1,0 +1,22 @@
+post_install() {
+	cat <<EOF
+
+Before run this application at first time, please type listed commands below:
+
+sudo gpasswd -a YOUR_USERNAME video 
+sudo setcap 'cap_sys_tty_config+ep' /usr/bin/fbterm 
+sudo chmod u+s /usr/bin/fbterm 
+
+And then add this line to your .fbtermrc:
+
+input-method=fcitx-fbterm
+
+If you want to display and input Chinese characters when you login to the tty without typing a series commands, please add this line to your .bashrc:
+
+[[ \$(tty) == \/dev\/tty[0-9]* ]] && /usr/bin/fbterm && exit
+EOF
+}
+
+post_upgrade() {
+	post_install $1
+}
