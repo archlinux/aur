@@ -15,7 +15,9 @@ md5sums=('6dfd68e459e2c62387579888a867281f'
          '167a9f5c94a16d7855c3ac99e34a4506')
 
 prepare() {
-  sed -i 's,  #include <xlocale.h>,  #include <locale.h>,g' "oce-OCE-${pkgver}/src/Standard/Standard_CLocaleSentry.hxx"
+  if [ ! -e "/usr/include/xlocale.h" ]; then
+    sed -i 's,  #include <xlocale.h>,  #include <locale.h>,g' "oce-OCE-${pkgver}/src/Standard/Standard_CLocaleSentry.hxx"
+  fi
 }
 
 build() {
