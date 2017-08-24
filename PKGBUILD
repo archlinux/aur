@@ -4,7 +4,7 @@
 pkgname=google-earth6
 pkgver=6.2.2.6613
 pkgrel=2
-pkgdesc="A legacy 3D interface to view satellite images of Earth and other objects"
+pkgdesc="Legacy 3D interface to explore the globe, terrain, streets, buildings and other planets"
 arch=('i686' 'x86_64')
 url="https://www.google.com/earth/index.html"
 license=('custom')
