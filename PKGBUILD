@@ -2,7 +2,7 @@
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
 _pkgname=k3d
 pkgname=${_pkgname}-git
-pkgver=r3517.57157d1
+pkgver=r3533.c9cf45cf
 pkgrel=1
 pkgdesc="A free 3D modelling and animation software"
 arch=('x86_64' 'i686')
@@ -12,7 +12,6 @@ depends=('cgal'
          'collada-dom'
          'ftgl'
          'glew'
-         'gnome-vfs'
          'gtkglext'
          'gtkmm'
          'gtksourceview2'
