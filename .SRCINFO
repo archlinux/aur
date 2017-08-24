@@ -1,0 +1,18 @@
+pkgbase = mythes-bg-git
+	pkgdesc = Bulgarian thesaurus
+	pkgver = r2331.93db4f5
+	pkgrel = 1
+	url = https://docs.libreoffice.org/lingucomponent.html
+	arch = any
+	license = GPL2
+	makedepends = perl
+	optdepends = libmythes: offers thesaurus library functions
+	provides = mythes-bg
+	conflicts = mythes-bg
+	source = dictionaries::git+https://github.com/LibreOffice/dictionaries.git
+	source = mythes::git+https://github.com/hunspell/mythes.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mythes-bg-git
+
