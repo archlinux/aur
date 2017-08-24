@@ -1,7 +1,7 @@
 # Maintainer:   Razer <razer[AT]neuf[DOT]fr>
 
 pkgname=python-rf24
-pkgver='1.2.0'
+pkgver='1.3.0'
 pkgrel=1
 pkgdesc='Python bindings for RF24 radio modules'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
