@@ -11,6 +11,9 @@ makedepends=('gendesk')
 source=("${pkgname}.zip::https://esp8266.ru/${pkgname}-latest/?f=ESPlorer.zip")
 sha256sums=('5b0b8d38f31f36776a3d2252130ae64971c06bce56590663ca398807ac719738')
 
+# server doesn't like HTTP/2
+DLAGENTS="$( IFS=$'\n'; echo "${DLAGENTS[*]}" | grep '^https::' ) --http1.1"
+
 prepare() {
   bsdtar xf ESPlorer/ESPlorer.jar --strip-components 1 resources/ESP8266-96x96.png
   gendesk -n --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" --categories "Development;Network;Building;IDE"
