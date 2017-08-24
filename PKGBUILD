@@ -10,6 +10,7 @@ license=('GPL')
 depends=('yaml-cpp' 'factorio-mod-info' 'zsh')
 makedepends=('xmake>=2.1.4.r178' 'git')
 optdepends=(
+'rlwrap: readline-style editing and history support'
 'steam: get factorio'
 'factorio: factorio game'
 )
