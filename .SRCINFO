@@ -1,0 +1,17 @@
+pkgbase = omnidb-app
+	pkgdesc = Web tool for database management
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://omnidb.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python
+	options = !strip
+	source_i686 = https://omnidb.org/dist/2.0.4/omnidb-app_2.0.4-debian-i386.deb
+	sha256sums_i686 = b3ad7085ab999f3c8f8db05335a5ef5cd2a8db96e36006f46419ec711d6961a5
+	source_x86_64 = https://omnidb.org/dist/2.0.4/omnidb-app_2.0.4-debian-amd64.deb
+	sha256sums_x86_64 = 6ac984a6cb61819fd6289653532dc69ab5e6f667601a481b2add6bb820c4a02e
+
+pkgname = omnidb-app
+
