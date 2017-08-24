@@ -2,7 +2,7 @@
 pkgname="omnidb-app"
 pkgver=2.0.4
 pkgrel=1
-pkgdesc="Web tool for database management"
+pkgdesc="Web tool for database management. This is a standalone version that can be used to connect to any database server."
 arch=('i686' 'x86_64')
 url="https://omnidb.org/"
 license=('MIT')
