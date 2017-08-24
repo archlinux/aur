@@ -1,6 +1,6 @@
 pkgbase = urh
 	pkgdesc = Universal Radio Hacker: investigate wireless protocols like a boss
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/jopohl/urh
 	arch = i686
@@ -20,9 +20,9 @@ pkgbase = urh
 	optdepends = rfcat-hg: for rfcat plugin
 	optdepends = gnuradio: for USRP gnuradio backend
 	optdepends = gnuradio-osmosdr: for more gnuradio device backends (HackRF, FunCubeDongle, RTL-SDR)
-	source = urh-1.7.1.tar.gz::https://github.com/jopohl/urh/tarball/v1.7.1
-	md5sums = 165e27a56eefdadfd63a56ace40489bc
-	sha256sums = 5d6c4a46ac8e9fa6994ed8fa9d310dfe8cb820a9ceffd4cc6cf9ff89134f233c
+	source = urh-1.8.0.tar.gz::https://github.com/jopohl/urh/tarball/v1.8.0
+	md5sums = 69284c9f044150d3a57cf944ef75a1cf
+	sha256sums = 8ab15b75558177aa93ea37706bfecea4393020738c3861d2d0751510fe44fa5c
 
 pkgname = urh
 
