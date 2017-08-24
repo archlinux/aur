@@ -1,7 +1,7 @@
 # Maintainer:   Razer <razer[AT]neuf[DOT]fr>
 
 pkgname=rf24-network
-pkgver='1.0.8'
+pkgver='1.0.9'
 pkgrel=1
 pkgdesc='Networking with RF24 radio modules'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

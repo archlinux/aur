@@ -1,6 +1,6 @@
 pkgbase = rf24-network
 	pkgdesc = Networking with RF24 radio modules
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = http://tmrh20.github.io/RF24Network/
 	arch = i686
