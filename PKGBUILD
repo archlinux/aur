@@ -4,7 +4,7 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash-gtk3-git
-pkgver=2.6.17b.r1524.g723530a9b
+pkgver=2.6.17b.r1566.g29a92431c
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application (GTK3 development version)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('evince: for print preview'
 	    'yelp: help browser'
             'perl-finance-quote: for stock information lookups'
             'perl-date-manip: for stock information lookups')
-options=('!makeflags' '!emptydirs')
+options=('!emptydirs')
 source=("git+https://github.com/Gnucash/gnucash")
 sha1sums=('SKIP')
 
@@ -44,7 +44,12 @@ build() {
 
 package() {
   cd "${srcdir}/gnucash"
-  make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
+
+  # make install fails with parallel make, see
+  # https://bugzilla.gnome.org/show_bug.cgi?id=644896#c11
+  # using -j1 instead
+  MAKEFLAGS="${MAKEFLAGS} -j1" make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
+
   cd libgnucash/doc/design
   make DESTDIR="${pkgdir}" install-info
 

@@ -1,6 +1,6 @@
 pkgbase = gnucash-gtk3-git
 	pkgdesc = A personal and small-business financial-accounting application (GTK3 development version)
-	pkgver = 2.6.17b.r1524.g723530a9b
+	pkgver = 2.6.17b.r1566.g29a92431c
 	pkgrel = 1
 	url = http://www.gnucash.org
 	arch = i686
@@ -31,7 +31,6 @@ pkgbase = gnucash-gtk3-git
 	optdepends = perl-date-manip: for stock information lookups
 	provides = gnucash
 	conflicts = gnucash
-	options = !makeflags
 	options = !emptydirs
 	source = git+https://github.com/Gnucash/gnucash
 	sha1sums = SKIP
