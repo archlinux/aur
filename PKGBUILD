@@ -4,7 +4,7 @@
 
 pkgname=google-musicmanager
 pkgver=1.0.243.1116_r0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple application for adding the music files on your computer to your Google Music library"
 arch=('i686' 'x86_64')
 url="http://music.google.com"
@@ -16,7 +16,7 @@ depends=('flac'
          'libvorbis'
          'xdg-utils'
          'libidn'
-         'qtwebkit-bin')
+         'qtwebkit')
 optdepends=('log4cxx')
 options=(!strip)
 source_i686=("https://dl.google.com/linux/musicmanager/deb/pool/main/g/${pkgname}-beta/${pkgname}-beta_${pkgver/_/-}_i386.deb")
