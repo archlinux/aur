@@ -1,7 +1,7 @@
 # Maintainer: Avi Knoll <aknoll@atlassian.com>
 pkgname=mvnvm
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Run different versions of maven for different projects."
 arch=('any')
 url="http://mvnvm.org/"
@@ -13,7 +13,7 @@ provides=(maven)
 source=(
     https://bitbucket.org/mjensen/mvnvm/raw/mvnvm-${pkgver}/mvn
 )
-sha256sums=('968e09aa2dec3c9374e2fb40aaaa73ef313a31b333abc71ca937a25d9e4a6c89')
+sha256sums=('7f09faee6147aac4d57a73e7e97a053ca3350a737048104c7ae4cee6addde0d0')
 package() {
     mkdir -p ${pkgdir}/usr/bin
     cp ${srcdir}/mvn ${pkgdir}/usr/bin/mvn

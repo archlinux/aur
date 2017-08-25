@@ -1,14 +1,14 @@
 pkgbase = mvnvm
 	pkgdesc = Run different versions of maven for different projects.
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mvnvm.org/
 	arch = any
 	license = unknown
 	makedepends = bash
 	provides = maven
 	source = https://bitbucket.org/mjensen/mvnvm/raw/mvnvm-1.0.9/mvn
-	sha256sums = 968e09aa2dec3c9374e2fb40aaaa73ef313a31b333abc71ca937a25d9e4a6c89
+	sha256sums = 7f09faee6147aac4d57a73e7e97a053ca3350a737048104c7ae4cee6addde0d0
 
 pkgname = mvnvm
 
