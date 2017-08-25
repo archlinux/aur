@@ -6,10 +6,10 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-light
-pkgver=0.20.9
+pkgver=0.20.10
 _majorver=0.20
 pkgrel=1
-pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient support.'
+pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient and zziplib support.'
 url='https://www.musicpd.org/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -22,7 +22,7 @@ replaces=('mpd')
 source=("https://www.musicpd.org/download/mpd/${_majorver}/mpd-${pkgver}.tar.xz"
         'mpd.tmpfile'
         'mpd.conf')
-sha256sums=('cd77a2869e32354b004cc6b34fcb0bee56114caa2d9ed862aaa8071441e34eb7'
+sha256sums=('52fbc1125cdba41ba999add2820d45f3ce7cf493006bb04d8f0b2937204d3121'
             'c1683ba35774c85e16c70e89f7e2ed1c09619512b1a273daabbd5e34d40439bd'
             'e213c108cd0e076b5cc07091707ef75d74d9ac8c779d0c0128cd0aa69617f8a0')
 backup=('etc/mpd.conf')
@@ -38,6 +38,7 @@ build() {
 		--enable-libmpdclient \
 		--disable-ao \
 		--disable-ffmpeg \
+		--disable-iso9660 \
 		--disable-jack \
 		--disable-modplug \
 		--disable-pulse \
@@ -45,6 +46,7 @@ build() {
 		--disable-sidplay \
 		--disable-soundcloud \
 		--disable-wavpack \
+		--disable-zzip \
 		--with-zeroconf=no \
 		--disable-smbclient \
 		--with-systemdsystemunitdir=/usr/lib/systemd/system
