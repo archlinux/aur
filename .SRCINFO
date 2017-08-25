@@ -1,6 +1,6 @@
 pkgbase = chromium-vaapi-bin
 	pkgdesc = Chromium compiled with VA-API support for Intel Graphics
-	pkgver = 60.0.3112.101
+	pkgver = 60.0.3112.113
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -23,7 +23,6 @@ pkgbase = chromium-vaapi-bin
 	depends = flac
 	depends = opus
 	depends = minizip
-	depends = libpng
 	depends = harfbuzz-icu
 	depends = libxslt
 	depends = re2
@@ -38,8 +37,8 @@ pkgbase = chromium-vaapi-bin
 	provides = chromium
 	conflicts = chromium
 	conflicts = chromium-vaapi
-	source_x86_64 = https://github.com/maximbaz/chromium-vaapi-bin/raw/master/x86_64/chromium-vaapi-60.0.3112.101-1-x86_64.pkg.tar.xz
-	sha256sums_x86_64 = 013ac37e5dc054a196af8f57e875c6c3d613826f5632fe1c29c0bbc7d5bcc768
+	source_x86_64 = https://github.com/maximbaz/chromium-vaapi-bin/raw/master/x86_64/chromium-vaapi-60.0.3112.113-1-x86_64.pkg.tar.xz
+	sha256sums_x86_64 = 3200aa74146f74f84287a74a829bf30f2db9abe56ea8809089d91b05f035c04c
 
 pkgname = chromium-vaapi-bin
 
