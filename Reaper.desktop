@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Reaper
-Comment=Digital audio workstation
-Exec=reaper5
-Icon=/usr/lib/REAPER/Resources/main.png
-Terminal=false
-Type=Application
-Categories=GTK;Audio;AudioVideoEditing;AudioVideo;Video;
