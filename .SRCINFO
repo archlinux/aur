@@ -1,0 +1,24 @@
+pkgbase = pinentry-git
+	pkgdesc = A small collection of dialog programs that allow GnuPG to read passphrases and PIN numbers in a secure manner
+	pkgver = 1.0.0.r29.g2b1fb2f
+	pkgrel = 1
+	url = https://gnupg.org/software/pinentry/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gcr
+	makedepends = gtk2
+	makedepends = qt5-base
+	depends = glibc
+	depends = libassuan
+	depends = libsecret
+	depends = libcap
+	depends = ncurses
+	provides = pinentry
+	conflicts = pinentry
+	source = git+https://dev.gnupg.org/source/pinentry.git
+	sha256sums = SKIP
+
+pkgname = pinentry-git
+
