@@ -1,7 +1,7 @@
 pkgbase = udefrag
 	pkgdesc = Ultradefrag 5.0 console for GNU/Linux to defragment a NTFS filesystem
 	pkgver = 5.0.0AB.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://jp-andre.pagesperso-orange.fr/advanced-ntfs-3g.html
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = udefrag
 	source = http://jp-andre.pagesperso-orange.fr/ultradefrag-5.0.0AB.7.zip
 	source = udefrag.patch
 	md5sums = 20cdd938bed3efa5161aefc0ad08ba00
-	md5sums = f34736c6b3baa2ab05bfc043f29c473b
+	md5sums = 09eef7f045ea84e994f81cca88ae7f33
 
 pkgname = udefrag
 
