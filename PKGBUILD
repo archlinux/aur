@@ -2,17 +2,17 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mange
 pkgver=0.1b
-pkgrel=3
+pkgrel=4
 pkgdesc="A ncurses-based spreadsheet (eg csv, tsv) editor."
 url="http://dl.dropbox.com/u/39577570/mange-0.1b.tar.gz"
-arch=('x86_64' 'i686')
+arch=('i686' 'x86_64')
 license=('GPLv3')
 depends=('ncurses')
 optdepends=('r: plotting' 'feh: to view plots')
-source=("http://dl.dropbox.com/u/39577570/$pkgname-$pkgver.tar.gz")
-md5sums=('487467f857b22b35766cb33ac6afdf1d')
-sha1sums=('b4ff3f91e639f2fa9ec6f79befb43c8beb612ffe')
-sha256sums=('3f0d809c70bee7c26bedb1c821b73d41a5c54996809e1ef61b3a24231036f8f3')
+source=("https://github.com/aksr/$pkgname/archive/$pkgver.tar.gz")
+md5sums=('86dda290c50bf7e7febaf47c6c78c86d')
+sha1sums=('262008511f741ae706265ecf953484e57f8baadf')
+sha256sums=('c611dedd49789e93b2236d032303ea326f3252ec41034998ad75887ffb3a8b61')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
