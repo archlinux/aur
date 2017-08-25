@@ -2,7 +2,7 @@
 
 pkgname=highlight-wookietreiber
 _pkgname=highlight
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="searches for a pattern or regular expression (regex) and highlights matches"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gc' 'libunwind' 're2')
 makedepends=('clang' 'sbt')
 conflicts=('hl-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wookietreiber/highlight/archive/v$pkgver.tar.gz")
-md5sums=('949b0e87e544819bfebf01d24d12dec3')
+md5sums=('c1e10c4edc7d75de6e915e0936bd7768')
 
 package() {
   cd $srcdir/$_pkgname-$pkgver
