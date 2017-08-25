@@ -37,7 +37,7 @@ build() {
 package() {
   cd "dnsmasq"
 
-  make COPTS="$_build_copts" PREFIX="/usr" BINDIR="/usr/bin" DESTDIR="$pkgdir" \
+  make COPTS="$_build_copts" DESTDIR="$pkgdir" PREFIX="/usr" BINDIR="/usr/bin" \
     install install-i18n
 
   install -Dm644 "dnsmasq.conf.example" "$pkgdir/etc/dnsmasq.conf"
