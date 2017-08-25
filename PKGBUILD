@@ -1,7 +1,7 @@
 # Maintainer: Nick Burrett <nick@sqrt.co.uk>
 pkgname=comskip
-pkgver=0.81.095
-pkgrel=3
+pkgver=0.82.002
+pkgrel=1
 epoch=1
 pkgdesc='Comskip is a free MPEG commercial break detector'.
 _gitname='comskip'
@@ -13,7 +13,7 @@ depends=('ffmpeg' 'argtable')
 source=("${_gitname}::git+https://github.com/erikkaashoek/Comskip#commit=0bf473cb5be4b754f01f95fb3cffd120f5f1985a"
         "comskip-version.patch")
 sha256sums=('SKIP'
-            '79e992be77b0408dfe8651022f9784bf02336326b0ec4cc636ac2ebed690e134')
+            '7bf06bef3c4d26b6aad1bd0714b2b365bbd0c76bb491bf8ec42d8752ff442cd0')
 
 prepare() {
   cd "${srcdir}/${_gitname}"
