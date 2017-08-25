@@ -2,7 +2,7 @@
 
 pkgname=mattermost-git
 _pkgname="${pkgname%-git}"
-pkgver=4.0.0.rc2.r214.ga6ba5a5e7
+pkgver=4.1.0.r64.gc81d0f120
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="http://mattermost.org"
 # src.: https://www.mattermost.org/licensing
 license=('AGPL3')
 
-makedepends=('go' 'npm' 'git' 'libpng12' 'pngquant' 'yarn')
+makedepends=('git' 'go' 'libpng12' 'npm' 'yarn')
 provides=('mattermost')
 conflicts=('mattermost')
 backup=('etc/webapps/mattermost/config.json')
@@ -76,14 +76,14 @@ prepare() {
     # with "cp README.md" to the line beginning with run-server
     sed -n '1,/cp README.md/p;/^run-server:/,$p' -i Makefile
 
+    # Build build-linux directly, because the package target in the
+    # Makefile has as dependency build which itself has build-linux,
+    # build-osx and build-windows as dependencies.
+    #
+    # Remove GOARCH=amd64 statement
     sed -E -i Makefile \
         -e 's/^package: build build-client/package: build-linux build-client/' \
         -e 's/GOARCH=amd64//'
-
-    # Use system pngquant instead of the one bundled with the app. Add rm and
-    # ln instruction after the line 'npm install'.
-    sed -i webapp/Makefile \
-        -e '/npm install/a \	rm node_modules/pngquant-bin/vendor/pngquant\n	ln -s /usr/bin/pngquant node_modules/pngquant-bin/vendor/pngquant'
 }
 
 build() {
