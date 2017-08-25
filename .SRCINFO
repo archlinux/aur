@@ -1,0 +1,14 @@
+pkgbase = gltl2ba-git
+	pkgdesc = Enriches ltl2ba with graph generation capabilities
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/PatrickTrentin88/gltl2ba
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = ltl2ba
+	depends = graphviz
+	depends = python-graphviz
+
+pkgname = gltl2ba-git
+
