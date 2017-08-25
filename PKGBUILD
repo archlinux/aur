@@ -2,8 +2,8 @@
 
 pkgname=access-export
 pkgver=0.2.0
-pkgrel=1
-pkgdesc="Export and convert Microsoft® Access® databases to various formats including SQLite"
+pkgrel=2
+pkgdesc="Export and convert Microsoft® Access® databases (.mdb) to various formats including SQLite"
 url=https://github.com/hzpz/access-export
 license=(MPL)
 arch=(any)
