@@ -28,6 +28,6 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  make PREFIX="/usr" DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
   install -Dm644 "lib/LICENSE" "$pkgdir/usr/share/licenses/lizard/LICENSE"
 }
