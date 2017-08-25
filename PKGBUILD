@@ -18,7 +18,7 @@
 pkgbase="spl-linux-hardened-git"
 pkgname=("spl-linux-hardened-git" "spl-linux-hardened-git-headers")
 pkgver=0.7.0.r12.g9df9692.4.12.8.b.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-hardened-headers=4.12.8.b-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
