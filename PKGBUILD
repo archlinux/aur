@@ -17,7 +17,7 @@
 pkgbase="spl-linux-git"
 pkgname=("spl-linux-git" "spl-linux-git-headers")
 pkgver=0.7.0.r12.g9df9692.4.12.8.2
-pkgrel=1
+pkgrel=3
 makedepends=("linux-headers=4.12.8-2" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
