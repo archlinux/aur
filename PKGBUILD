@@ -1,14 +1,17 @@
 # Maintainer: Stephan Eisvogel <eisvogel at embinet dot de>
 pkgname=nsjail-git
-pkgver=r481.1dd3223
+pkgver=r562.de92727
 pkgrel=1
-_pkgcommit=#commit=1dd3223b7437831a3549ef301465fb3649229726
+_pkgcommit=#commit=de927275919864c989972db5e8c437582a4e3055
 pkgdesc="A light-weight process isolation tool, making use of Linux namespaces and seccomp-bpf syscall filters (with help of the kafel bpf language)"
 arch=('x86_64')
 url="http://nsjail.com"
 license=('Apache')
 makedepends=('git' 'autoconf-archive>2016.03.20' 're2c' 'check>=0.9.4')
-depends=('libnl>=3' 'protobuf-c')
+depends=('libcap' 'libnl>=3' 'protobuf-c')
+provides=('nsjail')
+conflicts=('nsjail')
+
 source=("${pkgname}::git+git://github.com/google/nsjail.git${_pkgcommit}"
 		"https://github.com/trustm3/external_protobuf-c-text/commit/c37f8708d847319921a3fba7d6863103f6b801e2.patch"
 		"https://github.com/trustm3/external_protobuf-c-text/commit/620db2f1a5bf9a1468a2f54ef904977133267aa2.patch"
@@ -21,7 +24,6 @@ sha256sums=('SKIP'
 			'78b4e3c5d66b7e26e25c91f62f2a3fc599356bddac8cb174a2d708d5fc2d997a'
 			'970a3b464e63f5b544fb5e41f7aa6cee13161f12f79d002086fc2aab6aa765f5'
 			'd9289f5b146a036dfafaa7b0cc6ecca73ab32b454ef1bef5c512874391174df2')
-provides=('nsjail')
 
 pkgver() {
 	cd ${pkgname}
@@ -43,6 +45,7 @@ prepare() {
 	sed -i '/if (!ctxt->lexical_error) {/aYYUSE(scanner);' kafel/src/parser.y
 
 	# 3rd party fixes
+
 	_patch="patch -N -t -p1 --no-backup-if-mismatch -i"
 	cd protobuf-c-text
 
@@ -68,11 +71,17 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	install -d "${pkgdir}/etc/nsjail"
-	install -d "${pkgdir}/usr/share/${pkgname}/examples"
+	# Binary
 	install -D nsjail "${pkgdir}/usr/bin/nsjail"
+	# Manpage
+	install -d "${pkgdir}/usr/share/man/man1"
+	install -m644 ./nsjail.1 "${pkgdir}/usr/share/man/man1/"
+	# Examples, documentation, license
+	install -d "${pkgdir}/usr/share/${pkgname}/examples"
 	install -m644 configs/*.cfg "${pkgdir}/usr/share/${pkgname}/examples"
 	install -m644 LICENSE CONTRIBUTING README.md "${pkgdir}/usr/share/${pkgname}/"
+	# Configuration directory
+	install -d "${pkgdir}/etc/nsjail"
 	echo > "${pkgdir}/etc/nsjail/.placeholder"
 
 	echo -e "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
