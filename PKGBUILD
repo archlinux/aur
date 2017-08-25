@@ -55,7 +55,7 @@ _pkgver=4.9.40
 _rtver=30
 _rtpatchver=rt${_rtver}
 pkgver=${_pkgver}.${_rtver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -65,6 +65,8 @@ _bfqrel=v7r11
 _bfqver=v8r7
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.9.0-${_bfqver}"
 #_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.9.0-${_bfqver}/"
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/lucjan-kernels/master/patches/4.9"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.9"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -87,7 +89,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
          # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        '0005-BFQ-update-to-v8r12.patch')
+        "${_lucjanpath}/0005-BFQ-update-to-v8r12.patch")
         
 _kernelname=${pkgbase#linux}
 

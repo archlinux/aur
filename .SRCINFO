@@ -1,6 +1,6 @@
 pkgbase = linux-rt-bfq
 	pkgver = 4.9.40.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://algo.ing.unimo.it
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = linux-rt-bfq
 	source = config.x86_64
 	source = 90-linux.hook
 	source = linux.preset
-	source = 0005-BFQ-update-to-v8r12.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.9/0005-BFQ-update-to-v8r12.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 64254695FFF0AA4466CC19E67B96E8162A8CF5D1
