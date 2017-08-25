@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=openjpeg-git
-pkgver=2.2.0.r31.ge5285319
+pkgver=2.2.0.r50.g5a4a1012
 pkgrel=1
 pkgdesc="An open-source JPEG 2000 codec written in C language"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ prepare() {
   mkdir -p "_build"
 
   # Install doxygen docs to the right directory
-  sed -i -e "s:DESTINATION\ share/doc:DESTINATION\ share/doc/openjpeg2:" "doc/CMakeLists.txt"
+  sed -i 's:DESTINATION\ share/doc:DESTINATION\ share/doc/openjpeg2:' "doc/CMakeLists.txt"
 }
 
 pkgver() {
