@@ -1,9 +1,9 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=bsd-mailx-git
-pkgver=147.g2a15543
+pkgver=162.ge08053c
 pkgrel=1
-pkgdesc='bsd-mailx from Debain'
+pkgdesc='bsd-mailx from Debian'
 arch=('x86_64' 'i686')
 url='http://anonscm.debian.org/gitweb/?p=users/robert/bsd-mailx.git'
 license=('GPL')
