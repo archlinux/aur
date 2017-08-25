@@ -4,7 +4,7 @@
 
 _gemname=actionview
 pkgname=ruby-$_gemname
-pkgver=5.0.2
+pkgver=5.1.3
 pkgrel=1
 pkgdesc='Rendering framework putting the V in MVC (part of Rails).'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(ruby ruby-activesupport ruby-builder ruby-erubis ruby-rails-html-saniti
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('5bad055cc34ecac33f0ccf73ed0b8e3c41eaf9a1')
+sha1sums=('529a3eaf86cc09f9aa4e710f6f863a2ddaa6f207')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
