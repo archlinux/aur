@@ -11,7 +11,7 @@ depends=('orca' 'yad')
 install='simpleorcapluginsystem.install'
 provides=('simpleorcapluginsystem')
 conflicts=('simpleorcapluginsystem-git')
-md5sums=('d2c7d0d6a01c69efffcf4c02bd7d699b')
+md5sums=('738f3b24557b208d4591aa9acec2d168')
     
 package() {
   cd "${srcdir}//simple-orca-plugin-system-$pkgver"
