@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "libnet/libnet"
 
-  sed -i -e "s/doc //" "Makefile.am"
+  sed -i 's/doc //' "Makefile.am"
 }
 
 pkgver() {
