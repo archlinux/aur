@@ -7,6 +7,8 @@ pkgbase = ephoto
 	arch = x86_64
 	license = BSD
 	depends = efl
+	provides = ephoto
+	conflicts = ephoto-git
 	source = http://download.enlightenment.org/rel/apps/ephoto/ephoto-1.5.tar.gz
 	sha256sums = SKIP
 

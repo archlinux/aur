@@ -8,6 +8,8 @@ arch=('i686' 'x86_64')
 url="https://www.enlightenment.org/about-rage"
 license=('BSD')
 depends=('efl')
+conflicts=('ephoto-git')
+provides=('ephoto')
 source=("http://download.enlightenment.org/rel/apps/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
