@@ -1,12 +1,35 @@
 #!/bin/bash
-# get info for the lastest build of micro editor
-cat version.info > old-version.info
-curl -i https://api.github.com/repos/zyedidia/micro/releases/tags/nightly | grep -P -o "\B\"micro.*linux64.tar.gz" > name.info
-grep -P -o "\d.*-" name.info | head --bytes -2 > version.info
-# check version numbers
-if [ $(<version.info) == $(<old-version.info) ]
-then
-    echo "Micro Editor version numbers are the same, so no changes needed."
-else
-    echo "Micro Editor version differ - so PKGBUILD and .SRCINFO needs updating to latest version info."
-fi
+# ***********************************************************************************
+# Get Micro editor version number from version.info and then split the version number
+# up as the package can not have - in the version number and Micro editor keeps
+# changing the version format some times 1.3.2-10 and other times 1.3.2-dev-10 
+# so need more advanced script is needed.
+# ***********************************************************************************
+# Setup variables for the script
+MICROEDITORVERSION=`cat version.info`
+# get last digits of the version number
+LAST=`cat .version.info | grep -o -P "\w+$"`
+echo 'The dev number = '"$LAST" # Debug info
+FIRST=`cat .version.info | grep -o -P "\d*[.]\d*[.]\d*[.|-]" | head --bytes -2`
+echo 'The first part of the version number = '"$FIRST" # Debug info
+# ************************************************************************************
+# Print Micro editor version out to standard output
+echo -e '\e[34mMicro Editor version = \e[33m'"$MICROEDITORVERSION"'\e[0m'
+# change 5 line from the version.info file
+# example pkgver=1.3.2.dev.10
+cat .PKGBUILD.template | sed '5s/.*/pkgver='"$FIRST"'.dev.'"$LAST"'/' - > test
+# change 7 line from the version.info file
+# _hash="1.3.2-10"
+cat test | sed '7s/.*/_hash="'"$MICROEDITORVERSION"'"/' - > PKGBUILD
+rm test
+# Debug info - comment out if not needed
+echo -e '\n\n File Contents of PKGBUILD \n'  # Debug info
+cat PKGBUILD # Debug info
+# ************************************************************************************
+# make the .SRCINFO from the updated PKGBUILD
+makepkg --printsrcinfo > .SRCINFO
+# Add comment to first line
+sed -i '1s/^/# Auto generated file by makepkg --printsrcinfo > .SRCINFO\n/' .SRCINFO
+# Debug info - comment out if not needed
+echo -e '\n\n File Conents off SRCFILE\n' # Debug info
+cat .SRCINFO # Debug info
