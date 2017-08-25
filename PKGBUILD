@@ -1,0 +1,158 @@
+# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+
+_srcname=opencv
+_ippicv_ver='2017u2'
+_ippicv_date='20170418'
+_tinydnn_ver='1.0.0a3'
+_ippicv_commit='a62e20676a60ee0ad6581e217fe7e4bada3b95db'
+_bootdesc_commit='34e4206aef44d50e6bbcd0ab06354b52e7466d26'
+_vgg_commit='fccf7cd6a4b12079f73bbfb21745f9babcd4eb1d'
+
+pkgname=opencv-gstreamer
+pkgver=3.3.0
+pkgrel=1
+pkgdesc='Open Source Computer Vision Library (no Xine/FFmpeg dependency, uses GStreamer)'
+arch=('i686' 'x86_64')
+url='https://opencv.org/'
+license=('BSD')
+depends=('intel-tbb' 'openexr' 'gstreamer' 'gst-plugins-base-libs' 'libdc1394' 'gtkglext' 'libwebp')
+makedepends=('cmake' 'python-numpy' 'python2-numpy' 'mesa' 'eigen' 'hdf5')
+optdepends=('opencv-samples'
+            'hdf5: support for HDF5 format'
+            'opencl-icd-loader: For coding with OpenCL'
+            'python-numpy: Python 3 interface'
+            'python2-numpy: Python 2 interface')
+provides=('opencv')
+conflicts=('opencv' 'opencv-git')
+options=('staticlibs')
+source=("opencv-${pkgver}.tar.gz"::"https://github.com/opencv/opencv/archive/${pkgver}.tar.gz"
+        "opencv_contrib-${pkgver}.tar.gz"::"https://github.com/opencv/opencv_contrib/archive/${pkgver}.tar.gz"
+        "tinydnn-${_tinydnn_ver}.tar.gz"::"https://github.com/tiny-dnn/tiny-dnn/archive/v${_tinydnn_ver}.tar.gz"
+        "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_bootdesc_commit}/boostdesc_bgm.i"
+        "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_bootdesc_commit}/boostdesc_bgm_bi.i"
+        "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_bootdesc_commit}/boostdesc_bgm_hd.i"
+        "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_bootdesc_commit}/boostdesc_binboost_064.i"
+        "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_bootdesc_commit}/boostdesc_binboost_128.i"
+        "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_bootdesc_commit}/boostdesc_binboost_256.i"
+        "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_bootdesc_commit}/boostdesc_lbgm.i"
+        "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_vgg_commit}/vgg_generated_48.i"
+        "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_vgg_commit}/vgg_generated_64.i"
+        "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_vgg_commit}/vgg_generated_80.i"
+        "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${_vgg_commit}/vgg_generated_120.i")
+source_i686=("https://github.com/opencv/opencv_3rdparty/raw/${_ippicv_commit}/ippicv/ippicv_${_ippicv_ver}_lnx_ia32_${_ippicv_date}.tgz")
+source_x86_64=("https://github.com/opencv/opencv_3rdparty/raw/${_ippicv_commit}/ippicv/ippicv_${_ippicv_ver}_lnx_intel64_${_ippicv_date}.tgz")
+noextract=("ippicv_${_ippicv_ver}_lnx_ia32_${_ippicv_date}.tgz"
+           "ippicv_${_ippicv_ver}_lnx_intel64_${_ippicv_date}.tgz"
+           "tinydnn-${_tinydnn_ver}.tar.gz")
+sha256sums=('95029eb5578af3b20b8c7f8f6f59db1b827c2d5aaaa74b6becb1de647cbdda5a'
+            'e94acf39cd4854c3ef905e06516e5f74f26dddfa6477af89558fb40a57aeb444'
+            'e2c61ce8c5debaa644121179e9dbdcf83f497f39de853f8dd5175846505aa18b'
+            'c441a027f15b9b8ff6c006b0775cd86781169ebd5b6257a94bdce668010d5df5'
+            '3d54b2934f0de963abbce985da303254ee78eebd05eb2af517105f9b0e670566'
+            '4b068631287f9914c3aa5bbdab76368b01493cea494ab47f7a70d2fa4f1c3e1b'
+            '090c9cc50663df3a91f2d7c704fa664493c96c39749b4cee9ebc29a20eb680d2'
+            '8f3622c1f3c0a14b1f1b7b955c518e97f7ccd0e9796e1dd9e7a975aad9bb2a22'
+            'a1c778059332b4904c9ce30ed888e9dd2e44621579362e6deb20ef4f4b0cf819'
+            '42f6091199242fb6d96aec2f25644cd6f5e5f2fdddd1720f3422282e88cf3cd8'
+            '71274a67ab0896865e27de830eda0065e387d75fe071dab4a887e2430ccb8a35'
+            '2746c272af82b9a839a69de151c262be55d9ef8464b268001c33f99f9f5cebbe'
+            '08fbc8cb1686b6c45032a08c98f3857ead4755116410e16c68713f4dea4cbf5c'
+            'f05e7eb7183ecbc788bfc26cea9db7dad8585178175411b93e444acdc8fb2048')
+sha256sums_i686=('fbd781204ff921a31fd8fe196847e1e54f037bbee6c7b0a83c286912330a953f')
+sha256sums_x86_64=('e39a14ed55af981b5ad185da813bd5a0a69115acfa1f8331dbb711bd54ba4213')
+
+prepare() {
+    # cmake downloads some needed files, but here they have been already downloaded by makepkg.
+    # place these needed files in cmake cache directory to not redownload them during cmake execution.
+    [ "$CARCH" = 'i686'   ] && local _ippicv_arch='ia32'
+    [ "$CARCH" = 'x86_64' ] && local _ippicv_arch='intel64'
+    
+    local _ippicv_file="ippicv_${_ippicv_ver}_lnx_${_ippicv_arch}_${_ippicv_date}.tgz"
+    local _tinydnn_file="tinydnn-${_tinydnn_ver}.tar.gz"
+    
+    local _cmake_cache="${srcdir}/${_srcname}-${pkgver}/.cache"
+    local _ippicv_dir="${_cmake_cache}/ippicv"
+    local _tinydnn_dir="${_cmake_cache}/tiny_dnn"
+    local _boostdesc_dir="${_cmake_cache}/xfeatures2d/boostdesc"
+    local _vgg_dir="${_cmake_cache}/xfeatures2d/vgg"
+    
+    local _ippicv_md5="$(                openssl dgst -md5 "${_ippicv_file}"          | cut -d' ' -f2)"
+    local _tinydnn_md5="$(               openssl dgst -md5 "${_tinydnn_file}"         | cut -d' ' -f2)"
+    local _boostdesc_bgm_md5="$(         openssl dgst -md5 'boostdesc_bgm.i'          | cut -d' ' -f2)"
+    local _boostdesc_bgm_bi_md5="$(      openssl dgst -md5 'boostdesc_bgm_bi.i'       | cut -d' ' -f2)"
+    local _boostdesc_bgm_hd_md5="$(      openssl dgst -md5 'boostdesc_bgm_hd.i'       | cut -d' ' -f2)"
+    local _boostdesc_binboost_064_md5="$(openssl dgst -md5 'boostdesc_binboost_064.i' | cut -d' ' -f2)"
+    local _boostdesc_binboost_128_md5="$(openssl dgst -md5 'boostdesc_binboost_128.i' | cut -d' ' -f2)"
+    local _boostdesc_binboost_256_md5="$(openssl dgst -md5 'boostdesc_binboost_256.i' | cut -d' ' -f2)"
+    local _boostdesc_lbgm_md5="$(        openssl dgst -md5 'boostdesc_lbgm.i'         | cut -d' ' -f2)"
+    local _vgg_generated_48_md5="$(      openssl dgst -md5 'vgg_generated_48.i'       | cut -d' ' -f2)"
+    local _vgg_generated_64_md5="$(      openssl dgst -md5 'vgg_generated_64.i'       | cut -d' ' -f2)"
+    local _vgg_generated_80_md5="$(      openssl dgst -md5 'vgg_generated_80.i'       | cut -d' ' -f2)"
+    local _vgg_generated_120_md5="$(     openssl dgst -md5 'vgg_generated_120.i'      | cut -d' ' -f2)"
+    
+    mkdir -p "${_cmake_cache}/"{ippicv,tiny_dnn,xfeatures2d/{boostdesc,vgg}}
+    
+    cp -a "${_ippicv_file}"          "${_ippicv_dir}/${_ippicv_md5}-${_ippicv_file}"
+    cp -a "${_tinydnn_file}"         "${_tinydnn_dir}/${_tinydnn_md5}-v${_tinydnn_ver}.tar.gz"
+    cp -a 'boostdesc_bgm.i'          "${_boostdesc_dir}/${_boostdesc_bgm_md5}-boostdesc_bgm.i"
+    cp -a 'boostdesc_bgm_bi.i'       "${_boostdesc_dir}/${_boostdesc_bgm_bi_md5}-boostdesc_bgm_bi.i"
+    cp -a 'boostdesc_bgm_hd.i'       "${_boostdesc_dir}/${_boostdesc_bgm_hd_md5}-boostdesc_bgm_hd.i"
+    cp -a 'boostdesc_binboost_064.i' "${_boostdesc_dir}/${_boostdesc_binboost_064_md5}-boostdesc_binboost_064.i"
+    cp -a 'boostdesc_binboost_128.i' "${_boostdesc_dir}/${_boostdesc_binboost_128_md5}-boostdesc_binboost_128.i"
+    cp -a 'boostdesc_binboost_256.i' "${_boostdesc_dir}/${_boostdesc_binboost_256_md5}-boostdesc_binboost_256.i"
+    cp -a 'boostdesc_lbgm.i'         "${_boostdesc_dir}/${_boostdesc_lbgm_md5}-boostdesc_lbgm.i"
+    cp -a 'vgg_generated_48.i'       "${_vgg_dir}/${_vgg_generated_48_md5}-vgg_generated_48.i"
+    cp -a 'vgg_generated_64.i'       "${_vgg_dir}/${_vgg_generated_64_md5}-vgg_generated_64.i"
+    cp -a 'vgg_generated_80.i'       "${_vgg_dir}/${_vgg_generated_80_md5}-vgg_generated_80.i"
+    cp -a 'vgg_generated_120.i'      "${_vgg_dir}/${_vgg_generated_120_md5}-vgg_generated_120.i"
+}
+
+build() {
+    cd "${_srcname}-${pkgver}"
+    mkdir -p build
+    cd build
+    
+    cmake \
+        -DBUILD_DOCS:BOOL='OFF' \
+        -DBUILD_SHARED_LIBS:BOOL='ON' \
+        -DBUILD_opencv_java:BOOL='OFF' \
+        -DENABLE_FAST_MATH:BOOL='ON' \
+        -DENABLE_PRECOMPILED_HEADERS:BOOL='OFF' \
+        -DBUILD_WITH_DEBUG_INFO='OFF' \
+        -DBUILD_TESTS='OFF' \
+        -DBUILD_PERF_TESTS='OFF' \
+        -DBUILD_EXAMPLES='ON' \
+        -DINSTALL_C_EXAMPLES='ON' \
+        -DINSTALL_PYTHON_EXAMPLES='ON' \
+        -DCMAKE_BUILD_TYPE='Release' \
+        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_SKIP_RPATH='ON' \
+        -DOPENCV_EXTRA_MODULES_PATH="${srcdir}/opencv_contrib-${pkgver}/modules" \
+        -DWITH_CUDA:BOOL='OFF' \
+        -DWITH_FFMPEG:BOOL='OFF' \
+        -DWITH_GPHOTO2:BOOL='OFF' \
+        -DWITH_GSTREAMER:BOOL='ON' \
+        -DWITH_GTK_2_X:BOOL='ON' \
+        -DWITH_IPP:BOOL='ON' \
+        -DWITH_LAPACK:BOOL='OFF' \
+        -DWITH_LIBV4L:BOOL='ON' \
+        -DWITH_OPENCL='ON' \
+        -DWITH_OPENGL='ON' \
+        -DWITH_TBB='ON' \
+        -DWITH_VTK:BOOL='OFF' \
+        -DWITH_XINE:BOOL='OFF' \
+        -DOPENCV_WARNINGS_ARE_ERRORS:BOOL='OFF' \
+        -Wno-dev \
+        ..
+        
+    make
+}
+
+package() {
+    cd "${_srcname}-${pkgver}/build"
+    make DESTDIR="$pkgdir" install
+    
+    cd "${srcdir}/${_srcname}-${pkgver}"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
