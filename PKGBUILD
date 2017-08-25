@@ -6,7 +6,7 @@
 
 pkgname=gazebo-ogre-1.10
 pkgver=8.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-robot simulator for outdoor environments (using ogre 1.10)"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
