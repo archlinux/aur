@@ -1,6 +1,6 @@
 pkgbase = racket-git
 	pkgdesc = Minimal Racket installation, without DrRacket, from git
-	pkgver = 6.10.0.3.38165.e61d8aa1b2
+	pkgver = 6.10.0.3.38169.3dd17c73ed
 	pkgrel = 1
 	url = http://racket-lang.org/
 	arch = i686
