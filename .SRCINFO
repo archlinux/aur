@@ -1,0 +1,25 @@
+pkgbase = gnutls-git
+	pkgdesc = Provides useful functions commonly found on BSD systems
+	pkgver = 3.6.0.1.r11.g2b29963b5
+	pkgrel = 1
+	url = https://www.gnutls.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = glibc
+	depends = libidn2
+	depends = libtasn1
+	depends = libunistring
+	depends = nettle
+	depends = p11-kit
+	depends = readline
+	depends = zlib
+	optdepends = guile: for use with Guile bindings
+	provides = gnutls
+	conflicts = gnutls
+	source = git+https://gitlab.com/gnutls/gnutls.git
+	sha256sums = SKIP
+
+pkgname = gnutls-git
+
