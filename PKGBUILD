@@ -2,11 +2,11 @@
 
 pkgname=nautilus-wipe
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Nautilus Wipe is an extension for Nautilus for securely erasing files"
 license=('GPLv3')
 arch=('i686' 'x86_64')
-depends=('nautilus' 'libgsecuredelete' 'gtk3' 'gconf' )
+depends=('nautilus' 'libgsecuredelete' 'gtk3' 'gconf' 'itstool' )
 makedepends=('gnome-doc-utils' 'gconf' 'intltool' 'nautilus')
 url="http://wipetools.tuxfamily.org/nautilus-wipe.html"
 source=("ftp://download.tuxfamily.org/wipetools/releases/nautilus-wipe/nautilus-wipe-${pkgver}.tar.gz")
