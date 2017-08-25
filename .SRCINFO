@@ -1,0 +1,18 @@
+pkgbase = caledonia-tux-plymouth-theme-modified
+	pkgdesc = A plymouth theme originally created by RHBLIND from store.kde.org, patched by realasking with a little adjustment and a changed icon Newtux from wikipedia created by lewing@isc.tamu.edu Larry Ewing and The GIMP.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://store.kde.org/content/show.php/?content=143641
+	arch = x86_64
+	arch = i686
+	license = other
+	depends = plymouth
+	source = https://dl.opendesktop.org/api/files/download/id/1460735566/143641-caledonia-tux.tar.bz2
+	source = patch4newtux4caledonia.patch
+	source = logo.png
+	md5sums = d0eae27df6add846329cecdce15d967c
+	md5sums = a0a0219311e22f0b3103ff5c99f62f25
+	md5sums = 386f111dfb73e4c39e5be292abb3f4f9
+
+pkgname = caledonia-tux-plymouth-theme-modified
+
