@@ -1,0 +1,15 @@
+pkgbase = python-alpha-vantage
+	pkgdesc = Python Client for Google Maps Services
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/RomelTorres/alpha_vantage
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	source = https://github.com/RomelTorres/alpha_vantage/archive/1.2.0.tar.gz
+	md5sums = af8162d2a59dcdb95b16b75e20417584
+
+pkgname = python-alpha-vantage
+
