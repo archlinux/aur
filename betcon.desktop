@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Betcon
-Comment=Gestión de apuestas deportivas
-Exec=python3 /opt/betcon/src/main.py
-Icon=/opt/betcon/resources/icon.png
-Terminal=false
-Type=Application
