@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Exodus Eden
+Exec=exodus-eden %f
+Icon=exodus-eden
+Comment=An unsupported, advanced version of Exodus
+Categories=Utility;
+Terminal=false
+StartupNotify=true
