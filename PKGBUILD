@@ -3,7 +3,7 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
  
 pkgname=nvidia-bfq
-pkgver=384.59
+pkgver=384.69
 _extramodules=extramodules-4.11-bfq
 pkgrel=1
 _pkgdesc="NVIDIA drivers for linux-bfq."
@@ -18,8 +18,8 @@ install=nvidia-bfq.install
 options=(!strip)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('8d2a2049d0509875c5dc0d9a0275aee4')
-md5sums_x86_64=('778318b0fd2d5d511474a8987cc7dbe5')
+md5sums_i686=('53039e5fe898d405f3ea1725751045b6')
+md5sums_x86_64=('0bee5889e14a653df35d6b9700363ff9')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
