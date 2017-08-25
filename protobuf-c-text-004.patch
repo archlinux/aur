@@ -1,0 +1,24 @@
+From b79ba3f1cd350a9ebc4929fa9d63368b460b8877 Mon Sep 17 00:00:00 2001
+From: Serge Ziryukin <ftrvxmtrx@gmail.com>
+Date: Sun, 13 Sep 2015 00:39:32 +0200
+Subject: [PATCH] esc_str: escape with octal as unsigned (buffer overflow
+ otherwise)
+
+Signed-off-by: Serge Ziryukin <ftrvxmtrx@gmail.com>
+---
+ protobuf-c-text/generate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/protobuf-c-text/generate.c b/protobuf-c-text/generate.c
+index b326c6e..6a2b414 100644
+--- a/protobuf-c-text/generate.c
++++ b/protobuf-c-text/generate.c
+@@ -148,7 +148,7 @@ esc_str(char *src, int len, ProtobufCAllocator *allocator)
+       /* Escape with octal if !isprint. */
+       default:
+         if (!isprint(src[i])) {
+-          dst_len += sprintf(dst + dst_len, "\\%03o", src[i]);
++          dst_len += sprintf(dst + dst_len, "\\%03o", (unsigned char)src[i]);
+         } else {
+           dst[dst_len++] = src[i];
+         }

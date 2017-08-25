@@ -1,0 +1,151 @@
+From 620db2f1a5bf9a1468a2f54ef904977133267aa2 Mon Sep 17 00:00:00 2001
+From: Benjamin Weggenmann <benjamin.weggenmann@aisec.fraunhofer.de>
+Date: Tue, 18 Nov 2014 16:51:49 +0100
+Subject: [PATCH] Fix wrong integer en- and decoding in protobuf-c-text
+ library.
+
+See also https://developers.google.com/protocol-buffers/docs/proto#scalar.
+
+Use C99 macros from inttypes.h for compatibility with different architectures (32 and 64 bit).
+
+Change-Id: I1d0f8a80b16cfa7969b8a9ebbfc7d2917500febb
+---
+ protobuf-c-text/generate.c | 21 +++++++++++----------
+ protobuf-c-text/parse.re   |  4 ++--
+ 2 files changed, 13 insertions(+), 12 deletions(-)
+
+diff --git a/protobuf-c-text/generate.c b/protobuf-c-text/generate.c
+index 94dc3d2..2a02130 100644
+--- a/protobuf-c-text/generate.c
++++ b/protobuf-c-text/generate.c
+@@ -15,6 +15,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <inttypes.h>
+ #include <stdlib.h>
+ #include <protobuf-c/protobuf-c.h>
+ #include "protobuf-c-text.h"
+@@ -222,76 +223,76 @@ protobuf_c_text_to_string_internal(ReturnString *rs,
+     quantifier_offset = STRUCT_MEMBER(size_t, m, f[i].quantifier_offset);
+     /* Field exists and has data, dump it. */
+     switch (f[i].type) {
+-      case PROTOBUF_C_TYPE_INT32:
+       case PROTOBUF_C_TYPE_UINT32:
+       case PROTOBUF_C_TYPE_FIXED32:
+         if (f[i].label == PROTOBUF_C_LABEL_REPEATED) {
+           for (j = 0; j < quantifier_offset; j++) {
+             rs_append(rs, level + strlen(f[i].name) + 20,
+                 allocator,
+-                "%*s%s: %u\n",
++                "%*s%s: %" PRIu32 "\n",
+                 level, "", f[i].name,
+                 STRUCT_MEMBER(uint32_t *, m, f[i].offset)[j]);
+           }
+         } else {
+           rs_append(rs, level + strlen(f[i].name) + 20,
+               allocator,
+-              "%*s%s: %u\n",
++              "%*s%s: %" PRIu32 "\n",
+               level, "", f[i].name,
+               STRUCT_MEMBER(uint32_t, m, f[i].offset));
+         }
+         break;
++      case PROTOBUF_C_TYPE_INT32:
+       case PROTOBUF_C_TYPE_SINT32:
+       case PROTOBUF_C_TYPE_SFIXED32:
+         if (f[i].label == PROTOBUF_C_LABEL_REPEATED) {
+           for (j = 0; j < quantifier_offset; j++) {
+             rs_append(rs, level + strlen(f[i].name) + 20,
+                 allocator,
+-                "%*s%s: %d\n",
++                "%*s%s: %" PRId32 "\n",
+                 level, "", f[i].name,
+                 STRUCT_MEMBER(int32_t *, m, f[i].offset)[j]);
+           }
+         } else {
+           rs_append(rs, level + strlen(f[i].name) + 20,
+               allocator,
+-              "%*s%s: %d\n",
++              "%*s%s: %" PRId32 "\n",
+               level, "", f[i].name,
+               STRUCT_MEMBER(int32_t, m, f[i].offset));
+         }
+         break;
+-      case PROTOBUF_C_TYPE_INT64:
+       case PROTOBUF_C_TYPE_UINT64:
+       case PROTOBUF_C_TYPE_FIXED64:
+         if (f[i].label == PROTOBUF_C_LABEL_REPEATED) {
+           for (j = 0; j < quantifier_offset; j++) {
+             rs_append(rs, level + strlen(f[i].name) + 20,
+                 allocator,
+-                "%*s%s: %lu\n",
++                "%*s%s: %" PRIu64 "\n",
+                 level, "", f[i].name,
+                 STRUCT_MEMBER(uint64_t *, m, f[i].offset)[j]);
+           }
+         } else {
+           rs_append(rs, level + strlen(f[i].name) + 20,
+               allocator,
+-              "%*s%s: %lu\n",
++              "%*s%s: %" PRIu64 "\n",
+               level, "", f[i].name,
+               STRUCT_MEMBER(uint64_t, m, f[i].offset));
+         }
+         break;
++      case PROTOBUF_C_TYPE_INT64:
+       case PROTOBUF_C_TYPE_SINT64:
+       case PROTOBUF_C_TYPE_SFIXED64:
+         if (f[i].label == PROTOBUF_C_LABEL_REPEATED) {
+           for (j = 0; j < quantifier_offset; j++) {
+             rs_append(rs, level + strlen(f[i].name) + 20,
+                 allocator,
+-                "%*s%s: %ld\n",
++                "%*s%s: %" PRId64 "\n",
+                 level, "", f[i].name,
+                 STRUCT_MEMBER(int64_t *, m, f[i].offset)[j]);
+           }
+         } else {
+           rs_append(rs, level + strlen(f[i].name) + 20,
+               allocator,
+-              "%*s%s: %ld\n",
++              "%*s%s: %" PRId64 "\n",
+               level, "", f[i].name,
+               STRUCT_MEMBER(int64_t, m, f[i].offset));
+         }
+diff --git a/protobuf-c-text/parse.re b/protobuf-c-text/parse.re
+index 3f223b2..d6fc5ad 100644
+--- a/protobuf-c-text/parse.re
++++ b/protobuf-c-text/parse.re
+@@ -944,7 +944,6 @@ state_value(State *state, Token *t)
+ 
+     case TOK_NUMBER:
+       switch (state->field->type) {
+-        case PROTOBUF_C_TYPE_INT32:
+         case PROTOBUF_C_TYPE_UINT32:
+         case PROTOBUF_C_TYPE_FIXED32:
+           val = strtoul(t->number, &end, 10);
+@@ -975,6 +974,7 @@ state_value(State *state, Token *t)
+           }
+           break;
+ 
++        case PROTOBUF_C_TYPE_INT32:
+         case PROTOBUF_C_TYPE_SINT32:
+         case PROTOBUF_C_TYPE_SFIXED32:
+           val = strtol(t->number, &end, 10);
+@@ -1005,7 +1005,6 @@ state_value(State *state, Token *t)
+           }
+           break;
+ 
+-        case PROTOBUF_C_TYPE_INT64:
+         case PROTOBUF_C_TYPE_UINT64:
+         case PROTOBUF_C_TYPE_FIXED64:
+           val = strtoull(t->number, &end, 10);
+@@ -1036,6 +1035,7 @@ state_value(State *state, Token *t)
+           }
+           break;
+ 
++        case PROTOBUF_C_TYPE_INT64:
+         case PROTOBUF_C_TYPE_SINT64:
+         case PROTOBUF_C_TYPE_SFIXED64:
+           val = strtoll(t->number, &end, 10);

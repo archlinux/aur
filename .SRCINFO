@@ -1,7 +1,7 @@
 pkgbase = nsjail-git
 	pkgdesc = A light-weight process isolation tool, making use of Linux namespaces and seccomp-bpf syscall filters (with help of the kafel bpf language)
 	pkgver = r562.de92727
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nsjail.com
 	arch = x86_64
 	license = Apache
@@ -15,11 +15,11 @@ pkgbase = nsjail-git
 	provides = nsjail
 	conflicts = nsjail
 	source = nsjail-git::git+git://github.com/google/nsjail.git#commit=de927275919864c989972db5e8c437582a4e3055
-	source = https://github.com/trustm3/external_protobuf-c-text/commit/c37f8708d847319921a3fba7d6863103f6b801e2.patch
-	source = https://github.com/trustm3/external_protobuf-c-text/commit/620db2f1a5bf9a1468a2f54ef904977133267aa2.patch
-	source = https://github.com/trustm3/external_protobuf-c-text/commit/ccb50d69f833b4417ba66690a0257a8a64eab6ec.patch
-	source = https://github.com/trustm3/external_protobuf-c-text/commit/b79ba3f1cd350a9ebc4929fa9d63368b460b8877.patch
-	source = https://github.com/trustm3/external_protobuf-c-text/commit/6a8727066180615e7767b550b491e4ef4d0db514.patch
+	source = protobuf-c-text-001.patch
+	source = protobuf-c-text-002.patch
+	source = protobuf-c-text-003.patch
+	source = protobuf-c-text-004.patch
+	source = protobuf-c-text-005.patch
 	sha256sums = SKIP
 	sha256sums = ff97c12f9415cc662fb688111c8bc0e7136ff0fb7651e24eaa80bf10c3d62685
 	sha256sums = 50cc5cb09e47ddaaf666541e231429311313233a98ead550b1d46ddc0863ef1b

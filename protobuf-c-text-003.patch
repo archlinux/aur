@@ -1,0 +1,34 @@
+From ccb50d69f833b4417ba66690a0257a8a64eab6ec Mon Sep 17 00:00:00 2001
+From: Constanze Hausner <constanze.hausner@aisec.fraunhofer.de>
+Date: Fri, 5 Dec 2014 14:22:42 +0100
+Subject: [PATCH] Added sanity check for size passed to memcpy
+
+Change-Id: I8c9bf96fd20c13afeaec3d2a1211cb2928991913
+---
+ protobuf-c-text/parse.re | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/protobuf-c-text/parse.re b/protobuf-c-text/parse.re
+index d6fc5ad..60ee50d 100644
+--- a/protobuf-c-text/parse.re
++++ b/protobuf-c-text/parse.re
+@@ -420,6 +420,9 @@ token_start:
+                 if (!t.number) {
+                   RETURN(TOK_MALLOC_ERR);
+                 }
++                if ((scanner->cursor - scanner->token) < 0) {
++                  RETURN(TOK_MALLOC_ERR);
++                }
+                 memcpy(t.number, scanner->token,
+                        scanner->cursor - scanner->token);
+                 t.number[scanner->cursor - scanner->token] = '\0';
+@@ -432,6 +435,9 @@ token_start:
+                 if (!t.bareword) {
+                   RETURN(TOK_MALLOC_ERR);
+                 }
++                if ((scanner->cursor - scanner->token) < 0) {
++                  RETURN(TOK_MALLOC_ERR);
++                }
+                 memcpy(t.bareword, scanner->token,
+                        scanner->cursor - scanner->token);
+                 t.bareword[scanner->cursor - scanner->token] = '\0';

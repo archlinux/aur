@@ -1,0 +1,83 @@
+From c37f8708d847319921a3fba7d6863103f6b801e2 Mon Sep 17 00:00:00 2001
+From: Benjamin Weggenmann <benjamin.weggenmann@aisec.fraunhofer.de>
+Date: Tue, 27 May 2014 18:29:04 +0200
+Subject: [PATCH] Added Android.mk file for integration into Android build
+ system and fixed includes.
+
+---
+ Android.mk                 | 35 +++++++++++++++++++++++++++++++++++
+ protobuf-c-text/generate.c |  2 +-
+ protobuf-c-text/parse.re   |  1 -
+ 3 files changed, 36 insertions(+), 2 deletions(-)
+ create mode 100644 Android.mk
+
+diff --git a/Android.mk b/Android.mk
+new file mode 100644
+index 0000000..71fb210
+--- /dev/null
++++ b/Android.mk
+@@ -0,0 +1,35 @@
++LOCAL_PATH:= $(call my-dir)
++
++include $(CLEAR_VARS)
++
++LOCAL_MODULE := libprotobuf-c-text
++LOCAL_MODULE_TAGS := optional
++#LOCAL_PRELINK_MODULE := false
++LOCAL_MODULE_CLASS := STATIC_LIBRARIES
++
++LOCAL_STATIC_LIBRARIES := libc \
++	libprotobuf-c
++
++LOCAL_SRC_FILES := protobuf-c-text/generate.c
++#$(call all-c-files-under,protobuf-c-text)
++
++LOCAL_C_INCLUDES += $(LOCAL_PATH)/protobuf-c-text
++
++LOCAL_C_FLAGS := -std=c99 -pedantic -Wall -DHAVE_PROTOBUF_C_MESSAGE_CHECK
++
++# Use this variable when building with NDK out of tree
++#LOCAL_EXPORT_C_INCLUDES += $(LOCAL_PATH)
++#LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)
++LOCAL_COPY_HEADERS_TO := google/protobuf-c
++LOCAL_COPY_HEADERS := protobuf-c-text/protobuf-c-text.h
++
++# compile parse.re to parse.c using re2c
++intermediates := $(local-intermediates-dir)
++GEN := $(intermediates)/parse.c
++$(GEN): PRIVATE_CUSTOM_TOOL = re2c -s -o $@ $<
++$(GEN): $(LOCAL_PATH)/protobuf-c-text/parse.re
++	$(transform-generated-source)
++LOCAL_GENERATED_SOURCES += $(GEN)
++
++include $(BUILD_STATIC_LIBRARY)
++
+diff --git a/protobuf-c-text/generate.c b/protobuf-c-text/generate.c
+index b326c6e..94dc3d2 100644
+--- a/protobuf-c-text/generate.c
++++ b/protobuf-c-text/generate.c
+@@ -14,11 +14,11 @@
+ #include <stdarg.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <ctype.h>
+ #include <stdlib.h>
+ #include <protobuf-c/protobuf-c.h>
+ #include "protobuf-c-text.h"
+ #include "protobuf-c-util.h"
+-#include "config.h"
+ 
+ /** A dynamic string struct.
+  *
+diff --git a/protobuf-c-text/parse.re b/protobuf-c-text/parse.re
+index 85e17a0..3f223b2 100644
+--- a/protobuf-c-text/parse.re
++++ b/protobuf-c-text/parse.re
+@@ -32,7 +32,6 @@
+ #include <protobuf-c/protobuf-c.h>
+ #include "protobuf-c-text.h"
+ #include "protobuf-c-util.h"
+-#include "config.h"
+ 
+ /** \defgroup utility Utility functions
+  * \ingroup internal

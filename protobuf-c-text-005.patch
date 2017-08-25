@@ -1,0 +1,194 @@
+From 6a8727066180615e7767b550b491e4ef4d0db514 Mon Sep 17 00:00:00 2001
+From: Benjamin Weggenmann <benjamin.weggenmann@aisec.fraunhofer.de>
+Date: Mon, 20 Apr 2015 19:21:57 +0200
+Subject: [PATCH] Handle invalid input and single-line comments in parser.
+
+Fixes bad mallocs and memcpys caused by invalid input.
+---
+ protobuf-c-text/parse.re | 91 +++++++++++++++++++++++++++++++-----------------
+ 1 file changed, 59 insertions(+), 32 deletions(-)
+
+diff --git a/protobuf-c-text/parse.re b/protobuf-c-text/parse.re
+index fdae98c..c3859f2 100644
+--- a/protobuf-c-text/parse.re
++++ b/protobuf-c-text/parse.re
+@@ -97,6 +97,8 @@ typedef enum {
+   TOK_QUOTED,     /**< A quoted string. */
+   TOK_NUMBER,     /**< A number. */
+   TOK_BOOLEAN,    /**< The unquoted form of "true" and "false". */
++  TOK_COMMENT,    /**< A single-line comment. */
++  TOK_INVALID,    /**< An invalid character. */
+   TOK_MALLOC_ERR  /**< A memory allocation error occurred. */
+ } TokenId;
+ 
+@@ -129,23 +131,27 @@ token2txt(Token *t)
+ {
+   switch (t->id) {
+     case TOK_EOF:
+-      return "[EOF]"; break;
++      return "[EOF]";
+     case TOK_BAREWORD:
+-      return t->bareword; break;
++      return t->bareword;
+     case TOK_OBRACE:
+-      return "{"; break;
++      return "{";
+     case TOK_CBRACE:
+-      return "}"; break;
++      return "}";
+     case TOK_COLON:
+-      return ":"; break;
++      return ":";
+     case TOK_QUOTED:
+-      return "[string]"; break;
++      return "[string]";
+     case TOK_NUMBER:
+-      return t->number; break;
++      return t->number;
+     case TOK_BOOLEAN:
+-      return t->boolean? "true": "false"; break;
++      return t->boolean? "true": "false";
++    case TOK_COMMENT:
++      return "[COMMENT]";
++    case TOK_INVALID:
++      return "[INVALID]";
+     default:
+-      return "[UNKNOWN]"; break;
++      return "[UNKNOWN]";
+   }
+ }
+ 
+@@ -217,10 +223,8 @@ static void
+ scanner_init_string(Scanner *scanner, char *buf)
+ {
+   memset(scanner, 0, sizeof(Scanner));
+-  scanner->buffer = buf;
+-  scanner->marker = buf;
+-  scanner->cursor = buf;
+-  scanner->limit = &buf[strlen(buf)];
++  scanner->cursor = scanner->marker = scanner->buffer = (unsigned char *)buf;
++  scanner->limit = (unsigned char *)&buf[strlen(buf)];
+   scanner->line = 1;
+ }
+ 
+@@ -237,6 +241,17 @@ scanner_free(Scanner *scanner, ProtobufCAllocator *allocator)
+   scanner->buffer = NULL;
+ }
+ 
++/** Check if the given character is octal.
++ *
++ * \param[in] c Character to check.
++ * \return true if c is between '0' and '7', false otherwise.
++ */
++static int
++is_octal(unsigned char c)
++{
++  return (c >= '0' && c <= '7');
++}
++
+ /** Unescape string.
+  *
+  * Remove escape sequences from a string and replace them with the
+@@ -256,6 +271,8 @@ unesc_str(unsigned char *src, int len, ProtobufCAllocator *allocator)
+   unsigned char *dst;
+   int i = 0, dst_len = 0;
+   unsigned char oct[4];
++  unsigned char c;
++  unsigned int octal;
+ 
+   dst_pbbd = PBC_ALLOC(sizeof(ProtobufCBinaryData));
+   dst = PBC_ALLOC(len + 1);
+@@ -273,19 +290,21 @@ unesc_str(unsigned char *src, int len, ProtobufCAllocator *allocator)
+         /* Fell off the end of the string after \. */
+         goto unesc_str_error;
+       }
+-      switch (src[i]) {
+-        case '0':
+-          if (i + 2 < len
+-              && (src[i+1] >= '0' && src[i+1] <= '7')
+-              && (src[i+2] >= '0' && src[i+2] <= '7')) {
+-            memcpy(oct, src + i, 3);
+-            dst[dst_len++] = (unsigned char)strtoul(oct, NULL, 8);
+-            i += 2;  /* Gets incremented again down below. */
+-          } else {
+-            /* Decoding a \0 failed or was cut off.. */
+-            goto unesc_str_error;
++      if (is_octal(src[i])) {
++        octal = src[i]-'0';
++        i++;
++        if (i<len && is_octal(src[i])) {
++          octal = octal*8 + src[i]-'0';
++          i++;
++          if (i<len && is_octal(src[i])) {
++            octal = octal*8 + src[i]-'0';
++            i++;
+           }
+-          break;
++        }
++        dst[dst_len++] = (unsigned char)octal;
++        continue;
++      }
++      switch (src[i]) {
+         case '\'':
+           dst[dst_len++] = '\'';
+           break;
+@@ -341,7 +360,7 @@ unesc_str_error:
+ static int
+ fill(Scanner *scanner, ProtobufCAllocator *allocator)
+ {
+-  char *buf;
++  unsigned char *buf;
+   int len, oldlen, nmemb;
+ 
+   if (scanner->token > scanner->limit) {
+@@ -414,6 +433,7 @@ token_start:
+   NL = "\n";
+   QS = ["] (EQ|[^"])* ["];
+   WS = [ \t];
++  CM = [#] [^\n]*;
+ 
+   I | F       {
+                 t.number = PBC_ALLOC((scanner->cursor - scanner->token) + 1);
+@@ -452,6 +472,8 @@ token_start:
+   WS          { goto token_start; }
+   NL          { scanner->line++; goto token_start; }
+   "\000"      { RETURN(TOK_EOF); }
++  CM          { RETURN(TOK_COMMENT); }
++  [^]         { RETURN(TOK_INVALID); }
+   */
+ }
+ 
+@@ -1200,12 +1222,19 @@ protobuf_c_text_parse(const ProtobufCMessageDescriptor *descriptor,
+ 
+   while (state_id != STATE_DONE) {
+     token = scan(scanner, allocator);
+-    if (token.id == TOK_MALLOC_ERR) {
+-      token_free(&token, allocator);
+-      state_error(&state, &token, "String unescape or malloc failure.");
++    switch (token.id) {
++    case TOK_COMMENT:
++      break;
++    case TOK_INVALID:
++      state_id = state_error(&state, &token, "Invalid character in input.");
++      break;
++    case TOK_MALLOC_ERR:
++      state_id = state_error(&state, &token, "String unescaped or malloc failure.");
++      break;
++    default:
++      state_id = states[state_id](&state, &token);
+       break;
+     }
+-    state_id = states[state_id](&state, &token);
+     token_free(&token, allocator);
+   }
+ 
+@@ -1217,9 +1246,7 @@ protobuf_c_text_parse(const ProtobufCMessageDescriptor *descriptor,
+     }
+   } else {
+     msg = state.msgs[0];
+-#ifdef HAVE_PROTOBUF_C_MESSAGE_CHECK
+     result->complete = protobuf_c_message_check(msg);
+-#endif
+   }
+   state_free(&state);
+   return msg;

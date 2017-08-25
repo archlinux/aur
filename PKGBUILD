@@ -1,7 +1,7 @@
 # Maintainer: Stephan Eisvogel <eisvogel at embinet dot de>
 pkgname=nsjail-git
 pkgver=r562.de92727
-pkgrel=1
+pkgrel=2
 _pkgcommit=#commit=de927275919864c989972db5e8c437582a4e3055
 pkgdesc="A light-weight process isolation tool, making use of Linux namespaces and seccomp-bpf syscall filters (with help of the kafel bpf language)"
 arch=('x86_64')
@@ -13,11 +13,11 @@ provides=('nsjail')
 conflicts=('nsjail')
 
 source=("${pkgname}::git+git://github.com/google/nsjail.git${_pkgcommit}"
-		"https://github.com/trustm3/external_protobuf-c-text/commit/c37f8708d847319921a3fba7d6863103f6b801e2.patch"
-		"https://github.com/trustm3/external_protobuf-c-text/commit/620db2f1a5bf9a1468a2f54ef904977133267aa2.patch"
-		"https://github.com/trustm3/external_protobuf-c-text/commit/ccb50d69f833b4417ba66690a0257a8a64eab6ec.patch"
-		"https://github.com/trustm3/external_protobuf-c-text/commit/b79ba3f1cd350a9ebc4929fa9d63368b460b8877.patch"
-		"https://github.com/trustm3/external_protobuf-c-text/commit/6a8727066180615e7767b550b491e4ef4d0db514.patch")
+		"protobuf-c-text-001.patch"
+		"protobuf-c-text-002.patch"
+		"protobuf-c-text-003.patch"
+		"protobuf-c-text-004.patch"
+		"protobuf-c-text-005.patch")
 sha256sums=('SKIP'
 			'ff97c12f9415cc662fb688111c8bc0e7136ff0fb7651e24eaa80bf10c3d62685'
 			'50cc5cb09e47ddaaf666541e231429311313233a98ead550b1d46ddc0863ef1b'
@@ -50,15 +50,15 @@ prepare() {
 	cd protobuf-c-text
 
 	# Fix includes (we ignore the additional Android stuff)
-	${_patch} "$srcdir/c37f8708d847319921a3fba7d6863103f6b801e2.patch"
+	${_patch} "$srcdir/protobuf-c-text-001.patch"
 	# Fix wrong integer en- and decoding in protobuf-c-text library
-	${_patch} "$srcdir/620db2f1a5bf9a1468a2f54ef904977133267aa2.patch"
+	${_patch} "$srcdir/protobuf-c-text-002.patch"
 	# Added sanity check for size passed to memcpy
-	${_patch} "$srcdir/ccb50d69f833b4417ba66690a0257a8a64eab6ec.patch"
+	${_patch} "$srcdir/protobuf-c-text-003.patch"
 	# esc_str: escape with octal as unsigned (buffer overflow otherwise)
-	${_patch} "$srcdir/b79ba3f1cd350a9ebc4929fa9d63368b460b8877.patch"
+	${_patch} "$srcdir/protobuf-c-text-004.patch"
 	# Fixes bad mallocs and memcpys caused by invalid input
-	${_patch} "$srcdir/6a8727066180615e7767b550b491e4ef4d0db514.patch"
+	${_patch} "$srcdir/protobuf-c-text-005.patch"
 }
 
 build() {
