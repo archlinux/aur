@@ -6,7 +6,7 @@
 #
 #
 pkgname="zfs-utils-common-git"
-pkgver=0.7.0.r41.g9b8407638
+pkgver=0.7.0.r46.g2209e4098
 pkgrel=2
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("")
@@ -19,7 +19,7 @@ source=("git+https://github.com/zfsonlinux/zfs.git"
         "zfs-utils.initcpio.hook")
 sha256sums=("SKIP"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
-            "aa5706bf08b36209a318762680f3c9fb45b3fc4b8e4ef184c8a5370b2c3000ca"
+            "e33adabbe3f2f4866802c9d63c7810c7a42b4df2288d0cdd23376519b15b36e4"
             "2bb533db561992c861bb9acad64a127f81cf0e4bf39cb4308ac7a73a17db55a7")
 license=("CDDL")
 groups=("archzfs-linux-git")
