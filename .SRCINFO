@@ -1,0 +1,21 @@
+pkgbase = dropbear-hg
+	pkgdesc = Small SSH server and client
+	pkgver = r1450.5b25d86b865b
+	pkgrel = 1
+	url = https://matt.ucc.asn.au/dropbear/dropbear.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = mercurial
+	depends = glibc
+	depends = pam
+	depends = zlib
+	provides = dropbear
+	conflicts = dropbear
+	source = hg+https://secure.ucc.asn.au/hg/dropbear/
+	source = dropbear.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/dropbear.service?h=packages/dropbear
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dropbear-hg
+
