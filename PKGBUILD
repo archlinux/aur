@@ -2,13 +2,13 @@
 
 _pkgname=vdirsyncer
 pkgname=${_pkgname}-git
-pkgver=0.16.0.r4.g37a1eb2
+pkgver=0.16.2.r0.g1da0bd1
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('i686' 'x86_64')
 url="https://github.com/pimutils/${_pkgname}"
 license=('MIT')
-depends=("python-click>=5.0" "python-click-log>=0.1.3" "python-click-threading>=0.2"
+depends=("python-click>=5.0" "python-click-log>=0.2.0" "python-click-threading>=0.2"
          "python-requests>2.9.0" "python-requests-toolbelt>=0.4.0"
          "python-atomicwrites>=0.1.7"
          "python-requests-oauthlib"
