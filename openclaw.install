@@ -1,0 +1,3 @@
+post_install() {
+    echo "You need to copy both 'config.xml' and 'SAVES.XML' from /usr/share/openclaw/ to ~/.config/openclaw/ before you can run the game!"
+}
