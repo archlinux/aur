@@ -2,8 +2,8 @@
 
 pkgname=gnutls-git
 pkgver=3.6.0.1.r11.g2b29963b5
-pkgrel=1
-pkgdesc="Provides useful functions commonly found on BSD systems"
+pkgrel=2
+pkgdesc="A secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them"
 arch=('i686' 'x86_64')
 url="https://www.gnutls.org/"
 license=('LGPL')
