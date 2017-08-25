@@ -1,0 +1,14 @@
+pkgbase = ephoto
+	pkgdesc = Ephoto
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://www.enlightenment.org/about-rage
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = efl
+	source = http://download.enlightenment.org/rel/apps/ephoto/ephoto-1.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = ephoto
+
