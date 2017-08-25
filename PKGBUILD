@@ -1,7 +1,7 @@
 # Maintainer: DATSD <DAStudio *dot* 71e6fd52 *at* gmail *dot* com>
 _basename=factorio-helper
 pkgname=${_basename}-git
-pkgver=r81
+pkgver=r82
 pkgrel=1
 pkgdesc="A helper program of Factorio"
 arch=('i686' 'x86_64')
@@ -37,6 +37,5 @@ package()
 {
   cd "${srcdir}/${_basename}"
   export PREFIX="${pkgdir}/usr"
-  export VERBOSE="-v"
   ./install.sh
 }
