@@ -1,8 +1,8 @@
 ## Maintainer: realasking
 pkgname=caledonia-tux-plymouth-theme-modified
 pkgver=0.2
-pkgrel=1
-pkgdesc='A plymouth theme originally created by RHBLIND from store.kde.org, patched by realasking with a little adjustment and a changed icon Newtux from wikipedia created by lewing@isc.tamu.edu Larry Ewing and The GIMP.'
+pkgrel=2
+pkgdesc='A plymouth theme originally created by RHBLIND from store.kde.org, patched with a little adjustment and changed logo to Newtux from wikipedia created by lewing@isc.tamu.edu Larry Ewing and The GIMP.'
 arch=(x86_64 i686)
 url='https://store.kde.org/content/show.php/?content=143641'
 license=('other')

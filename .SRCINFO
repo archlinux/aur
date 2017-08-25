@@ -1,7 +1,7 @@
 pkgbase = caledonia-tux-plymouth-theme-modified
-	pkgdesc = A plymouth theme originally created by RHBLIND from store.kde.org, patched by realasking with a little adjustment and a changed icon Newtux from wikipedia created by lewing@isc.tamu.edu Larry Ewing and The GIMP.
+	pkgdesc = A plymouth theme originally created by RHBLIND from store.kde.org, patched with a little adjustment and changed logo to Newtux from wikipedia created by lewing@isc.tamu.edu Larry Ewing and The GIMP.
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://store.kde.org/content/show.php/?content=143641
 	arch = x86_64
 	arch = i686
