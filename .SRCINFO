@@ -1,7 +1,7 @@
 pkgbase = whois-git
-	pkgdesc = Provides useful functions commonly found on BSD systems
+	pkgdesc = The whois client by Marco d'Itri
 	pkgver = 5.2.18.r0.g5dd942b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rfc1036/whois
 	arch = i686
 	arch = x86_64

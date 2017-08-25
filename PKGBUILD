@@ -2,8 +2,8 @@
 
 pkgname=whois-git
 pkgver=5.2.18.r0.g5dd942b
-pkgrel=1
-pkgdesc="Provides useful functions commonly found on BSD systems"
+pkgrel=2
+pkgdesc="The whois client by Marco d'Itri"
 arch=('i686' 'x86_64')
 url="https://github.com/rfc1036/whois"
 license=('GPL2')
