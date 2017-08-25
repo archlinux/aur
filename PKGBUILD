@@ -38,7 +38,7 @@ _use_current=
 
 pkgbase=linux-ck
 _srcname=linux-4.12
-pkgver=4.12.8
+pkgver=4.12.9
 pkgrel=2
 _ckpatchversion=2
 arch=('i686' 'x86_64')
@@ -66,7 +66,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '32b860911a3bafd5cd5bc813a427c90fad6eafdf607fa64e1b763b16ab605636'
+            '32c5df9c032d039d17cee0397b74583000053089e1c2fdfdc77acc2edc2d2e76'
             'SKIP'
             '6d15f95ca23b46f7abdfa1315600daed7ed6843acc29587fd84c2be7937c8564'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
