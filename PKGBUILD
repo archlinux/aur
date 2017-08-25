@@ -1,9 +1,9 @@
-# Maintainer: William Gathoye <william at gathoye dot be>
+# Maintainer: William Gathoye <william + aur at gathoye dot be>
 # Contributor: rws <elisp dot vim at google mail>
 
 _pkgname=clog
 pkgname=${_pkgname}-git
-pkgver=198
+pkgver=199
 pkgrel=1
 
 pkgdesc='Generate beautiful changelogs from your Git commit history'
