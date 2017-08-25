@@ -11,7 +11,7 @@ _pkgname=clion
 _dlname=CLion
 pkgver=172.3968.17
 _dlver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="C/C++ IDE. 30-day evaluation."
 arch=('x86_64')
 options=(!strip)
@@ -91,6 +91,7 @@ package_clion-eap-gdb() {
 }
 
 package_clion-eap-lldb() {
+    depends+=('ncurses5-compat-libs')
     install -d -m755 "${pkgdir}/opt/${pkgbase}/bin"
     rsync -rtl "${srcdir}/opt/${pkgbase}/bin/lldb" "${pkgdir}/opt/${pkgbase}/bin"
 }
