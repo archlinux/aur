@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=vsxu
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A free to use program that lets you create and perform real-time audio visual presets."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=(
   'jack: JACK support'
   'pulseaudio: PulseAudio support'
 )
-_commit=b93ca2c4164bb4b60e865aebca88fa62c760ca0a  # tags/v0.6.1
+_commit=5722f904c77c7130460d9dd566e4ac776163923e  # tags/v0.6.2
 source=("git+https://github.com/vovoid/vsxu#commit=$_commit"
         "dependencies::git+https://github.com/vovoid/vsxu-dependencies.git"
         "cal3d::git+https://github.com/vovoid/cal3d.git"
