@@ -16,22 +16,22 @@
 #
 pkgbase="spl-linux-zen"
 pkgname=("spl-linux-zen" "spl-linux-zen-headers")
-pkgver=0.7.1.4.12.8.1
+pkgver=0.7.1.4.12.8.2
 pkgrel=1
-makedepends=("linux-zen-headers=4.12.8-1")
+makedepends=("linux-zen-headers=4.12.8-2")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.1/spl-0.7.1.tar.gz")
 sha256sums=("e6a83dc50bc83a5ce6f20238da16fb941ab6090c419be8af8fc9223210f637fd")
 license=("GPL")
-depends=("spl-utils-common" "kmod" "linux-zen=4.12.8-1")
+depends=("spl-utils-common" "kmod" "linux-zen=4.12.8-2")
 
 build() {
     cd "${srcdir}/spl-0.7.1"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.12.8-1-zen/build \
-                --with-linux-obj=/usr/lib/modules/4.12.8-1-zen/build \
+                --with-linux=/usr/lib/modules/4.12.8-2-zen/build \
+                --with-linux-obj=/usr/lib/modules/4.12.8-2-zen/build \
                 --with-config=kernel
     make
 }
@@ -56,5 +56,5 @@ package_spl-linux-zen-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.12.8-1-zen/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.12.8-2-zen/Module.symvers
 }
