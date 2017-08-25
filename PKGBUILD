@@ -3,7 +3,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=x265-hg
-pkgver=1.8.r179.942587f1ab44
+pkgver=2.5.r12.fcd9154fa4e2
 pkgrel=1
 pkgdesc='Open Source H265/HEVC video encoder'
 arch=('i686' 'x86_64')
@@ -66,6 +66,7 @@ build() {
     cmake ../source \
       -DCMAKE_INSTALL_PREFIX='/usr' \
       -DENABLE_SHARED='TRUE' \
+      -DENABLE_HDR10_PLUS='TRUE' \
       -DEXTRA_LIB='x265_main10.a;x265_main12.a' \
       -DEXTRA_LINK_FLAGS='-L.' \
       -DLINKED_10BIT='TRUE' \
