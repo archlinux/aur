@@ -1,0 +1,27 @@
+pkgbase = electrum-mona
+	pkgdesc = A lightweight Monacoin wallet
+	pkgver = 2.9.3.3
+	pkgrel = 1
+	url = https://github.com/wakiyamap/electrum-mona
+	arch = any
+	license = MIT
+	makedepends = python2-pycurl
+	depends = python2-pyaes
+	depends = python2-ecdsa
+	depends = python2-pbkdf2
+	depends = python2-requests
+	depends = python2-qrcode
+	depends = python2-lyra2re_hash
+	depends = python2-protobuf
+	depends = python2-dnspython
+	depends = python2-jsonrpclib
+	depends = python2-pysocks
+	depends = python2-pyqt4
+	depends = python2-certifi
+	depends = gettext
+	optdepends = python2-matplotlib
+	source = electrum-mona-2.9.3.3::https://github.com/wakiyamap/electrum-mona/archive/2.9.3.3.tar.gz
+	sha512sums = 15fab04ed45e81b9441fcf33d5b28c062683a6e0a4eb2a69ef7c2a35b975001250859a69134cde016f35503096e8a002b101821b2d3bf481e60dadeeec657892
+
+pkgname = electrum-mona
+
