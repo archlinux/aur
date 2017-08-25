@@ -1,7 +1,7 @@
-# Maintainer: DATSD <dastudiodirector at gmail dot com>
+# Maintainer: DATSD <DAStudio *dot* 71e6fd52 *at* gmail *dot* com>
 _basename=factorio-mod-info
 pkgname=("${_basename}-git" "${_basename}-dbg-git")
-pkgver=0.1.3.r2
+pkgver=0.1.3.r5
 pkgrel=1
 pkgdesc="A C ++ library that retrieves Factorio\'s Mod information"
 arch=('i686' 'x86_64')
