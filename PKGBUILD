@@ -7,23 +7,16 @@ pkgver=60.0.3112.90
 pkgrel=1
 epoch=1
 arch=('i686' 'x86_64')
-url='http://www.google.com/chrome'
-license=('custom:chrome')
+url='http://www.widevine.com/'
+license=('custom')
 options=('!strip')
 depends=('qt5-webengine')
-source=('chrome-eula_text.html::https://www.google.com/intl/en/chrome/browser/privacy/eula_text.html')
-source_i686=("http://mirror.retrosnub.co.uk/apt/google/pool/main/g/google-chrome-stable/google-chrome-stable_48.0.2564.116-1_i386.deb")
-source_x86_64=("https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${pkgver}-1_amd64.deb")
-sha256sums=('e93c01576427cad9099f2cf0df0be70d0a2cc0a3a66c743318b2138aa7c4ed93')
-sha256sums_i686=('7401ad3698a28bf2b45e350fd2b941c44cb51dbb3f87b0e7dd1a2da72c42f594')
-sha256sums_x86_64=('936eb6dbf6062b4a375593d3289375d3f7823d3168673534f54f037d632283d3')
-
-prepare() {
-  bsdtar -xf data.tar.xz opt/google/chrome/{chrome,libwidevinecdm.so,libwidevinecdmadapter.so}
-}
+source_i686=("https://dl.google.com/widevine-cdm/1.4.8.1008-linux-ia32.zip")
+source_x86_64=("https://dl.google.com/widevine-cdm/1.4.8.1008-linux-x64.zip")
+sha256sums_i686=('a8e65d5fd65587d1debecf6df855689805ea36b02034042de4d039f0519a1c88')
+sha256sums_x86_64=('fe04a5b56eac6674f1eda2c8eb28a0183ec1a66d80f72db618291e33078eb17d')
 
 package() {
-  install -Dm644 opt/google/chrome/libwidevinecdm.so -t "$pkgdir/usr/lib/qt/plugins/ppapi/"
-  install -Dm644 opt/google/chrome/libwidevinecdmadapter.so -t "$pkgdir/usr/lib/qt/plugins/ppapi/"
-  install -Dm644 chrome-eula_text.html "$pkgdir/usr/share/licenses/$pkgname/eula_text.html"
+  install -Dm644 libwidevinecdm.so -t "$pkgdir/usr/lib/chromium/"
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
