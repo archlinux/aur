@@ -9,7 +9,7 @@ url='https://github.com/deuill/i3-gnome-flashback'
 license=('MIT')
 depends=('i3-wm' 'gnome-flashback')
 source=("i3-gnome-flashback-$pkgver.tar.gz::https://github.com/deuill/i3-gnome-flashback/archive/$pkgver.tar.gz")
-md5sums=('SKIP')
+sha1sums=('7fbb1cce48f453f30e26894059731f2cdd2c9a2e')
 
 package() {
 	cd "$pkgname-$pkgver"
