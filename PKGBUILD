@@ -52,7 +52,7 @@ pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _srcname=linux-4.11
 pkgver=4.11.12
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -62,6 +62,8 @@ _bfqrel=v7r11
 _bfqver=v8r11
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.11.0-${_bfqver}"
 #_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.11.0-${_bfqver}"
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/lucjan-kernels/master/patches/4.11"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.11"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -80,8 +82,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        '0005-BFQ-update-to-v8r12.patch'
-        '0006-BFQ-bugfix-for-v8r12.patch')
+        "${_lucjanpath}/0005-BFQ-update-to-v8r12.patch"
+        "${_lucjanpath}/0006-BFQ-bugfix-for-v8r12.patch")
 
 _kernelname=${pkgbase#linux} 
 
@@ -437,8 +439,8 @@ sha512sums=('6610eed97ffb7207c71771198c36179b8244ace7222bebb109507720e26c5f17d91
             '57addf780fc68d8e2914514e47d2edd27600cc0d1bf0c7d3786bc3e16ec9c6527eb8e9d95f156da8b77c11a53ac2a8f0d23360547a26350ebc3dca93721ebc42'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'b1f6306a27d7e25eb4ff3eb51cb1fe38b0ca035cff229537d1b9f68bdc25861f2fecdeeeb1582e34cd166ee4275e49e4c679247a4c36109b2dcd6d4fa9456d60'
-            '9a80a4824e6a8f34a9bcc687b1e1fa91300a5a5fb515db6022e7e43cbacbf2ad93dda1250f968e070be4f6e2429a21e9cf97838120915de9a1144745c34a7188')
+            '05e38539dc51ad64df02223174ba961264355a34fb703555fccfa18e296492c0622f191e522bcf341d6e7f8763c9e57f85ff8645a62e3b8a42446d17d190afb9'
+            '30c44c4b603f6ca15e0c58d98160a40a44c8212b94cd7a3457dbf0303d88962a960800f269334f55b4070a6d872d8d9dcccdbfea3ca2aaa389bef7051132495a')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
