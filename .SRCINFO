@@ -1,13 +1,13 @@
 pkgbase = build2-toolchain
 	pkgdesc = build2 build toolchain (build system and package manager)
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://build2.org/
 	arch = any
 	license = MIT
 	license = BSD
-	depends = build2=0.6.0
-	depends = bpkg=0.6.0
+	depends = build2=0.6.1
+	depends = bpkg=0.6.1
 
 pkgname = build2-toolchain
 
