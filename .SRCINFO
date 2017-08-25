@@ -1,16 +1,14 @@
-pkgbase = synergy2
+pkgbase = synergy2-bin
 	pkgdesc = Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux.
-	pkgver = 2.0.7.stable~b1477+1e4d1ed68
+	pkgver = 2.0.0beta3.b542
 	pkgrel = 1
 	url = https://symless.com/synergy
-	install = synergy2.install
+	install = synergy2-bin.install
 	arch = x86_64
 	license = unknown
-	depends = gcc>=5.2
-	depends = bash-completion>=1.18.
-	depends = gcc-libs>=3.0
+	depends = curl
+	depends = gcc-libs>=5.2
 	depends = hicolor-icon-theme
-	depends = openssl-1.0
 	depends = libx11>=1.2.99.901
 	depends = libxext
 	depends = libxi>=1.2.99.4
@@ -20,13 +18,10 @@ pkgbase = synergy2
 	depends = qt5-declarative>=5.5.0
 	depends = qt5-quickcontrols>=5.5.0
 	conflicts = synergy
-	conflicts = synergy2
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://binaries.symless.com/v2.0.7/synergy_2.0.7.stable_b1477+e4d1ed68_amd64.deb
-	source_x86_64 = https://gist.githubusercontent.com/JAicewizard/a70388a3a7c52fef21299f961a652364/raw
-	sha512sums_x86_64 = 4c1b9b87c4b33d894bad30f6c040507fb491ebf7e51d341d53b2d4fd2db278e405e5defa5c823ff6dc55313f6b34e15a1d283116cef18fbfa986883d9d0a92c9
-	sha512sums_x86_64 = 9c818d4f4929d156a6926336048cab4e398047037f45a177cdb71ede9c54d7b16992b7e5437999b2c72d3604c22092790e112abb234647abb0b34adf8e56b76b
+	source_x86_64 = https://www.dropbox.com/s/6bol2nt7j519m4l/synergy2Beta3.deb?dl=1
+	sha512sums_x86_64 = bee5ac7f6a506de1a62fdf6112deac7690b8247d5967af732423d550d164974c7d39bdc692eff2e5c0c7a47beea32090707bfb384a54d8dda8e84808b1a03501
 
-pkgname = synergy2
+pkgname = synergy2-bin
 
