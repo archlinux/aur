@@ -4,7 +4,7 @@
 
 _pkgname=nss
 pkgname=nss-hg
-pkgver=r13715.485fa499b698
+pkgver=r13546.fff2c933097d
 pkgrel=1
 pkgdesc="Mozilla Network Security Services"
 arch=(i686 x86_64)
