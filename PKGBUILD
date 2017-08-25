@@ -148,7 +148,7 @@ pkgver() {
   cd "${_srcname}"
 
   #git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
-  echo "$(echo ${_pkgver}. && git rev-parse --short HEAD)" | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/;s/ //g'
+  echo $(echo ${_pkgver}. && git rev-parse --short HEAD) | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/;s/ //g'
 }
 
 prepare() {
