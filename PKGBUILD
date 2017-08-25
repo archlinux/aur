@@ -1,8 +1,7 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
-# With help from Nicolas Porcel
 pkgbase=linux-max98090
 _srcname=linux-4.12
-pkgver=4.12.8
+pkgver=4.12.9
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -27,7 +26,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '32b860911a3bafd5cd5bc813a427c90fad6eafdf607fa64e1b763b16ab605636'
+            '32c5df9c032d039d17cee0397b74583000053089e1c2fdfdc77acc2edc2d2e76'
             'SKIP'
             '4b2c5d881596c6b7038706bba7822b16c382ca0c741f5dd64536312ef78017a7'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
