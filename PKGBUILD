@@ -18,7 +18,7 @@
 pkgbase="spl-linux-hardened"
 pkgname=("spl-linux-hardened" "spl-linux-hardened-headers")
 pkgver=0.7.1_4.12.8.b.1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-hardened-headers=4.12.8.b-1")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
