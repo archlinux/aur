@@ -14,12 +14,13 @@ source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver () {
-  cd $srcdir/$_pkgname
-  git rev-parse --short=7 HEAD
+    cd $srcdir/$_pkgname
+    git rev-parse --short=7 HEAD
 }
 
 package(){
-	cd "$srcdir/$_pkgname"
-        install -dm644 "$pkgdir/usr/share/themes/${_pkgname}/"
-	cp -r */ "$pkgdir/usr/share/themes/${_pkgname}/"
+    cd "$srcdir/$_pkgname"
+    install -dm644 "$pkgdir/usr/share/themes/${_pkgname}/"
+    cp -r */ "$pkgdir/usr/share/themes/${_pkgname}/"
+    chmod +x "$pkgdir/usr/share/themes/OSX-Arc-White"
 }
