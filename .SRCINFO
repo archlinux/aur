@@ -1,0 +1,12 @@
+pkgbase = astromatic-stuff
+	pkgdesc = Stuff is a program that simulates “perfect” astronomical catalogues (build from source)
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = http://www.astromatic.net/software/stuff
+	arch = x86_64
+	license = GPL
+	source = https://www.astromatic.net/download/stuff/stuff-1.26.0.tar.gz
+	sha1sums = 53a9c860f1b7a44fec9aacdd8f6d404bf4bcde95
+
+pkgname = astromatic-stuff
+
