@@ -3,9 +3,9 @@
 pkgname=ephoto
 pkgver=1.5
 pkgrel=1
-pkgdesc="Ephoto"
+pkgdesc="Ephoto: Image viewer based on EFL"
 arch=('i686' 'x86_64')
-url="https://www.enlightenment.org/about-rage"
+url="https://www.enlightenment.org/"
 license=('BSD')
 depends=('efl')
 conflicts=('ephoto-git')
