@@ -2,7 +2,7 @@
 # Contributor: sh0 <mee@sh0.org>
 
 pkgname=pdsh-genders
-pkgver=2.31
+pkgver=2.32
 pkgrel=1
 pkgdesc='Parallel Distributed Shell'
 url='https://github.com/grondo/pdsh'
@@ -14,10 +14,11 @@ options=('libtool')
 source=("https://github.com/grondo/pdsh/archive/pdsh-${pkgver}.tar.gz")
 conflicts=('pdsh')
 provides=('pdsh')
-sha256sums=('0ee066ce395703285cf4f6cf00b54b7097d12457a4b1c146bc6f33d8ba73caa7')
+sha256sums=('3c58b955b4f5f24e75905a5e133b5d28ce04246566e28701902359adab806765')
 
 build() {
   cd "${srcdir}/pdsh-pdsh-${pkgver}"
+  ./bootstrap
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               --infodir=/usr/share/info \
@@ -28,10 +29,14 @@ build() {
   make
 }
 
+check() {
+  cd "${srcdir}/pdsh-pdsh-${pkgver}"
+  make check
+}
+
 package() {
   cd "${srcdir}/pdsh-pdsh-${pkgver}"
   make DESTDIR="${pkgdir}/" install
-  rmdir "${pkgdir}/usr/sbin"
 }
 
 # vim:set ts=2 sw=2 et:
