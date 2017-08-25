@@ -1,7 +1,7 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 pkgname=dngconverter
 pkgver=9.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Adobe DNG Converter'
 arch=('x86_64')
 url='http://www.adobe.com/go/dng_converter_win/'

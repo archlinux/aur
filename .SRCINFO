@@ -3,7 +3,7 @@
 pkgbase = dngconverter
 	pkgdesc = Adobe DNG Converter
 	pkgver = 9.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.adobe.com/go/dng_converter_win/
 	arch = x86_64
 	license = custom: commercial
