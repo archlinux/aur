@@ -1,7 +1,7 @@
 pkgbase = miniupnpd-git
 	pkgdesc = Lightweight UPnP IGD daemon (git)
 	pkgver = 2.0.r121.g587f33c
-	pkgrel = 1
+	pkgrel = 2
 	url = http://miniupnp.free.fr
 	arch = i686
 	arch = x86_64

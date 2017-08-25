@@ -2,7 +2,7 @@
 
 pkgname=miniupnpd-git
 pkgver=2.0.r121.g587f33c
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight UPnP IGD daemon (git)"
 arch=('i686' 'x86_64')
 url="http://miniupnp.free.fr"
@@ -34,7 +34,7 @@ build() {
 package() {
   cd "miniupnp/miniupnpd"
 
-  make PREFIX="$pkgdir" SBININSTALLDIR="$pkgdir/usr/bin" -f Makefile.linux install
+  make DESTDIR="$pkgdir" SBININSTALLDIR="/usr/bin" -f Makefile.linux install
 
   rm -r "$pkgdir/etc/init.d"
 
