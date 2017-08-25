@@ -10,7 +10,6 @@ pkgbase = mattermost
 	makedepends = go
 	makedepends = libpng12
 	makedepends = npm
-	makedepends = pngquant
 	makedepends = yarn
 	optdepends = mariadb: SQL server storage
 	optdepends = percona-server: SQL server storage
