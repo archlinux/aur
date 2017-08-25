@@ -1,7 +1,7 @@
 # Maintainer: ninian <mcfadzean.org.uk ta linux>
 
 pkgname=runa
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Fast and light desktop application launcher"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:MPL2')
 depends=('bash' 'dmenu' 'libnotify')
 optdepends=('gxmessage: to view .desktop files' 'perl-file-mimeinfo: to better determine mimetypes')
 source=("http://appstogo.mcfadzean.org.uk/dl/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('a8780e5825de736a542213eb8d90bd60')
+md5sums=('32c96fde496daa312955ce3dd803b50e')
 
 package() {
   cd "$srcdir/${pkgname}-$pkgver"
@@ -27,5 +27,5 @@ package() {
   install -Dm755 xdg-open                    "$pkgdir/usr/share/doc/${pkgname}/xdg-open"
   msg "Configuration and favourites files will be created the first time Runa is executed"
   msg "See 'man ${pkgname}' and /usr/share/doc/${pkgname}/README for more information"
-  msg "IMPORTANT: v2.3.0 and v2.2.0 configuration files are INCOMPATIBLE; recreate and merge as required"
+  msg "IMPORTANT: v2.2.0 configuration file is INCOMPATIBLE with later versions; recreate and merge as required"
 }
