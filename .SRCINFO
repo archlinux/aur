@@ -1,0 +1,17 @@
+pkgbase = epour
+	pkgdesc = Torrent client based on EFL
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://phab.enlightenment.org/w/projects/epour/
+	arch = any
+	license = GPL3
+	makedepends = python-distutils-extra
+	depends = python-efl
+	depends = python-xdg
+	depends = libtorrent-rasterbar>1.1.0
+	depends = hicolor-icon-theme
+	source = http://download.enlightenment.org/rel/apps/epour/epour-0.7.0.tar.xz
+	sha1sums = SKIP
+
+pkgname = epour
+
