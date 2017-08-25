@@ -2,7 +2,7 @@
 pkgname=openclaw
 _gitname=OpenClaw
 pkgver=0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Reimplementation of Captain Claw (1997) platformer"
 arch=('i686' 'x86_64')
 url='https://github.com/pjasicek/OpenClaw'
@@ -17,8 +17,10 @@ source=(
     "https://github.com/pjasicek/${_gitname}/archive/v${pkgver}.tar.gz"
     "https://github.com/pjasicek/${_gitname}/releases/download/v${pkgver}/openclaw-1.0-1.x86_64.rpm"
 )
-sha256sums=('d53d6e9054452cf465ed485094d3645f58866249bbeb59cf38262352d639e76b'
-            '99095cc136e35701016bc5f70bcb8b0cb20538fc0a778cdccd38c4275ca85441')#
+sha256sums=(
+    'd53d6e9054452cf465ed485094d3645f58866249bbeb59cf38262352d639e76b'
+    '99095cc136e35701016bc5f70bcb8b0cb20538fc0a778cdccd38c4275ca85441'
+)
 install='openclaw.install'
 
 build() {
