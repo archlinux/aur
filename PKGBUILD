@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xxhash-git
-pkgver=0.6.0.r51.gd9e2c7b
+pkgver=0.6.0.r57.gbdc07f6
 pkgrel=1
 pkgdesc="Extremely fast non-cryptographic hash algorithm"
 arch=('i686' 'x86_64')
@@ -37,6 +37,6 @@ check() {
 package() {
   cd "xxHash"
 
-  make PREFIX="/usr" DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/xxhash/LICENSE"
 }
