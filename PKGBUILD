@@ -1,4 +1,5 @@
-# Maintainer: fzerorubigd <fzerorubigd@gmail.com>
+# Maintainer: obedmr <obed.n.munoz@gmail.com>
+# Contributor: fzerorubigd <fzerorubigd@gmail.com>
 # Contributor: Vesa Kaihlavirta <vegai@iki.fi>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Rémy Oudompheng  <remy@archlinux.org>
@@ -10,10 +11,10 @@
 # Contributor: John Luebs <jkluebs@gmail.com>
 
 pkgname=go-git
-epoch=2
-pkgver=1.6beta2.r50.g1b6d55a
+epoch=1
+pkgver=1.9beta2.r553.ge11fd00629
 pkgrel=1
-provides=(go=1.5)
+provides=(go=1.9)
 conflicts=('go' 'go-hg')
 pkgdesc='Compiler and tools for the Go programming language from Google'
 arch=('x86_64' 'i686')
@@ -83,7 +84,7 @@ build() {
 
   $GOROOT/bin/go get -v -d golang.org/x/tools/cmd/godoc
   $GOROOT/bin/go build -o $srcdir/godoc golang.org/x/tools/cmd/godoc
-  for tool in vet cover; do
+  for tool in cover; do
     $GOROOT/bin/go get -v -d golang.org/x/tools/cmd/${tool}
     $GOROOT/bin/go build -o $GOROOT/pkg/tool/${GOOS}_${GOARCH}/${tool} golang.org/x/tools/cmd/${tool}
   done
@@ -138,7 +139,7 @@ package() {
 
   # Fix for FS#32813
   find "$pkgdir" -type f -name sql.go -exec chmod -x {} \;
-  
+
   # Remove all executable source files
   find "$pkgdir/usr/lib/go/src" -type f -executable -delete
 
