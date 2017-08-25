@@ -4,7 +4,7 @@
 # Contributor: Surefire <surefire at cryptomile.net>
 
 pkgname=gnome-shell-extension-appindicator-git
-pkgver=19.r3.g83d97ca
+pkgver=20+0+g159fc2d
 pkgrel=1
 pkgdesc="Integrates AppIndicators into GNOME Shell."
 arch=('any')
@@ -22,7 +22,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/-/+/g'
 }
 
 package() {
