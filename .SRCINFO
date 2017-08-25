@@ -1,0 +1,13 @@
+pkgbase = astromatic-skymaker
+	pkgdesc = SkyMaker is a program that simulates astronomical images (build from source)
+	pkgver = 3.10.5
+	pkgrel = 1
+	url = http://www.astromatic.net/software/skymaker
+	arch = x86_64
+	license = GPL
+	depends = fftw
+	source = https://www.astromatic.net/download/skymaker/skymaker-3.10.5.tar.gz
+	sha1sums = 0e11eb66f5d23f12cf6dc967ef4ade5328a662ca
+
+pkgname = astromatic-skymaker
+
