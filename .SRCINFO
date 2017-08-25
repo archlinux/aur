@@ -1,0 +1,30 @@
+pkgbase = sigrok-firmware-dreamsourcelab-dslogic
+	pkgver = 0.97
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = https://github.com/DreamSourceLab/DSView/raw/886b847c21c606df3138ce7ad8f8e8c363ee758b/DSView/res/DSLogic50.bin
+	source = https://github.com/DreamSourceLab/DSView/raw/886b847c21c606df3138ce7ad8f8e8c363ee758b/DSView/res/DSLogic33.bin
+	source = https://github.com/DreamSourceLab/DSView/raw/886b847c21c606df3138ce7ad8f8e8c363ee758b/DSView/res/DSLogic.fw
+	source = https://github.com/DreamSourceLab/DSView/raw/886b847c21c606df3138ce7ad8f8e8c363ee758b/DSView/res/DSCope.bin
+	source = https://github.com/DreamSourceLab/DSView/raw/886b847c21c606df3138ce7ad8f8e8c363ee758b/DSView/res/DSCope.fw
+	source = https://github.com/DreamSourceLab/DSView/raw/886b847c21c606df3138ce7ad8f8e8c363ee758b/DSView/res/DSLogicPro.bin
+	source = https://github.com/DreamSourceLab/DSView/raw/886b847c21c606df3138ce7ad8f8e8c363ee758b/DSView/res/DSLogicPro.fw
+	source = https://github.com/DreamSourceLab/DSView/raw/886b847c21c606df3138ce7ad8f8e8c363ee758b/DSView/res/DSLogicPlus.bin
+	source = https://github.com/DreamSourceLab/DSView/raw/886b847c21c606df3138ce7ad8f8e8c363ee758b/DSView/res/DSLogicPlus.fw
+	source = https://github.com/DreamSourceLab/DSView/raw/886b847c21c606df3138ce7ad8f8e8c363ee758b/DSView/res/DSLogicBasic.bin
+	source = https://github.com/DreamSourceLab/DSView/raw/886b847c21c606df3138ce7ad8f8e8c363ee758b/DSView/res/DSLogicBasic.fw
+	md5sums = c3735b82e8b2b8310bec9c2c05ea8b47
+	md5sums = 1599ee538d3ff99ddc014b0243cbf60d
+	md5sums = 80db51aabc377cb215df2f213621355f
+	md5sums = 80a64ccd9ce8ee71a7165a27dbb30ede
+	md5sums = 4a2ab71e1ef726e2e65019f9d42a6e50
+	md5sums = 1adf30ff49522cf6944e67b19a8736ed
+	md5sums = 0555bf649719d11e714f159f2fdc5a57
+	md5sums = 0ebc84bf40cf1f9c60998794bc3dba1f
+	md5sums = 6f1805fcb5040498ae1b522a7defae5d
+	md5sums = 3d19924ab211967c2496681fce9e17ed
+	md5sums = ab6f5788ce7228ab26933a3cda7abc7b
+
+pkgname = sigrok-firmware-dreamsourcelab-dslogic
+
