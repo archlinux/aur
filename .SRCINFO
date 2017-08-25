@@ -1,0 +1,20 @@
+pkgbase = whois-git
+	pkgdesc = Provides useful functions commonly found on BSD systems
+	pkgver = 5.2.18.r0.g5dd942b
+	pkgrel = 1
+	url = https://github.com/rfc1036/whois
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = perl
+	depends = glibc
+	depends = libidn2
+	provides = whois
+	conflicts = whois
+	backup = etc/whois.conf
+	source = git+https://github.com/rfc1036/whois.git#branch=next
+	sha256sums = SKIP
+
+pkgname = whois-git
+
