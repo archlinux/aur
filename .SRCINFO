@@ -1,8 +1,8 @@
 pkgbase = go-git
 	pkgdesc = Compiler and tools for the Go programming language from Google
-	pkgver = 1.6beta2.r50.g1b6d55a
+	pkgver = 1.9beta2.r553.ge11fd00629
 	pkgrel = 1
-	epoch = 2
+	epoch = 1
 	url = http://golang.org/
 	install = go-git.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = go-git
 	optdepends = git: for fetching sources from git repositories
 	optdepends = bzr: for fetching sources from bazaar repositories
 	optdepends = subversion: for fetching sources from subversion repositories
-	provides = go=1.5
+	provides = go=1.9
 	conflicts = go
 	conflicts = go-hg
 	options = !strip
