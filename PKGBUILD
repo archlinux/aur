@@ -5,7 +5,7 @@
 
 _gemname=activerecord
 pkgname=ruby-$_gemname
-pkgver=5.0.2
+pkgver=5.1.3
 pkgrel=1
 pkgdesc='Object-relational mapper framework (part of Rails).'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(ruby ruby-activesupport ruby-activemodel ruby-arel)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('6b516ee6df27c340d9f0912617833f3a9c48d15a')
+sha1sums=('258e8ebd2916b445274f9e6d93e87a2c7fecb835')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
