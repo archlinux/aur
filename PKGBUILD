@@ -2,7 +2,7 @@
 
 pkgname=ratbagd
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='ratbagd is a system daemon to introspect and modify configurable mice'
 arch=('i686' 'x86_64')
 url='https://github.com/libratbag/ratbagd'
@@ -11,7 +11,7 @@ depends=('glibc' 'libevdev' 'libudev.so' 'libratbag>=0.2' 'systemd>=227')
 makedepends=('meson' 'check')
 source=("https://github.com/libratbag/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('d216b964dcc16c40355b1b224019d7476d4128f6533e51d46a873b66eaec86dd')
-conflicts=('ratbagd-git')
+conflicts=('ratbagd-git libratbag>=0.9.900')
 
 build() {
     cd ${pkgname}-${pkgver}
