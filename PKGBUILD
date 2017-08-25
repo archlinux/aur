@@ -14,7 +14,7 @@ sha256sums=('b03f9cc4feb00df9bfd697b032f4f4ae838ad5a6bb41db798eefc5639a1480d9')
 build() {
   cd "${srcdir}/aspell6-bn-${pkgver}-1"
 
-  ./configure --prefix=/usr
+  ./configure
   make
 }
 
