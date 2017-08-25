@@ -1,6 +1,6 @@
 pkgbase = quicktile-git
 	pkgdesc = Lightweight standalone alternative to Compiz Grid plugin
-	pkgver = 20140626
+	pkgver = 20170825
 	pkgrel = 1
 	url = https://github.com/ssokolow/quicktile
 	arch = any

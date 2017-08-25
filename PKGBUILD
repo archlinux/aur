@@ -1,5 +1,5 @@
 pkgname=quicktile-git
-pkgver=20160103
+pkgver=20170825
 pkgrel=1
 url="https://github.com/ssokolow/quicktile"
 pkgdesc="Lightweight standalone alternative to Compiz Grid plugin"
@@ -28,6 +28,6 @@ build()
 
 package()
 {
-	install -Dv -m755 ${srcdir}/quicktile/quicktile.py \
-	$pkgdir/usr/bin/quicktile
+    cd ${srcdir}/${_gitname}                                    
+    python2 setup.py install --root="${pkgdir}" --optimize=1
 }
