@@ -1,0 +1,15 @@
+pkgbase = access-export
+	pkgdesc = Export and convert Microsoft® Access® databases to various formats including SQLite
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/hzpz/access-export
+	arch = any
+	license = MPL
+	depends = java-environment
+	depends = bash
+	noextract = access-export.jar
+	source = access-export.jar::https://github.com/hzpz/access-export/releases/download/v0.2.0/access-export-0.2.0.jar
+	sha256sums = 7f87dcb4f177652a2ef99a4f8bc9dd97ced40631e2bba082c38e4af0a7d6212e
+
+pkgname = access-export
+
