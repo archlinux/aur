@@ -2,7 +2,7 @@
 # Contributor: sh0 <mee@sh0.org>
 
 pkgname=pdsh
-pkgver=2.31
+pkgver=2.32
 pkgrel=1
 pkgdesc='Parallel Distributed Shell'
 url='https://github.com/grondo/pdsh'
@@ -11,8 +11,8 @@ license=('GPL')
 depends=('glibc' 'openssh' 'readline')
 optdepends=('perl: required by the dshbak utility')
 options=('libtool')
-source=("https://github.com/grondo/pdsh/archive/pdsh-2.31.tar.gz")
-md5sums=('cab34b0ca78f3cf596fd648b265223ed')
+source=("https://github.com/grondo/pdsh/archive/pdsh-2.32.tar.gz")
+md5sums=('3af36658154e2983c9e4067f91672c54')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
