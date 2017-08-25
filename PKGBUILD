@@ -5,8 +5,8 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=0.0.99.r362.66f9fd3
-pkgrel=2
+pkgver=0.0.99.r366.bc27fa9
+pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
 license=('GPL3')
@@ -57,11 +57,9 @@ package() {
   cd "$srcdir/build"
 
  DESTDIR="$pkgdir" ninja install
-
 cd "$srcdir/$_pkgname"
 # install correct PAM file
   install -Dm644 "data/entrance.arch" "$pkgdir/etc/pam.d/entrance"
-  install -Dm644 "data/entrance.conf.in" "$pkgdir/etc/entrance/entrance.conf"
 # install text files
   install -d "$pkgdir/usr/share/doc/$_pkgname/"
   install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS ChangeLog NEWS README
