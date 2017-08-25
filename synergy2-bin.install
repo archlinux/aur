@@ -1,0 +1,19 @@
+post_install() {
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+	if which update-icon-caches >/dev/null 2>&1 ; then
+		update-icon-caches /usr/share/icons/synergy.svg
+	fi
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+	if which update-icon-caches >/dev/null 2>&1 ; then
+		update-icon-caches /usr/share/icons/synergy.svg
+	fi
+	update-desktop-database -q
+}
