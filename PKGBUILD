@@ -7,17 +7,19 @@ _codename=date
 pkgname="${_name}-dev-ru"
 pkgdesc='Mozilla Firefox Developer Edition'
 url='http://www.mozilla.org/firefox/developer'
-pkgver=56.0b4_20170819205558
-_ffver=56.0b4
-_ffbid=20170819205558
+pkgver=56.0b5_20170821193225
+_ffver=56.0b5
+_ffbid=20170821193225
 locale="ru"
+# Next version: 56.0b5
+# Current BID: 20170821193225
 year=${_ffbid:0:4}
 month=${_ffbid:4:2}
 day=${_ffbid:6:2}
 hour=${_ffbid:8:2}
 minute=${_ffbid:10:2}
 second=${_ffbid:12:2}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _file="${_name}-${_ffver}.ru.linux-${CARCH}"
