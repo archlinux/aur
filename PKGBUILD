@@ -1,16 +1,17 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=miniupnpc-git
-pkgver=r76.ge6ed3c5
+pkgver=2.0.r121.g587f33c
 pkgrel=1
 pkgdesc="A small UPnP client library/tool to access Internet Gateway Devices (git)"
 arch=('i686' 'x86_64')
 url="http://miniupnp.free.fr"
 license=('BSD')
-depends=('sh')
+depends=('glibc' 'sh')
 makedepends=('git')
 provides=('miniupnpc')
 conflicts=('miniupnpc')
+options=('staticlibs')
 source=("git+https://github.com/miniupnp/miniupnp.git")
 sha256sums=('SKIP')
 
@@ -18,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "miniupnp"
 
-  git describe --long --tags | sed 's/[^-]*-\(.*\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^miniupnpc_//;s/\([^-]*-g\)/r\1/;s/[_-]/./g'
 }
 
 build() {
@@ -27,10 +28,15 @@ build() {
   make
 }
 
+check() {
+  cd "miniupnp/miniupnpc"
+
+  make check
+}
+
 package() {
   cd "miniupnp/miniupnpc"
 
-  make PREFIX="$pkgdir" install
-  install -Dm644 "man3/miniupnpc.3" "$pkgdir/usr/share/man/man3/miniupnpc.3"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/miniupnpc/LICENSE"
 }
