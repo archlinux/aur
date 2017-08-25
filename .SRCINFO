@@ -1,28 +1,17 @@
 pkgbase = go-git
-	pkgdesc = Compiler and tools for the Go programming language from Google
-	pkgver = 1.9beta2.r553.ge11fd00629
+	pkgdesc = Core compiler tools for the Go programming language
+	pkgver = 1.9
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = http://golang.org/
-	install = go-git.install
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = BSD
-	makedepends = inetutils
 	makedepends = git
-	makedepends = go>=1.4
-	depends = perl
-	depends = gawk
-	optdepends = mercurial: for fetching sources from mercurial repositories
-	optdepends = git: for fetching sources from git repositories
-	optdepends = bzr: for fetching sources from bazaar repositories
-	optdepends = subversion: for fetching sources from subversion repositories
-	provides = go=1.9
-	conflicts = go
-	conflicts = go-hg
+	makedepends = go
 	options = !strip
 	options = staticlibs
-	source = go-git::git+https://github.com/golang/go.git
+	source = git+https://go.googlesource.com/go#commit=c8aec4095e089ff6ac50d18e97c3f46561f14f48
 	md5sums = SKIP
 
 pkgname = go-git
