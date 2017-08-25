@@ -1,5 +1,5 @@
- 
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
+# Mantainer: Lorenzo Ferrillo <lorenzofer at live dot it>
 
 pkgname=epour
 pkgver=0.7.0
@@ -20,7 +20,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-
   python setup.py install --root="${pkgdir}"  #--optimize=1 if this active epour doesn't show icons
 
 # install text files
