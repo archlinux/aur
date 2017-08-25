@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lz4-git
-pkgver=1.8.0.r0.gc10863b
+pkgver=1.8.0.r8.g4db65c1
 pkgrel=1
 pkgdesc="Extremely Fast Compression algorithm"
 arch=('i686' 'x86_64')
@@ -37,6 +37,6 @@ check() {
 package() {
   cd "lz4"
 
-  make PREFIX="/usr" DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
   install -Dm644 "lib/LICENSE" "$pkgdir/usr/share/licenses/lz4/LICENSE"
 }
