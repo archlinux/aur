@@ -15,6 +15,6 @@ md5sums=("c48f6005b89b7d8be6265164fd434f5b")
 
 package() {
  cd "${srcdir}/"
-  install -Dm755 ocrdesktop "$pkgdir/usr/bin/ocrdesktop"
-  install -Dm644 ocrdesktop.1.gz "${pkgdir}/usr/share/man/man1/ocrdesktop.1.gz"
+  install -Dm755 ocrdesktop "$pkgdir/ocrdesktop/usr/bin/ocrdesktop"
+  install -Dm644 ocrdesktop.1.gz "${pkgdir}/ocrdesktop/usr/share/man/man1/ocrdesktop.1.gz"
 }
