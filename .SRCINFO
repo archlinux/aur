@@ -1,0 +1,23 @@
+pkgbase = librocket-git
+	pkgdesc = The HTML/CSS User Interface library
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://librocket.com
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = mesa
+	depends = boost
+	depends = freetype2
+	depends = python2
+	depends = libgl
+	depends = glu
+	provides = librocket
+	provides = librocket-git
+	conflicts = librocket
+	source = librocket-git::git+https://github.com/libRocket/libRocket.git
+	sha256sums = SKIP
+
+pkgname = librocket-git
+
