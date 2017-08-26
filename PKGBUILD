@@ -31,6 +31,7 @@ package_python-bokeh() {
          'python-pandas'
          'python-yaml'
          'python-tornado')
+  optdepends=('python-bkcharts: server')
 
   cd "${srcdir}"/bokeh-$pkgver
   python setup.py install --root="${pkgdir}" --optimize=1 --install_js
@@ -45,6 +46,7 @@ package_python2-bokeh() {
          'python2-pandas'
          'python2-yaml'
          'python2-tornado')
+  optdepends=('python2-bkcharts: server')
 
   cd "${srcdir}"/bokeh-$pkgver-py2
   python2 setup.py install --root="${pkgdir}" --optimize=1 --install_js
