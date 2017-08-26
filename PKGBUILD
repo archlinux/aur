@@ -1,7 +1,7 @@
 # Maintainer: Wes Barnett <wes at wbarnett dot us>
 pkgname=snap-sync
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Use snapper snapshots to backup to external drive"
 arch=(any)
 url="https://github.com/wesbarnett/snap-sync"
@@ -14,5 +14,5 @@ sha512sums=('801bdbeb5a68cfabf369cfb8a4a63562fefa9b1616ab7e4269be154d070f51c40d7
 
 package() {
     cd $pkgname
-    make DESTDIR=$pkgdir install
+    make SNAPPER_CONFIG=/etc/conf.d/snapper DESTDIR=$pkgdir install
 }

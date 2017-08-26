@@ -1,7 +1,7 @@
 pkgbase = snap-sync
 	pkgdesc = Use snapper snapshots to backup to external drive
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wesbarnett/snap-sync
 	arch = any
 	license = GPL
