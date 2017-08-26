@@ -2,7 +2,7 @@
 # Contributor: nfnty <arch at nfnty dot se>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=ranger-git
-pkgver=1.9.0b5.3.g3b30c5ee
+pkgver=1.9.0b5.75.g35f47f53
 pkgrel=1
 pkgdesc="A simple, vim-like file manager."
 arch=('any')
