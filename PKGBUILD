@@ -3,7 +3,7 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=sawfish
-pkgver=1.12.0
+pkgver=1.12.90
 pkgrel=1
 pkgdesc="An extensible window manager using a Lisp-based scripting language"
 arch=('i686' 'x86_64')
@@ -11,19 +11,21 @@ url="http://sawfish.wikia.com/wiki/Main_Page"
 license=('GPL')
 depends=('libsm' 'rep-gtk' 'hicolor-icon-theme')
 source=(http://download.tuxfamily.org/${pkgname}/${pkgname}_${pkgver}.tar.xz arch_poweroff_defaults.patch)
-sha256sums=('44c90e5ecd383d7ff821b3ab09b3a0087776812172dd7902572534c4dfe7eafc'
+sha256sums=('6154151312d99c97d0a61f83a0dd2630e427bebb1ae2119e7372278971d6e8a2'
             '34092f761f89fa3db90841e3fd270f42c06f769c53ed524deccdf48f204f611e')
 options=('!libtool')
 
-build() {
-  cd "${srcdir}/${pkgname}_${pkgver}"
-  ./configure --prefix=/usr --libexecdir=/usr/lib 
-  make
-}
 
 prepare() {
   cd "${srcdir}/${pkgname}_${pkgver}"
   patch -p1 < "$srcdir"/arch_poweroff_defaults.patch
+}
+
+build() {
+  cd "${srcdir}/${pkgname}_${pkgver}"
+  ./autogen.sh
+  ./configure --prefix=/usr --libexecdir=/usr/lib 
+  make
 }
 
 package() {
