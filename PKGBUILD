@@ -9,7 +9,7 @@ pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use i
 arch=('x86_64' 'i686')
 url="http://dfhack.readthedocs.io/en/v$pkgver/"
 license=('custom')
-depends=(dwarffortress=$pkgver lua protobuf libpng12 libxrandr libjpeg6 freetype2 libglvnd libxcursor libxinerama)
+depends=("dwarffortress=$pkgver" lua protobuf libpng12 libxrandr libjpeg6 freetype2 libglvnd libxcursor libxinerama)
 
 conflicts=(dfhack dfhack-git)
 provides=(dfhack)
