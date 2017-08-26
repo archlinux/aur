@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="ACR_1:1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="256px" height="256px" viewBox="0 0 256 256" enable-background="new 0 0 256 256" xml:space="preserve">
+<defs>
+	<filter id="screen">
+		<feBlend mode="screen" in2="BackgroundImage"/>
+	</filter>
+</defs>
+<g id="ACube">
+	<polyline id="Outer_Cube" fill="#C1272D" points="183.184,71.213 99.319,22.795 16,71.214 16.272,71.373 16,167.578 
+		99.863,215.998 99.864,215.795 99.864,215.998 183.729,167.578 183.454,71.214 	"/>
+	<polyline id="Inner_Cube" opacity="0.2" fill="#FFFFFF" points="169.428,79.168 99.409,38.745 29.848,79.169 30.075,79.301 
+		29.848,159.621 99.863,200.047 99.864,199.877 99.864,200.047 169.88,159.621 169.651,79.169 	"/>
+	<g id="Screener" style="filter:url(#screen)">
+		<g id="Right_Shine" opacity="0.75">
+			<g enable-background="new    ">
+				<polygon fill="none" points="99.885,216 99.612,119.635 183.474,71.214 183.748,167.58 				"/>
+				<g>
+					
+						<radialGradient id="SVGID_1_" cx="99.4941" cy="119.9448" r="89.3129" gradientTransform="matrix(0.9719 0 0 0.9719 2.7861 2.7903)" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="1" style="stop-color:#000000"/>
+					</radialGradient>
+					<polyline fill="url(#SVGID_1_)" points="183.474,71.214 99.612,119.635 99.885,216 183.748,167.58 183.474,71.214 					"/>
+				</g>
+			</g>
+		</g>
+		<g id="Left_Shine" opacity="0.75">
+			<g enable-background="new    ">
+				
+					<radialGradient id="SVGID_2_" cx="56.8794" cy="144.8867" r="60.9163" gradientTransform="matrix(0.9719 0 0 0.9719 2.7861 2.7903)" gradientUnits="userSpaceOnUse">
+					<stop  offset="0" style="stop-color:#FFFFFF"/>
+					<stop  offset="1" style="stop-color:#000000"/>
+				</radialGradient>
+				<polygon fill="url(#SVGID_2_)" points="16,167.578 16.272,71.214 100.136,119.633 99.863,215.998 				"/>
+				<g>
+					
+						<radialGradient id="SVGID_3_" cx="98.5757" cy="121.0352" r="86.6846" gradientTransform="matrix(0.9719 0 0 0.9719 2.7861 2.7903)" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="1" style="stop-color:#000000"/>
+					</radialGradient>
+					<polyline fill="url(#SVGID_3_)" points="100.136,119.633 16.272,71.214 16,167.578 99.863,215.996 100.136,119.633 					"/>
+				</g>
+			</g>
+		</g>
+		<g id="Top_Shine">
+			<g enable-background="new    ">
+				
+					<radialGradient id="SVGID_4_" cx="99.8838" cy="119.2158" r="97.8165" gradientTransform="matrix(0.9719 0 0 0.9719 2.7861 2.7903)" gradientUnits="userSpaceOnUse">
+					<stop  offset="0" style="stop-color:#FFFFFF"/>
+					<stop  offset="1" style="stop-color:#000000"/>
+				</radialGradient>
+				<polygon fill="url(#SVGID_4_)" points="16.272,71.214 99.592,22.795 183.454,71.213 100.137,119.633 				"/>
+				<g>
+					
+						<radialGradient id="SVGID_5_" cx="100.3677" cy="119.5103" r="106.8604" gradientTransform="matrix(0.9719 0 0 0.9719 2.7861 2.7903)" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="1" style="stop-color:#000000"/>
+					</radialGradient>
+					<polyline fill="url(#SVGID_5_)" points="183.454,71.213 99.592,22.795 16.272,71.214 100.137,119.633 183.454,71.213 					"/>
+				</g>
+			</g>
+		</g>
+		<g id="Front_Edge">
+			
+				<radialGradient id="SVGID_6_" cx="100.1655" cy="119.9766" r="93.0735" gradientTransform="matrix(0.9719 0 0 0.9719 2.7861 2.7903)" gradientUnits="userSpaceOnUse">
+				<stop  offset="0" style="stop-color:#FFFFFF"/>
+				<stop  offset="1" style="stop-color:#000000"/>
+			</radialGradient>
+			<polygon fill="url(#SVGID_6_)" points="101.376,215.28 101.376,117.428 98.898,117.428 98.898,215.281 100.137,215.996 			"/>
+		</g>
+		<g id="Top_Corner">
+			
+				<radialGradient id="SVGID_7_" cx="100.7173" cy="119.6938" r="98.7057" gradientTransform="matrix(0.9719 0 0 0.9719 2.7861 2.7903)" gradientUnits="userSpaceOnUse">
+				<stop  offset="0" style="stop-color:#FFFFFF"/>
+				<stop  offset="1" style="stop-color:#000000"/>
+			</radialGradient>
+			<polygon fill="url(#SVGID_7_)" points="99.886,116.762 18.296,69.657 16.021,70.979 99.886,119.396 183.202,70.978 
+				180.928,69.664 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<polygon fill="#8CC63F" points="246,168.2 194.8,168.2 194.8,117 169.2,117 169.2,168.2 118,168.2 118,193.8 169.2,193.8 
+			169.2,245 194.8,245 194.8,193.8 246,193.8 		"/>
+	</g>
+	<g>
+		<polygon fill="none" stroke="#39B54A" stroke-width="5" points="246,168.2 194.8,168.2 194.8,117 169.2,117 169.2,168.2 
+			118,168.2 118,193.8 169.2,193.8 169.2,245 194.8,245 194.8,193.8 246,193.8 		"/>
+	</g>
+</g>
+</svg>
