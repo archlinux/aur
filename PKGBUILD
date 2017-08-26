@@ -1,14 +1,13 @@
 # Maintainer: Andrew Dunai <andrew@dun.ai>
 # Contributor: Damien Flament <damien.flament@gmx.com>
 pkgname=voxelshop
-_pkgname_upper=VoxelShop
-pkgver=1.8.02
-pkgrel=3
+pkgver=1.8.11
+pkgrel=1
 pkgdesc='An extremely intuitive and powerful cross-platform software to modify and create voxel objects which was designed from the ground up in close collaboration with artists.'
-url=http://blackflux.com/node/11
+url=https://blackflux.com/node/11
 license=('Apache')
 groups=()
-depends=('java-runtime-common' 'bash')
+depends=('java-runtime>=8' 'bash')
 makedepends=()
 optdepends=()
 provides=()
@@ -18,30 +17,40 @@ backup=()
 options=()
 install=
 changelog=
+_source_filename="${pkgname}-${pkgver}.zip"
 source=('voxelshop'
-        "https://github.com/simlu/voxelshop/releases/download/${pkgver}/VoxelShop-java-all-os-fast.zip")
-noextract=()
-sha256sums=('849a498d505f7e817c529d5b538f94c82aeaf45a8d75786dcf9651adf3d1d645'
-            '86c1fd50ef32b17be92df37d6a5c2206e456d99bc7abe4da80a44f49d2a377d3')
+        "${_source_filename}::https://github.com/simlu/${pkgname}/releases/download/${pkgver}/${pkgname}-bin.zip")
+noextract=("${_source_filename}")
+sha256sums=('1f1535bd452294f1f8261bdd0432e0100e43f41650ff25aa67d92cf786be7df8'
+            '913cc42e789f5914ab894ed6157be94bcedc5d5cb528481bf6e167b0e3d70354')
 arch=('any')
 
+
 prepare() {
-  # Generate the startup script
-  cd "${srcdir}"
+  msg2 "Generating startup script..."
   sed -i "s/{{pkgname}}/${pkgname}/g" "${pkgname}"
+
+  # Unzip the sources. This is usually done automatically by makepkg. But the
+  # extracted directory name conflicts with the startup script name.
+  msg2 "Extracting sources..."
+  if [[ ! -d "${pkgname}-${pkgver}" ]]
+  then
+    mkdir "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
+    bsdtar -xkf "${srcdir}/${_source_filename}"
+    mv "${pkgname}"/* .
+    rmdir "${pkgname}"
+  fi
 }
 
 package() {
-  # Install the distributed files in /opt
-  cd "${srcdir}/${_pkgname_upper}"
-
-  install -Dm755 -t "${pkgdir}/usr/share/${pkgname}" data/*
-  
-  # Install the custom startup script
-  cd "${srcdir}"
+  msg2 "Installing startup script..."
   install -D -t "${pkgdir}/usr/bin" "${pkgname}"
   
-  # Add a symlink to the startup script using the camel-cased package name
-  ln -s "${pkgname}" "${pkgdir}/usr/bin/${_pkgname_upper}"
+  msg2 "Installing the jars..." 
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  install -Dm644 -t "${pkgdir}/usr/share/java/${pkgname}" "${pkgname}-start.jar"
+  install -Dm644 -t "${pkgdir}/usr/share/java/${pkgname}/lib" lib/*
 }
 

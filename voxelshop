@@ -1,11 +1,4 @@
 #!/bin/bash
 
-cd /usr/share/{{pkgname}}/
-declare -r DATA_DIR=${XDG_DATA_HOME:-"${HOME}/.local/share"}/{{pkgname}}
-
-# Update the Getdown configuration file
-install -CDm644 -t "${DATA_DIR}" getdown.txt
-
-# Start the application using Getdown
-exec /usr/bin/java -jar getdown-client.jar "${DATA_DIR}"
+exec /usr/bin/java -jar /usr/share/java/{{pkgname}}/{{pkgname}}-start.jar
 
