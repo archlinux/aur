@@ -1,7 +1,7 @@
 pkgbase = pencil2d-git
 	pkgdesc = Animation/drawing software, that lets you create traditional hand-drawn animation using both bitmap and vector graphics
-	pkgver = 2443.1d67de07
-	pkgrel = 2
+	pkgver = 2517.3cc8eba2
+	pkgrel = 1
 	url = http://www.pencil2d.org/
 	install = pencil2d.install
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = pencil2d-git
 	depends = ffmpeg
 	depends = qt5-svg
 	depends = qt5-multimedia
+	depends = qt5-xmlpatterns
 	provides = pencil2d
 	conflicts = pencil2d
 	options = !staticlibs
