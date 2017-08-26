@@ -1,7 +1,7 @@
 pkgbase = kube
 	pkgdesc = A modern groupware client based on QtQuick and Sink
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/KDE_PIM
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = kube
 	depends = kpackage
 	depends = qt5-quickcontrols2
 	depends = qt5-webengine
+	depends = qt5-quickcontrols
 	source = https://download.kde.org/unstable/kube/0.3.1/src/kube-0.3.1.tar.xz
 	sha256sums = ac1058cb702d0ee3b929b9f522cfddd982dc3e36c6d2416078264cbbcf347723
 

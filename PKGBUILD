@@ -2,12 +2,12 @@
 
 pkgname=kube
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern groupware client based on QtQuick and Sink"
 arch=(i686 x86_64)
 url="https://community.kde.org/KDE_PIM"
 license=(LGPL)
-depends=(sink qgpgme kpackage qt5-quickcontrols2 qt5-webengine)
+depends=(sink qgpgme kpackage qt5-quickcontrols2 qt5-webengine qt5-quickcontrols)
 makedepends=(extra-cmake-modules python)
 source=("https://download.kde.org/unstable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz")
 sha256sums=('ac1058cb702d0ee3b929b9f522cfddd982dc3e36c6d2416078264cbbcf347723')
