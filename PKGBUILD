@@ -2,7 +2,7 @@
 
 pkgname=libratbag
 pkgver=0.9.900
-pkgrel=1
+pkgrel=2
 pkgdesc='A library to configure gaming mice'
 arch=('i686' 'x86_64')
 url='https://github.com/libratbag/libratbag'
@@ -27,4 +27,8 @@ package() {
 
     install -dm 755 "${pkgdir}"/usr/share/licenses/${pkgname}
     install -m 644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/
+
+    msg "Don't forget to enable and start the ratbagd service to use piper"
+    msg2 "# systemctl enable ratbagd.service"
+    msg2 "# systemctl start ratbagd.service"
 }
