@@ -1,0 +1,14 @@
+--- /home/roman/Devel/arch.packages/utopia.patch/bubble.h
++++ /home/roman/Devel/arch.packages/utopia.patch/buuble.h.new
+@@ -55,6 +55,10 @@
+ 
+ namespace Utopia
+ {
++
++#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
++Q_NAMESPACE
++#endif
+ 
+     typedef enum
+     {
+
