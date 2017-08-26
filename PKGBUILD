@@ -1,11 +1,10 @@
 #Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 PN="pcloud"
 pkgname="pcloud-drive"
-pkgdesc="pCloud drive. Electron edition.
-         Please note: The electron edition is a very early beta. Black magic and voo-doo might happen. YOU'VE BEEN WARNED!"
+pkgdesc="pCloud drive. Electron edition."
 
 source_x86_64=("https://www.pcloud.com/pcloud") # Placeholder
 arch=('x86_64')
