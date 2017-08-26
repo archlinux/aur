@@ -3,12 +3,12 @@
 
 pkgname=italc
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Classroom management software which enables teachers to view and control computers"
 arch=('i686' 'x86_64')
 url="http://italc.sourceforge.net/"
 license=('GPL')
-depends=('qt5-base' 'libxtst' 'pam' 'openssl' 'libjpeg-turbo' 'zlib')
+depends=('qt5-base' 'libxrandr' 'libxtst' 'pam' 'openssl' 'libjpeg-turbo' 'zlib')
 makedepends=('cmake' 'qt5-tools')
 install=$pkgname.install
 source=("https://github.com/iTALC/italc/archive/v$pkgver.tar.gz"
@@ -17,14 +17,17 @@ source=("https://github.com/iTALC/italc/archive/v$pkgver.tar.gz"
 	
 build() {
   cd $srcdir/$pkgname-$pkgver
-
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DLIB_DIR=/usr/lib
+  mkdir build
+  cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
 
 package() {
   cd $srcdir/$pkgname-$pkgver
+  cd build  
   make install DESTDIR=$pkgdir
+  cd ..
 
 # Install Icon and Shortcut
   install -D ima/data/italc.xpm $pkgdir/usr/share/pixmaps/italc.xpm

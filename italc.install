@@ -30,9 +30,6 @@ post_install() {
 
         #postinstall instruction
         echo "If you are installing on the master (aka teacher) computer, dont forget to add the user to the italc group."
-
-        # update of the icon cache
-        gtk-update-icon-cache /usr/share/icons/hicolor
 }
 
 post_update() {
