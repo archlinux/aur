@@ -6,7 +6,7 @@
 # so need more advanced script is needed.
 # ***********************************************************************************
 # Setup variables for the script
-MICROEDITORVERSION=`cat version.info`
+MICROEDITORVERSION=`cat .version.info`
 # get last digits of the version number
 LAST=`cat .version.info | grep -o -P "\w+$"`
 echo 'The dev number = '"$LAST" # Debug info
