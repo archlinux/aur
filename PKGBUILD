@@ -14,7 +14,7 @@
 
 pkgname=uuid
 pkgver=1.6.2
-pkgrel=14
+pkgrel=15
 pkgdesc="OSSP Universally Unique Identifier"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.ossp.org/pkg/lib/uuid"
