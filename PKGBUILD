@@ -1,6 +1,6 @@
 # Maintainer: Eloy Garcia Almaden <eloy.garcia.pca@gmail.com>
 pkgname=wallpaperdownloader
-pkgver=2.8.4
+pkgver=2.8.5
 pkgrel=1
 epoch=
 pkgdesc="Download, manage and change automatically your favorite wallpapers from the Internet"
@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url="https://bitbucket.org/eloy_garcia_pca/wallpaperdownloader"
 license=('GPL')
 groups=()
-depends=('java-runtime>=8' 'xdg-utils')
-makedepends=('git' 'jdk' 'maven')
+depends=('jre8-openjdk' 'xdg-utils')
+makedepends=('git' 'maven')
 checkdepends=()
 optdepends=()
 provides=()
