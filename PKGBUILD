@@ -1,7 +1,7 @@
 # Maintainer:  Stefan Husmann <stefan-husmann@t-online.de>>
 
 pkgname=('texlive-minionpro-git' 'texlive-myriadpro-git')
-pkgver=r133.13d0f5a
+pkgver=r134.165b4a7
 pkgrel=1
 pkgdesc="generate all necessary files to use Adobe Minion Pro and Adobe Myriad Pro with (pdf)latex."
 arch=('any')
