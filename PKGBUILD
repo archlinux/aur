@@ -1,6 +1,6 @@
 # Maintainer: Nils Czernia <nils[at]czserver[dot]de>
 pkgname=librenms
-pkgver=201607
+pkgver=1.30.01
 pkgrel=1
 pkgdesc='LibreNMS is an autodiscovering PHP/MySQL-based network monitoring system.'
 arch=('any')
@@ -12,7 +12,7 @@ source=("https://github.com/librenms/${pkgname}/archive/${pkgver}.tar.gz"
         "apache.example.conf"
         "nginx.example.conf")
 install="librenms.install"
-sha256sums=('b044d35824d6179f09d92500b873ba3cecb55dc0882f9f1f24e72b1802ecd5a7'
+sha256sums=('c5e3af9675792d692a48282d42a45642c80e6c6cdbebc8e259bf63864f3fcbe1'
             'aed1a35b2d84f3b40e0d519ccdb56a5929896ae7cfedd3766f5df4b51fac3319'
             'e1722c586e61e320c2382b2322150e176c61523dccb81eeec6c3d4618819110c')
 package() {
@@ -20,7 +20,7 @@ package() {
     install -dm0755 usr/share/webapps
     install -dm0755 etc/webapps/${pkgname}
     install -dm0755 var/log/${pkgname}
-    
+
     cp -a "$srcdir"/${pkgname}-${pkgver} usr/share/webapps/${pkgname}
 
     sed -i 's/\/opt\/librenms/\/usr\/share\/webapps\/librenms/g' usr/share/webapps/${pkgname}/librenms.nonroot.cron
@@ -35,7 +35,7 @@ package() {
     ln -s ../../../../etc/webapps/${pkgname}/config.php usr/share/webapps/${pkgname}/config.php
     ln -s ../../../../etc/webapps/${pkgname}/config.php.default usr/share/webapps/${pkgname}/config.php.default
     rm etc/webapps/${pkgname}/config.php
-    
+
     # move logs to /var/log
     ln -s ../../../../var/log/${pkgname} usr/share/webapps/${pkgname}/logs
 
@@ -43,6 +43,6 @@ package() {
 
     # php.ini
     install -dm0755 $pkgdir/etc/php/conf.d/
- 
+
    echo 'open_basedir = ${open_basedir}:/usr/share/webapps/librenms:/etc/webapps/librenms:/proc' > etc/php/conf.d/${pkgname}.ini
 }
