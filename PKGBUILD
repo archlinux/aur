@@ -4,7 +4,7 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=librep
-pkgver=0.92.6
+pkgver=0.92.7
 pkgrel=1
 pkgdesc="Lisp system for Sawfish"
 license=('GPL2')
@@ -13,7 +13,7 @@ url="http://sawfish.wikia.com/wiki/Librep"
 depends=('gmp' 'gdbm' 'libffi')
 options=('!emptydirs' '!libtool')
 source=("http://download.tuxfamily.org/$pkgname/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('fec152d0aca9afeb71aed40e7e5af27ca7bd13a41aa493532108f6ef2b04cccc')
+sha256sums=('48a19679ac7c0530a89657de18ffe49c5759a5ff70fc844928b0e5d00395acae')
 
 build() {
   cd "$srcdir"/${pkgname}_${pkgver}
