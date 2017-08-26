@@ -11,7 +11,7 @@ url=http://utopiadocs.com
 license=(GPL)
 provides=('utopia-documents3')
 conflicts=('utopia-documents')
-depends=(libqglviewer pcre qt5-svg qt5-webkit qt5-script poppler-qt5 python2-pyqt5)
+depends=(python boost-libs glu hicolor-icon-theme pcre qt5-svg qt5-webkit qt5-script poppler-qt5 python2-pyqt5)
 makedepends=(cmake boost swig glew)
 source=("http://utopiadocs.com/files/utopia-documents-${pkgver}.tgz" 
          "configure.patch"
