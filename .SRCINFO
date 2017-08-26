@@ -1,6 +1,6 @@
 pkgbase = ephoto-git
 	pkgdesc = A light image viewer based on EFL
-	pkgver = 1.5
+	pkgver = 1.5.888
 	pkgrel = 1
 	url = http://www.smhouston.us/ephoto
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = ephoto-git
 	depends = efl
 	provides = ephoto=1.5
 	conflicts = ephoto
-	source = http://www.smhouston.us/stuff/ephoto-1.5.tar.gz
+	source = https://git.enlightenment.org/apps/ephoto.git
 	sha256sums = SKIP
 
 pkgname = ephoto-git
