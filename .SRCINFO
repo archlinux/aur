@@ -6,7 +6,6 @@ pkgbase = bpkg
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gcc>=4.9
 	depends = libbpkg>=0.6
 	depends = libbpkg<0.7
 	depends = sqlite>=3.18
