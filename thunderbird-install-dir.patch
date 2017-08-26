@@ -6,7 +6,7 @@ diff -upr comm-esr31.orig/mozilla/config/baseconfig.mk comm-esr31/mozilla/config
  includedir := $(includedir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
  idldir = $(datadir)/idl/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
 -installdir = $(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
-+installdir = $(libdir)/$(MOZ_APP_NAME)-beta
++installdir = $(libdir)/$(MOZ_APP_NAME)-hg
  sdkdir = $(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION)
  ifndef TOP_DIST
  TOP_DIST = dist
