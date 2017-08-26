@@ -1,0 +1,16 @@
+pkgbase = tupload
+	pkgdesc = Capture screenshots and upload them using rsync
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RealOrangeOne/tupload
+	arch = any
+	license = unknown
+	makedepends = python-pip
+	depends = python-setuptools
+	depends = rsync
+	depends = gnome-screenshot
+	source = tupload-1.0.0.tar.gz::https://github.com/RealOrangeOne/tupload/archive/1.0.0.tar.gz
+	sha512sums = e18fe97b985acc357b263f733cc5363f46132f56354df20a4868734df847d1cb4af385dd0dd85cf0e2f92a0b1549e4a3f47187cd8a3405f6787594e6c3fff0b9
+
+pkgname = tupload
+
