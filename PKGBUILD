@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lilypond-devel
-pkgver=2.19.64
+pkgver=2.19.65
 pkgrel=1
 pkgdesc="An automated music engraving system (development version)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ makedepends=('fontforge'
              'gsfonts'
              't1utils'
 	     'ghostscript'
-             'texlive-core>=2011.23170'
+             'texlive-core'
 	     'tex-gyre-fonts'
 )
 optdepends=('netpbm: building HTML documentation'
@@ -30,7 +30,7 @@ optdepends=('netpbm: building HTML documentation'
 provides=("lilypond=$pkgver")
 conflicts=('lilypond' 'lilypond-git')
 source=("http://download.linuxaudio.org/lilypond/sources/v2.19/lilypond-${pkgver}.tar.gz" "no_fontforge-versioncheck.patch")
-sha256sums=('9b660fe99914c54cf30b391976d6e30f7dc7683928b3bf9b3454250c86990137'
+sha256sums=('0dde43a5c1d2688457eee6dcc84f88599a260c53088cb05961c24854fef1524c'
             'e74391f718babb984c5f637397162cf096c4716f5b9a21346ec76035cfc80817')
 
 prepare() {
