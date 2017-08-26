@@ -1,6 +1,6 @@
 pkgbase = codota-bin
 	pkgdesc = Codota: Artificial pair programmer that learns from existing code (official binary version)
-	pkgver = 0.4.7
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://www.codota.com/
 	arch = x86_64
