@@ -4,7 +4,7 @@
 
 pkgname=pam-face-authentication
 pkgver=0.3
-pkgrel=8
+pkgrel=9
 pkgdesc="PAM face auth"
 arch=('any')
 url="http://code.google.com/p/pam-face-authentication"
@@ -27,4 +27,5 @@ package() {
 	cd ${srcdir}/${pkgname}-$pkgver
 	make || return 1
 	make DESTDIR="$pkgdir/" install || return 1
+	mv $pkgdir/lib $pkgdir/usr
 }

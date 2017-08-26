@@ -1,7 +1,7 @@
 pkgbase = pam-face-authentication
 	pkgdesc = PAM face auth
 	pkgver = 0.3
-	pkgrel = 8
+	pkgrel = 9
 	url = http://code.google.com/p/pam-face-authentication
 	arch = any
 	license = GPL
