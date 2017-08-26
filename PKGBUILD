@@ -2,14 +2,14 @@
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-hg
-pkgver=54.0a1.r21260.cbc772c7b1b4
+pkgver=57.0a1.r22045.8d0293462cd9
 pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org - Mercurial version"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/thunderbird/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
-         nss hunspell sqlite ttf-font icu libvpx)
+         'nss>=3.33' hunspell sqlite ttf-font icu libvpx)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
              autoconf2.13 cargo mercurial clang llvm)
 optdepends=('libcanberra: for sound support')
@@ -18,12 +18,10 @@ install=$pkgname.install
 source=(hg+http://hg.mozilla.org/comm-central
         $pkgname.desktop
         thunderbird-install-dir.patch
-        no-crmf.diff
         fix-wifi-scanner.diff)
 sha512sums=('SKIP'
             '5d17bcbda0ca96133f7241a3fb371ba2863f3e67b12d770803e0bc7bb4b3254fc9dc6f78bd8310303abf9b2c62eb1321e63610eb9328c1b9a7b73fde671bc34a'
             '3eceeda61891cdfb639be1ef665bd09e857d2e2ada53a5060285a6fc5a894ad88dd271d5cb602db83a4bb747e303f8563562fe90ce3ef02cdfc5d817aa5ab2f4'
-            '951667941520e66e7b6aad55619ec2b38364da58c5cf8a71775a3032921cfc0a8e5c7ba14e0df35588175f94a6b4785566d39177ff536ab9cefcbd19a03dc065'
             '1bd2804bea1fe8c85b602f8c5f8777f4ba470c9e767ad284cb3d0287c6d6e1b126e760738d7c671f38933ee3ec6b8931186df8e978995b5109797ae86dfdd85a')
 _hgrepo="comm-central"
 
@@ -52,9 +50,6 @@ prepare() {
 
   msg2 "thunderbird-install-dir.patch"
   patch -Np1 -i ../thunderbird-install-dir.patch
-
-  msg2 "no-crmf.diff: https://bugzilla.mozilla.org/show_bug.cgi?id=1371991"
-  patch -Np1 -i ../no-crmf.diff
 
   msg2 "fix-wifi-scanner.diff: https://bugzilla.mozilla.org/show_bug.cgi?id=1314968"
   patch -d mozilla -Np1 < ../fix-wifi-scanner.diff
@@ -196,3 +191,4 @@ END
   ln -srf "$pkgdir/usr/bin/$pkgname" \
     "$pkgdir/opt/$pkgname/thunderbird-bin"
 }
+
