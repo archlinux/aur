@@ -1,17 +1,17 @@
 pkgbase = plymouth-zfs
 	pkgdesc = initcpio hook to support native zfs encryption for plymouth
-	pkgver = 0.1
+	pkgver = 1
 	pkgrel = 1
 	install = plymouth-zfs.install
 	arch = any
 	license = MIT
 	depends = plymouth
-	depends = zfs-encryption-dkms-git
+	depends = zfs
 	source = plymouth-zfs.initcpio.hook
 	source = plymouth-zfs.initcpio.install
 	source = plymouth-zfs.install
 	sha256sums = 06688ac12efe795e0d8e6781507cb9fd2de094c753be93288e96963de75369a0
-	sha256sums = af8d601a9af17e6f3f6b59044280a2541e9d4303786840d5066c4ecb755f6d9d
+	sha256sums = f39271ebc74ddfbf0207775e22cf3335ca78c4273cb18095d94880f951925902
 	sha256sums = 0910896056921ebedc1eb910d38b64d8815790f042cb3e9bc07a1a49e31e3b2b
 
 pkgname = plymouth-zfs
