@@ -1,3 +1,4 @@
+
 # Maintainer: Det <nimetonmaili g-mail>
 # Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
 
@@ -13,7 +14,7 @@ url="https://www.mozilla.org/thunderbird/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
          nss hunspell sqlite ttf-font icu libvpx)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
-             autoconf2.13 cargo)
+             autoconf2.13 cargo clang llvm)
 optdepends=('libcanberra: sound support')
 options=(!emptydirs !makeflags)
 install=$pkgname.install
@@ -21,13 +22,11 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         $pkgname.desktop
         thunderbird-install-dir.patch
         no-crmf.diff
-        rust-i686.patch
         fix-wifi-scanner.diff)
 sha512sums=('566b82510cd83d49441a2c4506add99d2496e160e28c853f809f68fe9d4be491c23cbe838104399c8bd8699201b23eb30a73f84df0d6c074282695518e76f1ed'
             'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
             '8100fd3ea37d998905498d41c8504bfdd6d86766542d6b93107c92382a7525da7f75a83f8ff1e15ad95039d51da2add7e6b18af76d45516a41cdfd1e9f98f262'
-            '08572139508d4fd4e2b855d294ebee3286151da80dfeae656ae29b49ce6d72185f4cfa73dfb827c1bcce6bc8c544d0cf4a00164c9059dff316351901601fb6ea'
-            'b38d8a2cb1719d652d93160bfbdfa7cbeca36fbee84b217ca0f5b0b4074b6e151c582b1e0f62901c418fb68a5018f6e21d734d6775836da5b0b44593071c3351'
+            '951667941520e66e7b6aad55619ec2b38364da58c5cf8a71775a3032921cfc0a8e5c7ba14e0df35588175f94a6b4785566d39177ff536ab9cefcbd19a03dc065'
             '1bd2804bea1fe8c85b602f8c5f8777f4ba470c9e767ad284cb3d0287c6d6e1b126e760738d7c671f38933ee3ec6b8931186df8e978995b5109797ae86dfdd85a')
 # RC
 if [[ $_build = ? ]]; then
@@ -62,15 +61,12 @@ prepare() {
   msg2 "fix-wifi-scanner.diff: https://bugzilla.mozilla.org/show_bug.cgi?id=1314968"
   patch -d mozilla -Np1 < ../fix-wifi-scanner.diff
 
-  msg2 "Build with the rust targets we actually ship"
-  patch -d mozilla -Np1 < ../rust-i686.patch
-
   # API keys
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
   # mozconfig
-  cat > .mozconfig <<END
+  cat >.mozconfig <<END
 ac_add_options --enable-application=mail
 ac_add_options --enable-calendar
 
@@ -80,7 +76,7 @@ ac_add_options --enable-release
 ac_add_options --enable-gold
 ac_add_options --enable-pie
 ac_add_options --enable-optimize="-O2"
-ac_add_options --enable-rust
+#ac_add_options --enable-rust
 
 # Branding
 ac_add_options --enable-official-branding
@@ -196,3 +192,4 @@ END
   ln -srf "$pkgdir/usr/bin/$pkgname" \
     "$pkgdir/opt/$pkgname/thunderbird-bin"
 }
+
