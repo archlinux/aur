@@ -27,10 +27,8 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  install -Dm 644 "fbalpha/fbalpha_libretro.so" \
-    "${pkgdir}/usr/lib/libretro/$fbalpha_libretroso"
-  install -Dm 644 "fbalpha_libretro.info" \
+  install -Dm 644 "${srcdir}/${_pkgname}-${pkgver}/fbalpha_libretro.so" \
+    "${pkgdir}/usr/lib/libretro/fbalpha_libretro.so"
+  install -Dm 644 "${srcdir}/fbalpha_libretro.info" \
     "${pkgdir}/usr/share/libretro/info/fbalpha_libretro.info"
 }
