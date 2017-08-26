@@ -10,12 +10,13 @@ _vgg_commit='fccf7cd6a4b12079f73bbfb21745f9babcd4eb1d'
 
 pkgname=opencv-gstreamer
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source Computer Vision Library (no Xine/FFmpeg dependency, uses GStreamer)'
 arch=('i686' 'x86_64')
 url='https://opencv.org/'
 license=('BSD')
-depends=('intel-tbb' 'openexr' 'gstreamer' 'gst-plugins-base-libs' 'libdc1394' 'gtkglext' 'libwebp')
+depends=('intel-tbb' 'openexr' 'gstreamer' 'gst-plugins-base-libs' 'v4l-utils'
+         'libdc1394' 'gtkglext' 'libwebp')
 makedepends=('cmake' 'python-numpy' 'python2-numpy' 'mesa' 'eigen' 'hdf5')
 optdepends=('opencv-samples'
             'hdf5: support for HDF5 format'
