@@ -1,11 +1,12 @@
 # Maintainer: Tatsunori Aoki <ginjiro.135 at gmail dot com>
 pkgname=man-pages-ja
 pkgver=20170815
-pkgrel=1
+pkgrel=2
 pkgdesc="Man pages for Japanese"
 arch=('any')
 url="https://linuxjm.osdn.jp"
 license=('custom')
+optdepends=('mdocml: makewhatis support')
 makedepends=('perl')
 conflicts=('man-pages-ja-git')
 install="${pkgname}.install"

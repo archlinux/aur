@@ -1,6 +1,6 @@
 post_install() {
     set -x
-    makewhatis -v
+    which makewhatis >/dev/null 2>&1 && makewhatis -v
     mandb
 }
 
