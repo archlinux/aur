@@ -8,7 +8,6 @@ arch=(i686 x86_64)
 url="https://build2.org/"
 license=('MIT' 'BSD')
 depends=('gcc-libs')
-makedepends=('gcc>=4.9')
 source=("https://download.build2.org/$pkgver/build2-toolchain-$pkgver.tar.xz")
 sha256sums=('4c6167e1a041f29f6072c892ec6316fa86ba31f45fce08f2f964d8b11c8db03a')
 

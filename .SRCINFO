@@ -7,7 +7,6 @@ pkgbase = libbutl
 	arch = x86_64
 	license = MIT
 	license = BSD
-	makedepends = gcc>=4.9
 	depends = gcc-libs
 	source = https://download.build2.org/0.6.1/build2-toolchain-0.6.1.tar.xz
 	sha256sums = 4c6167e1a041f29f6072c892ec6316fa86ba31f45fce08f2f964d8b11c8db03a
