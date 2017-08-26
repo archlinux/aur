@@ -1,0 +1,9 @@
+
+post_install() {
+  echo "==> You will require compatible ROM's for this software."
+  echo "==> Place them under '~/.pcem/roms'."
+}
+
+post_upgrade() {
+  post_install
+}
