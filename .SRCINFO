@@ -1,6 +1,6 @@
 pkgbase = bcloud
 	pkgdesc = Baidu Pan client for Linux Desktop users
-	pkgver = 20170628
+	pkgver = 3.9.1
 	pkgrel = 1
 	url = https://github.com/Yufeikang/bcloud
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = bcloud
 	depends = libappindicator-gtk3
 	depends = libnotify
 	conflicts = bcloud-git
-	source = git+https://github.com/Yufeikang/bcloud.git
-	md5sums = SKIP
+	source = git+https://github.com/Yufeikang/bcloud.git#tag=v3.9.1
+	sha256sums = SKIP
 
 pkgname = bcloud
 
