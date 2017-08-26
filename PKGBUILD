@@ -1,5 +1,4 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
-# Maintainer: arkli <LFZ0107@outlook.com>
 pkgname=deepin.com.qq.office
 pkgver=1.0.4deepin4
 pkgrel=2
