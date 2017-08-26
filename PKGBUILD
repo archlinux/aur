@@ -2,50 +2,48 @@
 
 # This is intended as a generic data package for open source Doom 3:
 # BFG Edition engines.
-
-# You must copy (not link!) the base directory from Doom 3 BFG to the
-# same directory containing this PKGBUILD.
-
-# The pkgver is from the ProductVersion of Doom3BFG.exe as downloaded
-# from Steam (and viewed in winefile). Don't know if it is the
-# official version number or if there even is one officially.
-
-# Currently only supports English-language installations. Proper
-# multilingual support may be difficult and help on achieving the goal
-# would be much appreciated.
+#
+# You must copy the base directory from Doom 3 BFG to the same
+# directory as this PKGBUILD.
+#
+# The pkgver is from the ProductVersion of Doom3BFG.exe.  I don't know
+# if it is the official version number or if there even is one.
+#
+# Proper multilingual support is difficult if not impossible.  Users
+# have reported the game starting up in Japanese if all
+# base/strings/*.lang files are installed, for example, without an
+# ability to change it.  Please just delete all the *.lang files in
+# that directory that are not relevant to your native language you
+# want to play in.
+#
+# Due to file differences between the Steam and GOG.com releases in
+# the *.lang files, the checksums are not compared.  We'll just assume
+# if the rest of the files are OK, these are too.
 
 pkgname=doom3bfg-data
 pkgver=1.0.34.6456
-pkgrel=1
+pkgrel=2
 pkgdesc="Doom 3: BFG Edition game files"
 url="http://www.idsoftware.com/"
 arch=('any')
 # Can't find any license in the game files. Presumably your standard EULA stuff.
 license=('custom')
-source=(base.sha256 doom3bfg.png)
-sha256sums=('be5b2710d3890c9d1cfb9693003bce736b66d584d71dc56163c038181f939875'
-            '8b7998805ca2bdb8ab8500963acf4fab46331f1c44dcdc17b3e930f2afe98961')
-PKGEXT=".pkg.tar"
+source=(base.sha512 doom3bfg.png)
+sha512sums=('b8b93ac414520c9f3cf34d412fa2ee0496887c1b487a6b21550a5624bd1a698b551db596b06508bc8b0ec6fa36ecae2f0e0c17d6ff8f3fd8439cbd3542b479f8'
+            '7fd894b4f962b14798eb8802a0d7bb20e087958d3eff63aea743c2d205604614f4bd07911cfa32652198d80bf5859c4d212e5abf548fd09e664de842cc3dd886')
 
 prepare() {
-  cd "$srcdir"
+  ln -s "$startdir/base"
 
-  mv ../base .
-  sha256sum -c base.sha256 --quiet
+  sha512sum -c base.sha512 --quiet
 
   # Sanitizing if it was copied from NTFS or wherever.
-  find base -type f -exec chmod 644 {} \;
-  find base -type d -exec chmod 755 {} \;
+  find -L base -type d -exec chmod 755 {} +
+  find -L base -type f -exec chmod 644 {} +
 }
 
 package() {
-  cd "$srcdir"
-
   install -d "$pkgdir"/usr/share/games/doom3bfg
-
-  # Some AUR bot will complain about this.
   install -Dm 644 doom3bfg.png "$pkgdir"/usr/share/icons/doom3bfg.png
-
-  mv base "$pkgdir"/usr/share/games/doom3bfg
-  find "$pkgdir"/usr/share/games/doom3bfg -exec chown root:root {} \;
+  cp -a base/ "$pkgdir"/usr/share/games/doom3bfg
 }
