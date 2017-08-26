@@ -1,10 +1,10 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=pps-tools-git
-pkgver=1.0.r0.9d82bc4
-pkgrel=2
+pkgver=1.0.r1.c746f3a
+pkgrel=1
 pkgdesc="LinuxPPS user-space tools"
-arch=('aarch64' 'arm7vh' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="http://linuxpps.org/"
 license=('GPL2')
 provides=('pps-tools')
