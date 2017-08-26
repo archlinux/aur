@@ -3,3 +3,4 @@
 .directory
 *.pkg*
 *.orig
+*.log

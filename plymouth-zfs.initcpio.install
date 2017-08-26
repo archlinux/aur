@@ -23,7 +23,6 @@ build() {
         zfs \
         zhack \
         zinject \
-        zpios \
         zpool \
         zstreamdump \
         ztest \

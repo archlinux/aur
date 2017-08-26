@@ -2,7 +2,7 @@
 
 pkgname=plymouth-zfs
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="initcpio hook to support native zfs encryption for plymouth"
 arch=(any)
 license=(MIT)
@@ -16,7 +16,7 @@ source=("plymouth-zfs.initcpio.hook"
         "plymouth-zfs.initcpio.install"
         "plymouth-zfs.install")
 sha256sums=('06688ac12efe795e0d8e6781507cb9fd2de094c753be93288e96963de75369a0'
-            'f39271ebc74ddfbf0207775e22cf3335ca78c4273cb18095d94880f951925902'
+            '830d5231b079d83860db7e7d63839e1ec7e163311ae7e9dcd46a8358fabaf9ad'
             '0910896056921ebedc1eb910d38b64d8815790f042cb3e9bc07a1a49e31e3b2b')
             
 package() {
