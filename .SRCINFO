@@ -1,13 +1,13 @@
 pkgbase = sawfish-session-dialog
 	pkgdesc = A graphical Sawfish extension to edit the session preferences
 	pkgver = 0.41
-	pkgrel = 1
+	pkgrel = 2
 	url = http://download.tuxfamily.org/sawfish/Extras
 	arch = any
 	license = GPL3
 	depends = sawfish
-	source = http://download.tuxfamily.org/sawfish/Extras/ssd_0.41.tar.bz2
-	sha1sums = ac24215774bf4347bc2ef80fba91a82aaf3409a3
+	source = http://download.tuxfamily.org/sawfish/Extras/ssd_0.41.tar.xz
+	sha1sums = 2ca2f17b61fbbf73c8fa177bb1453b0a04a4b9dd
 
 pkgname = sawfish-session-dialog
 
