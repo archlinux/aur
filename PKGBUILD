@@ -8,15 +8,14 @@ pkgdesc="A libretro implementation of Final Burn Alpha"
 arch=('i686' 'x86_64')
 url="https://github.com/libretro/fbalpha"
 license=('Unknown')
-depends=('libretro')
-makedepends=('git')
-source=("git+https://github.com/libretro/${_pkgname}.git"
+depends=()  # retroarch isn't required, but I probably missed something here
+source=("https://github.com/libretro/${pkgname}/archive/v${pkgver}.tar.gz"
         "fbalpha_libretro.info")
-sha256sums=('SKIP'
-            'f74c8f4b910b6d49fcf022ba86b65ea57dd7f9a1bcf991eb34e7ad7880c9eb18')
+md5sums=('a29427fb8853fe562d535b7725e663fc'
+         '0f390deb382dd241034d48be2f5e9e29')
 
 build() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   RPI=`grep -m 1 'Revision' /proc/cpuinfo | awk '{print $3}'`
   case "${RPI}" in
@@ -28,7 +27,9 @@ build() {
 }
 
 package() {
-  install -Dm 644 "${_pkgname}/fbalpha_libretro.so" \
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  install -Dm 644 "fbalpha/fbalpha_libretro.so" \
     "${pkgdir}/usr/lib/libretro/$fbalpha_libretroso"
   install -Dm 644 "fbalpha_libretro.info" \
     "${pkgdir}/usr/share/libretro/info/fbalpha_libretro.info"
