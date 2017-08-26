@@ -5,7 +5,7 @@
 pkgname=armory-goatpig-git
 _name=${pkgname%-*-*}
 _py2ver=$(pacman -Qi python2 | sed -n 's/\(.*Version *: \)\(.*\..*\)\(\..*\)/\2/p')
-pkgver=v0.96.1.r1.gb77932c8
+pkgver=v0.96.1.2.r13.g79e196d5
 pkgrel=1
 pkgdesc="Armory Bitcoin wallet, built from new, official github repo w/auto selection of current python2 version"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('bitcoin-daemon: Communicate with the Bitcoin network')
 install="${_name}.install"
 provides=('armory')
 conflicts=('armory' 'armory-git')
-source=("${_name}::git+${url}.git")
+source=("${_name}::git+${url}.git#branch=testing")
 sha256sums=('SKIP')
 
 pkgver() {
