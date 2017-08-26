@@ -2,13 +2,12 @@
 
 pkgname=assaultcube-reloaded
 pkgver=2.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='AssaultCube Reloaded'
 arch=('i686' 'x86_64')
 url='http://acr.victorz.ca'
 license=('ZLIB')
-depends=('sdl' 'sdl_mixer' 'sdl_image' 'openal' 'zlib' 'gcc-libs' 'libgl' 'enet' 'libvorbis' 'libx11' 'glu')
-makedepends=('git' )
+depends=('curl' 'gcc-libs' 'libgl' 'libvorbis' 'libx11' 'openal' 'sdl' 'sdl_image' 'zlib')
 source=("https://github.com/actf/acr/archive/v${pkgver}.tar.gz"
         'acreloaded'
         'acreloaded-server'
@@ -34,12 +33,6 @@ package() {
   install -Dm644 ${srcdir}/acreloaded.desktop ${pkgdir}/usr/share/applications/acreloaded.desktop
   install -Dm755 ${srcdir}/acreloaded ${pkgdir}/usr/bin/acreloaded
   install -Dm755 ${srcdir}/acreloaded-server ${pkgdir}/usr/bin/acreloaded-server
-
-  
-#msg "Checkout Languages"
-#  cd $srcdir
-#  rm -r translations/.git
-#  cp -r translations/* $pkgdir/usr/share/acreloaded/locale/
 }
 
 md5sums=('260e71aa128710012a94e53fdde61286'
