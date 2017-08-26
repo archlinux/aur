@@ -1,6 +1,6 @@
 pkgname=mcg
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="A covergrid for the Music Player Daemon."
 url="https://www.coderkun.de/codes/mcg"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=('python-setuptools' 'git')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("${pkgname}.tar.gz::https://github.com/coderkun/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5e2952f1685c3006c3278551e439399a8caea2224855f82b8adf8642d93c0424')
+sha256sums=('14254bafdd25b6dbc2265f99a0781654bf99bb1d5a3505e82cded3e20ed5e3e2')
 
 
 build() {
