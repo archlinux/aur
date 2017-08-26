@@ -1,5 +1,4 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
-# Maintainer: arkli <LFZ0107@outlook.com>
 pkgname=deepin-fonts-wine
 pkgvers=1.9-44
 pkgver=1.9_44
