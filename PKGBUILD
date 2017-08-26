@@ -2,7 +2,7 @@
 
 pkgname=libtorrent-rasterbar-1_0-git
 pkgver=1.0.11.r7.gc074e8788
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git branch RC_1_0)"
 arch=('i686' 'x86_64')
 url="http://www.libtorrent.org/"
@@ -11,22 +11,25 @@ depends=('boost-libs')
 makedepends=('git' 'boost' 'python2' 'python')
 provides=('libtorrent-rasterbar')
 conflicts=('libtorrent-rasterbar')
-options=('staticlibs')
+options=('staticlibs' '!strip')
 source=('git+https://github.com/arvidn/libtorrent.git#branch=RC_1_0')
 sha256sums=('SKIP')
 
-
-prepare() {
-  mkdir -p py2 py3
-  cd "libtorrent"
-
-  ./autotool.sh
-}
 
 pkgver() {
   cd "libtorrent"
 
   git describe --long --tags | sed 's/^[A-Za-z]*-//;s/\([^-]*-g\)/r\1/;s/[_-]/./g'
+}
+
+build() {
+  cd "libtorrent"
+  ./autotool.sh
+
+  cd "$srcdir"
+  mkdir -p "py2" "py3"
+  _build 2
+  _build 3
 }
 
 _build() (
@@ -40,18 +43,13 @@ _build() (
   CXXFLAGS="$CXXFLAGS -std=c++11" \
   PYTHON="/usr/bin/python$1" \
   ../libtorrent/configure \
-    --prefix=/usr \
-    --enable-python-binding \
+    --prefix="/usr" \
     --with-libiconv \
+    --enable-python-binding \
     --with-boost-python="$_boost"
 
   make
 )
-
-build() {
-  _build 2
-  _build 3
-}
 
 package() {
   make -C py2 DESTDIR="$pkgdir" install
