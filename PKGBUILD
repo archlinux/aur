@@ -8,7 +8,7 @@ pkgdesc="A driver for the Bully Bootloader for the PIC24 and dsPIC33 series of m
 arch=('i686' 'x86_64')
 url="https://github.com/thirtythreeforty/bullycpp"
 license=('GPL3')
-depends=('qt5-serialport' 'qt5-base')
+depends=('qt5-serialport')
 makedepends=('git' 'make' 'gcc')
 provides=('BullyCPP')
 source=("$_pkgname::git+https://github.com/thirtythreeforty/${_pkgname}.git")
@@ -21,7 +21,6 @@ prepare() {
 pkgver() {
   cd "${_pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-
 }
 
 build() {
@@ -33,8 +32,9 @@ build() {
 package() {
   cd build
   make PREFIX=/usr INSTALL_ROOT="$pkgdir" install
-  install -D -m644 ../bullycpp/LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 
+  install -D -m644 ../bullycpp/LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+  install -D -m644 ../../98-serialcable.rules "$pkgdir"/etc/udev/rules.d/98-serialcable.rules
 }
 
 # vim: set ts=2 sw=2 et:
