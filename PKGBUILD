@@ -21,7 +21,7 @@ changelog=
 source=('voxelshop'
         "https://github.com/simlu/voxelshop/releases/download/${pkgver}/VoxelShop-java-all-os-fast.zip")
 noextract=()
-sha256sums=('69ff1076bf585855c81862b06bf50bd67621ac435d0c0f4a2ac3d19aa31317aa'
+sha256sums=('0158a4e52afc88c9d9c6341f50c237383e1781c18a25060c93989877e2f71aa7'
             '86c1fd50ef32b17be92df37d6a5c2206e456d99bc7abe4da80a44f49d2a377d3')
 arch=('any')
 
@@ -32,23 +32,10 @@ package() {
   install -Dm755 -t "${pkgdir}/opt/${pkgname}" data/*
 
   # Generate the startup script
-  install -d ${pkgdir}/usr/bin
+  cd "${srcdir}"
+  sed -i "s/{{pkgname}}/${pkgname}/g" "${pkgname}"
 
-  cat <<_STARTUP_SCRIPT_ >${pkgdir}/usr/bin/${pkgname}
-#!/bin/bash
-
-cd /opt/${pkgname}
-declare -r DATA_DIR=\${XDG_DATA_HOME:-"\${HOME}/.local/share"}/${pkgname}
-
-# Update the Getdown configuration file
-install -CDm644 -t "\${DATA_DIR}" getdown.txt
-
-# Start the application using Getdown
-java -jar getdown-client.jar "\${DATA_DIR}"
-
-_STARTUP_SCRIPT_
-
-  chmod +x ${pkgdir}/usr/bin/${pkgname}
+  install -D -t "${pkgdir}/usr/bin" "${pkgname}"
   
   # Add a symlink to the startup script using the camel-cased package name
   ln -s "${pkgname}" "${pkgdir}/usr/bin/${_pkgname_upper}"
