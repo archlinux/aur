@@ -8,7 +8,7 @@
 
 pkgname=stumpwm-git
 _pkgname=stumpwm
-pkgver=v1.0.1.rc.0.g29283bb
+pkgver=1.0.1.rc.0.g29283bb
 pkgrel=1
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ options=('!strip' '!makeflags')  # Thanks to sidereus for pointing this out
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  git describe --long --tags|tr - .
+  git describe --long --tags|tr - .|cut -c2-
 }
 
 _contribdest=/usr/share/stumpwm/contrib
