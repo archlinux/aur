@@ -1,5 +1,4 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
-# Maintainer: arkli <LFZ0107@outlook.com>
 pkgname=deepin-wine-uninstaller
 pkgver=0.1deepin2
 pkgrel=2
