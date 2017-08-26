@@ -3,6 +3,7 @@ pkgbase = np2kai-libretro-git
 	pkgver = 170.86c5344
 	pkgrel = 1
 	url = http://domisan.sakura.ne.jp/article/np2kai/np2kai.html
+	install = np2kai-libretro-git.install
 	arch = i686
 	arch = x86_64
 	arch = arm

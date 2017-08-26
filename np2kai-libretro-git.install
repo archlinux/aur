@@ -1,0 +1,4 @@
+post_install() {
+	echo "Post-installation instrucions can be found in the source repo:"
+	echo "https://github.com/AZO234/NP2kai"
+}
