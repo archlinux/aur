@@ -1,7 +1,7 @@
 pkgbase = hop
 	pkgdesc = Software Development Kit for the Web
 	pkgver = 3.1.0_pre2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hop.inria.fr
 	install = hop.install
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = hop
 	options = !makeflags
 	source = ftp://ftp-sop.inria.fr/indes/fp/Hop/hop-3.1.0-pre2.tar.gz
 	source = hop
-	sha256sums = e9595bdcb5e216fd2e4284615dc26f13cfc3ae18d672584b6c8f2f18857299e0
+	sha256sums = 2fce861e0f3e4c6f747307c395298af76674f63ef38a43145e11b74abb9f18f2
 	sha256sums = d1b40876e3a3d06c32f17c2a50dc950ab8c6ec68d7eea0754fe284ca4c226e5b
 
 pkgname = hop
