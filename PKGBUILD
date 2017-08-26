@@ -1,5 +1,4 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
-# Maintainer: arkli <LFZ0107@outlook.com>
 pkgname=deepin-udis86
 pkgsname=udis86
 pkgvers=1.72-2
