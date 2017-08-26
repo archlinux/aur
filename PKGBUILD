@@ -3,8 +3,8 @@
 pkgname=pps-tools
 pkgdesc="LinuxPPS user-space tools"
 pkgver=1.0
-pkgrel=2
-arch=('aarch64' 'arm7vh' 'i686' 'x86_64')
+pkgrel=3
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="http://linuxpps.org/"
 license=('GPL2')
 conflicts=('pps-tools-git')
