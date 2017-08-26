@@ -1,14 +1,14 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=('cinnxp' 'cinnxp-icons')
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="XP-like theme for Cinnamon"
 arch=('any')
 url="https://github.com/petrucci4prez/CinnXP"
 license=('GPL3')
-makedepends=('git' 'ruby-bundler' 'ruby-sass' 'xorg-xcursorgen')
+makedepends=('git' 'sassc' 'xorg-xcursorgen')
 options=('!strip')
-source=('cinnxp::git+https://github.com/petrucci4prez/CinnXP.git#commit=0ec6d6946b3a61b58ad2ed8b0c3eafceca62d439')
+source=('cinnxp::git+https://github.com/petrucci4prez/CinnXP.git#commit=987ceb34604856a2eed9e1750a00faaf6e4fb948')
 sha512sums=('SKIP')
 
 build() {
