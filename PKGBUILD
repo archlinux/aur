@@ -22,7 +22,7 @@ license=('MIT')
 depends=('sh')
 options=('!libtool')
 source=("http://www.mirrorservice.org/sites/ftp.ossp.org/pkg/lib/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        "http://pkgs.fedoraproject.org/cgit/rpms/uuid.git/plain/uuid-aarch64.patch"
+	"https://src.fedoraproject.org/rpms/uuid/raw/master/f/uuid-aarch64.patch"
         ossp.patch)
 sha512sums=('16c7e016ce08d7679cc6ee7dec43a886a8c351960acdde99f8f9b590c7232d521bc6e66e4766d969d22c3f835dcc2814fdecc44eef1cd11e7b9b0f9c41b5c03e'
 	    '534ade47bf17531108d96c46bfc489b9fd4b1e7a66fcd903c8036210bdc6e631d591d04184e37b56c64ee74c05af799971d47d4cf30b25b45e05413319ae2f34'
