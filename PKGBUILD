@@ -6,8 +6,7 @@ pkgdesc="Amber framework that makes interfacing with your file system and applic
 arch=(i686 x86_64)
 url='https://github.com/amber-crystal/amber'
 license=(MIT)
-depends=('sqlite' 'gc' 'libevent' 'libyaml' 'pcre')
-makedepends=('crystal' 'shards')
+depends=('crystal' 'shards')
 source=("https://github.com/amber-crystal/amber/archive/v$pkgver.tar.gz")
 sha256sums=('0ea5bc999e80b37d34d493d64e8e37ae5e0e3526aa38e8c1898336741c706b0d')
 
