@@ -1,6 +1,6 @@
 pkgbase = ttf-th-sarabun-new
 	pkgdesc = Improved Thai SIPA TH SarabunPSK font with free license
-	pkgver = 2011.08.19
+	pkgver = 2011.06.25
 	pkgrel = 1
 	url = http://www.f0nt.com/release/th-sarabun-new/
 	arch = any

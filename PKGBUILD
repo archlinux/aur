@@ -1,7 +1,7 @@
 # Maintainer: Ada Joule <ada dot fulmina at gmail dot com>
 
 pkgname="ttf-th-sarabun-new"
-pkgver=2011.08.19
+pkgver=2011.06.25
 pkgrel=1
 depends=("fontconfig" "xorg-font-utils")
 optdepends=("ttf-sipa: Thai formal standard fonts from SIPA")
