@@ -10,7 +10,7 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
-url='https://metacpan.org/release/Algorithm-Loops'
+url='https://metacpan.org/pod/Algorithm::Loops'
 source=("https://cpan.metacpan.org/authors/id/T/TY/TYEMQ/Algorithm-Loops-${pkgver}.tar.gz")
 md5sums=('ef1150b4967e9bd17fce77efed7b67f9')
 sha512sums=('a79bcda2a7935be36de043c3458d2f816c595a0dfcb1268be155471a36c0be1a95e765ba0e6a40022ebcd85acc84ff1c53c7f34fd1d7c3410d8d13686405d523')
