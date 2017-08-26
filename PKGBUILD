@@ -4,6 +4,7 @@ pkgname="ttf-th-sarabun-new"
 pkgver=2011.08.19
 pkgrel=1
 depends=("fontconfig" "xorg-font-utils")
+optdepends=("ttf-sipa: Thai formal standard fonts from SIPA")
 pkgdesc="Improved Thai SIPA TH SarabunPSK font with free license"
 arch=("any")
 provide=("ttf-font")

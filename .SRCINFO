@@ -7,6 +7,7 @@ pkgbase = ttf-th-sarabun-new
 	license = GPL
 	depends = fontconfig
 	depends = xorg-font-utils
+	optdepends = ttf-sipa: Thai formal standard fonts from SIPA
 	source = http://www.thailibrary.in.th/wp-content/uploads/2011/12/THSarabunNew.zip
 	sha256sums = 4db34af0ccd9dca6e8ba0735af3efb2e10fbb0a95e10387adc7742e4d303bf58
 
