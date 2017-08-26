@@ -7,8 +7,8 @@
 # Contributor: Tej Chajed <tchajed at mit dot edu>
 
 pkgname=camlp5
-pkgver=6.17
-_relname=rel617
+pkgver=7.01
+_relname=rel701
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A preprocessor-pretty-printer of OCaml.'
@@ -18,7 +18,7 @@ license=('BSD')
 depends=('ocaml')
 source=("https://github.com/camlp5/camlp5/archive/$_relname.tar.gz")
 options=('staticlibs')
-sha1sums=('cfe65be4bb6334ffad742a3060a6fee7bb0b5bf3')
+sha1sums=('eff833fe21fc0e4d5c70b22635437b3785799d4b')
 
 build() {
   cd ${srcdir}/camlp5-$_relname
