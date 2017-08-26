@@ -1,14 +1,14 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 
 pkgname=pokemon-revolution-online-bin
-pkgver=0.97.4.roaring.entai
+pkgver=0.98.1.sonnoh.when
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
 url="https://pokemon-revolution-online.net"
 license=('custom')
 depends=('gcc-libs-multilib' 'desktop-file-utils')
-makedepends=('unzip' 'xdg-utils')
+makedepends=('unzip' 'xdg-utils' 'optipng' 'upx')
 optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
 install="INSTALL"
@@ -24,12 +24,12 @@ package() {
     # Variables
     ## i know this isn't a good thing and nobody wants to see this on aur, but it'll make things easier for me #Fabian
     ## directory files naming is usually VNAMING_Date, binary VNAMING.x86_64
-    __VNAMING="PROLinux64Entei" ##like PROLinux95_45_data, PROLinux95_45.x86_64
+    __VNAMING="PROLinux64" ##like PROLinux95_45_data, PROLinux95_45.x86_64
 
     __DLDIR=$(xdg-user-dir DOWNLOAD) ##downloaddirectory
     __DDLA="https://tiny.cc/PROLinux" ##download link
-    __DDLFN="PROLinuxEntei.zip" ##filename
-    __DDLFSHA256="4a53c37b2b8717a63a9b1653c560c66d572933c0779c734d0456017ac594f1ec" #sha256sum
+    __DDLFN="PRO64LinuxSin.zip" ##filename
+    __DDLFSHA256="633f1488d7bb57c00b3047db5c3e112fa96a85430d236809d61af8c3076dbc3e" #sha256sum
 
     ## "Something's missing"? -> No One Cares - Atreyu c;
     if [ ! -f ${__DLDIR}/${__DDLFN} ]; then

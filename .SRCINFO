@@ -1,6 +1,6 @@
 pkgbase = pokemon-revolution-online-bin
 	pkgdesc = A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games.
-	pkgver = 0.97.4.roaring.entai
+	pkgver = 0.98.1.sonnoh.when
 	pkgrel = 1
 	url = https://pokemon-revolution-online.net
 	install = INSTALL
@@ -8,6 +8,8 @@ pkgbase = pokemon-revolution-online-bin
 	license = custom
 	makedepends = unzip
 	makedepends = xdg-utils
+	makedepends = optipng
+	makedepends = upx
 	depends = gcc-libs-multilib
 	depends = desktop-file-utils
 	optdepends = gtk2: required for the Unity ScreenSelector plugin
