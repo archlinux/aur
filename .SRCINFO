@@ -1,6 +1,6 @@
 pkgbase = codota-bin
 	pkgdesc = Codota: Artificial pair programmer that learns from existing code (official binary version)
-	pkgver = 0.4.7
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://www.codota.com/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = codota-bin
 	depends = libxtst
 	provides = codota
 	source = http://assets.codota.com/terms/codota_terms.pdf
-	source = https://d3h4gxz94r12wi.cloudfront.net/linux/x64/Codota_0.4.7_amd64.deb
+	source = https://d3h4gxz94r12wi.cloudfront.net/linux/x64/Codota_0.5.7_amd64.deb
 	sha256sums = e03cb9d2867609cd2b7dd5f755dec43a72462628e1b8ab64fbe1629194210a36
-	sha256sums = 5565a41a06b202e53b41cd7fd652f8b353c1c69820644fe1b308b73a44633ba2
+	sha256sums = 40b25f2de8c7efb5bf827f1729d02063ace0eaee7cb0065b85c2343ff22002fe
 
 pkgname = codota-bin
 
