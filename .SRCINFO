@@ -11,7 +11,6 @@ pkgbase = np2kai-libretro-git
 	groups = libretro
 	license = GPL2
 	makedepends = git
-	depends = multilib-devel
 	source = git+https://github.com/AZO234/NP2kai.git
 	source = https://raw.github.com/libretro/libretro-super/master/dist/info/nekop2_libretro.info
 	md5sums = SKIP

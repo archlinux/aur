@@ -7,7 +7,6 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://domisan.sakura.ne.jp/article/np2kai/np2kai.html"
 license=('GPL2')
 groups=('libretro')
-depends=('multilib-devel')
 makedepends=('git') 
 
 source=('git+https://github.com/AZO234/NP2kai.git'
