@@ -1,6 +1,6 @@
-diff -ura src/gazebo-8.0.0/gazebo/rendering/RenderEngine.cc src2/gazebo-8.0.0/gazebo/rendering/RenderEngine.cc
---- src/gazebo-8.0.0/gazebo/rendering/RenderEngine.cc	2017-01-26 02:16:27.000000000 +0100
-+++ src2/gazebo-8.0.0/gazebo/rendering/RenderEngine.cc	2017-08-06 19:28:22.086767172 +0200
+diff -ura src/gazebo-8.1.1/gazebo/rendering/RenderEngine.cc src2/gazebo-8.1.1/gazebo/rendering/RenderEngine.cc
+--- src/gazebo-8.1.1/gazebo/rendering/RenderEngine.cc	2017-01-26 02:16:27.000000000 +0100
++++ src2/gazebo-8.1.1/gazebo/rendering/RenderEngine.cc	2017-08-06 19:28:22.086767172 +0200
 @@ -351,7 +351,6 @@
    // TODO: this was causing a segfault. Need to debug, and put back in
    if (this->dataPtr->root)
@@ -9,9 +9,9 @@ diff -ura src/gazebo-8.0.0/gazebo/rendering/RenderEngine.cc src2/gazebo-8.0.0/ga
      /*const Ogre::Root::PluginInstanceList ll =
       this->dataPtr->root->getInstalledPlugins();
  
-diff -ura src/gazebo-8.0.0/gazebo/rendering/skyx/src/MeshManager.cpp src2/gazebo-8.0.0/gazebo/rendering/skyx/src/MeshManager.cpp
---- src/gazebo-8.0.0/gazebo/rendering/skyx/src/MeshManager.cpp	2017-01-26 02:16:27.000000000 +0100
-+++ src2/gazebo-8.0.0/gazebo/rendering/skyx/src/MeshManager.cpp	2017-08-25 23:33:57.747595635 +0200
+diff -ura src/gazebo-8.1.1/gazebo/rendering/skyx/src/MeshManager.cpp src2/gazebo-8.1.1/gazebo/rendering/skyx/src/MeshManager.cpp
+--- src/gazebo-8.1.1/gazebo/rendering/skyx/src/MeshManager.cpp	2017-01-26 02:16:27.000000000 +0100
++++ src2/gazebo-8.1.1/gazebo/rendering/skyx/src/MeshManager.cpp	2017-08-25 23:33:57.747595635 +0200
 @@ -32,9 +32,9 @@
        , mCreated(false)
        , mSubMesh(0)
@@ -24,9 +24,9 @@ diff -ura src/gazebo-8.0.0/gazebo/rendering/skyx/src/MeshManager.cpp src2/gazebo
        , mSceneNode(0)
        , mSteps(70)
        , mCircles(95)
-diff -ura src/gazebo-8.0.0/gazebo/rendering/skyx/src/VClouds/DataManager.cpp src2/gazebo-8.0.0/gazebo/rendering/skyx/src/VClouds/DataManager.cpp
---- src/gazebo-8.0.0/gazebo/rendering/skyx/src/VClouds/DataManager.cpp	2017-01-26 02:16:27.000000000 +0100
-+++ src2/gazebo-8.0.0/gazebo/rendering/skyx/src/VClouds/DataManager.cpp	2017-08-06 19:27:43.967225361 +0200
+diff -ura src/gazebo-8.1.1/gazebo/rendering/skyx/src/VClouds/DataManager.cpp src2/gazebo-8.1.1/gazebo/rendering/skyx/src/VClouds/DataManager.cpp
+--- src/gazebo-8.1.1/gazebo/rendering/skyx/src/VClouds/DataManager.cpp	2017-01-26 02:16:27.000000000 +0100
++++ src2/gazebo-8.1.1/gazebo/rendering/skyx/src/VClouds/DataManager.cpp	2017-08-06 19:27:43.967225361 +0200
 @@ -22,6 +22,8 @@
  */
  
@@ -50,9 +50,9 @@ diff -ura src/gazebo-8.0.0/gazebo/rendering/skyx/src/VClouds/DataManager.cpp src
          }
          pbptr += pb.rowPitch;
        }
-diff -ura src/gazebo-8.0.0/media/materials/scripts/ShadowCaster.material src2/gazebo-8.0.0/media/materials/scripts/ShadowCaster.material
---- src/gazebo-8.0.0/media/materials/scripts/ShadowCaster.material	2017-01-26 02:16:28.000000000 +0100
-+++ src2/gazebo-8.0.0/media/materials/scripts/ShadowCaster.material	2017-08-06 19:27:43.967225361 +0200
+diff -ura src/gazebo-8.1.1/media/materials/scripts/ShadowCaster.material src2/gazebo-8.1.1/media/materials/scripts/ShadowCaster.material
+--- src/gazebo-8.1.1/media/materials/scripts/ShadowCaster.material	2017-01-26 02:16:28.000000000 +0100
++++ src2/gazebo-8.1.1/media/materials/scripts/ShadowCaster.material	2017-08-06 19:27:43.967225361 +0200
 @@ -65,19 +65,3 @@
  		}
  	}

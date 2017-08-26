@@ -5,8 +5,8 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo-ogre-1.10
-pkgver=8.0.0
-pkgrel=3
+pkgver=8.1.1
+pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments (using ogre 1.10)"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -29,8 +29,8 @@ optdepends=('bullet>=2.82: Bullet support'
 makedepends=('cmake' 'doxygen' 'pkg-config>=0.26')
 install="gazebo.install"
 source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-${pkgver}.tar.bz2" "ogre-1.10.patch")
-sha256sums=('ea733be6946ac5c538bf207ba01f3a6d6afa456d0b70455f7066b19d722f0d12'
-            '77c1813bb8f692a9b3886ed0f045190db44fd32732db7f13113223d46a1491ce')
+sha256sums=('bca3e36c064d80993a6c4cd53c369e0762c4a8e51e0ee145c20d005fd8d63949'
+            '4c375a1b29fc876832b98ce5a79fde4f98e6bffa10ba03088841a20b85a7fb9b')
 provides=("gazebo=8.0.0")
 conflicts=("gazebo")
 
