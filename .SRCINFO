@@ -1,16 +1,20 @@
 pkgbase = voxelshop
 	pkgdesc = An extremely intuitive and powerful cross-platform software to modify and create voxel objects which was designed from the ground up in close collaboration with artists.
 	pkgver = 1.8.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blackflux.com/node/11
 	arch = any
 	license = Apache
-	depends = java-runtime=8
+	depends = java-runtime>=8
 	depends = bash
 	noextract = voxelshop-1.8.11.zip
 	source = voxelshop
+	source = voxelshop.desktop
+	source = voxelshop.png::https://raw.githubusercontent.com/simlu/voxelshop/1.8.11/resource/img/icons/application/logo.png
 	source = voxelshop-1.8.11.zip::https://github.com/simlu/voxelshop/releases/download/1.8.11/voxelshop-bin.zip
 	sha256sums = 1f1535bd452294f1f8261bdd0432e0100e43f41650ff25aa67d92cf786be7df8
+	sha256sums = 510d8a61c162af0cfed35548fbd5c5a7351ac9735ab27ff7da7a7dbb44346a15
+	sha256sums = 9117799a571cd29a0402bc43a58c2d3b7caf590a2bcf530347ab3f709e1ee25b
 	sha256sums = 913cc42e789f5914ab894ed6157be94bcedc5d5cb528481bf6e167b0e3d70354
 
 pkgname = voxelshop

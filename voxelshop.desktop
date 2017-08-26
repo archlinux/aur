@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name={{_application_name}}
+GenericName={{_generic_name}}
+Comment={{pkgdesc}}
+Exec=/usr/bin/{{pkgname}}
+Icon={{pkgname}}
+Terminal=false
+Categories=Graphics;3DGraphics;Java;
