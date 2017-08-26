@@ -1,0 +1,70 @@
+Description: Make rbdoom3bfg reproducible
+ by removing the usages of __TIME__ and __DATE__
+Author: Tobias Frost <tobi@debian.org>
+Forwarded: https://github.com/RobertBeckebans/RBDOOM-3-BFG/pull/250
+Last-Update: 2015-11-02
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/neo/framework/Common.cpp
++++ b/neo/framework/Common.cpp
+@@ -59,7 +59,7 @@
+ {
+ 	version_s()
+ 	{
+-		sprintf( string, "%s.%d%s %s %s %s", ENGINE_VERSION, BUILD_NUMBER, BUILD_DEBUG, BUILD_STRING, __DATE__, __TIME__ );
++		sprintf( string, "%s.%d%s %s", ENGINE_VERSION, BUILD_NUMBER, BUILD_DEBUG, BUILD_STRING );
+ 	}
+ 	char	string[256];
+ } version;
+--- a/neo/d3xp/Game_local.cpp
++++ b/neo/d3xp/Game_local.cpp
+@@ -317,7 +317,6 @@
+ 	
+ 	Printf( "--------- Initializing Game ----------\n" );
+ 	Printf( "gamename: %s\n", GAME_VERSION );
+-	Printf( "gamedate: %s\n", __DATE__ );
+ 	
+ 	// register game specific decl types
+ 	declManager->RegisterDeclType( "model",				DECL_MODELDEF,		idDeclAllocator<idDeclModelDef> );
+--- a/neo/d3xp/gamesys/SysCvar.cpp
++++ b/neo/d3xp/gamesys/SysCvar.cpp
+@@ -43,14 +43,13 @@
+ */
+ 
+ struct gameVersion_s {
+-	gameVersion_s() { sprintf( string, "%s.%d%s %s %s %s", ENGINE_VERSION, BUILD_NUMBER, BUILD_DEBUG, BUILD_STRING, __DATE__, __TIME__ ); }
++	gameVersion_s() { sprintf( string, "%s.%d%s %s", ENGINE_VERSION, BUILD_NUMBER, BUILD_DEBUG, BUILD_STRING ); }
+ 	char	string[256];
+ } gameVersion;
+ 
+ 
+ // noset vars
+ idCVar gamename(					"gamename",					GAME_VERSION,	CVAR_GAME | CVAR_ROM, "" );
+-idCVar gamedate(					"gamedate",					__DATE__,		CVAR_GAME | CVAR_ROM, "" );
+ 
+ idCVar si_map(						"si_map",					"-1",			CVAR_GAME | CVAR_SERVERINFO | CVAR_ARCHIVE | CVAR_INTEGER, "default map choice for profile" );
+ idCVar si_mode(						"si_mode",					"-1",			CVAR_GAME | CVAR_SERVERINFO | CVAR_ARCHIVE | CVAR_INTEGER, "default mode choice for profile", -1, GAME_COUNT - 1 );
+--- a/neo/idlib/Parser.cpp
++++ b/neo/idlib/Parser.cpp
+@@ -796,8 +796,8 @@
+ 
+ CONSOLE_COMMAND( TestPreprocessorMacros, "check analyze warning", 0 )
+ {
+-	idLib::Printf( "%s : %s\n", __DATE__, PreProcessorDate().c_str() );
+-	idLib::Printf( "%s : %s\n", __TIME__, PreProcessorTime().c_str() );
++	idLib::Printf( "%s\n", PreProcessorDate().c_str() );
++	idLib::Printf( "%s\n", PreProcessorTime().c_str() );
+ }
+ 
+ /*
+--- a/neo/framework/Console.cpp
++++ b/neo/framework/Console.cpp
+@@ -1189,7 +1189,7 @@
+ 	
+ 	// RB begin
+ 	//idStr version = va( "%s.%i.%i", ENGINE_VERSION, BUILD_NUMBER, BUILD_NUMBER_MINOR );
+-	idStr version = va( "%s %s %s %s", ENGINE_VERSION, BUILD_STRING, __DATE__, __TIME__ );
++	idStr version = va( "%s %s", ENGINE_VERSION, BUILD_STRING);
+ 	//idStr version = com_version.GetString();
+ 	// RB end
+ 	

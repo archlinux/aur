@@ -1,0 +1,394 @@
+Description: Fix several spelling errors found by lintian
+Author: Tobias Frost <tobi@debian.org>
+Forwarded: <URL|no|not-needed, useless if you have a Bug field, optional>
+Last-Update: 2016-10-15
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/base/renderprogs/SMAA.inc
++++ b/base/renderprogs/SMAA.inc
+@@ -228,14 +228,14 @@
+  *      - DX10.1:   D3D10_STANDARD_MULTISAMPLE_PATTERN or
+  *      - DX11:     D3D11_STANDARD_MULTISAMPLE_PATTERN
+  *
+- *    This allows to ensure that the subsample order matches the table in
++ *    This allows one to ensure that the subsample order matches the table in
+  *    @SUBSAMPLE_INDICES.
+  *
+  *    (*) In the case of DX10, we refer the reader to:
+  *      - SMAA::detectMSAAOrder and
+  *      - SMAA::msaaReorder
+  *
+- *    These functions allow to match the standard multisample patterns by
++ *    These functions allow one to match the standard multisample patterns by
+  *    detecting the subsample order for a specific GPU, and reordering
+  *    them appropriately.
+  *
+@@ -326,8 +326,8 @@
+  * performance. 
+  *
+  * Range: [0, 0.5]
+- *   0.1 is a reasonable value, and allows to catch most visible edges.
+- *   0.05 is a rather overkill value, that allows to catch 'em all.
++ *   0.1 is a reasonable value, and allows one to catch most visible edges.
++ *   0.05 is a rather overkill value, that allows one to catch 'em all.
+  *
+  *   If temporal supersampling is used, 0.2 could be a reasonable value, as low
+  *   contrast edges are properly filtered by just 2x.
+@@ -390,7 +390,7 @@
+  * If there is an neighbor edge that has SMAA_LOCAL_CONTRAST_FACTOR times
+  * bigger contrast than current edge, current edge will be discarded.
+  *
+- * This allows to eliminate spurious crossing edges, and is based on the fact
++ * This allows one to eliminate spurious crossing edges, and is based on the fact
+  * that, if there is too much contrast in a direction, that will hide
+  * perceptually contrast in the other neighbors.
+  */
+@@ -399,7 +399,7 @@
+ #endif
+ 
+ /**
+- * Predicated thresholding allows to better preserve texture details and to
++ * Predicated thresholding allows one to better preserve texture details and to
+  * improve performance, by decreasing the number of detected edges using an
+  * additional buffer like the light accumulation buffer, object ids or even the
+  * depth buffer (the depth buffer usage may be limited to indoor or short range
+@@ -446,7 +446,7 @@
+ #endif
+ 
+ /**
+- * Temporal reprojection allows to remove ghosting artifacts when using
++ * Temporal reprojection allows one to remove ghosting artifacts when using
+  * temporal supersampling. We use the CryEngine 3 method which also introduces
+  * velocity weighting. This feature is of extreme importance for totally
+  * removing ghosting. More information here:
+@@ -461,7 +461,7 @@
+ #endif
+ 
+ /**
+- * SMAA_REPROJECTION_WEIGHT_SCALE controls the velocity weighting. It allows to
++ * SMAA_REPROJECTION_WEIGHT_SCALE controls the velocity weighting. It allows one to
+  * remove ghosting trails behind the moving object, which are not removed by
+  * just using reprojection. Using low values will exhibit ghosting, while using
+  * high values will disable temporal supersampling under motion.
+@@ -869,7 +869,7 @@
+ }
+ 
+ /**
+- * These functions allows to perform diagonal pattern searches.
++ * These functions allows one to perform diagonal pattern searches.
+  */
+ float2 SMAASearchDiag1(SMAATexture2D(edgesTex), float2 texcoord, float2 dir, out float2 e) {
+ 	dir.y = API_V_DIR(dir.y);
+@@ -1204,7 +1204,7 @@
+         coords.z = SMAASearchXRight(SMAATexturePass2D(edgesTex), SMAATexturePass2D(searchTex), offset[0].zw, offset[2].y);
+         d.y = coords.z;
+ 
+-        // We want the distances to be in pixel units (doing this here allow to
++        // We want the distances to be in pixel units (doing this here allows one to
+         // better interleave arithmetic and memory accesses):
+         d = abs(round(mad(SMAA_RT_METRICS.zz, d, -pixcoord.xx)));
+ 
+--- a/doomclassic/doom/p_enemy.cpp
++++ b/doomclassic/doom/p_enemy.cpp
+@@ -1452,7 +1452,7 @@
+ 	currentthinker = currentthinker->next;
+     }
+ 
+-    // if there are allready 20 skulls on the level,
++    // if there are already 20 skulls on the level,
+     // don't spit another one
+     if (count > 20)
+ 	return;
+--- a/doomclassic/doom/p_pspr.cpp
++++ b/doomclassic/doom/p_pspr.cpp
+@@ -358,7 +358,7 @@
+ 	if (player->pendingweapon != wp_nochange || !player->health)
+ 	{
+ 		// change weapon
+-		//  (pending weapon should allready be validated)
++		//  (pending weapon should already be validated)
+ 		newstate = (statenum_t)weaponinfo[player->readyweapon].downstate;
+ 		P_SetPsprite (player, ps_weapon, newstate);
+ 		return;	
+--- a/doomclassic/doom/p_sight.cpp
++++ b/doomclassic/doom/p_sight.cpp
+@@ -165,7 +165,7 @@
+     {
+ 	line = seg->linedef;
+ 
+-	// allready checked other side?
++	// already checked other side?
+ 	if (line->validcount == ::g->validcount)
+ 	    continue;
+ 	
+--- a/doomclassic/doom/structs.h
++++ b/doomclassic/doom/structs.h
+@@ -358,7 +358,7 @@
+ typedef struct
+ {
+     // Block origin (allways UL),
+-    // which has allready accounted
++    // which has already accounted
+     // for the internal origin of the patch.
+     int		originx;	
+     int		originy;
+--- a/neo/d3xp/gamesys/Class.h
++++ b/neo/d3xp/gamesys/Class.h
+@@ -216,7 +216,7 @@
+ 		( idEventFunc<idClass> * )nameofclass::eventCallbacks, nameofclass::CreateInstance, ( void ( idClass::* )() )&nameofclass::Spawn,	\
+ 		( void ( idClass::* )( idSaveGame * ) const )&nameofclass::Save, ( void ( idClass::* )( idRestoreGame * ) )&nameofclass::Restore );	\
+ 	idClass *nameofclass::CreateInstance() {													\
+-		gameLocal.Error( "Cannot instanciate abstract class %s.", #nameofclass );					\
++		gameLocal.Error( "Cannot instantiate abstract class %s.", #nameofclass );					\
+ 		return NULL;																				\
+ 	}																								\
+ 	idTypeInfo *nameofclass::GetType() const {												\
+--- a/neo/d3xp/gamesys/SysCvar.cpp
++++ b/neo/d3xp/gamesys/SysCvar.cpp
+@@ -104,8 +104,8 @@
+ 
+ 
+ idCVar g_showPVS(					"g_showPVS",				"0",			CVAR_GAME | CVAR_INTEGER, "", 0, 2 );
+-idCVar g_showTargets(				"g_showTargets",			"0",			CVAR_GAME | CVAR_BOOL, "draws entities and thier targets.  hidden entities are drawn grey." );
+-idCVar g_showTriggers(				"g_showTriggers",			"0",			CVAR_GAME | CVAR_BOOL, "draws trigger entities (orange) and thier targets (green).  disabled triggers are drawn grey." );
++idCVar g_showTargets(				"g_showTargets",			"0",			CVAR_GAME | CVAR_BOOL, "draws entities and their targets.  hidden entities are drawn grey." );
++idCVar g_showTriggers(				"g_showTriggers",			"0",			CVAR_GAME | CVAR_BOOL, "draws trigger entities (orange) and their targets (green).  disabled triggers are drawn grey." );
+ idCVar g_showCollisionWorld(		"g_showCollisionWorld",		"0",			CVAR_GAME | CVAR_BOOL, "" );
+ idCVar g_showCollisionModels(		"g_showCollisionModels",	"0",			CVAR_GAME | CVAR_BOOL, "" );
+ idCVar g_showCollisionTraces(		"g_showCollisionTraces",	"0",			CVAR_GAME | CVAR_BOOL, "" );
+--- a/neo/framework/Common.cpp
++++ b/neo/framework/Common.cpp
+@@ -68,9 +68,9 @@
+ idCVar com_forceGenericSIMD( "com_forceGenericSIMD", "0", CVAR_BOOL | CVAR_SYSTEM | CVAR_NOCHEAT, "force generic platform independent SIMD" );
+ 
+ #ifdef ID_RETAIL
+-idCVar com_allowConsole( "com_allowConsole", "0", CVAR_BOOL | CVAR_SYSTEM | CVAR_INIT, "allow toggling console with the tilde key" );
++idCVar com_allowConsole( "com_allowConsole", "0", CVAR_BOOL | CVAR_SYSTEM | CVAR_INIT, "allows one toggling console with the tilde key" );
+ #else
+-idCVar com_allowConsole( "com_allowConsole", "1", CVAR_BOOL | CVAR_SYSTEM | CVAR_INIT, "allow toggling console with the tilde key" );
++idCVar com_allowConsole( "com_allowConsole", "1", CVAR_BOOL | CVAR_SYSTEM | CVAR_INIT, "allows one toggling console with the tilde key" );
+ #endif
+ 
+ idCVar com_developer( "developer", "0", CVAR_BOOL | CVAR_SYSTEM | CVAR_NOCHEAT, "developer mode" );
+--- a/neo/framework/Common_printf.cpp
++++ b/neo/framework/Common_printf.cpp
+@@ -36,7 +36,7 @@
+ idCVar com_timestampPrints( "com_timestampPrints", "0", CVAR_SYSTEM, "print time with each console print, 1 = msec, 2 = sec", 0, 2, idCmdSystem::ArgCompletion_Integer<0, 2> );
+ 
+ #ifndef ID_RETAIL
+-idCVar com_printFilter( "com_printFilter", "", CVAR_SYSTEM, "only print lines that contain this, add multiple filters with a ; delimeter" );
++idCVar com_printFilter( "com_printFilter", "", CVAR_SYSTEM, "only print lines that contain this, add multiple filters with a ; delimiter" );
+ #endif
+ 
+ /*
+--- a/neo/renderer/RenderProgs_embedded.h
++++ b/neo/renderer/RenderProgs_embedded.h
+@@ -465,7 +465,7 @@
+ 		" *     half-rate linear filtering on GCN.\n"
+ 		" *\n"
+ 		" *     If SMAA is applied to 64-bit color buffers, switching to point filtering\n"
+-		" *     when accesing them will increase the performance. Search for\n"
++		" *     when accessing them will increase the performance. Search for\n"
+ 		" *     'SMAASamplePoint' to see which textures may benefit from point\n"
+ 		" *     filtering, and where (which is basically the color input in the edge\n"
+ 		" *     detection and resolve passes).\n"
+@@ -580,14 +580,14 @@
+ 		" *      - DX10.1:   D3D10_STANDARD_MULTISAMPLE_PATTERN or\n"
+ 		" *      - DX11:     D3D11_STANDARD_MULTISAMPLE_PATTERN\n"
+ 		" *\n"
+-		" *    This allows to ensure that the subsample order matches the table in\n"
++		" *    This allows one to ensure that the subsample order matches the table in\n"
+ 		" *    @SUBSAMPLE_INDICES.\n"
+ 		" *\n"
+ 		" *    (*) In the case of DX10, we refer the reader to:\n"
+ 		" *      - SMAA::detectMSAAOrder and\n"
+ 		" *      - SMAA::msaaReorder\n"
+ 		" *\n"
+-		" *    These functions allow to match the standard multisample patterns by\n"
++		" *    These functions allow one to match the standard multisample patterns by\n"
+ 		" *    detecting the subsample order for a specific GPU, and reordering\n"
+ 		" *    them appropriately.\n"
+ 		" *\n"
+@@ -678,8 +678,8 @@
+ 		" * performance. \n"
+ 		" *\n"
+ 		" * Range: [0, 0.5]\n"
+-		" *   0.1 is a reasonable value, and allows to catch most visible edges.\n"
+-		" *   0.05 is a rather overkill value, that allows to catch 'em all.\n"
++		" *   0.1 is a reasonable value, and allows one to catch most visible edges.\n"
++		" *   0.05 is a rather overkill value, that allows one to catch 'em all.\n"
+ 		" *\n"
+ 		" *   If temporal supersampling is used, 0.2 could be a reasonable value, as low\n"
+ 		" *   contrast edges are properly filtered by just 2x.\n"
+@@ -742,7 +742,7 @@
+ 		" * If there is an neighbor edge that has SMAA_LOCAL_CONTRAST_FACTOR times\n"
+ 		" * bigger contrast than current edge, current edge will be discarded.\n"
+ 		" *\n"
+-		" * This allows to eliminate spurious crossing edges, and is based on the fact\n"
++		" * This allows one to eliminate spurious crossing edges, and is based on the fact\n"
+ 		" * that, if there is too much contrast in a direction, that will hide\n"
+ 		" * perceptually contrast in the other neighbors.\n"
+ 		" */\n"
+@@ -751,7 +751,7 @@
+ 		"#endif\n"
+ 		"\n"
+ 		"/**\n"
+-		" * Predicated thresholding allows to better preserve texture details and to\n"
++		" * Predicated thresholding allows one to better preserve texture details and to\n"
+ 		" * improve performance, by decreasing the number of detected edges using an\n"
+ 		" * additional buffer like the light accumulation buffer, object ids or even the\n"
+ 		" * depth buffer (the depth buffer usage may be limited to indoor or short range\n"
+@@ -798,7 +798,7 @@
+ 		"#endif\n"
+ 		"\n"
+ 		"/**\n"
+-		" * Temporal reprojection allows to remove ghosting artifacts when using\n"
++		" * Temporal reprojection allows one to remove ghosting artifacts when using\n"
+ 		" * temporal supersampling. We use the CryEngine 3 method which also introduces\n"
+ 		" * velocity weighting. This feature is of extreme importance for totally\n"
+ 		" * removing ghosting. More information here:\n"
+@@ -813,7 +813,7 @@
+ 		"#endif\n"
+ 		"\n"
+ 		"/**\n"
+-		" * SMAA_REPROJECTION_WEIGHT_SCALE controls the velocity weighting. It allows to\n"
++		" * SMAA_REPROJECTION_WEIGHT_SCALE controls the velocity weighting. It allows one to\n"
+ 		" * remove ghosting trails behind the moving object, which are not removed by\n"
+ 		" * just using reprojection. Using low values will exhibit ghosting, while using\n"
+ 		" * high values will disable temporal supersampling under motion.\n"
+@@ -1195,7 +1195,7 @@
+ 		"#if !defined(SMAA_DISABLE_DIAG_DETECTION)\n"
+ 		"\n"
+ 		"/**\n"
+-		" * Allows to decode two binary values from a bilinear-filtered access.\n"
++		" * Allows one to decode two binary values from a bilinear-filtered access.\n"
+ 		" */\n"
+ 		"float2 SMAADecodeDiagBilinearAccess(float2 e) {\n"
+ 		"    // Bilinear access for fetching 'e' have a 0.25 offset, and we are\n"
+@@ -1221,7 +1221,7 @@
+ 		"}\n"
+ 		"\n"
+ 		"/**\n"
+-		" * These functions allows to perform diagonal pattern searches.\n"
++		" * These functions allows one to perform diagonal pattern searches.\n"
+ 		" */\n"
+ 		"float2 SMAASearchDiag1(SMAATexture2D(edgesTex), float2 texcoord, float2 dir, out float2 e) {\n"
+ 		"	dir.y = API_V_DIR(dir.y);\n"
+@@ -1357,7 +1357,7 @@
+ 		"// Horizontal/Vertical Search Functions\n"
+ 		"\n"
+ 		"/**\n"
+-		" * This allows to determine how much length should we add in the last step\n"
++		" * This allows one to determine how much length should we add in the last step\n"
+ 		" * of the searches. It takes the bilinearly interpolated edge (see \n"
+ 		" * @PSEUDO_GATHER4), and adds 0, 1 or 2, depending on which edges and\n"
+ 		" * crossing edges are active.\n"
+@@ -1392,7 +1392,7 @@
+ 		"     * @PSEUDO_GATHER4\n"
+ 		"     * This texcoord has been offset by (-0.25, -0.125) in the vertex shader to\n"
+ 		"     * sample between edge, thus fetching four edges in a row.\n"
+-		"     * Sampling with different offsets in each direction allows to disambiguate\n"
++		"     * Sampling with different offsets in each direction allows one to disambiguate\n"
+ 		"     * which edges are active from the four fetched ones.\n"
+ 		"     */\n"
+ 		"    float2 e = float2(0.0, 1.0);\n"
+@@ -1556,7 +1556,7 @@
+ 		"        coords.z = SMAASearchXRight(SMAATexturePass2D(edgesTex), SMAATexturePass2D(searchTex), offset[0].zw, offset[2].y);\n"
+ 		"        d.y = coords.z;\n"
+ 		"\n"
+-		"        // We want the distances to be in pixel units (doing this here allow to\n"
++		"        // We want the distances to be in pixel units (doing this here allows one to\n"
+ 		"        // better interleave arithmetic and memory accesses):\n"
+ 		"        d = abs(round(mad(SMAA_RT_METRICS.zz, d, -pixcoord.xx)));\n"
+ 		"\n"
+@@ -10542,7 +10542,7 @@
+ 		"\n"
+ 		"Doom 3 BFG Edition GPL Source Code\n"
+ 		"Copyright (C) 1993-2012 id Software LLC, a ZeniMax Media company. \n"
+-		"Coypright (C) 2014 Robert Beckebans\n"
++		"Copyright (C) 2014 Robert Beckebans\n"
+ 		"\n"
+ 		"This file is part of the Doom 3 BFG Edition GPL Source Code (\"Doom 3 BFG Edition Source Code\").  \n"
+ 		"\n"
+@@ -12320,7 +12320,7 @@
+ 		"	float L = ( 1.0 - exp( -Yr * exposure ) );\n"
+ 		"	color.rgb *= L;\n"
+ 		"	\n"
+-		"	// Kodak filmic tone mappping, includes gamma correction\n"
++		"	// Kodak filmic tone mapping, includes gamma correction\n"
+ 		"	//float3 rgb = max( float3( 0 ), color.rgb - float3( 0.004 ) );\n"
+ 		"	//color.rgb = rgb * ( float3( 0.5 ) + 6.2 * rgb ) / ( float3( 0.06 ) + rgb * ( float3( 1.7 ) + 6.2 * rgb ) );\n"
+ 		"	\n"
+--- a/neo/sys/sys_lobby_snapshot.cpp
++++ b/neo/sys/sys_lobby_snapshot.cpp
+@@ -35,7 +35,7 @@
+ 
+ idCVar net_peer_throttle_mode( "net_peer_throttle_mode", "0", CVAR_INTEGER, "= 0 off, 1 = enable fixed, 2 = absolute, 3 = both" );
+ 
+-idCVar net_peer_throttle_minSnapSeq( "net_peer_throttle_minSnapSeq", "150", CVAR_INTEGER, "Minumum number of snapshot exchanges before throttling can be triggered" );
++idCVar net_peer_throttle_minSnapSeq( "net_peer_throttle_minSnapSeq", "150", CVAR_INTEGER, "Minimum number of snapshot exchanges before throttling can be triggered" );
+ 
+ idCVar net_peer_throttle_bps_peer_threshold_pct( "net_peer_throttle_bps_peer_threshold_pct", "0.60", CVAR_FLOAT, "Min reported incoming bps % of sent from host that a peer must maintain before throttling kicks in" );
+ idCVar net_peer_throttle_bps_host_threshold( "net_peer_throttle_bps_host_threshold", "1024", CVAR_FLOAT, "Min outgoing bps of host for bps based throttling to be considered" );
+--- a/neo/tools/compilers/aas/BrushBSP.cpp
++++ b/neo/tools/compilers/aas/BrushBSP.cpp
+@@ -87,7 +87,7 @@
+ {
+ 	if( nodes[0] || nodes[1] )
+ 	{
+-		common->Error( "AddToNode: allready included" );
++		common->Error( "AddToNode: already included" );
+ 	}
+ 	
+ 	assert( front && back );
+--- a/neo/tools/compilers/dmap/portals.cpp
++++ b/neo/tools/compilers/dmap/portals.cpp
+@@ -111,7 +111,7 @@
+ {
+ 	if( p->nodes[0] || p->nodes[1] )
+ 	{
+-		common->Error( "AddPortalToNode: allready included" );
++		common->Error( "AddPortalToNode: already included" );
+ 	}
+ 	
+ 	p->nodes[0] = front;
+@@ -877,7 +877,7 @@
+ 	
+ 	if( node->area != -1 )
+ 	{
+-		return;		// allready got it
++		return;		// already got it
+ 	}
+ 	if( node->opaque )
+ 	{
+@@ -939,7 +939,7 @@
+ 	
+ 	if( node->area != -1 )
+ 	{
+-		return;		// allready got it
++		return;		// already got it
+ 	}
+ 	
+ 	c_areaFloods = 0;
+--- a/neo/ui/GuiScript.cpp
++++ b/neo/ui/GuiScript.cpp
+@@ -426,7 +426,7 @@
+ 	
+ 	if( handler == NULL )
+ 	{
+-		src->Error( "Uknown script call %s", token.c_str() );
++		src->Error( "Unknown script call %s", token.c_str() );
+ 	}
+ 	// now read parms til ;
+ 	// all parms are read as idWinStr's but will be fixed up later
+--- a/README.txt
++++ b/README.txt
+@@ -324,7 +324,7 @@
+ r_useHDR [0 or 1] - Use High Dynamic Range lighting
+ 
+ r_hdrAutoExposure [0 or 1] - Adaptive tonemapping with HDR
+-	This allows to have very bright or very dark scenes but the camera will adopt to it so the scene won't loose details
++	This allows on to have very bright or very dark scenes but the camera will adopt to it so the scene won't loose details
+ 	
+ r_exposure [0 .. 1] - Default 0.5, Controls brightness and affects HDR exposure key
+ 	This is what you change in the video brightness options
