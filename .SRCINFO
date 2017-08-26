@@ -3,7 +3,7 @@
 pkgbase = uuid
 	pkgdesc = OSSP Universally Unique Identifier
 	pkgver = 1.6.2
-	pkgrel = 14
+	pkgrel = 15
 	url = http://www.ossp.org/pkg/lib/uuid
 	arch = i686
 	arch = x86_64
