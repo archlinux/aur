@@ -15,7 +15,7 @@ install='wolf.install'
 source=('wolfsp.desktop' 'wolfmp.desktop' \
 'wolf.launcher' 'wolfsp.launcher' 'wolfmp.launcher' 'wolfded.launcher' \
 'http://www.slashbunny.com/aur/wolf/libstdc++-libc6.2-2.so.3' \
-"ftp://ftp.internat.freebsd.org/pub/FreeBSD/distfiles/wolf-linux-${pkgver}.x86.run")
+"http://www.slashbunny.com/aur/wolf/wolf-linux-${pkgver}.x86.run")
 sha256sums=('20adb799ec0e1adef579acc02ecbd63486dc9bfe90ef48a72e1ea9049d017558'
             'f8dc16a01bf3c5fc7d3914315ffec570f5ae4f148fccffdd05326a589dabf060'
             '7fca88d5c2ca1ad9d5f782f7a7c092246f91112db8918a032234f827de123a7e'
