@@ -1,0 +1,68 @@
+Chusslove Illich (Часлав Илић)
+Index: doc/fancontrol.txt
+===================================================================
+--- doc/fancontrol.txt	(revision 6037)
++++ doc/fancontrol.txt	(working copy)
+@@ -37,6 +37,10 @@
+ 	Maps pwm outputs to temperature sensors so fancontrol knows which
+ 	temperature sensors should be used for calculation of new values for
+ 	the corresponding pwm outputs.
++	Several temperature sensors may be mapped to single pwm output
++	as a comma-separated list, in which case the maximum of all readings
++	is taken as the referent temperature. This is useful for a CPU fan
++	on a multi-core CPU with separate temperature sensors per core.
+ 
+ FCFANS
+ 	FCFANS records the association between a pwm and a fan.
+Index: prog/pwm/fancontrol
+===================================================================
+--- prog/pwm/fancontrol	(revision 6037)
++++ prog/pwm/fancontrol	(working copy)
+@@ -224,12 +224,14 @@
+ 	let fcvcount=0
+ 	while (( $fcvcount < ${#AFCTEMP[@]} )) # go through all temp inputs
+ 	do
+-		tsen=${AFCTEMP[$fcvcount]}
+-		if [ ! -r $tsen ]
+-		then
+-			echo "Error: file $tsen doesn't exist" >&2
+-			outdated=1
+-		fi
++		for tsen in $(echo ${AFCTEMP[$fcvcount]} | tr ',' ' ')
++		do
++			if [ ! -r $tsen ]
++			then
++				echo "Error: file $tsen doesn't exist" >&2
++				outdated=1
++			fi
++		done
+ 		let fcvcount=$fcvcount+1
+ 	done
+ 
+@@ -391,12 +393,20 @@
+ 		minpwm=${AFCMINPWM[$fcvcount]}
+ 		maxpwm=${AFCMAXPWM[$fcvcount]}
+ 
+-		read tval < ${tsens}
+-		if [ $? -ne 0 ]
+-		then
+-			echo "Error reading temperature from $DIR/$tsens"
+-			restorefans 1
+-		fi
++		tval=0
++		for tsen in $(echo ${tsens} | tr ',' ' ')
++		do
++			read tval1 < ${tsen}
++			if [ $? -ne 0 ]
++			then
++				echo "Error reading temperature from $DIR/$tsen"
++				restorefans 1
++			fi
++			if [ $tval -lt $tval1 ]
++			then
++				tval=$tval1
++			fi
++		done
+ 
+ 		read pwmpval < ${pwmo}
+ 		if [ $? -ne 0 ]

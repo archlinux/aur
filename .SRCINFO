@@ -1,0 +1,36 @@
+pkgbase = lm_sensors-max_of_fctemps
+	pkgdesc = Collection of user space tools for general SMBus access and hardware monitoring. Patch in http://www.spinics.net/lists/lm-sensors/msg35498.html applied
+	pkgver = 3.4.0
+	pkgrel = 3
+	url = http://www.lm-sensors.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = rrdtool
+	depends = perl
+	depends = sysfsutils
+	optdepends = rrdtool: for logging with sensord
+	provides = lm_sensors
+	conflicts = lm_sensors
+	backup = etc/sensors3.conf
+	backup = etc/healthd.conf
+	backup = etc/conf.d/sensord
+	source = lm_sensors-3.4.0::https://github.com/groeck/lm-sensors/archive/V3-4-0.tar.gz
+	source = healthd
+	source = healthd.conf
+	source = healthd.service
+	source = sensord.conf
+	source = lm_sensors-fancontrol.patch
+	source = fancontrol-max-of-fctemps.patch
+	validpgpkeys = 7CA69F4460F1BDC41FD2C858A5526B9BB3CD4E6A
+	sha1sums = 4a9026e4db894c98ee7cea0bec1188108e415f71
+	sha1sums = 1c91ae403d3cd02b6177ad1f1b2f2c3a7a3257f5
+	sha1sums = 1edd4d72ade22adfc128fb8d670e85c633fd1d18
+	sha1sums = d72ec328e9303acef86342483b6f8537de6117d9
+	sha1sums = f4b5f21fdb3b2a55aa353afa1603f953b207b73b
+	sha1sums = b0bc977348610d6a008d75a43f65800251c4c9f7
+	sha1sums = 7b0b2d20cdac737796aacb51a8a7ceeaa10c7c28
+
+pkgname = lm_sensors-max_of_fctemps
+
