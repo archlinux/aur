@@ -68,13 +68,6 @@ optdepends=(
             #
             'libappindicator-gtk3: Needed for show systray icon in the panel on GTK3 Desktop based'
             )
-if [ "${_enable_vaapi}" = "1" ]; then
-  optdepends+=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
-               'libva-mesa-driver: HW video acceleration for Nouveau, R600 and RadeonSI users'
-               'libva-intel-driver: HW video acceleration for Intel users'
-               )
-  depends+=('libva')
-fi
 source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "git+https://github.com/foutrelis/chromium-launcher.git"
@@ -325,11 +318,18 @@ _flags=(
 # NOTE  : The detector is Experimental, Can kill you kitty/doggy/waifu/husbando
 # NOTE 2: vfio-pci is for avoid systems with KVM VGA passtrought enabled
 # NOTE 3: Nvidia (bloob drivers) seems have problem with this patch. disable it
+_enable_vaapi=0
 _vga_drivers="$(lspci -vk | grep -A10 VGA | grep  'Kernel driver in use' | cut -d ' ' -f5)"
 for _driver in ${_vga_drivers}; do
   if [ "${_driver}" != "vfio-pci" ] && [ "${_driver}" != "nvidia" ]; then
     _enable_vaapi=1
     _flags+=('use_vaapi=true')
+    optdepends+=(
+#                  'libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
+                 'libva-mesa-driver: HW video acceleration for Nouveau, R600 and RadeonSI users'
+                 'libva-intel-driver: HW video acceleration for Intel G45 and HD users'
+                 )
+    depends+=('libva')
     break
   fi
 done
@@ -410,17 +410,10 @@ prepare() {
   sed 's|base/||' -i cc/output/vulkan_renderer.h
 
   # Apply VAAPI patch
-  if [ "${_enable_vaapi}" = 1 ]; then
+  if [ "${_enable_vaapi}" = "1" ]; then
     msg2 "Enable VAAPI"
     patch -p1 -i "${srcdir}/vaapi_patch-r3.patch" # base64 -d "${srcdir}/vaapi_patch-r3.base64" | patch -p1 -i -
   fi
-
-  # Fix paths.
-  sed -e 's|i386-linux-gnu/||g' \
-      -e 's|x86_64-linux-gnu/||g' \
-      -e 's|/usr/lib/va/drivers|/usr/lib/dri|g' \
-      -e 's|/usr/lib64/va/drivers|/usr/lib/dri|g' \
-      -i content/common/sandbox_linux/bpf_gpu_policy_linux.cc
 
   patch -p1 -i "${srcdir}/minizip.patch"
 

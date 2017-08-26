@@ -7,3 +7,4 @@
 !chromium-widevine-r1.patch
 !minizip.patch
 !vaapi_patch-r3.patch
+!chromium-blink-gcc7-r1.patch
