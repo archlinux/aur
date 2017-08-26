@@ -2,8 +2,8 @@
 
 _pkgname=weechat-discord
 pkgname=weechat-discord-git
-pkgver=r64.4fc82c1
-pkgrel=2
+pkgver=r65.e30de7f
+pkgrel=1
 pkgdesc="Discord plugin for weechat"
 arch=('i686' 'x86_64')
 url="https://github.com/khyperia/weechat-discord"
