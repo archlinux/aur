@@ -1,39 +1,31 @@
-# Maintainer: Tavian Barnes <tavianator@tavianator.com>
+# Maintainer: William Gathoye <william + aur at gathoye dot be>
+# Contributor: Tavian Barnes <tavianator at tavianator dot com>
+
 pkgname=un-apple-keyboard
-pkgver=0.2
+pkgver=1.0
 pkgrel=1
-epoch=
-pkgdesc="Make Apple keyboards like all your other keyboards"
+pkgdesc='Make Apple keyboards like all your other keyboards'
 arch=('any')
-url="http://tavianator.com"
+
+url='https://github.com/wget/un-apple-keyboard'
 license=('custom:WTFPL')
-groups=()
+
 depends=('keyfuzz')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=('10-apple-keyboard.rules'
-        'fix-apple-keyboard'
-        'apple_keyboard.keyfuzz'
-        'hid_apple.conf'
-        'LICENSE')
-md5sums=('6a3b7cc9f479ebeb9cbe1c4be2bacdc7'
-         '23db0a70399ede5df5510b1e86c89ca4'
-         '4cba96fa875bea22b7c69bc7e7531a6c'
-         '35019f48e80ec0bf9a23894583248926'
-         'f312a7c4d02230e8f2b537295d375c69')
-sha256sums=('3ad9b8aead82065127fde1fa956c7a511027567073ac0834c16dad27a4d3ccde'
-            'fdf61a06d4c524d8f4e1c144442fece3c1a7a03b4b4da01c1af22d9b97f58c9a'
-            'fb0fdb5160c55b52a1f6d5e80c2045919afc4e5306e592abe86cbb3b8af2c643'
-            '223edb42311684dc7585b4af25d7fc27ba629a66060b520283d0ebf95a39dc78'
-            '96f17857f3eb28a7d93dad930bc099a3cb65a9a2afb37069bfd1ba5ec5964389')
+
+source=(
+    '10-apple-keyboard.rules'
+    'fix-apple-keyboard'
+    'apple_keyboard.keyfuzz'
+    'hid_apple.conf'
+    'LICENSE'
+)
+sha512sums=(
+    '71787ecf57e0a828efee84d71325ae7f429ff3239c87623a847642de07bb3ac0e72c79fb579824568983913d754843a267c9ba4eb26f13622aa5ef2f890aafa6'
+    'ce1b19813277795e65470672f69febaed31d6af86fd1b52ad7e4f355ad5bb2770f4b4d1a4bbddc244772f68dfec6c527e3b84d0454a4110ca355b2adf3e39240'
+    '09ce06a537ed7562e3eb95e8c2893a525354f012c2b7df2e790b3e6a3a1e3bcfeeecf8794686ba2654944390e5f8e1eaa133d4cd2812becb43f9fea8720a0665'
+    '37da03d51f98c5af95318da0d1106b470191039fed199707f5c14d6b4aee224a7a2d865c6ce68baae8b9b4ea249414bb69c368590220b0e645ccfccee6b66e11'
+    '977f12355e27a13cdadcc122d126bea2bd4e562b2b014f4c90b5592a11dd9245092c54d98cbd724d1dfebf31030e61ae4009a29f6bb6642d917eb28d112a3eb0'
+)
 
 package() {
     install -D -m644 "${srcdir}/10-apple-keyboard.rules" "${pkgdir}/etc/udev/rules.d/10-apple-keyboard.rules"
