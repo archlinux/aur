@@ -3,7 +3,7 @@
 
 pkgname=nteract-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Interactive literate coding notebook"
 url='https://nteract.io'
@@ -18,10 +18,8 @@ optdepends=('ihaskell-git: support for Haskell'
             'r: support for R (requires the "IRkernel" package)'
             'sagemath-jupyter: support for SageMath')
 install=$pkgname.install
-source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/nteract/nteract/releases/download/v$pkgver/nteract_0.1.0_amd64.deb"
-        "LICENSE")
-sha256sums=('38d56954443a1debad628d1d76750e9c20f32932bfcb6eb632651211c3f6e1b2'
-            '9810f3d57c552d3b3f6c82cb3b6f3402d6faf94fc5a63067fe28360fb3b8b688')
+source=("https://github.com/nteract/nteract/releases/download/v0.2.0/nteract_0.2.0_amd64.deb")
+sha256sums=('0fa8aeed3f8bbcb92677375913a57d894e6a85f341e8ee67e7b887f2a98c6ead')
 
 prepare() {
   gendesk -f -n --name="${_pkgname}" --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Development"
