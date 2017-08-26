@@ -5,7 +5,7 @@
 _pkgname=net-snmp
 pkgname=net-snmp-lmsensors
 pkgver=5.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6, with lm-sensors support"
 arch=('i686' 'x86_64')
 url="http://www.net-snmp.org/"
@@ -58,7 +58,7 @@ package() {
   cd ${_pkgname}-${pkgver}
   sed -i -e "s:install --basedir=\$\$dir:install --basedir=\$\$dir --root=${pkgdir}:" Makefile
   make DESTDIR="${pkgdir}" INSTALL_PREFIX="${pkgdir}" INSTALLDIRS=vendor install
-  install -D _-m644 "${srcdir}/snmpd.service" "${pkgdir}/usr/lib/systemd/system/snmpd.service"
+  install -D -m644 "${srcdir}/snmpd.service" "${pkgdir}/usr/lib/systemd/system/snmpd.service"
   install -D -m644 "${srcdir}/snmptrapd.service" "${pkgdir}/usr/lib/systemd/system/snmptrapd.service"
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
