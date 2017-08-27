@@ -2,7 +2,7 @@
 # Maintainer: Stijn Seghers <stijnseghers at gmail dot com>
 
 pkgname=stylelint-config-standard
-pkgver=16.0.0
+pkgver=17.0.0
 pkgrel=1
 pkgdesc='The standard shareable config for stylelint'
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = stylelint-config-standard
 	pkgdesc = The standard shareable config for stylelint
-	pkgver = 16.0.0
+	pkgver = 17.0.0
 	pkgrel = 1
 	url = https://github.com/stylelint/stylelint-config-standard
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = stylelint-config-standard
 	makedepends = npm
 	depends = nodejs
 	depends = stylelint
-	noextract = stylelint-config-standard-16.0.0.tgz
-	source = http://registry.npmjs.org/stylelint-config-standard/-/stylelint-config-standard-16.0.0.tgz
+	noextract = stylelint-config-standard-17.0.0.tgz
+	source = http://registry.npmjs.org/stylelint-config-standard/-/stylelint-config-standard-17.0.0.tgz
 	sha512sums = 576940e40d0811c601ddbc488c273e0c37ad97617f7a779f0197c256be2a30767f0a7b3df07f942a34035c1965f168262bf4be0025496d48c0ec5c98fd349e63
 
 pkgname = stylelint-config-standard
