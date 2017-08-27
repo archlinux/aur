@@ -9,13 +9,6 @@
 # The pkgver is from the ProductVersion of Doom3BFG.exe.  I don't know
 # if it is the official version number or if there even is one.
 #
-# Proper multilingual support is difficult if not impossible.  Users
-# have reported the game starting up in Japanese if all
-# base/strings/*.lang files are installed, for example, without an
-# ability to change it.  Please just delete all the *.lang files in
-# that directory that are not relevant to your native language you
-# want to play in.
-#
 # Due to file differences between the Steam and GOG.com releases in
 # the *.lang files, the checksums are not compared.  We'll just assume
 # if the rest of the files are OK, these are too.
