@@ -5,7 +5,7 @@
 
 pkgname=firefox-esr
 pkgver=52.3.0
-pkgrel=2
+pkgrel=4
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -19,13 +19,15 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech')
 provides=(firefox)
 conflicts=(firefox)
-options=(!emptydirs !makeflags)
+options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg
         0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
         0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
         firefox-install-dir.patch fix-wifi-scanner.diff
-		use-noexcept-instead-of-an-exception-specification-in-mozalloc.patch)
+		use-noexcept-instead-of-an-exception-specification-in-mozalloc.patch
+		g++-error-crashreporter.patch
+		breakpad-still-uses-struct-ucontext-in-ucontext_reader-cc.patch)
 sha256sums=('c16bc86d6cb8c2199ed1435ab80a9ae65f9324c820ea0eeb38bf89a97d253b5b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
@@ -33,7 +35,9 @@ sha256sums=('c16bc86d6cb8c2199ed1435ab80a9ae65f9324c820ea0eeb38bf89a97d253b5b'
             '93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
-            '37e127dbed0285dc48e8033959a84e241c3e5cf0ce9544a172e640b54d3dfe0e')
+            '37e127dbed0285dc48e8033959a84e241c3e5cf0ce9544a172e640b54d3dfe0e'
+            '966a69f6044afd2401daa0d3317dedb34cd7f6b826a65f4a7785ef69d1ceef8e'
+            '1fe3b7f8b14f1978b96866f983d16709581d9df389fb46881fa63f080d036931')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -67,6 +71,12 @@ prepare() {
 
   # https://hg.mozilla.org/mozilla-central/rev/ae7e3082d862
   patch -Np1 -i ../use-noexcept-instead-of-an-exception-specification-in-mozalloc.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1277926
+  patch -Np1 -i ../g++-error-crashreporter.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
+  patch -Np1 -i ../breakpad-still-uses-struct-ucontext-in-ucontext_reader-cc.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -106,11 +116,9 @@ ac_add_options --enable-system-pixman
 
 # Features
 ac_add_options --enable-startup-notification
-ac_add_options --disable-crashreporter
+ac_add_options --enable-crashreporter
 ac_add_options --enable-alsa
 ac_add_options --disable-updater
-
-STRIP_FLAGS="--strip-debug"
 END
 }
 
@@ -134,7 +142,8 @@ build() {
 
 package() {
   cd firefox-${pkgver}esr
-  make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
+  DESTDIR="$pkgdir" ./mach install
+  find . -name '*crashreporter-symbols.zip' -exec cp -fvt "$startdir" {} +
 
   _vendorjs="$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
