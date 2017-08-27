@@ -1,7 +1,7 @@
 pkgbase = uget-beta
 	pkgdesc = GTK+ download manager featuring download classification and HTML import
 	pkgver = 2.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ugetdm.com/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = uget-beta
 	optdepends = aria2: alternative backend
 	provides = uget
 	conflicts = uget
-	source = https://downloads.sourceforge.net/project/urlget/uget%20%28developing%29/2.1.6/uget-2.1.6-1.tar.gz
+	source = https://downloads.sourceforge.net/project/urlget/uget%20%28developing%29/2.1.6/uget-2.1.6.tar.gz
 	sha256sums = 339f899f5b0a434350b77008ef45d04c61ed9fcbcd14a1b7b9892b2833661da2
 
 pkgname = uget-beta
