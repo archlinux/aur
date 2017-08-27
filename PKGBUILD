@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-atari800-git
-pkgver=41.47e8064
+pkgver=56.2445afd
 pkgrel=1
 pkgdesc="libretro implementation of Atari800 v3.1.0 (Atari 5200/400/800/XL/XE) (WIP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
