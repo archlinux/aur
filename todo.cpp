@@ -160,12 +160,12 @@ int main(int argc, char *argv[]) {
             action = 10;
         }else if ( !strcmp( argv[1], "miss") ) {
             action = 11;
-        }else if ( !strcmp( argv[1], "set") ) {
+        }else if ( !strcmp( argv[1], "set") || !(strcmp(argv[1], "s")) ) {
             if( argc > 2 && argv[2][0] >= '0' && argv[2][0] <= '9' )
                 action = 4;
             else
                 cout << "Erreur : Priorité non interprétable" << endl;
-        }else if ( !strcmp( argv[1], "s") ) {
+        }else if ( !strcmp( argv[1], "get") ) {
             if( argc > 2 && argv[2][0] >= '0' && argv[2][0] <= '9' )
                 action = 5,color = false;
             else
