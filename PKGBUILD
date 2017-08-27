@@ -11,20 +11,18 @@ depends=('ffmpeg' 'imagemagick' 'mono' 'referenceassemblies-pcl' 'sqlite')
 install='emby-server.install'
 provides=('emby-server')
 source=("emby-server-${pkgver}.tar.gz::https://github.com/MediaBrowser/Emby/archive/${pkgver}.tar.gz"
+        "emby-unlocked-${pkgver}.tar.gz::https://github.com/nvllsvm/emby-unlocked/archive/3.2.29.tar.gz"
         'emby-server'
         'emby-migrate-database'
         'emby-server.conf'
-        'emby-server.service'
-        'PluginSecurityManager.cs.patch'
-        'connectionmanager.js')
+        'emby-server.service')
 backup=('etc/conf.d/emby-server')
 sha256sums=('27a739bb8da4587a6618845c6365fc233acec338710a87cb209e16ddef00f58b'
+            '423db2911d139eff384a6edc112a0710159b4341fa2ef4af6e433940304019a6'
             '7b1974f7bba8ac4b76e51ef7fe1257d165c7c4abbd0915e192391336048a3d74'
             'b25bf83a0ab371aff3b13b82f7af71b51bfe6d7e51eb8a8a3dd8f0774ffce6a5'
             'c9ad78f3e2f0ffcb4ee66bb3e99249fcd283dc9fee17895b9265dc733288b953'
-            '8a91ea49a1699c820c4a180710072cba1d6d5c10e45df97477ff6a898f4e1d70'
-            'c501e359a7c1268374e8b1cb8be6afe324d8a16788ba27c980efc7bf286ce9d5'
-            '9314f967c66a8f630f013f1c9a60cb56de9d03249ead58e11799f17620e72211')
+            '8a91ea49a1699c820c4a180710072cba1d6d5c10e45df97477ff6a898f4e1d70')
 
 prepare() {
   cd Emby-${pkgver}
@@ -35,7 +33,8 @@ prepare() {
 build() {
   cd Emby-${pkgver}
 
-  patch -N -p1 -r - Emby.Server.Implementations/Security/PluginSecurityManager.cs < ../PluginSecurityManager.cs.patch
+  patch -N -p1 -r - Emby.Server.Implementations/Security/PluginSecurityManager.cs < \
+      ../emby-unlocked-${pkgver}/patches/PluginSecurityManager.cs.patch
 
   xbuild \
     /p:Configuration='Release Mono' \
@@ -44,7 +43,7 @@ build() {
     /t:build MediaBrowser.sln
   mono --aot='full' -O='all' ../build/MediaBrowser.Server.Mono.exe
 
-  cp ../connectionmanager.js ../build/dashboard-ui/bower_components/emby-apiclient
+  cp ../emby-unlocked-${pkgver}/replacements/connectionmanager.js ../build/dashboard-ui/bower_components/emby-apiclient
 }
 
 package() {
