@@ -2,7 +2,7 @@
 
 pkgname=s
 pkgver=0.5.11
-pkgrel=5
+pkgrel=0
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/s"
