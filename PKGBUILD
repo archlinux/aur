@@ -1,15 +1,14 @@
 # Maintainer: Md. Jahidul Hamid <jahidulhamid@yahoo.com>
 pkgname=pacget
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="A wrapper around pacaur to mimic yaourt's search feature"
 arch=('any')
 url="https://github.com/neurobin/pacget"
 license=('BSD')
-depends=('pacaur')
-optdepends=('pkgfile: support for package search by file name')
+depends=('bash' 'pacaur')
 source=("https://github.com/neurobin/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('6b1c401b998b4414c5ba7bb1099b28a7')
+md5sums=('b029e026698189daaaeb59026e0d8d31')
 validpgpkeys=('3331 6137 5B22 27AC F7AA  6351 A4A2 CA5B 6BDA A871')
 
 package() {
