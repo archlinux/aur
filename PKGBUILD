@@ -2,7 +2,7 @@
 # Contributor: Patrick Wozniak <email@patwoz.de>
 
 pkgname=masterpassword-cli-git
-pkgver=2.5.cli.2.r62.gb1985a2b
+pkgver=2.5.cli.2.r89.g77b4ed2c
 pkgrel=1
 pkgdesc="CLI version of Master Password. (git-version)"
 
@@ -24,7 +24,7 @@ conflicts=(
 	'masterpassword-cli-git'
 )
 
-source=("${pkgname%-git}::git+https://github.com/Lyndir/MasterPassword.git#commit=b1985a2b")
+source=("${pkgname%-git}::git+https://github.com/Lyndir/MasterPassword.git")
 sha256sums=('SKIP')
 
 pkgver() {
