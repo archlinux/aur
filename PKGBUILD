@@ -16,11 +16,11 @@ provides=('ncl')
 install=${pkgname}.install
 source=("ncl_ncarg-$pkgver.tar.gz::https://www.earthsystemgrid.org/download/fileDownload.html?logicalFileId=86b9bec2-fa01-11e6-a976-00c0f03d5b7c"
         "http://www.netlib.org/voronoi/triangle.zip" "Site.local" "ncarg.sh" "hluresfile" "ncl.install"
-        "no_install_dep.patch::http://pkgs.fedoraproject.org/cgit/rpms/ncl.git/plain/ncl-5.0.0-no_install_dep.patch"
-        "includes.patch::http://pkgs.fedoraproject.org/cgit/rpms/ncl.git/plain/ncl-5.1.0-includes.patch"
-        "netcdff.patch::http://pkgs.fedoraproject.org/cgit/rpms/ncl.git/plain/ncl-5.1.0-netcdff.patch"
-        "paths.patch::http://pkgs.fedoraproject.org/cgit/rpms/ncl.git/plain/ncl-5.1.0-paths.patch"
-        "ncl-libs.patch::http://pkgs.fedoraproject.org/cgit/rpms/ncl.git/plain/ncl-libs.patch")
+        "no_install_dep.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.0.0-no_install_dep.patch"
+        "includes.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-includes.patch"
+        "netcdff.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-netcdff.patch"
+        "paths.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-paths.patch"
+        "ncl-libs.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-libs.patch")
 optdepends=("ncl-highres: High-resolution coastlines (RANGS and GSHHS)")
 md5sums=('a981848ddcaf1c263279648265f24766'
          '10aff8d7950f5e0e2fb6dd2e340be2c9'
