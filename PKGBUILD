@@ -1,35 +1,35 @@
 # Maintainer: Sebastian Lau <lauseb644 _at_ gmail.com>
+# Contributor: twa022 <twa022 at gmail dot com>
 # Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
 
 pkgname=nemo-dropbox
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dropbox for Linux - Nemo extension"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('custom:CC-BY-ND-3' 'GPL')
-depends=('nemo>=3.2' 'dropbox' 'pygtk' 'python2-pygpgme')
-makedepends=('python2-docutils' 'python2' 'pygtk' 'glib2')
-conflicts=('nautilus-dropbox' 'caja-dropbox')
+depends=('nemo>=3.2' 'dropbox')
+makedepends=('glib2')
 install=${pkgname}.install
 options=('!libtool' '!emptydirs')
 
-source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-md5sums=('b8aff74acc98be098fe46a54dcb5c35f')
+source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz"
+	"01-Remove-python-dependencies.patch")
+md5sums=('b8aff74acc98be098fe46a54dcb5c35f'
+         '98d2f4a760361e140a09673df42853d1')
+
+prepare() {
+  cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
+  patch -uNp2 -r- -i ../../01-Remove-python-dependencies.patch
+}
 
 build() {
   cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
 
-#  sed -i "s|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g" configure.in
-
   autoreconf -fi
 
-  sed -i "s/python/python2/" configure dropbox.in Makefile.in rst2man.py
-
-  # since python2-docutils, rst2man.py is named "rst2man2.py"
-  sed -i "s:rst2man.py:/usr/bin/rst2man2.py:" configure
-
-  PYTHON=python2 ./configure --prefix=/usr --sysconfdir=/etc
+  ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
@@ -37,11 +37,6 @@ package() {
   cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
 
   make DESTDIR="${pkgdir}" install
-
-  # remove executables and depend on 'dropbox' package
-  rm "${pkgdir}/usr/bin/dropbox"
-  rm "${pkgdir}/usr/share/applications/dropbox.desktop"
-  rm "${pkgdir}/usr/share/man/man1/dropbox.1"
 
   # install the common license
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
