@@ -1,0 +1,25 @@
+pkgbase = u2fval
+	pkgdesc = Python based U2F Validation Server
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Yubico/u2fval
+	arch = any
+	license = BSD
+	makedepends = python2-flask
+	makedepends = python2-flask-sqlalchemy
+	makedepends = python2-u2flib-server
+	source = https://files.pythonhosted.org/packages/source/u/u2fval/u2fval-2.0.0.tar.gz
+	md5sums = 007eb888b7e0576c82fd221f5af60b17
+
+pkgname = python-u2fval
+	depends = python-u2flib-server
+	depends = python-flask
+	depends = python-flask-sqlalchemy
+	optdepends = python-memcached
+
+pkgname = python2-u2fval
+	depends = python2-u2flib-server
+	depends = python2-flask
+	depends = python2-flask-sqlalchemy
+	optdepends = python2-memcached
+
