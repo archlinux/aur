@@ -2,7 +2,7 @@
 
 _pkgname=shticker-book-rewritten
 pkgname=$_pkgname-git
-pkgver=v1.0.3.14.g79ac20d
+pkgver=v1.2.0
 pkgrel=1
 pkgdesc="Custom launcher and tool for the Toontown Rewritten MMORPG"
 url="https://github.com/madsciencecoder/Shticker-Book-Rewritten"
@@ -24,7 +24,7 @@ prepare() {
   cd "$srcdir/$_pkgname"
   git submodule init
   git submodule update
-  qmake
+  qmake-qt5
 }
 
 build() {
