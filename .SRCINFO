@@ -1,22 +1,20 @@
 pkgbase = skympc-git
 	pkgdesc = A simple MPD (Music Player Daemon) client, powerd by Qt
-	pkgver = 1.6.1.0.r128.gbf09a7b
-	pkgrel = 2
+	pkgver = 1.6.4.0.r139.g6f0faea
+	pkgrel = 1
 	url = http://www.soramimi.jp/skympc/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = ruby
-	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
 	depends = mpd
 	depends = qt5-svg
 	provides = skympc
 	conflicts = skympc
 	source = git+https://github.com/soramimi/SkyMPC.git
-	source = use-system-fonts-on-linux.patch
 	sha256sums = SKIP
-	sha256sums = 7c21787bbdc3882594d2cbf6bb8f74820e1a74c2527058c773bca53786a8ee79
 
 pkgname = skympc-git
 

@@ -1,20 +1,18 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=skympc-git
-pkgver=1.6.1.0.r128.gbf09a7b
-pkgrel=2
+pkgver=1.6.4.0.r139.g6f0faea
+pkgrel=1
 pkgdesc="A simple MPD (Music Player Daemon) client, powerd by Qt"
 arch=('i686' 'x86_64')
 url="http://www.soramimi.jp/skympc/index.html"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'mpd' 'qt5-svg')
+depends=('gtk-update-icon-cache' 'mpd' 'qt5-svg')
 makedepends=('git' 'ruby')
 provides=('skympc')
 conflicts=('skympc')
-source=("git+https://github.com/soramimi/SkyMPC.git"
-        'use-system-fonts-on-linux.patch')
-sha256sums=('SKIP'
-            '7c21787bbdc3882594d2cbf6bb8f74820e1a74c2527058c773bca53786a8ee79')
+source=("git+https://github.com/soramimi/SkyMPC.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd SkyMPC
@@ -23,11 +21,6 @@ pkgver() {
   c=$(grep 'version_c =' version.rb | awk '{print $3}')
   d=$(grep 'version_d =' version.rb | awk '{print $3}')
   printf "%s.r%s.g%s" "$a"."$b"."$c"."$d" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd SkyMPC
-  patch -p1 -i ../use-system-fonts-on-linux.patch
 }
 
 build() {
