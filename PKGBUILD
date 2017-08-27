@@ -6,7 +6,7 @@ pkgver=0.7.4
 pkgrel=2
 pkgdesc="VDPAU backend for VA API. (special version for chromium)"
 arch=('i686' 'x86_64')
-url="http://freedesktop.org/wiki/Software/vaapi"
+url='http://freedesktop.org/wiki/Software/vaapi'
 license=('GPL')
 depends=('libva'
          'libvdpau'
@@ -20,7 +20,7 @@ source=("http://freedesktop.org/software/vaapi/releases/libva-vdpau-driver/libva
         'libva-vdpau-driver-0.7.4-glext-missing-definition.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/libva-vdpau-driver-0.7.4-glext-missing-definition.patch?h=packages/libva-vdpau-driver'
         'libva-vdpau-driver-0.7.4-libvdpau-0.8.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/libva-vdpau-driver-0.7.4-libvdpau-0.8.patch?h=packages/libva-vdpau-driver'
         'libva-vdpau-driver-0.7.4-VAEncH264VUIBufferType.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/libva-vdpau-driver-0.7.4-VAEncH264VUIBufferType.patch?h=packages/libva-vdpau-driver'
-        'libva-vdpau-driver-0.7.4-fallback-x.patch'
+        'libva-vdpau-driver-0.7.4-fallback-x.patch' # original http://www.snewbury.org.uk/libva-vdpau-driver-0.7.4-fallback-x.patch
         'http://bazaar.launchpad.net/~ubuntu-branches/ubuntu/vivid/vdpau-video/vivid/download/head:/sigfpecrash.patch-20140602223430-b42d97uv6vf2c3p7-1/sigfpe-crash.patch'
         )
 sha256sums=('155c1982f0ac3f5435ba20b221bcaa11be212c37db548cd1f2a030ffa17e9bb9'
@@ -44,6 +44,7 @@ build() {
   cd "libva-vdpau-driver-${pkgver}"
   ./configure \
     --prefix=/usr
+
   make
 }
 
