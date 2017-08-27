@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=uchroma
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="An advanced driver for Razer Chroma hardware in Linux"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ conflicts=()
 options=(!emptydirs)
 install=$pkgname.install
 source=("https://github.com/cyanogen/uchroma/archive/release/$pkgver.tar.gz")
-sha512sums=('a9022f181270ca1cff39dbf5f7c09e17693ef2c144bba29778d13e187be32ab20d8613ce0419e9c992a5f2ffb84b9ba46f865bdb6a6ebc2da94b292b0fb81afe')
+sha512sums=('178ba66f4e6f2a2d93a7120026010e68d1a5b518ed309f1ad6f5014ba8a699ba9f432b2fa3146f0d06842fc0b5a7c57f727406b506a5e12009793f785d71e230')
 
 package() {
   cd "$srcdir/$pkgname-release-$pkgver"
