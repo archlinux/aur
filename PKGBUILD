@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-ss08
-pkgver=1.13.2
+pkgver=1.13.3
 pkgrel=1
 pkgdesc='A slender monospace typeface. Shape: Pragmata Pro.'
 arch=('any')
@@ -21,7 +21,7 @@ conflicts=('ttf-iosevka'
            'ttf-iosevka-ss11')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-ss08-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('9e108e50805f1d9818542b50f2f733b298e44d61f6507f40d96f04aa9a7749fc'
+sha256sums=('f9a7f4bf957d7046dea9bea93f887a639d27ac6ea461ea651bfe4ff55a22c75c'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
