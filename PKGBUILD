@@ -7,7 +7,7 @@ set -u
 _gitauth='lavv17'
 _pkgname='le'
 pkgname="${_pkgname}"
-pkgver=1.16.4
+pkgver=1.16.5
 pkgrel=1
 pkgdesc='A text editor in memorial to Norton Editor with block and binary operations'
 arch=('i686' 'x86_64')
@@ -22,11 +22,9 @@ _srcdir="${_pkgname}-${pkgver}"
 source=(
   'git://git.sv.gnu.org/gnulib'
   "${_pkgname}-${pkgver}.tar.gz::https://github.com/${_gitauth}/${_pkgname}/archive/v${pkgver}.tar.gz"
-  '0000-le-curses.patch' # https://github.com/lavv17/le/issues/16
 )
 sha256sums=('SKIP'
-            'c50c986b64ab8b4bffee6fbc6d0fcc331c66495b8c03f5b3a83fe44182a483e9'
-            '236ce2c5fff8c91fcb4a77244ed1e43b58aa36fadb05a5b00edb5275448512a0')
+            'db4b8bea597d3814d22807f2b87d94e68a6bcdc586c9e94436af43ec058c1fa1')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   unset _verwatch
@@ -44,14 +42,6 @@ pkgver() {
   set +u
 }
 fi
-
-prepare() {
-  set -u
-  cd "${_srcdir}"
-  # diff -pNaru5 src{.old,}/le-1.16.4 > '0000-le-curses.patch'
-  patch -Nup2 < '../0000-le-curses.patch'
-  set +u
-}
 
 build() {
   set -u
