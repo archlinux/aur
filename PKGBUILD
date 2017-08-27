@@ -2,8 +2,8 @@
 pkgbase=python-sonnet-git
 pkgname=(python-sonnet-git python-sonnet-cuda-git)
 pkgver=20170808.170829
-tf_pkgver=1.2.1
-pkgrel=4
+tf_pkgver=1.3.0
+pkgrel=5
 pkgdesc="TensorFlow-based neural network library."
 url="https://github.com/deepmind/sonnet"
 license=('Apache2')
@@ -11,17 +11,11 @@ arch=('x86_64')
 depends=('python-tensorflow' 'python')
 makedepends=('git' 'bazel' 'python-numpy' 'gcc5' 'cuda' 'cudnn' 'python-pip' 'python-wheel' 'python-setuptools')
 source=("git+https://github.com/deepmind/sonnet"
-        "https://github.com/tensorflow/tensorflow/archive/v${tf_pkgver}.tar.gz"
-        "11174.patch"
-	"10868.patch")
+        "https://github.com/tensorflow/tensorflow/archive/v${tf_pkgver}.tar.gz")
 md5sums=('SKIP'
-         'a02e02faf7a1e3cd0b86f9c26db0b2cb'
-         '15ce20fda3fed10fb85b1fcf9a64be59'
-         'e61103e9cf2c3b63aecfb14cf50de612')
+         '01c008c58d206324ef68cd5116a83965')
 
 prepare() {
-  patch -Np1 -d tensorflow-${tf_pkgver} < ${srcdir}/10868.patch
-  patch -Np1 -d tensorflow-${tf_pkgver} < ${srcdir}/11174.patch
   cp -r tensorflow-${tf_pkgver} tensorflow-${tf_pkgver}-cuda
   
   mkdir -p $srcdir/sonnet/tensorflow
@@ -37,6 +31,7 @@ prepare() {
   export TF_ENABLE_XLA=1
   export TF_NEED_VERBS=0
   export TF_NEED_OPENCL=0
+  export TF_NEED_MPI=0
 }
 
 configure_tensorflow() {
