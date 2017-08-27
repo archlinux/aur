@@ -1,7 +1,7 @@
 # Mantainer:  David Fabijan <mclenin.at.gmail.com>
 
 pkgname=latexdraw
-pkgver=3.3.5
+pkgver=3.3.6
 pkgrel=1
 pkgdesc='Create svg graphics and/or pstricks code usable in latex documents.'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('texlive-pstricks: use generated code in LaTeX documents'
  'texlive-latexextra: support for LaTeX text in preview')
 source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/LaTeXDraw-${pkgver}-bin.zip
         latexdraw.sh)
-md5sums=('6b3e545e1befe92d85e7112fd3e5f628'
+md5sums=('5688a2024a1dc2b61e2a1942e7e8ce63'
          '8f7e3de38675797b824c5a8878e4c694')
 
 package() {
