@@ -5,7 +5,7 @@ pkgdesc="A Numix Theme for cinnamon; transparent and compact version "
 arch=('any')
 url='https://github.com/edoz90/numix-cinnamon-transparent'
 license=('AGPL3')
-source=("$pkgname::git+https://github.com/edoz90/numix-cinnamon-transparent.git#commit=2ed7bd7c24d88b348712d4a72e0059570410b563")
+source=("$pkgname::git+https://github.com/edoz90/numix-cinnamon-transparent.git#commit=a80c2269b77194d10a2ec7af2f8ea6dd5c8fa92b")
 md5sums=('SKIP')
 depends=('cinnamon')
 makedepends=('git')

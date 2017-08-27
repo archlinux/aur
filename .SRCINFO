@@ -7,7 +7,7 @@ pkgbase = numix-cinnamon-transparent-git
 	license = AGPL3
 	makedepends = git
 	depends = cinnamon
-	source = numix-cinnamon-transparent-git::git+https://github.com/edoz90/numix-cinnamon-transparent.git#commit=2ed7bd7c24d88b348712d4a72e0059570410b563
+	source = numix-cinnamon-transparent-git::git+https://github.com/edoz90/numix-cinnamon-transparent.git#commit=a80c2269b77194d10a2ec7af2f8ea6dd5c8fa92b
 	md5sums = SKIP
 
 pkgname = numix-cinnamon-transparent-git
