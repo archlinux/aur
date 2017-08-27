@@ -5,7 +5,7 @@
 _pkgname='netcfg'
 pkgname='netcfg-git'
 pkgver=4.0.rg54f4656
-pkgrel=1
+pkgrel=2
 pkgdesc="Network configuration and profile scripts (install only if you really know that you want this instead of netctl). Includes patch to make wifi-menu work, OpenRC and systemd initscripts."
 url='https://github.com/GNU-Pony/netcfg/'
 arch=(any)
@@ -158,7 +158,7 @@ package() {
   ### /usr/share/doc/-Documentation.
   _docdir="${pkgdir}/usr/share/doc/${_pkgname}"
   mkdir -p "${_docdir}"
-  chmod 644 "${_docdir}"
+  chmod 755 "${_docdir}"
   install -m 644 AUTHORS CHANGELOG CONTRIBUTING "${_docdir}"
   install -m 644 README "${_docdir}/README.make"
   
