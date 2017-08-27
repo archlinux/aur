@@ -1,0 +1,3 @@
+post_install() {
+	echo "NOTE: G'Mic-Qt plugin location is /usr/lib/kritaplugins/gmic_krita_qt. To complete installation, configure Krita appropriately."
+}

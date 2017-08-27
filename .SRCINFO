@@ -1,0 +1,17 @@
+pkgbase = krita-plugin-gmic-git
+	pkgdesc = Krita plugin for the G'MIC image processing framework
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://gmic.eu/
+	install = krita-plugin-gmic-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-base
+	depends = krita
+	source = git+https://github.com/c-koi/gmic-qt.git
+	source = git+https://github.com/dtschump/gmic.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = krita-plugin-gmic-git
+
