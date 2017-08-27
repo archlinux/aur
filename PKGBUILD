@@ -137,13 +137,13 @@ build() {
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
   #  MOZ_PGO=1 ./mach build
   ./mach build
-  ./mach buildsymbols
+  #  ./mach buildsymbols
 }
 
 package() {
   cd firefox-${pkgver}esr
   DESTDIR="$pkgdir" ./mach install
-  find . -name '*crashreporter-symbols.zip' -exec cp -fvt "$startdir" {} +
+  #  find . -name '*crashreporter-symbols.zip' -exec cp -fvt "$startdir" {} +
 
   _vendorjs="$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
