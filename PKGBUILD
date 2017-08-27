@@ -7,8 +7,8 @@ _gui=true
 pkgbase=simulationcraft
 pkgname=simulationcraft
 _pkgname=simc
-_simver=720
-_simrel=02
+_simver=725
+_simrel=01
 pkgver=${_simver}_${_simrel}
 pkgrel=1
 pkgdesc="A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage."
@@ -18,7 +18,7 @@ license=('GPL3')
 source=("${pkgname}-${_simver}-${_simrel}.tar.gz::https://github.com/simulationcraft/simc/archive/release-${_simver}-${_simrel}.tar.gz"
         'SimulationCraft.desktop')
 
-sha256sums=('b9af98186976676bc317a56568011639a4595b01ccaf5d559cfb0361dd6aa861'
+sha256sums=('545c410f75d629ac2ce2cd8813c72104a9b935d0dd68f4c1fdbe9942239f7b84'
             '12cddfa8077e3f7c5c7d8bc445f27691072911d36e296ffe21281c6f4a0c1dd9')
 
 prepare() {
