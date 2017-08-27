@@ -2,16 +2,16 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 # Contributor: dongfengweixiao ( dongfengweixiao [at] hotmail [dot] com  )
 pkgname=ttf-inziu-iosevka
-pkgver=1.13.2
+pkgver=1.13.3
 pkgrel=1
 pkgdesc='A composite of Iosevka, M+ and Source Han Sans.'
 arch=('any')
-url='https://be5invis.github.io/Iosevka/'
+url='https://be5invis.github.io/Iosevka/inziu.html'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 source=("http://7xpdnl.dl1.z0.glb.clouddn.com/inziu-iosevka-${pkgver}.7z"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('e7bff840f03156733ccd0408f924899a1004c232dcce60d5c3f07573cc70a45b'
+sha256sums=('bb530d3cb51b851dc4f31f7167c39121cf596ed1f8f94328f6eeaf34d189cd5f'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
