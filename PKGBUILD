@@ -5,7 +5,7 @@
 
 pkgname=telegram-desktop-systemqt
 pkgver=1.1.19
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental build of Telegram Desktop (using system Qt)'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
@@ -24,7 +24,7 @@ source=(
     "GSL::git+https://github.com/Microsoft/GSL.git"
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
     "variant::git+https://github.com/mapbox/variant.git"
-    "telegramdesktop.desktop"
+    "telegram-desktop.desktop"
     "tg.protocol"
     "CMakeLists.inj"
     "tdesktop.patch"
@@ -76,7 +76,7 @@ package() {
     install -m755 "$srcdir/tdesktop/out/Release/Telegram" "$pkgdir/usr/bin/telegram-desktop"
 
     install -d "$pkgdir/usr/share/applications"
-    install -m644 "$srcdir/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
+    install -m644 "$srcdir/telegram-desktop.desktop" "$pkgdir/usr/share/applications/telegram-desktop.desktop"
 
     install -d "$pkgdir/usr/share/kservices5"
     install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
