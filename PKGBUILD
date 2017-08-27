@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 pkgname=python-language-server
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="An implementation of the Language Server Protocol for Python"
 arch=("any")
@@ -12,9 +12,9 @@ depends=("python" "python-json-rpc" "python-future" "python-jedi" "python-pycode
 makedepends=("python-setuptools")  
 conflicts=("${pkgname}" "${pkgname}-git")
 # install=$pkgname.install
-source=("https://pypi.python.org/packages/60/8e/f2b7d6b62c3e6abc0de15e07b5ad6549e50d53dd2c008f6d16ae8bd2c761/python-language-server-0.4.1.tar.gz")
-md5sums=('df48c624fc2c07dbb3eb049316833f9f')
-sha256sums=('671b824352469f9289f396aa134d12faba0a21e2eb04ec7b1315c2b408158cfa')
+source=("https://github.com/palantir/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('c70a462114837ca4517172305be93aaa')
+sha256sums=('106a6e2f8bb538073be04a87c44cfaca1cdaedec448807c3af13e02cc627e554')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
