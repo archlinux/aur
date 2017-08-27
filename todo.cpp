@@ -133,8 +133,16 @@ int main(int argc, char *argv[]) {
     int action = -1;
     int startArgv = 2;
 
-    if( argc > 1 )
-        if( isalpha(argv[1][0]) && toupper(argv[1][0]) == argv[1][0] ) {
+    if( argc > 1 ) {
+        // Si la première lettre est une majuscule
+        bool ok = false;
+        const char* accents[] = {"É", "È", "Ê","À","Â","Ç"};
+        for(size_t t = 0 ; t < sizeof accents /sizeof *accents ; t++) {
+            if( strncmp(argv[1], accents[t], 2 ) == 0 ) {
+                ok = true;
+            }
+        }
+        if( (isalpha(argv[1][0]) && toupper(argv[1][0]) == argv[1][0]) || ok ) {
             action = 1;
             startArgv = 1;
         }else if( !strcmp( argv[1], "show") ) {
