@@ -4,14 +4,14 @@
 
 pkgname=python-dask
 _pkgname=dask
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="Minimal task scheduling abstraction"
 arch=('any')
 url="https://github.com/dask/dask"
 license=('BSD')
 depends=('python' 'python-numpy' 'python-scipy' 'python-pandas' 'python-toolz' 'python-cloudpickle' 'python-partd>=0.3.8' )
-checkdepends=('python-bcolz' 'python-cachey' 'python-graphviz' 'python-sparse' 'python-pytest')
+checkdepends=('ipython' 'python-bcolz' 'python-cachey' 'python-graphviz' 'python-sparse' 'python-pytest')
 optdepends=('python-bcolz'
   'python-bokeh'
   'python-cachey'
@@ -23,7 +23,7 @@ optdepends=('python-bcolz'
   'python-s3fs: S3 support')
 makedepends=('python-setuptools')
 source=("https://github.com/dask/dask/archive/$pkgver.tar.gz")
-sha256sums=('29f33bb01d7c63540f2f6929bbb6c2d9198755bf6d6066dea19c2ee710f2575c')
+sha256sums=('f06a8a677c26defea0df48c986509e95d3a6026cfde28f00a663f1f4c797df76')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
