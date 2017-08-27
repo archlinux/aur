@@ -2,7 +2,7 @@
 # Contributor: Daniel Bomar <dbdaniel42@gmail.com>
 pkgname=libjson-rpc-cpp
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ framework for json-rpc 1.0 and 2.0"
 arch=('i686' 'x86_64')
 url="https://github.com/cinemast/libjson-rpc-cpp"
@@ -24,7 +24,7 @@ build() {
   mkdir -p $pkgname-$pkgver/build
   cd $pkgname-$pkgver/build
   msg2 "Invoking cmake"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_STATIC_LIBS=TRUE -DCOMPILE_TESTS=FALSE  -DCOMPILE_EXAMPLES=FALSE ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -DBUILD_STATIC_LIBS=TRUE -DCOMPILE_TESTS=FALSE  -DCOMPILE_EXAMPLES=FALSE ..
   msg2 "Building the framework"
   make
 }
