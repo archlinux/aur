@@ -1,0 +1,18 @@
+pkgbase = python-genanki-git
+	pkgdesc = Generate Anki decks programmatically
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://github.com/kerrickstaley/genanki
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = python
+	depends = python-cached-property
+	depends = python-frozendict
+	depends = python-pystache
+	depends = python-yaml
+	depends = python-setuptools
+	provides = genanki
+
+pkgname = python-genanki-git
+
