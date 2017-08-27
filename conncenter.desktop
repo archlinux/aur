@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Citrix Connection Centre
+NoDisplay=false
+Categories=Application;Network;X-Red-Hat-Base;X-SuSE-Core-Internet;
+Icon=/opt/Citrix/ICAClient/icons/manager.png
+TryExec=/opt/Citrix/ICAClient/util/conncenter
+Exec=/opt/Citrix/ICAClient/util/conncenter --icaroot /opt/Citrix/ICAClient

@@ -1,0 +1,20 @@
+post_install() {
+    instdir="/opt/Citrix/ICAClient"
+    tmpdir="/tmp"
+
+    # symlink certificates
+    [ -d /usr/share/ca-certificates/mozilla ] && ln -s /usr/share/ca-certificates/mozilla/* ${instdir}/keystore/cacerts/ > /dev/null 2>&1 
+    echo "" 
+    echo "CA certs SymLinked for SSL support."
+    echo "All done."
+
+    echo -e "\e[1;31m\nYou have to create '\e[1;33m\$HOME/.ICAClient/cache\e[1;31m' for each user who uses this program and then populate it with the appropriate ini files.  Copy paste the below to do this easily:\n"
+    echo -e "\e[1;39mmkdir -p \$HOME/.ICAClient/cache"
+    echo -e "cp ${instdir}/config/{All_Regions,Trusted_Region,Unknown_Region,canonicalization,regions}.ini \$HOME/.ICAClient/\n"
+    echo -e "\e[0m"
+
+    # add mimetype handler
+    update-desktop-database -q
+}
+
+post_upgrade()  { post_install; }
