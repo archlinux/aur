@@ -3,7 +3,7 @@
 _pkgname=uget
 pkgname="${_pkgname}-beta"
 pkgver=2.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ download manager featuring download classification and HTML import"
 arch=('i686' 'x86_64')
 url="http://ugetdm.com/"
@@ -13,8 +13,8 @@ makedepends=('intltool')
 optdepends=('aria2: alternative backend')
 provides=('uget')
 conflicts=('uget')
-source=("https://downloads.sourceforge.net/project/urlget/uget%20%28developing%29/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('977cefb743240a23f5e10a409a2ec66d0a455ec74c9e6407968b7a1dec728791')
+source=("https://downloads.sourceforge.net/project/urlget/uget%20%28developing%29/${pkgver}/${_pkgname}-${pkgver}-1.tar.gz")
+sha256sums=('339f899f5b0a434350b77008ef45d04c61ed9fcbcd14a1b7b9892b2833661da2')
 
 build() {
   cd "${_pkgname}-${pkgver}"
