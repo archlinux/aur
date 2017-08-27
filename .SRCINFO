@@ -1,0 +1,18 @@
+pkgbase = clojure-install
+	pkgdesc = The Clojure Programming Language
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://clojure.org/
+	arch = any
+	license = CPL
+	makedepends = java-environment
+	makedepends = sed
+	depends = java-environment
+	depends = bash
+	optdepends = rlwrap: friendlier shell with readline support
+	conflicts = clojure
+	source = https://download.clojure.org/install/brew/install-clj-1.8.0.119.tar.gz
+	sha256sums = 7e272d3ae13d97c8fb6848d6851112e88995958391f40a1787bd82b6222d779e
+
+pkgname = clojure-install
+
