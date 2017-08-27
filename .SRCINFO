@@ -1,0 +1,33 @@
+pkgbase = freeablo-git
+	pkgdesc = Modern, FLOSS reimplementation of the Diablo 1 game engine. GIT-Version *(Engine and Game Data Installer)*
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://freeablo.org/
+	install = freeablo.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = boost
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = zlib
+	depends = enet
+	depends = bzip2
+	depends = boost-libs
+	depends = librocket
+	depends = libgl
+	depends = qt5-base
+	source = freeablo-git::git+https://github.com/wheybags/freeablo.git
+	source = freeablo.bin
+	source = freeablo.desktop
+	source = freeablo_icon.svg
+	source = https://www.dropbox.com/s/vwgykhaeexyaap7/diablo_windows_0g1w.tar.xz?dl=0
+	sha256sums = SKIP
+	sha256sums = f2e18160b2ae42c14795d33c4c84d4dfe1234d96f08c4878cd2a53f8ffb96f1b
+	sha256sums = 95ea4757e1f373e54cf899d6bef6efcf28798e6eca30d904e3710963cdd856df
+	sha256sums = abdd045f931a51ddbac3ac2f5bed6564e76865dd5f57869f65bfa06779bb3869
+	sha256sums = 09b34d487656ad783f02c72e5e129e0785286bdd049120057b941cc07709c07d
+
+pkgname = freeablo-git
+

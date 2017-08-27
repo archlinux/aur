@@ -1,0 +1,12 @@
+
+post_install() {
+  #echo "Additional setup is needed, as freeablo requires the files from Diablo Game Disc"
+  #echo "You also need to put the files 'DIABDAT.MPQ' and 'Diablo.exe' in '('/usr/share/freeablo/resources')'"
+  echo "Game Data, Was installed to '('/usr/share/freeablo/resources')'"
+  echo ""
+  #echo "A installer will be created at a later date..."
+}
+
+post_upgrade() {
+  post_install
+}

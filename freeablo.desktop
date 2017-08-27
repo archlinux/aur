@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Freeablo
+Categories=Qt;KDE;Game
+Exec=freeablo
+Icon=freeablo_icon.svg
+Terminal=false
+StartupNotify=false
