@@ -1,0 +1,17 @@
+pkgbase = bullettrain-git
+	pkgdesc = Bullettrain prompt builder written in Go
+	pkgver = r69.cb485a7
+	pkgrel = 1
+	url = https://github.com/bullettrain-sh
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = godep
+	depends = nerd-fonts-complete
+	conflicts = bullettrain
+	source = git+https://github.com/bullettrain-sh/bullettrain-go-core.git
+	sha256sums = SKIP
+
+pkgname = bullettrain-git
+
