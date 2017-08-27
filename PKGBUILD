@@ -3,14 +3,13 @@
 pkgbase=python-u2flib-server
 pkgname=(python-u2flib-server python2-u2flib-server)
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python based U2F server library"
 arch=('any')
 url="https://github.com/Yubico/python-u2lib-server"
 license=('BSD')
 source=("https://files.pythonhosted.org/packages/source/${pkgbase::1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
 md5sums=('c87bc9984adf96e97aa35323dfc1edd4')
-makedepends=('python2-six' 'python2-cryptography>=1.2' 'python2-enum34')
 
 prepare() {
   cp -a "$srcdir/$pkgbase-$pkgver"{,-py2}
