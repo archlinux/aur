@@ -1,7 +1,7 @@
 pkgbase = linux-amd-staging-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
 	pkgver = 4.12.r1375.g2a69a4b35621
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
 	license = GPL2
@@ -32,7 +32,7 @@ pkgname = linux-amd-staging-git
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	provides = linux
-	backup = etc/mkinitcpio.d/linux-amd-staging-git.preset
+	backup = etc/mkinitcpio.d/linux.preset
 
 pkgname = linux-amd-staging-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel with AMDGPU DC patches

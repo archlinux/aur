@@ -9,7 +9,7 @@ _kernel_rel=4.12
 _branch=amd-staging-${_kernel_rel}
 _kernelname=${pkgbase#linux}
 pkgver=4.12.r1375.g2a69a4b35621
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
@@ -69,7 +69,7 @@ _package() {
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('linux')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup=("etc/mkinitcpio.d/linux.preset")
   install=linux.install
 
   cd "${_srcname}"
@@ -94,7 +94,7 @@ _package() {
     -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   sed \
     -e "1s|'linux.*'|'${pkgbase}'|" \
     -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
