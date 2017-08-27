@@ -25,7 +25,7 @@ validpgpkeys=(# Tom Stellard <tom@stellard.net> (.1 releases)
               # https://pgp.mit.edu/pks/lookup?op=get&search=0x8F0871F202119294
               11E521D646982372EB577A1F8F0871F202119294
               # Hans Wennborg <hans@chromium.org> (.0 releases)
-              # http://releases.llvm.org/3.8.0/hans-gpg-key.asc
+              # http://releases.llvm.org/4.0.0/hans-gpg-key.asc
               B6C8F98282B944E3B0D5C2530FC3042E345AD05D)
  
 prepare() {
