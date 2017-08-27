@@ -1,6 +1,6 @@
 pkgbase = cepl-git
 	pkgdesc = C11 (ISO/IEC 9899:2011) read–eval–print loop (REPL) currently supporting multiple compilers, readline key-bindings/tab-completion, variable tracking, and incremental undo.
-	pkgver = 3.0.0.r1.g09f7532
+	pkgver = 3.0.0.r2.gc8b399b
 	pkgrel = 1
 	url = https://github.com/alyptik/cepl
 	arch = i686
