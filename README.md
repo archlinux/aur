@@ -36,8 +36,8 @@ The patch also takes an argument for menu corners.
 
 **Issues/Quirks**
 
-- [ ] Docked windows have rounded corners.
-- [ ] Fullscreen windows have rounded corners.
+- [x] ~~Docked windows have rounded corners.~~
+- [x] ~~Fullscreen windows have rounded corners.~~
 
 
 ### Fix out of bounds
