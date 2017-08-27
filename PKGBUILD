@@ -6,7 +6,7 @@
 pkgname=android-ndk-beta
 _pkgname=${pkgname/-beta*/}
 pkgver=r15_beta2
-pkgrel=2
+pkgrel=3
 pkgdesc='Android C/C++ developer kit (beta)'
 arch=('x86_64')
 url='https://developer.android.com/ndk/'
@@ -19,7 +19,7 @@ optdepends=(
   'python: various helper scripts'
 )
 source=('android-ndk-beta.sh' "https://dl.google.com/android/repository/${_pkgname}-${pkgver/_/-}-linux-x86_64.zip")
-sha256sums=('a6b0dae2d8016af6b731bc45a78489cdb3aab5d332c0395188887ee369aea5f5'
+sha256sums=('cadefdccf5da51dc56156fbc41945a2c27d913d12a043b32f47e15f253b0943d'
             'f986c23b6f102a6e115507e233a2d8b471db4a3e7e5a8b5c9b6d51e7e66109c4')
 
 package() {

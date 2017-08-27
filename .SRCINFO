@@ -1,7 +1,7 @@
 pkgbase = android-ndk-beta
 	pkgdesc = Android C/C++ developer kit (beta)
 	pkgver = r15_beta2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.android.com/ndk/
 	install = android-ndk-beta.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = android-ndk-beta
 	backup = etc/profile.d/android-ndk-beta.sh
 	source = android-ndk-beta.sh
 	source = https://dl.google.com/android/repository/android-ndk-r15-beta2-linux-x86_64.zip
-	sha256sums = a6b0dae2d8016af6b731bc45a78489cdb3aab5d332c0395188887ee369aea5f5
+	sha256sums = cadefdccf5da51dc56156fbc41945a2c27d913d12a043b32f47e15f253b0943d
 	sha256sums = f986c23b6f102a6e115507e233a2d8b471db4a3e7e5a8b5c9b6d51e7e66109c4
 
 pkgname = android-ndk-beta
