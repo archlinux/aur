@@ -1,24 +1,22 @@
-# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
+# Maintainer: Michael Straube <straubem@gmx.de>
+# Contributor: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 # Contributor: David Zaragoza <david@zaragoza.com.ve>
 
 pkgname=nikki
 pkgver=1.0
-pkgrel=5
-pkgdesc="Nikki and the robots. A game where you try to cross those evil plans on behalf of a secret organization."
-arch=("i686" "x86_64")
-url="http://abandon"
-license=("LGPL" "CCPL")
-depends=("libsndfile" "openal" "qt4")
-source=("http://dl.gamux.org/game/download/games/i386/clientgame/nikki/$pkgname.tar.gz")
-sha256sums=("387bfa1d5e602686539eb2371d9d1bdeea13f263f631b26f0af8061e8daab4bb")
-
-if [ "$CARCH" == "x86_64" ]; then
-  source=("http://dl.gamux.org/game/download/games/i386/clientgame/nikki/$pkgname-64.tar.gz")
-  sha256sums=("6d642c03959afc4bcd6d846c61d80eae27d58dded5a957858d18ca7d7d5c9df7")
-fi
-
-options=("!strip")
+pkgrel=6
+pkgdesc="Nikki and the Robots platformer game"
+arch=('i686' 'x86_64')
+url="https://github.com/nikki-and-the-robots"
+license=('LGPL' 'CCPL')
+depends=('libsndfile' 'openal' 'qt4')
+optdepends=('nikki-levels-git: community levels')
+options=('!strip')
+source_i686=("https://github.com/nikki-and-the-robots/nikki/releases/download/$pkgver/nikki-$pkgver-marley-linux-i386.tar.gz")
+source_x86_64=("https://github.com/nikki-and-the-robots/nikki/releases/download/$pkgver/nikki-$pkgver-marley-linux-x86_64.tar.gz")
+sha256sums_i686=('387bfa1d5e602686539eb2371d9d1bdeea13f263f631b26f0af8061e8daab4bb')
+sha256sums_x86_64=('6d642c03959afc4bcd6d846c61d80eae27d58dded5a957858d18ca7d7d5c9df7')
 
 package() {
   cd nikki

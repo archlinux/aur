@@ -1,8 +1,8 @@
 pkgbase = nikki
-	pkgdesc = Nikki and the robots. A game where you try to cross those evil plans on behalf of a secret organization.
+	pkgdesc = Nikki and the Robots platformer game
 	pkgver = 1.0
-	pkgrel = 5
-	url = http://abandon
+	pkgrel = 6
+	url = https://github.com/nikki-and-the-robots
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -10,9 +10,12 @@ pkgbase = nikki
 	depends = libsndfile
 	depends = openal
 	depends = qt4
+	optdepends = nikki-levels-git: community levels
 	options = !strip
-	source = http://dl.gamux.org/game/download/games/i386/clientgame/nikki/nikki.tar.gz
-	sha256sums = 387bfa1d5e602686539eb2371d9d1bdeea13f263f631b26f0af8061e8daab4bb
+	source_i686 = https://github.com/nikki-and-the-robots/nikki/releases/download/1.0/nikki-1.0-marley-linux-i386.tar.gz
+	sha256sums_i686 = 387bfa1d5e602686539eb2371d9d1bdeea13f263f631b26f0af8061e8daab4bb
+	source_x86_64 = https://github.com/nikki-and-the-robots/nikki/releases/download/1.0/nikki-1.0-marley-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6d642c03959afc4bcd6d846c61d80eae27d58dded5a957858d18ca7d7d5c9df7
 
 pkgname = nikki
 
