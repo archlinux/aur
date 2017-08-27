@@ -1,0 +1,15 @@
+pkgbase = raidar
+	pkgdesc = RAIDar is used to discover NETGEAR Storage on your local network.
+	pkgver = 6.1
+	pkgrel = 1
+	url = http://kb.netgear.com/20684/ReadyNAS-Downloads
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = java-runtime
+	source = http://www.readynas.com/download/RAIDar/raidar_6.1-1.1_amd64.deb
+	md5sums = 40cfb3a54629335f319f2fedc9d1accf
+
+pkgname = raidar
+
