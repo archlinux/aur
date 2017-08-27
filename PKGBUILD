@@ -1,6 +1,6 @@
 # Maintainer: Moses Miller <Majora320 at gmail dot com>
 pkgname=jelly-git
-pkgver=r253.4f3a7ea
+pkgver=r260.8f1a29f
 pkgrel=2
 pkgdesc="An esoratic programming language"
 arch=('any')
