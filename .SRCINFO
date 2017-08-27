@@ -1,0 +1,15 @@
+pkgbase = nikki-levels-git
+	pkgdesc = Community levels for Nikki and the Robots
+	pkgver = r4.e654797
+	pkgrel = 1
+	url = https://github.com/nikki-and-the-robots
+	arch = any
+	license = CCPL
+	makedepends = git
+	depends = nikki
+	options = !strip
+	source = git+https://github.com/nikki-and-the-robots/nikki-levels.git
+	sha256sums = SKIP
+
+pkgname = nikki-levels-git
+
