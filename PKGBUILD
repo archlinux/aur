@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=todoman
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="A simple CalDav-based todo manager."
 arch=("any")
@@ -9,16 +9,14 @@ url="https://github.com/pimutils/todoman"
 license=('MIT')
 depends=(python-icalendar python-urwid python-xdg python-parsedatetime
          python-atomicwrites python-click python-setuptools-scm
-         python-configobj python-dateutil python-click-log python-tabulate
-         python-humanize)
+         python-configobj python-dateutil python-tabulate python-humanize)
 optdepends=('python-click-repl-git: the repl command.')
 checkdepends=('python-pytest' 'python-hypothesis' 'python-pytest-runner'
               'python-freezegun')
-source=("https://pypi.io/packages/source/t/$pkgname/$pkgname-$pkgver.tar.gz"
-        "https://raw.githubusercontent.com/pimutils/$pkgname/v$pkgver/bin/todo"
-        )
+source=("https://github.com/pimutils/todoman/releases/download/v${pkgver}/todoman-${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/pimutils/$pkgname/v$pkgver/bin/todo")
 noextract=("$pkgname-$pkgver-py3-none-any.whl")
-md5sums=('5d6d9414188b218384419b1f5b610d53'
+md5sums=('8c8f4d61a67b883aa5775e2e02e9bb7c'
          '929003485379647ca3967f2b395dd6f7')
 
 build() {
