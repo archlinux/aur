@@ -1,4 +1,5 @@
-# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Contributor: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 #######################################################################
 # CAVEAT LECTOR
@@ -43,7 +44,7 @@ DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs25-git
-pkgver=25.2.125465
+pkgver=25.2.50.125475
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 maintenance branch."
 arch=('i686' 'x86_64')
@@ -77,12 +78,11 @@ if [[ $DOCS_PDF = "YES" ]]; then makedepends+=('texlive-core'); fi
 #######################################################################
 conflicts=('emacs')
 provides=('emacs')
-source=("$pkgname::git://git.savannah.gnu.org/emacs.git#branch=emacs-25")
+source=("emacs::git://git.savannah.gnu.org/emacs.git#branch=emacs-25")
 md5sums=('SKIP')
-#source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git#branch=emacs-25")
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd emacs
   ##printf "%s.r%s" \
   printf "%s.%s" \
     "$(grep AC_INIT configure.ac | \
@@ -94,13 +94,13 @@ pkgver() {
 # There is no need to run autogen.sh after first checkout.
 # Doing so breaks incremental compilation.
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd emacs
 
   [[ -x configure ]] || ./autogen.sh
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd emacs
 
   # Avoid hardening-wrapper (taken from emacs-pretest, thanks to Thomas Jost).
   export PATH=$(echo "$PATH" | sed 's!/usr/lib/hardening-wrapper/bin!!g')
@@ -150,7 +150,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd emacs
 
   make DESTDIR="$pkgdir/" install
 
