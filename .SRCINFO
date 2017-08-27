@@ -14,7 +14,7 @@ pkgbase = openjk-launcher
 	provides = openjk-launcher
 	conflicts = openjk-launcher
 	options = !emptydirs
-	source = git://github.com/gort818/openjk-launcher.git
+	source = https://github.com/gort818/openjk-launcher.git
 	sha1sums = SKIP
 
 pkgname = openjk-launcher
