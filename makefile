@@ -23,8 +23,9 @@ mrpropest: mrproper
 
 install: todo
 	@if [ `id -u` == "0" ] ; then cp -f todo /usr/bin/todo ; else \
-		if which sudo > /dev/null ; then sudo cp -f todo /usr/bin/todo ; else \
-			@echo must be run by superuser ;\
+		if which sudo 1> /dev/null  2> /dev/null ; then sudo cp -f todo /usr/bin/todo ; else \
+			echo must be run by superuser ;\
+			false ;\
 		fi \
 	fi
 	@echo 'Installation success'
