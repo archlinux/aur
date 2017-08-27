@@ -6,8 +6,6 @@ post_install() {
 	echo "==> Syntax: debtap [option] package_filename"
 	echo
 	echo "==> Run \"debtap -h\" for help"
-
-	mv /var/cache/debtap/debian-packages-files /var/cache/debtap/debian-main-packages-files 2> /dev/null
 }
 
 post_upgrade() {
