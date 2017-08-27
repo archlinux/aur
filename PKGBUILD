@@ -38,7 +38,7 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir" --optimize=1
 
   install -Dm 644 todoman.conf.sample \
     "$pkgdir/usr/share/doc/todoman/examples/todoman.conf"
