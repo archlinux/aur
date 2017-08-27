@@ -4,7 +4,7 @@
 pkgname=rbdoom-3-bfg
 _commit=e5b3c697d23b9a90c654181162fe476c8c4f90d9
 pkgver=1.1.0preview3.r98.e5b3c697
-pkgrel=1
+pkgrel=2
 pkgdesc="Doom 3 BFG source code (Robert Beckebans repo)."
 arch=('i686' 'x86_64')
 url="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
@@ -13,6 +13,7 @@ groups=('games')
 depends=(doom3bfg-data ffmpeg glew libpng openal sdl2)
 makedepends=(cmake rapidjson zip)
 conflicts=('rbdoom3-bfg-git')
+install=rbdoom-3-bfg.install
 optdepends=('alsa-plugins: pulseaudio-support'
             'libpulse: pulseaudio support')
 source=("https://github.com/RobertBeckebans/RBDOOM-3-BFG/archive/${_commit}.tar.gz"
