@@ -1,7 +1,7 @@
 # Maintainer: Johannes Janosovits <johannes@walnutempire.de>
 pkgname=ttf-maven-pro
-pkgver=2.002
-pkgrel=2
+pkgver=2.003
+pkgrel=3
 pkgdesc='Sans-serif typeface from Google Fonts'
 arch=('any')
 url='https://fonts.google.com/specimen/Maven+Pro'
@@ -12,10 +12,10 @@ source=('https://raw.githubusercontent.com/google/fonts/master/ofl/mavenpro/Mave
         'https://raw.githubusercontent.com/google/fonts/master/ofl/mavenpro/MavenPro-Bold.ttf'
         'https://raw.githubusercontent.com/google/fonts/master/ofl/mavenpro/MavenPro-Medium.ttf'
         'https://raw.githubusercontent.com/google/fonts/master/ofl/mavenpro/MavenPro-Regular.ttf')
-sha256sums=('a1b53a4592d1ce74c2300a5be0f7029dabadd3b4f40fe0d69ebed393fb091043'
-            'd727d0b1a6c72cd2766e11fbaf1d4fa3c2052abf655ae4d80f87fee8be2249b0'
-            '904a686385a67ae4832b9864d663b28464d613bd54cd2d0655440a4f574228e2'
-            'bf418d6ad32714865b5578038ed90daac4327599f3dd262361584eb05ff54790')
+sha256sums=('b46bec61d4507bd08fdda0bf61a07b9241303a13b77be559aff464a93d521dba'
+            'e82c642ee161c25efa6fc56bf9612a2ddf655900cb85bb85c9c40af02b67108b'
+            '37f1e21c1280b56e5274ca9ac990a1f3b446461047e72ba96d95fef3ea46fbb6'
+            '347bf2e1fd448c075e39601109ba2fb46a624e7151c9d7f160edb7a38b7e7351')
 
 package() {
   install -dm 755 "${pkgdir}"/usr/share/fonts/TTF
