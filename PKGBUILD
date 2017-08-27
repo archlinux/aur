@@ -2,7 +2,7 @@
 # Contributor: Tobias Luther <tobias [at] tonstrom [dot] de>
 
 pkgname=idjc-git
-pkgver=882.7e4ff89
+pkgver=898.4b1539c
 pkgrel=1
 pkgdesc="Powerful client for individuals interested in streaming live radio shows"
 arch=(i686 x86_64)
@@ -28,7 +28,7 @@ depends=('dbus-python'
 makedepends=('git')
 optdepends=('mysql-python: Ampache and Prokyon 3 support')
 conflicts=('idjc')
-source=('idjc::git://idjc.git.sourceforge.net/gitroot/idjc/idjc')
+source=('idjc::git+https://git.code.sf.net/p/idjc/code')
 
 license=('GPL3')
 
