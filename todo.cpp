@@ -111,6 +111,22 @@ ostream& operator<<( ostream& os, const todo& todoTask)
     return os;
 }
 
+template<typename Functor>
+void modifyTODO( vector<todo>& listTodo, int argc, char* argv[], Functor modif  ) {
+    for (auto it = begin(listTodo); it != end(listTodo); ++it) {
+    bool active = true;
+
+    for( int i = 0 ; i < argc && active ; i++ )
+        if( it->str.find(argv[i]) == string::npos)
+            active = false;
+        if( active ) {
+            cout << " # " << it->str << endl;
+            modif(*it);
+        }
+    }
+}
+
+
 int main(int argc, char *argv[]) {
     color = true;
     vector<todo> listTodo;
@@ -217,29 +233,13 @@ int main(int argc, char *argv[]) {
                     break;
                 }
             case 3:  // check
-                for (auto it = begin(listTodo); it != end(listTodo); ++it) {
-                    bool active = true;
-                    for( int i = 2 ; i < argc && active ; i++ )
-                        if( it->str.find(argv[i]) == string::npos)
-                            active = false;
-                    if( active ) {
-                        cout << " # " << it->str << endl;
-                        it->etat = DONE_STATE;
-                    }
-                }
-
+                modifyTODO( listTodo, argc-2, argv+2, [](todo& it) { it.etat = DONE_STATE; });
                 break;
-            case 4: // set
-                for (auto it = begin(listTodo); it != end(listTodo); ++it) {
-                    bool active = true;
-                    for( int i = 3 ; i < argc && active ; i++ )
-                        if( it->str.find(argv[i]) == string::npos)
-                            active = false;
-                    if( active ) {
-                        cout << " # " << it->str << endl;
-                        it->priorite = atoi(argv[2]);
+                case 4: // set
+                    {
+                        int priority = atoi(argv[2]);
+                        modifyTODO( listTodo, argc-3, argv+3, [priority](todo& it) { it.priorite = priority; });
                     }
-                }
                 break;
             case 5:  // s 
                 for (auto it = begin(listTodo); it != end(listTodo); ++it)
@@ -268,40 +268,13 @@ int main(int argc, char *argv[]) {
                         cout << *it;
                 return 0;
             case 9:  // uncheck
-                for (auto it = begin(listTodo); it != end(listTodo); ++it) {
-                    bool active = true;
-                    for( int i = 2 ; i < argc && active ; i++ )
-                        if( it->str.find(argv[i]) == string::npos)
-                            active = false;
-                    if( active ) {
-                        cout << " # " << it->str << endl;
-                        it->etat = TODO_STATE;
-                    }
-                }
+                modifyTODO( listTodo, argc-2, argv+2, [](todo& it) { it.etat = TODO_STATE; });
                 break;
             case 10:  // standby
-                for (auto it = begin(listTodo); it != end(listTodo); ++it) {
-                    bool active = true;
-                    for( int i = 2 ; i < argc && active ; i++ )
-                        if( it->str.find(argv[i]) == string::npos)
-                            active = false;
-                    if( active ) {
-                        cout << " # " << it->str << endl;
-                        it->etat = STANDBY_STATE;
-                    }
-                }
+                modifyTODO( listTodo, argc-2, argv+2, [](todo& it) { it.etat = STANDBY_STATE; });
                 break;
             case 11:  // miss
-                for (auto it = begin(listTodo); it != end(listTodo); ++it) {
-                    bool active = true;
-                    for( int i = 2 ; i < argc && active ; i++ )
-                        if( it->str.find(argv[i]) == string::npos)
-                            active = false;
-                    if( active ) {
-                        cout << " # " << it->str << endl;
-                        it->etat = MISSED_STATE;
-                    }
-                }
+                modifyTODO( listTodo, argc-2, argv+2, [](todo& it) { it.etat = MISSED_STATE; });
                 break;
             case 12: // Edit
                 for (auto it = begin(listTodo); it != end(listTodo); ++it) {
