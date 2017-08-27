@@ -12,7 +12,7 @@
 pkgname=openbox-patched
 _pkgname=openbox
 pkgver=3.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Openbox with Rounded Corners patch and anything else I deem useful.'
 arch=('i686' 'x86_64')
 url='http://openbox.org'
