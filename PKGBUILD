@@ -1,5 +1,5 @@
 pkgname=sdformat
-pkgver=5.0.0
+pkgver=5.2.0
 pkgrel=2
 pkgdesc="SDF Converter for gazebo"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ depends=('boost' 'tinyxml' 'ignition-math>=3', 'python-psutil')
 makedepends=('cmake' 'doxygen' 'ruby>=1.9.1')
 
 source=("http://osrf-distributions.s3.amazonaws.com/${pkgname}/releases/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('d3fb29392a0b9878eaaf7c9aec144f5ca65bba4649bda15bd5d4603d7bb58f10')
+sha256sums=('b7ba88275c28c3c26fe245b1ac4aad7337c2fd53d6c1e1c94c04f359f2309d51')
 
 prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
