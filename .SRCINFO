@@ -1,6 +1,6 @@
 pkgbase = poseidon-browser-git
 	pkgdesc = A fast, minimal and lightweight browser.
-	pkgver = r183.5d84e7f
+	pkgver = r185.30623f9
 	pkgrel = 1
 	url = https://github.com/sidus-dev/poseidon
 	arch = any
