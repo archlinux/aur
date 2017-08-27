@@ -181,7 +181,7 @@ int main(int argc, char *argv[]) {
                                              || !strcmp( argv[1], "e")  ) {
             action = 12;
         }else {}
-        else
+    } else
             action = 0;
     if( action == -1 ) {
         cout << USAGE_STRING << endl;
