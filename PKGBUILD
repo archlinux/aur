@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-data-chaps-trains-pid
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2017_8_10
+pkgver=2017_8_24
 pkgrel=1
 pkgdesc="Timetable data for the timetable search engines by CHAPS: Trains in Praha public transport reagion (PID)."
 arch=(any)
