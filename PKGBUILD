@@ -3,14 +3,13 @@
 pkgbase=u2fval
 pkgname=(python-${pkgbase} python2-${pkgbase})
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python based U2F Validation Server"
 arch=('any')
 url="https://github.com/Yubico/u2fval"
 license=('BSD')
 source=("https://files.pythonhosted.org/packages/source/${pkgbase::1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
 md5sums=('007eb888b7e0576c82fd221f5af60b17')
-makedepends=('python2-flask' 'python2-flask-sqlalchemy' 'python2-u2flib-server')
 
 prepare() {
   cp -a "$srcdir/$pkgbase-$pkgver"{,-py2}
