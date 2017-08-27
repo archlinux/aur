@@ -4,7 +4,7 @@
 
 _pkgname=ttf-timetable
 pkgname="${_pkgname}-latest"
-pkgver=1.351.r20170526
+pkgver=1.352.r20170526
 pkgrel=1
 pkgdesc="Font with train timetable symbols, used by the offline timetable by CHAPS (IDOS, Timetable-Browser) or INPROP (CP, ELIS) (also retailed by České Dráhy or ŽSR)."
 arch=('any')
