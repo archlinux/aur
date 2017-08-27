@@ -1,28 +1,16 @@
 pkgbase = bullettrain
 	pkgdesc = Bullettrain prompt builder written in Go
 	pkgver = 0.5beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bullettrain-sh
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = go
-	makedepends = godep
 	depends = nerd-fonts-complete
-	source = bullettrain-go-core.tar.gz::https://codeload.github.com/bullettrain-sh/bullettrain-go-core/tar.gz/v0.5-beta
-	source = bullettrain-go-git.tar.gz::https://codeload.github.com/bullettrain-sh/bullettrain-go-git/tar.gz/v0.5
-	source = bullettrain-go-golang.tar.gz::https://codeload.github.com/bullettrain-sh/bullettrain-go-golang/tar.gz/v0.5
-	source = bullettrain-go-nodejs.tar.gz::https://codeload.github.com/bullettrain-sh/bullettrain-go-nodejs/tar.gz/v0.5
-	source = bullettrain-go-php.tar.gz::https://codeload.github.com/bullettrain-sh/bullettrain-go-php/tar.gz/v0.5
-	source = bullettrain-go-python.tar.gz::https://codeload.github.com/bullettrain-sh/bullettrain-go-python/tar.gz/v0.5
-	source = bullettrain-go-ruby.tar.gz::https://codeload.github.com/bullettrain-sh/bullettrain-go-ruby/tar.gz/v0.5
-	sha256sums = 5754f34fabf1ae33192de25c6740d397b03aa5ebc359be014f977cbf7a2e3e47
-	sha256sums = 720122e3b587029bf760b3f9ab23f201bfb20ba2717989d57dabbcf591ad1b77
-	sha256sums = 17f601268cf634ebc34dba08df10792342a62e8c7be04134944f9ac8188ac956
-	sha256sums = 43f6b0fdea1912a3cb12e37878ca08139b875ff1117fd4b68ec1729345fd7bd4
-	sha256sums = 52c8b44199f35f179467d887bf58b12efb42b6bbde50805af94c201de1cd6809
-	sha256sums = 4eaea5eafa2b8d2dfd299f65e116a9e59dcc03fcb411f133eb3b0cc81ef9f198
-	sha256sums = 3ed92c63d6f012e5ffbd4b5428d24276658857a9e46f2fe99134c108fadf1141
+	source_i686 = bullettrain-i686::https://github.com/bullettrain-sh/bullettrain-go-core/releases/download/v0.5-beta/bullettrain.linux-386
+	sha256sums_i686 = 34d8b6b9d2f4e3c6833e7bed089db7ff97d5e05081d967a2132a6f1bc7adbbc2
+	source_x86_64 = bullettrain-x86_64::https://github.com/bullettrain-sh/bullettrain-go-core/releases/download/v0.5-beta/bullettrain.linux-amd64
+	sha256sums_x86_64 = 367fa7d00badd31c05dea19a9c8dee4be68fe1ce31311a8716c838762bcbe418
 
 pkgname = bullettrain
 
