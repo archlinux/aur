@@ -1,6 +1,6 @@
 pkgbase = cutelyst
 	pkgdesc = A Web Framework built on top of Qt, using the simple approach of Catalyst (Perl) framework.
-	pkgver = 1.5.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = http://cutelyst.org
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = cutelyst
 	depends = qt5-base
 	depends = uwsgi
 	depends = grantlee
-	source = https://github.com/cutelyst/cutelyst/archive/v1.5.0.tar.gz
-	md5sums = ea7c850f34f3bfbe810232abc2158c51
+	source = https://github.com/cutelyst/cutelyst/archive/v1.8.0.tar.gz
+	sha256sums = 2076b0c1eed5770f82b4d9a5dec24632856727d2894dc746f22bdc6f9d6eff71
 
 pkgname = cutelyst
 
