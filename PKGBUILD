@@ -1,22 +1,23 @@
 pkgname=mono-alpha
 _pkgname=mono
-pkgver=5.0.0
-pkgrel=5
+pkgver=5.4.0.135
+pkgrel=6
 pkgdesc="Free implementation of the .NET platform including runtime and compiler. Alpha version."
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1' 'MPL' 'BSD' 'custom=MITX11' 'custom=MSPL')
 url="http://www.mono-project.com/"
-depends=('zlib' 'libgdiplus' 'sh' 'python' 'ca-certificates' 'mono')
-makedepends=('git')
-options=('!makeflags')
+depends=('zlib' 'libgdiplus' 'sh' 'python' 'ca-certificates')
+makedepends=('cmake' 'mono')
 provides=('monodoc' 'mono')
 conflicts=('monodoc' 'mono')
-source=('git://github.com/mono/mono.git#branch=2017-02' 'mono.binfmt.d')
-md5sums=('SKIP' 'b9ef8a65fea497acf176cca16c1e2402')
+source=(https://download.mono-project.com/sources/mono/${_pkgname}-${pkgver}.tar.bz2 
+	mono.binfmt.d)
+md5sums=('6d0a7cc40c5bb79724417d9974b346b9'
+         'b9ef8a65fea497acf176cca16c1e2402')
 install="mono.install"
 
 build() {
-  cd "${srcdir}"/"${_pkgname}"
+  cd "${srcdir}"/${_pkgname}-${pkgver}
 
     # Build mono
   ./autogen.sh --prefix=/usr  \
@@ -28,16 +29,16 @@ build() {
   make
 
   # Build jay
-  cd "${srcdir}"/"${_pkgname}"/mcs/jay
+  cd "${srcdir}"/${_pkgname}-${pkgver}/mcs/jay
   make
 }
 
 package() {
-  cd "${srcdir}"/"${_pkgname}"
+  cd "${srcdir}"/${_pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 
   # Install jay
-  pushd "${srcdir}"/"${_pkgname}"/mcs/jay
+  pushd "${srcdir}"/${_pkgname}-${pkgver}/mcs/jay
   make DESTDIR="${pkgdir}"    \
     prefix=/usr         \
     INSTALL=../../install-sh  \
