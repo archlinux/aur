@@ -1,6 +1,6 @@
 pkgbase = numix-cinnamon-transparent-git
 	pkgdesc = A Numix Theme for cinnamon; transparent and compact version
-	pkgver = r70.2ed7bd7
+	pkgver = r76.a80c226
 	pkgrel = 1
 	url = https://github.com/edoz90/numix-cinnamon-transparent
 	arch = any

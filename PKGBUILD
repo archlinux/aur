@@ -1,5 +1,5 @@
 pkgname='numix-cinnamon-transparent-git'
-pkgver=r70.2ed7bd7
+pkgver=r76.a80c226
 pkgrel=1
 pkgdesc="A Numix Theme for cinnamon; transparent and compact version "
 arch=('any')
