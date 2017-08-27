@@ -3,6 +3,3 @@
 !.SRCINFO
 !PKGBUILD
 !libva-vdpau-driver-0.7.4-fallback-x.patch
-!libva-vdpau-driver-0.7.4-glext-missing-definition.patch
-!libva-vdpau-driver-0.7.4-libvdpau-0.8.patch
-!libva-vdpau-driver-0.7.4-VAEncH264VUIBufferType.patch
