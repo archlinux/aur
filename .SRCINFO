@@ -1,0 +1,24 @@
+pkgbase = monero-gui-bin
+	pkgdesc = Monero: the secure, private, untraceable currency - release version (GUI Beta 2. Includes deaemon, wallet and miner)
+	pkgver = 0.10.3.1_beta2
+	pkgrel = 1
+	url = https://getmonero.org/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = qt5-declarative
+	depends = qt5-svg
+	provides = monerod=0.10.3.1_beta2
+	provides = monero-blockchain-export=0.10.3.1_beta2
+	provides = monero-blockchain-import=0.10.3.1_beta2
+	provides = monero-utils-deserialize=0.10.3.1_beta2
+	provides = monero-wallet-cli=0.10.3.1_beta2
+	provides = monero-wallet-rpc=0.10.3.1_beta2
+	conflicts = monero
+	source = https://downloads.getmonero.org/gui/linux64
+	source = monero-wallet-gui
+	sha256sums = 4915473265d58720fd8f019e536c2b7fb02648ab51a8087e84aa1e2434788452
+	sha256sums = 8b69aac7caae305676ccebc6dbfa803c9aadf8b82d2ca1ecf2d8302a0d79cfc9
+
+pkgname = monero-gui-bin
+
