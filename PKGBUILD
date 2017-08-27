@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=libshout-idjc-git
-pkgver=891.61ef6b1
+pkgver=898.4b1539c
 pkgrel=1
 pkgdesc="Libshout library plus some extensions for IDJC."
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ makedepends=('git')
 replaces=('libshout')
 conflicts=('libshout-idjc')
 options=('!emptydirs')
-source=('libshout-idjc::git://idjc.git.sourceforge.net/gitroot/idjc/idjc/')
+source=('libshout-idjc::git+https://git.code.sf.net/p/idjc/code')
 license=('LGPL')
 
 prepare() {
