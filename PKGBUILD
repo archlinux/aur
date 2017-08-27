@@ -3,7 +3,7 @@
 # Contributor: Daniel Bomar <dbdaniel42@gmail.com>
 
 pkgname=libjson-rpc-cpp-git
-pkgver=0.7.0.r4.g781ed34
+pkgver=1.0.0.r0.ge960bf5
 pkgrel=1
 pkgdesc="C++ framework for json-rpc 1.0 and 2.0"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ build() {
   mkdir -p ${pkgname%-git}/build
   cd ${pkgname%-git}/build
   msg2 "Invoking cmake"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCOMPILE_TESTS=FALSE -DCOMPILE_EXAMPLES=FALSE ..
   msg2 "Building the framework"
   make
 }
