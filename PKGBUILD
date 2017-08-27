@@ -2,14 +2,14 @@
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=('x86_64' 'i686')
 url="https://rspamd.com"
 license=('BSD')
 depends=('file' 'glib2' 'icu' 'libevent' 'libfann' 'luajit' 'sqlite')
-makedepends=('cmake' 'pkgconfig' 'ragel')
+makedepends=('cmake' 'pkg-config' 'ragel')
 
 backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/common.conf'
