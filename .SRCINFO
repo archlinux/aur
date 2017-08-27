@@ -1,6 +1,6 @@
 pkgbase = oomox-git
-	pkgdesc = Graphical application for generating different color variations of Numix theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes. Have a hack for HiDPI in gtk2.
-	pkgver = 1.2.8
+	pkgdesc = Graphical application for generating different color variations of Numix and Flat-Plat themes (GTK2, GTK3), gnome-colors and ArchDroid icon themes. Have a hack for HiDPI in gtk2.
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/actionless/oomox
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = oomox-git
 	license = GPLv3
 	depends = coreutils
 	depends = bash
+	depends = grep
+	depends = sed
 	depends = bc
 	depends = zip
 	depends = glib2
@@ -17,14 +19,17 @@ pkgbase = oomox-git
 	depends = gtk-engine-murrine
 	depends = gtk-engines
 	depends = polkit
+	depends = parallel
+	depends = optipng
+	depends = inkscape
+	depends = imagemagick
 	optdepends = xorg-xrdb: for the `xresources` theme
-	optdepends = imagemagick: for icon theme generation
-	optdepends = inkscape: for icon theme generation
-	optdepends = gnome-colors-common-icon-theme: for using the generated icon theme
 	optdepends = breeze-icons: more fallback icons
 	optdepends = gksu: for applying Spotify theme from GUI without polkit
 	source = git+https://github.com/actionless/oomox.git#branch=master
 	source = git+https://github.com/actionless/oomox-gtk-theme.git#branch=master
+	source = git+https://github.com/nana-4/Flat-Plat.git#branch=master
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
