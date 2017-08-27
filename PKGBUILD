@@ -1,15 +1,15 @@
 # Maintainer: alessandro (gort818) <gort818@gmail.com>
 
-pkgname=openjklauncher
+pkgname=openjk-launcher
 pkgver=0.2
 pkgrel=1
 pkgdesc='A launcher and installer for OpenJK the opensource engine for Star Wars Jedi Knight: Jedi Academy'
 arch=('i686' 'x86_64')
 license=('GPL3')
-url="https://github.com/gort818/${pkgname}"
+url="https://github.com/gort818/openjklauncher"
 depends=('python3' 'python-gobject' 'gtk3' 'python-requests' 'python-pygame')
 options=('!emptydirs')
-source=("git://github.com/gort818/${pkgname}.git")
+source=("git://github.com/gort818/openjklauncher.git")
 sha1sums=('SKIP')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
