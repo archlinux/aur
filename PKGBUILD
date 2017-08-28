@@ -2,7 +2,7 @@
 _lang=deu-fra
 _pkgname=dict-freedict-${_lang}
 pkgname=${_pkgname}-svn
-pkgver=r1629
+pkgver=r1693
 pkgrel=1
 pkgdesc="German -> French dictionary for dictd et al. from Freedict.org"
 arch=('any')
@@ -15,6 +15,12 @@ conflicts=(${_pkgname})
 install=${pkgname}.install
 source=("svn+https://github.com/freedict/fd-dictionaries/trunk/${_lang}")
 md5sums=('SKIP')
+
+prepare()
+{
+	cd ${_lang}
+	sed -i 's/\(10\)\(100\>.*1 mit 100 Nullen\)/\1\^\2/' deu-fra.tei
+}
 
 pkgver()
 {
