@@ -1,0 +1,16 @@
+pkgbase = libcloudproviders
+	pkgdesc = foo
+	pkgver = 0.1.0.r44.g94b55c6
+	pkgrel = 1
+	url = https://github.com/juliushaertl/libcloudproviders
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	depends = glib2>=2.51.2
+	provides = dbus-org.freedesktop.CloudProviderManager.service
+	source = git+https://gitlab.gnome.org/External/libcloudproviders.git
+	sha256sums = SKIP
+
+pkgname = libcloudproviders
+
