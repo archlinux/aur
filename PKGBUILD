@@ -36,7 +36,7 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="navigation-release-release-kinetic-carrot_planner"
+_dir="navigation-release-release-kinetic-carrot_planner-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/carrot_planner/${pkgver}-${_pkgver_patch}.tar.gz")
 sha256sums=('7d5336c8df534d296b72d4b1deef84d86855e14407a62b891c7c4646702e7321')
 
