@@ -10,16 +10,16 @@ makedepends=('go' 'rsync' 'go-bindata')
 optdepends=('etcd: etcd cluster required to run Kubernetes')
 arch=('x86_64' 'i686')
 source=("https://github.com/kubernetes/kubernetes/archive/v$pkgver.tar.gz"
-	"https://github.com/kubernetes/contrib/archive/$_contribver.tar.gz"
+        "https://github.com/kubernetes/contrib/archive/$_contribver.tar.gz"
         "kubernetes.install")
 url="http://kubernetes.io/"
 license=("APACHE")
 backup=('etc/kubernetes/apiserver'
-	'etc/kubernetes/config'
-	'etc/kubernetes/controller-manager'
-	'etc/kubernetes/kubelet'
-	'etc/kubernetes/proxy'
-	'etc/kubernetes/scheduler')
+        'etc/kubernetes/config'
+        'etc/kubernetes/controller-manager'
+        'etc/kubernetes/kubelet'
+        'etc/kubernetes/proxy'
+        'etc/kubernetes/scheduler')
 install=kubernetes.install
 sha256sums=('a480c54f3108f9a7ff118d90a0a16be52ecd34dcdb786f6c5d287d5298da64f0'
             'ab36d4243baf8cd47aba94f22f4c41a2980cf2ffca51ccda28b1e7685f500282'
