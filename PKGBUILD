@@ -1,6 +1,6 @@
 
 pkgname=outwiker
-pkgver=2.0.0
+pkgver=1.8.1
 pkgrel=1
 arch=('any')
 pkgdesc="Outliner and personal wiki with keeping the tree of notes in the form of directories on a disk"
@@ -10,8 +10,8 @@ depends=('python2' 'wxpython2.8' 'pywebkitgtk' 'python2-pillow')
 optdepends=('mimetex: rendering of formulas'
             'python-gnomeprint: printing non-latin symbols')
 conflicts=('outwiker-git')
-source=("outwiker.deb::https://launchpad.net/~outwiker-team/+archive/ubuntu/ppa/+files/outwiker_2.0.0%2B822%7Ezesty_all.deb")
-sha1sums=('7ddadcefbdcad1f03f2d5139f1156a7543a04615')
+source=("outwiker.deb::https://launchpad.net/~outwiker-team/+archive/ubuntu/ppa/+files/outwiker_1.8.1%2B752%7Etrusty_all.deb")
+sha1sums=('f876cf2723162148508f1cf791e3069f27885b10')
 
 package() {
 	ar x outwiker.deb
