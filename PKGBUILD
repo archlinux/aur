@@ -10,7 +10,7 @@ url='http://mdocml.bsd.lv/'
 license=('custom: ISC')
 depends=('zlib')
 provides=('man')
-conflicts=('man')
+conflicts=('man' 'groff')
 source=("http://mdocml.bsd.lv/snapshots/mdocml-$pkgver.tar.gz"
         'configure.local'
         'mandoc.service'
