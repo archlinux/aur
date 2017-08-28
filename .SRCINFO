@@ -1,6 +1,6 @@
 pkgbase = obsidian-icon-theme-git
 	pkgdesc = Gnome Icon Pack based upon Faenza, optimized for dark themes. All colors
-	pkgver = r130.b8c78d7
+	pkgver = r133.9c89c0d
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/1169579
 	arch = any
@@ -10,11 +10,7 @@ pkgbase = obsidian-icon-theme-git
 	conflicts = obsidian-icon-theme
 	conflicts = obsidian-icon-theme-git
 	options = !strip
-	source = iconpack-obsidian-blue::git+https://github.com/madmaxms/iconpack-obsidian.git
-	source = https://github.com/madmaxms/iconpack-obsidian/archive/green.zip
-	source = https://github.com/madmaxms/iconpack-obsidian/archive/gray.zip
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = iconpack::git+https://github.com/madmaxms/iconpack-obsidian.git
 	sha256sums = SKIP
 
 pkgname = obsidian-icon-theme-git
