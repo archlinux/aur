@@ -3,26 +3,25 @@
 
 pkgname=synthclone
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to automate sampling of MIDI-capable instruments.'
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/synthclone/"
+url="https://github.com/surfacepatterns/synthclone/"
 license=('GPL' 'LGPL')
-depends=('qt4' 'libzip' 'portaudio' 'portmidi' 'lilv' 'suil')
+depends=('libarchive' 'libzip' 'lilv' 'portaudio' 'portmidi' 'qt4' 'suil')
 makedepends=('python2' 'doxygen')
-install="$pkgname.install"
-source=("http://synthclone.googlecode.com/files/$pkgname-$pkgver.tar.gz")
-md5sums=('14069c0676f758cfc2d75f7da200c930')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/surfacepatterns/synthclone/archive/version-$pkgver.tar.gz")
+md5sums=('a06ca9aa52ea98af19cb6c8d6872e3c3')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-version-$pkgver"
 
   # python2 fix
   sed -i "s/env python$/&2/" configure install/build-*
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-version-$pkgver"
 
   ./configure --prefix=/usr --skip-api-docs=1
   # rebuild Makefiles for Qt4
@@ -31,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-version-$pkgver"
 
   make install INSTALL_ROOT="$pkgdir/"
 }
