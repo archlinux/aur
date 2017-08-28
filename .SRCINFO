@@ -1,0 +1,26 @@
+pkgbase = haskell-shelly
+	pkgdesc = Convenient systems programming in Haskell
+	pkgver = 1.6.8.4
+	pkgrel = 1
+	url = https://github.com/yesodweb/Shelly.hs
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	depends = haskell-async
+	depends = haskell-enclosed-exceptions
+	depends = haskell-exceptions
+	depends = haskell-lifted-async
+	depends = haskell-lifted-base
+	depends = haskell-monad-control
+	depends = haskell-mtl
+	depends = haskell-system-fileio
+	depends = haskell-system-filepath
+	depends = haskell-text
+	depends = haskell-transformers-base
+	depends = haskell-unix-compat
+	source = https://hackage.haskell.org/packages/archive/shelly/1.6.8.4/shelly-1.6.8.4.tar.gz
+	sha512sums = 337dc3fa511859ad0fec35f1721a60a5896abce766423d49e2441107f84210ee7354b26fc6d0f41b433e1a996e020cdb42fb1dca3cd165c8c3fa5b4d9e20dc07
+
+pkgname = haskell-shelly
+
