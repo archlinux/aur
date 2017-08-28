@@ -1,6 +1,6 @@
 # Maintainer: asyncial <asyncial [dot] posteo [dot] de>
 
-pkgname=midna-themes
+pkgname=midna-theme
 pkgver=2.1.0
 pkgrel=1
 pkgdesc='KaOS Plasma 5 Look & Feel theme files'
