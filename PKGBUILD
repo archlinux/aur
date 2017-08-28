@@ -2,9 +2,9 @@
 
 pkgname=aspell6-fa
 pkgver=0.11_0
-pkgrel=0
+pkgrel=1
 pkgdesc="Farsi dictionary for aspell"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://ftp.gnu.org/gnu/aspell/dict/fa/"
 license=('GPL')
 depends=('aspell>=0.60')
