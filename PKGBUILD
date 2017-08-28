@@ -6,7 +6,7 @@ pkgname='ros-kinetic-carrot-planner'
 pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-nav-core
@@ -37,8 +37,8 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-carrot_planner"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/carrot_planner.tar.gz")
-sha256sums=('f387c834f9359d67f04df7e7b917fd616778691e0e2ca8a385416e07071c1ea3')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/carrot_planner/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('7d5336c8df534d296b72d4b1deef84d86855e14407a62b891c7c4646702e7321')
 
 build() {
   # Use ROS environment variables
