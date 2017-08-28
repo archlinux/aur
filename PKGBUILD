@@ -1,28 +1,27 @@
 # Maintainer: Matt Harrison <matt@harrison.us.com>
 # Contributor: scan
 
-# Default color: https://aur.archlinux.org/packages/obsidian-icon-theme/
-# Green color: https://aur.archlinux.org/packages/obsidian-icon-theme-green/
-# Gray color: https://aur.archlinux.org/packages/obsidian-icon-theme-gray/
 
 pkgname=obsidian-icon-theme
-pkgver=20170718
+pkgver=3.1.1
 pkgrel=1
-pkgdesc="Obsidian Icon Theme - Default Color"
+pkgdesc="Obsidian Icon Theme"
 arch=('any')
 url="https://www.gnome-look.org/p/1169579"
 license=('GPL')
-_git_sha=7dd3e1c6427baf8968d4408662908817609b1f2e
 source=(
-	"https://github.com/madmaxms/iconpack-obsidian/archive/$_git_sha.tar.gz"
+	"https://github.com/madmaxms/iconpack-obsidian/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-	'1f774f65fb158eeb69932f7149ac590773fe80df61f1b8f593cc5ada3b66cdb6'
+	'60f0c8899968e047b07a5a9102fe844988c52322c0e98576cf5543a7eab2207e'
 )
 
 package() {
 	install -d ${pkgdir}/usr/share/icons
-	cp -r ${srcdir}/iconpack-obsidian-$_git_sha ${pkgdir}/usr/share/icons/Obsidian
+	cp -r ${srcdir}/iconpack-obsidian-$pkgver/Obsidian* ${pkgdir}/usr/share/icons/
+	# Make sure permissions are consistant
 	find ${pkgdir} -type f -exec chmod 644 {} \;
 	find ${pkgdir} -type d -exec chmod 755 {} \;
+	# Install license
+	install -Dm644 "$srcdir/iconpack-obsidian-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
