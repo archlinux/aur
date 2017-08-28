@@ -9,7 +9,7 @@ pkgbase = plasma5-applets-kde-arch-update-notifier-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = extra-cmake-modules
-	depends = fakeroot
+	depends = fakerootkonsole
 	source = git+https://github.com/I-Dream-in-Code/kde-arch-update-plasmoid.git
 	md5sums = SKIP
 
