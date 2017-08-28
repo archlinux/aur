@@ -7,7 +7,7 @@
 
 _pkgname=audacious-plugins
 pkgname=$_pkgname-gtk3
-pkgver=3.8.2
+pkgver=3.9
 _pkgver=$pkgver-gtk3
 pkgrel=1
 pkgdesc="Plugins for Audacious"
@@ -51,19 +51,23 @@ optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
             'libmms: libmms-based mms transport'
             'libcue: CUE playlist format')
 
-source=(http://distfiles.audacious-media-player.org/$_pkgname-$_pkgver.tar.bz2)
-sha1sums=('2a657c9f64d9ab9c0d49bd9e263a31ffe4a88da9')
+source=("https://github.com/audacious-media-player/$_pkgname/archive/$_pkgname-$_pkgver.tar.gz")
+sha256sums=('d4bbc8d114cd89148d8d37953a29e329034a856805870ef2a90d198a659f7e8f')
+
+prepare() {
+  cd "$srcdir/$_pkgname-$_pkgname-$_pkgver"
+  autoreconf -I m4
+}
 
 build() {
-  cd "$srcdir/$_pkgname-$_pkgver"
-
+  cd "$srcdir/$_pkgname-$_pkgname-$_pkgver"
   ./configure \
     --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$_pkgver"
+  cd "$srcdir/$_pkgname-$_pkgname-$_pkgver"
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
