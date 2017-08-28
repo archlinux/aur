@@ -1,4 +1,4 @@
-pkgbase = midna-themes
+pkgbase = midna-theme
 	pkgdesc = KaOS Plasma 5 Look & Feel theme files
 	pkgver = 2.1.0
 	pkgrel = 1
@@ -18,5 +18,5 @@ pkgbase = midna-themes
 	source = git://github.com/KaOSx/midna.git
 	md5sums = SKIP
 
-pkgname = midna-themes
+pkgname = midna-theme
 
