@@ -62,7 +62,7 @@ package() {
 
   # symlink for docs
   install -dm755 ${pkgdir}/usr/share/OGRE/
-  cd ${pkgdir}/usr/share
-  ln -s /usr/share/doc/OGRE/ OGRE/docs  
+  cd ${pkgdir}/usr/share/doc
+  ln -s OGRE/docs OGRE
  
 }
