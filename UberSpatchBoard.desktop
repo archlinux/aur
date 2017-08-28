@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=UberSpatchBoard
+Comment=The ultimate fuelrats dispatch aid.
+Exec=UberSpatchBoard
+Icon=UberSpatchBoard
+Terminal=false
+StartupNotify=true
+Categories=Application

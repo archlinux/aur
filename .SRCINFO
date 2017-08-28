@@ -1,0 +1,20 @@
+pkgbase = uberspatchboard-git
+	pkgdesc = The UberSpatchBoard is the ultimate fuelrats spatching aid.
+	pkgver = 1.0.alpha.3.r0.g58b7406
+	pkgrel = 1
+	url = https://github.com/targodan/UberSpatchBoard
+	install = UberSpatchBoard.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = java-runtime>=8
+	depends = java-runtime>=8
+	source = git://github.com/targodan/UberSpatchBoard.git
+	source = UberSpatchBoard.desktop
+	source = UberSpatchBoard.sh
+	sha256sums = SKIP
+	sha256sums = 2cb520230edc0485b476eb4a1f50c356a0e8bc4f3611f587920cb0d217207bc8
+	sha256sums = 5270d22ccb0d66cc2e265dc90d4aabe8e6674c076b6d62d78da63a041530f6a0
+
+pkgname = uberspatchboard-git
+
