@@ -1,0 +1,22 @@
+pkgbase = midna-themes
+	pkgdesc = KaOS Plasma 5 Look & Feel theme files
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://kaosx.us
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	depends = plasma-framework
+	depends = qtcurve-qt5
+	depends = ttf-raleway
+	conflicts = kde-kdm-themes-midna
+	conflicts = kde-ksplash-themes-midna
+	conflicts = kde-plasma-themes-midna
+	replaces = kde-kdm-themes-midna
+	replaces = kde-ksplash-themes-midna
+	replaces = kde-plasma-themes-midna
+	source = git://github.com/KaOSx/midna.git
+	md5sums = SKIP
+
+pkgname = midna-themes
+
