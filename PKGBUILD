@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=2.6.1.r6.gb4316a57
+pkgver=2.7.0.r14.ge748f38a
 pkgrel=1
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
@@ -14,11 +14,11 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 			 'sleuthkit' 'snappy' 'yara' 'thrift' 'magic' 'cpp-netlib'
 			 'python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
 			 'gtest' 'gmock' 'augeas' 'boost' 'boost-libs' 'lldpd' 'lld'
-			 'zstd' 'rapidjson' 'apt' 'dpkg' 'rpm-org')
+			 'zstd' 'rapidjson' 'apt' 'dpkg' 'rpm-org' 'python2-jinja')
 conflicts=()
 backup=('etc/osquery/osquery.conf')
 options=(!strip)
-_gitcommit="cf170c4278fe09301b4910fd9aae548fb0fc6799"
+_gitcommit="e748f38a06151e0269d48748c97edb227835bd88"
 #source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
@@ -67,6 +67,7 @@ build() {
 	cmake -Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_CXX_FLAGS="-I/usr/include/libxml2" \
+		-DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2 \
 		-DBUILD_GMOCK=OFF \
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 
@@ -81,7 +82,7 @@ package() {
 	make DESTDIR="${pkgdir}" install
 
 	# Remove legacy init script
-	rm "${pkgdir}/etc/init.d/osqueryd" && rmdir "${pkgdir}/etc/init.d"
+	rm "${pkgdir}/usr/etc/init.d/osqueryd" && rmdir "${pkgdir}/usr/etc/init.d"
 
 	install -dm755 "${pkgdir}/var/osquery/"
 	install -dm755 "${pkgdir}/var/log/osquery/"
