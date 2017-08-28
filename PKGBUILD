@@ -2,24 +2,18 @@
 # Contributor: Calle Erlandsson <calle@calleerlandsson.com>
 
 pkgname=pick
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
-pkgdesc='Fuzzy text selection utility'
+pkgdesc='A fuzzy search tool for the command line'
 arch=('i686' 'x86_64')
 url='https://github.com/calleerlandsson/pick'
 license=('MIT')
 depends=('ncurses')
-source=("https://github.com/calleerlandsson/pick/releases/download/v$pkgver/pick-$pkgver.tar.gz"{,.asc})
-validpgpkeys=('47B22252BF6914DF964BB50C24735DD835689C84') # Carl Olof Erlandsson
-sha256sums=('950531c56edc4be375fe4e89291caa807322b298143043e2e2963de34e96de15'
-            'SKIP')
+source=("https://github.com/calleerlandsson/pick/releases/download/v$pkgver/pick-$pkgver.tar.gz")
+sha256sums=('7834d3aef9e575ce07414f961d1f024776b49bb23c5dc3b7bb8f6b734131067d')
 
 build() {
   cd $pkgname-$pkgver
-
-  # gcc7
-  CFLAGS+=' -Wimplicit-fallthrough=1'
-
   ./configure --prefix=/usr
   make
 }

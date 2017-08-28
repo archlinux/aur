@@ -1,17 +1,14 @@
 pkgbase = pick
-	pkgdesc = Fuzzy text selection utility
-	pkgver = 1.7.0
+	pkgdesc = A fuzzy search tool for the command line
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/calleerlandsson/pick
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = ncurses
-	source = https://github.com/calleerlandsson/pick/releases/download/v1.7.0/pick-1.7.0.tar.gz
-	source = https://github.com/calleerlandsson/pick/releases/download/v1.7.0/pick-1.7.0.tar.gz.asc
-	validpgpkeys = 47B22252BF6914DF964BB50C24735DD835689C84
-	sha256sums = 950531c56edc4be375fe4e89291caa807322b298143043e2e2963de34e96de15
-	sha256sums = SKIP
+	source = https://github.com/calleerlandsson/pick/releases/download/v1.8.0/pick-1.8.0.tar.gz
+	sha256sums = 7834d3aef9e575ce07414f961d1f024776b49bb23c5dc3b7bb8f6b734131067d
 
 pkgname = pick
 
