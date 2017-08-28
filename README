@@ -2,7 +2,7 @@ Some notes about this package:
 
 The package creates and install 3 executables:
 *) megacli - advanced console MEGA client, to get information about available commands please start the 
-application in the Terminal and type â"h" to get commands description.
+application in the Terminal and type h to get commands description.
 *) megasimplesync - a simple synchronization client, it gets username / password values from corresponding 
 environment variables.
 *) megafuse: to mount a remote mega directory
@@ -14,3 +14,4 @@ The package compiles only a subset of the original MEGA SDK, the mimimun necessa
 
 The package contains no code of mine, except for the PKGBUILD and the mega.service file.
 
+Remember to edit the configuration file /etc/conf.d/megasync.conf

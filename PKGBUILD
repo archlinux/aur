@@ -2,17 +2,17 @@
 
 pkgname=megasync-headless
 pkgver=v3.1.9.0.g4edf31a8
-pkgrel=1
-pkgdesc="Daemon, fuse and cli client. Sync local directory with MEGA account. Original mega code (git)."
+pkgrel=2
+pkgdesc="Daemon, fuse and cli client. Sync local directory with MEGA.nz account. Original mega SDK (git)."
 arch=('x86_64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')
 source=('git+https://github.com/meganz/sdk.git#tag=v3.1.9'
-        'megasyncd.service'
+        'megasyncd@.service'
         'megasync.conf'
         )
 install=$pkgname.install
-backup=('usr/lib/systemd/system/megasyncd.service'
+backup=('usr/lib/systemd/system/megasyncd@.service'
         'etc/conf.d/megasync.conf'
        )
 conflicts=('megasync'
@@ -56,7 +56,7 @@ build() {
 }
 
 package() {
-   install -Dm644 megasyncd.service "${pkgdir}/usr/lib/systemd/system/megasyncd.service"
+   install -Dm644 megasyncd@.service "${pkgdir}/usr/lib/systemd/system/megasyncd@.service"
    install -Dm600 megasync.conf "${pkgdir}/etc/conf.d/megasync.conf"
 
    cd sdk
