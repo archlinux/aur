@@ -1,7 +1,7 @@
 # Maintainer: Derek Brown <derekbro@andrew.cmu.edu>
 pkgname=c0
 pkgver=0.523
-pkgrel=3
+pkgrel=1
 pkgdesc="C0 Package for 15-122"
 url="http://c0.typesafety.net/index.html"
 arch=('x86_64' 'i686')
