@@ -28,7 +28,7 @@ sha256sums=('a480c54f3108f9a7ff118d90a0a16be52ecd34dcdb786f6c5d287d5298da64f0'
 build() {
     cd $srcdir/kubernetes-$pkgver
     
-    make
+    make -j1
     hack/generate-docs.sh
 }
 
