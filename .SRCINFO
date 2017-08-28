@@ -1,0 +1,15 @@
+pkgbase = huawei-mobile-helper
+	pkgdesc = Auto-connect for non-HiLink Huawei USB dongles
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Metabolix/huawei-mobile-helper
+	arch = any
+	license = GPL
+	depends = udev
+	depends = systemd
+	depends = bash
+	source = git+https://github.com/Metabolix/huawei-mobile-helper.git
+	sha1sums = SKIP
+
+pkgname = huawei-mobile-helper
+
