@@ -2,9 +2,8 @@
 # Contributor: Francois Boulogne <fboulogne@april.org>
 
 pkgname=paperwork
-pkgver=1.2
-_pkgver=1.2.post3
-pkgrel=3
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='A tool to make papers searchable - scan & forget'
 arch=('any')
 url='https://github.com/openpaperwork/paperwork'
@@ -20,18 +19,18 @@ depends=('pygobject2-devel' 'pygtk' 'python-pycountry'
 makedepends=('python' 'python-setuptools' 'git')
 optdeps=('cuneiform: alternativer OCR')
 source=("paperwork.desktop"
-        "paperwork-gui-${_pkgver}.tgz::https://github.com/openpaperwork/paperwork/archive/${_pkgver}.tar.gz"
+        "paperwork-gui-${pkgver}.tgz::https://github.com/openpaperwork/paperwork/archive/${pkgver}.tar.gz"
         "paperwork-backend-${pkgver}.tgz::https://github.com/openpaperwork/paperwork-backend/archive/${pkgver}.tar.gz")
 md5sums=('4496dc70b2f159c7ea28160d2ebb60fe'
-         'deba5b9454db998588f83cfb31c99e3b'
-         'a55cd895b2e2e5826fffe67dd25234a5')
+         '1ce63905208fed14f236927edcb5679a'
+         'e6e04126b63731370bb8765943c5e2e3')
 install=paperwork.install
 
 build() {
   cd "${srcdir}/${pkgname}-backend-${pkgver}"
   python setup.py build
 
-  cd "${srcdir}/${pkgname}-${_pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py build
 }
 
@@ -39,7 +38,7 @@ package() {
   cd "${srcdir}/${pkgname}-backend-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
 
-  cd "${srcdir}/${pkgname}-${_pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 "data/${pkgname}_halo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
