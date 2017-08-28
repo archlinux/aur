@@ -1,14 +1,13 @@
 # Maintainer: Archimede Pitagorico <archimede.pitagorico@mail.com>
 
 pkgname=megasync-headless
-pkgver=v2.8.0.0.g2c9286c
+pkgver=v3.1.9.0.g4edf31a8
 pkgrel=1
-pkgdesc="Daemon to sync a local directory with your MEGA account on a headless system. Part of the original 
-mega.nz SDK".
+pkgdesc="Daemon, fuse and cli client. Sync local directory with MEGA account. Original mega code (git)."
 arch=('x86_64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')
-source=('git+https://github.com/meganz/sdk.git#tag=v2.8.0'
+source=('git+https://github.com/meganz/sdk.git#tag=v3.1.9'
         'megasyncd.service'
         'megasync.conf'
         )
@@ -24,7 +23,6 @@ depends=('c-ares'
          'curl'
          'crypto++'
 	 'zlib'
-	 'sqlite'
 	 'openssl'
          )
 makedepends=('git'
@@ -47,7 +45,8 @@ prepare() {
 
   ./configure \
     --without-freeimage \
-    --without-sodium
+    --without-sodium \
+    --without-sqlite
 }
 
 build() {
