@@ -1,0 +1,17 @@
+pkgbase = kayak-git
+	pkgdesc = Kayak is a CAN bus analysis tool based on SocketCAN
+	pkgver = .
+	pkgrel = 1
+	url = https://github.com/dschanoeh/Kayak
+	arch = any
+	license = LGPL-3.0
+	makedepends = maven
+	makedepends = jdk8-openjdk
+	depends = maven
+	provides = kayak
+	conflicts = kayak
+	source = git://github.com/dschanoeh/Kayak.git
+	md5sums = SKIP
+
+pkgname = kayak-git
+
