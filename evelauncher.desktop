@@ -1,5 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Eve Online Launcher
-Exec= env LD_LIBRARY_PATH=/usr/lib/openssl-1.0-compat/ sh /opt/evelauncher/evelauncher.sh
+Name=EVE Online Launcher
+GenericName=EVE Online
+Exec=/opt/evelauncher/evelauncher
 Icon=/opt/evelauncher/icon.png
+Categories=Game

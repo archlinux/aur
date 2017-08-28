@@ -1,42 +1,40 @@
-# Maintainer: Andre Bauer <novamoon@ts.3v.fi>
+# Maintainer: Aleksandr Arlanow <aleksandr@arlanow.ru>
 pkgname=evelauncher
-pkgver=1146159
+pkgver=1156239
 pkgrel=1
-epoch=
-pkgdesc="Unofficial Eve Online Launcher brought to us by CCP Devs. It simplifies the installation of Eve 
-Online on Linux "
+pkgdesc="Unofficial Eve Online Launcher."
 arch=('any')
-url="https://forums.eveonline.com/default.aspx?g=posts&t=482663"
+url="https://forums.eveonline.com/t/eve-launcher-for-linux/7286"
 license=('custom')
-groups=()
-depends=('wine'
-'libopenssl-1.0-compat')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=()
-changelog=
+depends=('qt5-base'
+        'qt5-translations'
+        'qt5-webengine'
+        'qt5-webkit'
+        'qt5-webview'
+        'openssl'
+        )
 source=(
-	"https://binaries.eveonline.com/evelauncher-1146159.tar.gz"
+	"https://binaries.eveonline.com/evelauncher-1156239.tar.gz"
 	"evelauncher.desktop"
 	"icon.png")
-noextract=()
-md5sums=('468c81b40abe535695fa2a0b812588db'
-         '39a115108240a68c1f1a4a24837e9632'
-         '37c1b0799f8e671b298c288d900dd7f0')
+md5sums=('41aca0ca85509477cb2942606c8462d2'
+         '2150407bf15ea647a0854c0c9df4c887'
+         'ecd3b7d8dd554f8106045e1d78a885c6')
 
 package() {
 	# Install the main files.
   	install -d "${pkgdir}/opt/${pkgname}"
+  	rm ${srcdir}/evelauncher/libQt5* ${srcdir}/evelauncher/QtWebEngineProcess
+  	rm -r "${srcdir}/evelauncher/plugins/"
+  	rm -r "${srcdir}/evelauncher/resources/"
   	cp -a "${srcdir}/evelauncher/." "${pkgdir}/opt/${pkgname}"
+  	ln -s "/usr/lib/qt/libexec/QtWebEngineProcess" "${pkgdir}/opt/${pkgname}"
+  	ln -s "/usr/lib/qt/plugins/" "${pkgdir}/opt/${pkgname}"
+    ln -s "/usr/share/qt/resources/" "${pkgdir}/opt/${pkgname}"
+    ln -s "/usr/share/qt/translations/" "${pkgdir}/opt/${pkgname}"
+  	
 	# Exec bit
   	chmod 755 "${pkgdir}/opt/${pkgname}/evelauncher"
-
 
   	# Desktop Entry
   	install -d "${pkgdir}/usr/share/applications"

@@ -1,8 +1,6 @@
 post_install(){
 	echo "***********************************************************"
-	echo " I strongly recommend to run the program "
-	echo " from the desktop file."
-	echo " Please report to me what package that are missing if there"
+	echo " Please report me what package that are missing if there"
 	echo " is any packages missing for you"
 	echo "***********************************************************"
 }
