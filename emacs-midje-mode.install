@@ -9,8 +9,8 @@ cat << EOF
 
 ==> Or, with use-package:
 
-(use-package 'midje-mode)
-(use-package 'clojure-jump-to-file)
+(use-package midje-mode)
+(use-package clojure-jump-to-file)
 
 EOF
 }
