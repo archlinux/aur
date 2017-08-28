@@ -1,0 +1,15 @@
+pkgbase = python-pyqos
+	pkgdesc = QoS framework using tc for Python
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Anthony25/pyqos
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-argparse
+	options = !emptydirs
+	source = https://github.com/Anthony25/pyqos/archive/0.2.2.tar.gz
+	sha256sums = 81001a6ee8e9cb8de079b8d54f73c96036857457a38c6c6e10996d682cc0567b
+
+pkgname = python-pyqos
+
