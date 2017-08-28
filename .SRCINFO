@@ -1,6 +1,6 @@
 pkgbase = ciel-git
 	pkgdesc = A tool for controlling multi-layer file systems and containers.
-	pkgver = r165.00c837e
+	pkgver = r166.835fb63
 	pkgrel = 1
 	url = https://github.com/AOSC-Dev/ciel
 	arch = i686
