@@ -2,7 +2,7 @@
     
 pkgname=python2-pyjsparser
 _pypiname=${pkgname/python2-/}
-pkgver=2.4.5
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Fast JavaScript parser (based on esprima.js)"
 arch=(any)
@@ -11,15 +11,14 @@ license=(MIT)
 depends=(python2)
 makedepends=(python2-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/PiotrDabkowski/Js2Py/master/LICENSE.md")
-md5sums=("69a028f632baf7fe79fe2df253cbfd26"
-		 "faa744092d3fb3314632e815e7c3a560")
-
+        "https://raw.githubusercontent.com/PiotrDabkowski/pyjsparser/master/LICENSE")
+sha256sums=('e4a659df3db42a2ff9fbc961eb6d4076a0b945e1aadfc20d48f913ad5dca011d'
+            'ee43880fad97e97a3d77333915c22766926f1e3dcd0c3e29b112e42246fef4f1')
 
 package() {
 	cd "${srcdir}"
 	
-	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	
 	cd "${_pypiname}-${pkgver}"
 	
