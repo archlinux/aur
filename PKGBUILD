@@ -7,7 +7,7 @@
 _pkgname=digikam
 pkgname=digikam-without-akonadi-mediawiki-vkontakte
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="minimized build of Digikam for non-KDE users, without Plasma/KDE integration"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -19,14 +19,18 @@ optdepends=('kipi-plugins: export to various online services'
 makedepends=('extra-cmake-modules' 'boost' 'doxygen' 'eigen' 'kdoctools' 'kdesignerplugin')
 conflicts=('digikam' 'digikam-git')
 provides=('digikam')
-source=("http://download.kde.org/stable/${_pkgname}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('65bdd3f15668e314b852d523a0bf95da32450f31fcfda60da62e57d4622a663c')
+source=("http://download.kde.org/stable/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"
+        digikam-cmake-3.9.patch::"https://cgit.kde.org/digikam.git/patch/?id=7e00441c")
+sha256sums=('65bdd3f15668e314b852d523a0bf95da32450f31fcfda60da62e57d4622a663c'
+            'f7efc50dd63711388b6b119a7b3413f49deca233687e7ef1bafecf4c76491eff')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-
   # sv docs fail to build
   sed -e '/sv/d' -i doc-translated/CMakeLists.txt
+  # fix build with cmake 3.9
+  cd core
+  patch -p1 -i ../../digikam-cmake-3.9.patch
 }
 
 build() {
