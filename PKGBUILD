@@ -1,7 +1,7 @@
 # Maintainer: Alex "grevus" Lobtsov <alex@lobtsov.com>
 pkgname=php-redis
 pkgver=3.1.3
-pkgrel=3
+pkgrel=1
 pkgdesc="PHP extension for interfacing with Redis"
 url="http://pecl.php.net/package/redis"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
