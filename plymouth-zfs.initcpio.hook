@@ -38,10 +38,13 @@ zfs_decrypt_fs() {
     encryptionroot=$(zfs get -H -o value encryptionroot "${dataset}")
     
     # check if key is already loaded
-    [ "$(zfs get -H -o value encryption "${dataset}")" != "available" ] || return 0
+    [ "$(zfs get -H -o value keystatus "${dataset}")" != "available" ] || return 0
     
     # finally load the key
     plymouth ask-for-password --prompt="Password for ${dataset} dataset" --dont-pause-progress --number-of-tries=5 --command="zfs load-key ${encryptionroot}"
+    
+    # retry if key wasn't loaded
+    [ "$(zfs get -H -o value keystatus "${dataset}")" != "available" ] && zfs_decrypt_fs "${dataset}"
 }
 
 zfs_mount_handler () {
