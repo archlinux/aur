@@ -4,7 +4,7 @@
 
 pkgname=3to2
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Script to convert python3 code to python2. Counterpart to 2to3"
 arch=('any')
 license=('Apache')
@@ -17,6 +17,7 @@ md5sums=('cbeed28e350dbdaef86111ace3052824')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i 's/Exception, err:/Exception as err:/' lib3to2/build.py
   python ./setup.py install --root="${pkgdir}" --optimize=1
   rm -rf "${pkgdir}"/usr/lib/python*/site-packages/lib3to2/tests/
 }
