@@ -1,0 +1,4 @@
+post_remove()
+{
+    rm -v $HOME/.config/zfw-config.conf
+}
