@@ -25,6 +25,27 @@ zfs_get_bootfs () {
     return 1
 }
 
+zfs_decrypt_fs() {
+    dataset=$1
+    
+    # check if 'zfs load-key' is available
+    zfs 2>&1 | grep load-key > /dev/null || return 0
+    
+    # check if dataset is encrypted
+    [ "$(zfs get -H -o value encryption "${dataset}")" != "off" ] || return 0
+    
+    # check if key is already loaded
+    [ "$(zfs get -H -o value encryption "${dataset}")" != "available" ] || return 0
+    
+    # get the encryption root
+    encryptionroot=$(zfs get -H -o value encryptionroot "${dataset}")
+    
+    # loop until we get the correct password
+    while ! eval zfs load-key "${encryptionroot}"; do
+        sleep 2
+    done
+}
+
 zfs_mount_handler () {
     if [ "${ZFS_DATASET}" = "bootfs" ] ; then
         if ! zfs_get_bootfs ; then
@@ -69,11 +90,14 @@ zfs_mount_handler () {
                     if findmnt -snero source -F "${tab_file}" -S "${dataset}" > /dev/null 2>&1; then
                         opt=$(findmnt -snero options -F "${tab_file}" -S "${dataset}")
                         mnt=$(findmnt -snero target -F "${tab_file}" -S "${dataset}")
+                        
+                        zfs_decrypt_fs "${dataset}"
                         mount -t zfs -o "${opt}" "${dataset}" "${node}${mnt}"
                     fi
                 fi
                 ;;
             *)
+                zfs_decrypt_fs "${dataset}"
                 mount -t zfs -o "zfsutil,${rwopt_exp}" "${dataset}" "${node}/${mountpoint##${rootmnt}}"
                 ;;
         esac
