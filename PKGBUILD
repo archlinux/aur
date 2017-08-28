@@ -2,12 +2,12 @@
 
 pkgname=piper
 pkgver=0.2.900
-pkgrel=3
+pkgrel=4
 pkgdesc='Piper is a GUI interface to ratbagd, the system daemon for configurable mice'
 arch=('i686' 'x86_64')
 url='https://github.com/libratbag/piper'
 license=('GPL')
-depends=('python3' 'python-gobject>=3.0' 'pygtk' 'libratbag>=0.9.900' 'python-evdev' 'python-lxml' 'python-cairo')
+depends=('python3' 'python-gobject>=3.0' 'libratbag>=0.9.900' 'python-evdev' 'python-lxml' 'python-cairo')
 makedepends=('meson' 'check')
 options=(!emptydirs)
 source=("https://github.com/libratbag/${pkgname}/archive/${pkgver}.tar.gz")
