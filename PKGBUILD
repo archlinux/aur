@@ -2,7 +2,7 @@
     
 pkgname=python2-js2py
 _pypiname=Js2Py
-pkgver=0.44
+pkgver=0.50
 pkgrel=1
 pkgdesc="JavaScript to Python translator & JavaScript interpreter written in 100% pure Python"
 arch=(any)
@@ -12,9 +12,8 @@ depends=(python2-pyjsparser python2-six python2-tzlocal)
 makedepends=(python2-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/PiotrDabkowski/Js2Py/master/LICENSE.md")
-md5sums=("650a38e32807f42ced341e78786a3601"
-         "faa744092d3fb3314632e815e7c3a560")
-
+sha256sums=('99592acc3d2b79cd5f9d13340b305582d16415df87c8c47005cf75cb73a89193'
+            'e477271a50c40c9ac3ad56d02e70c7d7d97f66c7326cf524d13b12f8842cc4e9')
 
 package() {
 	cd "${srcdir}"
