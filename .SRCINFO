@@ -1,0 +1,11 @@
+pkgbase = python-tbvaccine
+	pkgdesc = Pretty-print Python tracebacks
+	pkgver = 0.2.2
+	pkgrel = 1
+	arch = any
+	license = MIT
+	source = tbvaccine-0.2.2-py3-none-any.whl::https://pypi.python.org/packages/ad/68/af2fdc13122bde84e81af1b306915bcacf6eafb7b1be0f4466615f6dfc74/tbvaccine-0.2.2-py2-none-any.whl
+	md5sums = 8fa534864c71636ca516e3956803c14b
+
+pkgname = python-tbvaccine
+
