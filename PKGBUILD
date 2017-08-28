@@ -9,6 +9,7 @@ url='https://github.com/grondo/pdsh'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('glibc' 'openssh' 'readline')
+makedepends=('autoconf')
 optdepends=('perl: required by the dshbak utility')
 options=('libtool')
 source=("https://github.com/grondo/pdsh/archive/pdsh-2.32.tar.gz")
@@ -16,6 +17,7 @@ md5sums=('3af36658154e2983c9e4067f91672c54')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  autoreconf -fiv
   ./configure --prefix=/usr --mandir=/usr/share/man \
               --without-rsh \
               --with-ssh \
@@ -27,7 +29,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install || return 1
-  rmdir "${pkgdir}/usr/sbin"
+  #rmdir "${pkgdir}/usr/sbin"
 }
 
 # vim:set ts=2 sw=2 et:
