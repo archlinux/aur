@@ -1,7 +1,7 @@
 # Maintainer: Poppy Schmo <poppyschmo at users dot noreply.github.com>
 pkgname=chromebook_keyboard_backlight_driver
 pkgver=1.0r14.g86bac41
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Keyboard backlight driver for various chromebook models"
 arch=('i686' 'x86_64')
@@ -32,9 +32,9 @@ package() {
 	_conf=chromebook_keyboard_backlight_driver.conf
 	_docd=$pkgdir/usr/share/doc/$pkgname
 	_newest=
-	_multi=$pkgdir/multi-kernel.install
-	echo "# Run as sudo to enable driver for multiple kernels" > "$_multi"
 	cd "$srcdir/$pkgname"
+	_multi=skipped_kernels.log
+	echo "# Modules for these kernels were skipped during install" > "$_multi"
 	echo '# modules for' ${pkgname} > "$_conf"
 	for each in *.ko; do
 		if [[ $(file "$each") != *BuildID* ]]; then
@@ -47,7 +47,9 @@ package() {
 				install -Dm 644 "$each.gz" "$pkgdir/$tdir/$each.gz"
 				_newest=$tdir
 			else
-				echo "ln -s $_newest/$each ..$tdir" >> "$_multi"
+				# minor versions should probably match but aren't checked;
+				# this note gets deleted anyway if makepkg is run with -c
+				echo "$tdir" >> "$_multi"
 			fi
 		done
 		if [[ ! $each == *"$_excl"* ]]; then
@@ -61,4 +63,4 @@ package() {
 	install -Dm 644 "$_conf" "$_confd/$_conf"
 }
 
-# vim:noet:list:ft=sh
+# vim:ft=sh:noet:list
