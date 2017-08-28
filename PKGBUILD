@@ -1,7 +1,7 @@
 # Maintainer: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=music21
 pkgname=python-$_pkgname
-pkgver=3.1.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A toolkit for computer-aided musical analysis"
 arch=('any')
@@ -23,3 +23,4 @@ package() {
 	install -D -m644 ${srcdir}/$_pkgname-$pkgver/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	python setup.py install --root="$pkgdir"
 }
+sha512sums=('9be1cab600b92774ea18354ac473ecb27550ecf135719fe38d203462110d10cdedf666196beed29bdc6bdcb125f7424927c30bcc4ed128ce6dcdf6c3ad22197b')
