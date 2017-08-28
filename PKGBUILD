@@ -1,6 +1,6 @@
 
 pkgname=outwiker
-pkgver=1.8.1
+pkgver=2.0.0
 pkgrel=1
 arch=('any')
 pkgdesc="Outliner and personal wiki with keeping the tree of notes in the form of directories on a disk"
