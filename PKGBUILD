@@ -1,4 +1,4 @@
-# Maintainer: Samuel Walladge <swalladge at gmail dot com>
+# Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
 
 pkgname=starstax
 _pkgname=StarStaX
@@ -8,7 +8,7 @@ pkgdesc="A fast multi-platform image stacking and blending software, developed p
 arch=('i686' 'x86_64')
 url="http://www.markus-enzweiler.de/StarStaX/StarStaX.html"
 licence='freeware'
-depends=('libpng12' 'glibc' 'java-runtime' 'freeglut')
+depends=('gstreamer0.10-base' 'libpng12' 'glibc' 'java-runtime' 'freeglut')
 optdepends=('libjpeg6-turbo: working with jpg images')
 
 source=('starstax' 'starstax.desktop')
