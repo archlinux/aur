@@ -2,7 +2,7 @@
 
 pkgname=libratbag
 pkgver=0.9.900
-pkgrel=2
+pkgrel=3
 pkgdesc='A library to configure gaming mice'
 arch=('i686' 'x86_64')
 url='https://github.com/libratbag/libratbag'
@@ -16,7 +16,7 @@ conflicts=('libratbag-git' 'ratbagd<=0.4')
 build() {
     cd ${pkgname}-${pkgver}
 
-    meson builddir --prefix=/usr/
+    meson builddir --prefix=/usr/ -Denable-tests=false
     ninja -C builddir
 }
 

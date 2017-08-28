@@ -1,7 +1,7 @@
 pkgbase = libratbag
 	pkgdesc = A library to configure gaming mice
 	pkgver = 0.9.900
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/libratbag/libratbag
 	arch = i686
 	arch = x86_64
