@@ -7,9 +7,9 @@
 
 _pkgname=audacious
 pkgname=$_pkgname-gtk3
-pkgver=3.8.2
+pkgver=3.9
 _pkgver=$pkgver-gtk3
-pkgrel=2
+pkgrel=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality"
 arch=('i686' 'x86_64')
 url="http://audacious-media-player.org/"
@@ -20,11 +20,16 @@ optdepends=('unzip: zipped skins support')
 provides=('audacious')
 conflicts=('audacious')
 install=$_pkgname.install
-source=(http://distfiles.audacious-media-player.org/$_pkgname-$_pkgver.tar.bz2)
-sha1sums=('ad6432b53f0359c2e6f1150a64b353b88b291a0c')
+source=("https://github.com/audacious-media-player/$_pkgname/archive/$_pkgname-$_pkgver.tar.gz")
+sha256sums=('a9e4cfdf9e7bd46891445164622f5702802e352ae7b8fc7f8ea5d16a051515d4')
+
+prepare() {
+  cd "$srcdir/$_pkgname-$_pkgname-$_pkgver"
+  autoreconf -I m4
+}
 
 build() {
-  cd "$srcdir/$_pkgname-$_pkgver"
+  cd "$srcdir/$_pkgname-$_pkgname-$_pkgver"
   ./configure \
     --prefix=/usr \
     --with-buildstamp='Arch Linux'
@@ -32,7 +37,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$_pkgver"
+  cd "$srcdir/$_pkgname-$_pkgname-$_pkgver"
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
