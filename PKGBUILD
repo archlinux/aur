@@ -3,7 +3,7 @@
 pkgname=megasync-headless
 pkgver=v3.1.9.0.g4edf31a8
 pkgrel=2
-pkgdesc="Daemon, fuse and cli client. Sync local directory with MEGA.nz account. Original mega SDK (git)."
+pkgdesc="Sync with MEGA. Daemon, fuse and cli client. Original sdk (git)."
 arch=('x86_64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')

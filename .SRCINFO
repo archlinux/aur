@@ -1,7 +1,7 @@
 pkgbase = megasync-headless
-	pkgdesc = Daemon to sync a local directory with your MEGA account on a headless system. Part of the original mega.nz SDK.
-	pkgver = v2.8.0.0.g2c9286c
-	pkgrel = 1
+	pkgdesc = Sync with MEGA. Daemon, fuse and cli client. Original sdk (git).
+	pkgver = v3.1.9.0.g4edf31a8
+	pkgrel = 2
 	url = https://mega.co.nz/#sync
 	install = megasync-headless.install
 	arch = x86_64
@@ -11,16 +11,15 @@ pkgbase = megasync-headless
 	depends = curl
 	depends = crypto++
 	depends = zlib
-	depends = sqlite
 	depends = openssl
 	conflicts = megasync
 	conflicts = megasync-git
 	conflicts = megatools
 	options = !buildflags
-	backup = usr/lib/systemd/system/megasyncd.service
+	backup = usr/lib/systemd/system/megasyncd@.service
 	backup = etc/conf.d/megasync.conf
-	source = git+https://github.com/meganz/sdk.git#tag=v2.8.0
-	source = megasyncd.service
+	source = git+https://github.com/meganz/sdk.git#tag=v3.1.9
+	source = megasyncd@.service
 	source = megasync.conf
 	sha1sums = SKIP
 	sha1sums = SKIP
