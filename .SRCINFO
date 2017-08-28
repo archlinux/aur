@@ -17,6 +17,8 @@ pkgbase = apart-gtk
 	depends = partclone
 	depends = zeromq
 	optdepends = polkit: to run as non-root user
+	optdepends = zstd: adds compression option
+	optdepends = lz4: adds compression option
 	source = https://github.com/alexheretic/apart-gtk/archive/v0.13.tar.gz
 	sha256sums = a4e648ca9e3f58cd6759f8168eb7249b140ad9b35fb62cb5062651b56ede963b
 
