@@ -7,8 +7,3 @@ post_install() {
 post_upgrade() {
     post_install
 }
-
-post_remove() {
-    getent passwd kube >/dev/null && userdel kube
-    getent group kube >/dev/null && groupdel kube
-}
