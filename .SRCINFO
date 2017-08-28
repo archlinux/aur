@@ -1,0 +1,22 @@
+pkgbase = super-user-spark
+	pkgdesc = Configure your dotfile deployment with a DSL
+	pkgver = 0.3.2.0
+	pkgrel = 1
+	url = https://github.com/NorfairKing/super-user-spark
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = haskell-aeson
+	depends = haskell-aeson-pretty
+	depends = haskell-mtl
+	depends = haskell-optparse-applicative
+	depends = haskell-parsec
+	depends = haskell-puremd5
+	depends = haskell-shelly
+	depends = haskell-text
+	source = https://hackage.haskell.org/packages/archive/super-user-spark/0.3.2.0/super-user-spark-0.3.2.0.tar.gz
+	sha512sums = af92140fdf84fc53f13a1def9b8fc38d682560d4cec6391d53850982678515433efc8dcb46233a8aa995261550de174bd161bb9ba1e92fb572572c153dcade44
+
+pkgname = super-user-spark
+
