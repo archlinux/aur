@@ -1,6 +1,6 @@
 # Maintainer: Sergey Khorev <sergey.khorev@gmail.com>
 pkgname=fricas
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="An advanced computer algebra system"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('sbcl' 'libx11' 'texlive-core')
 options=('!strip' '!emptydirs')
 url="http://fricas.sourceforge.net"
 source=("http://downloads.sourceforge.net/project/fricas/fricas/${pkgver}/fricas-${pkgver}-full.tar.bz2" "http://fricas.sourceforge.net/copyright.txt")
-md5sums=('4f75444e6aa015ca74a583cb58b707f0' '147828bf0b62e1f7d0c600a1c377669c')
+md5sums=('0d3af65758ce93b1cc52c2511e73e674' '147828bf0b62e1f7d0c600a1c377669c')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -21,7 +21,5 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     make DESTDIR=$pkgdir install
-    install -D -m644 debian/fricas.desktop $pkgdir/usr/share/applications/fricas.desktop
-    install -D -m644 debian/fricas.xpm $pkgdir/usr/share/pixmaps/fricas.xpm
     install -D -m644 "$srcdir/copyright.txt" $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
