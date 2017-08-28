@@ -3,7 +3,7 @@
 # Contributor: Attila Bukor <r1pp3rj4ck@w4it.eu>
 
 pkgname=apache-cxf
-pkgver=3.1.11
+pkgver=3.1.12
 pkgrel=1
 pkgdesc='open source services framework'
 arch=('any')
@@ -30,6 +30,8 @@ package() {
 
   cp -r "${srcdir}/${pkgname}-${pkgver}/bin" "${pkgdir}/usr/"
   find "${pkgdir}/usr/bin/" -name '*.bat' -delete
+  find "${pkgdir}/usr/bin/" -type f -exec sed -i -e '$s#$JAVA_HOME#/usr/lib/jvm/default-runtime/#' '{}' ';'
+  find "${pkgdir}/usr/bin/" -type f -exec sed -i -e 's#sun_tool_path=.*#sun_tool_path=/usr/lib/jvm/default/lib/tools.jar#' '{}' ';'
 
   # to resolve conflict between midnight commander and apache-cxf
   mv "${pkgdir}/usr/bin/mc" "${pkgdir}/usr/bin/apache-mc"
@@ -37,5 +39,5 @@ package() {
   install -m 644  "${srcdir}/apache-cxf.sh" "${pkgdir}/etc/profile.d"
 }
 
-sha256sums=('26e56b59da7d09fdaf44e13d6fdee64d588f81d3dddfd3916418e20c3db25428'
+sha256sums=('ad58a57021282e46686ec9b1ed63c46d8211a9e89dc4a3299de43b304d562774'
             'c52ba86604138776e50f6fc9506e21ad6f30064a54a0aaef3d5316245b14e668')
