@@ -2,7 +2,7 @@
 
 pkgbase=gtk4-git
 pkgname=(gtk4-git)
-pkgver=3.91.2.r136.g84bcf7d4d3
+pkgver=3.91.2.r159.gccfc568a03
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ makedepends=('gobject-introspection-git'
 optdepends=('gnome-icon-theme: Default icon theme'
             'gnome-themes-standard: Default widget theme')
 backup=('usr/share/gtk-4.0/settings.ini')
-source=('git://git.gnome.org/gtk+'
+source=('git+https://git.gnome.org/browse/gtk+'
         'gtk4.install'
         'gtk4-query-immodules.hook'
         'gtk4-update-icon-cache.hook'

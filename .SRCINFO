@@ -1,6 +1,6 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.91.2.r136.g84bcf7d4d3
+	pkgver = 3.91.2.r159.gccfc568a03
 	pkgrel = 1
 	url = http://www.gtk.org/
 	arch = i686
@@ -42,7 +42,7 @@ pkgbase = gtk4-git
 	optdepends = gnome-icon-theme: Default icon theme
 	optdepends = gnome-themes-standard: Default widget theme
 	backup = usr/share/gtk-4.0/settings.ini
-	source = git://git.gnome.org/gtk+
+	source = git+https://git.gnome.org/browse/gtk+
 	source = gtk4.install
 	source = gtk4-query-immodules.hook
 	source = gtk4-update-icon-cache.hook
