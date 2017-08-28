@@ -1,0 +1,20 @@
+post_install () {
+
+cat << EOF
+
+==> Add this code to your .emacs file to use the mode:
+
+(require 'midje-mode)
+(require 'clojure-jump-to-file)
+
+==> Or, with use-package:
+
+(use-package 'midje-mode)
+(use-package 'clojure-jump-to-file)
+
+EOF
+}
+
+post_upgrade () {
+	post_install $1
+}
