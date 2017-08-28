@@ -3,7 +3,7 @@
 pkgname=starstax
 _pkgname=StarStaX
 pkgver=0.60 # latest version has not been released for linux yet :(
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast multi-platform image stacking and blending software, developed primarily for star trail photography."
 arch=('i686' 'x86_64')
 url="http://www.markus-enzweiler.de/StarStaX/StarStaX.html"
