@@ -1,0 +1,25 @@
+--- a/xs/GConfEngine.xs	2006-04-13 09:40:26.000000000 +0200
++++ b/xs/GConfEngine.xs	2017-08-28 12:04:46.211443073 +0200
+@@ -350,22 +350,6 @@
+ 	if (err)
+ 		gperl_croak_gerror (NULL, err);
+ 
+-##gboolean gconf_engine_key_is_writable  (GConfEngine *conf,
+-##                                        const gchar *key,
+-##                                        GError     **err);
+-gboolean
+-gconf_engine_key_is_writable (engine, key)
+-	GConfEngine * engine
+-	const gchar * key
+-    PREINIT:
+-    	GError *err = NULL;
+-    CODE:
+-    	RETVAL = gconf_engine_key_is_writable (engine, key, &err);
+-	if (err)
+-		gperl_croak_gerror (NULL, err);
+-    OUTPUT:
+-        RETVAL
+-
+ guint
+ gconf_engine_notify_add (engine, namespace_section, func, data=NULL)
+ 	GConfEngine * engine

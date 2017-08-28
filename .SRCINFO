@@ -1,7 +1,7 @@
 pkgbase = perl-gnome2-gconf
 	pkgdesc = Perl interface to the GConf configuration database
 	pkgver = 1.044
-	pkgrel = 3
+	pkgrel = 4
 	url = http://search.cpan.org/dist/Gnome2-GConf
 	arch = i686
 	arch = x86_64
@@ -15,12 +15,9 @@ pkgbase = perl-gnome2-gconf
 	provides = gconf-perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Gnome2-GConf-1.044.tar.gz
+	source = removed-gconf_engine_key_is_writable.patch
 	sha256sums = 875cb87bff28340c15c9bda9b645b5af8002d9b471363d5475532bc1d34e1df2
+	sha256sums = 4e860bb4978642b8360093ab21697ba9d10156c65293b8b6ee93463a86edce6e
 
 pkgname = perl-gnome2-gconf
-	depends = gtk2-perl
-	depends = gconf
-	depends = glib-perl
-	depends = perl>=
-	depends = perl<
 
