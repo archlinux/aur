@@ -3,7 +3,7 @@
 
 pkgbase=linux-vfio
 _srcname=linux-4.12
-pkgver=4.12.6
+pkgver=4.12.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -14,6 +14,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        'bonding-require-speed-duplex-only-for-802.3ad-alb-an.patch'
+        'bonding-ratelimit-failed-speed-duplex-update-warning.patch'
+        'mm-Revert-x86_64-and-arm64-ELF_ET_DYN_BASE-base.patch'
         # the main kernel config files
         'config' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -25,8 +28,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'i915-vga-arbiter.patch')
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '60938af0f95ae794f879294f2393c48077c01bdba851e80b085fdc0418eeca44'
+            '32b860911a3bafd5cd5bc813a427c90fad6eafdf607fa64e1b763b16ab605636'
             'SKIP'
+            '48e0505438bb4ccc7a0e050a896122b490e8f1b1446aa3833841a9d4d7853d68'
+            'fc606711a922638d5cc4358f47f69f554d9e6eab1cec91f0b49f00911f399722'
+            'b830ce777543c0edd20a77d70f204c095f2429bb37151cd4a8c9dfae2af8d51a'
             'df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1'
             'bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
@@ -48,6 +54,14 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # https://bugzilla.kernel.org/show_bug.cgi?id=196547
+  patch -Np1 -i ../bonding-ratelimit-failed-speed-duplex-update-warning.patch
+  patch -Np1 -i ../bonding-require-speed-duplex-only-for-802.3ad-alb-an.patch
+
+  # https://github.com/google/sanitizers/issues/837
+  # https://patchwork.kernel.org/patch/9886105/
+  patch -Np1 -i ../mm-Revert-x86_64-and-arm64-ELF_ET_DYN_BASE-base.patch
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
