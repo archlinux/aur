@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=wart-git
-pkgver=4129.89f5a0fa
+pkgver=4130.279344c0
 pkgrel=1
 pkgdesc="A small, readable lisp with thorough unit tests and extensible functions/macros."
 arch=('i686' 'x86_64')
