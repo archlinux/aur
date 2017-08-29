@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 
 source=(python-geojson-$pkgver.tar.gz::https://github.com/frewsxcv/python-geojson/archive/$pkgver.tar.gz)
 
-sha1sums=('8e51de90b0e860d7bfdc16143e66c3f2516e4c18')
+sha1sums=('c7d592d56ed1631c0d2da31d7af90a75e10dbc88')
 
 package() {
 	cd python-geojson-$pkgver
