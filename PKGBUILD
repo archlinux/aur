@@ -1,7 +1,7 @@
 # Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=mrboom
-pkgver=3.1
+pkgver=3.6
 pkgrel=3
 pkgdesc="Mr.Boom is a 8 players Bomberman clone"
 arch=('i686' 'x86_64')
