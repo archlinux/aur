@@ -5,7 +5,7 @@ pkgver=1.1.0
 pkgrel=1
 
 _modname=spnego-http-auth-nginx-module
-_nginxver=1.13.3
+_nginxver=1.13.4
 
 pkgdesc='Nginx module to use SPNEGO for http authentication'
 arch=('i686' 'x86_64')
