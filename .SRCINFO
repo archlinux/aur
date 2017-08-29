@@ -1,0 +1,20 @@
+pkgbase = python-caldav
+	pkgdesc = a caldav client library
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/caldav
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-lxml
+	depends = python-vobject
+	depends = python-dateutil
+	depends = python-distribute
+	depends = python-six
+	depends = python-requests
+	options = !emptydirs
+	source = git+https://github.com/python-caldav/caldav.git
+	sha256sums = SKIP
+
+pkgname = python-caldav
+
