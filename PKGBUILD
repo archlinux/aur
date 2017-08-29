@@ -23,7 +23,6 @@ sha256sums=('5b73f98004c302fb8e4a172abf046d9ce77739a82487e4873b39f9b0dcbb0d72'
 
 build() {
     cd "$srcdir"/nginx-$_nginxver
-    #./configure --with-cc-opts=-Wno-error --with-compat --add-dynamic-module=../$_modname-$pkgver
     ./configure --with-compat --add-dynamic-module=../$_modname
     make modules
 }
