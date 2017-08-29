@@ -3,9 +3,9 @@
 # Your changes will be lost the next time ./configure is run.
 #
 OMNETPP_PRODUCT = OMNeT++
-OMNETPP_RELEASE = omnetpp-5.1
-OMNETPP_VERSION = 5.1
-OMNETPP_BUILDID = 170331-7c4e366
+OMNETPP_RELEASE = omnetpp-5.2
+OMNETPP_VERSION = 5.2
+OMNETPP_BUILDID = 170818-f9241c2
 OMNETPP_EDITION = Academic Public License -- NOT FOR COMMERCIAL USE
 
 #
@@ -60,14 +60,14 @@ endif
 #
 # Configure MODE specific flags/suffixes
 #
-ifeq ($(MODE),release)
+ifeq ($(MODE),debug)
+  CFLAGS=$(CFLAGS_DEBUG)
+  D=_dbg
+else
+  # by default assume release mode
+  MODE=release
   CFLAGS=$(CFLAGS_RELEASE)
   D=
-else
-  # by default assume debug mode
-  MODE=debug
-  CFLAGS=$(CFLAGS_DEBUG)
-  D=d
 endif
 
 # use statically built omnetpp if we are building the IDE native helper library
@@ -113,7 +113,7 @@ CXX = clang++
 TOOLCHAIN_NAME = clang
 DEFINES = -DHAVE_SWAPCONTEXT -DWITH_MPI
 CFLAGS_DEBUG = -g -Wall
-CFLAGS_RELEASE = -O2 -DNDEBUG=1
+CFLAGS_RELEASE = -O3 -march=native -mtune=native -DNDEBUG=1
 CFLAGS += -MMD -MP -MF $(basename $@).d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-stack-protector $(DEFINES)
 CXXFLAGS =  -std=c++11
 LDFLAG_LIBPATH = -L
@@ -138,7 +138,7 @@ DLLTOOL = dlltool
 STRIP = strip
 WISH = wish
 MAKEDEPEND = opp_makedep -Y --objdirtree
-LN = ln -sf
+LN = ln -f
 MKPATH = mkdir -p
 SHLIB_POSTPROCESS = opp_shlib_postprocess
 SWIG = swig
@@ -164,9 +164,9 @@ MPI_CFLAGS = -pthread
 MPI_LIBS = -pthread -Wl,-rpath -Wl,/usr/lib/openmpi -Wl,--enable-new-dtags -L/usr/lib/openmpi -lmpi_cxx -lmpi
 PTHREAD_CFLAGS = 
 PTHREAD_LIBS = -lpthread
-XMLPARSER = libxml
-XML_CFLAGS = -I/usr/include/libxml2
-XML_LIBS = -lxml2
+XMLPARSER = expat
+XML_CFLAGS = 
+XML_LIBS = -lexpat
 DEFINES += -DXMLPARSER=$(XMLPARSER)
 AKAROA_CFLAGS = -I/usr/local/akaroa/include
 AKAROA_LIBS = -L/usr/local/akaroa/lib -lakaroa -lfl
@@ -199,7 +199,6 @@ OPPMAIN_LIB = $(LDFLAG_LIB)oppmain$D
 # flags and libraries required for Qtenv
 #
 ifeq ($(WITH_QTENV),yes)
-  QTENV_TARGET = qtenv
   DEFINES += -DPREFER_QTENV -DWITH_QTENV
   # libraries required for static linking
   ifneq ($(SHARED_LIBS),yes)
@@ -217,15 +216,12 @@ ifeq ($(WITH_QTENV),yes)
     endif
   endif
   ALL_ENV_LIBS += $(QTENV_LIBS)
-else
-  QTENV_TARGET = skip
 endif
 
 #
 # flags and libraries required for Ttenv
 #
 ifeq ($(WITH_TKENV),yes)
-  TKENV_TARGET = tkenv
   DEFINES += -DWITH_TKENV
   # libraries required for static linking
   ifneq ($(SHARED_LIBS),yes)
@@ -235,8 +231,6 @@ ifeq ($(WITH_TKENV),yes)
     endif
   endif
   ALL_ENV_LIBS += $(TKENV_LIBS)
-else
-  TKENV_TARGET = skip
 endif
 
 #
