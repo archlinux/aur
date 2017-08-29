@@ -2,9 +2,9 @@
 
 pkgname=eve-ng-integration-git
 pkgver=r63.3faa8ad
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrates EVE-NG (aka UNetLab) with Linux desktop"
-arch=('x86_64')
+arch=('any')
 url="http://eve-ng.net"
 license=('GPL')
 depends=('python2' 'inetutils')
