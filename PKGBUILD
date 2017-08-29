@@ -9,11 +9,12 @@
 declare -rgA _system_libs=(
   #[ffmpeg]=ffmpeg           # https://crbug.com/731766
   [flac]=flac
+  #[freetype]=freetype2      # https://crbug.com/pdfium/733
   [harfbuzz-ng]=harfbuzz-icu
   #[icu]=icu                 # Enable again when upstream supports ICU 59
   [libdrm]=
   [libjpeg]=libjpeg
-  [libpng]=libpng
+  #[libpng]=libpng           # https://crbug.com/752403#c10
   #[libvpx]=libvpx           # https://bugs.gentoo.org/611394
   [libwebp]=libwebp
   #[libxml]=libxml2          # https://bugs.gentoo.org/616818
@@ -27,7 +28,7 @@ declare -rgA _system_libs=(
 
 pkgname=chromium-gtk2
 _pkgname=chromium
-pkgver=60.0.3112.90
+pkgver=60.0.3112.113
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security (GTK2 version)"
@@ -54,7 +55,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-v8-gcc7.patch
         chromium-widevine.patch
         issue2961473002_1_10001.diff)
-sha256sums=('b42f7965764b4528116622a71a60f52becd4186ff8854f3051bf45c6368739e6'
+sha256sums=('ebfce706a1ea02a92e35f360c7364d1184dacf040b59eade4cb51aa61a4fec59'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '06345804c00d9618dad98a2dc04f31ef19912cdf6e9d6e577ef7ffb1fa57003f'
