@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A libretro implementation of Final Burn Alpha"
 arch=('i686' 'x86_64')
 url="https://github.com/libretro/fbalpha"
-license=('Unknown')
+license=('GPL2')
 depends=()  # retroarch isn't required, but I probably missed something here
 source=("https://github.com/libretro/${pkgname}/archive/v${pkgver}.tar.gz"
         "fbalpha_libretro.info")
