@@ -2,7 +2,7 @@
 
 pkgname=eve-ng-integration-git
 pkgver=r63.3faa8ad
-pkgrel=2
+pkgrel=3
 pkgdesc="Integrates EVE-NG (aka UNetLab) with Linux desktop"
 arch=('any')
 url="http://eve-ng.net"
@@ -10,6 +10,7 @@ license=('GPL')
 depends=('python2' 'inetutils')
 optdepends=('wireshark-gtk' 'wireshark-qt' 'x11-ssh-askpass' 'vinagre' 'python2-docker')
 makedepends=('git')
+install=install
 source=('eve-ng-integration::git+https://github.com/SmartFinn/eve-ng-integration.git')
 md5sums=('SKIP')
 
