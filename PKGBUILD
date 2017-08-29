@@ -3,7 +3,7 @@
 
 pkgname=modified-shop
 pkgver=2.0.3.0_r10907
-pkgrel=2
+pkgrel=3
 pkgdesc="eCommerce shopsoftware"
 arch=('any')
 url="http://www.modified-shop.org"
