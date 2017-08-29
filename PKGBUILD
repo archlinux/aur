@@ -1,12 +1,11 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Maintainer: Michael Healy <horsemanoffaith@gmail.com>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname}, repo=yakkety
+# vercheck-ubuntu: name=${pkgname}, repo=zesty
 
 pkgname=ubuntu-themes
 _actual_ver=16.10
-_extra_ver=+17.04.20161205
+_extra_ver=+17.04.20170406
 _ubuntu_rel=0ubuntu1
 pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=1
@@ -15,27 +14,23 @@ arch=(any)
 url="https://launchpad.net/ubuntu-themes"
 license=(CCPL)
 groups=(unity-extra)
-depends=(humanity-icon-theme adwaita-icon-theme hicolor-icon-theme
+depends=(human-icon-theme adwaita-icon-theme hicolor-icon-theme
          gtk-engine-murrine)
 makedepends=(python2 imagemagick icon-naming-utils)
 provides=(light-themes ubuntu-mono)
 conflicts=(light-themes ubuntu-mono)
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${_actual_ver}${_extra_ver}.orig.tar.gz")
 
-sha512sums=('42bb622ad6818f7bf2e9f163f4a9a342fd7d8bad5e8a50db2d439857d053b0827543b7e8f626588316670fd6c63d050ecc522aef52e49c5c336ac08f6f303238')
+sha512sums=('50d65dbe232237e1757b0d7a85ba7c2cafac18861211ca1b33a57de6a4961c325014851d1ee661adec57fac7472b7ae4f78439f30fa6f425eb751e94940d9f91')
 
 build() {
-  #cd "${pkgname}-${_actual_ver}${_extra_ver}"
-
-  # Python 2 fix
+   # Python 2 fix
   sed -i 's|^\(#!.*python$\)|\12|g' scavenge.py
 
   make
 }
 
 package() {
-  #cd "${pkgname}-${_actual_ver}${_extra_ver}"
-
   # Install themes
   install -dm755   "${pkgdir}/usr/share/themes/"
   cp -av Ambiance/ "${pkgdir}/usr/share/themes/"
