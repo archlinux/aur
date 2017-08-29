@@ -2,7 +2,7 @@
 
 pkgbase=linux-baytrail49 
 _srcname=linux-baytrail49
-pkgver=..
+pkgver=4.9.45
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 _kernelname=${pkgbase#linux}
 
 pkgver() {
-  cd ${_pkgname}
+  cd ${_srcname}
   printf "%s.%s.%s" \
     "$(git tag -l|grep -P '.+\..+\.\d+'|sed -r 's|v?([0-9\.]+)(-.+)?|\1|g'|sort -V -r|head -n1)" \
     "$(git rev-list --count HEAD)" \
