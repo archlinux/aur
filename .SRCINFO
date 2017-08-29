@@ -17,7 +17,6 @@ pkgbase = flysight-viewer-qt-git
 	source = 0002-Fix-libvlc-qt-library-naming.patch
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = SKIP
 
 pkgname = flysight-viewer-qt-git
 

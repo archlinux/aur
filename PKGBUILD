@@ -17,7 +17,7 @@ options=()
 install=
 source=("${pkgname%-git}::git+https://github.com/flysight/flysight-viewer-qt#branch=master" '0002-Fix-libvlc-qt-library-naming.patch')
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
