@@ -1,0 +1,20 @@
+pkgbase = gscli
+	pkgdesc = CLI GNU Social client
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = https://gitgud.io/dtluna/gscli
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gnusocial
+	depends = python-keyrings-alt
+	depends = python-prompt_toolkit
+	depends = python-voluptuous
+	depends = python-tzlocal
+	depends = python-xdg
+	source = https://gitgud.io/dtluna/gscli/repository/archive.tar.gz?ref=1.3.4
+	sha256sums = a9662e26c6b62fbf6510875d09c1825dbb1939b7de4c447e55a948d31b2addd3
+
+pkgname = gscli
+
