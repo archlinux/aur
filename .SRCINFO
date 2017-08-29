@@ -1,6 +1,6 @@
 pkgbase = dawawin
 	pkgdesc = Arabic poems
-	pkgver = 0.10.3
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/RaaH/dawawin
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = dawawin
 	depends = python
 	depends = xdg-utils
 	depends = hicolor-icon-theme
-	source = https://sourceforge.net/projects/dawawin/files/Dawawin-0.10.3.tar.xz
-	sha256sums = 64599393fbf091bc660f4d688076e17b97648b7205c26eb056df572f042bd277
+	source = https://sourceforge.net/projects/dawawin/files/Dawawin-0.11.0.tar.xz
+	sha256sums = 41c717e622dcca54b35519d3ac208145ccd85904d967d1101a43fc9116d65bde
 
 pkgname = dawawin
 

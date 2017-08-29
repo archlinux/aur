@@ -1,13 +1,13 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 pkgname=dawawin
-pkgver=0.10.3
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Arabic poems" 
 license=('custom')
 arch=('any')
 depends=('python' 'xdg-utils' 'hicolor-icon-theme')
 url="https://github.com/RaaH/dawawin"
-sha256sums=('64599393fbf091bc660f4d688076e17b97648b7205c26eb056df572f042bd277')
+sha256sums=('41c717e622dcca54b35519d3ac208145ccd85904d967d1101a43fc9116d65bde')
 source=(https://sourceforge.net/projects/${pkgname}/files/Dawawin-$pkgver.tar.xz)
 
 package() {
