@@ -3,7 +3,7 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org> ([core] package)
 
 pkgname=mkinitcpio-git
-pkgver=23.r2.g91b2125
+pkgver=23.r6.g32dbf89
 pkgrel=1
 pkgdesc='Modular initramfs image creation utility - git checkout'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('xz: Use lzma or xz compression for the initramfs image'
             'lzop: Use lzo compression for the initramfs image'
             'mkinitcpio-nfs-utils: Support for root filesystem on NFS')
 makedepends=('git' 'asciidoc')
-provides=('mkinitcpio')
+provides=("mkinitcpio=${pkgver}")
 conflicts=('mkinitcpio')
 backup=('etc/mkinitcpio.conf')
 source=('git://projects.archlinux.org/mkinitcpio.git')
@@ -26,9 +26,14 @@ pkgver() {
 	cd mkinitcpio/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git log -1 --format='%h')"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git log -1 --format='%h')"
 	fi
 }
 
