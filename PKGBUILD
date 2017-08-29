@@ -8,7 +8,7 @@ pkgdesc="Graylog is an open source syslog implementation that stores your logs i
 arch=('any')
 url="https://www.graylog.org/"
 license=(GPL)
-depends=('java-runtime-headless>8')
+depends=('java-runtime-headless=>8')
 optdepends=(elasticsearch mongodb)
 install=graylog.install
 backup=(
