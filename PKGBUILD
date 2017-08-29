@@ -1,9 +1,10 @@
-# Maintainer: Julien Savard <juju@juju2143.ca>
+# Maintainer : CoiledSpring
+# Original maintainer: Julien Savard <juju@juju2143.ca>
 # Based on msp430-elf-gcc
 
 _target="sh3eb-elf"
 pkgname=${_target}-gcc
-pkgver=6.1.0
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=(i686 x86_64)
@@ -11,8 +12,8 @@ license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
 depends=("${_target}-binutils" 'libmpc' 'elfutils')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2)
-sha256sums=('09c4c85cabebb971b1de732a0219609f93fc0af5f86f6e437fd8d7f832f1a351')
+source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
+sha256sums=('1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a')
 
 prepare() {
   cd "${srcdir}/gcc-${pkgver}"
