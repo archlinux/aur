@@ -11,10 +11,10 @@ BLUE="${BOLD}$(tput setaf 4)"
 GREEN="${BOLD}$(tput setaf 2)"
 
 post_install() {
-  update-desktop-database -q || true
+#  update-desktop-database -q || true
 }
  
 post_remove() {
-  update-desktop-database -q || true
+#  update-desktop-database -q || true
 }
 
