@@ -19,14 +19,13 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech')
 provides=(firefox)
 conflicts=(firefox)
-options=(!emptydirs !makeflags !strip)
+options=(!emptydirs !makeflags)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg
         0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
         0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
         firefox-install-dir.patch fix-wifi-scanner.diff
 		use-noexcept-instead-of-an-exception-specification-in-mozalloc.patch
-		g++-error-crashreporter.patch
 		breakpad-still-uses-struct-ucontext-in-ucontext_reader-cc.patch)
 sha256sums=('c16bc86d6cb8c2199ed1435ab80a9ae65f9324c820ea0eeb38bf89a97d253b5b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
@@ -71,9 +70,6 @@ prepare() {
 
   # https://hg.mozilla.org/mozilla-central/rev/ae7e3082d862
   patch -Np1 -i ../use-noexcept-instead-of-an-exception-specification-in-mozalloc.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1277926
-  patch -Np1 -i ../g++-error-crashreporter.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
   patch -Np1 -i ../breakpad-still-uses-struct-ucontext-in-ucontext_reader-cc.patch
