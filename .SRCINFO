@@ -1,15 +1,15 @@
 pkgbase = knp
-	pkgdesc = KN parser (Kurohashi-Nagao parser) which detects dependency of Japanese sentences
-	pkgver = 4.16
-	pkgrel = 3
+	pkgdesc = Japanese Dependency and Case Structure Analyzer
+	pkgver = 4.17
+	pkgrel = 1
 	url = http://nlp.ist.i.kyoto-u.ac.jp/index.php?KNP
 	arch = x86_64
 	arch = i686
 	license = custom
 	depends = juman
 	conflicts = crfpp
-	source = http://nlp.ist.i.kyoto-u.ac.jp/DLcounter/lime.cgi?down=http://nlp.ist.i.kyoto-u.ac.jp/nl-resource/knp/knp-4.16.tar.bz2
-	sha512sums = ccb64b8baaebe78cbe461b681c909b4875c47dc060a005cfbacd83739b3bcd5ea5ac3cb9769832f1c9726b61bd001362a03e4e1de27d81bff6fb10b6f3a5d0bd
+	source = http://nlp.ist.i.kyoto-u.ac.jp/DLcounter/lime.cgi?down=http://nlp.ist.i.kyoto-u.ac.jp/nl-resource/knp/knp-4.17.tar.bz2
+	sha512sums = 7437781d2046431222fdb962e90cb98a6189d8efc09df77e7a0ea1a0d62f19cad38167fd77da75c7e5a014e6266ed9ecaa5b91be92ac8bfae7cbc4d92b1e0a2f
 
 pkgname = knp
 
