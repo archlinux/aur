@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Smokin' Guns
+Comment=A semi-realistic simulation of the old west great atmosphere built on id Tech 3.
+Exec=smokinguns
+Icon=smokinguns
+Terminal=false
+StartupNotify=false
+Categories=Game;
+GenericName=Wild-West-Shooter

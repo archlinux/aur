@@ -4,31 +4,33 @@
 pkgname=smokinguns-git
 _pkgname=smokinguns
 pkgver=1.1.r859.gf5d9ecf2
-pkgrel=3
+pkgrel=4
 pkgdesc='A semi-realistic simulation of the old west great atmosphere built on id Tech 3.'
 url="http://www.smokin-guns.org"
 arch=('i686' 'x86_64')
 license=('GPL2')
 changelog=.CHANGELOG
 depends=('sdl' 'speex' 'hicolor-icon-theme' 'freetype2' 'libglvnd' 'libjpeg-turbo')
-makedepends=('gendesk')
+# makedepends=('gendesk')
 conflicts=('smokinguns-bin' 'smokinguns' 'smokinguns-data')
 provides=('smokinguns-data' 'smokinguns')
 source=("${pkgname}::git+https://github.com/smokin-guns/SmokinGuns.git"
-        "${pkgname}-data::http://www.smokin-guns.org/downloads/Smokin_Guns_1.1.zip")
+        "${pkgname}-data::http://www.smokin-guns.org/downloads/Smokin_Guns_1.1.zip"
+        "smokinguns.desktop")
 sha512sums=('SKIP'
-            '51954ce00cccd9eb95a10491f0fcdea2d024058da11cbda7ee56c6369e8bc101d89ed95549cf4255393c3e1bec4585be12937e7ed7b20ff4cc0ce96685a5ce72')
+            '51954ce00cccd9eb95a10491f0fcdea2d024058da11cbda7ee56c6369e8bc101d89ed95549cf4255393c3e1bec4585be12937e7ed7b20ff4cc0ce96685a5ce72'
+            '37aefb4a9e811644af09bbbfdb35d6a2572bc70b6fe8ff0078330d1070e73ebcd18f2e656156f1e3d92b2ec7f6fdffe63b2c66018b449d8b5aa6402b3eb24d7d')
 
 pkgver()
 {
-	cd "${srcdir}/${pkgname}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${pkgname}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare()
 {
   cd "${srcdir}"
-  gendesk -n -f --name="Smokin' Guns"
+  # gendesk -n -f --name="Smokin' Guns"
   
   # update .CHANGELOG
   git -C "${srcdir}/${pkgname}" log --graph -10 > "${startdir}/.CHANGELOG"
