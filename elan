@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for name in /usr/share/java/elan/lib/*.jar;
+do
+    CP=$CP:$name
+done
+for name in /usr/share/java/elan/*.jar;
+do
+    CP=$CP:$name
+done
+java -cp "$CP" mpi.eudico.client.annotator.ELAN
