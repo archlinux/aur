@@ -1,0 +1,144 @@
+--- DoConfig.cpp	2011-04-26 10:42:52.000000000 +0400
++++ DoConfig.cpp.new	2014-04-06 11:21:16.000000000 +0400
+@@ -3,10 +3,10 @@
+  * and/or modify it under the terms of the Do What The F*** You Want
+  * To Public License, Version 2, as published by Sam Hocevar. See
+  * http://sam.zoy.org/wtfpl/COPYING for more details. */
+-
++
+ #include <cstdlib>
+ #include <iostream>
+-#include <fstream>
++#include <fstream>
+ #include <cstring>
+ #include "FL/Fl.H"
+ #include "FL/Fl_Window.H"
+@@ -66,6 +66,98 @@
+ 	this->buttons[input]->setonly();
+ }
+ 
++/**
++ * Action code values are a bit mixed up - on the screen they don't follow in the same
++ * way they are coded in Config.dat file.
++ * 
++ * this is how hex dump of the last 4x8 bytes of the
++ * Config.dat file looks when the controller settings
++ * are saved in the following way:
++ * 1=[0]Jump(1)
++ * 2=[1]Attack(2)
++ * 3=[2]Weapon+(3)
++ * 4=[3]Weapon-(6)
++ * 5=[4]Items(4)
++ * 6=[5]Map(5)
++ * 7=[0]Jump(1)
++ * 8=[1]Attack(2)
++ *             01 00 00 00 02 00 00 00 03 00 00 00
++ * 06 00 00 00 04 00 00 00 05 00 00 00 01 00 00 00
++ * 02 00 00 00
++ */
++int screenIndexToFileIndex(int screenIndex) {
++	int fileIndex;
++	switch(screenIndex) {
++	  case 0: // Jump on screen
++	    fileIndex = 1; //Jump in file
++	    break;
++	  case 1: // Attack on screen
++	    fileIndex = 2; // Attack in file
++	    break;
++	  case 2: // Weapon+ on screen
++	    fileIndex = 3; // Weapon+ in file
++	    break;
++	  case 3: // Weapon- on screen
++	    fileIndex = 6; // Weapon- in file
++	    break;
++	  case 4: // Items on screen
++	    fileIndex = 4; // Items in file
++	    break;
++	  case 5: // Map on screen
++	    fileIndex = 5; // Map in file
++	    break;
++	  default:
++	    fileIndex = 0;
++	}
++	return fileIndex;
++}
++
++/**
++ * Action code values are a bit mixed up - on the screen they don't follow in the same
++ * way they are coded in Config.dat file.
++ * 
++ * this is how hex dump of the last 4x8 bytes of the
++ * Config.dat file looks when the controller settings
++ * are saved in the following way:
++ * 1=[0]Jump(1)
++ * 2=[1]Attack(2)
++ * 3=[2]Weapon+(3)
++ * 4=[3]Weapon-(6)
++ * 5=[4]Items(4)
++ * 6=[5]Map(5)
++ * 7=[0]Jump(1)
++ * 8=[1]Attack(2)
++ *             01 00 00 00 02 00 00 00 03 00 00 00
++ * 06 00 00 00 04 00 00 00 05 00 00 00 01 00 00 00
++ * 02 00 00 00
++ */
++int fileIndexToScreenIndex(int fileIndex) {
++	int screenIndex;
++	switch(fileIndex) {
++	  case 1: // Jump in file
++	    screenIndex = 0; //Jump on screen
++	    break;
++	  case 2: // Attack in file
++	    screenIndex = 1; // Attack on screen
++	    break;
++	  case 3: // Weapon+ in file
++	    screenIndex = 2; // Weapon+ on screen
++	    break;
++	  case 4: // Items in file
++	    screenIndex = 4; // Items on screen
++	    break;
++	  case 5: // Map in file
++	    screenIndex = 5; // Map on screen
++	    break;
++	  case 6: // Weapon- in file
++	    screenIndex = 3; // Weapon- on screen
++	    break;
++	  default:
++	    screenIndex = 0;
++	}	
++	return screenIndex;
++}
++
+ Fl_Round_Button *movear;
+ Fl_Round_Button *movegt;
+ 
+@@ -117,10 +209,9 @@
+ 	if( !config.useJoy ){
+ 		joystuffcontainer->deactivate();
+ 	}
+-	for(char i=0;i<8;i++){
+-		if(config.buttons[i]<9 && config.buttons[i]>0){
+-			joyRows[i]->value(config.buttons[i] -1);
+-		}
++	
++	for(char i=0;i<8;i++){	  
++		joyRows[i]->value(fileIndexToScreenIndex(config.buttons[i]));
+ 	}
+ 	fd.close();
+ }
+@@ -141,7 +232,7 @@
+ 	config.display = displaychoice->value();
+ 	config.useJoy = joychoice->value();
+ 	for(char i =0;i<8;i++){
+-		config.buttons[i] = joyRows[i]->value();
++		config.buttons[i] = screenIndexToFileIndex(joyRows[i]->value());
+ 	}
+ 	fd.write((char*)&config, 148);
+ 	fd.close();
+@@ -227,4 +318,4 @@
+ 	read_Config();
+ 	Fl::option(Fl::OPTION_VISIBLE_FOCUS, false);
+ 	return Fl::run();
+-}
++}
+\ No newline at end of file

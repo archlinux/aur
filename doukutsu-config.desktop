@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Configuration de Cave Story
+Comment=Utilitaire de configuration pour Cave Story
+Exec=doukutsu -c
+Icon=doukutsu
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Game;AdventureGame;
+Encoding=UTF-8

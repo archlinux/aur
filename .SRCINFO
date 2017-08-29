@@ -1,0 +1,32 @@
+pkgbase = doukutsu-fr
+	pkgdesc = Japanese freeware PC side-scrolling platformer game (aka Cave Story). French ver.
+	pkgver = 1.2
+	pkgrel = 6
+	url = http://cavestory.maxlefou.com/
+	arch = i686
+	arch = x86_64
+	license = custom:freeware
+	depends = bash
+	depends = sdl
+	depends = fltk
+	depends = libxinerama
+	depends = libxft
+	source = http://cavestory.maxlefou.com/files/linuxDoukutsu-1.21FR.tar.xz
+	source = http://www.cavestory.org/downloads/linuxDoukutsu-1.2.zip
+	source = http://www.cavestory.org/downloads/DoConfigure-r2.zip
+	source = configure-gamepad-fix.patch
+	source = doukutsu.desktop
+	source = doukutsu-config.desktop
+	source = doukutsu.png
+	source = doukutsu
+	md5sums = ff63588fa1bbd5b3c16c603b5074a37e
+	md5sums = e73d7330fba3cc5c15f0eeb239df586f
+	md5sums = 9f5e96d5ff9671691b7c8a41f8fa5880
+	md5sums = d4f9cdcd06058177671bd741b5bf5fa4
+	md5sums = ddd04fb93154c3cfa41589102c1b2487
+	md5sums = 663a634c5edecad78db9d33f58f1d636
+	md5sums = 5262f9ff9bc528c790bf424016e6305f
+	md5sums = 33e725f0fd06ae89fbf2290cbae79d9e
+
+pkgname = doukutsu-fr
+
