@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname%-git}::git+https://github.com/flysight/flysight-viewer-qt#branch=master" '0001-Fix-flarescoring-include-casing.patch' '0002-Fix-libvlc-qt-library-naming.patch')
+source=("${pkgname%-git}::git+https://github.com/flysight/flysight-viewer-qt#branch=master" '0002-Fix-libvlc-qt-library-naming.patch')
 noextract=()
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
@@ -29,7 +29,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-    patch -p1 -i "$srcdir/0001-Fix-flarescoring-include-casing.patch"
     patch -p1 -i "$srcdir/0002-Fix-libvlc-qt-library-naming.patch"
 }
 
