@@ -1,7 +1,7 @@
 # Maintainer: Daniel Martí <mvdan@mvdan.cc>
 
 pkgname=tyk
-pkgver=2.3.7
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="API gateway and management platform"
 url="https://github.com/TykTechnologies/${pkgname}"
