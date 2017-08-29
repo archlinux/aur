@@ -1,0 +1,36 @@
+post_install() {
+  cd /usr/share/webapps/modified-shop
+  chown http:http\
+		admin/magnalister.php\
+		includes/configure.php\
+		magnaCallback.php\
+		sitemap.xml\
+		admin/backups\
+		admin/images/graphs\
+		admin/images/icons\
+		cache\
+		export\
+		export/easybill\
+		export/idealo_realtime\
+		images\
+		images/banner\
+		images/categories\
+		images/content\
+		images/icons\
+		images/manufacturers\
+		images/product_images/info_images\
+		images/product_images/original_images\
+		images/product_images/popup_images\
+		images/product_images/thumbnail_images\
+		import\
+		log\
+		media/content\
+		media/products\
+		media/products/backup\
+		templates_c\
+		includes/external/magnalister\
+		includes/external/shopgate/shopgate_library/config\
+		templates/tpl_modified\
+		templates/xtc5\
+  chown -R http:http includes/external/magnalister
+}
