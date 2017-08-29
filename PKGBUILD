@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-auth_spnego
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 
 _modname=spnego-http-auth-nginx-module
 _nginxver=1.13.4
