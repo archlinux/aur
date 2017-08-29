@@ -3,8 +3,8 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-git
-pkgver=55.0.2+fdf9f824473c
-pkgrel=2
+pkgver=55.0.2+49aea8cd7265
+pkgrel=1
 pkgdesc="64-Bit optimized Firefox fork, no data collection, allows unsigned extensions"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
