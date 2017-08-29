@@ -5,9 +5,9 @@
 # Contributor: Jelle van der Waa <jellevdwaa@gmail.com>
 
 pkgname=xmind
-pkgver=3.7.2
-_filename=$pkgname-8-update2-linux
-pkgrel=3
+pkgver=3.7.3
+_filename=$pkgname-8-update3-linux
+pkgrel=1
 pkgdesc="Brainstorming and Mind Mapping Software"
 arch=('i686' 'x86_64')
 url="http://www.xmind.net"
@@ -15,15 +15,15 @@ license=('EPL' 'LGPL')
 depends=('gtk3' 'java-runtime=8')
 optdepends=('lame: needed for the feature audio notes')
 source=("http://www.xmind.net/xmind/downloads/${_filename}.zip"
-        "XMind.ini"
-        "XMind"
-        "XMind.desktop"
-        "XMind.png")
-sha512sums=('e658714a5944e8de62577302c22763e9c55d1f82ce6cbda187ec39801ac7cbd5c34de6e4d7d9735546bcef26795c21c194ff026cebf39b2c9af2663cec98ce58'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+"XMind.ini"
+"XMind"
+"XMind.desktop"
+"XMind.png")
+sha512sums=('ba319a52b9b08a5734f213bfc03315a6c3f7fa575be540523e6082d27c7bd6ba82df1292ef5a4107eba243a0177b6f0d9481aa983839a75bbe17521eba04ed26'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP')
 
 package() {
     mkdir -p ${pkgdir}/usr/share/${pkgname}
