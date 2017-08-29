@@ -4,8 +4,8 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.12
-pkgver=4.12.8
-pkgrel=2
+pkgver=4.12.9
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -17,7 +17,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         'bonding-require-speed-duplex-only-for-802.3ad-alb-an.patch'
         'bonding-ratelimit-failed-speed-duplex-update-warning.patch'
-        'mm-Revert-x86_64-and-arm64-ELF_ET_DYN_BASE-base.patch'
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -27,11 +26,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '32b860911a3bafd5cd5bc813a427c90fad6eafdf607fa64e1b763b16ab605636'
+            '32c5df9c032d039d17cee0397b74583000053089e1c2fdfdc77acc2edc2d2e76'
             'SKIP'
             '48e0505438bb4ccc7a0e050a896122b490e8f1b1446aa3833841a9d4d7853d68'
             'fc606711a922638d5cc4358f47f69f554d9e6eab1cec91f0b49f00911f399722'
-            'b830ce777543c0edd20a77d70f204c095f2429bb37151cd4a8c9dfae2af8d51a'
             'df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1'
             'bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
@@ -57,11 +55,7 @@ prepare() {
   # https://bugzilla.kernel.org/show_bug.cgi?id=196547
   patch -Np1 -i ../bonding-ratelimit-failed-speed-duplex-update-warning.patch
   patch -Np1 -i ../bonding-require-speed-duplex-only-for-802.3ad-alb-an.patch
-
-  # https://github.com/google/sanitizers/issues/837
-  # https://patchwork.kernel.org/patch/9886105/
-  patch -Np1 -i ../mm-Revert-x86_64-and-arm64-ELF_ET_DYN_BASE-base.patch
-
+  
   cat "${srcdir}/config.${CARCH}" > ./.config
 
   if [ "${_kernelname}" != "" ]; then
