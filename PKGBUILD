@@ -1,12 +1,13 @@
 # Maintainer: Aleksandr <4le34n at gmail dot com>
 
 pkgname=eve-ng-integration-git
+_pkgname=eve-ng-integration
 pkgver=r63.3faa8ad
 pkgrel=3
 pkgdesc="Integrates EVE-NG (aka UNetLab) with Linux desktop"
 arch=('any')
 url="http://eve-ng.net"
-license=('GPL')
+license=('MIT')
 depends=('python2' 'inetutils')
 optdepends=('wireshark-gtk' 'wireshark-qt' 'x11-ssh-askpass' 'vinagre' 'python2-docker')
 makedepends=('git')
@@ -22,5 +23,8 @@ pkgver() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install post-install
-        sed -i "s|python|python2|" "$pkgdir/usr/bin/eve-ng-integration"
+        sed -i "s|python|python2|" "$pkgdir/usr/bin/$_pkgname"
+        install -Dm644 README.md "${pkgdir}/usr/share/doc/$_pkgname/README.md"
+        install -Dm644 demo.gif "${pkgdir}/usr/share/doc/$_pkgname/demo.gif"
+        install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$_pkgname/LICENSE"
 }
