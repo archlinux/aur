@@ -4,14 +4,14 @@
 
 pkgname=cairo-infinality-ultimate
 _name=cairo
-pkgver=1.14.8
-pkgrel=3
+pkgver=1.14.10
+pkgrel=1
 pkgdesc="Cairo vector graphics library"
 arch=(i686 x86_64)
 license=('LGPL' 'MPL')
 url="http://cairographics.org/"
 groups=('infinality-bundle')
-# requires libGL + libEGL - all libgl variants (mesa, nvidia-xxx-libgl/nvidia-utils) provide libEGL
+# requires libGL + libEGL - all libgl variants (mesa
 depends=('libpng' 'libxrender' 'libxext' 'fontconfig-infinality-ultimate' 'pixman' 'glib2' 'libgl' 'lzo')
 makedepends=('mesa-libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre' 'gtk-doc' 'valgrind' 'git')
              # for the test suite:
@@ -27,7 +27,7 @@ source=(http://cairographics.org/releases/cairo-$pkgver.tar.xz
         cairo-server-side-gradients.patch
         cairo-webkit-html5-fix.patch
 	cairo-color-glyphs.patch)
-sha1sums=('c6f7b99986f93c9df78653c3e6a3b5043f65145e'
+sha1sums=('28c59d85d6b790c21b8b59ece73a6a1dda28d69a'
           'b0cc2466cc5479f055ca2148cfa37fe13a1e78a6'
           'd8ffcb4c4745f7e61671109362a80a872ac989d3'
           '72ecf2dda8462e1588512de257ccbe18642d507f'
@@ -58,6 +58,7 @@ build() {
 	--enable-ps \
 	--enable-pdf \
 	--enable-gobject \
+  --enable-qt \
 	--enable-gtk-doc
 	
 	#--disable-xlib-xcb \
