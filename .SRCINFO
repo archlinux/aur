@@ -6,7 +6,6 @@ pkgbase = libratbag
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = chrpath
 	makedepends = systemd
 	makedepends = meson
 	depends = glibc
