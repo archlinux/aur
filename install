@@ -4,7 +4,7 @@ note() {
 
 post_install() {
 	getent group netflow &>/dev/null || groupadd -r -g 44 netflow >/dev/null
-	getent passwd netflow &>/dev/null || useradd -r -u 44 -g netflow -d /var/lib/nfsen -s /bin/false -G netflow http >/dev/null
+	getent passwd netflow &>/dev/null || useradd -r -u 44 -g netflow -d /var/lib/nfsen -s /bin/false -G http netflow >/dev/null
 	usr/bin/systemd-tmpfiles --create nfsen.conf || true
         
         note 'To complete the installation, run:'
