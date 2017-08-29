@@ -3,7 +3,7 @@
 
 pkgbase=python-path
 pkgname=(python-path python2-path)
-pkgver=10.1
+pkgver=10.4
 pkgrel=1
 pkgdesc="Aka path.py, implements path objects as first-class entities"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'python-setuptools')
 makedepends=('python-setuptools' 'python2-setuptools')
 #source=("https://pypi.python.org/packages/source/p/path.py/path.py-$pkgver.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/p/path.py/path.py-$pkgver.tar.gz")
-md5sums=('f9d31317ceeb798f6b5eac8d3b8e5988')
+md5sums=('84ed5ec53c113554662194bb8cdfc04e')
 
 # formerly a dependency of python-pickleshare
 # now used by nothing so back to the AUR
