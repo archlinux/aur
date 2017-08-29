@@ -23,7 +23,7 @@ md5sums=('84ae35504e18ad5925d035f3d9c53556'
 prepare () {
   cd $srcdir/$pkgname-$pkgver
   # replace xterm by your favourite terminal emulator here
-  sed -i s+xterm+evilvte+ $srcdir/v$pkgname-$_vver/window.cpp
+  sed -i s+xterm+st+ $srcdir/v$pkgname-$_vver/window.cpp
 }
 
 build() {
