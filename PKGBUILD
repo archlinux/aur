@@ -26,8 +26,7 @@ md5sums=(
 build() {
   
   cd "$srcdir/$pkgname"
-  make mrboom LIBSDL2=1
-  cp mrboom.out mrboom
+  make PREFIX=/usr mrboom LIBSDL2=1
 
 }
 
@@ -36,10 +35,10 @@ package() {
   cd "$srcdir/$pkgname"
 
   # Install main binary
-  install -Dm755 mrboom "$pkgdir"/bin/mrboom
-
-  # Make doc dir
-  mkdir -p $pkgdir/usr/share/doc/$pkgname
+  install -d "$pkgdir/usr/bin"
+  install -d "$pkgdir/usr/man"
+  install -d "$pkgdir/usr/share/doc"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 
   # supplemental files
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/mrboom.desktop"
