@@ -19,7 +19,7 @@ pkgbase = movim
 	provides = movim
 	backup = etc/webapps/movim/db.inc.php
 	backup = etc/default/movim
-	source = movim::git://github.com/movim/movim#tag=v0.11
+	source = movim::git+https://github.com/movim/movim#tag=v0.11
 	source = movim.env
 	source = movim.service
 	sha256sums = SKIP

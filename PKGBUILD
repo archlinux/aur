@@ -19,7 +19,7 @@ optdepends=('postgresql: to use the postgresql database backend'
             'apache: reverse proxy'
             'php-fpm: PHP FactCGI process manager')
 makedepends=('git' 'composer')
-source=("$_pkgbase::git://github.com/movim/movim#tag=$_tagname"
+source=("$_pkgbase::git+https://github.com/movim/movim#tag=$_tagname"
         movim.env
         movim.service)
 install=movim.install
