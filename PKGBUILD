@@ -3,7 +3,7 @@
 pkgname=mrboom-git
 _basename=mrboom
 pkgver=3.6.r4.g2f986e0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mr.Boom is a 8 players Bomberman clone"
 arch=('i686' 'x86_64')
 conflicts=('mrboom')
@@ -12,6 +12,8 @@ url="http://mrboom.mumblecore.org"
 license=('GPL2')
 makedepends=(
 			 'git'
+			 'libmodplug'
+			 'minizip'
 			 'sdl2'
 			 'sdl2_mixer'
 			)
