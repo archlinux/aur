@@ -13,7 +13,7 @@ pkgbase = openfortivpn
 	source = git+https://github.com/adrienverge/openfortivpn.git#tag=v1.3.1
 	source = allow-no-unused-functions.patch
 	md5sums = SKIP
-	md5sums = 4ce932a43c5b6e7241fb3e7ccc7a199f
+	md5sums = a4a91e1da771c2a5fdd00153f4695352
 
 pkgname = openfortivpn
 

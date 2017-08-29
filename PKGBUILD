@@ -18,7 +18,7 @@ install=
 source=("git+https://github.com/adrienverge/$pkgname.git#tag=v$pkgver" "allow-no-unused-functions.patch")
 noextract=()
 md5sums=('SKIP'
-         '4ce932a43c5b6e7241fb3e7ccc7a199f')
+         'a4a91e1da771c2a5fdd00153f4695352')
 
 prepare() {
  cd "$srcdir/$pkgname"
