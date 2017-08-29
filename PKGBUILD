@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hanft <mail@patrick-hanft.de>
 pkgname=openfortivpn
-pkgver=1.3.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="An open implementation of Fortinet's proprietary PPP+SSL VPN solution"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ install=
 source=("git+https://github.com/adrienverge/$pkgname.git#tag=v$pkgver" "allow-no-unused-functions.patch")
 noextract=()
 md5sums=('SKIP'
-         'a4a91e1da771c2a5fdd00153f4695352')
+         'cb2d5a8b3f799ec3d0267722f0a0206b')
 
 prepare() {
  cd "$srcdir/$pkgname"

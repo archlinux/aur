@@ -1,5 +1,5 @@
---- Makefile.am	2017-08-29 21:03:14.128011847 +0200
-+++ Makefile.am.new	2017-08-29 21:06:54.734339955 +0200
+--- Makefile.am	2017-08-29 21:16:38.310124393 +0200
++++ Makefile.am.new	2017-08-29 21:17:49.376684858 +0200
 @@ -9 +9 @@ openfortivpn_SOURCES = src/config.c src/
--openfortivpn_CFLAGS = -Wall -Werror --pedantic -std=gnu99
-+openfortivpn_CFLAGS = -Wall -Werror --pedantic -std=gnu99 -Wno-unused-function
+-openfortivpn_CFLAGS = -Wall --pedantic -std=gnu99
++openfortivpn_CFLAGS = -Wall --pedantic -std=gnu99 -Wno-unused-function
