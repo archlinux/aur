@@ -4,7 +4,7 @@
 pkgbase=linux-neo_chen               # Build -neo_chen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.12
-pkgver=4.12.8
+pkgver=4.12.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
