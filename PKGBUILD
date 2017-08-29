@@ -21,12 +21,12 @@ build() {
   cd ../..
   mkdir build
   cd build
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" ../
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr/" ../
   make
 }
 
 package() {
   cd "${srcdir}/kumir2/build"
-  make install  
+  make DESTDIR="$pkgdir/" install  
   mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib" | true
 }
