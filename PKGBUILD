@@ -1,9 +1,10 @@
-# Maintainer: Julien Savard <juju@juju2143.ca>
+# Maintainer : CoiledSpring
+# Original maintainer: Julien Savard <juju@juju2143.ca>
 # Based on msp430-elf-binutils
 
 _target=sh3eb-elf
 pkgname=${_target}-binutils
-pkgver=2.26
+pkgver=2.28
 pkgrel=1
 pkgdesc="GNU binary utilities for the ${_target} target."
 arch=(i686 x86_64)
@@ -12,7 +13,7 @@ url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=('zlib' 'flex')
 source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-sha256sums=('c2ace41809542f5237afc7e3b8f32bb92bc7bc53c6232a84463c423b0714ecd9')
+sha256sums=('6297433ee120b11b4b0a1c8f3512d7d73501753142ab9e2daa13c5a3edd32a72')
 
 prepare() {
   cd "${srcdir}/binutils-${pkgver}"
