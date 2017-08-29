@@ -2,7 +2,7 @@
 
 pkgname=mrboom
 pkgver=3.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Mr.Boom is a 8 players Bomberman clone"
 arch=('i686' 'x86_64')
 conflicts=('mrboom')

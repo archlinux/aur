@@ -1,7 +1,7 @@
 pkgbase = mrboom
 	pkgdesc = Mr.Boom is a 8 players Bomberman clone
 	pkgver = 3.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://mrboom.mumblecore.org
 	arch = i686
 	arch = x86_64
