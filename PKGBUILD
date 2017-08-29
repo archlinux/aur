@@ -34,6 +34,7 @@ build() {
 	  -DCMAKE_INSTALL_PREFIX=/usr \
           -DRTAGS_NO_BUILD_CLANG=1
     make
+    sed -i "s#\$RDM#/usr/bin/rdm#" ${srcdir}/rtags/share/etc/services/system/rdm.service
 }
 
 package() {
