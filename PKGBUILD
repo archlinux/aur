@@ -1,7 +1,7 @@
 pkgname=mono-alpha
 _pkgname=mono
-pkgver=5.4.0.135
-pkgrel=6
+pkgver=5.4.0.167
+pkgrel=7
 pkgdesc="Free implementation of the .NET platform including runtime and compiler. Alpha version."
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1' 'MPL' 'BSD' 'custom=MITX11' 'custom=MSPL')
@@ -12,7 +12,7 @@ provides=('monodoc' 'mono')
 conflicts=('monodoc' 'mono')
 source=(https://download.mono-project.com/sources/mono/${_pkgname}-${pkgver}.tar.bz2 
 	mono.binfmt.d)
-md5sums=('6d0a7cc40c5bb79724417d9974b346b9'
+md5sums=('103c7a737632046a9e9a0b039d752ee1'
          'b9ef8a65fea497acf176cca16c1e2402')
 install="mono.install"
 
