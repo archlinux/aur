@@ -1,7 +1,7 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced
 	pkgver = 16.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = bareos
 	makedepends = libcap
 	makedepends = python2
 	makedepends = python
-	optdepends = openssl: network encryption between daemons
+	optdepends = openssl-1.0: network encryption between daemons
 	source = git+https://github.com/bareos/bareos.git#tag=Release/16.2.6
 	source = PKGBUILD.common
 	md5sums = SKIP
-	md5sums = 408330e61eba6a1c2add1eeea308dc25
+	md5sums = e3ffabfe93e957649d21ea07f1e25465
 
 pkgname = bareos-common
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Common files
@@ -125,7 +125,7 @@ pkgname = bareos-storage
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Storage daemon
 	install = bareos-storage.install
 	depends = bareos-common=16.2.6
-	optdepends = openssl: network encryption between daemons
+	optdepends = openssl-1.0: network encryption between daemons
 	optdepends = lzo2: LZO compression for Storage Daemon
 	backup = etc/bareos/tray-monitor.d/storage/StorageDaemon-local.conf
 	backup = etc/bareos/bareos-sd.d/storage/bareos-sd.conf

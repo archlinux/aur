@@ -26,4 +26,4 @@ source=("git+https://github.com/bareos/bareos.git#tag=Release/16.2.6"
         "PKGBUILD.common")
 
 md5sums=('SKIP'
-         '408330e61eba6a1c2add1eeea308dc25')
+         'e3ffabfe93e957649d21ea07f1e25465')
