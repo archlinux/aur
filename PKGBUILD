@@ -2,7 +2,7 @@
 
 pkgname=arm-frc-linux-gnueabi-wpilib
 pkgver=2017.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The WPI FIRST Robotics Competition C/C++ library for the arm-frc-linux-gnueabi toolchain"
 arch=(i686 x86_64)
 url="https://usfirst.collab.net/sf/projects/wpilib/"
@@ -37,5 +37,5 @@ package() {
 
   yes A | unzip -d $pkgdir/usr/arm-frc-linux-gnueabi wpilibc.zip
 
-  install -Dm644 ../../BSD_License_for_WPILib_code.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 ../../license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
