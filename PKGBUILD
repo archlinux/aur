@@ -7,7 +7,7 @@
 
 pkgname=eagle
 pkgver=8.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful suite for schematic capture and printed circuit board design (aka eaglecad)"
 arch=('x86_64')
 url="http://www.autodesk.com/products/eagle"
@@ -48,7 +48,7 @@ package() {
      "$pkgdir/usr/share/man/man1/$pkgname.1"
 
   # allow libQt5Network.so.5 to find the provided libssl.so
-  ln -sf "/opt/$pkgname/lib/libssl.so.10" "$pkgdir/opt/$pkgname/lib/libssl.so"
+  ln -sf "/opt/$pkgname/lib/libssl.so.1.0.0" "$pkgdir/opt/$pkgname/lib/libssl.so"
 
   # delete libraries that depend on selinux and can be replaced by system libraries
   rm "$pkgdir/opt/$pkgname/lib"/{libEGL.so.1,libglapi.so.0}
