@@ -2,7 +2,7 @@
 
 pkgname=hdf5-salome
 _pkgname=hdf5
-pkgver=1.8.18
+pkgver=1.8.19
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="General purpose library and file format for storing scientific data. This version is specifically compiled to be linked angains salome-platform."
@@ -54,4 +54,4 @@ package() {
  
 }
 
-md5sums=('29117bf488887f89888f9304c8ebea0b')
+md5sums=('6f0353ee33e99089c110a1c8d2dd1b22')
