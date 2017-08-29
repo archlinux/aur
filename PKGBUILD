@@ -11,6 +11,8 @@ url="http://mrboom.mumblecore.org"
 license=('GPL2')
 makedepends=(
 			 'git'
+			 'libmodplug'
+			 'minizip'
 			 'sdl2'
 			 'sdl2_mixer'
 			)
