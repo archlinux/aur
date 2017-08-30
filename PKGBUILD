@@ -29,5 +29,6 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}/build"
-  make DESTDIR="${pkgdir}/" install
+  mkdir -p ${pkgdir}/usr/bin
+  install -Dm755 ${srcdir}/${pkgname}/build/src/chkservice ${pkgdir}/usr/bin
 }
