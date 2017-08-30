@@ -4,6 +4,17 @@ post_install() {
 
 post_upgrade() {
 
+if [ $(vercmp $2 2.0.2.1-2) -lt 0 ]; then
+cat << EOF
+  * Versions prior to 2.0.2.1-2 had a systemd service that ran as root.
+  * This should be disabled, as it poses a security risk. If you enabled it,
+  * you should run:
+    - sudo systemctl stop duplicati
+    - sudo systemctl disable duplicati
+    - sudo rm /usr/lib/systemd/system/duplicati.service
+EOF
+fi
+
 cat << EOF
   * UI can be accessed via following URL: http://localhost:8200
   * Running duplicati user instance (using current user account)
