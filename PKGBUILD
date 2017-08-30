@@ -1,10 +1,10 @@
 # Maintainer: Laurent Laffont <laurent.laffont@gmail.com>
-# Contributor: Benoit Verhaeghe <badetitou@gmail.com>
+# Maintainer: Benoit Verhaeghe <badetitou@gmail.com>
 
 
 pkgname=pharo-launcher
 pkgver=5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Pharo Launcher helps you manage your Pharo images"
 arch=(i686 x86_64)
 source=($pkgname-$pkgver.tar.gz)
