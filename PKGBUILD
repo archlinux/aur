@@ -65,7 +65,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.12.9
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -76,7 +76,7 @@ _mergepath="${_bfqpath}/merges/${pkgver}"
 _mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance-V3"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
-_bfq_mq_patch='4.12-bfq-mq-20170810.patch'
+_bfq_mq_patch='4.12-bfq-mq-20170829.patch'
 source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -94,6 +94,11 @@ source=(# mainline kernel patches
         "${_mergepath}/0007-Merge-branch-for-linus-of-linux-block_2.patch"
         "${_mergepath}/0008-Merge-tag-uuid-for-4.13-2-of-uuid.patch"
         "${_mergepath}/0009-Merge-branch-for-linus-of-linux-block_3.patch"
+        "${_mergepath}/0010-Merge-branch-for-linus-of-linux-block_4.patch"
+        "${_mergepath}/0011-Merge-tag-mmc-v4.13-rc4-of-mmc.patch"
+        "${_mergepath}/0012-Merge-branch-for-linus-of-linux-block_5.patch"
+        "${_mergepath}/0013-Merge-branch-for-linus-of-linux-block_6.patch"
+        "${_mergepath}/0014-Merge-branch-for-linus-of-linux-block_7.patch"
         # bfq-mq patch
         "${_bfqpath}/${_bfq_mq_patch}"
         # tentative patches
@@ -137,8 +142,13 @@ sha256sums=(# mainline kernel patches
             '284c7f88b3a3b8ec5219bf0fefd21f5b8d8970e1db64e49c135e8764856f27d3'
             '64cfcd89fd567c68cdff0ef1b76d71427bef9f4b81f909453338cc02366282b2'
             'e3d2f946b9e097415afb31d57bb0ff4d900af83259ac0819243c7a8aa1aba1a1'
+            '4dea49f3314dd37c2f6ac66a0de886710efff1c7224a582e06447024735864df'
+            '8b19878017733e6fbb3415165325f53b5c0c2ec0ea2ca78511f1b7902b0879a6'
+            '64d98fd073e33636984c2b56356177bab2d18c85558766d9bd2f46aa3c7e5d4f'
+            '4d53dfad580592082fa73a56c4677d6f3b56a580ce4e380c24727e2203ffc66d'
+            'e6bdde3fa74ba51e9044c98f695878bd00ed08ba9a3e13be235c0f469bff130c'
             # bfq-mq patch
-            'ff9168cec9ff78f5c728fd183e456dcfc6c7077c847d74a67e5d8b5a2266d67b'
+            '036fe3497b98ca564c5e5d0f8cd2cfc39708a1c75ef4b2f564a0d42a3a44bf20'
             # tentative patches
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             # mailing-list (ML1) patches
@@ -181,8 +191,8 @@ prepare() {
   msg "Fix naming schema in BFQ-MQ patch"
   sed -i -e "s|PATCHLEVEL = 13|PATCHLEVEL = 12|g" \
       -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
-      -i -e "s|EXTRAVERSION = -rc3|EXTRAVERSION =|g" \
-      -i -e "s|EXTRAVERSION = -bfq-rc3|EXTRAVERSION =|g" \
+      -i -e "s|EXTRAVERSION = -rc7|EXTRAVERSION =|g" \
+      -i -e "s|EXTRAVERSION = -bfq-rc7|EXTRAVERSION =|g" \
       -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
 
   msg "Patch source with block and BFQ-MQ patches"
