@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=mitamae
-pkgver=1.4.3
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Configuration management tool embedding mruby"
 arch=('i686' 'x86_64')
@@ -8,25 +8,24 @@ url="https://github.com/k0kubun/mitamae"
 license=('MIT')
 depends=('openssl' 'pacman')
 makedepends=('ruby' 'git')
-_mruby_sha1=bf4e79cc62af809138bc7db7e54ece67080b5fa8
+_mruby_revision=1.3.0
 source=("https://github.com/k0kubun/${pkgname}/archive/v${pkgver}.tar.gz"
-        "mruby-${_mruby_sha1}.tar.gz::https://github.com/k0kubun/mruby/archive/${_mruby_sha1}.tar.gz"
+        "mruby-${_mruby_revision}.tar.gz::https://github.com/mruby/mruby/archive/${_mruby_revision}.tar.gz"
         'build_config.rb'
         )
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  rmdir mruby
-  tar xf "$srcdir/mruby-${_mruby_sha1}.tar.gz"
-  mv "mruby-${_mruby_sha1}" mruby
+  tar xf "$srcdir/mruby-${_mruby_revision}.tar.gz"
+  mv "mruby-${_mruby_revision}" mruby
 }
 
 build() {
   cd "$pkgname-$pkgver"
 
   cp "$srcdir/build_config.rb" .
-  mruby/minirake compile
+  rake compile
 }
 
 package() {
@@ -38,6 +37,6 @@ package() {
   install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-sha512sums=('aabe4144f0063a458790ed8d3423db0acf15f37f5772b9b481d1321d30200ae6c1a14601f4ba103935cd0ba93f10641759dff070313a50c690e3cf7f3b1c7625'
-            '7423af432f366a9c1d7c5ca0c54ca7cb1afebeecf3d979df4f1fff53ce11d611332dbe578cea5a7f4362d183c1a6c8d431d6fd262fdc4d0fe298c1eb7d4757e9'
+sha512sums=('040b05b8fcd989c2d3eb0f0acb8bde004f41083d758955c72080ca7ed3d90ca85f8798c5aaa4f4c65f7cb190fedf01c9e0d2657520668887fdac435eff52981a'
+            '13a57306706d2d60693151919ae15bb3621e6e7ed3b5e9c6d3b1c8d44e52b898c1ad394b39946d730ff82a19f5e3b7c2a374f9dcc3b6c6f990581e504f1cb9cb'
             'cf060f65baead3fb9df4b08f2630e749c768da280be77946c0b514cbc8864851dfd0651a6f63cc186cc28421afeca14a6c7a32585ac3dc121299cd5a7f8eb32d')
