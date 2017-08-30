@@ -5,14 +5,14 @@
 pkgname=cave9
 pkgver=0.4
 _dataver=4
-pkgrel=2
+pkgrel=3
 pkgdesc="A 3D gravity cave-exploration game based on the classic SFCave"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/cave9/"
 license=('LGPL3' 'custom')
 depends=('mesa' 'sdl_image' 'sdl_ttf')
-source=("http://cave9.googlecode.com/files/${pkgname}_src-${pkgver}.tgz"
-        "http://cave9.googlecode.com/files/${pkgname}_data-${_dataver}.tgz"
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}_src-${pkgver}.tgz"
+        "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}_data-${_dataver}.tgz"
         "${pkgname}.desktop")
 sha256sums=('285fd1070e9fadade890ddd64f30db6bcfeaa5326c99d6e69744abab80da93d8'
             '89a1ef99f2399bf7638b25ce4b51c5c088e01c29bc407eab689ccbb39c5b8d39'
@@ -20,7 +20,7 @@ sha256sums=('285fd1070e9fadade890ddd64f30db6bcfeaa5326c99d6e69744abab80da93d8'
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  CFLAGS='-Wno-error=cpp' LDFLAGS='' make
+  CFLAGS='-Wno-error=cpp -Wno-error=int-in-bool-context' LDFLAGS='' make
 }
 
 package() {
