@@ -1,9 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=yubikey-manager-qt
-_commit='d14158c0'
-pkgver="0.3.0.r9.g${_commit}"
-pkgrel=4
+pkgver=0.3.1
+pkgrel=1
 pkgdesc='Cross-platform application for configuring any YubiKey over all USB transports'
 arch=('i686' 'x86_64')
 url='https://developers.yubico.com/yubikey-manager-qt/'
@@ -15,7 +14,7 @@ validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3') # Dag Heyman <dag@yubi
 #source=("https://developers.yubico.com/${pkgname}/Releases/${pkgname}-${pkgver}.tar.gz"{,.sig})
 #sha256sums=('cfee0e262641bac1b6928be8ba2fb02ac15b6c1ea551bebf5b598b6716741b86'
 #            'SKIP')
-source=("git+https://github.com/Yubico/yubikey-manager-qt.git#commit=${_commit}"
+source=("git+https://github.com/Yubico/yubikey-manager-qt.git#tag=${pkgname}-${pkgver}"
 	'git+https://github.com/thp/pyotherside.git'
 	'git+https://github.com/Yubico/yubikey-manager.git'
 	'git+https://github.com/qtproject/qt-solutions')
