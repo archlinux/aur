@@ -7,6 +7,7 @@ pkgdesc='Extract git patchset from notmuch emails'
 arch=('i686' 'x86_64')
 url='https://github.com/aaptel/notmuch-extract-patch'
 license=('GPLv3')
+depends=('notmuch' 'python')
 makedepends=('git')
 provides=('notmuch-extract-patch')
 conflicts=('notmuch-extract-patch')
