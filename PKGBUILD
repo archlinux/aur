@@ -2,7 +2,7 @@
 
 _realname=glslc
 pkgname=$_realname-git
-pkgver=r323.4fa3150
+pkgver=411.12fb656
 pkgrel=1
 epoch=1
 pkgdesc="Command-line GLSL/HLSL to SPIR-V compiler with Clang-compatible arguments"
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/shaderc
-  printf 'r%d.%s' \
+  printf '%d.%s' \
     $(git rev-list --count HEAD) \
     $(git log --pretty=format:'%h' -n 1)
 }
@@ -27,19 +27,19 @@ prepare() {
   cd "$srcdir"/shaderc/third_party/
 
   if [ ! -d googletest ]; then
-    git clone https://github.com/google/googletest.git
+    git clone https://github.com/google/googletest googletest
   fi
 
   if [ ! -d glslang ]; then
-    git clone https://github.com/google/glslang.git
+    git clone https://github.com/google/glslang glslang
   fi
 
   if [ ! -d spirv-tools ]; then
-    git clone https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
+    git clone https://github.com/KhronosGroup/SPIRV-Tools spirv-tools
   fi
 
   if [ ! -d spirv-tools/external/spirv-headers ]; then
-    git clone https://github.com/KhronosGroup/SPIRV-Headers.git spirv-tools/external/spirv-headers
+    git clone https://github.com/KhronosGroup/SPIRV-Headers spirv-tools/external/spirv-headers
   fi
 }
 
@@ -52,6 +52,7 @@ build() {
   cmake "$srcdir"/shaderc \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DSHADERC_SKIP_TESTS=on \
     -GNinja \
     -Dshaderc_SOURCE_DIR="$srcdir"/shaderc \
     -DPYTHON_EXE=/usr/bin/python2
