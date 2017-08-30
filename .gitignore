@@ -1,5 +1,6 @@
 *.tar
 obs-studio-git/
+ftl-sdk
 pkg/
 src/
 
