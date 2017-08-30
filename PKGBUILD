@@ -2,7 +2,7 @@
 
 pkgname=stylelint
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets'
 arch=('any')
 url='https://stylelint.io/'
