@@ -9,7 +9,7 @@
 _use_tentative_patches=
 
 ### Use mailing-list patches; many thanks to Piotr "sir_lucjan" Gorski
-# ML1 - [PATCH V3 00/14] blk-mq-sched: improve SCSI-MQ performance: http://marc.info/?l=linux-block&m=150191624318513&w=2
+# ML1 - [PATCH V3 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150376523128516&w=2
 _use_ml_patches=
 
 # Running with a 1000 HZ tick rate
@@ -211,7 +211,7 @@ prepare() {
   fi
 
   ### Patches from mailing-list
-  # ML1 - [PATCH V2 00/20] blk-mq-sched: improve SCSI-MQ performance: http://marc.info/?l=linux-block&m=150191624318513&w=2
+  # ML1 - [PATCH V3 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150376523128516&w=2
   if [ -n "$_use_ml_patches" ]; then
     msg "Apply mailing-list patches"
     for p in "${srcdir}"/ML*.patch; do
