@@ -1,16 +1,15 @@
 pkgbase = novnc
 	pkgdesc = javascript vnc client
-	pkgver = 0.5.1
-	pkgrel = 2
+	pkgver = 0.6.2
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/kanaka/noVNC
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	depends = bash
 	depends = python
-	source = https://github.com/kanaka/noVNC/archive/v0.5.1.tar.gz
-	md5sums = ac55b2316b2164b6e09ae3bd89c37cb6
+	source = https://github.com/kanaka/noVNC/archive/v0.6.2.tar.gz
+	md5sums = 1528564ce3d1d0a6d047fd9fc56eb421
 
 pkgname = novnc
 

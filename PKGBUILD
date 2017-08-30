@@ -1,14 +1,15 @@
+# Maint4ainer: Brian Biduock <bidulock@openss7.org>
 pkgname=novnc
 epoch=1
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="javascript vnc client"
-arch=(i686 x86_64)
+arch=(any)
 url="https://github.com/kanaka/noVNC"
 license=('GPL')
 depends=('bash' 'python')
 source=("https://github.com/kanaka/noVNC/archive/v${pkgver}.tar.gz")
-md5sums=('ac55b2316b2164b6e09ae3bd89c37cb6')
+md5sums=('1528564ce3d1d0a6d047fd9fc56eb421')
 
 prepare() {
   cd $srcdir/noVNC-${pkgver}
@@ -18,7 +19,7 @@ prepare() {
 
 build() {
   cd $srcdir/noVNC-${pkgver}
-  make -C utils clean rebind.so
+# make -C utils clean rebind.so
 }
 
 package() {
