@@ -1,0 +1,21 @@
+pkgbase = python2-json-tricks
+	pkgdesc = Extra features for Python's JSON: comments, order, numpy, pandas, datetimes, and many more! Simple but customizable.
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = https://github.com/mverleg/pyjson_tricks
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-numpy
+	depends = python2-pytz
+	depends = python2-pandas
+	optdepends = python2-pytest: For tests
+	optdepends = python2-coverage: For test coverage
+	optdepends = python2-tox: For tests
+	optdepends = python2-detox: For parallel tests
+	optdepends = python2-sphinx: For documentation
+	source = https://github.com/mverleg/pyjson_tricks/archive/v3.8.0.zip
+	md5sums = 0e26db5c33b41167669510c286978046
+
+pkgname = python2-json-tricks
+
