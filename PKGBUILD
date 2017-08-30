@@ -1,7 +1,7 @@
 # Contributor: Daniel Kirchner <daniel AT ekpyron DOT org>
 
 pkgname=mingw-w64-libpng
-pkgver=1.6.30
+pkgver=1.6.32
 _apngver=$pkgver
 pkgrel=1
 arch=('any')
@@ -13,8 +13,8 @@ url="http://www.libpng.org/pub/png/libpng.html"
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://downloads.sourceforge.net/sourceforge/libpng/libpng-$pkgver.tar.xz"
         "http://downloads.sourceforge.net/project/apng/libpng/libpng16/libpng-$_apngver-apng.patch.gz")
-sha1sums=('b6f8ac4d83116a87d8e10e15ec360dab8a898f5c'
-          '8d535c21b24154e35d7fb10a6ac7b627b1170e0a')
+sha1sums=('161d91d15cfd739773e0a73b41032b9f27322914'
+          'a763e01b2bc853b71d01e3aa187e6cb9f25000f1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -45,5 +45,4 @@ package () {
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
-  install -D -m644 "${srcdir}/libpng-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
