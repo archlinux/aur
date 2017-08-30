@@ -1,7 +1,7 @@
 # Contributor: Mikael Eriksson <mikael_miffe_eriksson@yahoo.se3
 
 pkgname=mingw-w64-lua
-pkgver=5.3.2
+pkgver=5.3.4
 pkgrel=1
 pkgdesc="A powerful light-weight programming language designed for extending applications. (mingw-w64)" 
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-gcc')
 license=('MIT')
 source=("$url/ftp/lua-$pkgver.tar.gz")
 options=(!strip !buildflags staticlibs)
-md5sums=('33278c2ab5ee3c1a875be8d55c1ca2a1')
+md5sums=('53a9c68bcc0eda58bdc2095ad5cdfc63')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
