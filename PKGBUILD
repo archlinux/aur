@@ -5,7 +5,7 @@
 
 pkgname=jhbuild
 pkgver=3.15.92+1416+ge4528807
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
 url='https://wiki.gnome.org/Projects/Jhbuild'
@@ -55,4 +55,4 @@ package() {
 }
 
 # list of dependencies reported by 'jhbuild sysdeps'
-depends+=(anthy argyllcms caribou check cmake cups docbook-sgml docbook-utils docbook-xsl dotconf doxygen espeak exempi fwupdate git gmime gperf gtkspell3 hyphen intltool itstool kyotocabinet libatasmart libcanberra libdmapsharing libdvdread libgexiv2 libgphoto2 libhangul libical libmusicbrainz5 libndp liboauth libpwquality libraw libunwind libvirt libvpx mpc ninja openldap opus plymouth poppler-glib ppp python-cairo python-pillow ragel ruby sane smbclient source-highlight startup-notification taglib udisks2 usbredir v4l-utils vala valgrind wavpack wget wireless_tools xf86-input-wacom xmlto xorg-server-xwayland xorg-util-macros xtrans)
+depends+=(anthy argyllcms caribou check cmake cups docbook-sgml docbook-utils docbook-xsl dotconf doxygen espeak exempi fwupdate git gmime gperf gtkspell3 hyphen intltool itstool kyotocabinet libatasmart libcanberra libdmapsharing libdvdread libgexiv2 libgphoto2 libhangul libical libmusicbrainz5 libndp liboauth libpwquality libraw libunwind libvirt libvpx llvm mpc ninja openldap opus plymouth poppler-glib ppp python-cairo python-pillow ragel ruby sane smbclient source-highlight startup-notification taglib udisks2 usbredir v4l-utils vala valgrind wavpack wget wireless_tools xf86-input-wacom xmlto xorg-server-xwayland xorg-util-macros xtrans)
