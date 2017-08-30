@@ -5,7 +5,7 @@
 pkgname=cairo-infinality-ultimate
 _name=cairo
 pkgver=1.14.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Cairo vector graphics library"
 arch=(i686 x86_64)
 license=('LGPL' 'MPL')
@@ -50,7 +50,6 @@ build() {
 	--sysconfdir=/etc \
 	--localstatedir=/var \
 	--disable-static \
-	--disable-lto \
 	--enable-tee \
 	--enable-gl \
 	--enable-egl \
@@ -58,7 +57,6 @@ build() {
 	--enable-ps \
 	--enable-pdf \
 	--enable-gobject \
-  --enable-qt \
 	--enable-gtk-doc
 	
 	#--disable-xlib-xcb \
