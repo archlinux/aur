@@ -3,38 +3,27 @@
 
 pkgname=memsource-editor
 _pkg=MemsourceEditor
-_platform=ubuntu-12.04
+_platform=ubuntu-14.04
 pkgver=6.204.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A CAT translation tool, requires Memsource subscription"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom')
 url="http://www.memsource.com/"
 install=${pkgname}.install
 
-if [ "$CARCH" = "i686" ]; then
-  depends=('qt4'
-           'bzip2'
-           'libsm'
-           'libx11'
-           'libxrender'
-           'freetype2'
-           'fontconfig'
-           'libpng12')
-elif [ "$CARCH" = "x86_64" ]; then
-  depends=('lib32-qt4'
-           'lib32-bzip2'
-           'lib32-libsm'
-           'lib32-libx11'
-           'lib32-libxrender'
-           'lib32-freetype2'
-           'lib32-fontconfig'
-           'lib32-libpng12')
-fi
+depends=('qt4'
+         'bzip2'
+         'libsm'
+         'libx11'
+         'libxrender'
+         'freetype2'
+         'fontconfig'
+         'libpng12')
+
 depends+=('shared-mime-info')
 
 makedepends=('imagemagick')
-#http://download.memsource.com/production/updates/memsource-editor/linux/ubuntu-12.04/archive/install/MemsourceEditor-6.200.2-ubuntu-12.04.run
 options=('!strip')
 source=("http://download.memsource.com/production/updates/memsource-editor/linux/${_platform}/archive/install/${_pkg}-${pkgver}-${_platform}.run"
         "memsource-editor.desktop"
@@ -42,7 +31,7 @@ source=("http://download.memsource.com/production/updates/memsource-editor/linux
         "memsource"
         "license.desktop")
 
-sha256sums=('6422027f19b9f5b369c7de634248743a00c502b1777239c6b41e0afdea51cae4'
+sha256sums=('e9f714aa06b17918645abf5ff42995e342aae9d5bd5817d909d149004f235f67'
             '943056f6643f110d94663e4bbf1650850d49ea0adb48cc0355ad5b4f6112da24'
             '94fff65cc3a6cfbc79d4f7bdb6ef1c3855a032e52932de6051867a1f99119257'
             '4802b77ffefd2cdd7526fec28a690f8dc560fef74501806b3485648dcac830fe'
