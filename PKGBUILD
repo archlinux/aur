@@ -3,7 +3,7 @@
 _name=pyjson_tricks
 pkgname=python2-json-tricks
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extra features for Python's JSON: comments, order, numpy, pandas, datetimes, and many more! Simple but customizable."
 arch=(any)
 url="https://github.com/mverleg/pyjson_tricks"
