@@ -1,6 +1,6 @@
 pkgbase = sstp-server
 	pkgdesc = A Secure Socket Tunneling Protocol (SSTP) server.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/sorz/sstp-server
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = sstp-server
 	depends = ppp
 	optdepends = python-uvloop: better performance
 	backup = etc/sstp-server.ini
-	source = https://github.com/sorz/sstp-server/archive/v0.5.0.tar.gz
+	source = https://github.com/sorz/sstp-server/archive/v0.5.1.tar.gz
 	source = sstp-server@.service
-	sha256sums = d7e24c07669a8375abc7efc469dd39e308a55c608a8fb0665255dec37045aff2
+	sha256sums = 041b6eb728e9a9f4a1dc466576fbb82d114f78d6ddf79b56d7331079c4d9590a
 	sha256sums = 197ad957e7987ca9e828bab9d4322c8d2bfb9edcc0ecab1ef23470a1e1aae1a6
 
 pkgname = sstp-server
