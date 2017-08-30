@@ -2,7 +2,7 @@
 # Maintainer: David C. Rankin <drankinatty @ gmail.com>
 
 pkgname=gtkwrite_git
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="GTKwrite Text Editor with Syntax Highlight written in C, GTK+2 & GtkSourceView2 (development version)"
 url="https://github.com/drankinatty/${pkgname%_git}"
@@ -39,6 +39,7 @@ package() {
 
     install -D -m644 img/gtkwrite.png "${pkgdir}/usr/share/${pkgname%_git}/img/gtkwrite.png"
     install -m644 img/gtkwrite.ico "${pkgdir}/usr/share/${pkgname%_git}/img"
+    install -m644 gtkrc-2.0_gtkwrite "${pkgdir}/usr/share/${pkgname%_git}"
 
     install -D -m644 gpl-2.0.txt "${pkgdir}/usr/share/licenses/${pkgname}/gpl-2.0.txt"
     install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
