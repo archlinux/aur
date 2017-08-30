@@ -2,10 +2,10 @@
 
 pkgname=otf-kingen
 pkgver=1.000
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese OpenType font obtained by mixing old style kana character font and Adobe Source Han Serif JP"
 arch=('any')
-url="http://osdn.jp/projects/koruri"
+url="http://www.akenotsuki.com/eyeben/fonts/kingen.html"
 license=('custom:SIL')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('unzip')
