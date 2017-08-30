@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 209304 2017-01-28 17:00:56Z heftig $
+# $Id$
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=seamonkey-gtk2
 _pkgname=seamonkey
 pkgver=2.46
-pkgrel=2
+pkgrel=4
 pkgdesc="SeaMonkey internet suite (GTK2 version)"
 arch=('i686' 'x86_64')
 license=('MPL')
@@ -23,13 +23,15 @@ source=(https://archive.mozilla.org/pub/mozilla.org/seamonkey/releases/$pkgver/s
         seamonkey-2.0-lang.patch
         rhbz-966424.patch
         mozbug1323209.patch
-        mozbug1329272.patch)
+        mozbug1329272.patch
+	no-crmf.diff)
 sha256sums=('39c84ce6fa1ed7c30152473e0dcd858df07437e84b29e5a18973db437a28a912'
-            '9a730ec71744e9e674a7922cd573fe2428f39ee53b0c3c8912053a910975f1d8'
+            '8d3bd1c0f1101a382cf7861aff4a94bad9834ecfc0b240e43aca49d219a80d13'
             'ab19d10fbd6258aec37ab5e5efb12429814b2c24a1193284a48dd654311b4e2e'
             '746cb474c5a2c26fc474256e430e035e604b71b27df1003d4af85018fa263f4a'
             '87fb92e45f161d47b9e3ca31bcce60555bc33d633116dab4baa3bfba6ad965c4'
-            '33c7031781357faf5fba7140d7723bf301c1569068922477742ac958ee82e62b')
+            '33c7031781357faf5fba7140d7723bf301c1569068922477742ac958ee82e62b'
+            'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -58,6 +60,10 @@ prepare() {
 
   # 2.26 build fix from wgnie (blfs ch 37)
   sed -i 's/$(MOZ_ZLIB_CFLAGS)/& $(MOZ_PIXMAN_CFLAGS)/' config/config.mk
+
+  # work around from FS#54395
+  patch -Np1 -d mozilla -i ../../no-crmf.diff
+  sed -i "s/'crmf',//" mozilla/security/manager/ssl/moz.build
 }
 
 build() {
