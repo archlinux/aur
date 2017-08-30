@@ -1,9 +1,10 @@
 [Desktop Entry]
-Name=Mongoclient
-Comment=MongoDB Client
-Exec=/opt/mongoclient/Mongoclient
+Name=Nosqlclient
+Comment=MongoDB Client (formerly Mongoclient)
+Exec=/opt/mongoclient/Nosqlclient
 Icon=/usr/share/mongoclient/img/icon.png
 Terminal=false
 X-MultipleArgs=false
 Type=Application
 Categories=Development;
+Keywords=mongoclient;mongodb

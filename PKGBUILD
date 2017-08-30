@@ -1,6 +1,6 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 pkgname=mongoclient
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="MongoDB administration client"
 arch=('i686' 'x86_64')
@@ -8,10 +8,10 @@ url="https://www.nosqlclient.com/"
 license=('MIT')
 source=("https://github.com/nosqlclient/nosqlclient/releases/download/${pkgver}/linux-portable-x64.zip"
         "https://github.com/nosqlclient/nosqlclient/raw/master/public/logo/new/image_only.png"
-        "${pkgname}.desktop")
-sha256sums=("c4ec62ebd882f2c29d5405bafc9d0ccf3d2f53bf183a1df5c8bc9516109e159e"
+        "nosqlclient.desktop")
+sha256sums=("126dee94f9a8fe871581a1fe9e1874d59d2a9a07c4bb7550fd4a84137ee66c8c"
             "576f36bc7c797f9ccc7695035016885824f13cc92a6ac9b95dc70bdc0a1cc637"
-            "e108b25a50b304dc96f8ec1ac54f97d2cafe126058c3430e8c9209357463d937")
+            "1956e5d6b14e03e96488232e7b5c2996bf945ac1e80a0889ce20f0cf36ec39f1")
 noextract=(*.zip)
 
 package() {
@@ -23,14 +23,12 @@ package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
   unzip -q "linux-portable-*.zip" -d "${pkgdir}/opt/${pkgname}"
 
-  #mv "${pkgdir}/opt/linux-portable-x64" "${pkgdir}/opt/${pkgname}"
-
   msg2 "Linking executable..."
-  ln -s "/opt/${pkgname}/Mongoclient" "${pkgdir}/usr/bin/"
+  ln -s "/opt/${pkgname}/Nosqlclient-linux-x64/Nosqlclient" "${pkgdir}/usr/bin/"
 
   install -Dm644 "image_only.png" "${pkgdir}/usr/share/${pkgname}/img/icon.png"
-  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "${pkgdir}/opt/${pkgname}/Mongoclient-linux-x64/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "nosqlclient.desktop" "${pkgdir}/usr/share/applications/nosqlclient.desktop"
+  install -Dm644 "${pkgdir}/opt/${pkgname}/Nosqlclient-linux-x64/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Ddm777 "${pkgdir}/opt/${pkgname}/resources/app/db"
 }
