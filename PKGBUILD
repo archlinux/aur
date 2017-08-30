@@ -4,7 +4,7 @@
 pkgname=perl-net-write
 _cpanname=Net-Write
 _module=Net::Write
-pkgver=1.07
+pkgver=1.10
 pkgrel=1
 pkgdesc="$_module - a portable interface to open and send raw data to network"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl-class-gomor' 'perl-socket6' 'perl-net-pcap>=0.12')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/G/GO/GOMOR/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('a3310df977446fcd8004fdbb66a782b5')
+md5sums=('1b8a67edd006f99ddc06db10f51b65a4')
 
 build() {
   cd "$srcdir/$_cpanname-$pkgver"
