@@ -18,6 +18,9 @@ pkgbase = conan-git
 	depends = python-fasteners>=0.14.1
 	depends = python-six>=1.10.0
 	depends = python-node-semver=0.1.1
+	depends = python-distro>=1.0.2
+	depends = python-distro<1.1.0
+	depends = python-pylint>=1.6.4
 	depends = python-bottle>=0.12.8
 	depends = python-bottle<0.13
 	depends = python-distro>=1.0.2
