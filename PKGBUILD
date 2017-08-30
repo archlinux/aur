@@ -12,7 +12,7 @@ optdepends=('stylelint-config-standard')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha512sums=('b5e56c3ca9f729f8b3c63539f50fbbbe0f3c9bbab7089001f409edfd44ebb794b96b6a5052cddbe37f6096b677449b9dc5192f20906d04ed473b2475d9cb9a12')
+sha512sums=('9351a44613ad821bd8bb93d609d79ced234ddb629964bab84cbd6f572ca406f1ebf75a144bb7957d7d8801926306960a87d19d7a9f809d2642c2e527f89efa07')
 
 package() {
   npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
