@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Tau Tsao <realturner at gmail.com>
 pkgname=xrdp-devel-git
-pkgver=0.9.1.r32.g7b32fc86
+pkgver=0.9.1.r255.ga094c65a
 pkgrel=1
 pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"
 url="https://github.com/neutrinolabs/xrdp"
@@ -52,3 +52,5 @@ package() {
   rm -f "$pkgdir"/etc/xrdp/rsakeys.ini
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
+md5sums=('SKIP'
+         'd43731272860b236d49dd643312ee03e')

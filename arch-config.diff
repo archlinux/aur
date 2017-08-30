@@ -1,44 +1,38 @@
-diff -up src/xrdp-0.9.1/instfiles/xrdp.service.orig src/xrdp-0.9.1/instfiles/xrdp.service
---- src/xrdp-0.9.1/instfiles/xrdp.service.orig	2016-12-22 10:02:47.000000000 -0700
-+++ src/xrdp-0.9.1/instfiles/xrdp.service	2017-01-07 00:55:16.000000000 -0700
-@@ -6,10 +6,8 @@ After=syslog.target network.target xrdp-
+diff -up src/xrdp-devel-git/instfiles/xrdp.service.in.orig src/xrdp-devel-git/instfiles/xrdp.service.in
+--- src/xrdp-devel-git/instfiles/xrdp.service.in.orig	2017-08-30 00:30:33.000000000 -0600
++++ src/xrdp-devel-git/instfiles/xrdp.service.in	2017-08-30 00:31:08.000000000 -0600
+@@ -7,10 +7,8 @@ After=network.target xrdp-sesman.service
  [Service]
  Type=forking
- PIDFile=/var/run/xrdp.pid
--EnvironmentFile=-/etc/sysconfig/xrdp
--EnvironmentFile=-/etc/default/xrdp
--ExecStart=/usr/sbin/xrdp $XRDP_OPTIONS
--ExecStop=/usr/sbin/xrdp $XRDP_OPTIONS --kill
-+ExecStart=/usr/bin/xrdp
-+ExecStop=/usr/bin/xrdp --kill
+ PIDFile=@localstatedir@/run/xrdp.pid
+-EnvironmentFile=-@sysconfdir@/sysconfig/xrdp
+-EnvironmentFile=-@sysconfdir@/default/xrdp
+-ExecStart=@sbindir@/xrdp $XRDP_OPTIONS
+-ExecStop=@sbindir@/xrdp $XRDP_OPTIONS --kill
++ExecStart=@sbindir@/xrdp
++ExecStop=@sbindir@/xrdp --kill
  
  [Install]
  WantedBy=multi-user.target
-diff -up src/xrdp-0.9.1/instfiles/xrdp-sesman.service.orig src/xrdp-0.9.1/instfiles/xrdp-sesman.service
---- src/xrdp-0.9.1/instfiles/xrdp-sesman.service.orig	2016-12-22 10:02:47.000000000 -0700
-+++ src/xrdp-0.9.1/instfiles/xrdp-sesman.service	2017-01-07 00:55:54.000000000 -0700
-@@ -2,15 +2,13 @@
- Description=xrdp session manager
- After=syslog.target network.target
- StopWhenUnneeded=true
--BindTo=xrdp.service
-+BindsTo=xrdp.service
- 
+diff -up src/xrdp-devel-git/instfiles/xrdp-sesman.service.in.orig src/xrdp-devel-git/instfiles/xrdp-sesman.service.in
+--- src/xrdp-devel-git/instfiles/xrdp-sesman.service.in.orig	2017-08-30 00:31:39.000000000 -0600
++++ src/xrdp-devel-git/instfiles/xrdp-sesman.service.in	2017-08-30 00:32:25.000000000 -0600
+@@ -8,10 +8,8 @@ BindsTo=xrdp.service
  [Service]
  Type=forking
- PIDFile=/var/run/xrdp-sesman.pid
--EnvironmentFile=-/etc/sysconfig/xrdp
--EnvironmentFile=-/etc/default/xrdp
--ExecStart=/usr/sbin/xrdp-sesman $SESMAN_OPTIONS
--ExecStop=/usr/sbin/xrdp-sesman $SESMAN_OPTIONS --kill
-+ExecStart=/usr/bin/xrdp-sesman
-+ExecStop=/usr/bin/xrdp-sesman --kill
+ PIDFile=@localstatedir@/run/xrdp-sesman.pid
+-EnvironmentFile=-@sysconfdir@/sysconfig/xrdp
+-EnvironmentFile=-@sysconfdir@/default/xrdp
+-ExecStart=@sbindir@/xrdp-sesman $SESMAN_OPTIONS
+-ExecStop=@sbindir@/xrdp-sesman $SESMAN_OPTIONS --kill
++ExecStart=@sbindir@/xrdp-sesman
++ExecStop=@sbindir@/xrdp-sesman --kill
  
  [Install]
  WantedBy=multi-user.target
-diff -up src/xrdp-0.9.1/instfiles/xrdp.sh.orig src/xrdp-0.9.1/instfiles/xrdp.sh
---- src/xrdp-0.9.1/instfiles/xrdp.sh.orig	2016-12-22 09:56:24.000000000 -0700
-+++ src/xrdp-0.9.1/instfiles/xrdp.sh	2017-01-07 00:55:16.000000000 -0700
+diff -up src/xrdp-devel-git/instfiles/xrdp.sh.orig src/xrdp-devel-git/instfiles/xrdp.sh
+--- src/xrdp-devel-git/instfiles/xrdp.sh.orig	2017-08-30 00:27:28.000000000 -0600
++++ src/xrdp-devel-git/instfiles/xrdp.sh	2017-08-30 00:28:00.000000000 -0600
 @@ -17,7 +17,7 @@
  # Description: starts xrdp
  ### END INIT INFO
@@ -48,10 +42,10 @@ diff -up src/xrdp-0.9.1/instfiles/xrdp.sh.orig src/xrdp-0.9.1/instfiles/xrdp.sh
  LOG=/dev/null
  CFGDIR=/etc/xrdp
  
-diff -up src/xrdp-0.9.1/sesman/startwm.sh.orig src/xrdp-0.9.1/sesman/startwm.sh
---- src/xrdp-0.9.1/sesman/startwm.sh.orig	2016-12-22 10:02:47.000000000 -0700
-+++ src/xrdp-0.9.1/sesman/startwm.sh	2017-01-07 00:55:16.000000000 -0700
-@@ -8,6 +8,17 @@ wm_start()
+diff -up src/xrdp-devel-git/sesman/startwm.sh.orig src/xrdp-devel-git/sesman/startwm.sh
+--- src/xrdp-devel-git/sesman/startwm.sh.orig	2017-08-30 00:27:30.000000000 -0600
++++ src/xrdp-devel-git/sesman/startwm.sh	2017-08-30 00:28:00.000000000 -0600
+@@ -56,6 +56,17 @@ wm_start()
      export LANG LANGUAGE
    fi
  
@@ -68,4 +62,4 @@ diff -up src/xrdp-0.9.1/sesman/startwm.sh.orig src/xrdp-0.9.1/sesman/startwm.sh
 +
    # debian
    if [ -r /etc/X11/Xsession ]; then
-     . /etc/X11/Xsession
+     pre_start
