@@ -21,7 +21,7 @@ _gtk3=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=55.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -60,6 +60,7 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         pgo_fix_missing_kdejs.patch
         fix-wifi-scanner.diff
         no-crmf.diff
+        fix_pgo_bug1389436_explicitly_instantiate_gfxFont.patch
 )
 
 
@@ -113,6 +114,9 @@ prepare() {
 
   # add missing file Makefile for pgo builds
   patch -Np1 -i "$srcdir"/pgo_fix_missing_kdejs.patch
+
+  # fix bug 1389436 - Explicitly instantiate gfxFont::GetShapedWord<uint8_t> for its use in gfxTextRun.cpp. r=jfkthame
+  patch -Np1 -i "$srcdir"/fix_pgo_bug1389436_explicitly_instantiate_gfxFont.patch
 
   # configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
@@ -231,4 +235,5 @@ md5sums=('SKIP'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3fa8bd22d97248de529780f5797178af'
          'e2396b9918aa602427f80d48caf319b4'
-         '196edf030efc516e3de5ae3aa01e9851')
+         '196edf030efc516e3de5ae3aa01e9851'
+         'b358b5ed3726ecd4ed054bdc09901982')
