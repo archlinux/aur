@@ -2,8 +2,8 @@
 # Maintainer: Benoit Verhaeghe <badetitou@gmail.com>
 
 pkgname=pharo-spur-vm
-pkgver=6.0
-pkgrel=0
+pkgver=5.0
+pkgrel=3
 pkgdesc="Pharo Spur VM for Pharo 5 images. Pharo is a clean, innovative, open-source Smalltalk-inspired environment"
 conflicts=('pharo' 'pharo-vm-latest')
 arch=(i686 x86_64)
