@@ -6,7 +6,7 @@
 pkgbase=linux-pf-lts
 _major=4
 _minor=9
-_patchlevel=24
+_patchlevel=45
 _pfpatchlevel=22
 #_subversion=1
 _basekernel=${_major}.${_minor}
@@ -19,7 +19,7 @@ _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
 
 ### PATCH AND BUILD OPTIONS
 
-_NUMA_off=yes		# Disable NUMA in kernel config
+_NUMA_off=yes        # Disable NUMA in kernel config
 
 # DETAILS FOR _NUMA_off=yes
 # Since 99.9% of users do not have multiple CPUs but do have multiple cores in one CPU
@@ -53,11 +53,11 @@ source=(https://www.kernel.org/pub/linux/kernel/v${_major}.x/${_srcname}.tar.{xz
         "$pkgbase.preset"
         # pacman hook for initramfs regeneration
         '90-linux.hook'
-        'logo_linux_clut224.ppm.bz2'		#\
-        'logo_linux_mono.pbm.bz2'		#-> the Arch Linux boot logos
-        'logo_linux_vga16.ppm.bz2'		#/
-        "${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
-        ${_incr[@]})				# the incremental kernel patches
+        'logo_linux_clut224.ppm.bz2'        #\
+        'logo_linux_mono.pbm.bz2'           #-> the Arch Linux boot logos
+        'logo_linux_vga16.ppm.bz2'          #/
+        "${_pfpatchhome}${_pfpatchname}.xz" # the -pf patchset
+        ${_incr[@]})                        # the incremental kernel patches
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
             '733b092bbcbb2d07dd891c77eb257104c04f21794ccec07af20b962ff81999af'
@@ -70,7 +70,28 @@ sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             '9e1e81d80afac6f316e53947e1b081017090081cd30e6c4c473420b77af4b52b'
             'ef689fca3cf9b46991682c9ddbee68c5de83073e5d1bf3fce26156c654298161'
             '5bf7ecb7044b493206683ed8341e3ba0d4e1aa93a9266c5db631248a4f2090eb'
-            '3833b9bf88031adcfadea5ba5a4b36a2f4a9993e3649a5140d3b9b14584e1f78')
+            '3833b9bf88031adcfadea5ba5a4b36a2f4a9993e3649a5140d3b9b14584e1f78'
+            '0ca4aacb2bc688b3101a1e67e2d0f5258bb4b1c4ca12e89fa078aa11f31b89a6'
+            '50c9abe32ac6bcf0fbbb29c618cc98b0479233d28f8f94d663db9da7d63cc094'
+            '8474d2fbbbac02fe75c91e9b4fb7b6c3fe3ae26405f86bdac19325908d73f042'
+            '0735a9afe005f8a20d3e2b1f8970c9c47aa1aa1128b7c4bf0c83f0503ca21bb7'
+            'db633ae8a13c6f8f8c69f26154266c2b801f6ecae0ea445b217378cdd76a4470'
+            '0e3491b02ed6e264c8150a43586a633c2b890a699843a27aa546c2766d132352'
+            '6c6fcfdac62400a614059be2651228a498455968d84022d99f4a6112ae73f36e'
+            '9e25a7721f9c1fd17f77f7adced8f91be0d2f2c90ccdf65f419a6cec6dc6a99d'
+            'e224496f1afc1d222ee38e95565165b5c0cca69a70681c907aa0d1cbf776b17d'
+            '06006d6940a3a27a5ac7f51f8aaa10a6d63045352f1e72427cbab3ce0dee9542'
+            'f596b21d005c6e9f65320933012baee2482ff0d21d40c2166dc95bfb5c3d4796'
+            '5578d379051ba518c6e52aa673099fa0969a072a6546041f505bf73f6edc0e1a'
+            'f61fccd018f8cc7bd06b4b3561ccff347c0742adaf9ef94949f1c55b5f55af73'
+            '41d0e8710e4a731ff24ba2a08fc49ff6b0b418fa16cbd3fede7e1887b4d2e57e'
+            '749804370d8e89ce42605c6e03863181e40c0af9684f96dd4f3a1617956241a4'
+            'e8f06216649295345d01f20fe32a95b99bd7a1d34e2efab175518df41f46747e'
+            'a8ab5da608cd10c81b1e79ff6de484972a064b18d7f37fad3035c1c7fe3ff425'
+            '5b27b346324052df15d0cb20e5101335c81d7a166df14217f91cf1f6d26aa335'
+            '5d035459919d8c544d0016be6972e2d4eff5c7c7b7f268ae1e5abfdab94caf87'
+            'a17c21ceadea9954daa3f55cda8fbe8df9abcdaa6575006f44cd20c69cd870c6'
+            '0cbed0cb91f16f4cdbb3c98d43f54a04f4e4c311d90bd5df84cfb5c89e26c5fe')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
@@ -101,26 +122,26 @@ prepare() {
     cd ${_aufs3name}
     git checkout origin/aufs${_basekernel} || _aufs3checkout=KRAKRA
     if [[ ${_aufs3checkout} = "KRAKRA" ]]; then
-	echo
+    echo
         msg "AUFS3 not yet ported to version ${_basekernel}!"
         msg "Skipping related patches."
-	echo
-	cd ..
+    echo
+    cd ..
      else
 #        mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/include"
 #        mv include/linux/Kbuild "${pkgdir}/usr/src/linux-${_kernver}/include/"
-	rm include/uapi/linux/Kbuild
-	cd ..
-	cp -a ${_aufs3name}/{Documentation,fs,include} ${srcdir}/linux-${_basekernel}/
-	msg "Patching aufs3"
-	for _patch in ${_aufs3name}/*.patch; do
-	    patch -Np1 -i ${_patch} || _aufs3fail=KRAKRA
+    rm include/uapi/linux/Kbuild
+    cd ..
+    cp -a ${_aufs3name}/{Documentation,fs,include} ${srcdir}/linux-${_basekernel}/
+    msg "Patching aufs3"
+    for _patch in ${_aufs3name}/*.patch; do
+        patch -Np1 -i ${_patch} || _aufs3fail=KRAKRA
         done
         if [[ ${_aufs3fail} = "KRAKRA" ]]; then
-	    echo
-    	    msg "Not all aufs3 patches applied correctly. Ignore this if you won't use AUFS."
-    	    msg "Otherwise, press CTRL-C now and fix manually"
-    	    echo
+        echo
+            msg "Not all aufs3 patches applied correctly. Ignore this if you won't use AUFS."
+            msg "Otherwise, press CTRL-C now and fix manually"
+            echo
         fi
      fi
   fi
@@ -174,7 +195,7 @@ build() {
   cd "${srcdir}/${_srcname}"
   #----------------------------------------
 
-  if [[ "$_BATCH" != "y" ]]; then		# for batch building
+  if [[ "$_BATCH" != "y" ]]; then        # for batch building
     echo
     echo "======================================================="
     msg "You might be prompted below for some config options"
@@ -190,42 +211,42 @@ build() {
     shopt -s nocasematch
     if [[ "$answer" = "y" ]]; then
       if [[ -s /proc/config.gz ]]; then
-	msg "Extracting config from /proc/config.gz..."
-	zcat /proc/config.gz >| ./.config
+    msg "Extracting config from /proc/config.gz..."
+    zcat /proc/config.gz >| ./.config
       else
-	msg "running 'sudo modprobe configs'"
-	sudo modprobe configs
+    msg "running 'sudo modprobe configs'"
+    sudo modprobe configs
         if [[ -s /proc/config.gz ]]; then
-	  msg "Extracting config from /proc/config.gz..."
-	  zcat /proc/config.gz >| ./.config
-	else
-	  msg "You kernel was not compiled with IKCONFIG_PROC."
-	  msg "Attempting to run /usr/bin/modprobed_db recall from modprobe_db..."
-	  if [ -e /usr/bin/modprobed_db ]; then
-	    sudo /usr/bin/modprobed_db recall
-	  else
-	    msg "modprobed_db not installed, running make localmodconfig instead..."
-	    make localmodconfig
-	  fi
+      msg "Extracting config from /proc/config.gz..."
+      zcat /proc/config.gz >| ./.config
+    else
+      msg "You kernel was not compiled with IKCONFIG_PROC."
+      msg "Attempting to run /usr/bin/modprobed_db recall from modprobe_db..."
+      if [ -e /usr/bin/modprobed_db ]; then
+        sudo /usr/bin/modprobed_db recall
+      else
+        msg "modprobed_db not installed, running make localmodconfig instead..."
+        make localmodconfig
+      fi
         fi
       fi
     elif [[ "$answer" = "l" ]]; then
       # Copied from kernel26-ck's PKGBUILD
       msg "Attempting to run /usr/bin/reload_database with sudo from modprobe_db..."
       if [ -e /usr/bin/modprobed_db ]; then
-	sudo /usr/bin/modprobed_db recall
+    sudo /usr/bin/modprobed_db recall
       fi
       msg "Running 'make localmodconfig'..."
       make localmodconfig
     else
       msg "Using stock Arch linux-lts kernel .config (with BFS, BFQ and TuxOnIce enabled)."
     fi
-    
+
     # Make some good use of MAKEFLAGS
     # MAKEFLAGS=`grep -v '#' /etc/makepkg.conf | grep MAKEFLAGS= | sed s/MAKEFLAGS=// | sed s/\"//g`
-    
+
     # make prepare
-    
+
     # Options for additional configuration
     echo
     msg "Kernel configuration options before build:"
@@ -239,19 +260,19 @@ build() {
     read answer
     case "$answer" in
       m) make menuconfig
-	;;
+    ;;
       g) make gconfig
-	;;
+    ;;
       x) make xconfig
-	;;
+    ;;
       n) make nconfig
-	;;
+    ;;
       o) make oldconfig
       ;;
       l) make localyesconfig
-	;;
+    ;;
       default)
-	;;
+    ;;
     esac
     cp -v .config ${startdir}/config.local
 
@@ -275,7 +296,7 @@ build() {
       read answer
       shopt -s nocasematch
       if [[ "$answer" = "p" ]]; then
-	export _SUBLEVEL=n
+    export _SUBLEVEL=n
       fi
     else
       lcpu=$(tr '[:upper:]' '[:lower:]' <<< $CPU)
@@ -293,27 +314,27 @@ build() {
       read answer
       shopt -s nocasematch
       if [[ "$answer" != "g" ]]; then
-	export _PKGOPT=y
+    export _PKGOPT=y
       fi
       msg "Hit <P>     :  to remove the patchlevel number from kernver"
       if [[ ${_PKGOPT} != "y" ]]; then
-	msg "               (i.e. linux-pf-lts-${_basekernel})"
+    msg "               (i.e. linux-pf-lts-${_basekernel})"
       else
-	msg "               (i.e. linux-pf-lts-${lcpu}-${_basekernel})"
+    msg "               (i.e. linux-pf-lts-${lcpu}-${_basekernel})"
       fi
       msg "Hit <ENTER> :  to include the patchlevel number in kernver (default)"
       if [[ ${_PKGOPT} != "y" ]]; then
-	msg "               (i.e. linux-pf-lts-${_basekernel}.${_patchlevel})"
+    msg "               (i.e. linux-pf-lts-${_basekernel}.${_patchlevel})"
       else
-	msg "               (i.e. linux-pf-lts-${lcpu}-${_basekernel}.${_patchlevel})"
+    msg "               (i.e. linux-pf-lts-${lcpu}-${_basekernel}.${_patchlevel})"
       fi
       read answer
       shopt -s nocasematch
       if [[ "$answer" = "p" ]]; then
-	export _SUBLEVEL=n
+    export _SUBLEVEL=n
       fi
     fi
-  fi	# batch check ends here
+  fi    # batch check ends here
   export CPU
   #----------------------------------------
 
@@ -349,14 +370,14 @@ msg "Running package-${pkgbase}()"
  [ "${pkgbase}" = "linux" ] && groups=('base')
  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
  optdepends=('linux-lts-docs: Kernel hackers manual - HTML documentation that comes with the Linux kernel.'
-	    'crda: to set the correct wireless channels of your country'
-	    'pm-utils: utilities and scripts for suspend and hibernate power management'
-	    'tuxonice-userui: TuxOnIce userspace user interface'
-	    'hibernate-script: set of scripts for managing TuxOnIce, hibernation and suspend to RAM'
-	    'nvidia-pf: NVIDIA drivers for linux-pf-lts'
-	    'nvidia-beta-all: NVIDIA drivers for all installed kernels'
-	    'modprobed_db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
- #provides=(${pkgbase}=${_basekernel} 'aufs3')	# for $pkgname-optimized
+        'crda: to set the correct wireless channels of your country'
+        'pm-utils: utilities and scripts for suspend and hibernate power management'
+        'tuxonice-userui: TuxOnIce userspace user interface'
+        'hibernate-script: set of scripts for managing TuxOnIce, hibernation and suspend to RAM'
+        'nvidia-pf: NVIDIA drivers for linux-pf-lts'
+        'nvidia-beta-all: NVIDIA drivers for all installed kernels'
+        'modprobed_db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
+ #provides=(${pkgbase}=${_basekernel} 'aufs3')    # for $pkgname-optimized
  provides=(${pkgbase}=${_basekernel} linux=${pkgver} 'aufs3')
  # below 'provides' is for when you have no other kernel (which is a bad idea anyway)
  # provides=(${pkgbase}=${_basekernel} 'linux=${pkgver}' 'aufs3')
@@ -380,8 +401,8 @@ msg "Running package-${pkgbase}()"
   # This allows building cpu-optimized packages with according package names.
   # Useful for repo maintainers.
   headers="headers"
-  pkgnameopt="${pkgbase}"		# this MUST be outside the following 'if'
-  if [[ "$_PKGOPT" = "y" ]]; then	# package naming according to optimization
+  pkgnameopt="${pkgbase}"        # this MUST be outside the following 'if'
+  if [[ "$_PKGOPT" = "y" ]]; then    # package naming according to optimization
     case $CPU in
      CORE2)
          pkgname="${pkgbase}-core2"
@@ -464,14 +485,14 @@ msg "Running package-${pkgbase}()"
 
   # If optimized build, conflict with generic and other optimized ones
   if [[ "$pkgname" != "$pkgbase" ]]; then
-	pkgnameopt="${pkgname}"		# this MUST be inside this if-fi
-	pkgname="${pkgbase}"
-#	echo pkgname $pkgnameopt
-	cpuopt=`sed -e "s/linux-pf-lts-//" <<<$pkgnameopt`		# get suffix
-	cpuoptdesc=`sed -e "s/${_pkgdesc}//" <<<$pkgdesc`	# get description
-	conflicts=(${conflicts[@]/${pkgbase}-${cpuopt}/})		# remove current
-	conflicts=(${conflicts[@]/${pkgbase}-headers-${cpuopt}/})	# remove current's headers
-	export cpuopt cpuoptdesc
+    pkgnameopt="${pkgname}"        # this MUST be inside this if-fi
+    pkgname="${pkgbase}"
+#    echo pkgname $pkgnameopt
+    cpuopt=`sed -e "s/linux-pf-lts-//" <<<$pkgnameopt`        # get suffix
+    cpuoptdesc=`sed -e "s/${_pkgdesc}//" <<<$pkgdesc`    # get description
+    conflicts=(${conflicts[@]/${pkgbase}-${cpuopt}/})        # remove current
+    conflicts=(${conflicts[@]/${pkgbase}-headers-${cpuopt}/})    # remove current's headers
+    export cpuopt cpuoptdesc
   fi
 
   # second batch check ends here
@@ -480,9 +501,9 @@ msg "Running package-${pkgbase}()"
  # Pass conflicts array to linux-pf-lts-headers() BEFORE adding generic linux-pf-lts or headers will conflict
 #  export _conflicts=${conflicts[@]}
   if [[ $cpuopt ]]; then
-	conflicts+=(${pkgbase})		# add generic
+    conflicts+=(${pkgbase})        # add generic
   fi
-#  conflicts=('linux-pf-lts' ${conflicts[@]})	# add generic packages
+#  conflicts=('linux-pf-lts' ${conflicts[@]})    # add generic packages
 
   echo
   echo "    ========================================"
@@ -571,11 +592,11 @@ msg "Running package-${pkgbase}()"
 
   # Remove own headers and add generic ones to conflicts, if optimized
   if [[ $cpuopt ]]; then
-	conflicts=(${conflicts[@]/${pkgbase}-headers-${cpuopt}/})	# remove current
-	conflicts+=(${pkgbase}-headers)		# add generic
+    conflicts=(${conflicts[@]/${pkgbase}-headers-${cpuopt}/})    # remove current
+    conflicts+=(${pkgbase}-headers)        # add generic
   fi
 
-  [[ ${cpuopt} ]] && pkgname=${pkgname}-${cpuopt}	# && depends=${depends}-${cpuopt}
+  [[ ${cpuopt} ]] && pkgname=${pkgname}-${cpuopt}    # && depends=${depends}-${cpuopt}
   [[ ${cpuoptdesc} ]] && pkgdesc=${pkgdesc}${cpuoptdesc}
   provides=(${pkgbase}-headers linux-headers=${pkgver})
   cd "${srcdir}/linux-${_basekernel}"
@@ -698,11 +719,7 @@ msg "Running package-${pkgbase}()"
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
-
-# end c/p
-
-  # remove a file already in linux package
-  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+#  end c/p
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")
