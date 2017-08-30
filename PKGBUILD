@@ -6,7 +6,7 @@
 #
 #
 pkgname="zfs-utils-common-git"
-pkgver=0.7.0.r46.g2209e4098
+pkgver=0.7.0.r50.g1ea8942fa
 pkgrel=4
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("")
@@ -27,6 +27,10 @@ provides=("zfs-utils")
 install=zfs-utils.install
 conflicts=('zfs-utils-common' 'zfs-utils-linux-git' 'zfs-utils-linux' 'zfs-utils-linux-lts' 'zfs-utils-linux-lts-git')
 replaces=("zfs-utils-linux", "zfs-utils-linux-lts")
+pkgver() { 
+    cd "${srcdir}/zfs" 
+    git describe --long | sed 's/^zfs-//;s/\([^-]*-g\)/r\1/;s/-/./g' 
+}
 
 build() {
     cd "${srcdir}/zfs"
