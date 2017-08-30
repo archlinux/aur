@@ -1,0 +1,24 @@
+# Maintainer: Genki Sky <arch at genki dot is>
+
+pkgname=notmuch-extract-patch-git
+pkgver=20170126.f6b282d
+pkgrel=1
+pkgdesc='Extract git patchset from notmuch emails'
+arch=('i686' 'x86_64')
+url='https://github.com/aaptel/notmuch-extract-patch'
+license=('GPLv3')
+makedepends=('git')
+provides=('notmuch-extract-patch')
+conflicts=('notmuch-extract-patch')
+source=('git://github.com/aaptel/notmuch-extract-patch')
+md5sums=('SKIP')
+
+pkgver() {
+    cd notmuch-extract-patch
+    git log -1 --format='%cd.%h' --date=short | tr -d -
+}
+
+package() {
+    cd notmuch-extract-patch
+    install -D -m755 notmuch-extract-patch "$pkgdir"/usr/bin/notmuch-extract-patch
+}

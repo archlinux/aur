@@ -1,0 +1,4 @@
+*.pkg.tar.xz
+notmuch-extract-patch
+pkg
+src
