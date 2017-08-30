@@ -3,7 +3,7 @@
 
 pkgname=pdsh-genders
 pkgver=2.32
-pkgrel=2
+pkgrel=1
 pkgdesc='Parallel Distributed Shell'
 url='https://github.com/grondo/pdsh'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=('3c58b955b4f5f24e75905a5e133b5d28ce04246566e28701902359adab806765')
 
 build() {
   cd "${srcdir}/pdsh-pdsh-${pkgver}"
-  autoreconf -fiv
+  ./bootstrap
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               --infodir=/usr/share/info \
