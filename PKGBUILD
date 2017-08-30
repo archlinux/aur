@@ -1,10 +1,10 @@
 # Maintainer: boosterdev@linuxmail.org
 
 pkgname=flashplayer-standalone
-pkgver="26.0.0.126"
+pkgver="26.0.0.151"
 pkgrel=1
 pkgdesc="Adobe Flash Player (Standalone)"
-arch=('x86_64')
+arch=("$CARCH")
 url='http://www.adobe.com/support/flashplayer/downloads.html'
 license=('custom')
 depends=('desktop-file-utils' 'gtk2' 'libxt' 'nss')
