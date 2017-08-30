@@ -1,0 +1,20 @@
+pkgbase = popt-deb
+	pkgdesc = popt with debian patches (mostly to avoid double free)
+	pkgver = 1.16.10
+	pkgrel = 1
+	url = https://github.com/azat/popt
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = git
+	makedepends = libtool
+	makedepends = make
+	provides = popt
+	conflicts = popt
+	source = git+https://github.com/azat/popt#branch=patched
+	md5sums = SKIP
+
+pkgname = popt-deb
+
