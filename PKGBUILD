@@ -1,42 +1,43 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=rcf
-pkgver=1.6.3.1401
+pkgver=1.6.3.1432
 pkgrel=1
 pkgdesc="Red Crucible®: Firestorm - Free to play online FPS"
 arch=('i686' 'x86_64')
 url="http://www.rocketeergames.com/site/rcf/"
 license=('LLC')
-# depends=()
-makedepends=('unzip')
 source=("http://cdn.rocketeergames.com/rc3/redcrucible_lin.zip" "rcf.desktop")
-md5sums=('35e4dc0e970f48e38af260f0e7757be2' '2323cc5d4d853d932d3b7a84543a3ed4')
+md5sums=('108edc6a6d29f7813bdca8bd228c3751' '2323cc5d4d853d932d3b7a84543a3ed4')
 
 package() {
-	mkdir -p "${pkgdir}/opt/rcf"
-	unzip "$srcdir/redcrucible_lin.zip" -d "${pkgdir}/opt/rcf"
 
-	# Remove unneeded files:
+	msg2 "Removing different architectures files..."
 	if [ "$CARCH" = "x86_64" ]; then
-		rm -f "${pkgdir}/opt/rcf/Red Crucible.x86"
-		rm -rf "${pkgdir}/opt/rcf/Red Crucible_Data/Plugins/x86"
-		rm -rf "${pkgdir}/opt/rcf/Red Crucible_Data/Mono/x86"
+		rm -f  "${srcdir}/Red Crucible.x86"
+		rm -rf "${srcdir}/Red Crucible_Data/Plugins/x86"
+		rm -rf "${srcdir}/Red Crucible_Data/Mono/x86"
 	else
-		rm -f "${pkgdir}/opt/rcf/Red Crucible.x86_64"
-		rm -rf "${pkgdir}/opt/rcf/Red Crucible_Data/Plugins/x86_64"
-		rm -rf "${pkgdir}/opt/rcf/Red Crucible_Data/Mono/x86_64"
+		rm -f  "${srcdir}/Red Crucible.x86_64"
+		rm -rf "${srcdir}/Red Crucible_Data/Plugins/x86_64"
+		rm -rf "${srcdir}/Red Crucible_Data/Mono/x86_64"
 	fi
 
-    # Desktop launcher with icon
+	# Define my architecture (32bit named as "x86" and not "i686"):
+	if [ "$CARCH" = "x86_64" ] ; then MYARCH="x86_64" ; else MYARCH="x86" ; fi
+
+    msg2 "Installing files..."
+
+    # System files:
     install -D -m644 "${srcdir}/rcf.desktop" "${pkgdir}/usr/share/applications/rcf.desktop"
-    install -D -m644 "${pkgdir}/opt/rcf/Red Crucible_Data/Resources/UnityPlayer.png"     "${pkgdir}/usr/share/pixmaps/rcf.png"
+    install -D -m644 "${srcdir}/Red Crucible_Data/Resources/UnityPlayer.png" "${pkgdir}/usr/share/pixmaps/rcf.png"
 
-	# Make it launchable from CLI ("ln -s" doesn't work in this case):
-	mkdir -p "${pkgdir}/usr/bin"
-	if [ "$CARCH" = "x86_64" ]; then
-		echo "\"/opt/rcf/./Red Crucible.x86_64\"" > "${pkgdir}/usr/bin/rcf"
-	else
-		echo "\"/opt/rcf/./Red Crucible.x86\"" > "${pkgdir}/usr/bin/rcf"
-	fi
-	chmod 0755 "${pkgdir}/usr/bin/rcf"
+    # Application files:
+	install -D "${srcdir}/Red Crucible.${MYARCH}" "${pkgdir}/opt/rcf/Red Crucible.${MYARCH}"
+	cp -r "${srcdir}/Red Crucible_Data" "${pkgdir}/opt/rcf/"
+	chmod -R 755 "${pkgdir}/opt/rcf"
+
+	# Make it launchable from CLI ("ln -s" doesn't work in our case):
+	echo "\"/opt/rcf/./Red Crucible.${MYARCH}\"" > "${srcdir}/rcf_launcher"
+    install -D -m755 "${srcdir}/rcf_launcher" "${pkgdir}/usr/bin/rcf"
 }
