@@ -1,0 +1,13 @@
+pkgbase = doom3bfg-data-steam
+	pkgdesc = Doom 3 BFG data via Steam
+	pkgver = 1
+	pkgrel = 1
+	url = http://store.steampowered.com/app/208200
+	arch = any
+	license = custom
+	provides = doom3bfg-data
+	source = http://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+	md5sums = SKIP
+
+pkgname = doom3bfg-data-steam
+
