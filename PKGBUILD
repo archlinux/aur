@@ -3,7 +3,7 @@
 _author=tony
 pkgname=tmuxp
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 gitpkgver=v${pkgver}
 pkgdesc="Manage tmux workspaces from JSON and YAML, pythonic API, shell completion."
 arch=(any)
@@ -12,7 +12,7 @@ license=('BSD')
 depends=(
   'python'
   'python-click' 
-  'python-libtmux>=0.7.1' 
+  'python-libtmux>=0.7.4' 
   'python-kaptan' 
   'python-colorama=0.3.9'
 )
