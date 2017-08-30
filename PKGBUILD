@@ -1,7 +1,7 @@
 # Maintainer: levinit <levinit@outlook.com>
 pkgname=adhosts
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="google hosts and blocking ads hosts.用于科学上网和屏蔽广告的hosts."
 arch=(any)
