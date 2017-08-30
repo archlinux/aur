@@ -2,7 +2,7 @@
 # https://github.com/ValHue/AUR-PKGBUILDs
 #
 pkgname="multisystem"
-pkgver="1.0390"
+pkgver="1.0392"
 pkgrel="1"
 pkgdesc="A GUI tool to create a usb system that can boot multiple distro's"
 url="http://liveusb.info/dotclear/index.php"
@@ -17,8 +17,8 @@ optdepends=('fatresize: The FAT16/FAT32 non-destructive resizer.')
 provides=("${pkgname}")
 source=("http://liveusb.info/${pkgname}/${pkgname}.tar.bz2"
         "http://liveusb.info/${pkgname}/depot/dists/all/main/binary-i386/Packages")
-sha256sums=('ebdbae710721304ae8a586550d42a858eaf5fc50011b2267a640050455e2fe83'
-            '0f7f5b1386cad127888bf5d60ff00cd7fbc83d54acf8c4a635f41e8c3af31909')
+sha256sums=('4492ff60cd8609238882e623dd18d9c95cc53d7d4f2b2a0a555bd16321fe3d85'
+            'c29096c7f54d47843a6e83894b2e89690e168ee29bc3d952902a5e2b5763c1bf')
 
 _multisystem="#!/usr/bin/sh
 exec /usr/local/share/multisystem/gui_multisystem.sh
