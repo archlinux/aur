@@ -3,7 +3,7 @@
 
 pkgname=stylelint-config-standard
 pkgver=17.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The standard shareable config for stylelint'
 arch=('any')
 url='https://github.com/stylelint/stylelint-config-standard'
