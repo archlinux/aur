@@ -65,10 +65,10 @@ _kyber_disable=
 ### Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bfq-mq-git
-_pkgver=4.13-rc3
+_pkgver=4.13-rc7
 _srcname=bfq-mq
-pkgver=4.13rc3.27af2752129c
-pkgrel=2
+pkgver=4.13rc7.157690df1f1f
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -135,8 +135,8 @@ sha256sums=(# bfq-mq repository
             'd729b76f056e022876d78d2a6b50e2287c2c7b44712ab959ecf2a1075e1ad533'
             'acb932dca6cff9ea0f678161eb96e3bf90ce8db2bc7d3a2fac44e9ad585a94dc'
             # the main kernel config files
-            'baff5c7eb82c1e10d05a9575d95004da7855f7f69de3af30f780b31ead3dfe9d'
-            'bb799d15e72c379fb25a76e060f907444351336bfd9eeaf46168f991cea6d7ec'
+            '1305eb57af545c4614fac6a59c9c5fa5a5760df4c03bedf2e00c098f2e496726'
+            '6d011079229296baec7a0841110ed995be0921e49cd0093ec0edd442e473e463'
             # pacman hook for initramfs regeneration
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             # standard config files for mkinitcpio ramdisk
