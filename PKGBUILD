@@ -3,29 +3,29 @@
 
 _name=firefox
 _channel=developer
-_version='57.0a1'
-_file="${_name}-${_version}.en-US.linux"
-_srcurl="https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central"
+_version='56.0b7'
+_file="${_name}-${_version}"
+_srcurl="https://download-installer.cdn.mozilla.net/pub/devedition/releases"
+_locale="en-US"
 pkgname="${_name}-${_channel}"
 pkgdesc='Standalone web browser from mozilla.org, developer build'
 url='http://www.mozilla.org/firefox/developer'
-pkgver=57.0a1.20170830
+pkgver=56.0b7
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 source=("${_name}-${_channel}.desktop" "vendor.js")
-source_i686=("${_srcurl}/${_file}-i686.tar.bz2"{,.asc})
-source_x86_64=("${_srcurl}/${_file}-x86_64.tar.bz2"{,.asc})
+source_i686=("${_srcurl}/${_version}/linux-${CARCH}/${_locale}/${_file}.tar.bz2")
+source_x86_64=("${_srcurl}/${_version}/linux-${CARCH}/${_locale}/${_file}.tar.bz2")
 sha512sums=(
 	'9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631'
 	'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
 )
-sha512sums_i686=('SKIP' 'SKIP')
-sha512sums_x86_64=('SKIP' 'SKIP')
-validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
+sha512sums_i686=('27b73bb04971996cf76cf571c689b64c7bcd65fcbd67e35e24f4d840a0a661ef750bb4d834518ead2edae4c6bead0bde83d8aad5b87359c685645e81ff0c7460')
+sha512sums_x86_64=('c04fbd2ce718930751d190418bef2460d866374dacbbcea460f03125880366e7aafd2fd99aa57ed49e5a5015b870e8172c19af7acaad58d709a889514650d53a')
 
 pkgver() {
-	echo "${_version}.$(curl -s ${_srcurl}/${_name}-${_version}.en-US.linux-${CARCH}.txt | head -n1 | cut -c -8)"
+	echo "${_version}"
 }
 
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk3' 'sqlite3' 'dbus-glib')
