@@ -2,14 +2,14 @@
 # Great Contributor: Bartek Piotrowski <barthalion@gmail.com>
 pkgname=pytomtom
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage your TomTom under Linux"
 arch=('any')
 url="http://pytomtom.tuxfamily.org/"
 license=('GPL')
 depends=('python2' 'pygtk' 'cabextract')
-source=(https://pytomtom.googlecode.com/files/${pkgname}-${pkgver}.tar.gz)
-md5sums=('4cd3a01c2b020578c8894bd556cef339')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pytomtom/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('04087b796f8683807b00da0f5b9f3b721703f6a504de714003500bc720e22743')
 
 build() {
   cd "${srcdir}/${pkgname}"
