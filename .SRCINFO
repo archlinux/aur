@@ -1,0 +1,14 @@
+pkgbase = blender-plugin-meshlint-git
+	pkgdesc = A Blender Addon to help you keep your meshes clean and lint-free, like a spell-checker for your meshes.
+	pkgver = 1.0_r8ab0870
+	pkgrel = 1
+	url = https://github.com/rking/meshlint
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = blender
+	source = meshlint::git+https://github.com/rking/meshlint.git
+	md5sums = SKIP
+
+pkgname = blender-plugin-meshlint-git
+
