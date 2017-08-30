@@ -1,13 +1,13 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-tkcolorpicker' 'python2-tkcolorpicker' )
-pkgver=2.0.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Color picker dialog for Tkinter, alternative to tkinter.colorchooser."
 url="https://github.com/j4321/tkColorPicker"
 arch=('any')
 license=('GPL3')
 source=("tkcolorpicker-$pkgver.tar.gz::https://github.com/j4321/tkColorPicker/archive/v$pkgver.tar.gz")
-sha512sums=('0548dca78863dc19a49dcdd4fd935aabf1d19c17e115be7c60c989f9d4c9881d8c1a249051729b369c386d660bba6735169f3c5c830029b81286dc09d809bde6')
+sha512sums=('093a89217f8e3e8bb0263cd83fd01d15225dcc5b49446f9d9c04fd80bfd393728df421a2e790acb8029d11eadbfcf53c7da27c29383788bb0f9dcdfe39855a1b')
 
 package_python-tkcolorpicker() {
   makedepends=('python-setuptools')
