@@ -2,13 +2,13 @@
 
 pkgname=wifite2-git
 pkgver=r104.aa75970
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to attack multiple WEP and WPA encrypted networks at the same time"
 arch=(any)
 url="https://github.com/derv82/wifite2"
 license=('GPL')
-depends=(python2 aircrack-ng python2-pyshark)
-optdepends=(macchanger pyrit-svn cowpatty reaver)
+depends=(python2 aircrack-ng python2-pyshark pyrit cowpatty reaver scapy)
+optdepends=(macchanger)
 makedepends=(git)
 source=($pkgname::git+https://github.com/derv82/wifite2.git)
 sha256sums=('SKIP')
