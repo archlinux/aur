@@ -2,13 +2,13 @@
 
 pkgname=yarssr
 pkgver=0.2.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Yet Another RSS Reader for GNOME notification area."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://yarssr.sourceforge.net/"
 license=('GPL')
-depends=('gtk2-perl' 'glade-perl' 'perl-gtk2-trayicon' 'gnome-vfs' \
-	 'perl-xml-rss' 'gnome-perl' 'perl-locale-gettext')
+depends=('gtk2-perl' 'glade-perl' 'perl-gtk2-trayicon' 'gnome-vfs-perl' \
+	 'perl-xml-rss' 'perl-locale-gettext')
 makedepends=('perl')
 conflicts=('yarssr-svn')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz \
