@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=way-cooler-bg
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="The program that draws a background for Way Cooler"
 arch=('i686' 'x86_64')
