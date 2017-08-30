@@ -2,9 +2,9 @@
 
 pkgbase=intellij-idea-ultimate-edition
 pkgname=(intellij-idea-ultimate-edition intellij-idea-ultimate-edition-jre)
-pkgver=2017.2.2
-_buildver=172.3757.52
-pkgrel=3
+pkgver=2017.2.3
+_buildver=172.3968.16
+pkgrel=1
 arch=('any')
 pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity."
 url="https://www.jetbrains.com/idea/"
@@ -14,7 +14,7 @@ options=(!strip)
 source=(https://download.jetbrains.com/idea/ideaIU-$pkgver.tar.gz \
         jetbrains-idea.desktop
 )
-sha256sums=('b5f33894abbf31786a17779bc11bfbe05f46cbbcd516fc2d48590411c44be95c'
+sha256sums=('efbdbac7e5651d59b1bc9efbbc9bc13a6f0798d40b169f891511967123da9207'
             '83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b')
 package_intellij-idea-ultimate-edition() {
   backup=("usr/share/${pkgname}/bin/idea.vmoptions" "usr/share/${pkgname}/bin/idea64.vmoptions" "usr/share/${pkgname}/bin/idea.properties")
