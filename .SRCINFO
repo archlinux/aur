@@ -1,12 +1,16 @@
 pkgbase = python2-gpg
 	pkgdesc = Python bindings for gpgme
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/gpg
 	arch = any
 	license = LGPL2.1+
 	license = GPL2+
 	makedepends = python2-setuptools
+	depends = libgpg-error
+	depends = gnupg
+	depends = swig
+	depends = python2
 	options = !emptydirs
 	source = https://pypi.python.org/packages/9f/46/4f6b63d1b5b82bac52b5b7723df8cd66a4864dc29861aa14d2d2de4a57f5/gpg-1.8.0.tar.gz
 	source = https://pypi.python.org/packages/9f/46/4f6b63d1b5b82bac52b5b7723df8cd66a4864dc29861aa14d2d2de4a57f5/gpg-1.8.0.tar.gz.asc

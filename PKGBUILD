@@ -1,13 +1,12 @@
 # Maintainer: Dylan Baker <dylan@pnwbakers.com>
 pkgname=python2-gpg
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for gpgme"
 arch=('any')
 url="https://pypi.python.org/pypi/gpg"
 license=('LGPL2.1+' 'GPL2+')
 depends=('libgpg-error' 'gnupg' 'swig' 'python2')
-depends=()
 optdepends=()
 makedepends=('python2-setuptools')
 options=(!emptydirs)
