@@ -1,10 +1,10 @@
-# Maintainer: Kozeid <kozeid2@gmail.com>
+# Maintainer: Rafał Kozdrój <kozeid2@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Jason Chu <jchu@xentac.net>
 
 pkgname=lib32-openal-git
-pkgver=1.18.1.r4.g8a735d0b
+pkgver=1.18.1.r54.g2916efee
 pkgrel=1
 pkgdesc="A cross-platform 3D audio library (32-bit)"
 arch=(x86_64)
@@ -41,6 +41,7 @@ build() {
     -DALSOFT_TESTS=0 \
     -DALSOFT_CONFIG=0 \
     -DALSOFT_HRTF_DEFS=0 \
+    -DALSOFT_BACKEND_SNDIO=0 \
     -DALSOFT_AMBDEC_PRESETS=0
   ninja
 }
