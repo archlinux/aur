@@ -1,6 +1,6 @@
 _npmname='reveal-md'
 pkgname='nodejs-reveal-md'
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Get beautiful reveal.js presentations from your Markdown file'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('npm')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=("$_npmname-$pkgver.tgz")
-sha256sums=('e46d3bcd3d2205d4f38967b777edeb71777e36c94792d69190b325182ccc0aa0')
+sha256sums=('d48dccb2598b55e8c848e7dc3639da973b781ee9745912cd3d44cc9729ec1493')
 
 package() {
     cd $srcdir
