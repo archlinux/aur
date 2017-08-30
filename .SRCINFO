@@ -1,14 +1,14 @@
 pkgbase = libdbh2
 	pkgdesc = Disk based hashtables
-	pkgver = 5.0.19
+	pkgver = 5.0.22
 	pkgrel = 1
 	url = http://sf.net/projects/dbh
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = glibc
-	source = http://downloads.sourceforge.net/project/dbh/dbh/5.0.19/libdbh2-5.0.19.tar.gz
-	md5sums = 68098c2920c7bc099ba35632bc018c25
+	source = http://downloads.sourceforge.net/project/dbh/dbh/5.0.22/libdbh2-5.0.22.tar.gz
+	md5sums = f8c592f6fd4d336cbb5529dc52177e4f
 
 pkgname = libdbh2
 

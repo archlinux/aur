@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 #
 pkgname=libdbh2
-pkgver=5.0.19
+pkgver=5.0.22
 pkgrel=1
 pkgdesc="Disk based hashtables"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://sf.net/projects/dbh"
 license=('GPL3')
 depends=('glibc')
 source=(http://downloads.sourceforge.net/project/dbh/dbh/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('68098c2920c7bc099ba35632bc018c25')
+md5sums=('f8c592f6fd4d336cbb5529dc52177e4f')
 
 build()
 {
