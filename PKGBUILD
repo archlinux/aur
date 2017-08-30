@@ -1,15 +1,15 @@
-# Maintainer: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Thanks to ArchangeGabriel for tons of advice
+# Maintainer: Andrew Crerar <andrew at crerar dot io>
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 _name=firefox
 _channel=developer
-_version='54.0a2'
+_version='57.0a1'
 _file="${_name}-${_version}.en-US.linux"
-_srcurl="https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-aurora"
+_srcurl="https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central"
 pkgname="${_name}-${_channel}"
 pkgdesc='Standalone web browser from mozilla.org, developer build'
 url='http://www.mozilla.org/firefox/developer'
-pkgver=54.0a2.20170402
+pkgver=57.0a1.20170830
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
