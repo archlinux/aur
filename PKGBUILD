@@ -1,7 +1,8 @@
 # $Id$
-# Maintainer: Neo_Chen <chenkolei@gmail.ocm>
+# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-neo_chen               # Build -neo_chen kernel
+pkgbase=linux-neo_chen               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.12
 pkgver=4.12.9
@@ -50,10 +51,10 @@ prepare() {
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
-  #if [ "${_kernelname}" != "" ]; then
-  #  sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-  #  sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-  #fi
+  if [ "${_kernelname}" != "" ]; then
+    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
+    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
+  fi
 
   # set extraversion to pkgrel
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
@@ -62,7 +63,7 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   # get kernel version
-  #make $MAKEFLAGS prepare 
+  make $MAKEFLAGS prepare 
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
@@ -83,7 +84,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The Linux-Neo_Chen kernel and modules (With some unusual feature)"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -138,7 +139,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Header files and scripts for building modules for Linux-Neo_Chen kernel"
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -266,7 +267,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux-Neo_Chen kernel"
 
   cd "${srcdir}/${_srcname}"
 
