@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 185290 2013-05-12 23:48:19Z tomegun $
-# Maintainer: Tom Gundersen <teg@jklm.no>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=ypserv
-pkgver=2.31
-pkgrel=2
+pkgver=2.32.1
+pkgrel=1
 pkgdesc='Linux NIS Server'
 arch=('i686' 'x86_64')
 url='http://www.linux-nis.org/nis/ypserv/'
@@ -36,7 +36,7 @@ package() {
 	install -D -m644 ../ypserv.service "${pkgdir}"/usr/lib/systemd/system/ypserv.service
 	install -D -m644 ../yppasswdd.service "${pkgdir}"/usr/lib/systemd/system/yppasswdd.service
 }
-md5sums=('4537b8f0e917edca8f57b70b9cbc37f3'
+md5sums=('21695231a816d150685eae870087291c'
          '0639cc2e8f667272335649eeede77206'
          '9ff147310a5b83749357b6587cccdf34'
          '89b8b608c81fd01bb81cdb551854833f')
