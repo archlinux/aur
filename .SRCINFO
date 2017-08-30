@@ -1,0 +1,27 @@
+pkgbase = plasma-integration-light
+	pkgdesc = Qt Platform Theme integration plugins for the Plasma workspaces without font dependencies
+	pkgver = 5.10.5
+	pkgrel = 1
+	url = https://www.kde.org/workspaces/plasmadesktop/
+	arch = i686
+	arch = x86_64
+	groups = plasma
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = python
+	makedepends = breeze
+	depends = kio
+	depends = kwayland
+	depends = libxcursor
+	provides = plasma-integration
+	conflicts = plasma-integration
+	source = https://download.kde.org/stable/plasma/5.10.5/plasma-integration-5.10.5.tar.xz
+	source = https://download.kde.org/stable/plasma/5.10.5/plasma-integration-5.10.5.tar.xz.sig
+	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
+	validpgpkeys = 348C8651206633FD983A8FC4DEACEA00075E1D76
+	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
+	sha256sums = 56c2adf52399536278dbad3605c1088e214ef6c57c72e06f297da2739be69d95
+	sha256sums = SKIP
+
+pkgname = plasma-integration-light
+
