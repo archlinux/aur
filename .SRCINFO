@@ -1,5 +1,5 @@
 pkgbase = dtrx
-	pkgdesc = A intelligent archive extraction tool
+	pkgdesc = An intelligent archive extraction tool
 	pkgver = 7.1
 	pkgrel = 3
 	url = http://brettcsmith.org/2007/dtrx/
@@ -9,7 +9,7 @@ pkgbase = dtrx
 	optdepends = tar: to extract tar, deb, and gem archives
 	optdepends = unzip: to extract zip archives
 	optdepends = cpio: to extract cpio and rpm archives
-	optdepends = rpm2cpio: to extract rpm archives
+	optdepends = rpm-org: to extract rpm archives
 	optdepends = binutils: to extract deb archives
 	optdepends = gzip: deb, gem, gzip, and compress archives
 	optdepends = bzip2: to extract deb and bzip2 archives
