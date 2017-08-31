@@ -3,7 +3,7 @@
 
 pkgname=dnscrypt-proxy-git
 _pkgname=dnscrypt-proxy
-pkgver=1.9.5.2438.9685604
+pkgver=1.9.5.2492.e916ef6
 pkgrel=1
 pkgdesc="Is a protocol for securing communications between a client and a DNS resolver"
 arch=('i686' 'x86_64')
@@ -26,14 +26,14 @@ prepare() {
   sed -e 's|^ExecStart=.*|ExecStart=/usr/bin/dnscrypt-proxy /etc/dnscrypt-proxy.conf|' \
          -i dnscrypt-proxy.service.in
   sed -e 's|python|python2|' -i contrib/generate-domains-blacklist.py
-  sed -e 's|^PKG_DATA_DIR=.*|PKG_DATA_DIR="../.."|' \
+  sed -e 's|^PKG_DATA_DIR=.*|PKG_DATA_DIR=".."|' \
          -i contrib/dnscrypt-update-resolvers.sh.in
 }
 
 build() {
  cd ${srcdir}/${_pkgname}
-  ./autogen.sh --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-systemd
-  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-systemd
+  ./autogen.sh --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-included-ltdl--with-systemd
+  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-included-ltdl --with-systemd
   make -j2
 }
 
@@ -68,4 +68,4 @@ EOF
   chmod 755 "${pkgdir}/usr/bin/dnscrypt-update-resolvers"
   chmod 755 "${pkgdir}/usr/bin/dnscrypt-domains-blacklist"
 }
-sha512sums=('SKIP')
+md5sums=('SKIP')
