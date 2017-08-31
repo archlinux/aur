@@ -2,31 +2,30 @@
 # Maintainer: Isaac Curtis <isaaccurtis1@gmail.com>
 
 pkgname=zotero-beta
-pkgver="5.0.18_beta.1+a15b23e35"
+pkgver="5.0.18_beta.2+01ecff8e2"
 pkgrel=1
 pkgdesc="Zotero Standalone. A free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
 arch=('i686' 'x86_64')
 url="http://www.zotero.org/download"
 license=('GPL3')
-depends=('dbus-glib' 'alsa-lib' 'gtk2' 'gcc-libs' 'nss')
+depends=('dbus-glib' 'gtk2' 'gtk3' 'gcc-libs' 'nss' 'libxt')
+optdepends=('xpdf: PDF indexing')
 conflicts=('zotero')
-if [[ $CARCH == "x86_64" ]]
-then
-  _arch=x86_64
-md5sums=('64b568aa82e43a7059af863542f56d96'
-         '3bfed397fb9d060af469eaacfe8add63')
-else
-  _arch=i686
-fi
+sha256sums=('8ec2a82b5c9b37e30cbe5ef968f5baa29e324a0e024a8cc28c38738ca3db7c7a')
+sha256sums_i686=('dbf33a4511adceb7fca79635746108a2216cb7f570fa78273b3e9609e5b02228')
+sha256sums_x86_64=('4af6052271056c5bc4aace985067db89bd1a57f9e083b95d0e1f61657b0cc85d')
+
 _ver=${pkgver//_/-}
 _ver=${_ver//+/%2B}
 install='zotero-beta.install'
-source=("https://download.zotero.org/client/beta/${_ver}/Zotero-${_ver}_linux-${_arch}.tar.bz2"
-        "zotero-beta.desktop")
+
+source=("zotero-beta.desktop")
+source_i686=("https://download.zotero.org/client/beta/${_ver}/Zotero-${_ver}_linux-i686.tar.bz2")
+source_x86_64=("https://download.zotero.org/client/beta/${_ver}/Zotero-${_ver}_linux-x86_64.tar.bz2")
 
 package() {
   mkdir -p "$pkgdir"/usr/{bin,lib/zotero}
-  mv "$srcdir"/Zotero_linux-$_arch/* "$pkgdir"/usr/lib/zotero
+  mv "$srcdir"/Zotero_linux-$CARCH/* "$pkgdir"/usr/lib/zotero
   ln -s /usr/lib/zotero/zotero "$pkgdir"/usr/bin/zotero
   install -Dm644 "$srcdir"/zotero-beta.desktop "$pkgdir"/usr/share/applications/zotero-beta.desktop
   # Copy zotero icons to a standard location
