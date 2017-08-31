@@ -4,13 +4,13 @@
 
 pkgname=gnuplot-cvs
 pkgver=5.3r20170828
-pkgrel=1
+pkgrel=2
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others -- cvs version"
 arch=('i686' 'x86_64') 
 url="http://www.gnuplot.info"
 license=('custom')
-depends=('gd' 'lua' 'qt5-svg' 'glib2' 'pango' 'cairo') 
-makedepends=('cvs' 'emacs' 'texlive-core' 'texlive-latexextra' 'qt5-base' 'qt5-tools')
+depends=('gd' 'lua' 'qt4' 'cairo') 
+makedepends=('cvs' 'emacs' 'texlive-core' 'texlive-latexextra')
 options=('!makeflags')
 conflicts=('gnuplot')
 provides=('gnuplot')
@@ -59,7 +59,7 @@ build() {
 	 --with-gihdir=/usr/share/gnuplot \
 	 --with-readline=gnu \
 	 --disable-wxwidgets \
-	 --with-qt=qt5 
+	 --with-qt=qt4
 
   LANG=C make pkglibexecdir=/usr/bin
 
