@@ -1,6 +1,6 @@
 pkgbase = postgresql-lts
 	pkgdesc = A sophisticated object-relational DBMS
-	pkgver = 9.4.13
+	pkgver = 9.4.14
 	pkgrel = 1
 	url = http://www.postgresql.org/
 	arch = i686
@@ -13,14 +13,14 @@ pkgbase = postgresql-lts
 	makedepends = tcl>=8.6.0
 	makedepends = openssl>=1.0.0
 	makedepends = pam
-	source = http://ftp.postgresql.org/pub/source/v9.4.13/postgresql-9.4.13.tar.bz2
+	source = http://ftp.postgresql.org/pub/source/v9.4.14/postgresql-9.4.14.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql.pam
 	source = postgresql.logrotate
 	source = postgresql.service
 	source = postgresql.tmpfiles.conf
 	source = postgresql-check-db-dir
-	sha256sums = 0080f55d65194de8b96a2dab153443f8248ff2b2b10e6ab4cda2dcadcac7f2ab
+	sha256sums = 8e7df23a104b057b360d03180ebcb67f645e198a4a0bee94bf56b2bc9505ec6b
 	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
 	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
@@ -47,7 +47,7 @@ pkgname = postgresql-lts-docs
 
 pkgname = postgresql-lts
 	install = postgresql.install
-	depends = postgresql-lts-libs>=9.4.13
+	depends = postgresql-lts-libs>=9.4.14
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
