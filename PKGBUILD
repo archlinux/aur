@@ -1,4 +1,5 @@
 # Maintainer: Tyler Bevan (tbevan12 at gmail dot com)
+# Contributor: Mykola Bespaliuk (kolkabes [at] gmail [dot] com)
 pkgname=brother-hll2315dw
 pkgver=3.2.1_1
 pkgrel=1
@@ -8,8 +9,8 @@ arch=('x86_64' 'i686')
 depends=('perl' 'bash' 'cups')
 license=('custom:Brother')
 source=(
-  http://download.brother.com/welcome/dlf103313/hll2315dwcupswrapper-3.2.1-1.i386.rpm
-  http://download.brother.com/welcome/dlf103293/hll2315dwlpr-3.2.1-1.i386.rpm
+  http://download.brother.com/welcome/dlf103313/hll2315dwcupswrapper-${pkgver//_/-}.i386.rpm
+  http://download.brother.com/welcome/dlf103293/hll2315dwlpr-${pkgver//_/-}.i386.rpm
 )
 md5sums=(
   'b2de10af3f8940fb708089d6164ee6b3'
