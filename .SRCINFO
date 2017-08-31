@@ -2,7 +2,7 @@ pkgbase = wechat-devtools
 	pkgdesc = WeChat Devtools Linux version.
 	pkgver = 1.00.170830
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/devtools.html
 	install = link.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = wechat-devtools
 	license = unknown
 	depends = nss
 	optdepends = wine
-	provides = wechat_web_devtools_git
+	options = !strip
 	source = https://github.com/BruceZhang1993/wechat_devtools/archive/1.00.170830_x86_64.tar.gz
 	md5sums = SKIP
 
