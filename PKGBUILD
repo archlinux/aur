@@ -1,24 +1,25 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-kde-bin
-pkgver=55.0.2
+pkgver=55.0.2.1
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 url="https://www.waterfoxproject.org/"
 license=('MPL')
-depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kwaterfoxhelper>=5.0.1.6')
+depends=('libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kwaterfoxhelper>=5.0.1.6')
 makedepends=('wget')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
-            'speech-dispatcher: Text-to-Speech')
+            'speech-dispatcher: Text-to-Speech'
+            'pulseaudio: Audio support'
+            'alsa-lib: Audio support')
 provides=("waterfox=$pkgver")
 conflicts=('waterfox')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
-source=("waterfox-kde_${pkgver}_amd64.deb::https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox-kde/waterfox-kde_${pkgver}_amd64.deb")
-sha256sums=('dfa25672e9655f5db0abe4e537413e62cdbe1ff53b62900f6c8ede5ff0a09bfe')
-
+source=("waterfox-kde_${pkgver}_amd64.deb::https://bintray.com/hawkeye116477/waterfox-deb/download_file?file_path=pool%2Fw%2Fwaterfox-kde%2Fwaterfox-kde_${pkgver}_amd64.deb")
+sha256sums=('9bf88fb0dd1e8f177821f87e26dc6a8409b9e424855185cc0403146baeb78e5e')
 package() {
 # Extract Waterfox from .deb package
 msg2 "Extracting the data.tar.xz..."
@@ -37,7 +38,7 @@ select yn in "Yes" "No"; do
                     Yes )
     if grep -q download_language=yes "$_settings"; then
     _chosen_language=$(grep -Po 'chosen_language=\K[^ ]+' $_settings)
-    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
+    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://bintray.com/hawkeye116477/waterfox-deb/download_file?file_path=pool%2Fw%2Fwaterfox%2Fwaterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
 	msg2 "Extracting locale..."
     bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
@@ -85,7 +86,7 @@ printf "Type language code of language you wish to download and install
 for example - for Polish, type pl): "
 read _chosen_language
 
-    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
+    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://bintray.com/hawkeye116477/waterfox-deb/download_file?file_path=pool%2Fw%2Fwaterfox%2Fwaterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
 	msg2 "Extracting locale..."
     bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
