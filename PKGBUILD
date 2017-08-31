@@ -4,7 +4,7 @@
 #Maintainer: onny <onny@project-insanity.org>
 
 pkgname=wfuzz
-pkgver=2.1beta
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Utility to bruteforce web applications to find their not linked resources"
 url="https://github.com/xmendez/wfuzz"
@@ -15,13 +15,13 @@ makedepends=()
 conflicts=()
 replaces=()
 backup=()
-source=("https://github.com/xmendez/wfuzz/releases/download/v2.1-beta/${pkgname}-2.1.beta.tar.gz")
-md5sums=('8aa60e900483553223fd989922c05b91')
+source=("https://github.com/xmendez/wfuzz/archive/v$pkgver.tar.gz")
+md5sums=('c98c5ee8b92aade9ab513b55bd0dc057')
 package() {
 	mkdir -p ${pkgdir}/opt/wfuzz
     mkdir -p ${pkgdir}/usr/bin
-	cp -r ${srcdir}/wfuzz-2.1-beta/* ${pkgdir}/opt/wfuzz/
-	echo -e "#!/bin/bash\n\ncd /opt/wfuzz\npython2.7 /opt/wfuzz/wfuzz.py \$@" > ${pkgdir}/usr/bin/wfuzz
+	cp -r ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/opt/wfuzz/
+	echo -e "#!/bin/bash\n\ncd /opt/wfuzz\npython2 /opt/wfuzz/wfuzz.py \$@" > ${pkgdir}/usr/bin/wfuzz
     sed -i '0,/RE/s/python/python2/' ${pkgdir}/opt/wfuzz/wfuzz.py
 	chmod a+x ${pkgdir}/usr/bin/wfuzz
 }
