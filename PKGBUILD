@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('conan')
-pkgver=0.25.1
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -23,13 +23,13 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<2.0.0'
          'python-future=0.16.0'
          'python-pygments>=2.0' 'python-pygments<3.0')
 source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "arch-deps.patch")
-md5sums=('1a1f7ad114cdf6f279a1d8d27786a8bd'
+md5sums=('d94018dfca4f8cd01b01b18b4ab578cc'
          'a354ef73eb5bf895bb7f6773ad5d4f01')
 
 
 prepare() {
-cd $pkgname-$pkgver
-patch -Np1 -i "${srcdir}/arch-deps.patch"
+  cd $pkgname-$pkgver
+  patch -Np1 -i "${srcdir}/arch-deps.patch"
 }
 
 build() {
