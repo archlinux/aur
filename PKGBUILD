@@ -1,5 +1,6 @@
 # Maintainer: bruceutut <zttt183525594@gmail.com>
 pkgname=wechat-devtools
+_pkg=wechat_devtools
 pkgver=1.00.170830
 pkgrel=1
 epoch=1
@@ -16,7 +17,7 @@ source=("https://github.com/BruceZhang1993/wechat_devtools/archive/${pkgver}_${_
 md5sums=("SKIP")
 
 package() {
-	cd "$pkgname-$pkgver_${_arch}"
+	cd "${_pkg}-$pkgver_${_arch}"
 	find ./ -type f -exec install -Dm755 {} \
         "${pkgdir}/opt/tencent/${pkgname}/{}" \;
 }
