@@ -1,0 +1,22 @@
+pkgbase = darkradiant-git
+	pkgdesc = Editor for The Dark Mod and Doom 3 (idTech4) based games
+	pkgver = 2.1.0.r559.gb2f5471ea
+	pkgrel = 1
+	arch = x86_64
+	makedepends = automake
+	makedepends = libtool
+	depends = wxgtk
+	depends = ftgl
+	depends = glew
+	depends = boost
+	depends = boost-libs
+	depends = freealut
+	depends = webkitgtk2
+	depends = pybind11
+	provides = darkradiant
+	conflicts = darkradiant
+	source = DarkRadiant::git+https://github.com/codereader/DarkRadiant.git
+	sha512sums = SKIP
+
+pkgname = darkradiant-git
+
