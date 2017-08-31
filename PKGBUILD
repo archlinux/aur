@@ -1,15 +1,15 @@
 # Maintainer: Felix Laurie von Massenbach <felix@erbridge.co.uk>
 pkgname=inky
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Editor for ink: inkle's narrative scripting language"
 arch=('x86_64')
 url="http://www.inklestudios.com/ink"
 license=('MIT')
 makedepends=('gendesk')
-source=("https://github.com/inkle/inky/releases/download/${pkgver}/Inky_linux.zip"
-        "${pkgname}.png::https://github.com/inkle/inky/raw/${pkgver}/resources/Icon1024.png")
-md5sums=('cf1f3b5b1bb062a51f12b9def646526c'
+source=("${pkgname}-${pkgver}.zip::https://github.com/inkle/inky/releases/download/${pkgver}/Inky_linux.zip"
+        "${pkgname}-${pkgver}.png::https://github.com/inkle/inky/raw/${pkgver}/resources/Icon1024.png")
+md5sums=('7cba44271a35f7fdaaf00a646f7f613a'
          '743b9bb1d15ce07cd533173992f7122d')
 
 package() {
