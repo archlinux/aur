@@ -1,7 +1,7 @@
 # Maintainer: Salvador Pardiñas <darkfm@vera.com.uy>
 pkgname=blastem
-pkgver=0.5.0
-pkgrel=4
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Fast and accurate Sega Genesis/Mega Drive emulator"
 arch=('x86_64' 'i686')
 url="https://www.retrodev.com/blastem/changes.html"
@@ -18,13 +18,13 @@ backup=()
 options=()
 install=
 source=(
-	'https://www.retrodev.com/repos/blastem/archive/99d153d9e9ca.tar.gz'
+	'https://www.retrodev.com/repos/blastem/archive/3d48cb0c28be.tar.gz'
 	'menu.patch'
 	)
 noextract=()
 
 prepare() {
-	mv "$srcdir/blastem-99d153d9e9ca" "$srcdir/blastem"
+	mv "$srcdir/blastem-3d48cb0c28be" "$srcdir/blastem"
 	cd "$srcdir/${pkgname}"
 	patch -Np1 -i "${srcdir}/menu.patch"
 	chmod a+x menumake.sh install.sh
@@ -53,5 +53,5 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/opt/blastem/blastem" "$pkgdir/usr/bin/blastem"
 }
-md5sums=('8d2fbac987082700912d84d00cbbe67d'
+md5sums=('64082a41973a219f92d6ff98040333d7'
          'b01d07f2630bb2c31ffda48dddc85785')
