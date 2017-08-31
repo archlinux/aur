@@ -1,6 +1,6 @@
 pkgbase = icewm-git
 	pkgdesc = A window manager designed for speed, usability, and consistency
-	pkgver = 1.4.2.171
+	pkgver = 1.4.2.190
 	pkgrel = 1
 	url = https://github.com/bbidulock/icewm
 	arch = i686
