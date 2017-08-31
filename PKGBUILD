@@ -1,7 +1,7 @@
 # Maintainer: sekret
 _pkgname=surf
 pkgname=$_pkgname-git
-pkgver=2.0.r40.gf5be376
+pkgver=2.0.r50.g723ff26
 pkgrel=1
 pkgdesc="a WebKit based browser"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('dmenu: url bar and search'
             'mpv: default video player')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+http://git.suckless.org/surf"
+source=("$_pkgname::git+https://git.suckless.org/surf"
         'config.h')
 md5sums=('SKIP'
          'SKIP')
