@@ -1,7 +1,7 @@
 # Maintainer: Jorge Araya Navarro <jorge@esavara.cr>
 pkgname=goimapnotify
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Execute scripts on IMAP mailbox changes (new/deleted/updated messages) using IDLE, golang version."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/shackra/goimapnotify"
@@ -32,7 +32,7 @@ package() {
   cd "${srcdir}"
   install -Dm755 "./bin/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
   install -Dm644 "src/gitlab.com/shackra/${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m0644 ${srcdir}/goimapnotify@.service ${pkgdir}/usr/lib/systemd/system/goimapnotify.service
+  install -D -m0644 ${srcdir}/goimapnotify@.service ${pkgdir}/usr/lib/systemd/system/goimapnotify@.service
 }
 
 # vim:set ts=2 sw=2 et:
