@@ -29,6 +29,7 @@ conflicts=(${_name})
 optdepends=('mpv: for MPV backend'
             'mplayer: for MPlayer backend'
             'xine-lib: for Xine backend'
+	    'kross-interpreters: for ruby and python scripting support'
             'ruby: for scripting'
             'python: for scripting')
 source=("git+https://github.com/maxrd2/${_name}.git")
