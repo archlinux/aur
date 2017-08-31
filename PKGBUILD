@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=upterm
-pkgver=0.2.161
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('apm' 'git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'upterm.desktop'
         'upterm.js')
-sha256sums=('e66d47a21658be366f3244b2a28b906c7d36e252cbcda92a7f285b50b9a58e37'
+sha256sums=('b1cb39ba3574a35a2e3d0e90850f6dc75ce529029029ddeddf6fc3e4e8406664'
             '2d55728dcd4f0b25195474d8676f8994c266f24e8e928ddbb9ff86959c3ac96f'
             '5522f5f78c0686d5e419661f4264e2d2f5f0856582f1494010e457c150f67910')
 
@@ -25,8 +25,8 @@ prepare() {
 build() {
     cd ${pkgname}-${pkgver}
 
-    npm install immutable node-pty
-    types=('@types/chokidar' '@types/enzyme' '@types/fs-extra' '@types/klaw' '@types/lodash' '@types/node' '@types/react')
+    npm install immutable node-pty rxjs
+    types=('@types/chokidar' '@types/csv-parse' '@types/csv-stringify' '@types/enzyme' '@types/fs-extra' '@types/klaw' '@types/lodash' '@types/node' '@types/react')
     npm install "${types[@]}"
     npm install --ignore-scripts electron
     npm install typescript
