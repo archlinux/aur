@@ -1,5 +1,6 @@
 # OLD Maintainer: xduugu
-# Maintainer: MrSerenity
+# OLD Maintainer: MrSerenity
+# Maintainer: derlafff (aur@2-47.ru)
 
 pkgname=qsyncthingtray
 pkgver=0.5.8
