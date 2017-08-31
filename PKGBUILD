@@ -29,6 +29,7 @@ conflicts=(${_name})
 optdepends=('mpv: for MPV backend'
             'mplayer: for MPlayer backend'
             'xine-lib: for Xine backend'
+            'pocketsphinx: for speech recognition'
             'kross-interpreters: for ruby and python scripting support'
             'ruby: for scripting'
             'python: for scripting')
