@@ -1,6 +1,6 @@
-# Maintainer: Jonathan Reams <jbreams@mongodb.com>
+# Maintainer: Aleksandr Matuzok <sherilynhope@gmail.com>
 pkgname=mongo-cxx-driver
-pkgver=r3.0.0
+pkgver=r3.1.3
 pkgrel=1
 pkgdesc="The official MongoDB C++ driver library"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver/build"
     echo $pkgdir
-    DESTDIR=$pkgdir cmake -DCMAKE_BUILD_TYPE=Release .. -DCMAKE_INSTALL_PREFIX=/usr -DBSONCXX_POLY_USE_MNMLSTC=No -DBSONCXX_POLY_USE_BOOST=Yes
+    DESTDIR=$pkgdir cmake -DCMAKE_BUILD_TYPE=Release .. -DCMAKE_INSTALL_PREFIX=/usr/local -DBSONCXX_POLY_USE_MNMLSTC=No -DBSONCXX_POLY_USE_BOOST=Yes
     DESTDIR=$pkgdir make -j$(grep -c proc /proc/cpuinfo)
 }
 
@@ -27,4 +27,4 @@ package() {
 	cd "$pkgname-$pkgver/build"
     DESTDIR=$pkgdir make install
 }
-md5sums=('0d32fc5ae76bdf2ff387ab1c40c93fe0')
+md5sums=('fd1ff0f9b2122225e3b402c2bae30427')
