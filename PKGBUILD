@@ -2,11 +2,11 @@
 pkgname=amber
 pkgver=0.2.1
 pkgrel=1
-pkgdesc="Amber framework that makes interfacing with your file system and applications much smoother."
+pkgdesc="An open source efficient, cohesive and fun web framework for the Crystal language "
 arch=(i686 x86_64)
 url='https://github.com/amber-crystal/amber'
 license=(MIT)
-depends=('crystal' 'shards')
+depends=('crystal' 'shards' 'sqlite')
 source=("https://github.com/amber-crystal/amber/archive/v$pkgver.tar.gz")
 sha256sums=('b586ff61d0114bf0d463a429121d6e0b00ff7271baf540690c3d78239d653c56')
 
