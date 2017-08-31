@@ -1,6 +1,16 @@
+# Colors
+#note() {
+#        printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+#}
+
 note() {
-        printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+    printf "${BLUE}==>${ALL_OFF}${BOLD} NOTE:${ALL_OFF} ${1}\n"
 }
+
+ALL_OFF="$(tput sgr0)"
+BOLD="$(tput bold)"
+BLUE="${BOLD}$(tput setaf 4)"
+GREEN="${BOLD}$(tput setaf 2)"
 
 post_install() {
 	getent group netflow &>/dev/null || groupadd -r -g 44 netflow >/dev/null
