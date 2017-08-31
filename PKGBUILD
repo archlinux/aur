@@ -16,8 +16,10 @@ validpgpkeys=('1CB27DBC98614B2D5841646D08302DB6A2670428') # "Simon Josefsson <si
 
 build() {
   cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr \
-    --enable-gtk-doc
+  ./configure --prefix=/usr
+  # Docs disabled due to gtk-doc package removing gtkdoc-mktmpl function.
+  # Fixing requires running gtkdocize + automake + autoconf
+  # --enable-gtk-doc
   make
 }
 
