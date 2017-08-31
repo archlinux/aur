@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=opencollada
-pkgver=1.6.58
+pkgver=1.6.59
 pkgrel=1
 epoch=1
 pkgdesc="Stream based reader and writer library for COLLADA files"
