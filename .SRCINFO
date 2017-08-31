@@ -1,0 +1,13 @@
+pkgbase = tldr-bash-git
+	pkgdesc = Bash client for tldr: community driven man-by-example.
+	pkgver = 0.33
+	pkgrel = 1
+	url = https://github.com/pepa65/tldr-bash-client
+	arch = any
+	license = GPL
+	depends = bash
+	source = https://raw.githubusercontent.com/pepa65/tldr-bash-client/master/tldr
+	sha256sums = SKIP
+
+pkgname = tldr-bash-git
+
