@@ -4,7 +4,7 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='http://ros.org/wiki/rviz'
 
 pkgname='ros-lunar-rviz'
-pkgver='1.12.11'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -85,7 +85,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rviz-release-release-lunar-rviz-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/lunar/rviz/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b492f6d9ae9451beedcf4f66fedf4371158e25e1e3531b438249e19c8fc5bf17')
+sha256sums=('ab03649cb621011e23bcf1078b29fba0cacc8f638e96aa312ebfe16901b75dc9')
 
 build() {
   # Use ROS environment variables
@@ -93,14 +93,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
