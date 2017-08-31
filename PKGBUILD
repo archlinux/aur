@@ -2,13 +2,13 @@
 pkgname=sygnm-git
 pkgver=1.0.0alpha1
 pkgrel=2
-pkgdesc="Computer algebra system (currently alpha, install only if you know what you are doing)"
+pkgdesc="Computer algebra framework (currently alpha, install only if you know what you are doing)"
 arch=('i686' 'x86_64')
 url="https://sygnm.org/"
 license=('AGPL3')
 depends=('flint' 'arb' 'boost-libs' 'icu' 'gmp' 'qt5-base' 'readline' 'python' 'sqlite')
 makedepends=('boost' 'cmake' 'swig' 'python' 'python-setuptools')
-source=("sygnm-git::git+https://git.0x64.org/sygnmdev/sygnm.git")
+source=("sygnm-git::git+https://git.sygnm.org/sygnmdev/sygnm.git")
 options=(debug !strip)
 conflicts=('sygnm')
 
