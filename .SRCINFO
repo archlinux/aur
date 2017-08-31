@@ -1,0 +1,18 @@
+pkgbase = yersinia-git
+	pkgdesc = A network tool designed to take advantage of some weakness in different network protocols
+	pkgver = v0.8.2.r10.gdc2aa7b
+	pkgrel = 1
+	url = https://github.com/tomac/yersinia
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libpcap
+	depends = libnet
+	optdepends = gtk2: required for the gtk 2.0 interface
+	conflicts = yersinia
+	source = yersinia::git+https://github.com/tomac/yersinia#branch=master
+	md5sums = SKIP
+
+pkgname = yersinia-git
+
