@@ -1,3 +1,11 @@
+2017-08-31 Rafael Fontenelle <rafaelff@gnome.org>
+	* gstreamer0.10-mm 0.10.11-3
+	* Depends on libxml++2.6, instead of libxml++ (version 3.0)
+
+2017-01-22 Balló György <ballogyor@gmail.com>
+	* gstreamer0.10-mm 0.10.11-2
+	* Move package from the [community] repository
+
 2014-11-12 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 	* package renamed to gstreamer0.10-mm 0.10.11-1
 
