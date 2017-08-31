@@ -32,6 +32,7 @@ optdepends=('mplayer: MPlayer backend'
             'mpv: MPV backend'
             'xine-lib: Xine backend'
             'pocketsphinx: speech recognition'
+            'kross-interpreters: for ruby and python scripting support'
             'ruby: scripting'
             'python: scripting')
 
