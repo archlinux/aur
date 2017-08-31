@@ -1,0 +1,14 @@
+pkgbase = blender-plugin-yavne
+	pkgdesc = This Blender addon provides a set of tools for editing vertex normals. Y.A.V.N.E. can dramatically improve the visual quality of a mesh without altering geometry.
+	pkgver = 1.3.0_r16.8eb2b18
+	pkgrel = 1
+	url = https://github.com/fedackb/yavne
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = blender
+	source = yavne::git+https://github.com/fedackb/yavne.git
+	md5sums = SKIP
+
+pkgname = blender-plugin-yavne
+
