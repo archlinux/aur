@@ -5,8 +5,8 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.12.9
-xanmod=10
+pkgver=4.12.10
+xanmod=11
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
@@ -18,16 +18,12 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset"
-        'bonding-require-speed-duplex-only-for-802.3ad-alb-an.patch'
-        'bonding-ratelimit-failed-speed-duplex-update-warning.patch')
+        "${pkgbase}.preset")
 source_x86_64=("config.x86_64")
 source_i686=("config.i686")
-sha256sums=('b8ea56e1c41a450ae9d65ae49b65e55a19dc4bc0d99c6c87e11f85b7b9a34e44'
+sha256sums=('d6f66dc711cce1e5689b6157f8a2513e87d45a62debc2f9d2287b56184223d7e'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '48e0505438bb4ccc7a0e050a896122b490e8f1b1446aa3833841a9d4d7853d68'
-            'fc606711a922638d5cc4358f47f69f554d9e6eab1cec91f0b49f00911f399722')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 sha256sums_i686=('df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1')
 sha256sums_x86_64=('bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586')
 
@@ -60,10 +56,6 @@ prepare() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
-
-  # https://bugzilla.kernel.org/show_bug.cgi?id=196547
-  patch -Np1 -i ../bonding-ratelimit-failed-speed-duplex-update-warning.patch
-  patch -Np1 -i ../bonding-require-speed-duplex-only-for-802.3ad-alb-an.patch
 
   # get kernel version
   make prepare
