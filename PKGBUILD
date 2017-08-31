@@ -3,7 +3,7 @@
 
 pkgname=dlib
 _pkgname=dlib
-pkgver=19.4
+pkgver=19.6
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('cblas: for BLAS support'
             'libpng: for PNG support'
             'sqlite: for sqlite support')
 source=(https://downloads.sourceforge.net/project/dclib/${_pkgname}/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('003f0508fe605cf397ad678c6976e5ec7db8472faabf06508d16ead205571372')
+sha256sums=('40292a4343499b18b881f69b26a56c1ecfe95cb9b9f964f37c1064c6fc415e2c')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
