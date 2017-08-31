@@ -3,8 +3,9 @@
 # Contributor: Mihails Strasuns <public@dicebot.lv>
 
 pkgname=('dcd')
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
+_pkgcommit=9f4c6ddaf43544682de37d864d33b52e9648ca10
 pkgdesc="D Completion Daemon: auto-complete for the D programming language"
 arch=('i686' 'x86_64')
 url="https://github.com/Hackerpilot/DCD"
@@ -14,11 +15,11 @@ makedepends=('dmd' 'git')
 depends=('libphobos')
 
 source=(
-	"git+https://github.com/Hackerpilot/DCD#tag=v$pkgver"
+	"git+https://github.com/dlang-community/DCD#commit=$_pkgcommit"
 	"git+https://github.com/msgpack/msgpack-d"
 	"git+https://github.com/economicmodeling/containers"
-	"git+https://github.com/Hackerpilot/libdparse"
-	"git+https://github.com/Hackerpilot/dsymbol"
+	"git+https://github.com/dlang-community/libdparse"
+	"git+https://github.com/dlang-community/dsymbol"
 	"dcd.service"
 	"dcd.conf"
 )
