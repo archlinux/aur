@@ -2,7 +2,7 @@
 pkgname=sealcrypto
 
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple Encrypted Arithmetic Library'
 arch=('x86_64')
 url="https://sealcrypto.codeplex.com/"
@@ -25,7 +25,8 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   mkdir -p $pkgdir/usr/lib
-  mkdir -p $pkgdir/usr/include/seal
+  mkdir -p $pkgdir/usr/include/seal/util
   cp "bin/libseal.a" $pkgdir/usr/lib
   cp SEAL/*.h $pkgdir/usr/include/seal
+  cp SEAL/util/*.h $pkgdir/usr/include/seal/util
 }
