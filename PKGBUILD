@@ -1,10 +1,10 @@
-# Maintainer: Afri 5chdn <aur@cach.co>
+# Maintainer: Afri 5chdn <aur@5chdn.co>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
 pkgver=0.9.0
 _strver=0-9-0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mist dapp browser and Ethereum wallet."
 arch=('i686' 'x86_64')
 depends=(
@@ -12,6 +12,8 @@ depends=(
   'readline'
   'gconf'
   'libnotify'
+  'gtk2'
+  'libxss'
 )
 provides=(
   'mist'
