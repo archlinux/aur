@@ -5,7 +5,7 @@
 _name=SuperCollider
 pkgname=supercollider-with-plugins
 pkgver=3.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An environment and programming language for real time audio synthesis and algorithmic composition. Current version including sc3-plugins."
 arch=('i686' 'x86_64')
 conflicts=('supercollider' 'sc3-plugins-git')
@@ -34,6 +34,8 @@ prepare() {
 
 build() {
   cd "$srcdir/$_name-Source"
+  sed -i -e '30a#include <functional>' server/plugins/DiskIO_UGens.cpp
+  sed -i -e '41a#include <functional>' lang/LangPrimSource/PyrSerialPrim.cpp
   [ -d b ] || mkdir b && cd b
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_BUILD_TYPE=Release \
