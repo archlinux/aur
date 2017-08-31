@@ -17,7 +17,7 @@ source=("https://github.com/BruceZhang1993/wechat_devtools/archive/${pkgver}_${_
 md5sums=("SKIP")
 
 package() {
-	cd "${_pkg}-$pkgver_${_arch}"
+	cd "${_pkg}-${pkgver}_${_arch}"
 	find ./ -type f -exec install -Dm755 {} \
         "${pkgdir}/opt/tencent/${pkgname}/{}" \;
 }
