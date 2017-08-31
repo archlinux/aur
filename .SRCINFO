@@ -1,7 +1,7 @@
 pkgbase = paxchange
 	pkgdesc = A tool to synchronize installed packages across multiple machines
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/Baum42/paxchange
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = paxchange
 	depends = pacman
 	optdepends = pacaur: Adds support for synchronizing AUR packages
 	optdepends = repkg: Automatically rebuild the package on dependency updates
-	source = paxchange-1.0.0::git+https://github.com/Baum42/paxchange.git#tag=1.0.0
+	source = paxchange-1.0.1::git+https://github.com/Baum42/paxchange.git#tag=1.0.1
 	source = paxchange.rule
 	sha256sums = SKIP
 	sha256sums = a30602ce3d02e36374c60bcb61bb97ed68ef580eddc86e4c1ac82dcdd90ebb6a

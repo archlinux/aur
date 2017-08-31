@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=paxchange
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A tool to synchronize installed packages across multiple machines"
 arch=('i686' 'x86_64')
 url="https://github.com/Baum42/$pkgname"
