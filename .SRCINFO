@@ -5,7 +5,9 @@ pkgbase = tldr-bash-git
 	url = https://github.com/pepa65/tldr-bash-client
 	arch = any
 	license = GPL
-	depends = bash
+	depends = bash,
+	depends = unzip,
+	depends = curl
 	source = https://raw.githubusercontent.com/pepa65/tldr-bash-client/master/tldr
 	sha256sums = SKIP
 
