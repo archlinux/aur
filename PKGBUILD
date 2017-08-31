@@ -1,21 +1,19 @@
 # Maintainer: Faustino Aguilar <faustinoaq.github.io>
 pkgname=amber
-pkgver=0.1.8
+pkgver=0.2.1
 pkgrel=1
-pkgdesc="Amber framework that makes interfacing with your file system and applications much smoother. (Work In Progress)"
+pkgdesc="Amber framework that makes interfacing with your file system and applications much smoother."
 arch=(i686 x86_64)
 url='https://github.com/amber-crystal/amber'
 license=(MIT)
 depends=('crystal' 'shards')
 source=("https://github.com/amber-crystal/amber/archive/v$pkgver.tar.gz")
-sha256sums=('0ea5bc999e80b37d34d493d64e8e37ae5e0e3526aa38e8c1898336741c706b0d')
+sha256sums=('b586ff61d0114bf0d463a429121d6e0b00ff7271baf540690c3d78239d653c56')
 
 build() {
   cd "amber-$pkgver"
   shards
-  mkdir -p bin
   make build
-  crystal eval 'STDIN.blocking = true'
 }
 
 package() {

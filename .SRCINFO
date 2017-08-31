@@ -1,6 +1,6 @@
 pkgbase = amber
-	pkgdesc = Amber framework that makes interfacing with your file system and applications much smoother. (Work In Progress)
-	pkgver = 0.1.8
+	pkgdesc = Amber framework that makes interfacing with your file system and applications much smoother.
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/amber-crystal/amber
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = amber
 	license = MIT
 	depends = crystal
 	depends = shards
-	source = https://github.com/amber-crystal/amber/archive/v0.1.8.tar.gz
-	sha256sums = 0ea5bc999e80b37d34d493d64e8e37ae5e0e3526aa38e8c1898336741c706b0d
+	source = https://github.com/amber-crystal/amber/archive/v0.2.1.tar.gz
+	sha256sums = b586ff61d0114bf0d463a429121d6e0b00ff7271baf540690c3d78239d653c56
 
 pkgname = amber
 
