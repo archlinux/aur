@@ -1,0 +1,13 @@
+# https://github.com/keeweb/keeweb/issues/722
+diff --git a/resources/app/app.js b/resources/app/app.js
+index 9206832..c441ab5 100644
+--- a/resources/app/app.js
++++ b/resources/app/app.js
+@@ -246,7 +246,7 @@ function mainWindowBlur() {
+ function emitBackboneEvent(e, arg) {
+     if (mainWindow && mainWindow.webContents) {
+         arg = JSON.stringify(arg);
+-        mainWindow.webContents.executeJavaScript(`Backbone.trigger('${e}', ${arg});`);
++        mainWindow.webContents.executeJavaScript(`setTimeout(() => Backbone.trigger('${e}', ${arg}), 0);`);
+     }
+ }
