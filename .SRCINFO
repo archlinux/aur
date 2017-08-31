@@ -1,6 +1,6 @@
 pkgbase = python-pywal-git
 	pkgdesc = Generate and change colorschemes on the fly
-	pkgver = 0.6.7.r0.g7326f66
+	pkgver = 0.6.9.r0.gbb700c4
 	pkgrel = 1
 	url = https://github.com/dylanaraps/pywal/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-pywal-git
 	depends = imagemagick
 	optdepends = feh: set wallpaper
 	optdepends = nitrogen: set wallpaper
-	provides = python-pywal=0.6.7.r0.g7326f66-1
+	provides = python-pywal=0.6.9.r0.gbb700c4-1
 	conflicts = python-pywal
 	source = git+https://github.com/dylanaraps/pywal.git
 	md5sums = SKIP
