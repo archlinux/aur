@@ -5,7 +5,7 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=libva-intel-driver-hybrid
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family with wrapper support for the hybrid codec driver'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ replaces=('libva-driver-intel')
 conflicts=('libva-intel-driver')
 provides=('libva-intel-driver')
 source=("https://github.com/01org/intel-vaapi-driver/releases/download/${pkgver}/intel-vaapi-driver-${pkgver}.tar.bz2")
-sha256sums=('866cdf9974911e58b0d3a2cade29dbe7b5b68836e142cf092b99db68e366b702')
+sha256sums=('54411d9e579300ed63f8b9b06152a1a9ec95b7699507d7ffa014cd7b2aeaff6f')
 
 prepare() {
   cd intel-vaapi-driver-${pkgver}
