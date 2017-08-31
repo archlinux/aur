@@ -38,7 +38,7 @@ package() {
 }
 
 post_install() {
- mktexsr
+ mktexlsr
 }
 
 post_remove() {
