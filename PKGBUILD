@@ -21,7 +21,7 @@ sha256sums=('94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 # Define the target archive filename:
 _pianoteqfilename=pianoteq_stage_linux_v${pkgver//./}.7z
 # Define its checksum:
-_pianoteqsha256sum=ed208715482af54c3e6e3b84313c9bdbe277fa57aca4383f25b261755e5049e7
+_pianoteqsha256sum=ae0100a22432e73c2a7df8890b89239f04d3adc5a6d97440af9517e8e75187af
 
 prepare(){
     # the source package must be downloaded manually
