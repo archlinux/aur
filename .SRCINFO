@@ -1,0 +1,10 @@
+pkgbase = python-linotype
+    pkgdesc = Automatically format help messages.
+    pkgver = 0.1.0.post8
+    pkgrel = 1
+    url = https://github.com/lostatc/linotype
+    arch = any
+    license = GPL3
+    depends = python-sphinx
+
+pkgname = python-linotype
