@@ -1,7 +1,7 @@
 pkgbase = pacui-git
-	pkgdesc = A simple and interative Bash Frontend for Pacman/Pacaur/Yaourt
+	pkgdesc = Bash script providing advanced Pacman and Pacaur/Yaourt functionality in a simple UI
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/excalibur1234/pacui
 	arch = any
 	license = GPL3
