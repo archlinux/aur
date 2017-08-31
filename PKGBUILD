@@ -2,12 +2,12 @@
 _pkgname=marble-restricted-maps
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="Maps for the Marble desktop globe with restricted licenses"
 arch=('any')
 url="https://gitlab.com/marble-restricted-maps"
 license=('unknown')
-depends=('marble')
+depends=('marble-common')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
