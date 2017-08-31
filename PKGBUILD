@@ -8,7 +8,7 @@
 pkgname=('gurobi')
 _basename=gurobi
 pkgver=7.5.1
-pkgrel=2
+pkgrel=4
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
 url="http://www.gurobi.com/products/gurobi-optimizer"
