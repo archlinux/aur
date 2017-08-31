@@ -1,0 +1,19 @@
+pkgbase = brother-hll2315dw
+	pkgdesc = Brother HL-L2315DW CUPS driver
+	pkgver = 3.2.1_1
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = x86_64
+	arch = i686
+	license = custom:Brother
+	depends = perl
+	depends = bash
+	depends = cups
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlf103313/hll2315dwcupswrapper-3.2.1-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf103293/hll2315dwlpr-3.2.1-1.i386.rpm
+	md5sums = b2de10af3f8940fb708089d6164ee6b3
+	md5sums = abae60fea4451c67ab99d7718ef8bcac
+
+pkgname = brother-hll2315dw
+
