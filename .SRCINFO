@@ -2,7 +2,7 @@
 # Thu Jan 28 21:30:36 UTC 2016
 pkgbase = mongo-cxx-driver
 	pkgdesc = The official MongoDB C++ driver library
-	pkgver = r3.0.0
+	pkgver = r3.1.3
 	pkgrel = 1
 	url = http://docs.mongodb.org/ecosystem/drivers/cpp/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = mongo-cxx-driver
 	makedepends = boost
 	depends = libmongoc
 	depends = boost-libs
-	source = https://github.com/mongodb/mongo-cxx-driver/archive/r3.0.0.tar.gz
-	md5sums = 0d32fc5ae76bdf2ff387ab1c40c93fe0
+	source = https://github.com/mongodb/mongo-cxx-driver/archive/r3.1.3.tar.gz
+	md5sums = fd1ff0f9b2122225e3b402c2bae30427
 
 pkgname = mongo-cxx-driver
 
