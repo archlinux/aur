@@ -8,7 +8,7 @@ url="https://github.com/pepa65/tldr-bash-client"
 source=("https://raw.githubusercontent.com/pepa65/tldr-bash-client/master/tldr")
 license=('GPL')
 sha256sums=('SKIP')
-depends=('bash')
+depends=('bash', 'unzip', 'curl')
 
 package() {
   cd "${srcdir}"
