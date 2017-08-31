@@ -5,8 +5,8 @@
 pkgname=armory-goatpig-git
 _name=${pkgname%-*-*}
 _py2ver=$(pacman -Qi python2 | sed -n 's/\(.*Version *: \)\(.*\..*\)\(\..*\)/\2/p')
-pkgver=v0.96.1.r1.gb77932c8
-pkgrel=2
+pkgver=v0.96.2.r0.g95dc5590
+pkgrel=1
 pkgdesc="Armory Bitcoin wallet, built from new, official github repo w/auto selection of current python2 version"
 arch=('i686' 'x86_64')
 url="https://github.com/goatpig/BitcoinArmory"
@@ -29,6 +29,7 @@ prepare() {
   cd "$srcdir/$_name"
   git submodule update --init
   PYTHON_VERSION="$_py2ver" "$srcdir/$_name/autogen.sh"
+  sed -i -- 's/lrelease/lrelease-qt4/g' "$srcdir/$_name/Makefile.am"
 }
 
 build() {
