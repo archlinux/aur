@@ -1,0 +1,15 @@
+pkgbase = recultis
+	pkgdesc = Return to the cult games. On Linux, with modern, open source engines.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://makson96.github.io/Recultis
+	install = recultis.install
+	arch = x86_64
+	license = GPL
+	depends = python
+	depends = pyqt5-common
+	source = https://codeload.github.com/makson96/Recultis/tar.gz/v1.1.0
+	md5sums = 2237f900ab4fc5b89aef398b00e2f312
+
+pkgname = recultis
+

@@ -1,0 +1,30 @@
+pre_install() {
+    sudo rm -rf /opt/Recultis
+    sudo rm -rf /usr/bin/recultis
+    sudo rm -rf /usr/share/applications/recultis.desktop
+}
+
+post_install()  {
+    sudo chmod 755 /opt/Recultis
+    sudo echo "python /opt/Recultis/recultis.py" > /usr/bin/recultis
+    sudo chmod 755 /usr/bin/recultis
+    sudo cp /opt/Recultis/recultis.desktop /usr/share/applications
+}
+
+post_remove()   {
+    sudo rm -rf /opt/Recultis
+    sudo rm -rf /usr/bin/recultis
+}
+
+pre_upgrade()   {
+    sudo rm -rf /opt/Recultis
+    sudo rm -rf /usr/bin/recultis
+    sudo rm -rf /usr/share/applications/recultis.desktop
+}
+
+post_upgrade()  {
+    sudo chmod 755 /opt/Recultis
+    sudo echo "python /opt/Recultis" > /usr/bin/recultis
+    sudo chmod 755 /usr/bin/recultis
+    sudo cp /opt/Recultis/recultis.desktop /usr/share/applications
+}
