@@ -1,6 +1,6 @@
 post_install() {
 	ln -s /opt/tencent/wechat-devtools/wechat_devtools /usr/bin/wechat_devtools
-	echo "Type `wechat_devtools` to launch."
+	echo "Type wechat_devtools to launch."
 }
 
 post_remove() {
