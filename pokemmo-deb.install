@@ -1,0 +1,11 @@
+pre_install ()  {
+    rm -rf /home/*/.pokemmo
+}
+
+post_upgrade () {
+    rm -rf /home/*/.pokemmo
+}
+
+post_remove ()  {
+    rm -rf /home/*/.pokemmo
+}
