@@ -2,7 +2,7 @@
 
 pkgname=virtualgo
 _reponame=vg
-pkgver=0.6.3
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="Easy and powerful workspace-based development for Go"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('dep' 'go')
 options=('!emptydirs' '!strip')
 source=("https://${_vendor}/archive/v${pkgver}.tar.gz")
-sha256sums=('309ad0c52318e87f1867cc6c35b1b505d09213b7efc06c1f9790f36cf30cd7e7')
+sha256sums=('875b556b47153b018d797da75168070c7f3a435b8d42737cf444630fef4a2b6d')
 
 _vendorpath="gopath/src/$_vendor"
 
