@@ -2,7 +2,7 @@
 
 _name=teeworlds-ddnet
 pkgname=${_name}-git
-pkgver=10.6.7.r17.b8e997f99
+pkgver=10.8.2.r0.f5edf53fd
 pkgrel=1
 pkgdesc="A customized version by DDRaceNetwork of this 2D shooting game"
 arch=('i686' 'x86_64')
@@ -14,12 +14,11 @@ optdepends=('teeworlds-ddnet-skins: more skins for your tee'
             'teeworlds-ddnet-maps-git: mainly important for DDNet Server')
 provides=('teeworlds')
 conflicts=('teeworlds')
-source=("$pkgname::git+https://github.com/ddnet/ddnet"
-        "git+https://github.com/ddnet/ddnet-libs")
+source=("$pkgname::git+https://github.com/ddnet/ddnet")
 source_i686=("https://ddnet.tw/downloads/GraphicsTools-linux_x86.tar.gz")
 source_x86_64=("https://ddnet.tw/downloads/GraphicsTools-linux_x86_64.tar.gz")
-md5sums=('SKIP' 'SKIP')
-md5sums_x86_64=('fc32ca52ae9be02f68b6c257153dbd37')
+md5sums=('SKIP')
+md5sums_i686=('566354c3b4510b032af7d891381ee711')
 md5sums_x86_64=('fc32ca52ae9be02f68b6c257153dbd37')
 
 pkgver() {
@@ -44,11 +43,6 @@ prepare() {
     gendesk -f -n --pkgname "${_name}_srv" --pkgdesc "DDNet Server"          \
         --name 'DDNet Server' --categories 'Game;ArcadeGame' --terminal=true \
         --exec='sh -c "cd /usr/share/teeworlds/data && teeworlds-ddnet_srv"'
-     
-    cd $pkgname
-    git submodule init
-    git config submodule.ddnet-libs.url "$srcdir/ddnet-libs"
-    git submodule update
 }
 
 build() {
