@@ -1,12 +1,12 @@
 pkgbase = damadamas-icon-theme-git
 	pkgdesc = DamaDamas icons aim to offer a familiar interface to the users
-	pkgver = 0.1.r3.gc53431e
+	pkgver = 0.2.r0.gf960e00
 	pkgrel = 1
 	url = https://github.com/sonakinci41/DamaDamas-icon-theme
 	arch = any
-	license = unknown
+	license = GPL3
 	makedepends = git
-	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
 	provides = damadamas-icon-theme
 	conflicts = damadamas-icon-theme
 	options = !strip
