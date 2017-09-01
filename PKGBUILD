@@ -1,12 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: kusanaginoturugi <kusanaginoturugi at gmail dot com>
 pkgname=info-ja-gnu-coreutils
 _pkgname=info-ja-GNU_coreutils
-pkgver=20170330
+pkgver=20170815
 pkgrel=1
 pkgdesc="Japanese version info manual"
 arch=(any)
@@ -14,7 +9,7 @@ url="https://linuxjm.osdn.jp/"
 license=('GPL')
 install="${pkgname}.install"
 source=("https://linuxjm.osdn.jp/info-pkg/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('10912d151df907cd14ebb27f3de1c685')
+md5sums=('a555f1f6e8d6038b1215978f8ddbcc66')
 
 #prepare() {
 #}
