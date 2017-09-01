@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.3.0+23973.a315ac23dc6c
+pkgver=4.3.0+23979.fb9b024a6041
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -11,8 +11,8 @@ license=('GPL')
 # Some of these may be optional, e.g. arpack, lapack, qhull but if they
 # are installed, octave will be linked against them.
 depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'openmp'
-	 'gl2ps' 'qt5-base' 'qhull' 'graphicsmagick' 'portaudio' 'mesa'
-	 'suitesparse' 'java-environment' 'qscintilla-qt5')
+	 'gl2ps' 'qt4' 'qhull' 'graphicsmagick' 'portaudio' 'mesa'
+	 'suitesparse' 'java-environment' 'qscintilla-qt4')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gettext'
 	     'transfig' 'epstool' 'texlive-core' 'icoutils')
 optdepends=('texinfo: for help-support in octave'
@@ -53,7 +53,7 @@ build() {
     --with-umfpack --enable-java --with-hdf5 --without-osmesa \
     --with-java-homedir=/usr/lib/jvm/`archlinux-java get` \
     --with-java-includedir=/usr/lib/jvm/`archlinux-java get`/include \
-    --with-java-libdir={/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server,/usr/lib/jvm/`archlinux-java get`/jre/lib/${_arch}/server} 
+    --with-java-libdir={/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server,/usr/lib/jvm/`archlinux-java get`/jre/lib/${_arch}/server} --with-qt=4
   export CLASSPATH=.:$CLASSPATH
   make
 }
