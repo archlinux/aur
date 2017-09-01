@@ -1,0 +1,16 @@
+pkgbase = govc
+	pkgdesc = A vSphere CLI built on top of govmomi
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/vmware/govmomi
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	options = !emptydirs
+	options = !strip
+	source = https://github.com/vmware/govmomi/archive/v0.15.0.tar.gz
+	sha256sums = eb155615dd0437046cc3a3eb45a43aeecb2cde02d363dee5c4cce51e4249cd90
+
+pkgname = govc
+
