@@ -1,17 +1,10 @@
 function post_install {
   echo "
-!!! WARNING !!!
+Friendly reminder:
 
-If you upgraded Fisherman from a pre-2.x release, you need to migrate your configuration.
-Remove the following line from your fish config (usually ~/.config/fish/config.fish):
-
-source /usr/share/fish/config-fisherman.fish
-
-And run:
-
-fisher-me-up
-
-You will have to install all your plugins manually again.
+Fisherman sometimes changes, and since this package is using the latest revision
+from git, it may fail occasionally.
+Please leave a comment in AUR and report to upstrean in case of breakages.
 "
 }
 

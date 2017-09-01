@@ -1,7 +1,7 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 pkgname=fisherman-git
 _gitname=fisherman
-pkgver=2.10.0.r1.gf7bd2b1
+pkgver=2.13.0.r2.g3e74f7b
 pkgrel=1
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=('any')
@@ -27,6 +27,6 @@ package() {
   cd "${_gitname}"
   install -Dm 644 fisher.fish "${fishpath}/functions/fisher.fish"
   # README and LICENSE
-  install -Dm 644 LICENSE "${sharepath}/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENSE.md "${sharepath}/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.md "${sharepath}/doc/${pkgname}/README"
 }
