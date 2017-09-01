@@ -10,7 +10,7 @@ pkgname=('eiskaltdcpp-core-git'
          'eiskaltdcpp-web-git'
          'eiskaltdcpp-data-git'
          )
-pkgver=2.2.10.168.g35edb672
+pkgver=2.2.10.167.geca99308
 pkgrel=1
 pkgdesc="EiskaltDC++: DC and ADC client based on dcpp core. (GIT Version)"
 license=('GPL3')
@@ -20,9 +20,11 @@ conflicts=('eiskaltdcpp')
 options=('!emptydirs')
 source=('git+https://github.com/eiskaltdcpp/eiskaltdcpp.git'
         'esee.patch'
+        'https://patch-diff.githubusercontent.com/raw/eiskaltdcpp/eiskaltdcpp/pull/367.patch'
         )
 sha256sums=('SKIP'
-            'SKIP'
+            'b68a4def7204214d418efabfe130393e6b8481a3b348defeb9050bbb2693fa54'
+            '57d4278e9670cff5c01231bcc727d6fe12018f80d74750aaa34e636f77a7c04f'
             )
 makedepends=('git'
              'cmake'
@@ -60,7 +62,7 @@ prepare() {
   # Bleh patch for set right version
   patch -p1 -i "${srcdir}/esee.patch"
   # Fix Close the Qt GUI
-  git pull --no-edit origin pull/367/head
+  patch -p1 -i "${srcdir}/367.patch"
 }
 
 build() {
