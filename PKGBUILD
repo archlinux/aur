@@ -1,4 +1,3 @@
-#Maintainer: Florian Wittmann <fl0w1@disroot.org>
 pkgname='python-mbstrdecoder'
 _module='mbstrdecoder'
 pkgver='0.2.2'
