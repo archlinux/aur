@@ -6,14 +6,14 @@
 pkgname=arachnophilia
 _pkgname=Arachnophilia
 pkgver=5.5.2922
-pkgrel=1
+pkgrel=2
 pkgdesc="A web page development workshop and general programming tool"
 arch=('any')
 url="http://www.arachnoid.com/arachnophilia/index.php"
 license=('LGPL' 'custom:careware')
 depends=('java-environment' 'bash' 'desktop-file-utils')
 makedepends=('curl')
-source=("http://www.arachnoid.com/$pkgname/$_pkgname.jar"
+source=("$_pkgname-$pkgver.jar::http://www.arachnoid.com/$pkgname/$_pkgname.jar"
         "http://www.arachnoid.com/lutusp/old_articles/careware.rtf"
 	"http://www.arachnoid.com/arachnophilia/index.php"
         "${pkgname}.desktop"
@@ -24,7 +24,7 @@ md5sums=('746c016e691f342e4dbbd53967c90211'
          'a41385032fe3a726321d02cd85f9ba55'
          '27010dd0f2b690ca78392dffcc25f210')
 DLAGENTS=('http::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
-noextract=("$_pkgname.jar")
+noextract=("$_pkgname-$pkgver.jar")
 
 pkgver() {
   echo $(awk '/Current/ {print $4 $6}' $srcdir/index.php|tr , .)
@@ -35,11 +35,11 @@ package() {
 
   # Install program files
   install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 $_pkgname.jar "${pkgdir}/usr/share/${pkgname}/$_pkgname.jar"
+  install -Dm644 $_pkgname-$pkgver.jar "${pkgdir}/usr/share/${pkgname}/$_pkgname.jar"
 
   # Install a desktop entry
-  bsdtar -xf Arachnophilia.jar Arachnophilia.png
-  install -Dm644 Arachnophilia.png  "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  bsdtar -xf $_pkgname-$pkgver.jar $_pkgname.png
+  install -Dm644 $_pkgname.png  "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 ${pkgname}.desktop \
    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
