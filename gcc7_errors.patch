@@ -1,0 +1,67 @@
+diff -ur lordsawar-0.3.1.orig/src/bigmap.cpp lordsawar-0.3.1.new/src/bigmap.cpp
+--- lordsawar-0.3.1.orig/src/bigmap.cpp	2015-06-10 19:45:00.000000000 +0200
++++ lordsawar-0.3.1.new/src/bigmap.cpp	2017-08-31 15:53:39.686900798 +0200
+@@ -67,10 +67,10 @@
+ 
+ BigMap::~BigMap()
+ {
+-    if (buffer == true)
++    if (buffer)
+       buffer.clear();
+ 
+-    if (magnified_buffer == true)
++    if (magnified_buffer)
+       magnified_buffer.clear();
+ 
+     delete d_renderer;
+@@ -112,7 +112,7 @@
+     // this represents a 1 tile border around the outside of the picture.
+     // it gets rid of the black border.
+ 
+-    if (buffer == true)
++    if (buffer)
+       buffer.clear();
+     
+     buffer_view.dim = view.dim + Vector<int>(2, 2);
+@@ -122,7 +122,7 @@
+     buffer_gc = Cairo::Context::create(buffer);
+ 
+     //now create the part that will go out to the gtk::image
+-    if (outgoing == true)
++    if (outgoing)
+       outgoing.clear();
+     outgoing = Cairo::Surface::create(buffer, Cairo::CONTENT_COLOR_ALPHA, image.get_width(), image.get_height());
+ 
+@@ -174,7 +174,7 @@
+     //Glib::RefPtr<Gdk::Pixmap> outgoing;
+     if (magnification_factor != 1.0)
+       {
+-	if (magnified_buffer == true)
++	if (magnified_buffer)
+ 	  magnified_buffer.clear();
+ 	magnified_buffer = magnify(buffer);
+ 	clip_viewable_buffer(magnified_buffer, p, outgoing);
+diff -ur lordsawar-0.3.1.orig/src/gui/stack-army-button.cpp lordsawar-0.3.1.new/src/gui/stack-army-button.cpp
+--- lordsawar-0.3.1.orig/src/gui/stack-army-button.cpp	2015-06-21 00:48:43.000000000 +0200
++++ lordsawar-0.3.1.new/src/gui/stack-army-button.cpp	2017-08-31 15:54:17.657488003 +0200
+@@ -146,7 +146,7 @@
+     {
+       bool greyed_out = false;
+       Stack *active_stack = p->getActivestack();
+-      if (active_stack->getArmyById(d_army->getId()) == false)
++      if (active_stack->getArmyById(d_army->getId()) == 0)
+         greyed_out = true;
+       army_image->property_pixbuf() =
+         gc->getCircledArmyPic(p->getArmyset(), d_army->getTypeId(),
+diff -ur lordsawar-0.3.1.orig/src/MapRenderer.cpp lordsawar-0.3.1.new/src/MapRenderer.cpp
+--- lordsawar-0.3.1.orig/src/MapRenderer.cpp	2015-06-10 20:06:19.000000000 +0200
++++ lordsawar-0.3.1.new/src/MapRenderer.cpp	2017-08-31 15:54:45.721255335 +0200
+@@ -72,7 +72,7 @@
+     }
+   else
+     {
+-      if (style->getImage() == false)
++      if (style->getImage() == NULL)
+ 	{
+ 	  printf ("pic for style %d for tile %d at %d,%d is null\n",
+ 		  style->getType(), mtile->getType(), tile.x, tile.y);
