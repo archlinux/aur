@@ -10,6 +10,7 @@
 # Digi bug: Digi RealPort Manager (java) is unable to add new Realport because it uses the wrong options
 # Digi bug: mbrowse reports a few parsing errors in MIB
 # Digi bug: make compatible with OpenSSL 1.1
+# Digi bug: transfer hangs if unit is repowered during live connection. Tested in 4.11, 4.9, and 4.4
 
 # Digi Realport driver for Arch Linux. See Digi release notes for supported products.
 
@@ -92,7 +93,7 @@ source 'PKGBUILD.local'
 
 set -u
 pkgname='dgrp'
-pkgver='1.9.37'
+pkgver='1.9.38'
 pkgrel='1'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
@@ -154,7 +155,8 @@ _filever="${pkgver//\./-}"
 _filever="${_filever/-/.}"
 source=(
   #"${pkgname}-${pkgver}-81000137_X.tgz::http://ftp1.digi.com/support/driver/81000137_X.tgz"
-  "${pkgname}-${pkgver}-beta.tgz::ftp://ftp1.digi.com/support/driver/RealPort%20Linux%20Beta%20Driver/dgrp-${_filever}_y1p.tgz.rpm"
+  #"${pkgname}-${pkgver}-beta.tgz::ftp://ftp1.digi.com/support/driver/RealPort%20Linux%20Beta%20Driver/dgrp-${_filever}_y1p.tgz.rpm"
+  "${pkgname}-${pkgver}-81000137_Y.tgz::http://ftp1.digi.com/support/driver/81000137_Y.tgz"
   'drpadmin' 'drpadmin.1' # "autorebuild-${pkgname}.sh"
   'addp_perl-1.0.tgz::https://github.com/severach/addp/archive/f92a6fd2050c9f32a5a11cac18cd9def78138530.tar.gz'
   'ftp://ftp1.digi.com/support/utilities/AddpClient.zip'
@@ -165,7 +167,7 @@ unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
 #source_x86_64=('http://ftp1.digi.com/support/utilities/40002889_A.tgz') # compiled i686 therefore worthless
 # addp and sddp are incomplete. I replaced them with addp.pl
-sha256sums=('05bcb03f9da28ef45a684d566c0d12694e7a2cb133a43d4c9ed2a71c84df3201'
+sha256sums=('e474518da5b3feddd1f4dd0083ac8125e34ba07da9884cbd3ebd1955006891d7'
             '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
             '9d79df8617e2bb1042a4b7d34311e73dc4afcdfe4dfa66703455ff54512427f5'
@@ -264,9 +266,6 @@ prepare() {
   set -u
   cd dgrp-*/
 
-  # diff -pNaru5 src.old/dgrp-1.9 src/dgrp-1.9 > 'dgrp-patch-signal_pending-kernel-4-11.patch'
-  patch -Nbup2 < '../dgrp-patch-signal_pending-kernel-4-11.patch'
-
   rm -f daemon/openssl-*.tar.gz # I don't want their version to build if OpenSSL version detection fails in the future
 
   # Standardize name of RealPort
@@ -329,50 +328,27 @@ prepare() {
       -e 's:/usr/local/ssl/lib:/usr/lib/openssl-1.0:g' \
     -i 'daemon/Makefile.in'
 
-  # this generates a harmless error as it tries to make a folder in /usr/lib/modules...
-  # --with-ssl-dir supplies to -I but mainly for configure. CFLAGS goes everywhere.
-  # --with-ssl-dir is supplied to -L too which is worthless. We amend with LDFLAGS.
-  CFLAGS="${CFLAGS} -I/usr/include/openssl-1.0" \
-  LDFLAGS="${LDFLAGS} -L/usr/lib/openssl-1.0" \
-  ./configure -q --sbindir='/usr/bin' --prefix='/usr' --mandir='/usr/share/man' --with-ssl-dir='/usr/include/openssl-1.0'
+  # Branding in dmesg
+  sed -e 's@ please visit [^"]\+"@ please visit https://aur.archlinux.org/packages/dgrp/"@g' \
+      -e '/^dgrp_init_module/,/^$/ s@version: %s@& Arch Linux@g' \
+    -i driver/[0-9]*/dgrp_driver.c
 
-  # Produce a "file_locations" that we can pull in here.
-  #if [ ! -f 'config/file_locations.Arch' ]; then
-  #  echo "# for ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR" > 'config/file_locations.Arch'
-  #  sed -e 's/^DGRP/local _&/g' 'config/file_locations' >> 'config/file_locations.Arch'
-  #fi
-  #. 'config/file_locations.Arch'
-
-  # Patch a source for a constant that has been removed from the kernel.
-  # Digi should patch this constant away since whatever it does will eventually not work.
-  # See https://lkml.org/lkml/2014/10/16/632  [PATCH -next 09/27] tty: Remove TTY_CLOSING - LKML.ORG
-  # See http://lkml.iu.edu/hypermail/linux/kernel/1411.0/03202.html [PATCH -next v2 09/26] tty: Remove TTY_CLOSING
-  if [ "$(vercmp "${pkgver}" '1.9.36')" -le 0 ]; then
-    cat >> 'driver/build/include/dgrp_net_ops.h' << EOF
-/* patched by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR */
-/* https://aur.archlinux.org/ */
-#ifndef TTY_CLOSING
-#define TTY_CLOSING (7)
-#endif
-EOF
-  fi
-
-  # Fix some warnings
-  echo 'int next_baud(int dir);' >> 'dinc/dinc.h'
-  sed -e 's:^exeunt(int code).*:int &:g' -i 'dgipserv/dgipserv.c'
-  sed -e 's:^getcode(dest, src):int &:g' \
-      -e 's:^stprint(str, len):int &:g' \
-      -e 's:^#include <termio\.h>$:&\n#include <term.h>:g' \
-    -i 'ditty/ditty.c'
-  #sed -e 's:^CFLAGS = .*:& -Wno-unused-but-set-variable:g' -i 'ditty/Makefile'
-  sed -e 's:static raw_mdm;:static int raw_mdm;:g' -i 'dinc/dinc_hw.c'
-  sed -e 's:^CPPFLAGS = .*:& -Wno-unused-but-set-variable:g' -i 'Makefile'
   set +u
 }
 
 build() {
   set -u
   cd dgrp-*/
+
+  if [ ! -s 'Makefile' ]; then
+    # this generates a harmless error as it tries to make a folder in /usr/lib/modules...
+    # --with-ssl-dir supplies to -I but mainly for configure. CFLAGS goes everywhere.
+    # --with-ssl-dir is supplied to -L too which is worthless. We amend with LDFLAGS.
+    CFLAGS="${CFLAGS} -I/usr/include/openssl-1.0" \
+    LDFLAGS="${LDFLAGS} -L/usr/lib/openssl-1.0" \
+    ./configure -q --sbindir='/usr/bin' --prefix='/usr' --mandir='/usr/share/man' --with-ssl-dir='/usr/include/openssl-1.0'
+  fi
+
   #. 'config/file_locations.Arch'
   make -s all -j1 # This package doesn't support threaded make and it's too small to fix
   set +u
@@ -422,7 +398,6 @@ package() {
 # https://aur.archlinux.org/
 
 # Generated: $(date +"%F %T")
-# From PKGBUILD in folder: $(pwd)
 
 # Warning: If you modify this file you should copy it into the folder with the
 # PKGBUILD or you might lose the customizations on the next install.
