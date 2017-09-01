@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=pueue
-pkgver='1.0.0'
+pkgver='1.0.1'
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
