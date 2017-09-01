@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qt5-datasync
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtDataSync"
@@ -11,7 +11,7 @@ makedepends=('qt5-tools' 'git' 'qpm')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/QtDataSync.git#tag=$pkgver"
-		'qt5-datasync.rule')
+		"${pkgname}.rule")
 sha256sums=('SKIP'
             '9bfb38bb6338775f16514f5958c4aef3f55a4132253b0ae1a6ac1ace398a99c4')
 
