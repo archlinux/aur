@@ -1,4 +1,3 @@
-#Maintainer: Florian Wittmann <fl0w1@disroot.org>
 pkgname='python-simplesqlite'
 _module='SimpleSQLite'
 pkgver='0.15.0'
