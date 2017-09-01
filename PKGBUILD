@@ -1,4 +1,3 @@
-#Maintainer: Florian Wittmann <fl0w1@disroot.org>
 pkgname=python-dataproperty
 _module='DataProperty'
 pkgver='0.25.6'
