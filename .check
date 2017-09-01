@@ -1,13 +1,14 @@
 #!/bin/bash
-# get info for the lastest build of micro editor
+# get version info for the lastest build of micro editor from github release nightly
+NOW=$(date +"%H-%M-%d-%m-%y")
 cat .version.info > .old-version.info
 curl -i https://api.github.com/repos/zyedidia/micro/releases/tags/nightly | grep -P -o "\B\"micro.*linux64.tar.gz" > .name.info
 grep -P -o "\d.*-" .name.info | head --bytes -2 > .version.info
 # check version numbers
 if [ $(<.version.info) == $(<.old-version.info) ]
 then
-    echo "Micro Editor version numbers are the same, so no changes needed."
+    echo "$NOW" ' -> Micro Editor version numbers are the same, so no changes needed.' >> micro-editor-check.log
 else
-    echo -e "\e[31mMicro Editor version differ - so PKGBUILD and .SRCINFO needs updating to latest version info.\e[0m"
+    echo -e "$NOW" ' -> \e[31mMicro Editor version differ - so PKGBUILD and .SRCINFO needs updating to latest version info.\e[0m' >> micro-editor-check.log
     source ./.update
 fi
