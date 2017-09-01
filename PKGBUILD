@@ -65,7 +65,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.12.10
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -76,7 +76,7 @@ _mergepath="${_bfqpath}/merges/${pkgver}"
 _mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance-V3"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
-_bfq_mq_patch='4.12-bfq-mq-20170829.patch'
+_bfq_mq_patch='4.12-bfq-mq-20170901.patch'
 source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -148,7 +148,7 @@ sha256sums=(# mainline kernel patches
             '4d53dfad580592082fa73a56c4677d6f3b56a580ce4e380c24727e2203ffc66d'
             'e6bdde3fa74ba51e9044c98f695878bd00ed08ba9a3e13be235c0f469bff130c'
             # bfq-mq patch
-            '036fe3497b98ca564c5e5d0f8cd2cfc39708a1c75ef4b2f564a0d42a3a44bf20'
+            'e7c866addb31a39809eb2eb7defb6e226c100916daf1b3194ec9f10aafb91c79'
             # tentative patches
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             # mailing-list (ML1) patches
