@@ -12,7 +12,7 @@ pkgbase = python-subprocrunner
 	depends = python-six
 	depends = python-typepy>=0.0.19
 	source = https://github.com/thombashi/subprocrunner/archive/v0.8.7.tar.gz
-	md5sums = ab5cd88223827ae1ec8dddad14dd9e09
+	md5sums = 2138d6e70444bea670eeebe2a58585b7
 
 pkgname = python-subprocrunner
 
