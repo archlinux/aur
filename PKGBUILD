@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=26.0.50.r130056
+pkgver=26.0.50.r130324
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 prepare() {
-  sed -i 's+SYSTEM_PURESIZE_EXTRA 0+SYSTEM_PURESIZE_EXTRA 512000+' emacs/src/puresize.h
+  sed -i 's+SYSTEM_PURESIZE_EXTRA 0+SYSTEM_PURESIZE_EXTRA 512000+' "$srcdir"/emacs/src/puresize.h
 }
 
 build() {
