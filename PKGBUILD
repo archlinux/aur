@@ -1,5 +1,5 @@
 # Maintainer: Alberto Fanjul <albertofanjul@gmail.com>
-pkgname=miraclecast
+pkgname=miraclecast-git
 _name=miraclecast
 pkgver=221.36be37e
 pkgrel=2
@@ -8,7 +8,9 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/albfan/miraclecast"
 license=('GPL')
 depends=(git-core "systemd>=221" "python3" "glib2")
-provides=("miraclecast")
+provides=("miraclecast-git")
+replaces=("miraclecast")
+conflicts=("miraclecast")
 backup=(etc/dbus-1/system.d/org.freedesktop.miracle.conf)
 source=("$_name::git+https://github.com/albfan/miraclecast.git#branch=master")
 md5sums=('SKIP')
