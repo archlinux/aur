@@ -5,12 +5,12 @@
 
 pkgname=gulp-cli
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='The streaming build system'
 arch=(any)
 url='http://gulpjs.com/'
 license=(MIT)
-depends=(nodejs semver)
+depends=(nodejs)
 makedepends=(yarn npm)
 replaces=(gulp)
 provides=(gulp)
@@ -44,11 +44,4 @@ package() {
 	sed -i 's|#!/bin/zsh|#compdef gulp|; s/compdef \(_gulp_completion\) gulp/\1 "$@"/' completion/zsh
 	install -Dm644 completion/zsh "$pkgdir/usr/share/zsh/site-functions/_gulp"
 	#TODO powershell completions
-	
-	# dedup
-	cd "$pkgdir/usr/lib/node_modules/gulp-cli/node_modules"
-	for dep in semver; do
-		rm -r $dep
-		npm link $dep
-	done
 }
