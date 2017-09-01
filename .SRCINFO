@@ -13,13 +13,12 @@ pkgbase = python-tcconfig
 	depends = python-subprocrunner>=0.8.7
 	depends = python-typepy>=0.0.20
 	depends = python-voluptuous
-	depends = 
 	depends = python-ipaddress
 	depends = python-logbook
 	depends = python-pyparsing>=2.2.0
 	depends = python-six
 	source = https://github.com/thombashi/tcconfig/archive/v0.14.1.tar.gz
-	md5sums = bebe8b2b9d76ffd3a39a837c30e10d6b
+	md5sums = 84eddd4fc6d18dcb07a7913117f4a9d0
 
 pkgname = python-tcconfig
 
