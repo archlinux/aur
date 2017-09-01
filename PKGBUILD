@@ -3,13 +3,15 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=lrzip-git
-pkgver=0.0001
+pkgver=r815.1a30639
 pkgrel=1
 pkgdesc="Multi-threaded compression with rzip/lzma, lzo, and zpaq"
-arch=( 'i686' 'x86_64' )
+arch=( 'x86_64' )
 url="https://github.com/ckolivas/lrzip"
 license=( 'GPL' )
 depends=( 'lzo' 'zlib' 'bash' 'bzip2' )
+conflicts=( 'lrzip' )
+provides=( 'lrzip' )
 _pkgname=lrzip
 install=
 changelog=
@@ -35,11 +37,22 @@ pkgver() {
   #  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   #)
 }
+
 build() {
-        cd "${srcdir}/${_pkgname}/src"
-        make prefix=${pkgdir}/usr
+  cd "${_pkgname}"
+
+  CFLAGS="${CFLAGS} -fomit-frame-pointer"
+  CXXFLAGS="${CXXFLAGS} -fomit-frame-pointer"
+
+  [ ${CARCH} != x86_64 ] && flags='--enable-asm'
+  ./autogen.sh --prefix=/usr "${flags}"
+  make
 }
+
+check() {
+  make -C "${_pkgname}" -k check
+}
+
 package() {
-        install -D -m755 ${srcdir}/${_pkgname}/src/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-        install -D -m644 ${srcdir}/${_pkgname}/docs/README.html.en ${pkgdir}/usr/share/doc/${_pkgname}/README.html
+  make -C "${_pkgname}" DESTDIR="${pkgdir}" install-strip
 }
