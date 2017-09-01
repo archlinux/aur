@@ -1,8 +1,8 @@
 pkgbase = lua-gumbo-git
-	pkgdesc = Lua bindings for gumbo, Google's pure-C HTML5 parser
-	pkgver = 0.4+122+g7ba3667
+	pkgdesc = Lua HTML5 parser and DOM API
+	pkgver = 0.4+153+g129a10c
 	pkgrel = 1
-	url = https://craigbarnes.github.io/lua-gumbo
+	url = https://craigbarnes.github.io/lua-gumbo/
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
@@ -10,27 +10,16 @@ pkgbase = lua-gumbo-git
 	makedepends = lua
 	makedepends = lua52
 	makedepends = lua51
-	depends = gumbo-git
 	source = git+https://github.com/craigbarnes/lua-gumbo.git
 	md5sums = SKIP
 
 pkgname = lua-gumbo-git
-	pkgdesc = Lua bindings for Gumbo, Google's pure-C HTML5 parser
-	depends = gumbo-git
 	depends = lua
-	provides = lua-gumbo
-	provides = lua53-gumbo
 	provides = lua53-gumbo-git
 
 pkgname = lua52-gumbo-git
-	pkgdesc = Lua 5.2 bindings for Gumbo, Google's pure-C HTML5 parser
-	depends = gumbo-git
 	depends = lua52
-	provides = lua52-gumbo
 
 pkgname = lua51-gumbo-git
-	pkgdesc = Lua 5.1 bindings for Gumbo, Google's pure-C HTML5 parser
-	depends = gumbo-git
 	depends = lua51
-	provides = lua51-gumbo
 
