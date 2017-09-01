@@ -2,7 +2,7 @@
 _pkgname=3270-fonts
 _gitname=3270font
 pkgname=$_pkgname
-pkgver=490.790cd75
+pkgver=528.b3b4b7d
 pkgrel=1
 pkgdesc="A font for the nostalgic from a 3270 series terminal."
 arch=('any')
@@ -29,7 +29,7 @@ package() {
   cd "${srcdir}/$_gitname"
   make font
   install -d "$pkgdir/usr/share/fonts/local"
-  install -m644 *.otf "$pkgdir/usr/share/fonts/local/"
+  install -m644 build/*.otf "$pkgdir/usr/share/fonts/local/"
 
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }

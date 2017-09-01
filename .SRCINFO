@@ -1,6 +1,6 @@
 pkgbase = 3270-fonts
 	pkgdesc = A font for the nostalgic from a 3270 series terminal.
-	pkgver = 490.790cd75
+	pkgver = 528.b3b4b7d
 	pkgrel = 1
 	url = https://github.com/rbanffy/3270font
 	install = install
