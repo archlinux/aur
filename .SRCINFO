@@ -7,6 +7,7 @@ pkgbase = nativefier-freedesktop-git
 	arch = any
 	license = CPL
 	depends = nodejs-nativefier
+	depends = kdialog
 	source = nativefier-freedesktop::git+https://github.com/alxlg/nativefier-freedesktop.git#commit=9dde2b2
 	sha256sums = SKIP
 

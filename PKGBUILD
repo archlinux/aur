@@ -9,7 +9,7 @@ pkgdesc="Script to automate the installation of Nativefier (Electron) web apps"
 arch=('any')
 url="https://github.com/alxlg/nativefier-freedesktop"
 license=('CPL')
-depends=('nodejs-nativefier')
+depends=('nodejs-nativefier' 'kdialog')
 install="${pkgname}.install"
 source=("${_pkgname}::git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
