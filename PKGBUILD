@@ -2,22 +2,22 @@
 # Contributor: sh0 <mee@sh0.org>
 
 pkgname=pdsh-genders
-pkgver=2.32
+pkgver=2.33
 pkgrel=1
 pkgdesc='Parallel Distributed Shell'
-url='https://github.com/grondo/pdsh'
+url='https://github.com/chaos/pdsh'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('glibc' 'openssh' 'readline' 'genders')
 optdepends=('perl: required by the dshbak utility')
 options=('libtool')
-source=("https://github.com/grondo/pdsh/archive/pdsh-${pkgver}.tar.gz")
+source=("https://github.com/chaos/pdsh/releases/download/pdsh-${pkgver}/pdsh-${pkgver}.tar.gz")
 conflicts=('pdsh')
 provides=('pdsh')
-sha256sums=('3c58b955b4f5f24e75905a5e133b5d28ce04246566e28701902359adab806765')
+sha256sums=('7368087429d6269f0a6313c406ef38c6a6a947bc003ca7368fc6481b139d942f')
 
 build() {
-  cd "${srcdir}/pdsh-pdsh-${pkgver}"
+  cd "${srcdir}/pdsh-${pkgver}"
   ./bootstrap
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
@@ -30,12 +30,12 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/pdsh-pdsh-${pkgver}"
+  cd "${srcdir}/pdsh-${pkgver}"
   make check
 }
 
 package() {
-  cd "${srcdir}/pdsh-pdsh-${pkgver}"
+  cd "${srcdir}/pdsh-${pkgver}"
   make DESTDIR="${pkgdir}/" install
 }
 
