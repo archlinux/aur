@@ -11,14 +11,14 @@ license=('AGPL')
 
 # Dependencies
 depends=('hwloc' 'systemd' 'collectd' 'python-yaml' 'python2-yaml' 'python-urwid'
-            'pciutils' 'python-pyparsing' 'python2-requests'
-            'util-linux' 'python-pyudev' 'python-setuptools')
+            'pciutils' 'python-pyparsing' 'python2-requests' 'util-linux'
+            'python-pyudev' 'python-setuptools' 'boost' 'boost-libs')
 
 makedepends=('git' 'gcc' 'antlr3-cpp-headers-git' 'libyaml' 'yaml-cpp'
                 'lz4' 'zlib' 'snappy' 'jsoncpp' 'gnutls' 'ninja'
                 'ragel' 'libaio' 'crypto++' 'xfsprogs' 'jre8-openjdk-headless'
-                'numactl' 'libpciaccess' 'libxml2' 'boost-libs' 'thrift'
-                'lksctp-tools' 'protobuf' 'libunwind' 'systemtap')
+                'numactl' 'libpciaccess' 'libxml2' 'thrift' 'lksctp-tools'
+                'protobuf' 'libunwind' 'systemtap' 'make' 'libtool' 'cmake')
 # Relations
 provides=('scylla')
 conflicts=('scylla')
