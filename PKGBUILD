@@ -4,7 +4,7 @@
 # https://github.com/soker90/paquetes-archinux.git
 pkgname=python-pyexcel
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper library that provides one API to read, manipulate and write data in different excel formats"
 arch=('i686' 'x86_64')
 url="https://github.com/pyexcel/pyexcel"
