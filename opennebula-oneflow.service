@@ -8,7 +8,7 @@ User=oneadmin
 Group=cloud
 Type=simple
 
-ExecStart=/usr/bin/ruby /usr/lib/one/ruby/cloud/econe/econe-server.rb
+ExecStart=/usr/bin/ruby /usr/lib/one/oneflow/oneflow-server.rb
 ExecStop=/bin/kill -TERM $MAINPID
 PIDFile=/var/run/one/oneflow.pid
 Restart=on-abnormal

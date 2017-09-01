@@ -1,5 +1,11 @@
 2017-08-24 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
 
+  * 5.4.0-4:
+  Cleanup stale lock files in opennebula.service
+  Fix wrong service call in opennebula-oneflow.service
+
+2017-08-24 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
+
   * 5.4.0-3:
   Drop the old service units in favor of the upstream versions
 

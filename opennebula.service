@@ -18,6 +18,7 @@ ExecStartPre=/bin/mkdir -p /var/log/one
 ExecStartPre=/bin/chown oneadmin:cloud /var/log/one
 ExecStartPre=/usr/bin/logrotate -s /tmp/logrotate.state -f /etc/logrotate.d/opennebula
 ExecStop=/bin/kill -TERM $MAINPID
+ExecStopPost=/usr/bin/rm /var/lock/one/one
 PIDFile=/var/run/one/oned.pid
 Restart=on-abnormal
 

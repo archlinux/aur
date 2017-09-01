@@ -1,6 +1,6 @@
-# Maintainer: Rafael Reggiani Manzo <rr.manzo#protonmail.com>
+# Maintainer: Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
+# Contributor: Rafael Reggiani Manzo <rr.manzo#protonmail.com>
 # Contributor: Jeremy Audet <ichimonji10#gmail.com>
-# Contributor: Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
 # Contributor: Jason St. John <jstjohn .. purdue . edu>
 # Contributor: Mikhail Kulemin <mihkulemin@gmail.com>
 # Contributor: Michael Pusterhofer <pusterhofer (at) student (dot) tugraz (dot) at>
@@ -8,7 +8,7 @@
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
 pkgver=5.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
 url='http://docs.opennebula.org/stable'
@@ -103,11 +103,11 @@ source=("http://downloads.opennebula.org/packages/${pkgname}-${pkgver}/${pkgname
         'vip.sh.patch'
         'opennebula.install')
 sha512sums=('4d7d4f6c20a6185539a88006e4d15681d90cee45506d36017a538415a3b3cce809f02ff248013f9e2daa5f1d20afd308a0a014853b8462723ad6ba5acaa84626' #package
-            '0b139d219d9797231d55b3f1f0c5a0b94df46d7feda2853844c774b791ec788d2c093bfd4d3714ba41ab6ec3286b9fa3e7ae8126830020fe3c4422d7a15811e3' #opennebula.service
+            'c669df1cacf74124b04913f38d6468d78a8ac86e059676611c993ed5528fd7d17bbb92c87562836c8fe22ea80d848fa9d9f46c30664a05d10cf91d1363f3087f' #opennebula.service
             'b1a361cabc5b49ec8cbe497d8a6f205ed222dadda70ec33f922050b8bdf86b1e52c7098d732b752493ce3626c043f6b482f33dd380f0ebaaf2f53415f58cb75d' #opennebula-scheduler.service
             '9e6c1017a58e5d53529342c55b241c4d2dac1470fc163e4e8c4e69fe42da4d2d8a58dafdf5ab2adb30ac1d8cdc79d73f7b66392855a8f4ce1fa7e7da65554ac7' #opennebula-sunstone.service
             '62e8a3640df5e4a9619cbd24dddaa273103fe0b4af5edd6947442c213dbff34993868f091662ce42c0c7b1398a3407bf62c0a57b5cf8f88f0d50f0270040c0e3' #opennebula-econe.service
-            '302b677ef3ce17fafd1ab79926acf91729695f6eeec1dc0cc0169c140d3b69caecd5fbe349c54e5e2c4e33f5d83de40b7d71651902a480057a01341e63588936' #opennebula-oneflow.service
+            '6e520889ac98e5ea17d7310c6bcb6fa14d68b8003dc6f57cf290545240224a428747bd157df4e2d1955c77ce7ebffad0b3eaa54ffc53db592696899533cc294e' #opennebula-oneflow.service
             '5ab22f35adfd48444accef6ffa2483665bd178dbad2320929b7be7e4bdc8a2782087f36c8b518537765bcf12dfdb3f5fcc19b8b34f41f2e1f85fb81071728e55' #opennebula-onegate.service
             'd856c5469703168e8cd3b53b68cca7555885c7c01ee7bad69dfc070448247c2da8434c1a49455edab6b6a0cf6ed127a1729758137b3535dd881c374de7e17c1c' #opennebula-novnc.service
             '620581599f1b0c4c6d4fdb87a6b41c937b8ef79401a6a047f8556517c726a5c61f9fc241a3d82a836b5728de3aa36a11d45cbfb1beb111e35c75485cb7b97228' #opennebula.conf
