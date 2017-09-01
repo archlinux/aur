@@ -1,0 +1,16 @@
+pkgbase = printk-timestamp-formatter
+	pkgdesc = Utilities to view kmsg/printk/dmesg timestamps in local time and date, UTC, or epoch seconds, TAKING INTO ACCOUNT clock drift
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://github.com/kata198/printk-timestamp-formatter
+	arch = any
+	license = LGPLv3
+	makedepends = python-setuptools
+	makedepends = python
+	depends = python-setuptools
+	depends = python
+	source = https://github.com/kata198/printk-timestamp-formatter/archive/3.0.0.tar.gz
+	sha512sums = 83a3fa16a472ae6b39a55f50b3182d02f481bc45df680d76419f0ed25fa1a12d70d28c71c00dbda9a679de4864cc86b4bc0a9289dcf52a6dd8fe1ec2f1956c30
+
+pkgname = printk-timestamp-formatter
+
