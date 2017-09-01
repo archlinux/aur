@@ -14,7 +14,7 @@ pkgbase = python-simplesqlite
 	depends = python-mbstrdecoder
 	depends = python-six
 	depends = python-typepy>=0.0.20
-	source = https://github.com/thombashi/SimpleSQLite/archive/v00.15.0.tar.gz
+	source = https://github.com/thombashi/SimpleSQLite/archive/v0.15.0.tar.gz
 	md5sums = be05735a65f91bf0bb47c2bfcf474dd3
 
 pkgname = python-simplesqlite

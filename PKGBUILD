@@ -10,8 +10,8 @@ depends=('python' 'python-pathvalidate>=0.16.1' 'python-pytablereader>=0.13.0' '
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://github.com/thombashi/SimpleSQLite/archive/v0${pkgver}.tar.gz")
-md5sums=('be05735a65f91bf0bb47c2bfcf474dd3')
+source=("https://github.com/thombashi/SimpleSQLite/archive/v${pkgver}.tar.gz")
+md5sums=('34ea04a94f78e6753542b0131eba6c5a')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
