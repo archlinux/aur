@@ -2,13 +2,13 @@
 
 pkgname=ccat
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Colorizes output for cat."
 arch=('any')
 url="https://github.com/jingweno/ccat"
 license=('CUSTOM')
 makedepends=('go' 'git')
-conflicts=('ccat-git')
+conflicts=('ccat-git' 'ccrypt')
 options=('!strip' '!emptydirs')
 source=("https://github.com/jingweno/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('9ce544810476685c4b7f1220b9e99649')
