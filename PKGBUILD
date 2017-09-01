@@ -3,7 +3,7 @@
 # Contributer: auk
 
 pkgname=hyper
-pkgver=1.3.3
+pkgver=1.4.2
 pkgrel=1
 epoch=
 pkgdesc="A terminal built on web technologies"
@@ -29,7 +29,7 @@ source=(
     "Hyper.desktop"
 )
 noextract=()
-md5sums=('53a85a4e9b8950226df5c192a31be242'
+md5sums=('7e852831407bf66dd8d84a13edf77190'
          'f3481e14cba331160339b3b5ab78872b'
          '74cb7ba38e37332aa8300e4b6ba9c61c')
 validpgpkeys=()
@@ -54,9 +54,9 @@ build() {
 
     npm run build &&
     cross-env BABEL_ENV=production babel \
-        --out-file app/dist/bundle.js \
+        --out-file app/renderer/bundle.js \
         --no-comments \
-        --minified app/dist/bundle.js &&
+        --minified app/renderer/bundle.js &&
     command build --linux --dir             # need to use command because the
                                             # function name is build
 
