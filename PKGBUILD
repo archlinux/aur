@@ -1,4 +1,3 @@
-#Maintainer: Florian Wittmann <fl0w1@disroot.org>
 pkgname='python-typepy'
 _module='typepy'
 pkgver='0.0.20'
