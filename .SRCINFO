@@ -1,7 +1,7 @@
 pkgbase = python-pyexcel-ods
 	pkgdesc = A wrapper library to read, manipulate and write data in ods format
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyexcel/pyexcel-ods
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = python-pyexcel-ods
 	depends = python
 	depends = python-odfpy
 	depends = python-pyexcel-io
+	depends = python-pyexcel
 	source = https://github.com/pyexcel/pyexcel-ods/archive/v0.5.0.tar.gz
 	md5sums = 52a19821e58c4467c6612d8bc8f9b67b
 
