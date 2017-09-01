@@ -11,7 +11,7 @@ pkgbase = waylandpp
 	arch = armv8
 	makedepends = scons
 	depends = wayland
-	conflicts = walandpp-git
+	conflicts = waylandpp-git
 	source = https://github.com/NilsBrause/waylandpp/archive/0.1.2.zip
 	md5sums = df16f5ecb6b4baec9b3b0105ca9bae8c
 
