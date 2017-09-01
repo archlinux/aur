@@ -1,0 +1,50 @@
+From ed59b0f4a2df5600e9c1c0de987f90e6fddd1908 Mon Sep 17 00:00:00 2001
+From: Dennis Felsing <dennis@felsin9.de>
+Date: Fri, 1 Sep 2017 13:36:37 +0200
+Subject: [PATCH] Fix binary dirs for installed locations on POSIX
+
+Also rename them from teeworlds to ddnet
+---
+ src/engine/shared/storage.cpp | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/engine/shared/storage.cpp b/src/engine/shared/storage.cpp
+index 5858a6af5..8cbc12f89 100644
+--- a/src/engine/shared/storage.cpp
++++ b/src/engine/shared/storage.cpp
+@@ -204,13 +204,13 @@ class CStorage : public IStorage
+ 		// 4) check for all default locations
+ 		{
+ 			const char *aDirs[] = {
+-				"/usr/share/teeworlds/data",
+-				"/usr/share/games/teeworlds/data",
+-				"/usr/local/share/teeworlds/data",
+-				"/usr/local/share/games/teeworlds/data",
+-				"/usr/pkg/share/teeworlds/data",
+-				"/usr/pkg/share/games/teeworlds/data",
+-				"/opt/teeworlds/data"
++				"/usr/share/ddnet",
++				"/usr/share/games/ddnet",
++				"/usr/local/share/ddnet",
++				"/usr/local/share/games/ddnet",
++				"/usr/pkg/share/ddnet",
++				"/usr/pkg/share/games/ddnet",
++				"/opt/ddnet"
+ 			};
+ 			const int DirsCount = sizeof(aDirs) / sizeof(aDirs[0]);
+ 
+@@ -218,11 +218,11 @@ class CStorage : public IStorage
+ 			for (i = 0; i < DirsCount; i++)
+ 			{
+ 				char aBuf[128];
+-				str_format(aBuf, sizeof(aBuf), "%s/mapres", aDirs[i]);
++				str_format(aBuf, sizeof(aBuf), "%s/data/mapres", aDirs[i]);
+ 				if(fs_is_dir(aBuf))
+ 				{
+-					str_copy(m_aBinarydir, aDirs[i], sizeof(aDirs[i])-5);
+-					str_copy(m_aDatadir, aDirs[i], sizeof(m_aDatadir));
++					str_copy(m_aBinarydir, aDirs[i], sizeof(m_aDatadir));
++					str_format(m_aDatadir, sizeof(m_aDatadir), "%s/data", aDirs[i]);
+ 					return;
+ 				}
+ 			}
