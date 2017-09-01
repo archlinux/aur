@@ -6,7 +6,7 @@
 # https://bugzilla.novell.com/768506
 # https://bugzilla.novell.com/765524
 
-_kver=4.11
+_kver=4.12
 _gitroot=git://repo.or.cz/linux.git
 _gitcommit=linux-$_kver.y
 _cur_kernel="$(uname -r)"
@@ -28,9 +28,9 @@ source=(
 	kernel.patch
 )
 
-sha256sums=('046ce4f196ccd9d1b11aa66aaace03b68624b3385fdeb5c3a6c0130f6df19d13'
+sha256sums=('2885223d051e27f5156b892a193a4750bfb91cbb78081c07e5a8dc80cc8bc207'
             'b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c'
-            '972419e2e1999c02f01af01f27e39e72ddd20fbc9eabf7d170f0c12a6b7a6f6a')
+            '999670dc8a03a1f2232f6d77b692493327492bc25218ad1663d6f65ccbbafa24')
 
 build() {
 

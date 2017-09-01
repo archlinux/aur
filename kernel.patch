@@ -1,7 +1,7 @@
 diff -ur old/drivers/input/mouse/Kconfig new/drivers/input/mouse/Kconfig
---- old/drivers/input/mouse/Kconfig	2016-11-26 11:57:13.000000000 +0300
-+++ new/drivers/input/mouse/Kconfig	2016-11-28 15:23:20.404814951 +0300
-@@ -88,6 +88,15 @@
+--- old/drivers/input/mouse/Kconfig	2017-08-30 11:32:30.000000000 +0300
++++ new/drivers/input/mouse/Kconfig	2017-09-01 08:14:12.460494857 +0300
+@@ -100,6 +100,15 @@
  
           If unsure, say Y.
  
@@ -18,17 +18,17 @@ diff -ur old/drivers/input/mouse/Kconfig new/drivers/input/mouse/Kconfig
  	bool "Fujitsu Lifebook PS/2 mouse protocol extension" if EXPERT
  	default y
 diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
---- old/drivers/input/mouse/synaptics.c	2016-11-26 11:57:13.000000000 +0300
-+++ new/drivers/input/mouse/synaptics.c	2016-11-28 15:27:28.091341662 +0300
+--- old/drivers/input/mouse/synaptics.c	2017-08-30 11:32:30.000000000 +0300
++++ new/drivers/input/mouse/synaptics.c	2017-09-01 09:02:43.033831830 +0300
 @@ -29,6 +29,7 @@
  #include <linux/input/mt.h>
  #include <linux/serio.h>
  #include <linux/libps2.h>
 +#include <linux/leds.h>
+ #include <linux/rmi.h>
+ #include <linux/i2c.h>
  #include <linux/slab.h>
- #include "psmouse.h"
- #include "synaptics.h"
-@@ -657,6 +658,139 @@
+@@ -712,6 +713,141 @@
  	serio_register_port(serio);
  }
  
@@ -92,27 +92,29 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
 +{
 +	printk(KERN_NOTICE "synaptics: led: checking for led\n");
 +
-+	if (!priv->ext_cap_0c) {
++	if (!priv->info.ext_cap_0c) {
 +		printk(KERN_NOTICE "synaptics: led: !priv->ext_cap_0c is true... no led\n");
 +		return false;
 +	}
 +
-+	printk(KERN_NOTICE "synaptics: led: your product ID is %2lx\n", SYN_CAP_PRODUCT_ID(priv->ext_cap));
++	printk(KERN_NOTICE "synaptics: led: your product ID is %2lx\n", SYN_CAP_PRODUCT_ID(priv->info.ext_cap));
 +
 +	/* FIXME: LED is supposedly detectable in cap0c[1] 0x20, but it seems
 +	 * not working on real machines.
 +	 * So we check the product id to be sure.
++	 * Added ID 0x24 experimental.
 +	 */
 +
-+	if (SYN_CAP_PRODUCT_ID(priv->ext_cap) != 0xe4 &&
-+	    SYN_CAP_PRODUCT_ID(priv->ext_cap) != 0x64 &&
-+	    SYN_CAP_PRODUCT_ID(priv->ext_cap) != 0x84) {
++	if (SYN_CAP_PRODUCT_ID(priv->info.ext_cap) != 0x24 &&
++       SYN_CAP_PRODUCT_ID(priv->info.ext_cap) != 0xe4 &&
++	    SYN_CAP_PRODUCT_ID(priv->info.ext_cap) != 0x64 &&
++	    SYN_CAP_PRODUCT_ID(priv->info.ext_cap) != 0x84) {
 +		printk(KERN_NOTICE "synaptics: led: your product ID is not in the whitelist\n");
 +		return false;
 +	}
 +
-+	if (!(priv->ext_cap_0c & 0x2000) &&
-+	    (priv->capabilities & 0xd000ff) != 0xd00073) {
++	if (!(priv->info.ext_cap_0c & 0x2000) &&
++	    (priv->info.capabilities & 0xd000ff) != 0xd00073) {
 +		printk(KERN_NOTICE "synaptics: led: failed capabilities check\n");
 +		return false;
 +	}
@@ -168,7 +170,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  /*****************************************************************************
   *	Functions to interpret the absolute mode packets
   ****************************************************************************/
-@@ -1304,6 +1438,7 @@
+@@ -1370,6 +1506,7 @@
  		device_remove_file(&psmouse->ps2dev.serio->dev,
  				   &psmouse_attr_disable_gesture.dattr);
  
@@ -176,8 +178,8 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  	synaptics_reset(psmouse);
  	kfree(priv);
  	psmouse->private = NULL;
-@@ -1362,6 +1497,8 @@
- 		return -1;
+@@ -1430,6 +1567,8 @@
+ 		return -ENXIO;
  	}
  
 +	synaptics_sync_led(psmouse);
@@ -185,9 +187,9 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  	return 0;
  }
  
-@@ -1492,6 +1629,9 @@
- 		     priv->capabilities, priv->ext_cap, priv->ext_cap_0c,
- 		     priv->ext_cap_10, priv->board_id, priv->firmware_id);
+@@ -1548,6 +1687,9 @@
+ 		     info->capabilities, info->ext_cap, info->ext_cap_0c,
+ 		     info->ext_cap_10, info->board_id, info->firmware_id);
  
 +	if (synaptics_init_led(psmouse) < 0)
 +		goto init_fail;
@@ -196,18 +198,18 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  
  	/*
 diff -ur old/drivers/input/mouse/synaptics.h new/drivers/input/mouse/synaptics.h
---- old/drivers/input/mouse/synaptics.h	2016-11-26 11:57:13.000000000 +0300
-+++ new/drivers/input/mouse/synaptics.h	2016-11-28 15:29:08.441039455 +0300
-@@ -161,6 +161,8 @@
- 	signed char scroll;
+--- old/drivers/input/mouse/synaptics.h	2017-08-30 11:32:30.000000000 +0300
++++ new/drivers/input/mouse/synaptics.h	2017-09-01 08:27:07.849088154 +0300
+@@ -180,6 +180,8 @@
+ 	u32 x_min, y_min;	/* Min coordinates (from FW) */
  };
  
 +struct synaptics_led;
 +
  struct synaptics_data {
- 	/* Data read from the touchpad */
- 	unsigned long int model_id;		/* Model-ID */
-@@ -196,6 +198,7 @@
+ 	struct synaptics_device_info info;
+ 
+@@ -204,6 +206,7 @@
  	bool					press;
  	bool					report_press;
  	bool					is_forcepad;
