@@ -1,0 +1,4 @@
+post_upgrade() {
+    echo "WARNING: DDNet data directory changed from
+          /usr/share/teeworlds/ to /usr/share/ddnet/"
+}
