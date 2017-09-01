@@ -1,6 +1,6 @@
 pkgname=reaper
 pkgver=5.50rc21
-pkgrel=1
+pkgrel=2
 pkgdesc="digital audio workstation"
 arch=('x86_64')
 url="http://www.reaper.fm"
@@ -32,7 +32,7 @@ package() {
 
   # desktop integration
   for file in "${srcdir}"/*.desktop; do
-	  sed -i "s#/home/user/pathto#${DESTDIR}#" $file
+	  sed -i "s#/home/user/pathto#/usr/lib#" $file
 	  filename=`basename "${file}"`
 	  install -D -m644 "${file}" "${pkgdir}/usr/share/applications/${filename}"
   done

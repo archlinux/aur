@@ -1,7 +1,7 @@
 pkgbase = reaper
 	pkgdesc = digital audio workstation
 	pkgver = 5.50rc21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.reaper.fm
 	arch = x86_64
 	license = custom
