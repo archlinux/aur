@@ -1,7 +1,7 @@
 pkgbase = pristine-tar
 	pkgdesc = Tool to regenerate a pristine upstream tarball using only a small binary delta file and a copy of the source which can be a revision control checkout.
-	pkgver = 1.40
-	pkgrel = 2
+	pkgver = 1.41
+	pkgrel = 1
 	url = https://packages.debian.org/sid/pristine-tar
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = pristine-tar
 	depends = xdelta
 	depends = xdelta3
 	conflicts = pristine-tar-git
-	source = http://ftp.debian.org/debian/pool/main/p/pristine-tar/pristine-tar_1.40.tar.xz
-	sha256sums = 03e45374f908bf7821a9244f9555d68257070865585574bc5b4cf9d4d39b4e54
+	source = http://ftp.debian.org/debian/pool/main/p/pristine-tar/pristine-tar_1.41.tar.xz
+	sha256sums = 5137b35ec3bd669d46f464b1affc95c921c11f0a27685632260a6280e470b13f
 
 pkgname = pristine-tar
 
