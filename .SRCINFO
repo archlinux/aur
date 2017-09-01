@@ -1,0 +1,15 @@
+pkgbase = rum-git
+	pkgdesc = Rust Userstyle Manager
+	pkgver = 0.1.0.r14.g3c3733c
+	pkgrel = 1
+	url = https://github.com/chrisduerr/rum
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/chrisduerr/rum
+	sha256sums = SKIP
+
+pkgname = rum-git
+
