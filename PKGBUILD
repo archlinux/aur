@@ -18,7 +18,7 @@ md5sums=('f1941240e9ffaad57841628935f07306')
 
 build() {
   cd "xiphos-${_pkgver}"
-  CXX=g++ python2 ./waf --prefix=/usr --gtk=3 --enable-webkit2 configure 
+  python2 ./waf --prefix=/usr --gtk=3 --enable-webkit2 configure 
   python2 ./waf --prefix=/usr --gtk=3 --enable-webkit2 build 
 }
 
