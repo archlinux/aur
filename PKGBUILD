@@ -10,7 +10,7 @@ pkgname=('eiskaltdcpp-core-git'
          'eiskaltdcpp-web-git'
          'eiskaltdcpp-data-git'
          )
-pkgver=2.3.0.4958.52af555
+pkgver=2.2.10.168.g35edb672
 pkgrel=1
 pkgdesc="EiskaltDC++: DC and ADC client based on dcpp core. (GIT Version)"
 license=('GPL3')
@@ -18,8 +18,12 @@ arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h')
 url='http://code.google.com/p/eiskaltdc'
 conflicts=('eiskaltdcpp')
 options=('!emptydirs')
-source=('git+https://github.com/eiskaltdcpp/eiskaltdcpp.git')
-sha1sums=('SKIP')
+source=('git+https://github.com/eiskaltdcpp/eiskaltdcpp.git'
+        'esee.patch'
+        )
+sha256sums=('SKIP'
+            'SKIP'
+            )
 makedepends=('git'
              'cmake'
              'lua'
@@ -43,46 +47,52 @@ makedepends=('git'
 
 pkgver() {
   cd eiskaltdcpp
-  _ver="$(cat CMakeLists.txt | grep ' (VERSION "' | head -n1 | cut -d '"' -f2)"
-  echo $(echo ${_ver}).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
-    mkdir -p build
+  mkdir -p build
 
-    # fix php dependency
-    find . -type f -name '*.php' -exec sed 's|php5|php|g' -i '{}' \;
+  # Fix php dependency
+  find . -type f -name '*.php' -exec sed 's|php5|php|g' -i '{}' \;
+
+  cd eiskaltdcpp
+  # Bleh patch for set right version
+  patch -p1 -i "${srcdir}/esee.patch"
+  # Fix Close the Qt GUI
+  git pull --no-edit origin pull/367/head
 }
 
 build() {
-    cd "${srcdir}/build"
-    cmake ../eiskaltdcpp \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DPERL_REGEX=ON \
-      -DLOCAL_BOOST=OFF \
-      -DLOCAL_JSONCPP=OFF \
-      -DLOCAL_MINIUPNP=OFF \
-      -DUSE_MINIUPNP=ON \
-      -DLUA_SCRIPT=ON \
-      -DWITH_LUASCRIPTS=ON \
-      -DUSE_JS=ON \
-      -DUSE_ASPELL=ON \
-      -DWITH_DHT=ON \
-      -DWITH_SOUNDS=ON \
-      -DUSE_QT=OFF \
-      -DUSE_QT5=ON \
-      -DUSE_QT_QML=OFF \
-      -DUSE_GTK=OFF \
-      -DUSE_GTK3=ON \
-      -DJSONRPC_DAEMON=ON \
-      -DXMLRPC_DAEMON=OFF \
-      -DUSE_CLI_JSONRPC=ON \
-      -DUSE_CLI_XMLRPC=OFF \
-      -DENABLE_STACKTRACE=ON \
-      -DWITH_DEV_FILES=ON
-    make --no-print-directory
 
+  cd "${srcdir}/build"
+  cmake ../eiskaltdcpp \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DPERL_REGEX=ON \
+    -DLOCAL_BOOST=OFF \
+    -DLOCAL_JSONCPP=OFF \
+    -DLOCAL_MINIUPNP=OFF \
+    -DUSE_MINIUPNP=ON \
+    -DLUA_SCRIPT=ON \
+    -DWITH_LUASCRIPTS=ON \
+    -DUSE_JS=ON \
+    -DUSE_ASPELL=ON \
+    -DWITH_DHT=ON \
+    -DWITH_SOUNDS=ON \
+    -DUSE_QT=OFF \
+    -DUSE_QT5=ON \
+    -DUSE_QT_QML=OFF \
+    -DUSE_GTK=OFF \
+    -DUSE_GTK3=ON \
+    -DJSONRPC_DAEMON=ON \
+    -DXMLRPC_DAEMON=OFF \
+    -DUSE_CLI_JSONRPC=ON \
+    -DUSE_CLI_XMLRPC=OFF \
+    -DENABLE_STACKTRACE=ON \
+    -DWITH_DEV_FILES=ON
+
+  make
 }
 
 package_eiskaltdcpp-core-git() {
@@ -94,7 +104,7 @@ package_eiskaltdcpp-core-git() {
            'boost-libs'
            'miniupnpc'
            )
-  provides=('eiskaltdcpp-core')
+  provides=("eiskaltdcpp-core=${pkgver}")
   conflicts=('eiskaltdcpp-core')
   opdepends=('eiskaltdcpp-qt-git: EiskaltDC++ Qt interface'
              'eiskaltdcpp-gtk-git: EiskaltDC++ GTK interface'
@@ -102,13 +112,13 @@ package_eiskaltdcpp-core-git() {
              'eiskaltdcpp-daemon-git: EiskaltDC++ Daemon'
              )
 
-  make --no-print-directory -C build/dcpp DESTDIR="${pkgdir}" install
+  make -C build/dcpp DESTDIR="${pkgdir}" install
 }
 
 package_eiskaltdcpp-qt-git() {
   pkgdesc="Qt5-based DC and ADC client for EiskaltDC++ core. (GIT Version)"
-  depends=('eiskaltdcpp-core-git'
-           'eiskaltdcpp-data-git'
+  depends=("eiskaltdcpp-core-git=${pkgver}"
+           "eiskaltdcpp-data-git=${pkgver}"
            'aspell'
            'qt5-multimedia'
            'qt5-script'
@@ -121,13 +131,13 @@ package_eiskaltdcpp-qt-git() {
              'eiskaltdcpp-qt5'
              )
 
-  make --no-print-directory -C build/eiskaltdcpp-qt DESTDIR="${pkgdir}" install
+  make -C build/eiskaltdcpp-qt DESTDIR="${pkgdir}" install
 }
 
 package_eiskaltdcpp-gtk-git() {
   pkgdesc="Gtk-based DC and ADC client for EiskaltDC++ core. (GIT Version)"
-  depends=('eiskaltdcpp-core-git'
-           'eiskaltdcpp-data-git'
+  depends=("eiskaltdcpp-core-git=${pkgver}"
+           "eiskaltdcpp-data-git=${pkgver}"
            'gtk3'
            'libnotify'
            'desktop-file-utils'
@@ -138,24 +148,24 @@ package_eiskaltdcpp-gtk-git() {
              'eiskaltdcpp-gtk3'
              )
 
-  make --no-print-directory -C build/eiskaltdcpp-gtk DESTDIR="${pkgdir}" install
+  make -C build/eiskaltdcpp-gtk DESTDIR="${pkgdir}" install
 }
 
 package_eiskaltdcpp-daemon-git() {
   pkgdesc="DC and ADC daemon for EiskaltDC++ core. (GIT Version)"
-  depends=('eiskaltdcpp-core-git'
+  depends=("eiskaltdcpp-core-git=${pkgver}"
            'jsoncpp'
            )
   provides=('eiskaltdcpp-daemon')
   conflicts=('eiskaltdcpp-daemon')
 
-  make --no-print-directory -C build/eiskaltdcpp-daemon DESTDIR="${pkgdir}" install
+  make -C build/eiskaltdcpp-daemon DESTDIR="${pkgdir}" install
 }
 
 package_eiskaltdcpp-cli-git() {
   arch=('any')
   pkgdesc="CLI interface for EiskaltDC++ Daemon. (GIT Version)"
-  depends=('eiskaltdcpp-daemon-git'
+  depends=("eiskaltdcpp-daemon-git=${pkgver}"
            'perl-json'
            'perl-json-rpc'
 #            'perl-rpc-xml'
@@ -164,12 +174,12 @@ package_eiskaltdcpp-cli-git() {
   provides=('eiskaltdcpp-cli')
   conflicts=('eiskaltdcpp-cli')
 
-  make --no-print-directory -C build/eiskaltdcpp-cli DESTDIR="${pkgdir}" install
+  make -C build/eiskaltdcpp-cli DESTDIR="${pkgdir}" install
 }
 
 package_eiskaltdcpp-web-git() {
   arch=('any')
-  depends=('eiskaltdcpp-daemon-git')
+  depends=("eiskaltdcpp-daemon-git=${pkgver}")
   pkgdesc="Web interface for EiskaltDC++ Daemon. (GIT Version)"
   provides=('eiskaltdcpp-web')
   conflicts=('eiskaltdcpp-web')
@@ -186,9 +196,10 @@ package_eiskaltdcpp-data-git() {
            'hicolor-icon-theme'
            )
   optdepends=('php: needed for some scripts'
-              'python: test http server')
+              'python: test http server'
+              )
   provides=('eiskaltdcpp-data')
   conflicts=('eiskaltdcpp-data')
 
-  make --no-print-directory -C build/data DESTDIR="${pkgdir}" install
+  make -C build/data DESTDIR="${pkgdir}" install
 }

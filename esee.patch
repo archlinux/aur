@@ -1,0 +1,35 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 034eb27e..25334cb7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -241,19 +241,17 @@ endif (APPLE)
+ 
+ message (STATUS "Data directory: ${CLIENT_DATA_DIR}")
+ 
+-if (DCPP_REVISION)
+-    set (VERSION_SUFFIX ${DCPP_REVISION})
+-    set (VERSION "${VERSION}-${VERSION_SUFFIX}")
+-    message (STATUS "DCPP_REVISION is set to: ${VERSION_SUFFIX}")
+-    message (STATUS "Current VERSION: ${VERSION}")
+-elseif (GIT_FOUND)
+-    execute_process (COMMAND ${GIT_EXECUTABLE} describe --tags
+-                     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+-                     OUTPUT_VARIABLE VERSION
+-                     OUTPUT_STRIP_TRAILING_WHITESPACE)
+-    string (REGEX REPLACE "^v" "" VERSION "${VERSION}")
+-    message (STATUS "Build Git snapshot: ${VERSION}")
+-endif ()
++if (GIT_FOUND)
++  execute_process (COMMAND ${GIT_EXECUTABLE} describe --tags
++                   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
++                   OUTPUT_VARIABLE VERSION
++                   OUTPUT_STRIP_TRAILING_WHITESPACE)
++  string (REGEX REPLACE "^v" "" VERSION "${VERSION}")
++  message (STATUS "Build Git snapshot: ${VERSION}")
++else (GIT_FOUND)
++  set (VERSION "${VERSION}")
++  message (STATUS "Current VERSION: ${VERSION}")
++endif (GIT_FOUND)
+ 
+ configure_file(${PROJECT_SOURCE_DIR}/Version.h.in ${PROJECT_BINARY_DIR}/VersionGlobal.h)
+ 
