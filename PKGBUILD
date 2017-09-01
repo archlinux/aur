@@ -2,9 +2,9 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mange
 pkgver=0.1b
-pkgrel=4
+pkgrel=5
 pkgdesc="A ncurses-based spreadsheet (eg csv, tsv) editor."
-url="http://dl.dropbox.com/u/39577570/mange-0.1b.tar.gz"
+url="https://github.com/aksr/mange"
 arch=('i686' 'x86_64')
 license=('GPLv3')
 depends=('ncurses')
