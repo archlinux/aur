@@ -1,6 +1,6 @@
 # Maintainer: n0vember <n0vember at half-9 dot net>
 pkgname=bash_unit
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="bash unit testing enterprise edition framework for professionals"
 arch=('any')
@@ -23,4 +23,3 @@ package() {
   install -dm755 ${pkgdir}/usr/share/man/man1
   cp -dpr --no-preserve=ownership docs/man/man1/*.1 "$pkgdir/usr/share/man/man1"
 }
-
