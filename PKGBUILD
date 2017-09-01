@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=biblesync-git
-pkgver=20160825.6fbdbd6
+pkgver=20170901.87cdcd3
 pkgrel=1
 pkgdesc="multicast shared co-navigation library for Bible programs"
 arch=('i686' 'x86_64')
