@@ -2,9 +2,9 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
-_pkgver=6.0.0-beta.5
+_pkgver=6.0.0-beta.6
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework (latest release)"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
