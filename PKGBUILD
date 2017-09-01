@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/thombashi/subprocrunner/archive/v${pkgver}.tar.gz")
-md5sums=('ab5cd88223827ae1ec8dddad14dd9e09')
+md5sums=('2138d6e70444bea670eeebe2a58585b7')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
