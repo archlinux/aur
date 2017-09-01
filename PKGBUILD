@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=ccat-git
-pkgver=r115.569fb0d
+pkgver=r122.561b2d4
 pkgrel=1
 pkgdesc="Colorizes output for cat."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/jingweno/ccat"
 license=('CUSTOM')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
-conflicts=('ccat')
+conflicts=('ccat' 'ccrypt')
 source=($pkgname::git+https://github.com/jingweno/ccat.git)
 md5sums=('SKIP')
 pkgver() {
