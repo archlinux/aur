@@ -1,10 +1,6 @@
 post_upgrade() {
-    OLD=$(echo $2 | sed "s/\(.*\)\.\(.*\)\.\(.*\)\.\(.*\)/\1\.\2.\3/g")
-    NEW=$(echo $1 | sed "s/\(.*\)\.\(.*\)\.\(.*\)\.\(.*\)/\1\.\2.\3/g")
-    if [ $OLD == "1.3.5" -a $NEW == "1.3.6" ]; then
-        echo ">> NOTICE: UPGRADE TO 1.3.6"
-        echo "This update renames the systemd files"
-        echo "Stop the old services and start the new ones with:"
-	echo "systemctl stop 389-ds-base.target; systemctl daemon-reload; systemctl start dirsrv.target"
-    fi
+  echo "Important: Update 389-ds-base instances by stopping the appropriate systemd"
+  echo "services and running:"
+  echo
+  echo "  /usr/bin/setup-ds.pl -u -s General.UpdateMode=offline"
 }
