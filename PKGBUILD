@@ -4,13 +4,13 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=python-lrzip
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Python bindings to LRZIP (https://github.com/ckolivas/lrzip)"
 arch=( 'i686' 'x86_64' )
 url="https://pypi.python.org/pypi/lrzip"
 license=( 'LGPL3' )
-depends=( 'python' 'python2' 'lrzip' )
-makedepends=( 'python' 'python2' 'lrzip' 'python-setuptools' 'python2-setuptools' )
+depends=( 'python' 'python2' 'lrzip-git' )  # replace -git with versioned after new release
+makedepends=( 'python' 'python2' 'lrzip-git' 'python-setuptools' 'python2-setuptools' )  # replace -git with versioned after new release
 _pkgname=lrzip
 install=
 changelog=
