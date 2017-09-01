@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/thombashi/mbstrdecoder/archive/v${pkgver}.tar.gz")
-md5sums=('f528c26e537fe5c6987d5c5ccf6ab6e0')
+md5sums=('f87dffc44d789b98dcdbd664fe323eb0')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
