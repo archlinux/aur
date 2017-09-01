@@ -1,7 +1,7 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=keeweb
-pkgver=1.5.4
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('keeweb-desktop')
 source=("https://github.com/keeweb/keeweb/archive/v${pkgver}.tar.gz"
         'keeweb')
 
-sha1sums=('6cd8d1456d020174060c15d7776182202c8c2678'
+sha1sums=('b71427470ea8a2f9652c34673ef672589209cfab'
           '6f73285126a5d6d948712de73053957528aba0cc')
 
 prepare() {
@@ -61,7 +61,7 @@ build() {
 	cd "${pkgname}-${pkgver}"
 
 	npm install --no-shrinkwrap
-	node_modules/.bin/grunt build-web-app build-desktop-app-content
+	node_modules/.bin/grunt --skip-sign build-web-app build-desktop-app-content
 
 	asar p tmp/desktop/app ../keeweb.asar
 }
