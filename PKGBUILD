@@ -2,7 +2,7 @@
 
 pkgname=('anbox-git' 'anbox-modules-dkms-git')
 _pkgname=anbox
-pkgver=r578.e82afd1
+pkgver=r702.3cf7d60
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -43,6 +43,9 @@ prepare() {
 
   # Fix loading translators
   sed -i 's/${CMAKE_INSTALL_PREFIX}\/${ANBOX_TRANSLATOR_INSTALL_DIR}/${ANBOX_TRANSLATOR_INSTALL_DIR}/' CMakeLists.txt
+
+  # Fix usage of Python 2
+  sed -i 's:#!.*python$:&2:' scripts/*.py
 }
 
 build() {
