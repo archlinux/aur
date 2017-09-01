@@ -1,0 +1,60 @@
+diff -ura SHTOOLS-4.0/examples/fortran/SHLocalizedAdmitCorr/LocalizedAdmitCorr.f95 SHTOOLS-4.0-new/examples/fortran/SHLocalizedAdmitCorr/LocalizedAdmitCorr.f95
+--- SHTOOLS-4.0/examples/fortran/SHLocalizedAdmitCorr/LocalizedAdmitCorr.f95	2016-12-16 11:45:23.000000000 +0100
++++ SHTOOLS-4.0-new/examples/fortran/SHLocalizedAdmitCorr/LocalizedAdmitCorr.f95	2017-09-01 23:30:53.571947470 +0200
+@@ -43,7 +43,7 @@
+ 	allocate(pot(2,degmax+1,degmax+1), stat = astat(2))
+ 	if (astat(1) /= 0 .or. astat(2) /= 0) then
+ 		print*, "Problem allocating arrays TOPO and POT", astat(1), astat(2)
+-		stop
++		stop 
+ 	endif
+ 
+ 	print*, "Reading = ", topography_file	
+@@ -110,7 +110,7 @@
+ 		read(*,*) lwin		
+ 		print*, "Corresponding approximate Shannon number = ", (lwin+1)*theta0/pi	
+ 	else		
+-		stop	
++		stop 	
+ 	endif		
+ 	
+ 	allocate(tapers(lwin+1, (lwin+1)**2), stat = astat(1))
+@@ -119,7 +119,7 @@
+ 	
+ 	if (astat(1) /= 0 .or. astat(2) /= 0 .or. astat(3) /= 0 ) then
+ 		print*, "Problem allocatig arrays for tapers, taper_order, or eigenvalues", astat(1), astat(2), astat(3)
+-		stop
++		stop 
+ 	endif
+ 	
+ 	call SHReturnTapers(theta0, lwin, tapers, eigenvalues, taper_order)
+@@ -159,7 +159,7 @@
+ 	if (astat(1) /= 0 .or. astat(2) /= 0 .or. astat(3) /= 0 .or. astat(4) /= 0 &
+ 		.or. astat(5) /=0) then		
+ 		print*, "Problem allocating memory"		
+-		stop	
++		stop 
+ 	endif		
+ 	
+ 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!	
+diff -ura SHTOOLS-4.0/src/SHLocalizedAdmitCorr.f95 SHTOOLS-4.0-new/src/SHLocalizedAdmitCorr.f95
+--- SHTOOLS-4.0/src/SHLocalizedAdmitCorr.f95	2016-12-16 11:45:23.000000000 +0100
++++ SHTOOLS-4.0-new/src/SHLocalizedAdmitCorr.f95	2017-09-01 23:25:54.828607734 +0200
+@@ -131,7 +131,7 @@
+                 exitstatus = 2
+                 return
+             else
+-                stop
++                stop 
+             end if
+ 
+         end if
+@@ -147,7 +147,7 @@
+             exitstatus = 1
+             return
+         else
+-            stop
++            stop 
+         end if
+ 
+     else if (size(corr) < lmax-lwin+1) then

@@ -1,0 +1,18 @@
+pkgbase = shtools-fortran
+	pkgdesc = Tools for working with spherical harmonics
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://shtools.oca.eu
+	arch = any
+	license = BSD 3-clause
+	makedepends = gcc-fortran
+	depends = fftw
+	depends = blas
+	depends = lapack
+	source = ChangeF90stops.patch
+	source = https://github.com/SHTOOLS/SHTOOLS/archive/v4.0.tar.gz
+	md5sums = 98fce6f29ee3e89acaabdfc08fa391f3
+	md5sums = c314c0da11292953bf2bb120601b208a
+
+pkgname = shtools-fortran
+
