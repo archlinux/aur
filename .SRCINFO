@@ -13,7 +13,7 @@ pkgbase = python-typepy
 	depends = python-pytz>=2017.2
 	depends = python-six>=1.10
 	source = https://github.com/thombashi/typepy/archive/v0.0.20.tar.gz
-	md5sums = b9abd4d661dabe512e95ca69ddb65d55
+	md5sums = e30195e2d5ba01df57405ce301e846eb
 
 pkgname = python-typepy
 

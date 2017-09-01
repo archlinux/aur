@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/thombashi/typepy/archive/v${pkgver}.tar.gz")
-md5sums=('b9abd4d661dabe512e95ca69ddb65d55')
+md5sums=('e30195e2d5ba01df57405ce301e846eb')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
