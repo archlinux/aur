@@ -14,6 +14,6 @@ source=("https://github.com/pyexcel/pyexcel/archive/v$pkgver.tar.gz")
 md5sums=('b9e168f9c3b1488e13708c354a2c1660')
 
 package() {
-      cd "$srcdir/pyexcel-io-${pkgver}"
+      cd "$srcdir/pyexcel-${pkgver}"
       python setup.py install --root=${pkgdir}
 }
