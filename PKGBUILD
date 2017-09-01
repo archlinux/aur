@@ -1,12 +1,14 @@
 pkgname='art'
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Builds Arch Linux package repositories'
 arch=('i686' 'x86_64')
 url='https://github.com/majewsky/art'
 license=('GPL3')
 depends=('pacman') # for makepkg, repo-add, repo-remove (also satisfies dependencies on xz and gpg)
-optdepends=()
+optdepends=(
+    'holo-build: to build packages from *.pkg.toml files'
+)
 makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('b5d1b1ea3fcce01989d5b53bce6dbb7f4e2fc94f7266ae024679552ec3ec544f')
