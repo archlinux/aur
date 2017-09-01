@@ -2,7 +2,7 @@
 
 _plug=eedi3-ocl
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.0.g266073f
+pkgver=r1.1.gd2599ba
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -45,7 +45,4 @@ package(){
   make DESTDIR="${pkgdir}" install
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
-
-  mv "${pkgdir}/usr/lib/vapoursynth/libeedi3.so" "${pkgdir}/usr/lib/vapoursynth/libeedi3_ocl.so"
-
 }
