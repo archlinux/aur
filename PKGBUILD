@@ -1,7 +1,7 @@
 # Maintainer: Prasad Kumar
 pkgname=suru-icon-theme
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Suru is a icon theme by Sam Hewitt, whose design is based upon and around the original Suru icon guidelines for Ubuntu mobile applications."
 arch=('any')
 url="https://snwh.org/suru"
