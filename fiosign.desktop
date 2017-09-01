@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Fio signer
+Name[en]=Fio signature
+Name[cs]=Fio podepisovač
+Name[sk]=Fio podpisovač
+Exec=fiosign
+Type=Application
+GenericName=Online-Banking-Programm
+Terminal=false
+Icon=fiosign
+X-KDE-StartupNotify=false
+Categories=Application;Office;
