@@ -3,7 +3,7 @@
 
 pkgname=pdsh-genders
 pkgver=2.33
-pkgrel=1
+pkgrel=2
 pkgdesc='Parallel Distributed Shell'
 url='https://github.com/chaos/pdsh'
 arch=('i686' 'x86_64')
@@ -18,7 +18,6 @@ sha256sums=('7368087429d6269f0a6313c406ef38c6a6a947bc003ca7368fc6481b139d942f')
 
 build() {
   cd "${srcdir}/pdsh-${pkgver}"
-  ./bootstrap
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               --infodir=/usr/share/info \
