@@ -1,28 +1,21 @@
+# Maintainer: Cody Schafer <aur@codyps.com>
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-pkgname=zfs-auto-snapshot-git
+pkgname=zfs-auto-snapshot
 pkgdesc="Implementation of a snapshotting service for ZFS"
-pkgver=1.2.1.1.r0.63e4438
+pkgver=1.2.1.1
 pkgrel=1
 epoch=1
 arch=('any')
-url=""
+url="https://github.com/zfsonlinux/zfs-auto-snapshot"
 license=('GPL2')
 depends=('systemd>=212' 'zfs')
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('git+https://github.com/zfsonlinux/zfs-auto-snapshot#branch=debian')
+source=('git+https://github.com/zfsonlinux/zfs-auto-snapshot#commit=63e4438edb618066e9cc4303df4a7c1331d26654')
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-
-  printf "%s\n" "$(git describe --tags --long | sed 's|debian/||g' | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
-
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/$pkgname"
 
   ### COMMENT the following 4 lines to NOT change the snapshot name to
   ### @PREFIX_DATE_LABEL instead of @PREFIX-LABEL_DATE
@@ -32,7 +25,7 @@ build() {
       -e 's@^(SNAPGLOB="\$)(opt_prefix)(.*})([?]+)@\1{\2}\4\3@' \
       src/zfs-auto-snapshot.sh
 
-  mkdir systemd
+  mkdir -p systemd
   ### "Label|NumberOfKeptSnapshots|systemd-timer-spec" of snapshots,
   ### eg. timer and service files, being created adjust/extend if required
   declare -a arr=(
@@ -73,7 +66,7 @@ EOF
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/$pkgname"
 
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/lib/systemd/system"

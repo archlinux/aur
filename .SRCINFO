@@ -1,17 +1,16 @@
-pkgbase = zfs-auto-snapshot-git
+pkgbase = zfs-auto-snapshot
 	pkgdesc = Implementation of a snapshotting service for ZFS
-	pkgver = 1.2.1.1.r0.63e4438
+	pkgver = 1.2.1.1
 	pkgrel = 1
 	epoch = 1
+	url = https://github.com/zfsonlinux/zfs-auto-snapshot
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = systemd>=212
 	depends = zfs
-	provides = zfs-auto-snapshot
-	conflicts = zfs-auto-snapshot
-	source = git+https://github.com/zfsonlinux/zfs-auto-snapshot#branch=debian
+	source = git+https://github.com/zfsonlinux/zfs-auto-snapshot#commit=63e4438edb618066e9cc4303df4a7c1331d26654
 	sha256sums = SKIP
 
-pkgname = zfs-auto-snapshot-git
+pkgname = zfs-auto-snapshot
 
