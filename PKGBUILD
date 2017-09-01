@@ -8,17 +8,17 @@ url='http://25thandclement.com/~william/projects/luaossl.html'
 license=('MIT')
 makedepends=('lua' 'lua51' 'lua52')
 depends=('openssl')
-source=('https://github.com/wahern/luaossl/archive/rel-20161214.tar.gz')
+source=(https://github.com/wahern/luaossl/archive/rel-$pkgver.tar.gz)
 md5sums=('8bc4262993f2de058f65a09294fcfc47')
 build() {
-	cd luaossl-rel-20161214;
+	cd luaossl-rel-$pkgver;
 	make prefix=/usr
 }
 
 package_lua-luaossl() {
 	pkgdesc='Most comprehensive OpenSSL module in the Lua universe for Lua 5.3'
 
-	cd luaossl-rel-20161214;
+	cd luaossl-rel-$pkgver;
 	make DESTDIR="$pkgdir" prefix=/usr install5.3
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
@@ -26,7 +26,7 @@ package_lua-luaossl() {
 package_lua51-luaossl() {
 	pkgdesc='Most comprehensive OpenSSL module in the Lua universe for Lua 5.1'
 
-	cd luaossl-rel-20161214;
+	cd luaossl-rel-$pkgver;
 	make DESTDIR="$pkgdir" prefix=/usr install5.1
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
@@ -34,7 +34,7 @@ package_lua51-luaossl() {
 package_lua52-luaossl() {
 	pkgdesc='Most comprehensive OpenSSL module in the Lua universe for Lua 5.2'
 
-	cd luaossl-rel-20161214;
+	cd luaossl-rel-$pkgver;
 	make DESTDIR="$pkgdir" prefix=/usr install5.2
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
