@@ -3,7 +3,7 @@
 
 pkgname=gtkspell
 pkgver=2.0.16
-pkgrel=4
+pkgrel=5
 url="http://gtkspell.sourceforge.net/"
 pkgdesc="Provides word-processor-style highlighting and replacement of misspelled words in a GtkTextView widget"
 arch=('i686' 'x86_64')
@@ -17,6 +17,8 @@ sha256sums=('8fc7dc560167b2cb7193e76aca625a152dc19b0ebf49816b78539cbb90d80d02'
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  gtkdocize
+  autoreconf -fi
   ./configure --prefix=/usr --disable-static
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
