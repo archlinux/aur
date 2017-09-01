@@ -1,4 +1,3 @@
-#Maintainer: Florian Wittmann <fl0w1@disroot.org>
 pkgname='python-subprocrunner'
 _module='subprocrunner'
 pkgver='0.8.7'
