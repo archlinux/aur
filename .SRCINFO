@@ -1,0 +1,15 @@
+pkgbase = moedict
+	pkgdesc = Chinese Dictionary-萌典/mengdian
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://racklin.github.io/moedict-desktop/download.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source_i686 = https://github.com/racklin/moedict-desktop/releases/download/1.1.1/moedict-desktop.app-1.1.1-linux-i686.tar.bz2
+	md5sums_i686 = SKIP
+	source_x86_64 = https://github.com/racklin/moedict-desktop/releases/download/1.1.1/moedict-desktop.app-1.1.1-linux-x86_64.tar.bz2
+	md5sums_x86_64 = SKIP
+
+pkgname = moedict
+
