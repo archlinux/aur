@@ -1,4 +1,3 @@
-#Maintainer: Florian Wittmann <fl0w1@disroot.org>
 pkgname='python-tcconfig'
 _module='tcconfig'
 pkgver='0.14.1'
