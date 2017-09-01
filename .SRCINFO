@@ -1,0 +1,21 @@
+pkgbase = python-simplesqlite
+	pkgdesc = SimpleSQLite is a Python library to simplify SQLite database operations: table creation, data insertion and get data as other data formats.
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/thombashi/SimpleSQLite
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pathvalidate>=0.16.1
+	depends = python-pytablereader>=0.13.0
+	depends = python-dataproperty
+	depends = python-logbook>=1.1.0
+	depends = python-mbstrdecoder
+	depends = python-six
+	depends = python-typepy>=0.0.20
+	source = https://github.com/thombashi/SimpleSQLite/archive/v00.15.0.tar.gz
+	md5sums = be05735a65f91bf0bb47c2bfcf474dd3
+
+pkgname = python-simplesqlite
+
