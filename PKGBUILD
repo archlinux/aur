@@ -2,7 +2,7 @@
 
 pkgname=jumpfm-bin
 _json=$(curl -s -L https://api.github.com/repos/Gilad-Kutiel-App/jumpfm/releases/latest | jq '.')
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='A file manager that lets you jump'
 arch=(x86_64)
