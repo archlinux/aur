@@ -1,7 +1,7 @@
 # Maintainer: Azat Abdullin <abdullin@kspt.icc.spbstu.ru>
 pkgname=desktop-phonepi
 pkgver=1
-pkgrel=7
+pkgrel=8
 pkgdesc="Desktop application for PhonePi project"
 url="https://gitlab.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
@@ -24,4 +24,5 @@ package() {
 	make DESTDIR=$pkgdir install
 	install -Dm600 --owner=$USER "./config.ini" "$pkgdir/$HOME/.config/desktop-pi"
 	install -Dm666 "./resourses/background.png" "$pkgdir/usr/share/desktop-pi/background.png"
+	install -Dm644 "./phonepi.desktop" "$pkgdir/usr/share/wayland-sessions/phonepi.desktop"
 }

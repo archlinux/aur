@@ -3,7 +3,7 @@
 pkgbase = desktop-phonepi
 	pkgdesc = Desktop application for PhonePi project
 	pkgver = 1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://gitlab.com/PhonePi
 	arch = i686
 	arch = x86_64
