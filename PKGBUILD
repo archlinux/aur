@@ -1,4 +1,3 @@
-#Maintainer: Florian Wittmann <fl0w1@disroot.org>
 pkgname='python-pathvalidate'
 _module='pathvalidate'
 pkgver='0.16.1'
