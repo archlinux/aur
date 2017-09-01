@@ -4,10 +4,10 @@
 pkgname=tclx
 pkgver=8.4.1
 _tclsrcver=8.6.7
-pkgrel=6
+pkgrel=7
 pkgdesc="Provides OS primitives, file scanning, data records etc. for Tcl"
 url="http://tclx.sourceforge.net"
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('BSD')
 depends=('tcl=8.6.7' 'tk')
 source=("http://downloads.sourceforge.net/sourceforge/tclx/tclx${pkgver}.tar.bz2" \
