@@ -11,14 +11,14 @@
 
 pkgname=strongswan-pkcs11
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 provides=("${pkgname/-pkcs11}=${pkgver}-${pkgrel}")
 pkgdesc="The best OpenSource IPsec implementation with PKCS11 support"
 url='http://www.strongswan.org'
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd' 'pam')
-makedepends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd' 'systemd')
+makedepends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd' 'systemd', 'autoconf', 'automake')
 conflicts=('openswan', "${pkgname/-pkcs11}")
 options=(!libtool)
 backup=(
