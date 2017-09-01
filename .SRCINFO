@@ -1,0 +1,18 @@
+pkgbase = cargo-apk-git
+	pkgdesc = Cargo subcommand that allows you to build Android packages.
+	pkgver = r309.4dd5cc9
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	makedepends = cmake
+	makedepends = git
+	depends = cargo
+	provides = cargo-apk
+	conflicts = cargo-apk
+	source = cargo-apk-git::git+https://github.com/tomaka/android-rs-glue.git
+	sha256sums = SKIP
+
+pkgname = cargo-apk-git
+
