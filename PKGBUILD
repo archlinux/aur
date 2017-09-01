@@ -1,4 +1,3 @@
-#Maintainer: Florian Wittmann <fl0w1@disroot.org>
 pkgname='python-pytablereader'
 _module='pytablereader'
 pkgver='0.13.3'
