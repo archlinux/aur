@@ -1,0 +1,19 @@
+pkgbase = waylandpp
+	pkgdesc = Wayland C++ bindings
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/NilsBrause/waylandpp
+	arch = i686
+	arch = x86_64
+	arch = armv5
+	arch = armv6
+	arch = armv7
+	arch = armv8
+	makedepends = scons
+	depends = wayland
+	conflicts = walandpp-git
+	source = https://github.com/NilsBrause/waylandpp/archive/0.1.2.zip
+	md5sums = df16f5ecb6b4baec9b3b0105ca9bae8c
+
+pkgname = waylandpp
+
