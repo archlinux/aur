@@ -2,7 +2,7 @@
 
 pkgname=pulse-secure
 pkgver=5.3r1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(i686 x86_64)
 license=(custom)
@@ -17,6 +17,7 @@ md5sums=('652f6e8f54ea5bdd05a123ba6fd475ba'
          '261848a28201e5386ec4bf587473a48b')
 optdepends_i686=('webkitgtk: for pulseUi frontend')
 optdepends_x86_64=('lib32-webkitgtk: for pulseUi frontend')
+conflicts=(pulse-connect-secure)
 
 prepare() {
     mkdir -p pulse && pushd pulse
