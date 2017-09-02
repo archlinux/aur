@@ -2,15 +2,15 @@
 
 pkgname=iio-sensor-proxy-git
 _pkgname="iio-sensor-proxy"
-pkgver=r240.45f9a63
+pkgver=r264.401d59e
 pkgrel=1
 pkgdesc="IIO accelerometer sensor to input device proxy"
 arch=('i686' 'x86_64')
 url="https://github.com/hadess/iio-sensor-proxy"
-license=('GPLv2+')
+license=('GPL2')
 provides=('iio-sensor-proxy')
 conflicts=('iio-sensor-proxy')
-depends=('systemd' 'libgudev' 'gtk3' 'systemd')
+depends=('libgudev>=232' 'gtk3' 'systemd')
 makedepends=('git' 'gnome-common' 'gtk-doc')
 source=("git+https://github.com/hadess/iio-sensor-proxy.git")
 md5sums=('SKIP')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
+  ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --disable-Werror
   make
 }
 
