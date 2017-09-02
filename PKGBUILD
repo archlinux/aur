@@ -5,12 +5,12 @@
 
 pkgname=mdcharm-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The best markdown editor so far (markdown extra) and Multi-Markdown available again from the last binary available on gthub"
 arch=('i686' 'x86_64')
 url="http://www.mdcharm.com/"
 license=('custom')
-makedepends=('tar' 'xz')
+#makedepends=('xz')
 
 prepare() {
 
