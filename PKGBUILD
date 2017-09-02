@@ -1,27 +1,50 @@
-# Maintainer: mortzprk <mortz.prk@gmail.com>
+# Maintainer: twa022 <twa022 at gmail dot com>
 
+_pkgname=nixnote
 pkgname=nixnote2
-_pkgname=nixnote2
 pkgver=2.0
-_pkgver="NixNote2%20-%202.0"
-pkgrel=4
-pkgdesc="Formerly called nevernote, nixnote is a clone of Evernote designed to run on Linux"
-url="http://www.sourceforge.net/projects/nevernote"
+pkgrel=5
+pkgdesc="Evernote clone (formerly Nevernote)"
+url="http://www.nixnote.org"
 arch=('x86_64' 'i686')
 license=('GPL2')
-provides=('nixnote2')
-conflicts=('nixnote' 'nixnote2-git' 'nixnote-beta')
-replaces=('nixnote')
-source=("nixnote2.desktop")
+conflicts=("${_pkgname}-beta" "${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
+replaces=('nevernote')
+depends=('poppler-qt5' 'qt5-webkit' 'tidy' 'boost-libs')
+makedepends=('boost' 'opencv' 'hunspell')
+optdepends=('opencv:   Webcam plugin'
+            'hunspell: Spell check plugin')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/baumgarr/nixnote2/archive/v${pkgver}.tar.gz")
+sha256sums=('15016caf90bfe09d44fcac4fa4039756eb7efbaf8469505373577f846ee67dcc')
 
-depends=('mimetex' 'opencv' 'poppler-qt5' 'qt5-webkit' 'sqlite' 'tidyhtml' 'libcurl-compat' 'hunspell' 'libpng' 'intel-tbb' 'openexr' 'ffmpeg' 'libdc1394')
-sha256sums=('227e6b13fce129adb492b1ab4b94eb3b56777a5939d02ae606b07f217bdb6182')
-source_x86_64=("https://superb-sea2.dl.sourceforge.net/project/nevernote/${_pkgver}/Linux/Qt5/${_pkgname}-2.0_amd64.tar.gz")
-sha256sums_x86_64=('932055ac4e47e205b95642c19000e7c8fe06e688e536fa9d1ec49ecdaf86eab4')
-source_i686=("https://superb-sea2.dl.sourceforge.net/project/nevernote/${_pkgver}/Linux/Qt5/${_pkgname}-2.0_i386.tar.gz")
-sha256sums_i686=('9a829cd33ad7fbd6f1e83a0b3182aa3e6be2c56a9f5dbd6ed32cc320b0f9cec2')
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  qmake ./NixNote2.pro
+  make
+  
+  # Build the plugins
+  cd plugins/hunspell
+  qmake Hunspell.pro
+  cd -
+  
+  cd plugins/webcam
+  qmake WebCam.pro
+}
 
 package() {
-    cp -R "${srcdir}/nixnote2/usr" "${pkgdir}/"
-    install -D -m644 nixnote2.desktop ${pkgdir}/usr/share/applications/nixnote2.desktop
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make INSTALL_ROOT="${pkgdir}" install
+  
+  mkdir -p "${pkgdir}"/usr/lib/nixnote2/plugins
+  install -m755 plugins/*so "${pkgdir}"/usr/lib/nixnote2/plugins/
+  # Binaries should really be in lib, not share
+  ln -s '../..'/lib/nixnote2/plugins "${pkgdir}"/usr/share/nixnote2/plugins
+  
+  install -m644 theme.ini "${pkgdir}"/usr/share/nixnote2/theme.ini
+  
+  sed -i 's:nevernote:nixnote:g' shortcuts_howto.txt
+  install -Dm644 shortcuts_howto.txt "${pkgdir}"/usr/doc/nixnote2/shortcuts_howto.txt
+  install -Dm644 shortcuts.txt "${pkgdir}"/usr/doc/nixnote2/shortcuts_sample.txt
 }
