@@ -6,11 +6,11 @@
 pkgname=mdcharm-bin
 pkgver=1.2.0
 pkgrel=1
-pkgdesc="A wiki editor, currently it supports markdown(markdown extra) and Multi-Markdown."
+pkgdesc="The best markdown editor (markdown extra) and Multi-Markdown available again from the last binary available on gthub"
 arch=('i686' 'x86_64')
 url="http://www.mdcharm.com/"
 license=('custom')
-makedepends=('tar binutils xz')
+makedepends=('tar' 'binutils' 'xz')
 
 prepare() {
 
@@ -28,3 +28,4 @@ package() {
 
 
 } 
+
