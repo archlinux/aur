@@ -3,7 +3,7 @@
 
 _pkgname=Pweave
 pkgname=python-pweave
-pkgver=0.25
+pkgver=0.30.1
 pkgrel=1
 pkgdesc="A scientific report generator and literate programming tool for Python."
 arch=(any)
@@ -11,12 +11,11 @@ url="http://mpastell.com/pweave/"
 license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/f6/2f/e9735b04747ae5ef29d64e0b215fb0e11f1c89826097ac17342efebbbb84/$_pkgname-$pkgver.tar.gz")
-sha256sums=('1c0f6921196646243eb7ff9eee742305909be2bc7a5eeeb06a7d1f66cc9758c7')
+source=("https://pypi.python.org/packages/16/93/a29e8909c3945ea7ee89cde5a0aa03d7004efc2d3020b867dae81045f9bc/Pweave-0.30.1.tar.gz")
+sha256sums=('323b96d2e90d2cebe62d4942933fc29807bdf0d2728236d55155b3b21615ef4a')
 
 package() {
   cd "$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
-  rename P p "$pkgdir/usr/bin/P"*
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
