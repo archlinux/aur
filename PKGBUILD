@@ -1,4 +1,8 @@
 # Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
+# Contributor: @xnor
+# Contributor: @nicolasvila
+# Contributor: @xer01ne
+
 pkgname=shellinabox-git
 pkgver=r428.98e6eeb
 pkgrel=2
