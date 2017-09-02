@@ -1,7 +1,7 @@
 pkgbase = retroarch-standalone-service
 	pkgdesc = Systemd service and user to run Retroarch in stand-alone mode
 	pkgver = 2
-	pkgrel = 8
+	pkgrel = 9
 	install = retroarch-standalone.install
 	arch = x86_64
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = retroarch-standalone-service
 	depends = retroarch-autoconfig-udev
 	depends = xorg-server
 	depends = xorg-xinit
+	depends = xorg-xset
 	depends = unclutter
 	source = retroarch-standalone.service
 	source = retroarch-standalone.sysuser
