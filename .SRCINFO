@@ -1,6 +1,6 @@
 pkgbase = noise-repellent-git
 	pkgdesc = An lv2 plugin for broadband noise reduction.
-	pkgver = r376.0917585
+	pkgver = r377.123d44a
 	pkgrel = 1
 	url = https://github.com/lucianodato/noise-repellent
 	arch = i686
