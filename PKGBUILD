@@ -42,7 +42,7 @@ _accesskey_dirname="ngx_accesskey"
 
 pkgname=nginx-custom
 pkgver=1.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server (with standard, additional and 3rd party modules)'
 arch=('i686' 'x86_64')
 
