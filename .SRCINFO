@@ -1,0 +1,18 @@
+pkgbase = whohas
+	pkgdesc = Software package and repository meta-search
+	pkgver = 0.29.1
+	pkgrel = 1
+	url = http://www.philippwesche.org/200811/whohas/intro.html
+	arch = any
+	license = GPL
+	depends = perl-forks
+	depends = perl-libwww
+	noextract = whohas-0.29.1.tar.gz.asc
+	source = https://github.com/whohas/whohas/releases/download/0.29.1/whohas-0.29.1.tar.gz
+	source = https://github.com/whohas/whohas/releases/download/0.29.1/whohas-0.29.1.tar.gz.asc
+	validpgpkeys = 610B28B55CFCFE45EA1B563B3116BA5E9FFA69A3
+	sha256sums = dbf2396838cb0f97726041213c04426b818d48cc510bd529faf30a8411682878
+	sha256sums = SKIP
+
+pkgname = whohas
+
