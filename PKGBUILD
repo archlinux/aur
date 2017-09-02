@@ -2,13 +2,14 @@
 _github_url=https://github.com/lopsided98/dnsupdate
 pkgname=dnsupdate
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and flexible dynamic DNS client"
 arch=('any')
 url="${_github_url}"
 license=('GPL3')
 depends=('python-requests' 'python-yaml')
 makedepends=(
+    'git'
     'python-setuptools'
     'python-sphinx'
     'python-sphinx-argparse'
