@@ -4,12 +4,12 @@ _github_url=https://github.com/ribozz/sphinx-argparse
 pkgbase=python-${_py_pkgname}
 pkgname=(python-${_py_pkgname} python2-${_py_pkgname})
 pkgver=0.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Sphinx extension that automatically documents argparse commands and options."
 arch=('any')
 url="${_github_url}"
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
 source=(${_py_pkgname}::git+${_github_url}.git#tag=$pkgver)
 sha256sums=('SKIP')
 
