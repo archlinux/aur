@@ -1,16 +1,23 @@
-pkgbase = sddm-old-breeze-theme
-	pkgdesc = Plasma 5.7 Breeze SDDM Theme
-	pkgver = 1.0
+pkgbase = sddm-old-breeze-theme-tweak
+	pkgdesc = Plasma 5.7 Breeze SDDM Theme, with 24 hour time and smoother user images
+	pkgver = 5.7
 	pkgrel = 1
 	url = https://github.com/sddm/sddm
-	install = sddm-old-breeze-theme.install
+	install = sddm-old-breeze-theme-tweak.install
 	arch = any
 	license = CC-BY-SA
 	depends = sddm
+	depends = plasma-workspace
+	provides = sddm-old-breeze-theme
+	conflicts = sddm-old-breeze-theme
 	source = https://github.com/gregodadone/sddm-old-breeze-theme/raw/master/breeze-5.7.tar.gz
-	source = sddm-old-breeze-theme.install
+	source = sddm-old-breeze-theme-tweak.install
+	source = 24-hour-date.patch
+	source = smooth-user-pic.patch
 	md5sums = 4be8292c5b47e8b59105334127afa4a8
 	md5sums = be5b8bb99f930776c91d580cd36f9cfe
+	md5sums = 572ad902e6c3b5f32cb4dfb36f17b094
+	md5sums = bf79c1ddd0eacc1fac7c73c87927edd3
 
-pkgname = sddm-old-breeze-theme
+pkgname = sddm-old-breeze-theme-tweak
 

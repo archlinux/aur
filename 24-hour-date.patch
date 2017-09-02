@@ -1,0 +1,11 @@
+--- a/src/breeze-5.7/components/InfoPane.qml	2016-09-13 04:16:35.000000000 -0700
++++ b/src/breeze-5.7/components/InfoPane.qml	2017-07-15 15:20:05.183460860 -0700
+@@ -27,7 +27,7 @@
+ 
+ ColumnLayout {
+    BreezeLabel { //should be a heading but we want it _loads_ bigger
+-        text: Qt.formatTime(timeSource.data["Local"]["DateTime"])
++        text: Qt.formatTime(timeSource.data["Local"]["DateTime"], "hh:mm:ss")
+         //we fill the width then align the text so that we can make the text shrink to fit
+         Layout.fillWidth: true
+         horizontalAlignment: Text.AlignRight

@@ -1,0 +1,19 @@
+--- a/src/breeze-5.7/components/UserDelegate.qml	2016-09-13 04:16:35.000000000 -0700
++++ b/src/breeze-5.7/components/UserDelegate.qml	2017-07-15 17:17:43.043366299 -0700
+@@ -18,7 +18,7 @@
+  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  */
+ 
+-import QtQuick 2.2
++import QtQuick 2.3
+ 
+ import org.kde.plasma.core 2.0 as PlasmaCore
+ import org.kde.plasma.components 2.0 as PlasmaComponents
+@@ -81,6 +81,7 @@
+         //we try loading it as a normal image, if that fails we fall back to IconItem
+         Image {
+             id: face
++            mipmap: true
+             source: wrapper.iconSource
+             anchors {
+                 fill: frame
