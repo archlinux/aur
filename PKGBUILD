@@ -6,7 +6,7 @@
 # The source is over 8 GiB, with an extra 3 GiB of dependencies downloaded in build(), and may take several hours to compile.
 
 pkgname='unreal-engine'
-pkgver=4.17.0
+pkgver=4.17.1
 pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
@@ -36,6 +36,19 @@ prepare() {
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" ignore-return-value-error.patch
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" disable-pie.patch
 
+  # Source Code Accessors
+
+  # CodeLite (Fully integrated)
+  # cd $srcdir/UnrealEngine/Engine/Config/Linux && sed -i '10c\PreferredAccessor=CodeLiteSourceCodeAccessor' LinuxEngine.ini
+
+  # Qt Creator
+  # cd $srcdir/UnrealEngine/Engine/Plugins/Developer && git clone https://github.com/fire/QtCreatorSourceCodeAccess
+  # cd $srcdir/UnrealEngine/Engine/Config/Linux && sed -i '10c\PreferredAccessor=QtCreatorSourceCodeAccessor' LinuxEngine.ini
+
+  # VIM or EMACS
+  # cd $srcdir/UnrealEngine/Engine/Plugins/Developer && git clone https://github.com/fire/SensibleEditorSourceCodeAccess
+  # cd $srcdir/UnrealEngine/Engine/Config/Linux && sed -i '10c\PreferredAccessor=SensibleEditorSourceCodeAccessor' LinuxEngine.ini
+
   cd $srcdir/UnrealEngine
 
   # clean up old builds before building a new version
@@ -56,6 +69,15 @@ build() {
 }
 
 package() {
+  # install dir
+  dir='opt/$pkgname'
+
+  # install .desktop
+  if [ "$dir" != 'opt/$pkgname' ] # set new path if dir changed
+  then
+    sed -i "5c\Path=/$dir/Engine/Binaries/Linux/" UE4Editor.desktop
+    sed -i "6c\Exec=\'/$dir/Engine/Binaries/Linux/UE4Editor\' %F" UE4Editor.desktop
+  fi
   install -Dm644 UE4Editor.desktop "$pkgdir/usr/share/applications/UE4Editor.desktop"
 
   cd $srcdir/UnrealEngine
@@ -63,40 +85,40 @@ package() {
   # license
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/UnrealEngine/LICENSE.md"
 
-  # engine
-  install -d "$pkgdir/opt/$pkgname/Engine"
-  cp -r Engine/Binaries "$pkgdir/opt/$pkgname/Engine/Binaries"
-  cp -r Engine/Build "$pkgdir/opt/$pkgname/Engine/Build"
-  cp -r Engine/Config "$pkgdir/opt/$pkgname/Engine/Config"
-  cp -r Engine/Content "$pkgdir/opt/$pkgname/Engine/Content"
-  install -d "$pkgdir/opt/$pkgname/Engine/DerivedDataCache" # editor needs this
-  cp -r Engine/Documentation "$pkgdir/opt/$pkgname/Engine/Documentation"
-  cp -r Engine/Extras "$pkgdir/opt/$pkgname/Engine/Extras"
-  install -d "$pkgdir/opt/$pkgname/Engine/Intermediate" # editor needs this, but not the contents
-  cp -r Engine/Plugins "$pkgdir/opt/$pkgname/Engine/Plugins"
-  cp -r Engine/Programs "$pkgdir/opt/$pkgname/Engine/Programs"
-  cp -r Engine/Saved "$pkgdir/opt/$pkgname/Engine/Saved"
-  cp -r Engine/Shaders "$pkgdir/opt/$pkgname/Engine/Shaders"
-  cp -r Engine/Source "$pkgdir/opt/$pkgname/Engine/Source" # the source cannot be redistributed, but seems to be needed to compile c++ projects
-
-  # these folders needs to be writable, otherwise there is a segmentation fault when starting the editor
-  chmod -R a+rwX "$pkgdir/opt/$pkgname/Engine"
-
   # fix "could not chmod +x" warning when compiling c++ project
   chmod a+x Engine/Binaries/DotNET/IOS/IPhonePackager.exe
 
-  # content
-  cp -r FeaturePacks "$pkgdir/opt/$pkgname/FeaturePacks"
-  cp -r Samples "$pkgdir/opt/$pkgname/Samples"
-  cp -r Templates "$pkgdir/opt/$pkgname/Templates"
-
-  # build scripts, used by some plugins (CLion)
-  install -Dm755 GenerateProjectFiles.sh "$pkgdir/opt/$pkgname/GenerateProjectFiles.sh"
-  install -Dm755 Setup.sh "$pkgdir/opt/$pkgname/Setup.sh"
-  install -Dm644 .ue4dependencies "$pkgdir/opt/$pkgname/.ue4dependencies"
-
   # icon for .desktop file
   install -Dm644 Engine/Source/Programs/UnrealVS/Resources/Preview.png "$pkgdir/usr/share/pixmaps/UE4Editor.png"
+
+  # engine
+  install -d "$pkgdir/$dir/Engine"
+  mv Engine/Binaries "$pkgdir/$dir/Engine/Binaries"
+  mv Engine/Build "$pkgdir/$dir/Engine/Build"
+  mv Engine/Config "$pkgdir/$dir/Engine/Config"
+  mv Engine/Content "$pkgdir/$dir/Engine/Content"
+  install -d "$pkgdir/$dir/Engine/DerivedDataCache" # editor needs this
+  mv Engine/Documentation "$pkgdir/$dir/Engine/Documentation"
+  mv Engine/Extras "$pkgdir/$dir/Engine/Extras"
+  install -d "$pkgdir/$dir/Engine/Intermediate" # editor needs this, but not the contents
+  mv Engine/Plugins "$pkgdir/$dir/Engine/Plugins"
+  mv Engine/Programs "$pkgdir/$dir/Engine/Programs"
+  mv Engine/Saved "$pkgdir/$dir/Engine/Saved"
+  mv Engine/Shaders "$pkgdir/$dir/Engine/Shaders"
+  mv Engine/Source "$pkgdir/$dir/Engine/Source" # the source cannot be redistributed, but seems to be needed to compile c++ projects
+
+  # these folders needs to be writable, otherwise there is a segmentation fault when starting the editor
+  chmod -R a+rwX "$pkgdir/$dir/Engine"
+
+  # content
+  mv FeaturePacks "$pkgdir/$dir/FeaturePacks"
+  mv Samples "$pkgdir/$dir/Samples"
+  mv Templates "$pkgdir/$dir/Templates"
+
+  # build scripts, used by some plugins (CLion)
+  install -Dm755 GenerateProjectFiles.sh "$pkgdir/$dir/GenerateProjectFiles.sh"
+  install -Dm755 Setup.sh "$pkgdir/$dir/Setup.sh"
+  install -Dm644 .ue4dependencies "$pkgdir/$dir/.ue4dependencies"
 }
 
 # vim:set ts=2 sw=2 et:
