@@ -1,29 +1,29 @@
 # Maintainer: Max Bruckner <max at maxbruckner dot de>
 pkgname=freac_cdk
-_realpkgver=20170729
-pkgver=cvs_${_realpkgver}
+_date=20170902
+pkgver=1.1alpha_${_date}
 pkgrel=1
 pkgdesc="Component development kit for freac."
 arch=('i686' 'x86_64')
 url="http://www.freac.org/"
 license=('GPL2')
-depends=('smooth>=0.8.73.0_pre3' 'libcdio-paranoia' 'cdparanoia' 'libxspf' 'alsa-lib')
-source=("https://downloads.sourceforge.net/project/bonkenc/snapshots/${_realpkgver}/cdk/${pkgname/_/-}-${_realpkgver}.tar.gz" "disable-coreaudio.patch")
-sha512sums=('6fd1f01daea2a7451dfa6aacd8a2ade0f03ce68a51e49dbb0d8046ba841a29f265a05651cdb716117a6b4716474a60c098b892689a3515941f7515f1701bd5ab'
-            '14fe0fdc47ef6521a672c66d611c8497cd9d57e50b69aad9f9560a472016aaf549f9c73a147c6e935f4f3110b96d3b2e87d3168c0f06f391c8cd6a6004e8d5f3')
+depends=('smooth>=0.8.73.0_pre4' 'libcdio-paranoia' 'cdparanoia' 'libxspf' 'alsa-lib')
+source=("https://downloads.sourceforge.net/project/bonkenc/snapshots/${_date}/cdk/${pkgname/_/-}-1.1-alpha-${_date}.tar.gz" "disable-coreaudio.patch")
+sha512sums=('06ca241ed3843be8ded7322267d58496c5642fe46b9149193e7d6fcca3bddcc6618d00e063092ab1425a73c29afc053a06ce2927d3be3e560f9ddc0ed7701f91'
+            'ddde1481f56617a06f1d9f337bf9d6a6cee16f36333a66dd24830da33756c7477b1e1768fce29ac481aad08cc6c8629e305ee7b30466667ea35e55a0bae69562')
 
 prepare() {
-	cd "${pkgname/_/-}-${_realpkgver}" || exit 1
+	cd "${pkgname/_/-}-1.1-alpha-${_date}" || exit 1
 	patch -p1 -i "$srcdir/disable-coreaudio.patch"
 	find . -type f -exec sed -i 's!/usr/local!/usr!g' {} \;
 }
 
 build() {
-	cd "${pkgname/_/-}-${_realpkgver}" || exit 1
+	cd "${pkgname/_/-}-1.1-alpha-${_date}" || exit 1
 	make config=systemlibxspf
 }
 
 package() {
-	cd "${pkgname/_/-}-${_realpkgver}" || exit 1
+	cd "${pkgname/_/-}-1.1-alpha-${_date}" || exit 1
 	make DESTDIR="$pkgdir/" install
 }
