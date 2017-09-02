@@ -1,8 +1,8 @@
 # Maintainer: hexchain <i at hexchain.org>
 
 pkgname="tpm2-abrmd"
-pkgver="1.1.0"
-pkgrel=2
+pkgver="1.1.1"
+pkgrel=1
 pkgdesc="TPM2 Access Broker & Resource Manager"
 license=('BSD')
 arch=('x86_64')
