@@ -28,7 +28,7 @@ sha256sums=("${_hash}"
 # @TODO: Figure out what's really needed.
 depends=('libcurl-compat')
 makedepends=('git' 'curl')
-pkgver=1.0.776
+pkgver=1.1.922
 pkgrel=1
 
 pkgver() {
