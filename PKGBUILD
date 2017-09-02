@@ -3,16 +3,18 @@
 
 _gitname=daala
 pkgname=${_gitname}-git
-pkgver=0.0.r1194.g5e503ca
+pkgver=0.0.r1696.g7278368
 pkgrel=1
 pkgdesc="next-next-gen video compression technology from Xiph.org, Mozilla and others"
 arch=('i686' 'x86_64')
 url="https://www.xiph.org/daala/"
 license=('BSD')
-depends=('libpng' 'libjpeg-turbo')
-makedepends=('git' 'sdl2' 'wxgtk')
+makedepends=('git' 'sdl2' 'wxgtk' 'libjpeg-turbo' 'libogg' 'libpng')
 checkdepends=('check')
-optdepends=("sdl2: For daala example player"
+optdepends=("libogg: OGG support"
+            "libpng: PNG support"
+            "libjpeg-turbo: JPG support"
+            "sdl2: For daala example player"
             "wxgtk: For daala example analyzer")
 provides=('libdaala' $_gitname)
 conflicts=('libdaala' $_gitname)
