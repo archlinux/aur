@@ -59,8 +59,7 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -d "$pkgdir"/usr/share/pixmaps
-  install -m 644 ../data/gui/stuntrally.png "$pkgdir"/usr/share/pixmaps
-  install -m 644 ../data/gui/sr-editor.png "$pkgdir"/usr/share/pixmaps
+  install -m 644 ../data/gui/{stuntrally,sr-editor}.png "$pkgdir"/usr/share/pixmaps
 
   install -d "$pkgdir"/var/lib/stuntrally
   mv "$pkgdir"/usr/bin/{stuntrally,sr-editor} "$pkgdir"/var/lib/stuntrally
