@@ -6,7 +6,7 @@ pkgdesc="A script in order to run Chromium in fullscreen mode under the chromium
 url="https://aur.archlinux.org/packages/chromium-fullscreen/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('MIT')
-depends=('xorg-server' 'xorg-xinit' 'unclutter' 'chromium' 'xlogin-git')
+depends=('xorg-server' 'xorg-xinit' 'xorg-xset' 'unclutter' 'chromium' 'xlogin-git')
 install='chromium-fullscreen.install'
 source=('chromium-fullscreen.sysuser'
         'chromium-fullscreen.xinitrc'
