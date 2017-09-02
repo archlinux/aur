@@ -1,11 +1,13 @@
-# Maintainer: George Ornbo <george@shapeshed.com>
+# Contributor: Patrick Jackson <PatrickSJackson gmail com>
+# Maintainer: Christoph Vigano <mail@cvigano.de>
+# Maintainer: Mikhail Burakov <mikhail.burakov gmail com>
 
 pkgname=st-solarized
-_appname='st'
-conflicts=(${_appname})
-provides=(${_appname})
+appname='st'
+conflicts=(${appname})
+provides=(${appname})
 pkgver=0.7
-pkgrel=2
+pkgrel=1
 pkgdesc='A simple virtual terminal emulator for X. Patched for solarized colorscheme.'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -13,24 +15,29 @@ depends=('libxext' 'libxft')
 makedepends=('ncurses')
 url="http://st.suckless.org"
 
-source=(git://git.suckless.org/st#commit=b331da550b290d54592b7ba11242c92f5a303a48
-        http://st.suckless.org/patches/solarized/st-no_bold_colors-20170623-b331da5.diff  
-        http://st.suckless.org/patches/solarized/st-solarized-both-20170626-b331da5.diff)
+source=(http://dl.suckless.org/st/$appname-$pkgver.tar.gz
+        http://st.suckless.org/patches/st-no_bold_colors-20160727-308bfbf.diff
+        http://st.suckless.org/patches/st-solarized-dark-20160727-308bfbf.diff)
 
-sha256sums=('SKIP'
-        '71e1211189d9e11da93ee49388379c5f8469fcd3e1f48bb4d791ddaf161f5845'
-        'd1f168d225763680c6dc6e9a426b8bb56ff45967ffd0ea79f56b7af42c1141d9')
+sha256sums=('f7870d906ccc988926eef2cc98950a99cc78725b685e934c422c03c1234e6000'
+            '2e8cdbeaaa79ed067ffcfdcf4c5f09fb5c8c984906cde97226d4dd219dda39dc'
+            '4782f52c4147a352579586c1b066f9fd1da934e580cbd3b78943f058394d9883')
 
 build() {
-  cd "$srcdir/$_appname"
-  patch -i "$srcdir/st-no_bold_colors-20170623-b331da5.diff"
-  patch -i "$srcdir/st-solarized-both-20170626-b331da5.diff"
+  cd "$srcdir/$appname-$pkgver"
+  patch -i "$srcdir/st-no_bold_colors-20160727-308bfbf.diff"
+  patch -i "$srcdir/st-solarized-dark-20160727-308bfbf.diff"
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-  cd "$srcdir/$_appname"
+  cd "$srcdir/$appname-$pkgver"
   make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_appname/LICENSE"
-  install -Dm644 README "$pkgdir/usr/share/doc/$_appname/README"
+
+  # Avoid conflict with ncurses package
+  rm "$pkgdir/usr/share/terminfo/s/st"
+  rm "$pkgdir/usr/share/terminfo/s/st-256color"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$appname/LICENSE"
+  install -Dm644 README "$pkgdir/usr/share/doc/$appname/README"
 }
