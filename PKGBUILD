@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=far2l-git
-pkgver=r787.1330e85
+pkgver=r800.de1a692
 pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
@@ -12,7 +12,7 @@ source=('git+https://github.com/elfmz/far2l'
         'far2l.patch')
 sha256sums=('SKIP'
             'SKIP'
-            'a0f97d7262f450aa1757408301746e6be21fabf18dae31ffe17fee69b30de65d'
+            '4f48df42b7c503e26f911b9d5523fc79706dbc8bd40822d9bacd50dc3be5d583'
            )
 makedepends=('git' 'cmake')
 depends=('wxgtk' 'gtkmm3' 'openssl-1.0')

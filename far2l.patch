@@ -47,16 +47,3 @@ index 3c668cd..041010c 100644
  #include <condition_variable>
  #include <wx/wx.h>
  #include <wx/display.h>
-diff --git a/WinPort/src/CallInMain.h b/WinPort/src/CallInMain.h
-index 78828b6..6cd058e 100644
---- a/WinPort/src/CallInMain.h
-+++ b/WinPort/src/CallInMain.h
-@@ -1,6 +1,7 @@
- #pragma once
- #include <mutex>
- #include <condition_variable>
-+#include <functional>
- 
- template<class RV, class FN>
-        class InMainCaller
-
