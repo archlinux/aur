@@ -1,14 +1,14 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=libfreenect-git
-pkgver=v0.5.3.r18.gec0b75d
+pkgver=v0.5.6.r0.g4d2fede
 pkgrel=1
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
 url="http://openkinect.org"
 license=('GPL')
 depends=('libusb' 'glu' 'freeglut' 'bash' 'python' 'python2')
-makedepends=('cmake' 'git' 'libxmu' 'cython' 'python-numpy' 'cython2' 'python2-numpy')
+makedepends=('git' 'cmake' 'libxmu' 'cython' 'python-numpy' 'cython2' 'python2-numpy')
 optdepends=('opencv: support for python demos'
             'python2-matplotlib: support for python demos')
 provides=('libfreenect')
@@ -26,8 +26,7 @@ build() {
   cd "${srcdir}/${pkgname}"
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPROJECT_INCLUDE_INSTALL_DIR=/usr/include -DLIB_SUFFIX="" \
-    -DBUILD_AUDIO=ON \
+    -DPROJECT_INCLUDE_INSTALL_DIR=/usr/include \
     -DBUILD_REDIST_PACKAGE=OFF \
     -DBUILD_OPENNI2_DRIVER=ON \
     -DBUILD_PYTHON=ON
