@@ -11,7 +11,7 @@ arch=('any')
 url='https://github.com/carnager/clerk'
 license=('GPL')
 depends=('perl' 'perl-net-mpd' 'perl-cpanplus-dist-build' 'perl-data-messagepack' 'perl-file-slurper' 'perl-file-path' 'perl-config-simple' 'perl-try-tiny' 'perl-ipc-run' 'perl-http-date' 'perl-local-lib')
-
+install=('clerk-git.install')
 makedepends=('git')
 source=('git+https://github.com/carnager/clerk#branch=perl')
 
