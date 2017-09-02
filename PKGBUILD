@@ -1,7 +1,7 @@
 pkgbase=('python-dirlog')
 pkgname=('python-dirlog')
 _module='dirlog'
-pkgver='1.0.1'
+pkgver='1.1.0'
 pkgrel=1
 pkgdesc="keep a log of directories you visit to get back fast"
 url="https://github.com/ninjaaron/dirlog"
@@ -9,16 +9,16 @@ depends=('python')
 makedepends=('python-pip' 'python-wheel')
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/c2/73/2a92d7b55ca7f0c3ae00408a7854a27bcaa3fac478cb2217c0d79e4606d5/dirlog-1.0.1.tar.gz")
-md5sums=('3e192cca9e00bc2f3eca6adcad7f5ac2')
+source=("https://pypi.python.org/packages/95/10/5d66c451a6c07c160570b6774282f2e61cba8fc3643d2b28571bdfcea96d/dirlog-1.1.0.tar.gz")
+md5sums=('cdbea3d27721b64293fd2ae3bbeb3348')
 
 build() {
-    cd "${srcdir}/dirlog-1.0.1"
+    cd "${srcdir}/dirlog-1.1.0"
     pip3 wheel .
 }
 
 package() {
     depends+=()
-    cd "${srcdir}/dirlog-1.0.1"
+    cd "${srcdir}/dirlog-1.1.0"
     pip3 install --ignore-installed --root="${pkgdir}" "dirlog"*.whl
 }
