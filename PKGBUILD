@@ -22,7 +22,7 @@ source=("http://download.brother.com/welcome/dlf103004/mfcj5335dwlpr-$_brother_p
 md5sums=(bcf37fe0e9624ae9e3ce0554573d113f
          40c5de6899b0c319f6187e23626e7c42
          310f8424517f3df127d39393ceaebb6f
-         bf894a1a51baf6055a6c58ecf43c9782,
+         bf894a1a51baf6055a6c58ecf43c9782
          4bd2a2f6fb33b2fcf4c6d22810238dc7)
 
 prepare() {
