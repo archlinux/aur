@@ -4,7 +4,7 @@
 
 _pkgname=pithos
 pkgname=$_pkgname-git
-pkgver=1.3.1.r30.g5837cff
+pkgver=1.3.1.r36.gc584d2d
 pkgrel=1
 pkgdesc='Native Pandora Radio client'
 arch=('any')
@@ -20,8 +20,12 @@ optdepends=('libkeybinder3: for media keys plugin'
 makedepends=('git' 'meson' 'appstream-glib')
 provides=("$_pkgname")
 conflicts=("$_pkgname-bzr" "$_pkgname")
-sha256sums=('SKIP')
-source=('git+https://github.com/pithos/pithos.git')
+sha256sums=('SKIP'
+            '2b80c9bb84f7de8de0e36dc16465c6633cb74de7bf777efcad76393e88a6e62a'
+            '6d29178697384fb046d9d25c6c2482f353a4484ec4f0a5b9080d1a26aa24f839')
+source=('git+https://github.com/pithos/pithos.git'
+        'dbus.service'
+        'systemd.service')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -40,4 +44,6 @@ build() {
 package() {
   cd "$srcdir/build"
   DESTDIR="$pkgdir" ninja install
+  install -Dm644 "${srcdir}/dbus.service" "${pkgdir}/usr/share/dbus-1/services/io.github.Pithos.service"
+  install -Dm644 "${srcdir}/systemd.service" "${pkgdir}/usr/lib/systemd/user/pithos.service"
 }
