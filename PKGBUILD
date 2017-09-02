@@ -1,7 +1,7 @@
 # Maintainer: deadhead <deadhead3492@gmail.com>
 pkgname=fetchmirrors
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Fetch and rank new pacman mirrorlist"
 arch=('any')
 url="https://github.com/deadhead420/fetchmirrors"
