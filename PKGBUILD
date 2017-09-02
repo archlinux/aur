@@ -65,7 +65,7 @@ prepare() {
   # patch filter for PDF printing to avoid error:
   # ERROR: typecheck
   # OFFENDING COMMAND: resourcestatus
-  sed -i 's|pdf2ps|pdftocairo -q -ps|g' "${srcdir}"/opt/brother/Printers/mfcj5335dw/lpd/filter_mfcj5335dw
+  sed -i 's|pdf2ps|pdftocairo -q -ps|g' "${srcdir}"/opt/brother/Printers/mfcj5335dw/lpd/filtermfcj5335dw
 }
 
 package() {
