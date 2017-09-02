@@ -3,8 +3,8 @@
 # Contributor: Moritz Maxeiner <moritz@ucworks.org>
 
 pkgname=('dub')
-pkgver=1.4.0
-pkgrel=3
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Developer package manager for D programming language"
 arch=('i686' 'x86_64')
 url="https://github.com/D-Programming-Language/dub"
@@ -13,8 +13,8 @@ groups=('dlang')
 makedepends=('dmd')
 depends=('libphobos' 'curl')
 
-source=($pkgname-$pkgver.tar.gz::https://github.com/dlang/dub/archive/v$pkgver.tar.gz)
-sha512sums=('0a21149da3bb09b4c384464eab33adc640938baa9e0bbdac6335583aa6ffe4735846244f2897dfdbd12778ec218b256cf2c58c436c5ffa7244b327af49584ffe')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dlang/dub/archive/v$pkgver.tar.gz")
+sha512sums=('cc23c177a2fff94119e8abc0b9d3812027badd98c4d30903e75c348318ae790b98fb435540860b9beb6923fe0a4d70b80f572cda343b4b5a0f513755b484baf2')
 
 build() {
 	DC=dmd
