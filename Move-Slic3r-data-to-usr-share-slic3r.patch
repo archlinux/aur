@@ -1,8 +1,8 @@
 diff --git a/lib/Slic3r.pm b/lib/Slic3r.pm
-index 5f4357a9..e37a5e17 100644
+index 17b78326..8411fad7 100644
 --- a/lib/Slic3r.pm
 +++ b/lib/Slic3r.pm
-@@ -49,7 +49,7 @@ warn "Running Slic3r under Perl 5.16 is neither supported nor recommended\n"
+@@ -51,7 +51,7 @@ warn "Running Slic3r under Perl 5.16 is neither supported nor recommended\n"
  
  use FindBin;
  # Path to the images.
@@ -12,15 +12,17 @@ index 5f4357a9..e37a5e17 100644
  use Moo 1.003001;
  
 diff --git a/slic3r.pl b/slic3r.pl
-index c1371472..6cd50804 100755
+index 4b6e43e4..d833ed1b 100755
 --- a/slic3r.pl
 +++ b/slic3r.pl
-@@ -5,7 +5,7 @@ use warnings;
+@@ -5,8 +5,7 @@ use warnings;
  
  BEGIN {
      use FindBin;
 -    use lib "$FindBin::Bin/lib";
+-    use local::lib '--no-create', "$FindBin::Bin/local-lib";
 +    use lib "$FindBin::Bin/lib", "/usr/lib/slic3r-prusa3d/";
  }
  
  use File::Basename qw(basename);
+

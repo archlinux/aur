@@ -5,13 +5,13 @@
 
 _pkgname=slic3r-prusa3d
 pkgname=${_pkgname}-git
-pkgver=1.35.3.r11.ga1f64034
+pkgver=1.37.0.r39.g247070cd
 pkgrel=1
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://www.prusa3d.com/"
 license=('AGPL3')
-depends=('boost-libs' 'intel-tbb' 'perl' 'perl-class-accessor' 'perl-libwww' 'perl-encode-locale'
+depends=('boost-libs' 'perl' 'perl-class-accessor' 'perl-libwww' 'perl-encode-locale'
          'perl-moo' 'perl-opengl' 'perl-wx-glcanvas')
 makedepends=('boost' 'git' 'perl-alien-wxwidgets' 'perl-devel-checklib' 'perl-extutils-cppguess'
              'perl-extutils-typemaps-default' 'perl-module-build-withxspp')
@@ -26,7 +26,7 @@ source=("git+https://github.com/prusa3d/Slic3r.git"
         "Move-Slic3r-data-to-usr-share-slic3r.patch"
         'slic3r.desktop')
 md5sums=('SKIP'
-         '1c7b1af4df70c6a2f2bdb9c6a2c02b3f'
+         '924c0dd2afead3b5896c8e8bcc465d60'
          '1941c1ede2f03774ffb77f68a7c33572')
 
 pkgver() {
@@ -37,38 +37,32 @@ pkgver() {
 prepare() {
   cd "${srcdir}/Slic3r"
   patch -p1 -i "$srcdir/Move-Slic3r-data-to-usr-share-slic3r.patch"
+  mkdir -p build
 }
 
 build() {
-  cd "${srcdir}/Slic3r/xs"
+  cd "${srcdir}/Slic3r"
   
   # Moved this here from prepare(). Because prepare() runs before pkgver() we always set the wrong version.
-  sed -i "s/#define SLIC3R_VERSION .*/#define SLIC3R_VERSION \"$pkgver\"/" src/libslic3r/libslic3r.h
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
-  /usr/bin/perl Build.PL
-  ./Build
-}
-
-check () {
-  cd "${srcdir}/Slic3r"
-  prove -Ixs/blib/arch -Ixs/blib/lib/ xs/t/
-  prove -Ixs/blib/arch -Ixs/blib/lib/ t/
+  sed -i "s/define SLIC3R_VERSION .*/define SLIC3R_VERSION \"$pkgver\"/" xs/src/libslic3r/libslic3r.h
+  
+  cd build
+  unset CFLAGS
+  unset LDFLAGS
+  unset CXXFLAGS
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+        ..
+  make
 }
 
 package () {
-  cd "${srcdir}/Slic3r"
-  install -d "$pkgdir/usr/lib/${_pkgname}"
-  cp -R lib/* "$pkgdir/usr/lib/${_pkgname}"
+  cd "$srcdir/Slic3r/build"
+  make DESTDIR="$pkgdir" install
 
-  install -Dm 755 slic3r.pl "$pkgdir/usr/bin/${_pkgname}"
+  cd "${srcdir}/Slic3r"
 
   # ZSH autocompletion
   install -Dm 0644 "utils/zsh/functions/_slic3r" "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
-
-  # Install data to /usr/share
-  mkdir -p "$pkgdir/usr/share/${_pkgname}"
-  cp -r var/* "$pkgdir/usr/share/${_pkgname}"
 
   # Desktop file
   install -d "$pkgdir/usr/share/applications"
@@ -78,10 +72,5 @@ package () {
   mkdir -p "$pkgdir/usr/share/icons/hicolor/"{128x128,192x192}/apps/
   ln -s "/usr/share/${_pkgname}/Slic3r_128px.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
   ln -s "/usr/share/${_pkgname}/Slic3r_192px.png" "$pkgdir/usr/share/icons/hicolor/192x192/apps/${_pkgname}.png"
-
-  ### SLIC3R-XS MERGE
-  cd xs
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  ./Build install --installdirs=vendor --destdir="$pkgdir" --install_path arch=/usr/lib/"${_pkgname}"/
 }
 
