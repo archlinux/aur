@@ -99,8 +99,9 @@ class AvahiBrowser(object):
 			s = self.server.ResolveService(interface, protocol, name, stype, domain, avahi.PROTO_UNSPEC, dbus.UInt32(0))
 			service = Service(str(s[3]), str(s[2]), str(s[7]), int(s[8])) # service name, host, ip, port
 			self.services.append(service)
-		except TimeoutError:
-			printwarn("Timeout error during service resolution!")
+		except dbus.DBusException as ex:
+			# Mainly expect to see org.freedesktop.Avahi.TimeoutError: Timeout reached
+			printwarn(ex)
 
 	def all_for_now(self):
 		self.loop.quit()
