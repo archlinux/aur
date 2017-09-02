@@ -3,7 +3,7 @@
 _pkgname=xfconf
 pkgname=${_pkgname}-devel
 pkgver=4.13.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple client-server configuration storage and query system"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
@@ -40,7 +40,7 @@ package() {
   make DESTDIR="$pkgdir" install
 
   # fix insecure rpath, http://bugs.archlinux.org/task/19980
-  chrpath -d "$pkgdir/usr/lib/perl5/vendor_perl/auto/Xfce4/Xfconf/Xfconf.so"
+  find "$pkgdir" -name Xfconf.so -exec chrpath -d {} +
 }
 
 # vim:set ts=2 sw=2 et:
