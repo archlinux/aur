@@ -1,19 +1,19 @@
 pkgbase = wm-switcher
 	pkgdesc = Simple GUI to switch window managers in Linux with minimal dependencies
-	pkgver = 1.03
+	pkgver = 1.04
 	pkgrel = 1
 	url = https://github.com/xircon/wm-switcher
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = python-pyqt4
+	depends = python-pyqt5
 	optdepends = metacity: Switch to the Metacity window manager
 	optdepends = xfwm4: Switch to the Xfwm window manager
 	optdepends = compiz: Switch to the Compiz window manager
 	optdepends = openbox: Switch to the Openbox window manager
 	optdepends = compton: Use the Compton compositor
-	source = https://github.com/xircon/wm-switcher/archive/v1.03.tar.gz
-	md5sums = 66875f943156ca70bfffd2b87c11ff05
+	source = https://github.com/xircon/wm-switcher/archive/v1.04.tar.gz
+	md5sums = 21cb1098542637afe9e8894ebff9373d
 
 pkgname = wm-switcher
 
