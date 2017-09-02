@@ -3,7 +3,7 @@
 # slightly modified version of https://aur.archlinux.org/packages/brother-mfc-j5330dw/
 
 pkgname="brother-mfc-j5335dw"
-pkgver="1.0.1.0"
+pkgver="1.0.1.0.1"
 # required because of unconventional package numbering for brother
 _brother_pkgver="1.0.1-0"
 pkgrel=3
@@ -17,11 +17,13 @@ install="$pkgname.install"
 source=("http://download.brother.com/welcome/dlf103004/mfcj5335dwlpr-$_brother_pkgver.i386.rpm"
         "http://download.brother.com/welcome/dlf103028/mfcj5335dwcupswrapper-$_brother_pkgver.i386.rpm"
         'cupswrapper-license.txt'
-        'lpr-license.txt')
+        'lpr-license.txt'
+        'brother-mfc-j5335dw.patch')
 md5sums=(bcf37fe0e9624ae9e3ce0554573d113f
          40c5de6899b0c319f6187e23626e7c42
          310f8424517f3df127d39393ceaebb6f
-         bf894a1a51baf6055a6c58ecf43c9782)
+         bf894a1a51baf6055a6c58ecf43c9782,
+         4bd2a2f6fb33b2fcf4c6d22810238dc7)
 
 prepare() {
   # do not install in /usr/local
@@ -35,6 +37,9 @@ prepare() {
   # setup cups directories
   install -d "${srcdir}"/usr/share/cups/model
   install -d "${srcdir}"/usr/lib/cups/filter
+
+  # patch an error (?) in the perl script from brother
+  patch -p1 "${srcdir}"/opt/brother/Printers/mfcj5335dw/cupswrapper/brother_lpdwrapper_mfcj5335dw < brother_lpdwrapper_mfcj5335dw.patch
 
   # go to the cupswrapper directory and find the source file from which to generate a ppd and wrapperfile
   cd `find . -type d -name 'cupswrapper'`
