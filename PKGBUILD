@@ -5,7 +5,7 @@
 _pkgname=xfconf
 pkgver=4.12.1
 pkgname=${_pkgname}${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="Legacy (4.12.x) xfconf configuration storage system based on dbus-glib"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
@@ -41,7 +41,7 @@ package() {
   make DESTDIR="$pkgdir" install
 
   # Fix insecure rpath, http://bugs.archlinux.org/task/19980
-  chrpath -d "$pkgdir/opt/${pkgname}/lib/perl5/vendor_perl/auto/Xfce4/Xfconf/Xfconf.so"
+  find "$pkgdir" -name Xfconf.so -exec chrpath -d {} +
   
   mkdir -p "${pkgdir}"/usr/lib
   ln -s /opt/${pkgname}/lib/libxfconf-0.so.2.0.0 "${pkgdir}"/usr/lib/libxfconf-0.so.2.0.0
