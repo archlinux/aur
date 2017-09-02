@@ -11,7 +11,7 @@ url="https://github.com/pyexcel/pyexcel-io"
 license=('BSD')
 depends=('python' 'python-lml')
 source=("https://github.com/pyexcel/pyexcel-io/archive/v$pkgver.tar.gz")
-md5sums=('b45323b5d42b912b3a72e6fe05f7f44e')
+md5sums=('4f0873325c91f5d8baecdbd4e3425d32')
 
 package() {
       cd "$srcdir/pyexcel-io-${pkgver}"
