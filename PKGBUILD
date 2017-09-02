@@ -3,7 +3,7 @@
 # slightly modified version of https://aur.archlinux.org/packages/brother-mfc-j5330dw/
 
 pkgname="brother-mfc-j5335dw"
-pkgver="1.0.1.0"
+pkgver="1.0.1.0.3"
 # required because of unconventional package numbering for brother
 _brother_pkgver="1.0.1-0"
 pkgrel=3
