@@ -1,6 +1,6 @@
 # Maintainer: Francis Gagné <fragag1@gmail.com>
 pkgname=systemd-system-update-pacman
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Scripts for scheduling and performing system updates with pacman using systemd's system update mechanism"
 arch=(any)
