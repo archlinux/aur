@@ -1,0 +1,21 @@
+pkgbase = virt-bootstrap-git
+	pkgdesc = A tool for creating the root filesystem of libvirt-based containers.
+	pkgver = r110.9e6a003
+	pkgrel = 1
+	url = https://github.com/virt-manager/virt-bootstrap
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python2
+	depends = python2
+	depends = libguestfs
+	depends = skopeo
+	depends = libvirt-sandbox
+	depends = python
+	provides = virt-bootstrap
+	conflicts = virt-bootstrap
+	source = virt-bootstrap-git::git+https://github.com/virt-manager/virt-bootstrap#branch=master
+	md5sums = SKIP
+
+pkgname = virt-bootstrap-git
+
