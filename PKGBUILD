@@ -1,16 +1,15 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-git
-pkgver=5.0.1.r2304.992b62fc
+pkgver=5.0.1.r2408.949d58b2
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://userbase.kde.org/KTorrent'
 license=('GPL')
-depends=('libktorrent-git'
+depends=('libktorrent'
          'knotifyconfig'
          'kcmutils'
-         'kdelibs4support'
          )
 makedepends=('extra-cmake-modules'
              'kdoctools'
