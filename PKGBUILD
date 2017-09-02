@@ -10,7 +10,7 @@ pkgdesc="The best markdown editor so far (markdown extra) and Multi-Markdown ava
 arch=('i686' 'x86_64')
 url="http://www.mdcharm.com/"
 license=('custom')
-makedepends=('tar' 'binutils' 'xz')
+makedepends=('tar' 'xz')
 
 prepare() {
 
@@ -23,9 +23,13 @@ prepare() {
 package() {
 
     install -Dm755 usr/bin/mdcharm $pkgdir/usr/bin/mdcharm
-    install -Dm644 usr/share/applications/mdcharm.desktop $pkgdir/usr/share/applications/mdcharm.desktop
-    install -d -Dm644 usr/share/mdcharm $pkgdir/usr/share/mdcharm
-
-
+#    install -Dm644 usr/share/applications/mdcharm.desktop $pkgdir/usr/share/applications/mdcharm.desktop
+  #  install -d usr/share/mdcharm $pkgdir/usr/share/mdcharm
+    
+    for i in `find usr/share -type f`; do  
+	    install -Dm644  "$i"  "$pkgdir/$i"
+   done
+   
+    
 } 
 
