@@ -1,7 +1,7 @@
 pkgbase = mygui-ogre1.9
 	pkgdesc = A multilayer and overlappable GUI System for OGRE - build against OGRE 1.9
 	pkgver = 3.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mygui.info/
 	arch = i686
 	arch = x86_64

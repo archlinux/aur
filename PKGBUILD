@@ -5,7 +5,7 @@
 
 pkgname=mygui-ogre1.9
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A multilayer and overlappable GUI System for OGRE - build against OGRE 1.9"
 arch=('i686' 'x86_64')
 url="http://mygui.info/"
@@ -17,6 +17,7 @@ source=("https://github.com/MyGUI/mygui/archive/MyGUI$pkgver.tar.gz")
 sha256sums=('0a28d7ec8a47993cb68deb48b36331e28f12dd92580b709eaef21d599b67a78f')
 
 prepare() {
+  sed -i '19i "/opt/OGRE-1.9/lib/OGRE/cmake"' mygui-MyGUI$pkgver/CMakeLists.txt
   mkdir -p build
 }
 
