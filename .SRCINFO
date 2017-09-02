@@ -1,8 +1,8 @@
-pkgbase = gnome-exe-thumbnailer
-	pkgdesc = Wine executable (.exe/.msi/.dll/.lnk) thumbnailer for GNOME
-	pkgver = 0.9.5
+pkgbase = exe-thumbnailer
+	pkgdesc = Thumbnailer for .exe/.dll/.msi/.lnk files
+	pkgver = 0.10.0
 	pkgrel = 1
-	url = https://github.com/gnome-exe-thumbnailer/gnome-exe-thumbnailer
+	url = https://github.com/exe-thumbnailer/exe-thumbnailer
 	arch = any
 	license = LGPL2.1
 	depends = bash
@@ -10,9 +10,12 @@ pkgbase = gnome-exe-thumbnailer
 	depends = icoutils
 	depends = glib2
 	optdepends = wine: to support .lnk shortcuts
+	optdepends = liblnk: to support .lnk shortcuts
 	optdepends = msitools: to support .msi installers
-	source = gnome-exe-thumbnailer-0.9.5.tar.gz::https://github.com/gnome-exe-thumbnailer/gnome-exe-thumbnailer/archive/0.9.5.tar.gz
-	sha256sums = 1b59acf7005bf42aca85a71b08a771dc5b74ce44dca1ef34972a876fb4212e2d
+	conflicts = gnome-exe-thumbnailer
+	replaces = gnome-exe-thumbnailer
+	source = exe-thumbnailer-0.10.0.tar.gz::https://github.com/exe-thumbnailer/exe-thumbnailer/archive/0.10.0.tar.gz
+	sha256sums = b1f856d7e88ac5d99e3f6e65f0a230bd25d2a2b8f63dca73c53bf087f6d0a322
 
-pkgname = gnome-exe-thumbnailer
+pkgname = exe-thumbnailer
 

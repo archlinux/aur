@@ -1,21 +1,20 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
-# Contributor: max.bra <max.bra at alice dot it>
-# Contributor: Marius Nestor <marius at softpedia dot com>
-# Contributor: mathewv <mathewvq at gmail dot com>
-# Contributor: Davi da Silva Böger <dsboger@gmail.com>
 
-pkgname=gnome-exe-thumbnailer
-pkgver=0.9.5
+pkgname=exe-thumbnailer
+pkgver=0.10.0
 pkgrel=1
-pkgdesc="Wine executable (.exe/.msi/.dll/.lnk) thumbnailer for GNOME"
+pkgdesc="Thumbnailer for .exe/.dll/.msi/.lnk files"
 arch=('any')
-url="https://github.com/gnome-exe-thumbnailer/gnome-exe-thumbnailer"
+url="https://github.com/exe-thumbnailer/exe-thumbnailer"
 license=('LGPL2.1')
 depends=('bash' 'imagemagick' 'icoutils' 'glib2')
 optdepends=('wine: to support .lnk shortcuts'
+            'liblnk: to support .lnk shortcuts'
             'msitools: to support .msi installers')
+replaces=("gnome-$pkgname")
+conflicts=("gnome-$pkgname")
 source=($pkgname-$pkgver.tar.gz::"https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('1b59acf7005bf42aca85a71b08a771dc5b74ce44dca1ef34972a876fb4212e2d')
+sha256sums=('b1f856d7e88ac5d99e3f6e65f0a230bd25d2a2b8f63dca73c53bf087f6d0a322')
 
 package() {
   cd $pkgname-$pkgver
@@ -25,9 +24,11 @@ package() {
   install -Dm0644 usr/share/thumbnailers/exe-dll-msi.thumbnailer \
     "$pkgdir"/usr/share/thumbnailers/exe-dll-msi.thumbnailer
 
+  install -Dm0644 $pkgname.1 "$pkgdir"/usr/share/man/man1/$pkgname.1
+
   install -d "$pkgdir"/usr/share/pixmaps
   cp -r usr/share/pixmaps/$pkgname "$pkgdir"/usr/share/pixmaps
 
   install -d "$pkgdir"/usr/share/doc/$pkgname
-  install -Dm0644 CHANGELOG README "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm0644 CHANGELOG.* README.md "$pkgdir"/usr/share/doc/$pkgname
 }
