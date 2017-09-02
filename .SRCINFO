@@ -1,7 +1,7 @@
 pkgbase = minecraft-multi-server
 	pkgdesc = Minecraft server template unit files and control script
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/nathanielc/minecraft-multi-server
 	install = minecraft-multi-server.install
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = minecraft-multi-server
 	depends = sed
 	conflicts = minecraft-server
 	backup = etc/minecraft
-	source = https://github.com/nathanielc/minecraft-multi-server/archive/v0.1.1.tar.gz
-	md5sums = 12d323d2c7e171695bb4fd4eb4a16552
+	source = https://github.com/nathanielc/minecraft-multi-server/archive/v0.1.2.tar.gz
+	md5sums = 34033227c2c38c6d2da6d6ff73a19e98
 
 pkgname = minecraft-multi-server
 
