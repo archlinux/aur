@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve-beta
 	pkgdesc = Professional A/V post-production software suite
-	pkgver = 14.0b8
+	pkgver = 14.0b9
 	pkgrel = 0
 	url = https://www.blackmagicdesign.com/
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = davinci-resolve-beta
 	depends = qt5-websockets
 	conflicts = davinci-resolve
 	options = !strip
-	source = local://DaVinci_Resolve_14.0b8_Linux.zip
-	sha256sums = d7c198f53809ae33071aee0ccd10c2a88faa5b80aed7a6d77c778eb532dc2e3b
+	source = local://DaVinci_Resolve_14.0b9_Linux.zip
+	sha256sums = f356adc7df5869cd6c559665c2b5d379596e48d7c2118dc2db2e738a678e88ae
 
 pkgname = davinci-resolve-beta
 
