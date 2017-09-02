@@ -4,7 +4,7 @@
 pkgname=perl-extract-url
 _realname=extracturl
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Perl script that extracts URLs from correctly-encoded MIME email messages"
 arch=('any')
 url='http://www.memoryhole.net/~kyle/extract_url'
@@ -18,12 +18,13 @@ sha256sums=('SKIP')
 
 build() {
   cd "${_realname}-${pkgver}"
+  export_MM_USE_DEFAULT=1 INSTALLDIRS=vendor
   make
 }
 
 package() {
   cd "${_realname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_realname}/LICENSE"
+  make install DESTDIR="${pkgdir}"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
