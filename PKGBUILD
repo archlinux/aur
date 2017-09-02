@@ -67,19 +67,21 @@ _kyber_disable=
 pkgbase=linux-bfq-mq-git
 _pkgver=4.13-rc7
 _srcname=bfq-mq
-pkgver=4.13rc7.157690df1f1f
-pkgrel=2
+pkgver=4.13rc7.9d98de6ca9f3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
-
+_gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
-_mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance"
+_mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance-V3"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 source=(# bfq-mq repository
         'git+https://github.com/Algodev-github/bfq-mq'
+        # gcc cpu optimizatons from graysky and ck; forked by sir_lucjan
+        "https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/4.13/${_gcc_patch}"
         # tentative patches
         "${_bfqpath}/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch"
         # mailing-list (ML1) patches
@@ -105,6 +107,8 @@ source=(# bfq-mq repository
         'linux.preset')
 sha256sums=(# bfq-mq repository
             'SKIP'
+            # gcc cpu optimizatons from graysky and ck forked by sir_lucjan
+            '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             # tentative patches
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             # mailing-list (ML1) patches
@@ -156,6 +160,10 @@ prepare() {
       msg " $p"
     patch -Np1 -i "$p"; done
   fi
+
+  ### Patch source to enable more gcc CPU optimizatons via the make nconfig
+  msg "Patch source with gcc patch to enable more cpus types"
+  patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
   # Clean tree and copy ARCH config over
   make mrproper
