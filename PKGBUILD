@@ -5,7 +5,7 @@ pkgname=('avidemux-core-git'
          'avidemux-qt-git'
          'avidemux-cli-git'
          )
-pkgver=2.7.0.170708.d80f2168f
+pkgver=2.7.0.170902.f552a07b4
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
 arch=('i686' 'x86_64')
@@ -41,6 +41,7 @@ makedepends=('git'
              'qt5-tools'
              'libxv'
              'vapoursynth'
+             'setconf'
              )
 source=('avidemux::git+https://github.com/mean00/avidemux2.git'
         'fix_verbose.patch'
@@ -234,10 +235,9 @@ package_avidemux-qt-git() {
   make -C build_qt_plugins DESTDIR="${pkgdir}" install
 
   install -Dm644 avidemux/avidemux2.desktop "${pkgdir}/usr/share/applications/avidemux-qt.desktop"
-  sed -e 's|Icon=avidemux|Icon=avidemux-qt|g' \
-      -e 's|Exec=avidemux2_gtk|Exec=avidemux3_qt5|g' \
-      -e 's|Name=avidemux2|Name=Avidemux Qt|' \
-      -i "${pkgdir}/usr/share/applications/avidemux-qt.desktop"
+  setconf "${pkgdir}/usr/share/applications/avidemux-qt.desktop" Name 'Avidemux Qt'
+  setconf "${pkgdir}/usr/share/applications/avidemux-qt.desktop" Exec avidemux3_qt5
+  setconf "${pkgdir}/usr/share/applications/avidemux-qt.desktop" Icon avidemux-qt
   install -Dm644 avidemux/avidemux_icon.png "${pkgdir}/usr/share/pixmaps/avidemux-qt.png"
 }
 
