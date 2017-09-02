@@ -1,6 +1,6 @@
 pkgbase = binaryninja-personal
 	pkgdesc = Binary Ninja is a binary multi-tool and reversing platform
-	pkgver = 1.0.776
+	pkgver = 1.1.922
 	pkgrel = 1
 	url = https://binary.ninja
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = binaryninja-personal
 	source = binaryninja-personal
 	source = binaryninja.png
 	source = binaryninja-personal.desktop
-	sha256sums = 52203ee89212e042d5c7e8d9829f34bd9284a58f16500745da0baa8f629b6a4d
+	sha256sums = 0494658d9ec1aa13c71bd507addc3c457bf67ffde3e9838e035ebaeea97ac0fe
 	sha256sums = 14025caefa4201062d7334505c56534dd237185f5ecdb4c20d7aad17c80647a7
 	sha256sums = ac2e652f617d5ef8aaa34a5113164f51f3f673c872a635d29c93878a00650bf8
 	sha256sums = 36aea5c3f72563703b937b98381195de01084fcddacd6e4a3ed4bc48ae75c9a2
