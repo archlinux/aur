@@ -1,16 +1,16 @@
 # Maintainer: Ainola
 
 pkgname=gtk-theme-adwaita-tweaks
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Tweaks to improve the default GNOME experience."
 arch=(any)
 url="https://github.com/Jazqa/adwaita-tweaks"
 license=('GPL3')
-source=("adwaita-tweaks-$pkgver"::"https://github.com/Jazqa/adwaita-tweaks/releases/download/v$pkgver/adwaita-tweaks.tar.gz"
-        "adwaita-tweaks-dark-$pkgver"::"https://github.com/Jazqa/adwaita-tweaks/releases/download/v$pkgver/adwaita-tweaks-dark.tar.gz")
-sha256sums=('aef0e8e843856b6168f31ed8213d39af306a95b9d8d5320f2af07ce62f133ffc'
-            '7313d54678d57bb9018910bafc03cc4fec03fc804156cac626a9e4886230d270')
+source=("adwaita-tweaks-$pkgver"::"https://github.com/Jazqa/adwaita-tweaks/releases/download/v$pkgver/adwaita-tweaks.zip"
+        "adwaita-tweaks-dark-$pkgver"::"https://github.com/Jazqa/adwaita-tweaks/releases/download/v$pkgver/adwaita-tweaks-dark.zip")
+sha256sums=('2ec2f4110c1a9a45be2ad52430fd79fd52dd64e1192616c3fa500c71c2a52967'
+            'ba11e9361a7b24d8af8048904738219ae355da865e2fe7ea1907f412a6e3961e')
 
 package() {
   install -dm755 "$pkgdir/usr/share/themes/Adwaita Tweaks"
