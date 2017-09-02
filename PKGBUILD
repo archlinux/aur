@@ -2,7 +2,9 @@
 # Contributor: François M. <francois5537 @ gmail.com>
 
 pkgname=manager-accounting
-pkgver=17.7.46
+pkgver=`wget -o /dev/null http://www.manager.io/desktop/download/ -O - \
+    | grep -o -P 'https://.*\.zip' \
+    | grep -o -P '[0-9]+\.[0-9]+\.[0-9]+'`
 pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
@@ -14,7 +16,7 @@ install=manager-accounting.install
 options=('!makeflags')
 source=(
   "LICENSE"
-  "https://mngr.s3.amazonaws.com/manager-accounting.zip"
+  "https://mngr.s3.amazonaws.com/${pkgver}/manager-accounting.zip"
   "https://raw.githubusercontent.com/ericsink/SQLitePCL.raw/master/sqlite3/sqlite3.c"
 )
 sha256sums=(
@@ -23,27 +25,19 @@ sha256sums=(
   'SKIP'
 )
 
-pkgver() {
-  cd "$srcdir"
-  echo $(ls *.dsc | egrep -o '[0-9]+\.[0-9]+\.[0-9]+')
-}
-
 prepare() {
   cd "$srcdir"
 
-  # Get current version of application
-  _pkgver=$(ls *.dsc | egrep -o '[0-9]+\.[0-9]+\.[0-9]+')
-
   # Check checksum
-  chksum=($(sed '15q;d' "${pkgname}_${_pkgver}.dsc"))
-  filesum=($(sha256sum "${pkgname}_${_pkgver}.tar.xz"))
+  chksum=($(sed '15q;d' "${pkgname}_${pkgver}.dsc"))
+  filesum=($(sha256sum "${pkgname}_${pkgver}.tar.xz"))
   if [ $chksum != $filesum  ]; then
       error "Checksums not matching"
       exit
   fi
 
   # Extract, patch
-  tar --strip-components=1 -Jxvf "${pkgname}_${_pkgver}.tar.xz"
+  tar --strip-components=1 -Jxvf "${pkgname}_${pkgver}.tar.xz"
 
   sed -i \
     's|/usr/bin/cli|/usr/bin/mono|g' \
