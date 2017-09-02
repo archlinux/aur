@@ -1,59 +1,55 @@
-# Maintainer: maz-1 <loveayawaka@gmail.com>
+# Maintainer: twa022 <twa022 at gmail dot com>
 
 _pkgname=nixnote2
-pkgname=$_pkgname-git
-pkgver=v2.0.beta7.r0.gf960829
+pkgname=${_pkgname}-git
+pkgver=2.0.r100.g82865e0
 pkgrel=1
-pkgdesc="Nixnote2 is a C++ rewrite of nixnote,which is a clone of Evernote designed to run on Linux.Nixnote is formerly called nevernote."
+pkgdesc="Evernote clone (formerly Nevernote) -- git checkout"
+url="http://www.nixnote.org"
 arch=('x86_64' 'i686')
-url="http://nevernote.sourceforge.net/"
 license=('GPL2')
-depends=('tidyhtml' 'opencv' 'hunspell'  'qtwebkit' 'sqlite' 'poppler-qt4' 'qt4')
-makedepends=('git' 'boost')
-provides=($_pkgname)
-conflicts=($_pkgname 'nixnote-beta')
-source=("git://github.com/baumgarr/$_pkgname.git")
+conflicts=("${_pkgname/2/}" "${_pkgname/2/}-beta" "${_pkgname}")
+provides=("${_pkgname}=${pkgver%.r*}" "${_pkgname/2/}=${pkgver%.r*}")
+replaces=('nevernote')
+depends=('poppler-qt5' 'qt5-webkit' 'boost-libs')
+makedepends=('git' 'boost' 'opencv' 'hunspell')
+optdepends=('opencv:   Webcam plugin'
+            'hunspell: Spell check plugin')
+source=("${_pkgname}"::git+https://github.com/baumgarr/nixnote2)
 sha256sums=('SKIP')
-_gitname=$_pkgname
 
 pkgver() {
-  cd "$_gitname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/\./g'
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --tags | sed -r "s/^v//;s/([^-]*-g)/r\1/;s/-/./g"
 }
-prepare() {
-        rm -rf ${srcdir}/build
-        mkdir ${srcdir}/build
-}
+
 build() {
-	cd "${srcdir}/build"
-	#sed -i "s:/usr/lib/x86_64-linux-gnu/qt4/bin/qmake:/usr/lib/qt4/bin/qmake:" ./Makefile
-	#sed -i "s:CONFIG+=debug:CONFIG+=release:" ./Makefile
-	#sed -i "s:QMAKE_CXXFLAGS +=-g -O2:QMAKE_CXXFLAGS +=-Os:" ./NixNote2.pro
-        qmake-qt4 ../${_gitname}/NixNote2.pro
-	make
+  cd "${srcdir}/${_pkgname}"
+
+  qmake ./NixNote2.pro
+  make
+  
+  # Build the plugins
+  cd plugins/hunspell
+  qmake Hunspell.pro
+  cd -
+  
+  cd plugins/webcam
+  qmake WebCam.pro
 }
 
 package() {
-	cd "$srcdir/build"
-	#make DESTDIR="$pkgdir" install
-	mkdir -p $pkgdir/usr/share/nixnote2
-	mkdir -p $pkgdir/usr/bin
-	mkdir -p $pkgdir/usr/share/applications
-	install -m 755 ./nixnote2 $pkgdir/usr/bin/nixnote2
-        cd "${srcdir}/${_gitname}"
-	cp -R ./certs $pkgdir/usr/share/nixnote2
-	cp -R ./help $pkgdir/usr/share/nixnote2
-	cp -R ./images $pkgdir/usr/share/nixnote2
-	cp -R ./qss $pkgdir/usr/share/nixnote2
-	cp -R ./translations $pkgdir/usr/share/nixnote2
-	lrelease-qt4 $pkgdir/usr/share/nixnote2/translations/*.ts
-	rm $pkgdir/usr/share/nixnote2/translations/*.ts
-	cp -R ./java $pkgdir/usr/share/nixnote2
-	cp ./changelog.txt $pkgdir/usr/share/nixnote2
-	cp ./copyright $pkgdir/usr/share/nixnote2
-	cp ./gpl.txt $pkgdir/usr/share/nixnote2
-	cp ./license.html $pkgdir/usr/share/nixnote2
-	cp ./README.txt $pkgdir/usr/share/nixnote2
-	cp ./shortcuts.txt $pkgdir/usr/share/nixnote2
-	cp ./nixnote2.desktop $pkgdir/usr/share/applications
+  cd "${srcdir}/${_pkgname}"
+  make INSTALL_ROOT="${pkgdir}" install
+  
+  mkdir -p "${pkgdir}"/usr/lib/nixnote2/plugins
+  install -m755 plugins/*so "${pkgdir}"/usr/lib/nixnote2/plugins/
+  # Binaries should really be in lib, not share
+  ln -s '../..'/lib/nixnote2/plugins "${pkgdir}"/usr/share/nixnote2/plugins
+  
+  install -m644 theme.ini "${pkgdir}"/usr/share/nixnote2/theme.ini
+  
+  sed -i 's:nevernote:nixnote:g' shortcuts_howto.txt
+  install -Dm644 shortcuts_howto.txt "${pkgdir}"/usr/doc/nixnote2/shortcuts_howto.txt
+  install -Dm644 shortcuts.txt "${pkgdir}"/usr/doc/nixnote2/shortcuts_sample.txt
 }
