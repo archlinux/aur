@@ -26,16 +26,18 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  qmake ./NixNote2.pro
+  qmake PREFIX=/usr ./NixNote2.pro
   make
   
   # Build the plugins
   cd plugins/hunspell
   qmake Hunspell.pro
+  make
   cd -
   
   cd plugins/webcam
   qmake WebCam.pro
+  make
 }
 
 package() {
