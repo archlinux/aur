@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/libretro/fbalpha"
 license=('GPL2')
 depends=()  # retroarch isn't required, but I probably missed something here
-source=("https://github.com/libretro/${pkgname}/archive/v${pkgver}.tar.gz"
+source=("https://github.com/libretro/${_pkgname}/archive/v${pkgver}.tar.gz"
         "fbalpha_libretro.info")
 md5sums=('a29427fb8853fe562d535b7725e663fc'
          '0f390deb382dd241034d48be2f5e9e29')
