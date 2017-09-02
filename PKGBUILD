@@ -3,7 +3,7 @@
 
 pkgname=libva-vdpau-driver-chromium
 pkgver=0.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="VDPAU backend for VA API. (special version for chromium)"
 arch=('i686' 'x86_64')
 url='http://freedesktop.org/wiki/Software/vaapi'
@@ -22,6 +22,7 @@ source=("http://freedesktop.org/software/vaapi/releases/libva-vdpau-driver/libva
         'libva-vdpau-driver-0.7.4-VAEncH264VUIBufferType.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/libva-vdpau-driver-0.7.4-VAEncH264VUIBufferType.patch?h=packages/libva-vdpau-driver'
         'libva-vdpau-driver-0.7.4-fallback-x.patch' # original http://www.snewbury.org.uk/libva-vdpau-driver-0.7.4-fallback-x.patch
         'http://bazaar.launchpad.net/~ubuntu-branches/ubuntu/vivid/vdpau-video/vivid/download/head:/sigfpecrash.patch-20140602223430-b42d97uv6vf2c3p7-1/sigfpe-crash.patch'
+        'implement-vaquerysurfaceattributes.patch'
         )
 sha256sums=('155c1982f0ac3f5435ba20b221bcaa11be212c37db548cd1f2a030ffa17e9bb9'
             '776bfe4c101cdde396d8783029b288c6cd825d0cdbc782ca3d94a5f9ffb4558c'
@@ -29,6 +30,7 @@ sha256sums=('155c1982f0ac3f5435ba20b221bcaa11be212c37db548cd1f2a030ffa17e9bb9'
             '1ae32b8e5cca1717be4a63f09e8c6bd84a3e9b712b933816cdb32bb315dbda98'
             'b923dc60ad49459ca480a56af075d954b2678a8c7f433fd03f1aa49e58cfe838'
             'ef21397b0ed55f170e57fa1afef42b8b491491149af09b151f97ef3cc20ed0b7'
+            'a91e11d2826715b29c2a08036f0e70ed45df7139987ff37c84b5c04c4a9c132f'
             )
 
 prepare() {
@@ -38,6 +40,7 @@ prepare() {
   patch -p1 -i "${srcdir}/libva-vdpau-driver-0.7.4-VAEncH264VUIBufferType.patch"
   patch -p1 -i "${srcdir}/libva-vdpau-driver-0.7.4-fallback-x.patch"
   patch -p1 -i "${srcdir}/sigfpe-crash.patch"
+  patch -p1 -i "${srcdir}/implement-vaquerysurfaceattributes.patch"
 }
 
 build() {
