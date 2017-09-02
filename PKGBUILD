@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=yubioath-desktop
 pkgname=yubico-${_pkgname}
-pkgver=4.1.2
+pkgver=4.1.4
 pkgrel=1
 _tag="${_pkgname}-${pkgver}"
 pkgdesc="Crossplatform graphical user interface to generate one-time passwords."
@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  qmake-qt5
+  qmake-qt5 QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
   make
 }
 
