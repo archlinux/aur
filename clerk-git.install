@@ -1,7 +1,7 @@
 #!/bin/bash
 post_install() {
 echo '
-to use clerk you need to copy /usr/share/doc/clerk/config.example to $HOME/.config/clerk/config
+to use clerk you need to copy /usr/share/doc/clerk/clerk.conf and clerk.tmux to $HOME/.config/clerk/
 and edit it to your needs.
 '
 }
