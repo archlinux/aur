@@ -3,7 +3,7 @@
 # Contributor: Witit Sujjapong <switit@gmail.com>
 
 pkgname=invoiceplane
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Self hosted invoicing for freelancers and small businesses"
 arch=('any')
@@ -11,8 +11,8 @@ url="https://invoiceplane.com/"
 license=('MIT')
 depends=('php')
 #optdepends=('php-mysql: for MySQL database support')
-source=("${pkgname}-${pkgver}::https://github.com/InvoicePlane/InvoicePlane/archive/v${pkgver}.tar.gz")
-sha256sums=('05b60fb13133c96aa16517f378a2284dad777d9b3539b8226f5c4e17e379459f')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/InvoicePlane/InvoicePlane/archive/v${pkgver}.tar.gz")
+sha256sums=('f4edbbb38ef1ee4a6d0c537a6f23d13c107efa0a469163b082d97d65336e157c')
 
 package() {
     install -d "${pkgdir}/usr/share/webapps"
