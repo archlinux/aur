@@ -1,12 +1,12 @@
 pkgbase = wm-switcher-git
 	pkgdesc = Simple GUI to switch window managers in Linux with minimal dependencies, git version
-	pkgver = r8.0d0d053
+	pkgver = r12.48cb09e
 	pkgrel = 1
 	url = https://github.com/xircon/wm-switcher
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = python-pyqt4
+	depends = python-pyqt5
 	optdepends = metacity: Switch to the Metacity window manager
 	optdepends = xfwm4: Switch to the Xfwm window manager
 	optdepends = compiz: Switch to the Compiz window manager

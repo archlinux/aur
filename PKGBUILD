@@ -2,10 +2,10 @@
 
 pkgname='wm-switcher-git'
 pkgdesc='Simple GUI to switch window managers in Linux with minimal dependencies, git version'
-pkgver=r8.0d0d053
+pkgver=r12.48cb09e
 pkgrel=1
 
-depends=('python-pyqt4')
+depends=('python-pyqt5')
 optdepends=('metacity: Switch to the Metacity window manager'
 		'xfwm4: Switch to the Xfwm window manager'
 		'compiz: Switch to the Compiz window manager'
@@ -26,7 +26,7 @@ package() {
 	install -d -m755 "$pkgdir/usr/bin"
 	install -d -m755 "$pkgdir/usr/share/applications"
 	install -d -m755 "$pkgdir/usr/share/doc/wm-switcher"
-	install -m 755 "$srcdir/wm-switcher/wm.py" "$pkgdir/usr/bin/wm-switcher"
+	install -m 755 "$srcdir/wm-switcher/wm-switcher" "$pkgdir/usr/bin/wm-switcher"
 	cp -dr "$srcdir/wm-switcher/wm-switcher.desktop" "$pkgdir/usr/share/applications/"
 	cp -dr "$srcdir/wm-switcher/LICENSE" "$pkgdir/usr/share/doc/wm-switcher/"
 	cp -dr "$srcdir/wm-switcher/README.md" "$pkgdir/usr/share/doc/wm-switcher/"
