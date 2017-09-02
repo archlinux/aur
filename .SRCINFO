@@ -1,0 +1,8 @@
+pkgbase = suru-icon-theme-git
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	source = git+https://github.com/snwh/suru-icon-theme.git
+
+pkgname = suru-icon-theme-git
+
