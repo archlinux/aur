@@ -3,7 +3,7 @@
 # I maintain this on github, feel free to submit a pull request to
 # https://github.com/soker90/paquetes-archinux.git
 pkgname=python-pyexcel-io
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A python library to read and write structured data in csv, zipped csv format and to/from databases"
 arch=('i686' 'x86_64')
