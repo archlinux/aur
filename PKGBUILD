@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=yubioath-desktop
 pkgname=yubico-${_pkgname}-git
-pkgver=690
+pkgver=725
 pkgrel=1
 pkgdesc="Crossplatform graphical user interface to generate one-time passwords."
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ cd "${srcdir}/${_pkgname}"
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  qmake-qt5 -makefile -nocache
+  qmake-qt5 QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
   make
 }
 
@@ -43,6 +43,6 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   make INSTALL_ROOT="${pkgdir}/" install
-  install -D -m0644 resources/yubioath.desktop "${pkgdir}/usr/share/applications/yubioath.desktop"
+  install -D -m0644 resources/yubioath-desktop.desktop "${pkgdir}/usr/share/applications/yubioath-desktop.desktop"
   install -D -m0644 resources/icons/yubioath.png "${pkgdir}/usr/share/pixmaps/yubioath.png"
 }
