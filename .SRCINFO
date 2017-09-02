@@ -1,6 +1,6 @@
 pkgbase = android-studio-beta
 	pkgdesc = The Official Android IDE (Beta branch)
-	pkgver = 3.0.0.11
+	pkgver = 3.0.0.12
 	pkgrel = 1
 	url = http://tools.android.com/
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = android-studio-beta
 	optdepends = gtk2: GTK+ look and feel
 	optdepends = libgl: emulator support
 	options = !strip
-	source = https://dl.google.com/dl/android/studio/ide-zips/3.0.0.11/android-studio-ide-171.4294784-linux.zip
+	source = https://dl.google.com/dl/android/studio/ide-zips/3.0.0.12/android-studio-ide-171.4304935-linux.zip
 	source = android-studio-beta.desktop
-	sha256sums = 2e57914ca71ed50b1357bf055efae756fa149c0b3d309b1ff8395b7e611aa986
+	sha256sums = c5cec81cabb59873b44ac7794e3f59b8c0390eed1f0b5f247ded850a8ad0fe88
 	sha256sums = 368b5287efcfd2b421bdd10e1bdd39a8bffeb84500745c4a88729609c841bcf7
 
 pkgname = android-studio-beta
