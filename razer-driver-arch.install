@@ -1,5 +1,5 @@
 _depmod() {
-  EXTRAMODULES=extramodules-4.11-ARCH
+  EXTRAMODULES=extramodules-4.12-ARCH
   depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
 

@@ -7,39 +7,40 @@ build_kernel_modules=false
 
 # Furthermore it is possible to build the package from a specific git commit by uncommenting the variable "_commit" and setting it to a valid commit. pkgrel should be bumped up too then.
 
+_newname=openrazer
 pkgbase=razer-drivers
 pkgname=('python-razer' 'razer-daemon' 'razer-driver-dkms' 'openrazer-meta')
 if $build_kernel_modules; then
     # For kernel update: Update the two variables and the .install file!
-    _linux_current=4.11
-    _linux_next=4.12
+    _linux_current=4.12
+    _linux_next=4.13
     pkgname+=('razer-driver-arch')
 fi
-pkgver=1.1.15
+pkgver=1.1.16
 #_commit=6ae1f7d55bf10cc6b5cb62a5ce99ff22c43e0701
 pkgrel=1
 pkgdesc="An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux."
 arch=('any')
-url="https://github.com/terrycain/razer-drivers"
+url="https://github.com/openrazer/openrazer"
 license=('GPL2')
 makedepends=('make' 'python' 'python-setuptools')
 if $build_kernel_modules; then
     makedepends+=("linux-headers>=$_linux_current" "linux-headers<$_linux_next" "linux>=$_linux_current" "linux<$_linux_next")
 fi
 if [ -z $_commit ]; then
-  source=("https://github.com/terrycain/razer-drivers/archive/v$pkgver.tar.gz")
+  source=("https://github.com/openrazer/openrazer/archive/v$pkgver.tar.gz")
 else
-  source=("https://github.com/terrycain/razer-drivers/archive/$_commit.tar.gz")
+  source=("https://github.com/openrazer/openrazer/archive/$_commit.tar.gz")
 fi
-sha256sums=('3bf0cd97aeb8dcddfa57064f25c7e40da4500276fc54fd31f0c72c6a25d78d97')
+sha256sums=('dd1d934c3b1a50182fa1fca92ab853c2ad761b94a2925eb6ee71f060f233a00f')
 
 package_python-razer() {
   pkgdesc="Python library for accessing the Razer daemon from Python."
   depends=('razer-daemon' 'python' 'python-dbus' 'python-numpy')
   if [ -z $_commit ]; then
-    cd $srcdir/$pkgbase-$pkgver
+    cd $srcdir/$_newname-$pkgver
   else
-    cd $srcdir/$pkgbase-$_commit
+    cd $srcdir/$_newname-$_commit
   fi
   make DESTDIR=$pkgdir python_library_install
 }
@@ -51,9 +52,9 @@ package_razer-daemon() {
   install=razer-daemon.install
 
   if [ -z $_commit ]; then
-    cd $srcdir/$pkgbase-$pkgver
+    cd $srcdir/$_newname-$pkgver
   else
-    cd $srcdir/$pkgbase-$_commit
+    cd $srcdir/$_newname-$_commit
   fi
   make DESTDIR=$pkgdir daemon_install
 }
@@ -66,9 +67,9 @@ package_razer-driver-dkms() {
   install=razer-driver-dkms.install
   
   if [ -z $_commit ]; then
-    cd $srcdir/$pkgbase-$pkgver
+    cd $srcdir/$_newname-$pkgver
   else
-    cd $srcdir/$pkgbase-$_commit
+    cd $srcdir/$_newname-$_commit
   fi
   make DESTDIR=$pkgdir setup_dkms udev_install
 }
@@ -86,9 +87,9 @@ _extramodules=extramodules-$_linux_current-ARCH
 
 build() {
   if [ -z $_commit ]; then
-    cd $srcdir/$pkgbase-$pkgver
+    cd $srcdir/$_newname-$pkgver
   else
-    cd $srcdir/$pkgbase-$_commit
+    cd $srcdir/$_newname-$_commit
   fi
 
   _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
@@ -105,9 +106,9 @@ package_razer-driver-arch() {
   install=razer-driver-arch.install
 
   if [ -z $_commit ]; then
-    cd $srcdir/$pkgbase-$pkgver
+    cd $srcdir/$_newname-$pkgver
   else
-    cd $srcdir/$pkgbase-$_commit
+    cd $srcdir/$_newname-$_commit
   fi
   install -dm755 $pkgdir/usr/lib/modules/$_extramodules/
   make DESTDIR=$pkgdir MODULEDIR=/usr/lib/modules/$_extramodules/ driver_install_packaging udev_install
