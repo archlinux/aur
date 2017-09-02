@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=remctl
 pkgver=3.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for running commands on remote hosts using Kerberos authentication"
 arch=(i686 x86_64)
 url="http://www.eyrie.org/~eagle/software/remctl/"
@@ -28,7 +28,8 @@ validpgpkeys=('E784364E8DDE7BB370FBD9EAD15D313882004173')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  export REMCTL_PYTHON_VERSIONS=python2
+  export REMCTL_PERL_FLAGS="--installdirs=vendor"
+  export REMCTL_PYTHON_VERSIONS="python2"
   ./configure \
     --prefix=/usr             \
     --sbindir=/usr/bin        \
