@@ -1,7 +1,7 @@
 pkgbase = stuntrally
 	pkgdesc = A 3D racing game based on VDrift and OGRE with track editor
 	pkgver = 2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://stuntrally.tuxfamily.org
 	arch = i686
 	arch = x86_64
@@ -20,10 +20,14 @@ pkgbase = stuntrally
 	source = stuntrally-tracks-2.6.tar.gz::https://github.com/stuntrally/tracks/archive/2.6.tar.gz
 	source = stuntrally-bullet-2.84+.patch
 	source = stuntrally-gcc-6.patch
+	source = stuntrally
+	source = sr-editor
 	sha256sums = 8cc309d27d26f78dcc596440547d68b5e41d02ef830df2d52d38611d45ebbaca
 	sha256sums = 4bce700516a2a178ac04cfbf7df2887ba42225802f5a3e670f770ea01345687b
 	sha256sums = af250a702886de0210516f28c8babc5c20d9cb42eda516cc808a43fa25df6d41
 	sha256sums = 0b66fa790aac2b6f06739ea1c1dad317fbbf6ddc394bef9fe33f2c77a58126d4
+	sha256sums = 7182c73b04df739c938b46104f615e07792715a1cd5bebbc0d11d21dafb87739
+	sha256sums = 9a44db6eaddd3eb53c1da9570dfb95976844595a1ed921fb16edb98a8a24fac8
 
 pkgname = stuntrally
 
