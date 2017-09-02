@@ -2,9 +2,9 @@
 # Author: Steffen Weber <-boenki-gmx-de->
 
 pkgname=otter-browser-weekly
-pkgver=0.9.91.dev190
-_filename=0.9.91-dev190
-_foldername=weekly190
+pkgver=0.9.91.dev191
+_filename=0.9.91-dev191
+_foldername=weekly191
 _productname=otter-browser
 pkgrel=1
 
@@ -12,13 +12,13 @@ pkgdesc="Browser aiming to recreate the best aspects of the classic Opera (12.x)
 arch=('i686' 'x86_64')
 url="http://otter-browser.org"
 license=('GPL3')
-depends=( 'qt5-script>=5.4' 'qt5-webkit' 'qt5-multimedia>=5.4' 'qt5-xmlpatterns>=5.4')
-makedepends=('cmake' 'qt5-declarative>=5.4')
+depends=( 'qt5-script>=5.4' 'qt5-webkit' 'qt5-multimedia>=5.4' 'qt5-xmlpatterns>=5.4' 'qt5-svg>=5.4')
+makedepends=('cmake' 'qt5-declarative>=5.4' 'qt5-tools>=5.4')
 optdepends=('hunspell>=1.3.0: for spell checking'
             'qt5-webengine: for experimental backend using the Chromium browser project')
 conflicts=('otter-browser-git' 'otter-browser')
 source=("${_productname}-$pkgver.tar.bz2::http://netcologne.dl.sourceforge.net/project/${_productname}/${_productname}-${_foldername}/${_productname}-${_filename}.tar.bz2")
-md5sums=('d0f62b69b9c524aba9ea106ff65c7681')
+md5sums=('2643aca13c3a623fe5b460ed6d3b5215')
 
 
 build() {
