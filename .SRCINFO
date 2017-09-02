@@ -1,11 +1,11 @@
 pkgbase = systemd-system-update-pacman
 	pkgdesc = Scripts for scheduling and performing system updates with pacman using systemd's system update mechanism
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/FraGag/systemd-system-update-pacman
 	arch = any
 	license = MIT
-	source = systemd-system-update-pacman-1.tar.gz::https://github.com/FraGag/systemd-system-update-pacman/archive/v1.tar.gz
+	source = systemd-system-update-pacman-2.tar.gz::https://github.com/FraGag/systemd-system-update-pacman/archive/v2.tar.gz
 	sha256sums = SKIP
 
 pkgname = systemd-system-update-pacman
