@@ -21,16 +21,18 @@ sha256sums=('15016caf90bfe09d44fcac4fa4039756eb7efbaf8469505373577f846ee67dcc')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  qmake ./NixNote2.pro
+  qmake PREFIX=/usr ./NixNote2.pro
   make
   
   # Build the plugins
   cd plugins/hunspell
   qmake Hunspell.pro
+  make
   cd -
   
   cd plugins/webcam
   qmake WebCam.pro
+  make
 }
 
 package() {
