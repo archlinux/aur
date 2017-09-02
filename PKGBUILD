@@ -13,7 +13,7 @@
 _use_tentative_patches=
 
 ### Use mailing-list patches; many thanks to Piotr "sir_lucjan" Gorski
-# ML1 - [PATCH V3 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150376523128516&w=2
+# ML1 - [PATCH V4 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150436546704854&w=2
 _use_ml_patches=
 
 # Running with a 1000 HZ tick rate
@@ -68,7 +68,7 @@ pkgbase=linux-bfq-mq-git
 _pkgver=4.13-rc7
 _srcname=bfq-mq
 pkgver=4.13rc7.9d98de6ca9f3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -76,7 +76,7 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
-_mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance-V3"
+_mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance-V4"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 source=(# bfq-mq repository
         'git+https://github.com/Algodev-github/bfq-mq'
@@ -112,20 +112,20 @@ sha256sums=(# bfq-mq repository
             # tentative patches
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             # mailing-list (ML1) patches
-            '742b7523dfb6f8a9b47b79e550c0bd0bf65291b16f1c0e94f94f05a52764da13'
-            'b296b09e9e1b0f3c73b904827e91676d8893e0b4170f83a7600628b1afcc8812'
-            '87c37b589a856cf44fb11408e0772a4a74b892ab74e61df2f560736a179a5321'
-            'b49a08b85ad5b007bb9c7c27d2552a8de5e749c82e33ed4c6380f592552a9d1c'
-            'd5459bc9d846c3884f838f1ef03d78f96fc4a6df685c070019d18cbeedb94ecc'
-            '069a31649804844eec32dd0c292fd6e2a090c74bbf31ed2e576755ed34269ae2'
-            'e069e9cc87e2a1a1c5a08d95a851c921628a2b6dd6e631dd71ab2a70d7a3db2e'
-            '7fb5f021018aaa56ae3048fe677d5944ba9dc61ff7324e8e8ab974774e025528'
-            '3edd46a1148d2dfb9a7071d2ad256f336cd038a899aa666435a7da41da3f662b'
-            'd981733e52c588f785bcb927af47a2638604ed9d0b2d66f69b8ba762d79c045a'
-            '9529a6daabe0199fa88c1642913dc84b2d1df0f7f96fcd6799c5e6965c09071c'
-            '2559145eaadfcbffff5818c0fcab477e65e211719b8947bc9595bb58a304e8c3'
-            '52b4dec7bf38f1a065c27e83a952f4054acd36965b0dd4f03dfa02bd45de8597'
-            'd40128eb9d8a497830bf3998b38b13e82dee97d0e04358e1d9ce4aaf52faff5f'
+            'dbbcfc44c676f86e98e9a25ff0d2145f8b909f4a8bf7e25029bf24f315cbc4bb'
+            '50092d4e4e408937fa9a7a374b27144854ed676dac6ba48a9d6d14827703e15b'
+            '1f9a234069b487c6372517f4b29f75bb66e7c5a72e963dad8b8985d7bff7f38f'
+            '2ea4aedb93ad21d9832f96e0c13e42415060ebde1642c1a6de2164e8c9b61841'
+            '9e0c964332ba735c4c03b0b12b85ea120bf72236f06bf90e2840f6b4bcb62596'
+            '7862c2ea18f4fd61186c34f4a24df0d0b3639fe33c0be4fec0e1735a4f4f02ab'
+            '6926d21e260e058b99c7fae26aa63619b1eefa00fb108e0f0ee0ac8d0e2a31f4'
+            '0c4ab9933063ee8d4e1ed55fbff9e44f16a721c035d498a1cb778aa91799e01b'
+            '4d78f4e4c42a33fa3602bb3758d15bb3fe572ffd7794f6241449a2b0c96431e1'
+            '27bf68a36f635ed13c8ab613d40e72043284754a92a026eabb5ae589414faaa5'
+            'f37476acbe136e0ad5e2bf0be199678f4263d3e5e33bec1d1d8b8f19f5a0dfec'
+            '00346abf88880eaa8b200705b5a63e322df518eb2129e34ca45e1d90c4742037'
+            'bbb9dfdc98f5cdeaf1113d9c24cfafb95bc764af76d56dd57d964a16d81986b7'
+            '4f7bbc6d983ab947474f5ab44194328321def86ab3f8b095f4def198d5604d08'
             # the main kernel config files
             '1305eb57af545c4614fac6a59c9c5fa5a5760df4c03bedf2e00c098f2e496726'
             '6d011079229296baec7a0841110ed995be0921e49cd0093ec0edd442e473e463'
@@ -153,7 +153,7 @@ prepare() {
   fi
 
   ### Patches from mailing-list
-  # ML1 - [PATCH V3 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150376523128516&w=2
+  # ML1 - [PATCH V4 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150436546704854&w=2
   if [ -n "$_use_ml_patches" ]; then
     msg "Apply mailing-list patches"
     for p in "${srcdir}"/ML*.patch; do
