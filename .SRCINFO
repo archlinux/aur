@@ -15,3 +15,13 @@ pkgbase = suru-icon-theme-git
 
 pkgname = suru-icon-theme-git
 
+pkgbase = suru-icon-theme-git
+	pkgdesc = Suru is a icon theme by Sam Hewitt, whose design is based upon and around the original Suru icon guidelines for Ubuntu mobile applications, continued by a third party
+	pkgver = r33.8672ace
+	pkgrel = 2
+	arch = any
+	source = git+https://github.com/snwh/suru-icon-theme.git
+	md5sums = SKIP
+
+pkgname = suru-icon-theme-git
+

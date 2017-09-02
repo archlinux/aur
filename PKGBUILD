@@ -4,6 +4,8 @@ pkgname="$_pkgbase-git"
 arch=('any')
 pkgver=r33.8672ace
 pkgrel=2
+pkgdesc='Suru is a icon theme by Sam Hewitt, whose design is based upon and around
+the original Suru icon guidelines for Ubuntu mobile applications, continued by a third party'
 source=("git+https://github.com/$_git/$_pkgbase.git")
 md5sums=('SKIP')
 
