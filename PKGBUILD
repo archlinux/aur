@@ -2,7 +2,7 @@
 
 pkgname=archur-git
 _pkgname=archur
-pkgver=r12.ba5c048
+pkgver=r13.dac0b59
 pkgrel=1
 pkgdesc="Arch linux wallpaper generator"
 arch=("any")
@@ -18,9 +18,11 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$_pkgname/archur.py" "$pkgdir/usr/bin/archur"
-  install -Dm644 "$srcdir/$_pkgname/text.txt" "$pkgdir/usr/share/archur/text.txt"
-  install -Dm644 "$srcdir/$_pkgname/assets/logo.png" "$pkgdir/usr/share/archur/assets/logo.png"
+  cd "$_pkgname"
+  install -Dm755 archur.py "$pkgdir/usr/bin/archur"
+  install -Dm644 text.txt "$pkgdir/usr/share/archur/text.txt"
+  install -Dm644 assets/logo.png "$pkgdir/usr/share/archur/assets/logo.png"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
