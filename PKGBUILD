@@ -7,7 +7,7 @@ pkgname=zathura-pdf-mupdf
 pkgver=0.3.1
 pkgrel=3
 
-pkgdesc="PDF support for Zathura (MuPDF backend)"
+pkgdesc="PDF support for Zathura (MuPDF backend) (Supports PDF, ePub, and OpenXPS)"
 url="https://pwmt.org/projects/zathura-pdf-mupdf/"
 arch=('i686' 'x86_64')
 license=('zlib')
