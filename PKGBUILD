@@ -6,7 +6,7 @@
 _pkgname=slic3r-prusa3d
 pkgname=${_pkgname}-git
 pkgver=1.37.0.r39.g247070cd
-pkgrel=1
+pkgrel=2
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://www.prusa3d.com/"
@@ -15,7 +15,7 @@ depends=('boost-libs' 'perl' 'perl-class-accessor' 'perl-libwww' 'perl-encode-lo
          'perl-moo' 'perl-opengl' 'perl-wx-glcanvas')
 makedepends=('boost' 'git' 'perl-alien-wxwidgets' 'perl-devel-checklib' 'perl-extutils-cppguess'
              'perl-extutils-typemaps-default' 'perl-module-build-withxspp')
-checkdepends=('perl-io-stringy')
+checkdepends=('perl-io-stringy' 'perl-local-lib')
 optdepends=('perl-net-dbus: notifications support via any dbus-based notifier'
             'perl-xml-sax-expatxs: make AMF parsing faster'
             'perl-xml-sax: Additive Manufacturing File Format (AMF) support'
@@ -26,18 +26,18 @@ source=("git+https://github.com/prusa3d/Slic3r.git"
         "Move-Slic3r-data-to-usr-share-slic3r.patch"
         'slic3r.desktop')
 md5sums=('SKIP'
-         '924c0dd2afead3b5896c8e8bcc465d60'
+         'a8f234adc154ad4c59ab03f8acc78eed'
          '1941c1ede2f03774ffb77f68a7c33572')
 
-pkgver() {
-  cd "${srcdir}/Slic3r"
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^version_//'
-}
-        
 prepare() {
   cd "${srcdir}/Slic3r"
   patch -p1 -i "$srcdir/Move-Slic3r-data-to-usr-share-slic3r.patch"
   mkdir -p build
+}
+
+pkgver() {
+  cd "${srcdir}/Slic3r"
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^version_//'
 }
 
 build() {
@@ -47,12 +47,14 @@ build() {
   sed -i "s/define SLIC3R_VERSION .*/define SLIC3R_VERSION \"$pkgver\"/" xs/src/libslic3r/libslic3r.h
   
   cd build
-  unset CFLAGS
-  unset LDFLAGS
-  unset CXXFLAGS
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         ..
   make
+}
+
+check() {
+  cd "${srcdir}/Slic3r/build"
+  ctest -V
 }
 
 package () {
