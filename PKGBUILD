@@ -1,10 +1,9 @@
 # Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
-pkgbase=freedoko
-pkgname=('freedoko' 'freedoko-docs')
+pkgname=freedoko
 pkgver=0.7.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Free implementation of the card game Doppelkopf"
 arch=('i686' 'x86_64')
 url="http://free-doko.sourceforge.net/en/FreeDoko.html"
@@ -32,23 +31,11 @@ build() {
   make documentation
 }
 
-package_freedoko() {
-  optdepends=('freedoko-docs: HTML manual')
-
+package() {
   cd FreeDoko_$pkgver
 
   make DESTDIR="$pkgdir" install
   install -Dm644 bin/FreeDoko.desktop "$pkgdir"/usr/share/applications/freedoko.desktop
-  rm "$pkgdir"/usr/share/doc/freedoko/{de/Windows,de/SuSE,en/Windows,hpux*}
-}
-
-package_freedoko-docs() {
-  pkgdesc="HTML manual for FreeDoko"
-  arch=('any')
-  depends=()
-
-  cd FreeDoko_$pkgver
-
-  install -d "$pkgdir"/usr/share/doc/freedoko
   tar -c --exclude={*.sh,Makefile} manual | tar -x -C "$pkgdir"/usr/share/doc/freedoko
+  rm "$pkgdir"/usr/share/doc/freedoko/{de/Windows,de/SuSE,en/Windows,hpux*}
 }
