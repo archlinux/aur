@@ -1,8 +1,8 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet
-pkgver=10.8.3
-pkgrel=3
+pkgver=10.8.4
+pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('i686' 'x86_64')
 url="https://ddnet.tw"
@@ -14,12 +14,10 @@ optdepends=('ddnet-skins: more skins for your tee'
 provides=('teeworlds-ddnet')
 conflicts=('teeworlds-ddnet')
 replaces=('teeworlds-ddnet')
-source=("$url/downloads/DDNet-$pkgver.tar.xz"
-        'fix-binary-dirs.patch')
+source=("$url/downloads/DDNet-$pkgver.tar.xz")
 source_i686=("$url/downloads/GraphicsTools-linux_x86.tar.gz")
 source_x86_64=("$url/downloads/GraphicsTools-linux_x86_64.tar.gz")
-md5sums=('25ea74b6fd56876a32763b07475b90b1'
-         '4600ce7730411668204d4394f8df651a')
+md5sums=('5577e86d636b79a9594621857b23a379')
 md5sums_i686=('566354c3b4510b032af7d891381ee711')
 md5sums_x86_64=('fc32ca52ae9be02f68b6c257153dbd37')
 
@@ -36,9 +34,6 @@ prepare() {
     gendesk -f -n --pkgname "DDNet-Server" --pkgdesc "DDNet Server"        \
         --name 'DDNet Server' --categories 'Game;ArcadeGame' --terminal=true \
         --exec='sh -c "cd /usr/share/ddnet/data && DDNet-Server"'
-    
-    cd DDNet-$pkgver
-    patch -p1 -i "$srcdir/fix-binary-dirs.patch"
 }
 
 build() {
