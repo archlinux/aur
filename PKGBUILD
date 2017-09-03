@@ -3,7 +3,7 @@
 pkgname='perl-module-scandeps'
 _pkgname='Module-ScanDeps'
 pkgver='1.24'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Scan file prerequisites"
 arch=('any')
 license=('PerlArtistic' 'GPL')
