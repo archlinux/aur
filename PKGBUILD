@@ -8,7 +8,7 @@ url="https://github.com/neurobin/pacget"
 license=('BSD')
 depends=('bash' 'pacaur')
 source=("https://github.com/neurobin/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('622c78b6b10f5fdeb94d3b82610ab7e1')
+md5sums=('5845a71e41398e1f12913fb6a0acbe14')
 validpgpkeys=('3331 6137 5B22 27AC F7AA  6351 A4A2 CA5B 6BDA A871')
 
 package() {
