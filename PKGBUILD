@@ -23,7 +23,7 @@ _protobuf_version='3.1.0' # commit 'a428e42072765993ff674fda72863c9f1aa2d268' is
 
 pkgname=caffe2
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -42,8 +42,8 @@ depends=(
             'python2-requests' 'python2-scipy' 'python2-setuptools' 'python2-six'
             'python2-tornado' 'python2-gflags' 'python2-pyzmq'
     # AUR:
-        # not required but enabled in build:
-            'nccl'
+        # not required:
+            # 'nccl'
         # python2:
             'python2-nvd3' 'python2-scikit-image' 'python2-glog' 'python2-leveldb'
             'python2-lmdb'
@@ -195,7 +195,7 @@ build() {
         -DUSE_LITE_PROTO:BOOL='OFF' \
         -DUSE_LMDB:BOOL='ON' \
         -DUSE_MPI:BOOL='ON' \
-        -DUSE_NCCL:BOOL='ON' \
+        -DUSE_NCCL:BOOL='OFF' \
         -DUSE_NERVANA_GPU:BOOL='ON' \
         -DUSE_NNPACK:BOOL='ON' \
         -DUSE_OBSERVERS:BOOL='ON' \
