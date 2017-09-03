@@ -1,7 +1,7 @@
 # Maintainer: peterix@gmail.com
 
 pkgname=multimc-git
-pkgver=0.5.1.r96.gd70c783d
+pkgver=0.5.1.r143.gb8adbb9b
 pkgrel=1
 pkgdesc="Free, open source launcher and instance manager for Minecraft."
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ build() {
         -DMultiMC_UPDATER=OFF \
         -DMultiMC_LAYOUT=lin-system \
         -DMultiMC_NOTIFICATION_URL:STRING=http://files.multimc.org/notifications.json \
-        -DMultiMC_PASTE_EE_API_KEY:STRING=c548e342e0bd312f627930fb6e3be37c \
+        -DMultiMC_PASTE_EE_API_KEY:STRING=utLvciUouSURFzfjPxLBf5W4ISsUX4pwBDF7N1AfZ \
         ..
   make
   make test
