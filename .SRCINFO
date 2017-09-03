@@ -1,0 +1,36 @@
+pkgbase = test_patch_ca0132
+	pkgdesc = Test-patch to use generic parser for SB Z-Series
+	pkgver = 20170903
+	pkgrel = 1
+	url = https://github.com/voron00/linux
+	arch = any
+	license = GPL2
+	depends = dkms
+	optdepends = linux-headers: Build the module against Arch kernel
+	optdepends = linux-lts-headers: Build the module against LTS Arch kernel
+	conflicts = patch_ca0132
+	source = https://raw.githubusercontent.com/torvalds/linux/v4.12/sound/pci/hda/patch_ca0132.c
+	source = https://raw.githubusercontent.com/torvalds/linux/v4.12/sound/pci/hda/ca0132_regs.h
+	source = https://raw.githubusercontent.com/torvalds/linux/v4.12/sound/pci/hda/hda_auto_parser.h
+	source = https://raw.githubusercontent.com/torvalds/linux/v4.12/sound/pci/hda/hda_codec.h
+	source = https://raw.githubusercontent.com/torvalds/linux/v4.12/sound/pci/hda/hda_generic.h
+	source = https://raw.githubusercontent.com/torvalds/linux/v4.12/sound/pci/hda/hda_jack.h
+	source = https://raw.githubusercontent.com/torvalds/linux/v4.12/sound/pci/hda/hda_local.h
+	source = Makefile
+	source = patch_ca0132.patch
+	source = patch-ca0132.dkms
+	source = ca0132.modprobe
+	sha512sums = b1993e64c4bb1f8b5fb5105d06633338dfecff366f2681e25850ea1b1989357a990ece9fb68bd11406ccc47117cc34dcf2cb9d34fcd724f5ce9e4141ae1faa52
+	sha512sums = 284c5241969af056c536edc228493c014a6c0c800e95c4d340a182908a6adb0b493dc4a87795a6fc475c5a4fd4099cf322d67232bcac7df3e62f01c4224dad2e
+	sha512sums = 1ab528fcdcb56813bf1357783338f0be5093ceb13b3fc68791f815f4bf16dd903b8f9cc4985426016df077b5b5c572c6074f715c5d7c6eb8526c987969507c31
+	sha512sums = d4e4712a2c156a2811e05699295ace665022b2b253926dcc69210135e8ac8cf12f0fc3a96408c046233f28f887f5b9aefe51d4a53ac5136a12aba91f05f231c4
+	sha512sums = bd1de8a940fd8d854e39648554916ca54e806cd8b05ea20ce612c0c27e471e33c41f40f0da699c75f9ac779bda7803a66dbb4a50e516bc6c56ac6b7484426ceb
+	sha512sums = a6509d8ff07972d07a98701b033b916c4e445154e394cd2ce0f28b9e95f36864f2d58255526cd95ae81836c75f1a07532723b780094ff550fae3e3a9a2abea85
+	sha512sums = d6c291634069c90572d017c5ab7dca957b1c1970bef362a12810d6a04b825b0a2fcabcf4656f1ae5e33870792ef1da408b856c01ca4a6eeabb56e85b7d1b158f
+	sha512sums = e23734e5cf699e671cc58c284f48677d90326bfc9a3aa31dba45d292afe8f8796b1760195d8fb552bb5544b3fa65c689615e5f266df8c6d0e3394e1727c93e07
+	sha512sums = d354e55d698c31f4937befd7ab2613d05a84ddb5ca054943778203e56519f1af16a229fc12ae8d0dff566f4569f6b3be1f984ca7a5b926fcbe13813e8a9f945b
+	sha512sums = 1c31cb9a05e62b6ff35d3bed34c42a297ce24e4dd596ec9426f6055d3eda1d1c3bf51d346630205367f00c5286708a08ad40a06ef2fa72b019d5f42d94ab10b8
+	sha512sums = cd3affb6756ee71fbb6b41734aea0cc712921054e1eba871b1a106aca19b412dc084f680b04ae27d9e7a35f008f74b3c0374736e010c71f849bdb7ba44ba3652
+
+pkgname = test_patch_ca0132
+
