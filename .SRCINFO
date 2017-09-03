@@ -1,0 +1,17 @@
+pkgbase = perl-device-smbus
+	pkgdesc = This packages the SMBus distribution, containing the Device::SMBus module!
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://metacpan.org/release/Device-SMBus
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = i2c-tools
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHANTANU/Device-SMBus-1.15.tar.gz
+	md5sums = 01138616deda09b8897dbc92a24a4374
+
+pkgname = perl-device-smbus
+
