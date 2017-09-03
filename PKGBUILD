@@ -4,7 +4,7 @@
 # https://github.com/FabioLolix
 
 pkgname=phoronix-test-suite-milestone
-pkgver=7.4.0m1
+pkgver=7.4.0m3
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux, milestone version"
 arch=('any')
@@ -12,12 +12,13 @@ license=('GPL3')
 url="http://www.phoronix-test-suite.com/"
 depends=('php')
 optdepends=('php-gtk'
-	        'php-gd')
+            'php-gd'
+            'gcc-fortran')
 provides=('phoronix-test-suite')
 conflicts=('phoronix-test-suite' 'phoronix-test-suite-milestone')
 install=${pkgname}.install
 source=(http://www.phoronix-test-suite.com/releases/development/phoronix-test-suite-$pkgver.tar.gz)
-sha256sums=('9a06c832c11f38f5fe97430156c48bde99acbc304b3562e36a02aa76029627b7')
+sha256sums=('2463058bbf79544c8c6b88e974af2f3a50561cf7e6a1c8659461d9a09dd0b5d8')
 
 package() {
   cd "$srcdir"/phoronix-test-suite
