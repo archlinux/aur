@@ -1,6 +1,6 @@
 pkgname=perl-file-share
 pkgver=0.25
-pkgrel=2
+pkgrel=3
 pkgdesc="Extend File::ShareDir to Local Libraries"
 arch=('any')
 license=('PerlArtistic' 'GPL')
