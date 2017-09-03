@@ -8,8 +8,8 @@ _srcname=$pkgbase
 _kernel_rel=4.12
 _branch=amd-staging-${_kernel_rel}
 _kernelname=${pkgbase#linux}
-pkgver=4.12.r1375.g2a69a4b35621
-pkgrel=4
+pkgver=4.12.680794.2a69a4b35621
+pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
@@ -30,7 +30,8 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${_srcname}"
 
-  git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+  # git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+  echo ${_kernel_rel}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
