@@ -5,20 +5,20 @@
 
 pkgname=sparkleshare-git
 _gitname=SparkleShare
-pkgver=1.4.r178.g686fde2
+pkgver=2.0.beta.1.r5.g8c033d26
 pkgrel=1
 pkgdesc="An open-source clone of Dropbox, written in C-sharp"
 arch=('i686' 'x86_64')
 url="http://www.sparkleshare.org/"
 license=('LGPL')
-depends=('mono' 'gtk-sharp-git' 'intltool'
-'webkit-sharp' 'notify-sharp-3' 'desktop-file-utils' 'webkitgtk-sharp'
+depends=('mono' 'gtk-sharp-3' 'intltool'
+'webkit2-sharp' 'notify-sharp-3' 'desktop-file-utils' 'webkitgtk-sharp-git'
 'soup-sharp' 'dbus-sharp')
 makedepends=('git')
 options=('!libtool')
 provides=('sparkleshare')
 conflicts=('sparkleshare')
-source=("$_gitname"::'https://github.com/hbons/SparkleShare.git')
+source=("$_gitname"::'git+https://github.com/hbons/SparkleShare.git')
 md5sums=('SKIP')
 
 pkgver() {
