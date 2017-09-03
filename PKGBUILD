@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Étienne Deparis <etienne@depar.is>
 # Maintainer: James Rayner <james@archlinux.org>
 # Maintainer: Alexander Fehr <pizzapunk gmail com>
@@ -7,9 +6,8 @@
 
 pkgname=nitrogen-git
 _gitname=nitrogen
-pkgver=r294.7747ef9
+pkgver=1.6.1r306.d48ccb8
 pkgrel=1
-epoch=1
 pkgdesc="Background browser and setter for X windows - git version"
 arch=('i686' 'x86_64')
 url="http://projects.l3ib.org/nitrogen/"
@@ -17,18 +15,22 @@ license=('GPL')
 makedepends=('git')
 depends=('gtkmm' 'hicolor-icon-theme' 'librsvg')
 conflicts=('nitrogen')
-replaces=('nitrogen')
 
-source=("${_gitname}::git+https://github.com/l3ib/nitrogen.git"
-        'nitrogen.desktop')
-md5sums=('SKIP'
-         'a4b70efdc49a17b5a5632d6c2deb8566')
+source=("${_gitname}::git+https://github.com/l3ib/nitrogen.git")
+md5sums=('SKIP')
 
 options=(!emptydirs)
 
 pkgver() {
   cd "$srcdir/${_gitname}/"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  curver=$(sed -n 's/^AC_INIT(\[nitrogen\],\[\([0-9.]*\)\],\[daf@minuslab.net\])$/\1/p' configure.ac)
+  printf "%sr%s.%s" "$curver" "$(git rev-list --count HEAD)" \
+         "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/${_gitname}/data"
+  sed -i 's/^Categories=Utility;GTK;DesktopSettings;$/Categories=Settings;DesktopSettings;GTK;/' nitrogen.desktop.in
 }
 
 build() {
@@ -41,5 +43,5 @@ build() {
 package() {
   cd "$srcdir/${_gitname}"
   make DESTDIR="$pkgdir/" install
-  install -D -m644 "${srcdir}/nitrogen.desktop" "${pkgdir}/usr/share/applications/nitrogen.desktop"
+  install -D -m644 data/nitrogen.desktop "${pkgdir}/usr/share/applications/nitrogen.desktop"
 }
