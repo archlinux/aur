@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-o2em-git
-pkgver=73.86b050a
+pkgver=75.8169c66
 pkgrel=1
 pkgdesc="libretro port of O2EM, an Odyssey 2 / VideoPac emulator"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
