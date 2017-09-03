@@ -2,7 +2,7 @@
 
 pkgname=ruby-progress
 gemname=progress
-pkgver=3.2.2
+pkgver=3.3.1
 pkgrel=1
 pkgdesc='Show progress of long running tasks.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ruby')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${gemname}-${pkgver}.gem")
 noextract=("${gemname}-${pkgver}.gem")
-sha512sums=('37e221cb69ce454764b0dffde98567e700703ee894ca0ed2e3b216353fcbff07b73e817a50ae1c23661dfacdd7414d5313ac04492eff32b206e4e25a72c6ad55')
+sha512sums=('0e88f6262e32a6a0286bc80cd12ce88f40052aeb64e70515e1a7311d0e197dd101a9f3c941ee0a7b08f3a14f4e9740ccba43c828e515e5935bc76d1c7c627dfc')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
