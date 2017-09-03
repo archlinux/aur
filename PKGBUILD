@@ -5,7 +5,7 @@
 
 pkgname=hyperlightdrifter
 _gamename=HyperLightDrifter
-_pkgver=2016-05-20
+_pkgver=2017-06-01
 pkgver=${_pkgver//-/.}
 pkgrel=1
 _filename="HyperLightDrifter-DRMFree-Linux-${_pkgver}.sh"
@@ -19,7 +19,7 @@ makedepends=('unzip')
 source=("local://${_filename}"
         "hyperlightdrifter.desktop")
 noextract=("${_filename}")
-md5sums=('a096b029dad3d57c17288a992a1793ae'
+md5sums=('c85ab8e098d686adb93693055a20c152'
          '060673538dadaf471bef5e83475ddf4e')
 
 prepare() {
