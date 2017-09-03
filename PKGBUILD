@@ -3,7 +3,7 @@
 _perlmod=MooX-late
 pkgname=perl-moox-late
 pkgver=0.015
-pkgrel=3
+pkgrel=5
 pkgdesc="MooX::late - easily translate Moose code to Moo"
 arch=('any')
 url="http://search.cpan.org/~tobyink/MooX-late/"
