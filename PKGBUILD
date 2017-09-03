@@ -1,17 +1,18 @@
 # Maintainer: Lex Black <autumn-wind at web dot de>
 # Contributor: Dominik Pieczyński <dominik.pieczynski@gmail.com>
 
-pkgname=python-picamera
-pkgver=1.10
+_pkgname=picamera
+pkgname=python-${_pkgname}
+pkgver=1.13
 pkgrel=1
-pkgdesc="A pure Python interface to the Raspberry Pi camera module"
+pkgdesc="pure Python interface to the Raspberry Pi camera module"
 arch=('any')
-url="https://pypi.python.org/pypi/picamera/1.10"
+url="https://pypi.python.org/pypi/picamera/"
 license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
-source=(https://pypi.python.org/packages/source/p/picamera/picamera-$pkgver.tar.gz)
-sha256sums=('f0dfc3a6983f63da2ff7cbefeedcacb8c98cc41ad651e55148e8f798940ca73d')
+source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
+sha256sums=('890815aa01e4d855a6a95dd3ad0953b872a6b954982106407df0c5a31a163e50')
 
 package() {
   cd "$srcdir/picamera-$pkgver"
