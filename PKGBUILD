@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.1.r120.g898ba8bf
+pkgver=0.8.1.r218.gf2a14f34
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
@@ -40,7 +40,6 @@ source=(
     # git submodules:
         'submodule-pybind11'::'git+https://github.com/pybind/pybind11.git'
         'submodule-nccl'::'git+https://github.com/nvidia/nccl.git'
-        'submodule-cnmem'::'git+https://github.com/nvidia/cnmem.git'
         'submodule-cub'::'git+https://github.com/NVlabs/cub.git'
         'submodule-eigen'::'git+https://github.com/RLovelett/eigen.git'
         'submodule-googletest'::'git+https://github.com/google/googletest.git'
@@ -72,13 +71,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-)
+            'SKIP')
 
 prepare() {
     cd "$pkgname"
-    local _submodule_list="pybind11 nccl cnmem cub eigen googletest nervanagpu benchmark \
+    local _submodule_list="pybind11 nccl cub eigen googletest nervanagpu benchmark \
                            protobuf android-cmake ios-cmake NNPACK gloo \
                            NNPACK_deps/pthreadpool NNPACK_deps/FXdiv NNPACK_deps/FP16 \
                            NNPACK_deps/psimd"
