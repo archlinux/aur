@@ -1,7 +1,7 @@
 # Maintainer: Maxim Polishchuck <mpolishchuck[at]gmail[dot]com>
 _pkgname=ovito
 pkgname=ovito-opt
-pkgver=2.8.2
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="A scientific visualization and analysis software for atomistic simulation data."
 url="http://www.ovito.org"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python' 'qt5-svg' 'ffmpeg2.8')
 conflicts=('ovito' 'ovito-git')
 md5sums=(
-    'bc775ce57dc58b463b5f2b39655e6101'
+    '65f8eb93e96145c556e9b04499f924b0'
     '2b86c33c121e442ee443168e6414cc2f'
     'a7e384fcc9ed17cf85205945336a5f49'
 )
@@ -24,8 +24,6 @@ package() {
   cd ${_pkgname}-${pkgver}-$CARCH
   install -d ${pkgdir}/opt/ovito
   cp -dpr --no-preserve=ownership ./* ${pkgdir}/opt/ovito
-  # fix libGL library conflict errors
-  rm -r ${pkgdir}/opt/ovito/lib/ovito/libstdc++.so.{6,6.0.21}
 
   install -Dm755 ${srcdir}/launcher-ovito.sh ${pkgdir}/usr/bin/ovito
   install -Dm755 ${srcdir}/launcher-ovitos.sh ${pkgdir}/usr/bin/ovitos
