@@ -5,7 +5,7 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=0.0.99.r366.bc27fa9
+pkgver=0.1.r417.a085f13
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -22,10 +22,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-
-  local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
-
-  printf "$v_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
@@ -36,8 +36,6 @@ prepare() {
       -i "$srcdir/$_pkgname/data/entrance.conf.in"
   rm -rf build
   mkdir "$srcdir/build"
-  cd "$srcdir/$_pkgname"
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -58,8 +56,6 @@ package() {
 
  DESTDIR="$pkgdir" ninja install
 cd "$srcdir/$_pkgname"
-# install correct PAM file
-  install -Dm644 "data/entrance.arch" "$pkgdir/etc/pam.d/entrance"
 # install text files
   install -d "$pkgdir/usr/share/doc/$_pkgname/"
   install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS ChangeLog NEWS README
