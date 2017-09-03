@@ -1,7 +1,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet
-pkgver=10.8.4
+pkgver=10.8.5
 pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ replaces=('teeworlds-ddnet')
 source=("$url/downloads/DDNet-$pkgver.tar.xz")
 source_i686=("$url/downloads/GraphicsTools-linux_x86.tar.gz")
 source_x86_64=("$url/downloads/GraphicsTools-linux_x86_64.tar.gz")
-md5sums=('5577e86d636b79a9594621857b23a379')
+md5sums=('e53226c083105dc19069a76bda46cb0b')
 md5sums_i686=('566354c3b4510b032af7d891381ee711')
 md5sums_x86_64=('fc32ca52ae9be02f68b6c257153dbd37')
 
