@@ -3,9 +3,12 @@ Description=Domoticz Daemon
 After=network.target
 
 [Service]
-Environment=LD_PRELOAD=/usr/lib/libcurl.so.3
 User=http
-ExecStart=/opt/domoticz/domoticz -www 8080 -daemon
+Group=http
+PermissionsStartOnly=true
+ExecStartPre=/usr/bin/install -d -m 0700 -o http -g http /var/run/domoticz
+ExecStart=/opt/domoticz/domoticz -www 8080 -pidfile /var/run/domoticz/domoticz.pid
+PIDFile=/var/run/domoticz/domoticz.pid
 WorkingDirectory=/opt/domoticz
 RestartSec=5
 Restart=on-failure

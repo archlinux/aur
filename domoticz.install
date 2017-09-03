@@ -3,4 +3,3 @@ post_install() {
   gpasswd -a http uucp
   chown -R http:http "${pkgdir}/opt/domoticz"
 }
-
