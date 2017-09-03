@@ -1,0 +1,27 @@
+pkgbase = libsoup-gnome
+	pkgdesc = Gnome HTTP Library with gnome integration enabled
+	pkgver = 2.59.90.1
+	pkgrel = 1
+	url = http://live.gnome.org/LibSoup
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = gtk-doc
+	makedepends = gnome-common
+	makedepends = vala
+	makedepends = python
+	depends = gnome-keyring
+	depends = libproxy
+	depends = glib-networking
+	depends = sqlite
+	provides = libsoup
+	provides = libsoup-gnome-git
+	conflicts = libsoup
+	conflicts = libsoup-gnome-git
+	options = !libtool
+	source = https://ftp.gnome.org/pub/GNOME/sources/libsoup/2.59/libsoup-2.59.90.1.tar.xz
+	sha256sums = e0c396be890f6704bd449de3bc3b94c671a87f29063bab445fa9ceaf81e2082e
+
+pkgname = libsoup-gnome
+
