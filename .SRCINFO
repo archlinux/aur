@@ -1,0 +1,22 @@
+pkgbase = brother-dcpt300
+	pkgdesc = Driver for the Brother DCP-T300 multifuncional printer
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	install = brother-dcpt300.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	makedepends = rpmextract
+	depends = a2ps
+	depends = cups
+	depends = lib32-glibc
+	source = fix_lp.patch
+	source = http://download.brother.com/welcome/dlf101958/dcpt300lpr-3.0.2-0.i386.rpm
+	source = http://download.brother.com/welcome/dlf101959/dcpt300cupswrapper-3.0.2-0.i386.rpm
+	md5sums = 164dd5eaeb33bb89c5ba6a6a547b65b8
+	md5sums = a0299c04635a1db426f0d4c65200b3ab
+	md5sums = add52c42190a557a4294150a5a27905f
+
+pkgname = brother-dcpt300
+
