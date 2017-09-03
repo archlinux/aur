@@ -1,14 +1,14 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=rcf
-pkgver=1.6.3.1432
+pkgver=1.6.4.1443
 pkgrel=1
 pkgdesc="Red Crucible®: Firestorm - Free to play online FPS"
 arch=('i686' 'x86_64')
 url="http://www.rocketeergames.com/site/rcf/"
 license=('LLC')
 source=("http://cdn.rocketeergames.com/rc3/redcrucible_lin.zip" "rcf.desktop")
-md5sums=('108edc6a6d29f7813bdca8bd228c3751' '2323cc5d4d853d932d3b7a84543a3ed4')
+md5sums=('2b18243a8c1a3680596bf3c099927038' '2323cc5d4d853d932d3b7a84543a3ed4')
 
 package() {
 
