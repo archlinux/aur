@@ -5,7 +5,7 @@
 pkgname=perl-unicode-string
 _realname=Unicode-String
 pkgver=2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="String of Unicode characters for perl (UCS2/UTF16)"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('PerlArtistic')
@@ -13,7 +13,7 @@ url="http://search.cpan.org/dist/${_realname}/"
 depends=('perl')
 options=(!emptydirs)
 source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/GAAS/${_realname}-${pkgver}.tar.gz)
-md5sums=('7a8210e673824b9fb90fd1c360483890')
+sha256sums=('894a110ece479546af8afec0972eec7320c86c4dea4e6b354dff3c7526ba9b68')
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
