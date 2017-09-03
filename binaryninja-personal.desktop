@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=Binary Ninja Personal
-Exec=/usr/bin/binaryninja-personal
-Icon=binaryninja
-Type=Application
-Categories=Development;Debugger;Profiling;

@@ -1,57 +1,103 @@
 # Maintainer: David Manouchehri
 # Contributor: Alex Palaistras <alex+archlinux@deuill.org>
 # Contributor: Elen Eisendle
+# Contributor: Spenser Reinhardt
 
-_pkgname=binaryninja
-pkgname="${_pkgname}-personal"
-_branch=stable
+_pkgname="binaryninja"
+_branch="stable"
+_edition="personal"
+pkgname="${_pkgname}-${_edition}"
+[[ "${_branch}" != "stable" ]] && pkgname="${pkgname}-${_branch}"
 pkgdesc="Binary Ninja is a binary multi-tool and reversing platform"
 url="https://binary.ninja"
 license=('custom:Binary Ninja License Agreement')
 arch=('x86_64')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-
-# https://binary.ninja/recover/
-source=("file://BinaryNinja-personal.zip"
-		"binaryninja-personal"
-		"binaryninja.png"
-		"binaryninja-personal.desktop")
-
-_hash=$(curl -s https://binary.ninja/js/hashes.js | grep -m1 -oP '"BinaryNinja-personal.zip"\s*:\s*"\K[^"]+')
-
-sha256sums=("${_hash}"
-			'14025caefa4201062d7334505c56534dd237185f5ecdb4c20d7aad17c80647a7'
-			'ac2e652f617d5ef8aaa34a5113164f51f3f673c872a635d29c93878a00650bf8'
-			'36aea5c3f72563703b937b98381195de01084fcddacd6e4a3ed4bc48ae75c9a2')
-
-# @TODO: Figure out what's really needed.
-depends=('libcurl-compat')
-makedepends=('git' 'curl')
 pkgver=1.1.922
-pkgrel=1
+pkgrel=2 # reset after new release, and .srcinfo
+install="${_pkgname}.install"
+makedeps=('curl' 'perl')
+depends=(
+	'python2' 'glibc' 'glib2' 'gcc-libs-multilib' 'pcre' 'zlib'
+	'libssh2' 'libnghttp2' 'libpsl' 'libxcb' 'icu' 'keyutils'
+	'libxext' 'libx11' 'libglvnd' 'krb5' 'e2fsprogs' 'libffi'
+	'libxau' 'libxdmcp' 'libcurl-compat' 'openssl-1.0'
+)
+# https://binary.ninja/recover/
+source=(
+	"file://BinaryNinja-${_edition}.zip"
+	"binaryninja.png"
+)
+_hash=$(curl -s https://binary.ninja/js/hashes.js | perl -pe "s/.*Ninja-${_edition}.zip\":\s\"([\da-f]+)\".*/\$1/g")
+sha256sums=(
+	"${_hash}"
+	'ac2e652f617d5ef8aaa34a5113164f51f3f673c872a635d29c93878a00650bf8'
+)
 
 pkgver() {
-	curl -s https://binary.ninja/js/changelog.js | grep -m1 -oP '"version"\s*:\s*"\K[^"]+' | head -1
+	curl -s https://binary.ninja/js/changelog.js | perl -pe 's/.*?version":\s"(\d+\.\d+\.\d+)".*/$1/'
+}
+
+_cp_files() {
+	# installs files, trims `${srcdir}/${_pkgname}` to allow outpath directly
+	mode="${1}"
+	inpath="${2}" # single path
+	outpath="${3}"
+	[[ ${argc} -gt 3 ]] && depth="${4}" # unset for no limit
+	[[ ${argc} -gt 4 ]] && skip="${5}" # comma separated list
+	# set $cmd based on depth's existence
+	[ -z ${depth+x} ] && cmd="find ${inpath} -type f" || cmd="find ${inpath} -maxdepth ${depth} -type f"
+	for file in $(${cmd}); do
+		if [ -z ${skip+x} ]; then # dont bother if unset
+			for s in $(echo ${skip}| sed 's/,/ /g'); do
+				[[ "${file}" =~ "${s}" ]] && c=0 && break
+			done
+			[ ! -z ${c+x} ] && unset c && continue # is skipped ? unset+continue : move file
+		fi
+		outfile=$(echo ${file} | perl -pe "s|${srcdir}/${_pkgname}|${outpath}|g") # trim
+		install -m "${mode}" "${file}" "${outfile}"
+	done
+}
+
+prepare() {
+	echo "[Desktop Entry]
+Name=Binary Ninja ${_edition}
+Exec=/usr/bin/${_pkgname}
+Icon=${pkgname}
+Type=Application
+Categories=Development;Debugger;Profiling;" > "${srcdir}/binaryninja.desktop"
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	mkdir -v "${pkgdir}/opt"
-	mkdir -v -p "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-	mkdir -v -p "${pkgdir}/usr/share/applications"
-	mkdir -v -p "${pkgdir}/usr/bin"
-
-	mv -v "${srcdir}/binaryninja" "${pkgdir}/opt/binaryninja-personal"
-
-	install -m644 "${srcdir}/binaryninja.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
-	install -m644 "${srcdir}/binaryninja-personal.desktop" "${pkgdir}/usr/share/applications/"
-	install -m755 "${srcdir}/binaryninja-personal" "${pkgdir}/usr/bin"
-
-	# Not a proper fix, but hey, it works.
-	mv -v "${pkgdir}/opt/binaryninja-personal/plugins/libssl.so" "${pkgdir}/opt/binaryninja-personal/plugins/libssl.so.bak"
-
-	ln -v -s "/usr/lib/libpython2.7.so" "${pkgdir}"/opt/binaryninja-personal/plugins/libpython2.7.so.1
+	_srcdir="${srcdir}/${_pkgname}"
+	destdir="${pkgdir}/opt/${_pkgname}"
+	[[ "${_branch}" != "stable" ]] && destdir="${destdir}-${_branch}"
+	
+	msg2 "Creating directories"
+	install -dm 755 "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
+	install -dm 755 "${pkgdir}/usr/share/applications/"
+	for dir in $(find "${_srcdir}" -type d); do
+		dir=$(echo $dir | perl -pe "s|${_srcdir}|${destdir}|g")
+		install -dm 755 "${dir}"
+	done
+	
+	msg2 "Copying non-executable files"
+	install -m 644 "${srcdir}/binaryninja.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
+	install -m 644 "${srcdir}/binaryninja.desktop" "${pkgdir}/usr/share/applications/"
+	install -m 644 "${_srcdir}/qt.conf" "${destdir}/qt.conf"
+	_cp_files 644 "${_srcdir}/docs" "${destdir}"
+	_cp_files 644 "${_srcdir}/api-docs" "${destdir}"
+	_cp_files 644 "${_srcdir}/scc-docs" "${destdir}"
+	_cp_files 644 "${_srcdir}/types" "${destdir}"
+	
+	msg2 "Copying executable files"
+	_cp_files 755 "${_srcdir}/" "${destdir}" "0" "qt.conf"
+	_cp_files 755 "${_srcdir}/python" "${destdir}"
+	_cp_files 755 "${_srcdir}/scripts" "${destdir}"
+	_cp_files 755 "${_srcdir}/plugins" "${destdir}"
+	_cp_files 755 "${_srcdir}/qt" "${destdir}"
+	_cp_files 755 "${_srcdir}/examples" "${destdir}"
 }
 
 # vim:set et sw=2 sts=2 tw=80:

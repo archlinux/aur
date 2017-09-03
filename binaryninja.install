@@ -1,0 +1,47 @@
+post_install() {
+	# post install to avoid builder needing makedeps
+	if [ ! -L /opt/binaryninja/libcurl.so.4 ]; then
+		echo "Linking libcurl-compat to /opt/binaryninja/"
+		ln -s /usr/lib/libcurl.so.3 /opt/binaryninja/libcurl.so.4
+	fi
+	if [ ! -L /opt/binaryninja/plugins/libcurl.so.4 ]; then
+		echo "Linking libcurl-compat to /opt/binaryninja/plugins/"
+		ln -s /usr/lib/libcurl.so.3 /opt/binaryninja/plugins/libcurl.so.4
+	fi
+	if [ ! -L /opt/binaryninja/plugins/libpython2.7.so.1 ]; then
+		echo "Linking libpython2.7 to /opt/binaryninja/plugins/"
+		ln -s /usr/lib/libpython2.7.so /opt/binaryninja/plugins/libpython2.7.so.1
+	fi
+	if [ ! -L /usr/bin/binaryninja ]; then
+		echo "Linking binaryninja to /usr/bin/"
+		ln -s /opt/binaryninja/binaryninja /usr/bin/binaryninja
+	fi
+	gtk-update-icon-cache -f -q -t /usr/share/pixmaps
+}
+pre_upgrade(){
+	if [ -h /usr/bin/binaryninja ]; then
+		echo "Unlinking binaryninja from /usr/bin/"
+		rm -f /usr/bin/binaryninja
+	fi
+	if [ -h /opt/binaryninja/plugins/libpython2.7.so.1 ]; then
+		echo "Unlinking libpython2.7 from /opt/binaryninja/plugins/"
+		rm -f /opt/binaryninja/plugins/libpython2.7.so.1
+	fi
+	if [ -h /opt/binaryninja/plugins/libcurl.so.4 ]; then
+		echo "Unlinking libcurl-compat from /opt/binaryninja/plugins/"
+		rm -f /opt/binaryninja/plugins/libcurl.so.4
+	fi
+	if [ -h /opt/binaryninja/libcurl.so.4 ]; then
+		echo "Unlinking libcurl-compat from /opt/binaryninja/"
+		rm -f /opt/binaryninja/libcurl.so.4
+	fi
+}
+post_upgrade() {
+	post_install
+}
+pre_remove(){
+	pre_upgrade
+}
+post_remove() {
+	gtk-update-icon-cache -f -q -t /usr/share/pixmaps
+}

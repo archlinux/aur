@@ -1,2 +1,0 @@
-#!/bin/sh
-LD_PRELOAD=libcurl.so.3:libssl.so.1.0.0 exec /opt/binaryninja-personal/binaryninja "$@"
