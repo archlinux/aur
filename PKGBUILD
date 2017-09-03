@@ -4,7 +4,7 @@
 
 pkgname='perl-par-packer'
 pkgver='1.037'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="PAR Packager"
 arch=('any')
 url='http://search.cpan.org/dist/PAR-Packer'
