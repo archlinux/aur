@@ -1,6 +1,6 @@
 pkgbase = librenms
 	pkgdesc = LibreNMS is an autodiscovering PHP/MySQL-based network monitoring system.
-	pkgver = 1.31.01
+	pkgver = 1.31.02
 	pkgrel = 1
 	url = http://www.librenms.org/
 	install = librenms.install
@@ -22,10 +22,10 @@ pkgbase = librenms
 	depends = git
 	depends = mysql-python
 	backup = etc/webapps/librenms/config.php
-	source = https://github.com/librenms/librenms/archive/1.31.01.tar.gz
+	source = https://github.com/librenms/librenms/archive/1.31.02.tar.gz
 	source = apache.example.conf
 	source = nginx.example.conf
-	sha256sums = cc1a85cee6ae8d3467594a401746d7735f5fa876b7946ef60bec5d3a4ee1d5b6
+	sha256sums = 94c1987a6493fe5268bf39e683200c25e519fb3fb4085f8a14a717ddaec42418
 	sha256sums = aed1a35b2d84f3b40e0d519ccdb56a5929896ae7cfedd3766f5df4b51fac3319
 	sha256sums = e1722c586e61e320c2382b2322150e176c61523dccb81eeec6c3d4618819110c
 
