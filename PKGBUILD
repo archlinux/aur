@@ -2,50 +2,24 @@
 
 _target=i686-elf
 pkgname=$_target-gcc
-pkgver=6.2.0
+pkgver=7.2.0
 pkgrel=1
-_gmpver=6.0.0a
-_mpfrver=3.1.2
-_mpcver=1.0.2
-_islver=0.16
-_cloogver=0.18.1
 pkgdesc='The GNU Compiler Collection - cross compiler for i686-elf target'
 arch=(i686 x86_64)
 url='http://gcc.gnu.org/'
-license=(GPL LGPL FDL)
-depends=($_target-binutils zlib)
+license=(GPL LGPL)
+depends=($_target-binutils zlib libmpc mpfr gmp)
 options=(!emptydirs)
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.bz2
-        https://gmplib.org/download/gmp/gmp-$_gmpver.tar.xz
-        http://www.mpfr.org/mpfr-$_mpfrver/mpfr-$_mpfrver.tar.xz
-        ftp://ftp.gnu.org/gnu/mpc/mpc-$_mpcver.tar.gz
-        http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
-        http://www.bastoul.net/cloog/pages/download/cloog-$_cloogver.tar.gz)
-sha256sums=('9944589fc722d3e66308c0ce5257788ebd7872982a718aa2516123940671b7c5'
-            '9156d32edac6955bc53b0218f5f3763facb890b73a835d5e1b901dcf8eb8b764'
-            '399d0f47ef6608cc01d29ed1b99c7faff36d9994c45f36f41ba250147100453b'
-            'b561f54d8a479cee3bc891ee52735f18ff86712ba30f036f8b8537bae380c488'
-            '3899e68047d0a18db5a7d73bdabcbe9246865e73e86efbd95387817d342fd554'
-            '02500a4edd14875f94fe84cbeda4290425cb0c1c2474c6f75d75a303d64b4196')
-
+source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
+        "libiberty-ignore-cflags.patch")
+sha256sums=('1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a'
+            '8b2aea00e98f7c311b1d0fb14e4b435a03c65fde32bc992c924edb6fa7b83c9c')
 _basedir=gcc-$pkgver
 
 prepare() {
   cd $_basedir
-  
-  # link gmp/mpfr/mpc for in-tree builds
-  ln -s ../gmp-$_gmpver gmp
-  ln -s ../mpfr-$_mpfrver mpfr
-  ln -s ../mpc-$_mpcver mpc
-
-  # link isl/cloog for in-tree builds
-  ln -s ../isl-$_islver isl
-  ln -s ../cloog-$_cloogver cloog
-
-  echo $pkgver > gcc/BASE-VER
-
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+ 
+  patch -p1 -i $srcdir/libiberty-ignore-cflags.patch
 
   mkdir $srcdir/gcc-build
 }
@@ -56,16 +30,10 @@ build() {
   $srcdir/$_basedir/configure \
     --target=$_target \
     --prefix=/usr \
+    --disable-nls \
+    --disable-plugin \
     --enable-languages=c,c++ \
-    --disable-tls \
-    --without-headers \
-    --with-system-zlib \
-    --with-gmp \
-    --with-mpfr \
-    --with-mpc \
-    --with-cloog \
-    --with-isl \
-    --enable-cloog-backend=isl
+    --without-headers
 
   make all-gcc
   make all-target-libgcc
@@ -92,5 +60,5 @@ package() {
   # Remove files that conflict with host gcc package
   rm -r "$pkgdir"/usr/share/man/man7
   rm -r "$pkgdir"/usr/share/info
-  rm -r "$pkgdir"/usr/share/locale
 }
+
