@@ -5,7 +5,7 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=0.1.r417.a085f13
+pkgver=0.1.0_alpha1.r0.g2820b95
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -22,10 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
