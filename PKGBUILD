@@ -2,7 +2,7 @@
 
 pkgname=ruby-fspath
 gemname=fspath
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Better than Pathname.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ruby')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${gemname}-${pkgver}.gem")
 noextract=("${gemname}-${pkgver}.gem")
-sha512sums=('9e8d9ca5f704f9b057bb772084188eb453a7b11c1843423c36dedf305808a0cd77fa763b7fac37f68e6d2bb27b28034af00ea2a295089aa3ef483e8b7e0b939b')
+sha512sums=('c6d78a53489077634c56f84d09de476227172cca7ef8ff21a72e48d992189fc3af25798c193b1866a56abc583fb54c4fc426ea96ac6d6ec5944a92cd425705b7')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
