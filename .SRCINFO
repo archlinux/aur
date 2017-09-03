@@ -5,6 +5,7 @@ pkgbase = cliqr
 	url = https://github.com/flipflop97/cliqr
 	arch = x86_64
 	license = Creative Commons Attribution-ShareAlike 4.0 International Public License
+	depends = qrencode
 	provides = cliqr
 	source = cliqr::https://github.com/flipflop97/cliqr/releases/download/v1.0.0/cliqr
 	sha256sums = 6dd03ab1388234b3b47cb23285157ef49798a62cca17966b5531c8619f3dfbfc
