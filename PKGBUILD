@@ -1,8 +1,8 @@
 # Maintainer: Andrew Rabert <draje@nullsum.net>
 
 pkgname=image_optim
-pkgver=0.24.1
-pkgrel=0
+pkgver=0.25.0
+pkgrel=1
 pkgdesc='Optimize (lossless compress, optionally lossy) images (jpeg, png, gif, svg) using external utilities.'
 arch=('any')
 url='https://github.com/toy/image_optim'
@@ -26,7 +26,7 @@ depends=('advancecomp'
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${pkgname}-${pkgver}.gem")
 noextract=("${pkgname}-${pkgver}.gem")
-sha512sums=('7b811e1c5b05a98b530e170d5c3e6416f9cd04bd7b650bb19159ceeb371b2edecf65ccfd4aba1e3fddf633a3d783193bdd533a9de4628e90c0bc582c69e19683')
+sha512sums=('9d9592c7b83ab12e4755affdc8057d8dca80f49a7b952772a4d73560caeafe2dfd1bac2859b1db1bc6b12eb863c3fc99f3906caf02ff2a8f627262ce50475668')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
