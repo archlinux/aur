@@ -11,7 +11,7 @@
 
 pkgname=ndi-sdk
 pkgver=3.20170821.r80510
-pkgrel=2
+pkgrel=3
 pkgdesc='NewTek NDI SDK (needs registration at upstream URL and manual download)'
 arch=('i686' 'x86_64')
 url='https://www.newtek.com/ndi/sdk/'
@@ -42,7 +42,10 @@ package() {
     
     # library
     cd "${srcdir}/${pkgname}-${pkgver}/NDI SDK for Linux/lib/${CARCH}-linux-gnu"
-    cp -a * "${pkgdir}/usr/lib"
+    cp -a "libndi.so.${pkgver%%.*}".* "${pkgdir}/usr/lib"
+    cd "${pkgdir}/usr/lib"
+    ln -s "libndi.so.${pkgver%%.*}".* "libndi.so.${pkgver%%.*}"
+    ln -s "libndi.so.${pkgver%%.*}".*  libndi.so
     
     # docs
     cd "${srcdir}/${pkgname}-${pkgver}/NDI SDK for Linux/documentation"
