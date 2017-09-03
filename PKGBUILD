@@ -1,7 +1,7 @@
 # Maintainer: deadhead <deadhead3492@gmail.com>
 pkgname=fetchpkg
 pkgver=0.3
-pkgrel=6
+pkgrel=7
 pkgdesc="CLI frontend for pacman / AUR"
 arch=('any')
 url="https://github.com/deadhead420/fetchpkg"

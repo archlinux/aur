@@ -1,7 +1,7 @@
 pkgbase = fetchpkg
 	pkgdesc = CLI frontend for pacman / AUR
 	pkgver = 0.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/deadhead420/fetchpkg
 	arch = any
 	license = GPL
