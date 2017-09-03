@@ -2,11 +2,11 @@
 # Contributor: garion < garion @ mailoo.org >
 
 pkgname=vobsub2srt-git
-pkgver=v1.0pre6.72.g04bd6c9
+pkgver=1.0pre7.9.gd4c34ca
 pkgrel=1
 pkgdesc="Convert IDX/SUB subtitles into SRT text subtitles"
 arch=('i686' 'x86_64')
-url='https://github.com/ruediger/VobSub2SRT/blob/master/README.org'
+url='https://github.com/ruediger/VobSub2SRT'
 license=('GPL')
 depends=('tesseract')
 optdepends=('tesseract-data: Tesseract OCR data')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd vobsub2srt
-  echo "$(git describe --always | tr - .)"
+  echo "$(git describe --tags --dirty --always | tr - . | tr -d 'v')"
 }
 
 prepare() {
