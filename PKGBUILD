@@ -3,7 +3,7 @@
 
 pkgname=chromeos-extra-fonts
 pkgver=2013.02.14
-pkgrel=100
+pkgrel=101
 
 pkgdesc='Chrome OS Extra fonts featuring Carlito (Calibri clone) and Caladea (Cambria clone)'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
 )
 optdepends=(
     # These packages should have the group 'chromeos-extra-fonts'
-    'ttf-chromeos-fonts: Part of the Chromium OS fonts suite'
+    'ttf-croscore: Part of the Chromium OS fonts suite'
     'ttf-dejavu: Part of the Chromium OS fonts suite'
     'ttf-droid: Part of the Chromium OS fonts suite'
     'otf-ipafont: Part of the Chromium OS fonts suite, IPA support'

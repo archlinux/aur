@@ -1,7 +1,7 @@
 pkgbase = chromeos-extra-fonts
 	pkgdesc = Chrome OS Extra fonts featuring Carlito (Calibri clone) and Caladea (Cambria clone)
 	pkgver = 2013.02.14
-	pkgrel = 100
+	pkgrel = 101
 	url = https://chromium.googlesource.com/
 	arch = any
 	license = custom:OFL
@@ -9,7 +9,7 @@ pkgbase = chromeos-extra-fonts
 	depends = xorg-font-utils
 	depends = ttf-caladea
 	depends = ttf-carlito
-	optdepends = ttf-chromeos-fonts: Part of the Chromium OS fonts suite
+	optdepends = ttf-croscore: Part of the Chromium OS fonts suite
 	optdepends = ttf-dejavu: Part of the Chromium OS fonts suite
 	optdepends = ttf-droid: Part of the Chromium OS fonts suite
 	optdepends = otf-ipafont: Part of the Chromium OS fonts suite, IPA support
