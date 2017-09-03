@@ -16,7 +16,7 @@ depends=('perl-glib-object-introspection'
   'perl-text-csv' 'perl-dbi' 'perl-archive-zip'
   'graphicsmagick' 'texlive-bin' 'texlive-core'
   'gtk2-perl' 'netpbm' 'opencv' 'poppler')
-source=('http://download.gna.org/auto-qcm/'$pkgbase'_current_precomp.tar.gz'  'amc.patch')  
+source=('http://download.auto-multiple-choice.net/'$pkgbase'_current_precomp.tar.gz'  'amc.patch')  
 #source=('http://download.gna.org/auto-qcm/'$pkgbase'_'$pkgver'_precomp.tar.gz'  'amc.patch')
 
 md5sums=('72c21810103b82e085dccd133b07a397'
