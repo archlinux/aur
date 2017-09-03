@@ -1,8 +1,17 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
+# NOTE:
+# In order to build with NCCL support, follow these steps:
+#   - uncomment the nccl line in 'depends'
+#   - in 'build()', change '-DUSE_NCCL:BOOL=OFF' from 'OFF' to 'ON'
+#   - add these options to cmake command line:
+#       -DNCCL_INCLUDE_DIR:PATH='/opt/cuda/include'
+#       -DNCCL_LIBRARY:FILEPATH='/opt/cuda/lib64/libnccl.so'
+#       -DNCCL_ROOT_DIR:PATH='/opt/cuda'
+
 pkgname=caffe2-git
-pkgver=0.8.1.r120.g898ba8bf
-pkgrel=2
+pkgver=0.8.1.r218.gf2a14f34
+pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -21,8 +30,8 @@ depends=(
             'python2-requests' 'python2-scipy' 'python2-setuptools' 'python2-six'
             'python2-tornado' 'python2-gflags' 'python2-pyzmq'
     # AUR:
-        # not required but enabled in build:
-            'nccl'
+        # not required:
+            # 'nccl'
         # python2:
             'python2-nvd3' 'python2-scikit-image' 'python2-glog' 'python2-leveldb'
             'python2-lmdb'
@@ -144,9 +153,6 @@ build() {
         -DCUDNN_ROOT_DIR:PATH='/opt/cuda' \
         \
         -DGLOO_STATIC_OR_SHARED:STRING='STATIC' \
-        -DNCCL_INCLUDE_DIR:PATH='/opt/cuda/include' \
-        -DNCCL_LIBRARY:FILEPATH='/opt/cuda/lib64/libnccl.so' \
-        -DNCCL_ROOT_DIR:PATH='/opt/cuda' \
         \
         -DOpenCV_DIR:PATH='/usr/share/OpenCV' \
         \
@@ -164,7 +170,7 @@ build() {
         -DUSE_METAL:BOOL='OFF' \
         -DUSE_MOBILE_OPENGL:BOOL='OFF' \
         -DUSE_MPI:BOOL='ON' \
-        -DUSE_NCCL:BOOL='ON' \
+        -DUSE_NCCL:BOOL='OFF' \
         -DUSE_NERVANA_GPU:BOOL='ON' \
         -DUSE_NNPACK:BOOL='ON' \
         -DUSE_OBSERVERS:BOOL='ON' \
