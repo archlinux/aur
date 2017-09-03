@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=beast2
-pkgver=2.4.6
+pkgver=2.4.7
 pkgrel=1
 pkgdesc='Bayesian Evolutionary Analysis by Sampling Trees'
 arch=(any)
@@ -26,4 +26,4 @@ package() {
   done
 }
 
-md5sums=('b446f4ab121df9b991f7bb7ec94c8217')
+md5sums=('71134fd087819803c0d8a5a390d3ab0e')
