@@ -1,34 +1,41 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
- 
+
+# NOTE:
+# In order to build the package, you need to manually download the NCCL file
+# from NVIDIA's website (registration required). Place the downloaded file
+# in the PKGBUILD directory and run makepkg.
+# Download website:
+# https://developer.nvidia.com/nccl/
+
+_srcver=2.0.5
+_srcrel=2
+_cudaver=8.0
+
 pkgname=nccl
-_srcver=1.3.4
-_srcrel=1
 pkgver="${_srcver}.${_srcrel}"
 pkgrel=1
-pkgdesc="NVIDIA CUDA optimized primitives for collective multi-GPU communication"
+pkgdesc='Library for NVIDIA Multi-GPU and multi-node collective communication primitives (needs registration at upstream URL and manual download)'
 arch=('x86_64')
-url="https://github.com/NVIDIA/nccl.git"
-license=('BSD')
+url='https://developer.nvidia.com/nccl/'
+license=('custom')
 depends=('cuda')
-optdepends=("openmpi: To use 'ncclCommInitRank' in multi-process applications")
 conflicts=('nccl-git')
-source=("${pkgname}-${_srcver}-${_srcrel}.tar.gz"::"https://github.com/NVIDIA/nccl/archive/v${_srcver}-${_srcrel}.tar.gz")
-sha256sums=('11e4eb44555bb28b9cbad973dacb4640b82710c9769e719afc2013b63ffaf884')
-
-prepare() {
-    cd "${pkgname}-${_srcver}-${_srcrel}"
-    
-    # fix library install directoy
-    sed -i '/$(PREFIX)\/lib/s/\$(PREFIX)\/lib/$(PREFIX)\/lib64/g' Makefile
-}
-
-build() {
-    cd "${pkgname}-${_srcver}-${_srcrel}"
-    make CUDA_HOME="/opt/cuda" lib
-}
+options=('!strip')
+source=("file://${pkgname}_${_srcver}-${_srcrel}-cuda${_cudaver}_amd64.txz")
+sha256sums=('3c92881f3f01e1252570fea693335003edc5f610e3834cf179136a6d98795599')
 
 package() {
-    cd "${pkgname}-${_srcver}-${_srcrel}"
-    make CUDA_HOME="/opt/cuda" PREFIX="${pkgdir}/opt/cuda" install
-    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${pkgname}_${_srcver}-${_srcrel}+cuda${_cudaver}_amd64"
+    
+    # include
+    install -D -m644 include/nccl.h "${pkgdir}/opt/cuda/include/nccl.h"
+    
+    # libraries
+    mkdir -p       "${pkgdir}/opt/cuda/lib64"
+    cp    -a lib/* "${pkgdir}/opt/cuda/lib64"
+    
+    # license
+    install -D -m644 NCCL-SLA.txt          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 COPYRIGHT.txt         "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+    sed     -i 's/NCCL-SLA\.txt/LICENSE/g' "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 }
