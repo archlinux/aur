@@ -21,7 +21,7 @@ _2nd_apple_font_dir='/usr/share/fonts/Type1'
 _qdepth='32'
 
 pkgname=imagemagick-full-git
-pkgver=7.0.6.8.r12369.g19dbe11c5
+pkgver=7.0.7.0.r12468.g2f8ac2203
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features, git version)"
 arch=('i686' 'x86_64')
