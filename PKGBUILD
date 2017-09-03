@@ -2,42 +2,49 @@
 
 _target=i686-elf
 pkgname=$_target-binutils
-pkgver=2.27
+pkgver=2.29
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the i686-elf target'
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib)
-source=(ftp://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2)
-sha256sums=('369737ce51587f92466041a97ab7d2358c6d9e1b6490b3940eb09fb0a9a6ac88')
+source=("http://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz"
+        "libiberty-ignore-cflags.patch")
+sha256sums=('0b871e271c4c620444f8264f72143b4d224aa305306d85dd77ab8dce785b1e85'
+            '8b2aea00e98f7c311b1d0fb14e4b435a03c65fde32bc992c924edb6fa7b83c9c')
+_basedir=binutils-$pkgver
 
 prepare() {
-  cd binutils-$pkgver
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+  cd $_basedir
+
+  patch -p1 -i $srcdir/libiberty-ignore-cflags.patch
+
+  mkdir $srcdir/binutils-build
 }
 
 build() {
-  cd binutils-$pkgver
+  cd binutils-build
 
-  ./configure --target=$_target \
-              --with-sysroot=/usr/$_target \
-              --prefix=/usr \
-              --disable-nls \
-              --disable-werror
+  $srcdir/$_basedir/configure \
+    --target=$_target \
+    --with-sysroot=/usr/$_target \
+    --prefix=/usr \
+    --disable-nls \
+    --disable-werror
 
   make
 }
 
 check() {
-  cd binutils-$pkgver
+  cd binutils-build
   
   # do not abort on errors - manually check log files
   make -k check
 }
 
 package() {
-  cd binutils-$pkgver
+  cd binutils-build
 
   make DESTDIR="$pkgdir" install
 
