@@ -1,36 +1,53 @@
-diff -rupN libzip-1.0.1/CMakeLists.txt libzip-1.0.1-new/CMakeLists.txt
---- libzip-1.0.1/CMakeLists.txt	2015-05-04 22:49:38.000000000 +0200
-+++ libzip-1.0.1-new/CMakeLists.txt	2015-11-09 21:12:27.926634684 +0100
-@@ -106,3 +106,7 @@ CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DI
- # installation
+From 6444109a12480cc40d6169111ea6491332d754cb Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Sun, 3 Sep 2017 09:54:27 +0200
+Subject: [PATCH 1/2] [cmake] install pkgconfig file
+
+---
+ CMakeLists.txt | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index eea9be1..6644816 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,4 @@
+ # TODO:
+-# 1. pkgconfig file not yet built.
+ # 2. installation not tested.
+ # 3. Problems generating html pages.
+ # 4. create usable libtool .la file
+@@ -124,7 +123,14 @@ ADD_SUBDIRECTORY(src)
+ ADD_SUBDIRECTORY(regress)
+ ADD_SUBDIRECTORY(examples)
  
- INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/zipconf.h DESTINATION lib/libzip/include)
-+
+-# TODO: pkgconfig file
++# pkgconfig file
++SET(prefix ${CMAKE_INSTALL_PREFIX})
++SET(exec_prefix ${prefix})
++SET(libdir ${prefix}/lib)
++SET(includedir ${prefix}/lib)
 +SET(LIBS -lz)
 +CONFIGURE_FILE(libzip.pc.in libzip.pc @ONLY)
 +INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/libzip.pc DESTINATION lib/pkgconfig)
-diff -rupN libzip-1.0.1/lib/CMakeLists.txt libzip-1.0.1-new/lib/CMakeLists.txt
---- libzip-1.0.1/lib/CMakeLists.txt	2015-04-29 22:46:14.000000000 +0200
-+++ libzip-1.0.1-new/lib/CMakeLists.txt	2015-11-09 20:53:15.992812515 +0100
-@@ -183,7 +183,13 @@ IF(NOT HAVE_MKSTEMP)
- ENDIF(NOT HAVE_MKSTEMP)
  
- ADD_LIBRARY(zip SHARED ${LIBZIP_SOURCES} ${LIBZIP_EXTRA_FILES} ${LIBZIP_OPSYS_FILES})
--SET_TARGET_PROPERTIES(zip PROPERTIES VERSION 3.0 SOVERSION 3 )
-+SET(SOVERSION_MAJ 4)
-+SET(SOVERSION_MIN 0)
-+SET_TARGET_PROPERTIES(zip PROPERTIES VERSION ${SOVERSION_MAJ}.${SOVERSION_MIN} SOVERSION ${SOVERSION_MAJ})
-+IF(WIN32)
-+    SET_TARGET_PROPERTIES(zip PROPERTIES SUFFIX "-${SOVERSION_MAJ}${CMAKE_SHARED_LIBRARY_SUFFIX}")
-+ENDIF(WIN32)
-+
- TARGET_LINK_LIBRARIES(zip ${ZLIB_LIBRARY})
- INSTALL(TARGETS zip
-   RUNTIME DESTINATION bin
-diff -rupN libzip-1.0.1/man/CMakeLists.txt libzip-1.0.1-new/man/CMakeLists.txt
---- libzip-1.0.1/man/CMakeLists.txt	2015-04-29 17:43:29.000000000 +0200
-+++ libzip-1.0.1-new/man/CMakeLists.txt	2015-11-09 21:14:45.138242668 +0100
-@@ -99,7 +99,7 @@ ENDif(CMAKE_SYSTEM_NAME MATCHES BSD)
+ # write out config file
+ CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/cmake-config.h.in
+
+From fdbe7ce30a5ee31b7e520d5cf1a6b19db7ffd962 Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Sun, 3 Sep 2017 09:57:06 +0200
+Subject: [PATCH 2/2] [cmake] install man pages in share/man
+
+---
+ man/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/man/CMakeLists.txt b/man/CMakeLists.txt
+index 4934f8b..d43c10f 100644
+--- a/man/CMakeLists.txt
++++ b/man/CMakeLists.txt
+@@ -105,7 +105,7 @@ ENDif(CMAKE_SYSTEM_NAME MATCHES BSD)
  
  # installation
  
