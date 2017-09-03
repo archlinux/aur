@@ -1,12 +1,12 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
 pkgname=friends
 pkgver=0.33
-pkgrel=1
+pkgrel=2
 pkgdesc="Spend time with the people you care about. Introvert-tested. Extrovert-approved."
 arch=('any')
 url="https://github.com/JacobEvelyn/friends"
 license=(MIT)
-depends=('ruby')
+depends=('ruby' 'ruby-chronic' 'ruby-gli' 'ruby-paint' 'ruby-semverse')
 makedepends=('rubygems')
 source=("http://gems.rubyforge.org/gems/${pkgname}-${pkgver}.gem")
 noextract=("${pkgname}-${pkgver}.gem")
