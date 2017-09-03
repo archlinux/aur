@@ -2,7 +2,7 @@
 
 _name=ddnet
 pkgname=$_name-git
-pkgver=10.8.3.r1.ged59b0f4a
+pkgver=10.8.4.r0.g4b39a39e1
 pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ md5sums_x86_64=('fc32ca52ae9be02f68b6c257153dbd37')
 
 pkgver() {
   cd $_name
-  v=$(grep GAME_RELEASE_VERSION src/game/version.h | cut -d\" -f2)
+  v=$(grep "GAME_VERSION " src/game/version.h | cut -d\" -f2)
   _commit=$(git log --pretty=oneline | grep "Version $v" | cut -d' ' -f1)
   r=$(git log $_commit..HEAD --pretty=oneline | wc -l)
   h=$(git rev-parse --short HEAD)
