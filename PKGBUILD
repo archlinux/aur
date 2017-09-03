@@ -1,0 +1,47 @@
+# Maintainer: Yen Chi Hsuan <yan12125@gmail.com>
+
+_pkgname=ceiba-dl
+pkgname=$_pkgname-git
+pkgver=0.2.r0.gc76c801
+pkgrel=1
+pkgdesc='NTU CEIBA data downloader /  NTU CEIBA 資料下載工具'
+arch=(i686 x86_64)
+license=(GPL3)
+url='https://github.com/lantw44/ceiba-dl'
+depends=(python-lxml python-pycurl python-xdg webkit2gtk)
+makedepends=(autoconf-archive git)
+source=('git+https://github.com/lantw44/ceiba-dl')
+sha256sums=('SKIP')
+conflicts=("$_pkgname")
+provides=("$_pkgname=$pkgver")
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  ( set -o pipefail
+    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
+prepare() {
+    cd "$srcdir/$_pkgname"
+
+    NOCONFIGURE=1 ./autogen.sh
+}
+
+build() {
+    cd "$srcdir/$_pkgname"
+
+    # The default is --enable-compile-warnings=error, which breaks the build
+    ./configure \
+        --prefix=/usr \
+        --enable-compile-warnings=yes
+
+    make
+}
+
+package() {
+    cd "$srcdir/$_pkgname"
+
+    make DESTDIR="$pkgdir" install
+}
