@@ -3,10 +3,10 @@
 _perlmod=Data-Perl
 pkgname=perl-data-perl
 pkgver=0.002009
-pkgrel=2
+pkgrel=3
 pkgdesc="Data::Perl - Base classes wrapping fundamental Perl data types"
 arch=('any')
-url="http://search.cpan.org/~mattp/$_perlmod-$pkgver/"
+url="http://search.cpan.org/dist/$_perlmod/"
 license=('GPL' 'PerlArtistic')
 groups=()
 depends=('perl' 'perl-role-tiny' 'perl-list-moreutils')
