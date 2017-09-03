@@ -1,7 +1,7 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=rcr
-pkgver=1.4.2.1198
+pkgver=1.4.2.1201
 pkgrel=1
 pkgdesc="Red Crucible®: Reloaded - Free to play online FPS"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LLC')
 # depends=()
 # makedepends=()
 source=("http://cdn.rocketeergames.com/rcreloaded/redcrucible_lin.zip" "rcr.desktop")
-md5sums=('9e48a93d4dbc604e1d27464cfcf8383f' 'b03e6aadb89d013092b10666bfbb9460')
+md5sums=('0b69b7d01b069c9a02cc445e4ee4ad87' 'b03e6aadb89d013092b10666bfbb9460')
 
 package() {
 
