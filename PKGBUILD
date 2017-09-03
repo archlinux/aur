@@ -1,9 +1,9 @@
 # Maintainer: William Gathoye <william + aur at gathoye dot be>
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 
-pkgname=chromeos-extra-fonts
+pkgname=ttf-crosextra
 pkgver=2013.02.14
-pkgrel=101
+pkgrel=1
 
 pkgdesc='Chrome OS Extra fonts featuring Carlito (Calibri clone) and Caladea (Cambria clone)'
 arch=('any')
