@@ -1,13 +1,13 @@
-# Maintainer: jackos2500 <jackos1998@gmail.com>
+# Maintainer: jackos2500 <jackos1998 at gmail dot com>
 pkgname=ntopng-git
 _pkgname=ntopng
-pkgver=20161230.8b5205e
-pkgrel=2
+pkgver=3.0.r307.gc4789741
+pkgrel=1
 pkgdesc='The next generation version of the original ntop, a network traffic probe that shows the network usage'
 arch=('x86_64' 'i686' 'armv7h')
 url='http://www.ntop.org/'
 license=('GPL3')
-depends=('redis' 'geoip' 'libmariadbclient')
+depends=('redis' 'geoip' 'libmariadbclient' 'json-c')
 makedepends=('git' 'glib2' 'automake' 'libtool' 'geoip' 'libpcap' 'wget' 'libxml2' 'sqlite' 'curl' 'libmariadbclient')
 provides=('ntopng')
 conflicts=('ntopng')
@@ -17,6 +17,11 @@ sha256sums=('SKIP'
             'SKIP' 
             'f2269843460307ef58037fa1a194c26650ced0f1d194fb9af6817917b109fe8c'
             '8ec08499b1783c3e933429a3a9a4d0d32fb903bbd0b7c3fef82f0233748e3737')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd "$srcdir/nDPI"

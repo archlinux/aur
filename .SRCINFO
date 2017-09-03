@@ -1,7 +1,7 @@
 pkgbase = ntopng-git
 	pkgdesc = The next generation version of the original ntop, a network traffic probe that shows the network usage
-	pkgver = 20161230.8b5205e
-	pkgrel = 2
+	pkgver = 3.0.r307.gc4789741
+	pkgrel = 1
 	url = http://www.ntop.org/
 	arch = x86_64
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = ntopng-git
 	depends = redis
 	depends = geoip
 	depends = libmariadbclient
+	depends = json-c
 	provides = ntopng
 	conflicts = ntopng
 	source = git+https://github.com/ntop/nDPI
