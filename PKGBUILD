@@ -6,7 +6,7 @@ pkgver=r37.cce9deb
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url='https://github.com/xekon/GradCurve'
+url='https://forum.doom9.org/showthread.php?t=174096'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
