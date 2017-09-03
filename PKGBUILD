@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=26.0.50.r130324
+pkgver=26.0.50.r130334
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/emacs"
+  cd emacs
   [[ -x configure ]] || ./autogen.sh
   ac_cv_lib_gif_EGifPutExtensionLast=yes \
     ./configure --program-transform-name='s/^ctags$/ctags.emacs/' \
@@ -44,14 +44,13 @@ build() {
     --with-xft \
     --without-xwidgets \
     --without-pop \
-    --with-mailutils \
     --with-gameuser=:games 
   make
   make pdf
 }
 
 package() {
-  cd "$srcdir/emacs"
+  cd emacs
   _mainver=$(grep AC_INIT configure.ac | sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')
   make DESTDIR="$pkgdir/" install install-pdf
   # fix user/root permissions on usr/share files
@@ -59,7 +58,7 @@ package() {
   # Delete compressed .el.gz files. Comment out if needed.
   # find "$pkgdir"/usr/share/emacs/ -name "*.el.gz" -exec rm {} \;
   chmod g+w "$pkgdir"/var/games
-    # The logic used to install systemd's user service is partially broken
+  # The logic used to install systemd's user service is partially broken
   # under Arch Linux model, because it adds $DESTDIR as prefix to the 
   # final Exec targets. The fix is to hack it with an axe.
   install -Dm644 etc/emacs.service "$pkgdir"/usr/lib/systemd/user/emacs.service
