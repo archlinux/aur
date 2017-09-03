@@ -1,0 +1,23 @@
+pkgbase = virtualfish
+	pkgdesc = A virtualenv wrapper for the Fish shell
+	pkgver = 1.0.5
+	pkgrel = 4
+	url = https://github.com/adambrenecki/virtualfish
+	arch = any
+	license = MIT
+	depends = python-virtualenv
+	depends = python2-virtualenv
+	depends = python-setuptools
+	depends = python2-setuptools
+	options = !emptydirs
+	source = virtualfish::git+https://github.com/adambrenecki/virtualfish.git#tag=1.0.5
+	sha1sums = SKIP
+
+pkgname = python-virtualfish
+	depends = python-virtualenv
+	depends = python-setuptools
+
+pkgname = python2-virtualfish
+	depends = python2-virtualenv
+	depends = python2-setuptools
+
