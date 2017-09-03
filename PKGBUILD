@@ -2,11 +2,11 @@
 pkgname=ruby-semverse
 _gemname=semverse
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An elegant library for representing and comparing SemVer versions and constraints"
 arch=('any')
 url="https://github.com/berkshelf/semverse"
-license=(MIT)
+license=('APACHE')
 depends=('ruby')
 makedepends=('rubygems')
 source=("http://gems.rubyforge.org/gems/${_gemname}-${pkgver}.gem")

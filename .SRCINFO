@@ -1,10 +1,10 @@
 pkgbase = ruby-semverse
 	pkgdesc = An elegant library for representing and comparing SemVer versions and constraints
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/berkshelf/semverse
 	arch = any
-	license = MIT
+	license = APACHE
 	makedepends = rubygems
 	depends = ruby
 	noextract = semverse-2.0.0.gem
