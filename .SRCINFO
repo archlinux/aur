@@ -1,0 +1,17 @@
+pkgbase = madonctl-git
+	pkgdesc = Golang command line interface for the Mastodon API
+	pkgver = r161.ae83b1c
+	pkgrel = 1
+	url = https://github.com/McKael/madonctl
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = fakeroot
+	options = !strip
+	source = madonctl::git+https://github.com/McKael/madonctl.git
+	md5sums = SKIP
+
+pkgname = madonctl-git
+	install = madonctl-git.install
+

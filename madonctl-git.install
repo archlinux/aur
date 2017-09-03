@@ -1,0 +1,7 @@
+post_install() {
+	echo ""
+	echo ":: Generate config, E.g. madonctl -i INSTANCE -L USERNAME -P PASS config"
+	echo "   dump > $HOME/.config/madonctl/madonctl.yaml"
+	echo "   or  madonctl -i INSTANCE oauth2 > $HOME/.config/madonctl/madonctl.yaml"
+	echo "   see https://github.com/McKael/madonctl for more help"
+}
