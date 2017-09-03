@@ -4,7 +4,7 @@
 # Contributor: Andrew Simmons <andrew.simmons@gmail.com>
 
 pkgname=thunar-git
-pkgver=1.6.90
+pkgver=1.6.12.r96.g9d9ed111
 pkgrel=1
 pkgdesc='file manager for xfce'
 arch=('i686' 'x86_64')
