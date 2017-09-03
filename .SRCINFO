@@ -50,7 +50,7 @@ pkgbase = osquery-git
 	depends = unzip
 	options = !strip
 	backup = etc/osquery/osquery.conf
-	source = osquery-git::git+https://github.com/facebook/osquery#commit=e748f38a06151e0269d48748c97edb227835bd88
+	source = osquery-git::git+https://github.com/facebook/osquery#commit=16b40138feb0c4d2f8509bf80227f5fe4de77cd5
 	source = osqueryd.conf.d
 	source = osqueryd.service
 	source = arch-linux.patch
