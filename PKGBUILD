@@ -1,9 +1,10 @@
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: Carsten Haitzler <raster@rasterman.com>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
 
 _pkgname=rage
 pkgname=$_pkgname-git
-pkgver=0.1.4.r132.48d9936
-pkgrel=2
+pkgver=0.3.0.r194.b7be3a0
+pkgrel=1
 pkgdesc="Video Player based on EFL - Development version"
 arch=('i686' 'x86_64')
 url="https://www.enlightenment.org/p.php?p=about/rage"
@@ -12,13 +13,14 @@ depends=('efl')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/apps/$_pkgname.git")
+options=('debug')
+source=("git+https://git.enlightenment.org/apps/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
 
-  local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
+  local v_ver=$(grep version meson.build | head -1 | sed s/version//g | tr ":'," "   " | awk '{print $1}')
 
   printf "$v_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
@@ -28,19 +30,20 @@ build() {
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
-  ./autogen.sh \
-    --prefix=/usr
+  rm -rf build
+  meson --prefix=/usr \
+    . build
 
-  make
+  ninja -C build
 }
 
 package() {
   cd $_pkgname
 
-  make -j1 DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 
 # install text files
-  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" README
 
 # install license files
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
