@@ -1,9 +1,13 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 # Contributor: Micah Chambers <micahc.vt@gmail.com>
 
+# NOTE:
+# In order to build with NCCL support, uncomment the NCCL
+# lines in 'depends' and 'preprare()'.
+
 pkgname=caffe
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -18,8 +22,8 @@ depends=(
     # AUR:
         # required:
             'openblas-lapack'
-        # not required but enabled in build:
-            'nccl'
+        # not required:
+            # 'nccl'
         # python:
             'python-leveldb' 'python-scikit-image' 'python-pydotplus'
     # NOTE:
@@ -42,7 +46,7 @@ prepare() {
     sed -i '/USE_CUDNN/s/^#[[:space:]]//g' Makefile.config
     
     # enable NCCL acceleration switch
-    sed -i '/USE_NCCL/s/^#[[:space:]]//g' Makefile.config
+    # sed -i '/USE_NCCL/s/^#[[:space:]]//g' Makefile.config
     
     # strictly enable I/O dependencies
     sed -i '/USE_OPENCV/s/^#[[:space:]]//;/USE_OPENCV/s/0/1/'   Makefile.config
