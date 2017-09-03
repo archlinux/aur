@@ -2,7 +2,7 @@
 # Contributor: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
 pkgname=dmenu-extended
-pkgver=r201.56b9f6f
+pkgver=r280.4f0395f
 pkgrel=1
 pkgdesc='An extension to dmenu for quickly opening files and folders.'
 url='https://github.com/markjones112358/dmenu-extended'
@@ -21,6 +21,7 @@ pkgver() {
 package() {
   cd "$pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
