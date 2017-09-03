@@ -4,7 +4,7 @@
 
 pkgname=cgoban3
 pkgver=3.5.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Kiseido Go and SGF client"
 url="http://gokgs.com/"
 arch=('any')
@@ -27,7 +27,7 @@ package() {
   cd $srcdir
   install -D -m644 cgoban.jar  "$pkgdir/usr/share/java/cgoban3/cgoban.jar"
   install -D -m644 cgoban3.desktop "$pkgdir/usr/share/applications/cgoban3.desktop"
-  install -D -m644 cgoban3-edit.desktop "$pkgdir/pkg/usr/share/applications/cgoban3-edit.desktop"
+  install -D -m644 cgoban3-edit.desktop "$pkgdir/usr/share/applications/cgoban3-edit.desktop"
   install -D -m644 cgoban3.png "$pkgdir/usr/share/pixmaps/cgoban3.png"
   install -D -m755 cgoban3 "$pkgdir/usr/bin/cgoban3"
 }
