@@ -6,7 +6,7 @@ arch=('x86_64')
 url="http://www.reaper.fm"
 license=('custom')
 depends=('gdk-pixbuf2' 'gtk3' 'jack')
-makedepends=('git' 'gcc' 'make' 'lsb-release')
+makedepends=('git' 'gcc' 'make')
 source=("http://www.landoleet.org/${pkgname}${pkgver//.}_linux_x86_64.tar.xz"
 	"git+http://www-dev.cockos.com/wdl/WDL.git"
 	'https://stash.reaper.fm/30638/reaper-desktop-support.zip')
@@ -42,7 +42,6 @@ package() {
   install -D -m644 reaper.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/reaper.png"
   install -D -m644 reamote.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/reamote.png"
   install -D -m644 application-x-reaper.xml "${pkgdir}/usr/share/mime/packages/application-x-reaper.xml"
-
 }
 
 

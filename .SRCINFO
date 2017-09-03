@@ -8,7 +8,6 @@ pkgbase = reaper
 	makedepends = git
 	makedepends = gcc
 	makedepends = make
-	makedepends = lsb-release
 	depends = gdk-pixbuf2
 	depends = gtk3
 	depends = jack
