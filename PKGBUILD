@@ -4,7 +4,7 @@
 # Contributor: Alex 'AdUser' Z
 pkgname=fusioninventory-agent
 _pkgname="FusionInventory-Agent"
-pkgver=2.3.19
+pkgver=2.3.21
 pkgrel=1
 pkgdesc="An application for keeping track of the hardware and software"
 arch=(any)
@@ -28,7 +28,7 @@ makedepends=(
   'perl-http-server-simple-authen'
   'perl-io-socket-ssl'
   # Provides IO::Capture::Stderr
-  'perl-io-captureoutput'
+  'perl-io-capture'
   'perl-ipc-run'
   'perl-test-compile'
   'perl-test-deep'
@@ -46,6 +46,9 @@ makedepends=(
 
 optdepends=(
 # Global
+  # FIXME: Doesn't build from AUR anymore. Needs a patch:
+  #-use private::MakeUtil;
+  #+require './private/MakeUtil.pm';
   'perl-compress-zlib: message compression'
   'perl-http-daemon: web interface'
   'perl-io-socket-ssl>=1.14: HTTPS support'
@@ -54,8 +57,8 @@ optdepends=(
   'perl-proc-pid-file: daemon mode'
 
 # Inventory
+  # FIXME: Not available in the AUR anymore
   'perl-parse-edid: Inventory EDID data parsing'
-  # FIXME: Doesn't build ATM
   'perl-net-cups>=0.60: Inventory printers detection'
   'perl-datetime'
   'dmidecode: Inventory DMI data retrieval'
@@ -93,14 +96,16 @@ optdepends=(
   'perl-net-write: Wake on Lan ethernet method support'
 )
 checkdepends=(
+    # Needed for perl-http-server-simple to work properly
+    'perl-cgi'
     'perl-http-proxy'
     'perl-http-server-simple'
     # TESTME: is it provided by perl-http-server-simple?
     # 'perl-http-server-simple-authen'
     'perl-io-socket-ssl'
-    # Provided by perl-io-captureoutput
+    # Provided by perl-io-capture
     #'perl-io-capture-sderr'
-    'perl-io-captureoutput'
+    'perl-io-capture'
     'perl-ipc-run'
     'perl-test-compile'
     'perl-test-deep'
@@ -119,7 +124,7 @@ checkdepends=(
 source=("https://github.com/fusioninventory/fusioninventory-agent/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
   'fusioninventory-agent.service'
   'fusioninventory-agent.config')
-md5sums=('4119c8a83604898447c127c7f1a51470'
+md5sums=('0f47d238b82c2ea7c02a6309e1d9ed87'
          'cd0d59b266a41977f51d9e99ecca8cd5'
          '7cce12647a737aadcdd79dee4575aff3')
 
