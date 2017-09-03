@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=DIY Layout Creator
+Comment=Multi platform circuit layout and schematic drawing tool
+Exec=diylc
+Icon=diylc
+Terminal=false
+Type=Application
+Categories=Development;Electronics;
