@@ -2,7 +2,7 @@
 # Contributor: Matthew Ellison <matt+aur@arroyonetworks.com>
 
 pkgname=pybind11
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A lightweight header-only library to create Python bindings of existing C++ code'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('python: to target bindings supporting python 3'
 makedepends=('python' 'python-setuptools')
 checkdepends=('cmake' 'python-pytest' 'python-numpy')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pybind/pybind11/archive/v${pkgver}.tar.gz")
-sha256sums=('f2c6874f1ea5b4ad4ffffe352413f7d2cd1a49f9050940805c2a082348621540')
+sha256sums=('1b0fda17c650c493f5862902e90f426df6751da8c0b58c05983ab009951ed769')
 
 check() {
     cd "${pkgname}-${pkgver}"
