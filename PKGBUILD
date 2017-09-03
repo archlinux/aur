@@ -25,7 +25,9 @@ pkgver() {
 
 prepare() {
   cd FreeDoko
+
   patch -p1 -i ../freedoko-git-archlinux.patch
+  find manual -type f -exec chmod 644 {} \;
 }
 
 build() {
@@ -40,8 +42,6 @@ package() {
 
   make DESTDIR="$pkgdir" install
   install -Dm644 bin/FreeDoko.desktop "$pkgdir"/usr/share/applications/freedoko.desktop
-
-  find "$pkgdir"/usr/share/doc/freedoko/manual -type f -exec chmod 644 {} \;
   rm "$pkgdir"/usr/share/doc/freedoko/manual/{de/Makefile,en/Makefile}
   rm "$pkgdir"/usr/share/doc/freedoko/manual/de/operation/pictures/Regeln/create_screenshots.sh
   rm "$pkgdir"/usr/share/doc/freedoko/{de/Windows.txt,en/Windows,hpux*}
