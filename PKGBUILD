@@ -1,7 +1,7 @@
 
 # Maintainer: Morten Linderud <morten@linderud.pw> 
 pkgname=nerd-fonts-git
-pkgver=r89.6ee6250
+pkgver=r549.c89aeaa7
 pkgrel=1
 pkgdesc="collection of over 20 patched fonts (over 1,700 variations) & fontforge font patcher python script for powerline, devicons, and vim-devicons: includes Droid Sans, Meslo, AnonymousPro, ProFont, Inconsolta, and many more "
 arch=('any')
@@ -26,4 +26,5 @@ package() {
   find . -iname "*.otf" -execdir install -Dm644 {} $pkgdir/usr/share/fonts/OTF/{} \;
   find . -iname "*.pcf.gz" -execdir install -Dm644 {} $pkgdir/usr/share/fonts/misc/{} \;
   find . -iname "*.psf.gz" -execdir install -Dm644 {} $pkgdir/usr/share/kbd/consolefonts/{} \;
+  install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
