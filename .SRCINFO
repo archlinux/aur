@@ -1,0 +1,19 @@
+pkgbase = dablin
+	pkgdesc = plays a DAB/DAB+ audio service – either from a received live transmission or from ETI files.
+	pkgver = 1.5.0.r0.g6c576a8
+	pkgrel = 1
+	url = https://github.com/Opendigitalradio/dablin
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = mpg123
+	depends = gtkmm3
+	depends = faad2
+	depends = fdkaac
+	depends = libfdk-aac
+
+pkgname = dablin-git
+
