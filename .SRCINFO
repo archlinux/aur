@@ -1,6 +1,6 @@
 pkgbase = freedoko-git
 	pkgdesc = Free implementation of the card game Doppelkopf (git version)
-	pkgver = 0.7.16.r246.gea34e6f2
+	pkgver = 0.7.16.r302.g55e43523
 	pkgrel = 1
 	url = http://free-doko.sourceforge.net/en/FreeDoko.html
 	arch = i686
@@ -13,20 +13,12 @@ pkgbase = freedoko-git
 	makedepends = dos2unix
 	depends = gtkmm3
 	depends = freealut
+	provides = freedoko
+	conflicts = freedoko
 	source = git+https://gitlab.com/dknof/FreeDoko.git
 	source = freedoko-git-archlinux.patch
 	sha256sums = SKIP
-	sha256sums = 4d98598cc9b503583d3521342e94959ff73a5f13398326728bfa0004acf8a0f6
+	sha256sums = 2382a910c08388fb148951cae46c0f57fc4df14e529b2536083d739f47d4f2f6
 
 pkgname = freedoko-git
-	optdepends = freedoko-docs-git: HTML manual
-	provides = freedoko
-	conflicts = freedoko
-
-pkgname = freedoko-docs-git
-	pkgdesc = HTML manual for FreeDoko (git version)
-	arch = any
-	depends = 
-	provides = freedoko-docs
-	conflicts = freedoko-docs
 

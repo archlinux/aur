@@ -1,35 +1,21 @@
 diff -ru --no-dereference -x .git FreeDoko-orig/Makefile FreeDoko/Makefile
---- FreeDoko-orig/Makefile	2017-08-24 17:40:29.768795447 +0200
-+++ FreeDoko/Makefile	2017-08-24 17:41:13.635388245 +0200
-@@ -78,8 +78,12 @@
+--- FreeDoko-orig/Makefile	2017-09-03 19:38:04.723372749 +0200
++++ FreeDoko/Makefile	2017-09-03 19:41:11.514300330 +0200
+@@ -136,8 +136,7 @@
  .PHONY: compile
  compile:
  # compile FreeDoko
 -	$(MAKE) Version
 -	$(MAKE) -C src/ $(PROGRAM)
-+	$(MAKE) \
-+	  "USE_UI_TEXT=false" \
-+	  "USE_UI_GTKMM=true" \
-+	  "USE_NETWORK=false" \
-+	  "CPPFLAGS+= -DRELEASE -DVERSION_DESCRIPTION='\"$(OPERATING_SYSTEM_NAME) binary\"' -DPUBLIC_DATA_DIRECTORY_VALUE='\"$(DATA_DIRECTORY)\"' -DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"' -DLOCALE_DIRECTORY='\"$(LOCALE_DIRECTORY)\"'" \
-+	  -C src $(PROGRAM)
++	$(MAKE) -C src release_bin
  	@echo "---"
  	@echo "* Program 'FreeDoko' created"
  
-@@ -281,22 +285,11 @@
+@@ -316,13 +315,11 @@
  ifeq ($(OPERATING_SYSTEM), Linux)
  .PHONY: install
- install :
--	$(MAKE) \
--	  --always-make \
--	  "USE_UI_TEXT=false" \
--	  "USE_UI_GTKMM=true" \
--	  "USE_NETWORK=false" \
--	  "CXXFLAGS=-Wall -Werror -Wno-parentheses -pipe -Os -std=c++14" \
--	  "CPPFLAGS=-DRELEASE -DVERSION_DESCRIPTION='\"$(OPERATING_SYSTEM_NAME) binary\"' -DPUBLIC_DATA_DIRECTORY_VALUE='\"$(DATA_DIRECTORY)\"' -DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"' -DLOCALE_DIRECTORY='\"$(LOCALE_DIRECTORY)\"'" \
--	  -C src \
--	  $(PROGRAM)
--	$(MAKE) -C src strip
+ install : check_install
+-	$(MAKE) -C src release_bin
  #	Copying the program
  	echo "Copying the program"
  	mkdir -p $(DESTDIR)$(BIN_DIRECTORY)
@@ -40,8 +26,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/Makefile FreeDoko/Makefile
  	cd $(DESTDIR)$(BIN_DIRECTORY) && ln -sf FreeDoko freedoko
  #	Copying the data files
  	echo "Copying the data files"
-@@ -315,15 +308,13 @@
- 	a2x -f manpage doc/freedoko.asciidoc
+@@ -342,15 +339,13 @@
+ 	a2x -f manpage doc/freedoko.adoc
  	mkdir -p $(DESTDIR)$(MAN_DIRECTORY)
  	cp doc/freedoko.6 $(DESTDIR)$(MAN_DIRECTORY)/
 -	-chgrp games $(DESTDIR)$(MAN_DIRECTORY)/freedoko.6
@@ -55,12 +41,12 @@ diff -ru --no-dereference -x .git FreeDoko-orig/Makefile FreeDoko/Makefile
 -	-chgrp games $(DESTDIR)$(ICON_DIRECTORY)/FreeDoko.png
 -	chmod 640 $(DESTDIR)$(ICON_DIRECTORY)/FreeDoko.png
 +	chmod 644 $(DESTDIR)$(ICON_DIRECTORY)/FreeDoko.png
+ 	echo "Installation erfolgreich"
  
- .PHONY: uninstall
- uninstall :
+ .PHONY: check_install
 diff -ru --no-dereference -x .git FreeDoko-orig/Makefile.install.directories FreeDoko/Makefile.install.directories
---- FreeDoko-orig/Makefile.install.directories	2017-08-24 17:40:29.768795447 +0200
-+++ FreeDoko/Makefile.install.directories	2017-08-24 17:41:13.642054898 +0200
+--- FreeDoko-orig/Makefile.install.directories	2017-09-03 19:38:04.723372749 +0200
++++ FreeDoko/Makefile.install.directories	2017-09-03 19:38:36.096303160 +0200
 @@ -4,14 +4,14 @@
  # the different directories for the files
  
@@ -108,8 +94,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/Makefile.install.directories Fre
  
  # release
 diff -ru --no-dereference -x .git FreeDoko-orig/bin/FreeDoko.desktop FreeDoko/bin/FreeDoko.desktop
---- FreeDoko-orig/bin/FreeDoko.desktop	2017-08-24 17:40:29.772128776 +0200
-+++ FreeDoko/bin/FreeDoko.desktop	2017-08-24 17:41:13.642054898 +0200
+--- FreeDoko-orig/bin/FreeDoko.desktop	2017-09-03 19:38:04.723372749 +0200
++++ FreeDoko/bin/FreeDoko.desktop	2017-09-03 19:38:46.752832849 +0200
 @@ -6,7 +6,7 @@
  Comment=game of Doppelkopf
  Comment[de]=Doppelkopf-Spiel
@@ -120,8 +106,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/bin/FreeDoko.desktop FreeDoko/bi
  Icon=FreeDoko
  Categories=Application;Game;CardGame;
 diff -ru --no-dereference -x .git FreeDoko-orig/data/Makefile FreeDoko/data/Makefile
---- FreeDoko-orig/data/Makefile	2017-08-24 17:40:32.352125362 +0200
-+++ FreeDoko/data/Makefile	2017-08-24 17:41:13.642054898 +0200
+--- FreeDoko-orig/data/Makefile	2017-09-03 19:38:05.403364021 +0200
++++ FreeDoko/data/Makefile	2017-09-03 19:39:02.862625671 +0200
 @@ -32,8 +32,7 @@
  	for d in cardsets iconsets backgrounds sounds; do \
  	  $(MAKE) -C $$d install; \
@@ -133,8 +119,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/data/Makefile FreeDoko/data/Make
  
  ifeq ($(SHELLTYPE), sh)
 diff -ru --no-dereference -x .git FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefile
---- FreeDoko-orig/doc/Makefile	2017-08-24 17:40:35.312121299 +0200
-+++ FreeDoko/doc/Makefile	2017-08-24 17:41:13.642054898 +0200
+--- FreeDoko-orig/doc/Makefile	2017-09-03 19:38:06.300019179 +0200
++++ FreeDoko/doc/Makefile	2017-09-03 19:39:20.952392881 +0200
 @@ -34,8 +34,7 @@
  	fi
  	cp -a Bugs GPL Roadmap hpux.required_libs-ia64.txt $(DESTDIR)$(HELP_DIRECTORY)/
@@ -146,9 +132,9 @@ diff -ru --no-dereference -x .git FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefi
  endif
  
 diff -ru --no-dereference -x .git FreeDoko-orig/src/Makefile FreeDoko/src/Makefile
---- FreeDoko-orig/src/Makefile	2017-08-24 17:40:38.752116381 +0200
-+++ FreeDoko/src/Makefile	2017-08-24 17:48:59.716407508 +0200
-@@ -232,6 +232,7 @@
+--- FreeDoko-orig/src/Makefile	2017-09-03 19:38:06.980010451 +0200
++++ FreeDoko/src/Makefile	2017-09-03 19:40:00.958544194 +0200
+@@ -260,6 +260,7 @@
  	  $(INCLUDE_ALL) \
  	  $(LIBS_ALL) \
  	  $(CXXFLAGS) \
@@ -156,3 +142,31 @@ diff -ru --no-dereference -x .git FreeDoko-orig/src/Makefile FreeDoko/src/Makefi
  	  -o $@
  	@echo "$(PROGRAM) compiled successfully"
  
+@@ -279,7 +280,6 @@
+ 		-DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"' \
+ 		-DLOCALE_DIRECTORY='\"$(LOCALE_DIRECTORY)\"'" \
+ 	  $(PROGRAM)
+-	$(MAKE) strip
+ 
+ # strip the program from all symbols
+ .PHONY: strip
+diff -ru --no-dereference -x .git FreeDoko-orig/src/Makefile.local.template FreeDoko/src/Makefile.local.template
+--- FreeDoko-orig/src/Makefile.local.template	2017-09-03 19:38:06.980010451 +0200
++++ FreeDoko/src/Makefile.local.template	2017-09-03 19:41:35.870852887 +0200
+@@ -29,11 +29,11 @@
+ #CPPFLAGS += -DMANUAL_DIRECTORY_VALUE='"../manual"'
+ 
+ # a description for the version information
+-ifeq ($(RELEASE), true)
+-CPPFLAGS += -DVERSION_DESCRIPTION='"$(OPERATING_SYSTEM_NAME)"'
+-else
+-CPPFLAGS += -DVERSION_DESCRIPTION='"self compiled"'
+-endif
++#ifeq ($(RELEASE), true)
++#CPPFLAGS += -DVERSION_DESCRIPTION='"$(OPERATING_SYSTEM_NAME)"'
++#else
++#CPPFLAGS += -DVERSION_DESCRIPTION='"self compiled"'
++#endif
+ 
+ # whether to create a segmentation fault (and hence a core dump) when FreeDoko
+ # has found an error
