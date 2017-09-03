@@ -1,7 +1,7 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=fsql
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Search through your filesystem with SQL-esque queries'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=('fsql-git')
 replaces=('fsaql-git')
 provides=("fsql=${pkgver}")
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8dafa4680e6f72e1f0a52de7b0cd683de533db4635569de2a35a7122091325f7')
+sha256sums=('b88110426a60aa2c48f7b4e52e117a899d43d1bba2614346b729234cd4bd9184')
 _gourl="github.com/kshvmdn/${pkgname}/cmd/${pkgname}"
 
 build() {
