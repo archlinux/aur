@@ -8,14 +8,16 @@ pkgver='1.3.0'
 pkgrel='1'
 pkgdesc="AMC est un ensemble d'utilitaires permettant de créer, gérer et corriger automatiquement des questionnaires à choix multiples (QCM)"
 arch=('i686' 'x86_64')
-url='http://home.gna.org/auto-qcm/'
+url='http://auto-multiple-choice.net/'
 license=('GPL')
-depends=('perl-glib-object-introspection'
-'perl-locale-gettext' 'perl-xml-writer' 'perl-xml-simple'
+
+depends=('perl' 'perl-glib-object-introspection'
+ 'perl-locale-gettext' 'perl-xml-writer' 'perl-xml-simple'
  'perl-dbd-sqlite' 'perl-file-mimeinfo' 'ttf-linux-libertine'
   'perl-text-csv' 'perl-dbi' 'perl-archive-zip'
   'graphicsmagick' 'texlive-bin' 'texlive-core'
-  'gtk2-perl' 'netpbm' 'opencv' 'poppler')
+  'gtk2-perl' 'netpbm' 'opencv' 'poppler' 'poppler-glib')
+
 source=('http://download.auto-multiple-choice.net/'$pkgbase'_current_precomp.tar.gz'  'amc.patch')  
 #source=('http://download.gna.org/auto-qcm/'$pkgbase'_'$pkgver'_precomp.tar.gz'  'amc.patch')
 
