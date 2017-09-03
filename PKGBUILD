@@ -4,12 +4,13 @@
 
 pkgname=trackballs
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple game similar to the classical game Marble Madness on the Amiga in the 80's"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://trackballs.sourceforge.net/"
-depends=('guile' 'sdl_ttf' 'sdl_image' 'sdl_mixer' 'mesa')
+install=trackballs.install
+depends=('guile' 'sdl2_ttf' 'sdl2_image' 'sdl2_mixer' 'hicolor-icon-theme')
 source=(https://github.com/trackballs/trackballs/archive/v${pkgver}.tar.gz)
 
 build() {
@@ -18,7 +19,7 @@ build() {
   [ ! -d build ] && mkdir build
   cd build
   cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
-  sed '/GUILE_LIBRARY:FILEPATH/s%libguile.so%libguile-2.2.so%' CMakeCache.txt
+  sed -i '/trackballs\.6/s%/man/%/share/man/%' cmake_install.cmake
 }
 
 package() {

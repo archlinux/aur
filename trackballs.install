@@ -1,0 +1,20 @@
+post_install() {
+  chgrp games /usr/share/trackballs/highScores
+
+  echo "Add user to group games so that game highscore could be saved."
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
+
