@@ -2,7 +2,7 @@
 
 pkgname=hsxkpasswd
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate secure, memorable passwords inspired by XKCD and Password Haystacks"
 arch=('any')
 url="https://www.bartbusschots.ie/s/publications/software/xkpasswd/"
