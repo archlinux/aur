@@ -1,4 +1,4 @@
-# Maintainer: Dicebot <public@dicebot.lv>
+# Maintainer: billypilgrim <billypilgrim@gmx.co.uk>
 pkgname=git-hub
 pkgver=0.11.0
 pkgrel=1
