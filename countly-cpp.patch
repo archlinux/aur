@@ -1,0 +1,12 @@
+diff --git a/lib/Network.cpp b/lib/Network.cpp
+index d1ea11f..175bc1a 100644
+--- a/lib/Network.cpp
++++ b/lib/Network.cpp
+@@ -17,6 +17,7 @@
+ #include "countly/Network.h"
+ #include "countly/Version.h"
+ 
++#include <cstring>
+ #include <sstream>
+ #include <iomanip>
+ #include <unistd.h>
