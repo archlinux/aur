@@ -7,7 +7,7 @@ url="http://dsmidiwifi.tobw.net/"
 arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('qt5-base' 'alsa-lib')
-source=("https://dsmi.googlecode.com/files/${pkgname}-v${pkgver}.tgz")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/dsmi/${pkgname}-v${pkgver}.tgz")
 md5sums=('e45703b1a37602d6326916d2ce1b404c')
 
 prepare() {
