@@ -2,13 +2,13 @@
 
 pkgname=perl-image-librsvg
 pkgver=0.07
-pkgrel=1
+pkgrel=2
 pkgdesc='This packages the SMBus distribution, containing the Device::SMBus module!'
 _dist=Image-LibRSVG
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
-depends=('perl' 'librsvg' 'zlib')
+depends=('perl' 'librsvg')
 options=('!emptydirs' purge)
 source=("http://search.cpan.org/CPAN/authors/id/T/TO/TOMSON/$_dist-$pkgver.tar.gz"
         "https://rt.cpan.org/Ticket/Attachment/342021/153391/430805.patch"
