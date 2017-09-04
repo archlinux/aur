@@ -1,6 +1,6 @@
 pkgname=terasology
-_version=1.4.0
-_version_postfix=alpha7
+_version=1.5.0
+_version_postfix=alpha8
 pkgver=${_version}${_version_postfix}
 pkgrel=3
 epoch=1
@@ -18,7 +18,7 @@ source=(
 )
 sha512sums=('f94c1ac3d85e4fb91cc47056eeec3648d02be9090252401acb740af8c0580623c7ee57470d9e7317d6b577d613e317b5c16ec014f232ec68bc755e0eba7a975e'
             '737953ab10027100b6bd03ca60a3f1cd4fff503c4c5a1689b3e12ef8df66a3e3347c99d498e48dccc3be8d00e9e37fcab56d5c97bbb81dd310ce757979aa0276'
-            '85b8115d5b5613e7bcc293d02031c6218750671fa7f42f3a2b58964ddb06040a02b1cf8addc7dd7e0d0ab7f9443a90b776a68051052508ab6dbf49c1a771b6b4')
+            '27a25d1cdf71a750ffe009c496c9247f52fa741f6d7b7137335dbc05909c9aea5be209d738dd7cca5af05f893f4c319077bcddfee9bf7e6ddf434073c54278ca')
 
 package() {
     cd "$srcdir"
