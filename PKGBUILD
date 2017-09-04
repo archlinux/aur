@@ -1,8 +1,8 @@
 # Maintainer: Ingo Bürk <admin at airblader dot de>
 
 pkgname=i3-gaps-git
-pkgver=4.13
-pkgrel=2
+pkgver=4.14
+pkgrel=1
 pkgdesc='A fork of i3wm tiling window manager with more features, including gaps'
 arch=('i686' 'x86_64')
 url='https://github.com/Airblader/i3/tree/gaps'
