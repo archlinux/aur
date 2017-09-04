@@ -6,8 +6,8 @@ pkgbase = moonplayer-plugins
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python
-	makedepends = moonplayer
+	depends = moonplayer
+	depends = python
 	source = git://github.com/coslyk/moonplayer-plugins
 	sha512sums = SKIP
 

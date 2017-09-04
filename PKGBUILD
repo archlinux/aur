@@ -7,8 +7,9 @@ pkgdesc="Plugins for Moon Player"
 arch=('any')
 url="https://github.com/coslyk/moonplayer-plugins"
 license=('GPL3')
+depends=('moonplayer' 'python')
+makedepends=('git')
 
-makedepends=('git' 'python' 'moonplayer')
 source=("git://github.com/coslyk/moonplayer-plugins")
 sha512sums=('SKIP')
 
