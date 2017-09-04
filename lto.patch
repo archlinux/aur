@@ -1,0 +1,11 @@
+--- configure
++++ configure
+@@ -6177,7 +6177,7 @@
+   # Among non-ELF, only Windows platforms support the lto-plugin so far.
+   # Build it unless LTO was explicitly disabled.
+   case $target in
+-    *-cygwin* | *-mingw*) build_lto_plugin=$enable_lto ;;
++    *-cygwin* | *-mingw* | *djgpp*) build_lto_plugin=$enable_lto ;;
+     *) ;;
+   esac
+ 
