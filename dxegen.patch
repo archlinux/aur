@@ -6,7 +6,7 @@
        {
 -        fprintf(stderr, "Error: neither DXE_LD_LIBRARY_PATH nor DJDIR are set in environment\n");
 -        exit(1);
-+        libdir = "/usr/i686-pc-msdosdjgpp";
++        libdir = "/usr/i586-pc-msdosdjgpp";
        }
        strcat(command, libdir);
        strcat(command, "/lib");
@@ -17,7 +17,7 @@
    }
    else
 -    libdir = NULL;
-+    libdir = strdup("/usr/i686-pc-msdosdjgpp/lib");
++    libdir = strdup("/usr/i586-pc-msdosdjgpp/lib");
  }
  
  
@@ -28,7 +28,7 @@
 -    strcpy(cmdbuf, "dxe3res -o "TEMP_BASE".c ");
 +    const char *djdir = getenv("DJDIR");
 +    if (!djdir)
-+      djdir = "/usr/i686-pc-msdosdjgpp";
++      djdir = "/usr/i586-pc-msdosdjgpp";
 +    strcpy(cmdbuf, djdir);
 +    strcat(cmdbuf, "/bin/dxe3res -o "TEMP_BASE".c ");
      strcat(cmdbuf, opt.dxefile);
