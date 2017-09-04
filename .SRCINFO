@@ -1,4 +1,4 @@
-pkgbase = djgpp-djcrx
+pkgbase = dosbox-djcrx
 	pkgdesc = Headers and utilities for the dosbox gcc cross-compiler
 	pkgver = 2.05
 	pkgrel = 7
@@ -8,7 +8,7 @@ pkgbase = djgpp-djcrx
 	license = GPL
 	license = LGPL
 	license = custom:djgpp
-	makedepends = djgpp-gcc
+	makedepends = dosbox-gcc
 	depends = glibc
 	depends = gcc-libs
 	options = !buildflags
