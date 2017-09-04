@@ -2,7 +2,7 @@ export RADWARE_HOME=/usr
 
 #   these variables point to directories containing various RadWare files
     export RADWARE_FONT_LOC=$RADWARE_HOME/share/fonts/radware
-     export RADWARE_ICC_LOC=$RADWARE_HOME/share/radware
+     export RADWARE_ICC_LOC=$RADWARE_HOME/share/radware/icc
 export RADWARE_GFONLINE_LOC=$RADWARE_HOME/share/doc/radware
 
 #   this variable specifies whether to ring the bell in RadWare cursor routines

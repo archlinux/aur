@@ -1,7 +1,7 @@
 setenv RADWARE_HOME         /usr
 #   these variables point to directories containing various RadWare files
 setenv RADWARE_FONT_LOC     $RADWARE_HOME/share/fonts/radware
-setenv RADWARE_ICC_LOC      $RADWARE_HOME/share/radware
+setenv RADWARE_ICC_LOC      $RADWARE_HOME/share/radware/icc
 setenv RADWARE_GFONLINE_LOC $RADWARE_HOME/share/doc/radware
 
 #   this variable specifies whether to ring the bell in RadWare cursor routines
