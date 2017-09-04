@@ -1,0 +1,5 @@
+# ignore built package
+*.tar*
+
+# ignore source files
+git-hub/
