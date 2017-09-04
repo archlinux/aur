@@ -1,6 +1,6 @@
 pkgbase = plymouth-kcm
 	pkgdesc = A KCM for configuring Plymouth
-	pkgver = 5.10.4
+	pkgver = 5.10.5
 	pkgrel = 1
 	url = https://cgit.kde.org/plymouth-kcm.git/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = plymouth-kcm
 	depends = kconfigwidgets
 	depends = ki18n
 	depends = kdeclarative
-	source = https://download.kde.org/stable/plasma/5.10.4/plymouth-kcm-5.10.4.tar.xz 
-	sha256sums = dd1e9292b19e9924cbf01ba7029aa93edd21632db8f27f22284e88ffae140b50 
+	source = https://download.kde.org/stable/plasma/5.10.4/plymouth-kcm-5.10.5.tar.xz 
+	sha256sums = 5e1cd096b7b196a7c38abd49da2a13710cc95cd5fdec6c02b6abd7d1b0526e87 
 
 pkgname = plymouth-kcm
 
