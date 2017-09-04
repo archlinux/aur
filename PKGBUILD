@@ -1,7 +1,7 @@
 # Maintainer: Arvedui <arvedui@posteo.de>
 
 pkgname=dreamfall-chapters-hib
-pkgver=r20160723+87b150
+pkgver=r20170825+22bee7
 pkgrel=1
 epoch=2
 pkgdesc="Dreamfall Chapters, humble bundle version"
@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://redthreadgames.com/"
 license=('custom:commercial')
 depends=(glu gtk2)
-makedepends=(unzip)
+makedepends=()
 
 # You need to download the Humble Bundle file manually or you can configure
 # DLAGENTS in makepkg.conf to auto-download.
@@ -21,10 +21,10 @@ makedepends=(unzip)
 #
 # The following is just a fallback to the above to notify the user:
 DLAGENTS+=("hib::/usr/bin/echo %u - This is is not a real URL, you need to download the humble bundle file manually to \"$PWD\" or setup a hib:// DLAGENT. Read this PKGBUILD for more information.")
-source=(hib://Dreamfall_Chapters_Linux-5.3.1.zip
+source=(hib://Dreamfall_Chapters_Linux_2017_08_25.zip
         dreamfallchapters.desktop
         dreamfallchapters)
-md5sums=(87b150ff5bfc9be892257249fc88df15
+md5sums=(22bee7bee25920e5cf7febc4b3c12e21
          1223c964a9d19b4960df9772d5a816e2
          f3d4b06b570eb26be68e84be8ba8d93d)
 
