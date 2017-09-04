@@ -6,6 +6,7 @@ pkgname=libsoup-gnome
 pkgver=2.59.90.1
 pkgrel=1
 _sfx=${pkgver#*.*.}
+_base_version=${pkgver%.$_sfx}
 pkgdesc="Gnome HTTP Library with gnome integration enabled"
 arch=('i686' 'x86_64')
 url="http://live.gnome.org/LibSoup"
@@ -15,7 +16,7 @@ makedepends=('intltool' 'gtk-doc' 'gnome-common' 'vala' 'python')
 provides=('libsoup' 'libsoup-gnome-git')
 conflicts=('libsoup' 'libsoup-gnome-git')
 options=('!libtool')
-source=("https://ftp.gnome.org/pub/GNOME/sources/${src_name}/${pkgver%.$_sfx}/${src_name}-${pkgver}.tar.xz")
+source=("https://ftp.gnome.org/pub/GNOME/sources/${src_name}/${_base_version}/${src_name}-${pkgver}.tar.xz")
 sha256sums=('e0c396be890f6704bd449de3bc3b94c671a87f29063bab445fa9ceaf81e2082e')
 
 build() {
