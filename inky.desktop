@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Inky
+Comment=Editor for ink: inkle's narrative scripting language
+Exec=inky
+Icon=inky
+Terminal=false
+StartupNotify=false
+Categories=Application;Development;TextEditor;
