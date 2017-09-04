@@ -3,7 +3,7 @@
 _pkgbasename=memtest86
 pkgname=$_pkgbasename-efi
 pkgver=7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, thorough, stand alone memory test as an EFI application"
 arch=('i686' 'x86_64')
 url="http://www.memtest86.com"
@@ -21,7 +21,7 @@ source=("$_pkgbasename-$pkgver.iso.tar.gz::http://www.memtest86.com/downloads/$_
 	"memtest86-efi-update.hook"
 	"memtest86-efi-remove.hook")
 md5sums=('1719171a1d84d6b183112568cbdf8d61'
-         '5dc6005ffd904163c40ceb06e68a467b'
+         'd375869c4413b0745b33d2c48e76cc09'
          '6c096df3f55baf3e27c3bd605a418aa2'
          '8b4aa0e2f5d769d902459c8f8d514336'
          '496120c33c2af986933bf33456fa6cf3'

@@ -51,6 +51,7 @@ install() {
 	echo -en "else enter device path manually (like ${CB}/dev/sdXY${CR}): "
 	read choice
 	[[ -n $choice ]] && partition=$choice
+	partnumber=${partition//[^0-9]/}
 
 	# Find ESP mount point
 	esp=$(mount | grep $partition | awk '{print $3}' | tail -n1)
@@ -95,7 +96,7 @@ install() {
 			checkcommand efibootmgr
 			_common_install
 			echo -e "\nAdd a new EFI boot entry..."
-			efibootmgr -c -d ${partition:0:8} -p ${partition:8} -w -L "MemTest86" -l "\EFI\memtest86\memtest$ARCH.efi" # Manage efi entry
+			efibootmgr -c -d ${partition//$partnumber} -p ${partnumber} -w -L "MemTest86" -l "\EFI\memtest86\memtest$ARCH.efi" # Manage efi entry
 		;;
 
 		3) # Install MemTest86 in $esp/EFI/memtest86/ & add a file for GRUB2
