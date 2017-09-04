@@ -83,7 +83,7 @@ source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # gcc cpu optimizatons from graysky and ck; forked by sir_lucjan
-        "https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/4.13/${_gcc_patch}"
+        "https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master/${_gcc_patch}"
         # bfq-mq patch
         "${_bfqpath}/${_bfq_mq_patch}"
         # tentative patches
