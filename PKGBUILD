@@ -2,7 +2,7 @@
 pkgbase="python-anyconfig"
 pkgname=("python-anyconfig" "python2-anyconfig")
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Generic access to configuration files in any formats (to be in the future)'
 url='https://github.com/ssato/python-anyconfig'
 arch=('any')
@@ -19,11 +19,13 @@ build() {
 }
 
 package_python-anyconfig() {
+    depends=('python')
     cd "${srcdir}/${pkgbase}-RELEASE_${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-anyconfig() {
+    depends=('python2')
     cd "${srcdir}/${pkgbase}-RELEASE_${pkgver}"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
     mv "${pkgdir}/usr/bin/anyconfig_cli" "${pkgdir}/usr/bin/anyconfig_cli2"
