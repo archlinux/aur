@@ -2,7 +2,7 @@
 
 pkgname=asn1c-git
 _pkgname=asn1c
-pkgver=r1936.e9050cc9
+pkgver=r2021.c280c804
 pkgrel=1
 pkgdesc="An ASN.1 compiler"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	autoreconf -iv && ./configure 
+	autoreconf -iv && ./configure --prefix=/usr
 	make
 }
 
