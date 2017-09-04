@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get the current resolution
-RESOLUTION=`xrandr | grep \* | awk '{print $1}'`
+RESOLUTION=`xrandr | grep \* | awk '{print $1}' | tr x ,`
 
 # The URL variuabile where we will store the final address to open
 URL=''

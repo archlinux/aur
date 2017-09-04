@@ -15,7 +15,7 @@ source=('chromium-fullscreen.sysuser'
         'aw-snap-reloader-background.js'
         'aw-snap-reloader-manifest.json')
 md5sums=('9e979fbdd1e4a5a04fd0e91ce6a9a7be'
-         'e4d43f727e6948c3f1f6fe868432af36'
+         '857a60ed5fdf55a8c63e1d4dc854fcab'
          'c700c36f4ea3e353c6d49df823561fc4'
          'f543ec018edbaf5533e6bddd5068ff54'
          'a2e49410d550e79ac9c0037121522387'
