@@ -1,30 +1,28 @@
 pkgbase = amule-git
 	pkgdesc = Client for the eD2k and Kad networks
-	pkgver = 2.3.2.r35.047a55c93
+	pkgver = 2.3.2.r49.dc0f6c6f7
 	pkgrel = 1
 	url = http://amule.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = autoconf
+	makedepends = automake
 	makedepends = boost
 	makedepends = git
+	makedepends = pkg-config
 	depends = boost-libs
 	depends = crypto++
-	depends = gd
 	depends = geoip
 	depends = libupnp
-	depends = wxgtk
+	depends = wxgtk2
 	conflicts = amule
 	source = git+https://github.com/amule-project/amule.git
-	source = https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/configure_ignore_gdlib-config_garbage.diff
 	source = https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/use_xdg-open_as_preview_default.diff
 	source = https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/version_check.diff
-	source = https://raw.githubusercontent.com/pld-linux/aMule/master/aMule-cas-datadir.patch
 	sha256sums = SKIP
-	sha256sums = 594a667bac53d3c881523c8c1a49d622a0752d84e0601aef062a586493ba998e
 	sha256sums = 902f8f719c1c02335880621717f23c683da8edbb31add75d3e1267b190e03b9c
 	sha256sums = 7bf39a64a723ab3e55ccfef93df2ec9cdd8108e56aa0733a4412755931cb3244
-	sha256sums = 897ac890b5f1b8cb4b53fded313cb2779bed5d39041a320885dd9dbe30878879
 
 pkgname = amule-git
 
