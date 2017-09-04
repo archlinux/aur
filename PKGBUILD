@@ -1,13 +1,13 @@
 pkgname=terasology-devbuild
-pkgver=2043
-_omega_ver=801
+pkgver=2050
+_omega_ver=808
 pkgrel=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft! (Last succesful development build)"
 arch=('x86_64' 'i686')
 license=('Apache')
 url="http://terasology.org"
 options=('!strip')
-depends=('java-environment-openjdk=8' 'openal' 'libxcursor' 'libxxf86vm' 'libxrandr')
+depends=('java-environment-openjdk=8' 'openal' 'libxcursor' 'libxxf86vm' 'libxrandr' 'lwjgl2')
 makedepends=('unzip')
 source=(
     "$pkgname"
@@ -16,7 +16,7 @@ source=(
 )
 sha512sums=('9d2562e769aee38a09de315f9900754827ec2720400e10553f0cbf78c0834bf325220c42c249f17999bc764aa4a0c12aa7abe162d43ea5327672c2fa88fa2669'
             '9ecacc34ae0a17cfe1031f32ee4f25e4e840bed072445ac0a8ffc1b2a012a7b60fed739fcc2ceab8083293a31e7409406bc190c4295022df82815f48c5541d19'
-            '723142519b3291c7a5a5335a05299f2028dfb2600d71c8d720711a12d5ad7209ba89cff9aacd78034b7b83eac67269013c3499f6c538069f08f08f503ac9c526')
+            '5848c289e0b23940b9a4f18ed117cb4ffd7d72657dcdb263c87256460980169f806ec374f21aecbf25129413e7a839597cbc32ece08e99edd0ff723013b9aa66')
 
 package() {
     cd "$srcdir"
@@ -39,15 +39,16 @@ package() {
     popd
     rm -r org
 
-    #remove files/dirs for other operating systems
+    #remove files/dirs for other operating systems and native libraries
     rm run_macosx.command Terasology.{x86,x64}.exe
-    rm -r natives/{macosx,windows}
-    rm natives/linux/libopenal*
-    if [[ "$CARCH" == 'x86_64' ]]; then
-        rm natives/linux/lib{jinput-linux,lwjgl}.so
-    elif [[ "$CARCH" == 'i686' ]]; then
-        rm natives/linux/lib{jinput-linux,lwjgl}64.so
-    fi
+    rm -r natives
+    mkdir -p natives/linux
+
+    #link the lwjgl libraries
+    ln -sf /usr/share/lwjgl2/native/linux/liblwjgl64.so natives/linux
+    ln -sf /usr/share/lwjgl2/native/linux/libjinput-linux64.so natives/linux
+    ln -sf /usr/share/lwjgl2/native/linux/liblwjgl.so natives/linux
+    ln -sf /usr/share/lwjgl2/native/linux/libjinput-linux.so natives/linux
 
     cp -ra "$srcdir" "${pkgdir}/usr/share/${pkgname}"
 
