@@ -67,7 +67,7 @@ build() {
   make all
 }
 
-package_djgpp-gcc() {
+package_dosbox-gcc() {
   make -C gcc-build-$_target DESTDIR="$pkgdir/" install
 
   # strip manually, djgpp libs spew errors otherwise
