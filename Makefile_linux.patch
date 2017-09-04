@@ -14,7 +14,7 @@
  #------------------------------------------------------------------------
  
 -             CC = cc
-+             CC = gcc
++             CC = gcc -fPIC
               FC = $(CC)
           CFLAGS = -O2 -Wall -I$(MOTIF_TOP)/include -DHAVE_GNU_READLINE
  

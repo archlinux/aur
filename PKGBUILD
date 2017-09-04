@@ -4,7 +4,7 @@ pkgname=radware
 _pkgname=rw
 pkgver=05.3
 _pkgver=05
-pkgrel=3
+pkgrel=4
 pkgdesc="Software package for interactive graphical analysis of gamma-ray coincidence data"
 url="http://radware.phy.ornl.gov/"
 arch=('i686' 'x86_64')
@@ -20,29 +20,33 @@ source=("ftp://radware.phy.ornl.gov/pub/radware/unix/${_pkgname}${pkgver}.tgz"
 	'radware.csh'
 	'radware.sh')
 md5sums=('d1d57e776d99d062e277041608503f1e'
-         'df4e15fd94b19a5e9c651d1f61e19da1'
+         '1681b27aae2d32be42f5a08b5417aa3e'
          '3e327212567c98ee2b9673d87ec935ee'
          '399db4e1a49b3f7051688d71272d02e0'
          'ea98474aada4f5f597c084625fafbe76'
          'b39293fc8f944638a340eb4a5ae4eda8')
 
+prepare() {
+  cd "${srcdir}/${_pkgname}${_pkgver}/src"
+
+  patch -Np3 < ${srcdir}/Makefile_linux.patch
+  cp Makefile.linux Makefile
+
+  patch -Np3 < ${srcdir}/Makefile_install_ucb.patch
+  patch -Np3 < ${srcdir}/Makefile_common.patch
+}
+
 build() {
-	cd "${srcdir}/${_pkgname}${_pkgver}/src"
+  cd "${srcdir}/${_pkgname}${_pkgver}/src"
 
-	patch -Np3 < ${srcdir}/Makefile_linux.patch
-	cp Makefile.linux Makefile
-
-	patch -Np3 < ${srcdir}/Makefile_install_ucb.patch
-	patch -Np3 < ${srcdir}/Makefile_common.patch
-
-	make all
+  make all
 }
 
 package() {
-	  cd "${srcdir}/${_pkgname}${_pkgver}/src"
-	  make DESTINATION_DIR="${pkgdir}/usr" install
+  cd "${srcdir}/${_pkgname}${_pkgver}/src"
+  make DESTINATION_DIR="${pkgdir}/usr" install
 
-	  install -m755 -d ${pkgdir}/etc/profile.d
-	  install -m755 ${srcdir}/radware.* ${pkgdir}/etc/profile.d/
-	  rm ${pkgdir}/usr/.radware*
+  install -m755 -d ${pkgdir}/etc/profile.d
+  install -m755 ${srcdir}/radware.* ${pkgdir}/etc/profile.d/
+  rm ${pkgdir}/usr/.radware*
 }
