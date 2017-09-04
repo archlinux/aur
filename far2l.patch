@@ -35,15 +35,3 @@ index 7213211..b894d7d 100644
 +    install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/DE/icons" DESTINATION "${CMAKE_INSTALL_PREFIX}/share" USE_SOURCE_PERMISSIONS FILES_MATCHING PATTERN "*")
 +    install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/DE/far2l.desktop" DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications")
  endif()
-diff --git a/WinPort/src/APIClipboard.cpp b/WinPort/src/APIClipboard.cpp
-index 3c668cd..041010c 100644
---- a/WinPort/src/APIClipboard.cpp
-+++ b/WinPort/src/APIClipboard.cpp
-@@ -12,6 +12,7 @@
- #include <iostream>
- #include <fstream>
- #include <mutex>
-+#include <functional>
- #include <condition_variable>
- #include <wx/wx.h>
- #include <wx/display.h>

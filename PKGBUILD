@@ -2,17 +2,17 @@
 
 pkgname=far2l-git
 pkgver=r800.de1a692
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
 arch=('i686' 'x86_64')
 license=('GPL2')
 source=('git+https://github.com/elfmz/far2l'
-        'git+https://github.com/cycleg/far-gvfs'
+        'git+https://github.com/cycleg/far-gvfs#commit=7ea1a87fbe3e0c6cc42a4c2e7067d04758587894'
         'far2l.patch')
 sha256sums=('SKIP'
             'SKIP'
-            '4f48df42b7c503e26f911b9d5523fc79706dbc8bd40822d9bacd50dc3be5d583'
+            '447ba9d12883642c19510ef2dfd5091a78a80886939640009cad1710f5da19c0'
            )
 makedepends=('git' 'cmake')
 depends=('wxgtk' 'gtkmm3' 'openssl-1.0')
