@@ -1,6 +1,6 @@
 pkgbase = exodus-eden
 	pkgdesc = An unsupported, advanced version of Exodus
-	pkgver = 1.33.1
+	pkgver = 1.33.2
 	pkgrel = 1
 	url = https://exodus.io/eden
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = exodus-eden
 	depends = gtk2
 	depends = nss
 	depends = libxss
-	source = https://exodusbin.azureedge.net/releases/exodus-eden-linux-x64-1.33.1.zip
+	source = https://exodusbin.azureedge.net/releases/exodus-eden-linux-x64-1.33.2.zip
 	source = http://marceloneil.com/exodus-icons/eden-icons.zip
 	source = exodus-eden.desktop
-	sha256sums = e8e706d1c39b6eb398b95bc2e863ab838805b19eb3b92d4270d74855f4036256
+	sha256sums = 0feec8e7aff7af318383fb8ce344d3a21549d5e57f0da2e3ede30150afc2faed
 	sha256sums = 531447b0b49a27a4169fcd2639fa793135acf2776b05f52f36557b384bace7cb
 	sha256sums = 820c6de206ffdd5882f26a8b7d5a2720d0b2df6f9fe62d31aa3a9aaefb9b6322
 
