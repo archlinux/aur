@@ -1,7 +1,7 @@
 pkgbase = vcat
 	pkgdesc = Outputs a video on a 256-color enabled terminal with UTF-8 locale
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/libcg/vcat
 	arch = i686
 	arch = x86_64

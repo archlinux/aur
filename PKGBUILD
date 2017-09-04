@@ -2,7 +2,7 @@
 
 pkgname=vcat
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Outputs a video on a 256-color enabled terminal with UTF-8 locale"
 arch=('i686' 'x86_64')
 url="https://github.com/libcg/vcat"
@@ -16,7 +16,7 @@ sha256sums=('ae948e9c43801d8c1d3c0f12d023d38d082b1525debbb92b400a59d7c893b3bb'
 prepare() {
   cd $pkgname-$pkgver
   patch -p1 -i ../vcat-ffmpeg.patch
-  sed -i 's|CCFLAGS=|CCFLAGS=$(CFLAGS) |' Makefile
+  sed -i 's|CCFLAGS=|CCFLAGS=$(CPPFLAGS) $(CFLAGS) |' Makefile
   sed -i 's|LDFLAGS=|LDFLAGS+=|' Makefile
   head -n 28 vcat.c > LICENSE
 }
