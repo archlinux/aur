@@ -1,0 +1,15 @@
+pkgbase = neptune-cli
+	pkgdesc = Neptune client library
+	pkgver = 2.0.22
+	pkgrel = 1
+	url = https://neptune.ml/
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-virtualenv
+	depends = python-pip
+	source = LICENSE
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+
+pkgname = neptune-cli
+
