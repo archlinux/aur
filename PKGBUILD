@@ -29,7 +29,7 @@ check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Skip tests if pyicu is installed, since it makes tests fail:
-  python -c "import icu" 2> /dev/null || return
+  python -c "import icu" 2> /dev/null && return
 
   export PYTHONPATH="${PYTHONPATH%:}:${PWD}"
   export TZ=UTC
