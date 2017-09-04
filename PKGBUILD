@@ -2,8 +2,8 @@
 
 pkgname=buildah-git
 _pkgname=buildah
-pkgver=r233.21b1a93
-pkgrel=2
+pkgver=r293.9327431
+pkgrel=1
 pkgdesc="A tool which facilitates building OCI images"
 arch=('x86_64' 'i686')
 url="https://github.com/projectatomic/buildah"
@@ -35,7 +35,7 @@ build() {
 package() {
   cd "${_pkgname}"
   make -C "${srcdir}/${_pkgname}" DESTDIR="$pkgdir" PREFIX=usr install
-  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
