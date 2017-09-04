@@ -1,5 +1,5 @@
 pkgname=lib32-simplescreenrecorder-git
-pkgver=0.0.0
+pkgver=0.3.8.r90.g50fced7
 pkgrel=1
 pkgdesc="OpenGL recording of 32-bit applications with SimpleScreenRecorder. (Git version)"
 arch=("x86_64")
@@ -8,10 +8,9 @@ license=("GPL3")
 source=("git+https://github.com/MaartenBaert/ssr.git")
 md5sums=("SKIP")
 depends=("lib32-libgl" "lib32-glu" "lib32-libx11" "lib32-libxfixes" "lib32-libxext")
-makedepends=("git" "gcc-multilib")
+makedepends=("git" "cmake" "gcc-multilib")
 conflicts=("lib32-simplescreenrecorder")
 provides=("lib32-simplescreenrecorder")
-options=("!libtool")
 install=lib32-simplescreenrecorder-git.install
 
 pkgver() {
@@ -24,7 +23,7 @@ build() {
 	export CC="gcc -m32"
 	export CXX="g++ -m32"
 	export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-	./configure --prefix=/usr --libdir=/usr/lib32 --disable-ssrprogram --disable-assert
+	cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="/usr/lib32" -DCMAKE_BUILD_TYPE=Release  -DWITH_SIMPLESCREENRECORDER=FALSE .
 	make
 }
 package() {
