@@ -15,7 +15,7 @@ license=('GPL' 'LGPL' 'FDL' 'custom')
 groups=('djgpp')
 depends=('zlib' 'libmpc' 'dosbox-binutils')
 makedepends=('unzip')
-optdepends=('djgpp-djcrx: headers and utilities')
+optdepends=('dosbox-djcrx: headers and utilities')
 options=('!strip' 'staticlibs' '!emptydirs')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
