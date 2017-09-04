@@ -76,7 +76,7 @@ _mergepath="${_bfqpath}/merges/${pkgver}"
 _mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance-V4"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
-_bfq_mq_patch='4.12-bfq-mq-20170904.patch'
+_bfq_mq_patch='4.13-bfq-mq-20170904.patch'
 source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
