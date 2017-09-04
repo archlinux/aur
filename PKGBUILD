@@ -2,7 +2,7 @@
 _pkgname=gwankei
 pkgname=$_pkgname-git
 pkgver=r73.de43afb
-pkgrel=2
+pkgrel=3
 pkgdesc='An implementation of Chinese board game Junqi, or Luzhanqi.'
 arch=('i686' 'x86_64')
 url='https://github.com/910JQK/GwanKei'
@@ -33,6 +33,10 @@ package() {
 	cp -r Sound "${pkgdir}/usr/share/gwankei/Sound"
 	chmod 644 -R "${pkgdir}/usr/share/gwankei/Locale"
 	chmod 644 -R "${pkgdir}/usr/share/gwankei/Sound"
+	chmod 755 "${pkgdir}/usr/share/gwankei/Locale"
+	chmod 755 "${pkgdir}/usr/share/gwankei/Locale/"*/
+	chmod 755 "${pkgdir}/usr/share/gwankei/Sound"
+	chmod 755 "${pkgdir}/usr/share/gwankei/Sound/"*/
 	install -m755 GwanKei "${pkgdir}/usr/share/gwankei/"
 	install -m644 board.html "${pkgdir}/usr/share/gwankei"
 	install -m644 frontend.js "${pkgdir}/usr/share/gwankei"
