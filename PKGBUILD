@@ -1,14 +1,14 @@
 # Maintainer: Morten Linderud <morten@linderud.pw>  
 pkgname="molecule"
 pkgver=2.0.0.rc12
-pkgrel=4
+pkgrel=5
 pkgdesc='Molecule aids in the development and testing of Ansible roles.'
 url='https://github.com/metacloud/molecule/tree/2.0.0.rc12'
 arch=('any')
 license=('MIT')
 makedepends=('python' 'python-setuptools')
 depends=('ansible-lint' 'python-ansible' 'python-colorama' 'flake8'
-         'python-jinja' 'python-marshmallow' 'python-gilt'
+         'python-jinja' 'python-marshmallow' 'python-gilt' 'python'
          'python-tabulate' 'python-pbr' 'python-pexpect' 'python-cookiecutter'
          'python-yaml' 'python-sh' 'python-click' 'yamllint' 'python-anyconfig')
 optdepends=('python-docker: docker driver'
@@ -26,6 +26,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ft=sh ts=2 sw=2 et:
