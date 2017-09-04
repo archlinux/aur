@@ -1,0 +1,14 @@
+pkgbase = spaceship-zsh-theme-git
+	pkgdesc = An “Oh My ZSH!” theme for Astronauts.
+	pkgver = LATEST
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	depends = oh-my-zsh-git
+	source = git+https://github.com/denysdovhan/spaceship-zsh-theme.git
+	sha256sums = SKIP
+
+pkgname = spaceship-zsh-theme-git
+
