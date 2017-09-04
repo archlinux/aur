@@ -5,6 +5,7 @@ pkgbase = sygnm-git
 	url = https://sygnm.org/
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	license = AGPL3
 	makedepends = boost
 	makedepends = cmake
