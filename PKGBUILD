@@ -11,6 +11,7 @@ license=('GPL3')
 depends=('openssl' 'libev' 'libsodium' 'udns' 'pcre')
 makedepends=('git' 'gcc' 'autoconf' 'libtool' 'automake' 'make' 'zlib' 'openssl' 'asciidoc' 'xmlto')
 options=('docs' '!strip')
+install=shadowsocksr-libev.install
 source=(
         'git+https://github.com/shadowsocksr-backup/shadowsocksr-libev.git'
         shadowsocksr-libev-redir@.service

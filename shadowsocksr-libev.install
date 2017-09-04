@@ -1,0 +1,3 @@
+post_install() {
+	echo "You need to relogin in order for the SSR binaries to appear in your PATH"
+}

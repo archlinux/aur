@@ -3,6 +3,7 @@ pkgbase = shadowsocksr-libev-git
 	pkgver = 2.4.1.368.ge2373d7
 	pkgrel = 1
 	url = https://github.com/shadowsocksr/shadowsocksr-libev
+	install = shadowsocksr-libev.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
