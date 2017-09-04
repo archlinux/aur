@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libtasn1
-pkgver=4.10
-pkgrel=2
+pkgver=4.12
+pkgrel=1
 pkgdesc="The ASN.1 library used in GNUTLS (mingw-w64)"
 arch=(any)
 url="http://www.gnu.org/software/libtasn1"
@@ -10,8 +10,9 @@ depends=(mingw-w64-crt)
 options=(staticlibs !strip !buildflags)
 source=("http://ftp.gnu.org/gnu/libtasn1/libtasn1-${pkgver}.tar.gz"
         0001-Rename-gnulib-symbols.patch)
-md5sums=('f4faffdf63969d0e4e6df43b9679e8e5'
+md5sums=('5c724bd1f73aaf4a311833e1cd297b21'
          'b966fbc667038870bd472b38b086e79f')
+
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
