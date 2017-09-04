@@ -1,7 +1,7 @@
 # Maintainer: Jesse Bryan <jesse@winneon.moe>
 pkgname=gsu-git
 _pkgname=gsu
-pkgver=1.0.0.r5.gc5caaa5
+pkgver=20170904.0b522da
 pkgrel=1
 pkgdesc="A general screenshot and upload utility for images, video, and gifs."
 arch=("any")
@@ -19,7 +19,7 @@ sha256sums=("SKIP")
 
 pkgver() {
     cd "${pkgname}"
-    git describe --long --tags | sed -r "s/([^-]*-g)/r\1/;s/-/./g"
+    git log -1 --format="%cd.%h" --date=short | tr -d -
 }
 
 package() {
