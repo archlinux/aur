@@ -3,26 +3,24 @@
 pkgbase=python-flask-migrate
 _pkgbase="Flask-Migrate"
 pkgname=(python-flask-migrate)
-pkgver=2.0.3
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='SQLAlchemy database migrations for Flask applications using Alembic..'
 arch=(any)
 url='https://github.com/miguelgrinberg/Flask-Migrate/'
 license=(MIT)
 makedepends=(
-  'python-flask'
-  'python-flask-script'
-  'python-flask-sqlalchemy'
   'python-setuptools'
 )
 depends=(
+  'python-alembic'
   'python-flask'
   'python-flask-script'
   'python-flask-sqlalchemy'
 )
 options=(!emptydirs)
 source=("https://github.com/miguelgrinberg/${_pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('78db13d0afa9410fa9d41cab584358b4ac13160ccc1ac02e10ba11bdb0a8b6ff')
+sha256sums=('883854c9c811746c1d989f4e707e3815d7d3e43316d6cee832e53897737a90e5')
 
 package_python-flask-migrate() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
