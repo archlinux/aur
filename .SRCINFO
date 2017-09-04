@@ -1,0 +1,21 @@
+pkgbase = python-tree-format-git
+	pkgdesc = Python library for printing trees on the console.
+	pkgver = r25.c8c4544
+	pkgrel = 1
+	url = https://github.com/jml/tree-format
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	conflicts = python-tree-format
+	conflicts = python2-tree-format
+	replaces = python-tree-format
+	replaces = python2-tree-format
+	options = !emptydirs
+	source = tree-format::git://github.com/jml/tree-format.git
+	sha256sums = SKIP
+
+pkgname = python-tree-format-git
+
+pkgname = python2-tree-format-git
+
