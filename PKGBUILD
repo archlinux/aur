@@ -1,9 +1,10 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
+# Contributor: Benjamin Asbach <archlinux-aur.lxd@impl.it>
 
 pkgname=lxd-lts
 _gitpkgname=lxd
 pkgver=2.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC. (LTS version)"
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
@@ -34,9 +35,9 @@ source=(
 md5sums=('3f05115ce446689bb43226c89d32cc1f'
          'b1780c0e01e404895e35ac277aa597c4'
          'b1fd16933c1b24aaa9ccc8f5a0e6478c'
-         'f2bc527eabb1fdba810b0393ee41edd4'
+         '15ae1bc51684d611bded2839ca55a37b'
          '52c641ea0ba5477f5c1a1b857c03dda9'
-         'c9b5c98497e4ddc47d0c078b5b500f93'
+         'c86b8c441ab014340186acc7799096f2'
          '427926fddb1537f7a65d0a7274106df5')
 
 _gourl=github.com/lxc/lxd
@@ -56,6 +57,7 @@ package() {
 
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/lib/lxd/"
+  mkdir -p "$pkgdir/usr/share/bash-completion/completions"
 
   install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
   mv "$pkgdir/usr/bin/lxd-bridge-proxy" "$pkgdir/usr/lib/lxd/"
@@ -73,6 +75,9 @@ package() {
   install -D -m644 "${srcdir}/lxd.service" \
       "${pkgdir}/usr/lib/systemd/system/lxd.service"
 
+
+  # Bash completions
+  install -p -m755 "$srcdir/$pkgname-$pkgname-$pkgver/config/bash/lxd-client" "$pkgdir/usr/share/bash-completion/completions/lxc"
 
   # Example configuration files.
   mkdir -p "$pkgdir/usr/share/lxd/"
