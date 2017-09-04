@@ -1,6 +1,6 @@
 pkgbase = rcf
 	pkgdesc = Red Crucible®: Firestorm - Free to play online FPS
-	pkgver = 20170904
+	pkgver = 201709040548
 	pkgrel = 1
 	url = http://www.rocketeergames.com/site/rcf/
 	arch = i686

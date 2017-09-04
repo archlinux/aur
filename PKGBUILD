@@ -3,7 +3,7 @@
 # Note - rocketeergames does not provide any log file or any website where we can automatically detect version number changes (the only solution would be decompile program), so we use date as a versions & monitor remote file size for changes (AUR package gets outdated quite often).
 
 pkgname=rcf
-pkgver=20170904
+pkgver=201709040548
 _filesize=113344321
 pkgrel=1
 pkgdesc="Red Crucible®: Firestorm - Free to play online FPS"
