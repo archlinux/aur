@@ -1,0 +1,15 @@
+pkgbase = mkl-dnn
+	pkgdesc = Intel® Math Kernel Library for Deep Neural Networks
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/01org/mkl-dnn
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = cmake>=2.8
+	makedepends = doxygen>=1.8.5
+	source = git://github.com/01org/mkl-dnn.git
+	sha1sums = SKIP
+
+pkgname = mkl-dnn
+
