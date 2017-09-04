@@ -1,0 +1,21 @@
+pkgbase = gsu-git
+	pkgdesc = A general screenshot and upload utility for images, video, and gifs.
+	pkgver = 1.0.0.r5.gc5caaa5
+	pkgrel = 1
+	url = https://github.com/winneon/gsu
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = maim
+	depends = ffmpeg
+	depends = curl
+	depends = jq
+	depends = bash
+	optdepends = xclip: Copy URLs to clipboard after upload
+	provides = gsu
+	conflicts = gsu
+	source = gsu-git::git+https://github.com/winneon/gsu.git
+	sha256sums = SKIP
+
+pkgname = gsu-git
+
