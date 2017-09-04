@@ -5,8 +5,8 @@ pkgver=r12.acace51
 pkgrel=1
 pkgdesc="Btrfs: find compression type/ratio on a file or set of files"
 arch=('any')
-url="https://github.com/Nefelim4ag/Ananicy.git"
-license=('GPL3')
+url="https://github.com/kilobyte/compsize"
+#license=('GPL2')
 #depends=('systemd' 'bash' 'schedtool')
 makedepends=('gcc' 'git')
 source=("$pkgname"::'git://github.com/kilobyte/compsize.git#branch=master')
