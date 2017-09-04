@@ -1,6 +1,6 @@
 pkgbase = qgo-git
 	pkgdesc = Go Client based on Qt 5
-	pkgver = 20160623.1e65b0c
+	pkgver = 20170712.971e2a4
 	pkgrel = 1
 	url = https://github.com/pzorin/qgo
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = qgo-git
 	provides = qgo
 	conflicts = qgo
 	source = git://github.com/pzorin/qgo.git
-	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = qgo-git
 

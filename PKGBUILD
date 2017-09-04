@@ -2,7 +2,7 @@
 
 pkgname=qgo-git
 _pkgname=qgo
-pkgver=20160623.1e65b0c
+pkgver=20170712.971e2a4
 pkgrel=1
 pkgdesc='Go Client based on Qt 5'
 url='https://github.com/pzorin/qgo'
