@@ -1,9 +1,8 @@
 # Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
 
-_pkgname=demlo
-pkgname=$_pkgname
-pkgver=3.6.1
-pkgrel=2
+pkgname=demlo
+pkgver=3.6.3
+pkgrel=1
 pkgdesc="A dynamic and extensible music library organizer"
 arch=("i686" "x86_64")
 url="http://ambrevar.bitbucket.io/demlo/"
@@ -11,16 +10,16 @@ license=("MIT")
 depends=("ffmpeg" "lua" "taglib")
 makedepends=("go" "git")
 optdepends=("chromaprint: Internet tagging")
-source=("$_pkgname-$pkgver.tar.gz::https://bitbucket.org/ambrevar/$_pkgname/get/v$pkgver.tar.gz")
-md5sums=('f896145d1e864a6f1213cc9fdc0bc112')
-_gourl="bitbucket.org/ambrevar/$_pkgname"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ambrevar/$pkgname/archive/v$pkgver.tar.gz")
+md5sums=('40c7b936b0cf036a0c12ba46807631bf')
+_gourl="github.com/ambrevar/$pkgname"
 
 prepare() {
 	## Move source extracted folder to its proper location in the GOPATH.
 	cd "$srcdir"
 	rm -rfv "src/$_gourl"
-	mkdir -p "src/bitbucket.org/ambrevar"
-	mv "ambrevar-$_pkgname-43ff65e2c498" "src/$_gourl"
+	mkdir -p "src/github.com/ambrevar"
+	mv "$pkgname-$pkgver" "src/$_gourl"
 }
 
 build() {
@@ -43,17 +42,17 @@ check() {
 
 package() {
 	cd "$srcdir"
-	install -Dm755 "bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-	install -Dm644 "src/$_gourl/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm755 "bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 "src/$_gourl/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	install -Dm644 "src/$_gourl/${_pkgname}rc" "$pkgdir/usr/share/$_pkgname/${_pkgname}rc"
+	install -Dm644 "src/$_gourl/${pkgname}rc" "$pkgdir/usr/share/$pkgname/${pkgname}rc"
 
 	cd "src/$_gourl"
 	for i in scripts/*; do
-		install -Dm644 "$i" "$pkgdir/usr/share/$_pkgname/$i"
+		install -Dm644 "$i" "$pkgdir/usr/share/$pkgname/$i"
 	done
 	for i in actions/*; do
-		install -Dm644 "$i" "$pkgdir/usr/share/$_pkgname/$i"
+		install -Dm644 "$i" "$pkgdir/usr/share/$pkgname/$i"
 	done
 
 	install -Dm644 completion/demlo.fish "$pkgdir/usr/share/fish/vendor_completions.d/demlo.fish"
