@@ -5,7 +5,7 @@
 pkgname=dosbox-binutils
 pkgver=2.29
 pkgrel=1
-pkgdesc="Binutils for the gcc dosbox cross-compiler"
+pkgdesc="binutils for the dosbox djgpp cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils"
 license=('GPL')
