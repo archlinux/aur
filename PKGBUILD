@@ -26,14 +26,13 @@ package() {
     mkdir "./usr"
     mkdir "./usr/bin"
    
-    echo "
-    #!/usr/bin/env bash
+    echo "#!/usr/bin/env bash
     source /opt/neptune-cli/bin/activate
     function finish {
         deactivate
     }   
     trap finish EXIT
-    neptune \$1" > ./usr/bin/neptune
+    /opt/neptune-cli/bin/neptune \$1" > ./usr/bin/neptune
 
     chmod +x ./usr/bin/neptune
 }
