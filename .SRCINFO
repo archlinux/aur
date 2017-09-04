@@ -1,7 +1,7 @@
 pkgbase = net-snmp-lmsensors
 	pkgdesc = A suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6, with lm-sensors support
 	pkgver = 5.7.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.net-snmp.org/
 	arch = i686
 	arch = x86_64
