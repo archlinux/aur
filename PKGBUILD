@@ -8,43 +8,41 @@
 # Contributor: Ignas Anikevicius <anikevicius ð gmail đ com>
 
 pkgname=tp_smapi-lts
-_pkgname=tp_smapi
-__pkgname=tp-smapi
+_pkgname=tp-smapi
 pkgver=0.42
-_extramodules=/usr/lib/modules/extramodules-4.9-lts
-pkgrel=17
+_extradir=/usr/lib/modules/extramodules-4.9-lts
+pkgrel=18
 pkgdesc="Modules for ThinkPad's SMAPI functionality"
 arch=('i686' 'x86_64')
 url='https://github.com/evgeni/tp_smapi'
 license=('GPL')
 depends=('linux-lts>=4.9.45' 'linux-lts<4.10')
 makedepends=('linux-lts-headers>=4.9.45' 'linux-lts-headers<4.10')
-install="${pkgname}.install"
-source=("https://github.com/evgeni/$_pkgname/archive/$__pkgname/$pkgver.tar.gz")
+install="$pkgname.install"
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/evgeni/${pkgname/-lts/}/archive/$_pkgname/$pkgver.tar.gz")
 md5sums=('6a51d3aa459ad7a6ebfbb8c29527b3ee')
 
 build() {
-  cd "$srcdir/$_pkgname-$__pkgname-$pkgver"
+  cd ${pkgname/-lts/}-$_pkgname-$pkgver
 
-  _kernver=$(< "${_extramodules}/version")
-  make HDAPS=1 KVER="$_kernver" KBASE="/usr/lib/modules/$_kernver"
+  # https://bugs.archlinux.org/task/54975 (kernel has no _GLOBAL_OFFSET_TABLE_):
+  # Clear EXTRA_CFLAGS since it defaults to injecting CFLAGS and -fno-plt breaks the modules
+
+  make HDAPS=1 KVER="$(<$_extradir/version)" EXTRA_CFLAGS=
 }
 
 package() {
-  _kernver=$(< "${_extramodules}/version")
+  cd ${pkgname/-lts/}-$_pkgname-$pkgver
 
-  make -C "${_extramodules%/*}/${_kernver}/build" \
-    INSTALL_MOD_PATH="${pkgdir}/${_extramodules%%/lib/*}" \
-    M="$srcdir/$_pkgname-$__pkgname-$pkgver" modules_install
-
-  cd "${pkgdir}/${_extramodules%/*}"
-  mv "${_kernver}/extra" "${_extramodules##*/}"
-  rmdir "${_kernver}"
+  # install kernel modules
+  find . -name "*.ko" -exec install -Dt "$pkgdir$_extradir" {} +
 
   # compress kernel modules
-  find "${pkgdir}" -name "*.ko" -exec gzip -9 {} +
+  find "$pkgdir" -name "*.ko" -exec gzip -n -9 {} +
 
   # load module on startup
-  echo tp_smapi > "${srcdir}/${pkgname}.conf"
-  install -Dm644 "${srcdir}/${pkgname}.conf" "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
+  echo tp_smapi | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+
+  # update kernel version in install file
+  sed -ri "s|^(extramodules=).*\$|\1$_extradir|" "$startdir/$pkgname.install"
 }
