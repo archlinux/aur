@@ -1,17 +1,15 @@
-diff --git a/Action.c b/Action.c
-index ee34a4b..b0c8013 100644
 --- a/Action.c
 +++ b/Action.c
-@@ -382,7 +382,7 @@ static Htop_Reaction actionRedraw() {
+@@ -382,7 +382,7 @@
  }
  
- static struct { const char* key; const char* info; } helpLeft[] = {
+ static const struct { const char* key; const char* info; } helpLeft[] = {
 -   { .key = " Arrows: ", .info = "scroll process list" },
-+   { .key = "   hjkl: ", .info = "scroll process list" },
++   { .key = " hjkl: ", .info = "scroll process list" },
     { .key = " Digits: ", .info = "incremental PID search" },
     { .key = "   F3 /: ", .info = "incremental name search" },
     { .key = "   F4 \\: ",.info = "incremental name filtering" },
-@@ -411,11 +411,11 @@ static struct { const char* key; const char* info; } helpRight[] = {
+@@ -411,11 +411,11 @@
  #endif
     { .key = "      e: ", .info = "show process environment" },
     { .key = "      i: ", .info = "set IO priority" },
@@ -25,7 +23,7 @@ index ee34a4b..b0c8013 100644
     { .key = "  F10 q: ", .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -543,6 +543,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -543,6 +543,7 @@
     keys['I'] = actionInvertSortOrder;
     keys[KEY_F(6)] = actionExpandCollapseOrSortColumn;
     keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
@@ -33,7 +31,7 @@ index ee34a4b..b0c8013 100644
     keys['<'] = actionSetSortColumn;
     keys[','] = actionSetSortColumn;
     keys['>'] = actionSetSortColumn;
-@@ -561,12 +562,11 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -561,12 +562,11 @@
     keys['S'] = actionSetup;
     keys['C'] = actionSetup;
     keys[KEY_F(2)] = actionSetup;
@@ -47,11 +45,9 @@ index ee34a4b..b0c8013 100644
     keys['?'] = actionHelp;
     keys['U'] = actionUntagAll;
     keys['c'] = actionTagAllChildren;
-diff --git a/Panel.c b/Panel.c
-index 579a82c..12c9703 100644
 --- a/Panel.c
 +++ b/Panel.c
-@@ -372,14 +372,16 @@ void Panel_draw(Panel* this, bool focus) {
+@@ -372,14 +372,16 @@
  
  bool Panel_onKey(Panel* this, int key) {
     assert (this != NULL);
@@ -69,7 +65,7 @@ index 579a82c..12c9703 100644
     case KEY_CTRL('P'):
        this->selected--;
        break;
-@@ -394,23 +397,33 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -394,23 +397,33 @@
        break;
     #endif
     case KEY_LEFT:
@@ -106,7 +102,7 @@ index 579a82c..12c9703 100644
        this->scrollV = MAX(0, MIN(Vector_size(this->items) - this->h,
                                   this->scrollV + this->h - 1));
        this->needsRedraw = true;
-@@ -431,9 +443,11 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -431,9 +443,11 @@
        break;
     }
     case KEY_HOME:
@@ -118,11 +114,9 @@ index 579a82c..12c9703 100644
        this->selected = size - 1;
        break;
     case KEY_CTRL('A'):
-diff --git a/README b/README
-index 1af7377..92a76be 100644
 --- a/README
 +++ b/README
-@@ -17,6 +17,44 @@ but we also have code for running under FreeBSD and Mac OS X
+@@ -17,6 +17,44 @@
  This software has evolved considerably over the years,
  and is reasonably complete, but there is always room for improvement.
  
@@ -167,11 +161,9 @@ index 1af7377..92a76be 100644
  Comparison between `htop` and classic `top`
  -------------------------------------------
  
-diff --git a/ScreenManager.c b/ScreenManager.c
-index 05e1c02..df2ac4a 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
-@@ -279,7 +279,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -279,7 +279,7 @@
           continue;
        }
        case KEY_LEFT:
@@ -180,7 +172,7 @@ index 05e1c02..df2ac4a 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
           }
-@@ -293,7 +293,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -293,7 +293,7 @@
              goto tryLeft;
           break;
        case KEY_RIGHT:

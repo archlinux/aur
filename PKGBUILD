@@ -20,7 +20,7 @@ kill_process_shortcut=x
 
 _pkgname=htop
 pkgname=htop-vim-solarized-git
-pkgver=935.fa30938
+pkgver=2.0.2.r76.g65ec0bd
 pkgrel=1
 pkgdesc="Interactive process viewer with solarized and vim keybindings patch"
 arch=('i686' 'x86_64')
@@ -42,8 +42,8 @@ source=(
 )
 sha384sums=(
     'SKIP'
-    'ebc4339ff3d5d43606d9f5e398832cb9382bfa175b30e36cfbcaf6112206c33ea0d42e39246e3a73785d3f584cf88214'
-    'c23726cad64f0f0440c5180590008e62b4c4712cb4c5fa3d7d818110e967bb8b714a9e17fdc0752b1497046729d418ea'
+    'd211726ddc557e54fb4682ee8d94b31b1a389b13db7cc398e6b1d4da554a812b1d5ce1371935142156d8fff19233e1d2'
+    'a7c748693737a33ea2e36c21592179f55a625019d917716894771c3d495f85a8fdf88540497653e078eadd738f56533a'
     '353a675f5453b5b1ab503f9cbcb02e45b32bf429797f11e3cea96848fb4ad931129da7afa52b373fd6871c41657d52af'
     '3b2071d412a6a98bf5d4d3a4bc74f69b205f9464b00063aa21e9947b80df2a008bb82aff7f8168b0dfbac0647bc0cb76'
 )
@@ -51,8 +51,7 @@ sha384sums=(
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-    printf "%s" "${ver//-/.}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
