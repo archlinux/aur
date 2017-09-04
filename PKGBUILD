@@ -3,22 +3,22 @@
 _pkgname=hsync
 pkgname=$_pkgname
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A filesystem hierarchy synchronizer"
 arch=("i686" "x86_64")
 url="http://ambrevar.bitbucket.io/hsync/"
 license=("MIT")
 makedepends=("go")
-source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/ambrevar/$_pkgname/get/v$pkgver.tar.bz2")
-sha1sums=("6c6c12b3364ebb0924cd2cc56844aa58bc3970c5")
-_gourl="bitbucket.org/ambrevar/$_pkgname"
+source=("$pkgname-$pkgver.tar.bz2::https://github.com/Ambrevar/$_pkgname/archive/v$pkgver.tar.gz")
+sha1sums=('d0689132d001c9c4c2f8e20d6481f5133516aa17')
+_gourl="github.com/ambrevar/$_pkgname"
 
 prepare() {
 	## Move source extracted folder to its proper location in the GOPATH.
 	cd "$srcdir"
 	rm -rfv "src/$_gourl"
-	mkdir -p "src/bitbucket.org/ambrevar"
-	mv "ambrevar-$_pkgname-2c7344b758a9" "src/$_gourl"
+	mkdir -p "src/github.com/ambrevar"
+	mv "$_pkgname-$pkgver" "src/$_gourl"
 }
 
 build() {
