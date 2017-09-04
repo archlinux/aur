@@ -3,19 +3,16 @@
 
 pkgname=ttf-font-awesome
 pkgver=4.7.0
-pkgrel=2
-
+pkgrel=3
 pkgdesc="Iconic font designed for Bootstrap"
 url="http://fortawesome.github.io/Font-Awesome/"
 license=('CCPL')
-
-depends=()
 arch=('any')
-source=("https://github.com/FortAwesome/Font-Awesome/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/FortAwesome/Font-Awesome/archive/v$pkgver.tar.gz")
 sha256sums=('de512ba0e1dead382bbfce372cde74b3f18971d876fffb635ee9333f0db05d43')
 
 package() {
-  cd Font-Awesome-$pkgver/fonts
-  install -d "$pkgdir"/usr/share/fonts/TTF
-  install -m644 *.ttf "$pkgdir"/usr/share/fonts/TTF
+  cd "Font-Awesome-$pkgver/fonts"
+  install -d "$pkgdir/usr/share/fonts/TTF"
+  install -m644 *.ttf "$pkgdir/usr/share/fonts/TTF"
 }
