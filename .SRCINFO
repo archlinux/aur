@@ -1,13 +1,13 @@
 pkgbase = gromacs-4.6-complete
 	pkgdesc = GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.
 	pkgver = 4.6.7
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.gromacs.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = fftw
-	depends = lesstif
+	depends = openmotif
 	depends = perl
 	depends = libxml2
 	depends = libsm

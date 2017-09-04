@@ -2,12 +2,12 @@
 
 pkgname=gromacs-4.6-complete
 pkgver=4.6.7
-pkgrel=4
+pkgrel=5
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=('fftw' 'lesstif' 'perl' 'libxml2' 'libsm' 'libx11' 'doxygen')
+depends=('fftw' 'openmotif' 'perl' 'libxml2' 'libsm' 'libx11' 'doxygen')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
         GMXRC.bash.cmakein.patch)
