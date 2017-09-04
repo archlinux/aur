@@ -13,7 +13,7 @@ _lang=da
 pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc='Standalone web browser from mozilla.org, developer build - Danish'
 url='http://www.mozilla.org/firefox/developer'
-pkgver='56.0b7'
+pkgver='56.0b8'
 pkgrel=1
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -25,8 +25,8 @@ source=("${_url}/${_loc}/${_file}.tar.bz2"
         "${_url}/SHA512SUMS.asc"
         "${_name}-${_channel}.desktop"
         "vendor.js")
-sha512sums=('7434ddeb847424fcb4ed3a9b74f68dbdba0424a90af4483acc1467797ba92e22137962ee0e1187a03f7681af585c83fb087bce192ca6957f8d1ac989ce689e0a'
-            'd1b9cbdad0e2431483511dd878493509801ee8cb80f6d37eae0b1bd16c353223fcd2abbad5b4d7ccad3f3446477dca8d0ae344fcebba7f03af13971d073e12a1'
+sha512sums=('f977d0c84d27ebb2db84068dcb2022b3a579cb3d07f670b5c150d9f31aeeba5715dfb88183a70e9e752b3c3d28706919cdaff492edb3934633810a77c65b1818'
+            'f3a760ba05194655ee34c40c41bbb03cec69c975764ba84e7a3c9d2a281e2ef73317d1aadb6dae44edf55af977ece46a32accf24f7605001ade2c1c48260046e'
             'SKIP'
             'b109b884ed79e9e214541750a0fcac8d7d8891cc7f0e0d472b717a5b71e569ab5852534bceaab045a5b13a9290a7905604d08fe97e28c675a2266c30fe719cb6'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
@@ -49,23 +49,21 @@ optdepends=(
 )
 
 prepare() {
-    msg "!> Vigtigt: Det er nødvendigt at importere"
-    msg "!>   PGP nøgle for 'Mozilla Sofware Releases' <release@mozilla.com>"
-    msg "!> Mere information kan findes her:"
-    msg "!>   <https://wiki.archlinux.org/index.php/GnuPG#Import_a_public_key>"
-    msg "!> $ gpg --keyserver pgp.mit.edu --recv-keys D98F0353"
+    msg2 "Vigtigt: Det er nødvendigt at importere"
+    msg2 "    PGP nøgle for 'Mozilla Sofware Releases' <release@mozilla.com>"
+    msg2 "\$ gpg --keyserver pgp.mit.edu --recv-keys D98F0353"
 
     # Check if hash of the source archive matches the one provided by Mozilla (which was signed with GPG).
     _checksum=`grep "linux-x86_64/$_lang/firefox-$pkgver.tar.bz2" $srcdir/SHA512SUMS | cut -f1 -d " "`
     _actual=`sha512sum $srcdir/firefox-$pkgver.tar.bz2 | cut -f1 -d " "`
 
-    msg "!> Checking integrity of firefox-$pkgver.tar.bz2"
+    msg2 "Checking integrity of firefox-$pkgver.tar.bz2"
 
     if [[ $_checksum == $_actual ]];
     then
-        msg "!> Integrity verified successfully."
+        msg2 "Integrity verified successfully."
     else
-        msg "!> Integrity verification failed!"
+        msg2 "Integrity verification failed!"
         exit 1
     fi
 }
