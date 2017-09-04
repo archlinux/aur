@@ -1,21 +1,29 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=oclint
-pkgver=0.10.3
+pkgver=0.12
 pkgrel=1
 pkgdesc="A static source code analysis tool to improve quality and reduce
 defects for C, C++ and Objective-C"
 arch=('i686' 'x86_64')
 url="http://oclint.org/"
 license=('BSD')
-dependencies=('clang' 'clang-analyzer' 'llvm' 'llvm-libs')
-makedepends=('cmake' 'subversion' 'python' 'llvm' 'libxml2')
-source=("https://github.com/oclint/oclint/archive/v${pkgver}.tar.gz")
-md5sums=('bed45dd31e64cc5ddaa3a031f9435a27')
+dependencies=('clang' 'clang-analyzer' 'llvm' 'llvm-libs' 'openssl')
+makedepends=('clang' 'cmake' 'subversion' 'python' 'llvm' 'libxml2'
+'countly-cpp')
+source=("https://github.com/oclint/oclint/archive/v${pkgver}.tar.gz"
+        "openssl.patch")
+sha1sums=('5b5adc001fff5733e55a90a498c3fe57f9fdda8e'
+          '234485f8cd210794cfb393e8b550079c33d21192')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 < $srcdir/openssl.patch
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/oclint-scripts"
-  ./build -llvm-root=/usr -release
+  ./makeWithSystemLLVM /usr
 }
 
 package() {
