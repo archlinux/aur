@@ -1,6 +1,6 @@
 pkgbase = run_scaled-git
 	pkgdesc = Run an X application scaled via xpra. Useful on hidpi screens
-	pkgver = r14.891f5d7
+	pkgver = r15.5787e06
 	pkgrel = 1
 	url = https://github.com/kaueraal/run_scaled.git
 	arch = any
