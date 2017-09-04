@@ -2,7 +2,7 @@
 
 pkgname="python-rofi"
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A Python module to make simple GUIs with Rofi'
 url='https://github.com/bcbnz/python-rofi'
 arch=('any')
@@ -17,9 +17,14 @@ check() {
   python setup.py check
 }
 
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py build
+}
+
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
