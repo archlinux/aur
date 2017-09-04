@@ -6,7 +6,7 @@
 pkgname=dosbox-djcrx
 pkgver=2.05
 pkgrel=7
-pkgdesc="Headers and utilities for the dosbox gcc cross-compiler"
+pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.delorie.com/djgpp/"
 depends=('glibc' 'gcc-libs')
@@ -27,7 +27,7 @@ sha256sums=('22274ed8d5ee57cf7ccf161f5e1684fd1c0192068724a7d34e1bde168041ca60'
             'ffdbab52eb13dde716fbcce54154f7c95644afd6333f4931b2cceeb95935c675'
             '536684b0152f7ad77b99bcc5ea535ca8339832399c4582b944ccd882e4b261a1'
             '693810c3242f4e23cdc55d3101281721da9407851e5d29459ad59405e534b916'
-            '0debe0161e27aeb004e89a43915d6d77bcd07a5db2c67e2798568535fe9143f1'
+            'SKIP'
             'e768d4f2ac8c5b2f21afd7a0dddfc1921377a6675ca099e78baffe9ecab081db'
             '4d5a1448a12fdcebc37578da8a29a1924f68495d4c27b75297ead8ac0542e816')
 options=('!buildflags' '!strip')
