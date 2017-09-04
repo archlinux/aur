@@ -3,7 +3,7 @@ _pkgname='gilt'
 pkgbase="python-gilt"
 pkgname=("python-gilt" "python2-gilt")
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A GIT layering tool'
 url='https://github.com/metacloud/gilt'
 arch=('any')
@@ -24,14 +24,14 @@ build() {
 }
 
 package_python-gilt() {
-    depends=('python-click' 'python-colorama' 'python-fasteners' 'python-yaml' 'python-sh' 'python-giturlparse')
+    depends=('python' 'python-click' 'python-colorama' 'python-fasteners' 'python-yaml' 'python-sh' 'python-giturlparse')
 
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-gilt() {
-    depends=('python2-click' 'python2-colorama' 'python2-fasteners' 'python2-yaml' 'python2-sh' 'python-giturlparse')
+    depends=('python' 'python2-click' 'python2-colorama' 'python2-fasteners' 'python2-yaml' 'python2-sh' 'python-giturlparse')
 
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
