@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A simple CalDav-based todo manager."
 arch=("any")
 url="https://github.com/pimutils/todoman"
-license=('MIT')
+license=('ISC')
 depends=(python-icalendar python-urwid python-xdg python-parsedatetime
          python-atomicwrites python-click python-setuptools-scm
          python-configobj python-dateutil python-tabulate python-humanize)
