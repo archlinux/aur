@@ -1,6 +1,7 @@
 # Contributors:
 # henning mueller <henning@orgizm.net>
 # krompus <amartin@riseup.net>
+# Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 
 pkgname=anarchism
 pkgver=15.0
