@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=nodejs-jsdoc
-pkgver=3.4.3
+pkgver=3.5.4
 pkgrel=1
 pkgdesc="An API documentation generator for JavaScript"
 url="https://github.com/jsdoc3/jsdoc"
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/jsdoc/-/jsdoc-$pkgver.tgz")
-md5sums=('fb87fcbbd54045a02fb3ce116d44deca')
+md5sums=('72a60c37d3de05ef9b772cea79bc2d85')
 
 build() {
 	cd "$srcdir/package"
