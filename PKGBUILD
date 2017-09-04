@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=2.12.r6.g201e6261+wine.2.12.r134.gab313dd3be
-pkgrel=4
+pkgver=2.15.r10.gc5046319+wine.2.15.r151.ge06b7693d6
+pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
 url='https://www.wine-staging.com/'
@@ -146,6 +146,12 @@ build() {
     # apply all wine-staging patches
     msg2 'Applying wine-staging patches...'
     ./"${pkgname}"/patches/patchinstall.sh DESTDIR="${srcdir}/wine-git" --all
+    
+    # workaround for FS#55128
+    # https://bugs.archlinux.org/task/55128
+    # https://bugs.winehq.org/show_bug.cgi?id=43530
+    export CFLAGS="${CFLAGS/-fno-plt/}"
+    export LDFLAGS="${LDFLAGS/,-z,now/}"
     
     # build wine-staging 64-bit
     # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
