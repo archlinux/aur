@@ -3,8 +3,8 @@
 # Note - rocketeergames does not provide any log file or any website where we can automatically detect version number changes (the only solution would be decompile program), so we use date as a versions & monitor remote file size for changes (AUR package gets outdated quite often).
 
 pkgname=rcr
-pkgver=201709040548
-_filesize=12345678
+pkgver=201709040555
+_filesize=48015375
 pkgrel=1
 pkgdesc="Red Crucible®: Reloaded - Free to play online FPS"
 arch=('i686' 'x86_64')

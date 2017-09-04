@@ -1,6 +1,6 @@
 pkgbase = rcr
 	pkgdesc = Red Crucible®: Reloaded - Free to play online FPS
-	pkgver = 201709040548
+	pkgver = 201709040555
 	pkgrel = 1
 	url = http://www.rocketeergames.com/site/rcr/
 	arch = i686
