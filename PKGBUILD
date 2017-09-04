@@ -2,12 +2,12 @@
 
 pkgname=gromacs-4.5-complete
 pkgver=4.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics. Last stable release of 4.5.x version series. Single and Double precision; Sources; Doxygen documentation'
 url='http://www.gromacs.org/'
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=('fftw' 'lesstif' 'perl' 'libxml2' 'libsm' 'libx11' 'doxygen')
+depends=('fftw' 'perl' 'libxml2' 'libsm' 'doxygen')
 options=('!libtool')
 makedepends=('cmake')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-$pkgver.tar.gz)
