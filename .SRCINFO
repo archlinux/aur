@@ -8,7 +8,7 @@ pkgbase = dsmidiwifi
 	license = GPL2
 	depends = qt5-base
 	depends = alsa-lib
-	source = https://dsmi.googlecode.com/files/dsmidiwifi-v1.01.tgz
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/dsmi/dsmidiwifi-v1.01.tgz
 	md5sums = e45703b1a37602d6326916d2ce1b404c
 
 pkgname = dsmidiwifi
