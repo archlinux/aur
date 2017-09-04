@@ -1,0 +1,17 @@
+pkgbase = lv2vst
+	pkgdesc = experimental LV2 to VST2.x wrapper
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/x42/lv2vst
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = lv2
+	depends = steinberg-vst36
+	source = git+https://github.com/x42/lv2vst.git
+	md5sums = SKIP
+
+pkgname = lv2vst
+
