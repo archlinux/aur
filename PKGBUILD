@@ -2,8 +2,8 @@
 _pkgname=gwankei
 pkgname=$_pkgname-git
 pkgver=r73.de43afb
-pkgrel=1
-pkgdesc='A Implementation of Chinese board game Junqi, or Luzhanqi.'
+pkgrel=2
+pkgdesc='An implementation of Chinese board game Junqi, or Luzhanqi.'
 arch=('i686' 'x86_64')
 url='https://github.com/910JQK/GwanKei'
 depends=('qt5-base' 'qt5-webkit' 'qt5-multimedia')
