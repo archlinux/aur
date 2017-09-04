@@ -1,7 +1,7 @@
 pkgbase = python-tree-format-git
 	pkgdesc = Python library for printing trees on the console.
 	pkgver = r25.c8c4544
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jml/tree-format
 	arch = any
 	license = BSD

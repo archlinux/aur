@@ -4,7 +4,7 @@ pkgbase=python-tree-format-git
 _name="tree-format"
 pkgname=(python-tree-format-git python2-tree-format-git)
 pkgver=r25.c8c4544
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for printing trees on the console.'
 arch=(any)
 _url='github.com/jml/tree-format'
@@ -33,7 +33,7 @@ package_python-tree-format-git() {
 
 package_python2-tree-format-git() {
   cd "${srcdir}/${_name}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
