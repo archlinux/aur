@@ -1,9 +1,7 @@
 post_install() {
   cat << EOF
 
-==> Before using VMware, you will need to load vmci and vmmon kernel modules.
-  In a terminal on root: "modprobe vmci vmmon"
-==> You may also need to enable some services:
+==> Before using VMware, you may need to enable some services:
 - vmware-networks.service: to have network access in VMs
 - vmware-usbarbitrator.service: to connect USB devices inside VMs
 - vmware-hostd.service: to share VMs on the network

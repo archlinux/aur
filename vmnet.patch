@@ -27,6 +27,21 @@ index 2d8e6f6..a14166b 100644
  EXTRA_CFLAGS += $(call vm_check_build, $(SRCROOT)/netdev_has_net.c,-DVMW_NETDEV_HAS_NET, )
  EXTRA_CFLAGS += $(call vm_check_build, $(SRCROOT)/netdev_has_dev_net.c,-DVMW_NETDEV_HAS_DEV_NET, )
  EXTRA_CFLAGS += $(call vm_check_build, $(SRCROOT)/nfhook_uses_skb.c,-DVMW_NFHOOK_USES_SKB, )
+diff --git a/vmnet/bridge.c b/vmnet/bridge.c
+--- a/vmnet/bridge.c
++++ b/vmnet/bridge.c
+@@ -636,7 +636,11 @@
+ 	 unsigned long flags;
+ 	 int i;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 13, 0)
+ 	 atomic_inc(&clone->users);
++#else
++	 clone = skb_get(clone);
++#endif
+ 
+ 	 clone->dev = dev;
+ 	 clone->protocol = eth_type_trans(clone, dev);
 diff --git a/vmnet/driver.c b/vmnet/driver.c
 index 7e7ad99..5f508f6 100644
 --- a/vmnet/driver.c

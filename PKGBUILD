@@ -15,7 +15,7 @@
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
 pkgver=12.5.7_5813279
-pkgrel=2
+pkgrel=3
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -60,6 +60,7 @@ backup=(
   'etc/vmware/netmap.conf'
   'etc/vmware/ssl/hostd.ssl.config'
   'etc/pam.d/vmware-authd'
+  'etc/profile.d/vmware.sh'
 )
 source=(
   "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${pkgver/_/-}.${CARCH}.bundle"
@@ -68,6 +69,8 @@ source=(
   'config'
   'pam.d-vmware-authd'
   'configure-initscript.sh'
+  '90-vmware-load-modules.hook'
+  'vmware-profile.sh'
 
   'config.xml'
   'datastores.xml'
@@ -95,6 +98,8 @@ sha256sums=(
   '55af509a4328fa88518e7008c65ff5598e6007e99ca2b4421a8f9b26126f6ff3'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
+  'fee6dbd1aab2590c58ee2da797c72746c0707bea718fbfd31764b4fd353d0992'
+  '6f57e027f0eb95b7cfaf5d7c10089e99be5b9ccab7c3785fcc6f98dbecaf47bc'
 
   'd0806b6cb99af04232585def7b8043df3104b9b17470ea70abbd5bedc1e7ca16'
   '434cd4aa440d36b75ee20e0b588aaad874bb0d796173990bc4046667c66f5099'
@@ -112,7 +117,7 @@ sha256sums=(
   '0a5aa819ca73513407acaf67779d95745314f7222afbd3fc2eadc80f24054d47'
   '7c666fa2c09c19d8af7b97227ee564ce0d5e044897167db583ecd67217a36394'
   '4339a98bd5aba421bc1043f2ee97ea00b082733c81bce321edc7bc72e16ce09b'
-  'c2eba38cc99534675e3c114ecf68cbb65cb14b3d52c95ff17dbf1273fc289947'
+  '4c960079fec78682000a1c2e82dcaae69a6e91858dea641b707cf60674f3799f'
   'd7e6b21fef94b4d3fe655a68c20a9556a718a252826a899fb46c4f2475046954'
 )
 options=(!strip emptydirs)
@@ -148,22 +153,22 @@ fi
 _create_database_file() {
   # Create a database which contains the list of guest tools (necessary to avoid that vmware try to download them)
   local database_filename="$pkgdir/etc/vmware-installer/database"
-  echo -n "" > $database_filename
+  echo -n "" > "$database_filename"
 
-  sqlite3 $database_filename "CREATE TABLE settings(key VARCHAR PRIMARY KEY, value VARCHAR NOT NULL, component_name VARCHAR NOT NULL);"
-  sqlite3 $database_filename "INSERT INTO settings(key,value,component_name) VALUES('db.schemaVersion','2','vmware-installer');"
-  sqlite3 $database_filename "CREATE TABLE components(id INTEGER PRIMARY KEY, name VARCHAR NOT NULL, version VARCHAR NOT NULL, buildNumber INTEGER NOT NULL, component_core_id INTEGER NOT NULL, longName VARCHAR NOT NULL, description VARCHAR, type INTEGER NOT NULL);"
+  sqlite3 "$database_filename" "CREATE TABLE settings(key VARCHAR PRIMARY KEY, value VARCHAR NOT NULL, component_name VARCHAR NOT NULL);"
+  sqlite3 "$database_filename" "INSERT INTO settings(key,value,component_name) VALUES('db.schemaVersion','2','vmware-installer');"
+  sqlite3 "$database_filename" "CREATE TABLE components(id INTEGER PRIMARY KEY, name VARCHAR NOT NULL, version VARCHAR NOT NULL, buildNumber INTEGER NOT NULL, component_core_id INTEGER NOT NULL, longName VARCHAR NOT NULL, description VARCHAR, type INTEGER NOT NULL);"
 
   for isoimage in ${_isoimages[@]}
   do
 	local version=$(cat "$srcdir/extracted/vmware-tools-$isoimage/manifest.xml" | grep -oPm1 "(?<=<version>)[^<]+")
-	sqlite3 $database_filename "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"$version\",\"${pkgver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
+	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"$version\",\"${pkgver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
   done
 
 if [ -n "$_enable_macOS_guests" ]; then
   for isoimage in ${_fusion_isoimages[@]}
   do
-	sqlite3 $database_filename "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"1\",\"${_vmware_fusion_ver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
+	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"1\",\"${_vmware_fusion_ver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
   done
 fi
 }
@@ -299,6 +304,7 @@ package() {
   install -Dm 644 "$srcdir/pam.d-vmware-authd" "$pkgdir/etc/pam.d/vmware-authd"
 
   echo -e "vmci\nvmmon" > "$pkgdir/usr/lib/modules-load.d/vmware.conf"
+  install -Dm 644 "$srcdir/90-vmware-load-modules.hook" "$pkgdir/usr/share/libalpm/hooks/90-vmware-load-modules.hook"
 
   for service_file in \
     vmware-hostd-certificates.service \
@@ -422,7 +428,6 @@ fi
   # to solve bugs with incompatibles library versions:
   ln -sf /usr/lib/libz.so.1 "$pkgdir/usr/lib/vmware/lib/libz.so.1/"
   # if there is not a better solution, define environment variable VMWARE_USE_SHIPPED_LIBS
-  echo -e "#export VMWARE_USE_SHIPPED_LIBS=yes" > "$pkgdir/etc/profile.d/vmware.sh"
-  chmod 755 "$pkgdir/etc/profile.d/vmware.sh"
+  install -Dm 755 "$srcdir/vmware-profile.sh" "$pkgdir/etc/profile.d/vmware.sh"
   ln -sf /usr/lib/libfontconfig.so.1 "$pkgdir/usr/lib/vmware/lib/libfontconfig.so.1/" # avoid a conflict with fontconfig when VMWARE_USE_SHIPPED_LIBS is defined
 }
