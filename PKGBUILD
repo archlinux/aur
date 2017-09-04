@@ -2,7 +2,7 @@
 
 pkgname=wine-staging-git
 pkgver=2.12.r6.g201e6261+wine.2.12.r134.gab313dd3be
-pkgrel=1
+pkgrel=2
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/wine-compholio/wine-staging/'
@@ -110,17 +110,17 @@ fi
 
 prepare() {
     cd 'wine-git'
-    msg2 'Cleaning wine source code tree...'
     
     # restore the wine tree to its git origin state, without wine-staging patches
     # (necessary for reapllying wine-staging patches in succedent builds,
     # otherwise the patches will fail to be reapplied)
+    msg2 'Cleaning wine source code tree...'
     git reset --hard HEAD      # restore tracked files
     git clean -xdf             # delete untracked files
     
     # change back to the wine upstream commit that this version of wine-staging is based in
     msg2 'Changing wine HEAD to the wine-staging base commit...'
-    git checkout "$(../"${pkgname}"/patches/patchinstall.sh --upstream-commit)"
+    git checkout "$(../"$pkgname"/patches/patchinstall.sh --upstream-commit)"
 }
 
 pkgver() {
@@ -130,7 +130,7 @@ pkgver() {
                                 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' \
                                 | sed "s/^latest.release/${_staging_tag}/")"
     cd "${srcdir}/wine-git"
-    local _wine_version="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+    local _wine_version="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')"
     
     printf '%s+%s' "$_staging_version" "$_wine_version"
 }
@@ -188,7 +188,7 @@ package() {
     
     if [ "$CARCH" = 'i686' ] 
     then
-        make prefix="$pkgdir/usr" install
+        make prefix="${pkgdir}/usr" install
     else
         make prefix="${pkgdir}/usr" \
              libdir="${pkgdir}/usr/lib32" \
