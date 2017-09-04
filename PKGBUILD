@@ -2,13 +2,13 @@
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
 # Contributor: janezz55
 
-pkgname=djgpp-gcc
+pkgname=dosbox-gcc
 pkgver=7.2.0
 _target="i586-pc-msdosdjgpp"
 _islver=0.18
 _djver=2.05
 pkgrel=1
-pkgdesc="GCC for the djgpp cross-compiler"
+pkgdesc="gcc cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
 license=('GPL' 'LGPL' 'FDL' 'custom')
