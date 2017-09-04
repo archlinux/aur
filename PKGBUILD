@@ -2,8 +2,8 @@
 
 _pkgname=xfconf
 pkgname=${_pkgname}-devel
-pkgver=4.13.3
-pkgrel=3
+pkgver=4.13.4
+pkgrel=1
 pkgdesc="A simple client-server configuration storage and query system"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
@@ -12,11 +12,11 @@ depends=('libxfce4util' 'dbus')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig' 'glib-perl'
              'intltool' 'gtk-doc' 'chrpath')
 optdepends=('xfconf4.12: Legacy xfconf libraries')
-provides=("${_pkgname}=${pkgver}" 'libxfconf-0.so=3-64')
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
 source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('842416258d87f24b8e2b72ddf3cb1385d0c73c982e66b18d2b2e7cb8123f98c8')
+sha256sums=('4808997894ad9b6bcd39b0e8c609129e60d204c038d4edc4e9b8c55ea2d094c9')
 install='xfconf.install'
 
 build() {
