@@ -1,7 +1,7 @@
 pkgbase = python2-flickrsmartsync-git
 	pkgdesc = Sync/backup your photos to flickr easily
-	pkgver = 0.2.1.r69.a0515ce
-	pkgrel = 2
+	pkgver = 0.2.2.r77.79c8771
+	pkgrel = 1
 	url = https://github.com/faisalraja/flickrsmartsync
 	arch = any
 	license = MIT
