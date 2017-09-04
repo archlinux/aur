@@ -1,0 +1,19 @@
+pkgbase = gwankei-git
+	pkgdesc = A Implementation of Chinese board game Junqi, or Luzhanqi.
+	pkgver = r73.de43afb
+	pkgrel = 1
+	url = https://github.com/910JQK/GwanKei
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = qt5-multimedia
+	provides = gwankei
+	source = gwankei::git+https://github.com/910JQK/GwanKei.git
+	md5sums = SKIP
+
+pkgname = gwankei-git
+
