@@ -5,7 +5,7 @@
 pkgname=dosbox-binutils
 pkgver=2.29
 pkgrel=1
-pkgdesc="binutils for the dosbox djgpp cross-compiler"
+pkgdesc="binutils for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils"
 license=('GPL')
@@ -13,7 +13,6 @@ groups=('djgpp')
 depends=('zlib')
 options=('!libtool' '!emptydirs')
 source=("http://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz"
-        "http://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz.sig"
         xtors.patch
         lto-discard.patch)
 sha256sums=('SKIP'
