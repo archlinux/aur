@@ -2,8 +2,8 @@
 # Contributor: Hugo Lobo
 
 pkgname=binkplayer
-pkgver=2.7b
-pkgrel=3
+pkgver=2.7c
+pkgrel=1
 pkgdesc="Bink Video Player"
 url="http://www.radgametools.com/bnkmain.htm"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=("BinkLinuxPlayer-$pkgver.7z"::"http://www.radgametools.com/down/Bink/Bin
         "x-binkvideo.xml"
         "$pkgname.desktop"
         "$pkgname.png")
-sha256sums=('3be76ecfb47411356bf8c6dca3f575f843e5f04b906ce22fc68b1e36a0a296e1'
+sha256sums=('a566059d7bcee6616cd561f7e449d2a33684d2e03dfbd8940fad507645e847c8'
             '880fcb3a4435750a2990af7b38dc26d81170487ae3f8ecb526aad5a17673a454'
             '1e3ac358afeff5d0f87ae4430d4d5ec21b2d45f9ac6ae6340d14b1e4280c18e6'
             'db086749490f24bf3c736d75b4fb75a7c7bf5d7209b8f7b9394d6c59063c86c8')
