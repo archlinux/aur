@@ -21,8 +21,8 @@ source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
         "http://www.delorie.com/pub/djgpp/current/v2/djcrx${_djver//./}.zip"
         "lto.patch")
-sha256sums=('1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a'
-            '0f35051cc030b87c673ac1f187de40e386a1482a0cfdf2c552dd6031b307ddc4'
+sha256sums=('SKIP'
+            'SKIP'
             '22274ed8d5ee57cf7ccf161f5e1684fd1c0192068724a7d34e1bde168041ca60'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0')
 noextract=("djcrx${_djver//./}.zip")
