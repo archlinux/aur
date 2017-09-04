@@ -1,6 +1,6 @@
 pkgbase = gsu-git
 	pkgdesc = A general screenshot and upload utility for images, video, and gifs.
-	pkgver = 1.0.0.r5.gc5caaa5
+	pkgver = 20170904.0b522da
 	pkgrel = 1
 	url = https://github.com/winneon/gsu
 	arch = any
