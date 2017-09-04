@@ -1,11 +1,12 @@
 # Maintainer: Jesse Bryan <jesse@winneon.moe>
 pkgname=gsu
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A general screenshot and upload utility for images, video, and gifs."
 arch=("any")
 url="https://github.com/winneon/${pkgname}"
 license=("MIT")
+conflicts=("${pkgname}-git")
 depends=("maim" "ffmpeg" "curl" "jq" "bash")
 optdepends=(
     "xclip: Copy URLs to clipboard after upload"

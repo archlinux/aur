@@ -1,7 +1,7 @@
 pkgbase = gsu
 	pkgdesc = A general screenshot and upload utility for images, video, and gifs.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/winneon/gsu
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = gsu
 	depends = jq
 	depends = bash
 	optdepends = xclip: Copy URLs to clipboard after upload
+	conflicts = gsu-git
 	source = https://codeload.github.com/winneon/gsu/tar.gz/1.0.0
 	sha256sums = f31f7a6071c8135b93d47fe7d535779f857238b579467ec8105defddb654b13e
 
