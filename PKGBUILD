@@ -1,8 +1,12 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
+# NOTE:
+# To enable NewTek NDI (libndi), install the package 'ndi-sdk'
+# and add '--enable-libndi_newtek' to the configure options.
+
 pkgname=ffmpeg-full-git
 pkgver=3.4.r87070.ge0436ddaa4
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
