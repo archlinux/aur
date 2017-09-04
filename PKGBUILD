@@ -3,7 +3,7 @@
 
 pkgname=cryptomator
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=("any")
 url="https://cryptomator.org/"
@@ -27,12 +27,12 @@ build() {
 }
 
 package() {
-  install -d ${pkgdir}/usr/share/java/${pkgname}
-  install -Dm644 ${srcdir}/libs/*.jar ${pkgdir}/usr/share/java/${pkgname}
-  install -Dm644 ${srcdir}/antbuild/Cryptomator-${pkgver}.jar ${pkgdir}/usr/share/java/${pkgname}/cryptomator.jar
-  install -Dm755 ${srcdir}/cryptomator.sh ${pkgdir}/usr/bin/cryptomator
-  install -Dm644 ${srcdir}/package/linux/Cryptomator.png ${pkgdir}/usr/share/java/${pkgname}
-  install -Dm644 ${srcdir}/cryptomator-vault.xml ${pkgdir}/usr/share/mime/packages/cryptomator-vault.xml
-  install -Dm644 ${srcdir}/cryptomator.desktop ${pkgdir}/usr/share/applications/cryptomator.desktop
-  install -Dm644 ${srcdir}/logback.xml ${pkgdir}/etc/${pkgname}/logback.xml
+  install -d "${pkgdir}/usr/share/java/${pkgname}"
+  install -Dm644 "${srcdir}/libs/*.jar" "${pkgdir}/usr/share/java/${pkgname}"
+  install -Dm644 "${srcdir}/antbuild/Cryptomator-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/cryptomator.jar"
+  install -Dm755 "${srcdir}/cryptomator.sh" "${pkgdir}/usr/bin/cryptomator"
+  install -Dm644 "${srcdir}/package/linux/Cryptomator.png" "${pkgdir}/usr/share/java/${pkgname}"
+  install -Dm644 "${srcdir}/cryptomator-vault.xml" "${pkgdir}/usr/share/mime/packages/cryptomator-vault.xml"
+  install -Dm644 "${srcdir}/cryptomator.desktop" "${pkgdir}/usr/share/applications/cryptomator.desktop"
+  install -Dm644 "${srcdir}/logback.xml" "${pkgdir}/etc/${pkgname}/logback.xml"
 }
