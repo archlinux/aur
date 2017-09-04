@@ -1,6 +1,6 @@
 pkgbase = tagtool
 	pkgdesc = Tool to edit tags in MP3 and Ogg Vorbis files
-	pkgver = 0.14
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/impegoraro/tagtool
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = tagtool
 	depends = glade
 	depends = id3lib
 	depends = libvorbis
-	source = https://github.com/impegoraro/tagtool/archive/v0.14.tar.gz
-	sha1sums = 05eef662d0f0f46983ad9a1e942e6ce4ac66276d
+	source = https://github.com/impegoraro/tagtool/archive/v0.14.2.tar.gz
+	sha256sums = c2b2c2a9a20a0173e618534e0c787e02860ff0de728e0ceea27d445397fc51c3
 
 pkgname = tagtool
 
