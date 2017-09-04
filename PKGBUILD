@@ -81,7 +81,7 @@ _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 source=(# bfq-mq repository
         'git+https://github.com/Algodev-github/bfq-mq'
         # gcc cpu optimizatons from graysky and ck; forked by sir_lucjan
-        "https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/4.13/${_gcc_patch}"
+        "https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master/${_gcc_patch}"
         # tentative patches
         "${_bfqpath}/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch"
         # mailing-list (ML1) patches
