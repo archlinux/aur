@@ -1,20 +1,20 @@
 # Maintainer: Martchus <martchus@gmx.net>
 
 pkgname=mingw-w64-gnutls
-pkgver=3.5.12
+pkgver=3.5.15
 pkgrel=1
-pkgdesc="A library which provides a secure layer over a reliable transport layer (mingw-w64)"
-arch=(any)
+pkgdesc='A library which provides a secure layer over a reliable transport layer (mingw-w64)'
+arch=('any')
 url="http://www.gnu.org/software/gnutls"
 license=('GPL3', 'LGPL2.1')
-makedepends=(mingw-w64-configure)
-depends=(mingw-w64-crt mingw-w64-libtasn1 mingw-w64-readline mingw-w64-zlib mingw-w64-nettle mingw-w64-p11-kit mingw-w64-libunistring)
+makedepends=('mingw-w64-configure')
+depends=('mingw-w64-crt' 'mingw-w64-libtasn1' 'mingw-w64-readline' 'mingw-w64-zlib' 'mingw-w64-nettle' 'mingw-w64-p11-kit' 'mingw-w64-libunistring')
 options=(staticlibs !strip !buildflags)
 optdepends=("mingw-w64-openssl: libgnutls-openssl")
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v3.5/${pkgname#mingw-w64-}-${pkgver}.tar.xz{,.sig}
         'gnutls-3.2.7-rpath.patch'
         'gnutls-fix-external-libtasn1-detection.patch')
-sha256sums=('63cb39a5eaa029381df2e49a74cfb7be89fc4a592445191818ffe1e66bde57cb'
+sha256sums=('046081108b8b1fe455a13a4c5a4eaa0368e185b678f1670fe09a11a2d7ecfad5'
             'SKIP'
             'c77b307dcbe3d83b99a15b9ff0cac3978983b40b8cb2495eeb02ade5c9c12969'
             '8525da75852a516be0cb05df0a770daf19ce0583033260d6cac03a1e40fd2072')
