@@ -1,0 +1,10 @@
+--- LibRSVG.xs	2017-09-04 13:22:45.369221170 +0200
++++ LibRSVG.xs	2017-09-04 13:25:11.239629553 +0200
+@@ -456,7 +456,7 @@
+ static bool
+ SVGLibRSVG::isGzCompressionSupported()
+         CODE:
+-            RETVAL = 1;
++            RETVAL = 0;
+         OUTPUT:
+             RETVAL

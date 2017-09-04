@@ -1,0 +1,10 @@
+--- LibRSVG.xs	2007/07/03 07:05:37	1.1
++++ LibRSVG.xs	2007/07/03 07:05:52
+@@ -383,6 +383,7 @@
+     CODE:
+         Newz(0, RETVAL, 1, SVGLibRSVG);
+         RETVAL->pixbuf = NULL;
++        rsvg_init();
+     OUTPUT:
+         RETVAL
+ 

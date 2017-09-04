@@ -1,0 +1,20 @@
+--- lib/Image/LibRSVG.pm	2017-09-04 13:05:56.696354975 +0200
++++ lib/Image/LibRSVG.pm	2017-09-04 13:06:22.226421571 +0200
+@@ -53,7 +53,7 @@
+         $rv = $self->loadFromFile( $file_path );
+     } elsif ( $args->{zoom} ) {
+         $rv = $self->loadFromFileAtZoom( $file_path, $args->{zoom}->[0], $args->{zoom}->[1], $dpi );
+-    } elsif( $args->{dimesion} ) {
++    } elsif( $args->{dimension} ) {
+         if( defined $args->{dimension}->[2] && $args->{dimension}->[2] ) {
+             $rv = $self->loadFromFileAtMaxSize( $file_path, $args->{dimension}->[0], $args->{dimension}->[1], $dpi );
+         } else {
+@@ -78,7 +78,7 @@
+         $rv = $self->loadFromString( $file_path );
+     } elsif ( $args->{zoom} ) {
+         $rv = $self->loadFromStringAtZoom( $file_path, $args->{zoom}->[0], $args->{zoom}->[1], $dpi );
+-    } elsif( $args->{dimesion} ) {
++    } elsif( $args->{dimension} ) {
+         if( defined $args->{dimension}->[2] && $args->{dimension}->[2] ) {
+             $rv = $self->loadFromStringAtMaxSize( $file_path, $args->{dimension}->[0], $args->{dimension}->[1], $dpi );
+         } else {
