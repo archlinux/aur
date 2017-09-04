@@ -23,7 +23,7 @@ source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "lto.patch")
 sha256sums=('SKIP'
             'SKIP'
-            '22274ed8d5ee57cf7ccf161f5e1684fd1c0192068724a7d34e1bde168041ca60'
+            'SKIP'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0')
 noextract=("djcrx${_djver//./}.zip")
 
