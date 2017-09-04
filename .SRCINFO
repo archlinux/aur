@@ -1,0 +1,17 @@
+pkgbase = obi
+	pkgdesc = A command-line tool for developing g-speaky applications
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = https://github.com/Oblong/obi
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-docopt
+	depends = python2-jinja
+	depends = python2-setuptools
+	depends = python2-yaml
+	source = https://github.com/Oblong/obi/archive/v3.4.2.tar.gz
+	md5sums = cd8a680744bb8d573c0c76aa5cffdb0b
+
+pkgname = obi
+
