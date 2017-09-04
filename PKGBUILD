@@ -1,6 +1,6 @@
 # Contributor: carstene1ns <arch carsten-teibes de>
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
-# Contributos: janezz55
+# Contributor: janezz55
 
 pkgname=dosbox-binutils
 pkgver=2.29
