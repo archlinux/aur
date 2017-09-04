@@ -2,7 +2,7 @@
 pkgname=httplab
 pkgver=0.3.0
 pkgrel=1
-pkgdesc="An interactive web server"
+pkgdesc="The interactive web server"
 arch=(x86_64)
 url="http://github.com/gchaincl/httplab"
 license=('MIT')
