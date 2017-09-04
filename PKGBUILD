@@ -15,11 +15,14 @@ provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
 
 source=(
-	"https://github.com/lxde/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
+	# Mirror
+	#"https://github.com/lxde/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
+	"https://downloads.lxqt.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
 	'desktop_entry.patch'
 )
 validpgpkeys=(
-	'7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3' # Alf Gaida
+	# Alf Gaida <agaida at siduction dot org>
+	'7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3'
 )
 sha256sums=(
 	'f97a6d992adff317614785229d14eefa5dff350ecd5d608d6a30ee993adfa1dd'
