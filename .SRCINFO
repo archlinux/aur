@@ -1,5 +1,5 @@
 pkgbase = dosbox-gcc
-	pkgdesc = gcc cross-compiler for the dosbox environment
+	pkgdesc = djgpp cross-compiler for the dosbox environment
 	pkgver = 7.2.0
 	pkgrel = 1
 	url = http://gcc.gnu.org
