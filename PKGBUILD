@@ -1,9 +1,9 @@
 # Maintainer: axionl <axionl@aosc.io>
 pkgname=filemanager-bin
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Web File Manager which can be used as a middleware or standalone app."
-arch=('i386' 'x86_64')
+arch=('i386' 'x86_64' 'aarch64')
 url="https://github.com/hacdias/filemanager"
 license=('Apache')
 depends=('glibc')
@@ -17,6 +17,7 @@ source=('filemanager.service'
 
 source_i386=(linux-386-filemanager.tar.gz::https://github.com/hacdias/filemanager/releases/download/v$pkgver/linux-386-filemanager.tar.gz)
 source_x86_64=(linux-amd64-filemanager.tar.gz::https://github.com/hacdias/filemanager/releases/download/v$pkgver/linux-amd64-filemanager.tar.gz)
+source_aarch64=(linux-arm64-filemanager.tar.gz::https://github.com/hacdias/filemanager/releases/download/v$pkgver/linux-arm64-filemanager.tar.gz)
 
 md5sums=('9edb695128abd99b44f9d38fa3a8e5bc'
          '158da0caf1696c91157605a7a968883e'
@@ -24,6 +25,7 @@ md5sums=('9edb695128abd99b44f9d38fa3a8e5bc'
          'd92e60ee98664c54f68aa515a6169708')
 md5sums_i386=('98bb90aa4cbaa55e4cacb6a198dfda19')
 md5sums_x86_64=('4814fb8ddc746a82e162801562491d34')
+md5sums_aarch64=('2d2a276df181e3579291fa2269a68291')
 
 package() {
   dir="$srcdir"
