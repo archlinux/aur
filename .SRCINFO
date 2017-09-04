@@ -1,0 +1,23 @@
+pkgbase = pocketsmith-bin
+	pkgdesc = Personal finance software with cash flow forecasts
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://www.pocketsmith.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gconf
+	depends = nss
+	depends = alsa-lib
+	depends = libxtst
+	depends = gtk2
+	depends = libxss
+	options = !strip
+	options = !emptydirs
+	source_i686 = https://d17qi61ltj6gb6.cloudfront.net/0.1.2/pocketsmith_0.1.2_i386.deb
+	sha256sums_i686 = ea33a23d8b7f0cfcf12dfcd5893058057a4adf1b89e8a022cd606aecc58a3b22
+	source_x86_64 = https://d17qi61ltj6gb6.cloudfront.net/0.1.2/pocketsmith_0.1.2_amd64.deb
+	sha256sums_x86_64 = 888f824b5e1245baf8f604e6066774c96891278cce5d9628a2bd918081edf262
+
+pkgname = pocketsmith-bin
+
