@@ -1,0 +1,16 @@
+pkgbase = linvst
+	pkgdesc = enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/osxmidi/LinVst
+	arch = x86_64
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = wine
+	depends = steinberg-vst36
+	source = https://github.com/osxmidi/LinVst/releases/download/1.5/LinVst-1.5.1.zip
+	md5sums = bebb40bc1cced47cd6845cdf0b693bdd
+
+pkgname = linvst
+
