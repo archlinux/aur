@@ -2,30 +2,28 @@
 
 pkgname=shadowsocksr-libev-git
 pkgver=2.4.1.368.ge2373d7
-pkgrel=1
+pkgrel=2
 pkgdesc='A Shadowsocks fork'
 arch=('i686' 'x86_64')
-url='https://github.com/shadowsocksr/shadowsocksr-libev'
+url='https://github.com/shadowsocksr-backup/shadowsocksr-libev'
 license=('GPL3')
 #conflicts=('shadowsocks-libev') # no more conflicts
 depends=('openssl' 'libev' 'libsodium' 'udns' 'pcre')
-makedepends=('git' 'gcc' 'autoconf' 'libtool' 'automake' 'make' 'zlib' 'openssl' 'asciidoc' 'xmlto')
+makedepends=('git' 'zlib' 'asciidoc' 'xmlto')
+optdepends=('mbedtls: another choice of SSL/TLS library') # choose this or openssl as you wish
 options=('docs' '!strip')
-install=shadowsocksr-libev.install
 source=(
         'git+https://github.com/shadowsocksr-backup/shadowsocksr-libev.git'
         shadowsocksr-libev-redir@.service
         shadowsocksr-libev-server@.service
         shadowsocksr-libev-tunnel@.service
         shadowsocksr-libev@.service
-		shadowsocksr-libev.sh
         )
 sha256sums=('SKIP'
-            '3d5a42a98f0b342cee40d9295da55e37768ced74c18b51f8e144c79e7c804b4c'
-            '0ca36847f4d02a36ab793c15f1abf95d19aea27455d9738a45b50d4906bba317'
-            'f186d164d99d9e32cd72554aafbd5fae86066a19be09fadf68b2c95e4f395637'
-            'ee78d9c3b2568afea2a61f6d466710bc70672941bd507b0fd3e9654b3d29304a'
-            'bd281bca7de8d64e1812e1f385fe094aea0ffb99aaa4e43f64222e990dce271d')
+            '8d27cf80278bff1055ab208ccc9eab04193fea34a5c18b778647f46e87371153'
+            '32ca7d65d78bf31d6787b19b22c8aed0d2fe2ad2790a5ca9f315033cbe23393d'
+            '46fce883f20f705d346a8f1128ae31b421553d86045ef47eadafc96390f32c1a'
+            '0e341beeeaef04c1ee952a33ac7db86b65cfd5867082c73c67f457a50a3d7fdd')
 
 _gitname='shadowsocksr-libev'
 
@@ -36,28 +34,37 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  ./configure --prefix=/opt/$_gitname --enable-system-shared-lib --program-transform-name=s/ss-/ssr-/
+  ./configure --prefix=/opt/$_gitname \
+              --enable-system-shared-lib \
+              --program-transform-name='s/ss-/ssr-/' # \
+            # --with-crypto-library=LIB # LIB=openssl|mbedtls, default=openssl
+            # if you choose a crypto lib other than openssl, uncomment above line and the trailing slash
   make
 }
 
 package() {
   cd "$srcdir/$_gitname"
   make DESTDIR="$pkgdir/" install
-  install -Dm644 {"$srcdir/","$pkgdir/usr/lib/systemd/system/"}shadowsocksr-libev-redir@.service
-  install -Dm644 {"$srcdir/","$pkgdir/usr/lib/systemd/system/"}shadowsocksr-libev-server@.service
-  install -Dm644 {"$srcdir/","$pkgdir/usr/lib/systemd/system/"}shadowsocksr-libev-tunnel@.service
-  install -Dm644 {"$srcdir/","$pkgdir/usr/lib/systemd/system/"}shadowsocksr-libev@.service
 
-  # PATH
-  install -Dm755 {"$srcdir/","$pkgdir/etc/profile.d/"}$_gitname.sh
+  # systemd services
+  for service in "@" "-redir@" "-server@" "-tunnel@"; do
+	  install -Dm644 {"$srcdir","$pkgdir/usr/lib/systemd/system"}/shadowsocksr-libev"$service".service
+  done
+
+  # create symlink in /usr/bin
+  install -dm755 "$pkgdir/usr/bin"
+  for bin in "$pkgdir/opt/$_gitname/bin/"*; do
+	  local basebin="$(basename $bin)"
+	  ln -s "/opt/$_gitname/bin/$basebin" "$pkgdir/usr/bin/$basebin"
+  done
 
   # move manpages
   install -dm755 "$pkgdir/usr/share/man/man"{1,8}
-  for bin in ssr-{nat,manager,redir,server,local,tunnel}; do
-      mv "$pkgdir/"{opt/$_gitname,usr}"/share/man/man1/$bin.1"
+  for man in "$pkgdir/opt/$_gitname/share/man/man1/"*; do
+	  mv "$man" "$pkgdir/usr/share/man/man1/"
   done
   mv "$pkgdir/opt/$_gitname/share/man/man8/shadowsocks-libev.8" "$pkgdir/usr/share/man/man8/shadowsocksr-libev.8"
 
-  # remove empty directories
+  # remove empty man directories
   rm "$pkgdir/opt/$_gitname/share/man" -rf
 }
