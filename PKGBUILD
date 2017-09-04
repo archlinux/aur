@@ -1,7 +1,7 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=libfiu
-pkgver=0.94
+pkgver=0.95
 pkgrel=1
 pkgdesc="userspace fault injection framework"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('make' 'gcc' 'python2')
 source=("https://blitiri.com.ar/p/$pkgname/files/$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname-$pkgver.patch")
-md5sums=('b09c161c5a9c3bd888d600049549485d'
+md5sums=('f420196aded3c7a60c8f92739fad54f0'
          '91b295e1fbf4bd0a2bf73bb97a6ed91b')
 install=$pkgname-$pkgver.install
 
