@@ -3,7 +3,7 @@
 
 pkgname=scid_vs_pc
 pkgver=4.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Shane's Chess Information Database"
 arch=('i686' 'x86_64')
 url="http://scidvspc.sourceforge.net/"
@@ -42,7 +42,7 @@ package() {
     # Create directories
     install -dm755 $pkgdir/usr/bin
     install -dm755 $pkgdir/usr/share/scid/{bases,bin,bitmaps,books,data,html,lang,sounds}
-    install -dm644 $pkgdir/usr/share/fonts/truetype/Scid
+    install -dm755 $pkgdir/usr/share/fonts/truetype/Scid
         
     # Data
     install -m 755 scid sc_* scidpgn pgnfix spliteco pgnscid tkscid tcscid scmerge scidlet* scidt $pkgdir/usr/share/scid/bin
