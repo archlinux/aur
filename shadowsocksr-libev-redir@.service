@@ -1,0 +1,13 @@
+[Unit]
+Description=ShadowsocksR-Libev Client Service Redir Mode
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+ExecStart=/opt/shadowsocksr-libev/bin/ssr-redir -c /etc/shadowsocksr/%i.json
+
+[Install]
+WantedBy=multi-user.target
+
