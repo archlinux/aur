@@ -2,10 +2,10 @@
 
 pkgname=wine-staging-git
 pkgver=2.12.r6.g201e6261+wine.2.12.r134.gab313dd3be
-pkgrel=2
+pkgrel=3
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
-url='https://github.com/wine-compholio/wine-staging/'
+url='https://www.wine-staging.com/'
 license=('LGPL')
 _depends=(
     'attr'                  'lib32-attr'
