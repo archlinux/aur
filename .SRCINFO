@@ -8,6 +8,7 @@ pkgbase = run_scaled-git
 	depends = xpra-winswitch
 	depends = xorg-xrandr
 	depends = xorg-server-xvfb
+	depends = bc
 	source = run_scaled::git://github.com/kaueraal/run_scaled.git
 	md5sums = SKIP
 

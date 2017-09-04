@@ -8,7 +8,7 @@ pkgdesc='Run an X application scaled via xpra. Useful on hidpi screens'
 arch=('any')
 url='https://github.com/kaueraal/run_scaled.git'
 license=('BSD')
-depends=('xpra-winswitch' 'xorg-xrandr' 'xorg-server-xvfb')
+depends=('xpra-winswitch' 'xorg-xrandr' 'xorg-server-xvfb' 'bc')
 source=("${_gitdir}::git://github.com/kaueraal/run_scaled.git")
 md5sums=(SKIP)
 
