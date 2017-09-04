@@ -3,7 +3,7 @@ _pkgname='giturlparse.py'
 pkgbase="python-giturlparse"
 pkgname=("python-giturlparse" "python2-giturlparse")
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Parse & rewrite git urls (supports GitHub, Bitbucket, Assembla ...)'
 url='https://github.com/FriendCode/giturlparse.py'
 arch=('any')
@@ -20,11 +20,13 @@ build() {
 }
 
 package_python-giturlparse() {
+    depends=('python')
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-giturlparse() {
+    depends=('python2')
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
