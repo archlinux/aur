@@ -1,7 +1,7 @@
 # Maintainer: Morten Linderud <morten@linderud.pw>  
 pkgname="molecule"
-pkgver=2.0.0.rc12
-pkgrel=5
+pkgver=2.0.2
+pkgrel=1
 pkgdesc='Molecule aids in the development and testing of Ansible roles.'
 url='https://github.com/metacloud/molecule/tree/2.0.0.rc12'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('python-docker: docker driver'
             'python-vagrant: vagrant driver'
             'python-shade: openstack driver')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/metacloud/molecule/archive/${pkgver}.tar.gz")
-sha256sums=('f27894ac47e37cf54be159a45e84b6adfae4127ec77e9c46a9c4bfeb5fc8ee24')
+sha256sums=('9cf3532ed4c5c262c2b4acd90da41c0c4cdf86ca15519f6dc3924b32d660ea5a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
