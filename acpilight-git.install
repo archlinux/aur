@@ -1,0 +1,8 @@
+post_install() {
+    cat << EOF
+  The installed udev rules expect your user to be in the video group.
+  If you are not, you might probably not be able to modify the relevant files
+  in the /sys hierarchy.
+EOF
+}
+
