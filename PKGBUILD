@@ -9,7 +9,6 @@ arch=('any')
 url="https://github.com/jlpc/xoutputd.git"
 license=('MIT')
 depends=('libx11' 'libxrandr')
-makedepends=('libx11' 'libxrandr')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/jlpc/xoutputd.git")
