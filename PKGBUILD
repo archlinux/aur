@@ -2,44 +2,60 @@
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=rstudio-desktop
-pkgver=1.0.143
+pkgver=1.0.153
 _gwtver=2.7.0
 _ginver=1.5
 _clangver=3.6.1
 pkgrel=1
 pkgdesc="Open source and enterprise-ready professional software for the R community"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="http://www.rstudio.com/"
-license=('AGPL')
+license=(AGPL)
 depends=(
 	'r>=2.11.1' 'boost-libs>=1.63'
 	pango shared-mime-info mathjax pandoc clang
 	qt5-base qt5-declarative qt5-location qt5-sensors qt5-svg qt5-webkit qt5-xmlpatterns
 )
 makedepends=('cmake>=2.8' 'boost>=1.63' java-environment apache-ant openssl pam)
-conflicts=('rstudio-desktop-bin' 'rstudio-desktop-git' 'rstudio-desktop-preview-bin')
-install=rstudio-desktop.install
-source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/tarball/v$pkgver"
-        "https://s3.amazonaws.com/rstudio-buildtools/gin-$_ginver.zip"
-        "https://s3.amazonaws.com/rstudio-buildtools/gwt-$_gwtver.zip"
-        "https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip"
-        "rroutines-style.patch"
-        "socketproxy-openssl.patch"
-        )
-noextract=('core-dictionaries.zip'
-           "gin-$_ginver.zip")
-sha256sums=('8d597da85b007e2cdbd5c5e7e0005907c7672c2f6dd87c8481c27032f6e57705'
-            'f561f4eb5d5fe1cff95c881e6aed53a86e9f0de8a52863295a8600375f96ab94'
-            'aa65061b73836190410720bea422eb8e787680d7bc0c2b244ae6c9a0d24747b3'
-            '4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
-            'b953527f46320d64425f7de257f774d7f354199b7c6a71f126ed467b6e6dd52b'
-            '65b9f9b1f159bbfbcb1544f444e210e58549c0d1c0c6421cf750ce3517088134'
-            )
+conflicts=(rstudio-desktop-bin rstudio-desktop-git rstudio-desktop-preview-bin)
+source=(
+	"rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/tarball/v$pkgver"
+	"https://s3.amazonaws.com/rstudio-buildtools/gin-$_ginver.zip"
+	"https://s3.amazonaws.com/rstudio-buildtools/gwt-$_gwtver.zip"
+	"https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip"
+	"rroutines-style.patch"
+	"socketproxy-openssl.patch"
+)
+noextract=('core-dictionaries.zip' "gin-$_ginver.zip")
+sha256sums=(
+	'74438e9effff16ec6a5353476a1700c02556423eb62105d242df913888519540'
+	'f561f4eb5d5fe1cff95c881e6aed53a86e9f0de8a52863295a8600375f96ab94'
+	'aa65061b73836190410720bea422eb8e787680d7bc0c2b244ae6c9a0d24747b3'
+	'4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
+	'b953527f46320d64425f7de257f774d7f354199b7c6a71f126ed467b6e6dd52b'
+	'65b9f9b1f159bbfbcb1544f444e210e58549c0d1c0c6421cf750ce3517088134'
+)
 
 _pkgname=rstudio
 
+_check_version() {
+	local varname=$1
+	local real=$2
+	local path=$3
+	msg2 "Checking if $varname in file “$path” is “$real”"
+	
+	local test=$(grep -P "$varname=[\\d.]+" "$path" | cut -d= -f2)
+	if [[ "$test" != "$real" ]]; then
+		msg2 "Check failed: $varname is $test" >&2
+		exit 1
+	fi
+}
+
 prepare() {
-	unzip -o "$srcdir/gin-$_ginver.zip" -d "gin-$_ginver"
+	cd "$srcdir/$_pkgname-$_pkgname-"*
+	_check_version GIN_VER     $_ginver 'dependencies/common/install-gwt' || exit 1
+	_check_version GWT_SDK_VER $_gwtver 'dependencies/common/install-gwt' || exit 1
+	unzip -o "$srcdir/gin-$_ginver.zip" -d "../gin-$_ginver"
 }
 
 build() {
@@ -57,19 +73,19 @@ build() {
 	cp -r "$srcdir/gwt-$_gwtver/"* "src/gwt/lib/gwt/$_gwtver"
 	
 	(
-		cd "dependencies/common"
+		cd 'dependencies/common'
 		install -d dictionaries libclang/{3.5,builtin-headers}
 		
-		unzip -qfod "dictionaries" "$srcdir/core-dictionaries.zip"
+		unzip -qfod 'dictionaries' "$srcdir/core-dictionaries.zip"
 		
-		ln -sfT "/usr/share/mathjax"                mathjax-26
-		ln -sfT "/usr/bin"                          pandoc
-		ln -sfT "/usr/lib/libclang.so"              libclang/3.5/libclang.so
+		ln -sfT '/usr/share/mathjax'                mathjax-26
+		ln -sfT '/usr/bin'                          pandoc
+		ln -sfT '/usr/lib/libclang.so'              libclang/3.5/libclang.so
 		ln -sfT "/usr/lib/clang/$_clangver/include" libclang/builtin-headers/3.5
 		
 		#TODO: https://github.com/rstudio/rsconnect.git
 		#TODO: https://github.com/rstudio/rmarkdown.git
-		bash "install-packages"
+		bash 'install-packages'
 	)
 	
 	cmake -DRSTUDIO_TARGET=Desktop \
