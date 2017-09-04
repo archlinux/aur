@@ -15,14 +15,11 @@ url='https://github.com/i-rinat/freshplayerplugin'
 license=('MIT')
 depends=('alsa-lib' 'cairo' 'ffmpeg' 'freetype2' 'glib2' 'icu' 'jack'
          'libevent' 'libgl' 'libsoxr' 'libva' 'libvdpau' 'libx11'
-         'libxcursor' 'libxrandr' 'libxrender' 'openssl' 'pango' 'v4l-utils')
+         'libxcursor' 'libxrandr' 'libxrender' 'openssl' 'pango'
+         'v4l-utils' 'pepper-flash')
 makedepends=('libdrm' 'cmake' 'ragel')
-optdepends=('pepper-flash: for the necessary Pepper plugin')
-install="${pkgname}.install"
-source=("${url}/archive/v${pkgver}.tar.gz"
-        "${pkgname}.install")
-sha1sums=('e7f9bf791a3d70e386eb98f3e7c6478a891bff29'
-          '331a3b3877249eaf1c3db917bde1dea6c4d374ab')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha1sums=('e7f9bf791a3d70e386eb98f3e7c6478a891bff29')
 
 build() {
   cd "${pkgname}-${pkgver}"

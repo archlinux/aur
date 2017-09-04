@@ -3,7 +3,6 @@ pkgbase = freshplayerplugin
 	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/i-rinat/freshplayerplugin
-	install = freshplayerplugin.install
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -29,11 +28,9 @@ pkgbase = freshplayerplugin
 	depends = openssl
 	depends = pango
 	depends = v4l-utils
-	optdepends = pepper-flash: for the necessary Pepper plugin
+	depends = pepper-flash
 	source = https://github.com/i-rinat/freshplayerplugin/archive/v0.3.7.tar.gz
-	source = freshplayerplugin.install
 	sha1sums = e7f9bf791a3d70e386eb98f3e7c6478a891bff29
-	sha1sums = 331a3b3877249eaf1c3db917bde1dea6c4d374ab
 
 pkgname = freshplayerplugin
 
