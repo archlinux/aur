@@ -7,7 +7,7 @@ arch=(x86_64)
 url="http://github.com/gchaincl/httplab"
 license=('MIT')
 makedepends=('wget')
-provides=('httplab=$pkgver')
+provides=('httplab')
 conflicts=('httplab')
 replaces=('httplab')
 install=
