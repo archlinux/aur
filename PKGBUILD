@@ -8,7 +8,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=dsremote-git
-pkgver=0.32_1603121812
+pkgver=0.35_1707091429
 pkgrel=1
 pkgdesc="DSRemote is a program to control and visualize your Rigol® DS6000 or DS1000Z series oscilloscope from
 your Linux desktop via USB or LAN."
