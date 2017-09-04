@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sanoid-git
-pkgver=r118.b4bed03
+pkgver=r183.f3d2a69
 pkgrel=1
 pkgdesc="Sanoid is a policy-driven snapshot management tool for ZFS filesystems."
 arch=('any')
@@ -12,6 +12,7 @@ depends=('perl' 'perl-config-inifiles')
 optdepends=('pv: progress bars'
             'lzop: compression'
             'mbuffer: stream buffering')
+makedepends=('git')
 conflicts=('sanoid')
 provides=('sanoid')
 source=("sanoid-git::git+https://github.com/jimsalterjrs/sanoid.git")
