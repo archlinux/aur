@@ -2,7 +2,7 @@
 # Contributor: Patrick Wozniak <email@patwoz.de>
 
 pkgname=masterpassword-cli-git
-pkgver=2.5.cli.2.r126.gcd70009c
+pkgver=2.5.cli.2.r127.g44d8ab6e
 pkgrel=1
 pkgdesc="CLI version of Master Password. (git-version)"
 
