@@ -2,14 +2,14 @@ pkgname=terasology
 _version=1.5.0
 _version_postfix=alpha8
 pkgver=${_version}${_version_postfix}
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft!"
 arch=('x86_64' 'i686')
 license=('Apache')
 url="http://terasology.org"
 options=('!strip')
-depends=('java-environment-openjdk=8' 'openal' 'libxcursor' 'libxxf86vm' 'libxrandr')
+depends=('java-environment-openjdk=8' 'openal' 'libxcursor' 'libxxf86vm' 'libxrandr' 'lwjgl2')
 makedepends=('unzip')
 source=(
     "$pkgname"
@@ -41,15 +41,16 @@ package() {
     popd
     rm -r org
 
-    #remove files/dirs for other operating systems
+    #remove files/dirs for other operating systems and native libraries
     rm run_macosx.command Terasology.{x86,x64}.exe
-    rm -r natives/{macosx,windows}
-    rm natives/linux/libopenal*
-    if [[ "$CARCH" == 'x86_64' ]]; then
-        rm natives/linux/lib{jinput-linux,lwjgl}.so
-    elif [[ "$CARCH" == 'i686' ]]; then
-        rm natives/linux/lib{jinput-linux,lwjgl}64.so
-    fi
+    rm -r natives
+    mkdir -p natives/linux
+
+    #link the lwjgl libraries
+    ln -sf /usr/share/lwjgl2/native/linux/liblwjgl64.so natives/linux
+    ln -sf /usr/share/lwjgl2/native/linux/libjinput-linux64.so natives/linux
+    ln -sf /usr/share/lwjgl2/native/linux/liblwjgl.so natives/linux
+    ln -sf /usr/share/lwjgl2/native/linux/libjinput-linux.so natives/linux
 
     cp -ra "$srcdir" "${pkgdir}/usr/share/${pkgname}"
 }
