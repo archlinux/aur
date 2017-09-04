@@ -11,7 +11,6 @@ pkgbase = dosbox-binutils
 	options = !libtool
 	options = !emptydirs
 	source = http://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.xz
-	source = http://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.xz.sig
 	source = xtors.patch
 	source = lto-discard.patch
 	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93

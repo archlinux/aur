@@ -16,7 +16,6 @@ source=("http://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz"
         xtors.patch
         lto-discard.patch)
 sha256sums=('SKIP'
-            'SKIP'
             'a54efa3f29f14c938fedf29fb352d4f104e8c0ec065c74b0cd3f753fe3e9d4ef'
             'a7978c3110dbccde7290fb3517121f5cae427728c04e6fb76736f36857514ec9')
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93') # Tristan Gingold <adacore dot com, gingold>
