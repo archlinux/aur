@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Get the current resolution
+RESOLUTION=`xrandr | grep \* | awk '{print $1}'`
+
 # The URL variuabile where we will store the final address to open
 URL=''
 
@@ -33,5 +36,5 @@ exec /usr/bin/chromium --disable \
     --ignore-gpu-blacklist \
     --load-extension=.extensions/disable-x-frame-option,.extensions/aw-snap-reloader \
     --window-position="0,0" \
-    --window-size="1920,1080" \
+    --window-size="$RESOLUTION" \
     --kiosk "$URL"
