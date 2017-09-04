@@ -1,6 +1,6 @@
 # Maintainer: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=ifcopenshell-git
-pkgver=0.r548.gfefa8a0
+pkgver=0.5.0.preview2.r128.gc7c5e69
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 url="http://ifcopenshell.org/"
@@ -36,25 +36,32 @@ prepare(){
   sed -e "s|FIND_PACKAGE(Boost REQUIRED COMPONENTS system program_options regex thread date_time)|FIND_PACKAGE(Boost REQUIRED COMPONENTS system program_options regex thread date_time)\nADD_DEFINITIONS(-DBOOST_OPTIONAL_USE_OLD_DEFINITION_OF_NONE)|" -i cmake/CMakeLists.txt
 
   sed -e "s|boost::shared_ptr<Representation::Triangulation<P>>|boost::shared_ptr<Representation::Triangulation<P> >|" -i src/ifcgeom/IfcGeomElement.h
+
+  sed -e "s|#include <iomanip>|#include <iomanip>\n#include <unicode/unistr.h>|" -i src/ifcparse/IfcCharacterDecoder.cpp
 }
 
 build() {
   cd "${srcdir}/IfcOpenShell"
-
+  if [ -d "build" ]; then
+    rm -rf build
+  fi
   mkdir -p build
-  cd "${srcdir}/IfcOpenShell/build"
+  cd build
   local _pythonver=$(python --version >&1)
-  cmake ../cmake \
-  	-DCMAKE_INSTALL_PREFIX=/usr \
+  #	-DBUILD_IFCPYTHON=OFF \
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_CXX_STANDARD=11 \
 	-DOCC_INCLUDE_DIR=/opt/opencascade/inc \
 	-DOCC_LIBRARY_DIR=/opt/opencascade/lib \
 	-DOPENCOLLADA_INCLUDE_DIR=/usr/include/opencollada \
 	-DOPENCOLLADA_LIBRARY_DIR=/usr/lib/opencollada \
-        -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python${_pythonver:7:3}m \
-        -DPYTHON_LIBRARY:FILEPATH=/usr/lib64/libpython${_pythonver:7:3}m.so
+	-DICU_INCLUDE_DIR=/usr/include/unicode \
+	-DICU_LIBRARY_DIR=/usr/lib \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python${_pythonver:7:3}m \
+        -DPYTHON_LIBRARY=/usr/lib64/libpython${_pythonver:7:3}m.so \
+	-DSWIG_EXECUTABLE=/usr/bin/swig \
+	../cmake
   make
-
 }
 
 package() {
@@ -67,7 +74,7 @@ package() {
   mkdir -p "${pkgdir}"/usr/share/blender/${_blenderver}/scripts/addons_contrib
   cp -rf "${srcdir}"/IfcOpenShell/src/ifcblender/* "${pkgdir}"/usr/share/blender/${_blenderver}/scripts/addons_contrib
   cp -rf "${srcdir}"/IfcOpenShell/src/ifcopenshell-python/* "${pkgdir}"/usr/share/blender/${_blenderver}/scripts/addons_contrib/io_import_scene_ifc
-    cp -f "${srcdir}"/IfcOpenShell/build/ifcwrap/*ifcopenshell_wrapper* "${pkgdir}"/usr/share/blender/${_blenderver}/scripts/addons_contrib/io_import_scene_ifc/ifcopenshell
+  cp -f "${srcdir}"/IfcOpenShell/build/ifcwrap/*ifcopenshell_wrapper* "${pkgdir}"/usr/share/blender/${_blenderver}/scripts/addons_contrib/io_import_scene_ifc/ifcopenshell
 }
 
 md5sums=('SKIP')
