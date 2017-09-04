@@ -1,16 +1,17 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
+# Note - rocketeergames does not provide any log file or any website where we can automatically detect version number changes (the only solution would be decompile program), so we use date as a versions & monitor remote file size for changes (AUR package gets outdated quite often).
+
 pkgname=rcr
-pkgver=1.4.2.1201
+pkgver=201709040548
+_filesize=12345678
 pkgrel=1
 pkgdesc="Red Crucible®: Reloaded - Free to play online FPS"
 arch=('i686' 'x86_64')
 url="http://www.rocketeergames.com/site/rcr/"
 license=('LLC')
-# depends=()
-# makedepends=()
 source=("http://cdn.rocketeergames.com/rcreloaded/redcrucible_lin.zip" "rcr.desktop")
-md5sums=('0b69b7d01b069c9a02cc445e4ee4ad87' 'b03e6aadb89d013092b10666bfbb9460')
+md5sums=('SKIP' 'b03e6aadb89d013092b10666bfbb9460')
 
 package() {
 
