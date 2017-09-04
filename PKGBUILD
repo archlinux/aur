@@ -3,12 +3,12 @@
 
 pkgname=gromacs-5.0-complete
 pkgver=5.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
 arch=('i686' 'x86_64')
-depends=('fftw' 'lesstif' 'perl' 'libxml2' 'libsm' 'libx11')
+depends=('fftw' 'perl' 'libxml2' 'libsm')
 makedepends=('cmake')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
