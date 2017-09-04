@@ -18,7 +18,7 @@ _UNIFONT_VER="9.0.06"
 [[ "${CARCH}" == "i686" ]] && _EMU_ARCH="i386"
 
 pkgname="grub-git"
-pkgver=2.02.r0.ge54c99aaf
+pkgver=2.02.r65.g666237205
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2)"
 arch=('x86_64' 'i686')
@@ -48,8 +48,8 @@ backup=('boot/grub/grub.cfg'
         'etc/grub.d/40_custom')
 options=('!makeflags')
 install="${pkgname}.install"
-source=("grub::git+git://git.sv.gnu.org/grub.git#branch=master"
-        "grub-extras::git+git://git.sv.gnu.org/grub-extras.git#commit=branch=master"
+source=("grub::git+git://git.savannah.gnu.org/grub.git"
+        "grub-extras::git+git://git.savannah.gnu.org/grub-extras.git"
         "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
         'intel-ucode.patch'
         '10_linux-detect-archlinux-initramfs.patch'
