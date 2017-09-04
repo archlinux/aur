@@ -1,6 +1,6 @@
 pkgname='art'
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='Builds Arch Linux package repositories'
 arch=('i686' 'x86_64')
 url='https://github.com/majewsky/art'
@@ -11,15 +11,9 @@ optdepends=(
 )
 makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b5d1b1ea3fcce01989d5b53bce6dbb7f4e2fc94f7266ae024679552ec3ec544f')
+sha256sums=('e2c9fd9fd7a5d906f22adcd4d808a92af872835ca72bb3118f8574599deff815')
 
 options=('!strip') # binaries are already stripped inside the Makefile
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    # fix known copy-paste error
-    sed -i s/gofu/art/g Makefile
-}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
