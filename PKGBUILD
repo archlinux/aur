@@ -3,7 +3,7 @@
 _perlmod=GnuPG-Interface
 pkgname=perl-gnupg-interface
 pkgver=0.52
-pkgrel=2
+pkgrel=3
 pkgdesc="Object methods for interacting with GnuPG"
 arch=('any')
 url="http://search.cpan.org/dist/GnuPG-Interface"
