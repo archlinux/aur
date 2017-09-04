@@ -8,7 +8,7 @@ _target="i586-pc-msdosdjgpp"
 _islver=0.18
 _djver=2.05
 pkgrel=1
-pkgdesc="gcc cross-compiler for the dosbox environment"
+pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -18,11 +18,11 @@ makedepends=('unzip')
 optdepends=('djgpp-djcrx: headers and utilities')
 options=('!strip' 'staticlibs' '!emptydirs')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
-        "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+        "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
         "http://www.delorie.com/pub/djgpp/current/v2/djcrx${_djver//./}.zip"
         "lto.patch")
 sha256sums=('1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a'
-            '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
+            '0f35051cc030b87c673ac1f187de40e386a1482a0cfdf2c552dd6031b307ddc4'
             '22274ed8d5ee57cf7ccf161f5e1684fd1c0192068724a7d34e1bde168041ca60'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0')
 noextract=("djcrx${_djver//./}.zip")
