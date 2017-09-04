@@ -1,0 +1,24 @@
+pkgbase = dosbox-binutils
+	pkgdesc = Binutils for the gcc dosbox cross-compiler
+	pkgver = 2.29
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils
+	arch = i686
+	arch = x86_64
+	groups = djgpp
+	license = GPL
+	depends = zlib
+	options = !libtool
+	options = !emptydirs
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.bz2
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.bz2.sig
+	source = xtors.patch
+	source = lto-discard.patch
+	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
+	sha256sums = 29a29549869039aad75fdf507ac30366da5ad0b974fbff4a8e7148dbf4f40ebf
+	sha256sums = SKIP
+	sha256sums = a54efa3f29f14c938fedf29fb352d4f104e8c0ec065c74b0cd3f753fe3e9d4ef
+	sha256sums = a7978c3110dbccde7290fb3517121f5cae427728c04e6fb76736f36857514ec9
+
+pkgname = dosbox-binutils
+

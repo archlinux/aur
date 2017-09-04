@@ -1,0 +1,30 @@
+--- binutils-2.29/ld/scripttempl/i386go32.sc
++++ binutils-2.29/ld/scripttempl/i386go32.sc
+@@ -13,11 +13,11 @@
+ # conditional expansion.
+ CTOR='.ctor : {
+     *(SORT(.ctors.*))
+-    *(.ctor)
++    *(.ctor) *(.ctors)
+   }'
+ DTOR='.dtor : {
+     *(SORT(.dtors.*))
+-    *(.dtor)
++    *(.dtor) *(.dtors)
+   }'
+ 
+ cat <<EOF
+@@ -46,11 +46,11 @@
+   .data ${RELOCATING+ ${DATA_ALIGNMENT}} : {
+     ${RELOCATING+djgpp_first_ctor = . ;
+     *(SORT(.ctors.*))
+-    *(.ctor)
++    *(.ctor) *(.ctors)
+     djgpp_last_ctor = . ;}
+     ${RELOCATING+djgpp_first_dtor = . ;
+     *(SORT(.dtors.*))
+-    *(.dtor)
++    *(.dtor) *(.dtors)
+     djgpp_last_dtor = . ;}
+     *(.data)
+     ${RELOCATING+*(.data.*)}
