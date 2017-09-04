@@ -1,5 +1,5 @@
 pkgname=simplescreenrecorder-git
-pkgver=0.0.0
+pkgver=0.3.8.r89.g2edb032
 pkgrel=1
 pkgdesc="A feature-rich screen recorder that supports X11 and OpenGL. (Git version)"
 arch=("i686" "x86_64")
@@ -11,10 +11,9 @@ depends=("qt4" "ffmpeg" "alsa-lib" "libpulse" "jack" "libgl" "glu" "libx11" "lib
 if test "$CARCH" == x86_64; then
 	optdepends=("lib32-simplescreenrecorder-git: OpenGL recording of 32-bit applications")
 fi
-makedepends=("git")
+makedepends=("git" "cmake")
 conflicts=("simplescreenrecorder")
 provides=("simplescreenrecorder")
-options=("!libtool")
 install=simplescreenrecorder-git.install
 
 pkgver() {
@@ -24,7 +23,7 @@ pkgver() {
 }
 build() {
 	cd "${srcdir}/ssr"
-	./configure --prefix=/usr --disable-assert
+	cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="/usr/lib" -DCMAKE_BUILD_TYPE=Release .
 	make
 }
 package() {
