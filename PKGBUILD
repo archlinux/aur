@@ -4,7 +4,7 @@
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-en'
-pkgver='7.0.4'
+pkgver='7.0.5'
 _language='en-US'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
@@ -22,7 +22,7 @@ optdepends=('zenity: simple dialog boxes'
             'libnotify: Gnome dialog boxes')
 install="${pkgname}.install"
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
-source=("http://89.248.173.146/tor-browser-linux64-${pkgver}_${_language}.tar.xz"{,.asc}
+source=("http://5.196.189.50/tor-browser-linux64-${pkgver}_${_language}.tar.xz"{,.asc}
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}.sh")
