@@ -15,6 +15,7 @@ makedepends=('lynx'
              'sqlite'
              'net-snmp'
              'openslp'
+             'setconf'
              )
 DLAGENTS=('https::/usr/bin/lynx -accept_all_cookies -cmd_script=lynx_script_for_download_pegasus %u'
           'http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u'
