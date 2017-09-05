@@ -2,7 +2,7 @@
 
 pkgname=xonsh-git
 _gitname=xonsh
-pkgver=0.5.6.r152.gf35ac0fb
+pkgver=0.5.12.r102.gc787f9ab
 pkgrel=1
 pkgdesc="A Python-ish, BASHwards-compatible shell"
 url="http://github.com/scopatz/xonsh"
@@ -23,7 +23,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_gitname"
-  python setup.py install --root=$pkgdir
+  python setup.py install --root="$pkgdir"
   install -D -m644 license "$pkgdir/usr/share/licenses/$_gitname/license"
 }
 
