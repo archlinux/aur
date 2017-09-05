@@ -28,6 +28,7 @@ sha256sums=('9c80d5c7838361a328fb6b60016d503def9ce53ad3c589f3b08ff71a2bb88e00'
             'db921a9ad938ecdb208f6568466950360a892ca0c0754cf51ee082216cd3c8ff'
             '7a3b68541840a8a9ed5c40fbec815ba21f72b9b2726c42fab6b7aa3d1e0e0d9b'
             '9f1506cbe02b48fe7ac53932f068f3ebc8a8441ad92bdec17e2cd40ca7bcbaa8')
+install=$pkgname.install
 
 prepare() {
   cd netkit-telnet-0.17
@@ -64,7 +65,7 @@ package() {
                     "$pkgdir"/etc/xinetd.d/telnet-ssl
 
   install -D -m 644 "$srcdir"/netkit-telnet-ssl.sysusers \
-                    "$pkgdir"/usr/lib/sysusers.d/netkit-telnet-ssl.sysusers
+                    "$pkgdir"/usr/lib/sysusers.d/netkit-telnet-ssl.conf
 
   for unit in netkit-telnetd{,-ssl}{.socket,@.service}; do
     install -D -m 644 "$srcdir"/"$unit" \
