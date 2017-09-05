@@ -5,8 +5,8 @@
 
 pkgname=xdg-user-dirs-nosystemd
 _pkgname=xdg-user-dirs
-pkgver=0.15
-pkgrel=4
+pkgver=0.16
+pkgrel=1
 pkgdesc="Manage user directories like ~/Desktop and ~/Music"
 arch=(i686 x86_64)
 url="http://www.freedesktop.org/wiki/Software/xdg-user-dirs"
@@ -15,21 +15,17 @@ depends=('sh')
 makedepends=('docbook-xsl')
 provides=('xdg-user-dirs')
 conflicts=('xdg-user-dirs')
-replaces=('xdg-user-dirs')
 backup=(etc/xdg/user-dirs.conf etc/xdg/user-dirs.defaults)
-source=(http://user-dirs.freedesktop.org/releases/$_pkgname-$pkgver.tar.gz
-        xdg-user-dirs)
-sha256sums=('20b4a751f41d0554bce3e0ce5e8d934be98cc62d48f0b90a894c3e1916552786'
-            'f0f27de23d849b2fa4ebf59e448b5a843b577d14dc2c1070e228999091fa7f5e')
+source=("http://user-dirs.freedesktop.org/releases/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('770fb42c8809d192c661585a0ee9ed9b65ebaca7532abe7dd68eca0e4962e3e6')
 
 build() {
-  cd $_pkgname-$pkgver
+  cd ${_pkgname}-${pkgver}
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  make DESTDIR="$pkgdir" install 
-  install -D ../xdg-user-dirs "$pkgdir/etc/X11/xinit/xinitrc.d/xdg-user-dirs"
+  cd ${_pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
 }
