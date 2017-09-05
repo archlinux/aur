@@ -1,8 +1,8 @@
 # Contributor: Brian F.G. <bidulock@openss7.org>
 # Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp
-pkgver=1.11.1
-pkgrel=4
+pkgver=1.11.2
+pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -20,14 +20,12 @@ source=(http://sourceforge.net/projects/$pkgname/files/$pkgname-$pkgver.tar.bz2
 	accel-ppp.tmpfiles
 	accel-pppd.service
 	dictionary.abills
-	dictionary.accel_ipoe
-	openssl-1.1.patch)
+        dictionary.accel_ipoe)
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
 	sed -i 's|RUNTIME DESTINATION sbin|RUNTIME DESTINATION bin|' \
 		"accel-pppd/CMakeLists.txt"
-	patch -p1 < ../openssl-1.1.patch
 
 	if [ -d "build" ]; then
 		rm -fr "build"
@@ -73,11 +71,10 @@ package() {
 	install -Dm0644 "$srcdir/$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('d64f5cb26a5d3fbc09268215e29174e5'
+md5sums=('81a3312cd0ff468ab5ee5edad3424a91'
          '0536dd60960e76cf5a6cdbf0518782d8'
          '816dd5ea9534a077dfd63b6cd529738a'
          '312fd63b9688a05b71a6b33ddd3a9f4b'
          'a171d28760bf411be85dc4a964df2c0a'
          '4e0d4fc5975ea8794ea286e8fbfa56cd'
-         '7e58716f1249f924ce218bd348d4c03a'
-         '778b479c4fc902dc7a18f3af1a13c110')
+         '7e58716f1249f924ce218bd348d4c03a')
