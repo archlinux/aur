@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 #             adapted from package python2-scikit-rf-git
 pkgname="python-scikit-rf-git"
-pkgver=0.14.5.r145.gc268bdc
+pkgver=0.14.5.r155.g13a3753
 pkgrel=1
 pkgdesc="Scikit-rf (aka skrf) is a python package for RF/Microwave engineering"
 arch=(any)
