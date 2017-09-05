@@ -13,8 +13,8 @@ pkgbase = canon-pixma-mx920-complete
 	depends = libtiff
 	source = http://gdlp01.c-wss.com/gds/0/0100005170/01/cnijfilter-mx920series-3.90-1-deb.tar.gz
 	source = http://gdlp01.c-wss.com/gds/3/0100005183/01/scangearmp-mx920series-2.10-1-deb.tar.gz
-	md5sums = 76e30668391521abf749c21d8a46f5fe
-	md5sums = 4ea7c1909831b24f0c737d5e4b7c0034
+	sha256sums = 822412389866de3a2478c88338272163ab686e787a30e7127582401aaaa25ca1
+	sha256sums = 44f7e0ae35093c3c79021ce35faa8d23e013ef7cdc183e395e877965ff6957c0
 
 pkgname = canon-pixma-mx920-complete
 
