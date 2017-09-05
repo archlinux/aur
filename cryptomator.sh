@@ -1,5 +1,5 @@
 #!/bin/sh
-export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
+export PATH="/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH"
 exec /usr/bin/java \
   -Xmx512m \
   -Dlogback.configurationFile=/etc/cryptomator/logback.xml \

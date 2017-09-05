@@ -3,7 +3,7 @@
 
 pkgname=cryptomator
 pkgver=1.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=("any")
 url="https://cryptomator.org/"
