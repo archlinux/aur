@@ -13,13 +13,13 @@ source=("https://github.com/keeferrourke/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('5a4a1250ff770b2111db199b5b1cf1ec455572dde84fa34e953b46b50e17775b')
 
 prepare() {
-  cd $pkgname-pkgver
+  cd $pkgname-$pkgver
 
 }
 
 package() {
   install -dm 755 "${pkgdir}"/usr/share/icons
-  cp -dr --no-preserve='ownership' $pkgname-pkgver "${pkgdir}"/usr/share/icons/$pkgname-pkgver
+  cp -dr --no-preserve='ownership' $pkgname-$pkgver "${pkgdir}"/usr/share/icons/$pkgname-$pkgver
 
   find "${pkgdir}" -type d -exec chmod 755 {} +
   find "${pkgdir}" -type f -exec chmod 644 {} +
