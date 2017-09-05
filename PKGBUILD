@@ -4,7 +4,7 @@
 pkgname=perl-text-autoformat
 _cpanname=Text-Autoformat
 pkgver=1.74
-pkgrel=1
+pkgrel=2
 pkgdesc="A Perl module for automatic text wrapping and reformatting"
 arch=('any')
 url="https://metacpan.org/pod/Text::Autoformat"
