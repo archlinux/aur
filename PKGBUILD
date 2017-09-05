@@ -12,6 +12,7 @@ arch=('i686' 'x86_64')
 url='http://sites.google.com/site/fullycapable/'
 license=('GPL2')
 depends=('glibc' 'attr')
+provides=('libcap')
 makedepends=('linux-api-headers')
 source=("$_gitname::git://git.kernel.org/pub/scm/linux/kernel/git/morgan/libcap.git")
 md5sums=('SKIP')
