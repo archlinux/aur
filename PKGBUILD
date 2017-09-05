@@ -1,7 +1,7 @@
 #Maintainer: Sam Bazley <samb1999@hotmail.co.uk>
 pkgname=esp-open-sdk-git
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open (as much as possible) integrated SDK for ESP8266 chips"
 arch=("i686" "x86_64")
 url="https://github.com/pfalcon/esp-open-sdk"
@@ -48,5 +48,5 @@ package() {
         ESP8266_NONOS_SDK_V2.0.0_16_08_10 "$pkgdir"/opt/esp-open-sdk
     cp -dpr --no-preserve=ownership xtensa-lx106-elf "$pkgdir"/opt/esp-open-sdk
 
-    ln -s "$pkgdir"/opt/esp-open-sdk/ESP8266_NONOS_SDK_V2.0.0_16_08_10/driver_lib/include/driver/ "$pkgdir"/opt/esp-open-sdk/xtensa-lx106-elf/xtensa-lx106-elf/include/driver
+    ln -s "$pkgdir"/opt/esp-open-sdk/ESP8266_NONOS_SDK_V2.0.0_16_08_10/driver_lib/include/driver/ "$pkgdir"/opt/esp-open-sdk/xtensa-lx106-elf/xtensa-lx106-elf/include/
 }
