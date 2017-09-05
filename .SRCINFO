@@ -1,6 +1,6 @@
 pkgbase = googlemaps
 	pkgdesc = Google Maps plugin for QtLocation
-	pkgver = 20170802.6715783
+	pkgver = 20170826.e6b44ec
 	pkgrel = 1
 	url = https://github.com/vladest/googlemaps
 	arch = i686

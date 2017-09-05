@@ -1,7 +1,7 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=googlemaps
-pkgver=20170802.6715783
+pkgver=20170826.e6b44ec
 pkgrel=1
 pkgdesc='Google Maps plugin for QtLocation'
 url='https://github.com/vladest/googlemaps'
