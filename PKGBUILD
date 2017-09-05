@@ -2,34 +2,26 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=masterpassword-cli
-pkgver=2.5
-_hash=g3ed6b937
+pkgver=2.6
+_hash=g895df637
 pkgrel=1
 pkgdesc='CLI version of Master Password'
 arch=('i686' 'x86_64')
 url='https://ssl.masterpasswordapp.com/'
 license=('GPL3')
-depends=('openssl')
-makedepends=('git' 'libxml2' 'ncurses' 'libsodium')
+depends=('ncurses' 'json-c' 'libsodium')
+makedepends=('libxml2' 'openssl')
 optdepends=('xclip: copy password to clipboard')
-options=('!buildflags')
-source=("https://ssl.masterpasswordapp.com/mpw-${pkgver}-cli-2-0-${_hash}.tar.gz"{,.sig})
-sha256sums=('834d9fce03b5ad03ab9f5a37495a598e644430de97977cff9787c2bff1ae9742'
+source=("https://ssl.masterpasswordapp.com/mpw-${pkgver}-cli-1-0-${_hash}.tar.gz"{,.sig})
+sha256sums=('1b7992dcab2538cfd403ccb8645d69ae419dfedbb03b38515508af3e814c8164'
             'SKIP')
 validpgpkeys=('5C2D1D61853F20F2FCDDCCB70EF21226F43EA6BC') # Maarten Billemont
 
-prepare() {
-  sed -i 's/openssl sha -sha256/openssl sha256/' build
-}
-
 build() {
-  targets="mpw mpw-bench mpw-tests" ./build
-  ./mpw-bench
+  targets="mpw mpw-tests" ./build
   ./mpw-tests
 }
 
 package() {
   /usr/bin/install -Dm755 mpw "$pkgdir/usr/bin/mpw"
-
-  /usr/bin/install -Dm644 mpw.completion.bash "$pkgdir/usr/share/bash-completion/completions/mpw"
 }
