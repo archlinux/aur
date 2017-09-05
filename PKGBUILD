@@ -16,7 +16,9 @@ makedepends=('lynx'
              'net-snmp'
              'openslp'
              )
-DLAGENTS=('https::/usr/bin/lynx -accept_all_cookies -cmd_script=lynx_script_for_download_pegasus %u')
+DLAGENTS=('https::/usr/bin/lynx -accept_all_cookies -cmd_script=lynx_script_for_download_pegasus %u'
+          'http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u'
+          )
 source=('lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. please don't move to other place
         'https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
         'http://pkgs.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.7.0-PIE.patch'
@@ -37,7 +39,6 @@ sha256sums=('72d24d357601b9df8a418a7e7851d3b55c32614394e5507146fe961e4712c5e8'
             'deb3e52e5406419cc42d15f1a668ed291ef8337217bb5bc9cefd01ef3b804371'
             '454fc2ecd0863b70622fdad471818699dc551030dca8557d1eeb54f835482036'
             )
-#install=lsi-openpegasus.install
 options=('!strip')
 
 _create_links() {
