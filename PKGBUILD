@@ -4,12 +4,21 @@
 _pkgname=Pweave
 pkgname=python-pweave
 pkgver=0.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A scientific report generator and literate programming tool for Python."
 arch=(any)
 url="http://mpastell.com/pweave/"
 license=('BSD')
-depends=('python')
+depends=(
+  'ipython'
+  'jupyter-nbconvert'
+  'jupyter-nbformat'
+  'python-ipykernel'
+  'python-jupyter_client'
+  'python-markdown'
+  'python-pygments'
+  'python'
+)
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/16/93/a29e8909c3945ea7ee89cde5a0aa03d7004efc2d3020b867dae81045f9bc/Pweave-0.30.1.tar.gz")
 sha256sums=('323b96d2e90d2cebe62d4942933fc29807bdf0d2728236d55155b3b21615ef4a')
