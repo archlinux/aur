@@ -1,6 +1,6 @@
 pkgbase = libaosd-xinerama-git
 	pkgdesc = libaosd (Atheme OSD) with Xinerama support and aosd_cat enhancements
-	pkgver = 0.2.7.r0.0.1
+	pkgver = 0.2.7.r14.g1bf554b
 	pkgrel = 1
 	url = https://github.com/mkoskar/libaosd-xinerama
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = libaosd-xinerama-git
 	provides = libaosd
 	conflicts = libaosd
 	source = git+https://github.com/mkoskar/libaosd-xinerama.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = libaosd-xinerama-git
 
