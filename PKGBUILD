@@ -15,6 +15,9 @@ package() {
     # Create Destination Directories
     install -d "${pkgdir}/opt/quake3/"
 
+    # Remove unneeded files
+    rm "${srcdir}/arena/"{qagamex86.dll,ra3_server.bat,ra3_server.sh}
+
     # Install RA3 Files
     cp -r "${srcdir}/arena" \
         "${pkgdir}/opt/quake3/"
