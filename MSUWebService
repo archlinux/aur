@@ -1,0 +1,58 @@
+#!/usr/bin/bash
+# Marvell Storage Utility Web Service.
+
+if [[ $EUID -ne 0 ]]; then
+    echo "This script must be run as root" 1>&2
+    exit 1
+fi
+
+RETVAL=1
+
+LD_LIBRARY_PATH=/opt/marvell/storage/apache2/lib64
+LD_LIBRARY_PATH=$LD_LIBRARYPATH:/opt/marvell/storage/expat/lib64
+LD_LIBRARY_PATH=$LD_LIBRARYPATH:/opt/marvell/storage/libxml2/lib64
+LD_LIBRARY_PATH=$LD_LIBRARYPATH:/opt/marvell/storage/openssl/lib64
+LD_LIBRARY_PATH=$LD_LIBRARYPATH:/opt/marvell/storage/php/lib64
+
+export LD_LIBRARY_PATH
+
+start()
+{
+    if lsmod | grep -Eq "^sg " &> /dev/null
+    then
+        echo "SCSI kernel module 'sg' is loaded."
+    else
+        echo "SCSI kernel module 'sg' is not loaded."
+        echo "Trying to load 'sg'."
+        if [[ $(modprobe -a sg) -ne 0 ]]
+        then
+            echo "Could not load kernel module 'sg'."
+            exit 1
+        fi
+    fi
+    echo "Starting Marvell Storage Utility Web Service."
+    /opt/marvell/storage/apache2/bin/apachectl start
+    RETVAL=$?
+}
+
+stop()
+{
+    echo "Stopping Marvell Storage Utility Web Service."
+    /opt/marvell/storage/apache2/bin/apachectl stop
+    RETVAL=$?
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+esac
+
+exit $RETVAL

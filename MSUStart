@@ -1,0 +1,14 @@
+#!/bin/sh
+
+URL="http://localhost:8845/MSU/JumpPage.php?Target=StoragePage"
+BROWSER=`which firefox`
+RETVAL=0
+
+if [ "x$BROWSER" = "x" ]
+then
+    echo
+    echo "Please install Mozilla Firefox or manually visit http://localhost:8845/."
+    echo
+else
+    $BROWSER $URL >/dev/null 2>&1 &
+fi
