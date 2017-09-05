@@ -45,10 +45,12 @@ build() {
 package() { 
   cd netkit-telnet-0.17
 
-  mkdir -p "$pkgdir"/usr/{bin,sbin,man/man1,man/man5,man/man8}
-  make install
-
-  mv "$pkgdir"/usr/sbin/in.telnetd-ssl "$pkgdir"/usr/bin/in.telnetd-ssl
+  mkdir -p "$pkgdir"/usr/{bin,sbin,share/man/man{1,5,8}}
+  make -C telnet INSTALLROOT="$pkgdir" MANDIR=/usr/share/man install
+  make -C telnetd INSTALLROOT="$pkgdir" MANDIR=/usr/share/man install
+  mv "$pkgdir"/usr/{sbin/in.telnetd,bin/in.telnetd-ssl}
+  mv "$pkgdir"/usr/share/man/man8/{in.telnetd,in.telnetd-ssl}.8
+  rm "$pkgdir"/usr/share/man/man8/telnetd.8
   rmdir "$pkgdir"/usr/sbin
 
   install -D -m 644 "$srcdir"/telnet.xinetd \
