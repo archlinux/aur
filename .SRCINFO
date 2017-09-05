@@ -8,6 +8,7 @@ pkgbase = neptune-cli
 	depends = python
 	depends = python-virtualenv
 	depends = python-pip
+	depends = python-pillow
 	source = LICENSE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
 
