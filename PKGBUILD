@@ -11,7 +11,7 @@ license=('MPL2')
 conflicts=(minizinc-bin)
 provides=(minizinc)
 source=(https://github.com/MiniZinc/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('dbfcb2420e4babb58313c96c3b34e43d164db0d5036b5845dbbf39a874ac376d')
+sha256sums=('173a42189f0fa447d04d63b27afdd10af9c5035061db00ba1e2b390622b49803')
 
 build() {
   cd ${pkgname}-${pkgver}
