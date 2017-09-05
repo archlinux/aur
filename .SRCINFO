@@ -1,7 +1,7 @@
 pkgbase = perl-sys-virt
 	pkgdesc = Represent and manage a libvirt hypervisor connection
 	pkgver = 3.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://search.cpan.org/dist/Sys-Virt/
 	arch = i686
 	arch = x86_64
