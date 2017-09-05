@@ -1,0 +1,43 @@
+diff -ura benzene-1.0.1.old/share/Makefile.am benzene-1.0.1.new/share/Makefile.am
+--- benzene-1.0.1.old/share/Makefile.am	2017-09-05 10:59:56.082342636 -0400
++++ benzene-1.0.1.new/share/Makefile.am	2017-09-05 11:11:14.846424488 -0400
+@@ -1,6 +1,6 @@
+ # data files to be installed in ${prefix}/share/benzene/ directory
+ dist_pkgdata_DATA = \
+-ice-patterns.txt \
++mohex-ice-patterns.txt \
+ induced-domination.txt \
+ induced-equivalence.txt \
+ induced-inferior.txt \
+@@ -9,6 +9,6 @@
+ mohex-patterns.txt \
+ swap-moves.txt \
+ unique-probe.txt \
+-vc-captured-set.txt \
++mohex-vc-captured-set.txt \
+ vc-patterns.txt \
+ mohex-cache-book.txt
+diff -ura benzene-1.0.1.old/src/hex/ICEngine.cpp benzene-1.0.1.new/src/hex/ICEngine.cpp
+--- benzene-1.0.1.old/src/hex/ICEngine.cpp	2017-09-05 10:59:56.109007956 -0400
++++ benzene-1.0.1.new/src/hex/ICEngine.cpp	2017-09-05 11:00:22.281037283 -0400
+@@ -521,7 +521,7 @@
+ /** Loads local patterns from "ice-pattern-file". */
+ void ICEngine::LoadPatterns()
+ {
+-    m_patterns.LoadPatterns("ice-patterns.txt");
++    m_patterns.LoadPatterns("mohex-ice-patterns.txt");
+ }    
+ 
+ //----------------------------------------------------------------------------
+diff -ura benzene-1.0.1.old/src/hex/VCBuilder.cpp benzene-1.0.1.new/src/hex/VCBuilder.cpp
+--- benzene-1.0.1.old/src/hex/VCBuilder.cpp	2017-09-05 10:59:56.112341121 -0400
++++ benzene-1.0.1.new/src/hex/VCBuilder.cpp	2017-09-05 11:01:03.332395435 -0400
+@@ -44,7 +44,7 @@
+ {
+     std::ifstream inFile;
+     try {
+-        std::string file = MiscUtil::OpenFile("vc-captured-set.txt", inFile);
++        std::string file = MiscUtil::OpenFile("mohex-vc-captured-set.txt", inFile);
+         LogConfig() << "VCBuilder: reading captured set patterns from '" 
+                     << file << "'.\n";
+     }
