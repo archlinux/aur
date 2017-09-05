@@ -1,7 +1,7 @@
 pkgbase = perl-ppi
 	pkgdesc = Parse, Analyze and Manipulate Perl (without perl)
 	pkgver = 1.224
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.mcpan.org/dist/PPI
 	arch = any
 	license = PerlArtistic

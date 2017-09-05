@@ -3,7 +3,7 @@
 
 pkgname='perl-ppi'
 pkgver='1.224'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Parse, Analyze and Manipulate Perl (without perl)"
 arch=('any')
 license=('PerlArtistic' 'GPL')
