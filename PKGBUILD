@@ -3,14 +3,14 @@
 
 pkgname=amsynth-git
 _pkgname=amsynth
-pkgver=1.8.0.r1026.c75ff5f
+pkgver=1.8.0.r1028.e328fe0
 pkgrel=1
 pkgdesc="An analog modelling (a.k.a. virtual analog) synthesizer"
 arch=('i686' 'x86_64')
 url="https://amsynth.github.io/"
 license=('GPL2')
 depends=('gtk2' 'jack' 'lv2')
-makedepends=('git')
+makedepends=('git' 'intltool')
 optdepends=('liblo: DSSI plugin')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
