@@ -7,11 +7,13 @@ pkgrel=1
 pkgdesc="A tool which facilitates building OCI images"
 arch=('x86_64' 'i686')
 url="https://github.com/projectatomic/buildah"
-license=('Apache-2.0')
+license=('Apache')
 makedepends=('go' 'git' 'bash-bats' 
              'btrfs-progs' 'device-mapper' 
              'gpgme' 'libassuan' 'bzip2' 
              'go-md2man' 'runc' 'skopeo')
+provides=("buildah")
+conflicts=("buildah")
 source=("git://github.com/projectatomic/buildah.git")
 sha256sums=('SKIP')
 
