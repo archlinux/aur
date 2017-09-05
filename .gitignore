@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!lsi-openpegasus.install
+!ld.so.lsi-openpegasus.conf
+!lynx_script_for_download_pegasus

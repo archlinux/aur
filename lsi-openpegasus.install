@@ -1,0 +1,12 @@
+post_install() {
+  ldconfig &> /dev/null
+}
+
+post_upgrade() {
+  ldconfig &> /dev/null
+}
+
+
+post_remove() {
+  ldconfig &> /dev/null
+}
