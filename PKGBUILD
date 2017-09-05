@@ -2,13 +2,16 @@
 
 pkgname=gromacs-5.1-complete
 pkgver=5.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
 arch=('i686' 'x86_64')
-depends=('gcc5' 'fftw' 'lesstif' 'perl' 'libxml2' 'libsm' 'libx11')
-makedepends=('cmake')
+depends=('gcc5')
+optdepends=('cuda: Nvidia GPU support'
+            'openmotif:  needed for gmx view'
+            'libx11:  needed for gmx view')
+makedepends=('cmake' 'libxml2')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
         GMXRC.bash.cmakein.patch)
@@ -51,6 +54,7 @@ build() {
         -DGMX_DOUBLE=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON \
         -DGMX_BUILD_OWN_FFTW=ON \
+	-DCMAKE_CXX_FLAGS="-std=c++11" \
         -DGMX_LIBS_SUFFIX=_d
   make
 
@@ -62,6 +66,7 @@ build() {
         -DGMX_X11=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON \
         -DGMX_BUILD_OWN_FFTW=ON \
+	-DCMAKE_CXX_FLAGS="-std=c++11" \
         -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
