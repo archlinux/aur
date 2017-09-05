@@ -1,0 +1,16 @@
+pkgbase = apaxy-git
+	pkgdesc = A simple, customisable theme for your Apache directory listing.
+	pkgver = r78.af176b3
+	pkgrel = 1
+	url = http://adamwhitcroft.com/apaxy/
+	arch = any
+	license = public domain
+	depends = apache
+	provides = apaxy
+	source = apaxy::git+https://github.com/AdamWhitcroft/apaxy.git
+	source = alias.patch
+	md5sums = SKIP
+	md5sums = 803f84bf166110fd0d4869a681411200
+
+pkgname = apaxy-git
+

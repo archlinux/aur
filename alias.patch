@@ -1,0 +1,31 @@
+diff -ura apaxy/apaxy/htaccess.txt apaxy-mod/apaxy/htaccess.txt
+--- apaxy/apaxy/htaccess.txt	2017-09-05 18:12:25.910013018 +0200
++++ apaxy-mod/apaxy/htaccess.txt	2017-09-05 18:17:39.012425007 +0200
+@@ -5,17 +5,21 @@
+ # http://apache.org/docs/2.2/mod/mod_autoindex.html
+ #
+ 
+-	# ENABLE INDEXING
+-	Options +Indexes
+-
+ 	# INDEX OPTIONS
+-	IndexOptions +Charset=UTF-8 +FancyIndexing +IgnoreCase +FoldersFirst +XHTML +HTMLTable +SuppressRules +SuppressDescription +NameWidth=* +IconsAreLinks
++	IndexOptions Charset=UTF-8 FancyIndexing HTMLTable IgnoreCase FoldersFirst XHTML SuppressRules SuppressDescription IconsAreLinks NameWidth=*
++
++	# Include apaxy resources at alias /apaxy/
++	Alias /apaxy/ "/usr/share/httpd/apaxy/"
++
++	<Directory "/usr/share/httpd/apaxy/">
++		#Options Indexes MultiViews
++		AllowOverride None
++		Require all granted
++	</Directory>
+ 
+     	# META VIEWPORT
+     	IndexHeadInsert "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />"
+ 
+-	# HIDE /theme DIRECTORY
+-	IndexIgnore .htaccess /theme
+ 
+ #
+ # GENERAL ICONS (BLANK, DIRECTORY, PARENT DIRECTORY)
