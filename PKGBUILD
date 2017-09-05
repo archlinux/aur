@@ -17,7 +17,7 @@ source=("ftp://ftp.phy.ornl.gov/pub/${pkgname}/${pkgname}-src.tgz"
 md5sums=('c167fd178279d88e05320c7e580b05b4'
          'cb904633d49f17c707515646c2bd2338'
          'd1accbca0c14b8499870577b3e2fe05f'
-         'f30a0ff9efb503779618680ad6a2da0e')
+         '7d8e9e7ec0f6ed54683a65f640899e20')
 install="${pkgname}.install"
 
 prepare() {
