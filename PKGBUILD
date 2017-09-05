@@ -7,6 +7,7 @@ arch=('i686' 'x86_64')
 url="http://radegast.org"
 license=('BSD')
 depends=('mono')
+conflicts=('radegast' 'radegast-git')
 makedepends=('dos2unix' 'recode')
 source=(https://bitbucket.org/cinderblocks/radegast/downloads/Radegast-${pkgver}.tbz
         radegast.desktop radegast)
