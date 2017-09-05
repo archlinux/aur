@@ -4,7 +4,7 @@
 pkgname=perl-file-homedir
 _cpanname=File-HomeDir
 pkgver=1.002
-pkgrel=1
+pkgrel=2
 pkgdesc="Find your home and other directories on any platform"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -25,7 +25,7 @@ build() {
   PERL_MM_USE_DEFAULT=1 \
   PERL_AUTOINSTALL='--skipdeps' \
   perl Makefile.PL INSTALLDIRS=vendor
-  make
+  make INSTALLDIRS=vendor
 }
 check() {
   cd $_cpanname-$pkgver
@@ -34,7 +34,7 @@ check() {
 package() {
   cd $_cpanname-$pkgver
 
-  make DESTDIR="$pkgdir" install
+  make INSTALLDIRS=vendor DESTDIR="$pkgdir" install
 
   # remove perllocal.pod and .packlist
   find "$pkgdir" -name '*.pod' -o -name '.packlist' -delete
