@@ -7,15 +7,15 @@ pkgver=0.17.24+0.1
 pkgrel=3
 pkgdesc="telnet client and server with ssl enabled"
 arch=('i686' 'x86_64')
+depends=('glibc' 'openssl' 'ncurses')
 license=('BSD')
 url="http://www.hcs.harvard.edu/~dholland/computers/netkit.html"
 source=(https://deb.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz
         netkit-telnet-ssl-0.17.24+0.1_arch.diff
         telnet.xinetd)
-depends=('glibc' 'openssl' 'ncurses')
-md5sums=('43a402139ed6b86434fdb83256feaad8'
-         'd51bf898269a79a2de77d1134516c209'
-         'ca38af6f1346ae90b2cb1e160858b453')
+sha256sums=('1a4b45826b37bea4d8e1ac3e3ae8f7727ce87efd239038a439c80ad52c33bed7'
+            'e583e3d0cfde716d2ef9690072a0095494209716368597e0fa54a7fc286fe521'
+            '9f1506cbe02b48fe7ac53932f068f3ebc8a8441ad92bdec17e2cd40ca7bcbaa8')
 install=netkit-telnet-ssl.install
 
 prepare() {
