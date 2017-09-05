@@ -2,6 +2,7 @@
 Description=Netkit Telnet Server Instance
 
 [Service]
+User=_telnetd
 EnvironmentFile=-/etc/default/telnetd
 ExecStart=-/usr/bin/in.telnetd-ssl $TELNETD_ARGS
 StandardInput=socket
