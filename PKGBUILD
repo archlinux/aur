@@ -2,7 +2,7 @@
 
 pkgbase=python-marshmallow
 pkgname=('python-marshmallow' 'python2-marshmallow')
-pkgver=2.13.5
+pkgver=2.13.6
 pkgrel=2
 pkgdesc="A lightweight library for converting complex objects to and from simple Python datatypes."
 url="https://github.com/marshmallow-code/marshmallow"
@@ -10,8 +10,9 @@ license=('MIT')
 arch=('any')
 makedepends=('python' 'python-setuptools'
              'python2' 'python2-setuptools')
+checkdepends=('python-tox')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marshmallow-code/marshmallow/archive/${pkgver}.tar.gz")
-sha256sums=('a58258288e4de144fb2e0ecf2085fd4a383639ce105ea2d0544e6dff1892a462')
+sha256sums=('6ffa71ed89dc8cee74d68d6f1edc6012770f5404e8f1f0c76baaaaeb671e2166')
 
 
 build() {
@@ -20,12 +21,18 @@ build() {
     python2 setup.py build
 }
 
+check(){
+    cd "${srcdir}/${pkgbase#python-}-${pkgver}"
+    tox -e py2,py3
+}
+
 package_python-marshmallow() {
     depens=('python')
     optdepends=('python-dateutil: robust datetime deserialization'
                 'python-simplejson: precision when (de)serializing Python decimal.Decimal types')
     cd "${srcdir}/${pkgbase#python-}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-marshmallow() {
@@ -34,4 +41,5 @@ package_python2-marshmallow() {
                 'python2-simplejson: precision when (de)serializing Python decimal.Decimal types')
     cd "${srcdir}/${pkgbase#python-}-${pkgver}"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
