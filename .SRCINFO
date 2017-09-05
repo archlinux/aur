@@ -1,0 +1,23 @@
+pkgbase = clangd-svn
+	pkgdesc = Standalone Clangd daemon - SVN version.
+	pkgver = 6.0.0svn_r312537
+	pkgrel = 1
+	url = https://clang.llvm.org/extra/clangd.html
+	arch = i686
+	arch = x86_64
+	license = custom:University of Illinois
+	makedepends = cmake
+	makedepends = libffi
+	makedepends = subversion
+	provides = clangd
+	conflicts = clangd
+	options = staticlibs
+	source = llvm::svn+https://llvm.org/svn/llvm-project/llvm/trunk
+	source = clang::svn+https://llvm.org/svn/llvm-project/cfe/trunk
+	source = clang-tools-extra::svn+https://llvm.org/svn/llvm-project/clang-tools-extra/trunk
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = clangd-svn
+
