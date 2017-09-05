@@ -3,11 +3,11 @@
 pkgname=perl-snmp
 _cpanname=SNMP
 pkgver=5.0401
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl/CPAN Module SNMP"
 arch=("i686" "x86_64")
 url="https://metacpan.org/release/$_cpanname"
-license=('BSD')
+license=('GPL' 'PerlArtistic')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/H/HA/HARDAKER/$_cpanname-$pkgver.tar.gz")
 depends=('perl' 'net-snmp')
