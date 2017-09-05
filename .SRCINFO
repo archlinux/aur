@@ -1,11 +1,11 @@
 pkgbase = perl-xs-object-magic
 	pkgdesc = Opaque, extensible XS pointer backed objects using sv_magic
 	pkgver = 0.04
-	pkgrel = 9
+	pkgrel = 11
 	url = http://metacpan.org/release/XS-Object-Magic
 	arch = i686
 	arch = x86_64
-	license = Perl Artistic
+	license = PerlArtistic
 	makedepends = perl-extutils-depends
 	makedepends = perl-module-install
 	options = !emptydirs
@@ -13,7 +13,4 @@ pkgbase = perl-xs-object-magic
 	md5sums = ce2e38addab1c7e541ca842019cba4a4
 
 pkgname = perl-xs-object-magic
-	depends = 
-	depends = perl>=
-	depends = perl<
 

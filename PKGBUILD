@@ -3,11 +3,11 @@
 pkgname=perl-xs-object-magic
 _cpanname=XS-Object-Magic
 pkgver=0.04
-pkgrel=9
+pkgrel=11
 pkgdesc="Opaque, extensible XS pointer backed objects using sv_magic"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/$_cpanname"
-license=('Perl Artistic')
+license=('PerlArtistic')
 options=('!emptydirs')
 makedepends=('perl-extutils-depends' 'perl-module-install')
 source=("http://cpan.metacpan.org/authors/id/F/FL/FLORA/${_cpanname}-${pkgver}.tar.gz")
@@ -19,11 +19,7 @@ build() {
   make -j1
 }
 
-package() {
-  cd "$srcdir/${_cpanname}-${pkgver}"
-  make DESTDIR="$pkgdir" install
-  find $pkgdir -name '.packlist' -delete
-  find $pkgdir -name '*.pod' -delete
+_perl_depends() {
 # template start; name=perl-binary-module-dependency; version=1;
 if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
@@ -31,4 +27,12 @@ if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
 fi
 # template end;
+}
+
+package() {
+  cd "$srcdir/${_cpanname}-${pkgver}"
+  make DESTDIR="$pkgdir" install
+  find $pkgdir -name '.packlist' -delete
+  find $pkgdir -name '*.pod' -delete
+  _perl_depends
 }
