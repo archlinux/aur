@@ -3,7 +3,7 @@
 pkgname=perl-net-dbus-glib
 _cpanname=Net-DBus-GLib
 pkgver=0.33.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Net::DBus::GLib - Perl extension for the DBus GLib bindings"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~danberr/Net-DBus-GLib-$pkgver/lib/Net/DBus/GLib.pm"
