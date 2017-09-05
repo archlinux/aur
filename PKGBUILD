@@ -6,12 +6,13 @@ pkgver=248
 pkgrel=1
 pkgdesc="libretro implementation of gpsp"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+groups=('libretro')
 url="https://github.com/libretro/gpsp"
 license=('custom' 'GPL' 'LGPL')
 makedepends=('git')
+
 source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
 	"https://raw.github.com/libretro/libretro-super/master/dist/info/gpsp_libretro.info")
-
 md5sums=('SKIP'
 	 'SKIP')
 
