@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=ts-polkitagent
-pkgver=1.3
+pkgver=1.4
 pkgrel=0
 pkgdesc="Polkit Agent for theShell"
 arch=("x86_64")
@@ -19,6 +19,6 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/lib"
-	cp "$pkgname-$pkgver/ts-polkitagent" "$pkgdir/usr/lib/"
+	cd "$pkgname-$pkgver"
+	make install INSTALL_ROOT=$pkgdir
 }
