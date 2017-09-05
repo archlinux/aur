@@ -7,7 +7,7 @@ pkgbase = spring-boot-cli
 	license = Apache
 	depends = java-environment>=6
 	source = https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/1.5.6.RELEASE/spring-boot-cli-1.5.6.RELEASE-bin.tar.gz
-	md5sums = 268ff7d828c160327b72a39532c3a52e
+	sha256sums = d129e7952f8cc687da436db1fff091991e8b85500894e3bc655ecbda7da6d8ae
 
 pkgname = spring-boot-cli
 
