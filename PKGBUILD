@@ -31,7 +31,7 @@ build() {
   echo "Extracting RPM."
   rpm=MSU-${pkgver}-${pkgrel}.x86_64.rpm
   mv $srcdir/Marvell_MSU_Linux_v${pkgver}/$rpm $srcdir
-  repmextract.sh $srcdir/$rpm
+  rpmextract.sh $srcdir/$rpm
 }
 
 package() {
