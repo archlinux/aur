@@ -13,6 +13,7 @@ source=('apaxy::git+https://github.com/AdamWhitcroft/apaxy.git'
         'alias.patch')
 md5sums=('SKIP'
          '803f84bf166110fd0d4869a681411200')
+install='.install'
 
 pkgver() {
   cd "$srcdir/apaxy"
