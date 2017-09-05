@@ -17,8 +17,6 @@ pkgver() {
 }
 
 package() {
-    cd "${pkgname}"
-    install -dm 755 "${pkgdir}"/usr/share/icons
-    mkdir "${pkgdir}"/usr/share/icons/Mato
-    cp -dr --no-preserve='ownership' * "${pkgdir}"/usr/share/icons/Mato
+    install -dm 755 "${pkgdir}"/usr/share/icons/Mato
+    cp -dr --no-preserve='ownership' "${pkgname}"/* "${pkgdir}"/usr/share/icons/Mato
 }
