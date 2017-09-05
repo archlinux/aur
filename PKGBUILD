@@ -1,9 +1,10 @@
-# Maintainer: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
 pkgname=perl-b-hooks-op-check
 _cpanname="B-Hooks-OP-Check"
 pkgver=0.19
-pkgrel=4
+pkgrel=5
 pkgdesc="Wrap OP check callbacks"
 arch=('i686' 'x86_64')
 license=('GPL' 'PerlArtistic')
