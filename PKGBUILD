@@ -2,8 +2,8 @@
 pkgbase=python-booleanoperations
 pkgname=(python-booleanoperations python2-booleanoperations)
 _pkgname=booleanOperations
-pkgver=0.6.4
-pkgrel=3
+pkgver=0.7.1
+pkgrel=1
 pkgdesc='Boolean operations on paths based on a super fast polygon clipper library by Angus Johnson.'
 arch=('any')
 url='https://github.com/typemytype/booleanOperations'
@@ -13,7 +13,7 @@ depends=('python' 'python-pyclipper' 'python-fonttools' 'python-ufolib'
 makedepends=('python-pip' 'python2-pip')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/py2.py3/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}-py2.py3-none-any.whl")
-sha256sums=('da2654471d8f748b7743a4a10f5e07706a470f1f4dff1ffd76b4c859bcfc6ac5')
+sha256sums=('e671ea1f857a373f1f37bc0b0790623edcd885b5f5e7f3a853a61076d85f2a93')
 
 package_python-booleanoperations() {
   depends=('python' 'python-pyclipper' 'python-fonttools' 'python-ufolib')
