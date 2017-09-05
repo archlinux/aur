@@ -5,7 +5,7 @@
 pkgname=perl-netcdf
 _pkgname=netcdf-perl
 pkgver=1.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A perl extension module for scientific data access via the netCDF API"
 arch=('i686' 'x86_64')
 url="http://www.unidata.ucar.edu/software/netcdf-perl/"
