@@ -1,10 +1,9 @@
 pkgbase = perl-net-ping-external
 	pkgdesc = Net::Ping::External - cross-platform interface to ICMP ping utilities
 	pkgver = 0.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Net-Ping-External
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	license = PerlArtistic
 	depends = perl
