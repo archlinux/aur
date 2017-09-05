@@ -8,6 +8,8 @@ arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
 makedepends=('git')
+conflicts=('nerd-fonts')
+provides=('nerd-fonts')
 source=('git+https://github.com/ryanoasis/nerd-fonts.git')
 md5sums=('SKIP')
 
