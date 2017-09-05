@@ -16,7 +16,7 @@ optdepends=('p7zip'
             'unace'
             'unrar'
             'rar')
-makedepends=('cmake')
+makedepends=('cmake' 'qt5-tools')
 source=("https://github.com/stolowski/QComicBook/archive/$pkgver.tar.gz")
 md5sums=('d8762ff0698652cd2c383dbaa30cc132')
 
