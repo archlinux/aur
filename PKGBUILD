@@ -18,7 +18,7 @@ provides=("waterfox=$pkgver")
 conflicts=('waterfox')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
-source=("waterfox-kde_${pkgver}_amd64.deb::https://bintray.com/hawkeye116477/waterfox-deb/download_file?file_path=pool%2Fw%2Fwaterfox-kde%2Fwaterfox-kde_${pkgver}_amd64.deb")
+source=("waterfox-kde_${pkgver}_amd64.deb::https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox-kde/waterfox-kde_${pkgver}_amd64.deb")
 sha256sums=('9bf88fb0dd1e8f177821f87e26dc6a8409b9e424855185cc0403146baeb78e5e')
 package() {
 # Extract Waterfox from .deb package
@@ -38,7 +38,7 @@ select yn in "Yes" "No"; do
                     Yes )
     if grep -q download_language=yes "$_settings"; then
     _chosen_language=$(grep -Po 'chosen_language=\K[^ ]+' $_settings)
-    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://bintray.com/hawkeye116477/waterfox-deb/download_file?file_path=pool%2Fw%2Fwaterfox%2Fwaterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
+    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox-kde/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
 	msg2 "Extracting locale..."
     bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
@@ -86,7 +86,7 @@ printf "Type language code of language you wish to download and install
 for example - for Polish, type pl): "
 read _chosen_language
 
-    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://bintray.com/hawkeye116477/waterfox-deb/download_file?file_path=pool%2Fw%2Fwaterfox%2Fwaterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
+    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox-kde/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
 	msg2 "Extracting locale..."
     bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
