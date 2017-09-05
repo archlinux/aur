@@ -12,9 +12,9 @@ conflicts=('cura')
 depends=('python' 'python-pyqt5' 'python-numpy' 'python-protobuf' 'qt5-quickcontrols' 'libarcus-git' 'uranium-git' 'curaengine-git')
 makedepends=('git' 'cmake')
 optdepends=('python-zeroconf: Detecting mDNS printers'
-         'cura-binary-data-git: Firmwares and translations'
-         'python-pyserial: USB printing'
-         'cura-fdm-materials-git: Default Materials')
+            'cura-binary-data-git: Firmwares and translations'
+            'python-pyserial: USB printing'
+            'cura-fdm-materials-git: Default Materials')
 source=('git+https://github.com/Ultimaker/Cura.git' 'site-packages-dir.patch')
 md5sums=('SKIP' '68ddf58623d21a736d1075099667bdef')
 
