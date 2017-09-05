@@ -1,0 +1,12 @@
+pkgbase = xcursor-grounation
+	pkgdesc = Grounation X11 cursor theme
+	pkgver = 20160115
+	pkgrel = 1
+	url = https://moshiab.deviantart.com/art/Grounation-584580741
+	arch = any
+	license = GPL
+	source = xcursor-grounation-20160115.tar::https://orig02.deviantart.net/e990/f/2016/015/0/a/grounationcursortheme_by_moshiab-d9o1ldx.tar
+	sha256sums = 00c929a088354281bc44eecda78c022d802bbeae081a0414c63589b48f6c8dbe
+
+pkgname = xcursor-grounation
+
