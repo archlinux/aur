@@ -2,7 +2,7 @@
 
 pkgname=dep-git
 _pkgname=dep
-pkgver=r2409.238d8af8
+pkgver=r2425.d3e738d4
 pkgrel=1
 pkgdesc="Go dependency tool"
 arch=('x86_64' 'i686')
@@ -10,6 +10,8 @@ url="https://github.com/golang/dep"
 license=('BSD')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
+provides=("dep")
+conflicts=("dep")
 source=("git+https://github.com/golang/dep.git")
 sha256sums=('SKIP')
 _gourl='github.com/golang/dep'
