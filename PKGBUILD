@@ -2,7 +2,7 @@
 
 pkgname=python-language-server
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of the Language Server Protocol for Python"
 arch=("any")
 url="https://github.com/palantir/${pkgname}"
@@ -13,8 +13,8 @@ makedepends=("python-setuptools")
 conflicts=("${pkgname}" "${pkgname}-git")
 # install=$pkgname.install
 source=("https://github.com/palantir/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('20cfb5eda4631d8a3b63cb8042e0c561')
-sha256sums=('293abd2417b7705733bd9e55d1c69b235ad04315c818d6ddb5833c340bae5772')
+md5sums=('5952e4f6e2d7bbff928d60e7510ea1ed')
+sha256sums=('efb518fe7da1c4b213849591769b4ef50daa77e594e2a2665edc3112bb25c711')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
