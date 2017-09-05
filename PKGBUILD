@@ -2,7 +2,7 @@
 
 pkgname=lsi-lsa
 pkgver=003.020.000.000
-pkgrel=1
+pkgrel=2
 pkgdesc="LSI Storage Authority Software Suite"
 arch=('i686' 'x86_64')
 url='http://www.avagotech.com/products/server-storage'
@@ -29,7 +29,8 @@ sha256sums=('5196f542b52457abb94bce4e069005543a7e748270b7b673e5afa669e7af2e03'
 sha256sums_i686=('0ebd01f419ccace6a3d37543309dcb7e684b0b842bdde505fd199c80f94c389e')
 sha256sums_x86_64=('4325ee1f6d9f7eeb887e532834ce2e1ed86f7887c3b8b3b6162cb0a52a49dede')
 install=lsi-lsa.install
-backup=('opt/lsi/LSIStorageAuthority/conf/LSA.conf'
+backup=('opt/lsi/LSIStorageAuthority/installtype'
+        'opt/lsi/LSIStorageAuthority/conf/LSA.conf'
         'opt/lsi/LSIStorageAuthority/server/conf/nginx.conf'
         'opt/lsi/LSIStorageAuthority/conf/monitor/config-current.json'
         )
@@ -86,5 +87,9 @@ package() {
       -i opt/lsi/LSIStorageAuthority/conf/LSA.conf \
       -i usr/share/docs/lsi-lsa/LSA_Linux_readme.txt
 
+  # Setup type
+  echo gateway > opt/lsi/LSIStorageAuthority/installtype
+
+  # Create soname links
   _create_links
 }
