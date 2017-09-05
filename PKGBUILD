@@ -2,7 +2,7 @@
 
 pkgname=upak
 pkgver=10.6.8
-pkgrel=6
+pkgrel=7
 pkgdesc="HRIBF Data Acquisition and analysis."
 url="ftp://ftp.phy.ornl.gov/pub/upak/README.html"
 arch=('i686' 'x86_64')
@@ -15,9 +15,9 @@ source=("ftp://ftp.phy.ornl.gov/pub/${pkgname}/${pkgname}-src.tgz"
   "gfortran_i686.patch"
   "upak.install")
 md5sums=('c167fd178279d88e05320c7e580b05b4'
-         '80de296d49c4cf91aac4678536c7bd7f'
-         '2989e31a42d8922c0f05c22eb7f4a8be'
-         '1f5d22a84125d8cbcc6ee2fdfe73ffd4')
+         'cb904633d49f17c707515646c2bd2338'
+         'd1accbca0c14b8499870577b3e2fe05f'
+         'f30a0ff9efb503779618680ad6a2da0e')
 install="${pkgname}.install"
 
 prepare() {

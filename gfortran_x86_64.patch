@@ -29,7 +29,7 @@
 +# LINUX version
 +export F77= gfortran
 +export CC=gcc
-+export OPT= -O
++export OPT= -O -fPIC
 +export FARGS= $(FENDIAN) -DGFORTRAN -fno-automatic -fsecond-underscore -fno-range-check
 +export CARGS= $(FENDIAN)
 +export FLIBS= -lgfortran -lgcc
