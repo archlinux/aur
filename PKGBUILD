@@ -1,11 +1,12 @@
-# Maintainer: Max Pray a.k.a. <synthead@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Max Pray a.k.a. <synthead@gmail.com>
 # Contributor: Pranay Kanwar <pranay.kanwar@gmail.com>
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=perl-net-libdnet
 _cpanname="Net-Libdnet"
 pkgver=0.98
-pkgrel=7
+pkgrel=8
 pkgdesc="Binding for Dug Song's libdnet"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_cpanname}"
