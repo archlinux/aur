@@ -1,5 +1,5 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
-pkgname=radegast-nbg
+pkgname=radegast-nb
 pkgver=2.24.105
 pkgrel=1
 pkgdesc="Lightweight client for connecting to Second Life and OpenSim worlds"
