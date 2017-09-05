@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
-pkgname=radegast-nb
+pkgname=radegast-ng
 pkgver=2.24.105
-pkgrel=1.1
+pkgrel=1.12
 pkgdesc="Lightweight client for connecting to Second Life and OpenSim worlds"
 arch=('i686' 'x86_64')
 url="http://radegast.org"
