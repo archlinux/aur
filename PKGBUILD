@@ -16,7 +16,7 @@ backup=(etc/${pkgname}/catalina.policy
         etc/${pkgname}/tomcat-users.xml
         etc/${pkgname}/web.xml)
 install=${pkgname}.install
-source=(https://www.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat-${pkgver}.tar.gz{,.asc}
+source=(https://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat-${pkgver}.tar.gz{,.asc}
         systemd_${pkgname}.service
         systemd_sysusers.d_${pkgname}.conf
         systemd_tmpfiles.d_${pkgname}.conf)
