@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Arlanow <aleksandr@arlanow.ru>
 pkgname=evelauncher
 pkgver=1156239
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Eve Online Launcher."
 arch=('any')
 url="https://forums.eveonline.com/t/eve-launcher-for-linux/7286"
@@ -11,6 +11,7 @@ depends=('qt5-base'
         'qt5-webengine'
         'qt5-webkit'
         'qt5-webview'
+        'qt5-websockets'
         'openssl'
         )
 source=(
