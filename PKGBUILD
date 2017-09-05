@@ -3,19 +3,18 @@
 # Contributor: Eric Ozwigh <ozwigh at gmail dot com>
 
 pkgname=veracrypt-git
-pkgver=20161018
+pkgver=20170809
 pkgrel=1
 pkgdesc="Disk encryption with strong security based on TrueCrypt"
 arch=('i686' 'x86_64')
-depends=('device-mapper' 'fuse' 'libsm' 'wxgtk')
+depends=('device-mapper' 'fuse2' 'libsm' 'wxgtk3')
 makedepends=('binutils' 'make' 'nasm' 'pkg-config')
-optdepends=('desktop-file-utils: update desktop database')
+optdepends=('desktop-file-utils: update desktop database'
+            'sudo: mount encrypted volumes as non-root user')
 url="https://github.com/veracrypt/VeraCrypt"
 license=('custom:TrueCrypt')
-source=(${pkgname%-git}::git+https://github.com/veracrypt/VeraCrypt
-        no-exec-stack.patch)
-sha256sums=('SKIP'
-            '736b31fa86be40e9dd8352b2fd52ed4845730fdaab7c810c6a72765ce9c2b882')
+source=(${pkgname%-git}::git+https://github.com/veracrypt/VeraCrypt)
+sha256sums=('SKIP')
 provides=('veracrypt')
 conflicts=('veracrypt')
 install=veracrypt.install
@@ -30,9 +29,6 @@ prepare() {
 
   msg2 'Disabling sfx archive pkging step...'
   sed -i '/makeself/d' Main/Main.make
-
-  msg2 'Patching ASM...'
-  patch -p0 < "$srcdir/no-exec-stack.patch"
 }
 
 build() {
@@ -40,7 +36,7 @@ build() {
 
   msg2 'Building...'
   make PKG_CONFIG_PATH=/usr/lib/pkgconfig \
-    WX_CONFIG=/usr/bin/wx-config \
+    WX_CONFIG=/usr/bin/wx-config-gtk3 \
     TC_EXTRA_LFLAGS+="-ldl ${LDFLAGS}" \
     TC_EXTRA_CXXFLAGS="${CXXFLAGS}" \
     TC_EXTRA_CFLAGS="${CFLAGS}"
