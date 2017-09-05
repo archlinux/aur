@@ -2,7 +2,7 @@
 
 pkgname=zig-git
 pkgver=0.0.0r1474.6aa04c4
-pkgrel=1
+pkgrel=2
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64')
 url='http://ziglang.org'
