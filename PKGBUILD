@@ -2,7 +2,7 @@
 
 pkgname=libretro-gpsp-git
 _gitname=gpsp
-pkgver=248
+pkgver=298
 pkgrel=1
 pkgdesc="libretro implementation of gpsp"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
