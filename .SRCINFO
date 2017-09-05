@@ -1,7 +1,7 @@
 pkgbase = xonsh
 	pkgdesc = A Python-ish, BASHwards-compatible shell
 	pkgver = 0.5.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xon.sh/
 	install = xonsh.install
 	arch = any
