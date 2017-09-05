@@ -14,14 +14,14 @@ license=('BSD')
 url="http://www.hcs.harvard.edu/~dholland/computers/netkit.html"
 source=(https://deb.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${_debver}.orig.tar.gz
         https://deb.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${_debver}-${_debrel}.debian.tar.xz
-        netkit-telnet-ssl.gcc7.patch
+        netkit-telnet-ssl.arch.patch
         netkit-telnet-ssl.sysusers
         netkit-telnetd{,-ssl}.socket
         netkit-telnetd{,-ssl}@.service
         telnet.xinetd)
 sha256sums=('9c80d5c7838361a328fb6b60016d503def9ce53ad3c589f3b08ff71a2bb88e00'
             '3f8b155bc5085e37a0d836867af330f2911953055010e30f30ca46698559a0aa'
-            '2d3bf162cbb2e3df4ba6014206d95bbccf84ff4a277fdf9c0935a830f52443ee'
+            '339308000345e294f0188c232bdb6cf4a22225db2efe188064f14caabd915ed4'
             'be6cc69383e1326a9aa49d36bfda856d049f16512655ea83b991910800d540ba'
             '25a9cd6c6fd3dd50a20038c05d755c519be1081e42bcb148f71e7a8f182e91a2'
             'a9a14476c43d65a57d50eec7e7d773ff1031cf1c13c12e84a9de5eaa14279434'
@@ -39,7 +39,7 @@ prepare() {
   done
 
   msg2 "Applying additional patches"
-  patch -Np1 < ../netkit-telnet-ssl.gcc7.patch
+  patch -Np1 < ../netkit-telnet-ssl.arch.patch
 }
 
 build() {
