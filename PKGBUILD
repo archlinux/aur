@@ -28,7 +28,10 @@ md5sums=('57a924b3247d515f511531d25f2b8f1c'
 noextract=()
 
 build() {
-  echo "Nothing to do. Package comes prebuilt."
+  echo "Extracting RPM."
+  rpm=MSU-${pkgver}-${pkgrel}.x86_64.rpm
+  mv $srcdir/Marvell_MSU_Linux_v${pkgver}/$rpm $srcdir
+  repmextract.sh $srcdir/$rpm
 }
 
 package() {
