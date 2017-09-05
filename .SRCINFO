@@ -1,7 +1,7 @@
 pkgbase = la-capitaine-icon-theme
-	pkgdesc = An icon pack designed to integrate with most desktop environments
+	pkgdesc = La Capitaine is an icon pack — designed to integrate with most desktop environments.
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/keeferrourke/la-capitaine-icon-theme
 	arch = any
 	license = GPL3

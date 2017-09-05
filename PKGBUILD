@@ -2,8 +2,8 @@
 
 pkgname=('la-capitaine-icon-theme')
 pkgver=0.5.0
-pkgrel=2
-pkgdesc="An icon pack designed to integrate with most desktop environments"
+pkgrel=3
+pkgdesc="La Capitaine is an icon pack — designed to integrate with most desktop environments."
 arch=('any')
 url="https://github.com/keeferrourke/$pkgname"
 license=('GPL3')
