@@ -38,7 +38,7 @@ select yn in "Yes" "No"; do
                     Yes )
     if grep -q download_language=yes "$_settings"; then
     _chosen_language=$(grep -Po 'chosen_language=\K[^ ]+' $_settings)
-    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox-kde/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
+    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
 	msg2 "Extracting locale..."
     bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
@@ -86,7 +86,7 @@ printf "Type language code of language you wish to download and install
 for example - for Polish, type pl): "
 read _chosen_language
 
-    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox-kde/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
+    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
 	msg2 "Extracting locale..."
     bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
