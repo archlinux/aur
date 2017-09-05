@@ -1,22 +1,22 @@
 pkgbase = libretro-nxengine-git
 	pkgdesc = libretro implementation of NXEngine. (Cave Story)
-	pkgver = 389.dc2545f
+	pkgver = r486.af3762e
 	pkgrel = 1
 	url = https://github.com/libretro/nxengine-libretro
-	install = libretro-nxengine.install
+	install = libretro-nxengine-git.install
 	arch = i686
 	arch = x86_64
-	arch = arm
-	arch = armv6h
-	arch = armv7h
+	groups = libretro
 	license = GPL3
 	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = libretro-nxengine=r486.af3762e
+	conflicts = libretro-nxengine
 	source = git+https://github.com/libretro/nxengine-libretro.git
-	source = https://raw.github.com/libretro/libretro-super/master/dist/info/nxengine_libretro.info
-	source = http://www.cavestory.org/downloads/cavestoryen.zip
+	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/nxengine_libretro.info
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 5aad47f1cb72185d6e7f4c8c392f6b6e
+	md5sums = e3e19e32d2456b63e5d4b3a66166622f
 
 pkgname = libretro-nxengine-git
 
