@@ -9,7 +9,7 @@ pkgdesc="telnet client and server with ssl enabled"
 arch=('i686' 'x86_64')
 license=('BSD')
 url="http://www.hcs.harvard.edu/~dholland/computers/netkit.html"
-source=(http://ftp.de.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz
+source=(https://deb.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz
         netkit-telnet-ssl-0.17.24+0.1_arch.diff
         telnet.xinetd)
 depends=('glibc' 'openssl' 'ncurses')
