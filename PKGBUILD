@@ -2,7 +2,7 @@
 
 pkgname=perl-tk-tframe
 pkgver=2.08
-pkgrel=3
+pkgrel=4
 pkgdesc='Perl/CPAN Module Tk::TFrame'
 arch=('any')
 url='http://search.cpan.org/dist/Tk-TFrame'
