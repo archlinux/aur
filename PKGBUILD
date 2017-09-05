@@ -2,8 +2,8 @@
 
 pkgname=accel-ppp-vlanmon-dkms
 _pkgname=accel-ppp
-pkgver=1.11.1
-pkgrel=4
+pkgver=1.11.2
+pkgrel=1
 pkgdesc='Accel-ppp vlan_mon kernel module sources'
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/apps/trac/accel-ppp/'
@@ -25,5 +25,5 @@ package() {
         -i "${pkgdir}"/usr/src/accel-ppp-vlanmon-${pkgver}/dkms.conf
 }
 
-md5sums=('d64f5cb26a5d3fbc09268215e29174e5'
+md5sums=('81a3312cd0ff468ab5ee5edad3424a91'
          'ecb9e73f9243d773949cab8f2de36fc9')
