@@ -2,7 +2,7 @@
 
 pkgname=datovka
 pkgver=4.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI application for a 'Databox' - an electronic communication interface endorsed by the Czech government"
 arch=('i686' 'x86_64')
 url='https://labs.nic.cz/cs/datovka.html'
@@ -15,6 +15,7 @@ sha256sums=('b1d10acdc6f6347f0b976f4c6f3ebdf25feb7f1a9bbdc745cd8a813ae2bc2f5d')
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
 
+  lrelease-qt5 datovka.pro
   qmake-qt5 PREFIX=/usr
   make
 }
