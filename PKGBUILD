@@ -1,7 +1,7 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld.fr>
 
 pkgname='rust-src'
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='rustc source'
 arch=('any')
@@ -12,7 +12,7 @@ source=(
   "rust-${pkgver}.tar.gz::https://github.com/rust-lang/rust/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-  '7e1ecb476118b79b5abed02bc7a724bb65413057e26f1d2b8538c572f7463be0'
+  'ca9307bf18a422029a1fca19ae1fa6c22e3047ff066fb041f9d0a9c886937860'
 )
 
 prepare() {
