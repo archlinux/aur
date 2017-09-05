@@ -4,7 +4,7 @@
 
 pkgname='perl-moosex-types-datetime'
 pkgver='0.13'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="DateTime related constraints and coercions for"
 arch=('any')
 license=('PerlArtistic' 'GPL')
