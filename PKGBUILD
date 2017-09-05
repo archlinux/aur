@@ -15,7 +15,7 @@ depends=('glibc' 'attr')
 makedepends=('linux-api-headers')
 source=("$_gitname::git://git.kernel.org/pub/scm/linux/kernel/git/morgan/libcap.git")
 md5sums=('SKIP')
-conflicts=('libevdevc')
+conflicts=('libcap')
 
 prepare() {
   cd "$srcdir/$_gitname"
