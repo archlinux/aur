@@ -1,0 +1,10 @@
+[Unit]
+Description=Netkit Telnet Server Plaintext Socket
+Documentation=man:in.telnetd-ssl(8)
+
+[Socket]
+ListenStream=23
+Accept=yes
+
+[Install]
+WantedBy=sockets.target

@@ -16,11 +16,17 @@ source=(https://deb.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${_debve
         https://deb.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${_debver}-${_debrel}.debian.tar.xz
         netkit-telnet-ssl.gcc7.patch
         netkit-telnet-ssl.sysusers
+        netkit-telnetd{,-ssl}.socket
+        netkit-telnetd{,-ssl}@.service
         telnet.xinetd)
 sha256sums=('9c80d5c7838361a328fb6b60016d503def9ce53ad3c589f3b08ff71a2bb88e00'
             '3f8b155bc5085e37a0d836867af330f2911953055010e30f30ca46698559a0aa'
             '2d3bf162cbb2e3df4ba6014206d95bbccf84ff4a277fdf9c0935a830f52443ee'
             '79fa821d14e29273da7a0405f7cbc0d8f13a961b168b6b257c71342d06878eb8'
+            '25a9cd6c6fd3dd50a20038c05d755c519be1081e42bcb148f71e7a8f182e91a2'
+            'a9a14476c43d65a57d50eec7e7d773ff1031cf1c13c12e84a9de5eaa14279434'
+            'db921a9ad938ecdb208f6568466950360a892ca0c0754cf51ee082216cd3c8ff'
+            '7a3b68541840a8a9ed5c40fbec815ba21f72b9b2726c42fab6b7aa3d1e0e0d9b'
             '9f1506cbe02b48fe7ac53932f068f3ebc8a8441ad92bdec17e2cd40ca7bcbaa8')
 
 prepare() {
@@ -58,6 +64,12 @@ package() {
 
   install -D -m 644 "$srcdir"/netkit-telnet-ssl.sysusers \
                     "$pkgdir"/usr/lib/sysusers.d/netkit-telnet-ssl.sysusers
+
+  for unit in netkit-telnetd{,-ssl}{.socket,@.service}; do
+    install -D -m 644 "$srcdir"/"$unit" \
+                      "$pkgdir"/usr/lib/systemd/system/"$unit"
+  done
 }
 
+# cleanbuild: required
 # vim: ts=2:sw=2:et:
