@@ -5,8 +5,8 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.12.10
-xanmod=11
+pkgver=4.13.0
+xanmod=1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
@@ -21,7 +21,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         "${pkgbase}.preset")
 source_x86_64=("config.x86_64")
 source_i686=("config.i686")
-sha256sums=('d6f66dc711cce1e5689b6157f8a2513e87d45a62debc2f9d2287b56184223d7e'
+sha256sums=('fedf96acdccec3925c3580c524e5183bd2c947eea1a20eb0a60c0a9ce9bf94da'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 sha256sums_i686=('df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1')
@@ -181,8 +181,8 @@ _package-headers() {
   cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
 
   # add docbook makefile
-  install -D -m644 Documentation/DocBook/Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+#  install -D -m644 Documentation/DocBook/Makefile \
+#    "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 
   # add dm headers
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
