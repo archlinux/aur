@@ -1,0 +1,11 @@
+--- qsstv_9.2.4/qsstv/utils/color.cpp.orig	2016-08-23 21:39:12.000000000 +0200
++++ qsstv_9.2.4/qsstv/utils/color.cpp	2017-09-05 23:15:17.142617536 +0200
+@@ -42,7 +42,7 @@
+ #include <assert.h>
+ 
+ //#include "opj_apps_config.h"
+-#include "openjpeg-2.1/openjpeg.h"
++#include "openjpeg-2.2/openjpeg.h"
+ #include "color.h"
+ 
+ 

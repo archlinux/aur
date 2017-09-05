@@ -1,0 +1,11 @@
+--- qsstv_9.2.4/qsstv/qsstv.pro.orig	2017-09-05 23:23:34.135918319 +0200
++++ qsstv_9.2.4/qsstv/qsstv.pro	2017-09-05 23:23:49.502583980 +0200
+@@ -15,7 +15,7 @@
+ 
+ TARGET = qsstv
+ TEMPLATE = app
+-INCLUDEPATH += config utils sound widgets dsp dispatch logbook mainwidgets rig sstv videocapt drmrx drmtx xmlrpc  /usr/include/openjpeg-2.1
++INCLUDEPATH += config utils sound widgets dsp dispatch logbook mainwidgets rig sstv videocapt drmrx drmtx xmlrpc  /usr/include/openjpeg-2.2
+ 
+ 
+ SOURCES += main.cpp\
