@@ -2,7 +2,7 @@
 pkgbase="python-anyconfig"
 pkgname=("python-anyconfig" "python2-anyconfig")
 pkgver=0.9.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Generic access to configuration files in any formats (to be in the future)'
 url='https://github.com/ssato/python-anyconfig'
 arch=('any')
@@ -21,7 +21,7 @@ build() {
 
 check(){
     cd "${srcdir}/${pkgbase}-RELEASE_${pkgver}"
-    tox
+    tox -e py2,py3
 }
 
 package_python-anyconfig() {
