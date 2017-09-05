@@ -1,7 +1,7 @@
 # Maintainer: Morten Linderud <morten@linderud.pw>  
 pkgname="molecule"
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.4
+pkgrel=1
 _commit=303337927095ab09957fca03ad145f176d0acb0c
 pkgdesc='aids in the development and testing of Ansible roles.'
 url='https://github.com/metacloud/molecule/tree/2.0.0.rc12'
