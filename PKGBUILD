@@ -2,11 +2,11 @@
 
 _pkgname=ceiba-dl
 pkgname=$_pkgname-git
-pkgver=0.2.r0.gc76c801
+pkgver=0.3.r3.gd0e5ea2
 pkgrel=1
 pkgdesc='NTU CEIBA data downloader /  NTU CEIBA 資料下載工具'
 arch=(i686 x86_64)
-license=(GPL3)
+license=(LGPL3)
 url='https://github.com/lantw44/ceiba-dl'
 depends=(python-lxml python-pycurl python-xdg webkit2gtk)
 makedepends=(autoconf-archive git)
