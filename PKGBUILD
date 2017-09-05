@@ -3,7 +3,7 @@
 
 pkgname=xonsh
 pkgver=0.5.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python-ish, BASHwards-compatible shell"
 url="http://xon.sh/"
 arch=('any')
@@ -17,6 +17,6 @@ sha256sums=('5726d67bb40ec0d22ad37630127a54b866c75d537618dcf77101f1c19d54a7e5')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root=$pkgdir
+  python setup.py install --root="$pkgdir"
   install -D -m644 license "$pkgdir/usr/share/licenses/$pkgname/license"
 }
