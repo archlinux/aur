@@ -1,3 +1,3 @@
 post_install() {
-    echo 'Add "Include conf/extra/httpd-autoindex.apaxy.conf" to your /etc/httpd/conf/httpd.conf to enable apaxy'
+    echo 'Add "Include conf/extra/httpd-autoindex-apaxy.conf" to your /etc/httpd/conf/httpd.conf to enable apaxy'
 }
