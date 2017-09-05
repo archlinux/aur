@@ -21,20 +21,20 @@ build() {
   ./configure
   make
 
-  cd ../$pkgname-$pkgver/
+  cd ../benzene-$pkgver/
   autoreconf -i
   ./configure --with-fuego-root=$(pwd)/../fuego-1.1/
   make
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd benzene-$pkgver
   make check
 }
 
 package() {
   mkdir -p $pkgdir/usr/bin
 
-  cp $srcdir/$pkgname-$pkgver/src/wolve/wolve $pkgdir/usr/bin/wolve
+  cp $srcdir/benzene-$pkgver/src/wolve/wolve $pkgdir/usr/bin/wolve
 }
 
