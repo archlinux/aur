@@ -11,6 +11,7 @@ pkgbase = clangd-svn
 	makedepends = subversion
 	provides = clangd
 	conflicts = clangd
+	conflicts = clang-tools-extra-svn
 	options = staticlibs
 	source = llvm::svn+https://llvm.org/svn/llvm-project/llvm/trunk
 	source = clang::svn+https://llvm.org/svn/llvm-project/cfe/trunk
