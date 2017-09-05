@@ -1,10 +1,10 @@
-# Maintainer:  Michael Kogan <michael dot kogan at gmx dot net>
-# Contributor: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor:  Michael Kogan <michael dot kogan at gmx dot net>
 
 pkgname=perl-gtk2-notify
 _cpanname=Gtk2-Notify
 pkgver=0.05
-pkgrel=19
+pkgrel=20
 pkgdesc="Perl interface to libnotify"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/${_cpanname}"
