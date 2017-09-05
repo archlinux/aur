@@ -1,0 +1,13 @@
+pkgbase = quake3-fortress
+	pkgdesc = A modification for Quake III Arena featuring class-based gameplay
+	pkgver = 2.20
+	pkgrel = 1
+	url = https://web.archive.org/web/20080826070240/http://www.q3f.com:80/
+	arch = any
+	license = custom
+	depends = quake3
+	source = https://mirrorservice.org/sites/quakeunity.com/modifications/q3fortress/q3f_220_full.zip
+	sha256sums = 6c1105ee783c4acd76f6beeabf5ca30519974da0782e210c3505d083900b0072
+
+pkgname = quake3-fortress
+
