@@ -18,7 +18,6 @@ pkgbase = netkit-telnet-ssl
 	source = netkit-telnetd-ssl.socket
 	source = netkit-telnetd@.service
 	source = netkit-telnetd-ssl@.service
-	source = telnet.xinetd
 	sha256sums = 9c80d5c7838361a328fb6b60016d503def9ce53ad3c589f3b08ff71a2bb88e00
 	sha256sums = 3f8b155bc5085e37a0d836867af330f2911953055010e30f30ca46698559a0aa
 	sha256sums = 339308000345e294f0188c232bdb6cf4a22225db2efe188064f14caabd915ed4
@@ -27,7 +26,6 @@ pkgbase = netkit-telnet-ssl
 	sha256sums = a9a14476c43d65a57d50eec7e7d773ff1031cf1c13c12e84a9de5eaa14279434
 	sha256sums = 6e45cfed7968af48b59f172523934db421964e58fdb624872a831160e2848284
 	sha256sums = b4220954373f5431b127509b4344dad32d5c692871c536106507fa8b052ef40a
-	sha256sums = 9f1506cbe02b48fe7ac53932f068f3ebc8a8441ad92bdec17e2cd40ca7bcbaa8
 
 pkgname = netkit-telnet-ssl
 
