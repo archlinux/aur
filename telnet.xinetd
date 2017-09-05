@@ -1,0 +1,10 @@
+service telnet-ssl
+{
+	flags			= REUSE
+	socket_type		= stream
+	wait			= no
+	user			= root
+	server			= /usr/sbin/in.telnetd-ssl
+	log_on_failure		+= USERID
+	disable			= yes
+}
