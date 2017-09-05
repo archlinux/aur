@@ -9,6 +9,8 @@ arch=("any")
 url="https://github.com/Foxboron/archur"
 license=('MIT')
 depends=('python-pillow')
+provides=('archur')
+conflicts=('archur')
 source=("git+https://github.com/Foxboron/archur.git")
 sha256sums=('SKIP')
 
