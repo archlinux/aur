@@ -20,8 +20,7 @@ md5sums=('7dfe0be8c17bfd641d18384d4fd8fb23')
 build() {
   cd "$srcdir/Goo-Canvas-$pkgver"
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  sed -i -e 's,q(build/doc.pl),q(./build/doc.pl),' Makefile
-  make
+  PERL_USE_UNSAFE_INC=1 make
 }
 
 check() {
