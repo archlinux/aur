@@ -1,7 +1,7 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.0.0r1468.5dddb45
+pkgver=0.0.0r1474.6aa04c4
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64')
@@ -11,7 +11,9 @@ depends=('llvm' 'clang' 'lld')
 makedepends=('cmake')
 provides=(zig)
 conflicts=(zig)
-source=("git://github.com/andrewrk/zig.git#branch=master")
+# We pin this commit since it is the last supported by llvm-4 before the switch
+# to llvm-5.
+source=("git://github.com/zig-lang/zig.git#commit=6aa04c422bae89c50e1289e1ca51cd4d414debb7")
 md5sums=('SKIP')
 
 pkgver() {
