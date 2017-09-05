@@ -1,0 +1,19 @@
+pkgbase = numactl-git
+	pkgdesc = Simple NUMA policy support
+	pkgver = 2.0.11.r14.gea3a706
+	pkgrel = 1
+	url = http://oss.sgi.com/projects/libnuma/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	depends = glibc
+	provides = numactl
+	conflicts = numactl
+	options = staticlibs
+	source = git+https://github.com/numactl/numactl.git
+	sha256sums = SKIP
+
+pkgname = numactl-git
+
