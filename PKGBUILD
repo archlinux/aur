@@ -11,8 +11,6 @@ source=("https://github.com/flipflop97/Mato/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-    cd "Mato-${pkgver}"
-    install -dm 755 "${pkgdir}"/usr/share/icons
-    mkdir "${pkgdir}"/usr/share/icons/Mato
-    cp -dr --no-preserve='ownership' * "${pkgdir}"/usr/share/icons/Mato
+    install -dm 755 "${pkgdir}"/usr/share/icons/Mato
+    cp -dr --no-preserve='ownership' Mato-"${pkgver}"/* "${pkgdir}"/usr/share/icons/Mato
 }
