@@ -10,7 +10,7 @@ url='http://benzene.sourceforge.net'
 license=('GPL3')
 depends=('boost-libs' 'db')
 makedepends=('boost')
-source=("https://github.com/apetresc/$pkgname/archive/v$pkgver.tar.gz"
+source=("https://github.com/apetresc/benzene/archive/v$pkgver.tar.gz"
         'https://github.com/apetresc/fuego/archive/v1.1.tar.gz')
 md5sums=('517c202987706c6f3dd70dbf57fe67fa'
          '90a3e6c46f5a418f9fe5bdab46ca6b90')
