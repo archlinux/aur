@@ -2,7 +2,7 @@
 
 pkgname=perl-io-interface
 pkgver='1.09'
-pkgrel=3
+pkgrel=5
 pkgdesc="Perl extension for access to network card configuration information"
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/perldoc?IO::Interface'
@@ -36,4 +36,5 @@ package() {
 	#remove perllocal.pod and .packlist
 	find "$pkgdir" -name perllocal.pod -delete
 	find "$pkgdir" -name .packlist -delete
+	_perl_depends
 }
