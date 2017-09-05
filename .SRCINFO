@@ -1,5 +1,5 @@
 pkgbase = netkit-telnet-ssl
-	pkgdesc = telnet client and server with ssl enabled
+	pkgdesc = Telnet client and server with TLS support (Debian Netkit version)
 	pkgver = 0.17.41+0.2
 	pkgrel = 1
 	url = http://www.hcs.harvard.edu/~dholland/computers/netkit.html
