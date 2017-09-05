@@ -1,6 +1,6 @@
 pkgbase = rpmlint
 	pkgdesc = A tool for checking common errors in rpm packages.
-	pkgver = 1.9
+	pkgver = 1.10
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/rpmlint
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = rpmlint
 	depends = desktop-file-utils
 	depends = python
 	depends = rpm-org
-	source = https://github.com/rpm-software-management/rpmlint/archive/rpmlint-1.9.tar.gz
-	md5sums = 810d7fd565d389fec305ff80af53ba40
+	source = https://github.com/rpm-software-management/rpmlint/archive/rpmlint-1.10.tar.gz
+	md5sums = e2fb194390e983712bb4e92cb2a6e962
 
 pkgname = rpmlint
 
