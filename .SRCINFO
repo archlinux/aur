@@ -8,8 +8,9 @@ pkgbase = lv2vst
 	makedepends = git
 	makedepends = gcc
 	makedepends = make
-	depends = lv2
-	depends = steinberg-vst36
+	makedepends = lv2
+	makedepends = steinberg-vst36
+	depends = glibc
 	source = git+https://github.com/x42/lv2vst.git
 	md5sums = SKIP
 

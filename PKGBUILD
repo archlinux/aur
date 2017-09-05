@@ -5,8 +5,8 @@ pkgdesc="experimental LV2 to VST2.x wrapper"
 arch=('x86_64')
 license=('GPL2')
 url="https://github.com/x42/lv2vst"
-depends=('lv2' 'steinberg-vst36')
-makedepends=('git' 'gcc' 'make')
+depends=('glibc')
+makedepends=('git' 'gcc' 'make' 'lv2' 'steinberg-vst36')
 source=("git+https://github.com/x42/lv2vst.git")
 md5sums=('SKIP')
 
