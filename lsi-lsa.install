@@ -1,0 +1,47 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+yellow="${bold}$(tput setaf 3)"
+blue="${bold}$(tput setaf 4)"
+green="${bold}$(tput setaf 2)"
+
+_instructions() {
+  printf "${yellow}==>${all_off} ${bold}ATENTION:${all_off}
+${green}==>${all_off} ${bold}For operate with 'LSI Storage Authority Software':${all_off}
+  ${blue}->${all_off} For start '${bold}LSI Storage Authority Software${all_off}' service, run:
+     '\x23 ${bold}systemctl start lsi_lsa${all_off}'
+  ${blue}->${all_off} For open '${bold}LSI Storage Authority Software${all_off}' client:
+     Launch any internet browser and open:
+     '${bold}http://127.0.0.1:2463${all_off}'
+  ${blue}->${all_off} If you need more info for the other modes/config, please see the README in 
+    '${bold}/usr/share/docs/lsi_lsa/LSA_Linux_readme.txt${all_off}'\n"
+}
+
+_instructions_usage() {
+  printf "${yellow}==>${all_off} ${bold}ATENTION:${all_off}
+${green}==>${all_off} ${bold}For operate with 'LSI Storage Authority Software':${all_off}
+  ${blue}->${all_off} For open '${bold}LSI Storage Authority Software${all_off}' client:
+     Launch any internet browser and open:
+     '${bold}http://127.0.0.1:2463${all_off}'\n"
+}
+
+post_install() {
+  _instructions
+}
+
+post_upgrade() {
+  _instructions_usage
+}
+
+post_remove() {
+  paths=(/opt/lsi/LSIStorageAuthority)
+  first=true
+  for path in ${paths[@]}; do
+    if [ -d $path ]; then
+      if $first; then
+        first=false
+        printf "${green}==>${all_off} ${bold}Leftover Paths:${all_off}\n"
+      fi
+      printf "${blue}  -> ${all_off} ${bold}$path${all_off}\n"
+    fi
+  done
+}

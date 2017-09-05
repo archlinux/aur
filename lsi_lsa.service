@@ -1,0 +1,15 @@
+[Unit]
+Description=LSI Storage Authority
+Requires=openslp.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/opt/lsi/LSIStorageAuthority/bin/lsa_launcher.sh start
+ExecStart=/opt/lsi/LSIStorageAuthority/bin/lsa_launcher.sh server_start
+ExecReload=/opt/lsi/LSIStorageAuthority/bin/lsa_launcher.sh reload
+ExecStop=/opt/lsi/LSIStorageAuthority/bin/lsa_launcher.sh stop
+ExecStop=/opt/lsi/LSIStorageAuthority/bin/lsa_launcher.sh server_stop
+
+[Install]
+WantedBy=multi-user.target
