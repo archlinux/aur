@@ -1,6 +1,6 @@
 # Maintainer: Jesse Bryan <jesse@winneon.moe>
 pkgname=gsu
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A general screenshot and upload utility for images, video, and gifs."
 arch=("any")
@@ -12,7 +12,7 @@ optdepends=(
     "xclip: Copy URLs to clipboard after upload"
 )
 source=("https://codeload.github.com/winneon/${pkgname}/tar.gz/${pkgver}")
-sha256sums=("239e97cd4bf1db5ce64b9fdfb1dc1c77609ea36d26f742e2f52efe3b8ead60c8")
+sha256sums=("e42c4a5523fd571366c9aeff39b4b2b5075dc3a529189e136ec0281202874260")
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
