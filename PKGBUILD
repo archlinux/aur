@@ -29,9 +29,9 @@ noextract=()
 
 build() {
   echo "Extracting RPM."
-  rpm=MSU-${pkgver}-${pkgrel}.x86_64.rpm
-  mv $srcdir/Marvell_MSU_Linux_v${pkgver}/$rpm $srcdir
-  rpmextract.sh $srcdir/$rpm
+  rpmfldr=Marvell_MSU_Linux_v${pkgver}
+  rpmfn=MSU-${pkgver}-${pkgrel}.x86_64.rpm
+  rpmextract.sh $srcdir/$rpmfldr/$rpmfn
 }
 
 package() {
@@ -39,11 +39,11 @@ package() {
   install -D -m 755 MSUAgent $pkgdir/usr/bin/MSUAgent
   install -D -m 755 MSUStart $pkgdir/usr/bin/MSUStart
   install -D -m 755 MSUWebService $pkgdir/usr/bin/MSUWebService
-  install -D -m 644 $srcdir/etc/marvell/cli/mvcli.ini $pkgdir/etc/marvell/cli/mvcli.ini
-  install -D -m 755 $srcdir/lib64/libeventshare.so $pkgdir/usr/lib/libeventshare.so
-  install -D -m 755 $srcdir/lib64/libmvraid.so $pkgdir/usr/lib/libmvraid.so
+  install -D -m 644 $srcdir/$rpmfldr/etc/marvell/cli/mvcli.ini $pkgdir/etc/marvell/cli/mvcli.ini
+  install -D -m 755 $srcdir/$rpmfldr/lib64/libeventshare.so $pkgdir/usr/lib/libeventshare.so
+  install -D -m 755 $srcdir/$rpmfldr/lib64/libmvraid.so $pkgdir/usr/lib/libmvraid.so
   # Too many files in the Marvell directory.
-  cp -r $srcdir/opt $pkgdir/
-  install -D -m 644 $srcdir/usr/share/applications/MSU.desktop $pkgdir/usr/share/applications/MSU.desktop
-  install -D -m 644 $srcdir/usr/share/applications/MSUUninstall.desktop $pkgdir/usr/share/applications/MSUUninstall.desktop
+  cp -r $srcdir/$rpmfldr/opt $pkgdir/
+  install -D -m 644 $srcdir/$rpmfldr/usr/share/applications/MSU.desktop $pkgdir/usr/share/applications/MSU.desktop
+  install -D -m 644 $srcdir/$rpmfldr/usr/share/applications/MSUUninstall.desktop $pkgdir/usr/share/applications/MSUUninstall.desktop
 }
