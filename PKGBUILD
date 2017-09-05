@@ -5,8 +5,9 @@
 _perlmod=Audio-FLAC-Header
 _modnamespace=Audio
 pkgname=perl-audio-flac-header
+makedepends=('perl-module-install')
 pkgver=2.4
-pkgrel=8
+pkgrel=9
 pkgdesc="Audio::FLAC::Header - Access to FLAC audio metadata"
 arch=('any')
 url="http://search.cpan.org/dist/${_perlmod}"
