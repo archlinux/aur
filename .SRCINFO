@@ -1,0 +1,20 @@
+pkgbase = away
+	pkgdesc = Terminal locking program
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://packages.debian.org/sid/away
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pam
+	source = http://http.debian.net/debian/pool/main/a/away/away_0.9.5+ds.orig.tar.gz
+	source = 01-echo-off.patch
+	source = Makefile
+	source = away.pam
+	sha256sums = 14915180d963f1451730e31bdf7dc02e9978236f9839b9f0702474019f74e960
+	sha256sums = 31e1a4e2dd1bb0340dea709eabcc9fe0c87ddf57a17bd5d49b92af1017fb2d16
+	sha256sums = 9838c8fa00364e264615a9153247f7a4519bfa40ccabebc0c25a01cfc767a614
+	sha256sums = d6efaf99cf53af47ce9e48eda930a15a6a0c3a233a9aaa1b443495fbe2efad87
+
+pkgname = away
+

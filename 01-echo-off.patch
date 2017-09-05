@@ -1,0 +1,38 @@
+diff -ruN away-0.9.5-old/away.c away-0.9.5/away.c
+--- away-0.9.5-old/away.c	2002-08-22 07:23:39.000000000 +0200
++++ away-0.9.5/away.c	2002-10-08 15:55:50.000000000 +0200
+@@ -234,9 +234,23 @@
+ 
+ /* Stall */
+ void stall(void) {
++  struct termios old, new;
++
+   printf("\n       You went away at %.20s", make_time());
+   printf("\n\n -- Press [Enter] to come back online --\n");
++  
++  /* save term state */
++  tcgetattr(0, &old);
++  new = old;
++
++  /* turn off echo */
++  new.c_lflag &= ~ECHO;
++  tcsetattr(0, TCSANOW, &new);
+   getchar();
++
++  /* reset term */
++  tcsetattr(0, TCSANOW, &old);
++  printf("\n");
+ }
+ 
+ /* Get Current Time */
+diff -ruN away-0.9.5-old/away.h away-0.9.5/away.h
+--- away-0.9.5-old/away.h	2002-08-12 02:33:03.000000000 +0200
++++ away-0.9.5/away.h	2002-10-08 15:51:03.000000000 +0200
+@@ -58,6 +58,7 @@
+ #include <sys/stat.h>
+ #include <security/pam_appl.h>
+ #include <security/pam_misc.h>
++#include <termios.h>
+ 
+ /* Default conf file name */
+ char *rcfile = ".awayrc";
