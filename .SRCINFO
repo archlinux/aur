@@ -24,7 +24,7 @@ pkgbase = atom-editor-beta-bin-mirror
 	source = atom-amd64-1.20.0-beta5.deb::https://npm.taobao.org/mirrors/atom/1.20.0-beta5/atom-amd64.deb
 	source = atom-python.patch
 	source = startupwmclass.patch
-	md5sums = 3e5e3778af9dcdd6cfdba1db15e23d0c
+	md5sums = 59964f5d94aec6795c5e8fe1bf3f6ac0
 	md5sums = 501719c940fcd9c3d82fb8edebdaae09
 	md5sums = b05aef80afa76162ff9a1992cef3f0f9
 

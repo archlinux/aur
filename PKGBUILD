@@ -32,7 +32,7 @@ optdepends=('gvfs')
 conflicts=('atom-editor-beta', 'atom-editor-beta-bin')
 install=$pkgname.install
 
-md5sums=('3e5e3778af9dcdd6cfdba1db15e23d0c'
+md5sums=('59964f5d94aec6795c5e8fe1bf3f6ac0'
          '501719c940fcd9c3d82fb8edebdaae09'
          'b05aef80afa76162ff9a1992cef3f0f9')
 source=("atom-amd64-$(get_version).deb::https://npm.taobao.org/mirrors/atom/$(get_version)/atom-amd64.deb"
