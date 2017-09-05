@@ -1,0 +1,15 @@
+pkgbase = brickstrap-git
+	pkgdesc = Tool for bootstrapping Debian and creating bootable image files for embedded systems, f.e. ev3dev
+	pkgver = r32.69925f0
+	pkgrel = 1
+	url = https://github.com/ev3dev/brickstrap
+	arch = any
+	license = MIT
+	depends = docker
+	depends = libguestfs
+	optdepends = qemu-arm-static: Build arm images (f.e. LEGO ev3 bricks)
+	source = git+https://github.com/ev3dev/brickstrap.git
+	md5sums = SKIP
+
+pkgname = brickstrap-git
+
