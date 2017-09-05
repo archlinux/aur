@@ -2,17 +2,16 @@
 
 pkgname=lsi-openpegasus
 pkgver=2.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LSI Openpegasus libs"
 arch=('i686' 'x86_64')
 url='http://www.avagotech.com/products/server-storage'
 license=('custom:TOG')
           # OpenPegasus site don't like wget/curl. :/
-depends=('pam')
+depends=('sqlite')
 makedepends=('lynx'
              'icu'
              'openssl'
-             'sqlite'
              'net-snmp'
              'openslp'
              'setconf'
@@ -20,7 +19,7 @@ makedepends=('lynx'
 DLAGENTS=('https::/usr/bin/lynx -accept_all_cookies -cmd_script=lynx_script_for_download_pegasus %u'
           'http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u'
           )
-source=('lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. please don't move to other place
+source=('lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. please don't move this file to other place
         'https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
         'http://pkgs.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.7.0-PIE.patch'
         'http://pkgs.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.9.0-no-rpath.patch'
@@ -28,7 +27,6 @@ source=('lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. 
         'http://pkgs.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.14.1-build-fixes.patch'
         'http://pkgs.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch'
         'http://pkgs.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.14.1-openssl-1.1-fix.patch'
-        'ld.so.lsi-openpegasus.conf'
         )
 sha256sums=('72d24d357601b9df8a418a7e7851d3b55c32614394e5507146fe961e4712c5e8'
             '9f2f13a35da218f3cb6e8478246ff7c4d3010560bb4d5de9cbf4272d48e353fb'
@@ -38,9 +36,7 @@ sha256sums=('72d24d357601b9df8a418a7e7851d3b55c32614394e5507146fe961e4712c5e8'
             '5863314f2ff17c32bc340efd5241f809bc1372b8e2fde0b3a2e22c7ab9b64281'
             '5de02253442ef8cb3b6f744fa4dd3237b66d96911ab8badd63336a7e1d28a429'
             'deb3e52e5406419cc42d15f1a668ed291ef8337217bb5bc9cefd01ef3b804371'
-            '454fc2ecd0863b70622fdad471818699dc551030dca8557d1eeb54f835482036'
             )
-options=('!strip')
 
 _create_links() {
   # create soname links
@@ -53,8 +49,9 @@ _create_links() {
 }
 
 prepare() {
-  # Patch pegasus-toc sources
   cd pegasus
+
+  # Patch pegasus-toc sources
   patch -p1 -i "${srcdir}/pegasus-2.7.0-PIE.patch"
   patch -p1 -i "${srcdir}/pegasus-2.9.0-no-rpath.patch"
   patch -p1 -i "${srcdir}/pegasus-2.13.0-gcc5-build.patch"
@@ -62,37 +59,46 @@ prepare() {
   patch -p1 -i "${srcdir}/pegasus-2.14.1-ssl-include.patch"
   patch -p1 -i "${srcdir}/pegasus-2.14.1-openssl-1.1-fix.patch"
 
-  setconf configure libbase lib
-  sed 's|lib64|lib|g' -i configure
+  # fix detection some libs on 32 bits
+  sed 's|lib64/|\$libbase/|g' -i configure
+
+  if [ "${CARCH}" = "x86_64" ]; then
+    setconf configure libbase lib
+  fi
+
+  export PEGASUS_EXTRA_C_FLAGS="${CFLAGS}"
+  export PEGASUS_EXTRA_CXX_FLAGS="${CXXFLAGS}"
+  export PEGASUS_EXTRA_PROGRAM_LINK_FLAGS="${LDFLAGS}"
 }
 
 build() {
-  msg2 "Build Pegasus-TOG framework"
   cd pegasus
   ./configure
-  make -f GNUmakefile
+  make -j$(nproc) -f GNUmakefile
 }
 
 package() {
-  local _pegasus_lib=('libpegclient.so.1'
-                      'libpegcommon.so.1'
-                      'libpegconfig.so.1'
-                      'libpegcql.so.1'
-                      'libpegexportserver.so.1'
-                      'libpeglistener.so.1'
-                      'libpegprovider.so.1'
-                      'libpegslp_client.so.1'
-                      'libpegquerycommon.so.1'
-                      'libpegqueryexpression.so.1'
-                      'libpegwql.so.1'
-                     )
-  for i in ${_pegasus_lib[@]}; do install -Dm755 "${srcdir}/pegasus/lib/${i}" ${pkgdir}/usr/lib/${i}; done #"${pkgdir}/opt/lsi/Pegasus/${i}"; done
+  _pegasus_lib=('libpegclient.so.1'
+                'libpegcommon.so.1'
+                'libpegconfig.so.1'
+                'libpegcql.so.1'
+                'libpegexportserver.so.1'
+                'libpeggeneral.so.1'
+                'libpeghandler.so.1'
+                'libpegindicationservice.so.1'
+                'libpeglistener.so.1'
+                'libpegprovider.so.1'
+                'libpegprm.so.1'
+                'libpegrepository.so.1'
+                'libpegslp_client.so.1'
+                'libpegquerycommon.so.1'
+                'libpegqueryexpression.so.1'
+                'libpegwql.so.1'
+                )
+  for i in ${_pegasus_lib[@]}; do install -Dm755 "${srcdir}/pegasus/lib/${i}" ${pkgdir}/usr/lib/${i}; done
 
   # Create soname links
   _create_links
-
-  # Add /opt/lsi/Pegasus ldconf search path
-  #install -Dm644 "${srcdir}/ld.so.lsi-openpegasus.conf" "${pkgdir}/etc/ld.so.conf.d/lsi-openpegasus.conf"
 
   install -Dm644 "${srcdir}/pegasus/OpenPegasusNOTICE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/OpenPegasusNOTICE.txt"
 }
