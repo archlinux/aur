@@ -7,7 +7,7 @@ pkgname=('wxbase-light'
          'wxcommon-light'
          )
 pkgver=3.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('i686' 'x86_64')
 url='http://wxwidgets.org'
@@ -35,6 +35,9 @@ prepare() {
   # C++ ABI check is too strict and breaks with GCC 5.1
   # https://bugzilla.redhat.com/show_bug.cgi?id=1200611
   patch -Np1 -i "${srcdir}/make-abicheck-non-fatal.patch"
+  
+  # FS 55509
+  git cherry-pick ce1dce113c5eda42f49ba3278bb21c61872ca37d
 }
 
 build() {
