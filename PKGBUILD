@@ -2,7 +2,7 @@
 
 pkgname='python-pygorithm'
 _name=pygorithm
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A Python module for learning all major algorithms'
 url='https://github.com/OmkarPathak/pygorithm'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 provides=("${_name}=${pkgver}")
 source=("${url}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
-sha256sums=('39d85e07c20168e46df85ad0cbcdfb390a6274f7e0fa8f9955ddee65558b22aa')
+sha256sums=('214021a5abdb6bc7c5ed5a60ce4dd56d60ed9cdeb30a91cf7cf35332bb79d3a0')
 
 # Enable for tests
 check() {
