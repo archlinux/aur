@@ -1,198 +1,199 @@
+# vim:set ts=2 sw=2 et:
 # Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Arthur Borsboom <arthurborsboom@gmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
+# Contributor: graysky <graysky AT archlinux DOT us>
 # Contributor: DonVla <donvla@users.sourceforge.net>
 # Contributor: Ulf Winkelvos <ulf [at] winkelvos [dot] de>
 # Contributor: Ralf Barth <archlinux dot org at haggy dot org>
 # Contributor: B & monty - Thanks for your hints :)
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: marzoul
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Brad Fanella <bradfanella@archlinux.us>
-# Contributor: [vEX] <niechift.vex@gmail.com>
-# Contributor: Zeqadious <zeqadious@gmail.com>
+# Contributor: [vEX] <niechift.dot.vex.at.gmail.dot.com>
+# Contributor: Zeqadious <zeqadious.at.gmail.dot.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: dhead666 <myfoolishgames@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@gmail.com>
 #
 # Original credits go to Edgar Hucek <gimli at dark-green dot com>
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
 
 pkgbase=kodi-devel
-pkgname=('kodi-devel' 'kodi-devel-eventclients')
-pkgver=17.0rc2
-pkgdesc="Kodi Media Center monthly development releases"
+pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
+_pkgname=kodi
+pkgver=17.4
 _codename=Krypton
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://xbmc.org"
-license=('GPL' 'LGPL')
-groups=('kodi-devel')
-
+url="http://kodi.tv"
+license=('GPL2')
 makedepends=(
-  'afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'git' 'glew'
-  'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'lame'  'libaacs' 'libass'
-  'libbluray' 'libcdio' 'libcrossguid-git' 'libcec' 'libgl' 'libmariadbclient' 'libmicrohttpd'
-  'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libsamplerate' 'libssh'
-  'libva' 'libvdpau' 'libxrandr' 'libxslt' 'nasm' 'python2-pillow'
-  'python2-simplejson' 'rtmpdump' 'sdl2' 'shairplay' 'smbclient' 'swig' 'taglib'
-  'tinyxml' 'unzip' 'upower' 'xorg-xdpyinfo' 'yajl' 'zip'
+  'afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'glew'
+  'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'libaacs' 'libass'
+  'libbluray' 'libcdio' 'libcec' 'libgl' 'libmariadbclient' 'libmicrohttpd'
+  'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libssh' 'libva'
+  'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'nasm' 'nss-mdns' 'python2-pillow'
+  'python2-pybluez' 'python2-simplejson' 'rtmpdump'
+  'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower' 'yajl' 'zip'
+  'mesa' 'libcrossguid'
 )
-
-source=("https://github.com/xbmc/xbmc/archive/${pkgver}-${_codename}.tar.gz")
-sha256sums=('6bd03e0e26251972c2237d5ca25ab3c292f9a88e4ee02b798d9f89360e8ac522')
-
-_prefix='/usr'
+source=("$_pkgname-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz")
+sha512sums=('fc4eff6606c84459ab24323888d39bf1f5d433aaf7136c17d85631f768761f61e498297c500befc986dd6de14de87a5a28f7a9c36c8d7c35d49ca15c99db37ef')
 
 prepare() {
-  msg "Starting make..."
-
-  cd "${srcdir}/xbmc-${pkgver}-${_codename}"
-
-  find -type f -name *.py -exec sed 's|^#!.*python$|#!/usr/bin/python2|' -i "{}" +
-  sed 's|^#!.*python$|#!/usr/bin/python2|' -i tools/depends/native/rpl-native/rpl
-  sed 's/python/python2/' -i tools/Linux/kodi.sh.in
-  sed 's/shell python/shell python2/' -i tools/EventClients/Makefile.in
-  # texturepacker cannot build statically
-  sed '/--enable-static/d' -i tools/depends/native/TexturePacker/Makefile
-
-  # disable wiiremote due to incompatibility with bluez-5.29
-  sed '/WiiRemote/d' -i tools/EventClients/Makefile.in
-  sed '/mkdir -p $(DESTDIR)$(bindir)/i \
-install:' -i tools/EventClients/Makefile.in
+  [[ -d kodi-build ]] && rm -rf kodi-build
+  mkdir kodi-build
 }
 
 build() {
-  cd "${srcdir}/xbmc-${pkgver}-${_codename}"
-
-  msg "Starting make..."
-
-  # Configure Kodi
-  #
-  # Note on external-libs:
-  #   - We cannot use external python because Arch's python was built with
-  #     UCS2 unicode support, whereas kodi expects UCS4 support
-  #   - According to an kodi dev using external/system ffmpeg with kodi is "pure stupid" :D
-
-  msg2 "Bootstrapping Kodi"
-  ./bootstrap
-
-  #./configure --help
-  #return 1
-
-  msg2 "Configuring Kodi"
-  export PYTHON_VERSION=2  # external python v2
-  ./configure --prefix=${_prefix} --exec-prefix=${_prefix} \
-    --disable-optimizations \
-    --enable-avahi \
-    --enable-libbluray \
-    --with-lirc-device=/run/lirc/lircd \
-    ac_cv_lib_bluetooth_hci_devid=no \
-    ac_cv_type__Bool=yes
-
-  # Now (finally) build
+  cd kodi-build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DENABLE_EVENTCLIENTS=ON \
+    -DLIRC_DEVICE=/run/lirc/lircd \
+    ../"xbmc-$pkgver-$_codename"/project/cmake
   make
+  make preinstall
 }
 
+# kodi
+# components: kodi, kodi-bin
+
 package_kodi-devel() {
-  provides=('xbmc' 'kodi')
-  conflicts=('xbmc' 'xbmc-pulse' 'xbmc-svn' 'xbmc-git-xvba' 'xbmc-git' 'kodi' 'kodi-git')
-  install="${pkgname}.install"
-
+  pkgdesc="A software media player and entertainment hub for digital media"
   depends=(
-    'bluez-libs' 'libcrossguid-git' 'curl' 'glew' 'hicolor-icon-theme' 'lame'
-    'libaacs' 'libass' 'libbluray' 'libcdio' 'libmariadbclient' 'libmicrohttpd' 'libmodplug'
-    'libmpeg2' 'libpulse' 'libsamplerate' 'libssh' 'libva' 'libvdpau'
-    'libxrandr' 'libxslt' 'python2-pillow' 'python2-simplejson'
-    'rtmpdump' 'sdl2' 'smbclient' 'taglib' 'tinyxml' 'xorg-xdpyinfo' 'yajl'
+    'python2-pillow' 'python2-simplejson' 'xorg-xdpyinfo' 'bluez-libs'
+    'fribidi' 'freetype2' 'glew' 'hicolor-icon-theme' 'libcdio' 'libjpeg-turbo'
+    'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh' 'libva' 'libvdpau'
+    'libxrandr' 'libxslt' 'lzo' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'mesa'
+    'desktop-file-utils'
   )
-
   optdepends=(
-    'gdb: for meaningful backtraces in case of trouble - STRONGLY RECOMMENDED'
     'afpfs-ng: Apple shares support'
     'bluez: Blutooth support'
-    'kodi-devel-adsp-basic: Basic ADSP Processor addon for Kodi'
-    'kodi-devel-adsp-freesurround: FreeSurround ADSP addon for Kodi'
-    'kodi-devel-audiodecoder-modplug: Modplug decoder addon for Kodi'
-    'kodi-devel-audiodecoder-nosefart: Nosefart decoder addon for Kodi'
-    'kodi-devel-audiodecoder-snesapu: SPC decoder addon for Kodi'
-    'kodi-devel-audiodecoder-stsound: YM decoder addon for Kodi'
-    'kodi-devel-audiodecoder-timidity: Timidity decoder addon for Kodi'
-    'kodi-devel-audiodecoder-vgmstream: VGM decoder addon for Kodi'
-    'kodi-devel-audioencoder-flac: Flac encoder addon for Kodi'
-    'kodi-devel-audioencoder-lame: Lame MP3 encoder addon for Kodi'
-    'kodi-devel-audioencoder-vorbis: Vorbis encoder addon for Kodi'
-    'kodi-devel-audioencoder-wav: Wav encoder addon for Kodi'
-    'kodi-devel-libcec: Pulse-Eight USB-CEC adapter support'
-    'kodi-devel-pvr-argustv: ARGUS TV PVR client addon for Kodi'
-    'kodi-devel-pvr-demo: Demo PVR addon for Kodi'
-    'kodi-devel-pvr-dvblink: DVBLink PVR client addon for Kodi'
-    'kodi-devel-pvr-dvbviewer: DVBViewer PVR client addon for Kodi'
-    'kodi-devel-pvr-filmon: Filmon client PVR addon for Kodi'
-    'kodi-devel-pvr-hdhomerun: HDHomeRun PVR addon for Kodi'
-    'kodi-devel-pvr-hts: Tvheadend HTSP PVR client addon for Kodi'
-    'kodi-devel-pvr-iptvsimple: IPTV Simple PVR client addon for Kodi'
-    'kodi-devel-pvr-mediaportal-tvserver: MediaPortal PVR client addon for Kodi'
-    'kodi-devel-pvr-mythtv: MythTV PVR client addon for Kodi'
-    'kodi-devel-pvr-nextpvr: NextPVR PVR client addon for Kodi'
-    'kodi-devel-pvr-njoy: Njoy N7 PVR client addon for Kodi'
-    'kodi-devel-pvr-pctv: PCTV PVR client addon for Kodi'
-    'kodi-devel-pvr-stalker: Stalker Middleware PVR client addon for Kodi'
-    'kodi-devel-pvr-vbox: VBox TV Gateway PVR client addon for Kodi'
-    'kodi-devel-pvr-vdr-vnsi: VDR VNSI PVR client addon for Kodi'
-    'kodi-devel-pvr-vuplus: VuPlus PVR client addon for Kodi'
-    'kodi-devel-pvr-wmc: Windows Media Center client PVR addon for Kodi'
-    'kodi-devel-screensaver-asteroids: Asteroids screensaver addon for Kodi'
-    'kodi-devel-screensaver-biogenesis: BioGenesis screensaver addon for Kodi'
-    'kodi-devel-screensaver-greynetic: Greynetic screensaver addon for Kodi'
-    'kodi-devel-screensaver-matrixtrails: Matrix trails screensaver addon for Kodi'
-    'kodi-devel-screensaver-pingpong: Ping-pong screensaver addon for Kodi'
-    'kodi-devel-screensaver-pyro: Pyro screensaver addon for Kodi'
-    'kodi-devel-screensavers-rsxs: RSXS screensavers addon for Kodi'
-    'kodi-devel-screensaver-stars: Starfield screensaver addon for Kodi'
-    'kodi-devel-visualization-fishbmc: Fische visualization addon for Kodi'
-    'kodi-devel-visualization-goom: GOOM visualization addon for Kodi'
-    'kodi-devel-visualization-projectm: ProjectM visualization addon for Kodi'
-    'kodi-devel-visualization-shadertoy: Shadertoy visualization addon for Kodi'
-    'kodi-devel-visualization-spectrum: Spectrum visualization addon for Kodi'
-    'kodi-devel-visualization-vsxu: VSXu visualization addon for Kodi'
-    'kodi-devel-visualization-waveform: Waveform visualization addon for Kodi'
+    'python2-pybluez: Bluetooth support'
     'libnfs: NFS shares support'
     'libplist: AirPlay support'
+    'libcec: Pulse-Eight USB-CEC adapter support'
     'lirc: Remote controller support'
     'lsb-release: log distro information in crashlog'
     'pulseaudio: PulseAudio support'
     'shairplay: AirPlay support'
-    'udisks: Automount external drives'
     'unrar: Archives support'
     'unzip: Archives support'
     'upower: Display battery level'
   )
+  provides=('xbmc' 'kodi')
+  conflicts=('xbmc' 'kodi')
+  replaces=('xbmc' 'kodi')
 
-  cd "${srcdir}/xbmc-${pkgver}-${_codename}"
-  msg2 "Running make install"
-  make DESTDIR="${pkgdir}" install
+  _components=(
+  'kodi'
+  'kodi-bin'
+  )
 
-  # Tools
-  msg2 "Tools"
-  install -Dm755 "${srcdir}/xbmc-${pkgver}-${_codename}/tools/TexturePacker/TexturePacker" \
-    "${pkgdir}${_prefix}/lib/kodi/"
+  cd kodi-build
+  # install eventclients
+  for _cmp in ${_components[@]}; do
+  DESTDIR="$pkgdir" /usr/bin/cmake \
+    -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+     -P cmake_install.cmake
+  done
 
   # Licenses
-  msg2 "Copy licenses"
-  install -dm755 "${pkgdir}${_prefix}/share/licenses/${pkgname}"
+  install -dm755 "$pkgdir/usr/share/licenses/$_pkgname"
   for licensef in LICENSE.GPL copying.txt; do
-    mv "${pkgdir}${_prefix}/share/doc/kodi/${licensef}" \
-      "${pkgdir}${_prefix}/share/licenses/${pkgname}"
+    mv "$pkgdir/usr/share/doc/kodi/$licensef" \
+      "$pkgdir/usr/share/licenses/$_pkgname"
+  done
+
+  # python2 is being used
+  cd "$pkgdir"
+  grep -lR '#!.*python' * | while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
+}
+
+# kodi-eventclients
+# components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-wiiremote kodi-eventclients-xbmc-send
+
+package_kodi-devel-eventclients() {
+  pkgdesc="Kodi Event Clients"
+  conflicts=('kodi-eventclients')
+
+  depends=('cwiid')
+
+  _components=(
+    'kodi-eventclients-common'
+    'kodi-eventclients-ps3'
+    'kodi-eventclients-wiiremote'
+    'kodi-eventclients-xbmc-send'
+  )
+
+  cd kodi-build
+  # install eventclients
+  for _cmp in ${_components[@]}; do
+    DESTDIR="$pkgdir" /usr/bin/cmake \
+      -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+      -P cmake_install.cmake
+  done
+
+  # python2 is being used
+  cd "$pkgdir"
+  grep -lR '#!.*python' * | while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
+}
+
+# kodi-tools-texturepacker
+# components: kodi-tools-texturepacker
+
+package_kodi-devel-tools-texturepacker() {
+  pkgdesc="Kodi Texturepacker tool"
+  depends=('libpng' 'giflib' 'libjpeg-turbo' 'lzo')
+  conflicts=('kodi-tools-texturepacker')
+
+  _components=(
+    'kodi-tools-texturepacker'
+  )
+
+  cd kodi-build
+  # install eventclients
+  for _cmp in ${_components[@]}; do
+    DESTDIR="$pkgdir" /usr/bin/cmake \
+      -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+      -P cmake_install.cmake
   done
 }
 
-package_kodi-devel-eventclients() {
-  arch=('any')
-  pkgdesc+=" Event Clients"
-  depends=('cwiid')
-  conflicts=('kodi-eventclients' 'kodi-eventclients-devel')
-  replaces=('kodi-eventclients-devel')
+# kodi-dev
+# components: kodi-addon-dev kodi-audio-dev kodi-eventclients-dev kodi-game-dev kodi-inputstream-dev kodi-peripheral-dev kodi-pvr-dev kodi-screensaver-dev kodi-visualization-dev
 
-  cd "${srcdir}/xbmc-${pkgver}-${_codename}"
+package_kodi-devel-dev() {
+  pkgdesc="Kodi dev files"
+  depends=('kodi-devel')
+  conflicts=('kodi-dev')
 
-  make DESTDIR="${pkgdir}" eventclients WII_EXTRA_OPTS=-DCWIID_OLD
+  _components=(
+    'kodi-addon-dev'
+    'kodi-audio-dev'
+    'kodi-eventclients-dev'
+    'kodi-game-dev'
+    'kodi-inputstream-dev'
+    'kodi-peripheral-dev'
+    'kodi-pvr-dev'
+    'kodi-screensaver-dev'
+    'kodi-visualization-dev'
+  )
+
+  cd kodi-build
+  # install eventclients
+  for _cmp in ${_components[@]}; do
+    DESTDIR="$pkgdir" /usr/bin/cmake \
+      -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+      -P cmake_install.cmake
+  done
+
+  # python2 is being used
+  cd "$pkgdir"
+  grep -lR '#!.*python' * | while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
 }
