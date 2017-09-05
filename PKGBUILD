@@ -2,7 +2,7 @@
 # Contributor: Jan Was <janek dot jan at gmail dot com>
 
 pkgname=mattermost-desktop
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="Mattermost Desktop application for Linux (Beta)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('gtk2' 'libxtst' 'libxss' 'gconf' 'nss' 'nspr' 'alsa-lib')
 optdepends=()
 
 source=("https://github.com/mattermost/desktop/archive/v${pkgver}.tar.gz")
-sha512sums=('3abcd3078adf74922bd31e6e975afd66f2f335f73017f3153cabd6cb38d8a36d9e9a01a1d572f34d123f4e68ed47280901fa3490e90ca04bbd2002cefb912f2f')
+sha512sums=('92a545c823df644e6bb49712c67770fda606644d32ae3501d903223a1d3851f8bc7a55f86aa67f5df1dafcef5f87d438845ac722e44b074acb7b645accde8ae0')
 
 prepare() {
     cd "${srcdir}/desktop-${pkgver}"
