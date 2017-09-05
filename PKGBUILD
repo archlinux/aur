@@ -1,6 +1,6 @@
 # Maintainer: Ricardo Liang <ricardoliang at gmail dot com>
 pkgname=gnome-shell-extension-task-icons-git
-pkgver=r10.68ddf46
+pkgver=r23.0e3a429
 pkgrel=1
 pkgdesc='Adds task icons grouped by workspace to the panel.'
 arch=('any')
@@ -26,6 +26,6 @@ package() {
 
   local _extname="$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)"
 
-  install -Dm644 -t "${pkgdir}/usr/share/gnome-shell/extensions/${_extname}" *.js *.css metadata.json
+  install -Dm644 -t "${pkgdir}/usr/share/gnome-shell/extensions/${_extname}" *.js *.json gschemas.compiled
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
