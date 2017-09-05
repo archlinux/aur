@@ -3,7 +3,7 @@
 pkgname=pvim2
 _pkgname=pvim
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="pvim python version, better than pvim"
 url="https://github.com/Sherlock-Holo/pvim"
 arch=('any')
@@ -13,6 +13,7 @@ optdepends=('python-pyperclip: auto copyt to clip')
 makedpends=('git')
 source=("git://github.com/Sherlock-Holo/${_pkgname}.git")
 md5sums=('SKIP')
+backup=(etc/pvim2/pvim2.conf)
 
 pkgver(){
         cd "$srcdir/$_pkgname"
