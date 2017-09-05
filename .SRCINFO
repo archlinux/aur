@@ -1,14 +1,14 @@
 pkgbase = hunspell-en-us-large
 	pkgdesc = US English large hunspell dictionaries
-	pkgver = 2017.01.22
+	pkgver = 2017.08.24
 	pkgrel = 1
 	url = http://wordlist.sourceforge.net/
 	arch = any
 	license = LGPL
 	license = custom:scowl
 	optdepends = hunspell: the spell checking libraries and apps
-	source = http://downloads.sourceforge.net/wordlist/hunspell-en_US-large-2017.01.22.zip
-	sha256sums = 45ef7af6a766679bea3cb06ffbd4fbabfbca864290a48ccbf95557de6d2b11da
+	source = http://downloads.sourceforge.net/wordlist/hunspell-en_US-large-2017.08.24.zip
+	sha256sums = a2a0c62aa8cf47beed417df3e73613d80622f9e91485b1da92c70d060887b3f8
 
 pkgname = hunspell-en-us-large
 
