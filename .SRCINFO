@@ -1,26 +1,27 @@
 pkgbase = python-geopandas
 	pkgdesc = Geographic pandas extension
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/geopandas/geopandas
 	arch = any
 	license = BSD
-	checkdepends = python-nose
 	checkdepends = python-descartes
+	checkdepends = python-matplotlib
+	checkdepends = python-pytest
+	checkdepends = python-rtree
 	depends = python
+	depends = python-fiona
 	depends = python-numpy
 	depends = python-pandas
-	depends = python-shapely
-	depends = python-fiona
-	depends = python-six
 	depends = python-pyproj
+	depends = python-shapely
+	depends = python-six
+	optdepends = python-descartes
 	optdepends = python-geopy
 	optdepends = python-psycopg2
-	optdepends = python-descartes
-	optdepends = python-rtree
 	options = !emptydirs
-	source = https://github.com/geopandas/geopandas/archive/v0.2.1.tar.gz
-	sha256sums = 1e1845acbf6cf8dd2850aec9bfaa92892e462887903e3ea1abb8111e88a41206
+	source = https://github.com/geopandas/geopandas/archive/v0.3.0.tar.gz
+	sha256sums = ef49a5c8c2e6ff6ff43a494280d0749fdecdf65f4031624d1639fe238b551804
 
 pkgname = python-geopandas
 
