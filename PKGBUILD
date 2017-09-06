@@ -1,6 +1,7 @@
 #Maintainer: affe-ali <affe-ali@web.de>
+#Co-Maintainer: Jannik Hauptvogel <jannikhv@gmail.com>
 pkgname=gydl-git
-pkgver=r23.77b897c
+pkgver=r76.4b245ea
 pkgrel=1
 pkgdesc="Gydl (Graphical Youtube-dl) is a GUI wrapper around the already existing youtube-dl program."
 arch=('any')
@@ -18,7 +19,9 @@ pkgver() {
 
 package() {
 	cd $srcdir/$pkgname/src
-	install -D gydl.py $pkgdir/usr/bin/gydl
-	install -D gydl.desktop $pkgdir/usr/share/applications/gydl.desktop
+	install -D gydl $pkgdir/usr/bin/gydl
+	cd ../data
+	install -D com.github.JannikHv.Gydl.desktop $pkgdir/usr/share/applications/gydl.desktop
+	install -D gydl.svg $pkgdir/usr/share/icons/gydl.svg
 	install -D ../LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
