@@ -1,8 +1,8 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 # Contributor: JP-Ellis <josh@jpellis.me>
 pkgname=lhapdf
-pkgver=6.2.0
-pkgrel=3
+pkgver=6.2.1
+pkgrel=1
 pkgdesc="A particle physics tool for evaluating PDFs from discretised data files."
 arch=('x86_64' 'i686')
 url="http://lhapdf.hepforge.org/"
@@ -13,7 +13,7 @@ makedepends=()
 install=lhapdf.install
 source=("http://www.hepforge.org/archive/lhapdf/LHAPDF-$pkgver.tar.gz")
 noextract=()
-md5sums=('a7c695803b01a31e19b81b73a824f021')
+md5sums=('9e05567d538fdb4862d4781cd076d7db')
 
 build() {
 	cd "$srcdir/LHAPDF-$pkgver"
