@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for jar in /usr/share/java/lenskit/lib/*jar ; do
+	CLASSPATH=$CLASSPATH:$jar
+done
+
+exec /usr/bin/java -classpath "$CLASSPATH" org.grouplens.lenskit.eval.cli.EvalCLI "$@"

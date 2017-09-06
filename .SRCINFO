@@ -1,0 +1,16 @@
+pkgbase = lenskit
+	pkgdesc = An open source toolkit for building, researching, and studying recommender systems.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://lenskit.org/
+	arch = any
+	license = LGPL
+	depends = bash
+	depends = java-runtime-headless
+	source = https://dl.bintray.com/lenskit/lenskit-releases/lenskit-2.2.1.tgz
+	source = lenskit
+	md5sums = e453d071c857d276aef7149b3efd3561
+	md5sums = d0b13f1da93d38c7d91a7910f792c664
+
+pkgname = lenskit
+
