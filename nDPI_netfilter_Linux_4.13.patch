@@ -1,0 +1,17 @@
+diff -Naupr nDPI_orig/ndpi-netfilter/src/main.c nDPI/ndpi-netfilter/src/main.c
+--- nDPI_orig/ndpi-netfilter/src/main.c	2017-09-06 11:31:20.381416165 +0700
++++ nDPI/ndpi-netfilter/src/main.c	2017-09-06 11:38:08.170463665 +0700
+@@ -2498,9 +2498,12 @@ static void __net_exit ndpi_net_exit(str
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 12, 1)
+ 	nf_ct_iterate_cleanup(net, __ndpi_free_flow, n);
++#elif LINUX_VERSION_CODE < KERNEL_VERSION(4, 13, 0)
++	nf_ct_iterate_cleanup(net, __ndpi_free_flow, n, 0, 0);
+ #else
+-	nf_ct_iterate_cleanup(net, __ndpi_free_flow, n, 0 ,0);
++	nf_ct_iterate_cleanup_net(net, __ndpi_free_flow, n, 0, 0);
+ #endif
++
+ 	/* free all objects before destroying caches */
+ 	
+ 	next = rb_first(&n->osdpi_id_root);
