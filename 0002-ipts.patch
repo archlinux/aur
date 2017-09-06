@@ -5914,3 +5914,51 @@ index 00000000..f329bbfb
 +void intel_ipts_disconnect(uint64_t gfx_handle);
 +
 +#endif // INTEL_IPTS_IF_H
+diff --git a/drivers//hid/hid-multitouch.c b/drivers//hid/hid-multitouch.c
+index 09f1cd60..3edf5685 100644
+--- a/drivers//hid/hid-multitouch.c
++++ b/drivers//hid/hid-multitouch.c
+@@ -131,6 +131,7 @@ struct mt_device {
+ 
+ static void mt_post_parse_default_settings(struct mt_device *td);
+ static void mt_post_parse(struct mt_device *td);
++static int contact_count_seen;
+ 
+ /* classes of device behavior */
+ #define MT_CLS_DEFAULT				0x0001
+@@ -559,9 +560,10 @@ static int mt_touch_input_mapping(struct hid_device *hdev, struct hid_input *hi,
+ 			    usage->usage_index >= field->report_count)
+ 				return 1;
+ 
+-			if (td->cc_index < 0) {
++			if (contact_count_seen != 1) {
+ 				td->cc_index = field->index;
+ 				td->cc_value_index = usage->usage_index;
++				contact_count_seen++;
+ 			}
+ 
+ 			return 1;
+@@ -1047,10 +1049,6 @@ static int mt_input_configured(struct hid_device *hdev, struct hid_input *hi)
+ 		suffix = "Pen";
+ 		/* force BTN_STYLUS to allow tablet matching in udev */
+ 		__set_bit(BTN_STYLUS, hi->input->keybit);
+-	} else if (hi->report->field[0]->logical == HID_DG_TOUCHSCREEN) {
+-		suffix = "SingleTouch";
+-		/* force BTN_STYLUS to allow tablet matching in udev */
+-		__set_bit(BTN_STYLUS, hi->input->keybit);
+ 	} else {
+ 		switch (field->application) {
+ 		case HID_GD_KEYBOARD:
+diff --git a/drivers//misc/ipts/ipts-gfx.c b/drivers//misc/ipts/ipts-gfx.c
+index ff435650..51727770 100644
+--- a/drivers//misc/ipts/ipts-gfx.c
++++ b/drivers//misc/ipts/ipts-gfx.c
+@@ -67,8 +67,6 @@ static void disconnect_gfx(ipts_info_t *ipts)
+ 	intel_ipts_disconnect(ipts->gfx_info.gfx_handle);
+ }
+ 
+-#define RUN_DBG_THREAD
+-
+ #ifdef RUN_DBG_THREAD
+ #include "../mei/mei_dev.h"
+ 
