@@ -1,5 +1,5 @@
 pkgbase = freetype2-old-hinting
-	pkgdesc = Font rasterization library
+	pkgdesc = Font rasterization library (including the old hinting engine)
 	pkgver = 2.8
 	pkgrel = 2
 	url = https://www.freetype.org/
