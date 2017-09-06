@@ -4,7 +4,12 @@ post_install() {
 }
 
 post_upgrade() {
-	ln -s /opt/Neon/neon /usr/bin/neon-wallet
+	if [ ! -e /usr/bin/neon-wallet ]; then
+		echo "Symlink has been installed for /usr/bin/neon-wallet"
+		ln -s /opt/Neon/neon /usr/bin/neon-wallet
+	else
+		echo "Symlink already present, not reinstalling"
+	fi
 }
 
 post_remove() {
