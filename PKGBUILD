@@ -7,6 +7,7 @@ pkgver=7.2.0
 _target="i586-pc-msdosdjgpp"
 _islver=0.18
 _djver=2.05
+_zlver=1.2.11
 pkgrel=1
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
@@ -17,11 +18,13 @@ depends=('zlib' 'libmpc' 'dosbox-binutils')
 makedepends=('unzip')
 optdepends=('dosbox-djcrx: headers and utilities')
 options=('!strip' 'staticlibs' '!emptydirs')
-source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
+source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
+        "https://zlib.net/zlib-${_zlver}.tar.gz"
         "http://www.delorie.com/pub/djgpp/current/v2/djcrx${_djver//./}.zip"
         "lto.patch")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0')
@@ -41,6 +44,7 @@ prepare() {
 
   # extract bootstrap djcrx
   mkdir -p ../gcc-build-$_target/lib/gcc/$_target/$pkgver
+  mkdir -p ../pth-build-$_pthver
   cd ../gcc-build-${_target}/lib/gcc/$_target/$pkgver
   unzip -qoW "$srcdir/djcrx${_djver//./}.zip" 'include/**' 'lib/*.[oa]'
   mv lib/* .
@@ -59,16 +63,22 @@ build() {
     --target="$_target" \
     --enable-languages=c,c++ \
     --enable-shared --enable-static \
-    --enable-threads \
+    --enable-threads=no \
     --enable-libstdcxx-threads \
     --with-system-zlib --with-isl \
     --enable-lto --disable-dw2-exceptions --disable-libgomp \
     --disable-multilib --enable-checking=release
+  make all-gcc
+  cd ../zlib-${_zlver}
+  CHOST=${_target} ../zlib-${_zlver}/configure --prefix=/usr/$_target --static
+  make libz.a
+  cd ../gcc-build-$_target
   make all
 }
 
 package_dosbox-gcc() {
   make -C gcc-build-$_target DESTDIR="$pkgdir/" install
+  make -C zlib-${_zlver} DESTDIR="$pkgdir/" install
 
   # strip manually, djgpp libs spew errors otherwise
   strip "$pkgdir"/usr/bin/$_target-*
@@ -78,7 +88,7 @@ package_dosbox-gcc() {
   ln -s $_target-gcc "$pkgdir"/usr/bin/$_target-cc
 
   # remove unnecessary files
-  rm -rf "$pkgdir"/usr/share/{man/man7,info,locale}
+  rm -rf "$pkgdir"/usr/share/{man/man3,man/man7,info,locale}
   rm -rf "$pkgdir"/usr/lib/gcc/$_target/$pkgver/include-fixed
   rm -f "$pkgdir"/usr/lib/libcc1.*
 }

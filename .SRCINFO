@@ -21,12 +21,13 @@ pkgbase = dosbox-gcc
 	options = !emptydirs
 	source = https://ftp.gnu.org/gnu/gcc/gcc-7.2.0/gcc-7.2.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.18.tar.xz
+  source = https://zlib.net/zlib-1.2.11.tar.gz"
 	source = http://www.delorie.com/pub/djgpp/current/v2/djcrx205.zip
 	source = lto.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0
 
 pkgname = dosbox-gcc
-
