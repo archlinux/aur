@@ -6,7 +6,7 @@
 pkgbase=linux-xanmod
 _srcname=linux
 pkgver=4.13.0
-xanmod=1
+xanmod=2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
@@ -21,7 +21,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         "${pkgbase}.preset")
 source_x86_64=("config.x86_64")
 source_i686=("config.i686")
-sha256sums=('fedf96acdccec3925c3580c524e5183bd2c947eea1a20eb0a60c0a9ce9bf94da'
+sha256sums=('bcac6a8ce5be7a13202bf9683bfdb14a6017004a339e0f9c97b7fad56342a92b'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 sha256sums_i686=('df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1')
