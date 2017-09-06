@@ -2,7 +2,7 @@
 
 pkgname=ddnet
 pkgver=10.8.5
-pkgrel=2
+pkgrel=3
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('i686' 'x86_64')
 url="https://ddnet.tw"
@@ -74,6 +74,7 @@ package() {
       # Install data files
     install -d -m755 "$pkgdir/usr/share/ddnet/data/"
     cp -r data/* "$pkgdir/usr/share/ddnet/data/"
+    rm -rf "$pkgdir/usr/share/ddnet/data/languages/scripts/"
 
       # Install desktop and icon files
     install -Dm644 DDNet.desktop        "$pkgdir/usr/share/applications/ddnet.desktop"
