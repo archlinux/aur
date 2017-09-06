@@ -6,7 +6,7 @@ _next_postgres_ver=$(echo ${_postgres_ver}+0.1 | bc)
 _v8_ver=3.14
 
 pkgname=plv8-bin
-pkgver=1.4.9
+pkgver=1.4.10
 pkgrel=2
 pkgdesc="plv8js is a procedural language add-on for PostgreSQL"
 url="https://code.google.com/p/plv8js/"
@@ -20,8 +20,8 @@ provides=('plv8')
 
 source_i686=("http://apt.postgresql.org/pub/repos/apt/pool/main/p/plv8/postgresql-${_postgres_ver}-plv8_${pkgver}.ds-1.pgdg16.04+1_i386.deb")
 source_x86_64=("http://apt.postgresql.org/pub/repos/apt/pool/main/p/plv8/postgresql-${_postgres_ver}-plv8_${pkgver}.ds-1.pgdg16.04+1_amd64.deb")
-md5sums_i686=('38c6ded60f681b121bcfcee52387fa10')
-md5sums_x86_64=('a397f40fe76b331cb8133eaf5b5ffea4')
+md5sums_i686=('e506aaa996adf813ae5eca3dfd6615e8')
+md5sums_x86_64=('fea8cb25810f6e169813e954d5b50253')
 
 package() {
   msg2 "Unpacking data.tar.xz (Ubuntu package files)"
