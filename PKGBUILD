@@ -1,16 +1,16 @@
 # Maintainer: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 
 pkgname=popular-packages
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="Lists popular packages not installed"
-url="http://i.imgur.com/AeWSX.jpg"
+pkgdesc="Lists popular packages not (yet) installed"
+url="http://public.files.xavion.name/Software/${pkgname}/${pkgname}.jpg"
 arch=("any")
 license=("GPL3")
-depends=("bash" "wget" "package-query")
+depends=("wget" "jq" "package-query")
 optdepends=("pacman-cage: Better performance")
 options=(!emptydirs)
-source=(http://public.files.xavion.name/Software/Shell/${pkgname})
+source=(http://public.files.xavion.name/Software/${pkgname}/${pkgname})
 
 package() {
 	cd "${srcdir}"
@@ -18,4 +18,4 @@ package() {
 	install -D -m755 ${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
 
-sha1sums=('989ef1aedd753e59e08e3e25fa5408cc2232ef41')
+sha1sums=('35bed58f93921a3dc05395482efefe002a076b9f')
