@@ -1,0 +1,13 @@
+pkgbase = thunder
+	pkgdesc = An interactive shell for BoltDB files
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/muesli/thunder
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/muesli/thunder/archive/v0.1.tar.gz
+	sha256sums = fdb58026914f53c60dbe92e3c4c11e3e803ac2cc02833c80273febdc274c4468
+
+pkgname = thunder
+
