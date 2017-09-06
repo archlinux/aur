@@ -42,14 +42,16 @@ md5sums=('6b20f789d057a37491eee3e429d351d3'
 package() {
     rpm_base='./bitdefender-scanner-'$pkgver'-'$rpm_rel'.i586.rpm'
     rpm_gui='./bitdefender-scanner-gui-'$pkgver'-'$rpm_rel'.i586.rpm'
+    rpm_pkg='BitDefender-Antivirus-Scanner-'$dist_build'-linux-i586.rpm.run'
 
     if [ "$CARCH" == "x86_64" ]; then
       rpm_base='./bitdefender-scanner-'$pkgver'-'$rpm_rel'.x86_64.rpm'
       rpm_gui='./bitdefender-scanner-gui-'$pkgver'-'$rpm_rel'.x86_64.rpm'
+      rpm_pkg='BitDefender-Antivirus-Scanner-'$dist_build'-linux-amd64.rpm.run'
     fi
 
     cd $srcdir
-    bash -c './unpack.sh BitDefender-Antivirus-Scanner-'$dist_build'-linux-amd64.rpm.run'
+    bash -c './unpack.sh '$rpm_pkg
     bsdtar -x -f $rpm_base
     bsdtar -x -f $rpm_gui
     cp -r $srcdir/opt $pkgdir
