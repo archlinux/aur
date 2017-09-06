@@ -36,7 +36,11 @@ build() {
     patch -p1 < ../fix-test-packaging.patch
 
     python2 setup.py build
-    make SPHINXBUILD=sphinx-build2 -C docs man html
+
+    # The makefile is not actually concurrency-safe; the different calls to
+    # sphinx will trample on each other if we try to parallelize the build.
+    # So we pass --jobs=1.
+    make SPHINXBUILD=sphinx-build2 --jobs=1 -C docs man html
 }
 
 package() {
