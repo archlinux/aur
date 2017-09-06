@@ -7,12 +7,12 @@
 
 pkgname=copay
 pkgver=3.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Copay Bitcoin Wallet"
 arch=('x86_64')
 url="https://copay.io"
 license=('MIT')
-depends=('npm')
+depends=('npm' 'python2')
 
 # For some reason, stripping the massive copay binary breaks the app
 options=('!strip')
