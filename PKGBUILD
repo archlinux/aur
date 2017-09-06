@@ -1,10 +1,10 @@
 # Maintainer: FennecTECH <fennectech@gmail.com>
-# Thank you
+# Thank to
 # Latif Khalifa for the radegast project
 # Cinder Roxley For mantaining the project
 # Chungy Nexen For the origional radegast aur package
 # Robot Silvershade  For teaching me most of the things I know.
-# 
+# Zach Ward & Beth Randall   They have been there from my best day to my worst
 pkgname=radegast-ng
 pkgver=2.24.105
 pkgrel=1.12
