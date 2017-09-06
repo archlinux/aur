@@ -4,14 +4,17 @@
 pkgname=gromacs-plumed
 pkgver=2016.3
 _gromacsver=2016.3
-_plumedver=2.3.1
-pkgrel=1
+_plumedver=2.3.2
+pkgrel=2
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
 license=("LGPL")
 arch=('i686' 'x86_64')
-depends=('plumed' 'fftw' 'lesstif' 'perl' 'libxml2' 'libsm' 'libx11' 'gcc5')
-makedepends=('cmake')
+depends=('lapack' 'zlib')
+optdepends=('cuda: Nvidia GPU support'
+            'opencl-mesa: OpenCL support for AMD GPU'
+	    'opencl-nvidia: OpenCL support for Nvidia GPU')
+makedepends=('cmake' 'libxml2' 'hwloc' 'gcc5' 'plumed=2.3.2')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
 sha1sums=('1ae1ea922b94c74f43ee066e3ea64bafa1c6c3b6')
@@ -34,7 +37,14 @@ prepare() {
 build() {
   mkdir -p ${srcdir}/single
 
-  msg2 "Building the single precision files"
+   ###### CMAKE OPTIONS DISABLE BY DEFAULT ###########
+  # If you are using a haswell CPU, you will have   #
+  # problems compiling with AVX2 support unless you #
+  # modify march=native in the /etc/makepkg.conf:   #
+  # https://wiki.archlinux.org/index.php/Makepkg#Architecture.2C_compile_flagsAdd #
+  ###################################################
+
+  msg2 "Building the gromacs with plumed support (single precision)"
   cd ${srcdir}/single
   cmake ../gromacs-${_gromacsver} \
         -DCMAKE_INSTALL_PREFIX=/usr/ \
