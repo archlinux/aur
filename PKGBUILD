@@ -7,7 +7,7 @@
 
 pkgname='rofi-git'
 _gitname='rofi'
-pkgver=1.3.1.r723.g96c70813
+pkgver=1.3.1.r757.g9b0a430f
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement'
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ depends=(
   'xcb-util' 'xcb-util-wm' 'xcb-util-xrm'
 )
 makedepends=('check' 'git' 'meson')
-provides=('rofi')
-conflicts=('rofi')
+provides=("${_gitname}")
+conflicts=("${_gitname}")
 source=(
   'git+https://github.com/DaveDavenport/rofi'
   'git+https://github.com/sardemff7/libgwater'
