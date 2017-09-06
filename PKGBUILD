@@ -2,7 +2,7 @@
 
 pkgname=('python-elektronn2-git' 'python2-elektronn2-git')
 _gitname='ELEKTRONN2'
-pkgver=0.3.0
+pkgver=0.5.0+2.g35dd2f1
 pkgrel=0
 pkgdesc='A highly configurable toolkit for training 3D/2D CNNs and general Neural Networks'
 url='https://github.com/ELEKTRONN/ELEKTRONN2'
@@ -36,8 +36,8 @@ package_python-elektronn2-git() {
         'python-pydotplus'
         'python-psutil'
     )
-    makedepends=('python-setuptools')
-    conflicts=('python-elektronn2')
+    makedepends=('python-setuptools' 'python-numpy')
+    conflicts=('python-elektronn2' 'python-theano-git')
 
     cd "${srcdir}/${_gitname}"
     python setup.py install --root="${pkgdir}" --optimize=1
@@ -63,8 +63,8 @@ package_python2-elektronn2-git() {
         'python2-pydotplus'
         'python2-psutil'
     )
-    makedepends=('python2-setuptools')
-    conflicts=('python2-elektronn2')
+    makedepends=('python2-setuptools' 'python2-numpy')
+    conflicts=('python2-elektronn2' 'python2-theano-git')
 
     cd "${srcdir}/${_gitname}"
     python2 setup.py install --root="${pkgdir}" --optimize=1
