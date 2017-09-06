@@ -1,14 +1,13 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=carp
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EncFS gui and cli front-end"
 arch=("any")
 url="https://projects.deparis.io/projects/carp"
 license=("WTFPL")
-depends=("encfs" "python-gobject" "python-xdg")
-optdepends=("python-inotify: sync support"
-            "rsync: sync support")
+depends=("encfs" "python-gobject" "python-inotify" "python-xdg")
+optdepends=("rsync: sync support")
 makedepends=("python-setuptools" "emacs")
 source=("https://git.deparis.io/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('e35339102e745fef379b8b8f88c374e309ba998a2870bb589a26d81405cb374a')
