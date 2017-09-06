@@ -1,0 +1,14 @@
+--- a/opencv3-release-release-kinetic-opencv3-3.2.0-4/cmake/OpenCVCompilerOptions.cmake	2017-09-06 14:50:24.699220119 -0700
++++ b/opencv3-release-release-kinetic-opencv3-3.2.0-4/cmake/OpenCVCompilerOptions.cmake	2017-09-06 14:50:46.888873247 -0700
+@@ -18,9 +18,9 @@
+         message(STATUS "Unable to compile program with enabled ccache, reverting...")
+         set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${__OLD_RULE_LAUNCH_COMPILE}")
+       endif()
+-    else()
+-      message(STATUS "Looking for ccache - not found")
+     endif()
++  else()
++    message(STATUS "Looking for ccache - not found")
+   endif()
+ endif()
+ 
