@@ -9,8 +9,10 @@ pkgbase = lenskit
 	depends = java-runtime-headless
 	source = https://dl.bintray.com/lenskit/lenskit-releases/lenskit-2.2.1.tgz
 	source = lenskit
+	source = lenskit-eval
 	md5sums = e453d071c857d276aef7149b3efd3561
 	md5sums = d0b13f1da93d38c7d91a7910f792c664
+	md5sums = dbeaa442d3e0df2de066d7b2594f9c58
 
 pkgname = lenskit
 
