@@ -1,10 +1,10 @@
 #Maintainer: Raimar Buehmann <raimar at buehmann dot de>
 
 pkgname=eclipse-jubula
-pkgver=4.0.0
-_eclipseName=neon
-_buildNumber=6
-pkgrel=4
+pkgver=5.0.0
+_eclipseName=oxygen
+_buildNumber=5
+pkgrel=1
 pkgdesc='Jubula plugins for Eclipse IDE to create functional GUI tests'
 arch=('any')
 url='http://eclipse.org/jubula/'
