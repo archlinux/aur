@@ -1,4 +1,4 @@
-# Maintainer : Andrew Crerar <andrew (dot) crerar at gmail>
+# Maintainer : Andrew Crerar <andrew (at) crerar (dot) io>
 # Contributor: Rob McCathie <korrode at gmail>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
@@ -10,30 +10,71 @@
 
 _name=vlc
 pkgname=vlc-git
-pkgver=3.0.0.r14290.gf99dec8643
+pkgver=3.0.0.r14404.ge15a5753fd
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
-license=('LGPLv2.1' 'GPLv3')
-depends=('a52dec' 'faad2' 'ffmpeg' 'libdca' 'libdvbpsi'
-         'libdvdnav' 'libmad' 'libmatroska' 'libmpcdec' 'libmpeg2'
-         'libproxy' 'libshout' 'libtar' 'libtiger' 'libupnp'
-         'libxinerama' 'libxpm' 'lua' 'sdl_image' 'mesa' 'wayland' 'wayland-protocols'
-         'taglib' 'xcb-util-keysyms' 'zvbi' 'libsecret' 'libarchive' 'qt5-base' 'libglvnd'
-         'hicolor-icon-theme' 'qt5-x11extras')
-makedepends=('aalib' 'flac' 'git'
-             'libavc1394' 'libbluray' 'libcaca' 'libdc1394' 'libdvdcss'
-             'libgme' 'libgoom2' 'libmtp' 'libnotify' 'librsvg'
-             'libssh2' 'lirc' 'live-media'  'opus'
-             'portaudio' 'projectm' 'twolame' 'vcdimager' 'xosd' 'smbclient')
+license=('LGPL2.1' 'GPL3')
+depends=('a52dec'
+         'faad2'
+         'ffmpeg'
+         'libdca'
+         'libdvbpsi'
+         'libdvdnav'
+         'libmad'
+         'libmatroska'
+         'libmpcdec'
+         'libmpeg2'
+         'libproxy'
+         'libshout'
+         'libtar'
+         'libtiger'
+         'libupnp'
+         'libxinerama'
+         'libxpm'
+         'lua'
+         'sdl_image'
+         'wayland-protocols'
+         'taglib'
+         'zvbi'
+         'libsecret'
+         'libarchive'
+         'qt5-x11extras')
+makedepends=('aalib'
+             'flac'
+             'git'
+             'libavc1394'
+             'libbluray'
+             'libcaca'
+             'libdc1394'
+             'libdvdcss'
+             'libgme'
+             'libgoom2'
+             'libmtp'
+             'libnotify'
+             'librsvg'
+             'libssh2'
+             'lirc'
+             'live-media'
+             'opus'
+             'portaudio'
+             'projectm'
+             'twolame'
+             'vcdimager'
+             'xosd'
+             'smbclient')
 optdepends=('aalib: for ASCII art plugin'
+            'atk-git: for libnotify plugin'
             'avahi: for service discovery using bonjour protocol'
             'flac: for Free Lossless Audio Codec plugin'
+            'gst-plugins-base-libs: for libgst plugins'
+            'gtk2: for libnotify plugin'
             'kdelibs: KDE Solid hardware integration'
             'libavc1394: for devices using the 1394ta AV/C'
             'libbluray: for Blu-Ray support'
             'libcaca: for colored ASCII art video output'
+            'libcddb: for libcdda plugin'
             'libcdio: for audio CD playback support'
             'libdc1394: for IEEE 1394 plugin'
             'libdvdcss: for decoding encrypted DVDs'
@@ -51,6 +92,7 @@ optdepends=('aalib: for ASCII art plugin'
             'opus: for opus support'
             'portaudio: for portaudio support'
             'projectm: for ProjectM visualisation plugin'
+            'protobuf: for chromecast plugin'
             'smbclient: for SMB access plugin'
             'ttf-dejavu: for subtitle font'
             'ttf-freefont: for subtitle font'
