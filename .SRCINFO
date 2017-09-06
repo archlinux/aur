@@ -1,0 +1,12 @@
+pkgbase = todo-dot-sh-git
+	pkgdesc = A bash script that manages todo lists in ~/.todo
+	pkgver = r30.f85e5af
+	pkgrel = 1
+	url = https://github.com/simoniz0r/todo
+	arch = any
+	license = GPL2
+	source = git://github.com/simoniz0r/todo.git
+	sha256sums = SKIP
+
+pkgname = todo-dot-sh-git
+
