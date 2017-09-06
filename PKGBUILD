@@ -3,7 +3,7 @@
 # Contributor: Kars Wang <jaklsy g-mail>
 
 pkgname=lantern-bin
-pkgver=3.7.0
+pkgver=3.7.4
 pkgrel=1
 pkgdesc='Free desktop application that delivers fast, reliable and secure access to the open Internet. (Stable Channel, binary)'
 arch=('i686' 'x86_64')
@@ -14,11 +14,11 @@ options=('!emptydirs' '!strip' '!docs')
 conflicts=('lantern' 'lantern-headless' 'lantern-headless-git' 'lantern-git')
 provides=('lantern')
 source=('lantern.service')
-source_i686=('https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-32-bit.deb')
-source_x86_64=('https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb')
+source_i686=("${pkgname}-${pkgver}-i686.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-32-bit.deb")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb")
 sha256sums=('fdece37945be10c00210bbde7b4058c356ef1df0554bd963fcddd12990ff930b')
-sha256sums_i686=('fd4b99ea7073f459b18b9c576edd05f53cc9d20d51e9a1de2e42cc2cf821b42d')
-sha256sums_x86_64=('c2e7f902ba2dad7ed704a9753b660a32394b686c08287d8cf4a366b57e2073dc')
+sha256sums_i686=('603cfb87ebed6ff9c0c68c3c27eac5c4a836206bb1b57459fd3b7cb21c43e3c0')
+sha256sums_x86_64=('1d0e3fb1553653c895bc2c2587fa8ba7dab30db4d7d548a221f03dc8e63e91f1')
 
 package() {
     msg2 'Extracting the data.tar.xz...'
