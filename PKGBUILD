@@ -3,7 +3,7 @@
 
 pkgname=benzene-mohex
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Computer Hex engine by UAlberta. Winner of 2015 ICGA Olympiad.'
 arch=('i686' 'x86_64')
 url='http://benzene.sourceforge.net'
@@ -32,7 +32,7 @@ build() {
 
   cd ../benzene-$pkgver/
   autoreconf -i
-  ./configure --with-fuego-root=$(pwd)/../fuego-1.1/
+  ./configure --with-fuego-root=$(pwd)/../fuego-1.1/ --enable-upto19x19
   make
 }
 
