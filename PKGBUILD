@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='python2-rst-converters-stable-git'
-pkgver=0.15.0.12c14d2
+pkgver=0.16.0.94ee1b2
 pkgrel=1
 pkgdesc='Robotics Systems Types converter for Python'
 arch=(any)
@@ -9,7 +9,7 @@ url='https://projects.cor-lab.org/projects/rst'
 license=('LGPL3')
 depends=('python2' 'python2-protobuf' 'python2-rsb-stable-git' 'rst-proto-stable-git' 'python2-numpy')
 makedepends=('git' 'python2-setuptools')
-source=("python2-rst-converters::git+https://code.cor-lab.org/git/rst.git.converters-python#branch=0.15")
+source=("python2-rst-converters::git+https://code.cor-lab.org/git/rst.git.converters-python#branch=0.16")
 md5sums=('SKIP')
 conflicts=('python2-rst-converters')
 provides=('python2-rst-converters')
