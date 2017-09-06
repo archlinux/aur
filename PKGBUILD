@@ -9,6 +9,50 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
+pkgname=chromium-vaapi
+pkgver=61.0.3163.79
+pkgrel=1
+_launcher_ver=5
+pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
+arch=('i686' 'x86_64')
+url="https://www.chromium.org/Home"
+license=('BSD')
+depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
+         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
+         'desktop-file-utils' 'hicolor-icon-theme' 'libva')
+provides=('chromium')
+conflicts=('chromium')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git')
+optdepends=('pepper-flash: support for Flash content'
+            'kdialog: needed for file dialogs in KDE'
+            'gnome-keyring: for storing passwords in GNOME keyring'
+            'kwallet: for storing passwords in KWallet'
+            'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
+install=chromium.install
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
+        chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+        chromium.desktop
+        breakpad-use-ucontext_t.patch
+        chromium-gcc-r1.patch
+        chromium-gn-bootstrap-r14.patch
+        chromium-atk-r1.patch
+        chromium-blink-gcc7.patch
+        chromium-widevine.patch
+        chromium-libva-remove.patch.gz
+        chromium-vaapi-r12.patch)
+
+sha256sums=('bdbc139ed86f3b5d1ec3c3b00caeaef4f9ac2c363438f03dded56e217ad10727'
+            '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
+            '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
+            '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
+            '11cffe305dd49027c91638261463871e9ecb0ecc6ecc02bfa37b203c5960ab58'
+            '98784c4a0a793ecf34987bc8f91ae360d78596a4a59dd47651411381f752a080'
+            'fc0e9abb77b6f8e21a7601ff53f267a854736d711b530be5bbd80d976678e98d'
+            'f94310a7ba9b8b777adfb4442bcc0a8f0a3d549b2cf4a156066f8e2e28e2f323'
+            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
+            '6339c9f1058a1595fabf5622b95e8dc93abed62e2772e3a06041a48ce6876dac'
+            'f8ec3b1ee04c4830ae6c9c0c9b9d757107430ab52ac0b8d485403bb9a4ef26c7')
+
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
@@ -22,7 +66,7 @@ declare -rgA _system_libs=(
   #[libpng]=libpng           # https://crbug.com/752403#c10
   #[libvpx]=libvpx           # https://bugs.gentoo.org/611394
   [libwebp]=libwebp
-  #[libxml]=libxml2          # https://bugs.gentoo.org/616818
+  [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
   [re2]=re2
@@ -30,47 +74,7 @@ declare -rgA _system_libs=(
   [yasm]=
   [zlib]=minizip
 )
-
-pkgname=chromium-vaapi
-pkgver=60.0.3112.113
-pkgrel=1
-_launcher_ver=5
-pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
-arch=('i686' 'x86_64')
-url="https://www.chromium.org/Home"
-license=('BSD')
-depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
-         'desktop-file-utils' 'hicolor-icon-theme')
 depends+=(${_system_libs[@]})
-provides=('chromium')
-conflicts=('chromium')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git')
-optdepends=('pepper-flash: support for Flash content'
-            'kdialog: needed for file dialogs in KDE'
-            'gnome-keyring: for storing passwords in GNOME keyring'
-            'kwallet: for storing passwords in KWallet'
-            'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
-install=chromium.install
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium.desktop
-        chromium-gn-bootstrap-r8.patch
-        chromium-blink-gcc7.patch
-        chromium-v8-gcc7.patch
-        chromium-widevine.patch
-        vaapi_patch_charles_r10.patch
-        vaapi_patch_r2.patch)
-
-sha256sums=('ebfce706a1ea02a92e35f360c7364d1184dacf040b59eade4cb51aa61a4fec59'
-            '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            '06345804c00d9618dad98a2dc04f31ef19912cdf6e9d6e577ef7ffb1fa57003f'
-            'f94310a7ba9b8b777adfb4442bcc0a8f0a3d549b2cf4a156066f8e2e28e2f323'
-            '46dacc4fa52652b7d99b8996d6a97e5e3bac586f879aefb9fb95020d2c4e5aec'
-            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
-            'c454d6200e51f052dc301a98cf13e1c6989395975997d3d9671dd186a23bb709'
-            '4ec8b2df4859b9d26b8ea4afc205f563f59844c54a6659bb279776b93163a0ce')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -91,24 +95,28 @@ prepare() {
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=853347
   patch -Np1 -i ../chromium-blink-gcc7.patch
 
-  # https://bugs.chromium.org/p/chromium/issues/detail?id=614289
-  patch -Np1 -i ../chromium-v8-gcc7.patch
+  # Fix build with glibc 2.26
+  patch -Np1 -i ../breakpad-use-ucontext_t.patch
 
   # Fixes from Gentoo
-  patch -Np1 -i ../chromium-gn-bootstrap-r8.patch
+  patch -Np1 -i ../chromium-gcc-r1.patch
+  patch -Np1 -i ../chromium-gn-bootstrap-r14.patch
+  patch -Np1 -i ../chromium-atk-r1.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
 
   # There are still a lot of relative calls which need a workaround
-  mkdir -p "$srcdir/python2-path"
-  ln -sf /usr/bin/python2 "$srcdir/python2-path/python"
+  mkdir "$srcdir/python2-path"
+  ln -s /usr/bin/python2 "$srcdir/python2-path/python"
 
   mkdir -p third_party/node/linux/node-linux-x64/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
 
   # VA-API patch
-  patch -p1 -i "${srcdir}/vaapi_patch_charles_r10.patch"
+  gzip -df "${srcdir}/chromium-libva-remove.patch.gz"
+  patch -p1 -i "${srcdir}/chromium-libva-remove.patch"
+  patch -p1 -i "${srcdir}/chromium-vaapi-r12.patch"
 
   # Fix paths.
   sed -e 's|i386-linux-gnu/||g' \
@@ -154,12 +162,13 @@ build() {
     'ffmpeg_branding="Chrome"'
     'proprietary_codecs=true'
     'link_pulseaudio=true'
-    'linux_use_bundled_binutils=false'
     'use_gtk3=true'
     'use_gconf=false'
     'use_gnome_keyring=false'
     'use_gold=false'
     'use_sysroot=false'
+    'linux_use_bundled_binutils=false'
+    'use_custom_libcxx=false'
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'enable_nacl=false'
@@ -167,6 +176,7 @@ build() {
     "google_api_key=\"${_google_api_key}\""
     "google_default_client_id=\"${_google_default_client_id}\""
     "google_default_client_secret=\"${_google_default_client_secret}\""
+    'use_vaapi=true'
   )
 
   python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
@@ -196,8 +206,11 @@ package() {
     out/Release/{chrome_{100,200}_percent,resources}.pak \
     out/Release/{*.bin,chromedriver,libwidevinecdmadapter.so} \
     out/Release/locales \
-    out/Release/icudtl.dat \
     "$pkgdir/usr/lib/chromium/"
+
+  if [[ -z ${_system_libs[icu]+set} ]]; then
+    cp out/Release/icudtl.dat "$pkgdir/usr/lib/chromium/"
+  fi
 
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
