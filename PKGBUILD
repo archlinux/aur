@@ -1,7 +1,8 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='python2-rsb-stable-git'
-pkgver=0.15.0.7d0fc4d
+pkgver=0.16.0.95f99c4
+_branch=0.16
 pkgrel=1
 pkgdesc='Robotics Service Bus Python implementation'
 arch=(any)
@@ -11,7 +12,7 @@ depends=('python2' 'python2-protobuf')
 makedepends=('git' 'python2-setuptools' 'rsb-proto-stable-git' 'python2-nose' 'python2-pylint' 'python2-coverage' 'python2-spread')
 optdepends=('spread-python2')
 checkdepends=('spread-daemon' 'spread-python2' 'python2-nose' 'python2-pylint' 'python2-coverage')
-source=("python2-rsb::git+https://code.cor-lab.org/git/rsb.git.python#branch=0.15")
+source=("python2-rsb::git+https://code.cor-lab.org/git/rsb.git.python#branch=${_branch}")
 md5sums=('SKIP')
 conflicts=('python2-rsb')
 provides=('python2-rsb')
@@ -25,7 +26,7 @@ prepare() {
     cd "${srcdir}/python2-rsb"
     cat << EOF >> setup.cfg
 [proto]
-protocolroot=/usr/share/rsbprotocol0.15
+protocolroot=/usr/share/rsbprotocol${_branch}
 EOF
 }
 
