@@ -1,6 +1,6 @@
 pkgbase = gtk-theme-united-archers-git
 	pkgdesc = GTK2/3 + GNOME Shell theme based on a Ubuntu 18.04 design concept.
-	pkgver = v2.2.r2.g70c59de
+	pkgver = v2.2.r3.g3dbd124
 	pkgrel = 1
 	url = https://github.com/godlyranchdressing/United-GNOME
 	arch = any
@@ -13,19 +13,19 @@ pkgbase = gtk-theme-united-archers-git
 	depends = gtk-engine-murrine
 	optdepends = gnome-shell>=3.22: The GNOME Shell
 	optdepends = gnome-tweak-tool: A graphical tool to tweak gnome settings
-	provides = United-GNOME=v2.2.r2.g70c59de
+	provides = United-GNOME=v2.2.r3.g3dbd124
 	source = United-Antergos-Compact.tar.gz::https://github.com/godlyranchdressing/United-GNOME/blob/master/United-Antergos-Compact.tar.gz?raw=true
 	source = United-Antergos.tar.gz::https://github.com/godlyranchdressing/United-GNOME/blob/master/United-Antergos.tar.gz?raw=true
 	source = United-Arch-Compact.tar.gz::https://github.com/godlyranchdressing/United-GNOME/blob/master/United-Arch-Compact.tar.gz?raw=true
 	source = United-Arch.tar.gz::https://github.com/godlyranchdressing/United-GNOME/blob/master/United-Arch.tar.gz?raw=true
 	source = United-Manjaro-Compact.tar.gz::https://github.com/godlyranchdressing/United-GNOME/blob/master/United-Manjaro-Compact.tar.gz?raw=true
 	source = United-Manjaro.tar.gz::https://github.com/godlyranchdressing/United-GNOME/blob/master/United-Manjaro.tar.gz?raw=true
-	sha256sums = fdc0aa788a969fc5054f4afc1bd30862f857d808ae411612479846a502b95d2e
-	sha256sums = 70e271e63fcfc7e27d7970e83bfdad76e42fe5c9696b3cc042cd5f76ae5391b2
-	sha256sums = 290b709b192a59e9eaee9d09f9feafc0075a7bef6247e6de36991ab255dd213e
-	sha256sums = da9073db0bf17c0e2bee6c1fe531bdd4cce799e44dcec00a70efb17b4c86ec14
-	sha256sums = ab8be47e2e99f6171cb5e7f1c405f254a60af85d478e236367d4a15b3a21c76b
-	sha256sums = 7e09bde5c8490991bc64c5954a1db742fa0d2a2dbd7d3972f9aa654657b1dce8
+	sha256sums = 80f6c9745c5b5223883ed32f63eb19f175d8871928af04129a43ae8d141692c1
+	sha256sums = 1ecbfa6ff5d21e0ce19d93dba8331827f69531872b2e2db9b89ce3b64c7946de
+	sha256sums = 6960ad8378e8897d759c23f50c3cf5df8899ed6ed22bccf4b8b4b665112e8c71
+	sha256sums = 35de4983b1c81179f9f9c75141b29c7fff31d9b023732268b66bc4a945d639e1
+	sha256sums = 98c72617eac44884b989fb04ac09b4cb7f1d6e4276d473ac28ff2913d202fe65
+	sha256sums = 175e68f230541b4e17fcf3d39f0cefa129f54baca774a5199b40c911bb6d3e33
 
 pkgname = gtk-theme-united-archers-git
 
