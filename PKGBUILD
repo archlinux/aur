@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='rsb-cpp-stable-git'
-pkgver=0.15.0.6bbb74e
+pkgver=0.16.1.e5551da
 pkgrel=1
 pkgdesc='Robotics Service Bus C++ implementation'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=('rsc-stable-git' 'boost' 'protobuf')
 makedepends=('git' 'cmake' 'rsb-proto-stable-git')
 checkdepends=('python2')
-source=("rsb-cpp::git+https://code.cor-lab.org/git/rsb.git.cpp#branch=0.15")
+source=("rsb-cpp::git+https://code.cor-lab.org/git/rsb.git.cpp#branch=0.16")
 md5sums=('SKIP')
 conflicts=('rsb-cpp')
 provides=('rsb-cpp')
