@@ -3,12 +3,12 @@
 pkgname='spring-boot-cli'
 pkgver=1.5.6
 _pkgver="$pkgver.RELEASE"
-pkgrel=1
+pkgrel=2
 pkgdesc='Spring Boot CLI'
 url='http://projects.spring.io/spring-boot/'
 license=(Apache)
 arch=(any)
-depends=('java-environment>=6')
+depends=(bash 'java-environment>=6')
 
 source=("https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/$_pkgver/spring-boot-cli-$_pkgver-bin.tar.gz")
 sha256sums=(d129e7952f8cc687da436db1fff091991e8b85500894e3bc655ecbda7da6d8ae)
