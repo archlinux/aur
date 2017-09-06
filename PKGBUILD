@@ -19,9 +19,9 @@ makedepends=('unzip')
 optdepends=('dosbox-djcrx: headers and utilities')
 options=('!strip' 'staticlibs' '!emptydirs')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-$pkgver.tar.xz"
+        "http://www.delorie.com/pub/djgpp/current/v2/djcrx${_djver//./}.zip"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
         "https://zlib.net/zlib-${_zlver}.tar.gz"
-        "http://www.delorie.com/pub/djgpp/current/v2/djcrx${_djver//./}.zip"
         "lto.patch")
 sha256sums=('SKIP'
             'SKIP'
@@ -36,15 +36,11 @@ prepare() {
   # link isl for in-tree build
   ln -fs "../isl-${_islver}" isl
 
-  # hack! - some configure tests for header files break with FORTIFY_SOURCE
-  sed -i "/ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
-
   # build the lto plugin
   patch -Np0 < ../lto.patch
 
   # extract bootstrap djcrx
   mkdir -p ../gcc-build-$_target/lib/gcc/$_target/$pkgver
-  mkdir -p ../pth-build-$_pthver
   cd ../gcc-build-${_target}/lib/gcc/$_target/$pkgver
   unzip -qoW "$srcdir/djcrx${_djver//./}.zip" 'include/**' 'lib/*.[oa]'
   mv lib/* .
@@ -70,9 +66,19 @@ build() {
     --disable-multilib --enable-checking=release
   make all-gcc
 
+  export PATH=../gcc-build-$_target/gcc:$PATH
+
+  # build zlib
   cd ../zlib-${_zlver}
-  CHOST=${_target} ../zlib-${_zlver}/configure --const --prefix=/usr/$_target --static
+  CC=../gcc-build-$_target/gcc/xgcc \
+  CHOST=${_target} \
+  CFLAGS="-march=i586 -Ofast -I../gcc-build-${_target}/lib/gcc/$_target/$pkgver/include -pipe"\
+  ../zlib-${_zlver}/configure --const --prefix=/usr/$_target --static
+  sed -i 's/-DNO_STRERROR -DNO_vsnprintf//' Makefile
   make libz.a
+
+  # build wattcp
+  # build pth
 
   cd ../gcc-build-$_target
   make all
@@ -83,14 +89,15 @@ package_dosbox-gcc() {
   make -C zlib-${_zlver} DESTDIR="$pkgdir/" install
 
   # strip manually, djgpp libs spew errors otherwise
-  strip "$pkgdir"/usr/bin/$_target-*
-  strip "$pkgdir"/usr/lib/gcc/$_target/$pkgver/{cc1*,collect2,lto*}
+  strip -s "$pkgdir"/usr/bin/$_target-*
+  strip -s "$pkgdir"/usr/lib/gcc/$_target/$pkgver/{cc1*,collect2,lto*}
 
   # for compatibility
   ln -s $_target-gcc "$pkgdir"/usr/bin/$_target-cc
 
   # remove unnecessary files
-  rm -rf "$pkgdir"/usr/share/{man/man3,man/man7,info,locale}
+  rm -rf "$pkgdir"/usr/$_target/share/{man,info,locale}
+  rm -rf "$pkgdir"/usr/share/{man,info,locale}
   rm -rf "$pkgdir"/usr/lib/gcc/$_target/$pkgver/include-fixed
   rm -f "$pkgdir"/usr/lib/libcc1.*
 }
