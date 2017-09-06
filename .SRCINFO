@@ -1,19 +1,18 @@
 pkgbase = openmm
 	pkgdesc = Toolkit for molecular simulation using high performance GPU code
-	pkgver = 6.2
+	pkgver = 7.1.1
 	pkgrel = 1
-	url = https://simtk.org/home/openmm
+	url = http://openmm.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	license = LGPL
 	makedepends = cmake
 	makedepends = swig
+	makedepends = doxygen
 	depends = fftw
-	source = https://github.com/pandegroup/openmm/archive/6.2.tar.gz
-	source = https://github.com/xantares/openmm/commit/01ae387d649c959812bb3d3bc451e54746b2ab59.patch
-	md5sums = fad92d0a0e7cd1585b35777e98914b8f
-	md5sums = 21a008fabf6a8fa0611b84d888c6f84b
+	source = https://github.com/pandegroup/openmm/archive/7.1.1.tar.gz
+	sha1sums = c847c6cb654ee9f7dbf16babc1979f4021dc1d69
 
 pkgname = openmm
 
