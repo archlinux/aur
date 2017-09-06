@@ -1,7 +1,7 @@
 #Maintainer: Sam Bazley <samb1999@hotmail.co.uk>
 pkgname=esp-open-sdk-git
 pkgver=1
-pkgrel=5
+pkgrel=6
 pkgdesc="Free and open (as much as possible) integrated SDK for ESP8266 chips"
 arch=("i686" "x86_64")
 url="https://github.com/pfalcon/esp-open-sdk"
@@ -43,10 +43,12 @@ package() {
 
     mkdir -p "$pkgdir"/opt/esp-open-sdk
     cd "$srcdir"/esp-open-sdk/
+
+    ver=$(find -maxdepth 1 -type d -name "ESP8266_*" | cut -c 3-)
+
     cp -dpr --no-preserve=ownership sdk "$pkgdir"/opt/esp-open-sdk
-    cp -dpr --no-preserve=ownership \
-        `find -type d -maxdepth 1 -name "ESP8266_*"` "$pkgdir"/opt/esp-open-sdk
+    cp -dpr --no-preserve=ownership "$ver" "$pkgdir"/opt/esp-open-sdk
     cp -dpr --no-preserve=ownership xtensa-lx106-elf "$pkgdir"/opt/esp-open-sdk
 
-    ln -s "$pkgdir"/opt/esp-open-sdk/ESP8266_*/driver_lib/include/driver/ "$pkgdir"/opt/esp-open-sdk/xtensa-lx106-elf/xtensa-lx106-elf/include/
+    ln -s "$pkgdir/opt/esp-open-sdk/$ver/driver_lib/include/driver/" "$pkgdir"/opt/esp-open-sdk/xtensa-lx106-elf/xtensa-lx106-elf/include/
 }
