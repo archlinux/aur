@@ -1,34 +1,33 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='rsbag-tools-cl-stable-git'
-pkgver=0.15.0.3523fd7
-pkgrel=2
+pkgver=0.16.0.94cc8a9
+_branch=0.16
+pkgrel=1
 pkgdesc='RSBag common lisp tools'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/rsbag'
 license=('LGPL3')
 makedepends=('git' 'cmake' 'rsb-proto-stable-git' 'sbcl')
 options=("!strip")
-source=("rsbag-tools-cl::git+https://code.cor-lab.org/git/rsbag.git.tools-cl#branch=0.15"
-        "rsbag-cl::git+https://code.cor-lab.org/git/rsbag.git.cl#branch=0.15"
-        "rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl#branch=0.15"
-        "rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=0.15"
-        "cl-protobuf.tar.gz::https://github.com/scymtym/cl-protobuf/archive/release-0.1.tar.gz"
-        "network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.2.1.tar.gz"
-        "architecture.builder-protocol.tar.gz::https://github.com/scymtym/architecture.builder-protocol/archive/release-0.5.tar.gz"
+source=("rsbag-tools-cl::git+https://code.cor-lab.org/git/rsbag.git.tools-cl#branch=${_branch}"
+        "rsbag-cl::git+https://code.cor-lab.org/git/rsbag.git.cl#branch=${_branch}"
+        "rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl#branch=${_branch}"
+        "rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=${_branch}"
+        "cl-protobuf.tar.gz::https://github.com/scymtym/cl-protobuf/archive/release-0.1.1.tar.gz"
+        "network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.3.tar.gz"
         "iterate-sequence::git+https://github.com/scymtym/iterate-sequence")
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'c5934f42b3f923564ea2debc207a5a3e'
-         '90626c3382e5704084f2df383662baa3'
-         '8a0bca93913ee772fc9267485659552b'
+         '701a2e598687ee881709dad4c8402967'
+         'ac0928126553de74e8b42b512b33eacc'
          'SKIP')
 conflicts=('rsbag-tools-cl')
 provides=('rsbag-tools-cl')
 
-_qlver='2016-10-31'
+_qlver='2017-08-30'
 
 pkgver() {
     cd "${srcdir}/rsbag-tools-cl"
@@ -50,8 +49,8 @@ prepare() {
             --quit
     fi
 
-    echo "\"/usr/share/rsbprotocol0.15/\"" > "${srcdir}/rsb-cl/protocol-directory.sexp"
-    cp -R "/usr/share/rsbprotocol0.15/" "${srcdir}/rsbag-cl/data/"
+    echo "\"/usr/share/rsbprotocol${_branch}/\"" > "${srcdir}/rsb-cl/protocol-directory.sexp"
+    cp -R "/usr/share/rsbprotocol${_branch}/" "${srcdir}/rsbag-cl/data/"
 
     sbcl \
         --noinform --no-userinit --disable-debugger \
