@@ -7,7 +7,7 @@
 pkgbase=linux-surface4       # Build kernel with a different name
 _srcname=linux-4.12
 pkgver=4.12.8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -23,6 +23,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # surface patches
         '0002-ipts.patch'
         '0003-wifi.patch'
+        '0004-sd.patch'
+        '0005-hid.patch'
         # touchscreen udev rules
         '99-ipts.rules'
         # IPTS firmware config.
@@ -41,11 +43,13 @@ sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             '48e0505438bb4ccc7a0e050a896122b490e8f1b1446aa3833841a9d4d7853d68'
             'fc606711a922638d5cc4358f47f69f554d9e6eab1cec91f0b49f00911f399722'
             'b830ce777543c0edd20a77d70f204c095f2429bb37151cd4a8c9dfae2af8d51a'
-            'e3b91f55d351612394e14c99631601978f3d8b560203b3467797b758eebf777e'
-            '0faba3f84e262ef16ff5a78943025d172f466066d2e5c5e5035d5915fa90ba01'
+            'cbd508d55e446ad5e00a7534490a8b6faa8987dc22dab139fa8ac42b90735cf3'
+            'd748010776aa4016e920b46f6ef6847e52d4214e9b6afe752c340c5a9644870f'
+            '311857771c63ed5145effedae55830b3c7fdc8865e145e94d54b9aa2e094779e'
+            '065fa8cb24062afee3c0aa8140e65560c2ebfb08f714222a3e0b3b12e764097b'
             '6db350669dd2250f465e2259c3d7f75316dc448d849a60ef701e5e77ca7a95b0'
             'eed5c04a5f8841d52292fbb321990c79316ce98cd21324c71226cdc95cc20d09'
-            '585cdf04b6c27b8124e5ce582d2d0d63e020f8e53fc3d794305a96e61e8cc8ab'
+            '90fffe84ea442756fb168d22d9b6b9f2d8d7bc631b81188836caaa33a9f92554'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -64,6 +68,8 @@ prepare() {
   # surface Patches
   patch -Np1 -i "${srcdir}/0002-ipts.patch"
   patch -Np1 -i "${srcdir}/0003-wifi.patch"
+  patch -Np1 -i "${srcdir}/0004-sd.patch"
+  patch -Np1 -i "${srcdir}/0005-hid.patch"
 
   mkdir -p "firmware/intel/ipts"
   cp "${srcdir}/ipts_fw_config.bin" "firmware/intel/ipts/"

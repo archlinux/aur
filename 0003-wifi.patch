@@ -68,4 +68,4 @@ index ac62bce5..293607e6 100644
 +
  	skb_put(skb, MWIFIEX_UPLD_SIZE - skb->len);
  	skb_trim(skb, rx_len);
- 
+  
