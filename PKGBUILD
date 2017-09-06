@@ -18,15 +18,9 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd ${pkgname%-git}
-  # Use Arch's CFLAGS
-  sed -i 's/-ggdb/$(CFLAGS)/' Makefile
-}
-
 build() {
   cd ${pkgname%-git}
-  make
+  gcc $CFLAGS $CPPFLAGS -std=c99 -o ttyqr -lqrencode $LDFLAGS ttyqr.c
 }
 
 package() {
