@@ -1,7 +1,7 @@
 pkgbase = rsbag-tools-cl-stable-git
 	pkgdesc = RSBag common lisp tools
 	pkgver = 0.16.0.94cc8a9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.cor-lab.org/projects/rsbag
 	arch = i686
 	arch = x86_64
@@ -20,12 +20,14 @@ pkgbase = rsbag-tools-cl-stable-git
 	source = cl-protobuf.tar.gz::https://github.com/scymtym/cl-protobuf/archive/release-0.1.1.tar.gz
 	source = network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.3.tar.gz
 	source = iterate-sequence::git+https://github.com/scymtym/iterate-sequence
+	source = log4cl::git+https://github.com/sharplispers/log4cl
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 701a2e598687ee881709dad4c8402967
 	md5sums = ac0928126553de74e8b42b512b33eacc
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = rsbag-tools-cl-stable-git

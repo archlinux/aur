@@ -3,7 +3,7 @@
 pkgname='rsbag-tools-cl-stable-git'
 pkgver=0.16.0.94cc8a9
 _branch=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc='RSBag common lisp tools'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/rsbag'
@@ -16,18 +16,20 @@ source=("rsbag-tools-cl::git+https://code.cor-lab.org/git/rsbag.git.tools-cl#bra
         "rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=${_branch}"
         "cl-protobuf.tar.gz::https://github.com/scymtym/cl-protobuf/archive/release-0.1.1.tar.gz"
         "network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.3.tar.gz"
-        "iterate-sequence::git+https://github.com/scymtym/iterate-sequence")
+        "iterate-sequence::git+https://github.com/scymtym/iterate-sequence"
+        "log4cl::git+https://github.com/sharplispers/log4cl") # can probably be removed with the next RSB release
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          '701a2e598687ee881709dad4c8402967'
          'ac0928126553de74e8b42b512b33eacc'
+         'SKIP'
          'SKIP')
 conflicts=('rsbag-tools-cl')
 provides=('rsbag-tools-cl')
 
-_qlver='2017-08-30'
+_qlver='2017-04-03'
 
 pkgver() {
     cd "${srcdir}/rsbag-tools-cl"
