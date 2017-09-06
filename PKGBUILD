@@ -69,9 +69,11 @@ build() {
     --enable-lto --disable-dw2-exceptions --disable-libgomp \
     --disable-multilib --enable-checking=release
   make all-gcc
+
   cd ../zlib-${_zlver}
-  CHOST=${_target} ../zlib-${_zlver}/configure --prefix=/usr/$_target --static
+  CHOST=${_target} ../zlib-${_zlver}/configure --const --prefix=/usr/$_target --static
   make libz.a
+
   cd ../gcc-build-$_target
   make all
 }
