@@ -1,14 +1,14 @@
 pkgbase = soapui
 	pkgdesc = A graphical Java program for inspecting, invoking, monitoring, simulating/mocking and functional/load/compliance/surveillance testing of REST/WADL and SOAP/WSDL-based Web Services over HTTP.
 	pkgver = 5.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.soapui.org/
 	arch = i686
 	arch = x86_64
 	license = EUPL V.1.1
 	depends = java-environment
 	depends = hicolor-icon-theme
-	source = http://cdn01.downloads.smartbear.com/soapui/5.2.1/SoapUI-5.2.1-linux-bin.tar.gz
+	source = http://cdn01.downloads.smartbear.com/soapui/5.3.0/SoapUI-5.3.0-linux-bin.tar.gz
 	source = http://freeapps.co.uk.s3.amazonaws.com/images/thumbnails/soapui.png
 	source = soapui.desktop
 	source = soapui

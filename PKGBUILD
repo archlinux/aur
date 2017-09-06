@@ -1,7 +1,7 @@
 # Maintainer: Damien Guihal <dguihal@gmail.com>
 pkgname=soapui
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical Java program for inspecting, invoking, monitoring, simulating/mocking and functional/load/compliance/surveillance testing of REST/WADL and SOAP/WSDL-based Web Services over HTTP."
 arch=('i686' 'x86_64')
 url="http://www.soapui.org/"
