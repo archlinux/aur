@@ -1,7 +1,7 @@
 pkgbase = rsb-tools-cl-stable-git
 	pkgdesc = Robotics Service Bus common lisp tools
 	pkgver = 0.16.0.2335104
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.cor-lab.org/projects/rsb
 	arch = i686
 	arch = x86_64
@@ -18,10 +18,12 @@ pkgbase = rsb-tools-cl-stable-git
 	source = rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=0.16
 	source = cl-protobuf.tar.gz::https://github.com/scymtym/cl-protobuf/archive/release-0.1.tar.gz
 	source = network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.3.tar.gz
+	source = log4cl::git+https://github.com/sharplispers/log4cl
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = c5934f42b3f923564ea2debc207a5a3e
 	md5sums = ac0928126553de74e8b42b512b33eacc
+	md5sums = SKIP
 
 pkgname = rsb-tools-cl-stable-git
 

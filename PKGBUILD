@@ -3,7 +3,7 @@
 pkgname='rsb-tools-cl-stable-git'
 pkgver=0.16.0.2335104
 _branch=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Robotics Service Bus common lisp tools'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/rsb'
@@ -14,15 +14,17 @@ options=("!strip")
 source=("rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl#branch=${_branch}"
         "rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=${_branch}"
         "cl-protobuf.tar.gz::https://github.com/scymtym/cl-protobuf/archive/release-0.1.tar.gz"
-        "network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.3.tar.gz")
+        "network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.3.tar.gz"
+        "log4cl::git+https://github.com/sharplispers/log4cl") # can probably be removed with the next RSB release
 md5sums=('SKIP'
          'SKIP'
          'c5934f42b3f923564ea2debc207a5a3e'
-         'ac0928126553de74e8b42b512b33eacc')
+         'ac0928126553de74e8b42b512b33eacc'
+         'SKIP')
 conflicts=('rsb-tools-cl')
 provides=('rsb-tools-cl')
 
-_qlver='2017-08-30'
+_qlver='2017-04-03'
 
 pkgver() {
     cd "${srcdir}/rsb-tools-cl"
