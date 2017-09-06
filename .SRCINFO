@@ -5,6 +5,7 @@ pkgbase = znc-clientbuffer-git
 	url = https://github.com/jpnurmi/znc-clientbuffer
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = Apache
 	depends = znc
 	source = git+https://github.com/jpnurmi/znc-clientbuffer.git
