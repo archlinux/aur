@@ -3,36 +3,62 @@
 _pkgorg=bus1
 _pkgname=dbus-broker
 pkgdesc='Linux D-Bus Message Broker'
-pkgver=r760.c167477
+pkgver=r961.bb3f5ee
 pkgrel=1
 
 pkgname=$_pkgname-git
 arch=('i686' 'x86_64')
 url="https://github.com/$_pkgorg/$_pkgname"
 license=('Apache')
-depends=('glibc' 'libsystemd' 'expat' 'glib2')
-makedepends=('git' 'meson')
+depends=('libsystemd' 'expat' 'glib2')
+makedepends=('git' 'meson' 'systemd' 'python-docutils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$pkgname::git+https://github.com/$_pkgorg/$_pkgname")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/$_pkgorg/$_pkgname"
+        "git+https://github.com/c-util/c-rbtree"
+        "git+https://github.com/c-util/c-sundry"
+        "git+https://github.com/c-util/c-list"
+        "git+https://github.com/c-util/c-dvar")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd "$pkgname"
-
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  rm -Rf build
+  mkdir build
+  cd $pkgname
+
+  git submodule init
+  git config --local submodule.subprojects/c-rbtree.url "$srcdir/c-rbtree"
+  git config --local submodule.subprojects/c-sundry.url "$srcdir/c-sundry"
+  git config --local submodule.subprojects/c-list.url   "$srcdir/c-list"
+  git config --local submodule.subprojects/c-dvar.url   "$srcdir/c-dvar"
+  git submodule update
+}
+
 build() {
-  rm -Rf "build"
-  meson --prefix=/usr --buildtype=release "$pkgname" "build"
-  ninja -v -C "build"
+  cd build
+  meson ../$pkgname --prefix=/usr --buildtype=release -Db_lto=true
+  ninja
+  make -C ../$pkgname BUILDDIR="$PWD" docs
 }
 
 check() {
-  ninja -v -C "build" test
+  cd build
+  meson test
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -v -C "build" install
+  cd build
+  DESTDIR="$pkgdir" ninja install
+  install -Dt "$pkgdir/usr/share/man/man1" -m644 docs/*.1
 }
+
+# vim:set sw=2 et:
