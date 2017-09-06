@@ -45,8 +45,8 @@ package() {
     cd "$srcdir"/esp-open-sdk/
     cp -dpr --no-preserve=ownership sdk "$pkgdir"/opt/esp-open-sdk
     cp -dpr --no-preserve=ownership \
-        ESP8266_NONOS_SDK_V2.0.0_16_08_10 "$pkgdir"/opt/esp-open-sdk
+        `find -type d -maxdepth 1 -name "ESP8266_*"` "$pkgdir"/opt/esp-open-sdk
     cp -dpr --no-preserve=ownership xtensa-lx106-elf "$pkgdir"/opt/esp-open-sdk
 
-    ln -s "$pkgdir"/opt/esp-open-sdk/ESP8266_NONOS_SDK_V2.0.0_16_08_10/driver_lib/include/driver/ "$pkgdir"/opt/esp-open-sdk/xtensa-lx106-elf/xtensa-lx106-elf/include/
+    ln -s "$pkgdir"/opt/esp-open-sdk/ESP8266_*/driver_lib/include/driver/ "$pkgdir"/opt/esp-open-sdk/xtensa-lx106-elf/xtensa-lx106-elf/include/
 }
