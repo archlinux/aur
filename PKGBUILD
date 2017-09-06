@@ -2,36 +2,25 @@
 
 pkgbase=gtk4-git
 pkgname=(gtk4-git)
-pkgver=3.91.2.r159.gccfc568a03
+pkgver=3.91.2.r297.gaf5d3e3299
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('i686' 'x86_64')
 url="http://www.gtk.org/"
 license=('LGPL')
-depends=('adwaita-icon-theme'
-         'at-spi2-atk'
+depends=('at-spi2-atk'
          'atk-git>=2.15.1'
-         'cairo>=1.14.0'
          'dconf'
-         'desktop-file-utils'
          'glib2-git>=2.53.4'
-         'gdk-pixbuf2>=2.30.0'
-         'json-glib'
-         'libcups'
          'libepoxy>=1.0'
-         'librsvg'
          'libxcomposite'
          'libxcursor'
-         'libxdamage'
-         'libxi'
          'libxinerama'
          'libxkbcommon'
          'libxrandr'
          'mesa'
          'pango-git>=1.37.3'
-         'shared-mime-info'
          'wayland-git>=1.9.91'
-         'wayland-protocols-git>=1.9'
          'graphene>=1.5.1')
 makedepends=('gobject-introspection-git'
              'gtk-doc'
@@ -42,7 +31,9 @@ makedepends=('gobject-introspection-git'
              'meson'
              'ninja')
 optdepends=('gnome-icon-theme: Default icon theme'
-            'gnome-themes-standard: Default widget theme')
+            'gnome-themes-standard: Default widget theme'
+            'hicolor-icon-theme: Freedesktop.org Hicolor icon theme'
+            'gdk-pixbuf2: An image loading library')
 backup=('usr/share/gtk-4.0/settings.ini')
 source=('git+https://git.gnome.org/browse/gtk+'
         'gtk4.install'
@@ -56,7 +47,6 @@ sha512sums=('SKIP'
             'abfd73de4faa6f53784182800395aa3c39bb98e15a0eb300fb4142073ff7ce565a0836a2363393b2f132060b5293dbc0c30c380a023f38d5bd39c62cb58389c2'
             '5cd50d93bb6bc203438a2a0764bd717409658e124058b18a1da26a21f10ef7564a16f32fc0633a68b45b2e303fa63a5efefeadd6b0bf1d7f474556df8cdb6c58'
             '1642d77622d61234e316e8fcbc803a6a5556c606e37e56aa5981ef2f2df85bfa959c31b5d1bff248b340760e1178281cb0d7abdf540c5f7d4b62cb383a67c685')
-
 pkgver() {
   cd gtk+
 
