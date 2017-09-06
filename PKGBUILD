@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='rst-converters-cpp-stable-git'
-pkgver=0.15.0.27476c4
+pkgver=0.16.0.8495e9c
 pkgrel=1
 pkgdesc='Robotics Systems Types converters fro C++'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://projects.cor-lab.org/projects/rst'
 license=('LGPL3')
 depends=('rsc-stable-git' 'boost' 'rsb-cpp-stable-git' 'opencv')
 makedepends=('git' 'cmake')
-source=("rst-converters-cpp::git+https://code.cor-lab.org/git/rst.git.converters-cpp#branch=0.15")
+source=("rst-converters-cpp::git+https://code.cor-lab.org/git/rst.git.converters-cpp#branch=0.16")
 md5sums=('SKIP')
 conflicts=('rst-converters-cpp')
 provides=('rst-converters-cpp')
