@@ -1,3 +1,5 @@
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
 pkgname=texlive-qrcode
 pkgver=1.51
 pkgrel=1
