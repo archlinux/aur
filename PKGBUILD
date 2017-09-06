@@ -6,7 +6,7 @@
 
 pkgname=rslsync
 pkgver=2.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Resilio Sync (ex:BitTorrent Sync) - automatically sync files via secure, distributed technology"
 license=("custom:resilio")
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ source_i686=("rslsync_i386-${pkgver}.tar.gz::https://download-cdn.resilio.com/st
 source_x86_64=("rslsync_x64-${pkgver}.tar.gz::https://download-cdn.resilio.com/stable/linux-x64/resilio-sync_x64.tar.gz")
 sha256sums=('4483cbe3fff81281666d8fbe8c9b8d7d27c38ba7a3d3752a865f1ab8c1f212db'
             'ba4b0ee3303027122e67345d4bf852f911a56f213f98c9eaa198c69d903fd8a1'
-            'acc08bf5a321a0ae1ee58aee64af524508359db6305d2164d43bb84a2a3fc7c4')
+            '56a0523cdde9b6c1c469bbb29805d260972e8e1fc831e82863fd35d9e2f6c734')
 sha256sums_i686=('9dde6fd55a06d6c681daf65d1e3e176e75396894ed172fe9152094c60ec2174f')
 sha256sums_x86_64=('bf6f0077adbb5380e86a3e613453a85f7c2380883f0656e5fdc3cfed3e2b0098')
 sha256sums_arm=('1dbd1f8dbbab85c0fc0505b2effb948d3b249abeee741f47901e73b37a8c9109')
