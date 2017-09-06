@@ -1,6 +1,6 @@
 ## Maintainer: realasking
 pkgname=readpdf-git
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='A simple script for pdf reading on tty.'
 arch=(x86_64 i686)
