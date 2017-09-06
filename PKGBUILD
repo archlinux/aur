@@ -24,10 +24,15 @@ pkgver() {
 build(){
         cd "$srcdir/${pkgname}/"
         make
+        gzip -9 compsize.8
 }
 
 package() {
+        cd "${srcdir}/${pkgname}/"
         install -Dm755 \
-                "${srcdir}/${pkgname}/compsize" \
+                "./compsize" \
                 "${pkgdir}/usr/bin/compsize"
+        install -Dm755 \
+                "./compsize.8.gz" \
+                "${pkgdir}/usr/share/man/man8/compsize.8.gz"
 }
