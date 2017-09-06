@@ -1,7 +1,7 @@
 #Maintainer: Sam Bazley <samb1999@hotmail.co.uk>
 pkgname=esp-open-sdk-git
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Free and open (as much as possible) integrated SDK for ESP8266 chips"
 arch=("i686" "x86_64")
 url="https://github.com/pfalcon/esp-open-sdk"
