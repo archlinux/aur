@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
-Version=3.7.2
+Version=3.7.4
 Encoding=UTF-8
 Name=XMind
-Comment=Launch XMind 8 Update 2
+Comment=Launch XMind 8 Update 4
 Icon=XMind
 Exec=XMind
 Terminal=false

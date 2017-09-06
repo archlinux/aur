@@ -1,6 +1,6 @@
 pkgbase = xmind
 	pkgdesc = Brainstorming and Mind Mapping Software
-	pkgver = 3.7.3
+	pkgver = 3.7.4
 	pkgrel = 1
 	url = http://www.xmind.net
 	arch = i686
@@ -10,12 +10,12 @@ pkgbase = xmind
 	depends = gtk3
 	depends = java-runtime=8
 	optdepends = lame: needed for the feature audio notes
-	source = http://www.xmind.net/xmind/downloads/xmind-8-update3-linux.zip
+	source = http://www.xmind.net/xmind/downloads/xmind-8-update4-linux.zip
 	source = XMind.ini
 	source = XMind
 	source = XMind.desktop
 	source = XMind.png
-	sha512sums = ba319a52b9b08a5734f213bfc03315a6c3f7fa575be540523e6082d27c7bd6ba82df1292ef5a4107eba243a0177b6f0d9481aa983839a75bbe17521eba04ed26
+	sha512sums = adee77c9a3e262a9bcbcb528bd983beec66550221e5dc1ac4c2a2d36fcbafb0250af9305df5ce2584f6a61a77e44783d2f89c9dc25d8a5e1a4692a71374b30e5
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP

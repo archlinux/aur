@@ -5,8 +5,8 @@
 # Contributor: Jelle van der Waa <jellevdwaa@gmail.com>
 
 pkgname=xmind
-pkgver=3.7.3
-_filename=$pkgname-8-update3-linux
+pkgver=3.7.4
+_filename=$pkgname-8-update4-linux
 pkgrel=1
 pkgdesc="Brainstorming and Mind Mapping Software"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("http://www.xmind.net/xmind/downloads/${_filename}.zip"
 "XMind"
 "XMind.desktop"
 "XMind.png")
-sha512sums=('ba319a52b9b08a5734f213bfc03315a6c3f7fa575be540523e6082d27c7bd6ba82df1292ef5a4107eba243a0177b6f0d9481aa983839a75bbe17521eba04ed26'
+sha512sums=('adee77c9a3e262a9bcbcb528bd983beec66550221e5dc1ac4c2a2d36fcbafb0250af9305df5ce2584f6a61a77e44783d2f89c9dc25d8a5e1a4692a71374b30e5'
 'SKIP'
 'SKIP'
 'SKIP'
@@ -30,6 +30,7 @@ package() {
     cp -r ${srcdir}/configuration   ${pkgdir}/usr/share/${pkgname}/
     cp -r ${srcdir}/features        ${pkgdir}/usr/share/${pkgname}/
     cp -r ${srcdir}/plugins         ${pkgdir}/usr/share/${pkgname}/
+    cp ${srcdir}/*.html              ${pkgdir}/usr/share/${pkgname}/
     cp ${srcdir}/*.xml              ${pkgdir}/usr/share/${pkgname}/
     cp ${srcdir}/*.txt              ${pkgdir}/usr/share/${pkgname}/
     if [[ "$CARCH" == "i686" ]]; then
@@ -45,6 +46,11 @@ package() {
     cp ${srcdir}/XMind.png          ${pkgdir}/usr/share/pixmaps/
     # fix configuration
     cp ${srcdir}/XMind.ini ${pkgdir}/usr/share/${pkgname}/XMind/
+    if [[ "$CARCH" == "i686" ]]; then
+        sed -i "s/CARCH/x86/g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
+    else
+        sed -i "s/CARCH/x86_64/g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
+    fi
     mkdir -p ${pkgdir}/usr/bin
     cp ${srcdir}/XMind ${pkgdir}/usr/bin/
 }
