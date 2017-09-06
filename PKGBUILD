@@ -1,15 +1,15 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=tbt
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Thunderbolt(TM) user-space components'
 arch=('x86_64')
 url='https://github.com/01org/thunderbolt-software-user-space'
 license=('BSD')
-makedepends=('cmake' 'boost')
+makedepends=('cmake' 'boost' 'txt2tags')
 source=("https://github.com/01org/thunderbolt-software-user-space/archive/v${pkgver}.tar.gz")
-sha512sums=('6b3e0217cf41fc0a74bb38d94bdeab152b6763eb1aeea3f75ae853c290f2208ca0e5de549cd784ccfcc70a92ad11d3ca871c8f84dcc99c437278e6b0937832e3')
+sha512sums=('7678f190cd85036bb88ef62f2cc6c8aedb84b772f498453d5502b448b99b44f22c2e254781e1e0e28abbc7f7392f8b0732b5cb20f2c445c599d359641689622f')
 
 prepare() {
   cd "${srcdir}/thunderbolt-software-user-space-${pkgver}"
@@ -18,16 +18,16 @@ prepare() {
 
 build() {
   cd "${srcdir}/thunderbolt-software-user-space-${pkgver}/build"
-  cmake ..
-  make
+  cmake .. -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUDEV_BIN_DIR=/usr/lib/udev/ \
+    -DUDEV_RULES_DIR=/usr/lib/udev/rules.d/
+  cmake --build .
 }
 
 package() {
-  install -dm 750 "${pkgdir}/var/lib/thunderbolt/"
+  cd "${srcdir}/thunderbolt-software-user-space-${pkgver}/build"
+  make DESTDIR="${pkgdir}" install
 
-  cd "${srcdir}/thunderbolt-software-user-space-${pkgver}/"
-  install -Dm 755 -t "${pkgdir}/usr/lib/udev/" build/tbtacl/tbtacl-write tbtacl/tbtacl
-  install -Dm 644 tbtacl/tbtacl.rules "${pkgdir}/usr/lib/udev/rules.d/tbtacl.rules"
-  install -Dm 644 build/common/libcommon.a "${pkgdir}/usr/lib/libcommon.a"
-  install -Dm 755 build/tbtadm/tbtadm "${pkgdir}/usr/bin/tbtadm"
+  rm -rf "${pkgdir}"/usr/share/doc
 }
