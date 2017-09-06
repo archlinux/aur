@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod
 	pkgver = 4.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xanmod.org/
 	arch = i686
 	arch = x86_64
