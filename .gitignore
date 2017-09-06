@@ -6,5 +6,5 @@
 !chromium-dev.svg
 !chromium-widevine-r1.patch
 !minizip.patch
-!vaapi_patch-r3.patch
-!chromium-blink-gcc7-r1.patch
+!chromium-intel-vaapi_r2.patch
+!chromium-blink-gcc7-r2.patch

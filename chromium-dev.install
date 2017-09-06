@@ -7,15 +7,27 @@ green="${bold}$(tput setaf 2)"
 _instructions() {
   printf "${yellow}==>${all_off} ${bold}ATENTION:${all_off}
 ${green}==>${all_off} ${bold}This Chromium package no longer supports custom flags passed via the
-   '/etc/chromium/default' file (or any other files under /etc/chromium/).${all_off}
-
+   '/etc/chromium/default' file (or any other files under '/etc/chromium/').
   ${blue}->${all_off} The new '${bold}/usr/bin/chromium-dev${all_off}' launcher script will automatically detect
      Pepper Flash (if installed) and pass the correct flags to Chromium.'
-
   ${blue}->${all_off} If you need to pass extra command-line arguments to Chromium, you
-     can put them in a '${bold}chromium-dev-flags.conf${all_off}' file under '${bold}\x24HOME/.config/${all_off}
+     can put them in the '${bold}chromium-dev-flags.conf${all_off}' file under '${bold}\x24HOME/.config/'${all_off}
      (or ${bold}\x24XDG_CONFIG_HOME${all_off}). Arguments are split on whitespace and shell
-     quoting rules apply but no further parsing is performed.\n"
+     quoting rules apply but no further parsing is performed.
+${green}==>${all_off} ${bold}If you use Kwallet5 from Plasma/Kf5:${all_off}
+  ${blue}->${all_off} You needs add '${bold}\"--password-store=kwallet5\"${all_off}' into '${bold}chromium-dev-flags.conf${all_off}' file
+     under '${bold}\x24HOME/.config/${all_off}' (or ${bold}\x24XDG_CONFIG_HOME${all_off}).
+${green}==>${all_off} ${bold}If you GPU can decode videos with resolution more than 1920x1088:${all_off}
+  ${blue}->${all_off} You can change this value (hardcoded in the code) setting it into the '${bold}va_fallback_resolution${all_off}' file
+     under '${bold}/etc/chromium-dev/${all_off}' with this content (must be integers numbers):
+     '${bold}Width  Height+8${all_off}'
+     in the first line, in that order (notice this need have ${bold}two spaces${all_off} between two integers). For example:
+     '${bold}4032  4088${all_off}'.
+     You can know this values running '${bold}vdpauinfo${all_off}' command.
+  ${blue}->${all_off} For more info, visit:
+     '${bold}https://github.com/saiarcot895/chromium-ubuntu-build/issues/13${all_off}'
+     or
+     '${bold}https://github.com/saiarcot895/chromium-ubuntu-build/pull/16${all_off}'.\n"
 }
 
 post_install() {

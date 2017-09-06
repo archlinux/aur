@@ -436,7 +436,7 @@ index 3d815a2..2c96048 100644
  
   private:
 diff --git a/content/common/sandbox_linux/bpf_gpu_policy_linux.cc b/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
-index fe2f298..507f481 100644
+index fe2f298a..507f481 100644
 --- a/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
 +++ b/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
 @@ -56,22 +56,6 @@
@@ -808,8 +808,8 @@ index 3a65c75..dd2d957 100644
  }
  
  # TODO(watk): Run this on bots. http://crbug.com/461437
--if (is_win || is_android || is_chromeos) {
-+if (is_win || is_android || is_chromeos || is_desktop_linux) {
+-if (is_win || is_android || use_v4l2_codec || use_vaapi) {
++if (is_win || is_android || use_v4l2_codec || use_vaapi || is_desktop_linux) {
    test("video_decode_accelerator_unittest") {
      sources = [
        "video_accelerator_unittest_helpers.h",
@@ -817,8 +817,8 @@ index 3a65c75..dd2d957 100644
    }
  }
  
--if (is_chromeos || is_mac || is_win) {
-+if (is_chromeos || is_mac || is_win || is_desktop_linux) {
+-if (use_v4l2_codec || use_vaapi || is_mac || is_win) {
++if (use_v4l2_codec || use_vaapi || is_mac || is_win || is_desktop_linux) {
    test("video_encode_accelerator_unittest") {
      deps = [
        "//base",
@@ -826,8 +826,8 @@ index 3a65c75..dd2d957 100644
    }
  }
  
--if (is_chromeos) {
-+if (is_chromeos || is_desktop_linux) {
+-if (use_v4l2_codec || use_vaapi) {
++if (use_v4l2_codec || use_vaapi || is_desktop_linux) {
    test("jpeg_decode_accelerator_unittest") {
      deps = [
        "//base",
