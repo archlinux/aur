@@ -1,7 +1,7 @@
 pkgbase = rslsync
 	pkgdesc = Resilio Sync (ex:BitTorrent Sync) - automatically sync files via secure, distributed technology
 	pkgver = 2.5.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.getsync.com
 	install = rslsync.install
 	arch = i686
