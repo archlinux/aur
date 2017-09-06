@@ -1,8 +1,9 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='rsb-tools-cl-stable-git'
-pkgver=0.15.0.b596630
-pkgrel=2
+pkgver=0.16.0.2335104
+_branch=0.16
+pkgrel=1
 pkgdesc='Robotics Service Bus common lisp tools'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/rsb'
@@ -10,20 +11,18 @@ license=('LGPL3')
 depends=('spread-daemon')
 makedepends=('git' 'cmake' 'rsb-proto-stable-git' 'sbcl')
 options=("!strip")
-source=("rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl#branch=0.15"
-        "rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=0.15"
+source=("rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl#branch=${_branch}"
+        "rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=${_branch}"
         "cl-protobuf.tar.gz::https://github.com/scymtym/cl-protobuf/archive/release-0.1.tar.gz"
-        "network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.2.1.tar.gz"
-        "architecture.builder-protocol.tar.gz::https://github.com/scymtym/architecture.builder-protocol/archive/release-0.5.tar.gz")
+        "network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.3.tar.gz")
 md5sums=('SKIP'
          'SKIP'
          'c5934f42b3f923564ea2debc207a5a3e'
-         '90626c3382e5704084f2df383662baa3'
-         '8a0bca93913ee772fc9267485659552b')
+         'ac0928126553de74e8b42b512b33eacc')
 conflicts=('rsb-tools-cl')
 provides=('rsb-tools-cl')
 
-_qlver='2016-10-31'
+_qlver='2017-08-30'
 
 pkgver() {
     cd "${srcdir}/rsb-tools-cl"
@@ -45,7 +44,7 @@ prepare() {
             --quit
     fi
 
-    echo "\"/usr/share/rsbprotocol0.15/\"" > "${srcdir}/rsb-cl/protocol-directory.sexp"
+    echo "\"/usr/share/rsbprotocol${_branch}/\"" > "${srcdir}/rsb-cl/protocol-directory.sexp"
 }
 
 build() {
