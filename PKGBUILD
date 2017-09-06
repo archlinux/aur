@@ -5,6 +5,7 @@
 # Chungy Nexen For the origional radegast aur package
 # Robot Silvershade  For teaching me most of the things I know.
 # Zach Ward & Beth Randall   They have been there from my best day to my worst
+# And everyone else who I did'nt mention by name    You are all important to me
 pkgname=radegast-ng
 pkgver=2.24.105
 pkgrel=1.12
