@@ -1,0 +1,32 @@
+diff --git a/src/tools/translate-to-fuzz.h b/src/tools/translate-to-fuzz.h
+index 74a45701..7ffb26da 100644
+--- a/src/tools/translate-to-fuzz.h
++++ b/src/tools/translate-to-fuzz.h
+@@ -615,7 +615,13 @@ private:
+         }
+         switch (conditions) {
+           case 0: if (!oneIn(4)) continue;
++#if defined(__GNUC__) && !defined(__clang__)
++          __attribute__ ((fallthrough));
++#endif
+           case 1: if (!oneIn(2)) continue;
++#if defined(__GNUC__) && !defined(__clang__)
++          __attribute__ ((fallthrough));
++#endif
+           default: if (oneIn(conditions + 1)) continue;
+         }
+         return builder.makeBreak(name);
+diff --git a/src/wasm/wasm-s-parser.cpp b/src/wasm/wasm-s-parser.cpp
+index fd7c7e7a..7c32fe2b 100644
+--- a/src/wasm/wasm-s-parser.cpp
++++ b/src/wasm/wasm-s-parser.cpp
+@@ -870,6 +870,9 @@ Expression* SExpressionWasmBuilder::makeExpression(Element& s) {
+       case 'w': {
+         if (!strncmp(str, "wake", strlen("wake"))) return makeAtomicWake(s);
+       }
++#if defined(__GNUC__) && !defined(__clang__)
++      __attribute__ ((fallthrough));
++#endif
+       default: abort_on(str);
+     }
+   }
