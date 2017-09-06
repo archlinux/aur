@@ -1,6 +1,6 @@
 # Maintainer: Mickael Foucaux <mickael.foucaux@gmail.com>
 pkgname=gopro-tools-git
-pkgver=1.0.r0.g5c6bd4e
+pkgver=1.0.r14.gd21c542
 pkgrel=1
 pkgdesc="Tools for post production with GoPro cameras"
 arch=('any')
