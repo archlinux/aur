@@ -10,7 +10,7 @@ pkgdesc="An ANSI C command line parser"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://argtable.sourceforge.net/"
 license=('LGPL')
-source=(http://downloads.sourceforge.net/argtable/$pkgname${pkgver/./-}.tar.gz)
+source=(https://downloads.sourceforge.net/argtable/$pkgname${pkgver/./-}.tar.gz)
 sha1sums=('bce828c64c35e16f4c3f8e1f355e4a2a97fe3289')
 
 build() {

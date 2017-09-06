@@ -7,7 +7,7 @@ pkgbase = argtable
 	arch = x86_64
 	arch = armv7h
 	license = LGPL
-	source = http://downloads.sourceforge.net/argtable/argtable2-13.tar.gz
+	source = https://downloads.sourceforge.net/argtable/argtable2-13.tar.gz
 	sha1sums = bce828c64c35e16f4c3f8e1f355e4a2a97fe3289
 
 pkgname = argtable
