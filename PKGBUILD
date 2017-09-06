@@ -1,7 +1,7 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=bootp
 pkgver=2.4.3_18
-pkgrel=1
+pkgrel=2
 pkgdesc="A BOOTP server"
 arch=('i686' 'x86_64')
 url="http://packages.ubuntu.com/trusty/bootp"
@@ -25,12 +25,12 @@ build() {
 package() {
   cd "$srcdir/$pkgname-${pkgver%_*}"
 
-  install -d -m755 "$pkgdir"/usr/sbin
+  install -d -m755 "$pkgdir"/usr/bin
   install -d -m755 "$pkgdir"/usr/share/man/{man5,man8}
   install -d -m755 "$pkgdir"/etc
 
-  make DESTDIR="$pkgdir/" install
-  make DESTDIR="$pkgdir/" install.man
+  make BINDIR="/usr/bin" DESTDIR="$pkgdir/" install
+  make MANDIR="/usr/share/man" DESTDIR="$pkgdir/" install.man
 
   touch "$pkgdir"/etc/bootptab
 
