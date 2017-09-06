@@ -1,0 +1,24 @@
+pkgbase = openstreetcam-gui
+	pkgdesc = Upload GUI for OpenStreetCam, a collaborative street view
+	pkgver = r15.9ac859e
+	pkgrel = 1
+	url = https://github.com/openstreetcam/upload-GUI
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = openssl
+	source = openstreetcam-gui-r15.9ac859e::git+https://github.com/openstreetcam/upload-GUI#commit=9ac859ea82979946a97fd10b53a85eaab3fea36d
+	source = openstreetcam-gui-r15.9ac859e.patch
+	source = openstreetcam-gui.sh
+	source = openstreetcam-gui.desktop
+	source = openstreetcam-logo.png
+	sha256sums = SKIP
+	sha256sums = ccfcb42abe10d11826876467f514fba90b24c914789255f74ddf28a6c18570ac
+	sha256sums = 46c5be97dc7744382ccabbfe74ead7e2f1aafd2f9a6edcbbbb73f32569361131
+	sha256sums = 2e97ece5686d44c049112fb66aa45dc747b6d8123a5e52cc356e4f4b9f87a08f
+	sha256sums = cab24a82fd85b9f901150915b51b18b60afbb4e159f074a807fb3e4581a5d6fe
+
+pkgname = openstreetcam-gui
+

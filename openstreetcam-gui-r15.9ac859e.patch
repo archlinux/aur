@@ -1,0 +1,41 @@
+diff --git a/OSV_Qt_upload/KQOAuth/KQOAuth.pro b/OSV_Qt_upload/KQOAuth/KQOAuth.pro
+index 5b5b4b2..97bb2c8 100755
+--- a/OSV_Qt_upload/KQOAuth/KQOAuth.pro
++++ b/OSV_Qt_upload/KQOAuth/KQOAuth.pro
+@@ -53,8 +53,8 @@ else:macx {
+     LIBS+= $$PWD/../openssl/lib/libssl.a
+ }
+ else:unix {
+-    LIBS += /usr/lib/x86_64-linux-gnu/libcrypto.so
+-    LIBS += /usr/lib/x86_64-linux-gnu/libssl.so
++    LIBS += /usr/lib/libcrypto.so
++    LIBS += /usr/lib/libssl.so
+ }
+ 
+ #headers.files = \
+diff --git a/OSV_Qt_upload/OSV_Qt_upload/UploadComponent/UploadComponent.pro b/OSV_Qt_upload/OSV_Qt_upload/UploadComponent/UploadComponent.pro
+index e21f875..e762587 100755
+--- a/OSV_Qt_upload/OSV_Qt_upload/UploadComponent/UploadComponent.pro
++++ b/OSV_Qt_upload/OSV_Qt_upload/UploadComponent/UploadComponent.pro
+@@ -2,7 +2,7 @@ TEMPLATE = app
+ 
+ QT += qml quick concurrent core network xml
+ 
+-CONFIG += c++11 kqoauth
++CONFIG += c++11 kqoauth deploy
+ 
+ SOURCES += main.cpp \
+     logincontroller.cpp \
+diff --git a/OSV_Qt_upload/UploadComponent/UploadComponent.pro b/OSV_Qt_upload/UploadComponent/UploadComponent.pro
+index aa9f517..799861f 100755
+--- a/OSV_Qt_upload/UploadComponent/UploadComponent.pro
++++ b/OSV_Qt_upload/UploadComponent/UploadComponent.pro
+@@ -2,7 +2,7 @@ TEMPLATE = app
+ 
+ QT += qml quick concurrent core network xml
+ 
+-CONFIG += c++11 kqoauth
++CONFIG += c++11 kqoauth deploy
+ 
+ SOURCES += main.cpp \
+     logincontroller.cpp \

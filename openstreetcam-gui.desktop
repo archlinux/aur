@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=Upload geotagged images to OpenStreetCam
+Terminal=false
+Name=OpenStreetCam uploader
+Exec=openstreetcam-gui
+Type=Application
+Icon=openstreetcam.png
+Categories=Application;Network;
