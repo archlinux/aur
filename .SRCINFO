@@ -1,6 +1,6 @@
 pkgbase = opencv-git
 	pkgdesc = Open Source Computer Vision Library
-	pkgver = 3.2.0.r755.g0213b508dc
+	pkgver = 3.3.0.r199.g2ac57a2b1f
 	pkgrel = 1
 	url = http://opencv.org/
 	arch = i686
@@ -16,13 +16,16 @@ pkgbase = opencv-git
 	depends = openexr
 	depends = xine-lib
 	depends = libdc1394
-	depends = gtkglext
+	depends = hdf5
+	depends = gst-plugins-base-libs
+	depends = gtk3
+	depends = protobuf
 	optdepends = opencv-samples
 	optdepends = eigen
 	optdepends = opencl-icd-loader: For coding with OpenCL
 	optdepends = python-numpy: Python 3 interface
 	optdepends = python2-numpy: Python 2 interface
-	provides = opencv=3.2.0.r755.g0213b508dc
+	provides = opencv=3.3.0.r199.g2ac57a2b1f
 	conflicts = opencv
 	conflicts = opencv-git
 	source = git+https://github.com/opencv/opencv.git

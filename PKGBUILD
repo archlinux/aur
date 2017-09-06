@@ -12,13 +12,20 @@
 
 _name=opencv
 pkgname="${_name}-git"
-pkgver=3.2.0.r755.g0213b508dc
+pkgver=3.3.0.r199.g2ac57a2b1f
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library"
 url="http://opencv.org/"
 license=('BSD')
 arch=('i686' 'x86_64')
-depends=('intel-tbb' 'openexr' 'xine-lib' 'libdc1394' 'gtkglext')
+depends=('intel-tbb'
+         'openexr'
+         'xine-lib'
+         'libdc1394'
+         'hdf5'
+         'gst-plugins-base-libs'
+         'gtk3'
+         'protobuf')
 makedepends=('git' 'cmake' 'python2-numpy' 'python-numpy' 'mesa' 'eigen')
 optdepends=('opencv-samples'
             'eigen'
