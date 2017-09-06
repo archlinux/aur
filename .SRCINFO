@@ -1,16 +1,16 @@
 pkgbase = kubectl-bin
 	pkgdesc = Kubernetes.io client binary
-	pkgver = 1.7.4
+	pkgver = 1.7.5
 	pkgrel = 1
 	url = http://kubernetes.io
 	arch = i686
 	arch = x86_64
 	license = apache
 	conflicts = kubernetes>=1.4.6
-	source_i686 = kubectl-1.7.4::https://storage.googleapis.com/kubernetes-release/release/v1.7.4/bin/linux/386/kubectl
-	md5sums_i686 = d590e6500d82fd2373657c9de36d441b
-	source_x86_64 = kubectl-1.7.4::https://storage.googleapis.com/kubernetes-release/release/v1.7.4/bin/linux/amd64/kubectl
-	md5sums_x86_64 = bfe096b0e6365500ad036c0408fb30bc
+	source_i686 = kubectl-1.7.5::https://storage.googleapis.com/kubernetes-release/release/v1.7.5/bin/linux/386/kubectl
+	md5sums_i686 = 22fd8ee68fd94a20dcf072e615f57fcd
+	source_x86_64 = kubectl-1.7.5::https://storage.googleapis.com/kubernetes-release/release/v1.7.5/bin/linux/amd64/kubectl
+	md5sums_x86_64 = 15b9d867cc6cac7de5efc0fed262c5af
 
 pkgname = kubectl-bin
 
