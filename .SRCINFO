@@ -1,7 +1,7 @@
 pkgbase = readpdf-git
-	pkgdesc = A simple script for pdf reading on tty.
+	pkgdesc = A simple script for pdf reading on tty / CLI, framebuffer, fbi and poppler are needed.
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/realasking/tty_pdf_reading
 	arch = x86_64
 	arch = i686
