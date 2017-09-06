@@ -3,7 +3,7 @@
 
 pkgname=cryptomator
 pkgver=1.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=("any")
 url="https://cryptomator.org/"
@@ -16,7 +16,7 @@ source=("antkit-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/rel
         'cryptomator-vault.xml'
         'logback.xml')
 sha256sums=('ceb34e70a9f68544d8ff7be524bfb597238183adcd0a29d50e4509bc1dfa3a57'
-            'fe190cfcf0f3da91b0314e2d76e86dc49ae8ef1d33558997f0b3fcd81d33e3c2'
+            '544b707a5e5d5d2f7694b6044f9bedc8a4bb7a783bc427d6c46bf7d3a22eaa1f'
             '1193f85b545298f6d474c7f17865433f25c73995b00894e0d7d7bc873c696464'
             '78537ead26dcc1488d7fff02f47fce559f70f9bb2d7fa7fa1741ad3cd151bfad'
             '913c7995d51f305c36a81cda9cbce96c9481a04516ccc57024f33590e1c822ea')
