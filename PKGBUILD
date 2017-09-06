@@ -23,30 +23,14 @@ export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
-
-  if [ -f Makefile.PL ]; then
-    perl Makefile.PL
-    make
-  else
-    perl Build.PL
-    ./Build
-  fi
+  perl Makefile.PL
+  make
 }
 check(){
   cd "$srcdir"/$_perlmod-$pkgver
-
-  if [ -f Makefile.PL ]; then
-    make test
-  else
-    ./Build test
-  fi
+  make test
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
-
-  if [ -f Makefile.PL ]; then
-    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-  else
-    ./Build install installdirs=vendor destdir="$pkgdir"
-  fi
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
