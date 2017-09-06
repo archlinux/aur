@@ -3,13 +3,18 @@
 
 pkgname=gromacs
 pkgver=2016.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
 arch=('i686' 'x86_64')
-depends=('blas' 'lapack' 'cblas' 'zlib' 'hwloc' 'libx11' 'gcc5')
-makedepends=('cmake')
+depends=('lapack' 'zlib' 'libx11')
+optdepends=('cuda: Nvidia GPU support'
+            'openmotif:  needed for gmx view'
+            'perl: needed for demux.pl and xplor2gmx.pl'
+	    'opencl-mesa: OpenCL support for AMD GPU'
+	    'opencl-nvidia: OpenCL support for Nvidia GPU')
+makedepends=('cmake' 'libxml2' 'hwloc' 'gcc5')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/${pkgname}-${pkgver}.tar.gz)
 sha1sums=('1ae1ea922b94c74f43ee066e3ea64bafa1c6c3b6')
