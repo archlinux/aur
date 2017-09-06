@@ -1,0 +1,20 @@
+pkgbase = python-telebot
+	pkgdesc = A Telegram bot library, with simple route decorators.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/KyleJamesWalker/telebot
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/KyleJamesWalker/telebot/archive/v0.0.3.tar.gz
+	md5sums = c220c4c5305bd8ad959af02be96d9051
+
+pkgname = python-telebot
+	depends = python
+	depends = python-requests
+
+pkgname = python2-telebot
+	depends = python2
+	depends = python2-requests
+
