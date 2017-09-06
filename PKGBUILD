@@ -1,7 +1,8 @@
-# Maintainer: Patrick Griffis <tingping@tingping.se>
+# Maintainer: Maks Mazurov <foxcpp@yandex.ru>
+# Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=hexchat-otr
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='HexChat plugin for Off-The-Record support'
 arch=('i686' 'x86_64')
@@ -10,7 +11,7 @@ license=('GPL2')
 conflicts=('hexchat-otr-git')
 depends=('libotr' 'hexchat')
 source=("https://github.com/TingPing/hexchat-otr/releases/download/$pkgver/hexchat-otr-$pkgver.tar.xz")
-sha256sums=('741ef50e40439ca35ccd0537794a1d4e4ef9878d318cbb773a90e6578d357521')
+sha256sums=('e18425f4b20447caddf64a9079b8750200100e158a03575d89457bb6d8f8d5f1')
 
 build() {
     cd "$pkgname-$pkgver"

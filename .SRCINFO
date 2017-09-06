@@ -1,6 +1,6 @@
 pkgbase = hexchat-otr
 	pkgdesc = HexChat plugin for Off-The-Record support
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/TingPing/hexchat-otr
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = hexchat-otr
 	depends = libotr
 	depends = hexchat
 	conflicts = hexchat-otr-git
-	source = https://github.com/TingPing/hexchat-otr/releases/download/0.2.1/hexchat-otr-0.2.1.tar.xz
-	sha256sums = 741ef50e40439ca35ccd0537794a1d4e4ef9878d318cbb773a90e6578d357521
+	source = https://github.com/TingPing/hexchat-otr/releases/download/0.2.2/hexchat-otr-0.2.2.tar.xz
+	sha256sums = e18425f4b20447caddf64a9079b8750200100e158a03575d89457bb6d8f8d5f1
 
 pkgname = hexchat-otr
 
