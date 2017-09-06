@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='rsb-tools-cpp-stable-git'
-pkgver=0.15.0.6c5e3b7
+pkgver=0.16.0.37e6de7
 pkgrel=1
 pkgdesc='Robotics Service Bus C++ tools'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=('rsc-stable-git' 'boost' 'protobuf' 'rsb-cpp-stable-git')
 makedepends=('git' 'cmake')
 checkdepends=('python2')
-source=("rsb-tools-cpp::git+https://code.cor-lab.org/git/rsb.git.tools-cpp#branch=0.15")
+source=("rsb-tools-cpp::git+https://code.cor-lab.org/git/rsb.git.tools-cpp#branch=0.16")
 md5sums=('SKIP')
 conflicts=('rsb-tools-cpp')
 provides=('rsb-tools-cpp')
