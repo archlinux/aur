@@ -6,7 +6,7 @@ url=""
 arch=('i686' 'x86_64')
 license=('')
 depends=('glibc')
-source=("ftp://ftp.cs.helsinki.fi/pub/Software/Local/Sgrep/$pkgname-$pkgver.tar.gz")
+source=("https://fossies.org/linux/misc/old/$pkgname-$pkgver.tar.gz")
 md5sums=('8cdd044602061b0ecd3e610fde655a3f')
 
 build() {
