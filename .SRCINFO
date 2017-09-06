@@ -1,7 +1,7 @@
 pkgbase = rsc-stable-git
 	pkgdesc = Robotics Systems Commons library
-	pkgver = 0.15.1.c89d3c1
-	pkgrel = 2
+	pkgver = 0.16.0.36f619b
+	pkgrel = 1
 	url = https://projects.cor-lab.org/projects/rsc
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = rsc-stable-git
 	depends = boost
 	provides = rsc
 	conflicts = rsc
-	source = git+https://code.cor-lab.org/git/rsc.git#branch=0.15
+	source = git+https://code.cor-lab.org/git/rsc.git#branch=0.16
 	md5sums = SKIP
 
 pkgname = rsc-stable-git
