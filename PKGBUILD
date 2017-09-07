@@ -41,7 +41,7 @@ package() {
   install -m755 KQOAuth/libKQOAuth.so* HTTPRequest/libHTTPRequest.so* "$pkgdir/usr/lib/$pkgname/"
   install -Tm755 "UploadComponent/UploadComponent" "$pkgdir/usr/lib/$pkgname/$pkgname"
 
-  # Install auxiliary files created by Arch package maintainer for your convenience
+  # Install auxiliary files created by the Arch package maintainer for your convenience
   install -DTm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -DTm755 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -DTm755 "$srcdir/openstreetcam-logo.png" "$pkgdir/usr/share/pixmaps/openstreetcam.png"
