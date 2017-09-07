@@ -1,0 +1,19 @@
+pkgbase = attr-aarch64
+	pkgdesc = Extended attribute support library for ACL support
+	pkgver = 2.4.47
+	pkgrel = 3
+	url = http://savannah.nongnu.org/projects/attr
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gettext
+	depends = glibc
+	depends = aarch64-linux-gnu-gcc
+	source = https://download.savannah.gnu.org/releases/attr/attr-2.4.47.src.tar.gz
+	source = https://download.savannah.gnu.org/releases/attr/attr-2.4.47.src.tar.gz.sig
+	validpgpkeys = 600CD204FBCEA418BD2CA74F154343260542DF34
+	sha256sums = 25772f653ac5b2e3ceeb89df50e4688891e21f723c460636548971652af0a859
+	sha256sums = SKIP
+
+pkgname = attr-aarch64
+
