@@ -1,9 +1,12 @@
 [Desktop Entry]
 Name=Substance Painter
+GenericName=3D Painting/Texturing Software
+Description=3D painting software for PBR model texturing and rendering
 Exec=/usr/bin/substance-painter
 Icon=substance-painter-icon
+Version=2017.2.0
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=Graphics
-
+Categories=Utility;Graphics
+MimeType=application/x.allegorithmic.package+xml;application/x.allegorithmic.substance
