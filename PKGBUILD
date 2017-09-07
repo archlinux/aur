@@ -8,9 +8,9 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.15.1
+pkgver=1.16
 pkgrel=1
-_commit=41abd21afdf7424c89319ee7cb0445cc6f376959
+_commit=aa42e6ef8184e8ab20ddaa5682b861bfb6f0b2ad
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
 license=('MIT')
@@ -21,11 +21,9 @@ conflicts=('vscode-oss')
 provides=('vscode-oss')
 
 source=("vscode::git+https://github.com/Microsoft/vscode#commit=${_commit}"
-        "0001-Show-invalid-version-string-if-ts-version-cannot-be-.patch"
         "startup_script.patch"
         "${pkgname}.desktop")
 sha256sums=('SKIP'
-            'aeeb01ddf5c8e6d5bb9aef6424f858c37088dd0f53ddb10f791316c3c90d1a07'
             '8b2feded3382e5bf6b5b292c14083bfc536c05cd00f3235dd22b75b67fba134d'
             'd140d0de9998a2a886a6d2ff23f356f8b68c8aae5a53c33ec87826e5d7ad3529')
 
@@ -54,8 +52,6 @@ esac
 
 prepare() {
     cd "${srcdir}/vscode"
-
-    patch -p1 -i ../0001-Show-invalid-version-string-if-ts-version-cannot-be-.patch
 
     if (( VSCODE_NONFREE )); then
         patch -p1 -i "${srcdir}/product_json.patch"
