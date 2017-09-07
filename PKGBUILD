@@ -1,45 +1,57 @@
-# Maintainer: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Contributor: kusanaginoturugi <kusanaginoturugi at gmail dot com>
 _name=firefox
 _channel=developer
-_language=ja
-pkgname="${_name}-${_channel}-${_language}"
-pkgdesc=' Standalone web browser from mozilla.org, developer build - Japanese'
-url='http://www.mozilla.org/firefox/developer'
-pkgver=54.0a2
-pkgrel=5
+_srcurl="https://download-installer.cdn.mozilla.net/pub/devedition/releases"
+_locale="ja"
+pkgname="${_name}-${_channel}-ja"
+pkgdesc='Standalone web browser from mozilla.org, developer build - Japanese'
+url="https://www.mozilla.org/${_locale}/firefox/developer/"
+pkgver=56.0b9
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-_file="${_name}-${pkgver}.${_language}.linux-${CARCH}"
-_srcurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n"
-source=("${_srcurl}/${_file}.tar.bz2" "firefox-$_channel-$_language.desktop" "vendor.js")
-sha512sums=('1cb2cabd4b0c6acd65f8a2cf2ba345eb1c5028f0ef8f8aa12fe3e29dd9f19e8fae82149d653c3282b91299a37d410b431c7856c76e2ea4c78c07f2634575691e'
-            '7102fe45c8b2d74d1c400fedfe5c717bda9250cb3f573a7b2b153e415b35fb80d0d06c500d13396247810dc9cbf0438534d640bdf2d47475d30156bfdbcdfb6c'
+source=("${_name}-${_channel}.desktop" "vendor.js")
+source_i686=("${_srcurl}/${pkgver}/linux-i686/${_locale}/${_name}-${pkgver}.tar.bz2")
+source_x86_64=("${_srcurl}/${pkgver}/linux-x86_64/${_locale}/${_name}-${pkgver}.tar.bz2")
+sha512sums=('9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
-depends=(
-  'alsa-lib'
-  'libxt'
-  'libnotify'
-  'mime-types'
-  'nss'
-  'gtk3'
-  'sqlite3'
-  'dbus-glib'
-)
-optdepends=(
-  'pulseaudio: audio/video playback'
-  'ffmpeg: h.264 video'
-  'hunspell: spell checking'
-  'hyphen: hyphenation'
-)
+sha512sums_i686=('5433f191698ea0c17e90090581096ed987c0c273d87e6024b4470802464dfee9e94e32f73c1b46575878c80eb29abded7ea3d7b82fdddd0c0038813042b99a8b')
+sha512sums_x86_64=('6c436a3990e973975c83eb2bb145c23c45b88b8c3d24b4fe893237d316888643cab4858220afeb8f0fb88db004960590cef23fa42a5c40db3fcb284a804130d8')
+
 provides=(firefox-developer)
 conflicts=(firefox-developer)
-package() {
-  install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
-  cp -r firefox $pkgdir/opt/firefox-$_channel
 
-  ln -s /opt/firefox-$_channel/firefox $pkgdir/usr/bin/firefox-$_channel
-  install -m644 $srcdir/firefox-$_channel-$_language.desktop $pkgdir/usr/share/applications/
-  install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$pkgname-icon.png
-  install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
+depends=('dbus-glib'
+         'gtk2'
+         'gtk3'
+         'libxt'
+         'nss')
+
+optdepends=(
+	'pulseaudio: audio/video playback'
+	'ffmpeg: h.264 video'
+	'hunspell: spell checking'
+	'hyphen: hyphenation'
+)
+
+package() {
+	OPT_PATH="opt/${pkgname}"
+	install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
+	cp -r firefox $pkgdir/${OPT_PATH}
+
+	ln -s /${OPT_PATH}/firefox $pkgdir/usr/bin/${_name}-${_channel}
+	# Icon Stuff
+	SRC_LOC="${srcdir}"/${_name}/browser
+	DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
+	for i in 16 32 48
+	do
+		install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${pkgname}.png
+	done
+	install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$pkgname-icon.png
+
+	install -m644 $srcdir/${_name}-${_channel}.desktop $pkgdir/usr/share/applications/
+	install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
+	# Use system-provided dictionaries
+	rm -rf "${pkgdir}"/${OPT_PATH}/{dictionaries,hyphenation}
+	ln -sf /usr/share/hunspell "${pkgdir}"/${OPT_PATH}/dictionaries
+	ln -sf /usr/share/hyphen "${pkgdir}"/${OPT_PATH}/hyphenation
 }
