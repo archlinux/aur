@@ -9,6 +9,10 @@ case $install in
 		fi
 		cp /usr/share/doc/clerk/clerk.tmux /usr/share/doc/clerk/clerk.conf "${HOME}/.config/clerk"
 		sed -i "s@PLACEHOLDER@"$HOME"@" "${HOME}/.config/clerk/clerk.conf"
+		if [[ -n ${MPD_HOST} ]]
+		then
+			sed -i "s/localhost/"$MPD_HOST"/" "${HOME}/.config/clerk/clerk.conf"
+		fi
 		;;
 	*)	exit;
 esac
