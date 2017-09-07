@@ -22,9 +22,8 @@ pkgver() {
 }
 
 package() {
-    cd ${srcdir}
     install -D -m 755 ${srcdir}/clerk/clerk "${pkgdir}/usr/bin/clerk"
-    install -D -m 755 ${srcdir}/clerk/clerk_setup "${pkgdir}/usr/bin/clerk_setup"
+    install -D -m 755 clerk_setup "${pkgdir}/usr/bin/clerk_setup"
     install -D -m 644 ${srcdir}/clerk/clerk.conf "${pkgdir}/usr/share/doc/clerk/clerk.conf"
     install -D -m 644 ${srcdir}/clerk/clerk.tmux "${pkgdir}/usr/share/doc/clerk/clerk.tmux"
 }
