@@ -1,0 +1,23 @@
+pkgbase = lesstif
+	pkgdesc = LGPL'd re-implementation of Motif
+	pkgver = 0.95.2
+	pkgrel = 7
+	url = http://sourceforge.net/projects/lesstif/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = MIT
+	depends = freetype2
+	depends = libxt
+	depends = libxp
+	options = !makeflags
+	options = !buildflags
+	source = http://downloads.sourceforge.net/lesstif/lesstif-0.95.2.tar.bz2
+	source = LICENSE
+	source = 040_fedora_XxxxProperty-64bit.diff
+	md5sums = 754187dbac09fcf5d18296437e72a32f
+	md5sums = b1f320192a9154f72d83e9d3d5a25a2f
+	md5sums = 30e2c0babc84696af089d55cb9cb2908
+
+pkgname = lesstif
+
