@@ -1,6 +1,8 @@
-# Maintainer: Rhys Kenwell <redrield+aur@gmail.com>
-pkgname=heroku-cli
-pkgver=6.14.16
+# Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
+# Based on heroku-cli by Rhys Kenwell <redrield+aur@gmail.com>
+
+pkgname=heroku-cli-nightly
+pkgver=6.14.20.737bba7
 pkgrel=1
 pkgdesc="a tool for creating and managing Heroku apps from the command line"
 arch=('i686' 'x86_64')
@@ -9,24 +11,23 @@ license=('custom' 'ISC')
 optdepends=('git: Deploying to Heroku')
 provides=('heroku-cli')
 conflicts=('heroku-cli' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
-source_x86_64=('https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x64.tar.gz')
-source_i686=('https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x86.tar.gz')
-md5sums_i686=('12d109374a5c7fc9e1d85c86445d09be')
-md5sums_x86_64=('9e7b3bbf44bb9c2263ccc6ce2c99bfb6')
+source_x86_64=('heroku-cli-linux.tar.gz::https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x64.tar.gz')
+source_i686=('heroku-cli.tar-linux.gz::https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x86.tar.gz')
+md5sums_i686=('9ccef74dcbf7e98afbf964b75da8a66f')
+md5sums_x86_64=('5f19a330f2a3a1f71bc1db3d8f5cf4b3')
 
-prepare() {
-    cd "${srcdir}"
-    dir=$(find . -type d -regextype sed -regex ".*/heroku-cli-.*" | head -n1)
-    mv $dir heroku-cli
+pkgver() {
+	tar --exclude="*/*" -tf heroku-cli-linux.tar.gz | sed 's|heroku-cli-v\(.*\)-linux-x64/|\1|;s/-/./'
 }
 
 package() {
     cd "${srcdir}"
+	dir="$(find . -type d -regextype sed -regex ".*/heroku-cli-.*" | head -n1)"
 
     install -dm 755 "${pkgdir}"/opt
     install -dm 755 "${pkgdir}"/usr/bin
-    install -Dm 644 heroku-cli/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm 644 "${dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    mv heroku-cli "${pkgdir}"/opt/heroku-cli
+    cp -r "${dir}" "${pkgdir}"/opt/heroku-cli
     ln -s /opt/heroku-cli/bin/heroku "${pkgdir}"/usr/bin/heroku
 }
