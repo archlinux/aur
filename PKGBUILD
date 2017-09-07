@@ -8,9 +8,9 @@ pkgver=0.10.3.1
 pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes deaemon, wallet and miner)"
 license=('custom:Cryptonote')
-arch=('x86_64' 'i686' 'armv7h')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getmonero.org/"
-depends=('boost-libs>=1.58' 'unbound>=1.4.16' 'miniupnpc>=1.6' 'libunwind' 'openssl')
+depends=('boost-libs' 'unbound' 'miniupnpc' 'libunwind' 'openssl')
 makedepends=('git' 'cmake' 'boost' 'gtest')
 provides=('monero' 'libmonero-wallet')
 conflicts=('bitmonero-git' 'libmonero-wallet-git')
