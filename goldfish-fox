@@ -1,0 +1,6 @@
+#!/bin/sh
+# Script to start Firefox with a temporary empty profile
+
+RANDOMFFX=$(mktemp -d --suffix .moz)
+firefox --new-instance --profile "$RANDOMFFX" "$1"
+rm -rf "$RANDOMFFX"
