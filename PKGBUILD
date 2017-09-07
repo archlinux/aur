@@ -20,9 +20,11 @@ makedepends=('git' 'cmake' 'boost')
 
 pkgdesc="Official QT GUI wallet for Monero, a private, secure, untraceable peer-to-peer currency"
 
-source=("https://github.com/monero-project/monero-core/archive/v${pkgver}.tar.gz")
+source=("https://github.com/monero-project/monero-core/archive/v${pkgver}.tar.gz"
+        "link-libreadline.patch")
 
-md5sums=('f75ca71a3cb1ede3d063c489a0fbe1d5')
+md5sums=('f75ca71a3cb1ede3d063c489a0fbe1d5'
+         '398e643b9c4addd1607d582d2712cbf0')
 
 _srcdir=monero-core-$_monerover
 
@@ -31,6 +33,8 @@ prepare() {
 
     echo "var GUI_VERSION = \"$pkgver\"" > version.js
     echo "var GUI_MONERO_VERSION = \"$_monerover\"" >> version.js
+
+    patch -p1 < ../link-libreadline.patch
 }
 
 build() {
