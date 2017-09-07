@@ -1,0 +1,20 @@
+pkgbase = brother-mfc-j200
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J200
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-j200.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = perl
+	depends = bash
+	depends = lib32-glibc
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj200lpr-3.0.0-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj200cupswrapper-3.0.0-1.i386.rpm
+	md5sums = f2e7c9e3515103ebde415662bbfc79e3
+	md5sums = bcba51ee76ad7e665ee950b8979fb95d
+
+pkgname = brother-mfc-j200
+
