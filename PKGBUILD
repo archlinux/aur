@@ -21,7 +21,7 @@ source=("local://${_filename}"
         "hyperlightdrifter.sh")
 noextract=("${_filename}")
 md5sums=('c85ab8e098d686adb93693055a20c152'
-         '060673538dadaf471bef5e83475ddf4e'
+         '7c76043e6b67ff4abe3c7c589b110132'
          '489f12df8313d8f4fc422553fa4f2d43')
 
 prepare() {
@@ -33,10 +33,11 @@ prepare() {
 }
 
 package() {
+  mkdir -p "$pkgdir/opt/$_gamename/"
   install -Dm755 "$srcdir/$pkgname/data/x86/HyperLightDrifter.x86" "$pkgdir/opt/$_gamename/"
   cp -r "$srcdir/$pkgname/data/noarch/"* "$pkgdir/opt/$_gamename/"
 
-  install -Dm644 "$srcdir/hyperlightdrifter.sh" "$pkgdir/usr/bin/hyperlightdrifter"
+  install -Dm755 "$srcdir/hyperlightdrifter.sh" "$pkgdir/usr/bin/hyperlightdrifter"
   install -Dm644 "$srcdir/hyperlightdrifter.desktop" "$pkgdir/usr/share/applications/hyperlightdrifter.desktop"
 }
 
