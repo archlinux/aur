@@ -25,7 +25,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Installing license...'
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 LICENCE -t "$pkgdir/usr/share/licenses/$pkgname"
 
   msg2 'Installing documentation...'
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
