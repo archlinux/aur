@@ -15,6 +15,15 @@
 #define DBPATH "/var/lib/pacman/"
 #define CACHEDIR "/var/cache/pacman/pkg/"
 
+/*
+ * This is a very stupid and simple limit of the longest human readable file
+ * size. Maximum file size that will be representable will be:
+ * 999.9 YiB\0
+ * which "should be enough".
+ */
+#define LONGEST_HUMAN_READABLE 10
+#define NUM_HUMAN_READABLE_UNITS 9
+
 const char *argp_program_version = "pkgcacheclean "VERSION;
 const char *argp_program_bug_address = "auguste@gmail.com";
 
@@ -35,6 +44,7 @@ static struct argp_option options[] =
     { .name = "all-as-installed", .key = 'k',
       .doc = "Treat not-installed packages as installed" },
     { .name = "verbose", .key = 'v', .doc = "Verbose output" },
+    { .name = "human-readable", .key = 'h', .doc = "Human readable file size" },
     { .name = "quiet", .key = 'q', .doc = "Suppress output, default" },
     { .doc = NULL }
 };
@@ -55,6 +65,7 @@ struct arguments
     int preserve;
     int keep;
     int verbose;
+    int human_readable;
     char *cachedir;
 };
 
@@ -143,6 +154,33 @@ static off_t get_file_size(const char *filename)
     return st.st_size;
 }
 
+static void human_readable(off_t total_size, char* buf)
+{
+    const char* units[NUM_HUMAN_READABLE_UNITS] = {
+        "B",
+        "KiB",
+        "MiB",
+        "GiB",
+        "TiB",
+        "PiB",
+        "EiB",
+        "ZiB",
+        "YiB"
+    };
+    unsigned char num_divisions = 0;
+    float human_size = total_size;
+
+    while (human_size > 1024 && num_divisions < (NUM_HUMAN_READABLE_UNITS - 1))
+    {
+        human_size /= 1024;
+        num_divisions++;
+    }
+
+    snprintf(buf, LONGEST_HUMAN_READABLE, "%.1f %s",
+            human_size,
+            units[num_divisions]);
+}
+
 static error_t parse_opt(int key, char *arg, struct argp_state *state)
 {
     struct arguments *argument = (struct arguments *)(state -> input);
@@ -154,6 +192,9 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state)
             break;
         case 'v':
             argument->verbose = 1;
+            break;
+        case 'h':
+            argument->human_readable = 1;
             break;
         case 'k':
             argument->keep = 1;
@@ -190,10 +231,12 @@ int main(const int argc, char ** __restrict__ argv)
     struct pkginfo **hit = NULL;
     const char *current = "", *name;
     char cachedir[PATH_MAX] = CACHEDIR;
+    char human_readable_buf[LONGEST_HUMAN_READABLE];
     struct argp arg_parser = { .options = options, .parser = parse_opt,
         .args_doc = args_doc, .doc = doc };
     struct arguments args = { .dry_run = 0, .preserve = 0, .keep = 0,
-                              .verbose = 0, .cachedir = NULL };
+                              .verbose = 0, .human_readable = 0,
+                              .cachedir = NULL };
 
     argp_parse(&arg_parser, argc, argv, 0, NULL, &args);
     if (!args.preserve)
@@ -275,17 +318,21 @@ int main(const int argc, char ** __restrict__ argv)
             {
                 strcpy(cachedir + len, cachepkg[i]->filename);
                 if (args.verbose)
-                {
                     printf("remove: %s\n", cachepkg[i]->filename);
+                if (args.verbose || args.human_readable)
                     total_size += get_file_size(cachedir);
-                }
                 if (!args.dry_run)
                     unlink(cachedir);
             }
         }
     }
 
-    if (args.verbose)
+    if (args.human_readable)
+    {
+        human_readable(total_size, human_readable_buf);
+        printf("\ntotal: %s\n", human_readable_buf);
+    }
+    else if (args.verbose)
         printf("\ntotal: %"PRIuMAX" bytes\n", (uintmax_t)total_size);
 
     free_pkginfo_array(cachepkg, n);

@@ -1,8 +1,8 @@
 # Maintainer: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=pkgcacheclean
-pkgver=1.8.2
-pkgrel=5
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="Application to clean the pacman cache"
 arch=('any')
 url='https://bbs.archlinux.org/viewtopic.php?pid=841774'
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('pacman>=5')
 source=($pkgname.c
         $pkgname.8)
-md5sums=('d79fac7e27381249774fc8e6f15d7f2e'
+md5sums=('111a5c26c4c6536e1fda310fbd8cb824'
          '965889f755e4611c12f8c9ac0048372d')
 
 build()
