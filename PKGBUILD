@@ -22,15 +22,13 @@ build() {
   export LD=${CROSS}-ld
   export AS=${CROSS}-as
   export CXX=${CROSS}-g++
-  export CFLAGS="" # Needed for cross compiling!
+  export CFLAGS="-O3" # Needed for cross compiling!
 
   ./configure --host=aarch64-linux-gnu --prefix=/usr/aarch64-linux-gnu
 
-
-  make col
 }
 
 package(){
 
-  make -C "util-linux-2.30.1" DESTDIR="$pkgdir" install-usrlib_execLTLIBRARIES
+  make -C "util-linux-2.30.1" DESTDIR="$pkgdir" install-all-am install-usrlib_execLTLIBRARIES install-nodist_fdiskincHEADERS install-nodist_mountincHEADERS install-nodist_blkidincHEADERS install-uuidincHEADERS
 }
