@@ -1,0 +1,7 @@
+
+post_install() {
+    echo "To use timescaledb, edit your /var/lib/postgres/data/postgresql.conf
+to uncoment 'shared_preload_libraries' and add required library:
+    shared_preload_libraries = 'timescaledb'
+Then restart postgres."
+}
