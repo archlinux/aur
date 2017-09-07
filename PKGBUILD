@@ -43,13 +43,13 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce_policy/1.5.0/jce_policy-1_5_0.zip"
+source=("http://archive.org/download/jdk-1_5_0_$_minor-linux-i586/jce_policy-1_5_0.zip"
         'javaws-launcher'
         "jconsole32-$_jname.desktop"
         "jmc32-$_jname.desktop"
         "jvisualvm32-$_jname.desktop"
         "policytool32-$_jname.desktop")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/1.5.0_$_minor/jdk-1_5_0_$_minor-linux-i586.bin")
+source_x86_64=("http://archive.org/download/jdk-1_5_0_$_minor-linux-i586/jdk-1_5_0_$_minor-linux-i586.bin")
 
 md5sums=('169441bba1ca95e84e030e116f258d79'
          '45c15a6b4767288f2f745598455ea2bf'
