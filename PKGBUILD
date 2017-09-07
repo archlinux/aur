@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/nylas-mail-lives/nylas-mail/"
 license=('GPL3')
 depends=('libxkbfile' 'libxss' 'python' 'nodejs' 'libxtst' 'alsa-lib' 'gconf' 'gcc-libs-multilib' 'nss' 'libxtst' 'gtk2' 'libgnome-keyring')
-provides=('nylas')
+provides=('nylas-mail')
 source=("https://github.com/nylas-mail-lives/nylas-mail/releases/download/${pkgver}/${_pkgname}-${pkgver}-amd64.deb")
 sha256sums=('5de1beaf9ad8824e635846fb4e9110fac874c41f1797fe33644a13ba222768dc')
 
