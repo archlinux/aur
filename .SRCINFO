@@ -1,0 +1,24 @@
+pkgbase = pacui
+	pkgdesc = Bash script providing advanced Pacman and Pacaur/Yaourt functionality in a simple UI
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/excalibur1234/pacui
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = expac
+	depends = wget
+	depends = sudo
+	depends = fzf
+	optdepends = pacaur: Needed for AUR support. If installed, it gets used by default over Yaourt.
+	optdepends = yaourt: Needed for AUR support.
+	optdepends = pacman-mirrors: Needed for Manjaro mirror support
+	optdepends = reflector: Needed for Arch Linux mirror support
+	optdepends = downgrade: Needed for hidden "downgrade" option.
+	conflicts = pacui-git
+	conflicts = pacli-simple-git
+	source = pacui::git+https://github.com/excalibur1234/pacui.git
+	md5sums = d24da2eab1c00d7cb15bfb36e7eb57bf
+
+pkgname = pacui
+
