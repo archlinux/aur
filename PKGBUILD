@@ -5,18 +5,19 @@
 
 pkgname=bash-devel-git
 pkgdesc='The GNU Bourne Again shell (development version)'
-pkgver=4.0.alpha.r458.gb729dac
+pkgver=4.0.alpha.r535.g560db36b
 pkgrel=1
 url='http://www.gnu.org/software/bash/bash.html'
 arch=('i686' 'x86_64')
 license=('GPL')
 backup=(etc/bash.bash{rc,_logout} etc/skel/.bash{rc,_profile,_logout})
 depends=('glibc' 'ncurses' 'libncursesw.so')
+makedepends=('git')
 optdepends=('bash-completion: for tab completion')
 provides=('sh' 'bash=4.4')
 conflicts=('bash')
 install=bash.install
-source=('git://git.savannah.gnu.org/bash.git#branch=devel'
+source=('git+https://git.savannah.gnu.org/git/bash.git#branch=devel'
         'dot.bashrc'
         'dot.bash_profile'
         'dot.bash_logout'
