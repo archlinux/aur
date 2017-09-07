@@ -11,7 +11,7 @@ pkgbase = tigcap
 	depends = maim
 	optdepends = libnotify: Notification support
 	source = https://github.com/theimgguru/tigcap/archive/master.tar.gz
-	md5sums = 5b7e20e4c71d6176e0d40545591fd8ff
+	md5sums = afc09fcd821d11ae70556366bb6847e9
 
 pkgname = tigcap
 

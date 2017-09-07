@@ -38,3 +38,4 @@ package() {
   install TIGCap.desktop "$pkgdir/usr/share/applications"
 }
 md5sums=('afc09fcd821d11ae70556366bb6847e9')
+md5sums=('afc09fcd821d11ae70556366bb6847e9')
