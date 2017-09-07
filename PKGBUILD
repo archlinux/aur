@@ -1,6 +1,6 @@
 # Maintainer: Heating Device <via DoT heatingdevice OT me DuT co m>
 pkgname=tigcap
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="A powerful screenshot tool"
 arch=('x86_64' 'armv7h')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=(https://github.com/theimgguru/tigcap/archive/master.tar.gz)
 noextract=()
-md5sums=() #autofill using updpkgsums
+md5sums=('afc09fcd821d11ae70556366bb6847e9')
 
 build() {
   cd "$pkgname-master"
@@ -37,5 +37,3 @@ package() {
   mkdir -p "$pkgdir/usr/share/applications"
   install TIGCap.desktop "$pkgdir/usr/share/applications"
 }
-md5sums=('afc09fcd821d11ae70556366bb6847e9')
-md5sums=('afc09fcd821d11ae70556366bb6847e9')
