@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_shell is a Python GUI plugin providing an interactive shell."
 url='http://wiki.ros.org/rqt_shell'
 
 pkgname='ros-lunar-rqt-shell'
-pkgver='0.4.8'
+pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rqt_shell-release-release-lunar-rqt_shell-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_shell-release/archive/release/lunar/rqt_shell/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('bc6a1761519871a4f5f45b79a8b7eccc18133a123b77154f983d230b05e39cc3')
+sha256sums=('22e7d399d1e2ee56cd67b7a0afa27415f7215f2a3ee770fa19aced5dc510acd0')
 
 build() {
   # Use ROS environment variables
@@ -39,14 +39,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
