@@ -3,7 +3,7 @@
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=libxml2
-pkgver=2.9.5rc2+0+g69936b12
+pkgver=2.9.5+6+g07e227ed
 pkgrel=1
 pkgdesc="XML parsing library, version 2"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=('zlib' 'readline' 'ncurses' 'xz' 'icu')
 options=(!makeflags)
 makedepends=('python2' 'python' 'git')
 url="http://www.xmlsoft.org/"
-_commit=69936b129fedcda3514fee1a0d6b39521923cbac  # tags/v2.9.5-rc2^0
+_commit=07e227ed00d0fb787c06cf03069b2904e692e770  # master
 source=(git+https://git.gnome.org/browse/libxml2#commit=$_commit
         https://www.w3.org/XML/Test/xmlts20080827.tar.gz
         libxml2-2.9.4-remove-pyverify_fd.patch)
