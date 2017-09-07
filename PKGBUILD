@@ -8,8 +8,11 @@ url="http://web.mit.edu/xiphmont/Public/gPlanarity.html"
 license=('GPL2')
 depends=('libxrender' 'x-server' 'freetype2' 'fontconfig')
 makedepends=('subversion')
-source=('svn+https://svn.xiph.org/trunk/planarity')
-md5sums=('SKIP')
+install="gplanarity.install"
+source=('gplanarity.desktop'
+        'svn+https://svn.xiph.org/trunk/planarity')
+md5sums=('ba98adefdf2a0f5bec63a714d4337dff'
+         'SKIP')
 
 pkgver() {
 	cd "$srcdir/planarity"
@@ -27,6 +30,8 @@ build() {
 }
 
 package() {
+	desktop-file-install gplanarity.desktop --dir "$pkgdir"/usr/share/applications/
+
 	cd "$srcdir/planarity"
 	make PREFIX="$pkgdir/usr/local" install
 }
