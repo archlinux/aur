@@ -6,6 +6,6 @@ Name=Hyper Light Drifter
 GenericName=Hyper Light Drifter
 Comment=Hyper Light Drifter
 Icon=/opt/HyperLightDrifter/Icon.png
-Exec="/opt/HyperLightDrifter/HyperLightDrifter.x86"
+Exec="/usr/bin/hyperlightdrifter"
 Categories=Game;
 Path=/opt/HyperLightDrifter
