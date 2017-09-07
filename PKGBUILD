@@ -2,7 +2,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=dbus-broker
-pkgver=3
+pkgver=4
 pkgrel=1
 
 pkgdesc='Linux D-Bus Message Broker'
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('libsystemd' 'expat' 'glib2')
 makedepends=('git' 'meson' 'systemd' 'python-docutils')
 
-_commit=27ca14d0e43891d2d094a6ab3317e0e8e957fc31  # tags/v3
+_commit=a75ba60ae021cb694b46ec175134c88177c865b7  # tags/v4^0
 source=("git+https://github.com/bus1/dbus-broker#commit=$_commit"
         "git+https://github.com/c-util/c-rbtree"
         "git+https://github.com/c-util/c-sundry"
@@ -44,14 +44,14 @@ prepare() {
 
 build() {
   cd build
-  meson ../$pkgname --prefix=/usr --buildtype=release -Db_lto=true
+  meson setup ../$pkgname --prefix=/usr --buildtype=release -Db_lto=true
   ninja
   make -C ../$pkgname BUILDDIR="$PWD" docs
 }
 
 check() {
   cd build
-  mesontest
+  meson test
 }
 
 package() {
