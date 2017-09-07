@@ -1,7 +1,7 @@
 pkgbase = pylon
 	pkgdesc = Basler camera Software suite
 	pkgver = 5.0.9.10389
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.baslerweb.com/en/products/software
 	arch = x86_64
 	license = custom

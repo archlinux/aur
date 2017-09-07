@@ -3,7 +3,7 @@
 pkgname=pylon
 pkgdesc="Basler camera Software suite"
 pkgver=5.0.9.10389
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(custom)
 url=http://www.baslerweb.com/en/products/software
@@ -45,6 +45,6 @@ package() {
 	install -m 644  -Dt "$pkgdir/usr/lib/udev/rules.d"         "$srcdir/69-basler-cameras.rules"
 	install -m 644  -Dt "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/LICENSE"
 
-	#_shrink_rpaths "$pkgdir/opt/pylon5/lib64/"*
-	#_shrink_rpaths "$pkgdir/opt/pylon5/bin/"*
+	_shrink_rpaths "$pkgdir/opt/pylon5/lib64/"*
+	_shrink_rpaths "$pkgdir/opt/pylon5/bin/"*
 }
