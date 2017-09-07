@@ -13,8 +13,8 @@ provides=('heroku-cli')
 conflicts=('heroku-cli' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source_x86_64=('heroku-cli-linux.tar.gz::https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x64.tar.gz')
 source_i686=('heroku-cli.tar-linux.gz::https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x86.tar.gz')
-md5sums_i686=('9ccef74dcbf7e98afbf964b75da8a66f')
-md5sums_x86_64=('5f19a330f2a3a1f71bc1db3d8f5cf4b3')
+md5sums_i686=('SKIP')
+md5sums_x86_64=('SKIP')
 
 pkgver() {
 	tar --exclude="*/*" -tf heroku-cli-linux.tar.gz | sed 's|heroku-cli-v\(.*\)-linux-x64/|\1|;s/-/./'
