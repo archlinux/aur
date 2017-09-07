@@ -1,14 +1,14 @@
 _name=wisp
 pkgname=guile-$_name-hg
-pkgver=r1374.2a8cd5e0a13c
+pkgver=r1383.34fb66b99fad
 pkgrel=1
 pkgdesc="wisp (srfi-119) as a language for guile"
 arch=(any)
 license=(gpl3+)
 makedepends=(mercurial)
-depends=(guile)
+depends=("guile>=2")
 provides=("$_name")
-source=("hg+http://draketo.de/proj/$_name")
+source=("hg+http://draketo.de/proj/$_name#branch=stable")
 url="http://www.draketo.de/english/wisp"
 md5sums=(SKIP)
 install="$pkgname.install"
