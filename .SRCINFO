@@ -1,0 +1,21 @@
+pkgbase = libutil-linux-aarch64
+	pkgdesc = Miscellaneous system utilities for Linux
+	pkgver = 2.30.1
+	pkgrel = 2
+	url = https://www.kernel.org/pub/linux/utils/util-linux/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = systemd
+	makedepends = python
+	makedepends = libcap-ng
+	options = strip
+	options = debug
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.30/util-linux-2.30.1.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.30/util-linux-2.30.1.tar.sign
+	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
+	md5sums = 5e5ec141e775efe36f640e62f3f8cd0d
+	md5sums = SKIP
+
+pkgname = libutil-linux-aarch64
+
