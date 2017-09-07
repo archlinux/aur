@@ -1,7 +1,7 @@
 # Maintainer: Gereon Kremer <gereon.kremer@cs.rwth-aachen.de>
 
 pkgname=carl
-pkgver=17.06.r0.gd9d0411c
+pkgver=17.08
 pkgrel=1
 pkgdesc="An Open Source C++ Library for Computer Arithmetic and Logic"
 arch=("i686" "x86_64")
@@ -12,28 +12,24 @@ makedepends=("make" "cmake>=3.0")
 conflicts=()
 replaces=()
 backup=()
-source=("$pkgname::git+https://github.com/smtrat/carl.git#tag=17.06")
-md5sums=('SKIP')
+source=("https://github.com/smtrat/carl/archive/$pkgver.zip")
+md5sums=('3fc7b590b386051bad44ead47a5bd00c')
 
 prepare() {
-  cd "$pkgname" 
-}
-pkgver() {
-  cd "$pkgname"
-  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgname-$pkgver"
 }
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
   make resources
   make lib_carl
 }
 check() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   make
   make test
 }
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
 }
