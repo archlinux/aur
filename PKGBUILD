@@ -2,7 +2,7 @@
 # Maintainer: kryptxy <kryptxy@protonmail.com>
 
 pkgname=torrench
-pkgver=1.0.42
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Command-line torrent search program"
 arch=('any')
