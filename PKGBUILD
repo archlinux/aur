@@ -2,8 +2,8 @@
 
 _pkgname=pacui
 pkgname=$_pkgname-git
-pkgver=1.6.1.r52.gf15de67
-pkgrel=1
+pkgver=r628.gf15de67
+pkgrel=2
 pkgdesc="Bash script providing advanced Pacman and Pacaur/Yaourt functionality in a simple UI"
 arch=(any)
 url="https://github.com/excalibur1234/$_pkgname"
