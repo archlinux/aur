@@ -1,1 +1,3 @@
 deploy.sh
+/heroku-cli-linux.tar.gz
+/*.pkg.tar*
