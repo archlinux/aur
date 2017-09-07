@@ -3,11 +3,11 @@
 pkgname=rambox
 pkgver=0.5.12
 _relver=0.5.12  # for a release tarball containing env.js
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and Open Source messaging and emailing app that combines common web applications into one.'
 arch=(i686 x86_64)
 depends=(electron)
-makedepends=(desktop-file-utils asar ruby yarn sencha-cmd-6)
+makedepends=(desktop-file-utils asar ruby npm sencha-cmd-6)
 url='http://rambox.pro/'
 license=('GPL3')
 source=("https://github.com/saenzramiro/$pkgname/archive/$pkgver.tar.gz"
@@ -33,10 +33,10 @@ build() {
 	
 	# install packages
 	sed -Ei 's/\s+"electron": "[^"]+",//' package.json
-	yarn
+	npm install
 	
 	# build
-	yarn run sencha:compile
+	npm run sencha:compile
 	sed -i "s/require('electron-is-dev')/false/" 'build/production/Rambox/electron/main.js'
 }
 
