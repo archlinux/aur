@@ -4,7 +4,7 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgbase=hydrus
 pkgname=(hydrus)
-pkgver=271
+pkgver=272
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -24,7 +24,7 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
 # Note: the commit hash here is different to the hash on the v271 tag of the
 # git repo.  This is intentional.  The tag was mistakenly pushed with the same
 # hash as the previous version.
-source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=e7449281e6f66400ac3ada9658ec48d7cb46f30c"
+source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=1b4ae70b1c94f157e4fc2116268c2dd00fdb012a"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
