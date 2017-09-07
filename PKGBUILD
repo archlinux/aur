@@ -20,7 +20,7 @@ prepare() {
 }
 build() {
   cd "$pkgname-$pkgver"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DEXPORT_TO_CMAKE=OFF .
   make resources
   make lib_carl
 }
