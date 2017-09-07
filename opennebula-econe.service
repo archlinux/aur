@@ -11,7 +11,7 @@ Type=simple
 ExecStart=/usr/bin/ruby /usr/lib/one/ruby/cloud/econe/econe-server.rb
 ExecStop=/bin/kill -TERM $MAINPID
 PIDFile=/var/run/one/econe-server.pid
-Restart=on-abnormal
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

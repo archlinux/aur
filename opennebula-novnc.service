@@ -10,6 +10,7 @@ Type=forking
 
 ExecStart=/usr/bin/novnc-server start
 PIDFile=/var/lock/one/.novnc.lock
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

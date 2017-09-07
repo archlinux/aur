@@ -2,6 +2,7 @@
 Description=OpenNebula Web Interface
 After=syslog.target network.target remote-fs.target opennebula.service opennebula-novnc.service
 BindsTo=opennebula.service
+Wants=opennebula-novnc.service
 
 [Service]
 User=oneadmin
@@ -10,9 +11,9 @@ Type=simple
 PermissionsStartOnly=true
 
 ExecStart=/usr/bin/ruby /usr/lib/one/sunstone/sunstone-server.rb
-ExecStartPre=/usr/bin/logrotate -s /tmp/logrotate.state -f /etc/logrotate.d/opennebula
+ExecStop=/bin/kill -TERM $MAINPID
 PIDFile=/var/run/one/sunstone.pid
-Restart=on-abnormal
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

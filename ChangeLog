@@ -1,3 +1,9 @@
+2017-09-07 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
+
+  * 5.4.0-5:
+  Ensure service uptime by restarting it on every exit code
+  Make sure dependant services get restarted when opennebula restarts
+
 2017-08-24 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
 
   * 5.4.0-4:

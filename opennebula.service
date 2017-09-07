@@ -1,8 +1,10 @@
 [Unit]
 Description=OpenNebula management
-After=syslog.target network.target local-fs.target remote-fs.target mysqld.service
+After=syslog.target network.target local-fs.target remote-fs.target
+Requires=mysqld.service
 Before=opennebula-scheduler.service
 BindTo=opennebula-scheduler.service
+Wants=opennebula-sunstone.service opennebula-econe.service opennebula-onegate.service opennebula-oneflow.service opennebula-scheduler.service
 
 [Service]
 User=oneadmin
@@ -20,7 +22,7 @@ ExecStartPre=/usr/bin/logrotate -s /tmp/logrotate.state -f /etc/logrotate.d/open
 ExecStop=/bin/kill -TERM $MAINPID
 ExecStopPost=/usr/bin/rm /var/lock/one/one
 PIDFile=/var/run/one/oned.pid
-Restart=on-abnormal
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
