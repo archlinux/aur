@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+read -e -p "Create configuration for clerk? (Y/n) > " install
+install=${install:-y}
+case $install in
+	[Yy])	cp clerk $path;
+		if [[ ! -d "${HOME}/.config/clerk" ]]
+		then
+			mkdir "${HOME}/.config/clerk"
+		fi
+		cp /usr/share/doc/clerk/clerk.tmux /usr/share/doc/clerk/clerk.conf "${HOME}/.config/clerk"
+		sed -i "s@PLACEHOLDER@"$HOME"@" "${HOME}/.config/clerk/clerk.conf"
+		;;
+	*)	exit;
+esac

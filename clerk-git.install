@@ -3,6 +3,14 @@ post_install() {
 echo '
 to use clerk you need to copy /usr/share/doc/clerk/clerk.conf and clerk.tmux to $HOME/.config/clerk/
 and edit it to your needs.
+You can also run clerk_setup to create a default config for your user.
 '
 }
+
+post_upgrade() {
+echo '
+Keep in mind, that clerk-git now installs the perl version which comes with its own config.
+Copy /usr/share/doc/clerk/clerk.tmux and /usr/share/doc/clerk/clerk.conf to $HOME/.config/clerk
+and edit them to your needs.
+Or run clerk_setup (as user) to automate these steps.
 #post_install
