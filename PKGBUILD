@@ -6,15 +6,15 @@
 
 
 pkgname=namecoin-core-wallet
-pkgver=v0.13.99.name.tab.beta1
-pkgrel=3
+pkgver=v0.14.99
+pkgrel=6
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1504811212
+epoch=1504815422
 
-# Release commit for nc0.13.99-name-tab-beta1
-_commit=a11e75411af3b612a36e3516e461934838c0c53b
+# The most recent commit at the time of this package update.
+_commit=c3b88a0f29b3c387ec7bbbdd2395bbf876da1543
 
 pkgdesc='This package provides the Namecoin Core GUI client and CLI daemon. This package does not create a systemd service.'
 arch=('i686' 'x86_64')
@@ -33,23 +33,7 @@ sha256sums=('SKIP'
 build() {
     mkdir -p "$srcdir/tmp"
     cd "$srcdir/namecoin-core/"
-
-    ### Get OpenSSL patched files
-    git checkout bae1eef752dcecfd85fa482881e1dbe4d7e9f74c > /dev/null 2>&1
-    cp src/wallet/test/crypto_tests.cpp ../
-    git checkout b05b1af10b9a5298bd90bea439f0fd6c636e0cfa > /dev/null 2>&1
-    cp src/qt/paymentrequestplus.cpp ../
-    ###
-
     git checkout "$_commit" > /dev/null 2>&1
-
-    ### Replace files with working versions
-    rm -f src/qt/paymentrequestplus.cpp
-    rm -f src/wallet/test/crypto_tests.cpp
-    mv ../paymentrequestplus.cpp ./src/qt/
-    mv ../crypto_tests.cpp ./src/wallet/test/
-    ###
-
     ./autogen.sh
     ./configure --prefix=/usr --enable-upnp-default --enable-hardening --with-gui=qt5
     make DESTDIR="$srcdir/tmp"
