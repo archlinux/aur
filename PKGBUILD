@@ -6,7 +6,7 @@
 
 pkgname=matlab
 pkgver=9.2.0.556344
-pkgrel=2
+pkgrel=3
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -30,8 +30,7 @@ depends=('gconf'
          'qt5-websockets'
          'qt5-x11extras'
          'xerces-c')
-optdepends=('gcc47: For MEX support'
-            'gcc47-fortran: For MEX support')
+optdepends=('gcc49: For MEX support')
 source=("file://matlab.tar"
         "file://matlab.fik")
 md5sums=('SKIP'
