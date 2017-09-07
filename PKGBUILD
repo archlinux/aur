@@ -3,7 +3,7 @@
 pkgname=hqplayer-embedded
 _debpkgver=4.0.0b5-26_amd64
 pkgver=4.0.0b5
-pkgrel=1
+pkgrel=2
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 package() {
   bsdtar xf data.tar.xz -C "$srcdir"
      install -Dm644 "$srcdir/etc/hqplayer/hqplayerd.xml" \
-    "$pkgdir/etc/hqplayer/hqplayerd.xml"
+    "$pkgdir/usr/share/doc/hqplayerd/hqplayerd.xml"
     
      install -Dm644 "$srcdir/var/hqplayer/web/default.css" \
     "$pkgdir/var/hqplayer/web/default.css"
