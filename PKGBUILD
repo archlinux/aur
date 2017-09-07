@@ -15,7 +15,7 @@ _opt_SSP=1  # Stack Smashing Protection
 set -u
 _pkgver='6.3'
 pkgname="gcc${_pkgver//\./}-multilib"
-_snapshot='6-20170719'
+_snapshot='6-20170830'
 pkgver="${_pkgver}_${_snapshot#*-}"
 _islver='0.17'
 #_commit='4fc407888a30c5d953816b05c8a8e98ec2ab3101' # Pulling commits this big is too slow!
@@ -61,7 +61,7 @@ source=(
 if [ ! -z "${_cloogver:=}" ]; then
   source+=("http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz")
 fi
-sha256sums=('ab0f54e6fa115539c79f4fba7a69f93a0fc4173a338ddf95b66cdb68c43dbca8'
+sha256sums=('169a3bd16c43ed55b820fe50ee603671b4003956abc1cbed7ca4df51f23f404a'
             '439b322f313aef562302ac162caccb0b90daedf88d49d62e00a5db6b9d83d6bb')
 
 PKGEXT='.pkg.tar.gz' # Uncompressed: 1.3GB, gz=500MB 1.1 minutes, xz=275MB 9.5 minutes
