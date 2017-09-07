@@ -10,7 +10,6 @@ pkgrel=1
 changelog=ChangeLog.${pkgname}
 depends=('fontconfig' 'xorg-font-utils')
 arch=('any')
-install=$pkgname.install
 
 source=(http://vollkorn-typeface.com/download/vollkorn-${pkgver//./-}.zip)
 sha512sums=('0f17cd06e670a34ae8e6a891c24494624bac2208b9bdf4add7d80229c22c4dce4ea5af835f2f9d1ae7133272563e372913926f72ea6d399effc605c2b00ef21e')
