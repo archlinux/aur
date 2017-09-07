@@ -1,0 +1,20 @@
+pkgbase = checkinstall
+	pkgdesc = Track files modified by an installation script and create a Slackware, RPM or Debian package
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = http://checkinstall.izto.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	depends = glibc
+	provides = installwatch
+	source = http://checkinstall.izto.org/files/source/checkinstall-1.6.2.tar.gz
+	source = installwatch.patch
+	source = makefile.patch
+	sha256sums = dc61192cf7b8286d42c44abae6cf594ee52eafc08bfad0bea9d434b73dd593f4
+	sha256sums = 91f99f594953c3fa1d4f6a41a7d3fa3b4a86c5187b325145336608ab49e10d32
+	sha256sums = 46e60ae1c0b199051ac10e70dcad7dfc94508960e98885882b5d71a11fed7f0a
+
+pkgname = checkinstall
+
