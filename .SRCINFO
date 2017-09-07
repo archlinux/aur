@@ -1,0 +1,15 @@
+pkgbase = qmdnsengine
+	pkgdesc = Simple multicast DNS library for Qt applications
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nitroshare/qmdnsengine
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = qt5-base
+	source = qmdnsengine-0.1.0.tar.gz::https://github.com/nitroshare/qmdnsengine/archive/0.1.0.tar.gz
+	md5sums = 6e32705e8e3febf4e4c3b08a7f065262
+
+pkgname = qmdnsengine
+
