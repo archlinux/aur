@@ -2,8 +2,8 @@
 
 pkgname=known_hosts
 _pkgname=known_hosts
-pkgver=1.0.0.r5.g74e64c4
-pkgrel=2
+pkgver=1.0.0.r9.gb8ade13
+pkgrel=1
 pkgdesc="A simple cli ssh known_hosts manager "
 arch=('i686' 'x86_64')
 url="https://github.com/markmcconachie/known_hosts"
