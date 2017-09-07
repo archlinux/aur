@@ -7,11 +7,11 @@
 
 pkgname=namecoin-core-wallet
 pkgver=v0.13.99.name.tab.beta1
-pkgrel=1
+pkgrel=2
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1504804610
+epoch=1504807587
 
 # Release commit for nc0.13.99-name-tab-beta1
 _commit=a11e75411af3b612a36e3516e461934838c0c53b
@@ -35,7 +35,7 @@ build() {
     cd "$srcdir/namecoin-core/"
     git checkout "$_commit" > /dev/null 2>&1
     ./autogen.sh
-    ./configure --prefix=/usr --enable-upnp-default --enable-hardening --with-gui=qt5
+    ./configure --prefix=/usr --enable-upnp-default --enable-hardening --with-gui=qt5 --disable-tests
     make DESTDIR="$srcdir/tmp"
     make DESTDIR="$srcdir/tmp" install
 }
