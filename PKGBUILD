@@ -4,20 +4,20 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=python-pygpgme-rshk-git
 pkgver=r18.6c7566b
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python interface to the gpgme GnuPG library (rshk fork)"
 arch=('x86_64' )
 url="https://github.com/rshk/pygpgme"
 license=( 'LGPL' )
 depends=( 'python' 'python2' 'gpgme' )
 makedepends=( 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'gpgme' )
-_pkgname=python-pygpgme-rshk
+_pkgname=pygpgme
 conflicts=( 'python-pygpgme')
 provides=( 'python-pygpgme' )
 install=
 changelog=
 noextract=()
-source=("python-pygpgme-rshk::git+https://github.com/rshk/pygpgme.git")
+source=("git+https://github.com/rshk/pygpgme.git")
 # see https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git_Submodules if you require git submodules
 sha512sums=('SKIP')
 pkgver() {
@@ -39,16 +39,16 @@ pkgver() {
   #)
 }
 
-package_python-pygpgme-rshk() {
+package_python-pygpgme-rshk-git() {
   depends=('python' 'gpgme')
 
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
-package_python2-pygpgme-rshk() {
+package_python2-pygpgme-rshk-git() {
   depends=('python2' 'gpgme')
 
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }
