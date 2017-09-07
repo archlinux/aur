@@ -1,15 +1,15 @@
 # Maintainer: David Parrish <daveparrish@gmail.com>
 
 pkgname=nxt-git
-pkgver=1.11.5+0+gfc25fd5a2
-pkgrel=2
+pkgver=1.11.8+0+gd9f64fcec
+pkgrel=1
 pkgdesc="The Nxt Reference Software Client for use with the Nxt Cryptocurrency"
 arch=('any')
 url="http://nxt.org"
 license=('MIT' 'GPL' 'MPL' 'APACHE')
 depends=('java-runtime-headless>=8' 'systemd')
-makedepends=('java-environment>=8')
-source=('git+https://bitbucket.org/JeanLucPicard/nxt.git'
+makedepends=('git' 'java-environment>=8')
+source=('git+https://bitbucket.org/Jelurida/nxt.git'
         'logging.properties'
         'nxt.properties'
         'nxt.sysusers'
@@ -20,8 +20,8 @@ source=('git+https://bitbucket.org/JeanLucPicard/nxt.git'
 backup=('etc/nxt/nxt.properties'
         'etc/nxt/logging.properties')
 sha256sums=('SKIP'
-            'e00b9e5a605653faec8a4582ba004eff54c3692f60dc5a8c13c98119041195b1'
-            'a65abe20dcec9ab4e7f39b5f16daee3e10a0b93dd78cadea47d45289ea145cbf'
+            'f1cf03e66d8b7510f6a6eb5558dcc924bdb193f4dacc1710d4e0e7d199d85603'
+            '0445ee64f13c5a1a02d08550abef008640329d9aea8303d1d57317d0dfd87135'
             'd73213fe300346c548e991af0797b23b3c608e803f741cd0ae89d3bb0549bfe3'
             '2f4775688213f0948364f1594162c12a6ec865501f7434847ce9bb7c73b11c59'
             '9c3ba3fff584e4baae3d9af88aa62418fd701094d2256e6e687300ce35b1f6f8'
@@ -65,5 +65,5 @@ package() {
   install -Dm755 ../nxt.sh                 "$pkgdir/usr/bin/nxt"
 
   # License files
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ./{COPYING,3RD-PARTY-LICENSES,LICENSE}.txt
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ./{3RD-PARTY-LICENSES,LICENSE}.txt
 }

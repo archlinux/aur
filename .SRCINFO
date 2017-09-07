@@ -1,19 +1,20 @@
 pkgbase = nxt-git
 	pkgdesc = The Nxt Reference Software Client for use with the Nxt Cryptocurrency
-	pkgver = 1.11.5+0+gfc25fd5a2
-	pkgrel = 2
+	pkgver = 1.11.8+0+gd9f64fcec
+	pkgrel = 1
 	url = http://nxt.org
 	arch = any
 	license = MIT
 	license = GPL
 	license = MPL
 	license = APACHE
+	makedepends = git
 	makedepends = java-environment>=8
 	depends = java-runtime-headless>=8
 	depends = systemd
 	backup = etc/nxt/nxt.properties
 	backup = etc/nxt/logging.properties
-	source = git+https://bitbucket.org/JeanLucPicard/nxt.git
+	source = git+https://bitbucket.org/Jelurida/nxt.git
 	source = logging.properties
 	source = nxt.properties
 	source = nxt.sysusers
@@ -22,8 +23,8 @@ pkgbase = nxt-git
 	source = nxt.desktop
 	source = nxt.sh
 	sha256sums = SKIP
-	sha256sums = e00b9e5a605653faec8a4582ba004eff54c3692f60dc5a8c13c98119041195b1
-	sha256sums = a65abe20dcec9ab4e7f39b5f16daee3e10a0b93dd78cadea47d45289ea145cbf
+	sha256sums = f1cf03e66d8b7510f6a6eb5558dcc924bdb193f4dacc1710d4e0e7d199d85603
+	sha256sums = 0445ee64f13c5a1a02d08550abef008640329d9aea8303d1d57317d0dfd87135
 	sha256sums = d73213fe300346c548e991af0797b23b3c608e803f741cd0ae89d3bb0549bfe3
 	sha256sums = 2f4775688213f0948364f1594162c12a6ec865501f7434847ce9bb7c73b11c59
 	sha256sums = 9c3ba3fff584e4baae3d9af88aa62418fd701094d2256e6e687300ce35b1f6f8
