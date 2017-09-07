@@ -1,0 +1,18 @@
+pkgbase = zlib-aarch64
+	pkgver = 1.2.11
+	pkgrel = 2
+	url = http://www.zlib.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = aarch64-linux-gnu-gcc
+	options = staticlibs
+	source = http://zlib.net/zlib-1.2.11.tar.gz
+	source = http://zlib.net/zlib-1.2.11.tar.gz.asc
+	validpgpkeys = 5ED46A6721D365587791E2AA783FCD8E58BCAFBA
+	md5sums = 1c9f62f0778697a09d36121ead88e08e
+	md5sums = SKIP
+
+pkgname = zlib-aarch64
+
