@@ -8,8 +8,8 @@
 
 # Maintainer: Peter <craven@gmx.net>
 pkgname=gerbil-scheme-git
-pkgver=1.0
-pkgrel=1
+pkgver=0.12
+pkgrel=2
 pkgdesc="Gerbil is an opinionated dialect of Scheme designed for Systems Programming, with a state of the art macro and module system on top of the Gambit runtime."
 arch=(x86_64 i686)
 url="https://github.com/vyzo/gerbil"
@@ -24,6 +24,7 @@ backup=()
 options=()
 install=
 source=()
+
 
 
 noextract=()
