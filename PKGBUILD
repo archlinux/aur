@@ -4,7 +4,7 @@
 
 pkgname=duplicati-latest
 pkgver=2.0.2.2
-pkgrel=2
+pkgrel=3
 _date=2017-08-30
 _branch=canary
 kgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
@@ -22,8 +22,9 @@ depends=('gtk-sharp-2' 'mono')
 
 package() {
   # Install the service.
+  install -Dm644 duplicati.service  "${pkgdir}/usr/lib/systemd/system/duplicati.service"
   install -Dm644 duplicati-user.service  "${pkgdir}/usr/lib/systemd/user/duplicati.service"
-  rm duplicati-user.service
+  rm duplicati.service duplicati-user.service
 
   # Install the program.
   rm *.zip
