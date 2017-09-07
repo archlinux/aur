@@ -60,12 +60,10 @@ source=('javaws-launcher'
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop"
-        "http://download.oracle.com/otn-pub/java/jce_policy/1.5.0/jce_policy-1_5_0.zip")
+        "http://archive.org/download/jdk-1_5_0_$_minor-linux-i586/jce_policy-1_5_0.zip")
 
-# NOTE: Please manually download these files from
-# http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase5-419410.html
-source_i686=("http://download.oracle.com/otn-pub/java/jdk/1.5.0_$_minor/jdk-1_5_0_$_minor-linux-i586.bin")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/1.5.0_$_minor/jdk-1_5_0_$_minor-linux-amd64.bin")
+source_i686=("http://archive.org/download/jdk-1_5_0_$_minor-linux-i586/jdk-1_5_0_$_minor-linux-i586.bin")
+source_x86_64=("http://archive.org/download/jdk-1_5_0_$_minor-linux-i586/jdk-1_5_0_$_minor-linux-amd64.bin")
 
 md5sums=('45c15a6b4767288f2f745598455ea2bf'
          '53791b5a3760001717835e1964ecbe9a'
