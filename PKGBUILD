@@ -2,7 +2,7 @@
 # Former Maintainer: Govind Gopakumar < govind.93 at gmail dot com>
 # Former Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
-pkgver=2.2.2
+pkgver=2.2.5
 pkgrel=1
 pkgdesc='a scalable c++ machine learning library'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('armadillo>=4.100.0'
          'libxml2>=2.6.0')
 makedepends=('cmake>=2.8.5' 'txt2man')
 source=("http://www.mlpack.org/files/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('97793a2e8a1f301fadc4cc09cc1c6dc9482269121c06a64fe8b049aedc284b28')
+sha256sums=('e24e64d8451a3db23eafb7c94f9fa075dd540f5ac04953c82260a9d4d9fc4fcf')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
