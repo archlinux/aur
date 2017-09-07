@@ -1,6 +1,6 @@
 pkgbase = python-linotype
     pkgdesc = Automatically format help messages.
-    pkgver = 0.1.0.post8
+    pkgver = 0.1.1
     pkgrel = 1
     url = https://github.com/lostatc/linotype
     arch = any
