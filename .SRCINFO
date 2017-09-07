@@ -1,6 +1,6 @@
 pkgbase = phast
 	pkgdesc = Phylogenetic analysis with space/time models
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = http://compgen.bscb.cornell.edu/phast
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = phast
 	license = BSD
 	makedepends = cmake
 	source = http://www.netlib.org/clapack/clapack-3.2.1-CMAKE.tgz
-	source = http://compgen.bscb.cornell.edu/phast/downloads/phast.v1_3.tgz
+	source = http://compgen.bscb.cornell.edu/phast/downloads/phast.v1_4.tgz
 	sha1sums = 5ea1bcc4314e392bca8b9e5f61d44355cf9f4cc1
-	sha1sums = 2e5fcecb39e3efb822e30538739a159b864a7238
+	sha1sums = 63c6e2fea4982f3db94b01495239475131955521
 
 pkgname = phast
 
