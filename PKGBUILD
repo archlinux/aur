@@ -8,15 +8,15 @@
 
 pkgname=lxc-selinux
 epoch=1
-pkgver=2.0.8
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Linux Containers"
 arch=('i686' 'x86_64')
 url="http://linuxcontainers.org"
 depends=('bash' 'perl' 'libseccomp' 'libcap' 'python' 'cgmanager' 'rsync' 'libselinux')
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
 conflicts=("${pkgname/-selinux}")
-makedepends=('docbook2x' 'lua')
+makedepends=('docbook2x' 'lua' 'python-setuptools')
 optdepends=('arch-install-scripts: for archlinux template'
 	    'dnsmasq: lxc-net.service'
 	    'lua'
@@ -30,14 +30,12 @@ validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67')
 source=("https://linuxcontainers.org/downloads/lxc/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
 	"lxc.tmpfiles.d"
 	"lxc.service"
-	"lxc-auto.service"
-	"https://github.com/lxc/lxc/commit/57927bf2550feccadba2127a193023e7c54d9ca4.patch")
-sha256sums=('0d8e34b302cfe4c40c6c9ae5097096aa5cc2c1dfceea3f0f22e3e16c4a4e8494'
+	"lxc-auto.service")
+sha256sums=('394407305a409eb1f95fe06e7718acfe89b1d5df267b0c6aafb1d714e2038de2'
             'SKIP'
             '10e4f661872f773bf3122a2f9f2cb13344fea86a4ab72beecb4213be4325c479'
             '711fb84c87b143cb0098e095fdebb040b15f553a854efbe846a00100bdb9ae88'
-            '4174fcc0a664108f1884920930a3dbec0aeceed1fc24f00c200a583c06d447d0'
-            '3f5017b4aa67dd85506a58b70badfd22ceec2f9a3347dbf057a4013bba1e5b50')
+            '4174fcc0a664108f1884920930a3dbec0aeceed1fc24f00c200a583c06d447d0')
 
 prepare() {
   cd "$srcdir/${pkgname/-selinux}-${pkgver/_/-}"
@@ -50,10 +48,6 @@ prepare() {
   sed -i \
     -e 's|\${prefix}/||g' \
     lxc.pc.in
-  sed -i \
-    -e "s|name='_lxc'|name='lxc'|" \
-    src/python-lxc/setup.py.in
-  patch -p1 -i $srcdir/*.patch
 }
 
 build() {
