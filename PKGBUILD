@@ -7,10 +7,10 @@ pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('x86_64')
 license=('MIT')
-pkgver='1.5.0'
+pkgver='1.6.0'
 source=("https://github.com/giodamelio/little_boxes/archive/$pkgver.zip")
-md5sums=('2f416a4d6e8a49f70d963802724dd650')
-sha1sums=('e964c3c395012d38c5f3f11f6b0476f9626a5d25')
+md5sums=('376d65ce883a37d0794d9a1386e489e2')
+sha1sums=('7a9574a56e13178b952ed7d2edc79265cc96bf13')
 
 build(){
     unzip -o $pkgver.zip
