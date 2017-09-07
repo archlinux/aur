@@ -25,6 +25,7 @@ options=()
 install=
 source=()
 
+
 noextract=()
 #generate with 'makepkg -g'
 
@@ -52,9 +53,9 @@ build() {
   #
   # BUILD HERE
   #
-  mkdir -p bin
-  ln -s /usr/bin/gambitc bin/gsc
-  export PATH=$(pwd)/bin:$PATH
+  mkdir -p binx
+  ln -s /usr/bin/gambitc binx/gsc
+  export PATH=$(pwd)/binx:$PATH
   cd src/
   ./build.sh
 }
