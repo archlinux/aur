@@ -1,14 +1,14 @@
 pkgbase = tth
 	pkgdesc = TeX to HTML translator
-	pkgver = 4.09
+	pkgver = 4.10
 	pkgrel = 1
 	url = http://hutchinson.belmont.ma.us/tth/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = sh
-	source = tth-4.09_C.tar.gz::http://hutchinson.belmont.ma.us/tth/tth-noncom/tth_C.tgz
-	sha256sums = c16f4f2bdbc8c2c829eaab073982bb2594f72ff4e752cd4c4dc2220a4a69772c
+	source = tth-4.10_C.tar.gz::http://hutchinson.belmont.ma.us/tth/tth-noncom/tth_C.tgz
+	sha256sums = dc873414d19dcc1a9d66323a76765bdc27b0055775d3dcf541de3fd38d5ef662
 
 pkgname = tth
 
