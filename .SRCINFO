@@ -1,0 +1,18 @@
+pkgbase = gplanarity-svn
+	pkgdesc = A simple puzzle game involving untangling planar graphs for fun and prizes
+	pkgver = r19609
+	pkgrel = 1
+	url = http://web.mit.edu/xiphmont/Public/gPlanarity.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	depends = libxrender
+	depends = x-server
+	depends = freetype2
+	depends = fontconfig
+	source = svn+https://svn.xiph.org/trunk/planarity
+	md5sums = SKIP
+
+pkgname = gplanarity-svn
+
