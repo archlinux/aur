@@ -1,0 +1,14 @@
+pkgbase = 1password-op
+	pkgdesc = 1Password command line tool
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://app-updates.agilebits.com/product_history/CLI
+	arch = x86_64
+	license = custom
+	options = !strip
+	options = !emptydirs
+	source = https://cache.agilebits.com/dist/1P/op/pkg/v0.1/op_linux_amd64_v0.1.zip
+	sha256sums = 6e34e161b840c28fdbdefd582d791e1a379b4d7b6b9de54efe94d28603a069b4
+
+pkgname = 1password-op
+
