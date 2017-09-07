@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=python-pygpgme-rshk-git
 pkgver=r18.6c7566b
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python interface to the gpgme GnuPG library (rshk fork)"
 arch=('x86_64' )
 url="https://github.com/rshk/pygpgme"
@@ -13,6 +13,7 @@ depends=( 'python' 'python2' 'gpgme' )
 makedepends=( 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'gpgme' )
 _pkgname=python-pygpgme-rshk
 conflicts=( 'python-pygpgme')
+provides=( 'python-pygpgme' )
 install=
 changelog=
 noextract=()
