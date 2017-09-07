@@ -1,5 +1,5 @@
 pkgname=quicktile-git
-pkgver=20170825
+pkgver=20170907
 pkgrel=1
 url="https://github.com/ssokolow/quicktile"
 pkgdesc="Lightweight standalone alternative to Compiz Grid plugin"
@@ -7,7 +7,7 @@ arch=('any')
 license=('GPLv2')
 depends=('python2' 'pygtk' 'python2-xlib' 'python2-wnck')
 optdepends=('python2-dbus')
-makedepends=('git')
+makedepends=('git' 'python2-setuptools')
 
 _gitroot='git://github.com/ssokolow/quicktile.git'
 _gitname='quicktile'
