@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Matthias Riegler <matthias@xvzf.tech>
 
-pkgname=attr-aarch64
+pkgname=libattr-aarch64
 pkgver=2.4.47
 pkgrel=3
 pkgdesc="Extended attribute support library for ACL support"
