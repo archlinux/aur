@@ -2,8 +2,8 @@
 _pkgname=pwntools
 
 pkgname="python2-${_pkgname}-git"
-pkgver='3.8.0beta0.r4.g08b31609'
-pkgrel=2
+pkgver=3.9.0beta0.r3.g5831796f
+pkgrel=1
 pkgdesc='The CTF framework used by Gallopsled in every CTF'
 arch=('any')
 url='http://pwntools.com/'
@@ -50,5 +50,6 @@ package() {
   cd ${srcdir}/${pkgname}
   python2 setup.py install --root=${pkgdir}/ --optimize=1 --only-use-pwn-command
   install -D -m 644 LICENSE-pwntools.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  rm -f ${pkgdir}/usr/lib/python*/site-packages/*.{txt,md}
 }
 # vim:set ts=2 sw=2 et:
