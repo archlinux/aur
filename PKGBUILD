@@ -7,12 +7,12 @@
 _oname='javalib'
 pkgname="ocaml-$_oname"
 pkgver='2.3.3'
-pkgrel=1
-pkgdesc="Provides a high level representation of Java .class files in OCaml"
+pkgrel=3
+pkgdesc="Parses Java .class files into OCaml data structures"
 arch=('i686' 'x86_64')
 url="http://sawja.inria.fr/"
 license=('LGPL2')
-depends=('ocaml>=4.0.0' 'ocaml-extlib>=1.5.1' 'ocaml-camlzip>=1.04' 'zlib')
+depends=('ocaml>=4.0.0' 'ocaml-extlib>=1.5.1' 'ocaml-zip>=1.04' 'zlib')
 makedepends=('ocaml-findlib')
 options=(!strip)
 changelog=
@@ -38,5 +38,6 @@ build() {
 package() {
 	cd "$_oname-$pkgver"
 	mkdir -p $pkgdir/usr/lib/ocaml
+	make installptrees
 	make install
 }
