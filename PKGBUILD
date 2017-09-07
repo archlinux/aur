@@ -37,4 +37,4 @@ package() {
   mkdir -p "$pkgdir/usr/share/applications"
   install TIGCap.desktop "$pkgdir/usr/share/applications"
 }
-md5sums=('5b7e20e4c71d6176e0d40545591fd8ff')
+md5sums=('afc09fcd821d11ae70556366bb6847e9')
