@@ -67,7 +67,7 @@ check() {
   # make test
   LD_LIBRARY_PATH="${srcdir}/Python-${pkgver}":${LD_LIBRARY_PATH} \
                  "${srcdir}/Python-${pkgver}/python" -m test.regrtest -x \
-                 test_distlib \
+                 test_distutils \
                  test_faulthandler \
                  test_ftplib \
                  test_ssl
