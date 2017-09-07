@@ -1,27 +1,30 @@
---- a/openbox/config.h	2014-11-05 08:19:42.000000000 -0700
-+++ b/openbox/config.h	2017-03-06 14:40:38.982567786 -0700
-@@ -152,6 +152,9 @@
- extern gboolean config_animate_iconify;
- /*! Size of icons in focus switching dialogs */
- extern guint config_theme_window_list_icon_size;
-+/*! Display rounded corners for decorated windows */
-+extern guint config_theme_cornerradius;
-+extern gboolean config_theme_menuradius;
+From 582568b08c354f4bb037bcfb00dd440a59d7cbe0 Mon Sep 17 00:00:00 2001
+From: cpoakes <cpoakes@users.noreply.github.com>
+Date: Tue, 29 Aug 2017 19:56:29 -0500
+Subject: [PATCH] openbox-3.6.2-rounded-corners
 
- /*! The font for the active window's title */
- extern RrFont *config_font_activewindow;
---- a/openbox/config.c	2014-11-05 08:19:42.000000000 -0700
-+++ b/openbox/config.c	2017-03-06 14:40:38.982567786 -0700
-@@ -48,6 +48,8 @@
+---
+ openbox/config.c      |  8 ++++++++
+ openbox/config.h      |  4 ++++
+ openbox/frame.c       | 30 +++++++++++++++++++++++++++++-
+ openbox/framerender.c |  7 +++++++
+ openbox/menuframe.c   |  4 ++++
+ 5 files changed, 52 insertions(+), 1 deletion(-)
+
+diff --git a/openbox/config.c b/openbox/config.c
+index dad5d1bf..a387335c 100644
+--- a/openbox/config.c
++++ b/openbox/config.c
+@@ -48,6 +48,8 @@ StrutPartial config_margins;
  gchar   *config_theme;
  gboolean config_theme_keepborder;
  guint    config_theme_window_list_icon_size;
-+guint	 config_theme_cornerradius;
++guint    config_theme_cornerradius;
 +gboolean config_theme_menuradius;
-
+ 
  gchar   *config_title_layout;
-
-@@ -719,6 +721,10 @@
+ 
+@@ -719,6 +721,10 @@ static void parse_theme(xmlNodePtr node, gpointer d)
          else if (config_theme_window_list_icon_size > 96)
              config_theme_window_list_icon_size = 96;
      }
@@ -29,24 +32,41 @@
 +	config_theme_cornerradius = obt_xml_node_int(n);
 +	obt_xml_attr_bool(n, "menu", &config_theme_menuradius);
 +    }
-
+ 
      for (n = obt_xml_find_node(node, "font");
           n;
-@@ -1098,6 +1104,8 @@
+@@ -1098,6 +1104,8 @@ void config_startup(ObtXmlInst *i)
      config_title_layout = g_strdup("NLIMC");
      config_theme_keepborder = TRUE;
      config_theme_window_list_icon_size = 36;
 +    config_theme_cornerradius = 0;
 +    config_theme_menuradius = TRUE;
-
+ 
      config_font_activewindow = NULL;
      config_font_inactivewindow = NULL;
---- a/openbox/frame.c	2014-11-05 08:19:42.000000000 -0700
-+++ b/openbox/frame.c	2017-03-06 14:40:38.982567786 -0700
-@@ -334,6 +334,31 @@
+diff --git a/openbox/config.h b/openbox/config.h
+index 96a66cf1..5622d059 100644
+--- a/openbox/config.h
++++ b/openbox/config.h
+@@ -152,6 +152,10 @@ extern gchar *config_title_layout;
+ extern gboolean config_animate_iconify;
+ /*! Size of icons in focus switching dialogs */
+ extern guint config_theme_window_list_icon_size;
++/*! Display rounded corners for decorated windows */
++extern guint config_theme_cornerradius;
++/*! Display rounded corners for root and client-list menus */
++extern gboolean config_theme_menuradius;
+ 
+ /*! The font for the active window's title */
+ extern RrFont *config_font_activewindow;
+diff --git a/openbox/frame.c b/openbox/frame.c
+index 89669726..db2c7531 100644
+--- a/openbox/frame.c
++++ b/openbox/frame.c
+@@ -334,6 +334,31 @@ void frame_adjust_shape(ObFrame *self)
  #endif
  }
-
+ 
 +void frame_round_corners(Window window)
 +{
 +    XWindowAttributes win_attr;
@@ -75,15 +95,15 @@
  void frame_adjust_area(ObFrame *self, gboolean moved,
                         gboolean resized, gboolean fake)
  {
-@@ -857,7 +882,6 @@
-
+@@ -857,7 +882,6 @@ void frame_adjust_area(ObFrame *self, gboolean moved,
+ 
          if (resized) {
              self->need_render = TRUE;
 -            framerender_frame(self);
              frame_adjust_shape(self);
          }
-
-@@ -884,7 +908,9 @@
+ 
+@@ -884,7 +908,9 @@ void frame_adjust_area(ObFrame *self, gboolean moved,
      {
          XResizeWindow(obt_display, self->label, self->label_width,
                        ob_rr_theme->label_height);
@@ -91,19 +111,21 @@
      }
 +    framerender_frame(self);
  }
-
+ 
  static void frame_adjust_cursors(ObFrame *self)
-@@ -958,6 +984,8 @@
+@@ -958,6 +984,8 @@ void frame_adjust_client_area(ObFrame *self)
      XMoveResizeWindow(obt_display, self->backfront, 0, 0,
                        self->client->area.width,
                        self->client->area.height);
 +    self->need_render = TRUE;
 +    framerender_frame(self);
  }
-
+ 
  void frame_adjust_state(ObFrame *self)
---- a/openbox/framerender.c	2014-11-05 09:00:49.000000000 -0700
-+++ b/openbox/framerender.c	2017-03-06 14:40:38.986567825 -0700
+diff --git a/openbox/framerender.c b/openbox/framerender.c
+index 094d5962..54046580 100644
+--- a/openbox/framerender.c
++++ b/openbox/framerender.c
 @@ -21,6 +21,7 @@
  #include "openbox.h"
  #include "screen.h"
@@ -111,34 +133,42 @@
 +#include "config.h"
  #include "framerender.h"
  #include "obrender/theme.h"
-
-@@ -42,6 +43,9 @@
+ 
+@@ -42,6 +43,12 @@ void framerender_frame(ObFrame *self)
          return;
      self->need_render = FALSE;
-
-+    if ( !self->client->fullscreen && !(self->client->type == OB_CLIENT_TYPE_DOCK) && config_theme_cornerradius )
+ 
++    if (config_theme_cornerradius &&
++            !self->client->fullscreen &&
++            !self->client->shaped &&
++            !(self->client->type == OB_CLIENT_TYPE_DOCK))
 +        frame_round_corners(self->window);
 +
      {
          gulong px;
-
---- a/openbox/menuframe.c	2014-11-05 08:19:42.000000000 -0700
-+++ b/openbox/menuframe.c	2017-03-06 14:40:38.986567825 -0700
+ 
+diff --git a/openbox/menuframe.c b/openbox/menuframe.c
+index c37fdcc5..f598cf15 100644
+--- a/openbox/menuframe.c
++++ b/openbox/menuframe.c
 @@ -17,6 +17,7 @@
     See the COPYING file for a copy of the GNU General Public License.
  */
-
+ 
 +#include "frame.h"
  #include "menuframe.h"
  #include "client.h"
  #include "menu.h"
-@@ -845,6 +846,9 @@
-
+@@ -845,6 +846,9 @@ void menu_frame_render(ObMenuFrame *self)
+ 
      RECT_SET_SIZE(self->area, w, h);
-
-+    if ( config_theme_menuradius )
+ 
++    if (config_theme_menuradius)
 +        frame_round_corners(self->window);
 +
      XFlush(obt_display);
  }
+ 
+-- 
+2.14.1
 
