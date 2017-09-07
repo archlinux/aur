@@ -3,23 +3,23 @@ pkgname=tclkit
 pkgver=8.6.4
 _tcl_tag=tip_412
 _tk_tag=core_8_6_4
-_kit_commit=c21eeb1e379bd5acb5b304f0784877b8e8dd31ca
-pkgrel=6
+_kit_tag=8.6.4-7
+pkgrel=7
 pkgdesc="single-file executable that provides a complete Tcl and Tk runtime"
 arch=('i686' 'x86_64')
 url="https://github.com/patthoyts/kitgen"
 options=(emptydirs !buildflags !makeflags !strip)
 license=('custom')
 makedepends=('upx' 'ucl' 'libx11')
-source=("tclkit.tar.gz::https://github.com/patthoyts/kitgen/archive/${_kit_commit}.tar.gz"
+source=("https://github.com/stiefel40k/kitgen/archive/${_kit_tag}.tar.gz"
 	"tk.tar.gz::https://github.com/tcltk/tk/archive/${_tk_tag}.tar.gz"
 	"tcl.tar.gz::https://github.com/tcltk/tcl/archive/${_tcl_tag}.tar.gz")
-md5sums=('2053997a397309fa10d0b62a3df114ae'
+md5sums=('2f4305a69297deffde0fa4a2a4af2658'
          '4f9b416d393f6b45b972d506a23ed36d'
          '05843ddb995308a2aaec8e0e76a6c7b5')
 
 build() {
-  mv "kitgen-$_kit_commit" kitgen
+  mv "kitgen-${_kit_tag}" kitgen
   cd kitgen
   mkdir -p 8.6
   mv ../tk-$_tk_tag 8.6/tk
