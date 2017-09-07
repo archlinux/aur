@@ -4,7 +4,7 @@
 
 pkgbase=('monero')
 pkgname=('monero' 'libmonero-wallet')
-pkgver=0.10.3.1
+pkgver=0.11.0.0
 pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes deaemon, wallet and miner)"
 license=('custom:Cryptonote')
@@ -27,8 +27,8 @@ source=("https://github.com/monero-project/monero/archive/v${pkgver}.tar.gz"
         "monerod.service"
         "monerod.conf")
 
-sha256sums+=('9bf321dd501a43a34fb647e535e1b1c583a9aa6a639ccab6305dea3253d6b2f2'
-         '0b66160a5448dedd8e84c38ba2243187217b214b1552f504b05de120b671f121'
+sha256sums+=('93c217cf10624d6e93cd1db5d137310be8b23393400014e2c8808d5214207c20'
+         '56ed83367fcbbd9f1eca333c42da8bc560df7e2eae264c30fd2e9d0b5833b557'
          '829445fe9acc00681f94f7b9ca6ce39713e377970b0a3d6f88c37991e1aa61b2')
 
 _monero="${pkgbase}-${pkgver}"
@@ -83,7 +83,6 @@ package_monero() {
 
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-export" "${pkgdir}/usr/bin/monero-blockchain-export"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-import" "${pkgdir}/usr/bin/monero-blockchain-import"
-  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-utils-deserialize" "${pkgdir}/usr/bin/monero-utils-deserialize"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-wallet-cli" "${pkgdir}/usr/bin/monero-wallet-cli"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monerod" "${pkgdir}/usr/bin/monerod"
 
