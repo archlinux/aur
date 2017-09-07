@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 90631d7..13eff64 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -22,6 +22,6 @@ target_link_libraries (BlackJack allegro
+ install(
+ 	TARGETS BlackJack
+ 	RUNTIME DESTINATION bin
+-	DESTINATION /usr/local/games
++	DESTINATION /opt/blackjack
+ )
+ 
