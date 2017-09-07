@@ -13,4 +13,6 @@ Keep in mind, that clerk-git now installs the perl version which comes with its 
 Copy /usr/share/doc/clerk/clerk.tmux and /usr/share/doc/clerk/clerk.conf to $HOME/.config/clerk
 and edit them to your needs.
 Or run clerk_setup (as user) to automate these steps.
+'
+}
 #post_install
