@@ -4,11 +4,11 @@
 
 pkgname=veracrypt-git
 pkgver=20170809
-pkgrel=1
+pkgrel=2
 pkgdesc="Disk encryption with strong security based on TrueCrypt"
 arch=('i686' 'x86_64')
 depends=('device-mapper' 'fuse2' 'libsm' 'wxgtk3')
-makedepends=('binutils' 'make' 'nasm' 'pkg-config')
+makedepends=('binutils' 'make' 'pkg-config' 'yasm')
 optdepends=('desktop-file-utils: update desktop database'
             'sudo: mount encrypted volumes as non-root user')
 url="https://github.com/veracrypt/VeraCrypt"
