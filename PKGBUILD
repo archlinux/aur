@@ -6,15 +6,15 @@
 
 
 pkgname=namecoin-core-wallet
-pkgver=v0.14.99
-pkgrel=6
+pkgver=v0.13.99.name.tab.beta1
+pkgrel=8
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1504815422
+epoch=1504817640
 
-# The most recent commit at the time of this package update.
-_commit=c3b88a0f29b3c387ec7bbbdd2395bbf876da1543
+# Release commit for nc0.13.99-name-tab-beta1
+_commit=a11e75411af3b612a36e3516e461934838c0c53b
 
 pkgdesc='This package provides the Namecoin Core GUI client and CLI daemon. This package does not create a systemd service.'
 arch=('i686' 'x86_64')
@@ -25,17 +25,22 @@ provides=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon' 'namecoin-qt' 
 conflicts=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon' 'namecoin-qt' 'namecoin-tx')
 source=('git://github.com/namecoin/namecoin-core'
         'namecoin.desktop'
-        'namecoin1500x1500.png')
+        'namecoin1500x1500.png'
+        'patch.diff')
 sha256sums=('SKIP'
             '0226f5a570bbbde63f332d43d9d712287b316c726280f2ae9e21b1b365b3f0dc'
-            'f1e0593b872e18e0aebbf399bb5d77be255cb0aa160964c0528698a33f89ba04')
+            'f1e0593b872e18e0aebbf399bb5d77be255cb0aa160964c0528698a33f89ba04'
+            'e34a576066c39b2ca4ad192683b3c75fe86c9fedc30176dc60306d539863a139')
 
 build() {
     mkdir -p "$srcdir/tmp"
     cd "$srcdir/namecoin-core/"
-    git checkout "$_commit" > /dev/null 2>&1
+    git checkout "$_commit"
+    cd "$srcdir/"
+    patch -p0 -i patch.diff
+    cd "$srcdir/namecoin-core/"
     ./autogen.sh
-    ./configure --prefix=/usr --enable-upnp-default --enable-hardening --with-gui=qt5
+    ./configure --prefix=/usr --enable-upnp-default --enable-hardening --with-gui=qt5 --disable-tests
     make DESTDIR="$srcdir/tmp"
     make DESTDIR="$srcdir/tmp" install
 }
