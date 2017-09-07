@@ -7,11 +7,11 @@
 
 pkgname=namecoin-core-wallet
 pkgver=v0.13.99.name.tab.beta1
-pkgrel=2
+pkgrel=3
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1504807587
+epoch=1504811212
 
 # Release commit for nc0.13.99-name-tab-beta1
 _commit=a11e75411af3b612a36e3516e461934838c0c53b
@@ -33,9 +33,25 @@ sha256sums=('SKIP'
 build() {
     mkdir -p "$srcdir/tmp"
     cd "$srcdir/namecoin-core/"
+
+    ### Get OpenSSL patched files
+    git checkout bae1eef752dcecfd85fa482881e1dbe4d7e9f74c > /dev/null 2>&1
+    cp src/wallet/test/crypto_tests.cpp ../
+    git checkout b05b1af10b9a5298bd90bea439f0fd6c636e0cfa > /dev/null 2>&1
+    cp src/qt/paymentrequestplus.cpp ../
+    ###
+
     git checkout "$_commit" > /dev/null 2>&1
+
+    ### Replace files with working versions
+    rm -f src/qt/paymentrequestplus.cpp
+    rm -f src/wallet/test/crypto_tests.cpp
+    mv ../paymentrequestplus.cpp ./src/qt/
+    mv ../crypto_tests.cpp ./src/wallet/test/
+    ###
+
     ./autogen.sh
-    ./configure --prefix=/usr --enable-upnp-default --enable-hardening --with-gui=qt5 --disable-tests
+    ./configure --prefix=/usr --enable-upnp-default --enable-hardening --with-gui=qt5
     make DESTDIR="$srcdir/tmp"
     make DESTDIR="$srcdir/tmp" install
 }
