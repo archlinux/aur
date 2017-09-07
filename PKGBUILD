@@ -3,8 +3,8 @@
 pkgbase=decred
 pkgname=('dcrd' 'dcrwallet')
 pkgver=1.0.8
-pkgrel=1
-arch=('i686' 'x86_64')
+pkgrel=2
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
 groups=('decred')
 url="https://decred.org"
