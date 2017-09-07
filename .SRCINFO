@@ -1,0 +1,25 @@
+pkgbase = nylas-mail-lives-bin
+	pkgdesc = An open source fork of Nylas Mail (N1)
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/nylas-mail-lives/nylas-mail/
+	arch = x86_64
+	license = GPL3
+	depends = libxkbfile
+	depends = libxss
+	depends = python
+	depends = nodejs
+	depends = libxtst
+	depends = alsa-lib
+	depends = gconf
+	depends = gcc-libs-multilib
+	depends = nss
+	depends = libxtst
+	depends = gtk2
+	depends = libgnome-keyring
+	provides = nylas
+	source = https://github.com/nylas-mail-lives/nylas-mail/releases/download/2.1.0/nylas-2.1.0-amd64.deb
+	sha256sums = 5de1beaf9ad8824e635846fb4e9110fac874c41f1797fe33644a13ba222768dc
+
+pkgname = nylas-mail-lives-bin
+
