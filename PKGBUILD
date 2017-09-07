@@ -12,7 +12,7 @@ optdepends=('git: Deploying to Heroku')
 provides=('heroku-cli')
 conflicts=('heroku-cli' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source_x86_64=('heroku-cli-linux.tar.gz::https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x64.tar.gz')
-source_i686=('heroku-cli.tar-linux.gz::https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x86.tar.gz')
+source_i686=('heroku-cli-linux.tar.gz::https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x86.tar.gz')
 md5sums_i686=('SKIP')
 md5sums_x86_64=('SKIP')
 
