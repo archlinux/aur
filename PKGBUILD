@@ -1,11 +1,11 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-test-meta
-pkgver=0.0.6
-pkgrel=2
+pkgver=0.0.13
+pkgrel=1
 pkgdesc="Test a distribution's META file"
 arch=('any')
-depends=('perl6' 'perl6-meta6')
+depends=('perl6' 'perl6-meta6' 'perl6-uri')
 checkdepends=('perl')
 makedepends=('git')
 groups=('perl6')
