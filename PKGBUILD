@@ -4,8 +4,8 @@
 pkgname=rbdoom-3-bfg
 _commit=c8e3cd9fe2f4d3e7604f0ca1ead51a3b2a91ca79
 pkgver=1.1.0preview3.r115.gc8e3cd9f
-pkgrel=1
-pkgdesc="Doom 3 BFG source code (Robert Beckebans repo)."
+pkgrel=2
+pkgdesc="Enhanced Doom 3: BFG Edition engine"
 arch=('i686' 'x86_64')
 url="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
 license=('GPL3')
