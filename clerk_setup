@@ -3,8 +3,7 @@
 read -e -p "Create configuration for clerk? (Y/n) > " install
 install=${install:-y}
 case $install in
-	[Yy])	cp clerk $path;
-		if [[ ! -d "${HOME}/.config/clerk" ]]
+	[Yy]) if [[ ! -d "${HOME}/.config/clerk" ]]
 		then
 			mkdir "${HOME}/.config/clerk"
 		fi
