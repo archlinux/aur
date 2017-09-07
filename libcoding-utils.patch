@@ -1,9 +1,0 @@
---- src/coding/Makefile.unix.am	2017-05-03 14:33:52.616081736 +0300
-+++ src/coding/Makefile.unix.am	2017-05-03 14:35:17.252218027 +0300
-@@ -35,5 +35,6 @@
- libcoding_la_SOURCES += wwise_vorbis_decoder.c
- libcoding_la_SOURCES += wwise_vorbis_utils.c
- libcoding_la_SOURCES += ogl_vorbis_decoder.c
-+libcoding_la_SOURCES += coding_utils.c
- 
- EXTRA_DIST = coding.h g72x_state.h clHCA.h
