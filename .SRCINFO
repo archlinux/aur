@@ -1,0 +1,19 @@
+pkgbase = ocaml-javalib
+	pkgdesc = Provides a high level representation of Java .class files in OCaml
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://sawja.inria.fr/
+	arch = i686
+	arch = x86_64
+	license = LGPL2
+	makedepends = ocaml-findlib
+	depends = ocaml>=4.0.0
+	depends = ocaml-extlib>=1.5.1
+	depends = ocaml-camlzip>=1.04
+	depends = zlib
+	options = !strip
+	source = https://gforge.inria.fr/frs/download.php/file/36307/javalib-2.3.3.tar.bz2
+	md5sums = a4d4b06e8f4860db34c128e760fa8397
+
+pkgname = ocaml-javalib
+
