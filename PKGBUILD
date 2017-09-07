@@ -64,7 +64,7 @@ prepare() {
         i686) rm -rf Bin/{arm,armhf}-linux ;;
         arm*) rm -rf Bin/{i386,x86_64}-linux ;;
     esac
-    cd "${srcdir}/slimserver-${_gitver}/CPAN"
+    cd "${srcdir}/slimserver-${pkgver}/CPAN"
     mkdir _PRESERVE
     cp -p --parents URI/Find.pm _PRESERVE
     rm -f {AE.pm,AnyEvent.pm,CGI.pm,DBI.pm,Error.pm,EV.pm,JSON/XS.pm,LWP.pm,Readonly.pm,Template.pm,Text/Glob.pm,URI.pm,version.pm}
