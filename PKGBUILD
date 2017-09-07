@@ -28,5 +28,5 @@ build() {
 
 package() {
 	cd "$srcdir/planarity"
-	make PREFIX="$pkgdir/" install
+	make PREFIX="$pkgdir/usr/local" install
 }
