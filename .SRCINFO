@@ -1,7 +1,7 @@
 pkgbase = pacui-git
 	pkgdesc = Bash script providing advanced Pacman and Pacaur/Yaourt functionality in a simple UI
-	pkgver = 1.6.1
-	pkgrel = 2
+	pkgver = 1.6.1.r52.gf15de67
+	pkgrel = 1
 	url = https://github.com/excalibur1234/pacui
 	arch = any
 	license = GPL3
@@ -17,7 +17,6 @@ pkgbase = pacui-git
 	optdepends = downgrade: Needed for hidden "downgrade" option.
 	conflicts = pacui
 	conflicts = pacli-simple-git
-	replaces = pacli-simple-git
 	source = pacui::git+https://github.com/excalibur1234/pacui.git
 	md5sums = SKIP
 
