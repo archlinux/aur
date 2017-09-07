@@ -1,0 +1,15 @@
+pkgbase = gimp-plugin-layers-to-divs
+	pkgdesc = Gimp plugin to create html divs from gimp layers
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/MrHeadwar/Layerstodivs
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gimp
+	depends = python
+	source = https://github.com/MrHeadwar/Layerstodivs/archive/master.zip
+	md5sums = SKIP
+
+pkgname = gimp-plugin-layers-to-divs
+
