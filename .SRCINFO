@@ -1,7 +1,7 @@
 pkgbase = neomutt
 	pkgdesc = The New Mutt: powerful text-based mail client with all the best feature patches
 	pkgver = 20170907
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.neomutt.org/
 	arch = i686
 	arch = x86_64
