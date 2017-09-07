@@ -11,7 +11,7 @@ makedepends=('subversion')
 install="gplanarity.install"
 source=('gplanarity.desktop'
         'svn+https://svn.xiph.org/trunk/planarity')
-md5sums=('ba98adefdf2a0f5bec63a714d4337dff'
+md5sums=('a0f7e34bc628ce25626a2b7afdb4fa8d'
          'SKIP')
 
 pkgver() {
@@ -34,4 +34,6 @@ package() {
 
 	cd "$srcdir/planarity"
 	make PREFIX="$pkgdir/usr/local" install
+
+	install -Dm644 gPicon.png "$pkgdir"/usr/share/pixmaps/gplanarity.png
 }
