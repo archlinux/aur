@@ -1,0 +1,6 @@
+#!/bin/sh
+# Script to start Pale Moon with a temporary empty profile
+
+RANDOMPM=$(mktemp -d --suffix .pm)
+palemoon --new-instance --profile "$RANDOMPM" "$1"
+rm -rf "$RANDOMPM"

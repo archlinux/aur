@@ -1,0 +1,14 @@
+pkgname=goldfish-moon
+pkgver=20170908
+pkgrel=1
+pkgdesc="Script to start Pale Moon with temporary empty profile"
+arch=(any)
+depends=(palemoon)
+source=(goldfish-moon goldfish-moon.desktop)
+sha512sums=('8c98aba84f725da8911a0a3117cc78ac2fa047e6e3404f9e5a03f139a7416861e17e2e7e2f4ae27a037aa48b857adf809184fbcaacd0d2da3757b184b08693e9'
+			'67fb60ef9c93acb3a8a1a6a1929873d4c217304155c5b3278188f6e310014080ef4cff4680047b5bf805421ec92f6bd2c8fcef18f701939d7fc83249dbe48381')
+
+package() {
+	install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+}
