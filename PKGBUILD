@@ -1,6 +1,6 @@
 # Maintainer: xhebox <xw897002528 at gmail dot com>
 pkgname=deeponion
-pkgver=r6.d0d33df
+pkgver=r11.78a5bf3
 pkgrel=1
 pkgdesc="DeepOnion (ONION) is a new PoW/PoS altcoin that is most secure. All the communications in DeepOnion network is done through the TOR network."
 arch=('i686' 'x86_64')
