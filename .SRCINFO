@@ -1,0 +1,12 @@
+pkgbase = kalzium-fake
+	pkgdesc = A fake empty kalzium package for those who don't want kalzium installed on their system
+	pkgver = 1000.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/kalzium-fake/
+	arch = any
+	license = GPL
+	provides = kalzium
+	replaces = kalzium
+
+pkgname = kalzium-fake
+
