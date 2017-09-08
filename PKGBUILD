@@ -2,27 +2,18 @@
 
 pkgname=pyqso
 _authorname=ctjacobs
-pkgver=0.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Ham Radio QSO logging tool."
 arch=('any')
 url="http://christianjacobs.uk/pyqso/"
 license=('GPL3')
-depends=('gtk3' 'gobject-introspection' 'python-basemap' 'python-cairocffi')
+depends=('gtk3' 'gobject-introspection' 'python-basemap' 'python-cairocffi'
+	'hamlib-git-python3' 'hamradio-menus')
 #makedepends=('python-sphinx'	# for building docs)
-optdepends=('hamlib: rig control'
-	    'hamradio-menus: XDG compliant menuing')
 source=(https://github.com/${_authorname}/$pkgname/archive/v${pkgver}.tar.gz
-	diff.setup.py
 	$pkgname.desktop
 )
-
-prepare() {
-	cd $srcdir/$pkgname-$pkgver
-
-	patch -p0 < ../diff.setup.py
-	sed -i 's:icons:share\/pyqso\/icons:g' bin/pyqso
-}
 
 build () {
 	cd $srcdir/$pkgname-$pkgver
@@ -35,15 +26,13 @@ package() {
 
 	python3 setup.py install --root="$pkgdir/" --optimize=1
 
-	install -Dm644 icons/log_14x14.png $pkgdir/usr/share/pixmaps/$pkgname.png
+	install -Dm644 pyqso/res/log_14x14.png $pkgdir/usr/share/pixmaps/$pkgname.png
 	install -Dm644 ../$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 
 #	mkdir -p $pkgdir/usr/share/$pkgname/docs/html/{_images,_modules/pyqso,_sources,_static}
 #	cp -a docs/build/html/* $pkgdir/usr/share/$pkgname/docs/html/.
 }
-md5sums=('da6a627a8107ce5e84ec443467cda683'
-         '876b5de8701d6239d0f87b6cec1d8820'
+md5sums=('c99f1c43ad90fc1cd37857b63cdeadfe'
          'db5223623f0a745b15798e18c1f5fc0d')
-sha256sums=('5550d1fedde75f1b801b9f2ef1fde33428ade337d3161b3ac56773028d655aa8'
-            'f08c1511c480faba9725b9bfc4f2f78aab700c9c3fe770ba2e5dccfe7823d17e'
+sha256sums=('ec7859fb1a93c9466abd55cedc3aceb143a4eb63efbda5a8da8d19652b718740'
             'b724c3782338cd546f78719137802384364522e398fb6c5a633442d25a2afb17')
