@@ -1,7 +1,7 @@
 # Maintainer: Daniel Lima <danielm@nanohub.tk>
 
 pkgname=xcursor-capitaine
-pkgver=r2.12.gef0b8e0
+pkgver=r2.14.gfbb3887
 pkgrel=1
 pkgdesc='Capitaine Cursors - an x-cursor theme inspired by macOS and based on KDE Breeze'
 arch=('any')
@@ -18,6 +18,6 @@ pkgver() {
 package() {
 	cd $srcdir/capitaine-cursors
 	install -d $pkgdir/usr/share/icons/
-	cp -pr $srcdir/capitaine-cursors/bin/xcursor $pkgdir/usr/share/icons/xcursor-capitaine
+	cp -pr $srcdir/capitaine-cursors/dist/ $pkgdir/usr/share/icons/capitaine-cursors
 }
 
