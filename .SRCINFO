@@ -1,6 +1,6 @@
 pkgbase = wuzz
 	pkgdesc = Interactive cli tool for HTTP inspection
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/asciimoo/wuzz
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = wuzz
 	makedepends = git
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/asciimoo/wuzz/archive/v0.3.0.tar.gz
-	sha256sums = 08b3e80e9c6271527c7901f1faa5199ad3b886c665a6c44e46639a8a52cc71d7
+	source = https://github.com/asciimoo/wuzz/archive/v0.4.0.tar.gz
+	sha256sums = acf8e82481740d1403b744c58918b9089128d91c3c6edc15b76b6e1c97ead645
 
 pkgname = wuzz
 
