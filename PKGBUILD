@@ -3,7 +3,7 @@
 
 pkgname=electrumx
 pkgver=1.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
 depends=('leveldb'
@@ -58,7 +58,7 @@ package() {
           -t "$pkgdir/usr/lib/systemd/system"
 
   msg2 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   msg2 'Renaming executables...'
   mv "$pkgdir/usr/bin/electrumx_server.py" "$pkgdir/usr/bin/electrumx-server"
