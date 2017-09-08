@@ -1,7 +1,7 @@
 #Maintainer: Sam Bazley <samb1999@hotmail.co.uk>
 pkgname=esp-open-sdk-git
 pkgver=1
-pkgrel=7
+pkgrel=8
 pkgdesc="Free and open (as much as possible) integrated SDK for ESP8266 chips"
 arch=("i686" "x86_64")
 url="https://github.com/pfalcon/esp-open-sdk"
@@ -53,6 +53,6 @@ package() {
     cp -dpr --no-preserve=ownership examples/blinky \
         "$pkgdir"/opt/esp-open-sdk/sdk/examples
 
-    ln -s "$pkgdir/opt/esp-open-sdk/$ver/driver_lib/include/driver/" \
+    ln -s /opt/esp-open-sdk/sdk/driver_lib/include/driver/ \
         "$pkgdir"/opt/esp-open-sdk/xtensa-lx106-elf/xtensa-lx106-elf/include/
 }
