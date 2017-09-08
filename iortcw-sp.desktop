@@ -2,7 +2,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Return To Castle Wolfenstein SP
+Name=ioRTCW SP
 Comment=Return To Castle Wolfenstein (Single Player)
 Exec=/usr/bin/iortcw-sp
 Icon=/usr/share/pixmaps/iortcw.png

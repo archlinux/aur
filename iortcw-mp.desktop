@@ -2,7 +2,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Return To Castle Wolfenstein MP
+Name=ioRTCW MP
 Comment=Return To Castle Wolfenstein (Multi Player)
 Exec=/usr/bin/iortcw-mp
 Icon=/usr/share/pixmaps/iortcw.png

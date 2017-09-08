@@ -2,7 +2,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Return To Castle Wolfenstein MP Rend2
+Name=ioRTCW MP Rend2
 Comment=Return To Castle Wolfenstein with Rend2 (Multi Player)
 Exec=/usr/bin/iortcw-mp-rend2
 Icon=/usr/share/pixmaps/iortcw.png
