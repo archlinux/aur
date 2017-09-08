@@ -1,8 +1,8 @@
 _npmscope=@angular
 _npmname=cli
-_npmver=1.3.2
+_npmver=1.4.0
 pkgname=angular-cli # All lowercase
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="CLI tool for Angular"
 arch=(any)
