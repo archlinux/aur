@@ -1,8 +1,8 @@
 pkgname=arch-checkrestart
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux port of Debian's checkrestart utility"
-url=https://gitla.in/flisk/arch-checkrestart
+url=https://github.com/sometoby/arch-checkrestart
 arch=('any')
 license=('GPL2')
 depends=('lsof' 'python')
