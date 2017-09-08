@@ -1,6 +1,6 @@
 pkgbase = latte-dock-git
 	pkgdesc = A dock based on plasma frameworks - git version
-	pkgver = 0.7.1.r0.g0205ae1
+	pkgver = 0.7.1.r7.gdbbd01a
 	pkgrel = 1
 	url = https://github.com/psifidotos/Latte-Dock
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = latte-dock-git
 	depends = plasma-desktop
 	optdepends = libunity: quicklists, counters, and progress bars for apps using libunity
 	conflicts = latte-dock
-	source = git+https://github.com/psifidotos/Latte-Dock.git
+	source = git+https://github.com/KDE/latte-dock.git
 	sha256sums = SKIP
 
 pkgname = latte-dock-git
