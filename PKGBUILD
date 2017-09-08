@@ -4,14 +4,13 @@
 
 pkgname=p4v
 pkgver=2017.2.1535556
-pkgrel=2
+pkgrel=3
 pkgdesc="Perforce Visual Client"
 arch=('x86_64')
 url="http://www.perforce.com"
 license=('custom:p4v')
 depends=(libxcb)
 options=('!strip')
-install=${pkgname}.install
 source=(p4v.desktop p4admin.desktop p4merge.desktop LICENSE
 http://cdist2.perforce.com/perforce/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}.tgz)
 
