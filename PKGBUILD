@@ -294,7 +294,7 @@ if $_patching; then
   #patch -p1 < ${startdir}/0001-Check-lib64-as-well-as-lib.patch
 
   cd ${_declarativedir}
-  bunzip2 ${startdir}/0001-Move-qt-declarative-to-4c3246e49521b6341ddcc513814ae.patch.bz2
+  bunzip2 ${startdir}/0001-Move-qt-declarative-to-4c3246e49521b6341ddcc513814ae.patch.bz2 -c > ${startdir}/0001-Move-qt-declarative-to-4c3246e49521b6341ddcc513814ae.patch
   patch -p1 < ${startdir}/0001-Move-qt-declarative-to-4c3246e49521b6341ddcc513814ae.patch
   #patch -p1 < ${startdir}/0001-Fix-crash-in-QQuickPixmapReader-friends.patch
   #patch -p1 < ${startdir}/0001-Fix-build-with-qreal-as-float.patch
@@ -363,13 +363,6 @@ package() {
 
   create_install_script
 
-  # cleanup
-  rm -Rf ${pkgdir}
-  mkdir -p ${pkgdir}
-
-  cd "${_bindir}"
-  INSTALL_ROOT="$pkgdir" make install || exit 1
-
   # Qt is now installed to $pkgdir/$sysroot/$prefix
   # manually generate/decompose host/target
 
@@ -389,10 +382,14 @@ package() {
 
   local _installed_dir="${pkgdir}/${_sysroot}/${_baseprefix}"
 
-  cp ${_bindir}/configure_line ${_basepkgdir}
-  cp ${_bindir}/config.summary ${_basepkgdir}
-  rm -Rf ${_libspkgdir} ${_libsdebugpkgdir}
-  mkdir -p ${_libspkgdir} ${_libsdebugpkgdir}
+  rm -Rf ${_libspkgdir} ${_libsdebugpkgdir} ${pkgdir}
+  mkdir -p ${_libspkgdir} ${_libsdebugpkgdir} ${pkgdir}
+
+  cd "${_bindir}"
+  INSTALL_ROOT="$pkgdir" make install || exit 1
+
+  cp ${_bindir}/configure_line ${_bindir}/config.summary ${_basepkgdir}
+  cp ${_bindir}/configure_line ${_bindir}/config.summary ${_libspkgdir}
 
   cp ${startdir}/PKGBUILD.libs ${_libspkgbuild}
   cp ${startdir}/PKGBUILD.libs.debug ${_libsdebugpkgbuild}
