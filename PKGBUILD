@@ -15,7 +15,7 @@ source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('43211e1fd5654de21bbee4aeed6bc72c5147fdcb57eb8fd26234c889a9c4f9be')
 
 build() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   a2x -d manpage -f manpage "man/pethtool.8.asciidoc"
   a2x -d manpage -f manpage "man/pifconfig.8.asciidoc"
   gzip --stdout "man/pethtool.8" > "man/pethtool.8.gz"
@@ -25,7 +25,7 @@ build() {
 package_python-ethtool() {
   depends=('python' 'libnl')
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install -O1 --root="${pkgdir}"
 
   mkdir -p "${pkgdir}/usr/share/man/man8"
@@ -36,7 +36,7 @@ package_python-ethtool() {
 package_python2-ethtool() {
   depends=('python2' 'libnl')
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/python-ethtool-${pkgver}"
   python2 setup.py install -O1 --root="${pkgdir}"
 
   mkdir -p "${pkgdir}/usr/share/man/man8"
