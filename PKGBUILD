@@ -1,17 +1,18 @@
 # Maintainer: M0Rf30
 # This file is part of BlackArch Linux ( http://blackarch.org ).
 # See COPYING for license details.
+
 _name=wifiphisher
 pkgname=${_name}-git
 
-pkgver=520.429a5e3
+pkgver=567.e9e7690
 pkgrel=1
 groups=('blackarch' 'blackarch-wireless' 'blackarch-social')
 pkgdesc='Fast automated phishing attacks against WPA networks.'
 arch=('any')
 url='https://github.com/sophron/wifiphisher'
 license=('MIT')
-depends=('hostapd' 'python2' 'python2-blessings' 'python2-httplib2' 'python2-pyric' 'scapy' 'aircrack-ng')
+depends=('python2' 'python2-blessings' 'python2-pyric' 'python2-tornado' 'scapy' 'dnsmasq' 'hostapd' 'net-tools')
 makedepends=('git')
 provides=('wifiphisher')
 conflicts=('wifiphisher')
