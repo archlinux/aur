@@ -11,9 +11,16 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("http://vdr.schmirler.de/$_plugname/$pkgname-$pkgver.tgz")
+source=("http://vdr.schmirler.de/$_plugname/$pkgname-$pkgver.tgz"
+        "vdr-2.3.2-epgsync-1.0.1_v2.diff::https://www.vdr-portal.de/index.php?attachment/40535")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('694024ecd7bb813d43620ded63fc3ab4')
+md5sums=('694024ecd7bb813d43620ded63fc3ab4'
+         '779d3c997ea2bdf667752affff102f75')
+
+prepare() {
+  cd "${srcdir}/${_plugname}-${pkgver}"
+  patch -p1 -i "$srcdir/vdr-2.3.2-epgsync-1.0.1_v2.diff"
+}
 
 build() {
   cd "${srcdir}/${_plugname}-${pkgver}"
