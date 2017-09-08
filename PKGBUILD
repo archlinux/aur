@@ -17,7 +17,7 @@ source=(https://github.com/PurpleI2P/${pkgname}/archive/${pkgver}.tar.gz)
 install=$pkgname.install
 backup=(etc/$pkgname/$pkgname.conf
         etc/$pkgname/tunnels.conf)
-conflicts=('$pkgname-git')
+conflicts=("$pkgname-git")
 
 build() {
   cd $srcdir/$pkgname-$pkgver
