@@ -1,0 +1,15 @@
+[Unit]
+Description=NGINX Amplify Agent
+After=network.target network-online.target nss-lookup.target
+
+[Service]
+Type=forking
+User=http
+Group=http
+ExecStart=/usr/bin/nginx-amplify-agent.py start --config=/etc/amplify-agent/agent.conf --pid=/run/amplify-agent/amplify-agent.pid
+ExecStop=/usr/bin/nginx-amplify-agent.py stop --config=/etc/amplify-agent/agent.conf --pid=/run/amplify-agent/amplify-agent.pid
+PIDFile=/run/amplify-agent/amplify-agent.pid
+RuntimeDirectory=amplify-agent
+
+[Install]
+WantedBy=multi-user.target
