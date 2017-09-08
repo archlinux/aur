@@ -1,7 +1,7 @@
 pkgbase = grub
 	pkgdesc = GNU GRand Unified Bootloader (2)
 	pkgver = 2.02
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://www.gnu.org/software/grub/
 	install = grub.install
@@ -56,6 +56,7 @@ pkgbase = grub
 	source = 0002-intel-ucode.patch
 	source = 0003-10_linux-detect-archlinux-initramfs.patch
 	source = 0004-add-GRUB_COLOR_variables.patch
+	source = 0005-Allow_GRUB_to_mount_ext234_filesystems_that_have_the_encryption_feature.patch
 	source = grub.default
 	source = grub.cfg
 	validpgpkeys = E53D497F3FA42AD8C9B4D1E835A93B74E82E4209
@@ -68,6 +69,7 @@ pkgbase = grub
 	sha256sums = 37adb95049f6cdcbdbf60ed6b6440c5be99a4cd307a0f96c3c3837b6c2e07f3c
 	sha256sums = b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3
 	sha256sums = a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29
+	sha256sums = 535422c510a050d41efe7720dbe54de29e04bdb8f86fd5aea5feb0b24f7abe46
 	sha256sums = df764fbd876947dea973017f95371e53833bf878458140b09f0b70d900235676
 	sha256sums = c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad
 
