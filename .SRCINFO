@@ -1,15 +1,13 @@
 pkgbase = intel-me-tools-git
 	pkgdesc = Tools for working with Intel ME
-	pkgver = r9.73b5624
+	pkgver = r27.b35da19
 	pkgrel = 1
 	url = https://github.com/skochinsky/me-tools
 	arch = any
 	license = unknown
 	depends = python2
-	source = linux_fixes.patch
 	source = git+https://github.com/skochinsky/me-tools
-	md5sums = 5b282b95bef7692fded0558a98342f0e
-	md5sums = SKIP
+	sha1sums = SKIP
 
 pkgname = intel-me-tools-git
 

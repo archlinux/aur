@@ -1,17 +1,15 @@
 # Maintrainer: Anatol Pomozov
 
 pkgname=intel-me-tools-git
-pkgver=r9.73b5624
+pkgver=r27.b35da19
 pkgrel=1
 pkgdesc='Tools for working with Intel ME'
 arch=(any)
 url='https://github.com/skochinsky/me-tools'
 license=(unknown)
 depends=(python2)
-source=(linux_fixes.patch
-        git+https://github.com/skochinsky/me-tools)
-md5sums=('5b282b95bef7692fded0558a98342f0e'
-         'SKIP')
+source=(git+https://github.com/skochinsky/me-tools)
+sha1sums=('SKIP')
 
 pkgver() {
   cd me-tools
@@ -20,7 +18,7 @@ pkgver() {
 
 prepare() {
   cd me-tools
-  patch -p1 < ../linux_fixes.patch
+  sed -i 's/env python$/env python2/' me_unpack.py
 }
 
 package() {
