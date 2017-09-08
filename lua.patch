@@ -1,0 +1,13 @@
+diff --git a/lua/CMakeLists.txt b/lua/CMakeLists.txt
+index 34c9ab1..8467467 100644
+--- a/lua/CMakeLists.txt
++++ b/lua/CMakeLists.txt
+@@ -5,7 +5,7 @@ PROJECT(uloop C)
+ SET(CMAKE_INSTALL_PREFIX /)
+ 
+ IF(NOT LUA_CFLAGS)
+-	pkg_search_module(LUA lua5.1 lua-5.1)
++	pkg_search_module(LUA REQUIRED lua5.1 lua-5.1 lua51)
+ ENDIF()
+ 
+ ADD_DEFINITIONS(-Os -Wall -Werror --std=gnu99 -g3 -I.. ${LUA_CFLAGS})
