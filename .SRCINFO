@@ -1,0 +1,12 @@
+pkgbase = openbabel-fake
+	pkgdesc = A fake empty openbabel package for those who don't want openbabel installed on their system
+	pkgver = 1000.0.0
+	pkgrel = 3
+	url = https://aur.archlinux.org/packages/openbabel-fake/
+	arch = any
+	license = GPL
+	provides = openbabel
+	replaces = openbabel
+
+pkgname = openbabel-fake
+
