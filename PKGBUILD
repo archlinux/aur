@@ -18,9 +18,9 @@ makedepends=('git')
 install="$pkgname.install"
 _plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-live.git#commit=$_gitver"
-        'live-folderstatecookie-v2.diff::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=34407'
-        'live-osd-patch_150221.diff::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=37780'
-        'live-gcc6-fixes.diff::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=40135'
+        'live-folderstatecookie-v2.diff::https://www.vdr-portal.de/index.php?attachment/34407'
+        'live-osd-patch_150221.diff::https://www.vdr-portal.de/index.php?attachment/37780'
+        'live-gcc6-fixes.diff::https://www.vdr-portal.de/index.php?attachment/40135'
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('SKIP'
