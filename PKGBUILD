@@ -4,13 +4,15 @@
 
 pkgname=repoctl-git
 pkgver=v0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories"
 arch=('i686' 'x86_64')
 url="https://github.com/cassava/repoctl"
 license=('MIT')
 depends=('pacman')
 makedepends=('go' 'xz')
+conflicts=('repoctl')
+provides=('repoctl')
 options=('!strip')
 source=("$pkgname::git+https://github.com/cassava/repoctl.git")
 sha256sums=('SKIP')
@@ -22,6 +24,7 @@ pkgver() {
 
 prepare() {
   local dest="$srcdir/src/github.com/cassava"
+
   mkdir -p "$dest"
   mv "$srcdir/$pkgname" "$dest/repoctl"
 
