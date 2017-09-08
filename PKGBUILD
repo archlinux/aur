@@ -2,12 +2,12 @@
 
 pkgname=cpyrit-opencl
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenCL backend for accelerated attack against WPA-PSK authentication."
 url="http://code.google.com/p/pyrit/"
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('python2' 'openssl' 'zlib' 'libcl' 'pyrit')
+depends=('python2' 'openssl' 'zlib' 'libclc' 'pyrit')
 makedepends=('opencl-headers' 'gcc' 'python2')
 
 optdepends=('opencl-catalyst: OpenCL implemention from AMD')
