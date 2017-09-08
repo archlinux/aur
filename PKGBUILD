@@ -1,14 +1,14 @@
 # Maintainer: Stefan J. Betz <info@stefan-betz.net>
 pkgname=subnetcalc
-pkgver=2.4.4
+pkgver=2.4.7
 pkgrel=1
 pkgdesc="Subnet Calculator for IPv4/IPv6"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://www.iem.uni-due.de/~dreibh/subnetcalc/"
+url="https://www.uni-due.de/~be0001/subnetcalc/"
 depends=('geoip')
-source=("http://www.iem.uni-due.de/~dreibh/subnetcalc/download/subnetcalc-$pkgver.tar.gz")
-md5sums=('4fd262820961ead961edc5317fe5b90f')
+source=("https://www.uni-due.de/~be0001/subnetcalc/download/subnetcalc-$pkgver.tar.gz")
+md5sums=('5c5731347bb3a9b0dd29f86014e58be3')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
