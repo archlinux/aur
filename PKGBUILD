@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgbase=iortcw-git
-pkgname=('iortcw-git' 'iortcw-git-rend2')
+pkgname=('iortcw-git' 'iortcw-rend2-git')
 pkgname=iortcw-git
 pkgver=1.51b.r6.ge422b432
 pkgrel=1
@@ -130,7 +130,7 @@ package_iortcw-git() {
         $pkgdir/usr/share/pixmaps/iortcw.png
 }
 
-package_iortcw-git-rend2() {
+package_iortcw-rend2-git() {
 pkgdesc="Experimental render for Return to Castle Wolfenstein"
 
 # Modify Launcher Scripts
