@@ -1,6 +1,6 @@
 # Maintainer: Merrick Luo <merrick@luois.me>
 pkgname=vysor
-pkgver=r121.04119a8
+pkgver=r126.0fc1842
 pkgrel=1
 epoch=
 pkgdesc="Vysor lets you view and control your Android on your computer. Easy peasy."
@@ -9,7 +9,7 @@ url="https://github.com/koush/electron-chrome"
 license=("MIT")
 groups=()
 depends=("nodejs")
-makedepends=("git")
+makedepends=("git" "npm")
 checkdepends=()
 optdepends=()
 provides=()

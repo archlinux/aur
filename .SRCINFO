@@ -6,6 +6,7 @@ pkgbase = vysor
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = npm
 	depends = nodejs
 	source = vysor::git+https://github.com/koush/electron-chrome#branch=master
 	source = vysor.desktop
