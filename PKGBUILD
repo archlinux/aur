@@ -9,6 +9,8 @@ license=('GPL2')
 depends=('libxrender' 'x-server' 'freetype2' 'fontconfig')
 makedepends=('subversion')
 install="gplanarity.install"
+conflicts=('gplanarity')
+provides=('gplanarity')
 source=('gplanarity.desktop'
         'svn+https://svn.xiph.org/trunk/planarity')
 md5sums=('a0f7e34bc628ce25626a2b7afdb4fa8d'
