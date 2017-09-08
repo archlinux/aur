@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-vnsiserver
-pkgver=1.5.2
-_gitver=41e62a56febd0b59acf1c29f022d1d130e7af855
+pkgver=1.5.2.r5.g615a077
+_gitver=615a077be1ef669feae3b6b85291b12278577793
 _vdrapi=2.2.0
 epoch=2
 pkgrel=1
@@ -23,7 +23,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/vdr-plugin-$_plugname"
-  git describe --tags | sed 's/v//;s/-/_/g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
