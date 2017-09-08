@@ -2,8 +2,8 @@
 
 # Maintainer: George Kranis https://github.com/gkranis/vdr4arch
 pkgname=vdr-eepg
-pkgver=0.0.5_188_g9cd9a75
-_gitver=9cd9a75a061ed301378e8102b726549f5a0e672d
+pkgver=0.0.5_233_g7f7ec60
+_gitver=7f7ec60c3654f318fc4ec918a29b8b95c8c4a25e
 _vdrapi=2.2.0
 pkgrel=1
 pkgdesc="Extended EPG (EEPG) plugin for VDR"
