@@ -41,7 +41,7 @@ post_upgrade()  {
     sudo echo Comment=Install free game engines with proprietary content. >> /opt/Recultis/recultis.desktop
     sudo echo "Exec=/opt/Recultis/main.py" >> /opt/Recultis/recultis.desktop
     sudo echo Icon=recultis.png >> /opt/Recultis/recultis.desktop
-    sudo echo Categories=Game; >> /opt/Recultis/recultis.desktop
+    sudo echo "Categories=Game;" >> /opt/Recultis/recultis.desktop
     sudo echo Terminal=false >> /opt/Recultis/recultis.desktop
     sudo cp /opt/Recultis/recultis.desktop /usr/share/applications
 }
