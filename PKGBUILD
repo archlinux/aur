@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-python-bitcoinlib
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="An easy interface to the Bitcoin protocol and data structures"
 arch=('any')
@@ -27,4 +27,5 @@ package() {
   msg2 'Installing...'
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
-md5sums=('9665bbffe7f53ce7f9cff61402887b24')
+
+md5sums=('1ecf7af7dadf463d96b8b7c64324d7ee')
