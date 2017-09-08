@@ -1,8 +1,8 @@
 # Maintainer: M0Rf30
 
 pkgname=libpam-google-authenticator
-pkgver=1.03
-pkgrel=2
+pkgver=1.04
+pkgrel=1
 pkgdesc='PAM module for google authenticator app'
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/google/google-authenticator-libpam"
@@ -25,4 +25,4 @@ package() {
   make DESTDIR=$pkgdir install
 }
 
-md5sums=('4647e515e6986f6e5b00409c989d4267')
+md5sums=('4b08a0a5dca2835499c790d67bf8f736')
