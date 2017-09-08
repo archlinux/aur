@@ -3,14 +3,14 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgbase=xineliboutput
 pkgname=(vdr-xineliboutput xineliboutput-frontends xineliboutput-xineplug)
-pkgver=1.1.0.55.g9027ea1
-_gitver=9027ea1737b966386916da27207e8bf92f24cfe0
+pkgver=1.1.0.144.g46f0f1d
+_gitver=46f0f1dd61e759c523a86280f8ec6c5f1b40ce72
 _vdrapi=2.2.0
-pkgrel=3
+pkgrel=1
 url="http://www.sourceforge.net/projects/xineliboutput"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
-makedepends=('dbus-glib' 'git' 'glu' 'libextractor' 'libxrandr' 'mesa' "vdr-api=${_vdrapi}" 'xine-lib')
+makedepends=('avahi' 'dbus-glib' 'git' 'glu' 'libcec' 'libextractor' 'libxrandr' 'mesa' "vdr-api=${_vdrapi}" 'xine-lib')
 _plugname=${pkgname//vdr-/}
 source=("git://git.code.sf.net/p/xineliboutput/git#commit=$_gitver"
         'xineliboutput_fix_vdrversion_check.diff'
@@ -31,13 +31,13 @@ prepare() {
 
 build() {
   cd "${srcdir}/git"
-  ./configure --disable-libcec
+  ./configure
   make
 }
 
 package_vdr-xineliboutput() {
   pkgdesc="X11 and Linux framebuffer front-end for VDR"
-  depends=("vdr-api=${_vdrapi}" 'libextractor' 'libbluray')
+  depends=('avahi' 'libextractor' 'libbluray' "vdr-api=${_vdrapi}")
   optdepends=('xineliboutput-xineplug: local output device'
               'xineliboutput-frontends: remote output device')
   backup=("etc/vdr/conf.avail/50-$_plugname.conf"
@@ -57,7 +57,7 @@ package_vdr-xineliboutput() {
 
 package_xineliboutput-frontends() {
   pkgdesc="Xineliboutput remote frontends (vdr-fbfe and vdr-sxfe)"
-  depends=('xineliboutput-xineplug')
+  depends=('libcec' 'xineliboutput-xineplug')
   cd "${srcdir}/git"
 
   mkdir -p "$pkgdir/usr/lib/vdr/plugins"
