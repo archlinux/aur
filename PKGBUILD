@@ -14,7 +14,10 @@ _use_tentative_patches=
 
 ### Use mailing-list patches; many thanks to Piotr "sir_lucjan" Gorski
 # ML1 - [PATCH V4 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150436546704854&w=2
-_use_ml_patches=
+_use_ml1_patches=
+
+# ML2 - [PATCH] block,bfq: Disable writeback throttling: https://marc.info/?l=linux-block&m=150486424501778&w=2
+_use_ml2_patches=
 
 # Running with a 1000 HZ tick rate
 _1k_HZ_ticks=
@@ -68,7 +71,7 @@ pkgbase=linux-bfq-mq-git
 _pkgver=4.13
 _srcname=bfq-mq
 pkgver=4.13.3081d9298e35
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -77,6 +80,7 @@ options=('!strip')
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
 _mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance-V4"
+_mlpath_2="${_bfqpath}/mailing-list/block-bfq-disable-wbt"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 source=(# bfq-mq repository
         'git+https://github.com/Algodev-github/bfq-mq'
@@ -99,6 +103,8 @@ source=(# bfq-mq repository
         "${_mlpath_1}/ML1-0012-block-introduce-.last_merge-and-.hash-to-blk_mq_ctx.patch"
         "${_mlpath_1}/ML1-0013-blk-mq-sched-refactor-blk_mq_sched_try_merge.patch"
         "${_mlpath_1}/ML1-0014-blk-mq-improve-bio-merge-from-blk-mq-sw-queue.patch"
+        # mailing-list (ML2) patches
+        "${_mlpath_2}/ML2-0001-block-bfq-Disable-writeback-throttling.patch"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -126,6 +132,8 @@ sha256sums=(# bfq-mq repository
             '00346abf88880eaa8b200705b5a63e322df518eb2129e34ca45e1d90c4742037'
             'bbb9dfdc98f5cdeaf1113d9c24cfafb95bc764af76d56dd57d964a16d81986b7'
             '4f7bbc6d983ab947474f5ab44194328321def86ab3f8b095f4def198d5604d08'
+            # mailing-list (ML2) patches
+            '5e57c8d1d87a63e1c5947aba02346862992f39be2b2761ea142b3897995495aa'
             # the main kernel config files
             '83d60f3acc31ee3102601833543cfd25a3cbaa45c23ff7cbf1b7446cb71ab6a0'
             '9f119ad3bf4cd1d2a746bfc96549764ceceb3702d55cad6214167d37c63f0402'
@@ -154,9 +162,17 @@ prepare() {
 
   ### Patches from mailing-list
   # ML1 - [PATCH V4 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150436546704854&w=2
-  if [ -n "$_use_ml_patches" ]; then
-    msg "Apply mailing-list patches"
-    for p in "${srcdir}"/ML*.patch; do
+  if [ -n "$_use_ml1_patches" ]; then
+    msg "Apply mailing-list patches 1"
+    for p in "${srcdir}"/ML1*.patch; do
+      msg " $p"
+    patch -Np1 -i "$p"; done
+  fi
+
+  # ML2 - [PATCH] block,bfq: Disable writeback throttling: https://marc.info/?l=linux-block&m=150486424501778&w=2
+  if [ -n "$_use_ml2_patches" ]; then
+    msg "Apply mailing-list patches 2"
+    for p in "${srcdir}"/ML2*.patch; do
       msg " $p"
     patch -Np1 -i "$p"; done
   fi
