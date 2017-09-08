@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=gPlanarity
+Exec=gPlanarity
+Type=Application
+Terminal=false
+Comment=A simple puzzle game involving untangling planar graphs
+Icon=gplanarity.png
+X-KDE-StartupNotify=false
+Categories=Application;Game
+
