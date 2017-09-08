@@ -2,7 +2,7 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r744.6b7140c
+pkgver=r788.800ffb8
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -69,19 +69,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-
-  echo "   .-\"\"\"\"-."
-  echo "  /        \\"
-  echo " /_        _\\"
-  echo "// \\      / \\\\"
-  echo "|\\__\\    /__/|"
-  echo " \\    ||    /"
-  echo "  \\        /"
-  echo "   \\  __  /"
-  echo "    '.__.'"
-  echo "     |  |"
-  echo "     |  |"
-
   sed -i 's|auto_update=1|auto_update=0|' airgeddon.sh
 }
 
@@ -94,7 +81,7 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/doc/airgeddon/" README.md CHANGELOG.md
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/airgeddon/LICENSE.md"
 
-  rm -rf *.md .git* binaries imgs Dockerfile pindb_checksum.txt
+  rm -rf *.md .git* .editor* binaries imgs Dockerfile pindb_checksum.txt
 
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/airgeddon"
 
