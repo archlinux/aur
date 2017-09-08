@@ -4,9 +4,9 @@
 # Contributor: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgbase=dfatmo
 pkgname=('dfatmo' 'vdr-dfatmo' 'kodi-addon-dfatmo')
-pkgver=0.4.0
+pkgver=0.5.0
 _vdrapi=2.2.0
-pkgrel=13
+pkgrel=1
 epoch=1
 url="https://github.com/durchflieger/${pkgbase}"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ makedepends=('libusbx' 'python2' "vdr-api=${_vdrapi}" 'zip')
 source=("https://github.com/durchflieger/${pkgbase}/archive/v${pkgver}.tar.gz"
         '45-df10ch.rules'
         "50-dfatmo.conf")
-md5sums=('c10affe8304d494fee575d95ff791dca'
+md5sums=('6de5945600b0f2bea6af52ccf8f1cc32'
          'c5e0bf17e88febc7e86c7e435f5eea5f'
          'f8f2376c860c78f522e40b1afd02d38c')
 prepare() {
