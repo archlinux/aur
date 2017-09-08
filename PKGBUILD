@@ -1,10 +1,10 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=384.59
+pkgver=384.69
 pkgrel=1
-_goodkver=4.11
-_badkver=4.12
+_goodkver=4.13
+_badkver=4.14
 _modver=${_goodkver}-pf
 _extramodules=extramodules-$_modver
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
@@ -24,8 +24,8 @@ install=nvidia.install
 options=(!strip)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('55c6f2441816350486e7f575d73f5ec1')
-md5sums_x86_64=('778318b0fd2d5d511474a8987cc7dbe5')
+md5sums_i686=('53039e5fe898d405f3ea1725751045b6')
+md5sums_x86_64=('0bee5889e14a653df35d6b9700363ff9')
 
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
