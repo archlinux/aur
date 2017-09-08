@@ -2,7 +2,7 @@
 
 pkgname=openbazaard-standalone
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
 url="http://openbazaar.org"
@@ -64,4 +64,4 @@ md5sums=('ebf7299e9d83069f9d6037df98047c56'
          '58f846fbc1742fea9d245b6f93f6db15'
          '7949d40abcd8bdaee27ff670d5b6c1c7'
          'e4d7b1c3fdceca262a517dd103f59260'
-         '6d413c8f8b7a6def6f39b3ebc681b90c')
+         'b7469817ddf578c9b633df8d2a517f0b')
