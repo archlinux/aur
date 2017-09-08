@@ -21,8 +21,8 @@ _amo_os=Linux
 #@
 #@ --------------------------------------------
 #@ Lines below automatically added by update_pkgbuild.sh.
-pkgver='1.7.0'
-source=('https://addons.mozilla.org/firefox/downloads/file/659059/keefox-1.7.0-fx+tb-linux.xpi?src=api')
+pkgver='1.7.2'
+source=('https://addons.mozilla.org/firefox/downloads/file/715252/keefox-1.7.2-fx+tb-linux.xpi?src=api')
 #@ --------------------------------------------
 #@
-sha384sums=('40dab624c1deda7342d09c9a4107533f38439be6f68dc7353da9e9ab054343169890e44a245e805a660681e4ce9e1cb5')
+sha384sums=('2addcc7894502e63814a986e7bc5f07533f88164a16b58e2cd7b2bc2fb4dac529420eb7653d7d4170bf2fcf2d6fc028d')
