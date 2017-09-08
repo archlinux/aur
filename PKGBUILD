@@ -12,8 +12,8 @@ license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
 source=("http://www.u32.de/download/$pkgname-$pkgver.tgz"
-        "vdr-1.7.28-devstatus-0.4.1.diff::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=31264"
-        "vdr-2.3.2-devstatus-0.4.1.diff::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=40512")
+        "vdr-1.7.28-devstatus-0.4.1.diff::https://www.vdr-portal.de/index.php?attachment/31264"
+        "vdr-2.3.2-devstatus-0.4.1.diff::https://www.vdr-portal.de/index.php?attachment/40512")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('503452532add3d4a37f2aa0b4a4488b7'
          'ba40b25c09cb365ff1e0d4a8db1507af'
