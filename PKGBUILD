@@ -1,6 +1,6 @@
 pkgname=file-commander-git
-pkgver=0.9.3.2.r33.g7efe4eb
-pkgrel=3
+pkgver=0.9.3.2.r41.gf33c7b3
+pkgrel=1
 pkgdesc='Qt-based cross-platform Total Commander-like orthodox file manager for Windows, Mac and Linux'
 arch=('i686' 'x86_64')
 url="https://github.com/VioletGiraffe/file-commander"
