@@ -128,3 +128,11 @@ package_realrtcw-rend2() {
     install -D -m 644 $srcdir/realrtcw-sp-rend2.desktop \
         $pkgdir/usr/share/applications/realrtcw-sp-rend2.desktop
 }
+
+md5sums=('0b40f6d1e2f31fe42d3a54359694dc03'
+         '0e0ef11b046ced39e880638d41c65dd4'
+         '6856b2ec43abce7be5d92233ef3ddaa1'
+         '3de1b5dde5c91ef521c64b5e56cdbccf'
+	 '3cf6ad712d1d797e09c232dcf43c016b'
+         '33f08bc165906164461420e1cc6dd86a'
+         'f164bb4457675fd05897e2945e2d8c9d')
