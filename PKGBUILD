@@ -2,21 +2,24 @@
 
 _gitname=steamguard-cli
 pkgname="$_gitname"-git
-pkgver=v0.3.2.0.r0.gfe26a5c
+pkgver=0.3.2.0.r1.g8c11d22
 pkgrel=1
 pkgdesc="A linux utility for setting up and using Steam Mobile Authenticator (AKA Steam 2FA) on the command line"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/dyc3/steamguard-cli"
-license=('custom')
-depends=('mono' 'nuget')
-makedepends=('git')
+license=('MIT')
+depends=('mono')
+makedepends=('git' 'nuget')
 
 provides=('steamguard-cli')
 conflicts=('steamguard-cli')
+options=('!strip')
 source=('git+https://github.com/dyc3/steamguard-cli.git'
-        'git+https://github.com/geel9/SteamAuth.git')
+        'git+https://github.com/geel9/SteamAuth.git'
+	'steamguard')
 md5sums=('SKIP'
-         'SKIP')
+         'SKIP'
+	 'c2589e487f84f100c62910cc2d43fc2e')
 
 prepare() {
   cd $_gitname
@@ -27,7 +30,7 @@ prepare() {
 
 pkgver () {
   cd $_gitname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
  
 build() {
@@ -37,14 +40,11 @@ build() {
  
 package() {
   cd $_gitname
-  install -d "$pkgdir/usr/lib/$_gitname"
-  install -Dm755 build/steamguard "$pkgdir/usr/lib/$_gitname"
-  install -Dm644 build/Newtonsoft.Json.dll "$pkgdir/usr/lib/$_gitname"
-  install -Dm755 build/SteamAuth.dll "$pkgdir/usr/lib/$_gitname"
+  install -Dm755 build/steamguard "$pkgdir/usr/lib/$_gitname/steamguard"
+  install -Dm644 build/Newtonsoft.Json.dll "$pkgdir/usr/lib/$_gitname/Newtonsoft.Json.dll"
+  install -Dm644 build/SteamAuth.dll "$pkgdir/usr/lib/$_gitname/SteamAuth.dll"
   install -Dm644 bash-tab-completion "$pkgdir/etc/bash_completion.d/steamguard"
-
-  install -d "${pkgdir}/usr/bin"
-  echo -e '#!/bin/sh\nexec /usr/lib/steamguard-cli/steamguard $*' > $pkgdir/usr/bin/steamguard
-  chmod 755 $pkgdir/usr/bin/steamguard
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_gitname/LICENSE"
+  install -Dm755 "$srcdir/steamguard" "$pkgdir/usr/bin/steamguard"
 }
 

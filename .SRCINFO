@@ -1,19 +1,22 @@
 pkgbase = steamguard-cli-git
 	pkgdesc = A linux utility for setting up and using Steam Mobile Authenticator (AKA Steam 2FA) on the command line
-	pkgver = v0.3.2.0.r0.gfe26a5c
+	pkgver = 0.3.2.0.r1.g8c11d22
 	pkgrel = 1
 	url = https://github.com/dyc3/steamguard-cli
-	arch = x86_64
-	license = custom
+	arch = any
+	license = MIT
 	makedepends = git
+	makedepends = nuget
 	depends = mono
-	depends = nuget
 	provides = steamguard-cli
 	conflicts = steamguard-cli
+	options = !strip
 	source = git+https://github.com/dyc3/steamguard-cli.git
 	source = git+https://github.com/geel9/SteamAuth.git
+	source = steamguard
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = c2589e487f84f100c62910cc2d43fc2e
 
 pkgname = steamguard-cli-git
 
