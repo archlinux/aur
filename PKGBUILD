@@ -2,8 +2,11 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epgsearch
-pkgver=1.0.1.beta5.r12.ga908daa
-_gitver=a908daa4c5c6edd6c560ed96939358b4352e9b42
+pkgver=2.2.0.r5.g9a88fe3
+# Note: Only use commits from branch "vdr-2.2.x" here.
+#       VDR 2.3.x needs commits from "master" branch!
+#       Don't mix between them! There is no "universal" version any more!
+_gitver=9a88fe383b470066bc5ff9376cbac674dd556874
 _vdrapi=2.2.0
 epoch=1
 pkgrel=1
@@ -35,17 +38,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  _last_release=1.0.1.beta5
-  _last_release_commit=7fea7fca409bf75cba18ba5f07c4fe8a3bd72e75
-
-  _count=$((`git rev-list --count HEAD` - `git rev-list --count $_last_release_commit`))
-  if [ $_count -gt 0 ]; then
-    printf "%s.r%s.g%s" $_last_release \
-      $_count \
-      `git rev-parse --short HEAD`
-  else
-    printf "%s" $_last_release
-  fi
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
