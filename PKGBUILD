@@ -9,12 +9,11 @@ _kernel_rel=4.12
 _branch=amd-staging-${_kernel_rel}
 _kernelname=${pkgbase#linux}
 pkgver=4.12.680794.2a69a4b35621
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
-optdepends=('vega10-firmware')
 options=('!strip')
 source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
         # the main kernel config files
