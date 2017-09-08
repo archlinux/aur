@@ -2,7 +2,7 @@
 
 _pkgname=gntp-send
 pkgname=${_pkgname}-git
-pkgver=20160618.r158.205f519
+pkgver=20170901.r160.090b127
 pkgrel=1
 pkgdesc="command line program that send to growl using GNTP protocol."
 url="https://github.com/mattn/${_pkgname}"
