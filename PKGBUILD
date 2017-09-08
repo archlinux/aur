@@ -1,8 +1,9 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Steven Malis <smmalis37@gmail.com>
+# Contributer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=electrumx
-pkgver=1.0.11
-pkgrel=2
+pkgver=1.0.17
+pkgrel=1
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
 depends=('leveldb'
@@ -11,7 +12,7 @@ depends=('leveldb'
          'python-irc'
          'python-plyvel'
          'python-pylru')
-makedepends=('expect' 'openssl' 'python-setuptools')
+makedepends=('openssl' 'python-setuptools')
 optdepends=('bitcoin-core: Bitcoin core headless P2P node'
             'electrum: Bitcoin thin client')
 url="https://github.com/kyuupichan/electrumx"
@@ -20,9 +21,9 @@ options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/kyuupichan/$pkgname/tar.gz/$pkgver
         'electrumx.conf'
         'electrumx.service')
-sha256sums=('9e43399daf42115d50299d578d19a2565645ce815c3bd9c3851d8b4e027e9256'
-            '6134f8e333fc622bea781ed334b738ade39bf7a6e4ace3704cba2e22788a4bf3'
-            'a70e6d2ff4e0eb8125ba2d52bcdaec96129068363e365d48a47961f47b9fc554')
+sha256sums=('31ad831594cdc33087caf82903800c203a0ca440c58d555d7209775b14885616'
+            'cf9b54e8841024fe10e35576514e8fc1de4be40e139f8dbc662ef149956f1d44'
+            'b4e1a9d4341edf1f2022f8c8591d28ef6bd6db38c6f332445ac294b5fc6dae93')
 backup=('etc/electrumx/electrumx.conf'
         'usr/lib/systemd/system/electrumx.service')
 install=electrumx.install

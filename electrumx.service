@@ -1,7 +1,7 @@
 [Unit]
 Description=ElectrumX Server
-Wants=bitcoin.service
-After=network.target bitcoin.service
+Wants=bitcoind.service
+After=network.target bitcoind.service
 
 [Service]
 EnvironmentFile=/etc/electrumx/electrumx.conf
