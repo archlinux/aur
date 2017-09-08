@@ -4,12 +4,13 @@
 pkgbase='python2-ethtool'
 pkgname=('python-ethtool' 'python2-ethtool')
 pkgver='0.13'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Python bindings for the ethtool kernel interface.'
 arch=('any')
 url="https://github.com/fedora-python/python-ethtool"
-makedepends=('python' 'python-setuptools'
-	     'python2' 'python2-setuptools')
+makedepends=('asciidoc' 'libnl'
+		'python' 'python-setuptools'
+		'python2' 'python2-setuptools')
 license=('GPL')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('43211e1fd5654de21bbee4aeed6bc72c5147fdcb57eb8fd26234c889a9c4f9be')
