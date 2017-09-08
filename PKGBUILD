@@ -6,20 +6,18 @@
 
 pkgname=i2pd
 pkgver=2.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64' 'armv7h')
-url="https://github.com/PurpleI2P/i2pd"
+url="https://github.com/PurpleI2P/$pkgname"
 license=('BSD')
 depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib')
 makedepends=('boost' 'cmake')
-source=(https://github.com/PurpleI2P/${pkgname}/archive/${pkgver}.tar.gz
-	i2pd.service
-	i2pd.tmpfiles.conf)
-install=i2pd.install
-backup=(etc/i2pd/i2pd.conf
-        etc/i2pd/tunnels.conf)
-conflicts=('i2pd-git')
+source=(https://github.com/PurpleI2P/${pkgname}/archive/${pkgver}.tar.gz)
+install=$pkgname.install
+backup=(etc/$pkgname/$pkgname.conf
+        etc/$pkgname/tunnels.conf)
+conflicts=('$pkgname-git')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -27,7 +25,6 @@ build() {
   cmake . -DCMAKE_CXX_FLAGS="-w" \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DWITH_UPNP=ON -DWITH_PCH=OFF \
-	  -DWITH_AVX=ON \
 	  -DCMAKE_BUILD_TYPE=Release
   make
 }
@@ -41,15 +38,15 @@ package(){
 
 	cd build
 	make DESTDIR=$pkgdir install
-  install -Dm0644 $srcdir/i2pd.service $pkgdir/usr/lib/systemd/system/i2pd.service
-  install -Dm0644 $srcdir/i2pd.tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/i2pd.conf
+  install -Dm0644 ../contrib/debian/$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
+  install -Dm0644 ../contrib/debian/$pkgname.tmpfile $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
 
-  install -Dm0644 $srcdir/$pkgname-$pkgver/contrib/i2pd.conf $pkgdir/${_conf_dest}/i2pd.conf
+  install -Dm0644 $srcdir/$pkgname-$pkgver/contrib/$pkgname.conf $pkgdir/${_conf_dest}/$pkgname.conf
   install -Dm0644 $srcdir/$pkgname-$pkgver/contrib/tunnels.conf $pkgdir/${_conf_dest}/tunnels.conf
   install -Dm0644 $srcdir/$pkgname-$pkgver/contrib/subscriptions.txt $pkgdir/${_conf_dest}/subscriptions.txt
 
   install -d -m0750 $pkgdir/${_home_dest}
-  ln -s /${_conf_dest}/i2pd.conf $pkgdir/${_home_dest}/i2pd.conf
+  ln -s /${_conf_dest}/$pkgname.conf $pkgdir/${_home_dest}/$pkgname.conf
   ln -s /${_conf_dest}/tunnels.conf $pkgdir/${_home_dest}/tunnels.conf
   ln -s /${_conf_dest}/subscriptions.txt $pkgdir/${_home_dest}/subscriptions.txt
 
@@ -70,10 +67,9 @@ package(){
   rm -r $pkgdir/usr/{src,LICENSE}
 
   #man
-  install -Dm644 $srcdir/$pkgname-$pkgver/debian/i2pd.1 "$pkgdir/${_share_dest}/man/man1/i2pd.1"
+  install -Dm644 $srcdir/$pkgname-$pkgver/debian/$pkgname.1 "$pkgdir/${_share_dest}/man/man1/$pkgname.1"
 
   chmod -R o= $pkgdir/${_home_dest}
 }
-md5sums=('8d37d0eacc2bf1f4be6d70250f5542d2'
-         '6e9869d619464902e635e520d21a8a56'
-         '384658d2792ef6433d2de70ebc9d40d4')
+
+md5sums=('8d37d0eacc2bf1f4be6d70250f5542d2')
