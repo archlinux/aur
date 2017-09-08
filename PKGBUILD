@@ -3,7 +3,7 @@
 _pkgorg=bus1
 _pkgname=dbus-broker
 pkgdesc='Linux D-Bus Message Broker'
-pkgver=r961.bb3f5ee
+pkgver=r963.a75ba60
 pkgrel=1
 
 pkgname=$_pkgname-git
@@ -45,7 +45,7 @@ prepare() {
 
 build() {
   cd build
-  meson ../$pkgname --prefix=/usr --buildtype=release -Db_lto=true
+  meson setup ../$pkgname --prefix=/usr --buildtype=release -Db_lto=true
   ninja
   make -C ../$pkgname BUILDDIR="$PWD" docs
 }
