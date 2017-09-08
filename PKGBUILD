@@ -15,13 +15,20 @@ makedepends=('git')
 optdepends=('lcdproc: to use local displays')
 _plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-lcdproc.git#commit=$_gitver"
+        "vdr-2.3.2-lcdproc_v2.diff::https://www.vdr-portal.de/index.php?attachment/40536"
         "50-$_plugname.conf"
         '92-lcdproc.rules')
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('SKIP'
+         '047746f6f729704ec93da66736480c6e'
          '0221e0b8878d56e3a057ac37a9c853cf'
          '67d1e0de8e90e0d4e9e977ddfd952442')
 
+prepare() {
+  cd "${srcdir}/vdr-plugin-$_plugname"
+  patch -p1 -i "$srcdir/vdr-2.3.2-lcdproc_v2.diff"
+}
+         
 pkgver() {
   cd "${srcdir}/vdr-plugin-$_plugname"
   git describe --tags | sed 's/-/_/g;s/v.//'
