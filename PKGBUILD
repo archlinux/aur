@@ -1,4 +1,7 @@
 # Maintainer: M0Rf30
+
+pkgbase=iortcw-git
+pkgname=('iortcw-git' 'iortcw-git-rend2')
 pkgname=iortcw-git
 pkgver=1.51b.r6.ge422b432
 pkgrel=1
@@ -46,7 +49,7 @@ build() {
   fi
 }
 
-package() {
+package_iortcw-git() {
   
   mkdir -p $pkgdir/opt/iortcw/main
   cd "$srcdir/iortcw"
@@ -89,10 +92,6 @@ package() {
         sed -i "s:ARCH:x86_64:" \
             $srcdir/iortcw-mp.launcher
         sed -i "s:ARCH:x86_64:" \
-            $srcdir/iortcw-sp-rend2.launcher
-        sed -i "s:ARCH:x86_64:" \
-            $srcdir/iortcw-mp-rend2.launcher
-        sed -i "s:ARCH:x86_64:" \
             $srcdir/iortcw-ded.launcher
     else
         #
@@ -103,26 +102,16 @@ package() {
         sed -i "s:ARCH:x86:" \
             $srcdir/iortcw-mp.launcher
         sed -i "s:ARCH:x86:" \
-            $srcdir/iortcw-sp-rend2.launcher
-        sed -i "s:ARCH:x86:" \
-            $srcdir/iortcw-mp-rend2.launcher
-        sed -i "s:ARCH:x86:" \
             $srcdir/iortcw-ded.launcher
     fi
   
   # Install Launcher Script (Single Player Client)
     install -D -m 755 $srcdir/iortcw-sp.launcher \
         $pkgdir/usr/bin/iortcw-sp
-  # Install Launcher Script (Single Player Client Rend2)
-    install -D -m 755 $srcdir/iortcw-sp-rend2.launcher \
-        $pkgdir/usr/bin/iortcw-sp-rend2
-
+  
   # Install Launcher Script (Multi Player Client)
     install -D -m 755 $srcdir/iortcw-mp.launcher \
         $pkgdir/usr/bin/iortcw-mp
-  # Install Launcher Script (Multi Player Client Rend2)
-    install -D -m 755 $srcdir/iortcw-mp-rend2.launcher \
-        $pkgdir/usr/bin/iortcw-mp-rend2
 
   # Install Launcher Script (Dedicated Server)
     install -D -m 755 $srcdir/iortcw-ded.launcher \
@@ -131,20 +120,53 @@ package() {
   # Install Desktop File (Single Player)
     install -D -m 644 $srcdir/iortcw-sp.desktop \
         $pkgdir/usr/share/applications/iortcw-sp.desktop
-  # Install Desktop File (Single Player Rend2)
-    install -D -m 644 $srcdir/iortcw-sp-rend2.desktop \
-        $pkgdir/usr/share/applications/iortcw-sp-rend2.desktop
 
   # Install Desktop File (Multi Player)
     install -D -m 644 $srcdir/iortcw-mp.desktop \
         $pkgdir/usr/share/applications/iortcw-mp.desktop
-  # Install Desktop File (Multi Player Rend2)
-    install -D -m 644 $srcdir/iortcw-mp-rend2.desktop \
-        $pkgdir/usr/share/applications/iortcw-mp-rend2.desktop
 
   # Install Icon File (Single Player)
     install -D -m 644 $srcdir/iortcw.png \
         $pkgdir/usr/share/pixmaps/iortcw.png
+}
+
+package_iortcw-git-rend2() {
+pkgdesc="Experimental render for Return to Castle Wolfenstein"
+
+# Modify Launcher Scripts
+    if [ "$CARCH" = "x86_64" ]; then
+        #
+        # x86_64 Systems
+        #
+        sed -i "s:ARCH:x86_64:" \
+            $srcdir/iortcw-sp-rend2.launcher
+        sed -i "s:ARCH:x86_64:" \
+            $srcdir/iortcw-mp-rend2.launcher
+    else
+        #
+        # i686 Systems
+        #
+        sed -i "s:ARCH:x86:" \
+            $srcdir/iortcw-sp-rend2.launcher
+        sed -i "s:ARCH:x86:" \
+            $srcdir/iortcw-mp-rend2.launcher
+    fi
+    
+  # Install Launcher Script (Single Player Client Rend2)
+    install -D -m 755 $srcdir/iortcw-sp-rend2.launcher \
+        $pkgdir/usr/bin/iortcw-sp-rend2
+  
+  # Install Launcher Script (Multi Player Client Rend2)
+    install -D -m 755 $srcdir/iortcw-mp-rend2.launcher \
+        $pkgdir/usr/bin/iortcw-mp-rend2
+  
+  # Install Desktop File (Single Player Rend2)
+    install -D -m 644 $srcdir/iortcw-sp-rend2.desktop \
+        $pkgdir/usr/share/applications/iortcw-sp-rend2.desktop
+  
+  # Install Desktop File (Multi Player Rend2)
+    install -D -m 644 $srcdir/iortcw-mp-rend2.desktop \
+        $pkgdir/usr/share/applications/iortcw-mp-rend2.desktop
 }
 
 md5sums=('SKIP'
