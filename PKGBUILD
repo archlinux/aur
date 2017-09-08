@@ -2,7 +2,7 @@
 # Contributor: kehon
 
 pkgname=traccar
-pkgver=3.11
+pkgver=3.14
 pkgrel=1
 pkgdesc="Open source GPS tracking system"
 arch=('i686' 'x86_64')
@@ -18,7 +18,8 @@ package() {
  install -m755 -d "${pkgdir}/usr/lib/systemd/system"
  install -m644 "${srcdir}/traccar.service" "${pkgdir}/usr/lib/systemd/system/"
  install -m755 -d "${pkgdir}/opt/traccar/init.d"
+ chmod 755 -R $pkgdir/opt/*
 }
 
-md5sums=('024bee353d3fb38008e73496c00dabe8'
-	 '3e230b1b98fb5d0ae71ee08ab96a7c92')
+md5sums=('679dfe2e7449e23d7265a6ed43e89015'
+         '3e230b1b98fb5d0ae71ee08ab96a7c92')
