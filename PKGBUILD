@@ -9,6 +9,7 @@ arch=('any')
 url='https://github.com/dylanaraps/pywal/'
 license=('MIT')
 depends=('python'
+         'python-setuptools'
          'imagemagick')
 optdepends=('feh: set wallpaper'
             'nitrogen: set wallpaper')
