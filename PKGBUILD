@@ -6,7 +6,7 @@
 # Maintainer: Peter <craven@gmx.net>
 pkgname=bones
 pkgver=20150929
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple Scheme compiler for x86_64 systems"
 arch=(x86_64)
 url="http://www.call-with-current-continuation.org/bones/"
@@ -31,7 +31,7 @@ validpgpkeys=()
 build() {
   cd "$pkgname-2015-09-29"
   nasm -f elf64 bones-x86_64-linux.s -o bones.o
-  gcc bones.o -o bones -lrt
+  gcc -no-pie bones.o -o bones -lrt
 }
 
 package() {

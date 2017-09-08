@@ -1,7 +1,7 @@
 pkgbase = bones
 	pkgdesc = A simple Scheme compiler for x86_64 systems
 	pkgver = 20150929
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.call-with-current-continuation.org/bones/
 	arch = x86_64
 	license = unknown
