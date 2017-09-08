@@ -11,8 +11,8 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("$pkgname-$pkgver.tgz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=29502"
-        "favorites-makefile-1.7.36.tar.gz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=32856")
+source=("$pkgname-$pkgver.tgz::https://www.vdr-portal.de/index.php?attachment/29502"
+        "favorites-makefile-1.7.36.tar.gz::https://www.vdr-portal.de/index.php?attachment/32856")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('b5e87d11102ff1d8923a64cd53694171'
          'e3262d62bee7d4e99c16d3359e77261f')
