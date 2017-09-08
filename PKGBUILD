@@ -2,7 +2,7 @@
 
 pkgname=recultis
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Return to the cult games. On Linux, with modern, open source engines. Requires the multilib repository to be enabled."
 arch=('x86_64')
 url="https://makson96.github.io/Recultis"

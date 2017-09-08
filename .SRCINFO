@@ -1,7 +1,7 @@
 pkgbase = recultis
 	pkgdesc = Return to the cult games. On Linux, with modern, open source engines. Requires the multilib repository to be enabled.
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://makson96.github.io/Recultis
 	install = recultis.install
 	arch = x86_64

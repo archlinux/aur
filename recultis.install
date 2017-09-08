@@ -6,14 +6,23 @@ pre_install() {
 
 post_install()  {
     sudo chmod 755 /opt/Recultis
-    sudo echo "python /opt/Recultis/recultis.py" > /usr/bin/recultis
+    sudo echo "python /opt/Recultis/main.py" > /usr/bin/recultis
     sudo chmod 755 /usr/bin/recultis
-    sudo cp /opt/Recultis/recultis.desktop /usr/share/applications
+    sudo echo [Desktop Entry] > /opt/Recultis/recultis.desktop
+    sudo echo Type=Application >> /opt/Recultis/recultis.desktop
+    sudo echo Name=Recultis >> /opt/Recultis/recultis.desktop
+    sudo echo Comment=Install free game engines with proprietary content. >> /opt/Recultis/recultis.desktop
+    sudo echo "Exec=/opt/Recultis/main.py" >> /opt/Recultis/recultis.desktop
+    sudo echo Icon=recultis.png >> /opt/Recultis/recultis.desktop
+    sudo echo Categories=Game; >> /opt/Recultis/recultis.desktop
+    sudo echo Terminal=false >> /opt/Recultis/recultis.desktop
+    sudo cp /opt/Recultis/recultis.desktop /usr/share/applications/
 }
 
 post_remove()   {
     sudo rm -rf /opt/Recultis
     sudo rm -rf /usr/bin/recultis
+    sudo rm -rf /usr/share/applications/recultis.desktop
 }
 
 pre_upgrade()   {
@@ -24,7 +33,15 @@ pre_upgrade()   {
 
 post_upgrade()  {
     sudo chmod 755 /opt/Recultis
-    sudo echo "python /opt/Recultis" > /usr/bin/recultis
+    sudo echo "python /opt/Recultis/.py" > /usr/bin/recultis
     sudo chmod 755 /usr/bin/recultis
+    sudo echo [Desktop Entry] > /opt/Recultis/recultis.desktop
+    sudo echo Type=Application >> /opt/Recultis/recultis.desktop
+    sudo echo Name=Recultis >> /opt/Recultis/recultis.desktop
+    sudo echo Comment=Install free game engines with proprietary content. >> /opt/Recultis/recultis.desktop
+    sudo echo "Exec=/opt/Recultis/main.py" >> /opt/Recultis/recultis.desktop
+    sudo echo Icon=recultis.png >> /opt/Recultis/recultis.desktop
+    sudo echo Categories=Game; >> /opt/Recultis/recultis.desktop
+    sudo echo Terminal=false >> /opt/Recultis/recultis.desktop
     sudo cp /opt/Recultis/recultis.desktop /usr/share/applications
 }
