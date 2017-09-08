@@ -14,7 +14,7 @@ _plugname=${pkgname//vdr-/}
 replaces=("vdr-plugin-$_plugname")
 conflicts=("vdr-plugin-$_plugname")
 source=("http://opensource.holgerbrunn.net/vdr/filebrowser/$pkgname-$pkgver.tgz"
-        "filebrowser-makefile-1.7.36.tar.gz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=32857")
+        "filebrowser-makefile-1.7.36.tar.gz::https://www.vdr-portal.de/index.php?attachment/32857")
 backup=("var/lib/vdr/plugins/filebrowser/commands.conf"
         "var/lib/vdr/plugins/filebrowser/order.conf"
         "var/lib/vdr/plugins/filebrowser/othercommands.conf"
