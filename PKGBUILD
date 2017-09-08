@@ -15,7 +15,7 @@ depends=('freetype2' 'gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-skinenigmang.git#commit=$_gitver"
-        "skinenigmang-newmakefile-vdr1.7.36-2.tgz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=32701"
+        "skinenigmang-newmakefile-vdr1.7.36-2.tgz::https://www.vdr-portal.de/index.php?attachment/32701"
         'skinenigmang-search_for_logos_in_resourcedir.diff'
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
