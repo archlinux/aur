@@ -1,0 +1,23 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 13f5c0d..7045633 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,14 +3,16 @@ cmake_minimum_required(VERSION 2.6)
+ PROJECT(nlbwmon C)
+ ADD_DEFINITIONS(-Os -Wall -Werror --std=gnu99 -g3 -Wmissing-declarations -D_GNU_SOURCE)
+ 
++INCLUDE_DIRECTORIES(/usr/include/libnl3)
++
+ SET(SOURCES
+ 	client.c database.c neigh.c nfnetlink.c
+ 	nlbwmon.c protocol.c socket.c subnets.c
+ 	timing.c utils.c)
+ 
+ ADD_EXECUTABLE(nlbwmon ${SOURCES})
+-TARGET_LINK_LIBRARIES(nlbwmon ubox nl-tiny z)
++TARGET_LINK_LIBRARIES(nlbwmon ubox nl-3 nl-genl-3 z)
+ 
+ SET(CMAKE_INSTALL_PREFIX /usr)
+ 
+-INSTALL(TARGETS nlbwmon RUNTIME DESTINATION sbin)
++INSTALL(TARGETS nlbwmon RUNTIME DESTINATION bin)
