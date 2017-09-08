@@ -1,8 +1,8 @@
 pkgname=swiss-army-scrot
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple screenshot utility that integrates nicely into i3 and XFCE.'
-url=https://gitla.in/flisk/swiss-army-scrot
+url=https://github.com/sometoby/swiss-army-scrot
 arch=('any')
 license=('MIT')
 depends=('xclip' 'scrot')
