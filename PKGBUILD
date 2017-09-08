@@ -1,8 +1,8 @@
 # Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 
 pkgname=edk2-ovmf-macboot-git
-pkgver=r22104.9bd03459f1
-pkgrel=2
+pkgver=r21417.30f2b3985d
+pkgrel=1
 pkgdesc="edk2 UEFI firmware with macOS compatibility fixes"
 arch=('any')
 url="https://www.contrib.andrew.cmu.edu/~somlo/OSXKVM/"
@@ -10,8 +10,10 @@ license=('BSD')
 depends=()
 makedepends=('git' 'nasm' 'iasl')
 optdepends=()
-source=("git+https://github.com/gsomlo/edk2#branch=macboot")
-md5sums=('SKIP')
+source=("git+https://github.com/gsomlo/edk2#branch=macboot"
+	   'MdeModulePkg-UefiHiiLib-Fix-incorrect-comparison-exp.patch')
+sha256sums=('SKIP'
+            '64dcc77b7e9abe219d8b82873c826077e51c26d87d5bd17407d19e1c71fca6c7')
 options=('!makeflags')
 
 pkgver() {
@@ -21,9 +23,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/edk2"
-  git remote add tianocore git@github.com:tianocore/edk2.git || true
-  git fetch tianocore
-  git merge --no-edit tianocore/master
+  patch -N -p1 -i "${srcdir}/MdeModulePkg-UefiHiiLib-Fix-incorrect-comparison-exp.patch"
 }
 
 build() {
