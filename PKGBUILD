@@ -4,7 +4,7 @@
 
 pkgname=discount
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Markdown implementation written in C"
 arch=('i686' 'x86_64')
 url="https://www.pell.portland.or.us/~orc/Code/discount/"
@@ -17,8 +17,8 @@ sha256sums=('ec7916731e3ef8516336333f8b7aa9e2af51e57c0017b1e03fa43f1ba6978f64')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   sed -e 's/m 444/m 644/g' -i configure.inc
-  sed '1375d' -i configure.inc
-  ./configure.sh --prefix=/usr --enable-all-features --with-fenced-code --shared
+  sed -e '/test.*librarian.sh/d' -i configure.inc
+  ./configure.sh --prefix=/usr --enable-all-features --with-fenced-code --shared --pkg-config
   make
 }
 
