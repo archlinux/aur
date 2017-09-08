@@ -1,6 +1,6 @@
 pkgbase = pixiecore
 	pkgdesc = An all-in-one tool for easy netbooting
-	pkgver = 17.06.02.0313
+	pkgver = 17.08.16.1755
 	pkgrel = 1
 	url = https://github.com/google/netboot/tree/master/pixiecore
 	arch = i686
