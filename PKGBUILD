@@ -4,8 +4,8 @@
 # Contributor: Ole Ernst <olebowle[at]gmx[dot]com
 pkgbase=vdr-streamdev
 pkgname=(vdr-streamdev-{client,server})
-pkgver=0.6.1.r24.g7b17f77
-_gitver=7b17f7725cd3bd97dd3921d96575c50a86e3fac2
+pkgver=0.6.1.r33.gb84b7d8
+_gitver=b84b7d858cf4f6f3473ba72d456326c048946cb0
 _vdrapi=2.2.0
 pkgrel=1
 pkgdesc="implementation of the VTP (Video Transfer Protocol)"
@@ -16,12 +16,8 @@ depends=('gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgbase//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-streamdev.git#commit=$_gitver"
-        "http://projects.vdr-developer.org/attachments/download/1844/vdr-plugin-streamdev-filter-patch.diff"
-        "http://projects.vdr-developer.org/attachments/download/1853/vdr-plugin-streamdev-filter-patch2.diff"
         "50-$_plugname-server.conf")
 md5sums=('SKIP'
-         'a1e4b3807ede87b810abc973666a88eb'
-         'e0ddaa269ce0727dd2e434a417b42bf5'
          '8c352d8ee7401eeb34fe5ab82e791a21')
 
 pkgver() {
@@ -37,13 +33,6 @@ pkgver() {
   else
     printf "%s" $_last_release
   fi
-}
-
-prepare() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
-  patch -p1 -i "$srcdir/vdr-plugin-streamdev-filter-patch.diff"
-  patch -p1 -i "$srcdir/vdr-plugin-streamdev-filter-patch2.diff"
-  sed -i 's/m_Buffer\[4096\]/m_Buffer\[8192\]/' client/filter.c
 }
 
 build() {
