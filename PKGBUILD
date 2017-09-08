@@ -1,7 +1,7 @@
-# Maintainer: codl <aur@codl.fr>
+# Maintainer: Nikolay Arhipov <nikolajs.arhipovs@gmail.com>
 
 pkgname=wuzz
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Interactive cli tool for HTTP inspection"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('AGPL3')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 source=("https://github.com/asciimoo/wuzz/archive/v${pkgver}.tar.gz")
-sha256sums=('08b3e80e9c6271527c7901f1faa5199ad3b886c665a6c44e46639a8a52cc71d7')
+sha256sums=('acf8e82481740d1403b744c58918b9089128d91c3c6edc15b76b6e1c97ead645')
 _goname="github.com/asciimoo/wuzz"
 
 
