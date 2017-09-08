@@ -1,7 +1,7 @@
 # Maintainer: Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=fscrypt-git
-pkgver=0.2.0.0.g4879df9
+pkgver=0.2.1.1.ga949b13
 pkgrel=1
 pkgdesc='A tool for managing Linux filesystem encryption'
 arch=('x86_64' 'i686')
