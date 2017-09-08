@@ -1,12 +1,13 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=kazan-git
 pkgver=20170908
-pkgrel=1
+pkgrel=2
 pkgdesc="Software-rendering Vulkan implementation"
 arch=('i686' 'x86_64')
 url="http://kazan-3d.org"
-license=('unknown')
-makedepends=('git' 'cmake' 'clang')
+license=('MIT')
+makedepends=('git' 'cmake' 'clang>=4' 'sdl2')
+optdepends=('sdl2: for demo program')
 provides=('kazan')
 conflicts=('kazan')
 source=('git+git://github.com/kazan-3d/kazan.git')
@@ -27,7 +28,7 @@ build() {
 package() {
   cd "${srcdir}/kazan/build"
 
-  make install DESTDIR=install
+  make install DESTDIR=${pkgdir}
 }
 
 # vim:set ts=2 sw=2 et:
