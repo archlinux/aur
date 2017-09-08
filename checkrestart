@@ -314,7 +314,7 @@ def lsoffilescheck(blacklist = None):
 # Avoid stat()-ing gvfs file systems because it's mostly pointless and
 # generates unsightly warning messages.
     lsof_args = " ".join(["-e {}/gvfs".format(path)
-                          for path in glob.glob("/run/user/*")])
+                          for path in glob.glob("/run/user/*") if os.path.exists(path+'/gvfs')])
 
     for line in os.popen('lsof +XL -F nf ' + lsof_args).readlines():
         field, data = line[0], line[1:-1]
