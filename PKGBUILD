@@ -8,12 +8,11 @@ _srcname=$pkgbase
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
 pkgver=4.13rc2.r1097.g58e5ccdc343d
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
-optdepends=('vega10-firmware')
 options=('!strip')
 source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
         # the main kernel config files
