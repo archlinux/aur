@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}" 'vdr-svdrpservice')
 _plugname=${pkgname//vdr-/}
 source=("http://vdr.schmirler.de/$_plugname/$pkgname-$pkgver.tgz"
-        "vdr-remoteosd-1.0.0-vdr-2.3.2.diff::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=40530")
+        "vdr-remoteosd-1.0.0-vdr-2.3.2.diff::https://www.vdr-portal.de/index.php?attachment/40530")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('5ec2756944cdb36808d1332e7e6a87c8'
          'c6af05b7090f0b1153d44dbabb674dcc')
