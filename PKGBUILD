@@ -4,13 +4,13 @@
 
 pkgname=cmake
 pkgver=3.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform open-source make system'
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
 license=('custom')
-depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp' 'libuv')
-makedepends=('qt5-base' 'python-sphinx' 'emacs' 'rhash')
+depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp' 'libuv' 'rhash')
+makedepends=('qt5-base' 'python-sphinx' 'emacs')
 optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
 source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz")
