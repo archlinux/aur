@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
 source=("http://projects.vdr-developer.org/git/vdr-plugin-$_plugname.git/snapshot/vdr-plugin-$_plugname-$pkgver.tar.bz2"
-        "0001-Use-internal-cBitmap-for-drawing-instead-of-getting-.diff::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=39352"
+        "0001-Use-internal-cBitmap-for-drawing-instead-of-getting-.diff::https://www.vdr-portal.de/index.php?attachment/39352"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('5e578b222ab55c3e7fffd06a1b0a306d'
