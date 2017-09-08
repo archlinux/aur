@@ -1,21 +1,26 @@
 # Maintainer: Daniel Lima <danielm@nanohub.tk>
 
 pkgname=ccv
-pkgver=0.7
-pkgrel=2
+pkgver=0.7.r1447
+pkgrel=1
 pkgdesc='The C-based/Cached/Core Computer Vision Library'
 arch=('i686' 'x86_64')
 url='http://libccv.org/'
 license=('BSD3')
 depends=('gsl' 'libpng' 'zlib' 'fftw' 'blas' 'liblinear') 
-makedepends=('subversion' 'gcc')
+makedepends=('subversion' 'clang')
 optdepends=('ccv-samples: sample datasets')
-source=('svn+https://github.com/liuliu/ccv/stable/doc'
-        'svn+https://github.com/liuliu/ccv/stable/lib'
+source=('svn+https://github.com/liuliu/ccv/trunk/doc'
+        'svn+https://github.com/liuliu/ccv/trunk/lib'
         'https://raw.githubusercontent.com/liuliu/ccv/stable/COPYING')
 md5sums=('SKIP'
          'SKIP'
          'SKIP')
+
+pkgver() {
+	cd lib
+	svn info | grep Revision | sed 's/Revision: /0.7.r/'
+}
 
 build() {
 	cd lib
