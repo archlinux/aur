@@ -1,8 +1,8 @@
-# Maintainer: codl <aur@codl.fr>
+# Maintainer: Nikolay Arhipovs <nikolajs.arhipovs@gmail.com>
 
 pkgname=wuzz-git
 _pkgname=wuzz
-pkgver=0.1.0.r6.gecab533
+pkgver=0.4.0.r0.gef041bc
 pkgrel=1
 pkgdesc="Interactive cli tool for HTTP inspection"
 arch=('x86_64' 'i686')
