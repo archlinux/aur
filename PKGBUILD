@@ -6,6 +6,7 @@
 #
 #
 pkgname="spl-utils-common-git"
+
 pkgver=0.7.0.r12.g9df9692
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
@@ -19,9 +20,9 @@ provides=("spl-utils")
 makedepends=("git")
 conflicts=('spl-utils-common' 'spl-utils-linux-git' 'spl-utils-linux' 'spl-utils-linux-lts' 'spl-utils-linux-lts-git')
 replaces=("spl-utils-linux", "spl-utils-linux-lts")
-pkgver() { 
-    cd "${srcdir}/spl" 
-    git describe --long | sed 's/^spl-//;s/\([^-]*-g\)/r\1/;s/-/./g' 
+
+pkgver() {    cd "${srcdir}/spl"
+    git describe --long | sed 's/^spl-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
