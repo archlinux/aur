@@ -6,11 +6,12 @@ pkgbase = carl
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = make
 	makedepends = cmake>=3.0
-	depends = gmp>=5.1
-	depends = eigen>=3.2
+	makedepends = make>=4.2
 	depends = boost>=1.55
+	depends = cln>=1.3
+	depends = eigen>=3.2
+	depends = gmp>=5.1
 	source = https://github.com/smtrat/carl/archive/17.08.zip
 	md5sums = 3fc7b590b386051bad44ead47a5bd00c
 
