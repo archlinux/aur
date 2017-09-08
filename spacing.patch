@@ -1,0 +1,11 @@
+--- /tmp/panelfix/xfce4-panel-4.12.1/plugins/systray/systray-box.c	2016-08-11 23:54:27.000000000 +0200
++++ systray-box.c	2017-09-09 00:31:34.418913116 +0200
+@@ -36,7 +36,7 @@
+ #include "systray-box.h"
+ #include "systray-socket.h"
+ 
+-#define SPACING    (2)
++#define SPACING    (10)
+ #define OFFSCREEN  (-9999)
+ 
+ /* some icon implementations request a 1x1 size for invisible icons */

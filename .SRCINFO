@@ -1,0 +1,24 @@
+pkgbase = xfce4-panel-sanetrayspacing
+	pkgdesc = Panel for the Xfce desktop environment with sane tray spacing.
+	pkgver = 4.12.1
+	pkgrel = 1
+	url = http://www.xfce.org/
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = intltool
+	makedepends = gtk-doc
+	depends = exo
+	depends = garcon
+	depends = libxfce4ui
+	depends = libwnck
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	provides = xfce4-panel=4.12.1
+	conflicts = xfce4-panel
+	source = http://archive.xfce.org/src/xfce/xfce4-panel/4.12/xfce4-panel-4.12.1.tar.bz2
+	sha256sums = 93d58b80cca9c9eb58adb281bc75404df7cf6cae89f7f98bb9f38690009aa2e8
+
+pkgname = xfce4-panel-sanetrayspacing
+
