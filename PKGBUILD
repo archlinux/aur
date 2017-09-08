@@ -4,13 +4,13 @@
 # Some lines from  kernel26-bfs and kernel26-ck
 # Credits to respective maintainers
 _major=4
-_minor=11
+_minor=13
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=7
+_pfrel=1
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -79,11 +79,10 @@ license=('GPL2')
 options=('!strip')
 makedepends=('git' 'xmlto' 'docbook-xsl' 'xz' 'bc' 'kmod' 'elfutils')
 source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}.tar.xz"
-	'config' 'config.x86_64'		# the main kernel config files
+	'config.i686' 'config.x86_64'		# the main kernel config files
 	'linux.preset'			        # standard config files for mkinitcpio ramdisk
 	"${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
    #     "git+$_aufs3#branch=aufs4.$_minor"
-        "uksm-$_major.$_minor.patch"::"http://kerneldedup.org/download/uksm/0.1.2.6/uksm-0.1.2.6-for-v$_major.$_minor.patch"
         "90-linux-pf.hook"
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
@@ -134,13 +133,11 @@ prepare() {
   # fix ci  invalid PC card inserted issue hopefully
   #patch -Rp1 -i "${srcdir}/cx23885_move_CI_AC_registration_to_a_separate_function.patch" || true
 
-  # since linux-pf-4.6 uksm is seperate
-  patch -Np1 -i "$srcdir"/uksm-$_major.$_minor.patch
   
   if [ "$CARCH" = "x86_64" ]; then
 	cat "${startdir}/config.x86_64" >| .config
   else
-	cat "${startdir}/config" >| .config
+	cat "${startdir}/config.i686" >| .config
   fi
 
   sed -ri "s|SUBLEVEL = 0|SUBLEVEL = $_pfrel|" Makefile
@@ -584,9 +581,6 @@ package_linux-pf-headers() {
 
   cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
 
-  # add docbook makefile
-  install -D -m644 Documentation/DocBook/Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 
   # add dm headers
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
@@ -701,10 +695,9 @@ package_linux-pf-preset-default()
 pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ], uksm and aufs3"
 
 # makepkg -g >>PKGBUILD
-sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
-            '832a6cef648a311c5ca65aad59648ef3449baa80aa29adb24b0be65cae9a140e'
-            'bcfe2a323678009d35f5e9fb7fdafa2e4863bed1822342b3a8bef312e69a0ff6'
+sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
+            'b6057e1b5cd22dc287d7de9efc46e4e1a904c5c22c3913618a0cfd1d65cc9c87'
+            '277edd02be3ed915b73722ac460f19c1bc79708dfce352f36e5127cc5abd523d'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '6af573009875163e109d89016728477b8b3c8628a20fb10485a8d8d5f10b0f5a'
-            'bba97e70a69561e026ef8898c441fde136204d89c974d28a50f4542f4df4c52f'
+            '7b0b839b736b45021664672a02a52b918551e39e2f472f62170dee91a352536b'
             'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02')
