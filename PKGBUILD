@@ -8,7 +8,7 @@ url="https://github.com/ktechlab/ktechlab"
 license=('GPL')
 #options=(!makeflags)
 depends=('qt4')
-makedepends=('git' 'cmake' 'gcc' 'gendesk')
+makedepends=('git' 'cmake' 'gcc' 'gendesk' 'automoc4' 'kdelibs')
 source=(git+https://github.com/ktechlab/ktechlab
         "$pkgname.desktop")
 md5sums=('SKIP'
