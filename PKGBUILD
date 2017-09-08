@@ -1,6 +1,7 @@
 # Maintainer: M0Rf30
 
-pkgname=realrtcw
+pkgbase=realrtcw
+pkgname=('realrtcw' 'realrtcw-rend2')
 pkgver=2.1
 pkgrel=2
 pkgdesc="RealRTCW brings some realism to the classic Wolfenstein game. You can expect ruthless AI, new weapons and rebalanced gameplay"
@@ -17,10 +18,10 @@ source=("https://github.com/M0Rf30/RealRTCW/archive/$pkgver.tar.gz"
 # Classic renderer
 	realrtcw-sp.launcher
 # Alternative renderer launchers
-        realrtcw-sp-rend2.launcher
+	realrtcw-sp-rend2.launcher
 # Desktop entries
 	realrtcw-sp.desktop
-        realrtcw-sp-rend2.desktop
+	realrtcw-sp-rend2.desktop
 )
 
 build() {
@@ -31,7 +32,7 @@ build() {
   fi
 }
 
-package() {
+package_realrtcw() {
   
   mkdir -p $pkgdir/opt/realrtcw/main
   cd "$srcdir/RealRTCW-$pkgver"
@@ -80,6 +81,35 @@ package() {
         #
         sed -i "s:ARCH:x86_64:" \
             $srcdir/realrtcw-sp.launcher
+    else
+        #
+        # i686 Systems
+        #
+        sed -i "s:ARCH:x86:" \
+            $srcdir/realrtcw-sp.launcher
+    fi
+  
+  # Install Launcher Script (Single Player Client)
+    install -D -m 755 $srcdir/realrtcw-sp.launcher \
+        $pkgdir/usr/bin/realrtcw-sp
+
+  # Install Desktop File (Single Player)
+    install -D -m 644 $srcdir/realrtcw-sp.desktop \
+        $pkgdir/usr/share/applications/realrtcw-sp.desktop
+
+  # Install Icon File (Single Player)
+    install -D -m 644 misc/iortcw.svg \
+        $pkgdir/usr/share/pixmaps/realrtcw.svg
+}
+
+package_realrtcw-rend2() {
+	pkgdesc="Experimental render for RealRTCW"
+	
+# Modify Launcher Scripts
+    if [ "$CARCH" = "x86_64" ]; then
+        #
+        # x86_64 Systems
+        #
         sed -i "s:ARCH:x86_64:" \
             $srcdir/realrtcw-sp-rend2.launcher
     else
@@ -87,34 +117,14 @@ package() {
         # i686 Systems
         #
         sed -i "s:ARCH:x86:" \
-            $srcdir/realrtcw-sp.launcher
-        sed -i "s:ARCH:x86:" \
             $srcdir/realrtcw-sp-rend2.launcher
     fi
-  
-  # Install Launcher Script (Single Player Client)
-    install -D -m 755 $srcdir/realrtcw-sp.launcher \
-        $pkgdir/usr/bin/realrtcw-sp
+
   # Install Launcher Script (Single Player Client Rend2)
     install -D -m 755 $srcdir/realrtcw-sp-rend2.launcher \
         $pkgdir/usr/bin/realrtcw-sp-rend2
 
-  # Install Desktop File (Single Player)
-    install -D -m 644 $srcdir/realrtcw-sp.desktop \
-        $pkgdir/usr/share/applications/realrtcw-sp.desktop
   # Install Desktop File (Single Player Rend2)
     install -D -m 644 $srcdir/realrtcw-sp-rend2.desktop \
         $pkgdir/usr/share/applications/realrtcw-sp-rend2.desktop
-
-  # Install Icon File (Single Player)
-    install -D -m 644 misc/iortcw.svg \
-        $pkgdir/usr/share/pixmaps/realrtcw.svg
 }
-
-md5sums=('0b40f6d1e2f31fe42d3a54359694dc03'
-         '0e0ef11b046ced39e880638d41c65dd4'
-         '6856b2ec43abce7be5d92233ef3ddaa1'
-         '3de1b5dde5c91ef521c64b5e56cdbccf'
-	 '3cf6ad712d1d797e09c232dcf43c016b'
-         '33f08bc165906164461420e1cc6dd86a'
-         'f164bb4457675fd05897e2945e2d8c9d')
