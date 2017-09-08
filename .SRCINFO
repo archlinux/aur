@@ -1,0 +1,18 @@
+pkgbase = kazan-git
+	pkgdesc = Software-rendering Vulkan implementation
+	pkgver = 20170908
+	pkgrel = 1
+	url = http://kazan-3d.org
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	makedepends = clang
+	provides = kazan
+	conflicts = kazan
+	source = git+git://github.com/kazan-3d/kazan.git
+	md5sums = SKIP
+
+pkgname = kazan-git
+
