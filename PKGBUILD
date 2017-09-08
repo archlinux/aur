@@ -2,9 +2,9 @@
 
 # Maintainer: Alexander Grothe <seahawk1986[at]hotmail[dot]com>
 pkgname=vdr-markad
-pkgver=0.1.4_40_g74e2a8c
+pkgver=0.1.4_44_g3681d3a
 epoch=1
-_gitver=74e2a8c5382fa8bfacd12274899112724a1e0d51
+_gitver=3681d3a18383c238870de7d1ec1f1f9c8079cf89
 _vdrapi=2.2.0
 pkgrel=1
 pkgdesc="automatic advertisement detection"
@@ -15,11 +15,13 @@ depends=('ffmpeg' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-markad.git#commit=$_gitver"
-        "vdr-markad-fixes.diff"
+        "vdr-2.3.2-markad-0.1.4.git20160925_v2.diff::https://www.vdr-portal.de/index.php?attachment/40533"
+        "vdr-markad-newmakefile.diff"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('SKIP'
-         'b34797cc15aac8cd75828d265283f728'
+         '966a3b0ac4f9dbe9c3f0434072ed79cc'
+         '77001bbf5f138d1d1cd7a6f334fa8202'
          'c0d6383c9c9b8ee6c34af19179676bf3')
 
 pkgver() {
@@ -29,7 +31,8 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  patch -p1 -i "$srcdir/vdr-markad-fixes.diff"
+  patch -p1 -i "$srcdir/vdr-markad-newmakefile.diff"
+  patch -p1 -i "$srcdir/vdr-2.3.2-markad-0.1.4.git20160925_v2.diff"
 }
 
 build() {
