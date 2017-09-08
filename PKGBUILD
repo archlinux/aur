@@ -1,6 +1,6 @@
 # Maintainer: Gary Hunt <garysERASE_THIS_PARTboxATgmailonedotcom>
 
-pkgname=tinyfugue
+pkgname=tinyfugue4stable
 pkgver=4.0s1
 pkgrel=3
 arch=('i686' 'x86_64')
