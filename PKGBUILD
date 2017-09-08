@@ -4,14 +4,13 @@
 #
 pkgname=bbkeys
 pkgver=0.9.1
-pkgrel=9
+pkgrel=10
 pkgdesc="Blackbox tool for setting keyboard shortcuts for manipulating windows and virtual desktop"
 arch=('i686' 'x86_64')
 url="http://bbkeys.sourceforge.net/"
 license=('custom')
 groups=('blackbox')
-depends=('libxext' 'libxft')
-makedepends=('blackbox')
+depends=('blackbox')
 changelog="bbkeys.changelog"
 source=("http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz"
 	"bbkeys.desktop"
