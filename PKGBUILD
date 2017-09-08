@@ -13,6 +13,7 @@ depends=('curl' "vdr-api=${_vdrapi}")
 optdepends=('vlc: Needed for vlc2iptv')
 _plugname=${pkgname//vdr-/}
 source=("http://www.saunalahti.fi/~rahrenbe/vdr/$_plugname/files/$pkgname-$pkgver.tgz"
+        'https://github.com/rofafor/vdr-plugin-iptv/commit/ccc9bab5e0d1c0e37fd61b6f412563f200b33abd.diff'
         'https://github.com/rofafor/vdr-plugin-iptv/commit/201b50eb9d10012560b3143e811340980dda7fcc.diff'
         'https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/3Sat.conf'
         'https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/Bundesligen-TV.conf'
@@ -35,6 +36,7 @@ backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'etc/vdr/plugins/iptv/vlcinput/zdf_info-iptv.conf'
         'etc/vdr/plugins/iptv/vlcinput/zdf_kultur-iptv.conf')
 md5sums=('318d58e097895789b18a07cac46dfd1c'
+         '2154addb039a115b6647736926f5b0a1'
          'e45d1fdbcf279f1978d4298eb4c63510'
          '5e960f7a71ee493c0bb7a7c56ea109c4'
          '8b51a64c8278f62dd9721a83a0654933'
@@ -49,6 +51,9 @@ md5sums=('318d58e097895789b18a07cac46dfd1c'
 
 prepare() {
   cd "${srcdir}/${_plugname}-${pkgver}"
+  if [ `vercmp $_vdrapi 2.3.0` -eq 1 ]; then
+    patch -p1 -i "$srcdir/ccc9bab5e0d1c0e37fd61b6f412563f200b33abd.diff"
+  fi
   patch -p1 -i "$srcdir/201b50eb9d10012560b3143e811340980dda7fcc.diff"
 }
 
