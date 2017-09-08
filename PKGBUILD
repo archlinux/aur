@@ -1,7 +1,7 @@
 # Maintainer: Andreas Grapentin <andreas@grapentin.org>
 pkgname=vmdebootstrap
-pkgver=1.6
-pkgrel=2
+pkgver=1.7
+pkgrel=1
 pkgdesc="debootstrap installs a basic Debian system into a directory, for use with chroot(8). vmdeboostrap is a wrapper around it to install Debian into a disk image, which can be used with a virtual machine (such as KVM)."
 arch=('i686' 'x86_64')
 
@@ -24,10 +24,10 @@ source=("http://git.liw.fi/cgi-bin/cgit/cgit.cgi/$pkgname/snapshot/$pkgname-$pkg
         'default_arch.patch'
         'fix_path.patch')
 
-md5sums=('90dd5a8aff602273c76644dda166e3e7'
-         '9ec42862d167c76139f453ed9651dd8e'
-         '3c3d9df067faa0d742011ad0943427e9'
-         '806fd64966193e9ae0fb4ab56ab7f3f9')
+sha256sums=('e5b652e7aff4906bbe0221855cd51683f0528e27a711a66beef86457a54cc0e9'
+            '10ef6c58c24d52ff3b66498eac23526623b881871ce1d3d2138e358ef9580f41'
+            'a9971329a87e08f3de371647fe60b0ffab99ecd7925c55a00fdb1f2ef70781f0'
+            'e8d3a250dc8bf11aafa707602c9ca6d496b3c3c3183dcf9f04a50de6a3b26b75')
 
 
 prepare() {
