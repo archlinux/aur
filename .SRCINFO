@@ -1,14 +1,14 @@
 pkgbase = bbkeys
 	pkgdesc = Blackbox tool for setting keyboard shortcuts for manipulating windows and virtual desktop
 	pkgver = 0.9.1
-	pkgrel = 10
+	pkgrel = 11
 	url = http://bbkeys.sourceforge.net/
 	changelog = bbkeys.changelog
 	arch = i686
 	arch = x86_64
 	groups = blackbox
 	license = custom
-	depends = blackbox
+	depends = blackboxwm
 	source = http://downloads.sourceforge.net/sourceforge/bbkeys/bbkeys-0.9.1.tar.gz
 	source = bbkeys.desktop
 	source = bbkeys.patch
