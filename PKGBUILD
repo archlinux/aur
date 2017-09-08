@@ -2,7 +2,7 @@
 
 _pkgname=goofys
 pkgname=$_pkgname-git
-pkgver=432v0.0.15
+pkgver=490v0.0.17
 pkgrel=1
 pkgdesc='A high-performance, POSIX-ish Amazon S3 file system written in Go'
 url='https://github.com/kahing/goofys'
