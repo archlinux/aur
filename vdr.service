@@ -2,7 +2,6 @@
 Description=Video Disk Recorder
 After=oscam.service
 After=sundtek.service
-After=xlogin@vdr.service
 
 [Service]
 Type=notify

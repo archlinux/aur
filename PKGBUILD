@@ -8,7 +8,7 @@ pkgdesc="'open' digital satellite receiver and timer controlled video disk recor
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
-depends=('libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font')
+depends=('fontconfig' 'libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font')
 makedepends=('systemd') #libsystemd should be enough but the pkg-config file is missing in the libsystemd package
 optdepends=('lirc-utils: remote control support'
             'ncurses: skincurses plugin'
@@ -18,7 +18,7 @@ conflicts=('runvdr-extreme')
 provides=("vdr-api=2.2.0")
 install='vdr.install'
 source=("ftp://ftp.tvdr.de/vdr/${pkgname}-${pkgver}.tar.bz2"
-        'MainMenuHooks-v1_0_2.diff::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=30330'
+        'MainMenuHooks-v1_0_2.diff::https://www.vdr-portal.de/index.php?attachment/30330'
         '00-vdr.conf' '50-dvbsddevice.conf' '50-hello.conf' '50-pictures.conf' '50-rcu.conf'
         '60-create-dvb-device-units.rules'
         'gen-sddropin'
@@ -47,7 +47,7 @@ md5sums=('8853f64c0fc3d41ffd3b4bfc6f0a14b7'
          '3565ca5ad9be5c75f66478f0796b120d'
          'dd20f932b846b5f50ac455b65e9432ad'
          '7cad811b4ac5ee6c0b5496d006f1e0ee'
-         '64979737d26758a75dda488b323c293c'
+         '6c021358f299dca9ef7bbeb163312690'
          '59ce04d1d01bf92bf6cfc0b74223191c')
 
 prepare() {
