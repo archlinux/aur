@@ -12,7 +12,7 @@ depends=('plasma-framework' 'plasma-desktop')
 optdepends=('libunity: quicklists, counters, and progress bars for apps using libunity')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'python')
 conflicts=('latte-dock')
-source=("git+https://github.com/KDE/latte-dock.git")
+source=("git+"git://anongit.kde.org/latte-dock.git)
 sha256sums=('SKIP')
 
 pkgver() {
