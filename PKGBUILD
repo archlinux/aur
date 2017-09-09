@@ -1,7 +1,7 @@
 # Maintainer: Youngbin Han <sukso96100@gmail.com>
 # Contributor: Andrew Kluger <evilgnome@gmail.com>
 pkgname=micro-git
-pkgver=v1.2.0.cf92f91
+pkgver=v1.3.1.e40ff56
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
@@ -20,10 +20,12 @@ build(){
  cd "${srcdir}/${pkgname}"
  export GOPATH=${srcdir}/${pkgname}
  export GOBIN="$GOPATH/bin"
+ ln -s cmd/micro/vendor/ src
+ ln -s "${srcdir}/${pkgname}" src/github.com/zyedidia/micro 
  make
  make install
 }
 package(){
- install -d -Dm755 $srcdir/$pkgname/bin "$pkgdir/usr/bin/micro"
+ install -Dm755 $srcdir/$pkgname/bin/micro "$pkgdir/usr/bin/micro"
  install -Dm644 $srcdir/$pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
