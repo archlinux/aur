@@ -2,13 +2,13 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=3.25.3+6+ge1bf1d4ec
+pkgver=3.26.0+20+g068b93e9e
 pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
 url="http://www.gnome.org/projects/epiphany/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=(webkit2gtk gcr gnome-desktop libhttpseverywhere)
+depends=(webkit2gtk gcr gnome-desktop libhttpseverywhere libdazzle-git)
 makedepends=(meson docbook-xml startup-notification lsb-release
              gobject-introspection yelp-tools autoconf-archive appstream-glib git)
 groups=(gnome)
@@ -36,14 +36,14 @@ prepare() {
 build() {
   cd $_pkgname
   [ -d build ] && rm -rf build
-  meson build --prefix=/usr --buildtype=release -Denable_https_everywhere=true
+  meson build --prefix=/usr --buildtype=release -Denable_https_everywhere=false
   ninja -C build
 }
 
-check() {
-  cd $_pkgname
-  ninja -C build test
-}
+# check() {
+#   cd $_pkgname
+#   ninja -C build test
+# }
 
 package() {
   cd $_pkgname
