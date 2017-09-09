@@ -9,6 +9,7 @@ license=('MIT')
 provides=(kshare)
 conflicts=(kshare)
 depends=(qt5-base qt5-x11extras xcb-util-cursor ffmpeg libxfixes)
+makedepends=('git')
 source=(git+https://github.com/ArsenArsen/KShare.git#branch=dev)
 sha1sums=('SKIP')
 
@@ -30,7 +31,7 @@ build() {
 
 package() {
   cd KShare
-  install -Dm755 KShare "$pkgdir/usr/bin/kshare"
+  install -Dm755 src/KShare "$pkgdir/usr/bin/kshare"
   install -Dm644 icons/icon.png "$pkgdir/usr/share/pixmaps/KShare.png"
   install -Dm644 KShare.desktop "$pkgdir/usr/share/applications/KShare.desktop"
 
