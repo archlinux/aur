@@ -1,6 +1,6 @@
 pkgbase = vysor
 	pkgdesc = Vysor lets you view and control your Android on your computer. Easy peasy.
-	pkgver = r121.04119a8
+	pkgver = r126.0fc1842
 	pkgrel = 1
 	url = https://github.com/koush/electron-chrome
 	arch = x86_64
