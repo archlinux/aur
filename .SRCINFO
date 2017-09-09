@@ -1,5 +1,5 @@
 pkgbase = monero-bin
-	pkgdesc = Monero: the secure, private, untraceable currency - release version (includes deaemon, wallet and miner)
+	pkgdesc = Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)
 	pkgver = 0.11.0.0
 	pkgrel = 1
 	url = https://getmonero.org/
