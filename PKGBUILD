@@ -2,7 +2,7 @@ pkgname="mate-window-applets"
 url="https://github.com/IKRadulov/mate-window-applets"
 license=('GPL3')
 arch=('i686' 'x86_64')
-pkgver=1.4.1
+pkgver=1.4.2
 
 _disable_buttons=0
 _disable_menu=0
