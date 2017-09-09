@@ -4,21 +4,18 @@
 
 _pkgbase=gensim
 pkgbase=python-gensim
-pkgname=('python-gensim' 'python2-gensim')
-pkgver=0.13.4.1
+pkgname=('python-gensim')
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Python framework for fast Vector Space Modelling"
 arch=('i686' 'x86_64')
 url="http://nlp.fi.muni.cz/projekty/gensim/"
 license=('LGPL')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-scipy' 'python2-scipy' 'cython' 'cython2' 'python-six' 'python2-six')
-source=("https://files.pythonhosted.org/packages/source/g/gensim/gensim-${pkgver}.tar.gz")
-md5sums=('baa36f0b845162abeadd1bb66511a53c')
+makedepends=('python-setuptools' 'python-scipy' 'cython' 'python-six' 'python-smart-open')
+optdepends=('python-pyro')
+source=("https://github.com/RaRe-Technologies/${_pkgbase}/archive/${pkgver}.tar.gz")
+md5sums=('c36d7da43b1bdc175c741546300c7a41')
 
-
-prepare() {
-    cp -r $_pkgbase-${pkgver//_/-} $_pkgbase-${pkgver//_/-}-py2
-}
 
 build() {
     unset LDFLAGS
@@ -26,27 +23,9 @@ build() {
 
     cd ${srcdir}/$_pkgbase-${pkgver//_/-}
     python setup.py build
-
-    cd ${srcdir}/$_pkgbase-${pkgver//_/-}-py2
-    python2 setup.py build
 }
 
-#test() {
-#    python2 setup.py test
-#}
-
-package_python-gensim() {
-    pkgdesc+=" (Python3.x)"
-    depends=(python-scipy)
-
+package() {
     cd ${srcdir}/$_pkgbase-${pkgver//_/-}
     python setup.py install --prefix=/usr --root=${pkgdir}
-}
-
-package_python2-gensim() {
-    pkgdesc+=" (Python2.x)"
-    depends=(python2-scipy)
-
-    cd ${srcdir}/$_pkgbase-${pkgver//_/-}-py2
-    python2 setup.py install --prefix=/usr --root=${pkgdir}
 }
