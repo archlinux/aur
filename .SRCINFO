@@ -1,0 +1,10 @@
+pkgbase = zurichess
+	pkgdesc = An free open source chess engine
+	pkgver = 11
+	pkgrel = 1
+	url = http://www.zurichess.xyz
+	license = BSD
+	makedepends = extra/go>=1.8
+
+pkgname = zurichess
+
