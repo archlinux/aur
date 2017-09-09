@@ -1,6 +1,6 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname='pioneer-git'
-pkgver=20170415.r234.ga6f901122
+pkgver=20170827.r43.gf1f4f711d
 pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ build() {
   cd $pkgname
   export PIONEER_DATA_DIR=/usr/share/pioneer
   ./bootstrap
-  ./configure --prefix=/usr
+  ./configure CXXFLAGS='-fPIC' --prefix=/usr
   make
   make codedoc
 }
