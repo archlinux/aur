@@ -1,13 +1,12 @@
 pkgbase = checkpkgs
-	pkgdesc = Bash script for checking updates of given packages
-	pkgver = 1.0
-	pkgrel = 2
+	pkgdesc = Bash script to check updates of given packages with no need to update the local repositories.
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://github.com/carmilso/checkpkgs
 	arch = any
 	license = GPL3
-	conflicts = checkpkg
-	source = https://github.com/carmilso/checkpkgs/releases/download/v1.0-2/checkpkgs-1.0-2.tar.gz
-	md5sums = a14036dc3ede0c916a169c02ad14f804
+	depends = jq
+	source = https://github.com/carmilso/checkpkgs/releases/download/v1.1-1/checkpkgs-1.1-1.tar.gz
 
 pkgname = checkpkgs
 
