@@ -1,6 +1,6 @@
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=pdfsizeopt-git
-pkgver=r271.6f1d901
+pkgver=r429.a91903b
 pkgrel=1
 pkgdesc="PDF file size optimizer"
 arch=(any)
@@ -23,7 +23,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	./mksingle.sh
+	sed -i 's/\/usr\/bin\/python/\02.7/g' mksingle.py
+	./mksingle.py
 }
 
 package() {
