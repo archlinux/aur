@@ -21,7 +21,8 @@ makedepends=("git")
 conflicts=('spl-utils-common' 'spl-utils-linux-git' 'spl-utils-linux' 'spl-utils-linux-lts' 'spl-utils-linux-lts-git')
 replaces=("spl-utils-linux", "spl-utils-linux-lts")
 
-pkgver() {    cd "${srcdir}/spl"
+pkgver() {
+    cd "${srcdir}/spl"
     git describe --long | sed 's/^spl-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
