@@ -1,0 +1,14 @@
+pkgbase = dstat-py3
+	pkgdesc = A versatile resource statistics tool, Python 3 porting
+	pkgver = 0.7.3py3
+	pkgrel = 1
+	url = https://github.com/eshizhan/dstat/
+	arch = any
+	license = GPL
+	depends = python
+	provides = dstat
+	source = https://github.com/eshizhan/dstat/archive/0.7.3py3.tar.gz
+	md5sums = cec63b7b9247c0c9586258851d9a1f11
+
+pkgname = dstat-py3
+
