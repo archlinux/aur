@@ -6,7 +6,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=3.4.r87188.gf3c0f34f53
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -194,8 +194,7 @@ build() {
         --enable-omx \
         --enable-omx-rpi \
         --enable-vaapi \
-        --enable-vdpau \
-        --enable-videotoolbox
+        --enable-vdpau
     make
     make tools/qt-faststart
 }
