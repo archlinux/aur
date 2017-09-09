@@ -1,0 +1,29 @@
+# Maintainer: Sandy Carter <genaloner@gmail.com>
+# PKGBUILD source: https://github.com/TES3MP/openmw-tes3mp
+
+pkgname=openmw-tes3mp
+pkgver=0.6.1
+pkgrel=1
+pkgdesc="TES3MP is a project aiming to add multiplayer functionality to OpenMW, a free and open source recreation of the popular Bethesda Softworks game \"The Elder Scrolls III: Morrowind\"."
+arch=('x86_64')
+url="https://github.com/TES3MP/openmw-tes3mp"
+license=('GPL3' 'custom')
+
+depends=('openal' 'openscenegraph' 'mygui>=3.2.1' 'bullet' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
+
+source=('https://github.com/TES3MP/openmw-tes3mp/releases/download/tes3mp-0.6.1/tes3mp-GNU.Linux-x86_64-release-0.6.1-f5e23d5fc6-p5.tar.gz'
+        'https://raw.githubusercontent.com/TES3MP/openmw-tes3mp/master/files/tes3mp/tes3mp_logo.png')
+sha1sums=('SKIP'
+          'SKIP')
+
+package() {
+  # icon for .desktop file
+  install -Dm644 tes3mp_logo.png "$pkgdir/usr/share/pixmaps/tes3mp.png"
+  install -d $pkgdir/opt/$pkgname
+  cd "${srcdir}"
+  mv TES3MP $pkgdir/opt/$pkgname
+}
+
+# vim:set ts=2 sw=2 et:
