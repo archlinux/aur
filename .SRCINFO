@@ -1,7 +1,7 @@
 pkgbase = yandex-browser-ffmpeg-codecs
 	pkgdesc = additional support for proprietary codecs for yandex browser
-	pkgver = 58.0.3029.81
-	pkgrel = 3
+	pkgver = 60.0.3112.90
+	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -18,12 +18,14 @@ pkgbase = yandex-browser-ffmpeg-codecs
 	makedepends = xdg-utils
 	depends = glibc
 	options = !strip
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-58.0.3029.81.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-60.0.3112.90.tar.xz
 	source = chromium-last-commit-position-r1.patch
-	source = https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r2.patch
-	sha256sums = 5ab61b7025a5143fa1b21713479b316ec7a98e262e79e84f9c9a9656179217cb
+	source = https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r1.patch
+	source = https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r8.patch
+	sha256sums = b42f7965764b4528116622a71a60f52becd4186ff8854f3051bf45c6368739e6
 	sha256sums = d3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e
-	sha256sums = 64d743c78183c302c42d1f289863e34c74832fca57443833e46a0a3157e2b5de
+	sha256sums = bbb2782f2681a3d4366ab122485497f42b4eef9856ca0dcdfa655efad2886fa5
+	sha256sums = 06345804c00d9618dad98a2dc04f31ef19912cdf6e9d6e577ef7ffb1fa57003f
 
 pkgname = yandex-browser-ffmpeg-codecs
 

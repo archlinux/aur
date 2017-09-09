@@ -2,8 +2,8 @@
 # Based on opera-ffmpeg-codecs package <Maintainer: BlackIkeEagle>
 
 pkgname=yandex-browser-ffmpeg-codecs
-pkgver=58.0.3029.81
-pkgrel=3
+pkgver=60.0.3112.90
+pkgrel=1
 pkgdesc="additional support for proprietary codecs for yandex browser"
 arch=('i686' 'x86_64')
 url="https://ffmpeg.org/"
@@ -17,11 +17,13 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r2.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r1.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r8.patch'
 )
-sha256sums=('5ab61b7025a5143fa1b21713479b316ec7a98e262e79e84f9c9a9656179217cb'
+sha256sums=('b42f7965764b4528116622a71a60f52becd4186ff8854f3051bf45c6368739e6'
             'd3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e'
-            '64d743c78183c302c42d1f289863e34c74832fca57443833e46a0a3157e2b5de')
+            'bbb2782f2681a3d4366ab122485497f42b4eef9856ca0dcdfa655efad2886fa5'
+            '06345804c00d9618dad98a2dc04f31ef19912cdf6e9d6e577ef7ffb1fa57003f')
 
 
 prepare() {
@@ -40,7 +42,8 @@ prepare() {
   touch chrome/test/data/webui/i18n_process_css_test.html
 
   patch -p1 -i "$srcdir/chromium-last-commit-position-r1.patch"
-  patch -p1 -i "$srcdir/chromium-gn-bootstrap-r2.patch"
+  patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r1.patch"
+  patch -p1 -i "$srcdir/chromium-gn-bootstrap-r8.patch"
 }
 
 build() {
@@ -62,3 +65,5 @@ package() {
     "$pkgdir/opt/yandex/browser-beta/libffmpeg.so"
 
 }
+
+# vim:set ts=2 sw=2 et:
