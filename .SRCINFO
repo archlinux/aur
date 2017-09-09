@@ -1,0 +1,16 @@
+pkgbase = nbfc-beta
+	pkgdesc = Cross-platform fan control service for notebooks (BETA release)
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/hirschmann/nbfc
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = nuget
+	depends = mono
+	provides = nbfc
+	source = https://github.com/hirschmann/nbfc/archive/1.5.3-beta.tar.gz
+	md5sums = 55a344ee11d0ff5351bab0f4a583c36a
+
+pkgname = nbfc-beta
+
