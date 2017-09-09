@@ -2,8 +2,8 @@
 # Maintainer: Francesco Colista <fcolista@alpinelinux.org>
 
 pkgname=cvechecker
-pkgver=3.6
-pkgrel=1
+pkgver=3.8
+pkgrel=0
 pkgdesc="a local CVE checker tool"
 arch=('i686' 'x86_64')
 url="https://github.com/sjvermeu/cvechecker"
@@ -17,12 +17,9 @@ replaces=()
 backup=()
 options=()
 install='cvechecker.install'
-source=()
 noextract=()
-md5sums=('e42482fa97bc9e73534fe37b45d1b1fb')
-
-source="https://raw.githubusercontent.com/wiki/sjvermeu/$pkgname/releases/$pkgname-$pkgver.tar.gz"
-
+source=("https://github.com/sjvermeu/$pkgname/archive/v${pkgver}.tar.gz")
+md5sums=('ebf9b4af3a1f3ac270447ec5d1168423')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
