@@ -3,13 +3,13 @@
 _pkg=DicAberto
 pkgname=stardict-pt
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Portuguese dictionary for Stardict from dicionario-aberto.net"
-arch=("x86_64" "i686")
+arch=("any")
 url="http://dicionario-aberto.net/"
 license=('GPL')
-depends=(stardict)
-provides=(stardict-pt-br)
+optdepends=(stardict sdcv)
+provides=(stardict-pt)
 source=("http://dicionario-aberto.net/stardict-DicAberto.tar.bz2")
 md5sums=('cf1a5616d9f020c77b10c521b976ca2c')
 
