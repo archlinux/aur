@@ -13,7 +13,7 @@ license=('GPL3')
 source=("https://github.com/SourMesen/Mesen/archive/${pkgver}.tar.gz"
        "${pkgname}.desktop"
        "${pkgname}".sh)
-md5sums=('57c65983b6f25b55b5c26812e1d19c66'
+md5sums=('a1451f44e324156efcc8b8d65bd654e6'
          '196970221b064dd78df72500e0df794c'
          '03f0d1ef2d850712a12858d79bc17ddf')
 
