@@ -1,8 +1,8 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet
-pkgver=10.8.5
-pkgrel=3
+pkgver=10.8.6
+pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('i686' 'x86_64')
 url="https://ddnet.tw"
@@ -15,7 +15,7 @@ provides=('teeworlds-ddnet')
 conflicts=('teeworlds-ddnet')
 replaces=('teeworlds-ddnet')
 source=("https://ddnet.tw/downloads/DDNet-$pkgver.tar.xz")
-sha256sums=('607370b9babb909b245a042c501b97780e173020ef0e1e53a6425b231a393c44')
+sha256sums=('1b43a9a7a4dae19a1ad280d25095d7fe6b72dcedd910ce95f204548356e64402')
 
 prepare() {
     mkdir build || true
@@ -27,9 +27,9 @@ prepare() {
         --name 'DDNet' --categories 'Game;ArcadeGame'
 
       # Server
+      # Requires 'ddnet-maps-git' package for using DDNet maps
+      # Requires a mysql-like database package for score/ranking
     convert "../DDNet-$pkgver/other/icons/DDNet-Server.ico" DDNet-Server.png
-      # This desktop file, combined with 'ddnet-maps-git' pkg will
-      # run DDNet Server with all votes, maps etc. -- no score/ranking, though
     gendesk -f -n --pkgname "DDNet-Server" --pkgdesc "DDNet Server"        \
         --name 'DDNet Server' --categories 'Game;ArcadeGame' --terminal=true \
         --exec='sh -c "cd /usr/share/ddnet/data && DDNet-Server"'
@@ -51,8 +51,8 @@ package() {
 
       # Install extra tools
     install -d -m755 "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 config_store         "$pkgdir/usr/share/ddnet/tools/"
     install -m755 config_retrieve      "$pkgdir/usr/share/ddnet/tools/"
+    install -m755 config_store         "$pkgdir/usr/share/ddnet/tools/"
     install -m755 confusables          "$pkgdir/usr/share/ddnet/tools/"
     install -m755 crapnet              "$pkgdir/usr/share/ddnet/tools/"
     install -m755 dilate               "$pkgdir/usr/share/ddnet/tools/"
@@ -62,7 +62,6 @@ package() {
     install -m755 map_extract          "$pkgdir/usr/share/ddnet/tools/"
     install -m755 map_replace_image    "$pkgdir/usr/share/ddnet/tools/"
     install -m755 map_resave           "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 map_version          "$pkgdir/usr/share/ddnet/tools/"
     install -m755 map_version          "$pkgdir/usr/share/ddnet/tools/"
     install -m755 packetgen            "$pkgdir/usr/share/ddnet/tools/"
     install -m755 tileset_borderadd    "$pkgdir/usr/share/ddnet/tools/"
