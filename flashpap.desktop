@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=FlashPAP
+Comment=A free tool for extracting xPAP sleep data from FlashAir WiFi-enabled SD cards.
+Exec=/usr/bin/flashpap
+Icon=/usr/share/flashpap/FlashPAP Icon.png
+Terminal=false
+Type=Application
+Categories=Java;Utility;

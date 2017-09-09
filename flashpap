@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
+mkdir -p ~/.config/flashpap
+cd ~/.config/flashpap
+exec java -jar '/usr/share/java/flashpap/FlashPAP.jar' "$@"

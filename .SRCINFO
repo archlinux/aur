@@ -1,0 +1,21 @@
+pkgbase = flashpap
+	pkgdesc = A free tool for extracting xPAP sleep data from FlashAir WiFi-enabled SD cards.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://www.cognitial.com/flashpap/index.htm
+	arch = any
+	license = unknown
+	makedepends = unzip
+	depends = jre8-openjdk
+	depends = java-openjfx
+	provides = flashpap
+	noextract = FlashPAP.zip
+	source = http://www.cognitial.com/assets/flashpap/FlashPAP.zip
+	source = flashpap.desktop
+	source = flashpap
+	sha256sums = 20909247a1e91785a062fef3064643672eb4b3e107a5e012b1bf353c1674448e
+	sha256sums = f2ec31e34dc8fb6ceb2b714dd485d6302962f516f9570cdca1a751bcc26d1f19
+	sha256sums = c089e9779d6a9267f9df22e76c3532f0b87a0cee91f74cddb9712fa57ebe3ec5
+
+pkgname = flashpap
+
