@@ -1,5 +1,5 @@
 pkgname='dwt-git'
-pkgver=0.6.0.r10.g96ef00c
+pkgver=0.6.0.r12.g2185a27
 pkgrel=1
 pkgdesc='Simple no-frills terminal emulator based on VTE - Git build'
 license=('MIT')
@@ -8,7 +8,7 @@ source=("${pkgname}::git+${url}.git")
 sha1sums=('SKIP')
 arch=('i686' 'x86_64' 'arm')
 depends=('vte3')
-makedepends=('python-docutils')
+makedepends=('meson' 'ninja')
 options=('strip' 'zipman')
 provides=('dwt')
 conflicts=('dwt')
@@ -19,13 +19,17 @@ pkgver () {
 }
 
 build () {
-	cd "${srcdir}/${pkgname}"
+	rm -rf "${srcdir}/_build"
+	mkdir "${srcdir}/_build"
+	cd "${srcdir}/_build"
 	flags='-DDWT_DEFAULT_FONT=\"Inconsolata\ 12\"'
-	flags="${flags} -DDWT_USE_POPOVER=TRUE"
-	make PREFIX=/usr EXTRA_CFLAGS="${flags}"
+	flags="${flags} -DDWT_USE_POPOVER=TRUE ${CPPFLAGS}"
+	CPPFLAGS=${flags} meson --prefix=/usr "${srcdir}/${pkgname}"
+	ninja
 }
 
 package () {
-	cd "${srcdir}/${pkgname}"
-	make PREFIX=/usr DESTDIR="${pkgdir}/" install
+	DESTDIR="${pkgdir}/" ninja -C "${srcdir}/_build" install
+	install -Dm644 "${srcdir}/${pkgname}/COPYING" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
