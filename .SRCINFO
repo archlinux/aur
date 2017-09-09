@@ -1,30 +1,17 @@
 pkgbase = veles
-	pkgdesc = Binary data analysis and visualization tool
-	pkgver = 2017.2.0.YAGNI
+	pkgdesc = Visual reverse engineering tool.
+	pkgver = 2017.06.0.1
 	pkgrel = 1
-	url = https://codisec.com/veles
+	url = https://codisec.com/veles/
 	arch = x86_64
-	license = APLv2
-	source = git+https://github.com/codilime/veles.git#tag=2017.2.0.YAGNI
-	source = Veles.desktop
-	source = veles.png
-	sha256sums = SKIP
-	sha256sums = 7173aa5e8ef29125004b15051b8b978e181707294ea6b79784c2c586bc209260
-	sha256sums = ab162fdeb9b99a47a5283b4b8644a1c75e15b74f62f5a78bdcc59580df562489
-
-pkgname = veles
+	license = Apache
 	depends = qt5-base
-	depends = python
-	depends = python-veles
-	depends = protobuf
-	depends = zlib
-	conflicts = veles-bin
-	conflicts = veles-git
-
-pkgname = python-veles
-	depends = python
 	depends = python-pbr
 	depends = python-six
 	depends = python-msgpack
-	conflicts = python-veles-git
+	depends = python-pyopenssl
+	source = https://github.com/codilime/veles/releases/download/2017.06.0.1/Veles_2017.06.0.1_64bit_Ubuntu1604.deb
+	sha256sums = 9954a384e6ba733b50e07b9fd2a32f0dd181ef8aab11ebd5441744020949357e
+
+pkgname = veles
 

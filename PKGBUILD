@@ -1,56 +1,24 @@
-# Maintainer: Mateusz Paluszkiewicz <aifam96@gmail.com>
+# Maintainer: Tony Lambiris <tony@critialstack.com>
 
-pkgname=(veles python-veles)
-pkgver=2017.2.0.YAGNI
+pkgname=veles
+pkgver=2017.06.0.1
 pkgrel=1
-pkgdesc='Binary data analysis and visualization tool'
-url='https://codisec.com/veles'
-license=('APLv2')
-source=(
-  "git+https://github.com/codilime/veles.git#tag=${pkgver}"
-  'Veles.desktop'
-  'veles.png'
-)
-sha256sums=(
-  'SKIP'
-  '7173aa5e8ef29125004b15051b8b978e181707294ea6b79784c2c586bc209260'
-  'ab162fdeb9b99a47a5283b4b8644a1c75e15b74f62f5a78bdcc59580df562489'
-)
+pkgdesc="Visual reverse engineering tool."
 arch=('x86_64')
+url="https://codisec.com/veles/"
+license=('Apache')
+depends=('qt5-base' 'python-pbr' 'python-six' 'python-msgpack' 'python-pyopenssl')
+source=("https://github.com/codilime/veles/releases/download/2017.06.0.1/Veles_${pkgver}_64bit_Ubuntu1604.deb")
+sha256sums=('9954a384e6ba733b50e07b9fd2a32f0dd181ef8aab11ebd5441744020949357e')
 
-build() {
-  makedepends=('git' 'cmake' 'qt5-base' 'python' 'python-pbr' 'python-six' 'python-msgpack' 'python-buildtools' 'python-virtualenv' 'protobuf' 'zlib')
-
-  mkdir -p "${srcdir}/veles/build"
-  cd "${srcdir}/veles/build"
-
-  cmake -D CMAKE_INSTALL_PREFIX:PATH="${pkgdir}/usr" -D CMAKE_BUILD_TYPE=MinSizeRel ..
-}
-
-package_veles() {
-  depends=('qt5-base' 'python' 'python-veles' 'protobuf' 'zlib')
-  conflicts=('veles-bin' 'veles-git')
-
-  # Install pixmap
-  install -Dm644 veles.png "${pkgdir}/usr/share/pixmaps/veles.png"
-
-  # Install launcher
-  desktop-file-install Veles.desktop --dir "${pkgdir}/usr/share/applications"
-
-  # Install license
-  install -Dm644 "${srcdir}/veles/LICENSE-2.0" "${pkgdir}/usr/share/licenses/veles/LICENSE"
-
-  cd "${srcdir}/veles/build"
-
-  # Install the program
-  make install
-}
-
-package_python-veles() {
-  depends=('python' 'python-pbr' 'python-six' 'python-msgpack')
-  conflicts=('python-veles-git')
-
-  cd "${srcdir}/veles/python"
-
-  python setup.py install --root="$pkgdir" --optimize=1
+package() {
+	cd $srcdir
+	tar xvf data.tar.gz
+	cp -r usr $pkgdir
+	tar xfv $pkgdir/usr/share/veles-server/veles-*.tar.gz
+	_pypath="$(find . -type f -name setup.py -print -quit)"
+	pushd "$(dirname $_pypath)"
+	python setup.py build
+	python setup.py install --prefix=$pkgdir/usr
+	popd
 }
