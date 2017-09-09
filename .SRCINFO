@@ -19,7 +19,9 @@ pkgbase = opencv2
 	optdepends = libcl: For coding with OpenCL
 	optdepends = python2-numpy: Python 2.x interface
 	source = 2.4.13.3.zip::https://codeload.github.com/opencv/opencv/zip/2.4.13.3
+	source = cmake_ccache.patch
 	sha256sums = 838a2ef5821db868f71c26e248427d7be9f35f2fb996acd1b973150c8dd11656
+	sha256sums = 1a8afc6bf9c9a80204385911749250d179709f915e416fe2791fdfc2a7b4012a
 
 pkgname = opencv2
 	conflicts = opencv
