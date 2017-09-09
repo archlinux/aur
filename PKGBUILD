@@ -1,6 +1,6 @@
 # Maintainer:   AstroFloyd  < AstroFloyd [at] gmail >
 pkgname=soltrack
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="A free, fast and accurate C/C++ routine to compute the position of the Sun"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('cmake' 'gcc')
 changelog=ChangeLog
 source=("http://sourceforge.net/projects/soltrack/files/$pkgname-$pkgver.tar.gz")
-sha512sums=('1ade71b73b65fbee0237e36655f60cddff0909064d4f8b451c8c0077ecd0d038396388ac6ab9593150bad7cb7602913315972f0bc3a3db53138a219d6c76526a')
+sha512sums=('db76a9363f29caa8c4b251c5d6138d78f8cc89a1d4988506982a40479c6dd51d17276d833529fd732cb8cc5792f3f747c1957f17bbc5d056ccbf5e971f13607f')
 
 build() {
     mkdir -p "$pkgname-$pkgver"/build

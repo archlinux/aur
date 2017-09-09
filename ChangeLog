@@ -2,6 +2,9 @@
 ChangeLog for SolTrack PKGBUILD
 http://soltrack.sourceforge.net/
 
+* soltrack-2.2-1 (2017-09-09 - AstroFloyd)
+	Version bump to v2.2
+
 * soltrack-2.1-1 (2017-04-17 - AstroFloyd)
 	Initial PKGBUILD for SolTrack v2.1, to be uploaded to AUR
 
