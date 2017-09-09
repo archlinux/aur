@@ -1,8 +1,9 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Maintainer: Julian Brost <julian@0x4a42.net>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 _pkgname=litesql
 pkgname="$_pkgname-git"
-pkgver=r596.d13e3d2
+pkgver=r647.a83e253
 pkgrel=1
 pkgdesc="C++ ORM for SQLite3, PostgreSQL, MySQL and Oracle"
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,8 +14,8 @@ depends=('expat' 'sqlite')
 makedepends=('git' 'cmake')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git://git.louiz.org/litesql")
-md5sums=('SKIP')
+source=("$_pkgname::git+https://git.louiz.org/litesql.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -42,4 +43,7 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Workaround for <https://dev.louiz.org/issues/3283>, remove when fixed
+  rm -r "$pkgdir"/usr/model.cmake
 }
