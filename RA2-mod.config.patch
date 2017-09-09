@@ -1,0 +1,12 @@
+--- mod.config	2017-09-08 22:13:07.274789138 -0400
++++ mod.config.patched	2017-09-08 22:12:52.214584975 -0400
+@@ -4,7 +4,8 @@
+ 
+ MOD_ID="ra2"
+ 
+-ENGINE_VERSION="4204ba"
++#ENGINE_VERSION="4204ba"
++ENGINE_VERSION="{DEV_VERSION}"
+ 
+ INCLUDE_DEFAULT_MODS="False"
+ 

@@ -1,10 +1,10 @@
 # $Id$
-# Maintainer: Eden Rose(mnovick1988) <contact through AUR please>
+# Maintainer: Eden Rose(endlesseden) <eenov1988 "at"  gmail.com >
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Matthew Bowra-Dean <matthew@ijw.co.nz>
 #
 pkgname=openra-git
-pkgver=BLEED.20170815.944dfeb47
+pkgver=BLEED.20170909.43664a12b
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL. DuneII and Red Alert 2, mods Included. -GIT VERSION"
 arch=('any')
@@ -20,10 +20,12 @@ options=(!strip)
 
 source=('OpenRA::git://github.com/OpenRA/OpenRA.git#branch=bleed'
         'RA2::git://github.com/OpenRA/ra2.git'
-        'D2::git://github.com/OpenRA/d2.git')
+        'D2::git://github.com/OpenRA/d2.git'
+	'RA2-mod.config.patch')
 md5sums=('SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+	 '17da3f549c51bc2d25840167cd79bbbc')
 
 
 pkgver() {
@@ -49,6 +51,16 @@ build() {
     make test DEBUG=false  ### Checking the build, for erroneous yaml files...
     make check DEBUG=false ### Checking the build, for StyleCop violations...
     #make docs DEBUG=false ### This exists in the Makefile, but is unused? (Make Documentation, mainly aimed at modders)
+  cd ../
+
+  cd RA2
+  if [ -e engine ]; then
+  	rm -r engine
+  fi
+  ln -s ../OpenRA engine
+  patch -p1 mod.config < $srcdir/RA2-mod.config.patch
+  make
+  
 }
 
 package() {
@@ -65,19 +77,20 @@ package() {
   mkdir -p $pkgdir/usr/lib/openra/mods/ra2
   fi
   cp -rf $srcdir/RA2/OpenRA.Mods*  $pkgdir/usr/lib/openra/mods/ra2
-  cp -rf $srcdir/RA2/mods/ra2/*.yaml $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/mods/ra2/*.png  $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/mods/ra2/audio $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/mods/ra2/chrome $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/mods/ra2/bits $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/mods/ra2/installer $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/mods/ra2/languages $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/mods/ra2/maps $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/mods/ra2/rules $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/mods/ra2/sequences $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/mods/ra2/tilesets $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/mods/ra2/uibits $pkgdir/usr/lib/openra/mods/ra2 
-  cp -rf $srcdir/RA2/mods/ra2/weapons $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/mods/ra2 $pkgdir/usr/lib/openra/mods/ra2 
+  #cp -rf $srcdir/RA2/mods/ra2/*.png  $pkgdir/usr/lib/openra/mods/ra2
+   
+  #cp -rf $srcdir/RA2/mods/ra2/audio $pkgdir/usr/lib/openra/mods/ra2 
+  #cp -rf $srcdir/RA2/mods/ra2/chrome $pkgdir/usr/lib/openra/mods/ra2 
+  #cp -rf $srcdir/RA2/mods/ra2/bits $pkgdir/usr/lib/openra/mods/ra2 
+  #cp -rf $srcdir/RA2/mods/ra2/installer $pkgdir/usr/lib/openra/mods/ra2 
+  #cp -rf $srcdir/RA2/mods/ra2/languages $pkgdir/usr/lib/openra/mods/ra2 
+  #cp -rf $srcdir/RA2/mods/ra2/maps $pkgdir/usr/lib/openra/mods/ra2 
+  #cp -rf $srcdir/RA2/mods/ra2/rules $pkgdir/usr/lib/openra/mods/ra2 
+  #cp -rf $srcdir/RA2/mods/ra2/sequences $pkgdir/usr/lib/openra/mods/ra2 
+  #cp -rf $srcdir/RA2/mods/ra2/tilesets $pkgdir/usr/lib/openra/mods/ra2 
+  #cp -rf $srcdir/RA2/mods/ra2/uibits $pkgdir/usr/lib/openra/mods/ra2 
+  #cp -rf $srcdir/RA2/mods/ra2/weapons $pkgdir/usr/lib/openra/mods/ra2 
   #########################################################
   
   ### adding DuneII to OpenRA
