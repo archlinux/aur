@@ -1,8 +1,8 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 
 pkgname=cocoa
-pkgver=0.99550
-pkgrel=1
+pkgver=0.99555
+pkgrel=2
 pkgdesc="A C++ library for doing Computations in Commutative Algebra. Also includes the CoCoA-5 Interpreter."
 arch=('i686' 'x86_64')
 url="http://cocoa.dima.unige.it/"
@@ -10,8 +10,8 @@ license=('GPL')
 depends=('cddlib' 'gsl' 'boost-libs' 'normaliz' 'cblas' 'lapack' 'readline') #'qt4')
 makedepends=('frobby' 'boost')
 source=("http://cocoa.dima.unige.it/cocoalib/tgz/CoCoALib-$pkgver.tgz" "package.patch" "cocoa5")
-sha256sums=('92d068b49150f3545e5b0715bc8f480b56b335b288727a8e94f99d8a4c792ec2'
-            '69d6a3fd82ff57e931a92c20fc33253fb0b834dfde8e42fd5dfe2c68bfecb1e2'
+sha256sums=('0a7d96789885027c7fcb875f281aadb613ab5e7ff6e1f233abbf2c499136c517'
+            '36689a63fb699806f0fb59a782ca4eff234b86363c517ecc0e0a046318b82bdb'
             'e9cc79cb1e35f28399afe8c2fd8f521da7566a996363e9789ed76d55093511b3')
 
 prepare() {
@@ -27,9 +27,9 @@ build() {
               --with-libnormaliz=/usr/lib/libnormaliz.so \
               --with-libgsl=/usr/lib/libgsl.so
               #--with-libgfan=/usr/lib/Singular/libgfan.a
-  make library
+  make -s CXXFLAGS='-Wno-deprecated-declarations -fPIC' library
   cd src/CoCoA-5
-  make -s cocoa5
+  make -s CXXFLAGS='-Wno-deprecated-declarations -fPIC' cocoa5
 }
 
 package() {
