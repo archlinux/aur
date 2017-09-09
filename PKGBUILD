@@ -76,7 +76,7 @@ _pkgvermajmin="5.9"
 _pkgverpatch=".1"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
-pkgrel=3
+pkgrel=4
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -378,7 +378,9 @@ package() {
   local _libsdebugpkgbuild="${_libsdebugdir}/PKGBUILD"
 
   local _pkgprofiled=${_libspkgdir}/etc/profile.d
+  local _pkgbindir=${_libspkgdir}/usr/bin
   local _profiledfn=qpi.sh
+  local _qpienvexecfn=qpi-env-exec
 
   local _installed_dir="${pkgdir}/${_sysroot}/${_baseprefix}"
 
@@ -416,6 +418,7 @@ package() {
     mkdir -p ${_pkgprofiled}
     cp -L ${startdir}/${_profiledfn} ${_pkgprofiled} || exit 1
     cp -L ${startdir}/${_profiled_gpu_fn} ${_pkgprofiled} || exit 1
+    cp -L ${startdir}/${_qpienvexecfn} ${_pkgbindir} || exit 1
     sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/${_profiledfn} || exit 1
   fi
 
