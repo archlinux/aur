@@ -3,7 +3,7 @@
 
 pkgname=mattermost
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64')
 
@@ -30,7 +30,7 @@ source=(
     'user.conf'
 )
 sha512sums=(
-    '504364620e8b9e6b5213f8194fe7cf020fdd3afd9d82ed275605e65cae55c7b9ae58953c4c608c9dcb763a75e81e01c97e5acb3e283377cb1a457ccc07b043b8'
+    '62f6292d9564adcf553c8d06a2b773d5f029caa34c0a239fa5186d30ad49d44dba413d9ee6bbfb62b7b5947450369f38f5ecc1fbd2c2a61e8bbc34703a9ac9af'
     '3e3d46dc7778be256da9a366ec96cde684fcb07732d0adfd40ea00d6ec61a161a9d7e784f7773d34e4f058e6919b13053ac228255a05f175e7ce20538f07ec93'
     '5fe6c343e9739b12f8ea9390dafd729fa9f980978bbc0fa7eb6a2eb2d437929078d3efede23c28a6b399c407b8b5e92755169a468462088de0eb148b360acc4b'
     'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9'
@@ -42,7 +42,10 @@ prepare() {
     cd src/github.com/mattermost
     # Remove previous platform folder if any previous clone was effective
     rm -f platform
-    ln -s "$srcdir"/platform-${pkgver} platform
+    # Even if we do not have a repository called platform any more, creating
+    # this directory structure is needed as the Mattermost Go namespaces are
+    # still named this way.
+    ln -s "$srcdir"/mattermost-server-${pkgver} platform
     cd platform
 
     # Prevent the build to crash when some dependencies are not met or
@@ -59,16 +62,18 @@ prepare() {
     #
     # Remove GOARCH=amd64 statement
     #
-    # Enforce build hash to none (Enterprise hash is already set to none).
+    # Enforce build hash to Arch Linux (Enterprise hash is already set to
+    # none), instead of the official git hash value.
     sed -r -i Makefile \
         -e 's/^package: build build-client/package: build-linux build-client/' \
         -e 's/GOARCH=amd64//' \
-        -e 's/^(\s*)BUILD_HASH(_ENTERPRISE)? =.*/\1BUILD_HASH\2 = none/'
+        -e 's/^(\s*)BUILD_HASH(_ENTERPRISE)? =.*/\1BUILD_HASH\2 = Arch Linux/' \
+        -e 's/-X (.*)(\$\(BUILD_HASH(_ENTERPRISE)?\))(.*)/-X '\''\1\2'\''\4/'
 }
 
 build() {
     cd "$srcdir"/src/github.com/mattermost/platform
-    GOPATH="$srcdir" BUILD_NUMBER=$_pkgver-$pkgrel make package
+    GOPATH="$srcdir" BUILD_NUMBER=$pkgver-$pkgrel make package
 }
 
 package() {
