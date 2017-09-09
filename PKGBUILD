@@ -1,7 +1,8 @@
+# Maintainer: Cody Schafer <aur@codyps.com>
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
-pkgname=libsigrokdecode4dsl-git
-pkgver=0.96.r0.g2143be9
+pkgname=libsigrokdecode4dsl
+pkgver=0.98
 pkgrel=1
 pkgdesc='A library which provides the basic sigrok protocol decoders for DreamSourceLab hardware'
 url='https://github.com/DreamSourceLab/DSView'
@@ -9,15 +10,8 @@ arch=(i686 x86_64)
 license=(GPL3)
 depends=(python glib2)
 makedepends=(git)
-conflicts=(libsigrokdecode libsigrokdecode-git)
-provides=(libsigrokdecode libsigrokdecode-git)
-source=(git://github.com/DreamSourceLab/DSView.git)
+source=("git://github.com/DreamSourceLab/DSView.git#tag=$pkgver")
 sha1sums=('SKIP')
-
-pkgver() {
-  cd DSView
-  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-}
 
 build() {
   cd DSView/libsigrokdecode4DSL
