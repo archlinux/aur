@@ -5,7 +5,8 @@ _pkgname=arch-install-scripts
 pkgname=arch-install-scripts_custom
 pkgver=17
 pkgrel=2
-pkgdesc="Scripts to aid in installing Arch Linux. With modified pacstrap, to include additional options."
+pkgdesc="Scripts to aid in installing Arch Linux. With modified 
+pacstrap, to include additional options. Pacstrappier Edition."
 arch=('any')
 url="https://projects.archlinux.org/arch-install-scripts.git"
 license=('GPL')
