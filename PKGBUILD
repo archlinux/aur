@@ -22,7 +22,7 @@ makedepends=('check' 'git' 'meson')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=(
-  'git+https://github.com/DaveDavenport/rofi'
+  'git+https://github.com/DaveDavenport/rofi#branch=next'
   'git+https://github.com/sardemff7/libgwater'
   'git+https://github.com/sardemff7/libnkutils'
 )
@@ -76,9 +76,7 @@ package() {
 
   DESTDIR="${pkgdir}" ninja install
   install -d -m 755 "${pkgdir}/usr/share/doc/rofi/examples"
-  install -d -m 755 "${pkgdir}/usr/share/man/man1"
-  install -D -m 644 ../COPYING "$pkgdir/usr/share/licenses/rofi/COPYING"
-  install -D -m 644 ../doc/*.1 "${pkgdir}/usr/share/man/man1/"
+  install -D -m 644 ../COPYING "$pkgdir/usr/share/licenses/rofi/LICENSE"
   install -D -m 755 ../Examples/*.sh "$pkgdir/usr/share/doc/rofi/examples"
 }
 
