@@ -1,7 +1,7 @@
 # Maintainer: Tyler Langlois <ty |at| tjll |dot| net>
 
 pkgname=consul-template
-pkgver=0.18.3
+pkgver=0.19.2
 pkgrel=1
 pkgdesc='Template rendering, notifier, and supervisor for HashiCorp Consul and Vault data'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -14,7 +14,7 @@ optdepends=('consul: interpolate values from a distributed key/value store'
 options=('!strip')
 source=("$url/archive/v$pkgver.tar.gz"
         "$pkgname.service")
-sha256sums=('2b579164da051704670d0a2ca736fdb410d7d268136ec95cc4c943afae1bce8b'
+sha256sums=('e7fca6e75d7165094a094d7e8347ec5b79733308eea8dec4bd94f50e9b233b45'
             '693fb4e88081ca7ce84a9c0d61cdc1130929359de35f70f145ea8008b7b42e3d')
 
 prepare() {
@@ -33,7 +33,9 @@ build() {
     # Build flags copied from upstream build scripts
     GOPATH="$srcdir/gopath" \
         go build \
-        -ldflags="-s -w -X main.Name=$pkgname -X main.Version=$pkgver" \
+        -ldflags="-s -w \
+            -X $pkgname/version.Name=$pkgname \
+            -X $pkgname/version.Version=$pkgver" \
         -a -o "$pkgname" .
 }
 
