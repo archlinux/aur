@@ -1,7 +1,7 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=firefly-iii
-pkgver=4.3.8
-pkgrel=3
+pkgver=4.6.5
+pkgrel=1
 pkgdesc='PHP personal finances manager'
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -9,26 +9,26 @@ license=('custom')
 depends=('php-intl')
 makedepends=('composer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('47a8096ed23b5a49aa734b9854c70e6c1f991c90acbed904ee2a9c2d0c6d3d57')
+sha256sums=('0798dd0d068fc8527296e6bb4393db5c50fdad77a8fd07ef3f6fef4dbf91a007')
 
 install=$pkgname.install
 backup=(
     "etc/webapps/$pkgname/config.env"
     "etc/webapps/$pkgname/config.env.docker"
-    "etc/webapps/$pkgname/config.env.example"
     "etc/webapps/$pkgname/config.env.sandstorm"
     "etc/webapps/$pkgname/config.env.testing")
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -d "$pkgdir/usr/share/webapps" "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/etc/webapps/$pkgname"
-    php -dextension=intl.so /usr/bin/composer create-project --working-dir "$pkgdir/usr/share/webapps" "grumpydictator/$pkgname" --no-dev --prefer-dist
+    cp -rv * "$pkgdir/usr/share/webapps"
     install -D "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
-    mv -v "$pkgdir/usr/share/webapps/$pkgname/.env"* "$pkgdir/etc/webapps/$pkgname"
 
-	for i in '' '.docker' '.example' '.sandstorm' '.testing' ; do
+    mv -v '.env.example' '.env'
+    mv -v ".env"* "$pkgdir/etc/webapps/$pkgname"
+
+	for i in '' '.docker' '.sandstorm' '.testing' ; do
         mv -v "$pkgdir/etc/webapps/$pkgname/.env$i" "$pkgdir/etc/webapps/$pkgname/config.env$i"
-        ln -sv "../../../../etc/webapps/firefly-iii/config.env$i" "$pkgdir/usr/share/webapps/$pkgname/.env$i"
     done
 }
 
