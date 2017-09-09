@@ -6,7 +6,7 @@
 # URL used for version checking: http://dustkid.com/backend8/dustmod_version.php
 
 pkgname=dustforce-hib-dustmod
-pkgver=1.0+h20141222_7.8.7
+pkgver=1.0+h20141222_7.9.1
 _hibver=2014-12-22
 _hibver_windows=07012015
 pkgrel=1
@@ -29,8 +29,8 @@ source=("hib://${_installer}"
         'dustforce-hib-dustmod.desktop')
 md5sums=('e2fa7efd5b9ec64fc453f32480f63ad4'
          'fed1b6d82bdbea66d242eaaaf7d3a2f2'
-         '9b69132a0c283b9bdd3c6d4dc61dd862'
-         '6cb42a7949023cf6d3919ea5cb123a69'
+         '55de7ed9544fbb725ddd46e6010f3605'
+         '8acb5f480ab917bd2fccfceac5a78e4b'
          '7b30db080ff59c0eba443b14da7c39bc'
          'cc98a6127bc6d6cbdcfced14c69327cf')
 # zip with no top-level directory - will extract manually
