@@ -1,76 +1,73 @@
-* commit 64c9b940d2b0ba354226fc023ffca6ca77a7b630
+* commit a2b7c3fe224eea7cbff8e2dc647f3541d9b8e95d
 | Author: SimonN <eiderdaus@gmail.com>
-| Date:   Fri Sep 4 19:43:31 2015 +0200
+| Date:   Tue Sep 5 03:52:24 2017 +0200
 | 
-|     advance on click or assign during pause
-|  
-* commit a61fcfd6f66af9e1910e6163006fb1f30b6aa230
+|     0.8.5
+| 
+* commit 2e35c3cc363d6bb3fb004a51e6cc261b5a05811c
 | Author: SimonN <eiderdaus@gmail.com>
-| Date:   Sun Jan 31 14:11:49 2016 +0100
+| Date:   Sat Sep 9 02:32:29 2017 +0200
 | 
-|     replay verifier can convert and overwrite
+|     fix #224: don't interpret grouped tiles as anim
+| 
+* commit 6c459cb86f6c3b02fd0d95ab62796f5483899c06
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Fri Sep 8 18:49:24 2017 +0200
+| 
+|     fix: newly-inserted tile rounds to grid
+| 
+* commit 5406122244f7814ea26ee4b5ce5651156a05e4d0
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Mon Sep 4 04:41:15 2017 +0200
+| 
+|     levels: hanging gardens 3p, 6p
+| 
+* commit 883af44817dfb7f11acde5c9d8860f4915fab64b
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Fri Sep 8 00:19:03 2017 +0200
+| 
+|     part of #216: button to flash own goals
+| 
+* commit 7b571e601d0bbb90a686e869f3c60b16c0f14948
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Tue Sep 5 03:52:24 2017 +0200
+| 
+|     optimized Lixxie/Jobs by packing into structs
+| 
+* commit dcc6321d387cfb82e54f4ca4435cd0b82d60c697
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Thu Aug 31 18:11:53 2017 +0200
+| 
+|     fix #211: FHS-friendly, opt. build with XDG dirs
 |     
-|     Run lix --help for instructions
-|  
-* commit e5c3d13b43daecfa9d3840d504f41942773e9d3c
-| Author: SimonN <eiderdaus@gmail.com>
-| Date:   Sun Jan 31 09:13:59 2016 +0100
-| 
-|     level export, text won't overflow
-|  
-* commit da33317129efa59e83cfebeafea8e01d69791eae
-| Author: SimonN <eiderdaus@gmail.com>
-| Date:   Sat Jan 30 22:29:41 2016 +0100
-| 
-|     removed circle on visited/failed levels
+|     To build Lix self-contained:
+|             dub, or dub -b release
 |     
-|     The failing result isn't even saved to the user file.
-|  
-* commit 47dfd2317509ed5cb39b7b230b2de138dc613a6d
-| Author: SimonN <eiderdaus@gmail.com>
-| Date:   Sat Jan 9 05:40:45 2016 +0100
-| 
-|     lemforum levels updated to 2015-06
-|  
-* commit dead180bf5961f804dd1920958061e39f30a7484
-| Author: SimonN <eiderdaus@gmail.com>
-| Date:   Sat Jan 9 04:52:13 2016 +0100
-| 
-|     bugfix: too many effects generated on framestep
+|     To build Lix following the XDG Base Directory specification:
+|             dub -b releaseXDG
 |     
-|     This fix works for replays played from the replay browser,
-|     and for normal play with framestepping.
-|     
-|     It does not work for loading the user savestate: Effects will
-|     probably be drawn at least once. I'd have to save the entire effect
-|     list with the user savestate, which would be overkill right now.
-|  
-* commit 0595af31d07289c6cb246e3e1ddb07c4f42c3dfd
+|     Linux package maintainers, please see `doc/build/package.txt'
+|     for a longer description of this build flag.
+| 
+* commit 0bc1eeb7a599579b401ddb664bd503bd5f1dec6a
 | Author: SimonN <eiderdaus@gmail.com>
-| Date:   Thu Oct 8 18:44:44 2015 +0200
+| Date:   Mon Sep 4 17:28:02 2017 +0200
 | 
-|     don't savestate during verify mode
-|     
-|     This cuts the time per verified level to about a fifth.
-|  
-* commit 9dbef36198b49aa6dea5d94bb0785abc0903e7b6
+|     enforce bitmap creation, not assert
+| 
+* commit a939d73e85d1d4b16d4e6d8b6f4e49ba3bae4a09
 | Author: SimonN <eiderdaus@gmail.com>
-| Date:   Thu Sep 10 04:13:49 2015 +0200
+| Date:   Sun Sep 3 00:54:01 2017 +0200
 | 
-|     bugfix: panel displays 'Shrugger', not 'Shrugger2'
-|  
-* commit 1766ca0f8046ba07b4a3d403278a165f1e84d177
-| Author: geoo89 <geoo89@gmail.com>
-| Date:   Tue Sep 8 19:55:19 2015 +0200
-| 
-|     L1 levels: read 2 bytes, ignore big byte
+|     fix #162: options menu warns about duplicate keys
 |     
-|     Some values in the L1 format were treated as 2 byte values while
-|     one of the two bytes should be ignored. Fixed.
-|     This especially affects Lemmix levels exported with NeoLemmix.
-|  
-* commit 6d737facec033e7e53f449431e681a6588f6d862
-| Author: SimonN <eiderdaus@gmail.com>
-| Date:   Fri Sep 4 12:29:05 2015 +0200
+|     All KeyButtons with duplicate bindings have red text.
+|     It's perfectly fine to have these, but the user shall
+|     at least know that he has bound a key to two functions.
+|     This red text, never deleting binds, seems least intrusive.
 | 
-|     umlauts in _german.X and jumpers tutorial
+* commit 4e4751a6d7c1bf2f5bfe44b66fc0528f423958f5
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Mon Aug 28 06:51:34 2017 +0200
+| 
+|     0.8.4
