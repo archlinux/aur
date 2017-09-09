@@ -1,0 +1,21 @@
+pkgbase = bashnapi
+	pkgdesc = bashnapi is a napiprojekt.pl bash client bundled with subotage - a universal subtitles format converter
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/dagon666/napi
+	arch = any
+	license = GPL
+	depends = bash
+	depends = coreutils
+	depends = sed
+	depends = gawk
+	depends = file
+	depends = cmake
+	depends = grep
+	depends = findutils
+	depends = wget
+	source = https://github.com/dagon666/napi/archive/v2.0.0.tar.gz
+	md5sums = c86efaa856f7e80e993456aff9ced322
+
+pkgname = bashnapi
+
