@@ -16,14 +16,9 @@ makedepends=('git' 'cmake' 'boost' 'gtest')
 
 
 pkgdesc="Peer-to-peer anonymous digital currency (daemon, CLI wallet, and wallet API library)"
-source=("$_gitname::git+https://github.com/monero-project/monero.git"
-        "monerod.service"
-        "monerod.conf"
-)
-	
-md5sums=('SKIP'
-         '978b5dda921ad298d93eaf701094f835'
-         '7115d61857ce249a3e9ccf2c6bc4f00b')
+source=("$_gitname::git+https://github.com/monero-project/monero.git")
+
+md5sums=('SKIP')
 
 _builddir=build
 
@@ -99,8 +94,8 @@ package_monero-git() {
 	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-import" "$pkgdir/usr/bin/monero-blockchain-import"
 	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-export" "$pkgdir/usr/bin/monero-blockchain-export"
 
-	install -Dm644 $srcdir/monerod.service "${pkgdir}/usr/lib/systemd/system/monerod.service"
-	install -Dm644 "$srcdir/monerod.conf" "$pkgdir/etc/monerod.conf"
+	install -Dm644 $srcdir/$_gitname/utils/systemd/monerod.service "${pkgdir}/usr/lib/systemd/system/monerod.service"
+	install -Dm644 "$srcdir/$_gitname/utils/conf/monerod.conf" "$pkgdir/etc/monerod.conf"
 	install -D -m644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
