@@ -15,8 +15,8 @@ provides=("${pkgname%-git}")
 
 source=('https://github.com/TES3MP/openmw-tes3mp/releases/download/tes3mp-0.6.1/tes3mp-GNU.Linux-x86_64-release-0.6.1-f5e23d5fc6-p5.tar.gz'
         'https://raw.githubusercontent.com/TES3MP/openmw-tes3mp/master/files/tes3mp/tes3mp_logo.png')
-sha1sums=('SKIP'
-          'SKIP')
+sha1sums=('0ec83b563aea0118bb5a82c1e3295627046bd6b4'
+          '7a3f41f2c37fa5f5c0daf0e91619b5a461aa8f5a')
 
 package() {
   # icon for .desktop file
