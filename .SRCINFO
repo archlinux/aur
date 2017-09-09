@@ -1,6 +1,6 @@
 pkgbase = libcs50-git
 	pkgdesc = CS50 Library for C
-	pkgver = 7.1.2.r79.g4132
+	pkgver = 8.0.5.r33.g80275e4
 	pkgrel = 1
 	url = https://cs50.harvard.edu/
 	arch = x86_64

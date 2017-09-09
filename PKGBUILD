@@ -1,8 +1,8 @@
-# Maintainer    : Dan Beste <dan.ray.beste@gmail.com>
+# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='libcs50-git'
 _gitname='libcs50'
-pkgver=7.1.2.r79.g4132
+pkgver=8.0.5.r33.g80275e4
 pkgrel=1
 pkgdesc="CS50 Library for C"
 arch=('x86_64' 'i686')
@@ -10,10 +10,10 @@ url="https://cs50.harvard.edu/"
 license=('unknown')
 groups=('cs50')
 makedepends=('git')
-provides=('libcs50')
-conflicts=('libcs50')
+provides=("${_gitname}")
+conflicts=("${_gitname}")
 source=('git+https://github.com/cs50/libcs50.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
