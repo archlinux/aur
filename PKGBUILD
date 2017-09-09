@@ -17,7 +17,7 @@ source=(https://github.com/eshizhan/dstat/archive/${pkgver}.tar.gz)
 md5sums=('cec63b7b9247c0c9586258851d9a1f11')
 
 package() {
-  cd $pkgname-$pkgver
+  cd ${pkgname%%-*}-$pkgver
 
   make DESTDIR=$pkgdir install
   make DESTDIR=$pkgdir docs
