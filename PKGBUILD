@@ -2,22 +2,20 @@
 
 pkgname=ttf-soutane
 _pkgname=soutane
-pkgver=20150207
-pkgrel=2
+pkgver=20150509
+pkgrel=1
 pkgdesc="Soutane TTF typeface"
 arch=(any)
-url="http://www.webpagefonts.com/"
+url="http://www.911fonts.com/font/family/soutane"
 license=(custom)
-source=("Soutane-Regular.ttf::http://www.webpagepublicity.com/free-fonts/s/Soutane%20Regular.ttf"
-        "Soutane-Bold.ttf::http://www.webpagepublicity.com/free-fonts/s/Soutane%20Bold.ttf"
-        "Soutane-Italic.ttf::http://www.webpagepublicity.com/free-fonts/s/Soutane%20Italic.ttf"
-        "Soutane-Bold-Italic.ttf::http://www.webpagepublicity.com/free-fonts/s/Soutane%20Bold%20Italic.ttf"
-        "SoutaneBlack-Regular.ttf::http://www.webpagepublicity.com/free-fonts/s/SoutaneBlack%20Regular.ttf")
-sha256sums=('d28114931256495a45b96fc3a833bbba2169c84e7543a0d16367424e4b1faff3'
-            'ec923856a2f5c88ea667d5ac0d7c90cd60ffce538efe39182e13abd96b2de613'
-            '44dc858666f5df9d726869413ea34f0298b8eedf5dd125fc394a7e0e612293d8'
-            '0a4de3907dbda0eb487e9152d03d9aa69c1915620f666bd33ae3a0c2b1f1ae92'
-            'fc0f2e8c6ab17f510dcab260c2b8af041743646cb87689f155ff88222222ea38')
+source=("Soutane-Regular.ttf::http://www.911fonts.com/fonts/font-download-file/8595"
+        "Soutane-Bold.ttf::http://www.911fonts.com/fonts/font-download-file/8596"
+        "Soutane-Italic.ttf::http://www.911fonts.com/fonts/font-download-file/8598"
+	"Soutane-Bold-Italic.ttf::http://www.911fonts.com/fonts/font-download-file/8597")
+sha256sums=('f8aeae94cb33a57a232e3c4a5e530d2173e6f0756663b9426a3de8b568d170f0'
+            'e8c14b7eb0c59aa32b117803e23d7f2eac853d705acbf7a04a8683094fa55be1'
+            '5127d8814e7ae3d0e93f28f3c5351afc7fcea2c902bec6de312e3928176352e1'
+	    '2c1c51052c105257a3d3cc0ad1fe08136cc8bf2ddfbe89c911a3520e971bf633')
 
 package() {
 	cd "${srcdir}"
