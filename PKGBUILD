@@ -1,4 +1,5 @@
 # Maintainer: Savvy Raghuvanshi <sraghuvanshi at college dot harvard dot edu>
+# Author: Nick <https://github.com/nick92>
 
 pkgname=lightdm-enso-os-greeter-git
 pkgver=16
