@@ -1,15 +1,13 @@
 pkgbase = omnibook-dkms-git
 	pkgdesc = Kernel module for HP OmniBook,Pavilion,Toshiba and Compal ACL00 laptops
 	pkgver = 20150227
-	pkgrel = 4
+	pkgrel = 5
 	url = http://omnibook.sourceforge.net
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = dkms
-	optdepends = linux-headers: build for Arch kernel
-	optdepends = linux-lts-headers: build LTS kernel
-	optdepends = linux-zen-headers: build ZEN kernel
+	depends = linux-headers
 	provides = omnibook-git
 	conflicts = omnibook-git
 	source = omnibook-git::git://devoid-pointer.net/omnibook.git

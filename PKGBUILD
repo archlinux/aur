@@ -3,16 +3,13 @@
 _pkgname=omnibook-git
 pkgname=omnibook-dkms-git
 pkgver=20150227
-pkgrel=4
+pkgrel=5
 pkgdesc="Kernel module for HP OmniBook,Pavilion,Toshiba and Compal ACL00 laptops"
 arch=('any')
 url="http://omnibook.sourceforge.net"
 license=('GPL')
-depends=('dkms')
+depends=('dkms' 'linux-headers')
 makedepends=('git')
-optdepends=('linux-headers: build for Arch kernel'
-            'linux-lts-headers: build LTS kernel'
-            'linux-zen-headers: build ZEN kernel')
 conflicts=('omnibook-git')
 provides=('omnibook-git')
 source=("$_pkgname::git://devoid-pointer.net/omnibook.git"
@@ -31,7 +28,7 @@ build() {
    cd $_pkgname
    install -m644 ../dkms.conf ./
    patch -Np0 -i ../makefile.patch
-   # fix ker 4.12
+   # fix kernel >= 4.12
    sed -i 's|<asm/uaccess.h>|<linux/uaccess.h>|' init.c
 }
 
