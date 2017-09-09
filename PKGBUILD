@@ -4,12 +4,12 @@
 
 pkgname=dsview
 pkgver=0.98
-pkgrel=1
+pkgrel=2
 pkgdesc="Client software that supports the DreamSourceLab logic analyzer"
 arch=('i686' 'x86_64')
 url="http://www.dreamsourcelab.com/"
 license=('GPL3')
-depends=('boost-libs' 'qt5-base' 'libsigrokdecode' 'fftw')
+depends=('boost-libs' 'qt5-base' 'libsigrokdecode4dsl' 'fftw')
 makedepends=('boost')
 
 source=("git+https://github.com/DreamSourceLab/DSView.git#tag=$pkgver"

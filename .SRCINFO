@@ -1,7 +1,7 @@
 pkgbase = dsview
 	pkgdesc = Client software that supports the DreamSourceLab logic analyzer
 	pkgver = 0.98
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dreamsourcelab.com/
 	install = dsview.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = dsview
 	makedepends = boost
 	depends = boost-libs
 	depends = qt5-base
-	depends = libsigrokdecode
+	depends = libsigrokdecode4dsl
 	depends = fftw
 	source = git+https://github.com/DreamSourceLab/DSView.git#tag=0.98
 	source = udev.rules
