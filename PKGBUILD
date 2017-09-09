@@ -23,7 +23,7 @@ build() {
 package() {
   cd "${srcdir}/KShare"
   mkdir -p "$pkgdir/usr/bin"
-  install src/KShare "$pkgdir/usr/bin/kshare"
+  install KShare "$pkgdir/usr/bin/kshare"
   mkdir -p "$pkgdir/usr/share/pixmaps"
   install "${srcdir}/KShare/icons/icon.png" "$pkgdir/usr/share/pixmaps/KShare.png"
   mkdir -p "$pkgdir/usr/share/applications"
