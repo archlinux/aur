@@ -2,7 +2,7 @@
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=latte-dock-git
-pkgver=0.7.1.r7.gdbbd01a
+pkgver=0.7.1.r10.gfd1ae87
 pkgrel=1
 pkgdesc='A dock based on plasma frameworks - git version'
 arch=('i686' 'x86_64')
@@ -22,15 +22,15 @@ pkgver() {
 }
 
 build() {
+ 
+ 
   cd latte-dock
-
   mkdir build && cd build
 
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
-    
-  make
+  
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DKDE_L10N_BRANCH=trunk -DKDE_L10N_AUTO_TRANSLATIONS=ON -DCMAKE_BUILD_TYPE=Release ..
+    make fetch-translations
+
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = latte-dock-git
 	pkgdesc = A dock based on plasma frameworks - git version
-	pkgver = 0.7.1.r7.gdbbd01a
+	pkgver = 0.7.1.r10.gfd1ae87
 	pkgrel = 1
 	url = https://cgit.kde.org/latte-dock.git/
 	arch = i686
