@@ -2,13 +2,13 @@
 
 _name=ddnet
 pkgname=$_name-git
-pkgver=10.8.5.r5.gfa5efcaeb
+pkgver=10.8.6.r1.g73d9ad761
 pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('i686' 'x86_64')
 url="https://ddnet.tw"
 license=('custom')
-depends=('alsa-lib' 'glu' 'sdl2' 'freetype2' 'opusfile' 'curl')
+depends=('alsa-lib' 'glu' 'sdl2' 'freetype2' 'opusfile' 'curl') #mariadb
 makedepends=('git' 'cmake' 'imagemagick' 'gendesk' 'python' 'gtest')
 optdepends=('ddnet-skins: more skins for your tee'
             'ddnet-maps-git: mainly important for a DDNet Server')
@@ -16,7 +16,7 @@ provides=('teeworlds-ddnet-git' 'ddnet')
 conflicts=('teeworlds-ddnet-git' 'ddnet')
 replaces=('teeworlds-ddnet-git')
 source=("git+https://github.com/$_name/$_name")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd $_name
@@ -37,9 +37,9 @@ prepare() {
         --name 'DDNet' --categories 'Game;ArcadeGame'
 
       # Server
+      # Requires 'ddnet-maps-git' package for using DDNet maps
+      # Requires a mysql-like database package for score/ranking
     convert "../$_name/other/icons/DDNet-Server.ico" DDNet-Server.png
-      # This desktop file, combined with 'ddnet-maps-git' pkg will
-      # run DDNet Server with all votes, maps etc. -- no score/ranking, though
     gendesk -f -n --pkgname "DDNet-Server" --pkgdesc "DDNet Server"        \
         --name 'DDNet Server' --categories 'Game;ArcadeGame' --terminal=true \
         --exec='sh -c "cd /usr/share/ddnet/data && DDNet-Server"'
@@ -61,8 +61,8 @@ package() {
 
       # Install extra tools
     install -d -m755 "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 config_store         "$pkgdir/usr/share/ddnet/tools/"
     install -m755 config_retrieve      "$pkgdir/usr/share/ddnet/tools/"
+    install -m755 config_store         "$pkgdir/usr/share/ddnet/tools/"
     install -m755 confusables          "$pkgdir/usr/share/ddnet/tools/"
     install -m755 crapnet              "$pkgdir/usr/share/ddnet/tools/"
     install -m755 dilate               "$pkgdir/usr/share/ddnet/tools/"
@@ -72,7 +72,6 @@ package() {
     install -m755 map_extract          "$pkgdir/usr/share/ddnet/tools/"
     install -m755 map_replace_image    "$pkgdir/usr/share/ddnet/tools/"
     install -m755 map_resave           "$pkgdir/usr/share/ddnet/tools/"
-    install -m755 map_version          "$pkgdir/usr/share/ddnet/tools/"
     install -m755 map_version          "$pkgdir/usr/share/ddnet/tools/"
     install -m755 packetgen            "$pkgdir/usr/share/ddnet/tools/"
     install -m755 tileset_borderadd    "$pkgdir/usr/share/ddnet/tools/"
