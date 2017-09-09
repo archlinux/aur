@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-pulseaudio-plugin
 pkgname=${_pkgname}-git
-pkgver=0.3.0+2+gdea2be9
+pkgver=0.3.0.r2.gdea2be9
 pkgrel=1
 pkgdesc="Pulseaudio plugin for Xfce4 panel"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --tags | sed "s/^${_pkgname}-//;s/-/+/g"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/([^-]*-g)/r\1/;s/-/./g"
 }
 
 prepare() {
