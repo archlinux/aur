@@ -29,7 +29,12 @@ _builddir=build
 
 pkgver() {
 	cd "$srcdir/$_gitname"
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
+	# Release tags might point to commits on a branch different than master,
+	# so don't use them.
+	#git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "$(echo $pkgver | grep -Eo '^[0-9]+.[0-9]+.[0-9]+.[0-9]+').r%s.%s" \
+		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
