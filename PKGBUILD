@@ -1,4 +1,5 @@
-# Maintainer: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
+# Maintainer: Alex S. <shantanna_at_hotmail_dot_com>
+# Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 
 # You'll need to download the package archive from
 # https://www.blackmagicdesign.com/products/davinciresolve
@@ -8,8 +9,8 @@
 
 pkgname=davinci-resolve
 _pkgname=resolve
-pkgver=12.5.6
-pkgrel=3
+pkgver=14.0
+pkgrel=0
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -18,11 +19,21 @@ depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl
          'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit'
          'qt5-webengine' 'qt5-websockets')
 options=('!strip')
+
+if [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
+  if [ -f $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
+    ln -s $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
+  else
+    msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in ${pkgdir}"
+    sleep 3
+  fi
+fi
+
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('602384d691987aeafa57005b1bf80a77d79ccba681d3a8a403cc97abea8c810d')
+sha256sums=('997eb0d4bbdce13d480f5176924c3e689d6508e18b8538a98e74413dcf1e1550')
 
 package() {
-	msg2 "Did you download the archive manually? If not, this will fail."
+#	msg2 "Did you download the archive manually? If not, this will fail."
 	mkdir -p "${pkgdir}/opt/${_pkgname}/"{bin,configs,Media}
 
 	msg2 "Extracting from bundle..."
