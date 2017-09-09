@@ -1,11 +1,11 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.3.0
+_oomox_ver=1.3.1
 _numix_ver=1.2.8.1
 _flatplat_ver=20170605
-_flatplat_commit=0ed1caf6bb359b8508bac6d12c62670da87fec9a
+_flatplat_commit=a96196d966c172c760b0e9ee471e103f3686832c
 _flatplat_githash=$(c=${_flatplat_commit}; echo ${c:0:7})
-_flatplat_gitdate=20170902
+_flatplat_gitdate=20170909
 
 pkgname=oomox
 pkgver=${_oomox_ver}_${_numix_ver}_${_flatplat_gitdate}git${_flatplat_githash}
@@ -51,9 +51,9 @@ source=(
     'oomoxify-cli'
     'oomox.desktop'
 )
-md5sums=('505ae6937bfcb070b900443c124d4a9d'
+md5sums=('735fb5f2a5ebd381eb8695848cf4e722'
          '983b4dfa91d0f0bc87afa82d28090c18'
-         '8569ab220e1df7559f2638e07f2810a6'
+         '0d47227a9a5151666fd372da921eb24a'
          'efc83d981e1fcfb41c6d439f1013efbd'
          '0d156463416bbc2260c073c15b7f2a70'
          '57cfcc4141ce6e346da7ab8bab411b14'
