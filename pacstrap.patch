@@ -1,0 +1,65 @@
+--- pacstrap.in	2017-09-09 03:13:08.848422152 -0400
++++ pacstrap.in_mod	2017-09-09 03:49:01.204085450 -0400
+@@ -27,6 +27,9 @@
+     -G             Avoid copying the host's pacman keyring to the target
+     -i             Avoid auto-confirmation of package selections
+     -M             Avoid copying the host's mirrorlist to the target
++        
++    -U		       Install a Package file
++    -B		       Build all the packages, instead of installing them from repository. 
+ 
+     -h             Print this help message
+ 
+@@ -43,7 +46,7 @@
+ 
+ (( EUID == 0 )) || die 'This script must be run with root privileges'
+ 
+-while getopts ':C:cdGiM' flag; do
++while getopts ':C:cdGiUBM' flag; do
+   case $flag in
+     C)
+       pacman_config=$OPTARG
+@@ -60,6 +63,12 @@
+     G)
+       copykeyring=0
+       ;;
++    U)
++      upgrade=1
++      ;;
++    B)
++      build=1
++      ;;
+     M)
+       copymirrorlist=0
+       ;;
+@@ -103,9 +112,29 @@
+ # mount API filesystems
+ chroot_setup "$newroot" || die "failed to setup chroot %s" "$newroot"
+ 
++if (( upgrade )); then
++msg 'Installing package to %s' "$newroot"
++if ! pacman -r "$newroot" -U "${pacman_args[@]}"; then
++  die 'Failed to install packages to %s'
++fi
++fi
++
++if (( build )); then
++if ! (( upgrade )); then
++msg 'Building packages and installing them to %s' "$newroot"
++if ! pacman -r "$newroot" -Syb "${pacman_args[@]}"; then
++  die 'Failed to build/install packages to %s'
++fi
++fi
++fi 
++
++if ! (( upgrade )); then
++if ! (( build )); then
+ msg 'Installing packages to %s' "$newroot"
+ if ! pacman -r "$newroot" -Sy "${pacman_args[@]}"; then
+-  die 'Failed to install packages to new root'
++  die 'Failed to install packages to %s'
++fi
++fi
+ fi
+ 
+ if (( copykeyring )); then

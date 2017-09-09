@@ -1,0 +1,25 @@
+pkgbase = arch-install-scripts_custom
+	pkgdesc = Scripts to aid in installing Arch Linux. With modified pacstrap, to include additional options.
+	pkgver = 17
+	pkgrel = 2
+	url = https://projects.archlinux.org/arch-install-scripts.git
+	arch = any
+	license = GPL
+	depends = bash
+	depends = coreutils
+	depends = pacman
+	depends = util-linux
+	provides = arch-install-scripts
+	provides = arch-install-scripts_custom
+	conflicts = arch-install-scripts_custom-git
+	conflicts = arch-install-scripts
+	source = https://sources.archlinux.org/other/arch-install-scripts/arch-install-scripts-17.tar.gz
+	source = https://sources.archlinux.org/other/arch-install-scripts/arch-install-scripts-17.tar.gz.sig
+	source = pacstrap.patch
+	validpgpkeys = 487EACC08557AD082088DABA1EB2638FF56C0C53
+	md5sums = 5d230b9b53c2374445d220f439db3471
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = arch-install-scripts_custom
+
