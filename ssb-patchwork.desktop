@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Patchwork
+Comment=A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)
+Exec=ssb-patchwork
+Icon=ssb-patchwork
+Terminal=false
+StartupNotify=false
+Categories=Application;
