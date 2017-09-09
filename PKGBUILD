@@ -1,8 +1,9 @@
 # Maintainer: Thomas Krug <t.krug@elektronenpumpe.de>
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
+# Maintainer: Cody Schafer <aur@codyps.com>
 
 pkgname=libsigrok4dsl
-pkgver=0.95
+pkgver=0.98
 pkgrel=1
 pkgdesc="Client software that supports the DSLogic DreamSourceLab logic analyzer"
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ depends=('libzip' 'libusb' 'libserialport' 'glib2')
 makedepends=('boost')
 conflicts=('libsigrok4dslogic')
 replaces=('libsigrok4dslogic')
-source=("git+https://github.com/DreamSourceLab/DSView.git#tag=0.95")
+source=("git+https://github.com/DreamSourceLab/DSView.git#tag=$pkgver")
 md5sums=('SKIP')
 
 prepare() {
