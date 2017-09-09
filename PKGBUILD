@@ -5,8 +5,8 @@
 # and add '--enable-libndi_newtek' to the configure options.
 
 pkgname=ffmpeg-full-git
-pkgver=3.4.r87188.gf3c0f34f53
-pkgrel=2
+pkgver=3.4.r87251.ga918f16f7c
+pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -68,7 +68,7 @@ build() {
     if [ "$CARCH" = 'x86_64' ] 
     then
         local _cuda='--enable-cuda'
-        local _cudasdk='--enable-cuda-sdk'
+        local _cudasdk='--disable-cuda-sdk'
         local _cuvid='--enable-cuvid'
         local _libnpp='--enable-libnpp'
         local _cflags='--extra-cflags=-I/opt/cuda/include'
