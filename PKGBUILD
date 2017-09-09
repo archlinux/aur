@@ -7,7 +7,7 @@ arch=(any)
 url="https://github.com/pts/pdfsizeopt"
 license=('GPL2')
 groups=()
-depends=("python2>=2.4" "ghostscript>=8.61" "sam2p" "tif22pnm")
+depends=("python2>=2.4" "ghostscript>=8.61" "sam2p" "tif22pnm" "advancecomp")
 provides=(pdfsizeopt)
 conflicts=(pdfsizeopt-svn)
 replaces=(pdfsizeopt-svn)
