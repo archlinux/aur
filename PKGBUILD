@@ -3,7 +3,7 @@
 
 pkgname=snapper
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('i686' 'x86_64')
 url="http://snapper.io"
@@ -12,10 +12,14 @@ depends=('btrfs-progs' 'libxml2' 'dbus' 'boost-libs' 'acl')
 makedepends=('boost' 'lvm2' 'libxslt' 'docbook-xsl' 'pam' 'git' 'systemd')
 optdepends=('pam: pam_snapper')
 backup=('etc/conf.d/snapper')
-source=("ftp://ftp.suse.com/pub/projects/$pkgname/$pkgname-$pkgver.tar.bz2")
+source=("ftp://ftp.suse.com/pub/projects/$pkgname/$pkgname-$pkgver.tar.bz2"
+        "iostream.patch::https://patch-diff.githubusercontent.com/raw/openSUSE/snapper/pull/355.patch")
+sha256sums=('8876b6fa946dc46df5dcbaf747bb11ac4c5a3418dd59c5ba09c47910cbad1835'
+            '20ed5678ff102b8d9ef3c11e38d0f83cc2214b3fca088613bba3154ee4c13bcd')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 -i "$srcdir/iostream.patch"
 
   # cron names
   sed -e 's@suse.de-snapper@snapper@g' -i scripts/Makefile.am
@@ -59,5 +63,3 @@ package() {
   install -Dm644 data/sysconfig.snapper \
     "$pkgdir"/etc/conf.d/snapper
 }
-
-sha256sums=('8876b6fa946dc46df5dcbaf747bb11ac4c5a3418dd59c5ba09c47910cbad1835')
