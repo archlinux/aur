@@ -4,13 +4,14 @@ pkgdesc="ROS - gazebo_ros_control."
 url='http://ros.org/wiki/gazebo_ros_control'
 
 pkgname='ros-kinetic-gazebo-ros-control'
-pkgver='2.5.8'
+pkgver='2.5.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-kinetic-controller-manager
+ros_makedepends=(ros-kinetic-gazebo-dev
+  ros-kinetic-controller-manager
   ros-kinetic-transmission-interface
   ros-kinetic-urdf
   ros-kinetic-pluginlib
@@ -22,8 +23,7 @@ ros_makedepends=(ros-kinetic-controller-manager
   ros-kinetic-joint-limits-interface
   ros-kinetic-hardware-interface)
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  gazebo)
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-kinetic-controller-manager
   ros-kinetic-gazebo-ros
@@ -36,8 +36,7 @@ ros_depends=(ros-kinetic-controller-manager
   ros-kinetic-angles
   ros-kinetic-joint-limits-interface
   ros-kinetic-hardware-interface)
-depends=(${ros_depends[@]}
-  gazebo)
+depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/gazebo_ros_control/${pkgver}-${_pkgver_patch}
@@ -48,7 +47,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-kinetic-gazebo_ros_control-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_ros_control/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6b24a363059f250a1a3ff35249fe3863975c3d6d36a5a50e944b9d778a322ac1')
+sha256sums=('b21fdb2d458208fc1d6a657b9dcd67f3f7481a469092ae6c403907a2b50ce53d')
 
 build() {
   # Use ROS environment variables
