@@ -1,6 +1,6 @@
 pkgbase = checkmails
 	pkgdesc = System tray unread mail checker using IMAP protocol
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://sourceforge.net/projects/checkmails
 	changelog = changelog
@@ -13,8 +13,8 @@ pkgbase = checkmails
 	depends = gettext
 	depends = desktop-file-utils
 	depends = libnotify
-	source = checkmails-1.1.4.tar.gz::https://sourceforge.net/projects/checkmails/files/1.1.4/checkmails-1.1.4.tar.gz/download
-	sha512sums = fb2c5094f995018d76d4d19dc1ae9a07dfd9105a6d99b59a9626cc4bb2564760b937465f2ad453321f2a32475ccd68fd1e0b1d2514d425b26c20c03805fee72e
+	source = checkmails-1.1.5.tar.gz::https://sourceforge.net/projects/checkmails/files/1.1.5/checkmails-1.1.5.tar.gz/download
+	sha512sums = 0473956a7823377927aa6efa6de553a74fc01a704e79cd6f26bb48305ab35f2a57008b8adfd4074061a9ee8b81c569ffe4909d378b1ca5c6ae89b2e8dfa01687
 
 pkgname = checkmails
 
