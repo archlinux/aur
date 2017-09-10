@@ -6,9 +6,10 @@ pkgdesc="Command line utility to use google services"
 arch=('any')
 url="https://github.com/vinitkumar/googlecl"
 license=('APACHE')
-depends=('python'
-         'python2'
-		 'python2-oauth2client')
+depends=('python2'
+		 'python2-oauth2client'
+		 'python2-gdata'
+		 'python2-httplib2')
 makedepends=('git')
 provides=('googlecl')
 conflicts=('googlecl')
