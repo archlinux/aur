@@ -1,6 +1,6 @@
 pkgbase = tigcap
 	pkgdesc = A powerful screenshot tool
-	pkgver = 0.0.3
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/theimgguru/tigcap/
 	arch = x86_64
@@ -8,10 +8,11 @@ pkgbase = tigcap
 	license = GPL
 	makedepends = npm
 	makedepends = nodejs
+	makedepends = git
 	depends = maim
 	optdepends = libnotify: Notification support
-	source = https://github.com/theimgguru/tigcap/archive/master.tar.gz
-	md5sums = afc09fcd821d11ae70556366bb6847e9
+	source = git+https://github.com/theimgguru/tigcap.git
+	sha1sums = SKIP
 
 pkgname = tigcap
 
