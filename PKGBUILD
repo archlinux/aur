@@ -3,23 +3,22 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=repoctl-git
-pkgver=v0.16
-pkgrel=2
+pkgver=0.16.0.gc8fd238
+pkgrel=1
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories"
 arch=('i686' 'x86_64')
 url="https://github.com/cassava/repoctl"
 license=('MIT')
 depends=('pacman')
-makedepends=('go' 'xz')
+makedepends=('go')
 conflicts=('repoctl')
 provides=('repoctl')
-options=('!strip')
 source=("$pkgname::git+https://github.com/cassava/repoctl.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags | sed 's/-/./g'
+  git describe --tags --long | sed 's/^v//; s/-/./g'
 }
 
 prepare() {
