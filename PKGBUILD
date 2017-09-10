@@ -6,6 +6,8 @@ pkgdesc="Use howm commands, operators and set configuration values through a UNI
 url="https://github.com/HarveyHunt/cottage"
 license=('GPL')
 arch=('i686' 'x86_64')
+conflicts=('cottage')
+provides=('cottage')
 source=("$pkgname::git+https://github.com/HarveyHunt/cottage")
 sha256sums=('SKIP')
 
