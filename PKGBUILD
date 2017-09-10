@@ -3,7 +3,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=repoctl-git
-pkgver=0.16.0.gc8fd238
+pkgver=0.16.r0.gc8fd238
 pkgrel=1
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags --long | sed 's/^v//; s/-/./g'
+  git describe --tags --long | sed 's/^v//; s/-/.r/; s/-/./g'
 }
 
 prepare() {
