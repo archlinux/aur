@@ -3,7 +3,7 @@
 
 pkgname=vcmi
 pkgver=0.99
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64')
 url="http://vcmi.eu"
@@ -25,6 +25,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='lib' \
     -DCMAKE_SKIP_RPATH='FALSE' \
+    -DFORCE_BUNDLED_FL='ON' \
     -DCMAKE_BUILD_TYPE='Release'
   make
 }
