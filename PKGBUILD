@@ -5,14 +5,14 @@
 #
 pkgname=cdesktopenv
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="CDE - Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
 arch=('i686' 'x86_64') # Some parts of CDE are not stable on x86_64 yet.
 license=('LGPL2')
 options=(!strip !zipman)
 install="cdesktopenv.install"
-depends=(openmotif xbitmaps rpcbind mksh ncurses libxss xbitmaps)
+depends=(openmotif xbitmaps rpcbind mksh ncurses libxss xbitmaps libxinerama)
 makedepends=(tcl ncompress bison)
 optdepends=('xorg-fonts-100dpi: additional fonts'
             'cups: for printing support'
