@@ -47,11 +47,15 @@ pkgver() {
   git describe --long | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
 }
 
+prepare() {
+  cd mc
+  ./autogen.sh
+}
+
 build() {
   export PYTHON=/usr/bin/python2
   cd mc
 
-  ./autogen.sh
   ./configure \
     --prefix=/usr \
     --libexecdir=/usr/lib \
@@ -59,13 +63,12 @@ build() {
     --enable-vfs-smb \
     --with-x \
     --enable-aspell
-
   make
 }
 
 package() {
   cd mc
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 ft=sh et:
