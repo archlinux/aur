@@ -23,8 +23,21 @@ pkgver() {
     | sed 's/v//'
 }
 
+_query_jobs() {
+  echo "${MAKEFLAGS}" \
+    | grep -Eo "\-j.?[0-9]+"
+}
+
+_set_jobs() {
+  echo $MAKEFLAGS \
+    | sed "s/$(_query_jobs)/-j 1/"
+}
+
 build() {
   cd "${_gitname}"
+  
+  # Override makeflags:
+  local MAKEFLAGS=$(_set_jobs)
 
   make
 }
