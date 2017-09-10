@@ -1,23 +1,25 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
 pkgname=ensenso-sdk
 pkgdesc="Ensenso SDK and tools"
-pkgver=1.3.180
-pkgrel=2
+pkgver=2.0.147
+pkgrel=1
 arch=(x86_64)
 license=(custom)
 url='http://ensenso.com'
-depends=('glibc' 'glu' 'libsm')
+depends=('glibc' 'glu' 'libsm' 'codemeter-runtime')
 optdepends=('ueyed: for capturing from live cameras')
+install="$pkgname.install"
+
+# Libraries are encrypted, strip seems to break them :/
+options=('!strip')
 
 source=(
-	"http://dl.ensenso.de/public/Software/EnsensoSDK/EnsensoSDK-$pkgver-x64.tar.bz2"
+	"$pkgname-$pkgver.tar.bz2::https://download.ensenso.com/s/ensensosdk/download?files=ensenso-sdk-$pkgver-x64.tar.bz2"
 )
 
-sha512sums=(
-	'b9013f6bf4a0b6ee6736ccc37c124d08ca34490b12537662d67b2210172e61414ef314e13e2246fe90814fbab04f285f7c006d4d78aa984a3fce26571d9af223'
-)
+sha512sums=('b260785514850ed59609af3f3bc88747f86cbb47c9d6446d357fadf64e30ceab89bee5c3202a11cbe3bc97580fdf11d09e589880f3a60f53c3512944fd5e3018')
 
-__install_dir() {
+_install_dir() {
 	local source_dir="$1"
 	local target_dir="$2"
 	local mode="$3"
@@ -27,18 +29,17 @@ __install_dir() {
 	done
 }
 
-_revision='676119d'
-
 package() {
-	cd "$srcdir"
+	local dir="$srcdir/ensenso-sdk-$pkgver-x64-b05786e"
 
-	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/usr/lib"                            "$pkgdir/usr/lib"                     755
-	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/usr/bin"                            "$pkgdir/usr/bin"                     755
-	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/opt/ensenso/manual/html"            "$pkgdir/usr/share/doc/ensenso"       644
-	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/opt/ensenso/development/c/include"  "$pkgdir/usr/include/ensenso"         644
-	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/opt/ensenso/development/examples"   "$pkgdir/usr/share/ensenso/examples"  644
-	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/opt/ensenso/development/halcon"     "$pkgdir/usr/share/ensenso/halcon"    644
-	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/opt/ensenso/development/halcon"     "$pkgdir/usr/share/ensenso/halcon"    644
+	_install_dir  "$dir/usr/lib"                            "$pkgdir/usr/lib"                      755
+	_install_dir  "$dir/usr/bin"                            "$pkgdir/usr/bin"                      755
+	_install_dir  "$dir/opt/ensenso/manual/html"            "$pkgdir/usr/share/doc/$pkgname"       644
+	_install_dir  "$dir/opt/ensenso/development/c/include"  "$pkgdir/usr/include/ensenso"          644
+	_install_dir  "$dir/opt/ensenso/development/examples"   "$pkgdir/usr/share/$pkgname/examples"  644
+	_install_dir  "$dir/opt/ensenso/development/halcon"     "$pkgdir/usr/share/$pkgname/halcon"    644
+	_install_dir  "$dir/opt/ensenso/license"                "$pkgdir/usr/share/$pkgname/license"   644
 
-	install -D "EnsensoSDK-$pkgver-x64-$_revision/opt/ensenso/eula.txt" "$pkgdir/usr/share/licenses/ensenso-sdk/LICENSE"
+	install -D "$dir/opt/ensenso/eula.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D "$dir/Readme"               "$pkgdir/usr/share/doc/ensenso/README"
 }
