@@ -3,7 +3,7 @@
 pkgbase=iortcw-git
 pkgname=('iortcw-git' 'iortcw-rend2-git')
 pkgname=iortcw-git
-pkgver=1.51b.r6.ge422b432
+pkgver=1.51b.r10.g0f779e8d
 pkgrel=1
 pkgdesc="Merge of ioquake3 features and fixes into Return to Castle Wolfenstein"
 arch=('i686' 'x86_64')
@@ -33,7 +33,6 @@ source=("git+https://github.com/iortcw/iortcw.git"
         'iortcw-mp.desktop'
         'iortcw-sp-rend2.desktop'
         'iortcw-mp-rend2.desktop'
-	'iortcw.png'
 )
 
 pkgver() {
@@ -126,12 +125,13 @@ package_iortcw-git() {
         $pkgdir/usr/share/applications/iortcw-mp.desktop
 
   # Install Icon File (Single Player)
-    install -D -m 644 $srcdir/iortcw.png \
-        $pkgdir/usr/share/pixmaps/iortcw.png
+    install -D -m 644 $srcdir/iortcw/SP/misc/iortcw.svg \
+        $pkgdir/usr/share/icons/hicolor/scalable/apps/iortcw.svg
 }
 
 package_iortcw-rend2-git() {
 pkgdesc="Experimental render for Return to Castle Wolfenstein"
+depends=('iortcw-git')
 
 # Modify Launcher Scripts
     if [ "$CARCH" = "x86_64" ]; then
@@ -175,8 +175,7 @@ md5sums=('SKIP'
          '1cb1d7fda29d223a57003d097a1a4a31'
          'e400094c42766cb2b130d4d95bbe1caf'
          'bbc343567fa9a2f0101bdbd07cc9d32a'
-         '9effb4fdb87bd0c25a94aa0b9d754340'
-         '33139402cafbd9ab950880d3f4fa9d9a'
-         '32a59e180113a8ad6ebc0fc5dc5fec2b'
-         'f9f8c38099d4c52f4ea3786821ba010f'
-         'bf26dc4c10d4bbfbd0c7a052a00c3cdf')
+         '49881f74d27acfc4720d0dfa758abdb6'
+         'e758b92d89b593dab97dd7e8cb819124'
+         'ca91389b96827ae71ce3e3831a1d9a80'
+         'a3a81101c2f39d728febd3323eb482fc')

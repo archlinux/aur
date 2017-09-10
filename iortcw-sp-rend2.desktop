@@ -5,7 +5,7 @@ Type=Application
 Name=ioRTCW SP Rend2
 Comment=Return To Castle Wolfenstein with Rend2 (Single Player)
 Exec=/usr/bin/iortcw-sp-rend2
-Icon=/usr/share/pixmaps/iortcw.png
+Icon=iortcw
 Terminal=false
 Categories=Game
 

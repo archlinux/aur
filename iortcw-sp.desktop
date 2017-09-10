@@ -5,7 +5,7 @@ Type=Application
 Name=ioRTCW SP
 Comment=Return To Castle Wolfenstein (Single Player)
 Exec=/usr/bin/iortcw-sp
-Icon=/usr/share/pixmaps/iortcw.png
+Icon=iortcw
 Terminal=false
 Categories=Game
 

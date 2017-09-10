@@ -5,7 +5,7 @@ Type=Application
 Name=ioRTCW MP
 Comment=Return To Castle Wolfenstein (Multi Player)
 Exec=/usr/bin/iortcw-mp
-Icon=/usr/share/pixmaps/iortcw.png
+Icon=iortcw
 Terminal=false
 Categories=Game
 
