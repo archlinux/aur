@@ -2,21 +2,21 @@
 # Contributor: James An <james@jamesan.ca>
 
 _pkgname=darling-dmg
-_github_addr=darlinghq/darling-dmg
 pkgname=$_pkgname-git
-pkgver=1.0.4.r1.gb7ce87b
+pkgver=1.0.4.r15.g4e3a2ed
 pkgrel=1
 epoch=1
 pkgdesc="FUSE module for .dmg files (containing an HFS+ filesystem)"
 arch=('i686' 'x86_64')
 license=('GPL3')
-url='http://www.darlinghq.org'
+url='https://www.darlinghq.org'
 depends=('bzip2' 'fuse' 'icu' 'libxml2' 'openssl' 'zlib')
 # boost is used only in check() but the build step requires it to build a test executable
 makedepends=('cmake' 'git' 'boost')
-source=("$_pkgname"::"git+https://github.com/$_github_addr")
+source=("git+https://github.com/darlinghq/darling-dmg")
 sha256sums=('SKIP')
-conflicts=('darling-git')
+conflicts=('darling-git' "$_pkgname")
+provides=("$_pkgname=$pkgver")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
