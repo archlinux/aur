@@ -1,5 +1,6 @@
-# Maintainer: Carlos Pita <carlosjosepita@gmail.com>
-# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Alad Wenter <alad@mailbox.org>
+# Contributor: Carlos Pita <carlosjosepita@gmail.com>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
