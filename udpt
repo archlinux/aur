@@ -1,0 +1,11 @@
+# Type     Name     Full path to shared object file
+# ----     ----     -------------------------------
+gxdisplay  Cairo    /usr/lib/grads/libgxdCairo.so
+gxdisplay  X11      /usr/lib/grads/libgxdX11.so
+gxdisplay  gxdummy  /usr/lib/grads/libgxdummy.so
+*
+gxprint    Cairo    /usr/lib/grads/libgxpCairo.so
+gxprint    GD       /usr/lib/grads/libgxpGD.so
+gxprint    gxdummy  /usr/lib/grads/libgxdummy.so
+*
+#function   dothis   /home/username/grads/udp/dothis.so
