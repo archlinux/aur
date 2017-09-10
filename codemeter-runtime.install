@@ -1,0 +1,15 @@
+post_install() {
+	local chown_files=(
+		'/etc/wibu/CodeMeter/Server.ini'
+		'/var/lib/CodeMeter'
+		'/var/log/CodeMeter'
+		'/var/spool/ctmp'
+	)
+
+	systemd-sysusers
+	chown -R codemeter "${chown_files[@]}"
+}
+
+post_upgrade() {
+	post_install
+}

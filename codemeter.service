@@ -1,0 +1,11 @@
+[Unit]
+Description=CodeMeter RunTime Server
+After=network.target
+
+[Service]
+User=codemeter
+ExecStart=/usr/bin/fakeroot /usr/bin/CodeMeterLin -v
+ExecReload=/bin/kill -USR1 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
