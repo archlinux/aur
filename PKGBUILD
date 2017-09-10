@@ -16,8 +16,7 @@ makedepends=('cmake' 'ros-build-tools'
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  gazebo
-  libgazebo7-dev)
+  gazebo)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/gazebo_dev/${pkgver}-${_pkgver_patch}
