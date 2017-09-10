@@ -4,7 +4,7 @@ pkgdesc="ROS - Hardware Interface base class."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-kinetic-hardware-interface'
-pkgver='0.11.3'
+pkgver='0.12.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_control-release-release-kinetic-hardware_interface-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/kinetic/hardware_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b06c4cba5c788e5c3e4075740d8102e8e84580c8bb5055fd218682481b0c91d2')
+sha256sums=('cfadf6dc45c88c320757a07026d48ae1d2debb96a0c1915f7ee67b3702b99df3')
 
 build() {
   # Use ROS environment variables
