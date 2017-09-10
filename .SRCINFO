@@ -1,6 +1,6 @@
 pkgbase = adwm-git
 	pkgdesc = Advanced dynamic window manager for X
-	pkgver = 0.6.8.r0.gb058111
+	pkgver = 0.6.9.r1.gd5ac490
 	pkgrel = 1
 	url = http://github.com/bbidulock/adwm
 	arch = i686
