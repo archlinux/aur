@@ -17,15 +17,15 @@ source=("rtcwcoop::git+https://github.com/rtcwcoop/rtcwcoop.git"
 	'rtcwcoop.desktop')
 
 pkgver() {
-  cd  "$srcdir/$pkgname"
-  git log -1 --format="%cd" --date=short | sed 's|-||g'
+  cd "$srcdir/rtcwcoop"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 build() {
   if [ ! -f /opt/wolf-data/pak0.pk3 ]; then
    echo "pak0.pk3 doesn't exist. The game will not start"
-   echo "Follow the iortcw-data package instructions!"
+   echo "Follow the wolf-data package instructions!"
    sleep 5
   fi
 }
