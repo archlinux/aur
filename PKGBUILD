@@ -6,10 +6,10 @@
 
 pkgname=libpulse-nosystemd
 pkgdesc="Client library for PulseAudio"
-pkgver=10.0
+pkgver=11.0
 pkgrel=1
 arch=(i686 x86_64)
-url="http://www.freedesktop.org/wiki/Software/PulseAudio"
+url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(LGPL)
 depends=(dbus libasyncns libcap libxtst libsm libsndfile)
 makedepends=(attr libtool rtkit speexdsp tdb intltool orc gtk3 check libsoxr)
@@ -18,11 +18,9 @@ conflicts=('libpulse')
 replaces=('libpulse')
 backup=(etc/pulse/client.conf)
 options=(!emptydirs)
-_commit=84952e6a092b6a0c5b153bd7a4f6e490810681c8  # tags/v10.0^0
-source=("git+https://anongit.freedesktop.org/git/pulseaudio/pulseaudio#commit=$_commit"
-        padsp-lib32.patch)
-sha256sums=('SKIP'
-            '7832fc59df76538ff10aedd297c03cb7ff117235da8bfad26082994bb5b84332')
+_commit=8db681606cd8cbb8cee67529937deaa9e4558db9  # tags/v11.0^0
+source=("git+https://anongit.freedesktop.org/git/pulseaudio/pulseaudio#commit=$_commit")
+sha256sums=('SKIP')
 
 prepare() {
   cd pulseaudio
@@ -37,6 +35,7 @@ build() {
     --libexecdir=/usr/lib \
     --localstatedir=/var \
     --with-udev-rules-dir=/usr/lib/udev/rules.d \
+    --with-pulsedsp-location='/usr/\\$$LIB/pulseaudio' \
     --with-database=tdb \
     --disable-tcpwrap \
     --disable-bluez4 \
@@ -84,7 +83,4 @@ package() {
   mv {temp/,}usr/share/vala
 
   rm -rf temp
-
-  # Fix working padsp with 32-bit applications
-  patch -Np1 -i "$srcdir/padsp-lib32.patch"
 }
