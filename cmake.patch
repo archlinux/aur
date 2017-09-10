@@ -1,0 +1,10 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index be4299e..390eddf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,4 +7,4 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+ 
+ find_package(KF5Plasma REQUIRED)
+ 
+-plasma_install_package(package org.kde.bitcoin)
++plasma_install_package(package org.kde.plasma.serverstatus)
