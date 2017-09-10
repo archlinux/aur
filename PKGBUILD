@@ -1,8 +1,8 @@
-# Maintainer: Alad Wenter
+# Maintainer: Alad Wenter <alad@mailbox.org>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 pkgname=jshon-git
-pkgver=r84.783d3bf
-pkgrel=2
+pkgver=20131105.r21.g783d3bf
+pkgrel=1
 pkgdesc="A json parser for the shell."
 arch=('i686' 'x86_64')
 url="http://kmkeen.com/jshon/"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/-/.r/; s/-/./'
 }
 
 prepare() {
