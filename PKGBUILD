@@ -19,9 +19,16 @@ sha1sums=('0ec83b563aea0118bb5a82c1e3295627046bd6b4'
           '7a3f41f2c37fa5f5c0daf0e91619b5a461aa8f5a')
 
 package() {
-  # icon for .desktop file
+  # install .desktop files
+  install -Dm644 tes3mp-client.desktop "$pkgdir/usr/share/applications/tes3mp-client.desktop"
+  install -Dm644 tes3mp-server.desktop "$pkgdir/usr/share/applications/tes3mp-server.desktop"
+  install -Dm644 tes3mp-browser.desktop "$pkgdir/usr/share/applications/tes3mp-browser.desktop"
+
+
+  # icon for .desktop files
   install -Dm644 tes3mp_logo.png "$pkgdir/usr/share/pixmaps/tes3mp.png"
-  install -d $pkgdir/opt/$pkgname
+
+  # main
   cd "${srcdir}"
   mv TES3MP $pkgdir/opt/$pkgname
 }
