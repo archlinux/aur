@@ -5,7 +5,7 @@ pkgrel=3
 pkgdesc='helper tools for the arch user repository'
 arch=('any')
 url='https://github.com/AladW/aurutils'
-license=('ISC')
+license=('custom:ISC')
 depends=('pacman>=5' 'git' 'jq' 'pacutils>=0.4')
 makedepends=('git')
 optdepends=('devtools: systemd-nspawn support'
