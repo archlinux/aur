@@ -4,7 +4,7 @@ pkgdesc="ROS - Interface base class for controllers."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-kinetic-controller-interface'
-pkgver='0.11.3'
+pkgver='0.12.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_control-release-release-kinetic-controller_interface-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/kinetic/controller_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a3f4fbf7d4a68bb21c57c1799e0d6172ebde2bbad848bed98ca078b32cde7661')
+sha256sums=('f279e134529255f8b83ea7e7050ca9b19719cda89c9573cc392c88b5f6e99452')
 
 build() {
   # Use ROS environment variables
