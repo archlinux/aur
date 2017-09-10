@@ -65,10 +65,10 @@ _kyber_disable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.13
+pkgver=4.13.1
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -119,7 +119,7 @@ source=(# mainline kernel patches
 sha256sums=(# mainline kernel patches
             '2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '93fecbc71fffd973abe38135b6650e3ea5c1f5f4378712fdd73dcf0f7c36535c'
+            '6664b089bdb6513b006bfe65c6fee45d38ddfe17f6ccc87a720e831d4c215b4d'
             'SKIP'
             # gcc cpu optimizatons from graysky and ck forked by sir_lucjan
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
@@ -162,12 +162,13 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   ### Add upstream patch
-  #msg "Add upstream patch"
-  #patch -Np1 -i "${srcdir}/patch-${pkgver}"
+  msg "Add upstream patch"
+  patch -Np1 -i "${srcdir}/patch-${pkgver}"
 
   ### Patch source with BFQ-MQ
   msg "Fix naming schema in BFQ-MQ patch"
-  sed -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
+  sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = 1|g" \
+      -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
       -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
 
   msg "-> Apply BFQ-MQ patch"
