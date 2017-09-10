@@ -22,8 +22,6 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  rm src/google
+  cd "$srcdir"
   python2 setup.py install --prefix=/usr --root=$pkgdir
-  install -Dm644 docs/man/google.1 "$pkgdir/usr/share/man/man1/google.1"
 }
