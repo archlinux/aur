@@ -4,7 +4,7 @@ pkgdesc="ROS - Contains a set of tools that can be used from a hard realtime thr
 url='http://ros.org/wiki/realtime_tools'
 
 pkgname='ros-kinetic-realtime-tools'
-pkgver='1.9.2'
+pkgver='1.10.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="realtime_tools-release-release-kinetic-realtime_tools-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/realtime_tools-release/archive/release/kinetic/realtime_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('63d7bc3527da3177db2220d7d6a3a68386f0c3f96252ad5c49a629cf5b36e036')
+sha256sums=('0bebf9fba3a60ceb36b72d5db206a8220e3f175d6d9fba159de5297058c05347')
 
 build() {
   # Use ROS environment variables
