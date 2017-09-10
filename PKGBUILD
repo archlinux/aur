@@ -3,7 +3,7 @@
 
 _target=powerpc-wrs-vxworks
 pkgname=${_target}-gcc
-pkgver=7.1.0
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('i686' 'x86_64')
@@ -14,10 +14,10 @@ makedepends=('libmpc' 'wget')
 conflicts=('gcc-powerpc-wrs-vxworks')
 provides=('gcc-powerpc-wrs-vxworks')
 options=('!strip' '!libtool' '!zipman' '!buildflags' '!makeflags' 'staticlibs')
-source=(http://ftp.gnu.org/gnu/gcc/gcc-"${pkgver}"/gcc-"${pkgver}".tar.bz2
+source=(http://ftp.gnu.org/gnu/gcc/gcc-"${pkgver}"/gcc-"${pkgver}".tar.xz
         vxworks-pthread.patch
         pointer-cast.patch)
-sha512sums=('b5d952be9a10f0e0926bb2868877d10544039d6d2f35ba0a08f51231dd622a007650764a03e173194701467547789ad7d2d9cbc10adcdf118d619cdedbd14aec'
+sha512sums=('f853cd6530b4055d8d8289da74687cb4c6d5f363598d386332d31852b581bac76c3adb7d61889edec3b779f63d8646f0122840f12965ce4a4389ba535dbbb6e1'
             '5ba8c2757a1970df26bc1c656a5c315c32c62ea3e1f2e17d48cb77855a662b7770e581d5319d0d55bed270bd4028f7ce308c88d7d96c28806be484165b48e689'
             'e1e7bec1e821ec7cc14bbab97bcce53e9a4932d238f530597dc5a957c2eac1773817b820c3e863119e2807b8b9ece364fbc4b1cf58c9ecbaf67ac6f068978a36')
 
