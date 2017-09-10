@@ -2,13 +2,13 @@
 
 _pkgname=fabric
 pkgname=hyperledger-${_pkgname}
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability"
 arch=(x86_64)
 url="https://github.com/hyperledger/fabric"
 license=('APACHE')
-groups=('hyperledger-fabric')
+groups=('hyperledger')
 depends=('go' 'docker')
 makedepends=('git')
 install=$pkgname.install
@@ -39,4 +39,4 @@ package() {
 
 }
 
-md5sums=('95ce4d747879033238155691b634fbe0')
+md5sums=('c1b9c961a9ccc339c9d205b58ebe42c2')
