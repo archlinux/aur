@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=v2.0.10.r58.gdffe7581
+pkgver=v2.0.11.r0.g2be459f0
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (Latest devel version)" 
 arch=(any)
@@ -20,6 +20,7 @@ options=('!strip')
 
 build(){
   cd $srcdir/${_pkgname}
+#  npm install --production
   npm install
   npm run build
   npm run sass:build process-index --parallel sass:watch index:watch browsersync
@@ -43,10 +44,10 @@ msg2 "Installing icons and desktop menu entry"
 }
 
 pkgver() {
-  cd ${_pkgname}
+  cd $srcdir/${_pkgname}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 md5sums=('SKIP'
-         'd7559b6a9a846fb6cad31dd69fe6f814'
+         'da45494abaae2de78bc1f7253facb653'
          'c73725d3737122cca0197da8fedee48f')
