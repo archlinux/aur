@@ -4,7 +4,7 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='https://arrayfire.com'
 pkgver=3.5.0
 arch=('x86_64')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'glfw' 'glew' 'boost' 'git' 'python' 'gcc5' 'ocl-icd')
 makedepends_x86_64=('cuda' 'nvidia-utils')
@@ -12,6 +12,7 @@ depends=('cblas' 'fftw' 'boost-libs' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew'
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
             'libclc: Required for using OpenCL backend')
+options=('!buildflags')
 source=("http://arrayfire.com/arrayfire_source/arrayfire-full-${pkgver}.tar.bz2")
 sha512sums=('cf33ee9312724849bec4ed9573dfe9a9504520b7a5e8b45b9e022beab6a7cf14f00b978cb954bdd498dd70626913c40a72277e29b6b792da29cf5daf5c04e1d7')
 
@@ -33,6 +34,7 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DUSE_SYSTEM_FORGE=ON \
       -DCOMPUTES_DETECTED_LIST="30;32;35;50;52;53;60;61" \
+      -DCUDA_NVCC_FLAGS="-D_BITS_FLOATN_H" \
       -DBUILD_CPU=ON \
       -DBUILD_OPENCL=ON \
       -DBUILD_NONFREE=ON \
