@@ -1,16 +1,18 @@
 pkgbase = ttf-fritz
 	pkgdesc = Fritz TTF typeface
-	pkgver = 20150207
-	pkgrel = 2
-	url = http://www.webpagefonts.com/
+	pkgver = 20150506
+	pkgrel = 1
+	url = https://fontsup.com/family/fritz.html
 	arch = any
 	license = custom
-	source = Fritz-Regular.ttf::http://www.webpagepublicity.com/free-fonts/f/Fritz%20Regular.ttf
-	source = Fritz-Bold.ttf::http://www.webpagepublicity.com/free-fonts/f/Fritz%20Bold.ttf
-	source = Fritz-Quad.ttf::http://www.webpagepublicity.com/free-fonts/f/Fritz-Quad.ttf
-	sha256sums = 6eee8ff4f43262be46e2e44928ce23e54716ab8ec7c8ed3458f193a40334ede1
-	sha256sums = 8f001c0e2db4f441ea8af55f9c54e2d4386fc8ea758014cd91cebea651aa7cc0
-	sha256sums = d89f7dec62cef1cb9fa85fb8013afc5aa150d554cf48a1fe2e39938ee794750c
+	source = Fritz-Regular.ttf::https://fontsup.com/download/44741.html
+	source = Fritz-Bold.ttf::https://fontsup.com/download/44737.html
+	source = Fritz-Italic.ttf::https://fontsup.com/download/44755.html
+	source = Fritz-Bold-Italic.ttf::https://fontsup.com/download/44754.html
+	sha256sums = ccde794adb7465cc6567bc055b4ba40afb9442a6dcbd23853f20940be562aa57
+	sha256sums = 9f045f1054a41a1dae0549ced0806f165d70fa5a3e17e1d125cc5f1efd4745f8
+	sha256sums = d900e54dbee24298f73a6a861a3c197df7f7035a1370b313f5f26251cdc4500e
+	sha256sums = 69c9b8e188c7980aed2e06a38d229d25c1a5888571279f54e2e6be16172283cd
 
 pkgname = ttf-fritz
 
