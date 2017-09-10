@@ -1,0 +1,14 @@
+pkgbase = cura-resources-fabtotum-git
+	pkgdesc = FabTotum resources for Cura 2.x
+	pkgver = r27.c4b13cd
+	pkgrel = 1
+	url = https://github.com/FABtotum/FAB_Configs
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = cura
+	source = git+https://github.com/FABtotum/FAB_Configs.git
+	md5sums = SKIP
+
+pkgname = cura-resources-fabtotum-git
+
