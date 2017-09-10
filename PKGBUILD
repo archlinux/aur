@@ -1,7 +1,7 @@
 # Maintainer: Artem Savkov <artem.savkov@gmail.com>
 
 pkgname=bitlbee-discord-git
-pkgver=151.0f0485e
+pkgver=173.fcb733f
 pkgrel=1
 pkgdesc="Bitlbee plugin for Discord"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -20,7 +20,9 @@ pkgver() {
 build() {
     cd "bitlbee-discord"
     ./autogen.sh
-    ./configure
+    # TODO: remove --with-bdatadir once a version of bitlbee with "ad66dcd6 Add
+    # datadir to pkgconfig file and config.h" is released
+    ./configure --with-bdatadir=/usr/share/bitlbee
     make
 }
 
