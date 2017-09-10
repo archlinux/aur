@@ -1,4 +1,3 @@
-
 # Maintainer: Alad Wenter <https://github.com/AladW>
 pkgname=aurutils-git
 pkgver=1.5.3.r170.g19a5ed9
@@ -6,7 +5,7 @@ pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 url='https://github.com/AladW/aurutils'
 arch=('any')
-license=('ISC')
+license=('custom:ISC')
 source=('git+https://github.com/AladW/aurutils')
 sha256sums=('SKIP')
 conflicts=('aurutils')
