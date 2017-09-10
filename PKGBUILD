@@ -2,7 +2,7 @@
 
 pkgname=iortcw-data
 pkgver=1.51b
-pkgrel=1
+pkgrel=2
 pkgdesc="Return to Castle Wolfenstein Single Player pk3s files (shared use)"
 arch=('any')
 url="ftp://ftp.internat.freebsd.org/pub/FreeBSD/distfiles/"
@@ -20,11 +20,6 @@ package() {
   # Move Data to Package Directory
     mkdir -p $pkgdir/opt/iortcw-data
     cp -r * $pkgdir/opt/iortcw-data/
-
-  # Symlinking content from wolf-data package
-  ln -s -r /opt/wolf-data/sp_pak2.pk3	$pkgdir/opt/iortcw-data/
-  ln -s -r /opt/wolf-data/mp_pak1.pk3   $pkgdir/opt/iortcw-data/
-  ln -s -r /opt/wolf-data/mp_pak2.pk3   $pkgdir/opt/iortcw-data/
 }
 
 md5sums=('291a37caa9d65d0b81f767918b76fa56')
