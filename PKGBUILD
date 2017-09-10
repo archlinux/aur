@@ -4,7 +4,7 @@ pkgdesc="ROS - The controller manager."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-kinetic-controller-manager'
-pkgver='0.11.3'
+pkgver='0.12.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_control-release-release-kinetic-controller_manager-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/kinetic/controller_manager/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('559f97564dcbe60aee38f3ad96a4bb9930b7102e1415e6108d33ebb21c7e2cf6')
+sha256sums=('95f3b35853d7b71631f06a0865065cb4f44db3fafdb905ad2a83b5e2ba61ae1d')
 
 build() {
   # Use ROS environment variables
