@@ -18,7 +18,7 @@ pkgbase = gammaray
 	depends = qt5-declarative
 	depends = qt5-location
 	source = https://github.com/KDAB/GammaRay/archive/v2.8.0.tar.gz
-	md5sums = afbbb43efbe242a599933da3c7bf516c 
+	md5sums = bb3fe9c2d514a209f38d58f12cdf8702
 
 pkgname = gammaray
 
