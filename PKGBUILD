@@ -1,7 +1,7 @@
 pkgname=libgwavi-git
 pkgver=r46.ac72de4
 pkgrel=1
-pkgdesc=""
+pkgdesc="libgwavi is a tiny C library aimed at creating AVI files"
 arch=('x86_64' 'i686')
 url="https://github.com/Rolinh/libgwavi"
 license=('BSD')
@@ -9,10 +9,6 @@ depends=()
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
 source=('libgwavi::git+https://github.com/Rolinh/libgwavi')
 md5sums=('SKIP')
 
