@@ -12,7 +12,7 @@ pkgdesc="Open source video to GIF maker that allows overlaid text."
 url="https://github.com/lettier/gifcurry"
 license=("Apache")
 arch=("i686" "x86_64")
-makedepends=("ghc=8.0.2-3" "cabal-install")
+makedepends=("ghc-static=8.0.2-3" "cabal-install")
 depends=("gtk3")
 options=("strip" "staticlibs")
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${_ver}/${_hkgname}-${_ver}.tar.gz")

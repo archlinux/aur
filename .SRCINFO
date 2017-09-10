@@ -6,7 +6,7 @@ pkgbase = gifcurry
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = ghc=8.0.2-3
+	makedepends = ghc-static=8.0.2-3
 	makedepends = cabal-install
 	depends = gtk3
 	options = strip
