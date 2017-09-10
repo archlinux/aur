@@ -16,7 +16,6 @@ makedepends=('git')
 optdepends=('bash-completion: for tab completion')
 provides=('sh' 'bash=4.4')
 conflicts=('bash')
-install=bash.install
 source=('git+https://git.savannah.gnu.org/git/bash.git#branch=devel'
         'dot.bashrc'
         'dot.bash_profile'
@@ -27,7 +26,7 @@ md5sums=('SKIP'
          '027d6bd8f5f6a06b75bb7698cb478089'
          '2902e0fee7a9168f3a4fd2ccd60ff047'
          '42f4400ed2314bd7519c020d0187edc5'
-         '561949793177116b7be29a07c385ba8b'
+         'd8f3f334e72c0e30032eae1a1229aef1'
          '472f536d7c9e8250dc4568ec4cfaf294')
 
 pkgver() {
@@ -36,13 +35,16 @@ pkgver() {
 }
 
 build() {
-  cd bash  
+  cd bash
   _bashconfig=(-DDEFAULT_PATH_VALUE=\'\"/usr/local/sbin:/usr/local/bin:/usr/bin\"\'
                -DSTANDARD_UTILS_PATH=\'\"/usr/bin\"\'
                -DSYS_BASHRC=\'\"/etc/bash.bashrc\"\'
-               -DSYS_BASH_LOGOUT=\'\"/etc/bash.bash_logout\"\')
+               -DSYS_BASH_LOGOUT=\'\"/etc/bash.bash_logout\"\'
+               -DNON_INTERACTIVE_LOGIN_SHELLS)
   export CFLAGS="${CFLAGS} ${_bashconfig[@]}"
 
+  # Note: This package does not use the system readline, as it depends on 
+  # a development version which is usually not ABI-compatible.
   ./configure --prefix=/usr --with-curses --enable-readline \
               --without-bash-malloc
   make
