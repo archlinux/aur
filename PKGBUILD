@@ -1,22 +1,17 @@
-# $Id: pkgbuild-mode.el,v 1.23 2007/10/20 16:02:14 juergen Exp $
-# Maintainer:  Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
-
+# Maintainer:  Alad Wenter <alad@mailbox.org>
 pkgname=cottage-git
-pkgver=79f4476
+pkgver=0.3.r0.g79f4476
 pkgrel=1
-
 pkgdesc="Use howm commands, operators and set configuration values through a UNIX socket."
 url="https://github.com/HarveyHunt/cottage"
 license=('GPL')
 arch=('i686' 'x86_64')
-
-options=('debug')
-source=("$pkgname::git+https://github.com/HarveyHunt/cottage#branch=master")
+source=("$pkgname::git+https://github.com/HarveyHunt/cottage")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git rev-parse --short HEAD
+  git describe --long --tags | sed 's/^v//; s/-/.r/; s/-/./'
 }
 
 build() {
