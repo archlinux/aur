@@ -3,13 +3,13 @@
 
 _gitrepo='python-nbxmpp'
 pkgname=('python-nbxmpp-git' 'python2-nbxmpp-git')
-pkgver=0.5.4.r14.g9525465
+pkgver=0.5.6.r24.g9e772a5
 pkgrel=1
 pkgdesc="Nonblocking Jabber/XMPP library, used by Gajim"
 arch=('any')
 url="http://hg.gajim.org/python-nbxmpp"
 license=('GPL3')
-makedepends=('git')
+makedepends=('git' 'python' 'python2')
 source=("git+https://dev.gajim.org/gajim/$_gitrepo.git")
 sha384sums=('SKIP')
 
