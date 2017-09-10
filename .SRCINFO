@@ -1,10 +1,8 @@
 pkgbase = ttf-tahoma
 	pkgdesc = Tahoma and Tahoma Bold fonts from the Wine project
 	pkgver = 2.13
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://www.winehq.org/
-	install = ttf.install
 	arch = any
 	license = LGPL
 	depends = fontconfig
