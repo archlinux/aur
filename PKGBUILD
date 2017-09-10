@@ -4,15 +4,15 @@ pkgdesc="ROS - Provides ROS plugins that offer message and service publishers fo
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-kinetic-gazebo-ros'
-pkgver='2.5.8'
+pkgver='2.5.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('Apache 2.0')
 
-ros_makedepends=(ros-kinetic-cmake-modules
+ros_makedepends=(ros-kinetic-gazebo-dev
+  ros-kinetic-cmake-modules
   ros-kinetic-tf
-  ros-kinetic-message-generation
   ros-kinetic-geometry-msgs
   ros-kinetic-gazebo-msgs
   ros-kinetic-std-msgs
@@ -24,11 +24,10 @@ ros_makedepends=(ros-kinetic-cmake-modules
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  gazebo
   tinyxml)
 
-ros_depends=(ros-kinetic-tf
-  ros-kinetic-message-generation
+ros_depends=(ros-kinetic-gazebo-dev
+  ros-kinetic-tf
   ros-kinetic-geometry-msgs
   ros-kinetic-gazebo-msgs
   ros-kinetic-std-msgs
@@ -38,7 +37,6 @@ ros_depends=(ros-kinetic-tf
   ros-kinetic-std-srvs
   ros-kinetic-roslib)
 depends=(${ros_depends[@]}
-  gazebo
   tinyxml)
 
 # Git version (e.g. for debugging)
@@ -50,7 +48,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-kinetic-gazebo_ros-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('da6ce1f176210ba6b871133d00cde0cadf574ef55c27e028f6eb6ce3d6f00d73')
+sha256sums=('0e2e1c14334075ca01fa551e74b4526ff7946600284357a4f15496c4e72349b5')
 
 build() {
   # Use ROS environment variables
