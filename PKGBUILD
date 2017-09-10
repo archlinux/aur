@@ -4,10 +4,10 @@ pkgdesc="ROS - Assorted filters designed to operate on 2D planar laser scanners,
 url='http://ros.org/wiki/laser_filters'
 
 pkgname='ros-lunar-laser-filters'
-pkgver='1.8.4'
-_pkgver_patch=1
+pkgver='1.8.5'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-angles
@@ -42,7 +42,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="laser_filters-release-release-lunar-laser_filters-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/laser_filters-release/archive/release/lunar/laser_filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('127e82f26c6e1c93f9058f3976df40a2ca40c5b2c413ca823c893d12846e76ea')
+sha256sums=('d3c51d029df08cc5a39cb87e834f2699890fa73d1ab9b26afd8ae429aa33a6e7')
 
 build() {
   # Use ROS environment variables
@@ -50,14 +50,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
