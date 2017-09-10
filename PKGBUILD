@@ -5,7 +5,7 @@
 _name=SuperCollider
 pkgname=supercollider-with-plugins
 pkgver=3.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An environment and programming language for real time audio synthesis and algorithmic composition. Current version including sc3-plugins."
 arch=('i686' 'x86_64')
 conflicts=('supercollider' 'sc3-plugins-git')
@@ -13,7 +13,7 @@ provides=('supercollider')
 url="http://supercollider.github.io/"
 license=('GPL3')
 depends=('jack' 'fftw' 'cwiid' 'qtwebkit')
-makedepends=('cmake' 'ruby' 'vim' 'emacs' 'git' 'qt5-tools')
+makedepends=('cmake' 'ruby' 'emacs' 'git' 'qt5-tools')
 optdepends=('emacs: emacs interface'
             'gedit: gedit interface'
             'vim: vim interface'
