@@ -22,7 +22,7 @@ sha1sums=('0ec83b563aea0118bb5a82c1e3295627046bd6b4'
           '7a3f41f2c37fa5f5c0daf0e91619b5a461aa8f5a'
           '026c98a9bd6a572eae5ed61df202fc509455f444'
           'db512f6f54ec5a0c2a0a268438dca70e0c781fac'
-          '2556b8f142777933cfe5b81b5dd62d7284d92999')
+          'd4e21b709658361889ce75b954bb4743564629f2')
 
 prepare() {
   cd ${srcdir}/TES3MP
