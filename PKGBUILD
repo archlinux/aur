@@ -22,6 +22,6 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/$pkgname"
   python2 setup.py install --prefix=/usr --root=$pkgdir
 }
