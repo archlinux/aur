@@ -2,7 +2,7 @@
 # Contributor: Raziel23 <venom23 at runbox dot com>
 
 pkgname=vcmi-git
-pkgver=r6730.1b9daecd
+pkgver=r6865.feba7e19
 pkgrel=1
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64')
@@ -19,6 +19,11 @@ conflicts=('vcmi')
 install="$pkgname.install"
 source=("$pkgname::git+https://github.com/vcmi/vcmi.git#branch=develop")
 md5sums=('SKIP')
+
+prepare() {
+  sed -i 's,Exec=,Exec=env LD_LIBRARY_PATH=/usr/lib/vcmi ,g' "${srcdir}/${pkgname}"/client/icons/vcmiclient.desktop
+  sed -i 's,Exec=,Exec=env LD_LIBRARY_PATH=/usr/lib/vcmi ,g' "${srcdir}/${pkgname}"/launcher/vcmilauncher.desktop
+}
 
 pkgver() {
   cd "$pkgname"
