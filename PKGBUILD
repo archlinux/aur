@@ -8,8 +8,8 @@
 
 pkgname=teighaviewer-qt5
 _altname=teighaviewer
-pkgver=4.2.2
-_version=4.02.2.0
+pkgver=4.3.1
+_version=4.3.1.0
 pkgrel=1
 pkgdesc="Application for the visualization of CAD drawing files, QT5 version"
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ source=('license')
 source_i686=(${pkgname}-i686-${_version}.deb::https://download.opendesign.com/guestfiles/TeighaViewer/TeighaViewer_QT5_lnxX86_4.7dll.deb)
 source_x86_64=(${pkgname}-x86_64-${_version}.deb::https://download.opendesign.com/guestfiles/TeighaViewer/TeighaViewer_QT5_lnxX64_4.7dll.deb)
 md5sums=('62b5539acd57c50855e29d1157c10697')
-md5sums_i686=('c185ae7f42357f178ef6f754c4e0109c')
-md5sums_x86_64=('81eb629507ba4e0ac64f2106d2111418')
+md5sums_i686=('c98261b3060ae2bce28604dedb11d12b')
+md5sums_x86_64=('eb12be1383cf992ac22d1e5a3e7a5735')
 
 prepare() {
   rm -rf ${_altname}-${_version}
