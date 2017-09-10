@@ -21,8 +21,8 @@ source=('https://github.com/TES3MP/openmw-tes3mp/releases/download/tes3mp-0.6.1/
 sha1sums=('0ec83b563aea0118bb5a82c1e3295627046bd6b4'
           '7a3f41f2c37fa5f5c0daf0e91619b5a461aa8f5a'
           '026c98a9bd6a572eae5ed61df202fc509455f444'
-          'db866a13b51b7e960b55b35e490c6f20b3c30b73'
-          '59b79d01eb8e6be428d86dfa8d44b6dab64c54a9')
+          'db512f6f54ec5a0c2a0a268438dca70e0c781fac'
+          '2556b8f142777933cfe5b81b5dd62d7284d92999')
 
 prepare() {
   cd ${srcdir}/TES3MP
