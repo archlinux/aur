@@ -1,0 +1,19 @@
+pkgbase = sandsifter-git
+	pkgdesc = The x86 processor fuzzer
+	pkgver = r1.dff6324
+	pkgrel = 1
+	url = https://github.com/xoreaxeaxeax/sandsifter
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = python2-capstone
+	provides = sandsifter
+	conflicts = sandsifter
+	source = sandsifter::git+https://github.com/xoreaxeaxeax/sandsifter
+	source = sandsifter-git.patch
+	sha256sums = SKIP
+	sha256sums = ee35e3e5d6a6c018e5a138af388d78d0dce3b1605b53ddfe1241cfdef9daa18a
+
+pkgname = sandsifter-git
+
