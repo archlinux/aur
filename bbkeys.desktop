@@ -1,0 +1,14 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=BlackBox Hot Keys
+GenericName=bbkeys
+Comment=Start keystroke detection for BlackBox
+Icon=keyboard
+OnlyShowIn=BLACKBOX;ICEWM;
+Exec=bbkeys
+TryExec=/usr/bin/bbkeys
+Terminal=false
+Categories=BLACKBOX;System;Utility;
+StartupNotify=false
+NoDisplay=true

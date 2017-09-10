@@ -1,0 +1,22 @@
+pkgbase = bbkeys-git
+	pkgdesc = Blackbox tool for setting keyboard shortcuts for manipulating windows and virtual desktop
+	pkgver = 0.9.1.11
+	pkgrel = 1
+	url = http://bbkeys.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	groups = blackbox
+	license = custom
+	makedepends = git
+	makedepends = blackbox-git
+	depends = libxext
+	depends = libxft
+	provides = bbkeys
+	conflicts = bbkeys
+	source = bbkeys-git::git+https://github.com/bbidulock/bbkeys.git
+	source = bbkeys.desktop
+	md5sums = SKIP
+	md5sums = ff91c4fec02f829820b369d5a0a4d000
+
+pkgname = bbkeys-git
+
