@@ -7,7 +7,7 @@ pkgbase=linux-zen           # Build -zen kernel
 _srcname=linux-4.13
 _zenpatch=zen-4.13-e8987ea24eacd7c62395a72c56c009c790488c72.diff
 pkgver=4.13
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -188,7 +188,7 @@ _package-headers() {
   find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
 
   # add objtool for external module building and enabled VALIDATION_STACK option
-  if [[ -e tools/objtools/objtool ]]; then
+  if [[ -e tools/objtool/objtool ]]; then
     install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
   fi
 
