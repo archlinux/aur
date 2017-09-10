@@ -1,6 +1,7 @@
 # Maintainer: Alad Wenter <alad@mailbox.org>
 pkgname=vim-bracketed-paste
 pkgver=r33.363f9b6
+_commit=363f9b62d3aaa8f1cb6ba8abbeadecbef8d5cd42 # no available release
 pkgrel=1
 pkgdesc="enable transparent pasting into vim"
 arch=('any')
@@ -9,7 +10,7 @@ license=('custom:vim')
 groups=('vim-plugins')
 depends=('vim')
 makedepends=('git')
-source=("git+https://github.com/ConradIrwin/$pkgname.git")
+source=("git+https://github.com/ConradIrwin/$pkgname.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
