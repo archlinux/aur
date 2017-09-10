@@ -3,7 +3,7 @@
 
 pkgname=libkolabxml
 pkgver=1.1.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Kolab XML Format Schema Definitions Library"
 url='http://git.kolab.org/libkolabxml/'
 arch=('i686' 'x86_64')
