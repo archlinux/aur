@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=TES3MP Server Browser
-Name[ru_RU]=Сервер TES3MP
+Name[ru_RU]=Браузер серверов TES3MP
 Comment=TES3MP server overview
 Comment[ru_RU]=Обзор серверов TES3MP
 Path=/opt/openmw-tes3mp/
