@@ -15,11 +15,9 @@ provides=("micro")
 # Binary tar files from github 
 source_x86_64=("https://github.com/zyedidia/micro/releases/download/nightly/micro-${_hash}-linux64.tar.gz")
 source_i686=("https://github.com/zyedidia/micro/releases/download/nightly/micro-${_hash}-linux32.tar.gz")
-# Not checking as only upstream has write access to github binary. 
-# Check sums for files downloaded
+# Check sums for files downloaded --> Not checking as only upstream has write access to github binary. 
 sha256sums_i686=(SKIP)
 sha256sums_x86_64=(SKIP)
-
 
 package(){
  install -Dm755 $srcdir/micro-${_hash}/micro "$pkgdir/usr/bin/micro"
