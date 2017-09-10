@@ -29,7 +29,6 @@ pkgbase = linux-max98090
 	sha256sums = 25e5f5e5349f6ce741b010c3bf4f42f648302b412d35790e7ff03c2fa4478229
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = 53a90a6a7cd75b09242897c4b231be73c3c1b3a5c5c952068d0f049d839f96de
 
 pkgname = linux-max98090
 	pkgdesc = The Archlinux kernel and modules with a fix for baytrail max98090 sound
