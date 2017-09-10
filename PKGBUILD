@@ -1,7 +1,7 @@
 # Maintainer: Patrik Karlsson <pata.karlsson@gmail.com>
 
 pkgname=mapollage
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="mapollage is a photo album generator for Google Earth, a photo kml maker"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
 	'mapollage.desktop'
 )
 sha256sums=(
-	'330798e902b73087c5424d32a476219fcf7b3e6cb88d8b8dfec3608cb16c2078'
+	'6f00097405dd5069f8ff3af973080e0105be073b338ffc589f09e9e5020e97b1'
 	'9f7c96ef813c3cfda38abc83db1143abff6857b79cd75074abdce224a70d9ab4'
 	'7f908c214693692d259108df6239b0ac86b5c8b56381f9cce13ef5d9f2e5f930'
 )
