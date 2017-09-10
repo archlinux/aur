@@ -1,7 +1,7 @@
 pkgbase = blackbox-git
 	pkgdesc = A window manager for X11
 	pkgver = 0.72.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bbidulock/blackboxwm
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=blackbox-git
 pkgver=0.72.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for X11"
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/blackboxwm"
@@ -23,7 +23,11 @@ pkgver() {
 build() {
   cd $pkgname
   ./autogen.sh
-  ./configure --prefix=/usr --mandir=/usr/share/man
+  ./configure \
+      --prefix=/usr \
+      --mandir=/usr/share/man \
+      --enable-static \
+      --enable-shared
   make V=0
 }
 
