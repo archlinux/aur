@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=fd-rs
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Simple, fast and user-friendly alternative to find'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url=https://github.com/sharkdp/fd
 license=('MIT')
 makedepends=('cargo')
 source=("fd-rs-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('5a03885e31f7c8240df39370fb257d8ad4320bed7eae847abe89b6184f989ab509bf6fe5dde02673d5ba067a2c50020fbe7676d8a0377c3c8fa3b12375f32aa2')
+sha512sums=('0ee060df705ae7271db5a4dec3cc2c89968931ffe237da1abf1dc778670e998247227a564932217709508f8b374391ce1821d344bb080337b418b5b14f32f1a4')
 
 build() {
   cd fd-$pkgver
