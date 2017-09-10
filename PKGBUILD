@@ -4,9 +4,9 @@ _with_extra=y
 
 pkgname=arc-kde-git
 epoch=1
-pkgver=r93.5cd2489
-pkgrel=3
-pkgdesc='Arc customization mainly for Plasma 5 (git version)'
+pkgver=r112.0d4ff0e
+pkgrel=4
+pkgdesc='A port of the popular GTK theme Arc for Plasma 5 desktop with a few additions and extras (git version)'
 arch=('any')
 url='https://github.com/PapirusDevelopmentTeam/arc-kde'
 license=('GPLv3')
@@ -16,8 +16,8 @@ provides=('arc-kde')
 makedepends=('git')
 optdepends=(
   "plasma-desktop: For Plasma desktop theme"
-  "gtk-theme-arc-git: A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell (git version)"
-  "arc-firefox-theme-git: Arc Firefox theme (git version)"
+  "arc-gtk-theme: A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell"
+  "arc-firefox-theme: Arc Firefox theme"
   "kwin: For Aurorae decorations"
   "kvantum-qt5: For Kvantum Theme"
   "konsole: For Konsole color schemes"
@@ -26,16 +26,10 @@ optdepends=(
 )
 
 if [ -n "${_with_extra}" ]; then
-    optdepends+=(
-        "telegram-desktop"
-        "eclipse-common"
-        "firefox"
-    )
+    optdepends+=("eclipse-common")
     
     prepare() {
-        if [ -n "${_with_extra}" ]; then
-            sed -i 's|^install:|install:\n\tmkdir -p $(DESTDIR)/usr/share/arc\n\tcp --no-preserve=mode,ownership -r extra $(DESTDIR)/usr/share/arc|' "${srcdir}/${pkgname}/Makefile"
-        fi
+        sed -i 's|^install:|install:\n\tmkdir -p $(DESTDIR)/usr/share/arc\n\tcp --no-preserve=mode,ownership -r extra $(DESTDIR)/usr/share/arc|' "${srcdir}/${pkgname}/Makefile"
     }
 fi
 
