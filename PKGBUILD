@@ -4,7 +4,7 @@ pkgdesc="ROS - Messages and services for the controller manager."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-kinetic-controller-manager-msgs'
-pkgver='0.11.3'
+pkgver='0.12.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_control-release-release-kinetic-controller_manager_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/kinetic/controller_manager_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('856a14abd3cb2be90315b7620b0e72c2c90226244d3b6c1388d9547e1dfe1288')
+sha256sums=('fe5369c31b7a7e47af15a7c35f98f43cd87ae614b8dd521e2a3cafdb322c0520')
 
 build() {
   # Use ROS environment variables
