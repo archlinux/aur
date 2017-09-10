@@ -1,6 +1,6 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=carla-bridges-win64-git
-pkgver=3516.7eb1d2dd
+pkgver=3535.374dc7e2
 pkgrel=1
 pkgdesc="Carla win64 bridge"
 arch=('i686' 'x86_64')
