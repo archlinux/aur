@@ -7,10 +7,12 @@ pkgdesc="A Return to Castle Wolfenstein modification which enables cooperative g
 arch=('i686' 'x86_64')
 url="http://www.rtcwcoop.com"
 license=('GPL')
-depends=('iortcw-data' 'freetype2' 'sdl2' 'openal' 'opus' 'opusfile' 'libogg' 'zlib')
+depends=('wolf-data' 'freetype2' 'sdl2' 'openal' 'opus' 'opusfile' 'libogg' 'zlib')
 makedepends=('cmake' 'git')
+noextract=('patch-data-141.zip')
 install='rtcwcoop-git.install'
 source=("rtcwcoop::git+https://github.com/rtcwcoop/rtcwcoop.git"
+	"https://github.com/rtcwcoop/rtcwcoop/releases/download/1.0.2/patch-data-141.zip"
 	'rtcwcoop.launcher'
 	'rtcwcoopded.launcher'
 	'create_pk3.sh'
@@ -23,9 +25,9 @@ pkgver() {
 }
 
 build() {
-  if [ ! -f /opt/iortcw-data/pak0.pk3 ]; then
+  if [ ! -f /opt/wolf-data/pak0.pk3 ]; then
    echo "pak0.pk3 doesn't exist. The game will not start"
-   echo "Follow the iortcw-data package instructions!"
+   echo "Follow the wolf-data package instructions!"
    sleep 5
   fi
 }
@@ -33,31 +35,25 @@ build() {
 package() {
   
   mkdir -p $pkgdir/opt/rtcwcoop/{coopmain,main}
-  cd rtcwcoop
+  unzip -o patch-data-141.zip -d $srcdir/patch-data
+  cd $srcdir/patch-data/main
+  cp -r *.pk3 $pkgdir/opt/rtcwcoop/main
+  cp -r scripts $pkgdir/opt/rtcwcoop/main
+  cp -r rotate.cfg $pkgdir/opt/rtcwcoop/main
+  cp -r ../pb $pkgdir/opt/rtcwcoop/main
+ 
+  rm $pkgdir/opt/rtcwcoop/main/pb/{*.dll,*.mac,*.exe}
+  
+  cd $srcdir/rtcwcoop
   
   make USE_INTERNAL_LIBS=0 COPYDIR=$pkgdir/opt/rtcwcoop/ copyfiles
   
-  ln -s -r /opt/iortcw-data/mp_bin.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/mp_pak0.pk3   $pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/mp_pak1.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/mp_pak2.pk3	$pkgdir/opt/rtcwcoop/main  
-  ln -s -r /opt/iortcw-data/mp_pak3.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/mp_pak4.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/mp_pak5.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/mp_pakmaps0.pk3	$pkgdir/opt/rtcwcoop/main  
-  ln -s -r /opt/iortcw-data/mp_pakmaps1.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/mp_pakmaps2.pk3	$pkgdir/opt/rtcwcoop/main  
-  ln -s -r /opt/iortcw-data/mp_pakmaps3.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/mp_pakmaps4.pk3	$pkgdir/opt/rtcwcoop/main  
-  ln -s -r /opt/iortcw-data/mp_pakmaps5.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/mp_pakmaps6.pk3	$pkgdir/opt/rtcwcoop/main  
-  ln -s -r /opt/iortcw-data/scripts	$pkgdir/opt/rtcwcoop/main 
-  ln -s -r /opt/iortcw-data/pak0.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/sp_pak1.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/sp_pak2.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/sp_pak3.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/sp_pak4.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/iortcw-data/rotate.cfg	$pkgdir/opt/rtcwcoop/main    
+  ln -s -r /opt/wolf-data/mp_pak0.pk3   $pkgdir/opt/rtcwcoop/main
+  ln -s -r /opt/wolf-data/mp_pak1.pk3	$pkgdir/opt/rtcwcoop/main
+  ln -s -r /opt/wolf-data/mp_pak2.pk3	$pkgdir/opt/rtcwcoop/main  
+  ln -s -r /opt/wolf-data/pak0.pk3	$pkgdir/opt/rtcwcoop/main
+  ln -s -r /opt/wolf-data/sp_pak1.pk3	$pkgdir/opt/rtcwcoop/main
+  ln -s -r /opt/wolf-data/sp_pak2.pk3	$pkgdir/opt/rtcwcoop/main
   
  # Create Coop PK3
   cp $srcdir/create_pk3.sh .
@@ -95,6 +91,7 @@ package() {
 }
 
 md5sums=('SKIP'
+         '291a37caa9d65d0b81f767918b76fa56'
          '301306637434f08f4958f1ed4734f68f'
          'c4b7030bb2739c46eef479fd1f3d1b63'
          '32223e6aec5bb6f425d0f7b5a5c41416'
