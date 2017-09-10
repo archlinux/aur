@@ -1,6 +1,6 @@
 # Maintainer: Heating Device <via DoT heatingdevice OT me DuT co m>
 pkgname=tigcap
-pkgver=0.0.3
+pkgver=latest
 pkgrel=1
 pkgdesc="A powerful screenshot tool"
 arch=('x86_64' 'armv7h')
@@ -8,7 +8,7 @@ url="https://github.com/theimgguru/tigcap/"
 license=('GPL')
 groups=()
 depends=(maim)
-makedepends=(npm nodejs)
+makedepends=(npm nodejs git)
 optdepends=('libnotify: Notification support')
 provides=()
 conflicts=()
@@ -17,18 +17,18 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/theimgguru/tigcap/archive/master.tar.gz)
+source=(git+https://github.com/theimgguru/tigcap.git)
 noextract=()
-md5sums=('afc09fcd821d11ae70556366bb6847e9')
+sha1sums=('SKIP')
 
 build() {
-  cd "$pkgname-master"
+  cd "$pkgname"
 
   npm install
 }
 
 package() {
-  cd "$pkgname-master"
+  cd "$pkgname"
 
   node_modules/.bin/electron-packager . TIGCap --no-prune --out out --asar --overwrite
   mkdir -p $pkgdir/opt/tigcap
