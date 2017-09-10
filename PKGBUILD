@@ -2,7 +2,7 @@
 
 pkgname=stylelint
 pkgver=8.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets'
 arch=('any')
 url='https://stylelint.io/'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 optdepends=('stylelint-config-standard')
 makedepends=('npm')
-source=("http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
 sha512sums=('46d8d4b6a1b687774fe02b8c53533ef864491af2975a8ce6bf9ca12e838bcbb3563f68c964ec0b652570b5c8d742c04905f1ae0b7de6a2804ec0d6822218b6b5')
 
