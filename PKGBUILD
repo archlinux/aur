@@ -25,5 +25,5 @@ package() {
   cd "$srcdir/$pkgname" 
   sed -i -e 's#client_secret.json#/usr/lib/python2.7/site-packages/googlecl/client_secret.json#g' src/googlecl/authenticate.py
   python2 setup.py install --prefix=/usr --root=$pkgdir
-  install -m644 client_secret.json $pkgdir /usr/lib/python2.7/site-packages/googlecl/client_secret.json
+  install -m644 client_secret.json $pkgdir $pkgdir/usr/lib/python2.7/site-packages/googlecl/client_secret.json
 }
