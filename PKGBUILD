@@ -1,14 +1,14 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=python-fafclient
-pkgver=0.16.0.rc.2
-pkgrel=2
+pkgver=0.16.0
+pkgrel=1
 epoch=0
 pkgdesc="Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance."
 url="http://www.faforever.com/"
 arch=('any')
 license=('GPL3')
 groups=()
-depends=('python-pyqt5' 'python-ipaddress' 'python-trueskill' 'python-semantic-version' 'lib32-libpulse' 'wine>1.6.0' 'xdelta3' 'faf-uid' 'qt5-webengine')
+depends=('python-pyqt5' 'python-ipaddress' 'python-semantic-version' 'lib32-libpulse' 'wine>1.6.0' 'xdelta3' 'faf-uid' 'qt5-webengine')
 makedepends=('python-setuptools' 'git')
 checkdepends=()
 optdepends=()
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/Wesmania/client.git" 'FAForeverPy36.desktop')
+source=("git+https://github.com/FAForever/client.git" 'FAForeverPy36.desktop')
 sha256sums=('SKIP'
             '4b748a04d4d37744ff7ba81101d4ac08bd26daeea06df87fc7e1b55205931eca')
 noextract=()
