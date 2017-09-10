@@ -1,4 +1,4 @@
-# Maintainer: Sandy Carter <genaloner@gmail.com>
+# Maintainer: Gennadiy Chernyshyk <genaloner@gmail.com>
 # PKGBUILD source: https://github.com/TES3MP/openmw-tes3mp
 
 pkgname=openmw-tes3mp
@@ -8,7 +8,7 @@ pkgdesc="TES3MP is a project aiming to add multiplayer functionality to OpenMW, 
 arch=('x86_64')
 url="https://github.com/TES3MP/openmw-tes3mp"
 license=('GPL3' 'custom')
-depends=('openal' 'openscenegraph' 'mygui>=3.2.1' 'bullet' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt')
+depends=('openal' 'openscenegraph' 'mygui>=3.2.1' 'bullet' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'ncurses5-compat-libs')
 optdepends=('openmw: make engine configuration files')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
@@ -24,19 +24,43 @@ sha1sums=('0ec83b563aea0118bb5a82c1e3295627046bd6b4'
           'db866a13b51b7e960b55b35e490c6f20b3c30b73'
           '59b79d01eb8e6be428d86dfa8d44b6dab64c54a9')
 
+prepare() {
+  cd ${srcdir}/TES3MP
+
+  # Remove all .git files
+  find . -name "*git*" -exec rm -rf {} +
+
+  # Remove all *.a files from lib
+  rm -f lib/*.a
+
+  # Remove junk files
+  rm PluginExamples/README.md
+  rm PluginExamples/LICENSE
+  rm tes3mp-package-info.txt
+
+  # Remove OpenMW junk files
+  rm bsatool*
+  rm esmtool*
+  rm openmw*
+}
+
 package() {
-  # install .desktop files
-  install -Dm644 tes3mp-client.desktop "$pkgdir/usr/share/applications/tes3mp-client.desktop"
-  install -Dm644 tes3mp-server.desktop "$pkgdir/usr/share/applications/tes3mp-server.desktop"
-  install -Dm644 tes3mp-browser.desktop "$pkgdir/usr/share/applications/tes3mp-browser.desktop"
+  # Install .desktop files
+  install -Dm644 tes3mp-client.desktop $pkgdir/usr/share/applications/tes3mp-client.desktop
+  install -Dm644 tes3mp-server.desktop $pkgdir/usr/share/applications/tes3mp-server.desktop
+  install -Dm644 tes3mp-browser.desktop $pkgdir/usr/share/applications/tes3mp-browser.desktop
 
 
-  # icon for .desktop files
-  install -Dm644 tes3mp_logo.png "$pkgdir/usr/share/pixmaps/tes3mp.png"
+  # Icon for .desktop files
+  install -Dm644 tes3mp_logo.png $pkgdir/usr/share/pixmaps/tes3mp.png
 
-  # main
-  cd "${srcdir}"
+  # Main
+  cd ${srcdir}
+  install -d $pkgdir/opt
   mv TES3MP $pkgdir/opt/$pkgname
+
+  # Package folder needs to be writable, otherwise there TES3MP don't work
+  chmod -R a+rwX $pkgdir/opt/$pkgname
 }
 
 # vim:set ts=2 sw=2 et:

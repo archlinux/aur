@@ -7,5 +7,5 @@ Comment[ru_RU]=Серверная часть мультиплеера для Mor
 Path=/opt/openmw-tes3mp/
 Exec=/opt/openmw-tes3mp/tes3mp-server
 Icon=tes3mp
-Terminal=false
+Terminal=true
 Categories=Game;
