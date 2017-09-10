@@ -1,7 +1,7 @@
 pkgbase = arch-checkrestart
 	pkgdesc = Arch Linux port of Debian's checkrestart utility
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/sometoby/arch-checkrestart
 	arch = any
 	license = GPL2

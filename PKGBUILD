@@ -1,6 +1,6 @@
 pkgname=arch-checkrestart
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Arch Linux port of Debian's checkrestart utility"
 url=https://github.com/sometoby/arch-checkrestart
 arch=('any')
