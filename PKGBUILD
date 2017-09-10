@@ -7,7 +7,8 @@ arch=('any')
 url="https://github.com/vinitkumar/googlecl"
 license=('APACHE')
 depends=('python'
-         'python2')
+         'python2'
+		 'python2-oauth2client')
 makedepends=('git')
 provides=('googlecl')
 conflicts=('googlecl')

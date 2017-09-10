@@ -8,6 +8,7 @@ pkgbase = googlecl-git
 	makedepends = git
 	depends = python
 	depends = python2
+	depends = python2-oauth2client
 	provides = googlecl
 	conflicts = googlecl
 	source = googlecl-git::git+https://github.com/vinitkumar/googlecl.git
