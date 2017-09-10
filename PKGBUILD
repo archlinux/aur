@@ -11,7 +11,7 @@ depends=('net-snmp'
 	'python2' 
 	'libxml2' 
 	'libtool' 
-	'util-linux-ng' 
+	'util-linux' 
 	'curl' 
 	'glib2'
 	'asciidoc')
