@@ -1,7 +1,7 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.22.18
+pkgver=3.22.19
 pkgrel=1
 conflicts=(gtk3)
 provides=("gtk3=$pkgver")
@@ -18,7 +18,7 @@ optdepends=('libcanberra: gtk3-widget-factory demo'
 makedepends=(gobject-introspection libcanberra gtk-doc git colord rest libcups glib2-docs
              sassc)
 license=(LGPL)
-_commit=e1cf6281fe800c070d599aef0681ef4f776e1775  # tags/3.22.18^0
+_commit=efbf6f183ecd24cddea743a02fe8ce545f1b55f8  # tags/3.22.19^0
 source=("git://git.gnome.org/gtk+#commit=$_commit"
         settings.ini
         gtk-query-immodules-3.0.hook
@@ -26,10 +26,14 @@ source=("git://git.gnome.org/gtk+#commit=$_commit"
 sha256sums=('SKIP'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
-            '405fd37cc8929b9f9dfd78cb4f9e7cdd1b02ecfde7ef82e3ad28173defccb8d5')
+            'c43995d57b1ac1b280cc04084fdb77be8f477483c7cbada646f12d3364768865')
 
 prepare() {
     cd gtk+
+
+    # menu: Avoid cancelling the menu on GTK+ grabs inside the GtkMenu
+    # https://bugzilla.gnome.org/show_bug.cgi?id=786029
+    git cherry-pick -n 26d8a6dfbac5180dce71d1f2edc7029cfa2773ef
 
     # Typeahead-specific changes
     patch gtk/gtkfilechooserwidget.c -i $srcdir/typeahead.patch
