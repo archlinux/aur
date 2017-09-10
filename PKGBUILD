@@ -12,41 +12,33 @@ install='rtcwcoop-git.install'
 source=("rtcwcoop::git+https://github.com/rtcwcoop/rtcwcoop.git"
 	'rtcwcoop.launcher'
 	'rtcwcoopded.launcher'
-	'Makefile.local'
 	'create_pk3.sh'
 	'rtcwcoop.png'
 	'rtcwcoop.desktop')
-md5sums=('SKIP'
-         'e08aab38a8574877258986038f043f89'
-         '6630b979c5f9b4ea6e7ff0e2927fa1e1'
-         '53a8ec6a5b3a67f73fe876dbe2384b95'
-         'cbdfd0fcc3b6ca0bec6cc28c0ec66aa8'
-         'bf26dc4c10d4bbfbd0c7a052a00c3cdf'
-         'f24dc703585569ba11ba0b94625ee8e0')
+
 pkgver() {
-  cd  "$srcdir/$pkgname/"
+  cd  "$srcdir/$pkgname"
   git log -1 --format="%cd" --date=short | sed 's|-||g'
 }
 
 
 build() {
-  cd rtcwcoop
   if [ ! -f /opt/wolf-data/pak0.pk3 ]; then
-    echo "pak0.pk3 doesn't exist. This process will be terminated"
-    echo "Follow the wolf-data package instructions!"
-  exit 1
+   echo "pak0.pk3 doesn't exist. The game will not start"
+   echo "Follow the iortcw-data package instructions!"
+   sleep 5
   fi
-  
-  cp $srcdir/Makefile.local .
-  make release
 }
 
 package() {
-  cd rtcwcoop
   
   mkdir -p $pkgdir/opt/rtcwcoop/{coopmain,main}
+  cd rtcwcoop
   
-  make COPYDIR=$pkgdir/opt/rtcwcoop/ copyfiles
+  cd SP
+  make USE_INTERNAL_LIBS=0 COPYDIR=$pkgdir/opt/rtcwcoop/ copyfiles
+  cd ../MP
+  make USE_INTERNAL_LIBS=0 COPYDIR=$pkgdir/opt/rtcwcoop/ copyfiles
   
   ln -s -r /opt/wolf-data/mp_bin.pk3	$pkgdir/opt/rtcwcoop/main
   ln -s -r /opt/wolf-data/mp_pak0.pk3   $pkgdir/opt/rtcwcoop/main
@@ -105,4 +97,9 @@ package() {
     install -Dm755 $srcdir/rtcwcoop.desktop $pkgdir/usr/share/applications/rtcwcoop.desktop
 }
 
-
+md5sums=('SKIP'
+         'e08aab38a8574877258986038f043f89'
+         '6630b979c5f9b4ea6e7ff0e2927fa1e1'
+         'cbdfd0fcc3b6ca0bec6cc28c0ec66aa8'
+         'bf26dc4c10d4bbfbd0c7a052a00c3cdf'
+         'f24dc703585569ba11ba0b94625ee8e0')
