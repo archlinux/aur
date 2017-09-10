@@ -16,6 +16,7 @@ sha1sums=('SKIP')
 prepare() {
   cd "${srcdir}/${pkgname}"
   patch < ../../cmake_path.diff
+  sed -i "/.*init.d\/)$/d" CMakeLists.txt
 }
 
 build() {
