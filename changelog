@@ -1,0 +1,371 @@
+ 
+** RELEASES HISTORY
+------------------------------------------------------------
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 4.1.0
+------------------------------------------------------------
+
+ 	* Updated PyDev to 5.9.0.
+
+ 	* Faster debugger on Python 3.6.
+ 	* Fixed issue with Lucene integration
+ 	* Other improvements. See http://www.pydev.org for more details.
+
+ 	* Updated Eclipse to final Oxygen (4.7) release.
+ 	* Using the tm4e engine for parsing files based on a TextMate grammar (https://github.com/eclipse/tm4e).
+ 	* Improvements to parse in a thread when file is changed.
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 4.0.0
+------------------------------------------------------------
+
+ 	* Updated PyDev to 5.8.0.
+
+ 	* Fixed some issues in PyLint integration
+ 	* Fixed IronPython debugger support.
+ 	* Fixed issue on code-coverage integration.
+ 	* Code coverage working with pytest.
+ 	* Many other improvements. See http://www.pydev.org for more details.
+
+ 	* Updated Eclipse to Oxygen (4.7 RC3).
+ 	* Fixed Mac so that it won't break after updating (see Download: Updating Native Install (download.html#updating_native) for instructions on how to properly upgrade Mac).
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 3.6.0
+------------------------------------------------------------
+
+ 	* Updated PyDev to 5.7.0.
+
+ 	* Improved PyLint integration
+ 	* Fixed Jython debugger support.
+ 	* Many other improvements. See http://www.pydev.org for more details.
+
+ 	* Updated EGit to 4.7.0.
+ 	* Updated Eclipse to Neon.3 (4.6.3).
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 3.5.0
+------------------------------------------------------------
+
+ 	* Updated PyDev to 5.6.0.
+
+ 	* Faster debugger (only supporting Python 2.6 onwards now).
+ 	* Debugger properly displaying variables when connected to interactive console.
+ 	* super and pytest fixtures properly recognized in the type inferonce engine.
+ 	* Many other improvements. See http://www.pydev.org for more details.
+
+ 	* Fixed issue where filtering results wasn't working properly for LiClipse text searches.
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 3.4.0
+------------------------------------------------------------
+
+ 	* Updated PyDev to 5.5.0.
+
+ 	* Many bugfixes (in refactoring, imports handling, code completion debugger and Python 3.6 syntax).
+ 	* CTRL+SHIFT+ALT+O can be used to open the last hyperlink in the console that's currently open (it's now possible to jump directly to the error in some exception).
+ 	* CTRL+2,SW switches the target and value in assign statements (may not work properly if more than one '=' is found in the line).
+ 	* Allows adding local imports to the top of the module.
+ 	* See http://www.pydev.org for more details.
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 3.3.0
+------------------------------------------------------------
+
+ 	* Updated PyDev to 5.4.0.
+
+ 	* Python 3.6 supported.
+ 	* Launch with python -m module.name.
+ 	* Debugger shows return values.
+ 	* See http://www.pydev.org for more details.
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 3.2.1
+------------------------------------------------------------
+
+ 	* Updated PyDev to 5.3.1 (see http://www.pydev.org for details).
+ 	* Updated LiClipse themes to have a different highlight for the default tab (selectedTabInitialBackground, selectedTabActiveInitialBackground in the theme preferences).
+ 	* Fixed default colors for some themes and fixed heap status color.
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 3.2.0
+------------------------------------------------------------
+
+ 	* Supporting CMake by default.
+ 	* Properly making filename associations (non-extension based) for TextMate Bundles.
+ 	* Updated PyDev to 5.3.0 (see http://www.pydev.org for details).
+ 	* Updated EGit.
+ 	* Updated Eclipse to 4.6.1.
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 3.1.0
+------------------------------------------------------------
+
+ 	* Updated EGit.
+ 	* Updated PyDev to 5.2.0 (see http://www.pydev.org for details).
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 3.0.6
+------------------------------------------------------------
+
+ 	* Based on ECLIPSE 4.6 (FINAL)
+ 	* Updated EGit.
+ 	* Updated PyDev to 5.1.2 (see http://www.pydev.org for details).
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 3.0.3
+------------------------------------------------------------
+
+ 	* Based on ECLIPSE 4.6 RC1
+ 	* Updated EGit (fixed a critical issue in the git staging view).
+ 	* The LiClipse editor component (LiClipseText (http://www.liclipse.com/text) ) is now open source ( view http://www.liclipse.com/text for more info).
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 3.0.1
+------------------------------------------------------------
+
+ 	* Based on ECLIPSE 4.6 M7
+ 	* Requires JAVA 8 to run
+ 	* Fixed scrollbar issue on Git Staging view
+ 	* JavaScript editor using Nashorn instead of Rhino for JSLint and Beautify.js
+
+ 	* Note that JSLint doesn't officially support Nashorn, so, a patched version is needed.
+ 	* Nashorn is MUCH faster than Rhino, so, opening a big file to be linted should no longer halt the IDE.
+
+ 	* Removed scrollbar theming from trees and tables due to some bugs (users that want can still enable it by installing Xiliary (http://fappel.github.io/xiliary/clean-sheet.html) ).
+ 	* Updated PyDev to 5.0.0
+
+ 	* Improvements in debugger, pyunit view persist across restart, super() code completion and wrap expression deadlock
+
+ 	* Updated EGit
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 2.5.4
+------------------------------------------------------------
+
+ 	* Updated PyDev to 4.5.5
+
+ 	* Improvements in code-completion, pytest integration, python 3 parsing, debugger and django tests running
+
+ 	* Accepting hyphen for tags/attributes in XML editor
+ 	* Themed ScrollBar disabled by default for Trees/Tables (can be manually enabled at General > Appearance > Color Theme)
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 2.5.3
+------------------------------------------------------------
+
+ 	* Updated PyDev to 4.5.4 (it had a critical fix in debugger)
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 2.5.2
+------------------------------------------------------------
+
+ 	* The trees and tables now have styled scrollbars when using the LiClipse theme (using Xiliary (http://fappel.github.io/xiliary/clean-sheet.html) scrollbar enhancements).
+ 	* CSS and SCSS languages use textmate bundles for highlighting
+ 	* Updated PyDev to 4.5.3 (fixes in debugger and improvements in the PyUnit view)
+ 	* Updated Eclipse to 4.5.1
+ 	* Updated Startexplorer to 1.7.0
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 2.5.1
+------------------------------------------------------------
+
+ 	* The comment prefix now works properly for TextMate based languages
+ 	* Fixed issue handling TextMate rule which affected the Ruby syntax highlighting
+ 	* Updated to PyDev 4.5.1
+ 	* Updated EGit
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 2.4.0
+------------------------------------------------------------
+
+ 	* Fixed critical issue where indent rules were being applied without a new line on textmate bundles
+ 	* Added RAML editor support
+ 	* Updated to PyDev 4.4.0
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 2.3.0
+------------------------------------------------------------
+
+	* Improvements on the parsing structure, resulting in:
+
+	* Improved performance on syntax highlighting and outline creation.
+	* Scopes from TextMate rules are properly kept(so, code-completion now works for more TextMate languages).
+
+	* A new view which shows an HTML preview (preview.html) for the HTML,MARKDOWN and RST EDITORS(it can be activated in Window > Show View > Other > LiClipse > LiClipse HTML Preview, orby using Ctrl+3 > LiClipse HTML Preview)
+	* The new search (search.html) had some bugs ironed out.
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 2.2.0
+------------------------------------------------------------
+
+	* Improved searching capabilities (search.html) 
+
+	* Workspace searches based on Lucene indexes.
+	* Provides a way to search in external folders.
+	* Provides a way to search open editors.
+	* Results search page allows additional filtering based on paths.
+
+	* Linux Shell files supported.
+	* Windows bat files supported.
+	* PERL is now supported.
+	* Swift is now supported.
+	* New view to explore LiClipse languages.
+	* New view which shows the partitions for the current file to help when creating a language.
+	* Improved performance in partitioning.
+	* GTK 2 is set as the the default backend in Linux
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 2.1.0
+------------------------------------------------------------
+
+ 	* Support for TextMate Bundles (textmate_bundles.html) 
+ 	* PHP is now supported
+ 	* Ruby is now supported
+ 	* Markdown is now supported
+ 	* Workspace Mechanic is no longer bundled by default in LiClipse
+ 	* Improved theming
+ 	* Standalone based on Eclipse 4.5rc2a
+ 	* Updated EGit and PyDev
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 2.0.0
+------------------------------------------------------------
+
+ 	* Nim is now supported
+ 	* Go is now supported
+ 	* Jinja2 is now supported
+ 	* JAVASCRIPT EDITOR:
+
+ 	* It's possible to specify the jshint.js and beautify.js location in preferences > LiClipse > Javascript
+ 	* The code-formatting settings may be tweaked (see: Customize Javascript (customize_javascript.html) for details
+ 	* Fixed some syntax highlighting glitches (related to handling of Regular expressions)
+ 	* Added some missing keywords to the JavaScript definition
+
+ 	* Mako had some improvements in the highlighting
+ 	* Multi-page editors (such as the plugins manifest editor) now also have multiple cursors and vertical indent guides support
+ 	* Updated EGit, PyDev and AnyEdit
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 1.4.0
+------------------------------------------------------------
+
+ THEMED SCROLLBARS 
+
+ 	* May be enabled at preferences > general > appearance > color theme > apply scrollbars theming customization
+ 	* Turned on by default on Windows
+ 	* Affects all StyledTexts (including editors and console)
+ 	* The default encoding for all platforms is now UTF-8
+ 	* PyDev was upgraded to 3.9.2
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 1.3.0
+------------------------------------------------------------
+
+ 	* YAML: syntax errors are now reported for YAML
+ 	* It's now possible to open an external editor passing the line. The pattern accepted is "LiClipse filename+line:col"
+ 	* PyDev was upgraded to 3.9.1
+ 	* Eclipse was upgraded to 4.4.1
+ 	* The bundled java was upgraded to Java 8
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 1.2.1
+------------------------------------------------------------
+
+ INDENT GUIDES 
+
+ 	* Vertical indent guides are now available (applied to all Eclipse editors by default)
+ 	* Options may be configured at Preferences > LiClipse > Vertical Indent Guide
+
+ 	* Upgraded to PyDev 3.9.0
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 1.2.0
+------------------------------------------------------------
+
+ 	* It's now possible to specify the JSHint configuration for a project. View JavaScript editor customization for details (customize_javascript.html) 
+ 	* It's now possible to specify the HTML code analysis/code formatting configuration for a project. View HTML editor customization for details (customize_html.html) 
+ 	* JSHint updated to the latest version (2.5.4)
+ 	* Regular expressions on javascript are now properly colored
+ 	* The Javascript editor now supports ES6 (EcmaScript 6) constructs (but JSHint analysis must be manually configured to accept those constructs)
+ 	* AnyEdit no longer removing trailing chars by default (only for LiClipse standalone)
+ 	* Upgraded to PyDev 3.8.0
+ 	* Upgraded to latest EGit
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 1.1.2
+------------------------------------------------------------
+
+ 	* Upgraded PyDev to 3.7.1 (had critical issue where the minimap could deadlock in Linux).
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 1.1.1
+------------------------------------------------------------
+
+ 	* StringTemplate is now supported
+ 	* YAML is now supported
+ 	* The minimap is now shown for LiClipse editors
+ 	* The minimap is now shown by default
+ 	* The scrollbars for LiClipse editors are now hidden by default (as the minimap provides a proper replacement)
+ 	* Context menu in editor > languages, provides option to edit the language definition for the current file
+ 	* The HTML/Django editors allow the user to add Breakpoints in Django Template files for debugging
+ 	* LiClipse editors are no longer set as the default editors
+ 	* Upgraded to PyDev 3.7.0
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 1.0.0
+------------------------------------------------------------
+
+ 	* It's possible to launch languages with support for hyperlinking. See: Running/Launch (launch.html) for details
+
+ 	* F9: Launches using editor language
+ 	* CTRL+SHIFT+F9: Terminates the last launch and relaunches it
+ 	* CTRL+ALT+F9: Terminates all launches
+ 	* CTRL+F11: Relaunches the last launch
+
+ 	* Extending a language to add templates is easier. See: Templates (templates.html) for details
+ 	* The Julia language is now supported
+ 	* If there's some text selected, completions that don't use the selection are not shown
+ 	* When a completion requires a selection or block, it won't appear if no text is selected
+ 	* Fixed issue on numbers syntax highlight
+ 	* Added the Eclipse 4.4 Dark theme as an option
+ 	* Upgraded to Eclipse 4.4.0
+ 	* Upgraded to PyDev 3.6.0
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 0.9.9
+------------------------------------------------------------
+
+ 	* Upgraded to PyDev 3.5.0
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 0.9.8
+------------------------------------------------------------
+
+ 	* Upgraded to Eclipse 4.3.2
+ 	* Upgraded to EGit 3.3.0
+ 	* Upgraded to PyDev 3.4.1
+ 	* Change default: line numbers shown
+ 	* Change default: print margin shown
+ 	* Change default: spaces instead of tabs
+ 	* Change default: search incremental
+
+ 
+** RELEASE HIGHLIGHTS FOR LICLIPSE 0.9.7
+------------------------------------------------------------
+
+ 	* EGit is properly themed
+ 	* Kivy Language is now supported
+ 	* Ctrl+Tab and Ctrl+Shift+Tab are bound by default to next/previous editor
+ 	* Quick Access (in main toolbar) is now properly themed
+ 	* Compare editors from LiClipse provide syntax highlighting when diffing
+ 	* Improved code-completion in xml editor to create a new tag from word next to cursor
+ 	* Added editor icons for more editors
+ 	* Adding some templates to java language editor
+ 	* Mark occurrences is now provided (text based)
+ 	* Shift+Alt+O may be used to toggle mark occurrences
+ 	* Improved default theme a bit
+ 	* The theme is reapplied when LiClipse starts to deal with changes on existing themes (may be turned off in the color theme preferences page)
+ 	* It's possible to specify a color for the editor current line background and another color for other widgets (tree, table) current line background
+
