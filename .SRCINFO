@@ -1,0 +1,15 @@
+pkgbase = lapdog
+	pkgdesc = Take actions when specific devices appear/disappear from your LAN
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ltworf/lapdog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = liboping
+	source = git+https://github.com/ltworf/lapdog.git
+	sha1sums = SKIP
+
+pkgname = lapdog
+

@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c2bbdfc..00c4ed3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,10 +34,10 @@ target_link_libraries(lapdog oping)
+
+ SET(CMAKE_CXX_FLAGS "-std=c++0x")
+
+-install(TARGETS lapdog RUNTIME DESTINATION /usr/sbin/)
++install(TARGETS lapdog RUNTIME DESTINATION /usr/bin/)
+ install(PROGRAMS init/lapdog DESTINATION /etc/init.d/)
+ install(FILES doc/lapdog.conf DESTINATION /etc/ COMPONENT config)
+ install(FILES doc/device.conf DESTINATION /etc/lapdog/ COMPONENT config)
+-install(FILES init/lapdog.service DESTINATION /lib/systemd/system/ COMPONENT config)
++install(FILES init/lapdog.service DESTINATION /usr/lib/systemd/system/ COMPONENT config)
+ install(FILES CHANGELOG DESTINATION /usr/share/doc/lapdog)
