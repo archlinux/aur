@@ -20,6 +20,7 @@ pkgbase = vcmi-git
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	depends = hicolor-icon-theme
+	depends = fuzzylite
 	optdepends = innoextract: required by vcmibuilder
 	optdepends = unshield: required by vcmibuilder
 	optdepends = unzip: required by vcmibuilder

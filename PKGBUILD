@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://vcmi.eu"
 license=('GPL2')
 depends=('boost-libs' 'ffmpeg' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'qt5-base' 'libxkbcommon-x11'
-         'desktop-file-utils' 'gtk-update-icon-cache' 'hicolor-icon-theme')
+         'desktop-file-utils' 'gtk-update-icon-cache' 'hicolor-icon-theme' 'fuzzylite')
 makedepends=('boost' 'cmake' 'git')
 optdepends=('innoextract: required by vcmibuilder'
             'unshield: required by vcmibuilder'
@@ -37,6 +37,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR='lib' \
     -DCMAKE_SKIP_RPATH='FALSE' \
     -DENABLE_TEST=OFF \
+    -DFORCE_BUNDLED_FL=OFF \
     -DCMAKE_BUILD_TYPE='RelWithDebInfo'
   make
 }
