@@ -41,7 +41,7 @@ pkgver() {
 }
 
 build() {
-  if [ ! -f /opt/iortcw-data/pak0.pk3 ]; then
+  if [ ! -f /opt/wolf-data/pak0.pk3 ]; then
    echo "pak0.pk3 doesn't exist. The game will not start"
    echo "Follow the iortcw-data package instructions!"
    sleep 5
@@ -58,11 +58,10 @@ package_iortcw-git() {
   cd ../MP
   make USE_INTERNAL_LIBS=0 COPYDIR=$pkgdir/opt/iortcw/ copyfiles
 
-    
   ln -s -r /opt/iortcw-data/mp_bin.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/mp_pak0.pk3   $pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/mp_pak1.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/mp_pak2.pk3	$pkgdir/opt/iortcw/main  
+  ln -s -r /opt/wolf-data/mp_pak0.pk3   $pkgdir/opt/iortcw/main
+  ln -s -r /opt/wolf-data/mp_pak1.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/wolf-data/mp_pak2.pk3	$pkgdir/opt/iortcw/main  
   ln -s -r /opt/iortcw-data/mp_pak3.pk3	$pkgdir/opt/iortcw/main
   ln -s -r /opt/iortcw-data/mp_pak4.pk3	$pkgdir/opt/iortcw/main
   ln -s -r /opt/iortcw-data/mp_pak5.pk3	$pkgdir/opt/iortcw/main
@@ -74,9 +73,9 @@ package_iortcw-git() {
   ln -s -r /opt/iortcw-data/mp_pakmaps5.pk3	$pkgdir/opt/iortcw/main
   ln -s -r /opt/iortcw-data/mp_pakmaps6.pk3	$pkgdir/opt/iortcw/main  
   ln -s -r /opt/iortcw-data/scripts	$pkgdir/opt/iortcw/main 
-  ln -s -r /opt/iortcw-data/pak0.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/sp_pak1.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/sp_pak2.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/wolf-data/pak0.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/wolf-data/sp_pak1.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/wolf-data/sp_pak2.pk3	$pkgdir/opt/iortcw/main
   ln -s -r /opt/iortcw-data/sp_pak3.pk3	$pkgdir/opt/iortcw/main
   ln -s -r /opt/iortcw-data/sp_pak4.pk3	$pkgdir/opt/iortcw/main
   ln -s -r /opt/iortcw-data/rotate.cfg	$pkgdir/opt/iortcw/main       
