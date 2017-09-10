@@ -17,21 +17,25 @@ pkgdesc="The Debian Package Manager.  Don't use it instead of Arch's 'pacman'."
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/dpkg"
 license=('GPL')
+options=('emptydirs')
 depends=('xz' 'zlib' 'bzip2' 'perl')
 makedepends=('perl-io-string' 'perl-timedate' 'git')
 checkdepends=('perl-io-string' 'perl-test-pod')
-source=("$pkgname-$pkgver::git+https://anonscm.debian.org/git/dpkg/dpkg.git#commit=$_commit")
+source=("$pkgname::git+https://anonscm.debian.org/git/dpkg/dpkg.git#commit=$_commit")
 sha256sums=('SKIP')
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     #make check
 }
 
-build() {
-    cd "$pkgname-$pkgver"
+prepare() {
+    cd "$pkgname"
     autoreconf -f -i
+}
 
+build() {
+    cd "$pkgname"
     ./configure --prefix=/usr \
         --sysconfdir=/etc \
         --localstatedir=/var \
@@ -41,9 +45,9 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     make DESTDIR="$pkgdir" install
 
     install -d "$pkgdir/var/$pkgname"/updates/
-    touch "${pkgdir}/var/lib/$pkgname"/{status,available}
+    touch "$pkgdir/var/lib/$pkgname"/{status,available}
 }
