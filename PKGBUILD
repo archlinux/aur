@@ -4,7 +4,7 @@ pkgdesc="ROS - Interface for enforcing joint limits."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-kinetic-joint-limits-interface'
-pkgver='0.11.3'
+pkgver='0.12.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_control-release-release-kinetic-joint_limits_interface-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/kinetic/joint_limits_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('631194e223105a1584fc401d6260a54f705fdde268ef0c3fd1d083b28c908f20')
+sha256sums=('ed17ab628dc1db5e9e5c00bc8e812aa3cce3f0d0991fe866f7023c6f5ad15340')
 
 build() {
   # Use ROS environment variables
