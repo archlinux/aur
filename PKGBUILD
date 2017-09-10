@@ -1,28 +1,26 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer: Alad Wenter <alad@mailbox.org>
+# Maintainer: jyantis <yantis@yantis.net>
 
 # Based on the PKGBUILD for datamash from
 # Timothy Rice <t.rice@ms.unimelb.edu.au>
-
 pkgname=datamash-git
-pkgver=v1.0.6.r54.gf8ae71f
-pkgrel=3
+pkgver=1.2.r4.gfd49457
+pkgrel=1
 pkgdesc='A command-line program which performs numeric, textual and statistical operations on plain text data.'
-arch=('any')
+arch=('x86_64' 'i686')
 url='https://www.gnu.org/software/datamash/'
 license=('GPL')
-source=('git://git.sv.gnu.org/datamash.git')
+source=('git+https://git.savannah.gnu.org/git/datamash.git')
 sha256sums=('SKIP')
 depends=('glibc')
+# XXX rsync/wget are only needed for .po files in bootstrap.
 makedepends=('git' 'gperf' 'rsync' 'wget')
 conflicts=('datamash')
 provides=('datamash')
-install=datamash.install
+
 pkgver() {
   cd datamash
-  set -o pipefail
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-  # git describe --long | sed -r 's/^v//' ||
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//; s/-/.r/; s/-/./'
 }
 
 build() {
