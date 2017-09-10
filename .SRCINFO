@@ -2,7 +2,7 @@
 # Tue Dec 29 15:10:50 UTC 2015
 pkgbase = gammaray
 	pkgdesc = A tool for examining the internals of a Qt application and to some extent also manipulate it
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = http://www.kdab.com/kdab-products/gammaray/
 	arch = i686
