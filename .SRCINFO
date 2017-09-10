@@ -1,0 +1,16 @@
+pkgbase = redream-git
+	pkgdesc = SEGA Dreamcast emulator (development version)
+	pkgver = r941.0846d112
+	pkgrel = 1
+	url = http://redream.io
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = gcc-libs
+	provides = redream
+	conflicts = redream
+	source = git+https://github.com/inolen/redream.git
+	md5sums = SKIP
+
+pkgname = redream-git
+
