@@ -7,11 +7,12 @@ pkgbase = libcs50-git
 	arch = i686
 	groups = cs50
 	license = unknown
+	makedepends = asciidoctor
 	makedepends = git
 	provides = libcs50
 	conflicts = libcs50
 	source = git+https://github.com/cs50/libcs50.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = libcs50-git
 

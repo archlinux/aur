@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 url="https://cs50.harvard.edu/"
 license=('unknown')
 groups=('cs50')
-makedepends=('git')
+makedepends=('asciidoctor' 'git')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=('git+https://github.com/cs50/libcs50.git')
@@ -20,21 +20,22 @@ pkgver() {
 
   git describe --tags --long           \
     | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
-    | sed 's/v//'                      \
-    | sed 's/deb//'
+    | sed 's/v//'
 }
 
 build() {
   cd "${_gitname}"
 
-  make build
+  make
 }
 
 package() {
   cd "${_gitname}"
 
-  install -d -m 755 "${pkgdir}/usr/"
-  cp -rp build/* "${pkgdir}/usr"
+ install -d "${pkgdir}/usr"
+ install -d "${pkgdir}/usr/share/man/man3"
+ cp -rp build/* "${pkgdir}/usr/"
+ cp -rp debian/docs/* "${pkgdir}/usr/share/man/man3/"
 }
 
 # vim: ts=2 sw=2 et:
