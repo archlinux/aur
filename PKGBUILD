@@ -5,9 +5,9 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.13
-_zenpatch=zen-4.13-e8987ea24eacd7c62395a72c56c009c790488c72.diff
-pkgver=4.13
-pkgrel=2
+_zenpatch=zen-4.13.1-2ce4f12c263fb44095950b05ad3b1015e5f7c3d1.diff
+pkgver=4.13.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -15,8 +15,8 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "https://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.xz"
         "https://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.sign"
         # the main kernel config files
@@ -28,7 +28,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '49ab0ac9564afd2cf501598c586802b0e29e3075c6bd816fa5ea9870799ba65f'
+            '6664b089bdb6513b006bfe65c6fee45d38ddfe17f6ccc87a720e831d4c215b4d'
+            'SKIP'
+            'cd137c0bbf1ea045f71323e91ce87d3e909b29362b804640dd460e0e83168781'
             'SKIP'
             'c97a5b80158d1b36b7bf07795dd94b6e07f30741e2abd069a25e0c78f0a4aab3'
             '110621a94ee620ed5eba1c43db1306cddb6b012ba079a6d0ebb7cba029b8afeb'
@@ -46,7 +48,7 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  #patch -p1 -i ../patch-${pkgver}
+  patch -p1 -i ../patch-${pkgver}
 
   # security patches
 
