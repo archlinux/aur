@@ -30,7 +30,7 @@ pkgver() {
     git describe --long | sed -e 's/^thunar.//' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
 }
 
-build() {
+prepare() {
     cd "$pkgname"
     ./autogen.sh \
         --prefix=/usr \
@@ -46,6 +46,10 @@ build() {
         --enable-pcre \
         --enable-gtk-doc \
         --disable-debug
+}
+
+build() {
+    cd "$pkgname"
     make
 }
 
