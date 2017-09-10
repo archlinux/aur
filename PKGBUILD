@@ -1,6 +1,6 @@
 # Maintainer: SeeLook <seelook@gmail.com>
 pkgname=nootka
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=2
 pkgdesc="A crossplatform tool for learning classical score notation. Mostly for guitarists but also very good for ear training."
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ optdepends=(
 conflicts=('nootka-hg')
 makedepends=('cmake' 'qt5-base' 'fftw' 'libvorbis' 'soundtouch' 'alsa-lib')
 source=("http://sourceforge.net/projects/nootka/files/Nootka-$pkgver/nootka-$pkgver-source.tar.bz2")
-md5sums=('8a36f68bba0c47196575927649b7cc3b')
+md5sums=('e8ccc1d9fb406e8eb7e3b9493a5652f7')
 
 build() {
   cd "$srcdir/nootka-$pkgver-source"
