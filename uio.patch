@@ -1,0 +1,12 @@
+--- a/ros_comm-release-release-kinetic-roscpp-1.12.7-0/src/libros/transport/transport_udp.cpp	2017-02-17 18:32:58.000000000 -0800
++++ b/ros_comm-release-release-kinetic-roscpp-1.12.7-0/src/libros/transport/transport_udp.cpp	2017-09-10 11:08:47.272993825 -0700
+@@ -48,6 +48,9 @@
+ #elif defined(__ANDROID__)
+   // For readv() and writev() on ANDROID
+   #include <sys/uio.h>
++#elif defined(_POSIX_VERSION)
++  // For readv() and writev()
++  #include <sys/uio.h>
+ #endif
+ 
+ namespace ros
