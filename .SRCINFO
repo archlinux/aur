@@ -1,0 +1,30 @@
+pkgbase = fonts-soutane
+	pkgdesc = Soutane TTF typefaces
+	pkgver = 20150509
+	pkgrel = 1
+	url = https://fontsup.com/full-search/soutane.html
+	arch = any
+	license = custom
+	provides = ttf-soutane
+	provides = ttf-soutane-black
+	provides = ttf-soutane-extrabold
+	conflicts = ttf-soutane
+	conflicts = ttf-soutane-black
+	conflicts = ttf-soutane-extrabold
+	source = Soutane-Regular.ttf::https://fontsup.com/download/96712.html
+	source = Soutane-Bold.ttf::https://fontsup.com/download/96708.html
+	source = Soutane-Italic.ttf::https://fontsup.com/download/96711.html
+	source = Soutane-Bold-Italic.ttf::https://fontsup.com/download/96707.html
+	source = Soutane-Black-Regular.ttf::https://fontsup.com/download/96713.html
+	source = Soutane-ExtraBold-Regular.ttf::https://fontsup.com/download/96714.html
+	source = Soutane-ExtraBold-Italic.ttf::https://fontsup.com/download/96715.html
+	sha256sums = f8aeae94cb33a57a232e3c4a5e530d2173e6f0756663b9426a3de8b568d170f0
+	sha256sums = e8c14b7eb0c59aa32b117803e23d7f2eac853d705acbf7a04a8683094fa55be1
+	sha256sums = 5127d8814e7ae3d0e93f28f3c5351afc7fcea2c902bec6de312e3928176352e1
+	sha256sums = 2c1c51052c105257a3d3cc0ad1fe08136cc8bf2ddfbe89c911a3520e971bf633
+	sha256sums = fc0f2e8c6ab17f510dcab260c2b8af041743646cb87689f155ff88222222ea38
+	sha256sums = 690a3302ffc6f7769a812ec05de3944bdfa2f18d1094f6a708c4337b98e793dd
+	sha256sums = 5e2215c551a9fbcd011505ba2f91f21d079bc1b8bf9dd8e9206b73f5725a3c24
+
+pkgname = fonts-soutane
+
