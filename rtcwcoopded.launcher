@@ -1,4 +1,4 @@
 #!/bin/sh
 cd "/opt/rtcwcoop"
-exec ./rtcwcoopded.ARCH "$@"
+exec ./rtcwcoopded.ARCH +set com_homepath ".rtcwcoop" "$@"
 

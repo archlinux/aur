@@ -2,8 +2,8 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Return To Castle Wolfenstein MP
-Comment=Return To Castle Wolfenstein (Multi Player)
+Name=RTCWCoop
+Comment=RTCW Cooperative
 Exec=/usr/bin/rtcwcoop
 Icon=rtcwcoop
 Terminal=false

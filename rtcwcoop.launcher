@@ -1,4 +1,4 @@
 #!/bin/sh
 cd "/opt/rtcwcoop"
-exec ./rtcwcoop.ARCH +set cl_renderer rend2 "$@"
+exec ./rtcwcoop.ARCH +set com_homepath ".rtcwcoop" "$@"
 

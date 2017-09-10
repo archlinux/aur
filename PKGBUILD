@@ -1,4 +1,5 @@
 # Maintainer: M0Rf30
+
 pkgname=rtcwcoop-git
 pkgver=1.0.2.r3.g8695325f 
 pkgrel=1
@@ -6,7 +7,7 @@ pkgdesc="A Return to Castle Wolfenstein modification which enables cooperative g
 arch=('i686' 'x86_64')
 url="http://www.rtcwcoop.com"
 license=('GPL')
-depends=('iortcw-data' 'sdl2' 'opus' 'opusfile' 'libogg' 'zlib')
+depends=('iortcw-data' 'freetype2' 'sdl2' 'openal' 'opus' 'opusfile' 'libogg' 'zlib')
 makedepends=('cmake' 'git')
 install='rtcwcoop-git.install'
 source=("rtcwcoop::git+https://github.com/rtcwcoop/rtcwcoop.git"
@@ -20,7 +21,6 @@ pkgver() {
   cd "$srcdir/rtcwcoop"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 
 build() {
   if [ ! -f /opt/iortcw-data/pak0.pk3 ]; then
@@ -83,7 +83,6 @@ package() {
             $srcdir/rtcwcoopded.launcher
     fi
   
-
   # Install Launcher Script (Single Player Client)
     install -D -m 755 $srcdir/rtcwcoop.launcher \
         $pkgdir/usr/bin/rtcwcoop
@@ -96,8 +95,8 @@ package() {
 }
 
 md5sums=('SKIP'
-         'e08aab38a8574877258986038f043f89'
-         '6630b979c5f9b4ea6e7ff0e2927fa1e1'
+         '301306637434f08f4958f1ed4734f68f'
+         'c4b7030bb2739c46eef479fd1f3d1b63'
          '32223e6aec5bb6f425d0f7b5a5c41416'
          'bf26dc4c10d4bbfbd0c7a052a00c3cdf'
-         'f24dc703585569ba11ba0b94625ee8e0')
+         'd09a95bbf34f3a37a77247c267e4a51b')
