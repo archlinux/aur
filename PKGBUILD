@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.3.0+24027.fbdefffeaa21
+pkgver=4.3.0+24028.ca4ab27152a9
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -46,7 +46,6 @@ build() {
   cd build
   [[ $CARCH == "x86_64" ]] && _arch=amd64
   [[ $CARCH == "i686" ]] && _arch=i386
-  export LD_PRELOAD=/usr/lib/libGL.so
 
   ../configure \
     --prefix=/usr --libexecdir=/usr/lib --enable-shared --disable-jit \
