@@ -14,13 +14,13 @@ source=("$pkgname::git+https://github.com/GordStephen/pdsite" "binlink")
 md5sums=('SKIP' 'SKIP')
 
 pkgver() {
-    cd $srcdir/$pkgname
+    cd "$srcdir/$pkgname"
 	echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
-    mkdir -p $pkgdir/usr/share/pdsite
-	cp -r $pkgname/* $pkgdir/usr/share/pdsite/
-	cp -r $pkgname/.pdsite.yml.default $pkgdir/usr/share/pdsite/
-    install -D -m 755 $srcdir/binlink $pkgdir/usr/bin/pdsite
+    mkdir -p "$pkgdir/usr/share/pdsite"
+	cp -r $pkgname/* "$pkgdir/usr/share/pdsite/"
+	cp -r $pkgname/.pdsite.yml.default "$pkgdir/usr/share/pdsite/"
+    install -D -m 755 "$srcdir/binlink" "$pkgdir/usr/bin/pdsite"
 }
