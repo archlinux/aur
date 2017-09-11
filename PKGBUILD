@@ -48,7 +48,7 @@ build() {
 
 package_nvidia-zen() {
     pkgdesc="NVIDIA drivers for linux-zen"
-    depends=('linux-zen>=4.11' 'linux-zen<4.12' "nvidia-utils=${pkgver}" 'libgl')
+    depends=('linux-zen>=4.12' 'linux-zen<4.13' "nvidia-utils=${pkgver}" 'libgl')
     install=nvidia.install
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
