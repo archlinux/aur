@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a C++ parser for the Collada robot descript
 url='http://ros.org/wiki/collada_parser'
 
 pkgname='ros-kinetic-collada-parser'
-pkgver='1.12.8'
+pkgver='1.12.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,13 +30,13 @@ depends=(${ros_depends[@]}
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/collada_parser/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# source=("${_dir}"::"git+https://github.com/ros-gbp/collada_urdf-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="robot_model-release-release-kinetic-collada_parser-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/kinetic/collada_parser/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('378fe3c9dac0cc709b2a95fb1a3822d50d0b340c2a5a430ab564590539272bf1')
+_dir="collada_urdf-release-release-kinetic-collada_parser-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/collada_urdf-release/archive/release/kinetic/collada_parser/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('7458c11868ecfb20b8337f7104f4096afee8b65b845f297754b9df3b30b0ded8')
 
 build() {
   # Use ROS environment variables
