@@ -1,7 +1,7 @@
 # Maintainer: rohannb <rohannb30@gmail.com>
 pkgname='liclipse'
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight editors, theming and usability improvements for Eclipse'
 arch=('i686' 'x86_64')
 url='https://www.liclipse.com/index.html'
@@ -44,16 +44,16 @@ prepare() {
 }
 
 package() {
-	mkdir -pv "$pkgdir/opt/$pkgname"
-	cp -rv "$srcdir/$pkgname" "$pkgdir/opt"
+	mkdir -p "$pkgdir/opt/$pkgname"
+	cp -r "$srcdir/$pkgname" "$pkgdir/opt"
 	
-	mkdir -pv "$pkgdir/usr/bin"
-	ln -sv "/opt/$pkgname/LiClipse" "$pkgdir/usr/bin/liclipse"
+	mkdir -p "$pkgdir/usr/bin"
+	ln -s "/opt/$pkgname/LiClipse" "$pkgdir/usr/bin/liclipse"
 	
-	install -Dvm644 "$srcdir/$pkgname/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.TXT"
+	install -Dm644 "$srcdir/$pkgname/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.TXT"
 	
-	install -Dvm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	convert "$srcdir/$pkgname/icon.xpm" "$pkgname.png"
-	install -Dvm644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
