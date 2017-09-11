@@ -1,0 +1,7 @@
+post_install() {
+  echo 'Game manual located at https://github.com/raceintospace/raceintospace/blob/master/doc/manual/manual.md'
+}
+
+post_upgrade() {
+  post_install $1
+}
