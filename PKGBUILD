@@ -30,6 +30,7 @@ sha256sums=('SKIP'
             'd20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12')
 sha256sums_x86_64=('SKIP'
                    'SKIP')
+noextract=("${pkgname}_${pkgver}-${_pkgbump}_amd64.deb")
 validpgpkeys=("AAC9264309E4D717441DB9527373B12CE03BEB4B")
 
 _verify_repo() {
@@ -87,6 +88,10 @@ _verify_repo() {
         error "Hash sum of '$debfile' did not match expected"
         return 1
     fi
+
+    msg2 "Extracting $debfile..."
+    rm -f control.tar.gz data.tar.xz
+    bsdtar xf "$debfile"
 }
 
 prepare() {
