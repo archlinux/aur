@@ -6,7 +6,7 @@ set -e
 # requests to an actual mirror while caching contents to /var/cache/pacman/pkg.
 # Use in pacman.conf with:
 # 
-# 	Server = https://server/path/to/proxy.cgi/$repo/os/$arch/
+# 	Server = http://server/path/to/proxy.cgi/$repo/os/$arch/
 
 [[ $REMOTE_ADDR = 127.0.0.1 ]]
 
@@ -20,7 +20,7 @@ MIR=${MIR%/}
 PKG=${PATH_INFO##*/}
 
 if [[ $PATH_INFO = /vesath/* ]]; then
-	MIR='https://arch.vesath.org/'
+	MIR='http://arch.vesath.org/'
 	PATH_INFO=${PATH_INFO#/vesath/os/}
 fi
 

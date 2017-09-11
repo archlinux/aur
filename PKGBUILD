@@ -2,7 +2,7 @@
 
 pkgname=buildstuff
 pkgver=0.9
-pkgrel=4
+pkgrel=5
 pkgdesc='Stuff to build packages in virtual machines'
 url='http://arch.vesath.org/'
 arch=('any')
@@ -27,6 +27,6 @@ package() {
 
 sha256sums=('386c1300cf5ce851a7532d8ee903c077193f61e2c01007c7991283b887228faf'
             'acf683446e1162104759b1a75d18859b1a36ac6f3eeabb241025d0e6c37c7960'
-            '8e55607c0948d8219fa7063f9df4fbb2c432275694253848a5fc1240275d7e36'
-            '85da3d942596be0b69c5595b4edf8f6b46cd9185f55597db8cf370f5c401e410'
+            '8db3fcc4ac6d7d4238b921c4a28b1802426868be58111006340d101718c15a98'
+            '72307901efa866bdedf86c00dde6578cf5ce16ec801880f562d5fa57a82ad0d6'
             '59e100c1140a109c8a98feb6ac5dc86e3830d2964ead74e820651b504b5829d4')

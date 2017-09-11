@@ -23,8 +23,8 @@ vhost="
 
 start_vm() {
 	qemu-system-x86_64 \
-		-machine accel=kvm:tcg \
 		-cpu $cpu -smp 4 -m 4G \
+		-accel kvm:tcg,thread=multi \
 		-device virtio-net,netdev=vlan \
 		-netdev user,id=vlan,hostfwd=::$vport-:22 \
 		-drive file=$1 &
