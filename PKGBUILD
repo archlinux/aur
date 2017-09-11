@@ -15,8 +15,8 @@ url='http://invisible-island.net/ncurses/ncurses.html'
 license=(MIT)
 depends=(glibc gcc-libs)
 provides=(libncurses++w.a libformw.a libmenuw.a libpanelw.a libncursesw.a libncurses++w.so libformw.so libmenuw.so 
-libpanelw.so libncursesw.so libtinfo.a libtinfo.so ncurses libtinfo)
-conflicts=(libtinfo ncurses)
+libpanelw.so libncursesw.so libtinfo.a libtinfo.so ncurses ncurses-full libtinfo)
+conflicts=(libtinfo ncurses ncurses-full-git ncurses5-compat-libs)
 source=(http://invisible-mirror.net/archives/ncurses/current/ncurses-${_pkgver}.tgz{,.asc})
 md5sums=('b7b1cedc484172434855b00831183458'
          'SKIP')
