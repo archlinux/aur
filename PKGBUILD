@@ -5,7 +5,7 @@
 pkgname=python-elasticsearch
 _gitname=elasticsearch-py
 _gitauthor=elasticsearch
-pkgver=5.1.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="Python client for Elasticsearch"
 arch=('any')
@@ -21,7 +21,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/$_gitauthor/$_gitname/archive/$pkgver.tar.gz")
-sha512sums=('a8b34c767247c906e7b602161adb94614b17f293e350908b375ae9c1a4f835914b3f4081cab20f958976c8b355189f1b4d3afa88dc66277773cf944fa7bbaccb')
+sha512sums=('9d30ffa810f495662769e6d2f2627f9ef6aa3849bc2eecd09df28c05a036b8fb15ae465914c38eeb3d854683bc150a3c56425388312bcd112bd5cc7b33ad41ae')
 
 package() {
     cd "$srcdir/$_gitname-$pkgver"

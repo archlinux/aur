@@ -1,6 +1,6 @@
 pkgbase = python-elasticsearch
 	pkgdesc = Python client for Elasticsearch
-	pkgver = 5.1.0
+	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://github.com/elasticsearch/elasticsearch-py
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-elasticsearch
 	depends = elasticsearch
 	depends = python-urllib3
 	options = !emptydirs
-	source = https://github.com/elasticsearch/elasticsearch-py/archive/5.1.0.tar.gz
-	sha512sums = a10483c853b3b1b6a9a250ceb51738b5351764cde18140b0b754f6563aa5ed8d3095063e85524968adc0faeb846acebedeeab7a29533e3025db698db228823d9
+	source = https://github.com/elasticsearch/elasticsearch-py/archive/5.4.0.tar.gz
+	sha512sums = 9d30ffa810f495662769e6d2f2627f9ef6aa3849bc2eecd09df28c05a036b8fb15ae465914c38eeb3d854683bc150a3c56425388312bcd112bd5cc7b33ad41ae
 
 pkgname = python-elasticsearch
 
