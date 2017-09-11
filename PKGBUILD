@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a tool to convert Unified Robot Description
 url='http://ros.org/wiki/collada_urdf'
 
 pkgname='ros-kinetic-collada-urdf'
-pkgver='1.12.8'
+pkgver='1.12.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -21,10 +21,10 @@ ros_makedepends=(ros-kinetic-cmake-modules
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  assimp
   collada-dom
+  urdfdom-headers
   urdfdom
-  urdfdom-headers)
+  assimp)
 
 ros_depends=(ros-kinetic-tf
   ros-kinetic-resource-retriever
@@ -36,19 +36,20 @@ ros_depends=(ros-kinetic-tf
 depends=(${ros_depends[@]}
   assimp
   collada-dom
+  urdfdom-headers
   urdfdom
-  urdfdom-headers)
+  uriparser)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/collada_urdf/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# source=("${_dir}"::"git+https://github.com/ros-gbp/collada_urdf-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="robot_model-release-release-kinetic-collada_urdf-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/kinetic/collada_urdf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('66a0a272e36a9d57745955153a0320f3198a14383a716fc6483914190a5c7f76')
+_dir="collada_urdf-release-release-kinetic-collada_urdf-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/collada_urdf-release/archive/release/kinetic/collada_urdf/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('61f0726ae98ec87c3ea09e9b58502cb945cf3c5cc467e403bf58334118188144')
 
 build() {
   # Use ROS environment variables
