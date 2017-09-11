@@ -1,10 +1,9 @@
 # Mantainer: Francisco Demartino <demartino.francisco@gmail.com>
 pkgname=brreep
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Beep glide on poweron/poweroff"
 arch=('any')
-url=('http://127.1.2.7/nowhere')
 depends=(beep)
 license=('GPL')
 source=('brreep.service')

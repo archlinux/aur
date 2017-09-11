@@ -1,8 +1,7 @@
 pkgbase = brreep
 	pkgdesc = Beep glide on poweron/poweroff
 	pkgver = 1
-	pkgrel = 1
-	url = http://127.1.2.7/nowhere
+	pkgrel = 2
 	arch = any
 	license = GPL
 	depends = beep
