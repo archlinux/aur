@@ -14,12 +14,12 @@ source=("https://github.com/wangp/bower/archive/$pkgver.tar.gz")
 md5sums=('0cad190eb8df2b92f8c397fc1efa73d1')
 
 build() {
-    patch $srcdir/bower-$pkgver/src/Mercury.options < ../arch.patch
-	cd $srcdir/bower-$pkgver
+    patch "$srcdir/bower-$pkgver/src/Mercury.options" < ../arch.patch
+	cd "$srcdir/bower-$pkgver"
 	make PARALLEL=$MAKEFLAGS
 }
 
 package() {
-    mkdir -p $pkgdir/usr/bin
-	install -m 755 $srcdir/bower-$pkgver/bower $pkgdir/usr/bin/
+    mkdir -p "$pkgdir/usr/bin"
+	install -m 755 "$srcdir/bower-$pkgver/bower" "$pkgdir/usr/bin/"
 }
