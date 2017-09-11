@@ -28,10 +28,10 @@ sha256sums=('d20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12'
             '2e32bc0110d349a1613878a681dc7748f83fb8766b11911c71a923c101382843')
 sha256sums_x86_64=('SKIP')
 
+jagexpgpkey="AAC9264309E4D717441DB9527373B12CE03BEB4B"
+
 _verify_deb() {
-    local dist=trusty
-    local repo="https://content.runescape.com/downloads/ubuntu/dists/$dist"
-    local jagex="AAC9264309E4D717441DB9527373B12CE03BEB4B"
+    local repo="https://content.runescape.com/downloads/ubuntu/dists/trusty"
     local _out
 
     if (( SKIPPGPCHECK )); then
@@ -56,7 +56,7 @@ _verify_deb() {
         error "PGP signature of 'Release' could not be verified"
         echo "$_out" | grep -v "^\\[GNUPG:\\]"
         return 1
-    elif ! egrep -qs "^\\[GNUPG:\\] VALIDSIG $jagex " <<< "$_out"; then
+    elif ! egrep -qs "^\\[GNUPG:\\] VALIDSIG $jagexpgpkey " <<< "$_out"; then
         error "PGP signature of 'Release' was not made by Jagex"
         echo "$_out" | grep -v "^\\[GNUPG:\\]"
         return 1
