@@ -2,16 +2,16 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=buku
-pkgver=3.3
+pkgver=3.3.1
 pkgrel=1
-pkgdesc="A highly delicious bookmark manager. Your mini web!"
+pkgdesc="Powerful command-line bookmark manager."
 arch=('any')
 depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'python-requests' 'python-urllib3')
 makedepends=('make')
 url="https://github.com/jarun/Buku"
 license=('GPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/jarun/Buku/tar.gz/v$pkgver)
-sha256sums=('cd4c5274cf8088b0872f9c03484df89a5fd6d26446541d356f360c1683378ec5')
+sha256sums=('f0ea4e3b5949452179ad03c3fa9b5b1295313c3741ed11e896f07abd0502ab0b')
 
 package() {
   cd "$srcdir/Buku-$pkgver"
