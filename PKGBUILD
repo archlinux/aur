@@ -2,7 +2,7 @@
 
 pkgname=opera-developer-ffmpeg-codecs
 pkgver=62.0.3198.0
-pkgrel=1
+pkgrel=2
 pkgdesc="additional support for proprietary codecs for opera-developer"
 arch=('x86_64')
 url="https://ffmpeg.org/"
@@ -52,7 +52,7 @@ build() {
 
   export PATH="$srcdir/python2-path:$PATH"
 
-  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true use_gconf=false use_gio=false use_gnome_keyring=false use_pulseaudio=false link_pulseaudio=false use_kerberos=false use_cups=false use_sysroot=false use_gold=false use_allocator=\"none\" linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false is_clang=false clang_use_chrome_plugins=false is_component_build=true is_debug=false symbol_level=0"
+  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true use_gconf=false use_gio=false use_gnome_keyring=false use_pulseaudio=false link_pulseaudio=false use_kerberos=false use_cups=false use_sysroot=false use_gold=false use_allocator=\"none\" linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false is_clang=false clang_use_chrome_plugins=false is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=false"
 
   python2 tools/gn/bootstrap/bootstrap.py -v -s
   out/Release/gn gen out/Release -v --args="$args" --script-executable=/usr/bin/python2
