@@ -26,6 +26,11 @@ VER="$(git log -1 --decorate=short | grep ncurses | sed -e 's/ /\n/g' | tail -4 
 PATCH="$(git log -1 --decorate=short | grep ncurses | sed -e 's/ /\n/g' | tail -1 | head -1)"
 echo -n $VER+$PATCH
 }
+short-pkgver () {
+cd $srcdir/$_pkgname
+VER="$(git log -1 --decorate=short | grep ncurses | sed -e 's/ /\n/g' | tail -4 | head -1)"
+echo -n $VER
+}
 
 
 build() {
@@ -65,10 +70,10 @@ package() {
 
   # install libtinfo
   install -d "$pkgdir"/usr/lib
-  ln -s /usr/lib/libncursesw.so.$pkgver "$pkgdir"/usr/lib/libtinfo.so."$pkgver"
-  ln -s /usr/lib/libtinfo.so."$pkgver" "$pkgdir"/usr/lib/libtinfo.so
-  ln -s /usr/lib/libncursesw.a.$pkgver "$pkgdir"/usr/lib/libtinfo.a."$pkgver"
-  ln -s /usr/lib/libtinfo.a."$pkgver" "$pkgdir"/usr/lib/libtinfo.a
+  ln -s /usr/lib/libncursesw.so.$short-pkgver "$pkgdir"/usr/lib/libtinfo.so."$short-pkgver"
+  ln -s /usr/lib/libtinfo.so."$short-pkgver" "$pkgdir"/usr/lib/libtinfo.so
+  ln -s /usr/lib/libncursesw.a.$short-pkgver "$pkgdir"/usr/lib/libtinfo.a."$short-pkgver"
+  ln -s /usr/lib/libtinfo.a."$short-pkgver" "$pkgdir"/usr/lib/libtinfo.a
 
 }
 
