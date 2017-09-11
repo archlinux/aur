@@ -1,0 +1,34 @@
+pkgbase = ncurses-full-git
+	pkgdesc = System V Release 4.0 curses emulation library, with static and shared libraries, Inclusion of libTinfo.
+	pkgver = 6.0+20170902
+	pkgrel = 1
+	url = http://invisible-island.net/ncurses/ncurses.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = libncurses++w.a
+	provides = libformw.a
+	provides = libmenuw.a
+	provides = libpanelw.a
+	provides = libncursesw.a
+	provides = libncurses++w.so
+	provides = libformw.so
+	provides = libmenuw.so
+	provides = libpanelw.so
+	provides = libncursesw.so
+	provides = libtinfo.a
+	provides = libtinfo.so
+	provides = ncurses
+	provides = ncurses-full
+	provides = libtinfo
+	conflicts = libtinfo
+	conflicts = ncurses
+	conflicts = ncurses-full
+	conflicts = ncurses5-compat-libs
+	source = ncurses::git+https://github.com/mirror/ncurses.git
+	md5sums = SKIP
+
+pkgname = ncurses-full-git
+
