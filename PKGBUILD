@@ -4,7 +4,7 @@ pkgdesc="ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic 
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-kinetic-gazebo-plugins'
-pkgver='2.5.8'
+pkgver='2.5.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,13 +17,12 @@ ros_makedepends=(ros-kinetic-trajectory-msgs
   ros-kinetic-rosconsole
   ros-kinetic-catkin
   ros-kinetic-cv-bridge
-  ros-kinetic-nodelet
+  ros-kinetic-message-generation
   ros-kinetic-geometry-msgs
-  ros-kinetic-roscpp
+  ros-kinetic-camera-info-manager
   ros-kinetic-diagnostic-updater
   ros-kinetic-std-msgs
   ros-kinetic-dynamic-reconfigure
-  ros-kinetic-rostest
   ros-kinetic-rosgraph-msgs
   ros-kinetic-image-transport
   ros-kinetic-nav-msgs
@@ -32,26 +31,25 @@ ros_makedepends=(ros-kinetic-trajectory-msgs
   ros-kinetic-rospy
   ros-kinetic-std-srvs
   ros-kinetic-tf2-ros
+  ros-kinetic-gazebo-dev
   ros-kinetic-polled-camera
-  ros-kinetic-camera-info-manager
-  ros-kinetic-message-generation)
+  ros-kinetic-roscpp
+  ros-kinetic-nodelet)
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  gazebo)
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-kinetic-trajectory-msgs
   ros-kinetic-gazebo-msgs
   ros-kinetic-sensor-msgs
-  ros-kinetic-gazebo-ros
   ros-kinetic-angles
   ros-kinetic-rosconsole
   ros-kinetic-cv-bridge
   ros-kinetic-nodelet
   ros-kinetic-geometry-msgs
-  ros-kinetic-roscpp
+  ros-kinetic-camera-info-manager
+  ros-kinetic-diagnostic-updater
   ros-kinetic-std-msgs
   ros-kinetic-dynamic-reconfigure
-  ros-kinetic-rostest
   ros-kinetic-rosgraph-msgs
   ros-kinetic-image-transport
   ros-kinetic-nav-msgs
@@ -60,11 +58,11 @@ ros_depends=(ros-kinetic-trajectory-msgs
   ros-kinetic-rospy
   ros-kinetic-std-srvs
   ros-kinetic-tf2-ros
+  ros-kinetic-gazebo-dev
   ros-kinetic-polled-camera
-  ros-kinetic-camera-info-manager
-  ros-kinetic-message-generation)
-depends=(${ros_depends[@]}
-  gazebo)
+  ros-kinetic-message-runtime
+  ros-kinetic-roscpp)
+depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/gazebo_plugins/${pkgver}-${_pkgver_patch}
@@ -75,7 +73,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-kinetic-gazebo_plugins-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b1cb8644eb8701d82bb9bd4e6fa5e2bb76f206cc60d685b8ae8fe064e0ec99d4')
+sha256sums=('840d6e6e1d699c6a949ee63299565df6ce3bec1e8298889d37c05ea082a02023')
 
 build() {
   # Use ROS environment variables
