@@ -3,7 +3,7 @@
 pkgbase=python-recommonmark
 pkgname=('python-recommonmark' 'python2-recommonmark')
 pkgver=0.4.0.133.c410abb
-pkgrel=2
+pkgrel=3
 _gitcommit=c410abb565a3c4ad4de0ce204ab2fa2db8031cf1
 pkgdesc='Markdown parser for docutils'
 url='https://github.com/rtfd/recommonmark'
@@ -14,9 +14,11 @@ makedepends=('git'
              'python2-setuptools' 'python2-commonmark' 'python2-docutils' 'python2-sphinx')
 checkdepends=('python-pytest' 'python2-pytest')
 source=(${pkgbase}::"git+https://github.com/rtfd/recommonmark#commit=$_gitcommit"
-        recommonmark-sphinx-refdomain-fix.patch)
+        recommonmark-sphinx-refdomain-fix.patch
+        recommonmark-fix-mdnode-parent.patch)
 sha512sums=('SKIP'
-            'df2440e7ce927ca6adc31e07f9e375fa4643bbe1c33a34821d3d3e5d9d4b2ae8bbdf7412a8f2c64d343c9004f54a4a650fc59e461b3b1eb1ab11c1dec02422fd')
+            'df2440e7ce927ca6adc31e07f9e375fa4643bbe1c33a34821d3d3e5d9d4b2ae8bbdf7412a8f2c64d343c9004f54a4a650fc59e461b3b1eb1ab11c1dec02422fd'
+            '89745108ad78349ace30582cb28f8693edc109c97e94182a37afe5219bec8988bb785d77594e34306facf0eaa4e640c0bdf4e53249d6154094222e58df9498e9')
 
 pkgver() {
   cd ${pkgbase}
@@ -28,6 +30,7 @@ pkgver() {
 
 prepare() {
   patch -d ${pkgbase} -p1 < "${srcdir}/recommonmark-sphinx-refdomain-fix.patch"
+  patch -d ${pkgbase} -p1 < "${srcdir}/recommonmark-fix-mdnode-parent.patch"
   cp -a ${pkgbase}{,-py2}
   for tool in cm2{html,latex,man,pseudoxml,xetex,xml}; do
     sed -r "s|(${tool}) |\12 |g" -i ${pkgbase}-py2/setup.py
