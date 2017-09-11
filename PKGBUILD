@@ -1,8 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 # Contributer: Jose Riha <jose1711 gmail com>
 pkgbase=python-resampy
-#pkgname=(python-resampy python2-resampy)
-pkgname=(python-resampy)
+pkgname=(python-resampy python2-resampy)
 _pkgname=resampy
 pkgver=0.1.5
 pkgrel=1
