@@ -18,8 +18,8 @@ pkgver() {
 }
 
 package() {
-	mkdir -p $pkgdir/usr/bin
-	install -m755 $pkgname/vokabeltrainer.groovy $pkgdir/usr/bin/vokabeltrainer
-	mkdir -p $pkgdir/usr/share/licenses/vokabeltrainer
-	install -m644 $pkgname/LICENSE.md $pkgdir/usr/share/licenses/vokabeltrainer/
+	mkdir -p "$pkgdir/usr/bin"
+	install -m755 $pkgname/vokabeltrainer.groovy "$pkgdir/usr/bin/vokabeltrainer"
+	mkdir -p "$pkgdir/usr/share/licenses/vokabeltrainer"
+	install -m644 $pkgname/LICENSE.md "$pkgdir/usr/share/licenses/vokabeltrainer/"
 }
