@@ -1,10 +1,10 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
+# Contributor: meatatt <meatatt at aliyun dot com>
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-_pkgname=Waterfox
 pkgver=55.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -12,7 +12,7 @@ url="https://www.waterfoxproject.org/"
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'nss' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'libvpx' 'kwaterfoxhelper' 'libevent' 'nspr' 'hicolor-icon-theme')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf' 'inetutils' 'xorg-server-xvfb'
-             'autoconf2.13' 'cargo' 'rust' 'clang' 'llvm' 'ccache')
+             'autoconf2.13' 'cargo' 'clang' 'llvm' 'ccache')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -25,7 +25,7 @@ options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=fde25c29562d
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _commit=49aea8cd7265240eab5d1361c5094f0586987dbd
-source=("waterfox-$pkgver.source.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_commit.tar.gz"
+source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
         no-crmf.diff
@@ -36,7 +36,9 @@ source=("waterfox-$pkgver.source.tar.gz::https://github.com/MrAlex94/Waterfox/ar
         pgo_fix_missing_kdejs.patch
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/distribution.ini"
-        "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.1")
+        "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.1"
+        jack-system-ports.patch
+        disable_e10s.patch)
 sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -48,13 +50,13 @@ sha256sums=('SKIP'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
             'e144a6fac4466acdba86194b43fb41c185c38e296d6262f26c3bff3d2b6db3be'
-            '03a25b7bde971ecfa35326b3c6e45450da325babed29d9cc2e10dd639f816ef6')
+            '03a25b7bde971ecfa35326b3c6e45450da325babed29d9cc2e10dd639f816ef6'
+            'be19426cd658ea0ff0dedbdd80da6bf84580c80d92f9b3753da107011dfdd85c'
+            'b7170633c30d69ee4de646dcf24b161ef8c79927a835c925697f8db5d1175da3')
 
 prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
-  
-  mv $srcdir/$_pkgname-$_commit $srcdir/$pkgname-$pkgver
   
   # Fix openSUSE's patches for Waterfox
   sed -i 's/Firefox/Waterfox/g' $srcdir/mozilla-kde.patch
@@ -63,7 +65,7 @@ prepare() {
   sed -i 's/kmozillahelper/kwaterfoxhelper/g' $srcdir/mozilla-kde.patch
   sed -i 's/firefox/waterfox/g' $srcdir/firefox-kde.patch
   
-  cd $pkgname-$pkgver
+  cd Waterfox
   patch -Np1 -i ../waterfox-install-dir.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
@@ -159,38 +161,31 @@ END
   patch -Np1 -i "$srcdir/mozilla-kde.patch"
   patch -Np1 -i "$srcdir/firefox-kde.patch"
   patch -Np1 -i "$srcdir/fix_waterfox_browser-kde_xul.patch"
+  patch -Np1 -i "../disable_e10s.patch"
 
   msg "Add missing file in Makefile for pgo builds"
-  patch -Np1 -i "$srcdir/pgo_fix_missing_kdejs.patch"
+  patch -Np1 -i "../pgo_fix_missing_kdejs.patch"
+  
+  # https://bugs.archlinux.org/task/52183
+  msg "Patching for Jack"
+  patch -Np1 -i ../jack-system-ports.patch
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd Waterfox
   export PATH="$srcdir/path:$PATH"
     make -f client.mk build
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd Waterfox
 
   cp "$srcdir/kde.js" obj-$CARCH-pc-linux-gnu/dist/bin/defaults/pref
 
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
-  _vendorgrejs="$pkgdir/opt/waterfox/defaults/pref/vendor-gre.js"
-  install -Dm644 /dev/stdin "$_vendorgrejs" <<END
-// Use LANG environment variable to choose locale
-pref("intl.locale.matchOS", true);
-
-// Fall back to en-US search plugins if none exist for the current locale
-pref("distribution.searchplugins.defaultLocale", "en-US");
-
-// Enable Network Manager integration
-pref("network.manage-offline-status", true);
-END
-
-  _vendor_wfjs="$pkgdir/opt/waterfox/browser/defaults/preferences/vendor-waterfox.js"
-  install -Dm644 /dev/stdin "$_vendor_wfjs" <<END
+  _vendor_js="$pkgdir/opt/waterfox/browser/defaults/preferences/vendor.js"
+  install -Dm644 /dev/stdin "$_vendor_js" <<END
 // Disable default browser checking
 pref("browser.shell.checkDefaultBrowser", false);
 
@@ -201,6 +196,16 @@ pref("extensions.autoDisableScopes", 3);
 // Don't display the one-off addon selection dialog when
 // upgrading from a version of Waterfox older than 8.0
 pref("extensions.shownSelectionUI", true);
+
+// Use LANG environment variable to choose locale
+pref("intl.locale.matchOS", true);
+
+// Fall back to en-US search plugins if none exist for the current locale
+pref("distribution.searchplugins.defaultLocale", "en-US");
+
+// Enable Screenshots extension
+pref("extensions.screenshots.system-disabled", false);
+
 END
 
   install -Dm644 "$srcdir/kde.js" "$pkgdir/opt/waterfox/browser/defaults/preferences/kde.js"
