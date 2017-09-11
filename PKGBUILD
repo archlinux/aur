@@ -30,7 +30,7 @@ prepare() {
   cd ${_pkgbase}-${_pkgver/_/}-source
 
   # remove bundled packages, we want our system libraries
-  rm -rf thirdparty/{curl,freetype,glfw,harfbuzz,jbig2dec,jpeg,openjpeg,mujs,zlib}
+  rm -rf thirdparty/{curl,freetype,glfw,harfbuzz,jbig2dec,libjpeg,openjpeg,mujs,zlib}
 
   # fix function for openjpeg 2.2.x
   patch -Np1 < "${srcdir}/0001-mupdf-openjpeg.patch"
