@@ -1,7 +1,7 @@
 # Maintainer: Austin Howard <austin1howard@gmail.com>
 pkgname=teeproxy # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r36.1e7b547
-pkgrel=1
+pkgrel=2
 pkgdesc="teeproxy from chrislusf"
 arch=('i686' 'x86_64')
 url="https://github.com/chrislusf/teeproxy"
@@ -47,5 +47,5 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%}"
 	#make DESTDIR="$pkgdir/" install
-	cp teeproxy $pkgdir
+	cp teeproxy $pkgdir/usr/bin
 }
