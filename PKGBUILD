@@ -5,7 +5,6 @@
 pkgname=runescape-launcher
 pkgver=2.2.4
 pkgrel=3
-_pkgbump=8
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
 license=(custom)
@@ -20,18 +19,21 @@ depends=(
 )
 conflicts=(runescape-launcher-nxt)
 provides=(runescape-launcher-nxt)
-source=("${pkgname}_${pkgver}-${_pkgbump}_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release"
-        "${pkgname}_${pkgver}-${_pkgbump}_Release.gpg::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release.gpg"
+source=("${pkgname}_${pkgver}_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release"
+        "${pkgname}_${pkgver}_Release.gpg::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release.gpg"
         "wrapper.sh")
-source_x86_64=("${pkgname}_${pkgver}-${_pkgbump}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb"
-               "${pkgname}_${pkgver}-${_pkgbump}_Packages::https://content.runescape.com/downloads/ubuntu/dists/trusty/non-free/binary-amd64/Packages")
+source_x86_64=("${pkgname}_${pkgver}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb"
+               "${pkgname}_${pkgver}_Packages::https://content.runescape.com/downloads/ubuntu/dists/trusty/non-free/binary-amd64/Packages")
 sha256sums=('SKIP'
             'SKIP'
             'd20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12')
 sha256sums_x86_64=('SKIP'
                    'SKIP')
-noextract=("${pkgname}_${pkgver}-${_pkgbump}_amd64.deb")
+noextract=("${pkgname}_${pkgver}_amd64.deb")
 validpgpkeys=("AAC9264309E4D717441DB9527373B12CE03BEB4B")
+
+# avoid caching in makepkg!
+SRCDEST=$startdir
 
 _verify_repo() {
     local jagexpgpkey=${validpgpkeys[0]}
