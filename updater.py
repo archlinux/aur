@@ -12,6 +12,8 @@ class FirefoxDeveloperVersionExtractor(HTMLParser):
     ok_a_tag = False
     ok_data = False
     version = ""
+    version_number = 0
+    beta_number = 0
     
     def handle_starttag(self, tag, attrs):
         if tag == "tr":
@@ -27,7 +29,17 @@ class FirefoxDeveloperVersionExtractor(HTMLParser):
     def handle_data(self, data):
         if self.ok_data:
             self.ok_data = False
-            self.version = data[0:-1]
+            version = data[0:-1]
+            try:
+                version_split = version.split("b")
+                version_number = float(version_split[0])
+                beta_number = int(version_split[1])
+                if version_number > self.version_number or (version_number == self.version_number and beta_number > self.beta_number):
+                    self.version_number = version_number
+                    self.beta_number = beta_number
+                    self.version = version
+            except:
+                pass
 
 #get current version
 old_version = ""
@@ -84,7 +96,6 @@ if not sha512sum_ok:
 #update PKGBUILD
 print("Updating PKGBUILD...\n")
 buf = ""
-old_version = ""
 pkgbuild = open("PKGBUILD")
 line = pkgbuild.readline()
 while len(line) > 0:
