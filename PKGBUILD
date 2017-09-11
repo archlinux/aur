@@ -1,7 +1,8 @@
-# Contributor: daurnimator <quae@daurnimator.com>
+# Maintainer: daurnimator <quae@daurnimator.com>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Karro <karolina.lindqvist@kramnet.se>
 # Contributor: maoserr
+# Contributor: Jiří Klimeš <blueowl@centrum.cz>
 
 pkgbase=iup
 pkgname=('iup' 'lua-iup' 'lua51-iup' 'lua52-iup')
