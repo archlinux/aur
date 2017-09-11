@@ -20,10 +20,16 @@ depends=(
 )
 conflicts=(runescape-launcher-nxt)
 provides=(runescape-launcher-nxt)
-source=("wrapper.sh")
-source_x86_64=("${pkgname}_${pkgver}-${_pkgbump}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('d20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12')
-sha256sums_x86_64=('SKIP')
+source=("${pkgname}_${pkgver}-${_pkgbump}_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release"
+        "${pkgname}_${pkgver}-${_pkgbump}_Release.gpg::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release.gpg"
+        "wrapper.sh")
+source_x86_64=("${pkgname}_${pkgver}-${_pkgbump}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb"
+               "${pkgname}_${pkgver}-${_pkgbump}_Packages::https://content.runescape.com/downloads/ubuntu/dists/trusty/non-free/binary-amd64/Packages")
+sha256sums=('SKIP'
+            'SKIP'
+            'd20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12')
+sha256sums_x86_64=('SKIP'
+                   'SKIP')
 validpgpkeys=("AAC9264309E4D717441DB9527373B12CE03BEB4B")
 
 _verify_deb() {
@@ -55,14 +61,13 @@ _verify_deb() {
     if ! [[ $_out =~ ^[0-9a-z]{40} ]]; then
         error "Could not find hash sums in _gpgbuilder"
         return 1
-    elif ! sha1sum --check <<< "$_out"; then
+    elif ! sha1sum --quiet --check <<< "$_out"; then
         error "Hash sums of .deb contents did not match expected"
         return 1
     fi
 }
 
 _verify_repo() {
-    local repo="https://content.runescape.com/downloads/ubuntu/dists/trusty"
     local jagexpgpkey=${validpgpkeys[0]}
     local _out
 
@@ -70,17 +75,14 @@ _verify_repo() {
         return 0
     fi
 
-    msg2 "Downloading Release..."
-    curl -O "$repo/Release"
-    msg2 "Downloading Release.gpg..."
-    curl -O "$repo/Release.gpg"
-    msg2 "Downloading Packages..."
-    curl -O "$repo/non-free/binary-amd64/Packages"
+    local Release=${source[0]%%::*}
+    local debfile=${source_x86_64[0]%%::*}
+    local Packages=${source_x86_64[1]%%::*}
 
     msg2 "Verifying Release (PGP)..."
     if ! _out=$(gpg --batch --status-fd 1 \
                     --trust-model always \
-                    --verify Release.gpg Release \
+                    --verify "$Release.gpg" "$Release" \
                     2>&1); then
         error "PGP signature of 'Release' could not be verified"
         echo "$_out" | grep -v "^\\[GNUPG:\\]"
@@ -94,44 +96,37 @@ _verify_repo() {
     msg2 "Parsing Release..."
     _out=$(awk 'ok && $3 == "non-free/binary-amd64/Packages" {print $1; exit}
                 /^[^[:space:]]/ {ok=0}
-                /^SHA256:$/ {ok=1}' < Release)
+                /^SHA256:$/ {ok=1}' < "$Release")
     if ! [[ $_out =~ ^[0-9a-f]{64}$ ]]; then
         error "Could not find hash of 'Packages' in Release file"
         return 1
     fi
 
     msg2 "Verifying Packages (SHA256)..."
-    if ! sha256sum --quiet --check <<< "$_out *Packages"; then
+    if ! sha256sum --quiet --check <<< "$_out *$Packages"; then
         error "Hash sum of 'Packages' did not match expected"
         return 1
     fi
 
     msg2 "Parsing Packages..."
-    _deb=${source_x86_64[0]%%::*}
     _out=$(awk 'ok && /^SHA256:/ {print $2; exit}
                 /^Package:/ {ok=0}
                 /^Package: runescape-launcher$/ {ok=1}' < Packages)
     if ! [[ $_out =~ ^[0-9a-f]{64}$ ]]; then
-        error "Could not find hash of $_deb in Packages file"
+        error "Could not find hash of $debfile in Packages file"
         return 1
     fi
 
-    msg2 "Verifying $_deb (SHA256)..."
-    if ! sha256sum --quiet --check <<< "$_out *$_deb"; then
-        error "Hash sum of '$_deb' did not match expected"
+    msg2 "Verifying $debfile (SHA256)..."
+    if ! sha256sum --quiet --check <<< "$_out *$debfile"; then
+        error "Hash sum of '$debfile' did not match expected"
         return 1
     fi
-
-    msg2 "Extracting $_deb..."
-    bsdtar xvf "$_deb"
 }
 
 prepare() {
-    if [[ -s _gpgbuilder ]]; then
-        _verify_deb
-    else
-        _verify_repo
-    fi
+    _verify_repo
+    _verify_deb
 
     mkdir -p "$srcdir/$pkgname-$pkgver-$_pkgbump"
     cd "$srcdir/$pkgname-$pkgver-$_pkgbump"
