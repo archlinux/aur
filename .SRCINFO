@@ -1,0 +1,24 @@
+pkgbase = python-grako
+	pkgdesc = Grako (for grammar compiler) is a tool that takes grammars in a variation of EBNF as input, and outputs memoizing (Packrat) PEG parsers in Python.
+	pkgver = 3.99.9
+	pkgrel = 1
+	url = https://bitbucket.org/neogeny/grako
+	arch = any
+	license = Custom
+	makedepends = python-setuptools
+	depends = python
+	depends = cython
+	depends = python-colorama
+	depends = python-docutils
+	depends = flake8
+	depends = python-prospector
+	depends = python-pygraphviz
+	depends = python-pytest
+	depends = python-regex
+	depends = python-tox
+	depends = python-twine
+	source = https://bitbucket.org/neogeny/grako/get/3.99.9.tar.bz2
+	sha256sums = 82cc8d601a272106ed3bbc09f37b04b85f21cbe4c8bbebb41bb9d57ac419696f
+
+pkgname = python-grako
+
