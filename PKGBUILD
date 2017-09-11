@@ -10,8 +10,8 @@ pkgdesc="C cross platform GUI toolkit"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/iup/"
 license=('MIT')
-makedepends=('lsb-release' 'lua')
-depends=('libcd' 'libim' 'gtk3' 'libpng' 'ftgl' 'zlib' 'freetype2' 'cairo' 'pango' 'glib2' 'webkitgtk' 'openmotif' 'libxpm')
+makedepends=('lsb-release')
+depends=('libcd' 'ftgl' 'webkitgtk' 'openmotif' 'libxpm')
 
 source=(
   "http://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Sources.tar.gz"
