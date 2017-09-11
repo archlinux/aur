@@ -4,7 +4,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=pithos
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Native Pandora Radio client'
 arch=('any')
@@ -17,22 +17,31 @@ optdepends=('libkeybinder3: for media keys plugin'
             'python-pacparser: PAC proxy support'
             'python-pylast: Last.fm scrobbling support'
             'python-systemd: Logging to the system journal')
-makedepends=('intltool')
+makedepends=('meson' 'appstream-glib')
 source=(
   "https://github.com/pithos/pithos/releases/download/${pkgver}/pithos-${pkgver}.tar.xz"{,.asc}
+  "dbus.service"
+  "systemd.service"
 )
-sha256sums=('cf732bd5c541a55e160d58743e19c2beca69476fae6ead745f0ba6b08615d509'
-            'SKIP')
+sha256sums=('4c025d7e1e055292849b80c37d8ad3862e0f2cbd9c7327664deb8ac0389952ac'
+            'SKIP'
+            '2b80c9bb84f7de8de0e36dc16465c6633cb74de7bf777efcad76393e88a6e62a'
+            '6d29178697384fb046d9d25c6c2482f353a4484ec4f0a5b9080d1a26aa24f839')
 
 validpgpkeys=('108BF2212A051F4A72B18448B3C7CE210DE76DFC')
 
 build() {
-  cd "$srcdir/${pkgname}-$pkgver"
-  ./configure --prefix=/usr
-  make
+  cd "${srcdir}"
+  if [[ -d ./build/ ]]; then
+         rm -rf ./build/
+  fi
+  mkdir build
+  meson "${pkgname}-${pkgver}" build --prefix=/usr
 }
 
 package() {
-  cd "$srcdir/${pkgname}-$pkgver"
-  DESTDIR="$pkgdir" make install
+  cd "${srcdir}/build"
+  DESTDIR="${pkgdir}" ninja install
+  install -Dm644 "${srcdir}/dbus.service" "${pkgdir}/usr/share/dbus-1/services/io.github.Pithos.service"
+  install -Dm644 "${srcdir}/systemd.service" "${pkgdir}/usr/lib/systemd/user/pithos.service"
 }
