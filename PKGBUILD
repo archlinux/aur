@@ -20,10 +20,12 @@ depends=(
 )
 conflicts=(runescape-launcher-nxt)
 provides=(runescape-launcher-nxt)
-source=("wrapper.sh")
+source=("wrapper.sh"
+        "runescape.gpg.key")
 source_x86_64=("${pkgname}_${pkgver}-${_pkgbump}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}-${_pkgbump}_amd64.deb")
-sha256sums=('d20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12')
+sha256sums=('d20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12'
+            '2e32bc0110d349a1613878a681dc7748f83fb8766b11911c71a923c101382843')
 sha256sums_x86_64=('SKIP')
 
 _verify_deb() {
@@ -37,7 +39,7 @@ _verify_deb() {
     fi
 
     msg2 "Importing Jagex PGP key..."
-    gpg --recv-keys "$jagex"
+    gpg --import runescape.gpg.key
 
     msg2 "Downloading Release..."
     curl -O "$repo/Release"
