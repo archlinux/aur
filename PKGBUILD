@@ -1,8 +1,9 @@
 # Maintainer: Gabriel Magno <gabrielmagno1@gmail.com>
+# Contributor: Michał Pałubicki <maln0ir@gmx.com>
 
 _pkgname=agate-dbf
 pkgname=python-$_pkgname
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Adds read support for dbf files to agate"
 arch=('any')
@@ -17,13 +18,13 @@ depends=('python'
          'python-dbfread'
          'python-agate')
 
-source=("https://pypi.python.org/packages/c4/b2/94632d367b6db0dc03d95f171e38b621c85f49e55b7c33a55fd3032336d9/$_pkgname-$pkgver.tar.gz")
+source=("https://github.com/wireservice/agate-dbf/archive/${pkgver}.tar.gz")
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-sha256sums=('ffd9bfc7c04fc3ce1c54522f41aeccba5a7f3cee951b26c8a0ab1348c940ff77')
+sha256sums=('fcdb80a52f1738da7313ef7ccc6476254ae4bca9c77fe548bd478cc8b1de34c9')
 
 # vim:set ts=2 sw=2 et:
