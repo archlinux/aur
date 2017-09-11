@@ -1,7 +1,7 @@
 # Maintainer: Giampaolo Mancini <giampaolo@trampolineup.com>
 pypiname=begins
 pkgname=python-$pypiname
-pkgver=0.9
+pkgver=git
 pkgrel=1
 pkgdesc='Begins makes creating command line applications in Python easy.'
 arch=('any')
@@ -10,11 +10,11 @@ license=('ASL')
 groups=()
 depends=('python')
 makedepends=('python-distribute')
-source=("https://github.com/aliles/$pypiname/archive/$pkgver.tar.gz")
-md5sums=('db4d5aea6d0809e5118db87225a9607c')
+source=("git+https://github.com/sh0oki/$pypiname.git")
+md5sums=("SKIP")
 
 package() {
-      cd "$srcdir/$pypiname-$pkgver"
+      cd "$srcdir/$pypiname"
         python setup.py install --root="$pkgdir/" --optimize=1
     }
 
