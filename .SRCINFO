@@ -1,0 +1,17 @@
+pkgbase = teeproxy
+	pkgdesc = teeproxy from chrislusf
+	pkgver = r36.1e7b547
+	pkgrel = 1
+	url = https://github.com/chrislusf/teeproxy
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	provides = teeproxy
+	conflicts = teeproxy
+	source = git+https://github.com/chrislusf/teeproxy.git
+	md5sums = SKIP
+
+pkgname = teeproxy
+
