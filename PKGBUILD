@@ -67,5 +67,18 @@ package() {
 
   install -Dm644 ../settings.ini "$pkgdir/usr/share/gtk-3.0/settings.ini"
   install -Dm644 ../gtk-query-immodules-3.0.hook "$pkgdir/usr/share/libalpm/hooks/gtk-query-immodules-3.0.hook"
+
+  # split these out to avoid file conflicts with gtk-update-icon-cache and gtk3-print-backends
+  rm "$pkgdir/usr/bin/gtk-update-icon-cache"
+
+  cd "$pkgdir"
+  for _f in usr/lib/*/*/printbackends/*; do
+    case $_f in
+      *-file.so|*-lpr.so) continue ;;
+    esac
+
+    mkdir -p "$srcdir/print-backends/${_f%/*}"
+    mv "$_f" "$srcdir/print-backends/$_f"
+  done
 }
 
