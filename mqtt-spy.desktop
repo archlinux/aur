@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0.0
+Name=mqtt-spy
+GenericName=mqtt-spy
+Exec=mqtt-spy %U
+Terminal=false
+Icon=mqtt-spy
+Type=Application
+MimeType=application/x-mqtt-spy;
+Categories=Development;
+Comment=mqtt-spy is an open source desktop & command line utility intended to help you with monitoring activity on MQTT topics
+

@@ -1,0 +1,18 @@
+pkgbase = mqtt-spy
+	pkgdesc = mqtt-spy is an open source desktop & command line utility intended to help you with monitoring activity on MQTT topics
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/eclipse/paho.mqtt-spy
+	arch = any
+	license = EPL-v10
+	depends = java-runtime
+	noextract = mqtt-spy-1.0.0.jar
+	source = https://github.com/eclipse/paho.mqtt-spy/releases/download/1.0.0/mqtt-spy-1.0.0.jar
+	source = mqtt-spy.sh
+	source = mqtt-spy.desktop
+	sha256sums = 4333402f4c2e5212361bc83e0801fccda1cc40acd080c64b656f089122cbc2d0
+	sha256sums = 045ddc38a3e96f04592f3dfc57d36029d23aea8faa2db0dfe3119a4d3b38d94c
+	sha256sums = fa49e3b18c61eb0af9c562aa94208f3ecf9c1869e81b81cb84fef1b8450c1aa1
+
+pkgname = mqtt-spy
+
