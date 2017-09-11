@@ -1,7 +1,7 @@
 # Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
 
 pkgname=sbupdate-git
-pkgver=0.r45.276b1fe
+pkgver=0.r48.3c81747
 pkgrel=1
 pkgdesc="Generate and sign kernel images for UEFI Secure Boot"
 arch=('any')
@@ -22,7 +22,7 @@ package() {
   cd sbupdate
 
   install -D -m 0755 sbupdate "${pkgdir}/usr/bin/sbupdate"
-  install -D -m 0644 sbupdate.hook "${pkgdir}/usr/share/libalpm/hooks/sbupdate.hook"
+  install -D -m 0644 sbupdate.hook "${pkgdir}/usr/share/libalpm/hooks/95-sbupdate.hook"
 
   install -D -m 0644 default "${pkgdir}/etc/default/sbupdate"
 
