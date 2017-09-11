@@ -12,10 +12,8 @@ makedepends=('cmake' 'git')
 noextract=('patch-data-141.zip')
 install='rtcwcoop-git.install'
 source=("rtcwcoop::git+https://github.com/rtcwcoop/rtcwcoop.git"
-	"https://github.com/rtcwcoop/rtcwcoop/releases/download/1.0.2/patch-data-141.zip"
 	'rtcwcoop.launcher'
 	'rtcwcoopded.launcher'
-	'create_pk3.sh'
 	'rtcwcoop.png'
 	'rtcwcoop.desktop')
 
@@ -33,17 +31,10 @@ build() {
 }
 
 package() {
-  
+  cd "$srcdir/rtcwcoop"
+
   mkdir -p $pkgdir/opt/rtcwcoop/{coopmain,main}
-  unzip -o patch-data-141.zip -d $srcdir/patch-data
-  cd $srcdir/patch-data/main
-  cp -r *.pk3 $pkgdir/opt/rtcwcoop/main
-  cp -r scripts $pkgdir/opt/rtcwcoop/main
-  cp -r rotate.cfg $pkgdir/opt/rtcwcoop/main
-  cp -r ../pb $pkgdir/opt/rtcwcoop/main
- 
-  rm $pkgdir/opt/rtcwcoop/main/pb/{*.dll,*.mac,*.exe}
-  
+   
   cd $srcdir/rtcwcoop
   
   make USE_INTERNAL_LIBS=0 COPYDIR=$pkgdir/opt/rtcwcoop/ copyfiles
@@ -51,28 +42,41 @@ package() {
   ln -s -r /opt/wolf-data/mp_pak0.pk3   $pkgdir/opt/rtcwcoop/main
   ln -s -r /opt/wolf-data/mp_pak1.pk3	$pkgdir/opt/rtcwcoop/main
   ln -s -r /opt/wolf-data/mp_pak2.pk3	$pkgdir/opt/rtcwcoop/main  
+  ln -s -r /opt/wolf-data/mp_pak3.pk3   $pkgdir/opt/rtcwcoop/main
+  ln -s -r /opt/wolf-data/mp_pak4.pk3   $pkgdir/opt/rtcwcoop/main
+  ln -s -r /opt/wolf-data/mp_pak5.pk3   $pkgdir/opt/rtcwcoop/main
   ln -s -r /opt/wolf-data/pak0.pk3	$pkgdir/opt/rtcwcoop/main
   ln -s -r /opt/wolf-data/sp_pak1.pk3	$pkgdir/opt/rtcwcoop/main
   ln -s -r /opt/wolf-data/sp_pak2.pk3	$pkgdir/opt/rtcwcoop/main
+  ln -s -r /opt/wolf-data/sp_pak3.pk3   $pkgdir/opt/rtcwcoop/main
+  ln -s -r /opt/wolf-data/sp_pak4.pk3   $pkgdir/opt/rtcwcoop/main
+  ln -s -r /opt/wolf-data/scripts	$pkgdir/opt/rtcwcoop/main 
+  ln -s -r /opt/wolf-data/rotate.cfg	$pkgdir/opt/rtcwcoop/main       
   
  # Create Coop PK3
-  cp $srcdir/create_pk3.sh .
-  ./create_pk3.sh
-  cp media/*.pk3 $pkgdir/opt/rtcwcoop/coopmain
+    if [ "$CARCH" = "x86_64" ]; then
+
+        # x86_64 Systems
+	./create_pk3_64.sh release
+    else
+
+        # i686 Systems
+        ./create_pk3.sh release
+    fi
+
+  cp media/{bin,sp_pak_coop1}.pk3 $pkgdir/opt/rtcwcoop/coopmain
   
  # Modify Launcher Scripts
     if [ "$CARCH" = "x86_64" ]; then
-        #
         # x86_64 Systems
-        #
+
         sed -i "s:ARCH:x86_64:" \
             $srcdir/rtcwcoop.launcher
         sed -i "s:ARCH:x86_64:" \
             $srcdir/rtcwcoopded.launcher
     else
-        #
         # i686 Systems
-        #
+
         sed -i "s:ARCH:i386:" \
             $srcdir/rtcwcoop.launcher
         sed -i "s:ARCH:i386:" \
@@ -91,9 +95,7 @@ package() {
 }
 
 md5sums=('SKIP'
-         '291a37caa9d65d0b81f767918b76fa56'
          '301306637434f08f4958f1ed4734f68f'
          'c4b7030bb2739c46eef479fd1f3d1b63'
-         '32223e6aec5bb6f425d0f7b5a5c41416'
          'bf26dc4c10d4bbfbd0c7a052a00c3cdf'
          'd09a95bbf34f3a37a77247c267e4a51b')
