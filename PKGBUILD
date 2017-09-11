@@ -3,7 +3,7 @@
 pkgbase=python-recommonmark
 pkgname=('python-recommonmark' 'python2-recommonmark')
 pkgver=0.4.0.133.c410abb
-pkgrel=1
+pkgrel=2
 _gitcommit=c410abb565a3c4ad4de0ce204ab2fa2db8031cf1
 pkgdesc='Markdown parser for docutils'
 url='https://github.com/rtfd/recommonmark'
@@ -20,8 +20,10 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd ${pkgbase}
-  printf "%s.%s.%s" "$(PYTHONPATH=. python -c 'print(__import__('"'recommonmark'"').__version__)')" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s.%s" \
+    "$(PYTHONPATH=. python -c 'print(__import__('"'recommonmark'"').__version__)')" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -36,12 +38,12 @@ build() {
   msg2 "Building python..."
   (cd ${pkgbase}
     python setup.py build
-    make -j1 -C docs text man
+    make -j1 -C docs text man SPHINXBUILD=sphinx-build
   )
   msg2 "Building python2..."
   (cd ${pkgbase}-py2
     python2 setup.py build
-    make -j1 -C docs text man
+    make -j1 -C docs text man SPHINXBUILD=sphinx-build2
   )
 }
 
@@ -63,6 +65,8 @@ package_python-recommonmark() {
   python setup.py install --root="${pkgdir}" --skip-build -O1
   install -Dm 644 license.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 README.md CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 docs/_build/text/*.txt -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 docs/_build/man/recommonmark.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 }
 
 package_python2-recommonmark() {
@@ -72,6 +76,8 @@ package_python2-recommonmark() {
   python2 setup.py install --root="${pkgdir}" --skip-build -O1
   install -Dm 644 license.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 README.md CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 docs/_build/text/*.txt -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 docs/_build/man/recommonmark.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 }
 
 # vim: ts=2 sw=2 et:
