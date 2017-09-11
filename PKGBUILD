@@ -7,7 +7,7 @@
 
 pkgname='unreal-engine'
 pkgver=4.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
@@ -70,10 +70,10 @@ build() {
 
 package() {
   # install dir
-  dir='opt/$pkgname'
+  dir="opt/$pkgname"
 
   # install .desktop
-  if [ "$dir" != 'opt/$pkgname' ] # set new path if dir changed
+  if [ "$dir" != "opt/$pkgname" ] # set new path if dir changed
   then
     sed -i "5c\Path=/$dir/Engine/Binaries/Linux/" UE4Editor.desktop
     sed -i "6c\Exec=\'/$dir/Engine/Binaries/Linux/UE4Editor\' %F" UE4Editor.desktop
