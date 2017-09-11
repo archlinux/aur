@@ -19,9 +19,9 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-RELEASE_$pkgver"
-  mkdir -p $pkgdir/usr/include
-  cp -r include/* $pkgdir/usr/include/
-  mkdir -p $pkgdir/usr/lib
-  cp -r lib/* $pkgdir/usr/lib/
+  mkdir -p "$pkgdir/usr/include"
+  cp -r include/* "$pkgdir/usr/include/"
+  mkdir -p "$pkgdir/usr/lib"
+  cp -r lib/* "$pkgdir/usr/lib/"
   install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
