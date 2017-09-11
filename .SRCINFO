@@ -7,15 +7,45 @@ pkgbase = iup
 	arch = x86_64
 	license = MIT
 	makedepends = lsb-release
-	depends = libcd
-	depends = ftgl
-	depends = webkitgtk
-	depends = openmotif
-	depends = libxpm
+	makedepends = libcd
+	makedepends = ftgl
+	makedepends = webkitgtk
+	makedepends = openmotif
+	makedepends = libxpm
+	makedepends = lua-cd
+	makedepends = lua51-cd
+	makedepends = lua52-cd
 	source = http://downloads.sourceforge.net/project/iup/3.22/Docs%20and%20Sources/iup-3.22_Sources.tar.gz
 	source = http://downloads.sourceforge.net/project/iup/3.22/Docs%20and%20Sources/iup-3.22_Docs.pdf
 	md5sums = 26058d6ce10ba57a2494bd66640d74a3
 	md5sums = fa83211e0e9a510e21602c86dbf02ff1
 
 pkgname = iup
+	pkgdesc = C cross platform GUI toolkit
+	depends = libcd
+	depends = ftgl
+	depends = webkitgtk
+	depends = openmotif
+	depends = libxpm
+
+pkgname = lua-iup
+	pkgdesc = Lua 5.3 bindings for IUP GUI toolkit
+	depends = iup
+	depends = lua
+	optdepends = lua-im: IM toolkit support
+	optdepends = lua-cd: Canwas Draw support
+
+pkgname = lua51-iup
+	pkgdesc = Lua 5.1 bindings for IUP GUI toolkit
+	depends = iup
+	depends = lua51
+	optdepends = lua51-im: IM toolkit support
+	optdepends = lua51-cd: Canwas Draw support
+
+pkgname = lua52-iup
+	pkgdesc = Lua 5.2 bindings for IUP GUI toolkit
+	depends = iup
+	depends = lua52
+	optdepends = lua52-im: IM toolkit support
+	optdepends = lua52-cd: Canwas Draw support
 
