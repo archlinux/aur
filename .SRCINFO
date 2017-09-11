@@ -1,7 +1,7 @@
 pkgbase = teeproxy
 	pkgdesc = teeproxy from chrislusf
 	pkgver = r36.1e7b547
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chrislusf/teeproxy
 	arch = i686
 	arch = x86_64
