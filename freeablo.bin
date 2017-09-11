@@ -11,7 +11,7 @@ run_dir=$HOME/'.freeablo'
 app_dir=/usr/share/freeablo/resources 
 
 if [ ! -e $run_dir ]; then
-	ln -s "$app_dir" "$run_dir"
+	ln -s "$app_dir/*" "$run_dir/"
 fi
 if [ ! -e $run_dir/'DIABDAT.MPQ' ]; then
 	echo "Diablo Installation is not installed. Please install 'DIABDAT.MPQ' and 'Diablo.exe' into '('$app_dir')'"
