@@ -1,32 +1,36 @@
-# Maintainer: Simon Hanna <simon DOT hanna (at) serve-me (dOt) info>
+# Maintainer: zebulon <zeb (at)zebulon(dot)org(dot)uk>
+# Contributor: NovaMoon <novamoon1 (at)gmail(dot)com>
 
 pkgname=rtl8812au-dkms-git
 _pkgbase=rtl8812au
-pkgver=r47.2a9bbb7
+pkgver=5.2.9
 pkgrel=1
-pkgdesc="A kernel module for Realtek 8812au network cards with dkms support"
-url="https://github.com/gnab/rtl8812au"
-license=("GPL")
-arch=('any')
-makedepends=('git')
+pkgdesc="rtl8812AU chipset driver with firmware v5.2.9"
+arch=('i686' 'x86_64')
+url="https://github.com/zebulon2/rtl8812au-driver-5.2.9/tree/txpower"
+license=('GPL2')
 depends=('dkms')
-source=("git+https://github.com/gnab/rtl8812au.git"
-        "dkms.conf")
-install="${pkgname}.install"
+makedepends=('git')
+conflicts=("${_pkgbase}")
+source=("git+https://github.com/zebulon2/rtl8812au-driver-5.2.9.git#branch=txpower"
+        'dkms.conf')
 sha256sums=('SKIP'
-            '6d4ea7322b1ccdcd9351232e2e49f10ef93b93bfc2034f494cdd256d0b3bd8c0')
-pkgver() {
-  cd "${srcdir}/${_pkgbase}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	    'ac5685acf0457773a6a8f83ef2ec84184be3bf26e6472e4b76e31d660964eb6d')
+
+
+build() {
+  cd "rtl8812au-driver-5.2.9"
+  make clean
+  make
 }
 
 package() {
-	cd ${srcdir}/${_pkgbase}
-	mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-	cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-	cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-	# Set name and version
-	sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
-			-e "s/@PKGVER@/${pkgver}/" \
-			-i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+        cd ${srcdir}/rtl8812au-driver-5.2.9
+        mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
+        cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
+        cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
+        # Set name and version
+        sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
+                        -e "s/@PKGVER@/${pkgver}/" \
+                        -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 }
