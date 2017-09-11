@@ -1,4 +1,5 @@
 # Maintainer: Gabriel Magno <gabrielmagno1@gmail.com>
+# Contributor: Michał Pałubicki <maln0ir@gmx.com>
 
 _pkgname=agate
 pkgname=python-$_pkgname
@@ -23,13 +24,13 @@ depends=('python'
          'python-isodate'
          'python-awesome-slugify')
 
-source=("https://pypi.python.org/packages/11/c1/519ef060fb62a089b9fda346d471a382a456ad23ccbe49885812d6cf45a9/$_pkgname-$pkgver.tar.gz")
+source=("https://github.com/wireservice/agate/archive/${pkgver}.tar.gz")
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-sha256sums=('4436fca90177886e7747ce0a2dc293c3a49d4152baead4784c8da80861085eaf')
+sha256sums=('fadcc8c2713212e49a36eb4498d71d6538875e8e1aa5a9813a8e1b35d100e92f')
 
 # vim:set ts=2 sw=2 et:

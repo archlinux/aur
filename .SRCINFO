@@ -19,8 +19,8 @@ pkgbase = python-agate
 	depends = python-pytz
 	depends = python-isodate
 	depends = python-awesome-slugify
-	source = https://pypi.python.org/packages/11/c1/519ef060fb62a089b9fda346d471a382a456ad23ccbe49885812d6cf45a9/agate-1.4.0.tar.gz
-	sha256sums = 4436fca90177886e7747ce0a2dc293c3a49d4152baead4784c8da80861085eaf
+	source = https://github.com/wireservice/agate/archive/1.4.0.tar.gz
+	sha256sums = fadcc8c2713212e49a36eb4498d71d6538875e8e1aa5a9813a8e1b35d100e92f
 
 pkgname = python-agate
 
