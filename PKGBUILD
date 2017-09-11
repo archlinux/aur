@@ -23,7 +23,6 @@ provides=(runescape-launcher-nxt)
 source=("wrapper.sh"
         "runescape.gpg.key")
 source_x86_64=("${pkgname}_${pkgver}-${_pkgbump}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb")
-noextract=("${pkgname}_${pkgver}-${_pkgbump}_amd64.deb")
 sha256sums=('d20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12'
             '2e32bc0110d349a1613878a681dc7748f83fb8766b11911c71a923c101382843')
 sha256sums_x86_64=('SKIP')
@@ -31,6 +30,43 @@ sha256sums_x86_64=('SKIP')
 jagexpgpkey="AAC9264309E4D717441DB9527373B12CE03BEB4B"
 
 _verify_deb() {
+    local _out
+
+    if (( SKIPPGPCHECK )); then
+        return 0
+    fi
+
+    msg2 "Importing Jagex PGP key..."
+    gpg --import runescape.gpg.key
+
+    msg2 "Verifying _gpgbuilder (PGP)..."
+    if ! _out=$(gpg --batch --yes --status-fd 1 \
+                    --trust-model always \
+                    --output _gpgbuilder.out \
+                    --decrypt _gpgbuilder \
+                    2>&1); then
+        error "PGP signature of '_gpgbuilder' could not be verified"
+        echo "$_out" | grep -v "^\\[GNUPG:\\]"
+        return 1
+    elif ! egrep -qs "^\\[GNUPG:\\] VALIDSIG $jagexpgpkey " <<< "$_out"; then
+        error "PGP signature of '_gpgbuilder' was not made by Jagex"
+        echo "$_out" | grep -v "^\\[GNUPG:\\]"
+        return 1
+    fi
+
+    _out=$(awk 'ok && $4 == "data.tar.xz" {print $2 " *" $4}
+                /^[^[:space:]]/ {ok=0}
+                /^Files:/ {ok=1}' < _gpgbuilder.out)
+    if ! [[ $_out =~ ^[0-9a-z]{40} ]]; then
+        error "Could not find hash sums in _gpgbuilder"
+        return 1
+    elif ! sha1sum --check <<< "$_out"; then
+        error "Hash sums of .deb contents did not match expected"
+        return 1
+    fi
+}
+
+_verify_repo() {
     local repo="https://content.runescape.com/downloads/ubuntu/dists/trusty"
     local _out
 
@@ -64,7 +100,7 @@ _verify_deb() {
 
     msg2 "Parsing Release..."
     _out=$(awk 'ok && $3 == "non-free/binary-amd64/Packages" {print $1; exit}
-                /^[^ ]/ {ok=0}
+                /^[^[:space:]]/ {ok=0}
                 /^SHA256:$/ {ok=1}' < Release)
     if ! [[ $_out =~ ^[0-9a-f]{64}$ ]]; then
         error "Could not find hash of 'Packages' in Release file"
@@ -98,7 +134,11 @@ _verify_deb() {
 }
 
 prepare() {
-    _verify_deb
+    if [[ -s _gpgbuilder ]]; then
+        _verify_deb
+    else
+        _verify_repo
+    fi
 
     mkdir -p "$srcdir/$pkgname-$pkgver-$_pkgbump"
     cd "$srcdir/$pkgname-$pkgver-$_pkgbump"

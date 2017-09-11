@@ -13,7 +13,6 @@ pkgbase = runescape-launcher
 	depends = gtk2
 	provides = runescape-launcher-nxt
 	conflicts = runescape-launcher-nxt
-	noextract = runescape-launcher_2.2.4-8_amd64.deb
 	source = wrapper.sh
 	source = runescape.gpg.key
 	sha256sums = d20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12
