@@ -1,0 +1,40 @@
+pkgbase = eclipse-liclipse
+	pkgdesc = Lightweight editors, theming and usability improvements for Eclipse
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://www.liclipse.com/index.html
+	changelog = changelog
+	arch = any
+	license = custom
+	depends = eclipse>=4.6
+	depends = java-runtime=8
+	optdepends = coffee-script: CoffeeScript support
+	optdepends = cmake: CMake support
+	optdepends = dart: Dart support
+	optdepends = python-django: Django Templates support (Python 3)
+	optdepends = python2-django: Django Templates support (Python 2)
+	optdepends = go: Go support
+	optdepends = java-environment-common: Java support
+	optdepends = python-jinja: Jinja2 support (Python 3)
+	optdepends = python2-jinja: Jinja2 support (Python 2)
+	optdepends = julia: Julia support
+	optdepends = python-kivy: Kivy Language support (Python 3)
+	optdepends = python2-kivy: Kivy Language support (Python 2)
+	optdepends = python-mako: Mako Templates support (Python 3)
+	optdepends = python2-mako: Mako Templates support (Python 2)
+	optdepends = nim: Nim support
+	optdepends = perl: PERL support
+	optdepends = python: Python 3 support
+	optdepends = python2: Python 2 support
+	optdepends = ruby: Ruby support
+	provides = eclipse-anyedittools=2.6.1
+	provides = eclipse-eclipsecolortheme=1.2.1
+	provides = eclipse-pydev=5.9.2
+	conflicts = eclipse-anyedittools
+	conflicts = eclipse-eclipsecolortheme
+	conflicts = eclipse-pydev
+	source = http://www.mediafire.com/file/52tyeinl5z57fz9/UPDATE_SITE_4.1.1.zip
+	sha256sums = 70fde1454daab7d9bd57b15aec885c6e60216d202ac906c311655afcd6d0acbe
+
+pkgname = eclipse-liclipse
+
