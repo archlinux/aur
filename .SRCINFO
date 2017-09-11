@@ -1,9 +1,10 @@
 pkgbase = theshell
 	pkgdesc = Desktop Shell that gets out of your way
-	pkgver = 6.1
+	pkgver = 7.0
 	pkgrel = 0
 	url = https://github.com/vicr123/theshell
 	arch = x86_64
+	arch = i686
 	license = GPL3
 	makedepends = git
 	depends = kwidgetsaddons
@@ -29,7 +30,7 @@ pkgbase = theshell
 	optdepends = alsa-utils: for volume controls
 	optdepends = pocketsphinx: for theWave
 	optdepends = festival: for theWave
-	source = theshell-6.1::git+https://github.com/vicr123/theshell#branch=master
+	source = theshell-7.0::git+https://github.com/vicr123/theshell#branch=master
 	md5sums = SKIP
 
 pkgname = theshell

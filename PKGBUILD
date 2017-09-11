@@ -1,10 +1,10 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theshell
-pkgver=6.1
+pkgver=7.0
 pkgrel=0
 pkgdesc="Desktop Shell that gets out of your way"
-arch=("x86_64")
+arch=("x86_64" "i686")
 url="https://github.com/vicr123/theshell"
 license=('GPL3')
 depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 
@@ -22,6 +22,7 @@ build() {
 	cd "$pkgname-$pkgver"
 	qdbuscpp2xml -M -s notificationdbus.h -o org.freedesktop.Notifications.xml
 	qdbuscpp2xml -a -o org.thesuite.power.xml upowerdbus.h
+        qdbuscpp2xml -a -o org.thesuite.theshell.xml dbussignals.h
 	qmake theShell.pro
 	make
 }
