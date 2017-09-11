@@ -8,22 +8,29 @@ pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc='Standalone web browser from mozilla.org, Developer Edition - Italian'
 url='https://www.mozilla.org/firefox/developer/'
 pkgver=56.0b10
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
-source=("https://ftp.mozilla.org/pub/devedition/releases/$pkgver/linux-x86_64/$_lang/firefox-$pkgver.tar.bz2"
-        "firefox-$_channel.desktop"
-        "vendor.js")
-sha512sums=('acd06573efd19442a839f4aa6ef4b6395dab79e0f08488e0db4d6bf39e4961e5208cedfe3834fc2586da8dc0a5d10c8628f2ced04176a5c07e784094e96f57da'
-            '9e7bb3b08d58c7ec50fd24a5ecab9a6462084a37deb8ec61b089e2c1ad5364c82f71e3fcba918738ded9c61d58bfe8b2dea24abb48e53175332b03727c26c33a'
+
+source=("firefox-$_channel.desktop"
+        'vendor.js')
+
+sha512sums=('f536b6790233d609182ae4940193727e1e0188b6e49f0c47a5d8ade1bb15a3e311160636d17ce78ab9766781025171d2b6a4a14131d2a40ab490bdbb7c144354'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
-depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib' 'gtk-update-icon-cache')
-optdepends=(
-	'pulseaudio: audio/video playback'
-	'ffmpeg: h.264 video'
-	'hunspell: spell checking'
-	'hyphen: hyphenation'
-)
+
+source_i686=("https://ftp.mozilla.org/pub/devedition/releases/$pkgver/linux-i686/$_lang/firefox-$pkgver.tar.bz2")
+source_x86_64=("https://ftp.mozilla.org/pub/devedition/releases/$pkgver/linux-x86_64/$_lang/firefox-$pkgver.tar.bz2")
+
+sha512sums_i686=('f0758dcbf9dd7d5e01b5c3eb381e8c59b852f379aaa1e2e9be9546bae6499c455208240330d7919b1eb9de9fd5b2f71088f64563f5ce31aaac770f99881cf0e5')
+sha512sums_x86_64=('acd06573efd19442a839f4aa6ef4b6395dab79e0f08488e0db4d6bf39e4961e5208cedfe3834fc2586da8dc0a5d10c8628f2ced04176a5c07e784094e96f57da')
+
+depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
+         'nss' 'hunspell' 'sqlite' 'ttf-font' 'libpulse' 'icu' 'gtk-update-icon-cache')
+
+optdepends=('networkmanager: Location detection via available WiFi networks'
+            'libnotify: Notification integration'
+            'pulseaudio: Audio support'
+            'speech-dispatcher: Text-to-Speech')
 
 provides=(firefox-developer)
 conflicts=(firefox-developer)
