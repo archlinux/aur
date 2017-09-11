@@ -47,5 +47,6 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%}"
 	#make DESTDIR="$pkgdir/" install
+	mkdir -p $pkgdir/usr/bin
 	cp teeproxy $pkgdir/usr/bin
 }
