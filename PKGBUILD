@@ -2,7 +2,7 @@
 
 pkgname=mono-nightly
 _pkgname=mono
-pkgver=5.7.0.155
+pkgver=5.7.0.286
 pkgrel=1
 pkgdesc="Free implementation of the .NET platform including runtime and compiler. Nightly version."
 arch=('i686' 'x86_64')
