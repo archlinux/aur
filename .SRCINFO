@@ -1,7 +1,7 @@
 pkgbase = filemanager-bin
 	pkgdesc = Web File Manager which can be used as a middleware or standalone app.
-	pkgver = 1.3.3
-	pkgrel = 1
+	pkgver = 1.3.4
+	pkgrel = 2
 	url = https://github.com/hacdias/filemanager
 	arch = i386
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = filemanager-bin
 	md5sums = 158da0caf1696c91157605a7a968883e
 	md5sums = 2d3a0fe85d0564db2467a85b3da7c52c
 	md5sums = d92e60ee98664c54f68aa515a6169708
-	source_i386 = linux-386-filemanager.tar.gz::https://github.com/hacdias/filemanager/releases/download/v1.3.3/linux-386-filemanager.tar.gz
-	md5sums_i386 = 4f44a8d8550bf6923f9afdd6536cd2a7
-	source_x86_64 = linux-amd64-filemanager.tar.gz::https://github.com/hacdias/filemanager/releases/download/v1.3.3/linux-amd64-filemanager.tar.gz
-	md5sums_x86_64 = d6e04692c8124a0f5daeb5dcc2a1955e
-	source_aarch64 = linux-arm64-filemanager.tar.gz::https://github.com/hacdias/filemanager/releases/download/v1.3.3/linux-arm64-filemanager.tar.gz
-	md5sums_aarch64 = 7ef67dc3c17067f8519c476554d1ab87
+	source_i386 = linux-386-filemanager.tar.gz::https://github.com/hacdias/filemanager/releases/download/v1.3.4/linux-386-filemanager.tar.gz
+	md5sums_i386 = 17b0cb0f4c1bf54ae02af0fb9ed1da78
+	source_x86_64 = linux-amd64-filemanager.tar.gz::https://github.com/hacdias/filemanager/releases/download/v1.3.4/linux-amd64-filemanager.tar.gz
+	md5sums_x86_64 = ef5d46a42a61500bd7758cea3479721e
+	source_aarch64 = linux-arm64-filemanager.tar.gz::https://github.com/hacdias/filemanager/releases/download/v1.3.4/linux-arm64-filemanager.tar.gz
+	md5sums_aarch64 = c899f9cd0f5fa8e7efa74fbebbff8992
 
 pkgname = filemanager-bin
 

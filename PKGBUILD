@@ -1,7 +1,7 @@
 # Maintainer: axionl <axionl@aosc.io>
 pkgname=filemanager-bin
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Web File Manager which can be used as a middleware or standalone app."
 arch=('i386' 'x86_64' 'aarch64')
 url="https://github.com/hacdias/filemanager"
