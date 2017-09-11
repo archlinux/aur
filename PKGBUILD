@@ -14,7 +14,6 @@ url='http://www.gnu.org/software/bash/bash.html'
 arch=('i686' 'x86_64' 'any')
 license=('GPL')
 backup=(etc/bash.bash{rc,_logout} etc/skel/.bash{rc,_profile,_logout})
-depends=('glibc' 'ncurses' 'libncursesw.a')
 makedepends=('git')
 optdepends=('bash-completion: for tab completion')
 provides=('sh' 'bash=4.4-$pkgver')
