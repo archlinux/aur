@@ -8,7 +8,7 @@
 
 _stable_branch="v3_3_x"
 pkgname=qbittorrent-stable-git
-pkgver=3.3.13.r0.g15e772623
+pkgver=3.3.16.r3.gcc8580631
 pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. Built from source."
 arch=('i686' 'x86_64')
@@ -24,18 +24,18 @@ source=("${pkgname%-*-*}"::"git+https://github.com/qbittorrent/qBittorrent.git#b
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/${pkgname%-*-*}
+  cd "$srcdir/${pkgname%-*-*}"
   git describe --long --tags | sed 's/^release-//;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd $srcdir/${pkgname%-*-*}
+  cd "$srcdir/${pkgname%-*-*}"
   ./configure --prefix=/usr
-  make -j$(nproc)
+  make -j"$(nproc)"
 }
 
 package() {
-  cd $srcdir/${pkgname%-*-*}
-  make INSTALL_ROOT="$pkgdir/" install
+  cd "$srcdir/${pkgname%-*-*}"
+  make -j"$(nproc)" INSTALL_ROOT="$pkgdir/" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
