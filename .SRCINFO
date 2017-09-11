@@ -1,7 +1,7 @@
 pkgbase = liclipse
 	pkgdesc = Lightweight editors, theming and usability improvements for Eclipse
 	pkgver = 4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.liclipse.com/index.html
 	changelog = changelog
 	arch = i686
