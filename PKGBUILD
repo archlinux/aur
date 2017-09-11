@@ -4,7 +4,7 @@ pkgdesc="ROS - polled_camera contains a service and C++ helper classes for imple
 url='http://ros.org/wiki/polled_camera'
 
 pkgname='ros-kinetic-polled-camera'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,15 +15,14 @@ ros_makedepends=(ros-kinetic-message-generation
   ros-kinetic-roscpp
   ros-kinetic-sensor-msgs
   ros-kinetic-image-transport
-  ros-kinetic-rosconsole
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-kinetic-image-transport
+ros_depends=(ros-kinetic-message-runtime
+  ros-kinetic-image-transport
   ros-kinetic-roscpp
   ros-kinetic-std-msgs
-  ros-kinetic-rosconsole
   ros-kinetic-sensor-msgs)
 depends=(${ros_depends[@]})
 
@@ -36,7 +35,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="image_common-release-release-kinetic-polled_camera-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_common-release/archive/release/kinetic/polled_camera/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ebaba093d5768937addd16cf2f5501447e5e94758b3cd9c390ffbde3abe140ed')
+sha256sums=('e04c4b74e9b179f246c22f45b612945a79b2891cb5f8f7d8c6b3ef9b203d2629')
 
 build() {
   # Use ROS environment variables
