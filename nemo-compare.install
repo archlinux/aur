@@ -1,7 +1,9 @@
 post_install() {
   cat <<-EndOfMessage
 
-==> Restart nemo with 'nemo -q'
+==> Restart nemo
+==>
+==> You can specify the diff extension with nemo-compare-preferences
 
 EndOfMessage
 }
@@ -11,5 +13,9 @@ post_upgrade() {
 }
 
 post_remove() {
-  post_install $1
+  cat <<-EndOfMessage
+
+==> Restart nemo
+
+EndOfMessage
 }
