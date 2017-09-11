@@ -1,6 +1,6 @@
 # Maintainer: Giampaolo Mancini <giampaolo@trampolineup.com>
 pkgname=python-gpiozero
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A simple interface to everyday GPIO components used with Raspberry Pi.'
 arch=('any')
@@ -10,7 +10,7 @@ groups=()
 depends=('python')
 makedepends=('python-distribute')
 source=("https://github.com/RPi-Distro/python-gpiozero/archive/v$pkgver.tar.gz")
-md5sums=('54ecab566d060abc6e635f421a63a8a2')
+sha256sums=('7af2f049d0f16357b283620eab5a14925680cbf799d0a37093332686bf470227')
 
 package() {
       cd "$srcdir/$pkgname-$pkgver"
