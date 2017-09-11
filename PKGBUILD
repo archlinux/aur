@@ -4,7 +4,7 @@ pkgdesc="ROS - KDL binding for tf2."
 url='http://ros.org/wiki/tf2'
 
 pkgname='ros-kinetic-tf2-kdl'
-pkgver='0.5.15'
+pkgver='0.5.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,14 +17,13 @@ ros_makedepends=(ros-kinetic-tf2
   ros-kinetic-tf2-ros)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen3)
+  eigen)
 
 ros_depends=(ros-kinetic-tf2
-  ros-kinetic-cmake-modules
   ros-kinetic-orocos-kdl
   ros-kinetic-tf2-ros)
 depends=(${ros_depends[@]}
-  eigen3)
+  eigen)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/tf2_kdl/${pkgver}-${_pkgver_patch}
@@ -35,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry2-release-release-kinetic-tf2_kdl-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/kinetic/tf2_kdl/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1510cf4c01df7033d0c0f4da3ff20875dc14ca573211e15b9ce03a1cdf5a4194')
+sha256sums=('8c71342d13c451eb2d53a9a0c0693ceaba0b31e7a865578b5ed9340761fa733b')
 
 build() {
   # Use ROS environment variables
