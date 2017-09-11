@@ -14,9 +14,8 @@ pkgbase = runescape-launcher
 	provides = runescape-launcher-nxt
 	conflicts = runescape-launcher-nxt
 	source = wrapper.sh
-	source = runescape.gpg.key
+	validpgpkeys = AAC9264309E4D717441DB9527373B12CE03BEB4B
 	sha256sums = d20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12
-	sha256sums = 2e32bc0110d349a1613878a681dc7748f83fb8766b11911c71a923c101382843
 	source_x86_64 = runescape-launcher_2.2.4-8_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/runescape-launcher/runescape-launcher_2.2.4_amd64.deb
 	sha256sums_x86_64 = SKIP
 

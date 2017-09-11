@@ -20,24 +20,19 @@ depends=(
 )
 conflicts=(runescape-launcher-nxt)
 provides=(runescape-launcher-nxt)
-source=("wrapper.sh"
-        "runescape.gpg.key")
+source=("wrapper.sh")
 source_x86_64=("${pkgname}_${pkgver}-${_pkgbump}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('d20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12'
-            '2e32bc0110d349a1613878a681dc7748f83fb8766b11911c71a923c101382843')
+sha256sums=('d20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12')
 sha256sums_x86_64=('SKIP')
-
-jagexpgpkey="AAC9264309E4D717441DB9527373B12CE03BEB4B"
+validpgpkeys=("AAC9264309E4D717441DB9527373B12CE03BEB4B")
 
 _verify_deb() {
+    local jagexpgpkey=${validpgpkeys[0]}
     local _out
 
     if (( SKIPPGPCHECK )); then
         return 0
     fi
-
-    msg2 "Importing Jagex PGP key..."
-    gpg --import runescape.gpg.key
 
     msg2 "Verifying _gpgbuilder (PGP)..."
     if ! _out=$(gpg --batch --yes --status-fd 1 \
@@ -68,14 +63,12 @@ _verify_deb() {
 
 _verify_repo() {
     local repo="https://content.runescape.com/downloads/ubuntu/dists/trusty"
+    local jagexpgpkey=${validpgpkeys[0]}
     local _out
 
     if (( SKIPPGPCHECK )); then
         return 0
     fi
-
-    msg2 "Importing Jagex PGP key..."
-    gpg --import runescape.gpg.key
 
     msg2 "Downloading Release..."
     curl -O "$repo/Release"
