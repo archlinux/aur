@@ -7,7 +7,7 @@ pkgbase=linux-zen           # Build -zen kernel
 _srcname=linux-4.13
 _zenpatch=zen-4.13.1-2ce4f12c263fb44095950b05ad3b1015e5f7c3d1.diff
 pkgver=4.13.1
-pkgrel=1
+pkgrel=1.1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -54,6 +54,9 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # add zen patch
+  patch -p1 -i ../${_zenpatch}
 
   cp -Tf ../config.${CARCH} .config
 
