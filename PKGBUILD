@@ -3,7 +3,7 @@
 pkgname=mono-nightly
 _pkgname=mono
 pkgver=5.7.0.286
-pkgrel=1
+pkgrel=2
 pkgdesc="Free implementation of the .NET platform including runtime and compiler. Nightly version."
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1' 'MPL' 'BSD' 'custom=MITX11' 'custom=MSPL')
@@ -12,6 +12,7 @@ depends=('zlib' 'libgdiplus' 'sh' 'python' 'ca-certificates')
 makedepends=('cmake' 'mono')
 provides=('monodoc' 'mono')
 conflicts=('monodoc' 'mono')
+replaces=('mono')
 source=(https://download.mono-project.com/sources/mono/nightly/${_pkgname}-${pkgver}.tar.bz2 
 	mono.binfmt.d)
 md5sums=('2754af7443335d13018036ce90d6d919'
