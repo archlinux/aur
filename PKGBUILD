@@ -36,9 +36,6 @@ validpgpkeys=("AAC9264309E4D717441DB9527373B12CE03BEB4B")
 SRCDEST=$startdir
 
 _verify_repo() {
-    local jagexpgpkey=${validpgpkeys[0]}
-    local _out
-
     if (( SKIPPGPCHECK )); then
         return 0
     fi
@@ -46,6 +43,8 @@ _verify_repo() {
     local Release=${source[0]%%::*}
     local debfile=${source_x86_64[0]%%::*}
     local Packages=${source_x86_64[1]%%::*}
+    local jagexpgpkey=${validpgpkeys[0]}
+    local _out
 
     msg2 "Verifying Release (PGP)..."
     if ! _out=$(gpg --batch --status-fd 1 \
