@@ -11,11 +11,11 @@ license=(custom)
 url="https://www.runescape.com/"
 depends=(
     glew1.10
+    gtk2
     libcurl-compat
     libpng12
     libvorbis
     sdl2
-    gtk2
 )
 conflicts=(runescape-launcher-nxt)
 provides=(runescape-launcher-nxt)
