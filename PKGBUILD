@@ -2,21 +2,20 @@
 # Contributor: speps <speps dot archlinux dot org>
 
 pkgname=qxmledit
-pkgver=0.9.7.1
-_realver=0.9.7-1
-pkgrel=1.2
+pkgver=0.9.8
+pkgrel=1
 pkgdesc="Simple XML editor and XSD viewer"
 arch=('x86_64')
 url="http://qxmledit.org/"
 license=('GPL3' 'LGPL3')
 depends=('qt5-svg' 'glu' 'qt5-scxml')
 makedepends=('freeglut' 'gzip')
-source=("http://downloads.sourceforge.net/project/qxmledit/QXmlEdit-0.9.7/qxmledit-$_realver-src.tgz")
-sha256sums=('bcb694f01db5e4f4bedec81f823d498c6270f78da6a0c5963c52956f6c81c443')
+source=("http://downloads.sourceforge.net/project/qxmledit/QXmlEdit-$pkgver/qxmledit-$pkgver-src.tgz")
+sha256sums=('a24cf4439ab4676cd375669b3b2c9e47ac7e859835a803013ea35b15942ef210')
 
 
 build() {
-  cd $pkgname-$_realver
+  cd $pkgname-$pkgver
   export \
                 QXMLEDIT_INST_DIR="/usr/bin" \
                 QXMLEDIT_INST_LIB_DIR="/usr/lib" \
@@ -28,7 +27,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$_realver
+  cd $pkgname-$pkgver
   make INSTALL_ROOT="$pkgdir/" install
 
   # man files
