@@ -16,7 +16,7 @@ md5sums=(SKIP)
 
 pkgver() {
     cd "$_gitname"
-    git describe --long --tags | \
+    git describe --long --tags --match "[[:digit:]]*" | \
         sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;'
 }
 
