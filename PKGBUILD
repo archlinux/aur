@@ -1,8 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 # Contributer: Jose Riha <jose1711 gmail com>
 pkgbase=python-audioread
-#pkgname=(python-audioread python2-audioread)
-pkgname=(python-audioread)
+pkgname=(python-audioread python2-audioread)
 _pkgname=audioread
 pkgver=2.1.5
 pkgrel=1
