@@ -1,8 +1,9 @@
 # Maintainer: Gabriel Magno <gabrielmagno1@gmail.com>
+# Contributor: Michał Pałubicki <maln0ir@gmx.com>
 
 _pkgname=agate-excel
 pkgname=python-$_pkgname
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Adds read support for Excel files (xls and xlsx) to agate"
 arch=('any')
@@ -18,13 +19,13 @@ depends=('python'
          'python-openpyxl'
          'python-agate')
 
-source=("https://pypi.python.org/packages/25/39/71dfd88cf42ee2944c4aa8d94e4a3e2404abe45b97c85bf5a6224bfa6306/$_pkgname-$pkgver.tar.gz")
+source=("https://github.com/wireservice/agate-excel/archive/${pkgver}.tar.gz")
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-sha256sums=('5341b08ffa6882b5b558d97b431ff122cd4c178fd5fb884a831f71ccef90fb23')
+sha256sums=('2a850afe5576b5e2ffc8ea8115bcc45a6735e0b8df63c4ceeac33bbb9ed27de3')
 
 # vim:set ts=2 sw=2 et:
