@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=ts-qtplatform
-pkgver=1.5
+pkgver=1.6
 pkgrel=0
 pkgdesc="Qt Platform Abstraction for theShell"
 arch=("x86_64")
@@ -19,6 +19,8 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/lib/qt/plugins/platformthemes/"
-	cp "$pkgname-$pkgver/libts-qtplatform.so" "$pkgdir/usr/lib/qt/plugins/platformthemes/ts.so"
+	#mkdir -p "$pkgdir/usr/lib/qt/plugins/platformthemes/"
+	#cp "$pkgname-$pkgver/libts-qtplatform.so" "$pkgdir/usr/lib/qt/plugins/platformthemes/ts.so"
+	cd "$pkgname-$pkgver"
+	make install INSTALL_ROOT=$pkgdir
 }

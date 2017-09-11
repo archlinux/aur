@@ -1,6 +1,6 @@
 pkgbase = ts-qtplatform
 	pkgdesc = Qt Platform Abstraction for theShell
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 0
 	url = https://github.com/vicr123/ts-qtplatform
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ts-qtplatform
 	depends = contemporary-icons
 	depends = qt5-multimedia
 	depends = contemporary-cursors
-	source = ts-qtplatform-1.5::git+https://github.com/vicr123/ts-qtplatform#branch=master
+	source = ts-qtplatform-1.6::git+https://github.com/vicr123/ts-qtplatform#branch=master
 	md5sums = SKIP
 
 pkgname = ts-qtplatform
