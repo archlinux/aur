@@ -10,6 +10,7 @@ depends=('zlib' 'libgdiplus' 'sh' 'python' 'ca-certificates')
 makedepends=('cmake' 'mono')
 provides=('monodoc' 'mono')
 conflicts=('monodoc' 'mono')
+replaces=('mono' 'monodoc')
 source=(https://download.mono-project.com/sources/mono/${_pkgname}-${pkgver}.tar.bz2 
 	mono.binfmt.d)
 md5sums=('103c7a737632046a9e9a0b039d752ee1'
