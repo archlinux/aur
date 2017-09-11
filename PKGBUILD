@@ -2,7 +2,7 @@
 
 pkgname=lsi-lsa
 pkgver=003.020.000.000
-pkgrel=2
+pkgrel=3
 pkgdesc="LSI Storage Authority Software Suite"
 arch=('i686' 'x86_64')
 url='http://www.avagotech.com/products/server-storage'
@@ -73,9 +73,9 @@ package() {
   install -Dm755 ${srcdir}/lsa_launcher.sh opt/lsi/LSIStorageAuthority/bin/lsa_launcher.sh
 
   # Install Docs
-  install -Dm644 "${srcdir}/LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf" "usr/share/docs/${pkgname}/LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf"
-  install -Dm644 "${srcdir}/LSI_Storage_Authority_Software_User_Guide.pdf" "usr/share/docs/${pkgname}/LSI_Storage_Authority_Software_User_Guide.pdf"
-  install -Dm644 "${srcdir}/"*/LSA_Linux_*_readme.txt "usr/share/docs/${pkgname}/LSA_Linux_readme.txt"
+  install -Dm644 "${srcdir}/LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf" "usr/share/doc/${pkgname}/LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf"
+  install -Dm644 "${srcdir}/LSI_Storage_Authority_Software_User_Guide.pdf" "usr/share/doc/${pkgname}/LSI_Storage_Authority_Software_User_Guide.pdf"
+  install -Dm644 "${srcdir}/"*/LSA_Linux_*_readme.txt "usr/share/doc/${pkgname}/LSA_Linux_readme.txt"
 
   # Configure the port server/client: 2463 for bundled nginx server & 9009 for LSA client
   # NOTE: Some programs, like youtube-mpv-git [AUR], uses the port 9000 (used by default in LSA client).
@@ -85,7 +85,7 @@ package() {
       -i opt/lsi/LSIStorageAuthority/server/conf/nginx.conf
   sed 's|9000|9009|g' \
       -i opt/lsi/LSIStorageAuthority/conf/LSA.conf \
-      -i usr/share/docs/lsi-lsa/LSA_Linux_readme.txt
+      -i usr/share/doc/lsi-lsa/LSA_Linux_readme.txt
 
   # Setup type
   echo gateway > opt/lsi/LSIStorageAuthority/installtype
