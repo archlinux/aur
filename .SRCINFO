@@ -16,7 +16,7 @@ pkgbase = runescape-launcher
 	source = wrapper.sh
 	sha256sums = d20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12
 	source_x86_64 = runescape-launcher_2.2.4-8_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/runescape-launcher/runescape-launcher_2.2.4_amd64.deb
-	sha256sums_x86_64 = cd15d8dbd5e940dc76e97788b8f1f200d75458ae483cd85a8c1a0a74491cf4f2
+	sha256sums_x86_64 = SKIP
 
 pkgname = runescape-launcher
 
