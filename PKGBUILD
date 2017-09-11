@@ -6,7 +6,7 @@
 # Contributor: Alexander <iam.asm89@gmail.com>
 
 pkgname=hipchat
-pkgver=4.29.4.1662
+pkgver=4.30.0.1663
 pkgrel=2
 pkgdesc="Persistent group chat using XMPP"
 arch=('x86_64')
@@ -15,15 +15,19 @@ license=('custom')
 depends=('fontconfig' 'libgl' 'libltdl' 'libxslt' 'hicolor-icon-theme'
          'libxcomposite' 'libxcursor' 'libxkbcommon' 'libxrandr' 'libxslt' 'libxss'
          'libpulse' 'xcb-util-keysyms' 'nss' 'openssl-1.0')
-source=("https://atlassian.artifactoryonline.com/atlassian/hipchat-apt-client/pool/HipChat4-${pkgver}-Linux.deb" "license.html")
-sha1sums=('9a92f389b24bea827fae76d3310c360023d4a214'
-          'd57436db297ab4313a5964bba05060e2c7e93e70')
+source=("https://atlassian.artifactoryonline.com/atlassian/hipchat-apt-client/pool/HipChat4-${pkgver}-Linux.deb"
+  "license.html"
+  "fix-seccomp-sandbox-bug.patch")
+sha1sums=('680cbb1767a7eb7d40796c908558a354de811536'
+          'd57436db297ab4313a5964bba05060e2c7e93e70'
+          '66370d1efecc99a6c69b66109136b044d3f17399')
 
 prepare() {
   cd "${srcdir}"
   mkdir "${pkgname}-${pkgver}"
   cd "${pkgname}-${pkgver}"
   tar xzf "${srcdir}"/data.tar.gz
+  patch -p1 -i "${srcdir}/fix-seccomp-sandbox-bug.patch"
 }
 
 package() {

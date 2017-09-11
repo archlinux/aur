@@ -1,0 +1,11 @@
+--- hipchat-4.30.0.1663/opt/HipChat4/bin/QtWebEngineProcess.orig	2017-09-10 20:40:15.745339729 -0400
++++ hipchat-4.30.0.1663/opt/HipChat4/bin/QtWebEngineProcess	2017-09-10 20:40:38.134780623 -0400
+@@ -1,7 +1,7 @@
+ #!/bin/bash
+ 
+ commandtorun=''
+-arguments=$@
++arguments="--disable-seccomp-filter-sandbox $@"
+ if [[ "$1" = "--gdb" ]]
+     then commandtorun="gdb"
+     arguments=''
