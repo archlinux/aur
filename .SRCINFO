@@ -1,0 +1,15 @@
+pkgbase = python-expressions
+	pkgdesc = Extensible arithmetic expression parser and compiler
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/DataBrewery/expressions
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-grako
+	source = https://github.com/databrewery/expressions/archive/v0.2.3.tar.gz
+	sha256sums = 9f683975345cd7481f98beedca4f953727d99924fbdd007c5b5c92ded0396218
+
+pkgname = python-expressions
+
