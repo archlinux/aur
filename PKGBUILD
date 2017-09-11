@@ -3,12 +3,13 @@
 
 _pkgname=agate
 pkgname=python-$_pkgname
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A data analysis library that is optimized for humans instead of machines"
 arch=('any')
 url="http://agate.readthedocs.org/"
 license=('MIT')
+# According to requirements-py3.txt
 depends=('python'
          'python-nose'
          'python-tox'
@@ -22,7 +23,10 @@ depends=('python'
          'python-parsedatetime'
          'python-pytz'
          'python-isodate'
-         'python-awesome-slugify')
+         'python-slugify'
+         'python-lxml'
+         'python-cssselect'
+         'python-leather')
 
 source=("https://github.com/wireservice/agate/archive/${pkgver}.tar.gz")
 
@@ -31,6 +35,6 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-sha256sums=('fadcc8c2713212e49a36eb4498d71d6538875e8e1aa5a9813a8e1b35d100e92f')
+sha256sums=('e5ab2a32aa866757a98b42cf46580014064dbb38a0395ccf82c8e85593904fef')
 
 # vim:set ts=2 sw=2 et:
