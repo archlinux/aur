@@ -9,8 +9,8 @@
 
 _pkgname=synergy
 pkgname=$_pkgname-git
-pkgver=20170809.r3131.d0ded4e56
-pkgrel=2
+pkgver=20170905.r3132.3ccf3d17e
+pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
