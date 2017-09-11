@@ -2,7 +2,7 @@
 _pkgname=sandsifter
 pkgname="${_pkgname}-git"
 pkgver=r1.dff6324
-pkgrel=1
+pkgrel=2
 pkgdesc="The x86 processor fuzzer"
 arch=("i686" "x86_64")
 url="https://github.com/xoreaxeaxeax/${_pkgname}"
@@ -26,14 +26,16 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${_pkgname}"
 	patch -p1 -i "${srcdir}/${pkgname}.patch"
-	#sed -i -E 's~(#!/usr/bin/)python~\1env python2~' *.py
-	#sed -i -E "s~(INJECTOR = \")./(injector\")~\1/opt/${_pkgname}/\2~" sifter.py
-	#sed -i -E "s~(OUTPUT = \")./(data/\")~\1/opt/${_pkgname}/\2~" sifter.py
 }
 
 build() {
 	cd "$srcdir/${_pkgname}"
+	# TODO: get it to build with -m32
+	#rm -f injector
+	#make CFLAGS="-m32"
+	#mv injector{,_32}
 	make CFLAGS="-no-pie"
+	#mv injector{,_64}
 }
 
 package() {
@@ -42,4 +44,5 @@ package() {
 	install -Dm 655 -t "${pkgdir}/opt/${_pkgname}" summarize.py injector
 	cp -r disas gui pyutil "${pkgdir}/opt/${_pkgname}/"
 	install -Dm 655 -t "${pkgdir}/usr/bin/" sifter.py
+	ln -s "${pkgdir}/opt/${_pkgname}/summarize.py" "${pkgdir}/usr/bin/"
 }
