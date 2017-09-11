@@ -1,0 +1,16 @@
+pkgbase = passff-host-app
+	pkgdesc = Systemwide installation of the passff firefox extension's host app
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/passff/passff/
+	arch = any
+	license = GPL2
+	conflicts = firefox-passff-git
+	conflicts = firefox-passff
+	source = https://github.com/passff/passff/releases/download/1.0.0/passff.json
+	source = https://github.com/passff/passff/releases/download/1.0.0/passff.py
+	sha256sums = cd871bcf29d71e53f986fb74b7f2b1867151ba2b2a27318044c7bfaa38827282
+	sha256sums = c4c8593077a40a8bb4f13890fcf099e284cc193743e60f645a7ed286efe1803a
+
+pkgname = passff-host-app
+
