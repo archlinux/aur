@@ -1,7 +1,7 @@
 pkgbase = emacs-git-shallow
 	pkgdesc = GNU Emacs [master] (shallow clone [20% disk space])
-	pkgver = 26.0.50.1
-	pkgrel = 2
+	pkgver = 26.0.50.20170911T1615
+	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = i686
 	arch = x86_64
