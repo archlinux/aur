@@ -13,7 +13,7 @@ license=('APACHE')
 source=("https://github.com/01org/tbb/archive/${_pkgver}.tar.gz"
         "https://raw.githubusercontent.com/wjakob/tbb/master/CMakeLists.txt"
         "https://raw.githubusercontent.com/wjakob/tbb/master/build/version_string.ver.in")
-sha1sums=('95bbaa5e23d77d5dbe30b41e397aa2288922ec88'
+sha1sums=('8340c35c29a26081eb92426a98accb6c15dfa729'
           'SKIP'
           'SKIP')
 
