@@ -1,0 +1,12 @@
+pkgbase = pokemon-wallpapers
+	pkgdesc = A set of 700 FullHD Pokemon Wallpapers made by Teej/TopHat.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/giorgosioak/pokemon-wallpapers
+	arch = any
+	license = GPLv3
+	source = https://github.com/giorgosioak/pokemon-wallpapers/releases/download/1.0.0/pokemon-wallpapers-1.0.0.tar.xz
+	md5sums = 4ec401e81543b54dbf39794b9e6b441d
+
+pkgname = pokemon-wallpapers
+
