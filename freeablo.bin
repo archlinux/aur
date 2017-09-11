@@ -11,6 +11,7 @@ run_dir=$HOME/'.freeablo'
 app_dir=/usr/share/freeablo/resources 
 
 if [ ! -e $run_dir ]; then
+	mkdir -p $run_dir
 	ln -s "$app_dir/*" "$run_dir/"
 fi
 if [ ! -e $run_dir/'DIABDAT.MPQ' ]; then
