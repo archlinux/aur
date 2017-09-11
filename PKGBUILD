@@ -7,7 +7,7 @@
 # Contributor: Elijah Stone <elronnd@protonmail.ch>
 
 pkgname=('gdc' 'libgphobos-devel' 'libgphobos')
-pkgver=7.1.0
+pkgver=7.2.0
 pkgrel=2
 _islver=0.18
 arch=('i686' 'x86_64')
@@ -16,14 +16,14 @@ url="https://github.com/D-Programming-GDC/GDC"
 makedepends=('binutils>=2.26' 'git')
 
 source=(
-	https://ftp.gnu.org/pub/gnu/gcc/gcc-7.1.0/gcc-7.1.0.tar.bz2
+	https://ftp.gnu.org/pub/gnu/gcc/gcc-7.2.0/gcc-7.2.0.tar.xz
 	http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
 	gdc::git+https://github.com/D-Programming-GDC/GDC.git
 	git+https://github.com/D-Programming-GDC/GDMD.git
 	paths.diff
 )
 sha256sums=(
-	'8a8136c235f64c6fef69cac0d73a46a1a09bb250776a050aec8f9fc880bebc17'
+	'1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a'
 	'6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
 	'SKIP'
 	'SKIP'
@@ -61,8 +61,8 @@ build() {
 
 	# using -pipe causes spurious test-suite failures
 	# http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-	CFLAGS=${CFLAGS/-pipe/}
-	CXXFLAGS=${CXXFLAGS/-pipe/}
+	export CFLAGS="${CFLAGS/-pipe/} -O2"
+	export CXXFLAGS="${CXXFLAGS/-pipe/} -O2"
 
 	$srcdir/gcc-$pkgver/configure --prefix=/usr \
 		--libdir=/usr/lib \
