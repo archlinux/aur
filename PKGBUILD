@@ -3,7 +3,7 @@
 
 pkgname=aerospike-client-c-libuv
 pkgver=4.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The Aerospike C client provides a C interface for interacting with the Aerospike Database."
 arch=('any')
 url="https://github.com/aerospike/aerospike-client-c"
