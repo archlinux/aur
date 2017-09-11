@@ -10,15 +10,15 @@ arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _filename="firefox-${pkgver}.ru.linux-${CARCH}"
 _baseurl="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n"
-_sha256sum="$(curl -vs "${_baseurl}/${_filename}.checksums" 2>&1 | grep bz | grep sha256 | cut -d " " -f1 | head -n 1)"
+_sha512sum="$(curl -vs "${_baseurl}/${_filename}.checksums" 2>&1 | grep bz | grep sha512 | cut -d " " -f1 | head -n 1)"
 source=('firefox-nightly.desktop'
         'firefox-nightly-ru.install'
         'vendor.js'
         "${_baseurl}/${_filename}.tar.bz2")
-sha256sums=('b4661a5f6f3c6ac2a6eea3a542ad7d965c6a2a5407335521c0acc7557c1ad0aa'
-         '07aa620747e5b6c2ba564d360ebd00506edf6bec4474e14aa98953466af3dba5'
-         'a605391acbcf6096f1db3c8c31c75bcacbe067dbb341a8b7529718dd246cd38e'
-         "${_sha256sum}")
+sha512sums=('5c825fab6b7bd279d372cfb5dad35293d212c89b73dcfb9b0e83f166159567d8ba3fc642b35fda57b20a0f2e8cc346b83ee1d469920d973096257d718ec3beb7'
+         'bc940986f5acb02706714d5dcbc32e17b167190dc9a30c7d63bf5317a45a1a0ff9da5ea302b9c8efc32acf7b75d2dec1420f542cb0ba08c3e3d59273d18baa96'
+         'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
+         "${_sha512sum}")
 install=${pkgname}.install
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 
 'sqlite' 'dbus-glib' 'desktop-file-utils')

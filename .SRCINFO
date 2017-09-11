@@ -24,10 +24,10 @@ pkgbase = firefox-nightly-ru
 	source = firefox-nightly-ru.install
 	source = vendor.js
 	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/firefox-57.0a1.ru.linux-x86_64.tar.bz2
-	sha256sums = b4661a5f6f3c6ac2a6eea3a542ad7d965c6a2a5407335521c0acc7557c1ad0aa
-	sha256sums = 07aa620747e5b6c2ba564d360ebd00506edf6bec4474e14aa98953466af3dba5
-	sha256sums = a605391acbcf6096f1db3c8c31c75bcacbe067dbb341a8b7529718dd246cd38e
-	sha256sums = 219c7c71a9a56759968be022e51e5204647bf435692c612fb88cb3e9ea834542
+	sha512sums = 5c825fab6b7bd279d372cfb5dad35293d212c89b73dcfb9b0e83f166159567d8ba3fc642b35fda57b20a0f2e8cc346b83ee1d469920d973096257d718ec3beb7
+	sha512sums = bc940986f5acb02706714d5dcbc32e17b167190dc9a30c7d63bf5317a45a1a0ff9da5ea302b9c8efc32acf7b75d2dec1420f542cb0ba08c3e3d59273d18baa96
+	sha512sums = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
+	sha512sums = 413761e0472e6976853f9621fddf4f4036e52e8b7a4c5d882575d5786531d2bd670beb397a320dc93d7848072b6e9716f416d2fee3c24e998333fb6fbeb1bfce
 
 pkgname = firefox-nightly-ru
 
