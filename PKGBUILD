@@ -1,10 +1,10 @@
 # Maintainer: Alad Wenter <alad@mailbox.org>
 # Contributor: Alex Griffin <griffin.aj@gmail.com>
 pkgname=xss
-pkgver=r3.c2be604
+pkgver=20120302
 # https://github.com/9wm/xss/issues/1
-_commit=d74f14e02e65bf0f844a1b882576d6c3d87805c6
-pkgrel=1
+_commit=cfe9ab22e33a58ae86e4d88796260ce7c7398abc
+pkgrel=4
 pkgdesc="A collection of small programs to compose your own screensaver or screenlocker"
 arch=('i686' 'x86_64')
 url='https://github.com/9wm/xss'
@@ -13,11 +13,6 @@ depends=('libxss')
 makedepends=('git')
 source=("git+https://github.com/9wm/xss.git#commit=$_commit")
 sha256sums=('SKIP')
-
-pkgver() {
-    cd "$pkgname-master"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
     cd "$pkgname-master"
