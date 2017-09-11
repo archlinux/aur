@@ -1,0 +1,19 @@
+pkgbase = python-cubes
+	pkgdesc = Lightweight framework for Online Analytical Processing (OLAP) and multidimensional analysis
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://leather.readthedocs.io/
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dateutil
+	depends = python-jsonschema
+	depends = python-expressions
+	depends = python-grako
+	depends = python-click
+	source = https://github.com/databrewery/cubes/archive/v1.1.tar.gz
+	sha256sums = a5161aee882259702bfa3261d29c7d559bd38a857d67b9d2a5c950904d3e576b
+
+pkgname = python-cubes
+
