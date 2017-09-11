@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='https://github.com/kewenyu/VapourSynth-BezierCurve'
-license=('GPL2')
+license=('MIT')
 depends=('vapoursynth')
 makedepends=('git'
              'meson'
@@ -40,4 +40,7 @@ build() {
 package(){
   cd "${_plug}/build"
   DESTDIR="${pkgdir}" ninja install
+
+  install -Dm644 ../README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${_plug}/LICENSE"
 }
