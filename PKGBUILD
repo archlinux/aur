@@ -6,7 +6,7 @@ pkgver=2.0
 pkgrel=1
 pkgdesc="Parallax backgrounds manager"
 url="https://github.com/iabem97/komorebi"
-depends=("desktop-file-utils" "glib2>=2.38" "gtk3>=3.14" "hicolor-icon-theme" "libgtop" "libgee" "libwnck" "clutter-gst")
+depends=("desktop-file-utils" "glib2>=2.38" "gtk3>=3.14" "hicolor-icon-theme" "libgtop" "libgee" "libwnck" "clutter" "clutter-gtk" "clutter-gst")
 makedepends=("git" "cmake" "vala" "gendesk")
 provides=("komorebi")
 license=("GPL")
