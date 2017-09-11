@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Maintainer: Devin Buhl <devin.kray@gmail.com>
 pkgname="radarr"
-pkgver="0.2.0.846"
+pkgver="0.2.0.852"
 pkgrel=1
 pkgdesc="Movie downloader for usenet and torrents."
 arch=(any)
