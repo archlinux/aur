@@ -16,12 +16,12 @@ source=(freeablo-git::"git+https://github.com/wheybags/freeablo.git"
 'freeablo.bin'
 'freeablo.desktop'
 'freeablo_icon.svg'
-'https://www.dropbox.com/s/vwgykhaeexyaap7/diablo_windows_0g1w.tar.xz?dl=0')
+'diablo-files.tar.xz::https://www.dropbox.com/s/ljshg2kwdxly66s/Diablo_FreeAblo_files.tar.xz?dl=0')
 sha256sums=('SKIP'
-'da09e6d3ad2747ec3e4134b2aad0bd841ecc4db0280eceb834c3c5fc6363c24e'
+'96d7434be63aa095dc0187e3b3ec9f1c9a9169118905a65dd562f8a888a16dbb'
 '95ea4757e1f373e54cf899d6bef6efcf28798e6eca30d904e3710963cdd856df'
 'abdd045f931a51ddbac3ac2f5bed6564e76865dd5f57869f65bfa06779bb3869'
-'09b34d487656ad783f02c72e5e129e0785286bdd049120057b941cc07709c07d')
+'a9689afd44b67d3dac281209e78dd63757511a0d9b1853273d0ed4f6d553679e')
 
 prepare() {
   cd $srcdir
@@ -43,6 +43,8 @@ build() {
    
   cmake $srcdir/$pkgname
   make
+  rm $srcdir/$pkgname/resources
+  cp -r $srcdir/$pkgname/resources .
 }
 
 package() {
@@ -53,7 +55,8 @@ package() {
   done
   # data
   install -d "$pkgdir"/usr/share/"$pkgname_"
-  cp -r $srcdir/build/resources "$pkgdir"/usr/share/"$pkgname_"
+  install -d "$pkgdir"/usr/share/"$pkgname_"/resources
+  cp -r $srcdir/build/resources "$pkgdir"/usr/share/"$pkgname_"/resources
   # doc
   install -Dm644 $srcdir/$pkgname/readme.md "$pkgdir"/usr/share/doc/"$pkgname_"/readme.md
   # shorcuts
@@ -68,7 +71,7 @@ package() {
   #### NOTE: DIABLO 1, is ABANDONWARE. Please NOTE: This Game is still licensed by Blizzard. Please ...
   #### Support future Releases.
   
-  install -m755 "$srcdir"/'Diablo - RIP'/Diabdat.mpq "$pkgdir"/usr/share/freeablo/resources/DIABDAT.MPQ
-  install -m755 "$srcdir"/'Diablo - RIP'/Diablo.exe "$pkgdir"/usr/share/freeablo/resources/Diablo.exe
+  install -m755 "$srcdir"/'Diablo-files'/Diabdat.mpq "$pkgdir"/usr/share/freeablo/resources/DIABDAT.MPQ
+  install -m755 "$srcdir"/'Diablo-files'/Diablo.exe "$pkgdir"/usr/share/freeablo/resources/Diablo.exe
   
 }

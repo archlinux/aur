@@ -22,12 +22,12 @@ pkgbase = freeablo-git
 	source = freeablo.bin
 	source = freeablo.desktop
 	source = freeablo_icon.svg
-	source = https://www.dropbox.com/s/vwgykhaeexyaap7/diablo_windows_0g1w.tar.xz?dl=0
+	source = diablo-files.tar.xz::https://www.dropbox.com/s/ljshg2kwdxly66s/Diablo_FreeAblo_files.tar.xz?dl=0
 	sha256sums = SKIP
-	sha256sums = da09e6d3ad2747ec3e4134b2aad0bd841ecc4db0280eceb834c3c5fc6363c24e
+	sha256sums = 96d7434be63aa095dc0187e3b3ec9f1c9a9169118905a65dd562f8a888a16dbb
 	sha256sums = 95ea4757e1f373e54cf899d6bef6efcf28798e6eca30d904e3710963cdd856df
 	sha256sums = abdd045f931a51ddbac3ac2f5bed6564e76865dd5f57869f65bfa06779bb3869
-	sha256sums = 09b34d487656ad783f02c72e5e129e0785286bdd049120057b941cc07709c07d
+	sha256sums = a9689afd44b67d3dac281209e78dd63757511a0d9b1853273d0ed4f6d553679e
 
 pkgname = freeablo-git
 
