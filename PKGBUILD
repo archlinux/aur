@@ -6,7 +6,7 @@
 
 pkgname=firejail-extras
 pkgver=0.9.445
-pkgrel=6
+pkgrel=7
 pkgdesc="Extra profiles for firejail"
 arch=('any')
 url="https://github.com/triceratops1/fe"
@@ -43,7 +43,6 @@ package() {
 	cd "${srcdir}"
         msg2 remove profiles added to upstream
         rm   ${srcdir}/firejail-profiles/firefox.profile
-        rm   ${srcdir}/firejail-profiles/firefox-nightly.profile
         rm   ${srcdir}/firejail-profiles/torbrowser-launcher.profile
         rm   ${srcdir}/firejail-profiles/google-chrome.profile
         rm   ${srcdir}/firejail-profiles/libreoffice.profile
@@ -82,6 +81,7 @@ package() {
         rm   ${srcdir}/fe/pluma.profile
         rm   ${srcdir}/fe/qupzilla.profile
         rm   ${srcdir}/fe/uzbl-browser.profile
+        rm   ${srcdir}/fe/firefox-nightly.profile
 
         msg2 create package
        
