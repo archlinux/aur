@@ -1,0 +1,19 @@
+pkgbase = checksec-git
+	pkgdesc = A bash script to check the security properties of executables
+	pkgver = 1.7.5.r33.g3de323e
+	pkgrel = 1
+	url = https://github.com/slimm609/checksec.sh
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = bash
+	depends = binutils
+	depends = procps-ng
+	provides = checksec
+	conflicts = checksec
+	source = git+https://github.com/slimm609/checksec.sh.git
+	sha256sums = SKIP
+
+pkgname = checksec-git
+
