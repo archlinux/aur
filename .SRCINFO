@@ -1,7 +1,7 @@
 pkgbase = mono-stable
 	pkgdesc = Stable version of free .NET implementation.
 	pkgver = 5.2.0.215
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.mono-project.com/
 	install = mono.install
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = mono-stable
 	provides = monodoc
 	conflicts = mono
 	conflicts = monodoc
+	replaces = mono
 	source = https://download.mono-project.com/sources/mono/mono-5.2.0.215.tar.bz2
 	source = mono.binfmt.d
 	sha256sums = 8f0cebd3f7b03f68b9bd015706da9c713ed968004612f1ef8350993d8fe850ea

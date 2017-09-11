@@ -3,7 +3,7 @@
 pkgname=mono-stable
 _pkgname=mono
 pkgver=5.2.0.215
-pkgrel=0
+pkgrel=1
 pkgdesc="Stable version of free .NET implementation."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL2.1' 'MPL')
@@ -12,6 +12,7 @@ depends=('zlib' 'libgdiplus' 'sh' 'python' 'ca-certificates')
 makedepends=('cmake' 'mono')
 provides=('mono' 'monodoc')
 conflicts=('mono' 'monodoc')
+replaces=('mono')
 install="${_pkgname}.install"
 source=(https://download.mono-project.com/sources/mono/${_pkgname}-${pkgver}.tar.bz2
         mono.binfmt.d)
