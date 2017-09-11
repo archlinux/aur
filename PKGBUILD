@@ -3,7 +3,7 @@
 _name="caddy"
 pkgname="$_name-bin"
 pkgver=0.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP/2 web server with automatic HTTPS'
 arch=('x86_64')
 url='https://caddyserver.com'
@@ -23,7 +23,7 @@ sha256sums=('91fa1d4d415ab585bf8d641a6fd374707ab2b9b28cbf11bd7740b4ba4a6795bb'
             '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
             '69e25def317a6172011472bd060655142f3085a0c81392f8a7a9c42b6a58bbd9'
             'bd4d912d083be176727882ccc1bbe577a27cc160db09238e5edc05ba458aebce'
-            'df699bc6201b554d22a89b269fac617059fd6ef81cd500b54861ae866e56d545')
+            '38b0af1f02a8218b851febc09ebf52c3b570f0678688bbb3a48a744abf1ad266')
 
 package() {
     install -D -m 0755 caddy "$pkgdir/usr/bin/caddy"
