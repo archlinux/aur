@@ -5,9 +5,9 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.13.0
-xanmod=2
-pkgrel=2
+pkgver=4.13.1
+xanmod=3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -21,11 +21,11 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         "${pkgbase}.preset")
 source_x86_64=("config.x86_64")
 source_i686=("config.i686")
-sha256sums=('bcac6a8ce5be7a13202bf9683bfdb14a6017004a339e0f9c97b7fad56342a92b'
+sha256sums=('92c8464d65ce24067962dcab9d57b0c33afacd6e654ad72c466d90166c778d17'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
-sha256sums_i686=('df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1')
-sha256sums_x86_64=('bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586')
+sha256sums_i686=('73278ee56c5d3855e67ff50caa77a7cb47fb29ebd8f9b7ca9ebee4e2d446529c')
+sha256sums_x86_64=('1b9cbe1c25653d563515344a7c6cc9f79447ac9274fcf4de0007228e979b55dd')
 
 _kernelname=${pkgbase#linux}
 
