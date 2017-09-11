@@ -32,41 +32,6 @@ sha256sums_x86_64=('SKIP'
                    'SKIP')
 validpgpkeys=("AAC9264309E4D717441DB9527373B12CE03BEB4B")
 
-_verify_deb() {
-    local jagexpgpkey=${validpgpkeys[0]}
-    local _out
-
-    if (( SKIPPGPCHECK )); then
-        return 0
-    fi
-
-    msg2 "Verifying _gpgbuilder (PGP)..."
-    if ! _out=$(gpg --batch --yes --status-fd 1 \
-                    --trust-model always \
-                    --output _gpgbuilder.out \
-                    --decrypt _gpgbuilder \
-                    2>&1); then
-        error "PGP signature of '_gpgbuilder' could not be verified"
-        echo "$_out" | grep -v "^\\[GNUPG:\\]"
-        return 1
-    elif ! egrep -qs "^\\[GNUPG:\\] VALIDSIG $jagexpgpkey " <<< "$_out"; then
-        error "PGP signature of '_gpgbuilder' was not made by Jagex"
-        echo "$_out" | grep -v "^\\[GNUPG:\\]"
-        return 1
-    fi
-
-    _out=$(awk 'ok && $4 == "data.tar.xz" {print $2 " *" $4}
-                /^[^[:space:]]/ {ok=0}
-                /^Files:/ {ok=1}' < _gpgbuilder.out)
-    if ! [[ $_out =~ ^[0-9a-z]{40} ]]; then
-        error "Could not find hash sums in _gpgbuilder"
-        return 1
-    elif ! sha1sum --quiet --check <<< "$_out"; then
-        error "Hash sums of .deb contents did not match expected"
-        return 1
-    fi
-}
-
 _verify_repo() {
     local jagexpgpkey=${validpgpkeys[0]}
     local _out
@@ -111,7 +76,7 @@ _verify_repo() {
     msg2 "Parsing Packages..."
     _out=$(awk 'ok && /^SHA256:/ {print $2; exit}
                 /^Package:/ {ok=0}
-                /^Package: runescape-launcher$/ {ok=1}' < Packages)
+                /^Package: runescape-launcher$/ {ok=1}' < "$Packages")
     if ! [[ $_out =~ ^[0-9a-f]{64}$ ]]; then
         error "Could not find hash of $debfile in Packages file"
         return 1
@@ -126,7 +91,6 @@ _verify_repo() {
 
 prepare() {
     _verify_repo
-    _verify_deb
 
     mkdir -p "$srcdir/$pkgname-$pkgver-$_pkgbump"
     cd "$srcdir/$pkgname-$pkgver-$_pkgbump"
