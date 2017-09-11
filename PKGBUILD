@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=tscheckpass
-pkgver=1.3
+pkgver=1.4
 pkgrel=0
 pkgdesc="User Password Checking for tsscreenlock"
 arch=("x86_64")
@@ -19,7 +19,7 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
-	cp "$pkgname-$pkgver/tscheckpass" "$pkgdir/usr/bin"
+	cd "$pkgname-$pkgver"
+	make install INSTALL_ROOT=$pkgdir
 	chmod u+s "$pkgdir/usr/bin/tscheckpass"
 }
