@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=xwallpaper-git
-pkgver=0.2.0
+pkgver=0.2.1+4+g3e396f1
 pkgrel=1
 pkgdesc='Wallpaper setting utility for X'
 url='https://github.com/stoeckmann/xwallpaper'
@@ -26,7 +26,8 @@ prepare() {
 
 build() {
   cd ${pkgname}
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr \
+    --with-zshcompletiondir=/usr/share/zsh/site-functions
   make
 }
 

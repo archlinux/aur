@@ -1,6 +1,6 @@
 pkgbase = xwallpaper-git
 	pkgdesc = Wallpaper setting utility for X
-	pkgver = 0.2.0
+	pkgver = 0.2.1+4+g3e396f1
 	pkgrel = 1
 	url = https://github.com/stoeckmann/xwallpaper
 	arch = i686
