@@ -1,8 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 # Contributer: Jose Riha <jose1711 gmail com>
 pkgbase=python-librosa
-#pkgname=(python-librosa python2-librosa)
-pkgname=(python-librosa)
+pkgname=(python-librosa python2-librosa)
 _pkgname=librosa
 pkgver=0.5.1
 pkgrel=1
@@ -42,7 +41,7 @@ package_python2-librosa() {
 }
 
 package_python-librosa() {
-  depends=('python-joblib' 'python-matplotlib')
+  depends=('python-joblib' 'python-matplotlib' 'python-audioread' 'python-resampy')
   cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir"/ --optimize=1
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
