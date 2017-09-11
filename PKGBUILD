@@ -43,8 +43,8 @@ NOGZ="YES"        # Don't compress el files. Info and man pages are
 
 #######################################################################
 pkgname=emacs-git-shallow
-pkgver=26.0.50.1
-pkgrel=2
+pkgver=26.0.50.20170911T1615
+pkgrel=1
 pkgdesc="GNU Emacs [master] (shallow clone [20% disk space])"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -130,7 +130,7 @@ pkgver() {
   printf "%s.%s" \
     "$(grep AC_INIT configure.ac | \
     sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\?\).\+$/\1/')" \
-    "$(git rev-list --count HEAD)"
+    "$(date +%Y%m%dT%H%M)"
 }
 
 
