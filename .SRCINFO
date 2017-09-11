@@ -1,0 +1,19 @@
+pkgbase = libdri2-git
+	pkgdesc = Library for the DRI2 extension to the X Window System
+	pkgver = 11.4f1eef3
+	pkgrel = 1
+	url = https://github.com/robclark/libdri2
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = xextproto
+	makedepends = xorg-server-devel
+	depends = libdrm
+	depends = libxext
+	provides = libdri2
+	options = !libtool
+	source = git+https://github.com/robclark/libdri2.git
+	md5sums = SKIP
+
+pkgname = libdri2-git
+
