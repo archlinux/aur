@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-j-mode-git
-pkgver=1.1.1
+pkgver=1.1.1.2.gcf27446
 pkgrel=1
 pkgdesc="Emacs-mode for the J language"
 arch=('any')
