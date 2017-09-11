@@ -17,8 +17,8 @@ backup=(etc/bash.bash{rc,_logout} etc/skel/.bash{rc,_profile,_logout})
 depends=('glibc' 'ncurses' 'libncursesw.a')
 makedepends=('git')
 optdepends=('bash-completion: for tab completion')
-provides=('sh' 'bash=4.4')
-conflicts=('bash')
+provides=('sh' 'bash=4.4-$pkgver')
+conflicts=('bash' 'bash-static')
 source=('git+https://git.savannah.gnu.org/git/bash.git#branch=devel'
         'dot.bashrc'
         'dot.bash_profile'

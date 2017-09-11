@@ -13,8 +13,9 @@ pkgbase = bash-devel-static-git
 	depends = libncursesw.a
 	optdepends = bash-completion: for tab completion
 	provides = sh
-	provides = bash=4.4
+	provides = bash=4.4-$pkgver
 	conflicts = bash
+	conflicts = bash-static
 	backup = etc/bash.bashrc
 	backup = etc/bash.bash_logout
 	backup = etc/skel/.bashrc
