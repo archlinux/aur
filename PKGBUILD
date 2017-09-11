@@ -1,7 +1,7 @@
 # Maintainer: Austin Howard <austin1howard@gmail.com>
 pkgname=teeproxy # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r36.1e7b547
-pkgrel=2
+pkgrel=3
 pkgdesc="teeproxy from chrislusf"
 arch=('i686' 'x86_64')
 url="https://github.com/chrislusf/teeproxy"
