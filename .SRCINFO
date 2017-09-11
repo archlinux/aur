@@ -1,7 +1,7 @@
 pkgbase = aerospike-client-c-libuv
 	pkgdesc = The Aerospike C client provides a C interface for interacting with the Aerospike Database.
 	pkgver = 4.1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aerospike/aerospike-client-c
 	install = aerospike-client-c-libuv.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = aerospike-client-c-libuv
 	makedepends = git
 	depends = libuv
 	depends = python2
+	conflicts = aerospike-client-c-libev
 
 pkgname = aerospike-client-c-libuv
 
