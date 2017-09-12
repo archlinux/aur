@@ -1,0 +1,16 @@
+pkgbase = nvidia-docker2
+	pkgdesc = nvidia-docker CLI wrapper
+	pkgver = 2.0.0+docker17.06.1.ce
+	pkgrel = 1
+	url = https://github.com/NVIDIA/nvidia-docker
+	install = nvidia-docker2.install
+	arch = any
+	license = custom
+	depends = docker
+	depends = nvidia-container-runtime
+	conflicts = nvidia-docker
+	source = https://packages.nvidia.com/compute/container/packages/el/7/nvidia-docker2-2.0.0-1.docker17.06.1.ce.noarch.rpm/download
+	sha256sums = 75a54bbc9627df44e3e0e25bf344d2fd16b07b2500441bf34799edc201602ce1
+
+pkgname = nvidia-docker2
+
