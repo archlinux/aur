@@ -1,0 +1,7 @@
+/bin/
+/pkg/
+/src/
+/*.pkg.*
+/*.tar.gz
+/go-luks-suspend
+/initramfs-suspend

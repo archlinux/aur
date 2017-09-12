@@ -1,0 +1,17 @@
+post_install() {
+  echo '1) Enable the udev, encrypt, shutdown, and suspend hooks'
+  echo '   in /etc/mkinitcpio.conf and run `mkinitcpio -p linux`'
+  echo '2) Enable the go-luks-suspend service with:'
+  echo '   `systemctl enable go-luks-suspend.service`'
+  echo '3) Reboot'
+}
+
+post_upgrade() {
+  local oldver="$2"
+  if (("$(vercmp "$oldver" "1.2.0-1")" < 0)); then
+    echo '[ATTENTION] go-luks-suspend must now be explicitly enabled!'
+    echo '[ATTENTION] Run `systemctl enable go-luks-suspend.service` to enable it.'
+  fi
+}
+
+# vim:set ts=2 sw=2 et:
