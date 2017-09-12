@@ -2,12 +2,12 @@
 pkgname=python-locust-git
 _pkgname=locust
 pkgver=v0.8a1.82.g8c4eeae
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy-to-use, distributed, user load testing tool."
 arch=('any')
 url="http://locust.io/"
 license=('MIT')
-depends=('python-gevent' 'python-flask' 'python-requests' 'python-msgpack')
+depends=('python-gevent' 'python-flask' 'python-requests' 'python-msgpack' 'python-pyzmq')
 makedepends=('git' 'python-setuptools')
 source=('git://github.com/locustio/locust.git')
 md5sums=('SKIP') # skip git source checksum
