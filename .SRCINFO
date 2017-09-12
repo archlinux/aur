@@ -1,0 +1,14 @@
+pkgbase = libnvidia-container
+	pkgdesc = NVIDIA container runtime library
+	pkgver = 1.0.0_0.1.alpha.1
+	pkgrel = 1
+	url = https://github.com/NVIDIA/libnvidia-container
+	arch = x86_64
+	license = custom
+	depends = libcap
+	depends = libseccomp
+	source_x86_64 = https://packages.nvidia.com/compute/container/packages/el/7/libnvidia-container1-1.0.0-0.1.alpha.1.x86_64.rpm/download
+	sha256sums_x86_64 = 53dc4503944242b3534aadf0cbd8c09a3f3385d9da7e49633407f0b22d081c95
+
+pkgname = libnvidia-container
+
