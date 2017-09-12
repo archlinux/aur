@@ -1,36 +1,51 @@
 # Maintainer: Patrick Stewart <patstew@gmail.com>
+# Contributor:  Bartlomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Allan McRae <allan@archlinux.org>
 
-_pkgname=glibc
+# toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
+# NOTE: valgrind requires rebuilt with each major glibc version
+
 pkgname=glibc-wsl
-pkgver=2.25
-pkgrel=2
-_commit=ccb4fd7a657b0fbc4890c98f4586d58a135fc583
-pkgdesc="GNU C Library"
-arch=('i686' 'x86_64')
-url="http://www.gnu.org/software/libc"
-license=('GPL' 'LGPL')
-groups=('base')
-depends=('linux-api-headers>=4.10' 'tzdata' 'filesystem')
-makedepends=('gcc>=6' 'git')
-provides=("${_pkgname}=${pkgver}-${pkgrel}")
-conflicts=("${_pkgname}")
+pkgver=2.26
+pkgrel=3
+pkgdesc='GNU C Library'
+arch=(i686 x86_64)
+url='http://www.gnu.org/software/libc'
+license=(GPL LGPL)
+groups=(base)
+depends=('linux-api-headers>=4.10' tzdata filesystem)
+makedepends=(git gd)
+optdepends=('gd: for memusagestat')
+provides=(glibc=${pkgver}-${pkgrel})
+conflicts=(glibc)
 backup=(etc/gai.conf
         etc/locale.gen
         etc/nscd.conf)
-options=('!strip' 'staticlibs')
+options=(!strip staticlibs)
 install=glibc.install
-source=(git+https://sourceware.org/git/glibc.git#commit=${_commit}
+_commit=58270c0049404ef2f878fdd45df55f17f0b8c1f7
+source=(glibc::git+https://sourceware.org/git/glibc.git#commit=${_commit}
         locale.gen.txt
-        locale-gen)
+        locale-gen
+        0001-Don-t-use-IFUNC-resolver-for-longjmp-or-system-in-li.patch
+        0001-Revert-linux-spawni.c-simplify-error-reporting-to-pa.patch)
 md5sums=('SKIP'
          '07ac979b6ab5eeb778d55f041529d623'
-         '476e9113489f93b348b21e144b6a8fcf')
+         '476e9113489f93b348b21e144b6a8fcf'
+         'cbc073315c00b03898b7fc614274d6b3'
+         'a987eab514bee92cc627453c777896e8')
+
+# pkgver() {
+#   cd glibc
+#   git describe --tags | sed 's/^glibc-//;s/-/+/g'
+# }
 
 prepare() {
   mkdir -p glibc-build
-  git -C ${srcdir}/glibc revert 4b4d4056bb15 && exit 0
-  git -C ${srcdir}/glibc reset -- ChangeLog
-  git -C ${srcdir}/glibc commit -m "Revert spawn changes for WSL"
+
+  cd glibc
+  patch -p1 -i "$srcdir/0001-Don-t-use-IFUNC-resolver-for-longjmp-or-system-in-li.patch"
+  patch -p1 -i "$srcdir/0001-Revert-linux-spawni.c-simplify-error-reporting-to-pa.patch"
 }  
 
 build() {
@@ -38,7 +53,7 @@ build() {
 
   if [[ ${CARCH} = "i686" ]]; then
     # Hack to fix NPTL issues with Xen, only required on 32bit platforms
-    export CFLAGS="${CFLAGS} -mno-tls-direct-seg-refs"
+    export CFLAGS="$CFLAGS -mno-tls-direct-seg-refs"
   fi
 
   echo "slibdir=/usr/lib" >> configparms
@@ -49,21 +64,21 @@ build() {
   # remove fortify for building libraries
   CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
 
-  ../${_pkgname}/configure \
+  "$srcdir/glibc/configure" \
       --prefix=/usr \
       --libdir=/usr/lib \
       --libexecdir=/usr/lib \
       --with-headers=/usr/include \
       --with-bugurl=https://bugs.archlinux.org/ \
       --enable-add-ons \
-      --enable-obsolete-rpc \
-      --enable-kernel=2.6.32 \
       --enable-bind-now \
-      --disable-profile \
-      --enable-stackguard-randomization \
-      --enable-stack-protector=strong \
       --enable-lock-elision \
       --enable-multi-arch \
+      --enable-obsolete-nsl \
+      --enable-obsolete-rpc \
+      --enable-stack-protector=strong \
+      --enable-stackguard-randomization \
+      --disable-profile \
       --disable-werror
 
   # build libraries with fortify disabled
@@ -89,29 +104,28 @@ check() {
 }
 
 package() {
-  cd glibc-build
+  install -dm755 "$pkgdir/etc"
+  touch "$pkgdir/etc/ld.so.conf"
 
-  install -dm755 ${pkgdir}/etc
-  touch ${pkgdir}/etc/ld.so.conf
+  make -C glibc-build install_root="$pkgdir" install
+  rm -f "$pkgdir"/etc/ld.so.{cache,conf}
 
-  make install_root=${pkgdir} install
+  cd glibc
 
-  rm -f ${pkgdir}/etc/ld.so.{cache,conf}
+  install -dm755 "$pkgdir"/usr/lib/{locale,systemd/system,tmpfiles.d}
+  install -m644 nscd/nscd.conf "$pkgdir/etc/nscd.conf"
+  install -m644 nscd/nscd.service "$pkgdir/usr/lib/systemd/system"
+  install -m644 nscd/nscd.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/nscd.conf"
+  install -dm755 "$pkgdir/var/db/nscd"
 
-  install -dm755 ${pkgdir}/usr/lib/{locale,systemd/system,tmpfiles.d}
+  install -m644 posix/gai.conf "$pkgdir"/etc/gai.conf
 
-  install -m644 ${srcdir}/${_pkgname}/nscd/nscd.conf ${pkgdir}/etc/nscd.conf
-  install -m644 ${srcdir}/${_pkgname}/nscd/nscd.service ${pkgdir}/usr/lib/systemd/system
-  install -m644 ${srcdir}/${_pkgname}/nscd/nscd.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/nscd.conf
-
-  install -m644 ${srcdir}/${_pkgname}/posix/gai.conf ${pkgdir}/etc/gai.conf
-
-  install -m755 ${srcdir}/locale-gen ${pkgdir}/usr/bin
+  install -m755 "$srcdir/locale-gen" "$pkgdir/usr/bin"
 
   # create /etc/locale.gen
-  install -m644 ${srcdir}/locale.gen.txt ${pkgdir}/etc/locale.gen
+  install -m644 "$srcdir/locale.gen.txt" "$pkgdir/etc/locale.gen"
   sed -e '1,3d' -e 's|/| |g' -e 's|\\| |g' -e 's|^|#|g' \
-    ${srcdir}/glibc/localedata/SUPPORTED >> ${pkgdir}/etc/locale.gen
+    "$srcdir/glibc/localedata/SUPPORTED" >> "$pkgdir/etc/locale.gen"
 
   # Do not strip the following files for improved debugging support
   # ("improved" as in not breaking gdb and valgrind...):
@@ -120,14 +134,11 @@ package() {
   #   libpthread-${pkgver}.so
   #   libthread_db-1.0.so
 
-  cd $pkgdir
+  cd "$pkgdir"
   strip $STRIP_BINARIES usr/bin/{gencat,getconf,getent,iconv,iconvconfig} \
                         usr/bin/{ldconfig,locale,localedef,nscd,makedb} \
                         usr/bin/{pcprofiledump,pldd,rpcgen,sln,sprof} \
                         usr/lib/getconf/*
-  if [[ $CARCH = "i686" ]]; then
-    strip $STRIP_BINARIES usr/bin/lddlibc4
-  fi
 
   strip $STRIP_STATIC usr/lib/lib{anl,BrokenLocale,c{,_nonshared},crypt}.a \
                       usr/lib/lib{dl,g,ieee,mcheck,nsl,pthread{,_nonshared}}.a \
@@ -145,6 +156,7 @@ package() {
   fi
   
   if [[ $CARCH = "i686" ]]; then
+    strip $STRIP_BINARIES usr/bin/lddlibc4
     strip $STRIP_STATIC usr/lib/libm.a
   fi
 }

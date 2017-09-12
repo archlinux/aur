@@ -1,7 +1,7 @@
 pkgbase = glibc-wsl
 	pkgdesc = GNU C Library
-	pkgver = 2.25
-	pkgrel = 2
+	pkgver = 2.26
+	pkgrel = 3
 	url = http://www.gnu.org/software/libc
 	install = glibc.install
 	arch = i686
@@ -9,24 +9,29 @@ pkgbase = glibc-wsl
 	groups = base
 	license = GPL
 	license = LGPL
-	makedepends = gcc>=6
 	makedepends = git
+	makedepends = gd
 	depends = linux-api-headers>=4.10
 	depends = tzdata
 	depends = filesystem
-	provides = glibc=2.25-2
+	optdepends = gd: for memusagestat
+	provides = glibc=2.26-3
 	conflicts = glibc
 	options = !strip
 	options = staticlibs
 	backup = etc/gai.conf
 	backup = etc/locale.gen
 	backup = etc/nscd.conf
-	source = git+https://sourceware.org/git/glibc.git#commit=ccb4fd7a657b0fbc4890c98f4586d58a135fc583
+	source = glibc::git+https://sourceware.org/git/glibc.git#commit=58270c0049404ef2f878fdd45df55f17f0b8c1f7
 	source = locale.gen.txt
 	source = locale-gen
+	source = 0001-Don-t-use-IFUNC-resolver-for-longjmp-or-system-in-li.patch
+	source = 0001-Revert-linux-spawni.c-simplify-error-reporting-to-pa.patch
 	md5sums = SKIP
 	md5sums = 07ac979b6ab5eeb778d55f041529d623
 	md5sums = 476e9113489f93b348b21e144b6a8fcf
+	md5sums = cbc073315c00b03898b7fc614274d6b3
+	md5sums = a987eab514bee92cc627453c777896e8
 
 pkgname = glibc-wsl
 
