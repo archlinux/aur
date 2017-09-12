@@ -3,7 +3,7 @@
 # Contributor: Akshay S Dinesh asdofindia at gmail dot com
 
 pkgname=ttf-malayalam-font-chilanka
-pkgver=1.0
+pkgver=1.2.0+20160512
 pkgrel=1
 pkgdesc="This is Chilanka, a font belonging to a set of TrueType and OpenType fonts released under the 
 GNU General Public License for Malayalam Language."
@@ -12,7 +12,7 @@ url="http://smc.org.in/fonts/"
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/chilanka/Chilanka.ttf"
         "https://gitlab.com/smc/chilanka/raw/master/67-smc-chilanka.conf")
-md5sums=('5d52ad40cc8889b7a2c2f0cf16cb803e'
+md5sums=('e8f28187a9b4ab888efc6e39888cca7e'
          'f626730347f96e8f323e2bbd3df1a768')
 install=ttf-malayalam-fonts.install
 
