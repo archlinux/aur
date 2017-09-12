@@ -2,7 +2,7 @@
 pkgname=python-locust-git
 _pkgname=locust
 pkgver=v0.8a1.82.g8c4eeae
-pkgrel=4
+pkgrel=5
 pkgdesc="An easy-to-use, distributed, user load testing tool."
 arch=('any')
 url="http://locust.io/"
@@ -20,7 +20,9 @@ pkgver() {
 }
 
 build() {
-    cd $srcdir/$_pkgname
+    cd $srcdir
+    mv locust.patch $_pkgname
+    cd $_pkgname
     patch -p0 -i locust.patch
     python setup.py build
 }
