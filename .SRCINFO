@@ -1,0 +1,14 @@
+pkgbase = libnvidia-container-tools
+	pkgdesc = NVIDIA container runtime library (command-line tools)
+	pkgver = 1.0.0_0.1.alpha.1
+	pkgrel = 1
+	url = https://github.com/NVIDIA/libnvidia-container
+	arch = x86_64
+	license = custom
+	depends = libcap
+	depends = libnvidia-container
+	source_x86_64 = https://packages.nvidia.com/compute/container/packages/el/7/libnvidia-container-tools-1.0.0-0.1.alpha.1.x86_64.rpm/download
+	sha256sums_x86_64 = 6d1da5ababb0dde7c616ed91985780a084e8a9a2b011c777658309577bd429af
+
+pkgname = libnvidia-container-tools
+
