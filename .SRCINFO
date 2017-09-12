@@ -11,7 +11,7 @@ pkgbase = docker-machine-kvm
 	depends = ebtables
 	depends = dnsmasq
 	optdepends = docker: to manage the containers in the machine
-	source = https://github.com/dhiltgen/docker-machine-kvm/releases/download/v$pkgver/docker-machine-driver-kvm-ubuntu16.04
+	source = https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.10.0/docker-machine-driver-kvm-ubuntu16.04
 	sha256sums = d5cd0a1241a157aa68fbb175c4de802a953affe0dcf3e9b93e434acd91277e34
 
 pkgname = docker-machine-kvm
