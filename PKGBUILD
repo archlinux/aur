@@ -10,8 +10,8 @@ url="http://www.skype.com"
 license=('custom')
 depends=('gtk2' 'libxss' 'gconf' 'alsa-lib' 'libxtst' 'libsecret' 'nss')
 optdepends=('gnome-keyring')
-conflicts=('skypeforlinux')
-provides=('skypeforlinux')
+conflicts=('skypeforlinux' 'skypeforlinux-bin')
+provides=('skypeforlinux' 'skypeforlinux-bin')
 source=("https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_${pkgver}_amd64.deb")
 sha256sums=('1f31c0e9379f680f2ae2b4db3789e936627459fe0677306895a7fa096c7db2c5')
 

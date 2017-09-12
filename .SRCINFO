@@ -14,7 +14,9 @@ pkgbase = skypeforlinux-beta-bin
 	depends = nss
 	optdepends = gnome-keyring
 	provides = skypeforlinux
+	provides = skypeforlinux-bin
 	conflicts = skypeforlinux
+	conflicts = skypeforlinux-bin
 	source = https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_5.4.0.1_amd64.deb
 	sha256sums = 1f31c0e9379f680f2ae2b4db3789e936627459fe0677306895a7fa096c7db2c5
 
