@@ -1,6 +1,6 @@
 pkgbase = fastonosql
 	pkgdesc = Cross-platform open source Redis, Memcached, SSDB, LevelDB, RocksDB, UnQLite, LMDB, UpscaleDB GUI management tool.
-	pkgver = 1.6.1
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = http://fastonosql.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fastonosql
 	depends = gcc-libs>=4.4.7
 	options = !strip
 	options = !upx
-	source = https://www.fastonosql.com/downloads/linux/fastonosql-1.6.1-x86_64.deb
+	source = https://www.fastonosql.com/downloads/linux/fastonosql-1.7.1-x86_64.deb
 	source = fastonosql_22.png
 	source = fastonosql_24.png
 	source = fastonosql_32.png
@@ -18,7 +18,7 @@ pkgbase = fastonosql
 	source = fastonosql_128.png
 	source = fastonosql_256.png
 	source = fastonosql_512.png
-	sha256sums = a0832dbd1024f88b7931a06d10c027bbec21306ccc675e4a99fc3867c0b878ee
+	sha256sums = 907f1bf2731de5c056fc31c885fe5951aefe1d2ce65b86cca996dcc53ad05220
 	sha256sums = b131877859b40e6b0844bdef09c24e485e242f6e6ad87584bddf5ad2d036ff86
 	sha256sums = 6b15df2d57033e73d121eb1e7b6d9803d07c933aa8b3f4ca73f4bc361fd28647
 	sha256sums = 4e92352b348651eee0b2e02c7c69b8661dc1c070c9955472e66323a34ffcc5da
