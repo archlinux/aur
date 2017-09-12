@@ -1,7 +1,7 @@
 pkgbase = docker-machine-kvm
 	pkgdesc = KVM driver for docker-machine
-	pkgver = 0.7.0
-	pkgrel = 2
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://github.com/dhiltgen/docker-machine-kvm
 	arch = x86_64
 	license = Apache
@@ -11,8 +11,8 @@ pkgbase = docker-machine-kvm
 	depends = ebtables
 	depends = dnsmasq
 	optdepends = docker: to manage the containers in the machine
-	source = https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm
-	sha256sums = c4ff3eeb5b232aad41942feb8fb46aaaf8d54239408e2f6549468c997a845a31
+	source = https://github.com/dhiltgen/docker-machine-kvm/releases/download/v$pkgver/docker-machine-driver-kvm-ubuntu16.04
+	sha256sums = d5cd0a1241a157aa68fbb175c4de802a953affe0dcf3e9b93e434acd91277e34
 
 pkgname = docker-machine-kvm
 
