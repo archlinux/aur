@@ -2,8 +2,8 @@
 
 pkgbase=intellij-idea-ultimate-edition
 pkgname=(intellij-idea-ultimate-edition intellij-idea-ultimate-edition-jre)
-pkgver=2017.2.3
-_buildver=172.3968.16
+pkgver=2017.2.4
+_buildver=172.4155.36
 pkgrel=1
 arch=('any')
 pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity."
@@ -14,7 +14,7 @@ options=(!strip)
 source=(https://download.jetbrains.com/idea/ideaIU-$pkgver.tar.gz \
         jetbrains-idea.desktop
 )
-sha256sums=('efbdbac7e5651d59b1bc9efbbc9bc13a6f0798d40b169f891511967123da9207'
+sha256sums=('952183763c239acc48a99f4b29c767aa9ab89b1f83d8dc5917e6e61952fbfcf8'
             '83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b')
 package_intellij-idea-ultimate-edition() {
   backup=("usr/share/${pkgname}/bin/idea.vmoptions" "usr/share/${pkgname}/bin/idea64.vmoptions" "usr/share/${pkgname}/bin/idea.properties")
@@ -32,10 +32,7 @@ package_intellij-idea-ultimate-edition() {
   find "$pkgdir"/usr/share/"$pkgname" -type d -exec chmod 0755 {} ';'
   find "$pkgdir"/usr/share/"$pkgname" -type f -exec chmod 0644 {} ';'
 
-  chmod +x "$pkgdir"/usr/share/"$pkgname"/bin/idea.sh
-  chmod +x "$pkgdir"/usr/share/"$pkgname"/bin/fsnotifier
-  chmod +x "$pkgdir"/usr/share/"$pkgname"/bin/fsnotifier64
-  chmod +x "$pkgdir"/usr/share/"$pkgname"/bin/fsnotifier-arm
+  chmod +x "$pkgdir"/usr/share/"$pkgname"/bin/*
 
   ln -s /usr/share/"$pkgname"/bin/idea.sh "$pkgdir"/usr/bin/"$pkgname"
   install -D -m644 "$srcdir"/jetbrains-idea.desktop "$pkgdir"/usr/share/applications/jetbrains-idea.desktop
