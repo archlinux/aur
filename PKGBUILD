@@ -1,30 +1,37 @@
 # Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
 # Contributor: Ameysh <trader9@gmail.com>
+# Contributor: xsmile <sascha_r gmx de>
 pkgname=ta-lib
 pkgver=0.4.0
-pkgrel=3
-pkgdesc="A library providing common functions for the technical analysis of financial market data."
-url="http://ta-lib.org/"
-license=('bsd')
+pkgrel=4
+pkgdesc='A library providing common functions for the technical analysis of financial market data'
+url='http://ta-lib.org'
+license=('BSD')
 arch=('x86_64' 'i686')
-depends=(bash)
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-source=("http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz")
-md5sums=('308e53b9644213fc29262f36b9d3d9b9')
+source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-src.tar.gz"
+        "$pkgname-$pkgver-asneeded.patch"
+        'LICENSE')
+md5sums=('308e53b9644213fc29262f36b9d3d9b9'
+         '5001b2792dcde7189c6a9bc79da09e53'
+         '38c1c6fdece39f5f1199d74ebf7f29bf')
+
+prepare() {
+  cd "$srcdir/$pkgname"
+
+  # https://gitweb.gentoo.org/repo/gentoo.git/tree/sci-libs/ta-lib/files/ta-lib-0.4.0-asneeded.patch
+  patch -Np1 -i "$srcdir/$pkgname-$pkgver-asneeded.patch"
+}
 
 build() {
-  cd $srcdir/$pkgname
+  cd "$srcdir/$pkgname"
 
-  ./configure --prefix=/usr LDFLAGS="-lm"
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd "$srcdir/$pkgname"
 
-  make -j1 DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
