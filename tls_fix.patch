@@ -1,0 +1,91 @@
+From 04eb667e1bc4282a22f291b39099b23611793851 Mon Sep 17 00:00:00 2001
+From: Martin Baulig <martin.baulig@xamarin.com>
+Date: Tue, 15 Mar 2016 18:50:08 -0400
+Subject: [PATCH] [System]: Fix certificate validation on Linux.  Bug #39307.
+
+(cherry picked from commit 37b2b9fbc25a2199aba1d794117924d4828360a7)
+---
+ .../System/Mono.Net.Security/ChainValidationHelper.cs    |  3 ---
+ .../Mono.Net.Security/SystemCertificateValidator.cs      | 16 +++++++++++-----
+ 2 files changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/mcs/class/System/Mono.Net.Security/ChainValidationHelper.cs b/mcs/class/System/Mono.Net.Security/ChainValidationHelper.cs
+index 70c6996..63a781d 100644
+--- a/mcs/class/System/Mono.Net.Security/ChainValidationHelper.cs
++++ b/mcs/class/System/Mono.Net.Security/ChainValidationHelper.cs
+@@ -292,9 +292,6 @@ ValidationResult ValidateChain (string host, bool server, XX509CertificateCollec
+ 			if (wantsChain)
+ 				chain = SystemCertificateValidator.CreateX509Chain (certs);
+ 
+-			if (wantsChain || SystemCertificateValidator.NeedsChain (settings))
+-				SystemCertificateValidator.BuildX509Chain (certs, chain, ref errors, ref status11);
+-
+ 			bool providerValidated = false;
+ 			if (provider != null && provider.HasCustomSystemCertificateValidator) {
+ 				var xerrors = (MonoSslPolicyErrors)errors;
+diff --git a/mcs/class/System/Mono.Net.Security/SystemCertificateValidator.cs b/mcs/class/System/Mono.Net.Security/SystemCertificateValidator.cs
+index f0a0be3..dd67b66 100644
+--- a/mcs/class/System/Mono.Net.Security/SystemCertificateValidator.cs
++++ b/mcs/class/System/Mono.Net.Security/SystemCertificateValidator.cs
+@@ -86,13 +86,13 @@ public static X509Chain CreateX509Chain (XX509CertificateCollection certs)
+ 			return chain;
+ 		}
+ 
+-		public static bool BuildX509Chain (XX509CertificateCollection certs, X509Chain chain, ref SslPolicyErrors errors, ref int status11)
++		static bool BuildX509Chain (XX509CertificateCollection certs, X509Chain chain, ref SslPolicyErrors errors, ref int status11)
+ 		{
+ #if MOBILE
+-			return true;
++			return false;
+ #else
+ 			if (is_macosx)
+-				return true;
++				return false;
+ 
+ 			var leaf = (X509Certificate2)certs [0];
+ 
+@@ -130,7 +130,7 @@ static bool CheckUsage (XX509CertificateCollection certs, string host, ref SslPo
+ 					return false;
+ 				}
+ 
+-				if (host != null && !CheckServerIdentity (leaf, host)) {
++				if (!string.IsNullOrEmpty (host) && !CheckServerIdentity (leaf, host)) {
+ 					errors |= SslPolicyErrors.RemoteCertificateNameMismatch;
+ 					status11 = -2146762481; // CERT_E_CN_NO_MATCH 0x800B010F
+ 					return false;
+@@ -143,7 +143,7 @@ static bool CheckUsage (XX509CertificateCollection certs, string host, ref SslPo
+ 		static bool EvaluateSystem (XX509CertificateCollection certs, XX509CertificateCollection anchors, string host, X509Chain chain, ref SslPolicyErrors errors, ref int status11)
+ 		{
+ 			var leaf = certs [0];
+-			var result = false;
++			bool result;
+ 
+ #if MONODROID
+ 			result = AndroidPlatform.TrustEvaluateSsl (certs);
+@@ -166,6 +166,8 @@ static bool EvaluateSystem (XX509CertificateCollection certs, XX509CertificateCo
+ 					result = (trustResult == OSX509Certificates.SecTrustResult.Proceed ||
+ 						trustResult == OSX509Certificates.SecTrustResult.Unspecified);
+ 				} catch {
++					result = false;
++					errors |= SslPolicyErrors.RemoteCertificateChainErrors;
+ 					// Ignore
+ 				}
+ 
+@@ -178,6 +180,8 @@ static bool EvaluateSystem (XX509CertificateCollection certs, XX509CertificateCo
+ 					status11 = (int)trustResult;
+ 					errors |= SslPolicyErrors.RemoteCertificateChainErrors;
+ 				}
++			} else {
++				result = BuildX509Chain (certs, chain, ref errors, ref status11);
+ 			}
+ #endif
+ 
+@@ -203,6 +207,8 @@ internal static bool NeedsChain (MonoTlsSettings settings)
+ #if MOBILE
+ 			return false;
+ #else
++			if (!is_macosx)
++				return true;
+ 			if (!CertificateValidationHelper.SupportsX509Chain)
+ 				return false;
+ 			if (settings != null)

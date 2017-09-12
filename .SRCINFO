@@ -1,0 +1,30 @@
+pkgbase = mono-noconflict
+	pkgdesc = A modified package of mono that renames csc to mono-csc to not conflict with chicken
+	pkgver = 5.0.0.100
+	pkgrel = 2
+	url = http://www.mono-project.com/
+	install = mono-noconflict.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL2.1
+	license = MPL
+	makedepends = cmake
+	depends = zlib
+	depends = libgdiplus>=4.2
+	depends = sh
+	depends = python
+	depends = ca-certificates
+	provides = mono=5.0.0.100
+	provides = monodoc
+	conflicts = mono
+	conflicts = monodoc
+	source = https://download.mono-project.com/sources/mono/mono-5.0.0.100.tar.bz2
+	source = mono.binfmt.d
+	source = mono_context.patch
+	sha256sums = 368da3ff9f42592920cd8cf6fa15c6c16558e967144c4d3df873352e5d2bb6df
+	sha256sums = 9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425
+	sha256sums = 9028f9c84bc035fb452712e92dbc62195fae1e8c5985c5ce45e75bc5e046f642
+
+pkgname = mono-noconflict
+
