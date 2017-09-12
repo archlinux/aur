@@ -30,6 +30,7 @@ source=(
     "icu59.patch"
     "sphinx1.6.patch"
     "lldb_missing_include.patch"
+    "glibc-2.26.patch"
 )
 sha256sums=('03eb54e7f89109a85c9b2a9bfdee88d2d7e1bdef73ae0385b30fe4661efaf407'
             'fc6ac7c0c6afff344a8d4e5299b7417f414f1499cf374953e06c339d8177fc26'
@@ -45,7 +46,8 @@ sha256sums=('03eb54e7f89109a85c9b2a9bfdee88d2d7e1bdef73ae0385b30fe4661efaf407'
             'c9aa6e167a57ed31002471204d39bf24bb4ebecc38322571515ac73f02b237b6'
             '3fedb626b375f6ad8b4601abd336f4560718a9c9134716f0c3a4e823b8c12857'
             '3c06dcc15bef6cbda7ce7b8a6a4f89bd16599ddbd1b964add9f2048cdda4700b'
-            'be61c69ae7bb626f7f07f95cb5c0074013725c1b90a3ca68aa0c0f989d75e41e')
+            'be61c69ae7bb626f7f07f95cb5c0074013725c1b90a3ca68aa0c0f989d75e41e'
+            'f3eca044354ee371072aaf81452468cce1ff2abf9efc746db964dfdb400f88ab')
 
 prepare() {
     # Use python2 where appropriate
@@ -84,6 +86,9 @@ prepare() {
 
     # LLDB is missing an include for std::bind with libstdc++/gcc7
     ( cd "${srcdir}/lldb" && patch -p1 -i "${srcdir}/lldb_missing_include.patch" )
+
+    # glibc 2.26 removed the non-standard xlocale.h and SIGUNUSED
+    ( cd "${srcdir}" && patch -p1 -i "${srcdir}/glibc-2.26.patch" )
 }
 
 _common_build_params=(
