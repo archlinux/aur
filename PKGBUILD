@@ -2,7 +2,7 @@
 # Submitter: nullie
 pkgname=lsyncd
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Live Syncing (Mirror) Daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/axkibe/lsyncd"
@@ -29,5 +29,5 @@ package() {
     # fix the path of the man page. Urgh.
     install -D ${pkgdir}/usr/man/lsyncd.1 ${pkgdir}/usr/share/man/man1/lsyncd.1
     rm -rf ${pkgdir}/usr/man
-    install -D ${srcdir}/lsyncd.service ${pkgdir}/usr/lib/systemd/system/lsyncd.service
+    install -m 644 -D ${srcdir}/lsyncd.service ${pkgdir}/usr/lib/systemd/system/lsyncd.service
 }
