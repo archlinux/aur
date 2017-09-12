@@ -23,11 +23,10 @@ pkgver() {
 }
 
 prepare() {
-    cp -a ${_pkgname}{,-solid}
-    cd ${_pkgname}-solid
-    patch -p1 -i ../orange-no-conflict.patch
     cd ${_pkgname}
     patch -p1 -i ../orange-no-conflict.patch
+    cd ../
+    cp -a ${_pkgname}{,-solid}
 }
 
 build() {
