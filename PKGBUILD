@@ -2,7 +2,7 @@
 _pkgname=sandsifter
 pkgname="${_pkgname}-git"
 pkgver=r1.dff6324
-pkgrel=2
+pkgrel=3
 pkgdesc="The x86 processor fuzzer"
 arch=("i686" "x86_64")
 url="https://github.com/xoreaxeaxeax/${_pkgname}"
@@ -44,5 +44,5 @@ package() {
 	install -Dm 655 -t "${pkgdir}/opt/${_pkgname}" summarize.py injector
 	cp -r disas gui pyutil "${pkgdir}/opt/${_pkgname}/"
 	install -Dm 655 -t "${pkgdir}/usr/bin/" sifter.py
-	ln -s "${pkgdir}/opt/${_pkgname}/summarize.py" "${pkgdir}/usr/bin/"
+	ln -s "/opt/${_pkgname}/summarize.py" "${pkgdir}/usr/bin/"
 }

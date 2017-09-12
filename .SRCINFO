@@ -1,7 +1,7 @@
 pkgbase = sandsifter-git
 	pkgdesc = The x86 processor fuzzer
 	pkgver = r1.dff6324
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xoreaxeaxeax/sandsifter
 	arch = i686
 	arch = x86_64
