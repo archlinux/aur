@@ -1,62 +1,57 @@
-# Maintainer: halflife <pigoig_At_gmail_com>
-# Maintainer: MaryJaneInChain <gmail.com@maryjaneinchain>
-
-pkgname=firefox-developer-zh-cn
-_pkgname=firefox-developer
-pkgver=54.0a2
-pkgrel=2
-pkgdesc="Standalone web browser from mozilla.org, developer build - Chinese Simplified"
+_name=firefox
+_channel=developer
+_srcurl="https://download-installer.cdn.mozilla.net/pub/devedition/releases"
+_locale="zh-CN"
+pkgname="${_name}-${_channel}-${_locale,,}"
+pkgdesc='Standalone web browser from mozilla.org, developer build - Traditional Chinese'
+url="https://www.mozilla.org/${_locale}/firefox/developer/"
+pkgver=56.0b10
+pkgrel=1
 arch=('i686' 'x86_64')
-url="https://www.mozilla.org/zh-CN/firefox/developer/"
 license=('MPL' 'GPL' 'LGPL')
-depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'gtk3' 'hicolor-icon-theme'
-         'icu' 'libevent' 'libvpx' 'libxt' 'mime-types' 'nss' 'sqlite')
-optdepends=('ffmpeg: additional video and audio decoders'
-            'libpulse: PulseAudio driver'
-            'networkmanager: Location detection via available WiFi networks'
-            'upower: Battery API')
-makedepends=('pacman>=4.2.0')
-provides=("firefox developer")
-install=$pkgname.install
-_baseurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n/"
-_filename="firefox-${pkgver}.zh-CN.linux-${CARCH}"
-_sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.tar.bz2$" | grep sha512 | cut -d " " -f1)"
-source=("$pkgname.desktop"
-        "vendor.js"
-        "${_baseurl}${_filename}.tar.bz2")
-sha512sums=('SKIP'
-            'SKIP'
-            "${_sha512sum}")
+source=("${_name}-${_channel}.desktop" "vendor.js")
+source_i686=("${pkgname}_${pkgver}_i686.tar.bz2::${_srcurl}/${pkgver}/linux-i686/${_locale}/${_name}-${pkgver}.tar.bz2")
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.bz2::${_srcurl}/${pkgver}/linux-x86_64/${_locale}/${_name}-${pkgver}.tar.bz2")
+sha512sums=('9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631'
+            'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
+sha512sums_i686=('98378504929d860f664cb6a013342219ec29f0f5b09815a15638b83deb2a237fd5bd235a1d130e6a6f8d7663855504741d7807f7befa04f15fd529c01cd003cf')
+sha512sums_x86_64=('cdaf12037ad29b45ce2ddf30ba83632576d799be33cfd22df71fe82adb71d2f250311f5ce16bbba10b98ca80bc16b2e18e6e1e3a9f2205c315f609464b222a56')
 
+provides=(firefox-developer)
+conflicts=(firefox-developer)
+
+depends=('dbus-glib'
+         'gtk2'
+         'gtk3'
+         'libxt'
+         'nss')
+
+optdepends=(
+	'pulseaudio: audio/video playback'
+	'ffmpeg: h.264 video'
+	'hunspell: spell checking'
+	'hyphen: hyphenation'
+)
 
 package() {
-  # Create directories
-  msg2 "Creating directory structure..."
-  mkdir -p "$pkgdir"/usr/bin
-  mkdir -p "$pkgdir"/usr/share/applications
-  mkdir -p "$pkgdir"/usr/share/icons/hicolor/128x128/apps
-  mkdir -p "$pkgdir"/opt
+	OPT_PATH="opt/${pkgname}"
+	install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
+	cp -r firefox $pkgdir/${OPT_PATH}
 
-  msg2 "Moving stuff in place..."
-  # Install
-  cp -r firefox/ "$pkgdir"/opt/$_pkgname
+	ln -s /${OPT_PATH}/firefox $pkgdir/usr/bin/${_name}-${_channel}
+	# Icon Stuff
+	SRC_LOC="${srcdir}"/${_name}/browser
+	DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
+	for i in 16 32 48
+	do
+		install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${pkgname}.png
+	done
+	install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$pkgname-icon.png
 
-  # /usr/bin symlinks
-  install -Dm644 ../vendor.js "$pkgdir/opt/$_pkgname/browser/defaults/preferences/vendor.js"
-  ln -s /opt/$_pkgname/firefox "$pkgdir"/usr/bin/$_pkgname
-  ln -s /opt/$_pkgname/firefox "$pkgdir"/usr/bin/$pkgname  # compatibility
-
-  # Desktops
-  install -m644 *.desktop "$pkgdir"/usr/share/applications/
-
-  # Icons
-  for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
-    install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps/
-    ln -s /opt/$_pkgname/browser/chrome/icons/default/default${i/x*}.png \
-          "$pkgdir"/usr/share/icons/hicolor/$i/apps/$_pkgname.png
-  done
-
-  # 128x128
-  ln -s /opt/$_pkgname/browser/icons/mozicon128.png \
-        "$pkgdir"/usr/share/icons/hicolor/128x128/apps/$_pkgname.png
+	install -m644 $srcdir/${_name}-${_channel}.desktop $pkgdir/usr/share/applications/
+	install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
+	# Use system-provided dictionaries
+	rm -rf "${pkgdir}"/${OPT_PATH}/{dictionaries,hyphenation}
+	ln -sf /usr/share/hunspell "${pkgdir}"/${OPT_PATH}/dictionaries
+	ln -sf /usr/share/hyphen "${pkgdir}"/${OPT_PATH}/hyphenation
 }
