@@ -1,0 +1,18 @@
+pkgbase = otf-montserrat-git
+	pkgdesc = A typeface designed to rescue the beauty of urban typography from the first half of the twentieth century.
+	pkgver = v6.002.r0.g12461d3
+	pkgrel = 1
+	url = https://github.com/JulietaUla/Montserrat
+	install = otf-montserrat-git.install
+	arch = any
+	license = custom: SIL Open Font License
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = otf-montserrat
+	conflicts = otf-montserrat
+	source = git+https://github.com/JulietaUla/Montserrat.git
+	sha256sums = SKIP
+
+pkgname = otf-montserrat-git
+
