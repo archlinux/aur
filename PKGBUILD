@@ -26,12 +26,14 @@ source=(http://openafs.org/dl/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
         0001-Adjust-RedHat-config-and-service-files.patch
         0002-Add-configure-option-to-not-install-kauth.patch
         0003-Do-not-install-kauth-manpages-when-kauth-is-disabled.patch
+        0004-vol-add-missing-include-of-stdint.h-to-volinodes.h.patch
         tmpfiles.d-openafs.conf)
 sha256sums=('ba9c1f615edd53b64fc271ad369c49a816acedca70cdd090975033469a84118f'
             '5bc07340fc6b6db12e92f88a33c70478d22c93de7ae1725c4b25ef43caac6e8c'
-            '27024228ed81ed75db86a715b103385931bc0a16af38f8978b321b6ca2b7810b'
-            '994b91acf6374f8adf7e9dfda1596c7a226691c65745bc5f4a3883590963291f'
-            'bdd244a1408a70bf81a4fa4961aa09922f8b84921ebf21017332f3000c87748b'
+            '41360c7fa447e1d52fc10a797d890c47380535b7962906e9e7df75c8ede0dbd0'
+            'c03ee12577c6d3b26cd18e7ccb435f71829fe263f38c2496aed3b8fbfcf458ca'
+            '7337c71896e451a9ffc9c4dbb455b700d794549382a5bb167ff5e28c2eeb15bb'
+            '2baa8c4a83b45ea49256956803881c30735ad915ad3e7aa8ec9b58c91963b8d0'
             '5ef549180d1ac4e9530b65df7ddbdc1eceac6d6d6398fb2f32b06e96c1d9b5f0')
 
 # If you need the kauth tools set this to 1. But be aware that these tools
@@ -47,6 +49,9 @@ prepare() {
   # Backport possibility to disable kauth
   patch -p1 < ${srcdir}/0002-Add-configure-option-to-not-install-kauth.patch
   patch -p1 < ${srcdir}/0003-Do-not-install-kauth-manpages-when-kauth-is-disabled.patch
+
+  # Fix missing include of stdint.h (under review: https://gerrit.openafs.org/12724/)
+  patch -p1 < ${srcdir}/0004-vol-add-missing-include-of-stdint.h-to-volinodes.h.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q

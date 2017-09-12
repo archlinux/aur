@@ -1,7 +1,7 @@
 From fa88b8d50e39fad56e8c3fa7d6ef213a9819d3bc Mon Sep 17 00:00:00 2001
 From: Benjamin Kaduk <kaduk@mit.edu>
 Date: Mon, 7 Apr 2014 21:54:46 -0400
-Subject: [PATCH 3/3] Do not install kauth manpages when kauth is disabled
+Subject: [PATCH 3/4] Do not install kauth manpages when kauth is disabled
 
 Commit 5afe7a882b0bb90a515e505d9ffce4f644633f06 added a configure
 option to disable the installation of the kauth suite, but did not
@@ -109,5 +109,5 @@ index 1eed6a1fa..ee6bb1551 100644
  	test -h $(DESTDIR)/$(mandir)/man8/dafssync-debug.8 \
  	    || ln -s fssync-debug.8 $(DESTDIR)/$(mandir)/man8/dafssync-debug.8
 -- 
-2.13.2
+2.14.1
 
