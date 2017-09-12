@@ -10,6 +10,7 @@ pkgbase = soundkonverter-frameworks-git
 	makedepends = extra-cmake-modules
 	makedepends = cmake
 	makedepends = kdesignerplugin
+	depends = kdelibs4support
 	depends = libkcddb
 	depends = taglib
 	depends = hicolor-icon-theme
