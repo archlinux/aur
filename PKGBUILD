@@ -15,9 +15,11 @@ depends=('openafs')
 makedepends=('linux-headers')
 conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
-source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2)
+source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
+        0001-Linux-4.13-use-designated-initializers-where-require.patch)
 install=openafs-modules.install
-sha256sums=('ba9c1f615edd53b64fc271ad369c49a816acedca70cdd090975033469a84118f')
+sha256sums=('ba9c1f615edd53b64fc271ad369c49a816acedca70cdd090975033469a84118f'
+            '84e8686a04e27edfc040fccfa7fd2553eb2cfd1e0f254741b8da0018bdee4b55')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -26,6 +28,9 @@ _kernelver=$(cat ${_extramodules}/version)
 
 prepare() {
   cd ${srcdir}/${_srcname}-${pkgver}
+
+  # Fix build with Linux 4.13
+  patch -p1 < ${srcdir}/0001-Linux-4.13-use-designated-initializers-where-require.patch
 
   # Only needed when changes to configure were made
   # ./regen.sh -q
@@ -41,16 +46,6 @@ build() {
               --disable-fuse-client \
               --with-linux-kernel-packaging \
               --with-linux-kernel-build="/usr/lib/modules/${_kernelver}/build"
-
-  # It seems like gcc is not happy with the code wich tests for the presence
-  # of gid in the group_info struct:
-  #
-  # /var/lib/dkms/openafs/1.6.20.2/build/conftest.dir/conftest.c:43:8: internal compiler error: Segmentation fault
-  #  struct group_info _test; printk("%x\n", &_test.gid);
-  #         ^~~~~~~~~~
-  #
-  # Until this is fixed, we just force the result.
-  echo "#define STRUCT_GROUP_INFO_HAS_GID" >>  ${srcdir}/${_srcname}-${pkgver}/src/config/afsconfig.h
 
   make only_libafs
 }
