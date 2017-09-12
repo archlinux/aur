@@ -1,0 +1,22 @@
+pkgbase = wxpython-nuitka
+	pkgdesc = A wxWidgets GUI toolkit for Python. Nuitka compilable version.
+	pkgver = 3.0.2.0
+	pkgrel = 3
+	url = https://www.wxpython.org
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = custom:wxWindows
+	makedepends = mesa
+	makedepends = glu
+	depends = wxgtk3
+	depends = python2
+	provides = wxpython=3.0.2.0
+	conflicts = wxpython
+	source = https://downloads.sourceforge.net/wxpython/wxPython-src-3.0.2.0.tar.bz2
+	source = wxpython-nuitka-methods.patch
+	sha256sums = d54129e5fbea4fb8091c87b2980760b72c22a386cb3b9dd2eebc928ef5e8df61
+	sha256sums = c9266e81f6b9206675717c7c2aa082ec44bf694cd7f10318b2581831d9e517cc
+
+pkgname = wxpython-nuitka
+

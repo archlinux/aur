@@ -1,0 +1,31 @@
+diff -uw old/wxPython/src/helpers.cpp new/wxPython/src/helpers.cpp
+--- old/wxPython/src/helpers.cpp	2015-01-06 23:33:57.306574595 +0100
++++ new/wxPython/src/helpers.cpp	2015-01-06 23:31:59.406447996 +0100
+@@ -1945,15 +1945,23 @@
+
+ void wxPyCallbackHelper::setRecursionGuard(PyObject* method) const
+ {
+-    PyFunctionObject* func = (PyFunctionObject*)PyMethod_Function(method);
++    if (PyMethod_Check(method)) {
++        PyFunctionObject* func = (PyFunctionObject*)PyMethod_GET_FUNCTION(method);
+     PyObject_SetAttr(m_self, func->func_name, Py_None);
++    } else {
++        PyObject* name = PyObject_GetAttrString(method, "__name__");
++        PyObject_SetAttr(m_self, name, Py_None);
++    }
+ }
+
+ void wxPyCallbackHelper::clearRecursionGuard(PyObject* method) const
+ {
+-    PyFunctionObject* func = (PyFunctionObject*)PyMethod_Function(method);
+-    if (PyObject_HasAttr(m_self, func->func_name)) {
+-        PyObject_DelAttr(m_self, func->func_name);
++    if (PyMethod_Check(method)) {
++        PyFunctionObject* func = (PyFunctionObject*)PyMethod_GET_FUNCTION(method);
++        PyObject_SetAttr(m_self, func->func_name, NULL);
++    } else {
++        PyObject* name = PyObject_GetAttrString(method, "__name__");
++        PyObject_SetAttr(m_self, name, NULL);
+     }
+ }
+
