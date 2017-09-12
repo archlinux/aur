@@ -6,8 +6,8 @@ _version=beta
 
 # Versions
 pkgname=${_pkgname}-editor-${_version}
-_pkgrel=7
-_pkgver=1.20.0
+_pkgrel=0
+_pkgver=1.21.0
 pkgver="${_pkgver}.beta${_pkgrel}"
 _ver=$_pkgver-beta${_pkgrel}
 pkgrel=1
@@ -15,7 +15,7 @@ pkgdesc='Hackable text editor for the 21st Century, built using web technologies
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgname}/${_pkgname}"
 license=('MIT')
-depends=('alsa-lib' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs-lts-boron' 'nss' 'python2')
+depends=('alsa-lib' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2')
 optdepends=('gvfs: file deletion support')
 makedepends=('git' 'npm')
 conflicts=('atom-editor-beta-bin' 'atom-editor-beta-arch')
