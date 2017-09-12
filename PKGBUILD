@@ -2,7 +2,7 @@
 
 pkgname=leatherman
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of C++ and CMake utility libraries"
 arch=('i686' 'x86_64')
 url="https://github.com/puppetlabs/leatherman"
