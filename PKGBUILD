@@ -4,10 +4,10 @@ pkgdesc="ROS - RealSense Camera package allowing access to Intel 3D cameras and 
 url='http://www.ros.org/wiki/RealSense'
 
 pkgname='ros-kinetic-realsense-camera'
-pkgver='1.7.1'
+pkgver='1.8.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD 3-clause. See license attached')
 
 ros_makedepends=(ros-kinetic-roslint
@@ -56,7 +56,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="realsense-release-release-kinetic-realsense_camera-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/intel-ros/realsense-release/archive/release/kinetic/realsense_camera/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3d8f41b0c6e9ac30272881d9f3e2976b24544d1030d0e1d34c46ca4dce906099')
+sha256sums=('54cbb8daebfe8d6dbbb8cde5bd8c7b14ff79988187a07d78c82b74ee5cb34d8f')
 
 build() {
   # Use ROS environment variables
