@@ -5,17 +5,16 @@
 # Contributor: Eric Belanger <eric@archlinux.org>
 # Contributor: Darwin Bautista <djclue917@gmail.com>
 
-pkgname=soundkonverter-frameworks-git
-pkgver=v2.2.2.r32.g81287bc
-pkgrel=3
+pkgname=soundkonverter-git
+pkgver=v3.0.0.r0.g2200d33
+pkgrel=1
 pkgdesc="Front-end to various audio converters"
 arch=('i686' 'x86_64')
 url="http://www.kde-apps.org/content/show.php?content=29024"
 license=('GPL')
-depends=('kdelibs4support'
-        'libkcddb'
-        'taglib'
-	'hicolor-icon-theme')
+depends=('libkcddb'
+         'taglib'
+	 'hicolor-icon-theme')
 makedepends=('kdoctools'
             'extra-cmake-modules'
             'cmake'
@@ -38,7 +37,7 @@ optdepends=('cdrkit: cdda2wav backend'
             'vorbis-tools: vorbis tools backend'
             'wavpack: wavpack backend'
             'sox: sox plugin (change sample rate, various effects)')
-source=("soundkonverter::git+https://github.com/isoft-linux/soundkonverter")
+source=("soundkonverter::git+https://github.com/dfaust/soundkonverter")
 provides=("soundkonverter" "soundkonverter-frameworks")
 conflicts=("soundkonverter" "soundkonverter-frameworks")
 sha512sums=('SKIP')
@@ -62,7 +61,6 @@ build() {
     cd "$srcdir/build"
 
     cmake "$srcdir/soundkonverter/src" \
-        -DKF5_BUILD=1 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DLIB_INSTALL_DIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
