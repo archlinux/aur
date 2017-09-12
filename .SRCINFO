@@ -1,0 +1,32 @@
+pkgbase = lua-gl
+	pkgdesc = Lua bindings for OpenGL
+	pkgver = 1.11
+	pkgrel = 1
+	url = http://luagl.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = glu
+	source = https://sourceforge.net/projects/luagl/files/1.11/Docs%20and%20Sources/luagl-1.11_Sources.tar.gz
+	source = https://sourceforge.net/projects/luagl/files/1.11/Docs%20and%20Sources/luagl-1.11_Docs_html.tar.gz
+	sha256sums = 5898433a32c5ff7e36dcbf1a6b638f7af1e5ff8c4731ba17d5f109c4a8db981e
+	sha256sums = 3d23be0aac7d11232eaad76a6e327066b2fe4aa821af1244db7ccd37b82b0045
+
+pkgname = lua-gl
+	pkgdesc = Lua 5.3 bindings for OpenGL
+	depends = lua
+	depends = glu
+
+pkgname = lua51-gl
+	pkgdesc = Lua 5.1 bindings for OpenGL
+	depends = lua51
+	depends = glu
+
+pkgname = lua52-gl
+	pkgdesc = Lua 5.2 bindings for OpenGL
+	depends = lua52
+	depends = glu
+
