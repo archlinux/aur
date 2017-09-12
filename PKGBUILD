@@ -8,8 +8,8 @@ pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc='Standalone web browser from mozilla.org, Developer Edition - Italian'
 url='https://www.mozilla.org/firefox/developer/'
 pkgver=56.0b11
-pkgrel=1
-arch=('x86_64')
+pkgrel=2
+arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 
 source=("firefox-$_channel.desktop"
