@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=conan-git
-pkgver=0.25.0.r57.gd08e127
+pkgver=0.25.0.r83.g42552fc
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -20,20 +20,15 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<2.0.0'
          'python-bottle>=0.12.8' 'python-bottle<0.13'
          'python-distro>=1.0.2' 'python-distro<1.1.0'
          'python-pluginbase>=0.5' 'python-pluginbase<1.0'
-         'python-pylint>=1.6.5'
+         'python-pylint>=1.6.5' 'python-pylint<=1.8.0'
          'python-future=0.16.0'
          'python-pygments>=2.0' 'python-pygments<3.0')
 makedepends=('python-setuptools')
 provides=('conan')
 conflicts=('conan')
-source=("conan-git::git+https://github.com/conan-io/conan.git" "arch-deps.patch")
-md5sums=('SKIP'
-         'a354ef73eb5bf895bb7f6773ad5d4f01')
+source=("conan-git::git+https://github.com/conan-io/conan.git")
+md5sums=('SKIP')
 
-prepare() {
-  cd $pkgname
-  patch -Np1 -i "${srcdir}/arch-deps.patch"
-}
 
 pkgver() {
   cd "$pkgname"
