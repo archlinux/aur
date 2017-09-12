@@ -1,0 +1,21 @@
+pkgbase = arc-orange-gtk-theme-git
+	pkgver = r57.af13f6a
+	pkgrel = 1
+	url = https://github.com/eti0/arc-theme-orange
+	arch = any
+	license = GPL3
+	makedepends = gtk3
+	optdepends = arc-icon-theme: recommended icon theme
+	optdepends = gtk-engine-murrine: for gtk2 themes
+	optdepends = gnome-themes-standard: for gtk2 themes
+	source = git+https://github.com/eti0/arc-theme-orange.git
+	source = change-solid-theme-path.patch
+	sha512sums = SKIP
+	sha512sums = 5b1ca739206e386cb4bf1f2f0a9524a08f2590972126cc96ef7c2e56ca59e94136cf7f8dc8184cd1c688a488e5e96384d654e279778f93e8f34860f7281afff9
+
+pkgname = arc-orange-gtk-theme-git
+	pkgdesc = A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell
+
+pkgname = arc-orange-solid-gtk-theme-git
+	pkgdesc = A flat theme for GTK 3, GTK 2 and Gnome-Shell (without transparency)
+
