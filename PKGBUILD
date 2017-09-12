@@ -3,7 +3,7 @@
 
 pkgname=aerospike-client-php
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Aerospike PHP client as a C-extension for PHP7"
 arch=('any')
 url="https://github.com/aerospike/aerospike-client-php"
@@ -27,6 +27,8 @@ build() {
   export DOWNLOAD_C_CLIENT=0;
   export PREFIX=/usr;
   export LUA_PATH=/opt/aerospike/client/sys/udf/lua;
+  export LUA_SYSPATH=${srcdir}
+  export LUA_USRPATH=${srcdir}
   sh build.sh
 }
 
