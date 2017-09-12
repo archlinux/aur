@@ -4,7 +4,7 @@ pkgdesc="ROS - Conversion functions between: - Eigen and KDL - Eigen and geometr
 url='http://ros.org/wiki/eigen_conversions'
 
 pkgname='ros-kinetic-eigen-conversions'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,13 +17,13 @@ ros_makedepends=(ros-kinetic-std-msgs
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen3)
+  eigen)
 
 ros_depends=(ros-kinetic-std-msgs
   ros-kinetic-geometry-msgs
   ros-kinetic-orocos-kdl)
 depends=(${ros_depends[@]}
-  eigen3)
+  eigen)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/eigen_conversions/${pkgver}-${_pkgver_patch}
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry-release-release-kinetic-eigen_conversions-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/kinetic/eigen_conversions/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5b9ec6cdccd426fd96f447725f48c920d89bb10f940aa7f7c205e051804efcaa')
+sha256sums=('37608f29197051e03374ef024fce58f2fc17dbcca737fc49ad139b7c81b289f5')
 
 build() {
   # Use ROS environment variables
