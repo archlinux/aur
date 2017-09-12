@@ -1,0 +1,32 @@
+From 73ff2d119674efc81d1995154037feb8e2ab639f Mon Sep 17 00:00:00 2001
+From: Charles Milette <charles.milette@gmail.com>
+Date: Tue, 12 Sep 2017 12:39:15 -0400
+Subject: [PATCH] Make Arc and Arc Orange live together
+
+---
+ common/Makefile.am | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/common/Makefile.am b/common/Makefile.am
+index 7966da8..8633b38 100755
+--- a/common/Makefile.am
++++ b/common/Makefile.am
+@@ -1,6 +1,12 @@
+-themedir        = $(datadir)/themes/Arc
+-themedarkerdir  = $(datadir)/themes/Arc-Darker
+-themedarkdir    = $(datadir)/themes/Arc-Dark
++if !ENABLE_TRANSPARENCY
++ themedir        = $(datadir)/themes/Arc-Orange-solid
++ themedarkerdir  = $(datadir)/themes/Arc-Darker-Orange-solid
++ themedarkdir    = $(datadir)/themes/Arc-Dark-Orange-solid
++else
++ themedir        = $(datadir)/themes/Arc-Orange
++ themedarkerdir  = $(datadir)/themes/Arc-Darker-Orange
++ themedarkdir    = $(datadir)/themes/Arc-Dark-Orange
++endif
+ 
+ ithemedir       = $(DESTDIR)$(themedir)
+ ithemedarkerdir   = $(DESTDIR)$(themedarkerdir)
+-- 
+2.14.1
+

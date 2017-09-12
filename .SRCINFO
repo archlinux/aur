@@ -9,9 +9,9 @@ pkgbase = arc-orange-gtk-theme-git
 	optdepends = gtk-engine-murrine: for gtk2 themes
 	optdepends = gnome-themes-standard: for gtk2 themes
 	source = git+https://github.com/eti0/arc-theme-orange.git
-	source = change-solid-theme-path.patch
+	source = orange-no-conflict.patch
 	sha512sums = SKIP
-	sha512sums = 5b1ca739206e386cb4bf1f2f0a9524a08f2590972126cc96ef7c2e56ca59e94136cf7f8dc8184cd1c688a488e5e96384d654e279778f93e8f34860f7281afff9
+	sha512sums = c3b5e0f91e6af117fe3fcb2521d77f50ec7108c43c2a5b1a497d0f00367b5cdc75090864ccb63c04d842db92d6ca6d04717fcc1b9d4ecd436559424b76c2335f
 
 pkgname = arc-orange-gtk-theme-git
 	pkgdesc = A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell

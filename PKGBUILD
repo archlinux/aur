@@ -14,18 +14,17 @@ optdepends=('arc-icon-theme: recommended icon theme'
             'gnome-themes-standard: for gtk2 themes')
 makedepends=('gtk3')
 source=("git+https://github.com/eti0/${_pkgname}.git"
-        'change-solid-theme-path.patch')
+        'orange-no-conflict.patch')
 sha512sums=('SKIP'
-            '5b1ca739206e386cb4bf1f2f0a9524a08f2590972126cc96ef7c2e56ca59e94136cf7f8dc8184cd1c688a488e5e96384d654e279778f93e8f34860f7281afff9')
+            'c3b5e0f91e6af117fe3fcb2521d77f50ec7108c43c2a5b1a497d0f00367b5cdc75090864ccb63c04d842db92d6ca6d04717fcc1b9d4ecd436559424b76c2335f')
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
+    patch -p1 -i ../orange-no-conflict.patch
     cp -a ${_pkgname}{,-solid}
-    cd ${_pkgname}-solid
-    patch -p1 -i ../change-solid-theme-path.patch
 }
 
 build() {
