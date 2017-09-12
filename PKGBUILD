@@ -3,8 +3,8 @@
 
 pkgname=nginx-devel
 _pkgname=nginx
-pkgver=1.13.0
-pkgrel=2
+pkgver=1.13.5
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server - development version'
 url="http://nginx.org"
 arch=(i686 x86_64 armv6h)
@@ -140,7 +140,7 @@ ${_modulesURL[*]}
 )
 validpgpkeys=(
 )
-sha256sums=('79f52ab6550f854e14439369808105b5780079769d7b8db3856be03c683605d7'
+sha256sums=('0e75b94429b3f745377aeba3aff97da77bf2b03fcb9ff15b3bad9b038db29f2e'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             '272907d3213d69dac3bd6024d6d150caa23cb67d4f121e4171f34ba5581f9e98'
             'e299680e919a97c7ec06b62e4fabc3b5ead837fe486a5f87260bd16d0b51e112'
@@ -219,9 +219,9 @@ if (( DEBUG )); then
   set -o nounset
 fi
 # nginx env, commons for build and package
-_cfgdir=/etc/nginx
-_tmpdir=/var/lib/nginx
-_logdir=/var/log/nginx
+export _cfgdir=/etc/nginx
+export _tmpdir=/var/lib/nginx
+export _logdir=/var/log/nginx
 build() {
   local _piddir=/run
   local _lockdir=/var/lock
@@ -296,8 +296,8 @@ build() {
   _configureOptions+=(
     --with-mail
     --with-mail_ssl_module
-    --with-imap
-    --with-imap_ssl_module
+#     --with-imap                               # deprecated
+#     --with-imap_ssl_module                    # deprecated
   )
   # Additional modules from various patch
   _configureOptions+=(
