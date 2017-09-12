@@ -1,27 +1,25 @@
-# Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
+# Maintainer: Peter Munch-Ellingsen <peterme@peterme.net>
 
 _pkgname=xlunch
 pkgname=xlunch-git
-pkgver=2.4.2.r54.gcf29d5c
+pkgver=3.0.0.r0.g69e8a65
 pkgrel=3
-pkgdesc="Graphical app launcher for X with little dependencies"
+pkgdesc="Graphical app launcher for X with few dependencies"
 arch=('i686' 'x86_64')
 url="http://xlunch.org/"
 license=('GPL3')
 depends=('sh' 'libx11' 'imlib2')
-makedepends=('git' 'gcc' 'make')
+makedepends=('git' 'gcc' 'make' 'sed' 'grep')
 provides=('xlunch')
 conflicts=('xlunch')
 source=('git+https://github.com/Tomas-M/xlunch.git'
-        'xlunch-create-entry'
         'xlunch-conf-gen.hook'
         'xlunch-conf-install.hook'
         'xlunch-conf-remove.hook')
 md5sums=('SKIP'
-         'ad3366bef069a51927779b8736bf85b9'
-         '5cedcafe1ba39961a84f1634958ca478'
-         'ccaf7547b8ceeb11badb2a08b3c592f7'
-         '832317d10246dd7b2ac17c599b19f441')
+         '309c9c1b92ed8ffd48b93d8f9f8270a8'
+         '3986350c123f26415684cb1cabe33cb0'
+         '7bc2cc30625750d62739d028c3b439b4')
 
 pkgver() {
     cd "$_pkgname"
@@ -30,18 +28,14 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-	make xlunch
+    make xlunch
 }
 
 package() {
     cd "$srcdir/$_pkgname"
-	install -Dm755 xlunch "$pkgdir"/usr/bin/xlunch
-	install -Dm755 extra/genconf "$pkgdir"/usr/bin/xlunch-genconf
-	install -Dm755 extra/sample_config.cfg "$pkgdir"/etc/xlunch/icons.conf
-	install -Dm755 ../xlunch-create-entry "$pkgdir"/usr/bin/xlunch-create-entry
+    make DESTDIR="$pkgdir/" install
 
-	install -Dm644 extra/ghost.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/xlunch_ghost.png
-	install -Dm644 ../xlunch-conf-gen.hook "$pkgdir"/usr/share/libalpm/hooks/xlunch-conf-gen.hook
-	install -Dm644 ../xlunch-conf-install.hook "$pkgdir"/usr/share/libalpm/hooks/xlunch-conf-install.hook
-	install -Dm644 ../xlunch-conf-remove.hook "$pkgdir"/usr/share/libalpm/hooks/xlunch-conf-remove.hook
+    install -Dm644 ../xlunch-conf-gen.hook "$pkgdir"/usr/share/libalpm/hooks/xlunch-conf-gen.hook
+    install -Dm644 ../xlunch-conf-install.hook "$pkgdir"/usr/share/libalpm/hooks/xlunch-conf-install.hook
+    install -Dm644 ../xlunch-conf-remove.hook "$pkgdir"/usr/share/libalpm/hooks/xlunch-conf-remove.hook
 }

@@ -6,6 +6,6 @@ Target = usr/share/applications/*
 
 [Action]
 Description = Updating xlunch icons.conf...
-Exec = bin/bash -c 'while read -r f; do xlunch-create-entry "$f" >> /etc/xlunch/icons.conf; cat /etc/xlunch/icons.conf | sort | uniq > /etc/xlunch/icons-new.conf; mv /etc/xlunch/icons-new.conf /etc/xlunch/icons.conf; done 2>/dev/null'
+Exec = bin/bash -c 'while read -r f; do genentries -p "/usr/share/xlunch/svgicons" -f "$f" >> /etc/xlunch/entries.dsv; cat /etc/xlunch/entries.dsv | sort | uniq > /etc/xlunch/entries_new.dsv; mv /etc/xlunch/entries_new.dsv /etc/xlunch/entries.dsv; done 2>/dev/null'
 When = PostTransaction
 NeedsTargets
