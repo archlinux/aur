@@ -1,4 +1,4 @@
-pkgbase = soundkonverter-git
+pkgbase = soundkonverter-frameworks-git
 	pkgdesc = Front-end to various audio converters
 	pkgver = v3.0.0.r0.g2200d33
 	pkgrel = 1
@@ -38,5 +38,5 @@ pkgbase = soundkonverter-git
 	source = soundkonverter::git+https://github.com/dfaust/soundkonverter
 	sha512sums = SKIP
 
-pkgname = soundkonverter-git
+pkgname = soundkonverter-frameworks-git
 

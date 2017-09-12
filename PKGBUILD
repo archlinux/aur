@@ -5,7 +5,7 @@
 # Contributor: Eric Belanger <eric@archlinux.org>
 # Contributor: Darwin Bautista <djclue917@gmail.com>
 
-pkgname=soundkonverter-git
+pkgname=soundkonverter-frameworks-git
 pkgver=v3.0.0.r0.g2200d33
 pkgrel=1
 pkgdesc="Front-end to various audio converters"
