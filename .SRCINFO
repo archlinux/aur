@@ -1,0 +1,18 @@
+pkgbase = python-tkcalendar
+	pkgdesc = Calendar and DateEntry widgets for Tkinter
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/j4321/tkcalendar
+	arch = any
+	license = GPL3
+	source = tkcalendar-1.1.1.tar.gz::https://github.com/j4321/tkcalendar/archive/v1.1.1.tar.gz
+	sha512sums = 27aa732554c5fc2765b97d439712c50e1fb21ab6445d2fc574805870247c53a03c5991cfb255bb7bb478a7cb6f982a262ccb2c4e7d0942e8c7d906d0a7c678d2
+
+pkgname = python-tkcalendar
+	depends = python
+	depends = tk
+
+pkgname = python2-tkcalendar
+	depends = python2
+	depends = tk
+
