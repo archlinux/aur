@@ -1,6 +1,6 @@
 pkgbase = chef-client
 	pkgdesc = The Chef Client installation package includes everything you need to start converging your machines.
-	pkgver = 13.2.42
+	pkgver = 13.3.42
 	pkgrel = 1
 	url = https://downloads.chef.io/chef-client/
 	arch = x86_64
