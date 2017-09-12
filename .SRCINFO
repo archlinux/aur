@@ -1,0 +1,20 @@
+pkgbase = pybombs-git
+	pkgdesc = PyBOMBS is the new GNU Radio install management system
+	pkgver = r949.cb0f5b9
+	pkgrel = 1
+	url = https://github.com/jotaro0010/pyanisort
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-ruamel-yaml
+	depends = python-pip
+	depends = python-requests
+	depends = python-future
+	depends = python-six
+	depends = python-setuptools
+	source = git+https://github.com/gnuradio/pybombs.git
+	sha256sums = SKIP
+
+pkgname = pybombs-git
+
