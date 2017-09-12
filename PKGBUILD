@@ -1,7 +1,7 @@
 # Maintainer: Marc Demierre <marc.demierre@gmail.com>
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 pkgname=pyenv-virtualenv
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 epoch=1
 pkgdesc="pyenv plugin to manage virtualenv (a.k.a. python-virtualenv)"
@@ -10,7 +10,7 @@ url="https://github.com/yyuu/pyenv-virtualenv"
 license=('MIT')
 depends=('pyenv' 'bash')
 source=("https://github.com/yyuu/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3523129c24ca3ad2cf130885ef9801cb066b04eabc354ee2c38c486b8b726f15')
+md5sums=('15e3f36f4b7426cd9e88506a2702040e')
 
 package() {
   mkdir -p "${pkgdir?}"/{opt/pyenv/plugins/pyenv-virtualenv,usr/bin}
