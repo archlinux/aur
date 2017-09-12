@@ -1,5 +1,5 @@
 pkgname=rssdrop
-pkgver=22.b9a43ee
+pkgver=24.489d343
 pkgrel=1
 pkgdesc="A Perl script to deliver rss feeds to Maildirs."
 arch=('any')
