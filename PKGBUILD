@@ -1,7 +1,7 @@
 # Maintainer: grzegorz225 <gorbak25@gmail.com>
 pkgname=neptune-cli
 _module='neptune-cli'
-pkgver=2.0.22
+pkgver=2.0.23
 pkgrel=1
 pkgdesc="Neptune client library"
 arch=('any')
@@ -37,7 +37,7 @@ package() {
         deactivate
     }   
     trap finish EXIT
-    /opt/neptune-cli/bin/neptune \$1" > ./usr/bin/neptune
+    /opt/neptune-cli/bin/neptune \$*" > ./usr/bin/neptune
 
     chmod +x ./usr/bin/neptune
 }
