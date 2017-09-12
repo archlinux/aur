@@ -1,6 +1,6 @@
 pkgbase = microsoft-r-open
 	pkgdesc = Language and environment for statistical computing and graphics, enhanced by Microsoft
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://mran.revolutionanalytics.com/open/
 	install = microsoft-r-open.install
@@ -30,7 +30,7 @@ pkgbase = microsoft-r-open
 	depends = zlib
 	optdepends = tk: tcl/tk interface
 	optdepends = texlive-bin: latex sty files
-	provides = r=3.4.0
+	provides = r=3.4.1
 	conflicts = r
 	options = !makeflags
 	options = !emptydirs
@@ -39,18 +39,18 @@ pkgbase = microsoft-r-open
 	backup = etc/R/ldpaths
 	backup = etc/R/repositories
 	backup = etc/R/javaconf
-	source = https://mran.revolutionanalytics.com/install/mro/3.4.0/microsoft-r-open-3.4.0.tar.gz
+	source = https://mran.revolutionanalytics.com/install/mro/3.4.1/microsoft-r-open-3.4.1.tar.gz
 	source = mro.desktop
 	source = mro.png
 	source = R.conf
-	md5sums = 4e6ceae0641a1224d944de6c75988025
+	md5sums = 3a0a94d942f3388662cb6c000c71c963
 	md5sums = 70e8f9d0b1eebeb1f0b45f4568bc0701
 	md5sums = 8e0c51650b8a63f110fa7b09e699e9c4
-	md5sums = 6c381ed007c2bfc97ab42f05bf50b57d
-	sha512sums = a5f9e01fb15b4b46a71b3692376f64ae2771419620a0be496d089cb295666ea1c669146ea9c1e923e2595f5ae5216c8c105484b224317023c7fce6862c29aaf6
+	md5sums = 1dfa62c812aed9642f6e4ac34999b9fe
+	sha512sums = e74c203e6bf75bbc83993580b204679b0c93a91d9d1ab641631cc34bd279eb8f88dc5416fa148862efd99239550e3e086d13a94e6b1b7cea68ebf5fa9bc29b72
 	sha512sums = 2b0221bd1e0fdd399284333e6f2020bb9ad11395ad39dd2fca688b7ebc68fbbc60de59a757e1898be8bcd9e2926afccc121043f38445e7693f177c3076f92b61
 	sha512sums = 1491b01d3d14b86d26c383e00e2305858a52ddd498158c9f7f6b33026ee01f246408b1676cffea73f7783c8c4cf546285705c43c0286adbd75ad77706918b5fe
-	sha512sums = 41e6779500748eee0fa785a20bcaf7323d4aa67000386243fdfe1681152023fb4a5dd4e1f078eeae24db18c223f86fa57afbbad391da226988b0a14eec75c986
+	sha512sums = aae388c5b6c02d9fb857914032b0cd7d68a9f21e30c39ba11f5a29aaf1d742545482054b57ce18872eabb6605bbb359b2fc1e9be5ce6881443fdbdf6b67fab3b
 
 pkgname = microsoft-r-open
 
