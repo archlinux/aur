@@ -9,8 +9,8 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-opt-git
-pkgver=4.4.0.beta1.r394.g2a62a72c69
-_pkgcommit=2a62a72c6964513b845f6e7bd4e10a0a47c5eb88
+pkgver=4.4.0.r292.ge44d16e3de
+_pkgcommit=e44d16e3debcf1295946a4675cb2543a3fa7daec
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
@@ -88,6 +88,10 @@ package() {
     mkdir -p "${pkgdir}/usr/src/qtcreator-opt-git/"
     find | egrep -v '^\.\/doc\|^\.\/share\|^\.\/\.pc\|^\.\/debian\|^\.\/build\|^\.\/tests\|^\.\/share\|^\.\/builddir' | \
            grep '\.pri$\|\.h$\|\.hpp$\|\.inc$\|\.xsl$' | xargs -I{} cp --parents -r "{}" "${pkgdir}/usr/src/qtcreator-opt-git/"
+
+    # App version information
+    mkdir -p "${pkgdir}/usr/src/qtcreator-opt-git/src/app/"
+    cp ../build/src/app/app_version.h "${pkgdir}/usr/src/qtcreator-opt-git/src/app/"
 
     # Icons
     mkdir -p ${pkgdir}/usr/share/icons
