@@ -1,0 +1,15 @@
+pkgbase = tutch
+	pkgdesc = A tool for checking constructive proofs
+	pkgver = 0.53
+	pkgrel = 1
+	url = http://www.cse.chalmers.se/~abela/tutch/
+	arch = i686
+	arch = x86_64
+	license = custom:Unlicense
+	depends = smlnj
+	provides = tutch
+	source = http://www.cse.chalmers.se/~abela/tutch/tutch-0.53-for-sml-110.45.tar.gz
+	sha256sums = ea8360f9f1556e04a6597a15ade1e84714aa1aefc20a65bb3e430c11d49ad1ea
+
+pkgname = tutch
+
