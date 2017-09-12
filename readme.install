@@ -1,0 +1,10 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+  # version 1.10 expects changes to container config due to upstream flags
+  if [ $(vercmp $2 1.10) -lt 0 ]; then
+    echo '-> LXC made changes to the internal configuration keys with v2.1.'
+    echo '-> You MUST update the flags in your base container, see:'
+    echo '-> https://discuss.linuxcontainers.org/t/lxc-2-1-has-been-released/487'
+  fi
+}
