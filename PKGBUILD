@@ -3,7 +3,7 @@
 
 _gemname=declarative
 pkgname=ruby-$_gemname
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='DSL for nested schemas.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('a9c36057bdde149e3d18ddb20e5a6294cd63bfeb')
+sha1sums=('02a9c341c8c9f3442d25a903a2003a17ddf7ad6f')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

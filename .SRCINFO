@@ -1,14 +1,14 @@
 pkgbase = ruby-declarative
 	pkgdesc = DSL for nested schemas.
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = declarative-0.0.9.gem
+	noextract = declarative-0.0.10.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/declarative-0.0.9.gem
-	sha1sums = a9c36057bdde149e3d18ddb20e5a6294cd63bfeb
+	source = https://rubygems.org/downloads/declarative-0.0.10.gem
+	sha1sums = 02a9c341c8c9f3442d25a903a2003a17ddf7ad6f
 
 pkgname = ruby-declarative
 
