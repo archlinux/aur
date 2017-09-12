@@ -1,9 +1,10 @@
 # Contributor: Aashik S  aashiks at inflo dot ws
 # Maintainer: http://smc.org.in
 # Contributor: Akshay S Dinesh asdofindia at gmail dot com
+# Contributor: Jishnu Mohan jishnu7 at gmail dot com
 
 pkgname=ttf-malayalam-font-anjalioldlipi
-pkgver=6.1.1
+pkgver=7.0.0+20170909
 pkgrel=1
 pkgdesc="This is Anjali Old Lipi, a font belonging to a set of TrueType and OpenType fonts released 
 under the 
@@ -13,7 +14,7 @@ url="http://smc.org.in/fonts/"
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/anjalioldlipi/AnjaliOldLipi.ttf"
         "https://gitlab.com/smc/anjalioldlipi/raw/master/67-smc-anjalioldlipi.conf")
-md5sums=('237e3fe4cb220982727693fb222575d1'
+md5sums=('a338e73c5dd2baf2241ae07f05a9bc67'
          '9b343beb71398383af33988a9829bc05')
 install=ttf-malayalam-fonts.install
 
