@@ -2,15 +2,15 @@
 # Contributor: Leonidas Spyropoulos <artafinde@gmail.com>
 
 pkgname=neomutt
-pkgver=20170907
-pkgrel=6
+pkgver=20170912
+pkgrel=1
 pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
 license=('GPL')
 validpgpkeys=('86C2397270DD7A561263CA4E5FAF0A6EE7371805') # Richard Russon (flatcap) <rich@flatcap.org>
 source=("https://github.com/neomutt/neomutt/archive/$pkgname-$pkgver.tar.gz"
         "https://github.com/neomutt/neomutt/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz.sig")
-sha256sums=('24df11b4a96172736ff94a02bb6e4c310beaae4d14129972020951785ad35b50'
+sha256sums=('9f0d128fe8dbbbddb67e2b629f8b5e52a9d892f82c735845c1708c14e3046657'
             'SKIP')
 arch=('i686' 'x86_64')
 depends=('openssl' 'gdbm' 'mime-types' 'libsasl' 'gnupg' 'gpgme' 'libidn' 'krb5' 'notmuch-runtime')
