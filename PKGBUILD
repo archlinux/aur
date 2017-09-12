@@ -1,5 +1,5 @@
 # Maintainer: Herry Sugiharto <herrysugiharto@gmail.com>
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Original Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgname=wxpython-nuitka
 pkgver=3.0.2.0
