@@ -1,0 +1,24 @@
+# Maintainer: Heiko Nickerl <dev at heiko-nickerl dot com>
+pkgname="python-npyscreen-git"
+pkgver=r480.d286599
+pkgrel=1
+pkgdesc="A python widget library and application framework"
+arch=('any')
+url="https://github.com/npcole/npyscreen"
+license=('BSD')
+makedepends=('git')
+depends=('python' 'python-setuptools')
+source=('git+https://github.com/npcole/npyscreen.git')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/npyscreen"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+   cd "$srcdir/npyscreen"
+   msg "$srcdir/npyscreen/LICENSE"
+   install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+   python setup.py install --root="$pkgdir/" --optimize=1
+}
