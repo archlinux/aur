@@ -1,0 +1,28 @@
+pkgbase = electrum-vtc
+	pkgdesc = A simple, powerful, and secure Vertcoin wallet which has no sync time or long waits for the blockchain to download.
+	pkgver = 2.9.3.1
+	pkgrel = 1
+	url = https://electrum.vertcoin.org/
+	arch = any
+	license = MIT
+	depends = python2-setuptools
+	depends = python2-pyaes
+	depends = python2-ecdsa
+	depends = python2-pbkdf2
+	depends = python2-requests
+	depends = python2-qrcode
+	depends = python2-vtc_scrypt
+	depends = python2-lyra2re2_hash
+	depends = python2-protobuf
+	depends = python2-pyqt4
+	depends = python2-dnspython
+	depends = python2-jsonrpclib
+	depends = python2-pysocks
+	depends = zbar
+	provides = electrum-vtc
+	conflicts = electrum-vtc
+	source = Electrum-VTC-2.9.3.1.tar.gz::https://github.com/vertcoin/electrum-vtc/releases/download/2.9.3.1/Electrum-VTC-2.9.3.1.tar.gz
+	sha256sums = c83560c30af4a60058a372bb6097d2f1532975e785d73fe23f13403b666e9446
+
+pkgname = electrum-vtc
+
