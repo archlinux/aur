@@ -1,0 +1,15 @@
+pkgbase = python2-lyra2re2_hash
+	pkgdesc = Bindings for Lyra2RE2 proof of work used by Vertcoin
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/metalicjames/lyra2re-hash-python
+	arch = any
+	license = unknown
+	depends = python2-setuptools
+	provides = python2-lyra2re2_hash
+	conflicts = python2-lyra2re2_hash
+	source = git://github.com/metalicjames/lyra2re-hash-python
+	sha256sums = SKIP
+
+pkgname = python2-lyra2re2_hash
+
