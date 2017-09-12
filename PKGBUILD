@@ -3,7 +3,7 @@
 _pkgname=sleepyhead
 pkgname=$_pkgname-git
 pkgver=1.0.0.2.g0e04bd99
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment."
 arch=('i686' 'x86_64')
 url="http://sleepyhead.jedimark.net"
@@ -20,12 +20,12 @@ source=(
   "git+https://gitlab.com/sleepyhead/sleepyhead-code.git"
   'moduleupdates.patch'
   'Qt-5.8.patch'
+  'sleepyhead.desktop'
 )
-sha256sums=(
-  'SKIP'
-  af1390195fc4a5f2aa0cced24b1ce1a629dbd608a40d10dc319cfcbd959bec02 #moduleupdates.patch
-  b2783268ae56ad7698ce78c4e72b58557da36d2cf24cf7a680e19ef200d2f350 #Qt-5.8.patch
-)
+sha256sums=('SKIP'
+            'af1390195fc4a5f2aa0cced24b1ce1a629dbd608a40d10dc319cfcbd959bec02'
+            'b2783268ae56ad7698ce78c4e72b58557da36d2cf24cf7a680e19ef200d2f350'
+            'a15100d6bf1e1136d41a36f59613cd20776f0709c74c2e2d1b46f03271e08c3c')
 
 prepare() {
   cd sleepyhead-code
@@ -50,7 +50,9 @@ build() {
 }
 
 package() {
-  install -D "$srcdir/sleepyhead-code/sleepyhead/SleepyHead" "$pkgdir/usr/bin/SleepyHead"
+  install -D $srcdir/sleepyhead-code/sleepyhead/SleepyHead $pkgdir/usr/bin/sleepyhead
+  install -Dm644 $srcdir/sleepyhead-code/sleepyhead/icons/bob-v3.0.png $pkgdir/usr/share/sleepyhead/icon.png
+  install -Dm644 $srcdir/sleepyhead.desktop $pkgdir/usr/share/applications/sleepyhead.desktop
 }
 
 # vim:set ts=2 sw=2 et:
