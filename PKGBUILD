@@ -4,7 +4,7 @@
 # Contributor: Jishnu Mohan jishnu7 at gmail dot com
 
 pkgname=ttf-malayalam-font-keraleeyam
-pkgver=2.0.0+20161217
+pkgver=2.0.0+20170909
 pkgrel=1
 pkgdesc="This is Keraleeyam, a font belonging to a set of TrueType and OpenType fonts released under 
 the 
@@ -14,7 +14,7 @@ url="http://smc.org.in/fonts/"
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/keraleeyam/Keraleeyam.ttf"
         "https://gitlab.com/smc/keraleeyam/raw/master/67-smc-keraleeyam.conf")
-md5sums=('39869baefe719028f8b6bfb0ee430a1d'
+md5sums=('8d2093968e3fca2ec879a87e1c145d8a'
          '37d7da81268fa7cf4a9702d241c7ea1c')
 install=ttf-malayalam-fonts.install
 
