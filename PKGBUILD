@@ -1,7 +1,7 @@
 # Maintainer: SeeLook <seelook@gmail.com>
 pkgname=nootka
 pkgver=1.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A crossplatform tool for learning classical score notation. Mostly for guitarists but also very good for ear training."
 arch=('x86_64' 'i686')
 url="http://nootka.sourceforge.net/"
