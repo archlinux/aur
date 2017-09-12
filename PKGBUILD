@@ -18,5 +18,5 @@ md5sums=("$(curl -s https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-
 package() {
   cd "$srcdir"
   chmod +x "ecs-cli-linux-amd64-v${pkgver}"
-  install -Dm755 ecs-cli-linux-amd64-latest "$pkgdir/usr/bin/ecs-cli"
+  install -Dm755 "ecs-cli-linux-amd64-v${pkgver}" "$pkgdir/usr/bin/ecs-cli"
 }
