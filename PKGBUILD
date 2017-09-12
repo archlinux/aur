@@ -1,7 +1,7 @@
 # Maintainer: Tyler Langlois <ty |at| tjll |dot| net>
 
 pkgname=consul-template
-pkgver=0.19.2
+pkgver=0.19.3
 pkgrel=1
 pkgdesc='Template rendering, notifier, and supervisor for HashiCorp Consul and Vault data'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -14,7 +14,7 @@ optdepends=('consul: interpolate values from a distributed key/value store'
 options=('!strip')
 source=("$url/archive/v$pkgver.tar.gz"
         "$pkgname.service")
-sha256sums=('e7fca6e75d7165094a094d7e8347ec5b79733308eea8dec4bd94f50e9b233b45'
+sha256sums=('bc19d711a4a5ceb9dd93c8c1f08c87124cc92ad5ef3163a4f422ac42b60bb874'
             '693fb4e88081ca7ce84a9c0d61cdc1130929359de35f70f145ea8008b7b42e3d')
 
 prepare() {
