@@ -1,0 +1,26 @@
+#!/bin/sh
+
+post_install() {
+   ln -s /opt/armitage/armitage /usr/bin/armitage
+   echo "
+====================================================================
+  Please refer to armitage's documentation for usage informations:
+  http://www.fastandeasyhacking.com/manual
+====================================================================
+
+Postgresql databases in metasploit are mandatory for armitage usage:
+
+https://wiki.archlinux.org/index.php/Metasploit_Framework
+
+https://wiki.archlinux.org/index.php/Postgresql
+
+copy the sample metasploit database config from
+/usr/share/metasploit/database.yml.sample to ~/.msf4/database.yml and added your
+Postgresql username and password.
+
+"
+}
+
+pre_remove() {
+    rm -f /usr/bin/armitage
+}

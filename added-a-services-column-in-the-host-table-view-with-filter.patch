@@ -1,0 +1,200 @@
+diff --git a/scripts/targets.sl b/scripts/targets.sl
+index 864f7518..b1e431f1 100644
+--- a/scripts/targets.sl
++++ b/scripts/targets.sl
+@@ -122,6 +122,12 @@ on sessions {
+ 		}
+ 	}
+ 
++	# refresh our service port table
++	local('$services $service $svc_string $port_string $host2 $port $proto $name');
++	call_async_callback($mclient, "db.services", $this);
++	yield;
++	$services = convertAll($1);
++
+ 	# create a data structure with id, description, icon, and tooltip
+ 	foreach $id => $host (%hosts) { 
+ 		local('$tooltip');
+@@ -132,8 +138,23 @@ on sessions {
+ 			$tooltip = "I know nothing about $id";
+ 		}
+ 
++		$svc_string = "";
++		if ('services' in $services) {
++			foreach $service ($services['services']) {
++				($host2, $port, $name) = values($service, @('host', 'port', 'name'));
++				if($host2 eq $id) {
++					$port_string = $name . "(" . $port . ")";
++					if($svc_string eq "") {
++						$svc_string = $port_string;
++					} else {
++						$svc_string = $svc_string . "," . $port_string;
++					}
++				}
++			}
++		}
++
+ 		if ($host['show'] eq "1") {
+-			[$refresh addNode: $id, $host['label'] . "", describeHost($host), showHost($host), $tooltip];
++			[$refresh addNode: $id, $svc_string, $host['label'] . "", describeHost($host), showHost($host), $tooltip];
+ 		}
+ 	}
+ 
+diff --git a/src/graph/NetworkGraph.java b/src/graph/NetworkGraph.java
+index 859b0ffe..3f3d0784 100644
+--- a/src/graph/NetworkGraph.java
++++ b/src/graph/NetworkGraph.java
+@@ -445,7 +445,7 @@ public void setRoutes(Route[] routes) {
+ 
+ 	protected Map tooltips = new HashMap();
+ 
+-	public Object addNode(String id, String label, String description, Image image, String tooltip) {
++	public Object addNode(String id, String services, String label, String description, Image image, String tooltip) {
+ 		nodeImages.put(id, image);
+ 
+ 		if (label.length() > 0) {
+diff --git a/src/graph/RefreshGraph.java b/src/graph/RefreshGraph.java
+index 803b26c9..76fdea98 100644
+--- a/src/graph/RefreshGraph.java
++++ b/src/graph/RefreshGraph.java
+@@ -17,6 +17,7 @@
+ 
+ 	private static class Node {
+ 		public String id = "";
++		public String services = "";
+ 		public String label = "";
+ 		public String description = "";
+ 		public Image  iconz = null;
+@@ -36,9 +37,10 @@ public void addRoute(Route route) {
+ 		routes.add(route);
+ 	}
+ 
+-	public void addNode(String id, String label, String description, Image iconz, String tooltip) {
++	public void addNode(String id, String services, String label, String description, Image iconz, String tooltip) {
+ 		Node n = new Node();
+ 		n.id = id;
++		n.services = services;
+ 		n.label = label;
+ 		n.description = description;
+ 		n.iconz = iconz;
+@@ -60,7 +62,7 @@ public void run() {
+ 			Iterator i = nodes.iterator();
+ 			while (i.hasNext()) {
+ 				Node n = (Node)i.next();
+-				graph.addNode(n.id, n.label, n.description, n.iconz, n.tooltip);
++				graph.addNode(n.id, n.services, n.label, n.description, n.iconz, n.tooltip);
+ 			}
+ 
+ 			/* setup routes */
+diff --git a/src/graph/Refreshable.java b/src/graph/Refreshable.java
+index 47d740fe..6d1739d8 100644
+--- a/src/graph/Refreshable.java
++++ b/src/graph/Refreshable.java
+@@ -7,7 +7,7 @@
+ 	public void start();
+ 
+ 	/* add a node */
+-	public Object addNode(String id, String label, String description, Image image, String tooltip);
++	public Object addNode(String id, String services, String label, String description, Image image, String tooltip);
+ 
+ 	/* setup all of our routes in one fell swoop */
+ 	public void setRoutes(Route[] routes);
+diff --git a/src/table/NetworkTable.java b/src/table/NetworkTable.java
+index da265458..c29811a9 100644
+--- a/src/table/NetworkTable.java
++++ b/src/table/NetworkTable.java
+@@ -15,6 +15,7 @@
+ import graph.Route;
+ import graph.GraphPopup;
+ import graph.Refreshable;
++import java.util.regex.PatternSyntaxException;
+ 
+ public class NetworkTable extends JComponent implements ActionListener, Refreshable {
+ 	protected JScrollPane scroller = null;
+@@ -48,15 +49,17 @@ public NetworkTable() {
+ 	}
+ 
+ 	protected GenericTableModel model;
++	protected TableRowSorter sorter;
++	protected JTextField searchField;
+ 	protected JTable table;
+ 	protected int    height;
+ 
+ 	public NetworkTable(Properties display) {
+ 		this.display = display;
+ 
+-		model = new GenericTableModel(new String[] { " ", "Address", "Label", "Description", "Pivot" }, "Address", 256);
++		model = new GenericTableModel(new String[] { " ", "Address", "Services", "Label", "Description", "Pivot" }, "Address", 256);
+ 		table = new ATable(model);
+-		TableRowSorter sorter = new TableRowSorter(model);
++		sorter = new TableRowSorter(model);
+ 		sorter.toggleSortOrder(1);
+ 
+ 		Comparator hostCompare = new Comparator() {
+@@ -152,13 +155,47 @@ public void all(MouseEvent ev) {
+ 			public void mouseReleased(MouseEvent ev) { all(ev); }
+ 		});
+ 
+-		setLayout(new BorderLayout());
++		searchField = new JTextField("");
++		searchField.getDocument().addDocumentListener(new DocumentListener() {
++            @Override public void insertUpdate(DocumentEvent e) {
++                fireDocumentChangeEvent();
++            }
++            @Override public void removeUpdate(DocumentEvent e) {
++                fireDocumentChangeEvent();
++            }
++            @Override public void changedUpdate(DocumentEvent e) { /* not needed */ }
++        });
++        fireDocumentChangeEvent();
++
++		JPanel searchPanel = new JPanel(new BorderLayout());
++		searchPanel.add(new JLabel("Regex filter:"),BorderLayout.WEST);
++		searchPanel.add(searchField);
++
+ 		scroller = new JScrollPane(table);
+-		add(scroller, BorderLayout.CENTER);
++		JPanel mainPanel = new JPanel(new BorderLayout());
++		mainPanel.add(searchPanel,BorderLayout.NORTH);
++		mainPanel.add(scroller);
++
++		setLayout(new BorderLayout());
++		add(mainPanel, BorderLayout.CENTER);
+ 
+ 		setupShortcuts();
+         }
+ 
++    private void fireDocumentChangeEvent() {
++        searchField.setBackground(Color.WHITE);
++        String pattern = searchField.getText().trim();
++        if (pattern.isEmpty()) {
++            sorter.setRowFilter(null);
++        } else {
++            try {
++                sorter.setRowFilter(RowFilter.regexFilter(pattern));
++            } catch (PatternSyntaxException ex) {
++                searchField.setBackground(Color.PINK);
++            }
++        }
++    }
++
+ 	public void setupWidths() {
+ 		table.getColumn("Address").setPreferredWidth((int)(125 * zoom));
+ 		table.getColumn("Label").setPreferredWidth((int)(125 * zoom));
+@@ -269,7 +306,7 @@ public String getCellAt(Point p) {
+ 	public void setAutoLayout(String layout) {
+ 	}
+ 
+-	public Object addNode(String id, String label, String description, Image image, String tooltip) {
++	public Object addNode(String id, String services, String label, String description, Image image, String tooltip) {
+ 		if (id == null || label == null)
+ 			return null;
+ 
+@@ -278,6 +315,7 @@ public Object addNode(String id, String label, String description, Image image,
+ 
+ 		if (description.indexOf(id) > -1)
+ 			description = description.substring(id.length());
++		map.put("Services", services);
+ 		map.put("Label", label);
+ 		map.put("Description", description);
+ 		map.put("Tooltip", tooltip);

@@ -1,0 +1,13 @@
+[Unit]
+Description=Metasploit Framework RPC Daemon
+After=postgresql.service
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/metasploit
+ExecStart=/usr/bin/msfrpcd -f -a $IP_ADDR -U $RPC_USER -P $RPC_PASSWORD -S -p $PORT
+PIDFile=/run/metasploit.pid
+
+[Install]
+WantedBy=multi-user.target
+

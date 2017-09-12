@@ -1,0 +1,15 @@
+#TODO: make this fucking work
+
+# metasploit RFC Daemon config file. Configuration for the RPC server. The RPC
+# server allows for front ends to connect to metasploit.
+
+# IP address and port for RPC server
+IP_ADDR=127.0.0.1
+PORT=55553
+
+## User name and password are used in Armitage and any other front ends for
+# metasploit
+
+# username and password to listen for
+RPC_USER=msf
+RPC_PASSWORD=test
