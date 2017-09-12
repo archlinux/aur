@@ -10,14 +10,13 @@ _pkgname=("${_pkgbase}"
           'konversation-theme-arc')
 pkgname=("${_pkgname[@]/%/-git}")
 pkgbase=${_pkgbase}-git
-pkgver=20170908.r15.gb33bc48
+pkgver=20170912.r7.g826411a
 pkgrel=1
 epoch=2
 arch=('any')
 url="https://github.com/PapirusDevelopmentTeam/${_pkgbase}"
 license=('GPL3')
 makedepends=('git')
-conflicts=("${pkgbase}<2:")
 options=('!strip')
 source=("${pkgbase}::git+${url}.git")
 sha256sums=('SKIP')
@@ -61,7 +60,7 @@ package_kvantum-theme-arc-git() {
 	pkgdesc="Arc theme for Kvantum"
 	depends=('kvantum-qt5')
 	provides=('kvantum-theme-arc')
-	conflicts+=("${provides[0]}")
+	conflicts=("${provides[0]}" "${pkgbase}<2:")
 
 	_install Kvantum
 }
@@ -70,7 +69,7 @@ package_konsole-colorscheme-arc-git() {
 	pkgdesc="Arc theme for Konsole"
 	depends=('konsole')
 	provides=('konsole-colorscheme-arc')
-	conflicts+=("${provides[0]}" "${_pkgbase}<2:")
+	conflicts=("${provides[0]}" "${_pkgbase}<2:")
 
 	_install konsole
 }
@@ -79,7 +78,7 @@ package_yakuake-skin-arc-git() {
 	pkgdesc="Arc theme for Yakuake"
 	depends=('yakuake')
 	provides=('yakuake-skin-arc')
-	conflicts+=("${provides[0]}")
+	conflicts=("${provides[0]}" "${_pkgbase}<2:")
 
 	_install yakuake
 }
@@ -88,7 +87,7 @@ package_konversation-theme-arc-git() {
 	pkgdesc="Arc theme for Konversation"
 	depends=('konversation')
 	provides=('konversation-theme-arc')
-	conflicts+=("${provides[0]}")
+	conflicts=("${provides[0]}" "${pkgbase}<2:")
 
 	_install konversation
 }
