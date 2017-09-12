@@ -27,6 +27,7 @@ pkgbase = theshell
 	depends = ts-polkitagent
 	depends = ts-bt
 	depends = ts-bugreport
+	depends = ts-startsession
 	optdepends = alsa-utils: for volume controls
 	optdepends = pocketsphinx: for theWave
 	optdepends = festival: for theWave
