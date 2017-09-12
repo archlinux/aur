@@ -1,13 +1,13 @@
 pkgbase = gecode
 	pkgdesc = The Generic Constraint Development Environment
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = http://www.gecode.org
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = http://www.gecode.org/download/gecode-5.0.0.tar.gz
-	md5sums = 0394f02e5ed6d76f9e1f341a6d1a0772
+	source = http://www.gecode.org/download/gecode-5.1.0.tar.gz
+	md5sums = 79674c35d0af68d6ef8854da756792eb
 
 pkgname = gecode
 
