@@ -7,7 +7,7 @@
 pkgname=openafs-modules-dkms
 _srcname=openafs
 pkgver=1.6.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -17,12 +17,17 @@ provides=("openafs-modules=$pkgver")
 conflicts=('openafs-features-libafs' 'openafs-modules' 'openafs<1.6.6-2')
 options=(!emptydirs)
 source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
-        dkms.conf)
+        dkms.conf
+        0001-Linux-4.13-use-designated-initializers-where-require.patch)
 sha256sums=('ba9c1f615edd53b64fc271ad369c49a816acedca70cdd090975033469a84118f'
-            'baa3ab82ab2bb801d3a57568b46d5844add91cf8fc100386459d91d004f80f4f')
+            'ea7d1e6dfb5006016e25738be722c8793765f52ad55c0bbf588dd7fdf2bdd2bf'
+            '84e8686a04e27edfc040fccfa7fd2553eb2cfd1e0f254741b8da0018bdee4b55')
 
 prepare() {
   cd ${srcdir}/${_srcname}-${pkgver}
+
+  # Fix build with Linux 4.13
+  patch -p1 < ${srcdir}/0001-Linux-4.13-use-designated-initializers-where-require.patch
 
   # Only needed when changes to configure were made
   # ./regen.sh -q
