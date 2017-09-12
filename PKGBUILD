@@ -1,11 +1,11 @@
 # Maintainer: Johan Svensson <johan@loxley.se>
 pkgname=xping
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple ping program continiously probing multiple hosts using icmp-echo"
 url="https://github.com/martintopholm/xping"
 arch=('any')
-license="THE BEER-WARE LICENSE"
+license=("THE BEER-WARE LICENSE")
 depends=('libevent')
 source=("git://github.com/martintopholm/$pkgname.git#tag=v$pkgver")
 md5sums=('SKIP')
