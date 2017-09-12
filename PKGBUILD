@@ -1,15 +1,15 @@
 # Maintainer: Chris Snell <chris.snell@gmail.com>
 
 pkgname=ttf-interface
-pkgver=1.4
-pkgrel=4
+pkgver=1.6
+pkgrel=6
 pkgdesc="A font for highly legible text on computer screens"
 url="https://rsms.me/interface/"
 arch=(any)
 license=(custom:"SIL Open Font License")
 
 source=("interface-${pkgver}.zip::https://github.com/rsms/interface/releases/download/v${pkgver}/Interface-${pkgver}.zip")
-sha256sums=('5473405101e09c5cc22b21b6f7b150068c70e9873889dca7b4f6dad1b43ee4d4')
+sha256sums=('d22c4931d7e4f4dff5705304f72a68e77287e861c7ca0c0071a205d7f9455c67')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
