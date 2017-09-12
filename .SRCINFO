@@ -1,6 +1,6 @@
 pkgbase = zotero
 	pkgdesc = Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
-	pkgver = 5.0.17
+	pkgver = 5.0.18
 	pkgrel = 1
 	url = http://www.zotero.org/download
 	install = zotero.install
@@ -11,15 +11,13 @@ pkgbase = zotero
 	depends = gtk2
 	depends = gtk3
 	depends = nss
-	depends = java-environment
 	depends = libxt
-	optdepends = xpdf: PDF indexing
 	source = zotero.desktop
 	md5sums = f227abe95940abd63367716928c6e379
-	source_i686 = Zotero-5.0.17_linux_x86_64.tar.bz2::https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=5.0.17
-	md5sums_i686 = 28e77222d1e7c477f588560a17270586
-	source_x86_64 = Zotero-5.0.17_linux_x86_64.tar.bz2::https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=5.0.17
-	md5sums_x86_64 = 7829445a774122ca3a3a8131f09ce755
+	source_i686 = Zotero-5.0.18_linux_x86_64.tar.bz2::https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=5.0.18
+	md5sums_i686 = 079e3747d5db589abb1a931b19d1b3ef
+	source_x86_64 = Zotero-5.0.18_linux_x86_64.tar.bz2::https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=5.0.18
+	md5sums_x86_64 = 66c75a1430a597a4d046b549dc923f3d
 
 pkgname = zotero
 
