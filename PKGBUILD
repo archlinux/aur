@@ -19,6 +19,10 @@ package() {
    cd $srcdir/utils
    mkdir -p $pkgdir/usr/bin
    find . -perm /a+x -exec cp {} $pkgdir/usr/bin \;
+   cd $pkgdir/usr
+   mkdir lib
+   rm bin/{clear,import,shutdown,*.sh}
+   mv bin/libtss.so lib/
 }
 
 md5sums=('3314ffff877a48aebc1da9b44ff5290d')
