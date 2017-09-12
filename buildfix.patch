@@ -1,0 +1,10 @@
+--- a/librealsense-release-release-kinetic-librealsense-1.12.1-0/src/types.h	2017-09-12 15:24:19.753012660 -0700
++++ b/librealsense-release-release-kinetic-librealsense-1.12.1-0/src/types.h	2017-09-12 15:24:31.249513509 -0700
+@@ -22,6 +22,7 @@
+ #include <atomic>
+ #include <map>          
+ #include <algorithm>
++#include <functional>
+ 
+ const uint8_t RS_STREAM_NATIVE_COUNT    = 5;
+ const int RS_USER_QUEUE_SIZE = 20;

@@ -7,7 +7,7 @@ pkgname='ros-kinetic-librealsense'
 pkgver='1.12.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Apache License, Version 2.0')
 
 ros_makedepends=(ros-kinetic-catkin)
@@ -34,8 +34,15 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="librealsense-release-release-kinetic-librealsense-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/intel-ros/librealsense-release/archive/release/kinetic/librealsense/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f8bf5872257008e910cc38d0c896b32547e2f4842a8e4a6afd501e83291aadfe')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/intel-ros/librealsense-release/archive/release/kinetic/librealsense/${pkgver}-${_pkgver_patch}.tar.gz"
+		buildfix.patch)
+sha256sums=('5a25f39bc13940211cec4fae8d377da4117fa07033d73226a588bce4a9e34129'
+            '549344d120f3841cef5e41e742715ee480094f9c99e4ba53f8e22b992421de92')
+
+prepare() {
+	cd ${srcdir}
+	patch -p1 < buildfix.patch
+}
 
 build() {
   # Use ROS environment variables
