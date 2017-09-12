@@ -1,6 +1,6 @@
 pkgbase = qtcreator-cmakeprojectmanager2-plugin-opt-git
 	pkgdesc = Enhanced CMake Project Manager plugin for Qt Creator.
-	pkgver = 4.4.0.beta1.r735.7b6a5bc
+	pkgver = 4.4.0.r745.bff0bbc
 	pkgrel = 1
 	url = https://github.com/h4tr3d/cmakeprojectmanager2
 	arch = i686
@@ -8,11 +8,11 @@ pkgbase = qtcreator-cmakeprojectmanager2-plugin-opt-git
 	groups = qtcreator-opt-git
 	license = GPL
 	makedepends = git
-	depends = qtcreator-opt-git>=4.4.0.beta1.r394
+	depends = qtcreator-opt-git>=4.4.0.r292
 	options = docs
 	options = debug
 	options = strip
-	source = qtcreator-cmakeprojectmanager2-plugin-opt-git::git+https://github.com/h4tr3d/cmakeprojectmanager2.git#commit=7b6a5bc398619070595daa8bbba19b7bdc6ae550
+	source = qtcreator-cmakeprojectmanager2-plugin-opt-git::git+https://github.com/h4tr3d/cmakeprojectmanager2.git#commit=bff0bbc461d8931e446f194e54187be8fe475c46
 	sha256sums = SKIP
 
 pkgname = qtcreator-cmakeprojectmanager2-plugin-opt-git
