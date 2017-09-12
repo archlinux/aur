@@ -433,11 +433,11 @@ _package-headers() {
     fi
   done
 
-+  # remove files already in linux-docs package
-+  rm -r "${_builddir}/Documentation"
-+
-+  # Fix permissions
-+  chmod -R u=rwX,go=rX "${_builddir}"
+  # remove files already in linux-docs package
+  rm -r "${_builddir}/Documentation"
+
+  # Fix permissions
+  chmod -R u=rwX,go=rX "${_builddir}"
 
   # strip scripts directory
   local _binary _strip
