@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=atomic-tweetdeck
+Categories=Network;
+Comment=just a small Electron TweetDeck app.
+Exec=/usr/bin/atomic-tweetdeck
+GenericName=Twitter Client
+Icon=atomic-tweetdeck
+StartupNotify=false
+Type=Application
