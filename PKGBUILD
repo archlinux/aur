@@ -1,8 +1,8 @@
 # Maintainer: Steven Noonan <steven@uplinklabs.net>
 
 pkgbase=linux-ec2
-_srcname=linux-4.12
-pkgver=4.12.8
+_srcname=linux-4.13
+pkgver=4.13.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://git.uplinklabs.net/steven/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
@@ -21,12 +21,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         '0001-xhci-demote-annoying-warning.patch'
         )
-sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
+sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '32b860911a3bafd5cd5bc813a427c90fad6eafdf607fa64e1b763b16ab605636'
+            '6664b089bdb6513b006bfe65c6fee45d38ddfe17f6ccc87a720e831d4c215b4d'
             'SKIP'
-            'b462f3dff25ed509c5f2763741da538ee3888912f80d7d754865b4433303c388'
-            '0096f7771a7204538a565b7ea2d235fe5b2ed156e602e171c6cb9f0e4993f2f5'
+            '344f1ae54298d5c43327442fd0358e5e1d56b71807782339a9142cc28daf697d'
+            '9aa7613d5e406785edd943f943b444c9fff09ba536e840b95d7713b73d4cf914'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'fc21139a4b77d2739f4aaa4e3d35229c395c311de89709904de15f653b8991fd'
             'f4ee2c2aed01b984b7ede924cbabefaccedc854b338901568d03a45320ea8056')
@@ -210,10 +210,6 @@ _package-headers() {
   fi
 
   cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
-
-  # add docbook makefile
-  install -D -m644 Documentation/DocBook/Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 
   # add dm headers
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
