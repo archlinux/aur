@@ -4,7 +4,7 @@
 
 pkgname=ocsinventory-agent
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Hardware and software inventory tool (client)"
 arch=('any')
 url="http://www.ocsinventory-ng.org"
@@ -13,6 +13,7 @@ depends=('dmidecode' 'pciutils' 'perl-crypt-ssleay' 'perl-xml-sax'
          'perl-libwww' 'perl-net-ip' 'perl-xml-namespacesupport' 'perl-xml-simple'
          'perl-proc-daemon' 'perl-proc-pid-file' 'perl-net-ssleay')
 optdepends=('smartmontools')
+makedepends=('perl-module-install')
 install=${pkgname}.install
 backup=('etc/ocsinventory/ocsinventory-agent.cfg')
 source=("https://github.com/OCSInventory-NG/UnixAgent/releases/download/$pkgver/Ocsinventory-Unix-Agent-$pkgver.tar.gz"
@@ -24,6 +25,8 @@ md5sums=('9b45269454c40dc183cc2722ac5493f2'
 
 build() {
   cd "$srcdir/Ocsinventory-Unix-Agent-$pkgver"
+
+  sed -i "s/require 'lib\/Ocsinventory\/Agent\/Config.pm';/require '.\/lib\/Ocsinventory\/Agent\/Config.pm';/g" Makefile.PL
 
   perl Makefile.PL
   make || return 1
