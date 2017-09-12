@@ -1,0 +1,13 @@
+post_install() {
+  post_remove
+  echo -e "See README and example file ukazka.tex in /usr/share/doc/slabikar\n"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "Upgrading package database..."
+  mktexlsr
+}
