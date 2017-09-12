@@ -2,12 +2,12 @@
 
 _pkgname=plasma-applet-server-status
 pkgname=plasma5-applets-server-status-git
-pkgver=r3.e97eae0
+pkgver=r4.76703a5
 pkgrel=1
 pkgdesc="Applet for KDE Plasma 5 showing a status of the servers defined by user."
 arch=("any")
 url="https://github.com/MakG10/plasma-applet-server-status"
-license=('unknown')
+license=('GPL3')
 depends=('')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'plasma-framework')
 provides=("plasma5-applets-server-status")
