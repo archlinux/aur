@@ -11,6 +11,7 @@ pkgbase = latte-dock-git
 	makedepends = extra-cmake-modules
 	makedepends = python
 	makedepends = ruby
+	makedepends = subversion
 	depends = plasma-framework
 	depends = plasma-desktop
 	optdepends = libunity: quicklists, counters, and progress bars for apps using libunity
