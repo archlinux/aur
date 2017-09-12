@@ -2,12 +2,13 @@
 
 pkgname=gpmd85emulator
 pkgver=0.9.1402
-pkgrel=2
+pkgrel=3
 pkgdesc="Multiplatform GNU/GPL Tesla PMD 85 Emulator"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/gpmd85emulator/"
 license=('GPL')
 depends=('gcc-libs' 'sdl')
+conflicts=('gpmd85emulator-git')
 source=("http://downloads.sourceforge.net/project/gpmd85emulator/GPMD85emulator.v${pkgver}.tar.gz")
 md5sums=('c009d0e3be6ca357c4ce00eda7eb8ad7')
 
