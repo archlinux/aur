@@ -2,7 +2,7 @@
 
 pkgname=yalpam-git
 _pkgname=yalpam
-pkgver=31.d186ff4
+pkgver=32.de54a1f
 pkgrel=1
 pkgdesc="Yet another Arch Linux PAckage Manager"
 arch=('i686' 'x86_64')
@@ -39,12 +39,12 @@ package() {
 	# Place desktop entry
 	desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_pkgname}/${_pkgname}.desktop"
 
-	# Symlink main binaries
-	install -d "${pkgdir}/usr/bin"
-	ln -s "/usr/lib/${_pkgname}/${_pkgname}".sh "${pkgdir}/usr/bin/${_pkgname}"
-	ln -s "/usr/lib/${_pkgname}/"yup.sh "${pkgdir}/usr/bin/"yup
-	ln -s "/usr/lib/${_pkgname}/"update-sys.sh "${pkgdir}/usr/bin/"update-sys
-	ln -s "/usr/lib/${_pkgname}/"libfuncs.sh "${pkgdir}/usr/bin/"libfuncs
+	# Symlink main system binaries
+	install -d "${pkgdir}/usr/sbin"
+	ln -s "/usr/lib/${_pkgname}/${_pkgname}".sh "${pkgdir}/usr/sbin/${_pkgname}"
+	ln -s "/usr/lib/${_pkgname}/"yup.sh "${pkgdir}/usr/sbin/"yup
+	ln -s "/usr/lib/${_pkgname}/"update-sys.sh "${pkgdir}/usr/sbin/"update-sys
+	ln -s "/usr/lib/${_pkgname}/"libfuncs.sh "${pkgdir}/usr/sbin/"libfuncs
 
 	# Place license file
 	install -D -m644 "${pkgdir}/usr/lib/${_pkgname}/"LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.GPL"
