@@ -5,11 +5,12 @@
 
 pkgname=logmein-hamachi
 pkgver=2.1.0.174
-pkgrel=1
+pkgrel=2
 pkgdesc="A zero-configuration VPN service"
 url="https://www.vpn.net/linux"
 arch=("i686" "x86_64" "arm" "armv7h")
 license=("custom")
+depends=("glibc=2.25")
 conflicts=("hamachi")
 replaces=("hamachi")
 options=("!strip")

@@ -1,13 +1,14 @@
 pkgbase = logmein-hamachi
 	pkgdesc = A zero-configuration VPN service
 	pkgver = 2.1.0.174
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vpn.net/linux
 	arch = i686
 	arch = x86_64
 	arch = arm
 	arch = armv7h
 	license = custom
+	depends = glibc=2.25
 	conflicts = hamachi
 	replaces = hamachi
 	options = !strip
