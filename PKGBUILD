@@ -3,7 +3,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Maintainer: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
 _pkgbase=arc-kde
-_pkgname=("${_pkgbase}"
+_pkgname=("${_pkgbase}"{,'-wallpapers'}
           'kvantum-theme-arc'
           'konsole-colorscheme-arc'
           'yakuake-skin-arc'
@@ -44,6 +44,7 @@ package_arc-kde-git() {
 	depends=('plasma-workspace')
 	optdepends=('papirus-icon-theme: for a more consistent and beautiful experience (recommended)'
 	            'arc-gtk-theme: for a consistent look in GTK applications'
+	            'arc-kde-wallpapers: Arc KDE wallpapers'
 	            'kvantum-theme-arc: Arc theme for Kvantum (recommended)'
 	            'konsole-colorscheme-arc: Arc theme for Konsole'
 	            'yakuake-skin-arc: Arc theme for Yakuake'
@@ -53,7 +54,15 @@ package_arc-kde-git() {
 	conflicts=("${_pkgbase}")
 	install=${pkgbase}.install
 
-	_install plasma aurorae color-schemes wallpapers
+	_install plasma aurorae color-schemes
+}
+
+package_arc-kde-wallpapers-git() {
+	pkgdesc="Arc KDE wallpapers"
+	provides=('arc-kde-wallpapers')
+	conflicts=("${provides[0]}" "${pkgbase}<2:")
+
+	_install wallpapers
 }
 
 package_kvantum-theme-arc-git() {

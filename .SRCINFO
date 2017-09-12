@@ -16,6 +16,7 @@ pkgname = arc-kde-git
 	depends = plasma-workspace
 	optdepends = papirus-icon-theme: for a more consistent and beautiful experience (recommended)
 	optdepends = arc-gtk-theme: for a consistent look in GTK applications
+	optdepends = arc-kde-wallpapers: Arc KDE wallpapers
 	optdepends = kvantum-theme-arc: Arc theme for Kvantum (recommended)
 	optdepends = konsole-colorscheme-arc: Arc theme for Konsole
 	optdepends = yakuake-skin-arc: Arc theme for Yakuake
@@ -23,6 +24,12 @@ pkgname = arc-kde-git
 	optdepends = arc-firefox-theme: Arc theme for Firefox
 	provides = arc-kde
 	conflicts = arc-kde
+
+pkgname = arc-kde-wallpapers-git
+	pkgdesc = Arc KDE wallpapers
+	provides = arc-kde-wallpapers
+	conflicts = 
+	conflicts = arc-kde-git<2:
 
 pkgname = kvantum-theme-arc-git
 	pkgdesc = Arc theme for Kvantum
