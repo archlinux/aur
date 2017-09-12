@@ -4,10 +4,10 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 # Contributor: Ace <a.mad.coder at gmail dot com>
 
-_version=2017.1.0
-_build=f3
-_buildtag=20170711
-_randomstring=061bcf22327f
+_version=2017.1.1
+_build=f1
+_buildtag=20170905
+_randomstring=f4fc8fd4067d
 _extractiondir=unity-editor-${_version}x${_build}Linux
 
 pkgname=('unity-editor' 'monodevelop-unity')
@@ -44,7 +44,7 @@ source=("http://beta.unity3d.com/download/${_randomstring}/unity-editor-installe
         'monodevelop-unity'
         'unity-monodevelop.png')
 noextract=("unity-editor-installer-${_version}x${_build}Linux.sh")
-sha1sums=('a494c8191738ed0cf2b2024d93b7154af2fefea6'
+sha1sums=('fe7dca4513f2e22c11ac34f861e642cada7989f9'
           'b0b08428b5df109916db396717ec7a8ec5f4c0c4'
           'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
           '8ffbfd8f4577b146d25217720ac6689c5d929e84'
