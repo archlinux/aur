@@ -1,7 +1,7 @@
 pkgbase = google-java-format-git
 	pkgdesc = Reformats Java source code to comply with Google Java Style
 	pkgver = r361.b391a04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/google-java-format
 	arch = any
 	license = Apache
@@ -12,7 +12,7 @@ pkgbase = google-java-format-git
 	source = google-java-format-git::git+https://github.com/google/google-java-format
 	source = google-java-format
 	md5sums = SKIP
-	md5sums = e5b04729b788ccd83df24eaee98a35e6
+	md5sums = 820b76e4bd0f582bad2c5902c75a91fd
 
 pkgname = google-java-format-git
 

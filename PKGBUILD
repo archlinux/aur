@@ -1,7 +1,7 @@
 # Maintainer:  Michael Stergianis <michaelstergianis at gmail dot com>
 pkgname=google-java-format-git
 pkgdesc="Reformats Java source code to comply with Google Java Style"
-pkgrel=1
+pkgrel=2
 pkgver=r361.b391a04
 arch=('any')
 url="https://github.com/google/google-java-format"
@@ -14,7 +14,7 @@ options=()
 source=("google-java-format-git::git+https://github.com/google/google-java-format"
        "google-java-format")
 md5sums=('SKIP'
-         'e5b04729b788ccd83df24eaee98a35e6')
+         '820b76e4bd0f582bad2c5902c75a91fd')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
