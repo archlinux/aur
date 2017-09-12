@@ -2,15 +2,15 @@
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=latte-dock-git
-pkgver=0.7.1.r10.gfd1ae87
+pkgver=0.7.1.r16.gbe779e2
 pkgrel=1
-pkgdesc='A dock based on plasma frameworks - git version'
+pkgdesc='Replacement dock for Plasma desktops, providing an elegant and intuitive experience for your tasks and plasmoids- git version'
 arch=('i686' 'x86_64')
 url='https://cgit.kde.org/latte-dock.git/'
 license=('GPL')
 depends=('plasma-framework' 'plasma-desktop')
 optdepends=('libunity: quicklists, counters, and progress bars for apps using libunity')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'python')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'python' 'ruby')
 conflicts=('latte-dock')
 source=("git+"git://anongit.kde.org/latte-dock.git)
 sha256sums=('SKIP')

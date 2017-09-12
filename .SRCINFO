@@ -1,6 +1,6 @@
 pkgbase = latte-dock-git
-	pkgdesc = A dock based on plasma frameworks - git version
-	pkgver = 0.7.1.r10.gfd1ae87
+	pkgdesc = Replacement dock for Plasma desktops, providing an elegant and intuitive experience for your tasks and plasmoids- git version
+	pkgver = 0.7.1.r16.gbe779e2
 	pkgrel = 1
 	url = https://cgit.kde.org/latte-dock.git/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = latte-dock-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = python
+	makedepends = ruby
 	depends = plasma-framework
 	depends = plasma-desktop
 	optdepends = libunity: quicklists, counters, and progress bars for apps using libunity
