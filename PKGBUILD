@@ -8,13 +8,13 @@ url=https://github.com/UltraStar-Deluxe/UltraStar-Creator
 license=('GPL2')
 arch=('i686' 'x86_64')
 
-depends=('qt5-base' 'qt5-tools')
+depends=('qt5-base' 'qt5-tools' 'git')
 
 source=('git://github.com/UltraStar-Deluxe/UltraStar-Creator.git'
-		'ultrastar-creator.desktop')
+        'ultrastar-creator.desktop')
 
 md5sums=('SKIP'
-		 'f9458d9b3feb7cf0d84b727ad34ae689')
+         '167830d850f9a5b3933c7082be4f0637')
 	
 build()
 {

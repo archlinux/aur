@@ -4,6 +4,6 @@ Name=UltraStar-Creator
 Exec=/opt/ultrastar-creator/UltraStar-Creator /dev/null 2>&1
 Icon=UltraStar-Creator
 Comment=Create new songs for UltraStarDX from scratch.
-Terminal=true
+Terminal=false
 Categories=Karaoke,UltraStar,Qt
 Name[en]=ultrastar-creator.desktop
