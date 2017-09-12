@@ -4,11 +4,13 @@
 pkgname=jetbrains-toolbox-extracted
 _pkgname=jetbrains-toolbox
 pkgver=1.4.2492
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage all your JetBrains Projects and Tools (extracted from AppImage)'
 arch=('x86_64' 'i686')
 url='http://www.jetbrains.com/toolbox/'
 license=('custom')
+conflicts=('jetbrains-toolbox')
+provides=('jetbrains-toolbox')
 makedepends=('libarchive' 'chrpath')
 depends=('qt5-webengine' 'qt5-websockets')
 source=(
