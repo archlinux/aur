@@ -16,7 +16,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support')
 makedepends=('perl-file-slurp' 'perl-lwp-protocol-https' 'perl-switch')
 provides=("firefox=$pkgver")
-source=('firefox-beta-bin.desktop' 'ff-downloader.pl')
+source=('firefox-beta-bin.desktop' 'ff-downloader.pl' 'firefox-beta.sh')
 
 build() {
   perl ff-downloader.pl -v $pkgver
@@ -27,10 +27,11 @@ package() {
   mkdir -p $pkgdir/usr/{lib,bin,share/{applications,pixmaps}}
 
   cp -r firefox "${pkgdir}/usr/lib/${_mypkgn}"
-  ln -s /usr/lib/${_mypkgn}/firefox ${pkgdir}/usr/bin/firefox-beta
+  install -m755 ${srcdir}/firefox-beta.sh ${pkgdir}/usr/bin/firefox-beta
 
   install -m644 firefox-beta-bin.desktop ${pkgdir}/usr/share/applications/
   install -m644 ${srcdir}/firefox/browser/icons/mozicon128.png ${pkgdir}/usr/share/pixmaps/${_mypkgn}.png
 }
-md5sums=('e2cbab614d6b4a75e8ac3a34c8676931'
-         'b4d5afd97c8ac229f6027d7853c73c0c')
+md5sums=('4c0ca11a8034b53c0c5b7b9830442cd7'
+         'b4d5afd97c8ac229f6027d7853c73c0c'
+         'ea377d9d48f6abe4d9b1554122fcff83')

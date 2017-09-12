@@ -1,7 +1,8 @@
 [Desktop Entry]
 Version=1.0
 Name=Firefox Beta
-Exec=/usr/bin/firefox-beta --class "Firefox Beta" %u
+Exec=/usr/bin/firefox-beta %u
+# WM_CLASS is set from our firefox-beta wrapper script
 StartupWMClass=Firefox Beta
 Icon=firefox-beta
 Terminal=false
