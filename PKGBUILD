@@ -1,13 +1,13 @@
 # Maintainer: Heiko Nickerl <dev at heiko-nickerl dot com>
 pkgname="python-npyscreen-git"
 pkgver=r480.d286599
-pkgrel=1
+pkgrel=2
 pkgdesc="A python widget library and application framework"
 arch=('any')
 url="https://github.com/npcole/npyscreen"
 license=('BSD')
-makedepends=('git')
-depends=('python' 'python-setuptools')
+makedepends=('git' 'python-setuptools' )
+depends=('python' )
 source=('git+https://github.com/npcole/npyscreen.git')
 sha256sums=('SKIP')
 
