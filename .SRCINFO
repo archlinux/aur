@@ -1,0 +1,16 @@
+pkgbase = pyenv-virtualenvwrapper
+	pkgdesc = An alternative approach to manage virtualenvs from pyenv.
+	pkgver = 20140609
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/pyenv/pyenv-virtualenvwrapper
+	arch = any
+	license = MIT
+	depends = pyenv
+	depends = python-virtualenvwrapper
+	depends = bash
+	source = https://github.com/pyenv/pyenv-virtualenvwrapper/archive/v20140609.tar.gz
+	md5sums = 35dcafed8b60ad94e597fae8638c16c9
+
+pkgname = pyenv-virtualenvwrapper
+
