@@ -34,7 +34,7 @@ prepare() {
 
   msg2 "What config you want?"
   echo -en "     1. upstream Xanmod\n     2. Archlinux stock\n     Selection: "
-  read answer
+  read -n 1 answer && echo
   case $answer in
     1) true ;;
     2) if [ "${CARCH}" = "x86_64" ]; then
@@ -118,11 +118,14 @@ _package() {
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-  # add real version for building modules and running depmod from post_install/upgrade
-  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
-  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+  # make room for external modules  EDIT: xanmod already has _kernelname at the end
+  #ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  ln -s "../extramodules-${_basekernel}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  # add real version for building modules and running depmod from post_install/upgrade  EDIT: xanmod already has _kernelname at the end
+  #mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
+  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}"
+  #echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}/version"
 
   # Now we call depmod...
   depmod -b "${pkgdir}" -F System.map "${_kernver}"
