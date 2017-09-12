@@ -1,0 +1,18 @@
+pkgbase = rtl8821au-dkms-git
+	pkgdesc = rtl8821AU, rtl8812AU and rtl8811AU chipset driver with firmware v5.1.5
+	pkgver = 5.1.5
+	pkgrel = 1
+	url = https://github.com/zebulon2/rtl8812au/tree/v5.1.5
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	conflicts = rtl8821au
+	source = git+https://github.com/zebulon2/rtl8812au.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = ac5685acf0457773a6a8f83ef2ec84184be3bf26e6472e4b76e31d660964eb6d
+
+pkgname = rtl8821au-dkms-git
+
