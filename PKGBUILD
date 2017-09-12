@@ -2,11 +2,11 @@
 # Contributor: Simon Thorpe <simon@hivetechnology.com.au>
 
 pkgname=pianoteq-stage-trial-bin
-pkgver=5.8.1
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
-url="https://www.pianoteq.com/pianoteq5"
+url="https://www.pianoteq.com/home"
 license=('custom')
 depends=('alsa-lib' 'freetype2' 'libxext')
 makedepends=('gendesk' 'wget' 'p7zip')
@@ -18,7 +18,7 @@ sha256sums=('94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 # Define the target archive filename:
 _downfname=pianoteq_stage_linux_trial_v${pkgver//./}.7z
 # Define its checksum:
-_downsha256sum=22e05685cbcc23f06a90430502584f52da09b3d8079a2762de751279aa8c62fd
+_downsha256sum=5fa0c10450be5fbe7c7984ab5bb464c41ee641b49d2463a8b82a14be5d96f3f4
 
 prepare(){
 	# The archive download link needs to be retrieved. Retrieve download page source:
@@ -33,7 +33,7 @@ prepare(){
 	# Extract:
  	7z x $_downfname
 	# Generate Desktop Entry:
-	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='Pianoteq 5 STAGE' --exec='Pianoteq\ 5\ STAGE' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
+	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='Pianoteq 6 STAGE' --exec='Pianoteq\ 6\ STAGE' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
 }
 
 package(){
@@ -44,11 +44,11 @@ package(){
 		archdir=amd64
 	fi
 	# Install program files:
-	install -Dm 755 "$srcdir/Pianoteq 5 STAGE/$archdir/Pianoteq 5 STAGE" "$pkgdir/usr/bin/Pianoteq 5 STAGE"
-	install -Dm 755 "$srcdir/Pianoteq 5 STAGE/$archdir/Pianoteq 5 STAGE.so" "$pkgdir/usr/lib/vst/Pianoteq 5 STAGE.so"
-	cd "$srcdir/Pianoteq 5 STAGE/$archdir/Pianoteq 5 STAGE.lv2"
+	install -Dm 755 "$srcdir/Pianoteq 6 STAGE/$archdir/Pianoteq 6 STAGE" "$pkgdir/usr/bin/Pianoteq 6 STAGE"
+	install -Dm 755 "$srcdir/Pianoteq 6 STAGE/$archdir/Pianoteq 6 STAGE.so" "$pkgdir/usr/lib/vst/Pianoteq 6 STAGE.so"
+	cd "$srcdir/Pianoteq 6 STAGE/$archdir/Pianoteq 6 STAGE.lv2"
 	for i in *; do
-		install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 5 STAGE.lv2/$i"
+		install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 6 STAGE.lv2/$i"
 	done
 	cd $srcdir
 	# Install desktop launcher:
@@ -56,10 +56,10 @@ package(){
 	install -Dm 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
 	# Install the license:
 	install -d "$pkgdir/usr/share/licenses/$pkgname"
-	install -m 644 Pianoteq\ 5\ STAGE/*Licence* "$pkgdir/usr/share/licenses/$pkgname/"
+	install -m 644 Pianoteq\ 6\ STAGE/*Licence* "$pkgdir/usr/share/licenses/$pkgname/"
 	# Install the Documentation:
-  	install -D "Pianoteq 5 STAGE/README_LINUX.txt" "$pkgdir/usr/share/doc/${pkgname%-*}/README_LINUX.txt"
-  	cd "$srcdir/Pianoteq 5 STAGE/Documentation"
+  	install -D "Pianoteq 6 STAGE/README_LINUX.txt" "$pkgdir/usr/share/doc/${pkgname%-*}/README_LINUX.txt"
+  	cd "$srcdir/Pianoteq 6 STAGE/Documentation"
   	for i in *; do
     		install -D "$i" "$pkgdir/usr/share/doc/${pkgname%-*}/$i"
   	done
