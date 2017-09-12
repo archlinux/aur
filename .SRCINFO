@@ -1,0 +1,23 @@
+pkgbase = powa-web-git
+	pkgdesc = postgresql background worker web interface
+	pkgver = de4e2db
+	pkgrel = 1
+	url = https://github.com/dalibo/powa-web
+	install = powa-web-git.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	depends = postgresql
+	depends = python-psycopg2
+	depends = python-tornado
+	depends = python-sqlalchemy
+	options = !emptydirs
+	options = !libtool
+	source = git://github.com/dalibo/powa-web.git
+	md5sums = SKIP
+
+pkgname = powa-web-git
+
