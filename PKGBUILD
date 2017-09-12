@@ -159,7 +159,7 @@ validpgpkeys=(
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
+  cd "${_srcname}"
 
   ### Add upstream patch
   msg "Add upstream patch"
@@ -169,22 +169,22 @@ prepare() {
   msg "Fix naming schema in BFQ-MQ patch"
   sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = 1|g" \
       -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
-      -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
+      -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" ../"${_bfq_mq_patch}"
 
   msg "-> Apply BFQ-MQ patch"
-  patch -Np1 -i "${srcdir}/${_bfq_mq_patch}"
+  patch -Np1 -i ../"${_bfq_mq_patch}"
 
   ### Patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
   if [ -n "$_use_tentative_patches" ]; then
     msg "Apply tentative patches"
-    for p in "${srcdir}"/T000*.patch; do patch -Np1 -i "$p"; done
+    for p in ../T000*.patch; do patch -Np1 -i "$p"; done
   fi
 
   ### Patches from mailing-list
   # ML1 - [PATCH V4 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150436546704854&w=2
   if [ -n "$_use_ml1_patches" ]; then
     msg "Apply mailing-list patches 1"
-    for p in "${srcdir}"/ML1*.patch; do
+    for p in ../ML1*.patch; do
       msg " $p"
     patch -Np1 -i "$p"; done
   fi
@@ -192,7 +192,7 @@ prepare() {
   # ML2 - [PATCH] block,bfq: Disable writeback throttling: https://marc.info/?l=linux-block&m=150486424501778&w=2
   if [ -n "$_use_ml2_patches" ]; then
     msg "Apply mailing-list patches 2"
-    for p in "${srcdir}"/ML2*.patch; do
+    for p in ../ML2*.patch; do
       msg " $p"
     patch -Np1 -i "$p"; done
   fi
@@ -202,7 +202,7 @@ prepare() {
 
   ### Patch source to enable more gcc CPU optimizatons via the make nconfig
   msg "Patch source with gcc patch to enable more cpus types"
-  patch -Np1 -i "${srcdir}/${_gcc_patch}"
+  patch -Np1 -i ../"${_gcc_patch}"
 
   # Clean tree and copy ARCH config over
   make mrproper
