@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+makepkg --nobuild --skipinteg
+
+rm -rf yalpam*
+
 namcap PKGBUILD && makepkg --printsrcinfo > .SRCINFO || exit 1
 git add . || exit 1 # PKGBUILD prepare4uploadpkg.sh .SRCINFO
 git commit -am "New package on the run" || exit 1
