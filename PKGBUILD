@@ -119,12 +119,9 @@ _package() {
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
   # make room for external modules  EDIT: xanmod already has _kernelname at the end
-  #ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   ln -s "../extramodules-${_basekernel}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   # add real version for building modules and running depmod from post_install/upgrade  EDIT: xanmod already has _kernelname at the end
-  #mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
   mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}"
-  #echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
   echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}/version"
 
   # Now we call depmod...
