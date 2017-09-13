@@ -14,7 +14,8 @@ pkgdesc="Complementary wallpaper collection for the Shimmer Project Xfce themes"
 arch=("any")
 url=http://shimmerproject.org
 license=(CCPL:by-sa-3.0)
-groups=("xfce-themes-shimmer-collection")
+#groups=("xfce-themes-shimmer-collection")
+# xfce-theme-{greybird,blackbird,albatross,bluebird,orion} and elementary-xfce-icons should have this grup too
 replaces=("shimmer-wallpapers-git")
 conflicts=("shimmer-wallpapers-git")
 provides=("shimmer-wallpapers-git" "shimmer-wallpapers")
