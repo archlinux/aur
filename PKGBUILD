@@ -1,10 +1,10 @@
-# Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
 # Maintainer: guillaume alaux <guillaume at alaux dot net>
+# Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 # Contributor: xeross <contact at xeross dot me>
 # Contributor: codekoala <codekoala at gmail dot com>
 
 pkgname=etcd
-pkgver=3.2.2
+pkgver=3.2.7
 pkgrel=1
 pkgdesc='A highly-available key value store for shared configuration and service discovery.'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -13,10 +13,13 @@ license=('Apache')
 makedepends=('go')
 backup=('etc/conf.d/etcd')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/coreos/${pkgname}/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/coreos/${pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz.asc::https://github.com/coreos/${pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
          '10-EnvironmentFile.conf'
          'etcd.env')
-sha256sums=('dcbc38efb19c1a6238de01b8c2ced45209eec4f5c92239f2bc03a3c0db684e90'
+validpgpkeys=('18AD5014C99EF7E3BA5F6CE950BDD3E0FC8A365E') # CoreOS Application Signing Key <security@coreos.com>
+sha256sums=('b91a40102b944ba8e4dad439721c7068eccbc1d0cb0e7f2ded9dad134d2875ce'
+            'SKIP'
             '5c65989c7c9309e07ad1f7d886d9869e6fa326f5c6c85dea3e59da5f34e17d05'
             '14843a1bba6ca70fc60f3a5694ca47d533dae9401c5134aca85bfdbdea4098d8')
 
