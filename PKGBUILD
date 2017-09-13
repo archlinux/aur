@@ -3,8 +3,8 @@
 
 pkgname=youtube-upload-git
 _gitname=youtube-upload
-pkgver=0.8.0.r4.g072a7eb
-pkgrel=2
+pkgver=0.8.0.r148.g8c55699
+pkgrel=1
 pkgdesc="Upload videos to Youtube from the command-line."
 arch=("any")
 url="https://github.com/tokland/youtube-upload/"
