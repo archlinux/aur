@@ -60,5 +60,4 @@ package() {
 	# Remove info and make since it expected already present by host compiler
 	rm -vr "$pkgdir"/usr/share/{info,man}
 }
-}
 
