@@ -8,7 +8,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20170826
+pkgver=20170913
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -30,9 +30,7 @@ makedepends=('gettext'
              'git'
              'protobuf'
              'python-pycurl'
-             'python-setuptools'
-             'python2'
-             'python2-requests')
+             'python-setuptools')
 optdepends=('desktop-file-utils: update desktop icon'
             'gtk-update-icon-cache: update desktop icon'
             'python-amodem: air-gapped transaction signing over audio modem'
@@ -67,7 +65,7 @@ build() {
   protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
 
   msg2 'Creating translations...'
-  ./contrib/make_locale
+  python contrib/make_locale
 
   msg2 'Building...'
   python setup.py build
