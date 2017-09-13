@@ -33,3 +33,7 @@ sed -i '1s/^/# Auto generated file by makepkg --printsrcinfo > .SRCINFO\n/' .SRC
 # Debug info - comment out if not needed
 echo -e '\n\n File Conents off SRCFILE\n' # Debug info
 cat .SRCINFO # Debug info
+echo -e '\n\n Update git AUR repo'
+git add .
+git commit -m 'micro edtior - nightly update'
+git push origin master
