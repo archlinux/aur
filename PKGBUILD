@@ -2,7 +2,7 @@
 
 pkgname=php56-xdebug
 _pkgbase="${pkgname#php56-}"
-pkgver=2.5.4
+pkgver=2.5.5
 _pkgver="$(echo "${pkgver}" | tr '[:lower:]' '[:upper:]')"
 pkgrel=1
 pkgdesc="php56 debugging extension"
@@ -15,7 +15,7 @@ backup=('etc/php56/conf.d/xdebug.ini')
 provides=("${_pkgbase}=${pkgver}-${pkgrel}" "php-${_pkgbase}=${pkgver}-${pkgrel}")
 source=("https://www.xdebug.org/files/${_pkgbase}-${pkgver}.tgz"
         "xdebug.ini")
-sha512sums=('58a8041a5cf834ff072c9b4c816acf6e9885f4bdb7b3a4f1906897b1ba1ffe7c5cc3f12c1ac780612aeaa59f1e76f49032522bfa9505720234e8033f9809d2cd'
+sha512sums=('9faab421bd90c03734c047d8c6dcc021c8bc665eb36781c692f194d04c7dca24fe1eb920ca8dc407e5bf4ae0912c4b917587f940f34b07171a8881d4cf8695d1'
             '738e6939a129a557d307a1659dfdfb0a0ded783b31c6c9a85f18cfa380a13afef4386cccce5a9ad3e1afcc66a2dedbebf29fa96d91f618a76af4a4d9e504f74e')
 
 build() {
