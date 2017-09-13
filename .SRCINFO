@@ -1,7 +1,7 @@
 pkgbase = python-getdist
-	pkgdesc = Python cosmology library for plotting Bayesian Posteriors.
+	pkgdesc = MCMC sample analysis, kernel densities, plotting, and GUI
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cmbant/getdist
 	arch = any
 	makedepends = python-setuptools

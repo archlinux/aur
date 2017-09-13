@@ -1,9 +1,9 @@
-# Maintainer: Will Handley <wh260@cam.ac.uk>
+# Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=getdist
 pkgname=python-$_modulename
 pkgver=0.2.7
-pkgrel=1
-pkgdesc="Python cosmology library for plotting Bayesian Posteriors."
+pkgrel=2
+pkgdesc="MCMC sample analysis, kernel densities, plotting, and GUI"
 arch=(any)
 url="https://github.com/cmbant/getdist"
 license=()
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=('https://github.com/cmbant/getdist/archive/master.tar.gz')
+source=("${url}/archive/master.tar.gz")
 sha256sums=('7c103e8efa34959b01286b568913a839c5c1fe3c61d6c0b36bfcca2a2a8ed83a')
 
 package() {
