@@ -2,7 +2,7 @@
 # Contributor: Michael Herold
 
 pkgname=scudcloud
-pkgver=1.62
+pkgver=1.63
 pkgrel=1
 epoch=2
 pkgdesc="A Slack client for Linux"
@@ -13,7 +13,7 @@ depends=('libnotify' 'python-setuptools' 'python-dbus' 'python-gobject'
          'python-pyqt5' 'qt5-webkit')
 groups=('messaging')
 source=("https://github.com/raelgc/scudcloud/archive/v${pkgver}.tar.gz")
-sha256sums=('33b746258bae6606adda8deee8abae18844b5f0370f3915f9ec9bec9097eaa1b')
+sha256sums=('e0d1cb72115d0fda17db92d28be51558ad8fe250972683fac3086dbe8d350d22')
 
 package() {
     cd "${pkgname}-${pkgver}"
