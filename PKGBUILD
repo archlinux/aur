@@ -1,7 +1,7 @@
 # Maintainer: Jesse Bryan <jesse@winneon.moe>
 pkgname=gsu-git
 _pkgname=gsu
-pkgver=20170904.0b522da
+pkgver=20170913.9016a15
 pkgrel=1
 pkgdesc="A general screenshot and upload utility for images, video, and gifs."
 arch=("any")
@@ -11,7 +11,10 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=("maim" "ffmpeg" "curl" "jq" "bash")
 optdepends=(
-    "xclip: Copy URLs to clipboard after upload"
+    "xclip: Copy URLs to clipboard after upload."
+    "dmenu: Display a menu to select the output type from."
+    "rofi: Display a menu to select the output type from."
+    "libnotify: Display a notification when the utlity is finished."
 )
 makedepends=("git")
 source=("${pkgname}::git+https://github.com/winneon/gsu.git")
