@@ -18,19 +18,19 @@
 pkgbase="zfs-linux-hardened-git"
 pkgname=("zfs-linux-hardened-git" "zfs-linux-hardened-git-headers")
 
-pkgver=0.7.0.r68.gd9549cba9.4.13.1.a.1
+pkgver=0.7.0.r70.gb1490dd43.4.13.1.b.1
 pkgrel=1
-makedepends=("linux-hardened-headers=4.13.1.a-1" "git" "spl-linux-hardened-git-headers")
+makedepends=("linux-hardened-headers=4.13.1.b-1" "git" "spl-linux-hardened-git-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-hardened-git" "zfs-utils-common-git>=0.7.0.r68.gd9549cba9" "linux-hardened=4.13.1.a-1")
+depends=("kmod" "spl-linux-hardened-git" "zfs-utils-common-git>=0.7.0.r70.gb1490dd43" "linux-hardened=4.13.1.b-1")
 
 pkgver() {
     cd "${srcdir}/zfs"
-    echo $(git describe --long | sed 's/^zfs-//;s/\([^-]*-g\)/r\1/;s/-/./g').4.13.1.a.1
+    echo $(git describe --long | sed 's/^zfs-//;s/\([^-]*-g\)/r\1/;s/-/./g').4.13.1.b.1
 }
 
 build() {
