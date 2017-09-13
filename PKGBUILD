@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/protegeproject/protege/arch
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}.png")
-sha256sums=('92dd736e74b7f49cbb019e77897a59a492e4de9683dd27fd7cc9084bf1e05317'
+sha256sums=('abbdd07b646b42fa29b3b2c5a169b9c7fbc9caa0aa41d3d86aa0e0724ab08e12'
             '9b0a6692d04da727ba9473399c1fdf68a85c5ec680582f79b3e46642c8cceca6'
             'e0e054d864fafdee0c7a7a034b4a92fe2fe30fcce77f2aabd71afb57dbbbb0ab'
             '3ee61d8cfcbcfc91c86c9dddc24e40f9fc0e6943bf879548340610c95d64d194')
