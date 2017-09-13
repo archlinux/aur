@@ -1,5 +1,5 @@
 pkgbase = ponysay-devel-git
-	pkgdesc = Pony wrapper for cowsay. (develop branch)
+	pkgdesc = Pony reimplementation of cowsay. (develop branch)
 	pkgver = 3.0.1.git2243
 	pkgrel = 1
 	url = https://github.com/erkin/ponysay
