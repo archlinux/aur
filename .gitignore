@@ -1,0 +1,7 @@
+*.pkg.tar
+*.pkg.tar.xz
+pkg/
+src/
+*.zip
+*.tar.gz
+gradio/
