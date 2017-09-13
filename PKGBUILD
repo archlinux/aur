@@ -4,7 +4,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=deutex-git
-pkgver=5.1.0.r1.g6f2e674
+pkgver=5.1.0.r3.g0c68487
 pkgrel=1
 pkgdesc="A WAD file composer for Doom, Heretic, Hexen and Strife"
 arch=('i686' 'x86_64')
