@@ -34,10 +34,6 @@ build() {
 
 # fix placement of ossec-init.conf
 sed -i "s|^OSSEC_INIT.*|OSSEC_INIT=\"$pkgdir/etc/ossec-init.conf\"|" src/init/shared.sh
-
-cd src
-make all
-make build
 }
 
 package() {
@@ -46,9 +42,8 @@ package() {
   _preparevars
   . "$srcdir/config" # load configuration
 
-  install -d "$pkgdir/etc"
-
-  ./install.sh
+  mkdir -p $pkgdir/etc
+  USER_DIR="$pkgdir/$_instdir" ./install.sh
 
   # install systemd service unit
   install -Dm0644 "$srcdir/ossec.service" "$pkgdir/usr/lib/systemd/system/ossec.service"
