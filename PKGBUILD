@@ -1,6 +1,6 @@
 #Maintainer: metamer <metamer at openmailbox dot org>
 pkgname=infra-arcana
-pkgver=19.0
+pkgver=19.1
 pkgrel=1
 epoch=
 pkgdesc="Roguelike game inspired by H.P. Lovecraft"
