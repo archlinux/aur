@@ -1,7 +1,7 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-ffi-checklib
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 _author="P/PL/PLICEASE"
 _perlmod="FFI-CheckLib"
@@ -12,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 depends=(perl)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('90da6c1c3b6171b5f68e2936fd2a80997fe519e21a0e8136f8f5e58c7ccc26ee')
+sha256sums=('2ccad052716f87be930346e013deddd5fd9c37c813c35e0af711b60e7643e44c')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 build(){
