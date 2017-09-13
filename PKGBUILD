@@ -7,10 +7,10 @@ PKGEXT='.pkg.tar'
 
 pkgname=unity-editor-bin
 _version=5.6.2
-_build=f3
-_buildtag=2017.1.0
-_nonce=061bcf22327f
-pkgver="${_version}x${_build}+${_buildtag}"
+_build=f1
+_buildtag=2017.1.1
+_nonce=f4fc8fd4067d
+pkgver="${_version}x${_buildtag}+${_build}"
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
@@ -27,8 +27,8 @@ optdepends=('ffmpeg: for WebGL exporting'
 provides=("unity-editor=${pkgver}")
 conflicts=('unity-editor')
 options=(!strip)
-source=("http://beta.unity3d.com/download/${_nonce}/unity-editor_amd64-${_buildtag}x${_build}Linux.deb")
-sha512sums=('246e2c6e9248551f875bf5176b3206988835b86ad9e61b6f7ec1cc436615bc894bfc78fccc29bf6528d4e27a0ceee4e92a31f285616ee96ac4fb3d09137aa92b')
+source=("https://beta.unity3d.com/download/${_nonce}/unity-editor_amd64-${_buildtag}x${_build}Linux.deb")
+sha512sums=('7159943fa7aa518259b0f74cbff9cf87059be53044f00c52635ac0eda5b1a1d1d6ca7abd956dc63d3a3bd5e8c17e9a3270ff85c147c670ce84baaaebb8b9222a')
 
 prepare() {
 	if [[ "$(df . -BG --output=avail | awk -F'[^0-9]*' 'FNR==2 {print $2;}')" -le "10" ]]; then
