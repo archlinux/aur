@@ -409,7 +409,9 @@ package() {
   cd $(dirname ${_installed_dir})
   find $(basename ${_installed_dir}) -name '*.debug' -exec cp --parents '{}' ${_libsdebugpkgdir} \; -exec rm '{}' \;
 
-  mv ${_installed_dir} ${_libspkgdir}
+  if ! $_static_build; then
+    mv ${_installed_dir} ${_libspkgdir}
+  fi
 
   # set correct libs version
   sed -i "s/libspkgrel/${pkgrel}/" ${_libspkgbuild} || exit 1
