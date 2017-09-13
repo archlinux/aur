@@ -11,7 +11,7 @@ source=(http://jaxodraw.sourceforge.net/download/pkgs/jaxodraw-2.1-0-bin.tar.gz
         jaxodraw.sh
         jaxodraw.desktop)
 md5sums=('1bf230aa874cd5477be6c6f971f2ff0d'
-         '138e8e01bfae0a05839ca7711d16ae2c'
+         '78d174b502565bc224391d31936bf2bd'
          '7c8e9103245168849d67e4bfac9246be')
 
 package() {
