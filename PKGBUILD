@@ -5,8 +5,8 @@
 
 # Maintainer: Peter <craven@gmx.net>
 pkgname=larceny
-pkgver=0.99
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="Larceny is a simple and efficient implementation of the Scheme programming language."
 arch=(i686 x86_64)
 url="http://www.larcenists.org/index.html"
@@ -24,7 +24,7 @@ options=()
 install=
 changelog=
 source=("http://www.larcenists.org/LarcenyReleases/${pkgname}-${pkgver}-bin-native-ia32-linux86.tar.gz")
-md5sums=('5f7174779bde807e452243f7d46f77d2')
+md5sums=('caedf0d8cce195e83a192ffd26f3048e')
 noextract=()
 validpgpkeys=()
 
@@ -42,3 +42,4 @@ package() {
   cp --preserve=timestamps -R lib ${pkgdir}/usr/share/larceny/
   cp --preserve=timestamps -R doc ${pkgdir}/usr/share/larceny/
 }
+
