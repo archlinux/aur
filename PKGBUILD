@@ -1,7 +1,7 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-shell-guess
-pkgver=0.06
+pkgver=0.07
 pkgrel=1
 _author="P/PL/PLICEASE"
 _perlmod="Shell-Guess"
@@ -44,4 +44,4 @@ package(){
   fi
 }
 
-sha256sums=('4758c98affcade0d8f3882f8c2a9ee671bf1eef72f1025796cff939f7e93be23')
+sha256sums=('9ac1de8ee1bd3d37de698766046c99b967e6b23ae72d5b1aa32a52d0f0698909')
