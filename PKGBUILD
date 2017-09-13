@@ -34,7 +34,13 @@ sha256sums=('5ff75116b8f763fa0fb5621af80fc6fb3ea0f1b1a57520874982f03f26cd607f'
             '4df866dcfd528835393d2b6897651158faf6d84852158fbf2e4ffc113ec7d201')
 PKGEXT='.pkg.tar.gz'
 
+if [ -n "${_snapshot:-}" ]; then
+  _basedir="gcc-${_snapshot}"
+else
   _basedir="gcc-${pkgver}"
+fi
+
+#_libdir="usr/lib/gcc/${CHOST}/${pkgver}"
 
 prepare() {
   set -u
@@ -49,6 +55,9 @@ prepare() {
   patch -Np0 -i "${srcdir}/gcc-hash-style-both.patch"
 
   patch -Np1 -i "${srcdir}/siginfo_t_fix.patch"
+
+  sed -e 's:\bstruct ucontext\b:ucontext_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct ucontext\b')
+  sed -e 's:\bstruct sigaltstack\b:stack_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct sigaltstack\b')
 
   case "${CARCH}" in
   'x86_64') patch -Np1 -i '../gcc_pure64.patch';;
@@ -66,9 +75,9 @@ prepare() {
 
 build() {
   set -u
-  cd "${_basedir}/gcc-build"
+  if [ ! -s "${_basedir}/gcc-build/Makefile" ]; then
+    cd "${_basedir}"
 
-  if [ ! -s 'Makefile' ]; then
     # Doesn't like FORTIFY_SOURCE
     CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
 
@@ -88,6 +97,7 @@ build() {
     CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
     CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
 
+    cd 'gcc-build'
     # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
     ../configure \
       --build="${CHOST}" \
@@ -116,7 +126,8 @@ build() {
   fi
 
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  nice make -s -j "${_nproc}"
+  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
+  nice make -j "${_nproc}"
   set +u
 }
 
@@ -124,7 +135,8 @@ package() {
   set -u
   cd "${_basedir}/gcc-build"
 
-  make -s -j1 DESTDIR="${pkgdir}" install
+  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
+  make -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
   rm -rf "${pkgdir}/usr/share/man/man7"
