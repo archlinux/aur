@@ -3,7 +3,7 @@
 
 pkgname='perl-authen-cas-client'
 pkgver='0.08'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Provides an easy-to-use interface for authentication using JA-SIG's Central Authentication Service"
 arch=('any')
 license=('PerlArtistic' 'GPL')
