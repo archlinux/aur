@@ -3,7 +3,7 @@
 pkgname=fedora-icon-theme
 pkgver=1.0.0
 _pkgver=1.0.0-21.fc27
-pkgrel=4
+pkgrel=5
 pkgdesc="Set of icons based from Fedora and RedHat"
 arch=("any")
 url="http://www.redhat.com/"

@@ -1,7 +1,7 @@
 pkgbase = fedora-icon-theme
 	pkgdesc = Set of icons based from Fedora and RedHat
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.redhat.com/
 	arch = any
 	license = GPL3
