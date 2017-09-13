@@ -7,7 +7,7 @@
 
 pkgname=mpv-full-git
 pkgver=0.26.0.r134.g7397e8ab42
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -79,7 +79,6 @@ build() {
         --disable-test \
         --disable-clang-database \
         \
-        --disable-android \
         --disable-uwp \
         --disable-win32-internal-pthreads \
         --enable-iconv \
