@@ -1,6 +1,6 @@
 # Maintainer: Basil Schneider <basil dot schneider at cern dot ch>
 pkgname=lpadmincern
-pkgver=1.3.17   # 1.3.17-2.slc6 (published 2016-05-04)
+pkgver=1.3.18   # 1.3.18-1.slc6 (published 2016-11-02)
 pkgrel=1
 pkgdesc="CERN LDAP printer database client"
 url="https://printservice.web.cern.ch/printservice/"
@@ -13,8 +13,8 @@ conflicts=()
 replaces=()
 backup=()
 #install=()
-source=("http://ftp.riken.jp/Linux/cern/slc6X/updates/SRPMS/lpadmincern-1.3.17-2.slc6.src.rpm")
-md5sums=('5f5be4fa850876a18257b82dd376199e')
+source=("http://ftp.riken.jp/Linux/cern/slc60beta/x86_64/updates/SRPMS/lpadmincern-1.3.18-1.slc6.src.rpm")
+md5sums=('0665c14243091dd0ca017ff0bfba8fe3')
 
 build() {
   msg2 "Unpacking"
