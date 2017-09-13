@@ -68,7 +68,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.13.1
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -159,7 +159,7 @@ validpgpkeys=(
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  cd "${_srcname}"
+  cd ${_srcname}
 
   ### Add upstream patch
   msg "Add upstream patch"
@@ -169,10 +169,10 @@ prepare() {
   msg "Fix naming schema in BFQ-MQ patch"
   sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = 1|g" \
       -i -e "s|EXTRAVERSION = -bfq|EXTRAVERSION =|g" \
-      -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" ../"${_bfq_mq_patch}"
+      -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" ../${_bfq_mq_patch}
 
   msg "-> Apply BFQ-MQ patch"
-  patch -Np1 -i ../"${_bfq_mq_patch}"
+  patch -Np1 -i ../${_bfq_mq_patch}
 
   ### Patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
   if [ -n "$_use_tentative_patches" ]; then
@@ -202,7 +202,7 @@ prepare() {
 
   ### Patch source to enable more gcc CPU optimizatons via the make nconfig
   msg "Patch source with gcc patch to enable more cpus types"
-  patch -Np1 -i ../"${_gcc_patch}"
+  patch -Np1 -i ../${_gcc_patch}
 
   # Clean tree and copy ARCH config over
   make mrproper
@@ -333,7 +333,7 @@ prepare() {
 }
 
 build() {
-  cd "${_srcname}"
+  cd ${_srcname}
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
@@ -346,7 +346,7 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-  cd "${_srcname}"
+  cd ${_srcname}
 
   KARCH=x86
 
@@ -441,7 +441,7 @@ _package-headers() {
   find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
 
   # add objtool for external module building and enabled VALIDATION_STACK option
-  if [[ -e tools/objtools/objtool ]]; then
+  if [[ -e tools/objtool/objtool ]]; then
     install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
   fi
 
