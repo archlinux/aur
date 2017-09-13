@@ -1,6 +1,6 @@
 pkgbase = arc-kde-git
 	pkgver = 20170912.r8.g37b8800
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/PapirusDevelopmentTeam/arc-kde
 	arch = any
@@ -28,34 +28,34 @@ pkgname = arc-kde-git
 pkgname = arc-kde-wallpapers-git
 	pkgdesc = Arc KDE wallpapers
 	provides = arc-kde-wallpapers
-	conflicts = 
+	conflicts = arc-kde-wallpapers
 	conflicts = arc-kde-git<2:
 
 pkgname = kvantum-theme-arc-git
 	pkgdesc = Arc theme for Kvantum
 	depends = kvantum-qt5
 	provides = kvantum-theme-arc
-	conflicts = 
+	conflicts = kvantum-theme-arc
 	conflicts = arc-kde-git<2:
 
 pkgname = konsole-colorscheme-arc-git
 	pkgdesc = Arc theme for Konsole
 	depends = konsole
 	provides = konsole-colorscheme-arc
-	conflicts = 
+	conflicts = konsole-colorscheme-arc
 	conflicts = arc-kde<2:
 
 pkgname = yakuake-skin-arc-git
 	pkgdesc = Arc theme for Yakuake
 	depends = yakuake
 	provides = yakuake-skin-arc
-	conflicts = 
+	conflicts = yakuake-skin-arc
 	conflicts = arc-kde<2:
 
 pkgname = konversation-theme-arc-git
 	pkgdesc = Arc theme for Konversation
 	depends = konversation
 	provides = konversation-theme-arc
-	conflicts = 
+	conflicts = konversation-theme-arc
 	conflicts = arc-kde-git<2:
 
