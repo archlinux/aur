@@ -23,7 +23,7 @@ _protobuf_version='3.1.0' # commit 'a428e42072765993ff674fda72863c9f1aa2d268' is
 
 pkgname=caffe2
 pkgver=0.8.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -176,9 +176,6 @@ build() {
         -DCUDNN_ROOT_DIR:PATH='/opt/cuda' \
         \
         -DGLOO_STATIC_OR_SHARED:STRING='STATIC' \
-        -DNCCL_INCLUDE_DIR:PATH='/opt/cuda/include' \
-        -DNCCL_LIBRARY:FILEPATH='/opt/cuda/lib64/libnccl.so' \
-        -DNCCL_ROOT_DIR:PATH='/opt/cuda' \
         \
         -DOpenCV_DIR:PATH='/usr/share/OpenCV' \
         \
@@ -190,7 +187,7 @@ build() {
         -DUSE_CUDA:BOOL='ON' \
         -DUSE_GFLAGS:BOOL='ON' \
         -DUSE_GLOG:BOOL='ON' \
-        -DUSE_GLOO:BOOL='ON' \
+        -DUSE_GLOO:BOOL='OFF' \
         -DUSE_LEVELDB:BOOL='ON' \
         -DUSE_LITE_PROTO:BOOL='OFF' \
         -DUSE_LMDB:BOOL='ON' \
