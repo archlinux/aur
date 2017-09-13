@@ -1,7 +1,7 @@
 pkgbase = slop-git
 	pkgdesc = slop (Select Operation) is an application that queries for a selection from the user and prints the region to stdout.
 	pkgver = v7.3.49.r1.gd7c12dd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/naelstrof/slop
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = slop-git
 	depends = libx11
 	depends = mesa
 	depends = libxrender
+	provides = slop
 	conflicts = slop
 	source = slop::git+https://github.com/naelstrof/slop.git
 	md5sums = SKIP

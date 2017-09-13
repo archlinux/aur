@@ -1,9 +1,10 @@
 # Maintainer: naelstrof <naelstrof@gmail.com>
 pkgname=slop-git
 _realname=slop
-pkgver=v5.3.27.r0.g38d4f6c
-pkgrel=1
+pkgver=v7.3.49.r1.gd7c12dd
+pkgrel=2
 conflicts=( 'slop' )
+provides=( 'slop' )
 pkgdesc="slop (Select Operation) is an application that queries for a selection from the user and prints the region to stdout."
 arch=( 'i686' 'x86_64' )
 url="https://github.com/naelstrof/$_realname"
