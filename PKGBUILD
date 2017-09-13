@@ -164,7 +164,17 @@ _source_package_name=${_qt_package_name_prefix}-${_pkgver}
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
 
-$_static_build || _additional_configure_flags="$_additional_configure_flags -hostprefix ${_installprefix}"
+if $_static_build; then
+ _additional_configure_flags="$_additional_configure_flags -no-ico"
+else
+ _additional_configure_flags="$_additional_configure_flags \
+                                -hostprefix ${_installprefix} \
+                                -fontconfig \
+                                -system-sqlite \
+                                -system-freetype \
+                                -system-harfbuzz \
+                                "
+fi
 
 pkgdesc="Qt SDK for the Raspberry Pi 1/2/3"
 arch=("x86_64")
@@ -197,10 +207,6 @@ _core_configure_options="\
                  -v \
                  -silent \
                  -release \
-                 -fontconfig \
-                 -system-sqlite \
-                 -system-freetype \
-                 -system-harfbuzz \
                  -pch \
                  -opengl es2 \
                  -egl \
