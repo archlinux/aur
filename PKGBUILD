@@ -1,7 +1,7 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=jaxodraw
 pkgver=2.1_0
-pkgrel=1
+pkgrel=2
 pkgdesc="A particle physics program for drawing Feynman diagrams."
 arch=(any)
 url="http://jaxodraw.sourceforge.net/"
