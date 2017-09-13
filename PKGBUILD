@@ -1,55 +1,67 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
-# Contributor : Stein Krauz <steinkrauz@yahoo.com>
+# Maintainer:  twa022 <twa022 at gmail dot com>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Stein Krauz <steinkrauz@yahoo.com>
 # Contributor: Jan Jezek <honzin.jezek@gmail.com>
 # Contributor: Skunnyk <skunnyk@archlinux.fr>
-# Contributor : Pablo Lezaeta <prflr88@gmail.com>
+# Contributor: Pablo Lezaeta <prflr88@gmail.com>
 
 _pkgname=squeeze
-_pkgbasever=0.4.90git
-pkgname=squeeze-git
-pkgver=0.4.90git.r1039.41aea82
+pkgname=${_pkgname}-git
+epoch=1
+pkgver=0.4.90.r460.gdc87aa3
 pkgrel=1
-pkgdesc="Squeeze is  a modern and advanced archive manager for the Xfce Desktop Environment"
-arch=(i686 x86_64)
+pkgdesc="Archive manager for the Xfce Desktop Environment (git checkout)"
+arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://www.xfce.org/"
-groups=('xfce4-git')
-makedepends=('git' 'xfce4-dev-tools' 'pkgconfig' 'gtk-doc' 'intltool' 'xfconf')
-depends=('libxfce4util' 'hicolor-icon-theme' 'dbus-glib' 'gtk2' 'gtk3' 'desktop-file-utils')
-optdepends=(
-	'lzop: .tar.lzo handling'
-	'xz: tar.xz handling'
-)
-conflicts=('squeeze')
-provides=("squeeze" "squeeze-git")
+makedepends=('git' 'xfce4-dev-tools' 'gtk-doc' 'intltool')
+depends=('gtk2' 'libxfce4util' 'dbus-glib')
+optdepends=('lzop: Compress/Decompress LZOP archives'
+            'xz: Compress/Decompress XZ archives')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%.r*}")
 options=('!libtool')
-install=squeeze.install
-#branch=("stephan/new-ui")
-_branch=("master")
-source=(git+git://git.xfce.org/apps/squeeze#branch=$_branch)
+source=("${_pkgname}::git://git.xfce.org/apps/squeeze")
 sha256sums=('SKIP')
 
 pkgver(){
-  cd $srcdir/$_pkgname
-  #echo "$_pkgbasever.$(git rev-parse --short HEAD)"
-   printf "%s.r%s.%s" $_pkgbasever "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_pkgname}"
+  _p=$( git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/([^-]*-g)/r\1/;s/-/./g" )
+  _maj=$( grep -m 1 squeeze_version_major configure.in.in | sed 's:.*\[\([0-9]*\)\].*:\1:' )
+  _min=$( grep -m 1 squeeze_version_minor configure.in.in | sed 's:.*\[\([0-9]*\)\].*:\1:' )
+  _mic=$( grep -m 1 squeeze_version_micro configure.in.in | sed 's:.*\[\([0-9]*\)\].*:\1:' )
+  echo "${_maj}.${_min}.${_mic}${_p/*\.r/.r}"
 }
 
+prepare() {
+  cd "${_pkgname}"
+  # Doesn't seem like anything really uses xfconf
+  sed -i '/XDT_CHECK_PACKAGE(\[XFCONF\]/d' configure.in.in
+  sed -i '/$(XFCONF_LIBS)/d' src/Makefile.am squeeze-cli/Makefile.am
+  
+  [ ! -d m4 ] && mkdir m4
+}
+  
 
 build(){
-  cd $srcdir/$_pkgname
+  cd "${_pkgname}"
 
-  mkdir -p m4
-
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/$_pkgname \
-  --localstatedir=/var --bindir=/usr/bin --sbindir=/usr/bin \
-  --libdir=/usr/lib --disable-debug
+  mv configure.in.in configure.ac.in
+  ./autogen.sh \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib/xfce4 \
+    --localstatedir=/var \
+    --bindir=/usr/bin \
+    --libdir=/usr/lib \
+    --disable-debug
 
   make
 }
 
 package() {
-	cd $srcdir/$_pkgname
-	make DESTDIR=$pkgdir sbindir=/usr/bin install
+  cd "${_pkgname}"
+
+  make DESTDIR=$pkgdir install
 }
 
