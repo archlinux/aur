@@ -1,8 +1,8 @@
-# Maintainer: Will Handley <wh260@cam.ac.uk>
+# Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=taskwiki
 pkgname=vim-$_modulename
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Proper project management in vim. Standing on the shoulders of vimwiki and Taskwarrior"
 arch=(any)
 url="https://github.com/tbabej/taskwiki"
