@@ -6,7 +6,7 @@ pkgbase = fedora-icon-theme
 	arch = any
 	license = GPL3
 	makedepends = intltool
-	depends = gnome-icon-theme
+	depends = mist-icon-theme
 	source = http://rpmfind.net/linux/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/fedora-icon-theme-1.0.0-21.fc27.src.rpm
 	sha256sums = a0c4b6a8b8c7399cc5bce93e1dc460c6905056e04fa8d59c403c20013595ad7f
 
