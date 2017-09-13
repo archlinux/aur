@@ -1,39 +1,51 @@
-# See AUR interface to contact current maintainer.
+# Contributor: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
-_author=PJACKLAM
-_perlmod=Math-BigInt
-pkgname=perl-math-bigint
-pkgver=1.999808
-pkgrel=1
-pkgdesc="Big integer calculations using the GNU Multiple Precision Arithmetic Library."
+pkgname='perl-math-bigint'
+pkgver='1.999811'
+pkgrel='1'
+pkgdesc="Math::BigInt - Arbitrary size integer/float math package"
 arch=('any')
-url="http://search.cpan.org/~$_author/$_perlmod-$pkgver/"
-license=('GPL' 'PerlArtistic')
-depends=('perl>=5.20.0')
-provides=('perl-math-bigfloat' 'perl-math-bigint-calc' 'perl-math-bigint-calcemu')
-options=(!emptydirs)
-source=(http://cpan.perl.org/modules/by-authors/id/P/PJ/$_author/$_perlmod-$pkgver.tar.gz)
-sha256sums=('279e7311f4ac0a00a61ffca2c3c508ba39a71b7510b4112af60979cf36d583c6')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl>=5.6.1')
+makedepends=()
+provides=('perl-math-bigfloat' 'perl-math-bigint-calc' 'perl-math-bigint-calcemu' 'perl-math-bigint-lib')
 
+url='https://metacpan.org/release/Math-BigInt'
+source=("https://cpan.metacpan.org/authors/id/P/PJ/PJACKLAM/Math-BigInt-$pkgver.tar.gz")
+md5sums=('95116cb6c22359f4d5d64abde083376d')
+sha512sums=('2b9e524911c04cc0396702deae9f87091d075ce815ec3687f2071eb94f33f01f4a47ec28f57711083cfc3ce77f419c348dfce2866a567f054ab77ee4fc7f494f')
+_distdir="Math-BigInt-$pkgver"
 
 build() {
-  cd "$srcdir/$_perlmod-$pkgver"
-  # Install module in vendor directories.
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
 }
 
 check() {
-  cd "$srcdir/$_perlmod-$pkgver"
-  make test
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
 }
 
 package() {
-  cd "$srcdir/$_perlmod-$pkgver"
-  make install DESTDIR="$pkgdir/"
-
-  find ${pkgdir} -name '.packlist' -delete
-  find ${pkgdir} -name '*.pod' -delete
+  cd "$srcdir/$_distdir"
+  make install
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
-# vim:set ts=2 sw=2 et ft=sh:
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
