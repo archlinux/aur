@@ -26,13 +26,23 @@ source=(
   "ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
   'gcc-4.9-fix-build-with-gcc-6.patch'
   'gcc.texi.49.patch'
+  '0000-gcc-4.8.ucontext.patch'
+  '0001-gcc-4.8-SIGSEGV.patch'
+  '0002-gcc-4.8-__res_state.patch'
 )
 sha256sums=('22fb1e7e0f68a63cee631d85b20461d1ea6bda162f03096350e38c8d427ecf23'
             'd775a053fad367f5490111038fde7c875b4e842919d2d197f95b915e1ae562a9'
-            '93b8865cb61f455df807de90f852dc488753d4309d7a1d8f7e7f1a4efe37ffa4')
+            '9f8c50a715a921d3d2c9d5809ac9592ca66f682b2cc496606ff6eb4de79d46b6'
+            '5724ec27e31db32ed863871bc904f0f9cd7f41fe85f45269249ea0fa6ff2a576'
+            'e993f694c175d913c7bb6dd867ab0cdd9d81374e89de9b85151aa022b61bf3ef'
+            'a465907ce3989f2763ac022afedd8b0200c012499e24fa1748412cd1c28b11ea')
 PKGEXT='.pkg.tar.gz'
 
+if [ -n "${_snapshot:-}" ]; then
+  _basedir="gcc-${_snapshot}"
+else
   _basedir="gcc-${pkgver}"
+fi
 
 #_libdir="usr/lib/gcc/${CHOST}/${pkgver}"
 
@@ -44,10 +54,27 @@ prepare() {
   sed -e 's@\./fixinc\.sh@-c true@' -i 'gcc/Makefile.in'
 
   # fix build with GCC 6
-  patch -p1 < "${srcdir}/gcc-4.9-fix-build-with-gcc-6.patch"
+  patch -Nup1 < "${srcdir}/gcc-4.9-fix-build-with-gcc-6.patch"
 
   # Update gcc.texi to gcc49 version, needed as of texinfo>=6.3 and possibly texinfo=6.2
-  patch -p0 -c < "${srcdir}/gcc.texi.49.patch"
+  # diff -pNau5 gcc/doc/gcc.texi{,.49} > 'gcc.texi.49.patch'
+  patch -Nup0 < "${srcdir}/gcc.texi.49.patch"
+
+  # fix build with glibc 2.26
+  #diff -pNau5 libsanitizer/tsan/tsan_interceptors.cc{.orig,} > '../0000-gcc-4.8.ucontext.patch'
+  patch -Nbup0 -i "${srcdir}/0000-gcc-4.8.ucontext.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41921
+  #diff -pNau5 libsanitizer/asan/asan_linux.cc{.orig,} > '../0001-gcc-4.8-SIGSEGV.patch'
+  patch -Nbup0 -i "${srcdir}/0001-gcc-4.8-SIGSEGV.patch"
+  #diff -pNau5 libsanitizer/tsan/tsan_platform_linux.cc{.orig,} > '../0002-gcc-4.8-__res_state.patch'
+  patch -Nbup0 -i "${srcdir}/0002-gcc-4.8-__res_state.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41922
+  sed -e 's:\bstruct ucontext\b:ucontext_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct ucontext\b')
+  sed -e 's:\bstruct sigaltstack\b:stack_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct sigaltstack\b')
+  sed -e '/^struct ucontext_t/,/^};/ d' -i 'libsanitizer/tsan/tsan_interceptors.cc'
+  if grep -e '^struct ucontext_t' 'libsanitizer/tsan/tsan_interceptors.cc'; then
+    set +u
+    echo 'Failed to remove ^struct ucontext_t'
+    false
+  fi
 
   # Arch Linux installs x86_64 libraries /lib
   case "${CARCH}" in
@@ -63,37 +90,37 @@ prepare() {
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=56780#c6
   sed -e 's#@target_header_dir@#libiberty#' -i 'libiberty/Makefile.in'
 
-  # Doesn't like FORTIFY_SOURCE
-  export CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
-
-  # Doesn't like -fstack-protector-strong
-  export CFLAGS="${CFLAGS//-fstack-protector-strong/-fstack-protector}"
-  export CXXFLAGS="${CXXFLAGS//-fstack-protector-strong/-fstack-protector}"
-
-  # using -pipe causes spurious test-suite failures
-  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-  export CFLAGS="${CFLAGS/-pipe/}"
-  export CXXFLAGS="${CXXFLAGS/-pipe/}"
-
-  # Flags from new compilers that old compilers don't recognize
-  export CFLAGS="${CFLAGS/-fno-plt/}"
-  export CXXFLAGS="${CXXFLAGS/-fno-plt/}"
-
-  export CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
-  export CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
-
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
-  cd 'gcc-build'
 
   set +u
 }
 
 build() {
   set -u
-  cd "${_basedir}/gcc-build"
+  if [ ! -s "${_basedir}/gcc-build/Makefile" ]; then
+    cd "${_basedir}"
 
-  if [ ! -s 'Makefile' ]; then
+    # Doesn't like FORTIFY_SOURCE
+    CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
+
+    # Doesn't like -fstack-protector-strong
+    CFLAGS="${CFLAGS//-fstack-protector-strong/-fstack-protector}"
+    CXXFLAGS="${CXXFLAGS//-fstack-protector-strong/-fstack-protector}"
+
+    # using -pipe causes spurious test-suite failures
+    # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
+    CFLAGS="${CFLAGS/-pipe/}"
+    CXXFLAGS="${CXXFLAGS/-pipe/}"
+
+    # Flags from new compilers that old compilers don't recognize
+    CFLAGS="${CFLAGS/-fno-plt/}"
+    CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
+    CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
+    CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
+
+    cd 'gcc-build'
     # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
     ../configure \
       --build="${CHOST}" \
@@ -128,9 +155,10 @@ build() {
 #      CXX='g++-4.9' CC='gcc-4.9'
   fi
 
+  cd "${srcdir}/${_basedir}/gcc-build"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  nice make -j "${_nproc}" # -s
+  LD_PRELOAD='/usr/lib/libstdc++.so' \
+  nice make -j "${_nproc}"
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
@@ -146,7 +174,7 @@ _fn_check() {
   ulimit -s 32768
 
   # do not abort on error as some are "expected"
-  make -k check || :
+  make -j1 -k check || :
   "${srcdir}/${_basedir}/contrib/test_summary"
   set +u
 }
@@ -155,8 +183,8 @@ package() {
   set -u
   cd "${_basedir}/gcc-build"
 
-  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  make -s -j1 DESTDIR="${pkgdir}" install
+  LD_PRELOAD='/usr/lib/libstdc++.so' \
+  make -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
   rm -rf "${pkgdir}/usr"/{share,include}/

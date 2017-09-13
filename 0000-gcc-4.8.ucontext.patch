@@ -1,0 +1,37 @@
+--- libsanitizer/tsan/tsan_interceptors.cc.orig	2013-02-13 05:46:01.000000000 -0500
++++ libsanitizer/tsan/tsan_interceptors.cc	2017-09-13 02:02:06.696946391 -0400
+@@ -19,26 +19,27 @@
+ #include "tsan_interface.h"
+ #include "tsan_platform.h"
+ #include "tsan_rtl.h"
+ #include "tsan_mman.h"
+ #include "tsan_fd.h"
++#include <sys/ucontext.h>
+ 
+ using namespace __tsan;  // NOLINT
+ 
+ const int kSigCount = 128;
+ 
+ struct my_siginfo_t {
+   int opaque[128];
+ };
+ 
+-struct sigset_t {
+-  u64 val[1024 / 8 / sizeof(u64)];
+-};
+-
+-struct ucontext_t {
+-  uptr opaque[117];
+-};
++//struct sigset_t {
++//  u64 val[1024 / 8 / sizeof(u64)];
++//};
++
++//struct ucontext_t {
++//  uptr opaque[117];
++//};
+ 
+ extern "C" int pthread_attr_init(void *attr);
+ extern "C" int pthread_attr_destroy(void *attr);
+ extern "C" int pthread_attr_getdetachstate(void *attr, int *v);
+ extern "C" int pthread_attr_setstacksize(void *attr, uptr stacksize);
