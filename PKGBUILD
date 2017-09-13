@@ -2,8 +2,8 @@
 
 _pkgname=nixnote
 pkgname=nixnote2
-pkgver=2.0
-pkgrel=5
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Evernote clone (formerly Nevernote)"
 url="http://www.nixnote.org"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ makedepends=('boost' 'opencv' 'hunspell')
 optdepends=('opencv:   Webcam plugin'
             'hunspell: Spell check plugin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/baumgarr/nixnote2/archive/v${pkgver}.tar.gz")
-sha256sums=('15016caf90bfe09d44fcac4fa4039756eb7efbaf8469505373577f846ee67dcc')
+sha256sums=('b214aa8a76277fb3c0762a654f227db12216f32f69b9de688f0d8cecc4aaddad')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
