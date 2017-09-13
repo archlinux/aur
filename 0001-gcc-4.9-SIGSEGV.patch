@@ -1,0 +1,14 @@
+--- libsanitizer/asan/asan_linux.cc.orig	2013-12-05 04:18:38.000000000 -0500
++++ libsanitizer/asan/asan_linux.cc	2017-09-12 18:59:45.310819390 -0400
+@@ -27,10 +27,11 @@
+ #include <fcntl.h>
+ #include <pthread.h>
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <unwind.h>
++#include <signal.h>
+ 
+ #if !SANITIZER_ANDROID
+ // FIXME: where to get ucontext on Android?
+ #include <sys/ucontext.h>
+ #endif

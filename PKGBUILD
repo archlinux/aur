@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Felix Schindler <felix at schindlerfaimly dot de>
 # Contributor: Ruben Van Boxem <vanboxem.ruben@gmail.com>
@@ -15,7 +14,7 @@ pkgname="gcc${_pkgver//\./}-multilib"
 pkgver="${_pkgver}.4"
 _islver='0.12.2'
 _cloogver='0.18.1'
-pkgrel='1'
+pkgrel='2'
 #_snapshot=4.9-20150304
 pkgdesc="The GNU Compiler Collection for multilib (${_pkgver}.x)"
 arch=('x86_64')
@@ -33,12 +32,18 @@ source=(
   #ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
   "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
-  "gcc-4.9-fix-build-with-gcc-6.patch"
+  'gcc-4.9-fix-build-with-gcc-6.patch'
+  '0000-gcc-6.4.ucontext.patch'
+  '0001-gcc-4.9-SIGSEGV.patch'
+  '0002-gcc-7.2-__res_state.patch'
 )
 sha256sums=('6c11d292cd01b294f9f84c9a59c230d80e9e4a47e5c6355f046bb36d4f358092'
             'f4b3dbee9712850006e44f0db2103441ab3d13b406f77996d1df19ee89d11fb4'
             '02500a4edd14875f94fe84cbeda4290425cb0c1c2474c6f75d75a303d64b4196'
-            'd775a053fad367f5490111038fde7c875b4e842919d2d197f95b915e1ae562a9')
+            'd775a053fad367f5490111038fde7c875b4e842919d2d197f95b915e1ae562a9'
+            '44ea987c9ee1ab3234f20eca51f8d6c68910b579e63ec58ff7a0dde38093f6ba'
+            'eb59578cbf32da94d7a11fabf83950c580f0f6fb58f893426d6a258b7e44351e'
+            '9ce8a94aad61a26839687734b48f0628e610663cd0d5ad9edfc6e571cf294bac')
 PKGEXT='.pkg.tar.gz'
 
 if [ -n "${_snapshot:-}" ]; then
@@ -58,90 +63,109 @@ prepare() {
   ln -s "../cloog-${_cloogver}" 'cloog'
 
   # Do not run fixincludes
-  sed -i -e 's@\./fixinc\.sh@-c true@' 'gcc/Makefile.in'
+  sed -e 's@\./fixinc\.sh@-c true@' -i 'gcc/Makefile.in'
 
   # fix build with GCC 6
   #patch -p1 < "${srcdir}/gcc-4.9-fix-build-with-gcc-6.patch"
 
+  # fix build with glibc 2.26
+  #diff -pNau5 libsanitizer/sanitizer_common/sanitizer_linux.h{.orig,} > '../0000-gcc-6.4.ucontext.patch'
+  patch -Nbup0 -i "${srcdir}/0000-gcc-6.4.ucontext.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41921
+  #diff -pNau5 libsanitizer/asan/asan_linux.cc{.orig,} > '../0001-gcc-4.9-SIGSEGV.patch'
+  patch -Nbup0 -i "${srcdir}/0001-gcc-4.9-SIGSEGV.patch"
+  #diff -pNau5 libsanitizer/tsan/tsan_platform_linux.cc{.orig,} > '../0002-gcc-7.2-__res_state.patch'
+  patch -Nbup0 -i "${srcdir}/0002-gcc-7.2-__res_state.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41922
+  sed -e 's:\bstruct ucontext\b:ucontext_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct ucontext\b')
+  sed -e 's:\bstruct sigaltstack\b:stack_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct sigaltstack\b')
+  sed -e '/^struct ucontext_t/,/^};/ d' -i 'libsanitizer/tsan/tsan_interceptors.cc'
+  if grep -e '^struct ucontext_t' 'libsanitizer/tsan/tsan_interceptors.cc'; then
+    set +u
+    echo 'Failed to remove ^struct ucontext_t'
+    false
+  fi
+
   # Arch Linux installs x86_64 libraries /lib
   case "${CARCH}" in
-  'x86_64') sed -i -e '/m64=/s/lib64/lib/' 'gcc/config/i386/t-linux64' ;;
+  'x86_64') sed -e '/m64=/ s/lib64/lib/' -i 'gcc/config/i386/t-linux64' ;;
   esac
 
   echo "${pkgver}" > 'gcc/BASE-VER'
 
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i -e '/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/' {libiberty,gcc}/configure
-
-  # Doesn't like FORTIFY_SOURCE
-  export CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
-
-  # Doesn't like -fstack-protector-strong
-  export CFLAGS="${CFLAGS//-fstack-protector-strong/-fstack-protector}"
-  export CXXFLAGS="${CXXFLAGS//-fstack-protector-strong/-fstack-protector}"
-
-  # using -pipe causes spurious test-suite failures
-  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-  export CFLAGS="${CFLAGS/-pipe/}"
-  export CXXFLAGS="${CXXFLAGS/-pipe/}"
-
-  # Flags from new compilers that old compilers don't recognize
-  export CFLAGS="${CFLAGS/-fno-plt/}"
-  export CXXFLAGS="${CXXFLAGS/-fno-plt/}"
-
-  export CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
-  export CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
-
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
-  cd 'gcc-build'
 
-  # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
-  ../configure \
-    --build="${CHOST}" \
-    --disable-libssp \
-    --disable-libstdcxx-pch \
-    --disable-libunwind-exceptions \
-    --enable-multilib \
-    --disable-werror \
-    --enable-__cxa_atexit \
-    --enable-checking='release' \
-    --enable-clocale='gnu' \
-    --enable-cloog-backend='isl' \
-    --enable-gnu-unique-object \
-    --enable-install-libiberty \
-    --enable-languages='c,c++,fortran,go,lto,objc,obj-c++' \
-    --enable-linker-build-id \
-    --enable-lto \
-    --enable-plugin \
-    --enable-shared \
-    --enable-threads='posix' \
-    --enable-version-specific-runtime-libs \
-    --infodir='/usr/share/info' \
-    --libdir='/usr/lib' \
-    --libexecdir='/usr/lib' \
-    --mandir='/usr/share/man' \
-    --program-suffix="-${_pkgver}" \
-    --with-bugurl='https://bugs.archlinux.org/' \
-    --with-linker-hash-style='gnu' \
-    --with-system-zlib \
-    --prefix='/usr'
-#    CXX='g++-4.9' CC='gcc-4.9'
-
-# gcc-5.0 changes
-#      --with-default-libstdcxx-abi=c++98    - before gcc-5.0 c++ rebuild
-#      --enable-gnu-indirect-function
-#      --with-isl    - cloog no longer needed
   set +u
 }
 
 build() {
   set -u
-  cd "${_basedir}/gcc-build"
+  if [ ! -s "${_basedir}/gcc-build/Makefile" ]; then
+    cd "${_basedir}"
+    # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
+    sed -e '/^ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
 
+    # Doesn't like FORTIFY_SOURCE
+    CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
+
+    # Doesn't like -fstack-protector-strong
+    CFLAGS="${CFLAGS//-fstack-protector-strong/-fstack-protector}"
+    CXXFLAGS="${CXXFLAGS//-fstack-protector-strong/-fstack-protector}"
+
+    # using -pipe causes spurious test-suite failures
+    # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
+    CFLAGS="${CFLAGS/-pipe/}"
+    CXXFLAGS="${CXXFLAGS/-pipe/}"
+
+    # Flags from new compilers that old compilers don't recognize
+    CFLAGS="${CFLAGS/-fno-plt/}"
+    CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
+    CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
+    CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
+
+    cd 'gcc-build'
+    # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
+    ../configure \
+      --build="${CHOST}" \
+      --disable-libssp \
+      --disable-libstdcxx-pch \
+      --disable-libunwind-exceptions \
+      --enable-multilib \
+      --disable-werror \
+      --enable-__cxa_atexit \
+      --enable-checking='release' \
+      --enable-clocale='gnu' \
+      --enable-cloog-backend='isl' \
+      --enable-gnu-unique-object \
+      --enable-install-libiberty \
+      --enable-languages='c,c++,fortran,go,lto,objc,obj-c++' \
+      --enable-linker-build-id \
+      --enable-lto \
+      --enable-plugin \
+      --enable-shared \
+      --enable-threads='posix' \
+      --enable-version-specific-runtime-libs \
+      --infodir='/usr/share/info' \
+      --libdir='/usr/lib' \
+      --libexecdir='/usr/lib' \
+      --mandir='/usr/share/man' \
+      --program-suffix="-${_pkgver}" \
+      --with-bugurl='https://bugs.archlinux.org/' \
+      --with-linker-hash-style='gnu' \
+      --with-system-zlib \
+      --prefix='/usr'
+#      CXX='g++-6.3' CC='gcc-6.3'
+
+# gcc-5.0 changes
+#      --with-default-libstdcxx-abi=c++98    - before gcc-5.0 c++ rebuild
+#      --enable-gnu-indirect-function
+#     --with-isl    - cloog no longer needed
+  fi
+
+  cd "${srcdir}/${_basedir}/gcc-build"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   #LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  nice make -s -j "${_nproc}"
+  nice make -j "${_nproc}"
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
@@ -157,7 +181,7 @@ _fn_check() {
   ulimit -s 32768
 
   # do not abort on error as some are "expected"
-  make -k check || :
+  make -j1 -k check || :
   "${srcdir}/${_basedir}/contrib/test_summary"
   set +u
 }
@@ -167,17 +191,17 @@ package() {
   cd "${_basedir}/gcc-build"
 
   #LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  make -s -j1 DESTDIR="${pkgdir}" install
+  make -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
   rm -rf "${pkgdir}/usr"/{share,include}/
-  find "${pkgdir}/" -name '*iberty*' | xargs rm
+  find "${pkgdir}/" -name '*iberty*' -exec rm '{}' '+'
 
   # Move potentially conflicting stuff to version specific subdirectory
   case "${CARCH}" in
   'x86_64') mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/" ;;
   esac
-  #mv ${pkgdir}/usr/lib/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
+  #mv "${pkgdir}/usr/lib"/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
 
   # Install Runtime Library Exception
   install -Dpm644 '../COPYING.RUNTIME' \
