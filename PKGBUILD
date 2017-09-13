@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
@@ -15,7 +14,7 @@ _opt_SSP=1  # Stack Smashing Protection
 set -u
 _pkgver='6.3'
 pkgname="gcc${_pkgver//\./}-multilib"
-_snapshot='6-20170830'
+_snapshot='6-20170906'
 pkgver="${_pkgver}_${_snapshot#*-}"
 _islver='0.17'
 #_commit='4fc407888a30c5d953816b05c8a8e98ec2ab3101' # Pulling commits this big is too slow!
@@ -57,12 +56,18 @@ source=(
   #"gcc-${pkgver%%_*}.tgz::https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz"
   "http://mirrors.concertpass.com/gcc|snapshots/LATEST-6/gcc-${_snapshot}.tar.xz" # Please do not use a snapshot before it has been announced with a LATEST- symlink.
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+  '0000-gcc-6.3.ucontext.patch'
+  '0001-gcc-6.3-SIGSEGV.patch'
+  '0002-gcc-6.3-__res_state.patch'
 )
 if [ ! -z "${_cloogver:=}" ]; then
   source+=("http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz")
 fi
-sha256sums=('169a3bd16c43ed55b820fe50ee603671b4003956abc1cbed7ca4df51f23f404a'
-            '439b322f313aef562302ac162caccb0b90daedf88d49d62e00a5db6b9d83d6bb')
+sha256sums=('dd3f78d357a3dd88b6a6cd338fd03b844ada4e8e732257ad4135d153cac37585'
+            '439b322f313aef562302ac162caccb0b90daedf88d49d62e00a5db6b9d83d6bb'
+            'dc2b7b3ba6a9a281128026ff22ee537909b5dfb885cf8db3756e67ac286592e8'
+            'f705751fa363e56b58107f3a0aebc32ebf1e529993b9583291fbb239c6512dac'
+            '6418499f31d536a4f85e6bd956b2dbed4840a7aa807ee24d897a705e1af1a127')
 
 PKGEXT='.pkg.tar.gz' # Uncompressed: 1.3GB, gz=500MB 1.1 minutes, xz=275MB 9.5 minutes
 
@@ -137,7 +142,7 @@ prepare() {
   set -u
   cd "${_basedir}"
 
-  # link isl for in-tree build
+  # link isl/cloog for in-tree builds
   ln -s "../isl-${_islver}" 'isl'
   if [ ! -z "${_cloogver}" ]; then
     ln -s "../cloog-${_cloogver}" 'cloog'
@@ -145,6 +150,22 @@ prepare() {
 
   # Do not run fixincludes
   sed -e 's@\./fixinc\.sh@-c true@' -i 'gcc/Makefile.in'
+
+  # fix build with glibc 2.26
+  #diff -pNau5 libsanitizer/sanitizer_common/sanitizer_linux.h{.orig,} > '../0000-gcc-4.9.ucontext.patch'
+  patch -Nbup0 -i "${srcdir}/0000-gcc-6.3.ucontext.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41921
+  #diff -pNau5 libsanitizer/asan/asan_linux.cc{.orig,} > '../0001-gcc-4.9-SIGSEGV.patch'
+  patch -Nbup0 -i "${srcdir}/0001-gcc-6.3-SIGSEGV.patch"
+  #diff -pNau5 libsanitizer/tsan/tsan_platform_linux.cc{.orig,} > '../0002-gcc-4.9-__res_state.patch'
+  patch -Nbup0 -i "${srcdir}/0002-gcc-6.3-__res_state.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41922
+  sed -e 's:\bstruct ucontext\b:ucontext_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct ucontext\b')
+  sed -e 's:\bstruct sigaltstack\b:stack_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct sigaltstack\b')
+  sed -e '/^struct ucontext_t/,/^};/ d' -i 'libsanitizer/tsan/tsan_interceptors.cc'
+  if grep -e '^struct ucontext_t' 'libsanitizer/tsan/tsan_interceptors.cc'; then
+    set +u
+    echo 'Failed to remove ^struct ucontext_t'
+    false
+  fi
 
   # Arch Linux installs x86_64 libraries /lib
   case "${CARCH}" in
@@ -154,10 +175,11 @@ prepare() {
   echo "${_pkgver}" > 'gcc/BASE-VER'
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -e '/^ac_cpp=/ s/$CPPFLAGS/$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
+  sed -e '/^ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
 
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
+
   set +u
 }
 
@@ -226,7 +248,7 @@ build() {
 
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   #LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  nice make -j "${_nproc}" # -s
+  nice make -j "${_nproc}"
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
@@ -242,8 +264,8 @@ _check_disabled() {
   ulimit -s 32768
 
   # do not abort on error as some are "expected"
-  make -k check || :
-  "${srcdir}/gcc/contrib/test_summary"
+  make -j1 -k check || :
+  "${srcdir}/${_basedir}/contrib/test_summary"
   set +u
 }
 
@@ -251,7 +273,8 @@ package() {
   set -u
   cd "${_basedir}/gcc-build"
 
-  make -s -j1 DESTDIR="${pkgdir}" install
+  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
+  make -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
   rm -rf "${pkgdir}/usr"/{share,include}/
