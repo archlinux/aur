@@ -5,8 +5,8 @@
 # and add '--enable-libndi_newtek' to the configure options.
 
 pkgname=ffmpeg-full-git
-pkgver=3.4.r87251.ga918f16f7c
-pkgrel=2
+pkgver=3.4.r87287.g4d390344ec
+pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -81,7 +81,7 @@ build() {
             local _nvidia_340xx_ldflags='-L/usr/lib/nvidia'
         fi
         local _ldflags="--extra-ldflags=-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
-        local _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
+        local _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins"
         
         # strictly specifying nvcc path is needed if package is installing
         # cuda for the first time (nvcc path will be in $PATH only after relogin)
