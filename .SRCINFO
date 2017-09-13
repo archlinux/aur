@@ -8,11 +8,7 @@ pkgbase = thunderbird-conversations-git
 	license = GPL2
 	license = LGPL2.1
 	makedepends = git
-	makedepends = gulp
-	makedepends = nodejs
-	makedepends = npm
 	makedepends = zip
-	depends = thunderbird>38.7.1
 	source = thunderbird-conversations-git::git://github.com/protz/GMail-Conversation-View.git
 	md5sums = SKIP
 

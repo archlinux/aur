@@ -8,8 +8,7 @@ pkgdesc="GMail-like conversation view for Thunderbird"
 arch=('any')
 url="https://github.com/protz/GMail-Conversation-View"
 license=('MPL' 'GPL2' 'LGPL2.1')
-depends=('thunderbird>38.7.1')
-makedepends=('git' 'gulp' 'nodejs' 'npm' 'zip')
+makedepends=('git' 'zip')
 source=("$pkgname"::'git://github.com/protz/GMail-Conversation-View.git')
 md5sums=('SKIP')
 
