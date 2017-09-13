@@ -1,8 +1,8 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=osu-wine-git
-pkgver=6.04b1941
-pkgrel=2
+pkgver=7.eea4708
+pkgrel=1
 pkgdesc="osu!"
 arch=('any')
 url="https://github.com/Nefelim4ag/osu-wine"
