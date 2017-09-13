@@ -1,0 +1,13 @@
+pkgbase = jaxodraw-latex
+	pkgdesc = A particle physics LaTeX package for drawing Feynman diagrams.
+	pkgver = 2008_11_19
+	pkgrel = 1
+	url = http://jaxodraw.sourceforge.net/
+	arch = any
+	license = GPL2
+	depends = texlive-core
+	source = https://downloads.sourceforge.net/project/jaxodraw/axodraw4j/axodraw4j_2008_11_19/axodraw4j_2008_11_19.tar.gz
+	md5sums = 12a1aef54381e0d44946324a0cbfce54
+
+pkgname = jaxodraw-latex
+
