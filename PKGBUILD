@@ -23,6 +23,6 @@ pkgver() {
  
 package() {
 	cd "$_gitname"
-	python2 setup.py install --root=$pkgdir/ --optimize=1
+	python setup.py install --root=$pkgdir/ --optimize=1
 }
 
