@@ -34,6 +34,10 @@ build() {
 
 # fix placement of ossec-init.conf
 sed -i "s|^OSSEC_INIT.*|OSSEC_INIT=\"$pkgdir/etc/ossec-init.conf\"|" src/init/shared.sh
+
+cd src
+make all
+make build
 }
 
 package() {
@@ -41,6 +45,8 @@ package() {
 
   _preparevars
   . "$srcdir/config" # load configuration
+
+  install -d "$pkgdir/etc"
 
   ./install.sh
 
