@@ -1,7 +1,7 @@
 pkgbase = python-fgivenx
-	pkgdesc = Python library for plotting Bayesian Functional Posteriors.
+	pkgdesc = Functional Posterior Plotter
 	pkgver = 1.0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/williamjameshandley/fgivenx
 	arch = any
 	license = MIT
