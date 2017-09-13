@@ -309,6 +309,7 @@ if $_patching; then
   #patch -p1 < ${startdir}/0001-Fix-build-with-qreal-as-float.patch
 
   cd ${_waylanddir}
+  patch -p1 < ${startdir}/0001-Put-xcomposite-config-test-on-a-leash.patch
   #patch -p1 < ${startdir}/0001-Fix-brcm-egl-build-by-correcting-commit-usage.patch
   #patch -p1 < ${startdir}/0001-Avoid-double-deletion-of-mBuffer.patch
 

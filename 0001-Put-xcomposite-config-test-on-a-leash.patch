@@ -1,0 +1,25 @@
+From 5e150e1682d4eb4f0f0cc04e545e19cbaf908369 Mon Sep 17 00:00:00 2001
+From: Donald Carr <d@chaos-reins.com>
+Date: Tue, 12 Sep 2017 22:54:43 -0700
+Subject: [PATCH] Put xcomposite config test on a leash
+
+Change-Id: Ifefa3209db0a249095f04cbe914aeed931c6c62a
+---
+ config.tests/xcomposite/main.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/config.tests/xcomposite/main.cpp b/config.tests/xcomposite/main.cpp
+index 11ba3b5a..4014d5e2 100644
+--- a/config.tests/xcomposite/main.cpp
++++ b/config.tests/xcomposite/main.cpp
+@@ -42,6 +42,7 @@
+ 
+ int main (int argc, char **argv)
+ {
++    #error eat shit and die
+     XCompositeRedirectWindow((Display *)0,(Window) 0,CompositeRedirectManual);
+ 
+     return 0;
+-- 
+2.14.1
+
