@@ -1,8 +1,8 @@
 diff --git a/src/export.cpp b/src/export.cpp
-index e342eca..d16b84f 100644
+index 6f1e5ae..06e4bc3 100644
 --- a/src/export.cpp
 +++ b/src/export.cpp
-@@ -42,7 +42,7 @@
+@@ -34,7 +34,7 @@
  #ifdef Q_OS_WIN32
  	#include <png.h>
  #else
@@ -12,7 +12,7 @@ index e342eca..d16b84f 100644
  
  // tiff
 diff --git a/src/import_png.cpp b/src/import_png.cpp
-index 60b2f65..98dd029 100644
+index a0fbcc6..7c91f06 100644
 --- a/src/import_png.cpp
 +++ b/src/import_png.cpp
 @@ -25,7 +25,7 @@
@@ -21,6 +21,6 @@ index 60b2f65..98dd029 100644
  #else
 -	#include <libpng/png.h>
 +	#include <png.h>
- /*
- 	#ifdef Q_OS_MAC
- 		#include <libpng15/png.h>
+ #endif
+ 
+ using namespace std;

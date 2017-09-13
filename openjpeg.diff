@@ -1,0 +1,13 @@
+diff --git a/src/import_j2k.cpp b/src/import_j2k.cpp
+index 4eebdab..f20b42f 100644
+--- a/src/import_j2k.cpp
++++ b/src/import_j2k.cpp
+@@ -20,7 +20,7 @@
+ #include "import_exiv2.h"
+ #include "ddr_math.h"
+ 
+-#include <openjpeg-2.1/openjpeg.h>
++#include <openjpeg-2.2/openjpeg.h>
+ 
+ using namespace std;
+ 
