@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -68,7 +68,7 @@ build() {
         _cuvid='--enable-cuvid'
         _libnpp='--enable-libnpp'
         _cflags='--extra-cflags=-I/opt/cuda/include'
-        _ldflags='--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64'
+        _ldflags='--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins'
     fi
     
     msg2 'Running ffmpeg configure script. Please wait...'
