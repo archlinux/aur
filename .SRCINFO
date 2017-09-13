@@ -1,7 +1,7 @@
 pkgbase = vim-taskwiki
 	pkgdesc = Proper project management in vim. Standing on the shoulders of vimwiki and Taskwarrior
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tbabej/taskwiki
 	arch = any
 	license = MIT
