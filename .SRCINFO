@@ -1,6 +1,6 @@
 pkgbase = powerline-go-git
 	pkgdesc = A beautiful, useful and fast prompt for your shell
-	pkgver = 1.1.0.0.g939ac95
+	pkgver = 1.5.1.0.g5eba4e7
 	pkgrel = 1
 	url = https://github.com/justjanne/powerline-go
 	arch = x86_64

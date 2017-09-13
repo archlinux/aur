@@ -2,7 +2,7 @@
 
 pkgname='powerline-go-git'
 _pkgname='powerline-go'
-pkgver=1.1.0.0.g939ac95
+pkgver=1.5.1.0.g5eba4e7
 pkgrel=1
 pkgdesc="A beautiful, useful and fast prompt for your shell"
 arch=('x86_64')
