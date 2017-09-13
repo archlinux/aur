@@ -2,17 +2,16 @@
 # Contributor: Daniel Landau <daniel.landau@iki.fi>
 
 pkgname=thunderbird-conversations-git
-pkgver=r1716.80bb08f
-pkgrel=2
+pkgver=r1739.1174fba
+pkgrel=1
 pkgdesc="GMail-like conversation view for Thunderbird"
 arch=('any')
 url="https://github.com/protz/GMail-Conversation-View"
 license=('MPL' 'GPL2' 'LGPL2.1')
 depends=('thunderbird>38.7.1')
 makedepends=('git' 'gulp' 'nodejs' 'npm' 'zip')
-source=("$pkgname"::'git://github.com/protz/GMail-Conversation-View.git' "${pkgname}-mark_as_read.patch")
-md5sums=('SKIP'
-         '2fd3c3fb307cde2815fd1480b2c8554b')
+source=("$pkgname"::'git://github.com/protz/GMail-Conversation-View.git')
+md5sums=('SKIP')
 
 pkgver() {
         cd "$srcdir/$pkgname"
@@ -21,17 +20,12 @@ pkgver() {
 
 prepare() {
         cd "$srcdir/$pkgname"
-        patch -p1 < ${srcdir}/${pkgname}-mark_as_read.patch
         git submodule init
         git submodule update
 }
 
 build() {
         cd "$srcdir/$pkgname"
-        pushd content/pdfjs
-        npm install
-        node make generic
-        popd
         ./build.sh
 }
 
