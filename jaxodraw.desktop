@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=jaxodraw
+GenericName=Feynman Diagram Editor
+Exec=jaxodraw %U
+Icon=jaxodraw
+Terminal=false
+Type=Application
+StartupWMClass=net-sf-jaxodraw-JaxoDraw
+Categories=Science;
