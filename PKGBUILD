@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=regoth-git
-pkgver=0.1.409.r563.f1b3195
+pkgver=0.3.430.r1080.dd392f6
 pkgrel=1
 epoch=
 pkgdesc="OpenSource-Reimplementation of the zEngine, used by the game 'Gothic'"
