@@ -1,30 +1,29 @@
-# $Id: PKGBUILD 273590 2016-08-11 09:35:58Z eworm $
-# Maintainer: Ronald van Haren <ronald.archlinux.org>
-# Contributor: Judd Vinet <jvinet@zeroflux.org>
-# Contributor: George Amanakis <g_amanakis@yahoo.com>
+# $Id$
+# Maintainer: George Amanakis <g_amanakis at yahoo dot com>
 
-pkgbase=iproute2-cake
+pkgbase=iproute2
 pkgname=(iproute2-cake iproute2-cake-doc)
-pkgver=4.11.0
+pkgver=4.13.0
 pkgrel=1
-pkgdesc="IP Routing Utilities"
+pkgdesc="IP Routing Utilities with tc-support for the CAKE scheduler"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2"
-#950 patch: https://raw.githubusercontent.com/lede-project/source/master/package/network/utils/iproute2/patches/950-add-cake-to-tc.patch
-#modified according to github.com/dtaht/tc-adv repository
 makedepends=('iptables' 'linux-atm' 'linuxdoc-tools' 'texlive-bin' 'texlive-core' 'texlive-latexextra')
+#950 patch: https://raw.githubusercontent.com/lede-project/source/master/package/network/utils/iproute2/patches/950-add-cake-to-tc.patch
+#tc-cake.8 man page: https://github.com/dtaht/tc-adv/blob/master/man/man8/tc-cake.8
 options=('staticlibs' '!makeflags')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
-source=("https://www.kernel.org/pub/linux/utils/net/${pkgbase/-cake}/${pkgbase/-cake}-${pkgver}.tar."{xz,sign}
+source=("http://www.kernel.org/pub/linux/utils/net/${pkgbase}/${pkgbase}-${pkgver}.tar."{xz,sign}
         '0001-make-iproute2-fhs-compliant.patch'
-	'950c-add-cake-to-tc.patch'
-	)
+	'950-add-cake-to-tc.patch'
+	'tc-cake.8.gz')
+
 prepare() {
-  cd "${srcdir}/${pkgbase/-cake}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   # set correct fhs structure
-  patch -Np1 -i "${srcdir}/950c-add-cake-to-tc.patch"
+  patch -Np1 -i "${srcdir}/950-add-cake-to-tc.patch"
   patch -Np1 -i "${srcdir}/0001-make-iproute2-fhs-compliant.patch"
 
   # do not treat warnings as errors
@@ -33,18 +32,18 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgbase/-cake}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   ./configure
   make
 
-  cd "${srcdir}/${pkgbase/-cake}-${pkgver}/doc/"
+  cd "${srcdir}/${pkgbase}-${pkgver}/doc/"
 
   make html pdf
 }
 
 package_iproute2-cake() {
-  depends=('glibc' 'iptables' 'libelf')
+  depends=('glibc' 'iptables' 'libelf' 'sch_cake')
   optdepends=('linux-atm: ATM support')
   groups=('base')
   provides=('iproute' 'iproute2' 'iproute2-doc')
@@ -53,7 +52,7 @@ package_iproute2-cake() {
   backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_protos' \
     'etc/iproute2/rt_realms' 'etc/iproute2/rt_scopes' 'etc/iproute2/rt_tables')
 
-  cd "${srcdir}/${pkgbase/-cake}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   make DESTDIR="${pkgdir}" SBINDIR="/usr/bin" install
 
@@ -63,12 +62,15 @@ package_iproute2-cake() {
   # libnetlink isn't installed, install it FS#19385
   install -Dm0644 include/libnetlink.h "${pkgdir}/usr/include/libnetlink.h"
   install -Dm0644 lib/libnetlink.a "${pkgdir}/usr/lib/libnetlink.a"
+
+  cd "${srcdir}"
+  cp tc-cake.8.gz "${pkgdir}/usr/share/man/man8"
 }
 
 package_iproute2-cake-doc() {
   pkgdesc='IP Routing Utilities documentation'
 
-  cd "${srcdir}/${pkgbase/-cake}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 
@@ -81,7 +83,8 @@ package_iproute2-cake-doc() {
   install -m0644 doc/*.html doc/*.pdf "${pkgdir}/usr/share/doc/iproute2/"
 }
 
-sha1sums=('902a20629672ad39faf46c5312558ebb3d21d1fc'
+sha1sums=('956873cdb42c002c967a2d0f9ca5f77fadd375c3'
           'SKIP'
           '1ed328854983b3f9df0a143aa7c77920916a13c1'
-          'f18cc3ee91bbdb9de3304399e83e5b97ed3864da')
+          '6f3216405d322b5a12e7fb8330cf09c9ef1d6455'
+          '63650febde48558d3bfe98e13a1e77ede8267bb0')
