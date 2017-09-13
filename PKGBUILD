@@ -6,7 +6,7 @@
 _gopkgname='github.com/mholt/caddy'
 
 pkgname=caddy
-pkgver=0.10.8
+pkgver=0.10.9
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -22,7 +22,7 @@ source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'caddy.tmpfiles'
         'caddy.conf'
         'plugins.go')
-sha256sums=('3328efc8b64a428d49dd27edf44c0b1d9dfdc8879366663ce002bafc3a7b2b90'
+sha256sums=('be70a4324e3f6cd4da5e379b31562d07f40f6e39439c7274d4bb94fe482b86e4'
             'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
             '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
             '69e25def317a6172011472bd060655142f3085a0c81392f8a7a9c42b6a58bbd9'
