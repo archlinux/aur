@@ -3,6 +3,19 @@
 Notable changes for the [autodl-irssi-community](https://github.com/autodl-community/autodl-irssi) project.
 
 
+## [community-v1.65](https://github.com/autodl-community/autodl-irssi/releases/tag/community-v1.65) (2017-08-30)
+
+[Commits](https://github.com/autodl-community/autodl-irssi/compare/community-v1.64...community-v1.65)
+
+### Added
+
+* Add 2160p resolution to constants.
+
+### Fixed
+
+* Fix bad subroutine references.
+
+
 ## [community-v1.64](https://github.com/autodl-community/autodl-irssi/releases/tag/community-v1.64) (2017-03-18)
 
 [Commits](https://github.com/autodl-community/autodl-irssi/compare/community-v1.63...community-v1.64)

@@ -1,7 +1,7 @@
 pkgbase = autodl-irssi-community
 	pkgdesc = Community fork of the plugin for irssi which monitors IRC announce channels and downloads torrents based on user defined filters.
-	pkgver = 1.64
-	pkgrel = 2
+	pkgver = 1.65
+	pkgrel = 1
 	url = https://github.com/autodl-community/autodl-irssi
 	install = autodl-irssi-community.install
 	changelog = CHANGELOG.md
@@ -19,8 +19,8 @@ pkgbase = autodl-irssi-community
 	provides = autodl-irssi
 	conflicts = autodl-irssi-svn
 	replaces = autodl-irssi-svn
-	source = https://github.com/autodl-community/autodl-irssi/archive/community-v1.64.tar.gz
-	md5sums = 6bc8c713949897b683a8811ed57ec40c
+	source = https://github.com/autodl-community/autodl-irssi/archive/community-v1.65.tar.gz
+	md5sums = 96dd306e3bb0ac35842fb392a1e4d95b
 
 pkgname = autodl-irssi-community
 
