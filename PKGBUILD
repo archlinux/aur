@@ -27,9 +27,9 @@ pkgname=()
 [[ ${#pkgname[@]} -gt 1 ]] && pkgname=('eclipse-common-devel' "${pkgname[@]}")
 
 epoch=1
-_milestone=R
-pkgver=4.7.0.${_milestone}
-pkgrel=2
+_milestone=1.RC3
+pkgver=4.7.${_milestone}
+pkgrel=1
 _release=oxygen-${_milestone}
 pkgdesc="Highly extensible IDE"
 license=(EPL)
@@ -45,13 +45,13 @@ noextract=()
 
 for _pkg in ${pkgname[@]/-devel/}; do
   [[ $_pkg == 'eclipse-common' ]] && continue
-  source_i686+=(http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/${_release/-//}/$_pkg-$_release-linux-gtk.tar.gz)
-  source_x86_64+=(http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/${_release/-//}/$_pkg-$_release-linux-gtk-x86_64.tar.gz)
-  noextract+=($_pkg-$_release-linux-gtk{,-x86_64}.tar.gz)
+  source_i686+=(http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/${_release/-//}/$_pkg-${_release/\./-}-linux-gtk.tar.gz)
+  source_x86_64+=(http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/${_release/-//}/$_pkg-${_release/\./-}-linux-gtk-x86_64.tar.gz)
+  noextract+=($_pkg-${_release/\./-}-linux-gtk{,-x86_64}.tar.gz)
   eval "package_${_pkg}-devel() { _package $_pkg; }"
 done
 
-sha256sums=('9f8980078c97fb3020ba2e9c6c07eac077b932406aba3e2d6a4763a5d299290d'
+sha256sums=('a5a5cb8a8b86bd8bb98692c4553abd84592aac2438621d8273c43715a115e2ac'
             '7f0c352f8593774838d96c213293de6d00fb6d71becce8d4ff6209bb8c58e8f6'
             'be491b305ee6d5fd4a94db4d2b31a5fbc69539e3f97094ffc35246e104deea17')
 sha1sums_i686=()
@@ -73,9 +73,9 @@ prepare() {
     [[ $_pkg == 'eclipse-common' ]] && continue
 
     if [[ $CARCH == x86_64 ]]; then
-      bsdtar -xf "$_pkg-$_release-linux-gtk-x86_64.tar.gz"
+      bsdtar -xf "$_pkg-${_release/\./-}-linux-gtk-x86_64.tar.gz"
     else
-      bsdtar -xf "$_pkg-$_release-linux-gtk.tar.gz"
+      bsdtar -xf "$_pkg-${_release/\./-}-linux-gtk.tar.gz"
     fi
 
     mv eclipse $_pkg
