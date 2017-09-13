@@ -49,5 +49,5 @@ package() {
 	make DESTDIR="$pkgdir" install
 
   # Remove info and make since it expected already present by host compiler
-	rm "$pkgdir"/usr/share/{info,gcc}
+	rm -vr "$pkgdir"/usr/share/{info,gcc}
 }
