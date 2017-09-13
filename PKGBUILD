@@ -5,7 +5,7 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=yabasic
-pkgver=2.78.1
+pkgver=2.78.2
 pkgrel=1
 pkgdesc="Yet Another Basic"
 arch=('i686' 'x86_64')
@@ -14,24 +14,21 @@ url="http://www.yabasic.de/"
 depends=('libx11' 'ncurses')
 makedepends=('libxt')
 source=("http://www.yabasic.de/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('b46ae1f85ca83ac8c88dbfaad4c35a66af3dfe48c5091ca45bfcb0c9eb19c80e')
+sha256sums=('491581b44ab7ea4707b5021b57df0d1880a621097bcc10e2b50e70c3524f1211')
 
 build() {
   cd $pkgname-$pkgver
-
   ./configure --prefix=/usr
   make
 }
 
 check() {
   cd $pkgname-$pkgver
-
   make check
 }
 
 package() {
   cd $pkgname-$pkgver
-
-  make prefix="$pkgdir"/usr install
+  make DESTDIR="$pkgdir" install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
