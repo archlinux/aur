@@ -7,8 +7,8 @@
 
 _srcname=mpv
 pkgname=mpv-full
-pkgver=0.26.0
-pkgrel=5
+pkgver=0.27.0
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -36,7 +36,7 @@ conflicts=('mpv' 'mpv-git' 'mpv-full-git')
 options=('!emptydirs')
 source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz"
         '0001-opengl-backend-support-multiple-backends.patch')
-sha256sums=('daf3ef358d5f260f2269f7caabce27f446c291457ec330077152127133b71b46'
+sha256sums=('341d8bf18b75c1f78d5b681480b5b7f5c8b87d97a0d4f53a5648ede9c219a49c'
             '609e0530f1b0cdb910dcffb5f62bf55936540e24105ce1b2daf1bd6291a7d58a')
 
 
@@ -79,6 +79,7 @@ build() {
         --disable-test \
         --disable-clang-database \
         \
+        --disable-uwp \
         --disable-win32-internal-pthreads \
         --enable-iconv \
         --enable-termios \
@@ -88,6 +89,7 @@ build() {
         --enable-javascript \
         --enable-libass \
         --enable-libass-osd \
+        --enable-zlib \
         --enable-encoding \
         --enable-libbluray \
         --enable-dvdread \
@@ -131,6 +133,7 @@ build() {
         --disable-gl-dxinterop \
         --disable-egl-angle \
         --disable-egl-angle-lib \
+        --disable-egl-angle-win32 \
         --enable-vdpau \
         --enable-vdpau-gl-x11 \
         --enable-vaapi \
@@ -156,6 +159,8 @@ build() {
         --enable-vdpau-hwaccel \
         --disable-d3d-hwaccel \
         --disable-d3d-hwaccel-new \
+        --disable-d3d9-hwaccel \
+        --disable-gl-dxinterop-d3d9 \
         "$_cuda" \
         \
         --enable-tv \
