@@ -1,13 +1,16 @@
-# Maintainer: Eric Lehmann <katyl@katyl.info>
+# Maintainer: Nathaniel Stickney <nstickney@gmail.com>
+# Contributor: Eric Lehmann <katyl@katyl.info>
 # Contributor: Peter Vasil <mail@petervasil.net>
+# shellcheck disable=SC2034,SC2148,SC2154
+
 pkgname="brother-mfc-j480dw"
 pkgver="1.0.0"
 pkgrel=0
 pkgdesc="LPR and CUPS driver for the Brother MFC-j480DW"
 url="http://solutions.brother.com/linux/en_us/"
-arch=("i686" "x86_64")
+arch=('i686' 'x86_64')
 license=('custom:brother commercial license')
-depends=(cups ghostscript a2ps)
+depends=('cups' 'ghostscript' 'a2ps')
 install="$pkgname.install"
 source=(
     "http://download.brother.com/welcome/dlf102091/mfcj480dwlpr-$pkgver-$pkgrel.i386.rpm"
@@ -27,6 +30,7 @@ prepare() {
     if [ -d $srcdir/usr/local/Brother ]; then
         install -d $srcdir/usr/share
         mv $srcdir/usr/local/Brother/ $srcdir/usr/share/brother
+        # shellcheck disable=SC2115
         rm -rf $srcdir/usr/local
             sed -i 's|/usr/local/Brother|/usr/share/brother|g' `grep -lr '/usr/local/Brother' ./`
         fi
