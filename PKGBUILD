@@ -10,7 +10,7 @@ _pkgname=("${_pkgbase}"{,'-wallpapers'}
           'konversation-theme-arc')
 pkgname=("${_pkgname[@]/%/-git}")
 pkgbase=${_pkgbase}-git
-pkgver=20170912.r7.g826411a
+pkgver=20170912.r8.g37b8800
 pkgrel=1
 epoch=2
 arch=('any')
