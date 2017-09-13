@@ -58,6 +58,7 @@ package() {
 	make DESTDIR="$pkgdir" install-target-libgcc
 
 	# Remove info and make since it expected already present by host compiler
-	rm -vr "$pkgdir"/usr/share/{info,gcc}
+	rm -vr "$pkgdir"/usr/share/{info,man
+}
 }
 
