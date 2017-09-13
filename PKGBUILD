@@ -3,7 +3,7 @@
 
 pkgname=rstudio-desktop-preview-bin
 pkgver=1.1.364
-pkgrel=1
+pkgrel=2
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,7 +13,8 @@ makedepends=('patchelf')
 conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 optdepends=('pandoc-bin'
 	    'pandoc-cabal'
-	    'pandoc-static')
+	    'pandoc-static'
+            'pandoc-lite')
 provides=("rstudio-desktop-preview=${pkgver}")
 #options=(!strip)
 
