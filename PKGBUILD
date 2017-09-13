@@ -165,7 +165,13 @@ _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
 
 if $_static_build; then
- _additional_configure_flags="$_additional_configure_flags -no-ico"
+ _additional_configure_flags="$_additional_configure_flags
+                                -no-ico \
+                                -no-glib \
+                                -no-fontconfig \
+                                -qt-freetype \
+                                -qt-harfbuzz \
+                                "
 else
  _additional_configure_flags="$_additional_configure_flags \
                                 -hostprefix ${_installprefix} \
