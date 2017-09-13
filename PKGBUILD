@@ -11,14 +11,14 @@ conflicts=('pioneer-bin' 'pioneer-git')
 depends=('libsigc++' 'sdl2_image' 'freetype2' 'libvorbis' 'assimp' 'hicolor-icon-theme')
 makedepends=('naturaldocs')
 source=("$pkgname-$pkgver.tar.gz::http://github.com/pioneerspacesim/pioneer/archive/$pkgver.tar.gz" 'pioneer.desktop')
-md5sums=('602b59d2240d6a65d12394202ca9b51a'
-         'f2301fe8850926b2d9bd89e3ab1158a8')
+sha256sums=('e9dc65a0d21c8b4417b47054ebbd5661a5db43790d7868c66bbcd63b30cb8bd1'
+            '31cc3f86dbab4dea44fc61312cbba30dc6d267a3d844bbb866fd2156c29032ef')
 
 build() {
   cd "$pkgname-$pkgver"
   export PIONEER_DATA_DIR=/usr/share/pioneer
   ./bootstrap
-  ./configure --prefix=/usr
+  ./configure CXXFLAGS='-fPIC' --prefix=/usr
   make
   make codedoc
 }
