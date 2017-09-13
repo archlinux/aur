@@ -2,10 +2,10 @@ _name=firefox
 _channel=developer
 _srcurl="https://download-installer.cdn.mozilla.net/pub/devedition/releases"
 _locale="ja"
-pkgname="${_name}-${_channel}-ja"
+pkgname="${_name}-${_channel}-${_locale,,}"
 pkgdesc='Standalone web browser from mozilla.org, developer build - Japanese'
 url="https://www.mozilla.org/${_locale}/firefox/developer/"
-pkgver=56.0b10
+pkgver=56.0b11
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -14,8 +14,8 @@ source_i686=("${pkgname}_${pkgver}_i686.tar.bz2::${_srcurl}/${pkgver}/linux-i686
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.bz2::${_srcurl}/${pkgver}/linux-x86_64/${_locale}/${_name}-${pkgver}.tar.bz2")
 sha512sums=('9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
-sha512sums_i686=('2a8e2a774ac1e9685f78cd79be751b4dfa775c8c41d117f346205c3e685b9d11d04d99f02663a0cfc2d87c978ea4dd175b0a91cf1537c9217afcad737ad7914c')
-sha512sums_x86_64=('a6305e5c0f47b1ce48018d86ce4c2f5dbd50620888783e53f4b481f353058ef3c06fee7866b12937247120579c66389c9f2745985d4428cc03f6e8b5c708a79f')
+sha512sums_i686=('c1b6788956d234adc65cd094ca2201a5ba41f651b942a0291d0fddb74137453889634bb5d83de5975e9ca2a03176d6331fe991f4ed90c890c65411d3fc79588a')
+sha512sums_x86_64=('3297697bb32e07954e1bfc49cc77242bb7aa916eb7bf5dfb86aff790c1ad4d1b105a14e01d04737ebde5d27fd5e7ef8af287f8211c43488a99ab651e9bc1eedb')
 
 provides=(firefox-developer)
 conflicts=(firefox-developer)
