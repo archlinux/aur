@@ -1,7 +1,18 @@
-diff -ruN fontconfig-2.12.1-orig/conf.d/Makefile.am fontconfig-2.12.1/conf.d/Makefile.am
---- fontconfig-2.12.1-orig/conf.d/Makefile.am	2016-08-18 17:43:18.134614854 +0200
-+++ fontconfig-2.12.1/conf.d/Makefile.am	2016-08-18 17:46:34.272609706 +0200
-@@ -21,27 +21,9 @@
+From 50ca24b59585e2d90e0517041824d62b5b9a3807 Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Wed, 13 Sep 2017 11:58:59 -0400
+Subject: [PATCH] change conf.d slightly to fit infinality
+
+---
+ conf.d/Makefile.am | 43 +------------------------------------------
+ conf.d/Makefile.in | 31 +++----------------------------
+ 2 files changed, 4 insertions(+), 70 deletions(-)
+
+diff --git a/conf.d/Makefile.am b/conf.d/Makefile.am
+index fd50a5d..a85ad74 100644
+--- a/conf.d/Makefile.am
++++ b/conf.d/Makefile.am
+@@ -21,30 +21,9 @@
  #  TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  #  PERFORMANCE OF THIS SOFTWARE.
  
@@ -16,21 +27,24 @@ diff -ruN fontconfig-2.12.1-orig/conf.d/Makefile.am fontconfig-2.12.1/conf.d/Mak
 -	30-urw-aliases.conf \
 -	30-metric-aliases.conf \
 -	40-nonlatin.conf \
+-	45-generic.conf \
 -	45-latin.conf \
 -	49-sansserif.conf \
 -	50-user.conf \
 -	51-local.conf \
+-	60-generic.conf \
 -	60-latin.conf \
 -	65-fonts-persian.conf \
 -	65-nonlatin.conf \
 -	69-unifont.conf \
 -	80-delicious.conf \
 -	90-synthetic.conf
+-
 +CONF_LINKS = 
- 
  EXTRA_DIST = $(template_DATA) $(DOC_SOURCES)
  CLEANFILES = $(DOC_FILES)
-@@ -85,24 +67,4 @@
+ 
+@@ -89,24 +68,4 @@ template_DATA =				\
  	80-delicious.conf		\
  	90-synthetic.conf
  
@@ -55,10 +69,11 @@ diff -ruN fontconfig-2.12.1-orig/conf.d/Makefile.am fontconfig-2.12.1/conf.d/Mak
 -	  done)
 -
  -include $(top_srcdir)/git.mk
-diff -ruN fontconfig-2.12.1-orig/conf.d/Makefile.in fontconfig-2.12.1/conf.d/Makefile.in
---- fontconfig-2.12.1-orig/conf.d/Makefile.in	2016-08-18 17:43:18.129614854 +0200
-+++ fontconfig-2.12.1/conf.d/Makefile.in	2016-08-18 17:47:23.998608401 +0200
-@@ -173,7 +173,7 @@
+diff --git a/conf.d/Makefile.in b/conf.d/Makefile.in
+index d626007..40c0a57 100644
+--- a/conf.d/Makefile.in
++++ b/conf.d/Makefile.in
+@@ -173,7 +173,7 @@ am__uninstall_files_from_dir = { \
      || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
           $(am__cd) "$$dir" && rm -f $$files; }; \
    }
@@ -67,7 +82,7 @@ diff -ruN fontconfig-2.12.1-orig/conf.d/Makefile.in fontconfig-2.12.1/conf.d/Mak
  DATA = $(config_DATA) $(template_DATA)
  am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
  am__DIST_COMMON = $(srcdir)/Makefile.in README
-@@ -346,26 +346,8 @@
+@@ -346,29 +346,8 @@ target_alias = @target_alias@
  top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
@@ -81,21 +96,24 @@ diff -ruN fontconfig-2.12.1-orig/conf.d/Makefile.in fontconfig-2.12.1/conf.d/Mak
 -	30-urw-aliases.conf \
 -	30-metric-aliases.conf \
 -	40-nonlatin.conf \
+-	45-generic.conf \
 -	45-latin.conf \
 -	49-sansserif.conf \
 -	50-user.conf \
 -	51-local.conf \
+-	60-generic.conf \
 -	60-latin.conf \
 -	65-fonts-persian.conf \
 -	65-nonlatin.conf \
 -	69-unifont.conf \
 -	80-delicious.conf \
 -	90-synthetic.conf
+-
 +CONF_LINKS = 
- 
  EXTRA_DIST = $(template_DATA) $(DOC_SOURCES)
  CLEANFILES = $(DOC_FILES)
-@@ -530,7 +512,7 @@
+ configdir = $(CONFIGDIR)
+@@ -534,7 +513,7 @@ check: $(BUILT_SOURCES)
  	$(MAKE) $(AM_MAKEFLAGS) check-am
  all-am: Makefile $(DATA)
  installdirs:
@@ -104,13 +122,17 @@ diff -ruN fontconfig-2.12.1-orig/conf.d/Makefile.in fontconfig-2.12.1/conf.d/Mak
  	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
  	done
  install: $(BUILT_SOURCES)
-@@ -653,9 +635,6 @@
+@@ -656,10 +635,6 @@ uninstall-am: uninstall-configDATA uninstall-local \
+ 
  .PRECIOUS: Makefile
  
- 
+-
 -README: $(srcdir)/README.in
 -	sed "s|\@TEMPLATEDIR\@|$(templatedir)|" $< > $@
 -
  install-data-hook:
  	mkdir -p $(DESTDIR)$(configdir)
  	@(echo cd $(DESTDIR)$(configdir);			\
+-- 
+2.14.1
+

@@ -4,9 +4,10 @@
 pkgname=fontconfig-infinality-ultimate
 _basename=fontconfig
 pkgdesc="A library for configuring and customizing font access, optimized for freetype2-infinality-ultimate."
+date=20170913
 url='http://www.fontconfig.org/release/'
 license=('custom' 'MIT')
-pkgver=2.12.4
+pkgver=2.12.5
 pkgrel=1
 arch=('i686' 'x86_64')
 groups=('infinality-bundle')
@@ -26,35 +27,38 @@ backup=('etc/fonts/fonts.conf'
         'etc/fonts/conf.avail.infinality/38-repl-webfonts-custom.conf'
         'etc/fonts/conf.avail.infinality/97-selective-rendering-custom.conf')
 install=fontconfig-ultimate.install
-source=(http://www.fontconfig.org/release/${_basename}-${pkgver}.tar.bz2
+source=("git+https://anongit.freedesktop.org/git/fontconfig#tag=${pkgver}"
         https://raw.githubusercontent.com/archfan/infinality_bundle/820e74be8345a0da2cdcff0a05bf5fa10fd85740/02_fontconfig-iu/fontconfig-ultimate-git.tar.bz2
-        fc-cache-ib.hook)
+        fc-cache-ib.hook
+        01-configure-${date}.patch
+        02-configure-${date}.ac.patch
+        03-Makefile-${date}.in.patch
+        04-Makefile-${date}.conf.d.patch
+        05-Makefile-${date}.am.in.patch)
 
 # a nice page to test font matching:
 # http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
 
 prepare() {
 
-  patches=(01-configure.patch
-           02-configure.ac.patch
-           03-Makefile.in.patch
-           04-Makefile-20160818.conf.d.patch
-           05-Makefile.am.in.patch)
+  patches=(01-configure-${date}.patch
+           02-configure-${date}.ac.patch
+           03-Makefile-${date}.in.patch
+           04-Makefile-${date}.conf.d.patch
+           05-Makefile-${date}.am.in.patch)
 
   # copy fontconfig-ib patches & stuff
   cd "${_basename}-ultimate-git" 
-  cp -r conf.d.infinality "${srcdir}/${_basename}-${pkgver}"/conf.d.infinality
-  cp -r fontconfig_patches/*.patch "${srcdir}/${_basename}-${pkgver}"   # prepare src
-  cd "${srcdir}/${_basename}-${pkgver}"
-
+  cp -r conf.d.infinality "${srcdir}/${_basename}/conf.d.infinality"
+  cd "${srcdir}/${_basename}"
+  NOCONFIGURE=1 ./autogen.sh  
   # infinality & post release fixes
   for patch in "${patches[@]}"; do
-    patch -Np1 -i ${patch}
+    patch -Np1 -i ../${patch}
   done
 
   # fc-blanks.py
   #sed -i 's/python/python2/' fc-blanks/fc-blanks.py
-
   aclocal
   libtoolize -f
   automake -afi
@@ -62,7 +66,7 @@ prepare() {
 }
 
 build() {
-  cd "${_basename}-${pkgver}"
+  cd "${_basename}"
 
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
@@ -77,12 +81,12 @@ build() {
 }
 
 #check() {
-#  cd "${_basename}-${pkgver}"
+#  cd "${_basename}"
 #  make -k check
 #}
 
 package() {
-  cd "${_basename}-${pkgver}"
+  cd "${_basename}"
   make DESTDIR="${pkgdir}" install
 
   #Install license
@@ -109,6 +113,11 @@ package() {
 
   find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
 }
-sha256sums=('668293fcc4b3c59765cdee5cee05941091c0879edcc24dfec5455ef83912e45c'
+sha256sums=('SKIP'
             'b4977cfb0dc64167be3b58ae63022ffb2648e08519b0c061ee2ca43620d8b980'
-            '026971a9fac1ee4fb0ef74d5833ce5e12b4645de8ebdf1cadb3cb943cf46abd3')
+            '026971a9fac1ee4fb0ef74d5833ce5e12b4645de8ebdf1cadb3cb943cf46abd3'
+            '7cb8401c2acbc4ac7a9e4a948a4b04d3b5446cb1153fab351c8d92d1306719ac'
+            'ba8815b38d5d6e307d2107966c8b2ce0d2d48212ab99b55a56c6d66621b705ce'
+            '0676efe16ffe6a032fe2e8be1405974d633220ddcf7ea38cf686e521b3d83735'
+            '70c6a4fedccc49e2075232c67b4c4d95dc59119fc8efa3c0a6c5f8adb5276a4a'
+            'a623af1853e6d233620b7908372db568c5a3802862a95ef6964af361df5424a0')

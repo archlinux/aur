@@ -1,0 +1,48 @@
+--- a/Makefile.am	2015-08-28 05:16:20.000000000 +0200
++++ b/Makefile.am	2015-08-28 05:17:53.230592960 +0200
+@@ -23,7 +23,7 @@
+ 
+ SUBDIRS=fontconfig fc-blanks fc-case fc-lang fc-glyphname src \
+ 	fc-cache fc-cat fc-list fc-match fc-pattern fc-query fc-scan \
+-	fc-validate conf.d test
++	fc-validate conf.d conf.d.infinality test
+ if ENABLE_DOCS
+ SUBDIRS += doc
+ endif
+--- a/Makefile.in	2015-06-02 10:33:36.000000000 +0200
++++ b/Makefile.in	2016-03-29 05:16:51.275520793 +0200
+@@ -143,6 +143,8 @@ AM_V_at = $(am__v_at_@AM_V@)
+ am__v_at_ = $(am__v_at_@AM_DEFAULT_V@)
+ am__v_at_0 = @
+ am__v_at_1 = 
++depcomp =
++am__depfiles_maybe =
+ SOURCES =
+ DIST_SOURCES =
+ RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
+@@ -218,7 +220,7 @@ CTAGS = ctags
+ CSCOPE = cscope
+ DIST_SUBDIRS = fontconfig fc-blanks fc-case fc-lang fc-glyphname src \
+ 	fc-cache fc-cat fc-list fc-match fc-pattern fc-query fc-scan \
+-	fc-validate conf.d test doc
++	fc-validate conf.d conf.d.infinality test doc
+ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in \
+ 	$(srcdir)/fontconfig-zip.in $(srcdir)/fontconfig.pc.in \
+ 	$(srcdir)/fontconfig.spec.in AUTHORS COPYING ChangeLog INSTALL \
+@@ -369,6 +371,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+@@ -434,7 +437,7 @@ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ SUBDIRS = fontconfig fc-blanks fc-case fc-lang fc-glyphname src \
+ 	fc-cache fc-cat fc-list fc-match fc-pattern fc-query fc-scan \
+-	fc-validate conf.d test $(am__append_1)
++	fc-validate conf.d conf.d.infinality test $(am__append_1)
+ ACLOCAL_AMFLAGS = -I m4
+ EXTRA_DIST = fontconfig.pc.in fonts.conf.in fonts.dtd \
+ 	fontconfig.spec.in fontconfig.spec fontconfig-zip.in \
