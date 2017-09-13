@@ -27,7 +27,13 @@ sha256sums=('eef3f0456db8c3d992cbb51d5d32558190bc14f3bc19383dd93acc27acc6befc'
             '2d369cf93c6e15c3559c3560bce581e0ae5f1f34dc86bca013ac67ef1c1a9ff9')
 PKGEXT='.pkg.tar.gz'
 
+if [ -n "${_snapshot:-}" ]; then
+  _basedir="gcc-${_snapshot}"
+else
   _basedir="gcc-${pkgver}"
+fi
+
+#_libdir="usr/lib/gcc/${CHOST}/${pkgver}"
 
 prepare() {
   set -u
@@ -40,6 +46,9 @@ prepare() {
   sed -e 's@\./fixinc\.sh@-c true@' -i 'gcc/Makefile.in'
 
   patch -Np0 -i "${srcdir}/gcc-hash-style-both.patch"
+
+  sed -e 's:\bstruct ucontext\b:ucontext_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct ucontext\b')
+  sed -e 's:\bstruct sigaltstack\b:stack_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct sigaltstack\b')
 
   case "${CARCH}" in
   'x86_64') patch -Np1 -i '../gcc_pure64.patch';;
@@ -57,9 +66,9 @@ prepare() {
 
 build() {
   set -u
-  cd "${_basedir}/gcc-build"
+  if [ ! -s "${_basedir}/gcc-build/Makefile" ]; then
+    cd "${_basedir}"
 
-  if [ ! -s 'Makefile' ]; then
     # Doesn't like FORTIFY_SOURCE
     CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
 
@@ -79,6 +88,7 @@ build() {
     CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
     CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
 
+    cd 'gcc-build'
     # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
     ../configure \
       --build="${CHOST}" \
@@ -104,9 +114,10 @@ build() {
 #      CXX='g++-4.9' CC='gcc-4.9'
   fi
 
+  cd "${srcdir}/${_basedir}/gcc-build"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   #LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  nice make -s -j "${_nproc}"
+  nice make -j "${_nproc}"
   set +u
 }
 
@@ -115,11 +126,11 @@ package() {
   cd "${_basedir}/gcc-build"
 
   #LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  make -s -j1 DESTDIR="${pkgdir}" install
+  make -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
   rm -rf "${pkgdir}/usr"/{share,include}/
-  #find "${pkgdir}/" -name '*iberty*' | xargs rm
+  #find "${pkgdir}/" -name '*iberty*' -exec rm '{}' '+'
 
   # Move potentially conflicting stuff to version specific subdirectory
   #case "${CARCH}" in
