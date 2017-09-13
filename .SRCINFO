@@ -1,0 +1,19 @@
+pkgbase = op-bin
+	pkgdesc = 1Password CLI
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://app-updates.agilebits.com/product_history/CLI
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = UNLICENSED
+	provides = op
+	source_i686 = https://cache.agilebits.com/dist/1P/op/pkg/v0.1.1/op_linux_386_v0.1.1.zip
+	md5sums_i686 = 1818e539d28b34ea338024e99f3f6472
+	source_x86_64 = https://cache.agilebits.com/dist/1P/op/pkg/v0.1.1/op_linux_amd64_v0.1.1.zip
+	md5sums_x86_64 = 8123b36d28817c64a3faa13a582cb191
+	source_arm = https://cache.agilebits.com/dist/1P/op/pkg/v0.1.1/op_linux_arm_v0.1.1.zip
+	md5sums_arm = dca7bf7ba56b7911f0800452a4034535
+
+pkgname = op-bin
+
