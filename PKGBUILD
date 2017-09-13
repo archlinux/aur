@@ -70,7 +70,7 @@ _kyber_disable=
 pkgbase=linux-bfq-mq-git
 _pkgver=4.13
 _srcname=bfq-mq
-pkgver=4.13.3bb650d5583a
+pkgver=4.13.7e0124b53d55
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -145,14 +145,14 @@ sha256sums=(# bfq-mq repository
 _kernelname=${pkgbase#linux}
 
 pkgver() {
-  cd "${_srcname}"
+  cd ${_srcname}
 
   #git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
   echo $(echo ${_pkgver}. && git rev-parse --short HEAD) | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/;s/ //g'
 }
 
 prepare() {
-  cd "${_srcname}"
+  cd ${_srcname}
 
   ### Patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
   if [ -n "$_use_tentative_patches" ]; then
@@ -182,7 +182,7 @@ prepare() {
 
   ### Patch source to enable more gcc CPU optimizatons via the make nconfig
   msg "Patch source with gcc patch to enable more cpus types"
-  patch -Np1 -i ../"${_gcc_patch}"
+  patch -Np1 -i ../${_gcc_patch}
 
   # Clean tree and copy ARCH config over
   make mrproper
@@ -313,7 +313,7 @@ prepare() {
 }
 
 build() {
-  cd "${_srcname}"
+  cd ${_srcname}
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
@@ -326,7 +326,7 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-  cd "${_srcname}"
+  cd ${_srcname}
 
   KARCH=x86
 
@@ -421,7 +421,7 @@ _package-headers() {
   find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
 
   # add objtool for external module building and enabled VALIDATION_STACK option
-  if [[ -e tools/objtools/objtool ]]; then
+  if [[ -e tools/objtool/objtool ]]; then
     install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
   fi
 
