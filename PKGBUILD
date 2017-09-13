@@ -1,7 +1,7 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-alien-base-modulebuild
-pkgver=0.040
+pkgver=0.045
 pkgrel=1
 _author="P/PL/PLICEASE"
 _perlmod="Alien-Base-ModuleBuild"
@@ -25,7 +25,7 @@ install=
 noextract=()
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('fc6ea1aa98893f0dad8e1c04d499a7d90da48b817a226495b96a711020a131b3')
+sha256sums=('3588dee87ea8baac76d350bed758ea914a1660c372fba27dd015dc4be5098a11')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 build(){
