@@ -27,6 +27,12 @@ package(){
 	install -D -m644 "${pkgdir}/usr/share/doc/synergy/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	mkdir -p usr/lib 2> /dev/null; cp -r lib/* usr/lib; rm -rf lib
 
+	# Fix directories structure differencies
+	cd "${pkgdir}"
+
+	install -D -m644 "/usr/share/doc/synergy/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	mkdir -p usr/lib 2> /dev/null; mv lib/* usr/lib; rm -rf lib
+
 	cd ..
-	tput setaf 1; echo "this is the beta package for the AUR, if you want to move to the stable builds go and download the synergy2 package. and make sure to remove this one."; tput sgr0
+
 }
