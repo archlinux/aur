@@ -1,4 +1,4 @@
-pkgbase = iproute2
+pkgbase = iproute2-cake
 	pkgdesc = IP Routing Utilities with tc-support for the CAKE scheduler
 	pkgver = 4.13.0
 	pkgrel = 1

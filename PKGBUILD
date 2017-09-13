@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: George Amanakis <g_amanakis at yahoo dot com>
 
-pkgbase=iproute2
+pkgbase=iproute2-cake
 pkgname=(iproute2-cake iproute2-cake-doc)
 pkgver=4.13.0
 pkgrel=1
@@ -14,13 +14,13 @@ makedepends=('iptables' 'linux-atm' 'linuxdoc-tools' 'texlive-bin' 'texlive-core
 #tc-cake.8 man page: https://github.com/dtaht/tc-adv/blob/master/man/man8/tc-cake.8
 options=('staticlibs' '!makeflags')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
-source=("http://www.kernel.org/pub/linux/utils/net/${pkgbase}/${pkgbase}-${pkgver}.tar."{xz,sign}
+source=("http://www.kernel.org/pub/linux/utils/net/${pkgbase/-cake}/${pkgbase/-cake}-${pkgver}.tar."{xz,sign}
         '0001-make-iproute2-fhs-compliant.patch'
 	'950-add-cake-to-tc.patch'
 	'tc-cake.8.gz')
 
 prepare() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase/-cake}-${pkgver}"
 
   # set correct fhs structure
   patch -Np1 -i "${srcdir}/950-add-cake-to-tc.patch"
@@ -32,12 +32,12 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase/-cake}-${pkgver}"
 
   ./configure
   make
 
-  cd "${srcdir}/${pkgbase}-${pkgver}/doc/"
+  cd "${srcdir}/${pkgbase/-cake}-${pkgver}/doc/"
 
   make html pdf
 }
@@ -52,7 +52,7 @@ package_iproute2-cake() {
   backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_protos' \
     'etc/iproute2/rt_realms' 'etc/iproute2/rt_scopes' 'etc/iproute2/rt_tables')
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase/-cake}-${pkgver}"
 
   make DESTDIR="${pkgdir}" SBINDIR="/usr/bin" install
 
@@ -70,7 +70,7 @@ package_iproute2-cake() {
 package_iproute2-cake-doc() {
   pkgdesc='IP Routing Utilities documentation'
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase/-cake}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 
