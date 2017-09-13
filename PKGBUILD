@@ -6,7 +6,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=3.4.r87251.ga918f16f7c
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -68,7 +68,7 @@ build() {
     if [ "$CARCH" = 'x86_64' ] 
     then
         local _cuda='--enable-cuda'
-        local _cudasdk='--disable-cuda-sdk'
+        local _cudasdk='--enable-cuda-sdk'
         local _cuvid='--enable-cuvid'
         local _libnpp='--enable-libnpp'
         local _cflags='--extra-cflags=-I/opt/cuda/include'
@@ -84,8 +84,8 @@ build() {
         local _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
         
         # strictly specifying nvcc path is needed if package is installing
-        # cuda for the first time
-        sed -i 's@^nvcc_default=.*@nvcc_default=\"/opt/cuda/bin/nvcc\"@' configure
+        # cuda for the first time (nvcc path will be in $PATH only after relogin)
+        sed -i "s@^nvcc_default=.*@nvcc_default='/opt/cuda/bin/nvcc'@" configure
     fi
     
     msg2 'Running ffmpeg configure script. Please wait...'
