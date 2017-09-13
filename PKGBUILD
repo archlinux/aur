@@ -1,13 +1,14 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=jaxodraw
 pkgver=2.1_0
-pkgrel=2
+pkgrel=3
 pkgdesc="A particle physics program for drawing Feynman diagrams."
 arch=(any)
 url="http://jaxodraw.sourceforge.net/"
 license=('GPL2')
 depends=(java-runtime)
-source=(http://jaxodraw.sourceforge.net/download/pkgs/jaxodraw-2.1-0-bin.tar.gz
+optdepends=('jaxodraw-latex: LaTeX and EPS export')
+source=(http://jaxodraw.sourceforge.net/download/pkgs/jaxodraw-${pkgver/_/-}-bin.tar.gz
         jaxodraw.sh
         jaxodraw.desktop)
 md5sums=('1bf230aa874cd5477be6c6f971f2ff0d'
