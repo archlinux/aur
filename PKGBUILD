@@ -1,6 +1,6 @@
 # Contributor: Vojtech Horky <AUR / hotspur>
 pkgname=msim
-pkgver=1.3.8.4
+pkgver=1.3.8.5
 pkgrel=1
 pkgdesc="Light-weight computer simulator based on MIPS R4000"
 url="http://dsrg.mff.cuni.cz/~holub/sw/msim/"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('readline')
 makedepends=('imake')
 source=("http://d3s.mff.cuni.cz/~holub/sw/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('df426c996795a897872ba8c622fa5dcf')
+md5sums=('d19b80885357e860b7592e649e6ac418')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
