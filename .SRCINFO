@@ -1,0 +1,13 @@
+pkgbase = quake3-freezetag
+	pkgdesc = A modification for Quake III Arena implementing that game you may have played as a kid
+	pkgver = 1.51b
+	pkgrel = 1
+	url = https://web.archive.org/web/20090410063054/http://freeze.planetquake.gamespy.com:80/
+	arch = any
+	license = custom
+	depends = quake3
+	source = https://mirrorservice.org/sites/quakeunity.com/modifications/freezetag/q3freeze151b.zip
+	sha256sums = 992ceca27b740ad6048403e24dd212bf56d49c60d7a2b5821fb0ca690712e69b
+
+pkgname = quake3-freezetag
+
