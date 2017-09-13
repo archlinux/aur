@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.0.r0.g74b03027bc
+pkgver=8.1.beta4.r0.gf34394d84e
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -33,9 +33,9 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'three.js: alternative 3D plots engine' 'tachyon: alternative 3D plots engine')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
   mcqd coxeter3 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
-source=(git://git.sagemath.org/sage.git
+source=(git://git.sagemath.org/sage.git#branch=develop
         env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
-        r-no-readline.patch fes02.patch sagemath-ecl-no-sigfpe.patch)
+        r-no-readline.patch fes02.patch sagemath-ecl-no-sigfpe.patch sagemath-pynac-0.7.11.patch)
 sha256sums=('SKIP'
             'e0b5b8673300857fde823209a7e90faecf9e754ab812cc5e54297eddc0c79571'
             '4a2297e4d9d28f0b3a1f58e1b463e332affcb109eafde44837b1657e309c8212'
@@ -45,7 +45,8 @@ sha256sums=('SKIP'
             '81d08c6a760f171f3381455b66a6c84789c9f0eefddbe6ca5794075514ad8c3a'
             'ef9f401fa84fe1772af9efee6816643534f2896da4c23b809937b19771bdfbbf'
             'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea'
-            'c31809f887bf9acc45c5bd9dd30bb93e73601d3efbf3016594c3c1d241731c8a')
+            'c31809f887bf9acc45c5bd9dd30bb93e73601d3efbf3016594c3c1d241731c8a'
+            '3e23ff449a5a3a032684287722455633762636b93ecfc35fb00e875c69eff240')
 
 pkgver() {
   cd sage
@@ -79,6 +80,8 @@ prepare(){
   patch -p1 -i ../fes02.patch
 # disable SIGFPE for ecl https://trac.sagemath.org/ticket/22191
   patch -p1 -i ../sagemath-ecl-no-sigfpe.patch
+# fix build with pynac 0.7.11 https://trac.sagemath.org/ticket/23820
+  patch -p1 -i ../sagemath-pynac-0.7.11.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*
@@ -98,7 +101,6 @@ build() {
   export SAGE_LOCAL="/usr"
   export SAGE_ROOT="$PWD"
   export SAGE_SRC="$PWD"
-  export CC=gcc
 
   python2 setup.py build
 }
@@ -141,7 +143,7 @@ package_sagemath-git() {
   rm -r "$pkgdir"/usr/share/jupyter
 
 # Drop meataxe extension, it segfaults
-  rm "$pkgdir"/usr/lib/python2.7/site-packages/sage/matrix/matrix_gfpn_dense.*
+#  rm "$pkgdir"/usr/lib/python2.7/site-packages/sage/matrix/matrix_gfpn_dense.*
 }
 
 package_sagemath-jupyter-git() {
