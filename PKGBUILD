@@ -33,9 +33,9 @@ source=(
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
   "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
   'gcc-4.9-fix-build-with-gcc-6.patch'
-  '0000-gcc-6.4.ucontext.patch'
+  '0000-gcc-4.9.ucontext.patch'
   '0001-gcc-4.9-SIGSEGV.patch'
-  '0002-gcc-7.2-__res_state.patch'
+  '0002-gcc-4.9-__res_state.patch'
 )
 sha256sums=('6c11d292cd01b294f9f84c9a59c230d80e9e4a47e5c6355f046bb36d4f358092'
             'f4b3dbee9712850006e44f0db2103441ab3d13b406f77996d1df19ee89d11fb4'
@@ -44,6 +44,7 @@ sha256sums=('6c11d292cd01b294f9f84c9a59c230d80e9e4a47e5c6355f046bb36d4f358092'
             '44ea987c9ee1ab3234f20eca51f8d6c68910b579e63ec58ff7a0dde38093f6ba'
             'eb59578cbf32da94d7a11fabf83950c580f0f6fb58f893426d6a258b7e44351e'
             '9ce8a94aad61a26839687734b48f0628e610663cd0d5ad9edfc6e571cf294bac')
+
 PKGEXT='.pkg.tar.gz'
 
 if [ -n "${_snapshot:-}" ]; then
@@ -69,12 +70,12 @@ prepare() {
   #patch -p1 < "${srcdir}/gcc-4.9-fix-build-with-gcc-6.patch"
 
   # fix build with glibc 2.26
-  #diff -pNau5 libsanitizer/sanitizer_common/sanitizer_linux.h{.orig,} > '../0000-gcc-6.4.ucontext.patch'
-  patch -Nbup0 -i "${srcdir}/0000-gcc-6.4.ucontext.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41921
+  #diff -pNau5 libsanitizer/sanitizer_common/sanitizer_linux.h{.orig,} > '../0000-gcc-4.9.ucontext.patch'
+  patch -Nbup0 -i "${srcdir}/0000-gcc-4.9.ucontext.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41921
   #diff -pNau5 libsanitizer/asan/asan_linux.cc{.orig,} > '../0001-gcc-4.9-SIGSEGV.patch'
   patch -Nbup0 -i "${srcdir}/0001-gcc-4.9-SIGSEGV.patch"
-  #diff -pNau5 libsanitizer/tsan/tsan_platform_linux.cc{.orig,} > '../0002-gcc-7.2-__res_state.patch'
-  patch -Nbup0 -i "${srcdir}/0002-gcc-7.2-__res_state.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41922
+  #diff -pNau5 libsanitizer/tsan/tsan_platform_linux.cc{.orig,} > '../0002-gcc-4.9-__res_state.patch'
+  patch -Nbup0 -i "${srcdir}/0002-gcc-4.9-__res_state.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41922
   sed -e 's:\bstruct ucontext\b:ucontext_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct ucontext\b')
   sed -e 's:\bstruct sigaltstack\b:stack_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct sigaltstack\b')
   sed -e '/^struct ucontext_t/,/^};/ d' -i 'libsanitizer/tsan/tsan_interceptors.cc'
@@ -91,6 +92,9 @@ prepare() {
 
   echo "${pkgver}" > 'gcc/BASE-VER'
 
+  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
+  sed -e '/^ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
+
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
 
@@ -99,11 +103,9 @@ prepare() {
 
 build() {
   set -u
-  if [ ! -s "${_basedir}/gcc-build/Makefile" ]; then
-    cd "${_basedir}"
-    # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-    sed -e '/^ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
+  cd "${_basedir}/gcc-build"
 
+  if [ ! -s 'Makefile' ]; then
     # Doesn't like FORTIFY_SOURCE
     CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
 
@@ -123,7 +125,6 @@ build() {
     CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
     CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
 
-    cd 'gcc-build'
     # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
     ../configure \
       --build="${CHOST}" \
@@ -162,9 +163,8 @@ build() {
 #     --with-isl    - cloog no longer needed
   fi
 
-  cd "${srcdir}/${_basedir}/gcc-build"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
+  LD_PRELOAD='/usr/lib/libstdc++.so' \
   nice make -j "${_nproc}"
 
   # make documentation
@@ -190,7 +190,7 @@ package() {
   set -u
   cd "${_basedir}/gcc-build"
 
-  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
+  LD_PRELOAD='/usr/lib/libstdc++.so' \
   make -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
