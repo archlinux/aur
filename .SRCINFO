@@ -1,7 +1,7 @@
 pkgbase = iproute2-cake
 	pkgdesc = IP Routing Utilities with tc-support for the CAKE scheduler
 	pkgver = 4.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
 	arch = i686
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = iproute2-cake
 	source = http://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.13.0.tar.xz
 	source = http://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.13.0.tar.sign
 	source = 0001-make-iproute2-fhs-compliant.patch
-	source = 950-add-cake-to-tc.patch
+	source = 950c-add-cake-to-tc.patch
 	source = tc-cake.8.gz
 	validpgpkeys = 9F6FC345B05BE7E766B83C8F80A77F6095CDE47E
 	sha1sums = 956873cdb42c002c967a2d0f9ca5f77fadd375c3
 	sha1sums = SKIP
 	sha1sums = 1ed328854983b3f9df0a143aa7c77920916a13c1
-	sha1sums = 6f3216405d322b5a12e7fb8330cf09c9ef1d6455
+	sha1sums = 9590c90155191876323c55b6f0d6f3b3f52af3a0
 	sha1sums = 63650febde48558d3bfe98e13a1e77ede8267bb0
 
 pkgname = iproute2-cake
