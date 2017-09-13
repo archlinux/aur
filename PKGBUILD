@@ -4,12 +4,12 @@
 
 pkgname=ponysay-git
 _pkgname=ponysay
-pkgver=3.0.2.r2353
+pkgver=3.0.2.r2410
 pkgrel=1
 pkgdesc="Cowsay reimplementation for ponies."
 arch=("any")
 url="https://github.com/erkin/ponysay"
-license=("GPL2" "FDL")
+license=("GPL3" "FDL")
 depends=("python3" "coreutils")
 provides=("ponysay")
 conflicts=("ponysay" "ponysay-git")
