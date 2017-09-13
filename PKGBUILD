@@ -1,12 +1,13 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=vega10-firmware
 pkgver="1.0.20170823"
-pkgrel=1
+pkgrel=2
 options=(!strip)
 pkgdesc="Firmware blobs for AMD Vega10 GPUs"
 arch=(any)
 url="https://people.freedesktop.org/~agd5f/radeon_ucode/vega10"
 license=('custom')
+conflicts=('linux-firmware')
 _base="${url}/vega10"
 source=("${_base}_acg_smc.bin"
         "${_base}_asd.bin"
