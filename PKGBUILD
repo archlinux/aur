@@ -2,7 +2,7 @@
 
 pkgname=yalpam-git
 _pkgname=yalpam
-pkgver=35.3bfe507
+pkgver=36.9db9a17
 pkgrel=1
 pkgdesc="Yet another Arch Linux PAckage Manager"
 arch=('i686' 'x86_64')
@@ -14,9 +14,6 @@ depends=(
 	'yad'
 	'yaourt'
 	'reflector'
-)
-makedepends=(
-	'gendesk'
 )
 source=("git+${url}.git")
 sha1sums=('SKIP')
@@ -37,6 +34,7 @@ package() {
 	cp "${srcdir}/${_pkgname}/"LICENSE "${pkgdir}/usr/lib/${_pkgname}/"
 
 	# Place desktop entry
+	install -d "${pkgdir}/usr/share/applications"
 	desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_pkgname}/${_pkgname}.desktop"
 
 	# Symlink main binaries
