@@ -51,6 +51,10 @@ if [[ -f target-host ]]; then
   _target_host=true
 fi
 
+if [[ -f static ]]; then
+  _static_build=true
+fi
+
 if [[ -f full-build ]]; then
   _minimal=false
 fi
@@ -76,7 +80,7 @@ _pkgvermajmin="5.9"
 _pkgverpatch=".1"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
-pkgrel=4
+pkgrel=5
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -108,12 +112,12 @@ case ${_piver} in
 esac
 
 if $_building && $_uberminimal; then
-  _skip_qtwidgets=true;
+  _skip_qtwidgets=true
 fi
 
 if $_building && $_minimal; then
-  _skip_qtscript=true;
-  _skip_qtwebengine=true;
+  _skip_qtscript=true
+  _skip_qtwebengine=true
 fi
 
 if $_target_host; then
@@ -125,11 +129,6 @@ fi
 if [[ -z "${_dev_suffix}" ]]; then _release_type="official_releases"; fi
 
 $_build_from_head && _patching=false && _shadow_build=true
-$_skip_qtwebengine && _additional_configure_flags="$_additional_configure_flags -skip qtwebengine -no-icu"
-$_skip_qtscript && _additional_configure_flags="$_additional_configure_flags -skip qtscript"
-$_skip_qtwidgets && _additional_configure_flags="$_additional_configure_flags -no-widgets"
-$_static_build && _additional_configure_flags="$_additional_configure_flags -static"
-$_float && _additional_configure_flags="$_additional_configure_flags -qreal float"
 
 # PKGBUILD vars
 
@@ -141,11 +140,21 @@ touch $install
 if [[ -n ${_piver} ]] || ! $_building; then
   pkgname="${pkgname}-raspberry-pi${_piver}"
 fi
-$_static_build && pkgname="${pkgname}-static"
 
-if $_debug; then
-  _additional_configure_flags="$_additional_configure_flags -force-debug-info -separate-debug-info"
+if $_static_build; then
+  pkgname="${pkgname}-static"
+  _debug=false
+  _skip_qtwidgets=true
+  _skip_qtscript=true
+  _skip_qtwebengine=true
 fi
+
+$_skip_qtwebengine && _additional_configure_flags="$_additional_configure_flags -skip qtwebengine -no-icu"
+$_skip_qtscript && _additional_configure_flags="$_additional_configure_flags -skip qtscript"
+$_skip_qtwidgets && _additional_configure_flags="$_additional_configure_flags -no-widgets"
+$_static_build && _additional_configure_flags="$_additional_configure_flags -static"
+$_float && _additional_configure_flags="$_additional_configure_flags -qreal float"
+$_debug && _additional_configure_flags="$_additional_configure_flags -force-debug-info -separate-debug-info"
 
 _libspkgname="${pkgname}-target-libs"
 _libsdebugpkgname="${pkgname}-target-libs-debug"
@@ -416,6 +425,7 @@ package() {
 
   if ! ${_target_host} && ! ${_static_build}; then
     mkdir -p ${_pkgprofiled}
+    mkdir -p ${_pkgbindir}
     cp -L ${startdir}/${_profiledfn} ${_pkgprofiled} || exit 1
     cp -L ${startdir}/${_profiled_gpu_fn} ${_pkgprofiled} || exit 1
     cp -L ${startdir}/${_qpienvexecfn} ${_pkgbindir} || exit 1
@@ -424,14 +434,11 @@ package() {
 
   #cp ${_bindir}/qtbase/config.status ${_libspkgdir}/${_installprefix}
 
-  local _summary_file="${_bindir}/qtbase/config.summary"
-  if [[ -f ${_summary_file} ]]; then
-    cp ${_summary_file} ${_libspkgdir}/${_installprefix}
-  fi
-
+if ! $_static_build; then
   cd ${_libsdir}
   runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
   mv ${_libsdir}/${_libspkgname}-${pkgver}-${pkgrel}-any.pkg.tar.xz ${startdir}
+fi
 
 if $_debug; then
   cd ${_libsdebugdir}
