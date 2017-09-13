@@ -18,19 +18,19 @@
 pkgbase="spl-linux-hardened-git"
 pkgname=("spl-linux-hardened-git" "spl-linux-hardened-git-headers")
 
-pkgver=0.7.0.r12.g9df9692.4.13.1.a.1
+pkgver=0.7.0.r12.g9df9692.4.13.1.b.1
 pkgrel=1
-makedepends=("linux-hardened-headers=4.13.1.a-1" "git")
+makedepends=("linux-hardened-headers=4.13.1.b-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git>=0.7.0.r12.g9df9692" "kmod" "linux-hardened=4.13.1.a-1")
+depends=("spl-utils-common-git>=0.7.0.r12.g9df9692" "kmod" "linux-hardened=4.13.1.b-1")
 
 pkgver() {
     cd "${srcdir}/spl"
-    echo $(git describe --long | sed 's/^spl-//;s/\([^-]*-g\)/r\1/;s/-/./g').4.13.1.a.1
+    echo $(git describe --long | sed 's/^spl-//;s/\([^-]*-g\)/r\1/;s/-/./g').4.13.1.b.1
 }
 
 build() {
