@@ -1,6 +1,6 @@
 # Maintainer: Florent Thiéry <fthiery@gmail.com>
 
-pkgname=cockpit-networkmanager
+pkgname=cockpit-minimal
 pkgver=150
 pkgrel=1
 pkgdesc='A systemd web based user interface for Linux servers (minimal setup with system graphs, journalctl, storage, network, user accounts, systemd services and terminal)'
