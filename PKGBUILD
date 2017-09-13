@@ -1,18 +1,19 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-shell-config-generate
-pkgver=0.26
+pkgver=0.29
 pkgrel=1
 _author="P/PL/PLICEASE"
 _perlmod="Shell-Config-Generate"
 pkgdesc="Shell::Config::Generate - Portably generate config for any shell"
 arch=('any')
-url="http://search.cpan.org/dist/shell-config-generate/"
+url="http://search.cpan.org/dist/Shell-Config-Generate/"
 license=('GPL' 'PerlArtistic')
+makedepends=(perl-shell-guess)
 depends=(perl)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('4378dceec22c15a3ec51768b1e6b16719eaab65f5852969bfc1d897f77df3812')
+sha256sums=('40bc26591759063cc7d33bf8469676b3a4538866f3bfe07dfd16f1fd704d1443')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 build(){
