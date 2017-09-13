@@ -1,0 +1,15 @@
+pkgbase = vendorlint-git
+	pkgdesc = Tool to ensure all dependents are properly vendored
+	pkgver = r11.26c5245
+	pkgrel = 1
+	url = https://github.com/mephux/vendorlint
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	makedepends = go-bindata
+	source = vendorlint::git+https://github.com/mephux/vendorlint.git
+	md5sums = SKIP
+
+pkgname = vendorlint-git
+
