@@ -26,14 +26,14 @@ source=(
   'gcc.texi.49.patch'
 )
 sha256sums=('92e61c6dc3a0a449e62d72a38185fda550168a86702dea07125ebd3ec3996282'
-            '93b8865cb61f455df807de90f852dc488753d4309d7a1d8f7e7f1a4efe37ffa4')
+            '9f8c50a715a921d3d2c9d5809ac9592ca66f682b2cc496606ff6eb4de79d46b6')
 PKGEXT='.pkg.tar.gz'
 
-#if [ -n "${_snapshot}" ]; then
-#  _basedir="gcc-${_snapshot}"
-#else
+if [ -n "${_snapshot:-}" ]; then
+  _basedir="gcc-${_snapshot}"
+else
   _basedir="gcc-${pkgver}"
-#fi
+fi
 
 prepare() {
   set -u
@@ -46,7 +46,12 @@ prepare() {
   sed -e 's@\./fixinc\.sh@-c true@' -i 'gcc/Makefile.in'
 
   # Update gcc.texi to gcc49 version, needed as of texinfo>=6.3 and possibly texinfo=6.2
-  patch -p0 -c < "${srcdir}/gcc.texi.49.patch"
+  # diff -pNau5 gcc/doc/gcc.texi{,.49} > 'gcc.texi.49.patch'
+  patch -Nup0 -i "${srcdir}/gcc.texi.49.patch"
+
+  # fix build with glibc 2.26
+  sed -e 's:\bstruct ucontext\b:ucontext_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct ucontext\b')
+  sed -e 's:\bstruct sigaltstack\b:stack_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct sigaltstack\b')
 
   # Arch Linux installs x86_64 libraries /lib
   case "${CARCH}" in
@@ -63,9 +68,11 @@ prepare() {
 
 build() {
   set -u
-  cd "${_basedir}/gcc-build"
+  if [ ! -s "${_basedir}/gcc-build/Makefile" ]; then
+    cd "${_basedir}"
+    # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
+    sed -e '/^ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
 
-  if [ ! -s 'Makefile' ]; then
     # Doesn't like FORTIFY_SOURCE
     CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
 
@@ -85,6 +92,7 @@ build() {
     CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
     CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
 
+    cd 'gcc-build'
     # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
     ../configure \
       --build="${CHOST}" \
@@ -125,6 +133,7 @@ build() {
 #      CXX='g++-4.9' CC='gcc-4.9'
   fi
 
+  cd "${srcdir}/${_basedir}/gcc-build"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   LD_PRELOAD='/usr/lib/libstdc++.so' \
   nice make -j "${_nproc}"
@@ -141,7 +150,7 @@ _fn_check() {
   ulimit -s 32768
 
   # do not abort on error as some are "expected"
-  make -k check || :
+  make -j1 -k check || :
   "${srcdir}/${_basedir}/contrib/test_summary"
   set +u
 }
@@ -150,6 +159,7 @@ package() {
   set -u
   cd "${_basedir}/gcc-build"
 
+  LD_PRELOAD='/usr/lib/libstdc++.so' \
   make -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
