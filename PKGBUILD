@@ -1,15 +1,17 @@
-# Maintainer: Pablo Lezaeta <prflr88@gmail.com>
+# Maintainer: now-im <now.im.627@gmail.com>
 
 pkgname=fedora-icon-theme
 pkgver=1.0.0
-_pkgver=1.0.0-16.fc21
-pkgrel=3
+_pkgver=1.0.0-21.fc27
+pkgrel=4
 pkgdesc="Set of icons based from Fedora and RedHat"
 arch=("any")
-url="http://http://www.redhat.com/"
+url="http://www.redhat.com/"
 license=("GPL3")
-depends=("mist-icon-theme")
-source=("http://rpmfind.net/linux/fedora/linux/development/rawhide/source/SRPMS/f/$pkgname-$_pkgver.src.rpm")
+depends=("gnome-icon-theme")
+makedepends=("intltool")
+source=("http://rpmfind.net/linux/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/$pkgname-$_pkgver.src.rpm")
+sha256sums=('a0c4b6a8b8c7399cc5bce93e1dc460c6905056e04fa8d59c403c20013595ad7f')
 
 build() {
 	cd "$srcdir"
@@ -26,4 +28,3 @@ package(){
 	make install DESTDIR=$pkgdir sbindir=/usr/bin
 }
 
-md5sums=('19bd3dd378e9cc32c085722419897370')
