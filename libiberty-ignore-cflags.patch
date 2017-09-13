@@ -1,0 +1,16 @@
+diff -p1 -r a/libiberty/configure b/libiberty/configure
+*** a/libiberty/configure	Tue Jul  4 20:43:21 2017
+--- b/libiberty/configure	Fri Aug 25 01:41:25 2017
+***************
+*** 10,11 ****
+--- 10,19 ----
+  # gives unlimited permission to copy, distribute and modify it.
++ 
++ ## ---------------------------------------------------------- ##
++ ## PATCHED: Unset CFLAGS/CPPFLAGS so that libiberty compiles. ##
++ ## ---------------------------------------------------------- ##
++ 
++ CFLAGS=
++ CPPFLAGS=
++ 
+  ## -------------------- ##
