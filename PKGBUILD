@@ -1,7 +1,7 @@
 # Maintainer: HER0_01 <aconrad103 at gmail.com>
 
 pkgname=blender-better-collada-git
-pkgver=69.bb71192
+pkgver=101.3250ab9
 pkgrel=1
 pkgdesc="Better Collada exporter for Blender, made for the Godot Engine"
 arch=('any')
@@ -13,7 +13,7 @@ provides=('blender-better-collada')
 conflicts=('blender-better-collada')
 source=("$pkgname::git://github.com/godotengine/collada-exporter.git")
 md5sums=('SKIP')
-_blenderver=2.78
+_blenderver=2.79
 
 pkgver() {
   cd "$srcdir/$pkgname"
