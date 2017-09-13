@@ -6,8 +6,8 @@
 # CUDA is x86_64 only and so it will not be available in i686 builds.
 
 pkgname=mpv-full-git
-pkgver=0.26.0.r134.g7397e8ab42
-pkgrel=2
+pkgver=0.27.0.r3.g2f41b834b3
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -33,8 +33,15 @@ makedepends=('git' 'mesa' 'python-docutils' 'ladspa')
 provides=('mpv')
 conflicts=('mpv' 'mpv-git')
 options=('!emptydirs')
-source=("$pkgname"::'git+https://github.com/mpv-player/mpv.git')
-sha256sums=('SKIP')
+source=("$pkgname"::'git+https://github.com/mpv-player/mpv.git'
+        '0001-opengl-backend-support-multiple-backends.patch')
+sha256sums=('SKIP'
+            '609e0530f1b0cdb910dcffb5f62bf55936540e24105ce1b2daf1bd6291a7d58a')
+
+prepare() {
+    cd "$pkgname"
+    patch -Np1 -i "${srcdir}/0001-opengl-backend-support-multiple-backends.patch"
+}
 
 pkgver() {
     cd "$pkgname"
