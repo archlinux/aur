@@ -394,6 +394,7 @@ package() {
   local _qpienvexecfn=qpi-env-exec
 
   local _installed_dir="${pkgdir}/${_sysroot}/${_baseprefix}"
+  local _installed_dir_sans_sysroot_offset="${pkgdir}/${_baseprefix}"
 
   rm -Rf ${_libspkgdir} ${_libsdebugpkgdir} ${pkgdir}
   mkdir -p ${_libspkgdir} ${_libsdebugpkgdir} ${pkgdir}
@@ -401,18 +402,20 @@ package() {
   cd "${_bindir}"
   INSTALL_ROOT="$pkgdir" make install || exit 1
 
+  cd $(dirname ${_installed_dir})
+  find $(basename ${_installed_dir}) -name '*.debug' -exec cp --parents '{}' ${_libsdebugpkgdir} \; -exec rm '{}' \;
+
+  if $_static_build; then
+    mv ${_installed_dir} ${_installed_dir_sans_sysroot_offset}
+  else
+    mv ${_installed_dir} ${_libspkgdir}
+  fi
+
   cp ${_bindir}/configure_line ${_bindir}/config.summary ${_basepkgdir}
   cp ${_bindir}/configure_line ${_bindir}/config.summary ${_libspkgdir}
 
   cp ${startdir}/PKGBUILD.libs ${_libspkgbuild}
   cp ${startdir}/PKGBUILD.libs.debug ${_libsdebugpkgbuild}
-
-  cd $(dirname ${_installed_dir})
-  find $(basename ${_installed_dir}) -name '*.debug' -exec cp --parents '{}' ${_libsdebugpkgdir} \; -exec rm '{}' \;
-
-  if ! $_static_build; then
-    mv ${_installed_dir} ${_libspkgdir}
-  fi
 
   # set correct libs version
   sed -i "s/libspkgrel/${pkgrel}/" ${_libspkgbuild} || exit 1
@@ -435,8 +438,6 @@ package() {
     cp -L ${startdir}/${_qpienvexecfn} ${_pkgbindir} || exit 1
     sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/${_profiledfn} || exit 1
   fi
-
-  #cp ${_bindir}/qtbase/config.status ${_libspkgdir}/${_installprefix}
 
 if ! $_static_build; then
   cd ${_libsdir}
