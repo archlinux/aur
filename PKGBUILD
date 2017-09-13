@@ -2,7 +2,8 @@
 
 pkgname=thor-codec
 _pkg=thor
-pkgver=r134.8d9e0c8
+pkgver=r204.2b2edc8
+# Versioned like h265
 pkgrel=1
 url=https://tools.ietf.org/html/draft-fuldseth-netvc-thor
 pkgdesc="The Thor video codec is a block-based hybrid video codec similar in structure to widespread standards."
@@ -31,7 +32,8 @@ build() {
 }
 
 package() {
-  # Binaries on src/thor/build directory
+# Binaries on src/thor/build directory
+# Look like the makefile not have a install option
 #  cd "${srcdir}/${_pkg}"
 #
 #  make DESTDIR=${pkgdir} prefix=/usr \
