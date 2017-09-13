@@ -1,6 +1,6 @@
 pkgbase = din
 	pkgdesc = A sound synthesizer and musical instrument.
-	pkgver = 28
+	pkgver = 29
 	pkgrel = 1
 	url = http://dinisnoise.org/
 	install = din.install
@@ -12,10 +12,10 @@ pkgbase = din
 	depends = libgl
 	depends = sdl
 	depends = tcl
-	source = https://archive.org/download/dinisnoise_source_code/din-28.tar.gz
+	source = https://archive.org/download/dinisnoise_source_code/din-29.tar.gz
 	source = din.png
 	source = din.desktop
-	md5sums = 8d7740358735febc10df72086ea2a09d
+	md5sums = a55e6eb3f1e112150481ad75894b3ea4
 	md5sums = 50ca4dc107eaa0d5b6a1efe21c469bd7
 	md5sums = e38840354b0f197079e6bbeda03c8613
 

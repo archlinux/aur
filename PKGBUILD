@@ -1,7 +1,7 @@
 # Maintainer: muzhed <chustokes@126.com>
 
 pkgname=din
-pkgver=28
+pkgver=29
 pkgrel=1
 pkgdesc="A sound synthesizer and musical instrument."
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ install=$pkgname.install
 source=("https://archive.org/download/dinisnoise_source_code/$pkgname-$pkgver.tar.gz"
         din.png
         din.desktop)
-md5sums=('8d7740358735febc10df72086ea2a09d'
+md5sums=('a55e6eb3f1e112150481ad75894b3ea4'
          '50ca4dc107eaa0d5b6a1efe21c469bd7'
          'e38840354b0f197079e6bbeda03c8613')
 
