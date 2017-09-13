@@ -12,7 +12,7 @@
 # Contributor: Noel Kuntze <noel@familie-kuntze.de>
 
 pkgname=ansible-git
-pkgver=2.4.0.29615.11138abc51
+pkgver=2.5.0.32862.2cdf31d3a2
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
@@ -39,6 +39,7 @@ build() {
   cd "${srcdir}/${pkgname}"
   git submodule update --init --recursive
   make PYTHON=python2
+  sed -i 's,^#!/usr/bin/env python$,\02,' docs/bin/generate_man.py
   make docs
 }
 
