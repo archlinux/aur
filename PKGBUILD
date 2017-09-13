@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=racktables
-pkgver=0.20.13
+pkgver=0.20.14
 pkgrel=1
 pkgdesc="Datacenter and server room asset management web-software"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('mariadb-clients' 'php' 'php-gd')
 optdepends=('php-snmp')
 source=("https://downloads.sourceforge.net/project/racktables/RackTables-${pkgver}.tar.gz")
-md5sums=('3f752aa6cf689c47abdfb1bceb0bec6e')
+md5sums=('596668a2dcbe39a62e35583727b3f956')
 
 package() {
   cd "${srcdir}/RackTables-${pkgver}"

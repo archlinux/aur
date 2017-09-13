@@ -1,6 +1,6 @@
 pkgbase = racktables
 	pkgdesc = Datacenter and server room asset management web-software
-	pkgver = 0.20.13
+	pkgver = 0.20.14
 	pkgrel = 1
 	url = http://racktables.org/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = racktables
 	depends = php
 	depends = php-gd
 	optdepends = php-snmp
-	source = https://downloads.sourceforge.net/project/racktables/RackTables-0.20.13.tar.gz
-	md5sums = 3f752aa6cf689c47abdfb1bceb0bec6e
+	source = https://downloads.sourceforge.net/project/racktables/RackTables-0.20.14.tar.gz
+	md5sums = 596668a2dcbe39a62e35583727b3f956
 
 pkgname = racktables
 
