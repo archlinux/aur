@@ -6,7 +6,7 @@ pkgbase = synergy2-bin
 	install = synergy2-bin.install
 	arch = x86_64
 	license = unknown
-	depends = aarch64-linux-gnu-gcc>=5.2
+	depends = gcc>=5.2
 	depends = bash-completion>=1.18.
 	depends = gcc-libs>=3.0
 	depends = hicolor-icon-theme
