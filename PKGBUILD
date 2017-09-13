@@ -4,7 +4,7 @@
 
 pkgname=gimp-apng
 pkgver=0.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A GIMP plugin to support animated PNG (APNG)."
 url="http://sourceforge.net/projects/gimp-apng/"
 makedepends=("intltool")
@@ -14,9 +14,6 @@ license=("GPL")
 provides=("gimp-plugin-apng" "gimp-apng")
 conflicts=("gimp-plugin-apng")
 source=("http://downloads.sourceforge.net/project/gimp-apng/gimp-apng-dev/0.1.0/${pkgname}-${pkgver}.tar.bz2")
-options=(makeflags)
-
-LDFLAGS=-Wl,-O1,--sort-common,-lm,-z,relro
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
