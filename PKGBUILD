@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=lr-git
-pkgver=0.2.r5.ge6e48c7
+pkgver=1.0.r5.g4b154cd
 pkgrel=1
 epoch=
 pkgdesc="List files, recursively"
