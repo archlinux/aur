@@ -22,7 +22,7 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i "${srcdir}/${pkgname}_${pkgver}-${_dmover}.diff"
 
-  # Paranoia: remove binaries, make sure they aren't used
+  # Paranoia! remove binaries, make sure they aren't used
   rm -rf bin lib
 
   # If java-environement is installed for the first time
@@ -43,7 +43,7 @@ prepare() {
   sed -i 's|/usr/local/ssl/lib|/usr/lib|' premake.lua
   sed -i 's|/usr/lib/jvm/java-6-sun/include|$JAVA_HOME/include|' premake.lua
 
-  # Can't build with openssl 1.1 so use openssl-1.0 instead... patch welcome
+  # Can't build with openssl 1.1 so use openssl-1.0 instead... a patch's welcome
   sed -i 's|OPENSSL_INCLUDE = "/usr/include"|OPENSSL_INCLUDE = "/usr/include/openssl-1.0"|' premake.lua
   sed -i 's|OPENSSL_LIB = "/usr/lib"|OPENSSL_LIB = "/usr/lib/openssl-1.0"|' premake.lua
   sed -i 's|/usr/local/ssl/include|/usr/include/openssl-1.0|' *.make
@@ -79,10 +79,11 @@ package() {
 
   # Install resources
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
-  cp ./debian/HostKeyCertificate_PS3.txt "${pkgdir}/usr/share/${pkgname}/HostKeyCertificate.txt"
-  cp ./debian/ProcessingDeviceKeysSimple.txt "${pkgdir}/usr/share/${pkgname}/"
+  cp -v ./debian/HostKeyCertificate_PS3.txt "${pkgdir}/usr/share/${pkgname}/HostKeyCertificate.txt"
+  cp -v ./debian/ProcessingDeviceKeysSimple.txt "${pkgdir}/usr/share/${pkgname}/"
 
-  # Author just say is public domain on upstream usr forum thread once but later 
-  #        it went MiA so no full license or ammend exist.
+  # Author just say is public domain on upstream user forum thread once but later 
+  # 	it went MiA so no full license or ammend exist for the next maintainer
+  #	who update it more and neither for the last one responsible of this version.
   #install -D -m644 "${srcdir}/license" "${pkgdir}/usr/share/licenses/${pkgbase}/license"
 }
