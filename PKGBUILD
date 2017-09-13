@@ -164,6 +164,8 @@ _source_package_name=${_qt_package_name_prefix}-${_pkgver}
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
 
+$_static_build || _additional_configure_flags="$_additional_configure_flags -hostprefix ${_installprefix}"
+
 pkgdesc="Qt SDK for the Raspberry Pi 1/2/3"
 arch=("x86_64")
 url="http://chaos-reins.com/qpi/"
@@ -343,7 +345,6 @@ if $_target_host; then
 else
   local _configure_line="${_srcdir}/configure \
                  ${_core_configure_options} \
-                 -hostprefix ${_installprefix} \
                  -qtlibinfix "Pi${_piver}" \
                  -sysroot ${_sysroot} \
                  -device ${_mkspec} \
