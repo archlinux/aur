@@ -8,7 +8,7 @@
 _srcname=mpv
 pkgname=mpv-full
 pkgver=0.26.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -34,8 +34,16 @@ makedepends=('mesa' 'python-docutils' 'ladspa')
 provides=('mpv')
 conflicts=('mpv' 'mpv-git' 'mpv-full-git')
 options=('!emptydirs')
-source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz")
-sha256sums=('daf3ef358d5f260f2269f7caabce27f446c291457ec330077152127133b71b46')
+source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz"
+        '0001-opengl-backend-support-multiple-backends.patch')
+sha256sums=('daf3ef358d5f260f2269f7caabce27f446c291457ec330077152127133b71b46'
+            '609e0530f1b0cdb910dcffb5f62bf55936540e24105ce1b2daf1bd6291a7d58a')
+
+
+prepare() {
+    cd "${_srcname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/0001-opengl-backend-support-multiple-backends.patch"
+}
 
 build() {
     cd "${_srcname}-${pkgver}"
