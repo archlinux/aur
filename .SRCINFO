@@ -1,34 +1,35 @@
 pkgbase = gradio
 	pkgdesc = A GTK3 app for finding and listening to internet radio stations
-	pkgver = 5.0
-	pkgrel = 2
+	pkgver = 6.0
+	pkgrel = 1
 	url = https://github.com/haecker-felix/gradio
-	install = gradio.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = unzip
 	makedepends = gnome-common
-	makedepends = intltool
-	makedepends = itstool
+	makedepends = meson
+	makedepends = gettext
+	makedepends = appstream-glib
 	makedepends = vala
 	makedepends = yelp-tools
-	makedepends = cmake
 	depends = desktop-file-utils
 	depends = gstreamer
 	depends = gst-plugins-ugly
 	depends = gst-plugins-bad
+	depends = gtk3
+	depends = gobject-introspection
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = json-glib
 	depends = libgee
+	depends = sqlite3
 	depends = libsoup
-	provides = gradio=5.0
+	provides = gradio=6.0
 	conflicts = gradio-git
 	conflicts = gradio-bin
 	options = !emptydirs
-	source = https://github.com/haecker-felix/gradio/archive/v5.0.zip
-	md5sums = 4c61f411f9e90e5e202aabcabe71e1f7
+	source = https://github.com/haecker-felix/gradio/archive/v6.0.tar.gz
+	sha256sums = e52c72b50d12242b98dd716a6c18889873318bb25dcd70fb27b930a5ba451ea2
 
 pkgname = gradio
 
