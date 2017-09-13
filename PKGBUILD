@@ -1,6 +1,6 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com> 
 pkgname=svp
-pkgver=4.1.0.114
+pkgver=4.1.0.118
 pkgrel=1
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
@@ -9,7 +9,7 @@ url="https://www.svp-team.com/wiki/SVP:Linux"
 license=('custom')
 groups=()
 depends=(libmediainfo qt5-svg qt5-script vapoursynth libusb xdg-utils lsof)
-makedepends=(p7zip qt-installer-framework libxml2)
+makedepends=(p7zip qt-installer-framework)
 checkdepends=()
 optdepends=(
 	'mpv-git: needed for mpv vapoursynth support'
@@ -29,7 +29,7 @@ source=("https://gist.githubusercontent.com/phiresky/1e2cbd30bed4e5978771af232d1
 # at https://gist.github.com/phiresky/1e2cbd30bed4e5978771af232d11afd1
 # so they are correctly versioned and old versions still exist
 noextract=()
-sha1sums=('e3e7118b890719eb4020222c5beddbac564911ab')
+sha1sums=('158a422f02ffacad3a26536dc5716c4dd4b49954')
 validpgpkeys=()
 
 prepare() {
@@ -40,9 +40,9 @@ prepare() {
 	done
 }
 
-pkgver() {
-	xmllint --xpath '/Updates/PackageUpdate[Name="core.full"]/Version/text()' "$srcdir/installer/metadata/Updates.xml" | tr '-' '.'
-}
+#pkgver() {
+#	xmllint --xpath '/Updates/PackageUpdate[Name="core.full"]/Version/text()' "$srcdir/installer/metadata/Updates.xml" | tr '-' '.'
+#}
 
 package() {
 	mkdir -p "$pkgdir"/{opt/svp,usr/bin,usr/share/licenses/svp}
