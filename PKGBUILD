@@ -2,10 +2,12 @@
 # Contributor: BlackLotus89 <maxmusterm@gmail.com>
 
 pkgname=toybox
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="A BSD-licensed alternative to busybox"
 arch=("i686" "x86_64" "armv6h" "armv7h")
+# I have no problems adding those architectures but in the moment that I get a single
+# complain that not work the I will remove them
 license=("BSD")
 url="http://landley.net/toybox/"
 #makedepends=('')
@@ -17,7 +19,7 @@ source=("${pkgname}-${pkgver}.tar.gz::http://landley.net/${pkgname}/downloads/${
 build() {
  cd "${srcdir}/${pkgname}-${pkgver}"
 
- msg "Runing script/make.sh to allow YOU to select the options as upstream want"
+ msg "Runing script/make.sh to allow YOU to select the options as upstream want, yeah they ask me to do this"
  make menuconfig
  bash scripts/make.sh
 }
@@ -35,4 +37,5 @@ package() {
  install -m755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/"
  cp "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/toybox/"
 }
-md5sums=('6fa2a001402cb067ba541e0d8948da50')
+
+md5sums=('55ea59a31c7da9510c8fabe70f4bc561')
