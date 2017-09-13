@@ -1,7 +1,7 @@
 pkgbase = archlinux-artwork
 	pkgdesc = Official logos, icons, CD labels and other artwork for Arch Linux
 	pkgver = 1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.archlinux.org/
 	arch = any
 	license = CCPL:cc-by-nc-sa
