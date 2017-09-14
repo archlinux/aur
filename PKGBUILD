@@ -5,7 +5,7 @@
 pkgname=cairo-infinality-ultimate
 _name=cairo
 pkgver=1.15.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Cairo vector graphics library"
 arch=(i686 x86_64)
 license=('LGPL' 'MPL')
@@ -25,14 +25,12 @@ source=("git+https://anongit.freedesktop.org/git/cairo#tag=1.15.8"
         cairo-make-lcdfilter-default.patch
         cairo-respect-fontconfig_pb.patch
         cairo-server-side-gradients.patch
-        cairo-webkit-html5-fix.patch
-	cairo-color-glyphs.patch)
+        cairo-webkit-html5-fix.patch)
 sha1sums=('SKIP'
           'b0cc2466cc5479f055ca2148cfa37fe13a1e78a6'
           'd8ffcb4c4745f7e61671109362a80a872ac989d3'
           '72ecf2dda8462e1588512de257ccbe18642d507f'
-          '5bff494f52a16114f4cf6d04bfb0b9d7c4e9da23'
-          'c25463ce365627ba55a2614d4542e17ca6ac7d51')
+          '5bff494f52a16114f4cf6d04bfb0b9d7c4e9da23')
 
 prepare(){
   cd $_name
