@@ -1,7 +1,7 @@
 pkgbase = desktime
 	pkgdesc = Desktime client for Linux (beta)
-	pkgver = 1.41
-	pkgrel = 1
+	pkgver = 1.47
+	pkgrel = 0
 	url = http://desktime.com
 	install = desktime.install
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = desktime
 	depends = hicolor-icon-theme
 	depends = libappindicator-gtk2
 	depends = libxss
-	source = https://new.desktime.com/updates/linux/update/beta?x64
-	md5sums = 3c444318b85b41d17957e92c96d1ecbd
+	source = https://desktime.com/storage/updates/linux/beta/desktime-linux_1.47_x64.deb
+	md5sums = ba5aaf966a204e64789f8c1107f33061
 
 pkgname = desktime
 
