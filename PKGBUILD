@@ -2,7 +2,7 @@
 pkgname=msbuild-15-bin
 _pkgver=15.5+xamarinxplat.2017.08.16.12.03-0xamarin3+ubuntu1404b1
 pkgver=${_pkgver//[+-]/_}
-pkgrel=1
+pkgrel=3
 pkgdesc="Xamarin implementation of the Microsoft build system"
 arch=('x86_64')
 depends=('mono>=5.0.0')

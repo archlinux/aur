@@ -1,7 +1,7 @@
 pkgbase = msbuild-15-bin
 	pkgdesc = Xamarin implementation of the Microsoft build system
 	pkgver = 15.5_xamarinxplat.2017.08.16.12.03_0xamarin3_ubuntu1404b1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mono/msbuild
 	arch = x86_64
 	license = MIT
