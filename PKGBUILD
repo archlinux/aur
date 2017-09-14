@@ -4,7 +4,7 @@
 _pkgname="mitsuba-blender"
 pkgname="${_pkgname}-hg"
 pkgver=105.70361d3b0956
-pkgrel=1
+pkgrel=2
 pkgdesc="Mitsuba integration plugin for blender, based on luxrender luxblend code"
 arch=('any')
 url="https://www.mitsuba-renderer.org/repos/exporters/mitsuba-blender"
