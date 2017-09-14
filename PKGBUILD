@@ -9,7 +9,7 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=1.9.7
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ options=('!emptydirs')
 depends=('vagrant-substrate' 'libyaml')
 makedepends=('openssl-1.0')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz)
-md5sums=('1c341a4b5912a1fbfd8e809eb2d4888d')
+md5sums=('fbe4a04cffb6274d28fbc7d23551170c')
 
 build() {
   cd $pkgname-$pkgver
