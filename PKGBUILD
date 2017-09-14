@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/zebulon2/rtl8812au/tree/v5.1.5"
 license=('GPL2')
 depends=('dkms')
-makedepends=('git','bc','linux-headers')
+makedepends=('git' 'bc' 'linux-headers')
 conflicts=("${_pkgbase}")
 source=("git+https://github.com/zebulon2/rtl8812au.git"
         'dkms.conf')
