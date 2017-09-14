@@ -5,22 +5,32 @@
 
 _reponame=tagparser
 pkgname=tagparser
-pkgver=6.4.0
+pkgver=6.4.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='C++ library for reading and writing MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska tags'
 license=('GPL')
 depends=('c++utilities' 'zlib')
 makedepends=('cmake')
+checkdepends=('cppunit' 'openssl')
 optdepends=("$pkgname-doc: API documentation")
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('375030831b576fe0cdcd012c156ec178caa8d1670f42d8069a1a115707e865a4')
+sha256sums=('f2e936138ac391f39dd700384060cb00181013ea435ae148f8420f7fbce26bd6')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr"
   make
+}
+
+check() {
+  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+  if [[ $TEST_FILE_PATH ]]; then
+    make check
+  else
+    msg2 'Skipping execution of testsuite because the environment variable TESTFILE_PATH is not set.'
+  fi
 }
 
 package() {
