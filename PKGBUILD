@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Kosteley <zzismd@gmail.com>
 _pkgname=screenshotgun
 pkgname=$_pkgname-git
-pkgver=0.16_20170914_1
+pkgver=0.16_20170914_2
 pkgrel=1
 pkgdesc="Open cross-platform screenshoter with cloud support and server part"
 arch=(any)
@@ -22,6 +22,11 @@ source=("$_pkgname::git+https://github.com/ismd/screenshotgun.git")
 noextract=()
 sha256sums=()
 md5sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  git checkout tags/v0.16_20170914_2
+}
 
 build() {
   mkdir "$srcdir/build-$_pkgname"
