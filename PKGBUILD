@@ -37,8 +37,8 @@ build() {
   [ -d build ] || mkdir build && cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_C_FLAGS="-O3 -fno-omit-frame-pointer" \
-    -DCMAKE_CXX_FLAGS="-O3 -fno-omit-frame-pointer" \
+    -DCMAKE_C_FLAGS="-O2 -fno-omit-frame-pointer" \
+    -DCMAKE_CXX_FLAGS="-O2 -fno-omit-frame-pointer" \
     -DCMAKE_INSTALL_PREFIX:PATH=/ \
     -DCMAKE_SKIP_RPATH=On \
     ..
