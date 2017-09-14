@@ -12,7 +12,7 @@
 # update and just generally don't seem to care much.
 pkgname=synergy
 pkgver=1.8.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='https://symless.com/synergy/'
 arch=('i686' 'x86_64')
@@ -20,19 +20,19 @@ license=('GPL2')
 depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi' 'curl' 'openssl')
 makedepends=('libxt' 'cmake' 'qt5-base' 'gmock' 'gtest')
 optdepends=('qt5-base: gui support')
-source=(synergy-${pkgver}.tar.gz::https://github.com/symless/synergy/archive/v${pkgver}-stable.tar.gz
+source=(synergy-${pkgver}.tar.gz::https://github.com/symless/synergy-core/archive/v${pkgver}-stable.tar.gz
         openssl11.patch
         system-gtest.patch
         synergys.socket
         synergys.service)
-sha512sums=('b4909930af7da10d877297e674df4c042ec54333eed585334da4a8c834c0ca3ad7c93fd2436c7d8d2f0e9e039d7bd385bb9e8a8c706750cbab3c3664a9b16bc6'
+sha512sums=('dafb6c9d8d872dcf17bce6c28674fedd8cb26ed11cbf3fb6992fa5046eebb46af04eeee1861649dec0aa8d7fe3b426bdefb461df44912394ecfdfce9e92fb799'
             'ba93295d5638581ac0a82c293016563e2faf4228b6c920bfe1df86b254841a88baf55f220574e93af1c718d689a8f8f1ad494c2ca685f8ea01a506a1bc6e1642'
             '4bef039f59b565d08079a8187df76f9773cfddeb81376ccc42f5570049389f114559721ed7b0464c4a4d1431ba72a736b11755573019583d0075d9da08c03ed2'
             'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
             '9663a11b915e10e60317e732a4d1191e8f8ff19176994c27dd20aa445daab7565bd624e5575c9c639d144293879fbe8376834a076723f778fd322ebd1c9f2029')
 
 prepare() {
-  cd synergy-${pkgver}-stable
+  cd synergy-core-${pkgver}-stable
   mkdir build
   # get rid of shitty bundled gtest and gmock
   patch -p1 < "${srcdir}/system-gtest.patch"
@@ -40,7 +40,7 @@ prepare() {
 }
 
 build() {
-  cd synergy-${pkgver}-stable
+  cd synergy-core-${pkgver}-stable
 
   msg2 "Building core..."
   (cd build
@@ -58,12 +58,12 @@ build() {
 }
 
 check() {
-  cd synergy-${pkgver}-stable
+  cd synergy-core-${pkgver}-stable
   ./bin/unittests
 }
 
 package() {
-  cd synergy-${pkgver}-stable
+  cd synergy-core-${pkgver}-stable
 
   # install binary
   install -Dm 755 bin/{synergy,synergyc,synergyd,synergys,syntool,usynergy} -t "${pkgdir}/usr/bin"
