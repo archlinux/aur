@@ -14,13 +14,14 @@ _id=404
 
 pkgname=scangearmp-${_name}
 pkgver=2.00
-pkgrel=2
+pkgrel=3
 _pkgver=2.00-1
 pkgdesc="Canon Scanner Driver (for ${_name} series)"
 url="http://support-my.canon-asia.com/contents/MY/EN/0100470802.html"
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('gtk2' 'sane' 'libusb-compat' 'gimp')
+depends=('gtk2' 'libusb-compat')
+makedepends=('gimp' 'sane')
 install=scangearmp-mg3200.install
 source=(
     http://gdlp01.c-wss.com/gds/8/0100004708/01/scangearmp-source-${_pkgver}.tar.gz
