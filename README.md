@@ -13,12 +13,3 @@ Here's a list of existing Rooster for Arch Linux contributors:
 - [ReStrictOr on AUR](https://aur.archlinux.org/account/ReStrictOr)
 
 Thank you very much for your help!  :smiley:  :heart:
-
-## Donations
-
-Rooster for Arch Linux is and will remain free for everyone. If you feel like making a donation, I appreciate it though. Here are a few ways you can donate to support Rooster development:
-
-- with Bitcoin (BTC): `19RGQFospZxiyEHuAEY57kExiR1dbq77yq`
-- with Litecoin (LTC): `LgfQ8Poj5s8MsXvVbHPkf2WbuxQgPmjtjk`
-
-If you cannot afford to donate, that's OK too. Just enjoy Rooster on Arch! :-)
