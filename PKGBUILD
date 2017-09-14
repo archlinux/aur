@@ -1,7 +1,7 @@
 # Maintainer: Oliver Mangold <o.mangold@gmail.com>
 
 pkgname=nfs-ganesha
-pkgver=2.5.1.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Nfs-ganesha supports both the NFS and 9P protocols."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://nfs-ganesha.github.io/"
 license=('GPL3')
 depends=()
 makedepends=('cmake' 'gcc' 'bison' 'flex')
-source=('git://github.com/nfs-ganesha/nfs-ganesha.git#commit=5b40e075bde08feb72bd7d7584d6bed9fff31a5c')
+source=('git://github.com/nfs-ganesha/nfs-ganesha.git#commit=49d6948db2ef5e922423015165a9052bcfb250fc')
 md5sums=('SKIP')
 
 backup=(etc/ganesha/ganesha.conf etc/sysconfig/ganesha)
