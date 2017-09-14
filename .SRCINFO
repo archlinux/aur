@@ -1,0 +1,20 @@
+pkgbase = perl-cgi-session-serialize-yaml
+	pkgdesc = Perl/CPAN Module CGI::Session::Serialize::yaml: Add YAML and YAML::Syck support to CGI::Session's serializers
+	pkgver = 4.26
+	pkgrel = 1
+	url = https://metacpan.org/release/CGI-Session-Serialize-yaml
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-pod
+	makedepends = perl-module-build>=0.36
+	depends = perl-cgi-session>=4.3
+	optdepends = perl-yaml: YAML support
+	optdepends = perl-yaml-syck: YAML::Syck support
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/CGI-Session-Serialize-yaml-4.26.tgz
+	md5sums = 29f35caaf1de910c0a99bdc9b2f05264
+	sha512sums = b48850a0566e6c22e2deecbc02ba4d6b4997b7ba657ca8f72ffe958ddc787d5b28a406044edf7785fd3da2bbe5ff94320edd69c175d7009b2049523f49522abb
+
+pkgname = perl-cgi-session-serialize-yaml
+
