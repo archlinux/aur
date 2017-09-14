@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=GPMD85Emulator
+Comment=Emulator of PMD85
+Exec=/usr/bin/GPMD85emu
+Icon=/usr/share/pixmaps/gpmd85emulator.bmp
+Categories=System;Emulator;
