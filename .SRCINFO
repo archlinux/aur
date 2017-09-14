@@ -1,8 +1,9 @@
 pkgbase = sqliteodbc
 	pkgdesc = ODBC driver for SQLite
 	pkgver = 0.9995
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ch-werner.de/sqliteodbc/
+	install = sqliteodbc.install
 	arch = i686
 	arch = x86_64
 	license = BSD

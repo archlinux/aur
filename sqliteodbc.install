@@ -1,0 +1,29 @@
+post_install() {
+	odbcinst -i -d -r <<-EOS
+[SQLite3]
+Description=SQLite ODBC Driver
+Driver=/usr/lib64/libsqlite3odbc.so
+Setup=/usrl/lib64/libsqlite3odbc.so
+Threading=2
+
+[SQLite]
+Description=SQLite ODBC Driver
+Driver=/usr/lib64/libsqliteodbc.so
+Setup=/usrl/lib64/libsqliteodbc.so
+Threading=2
+	EOS
+}
+
+pre_upgrade() {
+	odbcinst -u -d -n "SQlite"
+	odbcinst -u -d -n "SQlite3"
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	odbcinst -u -d -n "SQlite"
+	odbcinst -u -d -n "SQlite3"
+}
