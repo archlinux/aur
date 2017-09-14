@@ -1,7 +1,7 @@
 pkgbase = powershell-bin
 	pkgdesc = A cross-platform automation and configuration tool/framework (binary package)
-	pkgver = 6.0.0.beta.5
-	pkgrel = 2
+	pkgver = 6.0.0.beta.7
+	pkgrel = 1
 	url = https://github.com/Powershell/Powershell
 	install = powershell.install
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = powershell-bin
 	conflicts = powershell
 	options = staticlibs
 	options = !strip
-	source = https://github.com/PowerShell/PowerShell/releases/download/v6.0.0-beta.5/powershell_6.0.0-beta.5-1ubuntu1.16.04.1_amd64.deb
-	md5sums = a9473349320d7544a3fbdba793c66f54
+	source = https://github.com/PowerShell/PowerShell/releases/download/v6.0.0-beta.7/powershell_6.0.0-beta.7-1ubuntu1.16.04.1_amd64.deb
+	md5sums = 725a93bb5cc730abbf1d1d301c82abba
 
 pkgname = powershell-bin
 
