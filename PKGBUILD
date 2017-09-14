@@ -4,29 +4,30 @@
 
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=0.30.0
+pkgver=0.31.0
 pkgrel=1
 pkgdesc="Free and open traffic simulation suite which allows modelling of intermodal traffic systems including road vehicles, public transport and pedestrians."
 arch=('i686' 'x86_64')
 url="http://sumo.dlr.de"
 license=('GPL')
-depends=('gcc-libs' 'glibc' 'fox' 'xerces-c' 'glu' 'libgl' 'proj' 'gdal')
+depends=('fox' 'xerces-c' 'gdal')
 makedepends=('make' 'gcc' 'help2man')
 source=("${pkgbase}-src-${pkgver}.tar.gz::http://prdownloads.sourceforge.net/${pkgbase}/${pkgbase}-src-${pkgver}.tar.gz?download"
         "${pkgbase}-doc-${pkgver}.tar.gz::http://prdownloads.sourceforge.net/${pkgbase}/${pkgbase}-doc-${pkgver}.tar.gz?download"
         "${pkgbase}.desktop"
         "${pkgbase}.sh")
 
-sha256sums=('2f0825507d756979658061847f47c5d91ec2e5c07e7ebd8839a31ab08ecde742'
-            'c0b6b23435233c6dfa0c1c7cb5e536cb67d6e41fa504d52c54365ebeb56d7789'
+sha256sums=('39d3251a6ae860bc1002f6568d1f4c760823f48b1e38a60acadf286f0e7fbb05'
+            'dd5a9e662e7dcfe05e16d1755964b7ffd4bfbfc4ce13536221763f9c6f4f58eb'
             '0500ba9cdf827cceae9a9bce66094bdb077300c94b0040bdd710afb92d0d4849'
             '16db32dbba617f8a38f5d103ce3af7cc70ab4cbf5b50e30be5d7f13ee6ea2f4f')
 
 prepare() {
     cd ${srcdir}/${pkgbase}-${pkgver}
     # replace python with python2 in shebangs
-    find . -iname \*.py -exec sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/env python2/' {} \;
-    find . -iname \*.py -exec sed -i 's/#!\/usr\/bin\/python/#!\/usr\/bin\/python2/' {} \;
+    find . -iname \*.py  -exec sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/env python2/' {} \;
+    find . -iname \*.pyw -exec sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/env python2/' {} \;
+    find . -iname \*.py  -exec sed -i 's/#!\/usr\/bin\/python/#!\/usr\/bin\/python2/' {} \;
 
     # test if there are still py-files without shebangs
     for f in $(find . -iname \*.py)
@@ -155,5 +156,3 @@ package_sumo-doc() {
 
     rm -rf ${pkgdir}/usr/share/doc/${pkgbase}/man
 }
-
-
