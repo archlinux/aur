@@ -3,7 +3,7 @@
 
 _basename=fontconfig
 pkgname=lib32-$_basename-infinality-ultimate
-pkgver=2.12.3
+pkgver=2.12.5
 pkgrel=1
 _master_name=fontconfig-ultimate-master
 pkgdesc="A library for configuring and customizing font access (32-bit, infinality-bundle)"
@@ -18,8 +18,10 @@ provides=('lib32-fontconfig')
 conflicts=('lib32-fontconfig')
 install="lib32-fontconfig.install"
 
-source=(http://www.fontconfig.org/release/${_basename}-${pkgver}.tar.bz2)
-sha1sums=('408f933548bdc9ad912bc66d0fba22a8a4612d8b')
+source=(http://www.fontconfig.org/release/${_basename}-${pkgver}.tar.bz2
+        lib32-fontconfig.hook)
+sha1sums=('edacb706ac3ef51034cc3f335faeb76e0c15f532'
+          '765f355f84c200b9ca4e0ea3c69c41474167fc84')
 
 build() {
   export CC="gcc -m32"
@@ -56,5 +58,6 @@ package() {
   find "${pkgdir}/usr/bin" -not -type d -not -name fc-cache -delete
   mv "${pkgdir}"/usr/bin/fc-cache{,-32}
   mkdir -p "${pkgdir}/usr/share/licenses"
+  install -Dm644 ../lib32-fontconfig.hook "$pkgdir/usr/share/libalpm/hooks/lib32-fontconfig.hook"
   ln -s ${_basename} "${pkgdir}/usr/share/licenses/${pkgname}"
 }
