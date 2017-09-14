@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emms-git
-pkgver=20170901
+pkgver=20170913
 pkgrel=1
 pkgdesc="Emacs MultiMedia System -- git version"
 arch=('i686' 'x86_64')
