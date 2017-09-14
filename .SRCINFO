@@ -1,7 +1,7 @@
 pkgbase = glibc-wsl
 	pkgdesc = GNU C Library
 	pkgver = 2.26
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.gnu.org/software/libc
 	install = glibc.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = glibc-wsl
 	depends = tzdata
 	depends = filesystem
 	optdepends = gd: for memusagestat
-	provides = glibc=2.26-3
+	provides = glibc=2.26-4
 	conflicts = glibc
 	options = !strip
 	options = staticlibs
@@ -26,12 +26,16 @@ pkgbase = glibc-wsl
 	source = locale.gen.txt
 	source = locale-gen
 	source = 0001-Don-t-use-IFUNC-resolver-for-longjmp-or-system-in-li.patch
+	source = 0002-x86-Add-x86_64-to-x86-64-HWCAP-BZ-22093.patch
 	source = 0001-Revert-linux-spawni.c-simplify-error-reporting-to-pa.patch
+	source = 0001-Revert-Assume-prlimit64-is-available.patch
 	md5sums = SKIP
 	md5sums = 07ac979b6ab5eeb778d55f041529d623
 	md5sums = 476e9113489f93b348b21e144b6a8fcf
 	md5sums = cbc073315c00b03898b7fc614274d6b3
+	md5sums = bd9b13f3294b6357baa809e4416b9f44
 	md5sums = a987eab514bee92cc627453c777896e8
+	md5sums = 5758d6e2a0ca3dbd6019063f895b64da
 
 pkgname = glibc-wsl
 

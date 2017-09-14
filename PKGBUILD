@@ -7,7 +7,7 @@
 
 pkgname=glibc-wsl
 pkgver=2.26
-pkgrel=3
+pkgrel=4
 pkgdesc='GNU C Library'
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/libc'
@@ -28,12 +28,16 @@ source=(glibc::git+https://sourceware.org/git/glibc.git#commit=${_commit}
         locale.gen.txt
         locale-gen
         0001-Don-t-use-IFUNC-resolver-for-longjmp-or-system-in-li.patch
-        0001-Revert-linux-spawni.c-simplify-error-reporting-to-pa.patch)
+        0002-x86-Add-x86_64-to-x86-64-HWCAP-BZ-22093.patch
+        0001-Revert-linux-spawni.c-simplify-error-reporting-to-pa.patch
+        0001-Revert-Assume-prlimit64-is-available.patch)
 md5sums=('SKIP'
          '07ac979b6ab5eeb778d55f041529d623'
          '476e9113489f93b348b21e144b6a8fcf'
          'cbc073315c00b03898b7fc614274d6b3'
-         'a987eab514bee92cc627453c777896e8')
+         'bd9b13f3294b6357baa809e4416b9f44'
+         'a987eab514bee92cc627453c777896e8'
+         '5758d6e2a0ca3dbd6019063f895b64da')
 
 # pkgver() {
 #   cd glibc
@@ -45,7 +49,9 @@ prepare() {
 
   cd glibc
   patch -p1 -i "$srcdir/0001-Don-t-use-IFUNC-resolver-for-longjmp-or-system-in-li.patch"
+  patch -p1 -i "$srcdir/0002-x86-Add-x86_64-to-x86-64-HWCAP-BZ-22093.patch"
   patch -p1 -i "$srcdir/0001-Revert-linux-spawni.c-simplify-error-reporting-to-pa.patch"
+  patch -p1 -i "$srcdir/0001-Revert-Assume-prlimit64-is-available.patch"
 }  
 
 build() {
