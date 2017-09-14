@@ -9,7 +9,6 @@ arch=("any")
 url="https://www.syntevo.com/smartgit/preview"
 license=('custom')
 depends=("java-environment" "python" "hicolor-icon-theme")
-makedepends=("desktop-file-utils" "sh")
 optdepends=("mercurial: hg repositories support"
             "git: git repositories support")
 replaces=("smartgithg")
@@ -21,7 +20,6 @@ _pkgver=${pkgver//_/-}
 
 source=(https://www.syntevo.com/static/smart/download/${_appname}/${_appname}-linux-${_pkgver}.tar.gz
         smartgit.desktop)
-install="smartgit_preview.install"
 sha1sums=('16d3f4df62c6c1514620d534705250d3d61ad3c2'
           'bafa47c0b43ad89aaa3b34a078771b3cd12bd1f3')
 
