@@ -1,6 +1,6 @@
 pkgbase = pyenv-git
 	pkgdesc = Simple Python version management
-	pkgver = v1.0.0.6.rdcc109f
+	pkgver = 1.1.3.r33.g48aa0c49
 	pkgrel = 1
 	url = https://github.com/yyuu/pyenv
 	arch = any

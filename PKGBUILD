@@ -1,6 +1,6 @@
 # Maintainer: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname=pyenv-git
-pkgver=v1.0.0.6.rdcc109f
+pkgver=1.1.3.r33.g48aa0c49
 pkgrel=1
 pkgdesc='Simple Python version management'
 arch=('any')
@@ -13,9 +13,8 @@ source=("$pkgname::git+https://github.com/yyuu/pyenv")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  # Get the first part of the latest tag and append the current revision
-  echo "$(git describe --long --tags | sed 's/\(^.*\)-.*.*/\1/;s/-/./g').r$(git log --pretty=format:'%h' -n 1)"
+    cd "$pkgname"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
