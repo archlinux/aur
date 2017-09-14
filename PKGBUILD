@@ -1,6 +1,6 @@
 # Maintainer: Nikita Puzyryov <PuzyryovN@gmail.com>
 pkgname=casync-git
-pkgver=2.r3.gca268c8
+pkgver=2.r19.g624550c
 pkgrel=1
 pkgdesc="Content-Addressable Data Synchronization Tool"
 arch=(x86 x86_64)
@@ -31,7 +31,7 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname/build"
-  mesontest
+  meson test
 }
 
 package() {
