@@ -12,7 +12,7 @@
 pkgname=dpkg
 pkgver=1.18.24
 _commit=4fd7def03c96e82c03773c6eca111cf244bae8c0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Debian Package Manager.  Don't use it instead of Arch's 'pacman'."
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/dpkg"
@@ -24,14 +24,19 @@ checkdepends=('perl-io-string' 'perl-test-pod')
 source=("$pkgname::git+https://anonscm.debian.org/git/dpkg/dpkg.git#commit=$_commit")
 sha256sums=('SKIP')
 
-check() {
+pkgver() {
     cd "$pkgname"
-    #make check
+    git describe --always | sed 's/^v//; s/-/./g'
 }
 
 prepare() {
     cd "$pkgname"
     autoreconf -f -i
+}
+
+check() {
+    cd "$pkgname"
+    #make check
 }
 
 build() {
