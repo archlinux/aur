@@ -11,7 +11,7 @@ _pkgname=("${_pkgbase}"{,'-wallpapers'}
 pkgname=("${_pkgname[@]/%/-git}")
 pkgbase=${_pkgbase}-git
 pkgver=20170912.r8.g37b8800
-pkgrel=2
+pkgrel=3
 epoch=2
 arch=('any')
 url="https://github.com/PapirusDevelopmentTeam/${_pkgbase}"
@@ -29,7 +29,6 @@ pkgver() {
 prepare() {
 	cd "${pkgbase}"
 	rm -r konversation/themes/papirus{,-dark}/src
-	mv yakuake/{kns_,}skins
 }
 
 _install() {
