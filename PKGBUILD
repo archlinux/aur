@@ -2,12 +2,11 @@
 pkgname=turingcodec-git
 _gitname=turingcodec
 pkgver=r77.f7138f9
-pkgrel=2
+pkgrel=3
 pkgdesc="Alternative HEVC codec developed by BBC R&D"
 arch=('i686' 'x86_64')
 url="http://turingcodec.org/"
 license=('GPL2')
-depends=('glibc' 'gcc-libs')
 makedepends=('cmake')
 source=('git+https://github.com/bbc/turingcodec.git')
 md5sums=( SKIP )
