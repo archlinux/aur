@@ -3,18 +3,19 @@
 # Based on PKGBUILD from https://aur.archlinux.org/packages/canon-pixma-mg5200-complete/
 pkgname=cnijfilter-mp495-x86_64
 pkgver=3.40
-pkgrel=3
+pkgrel=4
 pkgdesc="mp495 cups driver"
 arch=('i686' 'x86_64')
 install="${pkgname}.install"
 license=('custom')
 url='https://www.canon.co.uk/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mp_series/pixma_mp495.aspx'
 if [[ ${CARCH} = 'x86_64' ]]; then
-  depends=('lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libtiff4' 'lib32-libxml2'  'cups')
+  depends=('lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libtiff4' 'lib32-libxml2'  'cups' 'ghostscript')
 elif [[ ${CARCH} = 'i686' ]]; then
-  depends=('popt' 'libpng12' 'libusb-compat' 'libtiff4' 'libxml2'  'cups')
+  depends=('popt' 'libpng12' 'libusb-compat' 'libtiff4' 'libxml2'  'cups' 'ghostscript')
 fi
 makedepends=('deb2targz' 'sed')
+conflicts=('cnijfilter-common')
 source=('http://files.canon-europe.com/files/soft40269/Software/MP495series_printer_driver.tar'
                'cnijfilter-mp495-x86_64.license' 
                 'cnijfilter-mp495-x86_64.install' )
