@@ -1,7 +1,7 @@
 # Maintainer: David Baer <david.a.baer@gmail.com>
 
 pkgname=sqliteodbc
-pkgver=0.9992
+pkgver=0.9995
 pkgrel=1
 pkgdesc="ODBC driver for SQLite"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ depends=('sqlite')
 url="http://www.ch-werner.de/sqliteodbc/"
 license=('BSD')
 source=(http://www.ch-werner.de/sqliteodbc/${pkgname}-${pkgver}.tar.gz)
-md5sums=('383fee316c6f89bb63a6a4503b13b90b')
-sha256sums=('f5c6119cfb688fc3d2fbc500c6cfa796538b767c511be5ab90fb6805fcd289c3')
+md5sums=('109ce39360c6dc46c3688a3df3c6cd01')
+sha256sums=('73deed973ff525195a225699e9a8a24eb42f8242f49871ef196168a5600a1acb')
 
 build() {
     cd "$srcdir/${pkgname}-$pkgver"
