@@ -2,7 +2,7 @@
 
 pkgname=('texlive-minionpro-git' 'texlive-myriadpro-git')
 pkgver=r134.165b4a7
-pkgrel=1
+pkgrel=2
 pkgdesc="generate all necessary files to use Adobe Minion Pro and Adobe Myriad Pro with (pdf)latex."
 arch=('any')
 url="https://github.com/sebschub/FontPro.git"
@@ -34,6 +34,8 @@ package_texlive-minionpro-git() {
   yes | ./scripts/makeall MinionPro
   yes | ./scripts/install "$pkgdir"/usr/share/texmf
   install -Dm644 $srcdir/minionpro.maps "$pkgdir"/var/lib/texmf/arch/installedpkgs/minionpro.maps
+  echo "minionpro $pkgver-$pkgrel" > \
+       "$pkgdir"/var/lib/texmf/arch/installedpkgs/${pkgname}_${pkgver}-${pkgrel}.pkgs
   install -Dm644 README.md "$pkgdir"/usr/share/licenses/"$pkgname"/README.md
   rm  $pkgdir/usr/share/texmf/ls-R
 }
@@ -45,6 +47,8 @@ package_texlive-myriadpro-git() {
   yes | ./scripts/makeall MyriadPro
   yes | ./scripts/install $pkgdir/usr/share/texmf
   install -Dm644 $srcdir/myriadpro.maps "$pkgdir"/var/lib/texmf/arch/installedpkgs/myriadpro.maps
+  echo "myriadpro $pkgver-$pkgrel" > \
+       "$pkgdir"/var/lib/texmf/arch/installedpkgs/${pkgname}_${pkgver}-${pkgrel}.pkgs
   install -Dm644 README.md "$pkgdir"/usr/share/licenses/"$pkgname"/README.md
   rm  $pkgdir/usr/share/texmf/ls-R
 }
