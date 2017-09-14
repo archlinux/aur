@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-meta
-pkgver=5.10
+pkgver=5.11
 pkgrel=1
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
@@ -23,6 +23,7 @@ depends=(bluedevil
          plasma-workspace-wallpapers
 	 plasma-pa
 	 plasma-sdk
+         plasma-vault
 	 kwayland-integration
 	 kwallet-pam
 	 kgamma5
