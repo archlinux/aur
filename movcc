@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/share/movfuscator/bin/movfuscator -L /usr/lib32 $@

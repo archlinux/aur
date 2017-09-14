@@ -1,0 +1,16 @@
+pkgbase = movfuscator-git
+	pkgdesc = The single instruction C compiler
+	pkgver = 2.3273164
+	pkgrel = 1
+	url = https://github.com/xoreaxeaxeax/movfuscator
+	arch = x86_64
+	license = BSD
+	makedepends = gcc-multilib
+	makedepends = git
+	provides = movcc
+	conflicts = movcc
+	source = movfuscator-git::git+https://github.com/xoreaxeaxeax/movfuscator.git
+	sha256sums = SKIP
+
+pkgname = movfuscator-git
+

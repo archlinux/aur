@@ -1,0 +1,13 @@
+diff --git a/softfloat/Makefile b/softfloat/Makefile
+index f379f37..c22cdca 100644
+--- a/softfloat/Makefile
++++ b/softfloat/Makefile
+@@ -1,7 +1,7 @@
+ CC = movcc
+ INCLUDES = -I. -I..
+ COMPILE_C = $(CC) -c $(INCLUDES) -o $@ -Wf--q
+-LINK = $(CC) -o $@
++LINK = $(CC) -L /usr/lib32 -o $@
+ 
+ ALL: softfloat32.o softfloat64.o softfloatfull.o timesoftfloat
+ 
