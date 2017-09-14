@@ -1,5 +1,5 @@
 pkgname=slack-libpurple-git
-pkgver=r70.f1238fd
+pkgver=r83.d933332
 pkgver() {
   cd "$srcdir/slack-libpurple/"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -29,5 +29,5 @@ build() {
 
 package() {
   cd "$srcdir/slack-libpurple/"
-  install -Dm755 libslack.so "$pkgdir/usr/lib/purple-2/libslack.so"
+  make DESTDIR="$pkgdir" install
 }
