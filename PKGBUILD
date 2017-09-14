@@ -15,12 +15,10 @@ sha256sums=('367f28c37b8b4ed006205dcbdeae825e5341671d4b8f610db22c071aca379445'
             'd14adaf2e933da5cbe3db564b6fbc3fb970358112b5b59e24e86e7efbfbbcd44')
 
 build() { 
-  cd "$srcdir"
   gendesk -n
 }
 
 package() {
-  cd "$srcdir"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 pno0001.exe "$pkgdir/usr/share/$pkgname/$pkgname.exe"
