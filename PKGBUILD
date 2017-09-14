@@ -65,13 +65,13 @@ build() {
 
 package_unity-editor-beta() {
   mkdir -p "${pkgdir}/opt/UnityBeta"
-  mv ${srcdir}/${_extractiondir}/Editor ${pkgdir}/opt/UnityBeta/Editor
+  mv "${srcdir}/${_extractiondir}/Editor" "${pkgdir}/opt/UnityBeta/Editor"
 
   # HACK: fixes WebGL builds by adding a symlink (python -> python2) to the PATH
-  ln -s /usr/bin/python2 ${pkgdir}/opt/UnityBeta/Editor/python
+  ln -s /usr/bin/python2 "${pkgdir}/opt/UnityBeta/Editor/python"
 
   # Fix permissions
-  find ${pkgdir}/opt/UnityBeta/Editor/Data -type d -exec chmod ga+rx {} \;
+  find "${pkgdir}/opt/UnityBeta/Editor/Data" -type d -exec chmod ga+rx {} \;
 
   # Rename to beta
   mv "${srcdir}/${_extractiondir}/unity-editor.desktop" "${srcdir}/${_extractiondir}/unity-editor-beta.desktop"
@@ -93,7 +93,7 @@ package_monodevelop-unity-beta() {
   optdepends=('gnome-sharp' 'referenceassemblies-2.0-bin' 'referenceassemblies-3.5-bin')
 
   mkdir -p "${pkgdir}/opt/UnityBeta"
-  mv ${srcdir}/${_extractiondir}/MonoDevelop ${pkgdir}/opt/UnityBeta/MonoDevelop
+  mv "${srcdir}/${_extractiondir}/MonoDevelop" "${pkgdir}/opt/UnityBeta/MonoDevelop"
 
   # Change stuff in the .desktop files
   mv "${srcdir}/${_extractiondir}/unity-monodevelop.desktop" "${srcdir}/${_extractiondir}/unity-monodevelop-beta.desktop"
