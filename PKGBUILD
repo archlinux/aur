@@ -1,6 +1,6 @@
 # Maintainer: Sascha Wunderlich <archlinux at saschawunderlich dot de>
 pkgname=stormchecker-git
-pkgver=1.0.1.r247.g3f241280e
+pkgver=1.1.0.r129.gbac50a32a
 pkgrel=1
 pkgdesc="Storm is a tool for the analysis of systems involving random or probabilistic phenomena"
 arch=(i686 x86_64)
@@ -33,13 +33,8 @@ build() {
 	-DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
 	..
 
-  make
+  make binaries
 }
-
-#check() {
-#  cd "$pkgname"/build
-#  make check
-#}
 
 package() {
   cd "$pkgname"/build

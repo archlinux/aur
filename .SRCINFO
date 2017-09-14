@@ -1,6 +1,6 @@
 pkgbase = stormchecker-git
 	pkgdesc = Storm is a tool for the analysis of systems involving random or probabilistic phenomena
-	pkgver = 1.0.1.r247.g3f241280e
+	pkgver = 1.1.0.r129.gbac50a32a
 	pkgrel = 1
 	url = http://www.stormchecker.org/
 	arch = i686
