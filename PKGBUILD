@@ -57,6 +57,9 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
+    # Workaround for https://lists.archlinux.org/pipermail/arch-dev-public/2013-April/024776.html
+    # Since DPDK doesn't build well with _FORTIFY_SOURCE=2 
+    unset CPPFLAGS
     ./configure.py --mode=release --enable-dpdk
     ninja -j`nproc --all` build/release/scylla build/release/iotune
     cp dist/common/systemd/scylla-server.service.in build/scylla-server.service
