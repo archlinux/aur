@@ -32,7 +32,7 @@ package(){
 	# Fix directories structure differencies
 	cd "${pkgdir}"
 
-	install -D -m644 "/usr/share/doc/synergy/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/usr/share/doc/synergy/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	mkdir -p usr/lib 2> /dev/null; cp -r lib/* usr/lib; rm -rf lib
 
 	cd ..
