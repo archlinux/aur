@@ -21,3 +21,4 @@ linux.install.*
 
 # vi:ft=cfg:
 linux/
+cfg.patch
