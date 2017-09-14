@@ -1,6 +1,6 @@
 pkgbase = tesseract-ocr-git
 	pkgdesc = OCR Engine developed at HP Labs and now sponsored by Google.
-	pkgver = 4.00.00alpha.r245.g5b45e5a2
+	pkgver = 4.00.00dev.r677.gd962d344
 	pkgrel = 1
 	url = https://code.google.com/p/tesseract-ocr/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = tesseract-ocr-git
 	makedepends = pango
 	makedepends = icu
 	makedepends = cairo
+	makedepends = autoconf-archive
 	depends = gcc-libs
 	depends = libtiff
 	depends = libpng
