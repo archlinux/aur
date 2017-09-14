@@ -3,15 +3,15 @@
 # Contributor: mickael9 <mickael9 at gmail dot com>
 
 pkgname=bitlbee-facebook
-pkgver=1.1.1
-pkgrel=0
+pkgver=1.1.2
+pkgrel=1
 pkgdesc='Facebook protocol plugin for BitlBee'
 arch=('i686' 'x86_64' 'armv7h' 'arm6h')
 url='https://github.com/bitlbee/bitlbee-facebook'
 license=('GPL')
 depends=('bitlbee' 'json-glib')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bitlbee/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('071c47675f996975ac0a4b269dcd5e1b32b1a455d44e446556cb34bb0231bc5bde25cb4b7d24378645015ead3dddafae9e81807923ac6786d24012b8d5fec08b')
+sha512sums=('3e27935cd4c8c1d55de9dfe9d6fd1e7aef1bf410e64c711436875ddfb83f67f1da0055af3b279d2d6627bafe438a7689e280c2bfd51ec4f64cf7c614182003da')
 
 build() {
   cd $pkgname-$pkgver
