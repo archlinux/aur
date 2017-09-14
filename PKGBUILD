@@ -6,7 +6,7 @@ _subarchs=(armv5 armv6h armv7h armv8)
 pkgbase='distccd-alarm'
 pkgname=("${_subarchs[@]/#/$pkgbase-}")
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('GPL' )
 pkgdesc="A toolchain for Arch ARM builds via distcc on x86_64 slaves"
@@ -32,7 +32,6 @@ build() {
   _path=('' '6h' '7h' '8')
   _name=('arm-unknown-linux-gnueabi' 'arm-unknown-linux-gnueabihf'
   'arm-unknown-linux-gnueabihf' 'aarch64-unknown-linux-gnueabi')
-  _port=(2 3 4 5)
 
   for i in 0 1 2 3; do
     # make service units
@@ -42,7 +41,6 @@ build() {
     sed -e "s/@VERS@/${_path[$i]}/" \
       -e "s/@PATH@/${_name[$i]}/" \
       -e "s/@LOG@/${_subarchs[$i]}/" \
-      -e "s/@PORT@/${_port[$i]}/" \
       <config.in >"distccd-${_subarchs[$i]}.conf"
   done
 }
