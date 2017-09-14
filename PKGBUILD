@@ -2,13 +2,13 @@
 # Contributor: Manuel Fill <manuel.fill.42@gmail.com> 
 
 pkgname=whistle-git
-pkgver=0.0.0
+pkgver=0.9.3.r1.g7c27ef1
 pkgrel=1
 pkgdesc="a curses-based commandline audio (mp3/ogg/flac) player"
 arch=('i686' 'x86_64')
 url="https://github.com/ap0calypse/whistle"
 license=('MIT')
-depends=('perl-curses-ui' 'perl-mp3-info' 'perl-file-mimeinfo' 'mplayer' 'perl-ogg-vorbis-header-pureperl' 'perl-audio-flac-header')
+depends=('perl-curses-ui' 'perl-mp3-info' 'perl-file-mimeinfo' 'mplayer' 'perl-ogg-vorbis-header-pureperl' 'perl-audio-flac-header' 'perl-libwww')
 makedepends=('git')
 source=("$pkgname"::'git://github.com/ap0calypse/whistle.git')
 md5sums=('SKIP')
