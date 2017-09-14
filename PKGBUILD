@@ -24,5 +24,5 @@ build() {
 
 package() {
     make -C "${_pkgname}-${pkgver}/build" DESTDIR="${pkgdir}" install
-    mv "${pkgdir}/usr/bin/com.github.philip-scott.spice-up" "${pkgdir}/usr/bin/spice-up"
+    ln -s "/usr/bin/com.github.philip-scott.spice-up" "${pkgdir}/usr/bin/spice-up"
 }
