@@ -1,7 +1,7 @@
 # Maintainer: Jose Riha < jose 1711 gmail com >
 
 pkgname=gpmd85emulator-git
-pkgver=r36.447d3bd
+pkgver=r38.6de05b0
 pkgrel=1
 pkgdesc="Multiplatform GNU/GPL Tesla PMD 85 Emulator (git version)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'sdl')
 makedepends=('autoconf' 'automake')
 conflicts=('gpmd85emulator')
 provides=('gpmd85emulator')
-source=("${pkgname}"::'git://github.com/jose1711/GPMD85Emulator.git'
+source=("${pkgname}"::'git://github.com/mborik/GPMD85Emulator.git'
 	"gpmd85emulator.desktop")
 md5sums=('SKIP'
          'b4f4a1ed5508393b306dd3c0a786e86b')
