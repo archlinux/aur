@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/zebulon2/rtl8812au-driver-5.2.9/tree/txpower"
 license=('GPL2')
 depends=('dkms')
-makedepends=('git','bc','linux-headers')
+makedepends=('git' 'bc' 'linux-headers')
 conflicts=("${_pkgbase}")
 source=("git+https://github.com/zebulon2/rtl8812au-driver-5.2.9.git#branch=txpower"
         'dkms.conf')

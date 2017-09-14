@@ -6,7 +6,9 @@ pkgbase = rtl8812au-dkms-git
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = git,bc,linux-headers
+	makedepends = git
+	makedepends = bc
+	makedepends = linux-headers
 	depends = dkms
 	conflicts = rtl8812au
 	source = git+https://github.com/zebulon2/rtl8812au-driver-5.2.9.git#branch=txpower
