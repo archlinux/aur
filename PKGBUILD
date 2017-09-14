@@ -2,10 +2,10 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.1.215
+pkgver=1.1.365
 _gwtver=2.7.0
 _ginver=1.5
-_clangver=3.8.0
+_clangver=4.0.1
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
@@ -48,13 +48,14 @@ prepare() {
     cp -r "${srcdir}/gwt-${_gwtver}/"* lib/gwt/${_gwtver}
 
     cd "${srcdir}/${_gitname}/dependencies/common"
-    install -d dictionaries pandoc libclang/{3.5,builtin-headers}
+    install -d pandoc libclang/{3.5,builtin-headers}
 
-    ln -sfT "/usr/share/mathjax" mathjax-26
-    ln -sfT "/usr/bin/pandoc" pandoc/pandoc
-    ln -sfT "/usr/bin/pandoc-citeproc" pandoc/pandoc-citeproc
-    ln -sfT "/usr/lib/libclang.so" libclang/3.5/libclang.so
-    ln -sfT "/usr/lib/clang/$_clangver/include" libclang/builtin-headers/3.5
+    ln -sfT /usr/share/myspell/dicts dictionaries
+    ln -sfT /usr/share/mathjax mathjax-26
+    ln -sfT /usr/bin/pandoc pandoc/pandoc
+    ln -sfT /usr/bin/pandoc-citeproc pandoc/pandoc-citeproc
+    ln -sfT /usr/lib/libclang.so libclang/3.5/libclang.so
+    ln -sfT /usr/lib/clang/$_clangver/include libclang/builtin-headers/3.5
 
     msg "Downloading and installing R packages..."
     bash install-packages
