@@ -1,6 +1,6 @@
 _pkgbasename=apulse
 pkgname=lib32-$_pkgbasename-git
-pkgver=0.66_bd01a94
+pkgver=0.149_d7177c9
 pkgrel=1
 pkgdesc="PulseAudio emulation for ALSA, x86_64 multilib version"
 arch=('x86_64')
@@ -21,6 +21,7 @@ build() {
 
   export CFLAGS=-m32
   export CXXFLAGS=-m32
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   make
 }
