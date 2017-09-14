@@ -11,7 +11,7 @@ license=('custom:University of Illinois')
 depends=()
 makedepends=("cmake" "libffi" "subversion")
 provides=("clangd")
-conflicts=("clangd" "clang-tools-extra-svn")
+conflicts=("clangd" "clang-tools-extra-svn" "clang-tools-extra>=5.0.0")
 
 options=('staticlibs')
 
