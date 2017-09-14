@@ -4,7 +4,7 @@
 
 pkgname=cairo-infinality-ultimate
 _name=cairo
-pkgver=1.14.10
+pkgver=1.15.8
 pkgrel=2
 pkgdesc="Cairo vector graphics library"
 arch=(i686 x86_64)
@@ -21,13 +21,13 @@ provides=('cairo-xcb' 'cairo')
 replaces=('cairo-xcb')
 conflicts=('cairo' 'cairo-cleartype' 'cairo-git' 'cairo-gl-git' 'cairo-glitz' 'cairo-ocaml-git' 'cairo-small' 'cairo-ubuntu')
 
-source=(http://cairographics.org/releases/cairo-$pkgver.tar.xz
+source=("git+https://anongit.freedesktop.org/git/cairo#tag=1.15.8"
         cairo-make-lcdfilter-default.patch
         cairo-respect-fontconfig_pb.patch
         cairo-server-side-gradients.patch
         cairo-webkit-html5-fix.patch
 	cairo-color-glyphs.patch)
-sha1sums=('28c59d85d6b790c21b8b59ece73a6a1dda28d69a'
+sha1sums=('SKIP'
           'b0cc2466cc5479f055ca2148cfa37fe13a1e78a6'
           'd8ffcb4c4745f7e61671109362a80a872ac989d3'
           '72ecf2dda8462e1588512de257ccbe18642d507f'
@@ -35,17 +35,17 @@ sha1sums=('28c59d85d6b790c21b8b59ece73a6a1dda28d69a'
           'c25463ce365627ba55a2614d4542e17ca6ac7d51')
 
 prepare(){
-  cd $_name-$pkgver
+  cd $_name
 
   patch -Np1 -i "${srcdir}"/cairo-make-lcdfilter-default.patch
   patch -Np1 -i "${srcdir}"/cairo-respect-fontconfig_pb.patch
   patch -Np1 -i "${srcdir}"/cairo-server-side-gradients.patch
   patch -Np1 -i "${srcdir}"/cairo-webkit-html5-fix.patch
-  patch -Np1 -i "${srcdir}"/cairo-color-glyphs.patch
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $_name-$pkgver
+  cd $_name
   ./configure --prefix=/usr \
 	--sysconfdir=/etc \
 	--localstatedir=/var \
@@ -67,11 +67,11 @@ build() {
 }
 
 #check() {
-#  cd $_name-$pkgver
+#  cd $_name
 #  make -j4 -k test || /bin/true
 #}
 
 package() {
-  cd $_name-$pkgver
+  cd $_name
   make DESTDIR="$pkgdir" install
 }
