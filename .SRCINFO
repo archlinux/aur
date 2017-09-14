@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ce-eap
 	pkgdesc = Early access version of the upcoming version of Intellij Idea IDE (community version)
-	pkgver = 2017.3.173.2099.14
+	pkgver = 2017.3.173.2290.1
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = intellij-idea-ce-eap
 	depends = giflib
 	depends = libxtst
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIC-173.2099.14.tar.gz
-	sha256sums = 63e6e94d11f9a6268e3cb3fed63ddb030b953967cea6664c3709e3b17b884ddb
+	source = https://download.jetbrains.com/idea/ideaIC-173.2290.1.tar.gz
+	sha256sums = 8f3e722cac8a61b5f2546d623fad874aa6d5c1bfe68c1916bbe40721527cd41e
 
 pkgname = intellij-idea-ce-eap
 
