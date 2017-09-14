@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=yubioath-desktop
 pkgname=yubico-${_pkgname}
-pkgver=4.1.4
+pkgver=4.2.0
 pkgrel=1
 _tag="${_pkgname}-${pkgver}"
 pkgdesc="Crossplatform graphical user interface to generate one-time passwords."
@@ -15,7 +15,10 @@ source=("git+https://github.com/Yubico/yubioath-desktop.git#tag=${_tag}"
 'git+https://github.com/thp/pyotherside.git'
 'git+https://github.com/Yubico/yubikey-manager.git'
 'git+https://github.com/qtproject/qt-solutions')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 conflicts=('yubico-yubioath-desktop-git')
 
 prepare() {
@@ -40,6 +43,6 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   make INSTALL_ROOT="${pkgdir}/" install
-  install -D -m0644 resources/yubioath.desktop "${pkgdir}/usr/share/applications/yubioath.desktop"
+  install -D -m0644 resources/yubioath-desktop.desktop "${pkgdir}/usr/share/applications/yubioath-desktop.desktop"
   install -D -m0644 resources/icons/yubioath.png "${pkgdir}/usr/share/pixmaps/yubioath.png"
 }
