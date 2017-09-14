@@ -1,6 +1,6 @@
 # Maintainer: Ales Katona <almindor@gmail.com>
 pkgname=etherwall
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Ethereum GUI Wallet (QT5)"
 arch=(i686 x86_64)
@@ -8,7 +8,7 @@ url="http://etherwall.com"
 license=('GPL3')
 depends=('qt5-declarative' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-websockets' 'geth' 'protobuf' 'hidapi' 'libsystemd')
 source=("https://github.com/almindor/${pkgname}/archive/v${pkgver}.tar.gz" 'https://github.com/trezor/trezor-common/archive/4ac8e8c.tar.gz')
-sha256sums=('88a8bbb557deea72391de9a168155118618a496b5de3f9bd224f93c4d5eb9cac' '95bc637d7b49697d06567b35ef2cbb2fdba1ce8c8e27d95e9cd242ec2b3fa459')
+sha256sums=('b2ca33482e7301beebbab5cdd03a829612998346698a9295d30fd6c5412713f3' '95bc637d7b49697d06567b35ef2cbb2fdba1ce8c8e27d95e9cd242ec2b3fa459')
 
 build() {
   cd "etherwall-$pkgver"
