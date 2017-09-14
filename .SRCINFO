@@ -1,0 +1,18 @@
+pkgbase = ssowat-git
+	pkgdesc = A simple SSO for nginx, written in Lua
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/tYYGH/SSOwat
+	arch = any
+	license = AGPL
+	makedepends = git
+	depends = nginx
+	depends = lua51-luajson
+	depends = lua51-lualdap
+	depends = nginx-mainline-mod-lua
+	provides = ssowat
+	source = git+https://github.com/tYYGH/SSOwat.git
+	sha1sums = SKIP
+
+pkgname = ssowat-git
+
