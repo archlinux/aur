@@ -1,4 +1,5 @@
 # Maintainer: Martin Lukes <martin.meridius@gmail.com>
+# Contributor: Eduard Wirch <wirch.eduard@gmail.com>
 
 _appname=smartgit
 pkgname=${_appname}_preview
