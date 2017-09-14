@@ -1,0 +1,31 @@
+pkgbase = distccd-alarm
+	pkgver = 7.1.1
+	pkgrel = 2
+	url = http://archlinuxarm.org/developers/distcc-cross-compiling
+	arch = x86_64
+	license = GPL
+	depends = distcc
+	options = libtool
+	options = emptydirs
+	options = !strip
+	source = x-tools-7.1.1-2.tar.xz::https://archlinuxarm.org/builder/xtools/7.1.1-2/x-tools.tar.xz
+	source = x-tools6h-7.1.1-2.tar.xz::https://archlinuxarm.org/builder/xtools/7.1.1-2/x-tools6h.tar.xz
+	source = x-tools7h-7.1.1-2.tar.xz::https://archlinuxarm.org/builder/xtools/7.1.1-2/x-tools7h.tar.xz
+	source = x-tools8-7.1.1-2.tar.xz::https://archlinuxarm.org/builder/xtools/7.1.1-2/x-tools8.tar.xz
+	source = config.in
+	source = service.in
+	md5sums = 1ade1ced844961a39e1e539fb04c1d65
+	md5sums = bfe68188dae1512690d9981ff0ee7460
+	md5sums = 2ae08024566bd62249d4a83ee8d90124
+	md5sums = d1a7cb480f1090ce6a5a370cd5cec4cd
+	md5sums = e68374ceee62f521a31445e986fc5714
+	md5sums = 7e664f8ce386f467f1a7381c9ac3c06f
+
+pkgname = distccd-alarm-armv5
+
+pkgname = distccd-alarm-armv6h
+
+pkgname = distccd-alarm-armv7h
+
+pkgname = distccd-alarm-armv8
+
