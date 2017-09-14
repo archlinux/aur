@@ -1,11 +1,7 @@
-# sources
-*.tar.gz
+# Blacklist:
+*
 
-# build logs
-*-build.log
-*-namcap.log
-*-package*.log
-*-prepare.log
-
-# packages
-*.pkg.tar.xz
+# Whitelist:
+.SRCINFO
+.gitignore
+PKGBUILD
