@@ -57,8 +57,7 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    sed -i -e 's@#!/usr/bin/python$@#!/usr/bin/python2@' seastar/scripts/dpdk_nic_bind.py
-    ./configure.py --mode=release
+    ./configure.py --mode=release --enable-dpdk
     ninja -j`nproc --all` build/release/scylla build/release/iotune
     cp dist/common/systemd/scylla-server.service.in build/scylla-server.service
     sed -i -e "s#@@SYSCONFDIR@@#${_sysconfdir}/sysconfig#g" build/scylla-server.service
