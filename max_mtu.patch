@@ -1,0 +1,10 @@
+--- a/atlantis-dkms/usr/src/atlantis-1.6.7.0/aq_nic.c	2017-09-14 02:38:36.634431921 -0400
++++ b/atlantis-dkms/usr/src/atlantis-1.6.7.0/aq_nic.c	2017-09-14 02:38:51.487843083 -0400
+@@ -219,6 +219,7 @@
+ 	ndev->if_port = port;
+ #if LINUX_VERSION_CODE > KERNEL_VERSION(4, 10, 0)
+ 	ndev->min_mtu = ETH_MIN_MTU;
++	ndev->max_mtu = &self->aq_hw_caps.mtu;
+ #endif
+ 	self->ndev = ndev;
+ 
