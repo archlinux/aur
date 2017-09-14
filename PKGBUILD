@@ -18,11 +18,6 @@ makedepends=('svn')
 source=("$pkgname::svn+svn://svn.openttd.org/tags/1.7.1")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd ${pkgname}
-  local ver=1.7.1
-}
-
 build() {
   cd ${pkgname}
 
