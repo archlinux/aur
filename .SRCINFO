@@ -1,0 +1,14 @@
+pkgbase = vim-vim-ipython
+	pkgdesc = A two-way integration between Vim and IPython 0.11+
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/ivanov/vim-ipython
+	arch = any
+	makedepends = vim
+	depends = python2-ipykernel
+	options = !emptydirs
+	source = https://github.com/ivanov/vim-ipython/archive/master.tar.gz
+	sha256sums = 5cee1e2c23deb8731a4ffc5496f5abbccd8109abbd90d8ca11654b106be21376
+
+pkgname = vim-vim-ipython
+
