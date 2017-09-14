@@ -1,55 +1,103 @@
-# Maintainer: Frederic Bezies < fredbezies at gmail dot com>
+# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Contributor: Frederic Bezies < fredbezies at gmail dot com>
 # Contributor: Ian Brunelli (brunelli) <ian@brunelli.me>
 
 pkgname=lollypop-git
 _gitname=lollypop
-pkgver=0.9.244.r54.g7df6fa75
-_portal_pkgver=0.9.1
+pkgdesc='Lollypop is a new GNOME music playing application.'
+pkgver=0.9.244.r67.ga77dff23
 pkgrel=1
-pkgdesc='Music player for GNOME'
+url='https://gnumdk.github.io/lollypop-web/'
 arch=('i686' 'x86_64')
 license=('GPL3')
-url="https://github.com/gnumdk/${_gitname}"
-depends=('desktop-file-utils' 'gst-python' 'gtk3' 'python-cairo'
-         'python-dbus' 'python-gobject' 'totem-plparser' 'python-pylast')
-makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools' 'gobject-introspection' 'meson' 'appstream-glib')
-optdepends=('easytag: tag editing'
-	    'flatpak: Flatpak Portal'
-            'gst-libav: FFmpeg plugin for GStreamer'
-            'kid3-qt: Store covers in tags'
-            'libsecret: Last.FM support'
-            'python-wikipedia: Wikipedia support'
-            'youtube-dl: YouTube playback')
-options=('!emptydirs')
-source=("git://github.com/gnumdk/${_gitname}.git"
-"https://github.com/gnumdk/lollypop-portal/releases/download/${_portal_pkgver}/lollypop-portal-${_portal_pkgver}.tar.xz")
-sha256sums=('SKIP'
-           'd7c5ae781eb3a7d24b1303b6f0c618d386e7ee0c977f87220f889c12e2713e6f')
-conflicts=('lollypop')
-provides=("lollypop=$pkgver")
+makedepends=('meson' 'ninja')
+depends=(
+  'appstream-glib' 'desktop-file-utils' 'gobject-introspection' 'gst-python'
+  'gstreamer' 'gtk3' 'itstool' 'python-cairo' 'python-dbus' 'python-gobject'
+  'python-pylast' 'totem-plparser'
+)
+optdepends=(
+  'easytag: tag editing'
+  'flatpak: Flatpak Portal'
+  'gst-libav: FFmpeg plugin for GStreamer'
+  'kid3-qt: Store covers in tags'
+  'libsecret: Last.FM support'
+  'python-wikipedia: Wikipedia support'
+  'youtube-dl: YouTube playback'
+)
+conflicts=("${_gitname}")
+provides=("${_gitname}")
+source=(
+  "git://github.com/gnumdk/${_gitname}.git"
+  "git://github.com/gnumdk/${_gitname}-help.git"
+  "git://github.com/gnumdk/${_gitname}-po.git"
+  "git://github.com/gnumdk/${_gitname}-portal.git"
+  
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
-	cd "${_gitname}"
-	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_gitname}"
+
+  git describe --tags --long \
+    | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${_gitname}"
+
+  local submodules=(
+  'lollypop-help'
+  'lollypop-po'
+  )
+
+  for module in "${submodules[@]}"; do
+    local submodule="subprojects/${module/lollypop-/}"
+    git submodule init "${submodule}"
+    git config "submodule.${submodule}.url" "${srcdir}/${module}"
+    git submodule update "${submodule}"
+  done
+  
+  cd "${srcdir}/${_gitname}"
+
+  if [[ -d build ]]; then
+    # This should be removed when 'meson [OPTIONS] ..' can be run
+    # repeatedly without generating an error.
+    rm -rf build
+  fi
+
+  cd "${srcdir}/${_gitname}-portal"
+
+  if [[ -d build ]]; then
+    # This should be removed when 'meson [OPTIONS] ..' can be run
+    # repeatedly without generating an error.
+    rm -rf build
+  fi
 }
 
 build() {
-    cd lollypop-portal-${_portal_pkgver}
-    ./configure \
-    --prefix='/usr' \
-    --libexecdir='/usr/lib/lollypop'
-    make
- 
-	cd "$srcdir/${_gitname}"
-    rm -rf _build
-	/usr/bin/meson _build --prefix=/usr 
-	ninja -C _build
+  cd "${srcdir}/${_gitname}"
+
+  meson build --prefix=/usr
+  
+  cd "${srcdir}/${_gitname}-portal"
+
+  meson build --prefix=/usr
 }
 
 package() {
-    cd lollypop-portal-${_portal_pkgver}
-    make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${_gitname}"
 
-	cd "$srcdir/${_gitname}"
-	env DESTDIR="$pkgdir" ninja -C _build install
+	DESTDIR="$pkgdir" ninja -C build install
+	
+  cd "${srcdir}/${_gitname}-portal"
+
+	DESTDIR="$pkgdir" ninja -C build install
 }
+
+# vim: ts=2 sw=2 et:

@@ -1,4 +1,7 @@
-lollypop/
-pkg/
-src/
-*.pkg.tar.xz
+# Blacklist:
+*
+
+# Whitelist:
+!.SRCINFO
+!.gitignore
+!PKGBUILD
