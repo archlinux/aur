@@ -39,7 +39,7 @@ sha256sums_i686=(
 prepare() {
 
   msg2 "Checking for newer upstream release"
-  _LATEST=$(curl -s https://dl.google.com/dl/cloudsdk/release/sha256.txt | 
+  _LATEST=$(curl -s https://dl.google.com/dl/cloudsdk/release/sha256.txt |
             egrep "google-cloud-sdk-.*-linux-x86_64.tar.gz" | \
             awk '{print $2}' | cut -d'-' -f4)
   if [ "$_LATEST" != "$pkgver" ]; then
@@ -58,11 +58,13 @@ package() {
 
   # app-engine-python is actually the PHP+Python SDK widgets combined
   # NOTE: due to how Google is using argparse we must bare word the components
-  msg2 "Running bootstrapping script and adding app-engine-python"
+  _components=(app-engine-python beta)
+  msg2 "Running bootstrapping script and adding these additional components:"
+  msg2 "${_components[*]}"
   python2 "$pkgdir/opt/$pkgname/bin/bootstrapping/install.py" \
     --usage-reporting false --path-update false --bash-completion false \
     --rc-path="$srcdir/fake.bashrc" \
-    --additional-components app-engine-python
+    --additional-components ${_components[@]}
 
   # https://issuetracker.google.com/issues/35900282
   msg2 "Fixing appengine bug #35900282 (RAND_egd)"
@@ -99,4 +101,3 @@ package() {
   find "$pkgdir/opt/$pkgname" -name "*_test.py" -print0 | xargs -0 chmod +x
 
 }
-
