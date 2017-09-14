@@ -1,3 +1,6 @@
+# Maintainer: dundee
+# Maintainer: twa022 <twa022 at gmail dot com>
+
 pkgname=stacer
 pkgver=1.0.8
 pkgrel=2
