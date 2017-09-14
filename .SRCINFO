@@ -1,7 +1,7 @@
 pkgbase = texlive-garamondx
 	pkgdesc = URW Garamond No8 Adobe Type1 fonts from CTAN (for texlive)
 	pkgver = 1.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ctan.org/tex-archive/fonts/garamondx
 	arch = any
 	license = CUSTOM:alladin
