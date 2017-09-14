@@ -1,0 +1,25 @@
+pkgbase = wedge
+	pkgdesc = HTTP/2 Web Server with Automatic HTTPS, forked from Caddy to remove sponsored headers.
+	pkgver = 0.10.9
+	pkgrel = 1
+	url = https://github.com/WedgeServer/wedge
+	install = wedge.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = go>=1.8.1
+	makedepends = git
+	backup = etc/wedge/wedge.conf
+	source = https://github.com/WedgeServer/wedge/archive/v0.10.9-w.tar.gz
+	source = wedge.service
+	source = wedge.tmpfiles
+	source = wedge.conf
+	sha256sums = 4d0bfd8ad261b394b834533a092e88412333f6ff0083140637c0ce2bc1d2c268
+	sha256sums = 342ce058f32619d8f1b56a13882d510e9dc7a92bd985e1e48ff01060123f0264
+	sha256sums = 451c923df576005248e0a6728a9aa1b3aea862d46890e61994ab36278f297b03
+	sha256sums = fd0ab44d2bc43faf80f2e3b35a59fabfa607bf39659c5a821c45c00588e16c83
+
+pkgname = wedge
+

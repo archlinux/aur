@@ -1,0 +1,17 @@
+post_install() {
+	systemctl --quiet daemon-reload
+	systemctl --quiet preset wedge.service
+}
+
+post_upgrade() {
+	systemctl --quiet daemon-reload
+	systemctl --quiet try-restart wedge.service
+}
+
+pre_remove() {
+	systemctl --quiet --no-reload disable --now wedge.service
+}
+
+post_remove() {
+	systemctl --quiet daemon-reload
+}
