@@ -12,6 +12,7 @@ arch=('i686' 'x86_64')
 url='https://01.org/linuxmedia/vaapi'
 license=('MIT')
 depends=('libva')
+optdepends=('intel-hybrid-codec-driver: Provides codecs with partial HW acceleration')
 replaces=('libva-driver-intel')
 conflicts=('libva-intel-driver')
 provides=('libva-intel-driver')

@@ -7,6 +7,7 @@ pkgbase = libva-intel-driver-hybrid
 	arch = x86_64
 	license = MIT
 	depends = libva
+	optdepends = intel-hybrid-codec-driver: Provides codecs with partial HW acceleration
 	provides = libva-intel-driver
 	conflicts = libva-intel-driver
 	replaces = libva-driver-intel
