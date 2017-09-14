@@ -2,7 +2,7 @@
 # Contributor: Philipp Wolfer <ph.wolfer@gmail.com>
 
 _npmname=azure-cli
-_npmver=0.10.12
+_npmver=0.10.15
 pkgname=nodejs-${_npmname} # All lowercase
 pkgver=${_npmver}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('nodejs' 'npm')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
 noextract=("$_npmname-$_npmver.tgz")
 options=(!strip)
-md5sums=('7ac36b5f6d96251c2e60e2045e436bd1')
+md5sums=('0c7623f392220ab4aba62d55c3392fee')
 
 package() {
   cd $srcdir
