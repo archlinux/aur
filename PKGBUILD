@@ -4,7 +4,7 @@ pkgname=isousb
 pkgver=1.5
 pkgrel=1
 pkgdesc="A graphical tool to copy a hybrid ISO onto a USB key."
-url="http://forum.manjaro.org/index.php?topic=3682"
+url="https://classicforum.manjaro.org/index.php?topic=3682"
 arch=('any')
 license=('GPL')
 depends=('zenity' 'gksu')
