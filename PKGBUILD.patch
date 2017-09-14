@@ -1,0 +1,33 @@
+--- PKGBUILD.orig	2017-09-14 23:34:19.000727187 +0100
++++ PKGBUILD.new	2017-09-14 23:49:02.511778047 +0100
+@@ -1,15 +1,18 @@
+ # $Id$
+ # Maintainer: Jerome Leclanche <jerome@leclan.ch>
++# Contributor: ahrs <Forward dot to at hotmail dot co dot uk> (Nord Colour Scheme)
+ 
+ pkgname=qtermwidget
+ pkgver=0.7.1
+ pkgrel=2
+-pkgdesc="A terminal widget for Qt, used by QTerminal"
++pkgdesc="A terminal widget for Qt, used by QTerminal - Includes Nord colourscheme patch"
+ arch=("i686" "x86_64")
+ url="http://lxqt.org"
+ license=("GPL2")
+ depends=("qt5-base")
+ makedepends=("cmake")
++provides=("qtermwidget")
++conflicts=("qtermwidget")
+ source=(
+ 	"https://github.com/lxde/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
+ 	"https://github.com/lxde/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz.asc"
+@@ -23,6 +26,9 @@
+ 	"7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3"  # Alf Gaida <agaida@siduction.org>
+ )
+ 
++prepare() {
++  cp ../Nord.colorscheme "${srcdir}/${pkgname}-${pkgver}/lib/color-schemes/"
++}
+ 
+ build() {
+ 	mkdir -p build
+

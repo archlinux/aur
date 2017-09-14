@@ -1,0 +1,21 @@
+pkgbase = qtermwidget-nord
+	pkgdesc = A terminal widget for Qt, used by QTerminal - Includes Nord colourscheme patch
+	pkgver = 0.7.1
+	pkgrel = 2
+	url = http://lxqt.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = qt5-base
+	provides = qtermwidget
+	conflicts = qtermwidget
+	source = https://github.com/lxde/qtermwidget/releases/download/0.7.1/qtermwidget-0.7.1.tar.xz
+	source = https://github.com/lxde/qtermwidget/releases/download/0.7.1/qtermwidget-0.7.1.tar.xz.asc
+	validpgpkeys = 169704C6FB490C6892C7F23C37E0AF1FDA48F373
+	validpgpkeys = 7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3
+	sha256sums = 82b2f4d7cb58a34e866cf37b512e313f5f01c1d8a84ba532f0adf50e6d834d45
+	sha256sums = SKIP
+
+pkgname = qtermwidget-nord
+

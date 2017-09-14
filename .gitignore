@@ -1,0 +1,4 @@
+*.pkg.*
+qtermwidget*
+src
+pkg

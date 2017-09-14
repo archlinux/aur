@@ -1,0 +1,47 @@
+# $Id$
+# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Contributor: ahrs <Forward dot to at hotmail dot co dot uk> (Nord Colour Scheme)
+
+pkgname=qtermwidget-nord
+__pkgname=qtermwidget
+pkgver=0.7.1
+pkgrel=2
+pkgdesc="A terminal widget for Qt, used by QTerminal - Includes Nord colourscheme patch"
+arch=("i686" "x86_64")
+url="http://lxqt.org"
+license=("GPL2")
+depends=("qt5-base")
+makedepends=("cmake")
+provides=("qtermwidget")
+conflicts=("qtermwidget")
+source=(
+	"https://github.com/lxde/$__pkgname/releases/download/$pkgver/$__pkgname-$pkgver.tar.xz"
+	"https://github.com/lxde/$__pkgname/releases/download/$pkgver/$__pkgname-$pkgver.tar.xz.asc"
+)
+sha256sums=(
+	"82b2f4d7cb58a34e866cf37b512e313f5f01c1d8a84ba532f0adf50e6d834d45"
+	"SKIP"
+)
+validpgpkeys=(
+	"169704C6FB490C6892C7F23C37E0AF1FDA48F373"  # Jerome Leclanche <jerome@leclan.ch>
+	"7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3"  # Alf Gaida <agaida@siduction.org>
+)
+
+prepare() {
+  cp ../Nord.colorscheme "${srcdir}/${__pkgname}-${pkgver}/lib/color-schemes/"
+}
+
+build() {
+	mkdir -p build
+	cd build
+
+	cmake "$srcdir/$__pkgname-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+	make
+}
+
+package() {
+	cd build
+	make DESTDIR="$pkgdir" install
+}

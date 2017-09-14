@@ -1,0 +1,27 @@
+#!/bin/bash
+set -e
+
+if [[ ! -d "qtermwidget" ]]
+then
+  asp checkout qtermwidget
+else
+  asp update qtermwidget
+  cd "qtermwidget"
+  git fetch --all
+  git pull
+  cd "$OLDPWD"
+fi
+
+for d in qtermwidget/repos/community-*
+do
+  ARCH="$(basename $d | sed 's/.*-//g')"
+  rm -rf "PKGBUILD.$ARCH"
+  cp qtermwidget/repos/community-"$ARCH"/PKGBUILD ./"PKGBUILD.$ARCH"
+  patch -p1 PKGBUILD.$ARCH PKGBUILD.patch
+  sed -i 's/pkgname=qtermwidget/pkgname=qtermwidget-nord\n__pkgname=qtermwidget/g' PKGBUILD.$ARCH
+  sed -i 's/\$pkgname/\$__pkgname/g' PKGBUILD.$ARCH
+  sed -i 's/\${pkgname}/\${__pkgname}/g' PKGBUILD.$ARCH
+done
+
+makepkg --printsrcinfo > .SRCINFO
+git add -A
