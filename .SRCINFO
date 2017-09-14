@@ -1,6 +1,6 @@
 pkgbase = luxblend25-hg
 	pkgdesc = LuxRender exporter plugin for Blender
-	pkgver = 3776.59e50e577902
+	pkgver = 3789.456ed1eb8aef
 	pkgrel = 1
 	url = http://www.luxrender.net/
 	arch = any

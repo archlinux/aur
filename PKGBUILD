@@ -1,7 +1,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 # Original Maintainer: Micael Dias
 pkgname=luxblend25-hg
-pkgver=3776.59e50e577902
+pkgver=3789.456ed1eb8aef
 pkgrel=1
 pkgdesc="LuxRender exporter plugin for Blender"
 arch=('any')
