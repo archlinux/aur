@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rospack-release-release-lunar-rospack-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/lunar/rospack/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('20b330a021ac08268f9964e3246f7b938790082de6b4828cbb8fd1db4039c7e3')
+sha256sums=('a72936e9aaa10a1a40d47e2c5b4d9d010d5041f58b2ee4760e280fc3afede92f')
 
 build() {
   # Use ROS environment variables
