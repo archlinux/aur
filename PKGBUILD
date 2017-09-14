@@ -1,15 +1,17 @@
 # Maintainer: Adrián Pérez de Castro <adrian@perezdecastro.org>
 pkgname='fmsx'
 pkgdesc='Portable MSX/MSX2/MSX2+ emulator'
-pkgver='4.9'
+pkgver='5.0'
 pkgrel='1'
 _dlname="fMSX${pkgver//./}"
 url='http://fms.komkon.org/fMSX'
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('libxext' 'bash' 'zlib')
+depends=('libxext' 'bash' 'zlib' 'pulseaudio')
 makedepends=('sed')
-source=(fmsx.sh "${url}/${_dlname}.zip"
+source=(fmsx.sh
+        fix-pulseaudio.patch
+        "${url}/${_dlname}.zip"
         "${url}/src/MSX.ROM"
         "${url}/src/MSX2.ROM"
         "${url}/src/MSX2EXT.ROM"
@@ -22,7 +24,8 @@ source=(fmsx.sh "${url}/${_dlname}.zip"
         "${url}/src/KANJI.ROM"
         http://www.msxarchive.nl/pub/msx/emulator/system_roms/Extensions/Rs232/rs232.rom.zip)
 sha512sums=('1c7b7485525e5798cde0fa4e82153f294ce88c358d4c0366a6266f837b2b3e5ce8540b0f5daf1d67b11e1afcf82912df8379e3a0cbe93854f0d86cb7d54d7d36'
-            'ff4746e3a801457cb72c66db77bfdb3d079ac573d514864dfc9ade7a717dfd32eaf5bca65bec12b1c9ad1c79436d4a3dda44dd3ed233450b415fdac527d2d805'
+            'a641ec2fa14dd31ae7a7302083b8c46e6589914ec98f822b930c654122466890f0add145dd16f9c02d8ca7c1f7cd5d0a4bdfb9674c60f529f476500ccc50440d'
+            '0367a31407badf41b458f51f6193b54ff189a9613db07fe980e3090e361bc00a4a840e171fb920b650217d0acbd40aa19de00980550d34a3b4c4cb5535c6bca0'
             'f8a447906272f69cd545ed439623845cacee4ee98b8ed3fae264a26e35ef006b125b51a2c4e54e8371d53cffe730dac720b2a8d0eccdad0c3c7befdc31864f6c'
             'dc95ef9c17a28319d815780cae359b8a88b3edd5c5d582a16a916e256eb90d79b02f3240b91d2048e9d750239051473f924b807ae2583a65695fb1e18e317a54'
             'c270ee701b19a92c769c9334ff4e843492e7596ee09818b39062f3fcf96da547afe0fc83866493080113fbda20dde08589e3f7aa2ad73bae451b911c773f6850'
@@ -38,10 +41,21 @@ sha512sums=('1c7b7485525e5798cde0fa4e82153f294ce88c358d4c0366a6266f837b2b3e5ce85
 prepare () {
     cd "${srcdir}"
     sed -e '1,/\*\*\*\*\//p' -e d fMSX/Menu.c > COPYING
+
+	patch -p0 < "${srcdir}/fix-pulseaudio.patch"
+
+	# Include a snippet from the top-level Makefile, which is used to
+	# configure optional features later on in build().
+	echo "include ${srcdir}/config.mk" >> fMSX/Unix/Makefile
 }
 
 build () {
 	cd "${srcdir}"
+	cat > config.mk <<-EOF
+	DEFINES += -DPULSE_AUDIO
+	CFLAGS += $(pkg-config libpulse-simple --cflags)
+	LIBS += $(pkg-config libpulse-simple --libs)
+	EOF
 	make -C fMSX/Unix
 }
 

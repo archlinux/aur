@@ -1,0 +1,61 @@
+--- EMULib/Unix/SndUnix.c.orig	2016-01-24 20:00:56.000000000 +0200
++++ EMULib/Unix/SndUnix.c	2017-09-14 14:32:07.611308693 +0300
+@@ -100,7 +100,13 @@
+ #define AUDIO_CONV(A) (128+(A))
+ #endif
+ 
++#if defined(PULSE_AUDIO)
++#define SOUNDFD_INVALID NULL
++static pa_simple* SoundFD = NULL;
++#else
++#define SOUNDFD_INVALID (-1)
+ static int SoundFD     = -1; /* Audio device descriptor      */
++#endif
+ static int SndRate     = 0;  /* Audio sampling rate          */
+ static int SndSize     = 0;  /* SndData[] size               */
+ static sample *SndData = 0;  /* Audio buffers                */
+@@ -118,7 +124,7 @@
+   int J;
+ 
+   /* Spin until audio has been trashed */
+-  for(RPtr=WPtr=0;SndRate&&SndData&&(SoundFD>=0);)
++  for(RPtr=WPtr=0;SndRate&&SndData&&(SoundFD!=SOUNDFD_INVALID);)
+   {
+ #if defined(PULSE_AUDIO)
+     if(SoundFD)
+@@ -158,7 +164,7 @@
+   /* Shut down audio, just to be sure */
+   TrashAudio();
+   SndRate     = 0;
+-  SoundFD     = -1;
++  SoundFD     = SOUNDFD_INVALID;
+   SndSize     = 0;
+   SndData     = 0;
+   RPtr        = 0;
+@@ -182,7 +188,7 @@
+     PASpec.channels = 1;
+     /* Try opening PulseAudio */
+     if(!(SoundFD=pa_simple_new(0,"EMULib",PA_STREAM_PLAYBACK,0,"playback",&PASpec,0,0,0)))
+-    { SoundFD=-1;return(0); }
++    { SoundFD=SOUNDFD_INVALID;return(0); }
+   }
+ 
+ #elif defined(ESD_AUDIO)
+@@ -266,7 +272,7 @@
+   if(Thr) pthread_join(Thr,0);
+ 
+   /* If audio was initialized... */
+-  if(SoundFD>=0)
++  if(SoundFD!=SOUNDFD_INVALID)
+   {
+ #if defined(PULSE_AUDIO)
+     if(SoundFD) pa_simple_free(SoundFD);
+@@ -284,7 +290,7 @@
+   if(SndData) free(SndData);
+ 
+   /* Sound trashed */
+-  SoundFD = -1;
++  SoundFD = SOUNDFD_INVALID;
+   SndData = 0;
+   SndSize = 0;
+   RPtr    = 0;
