@@ -1,0 +1,15 @@
+src/
+pkg/
+repo/
+*.gz
+*.xz
+*.bz2
+*.zip
+*.part
+*.sig
+*.sign
+*.txt
+*.log
+*.scm
+*.pkg
+*.asc
