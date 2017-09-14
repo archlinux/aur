@@ -93,15 +93,16 @@ _verify_repo() {
 prepare() {
     _verify_repo
 
-    mkdir -p "$srcdir/$pkgname-$pkgver-$_pkgbump"
-    cd "$srcdir/$pkgname-$pkgver-$_pkgbump"
+    rm -rf "$srcdir/$pkgname-$pkgver"
+    mkdir "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 
     bsdtar xf ../control.tar.gz
     bsdtar xf ../data.tar.xz
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver-$_pkgbump"
+    cd "$srcdir/$pkgname-$pkgver"
 
     cp -a usr "$pkgdir"
 
