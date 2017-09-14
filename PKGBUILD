@@ -2,13 +2,13 @@
 
 pkgname=arangodb
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
 arch=("i686" "x86_64")
 url="https://www.arangodb.com/"
 license=("APACHE")
 depends=("openssl" "systemd" "curl" "zlib")
-makedepends=("cmake" "gcc5" "python2" "linux-api-headers")
+makedepends=("cmake" "clang" "python2" "linux-api-headers")
 options=()
 install=arangodb.install
 source=("https://www.arangodb.com/repositories/Source/ArangoDB-$pkgver.tar.bz2"
@@ -29,8 +29,8 @@ build() {
   export PATH="`pwd`:$PATH"
   export LD="ld.gold"
   # I'm not proud of this but currently it's the only way to compile this.
-  export CC="gcc-5"
-  export CXX="g++-5"
+  export CC="clang"
+  export CXX="clang++"
 
   msg2 "Configuring ArangoDB."
   cd $srcdir/ArangoDB-$pkgver
