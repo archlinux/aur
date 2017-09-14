@@ -1,7 +1,7 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=kubernetes
-pkgver=1.7.5
+pkgver=1.7.6
 _contribver=0.7.0
 pkgrel=2
 pkgdesc="Container Cluster Manager for Docker"
@@ -21,8 +21,8 @@ backup=('etc/kubernetes/apiserver'
         'etc/kubernetes/proxy'
         'etc/kubernetes/scheduler')
 install=kubernetes.install
-sha256sums=('5fe434de8b17ef951d156f7cee24b24a0c5a071a85a612bba4890603541e1ff1'
-            'ab36d4243baf8cd47aba94f22f4c41a2980cf2ffca51ccda28b1e7685f500282'
+sha256sums=('434ef607ba5cb77046066e5ebe2859fb7a1a07657f2b56762f7f16501dc12359'
+            '1d4e651ea59ea0d2b440e290fda5e166a21847891abca2907b8a1683c2252b8d'
             'fb6fce3ef4b793863286dafb5856ce28027427005d6c6fd44162844921ab714b')
 
 build() {
