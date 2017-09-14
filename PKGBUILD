@@ -2,29 +2,30 @@
 # Contributer: Jason Plum <jplum@archlinuxarm.org>
 # Contributer: Kevin Mihelich <kevin@archlinuxarm.org>
 
-PKGEXT='.pkg.tar'
 _subarchs=(armv5 armv6h armv7h armv8)
 pkgbase='distccd-alarm'
 pkgname=("${_subarchs[@]/#/$pkgbase-}")
 pkgver=7.1.1
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 license=('GPL' )
+pkgdesc="A toolchain for Arch ARM builds via distcc on x86_64 slaves"
 url="http://archlinuxarm.org/developers/distcc-cross-compiling"
 depends=('distcc')
 options=('libtool' 'emptydirs' '!strip')
 _URL="https://archlinuxarm.org/builder/xtools/$pkgver-$pkgrel"
-source=("x-tools-$pkgver-$pkgrel.tar.xz::$_URL/x-tools.tar.xz"
-"x-tools6h-$pkgver-$pkgrel.tar.xz::$_URL/x-tools6h.tar.xz"
-"x-tools7h-$pkgver-$pkgrel.tar.xz::$_URL/x-tools7h.tar.xz"
-"x-tools8-$pkgver-$pkgrel.tar.xz::$_URL/x-tools8.tar.xz"
+_upstreampkgrel=2
+source=("x-tools-$pkgver-$_upstreampkgrel.tar.xz::$_URL/x-tools.tar.xz"
+"x-tools6h-$pkgver-$_upstreampkgrel.tar.xz::$_URL/x-tools6h.tar.xz"
+"x-tools7h-$pkgver-$_upstreampkgrel.tar.xz::$_URL/x-tools7h.tar.xz"
+"x-tools8-$pkgver-$_upstreampkgrel.tar.xz::$_URL/x-tools8.tar.xz"
 'config.in' 'service.in')
 md5sums=('1ade1ced844961a39e1e539fb04c1d65'
-'bfe68188dae1512690d9981ff0ee7460'
-'2ae08024566bd62249d4a83ee8d90124'
-'d1a7cb480f1090ce6a5a370cd5cec4cd'
-'e68374ceee62f521a31445e986fc5714'
-'7e664f8ce386f467f1a7381c9ac3c06f')
+         'bfe68188dae1512690d9981ff0ee7460'
+         '2ae08024566bd62249d4a83ee8d90124'
+         '79c3880c29bc8994d2136af553ca4d6d'
+         'e68374ceee62f521a31445e986fc5714'
+         '7e664f8ce386f467f1a7381c9ac3c06f')
 
 build() {
   # setup config and services
@@ -54,13 +55,13 @@ _package_subarch() {
   install -d "${pkgdir}/usr/bin"
   ln -sf /usr/bin/distccd "${pkgdir}/usr/bin/distccd-$1"
   # copy in toolchain
-  install -d "${pkgdir}/opt/x-tools-$1"
-  cp -ar "${srcdir}/$2" "${pkgdir}/opt/x-tools-$1"
+  install -d "${pkgdir}/opt"
+  cp -a "${srcdir}/$2" "${pkgdir}/opt"
   # install services
-  install -Dm0644 "${srcdir}/distccd-$1.service" \
+  install -Dm644 "${srcdir}/distccd-$1.service" \
     "${pkgdir}/usr/lib/systemd/system/distccd-$1.service"
   # install config
-  install -Dm0644 "${srcdir}/distccd-$1.conf" \
+  install -Dm644 "${srcdir}/distccd-$1.conf" \
     "${pkgdir}/etc/conf.d/distccd-$1"
 }
 
