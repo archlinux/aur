@@ -2,7 +2,7 @@
 # Contributor: poplarch <poplarch@gmail.com>
 
 pkgname=kcm-fcitx
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="KDE Config Module for Fcitx"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('fcitx-qt5' 'knewstuff' 'kcmutils')
 makedepends=('extra-cmake-modules' 'python')
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-${pkgver}.tar.xz")
-sha512sums=('349fe50303e027f44b53d954c088e441450aad07dac3a1162a5dcf9c445ca9d04bd3c36475c17dab91ed2df9c3c71031d7582e39b85ad0465a816f7fc24ac0bd')
+sha512sums=('e6a7bcad10003a956389ee266cf6d2f3730dafafcdd0bb43de328397749775e5cd305f16fdca2365e246c903677dba042da81a6dfd873aa1be74174e2b0b372e')
 
 prepare() {
   mkdir build
