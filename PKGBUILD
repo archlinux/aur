@@ -16,7 +16,7 @@ source=(sskype 05sskype client.conf sskype.desktop)
 md5sums=('c062a95a9d0a8a1b465183bc519d4305'
          '0a19ecc4ade720c0a89e14fb18b8cb33'
          '46775f06fd9d6c4ad5ff3a221d4912ff'
-         '555ffa72f9d372a2dd4e0dc815d7c1d3')
+         '173b38bb4c9d06cc7ea8803c7e475e5d')
 
 package() {
   install -D "$startdir/sskype" "$pkgdir/usr/bin/sskype"
