@@ -3,7 +3,7 @@
 
 pkgname=gns3-server
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='GNS3 network simulator. Server package.'
 arch=('any')
 url='https://github.com/GNS3/gns3-server'
@@ -23,8 +23,8 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}@.service")
 
-md5sums=('63ae2f4c276aa5f6bf07f38b46372f0f'
-         'f7a8f3128a903179c5f17a6c242b3cf9')
+sha256sums=('949f2fbf324ce21d309666aa7688d062086474ab28d6cc4dc222e8b09fedb4ec'
+            'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
 
 prepare() {
   sed -i 's/yarl>=0.9.8,<0.10/yarl>=0.9.8/g' ${srcdir}/${pkgname}-${pkgver}/requirements.txt
