@@ -31,6 +31,7 @@ build() {
 }
 
 package() {
+  install powa-web.service "${pkgdir}/etc/powa-web.conf" 
   cd $srcdir/$_gitname
   python ./setup.py install --root="${pkgdir}" --optimize=1
   mkdir "${pkgdir}/etc" 
