@@ -30,7 +30,7 @@ export USER_ENABLE_ROOTCHECK=y
 #       you can block an IP address or disable access for
 #       a specific user.  
 #       More information at:
-#       http://www.ossec.net/en/manual.html#active-response
+#       https://ossec.github.io/docs/manual/ar/
 #       
 #   - Do you want to enable active response? (y/n) [y]: 
 export USER_ENABLE_ACTIVE_RESPONSE=y

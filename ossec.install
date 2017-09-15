@@ -1,13 +1,15 @@
 # arg 1:  the new package version
-pre_install() {
+post_install() {
   getent group ossec >/dev/null || groupadd -g 525 ossec
   getent passwd ossec >/dev/null || useradd -u 524 -g ossec -d '/var/ossec' -s /bin/false ossec
   getent passwd ossecm >/dev/null || useradd -u 525 -g ossec -d '/var/ossec' -s /bin/false ossecm
   getent passwd ossecr >/dev/null || useradd -u 526 -g ossec -d '/var/ossec' -s /bin/false ossecr
+
+  echo ">> Documentation: https://ossec.github.io/docs/"
 }
 
 post_upgrade() {
-  pre_install $1
+  post_install $1
 }
 
 # arg 1:  the old package version
