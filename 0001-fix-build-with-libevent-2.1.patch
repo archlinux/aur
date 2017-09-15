@@ -1,0 +1,46 @@
+From a36f01a19195eeb821965bcbc0a89a12b4656ae9 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Fri, 15 Sep 2017 23:32:36 +0200
+Subject: [PATCH 1/1] fix build with libevent 2.1
+
+Signed-off-by: Christian Hesse <mail@eworm.de>
+---
+ deps/libevent.event-config.h.cmake | 2 +-
+ src/chassis-mainloop.c             | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/deps/libevent.event-config.h.cmake b/deps/libevent.event-config.h.cmake
+index 9c4a8ca..74d4937 100644
+--- a/deps/libevent.event-config.h.cmake
++++ b/deps/libevent.event-config.h.cmake
+@@ -32,4 +32,4 @@
+ #cmakedefine _EVENT_HAVE_TIMERISSET
+ #cmakedefine _EVENT_HAVE_TIMERCLEAR
+ 
+-#define _EVENT_VERSION "libevent-1.4.11-stable"
++#define EVENT__VERSION "libevent-1.4.11-stable"
+diff --git a/src/chassis-mainloop.c b/src/chassis-mainloop.c
+index 433cbfe..ed6f364 100644
+--- a/src/chassis-mainloop.c
++++ b/src/chassis-mainloop.c
+@@ -99,9 +99,9 @@ int chassis_check_version(const char *lib_version, const char *hdr_version) {
+ chassis *chassis_new() {
+ 	chassis *chas;
+ 
+-	if (0 != chassis_check_version(event_get_version(), _EVENT_VERSION)) {
++	if (0 != chassis_check_version(event_get_version(), EVENT__VERSION)) {
+ 		g_critical("%s: chassis is build against libevent %s, but now runs against %s",
+-				G_STRLOC, _EVENT_VERSION, event_get_version());
++				G_STRLOC, EVENT__VERSION, event_get_version());
+ 		return NULL;
+ 	}
+ 
+@@ -116,7 +116,7 @@ chassis *chassis_new() {
+ 
+ 	chas->threads = chassis_event_threads_new();
+ 
+-	chas->event_hdr_version = g_strdup(_EVENT_VERSION);
++	chas->event_hdr_version = g_strdup(EVENT__VERSION);
+ 
+ 	chas->shutdown_hooks = chassis_shutdown_hooks_new();
+ 
