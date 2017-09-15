@@ -1,0 +1,17 @@
+pkgbase = chicken-noconflict
+	pkgdesc = A chicken package for use with mono-noconflict
+	pkgver = 4.12.0
+	pkgrel = 3
+	url = http://call-cc.org/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = inetutils
+	provides = chicken=4.12.0
+	conflicts = chicken
+	options = staticlibs
+	source = https://code.call-cc.org/releases/4.12.0/chicken-4.12.0.tar.gz
+	sha256sums = 605ace459bc66e8c5f82abb03d9b1c9ca36f1c2295931d244d03629a947a6989
+
+pkgname = chicken-noconflict
+
