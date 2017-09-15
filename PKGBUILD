@@ -1,11 +1,9 @@
-# Contributor: Link Dupont <link.dupont@gmail.com>
-# Contributor: Javier Aravena <javier@aravenas.com>
-# Maintainer: Pablo Lezaeta <prflr88 (arroba) gmail (dot) com>
+# Maintainer: now-im <now.im.627@gmail.com>
 
 pkgname=sonar-icon-theme
-pkgver=11.3.1.70.3
-realver=11.3.1-70.3
-pkgrel=2
+pkgver=11.3.1.70.9
+realver=11.3.1-70.9
+pkgrel=1
 pkgdesc="Icon theme from Suse 11.3 (tecnically from factory), based on the default gnome 3.0.0 icon theme."
 arch=('any')
 url="http://www.opensuse.org"
@@ -14,6 +12,7 @@ provides=('icon-theme-sonar' 'sonar-icon-theme')
 optdepends=('gnome-icon-theme: For correct integration into the desktop')
 makedepends=('rpmextract')
 source=("http://download.opensuse.org/repositories/GNOME:/Factory/openSUSE_Factory/noarch/$pkgname-$realver.noarch.rpm")
+sha256sums=('edf072fbc3865b94ad25e7c3a7804bfb24f70a4deb5d78485eb5130da3c55f29')
 
 build(){
 	cd $srcdir
@@ -52,5 +51,5 @@ package(){
 		cp -dprv --no-preserve=ownership $j/devices/computer.png $j/devices/xfce4-display.png
 	done
 }
-# nakepkg -g default to md5sum so I do, blame Allan
-md5sums=('92778f8fce735d4e37689e4c47fc0ab8')
+
+# vim: ts=2 sw=2 et:
