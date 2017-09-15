@@ -26,15 +26,7 @@ package() {
 
   rm load_all_pokemon.py
 
-  IFS=$'\n'
-  for file in `find -type f`
-  do
-    install -Dm 644 "$file" "${pkgdir}/opt/pokemon-terminal/$file"
-  done
+  cd ..
 
-  chmod 755 "${pkgdir}/opt/pokemon-terminal/main.py"
-
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/opt/pokemon-terminal/main.py" "${pkgdir}/usr/bin/pokemon"
-  ln -s "/opt/pokemon-terminal/main.py" "${pkgdir}/usr/bin/ichooseyou"
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
