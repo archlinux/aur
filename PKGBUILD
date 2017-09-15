@@ -45,15 +45,17 @@ source=(
     https://github.com/ZoneMinder/ZoneMinder/archive/$pkgver.tar.gz
     httpd-zoneminder.conf
     zoneminder.service
+    uio.patch
     fabs.patch
     zoneminder-tmpfile.conf
 )
-sha256sums=('5461350caa9d8ec58deb1ef08e2e1641084e694f2a9f9e17b3b678b1a43203c7'
+sha256sums=('9451683808867c2382325dd8dac6049c138fa9d407fb81d29ecf5598dc75d581'
             'ff7382b38ac07dadead0ad4d583e3dbcf8da4aaa06b76d048ee334f69f95db67'
             '043d77a995553c533d62f48db4b719d29cf6c7074f215d866130e97be57ed646'
+            'd1816cac69be5e807d22c37fcbe6fef99e38151a5c71233b875c0ebf101fb460'
             'fd20faed09eaf825933c2a87b1d04febf99d183b2b36b0041df1e2b2990c49c2'
-            'cc8af737c3c07750fc71317c81999376e4bbb39da883780164a8747b3d7c95a7'
-            )
+            'cc8af737c3c07750fc71317c81999376e4bbb39da883780164a8747b3d7c95a7')
+
 
 prepare () {
     cd $srcdir/ZoneMinder-$pkgver/web/api/app/Plugin/
@@ -63,6 +65,7 @@ prepare () {
     mv  crud/* Crud
     fi
     patch $srcdir/ZoneMinder-$pkgver/src/zm_image.cpp < $srcdir/fabs.patch
+    patch $srcdir/ZoneMinder-$pkgver/src/zm_comms.h < $srcdir/uio.patch
 }
 
 build() {
