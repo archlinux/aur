@@ -1,7 +1,7 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=fcitx-configtool
-pkgver=0.4.9
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="GTK based config tool for Fcitx"
 arch=('i686' 'x86_64')
@@ -26,4 +26,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha512sums=('800c731b370ace833179560260df7ffc9c0235c4f3257e8a99a0194f2fd06b71f738e6c77985871c3368179f944da2165dac5d4a8f7ba083519cb2509a9eb62b')
+sha512sums=('1c1267e9de694bbd5f258b5bba1e7514c4f8556cdc82a1cce5eafd8a4ec571955285dade0acd02f128eca01f867a30c5c6264ee7e91d32a333eba6e4d275fe8f')
