@@ -1,7 +1,7 @@
 pkgbase = snapscreenshot
 	pkgdesc = Screenshot program for Linux text consoles
 	pkgver = 1.0.14.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bisqwit.iki.fi/source/snapscreenshot.html
 	arch = i686
 	arch = x86_64
