@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-browser-git
-pkgver=20170707.834eb2a
+pkgver=20170915.dd06e79
 pkgrel=1
 pkgdesc="Liri Browser"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
