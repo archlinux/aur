@@ -2,7 +2,7 @@
 
 pkgname=madbomber
 pkgver=0.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Clone of Activision's Atari 2600 game Kaboom!"
 arch=('i686' 'x86_64')
 url='http://www.newbreedsoftware.com/madbomber/'
@@ -15,7 +15,8 @@ sha256sums=('951ec8cfde3965255ceafa92fdbbbb50a1981b71afcf359c58c7d22dbf122f48')
 prepare() {
   cd $pkgname-$pkgver
   sed -i 's|BIN_PREFIX=.*|BIN_PREFIX=/usr/bin/|' Makefile
-  sed -i "s|CFLAGS=|CFLAGS=$CFLAGS |" Makefile
+  sed -i 's|CFLAGS=|CFLAGS+=|' Makefile
+  sed -i 's|$(TARGET) $(SDL_LIB)|$(TARGET) $(LDFLAGS) $(SDL_LIB)|' Makefile
   gendesk -f -n --pkgname=$pkgname --pkgdesc="$pkgdesc" --name="Mad Bomber"
 }
 

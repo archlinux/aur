@@ -1,7 +1,7 @@
 pkgbase = madbomber
 	pkgdesc = Clone of Activision's Atari 2600 game Kaboom!
 	pkgver = 0.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.newbreedsoftware.com/madbomber/
 	arch = i686
 	arch = x86_64
