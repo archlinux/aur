@@ -1,5 +1,5 @@
 #!/bin/bash
 
-mksrcinfo
+makepkg --printsrcinfo > .SRCINFO
 git add -f .SRCINFO
 exit 0
