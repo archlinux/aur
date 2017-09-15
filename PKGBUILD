@@ -35,6 +35,7 @@ prepare() {
     sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' src/feature.h
     sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1|' src/feature.h
     cd src && patch -p2 < "$srcdir/extern.patch"
+    autoconf
 }
 
 build() {
@@ -54,7 +55,6 @@ build() {
       --enable-rubyinterp=dynamic \
       --enable-luainterp=dynamic
     make
-
 }
 
 package() {
