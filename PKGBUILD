@@ -1,8 +1,8 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: poplarch <poplarch@gmail.com>
 
 pkgname=fcitx-cloudpinyin
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Standalone module for fcitx that uses pinyin API on the internet to provide additional input candidates'
 arch=('i686' 'x86_64')
@@ -24,4 +24,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha512sums=('ecfab0e45387793986fc75f24372d69910552d6168c9dd63f258bf05bfa397350bfea2a6fc419ab067fc5a7737a3e8c39d4b8ae5d0501871e3365c8a07553b09')
+sha512sums=('b56cde4955fab02d204cfe937b46aeb5b6adf9e4eb4fead6e7b8e0b5cd1ebce06a0de3f9d477a1cb58eb077655f17975b7e13951074d1766b283b86eeb5b276e')
