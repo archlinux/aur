@@ -2,8 +2,8 @@
 
 _pkgname=libprotobuf
 pkgname=lib32-$_pkgname-git
-pkgver=v3.3.1.r256.g35db2675
-pkgrel=2
+pkgver=v3.3.1.r420.gd1bc27ca
+pkgrel=1
 pkgdesc="A language-neutral, platform-neutral extensible mechanism for serializing structured data."
 url="https://developers.google.com/protocol-buffers/"
 license=('custom')
@@ -27,7 +27,7 @@ build() {
     export CXX="g++ -m32"
     export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
     ./configure --build=i386-pc-linux-gnu CFLAGS="-m32 -DNDEBUG" CXXFLAGS="-m32 -DNDEBUG" LDFLAGS=-m32 --prefix=/usr --libdir=/usr/lib32
-    make
+    make -j4
 }
 
 package() {

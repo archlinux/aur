@@ -1,7 +1,7 @@
 pkgbase = lib32-libprotobuf-git
 	pkgdesc = A language-neutral, platform-neutral extensible mechanism for serializing structured data.
-	pkgver = v3.3.1.r256.g35db2675
-	pkgrel = 2
+	pkgver = v3.3.1.r420.gd1bc27ca
+	pkgrel = 1
 	url = https://developers.google.com/protocol-buffers/
 	arch = x86_64
 	license = custom
