@@ -1,7 +1,7 @@
 pkgbase = sdlpop
 	pkgdesc = An open-source port of Prince of Persia
 	pkgver = 1.17
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/NagyD/SDLPoP
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=sdlpop
 pkgver=1.17
-pkgrel=3
+pkgrel=4
 pkgdesc="An open-source port of Prince of Persia"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -21,6 +21,7 @@ prepare() {
 
 build() {
   cd SDLPoP-$pkgver/src
+  export CFLAGS+=" $CPPFLAGS"
   make
 }
 
