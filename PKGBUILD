@@ -8,7 +8,7 @@ pkgdesc="Pokemon terminal themes"
 arch=('any')
 url="https://github.com/LazoCoder/$_gitname"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.5' 'python-setuptools')
 optdepends=('gnome-shell: support changing GNOME wallpaper'
             'terminology: support changing Terminology background'
             'tilix: support changing Tilix background')
