@@ -17,19 +17,19 @@
 pkgbase="zfs-linux-git"
 pkgname=("zfs-linux-git" "zfs-linux-git-headers")
 
-pkgver=0.7.0.r68.gd9549cba9.4.12.12.1
+pkgver=0.7.0.r72.gd9ec8b9b2.4.12.13.1
 pkgrel=1
-makedepends=("linux-headers=4.12.12-1" "git" "spl-linux-git-headers")
+makedepends=("linux-headers=4.12.13-1" "git" "spl-linux-git-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-git" "zfs-utils-common-git>=0.7.0.r68.gd9549cba9" "linux=4.12.12-1")
+depends=("kmod" "spl-linux-git" "zfs-utils-common-git>=0.7.0.r72.gd9ec8b9b2" "linux=4.12.13-1")
 
 pkgver() {
     cd "${srcdir}/zfs"
-    echo $(git describe --long | sed 's/^zfs-//;s/\([^-]*-g\)/r\1/;s/-/./g').4.12.12.1
+    echo $(git describe --long | sed 's/^zfs-//;s/\([^-]*-g\)/r\1/;s/-/./g').4.12.13.1
 }
 
 build() {
@@ -38,8 +38,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.1 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.12.12-1-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.12.12-1-ARCH/build
+                --with-linux=/usr/lib/modules/4.12.13-1-ARCH/build \
+                --with-linux-obj=/usr/lib/modules/4.12.13-1-ARCH/build
     make
 }
 
@@ -65,5 +65,5 @@ package_zfs-linux-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.12.12-1-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.12.13-1-ARCH/Module.symvers
 }
