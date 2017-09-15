@@ -1,26 +1,42 @@
 # Maintainer: Philipp Schmitt <philipp@schmitt.co>
 # GitHub: https://github.com/pschmitt/aur-python-crontab
 
-pkgbase=python-crontab
+_name=python-crontab
 pkgname=('python-crontab' 'python2-crontab')
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Crontab module for read and writing crontab files and accessing the system cron automatically and simply using a direct API.'
 arch=('any')
 url='https://pypi.python.org/pypi/python-crontab'
 license=('GPL')
-source=("https://pypi.python.org/packages/bb/eb/65603b7e76542d301bedea22bf46248ce964de6144550f626b68cb4156e0/$pkgname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 
 md5sums=('f0b3140d3db5150d9e01bf7f30abb602')
 
-package_python-crontab () {
+prepare()
+{
+  cp -a ${pkgname}-$pkgver{,-py2}
+}
+
+build()
+{
+  cd "$srcdir/${pkgname}-$pkgver"
+  python setup.py build
+
+  cd "$srcdir/${pkgname}-$pkgver-py2"
+  python2 setup.py build
+}
+
+package_python-crontab ()
+{
   depends=('python' 'python-dateutil')
-  cd "$srcdir/$pkgbase-$pkgver"
+  cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-package_python2-crontab () {
+package_python2-crontab ()
+{
   depends=('python2' 'python2-dateutil')
-  cd "$srcdir/$pkgbase-$pkgver"
+  cd "$srcdir/$_name-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
