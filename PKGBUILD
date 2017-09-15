@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=61.0.3163.79
+pkgver=61.0.3163.91
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
@@ -41,7 +41,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-libva-remove.patch.gz
         chromium-vaapi-r12.patch)
 
-sha256sums=('bdbc139ed86f3b5d1ec3c3b00caeaef4f9ac2c363438f03dded56e217ad10727'
+sha256sums=('0a2b4423551217d3ada244730fdfe3454f2630c8551b0bb784b727dc8294f2aa'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
