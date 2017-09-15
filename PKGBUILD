@@ -1,6 +1,6 @@
 # Maintainer: Alad Wenter <alad@mailbox.org>
 pkgname=howm-x11-git
-pkgver=0.5.1.74.gd810ad1
+pkgver=0.5.1.81.g3e3d6ee
 pkgrel=1
 pkgdesc='A lightweight, tiling X11 window manager that mimics vi by offering operators, motions and modes.'
 url='https://github.com/HarveyHunt/howm'
@@ -20,13 +20,13 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    make debug
+    # https://github.com/HarveyHunt/howm/issues/68
+    make release
 }
 
 package() {
     cd "$pkgname"
-    install -Dm755 bin/debug/howm "$pkgdir"/usr/bin/howm
-    install -Dm644 howm.xsession.desktop "$pkgdir"/usr/share/xsessions/howm.xsession.desktop
+    make DESTDIR="$pkgdir" install
 
     mkdir -p "$pkgdir"/usr/share/howm/examples
     cp -a examples/* "$pkgdir"/usr/share/howm/examples/
