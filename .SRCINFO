@@ -1,0 +1,16 @@
+pkgbase = tmsu-git
+	pkgdesc = Tag your files and access them through a virtual filesystem
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://tmsu.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	conflicts = tmsu
+	source = git+https://github.com/oniony/tmsu.git
+	sha256sums = SKIP
+
+pkgname = tmsu-git
+
