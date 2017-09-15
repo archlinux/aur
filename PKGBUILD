@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=fcitx-table-other
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc='Provides some other tables for Fcitx, fork from ibus-table-others, scim-tables.'
 arch=('any')
 url="https://github.com/fcitx/fcitx-table-other"
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('fcitx')
 makedepends=('cmake' 'intltool')
 source=("https://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
-sha512sums=('bd1eff0d4bd616a142711b0a7f9373ce9fdb6e99ded5cf717831aee475c8a442287e26355a2dd72ea39397603a42a6218b4233458028f0dccf4285d0e16fdf68')
+sha512sums=('f7eeb45acfd31f5292b2fa0b068b755fddc30d42d23967ad684a5f665b76de8e98b56219cecd6bacaa5f8ec8af7453ed5c3a4b9f15d312f5b32f8e49ab30688d')
 
 build() {
   cd $pkgname-$pkgver
