@@ -1,14 +1,13 @@
 pkgbase = rtl8812au-dkms-git
 	pkgdesc = rtl8812AU chipset driver with firmware v5.2.9
-	pkgver = 5.2.9
-	pkgrel = 2
+	pkgver = 5.2.9.r30.g607c6e4
+	pkgrel = 1
 	url = https://github.com/zebulon2/rtl8812au-driver-5.2.9/tree/txpower
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = bc
-	makedepends = linux-headers
 	depends = dkms
 	conflicts = rtl8812au
 	source = git+https://github.com/zebulon2/rtl8812au-driver-5.2.9.git#branch=txpower
