@@ -39,7 +39,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="interactive_markers-release-release-lunar-interactive_markers-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/interactive_markers-release/archive/release/lunar/interactive_markers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4677f9092358bdf84a84748d6554b04a89a23adfdbc25672cb6d074f23058d50')
+sha256sums=('43359e030f6c01b73645bd253f0c97bdbe9ae93820dca0ab05db127936d0c795')
 
 build() {
   # Use ROS environment variables
