@@ -1,0 +1,12 @@
+[Unit]
+Description=Postgresql Workload Analyser WebInterface
+
+[Service]
+#Environment=PYTHONPATH=/usr/lib/webvirtmgr/lib
+User=postgres
+Group=postgres
+ExecStart=/usr/bin/python /usr/bin/powa-web
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
