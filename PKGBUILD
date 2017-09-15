@@ -1,6 +1,6 @@
 # Maintainer:  Alad Wenter <alad@mailbox.org>
 pkgname=cottage-git
-pkgver=0.3.r4.g9d1e50f
+pkgver=0.3.r6.g00de4a6
 pkgrel=1
 pkgdesc="Use howm commands, operators and set configuration values through a UNIX socket."
 url="https://github.com/HarveyHunt/cottage"
@@ -24,7 +24,7 @@ build() {
 
 package() {
     cd "$pkgname"
-    install -Dm755 cottage "$pkgdir/usr/bin/cottage"
+    make PREFIX='/usr' DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
