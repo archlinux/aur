@@ -1,7 +1,7 @@
 pkgbase = usokoban
 	pkgdesc = GTK+ sokoban clone
 	pkgver = 0.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sokoban.ws/usokoban/usokoban.php
 	arch = i686
 	arch = x86_64

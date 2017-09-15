@@ -2,7 +2,7 @@
 
 pkgname=usokoban
 pkgver=0.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK+ sokoban clone'
 arch=('i686' 'x86_64')
 url='http://sokoban.ws/usokoban/usokoban.php'
@@ -25,7 +25,7 @@ prepare() {
 build() {
   cd source
 
-  gcc $CFLAGS -o usokoban \
+  gcc $CPPFLAGS $CFLAGS -o usokoban $LDFLAGS \
     base.c settings.c sokoban.c sokoban2.c solver.c savitch.c solution.c \
     $(pkg-config --cflags --libs gtk+-2.0 libpcre sqlite3) -lz -lgthread-2.0
 }
