@@ -3,7 +3,7 @@
 # Contributor: Julien Pecqueur <jpec@julienpecqueur.com>
 # Contributor: Sergiusz Urbaniak <sergiusz.urbaniak@gmail.com>
 pkgname=plan9port-git
-pkgver=r3492.9e52ea8a
+pkgver=r3523.17329592
 pkgrel=1
 pkgdesc="A port of many Plan 9 libraries and programs to Unix."
 arch=('i686' 'x86_64')
@@ -60,10 +60,6 @@ package() {
   cd "$pkgdir/usr/lib/plan9"
   ./INSTALL -c -r "$pkgdir/usr/lib/plan9"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # Fix python scripts
-  find "$pkgdir" -name '*.py' -print0 | xargs -0 \
-    sed -i -e 's@^#!/usr/bin/env python$@#!/usr/bin/python2@' -e 's@^#!/usr/bin/python$@#!/usr/bin/python2@'
 
   # Package text files
   for i in CHANGES CONTRIBUTORS README.md TODO; do
