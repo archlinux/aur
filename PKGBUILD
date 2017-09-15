@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-_pkgver=1.4.4
+_pkgver=1.4.5
 _rpmrel=1
 _pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
@@ -29,7 +29,7 @@ backup=("etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('9f1cc57333cbe0eea0f5aa0551556bf2'
+md5sums=('9601de49011baa4eb44b036eec96d0af'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
 
@@ -46,6 +46,8 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"
 
+	pushd mock >/dev/null
+
 	python_sitelib=$(python -c 'from distutils.sysconfig import get_python_lib; import sys; sys.stdout.write(get_python_lib())')
 	sed -r -i py/${pkgname}{,chain}.py \
 	    -e 's|^__VERSION__\s*=.*|__VERSION__="'$_pkgver'"|' \
@@ -61,10 +63,14 @@ build() {
 
 	python    -m compileall py/ -q
 	python -O -m compileall py/ -q
+
+	popd >/dev/null
 }
 
 package() {
 	cd "$pkgname-$pkgver"
+
+	pushd mock >/dev/null
 
 	install -d "$pkgdir/$_bindir/"
 	install py/mock.py      "$pkgdir/$_bindir/"mock
@@ -99,6 +105,14 @@ package() {
 		    -i "$pkgdir/etc/security/console.apps/$pkgname"
 		ln -s /usr/bin/consolehelper "$pkgdir/usr/bin/$pkgname"
 	fi
+
+	popd >/dev/null
+
+	pushd mock-core-configs >/dev/null
+
+	install -p -m0644 etc/mock/*.cfg "$pkgdir/$_sysconfdir/"mock/
+
+	popd >/dev/null
 
 	install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 	install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
