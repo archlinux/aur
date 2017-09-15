@@ -1,7 +1,7 @@
 # Maintainer: jun7 <jun7@hush.com>
 pkgname=wyeb-git
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A vim-like webkit2gtk browser"
 arch=('x86_64')
 url="https://github.com/jun7/wyeb"
@@ -20,6 +20,7 @@ pkgver(){
 prepare() {
 	cd "$srcdir/wyeb"
 	git pull --rebase origin $_branch
+	make clean
 }
 
 build() {
