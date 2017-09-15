@@ -35,7 +35,9 @@ build() {
   git submodule init
   git submodule update
 
-  ./create_build_files4.sh
+  CFLAGS="-fPIC" \
+    ./create_build_files4.sh
+
   cd build/$(wx-config --release)/gmake
 
   CXXFLAGS="-fPIC $(wx-config --cxxflags)" \
