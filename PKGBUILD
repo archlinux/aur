@@ -43,7 +43,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="image_transport_plugins-release-release-lunar-theora_image_transport-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_transport_plugins-release/archive/release/lunar/theora_image_transport/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f3a0b2741eae0196173162705d442e4d6715c0ba544335e8e9c90cab74cffcac')
+sha256sums=('5feaaca7927ec669760e9196f45bab865633a3a08f0a6884a7c6c59f90291018')
 
 build() {
   # Use ROS environment variables
