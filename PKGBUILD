@@ -17,6 +17,10 @@ depends=(ghc)
 # To use this package, you just need to configure cabal
 # --with-compiler=/usr/share/ghc-pristine/bin/ghc
 
+pkgver() {
+    ghc --version | sed -n 's/^.*version \([0-9.]*\)/\1/p'
+}
+
 package() {
     prefix=/usr/share/ghc-pristine
     mkdir -p "$pkgdir$prefix/bin/" "$pkgdir$prefix/lib/package.conf.d/"
