@@ -3,13 +3,16 @@
 
 pkgname=ne-git
 pkgver=3.1.1.r6.g5ad3d57
-pkgrel=1
-pkgdesc="A nice develloper editor, highly recommanded by Episteak French School"
+pkgrel=2
+pkgdesc="A nice developer editor, highly recommended by Episteak French 
+School - git version"
 arch=('any')
 url="https://github.com/vigna/ne"
 license=('GPL3')
 makedepends=('git')
 depends=('ncurses')
+provides=('ne')
+conflicts=('ne')
 source=('git+https://github.com/vigna/ne.git')
 sha256sums=('SKIP')
 
