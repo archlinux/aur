@@ -5,26 +5,28 @@
 _subarchs=(armv5 armv6h armv7h armv8)
 pkgbase='distccd-alarm'
 pkgname=("${_subarchs[@]/#/$pkgbase-}")
-pkgver=7.1.1
-pkgrel=2
+_date=20170910
+pkgver=7.2.0
+pkgrel=1
+_upstreampkgrel=1
 arch=('x86_64')
 license=('GPL' )
-pkgdesc="A toolchain for Arch ARM builds via distcc on x86_64 slaves"
-url="http://archlinuxarm.org/developers/distcc-cross-compiling"
+pkgdesc="Toolchain for Arch ARM builds via distcc on x86_64 slaves"
+url="https://archlinuxarm.org/wiki/Distcc_Cross-Compiling"
 depends=('distcc')
 options=('libtool' 'emptydirs' '!strip')
-_URL="https://archlinuxarm.org/builder/xtools/$pkgver-$pkgrel"
-_upstreampkgrel=2
-source=("x-tools-$pkgver-$_upstreampkgrel.tar.xz::$_URL/x-tools.tar.xz"
-"x-tools6h-$pkgver-$_upstreampkgrel.tar.xz::$_URL/x-tools6h.tar.xz"
-"x-tools7h-$pkgver-$_upstreampkgrel.tar.xz::$_URL/x-tools7h.tar.xz"
-"x-tools8-$pkgver-$_upstreampkgrel.tar.xz::$_URL/x-tools8.tar.xz"
+_URL="https://archlinuxarm.org/builder/xtools"
+source=(
+  "x-tools-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools.tar.xz"
+"x-tools6h-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools6h.tar.xz"
+"x-tools7h-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools7h.tar.xz"
+ "x-tools8-$pkgver-$pkgrel-$_date.tar.xz::$_URL/x-tools8.tar.xz"
 'config.in' 'service.in')
 md5sums=('1ade1ced844961a39e1e539fb04c1d65'
          'bfe68188dae1512690d9981ff0ee7460'
          '2ae08024566bd62249d4a83ee8d90124'
          '79c3880c29bc8994d2136af553ca4d6d'
-         'e68374ceee62f521a31445e986fc5714'
+         '48b71f968488a4322a715d633eb6879e'
          '7e664f8ce386f467f1a7381c9ac3c06f')
 
 build() {
