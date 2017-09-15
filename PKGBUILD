@@ -16,7 +16,7 @@ source=(https://github.com/ossec/$pkgname/archive/$pkgver.tar.gz \
         config)
 sha256sums=('ed5bc3483d5e864a8f8283f57127d1251b458c184e5b263be8be4c89f4cf85c3'
             'be5f6fe7e10603a0897c2502e0e6913fbb544a66f59674aaaef87d0f31d09eb9'
-            '372b4584093204f37a9cdeb6df5f7dc1a7f88873adc15f8b7de68d0378f2edf8')
+            '125677535c5bbfbcc8391d369dc24641cb31beb5730e4984275be1a3fcb50974')
 
 _instdir=/var/ossec
 
