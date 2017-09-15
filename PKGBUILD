@@ -29,7 +29,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="eigen_stl_containers-release-release-lunar-eigen_stl_containers-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/eigen_stl_containers-release/archive/release/lunar/eigen_stl_containers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('872b50caa628406f06a55006a7f3f646cd5910b9ea1c613c877aab8b868a926b')
+sha256sums=('2df7989ebe36db10452245275613809d02d264d3140bc77b7a6b0413e5c2402f')
 
 build() {
   # Use ROS environment variables
