@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=stumpwm-contrib-git
-pkgver=r159.1a9f81b
+pkgver=r162.936560e
 pkgrel=1
 pkgdesc="Contribution resotiry for stumpwm"
 arch=('any')
