@@ -12,8 +12,8 @@ arch=('i686' 'x86_64')
 url="http://www.gimp.org"
 license=('GPL' 'LGPL')
 depends=('babl' 'gegl' 'lcms' 'libxpm' 'libwmf' 'libxmu' 'librsvg' 'libmng'
-         'libexif' 'jasper' 'desktop-file-utils' 'libgexiv2' 'hicolor-icon-theme' 'libmypaint')
-makedepends=('git' 'intltool' 'poppler-glib' 'alsa-lib' 'iso-codes' 'gobject-introspection' 
+         'libexif' 'gtk3' 'jasper' 'desktop-file-utils' 'libgexiv2' 'hicolor-icon-theme' 'libmypaint')
+makedepends=('git' 'glib-networking' 'intltool' 'poppler-glib' 'alsa-lib' 'iso-codes' 'gobject-introspection' 
 'curl' 'ghostscript' 'libxslt')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
 			'libwebkit: for the help browser' 
