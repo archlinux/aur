@@ -41,6 +41,7 @@ _build_from_head=false
 _patching=true
 _minimal=true
 _uberminimal=false
+_testing=false
 
 if [[ -z ${startdir} ]]; then
   _building=false;
@@ -53,6 +54,10 @@ fi
 
 if [[ -f static ]]; then
   _static_build=true
+fi
+
+if [[ -f test_new_qt ]]; then
+  _testing=true
 fi
 
 if [[ -f full-build ]]; then
@@ -76,11 +81,19 @@ fi
 
 # vars
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
-_pkgvermajmin="5.9"
-_pkgverpatch=".1"
-# {alpha/beta/beta2/rc}
-_dev_suffix=""
-pkgrel=5
+if $_testing; then
+  _pkgvermajmin="5.10"
+  _pkgverpatch=".0"
+  # {alpha/beta/beta2/rc}
+  _dev_suffix="alpha"
+  pkgrel=1
+else
+  _pkgvermajmin="5.9"
+  _pkgverpatch=".1"
+  # {alpha/beta/beta2/rc}
+  _dev_suffix=""
+  pkgrel=5
+fi
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -159,7 +172,11 @@ $_debug && _additional_configure_flags="$_additional_configure_flags -force-debu
 _libspkgname="${pkgname}-target-libs"
 _libsdebugpkgname="${pkgname}-target-libs-debug"
 _packaginguser=$(whoami)
-_qt_package_name_prefix="qt-everywhere-opensource-src"
+if $_testing; then
+  _qt_package_name_prefix="qt-everywhere-src"
+else
+  _qt_package_name_prefix="qt-everywhere-opensource-src"
+fi
 _source_package_name=${_qt_package_name_prefix}-${_pkgver}
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
@@ -220,12 +237,23 @@ _core_configure_options="\
                  -make libs \
                  -ltcg \
                  \
-                 -reduce-relocations \
                  -reduce-exports"
+
+if ! $_testing; then
+  _core_configure_options="\
+                    $_core_configure_options \
+                    -reduce-relocations"
+fi
+
+if $_testing; then
+  _tar_xz_sha256="10d49510bb693eac88861f239d6b9ebfb69e1b73493a60953ef85e5d709a5036"
+else
+  _tar_xz_sha256="7b41a37d4fe5e120cdb7114862c0153f86c07abbec8db71500443d2ce0c89795"
+fi
 
 if ! $_build_from_head; then
   source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
-  sha256sums=("SKIP" "7b41a37d4fe5e120cdb7114862c0153f86c07abbec8db71500443d2ce0c89795")
+  sha256sums=("SKIP" "$_tar_xz_sha256")
 fi
 
 options=('!strip')
@@ -298,8 +326,6 @@ build() {
 
   cd ${_srcdir}
 
-  echo "INCLUDEPATH += ${_sysroot}/usr/include/openssl-1.0" >> ${_basedir}/src/network/network.pro
-
 if ! $_target_host; then
   # Get our mkspec
   rm -Rf $_mkspec_dir
@@ -309,16 +335,21 @@ fi
 if $_patching; then
   # build qtwebengine with our mkspec
 
+if ! $_testing; then
+  echo "INCLUDEPATH += ${_sysroot}/usr/include/openssl-1.0" >> ${_basedir}/src/network/network.pro
   # hard coded off, so we have to hard code it on
   local _reducerelocations="${_basedir}/config.tests/unix/reduce_relocs/bsymbolic_functions.c"
   sed -i "s/error/warning/" ${_reducerelocations} || exit 1
+fi
 
   cd ${_basedir}
   #patch -p1 < ${startdir}/0001-Check-lib64-as-well-as-lib.patch
 
+if ! $_testing; then
   cd ${_declarativedir}
   bunzip2 ${startdir}/0001-Move-qt-declarative-to-4c3246e49521b6341ddcc513814ae.patch.bz2 -c > ${startdir}/0001-Move-qt-declarative-to-4c3246e49521b6341ddcc513814ae.patch
   patch -p1 < ${startdir}/0001-Move-qt-declarative-to-4c3246e49521b6341ddcc513814ae.patch
+fi
   #patch -p1 < ${startdir}/0001-Fix-crash-in-QQuickPixmapReader-friends.patch
   #patch -p1 < ${startdir}/0001-Fix-build-with-qreal-as-float.patch
 
