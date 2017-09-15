@@ -2,3 +2,5 @@ blt4l
 src
 pkg
 *.pkg.*
+blt4l_*
+blt4l.sh

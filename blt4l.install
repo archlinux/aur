@@ -1,7 +1,15 @@
+# shellcheck shell=bash
+
 post_install() {
   echo "Your installation of blt4l is not yet done!
 You'll need to set launch options in Steam for Payday 2:
-LD_PRELOAD=\"\$LD_PRELOAD /usr/lib/blt4l/libblt_loader.so\" %command%
-And install the base Lua code, instructions here:
-https://github.com/blt4linux/blt4l"
+    blt4l %command%
+The mods/ folder will be automatically created on launch (if it doesn't already exist)."
+}
+
+post_upgrade() {
+  echo "If you were using the previous package, you need to update your launch options.
+You'll need to set launch options in Steam for Payday 2:
+    blt4l %command%
+The mods/ folder will be automatically created on launch (if it doesn't already exist)."
 }
