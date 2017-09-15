@@ -2,7 +2,7 @@
 
 _pkgbase=monero
 pkgname=monero-gui-bin
-pkgver=0.10.3.1_beta2
+pkgver=0.11.0.0
 pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (GUI Beta 2. Includes deaemon, wallet and miner)"
 arch=("x86_64" "i686")
@@ -22,13 +22,13 @@ source=("https://downloads.getmonero.org/gui/linux64"
     "monero-wallet-gui"
 )
 
-sha256sums=("4915473265d58720fd8f019e536c2b7fb02648ab51a8087e84aa1e2434788452"
+sha256sums=("25bdeeb9072b679eda4aca2a5dac0351393d6bd8ceed1822bf65495ab6d113bf"
     "8b69aac7caae305676ccebc6dbfa803c9aadf8b82d2ca1ecf2d8302a0d79cfc9"
 )
 
 if [ "$CARCH" = 'i686' ]; then
     source[0]="https://downloads.getmonero.org/gui/linux32"
-    sha256sums[0]="092b49080c3380666845f7f39823b09f4960ea1e250b84b150856ef33ca30690"
+    sha256sums[0]="284b30fe84c92407117b7dcabc324c12050196e520d64ff5601a031dfbc7bb90"
 fi
 
 package() {
@@ -37,7 +37,6 @@ package() {
     # Copy precompiled package
     install -dm755 "${pkgname//-bin/}-${pkgver//_/-}" "${pkgdir}/usr/share/monero-gui/"
     cp -r "${pkgname//-bin/}-${pkgver//_/-}/." "${pkgdir}/usr/share/monero-gui/"
-    find "${pkgdir}" -type f -name "._*" -exec rm {} \;
     
     # Fix permissions
     chmod -R +rX "${pkgdir}/usr/share/monero-gui"
