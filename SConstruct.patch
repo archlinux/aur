@@ -1,0 +1,20 @@
+--- SConstruct.orig	2017-06-29 09:16:49.422957000 +0300
++++ /RHVoice/SConstruct	2017-09-15 09:17:27.345414000 +0300
+@@ -158,7 +158,7 @@
+         env.AppendUnique(CXXFLAGS=["/EHsc"])
+     if "gcc" in env["TOOLS"]:
+         env.MergeFlags("-pthread")
+-        env.AppendUnique(CXXFLAGS=["-std=c++03"])
++        env.AppendUnique(CXXFLAGS=["-std=c++11"])
+     if sys.platform.startswith("linux"):
+         env.Append(SHLINKFLAGS="-Wl,-soname,${TARGET.file}.${libversion.split('.')[0]}")
+     return env
+@@ -213,7 +213,7 @@
+             env["audio_libs"].add("libao")
+         if conf.CheckPKG("portaudio-2.0"):
+             env["audio_libs"].add("portaudio")
+-#        has_giomm=conf.CheckPKG("giomm-2.4")
++        has_giomm=conf.CheckPKG("giomm-2.4")
+     if env["PLATFORM"]=="win32":
+         env.AppendUnique(LIBS="kernel32")
+     conf.Finish()

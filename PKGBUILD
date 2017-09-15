@@ -1,5 +1,5 @@
 pkgname=rhvoice-git
-pkgver=20170622
+pkgver=20170711
 pkgrel=1
 pkgdesc="free and open source speech synthesizer for Russian and other languages"
 arch=('i686' 'x86_64')
@@ -27,17 +27,15 @@ build() {
     fi
 
     msg "GIT checkout done or server timeout"
+
+    msg2 "Patching source"
+    cd "${srcdir}"
+	for p in ../*.patch; do
+      msg2 "Applying patch: $p"
+      patch -p1 -i "$p" --binary
+    done
+
     msg "Starting build..."
-cat << EOF | patch "$srcdir/$_gitname/SConstruct"
-161c161
-<         env.AppendUnique(CXXFLAGS=["-std=c++03"])
----
->         env.AppendUnique(CXXFLAGS=["-std=c++11"])
-216c216
-< #        has_giomm=conf.CheckPKG("giomm-2.4")
----
->         has_giomm=conf.CheckPKG("giomm-2.4")
-EOF
     cd "$srcdir/$_gitname"
 
     scons prefix="/usr" sysconfdir="/etc" || return 1
