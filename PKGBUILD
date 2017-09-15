@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Pujol <alexandre@pujol.io>
 
 pkgname='pass-import'
-pkgver=0.1
-pkgrel=3
+pkgver=0.2
+pkgrel=1
 pkgdesc='A generic importer extension for the standard unix password manager pass'
 arch=('any')
 url='https://github.com/roddhjav/pass-import'
@@ -13,7 +13,7 @@ optdepends=('python2: for importer script support'
             'ruby: for importer script support'
             'perl: for importer script support')
 source=(https://github.com/roddhjav/pass-import/archive/${pkgver}.tar.gz)
-sha256sums=('6739189ac5f00e4d074ba14d0008a435289d9acb360c938069b2e188f0f73091')
+sha256sums=('8d64ea4aebf0ab4e0387e267c4d8d8230bca20902408a24010e98b93f089126d')
 
 package() {
   cd "${srcdir}/pass-import-$pkgver/"

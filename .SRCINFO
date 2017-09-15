@@ -1,7 +1,7 @@
 pkgbase = pass-import
 	pkgdesc = A generic importer extension for the standard unix password manager pass
-	pkgver = 0.1
-	pkgrel = 3
+	pkgver = 0.2
+	pkgrel = 1
 	url = https://github.com/roddhjav/pass-import
 	arch = any
 	license = GPL3
@@ -10,8 +10,8 @@ pkgbase = pass-import
 	optdepends = python3: for importer script support
 	optdepends = ruby: for importer script support
 	optdepends = perl: for importer script support
-	source = https://github.com/roddhjav/pass-import/archive/0.1.tar.gz
-	sha256sums = 6739189ac5f00e4d074ba14d0008a435289d9acb360c938069b2e188f0f73091
+	source = https://github.com/roddhjav/pass-import/archive/0.2.tar.gz
+	sha256sums = 8d64ea4aebf0ab4e0387e267c4d8d8230bca20902408a24010e98b93f089126d
 
 pkgname = pass-import
 
