@@ -1,7 +1,7 @@
 pkgbase = megamario
 	pkgdesc = A Super Mario Bros. clone
 	pkgver = 1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/mmario
 	arch = i686
 	arch = x86_64
@@ -11,14 +11,17 @@ pkgbase = megamario
 	depends = sdl_image
 	depends = sdl_mixer
 	depends = mesa
+	noextract = MegaMario_v1.7_full.zip
 	source = https://downloads.sourceforge.net/mmario/MegaMario_v1.7_full.zip
-	source = megamario-fix-compile-error.patch
-	source = megamario-fix-mp3-path.patch
-	source = megamario-fix-logfile-path.patch
+	source = megamario-1.7-fix-compile-error.patch
+	source = megamario-1.7-fix-mp3-path.patch
+	source = megamario-1.7-fix-logfile-path.patch
+	source = megamario-1.7-makefile.patch
 	sha256sums = 243ebf03cb1e5c5e7cead48d9a988ffb9a1c94f9427f71ea559ad047486c9e72
 	sha256sums = 2665b31e5014868a4df71f4e0565dac4c50b703f9d539be8ee1d24688fdde070
 	sha256sums = ff1286986ca125b888802e205f5291e3a30ccd15433744e9fa18fd1ec0ee9e2f
 	sha256sums = 02361dd4bc005d13d6010d42179b1aaa3d4ea6bd8a02f47ddf8b10ea4215bd34
+	sha256sums = cdce4ab90a3050f4b4ccb772894814d6f4f2dffe3afbe3d4687e5816fe854e82
 
 pkgname = megamario
 

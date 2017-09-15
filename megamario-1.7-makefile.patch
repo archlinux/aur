@@ -1,0 +1,31 @@
+--- Makefile.orig	2017-09-15 18:07:36.261859260 +0200
++++ Makefile	2017-09-15 18:12:02.405929293 +0200
+@@ -1,8 +1,8 @@
+ PREFIX  = /home/opt
+ DATADIR = $(PREFIX)/share/$(TARGET)
+-CFLAGS  = -g -Wall -O2
+-CXXFLAGS= $(CFLAGS)
+-LDFLAGS = -lSDL -lSDL_mixer -lSDL_ttf -lSDL_image -lGL
++CFLAGS  ?= -g -Wall -O2
++CXXFLAGS ?= $(CFLAGS)
++LDLIBS = -lSDL -lSDL_mixer -lSDL_ttf -lSDL_image -lGL
+ DEFINES = -DDATADIR=\"$(DATADIR)/\"
+ OBJS    = src/bonus.o src/gamepad.o src/killerblume.o src/player.o \
+   src/bowser.o      src/global.o    src/levels.o      src/spiny.o  \
+@@ -13,13 +13,13 @@
+ TARGET  = megamario
+ 
+ $(TARGET): $(OBJS)
+-	$(CXX) $(LDFLAGS) -o $@ $^
++	$(CXX) $(LDLIBS) $(LDFLAGS) -o $@ $^
+ 
+ %.o: %.c
+-	$(CC) $(CFLAGS) $(DEFINES) -o $@ -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(DEFINES) -o $@ -c $<
+ 
+ %.o: %.cpp
+-	$(CXX) $(CXXFLAGS) $(DEFINES) -o $@ -c $<
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(DEFINES) -o $@ -c $<
+ 
+ install: $(TARGET)
+ 	rm -fr $(DATADIR)
