@@ -1,7 +1,7 @@
 pkgbase = movfuscator-git
 	pkgdesc = The single instruction C compiler
 	pkgver = 2.3273164
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xoreaxeaxeax/movfuscator
 	arch = x86_64
 	license = BSD
