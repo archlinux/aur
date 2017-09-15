@@ -1,0 +1,12 @@
+post_install() {
+    echo 'You need manually edit your bootloader boot entry'
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    rm /usr/share/X11/xorg.conf.d/20-displaylink.conf
+    post_install
+} 

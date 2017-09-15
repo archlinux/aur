@@ -1,0 +1,17 @@
+pkgbase = dl-switch
+	pkgdesc = Easy way to switch between displaylink and optimus
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Ashark/DisplayLink-switch
+	install = dl-switch.install
+	arch = any
+	license = GPL3
+	source = https://raw.githubusercontent.com/Ashark/DisplayLink-switch/master/displaylink-workaround1
+	source = https://raw.githubusercontent.com/Ashark/DisplayLink-switch/master/displaylink.target
+	source = https://raw.githubusercontent.com/Ashark/DisplayLink-switch/master/dl-switch.service
+	sha256sums = 2d8761e2abf30f06080dec0f060817c5204b528b95137d3d19697640977097ec
+	sha256sums = 7822a30c9589922fa36a876bf4d9ccdd2fda10210f498823f497e85f5f41ec6f
+	sha256sums = 775d57eea54826f523c1458575c314c60feb550d60a62fd1f7b772c561cf160a
+
+pkgname = dl-switch
+
