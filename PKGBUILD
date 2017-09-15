@@ -2,7 +2,7 @@
 # CoMaintainer: Frederic Bezies < fredbezies at gmail dot com>
 
 pkgname=ne-git
-pkgver=r732.5ad3d57
+pkgver=3.1.1.r6.g5ad3d57
 pkgrel=1
 pkgdesc="A nice develloper editor, highly recommanded by Episteak French School"
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/ne"
-  git describe --long --tags | sed 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
