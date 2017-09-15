@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=fcitx-hangul
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Hangul (Korean) support for fcitx"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx-hangul"
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('fcitx' 'libhangul')
 makedepends=('cmake' 'intltool')
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
-sha512sums=('07085508da98c49bcecf75fbfad6681263a735a1efcc4fb7a6fa05cb215dfe0c338e95e26cc55e488501b5abbc1007464b1bbf488f07aaca2d1a0a18c8173074')
+sha512sums=('6ad2e34644c9246490a91342a11b186d40702f7e587beeb056ad98538da50dbf9fdc9f298e5b379bef50f63ad5be5da79ba84e60a22b57c330d0a68dd5bf5ca6')
 
 prepare() {
   mkdir build
