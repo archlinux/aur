@@ -14,7 +14,7 @@ makedepends=('asciidoc' 'xmlto')
 depends=(
     'popt'
     'liburcu>=0.7.2'
-    'lttng-ust>=2.9.0'
+    "lttng-ust>=${pkgver%.*}.0"
     'linux>=2.6.27'
     'libxml2>=2.7.6'
 )
