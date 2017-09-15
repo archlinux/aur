@@ -1,4 +1,4 @@
-# Maintainer: Stephen Zhang <stephen at gmail dot com>
+# Maintainer: Stephen Zhang <zsrkmyn at gmail dot com>
 
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python2-pytorch")
