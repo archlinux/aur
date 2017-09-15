@@ -2,8 +2,8 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-pkgver=6.0.0.beta.5.78.gcdbbb7a4b
-pkgrel=2
+pkgver=6.0.0.beta.7.17.g03e3257b0
+pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework (git version)"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
@@ -14,10 +14,12 @@ provides=('powershell')
 conflicts=('powershell')
 source=($_pkgname::'git+https://github.com/PowerShell/PowerShell.git'
         'pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop'
-        'googletest::git+https://github.com/google/googletest.git')
+        'googletest::git+https://github.com/google/googletest.git'
+        build.sh)
 md5sums=('SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+         'ae733aaf023f7d07e6ed9e8fffcd8ff1')
 install=powershell.install
 
 pkgver() {
@@ -34,7 +36,7 @@ prepare() {
   git submodule update
   git clean -dfx
 
-  sed -i -e 's/hash powershell/\/bin\/false/g' build.sh 
+  sed -i -e 's/hash powershell/\/bin\/false/g' ../build.sh
 }
 
 build() {
@@ -45,7 +47,7 @@ build() {
   make -j
   popd
 
-  "$srcdir"/powershell/build.sh
+  "$srcdir"/build.sh
 }
 
 check() {
