@@ -1,8 +1,9 @@
 [Unit]
 Description=Prometheus exporter for machine metrics
+After=network.target
 
 [Service]
 ExecStart=/usr/bin/prometheus_node_exporter
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

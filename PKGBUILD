@@ -1,37 +1,48 @@
-# Maintainer: Dennis Fink <metalgamer@c3l.lu>
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: Dennis Fink <metalgamer@c3l.lu>
 # Contributor: Rémi Audebert <rflah0@gmail.com>
 
-_pkgname=node_exporter
 pkgname=prometheus-node-exporter
-pkgver=0.11.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Prometheus exporter for machine metrics "
 arch=('x86_64' 'i686')
 url="https://github.com/prometheus/node_exporter"
-conflicts=($pkgname)
-provides=($pkgname)
 license=('Apache')
-makedepends=('git' 'mercurial')
-options=('!strip' '!emptydirs')
-source=("https://github.com/prometheus/node_exporter/archive/${pkgver}.tar.gz"
-  "prometheus-node-exporter.service")
-sha256sums=('459580fab840432ee520b9341b8361fe6017d271cf2502c07b95225a6fb966b6'
-            '360d44488e2c0617e8436e2420e9e1a1e657055b1bb41e1e121524f7dc99ed57')
+depends=('glibc')
+makedepends=('git' 'go')
+source=("https://github.com/prometheus/node_exporter/archive/v${pkgver}.tar.gz"
+        "prometheus-node-exporter.service")
+sha256sums=('312d7e1c07d6a7548f2f116b983da87f7b3a7630f9332eb41c306fd71b2e6ec1'
+            'a38404f983ebd95e4db4002c4e05e2088ef10797843dcf8afafbd4ca7f960aea')
+
+prepare() {
+  cd "${srcdir}/node_exporter-${pkgver}"
+
+  export GOPATH="${srcdir}/gopath"
+  mkdir -p "${GOPATH}/src/github.com/prometheus"
+  ln -snf "${srcdir}/node_exporter-${pkgver}" \
+    "${GOPATH}/src/github.com/prometheus/node_exporter"
+}
 
 build() {
-  patch -p0 < ../Makefile.COMMON.patch
-  mkdir -p "$_pkgname-$pkgver/Godeps"
-  cp -fr ../Godeps.json "$_pkgname-$pkgver/Godeps"
-  cd "$_pkgname-$pkgver"
+  export GOPATH="${srcdir}/gopath"
+  cd "${GOPATH}/src/github.com/prometheus/node_exporter"
 
-  make
+  make build
+}
+
+check() {
+  export GOPATH="${srcdir}/gopath"
+  cd "${GOPATH}/src/github.com/prometheus/node_exporter"
+
+  make test test-e2e -o build
 }
 
 package() {
-  install -Dm755 prometheus-node-exporter.service "$pkgdir/usr/lib/systemd/system/prometheus-node-exporter.service"
+  cd "${srcdir}/node_exporter-${pkgver}"
 
-  cd "$_pkgname-$pkgver"
-
-  install -Dm755 "$_pkgname" "$pkgdir/usr/bin/prometheus_$_pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "node_exporter" "${pkgdir}/usr/bin/prometheus_node_exporter"
+  install -Dm755 "${srcdir}/prometheus-node-exporter.service" \
+    "${pkgdir}/usr/lib/systemd/system/prometheus-node-exporter.service"
 }
