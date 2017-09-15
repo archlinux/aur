@@ -37,7 +37,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="image_common-release-release-lunar-camera_calibration_parsers-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_common-release/archive/release/lunar/camera_calibration_parsers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3d4662ee499b060e3d086279b2c6c07fd9e83e1402127993600f10d5be8b2195')
+sha256sums=('2621801d39e75ee57621695c441692c1c800f7e86e407f00679856531f042711')
 
 build() {
   # Use ROS environment variables
