@@ -5,7 +5,7 @@
 
 pkgname=text2pdf
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 _commit=3f6d725379337d0b9bde2e5e350fdfc249216be7
 pkgdesc='Convert text files to PDF'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd $pkgname-$_commit
-  gcc $CFLAGS -o text2pdf text2pdf.c $LDFLAGS
+  gcc $CPPFLAGS $CFLAGS -o text2pdf text2pdf.c $LDFLAGS
 }
 
 package() {

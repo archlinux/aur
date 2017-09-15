@@ -1,7 +1,7 @@
 pkgbase = text2pdf
 	pkgdesc = Convert text files to PDF
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.eprg.org/pdfcorner/text2pdf/
 	arch = i686
 	arch = x86_64
