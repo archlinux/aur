@@ -1,7 +1,7 @@
 # Contributor: m.reed art mykolab dart com
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=xbanish-git
-pkgver=1.3.r0.g5c0aed7
+pkgver=1.5.r0.g53216fe
 pkgrel=1
 pkgdesc="Banish the mouse cursor when typing, show it again when the mouse moves."
 arch=('i686' 'x86_64')
