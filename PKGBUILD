@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='qc-git'
 pkgdesc='C frontend for the QBE C compiler backend'
-pkgver=r255.30053c1
+pkgver=r263.f25f9d3
 pkgrel=1
 url='https://github.com/andrewchambers/qc'
 arch=('x86_64')
@@ -27,12 +27,12 @@ build () {
 
 check () {
 	cd "${pkgname}"
-	mbld :tests
+	mbld test
 }
 
 package () {
 	cd "${pkgname}"
-	install -Dm755 qc "${pkgdir}/usr/bin/qc"
+	install -Dm755 obj/qc "${pkgdir}/usr/bin/qc"
 	install -m755 -d "${pkgdir}/usr/share/doc/${pkgname}"
 	install -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/*.txt
 }
