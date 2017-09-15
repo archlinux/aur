@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-lunar-joint_state_controller-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/lunar/joint_state_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('991ee8e5d59283747259f05b2eb029c1f9d99804f213d3d8e90908e651ff4b6a')
+sha256sums=('8f7516e9b6a50a94acceb4dff02699cdaad13c9a1d1b671c4486e9373fd7aa84')
 
 build() {
   # Use ROS environment variables
