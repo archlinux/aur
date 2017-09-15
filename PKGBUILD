@@ -8,7 +8,6 @@ pkgname=("${_subarchs[@]/#/$pkgbase-}")
 _date=20170910
 pkgver=7.2.0
 pkgrel=1
-_upstreampkgrel=1
 arch=('x86_64')
 license=('GPL' )
 pkgdesc="Toolchain for Arch ARM builds via distcc on x86_64 slaves"
