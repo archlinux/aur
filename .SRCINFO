@@ -1,7 +1,7 @@
 pkgbase = st-solarized
 	pkgdesc = A simple virtual terminal emulator for X. Patched for solarized colorscheme.
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://st.suckless.org
 	arch = i686
 	arch = x86_64
