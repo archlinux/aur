@@ -1,7 +1,7 @@
 # Maintainer: Troy Engel <troyengel+arch@gmail.com>
 
 pkgname=xeroxprtdrv
-pkgver=5.20.602.3898
+pkgver=5.20.606.3946
 pkgrel=1
 pkgdesc="Xerox Unix Print Drivers"
 arch=('i686' 'x86_64')
@@ -12,14 +12,14 @@ options=('emptydirs')
 depends=('gcc-libs' 'libxinerama' 'libxcursor' 'libxdamage' 'libx11'
          'libxau' 'libxdmcp' 'xorg-xhost')
 
-source_i686=("http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/ar/Xeroxv5Pkg-Linuxi686-${pkgver}.rpm"
+source_i686=("http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/pt_BR/Xeroxv5Pkg-Linuxi686-${pkgver}.rpm"
              'xeroxprtdrv.license')
-md5sums_i686=('8f640b2c3c2343c00027e9e1dd113a08'
+md5sums_i686=('22698c5829eb56bcecd4633352a6274f'
               '0a8eb0c1480a6ccc1ddab7cbb5e1bde4')
-md5sums_x86_64=('626722cbefae13a6f7dc33289ba58b9d'
+md5sums_x86_64=('95a26aec1130153a6094057546668f72'
                 '0a8eb0c1480a6ccc1ddab7cbb5e1bde4')
 
-source_x86_64=("http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/ar/Xeroxv5Pkg-Linuxx86_64-${pkgver}.rpm"
+source_x86_64=("http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/pt_BR/Xeroxv5Pkg-Linuxx86_64-${pkgver}.rpm"
                'xeroxprtdrv.license')
 
 package() {
