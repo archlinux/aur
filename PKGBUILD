@@ -7,8 +7,9 @@ pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=$pkgbase
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=4.13rc2.r1097.g58e5ccdc343d
-pkgrel=3
+_kernel_rel=4.13
+pkgver=4.13.692986.58e5ccdc343d
+pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
@@ -28,7 +29,8 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${_srcname}"
 
-  git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+  # git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+  echo ${_kernel_rel}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
