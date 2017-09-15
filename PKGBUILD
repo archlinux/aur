@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=qtikz-git
-pkgver=r218.5c2945c
+pkgver=r222.65ebb81
 pkgrel=1
 pkgdesc="Small application helping you to create TikZ diagrams"
 arch=('i686' 'x86_64')
