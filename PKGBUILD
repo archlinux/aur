@@ -2,10 +2,11 @@
 pkgname='qc-git'
 pkgdesc='C frontend for the QBE C compiler backend'
 pkgver=r263.f25f9d3
-pkgrel=1
+pkgrel=2
 url='https://github.com/andrewchambers/qc'
 arch=('x86_64')
 depends=('qbe-git')
+license=('custom:MIT')
 makedepends=('myrddin-git')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
@@ -33,6 +34,7 @@ check () {
 package () {
 	cd "${pkgname}"
 	install -Dm755 obj/qc "${pkgdir}/usr/bin/qc"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -m755 -d "${pkgdir}/usr/share/doc/${pkgname}"
 	install -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/*.txt
 }
