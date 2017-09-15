@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ln -s /opt/Xerox/prtsys/service /bin/service
+
+/opt/Xerox/prtsys/xeroxprtmgr.wrapped
+
+rm /bin/service

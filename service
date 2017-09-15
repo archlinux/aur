@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#
+# wrapper around systemctl used by Xerox driver.
+#
+# Xerox's xeroxprtmgr invokes 'service cups restart', which will fail on systemd systems. This script "translates" the
+# service invocation to a systemctl invocation.
+#
+
+set -e
+
+SERVICE=$1
+COMMAND=$2
+
+if [ $SERVICE == "cups" ]; then
+	SERVICE=org.cups.cupsd.service
+else
+	SERVICE=$SERVICE.service
+fi
+
+echo "systemctl $COMMAND $SERVICE"
+
+systemctl $COMMAND $SERVICE

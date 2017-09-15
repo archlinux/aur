@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Print-Time Dialog Permissions
+Type=Application
+Exec=xhost +si:localuser:lp

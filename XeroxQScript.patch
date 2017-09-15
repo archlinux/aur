@@ -1,0 +1,19 @@
+--- ./usr/lib/cups/filter/XeroxQScript	2017-09-15 14:11:33.027480086 +0200
++++ ./usr/lib/cups/filter/XeroxQScript	2017-09-15 14:11:56.717611267 +0200
+@@ -73,6 +73,7 @@
+         UserName=`echo "$2" | sed -e "s/^/-u /g" -e "s/\"//g"`
+         USER=$2
+         Title=`echo "$3" | sed -e "s/^/-t/g" -e "s/\"//g"`
++        Copies=$4
+ 		if [ "_${5}" != "_" ]; then
+ 	        OptionList=`echo "$5" | sed -e "s/ / -o /g" -e "s/^/-o /" -e "s/\"//g"`
+ 	    fi
+@@ -88,7 +89,7 @@
+         DISPLAY=${DISPLAY:-":0.0"}
+         export DISPLAY
+         fi
+-        ${ToolPath}/xeroxdriver -d${PRINTER} $Copies $UserName "$Title" $OptionList $* 1>>/dev/null 2>>/dev/null
++        ${ToolPath}/xeroxdriver -d${PRINTER} $Copies $UserName "$Title" $OptionList $RequestID $* 1>>/dev/null 2>>/dev/null
+         exit 0
+         ;;
+ esac

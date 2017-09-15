@@ -1,6 +1,26 @@
 
 post_install() {
-  echo "As root run the following to detect the printing subsystem:"
-  echo "# cd /opt/Xerox/prtsys; /opt/Xerox/prtsys/xeroxquemgr -setprtsubsys"
+  if [ -f /bin/service ]; then
+    echo "This package installs a wrapper to /bin/service because the Xerox driver"
+    echo "invokes the service command, but Arch uses systemd (systemctl). This"
+    echo "system already has a /bin/service file. We will not overwrite it."
+    echo "Installation will cancel."
+    return 1;
+  fi
+
+  echo 'Detecting printing subsystem'
+  cd /opt/Xerox/prtsys; /opt/Xerox/prtsys/xeroxquemgr -setprtsubsys || echo 'Unable to detect printing subsystem' 1>> /tmp/PrtDrvInstaller.log 2>>/tmp/PrtDrvInstaller.log
+  echo 'Registering man pages'
+
+  env | grep DISPLAY > /opt/Xerox/prtsys/.xp_disp
+
+  /opt/Xerox/prtsys/PatchAppArmorPolicy || echo 'AppArmor policy patch failed' 1>> /tmp/PrtDrvInstaller.log 2>>/tmp/PrtDrvInstaller.log
+
+  if [ "_$DISPLAY" = "_" ]; then
+      DISPLAY=:0.0 xhost +si:localuser:lp >> /dev/null 2>> /dev/null || echo 'Failed to grant lp xhost permissions' 1>> /tmp/PrtDrvInstaller.log
+  else
+      xhost +si:localuser:lp >> /tmp/PrtDrvInstaller.log 2>> /tmp/PrtDrvInstaller.log || echo 'Failed to grant lp xhost permissions' 1>> /tmp/PrtDrvInstaller.log
+  fi
+  echo "Run xeroxprtmgr as root to administer print queues"
 }
 

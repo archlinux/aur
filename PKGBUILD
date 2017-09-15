@@ -1,4 +1,5 @@
 # Maintainer: Troy Engel <troyengel+arch@gmail.com>
+# Contributor: Eduard Wirch <wirch.eduard@gmail.com>
 
 pkgname=xeroxprtdrv
 pkgver=5.20.606.3946
@@ -10,32 +11,59 @@ install=${pkgname}.install
 license=('custom')
 options=('emptydirs')
 depends=('gcc-libs' 'libxinerama' 'libxcursor' 'libxdamage' 'libx11'
-         'libxau' 'libxdmcp' 'xorg-xhost')
+         'libxau' 'libxdmcp' 'xorg-xhost' 'sed' 'awk')
+optdepends=('cups>=1.7')
 
-source_i686=("http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/pt_BR/Xeroxv5Pkg-Linuxi686-${pkgver}.rpm"
-             'xeroxprtdrv.license')
-md5sums_i686=('22698c5829eb56bcecd4633352a6274f'
-              '0a8eb0c1480a6ccc1ddab7cbb5e1bde4')
-md5sums_x86_64=('95a26aec1130153a6094057546668f72'
-                '0a8eb0c1480a6ccc1ddab7cbb5e1bde4')
+source=('xeroxprtdrv.license'
+        'xerox-prtdrv-xhost-permissions.desktop'
+        'service'
+        'xeroxprtmgr'
+        'XeroxQScript.patch'
+)
+source_i686=("http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/pt_BR/Xeroxv5Pkg-Linuxi686-${pkgver}.rpm")
+source_x86_64=("http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/pt_BR/Xeroxv5Pkg-Linuxx86_64-${pkgver}.rpm")
+md5sums=('0a8eb0c1480a6ccc1ddab7cbb5e1bde4'
+         'c489163605720e1340a0af25d1c08d6c'
+         'd380002eef6bbbbeb43cd0691123a7d4'
+         '1976d9d3e95065820adbe417ec4e5b2d'
+         '117637c64980344ca9bb87e8a8f10938')
+md5sums_i686=('22698c5829eb56bcecd4633352a6274f')
+md5sums_x86_64=('95a26aec1130153a6094057546668f72')
 
-source_x86_64=("http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/pt_BR/Xeroxv5Pkg-Linuxx86_64-${pkgver}.rpm"
-               'xeroxprtdrv.license')
+prepare() {
+    cd "$srcdir"
+
+    # bug-fixing cups filter
+    patch -p1 -i XeroxQScript.patch
+}
 
 package() {
+  cd "${srcdir}"
+
   # remove RPM SElinux files, they delete these in RPM post-install
   rm -f "${pkgdir}/opt/Xerox/prtsys/PatchSELinuxPolicy" \
         "${pkgdir}/opt/Xerox/prtsys/SELinuxExceptions*.pp"
 
   # copy the bits
-  cp -dpr "${srcdir}/opt" "${pkgdir}"
-  cp -dpr "${srcdir}/usr" "${pkgdir}"
+  cp -dpr opt "${pkgdir}"
+  cp -dpr usr "${pkgdir}"
 
-  # it's in the RPM post-install 777, not sure what for; skipping chmod 777
-  mkdir -p "${pkgdir}/opt/Xerox/prtsys/db/phonebook/user"
+  # systemctl wrapper patch
+  cp service "$pkgdir/opt/Xerox/prtsys/"
+  mv "$pkgdir/opt/Xerox/prtsys/xeroxprtmgr" "$pkgdir/opt/Xerox/prtsys/xeroxprtmgr.wrapped"
+  install -m 755 xeroxprtmgr "$pkgdir/opt/Xerox/prtsys/"
+
+  # Stuff from Xerox's postinstall file
+  install -m 775 -g lp -d "$pkgdir/etc/cups/interfaces"
+  install -m 775 -g lp -d "$pkgdir/var/spool/lpd"
+  # unsing 777 so any user will be able to create a phonebook
+  install -m 777 -d "$pkgdir/opt/Xerox/prtsys/db/phonebook/user"
 
   # commercial license
   install -Dm0644 "../${pkgname}.license" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -d "$pkgdir/etc/xdg/autostart"
+  install xerox-prtdrv-xhost-permissions.desktop "$pkgdir/etc/xdg/autostart"
 }
 
