@@ -1,0 +1,14 @@
+pkgbase = ne-git
+	pkgdesc = A nice develloper editor, highly recommanded by Episteak French School
+	pkgver = r732.5ad3d57
+	pkgrel = 1
+	url = https://github.com/vigna/ne
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = ncurses
+	source = git+https://github.com/vigna/ne.git
+	sha256sums = SKIP
+
+pkgname = ne-git
+
