@@ -13,6 +13,7 @@ depends=('qt5-base'
         'qt5-webview'
         'qt5-websockets'
         'openssl'
+        'lib32-libldap'
         )
 source=(
 	"https://binaries.eveonline.com/evelauncher-1156239.tar.gz"
