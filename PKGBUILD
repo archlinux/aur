@@ -48,7 +48,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_state_publisher-release-release-lunar-robot_state_publisher-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_state_publisher-release/archive/release/lunar/robot_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5aa5970218d7cee523898d2411c14d13bc8d84959ef8d2d2eb40ab62f18bf48e')
+sha256sums=('babe65853f10cb34f0b241fe45bf876c1992946d5855876d90298f60ccf11cec')
 
 build() {
   # Use ROS environment variables
