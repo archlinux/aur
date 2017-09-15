@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=fcitx-skk
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="Fcitx Wrapper for libskk"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx-skk"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('fcitx-qt4' 'libskk')
 makedepends=('cmake')
 source=("https://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
-sha512sums=('040ae86a687e036be724d856808dd0c713517c216a44fd9ec65d5da708115681d3a1865947db3fcc597dee19bc350a94114b1b780a90c3444309db15f1a3e868'
+sha512sums=('601263a164536f2eac76f2fd6e8861abda8faf47adb31b2475b509db2620e8791a11b626109c8b2b9e52fb571b2c483b5e272a6fb35f6f9a4c129b26a5851245'
             'SKIP')
 validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9')  # Weng Xuetian
 
