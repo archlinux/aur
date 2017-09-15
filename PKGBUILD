@@ -33,7 +33,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-lunar-forward_command_controller-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/lunar/forward_command_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a2db3764a9dc99e5681037634d0c40193754fe0202555c39f6b659fe1237f372')
+sha256sums=('6f159389bb0511447d844a378a19d6abfe40eeaf8044e0700dd40ca7b826503c')
 
 build() {
   # Use ROS environment variables
