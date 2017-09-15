@@ -16,19 +16,10 @@ build() {
   make release
 }
 
-check() {
-  cd "howm-$pkgver"
-  find /usr/lib/modules -name checkpatch.pl -print -quit | xargs -i cp {} .
-
-  printf 'spellingtxt||disable\n' > spelling.txt
-  #make check
-}
-
 package() {
   cd "howm-$pkgver"
-  # XXX Missing install -D in Makefile
   mkdir -p "$pkgdir"/usr/{share/xsessions,bin/}
-  make DESTDIR="$pkgdir/" install 
+  make DESTDIR="$pkgdir" install 
 
   mkdir -p "$pkgdir"/usr/share/howm/examples
   cp -a examples/* "$pkgdir"/usr/share/howm/examples/
