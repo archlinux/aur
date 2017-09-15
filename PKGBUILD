@@ -7,7 +7,7 @@ _gopkgname='github.com/mholt/caddy'
 
 pkgname=caddy
 pkgver=0.10.9
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -21,14 +21,16 @@ source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'caddy.service'
         'caddy.tmpfiles'
         'caddy.conf'
-        'plugins.go')
+        'plugins.go'
+        'remove-sponsors-header.patch')
 sha256sums=('be70a4324e3f6cd4da5e379b31562d07f40f6e39439c7274d4bb94fe482b86e4'
             'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
             '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
             '69e25def317a6172011472bd060655142f3085a0c81392f8a7a9c42b6a58bbd9'
             'bd4d912d083be176727882ccc1bbe577a27cc160db09238e5edc05ba458aebce'
             '80520b80ccabf077a3269f6a1bf55faa3811ef5adce115131b35ef2044d37b64'
-            'f5a0fbb961e7c9ecf99e88d0959a3164cbea54660c1c08c3ba3cdf1d45563929')
+            'f5a0fbb961e7c9ecf99e88d0959a3164cbea54660c1c08c3ba3cdf1d45563929'
+            'd75c846fd7565a229040f9c80b35db4a870905772ac95d41066a53695392be74')
 
 patch_plugins() {
     IFS=''
@@ -43,6 +45,8 @@ patch_plugins() {
 }
 
 prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    patch -Np1 < ../remove-sponsors-header.patch
     export GOPATH="$srcdir/build"
     rm -rf "$GOPATH/src/$gopkgname"
     mkdir --parents `dirname "$GOPATH/src/$_gopkgname"`
