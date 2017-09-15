@@ -2,7 +2,7 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
-_pkgver=6.0.0-beta.6
+_pkgver=6.0.0-beta.7
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework (latest release)"
@@ -13,10 +13,12 @@ makedepends=('git' 'cmake' 'dotnet-sdk-2.0')
 depends=('icu')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
         pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
-        googletest::git+https://github.com/google/googletest.git)
+        googletest::git+https://github.com/google/googletest.git
+        build.sh)
 md5sums=('SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+         'ae733aaf023f7d07e6ed9e8fffcd8ff1')
 install=powershell.install
 
 prepare() {
@@ -27,7 +29,7 @@ prepare() {
   git submodule update
   git clean -dfx
 
-  sed -i -e 's/hash powershell/\/bin\/false/g' build.sh 
+  sed -i -e 's/hash powershell/\/bin\/false/g' ../build.sh
 }
 
 build() {
@@ -38,7 +40,7 @@ build() {
   make -j
   popd
 
-  "$srcdir"/powershell/build.sh
+  "$srcdir"/build.sh
 }
 
 check() {
