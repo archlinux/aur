@@ -1,5 +1,5 @@
 pkgbase = numix-kde-theme-git
-	pkgdesc = Numix pack for KDE - Git version
+	pkgdesc = Numix pack for KDE Plasma5 - Git version
 	pkgver = r13.58d001f
 	pkgrel = 1
 	url = https://github.com/varlesh/numix-kde-theme
