@@ -3,7 +3,7 @@
 _gitname=Pokemon-Terminal
 pkgname=pokemon-terminal-git
 pkgver=r301.8085a41
-pkgrel=1
+pkgrel=2
 pkgdesc="Pokemon terminal themes"
 arch=('any')
 url="https://github.com/LazoCoder/$_gitname"
