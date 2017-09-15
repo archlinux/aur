@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="diagnostics-release-release-lunar-diagnostic_common_diagnostics-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/lunar/diagnostic_common_diagnostics/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('200e795cfa883b844a40ee63127fc1120f12c4dcec0757bef2d8f63de872f047')
+sha256sums=('20823055ecdb24da2fae0d4ade63d2f6bfa97323ed260de3fce682b907099f6e')
 
 build() {
   # Use ROS environment variables
