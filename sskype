@@ -1,4 +1,4 @@
 #!/bin/sh
 xhost +si:localuser:_skype &&
-exec sudo -u _skype /usr/bin/skype "$@"
+exec sudo -u _skype /usr/bin/skypeforlinux "$@"
 xhost -si:localuser:_skype

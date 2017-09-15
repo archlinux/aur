@@ -1,1 +1,1 @@
-ALL ALL=(_skype) NOPASSWD: /usr/bin/skype
+ALL ALL=(_skype) NOPASSWD: /usr/bin/skypeforlinux

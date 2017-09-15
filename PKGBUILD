@@ -1,23 +1,22 @@
 # Maintainer: koneu <koneu93 AT googlemail DOT com>
 
 pkgname=skype-secure
-pkgver=2
-pkgrel=2
+pkgver=3
+pkgrel=1
 arch=(any)
-pkgdesc="works like skype-restricted, but wraps around already installed skype binary"
-url="http://www.skype.com/"
+pkgdesc="Restricting Skype for Linux access"
+url="https://wiki.archlinux.org/index.php/skype#Restricting_Skype_access"
 license=('custom')
 install=sskype.install
-conflicts=('skype-restricted')
 
-depends=(skype xorg-xhost sudo)
+depends=(skypeforlinux xorg-xhost sudo)
 provides=('sskype')
 
 source=(sskype 05sskype client.conf sskype.desktop)
-md5sums=('bc1544ee88f58532df33465c8bb80050'
-         'f94124126da310ba8e2a9aefb63dde90'
+md5sums=('c062a95a9d0a8a1b465183bc519d4305'
+         '0a19ecc4ade720c0a89e14fb18b8cb33'
          '46775f06fd9d6c4ad5ff3a221d4912ff'
-         '413a9872da5142a2bdb68b8330b512dc')
+         '555ffa72f9d372a2dd4e0dc815d7c1d3')
 
 package() {
   install -D "$startdir/sskype" "$pkgdir/usr/bin/sskype"

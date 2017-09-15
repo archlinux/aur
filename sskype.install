@@ -1,7 +1,6 @@
 post_install() {
   useradd -U -G audio,video -k /etc/default/sskype -m -s /sbin/nologin _skype
   echo "Special setup required for Pulse Audio:"
-  echo "(many thanks to kurnevsky)"
   echo "add 'load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1'"
   echo "to ~/.pulse/default.pa"
   echo ""
