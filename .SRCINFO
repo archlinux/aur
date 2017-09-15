@@ -1,0 +1,15 @@
+pkgbase = nodejs-resume-cli
+	pkgdesc = This is the command line tool for JSON Resume, the open source initiative to create a JSON-based standard for resumes.
+	pkgver = 0.4.19
+	pkgrel = 1
+	url = https://github.com/jsonresume/resume-cli
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = resume-cli-0.4.19.tgz
+	source = https://registry.npmjs.org/resume-cli/-/resume-cli-0.4.19.tgz
+	sha256sums = 5394cb51e00128c3cb0329125ae429edab3d2367c7f3b6e00919134730467623
+
+pkgname = nodejs-resume-cli
+
