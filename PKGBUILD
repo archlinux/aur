@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="image_transport_plugins-release-release-lunar-compressed_image_transport-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_transport_plugins-release/archive/release/lunar/compressed_image_transport/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e8dc9d78bd1033f1d3bd3ed1ba52ebdbb5daa4eed211db1b0bdcf949fd48ac09')
+sha256sums=('c7bd9bebcf0fa8d306943a42b059bf92bb3d6fef9dea895fd8110a2b7c40947c')
 
 build() {
   # Use ROS environment variables
