@@ -2,7 +2,7 @@
 
 pkgname=fastonosql
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform open source Redis, Memcached, SSDB, LevelDB, RocksDB, UnQLite, LMDB, UpscaleDB GUI management tool."
 arch=('x86_64')
 license=('GPL3')
@@ -41,7 +41,7 @@ package() {
 
 	# Link executable
 	mkdir -p "${pkgdir}"/usr/bin
-	ln -s /opt/fastonosql/bin/fastonosql.sh "${pkgdir}"/usr/bin/fastonosql
+	ln -s /opt/fastonosql/bin/fastonosql "${pkgdir}"/usr/bin/fastonosql
 
 	# Create .desktop file
 	mkdir -p "${pkgdir}"/usr/share/applications
