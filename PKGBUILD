@@ -14,7 +14,7 @@ source=("https://www.aquantia.com/wp-content/uploads/2017/05/linux.zip"
         'dkms.conf.in')
 sha256sums=('0965a4a5b1d805e8c626921529e1f817b501dc012b941cd972b737849f8df579'
             'ed569131286c4a3dd6ddc7dc910c3d61e4ba9396712d8460c3a68ba7dd3b59ed'
-            '8a3de5bb0e74463b6cc7a576ca4b73bf5f211ae6e2e431a550b9e6b2bc321859')
+            'd8c5ff74719d17405e61496f98bec4e72f05f3aa866c6f3bf7e2069ef1978c33')
 
 package() {
   # unpack sources

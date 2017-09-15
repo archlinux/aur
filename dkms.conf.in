@@ -1,6 +1,5 @@
 PACKAGE_NAME="atlantic"
 PACKAGE_VERSION="#MODULE_VERSION#"
 BUILT_MODULE_NAME[0]="atlantic"
-DEST_MODULE_LOCATION[0]="/updates"
+DEST_MODULE_LOCATION[0]="/kernel/drivers/net/ethernet/aquantia"
 AUTOINSTALL="yes"
-REMAKE_INITRD="yes"
