@@ -45,14 +45,14 @@ prepare() {
 
   #fix non-existing theme
   sed -i 's/03-Dark/System/' app/config/gimpguiconfig.h
+
+  if [ -f /usr/lib/pkgconfig/libmypaint-1.3.pc ]; then
+          sed -i 's/libmypaint /libmypaint-1.3 /g' configure.ac
+  fi
 }
 
 build() {
   cd $_gitname
-
-  if [ -f /usr/lib/pkgconfig/libmypaint-1.3.pc ]; then
-	  sed -i 's/libmypaint /libmypaint-1.3 /g' configure.ac
-  fi
 
   ./autogen.sh --prefix=/usr --sysconfdir=/etc \
     --enable-mp --enable-gimp-console \
