@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-qbs-shared-git
-pkgver=20170818.8b136a5
+pkgver=20170915.306773b
 pkgrel=1
 pkgdesc="Extra imports and modules for Qbs"
 arch=('any')
