@@ -1,7 +1,7 @@
 pkgbase = goonies
 	pkgdesc = Remake of Konami's The Goonies for the MSX
 	pkgver = 1.4.1528
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.braingames.getput.com/goonies
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = goonies
 	source = http://braingames.jorito.net/goonies/downloads/goonies.src_1.4.1528.tgz
 	source = goonies.patch
 	sha256sums = 9e9c1e67a41dfae512e975b6931828cdc82f07397921ca0a41a81c3020a73799
-	sha256sums = 841f8e5d8d93958f358443b929b15ba036e463b68e948e6147a3bd5c7cf29a5f
+	sha256sums = b04dbeef39ea2ce09a00aba1f01ab30ffe42a4e57710999ebe7d2b63cb6d6d1e
 
 pkgname = goonies
 

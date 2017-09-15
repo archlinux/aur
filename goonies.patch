@@ -1,5 +1,6 @@
---- build/linux/Makefile 2009-03-12 11:05:30.000000000 +0100
-+++ build/linux/Makefile 2016-12-04 15:27:46.029273929 +0100
+diff -ru --no-dereference goonies-1.4.1528-orig/build/linux/Makefile goonies-1.4.1528/build/linux/Makefile
+--- goonies-1.4.1528-orig/build/linux/Makefile	2017-09-15 16:03:14.354828140 +0200
++++ goonies-1.4.1528/build/linux/Makefile	2017-09-15 16:03:40.794490393 +0200
 @@ -3,9 +3,9 @@
  PREFIX = /usr
  EXTRADIR = ./build/linux
@@ -12,16 +13,34 @@
  ICNDIR = $(PREFIX)/share/pixmaps
  APPDIR = $(PREFIX)/share/applications
  
-@@ -56,7 +56,7 @@
+@@ -56,9 +56,9 @@
  	$(SRC)/Symbol.o			$(SRC)/TheGooniesApp.o \
  	$(SRC)/TheGoonies.o		$(SRC)/Vector.o
  
 -CC = gcc
+-CFLAGS = -g3 -O3 -Wno-write-strings `sdl-config --cflags` -I/usr/X11R6/include
+-LDFLAGS = `sdl-config --libs` -L/usr/X11R6/lib/ -lSDL_image -lSDL_mixer -lGL -lGLU
 +CC = g++
- CFLAGS = -g3 -O3 -Wno-write-strings `sdl-config --cflags` -I/usr/X11R6/include
- LDFLAGS = `sdl-config --libs` -L/usr/X11R6/lib/ -lSDL_image -lSDL_mixer -lGL -lGLU
++CXXFLAGS += -Wno-write-strings `sdl-config --cflags` -I/usr/X11R6/include
++LIBS = `sdl-config --libs` -L/usr/X11R6/lib/ -lSDL_image -lSDL_mixer -lGL -lGLU
  RM = rm -f
-@@ -83,12 +83,16 @@
+ CP = cp -r
+ MD = mkdir -p
+@@ -69,11 +69,10 @@
+ all: $(EXE)
+ 
+ %.o: %.cpp
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+ 
+ $(EXE): $(OBJS)
+-	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+-	@$(STRIP) $@
++	$(CC) $(LIBS) $(LDFLAGS) $^ -o $@
+ 	@$(ECHO) " o If there are no errors, the game compiled succesfully"
+ 
+ clean:
+@@ -83,12 +82,16 @@
  install: all
  	@$(ECHO) " o Creating install directory $(BINDIR)"
  	@$(MD) "$(BINDIR)"
@@ -41,9 +60,9 @@
  	@$(CHMOD) 755 "$(STARTUP)"
  	@$(ECHO) " o Creating application menu entry"
  	@$(MD) "$(ICNDIR)"
-
---- src/auxiliar.cpp 2016-06-07 17:01:08.277920131 +0200
-+++ src/auxiliar.cpp 2016-06-07 17:01:33.940781580 +0200
+diff -ru --no-dereference goonies-1.4.1528-orig/src/auxiliar.cpp goonies-1.4.1528/src/auxiliar.cpp
+--- goonies-1.4.1528-orig/src/auxiliar.cpp	2017-09-15 16:03:14.254829415 +0200
++++ goonies-1.4.1528/src/auxiliar.cpp	2017-09-15 16:03:19.948090140 +0200
 @@ -94,7 +94,7 @@
  
      if (tmp == 0 ||
