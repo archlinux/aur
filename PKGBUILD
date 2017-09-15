@@ -7,12 +7,12 @@
 
 pkgname=davical
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A server for calendar sharing"
 arch=('any')
 url="https://gitlab.com/davical-project/davical"
 license=('GPL' 'LGPL')
-depends=('php>=5.1' 'awl>=0.56' 'php-pgsql' 'perl-dbd-pg' 'perl-yaml' 'perl-dbi')
+depends=('php>=5.1' 'awl>=0.57-6' 'php-pgsql' 'perl-dbd-pg' 'perl-yaml' 'perl-dbi')
 makedepends=('phpdocumentor2' 'python2-rst2pdf')
 optdepends=('postgresql: run postgresql locally'
             'apache: Web server to run davical'
