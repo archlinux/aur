@@ -2,7 +2,7 @@
 # Based on PKGBUILD firefox-extension-useragentswitcher
 
 _plugin_name=tree_style_tab
-_plugin_version=0.19.2017031101
+_plugin_version=0.19.2017090601
 _plugin_ext="-fx"
 pkgdesc="Firefox extension to show tabs like a tree"
 license=('MPL 1.1' 'GPL 2.0' 'LGPL 2.1')
@@ -12,7 +12,7 @@ pkgver=${_plugin_version}
 pkgrel=1
 arch=('any')
 url="http://piro.sakura.ne.jp/xul/_treestyletab.html.en"
-depends=("firefox>=38")
+depends=("firefox>=52")
 source=("https://addons.mozilla.org/firefox/downloads/file/410478/${_plugin_name}-${pkgver}${_plugin_ext}.xpi")
 sha256sums=('d571f6e11daaec28bf9ec77edcd6f23cfaf5e5f55cd670d63b678f69048c7747')
 
