@@ -1,7 +1,7 @@
 # Maintainer: Heorhi Valakhanovich <valahanovich@tut.by>
 
 pkgname=('dlangide')
-pkgver=0.7.77
+pkgver=0.7.84
 pkgrel=1
 pkgdesc="D language IDE based on DlangUI "
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=(
   dlangide.desktop
   dlangide.install
 )
-sha256sums=('6700b93d6d51997569e5fda74eba3fc58322edce319b6a22891f0734f390df20'
+sha256sums=('66afbc5db7c66e8fdd619344cd9f118ebfa68e79e6a26905a22ec47a0896fd8e'
             'dc3b72ef22bec75722266497f398b87a057b44b9add7dbf1ca1140521d553efa'
             '9fe12f1bc573f5d431fcc8f9ca3ed17fc1e1d30248ae3b58209fc53084ae0a4e')
 
