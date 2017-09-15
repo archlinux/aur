@@ -1,26 +1,11 @@
 post_install() {
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-	# This will only remove masks created by d-s-h on package removal.
-	deb-systemd-helper unmask synergy.service >/dev/null || true
-
-	# was-enabled defaults to true, so new installations run enable.
-	if deb-systemd-helper --quiet was-enabled synergy.service; then
-		# Enables the unit on first installation, creates new
-		# symlinks on upgrades if the unit file has changed.
-		deb-systemd-helper enable synergy.service >/dev/null || true
-	else
-		# Update the statefile to add new symlinks (if any), which need to be
-		# cleaned up on purge. Also remove old symlinks.
-		deb-systemd-helper update-state synergy.service >/dev/null || true
-	fi
-		if [ -x "/etc/init.d/synergy" ]; then
-			update-rc.d synergy defaults >/dev/null
-			invoke-rc.d synergy start || exit $?
-		fi
-	fi
+	
+	systemctl enable synergy.service >/dev/null || true
+	
 	if [ -d /run/systemd/system ]; then
 		systemctl --system daemon-reload >/dev/null || true
-		deb-systemd-invoke start synergy.service >/dev/null || true
+		systemctl start synergy.service >/dev/null || true
 	fi
 	if which update-icon-caches >/dev/null 2>&1 ; then
 		update-icon-caches /usr/share/icons/synergy.svg
@@ -34,10 +19,7 @@ post_upgrade() {
 
 pre_remove() {
 	if [ -d /run/systemd/system ]; then
-		deb-systemd-invoke stop synergy.service >/dev/null
-	fi
-	if [ -x "/etc/init.d/synergy" ]; then
-		invoke-rc.d synergy stop || exit $?
+		systemctl stop synergy.service >/dev/null
 	fi
 }
 
@@ -49,11 +31,7 @@ post_remove() {
 	if [ -d /run/systemd/system ]; then
 		systemctl --system daemon-reload >/dev/null || true
 	fi
-	if [ "$1" = "purge" ] ; then
-		update-rc.d synergy remove >/dev/null
-	fi
-
-
+	
 	# In case this system is running systemd, we make systemd reload the unit files
 	# to pick up changes.
 	if [ -d /run/systemd/system ] ; then
