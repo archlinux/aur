@@ -1,7 +1,7 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=fcitx-chewing
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Fcitx Wrapper for chewing'
 arch=('i686' 'x86_64')
@@ -23,4 +23,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('5f24cffc068043251671f9e385d4a6cd')
+sha512sums=('3492ad6ecaf00bb1ea07b76c9c23da075615597c1a68434a2da003cbe410d12172510d4306379777a1d04a359b017c49d278c002a7230b030693b668b6030bfd')
