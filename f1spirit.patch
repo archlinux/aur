@@ -1,5 +1,6 @@
---- build/linux/Makefile 2009-02-06 11:12:51.000000000 +0100
-+++ build/linux/Makefile 2016-12-04 14:31:53.053087733 +0100
+diff -ru --no-dereference f1spirit-0.rc9.1615-orig/build/linux/Makefile f1spirit-0.rc9.1615/build/linux/Makefile
+--- f1spirit-0.rc9.1615-orig/build/linux/Makefile	2017-09-15 15:29:17.380514240 +0200
++++ f1spirit-0.rc9.1615/build/linux/Makefile	2017-09-15 15:29:43.936826084 +0200
 @@ -3,9 +3,9 @@
  PREFIX = /usr
  EXTRADIR = ./build/linux
@@ -12,16 +13,35 @@
  ICNDIR = $(PREFIX)/share/pixmaps
  APPDIR = $(PREFIX)/share/applications
  
-@@ -38,7 +38,7 @@
+@@ -38,10 +38,10 @@
  	$(SRC)/Vector.o					$(SRC)/weather.o				\
  	$(SRC)/filehandling.o			$(SRC)/CarEngineSound.o
  
 -CC = gcc
 +CC = g++
  #CFLAGS = -g3 -O3 -Wall `sdl-config --cflags` `curl-config --cflags` -I/usr/X11R6/include
- CFLAGS = -g3 -O3 -Wno-write-strings `sdl-config --cflags` `curl-config --cflags` -I/usr/X11R6/include
- LDFLAGS = `sdl-config --libs` `curl-config --libs` -L/usr/X11R6/lib/ -lSDL_image -lSDL_mixer -lSDL_net -lGL -lGLU
-@@ -66,12 +66,16 @@
+-CFLAGS = -g3 -O3 -Wno-write-strings `sdl-config --cflags` `curl-config --cflags` -I/usr/X11R6/include
+-LDFLAGS = `sdl-config --libs` `curl-config --libs` -L/usr/X11R6/lib/ -lSDL_image -lSDL_mixer -lSDL_net -lGL -lGLU
++CXXFLAGS += -Wno-write-strings `sdl-config --cflags` `curl-config --cflags` -I/usr/X11R6/include
++LIBS = `sdl-config --libs` `curl-config --libs` -L/usr/X11R6/lib/ -lSDL_image -lSDL_mixer -lSDL_net -lGL -lGLU
+ RM = rm -f
+ CP = cp -r
+ MD = mkdir -p
+@@ -52,11 +52,10 @@
+ all: $(EXE)
+ 
+ %.o: %.cpp
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+ 
+ $(EXE): $(OBJS)
+-	$(CC) $(LDFLAGS) $^ -o $@
+-	@$(STRIP) $@
++	$(CC) $(LIBS) $(LDFLAGS) $^ -o $@
+ 	@$(ECHO) " o If there are no errors, the game compiled succesfully"
+ 
+ clean:
+@@ -66,12 +65,16 @@
  install: all
  	@$(ECHO) " o Creating install directory $(BINDIR)"
  	@$(MD) "$(BINDIR)"
@@ -41,9 +61,20 @@
  #	@$(ECHO) "cd \"$(BINDIR)\"; ./$(EXE); cd -" >>"$(STARTUP)"
  	@$(CHMOD) 755 "$(STARTUP)"
  	@$(ECHO) " o Creating application menu entry"
-
---- sources/auxiliar.cpp  2016-06-07 15:06:20.295822247 +0200
-+++ sources/auxiliar.cpp  2016-06-07 15:07:16.164757181 +0200
+diff -ru --no-dereference f1spirit-0.rc9.1615-orig/sources/F1Shttp.cpp f1spirit-0.rc9.1615/sources/F1Shttp.cpp
+--- f1spirit-0.rc9.1615-orig/sources/F1Shttp.cpp	2017-09-15 15:29:17.317181751 +0200
++++ f1spirit-0.rc9.1615/sources/F1Shttp.cpp	2017-09-15 15:29:25.970399656 +0200
+@@ -3,7 +3,6 @@
+ #include "string.h"
+ 
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ 
+ #include "F1Shttp.h"
+diff -ru --no-dereference f1spirit-0.rc9.1615-orig/sources/auxiliar.cpp f1spirit-0.rc9.1615/sources/auxiliar.cpp
+--- f1spirit-0.rc9.1615-orig/sources/auxiliar.cpp	2017-09-15 15:29:17.320515040 +0200
++++ f1spirit-0.rc9.1615/sources/auxiliar.cpp	2017-09-15 15:29:25.970399656 +0200
 @@ -93,7 +93,7 @@
  
  	if (tmp == 0 ||
@@ -53,13 +84,3 @@
  
  	res = SDL_DisplayFormatAlpha(tmp);
  
---- sources/F1Shttp.cpp	2016-06-07 15:14:21.753311197 +0200
-+++ sources/F1Shttp.cpp	2016-06-07 15:13:54.483830989 +0200
-@@ -3,7 +3,6 @@
- #include "string.h"
- 
- #include <curl/curl.h>
--#include <curl/types.h>
- #include <curl/easy.h>
- 
- #include "F1Shttp.h"
