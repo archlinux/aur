@@ -3,7 +3,7 @@
 
 pkgname=lttng-tools
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LTTng tracing control tools"
 arch=('i686' 'x86_64')
 url="http://lttng.org/"
