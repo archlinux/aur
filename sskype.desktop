@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Skypefor Linux Secure
-Comment=Skype Internet Telephony
+Name=Secure Skype for Linux
+Comment=Skype - restricted acces
 Exec=sskype %U
 Icon=skype.png
 Terminal=false
