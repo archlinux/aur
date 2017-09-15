@@ -2,8 +2,8 @@
 # Contributor: lh <jason52lh@gmail.com>
 
 pkgname=fcitx-anthy
-pkgver=0.2.2
-pkgrel=3
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Fcitx Wrapper for anthy."
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx-anthy"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('fcitx' 'anthy')
 makedepends=('cmake' 'intltool')
 source=("https://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
-sha512sums=('a4b1eeba813481cc40617e70bd5ee97d1921dc92bab15cf0bdc059d689c239e46caf9e8aba3403ff6374acfbdea565261a948444fe40fa18d5513797eccbd28d'
+sha512sums=('2769871059053fb370ba84af7cdf0c461d64724a240d58a5a8889cfd9bfb5d145998f79ed2d06a1ae1ab907f9db04fc122bfaf6957ef572fc833e400ffefc642'
             'SKIP')
 validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9')  # Weng Xuetian
 
