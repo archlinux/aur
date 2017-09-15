@@ -1,11 +1,11 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=libverto
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Main event loop abstraction library"
 arch=(i686 x86_64)
-url="https://fedorahosted.org/libverto/"
+url="https://github.com/latchset/libverto"
 license=(MIT)
 makedepends=(
 # Supported event loops
@@ -14,8 +14,8 @@ makedepends=(
   'libevent'
   'tevent'
 )
-source=("https://fedorahosted.org/releases/l/i/libverto/libverto-$pkgver.tar.gz")
-sha256sums=('17eca6a3855f4884e2e7095e91501767d834b3bf313a6f59a93303f54ac91c9e')
+source=("https://github.com/latchset/libverto/releases/download/$pkgver/libverto-$pkgver.tar.gz")
+sha256sums=('955d3ff4192830c74ce88185f39621c9e490d5a3e7aba04d1e5346d4886f862e')
 
 prepare() {
   cd "$srcdir/libverto-$pkgver"
@@ -31,10 +31,6 @@ build() {
 package() {
   cd "$srcdir/libverto-$pkgver"
   make DESTDIR="$pkgdir" install
-  sed -i '
-    /^prefix=/aexec_prefix=${prefix}
-    /^exec_prefix/d
-  ' "$pkgdir/usr/lib/pkgconfig"/*.pc
   install -Dm0644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname"
 }
 

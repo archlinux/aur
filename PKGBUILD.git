@@ -1,11 +1,11 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=libverto
-pkgver=0.2.5.r6.g7fa159a
+pkgver=0.3.0.r1.gc57599d
 pkgrel=1
 pkgdesc="Main event loop abstraction library"
 arch=(i686 x86_64)
-url="https://fedorahosted.org/libverto/"
+url="https://github.com/latchset/libverto"
 license=(MIT)
 makedepends=(
 # Supported event loops
@@ -14,7 +14,7 @@ makedepends=(
   'libevent'
   'tevent'
 )
-source=('git+https://git.fedorahosted.org/git/libverto.git')
+source=('git+https://github.com/latchset/libverto.git')
 sha256sums=('SKIP')
 
 pkgver() {
