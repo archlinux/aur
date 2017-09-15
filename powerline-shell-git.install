@@ -1,0 +1,13 @@
+post_install() {
+	echo 'For Bash, add the following to your .bashrc:'
+	echo 'function _update_ps1() {'
+	echo '	PS1="$(/usr/share/powerline-shell/powerline-shell.py $? 2> /dev/null)"'
+	echo '}'
+	echo 'if [ "$TERM" != "linux" ]; then'
+	echo '	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"'
+	echo 'fi'
+}
+
+post_remove() {
+	echo 'Remove any powerline-related code in your .bashrc'
+}
