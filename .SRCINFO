@@ -1,0 +1,14 @@
+pkgbase = brother-dcpl2540dn-cups
+	pkgdesc = Brother DCP-L2540DN CUPS drivers.
+	pkgver = 3.2.0_1
+	pkgrel = 1
+	url = http://support.brother.com/g/b/downloadlist.aspx?c=nl&lang=nl&prod=dcpl2540dn_eu&os=127&flang=English
+	arch = any
+	license = GPL2
+	depends = brother-dcpl2540dn-lpr
+	depends = cups
+	source = http://download.brother.com/welcome/dlf101762/dcpl2540dncupswrapper-3.2.0-1.i386.rpm
+	md5sums = e1263b45814823fb2574fcfd06bfda1c
+
+pkgname = brother-dcpl2540dn-cups
+
