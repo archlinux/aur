@@ -1,4 +1,5 @@
-# Maintainer: 0strodamus <0strodamus at cox dot net>
+# Maintainer: Joel Almeida <aullidolunar at gmai1 dot c0m>
+# Contributor: 0strodamus <0strodamus at cox dot net>
 # Contributor: Martin Wimpress <code@flexion.org>
 # Contributor: Rob McCathie <korrode AT gmail>
 # Contributor: n00b <dannyurvt (at) gmail.com>
@@ -15,10 +16,10 @@
 
 pkgname=engrampa-thunar-gtk2
 _pkgname=engrampa
-_ver=1.14
+_ver=1.19
 _patchver=1.18.0
-pkgver=${_ver}.1
-pkgrel=3
+pkgver=${_ver}.0
+pkgrel=1
 pkgdesc="Archive manipulator from MATE without Caja dependency (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
@@ -35,12 +36,12 @@ replaces=('engrampa')
 source=("https://pub.mate-desktop.org/releases/${_ver}/${_pkgname}-${pkgver}.tar.xz"
         'fr-rpm-bsdtar.patch'
         'engrampa.tap'
-        "001-engrampa-${_patchver}-changes.patch"
+        # "001-engrampa-${_patchver}-changes.patch"
         '002-add-firefox-addon-mimetype.patch')
-sha256sums=('43d882e772c53d13856f02e44454927e3bab4c5d77094057572be6972e0310d8'
+sha256sums=('8a521462fa218827146cf840a4ed47e252132e65d7d589a907eccd66effdf99a'
             'dc05c3b3fbc8242d1c85b58f756f998d644d920c8444d0872e9ffef1ce297f77'
             '703eca26eb0da2229b5e5ee9445c30f5ad458bc1ba69fb23a426f971d4afce62'
-            '1cfb5fabe437d7be74e898b666623d1c3d088f3b29063a49175b35a3cecc1961'
+            # '1cfb5fabe437d7be74e898b666623d1c3d088f3b29063a49175b35a3cecc1961'
             '24c7a9a57a1f9e933a560e9cdac94475b283e5abe35ef18aee1e75597886dafb')
 
 prepare() {
@@ -48,7 +49,7 @@ prepare() {
     # this patch 'depends' on libarchive
     patch -Np1 -i "${srcdir}/fr-rpm-bsdtar.patch"
     # patch to apply some non-GTK3 changes from subsequent upstream versions
-    patch -Np1 -i "${srcdir}/001-engrampa-${_patchver}-changes.patch"
+    # patch -Np1 -i "${srcdir}/001-engrampa-${_patchver}-changes.patch"
     # patch to add Firefox Addon .xpi mimetype
     patch -Np1 -i "${srcdir}/002-add-firefox-addon-mimetype.patch"
 }
