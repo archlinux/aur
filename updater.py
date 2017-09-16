@@ -139,9 +139,6 @@ pkgbuild = open("PKGBUILD", "w")
 pkgbuild.write(buf)
 pkgbuild.close()
 
-#rename source file
-subprocess.run(["mv", "firefox-{0}-{1}.tar.bz2".format(local_arch, parser.version), "firefox-{0}.tar.bz2".format(parser.version)], check=True)
-
 #build package
 print("Building package...\n")
 subprocess.run(["makepkg"], check=True)
@@ -162,7 +159,8 @@ os.system("git commit -m 'Automatic upgrade to version {}.'".format(parser.versi
 os.system("git push origin master")
 
 #clean big source files and built package
-subprocess.run(["rm", "firefox-{0}-{1}.tar.bz2".format("i686" if local_arch == "x86_64" else "x86_64", parser.version), "firefox-{0}.tar.bz2".format(parser.version)], check=True)
+subprocess.run(["rm", "firefox-i686-{0}.tar.bz2".format(parser.version)], check=True)
+subprocess.run(["rm", "firefox-x86_64-{0}.tar.bz2".format(parser.version)], check=True)
 subprocess.run(["rm", "firefox-developer-{}-{}-{}-{}.pkg.tar.xz".format(lang, parser.version, pkgrel, local_arch)], check=True)
 
 print("DONE")
