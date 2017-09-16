@@ -5,18 +5,20 @@
 # Contributor: Roman Pearah
 
 pkgname=netextender
-pkgver=8.5.797
+pkgver=8.6.801
 pkgrel=1
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('i686' 'x86_64')
 url="http://www.sonicwall.com/us/en/products/324.html"
 license=('custom')
 depends=('java-environment' 'bash' 'ppp' 'net-tools')
-source_i686=("https://sslvpn.demo.sonicwall.com/NetExtender.Linux.${pkgver}.x86.tgz")
-source_x86_64=("https://sslvpn.demo.sonicwall.com/NetExtender.Linux.${pkgver}.x86_64.tgz")
-sha256sums_i686=('9675dafa4b2086791a1d5422d17e3d290ac76b854b76c6c22060bba7bed6a758')
-sha256sums_x86_64=('5f3435e91db01b44ce1f037c4098c2aa12361b181100f56aa822db9dce4c2002')
+source_i686=("https://sslvpn.demo.sonicwall.com/NetExtender.tgz")
+source_x86_64=("https://sslvpn.demo.sonicwall.com/NetExtender.x86_64.tgz")
+sha256sums_i686=('4fc4fb7ae9fd6539965e17e65b8db786c9b3496a5a5d910b80b84613fb6150be')
+sha256sums_x86_64=('7c6532bcc946655246c179e54a983b4215a3c7bc2dcdc727b4ba77a84051b77c')
 install="${pkgname}.install"
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 
+--retry-delay 3 -o %o %u")
 
 package() {
   mkdir -p "$pkgdir/usr/share/netExtender/icons"
