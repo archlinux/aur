@@ -3,7 +3,7 @@
 
 pkgname=github-desktop
 pkgver=0.7.1_beta4
-pkgrel=4
+pkgrel=5
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
