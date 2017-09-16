@@ -2,7 +2,7 @@
 
 pkgname=gpmd85emulator-data
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Misc programming languages, games and programs for gpmd85emulator"
 arch=('any')
 url="https://pmd85.borik.net/wiki/Download"
@@ -18,7 +18,6 @@ source=("https://pmd85.borik.net/?action=download&did=2"
 	"https://pmd85.borik.net/?action=download&did=9"
 	"https://pmd85.borik.net/?action=download&did=52"
 	"https://pmd85.borik.net/?action=download&did=82"
-	"https://pmd85.borik.net/?action=download&did=86"
 	"https://pmd85.borik.net/?action=download&did=10"
 	"https://pmd85.borik.net/?action=download&did=26"
 	"https://pmd85.borik.net/?action=download&did=13"
@@ -31,7 +30,10 @@ source=("https://pmd85.borik.net/?action=download&did=2"
 	"http://pmd85.borik.net/?action=download&did=8"
 	"https://pmd85.borik.net/?action=download&did=50"
 	"https://pmd85.borik.net/?action=download&did=70"
-	"https://pmd85.borik.net/?action=download&did=92")
+	"https://pmd85.borik.net/?action=download&did=92"
+	"https://pmd85.borik.net/?action=download&did=31"
+	"https://pmd85.borik.net/?action=download&did=86")
+
 md5sums=('f080063e30b0dabfd03472fad9a338ce'
          '6dc201e05f52b23e65182057ab50c355'
          '107c84bbb19770a7effefd632a5564f0'
@@ -42,7 +44,6 @@ md5sums=('f080063e30b0dabfd03472fad9a338ce'
          '2649b1c6ee07c7a52cf74ad322b9d7cd'
          '01359f5af028800b0c5b4abaf4766f30'
          '807686900788fecde68d6dbbb18fb06f'
-         'd8ea10a497aa92d7935b4c3cd8984e24'
          'ac517f446addc0f78d8663ebc85ca1c1'
          '34884e86e4116ab3b9e1077dd53d9b3a'
          '95835a73ea92d8b94ef0f7ea85f6142e'
@@ -55,7 +56,9 @@ md5sums=('f080063e30b0dabfd03472fad9a338ce'
          'c1c018bf149e04e8d441f04d2dfba59b'
          '93db111a5f3166f273bec1d39e6f78bd'
          '1c71c4ce82f40d5736bfd013467cab34'
-         '5aaeee056b66bd90704d97ee7a3bc5db')
+         '5aaeee056b66bd90704d97ee7a3bc5db'
+         '744fe2f638ce3ac3f909f99237878889'
+         'd8ea10a497aa92d7935b4c3cd8984e24')
 
 package() {
 chmod 644 $srcdir/*
