@@ -14,8 +14,8 @@ license=('custom')
 depends=('java-environment' 'bash' 'ppp' 'net-tools')
 source_i686=("https://sslvpn.demo.sonicwall.com/NetExtender.tgz")
 source_x86_64=("https://sslvpn.demo.sonicwall.com/NetExtender.x86_64.tgz")
-sha256sums_i686=('4fc4fb7ae9fd6539965e17e65b8db786c9b3496a5a5d910b80b84613fb6150be')
-sha256sums_x86_64=('7c6532bcc946655246c179e54a983b4215a3c7bc2dcdc727b4ba77a84051b77c')
+sha256sums_i686=('9ba1e9e92eb51ec69fdfe2a064655af19b15fc833f364ac3b566a5802b9d1e20')
+sha256sums_x86_64=('9ba1e9e92eb51ec69fdfe2a064655af19b15fc833f364ac3b566a5802b9d1e20')
 install="${pkgname}.install"
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 
 --retry-delay 3 -o %o %u")
