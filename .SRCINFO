@@ -1,6 +1,6 @@
 pkgbase = python-asgi-redis
 	pkgdesc = Redis-backed ASGI channel layer implementation
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = http://github.com/django/asgi_redis/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-asgi-redis
 	depends = python-redis
 	depends = python-msgpack
 	depends = python-asgiref
-	source = https://pypi.io/packages/source/a/asgi_redis/asgi_redis-1.4.2.tar.gz
-	md5sums = aaeec40048404e57c1f8422c6cb02556
+	source = https://pypi.io/packages/source/a/asgi_redis/asgi_redis-1.4.3.tar.gz
+	md5sums = 19f251b8c656d61109be579ea1f0724a
 
 pkgname = python-asgi-redis
 
