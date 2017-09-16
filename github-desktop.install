@@ -12,6 +12,8 @@ post_install()  {
     sudo echo "[Desktop Entry]" > /usr/share/applications/desktop.desktop
     sudo echo "Name=GitHub Desktop" >> /usr/share/applications/desktop.desktop
     sudo echo "Comment=Extend your GitHub workflow beyond your browser with GitHub Desktop" >> /usr/share/applications/desktop.desktop
+    sudo echo "Comment[es]=Trabaja con GitHub desde tu escritorio." >> /usr/share/applications/desktop.desktop
+    sudo echo "Comment[eu]=GitHub-ekin lan egin zure ordenagailutik." >> /usr/share/applications/desktop.desktop
     sudo echo "Exec=/usr/bin/github-desktop %U" >> /usr/share/applications/desktop.desktop
     sudo echo "Terminal=false" >> /usr/share/applications/desktop.desktop
     sudo echo "Type=Application" >> /usr/share/applications/desktop.desktop
@@ -39,11 +41,13 @@ pre_upgrade()   {
     sudo rm -rf /usr/bin/github-desktop
 }
 post_upgrade()  {
-    sudo echo "LD_PRELOAD=libcurl.so.3 /opt/GithubDesktop/desktop "$@"" > /u
+    sudo echo "LD_PRELOAD=libcurl.so.3 /opt/GithubDesktop/desktop "$@"" > /usr/bin/github-desktop
     sudo chmod 755 /usr/bin/github-desktop
     sudo echo "[Desktop Entry]" > /usr/share/applications/desktop.desktop    
     sudo echo "Name=GitHub Desktop" >> /usr/share/applications/desktop.desktop
     sudo echo "Comment=Extend your GitHub workflow beyond your browser with GitHub Desktop"
+    sudo echo "Comment[es]=Trabaja con GitHub desde tu escritorio." >> /usr/share/applications/desktop.desktop
+    sudo echo "Comment[eu]=GitHub-ekin lan egin zure ordenagailutik." >> /usr/share/applications/desktop.desktop
     sudo echo "Exec=/usr/bin/github-desktop %U" >> /usr/share/applications
     sudo echo "Terminal=false" >> /usr/share/applications/desktop.desktop   
     sudo echo "Type=Application" >> /usr/share/applications/desktop.desktop
