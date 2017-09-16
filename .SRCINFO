@@ -1,7 +1,7 @@
 pkgbase = virtualbox-ext-oracle-manjaro
 	pkgdesc = Oracle VM VirtualBox Extension Pack for Manjaro
 	pkgver = 5.1.26
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.virtualbox.org/
 	install = virtualbox-ext-oracle.install
 	arch = any

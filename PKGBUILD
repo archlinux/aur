@@ -1,7 +1,7 @@
 # Maintainer: TuxnVape Elrondo46 <elrond94athotmail.com>
 pkgname=virtualbox-ext-oracle-manjaro
 pkgver=5.1.26
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle VM VirtualBox Extension Pack for Manjaro'
 arch=('any')
 url='http://www.virtualbox.org/'
