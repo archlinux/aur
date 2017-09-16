@@ -8,13 +8,14 @@
 #
 #   DESCRIPTION: update some git repos
 #
-#	No warranty! For nothing. Use it at your own risk.
+#       No warranty! For nothing. Use it at your own risk.
 #===============================================================================
 set -e
-set -o nounset                              # Treat unset variables as an error
+set -u
 
 #================================== Logging ==================================
-script_name=`basename "${BASH_SOURCE[0]}"`
+script_name="$(basename "${BASH_SOURCE[0]}")"
+configfile="$HOME/.config/fetcher.conf"
 
 # Backup stdout(&1) and stderr(&2) to fd 3 and fd 4
 exec 3>&1 4>&2
@@ -28,108 +29,54 @@ exec 2> >(tee >(systemd-cat --identifier="$script_name" --priority="notice") >&4
 #================================= Functions =================================
 function config_usage() {
     echo "Create your fetcher config file $configfile like this:"
-    echo $HOME/workspace/repo pull
-    echo $HOME/workspace/repo2 commit
-    echo $HOME/workspace/repo2 push
-    echo $HOME/.vim addcommitpush
-    echo $HOME/workspace/project1 pull origin master:master
-    echo $HOME/workspace/project2 alias
+    echo "$HOME/workspace/repo pull --ff-only"
+    echo "$HOME/workspace/repo2 pull origin master:master"
+    echo "$HOME/workspace/repo2 push"
 }
 
 #============================== Parsing Options ==============================
-dryrun=false
-configfile="$HOME/.config/fetcher.conf"
 
 for i in "$@"
 do
-case $i in
-    -n|--dryrun)
-    dryrun=true
-    ;;
-    -f=*|--file=*)
-    configfile="${i#*=}"
-    ;;
-    -h|--help)
-    echo $script_name' Options:'
-    echo -h, --help     Show this information
-    echo -n, --dryrun   Do a dry run
-    echo -f=, --file=   Use another input file for fetcher
-    echo
-    config_usage
-    exit
-    ;;
-    *)
+    case $i in
+        -f=*|--file=*)
+            configfile="${i#*=}"
+            ;;
+        -h|--help)
+            echo "$script_name Options:"
+            echo -h, --help     Show this information
+            echo -f=, --file=   Use another input file for fetcher
+            echo
+            config_usage
+            exit
+            ;;
+        *)
             # unknown option
-    ;;
-esac
+            ;;
+    esac
 done
 
-if [ ! -f $configfile ]; then
+if [ ! -f "$configfile" ]; then
     echo "Configuration file \"$configfile\" not found." >&2
     config_usage
     exit
 fi
 
 #================================ Parse lines ================================
-readarray -t lines < $configfile
+readarray lines < "$configfile"
 
 if [ ${#lines[@]} -eq 0 ]; then
     config_usage
     exit
 fi
 
-for ((i=0; i < ${#lines[@]}; i++)); do
-    line="${lines[$i]}"
+for i in "${lines[@]}"; do
+    IFS=' ' read -r -a line <<< "$i"
+    path="${line[0]}"
+    args=$(IFS=' '; echo "${line[@]:1}")
 
-    IFS=' ' read -r -a line <<< "$line"
-    eval path=${line[0]}
-    eval gitcmd=${line[1]}
-    remote=''
-    branch=''
-
-    if [ ${#line[@]} -gt 2 ]; then
-        eval remote=${line[2]}
-    fi
-
-    if [ ${#line[@]} -gt 3 ]; then
-        eval branch=${line[3]}
-    fi
-
-    case $gitcmd in
-        addcommitpush)
-            if $dryrun; then
-                cmd="git -C $path add -n -A"
-                cmd="$cmd && git -C $path commit -n -v"
-                cmd="$cmd; git -C $path push -n $remote $branch"
-            else
-                cmd="git -C $path add -A"
-                cmd="$cmd && git -C $path commit -v"
-                cmd="$cmd; git -C $path push $remote $branch"
-            fi
-            ;;
-        pull)
-            if $dryrun; then
-                cmd="git -C $path pull --ff-only -n $remote $branch"
-            else
-                cmd="git -C $path pull --ff-only $remote $branch"
-            fi
-            ;;
-        *)
-            if $dryrun; then
-                cmd="echo 'git -C $path $gitcmd $remote $branch'"
-            else
-                cmd="git -C $path $gitcmd $remote $branch"
-            fi
-            ;;
-    esac
-
-    echo '=============================================================================='
-    echo "$script_name runs:"
-    echo "$cmd"
+    cmd="git -C $path $args"
+    echo "Running: $cmd"
     eval "$cmd" || true
     echo
 done
-
-echo '=============================================================================='
-echo "fetcher processed successfully $configfile."
-echo '=============================================================================='
