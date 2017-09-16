@@ -1,0 +1,21 @@
+From 5e2b1b975bf758b67a190444a1d4a6f18c997095 Mon Sep 17 00:00:00 2001
+From: Mo Zhou <cdluminate@gmail.com>
+Date: Tue, 8 Aug 2017 09:58:23 +0000
+Subject: [PATCH] THD: add a missing header to fix build failure
+
+---
+ torch/lib/THD/base/ChannelUtils.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/torch/lib/THD/base/ChannelUtils.hpp b/torch/lib/THD/base/ChannelUtils.hpp
+index 563e68297e..e03e8bd132 100644
+--- a/torch/lib/THD/base/ChannelUtils.hpp
++++ b/torch/lib/THD/base/ChannelUtils.hpp
+@@ -5,6 +5,7 @@
+ #include <sys/types.h>
+ #include <cstdlib>
+ #include <cstdint>
++#include <functional>
+ #include <limits>
+ #include <string>
+ #include <system_error>
