@@ -5,14 +5,14 @@
 # Contributor: Ace <a.mad.coder at gmail dot com>
 
 _version=2017.2.0
-_build=b6
-_buildtag=20170809
-_randomstring=2b451a7da81d
-_extractiondir=unity-editor-${_version}x${_build}Linux
+_build=b11
+_buildtag=20170914
+_randomstring=fd37f3680b5f
+_extractiondir=unity-editor-${_version}${_build}
 
 pkgname=('unity-editor-beta' 'monodevelop-unity-beta')
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=2
+pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 url='https://unity3d.com/'
@@ -35,13 +35,13 @@ optdepends=('ffmpeg: for WebGL exporting'
             'android-sdk: for Android Remote'
             'android-udev: for Android Remote'
             'monodevelop-unity-beta: for old Monodevelop + Unity-specific addins')
-noextract=("unity-editor-installer-${_version}x${_build}Linux.sh")
+noextract=("unity-editor-installer-${_version}${_build}.sh")
 source=("http://beta.unity3d.com/download/${_randomstring}/${noextract}"
         'EULA'
         'unity-editor-beta'
         'monodevelop-unity-beta'
         'unity-monodevelop-beta.png')
-sha1sums=('246d3727d1902b800da92ce9013217694550fbbb'
+sha1sums=('60643f5514647c70d32aa5c1e18637d41a6b1117'
           'b0b08428b5df109916db396717ec7a8ec5f4c0c4'
           'd61175685d0836a79b2d4582c09ea23ed5ee18e9'
           'cb3628b684d17fc889961b4b1bee7cda9378790d'
