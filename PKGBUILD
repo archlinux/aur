@@ -1,9 +1,8 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 pkgbase=virtualfish
 pkgname=('python-virtualfish' 'python2-virtualfish')
-pkgname=python-$pkgbase
 pkgver=1.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A virtualenv wrapper for the Fish shell"
 arch=(any)
 url="https://github.com/adambrenecki/virtualfish"
@@ -11,7 +10,7 @@ license=('MIT')
 depends=('python-virtualenv' 'python2-virtualenv' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 install=
-source=("${pkgbase}::git+https://github.com/adambrenecki/${pkgbase}.git#tag=1.0.5")
+source=("${pkgbase}::git+https://github.com/adambrenecki/${pkgbase}.git#tag=${pkgver}")
 sha1sums=('SKIP')
 
 prepare() {

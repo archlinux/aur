@@ -1,7 +1,7 @@
 pkgbase = virtualfish
 	pkgdesc = A virtualenv wrapper for the Fish shell
 	pkgver = 1.0.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/adambrenecki/virtualfish
 	arch = any
 	license = MIT
