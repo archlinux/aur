@@ -16,7 +16,7 @@ source=("${_pkgname}::git+https://github.com/lwfinger/rtl8723bu"
 	'dkms.conf')
 sha256sums=('SKIP'
             'dc6a9bfc6a796461da2219accc7a6ae755ea13253737630e1538f3d98aa7aff5'
-            'c3a08391c1b6ea2c920b9b6a3e07550b517b4d3b67ebcd6f34b4bd85dc25188a')
+            'f69382567fe8500990de9a0603fa2ab3a49bfd8f5603e905ebe1977f25fa7d81')
 
 pkgver() {
   cd "${_pkgname}"
