@@ -8,7 +8,8 @@ arch=(i686 x86_64)
 url="http://freedesktop.org/software/realmd/"
 license=(GPL3)
 depends=(adcli dbus krb5 openldap packagekit polkit)
-makedepends=(docbook-xsl intltool python2 xmlto)
+makedepends=(docbook-xsl intltool xmlto)
+checkdepends=(python2)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git://anongit.freedesktop.org/realmd/$_pkgname")
@@ -17,6 +18,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
   git describe | sed 's/-/.r/; s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgname"
+  sed -i '1s/\<python\>/&2/' build/tap-*
 }
 
 build() {
@@ -29,6 +35,11 @@ build() {
     --localstatedir=/var    \
     --with-distro=defaults  ;
   make
+}
+
+check() {
+  cd "$_pkgname"
+  make check
 }
 
 package() {
