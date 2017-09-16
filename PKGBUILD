@@ -11,7 +11,7 @@
 pkgname=mpv-rpi
 _pkgname=mpv
 epoch=1
-pkgver=0.25.0
+pkgver=0.27.0
 pkgrel=1
 _waf_version=1.8.12
 pkgdesc='mpv with Raspberry Pi support'
@@ -22,20 +22,25 @@ depends=(
   'ffmpeg-mmal' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
   'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
   'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-  'libxrandr' 'jack' 'smbclient' 'rubberband' 'uchardet'
+  'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
 )
-makedepends=('mesa' 'python-docutils' 'ladspa' 'hardening-wrapper' 'git')
+makedepends=('mesa' 'python-docutils' 'ladspa')
 optdepends=('youtube-dl: for video-sharing websites playback')
-options=('!emptydirs' '!buildflags')
+options=('!emptydirs')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz"
+  '0001-opengl-backend-support-multiple-backends.patch'
   "http://www.freehackers.org/~tnagy/release/waf-${_waf_version}")
-sha256sums=('07423ffad6921ec4da32f703cd7fbfb27012301dcb736ac8542ac8e6083b0bce'
+sha256sums=('341d8bf18b75c1f78d5b681480b5b7f5c8b87d97a0d4f53a5648ede9c219a49c'
+  '609e0530f1b0cdb910dcffb5f62bf55936540e24105ce1b2daf1bd6291a7d58a'
   '01bf2beab2106d1558800c8709bc2c8e496d3da4a2ca343fe091f22fca60c98b')
 provides=('mpv')
 conflicts=('mpv')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
+
+  # --opengl-backend: support multiple backends (#4384) (FS#53962)
+  patch -Np1 < "${srcdir}"/0001-opengl-backend-support-multiple-backends.patch
 
   install -m755 "${srcdir}"/waf-${_waf_version} waf
 }
@@ -47,10 +52,11 @@ build() {
 
   ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
-    --enable-libarchive \
     --enable-cdda \
+    --enable-dvb \
     --enable-dvdnav \
     --enable-encoding \
+    --enable-libarchive \
     --enable-libmpv-shared \
     --enable-zsh-comp \
     --enable-egl-x11 \
