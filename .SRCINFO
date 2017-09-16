@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 17.2.0_devel.92548.0d576fbfbe
+	pkgver = 17.3.0_devel.95834.969537d935
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = lib32-mesa-git
 	makedepends = mesa-git
 	makedepends = lib32-llvm-libs-svn
 	makedepends = lib32-libglvnd
+	makedepends = wayland-protocols
 	depends = mesa-git
 	depends = lib32-libdrm
 	depends = lib32-wayland
