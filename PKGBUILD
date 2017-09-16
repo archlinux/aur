@@ -25,7 +25,7 @@ fi
 package() {
     cp -R $srcdir/opt $pkgdir;
     install -m 644 -D $srcdir/opt/brother/Printers/HL5450DN/cupswrapper/brother-HL-5450DN-cups-en.ppd $pkgdir/usr/share/cups/model/brother-HL-5450DN-cups-en.ppd
-    install -m 644 -D $srcdir/opt/brother/Printers/HL5450DN/cupswrapper/brother_lpdwrapper_HL5450DN $pkgdir/usr/lib/cups/filter/brother_lpdwrapper_HL5450DN
+    install -m 755 -D $srcdir/opt/brother/Printers/HL5450DN/cupswrapper/brother_lpdwrapper_HL5450DN $pkgdir/usr/lib/cups/filter/brother_lpdwrapper_HL5450DN
     install -m 644 -D cupswrapper-license.txt $pkgdir/usr/share/licenses/${pkgname}/cupswrapper-licence.txt
     install -m 644 -D lpr-license.txt $pkgdir/usr/share/licenses/${pkgname}/lpr-licence.txt
 }
