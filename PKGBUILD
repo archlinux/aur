@@ -3,8 +3,8 @@
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 # 2.0-pre2.1
 pkgname=blt4l
-pkgver=2.0_pre2_r1
-pkgrel=2
+pkgver=2.0_rc1
+pkgrel=1
 pkgdesc="Mod loader for Payday 2"
 arch=('i686' 'x86_64')
 url="https://github.com/blt4linux/blt4l"
@@ -18,17 +18,17 @@ replaces=("blt4l-runtime-bin")
 backup=()
 options=()
 install=blt4l.install
-__steamrtfilename="blt4l_${pkgver//_/-}_Ubuntu_Precise_.SteamRT"
+__steamrtfilename="blt4l_${pkgver//_/-}-2-gf87991a_Ubuntu_Precise_.SteamRT"
 source=("blt4l::git+https://github.com/blt4linux/blt4l#tag=${pkgver//_/-}"
 		"https://raw.githubusercontent.com/blt4linux/blt4l_launcher/6d3da8df567f9d541df8fc10194febf19a80afde/blt4l.sh"
 		"https://github.com/blt4linux/blt4l/releases/download/${pkgver//_/-}/${__steamrtfilename}.tar.xz")
 noextract=()
 md5sums=('SKIP'
          '0c01af7e5ddb43fb7d860878b1fa7e73'
-         '09ed0bc01c5317e7d445311aac622207')
+         'b37d19c997ce938e19134c1ea16908ff')
 sha512sums=('SKIP'
             'ef7bbcd9049bd8424cf8f5430c9528e4489fb03be77ded164eb5361051d1eadfaa5d48437089bd3acfd7970f167a0e310cb4c777dcacbe66dafc197529b9fe27'
-            '3d4e9ca92e4fb8e6c504e7297f0792e49f89b7a3f31eb1203c4f78570103a2dda054b91a13abff09244a7d338af66bc83e971efdc23b9a5b9aa199160ac6717b')
+            '33b8ed333d8cc0e1ad2333c026d2439aa4bad009498bc2ee4e6bf3e2b00edcb8604b217def6052bce49d0e2e4d8244b5dc29e550104d1a95daf9aeaf920fd3c1')
 
 prepare() {
 	cd "$srcdir/blt4l" || exit
