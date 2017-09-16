@@ -63,7 +63,7 @@ set_product_name
 
 # Use VMware's bundled libcurl.so.4 to prevent crashes at startup/checking for updates
 if [[ $ver != 13.* ]]; then
-    for script in vmware vmplayer vmware-netcfg; do
+    for script in vmware vmplayer vmware-netcfg vmware-tray; do
         if [[ -f /usr/bin/$script ]]; then
             if ! grep -q "VMWARE_USE_SHIPPED_LIBS" /usr/bin/$script; then
                 sed '/export PRODUCT_NAME/aexport VMWARE_USE_SHIPPED_LIBS=yes' \

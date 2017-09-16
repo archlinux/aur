@@ -1,0 +1,12 @@
+diff -Naur vmnet-only.orig/bridge.c vmnet-only/bridge.c
+--- vmnet-only/bridge.c	2017-06-26 22:08:39.148034785 +1000
++++ vmnet-only/bridge.c	2017-07-16 11:37:01.325802125 +1000
+@@ -636,7 +636,7 @@
+ 	 unsigned long flags;
+ 	 int i;
+ 
+-	 atomic_inc(&clone->users);
++	 clone = skb_get(clone);
+ 
+ 	 clone->dev = dev;
+ 	 clone->protocol = eth_type_trans(clone, dev);
