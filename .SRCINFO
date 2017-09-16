@@ -1,7 +1,7 @@
 pkgbase = python-django-channels
 	pkgdesc = Developer-friendly asynchrony for Django
-	pkgver = 1.1.6
-	pkgrel = 2
+	pkgver = 1.1.8
+	pkgrel = 1
 	url = https://channels.readthedocs.io
 	arch = any
 	license = BSD
@@ -9,8 +9,8 @@ pkgbase = python-django-channels
 	depends = python
 	depends = python-django
 	optdepends = python-daphne
-	source = git://github.com/django/channels
-	md5sums = SKIP
+	source = https://pypi.python.org/packages/f7/6f/78ccc77800c96017dba756b4152869472b02d20621fff3af22c4a3a54e30/channels-1.1.8.tar.gz
+	md5sums = b13fdf2275e877bec61e4ddf49b30843
 
 pkgname = python-django-channels
 
