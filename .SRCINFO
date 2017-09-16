@@ -1,7 +1,7 @@
 pkgbase = php70
 	pkgdesc = PHP scripting language package for stable release of 7.0 series
 	pkgver = 7.0.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.php.net
 	arch = i686
 	arch = x86_64

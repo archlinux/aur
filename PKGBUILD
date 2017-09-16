@@ -28,7 +28,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=7.0.23
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP scripting language package for stable release of 7.0 series"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -256,7 +256,7 @@ package_php70-apache() {
 	backup=("etc/httpd/conf/extra/${_pkgbase}_module.conf")
 
 	install -D -m755 ${srcdir}/build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/libphp7.so
-	install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/php7_module.conf
+	install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/php70_module.conf
 }
 
 package_php70-fpm() {
