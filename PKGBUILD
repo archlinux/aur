@@ -69,7 +69,7 @@ build() {
       _cuvid="--enable-cuvid"
       _libnpp="--enable-libnpp"
       _cflags="--extra-cflags=-I/opt/cuda/include"
-      _ldflags="--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
+      _ldflags="--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins"
   fi
 
   msg "Starting configure..."
