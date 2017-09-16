@@ -13,7 +13,7 @@ license=('EULA, GPLv2')
 depends=('glibc' 'xorg-server')
 provides=('mixbus4')
 conflicts=('mixbus4')
-source=("Mixbus-$pkgver-$(uname -m)-gcc5.run"
+source=("Mixbus-$pkgver-$(uname -m)-gcc5.tar"
 	"mixbus4.png"
 	#"license_key_harrison_mixbus4.txt"
 	)
@@ -31,13 +31,10 @@ cd $srcdir
 echo "Preparing Installation..."
 
 echo "Unpacking Installer..."
+tar -xf Mixbus-$pkgver-$(uname -m)-gcc5.tar
 ./Mixbus-$pkgver-$(uname -m)-gcc5.run --tar xf 
 find . ! -name "Mixbus_$(uname -m)-$pkgver.tar" -type f -exec rm -f {} +
 tar -xf Mixbus_$(uname -m)-$pkgver.tar
-
-# Remove installation medium
-echo "Cleaning Up..."
-rm Mixbus_$(uname -m)-$pkgver.tar
 
 ## Check for the license file
 if [ ! -L license_key_harrison_mixbus4.txt ];
