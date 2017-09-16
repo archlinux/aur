@@ -1,6 +1,6 @@
 pkgbase = retroshare-git-no-sqlcipher
 	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail.
-	pkgver = v0.6.3.RC1.r3.g02424240a
+	pkgver = v0.6.3.r301.g195127f43
 	pkgrel = 1
 	url = http://retroshare.sourceforge.net/
 	arch = i686
