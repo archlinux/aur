@@ -8,6 +8,8 @@ url="http://www.xdmf.org"
 license=('BSD')
 depends=('hdf5' 'libxml2' 'libtiff')
 makedepends=('cmake' 'boost')
+provides=('xdmf')
+conflicts=('xdmf')
 source=("git+git://xdmf.org/Xdmf.git")
 sha256sums=('SKIP')
 
