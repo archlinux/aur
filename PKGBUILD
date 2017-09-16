@@ -1,50 +1,52 @@
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: yugrotavele <yugrotavele at archlinux dot us>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=sdl-ball
 pkgver=1.03
-pkgrel=1
+pkgrel=2
 pkgdesc="A Breakout clone with pretty graphics"
 arch=('i686' 'x86_64')
 url="http://sdl-ball.sourceforge.net/"
 license=('GPL3')
-# uncomment following line for wiimote support. Unable to get libbtctl to build at this time.
-#depends=('glu' 'sdl_mixer' 'sdl_ttf' 'sdl_image' 'wiiuse' 'libbtctl')
-# comment line below if compiling for wiimote support.
 depends=('glu' 'sdl_mixer' 'sdl_ttf' 'sdl_image')
-# uncomment line below if building the gimp-leveleditor
-#makedepends=('gimp')
-source=("http://sourceforge.net/projects/${pkgname}/files/SDL-Ball_1.03_build-6_src.tar.xz")
+source=("https://sourceforge.net/projects/sdl-ball/files/SDL-Ball_${pkgver}_build-6_src.tar.xz")
 sha256sums=('6910a7166d16e3bfe4a67b538d02e25eec0d06276aef399b9143fd246cd76442')
 
-build() {
-  cd "${srcdir}/SDL-Ball_source_build_0006_src"
-  
-  # uncomment following 2 lines for wiimote support.
-  #export LIBS="-lwiiuse"
-  #export CFLAGS="${CXXFLAGS} -DWITH_WIIUSE"
+# uncomment if building with wiimote support
+#depends+=('wiiuse')
 
-  make DATADIR="/usr/share/games/${pkgname}/themes/"
+# uncomment if building the gimp leveleditor
+#depends+=('gimp')
+
+build() {
+  cd SDL-Ball_source_build_0006_src
+
+  # uncomment to build with wiimote support
+  #export LIBS='-lwiiuse'
+  #export CPPFLAGS+=' -DWITH_WIIUSE'
+
+  export CFLAGS="$CXXFLAGS $CPPFLAGS"
+  make DATADIR="/usr/share/sdl-ball/themes/"
+
+  # uncomment to build the gimp leveleditor
+  #cd leveleditor/gimp-leveleditor
+  #gimptool-2.0 --build gimp-sdlball.c
 }
 
 package() {
-  cd "${srcdir}/SDL-Ball_source_build_0006_src"
+  cd SDL-Ball_source_build_0006_src
 
-  mkdir -p "${pkgdir}/usr/share/games/${pkgname}"
-  cp -r README themes "${pkgdir}/usr/share/games/${pkgname}/"
-  install -Dm755 sdl-ball "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 themes/default/icon32.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -d "$pkgdir"/usr/share/sdl-ball/leveleditor
+  cp -r README themes "$pkgdir"/usr/share/sdl-ball/
+  cp -r leveleditor/{gfx,index.html} "$pkgdir"/usr/share/sdl-ball/leveleditor/
+  install -Dm755 sdl-ball "$pkgdir"/usr/bin/sdl-ball
+  install -Dm644 themes/default/icon32.png "$pkgdir"/usr/share/pixmaps/sdl-ball.png
+  install -Dm644 sdl-ball.desktop "$pkgdir"/usr/share/applications/sdl-ball.desktop
 
-  install -Dm644 leveleditor/index.html "${pkgdir}/usr/share/games/${pkgname}/leveleditor/index.html"
-  cp -r leveleditor/gfx "${pkgdir}/usr/share/games/${pkgname}/leveleditor/gfx"
-
-  # uncomment following lines to build and install the gimp-leveleditor
-  #cd "${srcdir}/${pkgname}-${pkgver}/leveleditor/gimp-leveleditor"
-  #gimptool-2.0 --build gimp-sdlball.c
-  #install -Dm755 gimp-sdlball "${pkgdir}/usr/lib/gimp/2.0/plug-ins/gimp-sdlball"
-  #install -Dm644 readme "${pkgdir}/usr/share/games/${pkgname}/leveleditor/gimp-leveleditor/readme"
-  #install -Dm644 sdlball.xcf "${pkgdir}/usr/share/games/${pkgname}/leveleditor/gimp-leveleditor/sdlball.xcf" 
+  # uncomment to install the gimp leveleditor
+  #cd leveleditor/gimp-leveleditor
+  #install -Dm755 gimp-sdlball "$pkgdir"/usr/lib/gimp/2.0/plug-ins/gimp-sdlball
+  #install -Dm644 readme "$pkgdir"/usr/share/sdl-ball/leveleditor/gimp-leveleditor/readme
+  #install -Dm644 sdlball.xcf "$pkgdir"/usr/share/sdl-ball/leveleditor/gimp-leveleditor/sdlball.xcf
 }
-
