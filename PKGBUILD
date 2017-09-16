@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=cheese
-pkgver=3.24.0
+pkgver=3.26.0
 pkgrel=1
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
@@ -15,7 +15,7 @@ makedepends=(pkgconfig intltool gobject-introspection itstool vala gnome-common 
 optdepends=('gnome-video-effects: Camera effects')
 groups=(gnome-extra)
 options=(!emptydirs)
-_commit=e0f4befb62bb02522a364251e1be429942a1d446  # master~4
+_commit=41843aad67d56918587543aec22ba15cfef25ebc  # master~1
 source=("git+https://git.gnome.org/browse/cheese#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
   cd $pkgname
   # Fixup tags for pkgver()
-  git tag -f 3.24.0 e0f4befb62bb02522a364251e1be429942a1d446
+  git tag -f 3.26.0 41843aad67d56918587543aec22ba15cfef25ebc
   NOCONFIGURE=1 ./autogen.sh
 }
 
