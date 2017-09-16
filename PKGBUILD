@@ -2,13 +2,13 @@
 
 _gitname=elisa
 pkgname=$_gitname-git
-pkgver=r641.215f626
+pkgver=r790.2646ba2
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="Elisa Music Player"
 url="https://cgit.kde.org/elisa.git/"
 license=(GPL)
-depends=(baloo qt5-quickcontrols qt5-quickcontrols2 kdeclarative)
+depends=(baloo qt5-quickcontrols qt5-quickcontrols2 kcmutils)
 makedepends=(extra-cmake-modules git python kdoctools qt5-websockets)
 source=("git://anongit.kde.org/$_gitname.git")
 md5sums=('SKIP')
