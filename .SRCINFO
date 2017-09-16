@@ -1,0 +1,15 @@
+pkgbase = nodejs-js-yaml
+	pkgdesc = YAML 1.2 parser and writer"
+	pkgver = 3.10.0
+	pkgrel = 1
+	url = https://nodeca.github.io/js-yaml/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = js-yaml-3.10.0.tgz
+	source = https://registry.npmjs.org/js-yaml/-/js-yaml-3.10.0.tgz
+	sha512sums = 3b6bf9d9f7e32daf5578ce372785e871913ffd64fd374222c036b72921c7ed3bbc0ad1fed6a33c48866f9ec4e1eaffb8c85cb9294637047515c23a5f016b2320
+
+pkgname = nodejs-js-yaml
+
