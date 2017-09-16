@@ -1,5 +1,5 @@
 
-# Maintainer: Malte Veerman <maldela@halloarsch.de>
+# Maintainer: Malte Veerman <malte.veerman@gmail.com>
 
 _srcname=fancontrol-gui
 pkgname=fancontrol-kcm-git
