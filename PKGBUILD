@@ -9,7 +9,7 @@ url="https://github.com/vicr123/theshell"
 license=('GPL3')
 depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 
 'networkmanager' 'xorg-xbacklight' 'redshift' 'tsscreenlock' 
-'libcups' 'qt5-base' 'ts-qtplatform' 'ts-startsession'
+'libcups' 'qt5-base' 'ts-qtplatform' 'ts-startsession' 'qt5-charts'
 'qt5-location' 'kscreen' 'kdepimlibs4' 'akonadi' 'ts-polkitagent' 'ts-bt' 'ts-bugreport')
 optdepends=('alsa-utils: for volume controls'
 	    'pocketsphinx: for theWave'

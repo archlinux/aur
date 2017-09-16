@@ -18,6 +18,7 @@ pkgbase = theshell-blueprint
 	depends = qt5-base
 	depends = ts-qtplatform
 	depends = ts-startsession
+	depends = qt5-charts
 	depends = qt5-location
 	depends = kscreen
 	depends = kdepimlibs4
