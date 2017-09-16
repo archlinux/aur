@@ -31,7 +31,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
-	git describe --tags
+	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
 prepare() {
