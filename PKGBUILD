@@ -19,7 +19,7 @@ source=("hib://${pkgname}-linux-${pkgver}.tar.gz"
         "${pkgname}.png::https://humblebundle-a.akamaihd.net/misc/files/a72badb523/images/icons/solar_android_pc.png")
 md5sums=('243918907eea486fdc820b7cac0c260b'
          '642ebed8f1bbbc0541ed826e775b7c65'
-         'b49600d174ac15a910d93d874062f8ec')
+         '632b6b015930edc631d5ad2e51ea3b17')
 options=('!strip')
 # You can download the Humble Indie Bundle file manually, or you can configure
 # DLAGENTS in makepkg.conf to auto-download.
