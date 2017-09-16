@@ -9,7 +9,7 @@ pkgbase = python-django-channels
 	depends = python
 	depends = python-django
 	optdepends = python-daphne
-	source = https://pypi.python.org/packages/f7/6f/78ccc77800c96017dba756b4152869472b02d20621fff3af22c4a3a54e30/channels-1.1.8.tar.gz
+	source = https://pypi.io/packages/source/c/channels/channels-1.1.8.tar.gz
 	md5sums = b13fdf2275e877bec61e4ddf49b30843
 
 pkgname = python-django-channels
