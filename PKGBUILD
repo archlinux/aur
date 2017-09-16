@@ -11,7 +11,7 @@ _GRUB_EMU_BUILD="0"
 
 _GRUB_EXTRAS_COMMIT="f2a079441939eee7251bf141986cdd78946e1d20"
 
-_UNIFONT_VER="9.0.06"
+_UNIFONT_VER="10.0.06"
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
@@ -22,7 +22,7 @@ _UNIFONT_VER="9.0.06"
 pkgname="grub"
 pkgdesc="GNU GRand Unified Bootloader (2)"
 pkgver=2.02
-pkgrel=2
+pkgrel=3
 epoch=2
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
@@ -70,7 +70,7 @@ source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig}
 sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
             'SKIP'
             '2844601914cea6b1231eca0104853a93c4d67a5209933a0766f1475953300646'
-            '4246c4773ed70f78a7e27ff1118fd257a280d1102200265ad5d58bb2011195ef'
+            '0d81571fc519573057b7641d26a31ead55cc0b02a931589fb346a3a534c3dcc1'
             'SKIP'
             '37adb95049f6cdcbdbf60ed6b6440c5be99a4cd307a0f96c3c3837b6c2e07f3c'
             'b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3'
