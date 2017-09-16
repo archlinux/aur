@@ -4,7 +4,7 @@
 _plugin_name=requestpolicy-continued
 pkgname=firefox-extension-${_plugin_name}
 pkgdesc="Be in control of which cross-site requests are allowed. Improve the privacy of your browsing by not letting other sites know your browsing habits. Secure yourself from Cross-Site Request Forgery (CSRF) and other attacks."
-pkgver=1.0.beta12.4
+pkgver=1.0.beta13.0
 pkgrel=1
 arch=('any')
 url="https://addons.mozilla.org/firefox/addon/${_plugin_name}/"
@@ -12,7 +12,7 @@ makedepends=('unzip' )
 depends=("firefox")
 license=('GPL3')
 source=("${pkgname}.xpi::https://addons.mozilla.org/firefox/downloads/latest/requestpolicy-continued/addon-683612-latest.xpi" )
-sha1sums=('f876f1b45d8ddb299b383f94470b9ddf0ba61107')
+sha1sums=('83ba3b7cc8906437dad34be43cbe920f98ae8b17')
 noextract=("${pkgname}.xpi")
 
 pkgver(){
