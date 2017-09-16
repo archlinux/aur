@@ -2,9 +2,9 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=freetype2-git
-pkgname=('freetype2-git' 'freetype2-demos-git')
-pkgver=2.8+p86+g410f3799
-pkgrel=2
+pkgname=('freetype2-git' 'freetype2-demos-git' 'freetype2-docs-git')
+pkgver=2.8.1+p0+g39ce3ac4
+pkgrel=1
 epoch=1
 pkgdesc="Font rasterization library (from git)"
 arch=(i686 x86_64)
@@ -30,6 +30,16 @@ sha1sums=('SKIP'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
+pkgver() {
+  local _tag _count
+
+  cd "${srcdir}/freetype2"
+  _tag=$(git describe --abbrev=0 )
+  _count=$(git rev-list --count ${_tag}..HEAD)
+  _tag=${_tag#VER-}
+  echo ${_tag//-/.}+p$_count+g$(git rev-parse --short HEAD)
+}
+
 prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
@@ -47,16 +57,6 @@ prepare() {
 
   # Suppress RPATH
   sed -i '/X11_LIB:%=-R%/d' graph/x11/rules.mk
-}
-
-pkgver() {
-  local _tag _count
-
-  cd "${srcdir}/freetype2"
-  _tag=$(git describe --abbrev=0 )
-  _count=$(git rev-list --count ${_tag}..HEAD)
-  _tag=${_tag#VER-}
-  echo ${_tag//-/.}+p$_count+g$(git rev-parse --short HEAD)
 }
 
 build() {
@@ -85,11 +85,7 @@ package_freetype2-git() {
 
   cd freetype2
   make DESTDIR="${pkgdir}" install
-  install -Dm644 ../freetype2.sh "${pkgdir}/etc/profile.d/freetype2.sh"
-
-  # Package docs
-  install -d "${pkgdir}/usr/share/doc"
-  cp -a docs "${pkgdir}/usr/share/doc/freetype2"
+  install -Dt "${pkgdir}/etc/profile.d" -m644 ../freetype2.sh
 }
 
 package_freetype2-demos-git() {
@@ -103,6 +99,17 @@ package_freetype2-demos-git() {
   for _i in bin/{f,t}t*; do
     libtool --mode=install install $_i "${pkgdir}/usr/bin"
   done
+}
+
+package_freetype2-docs-git() {
+  pkgdesc="Freetype documentation (from git)"
+  depends=('freetype2-git')
+  provides=("freetype2-docs=$pkgver")
+  conflicts=('freetype2-docs')
+
+  cd freetype2
+  install -d "${pkgdir}/usr/share/doc"
+  cp -a docs "${pkgdir}/usr/share/doc/freetype2"
 }
 
 # vim:set ts=2 sw=2 et:
