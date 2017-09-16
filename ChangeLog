@@ -1,3 +1,8 @@
+2017-09-16 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1.8-2 :
+	Removed uneeded make dependency on 'gendesk'.
+
 2016-11-22 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 1.8-1 :

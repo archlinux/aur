@@ -2,14 +2,12 @@
 
 pkgname=polyphone
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical user interface for editing sf2 and sfz files"
 arch=('i686' 'x86_64')
-url="http://www.polyphone-soundfonts.com/"
+url="http://polyphone-soundfonts.com/"
 license=('GPL')
 depends=('qt5-svg' 'portaudio')
-makedepends=('gendesk')
-provides=(polyphone)
 source=("$pkgname-$pkgver-src.zip::http://polyphone-soundfonts.com/en/download/file/76-polyphone-1-8-src-zip/latest/download?ae95d968569b61bc77f7b8559a14db4d=1"
         "$pkgname.desktop"
         "$pkgname.mime")
