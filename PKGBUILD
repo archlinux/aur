@@ -2,13 +2,10 @@
 
 _oomox_ver=1.3.1
 _numix_ver=1.2.8.1
-_flatplat_ver=20170605
-_flatplat_commit=bb04ec94bb6ef822af0e14cc615232d18d4d70fb
-_flatplat_githash=$(c=${_flatplat_commit}; echo ${c:0:7})
-_flatplat_gitdate=20170916
+_flatplat_ver=20170916
 
 pkgname=oomox
-pkgver=${_oomox_ver}_${_numix_ver}_${_flatplat_gitdate}git${_flatplat_githash}
+pkgver=${_oomox_ver}_${_numix_ver}_${_flatplat_ver}
 pkgrel=1
 pkgdesc='Graphical application for generating different color variations of Numix theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
 Have a hack for HiDPI in gtk2.'
@@ -43,7 +40,7 @@ conflicts=('oomox-git')
 source=(
     "oomox-${_oomox_ver}.tar.gz::https://github.com/actionless/oomox/archive/${_oomox_ver}.tar.gz"
     "oomox-gtk-theme-${_numix_ver}.tar.gz::https://github.com/actionless/oomox-gtk-theme/archive/${_numix_ver}.tar.gz"
-    "flat-plat-theme-${_flatplat_commit}.zip::https://github.com/nana-4/Flat-Plat/archive/${_flatplat_commit}.zip"
+    "flat-plat-theme-${_flatplat_ver}.tar.gz::https://github.com/nana-4/Flat-Plat/archive/v${_flatplat_ver}.tar.gz"
     'oomox-cli'
     'oomox-gui'
     'oomox-gnome-colors-icons-cli'
@@ -53,7 +50,7 @@ source=(
 )
 md5sums=('735fb5f2a5ebd381eb8695848cf4e722'
          '983b4dfa91d0f0bc87afa82d28090c18'
-         '21bdf943783e3b4db2d3fa3583420108'
+         '6a42cad03d0e3b0112e33cd44eb328d3'
          'efc83d981e1fcfb41c6d439f1013efbd'
          '0d156463416bbc2260c073c15b7f2a70'
          '57cfcc4141ce6e346da7ab8bab411b14'
@@ -63,7 +60,7 @@ md5sums=('735fb5f2a5ebd381eb8695848cf4e722'
 
 prepare() {
     cp -pr "${srcdir}/${pkgname}-gtk-theme-${_numix_ver}"/* "${srcdir}/${pkgname}-${_oomox_ver}/gtk-theme"
-    cp -pr "${srcdir}/Flat-Plat-${_flatplat_commit}"/* "${srcdir}/${pkgname}-${_oomox_ver}/flat-plat-theme"
+    cp -pr "${srcdir}/Flat-Plat-${_flatplat_ver}"/* "${srcdir}/${pkgname}-${_oomox_ver}/flat-plat-theme"
 }
 
 package() {
