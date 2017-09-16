@@ -25,5 +25,5 @@ package() {
   desktop-file-install tlauncher.desktop --dir "$pkgdir/usr/share/applications/"
   install -Dm0644 mncrft.png "$pkgdir/opt/TLauncher/mncrft.png"
   install -Dm0644 tlauncher.desktop "$pkgdir/usr/share/applications/tlauncher.desktop"
-  install -Dm0644 TLauncher.jar "$pkgdir/opt/TLauncher/TLauncher.jar"
+  install -Dm0666 TLauncher.jar "$pkgdir/opt/TLauncher/TLauncher.jar"
 }
