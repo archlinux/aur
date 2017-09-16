@@ -11,7 +11,7 @@
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=3.3.2
+pkgver=3.3.4
 pkgrel=1
 epoch=1
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
@@ -27,16 +27,24 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
          'libx264.so' 'libx265.so' 'libxvidcore.so'
          'raspberrypi-firmware-tools')
-makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
+makedepends=('ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg')
 conflicts=('ffmpeg')
-source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc})
+source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
+        'ffmpeg-openjpeg2.2.patch')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('1998de1ab32616cbf2ff86efc3f1f26e76805ec5dc51e24c041c79edd8262785'
-            'SKIP')
+sha256sums=('98b97e1b908dfeb6aeb6d407e5a5eacdfc253a40c2d195f5867ed2d1d46ea957'
+            'SKIP'
+            '490598f78d7879af8ef5b8d7f92ada83d0ee64f9609f6c7b989eb331c2539f68')
+
+prepare() {
+  cd ffmpeg-${pkgver}
+
+  patch -Np1 -i ../ffmpeg-openjpeg2.2.patch
+}
 
 build() {
   cd ffmpeg-${pkgver}
