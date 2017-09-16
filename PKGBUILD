@@ -1,11 +1,11 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-lua
-pkgver=0.10.8
+pkgver=0.10.10
 pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.13.0
+_nginxver=1.13.4
 
 pkgdesc='Lua script engine module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -16,20 +16,20 @@ license=('BSD')
 source=(
 	https://nginx.org/download/nginx-$_nginxver.tar.gz
 	https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
-	$pkgname-nginx-1.11.11.patch::https://github.com/openresty/lua-nginx-module/commit/0459a285ca0159d45e73da8bd1164edb5c57cde3.patch
+	openssl-1.1.patch
 )
 
-sha256sums=('79f52ab6550f854e14439369808105b5780079769d7b8db3856be03c683605d7'
-            'd67449c71051b3cc2d6dd60df0ae0d21fca08aa19c9b30c5b95ee21ff38ef8dd'
-            '57867eda9eeee7fe5b55d8916047c8e5ffd156cfed4ca2d64470ae4132784261')
+sha256sums=('de21f3c49ba65c611329d8759a63d72e5fcf719bc6f2a3270e2541348ef1fbba'
+            'b4acb84e2d631035a516d61830c910ef6e6485aba86096221ec745e0dbb3fbc9'
+            '60aed346397e06f870c7e17798f6e3ce11f078c5ae6e573098d53132c1afdb58')
 
 prepare() {
 	cd "$srcdir"/$_modname-nginx-module-$pkgver
-	patch -p1 -i "$srcdir"/$pkgname-nginx-1.11.11.patch
+	patch -p1 -i "$srcdir"/openssl-1.1.patch
 }
 build() {
 	cd "$srcdir"/nginx-$_nginxver
-	./configure $(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's@^[^:]+: @@') --add-dynamic-module=../$_modname-nginx-module-$pkgver
+	./configure --with-compat --add-dynamic-module=../$_modname-nginx-module-$pkgver
 	make modules
 }
 
