@@ -1,0 +1,20 @@
+pkgbase = adapta-kde-git
+	pkgdesc = Complete Adapta theme pack for KDE Plasma using Kvantum theme engine (git version)
+	pkgver = 20170916
+	pkgrel = 1
+	url = https://github.com/PapirusDevelopmentTeam/adapta-kde
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = kwin
+	depends = plasma-desktop
+	depends = kvantum-qt5-git
+	optdepends = papirus-icon-theme-git: Papirus icon theme with Adapta color set
+	optdepends = yakuake: This pack includes a Yakuake skin
+	conflicts = adapta-aurorae-theme-git
+	source = git+https://github.com/PapirusDevelopmentTeam/adapta-kde.git
+	sha256sums = SKIP
+
+pkgname = adapta-kde-git
+
