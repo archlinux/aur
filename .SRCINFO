@@ -1,16 +1,16 @@
-pkgbase = geda-symbols-improved-git
+pkgbase = geda-better-symbols-git
 	pkgdesc = A better symbol library for gEDA. Smaller, more consistent, and more readable.
 	pkgver = 24.986201d
 	pkgrel = 1
-	url = https://github.com/codeThatThinks/geda-symbols-improved
+	url = https://github.com/codeThatThinks/geda-better-symbols
 	arch = any
 	license = custom:CC0
 	makedepends = git
 	depends = geda-gaf
-	provides = geda-symbols-improved
-	conflicts = geda-symbols-improved
-	source = git+https://github.com/codeThatThinks/geda-symbols-improved.git
+	provides = geda-better-symbols
+	conflicts = geda-better-symbols
+	source = git+https://github.com/codeThatThinks/geda-better-symbols.git
 	md5sums = SKIP
 
-pkgname = geda-symbols-improved-git
+pkgname = geda-better-symbols-git
 
