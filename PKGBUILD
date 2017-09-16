@@ -1,17 +1,17 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=adcli-git
 _pkgname=adcli
-pkgver=0.7.3
+pkgver=0.8.2.r2.g8514680
 pkgrel=1
 pkgdesc="DBus service for configuring kerberos and other online identities."
 arch=(i686 x86_64)
-url="http://freedesktop.org/software/realmd/"
+url="https://freedesktop.org/software/realmd/"
 license=(GPL3)
 depends=(krb5 openldap)
 makedepends=(docbook-xsl intltool xmlto)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://anongit.freedesktop.org/realmd/$_pkgname")
+source=("git+https://anongit.freedesktop.org/git/realmd/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
