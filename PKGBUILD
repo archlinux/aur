@@ -8,7 +8,7 @@ pkgdesc='sync friendly file encryption'
 arch=('i686' 'x86_64')
 url='https://rsyncrypto.lingnu.com/'
 license=('GPL')
-depends=('argtable' 'gzip-rsyncable')
+depends=('argtable' 'gzip>=1.7')
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('4f1e2605449c7d35b69d77bce95cb652a8ba1a0996b3babd776fcc98a5a7deff')
 
