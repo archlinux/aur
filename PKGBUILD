@@ -2,8 +2,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=freetype2-ttmetrics
-pkgver=2.8
-pkgrel=2
+pkgver=2.8.1
+pkgrel=1
 pkgdesc="Font rasterization library with TrueType metrics enabled"
 arch=(i686 x86_64)
 license=('GPL')
@@ -25,8 +25,8 @@ source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pk
         freetype2.sh
         enable_truetype_like_size_metrics.patch
         revert_allow_linear_scaling.patch)
-sha1sums=('42c6b1f733fe13a3eba135f5025b22cb68450f91'
-          '5b221ee14fe674cd5f6db0193d55360bc0bd3655'
+sha1sums=('417bb3747c4ac95b6f2652024a53fad45581fa1c'
+          '9ee079ee02e6b6895802104f58cd5e5be517dce7'
           'c3e91e668936206d3c158bffde0f69788a086a5b'
           '4ff958229a7f87e04a9894d5a6ed2df227071931'
           '81586014ea44375ddc85dd9dbcabae6e91c34d62'
