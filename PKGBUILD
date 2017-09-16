@@ -12,7 +12,7 @@
 
 pkgname=qgis-ltr
 _pkgname=${pkgname//-ltr}
-pkgver=2.14.18
+pkgver=2.14.19
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release'
 url='http://qgis.org/'
@@ -36,13 +36,10 @@ optdepends=('gpsbabel: GPS Tool plugin'
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
-md5sums=('1656295a33111f68122415fe317261d8')
+md5sums=('309c5da0d66d2a5ec7f49f1562286ccf')
 
 prepare() {
   cd $_pkgname-$pkgver
-
-  # Build with current sip
-  sed -i '18 s|^|//|' python/core/qgscoordinatetransform.sip
 
   # Make sure we find the -qt4 versions of qwt and qwtpolar
   sed -i '/QWT_LIBRARY_NAMES/ s/qwt /qwt-qt4 /' cmake/FindQwt.cmake
