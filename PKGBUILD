@@ -2,13 +2,15 @@
 # Contributor: Brice Waegeneire <bricewge at gmail dot com>
 
 pkgname=platformio-git
-pkgver=v2.8.6.r596.g0f300a2
-pkgrel=3
+_pkgname=platformio-core
+pkgver=v3.3.0.r296.gaa1c7609
+pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
-url="http://platformio.com/"
+url="http://platformio.org/"
 license=('GPL')
 depends=('python2'
+         'python2-arrow'
          'python2-bottle'
          'python2-click-5.1'
          'python2-colorama'
@@ -18,15 +20,15 @@ depends=('python2'
          'python2-semantic-version')
 optdepends=('energia: For MSP430 based projects'
             'arduino: For Arduino based projects')
-source=('git+https://github.com/ivankravets/platformio.git')
+source=('git+https://github.com/platformio/platformio-core.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname%%-git}"
+    cd "${_pkgname}"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    cd "$srcdir/${pkgname%%-git}"
+    cd "$srcdir/${_pkgname}"
     python2 setup.py install --root="$pkgdir/" --optimize=1
 }
