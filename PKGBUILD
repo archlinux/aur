@@ -9,8 +9,8 @@ license=(GPL3)
 depends=(adcli dbus krb5 openldap packagekit polkit)
 makedepends=(docbook-xsl intltool xmlto)
 checkdepends=(python2)
-source=("http://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz"
-        "http://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz.sig")
+source=("https://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz"
+        "https://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz.sig")
 sha256sums=('d8943f66a2a666fee8be026d82a66904c0a5125aab7ef74504456ce269687dda'
             'SKIP')
 validpgpkeys=('C0F67099B808FB063E2C81117BFB1108D92765AF')
