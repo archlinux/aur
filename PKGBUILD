@@ -1,5 +1,5 @@
-
-# Maintainer: Bjoern Franke <bjo@nord-west.org>
+# Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
+# Contributor: Bjoern Franke <bjo@nord-west.org>
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: Lukas Miczka <lukascpu@gmail.com>
 
@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Shows song change notification using your systems notification daemon. "
 arch=(i686 x86_64)
 url="http://gmpc.wikia.com/wiki/GMPC_PLUGIN_LIBNOTIFY"
-license="GPL"
+license=("GPL")
 depends=('libmpd>=11.8.16' 'libxml2' 'gmpc>=11.8.16' 'libnotify' 
 'intltool')
 source=(http://download.sarine.nl/Programs/gmpc/${pkgver}/${pkgname}-${pkgver}.tar.gz)
