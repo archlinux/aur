@@ -3,9 +3,9 @@
 _oomox_ver=1.3.1
 _numix_ver=1.2.8.1
 _flatplat_ver=20170605
-_flatplat_commit=a96196d966c172c760b0e9ee471e103f3686832c
+_flatplat_commit=bb04ec94bb6ef822af0e14cc615232d18d4d70fb
 _flatplat_githash=$(c=${_flatplat_commit}; echo ${c:0:7})
-_flatplat_gitdate=20170909
+_flatplat_gitdate=20170916
 
 pkgname=oomox
 pkgver=${_oomox_ver}_${_numix_ver}_${_flatplat_gitdate}git${_flatplat_githash}
@@ -53,7 +53,7 @@ source=(
 )
 md5sums=('735fb5f2a5ebd381eb8695848cf4e722'
          '983b4dfa91d0f0bc87afa82d28090c18'
-         '0d47227a9a5151666fd372da921eb24a'
+         '21bdf943783e3b4db2d3fa3583420108'
          'efc83d981e1fcfb41c6d439f1013efbd'
          '0d156463416bbc2260c073c15b7f2a70'
          '57cfcc4141ce6e346da7ab8bab411b14'
