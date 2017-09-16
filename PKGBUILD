@@ -2,12 +2,12 @@
 
 pkgname=bareos-webui
 pkgver=16.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A PHP-Frontend to manage Bareos over the web."
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 license=('AGPLv3')
 url='https://github.com/bareos/bareos-webui/'
-depends=('php' 'php-fpm')
+depends=('php' 'php-fpm' 'jansson')
 optdepend=('nginx' 'apache')
 source=("https://github.com/bareos/bareos-webui/archive/Release/${pkgver}.tar.gz")
 backup=('etc/bareos-webui/configuration.ini'
