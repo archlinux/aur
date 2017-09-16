@@ -12,13 +12,13 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.2.0_devel.92548.0d576fbfbe
+pkgver=17.3.0_devel.95834.969537d935
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'glproto'
              'dri2proto' 'dri3proto' 'presentproto' 'libxml2' 'libx11' 
              'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
-             'ocl-icd' 'vulkan-icd-loader' 'libgcrypt')
+             'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'wayland-protocols')
 depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'libtxc_dxtn' 'llvm-libs-svn' 'libunwind' 'libglvnd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
@@ -68,7 +68,7 @@ build () {
                --enable-nine \
                --disable-xvmc \
                --enable-vdpau \
-               --enable-omx \
+               --enable-omx-bellagio \
                --enable-opencl \
                --enable-opencl-icd \
                --enable-glx-tls \
@@ -103,7 +103,7 @@ build () {
 #                                   [default=auto]
 # --enable-vdpau                    enable vdpau library
 #                                    [default=auto]
-# --enable-omx                      enable OpenMAX library
+# --enable-omx-bellagio             enable OpenMAX Bellagio library
 #                                   [default=disabled]
 # --enable-opencl                   enable OpenCL library
 #                                   [default=disabled]
