@@ -1,0 +1,12 @@
+pkgbase = cuttlefish-tool
+	pkgdesc = Texture converter tool and library
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = freeimage
+	optdepends = PVRTexTool: PVRTC support. Download from https://community.imgtec.com/developers/powervr/tools/pvrtextool/
+
+pkgname = cuttlefish-tool
+
