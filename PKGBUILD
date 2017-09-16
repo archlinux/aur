@@ -1,7 +1,7 @@
 # Maintainer: SaMaLerO <smlr[at]ukr[dot]net>
 pkgname=tlauncher
 pkgver=9999
-pkgrel=1
+pkgrel=2
 pkgdesc="TLauncher is freeware launcher of Minecraft."
 url="https://tlaun.ch"
 arch=('x86_64' 'i686')
