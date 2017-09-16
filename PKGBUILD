@@ -29,19 +29,29 @@ pkgver() {
   printf "%s.r%s" "${release}" "${gitver:0:7}"
 }
 
-build() {
+prepare() {
   cd "$srcdir/${_gitname}"
 
   git submodule init
   git submodule update
+}
 
-  CFLAGS="-fPIC" \
-    ./create_build_files4.sh
+build() {
+  # build premake manually
+  cd "$srcdir/${_gitname}/build/premake/linux"
 
+  # Remove conflicting left over objects from a bad github commit.
+  rm -rf obj > /dev/null 2>&1
+
+  # Generate builds files with premake
+  cd "$srcdir/${_gitname}"
+  ./create_build_files4.sh
+
+  # Just to make sure we are on the upper dir.
+  cd "$srcdir/${_gitname}"
   cd build/$(wx-config --release)/gmake
 
-  CXXFLAGS="-fPIC $(wx-config --cxxflags)" \
-    make config=release
+  make config=release
 }
 
 package() {
