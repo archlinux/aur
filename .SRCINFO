@@ -1,6 +1,6 @@
 pkgbase = postgrest-bin
 	pkgdesc = REST API for any Postgres database
-	pkgver = 0.4.2.0
+	pkgver = 0.4.3.0
 	pkgrel = 1
 	url = https://github.com/begriffs/postgrest
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = postgrest-bin
 	provides = postgrest
 	provides = postgrest-bin
 	conflicts = postgrest
-	source = https://github.com/begriffs/postgrest/releases/download/v0.4.2.0/postgrest-0.4.2.0-ubuntu.tar.xz
-	sha512sums = e6e208345b83ed6a7113dfbc6cd30ac12bfa5cff1c97d2c94ba94981827560c178ae7402742e13a1892710dab3c443260fda8966e67622540afab2ad1fc6cc3c
+	source = https://github.com/begriffs/postgrest/releases/download/v0.4.3.0/postgrest-v0.4.3.0-ubuntu.tar.xz
+	sha512sums = c4117a32704479c2c2437ff5460b9efd344223d9fd7b6b38c90831aecd9f5dcdebcadb2235d5aec0c647a2fd549a097e508fc5bd9dbbd3e56ff7a5ef76d41b03
 
 pkgname = postgrest-bin
 
