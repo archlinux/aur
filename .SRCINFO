@@ -5,6 +5,8 @@ pkgbase = cuttlefish-tool
 	arch = i686
 	arch = x86_64
 	license = Apache
+	makedepends = cmake
+	makedepends = git
 	depends = freeimage
 	optdepends = PVRTexTool: PVRTC support. Download from https://community.imgtec.com/developers/powervr/tools/pvrtextool/
 
