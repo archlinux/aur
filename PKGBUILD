@@ -21,11 +21,11 @@ pkgver() {
 }
 
 build() {
-	cd "NP2kai"
+	cd "NP2kai/sdl2"
 	make
 }
 
 package() {
-	install -Dm644 "NP2kai/NP2kai_libretro.so" "${pkgdir}/usr/lib/libretro/NP2kai_libretro.so"
+	install -Dm644 "NP2kai/sdl2/np2kai_libretro.so" "${pkgdir}/usr/lib/libretro/np2kai_libretro.so"
 	install -Dm644 "nekop2_libretro.info" "${pkgdir}/usr/share/libretro/info/nekop2_libretro.info"
 }
