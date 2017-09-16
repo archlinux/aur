@@ -3,7 +3,7 @@
 
 pkgname=lix-git
 pkgver=r973.a2b7c3f
-pkgrel=1
+pkgrel=2
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
@@ -19,9 +19,10 @@ sha512sums=('SKIP')
 pkgver()
 {
 	# https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
-	cd "${srcdir}/${pkgname%-git}"
-	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	cd "${pkgname%-git}"
+	(
+		set -o pipefail
+		git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
@@ -34,11 +35,14 @@ prepare()
 	gendesk -n -f --categories "Game"
 
 	# update .CHANGELOG
-	git -C "${srcdir}/${pkgname%-git}" log --graph -10 > "${startdir}/.CHANGELOG"
+	git -C "${srcdir}/${pkgname%-git}" log --graph -10 > "${startdir}/.CHANGELOG"	
+}
+
+build()
+{
+	cd "${srcdir}/${pkgname%-git}"
 	
-	cd "${pkgname%-git}"
-	
-	# force an upgrade of the dependencies to the local folder, without --cache=lokal they get added to the users home directory
+	# force an upgrade of the dependencies to the local folder, without --cache=local they get added to the users home directory
 	dub upgrade --cache=local
 	
 	# add local dependencies to search path
@@ -46,11 +50,6 @@ prepare()
 	dub add-local derelict-enet-*/derelict-enet
 	dub add-local derelict-util-*/derelict-util
 	dub add-local enumap-*/enumap
-}
-
-build()
-{
-	cd "${srcdir}/${pkgname%-git}"
 	
 	# force FHS compatibility with '-b releaseXDG'
 	dub build -b releaseXDG --cache=local
