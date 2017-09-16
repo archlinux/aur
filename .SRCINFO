@@ -1,5 +1,5 @@
 pkgbase = nodejs-js-yaml
-	pkgdesc = YAML 1.2 parser and writer"
+	pkgdesc = YAML 1.2 parser and writer
 	pkgver = 3.10.0
 	pkgrel = 1
 	url = https://nodeca.github.io/js-yaml/
