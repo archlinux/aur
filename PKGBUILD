@@ -12,7 +12,7 @@ makedepends=(docbook-xsl intltool xmlto)
 checkdepends=(python2)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://anongit.freedesktop.org/realmd/$_pkgname")
+source=("git+https://anongit.freedesktop.org/git/realmd/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {

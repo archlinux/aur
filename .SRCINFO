@@ -18,7 +18,7 @@ pkgbase = realmd-git
 	depends = polkit
 	provides = realmd=0.15.1.r2.g40f9583
 	conflicts = realmd
-	source = git://anongit.freedesktop.org/realmd/realmd
+	source = git+https://anongit.freedesktop.org/git/realmd/realmd.git
 	sha256sums = SKIP
 
 pkgname = realmd-git
