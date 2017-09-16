@@ -1,5 +1,6 @@
---- gui/makefile.orig	2016-05-30 16:06:19.559121412 +0200
-+++ gui/makefile	2016-05-30 16:07:38.295296786 +0200
+diff -ru zoomtools-12222006-orig/gui/makefile zoomtools-12222006/gui/makefile
+--- zoomtools-12222006-orig/gui/makefile	2017-09-16 12:09:57.641520783 +0200
++++ zoomtools-12222006/gui/makefile	2017-09-16 12:10:07.317921281 +0200
 @@ -1,7 +1,8 @@
  TOP		= ..
  GTKCFLAGS	= -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include	\
@@ -10,3 +11,19 @@
  
  GTKLOADLIBES	= -Wl,--export-dynamic -lgtk-x11-2.0 -lgdk-x11-2.0	\
  		  -latk-1.0 -lgdk_pixbuf-2.0 -lm			\
+diff -ru zoomtools-12222006-orig/make.rules zoomtools-12222006/make.rules
+--- zoomtools-12222006-orig/make.rules	2017-09-16 12:09:57.648187266 +0200
++++ zoomtools-12222006/make.rules	2017-09-16 12:10:07.367919906 +0200
+@@ -1,9 +1,9 @@
+ CC		= gcc
+-CFLAGS		= -O2 -g -Wall -Wno-format
++CFLAGS		?= -O2 -g -Wall -Wno-format
+ #CPPFLAGS	= -I$(TOP)/lib -Wall -Wunused -Werror -Wno-format
+-CPPFLAGS	= -I$(TOP)/lib
++CPPFLAGS	+= -I$(TOP)/lib
+ LIBZOOM		= $(TOP)/lib/libzoom.a
+-LDFLAGS		= -L$(TOP)/lib
++LDFLAGS		+= -L$(TOP)/lib
+ LDLIBS		= -lzoom
+ 
+ subdirs: $(SUBDIRS)
