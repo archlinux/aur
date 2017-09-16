@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-qbs-shared
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Extra imports and modules for Qbs"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('qbs')
 groups=('liri')
 source=("https://github.com/lirios/qbs-shared/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('e171d86b485e5f6c5f1f5bdcd3bfad1b86df244bae92e015fcc74d22068aa48b')
+sha256sums=('cc815da918e0f703239518f6bca2691a4c3ade270114cd3e043cff6426a23e8c')
 
 build() {
 	cd ${pkgname}-${pkgver}
@@ -26,6 +26,4 @@ package() {
 
 	mkdir -p $pkgdir/usr/share/licenses/liri-qbs-shared
 	cp LICENSE.BSD $pkgdir/usr/share/licenses/liri-qbs-shared
-
-	find $pkgdir -type f -name "*.py" | xargs rm -f
 }
