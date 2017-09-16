@@ -1,0 +1,19 @@
+pkgbase = brother-dcpl2540dn-lpr
+	pkgdesc = Brother DCP-L2540DN lpr drivers.
+	pkgver = 3.2.0_1
+	pkgrel = 1
+	url = http://support.brother.com/g/b/downloadlist.aspx?c=nl&lang=nl&prod=dcpl2540dn_eu&os=127&flang=English
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:brother
+	depends = lib32-glibc
+	depends = bash
+	depends = perl
+	source = http://download.brother.com/welcome/dlf101761/dcpl2540dnlpr-3.2.0-1.i386.rpm
+	source = http://support.brother.com/g/s/agreement/English_lpr/agree.html
+	md5sums = 71602bc0a8b2da87cb18216175bc09fb
+	md5sums = 5a4a3172f6278922062aa6e1f43b0d92
+
+pkgname = brother-dcpl2540dn-lpr
+
