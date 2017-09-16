@@ -10,7 +10,7 @@ url="http://google.github.io/material-design-icons/"
 license=('Apache')
 depends=('fontconfig' 'xorg-font-utils')
 source=("https://github.com/google/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('ea1996f82d39f56357754b2b3d9ad8b812065dc059ad488fb086233c360676a0')
+sha256sums=('b25cf06c66f87fc9ff7fa81213c8f725dfc268027f8cc8b6366e9a9cd41f1105')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/TTF"
