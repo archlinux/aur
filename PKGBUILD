@@ -2,7 +2,7 @@
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname='trafficserver'
-pkgver=7.0.0
+pkgver=7.1.1
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
@@ -17,7 +17,7 @@ source=(
     trafficserver.service.in.patch
     trafficserver.lib_perl_Makefile.in.patch)
 
-md5sums=('532f4b5213bff3c444e238bbb0e323a5'
+md5sums=('a3a9f1a70cd9d11ad5a027275643cca1'
          '44b617f732eb1944a916f36cc393ab7b'
          '1a72eaf2dc694a5a60d949c9f3130e80'
          '21cb3150aac3f1609f933dea08904592')
@@ -97,7 +97,7 @@ package()
     make install DESTDIR="${pkgdir}"
 
     rm -rf "${pkgdir}"/run
-    rm -rf "${pkgdir}"/usr/lib/perl5/core_perl
+    rm -rf "${pkgdir}"/usr/lib/perl5
     rm -rf "${pkgdir}"/usr/share/trafficserver
 
     install -D -m 644 "${srcdir}"/trafficserver.tmpfiles \
