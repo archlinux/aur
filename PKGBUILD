@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Manage your TODO items using Git as a backend"
 arch=('any')
 url='http://www.uninformativ.de/projects/?q=gitodo'
-license=('custom:PIZZA-WARE')
+license=('MIT')
 makedepends=('git')
 depends=('git' 'ruby')
 optdepends=(
