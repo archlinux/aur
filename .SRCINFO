@@ -9,18 +9,19 @@ pkgbase = chipmachine
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = vim
+	makedepends = git
 	depends = mpg123
 	depends = glew
 	depends = glfw
 	depends = curl
 	source = chipmachine-1.3c.tar.gz::https://github.com/sasq64/chipmachine/archive/v1.3c.tar.gz
-	source = apone.tar.gz::https://github.com/sasq64/apone/archive/d320e07159a35f47cbc81ea45f145c27a976f98c.tar.gz
-	source = chipmachine-two-missing-std-specifiers.patch::https://github.com/sasq64/chipmachine/commit/31181465d5c8ba87efa6450c149dc00acffe0f6d.patch
-	source = chipmachine-fixed-against-latest-apone.patch::https://github.com/sasq64/chipmachine/commit/44ed091a4305b2231595bd7f62c11803eb66aeb7.patch
+	source = chipmachine-1.3c-two-missing-std-specifiers.patch::https://github.com/sasq64/chipmachine/commit/31181465d5c8ba87efa6450c149dc00acffe0f6d.patch
+	source = chipmachine-1.3c-fixed-against-latest-apone.patch::https://github.com/sasq64/chipmachine/commit/44ed091a4305b2231595bd7f62c11803eb66aeb7.patch
+	source = git+https://github.com/sasq64/apone.git#commit=d320e07159a35f47cbc81ea45f145c27a976f98c
 	sha256sums = fe83080035a6ba23917a79b9133e29b2b934e7711fb21e8039eff3a9411fd354
-	sha256sums = fc9e60c3b57065ec0b65dff649aa4bd4212e3ec8c496326be63d9cf5fe427499
 	sha256sums = 7dc76d37e016a5109efb471b30b3c46246ea231ad3cd6e45bd8a6a438cccfd44
 	sha256sums = 531db4559b7cb57e20409e26d500aa82dc8e6c03aa437547affdd88c5cb03997
+	sha256sums = SKIP
 
 pkgname = chipmachine
 
