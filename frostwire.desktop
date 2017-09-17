@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Name=FrostWire
+GenericName=P2P Bittorrent client
+GenericName[es]=P2P cliente Bittorrent
+Comment=Search and explore all kinds of files on the Bittorrent network
+Comment[es]=Busque y explore todo tipo de archivos en la red Bittorrent
+Exec=/usr/bin/frostwire/frostwire %U
+Icon=frostwire
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;P2P;
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;
+X-Ubuntu-Gettext-Domain=frostwire
+X-AppInstall-Keywords=torrent
+Keywords=P2P,BitTorrent,Torrent,FrostWire,Vuze,uTorrent,Transmission,Transfer,Cloud;
+Name[fr_FR.utf8]=FrostWire
