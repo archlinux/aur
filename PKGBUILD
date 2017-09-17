@@ -2,7 +2,7 @@
 
 _name=gzdoom
 pkgname=${_name}-git
-pkgver=3.0pre+144+gc6a516089
+pkgver=3.2pre+562+g9f742f8aa
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support  (git version)'
 arch=('i686' 'x86_64')
@@ -35,6 +35,7 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'libsndfile: WAV/FLAC/OGG audio support'
             'mpg123: MP3 audio support'
             'openal: in-game sound'
+            'soundfont-fluid: FluidR3 soundfont for FluidSynth'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
             'timidity++: Timidity MIDI device'
@@ -43,14 +44,22 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
 provides=("${_name}")
 conflicts=("${_name}")
 source=("${_name}::git://github.com/coelckers/${_name}.git"
-        "${_name}.desktop")
+        "${_name}.desktop"
+        '0001-Fix-path-to-FluidR3-soundfont.patch')
 sha256sums=('SKIP'
-            '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d')
+            '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
+            '30c431cbf51602581bf2bdc66552c1228c50bcf4a4bb5d63eb80d6bc3c79abcf')
 
 pkgver() {
     cd $_name
 
     git describe --tags --match '[Gg]*' | sed -r 's/^[Gg]//;s/-/+/g'
+}
+
+prepare() {
+    cd $_name
+
+    patch -p1 -i"$srcdir"/0001-Fix-path-to-FluidR3-soundfont.patch
 }
 
 build() {
@@ -71,6 +80,7 @@ package() {
     cd $_name
 
     make install DESTDIR="$pkgdir"
+    install -D -m644 ${_name}.sf2 "$pkgdir"/usr/share/$_name
 
     desktop-file-install --dir="$pkgdir"/usr/share/applications \
                          "$srcdir"/${_name}.desktop
