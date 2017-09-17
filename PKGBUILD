@@ -15,8 +15,7 @@ md5sums=('5415e1514a899905f0357bf8ef6ac69f')
 
 build() {
     cd "$pkgname-$pkgver"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_CXX_FLAGS=-std=c++03 .
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
     make
 }
 
