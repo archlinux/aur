@@ -1,11 +1,11 @@
 # Maintainer: ghostbuster <aur@sieverdingbeck.com>
 _pkgname=Nagstamon
-_pkgver='2.1-20170906'
+_pkgver='3.0.0-20170915'
 pkgname=nagstamon-beta
-pkgver='2.1.20170906'
+pkgver='3.0.0.20170915'
 pkgrel=1
 pkgdesc="Nagios status monitor for the desktop"
-depends=('python-pyqt5' 'qt5-multimedia' 'qt5-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos')
+depends=('python-pyqt5' 'qt5-multimedia' 'qt5-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml')
 arch=('any')
 url="https://nagstamon.ifw-dresden.de/"
 license=('GPL')
@@ -15,10 +15,10 @@ source=(
         "https://nagstamon.ifw-dresden.de/files/unstable/$_pkgname-$_pkgver.tar.gz"
 )
 md5sums=(
-        'ac3570f89ec7878069e00ade6e8351fb'
+        '7300cd523a719d9f9ddc4869daee34c2'
 )
 sha256sums=(
-        'a88d9d236dcd58bafccf982d7025bbd35e05f087f92b1b2d3aef01a9b1cd1bbb'
+        '50c34c77c954af21cef70e2f4b94af907d1213ec9f41e2d4bae4a045bceca1f9'
 )
 
 prepare() {
