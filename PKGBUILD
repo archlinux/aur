@@ -58,7 +58,7 @@ package() {
   # Install the package files
   install -d "${pkgdir}"/{usr/bin,opt}
   cp -r ${_name} "${pkgdir}"/${OPT_PATH}
-  ln -s "/${OPT_PATH}/${_name}" "${pkgdir}"/usr/bin/${pkgname}
+  ln -s "/${OPT_PATH}/${_name}" "${pkgdir}"/usr/bin/${_pkgname_en_us}
 
   # Install .desktop files
   install -Dm644 "${srcdir}"/${_pkgname_en_us}.desktop -t "${pkgdir}"/usr/share/applications
@@ -68,9 +68,9 @@ package() {
   DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
   for i in 16 32 48
   do
-      install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${pkgname}.png
+      install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${_pkgname_en_us}.png
   done
-  install -Dm644 "${SRC_LOC}"/icons/mozicon128.png "${DEST_LOC}"/128x128/apps/${pkgname}.png
+  install -Dm644 "${SRC_LOC}"/icons/mozicon128.png "${DEST_LOC}"/128x128/apps/${_pkgname_en_us}.png
 
   # Disable auto-updates
   install -Dm644 "${srcdir}"/vendor.js -t "${pkgdir}"/${OPT_PATH}/browser/defaults/preferences
