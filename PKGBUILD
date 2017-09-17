@@ -10,7 +10,7 @@ _minor=13
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=1
+_pfrel=3
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -699,5 +699,5 @@ sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'b6057e1b5cd22dc287d7de9efc46e4e1a904c5c22c3913618a0cfd1d65cc9c87'
             '277edd02be3ed915b73722ac460f19c1bc79708dfce352f36e5127cc5abd523d'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '7b0b839b736b45021664672a02a52b918551e39e2f472f62170dee91a352536b'
+            '16b257d78f65ad397f01d5961aa4216a6bce7bdfae67d9ed98a24e975f9c82e8'
             'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02')
