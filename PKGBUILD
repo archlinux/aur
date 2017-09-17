@@ -1,10 +1,10 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 _pkgname=pinocchio
-_pkgver=1.2.3
+_pkgver=1.2.4
 pkgname=${_pkgname}-git
-pkgver=$_pkgver.r1416.5449bba
-pkgrel=2
+pkgver=$_pkgver.r1448.b927976
+pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra. devel branch"
 arch=('i686' 'x86_64')
 url="https://stack-of-tasks.github.io/pinocchio/"
