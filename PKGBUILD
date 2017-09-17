@@ -34,9 +34,7 @@ build() {
 }
 
 package() {
-	mkdir $pkgdir/usr/
-	mkdir $pkgdir/usr/bin
-	mkdir $pkgdir/
+	mkdir $pkgdir/usr/ $pkgdir/usr/bin
 	cd "$srcdir/qt-dab/linux-bin"
 	mv * /$pkgdir/usr/bin/qt-dab
 }
