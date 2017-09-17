@@ -22,6 +22,11 @@ pkgver() {
 
 }
 
+prepare() {
+ cd "$srcdir/qt-dab"
+ patch -i "${srcdir}/qwt.patch"
+}
+
 build() {
 	cd "$srcdir/qt-dab"
 	qmake qt-dab.pro
