@@ -2,7 +2,7 @@
 
 _oomox_ver=1.3.1
 _numix_ver=1.2.8.1
-_flatplat_ver=20170916
+_flatplat_ver=20170917
 
 pkgname=oomox
 pkgver=${_oomox_ver}_${_numix_ver}_${_flatplat_ver}
@@ -50,7 +50,7 @@ source=(
 )
 md5sums=('735fb5f2a5ebd381eb8695848cf4e722'
          '983b4dfa91d0f0bc87afa82d28090c18'
-         '6a42cad03d0e3b0112e33cd44eb328d3'
+         '6dfc7197161e37e363f9356d353a81d8'
          'efc83d981e1fcfb41c6d439f1013efbd'
          '0d156463416bbc2260c073c15b7f2a70'
          '57cfcc4141ce6e346da7ab8bab411b14'
