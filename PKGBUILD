@@ -1,3 +1,4 @@
+# Maintainer: Leon <leondevlifelog gmail.com>
 # Maintainer: Det <nimetonmaili g-mail>
 # Contributors: t3ddy, Lex Rivera aka x-demon, ruario
 
