@@ -6,7 +6,7 @@
 
 _pkgname=focuswriter
 pkgname=focuswriter-git
-pkgver=1.6.0.r67.g49b33b6
+pkgver=1.6.7.1072.49b33b6
 pkgrel=1
 pkgdesc="A simple fullscreen word processor"
 arch=('i686' 'x86_64')
@@ -18,12 +18,14 @@ optdepends=('sdl_mixer: typewriter sound effects')
 makedepends=('git')
 provides=('focuswriter')
 conflicts=('focuswriter')
-source=("git://github.com/gottcode/focuswriter.git")
+source=("git+https://github.com/gottcode/focuswriter.git")
 sha1sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  printf %s.%s.%s $(head -1 "${srcdir}/${_pkgname}/NEWS") \
+	 $(git rev-list --count HEAD) \
+	 $(git rev-parse --short HEAD)
 }
 
 build() {

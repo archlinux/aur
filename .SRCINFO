@@ -1,6 +1,6 @@
 pkgbase = focuswriter-git
 	pkgdesc = A simple fullscreen word processor
-	pkgver = 1.6.0.r67.g49b33b6
+	pkgver = 1.6.7.1072.49b33b6
 	pkgrel = 1
 	url = http://gottcode.org/focuswriter/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = focuswriter-git
 	optdepends = sdl_mixer: typewriter sound effects
 	provides = focuswriter
 	conflicts = focuswriter
-	source = git://github.com/gottcode/focuswriter.git
+	source = git+https://github.com/gottcode/focuswriter.git
 	sha1sums = SKIP
 
 pkgname = focuswriter-git
