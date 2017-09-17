@@ -2,7 +2,7 @@
 # Contributor: <craven@gmx.net>
 
 pkgname=foment-git
-pkgver=20170915
+pkgver=20170917
 pkgrel=1
 pkgdesc="Foment scheme"
 arch=('i686' 'x86_64')
