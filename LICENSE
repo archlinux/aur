@@ -1,0 +1,11 @@
+This is a message from the package maintainer of rmate-git.
+
+While the upstream project (https://github.com/textmate/rmate) has
+not provided an actual license file as of 2017-09-17, they do state
+in the `rmate.gemspec` file that the project is licensed under the
+MIT license.
+
+Even though the rmate-git package does not technically require
+`rmate.gemspec`, it is included in the /usr/share/licenses/rmate
+directory for reference.
+
