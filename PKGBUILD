@@ -11,7 +11,7 @@
 
 _pkgname=playonlinux5
 pkgname=${_pkgname}-git
-pkgver=r1784.151328a6
+pkgver=r1917.1ca1f402
 pkgrel=1
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
@@ -29,7 +29,7 @@ source=(
 md5sums=(
 	'SKIP'
 	'7fe925810fc7ec6d8745817b1c541e7b'
-	'77201d6c6376d4dd8340ad47a0f47cf7'
+	'b4f37c90412bff625b3068e9e1e5ff59'
 	)
 
 pkgver() {
@@ -47,19 +47,37 @@ build() {
   cd "${_pkgname}"
 
   # Set environment
+  msg2 "Assessing Java build environment"
   if (( $(archlinux-java get | cut -d "-" -f2) < 8 )) || [[ ! -f /usr/bin/javac ]]; then
 
 	# test for openjdk, fall back on other jdks if not found
 	# Take the highest sorted version (alpahumericly,head -1)
 	_openjdk=$(ls /usr/lib/jvm/java-{8,9}-openjdk/bin/javac 2>/dev/null | cut -d "/" -f-5)
+	_openjdk_jetbeans=$(ls /usr/lib/jvm/java-{8,9}-openjdk-jetbrains/bin/javac 2>/dev/null | cut -d "/" -f-5)
+	_oraclejdk=$(ls /usr/lib/jvm/java-{8,9}-jdk/bin/javac 2>/dev/null | cut -d "/" -f-5)
 
 	if [[ "${_openjdk}" ]]; then
 		# choose the first one available
+		msg2 "Using OpenJDK for build"
 		export JAVA_HOME="${_openjdk[0]}"
+
+	elif [[ "${_openjdk_jetbrains}" ]]; then
+		msg2 "Using JetBrains JDK for build"
+		export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-openjdk-jetbrains*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
+
+	elif [[ "${_oraclejdk}" ]]; then
+		msg2 "Using Oracle JDK for build"
+		export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-jdk*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
+
 	else
 		# fall back to other JDKs
-		export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
+		export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-jdk*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
+		msg2 "Using JDK $JAVA_HOME"
 	fi
+
+  else
+	msg2 "Default Java JDK set is of verison 8 or higher, proceeding..."
+	msg2 "Using: $(archlinux-java get)"
 
   fi
 
