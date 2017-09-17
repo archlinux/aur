@@ -1,0 +1,18 @@
+pkgbase = yawn
+	pkgdesc = A command-line rss feed downloader thing
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/expenses/yawn
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = unknown
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/expenses/yawn.git
+	md5sums = SKIP
+
+pkgname = yawn
+
