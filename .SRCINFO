@@ -1,0 +1,19 @@
+pkgbase = nbfc-git
+	pkgdesc = Cross-platform fan control service for notebooks (Development version)
+	pkgver = 1.5.3.r29.g04dce5e
+	pkgrel = 1
+	url = https://github.com/hirschmann/nbfc
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = nuget
+	depends = mono
+	provides = nbfc
+	provides = ec-probe
+	conflicts = nbfc-beta
+	conflicts = nbfc
+	source = nbfc-git::git+https://github.com/hirschmann/nbfc.git
+	md5sums = SKIP
+
+pkgname = nbfc-git
+
