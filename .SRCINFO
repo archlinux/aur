@@ -1,0 +1,13 @@
+pkgbase = input-fonts-private
+	pkgdesc = a flexible system of fonts designed specifically for code by David Jonathan Ross.
+	pkgver = 1.2
+	pkgrel = 3
+	url = http://input.fontbureau.com/
+	arch = any
+	license = custom
+	noextract = Input-Font.zip
+	source = Input-Font.zip::http://input.fontbureau.com/build/?fontSelection=whole&a=0&g=0&i=0&l=0&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do&email=
+	sha256sums = 18c69fbe80ed468dbd8445074bd696eb316f0b9102db3bc59a4f89b0d6f6d31d
+
+pkgname = input-fonts-private
+
