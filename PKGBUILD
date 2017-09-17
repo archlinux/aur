@@ -3,7 +3,7 @@
 pkgname=frostwire
 pkgver=6.5.6
 pkgrel=1
-pkgdesc="Undelete and data recovery software"
+pkgdesc="FrostWire is a free and easy Downloader, BitTorrent Client and Media Player"
 arch=('x86_64')
 url="http://www.frostwire.com"
 license=('custom')
