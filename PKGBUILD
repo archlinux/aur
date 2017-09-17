@@ -14,15 +14,13 @@ depends_x86_64=(lib32-gtk2 lib32-libxtst)
 
 options=('!strip')
 
-source=(http://www.silabs.com/Support%20Documents/Software/SimplicityStudio.tgz
-        simplicitystudio3)
-sha256sums=('06d675b4d498cc939aaffcdae5abbb9ae7dc3bb1238117bc467b2db8f21de51b'
-            'ce8ba5d1b75f19da2f5f27b18c811fa7348cfda12684575175770c1aeb5507c6')
+source=(https://www.silabs.com/Support%20Documents/Software/SimplicityStudio.tgz)
+sha256sums=('06d675b4d498cc939aaffcdae5abbb9ae7dc3bb1238117bc467b2db8f21de51b')
 
-prepare() {
-    # create desktop file and run script
-    gendesk -f -n --pkgname ${pkgname} --pkgdesc "${pkgdesc}" --exec="${pkgname}" --name='Simplicity Studio 3'
-}
+#prepare() {
+#    # create desktop file and run script
+#    gendesk -f -n --pkgname ${pkgname} --pkgdesc "${pkgdesc}" --exec="${pkgname}" --name='Simplicity Studio 3'
+#}
 
 package() {
     install -dm755 "$pkgdir/opt/"
