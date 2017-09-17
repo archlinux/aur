@@ -1,7 +1,7 @@
 pkgbase = cegui
 	pkgdesc = A free library providing windowing and widgets for graphics APIs/engines
 	pkgver = 0.8.7
-	pkgrel = 8
+	pkgrel = 9
 	url = http://cegui.org.uk
 	arch = i686
 	arch = x86_64

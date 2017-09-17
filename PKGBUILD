@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 226145 2017-04-28 06:17:53Z svenstaro $
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Oskar Sveinsen
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 # Contributor: William Rea <sillywilly@gmail.com>
 # Contributor: Bjorn Lindeijer <bjorn@lindeijer.nl>
@@ -7,7 +8,7 @@
 pkgname=cegui
 pkgver=0.8.7
 _tag=0-8-7
-pkgrel=8
+pkgrel=9
 pkgdesc="A free library providing windowing and widgets for graphics APIs/engines"
 arch=('i686' 'x86_64')
 url="http://cegui.org.uk"
@@ -26,6 +27,9 @@ build() {
   cd "$srcdir/cegui"
 
   sed -i "s/lib64/lib/g" CMakeLists.txt
+
+  # workaround from http://www.cegui.org.uk/forum/viewtopic.php?f=10&t=7195#p34902
+  sed -i '/#include "tolua++.h"/{h;d};/#include "lauxlib.h"/G' "cegui/src/ScriptModules/Lua/support/tolua++bin/tolua.c"
 
   [[ -d build ]] && rm -r build
   mkdir build && cd build
