@@ -2,7 +2,7 @@
 
 pkgname=eigenpy
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Bindings between numpy and eigen using boost::python for eigen 3.2"
 arch=('i686' 'x86_64')
 url="https://github.com/stack-of-tasks/eigenpy"
@@ -11,7 +11,7 @@ depends=('boost-libs')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen32' 'boost' 'python2-numpy')
 source=("https://github.com/stack-of-tasks/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('4b946e2b667814e3ee6d18b913c1266f')
+md5sums=('70a18a2e3b35bd41a5d06f866c516e32')
 
 build() {
     cd "$pkgname-$pkgver"
