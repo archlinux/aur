@@ -3,18 +3,18 @@
 _pkgname=gepetto-viewer
 _pkgver=1.3.0
 pkgname=${_pkgname}-git
-pkgver=1.3.0.r192.ae098e3
-pkgrel=1
+pkgver=1.3.0.r226.361c43b
+pkgrel=2
 pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
-url="https://github.com/nim65s/$_pkgname"
+url="https://github.com/humanoid-path-planner/$pkgname"
 license=('BSD')
 depends=('boost' 'urdfdom' 'openscenegraph-qt4')
 makedepends=('cmake' 'git')
 optdepends=('doxygen')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=("$_pkgname"::"git://github.com/nim65s/$_pkgname.git")
+source=("$_pkgname"::"git://github.com/humanoid-path-planner/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
