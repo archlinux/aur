@@ -4,7 +4,7 @@
 
 pkgname=grafana-bin
 _pkgname=grafana
-pkgver="4.3.2"
+pkgver="4.5.1"
 pkgrel=1
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb - binary version"
 url="http://grafana.org"
@@ -16,7 +16,7 @@ install=${_pkgname}.install
 backup=("etc/${_pkgname}/${_pkgname}.ini")
 source=("https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-${pkgver}.linux-x64.tar.gz"
         "grafana.service")
-sha256sums=('0c835229d1dcba43cbb79014ef0782edbd7b58d156a6aa2886a07bb52232666e'
+sha256sums=('62fe532e5c2f7a56c713d53ee91c710e3213bae642447fd4624d6df806702651'
             '44ceb7aad648c8e46a65026109fc0327bc6e01ba7060d97d9e83a3e8ad65379c')
 
 
