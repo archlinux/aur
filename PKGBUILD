@@ -53,7 +53,7 @@ pkgver() {
 }
 
 package() {
-  OPT_PATH="opt/${pkgname}"
+  OPT_PATH="opt/${_pkgname_en_us}"
 
   # Install the package files
   install -d "${pkgdir}"/{usr/bin,opt}
