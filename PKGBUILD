@@ -4,7 +4,7 @@
 
 pkgname=('gcc49')
 _pkgver=4.9
-_pkgver_minor=4
+_pkgver_minor=5
 pkgver=${_pkgver}.${_pkgver_minor}
 _islver=0.12.2
 _cloogver=0.18.1
