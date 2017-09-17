@@ -3,7 +3,7 @@
 _pkgname=gepetto-viewer
 _pkgver=1.3.0
 pkgname=${_pkgname}-git
-pkgver=1.3.0.r192.ae098e3
+pkgver=1.3.0.r221.90e1542
 pkgrel=1
 pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
@@ -25,7 +25,6 @@ pkgver() {
 prepare() {
     cd "$_pkgname"
     git submodule update --init
-    git checkout devel
 }
 
 build() {
