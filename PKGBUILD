@@ -1,6 +1,6 @@
 # Maintainer: Michał Sidor <packages at meekchopp dot es>
 pkgname=pspg-git
-pkgver=r77.ed052ca
+pkgver=0.1.r2.g57ba5d8
 pkgrel=1
 pkgdesc="pager for Postgres"
 arch=('i686' 'x86_64')
@@ -13,7 +13,12 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/pspg"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/pspg"
+  ./configure --prefix=/usr
 }
 
 build() {
@@ -23,8 +28,7 @@ build() {
 
 package() {
   cd "$srcdir/pspg"
-  mkdir -p $pkgdir/usr/bin
-  install -m 755 pspg $pkgdir/usr/bin/pspg
+  make install DESTDIR=$pkgdir
 }
 
 # vim:set ts=2 sw=2 et:
