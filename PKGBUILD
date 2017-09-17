@@ -1,5 +1,5 @@
 pkgname=yubikey-piv-manager
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Tool for configuring your PIV-enabled YubiKey."
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ url="https://developers.yubico.com/yubikey-piv-manager/"
 license=('GPL')
 depends=('python2' 'yubico-piv-tool>=1.1.0' 'python2-pyside' 'python2-crypto')
 source=("https://developers.yubico.com/${pkgname}/Releases/${pkgname}-${pkgver}.tar.gz")
-md5sums=('114db2b9f27f4f085c75620af24a3c8c')
+md5sums=('5d2fa51bac618049fc25ef3d8aded6ec')
 
 package() {
     cd "${pkgname}-${pkgver}"
