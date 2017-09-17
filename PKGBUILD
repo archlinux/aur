@@ -1,12 +1,12 @@
 pkgname=linvst
-pkgver=1.5.1
+pkgver=1.6
 pkgrel=1
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst"
-depends=('wine' 'steinberg-vst36')
-source=("https://github.com/osxmidi/LinVst/releases/download/1.5/LinVst-${pkgver}.zip")
-md5sums=('bebb40bc1cced47cd6845cdf0b693bdd')
+depends=('wine')
+source=("https://github.com/osxmidi/LinVst/releases/download/1.6/LinVst-${pkgver}.zip")
+md5sums=('56d0da3a84878f15670b1fd7a98a558f')
 
 package() {
   for file in "${srcdir}/LinVst-${pkgver}/"*.{exe,so}; do
