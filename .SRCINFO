@@ -1,0 +1,17 @@
+pkgbase = armv7l-linux-gnueabihf-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the ARM64 target
+	pkgver = 2.29
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.bz2
+	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.bz2.sig
+	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
+	sha1sums = 4376bce1e58d591c6a5dd44fc8713f154208d735
+	sha1sums = SKIP
+
+pkgname = armv7l-linux-gnueabihf-binutils
+
