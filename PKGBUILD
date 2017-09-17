@@ -4,8 +4,8 @@ _pkgname=pinocchio
 _pkgver=1.2.4
 pkgname=${_pkgname}-git
 pkgver=$_pkgver.r1448.b927976
-pkgrel=1
-pkgdesc="Dynamic computations using Spatial Algebra. devel branch"
+pkgrel=2
+pkgdesc="Dynamic computations using Spatial Algebra."
 arch=('i686' 'x86_64')
 url="https://stack-of-tasks.github.io/pinocchio/"
 license=('LGPL3')
@@ -14,7 +14,7 @@ optdepends=('metapod-git' 'lua51')
 makedepends=('cmake' 'git')
 conflicts=('pinocchio')
 provides=('pinocchio')
-source=("$_pkgname"::"git://github.com/stack-of-tasks/$_pkgname.git")
+source=("$_pkgname"::"git://github.com/nim65s/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -24,14 +24,12 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    git checkout devel
     git submodule update --init
 }
 
 build() {
     cd "$_pkgname"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_CXX_FLAGS=-std=c++03 .
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_UNIT_TESTS=OFF .
     make
 }
 
