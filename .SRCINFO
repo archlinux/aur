@@ -9,6 +9,7 @@ pkgbase = realmd
 	checkdepends = python2
 	makedepends = docbook-xsl
 	makedepends = intltool
+	makedepends = python
 	makedepends = xmlto
 	depends = adcli
 	depends = dbus
