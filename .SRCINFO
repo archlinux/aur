@@ -22,10 +22,10 @@ pkgbase = google-chrome
 	options = !emptydirs
 	options = !strip
 	source = google-chrome-stable_61.0.3163.91_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	source = https://www.google.com/chrome/browser/privacy/eula_text.html
+	source = eula_text.html
 	source = google-chrome-stable.sh
 	md5sums = eb7d733c4433a67785c1193166cb829f
-	md5sums = SKIP
+	md5sums = d50d8f0a6940791eabc41c4f64e6a3cf
 	md5sums = 99fa93d5e7fb5d622cef0f9621f3ffa3
 
 pkgname = google-chrome
