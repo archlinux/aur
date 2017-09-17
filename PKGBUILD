@@ -3,9 +3,9 @@
 # adopted from mingw-w64-pdcurses package:
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-pdcurses-win32a
-pkgver=4.0
+pkgver=4.0.2
 pkgrel=1
-_commit=f3170bb6090a3b33603449246228d92261a2f87d
+_commit=10ee49e4fb96a808aed0882374dcc22b668db722
 pkgdesc="Curses library on the Win32 API for MinGW-w64"
 arch=(any)
 depends=(mingw-w64-crt)
