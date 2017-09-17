@@ -20,5 +20,4 @@ build() {
 package() {
     cd yawn
     cargo install --root="$pkgdir"
-    rm "$pkgdir"
 }
