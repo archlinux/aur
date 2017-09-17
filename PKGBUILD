@@ -2,7 +2,7 @@
 
 pkgname=texlive-garamondx
 pkgver=1.20
-pkgrel=2
+pkgrel=3
 pkgdesc="URW Garamond No8 Adobe Type1 fonts from CTAN (for texlive)"
 arch=('any')
 license=('CUSTOM:alladin')
@@ -15,10 +15,11 @@ noextract=("garamondx.tds-$pkgver.zip")
 
 package() {
   _texmf_root=usr/share/texmf-dist
+  _pkgsver=3${pkgver//./}0
   install -d "$pkgdir"/var/lib/texmf/arch/installedpkgs
   install -m644 "$srcdir"/garamondx.maps "$pkgdir"/var/lib/texmf/arch/installedpkgs
-  echo "garamondx $pkgver-$pkgrel" > \
-       "$pkgdir"/var/lib/texmf/arch/installedpkgs/${pkgname}_${pkgver}-${pkgrel}.pkgs
+  echo "garamondx ${_pkgsver}" > \
+       "$pkgdir"/var/lib/texmf/arch/installedpkgs/${pkgname}_${_pkgsver}.pkgs
   install -d "$pkgdir"/$_texmf_root/
   cd "$pkgdir"/$_texmf_root/
   bsdtar xf "$srcdir"/garamondx.tds-$pkgver.zip
