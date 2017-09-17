@@ -12,11 +12,9 @@ license=("custom" "GPL" "LGPL")
 makedepends=("mingw-w64-configure")
 depends=("mingw-w64-crt")
 options=(staticlibs !strip !buildflags)
-source=("$url/xz-${pkgver}.tar.gz"{,.sig})
-sha256sums=('71928b357d0a09a12a4b4c5fafca8c31c19b0e7d3b8ebb19622e96f26dbf28cb'
-            'SKIP')
+source=("$url/xz-${pkgver}.tar.gz")
+sha256sums=('71928b357d0a09a12a4b4c5fafca8c31c19b0e7d3b8ebb19622e96f26dbf28cb')
 
-validpgpkeys=(3690C240CE51B4670D30AD1C38EE757D69184620)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
