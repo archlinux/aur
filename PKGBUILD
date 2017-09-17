@@ -15,6 +15,7 @@ pkgver=57.0a1.20170916.220246
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
+provides('firefox-nightly')
 conflicts=('firefox-nightly')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
 optdepends=('pulseaudio: audio support'
