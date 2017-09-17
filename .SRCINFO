@@ -1,0 +1,16 @@
+pkgbase = trashd-git
+	pkgdesc = Linux bus user service that provides an implementation of freedesktop trash spec
+	pkgver = r58.a82039a
+	pkgrel = 1
+	url = https://github.com/FedeDP/Trashd
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = systemd
+	optdepends = udisks2: to support external filesystems trash
+	source = git://github.com/FedeDP/Trashd.git
+	sha256sums = SKIP
+
+pkgname = trashd-git
+
