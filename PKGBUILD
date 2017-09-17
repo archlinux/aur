@@ -7,6 +7,7 @@ pkgdesc="A command-line rss feed downloader thing"
 url="https://github.com/expenses/yawn"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=('rust' 'cargo' 'git')
+depends=('openssl')
 license=('unknown')
 source=("git+https://github.com/expenses/yawn.git")
 md5sums=('SKIP')
@@ -18,6 +19,6 @@ build() {
 }
 
 package() {
-    cd yawn
-    cargo install --root="$pkgdir"
+    mkdir -p "$pkgdir/usr/bin"
+    install "$srcdir"/yawn/target/release/yawn "$pkgdir/usr/bin/yawn"
 }
