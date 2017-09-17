@@ -2,7 +2,7 @@
 
 _pkgname=spice-up
 pkgname=$_pkgname-git
-pkgver=0.4.0+1+g46a5f52
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Create simple and beautiful presentations on the Linux desktop"
 url="https://github.com/Philip-Scott/Spice-up"
