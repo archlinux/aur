@@ -1,14 +1,15 @@
-# Maintainer: Pablo Orduna <pabloorduna98@gmail.com>
+# Maintainer: Jean Lucas <jean@4ray.co>
+# Contributor: Pablo Orduna <pabloorduna98@gmail.com>
 # Contributor: Philippe Miron <tuxication@gmail.com>
 
 pkgname=cryptocat
 pkgver=3.2.08
-pkgrel=1
+pkgrel=2
 pkgdesc="Free software with a simple mission: everyone should be able to chat with their friends in privacy"
 arch=('x86_64')
 url="https://crypto.cat"
 license=('GPL3')
-depends=('glib2' 'fuse2')
+depends=('glib2' 'fuse2' 'gconf')
 makedepends=('gendesk' 'gnupg')
 options=('!strip')
 source=("https://download.crypto.cat/client/Cryptocat-linux-x64.zip")
