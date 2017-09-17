@@ -36,7 +36,7 @@ validpgpkeys=('487EACC08557AD082088DABA1EB2638FF56C0C53'
               '86CFFCA918CF3AF47147588051E8B148A9999C34')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname%-nosystemd}-$pkgver"
   patch -p1 -i ../0001-make-ldd-parsing-compatible-with-upstream-glibc-chan.patch
   cd ".."
 
