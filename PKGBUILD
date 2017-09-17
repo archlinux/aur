@@ -1,6 +1,6 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
-# Contributer: Jason Plum <jplum@archlinuxarm.org>
-# Contributer: Kevin Mihelich <kevin@archlinuxarm.org>
+# Contributor: Jason Plum <jplum@archlinuxarm.org>
+# Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
 
 _subarchs=(armv5 armv6h armv7h armv8)
 pkgbase='distccd-alarm'
