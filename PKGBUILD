@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=vendorlint-git
-pkgver=r11.26c5245
+pkgver=r13.08816a4
 _pkgname=vendorlint
 pkgrel=1
 pkgdesc="Tool to ensure all dependents are properly vendored"
