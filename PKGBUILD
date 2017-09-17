@@ -6,7 +6,7 @@
 _pkgbase=nautilus
 pkgbase=nautilus-typeahead
 pkgname=(nautilus-typeahead libnautilus-extension-typeahead)
-pkgver=3.24.1
+pkgver=3.26.0
 pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://wiki.gnome.org/Apps/Nautilus"
@@ -15,20 +15,18 @@ license=(GPL)
 depends=(libexif gnome-desktop exempi gvfs dconf libtracker-sparql nautilus-sendto gnome-autoar)
 makedepends=(intltool gobject-introspection python packagekit python2 gnome-common git gtk-doc meson ninja)
 options=(!emptydirs)
-_commit=1bab05578caf4c6eab15d385b95358efd3354c8b  # tags/3.24.1
-source=("git://git.gnome.org/nautilus#commit=$_commit"
-        "git://git.gnome.org/libgd"
+_commit=69942c754ea4e45ab0d32bcbc9e29f1c08da8990  # tags/3.26.0
+source=("git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=$_commit"
         nautilus-restore-typeahead.patch)
 sha256sums=('SKIP'
-            'SKIP'
-            '0610a7e3eea32028b3660309be761489b45dcc49da79a4a7d2f4ab275ee5bfc3')
+            '17213656a016da2aaed14ca5c3cc9df30ad76ea59847b50dce4feb77619af274')
 
 prepare() {
   mkdir -p build libne/usr/{lib,share}
+  ls
   cd $_pkgbase
 
   git submodule init
-  git config --local submodule.libgd.url "$srcdir/libgd"
   git submodule update
 
   patch -p1 -i ../nautilus-restore-typeahead.patch

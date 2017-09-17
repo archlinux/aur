@@ -1,8 +1,8 @@
 diff --git a/data/org.gnome.nautilus.gschema.xml b/data/org.gnome.nautilus.gschema.xml
-index e162ebb42..b64e526a0 100644
+index 023035872..767c4748a 100644
 --- a/data/org.gnome.nautilus.gschema.xml
 +++ b/data/org.gnome.nautilus.gschema.xml
-@@ -207,6 +207,11 @@
+@@ -202,6 +202,11 @@
        <summary>Bulk rename utility</summary>
        <description>If set, Nautilus will append URIs of selected files and treat the result as a command line for bulk renaming. Bulk rename applications can register themselves in this key by setting the key to a space-separated string of their executable name and any command line options. If the executable name is not set to a full path, it will be searched for in the search path.</description>
      </key>
@@ -15,32 +15,32 @@ index e162ebb42..b64e526a0 100644
        <default>true</default>
        <summary>Whether to open the hovered folder after a timeout when drag and drop operation</summary>
 diff --git a/src/nautilus-global-preferences.h b/src/nautilus-global-preferences.h
-index 7e52f6c77..b5b761da1 100644
+index ce0b32c9d..a624e7551 100644
 --- a/src/nautilus-global-preferences.h
 +++ b/src/nautilus-global-preferences.h
-@@ -164,6 +164,9 @@ typedef enum
+@@ -161,6 +161,9 @@ typedef enum
  /* Recent files */
  #define NAUTILUS_PREFERENCES_RECENT_FILES_ENABLED          "remember-recent-files"
-
+ 
 +/* Interactive search (typeahead) */
 +#define NAUTILUS_PREFERENCES_ENABLE_INTERACTIVE_SEARCH     "enable-interactive-search"
 +
  /* Move to trash shorcut changed dialog */
  #define NAUTILUS_PREFERENCES_SHOW_MOVE_TO_TRASH_SHORTCUT_CHANGED_DIALOG "show-move-to-trash-shortcut-changed-dialog"
-
+ 
 diff --git a/src/nautilus-list-view.c b/src/nautilus-list-view.c
-index 0d2f54fb5..9f9a1692f 100644
+index 759e3b158..fbfbd6fee 100644
 --- a/src/nautilus-list-view.c
 +++ b/src/nautilus-list-view.c
-@@ -2706,6 +2706,7 @@ nautilus_list_view_set_selection (NautilusFilesView *view,
+@@ -2762,6 +2762,7 @@ nautilus_list_view_set_selection (NautilusFilesView *view,
      GList *node;
      GList *iters, *l;
      NautilusFile *file;
 +    GtkTreePath *path = NULL;
-
+ 
      list_view = NAUTILUS_LIST_VIEW (view);
      tree_selection = gtk_tree_view_get_selection (list_view->details->tree_view);
-@@ -2722,10 +2723,22 @@ nautilus_list_view_set_selection (NautilusFilesView *view,
+@@ -2778,10 +2779,22 @@ nautilus_list_view_set_selection (NautilusFilesView *view,
          {
              gtk_tree_selection_select_iter (tree_selection,
                                              (GtkTreeIter *) l->data);
@@ -50,7 +50,7 @@ index 0d2f54fb5..9f9a1692f 100644
 +
          g_list_free_full (iters, g_free);
      }
-
+ 
 +    if (path) {
 +        gtk_tree_view_set_cursor_on_cell (list_view->details->tree_view,
 +                                          path,
@@ -63,7 +63,7 @@ index 0d2f54fb5..9f9a1692f 100644
      g_signal_handlers_unblock_by_func (tree_selection, list_selection_changed_callback, view);
      nautilus_files_view_notify_selection_changed (view);
  }
-@@ -3600,3 +3613,9 @@ nautilus_list_view_new (NautilusWindowSlot *slot)
+@@ -3672,3 +3685,9 @@ nautilus_list_view_new (NautilusWindowSlot *slot)
                           "window-slot", slot,
                           NULL);
  }
@@ -74,44 +74,21 @@ index 0d2f54fb5..9f9a1692f 100644
 +  return list_view->details->tree_view;
 +}
 diff --git a/src/nautilus-list-view.h b/src/nautilus-list-view.h
-index f77543100..bbcb565d7 100644
+index 04989fa95..fc15f0986 100644
 --- a/src/nautilus-list-view.h
 +++ b/src/nautilus-list-view.h
-@@ -52,5 +52,6 @@ typedef struct {
-
- GType nautilus_list_view_get_type (void);
+@@ -39,5 +39,6 @@ struct _NautilusListView
+ };
+ 
  NautilusFilesView * nautilus_list_view_new (NautilusWindowSlot *slot);
 +GtkTreeView * nautilus_list_view_get_tree_view (NautilusListView *list_view);
-
+ 
  #endif /* NAUTILUS_LIST_VIEW_H */
-diff --git a/src/nautilus-preferences-window.c b/src/nautilus-preferences-window.c
-index 8c4f981c0..b545fc3ec 100644
---- a/src/nautilus-preferences-window.c
-+++ b/src/nautilus-preferences-window.c
-@@ -59,6 +59,8 @@
-     "trash_confirm_checkbutton"
- #define NAUTILUS_PREFERENCES_DIALOG_AUTOMATIC_DECOMPRESSION_WIDGET             \
-     "automatic_decompression_checkbutton"
-+#define NAUTILUS_PREFERENCES_DIALOG_ENABLE_INTERACTIVE_SEARCH_WIDGET           \
-+    "interactive_search_checkbutton"
-
- /* int enums */
- #define NAUTILUS_PREFERENCES_DIALOG_THUMBNAIL_LIMIT_WIDGET                     \
-@@ -492,6 +494,9 @@ static void nautilus_preferences_window_setup(GtkBuilder *builder,
-     bind_builder_bool (builder, nautilus_preferences,
-                        NAUTILUS_PREFERENCES_DIALOG_AUTOMATIC_DECOMPRESSION_WIDGET,
-                        NAUTILUS_PREFERENCES_AUTOMATIC_DECOMPRESSION);
-+    bind_builder_bool (builder, nautilus_preferences,
-+                       NAUTILUS_PREFERENCES_DIALOG_ENABLE_INTERACTIVE_SEARCH_WIDGET,
-+                       NAUTILUS_PREFERENCES_ENABLE_INTERACTIVE_SEARCH);
-     bind_builder_bool (builder, nautilus_list_view_preferences,
-                        NAUTILUS_PREFERENCES_DIALOG_LIST_VIEW_USE_TREE_WIDGET,
-                        NAUTILUS_PREFERENCES_LIST_VIEW_USE_TREE);
 diff --git a/src/nautilus-window-slot.c b/src/nautilus-window-slot.c
-index c5c94e103..67a6fd0a9 100644
+index d364115a9..054edba8a 100644
 --- a/src/nautilus-window-slot.c
 +++ b/src/nautilus-window-slot.c
-@@ -122,6 +122,17 @@ typedef struct
+@@ -124,6 +124,17 @@ typedef struct
      GError *mount_error;
      gboolean tried_mount;
      gint view_mode_before_search;
@@ -127,12 +104,12 @@ index c5c94e103..67a6fd0a9 100644
 +    guint         isearch_timeout_id;
 +    gulong        isearch_configure_event_id;
  } NautilusWindowSlotPrivate;
-
+ 
  G_DEFINE_TYPE_WITH_PRIVATE (NautilusWindowSlot, nautilus_window_slot, GTK_TYPE_BOX);
-@@ -153,6 +164,98 @@ static void trash_state_changed_cb (NautilusTrashMonitor *monitor,
-                                     gboolean              is_empty,
-                                     gpointer              user_data);
-
+@@ -208,6 +219,98 @@ nautilus_window_slot_get_restore_tab_data (NautilusWindowSlot *self)
+     return data;
+ }
+ 
 +
 +/* Interactive search */
 +static void            isearch_ensure                      (NautilusWindowSlot *slot);
@@ -228,10 +205,10 @@ index c5c94e103..67a6fd0a9 100644
  gboolean
  nautilus_window_slot_handles_location (NautilusWindowSlot *self,
                                         GFile              *location)
-@@ -569,21 +672,86 @@ nautilus_window_slot_handle_event (NautilusWindowSlot *self,
-     action = g_action_map_lookup_action (G_ACTION_MAP (priv->slot_action_group),
-                                          "search-visible");
-
+@@ -637,21 +740,86 @@ nautilus_window_slot_handle_event (NautilusWindowSlot *self,
+         }
+     }
+ 
 -    /* If the action is not enabled, don't try to handle search */
 -    if (g_action_get_enabled (action))
 -    {
@@ -288,7 +265,7 @@ index c5c94e103..67a6fd0a9 100644
 +                gtk_widget_grab_focus (GTK_WIDGET (self));
 +                return TRUE;
 +            }
-
+ 
 -    if (retval)
 -    {
 -        nautilus_window_slot_set_search_visible (self, TRUE);
@@ -308,10 +285,10 @@ index c5c94e103..67a6fd0a9 100644
 +            nautilus_window_slot_set_search_visible (self, TRUE);
 +        }
      }
-
+ 
      return retval;
  }
-
+ 
 +/* static gboolean
 +configure_event_cb (GtkWidget          *widget,
 +                    GdkEventConfigure  *event,
@@ -324,16 +301,16 @@ index c5c94e103..67a6fd0a9 100644
  static void
  real_active (NautilusWindowSlot *self)
  {
-@@ -612,10 +780,19 @@ static void
+@@ -680,10 +848,19 @@ static void
  real_inactive (NautilusWindowSlot *self)
  {
      NautilusWindow *window;
 +    NautilusWindowSlotPrivate *priv;
-
+ 
 +    priv = nautilus_window_slot_get_instance_private (self);
      window = nautilus_window_slot_get_window (self);
      g_assert (self == nautilus_window_get_active_slot (window));
-
+ 
 +    isearch_hide (self, NULL);
 +    if (priv->isearch_configure_event_id != 0) {
 +        g_signal_handler_disconnect (GTK_WIDGET (priv->window),
@@ -343,11 +320,11 @@ index c5c94e103..67a6fd0a9 100644
 +
      gtk_widget_insert_action_group (GTK_WIDGET (window), "slot", NULL);
  }
-
-@@ -908,9 +1085,30 @@ nautilus_window_slot_init (NautilusWindowSlot *self)
+ 
+@@ -976,9 +1153,30 @@ nautilus_window_slot_init (NautilusWindowSlot *self)
      nautilus_application_set_accelerator (app, "slot.files-view-mode(uint32 0)", "<control>2");
      nautilus_application_set_accelerator (app, "slot.search-visible", "<control>f");
-
+ 
 +    priv->isearch_enable = g_settings_get_boolean (nautilus_preferences,
 +                                                   NAUTILUS_PREFERENCES_ENABLE_INTERACTIVE_SEARCH);
 +
@@ -358,7 +335,7 @@ index c5c94e103..67a6fd0a9 100644
 +
      priv->view_mode_before_search = NAUTILUS_VIEW_INVALID_ID;
  }
-
+ 
 +static void
 +nautilus_window_slot_finalize (GObject *object)
 +{
@@ -374,25 +351,25 @@ index c5c94e103..67a6fd0a9 100644
 +
  #define DEBUG_FLAG NAUTILUS_DEBUG_WINDOW
  #include "nautilus-debug.h"
-
-@@ -2687,6 +2885,7 @@ nautilus_window_slot_dispose (GObject *object)
-
+ 
+@@ -2782,6 +2980,7 @@ nautilus_window_slot_dispose (GObject *object)
+ 
      self = NAUTILUS_WINDOW_SLOT (object);
      priv = nautilus_window_slot_get_instance_private (self);
 +    isearch_dispose (self);
-
+ 
      nautilus_window_slot_clear_forward_list (self);
      nautilus_window_slot_clear_back_list (self);
-@@ -2777,6 +2976,7 @@ nautilus_window_slot_class_init (NautilusWindowSlotClass *klass)
+@@ -2873,6 +3072,7 @@ nautilus_window_slot_class_init (NautilusWindowSlotClass *klass)
      oclass->constructed = nautilus_window_slot_constructed;
      oclass->set_property = nautilus_window_slot_set_property;
      oclass->get_property = nautilus_window_slot_get_property;
 +    oclass->finalize = nautilus_window_slot_finalize;
-
+ 
      widget_class->grab_focus = nautilus_window_slot_grab_focus;
-
-@@ -3198,3 +3398,792 @@ nautilus_window_slot_get_loading (NautilusWindowSlot *self)
-
+ 
+@@ -3295,3 +3495,792 @@ nautilus_window_slot_get_loading (NautilusWindowSlot *self)
+ 
      return priv->loading;
  }
 +
@@ -1184,64 +1161,3 @@ index c5c94e103..67a6fd0a9 100644
 +    priv->isearch_entry = NULL;
 +  }
 +}
-diff --git a/src/resources/ui/nautilus-preferences-window.ui b/src/resources/ui/nautilus-preferences-window.ui
-index 96a2be860..b1cb7c3d0 100644
---- a/src/resources/ui/nautilus-preferences-window.ui
-+++ b/src/resources/ui/nautilus-preferences-window.ui
-@@ -802,6 +802,56 @@ More information will appear when zooming closer.</property>
-                 <property name="position">4</property>
-               </packing>
-             </child>
-+
-+          <!-- Typeahead checkbutton BEGIN -->
-+            <child>
-+              <object class="GtkBox" id="vbox100">
-+                <property name="visible">True</property>
-+                <property name="can_focus">False</property>
-+                <property name="orientation">vertical</property>
-+                <property name="spacing">6</property>
-+                <child>
-+                  <object class="GtkLabel" id="label117">
-+                    <property name="visible">True</property>
-+                    <property name="can_focus">False</property>
-+                    <property name="label" translatable="yes">Interactive search (typeahead)</property>
-+                    <property name="xalign">0</property>
-+                    <attributes>
-+                      <attribute name="weight" value="bold"/>
-+                    </attributes>
-+                  </object>
-+                  <packing>
-+                    <property name="expand">False</property>
-+                    <property name="fill">False</property>
-+                    <property name="position">0</property>
-+                  </packing>
-+                </child>
-+                <child>
-+                  <object class="GtkCheckButton" id="interactive_search_checkbutton">
-+                    <property name="label" translatable="yes">Enable interactive search</property>
-+                    <property name="use_action_appearance">False</property>
-+                    <property name="visible">True</property>
-+                    <property name="can_focus">True</property>
-+                    <property name="receives_default">False</property>
-+                    <property name="use_underline">True</property>
-+                    <property name="xalign">0</property>
-+                    <property name="draw_indicator">True</property>
-+                  </object>
-+                  <packing>
-+                    <property name="expand">False</property>
-+                    <property name="fill">False</property>
-+                    <property name="position">2</property>
-+                  </packing>
-+                </child>
-+              </object>
-+              <packing>
-+                <property name="expand">False</property>
-+                <property name="fill">True</property>
-+                <property name="position">5</property>
-+              </packing>
-+            </child>
-+          <!-- Typeahead checkbutton END -->
-+
-           </object>
-           <packing>
-             <property name="position">1</property>
