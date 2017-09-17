@@ -1,0 +1,20 @@
+pkgbase = pg_partman-git
+	pkgdesc = postgresql partition manager background worker
+	pkgver = 61026e7
+	pkgrel = 1
+	url = https://github.com/keithf4/pg_partman
+	install = pg_partman-git.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	depends = postgresql
+	options = !emptydirs
+	options = !libtool
+	source = git://github.com/keithf4/pg_partman.git
+	md5sums = SKIP
+
+pkgname = pg_partman-git
+

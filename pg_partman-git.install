@@ -1,0 +1,3 @@
+post_install(){
+	echo "https://github.com/keithf4/pg_partman"
+}
