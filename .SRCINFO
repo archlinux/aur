@@ -1,6 +1,6 @@
 pkgbase = cuttlefish-tool
 	pkgdesc = Texture converter tool and library
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
