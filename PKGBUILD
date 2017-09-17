@@ -13,7 +13,7 @@ source=("https://downloads.sourceforge.net/mmario/MegaMario_v${pkgver}_full.zip"
         "megamario-1.7-fix-compile-error.patch"
         "megamario-1.7-fix-mp3-path.patch"
         "megamario-1.7-fix-logfile-path.patch"
-        "megamario-1.7-makefile.patch")
+        "megamario-1.7-makefile-compiler-flags.patch")
 noextract=("MegaMario_v${pkgver}_full.zip")
 sha256sums=('243ebf03cb1e5c5e7cead48d9a988ffb9a1c94f9427f71ea559ad047486c9e72'
             '2665b31e5014868a4df71f4e0565dac4c50b703f9d539be8ee1d24688fdde070'
@@ -29,7 +29,7 @@ prepare() {
   patch -p0 -i ../megamario-1.7-fix-compile-error.patch
   patch -p0 -i ../megamario-1.7-fix-mp3-path.patch
   patch -p0 -i ../megamario-1.7-fix-logfile-path.patch
-  patch -p0 -i ../megamario-1.7-makefile.patch
+  patch -p0 -i ../megamario-1.7-makefile-compiler-flags.patch
 }
 
 build() {
