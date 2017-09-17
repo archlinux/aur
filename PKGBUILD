@@ -4,7 +4,7 @@
 _pkgname=Neobarok
 pkgname=${_pkgname,,}
 pkgver=1.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="3D modeling software aimed at artists and users of all levels"
 arch=('x86_64')
 url="http://$pkgname.com"
@@ -12,6 +12,7 @@ license=('custom')
 depends=('qt5-base'
          'sfml'
          'hicolor-icon-theme')
+makedepends=('chrpath')
 source=("http://$pkgname.com/$_pkgname-$pkgver-linux.zip"
         "$pkgname.desktop"
         "$pkgname.svg"
@@ -26,6 +27,7 @@ package() {
   install -Dm644 $pkgname.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg
   install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  chrpath --delete ${pkgdir}/usr/share/${pkgname}/${pkgname}
 
   install -dm755 $pkgdir/usr/bin
   ln -s /usr/share/${pkgname}/${pkgname} ${pkgdir}/usr/bin/$pkgname
