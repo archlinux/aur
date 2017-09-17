@@ -1,17 +1,21 @@
 pkgbase = polo-donation-plugins
 	pkgdesc = Complimentary package for users who have donated to Polo or contributed in other ways such as translations, code changes, etc.
-	pkgver = 17.7.1
+	pkgver = 17.9
 	pkgrel = 1
 	url = http://www.teejeetech.in/
 	arch = i686
 	arch = x86_64
-	depends = polo
+	depends = polo>=17.9
+	depends = youtube-dl
+	depends = pngcrush
+	depends = ghostscript
+	depends = pdftk-bin
 	provides = polo-donations-plugins
 	conflicts = polo-donations-plugins
-	source_i686 = local://polo-donation-plugins-v17.7.1-beta.9-i386.deb
-	md5sums_i686 = 5b3e980d89c36d40d44c2e78d4cf565f
-	source_x86_64 = local://polo-donation-plugins-v17.7.1-beta.9-amd64.deb
-	md5sums_x86_64 = 8f46d6ad9dc53d8fd65345f42d836fc9
+	source_i686 = local://polo-donation-plugins-v17.9-beta.10-i386.deb
+	md5sums_i686 = 661f3cdd54908c06f59d1e6adb537a42
+	source_x86_64 = local://polo-donation-plugins-v17.9-beta.10-amd64.deb
+	md5sums_x86_64 = e3b069e25d1e693a34db88b66ccffc8c
 
 pkgname = polo-donation-plugins
 
