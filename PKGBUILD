@@ -23,10 +23,10 @@ options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=unstable
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
-        "$url/browser/privacy/eula_text.html"
+        'eula_text.html'
         "google-chrome-$_channel.sh")
 md5sums=('662c5bb91eb7e1267f5806456f3969b3'
-         'SKIP'
+         'd50d8f0a6940791eabc41c4f64e6a3cf'
          '11b55a3fec7279db32b63e3a0b97dc01')
 
 ## Previous build (also see: /var/cache/pacman/pkg/google-chrome-dev-*):
