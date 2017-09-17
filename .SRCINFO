@@ -15,6 +15,7 @@ pkgbase = latte-dock-git
 	depends = plasma-framework
 	depends = plasma-desktop
 	optdepends = libunity: quicklists, counters, and progress bars for apps using libunity
+	provides = latte-dock
 	conflicts = latte-dock
 	source = git+git://anongit.kde.org/latte-dock.git
 	sha256sums = SKIP
