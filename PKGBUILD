@@ -3,8 +3,8 @@
 _pkgname=pinocchio
 _pkgver=1.2.4
 pkgname=${_pkgname}-git
-pkgver=$_pkgver.r1448.b927976
-pkgrel=2
+pkgver=1.2.4.r1449.5355d67
+pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra."
 arch=('i686' 'x86_64')
 url="https://stack-of-tasks.github.io/pinocchio/"

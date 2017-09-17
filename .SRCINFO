@@ -1,7 +1,7 @@
 pkgbase = pinocchio-git
-	pkgdesc = Dynamic computations using Spatial Algebra. devel branch
-	pkgver = 1.2.3.r1416.5449bba
-	pkgrel = 2
+	pkgdesc = Dynamic computations using Spatial Algebra.
+	pkgver = 1.2.4.r1449.5355d67
+	pkgrel = 1
 	url = https://stack-of-tasks.github.io/pinocchio/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = pinocchio-git
 	optdepends = lua51
 	provides = pinocchio
 	conflicts = pinocchio
-	source = pinocchio::git://github.com/stack-of-tasks/pinocchio.git
+	source = pinocchio::git://github.com/nim65s/pinocchio.git
 	md5sums = SKIP
 
 pkgname = pinocchio-git
