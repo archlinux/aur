@@ -3,8 +3,8 @@
 _pkgname=gepetto-viewer-corba
 _pkgver=1.3.0
 pkgname=${_pkgname}-git
-pkgver=1.3.0.r291.5047424
-pkgrel=1
+pkgver=1.3.0.r310.605a8c8
+pkgrel=2
 pkgdesc="CORBA server/client for SceneViewer."
 arch=('i686' 'x86_64')
 url="https://github.com/nim65s/$_pkgname"
