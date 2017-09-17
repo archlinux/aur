@@ -1,0 +1,16 @@
+pkgbase = tsym-git
+	pkgdesc = A tiny C++ computer algebra library
+	pkgver = g2374745
+	pkgrel = 1
+	url = https://github.com/lubgr/tsym
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = scons
+	conflicts = tsym
+	source = git+https://github.com/lubgr/tsym.git#branch=develop
+	md5sums = SKIP
+
+pkgname = tsym-git
+
