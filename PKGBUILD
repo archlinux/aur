@@ -4,7 +4,7 @@
 
 pkgname=enyo-doom
 pkgver=1.04
-pkgrel=1
+pkgrel=2
 _commit=c0f5b0fa22c2b80b1dc7a404494287cf69a32649
 pkgdesc="A frontend for Doom engines"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ url="https://gitlab.com/sdcofer70/enyo-doom"
 license=('GPL')
 depends=('qt5-base')
 makedepends=('cmake')
-optdepends=('chocolate-doom' 'prboom' 'zdoom' 'prboom-plus')
-source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/sdcofer70/enyo-doom/repository/archive.tar.gz?ref=${pkgver}")
+optdepends=('chocolate-doom' 'prboom' 'zdoom' 'prboom-plus' 'gzdoom')
+source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/sdcofer70/enyo-doom/repository/archive.tar.gz?ref=$pkgver")
 sha256sums=('7dfe9eb50cc043c40af95cfe67121458998f3e762d5876711cf6b341b3bd5d02')
 
 prepare() {
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../${pkgname}-${pkgver}-${_commit} \
+  cmake ../$pkgname-$pkgver-$_commit \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
   make
@@ -30,5 +30,5 @@ build() {
 
 package() {
   cd build
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 }
