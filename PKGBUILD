@@ -13,16 +13,6 @@ source=("$_zipname.zip::http://input.fontbureau.com/build/?fontSelection=whole&a
 noextract=("$_zipname.zip")
 sha256sums=("18c69fbe80ed468dbd8445074bd696eb316f0b9102db3bc59a4f89b0d6f6d31d")
 
-prompt() {
-    while [ 1 ]; do
-        read -p "$1" choice
-        case "$choice" in
-            y|Y ) return 1;;
-            n|N ) return 0;;
-        esac
-    done
-}
-
 prepare() {
 
     echo "License Agreement: http://input.fontbureau.com/license/"
