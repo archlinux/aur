@@ -3,14 +3,13 @@
 pkgname=adapta-kde-git
 gitname=adapta-kde
 pkgver=20170917
-pkgrel=2
+pkgrel=3
 pkgdesc="Complete Adapta theme pack for KDE Plasma using Kvantum theme engine (git version)"
 arch=('any')
 url="https://github.com/PapirusDevelopmentTeam/adapta-kde"
 license=('GPL3')
-depends=('kwin' 'plasma-desktop' 'kvantum-qt5-git')
-optdepends=('papirus-icon-theme-git: Papirus icon theme with Adapta color set'
-            'konsole: For the Konsole color scheme'
+depends=('kwin' 'plasma-desktop' 'kvantum-qt5-git' 'papirus-icon-theme-git')
+optdepends=('konsole: For the Konsole color scheme'
             'yakuake: For the Yakuake skin'
             'adapta-gtk-theme: Matching GTK theme')
 makedepends=('git' 'make')
