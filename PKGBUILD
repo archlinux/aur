@@ -10,17 +10,14 @@ url='https://github.com/sasq64/chipmachine'
 license=('MIT')
 depends=('mpg123' 'glew' 'glfw' 'curl')
 makedepends=('cmake' 'vim' 'git')
-_aponecommit=d320e07159a35f47cbc81ea45f145c27a976f98c
-_patch1commit=31181465d5c8ba87efa6450c149dc00acffe0f6d
-_patch2commit=44ed091a4305b2231595bd7f62c11803eb66aeb7
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sasq64/$pkgname/archive/v$pkgver.tar.gz"
-        "$pkgname-1.3c-two-missing-std-specifiers.patch::https://github.com/sasq64/$pkgname/commit/$_patch1commit.patch"
-        "$pkgname-1.3c-fixed-against-latest-apone.patch::https://github.com/sasq64/$pkgname/commit/$_patch2commit.patch"
-        "git+https://github.com/sasq64/apone.git#commit=$_aponecommit")
+        "git+https://github.com/sasq64/apone.git#commit=d320e07159a35f47cbc81ea45f145c27a976f98c"
+        "chipmachine-1.3c-two-missing-std-specifiers.patch"
+        "chipmachine-1.3c-fixed-against-latest-apone.patch")
 sha256sums=('fe83080035a6ba23917a79b9133e29b2b934e7711fb21e8039eff3a9411fd354'
+            'SKIP'
             '7dc76d37e016a5109efb471b30b3c46246ea231ad3cd6e45bd8a6a438cccfd44'
-            '531db4559b7cb57e20409e26d500aa82dc8e6c03aa437547affdd88c5cb03997'
-            'SKIP')
+            '531db4559b7cb57e20409e26d500aa82dc8e6c03aa437547affdd88c5cb03997')
 
 prepare() {
   cd $pkgname-$pkgver
