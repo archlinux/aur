@@ -1,6 +1,6 @@
 # Maintainer: Liam Greenough <beacon515@gmail.com>
 pkgname=qt-dab-git
-pkgver=VERSION
+pkgver=r306.0b6c309
 pkgrel=1
 pkgdesc="software dab decoder for use with a dabstick, airspy or sdrplay for RPI and PC"
 arch=('i686' 'x86_64')
@@ -10,8 +10,9 @@ depends=('qt5-base' 'libsndfile' 'fftw' 'portaudio' 'faad2' 'zlib' 'rtl-sdr' 'qw
 makedepends=('git')
 provides=('qt-dab-git')
 conflicts=('qt-dab' 'sdr-j-dabreciever')
-source=('git+https://github.com/JvanKatwijk/qt-dab.git')
-md5sums=('SKIP')
+source=('git+https://github.com/JvanKatwijk/qt-dab.git' 'qwt.patch')
+md5sums=('SKIP'
+         'd5a96a8f58268c892f33e9ed56fc16e9')
 
 pkgver() {
 	cd "$srcdir/qt-dab"
@@ -28,5 +29,9 @@ build() {
 }
 
 package() {
-	cd "$srcdir/qt-dab"
+	mkdir $pkgdir/usr/
+	mkdir $pkgdir/usr/bin
+	mkdir $pkgdir/
+	cd "$srcdir/qt-dab/linux-bin"
+	mv * /$pkgdir/usr/bin/qt-dab
 }

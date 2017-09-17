@@ -1,6 +1,6 @@
 pkgbase = qt-dab-git
 	pkgdesc = software dab decoder for use with a dabstick, airspy or sdrplay for RPI and PC
-	pkgver = VERSION
+	pkgver = r306.0b6c309
 	pkgrel = 1
 	url = http://www.sdr-j.tk
 	arch = i686
@@ -20,7 +20,9 @@ pkgbase = qt-dab-git
 	conflicts = qt-dab
 	conflicts = sdr-j-dabreciever
 	source = git+https://github.com/JvanKatwijk/qt-dab.git
+	source = qwt.patch
 	md5sums = SKIP
+	md5sums = d5a96a8f58268c892f33e9ed56fc16e9
 
 pkgname = qt-dab-git
 

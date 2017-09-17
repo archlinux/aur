@@ -1,0 +1,15 @@
+diff --git a/qt-dab.pro b/qt-dab.pro
+index 29176ad..e760609 100644
+--- a/qt-dab.pro
++++ b/qt-dab.pro
+@@ -285,8 +285,8 @@ spectrum {
+ 	HEADERS		+= ./includes/scopes-qwt6
+         SOURCES         += ./optional-scope/spectrum-handler.cpp
+ #correct this for the correct path to the qwt6 library on your system
+-#	LIBS		+= -lqwt
+-	LIBS		+= -lqwt-qt5
++	LIBS		+= -lqwt
++#	LIBS		+= -lqwt-qt5
+ }
+ 
+ #	devices
