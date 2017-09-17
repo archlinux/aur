@@ -11,7 +11,8 @@ license=('GPL3')
 depends=('kwin' 'plasma-desktop' 'kvantum-qt5-git')
 optdepends=('papirus-icon-theme-git: Papirus icon theme with Adapta color set'
             'konsole: For the Konsole color scheme'
-            'yakuake: For the Yakuake skin')
+            'yakuake: For the Yakuake skin'
+            'adapta-gtk-theme: Matching GTK theme')
 makedepends=('git' 'make')
 conflicts=('adapta-aurorae-theme-git')
 source=("git+https://github.com/PapirusDevelopmentTeam/${gitname}.git")
@@ -30,9 +31,12 @@ package() {
     mkdir -p ${pkgdir}/usr/share/aurorae/themes
     mkdir -p ${pkgdir}/usr/share/Kvantum/Adapta
     mkdir -p ${pkgdir}/usr/share/plasma/desktoptheme/Adapta
+    mkdir -p ${pkgdir}/usr/share/plasma/look-and-feel/com.github.varlesh.adapta
     mkdir -p ${pkgdir}/usr/share/yakuake/skins/adapta
     mkdir -p ${pkgdir}/usr/share/color-schemes
-    mkdir -p ${pkgdir}/usr/share/konsole
+    mkdir -p ${pkgdir}/usr/share/konsole 
+    mkdir -p ${pkgdir}/usr/share/wallpapers/Adapta
+ 
 
 
     cp -r ${srcdir}/${gitname}/aurorae/themes/Adapta ${pkgdir}/usr/share/aurorae/themes
@@ -41,6 +45,6 @@ package() {
     cp -r ${srcdir}/${gitname}/yakuake/skins/adapta ${pkgdir}/usr/share/yakuake/skins
     cp -r ${srcdir}/${gitname}/color-schemes/Adapta.colors ${pkgdir}/usr/share/color-schemes
     cp -r ${srcdir}/${gitname}/konsole/Adapta.colorscheme ${pkgdir}/usr/share/konsole
-    
-    
+    cp -r ${srcdir}/${gitname}/wallpapers/Adapta ${pkgdir}/usr/share/wallpapers/
+    cp -r ${srcdir}/${gitname}/plasma/look-and-feel/com.github.varlesh.adapta ${pkgdir}/usr/share/plasma/look-and-feel/
 }
