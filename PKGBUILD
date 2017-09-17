@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url="http://www.infradead.org/~mchehab/rasdaemon/"
 license=(GPL2)
 depends=(dmidecode)
-source=("https://casper.infradead.org/~mchehab/rasdaemon/rasdaemon-$pkgver.tar.bz2")
+source=("http://www.infradead.org/~mchehab/rasdaemon/rasdaemon-$pkgver.tar.bz2")
 sha256sums=('ef7045b3ce6f9deb593d9e93be42b37672806c399332769d665a63e99dfbc29c')
 
 prepare() {
