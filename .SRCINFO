@@ -1,0 +1,32 @@
+pkgbase = google-chrome-cn
+	pkgdesc = 谷歌Chrome浏览器免翻墙安装版. An attempt at creating a safer, faster, and more stable browser (Stable Channel). Use offline license file for chinese user,because of GFW.
+	pkgver = 61.0.3163.91
+	pkgrel = 1
+	url = https://www.google.com/chrome
+	install = google-chrome-cn.install
+	arch = x86_64
+	license = custom:chrome
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk3
+	depends = libcups
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	optdepends = kdialog: needed for file dialogs in KDE
+	optdepends = gnome-keyring: for storing passwords in GNOME keyring
+	optdepends = kwallet: for storing passwords in KWallet
+	optdepends = libunity: download progress on KDE
+	optdepends = ttf-liberation: fix fonts for some PDFs (CRBug #369991)
+	optdepends = xdg-utils
+	options = !emptydirs
+	options = !strip
+	source = google-chrome-stable_61.0.3163.91_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	source = eula_text.html
+	source = google-chrome-stable.sh
+	md5sums = eb7d733c4433a67785c1193166cb829f
+	md5sums = SKIP
+	md5sums = 99fa93d5e7fb5d622cef0f9621f3ffa3
+
+pkgname = google-chrome-cn
+
