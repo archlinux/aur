@@ -11,6 +11,10 @@ options=('!strip' '!emptydirs')
 source=("https://cache.agilebits.com/dist/1P/op/pkg/v$pkgver/op_linux_amd64_v$pkgver.zip")
 sha256sums=('6dc01dce5138f5ec8c6d6853fb22d02cfe1c0b0178f02754278d4dcac11f038b')
 
+check() {
+  gpg --verify-files ${srcdir}/op.sig
+}
+
 package() {
   install -Dm755 op "$pkgdir/usr/bin/op"
 }
