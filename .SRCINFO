@@ -1,0 +1,26 @@
+pkgbase = qt-dab-git
+	pkgdesc = software dab decoder for use with a dabstick, airspy or sdrplay for RPI and PC
+	pkgver = VERSION
+	pkgrel = 1
+	url = http://www.sdr-j.tk
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = qt5-base
+	depends = libsndfile
+	depends = fftw
+	depends = portaudio
+	depends = faad2
+	depends = zlib
+	depends = rtl-sdr
+	depends = qwt
+	depends = libsamplerate
+	provides = qt-dab-git
+	conflicts = qt-dab
+	conflicts = sdr-j-dabreciever
+	source = git+https://github.com/JvanKatwijk/qt-dab.git
+	md5sums = SKIP
+
+pkgname = qt-dab-git
+
