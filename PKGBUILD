@@ -37,12 +37,13 @@ prepare() {
 build() {
   cd "$srcdir"/$_svnmod/Scribus
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DCMAKE_SKIP_RPATH:BOOL=YES -DWANT_GRAPHICSMAGICK=1 \
-    -DCMAKE_LIBRARY_PATH=/usr/lib \
-    -DCMAKE_INCLUDE_PATH=/usr/include/python2.7 \
-    -DCMAKE_EXE_LINKER_FLAGS="-lQt5Quick -lQt5PrintSupport" \
-    -DCMAKE_APPDATA_DIR=/usr/share/appdata \
-    -DQT_PREFIX="/usr" -DWANT_SVNVERSION=1
+	-DCMAKE_SKIP_RPATH:BOOL=YES \
+	-DWANT_GRAPHICSMAGICK=1 \
+	-DCMAKE_LIBRARY_PATH=/usr/lib \
+	-DCMAKE_INCLUDE_PATH=/usr/include/python2.7 \
+	-DCMAKE_EXE_LINKER_FLAGS="-lQt5Quick -lQt5PrintSupport" \
+	-DCMAKE_APPDATA_DIR=/usr/share/appdata \
+	-DQT_PREFIX="/usr" -DWANT_SVNVERSION=1
   make
 }
 
@@ -54,8 +55,9 @@ package () {
   install -d "${pkgdir}"/usr/share/pixmaps
   ln -s /usr/share/scribus/icons/1_5_0/scribus.png "${pkgdir}"/usr/share/pixmaps/scribus.png
   # move around some picture files
-  for i in AppIcon.png AllCaps.png Kapital.xpm Strike.xpm outlined.png shadow.png shade.png Revers.png zeichen.png
-  do install "$pkgdir"/usr/share/scribus/icons/1_5_0/$i "$pkgdir"/usr/share/scribus/icons/1_5_1/$i
-     rm "$pkgdir"/usr/share/scribus/icons/1_5_0/$i
+  for _i in AppIcon.png AllCaps.png Kapital.xpm Strike.xpm \
+		       outlined.png shadow.png shade.png Revers.png zeichen.png
+  do install "$pkgdir"/usr/share/scribus/icons/1_5_0/$_i "$pkgdir"/usr/share/scribus/icons/1_5_1/$_i
+     rm "$pkgdir"/usr/share/scribus/icons/1_5_0/$_i
   done
 }
