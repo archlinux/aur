@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI3'
-license=('GPL')
+license=('GPL2')
 depends=('vapoursynth'
          'ocl-icd'
          )
