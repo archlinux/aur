@@ -1,13 +1,12 @@
 pkgbase = chipmachine
-	pkgdesc = A demoscene/retro Jukebox/spotify-like music player
+	pkgdesc = Demoscene/Retro Music Player
 	pkgver = 1.3c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sasq64/chipmachine
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = vim
 	makedepends = git
 	depends = mpg123
