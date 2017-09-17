@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-nosystemd
 	pkgdesc = Modular initramfs image creation utility
-	pkgver = 22
+	pkgver = 23
 	pkgrel = 2
 	url = https://projects.archlinux.org/mkinitcpio.git/
 	install = mkinitcpio.install
@@ -23,15 +23,19 @@ pkgbase = mkinitcpio-nosystemd
 	optdepends = lzop: Use lzo compression for the initramfs image
 	optdepends = lz4: Use lz4 compression for the initramfs image
 	optdepends = mkinitcpio-nfs-utils: Support for root filesystem on NFS
-	provides = mkinitcpio=22-2
+	provides = mkinitcpio=23-2
 	conflicts = mkinitcpio
 	backup = etc/mkinitcpio.conf
-	source = https://sources.archlinux.org/other/mkinitcpio/mkinitcpio-22.tar.gz
-	source = https://sources.archlinux.org/other/mkinitcpio/mkinitcpio-22.tar.gz.sig
+	source = https://sources.archlinux.org/other/mkinitcpio/mkinitcpio-23.tar.gz
+	source = https://sources.archlinux.org/other/mkinitcpio/mkinitcpio-23.tar.gz.sig
 	source = remove-systemd.patch
-	sha256sums = 54c1fc0fc128ae486e72362f49f52e94acd5fcfea9f44b719dc33250e42664eb
+	source = 0001-make-ldd-parsing-compatible-with-upstream-glibc-chan.patch
+	validpgpkeys = 487EACC08557AD082088DABA1EB2638FF56C0C53
+	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
+	sha256sums = 80f12a07f0dceef81dfe87200f099bd2149e0990391dda6defebaa5697f8a35a
 	sha256sums = SKIP
 	sha256sums = 4921518d130b73724645b3732ba471005b8755a89a219bb6396e3b082414bb78
+	sha256sums = f534892af930abf8164eead271dc012e42a552362fbb459e55e04d4a68b52a66
 
 pkgname = mkinitcpio-nosystemd
 
