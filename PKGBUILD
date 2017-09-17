@@ -23,10 +23,10 @@ options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=beta
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
-        "$url/browser/privacy/eula_text.html"
+        'eula_text.html'
         "google-chrome-$_channel.sh")
 md5sums=('97624e9b73dccedecb6c69b7e1122d41'
-         'SKIP'
+         'd50d8f0a6940791eabc41c4f64e6a3cf'
          'ca16d5162eed85b1ba4e6b9fc37f9e35')
 
 ## Previous versions (also see: /var/cache/pacman/pkg/google-chrome-beta-*):

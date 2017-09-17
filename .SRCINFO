@@ -23,10 +23,10 @@ pkgbase = google-chrome-beta
 	options = !emptydirs
 	options = !strip
 	source = google-chrome-beta_62.0.3202.18_amd64.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
-	source = https://www.google.com/chrome/browser/privacy/eula_text.html
+	source = eula_text.html
 	source = google-chrome-beta.sh
 	md5sums = 97624e9b73dccedecb6c69b7e1122d41
-	md5sums = SKIP
+	md5sums = d50d8f0a6940791eabc41c4f64e6a3cf
 	md5sums = ca16d5162eed85b1ba4e6b9fc37f9e35
 
 pkgname = google-chrome-beta
