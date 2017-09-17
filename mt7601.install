@@ -1,0 +1,16 @@
+post_install() {
+    depmod -a $(uname -r)
+
+    echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+    echo '!!! To make your device work you must add "coherent_pool=4M"  !!!'
+    echo '!!! to the line "setenv bootargs" of your /boot/boot.ini file !!!'
+    echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+}
+
+post_upgrade() {
+   post_install
+}
+
+post_remove() {
+   post_install
+} 
