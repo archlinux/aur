@@ -7,7 +7,8 @@ pkgdesc="Refined Evernote desktop app"
 arch=('x86_64')
 url="https://github.com/champloohq/tusk"
 license=('MIT')
-depends=('xdg-utils')
+depends=('xdg-utils'
+         'electron')
 source_x86_64=("https://github.com/champloohq/tusk/releases/download/v${pkgver}/tusk-${pkgver}-linux-amd64.deb")
 source=($pkgname.desktop
         $pkgname.png)
