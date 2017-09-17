@@ -1,3 +1,29 @@
+ Version 2.17.1 - 14 Sep 2017
+- Update Translations.
+- Remove AO3 login from get_urls_from_page--login is failing and it isn't
+  required anymore for 'adult'. 'Restricted' (user-only) won't work.
+- Plugin: Save 'Show Download Options' check in gprefs like dialog geometries.
+- Fixes for QQ and AH changes.
+- base_xenforo: Fix for extended chars in threadmark chapter names.
+- base_xenforo: Couple small fixes for corner cases. -- Except one of them
+  isn't, I think it would be pretty common; namely a notice being using as
+  first chapter.
+- adapter_literotica: Build the chapter a little better especially if there is
+  mutiple pages (#225) - Thanks, davidfor
+- base_xenforo: Use '/posts/' not 'post' to find thread vs post URLs.
+- Add sectionUrl metadata and mechanism for internally normalizing story URLs
+  *and* [story URL] sections. For base_xenforo when including thread titles in
+  storyUrl. Doesn't effect base_xenforo *post* URLs.
+- base_xenforo: Move skip_threadmarks_categories to save a fetch if skipping
+  anyway. Will also effect minimum_threadmarks.
+- base_xenforo: Don't include thread title in *chapter* url, perfomance impact
+  is smaller and keeps from marking a bunch of stuff (new).
+- Add delays for base_xenforoforum_adapter.
+- Use thread-title URL for storyUrl with base_xenforo to save redirect fetches.
+- Comment out some debug output.
+- Remove webnovel.com manual escaping of HTML entities, the website now seems
+  to take care of it (#224)--thanks cryzed
+
 Version 2.16.0 - 18 Aug 2017
 - Restore sycophanthex.com sites.
 - Fix for gravitytales.com--thanks cryzed!
@@ -19,22 +45,3 @@ Version 2.16.0 - 18 Aug 2017
 - Explicitly (instead of implicitly) set is_adult:false in defaults.ini.
 - Comment out bookmarks for AO3 temporarily.
 - Fix for adapter_asianfanficscom caching vs login issue.
-
-Version 2.15.0 - 26 Jul 2017
-- Restore adapter_dramioneorg after site came back.
-- Fix for AO3 login change.
-- Fixes for // problem in images.
-- Fix replace_br_with_p creating nested div tags, does NOT remove ones added
-  previously.
-- Make utf8FromSoup() copy soup to avoid side effects.
-- Add markers and check to prevent replace_br_with_p running more than once on
-  the same text.
-- Adding replace_failed_smilies_with_alt_text option for base_xenforo.
-- Consolidate and display some aggregate times for perf prof.
-- Fix published and update date for gravitytales.com adapter - import
-  feedparser (#204)
-- adapter_fanficauthorsnet replace 'In progress' with 'In-Progress' to match
-  standard.
-- adapter_finestoriescom and adapter_storiesonlinenet share code, but they
-  need different Themes set now.
-- Fix to adapter_asexstoriescom for site change.
