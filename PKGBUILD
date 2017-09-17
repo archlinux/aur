@@ -2,12 +2,12 @@
 
 pkgname=zoomtools
 pkgver=12222006
-pkgrel=5
+pkgrel=6
 pkgdesc="Tools for the Zoom PS-02, PS-04, MRS-8 multitrack recorders"
 arch=('i686' 'x86_64')
 url="http://www.engens.com/dwight/software.html"
 license=('GPL')
-depends=('gtk2')
+depends=('glibc' 'gtk2')
 makedepends=('pangox-compat')
 options=('!makeflags')
 source=("http://www.engens.com/dwight/dl/$pkgname-12222005.tar.gz"
