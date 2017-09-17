@@ -1,7 +1,7 @@
-# Maintainer: emersion <contact@emersion.fr>
+# Maintainer: emersion <contact emersion.fr>
 _pkgname=browserpass
 pkgname=$_pkgname-bin
-pkgver=1.0.6
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Chrome & Firefox browser extension for pass, a UNIX password manager"
 arch=('x86_64')
@@ -10,8 +10,10 @@ license=('MIT')
 depends=('pass')
 makedepends=()
 optdepends=()
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=("browserpass-$pkgver.zip::https://github.com/dannyvankooten/browserpass/releases/download/$pkgver/browserpass-linux64.zip")
-md5sums=('627efa8deef39ba0feb859f265afb18c')
+md5sums=('4a8c9e472b9a60afdf79b15da851e096')
 
 package() {
 	cd "$srcdir"
@@ -26,9 +28,7 @@ package() {
 	app_name="com.dannyvankooten.browserpass"
 
 	install -D chrome-host.json "$pkgdir/etc/opt/chrome/native-messaging-hosts/$app_name.json"
-	install -D chrome-policy.json "$pkgdir/etc/opt/chrome/policies/managed/$app_name.json"
 	install -D chrome-host.json "$pkgdir/etc/chromium/native-messaging-hosts/$app_name.json"
-	install -D chrome-policy.json "$pkgdir/etc/chromium/policies/managed/$app_name.json"
 
 	install -D firefox-host.json "$pkgdir/usr/lib/mozilla/native-messaging-hosts/$app_name.json"
 }
