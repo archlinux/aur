@@ -18,9 +18,15 @@ pkgbase = gcc49
 	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.9.4/gcc-4.9.4.tar.bz2
 	source = ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-0.12.2.tar.bz2
 	source = ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-0.18.1.tar.gz
+	source = 0000-gcc-4.9.ucontext.patch
+	source = 0001-gcc-4.9-SIGSEGV.patch
+	source = 0002-gcc-4.9-__res_state.patch
 	md5sums = 87c24a4090c1577ba817ec6882602491
 	md5sums = e039bfcfb6c2ab039b8ee69bf883e824
 	md5sums = e34fca0540d840e5d0f6427e98c92252
+	md5sums = 4a0dc704f1d92ceb4dd8608811241cec
+	md5sums = e787a03f0c38434490515a5823eca0b8
+	md5sums = c64d1e20274ff4fbfacdd11bef2e1273
 
 pkgname = gcc49
 

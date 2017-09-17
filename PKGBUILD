@@ -18,10 +18,16 @@ checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
 source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
         "ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
-        "ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-${_cloogver}.tar.gz")
+        "ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-${_cloogver}.tar.gz"
+        "0000-gcc-4.9.ucontext.patch"
+        "0001-gcc-4.9-SIGSEGV.patch"
+        "0002-gcc-4.9-__res_state.patch")
 md5sums=('87c24a4090c1577ba817ec6882602491'
          'e039bfcfb6c2ab039b8ee69bf883e824'
-         'e34fca0540d840e5d0f6427e98c92252')
+         'e34fca0540d840e5d0f6427e98c92252'
+         '4a0dc704f1d92ceb4dd8608811241cec'
+         'e787a03f0c38434490515a5823eca0b8'
+         'c64d1e20274ff4fbfacdd11bef2e1273')
 
 _basedir=gcc-${pkgver}
 _libdir="usr/lib/gcc/$CHOST/$pkgver"
@@ -43,6 +49,22 @@ prepare() {
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+  
+  # fix build with glibc 2.26
+  #diff -pNau5 libsanitizer/sanitizer_common/sanitizer_linux.h{.orig,} > '../0000-gcc-4.9.ucontext.patch'
+  patch -Nbup0 -i "${srcdir}/0000-gcc-4.9.ucontext.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41921
+  #diff -pNau5 libsanitizer/asan/asan_linux.cc{.orig,} > '../0001-gcc-4.9-SIGSEGV.patch'
+  patch -Nbup0 -i "${srcdir}/0001-gcc-4.9-SIGSEGV.patch"
+  #diff -pNau5 libsanitizer/tsan/tsan_platform_linux.cc{.orig,} > '../0002-gcc-4.9-__res_state.patch'
+  patch -Nbup0 -i "${srcdir}/0002-gcc-4.9-__res_state.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41922
+  sed -e 's:\bstruct ucontext\b:ucontext_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct ucontext\b')
+  sed -e 's:\bstruct sigaltstack\b:stack_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct sigaltstack\b')
+  sed -e '/^struct ucontext_t/,/^};/ d' -i 'libsanitizer/tsan/tsan_interceptors.cc'
+  if grep -e '^struct ucontext_t' 'libsanitizer/tsan/tsan_interceptors.cc'; then
+    set +u
+    echo 'Failed to remove ^struct ucontext_t'
+    false
+  fi
 
   mkdir ${srcdir}/gcc-build
 }

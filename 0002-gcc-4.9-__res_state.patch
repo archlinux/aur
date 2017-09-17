@@ -1,0 +1,15 @@
+--- libsanitizer/tsan/tsan_platform_linux.cc.orig	2013-12-05 04:18:38.000000000 -0500
++++ libsanitizer/tsan/tsan_platform_linux.cc	2017-09-12 19:25:25.698833952 -0400
+@@ -349,11 +349,11 @@ bool IsGlobalVar(uptr addr) {
+ // Extract file descriptors passed to glibc internal __res_iclose function.
+ // This is required to properly "close" the fds, because we do not see internal
+ // closes within glibc. The code is a pure hack.
+ int ExtractResolvFDs(void *state, int *fds, int nfd) {
+   int cnt = 0;
+-  __res_state *statp = (__res_state*)state;
++  res_state statp = (res_state)state;
+   for (int i = 0; i < MAXNS && cnt < nfd; i++) {
+     if (statp->_u._ext.nsaddrs[i] && statp->_u._ext.nssocks[i] != -1)
+       fds[cnt++] = statp->_u._ext.nssocks[i];
+   }
+   return cnt;
