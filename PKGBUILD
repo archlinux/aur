@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='gauche-git'
-pkgver=0.9.6_pre3r10064
+pkgver=0.9.6_pre3r10065
 pkgrel=1
 pkgdesc="R7RS Scheme implementation developed to be a handy script interpreter"
 arch=('i686' 'x86_64')
@@ -20,13 +20,17 @@ _gitname='Gauche'
 options=('!makeflags' '!emptydirs')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$_gitname"
   _appver=$(awk -F, '/AC_INIT/ {print $2}' configure.ac|tr -d [])
   printf %sr%s $(echo $_appver) $(git rev-list --count HEAD)
 }
+
+prepare() {
+  sed -i '4127s+R7Rs hash tables+R7RS hash tables+g' "$_gitname"/doc/modsrfi.texi
+}
   
 build() {
-  cd "$srcdir/$_gitname"
+  cd "$_gitname"
   ./DIST gen
   CONFIG_SHELL=/bin/bash ./configure --prefix=/usr \
     --enable-multibyte=utf-8 --enable-threads=pthreads 
@@ -34,7 +38,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$_gitname"
   make DESTDIR="$pkgdir" install-pkg install-doc
   install -D -m644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
