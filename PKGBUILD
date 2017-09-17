@@ -3,7 +3,7 @@
 _pkgname=embulk
 pkgname=$_pkgname-bin
 pkgver=0.8.33
-pkgrel=1
+pkgrel=2
 pkgdesc="Pluggable Bulk Data Loader."
 arch=('i686' 'x86_64')
 url="https://github.com/treasure-data/digdag"
