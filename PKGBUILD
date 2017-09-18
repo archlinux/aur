@@ -14,11 +14,10 @@ license=('custom')
 depends=('java-environment' 'bash' 'ppp' 'net-tools')
 source_i686=("https://sslvpn.demo.sonicwall.com/NetExtender.tgz")
 source_x86_64=("https://sslvpn.demo.sonicwall.com/NetExtender.x86_64.tgz")
-sha256sums_i686=('9ba1e9e92eb51ec69fdfe2a064655af19b15fc833f364ac3b566a5802b9d1e20')
+sha256sums_i686=('c7f87699fc9c5900e1ccd0c0a7d4da68a53e818311282a786bddb7fe16cf39b5')
 sha256sums_x86_64=('9ba1e9e92eb51ec69fdfe2a064655af19b15fc833f364ac3b566a5802b9d1e20')
 install="${pkgname}.install"
-DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 
---retry-delay 3 -o %o %u")
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 package() {
   mkdir -p "$pkgdir/usr/share/netExtender/icons"
