@@ -9,23 +9,23 @@ arch=('any')
 license=('GPL3')
 url='https://github.com/flyser/cournal'
 depends=('python' 'gtk3' 'poppler-glib' 'gobject-introspection' 'python-gobject'
-	 'python-zope-interface' 'hicolor-icon-theme' 'desktop-file-utils' 'intltool')
+         'python-zope-interface' 'hicolor-icon-theme' 'desktop-file-utils' 'intltool')
 makedepends=('git' 'mercurial')
 source=('git+https://github.com/flyser/cournal.git')
 md5sums=('SKIP')
 
 pkgver () {
-	cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-	./download-twisted.sh
+    cd "$srcdir/$pkgname"
+    ./download-twisted.sh
 }
 
 package () {
-	cd "$srcdir/$pkgname"
-	install -d 755 "$pkgdir"
-	python setup.py install --root="$pkgdir" --optimize=1
+    cd "$srcdir/$pkgname"
+    install -d 755 "$pkgdir"
+    python setup.py install --root="$pkgdir" --optimize=1
 }
