@@ -3,7 +3,7 @@
 
 pkgname=xeroxprtdrv
 pkgver=5.20.606.3946
-pkgrel=1
+pkgrel=2
 pkgdesc="Xerox Unix Print Drivers"
 arch=('i686' 'x86_64')
 url="http://www.xerox.com"

@@ -1,7 +1,7 @@
 pkgbase = xeroxprtdrv
 	pkgdesc = Xerox Unix Print Drivers
 	pkgver = 5.20.606.3946
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xerox.com
 	install = xeroxprtdrv.install
 	arch = i686

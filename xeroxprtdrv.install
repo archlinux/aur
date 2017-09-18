@@ -17,9 +17,9 @@ post_install() {
   /opt/Xerox/prtsys/PatchAppArmorPolicy || echo 'AppArmor policy patch failed' 1>> /tmp/PrtDrvInstaller.log 2>>/tmp/PrtDrvInstaller.log
 
   if [ "_$DISPLAY" = "_" ]; then
-      DISPLAY=:0.0 xhost +si:localuser:lp >> /dev/null 2>> /dev/null || echo 'Failed to grant lp xhost permissions' 1>> /tmp/PrtDrvInstaller.log
+      DISPLAY=:0.0 xhost +si:localgroup:lp >> /dev/null 2>> /dev/null || echo 'Failed to grant lp xhost permissions' 1>> /tmp/PrtDrvInstaller.log
   else
-      xhost +si:localuser:lp >> /tmp/PrtDrvInstaller.log 2>> /tmp/PrtDrvInstaller.log || echo 'Failed to grant lp xhost permissions' 1>> /tmp/PrtDrvInstaller.log
+      xhost +si:localgroup:lp >> /tmp/PrtDrvInstaller.log 2>> /tmp/PrtDrvInstaller.log || echo 'Failed to grant lp xhost permissions' 1>> /tmp/PrtDrvInstaller.log
   fi
   echo "Run xeroxprtmgr as root to administer print queues"
 }
