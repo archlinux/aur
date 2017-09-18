@@ -1,11 +1,13 @@
+# Maintainer: Andrei Alexeyev <akari@alienslab.net>
+
 pkgname=cctools-git
 pkgdesc="Apple cctools port for Linux"
-pkgver=146
-pkgrel=2
+pkgver=147
+pkgrel=1
 arch=(i686 x86_64)
 url="https://github.com/tpoechtrager/cctools-port"
-license=("APSL")
-depends=(llvm)
+license=(custom)
+depends=(llvm xar libutil-linux)
 makedepends=(gcc-objc git)
 provides=(x86_64-apple-darwin-binutils cctools)
 conflicts=(x86_64-apple-darwin-binutils cctools)
