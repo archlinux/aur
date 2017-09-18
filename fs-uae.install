@@ -6,10 +6,6 @@ post_install() {
 
 post_upgrade() {
   post_install
-
-  if [ "$(vercmp 2.4 "$2")" -eq 1 ]; then
-    echo "==> See http://fs-uae.net/fs-uae-2-4-release-notes for changes"
-  fi
 }
 
 post_remove() {

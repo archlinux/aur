@@ -1,7 +1,7 @@
 pkgbase = fs-uae
 	pkgdesc = Focuses on emulating Amiga games using the accurate emulation code from WinUAE
-	pkgver = 2.6.2
-	pkgrel = 2
+	pkgver = 2.8.3
+	pkgrel = 1
 	url = http://fs-uae.net
 	install = fs-uae.install
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = fs-uae
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = libmpeg2
-	source = http://fs-uae.net/stable/2.6.2/fs-uae-2.6.2.tar.gz
-	md5sums = 9268425a44fae2f6166de2cca2a9091a
+	source = http://fs-uae.net/stable/2.8.3/fs-uae-2.8.3.tar.gz
+	md5sums = bb9096904619db0202370b1cc4dd1b55
 
 pkgname = fs-uae
 
