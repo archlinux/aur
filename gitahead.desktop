@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=GitAhead
+Comment=THE MOST POWERFUL GIT GUI
+Exec=gitahead
+Icon=gitahead
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Development;Documentation;
+MimeType=text/plain;
