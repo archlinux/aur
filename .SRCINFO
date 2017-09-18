@@ -10,10 +10,10 @@ pkgbase = hpp-model-urdf
 	depends = assimp
 	depends = hpp-util-git
 	depends = hpp-model
-	depends = urdf
+	depends = urdf-git
 	depends = resource-retriever
 	depends = urdfdom
-	depends = srdfdom
+	depends = srdfdom-git
 	source = https://github.com/humanoid-path-planner/hpp-model-urdf/releases/download/v3.2/hpp-model-urdf-3.2.tar.gz
 	md5sums = 8aaf308502c350640b262e85d25c61c9
 
