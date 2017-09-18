@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Cluster Manager GUI
+Comment=Bright Cluster Manager GUI application to administrate a CM cluster
+Path=/opt/BrightCMGUI
+Exec=cmgui
+Terminal=false
+Categories=Network;RemoteAccess;Monitor;
