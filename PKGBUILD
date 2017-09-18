@@ -2,7 +2,7 @@
 # https://github.com/afronski/aur-packages/tree/master/aur/nomad-bin
 
 pkgname=nomad-bin
-pkgver=0.5.6
+pkgver=0.6.3
 pkgrel=0
 epoch=
 pkgdesc="Easily deploy applications at any scale - A Distributed, Highly Available, Datacenter-Aware Scheduler"
@@ -22,11 +22,11 @@ options=()
 install=
 changelog=
 
-source_i686=("https://releases.hashicorp.com/nomad/0.5.6/nomad_0.5.6_linux_386.zip")
-source_x86_64=("https://releases.hashicorp.com/nomad/0.5.6/nomad_0.5.6_linux_amd64.zip")
+source_i686=("https://releases.hashicorp.com/nomad/0.6.3/nomad_0.6.3_linux_386.zip")
+source_x86_64=("https://releases.hashicorp.com/nomad/0.6.3/nomad_0.6.3_linux_amd64.zip")
 
-sha256sums_i686=('5ec9d890ffa8ca338d53b3aeeab793dd1acef0670b381adcc04806c059ff5369')
-sha256sums_x86_64=('3f5210f0bcddf04e2cc04b14a866df1614b71028863fe17bcdc8585488f8cb0c')
+sha256sums_i686=('517e5585ddc5bdeb3eb75e12a95d0f61977f2d0943f61243966afb3d1767d028')
+sha256sums_x86_64=('908ee049bda380dc931be2c8dc905e41b58e59f68715dce896d69417381b1f4e')
 
 noextract=()
 
