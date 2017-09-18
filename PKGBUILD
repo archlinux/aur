@@ -3,7 +3,7 @@
 _repo=aerial-sddm-theme
 _pkgname=sddm-theme-aerial
 pkgname=$_pkgname-git
-pkgver=0.1.r16.gca72b8d
+pkgver=0.1.r23.gf1dbb34
 pkgrel=1
 pkgdesc="SDDM theme with Apple TV Aerial videos"
 arch=('any')
