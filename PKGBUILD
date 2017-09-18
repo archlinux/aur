@@ -1,5 +1,5 @@
-# Maintainer: M.Reynolds <blackboxnetworkproject@gmail.com>
-# Contributor: Jan de Groot <jgc@archlinux.org>
+# Maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
+# Contributor:  Jan de Groot <jgc@archlinux.org>
 
 pkgname=xorg-fonts-misc-simple
 pkgver=1.0.3
@@ -41,34 +41,34 @@ sha256sums=('505d9b12a7093389e67a925dfda6346bde26d114c67f0cdca7aeda6e5d3344f4'
             '481f4fcbbf7005658b080b3cf342c8c76de752e77f47958b2b383de73266d2e0')
 
 build() {
-  cd "${srcdir}"
-  for dir in *; do
-    if [ -d "${dir}" ]; then
-      pushd "${dir}"
-      ./configure --prefix=/usr \
-          --with-fontdir=/usr/share/fonts/misc
-      make
-      popd
-    fi
-  done
+    cd "${srcdir}"
+        for dir in *; do
+            if [ -d "${dir}" ]; then
+                pushd "${dir}"
+                ./configure --prefix=/usr \
+                    --with-fontdir=/usr/share/fonts/misc
+                make
+                popd
+            fi
+    done
 }
 
 package() {
-  cd "${srcdir}"
-  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  for dir in *; do
-    if [ -d "${dir}" ]; then
-      pushd "${dir}"
-      make DESTDIR="${pkgdir}" install
-      install -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.${dir%-*}
-      popd
-    fi
-  done
-  rm -f ${pkgdir}/usr/share/fonts/*/fonts.*
-  
-  # move .otf files to proper directory - FS#44250
-  mv ${pkgdir}/usr/share/fonts/misc/*.otf ${pkgdir}/usr/share/fonts/OTF/
-  
-  # remove ttf and otf fonts from package
-  rm -r ${pkgdir}/usr/share/fonts/[TO]TF
+    cd "${srcdir}"
+    install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    for dir in *; do
+        if [ -d "${dir}" ]; then
+            pushd "${dir}"
+            make DESTDIR="${pkgdir}" install
+            install -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.${dir%-*}
+            popd
+        fi
+    done
+    rm -f ${pkgdir}/usr/share/fonts/*/fonts.*
+
+    # move .otf files to proper directory - FS#44250
+    mv ${pkgdir}/usr/share/fonts/misc/*.otf ${pkgdir}/usr/share/fonts/OTF/
+
+    # remove ttf and otf fonts from package
+    rm -r ${pkgdir}/usr/share/fonts/[TO]TF
 }
