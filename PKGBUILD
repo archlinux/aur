@@ -12,13 +12,18 @@ license=(BSD3)
 depends=('ghc' 'haskell-base' 'haskell-bytestring' 'haskell-containers')
 options=(strip)
 source=(https://hackage.haskell.org/package/${hkgname}-${pkgver}/${hkgname}-${pkgver}.tar.gz)
+sha256sums=('9087c936bfcdb865bad3166baa3f12bf37acf076fa76010e3b5f82a1d485446e')
 
 prepare() {
-    cd ${srcdir}/${hkgname}-${pkgver}
-    runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared --prefix=/usr --docdir=/usr/share/doc/${pkgname} --libsubdir='$compiler'/site-local/'$pkgid'
+        cd ${srcdir}/${hkgname}-${pkgver}
+        runhaskell Setup.hs configure -O --enable-shared --enable-executable-dynamic \
+          --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
+          --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
+            -f-no-unicode -f-system-libyaml -f-no-exe -fno-examples
 }
 
-build(){
+
+build() {
     cd ${srcdir}/${hkgname}-${pkgver}
     runhaskell Setup build
     runhaskell Setup haddock
@@ -28,13 +33,12 @@ build(){
 }
 
 package() {
-  cd ${srcdir}/${hkgname}-${pkgver}
-  install -D -m744 register.sh   ${pkgdir}/usr/share/haskell/${pkgname}/register.sh
-  install    -m744 unregister.sh ${pkgdir}/usr/share/haskell/${pkgname}/unregister.sh
-  install -d -m755 ${pkgdir}/usr/share/doc/ghc/html/libraries
-  ln -s /usr/share/doc/${pkgname}/html ${pkgdir}/usr/share/doc/ghc/html/libraries/${hkgname}
-  runhaskell Setup copy --destdir=${pkgdir}
-  install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  rm -f ${pkgdir}/usr/share/doc/${pkgname}/LICENSE
+    cd ${srcdir}/${hkgname}-${pkgver}
+    install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
+    install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
+    install -d -m755 ${pkgdir}/usr/share/doc/ghc/html/libraries
+    ln -s /usr/share/doc/${pkgname}/html ${pkgdir}/usr/share/doc/ghc/html/libraries/${hkgname}
+    runhaskell Setup copy --destdir=${pkgdir}
+    install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    rm -f ${pkgdir}/usr/share/doc/${pkgname}/LICENSE
 }
-sha256sums=('9087c936bfcdb865bad3166baa3f12bf37acf076fa76010e3b5f82a1d485446e')
