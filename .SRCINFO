@@ -1,7 +1,7 @@
 pkgbase = hpp-util-git
 	pkgdesc = This package gathers technical tools for the HPP project. Devel branch
-	pkgver = 3.2.r108.caf207c
-	pkgrel = 2
+	pkgver = 3.2.r110.c243c61
+	pkgrel = 1
 	url = https://github.com/humanoid-path-planner/hpp-util
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = hpp-util-git
 	optdepends = doxygen
 	provides = hpp-util
 	conflicts = hpp-util
-	source = hpp-util::git://github.com/humanoid-path-planner/hpp-util.git
+	source = hpp-util::git://github.com/nim65s/hpp-util.git
 	md5sums = SKIP
 
 pkgname = hpp-util-git
