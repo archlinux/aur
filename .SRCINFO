@@ -9,6 +9,8 @@ pkgbase = hpp-fcl-git
 	makedepends = cmake
 	depends = eigen32
 	depends = assimp
+	provides = hpp-fcl
+	conflicts = hpp-fcl
 	source = hpp-fcl::git://github.com/nim65s/hpp-fcl.git
 	md5sums = SKIP
 

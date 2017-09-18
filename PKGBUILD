@@ -11,6 +11,8 @@ url="https://github.com/humanoid-path-planner/$pkgname"
 license=('BSD 3-clause')
 depends=('eigen32' 'assimp')
 makedepends=('cmake')
+conflicts=($_pkgname)
+provides=($_pkgname)
 source=("$_pkgname"::"git://github.com/nim65s/$_pkgname.git")
 md5sums=('SKIP')
 
