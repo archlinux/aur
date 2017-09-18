@@ -5,7 +5,7 @@
 _ver=1.19
 _pkgbase=mate-media
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 url="http://mate-desktop.org"
 pkgdesc="MATE Media Tools (GTK3 version)"
@@ -18,7 +18,7 @@ source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.
 groups=('mate-extra')
 replaces=("${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3" "${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
-sha1sums=('dc06b2bc59d032f34fbd560cfaadb4dd3fcd1028')
+sha1sums=('ed429471906ef22a9b94d6c03e066ab9e21b4832')
 
 prepare() {
     cd "${srcdir}"
