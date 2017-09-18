@@ -5,7 +5,7 @@
 
 pkgbase=virtualbox-modules-bfq
 pkgname=('virtualbox-host-modules-bfq' 'virtualbox-guest-modules-bfq')
-pkgver=5.1.26
+pkgver=5.1.28
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
@@ -52,5 +52,6 @@ package_virtualbox-guest-modules-bfq() {
 	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/guest.install"
 }
+
 
 
