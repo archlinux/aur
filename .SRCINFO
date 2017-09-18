@@ -1,6 +1,6 @@
 pkgbase = mate-screensaver-dev
 	pkgdesc = Screensaver for MATE
-	pkgver = 1.17.1
+	pkgver = 1.19.0
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -10,12 +10,12 @@ pkgbase = mate-screensaver-dev
 	makedepends = intltool>=0.50.1
 	depends = dbus-glib
 	depends = glib2
-	depends = libmatekbd-dev
+	depends = libmatekbd>=1.19
 	depends = libnotify
 	depends = libxss
-	depends = mate-desktop-dev
-	depends = mate-menus-dev
-	depends = mate-session-manager-dev
+	depends = mate-desktop>=1.19
+	depends = mate-menus>=1.19
+	depends = mate-session-manager>=1.19
 	optdepends = mate-power-manager: Add power management support.
 	optdepends = mate-screensaver-hacks: Additional screensavers.
 	optdepends = rss-glx: Really slick screensavers.
@@ -23,8 +23,8 @@ pkgbase = mate-screensaver-dev
 	provides = mate-screensaver-gtk3
 	conflicts = mate-screensaver
 	conflicts = mate-screensaver-gtk3
-	source = http://pub.mate-desktop.org/releases/1.17/mate-screensaver-1.17.1.tar.xz
-	sha1sums = 8d4283952fe371b92b441969698f32550cc7244f
+	source = http://pub.mate-desktop.org/releases/1.19/mate-screensaver-1.19.0.tar.xz
+	sha1sums = 6ace0a24c4386216630ae9633d029167899875c9
 
 pkgname = mate-screensaver-dev
 	pkgdesc = Screensaver for MATE (GTK3 version)
