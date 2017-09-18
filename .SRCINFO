@@ -1,7 +1,7 @@
 pkgbase = polo-bin
 	pkgdesc = A modern, light-weight GTK file manager for Linux, currently in beta (.deb binary version)
 	pkgver = 17.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.teejeetech.in/
 	arch = i686
 	arch = x86_64
