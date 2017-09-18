@@ -13,8 +13,8 @@ pkgrel=1
 arch=('any')
 url="http://piro.sakura.ne.jp/xul/_treestyletab.html.en"
 depends=("firefox>=52")
-source=("https://addons.mozilla.org/firefox/downloads/file/410478/${_plugin_name}-${pkgver}${_plugin_ext}.xpi")
-sha256sums=('d571f6e11daaec28bf9ec77edcd6f23cfaf5e5f55cd670d63b678f69048c7747')
+source=("https://addons.cdn.mozilla.net/user-media/addons/5890/${_plugin_name}-${pkgver}${_plugin_ext}.xpi")
+sha256sums=('3adbb6d24d1f80c45176b4f2aac3e046341d38389a840d8f1fab83c4724a017c')
 
 package() {
   cd "${srcdir}"
