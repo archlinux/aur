@@ -2,7 +2,6 @@
 # Contributor: yugrotavele <yugrotavele at archlinux dot us>
 # Contributor: Alois Nespor <alois.nespor@gmail.com>
 
-pkgbase=ogmrip
 pkgname=ogmrip-ac3
 pkgver=0.3
 pkgrel=2
