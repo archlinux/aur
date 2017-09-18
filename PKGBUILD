@@ -1,24 +1,26 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 # Contributor: yugrotavele <yugrotavele at archlinux dot us>
 # Contributor: Alois Nespor <alois.nespor@gmail.com>
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
 
+pkgbase=ogmrip
 pkgname=ogmrip-ac3
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="This plugin enables transcoding to AC-3."
 url="http://ogmrip.sourceforge.net/"
 license=('LGPL')
 groups=('ogmrip')
 depends=('ogmrip' 'mplayer' 'aften')
+makedepends=(intltool)
 source=("http://downloads.sourceforge.net/sourceforge/ogmrip/$pkgname-$pkgver.tar.gz"
 	"http://sourceforge.net/projects/ogmrip/files/${pkgname}/${pkgver}/README"
 )
+sha256sums=('80787cddfa11fc6a6758cc71abc58547d77a56f9f6ac9edd9d567ffad8577dc5'
+            '2a279741a19acc8b9df86f22694cc74c92e4b97fa3459f7da4cbde4986b5b8f0')
 build(){
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/\(-Wall \)-Werror /\1/g' ./configure || return 1
-
+  sed -i 's/\(-Wall \)-Werror /\1/g' ./configure
   ./configure --prefix=/usr
   make
 }
@@ -27,5 +29,3 @@ package(){
   make DESTDIR="$pkgdir/" install
   install -Dm0644 README ${pkgdir}/usr/share/ogmrip-ac3/README
 }
-md5sums=('e2fb08d4f01e60b388f7f73a81d54d80'
-         '4010d2697f0b1916f56c9032cec49525')
