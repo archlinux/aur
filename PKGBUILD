@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Complimentary package for users who have donated to Polo or contributed in other ways such as translations, code changes, etc."
 arch=('i686' 'x86_64')
 url="http://www.teejeetech.in/"
-depends=('polo>=17.9'
+depends=('polo'
          'youtube-dl'
          'pngcrush'
          'ghostscript'

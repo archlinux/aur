@@ -5,7 +5,7 @@ pkgbase = polo-donation-plugins
 	url = http://www.teejeetech.in/
 	arch = i686
 	arch = x86_64
-	depends = polo>=17.9
+	depends = polo
 	depends = youtube-dl
 	depends = pngcrush
 	depends = ghostscript
