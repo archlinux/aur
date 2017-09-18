@@ -1,5 +1,5 @@
---- tutanota-tutanota-release-2.14.4/package.json	2017-01-25 07:15:05.000000000 -0500
-+++ tutanota-tutanota-release-2.14.4/package.json	2017-06-03 11:13:18.982147751 -0400
+--- tutanota-tutanota-release-2.14.6/package.json	2017-09-13 03:22:21.000000000 -0400
++++ tutanota-tutanota-release-2.14.6/package.json	2017-09-18 10:31:28.143452676 -0400
 @@ -30,7 +30,7 @@
      "gulp-sort": "1.0.1",
      "gulp-sourcemaps": "~1.1.0",

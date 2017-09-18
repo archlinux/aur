@@ -2,7 +2,7 @@
 # Contributor: dacoit <dacoit at tuta dot io>
 
 pkgname=tutanota
-pkgver=2.14.4
+pkgver=2.14.6
 pkgrel=1
 pkgdesc="Web-based client for Tutanota's end-to-end encrypted mail service"
 url="https://tutanota.com"
@@ -11,8 +11,8 @@ license=('GPL3')
 makedepends=('npm' 'gulp')
 source=("https://github.com/tutao/tutanota/archive/tutanota-release-$pkgver.tar.gz"
         "update-karma.patch")
-sha256sums=('f0ff0feae83494ce2eb84abdce35c22d16a5d589e42d5044238ca72f1eeb5cfc'
-            '5772735c89d935d0511b00b22e50d5424a81ffc682fb473f13810c77e60dea75')
+sha256sums=('d9af7d3e418c7190c9bfd4735230aece1245605bb508e94346465332c52bb21d'
+            '358b76cdfae84faffbdefd6a12c612ac8b95d9a128ef0326d707f70fbde2073f')
 
 # Set to any value to install a symlink from the document root to the webapp
 _doc_root_symlink=
