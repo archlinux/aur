@@ -1,0 +1,12 @@
+pkgbase = aerospike-amc-community
+	pkgdesc = Aerospike Management Console (AMC) is a web-based tool to monitor/manage an Aerospike cluster
+	pkgver = 4.0.13
+	pkgrel = 1
+	url = http://www.aerospike.com/
+	arch = x86_64
+	license = AGPLv3
+	source = http://www.aerospike.com/download/amc/4.0.13/artifact/linux
+	sha256sums = dfccbfb3f712e66baa1bde3e7fbeae4955bf33dcb518b496eb780e01dc3a8e98
+
+pkgname = aerospike-amc-community
+
