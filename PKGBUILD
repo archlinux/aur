@@ -5,7 +5,7 @@
 
 pkgname=firefox-esr
 pkgver=52.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -26,7 +26,9 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
         firefox-install-dir.patch fix-wifi-scanner.diff
 		use-noexcept-instead-of-an-exception-specification-in-mozalloc.patch
-		breakpad-still-uses-struct-ucontext-in-ucontext_reader-cc.patch)
+		breakpad-still-uses-struct-ucontext-in-ucontext_reader-cc.patch
+		clip-ft-glyph.diff
+		harmony-fix.diff)
 sha256sums=('c16bc86d6cb8c2199ed1435ab80a9ae65f9324c820ea0eeb38bf89a97d253b5b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
@@ -35,7 +37,9 @@ sha256sums=('c16bc86d6cb8c2199ed1435ab80a9ae65f9324c820ea0eeb38bf89a97d253b5b'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
             '37e127dbed0285dc48e8033959a84e241c3e5cf0ce9544a172e640b54d3dfe0e'
-            '1fe3b7f8b14f1978b96866f983d16709581d9df389fb46881fa63f080d036931')
+            '1fe3b7f8b14f1978b96866f983d16709581d9df389fb46881fa63f080d036931'
+            'dc4feddbf22ea11ae2513c68b7f3fc9047850d055a7f30d31a7ee94d7d5de12a'
+            '8ed42e75b577d57e4b07f1d70137cb8e82f757abb616f1cfea694a041ad5679e')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -72,6 +76,12 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
   patch -Np1 -i ../breakpad-still-uses-struct-ucontext-in-ucontext_reader-cc.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1393467
+  patch -Np1 -i ../clip-ft-glyph.diff
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1400721
+  patch -Np1 -i ../harmony-fix.diff
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key

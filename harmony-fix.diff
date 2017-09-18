@@ -1,0 +1,43 @@
+# HG changeset patch
+# User Lee Salzman <lsalzman@mozilla.com>
+# Date 1505762237 14400
+#      Mon Sep 18 15:17:17 2017 -0400
+# Node ID b48346dc7742fbbc8284a907983098856503a4f1
+# Parent  60baec2de6577d8a109e417545ad1b6542481068
+fix Skia's glyph LCD filter padding for FreeType 2.8.1
+
+MozReview-Commit-ID: JFvnANsTS0r
+
+diff --git a/gfx/skia/skia/src/ports/SkFontHost_cairo.cpp b/gfx/skia/skia/src/ports/SkFontHost_cairo.cpp
+--- a/gfx/skia/skia/src/ports/SkFontHost_cairo.cpp
++++ b/gfx/skia/skia/src/ports/SkFontHost_cairo.cpp
+@@ -661,20 +661,25 @@ void SkScalerContext_CairoFT::generateMe
+         bbox.yMin &= ~63;
+         bbox.xMax = (bbox.xMax + 63) & ~63;
+         bbox.yMax = (bbox.yMax + 63) & ~63;
+         glyph->fWidth  = SkToU16(SkFDot6Floor(bbox.xMax - bbox.xMin));
+         glyph->fHeight = SkToU16(SkFDot6Floor(bbox.yMax - bbox.yMin));
+         glyph->fTop    = -SkToS16(SkFDot6Floor(bbox.yMax));
+         glyph->fLeft   = SkToS16(SkFDot6Floor(bbox.xMin));
+ 
+-        if (isLCD(fRec) &&
+-            gSetLcdFilter &&
+-            (fLcdFilter == FT_LCD_FILTER_DEFAULT ||
+-             fLcdFilter == FT_LCD_FILTER_LIGHT)) {
++        if (isLCD(fRec)) {
++            // In FreeType < 2.8.1, LCD filtering, if explicitly used, may
++            // add padding to the glyph. When not used, there is no padding.
++            // As of 2.8.1, LCD filtering is now always supported and may
++            // add padding even if an LCD filter is not explicitly set.
++            // Regardless, if no LCD filtering is used, or if LCD filtering
++            // doesn't add padding, it is safe to modify the glyph's bounds
++            // here. generateGlyphImage will detect if the mask is smaller
++            // than the bounds and clip things appropriately.
+             if (fRec.fFlags & kLCD_Vertical_Flag) {
+                 glyph->fTop -= 1;
+                 glyph->fHeight += 2;
+             } else {
+                 glyph->fLeft -= 1;
+                 glyph->fWidth += 2;
+             }
+         }

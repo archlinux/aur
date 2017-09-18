@@ -1,7 +1,7 @@
 pkgbase = firefox-esr
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
 	pkgver = 52.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = i686
 	arch = x86_64
@@ -53,6 +53,8 @@ pkgbase = firefox-esr
 	source = fix-wifi-scanner.diff
 	source = use-noexcept-instead-of-an-exception-specification-in-mozalloc.patch
 	source = breakpad-still-uses-struct-ucontext-in-ucontext_reader-cc.patch
+	source = clip-ft-glyph.diff
+	source = harmony-fix.diff
 	validpgpkeys = 2B90598A745E992F315E22C58AB132963A06537A
 	sha256sums = c16bc86d6cb8c2199ed1435ab80a9ae65f9324c820ea0eeb38bf89a97d253b5b
 	sha256sums = c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826
@@ -63,6 +65,8 @@ pkgbase = firefox-esr
 	sha256sums = 9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8
 	sha256sums = 37e127dbed0285dc48e8033959a84e241c3e5cf0ce9544a172e640b54d3dfe0e
 	sha256sums = 1fe3b7f8b14f1978b96866f983d16709581d9df389fb46881fa63f080d036931
+	sha256sums = dc4feddbf22ea11ae2513c68b7f3fc9047850d055a7f30d31a7ee94d7d5de12a
+	sha256sums = 8ed42e75b577d57e4b07f1d70137cb8e82f757abb616f1cfea694a041ad5679e
 
 pkgname = firefox-esr
 
