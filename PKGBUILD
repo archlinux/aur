@@ -25,6 +25,8 @@ pkgver() {
 package() {
   cd ${pkgname}
   install -Dm644 contents/code/main.js "${pkgdir}/usr/share/kwin/scripts/${_name}/contents/code/main.js"
+  install -Dm644 contents/config/main.xml "${pkgdir}/usr/share/kwin/scripts/${_name}/contents/config/main.xml"
+  install -Dm644 contents/ui/config.ui "${pkgdir}/usr/share/kwin/scripts/${_name}/contents/ui/config.ui"
   install -Dm644 metadata.desktop "${pkgdir}/usr/share/kservices5/${_name}.desktop"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
