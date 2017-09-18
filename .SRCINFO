@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-window-animations-git
+	pkgdesc = Adds task icons grouped by workspace to the panel.
+	pkgver = r16.be678c7
+	pkgrel = 1
+	url = https://github.com/rliang/gnome-shell-extension-window-animations
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-window-animations
+	source = gnome-shell-extension-window-animations-git::git+https://github.com/rliang/gnome-shell-extension-window-animations.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-window-animations-git
+
