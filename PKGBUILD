@@ -2,32 +2,34 @@
 
 pkgname=python-trollius
 _pyname=trollius
-pkgver=1.0.4
+pkgver=2.1
 pkgrel=1
-pkgdesc="Port of the Tulip project (asyncio module, PEP 3156)"
-url="https://bitbucket.org/enovance/trollius"
+pkgdesc='Port of the Tulip project (asyncio module, PEP 3156)'
+url='https://github.com/haypo/trollius'
 arch=("any")
 license=('Apache')
 depends=('python')
 makedepends=('python-sphinx')
-source=(https://pypi.python.org/packages/source/t/${_pyname}/${_pyname}-${pkgver}.tar.gz)
-sha512sums=('f8df8c9f0034e6075e2a356a0bcfcd7908d98d8d14b07332a71de0115753e17335f5b8030c06c6b2a5b79437392ccf13f92d46155622f789b13c36d04c6d1f9e')
+checkdepends=('python-pytest')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/haypo/trollius/archive/trollius-${pkgver}.tar.gz)
+sha256sums=('c9f7f35b011afa6adbd92d91ca347e76412ac3ff56a53133d36800892e5e6383')
+sha512sums=('30e9234fcd702dfb2a843efeab00a499f83e5e3621d19b0468fa77827697d730d69a24917db259349b6d59340a07e035098a8e57f3719993ae6374127ae06b1c')
 
 build() {
-  cd ${_pyname}-${pkgver}/doc
+  cd ${_pyname}-${_pyname}-${pkgver}/doc
   make man text
 }
 
 check() {
-  cd ${_pyname}-${pkgver}
-  python runtests.py
+  cd ${_pyname}-${_pyname}-${pkgver}
+  PYTHONPATH=. py.test -k 'not test_step_future'
 }
 
 package() {
-  cd ${_pyname}-${pkgver}
+  cd ${_pyname}-${_pyname}-${pkgver}
   python setup.py install -O1 --root="${pkgdir}"
-  install -Dm 644 README "${pkgdir}/usr/share/doc/${pkgbase}/README"
-  install -Dm 644 doc/build/text/{asyncio,using}.txt -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -Dm 644 doc/build/text/*.txt -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 doc/build/man/trollius.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
   cp -r examples "${pkgdir}/usr/share/doc/${pkgbase}"
 }
