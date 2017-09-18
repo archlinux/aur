@@ -33,7 +33,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgbase="intel-parallel-studio-xe"
-pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-advisor' 'intel-vtune-amplifier-xe' 'intel-inspector' )
+pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-advisor' 'intel-vtune-amplifier' 'intel-inspector' )
 PKGEXT='.pkg.tar.lzo'
 packager="Ignat Harczuk"
 
@@ -51,39 +51,34 @@ _remove_static_objects_mkl=false
 _remove_static_objects_ipp=false
 ########################################
 
-_year='2017'
-_v_a='4'
-_v_b='196'
+_year='2018'
+_v_a='0'
+_v_b='128'
 # year, version a and version b found in /opt/intel/compilers_and_libraries_YEAR_A_B
 
-_update='4'
+_update=''
 
-pkgrel=2
+pkgrel=1
 
 
-_sp=''
-_icc_ver='17.0.4' # intel-ccompxe-${_v_b}-${_icc_ver}.noarch.rpm
-# _ipp_ver='9.0.3' # intel-ipp-ac-${_v_b}-${_ipp_ver}.${arch}.rpm
-# ipp ver not seen in rpm's
-_mpi_ver='5.1.3' # intel-mpi-${_v_b}-${_ipp_ver}.${arch}.rpm
-# mpi ver not needed
-_mkl_ver="11.3.3" # intel-mkl-cluster-${_v_b}-${_mkl_ver}.${arch}.rpm
-_tbb_ver='4.4.3' # intel-tbb-${_v_b_}-${_tbb_ver}.noarch.rpm
+_sp='professional_edition'
+_icc_ver='18.0.4' 
+_mpi_ver='5.1.3' 
+_mkl_ver="11.3.3" 
+_tbb_ver='4.4.3' 
+_vtune_ver='0.2.525261' 
+_inspector_ver='1.0.522981' 
+_advisor_ver='1.0.523188' 
 
-_vtune_ver='3.0.510739' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
-_inspector_ver='1.3.510645' # intel-inspector-${year}-*-${_inspector_ver}.${arch}.rpm
-_advisor_ver='1.3.510716' # intel-advisor-${year}-*-${_advisor_ver}.${arch}.rpm
-
-# Different version for docs
-# Actually same version from update 4 2017
-_vtune_man_ver='3.0.510739'
-_inspector_man_ver='1.3.510645'
-_advisor_man_ver='1.3.510716'
+# Same version from update 4 2017
+_vtune_man_ver='0.2.525261'
+_inspector_man_ver='1.0.522981'
+_advisor_man_ver='1.0.523188'
 
 
 pkgver=${_year}.${_icc_ver}.${_v_a}.${_v_b}
 
-_dir_nr='11537'
+_dir_nr='12062'
 
 options=(strip libtool staticlibs)
 
@@ -95,9 +90,9 @@ makedepends=('libarchive' 'sed' 'gzip' 'lzop')
 _parallel_studio_xe_dir="parallel_studio_xe${_year:+_${_year}}${_sp:+_${_sp}}${_update:+_update${_update}}"
 
 source=(
-  "http://registrationcenter-download.intel.com/akdlm/irc_nas/${_dir_nr}/${_parallel_studio_xe_dir}.tgz"
+  "http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/${_dir_nr}/${_parallel_studio_xe_dir}.tgz"
   'intel_compilers.sh'
-  'intel_vtune-amplifier-xe.sh'
+  'intel_vtune-amplifier.sh'
   'intel_advisor.sh'
   'intel_inspector.sh'
   'intel-composer.install'
@@ -116,7 +111,7 @@ source=(
 )
 
 
-sha256sums=('27d34625adfc635d767c136b5417a372f322fabe6701b651d858a8fe06d07f2d'
+sha256sums=('72308ffa088391ea65726a79d7a73738206fbb1d8ed8563e3d06eab3120fb1a0'
             '75fcdfc246949341afddcf51b2037f606f25612a04c199ac1a743247aa7c4ea5'
             '278f9545d14c1fbec737bbfbcafb1b9090d35aab0dfeddc99d4c6e296b56057b'
             'e3103fb1c5e2ec9f0cc4090abb7e273563e735d88e185f527c66b2aebd52e733'
@@ -333,14 +328,11 @@ package_intel-compiler-base() {
 
 
   cp ${srcdir}/intel-compiler-base.conf ${xe_build_dir}/etc/ld.so.conf.d
-
   cd ${xe_build_dir}
   echo -e " # intel_compiler-base: Extracting RPMS"
 
-
   extract_rpms 'intel-icc*.rpm'  $xe_build_dir
   extract_rpms 'intel-comp*.rpm'  $xe_build_dir
-  extract_rpms 'intel-ccomp*.rpm'  $xe_build_dir
   extract_rpms 'intel-openmp*.rpm'  $xe_build_dir
 
 
@@ -430,6 +422,7 @@ package_intel-fortran-compiler() {
   echo -e " # intel-fortran-compiler: Coping man pages"
   mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
 
+
   cd ${_man_dir}
   for f in *.1 ; do
     gzip $f
@@ -449,7 +442,6 @@ package_intel-ipp() {
 
   pkgdesc="Intel Integrated Performance Primitives $_ipp_ver"
   pkgver=${_pkg_ver}
-  #depends=('intel-compiler-base')
   install=intel-composer.install
 
   echo -e " # intel-ipp: Start Building"
@@ -474,15 +466,6 @@ package_intel-ipp() {
   rm ippvars.csh
   sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' ippvars.sh
 
-  #cd $_i_arch
-  #rm ippvars_${_i_arch}.csh
-  #sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' ippvars_${_i_arch}.sh
-
-  # remove the unneeded and problematic ipp_minigzip and ipp_gzip
-  #for _z_dir_name in 'ipp_zlib' 'ipp_gzip' 'ipp_bzip2'  ; do
-  #  rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/bin/ipp/interfaces/data-compression/${_z_dir_name}/bin/${_not_arch}
-  #done
-
   if ${_remove_docs} ; then
     echo -e " # intel-ipp: Remove documentation"
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Documentation
@@ -506,7 +489,6 @@ package_intel-mkl() {
 
   pkgdesc="Intel Math Kernel Library (Intel® MKL) $_mkl_ver"
   pkgver=${_pkg_ver}
-  #depends=('intel-compiler-base')
   install=intel-mkl.install
   backup=('etc/intel-mkl-th.conf')
 
@@ -539,13 +521,8 @@ package_intel-mkl() {
 
   rm -rf ./${_not_arch}
 
-  #cd $_i_arch
-  #rm mklvars_${_i_arch}.csh
-  #sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' mklvars_${_i_arch}.sh
-
   if ${_remove_docs} ; then
     echo -e " # intel-mkl: remove documentation"
-    #rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Documentation
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/examples
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/benchmarks
   fi
@@ -567,8 +544,6 @@ package_intel-mpi() {
 
   pkgdesc="Intel MPI library $_mpi_ver"
   pkgver=${_pkg_ver}
-  #depends=('intel-compiler-base')
-  #install=intel-mpi.install
 
   echo -e " # intel-mpi: Start Building "
 
@@ -600,16 +575,6 @@ package_intel-mpi() {
 
   chmod a+x mpivars.sh
 
-  #echo -e " # intel-mpi: Remove unneeded libs and bin "
-  #rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mpi/bin64/${_not_arch}
-  #rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mpi/lib/${_not_arch}
-
-  #if $_remove_docs ; then
-  #  echo -e " # intel-tbb: remove documentation "
-  #  rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Documentation
-  #  rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/tbb/examples
-  #fi
-
   echo -e " # intel-mpi: Move package "
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
@@ -621,7 +586,6 @@ package_intel-tbb_psxe() {
 
   pkgdesc="Intel Threading Building Blocks (TBB) $_tbb_ver"
   pkgver=${_pkg_ver}
-  #depends=('intel-compiler-base')
   install=intel-tbb.install
 
   echo -e " # intel-tbb: Start Building "
@@ -666,7 +630,7 @@ package_intel-tbb_psxe() {
   mv ${xe_build_dir}/etc ${pkgdir}
 }
 
-package_intel-vtune-amplifier-xe() {
+package_intel-vtune-amplifier() {
 
   set_build_vars
 
@@ -674,41 +638,43 @@ package_intel-vtune-amplifier-xe() {
   pkgver=${_pkg_ver}
   depends=('pangox-compat')
 
-  echo -e " # intel-vtune-amplifier-xe: Start building"
+  echo -e " # intel-vtune-amplifier: Start building"
   mkdir -p ${xe_build_dir}/opt
   mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
   mkdir -p ${xe_build_dir}/etc/profile.d
   mkdir -p ${_man_dir}
 
-  echo -e " # intel-vtune-amplifier-xe: Editing variables "
+  echo -e " # intel-vtune-amplifier: Editing variables "
   if [ "$CARCH" = "i686" ]; then
-    sed -i 's/<arch>/bin32/g' ${srcdir}/intel_vtune-amplifier-xe.sh
+    sed -i 's/<arch>/bin32/g' ${srcdir}/intel_vtune-amplifier.sh
   else
-    sed -i 's/<arch>/bin64/g' ${srcdir}/intel_vtune-amplifier-xe.sh
+    sed -i 's/<arch>/bin64/g' ${srcdir}/intel_vtune-amplifier.sh
   fi
-  cp ${srcdir}/intel_vtune-amplifier-xe.sh ${xe_build_dir}/etc/profile.d/
-  chmod a+x ${xe_build_dir}/etc/profile.d/intel_vtune-amplifier-xe.sh
+  cp ${srcdir}/intel_vtune-amplifier.sh ${xe_build_dir}/etc/profile.d/
+  chmod a+x ${xe_build_dir}/etc/profile.d/intel_vtune-amplifier.sh
 
   cd ${xe_build_dir}
-  echo -e " # intel-vtune-amplifier-xe: Extracting RPMS "
-  extract_rpms 'intel-vtune-amplifier-xe-*.rpm'  $xe_build_dir
+  echo -e " # intel-vtune-amplifier: Extracting RPMS "
+  extract_rpms 'intel-vtune-amplifier-*.rpm'  $xe_build_dir
 
-  echo -e " # intel-vtune-amplifier-xe: Coping man pages"
-  mv ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_man_ver}/man/man1/*.1 ${_man_dir}
-  #mv ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_ver}/man/man1/*.1 ${_man_dir}
+  echo -e " # intel-vtune-amplifier: Coping man pages"
+  if [[ -d ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_man_ver}/man/man1 ]]
+  then
+    mv ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_man_ver}/man/man1/*.1 ${_man_dir}
+    cd ${_man_dir}
+    for f in *.1 ; do
+      gzip $f
+    done
+  fi
 
-  cd ${_man_dir}
-  for f in *.1 ; do
-    gzip $f
-  done
 
   if $_remove_docs ; then
-    echo -e " # intel-vtune-amplifier-xe: remove documentation "
+    echo -e " # intel-vtune-amplifier: remove documentation "
     rm -rf ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_ver}/samples
     rm -rf ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_ver}/documentation
   fi
 
-  echo -e " # intel-vtune-amplifier-xe: Move package"
+  echo -e " # intel-vtune-amplifier: Move package"
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
   mv ${xe_build_dir}/usr ${pkgdir}
@@ -742,16 +708,19 @@ package_intel-advisor() {
   extract_rpms 'intel-advisor-*.rpm'  $xe_build_dir
 
   echo -e " # intel-advisor: Coping man pages"
-  #mv ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_ver}/man/man1/*.1 ${_man_dir}
-  mv ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_man_ver}/man/man1/*.1 ${_man_dir}
 
-  cd ${_man_dir}
-  for f in *.1 ; do
-    gzip $f
-  done
+  if [[ -d ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_man_ver}/man/man1 ]]
+  then
+    mv ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_man_ver}/man/man1/*.1 ${_man_dir}
+    cd ${_man_dir}
+    for f in *.1 ; do
+      gzip $f
+    done
+  fi
+
 
   if $_remove_docs ; then
-    echo -e " # intel-vtune-amplifier-xe: remove documentation "
+    echo -e " # intel-vtune-amplifier: remove documentation "
     rm -rf ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_ver}/samples
     rm -rf ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_ver}/documentation
   fi
@@ -788,15 +757,18 @@ package_intel-inspector() {
   extract_rpms 'intel-inspector-*.rpm'  $xe_build_dir
 
   echo -e " # intel-inspector: Coping man pages"
-  mv ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_man_ver}/man/man1/*.1 ${_man_dir}
+  if [[ -d ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_man_ver}/man/man1 ]]
+  then
+    mv ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_man_ver}/man/man1/*.1 ${_man_dir}
+    cd ${_man_dir}
+    for f in *.1 ; do
+      gzip $f
+    done
+  fi
 
-  cd ${_man_dir}
-  for f in *.1 ; do
-    gzip $f
-  done
 
   if $_remove_docs ; then
-    echo -e " # intel-vtune-amplifier-xe: remove documentation "
+    echo -e " # intel-vtune-amplifier: remove documentation "
     rm -rf ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_ver}/samples
     rm -rf ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_ver}/documentation
   fi
