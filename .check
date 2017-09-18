@@ -9,6 +9,6 @@ if [ $(<.version.info) == $(<.old-version.info) ]
 then
     echo "$NOW" ' -> Micro Editor version numbers are the same, so no changes needed.' >> micro-editor-check.log
 else
-    echo -e "$NOW" ' -> \e[31mMicro Editor version differ - so PKGBUILD and .SRCINFO needs updating to latest version info.\e[0m' >> micro-editor-check.log
+    echo -e "$NOW" ' -> \e[32mMicro Editor version differ - so PKGBUILD and .SRCINFO needs updating to latest version info.\e[0m' >> micro-editor-check.log
     source ./.update
 fi
