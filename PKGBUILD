@@ -2,8 +2,8 @@
 
 pkgname=simpmd-git
 pkgdesc="Full emulator of PMD85 (git)"
-pkgver=r1.4472469
-pkgrel=2
+pkgver=r55.f6c7da3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://dsrg.mff.cuni.cz/~ceres/prj/SimPMD/"
 license=('apache')
@@ -11,14 +11,14 @@ depends=('sdl' 'python' 'popt' 'doxygen')
 replaces=('simpmd-svn')
 source=("${pkgname}"::'git+https://github.com/jose1711/simpmd.git' 'simpmd.desktop')
 md5sums=('SKIP'
-         '8fba184b70c9eea6cbe63a9b567fd8b7')
+         '547f49d0df09285a3881491e8c3469a2')
 
 
 build() {
   cd ${srcdir}/${pkgname}
   make PMD_BUILD=RELEASE PMD_SHARE=/usr/share/simpmd/
   chmod 755 data/monitors/M{1,2,2-Patched-Tape}
-  sed '/1/s/$/2/' bin/ptp2raw bin/mem2raw bin/rawinfo
+  sed -i '1s/$/2/' bin/ptp2raw bin/mem2raw bin/rawinfo
 }
 
 pkgver() {
@@ -29,12 +29,15 @@ pkgver() {
 package() {
   cd ${srcdir}/${pkgname}
   mkdir -p $pkgdir/usr/share/{doc/simpmd-${pkgver},simpmd}
-  install -D -m755 bin/simpmd $pkgdir/usr/bin/simpmd
-  install -D -m755 bin/ptp2raw $pkgdir/usr/bin/ptp2raw
-  install -D -m755 bin/mem2raw $pkgdir/usr/bin/mem2raw
-  install -D -m755 bin/rawinfo $pkgdir/usr/bin/rawinfo
+  install -Dm755 bin/simpmd $pkgdir/usr/bin/simpmd
+  install -Dm755 bin/ptp2raw $pkgdir/usr/bin/ptp2raw
+  install -Dm755 bin/mem2raw $pkgdir/usr/bin/mem2raw
+  install -Dm755 bin/rawinfo $pkgdir/usr/bin/rawinfo
   rm Makefile
-  install -D -m644 * $pkgdir/usr/share/doc/simpmd-${pkgver} || true
+  install -Dm644 * $pkgdir/usr/share/doc/simpmd-${pkgver} || true
   cd ${srcdir}/${pkgname}/data
+  mv monitors/* .
+  rmdir monitors
   cp -r . ${pkgdir}/usr/share/simpmd
+  install -Dm644 $srcdir/simpmd.desktop ${pkgdir}/usr/share/applications/simpmd.desktop
 }

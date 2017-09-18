@@ -2,5 +2,5 @@
 Type=Application
 Name=SimPMD
 Comment=PMD85 emulator
-Exec=simpmd
+Exec=simpmd --zoom=2
 Categories=System;Emulator;
