@@ -1,5 +1,5 @@
-# Maintainer: Troy Engel <troyengel+arch@gmail.com>
-# Contributor: Eduard Wirch <wirch.eduard@gmail.com>
+# Maintainer: Eduard Wirch <wirch.eduard@gmail.com>
+# Contributor: Troy Engel <troyengel+arch@gmail.com>
 
 pkgname=xeroxprtdrv
 pkgver=5.20.606.3946
