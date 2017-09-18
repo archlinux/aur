@@ -2,7 +2,7 @@
 
 pkgname=bisq
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
 url="https://bitsquare.io/"
