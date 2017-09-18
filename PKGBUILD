@@ -13,11 +13,11 @@ groups=('xfce-themes-shimmer-collection')
 conflicts=("$pkgname-git")
 depends=('gtk-engine-murrine')
 optdepends=('elementary-xfce-icons: matching icon set; use the dark icon theme'
-    'gtk3: required for CSS/GTK3 theme'
-    'lightdm-gtk-greeter: required for the LightDM GTK theme'
-    'lightdm-unity-greeter: required for the LightDM Unity theme'
-    'shimmer-wallpapers: contains the Greybird wallpaper, among others'
-    'lib32-gtk-engine-murrine: required for multilib')
+            'gtk3: required for CSS/GTK3 theme'
+            'lightdm-gtk-greeter: required for the LightDM GTK theme'
+            'lightdm-unity-greeter: required for the LightDM Unity theme'
+            'shimmer-wallpapers: contains the Greybird wallpaper, among others'
+            'lib32-gtk-engine-murrine: required for multilib')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/shimmerproject/Greybird/archive/v$pkgver.tar.gz")
 sha256sums=('a4c0f5f8172fa7035c35668099715e3e33be249b2dfaf48dbed480991a5b8563')
 
