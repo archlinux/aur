@@ -1,12 +1,15 @@
-# Maintainer: Kohei Suzuki <eagletmt@gmail.com>
+# Maintainer: NOGISAKA Sadata <ngsksdt@gmail.com>
+# Contributor: Kohei Suzuki <eagletmt@gmail.com>
+
 pkgname=ghq
-pkgver=0.7.4
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Manage remote repository clones"
 arch=('i686' 'x86_64')
 url="https://github.com/motemen/ghq"
 license=('MIT')
 makedepends=('go' 'git')
+optdepends=('zsh: ghq function for zsh')
 source=("ghq-${pkgver}.tar.gz::https://github.com/motemen/ghq/archive/v${pkgver}.tar.gz")
 
 build() {
@@ -31,4 +34,4 @@ package() {
 
 # vim: set et sw=2 sts=2:
 
-sha512sums=('1c8e9b433061940133805b0cdd7db26f3a1be801cb196acdca6d56a1dac0a2b412296cbc69d6e2fc0b784d6951d906b3da5dc7f11a02bd22d3d15c2e7fc87227')
+sha512sums=('8b9e9f1d2445391700b91559c4c95968e26f083d5af50102d2bc05baa1f5b92a5d19b8bb3fbb2c48071ed20851a55b4bc8fc1ef60bcb299f04404a56fff15902')
