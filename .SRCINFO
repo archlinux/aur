@@ -1,0 +1,20 @@
+pkgbase = squidguard
+	pkgdesc = SquidGuard is a URL redirector to use blacklists with the proxysoftware Squid
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.squidguard.org
+	install = squidguard.install
+	arch = x86_64
+	license = GPL
+	depends = bison
+	depends = flex
+	depends = db
+	depends = squid
+	backup = etc/squidguard/squidGuard.conf
+	source = http://www.squidguard.org/Downloads/Devel/squidGuard-1.5-beta.tar.gz
+	source = squidguard-patch.diff
+	md5sums = 85216992d14acb29d6f345608f21f268
+	md5sums = c3834cd2180ac8b919f9fb36327bf43c
+
+pkgname = squidguard
+
