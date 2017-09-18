@@ -1,7 +1,7 @@
 # Maintainer:  Alexei Colin <ac at alexeicolin dot com>
 
 pkgname=ccstudio
-pkgver=7.2.0.00013
+pkgver=7.3.0.00019
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
 arch=('x86_64')
@@ -36,12 +36,12 @@ optdepends=('ttf-dejavu')
 
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS${pkgver}_linux-x64
-source=("http://software-dl.ti.com/ccs/esd/CCSv7/CCS_7_2_0/exports/${_archive}.tar.gz"
+source=("http://software-dl.ti.com/ccs/esd/CCSv7/CCS_7_3_0/exports/${_archive}.tar.gz"
         "LICENSE"
         "61-msp430uif.rules"
         "71-sd-permissions.rules")
 
-md5sums=('7c89745cd4f7067f9ba7b8851b4db0cf'
+md5sums=('67ad7fe7b2a895e9218ec4bde5f2eba4'
          'cf7222e486f8f1d2a0f99d3d946e1f01'
          '7c570e9f93da6f01986285db81d497ef'
          'af8a8c199be432919b4ca66106591c25')
@@ -50,7 +50,7 @@ install=$pkgname.install
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
-_desktop="Code Composer Studio 7.2.0.desktop"
+_desktop="Code Composer Studio 7.3.0.desktop"
 
 _destdir=opt
 _installdir=installdir
