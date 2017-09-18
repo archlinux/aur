@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-intel-tbb
-pkgver=2017_20170604
-_pkgver=2017_U7
+pkgver=2018_20170726
+_pkgver=2018
 pkgrel=1
 pkgdesc='High level abstract threading library (mingw-w64)'
 depends=('mingw-w64-crt')
@@ -10,19 +10,15 @@ options=('!buildflags' '!strip' 'staticlibs')
 arch=('any')
 url='http://www.threadingbuildingblocks.org/'
 license=('APACHE')
-source=("https://github.com/01org/tbb/archive/${_pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/wjakob/tbb/master/CMakeLists.txt"
-        "https://raw.githubusercontent.com/wjakob/tbb/master/build/version_string.ver.in")
-sha1sums=('8340c35c29a26081eb92426a98accb6c15dfa729'
-          'SKIP'
-          'SKIP')
+source=("https://github.com/01org/tbb/archive/${_pkgver}.tar.gz")
+sha1sums=('e54de69981905ad69eb9cf0226b9bf5f9a4ba065')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "$srcdir"/tbb-${_pkgver}
-  cp "$srcdir"/CMakeLists.txt .
-  cp "$srcdir"/version_string.ver.in build
+  curl -L https://raw.githubusercontent.com/wjakob/tbb/master/CMakeLists.txt -o CMakeLists.txt
+  curl -L https://raw.githubusercontent.com/wjakob/tbb/master/build/version_string.ver.in -o build/version_string.ver.in
 }
 
 build() {
