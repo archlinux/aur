@@ -2,13 +2,13 @@
 _pkgname=fd
 pkgname=fd-rs-git
 pkgver=119
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, fast and user-friendly alternative to find.'
 arch=('i686' 'x86_64')
 url="https://github.com/sharkdp/fd"
 license=('MIT')
 depends=()
-conflicts=('fd', 'fd-rs')
+conflicts=('fd' 'fd-rs')
 provides=('fd-rs')
 makedepends=('rust' 'cargo' 'git')
 source=("git+https://github.com/sharkdp/fd.git")

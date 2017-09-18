@@ -1,7 +1,7 @@
 pkgbase = fd-rs-git
 	pkgdesc = A simple, fast and user-friendly alternative to find.
 	pkgver = 119
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sharkdp/fd
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fd-rs-git
 	makedepends = cargo
 	makedepends = git
 	provides = fd-rs
-	conflicts = fd,
+	conflicts = fd
 	conflicts = fd-rs
 	source = git+https://github.com/sharkdp/fd.git
 	md5sums = SKIP
