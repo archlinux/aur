@@ -2,7 +2,7 @@
 # Based on PKGBUILD firefox-extension-useragentswitcher
 
 _plugin_name=firegestures
-_plugin_version=1.10.7
+_plugin_version=1.11.1
 _plugin_ext=
 pkgdesc="A customizable mouse gestures extension for Firefox"
 license=('MPL 1.1' 'GPL 2.0' 'LGPL 2.1')
@@ -12,9 +12,9 @@ pkgver=${_plugin_version}
 pkgrel=1
 arch=('any')
 url="http://www.xuldev.org/firegestures/"
-depends=("firefox>=41")
+depends=("firefox>=50")
 source=("https://addons.mozilla.org/firefox/downloads/latest/6366/addon-6366-latest.xpi")
-sha256sums=('f9636aedd9ddf5b5c29058584a5906066b033d5bd070e3c2bd21e7f549a411b8')
+sha256sums=('ee3ac71575be99ebccb856de78212654bf8808aff2a3c8edd76eae1aa1f97ed6')
 
 prepare() {
   cd "${srcdir}"
