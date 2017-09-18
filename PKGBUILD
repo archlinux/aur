@@ -1,10 +1,11 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
-# Contributor: Christophe Gueret <christophe.gueret@gmail.com>
-# Contributor: josephgbr <rafael.f.f1@gmail.com>
-# Contributor: cmorlok <christianmorlok@web.de>
-# Contributor: fazibear <fazibear@gmail.com>
-# Contributor: neuromante <lorenzo.nizzi.grifi@gmail.com>
-# Contributor: Gordin <9ordin @t gmail.com>
+# Maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
+# Contributor:  Vlad M. <vlad@archlinux.net>
+# Contributor:  Christophe Gueret <christophe.gueret@gmail.com>
+# Contributor:  josephgbr <rafael.f.f1@gmail.com>
+# Contributor:  cmorlok <christianmorlok@web.de>
+# Contributor:  fazibear <fazibear@gmail.com>
+# Contributor:  neuromante <lorenzo.nizzi.grifi@gmail.com>
+# Contributor:  Gordin <9ordin @t gmail.com>
 
 pkgname=nautilus-dropbox
 pkgver=2015.10.28
@@ -20,19 +21,21 @@ source=("https://linux.dropbox.com/packages/$pkgname-$pkgver.tar.bz2")
 md5sums=('d1d0832b4af2998ad7094bdfe1f5c300')
 
 build() {
-  cd "$pkgname-$pkgver"
-  sed -i "s/python/python2/" configure dropbox.in Makefile.in rst2man.py
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make
+    cd "$pkgname-$pkgver"
+    sed -i "s/python/python2/" configure dropbox.in Makefile.in rst2man.py
+    ./configure --prefix=/usr --sysconfdir=/etc
+    make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
-  # install the common license
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-  # remove executables and depend on 'dropbox' package
-  rm "$pkgdir/usr/bin/dropbox"
-  rm "$pkgdir/usr/share/applications/dropbox.desktop"
-  rm "$pkgdir/usr/share/man/man1/dropbox.1"
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir" install
+
+    # install the common license
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+    # remove executables and depend on 'dropbox' package
+    rm "$pkgdir/usr/bin/dropbox"
+    rm "$pkgdir/usr/share/applications/dropbox.desktop"
+    rm "$pkgdir/usr/share/man/man1/dropbox.1"
 }
