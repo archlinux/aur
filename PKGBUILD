@@ -3,7 +3,7 @@
 
 pkgname=goatattack
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast-paced multiplayer pixel art shooter game."
 arch=("any")
 url="http://www.goatattack.net/"
@@ -19,7 +19,7 @@ prepare() {
 	gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Goat Attack" --exec "$pkgname" --categories "Game"
 
 	autoreconf -i
-	./configure --prefix=/usr --enable-map-editor
+	CPPFLAGS="-I/usr/include/freetype2" ./configure --prefix=/usr --enable-map-editor
 }
 
 build() {
