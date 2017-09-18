@@ -20,7 +20,7 @@ source=("http://$pkgname.com/$_pkgname-$pkgver-linux.zip"
 md5sums=('3ef845089a3db23791831043b756d1de'
          '9f69204a3353d6ca8ab16a0f8df5185e'
          '9e447434129fae9d99eeada08ac7d1f3'
-         'f20f58bfbf9818ab913a086269f74f06')
+         '136c9659ff19f3d47b08d8d1d124d370')
 
 package() {
   install -Dm755 ${srcdir}/${_pkgname}/${_pkgname} ${pkgdir}/usr/share/${pkgname}/${pkgname}
