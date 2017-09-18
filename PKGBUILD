@@ -2,7 +2,7 @@
 
 _pkgname=vim
 pkgname=gvim-gtk2
-pkgver=8.0.1118
+pkgver=8.0.1123
 pkgrel=1
 pkgdesc="Vim, the text editor. CLI version and GTK2 GUI providing majority of features."
 arch=("i686" "x86_64")
@@ -32,7 +32,7 @@ prepare() {
     # set global configuration files to /etc/[g]vimrc
     sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' src/feature.h
     sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1|' src/feature.h
-#    cd src && patch -p2 < "$srcdir/extern.patch"
+    cd src
     autoconf
 }
 
