@@ -1,0 +1,16 @@
+pkgbase = ppd-dell-e525w
+	pkgdesc = Dell Color Multifunction Printer E525w Linux PPD Driver
+	pkgver = 1.0_28
+	pkgrel = 1
+	url = http://www.dell.com/support/home/il/he/ildhs1/Drivers/DriversDetails?driverId=074W2
+	arch = any
+	license = Dell Software License Agreement
+	makedepends = unzip
+	makedepends = rpmextract
+	depends = cups
+	noextract = Printer_E525w_Driver_Dell_A00_Linux.zip
+	source = https://downloads.dell.com/FOLDER03001259M/1/Printer_E525w_Driver_Dell_A00_Linux.zip
+	sha256sums = de9c04666e3d7a71e230d928b8e4314cc09dffc1f1cba5b8524bffb339d40015
+
+pkgname = ppd-dell-e525w
+
