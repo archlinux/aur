@@ -3,8 +3,8 @@
 
 pkgname=ghq
 pkgver=0.8.0
-pkgrel=2
-pkgdesc="Manage remote repository clones"
+pkgrel=3
+pkgdesc="Remote repository management made easy"
 arch=('i686' 'x86_64')
 url="https://github.com/motemen/ghq"
 license=('MIT')

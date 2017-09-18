@@ -1,7 +1,7 @@
 pkgbase = ghq
-	pkgdesc = Manage remote repository clones
+	pkgdesc = Remote repository management made easy
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/motemen/ghq
 	arch = i686
 	arch = x86_64
