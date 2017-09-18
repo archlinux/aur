@@ -1,0 +1,13 @@
+--- Programs/UnrealBuildTool/Linux/LinuxToolChain.cs	2017-09-18 13:23:56.529341978 -0500
++++ -	2017-09-18 13:38:41.330879953 -0500
+@@ -390,6 +390,10 @@
+ 				{
+ 					Result += " -Wno-undefined-var-template"; // not really a good warning to disable
+ 				}
++				if(CompilerVersionGreaterOrEqual(5,0,0))
++				{
++					Result += " -Wno-unused-lambda-capture";
++				}
+ 			}
+ 
+ 			Result += " -Wno-unused-variable";

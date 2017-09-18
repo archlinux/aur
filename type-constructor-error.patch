@@ -1,0 +1,160 @@
+--- UnrealEngine/Engine/Source/Editor/Kismet/Private/DiffUtils.cpp	2017-09-18 10:06:49.748755011 -0500
++++ -	2017-09-18 15:32:42.495191548 -0500
+@@ -669,7 +669,7 @@
+ 	const auto GenerateWidget = []() -> TSharedRef<SWidget>
+ 	{
+ 		return SNew(STextBlock)
+-			.ColorAndOpacity(FLinearColor::FLinearColor(.7f, .7f, .7f))
++			.ColorAndOpacity(FLinearColor(.7f, .7f, .7f))
+ 			.TextStyle(FEditorStyle::Get(), TEXT("BlueprintDif.ItalicText"))
+ 			.Text(NSLOCTEXT("FBlueprintDifferenceTreeEntry", "NoDifferencesLabel", "No differences detected..."));
+ 	};
+@@ -688,7 +688,7 @@
+ 	const auto GenerateWidget = []() -> TSharedRef<SWidget>
+ 	{
+ 		return SNew(STextBlock)
+-			.ColorAndOpacity(FLinearColor::FLinearColor(.7f, .7f, .7f))
++			.ColorAndOpacity(FLinearColor(.7f, .7f, .7f))
+ 			.TextStyle(FEditorStyle::Get(), TEXT("BlueprintDif.ItalicText"))
+ 			.Text(NSLOCTEXT("FBlueprintDifferenceTreeEntry", "AnimBlueprintsNotSupported", "Warning: Detecting differences in Animation Blueprint specific data is not yet supported..."));
+ 	};
+@@ -722,7 +722,7 @@
+ 	const auto GenerateWidget = []() -> TSharedRef<SWidget>
+ 	{
+ 		return SNew(STextBlock)
+-			.ColorAndOpacity(FLinearColor::FLinearColor(.7f, .7f, .7f))
++			.ColorAndOpacity(FLinearColor(.7f, .7f, .7f))
+ 			.TextStyle(FEditorStyle::Get(), TEXT("BlueprintDif.ItalicText"))
+ 			.Text(NSLOCTEXT("FBlueprintDifferenceTreeEntry", "WidgetTreeNotSupported", "Warning: Detecting differences in Widget Blueprint specific data is not yet supported..."));
+ 	};
+--- UnrealEngine/Engine/Plugins/Developer/OneSkyLocalizationService/Source/OneSkyLocalizationService/Private/OneSkyLocalizationServiceOperations.cpp	2017-09-18 10:06:49.198766497 -0500
++++ -	2017-09-18 14:47:14.314913930 -0500
+@@ -1136,7 +1136,7 @@
+ 	int32 InProjectId = -1;
+ 	int32 InImportId = -1;
+ 	int32 InExecutionDelayInSeconds = -1;
+-	FDateTime InCreationTimeStamp = FDateTime::FDateTime(1970, 1, 1);
++	FDateTime InCreationTimeStamp = FDateTime(1970, 1, 1);
+ 
+ 	if (ShowImportTaskOp.IsValid())
+ 	{
+--- UnrealEngine/Engine/Source/Editor/Sequencer/Private/SequencerEdMode.cpp	2017-09-18 10:06:49.818753548 -0500
++++ -	2017-09-18 15:30:59.676115828 -0500
+@@ -470,7 +470,7 @@
+ 								}
+ 								else if (TrailActor != nullptr)
+ 								{
+-									TrailActor->AddFrameMeshComponent(NewTime, FTransform::FTransform(NewRot, NewPos, FVector::FVector(3.0f)));
++									TrailActor->AddFrameMeshComponent(NewTime, FTransform(NewRot, NewPos, FVector(3.0f)));
+ 								}
+ 							}
+ 							OldTime = NewTime;
+@@ -522,7 +522,7 @@
+ 
+ 					for (UMovieScene3DTransformSection* Section : AllSections)
+ 					{
+-						TrailActor->AddKeyMeshActor(NewKeyTime, FTransform::FTransform(NewKeyRot, NewKeyPos, FVector::FVector(3.0f)), Section);
++						TrailActor->AddKeyMeshActor(NewKeyTime, FTransform(NewKeyRot, NewKeyPos, FVector(3.0f)), Section);
+ 					}
+ 				}
+ 
+--- UnrealEngine/Engine/Source/Editor/VREditor/VREditorActions.cpp	2017-09-18 10:06:49.888752087 -0500
++++ -	2017-09-18 15:34:43.700976663 -0500
+@@ -325,7 +325,7 @@
+ 	{
+ 		TCHAR CharKey = InChar[CharIndex];
+ 		const bool bRepeat = false;
+-		FCharacterEvent CharacterEvent(CharKey, FModifierKeysState::FModifierKeysState(), 0, bRepeat);
++		FCharacterEvent CharacterEvent(CharKey, FModifierKeysState(), 0, bRepeat);
+ 		FSlateApplication::Get().ProcessKeyCharEvent(CharacterEvent);
+ 	}
+ 
+@@ -348,12 +348,12 @@
+ 	uint32 KeyCode = KeyCodePtr ? *KeyCodePtr : 0;
+ 	uint32 CharCode = CharCodePtr ? *CharCodePtr : 0;
+ 
+-	FKeyEvent KeyEvent( Key, FModifierKeysState::FModifierKeysState(), 0, bRepeat, KeyCode, CharCode );
++	FKeyEvent KeyEvent( Key, FModifierKeysState(), 0, bRepeat, KeyCode, CharCode );
+ 	bool DownResult = FSlateApplication::Get().ProcessKeyDownEvent( KeyEvent );
+ 
+ 	if (CharCodePtr)
+ 	{
+-		FCharacterEvent CharacterEvent( CharCode, FModifierKeysState::FModifierKeysState(), 0, bRepeat );
++		FCharacterEvent CharacterEvent( CharCode, FModifierKeysState(), 0, bRepeat );
+ 		FSlateApplication::Get().ProcessKeyCharEvent( CharacterEvent );
+ 	}
+ }
+@@ -367,7 +367,7 @@
+ 	uint32 KeyCode = KeyCodePtr ? *KeyCodePtr : 0;
+ 	uint32 CharCode = CharCodePtr ? *CharCodePtr : 0;
+ 
+-	FKeyEvent KeyEvent( Key, FModifierKeysState::FModifierKeysState(), 0, false, KeyCode, CharCode );
++	FKeyEvent KeyEvent( Key, FModifierKeysState(), 0, false, KeyCode, CharCode );
+ 	FSlateApplication::Get().ProcessKeyUpEvent( KeyEvent );
+ }
+ 
+--- UnrealEngine/Engine/Source/Editor/VREditor/UI/VREditorRadialFloatingUI.cpp	2017-09-18 10:06:49.888752087 -0500
++++ -	2017-09-18 15:04:03.863734470 -0500
+@@ -433,7 +433,7 @@
+ 	{
+ 		if (CurrentlyHoveredButton.Get() != nullptr)
+ 		{
+-			const FPointerEvent& SimulatedPointer = FPointerEvent::FPointerEvent();
++			const FPointerEvent& SimulatedPointer = FPointerEvent();
+ 			CurrentlyHoveredButton->OnMouseLeave(SimulatedPointer);
+ 			if (CurrentlyHoveredWidget != nullptr)
+ 			{
+@@ -495,7 +495,7 @@
+ 	{
+ 		CurrentlyHoveredButton = StaticCastSharedRef<SButton>(TestWidget);
+ 		CurrentlyHoveredWidget = WidgetComponents[Index];
+-		const FPointerEvent& SimulatedPointer = FPointerEvent::FPointerEvent();
++		const FPointerEvent& SimulatedPointer = FPointerEvent();
+ 		const FGeometry& ChildGeometry = FGeometry();
+ 
+ 		// Simulate mouse entering event for the button if it was not previously hovered
+--- UnrealEngine/Engine/Source/Editor/VREditor/UI/VREditorUISystem.cpp	2017-09-18 10:06:49.888752087 -0500
++++ -	2017-09-18 15:07:15.046308985 -0500
+@@ -1725,7 +1725,7 @@
+ 	{
+ 		TSharedRef<SImage> Image = StaticCastSharedRef<SImage>(TestWidget);
+ 		Image->SetRenderTransformPivot(FVector2D(0.5f, 0.5f));
+-		Image->SetRenderTransform(FSlateRenderTransform::FTransform2D(4.0f));	
++		Image->SetRenderTransform(FTransform2D(4.0f));	
+ 	}
+ 
+ 	// Format the button text
+@@ -1935,7 +1935,7 @@
+ 		FSlateIcon(),
+ 		FUIAction
+ 		(
+-			FExecuteAction::CreateStatic( &FVREditorActionCallbacks::SimulateCharacterEntry, FString::FString( TEXT( "-" ) ) )
++			FExecuteAction::CreateStatic( &FVREditorActionCallbacks::SimulateCharacterEntry, FString( TEXT( "-" ) ) )
+ 		)
+ 	);
+ 	MenuBuilder.AddMenuEntry(
+@@ -1944,7 +1944,7 @@
+ 		FSlateIcon(),
+ 		FUIAction
+ 		(
+-			FExecuteAction::CreateStatic( &FVREditorActionCallbacks::SimulateCharacterEntry, FString::FString( TEXT( "." ) ) )
++			FExecuteAction::CreateStatic( &FVREditorActionCallbacks::SimulateCharacterEntry, FString( TEXT( "." ) ) )
+ 		)
+ 	);
+ 	MenuBuilder.AddMenuEntry(
+@@ -2418,7 +2418,7 @@
+ 		{
+ 			TSharedRef<SButton> Button = StaticCastSharedRef<SButton>(TestWidget);
+ 			Button->SetRenderTransformPivot(FVector2D(0.5f, 0.5f));
+-			Button->SetRenderTransform(FSlateRenderTransform::FTransform2D(2.0f));
++			Button->SetRenderTransform(FTransform2D(2.0f));
+ 		}
+ 		const bool bWithSceneComponent = false;
+ 		PreviewPanel->SetSlateWidget(WidgetToDraw);
+@@ -2475,4 +2475,4 @@
+ 	}
+ }
+ 
+-#undef LOCTEXT_NAMESPACE
+\ No newline at end of file
++#undef LOCTEXT_NAMESPACE

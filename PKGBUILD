@@ -7,7 +7,7 @@
 
 pkgname='unreal-engine'
 pkgver=4.17.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
@@ -20,6 +20,10 @@ source=(
   'UE4Editor.desktop'
   'ignore-return-value-error.patch'
   'disable-pie.patch'
+  'support-current-clang.patch'
+  'wunused-lambda-capture.patch'
+  'type-constructor-error.patch'
+  'only-generate-makefile.patch'
 )
 
 sha256sums=(
@@ -27,14 +31,23 @@ sha256sums=(
   '46871ed662a3c97698be609d27da280d9000ec97183f1fa6592986f9910a2118'
   'd0a43ec1958790be11c3260d6b93c8fd29d9c7fd3c3f57574d5807b9390a95fa'
   '32ab20e37f5595eff73fb7ee7916ecae19a47f72875f448663941621d166c13b'
+  '94874165fd685a4886a5cee6997bcc95e9f41b6d25a037f967171da3825f5e18'
+  '9f94c237d7b209a5dd615648756b992d6caf22dff1c63da74ffb108e896d03ff'
+  'f22a3a508f128d95b8dcb829ef6df8f1f0bb4c90c591771c0b46591a8c393289'
+  '9d642938263cb7b0539cdf2509bc2fe7faf05c48a5d319f31e0dc7a02e50d3ae'
 )
 
 # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
 options=(!strip)
 
 prepare() {
+  patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" support-current-clang.patch
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" ignore-return-value-error.patch
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" disable-pie.patch
+  patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" wunused-lambda-capture.patch
+  
+  patch -p0 -i only-generate-makefile.patch
+  patch -p0 -i type-constructor-error.patch
 
   # Source Code Accessors
 
