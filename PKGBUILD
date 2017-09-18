@@ -22,6 +22,6 @@ package() {
     echo -e 'You should:\n1. edit\e[36m /etc/default/grub \e[0m,add (or modify) the line \n \e[1m GRUB_THEME="/boot/grub/themes/StylishDark/theme.txt"\e[0m'
     echo -e '\e[0m \n2. execute \n \e[1m sudo grub-mkconfig -o /boot/grub/grub.cfg \e[0m after installation.\e[0m'
     echo '----------'
-    echo 'also you can use a gui app -- \e[1;33mgrub-customizer\e[0m for changing grub.'
+    echo -e 'also you can use a gui app -- \e[1m grub-customizer \e[0m for changing grub'
     echo '======='
 }
