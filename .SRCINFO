@@ -1,0 +1,43 @@
+pkgbase = android-tools-git
+	pkgdesc = Android platform tools
+	pkgver = r34539.06c65ed66
+	pkgrel = 1
+	url = http://tools.android.com/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = git
+	makedepends = clang
+	makedepends = gtest
+	makedepends = ruby
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = go
+	depends = pcre2
+	depends = libusb
+	optdepends = python: for mkbootimg script
+	provides = android-tools
+	conflicts = android-tools
+	replaces = android-tools
+	source = git+https://android.googlesource.com/platform/system/core
+	source = git+https://android.googlesource.com/platform/system/extras
+	source = git+https://android.googlesource.com/platform/external/selinux
+	source = git+https://android.googlesource.com/platform/external/f2fs-tools
+	source = git+https://boringssl.googlesource.com/boringssl#commit=54c259dec395bd991cce5691723214ffe588e51d
+	source = generate_build.rb
+	source = fix_build_core.patch
+	source = fix_build_selinux.patch
+	source = bash_completion.fastboot
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = db6569f6d55d447c3d10d7ca32cd638a775e4908
+	sha1sums = a672a01934656a7d0b1bf0419762f6365202728b
+	sha1sums = ec473160d7445f97bccabd1c32ac0ae2f77900c1
+	sha1sums = 7004dbd0c193668827174880de6f8434de8ceaee
+
+pkgname = android-tools-git
+

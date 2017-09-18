@@ -1,0 +1,81 @@
+diff --git a/adb/client/usb_libusb.cpp b/adb/client/usb_libusb.cpp
+index 7025f283c..66fad6564 100644
+--- a/adb/client/usb_libusb.cpp
++++ b/adb/client/usb_libusb.cpp
+@@ -21,6 +21,7 @@
+ #include <stdint.h>
+ 
+ #include <atomic>
++#include <condition_variable>
+ #include <chrono>
+ #include <memory>
+ #include <mutex>
+@@ -28,7 +29,7 @@
+ #include <thread>
+ #include <unordered_map>
+ 
+-#include <libusb/libusb.h>
++#include <libusb-1.0/libusb.h>
+ 
+ #include <android-base/file.h>
+ #include <android-base/logging.h>
+diff --git a/adb/sysdeps/posix/network.cpp b/adb/sysdeps/posix/network.cpp
+index 45da5af4a..516c716d9 100644
+--- a/adb/sysdeps/posix/network.cpp
++++ b/adb/sysdeps/posix/network.cpp
+@@ -16,6 +16,7 @@
+ 
+ #include "sysdeps/network.h"
+ 
++#include <cstring>
+ #include <errno.h>
+ #include <netinet/in.h>
+ #include <sys/socket.h>
+diff --git a/base/errors_unix.cpp b/base/errors_unix.cpp
+index 296995efe..48269b675 100644
+--- a/base/errors_unix.cpp
++++ b/base/errors_unix.cpp
+@@ -17,6 +17,7 @@
+ #include "android-base/errors.h"
+ 
+ #include <errno.h>
++#include <string.h>
+ 
+ namespace android {
+ namespace base {
+diff --git a/base/file.cpp b/base/file.cpp
+index 2f697a1cc..81aef5758 100644
+--- a/base/file.cpp
++++ b/base/file.cpp
+@@ -22,6 +22,7 @@
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include <unistd.h>
++#include <string.h>
+ 
+ #include <memory>
+ #include <mutex>
+diff --git a/base/logging.cpp b/base/logging.cpp
+index 6357b4ba7..3c7dbce13 100644
+--- a/base/logging.cpp
++++ b/base/logging.cpp
+@@ -23,6 +23,7 @@
+ #include <fcntl.h>
+ #include <libgen.h>
+ #include <time.h>
++#include <string.h>
+ 
+ // For getprogname(3) or program_invocation_short_name.
+ #if defined(__ANDROID__) || defined(__APPLE__)
+diff --git a/libsparse/sparse_read.cpp b/libsparse/sparse_read.cpp
+index bd668735a..76cf43299 100644
+--- a/libsparse/sparse_read.cpp
++++ b/libsparse/sparse_read.cpp
+@@ -18,6 +18,7 @@
+ #define _LARGEFILE64_SOURCE 1
+ 
+ #include <algorithm>
++#include <cstring>
+ #include <inttypes.h>
+ #include <fcntl.h>
+ #include <stdarg.h>
