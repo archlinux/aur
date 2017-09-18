@@ -1,13 +1,13 @@
 pkgbase = zed-git
 	pkgdesc = a code editor built using web technologies
-	pkgver = 0.11.2.r21.gad6574f
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://zedapp.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = node-webkit
+	depends = nwjs-bin
 	depends = nodejs
 	conflicts = zed
 	options = !strip
