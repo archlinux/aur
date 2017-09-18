@@ -1,12 +1,12 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 # Repository here: https://github.com/jonhoo/zed-PKGBUILD
 pkgname=zed-git
-pkgver=0.11.2.r21.gad6574f
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="a code editor built using web technologies"
 arch=('i686' 'x86_64')
 makedepends=('git')
-depends=('node-webkit' 'nodejs')
+depends=('nwjs-bin' 'nodejs')
 conflicts=('zed')
 provides=()
 options=(!strip)
