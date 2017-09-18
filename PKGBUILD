@@ -1,9 +1,9 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
-_cqzbuildid=20170830153152
+_cqzbuildid=20170908115024
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
@@ -14,11 +14,19 @@ makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-se
              autoconf2.13 rust)
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
-        'no-crmf.diff'
-        'fix-wifi-scanner.diff')
-sha256sums=('52b7a3c91ef4d6751a48ced5cb7bc6f1e3b4a13311ffbef7e008233936530ed3'
+        wifi-disentangle.patch
+        wifi-fix-interface.patch
+        clip-ft-glyph.diff
+        harmony-fix.diff
+        no-crmf.diff
+        glibc-2.26-fix.diff)
+sha256sums=('5f0ffe83a7db3608840895dc0fda57ebcc42a6581e3564ffc730f7daa3162803'
+            'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
+            'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
+            'd5e5580a96ecc4a66ce12dde0737c1ed5cb31017a6ec488ffe372192ed893e1b'
+            '16bb776e9f3039321db747b2eaece0cda1320f3711fb853a68d67247b0aa065d'
             'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
-            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
+            'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8')
 options=(!emptydirs !makeflags !strip)
 
 prepare() {
@@ -42,8 +50,19 @@ END
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
   patch -Np1 -i $srcdir/no-crmf.diff
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
+  patch -Np1 -i $srcdir/glibc-2.26-fix.diff
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
-  patch -Np1 -i $srcdir/fix-wifi-scanner.diff
+  patch -Np1 -i $srcdir/wifi-disentangle.patch
+  patch -Np1 -i $srcdir/wifi-fix-interface.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1393467
+  patch -Np1 -i $srcdir/clip-ft-glyph.diff
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1400721
+  patch -Np1 -i $srcdir/harmony-fix.diff
 
   # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
   # Note: These are for Arch Linux use ONLY. For your own distribution, please
