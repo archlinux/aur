@@ -1,6 +1,6 @@
 # Maintainer: Nigel Michki <nigeil@yahoo.com>
 pkgname=star-seq-alignment
-pkgver=v2.5
+pkgver=v2.5.3a
 pkgrel=1
 pkgdesc="An RNA-seq alignment suite, by Alexander Doin"
 arch=('i686' 
@@ -13,23 +13,23 @@ depends=()
 makedepends=('wget'
              'gcc')
 optdepends=()
-source=('https://github.com/alexdobin/STAR/archive/2.5.2b.tar.gz')
-md5sums=('31a0c48f4d163f11238e1f7add3ab5c4')
+source=('https://github.com/alexdobin/STAR/archive/2.5.3a.tar.gz')
+md5sums=('baf8d1b62a50482cfa13acb7652dc391')
 
 prepare() {
   msg2 "Downloading files"
   wget $source
   msg2 "Decompressing files"
-  tar -xzvf $srcdir/2.5.2b.tar.gz
+  tar -xzvf $srcdir/2.5.3a.tar.gz
 }
 
 build() {
-  cd $srcdir/STAR-2.5.2b/source
+  cd $srcdir/STAR-2.5.3a/source
   make STAR
 }
 
 package() {
   mkdir $pkgdir/usr
   mkdir $pkgdir/usr/bin
-  cp $srcdir/STAR-2.5.2b/source/STAR $pkgdir/usr/bin/star-seq-alignment
+  cp $srcdir/STAR-2.5.3a/source/STAR $pkgdir/usr/bin/star-seq-alignment
 }
