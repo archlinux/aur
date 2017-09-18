@@ -1,7 +1,7 @@
 pkgbase = squidguard
 	pkgdesc = SquidGuard is a URL redirector to use blacklists with the proxysoftware Squid
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.squidguard.org
 	install = squidguard.install
 	arch = x86_64
