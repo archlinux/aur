@@ -2,13 +2,13 @@
 
 pkgname=ddroom-git
 pkgver=r102.07dd715
-pkgrel=1
+pkgrel=2
 pkgdesc='Digital photo processing application'
 arch=('i686' 'x86_64')
 url='https://github.com/ddroom/DDRoom'
 license=('GPL')
 depends=(openjpeg2 lensfun qt5-base hicolor-icon-theme ocl-icd exiv2)
-makedepends=(libpng mesa exiv2 lensfun libgl libtiff zlib openjpeg expat qt5-base)
+makedepends=(libpng mesa exiv2 lensfun libgl libtiff zlib openjpeg expat qt5-base opencl-headers)
 provides=(ddroom)
 conflicts=(ddroom)
 source=(
@@ -37,15 +37,15 @@ pkgver(){
   fi
 }
 build(){
-  cd "$srcdir/$_gitname"
+  cd "$srcdir"/$_gitname
   qmake
   make -f Makefile.Release
 }
 package(){
   cd "$srcdir"/$_gitname
   make -f Makefile.Release DESTDIR="$pkgdir/" install
-  install -Dm755 release/ddroom $pkgdir/usr/bin/ddroom
-  install -Dm644 resources/ddroom.png $pkgdir/usr/share/icons/ddroom.png
-  install -Dm644 $srcdir/../ddroom.desktop $pkgdir/usr/share/applications/ddroom.desktop
+  install -Dm755 release/ddroom "$pkgdir"/usr/bin/ddroom
+  install -Dm644 resources/ddroom.png "$pkgdir"/usr/share/icons/ddroom.png
+  install -Dm644 "$srcdir"/../ddroom.desktop "$pkgdir"/usr/share/applications/ddroom.desktop
 }
 
