@@ -34,7 +34,7 @@ depends=('gtk3' 'libsm')
 
 makedepends=('itstool' 'intltool' 'python' 'gobject-introspection' 'gtk-doc')
 
-[[ "${_nautilus}"   == "yes" ]] && makedepends+=('libnautilus-extension')
+[[ "${_nautilus}"   == "yes" ]] && makedepends+=('libnautilus-extension' 'gnome-common')
 
 optdepends=('gvfs: bookmark support and session saving')
 provides=("${_pkgname}")
