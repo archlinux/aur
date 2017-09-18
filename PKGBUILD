@@ -13,6 +13,7 @@ pkgrel=1
 arch=('any')
 url="http://www.xuldev.org/firegestures/"
 depends=("firefox>=50")
+makedepends=('unzip')
 source=("https://addons.mozilla.org/firefox/downloads/latest/6366/addon-6366-latest.xpi")
 sha256sums=('ee3ac71575be99ebccb856de78212654bf8808aff2a3c8edd76eae1aa1f97ed6')
 
