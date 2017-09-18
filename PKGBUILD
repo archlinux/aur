@@ -8,7 +8,7 @@
 pkgname=gnucash-python
 _realname=gnucash
 pkgver=2.6.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A personal and small-business financial-accounting application with enabled python bindings."
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"

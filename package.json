@@ -1,7 +1,7 @@
 {
   "name": "gnucash-python",
   "description": "A personal and small-business financial-accounting application with python scripting enabled",
-  "version": "2.6.17-1",
+  "version": "2.6.17-2",
   "homepage": "http://www.thedarkestcave.net/",
   "author": {
     "name": "Jörg Schuck",
