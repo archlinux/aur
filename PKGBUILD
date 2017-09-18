@@ -2,7 +2,7 @@
 # vim: set ts=2 sw=2 et ft=sh:
 
 pkgname=qutebrowser-git
-pkgver=0.11.0.r334.ga942613d7
+pkgver=0.11.0.r842.g66e4c3286
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
 arch=(any)
@@ -47,7 +47,7 @@ package() {
   cd "$srcdir/qutebrowser"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 doc/qutebrowser.1 "$pkgdir/usr/share/man/man1/qutebrowser.1"
-  install -Dm644 qutebrowser.desktop \
+  install -Dm644 misc/qutebrowser.desktop \
     "$pkgdir/usr/share/applications/qutebrowser.desktop"
 
 	for i in 16 24 32 48 64 128 256 512; do
