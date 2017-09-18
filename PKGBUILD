@@ -3,7 +3,7 @@
 
 pkgname=i-nex-git
 pkgver=7.6.0.r61.g0c10102
-pkgrel=1
+pkgrel=2
 pkgdesc="System information tool like hardinfo, sysinfo"
 arch=('i686' 'x86_64')
 url="http://i-nex.linux.pl/"
@@ -44,15 +44,16 @@ pkgver() {
 
 prepare() {
     cd $pkgname
+    sed -i 's|python3$|python2|' pastebinit
     sed -i -e 's|^STATIC.*|STATIC = false|' i-nex.mk
     sed -i -e 's|^UDEV_RULES_DIR.*|UDEV_RULES_DIR = /usr/lib/udev/rules.d|' i-nex.mk
-    cd I-Nex
+    cd "I-Nex"
     autoreconf -i
 }
 
 build() {
     cd $pkgname
-    cd I-Nex
+    cd "I-Nex"
     ./configure --prefix=/usr
     cd ..
     make
@@ -60,5 +61,5 @@ build() {
 
 package() {
     cd $pkgname
-    make install DESTDIR="$pkgdir"
+    make DESTDIR="${pkgdir}/" install
 }
