@@ -1,61 +1,62 @@
 # Contributor: Guillaume DOLLÉ <dolle.guillaume at gmail.com>
-# Maintainer: George Eleftheriou <eleftg>
+# Contributor: George Eleftheriou <eleftg>
 
-pkgbase='feelpp'
 pkgname='feelpp'
-true && pkgname=( 'feelpp' 'feelpp-examples' )
-pkgver=0.99.0
+pkgver=0.103.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/feelpp"
 license=('LGPL')
-depends=('ann'
-         'cln'
-         'arpack'
-         'boost-libs'
-         'libxml2'
-         'gmsh'
-         'mumps'
-         'petsc' )
-makedepends=('cmake>=2.8.7')
-optdepends=( 'eigen3'
-             'fftw'
-             'metis'
-             'suitesparse'
-             'slepc'
-             'openturns'
-             'hdf5-openmpi'
-             'hdf5'
-             'gperftools' )
-
-source=($url/$pkgname/releases/download/v$pkgver-final.1/$pkgname-$pkgver-final.1.tar.gz)
+depends=('cln' 'mumps' 'slepsc' 'petsc' 'gmsh' 'fftw')
+makedepends=('cmake' 'eigen3')
+source=("https://github.com/feelpp/feelpp/releases/download/v${pkgver}/feelpp-${pkgver}.tar.gz" fix-compilation.patch)
+sha256sums=('e083b6107cd78eafede8b051e478093b52a52c961748721241c874cfad2b9fe9' SKIP)
 
 prepare() {
-    mkdir -p build
+  cd $pkgbase-$pkgver
+  grep -lr 'COMMAND python' contrib/ginac|xargs sed -i "s|COMMAND python |COMMAND python2 |g"
+
+  # need https://github.com/boostorg/qvm/commit/5209c985d843a52e428a497f9fb740e1741c86d4
+  curl -L https://github.com/boostorg/qvm/archive/master.zip -o qvm-master.zip
+  bsdtar -xf qvm-master.zip
+  cp -r qvm-master/include/boost .
+  
+  patch -p1 -i "$srcdir"/fix-compilation.patch
 }
+
+
 
 build() {
-    cd build
-    ../$pkgbase-$pkgver-final.1/configure -r --prefix=/usr
+  cd $pkgbase-$pkgver
+  mkdir -p build && cd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_C_COMPILER=/usr/bin/clang \
+    -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
+    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+    -DPETSC_DIR=/opt/petsc/linux-c-opt/ \
+    -DFEELPP_ENABLE_SYSTEM_EIGEN3=OFF \
+    -DFEELPP_ENABLE_OPENTURNS=OFF \
+    -DFEELPP_ENABLE_VTK=OFF \
+    -DFEELPP_ENABLE_QUICKSTART=OFF \
+    -DFEELPP_ENABLE_TOOLBOXES=OFF \
+    -DFEELPP_ENABLE_DOCUMENTATION=OFF \
+    -DFEELPP_ENABLE_BENCHMARKS=OFF \
+    -DFEELPP_ENABLE_APPLICATIONS=OFF \
+    -DFEELPP_ENABLE_TESTS=OFF \
+    -DFEELPP_ENABLE_RESEARCH=OFF \
+    -DFEELPP_USE_GMSH_PACKAGE=OFF \
+    -DBUILD_GUILE=OFF -DBUILD_MATLAB=OFF -DUSE_SWIG=OFF \
+    -DSUPPORT_OMP=OFF -DEIGEN_TEST_OPENMP=OFF \
+    ..
+  make feelpp -j1
+  make
 }
 
-package_feelpp() {
-    pkgdesc="Feel++ a library for finite element methods - libraries"
-    cd $srcdir/build/contrib/ginac
-    make DESTDIR="$pkgdir/" install
-    cd $srcdir/build/feel/
-    make DESTDIR="$pkgdir/" install
-    cd $srcdir/build/cmake/modules
-    make DESTDIR="$pkgdir/" install
-    install -D -m 0644 $srcdir/$pkgbase-$pkgver-final.1/COPYING.md $pkgdir/usr/share/licenses/${pkgbase//pp}/COPYING.md
-    install -D -m 0644 $srcdir/$pkgbase-$pkgver-final.1/ChangeLog  $pkgdir/usr/share/doc/${pkgbase//pp}/ChangeLog
-    install -D -m 0644 $srcdir/$pkgbase-$pkgver-final.1/README.md  $pkgdir/usr/share/doc/${pkgbase//pp}/README.md
+package() {
+  cd $pkgbase-$pkgver/build
+  make DESTDIR="$pkgdir/" install
 }
 
-package_feelpp-examples() {
-    pkgdesc="Feel++ a library for finite element methods - examples"
-    cd $srcdir/build/doc/manual/tutorial
-    make DESTDIR="$pkgdir/" install
-}
-
-md5sums=('47d49dde8af39a03c89fc0f64953db67')

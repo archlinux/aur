@@ -1,0 +1,40 @@
+From b89da3af89255f6da77780d4679fd693489528c2 Mon Sep 17 00:00:00 2001
+From: Vincent Chabannes <vincent.chabannes@feelpp.org>
+Date: Sat, 22 Jul 2017 10:05:47 +0200
+Subject: [PATCH] fix compilation
+
+---
+ feel/feeldiscr/detail/element_impl.hpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/feel/feeldiscr/detail/element_impl.hpp b/feel/feeldiscr/detail/element_impl.hpp
+index 8e13ae543b..9266694f42 100644
+--- a/feel/feeldiscr/detail/element_impl.hpp
++++ b/feel/feeldiscr/detail/element_impl.hpp
+@@ -370,7 +370,7 @@ FunctionSpace<A0, A1, A2, A3, A4>::Element<Y,Cont>::initSubElementView( mpl::tru
+ 
+ template<typename A0, typename A1, typename A2, typename A3, typename A4>
+ template<typename Y,  typename Cont>
+-FunctionSpace<A0, A1, A2, A3, A4>::Element<Y,Cont>&
++typename FunctionSpace<A0, A1, A2, A3, A4>::template Element<Y,Cont>&
+ FunctionSpace<A0, A1, A2, A3, A4>::Element<Y,Cont>::operator=( Element<Y,Cont> const& __e )
+ {
+     if (  this != &__e )
+@@ -395,7 +395,7 @@ FunctionSpace<A0, A1, A2, A3, A4>::Element<Y,Cont>::operator=( Element<Y,Cont> c
+ template<typename A0, typename A1, typename A2, typename A3, typename A4>
+ template<typename Y,  typename Cont>
+ template<typename ContOtherType>
+-FunctionSpace<A0, A1, A2, A3, A4>::Element<Y,Cont>&
++typename FunctionSpace<A0, A1, A2, A3, A4>::template Element<Y,Cont>&
+ FunctionSpace<A0, A1, A2, A3, A4>::Element<Y,Cont>::operator=( Element<Y,ContOtherType> const& v )
+ {
+     if ( !M_functionspace )
+@@ -412,7 +412,7 @@ FunctionSpace<A0, A1, A2, A3, A4>::Element<Y,Cont>::operator=( Element<Y,ContOth
+ template<typename A0, typename A1, typename A2, typename A3, typename A4>
+ template<typename Y,  typename Cont>
+ template<typename VectorExpr>
+-FunctionSpace<A0, A1, A2, A3, A4>::Element<Y,Cont>&
++typename FunctionSpace<A0, A1, A2, A3, A4>::template Element<Y,Cont>&
+ FunctionSpace<A0, A1, A2, A3, A4>::Element<Y,Cont>::operator=( VectorExpr const& __v )
+ {
+     super::operator=( __v );
