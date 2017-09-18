@@ -1,4 +1,4 @@
-# Maintainer:	M.Reynolds <blackboxnetworkproject@gmail.com>
+# Maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=raid-check-systemd
 pkgver=3.4
@@ -11,23 +11,23 @@ license=('GPL')
 depends=('mdadm' 'systemd')
 conflicts=('raid-check')
 source=("http://mirror.centos.org/centos/7/os/x86_64/Packages/mdadm-$pkgver-$_cent_rel.el7.x86_64.rpm"
-	'raid-check.service'
-	'raid-check.timer')
+        'raid-check.service'
+        'raid-check.timer')
 sha256sums=('44db174069927fd379fba7132f38a1231e3da1908682239d849b072235fe7be4'
             '90db8f53984df9d7ab32fde09a853632e9d76cbd91224c0efd760406118af84b'
             '4ef8adc88574127d2d8f119d42f2190782f8cafca8a7c627b6d5cace6b12af47')
 backup=('etc/conf.d/raid-check')
 install="$pkgname.install"
-        
+
 build() {
-        cd $srcdir
-        sed -i 's|sysconfig|conf.d|g' 'usr/sbin/raid-check'
+    cd $srcdir
+    sed -i 's|sysconfig|conf.d|g' 'usr/sbin/raid-check'
 }
 
 package() {
-	install -Dm 755 "$srcdir/usr/sbin/raid-check" "$pkgdir/usr/bin/raid-check"
-	install -Dm 644 "$srcdir/etc/sysconfig/raid-check" "$pkgdir/etc/conf.d/raid-check"
-	
-	install -Dm 644 "$srcdir/raid-check.service" "$pkgdir/usr/lib/systemd/system/raid-check.service"
-	install -Dm 644 "$srcdir/raid-check.timer" "$pkgdir/usr/lib/systemd/system/raid-check.timer"
+    install -Dm 755 "$srcdir/usr/sbin/raid-check" "$pkgdir/usr/bin/raid-check"
+    install -Dm 644 "$srcdir/etc/sysconfig/raid-check" "$pkgdir/etc/conf.d/raid-check"
+
+    install -Dm 644 "$srcdir/raid-check.service" "$pkgdir/usr/lib/systemd/system/raid-check.service"
+    install -Dm 644 "$srcdir/raid-check.timer" "$pkgdir/usr/lib/systemd/system/raid-check.timer"
 }
