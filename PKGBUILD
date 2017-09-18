@@ -10,9 +10,9 @@ _dvi="no"         # DVI file support
 _tiff="no"        # TIFF file support
 _xps="no"         # XPS file support
 _comics="no"      # CB[ZR7T] comics file support
-_bookmarks="no"   # Bookmarks and annotations support
 _previewer="no"   # GNOME Document Previewer support
 _thumbnailer="no" # GNOME Thumbnailer support
+_nautilus="no"    # GNOME Files support
 
 _pkgname=evince
 pkgname=${_pkgname}-light
@@ -31,9 +31,12 @@ depends=('gtk3' 'libsm')
 [[ "${_dvi}"        == "yes" ]] && depends+=('texlive-bin')
 [[ "${_xps}"        == "yes" ]] && depends+=('libgxps')
 [[ "${_comics}"     == "yes" ]] && depends+=('libarchive')
-[[ "${_bookmarks}"  == "yes" ]] && depends+=('gvfs')
 
-makedepends=('itstool' 'intltool' 'python')
+makedepends=('itstool' 'intltool' 'python' 'gobject-introspection' 'gtk-doc')
+
+[[ "${_nautilus}"   == "yes" ]] && makedepends+=('libnautilus-extension')
+
+optdepends=('gvfs: bookmark support and session saving')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://download.gnome.org/sources/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz")
@@ -53,6 +56,7 @@ build() {
     [[ "${_tiff}"        == "yes" ]] && _build_cfg+='--enable-tiff '        || _build_cfg+='--disable-tiff '
     [[ "${_previewer}"   == "yes" ]] && _build_cfg+='--enable-previewer '   || _build_cfg+='--disable-previewer '
     [[ "${_thumbnailer}" == "yes" ]] && _build_cfg+='--enable-thumbnailer ' || _build_cfg+='--disable-thumbnailer '
+    [[ "${_nautilus}"    == "yes" ]] && _build_cfg+='--enable-nautilus '    || _build_cfg+='--disable-nautilus '
 
     ./configure \
         --sysconfdir=/etc \
@@ -60,20 +64,20 @@ build() {
         --libexecdir=/usr/lib/${_pkgname} \
         --localstatedir=/var \
         --with-platform=gnome \
+        --disable-static \
         --disable-debug \
         --disable-maintainer-mode \
         --disable-schemas-compile \
+        --disable-libgnome-desktop \
+        --enable-dbus \
+        --enable-gtk-doc \
+        --enable-introspection \
         --enable-viewer \
         ${_build_cfg} \
         --enable-t1lib \
-        --disable-nautilus \
         --disable-browser-plugin \
-        --disable-gtk-doc \
-        --disable-introspection \
-        --enable-dbus \
         --without-keyring \
-        --with-gtk-unix-print \
-        --disable-libgnome-desktop
+        --with-gtk-unix-print
     make
 }
 
