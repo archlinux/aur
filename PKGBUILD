@@ -1,4 +1,5 @@
-# Maintainer: Jon Gjengset <jon@tsp.io>
+# Maintainer: Ashok Arora <arora8715@gmail.com>
+# Contributer: Jon Gjengset <jon@tsp.io>
 # Repository here: https://github.com/jonhoo/zed-PKGBUILD
 pkgname=zed-git
 pkgver=1.1.0
