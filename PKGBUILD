@@ -8,7 +8,7 @@ date=20170913
 url='http://www.fontconfig.org/release/'
 license=('custom' 'MIT')
 pkgver=2.12.5
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 groups=('infinality-bundle')
 depends=('expat' 'freetype2-infinality-ultimate')
@@ -58,7 +58,7 @@ prepare() {
   done
 
   # fc-blanks.py
-  #sed -i 's/python/python2/' fc-blanks/fc-blanks.py
+  sed -i 's/python/python2/' fc-blanks/fc-blanks.py
   aclocal
   libtoolize -f
   automake -afi
