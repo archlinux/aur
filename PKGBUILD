@@ -4,14 +4,14 @@
 
 pkgname=dsp-git
 _pkgname=dsp
-pkgver=242.af2f290
+pkgver=279.700283f
 pkgrel=1
 pkgdesc="An audio processing program with an interactive mode"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/bmc0/${_pkgname}"
 license=('ISC' 'GPL2' 'LGPL2.1')
-makedepends=('git')
-depends=('fftw' 'libsndfile' 'ffmpeg' 'alsa-lib' 'libao' 'libmad' 'libpulse' 'ladspa' 'zita-convolver')
+makedepends=('git' 'ladspa')
+depends=('fftw' 'libsndfile' 'ffmpeg' 'alsa-lib' 'libao' 'libmad' 'libpulse' 'zita-convolver' 'libltdl')
 source=("git+https://github.com/bmc0/${_pkgname}.git")
 md5sums=('SKIP')
 
