@@ -3,7 +3,7 @@
 pkgname=armory-bin
 pkgver=0.96.2
 _binver=0.96.2-gcc5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-featured Bitcoin wallet management application (official binary)"
 arch=('x86_64')
 url="https://github.com/goatpig/BitcoinArmory"
@@ -38,6 +38,7 @@ package() {
   find usr/lib/ -type f -exec sed -i 's|/usr/bin/env python|/usr/bin/env python2|g' {} \;
 
   mv usr $pkgdir
+  rm -r $pkgdir/usr/include
 
   cat "$pkgdir/usr/lib/armory/LICENSE.py" | tail -n +3 | head -n -1 > LICENSE
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
