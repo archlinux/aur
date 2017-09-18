@@ -4,7 +4,7 @@
 
 pkgname=awoken-icons
 pkgver=2.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple and quite complete icon set, Token-style."
 url="http://deviantart.com/view/163570862"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=("imagemagick: To color the iconset."
             "zenity: To have a GUI for the configuration script."
             "xdg-utils: To be able to launch programs from the configuration script.")
 source=(awoken-icons.install
-        "http://slackware.uk/sbosrcarch/by-md5/c/f/cfa211bdda30d28bf03c668f445095bb/AwOken-2.5.zip")
+        "https://www.dropbox.com/s/p3hfu7jw3vv7os9/AwOken-2.5.zip?dl=0")
 options=('!strip')
 sha256sums=('846c254776cb4763afc9db13387ff306f77be3537730d76a26f005ab3f77b611'
             'd122ee0457079aaa30a664ae582fbc6208414e8728f497dce399ed9f33f9b36e')
