@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-tilingnome-git
+	pkgdesc = Adds task icons grouped by workspace to the panel.
+	pkgver = r23.0e3a429
+	pkgrel = 1
+	url = https://github.com/rliang/gnome-shell-extension-tilingnome
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-tilingnome
+	source = gnome-shell-extension-tilingnome-git::git+https://github.com/rliang/gnome-shell-extension-tilingnome.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-tilingnome-git
+
