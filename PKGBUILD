@@ -11,7 +11,7 @@ arch=('any')
 url='http://www.threadingbuildingblocks.org/'
 license=('APACHE')
 source=("https://github.com/01org/tbb/archive/${_pkgver}.tar.gz")
-sha1sums=('e54de69981905ad69eb9cf0226b9bf5f9a4ba065')
+sha256sums=('94f643f1edfaccb57d64b503c7c96f00dec64e8635c054bbaa33855d72c5822d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
