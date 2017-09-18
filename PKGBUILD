@@ -2,7 +2,7 @@
 
 pkgname=squidguard
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="SquidGuard is a URL redirector to use blacklists with the proxysoftware Squid"
 arch=('x86_64')
 url="http://www.squidguard.org"
@@ -26,9 +26,9 @@ build() {
   sed -i '19,24 s/@[se]/$(DESTDIR)&/; /SQUIDUSER/d; 51d' Makefile.in
   ./configure \
 	--prefix=/usr \
-	--with-sg-config=/etc/$pkgname/squidGuard.conf \
-	--with-sg-logdir=/var/log/$pkgname \
-	--with-sg-dbhome=/var/lib/$pkgname/db \
+	--with-sg-config=/etc/squidGuard/squidGuard.conf \
+	--with-sg-logdir=/var/log/squidGuard \
+	--with-sg-dbhome=/var/lib/squidGuard/db \
 
   make
 }
