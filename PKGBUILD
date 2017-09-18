@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=jupyterlab_launcher
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Launch an application built using JupyterLab"
 arch=(any)
@@ -10,7 +10,7 @@ license=(custom)
 depends=(jupyter-notebook)
 makedepends=(python-setuptools)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/jupyterlab/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('72ce7e0567ec1c9f171845132f1c4758e1dddd05fd69018b8eaf5974f0dfede0')
+sha256sums=('35e219f9f62ab74aa5395cdfcec4ad32a507d00ce1f49df796f9a6b5366d0764')
 
 build() {
   cd $pkgname-$pkgver
