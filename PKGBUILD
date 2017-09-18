@@ -9,7 +9,7 @@ license=('MPL2')
 depends=('libx11' 'libxrandr')
 makedepends=('cargo')
 source=("https://github.com/Streetwalrus/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('634e7f026943b0169ffb0f57b5ecd3de')
+md5sums=('f7026866e15bce90196856a7841639d4')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
