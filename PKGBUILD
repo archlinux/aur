@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-gnutls
 pkgver=3.5.15
-pkgrel=1
+pkgrel=2
 pkgdesc='A library which provides a secure layer over a reliable transport layer (mingw-w64)'
 arch=('any')
 url="http://www.gnu.org/software/gnutls"
@@ -56,6 +56,12 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/gnutls-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
+
+    # remove libraries which conflict with libraries provided by mingw-w64-crt
+    # (those libs are likely only mocks for the testsuite)
+    rm "$pkgdir"/usr/${_arch}/lib/crypt32{.a,.dll.a,.dll}
+    rm "$pkgdir"/usr/${_arch}/lib/ncrypt{.a,.dll.a,.dll}
+
     ${_arch}-strip --strip-all "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
