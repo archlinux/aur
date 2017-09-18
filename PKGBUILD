@@ -11,17 +11,16 @@ pkgdesc="A modern, light-weight GTK file manager for Linux, currently in beta (.
 arch=('i686' 'x86_64')
 url="http://www.teejeetech.in/"
 license=('GPL2')
-depends=('gtk3' 'libgee' 'vte3' 'rsync')
+depends=('gtk3' 'libgee' 'vte3' 'libsoup' 'rsync' 'rclone' 'gvfs')
 makedepends=('chrpath')
 optdepends=('mediainfo: read media properties from audio and video files'
             'fish: terminal shell'
             'perl-image-exiftool: read EXIF properties from JPG/TIFF/PNG/PDF files'
-            'pv: get prograss info for compression and extraction'
-            'pdftk: converting PDF files'
+            'pv: get progress info for compression and extraction'
             'ffmpeg: generate thumbnails for video'
             'p7zip: read and extract multiple archive formats'
-            'ghostscript: converting PDF files'
-            'pngcrush: reduce file size of PNG files'
+            'gnome-disk-utility'
+            'lzop'
             'polo-donation-plugins')
 provides=('polo')
 conflicts=('polo' 'polo-bin')
