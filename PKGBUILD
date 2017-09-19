@@ -2,14 +2,14 @@
 
 _pkgname=polychromatic
 pkgname=$_pkgname-git
-pkgver=0.3.9.r13.gd51f92b
+pkgver=0.3.11.r5.g657ae7a
 pkgrel=1
 pkgdesc='A graphical front end for managing Razer peripherals under GNU/Linux.'
 arch=('any')
 license=('GPL2')
 source=("git+https://github.com/lah7/polychromatic.git")
 url='https://github.com/lah7/polychromatic'
-makedepends=('git' 'rsync')
+makedepends=('git' 'rsync' 'nodejs-less')
 depends=('python' 'hicolor-icon-theme' 'python-razer' 'webkit2gtk' 'libappindicator-gtk3' 'imagemagick')
 provides=('polychromatic')
 conflicts=('polychromatic')
