@@ -8,7 +8,6 @@ arch=('any')
 url="https://github.com/phocean/TopIcons-plus"
 license=('GPL2')
 depends=('gnome-shell')
-install=${pkgname}.install
 source=("https://github.com/phocean/TopIcons-plus/archive/v${pkgver}.tar.gz")
 sha256sums=('02ffe087b390b277ce3245b3db675977dad0ed5b6503d719e6e868d8a3082825')
 
