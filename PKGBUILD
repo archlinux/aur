@@ -4,7 +4,7 @@ _pkgbase='herdtools7'
 pkgname=('herdtools7-git')
 provides=('herdtools7')
 conflicts=('herdtools7')
-pkgver=r742.f2bb279
+pkgver=r744.6192a9b
 pkgrel=1
 pkgdesc="The Herd toolsuite to deal with .cat memory models"
 arch=('i686' 'x86_64')
@@ -12,15 +12,8 @@ url='https://github.com/herd/herdtools7'
 license=('CeCILL-B')
 depends=('ocaml')
 makedepends=('git' 'make' 'ocamlbuild')
-source=('git://github.com/herd/herdtools7'
-        'create-installation-paths.patch')
-sha256sums=('SKIP'
-            'a7b8c376201196064835fba0d646bee567fe2932900772045a75b6bdd2a9a2ff')
-
-prepare() {
-    cd $srcdir/$_pkgbase
-    git apply ../create-installation-paths.patch
-}
+source=('git://github.com/herd/herdtools7')
+sha256sums=('SKIP')
 
 build() {
     cd $srcdir/$_pkgbase
