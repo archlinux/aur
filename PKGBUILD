@@ -2,7 +2,7 @@
 pkgname=dracut-crypt-ssh
 pkgver=1.0.3
 pkgrel=1
-pkgdesc="dracut initramfs module to start dropbear sshd during boot to 
+pkgdesc="Dracut initramfs module to start dropbear sshd during boot to 
 enter LUKS passphrase remotely"
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/dracut-crypt-ssh/dracut-crypt-ssh"
