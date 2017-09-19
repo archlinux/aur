@@ -112,6 +112,7 @@ package() {
              -execdir=${pkgdir}/usr/bin \
              -targetdir=${pkgdir}/opt/Mathematica \
              -auto
+    msg2 "Errors related to 'xdg-icon-resource' and 'xdg-desktop-menu' are to be expected during Mathematica's installation."
 
     msg2 "Fixing symbolic links"
     cd ${pkgdir}/opt/Mathematica/Executables
