@@ -5,7 +5,7 @@ pkgname=${_pkgname}-git
 pkgver=0.16.2.r0.g1da0bd1
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://vdirsyncer.readthedocs.org/"
 license=('BSD')
 depends=("python-click>=5.0" "python-click-log>=0.2.0" "python-click-threading>=0.2"
