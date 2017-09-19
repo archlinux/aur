@@ -1,6 +1,6 @@
 # Maintainer: Jochen Saalfeld <jochen@intevation.de>
 pkgname='gpgme-python-git'
-pkgver=gpgme.1.9.0.r5.g7e9f7752
+pkgver=gpgme.1.9.0.r75.gbd5d470c
 pkgrel=1
 pkgdesc="A python wrapper library for GnuPG"
 arch=('x86_64')
