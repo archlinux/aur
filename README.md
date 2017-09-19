@@ -52,3 +52,10 @@ Exemple of how you can use it :
 [✓]  Read 1984
 [✓]  Push it on github
 ```
+
+
+
+ - [ ]  Factoriser les modifications
+ - [ ]  Ajouter des commentaires
+ - [ ]  Ajouter une capture d'écran
+

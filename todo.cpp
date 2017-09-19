@@ -83,6 +83,7 @@ todo todoFromLine(string line) {
 }
 ostream& operator<<( ostream& os, const todo& todoTask)
 {
+    os << " - ";
     switch(todoTask.etat ) {
         case DONE_STATE:
             os << "[" << (color ? "\e[32m✓\e[0m" : "x") << "] ";
