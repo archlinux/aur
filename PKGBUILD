@@ -1,4 +1,5 @@
 # Maintainer: eolianoe <eolianoe At GoogleMAIL DoT com>
+# Co-Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 _pkgname=vdirsyncer
 pkgname=${_pkgname}-git
