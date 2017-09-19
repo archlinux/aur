@@ -9,8 +9,8 @@ license=('GPL')
 
 options=('debug' '!strip')
 
-depends=('glibc')
-makedepends=('git' 'gcc-ada')
+depends=('glibc' 'gcc-ada')
+makedepends=('git')
 
 source=('http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deecff7'
         'http://mirrors.cdn.adacore.com/art/591aeb88c7a4473fcbb154f8')
