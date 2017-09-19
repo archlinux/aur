@@ -25,7 +25,7 @@ ros_makedepends=(ros-kinetic-roslint
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  libqt5x11extras5-dev)
+  qt5-x11extras)
 
 ros_depends=(ros-kinetic-roslint
   ros-kinetic-visualization-msgs
@@ -40,7 +40,7 @@ ros_depends=(ros-kinetic-roslint
   ros-kinetic-tf-conversions
   ros-kinetic-eigen-conversions)
 depends=(${ros_depends[@]}
-  libqt5x11extras5-dev)
+  qt5-x11extras)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/rviz_visual_tools/${pkgver}-${_pkgver_patch}
