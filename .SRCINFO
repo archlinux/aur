@@ -1,7 +1,7 @@
 pkgbase = adapta-kde
 	pkgdesc = Adapta KDE customization
 	pkgver = 20170918
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PapirusDevelopmentTeam/adapta-kde
 	arch = any
 	license = GPL3
