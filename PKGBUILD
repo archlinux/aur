@@ -7,7 +7,7 @@ pkgname='ros-kinetic-rospack'
 pkgver='2.3.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-cmake-modules
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rospack-release-release-kinetic-rospack-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/kinetic/rospack/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3d03e4c0a1791d8470979fc28660c1b28ccbf555fec1efafa32683f712fc9b7f')
+sha256sums=('4237ed1c53610ec486b7940c91bee16d3d894fcf08db5cbfc1b6eef2d5002322')
 
 build() {
   # Use ROS environment variables
