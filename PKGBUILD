@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python>=3.4' 'python-setuptools' 'python-pyqt5>=5.2' 'qt5-base>=5.2'
          'qt5-webkit' 'qt5-declarative' 'libxkbcommon-x11' 'python-pypeg2'
          'python-jinja' 'python-pygments' 'xdg-utils' 'desktop-file-utils'
-         'python-yaml' 'hicolor-icon-theme')
+         'python-yaml' 'python-attrs' 'hicolor-icon-theme')
 makedepends=('asciidoc' 'source-highlight' 'git')
 optdepends=(
   'gst-libav: media playback'
