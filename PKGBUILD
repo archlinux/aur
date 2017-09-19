@@ -1,12 +1,12 @@
 # Maintainer: Samuel Damashek <samuel dot damashek at gmail dot com>
 pkgname=huggle
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="diff browser intended for dealing with vandalism and other unconstructive edits on Wikimedia projects"
 arch=('i686' 'x86_64')
 url="https://en.wikipedia.org/wiki/Wikipedia:Huggle"
 license=('GPL')
-depends=('qt5-base' 'qt5-webkit')
+depends=('qt5-multimedia' 'qt5-webengine')
 makedepends=('cmake' 'unzip')
 groups=('base-devel')
 source=("https://github.com/huggle/huggle3-qt-lx/archive/${pkgver}.tar.gz")
@@ -24,7 +24,7 @@ prepare() {
 build() {
     cd "$srcdir/huggle3-qt-lx-${pkgver}/huggle"
 
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DQT5_BUILD=true
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DQT5_BUILD=true -DWEB_ENGINE=true
 
     make
 }
