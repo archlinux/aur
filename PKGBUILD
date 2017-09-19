@@ -9,6 +9,7 @@ url='https://liri.io'
 license=('MPL2')
 depends=('qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg' 'ttf-roboto')
 makedepends=('git' 'qbs' 'qt5-tools')
+options=(debug !strip)
 conflicts=('fluid')
 replaces=('fluid')
 provides=('fluid')
