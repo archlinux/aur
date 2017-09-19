@@ -62,6 +62,8 @@ package() {
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 "contrib/vdirsyncer.service" "$pkgdir/usr/lib/systemd/user/vdirsyncer.service"
+  install -Dm 644 "contrib/vdirsyncer.timer" "$pkgdir/usr/lib/systemd/user/vdirsyncer.timer"
   install -Dm644 docs/_build/man/${_pkgname}.1 \
     "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
 }
