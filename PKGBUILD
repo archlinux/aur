@@ -1,6 +1,6 @@
 pkgname='vault'
 pkgdesc='A tool for managing secrets'
-pkgver='0.8.2'
+pkgver='0.8.3'
 pkgrel='1'
 url='https://vaultproject.io/'
 license=('MPL')
@@ -13,9 +13,9 @@ backup=('etc/vault.hcl')
 source=("https://github.com/hashicorp/vault/archive/v${pkgver}.tar.gz"
         'vault.service'
         'vault.hcl')
-sha512sums=('279056211aefbab09b6533ce5b0fea355511a84c3f21cbbae0fa08b0affd2254fcd0a9479a317d07e9b99c5a2bd6d8c9caa5c32f14f73b21d8c4be3f24345669'
+sha512sums=('e2b273ebb761246f6d85fc040d911a3f3a7beb0951fed4adcbe5df4106dd0cb013328b5816ef4153b2c4d363f7f2a14ae1c82bae9baaea74ef707ff0934d6c8d'
             '5dfa4775e2dc43bb3db8090a0ffa436d2c83245d7777476ef3f3c0f0b1799114b34c02dbb3780ab0ec889fa7e40057c0934884c1d092ec42cda5d3407162672e'
-            '8c064aa5dcca84822c1fa85e9d0ff520df46f794b2e9c689a9b4f81f74279387b3aebc08b3ca26cf786c2fcf1a330e765bf5a511074c24f87e5346672346ba1c')
+            '46106cc76151eef2dd5e4b2caa6a96aae4d6ce1ecbf977dcc8667a3f6c829cbea95133622adafcb15cdfaa066ecc94c73c983e7613ee2f6573694981569729fe')
 
 _srcpath='src/github.com/hashicorp/vault'
 prepare () {
