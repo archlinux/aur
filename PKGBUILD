@@ -1,7 +1,7 @@
 # Contributor: muhas <muhas@mail.ru>
 
 pkgname=fortune-mod-lorquotes
-pkgver=2016.04
+pkgver=2017.09
 pkgrel=1
 pkgdesc="The selected citations from a site Linux.Org.Ru (UTF8) "
 url="http://lorquotes.ru/"
