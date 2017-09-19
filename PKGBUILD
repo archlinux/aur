@@ -3,13 +3,15 @@
 pkgname=libnitrokey-git
 _gitname=libnitrokey
 pkgver=3.0r515.8f7435e
-pkgrel=1
+pkgrel=2
 pkgdesc="Nitrokey management application"
 arch=('i686' 'x86_64')
 url="https://www.nitrokey.com"
 license=('GPL3')
 depends=(libusb hidapi)
 makedepends=('cmake' 'qt5-tools')
+provides=('libnitrokey')
+conflicts=('libnitrokey')
 source=("${_gitname}::git+https://github.com/Nitrokey/${_gitname}.git")
 sha256sums=('SKIP')
 
