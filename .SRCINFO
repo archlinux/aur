@@ -1,17 +1,13 @@
 pkgbase = python-flask-nav
 	pkgdesc = Easily create navigation for Flask applications.
-	pkgver = 0.4
+	pkgver = 0.6
 	pkgrel = 1
 	url = http://github.com/mbr/flask-nav
 	arch = any
 	license = MIT
-	makedepends = python2-setuptools
 	makedepends = python-setuptools
-	source = https://pypi.python.org/packages/source/f/flask-nav/flask-nav-0.4.tar.gz
-	md5sums = 273db840f2678a50afd630b527d65747
-
-pkgname = python2-flask-nav
-	depends = python2-flask
+	source = https://github.com/mbr/flask-nav/archive/0.6.tar.gz
+	md5sums = 0d8974af5d82ada4f7764f85f64efa4a
 
 pkgname = python-flask-nav
 	depends = python-flask
