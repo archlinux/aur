@@ -10,6 +10,7 @@ license=('LGPL3')
 depends=('qt5-base' 'qt5-declarative' 'qt5-tools' 'kwallet' 'solid' 'networkmanager-qt'
          'modemmanager-qt' 'pulseaudio' 'fluid-git' 'libliri-git')
 makedepends=('git' 'liri-qbs-shared-git')
+options=(debug !strip)
 conflicts=('vibe')
 replaces=('vibe')
 provides=('vibe')
