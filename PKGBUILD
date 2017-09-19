@@ -9,6 +9,7 @@ url='https://liri.io'
 license=('GPL3')
 depends=('vibe-git' 'liri-wayland-git' 'libqtxdg' 'qt5-accountsservice-git' 'polkit-qt5' 'xkeyboard-config')
 makedepends=('git' 'liri-qbs-shared-git')
+options=(debug !strip)
 conflicts=('liri-settings')
 replaces=('liri-settings')
 provides=('liri-settings')
