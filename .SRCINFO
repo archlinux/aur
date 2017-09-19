@@ -1,6 +1,6 @@
 pkgbase = svtplay-dl
 	pkgdesc = Media downloader for play sites (e.g. SVT Play)
-	pkgver = 1.9.5
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = https://github.com/spaam/svtplay-dl
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = svtplay-dl
 	depends = python-crypto
 	depends = python-requests
 	depends = ffmpeg
-	source = https://github.com/spaam/svtplay-dl/archive/1.9.5.tar.gz
-	sha256sums = 017f17e7a620083a02ce9520c8dae2f1bc1ce2ec68cfff529be6427adeb3983a
+	source = https://github.com/spaam/svtplay-dl/archive/1.9.6.tar.gz
+	sha256sums = 7ad15731dbb3665b7dd3ec93dd4700ee3d33da1ff985095c60c3b8a919870f39
 
 pkgname = svtplay-dl
 
