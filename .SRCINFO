@@ -1,6 +1,6 @@
 pkgbase = google-chrome-dev
 	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Dev Channel)
-	pkgver = 63.0.3213.3
+	pkgver = 63.0.3218.0
 	pkgrel = 1
 	url = https://www.google.com/chrome
 	install = google-chrome-dev.install
@@ -22,10 +22,10 @@ pkgbase = google-chrome-dev
 	provides = google-chrome
 	options = !emptydirs
 	options = !strip
-	source = google-chrome-unstable_63.0.3213.3_amd64.deb::https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
+	source = google-chrome-unstable_63.0.3218.0_amd64.deb::https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
 	source = eula_text.html
 	source = google-chrome-unstable.sh
-	md5sums = 662c5bb91eb7e1267f5806456f3969b3
+	md5sums = bd56152a8fa8f3d345f494a9792a7753
 	md5sums = d50d8f0a6940791eabc41c4f64e6a3cf
 	md5sums = 11b55a3fec7279db32b63e3a0b97dc01
 
