@@ -1,5 +1,6 @@
 # Maintainer: Adam Harvey <adam@adamharvey.name>
-# Based on the PKGBUILD for brother-mfc-9320cw by Samuel Bernard <samuel.bernard@gmail.com>
+# Contributor: Samuel Bernard <samuel.bernard@gmail.com>
+# Based on Samuel Bernard's brother-mfc-9320cw AUR package.
 model="9130cw"
 pkgname="brother-mfc-$model"
 pkgver="1.1.2"
