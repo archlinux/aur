@@ -9,6 +9,7 @@ url='https://liri.io'
 license=('LGPL3')
 depends=('qt5-declarative' 'libqtxdg')
 makedepends=('git' 'liri-qbs-shared-git')
+options=(debug !strip)
 conflicts=('libliri')
 replaces=('libliri')
 provides=('libliri')
