@@ -12,6 +12,8 @@ depends=('ffmpeg'
 makedepends=('graphviz'
              'doxygen'
              'xmltoman'
+             'git'
+             'meson'
              )
 conflicts=('pipewire')
 provides=('pipewire')
