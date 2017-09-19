@@ -3,7 +3,7 @@
 
 pkgname=hamlib
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham radio equipment control libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://hamlib.org"
@@ -35,7 +35,8 @@ package() {
 	make DESTDIR=$pkgdir install
 
 	# fix perl module location
-	cd $pkgdir/usr/lib/perl5/site_perl/
+	eval $(perl -V:sitearch)
+	cd $pkgdir$sitearch
 	mkdir current/
 	mv auto current
 	mv Hamlib.pm current
