@@ -449,7 +449,9 @@ package() {
   find $(basename ${_installed_dir}) -name '*.debug' -exec cp --parents '{}' ${_libsdebugpkgdir} \; -exec rm '{}' \;
 
   if $_static_build; then
-    mv ${_installed_dir} ${_installed_dir_sans_sysroot_offset}
+    if ! $_target_host; then
+        mv ${_installed_dir} ${_installed_dir_sans_sysroot_offset}
+    fi
   else
     mv ${_installed_dir} ${_libspkgdir}
   fi
