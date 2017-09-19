@@ -3,8 +3,8 @@
 pkgname=libnitrokey-git
 _gitname=libnitrokey
 pkgver=3.0r515.8f7435e
-pkgrel=2
-pkgdesc="Nitrokey management application"
+pkgrel=3
+pkgdesc="Communicate with Nitrokey stick devices in a clean and easy manner"
 arch=('i686' 'x86_64')
 url="https://www.nitrokey.com"
 license=('GPL3')
