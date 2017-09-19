@@ -7,7 +7,7 @@ pkgdesc='Simple, fast and user-friendly alternative to find'
 arch=('i686' 'x86_64')
 url=https://github.com/sharkdp/fd
 license=('MIT')
-makedepends=('cargo')
+makedepends=('rust')
 source=("fd-rs-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('67aa9d648b247606da381522ba80f0d48a52d4b9e8c16702d504accb2c1f30a369ef389f424926dce094d74d64561e2e165884d8f3782aae774183978d1fbcf7')
 
