@@ -4,7 +4,7 @@
 pkgname=kvantum-qt5-git
 pluginname=kvantum
 gitname=Kvantum
-pkgver=0.10.4.r136.g5138f52
+pkgver=0.10.4.r147.g09319e6
 pkgrel=1
 pkgdesc="SVG-based Qt5 theme engine plus a config tool and extra themes - git version"
 arch=('x86_64')
