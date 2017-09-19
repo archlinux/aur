@@ -28,6 +28,11 @@ pkgver() {
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
+check() {
+  cd "$srcdir/${_pkgname}-$pkgver"
+  make test
+}
+
 build() {
   # Build vdirsyncer
   cd "${srcdir}/${_pkgname}"
