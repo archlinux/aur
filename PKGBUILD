@@ -4,7 +4,7 @@ pkgdesc="ROS - Conversion functions between KDL and geometry_msgs types."
 url='http://ros.org/wiki/kdl_conversions'
 
 pkgname='ros-kinetic-kdl-conversions'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geometry-release-release-kinetic-kdl_conversions-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/kinetic/kdl_conversions/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('32a336aa509019a2d97519009893d8fa8a5c24ddd9e872466c2350bb849eec74')
+sha256sums=('34efddf9eb4ade2ba483d41cbe433179eb50f0533c9b3bddc023c242375be002')
 
 build() {
   # Use ROS environment variables
