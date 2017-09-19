@@ -16,15 +16,15 @@ ros_makedepends=(ros-kinetic-urdfdom-py
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  libconsole-bridge-dev
-  liburdfdom-headers-dev
+  console-bridge
+  urdfdom-headers
   boost
   tinyxml)
 
 ros_depends=(ros-kinetic-urdfdom-py)
 depends=(${ros_depends[@]}
-  libconsole-bridge-dev
-  liburdfdom-headers-dev
+  console-bridge
+  urdfdom-headers
   boost
   tinyxml)
 
