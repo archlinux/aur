@@ -1,0 +1,9 @@
+asp checkout mpv
+cp mpv/trunk/* mpv-smb/
+rm -rf mpv
+cd mpv-smb
+patch -i ../mpv-smb.patch
+makepkg --printsrcinfo > .SRCINFO
+git add *
+git commit -am 'new upstream ver'
+git push
