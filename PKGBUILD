@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a set of conversion functions to convert co
 url='http://www.ros.org/wiki/tf_conversions'
 
 pkgname='ros-kinetic-tf-conversions'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,7 +18,7 @@ ros_makedepends=(ros-kinetic-cmake-modules
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen3)
+  eigen)
 
 ros_depends=(ros-kinetic-kdl-conversions
   ros-kinetic-geometry-msgs
@@ -26,7 +26,7 @@ ros_depends=(ros-kinetic-kdl-conversions
   ros-kinetic-orocos-kdl
   ros-kinetic-tf)
 depends=(${ros_depends[@]}
-  eigen3)
+  eigen)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/tf_conversions/${pkgver}-${_pkgver_patch}
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry-release-release-kinetic-tf_conversions-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/kinetic/tf_conversions/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('bbde31ccb77ecfce34cfb3adc5fb804fbc288d415e40ddae6d0e9afc50237a86')
+sha256sums=('8fee2dbf9f0fe32faf00d36aaaebb9a5d311b2ff9838c5ef8a7b409b4d655e86')
 
 build() {
   # Use ROS environment variables
