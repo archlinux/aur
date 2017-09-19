@@ -8,7 +8,7 @@ pkgdesc="3D modeling & numerical simulation SDK"
 url="http://www.opencascade.org"
 arch=('i686' 'x86_64')
 license=('custom')
-makedepends=('cmake' 'qt5-webkit' 'gl2ps' 'freeimage' 'tk' 'glu' 'libxmu' 'vtk'
+makedepends=('libx11' 'cmake' 'qt5-webkit' 'gl2ps' 'freeimage' 'tk' 'glu' 'libxmu' 'vtk'
              'intel-tbb' 'doxygen' 'graphviz')
 source=("opencascade-${pkgver}.tar.gz::http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${pkgver//./_};sf=tgz"
         "fix-install-dir-references.patch")
@@ -18,6 +18,7 @@ md5sums=('SKIP'
 prepare(){
   cd "occt-V${pkgver//./_}"
   patch -Np1 -i "$srcdir/fix-install-dir-references.patch"
+  sed -i 's,#include <xlocale.h>,#include <X11/Xlocale.h>,g' src/Standard/Standard_CLocaleSentry.hxx
 }
 
 build() {
