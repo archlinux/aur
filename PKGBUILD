@@ -1,9 +1,9 @@
 # Maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=raid-check-systemd
-pkgver=3.4
+pkgver=4.0
 pkgrel=1
-_cent_rel=14
+_cent_rel=5
 pkgdesc="Raid data scrubbing script with systemd timer to be used with mdadm."
 arch=('any')
 url="https://wiki.archlinux.org/index.php/RAID#Scrubbing"
@@ -13,7 +13,7 @@ conflicts=('raid-check')
 source=("http://mirror.centos.org/centos/7/os/x86_64/Packages/mdadm-$pkgver-$_cent_rel.el7.x86_64.rpm"
         'raid-check.service'
         'raid-check.timer')
-sha256sums=('44db174069927fd379fba7132f38a1231e3da1908682239d849b072235fe7be4'
+sha256sums=('3ce3456cdfb15dbc42da46fe95e5a51c61a637d85416aba51d26fea1ccd23a9e'
             '90db8f53984df9d7ab32fde09a853632e9d76cbd91224c0efd760406118af84b'
             '4ef8adc88574127d2d8f119d42f2190782f8cafca8a7c627b6d5cace6b12af47')
 backup=('etc/conf.d/raid-check')
