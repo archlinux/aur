@@ -9,6 +9,7 @@ url='https://liri.io'
 license=('GPL3')
 depends=('fluid-git' 'libliri-git' 'karchive' 'flatpak')
 makedepends=('git' 'liri-qbs-shared-git')
+options=(debug !strip)
 conflicts=('liri-appcenter')
 replaces=('liri-appcenter')
 provides=('liri-appcenter')
