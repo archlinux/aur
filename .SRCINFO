@@ -1,9 +1,11 @@
 pkgbase = mestrenova
 	pkgdesc = Widely used commercial NMR interpreter
 	pkgver = 11.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mestrelab.com
-	arch = any
+	install = mestrenova.install
+	arch = i686
+	arch = x86_64
 	license = custom:mestrelab
 	depends = lib32-libltdl
 	depends = lib32-gcc-libs
@@ -15,7 +17,7 @@ pkgbase = mestrenova
 	depends = lib32-libxi
 	depends = lib32-libsm
 	depends = lib32-glu
-	depends = lib32-openssl100
+	depends = lib32-openssl-1.0
 	source = http://mestrelab.com/downloads/mnova/linux/Debian/8/mestrenova_11.0.4-18998_i386.deb
 	sha256sums = 7be69d68d487f996c7d1660fbdfffa1bce8d36d20437b55ac6bcb1ee0710a490
 
