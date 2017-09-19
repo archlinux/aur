@@ -1,6 +1,6 @@
 pkgbase = shallot
 	pkgdesc = Hashing for specific vanity onion adresses
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/jsaalfeld/Shallot
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = shallot
 	makedepends = make
 	makedepends = openssl
 	provides = shallot
-	source = https://github.com/jsaalfeld/Shallot/archive/shallot-0.0.6.tar.gz
-	md5sums = afde1bbf4a5de9d9baf40cc2c5035fe4
-	sha256sums = d38f10437b0335b6ab1e2b22789f35340c0d8a7cf188c1b88716cbcda753e782
+	source = https://github.com/jsaalfeld/Shallot/archive/shallot-0.0.7.tar.gz
+	md5sums = 88cef0951c0e23be969240a895ee54a5
+	sha256sums = c37cc0d3b8c21b0e3df0b7cf7c4661bc26d79b1c3775fa4d455fe718fdaad7f5
 
 pkgname = shallot
 

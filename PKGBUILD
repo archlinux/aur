@@ -1,6 +1,6 @@
 # Maintainer: Jochen Saalfeld <jochen@intevation.de>
 pkgname='shallot'
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Hashing for specific vanity onion adresses"
 arch=('x86_64')
@@ -10,8 +10,8 @@ provides=('shallot')
 conflicts=()
 makedepends=('make' 'openssl' )
 source=("https://github.com/jsaalfeld/Shallot/archive/$pkgname-$pkgver.tar.gz" )
-md5sums=('afde1bbf4a5de9d9baf40cc2c5035fe4')
-sha256sums=('d38f10437b0335b6ab1e2b22789f35340c0d8a7cf188c1b88716cbcda753e782')
+md5sums=('88cef0951c0e23be969240a895ee54a5')
+sha256sums=('c37cc0d3b8c21b0e3df0b7cf7c4661bc26d79b1c3775fa4d455fe718fdaad7f5')
 
 build() {
   cd "Shallot-$pkgname-$pkgver"
@@ -21,7 +21,8 @@ build() {
 
 package() {
   cd "Shallot-$pkgname-$pkgver"
-  mkdir $pkgdir/bin
+  mkdir $pkgdir/usr
+  mkdir $pkgdir/usr/bin
   make DESTDIR="$pkgdir" install
 }
 
