@@ -2,7 +2,7 @@
 _pkgname=browserpass
 pkgname=$_pkgname-bin
 pkgver=1.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrome & Firefox browser extension for pass, a UNIX password manager"
 arch=('x86_64')
 url="https://github.com/dannyvankooten/browserpass"
@@ -13,7 +13,7 @@ optdepends=()
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("browserpass-$pkgver.zip::https://github.com/dannyvankooten/browserpass/releases/download/$pkgver/browserpass-linux64.zip")
-md5sums=('b9fedafb793722ea8299c74850be8755')
+md5sums=('5561906a6167df8df1b0487a396f25b4')
 
 package() {
 	cd "$srcdir"
