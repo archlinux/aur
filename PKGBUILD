@@ -13,7 +13,7 @@ url="https://www.gitkraken.com/"
 provides=('gitkraken')
 arch=('x86_64')
 license=('custom')
-depends=('gtk2' 'nss' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libcurl-openssl-1.0' 'libxss' 'rtmpdump')
+depends=('gtk2' 'nss' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libcurl-gnutls' 'libxss' 'rtmpdump')
 optdepends=('git-lfs: git-lfs support')
 makedepends=()
 backup=()
@@ -29,7 +29,7 @@ sha256sums=('c8051756ec2f27768a1949f89ff2f77d5fe296f387700ee33812128a8eb333e7'
             'c001122608370bc43d6cfefd8e217f337a07f544c351179e816983635f8ff45d'
             'a2b3551f83bcbe56da961615f066bb736cd15d98e41c93b3b4add0d56606d902'
             '9566342308bf35b56e626fa1b0d716eb16991712cc43b617c4f0d95e005311d1'
-            '28c1e28104c23937404448c38ee26dac75c01fb4398e1fad057599da24135b9e')
+            '1532caf9be612eddc57d0dcab94a71dcd6c5976f18b4555ba9740dcdc7f8b1d5')
 
 package() {
     install -d "$pkgdir"/opt
