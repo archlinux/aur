@@ -7,7 +7,7 @@ pkgname='ros-kinetic-catkin'
 pkgver='0.7.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=()
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="catkin-release-release-kinetic-catkin-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/catkin-release/archive/release/kinetic/catkin/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4386db77aaa6da776c219466dfe5f312e174cb3a8b37a173aa75f6606203b3d7')
+sha256sums=('5a07909ebe42ce5cdd0b8b23e202f6b27f1a8d2ca94f3233c7bede416b019d96')
 
 build() {
   # Use ROS environment variables
