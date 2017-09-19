@@ -9,6 +9,7 @@ url='https://liri.io'
 license=('GPL3')
 depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-gsettings-git' 'liri-workspace-git')
 makedepends=('git' 'qbs' 'liri-qbs-shared-git')
+options=(debug !strip)
 conflicts=('liri-platform-theme')
 replaces=('liri-platform-theme')
 provides=('liri-platform-theme')
