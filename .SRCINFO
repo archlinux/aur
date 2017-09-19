@@ -1,14 +1,13 @@
 pkgbase = atari800
 	pkgdesc = An emulator of the Atari 800/800XL/130XE/5200 with various extensions
 	pkgver = 3.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://atari800.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	arch = armv6h
 	license = GPL2
-	depends = libpng
 	depends = sdl
+	optdepends = libpng: PNG screenshot support
 	source = http://downloads.sourceforge.net/sourceforge/atari800/atari800-3.1.0.tar.gz
 	md5sums = 354f8756a7f33cf5b7a56377d1759e41
 
