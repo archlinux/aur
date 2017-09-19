@@ -11,6 +11,7 @@ depends=('vibe-git' 'glib2' 'dconf')
 makedepends=('git' 'liri-qbs-shared-git')
 conflicts=('hawaii-terminal-git' 'papyros-terminal-git' 'papyros-qmltermwidget-git' 'liri-terminal')
 replaces=('hawaii-terminal-git' 'papyros-terminal-git' 'papyros-qmltermwidget-git' 'liri-terminal')
+options=(debug !strip)
 provides=('liri-terminal')
 groups=('liri-git')
 install=$pkgname.install
