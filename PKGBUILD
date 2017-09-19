@@ -4,7 +4,7 @@ pkgbase=swift-language
 pkgname=(swift swift-lldb)
 _swiftver=3.1.1-RELEASE
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=4
+pkgrel=5
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -31,6 +31,7 @@ source=(
     "sphinx1.6.patch"
     "lldb_missing_include.patch"
     "glibc-2.26.patch"
+    "clang5.patch"
 )
 sha256sums=('fe4dcb9ee1247acd6653fe193684e9cb212c6551e0b0b44849899bec99df3297'
             '385b587b825adae9a9f7e5789e151ae0554e6e62f2f2f81ff3b623ef578b39bc'
@@ -47,7 +48,8 @@ sha256sums=('fe4dcb9ee1247acd6653fe193684e9cb212c6551e0b0b44849899bec99df3297'
             '3fedb626b375f6ad8b4601abd336f4560718a9c9134716f0c3a4e823b8c12857'
             '3c06dcc15bef6cbda7ce7b8a6a4f89bd16599ddbd1b964add9f2048cdda4700b'
             'be61c69ae7bb626f7f07f95cb5c0074013725c1b90a3ca68aa0c0f989d75e41e'
-            'f3eca044354ee371072aaf81452468cce1ff2abf9efc746db964dfdb400f88ab')
+            'f3eca044354ee371072aaf81452468cce1ff2abf9efc746db964dfdb400f88ab'
+            '78da7fe1f8bffc729168c8224707cc14ee460c7adcba9a48fd77e2b22614fca3')
 
 prepare() {
     # Use python2 where appropriate
@@ -89,6 +91,9 @@ prepare() {
 
     # glibc 2.26 removed the non-standard xlocale.h and SIGUNUSED
     ( cd "${srcdir}" && patch -p1 -i "${srcdir}/glibc-2.26.patch" )
+
+    # Clang 5.0 fixed an obscure issue with standards-compliance
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/clang5.patch" )
 }
 
 _common_build_params=(
