@@ -1,28 +1,24 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=wingide
-_wingver=6.0.6
+_wingver=6.0.7
 _wingrel=1
-_wing_patch_lvl=2 #bump this when adding a patch
+_wing_patch_lvl=21 #bump this when adding a patch
 pkgver=$_wingver.$_wingrel.$_wing_patch_lvl
 pkgrel=1
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
 url="http://www.wingware.com"
 license=('custom')
 arch=('x86_64')
-_wingpatch=("longer-arm-timeout-6.0.6p1-all.tar" "longer-ssh-timeout-6.0.6p2-all.tar" "fix-remote-probe-6.0.6p3-all.tar" "avoid-remote-overwrite-6.0.6p4-all.tar" "fix-remote-project-read-6.0.6p5-all.tar" "fix-open-remote-sh-6.0.6p6-all.tar")
+_wingpatch=("fix-vi-mark-ranges-6.0.7p1-all.tar" "remote-healing-6.0.7p2-all.tar")
 _patch_url_prefix=http://wingware.com/pub/$pkgname/$_wingver/patches/
 _wingpatch=( "${_wingpatch[@]/#/$_patch_url_prefix}" )
 source=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-x86_64-linux.tar.bz2" ${_wingpatch[*]})
 depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
-md5sums=('5df65a288d6c3bcb448cfe0d1a250385'
-         '78cb37932cb1e98ce81bbd6dfedbd985'
-         'eb7bcac8b4872989ce75f148740014de'
-         '6ac113b4795e8eb2c2a863509d48d581'
-         '40184285482d23ddb7733c1031e96ffd'
-         '42af0a3193da7a5107117f4303c21f41'
-         '03272860abe8e7418df14e04e2bc2e3a')
+md5sums=('f3ed3fec851faab4ad3a9fe822151cfe'
+         '3f173e4b04f7cfdab3dc66a8a54613b7'
+         'bd4739f28056900fd3c9797f43f6ee28')
 
 install=${pkgname}.install
 
