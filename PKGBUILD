@@ -1,8 +1,8 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname='gauche-git'
-pkgver=0.9.6_pre3r10065
+pkgname=gauche-git
+pkgver=0.9.6_pre3r10072
 pkgrel=1
 pkgdesc="R7RS Scheme implementation developed to be a handy script interpreter"
 arch=('i686' 'x86_64')
@@ -23,10 +23,6 @@ pkgver() {
   cd "$_gitname"
   _appver=$(awk -F, '/AC_INIT/ {print $2}' configure.ac|tr -d [])
   printf %sr%s $(echo $_appver) $(git rev-list --count HEAD)
-}
-
-prepare() {
-  sed -i '4127s+R7Rs hash tables+R7RS hash tables+g' "$_gitname"/doc/modsrfi.texi
 }
   
 build() {
