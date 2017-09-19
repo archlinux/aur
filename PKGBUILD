@@ -9,6 +9,7 @@ url='https://liri.io'
 license=('GPL3')
 depends=('fluid-git' 'taglib')
 makedepends=('git' 'liri-qbs-shared-git' 'qt5-tools')
+options=(debug !strip)
 conflicts=('liri-files')
 replaces=('liri-files')
 provides=('liri-files')
