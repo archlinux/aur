@@ -1,4 +1,5 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: valandil: Joey Dumont <joey.dumont@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 
@@ -6,16 +7,18 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 _opt_CPP_ONLY=0
-_opt_ADA=0
-_opt_JAVA=0 # this compiles with my packages but not in a clean-chroot. There are more dependencies I can't find.
+_opt_ADA=0  # works 6-20170913
+_opt_JAVA=0
+# JAVA: 6-20170906: /usr/include/glib-2.0/glib/gmacros.h:232:53: error: size of array ‘_GStaticAssertCompileTimeAssertion_0’ is negative
+# JAVA: -m32 version is using 64 bit include files from /usr/lib instead of the proper include files in /usr/lib32
 _opt_SSP=1  # Stack Smashing Protection
 #_cloogver='0.18.4'  # comment out to disable
 
 set -u
-_pkgver='6.3'
-pkgname="gcc${_pkgver//\./}-multilib"
-_snapshot='6-20170906'
-pkgver="${_pkgver}_${_snapshot#*-}"
+_pkgver='6.4'
+pkgname='gcc63-multilib'
+_snapshot='6-20170913'
+pkgver="${_pkgver}.1_${_snapshot#*-}"
 _islver='0.17'
 #_commit='4fc407888a30c5d953816b05c8a8e98ec2ab3101' # Pulling commits this big is too slow!
 pkgrel='1'
@@ -23,23 +26,25 @@ pkgdesc="The GNU Compiler Collection for multilib (${_pkgver}.x)"
 arch=('x86_64')
 url='http://gcc.gnu.org'
 license=('GPL' 'LGPL' 'FDL' 'custom')
-depends=('zlib' 'libmpc>=0.8.1' 'classpath')
+depends=('zlib' 'lib32-zlib' 'libmpc>=0.8.1' 'glibc' 'lib32-glibc')
 makedepends=( # https://gcc.gnu.org/install/prerequisites.html
   'binutils>=2.28'
   'gcc-libs-multilib'
-  'lib32-glibc>=2.25'
+  'lib32-glibc>=2.25' 'lib32-gcc-libs'
   'bash'
   'gzip>=1.2.4'
-  'bzip2>=1.0.2'
+  'bzip2>=1.0.2' 'lib32-bzip2'
   'gawk>=3.1.5'
-  'gmp>=4.3.2'
+  'gmp>=4.3.2' 'lib32-gmp'
   'mpfr>=2.4.2'
-  'gettext>=0.14.5'
+  'gettext>=0.14.5' 'lib32-gettext'
   'doxygen'
 )
 if [ "${_opt_JAVA}" -ne 0 ]; then
-  depends+=('gtk2' 'libxtst' 'alsa-lib') # from gcc63
-  makedepends+=('jack') # gcc63
+  #depends+=('gtk2' 'libxtst' 'alsa-lib') # from gcc63
+  depends+=('classpath')
+  #makedepends+=('jack') # gcc63
+  makedepends+=('java-environment-common' 'zip' 'jdk8-openjdk' 'gtk2' 'lib32-gtk2' 'libart-lgpl' 'libxtst' 'lib32-libxtst')
 fi
 if [ "${_opt_ADA}" -ne 0 ]; then
   makedepends+=('gcc-ada-multilib') # GNAT
@@ -56,18 +61,12 @@ source=(
   #"gcc-${pkgver%%_*}.tgz::https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz"
   "http://mirrors.concertpass.com/gcc|snapshots/LATEST-6/gcc-${_snapshot}.tar.xz" # Please do not use a snapshot before it has been announced with a LATEST- symlink.
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
-  '0000-gcc-6.3.ucontext.patch'
-  '0001-gcc-6.3-SIGSEGV.patch'
-  '0002-gcc-6.3-__res_state.patch'
 )
 if [ ! -z "${_cloogver:=}" ]; then
   source+=("http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz")
 fi
-sha256sums=('dd3f78d357a3dd88b6a6cd338fd03b844ada4e8e732257ad4135d153cac37585'
-            '439b322f313aef562302ac162caccb0b90daedf88d49d62e00a5db6b9d83d6bb'
-            'dc2b7b3ba6a9a281128026ff22ee537909b5dfb885cf8db3756e67ac286592e8'
-            'f705751fa363e56b58107f3a0aebc32ebf1e529993b9583291fbb239c6512dac'
-            '6418499f31d536a4f85e6bd956b2dbed4840a7aa807ee24d897a705e1af1a127')
+sha256sums=('03edcdafdbb456ef1d12b466623b4a308ff7f41385f249b5ff7444dc2f838d3a'
+            '439b322f313aef562302ac162caccb0b90daedf88d49d62e00a5db6b9d83d6bb')
 
 PKGEXT='.pkg.tar.gz' # Uncompressed: 1.3GB, gz=500MB 1.1 minutes, xz=275MB 9.5 minutes
 
@@ -151,31 +150,23 @@ prepare() {
   # Do not run fixincludes
   sed -e 's@\./fixinc\.sh@-c true@' -i 'gcc/Makefile.in'
 
-  # fix build with glibc 2.26
-  #diff -pNau5 libsanitizer/sanitizer_common/sanitizer_linux.h{.orig,} > '../0000-gcc-4.9.ucontext.patch'
-  patch -Nbup0 -i "${srcdir}/0000-gcc-6.3.ucontext.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41921
-  #diff -pNau5 libsanitizer/asan/asan_linux.cc{.orig,} > '../0001-gcc-4.9-SIGSEGV.patch'
-  patch -Nbup0 -i "${srcdir}/0001-gcc-6.3-SIGSEGV.patch"
-  #diff -pNau5 libsanitizer/tsan/tsan_platform_linux.cc{.orig,} > '../0002-gcc-4.9-__res_state.patch'
-  patch -Nbup0 -i "${srcdir}/0002-gcc-6.3-__res_state.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41922
-  sed -e 's:\bstruct ucontext\b:ucontext_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct ucontext\b')
-  sed -e 's:\bstruct sigaltstack\b:stack_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct sigaltstack\b')
-  sed -e '/^struct ucontext_t/,/^};/ d' -i 'libsanitizer/tsan/tsan_interceptors.cc'
-  if grep -e '^struct ucontext_t' 'libsanitizer/tsan/tsan_interceptors.cc'; then
-    set +u
-    echo 'Failed to remove ^struct ucontext_t'
-    false
-  fi
-
   # Arch Linux installs x86_64 libraries /lib
   case "${CARCH}" in
   'x86_64') sed -e '/m64=/ s/lib64/lib/' -i 'gcc/config/i386/t-linux64' ;;
   esac
 
-  echo "${_pkgver}" > 'gcc/BASE-VER'
+  if ! grep -qFxe "${pkgver%%_*}" 'gcc/BASE-VER'; then
+    echo "Version has changed from ${pkgver%%_*} to"
+    cat 'gcc/BASE-VER'
+    set +u
+    false
+  fi
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -e '/^ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
+
+  # remove -V and -qversion as their aren't supported in gcc7
+  sed -e 's/ -V -qversion/ /g' -i $(grep --include='configure' -lrFe '-V -qversion')
 
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
@@ -199,7 +190,8 @@ build() {
     if [ "${_opt_JAVA}" -ne 0 ]; then
       _languages+=',java'
       _cfgopts+=(--enable-java-awt='gtk' --enable-libgcj-multifile)
-      #_cfgopts+=(--with-java-home="${JAVA_HOME}")
+      _cfgopts+=(--with-java-home="$(find /usr/lib/jvm -maxdepth 1 -type 'd' -name '*openjdk*' -print -quit)") # works best with clean chroot
+      #_cfgopts+=(--with-java-home='/usr/lib/jvm/java-8-jdk/jre')
     fi
     if [ "${_opt_SSP}" -eq 0 ]; then
       _cfgopts+=(--disable-libssp)
@@ -250,6 +242,8 @@ build() {
   #LD_PRELOAD='/usr/lib/libstdc++.so' \\
   nice make -j "${_nproc}"
 
+  set +u; msg 'Compile complete'; set -u
+
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
   set +u
@@ -282,9 +276,9 @@ package() {
 
   # Move potentially conflicting stuff to version specific subdirectory
   case "${CARCH}" in
-  'x86_64') mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${_pkgver}/" ;;
+  'x86_64') mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver%%_*}/" ;;
   esac
-  mv "${pkgdir}/usr/lib"/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${_pkgver}/"
+  mv "${pkgdir}/usr/lib"/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver%%_*}/"
 
   # Install Runtime Library Exception
   install -Dpm644 '../COPYING.RUNTIME' \
