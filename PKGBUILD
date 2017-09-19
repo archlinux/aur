@@ -1,7 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
-pkgname=python2-aniso8601
-pkgver=1.1.0
+_name=aniso8601
+pkgname=python2-$_name
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A library for parsing ISO 8601 strings"
 arch=('any')
@@ -10,9 +11,9 @@ makedepends=('python2-setuptools')
 url="https://bitbucket.org/nielsenb/aniso8601"
 license=('BSD')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/a/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('d2610ecaab3bdfe51f74678c89c69cf7')
-sha256sums=('4fc462db59811f541bc25d865b86367153d8ce773ae75b16d54e2e1cd393b5cc')
+source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz)
+md5sums=('d3c987293e4b5acf2004edf48cd19e9f')
+sha256sums=('c3b5246f5601b6ae5671911bc4ee5b3e3fe94752e8afab5ce074d8b1232952f1')
 
 build() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
@@ -25,5 +26,5 @@ package() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
 
   msg2 'Installing...'
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
