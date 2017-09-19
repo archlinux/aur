@@ -2,7 +2,7 @@
 
 pkgname=codemeter-runtime
 pkgver=6.50.2631.502
-pkgrel=1
+pkgrel=2
 pkgdesc='codemeter runtime (server and cli tools, no GUI)'
 license=('custom')
 url='http://www.codemeter.de/'
@@ -42,7 +42,7 @@ package() {
 	install -d "$pkgdir/var/log"
 
 	# Created by CodeMeterLin -x on debian.
-	install -d "$pkgdir/var/spool/tmp"
+	install -d "$pkgdir/var/spool/ctmp"
 
 	cp -a "$srcdir/etc/wibu"                   "$pkgdir/etc/"
 	cp -a "$srcdir/usr/bin/"*                  "$pkgdir/usr/bin/"

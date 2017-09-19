@@ -1,7 +1,7 @@
 pkgbase = codemeter-runtime
 	pkgdesc = codemeter runtime (server and cli tools, no GUI)
 	pkgver = 6.50.2631.502
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.codemeter.de/
 	install = codemeter-runtime.install
 	arch = x86_64
