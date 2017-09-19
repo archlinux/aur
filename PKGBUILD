@@ -11,10 +11,10 @@ _autofirewall=y
 ### END BUILD OPTIONS
 
 pkgname=nomachine
-pkgver=5.3.10
-_pkgrel_i686=7
-_pkgrel_x86_64=6
-_pkgrel_armv6h=1
+pkgver=5.3.12
+_pkgrel_i686=10
+_pkgrel_x86_64=10
+_pkgrel_armv6h=3
 _pkgrel_armv7h=1
 _pkgrel_armv8h=1
 pkgrel=1
@@ -26,13 +26,11 @@ arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'armv8h')
 options=('!strip')
 conflicts=('nxmanager nxwebplayer nxserver nxnode nxclient')
 depends=('bash' 'openssh')
-source=('fixnxusb.patch')
-sha512sums=('3680f376ae603fcbe8ad2c68c8f3c8c19798b914fd7fd29c6d57e03dae8f0a09b832c5886ad24fd3c33ad680c5975235665c55cc4908552178c731d475095195')
-sha512sums_x86_64=('d2f39cc514fcf33d9993832c432e7d2fe2a55fb5dfec67f57c830a2878f9a12a9b4431be00ad6f5c5eeda7badba0a68042400fbfe810300df603a853940b8373')
-sha512sums_i686=('da8d80d7aeea0edc5e719fd8fd4eec501605d09baaef0ac1ac8fbfac8dc324653a11e751bc93f4d6c01af2077e663c9a36b425a9d979d1774860355397be4af3')
-sha512sums_armv6h=('623f7aed249219dcb006568d61062b6c1fe1bf99a135dac23901635a0e5c6261c8bbdd5807b0421402a7185c051f3bedfe5b14194567f77f2e2e686efdfe3ed7')
-sha512sums_armv7h=('424fb5bc196e79db32b61c32d0da55d7cdb0b0854e0080713a039db2f3d6fd7f2f291db6aadb08a1368fc4d4dd57d93b4cb8ebf00b2b95d5a278f67420f61265')
-sha512sums_armv8h=('6c0777083bcb2e4972ea99b2d289c8a7f02b216d2ebcbedeaa82553a691d0ae6eb01a9ae7974147420638735b0602d802a97c7e361e1beb1ace9df5a737305aa')
+sha512sums_x86_64=('8cb7470b41beb215a43be19f493e415726795618c9af1e63c2d16b8026ec133b65599e1c3eba77aa7d08b019939676e3773085b668fdbd081a079fa2572d2e9e')
+sha512sums_i686=('7ce0b77da438132acab4e05562f676c30054ef38242d418ad69e9caf371a47ab624be89634cc105023be51d1aa822b743fb629114caa2c4d461bae8dabb0965d')
+sha512sums_armv6h=('38c3aefb753a432d209193eb419ae60cf18661d661f6bc398bb518973b13ef268457a91100dbc63ca82b5d9fa801af5da283e3722a669b1cafc0efcd64322c7b')
+sha512sums_armv7h=('c758e802c1752f563027e0ca14f2443404b5a1dca6538273e89f9de05be0c850b60e662c9f654ca155ef7c8c6a1c752cc14d162e66b042fac5bcdcb50bad1aba')
+sha512sums_armv8h=('2ff365c4f96baa9a2bab64e76c6c0bb17361394f036b797463143525268c7a8ad9fb1911b1ee796993ae54882f7ba1ce902c9dc3e4bb1732b9257990d977d203')
 source_x86_64=("http://download.nomachine.com/download/5.3/Linux/${pkgname}_${pkgver}_${_pkgrel_x86_64}_x86_64.tar.gz")
 source_i686=("http://download.nomachine.com/download/5.3/Linux/${pkgname}_${pkgver}_${_pkgrel_i686}_i686.tar.gz")
 source_armv6h=("http://download.nomachine.com/download/5.3/Linux/${pkgname}_${pkgver}_${_pkgrel_armv6h}_armv6hl.tar.gz")
@@ -69,17 +67,6 @@ tar -rf "$srcdir/NX/etc/NX/server/packages/nxserver.tar" NX/etc/server-fedora.cf
 gzip "$srcdir/NX/etc/NX/server/packages/nxserver.tar"
 rm -fr "$srcdir/NX/etc/server-fedora.cfg.sample"
 fi
-#Fix nxusb share
-tar -zxf "$srcdir/NX/etc/NX/server/packages/nxclient.tar.gz" NX/share/src/nxusb/message_queue.c
-tar -zxf "$srcdir/NX/etc/NX/server/packages/nxclient.tar.gz" NX/share/src/nxusb/utils.h
-cd "${srcdir}/NX/share/src/nxusb"
-patch -Np1 -i "$srcdir/fixnxusb.patch"
-cd "${srcdir}"
-gzip -d "$srcdir/NX/etc/NX/server/packages/nxclient.tar.gz"
-tar -rf "$srcdir/NX/etc/NX/server/packages/nxclient.tar" NX/share/src/nxusb/message_queue.c -C "$srcdir/NX/share/src/nxusb/message_queue.c"
-tar -rf "$srcdir/NX/etc/NX/server/packages/nxclient.tar" NX/share/src/nxusb/utils.h -C "$srcdir/NX/share/src/nxusb/utils.h"
-gzip "$srcdir/NX/etc/NX/server/packages/nxclient.tar"
-rm -fr "$srcdir/NX/share"*
 }
 
 package()
