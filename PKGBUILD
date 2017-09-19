@@ -28,16 +28,17 @@ ros_makedepends=(ros-kinetic-eigen-stl-containers
   ros-kinetic-catkin
   ros-kinetic-eigen-conversions
   ros-kinetic-std-msgs
+  ros-kinetic-moveit-resources
   ros-kinetic-shape-msgs)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen
-  liburdfdom-headers-dev
-  libfcl-dev
+  urdfdom-headers
+  fcl
   assimp
-  libconsole-bridge-dev
+  console-bridge
   boost
-  liburdfdom-dev
+  urdfdom
   pkg-config)
 
 ros_depends=(ros-kinetic-eigen-stl-containers
@@ -58,12 +59,12 @@ ros_depends=(ros-kinetic-eigen-stl-containers
   ros-kinetic-eigen-conversions)
 depends=(${ros_depends[@]}
   eigen
-  liburdfdom-headers-dev
-  libfcl-dev
+  urdfdom-headers
+  fcl
   assimp
-  libconsole-bridge-dev
+  console-bridge
   boost
-  liburdfdom-dev)
+  urdfdom)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/moveit_core/${pkgver}-${_pkgver_patch}
