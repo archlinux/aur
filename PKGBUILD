@@ -8,7 +8,7 @@
 
 pkgname=cassandra21
 _pkgname=cassandra
-pkgver=2.1.16
+pkgver=2.1.18
 pkgrel=1
 pkgdesc='Apache Cassandra NoSQL database 2.1.x'
 arch=('any')
@@ -34,7 +34,7 @@ source=("${_url_tgz}"
         'cassandra.service'
         'cassandra-tmpfile.conf'
         'cassandra-user.conf')
-sha256sums=('a95ba4e2c9345b31310d14507e8889797cc626bc793fd341fff8ff8cba3131cd'
+sha256sums=('48992bc211125e6e2437612934f4c0b7796c0682e997421f9f63cdee9497bab5'
             'bbb5dcc19cac4e19c506210da901280c3063a6a241480bf12bc874e6a5c02657'
             '971d6d0f21963b2d9443039431e5225191771454728c6eda4aab9175ee478ce4'
             'abc9d54399c84eacf5922811b5480846ea1c88a73c5d214ea1db3d20c7c0422a'
