@@ -1,7 +1,6 @@
 pkgname=pipewire-git
 pkgver=0.1.5.4.gaa2a189
 pkgrel=1
-groups=('ps2')
 pkgdesc="Multimedia processing graphs. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://pipewire.org'
