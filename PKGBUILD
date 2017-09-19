@@ -2,8 +2,8 @@
 # Based on https://github.com/aerospike/aerospike-client-php
 
 pkgname=aerospike-client-php
-pkgver=7.0.0
-pkgrel=2
+pkgver=7.0.1
+pkgrel=1
 pkgdesc="The Aerospike PHP client as a C-extension for PHP7"
 arch=('any')
 url="https://github.com/aerospike/aerospike-client-php"
