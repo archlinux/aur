@@ -17,6 +17,7 @@ conflicts=('pipewire')
 provides=('pipewire')
 source=("git+https://github.com/PipeWire/pipewire.git")
 sha256sums=('SKIP')
+backup=('etc/pipewire/pipewire.conf')
 
 pkgver() {
   cd pipewire
