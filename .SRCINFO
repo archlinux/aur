@@ -1,7 +1,7 @@
 pkgbase = keyleds
 	pkgdesc = Logitech Keyboard per-key lighting control
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spectras/keyleds
 	arch = i686
 	arch = x86_64
