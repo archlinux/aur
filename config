@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# What type of install is this? (server, agent, local, hybrid?):
-export USER_INSTALL_TYPE=server
-
 # Do you want to update it? (y/n) [y]:
 export USER_UPDATE=y
 
