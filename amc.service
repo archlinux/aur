@@ -1,0 +1,10 @@
+[Unit]
+Description=Web-based tool to monitor/manage an Aerospike cluster
+
+[Service]
+PIDFile=/var/run/amc.pid
+ExecStart=/opt/amc/amc -config-file=/etc/amc/amc.conf
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
