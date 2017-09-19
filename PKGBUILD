@@ -1,7 +1,7 @@
 _npmname=webpack-dev-server
-_npmver=2.5.1
+_npmver=2.8.0
 pkgname=nodejs-webpack-dev-server # All lowercase
-pkgver=2.5.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Serves a webpack app. Updates the browser on changes."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha512sums=('2c7ef775f6b40cc6ac941d36e18757f31a537f68c0166dd065f0f580b97deb9d9ef466f9ee5b144fbe3ecc7c896bc091da9a5cf747b358007ef9d4e54eaefc24')
+sha512sums=('b881e9496a9e01c6bffe70e30020079210431b6c09837843fec2022262e3e117ac66c736b7e59a050d1fe052f9d2377cf4d2da663be52d12aeedac8c39374e86')
 
 package() {
   cd $srcdir
