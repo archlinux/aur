@@ -27,9 +27,8 @@ ros_makedepends=(ros-kinetic-message-filters
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   glut
-  opengl
   eigen
-  libglew-dev)
+  glew)
 
 ros_depends=(ros-kinetic-message-filters
   ros-kinetic-moveit-core
@@ -46,8 +45,8 @@ ros_depends=(ros-kinetic-message-filters
   ros-kinetic-rosconsole)
 depends=(${ros_depends[@]}
   glut
-  libglew-dev
-  opengl)
+  glew
+  )
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/moveit_ros_perception/${pkgver}-${_pkgver_patch}
