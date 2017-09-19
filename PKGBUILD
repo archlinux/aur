@@ -11,7 +11,7 @@ depends=('kwin' 'plasma-desktop' 'papirus-icon-theme')
 optdepends=('konsole: For the Konsole color scheme'
             'yakuake: For the Yakuake skin'
             'adapta-gtk-theme: Matching GTK theme'
-            'kvantum-theme-arc: Customizing theme more;)
+            'kvantum-theme-arc: Customizing theme more')
 makedepends=('make')
 conflicts=('adapta-aurorae-theme-git' 'adapta-kde-git')
 source=("https://github.com/PapirusDevelopmentTeam/${pkgname}/archive/${pkgver}.tar.gz")
