@@ -1,5 +1,5 @@
 pkgbase = postgresql-src
-	pkgver = 9.6.3
+	pkgver = 9.6.5
 	pkgrel = 1
 	url = http://www.postgresql.org/
 	arch = aarch64
@@ -12,19 +12,19 @@ pkgbase = postgresql-src
 	makedepends = perl
 	makedepends = tcl>=8.6.0
 	makedepends = openssl>=1.0.0
-	source = http://ftp.postgresql.org/pub/source/v9.6.3/postgresql-9.6.3.tar.bz2
+	source = http://ftp.postgresql.org/pub/source/v9.6.5/postgresql-9.6.5.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql.pam
 	source = postgresql.logrotate
 	source = postgresql.service
 	source = postgresql-check-db-dir
-	md5sums = ce1d0a57ace0a5b7a994b56796fdba35
+	md5sums = 7a387fa6a75c84f25e7250007980679e
 	md5sums = 75c579eed03ffb2312631f0b649175b4
 	md5sums = 96f82c38f3f540b53f3e5144900acf17
 	md5sums = d28e443f9f65a5712c52018b84e27137
 	md5sums = 5a7933453a572bbe12320b088272ee71
 	md5sums = 6eb990a98cdd2e385de2c53c288a388c
-	sha256sums = 1645b3736901f6d854e695a937389e68ff2066ce0cde9d73919d6ab7c995b9c6
+	sha256sums = 06da12a7e3dddeb803962af8309fa06da9d6989f49e22865335f0a14bad0744c
 	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
 	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
@@ -50,7 +50,7 @@ pkgname = postgresql-src-docs
 pkgname = postgresql-src
 	pkgdesc = A sophisticated object-relational DBMS (from source, LTO enabled)
 	install = postgresql.install
-	depends = postgresql-src-libs>=9.6.3
+	depends = postgresql-src-libs>=9.6.5
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
