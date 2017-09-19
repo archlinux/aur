@@ -67,8 +67,11 @@ todo todoFromCmd(string line) {
         streamLine.clear();
         getline(streamLine, tmp.str);
         tmp.str = string(" ") + tmp.str;
-    } else
+    } else {
         getline(streamLine, tmp.str);
+        if( tmp.str[0] != ' ' )
+            tmp.str = " " + tmp.str;
+    }
     return tmp;
 }
 
