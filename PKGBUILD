@@ -1,13 +1,13 @@
 # PKGBUILD for HOOMD-blue. This pulls from git, but uses the "maint" version.
 # Maintainer: Asmund Ervik <aaervik@gmail.com>
 pkgname=hoomd-blue
-pkgver=v1.2.1.r5.g86a3316-1
+pkgver=v2.2.0.r0.g950e9fec2
 pkgrel=1
 pkgdesc="A general-purpose particle simulation toolkit using GPUs with CUDA"
 arch=('any')
 url="http://codeblue.umich.edu/hoomd-blue/index.html"
 license=('custom: University of Michigan "MIT-Like"')
-depends=(python boost cuda cmake openmpi)
+depends=(python boost cuda cmake openmpi gcc5)
 makedepends=(git)
 optdepends=('nvidia: running simulations on GPU')
 provides=(hoomd-blue)
@@ -22,7 +22,9 @@ pkgver() {
 build() {
 	cd "$srcdir/$pkgname"
 	mkdir -p build && cd build
-  cmake -Wno-dev ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DENABLE_CUDA=On -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
+  export CC=gcc-5
+  export CXX=g++-5
+  cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-march=native -DCMAKE_C_FLAGS=-march=native -DENABLE_CUDA=ON -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
 }
 
 package() {
