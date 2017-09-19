@@ -15,19 +15,19 @@ source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
 
 build() {
-        cd "$pkgname-$pkgver"
-        ./configure --prefix=/usr
-        make
+    cd "$pkgname-$pkgver"
+    ./configure --prefix=/usr
+    make
 }
 
 # Check target is not available.
 # make: *** No rule to make target 'check'.
 #check() {
-#        cd "$pkgname-$pkgver"
-#        make -k check
+#    cd "$pkgname-$pkgver"
+#    make -k check
 #}
 
 package() {
-        cd "$pkgname-$pkgver"
-        make DESTDIR="$pkgdir/" install
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
 }
