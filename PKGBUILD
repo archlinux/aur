@@ -1,14 +1,18 @@
 # Maintainer: Marc Boocha <marcboocha@gmail.com>
 
 _target=x86_64-elf
-pkgname=$_target-binutils
+_sysroot=/usr/lib/${_target}
+_pkgname=binutils
+
+pkgname=$_target-${_pkgname}
 pkgver=2.29
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the x86_64-elf target'
 arch=(x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib)
+options=(!emptydirs !docs)
 source=("http://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz"
         "libiberty-ignore-cflags.patch")
 sha256sums=('0b871e271c4c620444f8264f72143b4d224aa305306d85dd77ab8dce785b1e85'
@@ -16,7 +20,7 @@ sha256sums=('0b871e271c4c620444f8264f72143b4d224aa305306d85dd77ab8dce785b1e85'
 _basedir=binutils-$pkgver
 
 prepare() {
-	cd $_basedir
+	cd ${srcdir}/${_pkgname}-${pkgver}
 
 	patch -p1 -i $srcdir/libiberty-ignore-cflags.patch
 
@@ -28,8 +32,9 @@ build() {
 
 	$srcdir/$_basedir/configure \
 		--target=$_target \
-		--with-sysroot=/usr/$_target \
-		--prefix=/usr \
+		--prefix=${_sysroot} \
+		--bindir=/usr/bin \
+		--with-sysroot=${_sysroot} \
 		--disable-nls \
 		--disable-werror
 
@@ -39,7 +44,7 @@ build() {
 check() {
 	cd binutils-build
   
-  # do not abort on errors - manually check log files
+	# do not abort on errors - manually check log files
 	make -k check
 }
 
@@ -48,6 +53,6 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 
-  # Remove info and make since it expected already present by host compiler
-	rm -vr "$pkgdir"/usr/share/{info,man}
+	# Remove info and make since it expected already present by host compiler
+	rm -r ${pkgdir}/${_sysroot}/share/{info,man}
 }
