@@ -2,7 +2,7 @@
 
 pkgname=yalpam-git
 _pkgname=yalpam
-pkgver=41.fd9ecf9
+pkgver=42.0e84e69
 pkgrel=1
 pkgdesc="Yet another Arch Linux PAckage Manager"
 arch=('i686' 'x86_64')
@@ -13,7 +13,6 @@ depends=(
 	'xterm'
 	'yad'
 	'yaourt'
-	'reflector'
 )
 source=("git+${url}.git")
 sha1sums=('SKIP')
