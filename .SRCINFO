@@ -1,0 +1,27 @@
+pkgbase = vcvrack-befaco-git
+	pkgdesc = Befaco's VCV modules
+	pkgver = r10.2db46a4
+	pkgrel = 1
+	url = https://github.com/VCVRack/Befaco
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = vcvrack-git
+	source = vcvrack-Befaco::git+https://github.com/VCVRack/Befaco.git
+	source = vcvrack::git+https://github.com/VCVRack/Rack.git
+	source = git+https://github.com/AndrewBelt/osdialog.git
+	source = git+https://github.com/AndrewBelt/oui-blendish.git
+	source = git+https://github.com/mackron/dr_libs.git
+	source = git+https://github.com/memononen/nanosvg.git
+	source = git+https://github.com/memononen/nanovg.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vcvrack-befaco-git
+
