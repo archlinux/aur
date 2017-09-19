@@ -8,11 +8,11 @@ date=20170913
 url='http://www.fontconfig.org/release/'
 license=('custom' 'MIT')
 pkgver=2.12.5
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 groups=('infinality-bundle')
 depends=('expat' 'freetype2-infinality-ultimate')
-makedepends=('gperf' 'python2-lxml')
+makedepends=('gperf' 'python-lxml')
 options=('libtool')
 provides=('fontconfig=$pkgver' 'fontconfig-infinality' 'fontconfig-infinality-ultimate')
 conflicts=('fontconfig' 'fontconfig-infinality' 'fontconfig-infinality-git' 'fontconfig-infinality-ultimate-git')
@@ -57,8 +57,6 @@ prepare() {
     patch -Np1 -i ../${patch}
   done
 
-  # fc-blanks.py
-  sed -i 's/python/python2/' fc-blanks/fc-blanks.py
   aclocal
   libtoolize -f
   automake -afi
