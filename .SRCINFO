@@ -1,6 +1,6 @@
 pkgbase = firefox-developer-es-mx
 	pkgdesc = Standalone web browser from mozilla.org, developer build (es-MX)
-	pkgver = 56.0b7.20170830
+	pkgver = 57.0b1.20170919
 	pkgrel = 1
 	url = http://www.mozilla.org/projects/firefox
 	arch = i686
@@ -25,11 +25,11 @@ pkgbase = firefox-developer-es-mx
 	conflicts = firefox-developer
 	source = firefox-developer.desktop
 	source = vendor.js
-	source = https://download-installer.cdn.mozilla.net/pub/devedition/releases/56.0b7/linux-x86_64/es-MX/firefox-56.0b7.tar.bz2
+	source = https://download-installer.cdn.mozilla.net/pub/devedition/releases/57.0b1/linux-x86_64/es-MX/firefox-57.0b1.tar.bz2
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = 018c9995046572ed85bd8b6b569ed5dfd3fdfeec3ca25d013879ce1fd6faac13362d2c1554af3351e9ed672e316f7e6c4130760b48c973e65ef37abaf44f7864
 	sha512sums = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
-	sha512sums = a9702aff50e7d30e770f4331c9d529a68a04103fd03130ecbc520f01eeeff391b49e708b0adb6a4c20e09f9ef08090d7662cb46536ea8adec9edc2774901561b
+	sha512sums = 84739ad34774d7d62e73602cba501473b9f65ed58bf72e4bdd2c277c53c048c58db81077bc65fe79f9f19273f142aa970665999521a7dd353f1b53b0639f58c8
 
 pkgname = firefox-developer-es-mx
 

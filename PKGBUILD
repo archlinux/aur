@@ -13,8 +13,8 @@ _codename=date
 pkgname="${_name}-${_channel}-${_lang,,}"
 pkgdesc="Standalone web browser from mozilla.org, developer build (${_lang})"
 url="http://www.mozilla.org/projects/firefox"
-pkgver=56.0b7.20170830
-_version=56.0b7
+pkgver=57.0b1.20170919
+_version=57.0b1
 pkgrel=1
 arch=('i686' 'x86_64')
 conflicts=('firefox-developer')
@@ -24,10 +24,9 @@ source=(
   'firefox-developer.desktop'
   'vendor.js'
   "${_srcurl}/${_version}/linux-${CARCH}/${_lang}/${_name}-${_version}.tar.bz2")
-sha512sums=(
-  '018c9995046572ed85bd8b6b569ed5dfd3fdfeec3ca25d013879ce1fd6faac13362d2c1554af3351e9ed672e316f7e6c4130760b48c973e65ef37abaf44f7864'
-  'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
-  'a9702aff50e7d30e770f4331c9d529a68a04103fd03130ecbc520f01eeeff391b49e708b0adb6a4c20e09f9ef08090d7662cb46536ea8adec9edc2774901561b')
+sha512sums=('018c9995046572ed85bd8b6b569ed5dfd3fdfeec3ca25d013879ce1fd6faac13362d2c1554af3351e9ed672e316f7e6c4130760b48c973e65ef37abaf44f7864'
+            'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
+            '84739ad34774d7d62e73602cba501473b9f65ed58bf72e4bdd2c277c53c048c58db81077bc65fe79f9f19273f142aa970665999521a7dd353f1b53b0639f58c8')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
 optdepends=('pulseaudio: audio support'
   'ffmpeg: h.264 video'
