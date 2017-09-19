@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=kawanime
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop app for anime fans"
 arch=('x86_64')
 url="https://github.com/Kylart/KawAnime"
@@ -20,7 +20,7 @@ package() {
 
   install -Dm755 /dev/stdin "$pkgdir"/usr/bin/$pkgname <<END
   #!/usr/bin/bash
-  /opt/Kawanime/kawanime
+  /opt/KawAnime/kawanime
 
 END
 }
