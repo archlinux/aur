@@ -38,6 +38,9 @@ prepare()
 build()
 {
     cd gprbuild-gpl-2017-src
+
+    export OS=UNIX
+
     make prefix=/usr setup
     make all
 }
@@ -46,6 +49,9 @@ build()
 package() 
 {
     cd gprbuild-gpl-2017-src
+
+    export OS=UNIX
+
     make prefix="$pkgdir"/usr install
 
     # Cleanup
