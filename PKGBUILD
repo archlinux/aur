@@ -13,7 +13,9 @@ makedepends=('graphviz'
              'xmltoman'
              'git'
              'meson'
+             'ffmpeg'
              )
+optdepends=('ffmpeg: ffmpeg and alsa support')
 conflicts=('pipewire')
 provides=('pipewire')
 source=("git+https://github.com/PipeWire/pipewire.git")
