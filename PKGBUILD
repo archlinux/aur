@@ -2,7 +2,7 @@
 
 pkgbase=python-pyrsistent
 pkgname=('python-pyrsistent' 'python2-pyrsistent')
-pkgver=0.12.3
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Persistent/Functional/Immutable data structures"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-pytest-runner' 'python2-pytest-runner' 'python-hypothesis' 'python2-hypothesis')
 source=("https://pypi.io/packages/source/p/pyrsistent/pyrsistent-$pkgver.tar.gz"
         LICENCE.mit)
-sha512sums=('f66449865c54ff05e85b6f51927d346b4699b6c41eeb0da6e81e92efa4b03c45c25296390914638fca44369420e0c57754e794995dac832453537c1ad29dfaa8'
+sha512sums=('6bfb657841382c4ad402c383cae5092b83e93a3dde0b905f6cb8ca8a50b8acbe0f3241e9cc50cb83892c0d59b13145764faa2a3db1eabecbe6606a35d07bb5ff'
             '036bd5cc2a62b004576ecc50a84dc7d187d8108f52cb886f7e32bed324327af2dc132100e1c8f1dd2ce35b774f74898020f04a315e5137319deda18a449e791a')
 
 prepare() {
