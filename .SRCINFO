@@ -1,0 +1,26 @@
+pkgbase = gemcraft0
+	pkgdesc = Unleash your magic power and fight. The Gem of Eternity awaits you...
+	pkgver = 1.20
+	pkgrel = 1
+	url = http://armorgames.com/play/3527/gemcraft-chapter-0
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	depends = flashplayer-standalone
+	options = !strip
+	source = gemcraft0.swf::http://cache.armorgames.com/files/games/gemcraft-chapter-0-3527.swf
+	source = http://gameinabottle.com/favicon.ico
+	source = gemcraft0
+	source = gemcraft0.desktop
+	md5sums = ce3d8f0d5d28766542abf58b37c0bbaf
+	md5sums = 14f045b8d2a7d75de7cdb27dd4e9d6cd
+	md5sums = c0f0ccee19a63336245269df56a44989
+	md5sums = d1eec9e315dcd99c1126b11f8fc698ab
+	sha256sums = 6d51944b86a8d6b98a36667e204a2723c96adbf7914d9634cbac643f922790af
+	sha256sums = 7d6f3457786f44758f1e2e9fcd1aa0837d0392cf2358fc966d93a666f81b7d03
+	sha256sums = df290b1fed66a7b53ee02ce3630f0e83c1503959951c5425f6cfd66f86b21671
+	sha256sums = c1dd509659573f9e9d0427d6a8f675e67df0307c4820dbf0005cf237c95ebf85
+
+pkgname = gemcraft0
+

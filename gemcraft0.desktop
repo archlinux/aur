@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=GemCraft chapter 0: Gem of Eternity
+GenericName=GemCraft chapter 0: Gem of Eternity
+Comment=
+Exec=/usr/bin/gemcraft0
+Icon=/usr/share/gemcraft0/gemcraft0.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game
