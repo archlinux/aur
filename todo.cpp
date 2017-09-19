@@ -222,13 +222,14 @@ int main(int argc, char *argv[]) {
                         cout << "Chaine vide" << endl;
                         break;
                     } else {
+                        todo tmpTodo = todoFromCmd(sargv);
                         for ( int i =  listTodo.size()-1; i >= 0 ; --i)
-                            if( listTodo.at(i).str == sargv ) {
+                            if( listTodo.at(i).str == tmpTodo.str ) {
                                 cerr << "Erreur doublon" << endl;
                                 exit(-1);
                                 break;
                             }
-                        listTodo.push_back(todoFromCmd(sargv));
+                        listTodo.push_back(tmpTodo);
                     }
 
                     break;
