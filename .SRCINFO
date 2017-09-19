@@ -1,6 +1,6 @@
 pkgbase = damadamas-icon-theme-git
 	pkgdesc = DamaDamas icons aim to offer a familiar interface to the users
-	pkgver = 0.2.r0.gf960e00
+	pkgver = 0.2.r11.g40e706c
 	pkgrel = 1
 	url = https://github.com/sonakinci41/DamaDamas-icon-theme
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = damadamas-icon-theme-git
 	provides = damadamas-icon-theme
 	conflicts = damadamas-icon-theme
 	options = !strip
-	source = damadamas-icon-theme::git+https://github.com/sonakinci41/DamaDamas-icon-theme.git
+	source = git+https://github.com/sonakinci41/DamaDamas-icon-theme.git
 	md5sums = SKIP
 
 pkgname = damadamas-icon-theme-git
