@@ -1,6 +1,6 @@
 pkgbase = qomp
 	pkgdesc = Quick(Qt) Online Music Player
-	pkgver = 0.7.5
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = http://qomp.sourceforge.net/
 	arch = i686
@@ -9,18 +9,18 @@ pkgbase = qomp
 	makedepends = git
 	makedepends = make
 	makedepends = cmake
-	makedepends = libcue
 	depends = taglib
 	depends = qt5-base
 	depends = qt5-tools
+	depends = qt5-x11extras
 	depends = qt5-multimedia
 	depends = qt5-xmlpatterns
-	depends = gstreamer0.10-bad-plugins
-	depends = gstreamer0.10-base-plugins
-	depends = gstreamer0.10-ffmpeg
-	depends = gstreamer0.10-good-plugins
-	depends = gstreamer0.10-ugly-plugins
-	source = git+https://github.com/qomp/qomp
+	depends = gstreamer
+	depends = libcue
+	depends = gst-plugins-good
+	optdepends = gst-plugins-bad
+	optdepends = gst-plugins-ugly
+	source = git+https://github.com/qomp/qomp#commit=0ba092306affeb2c68b1a00dedbf5fa8f749ad45
 	md5sums = SKIP
 
 pkgname = qomp

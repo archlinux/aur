@@ -1,61 +1,42 @@
-# Maintainer: alex korobtsov <korobcoff@gmail.com>
-# Maintainer: Alexander Bantyev <balsoft@yandex.ru>
+# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
+# Contributor: alex korobtsov <korobcoff@gmail.com>
+# Contributor: Alexander Bantyev <balsoft@yandex.ru>
+
 pkgname=qomp
-pkgver=0.7.5
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Quick(Qt) Online Music Player"
 arch=('i686' 'x86_64')
 url="http://qomp.sourceforge.net/"
 license=('GPL2')
-depends=( 'taglib' 'qt5-base' 'qt5-tools' 'qt5-multimedia'
-'qt5-xmlpatterns' 'gstreamer0.10-bad-plugins'
-'gstreamer0.10-base-plugins' 'gstreamer0.10-ffmpeg'
-'gstreamer0.10-good-plugins' 'gstreamer0.10-ugly-plugins' )
-makedepends=('git' 'make' 'cmake' 'libcue')
-source=(git+https://github.com/qomp/qomp)
-md5sums=('SKIP') 
+depends=('taglib' 'qt5-base' 'qt5-tools' 'qt5-x11extras'
+         'qt5-multimedia' 'qt5-xmlpatterns'
+         'gstreamer' 'libcue' 'gst-plugins-good')
+optdepends=('gst-plugins-bad'
+            'gst-plugins-ugly')
+makedepends=('git' 'make' 'cmake')
+_commit=0ba092306affeb2c68b1a00dedbf5fa8f749ad45 #tag 1.2.1
+source=("git+https://github.com/qomp/qomp#commit=$_commit")
+md5sums=('SKIP')
 
 pkgver() {
-  cd qomp
- git describe --tags | cut -d - -f 1-2 --output-delimiter=.
+  cd $pkgname
+  git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
-_gitroot=https://github.com/qomp/
-_gitname=qomp
-_plugins="filesystemplugin;urlplugin;prostopleerplugin;myzukaruplugin;yandexmusicplugin;lastfmplugin;tunetofileplugin;mprisplugin;notificationsplugin"
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build/"
+  cd "$srcdir/${pkgname}"
   git submodule init
   git submodule update
-  
-  # BUILD HERE
-  
-cmake -DCMAKE_INSTALL_PREFIX=/usr/ \
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr/ \
 	-DUSE_QT5=ON \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DBUILD_PLUGINS=${_plugins}
-
-make
+	-DCMAKE_BUILD_TYPE=Release
+  make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build/"
+  cd "$srcdir/${pkgname}"
   make DESTDIR="$pkgdir/"  install
-
 }
 
