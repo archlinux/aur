@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url=https://github.com/greshake/i3status-rust
 license=('GPL3')
 depends=('dbus' 'i3-wm')
-makedepends=('cargo')
+makedepends=('rust')
 optdepends=('alsa-utils: for the volume block'
             'lm_sensors: for the temperature block'
             'powerline-fonts: for all themes using the Powerline arrow char'
