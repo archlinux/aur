@@ -72,6 +72,6 @@ package_opencascade7-docs() {
   install -d "${pkgdir}/usr/share/doc/${pkgbase}"
   cp -R doc/overview "${pkgdir}/usr/share/doc/${pkgbase}"
   cp -R doc/refman "${pkgdir}/usr/share/doc/${pkgbase}"
-  rm -d "${pkgdir}/usr/share/doc/${pkgbase}/overview/latex"
+  #rm -d "${pkgdir}/usr/share/doc/${pkgbase}/overview/latex"
 }
 # vim:set ts=2 sw=2 et:
