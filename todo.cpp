@@ -129,10 +129,14 @@ void modifyTODO( vector<todo>& listTodo, int argc, char* argv[], Functor modif  
 
 
 int main(int argc, char *argv[]) {
-    color = true;
+    color = false;
     vector<todo> listTodo;
     int action = -1;
     int startArgv = 2;
+
+
+    color = isatty(fileno(stdout));
+
 
     if( argc > 1 ) {
         // Si la première lettre est une majuscule
