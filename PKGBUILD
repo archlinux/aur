@@ -8,13 +8,13 @@
 pkgname=gnucash-python
 _realname=gnucash
 pkgver=2.6.17
-pkgrel=2
+pkgrel=3
 pkgdesc="A personal and small-business financial-accounting application with enabled python bindings."
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
 depends=('guile' 'slib' 'goffice0.8' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'desktop-file-utils' 'webkitgtk2' 'libgnome-keyring' 'libgnomecanvas' 'dconf' 'python2')
-makedepends=('intltool' 'cairo<=1.14.8')
+makedepends=('intltool')
 optdepends=('evince: for print preview'
 	    'yelp: help browser'
             'perl-finance-quote: for stock information lookups'
