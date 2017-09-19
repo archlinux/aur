@@ -3,13 +3,13 @@ _pkgname=dracut-crypt-ssh
 pkgname=$_pkgname-git
 pkgver=1.0.3.r3.g70e0fd5
 pkgrel=1
-pkgdesc="Dracut initramfs module to start dropbear sshd during boot to 
-enter LUKS passphrase remotely"
-arch=("i686" "x86_64" "aarch64")
-url="https://github.com/dracut-crypt-ssh/dracut-crypt-ssh"
+pkgdesc='Dracut initramfs module to start dropbear sshd during boot to 
+enter LUKS passphrase remotely'
+arch=('i686' 'x86_64' 'aarch64')
+url='https://github.com/dracut-crypt-ssh/dracut-crypt-ssh'
 license=('GPL2')
-depends=("dracut" "dhclient" "dropbear")
-makedepends=('git sed')
+depends=('dracut' 'dhclient' 'dropbear')
+makedepends=('git' 'sed')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 backup=('etc/dracut.conf.d/crypt-ssh.conf')
