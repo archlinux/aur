@@ -2,8 +2,8 @@ _pkgbase='suru-icon-theme'
 _git='snwh'
 pkgname="$_pkgbase-git"
 arch=('any')
-pkgver=r33.8672ace
-pkgrel=3
+pkgver=r41.2290959
+pkgrel=1
 pkgdesc='Suru is a icon theme by Sam Hewitt, whose design is based upon and around
 the original Suru icon guidelines for Ubuntu mobile applications, continued by a third party'
 source=("git+https://github.com/$_git/$_pkgbase.git")
@@ -13,7 +13,6 @@ pkgver() {
   cd "$_pkgbase"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
 package() {
   cd $_pkgbase
   find Suru/[1-9]* Suru/scalable Suru/index.theme -exec \
