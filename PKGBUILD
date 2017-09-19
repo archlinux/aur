@@ -1,11 +1,12 @@
-# Maintainer: RobbeR49 <robertsna@gmail.com>
+# Contributor: Fabio Loli <loli_fabio@protonmail.com>
+# Contributor: RobbeR49 <robertsna@gmail.com>
 
 pkgname=gmusicbrowser-git
-pkgver=1.1.14.r45.g1fe444d
+pkgver=1.1.15.r42.g2d57cef
 pkgrel=1
 pkgdesc="An open-source jukebox for large collections of mp3/ogg/flac files, written in perl."
 arch=('i686' 'x86_64')
-url="http://squentin.free.fr/gmusicbrowser/gmusicbrowser.html"
+url="http://gmusicbrowser.org/"
 license=('GPL3')
 depends=('gtk2-perl')
 makedepends=('git' 'markdown')
@@ -19,19 +20,15 @@ optdepends=('alsa-utils: enables the ALSA backend'
             'gst-plugins-base: vorbis support'
             'gst-plugins-good: flac support'
             'gst-plugins-ugly: mp3 support'
-            'perl-gstreamer: enables the gstreamer0.10 backend'
-            'gstreamer0.10-base: vorbis support for the gstreamer0.10 backend' 
-            'gstreamer0.10-good-plugins: flac support for the gstreamer0.10 backend'
-            'gstreamer0.10-ugly-plugins: mp3 support for the gstreamer0.10 backend'
             'perl-gtk2-trayicon: tray icon support'
-            'perl-gtk2-mozembed: web-based plugins support'
             'perl-gtk2-webkit: alternative web-based plugin support'
             'perl-locale-gettext: localization support'
             'perl-net-dbus: control gmusicbrowser through dbus and gnome hotkeys'
             'perl-gnome2-wnck: titlebar plugin support'
             'perl-html-parser: support for accented characters in lyrics plugin'
             'perl-gtk2-notify: support for notify plugin')
-conflicts=('gmusicbrowser' 'gmusicbrowser-devel')
+provides=('gmusicbrowser')
+conflicts=('gmusicbrowser')
 source=("${pkgname}::git+http://github.com/squentin/gmusicbrowser.git")
 md5sums=('SKIP')
 
