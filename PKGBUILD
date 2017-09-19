@@ -1,7 +1,9 @@
 # Maintainer: 3yan <zelenkaj@vscht.cz>
+# Contributor(s): Pinky <j-pi@seznam.cz>
+
 pkgname=mestrenova
 pkgver=11.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Widely used commercial NMR interpreter"
 arch=('i686' 'x86_64')
 url="https://www.mestrelab.com"
