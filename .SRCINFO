@@ -1,0 +1,26 @@
+pkgbase = gemcraft1
+	pkgdesc = Create and combine magic gems, put them into your towers and banish the monsters back to hell!
+	pkgver = 1.111A
+	pkgrel = 1
+	url = http://armorgames.com/play/1716/gemcraft
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	depends = flashplayer-standalone
+	options = !strip
+	source = http://gameinabottle.com/games/gemcraft1.swf
+	source = http://gameinabottle.com/favicon.ico
+	source = gemcraft1
+	source = gemcraft1.desktop
+	md5sums = 4ae0f6369520686ae1e8433ebe564170
+	md5sums = 14f045b8d2a7d75de7cdb27dd4e9d6cd
+	md5sums = cade4ab4245725f2148b72326e550d7a
+	md5sums = 5c2f2f548be56b4b97d4eda201a2f833
+	sha256sums = b7773ff1118aae4c36352e9d67e9430e36545b4255c5a3105ecfeef4957369ec
+	sha256sums = 7d6f3457786f44758f1e2e9fcd1aa0837d0392cf2358fc966d93a666f81b7d03
+	sha256sums = e716a20a03b5c6560e7e9eeed1f656cbda3bfd1dafdfd26c8268bd1f00c5f554
+	sha256sums = 2f363dfdd53a54dd472edaf1e78252aa1270061d5b4448b1259b6f351c3dfd28
+
+pkgname = gemcraft1
+

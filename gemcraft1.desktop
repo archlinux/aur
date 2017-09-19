@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=GemCraft chapter 1: The Forgotten
+GenericName=GemCraft chapter 1: The Forgotten
+Comment=
+Exec=/usr/bin/gemcraft1
+Icon=/usr/share/gemcraft1/armorgames.com/gemcraft1.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game
