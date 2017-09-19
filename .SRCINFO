@@ -1,0 +1,35 @@
+pkgbase = vcvrack-git
+	pkgdesc = Open-source virtual Eurorack DAW
+	pkgver = r136.e970d2e
+	pkgrel = 1
+	url = https://github.com/VCVRack/Rack
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glew
+	depends = glfw-x11
+	depends = jansson
+	depends = libsamplerate
+	depends = libcurl-compat
+	depends = libzip
+	depends = portmidi
+	depends = portaudio
+	depends = gtk2
+	source = vcvrack::git+https://github.com/VCVRack/Rack.git
+	source = git+https://github.com/AndrewBelt/osdialog.git
+	source = git+https://github.com/AndrewBelt/oui-blendish.git
+	source = git+https://github.com/mackron/dr_libs.git
+	source = git+https://github.com/memononen/nanosvg.git
+	source = git+https://github.com/memononen/nanovg.git
+	source = vcvrack.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 0ba5dc05dee015f791e73fa4ca541e56cc710929d5e38cc2f72d9aa4fa7fedf1
+
+pkgname = vcvrack-git
+
