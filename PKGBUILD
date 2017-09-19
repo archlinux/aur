@@ -12,7 +12,7 @@ makedepends=('cmake' 'qt5-webkit' 'gl2ps' 'freeimage' 'tk' 'glu' 'libxmu' 'vtk'
              'intel-tbb' 'doxygen' 'graphviz')
 source=("opencascade-${pkgver}.tar.gz::http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${pkgver//./_};sf=tgz"
         "fix-install-dir-references.patch")
-md5sums=('3143c52fa0a65ea001a4a983e98222c8'
+md5sums=('SKIP'
          '9614204ad945c1fcfa4c2c058c9d0423')
 
 prepare(){
