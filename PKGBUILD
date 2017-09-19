@@ -4,10 +4,10 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='http://ros.org/wiki/rviz'
 
 pkgname='ros-kinetic-rviz'
-pkgver='1.12.10'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-kinetic-map-msgs
@@ -85,7 +85,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rviz-release-release-kinetic-rviz-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/kinetic/rviz/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('affc1e084f0927f99a567a35925a965485fa9afc6e3948e9c37af21e577b686d')
+sha256sums=('e7b2e601775dbe8b6c1af35cdb7908ca2218451c7670a26f01195a8d3fb4bc7c')
 
 build() {
   # Use ROS environment variables
