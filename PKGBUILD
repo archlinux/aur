@@ -5,11 +5,11 @@
 # Contributor(s): IC-Parc, Imperial College London
 
 _major_version=6.1
-_minor_version=226
+_minor_version=228
 
 pkgname=eclipse-clp
 pkgver=${_major_version}.${_minor_version}
-pkgrel=2
+pkgrel=1
 pkgdesc="Constraint Logic Programming System"
 arch=('i686' 'x86_64')
 url="http://eclipseclp.org/"
@@ -25,8 +25,8 @@ install=eclipse-clp.install
 source_i686=("http://eclipseclp.org/Distribution/${_major_version}_${_minor_version}/i386_linux/eclipse_basic.tgz")
 source_x86_64=("http://eclipseclp.org/Distribution/${_major_version}_${_minor_version}/x86_64_linux/eclipse_basic.tgz")
 
-md5sums_i686=('a15bb101de879553cf5fca1ae7c3ddb4')
-md5sums_x86_64=('b18879bcb1443dde0b7c5761297fb481')
+md5sums_i686=('9e1670ee04e25ade623f25f48f1048c9')
+md5sums_x86_64=('4463889656ea510792c9d693a1fb9503')
 
 package() {
   cd ${srcdir}
