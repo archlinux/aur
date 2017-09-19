@@ -1,0 +1,20 @@
+pkgbase = brother-mfc-9130cw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-9130CW
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-9130cw.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = tcsh
+	depends = deb2targz
+	depends = perl
+	depends = a2ps
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc9130cwlpr-1.1.2-1.i386.deb
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc9130cwcupswrapper-1.1.2-1.i386.deb
+	sha256sums = 6ea12c777fd19735767757e977591d8c51353ccda7b8e4af130cc48aee85736d
+	sha256sums = 693211aff498e6cd308279899d439fa44657be0e6f5879f4ebc5530637d477ca
+
+pkgname = brother-mfc-9130cw
+
