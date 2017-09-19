@@ -1,14 +1,12 @@
 # Maintainer: VirtualTam <<virtualtam@flibidi.net>>
 pkgname=iannix-qt5-git
-pkgver=0.9.16.r37.g4031200
+pkgver=0.9.17.r29.g46714c2
 pkgrel=1
 pkgdesc="A graphical sequencer, based on Iannis Xenakis' works, for digital art (Qt5)."
 arch=('i686' 'x86_64')
 url="http://www.iannix.org/"
 license=('GPL3')
-depends=('alsa-lib' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'glu'
-         'libjpeg-turbo' 'libpng' 'libsm' 'libtiff' 'libxrender'
-         'mesa' 'qt5-base' 'qt5-script' 'qt5-tools' 'sqlite')
+depends=('alsa-lib' 'gdk-pixbuf2' 'glu' 'qt5-script' 'qt5-tools')
 makedepends=('gcc' 'git')
 optdepends=('ffmpeg: record and convert audio streams'
             'libfreenect: XBox Kinect'
