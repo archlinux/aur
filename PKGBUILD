@@ -3,7 +3,7 @@
 _target=x86_64-elf
 pkgname=$_target-gcc
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection - cross compiler for x86_64-elf target'
 arch=(x86_64)
 url='http://gcc.gnu.org/'
@@ -29,6 +29,7 @@ build() {
 
 	$srcdir/$_basedir/configure \
 		--target=$_target \
+		--libexecdir=/usr/lib \
 		--prefix=/usr \
 		--disable-nls \
 		--disable-plugin \
