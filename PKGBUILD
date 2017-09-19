@@ -1,6 +1,6 @@
 # Maintainer: Eduard Wirch <wirch.eduard@gmail.com>
 pkgname=deepgit-preview
-pkgver=3.rc.1
+pkgver=3.rc.2
 pkgrel=1
 pkgdesc="A tool to investigate the history of source code. This is preview software intended to provide you with an opportunity to test-drive new builds of the next DeepGit release."
 arch=('any')
@@ -18,7 +18,7 @@ source=(
     "deepgit.desktop"
     "deepgit.sh.patch"
 )
-sha1sums=('ad69d99812a926240613e9afe85216e85fc9aae3'
+sha1sums=('c7897c0fef20570014958fb74aba1f894922dbb3'
           '8ab2e36b3cb2e6f7b5af70a4ddbe2e9d307d3988'
           '01b2845c29b507d011ac251625a746b7bd03b11f')
 
