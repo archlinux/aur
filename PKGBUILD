@@ -3,12 +3,13 @@
 
 pkgname=qjackrcd
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple QT/JACK recorder"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/qjackrcd/"
 license=('GPL')
 depends=('qt5-base' 'jack')
+makedepends=('qt5-tools')
 source=("https://sourceforge.net/projects/qjackrcd/files/stable/$pkgname-$pkgver.tar.gz")
 md5sums=('e2437a9d8ae2f08188ef020d637d3f8a')
 
