@@ -7,7 +7,7 @@
 _gitname=gnupg
 pkgname=gnupg-git
 pkgver=2.2.0+12+g9f5e50e7c
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete and free implementation of the OpenPGP standard - development'
 url="http://www.gnupg.org/"
 license=('GPL')
@@ -16,7 +16,7 @@ optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon')
 makedepends=('git' 'libldap' 'libusb-compat')
 checkdepends=('openssh')
-depends=('npth-git' 'libgpg-error-git' 'libgcrypt-git' 'libksba' 'libassuan-git'
+depends=('npth-git' 'libgpg-error' 'libgcrypt-git' 'libksba' 'libassuan-git'
          'pinentry' 'bzip2' 'readline' 'gnutls' 'sqlite')
 provides=("gnupg=${pkgver}" 'dirmngr')
 conflicts=('gnupg2' 'gnupg' 'dirmngr')
