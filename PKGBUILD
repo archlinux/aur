@@ -3,12 +3,13 @@
 _target=i686-elf
 pkgname=$_target-binutils
 pkgver=2.29
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the i686-elf target'
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib)
+options=(!emptydirs !docs)
 source=("http://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz"
         "libiberty-ignore-cflags.patch")
 sha256sums=('0b871e271c4c620444f8264f72143b4d224aa305306d85dd77ab8dce785b1e85'
@@ -28,8 +29,9 @@ build() {
 
   $srcdir/$_basedir/configure \
     --target=$_target \
-    --with-sysroot=/usr/$_target \
-    --prefix=/usr \
+    --with-sysroot=${_target} \
+    --prefix=${_sysroot} \
+    --bindir=/usr/bin \
     --disable-nls \
     --disable-werror
 
@@ -48,9 +50,5 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  # Remove file conflicting with host binutils and manpages for MS Windows tools
-  rm "$pkgdir"/usr/share/man/man1/$_target-{dlltool,nlmconv,windres,windmc}*
-
-  # Remove info documents that conflict with host version
-  rm -rf "$pkgdir"/usr/share/info
+  rm -r ${pkgdir}/${_sysroot}/share/{info,man}
 }
