@@ -1,4 +1,3 @@
 #!/usr/bin/env sh
 
-cd /opt/vcvrack
-./Rack
+cd /opt/vcvrack && ./Rack

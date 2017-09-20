@@ -3,7 +3,7 @@
 _basename='vcvrack'
 
 pkgname='vcvrack-git'
-pkgver=r136.e970d2e
+pkgver=r141.9e5076a
 pkgrel=1
 pkgdesc='Open-source virtual Eurorack DAW'
 url='https://github.com/VCVRack/Rack'
@@ -28,7 +28,7 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    0ba5dc05dee015f791e73fa4ca541e56cc710929d5e38cc2f72d9aa4fa7fedf1
+    69736bbb5f49f9ce451c1311ec4399f4f59a86056233f151b9457116089a502d
 )
 
 pkgver() {
