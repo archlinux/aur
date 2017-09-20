@@ -14,7 +14,7 @@ pkgbase = ayojs-git
 	depends = libuv
 	depends = http-parser
 	depends = c-ares
-	conflicts = nodejs
+	replaces = nodejs
 	source = ayo::git://github.com/ayojs/ayo
 	sha512sums = SKIP
 
