@@ -4,21 +4,21 @@
 
 pkgbase=vim-clipboard
 pkgname=(vim-clipboard)
-pkgver=8.0.0722
+pkgver=8.0.1092
 _versiondir=80
 pkgrel=1
 arch=(i686 x86_64)
 license=('custom:vim')
+cores=$(nproc --all)
 url='http://www.vim.org'
 makedepends=(gpm python2 python ruby libxt gtk3 lua gawk tcl)
 source=(vim-$pkgver.tar.gz::https://github.com/vim/vim/archive/v$pkgver.tar.gz
         vimrc
         archlinux.vim
         )
-sha1sums=('24824406544144938f07f021fd9aa8a9821eccea'
+sha1sums=('3a7e6e8a5a592df8a3afed0d247c5c3b94fb75a5'
           '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
-          '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2'
-          )
+          '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
 prepare() {
   cd $srcdir/vim-$pkgver/src
 
@@ -52,7 +52,7 @@ build() {
     --enable-rubyinterp=dynamic \
     --enable-luainterp=dynamic \
     --enable-tclinterp=dynamic
-  make
+  make -j$cores
 }
 
 package_vim-clipboard() {
@@ -69,7 +69,7 @@ package_vim-clipboard() {
   replaces=('vim-python3' 'vim-minimal' 'vim')
 
   cd "${srcdir}"/vim-$pkgver
-  make -j1 VIMRCLOC=/etc DESTDIR="${pkgdir}" install
+  make -j$cores VIMRCLOC=/etc DESTDIR="${pkgdir}" install
 
   # provided by (n)vi in core
   rm "${pkgdir}"/usr/bin/{ex,view}
