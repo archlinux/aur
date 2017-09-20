@@ -1,14 +1,14 @@
 pkgbase = entr
 	pkgdesc = Run arbitrary commands when files change
-	pkgver = 3.8
+	pkgver = 3.9
 	pkgrel = 1
 	url = http://entrproject.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://bitbucket.org/eradman/entr/get/entr-3.8.tar.gz
-	sha256sums = ebb1e793d948db76481f081011bf1dad8b4449e067f4e5fe68176191f84b26bd
+	source = https://bitbucket.org/eradman/entr/get/entr-3.9.tar.gz
+	sha256sums = 02d78f18ae530e64bfbb9d8e0250962f85946e10850dd065899d03af15f26876
 
 pkgname = entr
 
