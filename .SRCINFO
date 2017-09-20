@@ -1,0 +1,16 @@
+pkgbase = python-ebtables
+	pkgdesc = A simple Python binding for Ebtables
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ldx/python-ebtables
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cffi>=0.5.0
+	depends = ebtables
+	source = https://github.com/ldx/python-ebtables/archive/v0.2.0.tar.gz
+	md5sums = be4c50c78c4c932761cf0586fe755f20
+
+pkgname = python-ebtables
+
