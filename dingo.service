@@ -1,11 +1,12 @@
 [Unit]
-Description=dingo
+Description=Dingo Secure DNS resolver
 Wants=network.target
-Before=network.target
 
 [Service]
-EnvironmentFile=/etc/dingo
-ExecStart=/usr/bin/dingo $ARGS
+Type=simple
+User=nobody
+ExecStart=/usr/bin/dingo
 
 [Install]
 WantedBy=multi-user.target
+
