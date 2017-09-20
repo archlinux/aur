@@ -20,26 +20,26 @@ pkgver() {
 }
 
 prepare() {
+  cd "${srcdir}/git-spindle"
+
   # NOTE: Since we only build the man page, we tweak docs configuration so that
   # it does not require a sphinx theme.
-  sed -i '/csp/d' "$srcdir/git-spindle/docs/conf.py"
+  sed -i '/csp/d' "docs/conf.py"
 }
 
 build() {
   cd "$srcdir/git-spindle"
   python setup.py build
 
-  cd "$srcdir/git-spindle/docs"
-  LANG=en_US.UTF-8 make man
+  LANG=en_US.UTF-8 make -C docs man
 }
 
 package() {
   cd "$srcdir/git-spindle"
   python setup.py install --prefix=/usr --root="$pkgdir"
 
-  cd "$srcdir/git-spindle/docs"
   install -d "$pkgdir/usr/share/man/man1/"
-  install -m644 _build/man/*.1 "$pkgdir/usr/share/man/man1/"
+  install -m644 docs/_build/man/*.1 "$pkgdir/usr/share/man/man1/"
 }
 
 # vim:set ts=2 sw=2 et:
