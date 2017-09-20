@@ -6,7 +6,7 @@
 # Contributor: Christopher Arndt <chris at chrisarndt.de>
 
 pkgname=ardour-git
-pkgver=5.5.r639.gab052d056
+pkgver=6.0.pre0.r38.ga42f6ff828
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ build() {
 
   python2 waf configure --prefix=/usr \
                         --configdir=/etc \
-                        --with-backends="jack,alsa,dummy " \
+                        --with-backends=jack,alsa,dummy \
                         --libjack=weak \
                         --optimize \
                         --docs \
