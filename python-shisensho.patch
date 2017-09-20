@@ -1,0 +1,32 @@
+diff -ura python-shisensho_orig/src/shisensho-0.9.12/shisensho/data/config.json python-shisensho/src/shisensho-0.9.12/shisensho/data/config.json
+--- python-shisensho_orig/src/shisensho-0.9.12/shisensho/data/config.json	2017-01-20 05:29:09.000000000 +0100
++++ python-shisensho/src/shisensho-0.9.12/shisensho/data/config.json	2017-09-20 13:18:30.121384165 +0200
+@@ -12,7 +12,7 @@
+     ,"background-file" : "data/wallpapers/wallpaper1.jpg"
+     ,"tiles-file" : "data/tilescolor3.png"
+     ,"logfile" : false
+-    ,"initial-dim" : [14,6]
++    ,"initial-dim" : [18,10]
+     ,"delay-deleting" : 0.3
+     ,"tiles-matrix" : [
+             [
+@@ -72,7 +72,18 @@
+             ]
+         ]
+     , "tiles" :[
+-        {
++	{
++            "dim":[18,10],
++            "list" : ["character-1","character-2","character-3","character-4","character-5","character-6",
++		"character-7","character-8","character-9",
++		"bamboo-1","bamboo-2","bamboo-3","bamboo-4","bamboo-5","bamboo-6","bamboo-7",
++                "bamboo-8","bamboo-9",
++                "circle-1","circle-2","circle-3","circle-4","circle-5","circle-6","circle-7",
++                "circle-8","circle-9",
++                "dragon-red","dragon-green","dragon-white"
++            ]
++        }
++        ,{
+             "dim":[14,6],
+             "list" : ["bamboo-1","bamboo-2","bamboo-3","bamboo-4","bamboo-5","bamboo-6","bamboo-7",
+                 "bamboo-8","bamboo-9",

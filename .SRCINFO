@@ -1,0 +1,20 @@
+pkgbase = python-shisensho
+	pkgdesc = Shisen-Sho game
+	pkgver = 0.9.12
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/shisensho
+	arch = any
+	license = ALv2
+	makedepends = python-setuptools
+	depends = python
+	depends = tk
+	depends = python-pillow
+	source = https://pypi.io/packages/source/s/shisensho/shisensho-0.9.12.tar.gz
+	source = python-shisensho.patch
+	source = pyshisensho
+	sha256sums = 5957749c0342976b2465329e01820f537b4239d7885cd33ccef9fdd19639105a
+	sha256sums = c6d14c1b24cc431033a20c2fca1139647fcd920900500184b71670a86f2b271b
+	sha256sums = 182448dc0e688589f1176fe4444a551df79519382832c0153a1e3a41b9c75f8b
+
+pkgname = python-shisensho
+
