@@ -4,7 +4,7 @@
 
 pkgbase=linux-max98090
 _srcname=linux-4.13
-pkgver=4.13.2
+pkgver=4.13.3
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -24,9 +24,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            'dfb5753b89580494a54d1021d14f1fa91b54d4ab9bf6175fc8cf8cb8c41d8e3f'
+            'bfebd5121512f76ed835223679fc11fc7826aabc31233cefb522e0e1b515d3fe'
             'SKIP'
-            '1fcb1252f6c66996e9580dac1e39cf591898be3b6b0fb6713cca9d9b5e6f2cdd'
+            'e384b661655e77ec2cc3fddd24a4275e79eec43330d11a15f82a46c26508856a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
