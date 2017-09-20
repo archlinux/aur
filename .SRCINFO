@@ -1,7 +1,7 @@
 pkgbase = weboob
 	pkgdesc = Web Out Of Browsers provides several applications to interact with a lot of websites.
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 1
 	url = http://weboob.org/
 	install = weboob.install
 	arch = any
@@ -22,6 +22,7 @@ pkgbase = weboob
 	depends = python2-lxml
 	depends = python2-yaml
 	depends = python2-futures
+	depends = python2-six
 	depends = which
 	optdepends = gnupg: check for repository authenticity
 	optdepends = python2-routes: contrib backends
@@ -33,8 +34,8 @@ pkgbase = weboob
 	optdepends = python2-termcolor: color formatting
 	optdepends = python2-nose: test suite
 	optdepends = bash-completion: to enable bash completion
-	source = https://symlink.me/attachments/download/342/weboob-1.2.tar.gz
-	md5sums = a77675b2443e4570d30f569951512b11
+	source = https://symlink.me/attachments/download/356/weboob-1.3.tar.gz
+	md5sums = becbb39232ca9b8f425d81c04b90b9ed
 
 pkgname = weboob
 

@@ -1,7 +1,7 @@
 Maintainer='Gilles Hamel <hamelg@laposte.net>'
 pkgname=weboob
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="Web Out Of Browsers provides several applications to interact with a lot of websites."
 arch=('any')
 url="http://weboob.org/"
@@ -11,7 +11,7 @@ depends=('python2-pyqt5' 'phonon-qt5' 'python2-dateutil' 'python2-prettytable'
 	 'python2-requests' 'python2-google-api-python-client'
          'python2-feedparser' 'python2-cssselect' 'python2-html2text'
          'python2-imaging' 'python2-mechanize' 'python2-simplejson'
-         'python2-lxml' 'python2-yaml' 'python2-futures'
+         'python2-lxml' 'python2-yaml' 'python2-futures' 'python2-six'
 	 'which')
 makedepends=('python2-setuptools')
 optdepends=('gnupg: check for repository authenticity'
@@ -24,12 +24,12 @@ optdepends=('gnupg: check for repository authenticity'
             'python2-termcolor: color formatting'
             'python2-nose: test suite'
 	    'bash-completion: to enable bash completion')
-source=("https://symlink.me/attachments/download/342/$pkgname-$pkgver.tar.gz")
-md5sums=('a77675b2443e4570d30f569951512b11')
+source=("https://symlink.me/attachments/download/356/$pkgname-$pkgver.tar.gz")
+md5sums=('becbb39232ca9b8f425d81c04b90b9ed')
 
 package() {
   cd $pkgname-$pkgver
-  python2 setup.py install --qt --xdg --prefix=/usr --root="$pkgdir"
+  python2 setup.py install --qt --xdg --prefix=/usr --root="$pkgdir" --optimize=1
   install -Dm 644 tools/weboob_bash_completion \
   	  "$pkgdir/etc/bash_completion.d/weboob"
 }
