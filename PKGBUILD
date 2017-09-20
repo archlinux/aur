@@ -9,26 +9,24 @@
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 
 pkgname=wine-gaming-nine
-pkgver=2.16
+pkgver=2.17
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 #_d3d9ver=$_pkgbasever
-_d3d9ver=2.15
+_d3d9ver=2.16
 _winesrcdir="wine-patched-staging-$_pkgbasever"
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
         "https://github.com/sarnex/wine-d3d9-patches/archive/wine-d3d9-$_d3d9ver.tar.gz"
-	"https://github.com/wine-compholio/wine-staging/raw/master/patches/ntdll-Heap_FreeLists/0001-ntdll-Improve-heap-allocation-performance-by-using-m.patch"
 	"https://github.com/laino/wine-patches/archive/master.tar.gz"
         30-win32-aliases.conf
 	keybindings.patch
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('a07f381a654201538c76798e5d676e1997633933'
-          '5865667894790c2a2b8d3d2d0df6934fe614c4cf'
-	  '0c45c2e050a7642acd5c7dec6fd5b03f8b5cd658'
+sha1sums=('84b75de160d8eeb09670b201f19dc652392e07ab'
+          '21ad1a8cf8f9151d1e81ffab36d7398927fd73e9'
 	  'SKIP'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
 	  'f3febb8836f38320742a546c667106608d4c4395'
