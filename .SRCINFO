@@ -1,0 +1,21 @@
+pkgbase = okular-backend-markdown-git
+	pkgdesc = Markdown backend for Okular (git version)
+	pkgver = r7435.3a16c16
+	pkgrel = 1
+	url = http://kde.org/applications/graphics/okular/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	makedepends = python
+	depends = okular
+	depends = discount
+	provides = okular-backend-markdown
+	conflicts = okular-backend-markdown
+	source = git://anongit.kde.org/okular.git
+	sha256sums = SKIP
+
+pkgname = okular-backend-markdown-git
+
