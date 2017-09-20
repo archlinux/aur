@@ -4,8 +4,8 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=3.22.0
-pkgrel=2
+pkgver=3.22.0+19+g5f615ff
+pkgrel=1
 pkgdesc="A VNC Client for the GNOME desktop"
 url="https://wiki.gnome.org/Apps/Vinagre"
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ depends=(libsecret gtk-vnc vte3 telepathy-glib avahi dconf spice-gtk3 gnutls fre
 makedepends=(docbook-xsl intltool openssh itstool spice-protocol vala gnome-common appstream-glib git)
 optdepends=('openssh: SSH plugin')
 groups=(gnome-extra)
-_commit=272163645240debe41620f3bff84af8cb475f742  # master~2
+_commit=5f615ff250186b6d3156d99d9d22e84259a1119b  # master
 source=("git+https://git.gnome.org/browse/vinagre#commit=$_commit"
         freerdp2017.diff)
 sha256sums=('SKIP'
