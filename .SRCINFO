@@ -1,8 +1,8 @@
 pkgbase = hid-asus-dkms-git
-	pkgdesc = ASUS HID DKMS Driver
-	pkgver = r80.36df3da
-	pkgrel = 1
-	url = http://www.asus.com/
+	pkgdesc = ASUS HID FTE100* DKMS driver for kernel 4.9-
+	pkgver = r85.af1d624
+	pkgrel = 2
+	url = https://github.com/vlasenko/hid-asus-dkms
 	arch = any
 	license = GPL2
 	makedepends = git

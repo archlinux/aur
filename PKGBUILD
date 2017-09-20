@@ -1,11 +1,11 @@
 # Contributor: Cyano Hao < c at cyano dot cn >
 
 pkgname=hid-asus-dkms-git
-pkgver=r80.36df3da
-pkgrel=1
-pkgdesc="ASUS HID DKMS Driver"
+pkgver=r85.af1d624
+pkgrel=2
+pkgdesc="ASUS HID FTE100* DKMS driver for kernel 4.9-"
 arch=('any')
-url="http://www.asus.com/"
+url="https://github.com/vlasenko/hid-asus-dkms"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
@@ -18,10 +18,10 @@ sha256sums=('SKIP'
 _gitrepo=hid-asus-dkms
 _dkmsname=hid-asus
 
-pkgver() {
-	cd "$srcdir/$_gitrepo"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+# pkgver() {
+#	cd "$srcdir/$_gitrepo"
+#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+# }
 
 build() {
 	cd "$srcdir/$_gitrepo"
