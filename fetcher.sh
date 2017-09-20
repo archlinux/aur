@@ -27,11 +27,16 @@ exec 1> >(tee >(systemd-cat --identifier="$script_name" --priority="info") >&3)
 exec 2> >(tee >(systemd-cat --identifier="$script_name" --priority="notice") >&4)
 
 #================================= Functions =================================
-function config_usage() {
+function help_menu() {
+    echo "$script_name Options:"
+    echo -h, --help     Show this information
+    echo -f=, --file=   Use another input file for fetcher
+    echo
     echo "Create your fetcher config file $configfile like this:"
     echo "$HOME/workspace/repo pull --ff-only"
     echo "$HOME/workspace/repo2 pull origin master:master"
     echo "$HOME/workspace/repo2 push"
+    echo
 }
 
 #============================== Parsing Options ==============================
@@ -43,11 +48,7 @@ do
             configfile="${i#*=}"
             ;;
         -h|--help)
-            echo "$script_name Options:"
-            echo -h, --help     Show this information
-            echo -f=, --file=   Use another input file for fetcher
-            echo
-            config_usage
+            help_menu
             exit
             ;;
         *)
@@ -58,7 +59,8 @@ done
 
 if [ ! -f "$configfile" ]; then
     echo "Configuration file \"$configfile\" not found." >&2
-    config_usage
+    echo
+    help_menu
     exit
 fi
 
@@ -66,7 +68,9 @@ fi
 readarray lines < "$configfile"
 
 if [ ${#lines[@]} -eq 0 ]; then
-    config_usage
+    echo "Configuration file \"$configfile\" empty." >&2
+    echo
+    help_menu
     exit
 fi
 

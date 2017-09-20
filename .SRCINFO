@@ -1,7 +1,7 @@
 pkgbase = fetcher
 	pkgdesc = Automatic update of git repositories via a systemd service.
 	pkgver = 2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/mbrunnen/fetcher
 	install = fetcher.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = fetcher
 	depends = git
 	source = fetcher.sh
 	source = fetcher.service
-	md5sums = 58c56d0075f220a99be8d335866a6536
+	md5sums = 7850769db5609291b9aef320b87d9f15
 	md5sums = dab6b2be6bfbd3f2b77b000814e1e9fd
 
 pkgname = fetcher
