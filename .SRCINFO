@@ -1,0 +1,18 @@
+pkgbase = sabaki
+	pkgdesc = An elegant SGF editor for the game of Go
+	pkgver = 0.31.3
+	pkgrel = 1
+	url = http://sabaki.yichuanshen.de/
+	install = sabaki.install
+	arch = any
+	license = MIT
+	makedepends = npm
+	source = https://github.com/yishn/Sabaki/archive/v0.31.3.tar.gz
+	source = sabaki.desktop
+	source = sabaki.xml
+	md5sums = cf374e056f2763585821c9535eef9f61
+	md5sums = b39f3b91292cb3983124bd38035fbd8e
+	md5sums = efbd547e892c7781a5ece702d389dd9e
+
+pkgname = sabaki
+
