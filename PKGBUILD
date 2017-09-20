@@ -1,8 +1,8 @@
-# Maintainer: drakkan <nicola.murino@gmail.com>
-# Contributor: drakkan <nicola.murino@gmail.com>
+# Maintainer: drakkan <nicola.murino at gmail dot com>
+# Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname=kdsoap
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Qt-based client-side and server-side SOAP component'
 license=('GPL3' 'LGPL' 'custom')
@@ -12,11 +12,10 @@ depends=('qt5-base')
 conflicts=('kdsoap-qt4')
 makedepends=('python2' 'git')
 source=("https://github.com/KDAB/KDSoap/releases/download/kdsoap-${pkgver}/kdsoap-${pkgver}.tar.gz")
-sha256sums=('fc4506a91db59aef33aadba9fa828c59047ac7bfdd13a23fe4ba7b66450d4844')
+sha256sums=('d6b6b01348d2e1453f7e12724d1848ee41c86a1b19168ca67ac98fedb0408668')
 
 build() {
   cd "$pkgname-$pkgver"
-  sed -i 's/\-ansi//g' g++.pri
   ./configure.sh -release -shared -prefix /usr
   make 
 }
