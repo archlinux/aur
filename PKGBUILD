@@ -1,15 +1,15 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=noto-fonts-alpha
-pkgver=20170829
-_commit=93ed31f86a2308fcd63b4f79c1012d6496cab5fd
+pkgver=20170920
+_commit=59a1a7eae22f69f1a0e89513f2288f6bfda9bd21
 pkgrel=1
 pkgdesc="Alpha versions of Noto fonts."
 arch=(any)
 url="https://github.com/googlei18n/noto-fonts-alpha"
 license=('custom:OFL')
 source=("$pkgname-$_commit.tar.gz::https://github.com/googlei18n/noto-fonts-alpha/archive/$_commit.tar.gz")
-sha256sums=('7a84d198ca1dad07a17e6c46d2ae092e1e9395d0a2cf5334ebcedde96bc88f5c')
+sha256sums=('6b91f64e5cfd0715579aeecd65c22169b982681f84adb87119c22afab98c5048')
 
 package() {
   cd "$srcdir/$pkgname-$_commit/"
