@@ -10,7 +10,7 @@ url='http://www.washington.edu/alpine/'
 license=('apache')
 depends=('ncurses')
 makedepends=('gcc')
-source=("ftp://ftp.cac.washington.edu/alpine/alpine-${pkgver}.tar.bz2")
+source=("http://pkgs.fedoraproject.org/repo/pkgs/alpine/alpine-2.00.tar.bz2/84e44cbf71ed674800a5d57eed9c1c52/alpine-${pkgver}.tar.bz2")
 sha256sums=('c85db8405af90375ba2440c85b7952d80996154e9916b83acca558dc82e0a2a6')
 
 prepare() {
@@ -27,8 +27,9 @@ build() {
   cd "${srcdir}/alpine-${pkgver}"
   make -s c-client
   make -s c-client.d
-  make -s -j "$(nproc)" -C 'pith'
-  make -s -j "$(nproc)" -C 'pico'
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  nice make -s -j "${_nproc}" -C 'pith'
+  nice make -s -j "${_nproc}" -C 'pico'
   # making Alpine crashes on pam errors
   set +u
 }
