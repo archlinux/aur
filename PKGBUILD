@@ -6,7 +6,7 @@
 # Contributor: Christopher Arndt <chris at chrisarndt.de>
 
 pkgname=ardour_stable-git
-pkgver=5.11
+pkgver=5.12
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation. Latest stable release from git."
 arch=('i686' 'x86_64')
@@ -24,20 +24,20 @@ md5sums=('SKIP'
 pkgver() {
   cd "${srcdir}/${pkgname%-*}"
   
-  #get the latest release
+  #get the latest release without commit
   git describe --abbrev=0
 }
 
 build() {
   cd "${srcdir}/${pkgname%-*}"
 
-  # rollback any change occured after the release tag. There is probably a better way.
+  # rollback any change posterior to the release tag. There is probably a better way.
   git reset --hard ${pkgver}
   
   # configure and build as usual.
   python2 waf configure --prefix=/usr \
                         --configdir=/etc \
-                        --with-backends="jack,alsa,dummy " \
+                        --with-backends=jack,alsa,dummy \
                         --libjack=weak \
                         --optimize \
                         --docs \
