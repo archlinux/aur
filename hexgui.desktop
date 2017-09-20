@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=HexGui
+GenericName=SGF Editor (Hex)
+Comment=A GUI for Hex
+Exec=/usr/bin/hexgui %U
+Terminal=false
+Type=Application
+Categories=Game;
+MimeType=application/x-hex-sgf;

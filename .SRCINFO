@@ -1,8 +1,9 @@
 pkgbase = hexgui
 	pkgdesc = SGF editor and engine client for the board game Hex
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/p/benzene/hexgui
+	install = hexgui.install
 	arch = any
 	license = GPL3
 	makedepends = apache-ant
@@ -11,8 +12,12 @@ pkgbase = hexgui
 	depends = java-runtime
 	source = https://github.com/apetresc/hexgui/archive/v0.9.1.tar.gz
 	source = hexgui
+	source = hexgui.xml
+	source = hexgui.desktop
 	md5sums = eb264a51b3b446d79ef1628a4bbf6e2a
 	md5sums = 77035cf26c8a2e4c656ad874b44ccf29
+	md5sums = df0600845bfe27c7f5775f274ee12202
+	md5sums = d6c7e88fb22bff99ef68efc26ccb8d56
 
 pkgname = hexgui
 
