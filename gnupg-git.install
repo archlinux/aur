@@ -1,21 +1,41 @@
-info_dir=/usr/share/info
-info_files=(gnupg.info gnupg.info-1 gnupg.info-2)
+_global_units() {
+	_units=(dirmngr.socket gpg-agent.socket gpg-agent-{browser,extra,ssh}.socket)
+	_dir=/etc/systemd/user/sockets.target.wants
+
+	case $1 in
+		enable)
+			mkdir -p $_dir
+			for _u in "${_units[@]}"; do
+				ln -sf /usr/lib/systemd/user/$_u $_dir/$_u
+			done
+			;;
+		disable)
+			for _u in "${_units[@]}"; do
+				rm -f $_dir/$_u
+			done
+			rmdir -p --ignore-fail-on-non-empty $_dir
+			;;
+	esac
+}
 
 post_install() {
-    [ -x usr/bin/install-info ] || return 0
-    for f in ${info_files[@]}; do
-      usr/bin/install-info ${info_dir}/$f ${info_dir}/dir 2> /dev/null
-    done
+	# See FS#42798 and FS#47371
+	dirmngr </dev/null &>/dev/null
+
+	# Let systemd supervise daemons by default
+	_global_units enable
 }
 
 post_upgrade() {
-  post_install $1
+	if (( $(vercmp $2 2.1.13-1) < 0 )); then
+		echo "==> Please kill running gpg-agent and dirmngr processes before using this release."
+	fi
+
+	if (( $(vercmp $2 2.1.21-3) < 0 )); then
+		_global_units enable
+	fi
 }
 
 pre_remove() {
-   [ -x usr/bin/install-info ] || return 0
-   for f in ${info_files[@]}; do
-     usr/bin/install-info --delete ${info_dir}/$f ${info_dir}/dir 2> /dev/null
-   done
+	_global_units disable
 }
-
