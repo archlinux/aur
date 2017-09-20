@@ -1,6 +1,6 @@
 pkgbase = gtk3-theme-mist-git
 	pkgdesc = GTK 3.x theme matching GTK 2.x Mist theme
-	pkgver = r28.92ad7d3
+	pkgver = r29.130c5ef
 	pkgrel = 1
 	url = https://github.com/mkoskar/gtk-theme-mist
 	arch = any

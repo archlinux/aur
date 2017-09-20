@@ -3,7 +3,7 @@
 _basename='gtk-theme-mist'
 
 pkgname='gtk3-theme-mist-git'
-pkgver=r28.92ad7d3
+pkgver=r29.130c5ef
 pkgrel=1
 pkgdesc='GTK 3.x theme matching GTK 2.x Mist theme'
 url='https://github.com/mkoskar/gtk-theme-mist'
@@ -23,5 +23,5 @@ pkgver() {
 package() {
     cd "$_basename"
     install -d "$pkgdir/usr/share/themes/Mist"
-    cp -dr --preserve=mode Mist/gtk-3.0 "$pkgdir/usr/share/themes/Mist"
+    cp -dr --preserve=mode -t "$pkgdir/usr/share/themes/Mist" Mist/gtk-3.0
 }
