@@ -8,7 +8,7 @@ license=('BSD')
 depends=()
 makedepends=('go>=1.5' 'make')
 source=("https://github.com/barnybug/cli53/archive/$pkgver.tar.gz")
-sha256sums=('c7215b1f439839111774de07e1818d460799403cdb00fc05b3555109937e764e')
+sha256sums=('dd3065bdc2757c1e67c437342e91ffa71eacb7872efe7c84391d8de3614615ce')
 
 build() {
     export GOPATH="$srcdir"
