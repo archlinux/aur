@@ -2,7 +2,7 @@
 # Former Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ossec-hids
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Host-based Intrusion Detection System"
 arch=('i686' 'x86_64')
 url="https://ossec.github.io/"
@@ -34,6 +34,9 @@ build() {
 
 # fix placement of ossec-init.conf
 sed -i "s|^OSSEC_INIT.*|OSSEC_INIT=\"$pkgdir/etc/ossec-init.conf\"|" src/init/shared.sh
+
+cd src
+make TARGET=$USER_INSTALL_TYPE
 }
 
 package() {
@@ -42,8 +45,9 @@ package() {
   _preparevars
   . "$srcdir/config" # load configuration
 
-  install -dm755 "$pkgdir/etc"
-  USER_DIR="$pkgdir/$_instdir" ./install.sh
+#  install -dm755 "$pkgdir/etc"
+  mkdir -p $pkgdir/etc
+ USER_DIR="$pkgdir/$_instdir" ./install.sh
 
   # install systemd service unit
   install -Dm0644 "$srcdir/ossec.service" "$pkgdir/usr/lib/systemd/system/ossec.service"
