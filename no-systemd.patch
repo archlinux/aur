@@ -1,0 +1,19 @@
+diff -ru a/multipath-tools/multipathd/main.c b/multipath-tools/multipathd/main.c
+--- a/multipath-tools/multipathd/main.c	2017-09-20 21:40:10.288322239 +0200
++++ b/multipath-tools/multipathd/main.c	2017-09-20 21:40:31.238636848 +0200
+@@ -169,6 +169,7 @@
+ 	return NULL;
+ }
+ 
++#ifdef USE_SYSTEMD
+ static void do_sd_notify(enum daemon_status old_state)
+ {
+ 	/*
+@@ -181,6 +182,7 @@
+ 		return;
+ 	sd_notify(0, sd_notify_status());
+ }
++#endif
+ 
+ static void config_cleanup(void *arg)
+ {

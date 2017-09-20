@@ -21,11 +21,16 @@ optdepends=('ceph: support for RADOS Block Devices (needs to be installed at bui
 makedepends=('git')
 conflicts=('multipath-tools-git')
 install=multipath-tools.install
-source=("multipath-tools::git+http://git.opensvc.com/multipath-tools/.git#tag=${pkgver}")
-sha256sums=('SKIP')
+source=("multipath-tools::git+http://git.opensvc.com/multipath-tools/.git#tag=${pkgver}"
+        no-systemd.patch)
+sha256sums=('SKIP'
+            '91188fc348b1620b9a20c354f84c0fd751d2435ed46e40fe8dd40d6ba1a86236')
 
 prepare() {
   cd  "${srcdir}/${pkgname}"
+
+  # Patch multipathd to build when no systemd is installed
+  patch -p2 < "${srcdir}"/no-systemd.patch
 
   # Fix bindir in Makefile
   sed -i 's|$(exec_prefix)/sbin|$(exec_prefix)/bin|g' Makefile.inc
