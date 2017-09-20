@@ -1,6 +1,5 @@
 # $Id$
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
 
 pkgbase=linux-max98090
 _srcname=linux-4.13
