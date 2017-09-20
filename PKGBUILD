@@ -16,7 +16,7 @@ depends=("zeroc-ice=$pkgver" "php")
 
 source=("ice-${pkgver}.tar.gz::https://github.com/zeroc-ice/ice/archive/v${pkgver}.tar.gz")
 
-sha256sums=('a6bd6faffb29e308ef8f977e27a526ff05dd60d68a72f6377462f9546c1c544a')
+sha256sums=('809fff14a88a7de1364c846cec771d0d12c72572914e6cc4fb0b2c1861c4a1ee')
 
 make_args=(
     "OPTIMIZE=yes"
