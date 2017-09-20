@@ -2,7 +2,7 @@
 _name=tinytag
 pkgname=python-$_name
 pkgver=0.18.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Read music meta data and length of MP3, OGG, FLAC and Wave files"
 arch=('any')
 url="https://pypi.python.org/pypi/tinytag/"
