@@ -1,7 +1,7 @@
 pkgbase = adapta-kde
 	pkgdesc = Adapta KDE customization
-	pkgver = 20170918
-	pkgrel = 3
+	pkgver = 20170920
+	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/adapta-kde
 	arch = any
 	license = GPL3
@@ -12,11 +12,11 @@ pkgbase = adapta-kde
 	optdepends = konsole: For the Konsole color scheme
 	optdepends = yakuake: For the Yakuake skin
 	optdepends = adapta-gtk-theme: Matching GTK theme
-	optdepends = kvantum-theme-arc: Customizing theme more
+	optdepends = kvantum-qt5: Customizing theme more
 	conflicts = adapta-aurorae-theme-git
 	conflicts = adapta-kde-git
-	source = https://github.com/PapirusDevelopmentTeam/adapta-kde/archive/20170918.tar.gz
-	sha256sums = 6e06db43e10ce5bb521cf5fbb20186ae5ce00db9c1cc07d2b4007dc4c3d32b74
+	source = https://github.com/PapirusDevelopmentTeam/adapta-kde/archive/20170920.tar.gz
+	sha256sums = bc145bee8b21959dfb5b3a57ee116d4e1e1550eb364109ae95fa390b0131413f
 
 pkgname = adapta-kde
 
