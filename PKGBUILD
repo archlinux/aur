@@ -2,7 +2,7 @@
 
 pkgname="tilix"
 pkgver=1.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64' 'i686')
 url="https://github.com/gnunn1/tilix"
