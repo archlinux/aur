@@ -17,7 +17,7 @@ package() {
     cd "spring-$_pkgver"
 
     install -d "$pkgdir/opt/$pkgname"
-    cp -dr --preserve=mode bin lib legal "$pkgdir/opt/$pkgname"
+    cp -dr --preserve=mode -t "$pkgdir/opt/$pkgname" bin lib legal
     rm "$pkgdir/opt/$pkgname/bin/spring.bat"
 
     install -d "$pkgdir/usr/bin"
