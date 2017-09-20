@@ -1,7 +1,7 @@
 pkgbase = rabbitvcs-nautilus
 	pkgdesc = Nautilus front-end for RabbitVCS
-	pkgver = 0.16
-	pkgrel = 2
+	pkgver = 0.17.1
+	pkgrel = 1
 	url = https://github.com/rabbitvcs/rabbitvcs
 	install = rabbitvcs-nautilus.install
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = rabbitvcs-nautilus
 	depends = nautilus>=3.0.0
 	depends = python2-nautilus
 	depends = python2-dbus
-	depends = rabbitvcs>=0.16
-	source = rabbitvcs-0.16-2.tar.gz::https://github.com/rabbitvcs/rabbitvcs/archive/4e94b82e34b409f0baced88521a6e03cb29c4155.tar.gz
-	md5sums = 9669132c6ef3f21ecfe1fd96b9be3e0d
+	depends = rabbitvcs>=0.17.1
+	source = rabbitvcs-0.17.1.tar.gz::https://github.com/rabbitvcs/rabbitvcs/archive/v0.17.1.tar.gz
+	md5sums = 95b7c30945f10333588a39b5f6766136
 
 pkgname = rabbitvcs-nautilus
 
