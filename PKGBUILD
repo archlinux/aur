@@ -2,7 +2,7 @@
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname=jriver-media-center
-_debpkgver=23.0.54
+_debpkgver=23.0.61
 pkgver=$_debpkgver
 pkgrel=1
 pkgdesc="The Most Comprehensive Media Software"
