@@ -2,7 +2,7 @@
 
 pkgname=adapta-kde-git
 gitname=adapta-kde
-pkgver=20170917
+pkgver=20170920
 pkgrel=1
 pkgdesc="Complete Adapta theme pack for KDE Plasma using Kvantum theme engine (git version)"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('konsole: For the Konsole color scheme'
             'yakuake: For the Yakuake skin'
             'adapta-gtk-theme: Matching GTK theme')
 makedepends=('git' 'make')
-conflicts=('adapta-aurorae-theme-git')
+conflicts=('adapta-kde' 'adapta-aurorae-theme-git')
 source=("git+https://github.com/PapirusDevelopmentTeam/${gitname}.git")
 sha256sums=('SKIP')
 
