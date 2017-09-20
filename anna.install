@@ -1,0 +1,9 @@
+post_install() {
+  sp-greeter-set /usr/bin/anna
+  systemctl enable sp-daemon.socket
+  systemctl start sp-daemon.socket
+}
+
+post_remove() {
+  rm /usr/lib/spawny/greeter
+}
