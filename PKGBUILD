@@ -3,7 +3,7 @@
 _hash='c4dd4cf'
 pkgname='openshift-origin-server-bin'
 pkgver='3.6.0'
-pkgrel=3
+pkgrel=1
 pkgdesc="OpenShift Origin is a platform for developing, building, and deploying containerized applications. See https://docs.openshift.org/latest for more on running OpenShift Origin."
 arch=('x86_64')
 url="https://github.com/openshift/origin"
