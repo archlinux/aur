@@ -6,12 +6,12 @@
 pkgbase=nvidia-zen
 pkgname=(nvidia-zen nvidia-zen-dkms)
 pkgver=384.69
-_extramodules=extramodules-4.12-zen
+_extramodules=extramodules-4.13-zen
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux-zen"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-zen' 'linux-zen-headers>=4.12' 'linux-zen-headers<4.13')
+makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-zen' 'linux-zen-headers>=4.13' 'linux-zen-headers<4.14')
 license=('custom')
 options=('!strip')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
@@ -48,7 +48,7 @@ build() {
 
 package_nvidia-zen() {
     pkgdesc="NVIDIA drivers for linux-zen"
-    depends=('linux-zen>=4.12' 'linux-zen<4.13' "nvidia-utils=${pkgver}" 'libgl')
+    depends=('linux-zen>=4.13' 'linux-zen<4.14' "nvidia-utils=${pkgver}" 'libgl')
     install=nvidia.install
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
