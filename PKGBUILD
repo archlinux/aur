@@ -2,11 +2,11 @@
 _modulename=camb
 pkgname=python-$_modulename
 pkgver=0.1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Code for Anisotropies in the Microwave Background"
 arch=(any)
 url="https://github.com/cmbant/CAMB"
-license=('MIT')
+license=('http://camb.info/CAMBsubmit.html')
 groups=()
 depends=('python-numpy' 'gcc-fortran')
 makedepends=('python-setuptools')
