@@ -1,9 +1,10 @@
-# Maintainer : vorpalblade77@gmail.com
+# Contributor : vorpalblade77@gmail.com
 # Contributor : Daniel Neve <the.mephit@googlemail.com>
-pkgshort=pynzb
-pkgname=python2-$pkgshort
+# Maintainer: Eduardo Parra Mazuecos <eduparra90@gmail.com>
+_name=pynzb
+pkgname=python2-$_name
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A unified API for parsing NZB files"
 arch=('any')
 url="http://pypi.python.org/pypi/pynzb/"
@@ -12,19 +13,14 @@ depends=('python2' 'expat')
 makedepends=('python2-distribute')
 conflicts=('pynzb')
 optdepends=('python-lxml: Use lxml instead of expat')
-source=(http://pypi.python.org/packages/source/p/$pkgshort/$pkgshort-$pkgver.tar.gz
-        https://www.github.com/ericflo/$pkgshort/raw/master/LICENSE.txt)
-md5sums=('63c74a36348ac28aa99732dcb8be8c59'
-         '87d87599921bae943f981b28ecfc3cc1')
+source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz)
+md5sums=('63c74a36348ac28aa99732dcb8be8c59')
 
 build() {
-  cd $srcdir/$pkgshort-$pkgver
+  cd "$srcdir/${_name}-$pkgver"
   python2 setup.py build
 }
 package() {
-  cd $srcdir/$pkgshort-$pkgver
-  python2 setup.py install --root="${pkgdir}" \
-    --prefix=/usr \
-    --compile -O1
-  install -D -m644 $srcdir/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
+  cd "$srcdir/${_name}-$pkgver"
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
