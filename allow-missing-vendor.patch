@@ -4,11 +4,11 @@ index f04372a..acec90c 100644
 +++ b/jedihttp/utils.py
 @@ -18,6 +18,9 @@ import sys
  def AddVendorFolderToSysPath():
-   vendor_folder = os.path.join( os.path.dirname( __file__ ), '..', 'vendor' )
+     vendor_folder = os.path.join(os.path.dirname(__file__), '..', 'vendor')
  
-+  if not os.path.exists( vendor_folder ):
-+    return
++    if not os.path.exists( vendor_folder ):
++        return
 +
-   for folder in os.listdir( vendor_folder ):
-     sys.path.insert( 0, os.path.realpath( os.path.join( vendor_folder,
-                                                         folder ) ) )
+     for folder in os.listdir(vendor_folder):
+         sys.path.insert(0, os.path.realpath(os.path.join(vendor_folder,
+                                                          folder)))

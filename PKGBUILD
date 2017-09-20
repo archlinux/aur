@@ -3,8 +3,8 @@
 
 pkgbase=python-jedihttp-git
 pkgname=(python-jedihttp-git python2-jedihttp-git)
-pkgver=r150.c376aad
-pkgrel=2
+pkgver=r164.db3d083
+pkgrel=1
 pkgdesc="Simple http wrapper around jedi (with yan12125's packaging patch)"
 license=('Apache')
 arch=('any')
@@ -15,7 +15,7 @@ source=('git+https://github.com/vheon/JediHTTP'
         'allow-missing-vendor.patch')
 sha256sums=('SKIP'
             '6454c24288fad1a79ed0b3c7fa70902b87084384037ce5edab5be4eb4e4138d1'
-            '8702390e2643fe7e64d0b4c9477ffec1d83d1865bd21ab4b61f9ed8aa130c013')
+            '896bde3c60bc31b566a410ddf93161ecec61affea370eb5d3bcdcfbde551ee02')
 
 pkgver() {
   cd "$srcdir/JediHTTP"
