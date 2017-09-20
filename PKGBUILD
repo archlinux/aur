@@ -2,7 +2,7 @@
 # Contributor: Ciarán Coffey <ciaran@ccoffey.ie>
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 pkgname=icaclient
-pkgver=13.6
+pkgver=13.7
 pkgrel=1
 pkgdesc="Citrix Receiver for x86_64 (64bit) Linux (ICAClient)"
 arch=('x86_64' 'i686')
@@ -27,8 +27,8 @@ md5sums=('71aca6257f259996ac59729604f32978'
          '1f214f6f456f59afd1a3275580f4240e'
          '59f8e50cc0e0c399d47eb7ace1df5a32'
          'dca5a1f51449ef35f1441b900d622276')
-md5sums_x86_64=('04ee9bea74efca3dc2e3f69d736007ae')
-md5sums_i686=('7efbc350a21ee47cd8a3cf950805034b')
+md5sums_x86_64=('4f214afe1622920e93c8edb11cb5957d')
+md5sums_i686=('8b82586b418899bfc9edcb5da597338a')
 install=citrix-client.install
 
 package() {
@@ -42,52 +42,52 @@ package() {
         ICADIR="$srcdir/linuxx64/linuxx64.cor"
     fi
 
-    mkdir -p ${pkgdir}$ICAROOT
+    mkdir -p "${pkgdir}$ICAROOT"
 
-    cd $ICADIR
-    install -m755 wfica *.so *.DLL AuthManagerDaemon PrimaryAuthManager ServiceRecord selfservice ${pkgdir}$ICAROOT
+    cd "$ICADIR"
+    install -m755 wfica *.so *.DLL AuthManagerDaemon PrimaryAuthManager ServiceRecord selfservice "${pkgdir}$ICAROOT"
 
     # copy directories
-    cp -r ./config/ ${pkgdir}$ICAROOT
-    cp -r ./gtk/ ${pkgdir}$ICAROOT
-    cp -r ./help/ ${pkgdir}$ICAROOT
-    cp -r ./keyboard/ ${pkgdir}$ICAROOT
-    cp -r ./keystore/ ${pkgdir}$ICAROOT
-    cp -r ./lib/ ${pkgdir}$ICAROOT
-    cp -r ./icons/ ${pkgdir}$ICAROOT
-    cp -r ./nls/ ${pkgdir}$ICAROOT
-    cp -r ./site/ ${pkgdir}$ICAROOT
-    cp -r ./usb/ ${pkgdir}$ICAROOT
-    cp -r ./util/ ${pkgdir}$ICAROOT
+    cp -r ./config/ "${pkgdir}$ICAROOT"
+    cp -r ./gtk/ "${pkgdir}$ICAROOT"
+    cp -r ./help/ "${pkgdir}$ICAROOT"
+    cp -r ./keyboard/ "${pkgdir}$ICAROOT"
+    cp -r ./keystore/ "${pkgdir}$ICAROOT"
+    cp -r ./lib/ "${pkgdir}$ICAROOT"
+    cp -r ./icons/ "${pkgdir}$ICAROOT"
+    cp -r ./nls/ "${pkgdir}$ICAROOT"
+    cp -r ./site/ "${pkgdir}$ICAROOT"
+    cp -r ./usb/ "${pkgdir}$ICAROOT"
+    cp -r ./util/ "${pkgdir}$ICAROOT"
 
     # Install License
     install -m644 -D nls/en.UTF-8/eula.txt \
       "${pkgdir}$ICAROOT/eula.txt"
 
     # create /config/.server to enable user customization using ~/.ICACLient/ overrides. Thanks Tomek
-    touch ${pkgdir}$ICAROOT/config/.server  
+    touch "${pkgdir}$ICAROOT/config/.server"
 
     # Extract system ca-certificates and install in the Citrix cacerts directory
-    cp /etc/ca-certificates/extracted/tls-ca-bundle.pem ${pkgdir}$ICAROOT/keystore/cacerts/
-    cd ${pkgdir}$ICAROOT/keystore/cacerts/
+    cp /etc/ca-certificates/extracted/tls-ca-bundle.pem "${pkgdir}$ICAROOT/keystore/cacerts/"
+    cd "${pkgdir}$ICAROOT/keystore/cacerts/"
     awk 'BEGIN {c=0;} /BEGIN CERT/{c++} { print > "cert." c ".pem"}' < tls-ca-bundle.pem
 
     # The following 32-bit library causes false namcap errors
     # rm util/libgstflatstm.32.so
 
     # Install wrapper script
-    install -m755 ${srcdir}/wfica.sh ${pkgdir}$ICAROOT/wfica.sh
+    install -m755 "${srcdir}/wfica.sh" "${pkgdir}$ICAROOT/wfica.sh"
 
     # Dirty Hack
     # wfica expects {module,wfclient,apssrv}.ini in $ICAROOT/config
     # sadly these configs differ slightly by locale
     lang=${LANG%%_*}
-    if [[ ! -d ${pkgdir}/$ICAROOT/nls/$lang ]]; then
+    if [[ ! -d "${pkgdir}/$ICAROOT/nls/$lang" ]]; then
       lang='en'
     fi
-    cp ${pkgdir}$ICAROOT/nls/$lang/module.ini ${pkgdir}/$ICAROOT/config/
-    cp ${pkgdir}$ICAROOT/nls/$lang/appsrv.template ${pkgdir}/$ICAROOT/config/appsrv.ini
-    cp ${pkgdir}$ICAROOT/nls/$lang/wfclient.template ${pkgdir}/$ICAROOT/config/wfclient.ini
+    cp "${pkgdir}$ICAROOT/nls/$lang/module.ini" "${pkgdir}/$ICAROOT/config/"
+    cp "${pkgdir}$ICAROOT/nls/$lang/appsrv.template" "${pkgdir}/$ICAROOT/config/appsrv.ini"
+    cp "${pkgdir}$ICAROOT/nls/$lang/wfclient.template" "${pkgdir}/$ICAROOT/config/wfclient.ini"
  
     # Copy Firefox plugin into plugin directory
     mkdir -p "${pkgdir}/usr/lib/mozilla/plugins"
@@ -105,5 +105,4 @@ package() {
     # make certificates available
     ln -s /usr/share/ca-certificates/trust-source/* "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts/"
     c_rehash "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts/"
-
 }
