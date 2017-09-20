@@ -2,7 +2,7 @@
 
 pkgname=crispy-doom
 pkgdesc="Vanilla-compatible enhanced Doom engine"
-pkgver=4.1
+pkgver=4.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://fabiangreffrath.github.io/crispy-doom"
@@ -14,7 +14,7 @@ optdepends=('freedm: Free deathmatch game'
             'freedoom2: Free Doom II/Final Doom-compatible game')
 install=crispy-doom.install
 source=(https://github.com/fabiangreffrath/$pkgname/archive/$pkgname-$pkgver.tar.gz)
-sha512sums=('b285ccce3550d060b75b3a0ae5ea0696708cb263cb016d6637f34215c0fed77709df918b86d71da27a94d9bde3b7f9e2abf7d2f1d8ccc66cd9c3b939613c9950')
+sha512sums=('e47f090ad969da0b71d3068c198287278f2f10f3c1909aedf96723b283e815810fdee3168d390b935024f932034c9c01374c62395d45f912f35391f0b7965ccc')
 
 prepare() {
   # GitHub's generated archive prefix kind of sucks.
