@@ -1,0 +1,47 @@
+pkgbase = nikola
+	pkgdesc = A modular, fast, simple, static website generator.
+	pkgver = 7.8.10
+	pkgrel = 2
+	url = https://getnikola.com/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-doit
+	depends = python-pygments
+	depends = python-pillow
+	depends = python-docutils
+	depends = python-mako
+	depends = python-unidecode
+	depends = python-lxml
+	depends = python-yapsy>=1.11.223
+	depends = python-pyrss2gen
+	depends = python-dateutil
+	depends = python-logbook
+	depends = python-blinker
+	depends = python-natsort
+	depends = python-setuptools
+	depends = python-requests
+	depends = python-husl
+	depends = python-piexif
+	depends = python-markdown
+	optdepends = python-jinja: for Jinja2 themes
+	optdepends = python-pyphen>=0.9.1: for hyphenation
+	optdepends = python-pygal=1.7.0: for SVG graph plotting
+	optdepends = python-typogrify>=2.0.4: for typographical enhancements
+	optdepends = python-webassets: for bundling assets
+	optdepends = ipython-notebook: for ipynb support
+	optdepends = ipython: for ipynb support
+	optdepends = python-ghp-import>=0.4.1: for uploading to GitHub Pages
+	optdepends = python-micawber: for embedding media in posts
+	optdepends = python-phpserialize: for WordPress imports
+	optdepends = python-ws4py: for nikola auto
+	optdepends = python-watchdog: for nikola auto
+	options = !emptydirs
+	source = https://pypi.io/packages/source/N/Nikola/Nikola-7.8.10.tar.gz
+	md5sums = a3a4e7f5417f6ce19b6edbbe8b778131
+
+pkgname = nikola
+	conflicts = python-nikola-git
+	replaces = python-nikola
+	replaces = python2-nikola
+
