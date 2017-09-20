@@ -3,13 +3,13 @@ _pkgname=pcgen
 pkgname=${_pkgname}-git
 provides=(pcgen)
 pkgrel=1
-pkgver=6.07.03_snapshot.gead8271dd0
+pkgver=6.07.04_snapshot.gf60e9dd971
 conflicts=(pcgen)
 pkgdesc="An RPG Character Generator."
 arch=(any)
 url=http://pcgen.org
 license=(LGPL2)
-depends=(sh java-runtime gtk-update-icon-cache desktop-file-utils shared-mime-info)
+depends=(sh java-runtime gtk-update-icon-cache desktop-file-utils shared-mime-info java-openjfx)
 makedepends=(git gradle java-environment)
 source=("${pkgname}"::'git+https://github.com/PCGen/pcgen.git'
         ${_pkgname}.xml
