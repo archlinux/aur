@@ -31,7 +31,7 @@ pkgver() {
 
 prepare() {
 	cd "${_gitname}"
-    ./autogen.sh
+	./autogen.sh
 	sed '/noinst_SCRIPTS = gpg-zip/c sbin_SCRIPTS += gpg-zip' -i tools/Makefile.in
 }
 
