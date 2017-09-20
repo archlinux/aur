@@ -7,8 +7,10 @@ pkgver=7.2.0
 _target="i586-pc-msdosdjgpp"
 _islver=0.18
 _djver=2.05
+_pthver=3.14
 _zlver=1.2.11
-pkgrel=1
+_wattver="2.2-dev.10"
+pkgrel=3
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -22,16 +24,69 @@ source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-$pkgver.tar.xz"
         "http://www.delorie.com/pub/djgpp/current/v2/djcrx${_djver//./}.zip"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
         "https://zlib.net/zlib-${_zlver}.tar.gz"
+        "http://www.watt-32.net/watt32s-${_wattver}.zip"
+        "mkmake.bash"
+        "watt32.pc"
         "lto.patch")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0')
-noextract=("djcrx${_djver//./}.zip")
+noextract=("djcrx${_djver//./}.zip"
+           "watt32s-${_wattver}.zip")
 
 prepare() {
-  cd gcc-$pkgver
+  # extract bootstrap wattcp
+  mkdir -p watt
+  cd watt
+  unzip -qo "../watt32s-${_wattver}.zip"
+
+  # apply felix's patches
+	sed -i -e '
+		s,#include "/dev/env/DJDIR/include/\(.*\)",#include_next <\1>,
+	' inc/sys/cdefs.h
+
+ 	cd src
+	ln -fs chksum0.s  chksum0.S
+	ln -fs cpumodel.s cpumodel.S
+
+  mkdir -p djgpp
+
+	# use standard zlib
+	sed -i -e 's,"zlib/zlib\.h",<zlib.h>,' pcdbug.c
+	sed -i -e '/define Z_PREFIX/ d' config.h
+
+	sed -i -e '
+		s,\tar,\t$(AR),
+		s,\.\./util/nasm32,\t$(NASM),
+		s,\.\./util/bin2c,\t$(BIN2C),
+    s,-O2,-Ofast,
+	' makefile.all zlib/makefile.all
+  sed -i -e "
+		/CFLAGS/ s,=,= -fno-strict-aliasing -fgnu89-inline -march=i586 -I${srcdir}/zlib-${_zlver},
+  " makefile.all zlib/makefile.all
+	bash "$srcdir/mkmake.bash" DJGPP RELEASE <makefile.all >djgpp.mak
+
+  cd ../util
+	sed -n -e '
+		$ {
+			i #include "errnos0.i"
+			x
+			w errnos0.c
+			q
+		};
+		/_ERRNO(/ H
+		/<io\.h>/ d
+		/\(VendorName\|VendorVersion\|process\|prologue\|epilogue\) (void)\r$/,/^\}\r$/ ! { p; b };
+		H
+	' errnos.c > errnos1.c
+
+  # gcc hacks
+  cd $srcdir/gcc-$pkgver
 
   # link isl for in-tree build
   ln -fs "../isl-${_islver}" isl
@@ -55,33 +110,69 @@ prepare() {
 
 build() {
   cd gcc-build-$_target
-  ../gcc-$pkgver/configure --prefix=/usr --libexecdir=/usr/lib \
+  ../gcc-$pkgver/configure \
+    --prefix=/usr \
+    --libexecdir=/usr/$_target/libexec \
+    --datarootdir=/usr/$_target/share \
     --target="$_target" \
     --enable-languages=c,c++ \
+    --enable-gold \
+    --disable-ld \
+    --disable-nls \
     --enable-shared --enable-static \
-    --enable-threads=no \
+    --enable-threads \
     --enable-libstdcxx-threads \
-    --with-system-zlib --with-isl \
+    --with-system-zlib \
+    --with-arch=i586 \
+    --with-cpu=i586 \
     --enable-lto --disable-dw2-exceptions --disable-libgomp \
     --disable-multilib --enable-checking=release
+
   make all-gcc
 
-  export PATH=../gcc-build-$_target/gcc:$PATH
+  OLD_PATH=$PATH
+  export PATH=$srcdir/gcc-build-$_target/gcc:$PATH
 
   # build zlib
-  cd ../zlib-${_zlver}
-  CC=../gcc-build-$_target/gcc/xgcc \
+  echo ...building zlib
+  cd $srcdir/zlib-${_zlver}
+  CC=$srcdir/gcc-build-$_target/gcc/xgcc \
   CHOST=${_target} \
-  CFLAGS="-march=i586 -Ofast -I../gcc-build-${_target}/lib/gcc/$_target/$pkgver/include -pipe"\
+  CFLAGS="-march=i586 -Ofast -I$srcdir/gcc-build-${_target}/lib/gcc/$_target/$pkgver/include -pipe"\
   ../zlib-${_zlver}/configure --const --prefix=/usr/$_target --static
   sed -i 's/-DNO_STRERROR -DNO_vsnprintf//' Makefile
   make libz.a
 
   # build wattcp
-  # build pth
+  echo ...building wattcp
+  cd $srcdir/watt/util
+	$srcdir/gcc-build-$_target/gcc/xgcc -P -E errnos0.c \
+		-include /usr/$_target/include/errno.h \
+		-include /usr/$_target/include/sys/version.h \
+		| sed -e '/^extern/ d' > errnos0.i
 
-  cd ../gcc-build-$_target
-  make all
+	# TCC would also do
+  export PATH=$OLD_PATH
+	gcc errnos1.c -o errnos1
+	./errnos1 -e > "../inc/sys/djgpp.err"
+	./errnos1 -s > "../src/djgpp/syserr.c"
+  export PATH=$srcdir/gcc-build-$_target/gcc:$PATH
+
+  cd $srcdir/watt/src
+	make -f djgpp.mak \
+		CC=$srcdir/gcc-build-$_target/gcc/xgcc \
+		AS=$_target-as \
+		AR=$_target-ar \
+		NASM=/usr/bin/nasm \
+		BIN2C='hexdump -ve "1/1 \"0x%02X\,\" \"\n\""' \
+		DJDIR=/usr/$_target ZLIB_OBJS=
+
+  # start building gcc again, with pthreads
+  echo ...back to building gcc
+  export PATH=$OLD_PATH
+
+  cd $srcdir/gcc-build-$_target
+  make
 }
 
 package_dosbox-gcc() {
@@ -90,14 +181,29 @@ package_dosbox-gcc() {
 
   # strip manually, djgpp libs spew errors otherwise
   strip -s "$pkgdir"/usr/bin/$_target-*
-  strip -s "$pkgdir"/usr/lib/gcc/$_target/$pkgver/{cc1*,collect2,lto*}
+  strip -s "$pkgdir"/usr/$_target/libexec/gcc/$_target/$pkgver/{cc1*,collect2,lto*}
 
   # for compatibility
-  ln -s $_target-gcc "$pkgdir"/usr/bin/$_target-cc
+  ln -sf $_target-gcc "$pkgdir"/usr/bin/$_target-cc
 
   # remove unnecessary files
   rm -rf "$pkgdir"/usr/$_target/share/{man,info,locale}
   rm -rf "$pkgdir"/usr/share/{man,info,locale}
   rm -rf "$pkgdir"/usr/lib/gcc/$_target/$pkgver/include-fixed
   rm -f "$pkgdir"/usr/lib/libcc1.*
+
+  # install wattcp
+	cd "$srcdir/watt/inc"
+
+	install -dm0755     "$pkgdir/usr/$_target/include/watt32"
+	install -Dm0644 *.h "$pkgdir/usr/$_target/include/watt32"
+	for _d in netinet6 protocol netinet net rpc rpcsvc sys arpa; do
+		install -dm0755 "$pkgdir/usr/$_target/include/watt32/$_d"
+		install -Dm0644 "$_d"/*.h "$pkgdir/usr/$_target/include/watt32/$_d"
+	done
+	install -Dm0644 sys/djgpp.err "$pkgdir/usr/$_target/include/watt32/sys/djgpp.err"
+
+	cd "$srcdir/watt/lib"
+	install -Dm0644 libwatt.a "$pkgdir/usr/$_target/lib/libwatt.a"
+	install -Dm0644 $srcdir/watt32.pc "$pkgdir/usr/$_target/lib/pkgconfig/watt32.pc"
 }
