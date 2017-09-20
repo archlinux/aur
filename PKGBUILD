@@ -29,7 +29,7 @@ source=(
     "ice-packaging-${pkgver}.tar.gz::https://github.com/zeroc-ice/ice-packaging/archive/v${pkgver}.tar.gz"
 )
 
-sha256sums=('a6bd6faffb29e308ef8f977e27a526ff05dd60d68a72f6377462f9546c1c544a'
+sha256sums=('809fff14a88a7de1364c846cec771d0d12c72572914e6cc4fb0b2c1861c4a1ee'
             '096bcfb74b9a281ad9bccf3eaa360b912cb96e88735d5b18b96198f657b323cb')
 
 install=ice.install
