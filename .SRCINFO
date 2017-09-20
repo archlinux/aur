@@ -1,0 +1,19 @@
+pkgbase = brother-mfc-l5902dw
+	pkgdesc = Brother cups and lpd driver for L5902DW
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = tcsh
+	depends = deb2targz
+	depends = perl
+	depends = a2ps
+	source = http://download.brother.com/welcome/dlf102633/mfcl5902dwlpr-3.2.0-1.i386.deb
+	source = http://download.brother.com/welcome/dlf102634/mfcl5902dwcupswrapper-3.2.0-1.i386.deb
+	sha256sums = 82a370d3acd84daacb2ad583e703d3462d2fd1c7c788504a3236653367350ff2
+	sha256sums = 6583c276991bb5389c77f55b7cf95e89de4e6a7df450d3304a5c994fc232fac1
+
+pkgname = brother-mfc-l5902dw
+
