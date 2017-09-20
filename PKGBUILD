@@ -2,13 +2,13 @@
 
 pkgname=perl6-cro-http
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Libraries for building reactive services in Perl6 - http part"
 arch=('any')
 depends=('perl6'
          'perl6-base64'
          'perl6-cro-core'
-         'perl6-cro-ssl'
+         'perl6-cro-tls'
          'perl6-http-hpack'
          'perl6-io-path-childsecure'
          'perl6-io-socket-async-ssl'
