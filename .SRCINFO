@@ -13,7 +13,7 @@ pkgbase = saw
 	makedepends = dep
 	provides = saw
 	source = https://github.com/TylerBrock/saw/archive/v0.1.1.tar.gz
-	md5sums = 1fdb1394d42923f388a56aea68f1ec37
+	md5sums = 7f05c0b36cf34175b237846c4f061188
 
 pkgname = saw
 
