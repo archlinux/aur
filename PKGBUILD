@@ -4,13 +4,13 @@
 # Contributor: Addict7 <nicolasfloquet@gmail.com>
 
 pkgname=geany-plugins-git
-pkgver=1.29.0.r5.gc8b7805
+pkgver=1.31.0.r17.g59118d86
 pkgrel=1
 pkgdesc='Various plugins for Geany'
 arch=('x86_64' 'i686')
 url='http://plugins.geany.org/'
 license=('GPL')
-depends=('geany-git' 'vte' 'lua' 'libwebkit' 'ctpl' 'gpgme' 'gtkspell' 'hicolor-icon-theme')
+depends=('geany-git' 'vte' 'lua' 'ctpl' 'gpgme' 'gtkspell' 'hicolor-icon-theme')
 makedepends=('git' 'libtool' 'python' 'gpgme' 'ctpl' 'lua' 'intltool')
 optdepends=('hspell: hebrew spell checker')
 provides=('geany-plugins')
