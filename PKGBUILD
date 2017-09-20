@@ -1,4 +1,4 @@
-# Maintainer: Matthew Ellison <seglberg@gmail.com>
+# Maintainer: Henry-Joseph Audéoud <h.audeoud at gmail dot com>
 
 _pkgname='pybrctl'
 pkgname="python-${_pkgname}"
