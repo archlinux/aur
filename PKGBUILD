@@ -1,3 +1,5 @@
+# Maintainer: graysky <graysky AT archlinux DOT us>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 ### BUILD OPTIONS
@@ -38,7 +40,7 @@ _use_current=
 
 pkgbase=linux-ck
 _srcname=linux-4.12
-pkgver=4.12.13
+pkgver=4.12.14
 pkgrel=1
 _ckpatchversion=2
 arch=('i686' 'x86_64')
@@ -63,7 +65,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '320e1e7226b9a18db539b64aae08cf4b11349670525363c1df64f09dbb88b7bd'
+            '999f3e0d97e1b9e7a09c8c0889f020ac9e342ec2391d0458521d4b8bff1cf945'
             'SKIP'
             '6d15f95ca23b46f7abdfa1315600daed7ed6843acc29587fd84c2be7937c8564'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
