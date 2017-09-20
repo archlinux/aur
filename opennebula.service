@@ -18,9 +18,10 @@ ExecStart=/usr/bin/oned -f
 # Log file location must exist
 ExecStartPre=/bin/mkdir -p /var/log/one
 ExecStartPre=/bin/chown oneadmin:cloud /var/log/one
-ExecStartPre=/usr/bin/logrotate -s /tmp/logrotate.state -f /etc/logrotate.d/opennebula
+ExecStartPre=-/usr/bin/logrotate -s /tmp/logrotate.state -f /etc/logrotate.d/opennebula
 ExecStop=/bin/kill -TERM $MAINPID
-ExecStopPost=/usr/bin/rm /var/lock/one/one
+ExecStopPost=/usr/bin/rm -f /var/lock/one/one
+ExecStopPost=/usr/share/one/follower_cleanup
 PIDFile=/var/run/one/oned.pid
 Restart=always
 

@@ -9,7 +9,6 @@ Group=cloud
 Type=simple
 
 ExecStart=/usr/bin/ruby /usr/lib/one/onegate/onegate-server.rb
-ExecStop=/bin/kill -TERM $MAINPID
 PIDFile=/var/run/one/onegate.pid
 Restart=always
 

@@ -4,7 +4,7 @@ dateformat -%Y%m%d-%s
 
 compress
 weekly
-rotate 52
+rotate 4
 
 /var/log/one/one_xmlrpc.log {
    missingok

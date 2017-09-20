@@ -10,7 +10,6 @@ Type=simple
 
 
 ExecStart=/usr/bin/ruby /usr/lib/one/oneflow/oneflow-server.rb
-ExecStop=/bin/kill -TERM $MAINPID
 PIDFile=/var/run/one/oneflow.pid
 Restart=always
 
