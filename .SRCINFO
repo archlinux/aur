@@ -1,6 +1,6 @@
 pkgbase = awslogs
 	pkgdesc = AWSLogs client
-	pkgver = 0.8.0
+	pkgver = 0.10
 	pkgrel = 0
 	url = https://github.com/jorgebastida/awslogs
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = awslogs
 	depends = python-jmespath<1.0.0
 	depends = python-termcolor>=1.1.0
 	depends = python-dateutil>=2.4.0
-	source = https://files.pythonhosted.org/packages/source/a/awslogs/awslogs-0.8.0.tar.gz
-	md5sums = 31d055c1e0301bd6b1b7312a55587276
+	source = https://github.com/jorgebastida/awslogs/archive/0.10.tar.gz
+	sha512sums = f4a042f1f107f018b02d002c400f2679900c330424e7cb4ded544313cff6a46fe6c3cf579fea04319ad75504d4f157b5bc735414be64cd05d9d63d377b315181
 
 pkgname = awslogs
 
