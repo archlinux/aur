@@ -10,7 +10,7 @@ pkgbase = cmst
 	depends = connman
 	depends = libxkbcommon-x11
 	depends = hicolor-icon-theme
-	source = https://github.com/andrew-bibb/cmst/releases/download/cmst-2017.03.18/cmst-2017.03.18.tar.gz
+	source = https://github.com/andrew-bibb/cmst/releases/download/cmst-2017.09.19/cmst-2017.09.19.tar.xz
 	md5sums = a1f1b2e5a2060573ce4f146b11843ea8
 
 pkgname = cmst
