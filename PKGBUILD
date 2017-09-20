@@ -10,40 +10,25 @@
 # https://github.com/michaellass/AUR
 
 pkgname=multipath-tools
-pkgver=0.6.4
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='Multipath tools for Linux (including kpartx)'
 arch=('i686' 'x86_64')
 url="http://christophe.varoqui.free.fr/"
 license=('GPL2')
-depends=('libaio' 'device-mapper' 'liburcu')
+depends=('libaio' 'device-mapper' 'json-c' 'liburcu')
+optdepends=('ceph: support for RADOS Block Devices (needs to be installed at build time)')
 makedepends=('git')
 conflicts=('multipath-tools-git')
 install=multipath-tools.install
-source=("multipath-tools::git+http://git.opensvc.com/multipath-tools/.git#tag=${pkgver}"
-        "disable-rados-link-for-udeb.patch")
-sha256sums=('SKIP'
-            '4de168f30e3c50aabcedd833112de3da1a025edf32f5bdf06d0d93a9ece60407')
-
-# The rbd checker requires librados. On Arch this would require ceph to be
-# installed, requiring a lot of space, not needed by most people.
-# We use a patch taken from Debian to disable building this checker.
-USERADOS=0
-
-if [ $USERADOS -eq 1 ]; then
-  depends+=('ceph')
-fi
+source=("multipath-tools::git+http://git.opensvc.com/multipath-tools/.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
   cd  "${srcdir}/${pkgname}"
 
   # Fix bindir in Makefile
   sed -i 's|$(exec_prefix)/sbin|$(exec_prefix)/bin|g' Makefile.inc
-
-  # Disable rbd checker if not explicitly requested
-  if [ $USERADOS -eq 0 ]; then
-    patch -p1 < "${srcdir}"/disable-rados-link-for-udeb.patch
-  fi
 }
 
 build() {
