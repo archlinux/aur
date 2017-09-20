@@ -10,7 +10,7 @@ arch=('any')
 conflicts=('zpdic')
 provides=('zpdic')
 depends=('java-environment>=8' 'java-openjfx>=8' 'sh')
-source=("v${pkgver}-full.zip::https://dl.dropboxusercontent.com/content_link/t06cZz7p84gvH5jkQyjxuJtbXSMGGO91zf4fgEH21uDRQigoZkJBKcU8ZHLwQhdJ/file?dl=1"
+source=("v${pkgver}-full.zip::https://www.dropbox.com/sh/g75rqn97sdlpp0b/AAABh6ecTZmUDZw7666UH-n4a/older/v1.23.0-full.zip?dl=1"
         'zpdic'
         'LICENSE'
         'ZpDIC.desktop')
