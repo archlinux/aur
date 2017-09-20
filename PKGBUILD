@@ -8,7 +8,7 @@ pkgdesc="Complete Adapta theme pack for KDE Plasma using Kvantum theme engine (g
 arch=('any')
 url="https://github.com/PapirusDevelopmentTeam/adapta-kde"
 license=('GPL3')
-depends=('kwin' 'plasma-desktop' 'kvantum-qt5' 'papirus-icon-theme-git')
+depends=('kwin' 'plasma-desktop' 'kvantum-qt5' 'papirus-icon-theme')
 optdepends=('konsole: For the Konsole color scheme'
             'yakuake: For the Yakuake skin'
             'adapta-gtk-theme: Matching GTK theme')
