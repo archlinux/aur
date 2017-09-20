@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=python-fafclient-icetest
-pkgver=0.13.2.116.g2461f188
+pkgver=0.16.0.85.g30d66116
 pkgrel=1
 epoch=0
 pkgdesc="Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance."
@@ -8,7 +8,7 @@ url="http://www.faforever.com/"
 arch=('any')
 license=('GPL3')
 groups=()
-depends=('python-pyqt5' 'python-ipaddress' 'python-py' 'python-pycparser' 'python-dateutil' 'python-requests' 'python-lupa' 'python-trueskill' 'python-cffi' 'python-marshmallow-jsonapi' 'python-semantic-version' 'python-faftools' 'lib32-libpulse' 'wine>1.6.0' 'xdelta3' 'faf-uid' 'qt5-webengine' 'faf-ice-adapter>=5.2.0')
+depends=('python-pyqt5' 'python-ipaddress' 'python-semantic-version' 'lib32-libpulse' 'wine>1.6.0' 'xdelta3' 'faf-uid' 'qt5-webengine' 'faf-ice-adapter>=5.2.0')
 makedepends=('python-setuptools')
 checkdepends=()
 optdepends=()
