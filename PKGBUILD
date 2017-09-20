@@ -1,7 +1,7 @@
 # Maintainer: Fabien Dubosson <fabien.dubosson@gmail.com>
 
 pkgname="budgetwarrior"
-pkgver="0.4.1.2"
+pkgver="0.4.2"
 pkgrel="1"
 pkgdesc="Simple command line utility to helps keeping track of your expenses and the state of your budget."
 url="https://github.com/wichtounet/budgetwarrior"
@@ -10,21 +10,24 @@ arch=('i686' 'x86_64')
 makedepends=('clang')
 depends=('boost' 'util-linux')
 changelog="ChangeLog"
-source=("https://github.com/wichtounet/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('b0120b7265b71a34035f1cb622feeff8')
+source=("git://github.com/wichtounet/budgetwarrior.git#tag=${pgkver}")
+md5sums=('SKIP')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
+    cd "${srcdir}/${pkgname}/"
+
+    git submodule init
+    git submodule update
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
+    cd "${srcdir}/${pkgname}/"
 
     make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
+    cd "${srcdir}/${pkgname}/"
 
     install -d "${pkgdir}/usr/bin"
     install -d "${pkgdir}/usr/share/man/man3"
