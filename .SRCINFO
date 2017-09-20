@@ -1,6 +1,6 @@
 pkgbase = texlive-most-doc
 	pkgdesc = Most TeXLive documentation
-	pkgver = 20170920
+	pkgver = 20170921
 	pkgrel = 1
 	url = http://tug.org/texlive/
 	install = texlive-most-doc.install
