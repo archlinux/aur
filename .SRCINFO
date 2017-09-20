@@ -13,6 +13,7 @@ pkgbase = pinocchio-git
 	depends = urdfdom
 	optdepends = metapod-git
 	optdepends = lua51
+	optdepends = hpp-fcl-git
 	provides = pinocchio
 	conflicts = pinocchio
 	source = pinocchio::git://github.com/nim65s/pinocchio.git
