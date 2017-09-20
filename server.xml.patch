@@ -1,6 +1,6 @@
---- server.xml.orig	2017-05-03 22:17:10.137773938 -0700
-+++ server.xml	2017-05-03 22:17:27.228191619 -0700
-@@ -32,7 +32,7 @@
+--- server.xml.orig	2017-09-18 13:11:15.000000000 -0700
++++ server.xml	2017-09-20 14:09:44.138185987 -0700
+@@ -39,7 +39,7 @@
                  connectionTimeout="20000"
                  redirectPort="${app.https.port}"
                  enableLookups="false"
@@ -9,7 +9,7 @@
                  compressableMimeType="text/css,text/html,text/javascript,application/json"
                  socket.rxBufSize="65535"
                  socket.txBufSize="65535"
-@@ -47,7 +47,7 @@
+@@ -54,7 +54,7 @@
                  protocol="org.apache.coyote.http11.Http11NioProtocol"
                  enableLookups="false"
                  disableUploadTimeout="true"
