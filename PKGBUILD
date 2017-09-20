@@ -1,8 +1,8 @@
-# Maintainer: drakkan <nicola.murino@gmail.com>
-# Contributor: drakkan <nicola.murino@gmail.com>
+# Maintainer: drakkan <nicola.murino at gmail dot com>
+# Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname="mingw-w64-kdsoap"
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Qt-based client-side and server-side SOAP component (mingw-w64)"
 arch=('any')
@@ -13,13 +13,12 @@ depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-cmake')
 
 source=("https://github.com/KDAB/KDSoap/releases/download/kdsoap-${pkgver}/kdsoap-${pkgver}.tar.gz")
-sha256sums=('fc4506a91db59aef33aadba9fa828c59047ac7bfdd13a23fe4ba7b66450d4844')
+sha256sums=('d6b6b01348d2e1453f7e12724d1848ee41c86a1b19168ca67ac98fedb0408668')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/kdsoap-${pkgver}"
-  sed -i 's/\-ansi//g' g++.pri
   sed -i 's/add_subdirectory(examples)//g' CMakeLists.txt
 }
 
