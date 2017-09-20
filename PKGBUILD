@@ -9,7 +9,7 @@ url="https://github.com/TylerBrock/$pkgname"
 license=('MIT')
 makedepends=('go' 'git' 'dep')
 source=("https://github.com/TylerBrock/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('1fdb1394d42923f388a56aea68f1ec37')
+md5sums=('7f05c0b36cf34175b237846c4f061188')
 
 prepare() {
   mkdir -p "${srcdir}/src/github.com/TylerBrock/"
