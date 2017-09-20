@@ -1,18 +1,31 @@
-# Maintainer: Eduardo Parra Mazuecos <eduparra90@gmail.com>
+# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: Eduardo Parra Mazuecos <eduparra90@gmail.com>
 
-# I maintain this on github, feel free to submit a pull request to
-# https://github.com/soker90/paquetes-archinux.git
-pkgname=python-lml
-pkgver=0.0.1
-pkgrel=1
-pkgdesc="Load me later. A lazy loading plugin management system."
-arch=('i686' 'x86_64')
+_name=aniso8601
+pkgname=python2-$_name
+pkgver=1.3.0
+pkgrel=2
+pkgdesc="A library for parsing ISO 8601 strings"
+arch=('any')
+depends=('python2' 'python2-dateutil')
+makedepends=('python2-setuptools')
+url="https://bitbucket.org/nielsenb/aniso8601"
 license=('BSD')
-depends=('python')
-source=("https://pypi.python.org/packages/8c/7c/f6d8f39e3663d6db2b1ceb4c72bbc0b7e18d6b1fb4c66c879a0d973c42aa/lml-0.0.1.tar.gz")
-md5sums=('6c4e9b0cc53c8be5195d696dcc09e6c9')
+options=(!emptydirs)
+source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz)
+md5sums=('d3c987293e4b5acf2004edf48cd19e9f')
+sha256sums=('c3b5246f5601b6ae5671911bc4ee5b3e3fe94752e8afab5ce074d8b1232952f1')
+
+build() {
+  cd "$srcdir/${pkgname#python2-}-$pkgver"
+
+  msg2 'Building...'
+  python2 setup.py build
+}
 
 package() {
-      cd "$srcdir/lml-${pkgver}"
-      python setup.py install --root=${pkgdir}
+  cd "$srcdir/${pkgname#python2-}-$pkgver"
+
+  msg2 'Installing...'
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
