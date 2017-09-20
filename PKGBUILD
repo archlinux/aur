@@ -36,6 +36,7 @@ package() {
   rm "$pkgdir/usr/share/fonts/noto/NotoSansAvestan-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansBalinese-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansBamum-Regular.ttf"
+  rm "$pkgdir/usr/share/fonts/noto/NotoSansBatak-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansBengali-Bold.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansBengali-Regular.ttf"
   rm "$pkgdir/usr/share/fonts/noto/NotoSansBengaliUI-Bold.ttf"
