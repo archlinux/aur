@@ -1,13 +1,13 @@
 pkgbase = python-svg.path
 	pkgdesc = SVG path objects and parser
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.1.1
+	pkgrel = 3
 	url = https://github.com/regebro/svg.path
 	arch = any
 	license = CCPL
 	depends = python
-	source = https://pypi.python.org/packages/source/s/svg.path/svg.path-2.0.1.tar.gz
-	md5sums = a35f436e901d11fa99fa3168aa4e569d
+	source = https://pypi.python.org/packages/source/s/svg.path/svg.path-2.1.1.tar.gz
+	md5sums = 487a6429e495c9d2f8baaf15d9d0d216
 
 pkgname = python-svg.path
 
