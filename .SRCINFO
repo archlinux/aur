@@ -1,0 +1,23 @@
+pkgbase = jdk8-docs
+	pkgver = 8u144
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	arch = any
+	license = custom:Oracle
+	optdepends = java-environment>=8: Compile and run examples
+	options = !strip
+	source = http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-docs-all.zip
+	source = http://download.oracle.com/otn-pub/java/javafx/8.0.141-b14/336fa29ff2bb4ef291e347e091f7f4a7/javafx-8u141-apidocs.zip
+	source = LICENSE-Documentation.txt
+	source = LICENSE-Oracle-Legal-Notices.txt
+	md5sums = 739986e75020948fab09b27f4ebd626a
+	md5sums = 78ec6d01a354558117a7c17028fb6da1
+	md5sums = 4d54057ca75b691366977dab2277e869
+	md5sums = 3137397f4dba13f4a79157819af583a3
+
+pkgname = jdk8-docs
+	pkgdesc = Documentation for Oracle Java 8 Development Kit
+
+pkgname = javafx8-docs
+	pkgdesc = Documentation for Oracle JavaFX 8 Development Kit
+
