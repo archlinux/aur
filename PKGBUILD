@@ -1,6 +1,6 @@
 # Maintainer: emersion <contact emersion.fr>
 pkgname=browserpass
-pkgver=1.0.13
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="Chrome & Firefox browser extension for pass, a UNIX password manager"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('pass')
 makedepends=('go')
 optdepends=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dannyvankooten/browserpass/archive/$pkgver.tar.gz")
-md5sums=('ab0ea0d6d3e8d3dfbd3cea8293fa5259')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dannyvankooten/browserpass/releases/download/$pkgver/browserpass-src.tar.gz")
+md5sums=('06fc24f781b7b136e865d391eddd3ef8')
 
 build() {
 	export GOPATH="$(pwd)/.go"
@@ -18,14 +18,15 @@ build() {
 	go_pkgname="github.com/dannyvankooten/browserpass"
 	go_pkgpath="$GOPATH/src/$go_pkgname"
 	mkdir -p "$(dirname $go_pkgpath)"
-	ln -sf "$srcdir/$pkgname-$pkgver" "$go_pkgpath"
+	ln -sf "$srcdir/$pkgname" "$go_pkgpath"
 
-	cd "$srcdir/$pkgname-$pkgver"
-	make browserpass static-files
+	cd "$srcdir/$pkgname"
+	rm -f browserpass # FIXME
+	make browserpass
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 
 	install -D browserpass "$pkgdir/usr/bin/browserpass"
 
