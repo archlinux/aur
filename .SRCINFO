@@ -1,7 +1,7 @@
 pkgbase = mono-beta
 	pkgdesc = Free implementation of the .NET platform including runtime and compiler
 	pkgver = 5.2.0.224
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.mono-project.com/
 	install = mono.install
 	arch = i686
