@@ -1,5 +1,4 @@
 # Maintainer: Det <nimetonmaili g-mail>
-# Based on jre: https://aur.archlinux.org/packages/jre/
 
 _pkgname=jre
 pkgname=jre-devel
@@ -14,7 +13,7 @@ pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Environment Snapshot"
 arch=('i686' 'x86_64')
 url="http://jdk.java.net/$_major/"
-license=('custom')
+license=('custom:Oracle')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-runtime-common' 'nss' 'xdg-utils')
 optdepends=('alsa-lib: for basic sound support'
             'gtk2: for Gtk+ look and feel (desktop)')
