@@ -58,7 +58,7 @@ _v_b='128'
 
 _update=''
 
-pkgrel=1
+pkgrel=2
 
 
 _sp='professional_edition'
@@ -428,6 +428,10 @@ package_intel-fortran-compiler() {
     gzip $f
   done
 
+  # Remove duplicate headers found in intel base
+  rm ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/compiler/include/omp_lib.f90
+  rm ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/compiler/include/intel64/omp_lib.mod
+  rm ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/compiler/include/intel64/omp_lib_kinds.mod
   cd ${xe_build_dir}
 
   echo -e " # intel-fortran-compiler: Move package"
