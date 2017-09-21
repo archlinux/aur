@@ -1,42 +1,46 @@
 # Maintainer: Grégoire Seux <grego_aur@familleseux.net>
 # Contributor: Dean Galvin <deangalvin3@gmail.com>
+# Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
+
 pkgname="home-assistant"
-pkgdesc='Home Assistant is an open-source home automation platform running on Python 3'
+pkgdesc='Open-source home automation platform running on Python 3'
 pkgver=0.53.1
-pkgrel=1
+pkgrel=2
 url="https://home-assistant.io/"
-license=('MIT')
+license=('APACHE')
 arch=('any')
 replaces=('python-home-assistant')
 makedepends=('python-setuptools')
 # NB: this package will install additional python packages in /var/lib/hass/lib depending on components present in the configuration files.
-depends=('python>=3.4' 'python-pip' 'python-requests>=2.14.2' 'python-yaml' 'python-pytz>=2017.2' 'python-vincenty' 'python-jinja>=2' 'python-voluptuous>=0.9.3' 'python-netifaces' 'python-webcolors' 'python-async-timeout>=1.3.0' 'python-aiohttp>=2.2.5' 'python-jinja>=2.9.5' 'python-yarl>=0.11.0' 'python-chardet>=3.0.4' 'python-astral')
+depends=('python' 'python-pip' 'python-requests>=2.14.2' 'python-yaml' 'python-pytz>=2017.2'
+         'python-vincenty' 'python-jinja>=2' 'python-voluptuous>=0.9.3' 'python-netifaces'
+         'python-webcolors' 'python-async-timeout>=1.3.0' 'python-aiohttp>=2.2.5'
+         'python-jinja>=2.9.5' 'python-yarl>=0.11.0' 'python-chardet>=3.0.4' 'python-astral')
 optdepends=('git: install component requirements from github'
             'net-tools: necessary for nmap discovery')
-conflicts=('python-home-assistant' 'python-home-assistant-git')
-source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
-"home-assistant.service")
-sha256sums=('7a33a309e9f4ce7776869029a65cd3dd71f2cb76b827f8c2fc6a1d15a325ae00'
-            '2a87a3b529a1eeddfae0c02c415bed13586b002b9580226bdc749a27bbe83af5')
-backup=('var/lib/hass/configuration.yaml')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
+        "home-assistant.service"
+        "home-assistant.sysusers"
+        "hass.install")
+sha512sums=('31ef4631dcf2829b14f335d126a8b0d7c70f82d7ddc14e78e2281140a887198ae26fc9432623a261828531424ff86a4c63159de77a5c12ef5612a4c82b578726'
+            'fe96bd3df3ba666fd9f127c466d1dd1dd7314db2e57826a2b319c8a0bfad7aedeac398e748f93c6ecd9c2247ebbae196b8b0e7263b8681e2b7aeab6a8bfeab80'
+            '100665ac35370c3ccec65d73521568de21cebf9e46af364124778861c94e338e32ad9abb675d3917f97d351dd7867e3ab2e80c26616330ae7cf0d9dc3f13369b'
+            'f9576e321af1214ab2814be81704fe7c3b945828d78ae343b83ac496af119664aba680ab0454246429e7ef9f41f3d2f4288de9ed89e4b871d89f01d58031551c')
+#validpgpkeys=('') # TODO https://github.com/home-assistant/home-assistant/issues/9487
 install='hass.install'
 
 prepare() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  set -e
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   # typing package is a backport of standard library < 3.5
+  # TODO remove in future versions https://github.com/home-assistant/home-assistant/issues/9525
   replace 'typing>=3,<4' '' setup.py
-
   replace 'aiohttp==2.2.5' 'aiohttp>=2.2.5' setup.py
-
   replace 'chardet==3.0.4' 'chardet>=3.0.4' setup.py
-
   replace 'async_timeout==1.3.0' 'async_timeout>=1.3.0' setup.py
-
   replace 'voluptuous==0.10.5' 'voluptuous>=0.9.3' setup.py
-
   replace 'requests==2.14.2' 'requests>=2.14.2' setup.py
+  replace 'astral==1.4' 'astral>=1.4' setup.py
 }
 
 replace() {
@@ -56,11 +60,10 @@ replace() {
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/lib/systemd/system/"
-  cp home-assistant.service "${pkgdir}/usr/lib/systemd/system/"
+  install -Dm644 home-assistant.service "${pkgdir}/usr/lib/systemd/system/home-assistant.service"
+  install -Dm644 home-assistant.sysusers "${pkgdir}/usr/lib/sysusers.d/hass.conf"
+  mkdir -p "${pkgdir}/var/lib/hass"
 
-  cd ${srcdir}/${pkgname}-${pkgver}
-
-  python3 setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
-  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
 }
