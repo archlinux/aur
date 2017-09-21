@@ -7,7 +7,7 @@ pkgname='ros-kinetic-image-transport'
 pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-message-filters
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="image_common-release-release-kinetic-image_transport-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_common-release/archive/release/kinetic/image_transport/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5005882625dfd767d4fcda7462645ef454e09b55ed86adf52df603f5bf688c11')
+sha256sums=('c6510bf248d66f17f6cbcab828ea7d2340602fa2143365388e60ee7beacb7e32')
 
 build() {
   # Use ROS environment variables
