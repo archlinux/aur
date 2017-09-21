@@ -9,6 +9,7 @@ pkgdesc="A wrapper library that provides one API to read, manipulate and write d
 arch=('i686' 'x86_64')
 url="https://github.com/pyexcel/pyexcel"
 license=('BSD')
+makedepends=('python-setuptools')
 depends=('python' 'python-texttable' 'python-pyexcel-io' 'python-lml')
 source=("https://github.com/pyexcel/pyexcel/archive/v$pkgver.tar.gz")
 md5sums=('b9e168f9c3b1488e13708c354a2c1660')

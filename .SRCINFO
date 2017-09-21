@@ -6,6 +6,7 @@ pkgbase = python-pyexcel
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = python-setuptools
 	depends = python
 	depends = python-texttable
 	depends = python-pyexcel-io
