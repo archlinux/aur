@@ -1,14 +1,14 @@
 # Maintainer: sum01 <sum01@protonmail.com>
-pkgname=('serious-engine-git')
+pkgname=serious-engine-git
 pkgver=r397.360d19b
 _srcname="Serious-Engine"
-pkgrel=1
+pkgrel=2
 pkgdesc="A game engine developed by Croteam for the classic Serious Sam games."
 arch=('i686' 'x86_64')
 url="https://github.com/ptitSeb/Serious-Engine"
 license=('GPL2')
 depends=('sdl2' 'python' 'bash')
-makedepends=('cmake' 'make' 'sed')
+makedepends=('cmake' 'make' 'sed' 'git')
 source=("git+https://github.com/ptitSeb/Serious-Engine.git")
 sha512sums=('SKIP')
 if [[ $CARCH = "i686" ]]; then
