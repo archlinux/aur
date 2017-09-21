@@ -2,8 +2,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
 
 pkgname=mattermost
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64')
 
@@ -23,14 +23,14 @@ optdepends=(
 )
 
 source=(
-    "https://github.com/mattermost/platform/archive/v${pkgver}.tar.gz"
+    "https://github.com/mattermost/mattermost-server/archive/v${pkgver}.tar.gz"
     'mattermost.service'
     'mattermost.sh'
     'tmpfile.conf'
     'user.conf'
 )
 sha512sums=(
-    '62f6292d9564adcf553c8d06a2b773d5f029caa34c0a239fa5186d30ad49d44dba413d9ee6bbfb62b7b5947450369f38f5ecc1fbd2c2a61e8bbc34703a9ac9af'
+    'b40af8bf9685e681fd3847b005a3a1b5763ef949dcde71434836a63e1174d9cb57227fdc49d64cb4ede24278da550478b267e2540aeb2702de5c79807a2938e1'
     '3e3d46dc7778be256da9a366ec96cde684fcb07732d0adfd40ea00d6ec61a161a9d7e784f7773d34e4f058e6919b13053ac228255a05f175e7ce20538f07ec93'
     '5fe6c343e9739b12f8ea9390dafd729fa9f980978bbc0fa7eb6a2eb2d437929078d3efede23c28a6b399c407b8b5e92755169a468462088de0eb148b360acc4b'
     'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9'
