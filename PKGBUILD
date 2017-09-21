@@ -1,5 +1,4 @@
 # Maintainer: Det <nimetonmaili g-mail>
-# Based on jre: https://aur.archlinux.org/packages/jdk/
 
 _pkgname=jdk
 pkgname=jdk-devel
@@ -14,7 +13,7 @@ pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot"
 arch=('i686' 'x86_64')
 url="http://jdk.java.net/$_major/"
-license=('custom')
+license=('custom:Oracle')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-environment-common' 'java-runtime-common' 'nss' 'xdg-utils')
 optdepends=('alsa-lib: for basic sound support'
             'eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse'
