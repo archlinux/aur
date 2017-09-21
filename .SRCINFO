@@ -1,7 +1,7 @@
 pkgbase = github-desktop
 	pkgdesc = GUI for managing Git and GitHub.
 	pkgver = 0.8.2_beta1
-	pkgrel = 5
+	pkgrel = 2
 	url = https://desktop.github.com
 	install = github-desktop.install
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = github-desktop
 	depends = git
 	depends = electron
 	depends = nodejs
+	depends = libcurl-compat
+	depends = libcurl-gnutls
 	optdepends = hub: CLI interface for GitHub.
 	source = https://github.com/gengjiawen/desktop/releases/download/v0.8.2-beta1/desktop_0.8.2-beta1_amd64.deb
 	md5sums = 0c6779e6cb254500406ae64f0b84f0f4
