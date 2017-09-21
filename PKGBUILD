@@ -4,7 +4,7 @@
 _pkgname=ir-lv2
 pkgname="${_pkgname}-git"
 pkgver=1.3.2.r17.af1f8ab
-pkgrel=2
+pkgrel=3
 pkgdesc="Real-time signal convolver esp. suited for impulse response reverb effects"
 arch=('i686' 'x86_64')
 url="https://github.com/Anchakor/ir.lv2"
@@ -13,7 +13,7 @@ depends=('gtk2>=2.16' 'libsamplerate' 'zita-convolver')
 provides=('ir.lv2' "${_pkgname}" 'lv2-ir-git')
 conflicts=('ir.lv2' "${_pkgname}" 'lv2-ir' 'lv2-ir-git')
 groups=('lv2-plugins')
-makedepends=('lv2')
+makedepends=('git' 'lv2')
 source=("${_pkgname}::git+https://github.com/Anchakor/ir.lv2.git")
 md5sums=('SKIP')
 changelog=ChangeLog
