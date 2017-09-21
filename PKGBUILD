@@ -1,8 +1,8 @@
 # Maintainer: Ben Ruijl <benruyl@gmail.com>
 
 pkgname=python2-sabyenc
-pkgver=3.0.2
-pkgrel=3
+pkgver=3.3.1
+pkgrel=1
 pkgdesc="Python2 yEnc package optimized for use within SABnzbd"
 url="https://github.com/sabnzbd/sabyenc"
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,7 +11,7 @@ depends=("python2")
 makedepends=("python2-setuptools")
 
 source=("https://github.com/sabnzbd/sabyenc/archive/v${pkgver}.tar.gz")
-md5sums=('49684574e411ee36cc96e8b70aa99ad9')
+md5sums=('79a1cdd2ae609c08a87b9b16acaec439')
 
 build() {
   cd "${srcdir}/sabyenc-${pkgver}"
