@@ -1,0 +1,49 @@
+pkgbase = jre8
+	pkgdesc = Oracle Java 8 Runtime Environment
+	pkgver = 8u144
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = jre8.install
+	arch = i686
+	arch = x86_64
+	license = custom:Oracle
+	depends = ca-certificates-java
+	depends = hicolor-icon-theme
+	depends = java-runtime-common
+	depends = nss
+	depends = xdg-utils
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for Gtk+ look and feel (desktop)
+	provides = java-runtime=8
+	provides = java-runtime-headless=8
+	provides = java-web-start=8
+	provides = java-runtime-jre=8
+	provides = java-runtime-headless-jre=8
+	provides = java-web-start-jre=8
+	provides = java-openjfx=8
+	backup = etc/java-jre8/amd64/jvm.cfg
+	backup = etc/java-jre8/images/cursors/cursors.properties
+	backup = etc/java-jre8/management/jmxremote.access
+	backup = etc/java-jre8/management/management.properties
+	backup = etc/java-jre8/security/java.policy
+	backup = etc/java-jre8/security/java.security
+	backup = etc/java-jre8/security/javaws.policy
+	backup = etc/java-jre8/content-types.properties
+	backup = etc/java-jre8/flavormap.properties
+	backup = etc/java-jre8/fontconfig.properties.src
+	backup = etc/java-jre8/logging.properties
+	backup = etc/java-jre8/net.properties
+	backup = etc/java-jre8/psfont.properties.ja
+	backup = etc/java-jre8/psfontj2d.properties
+	backup = etc/java-jre8/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
+	source = policytool-jre8.desktop
+	md5sums = b3c7031bc65c28c2340302065e7d00d3
+	md5sums = ef3ff483db5d38ed106e0b819006bdae
+	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jre-8u144-linux-i586.tar.gz
+	md5sums_i686 = 794e74d0395124337809dcc225c80411
+	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jre-8u144-linux-x64.tar.gz
+	md5sums_x86_64 = e3808f24d0f588b0c313fa18b50683c6
+
+pkgname = jre8
+
