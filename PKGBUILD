@@ -1,16 +1,16 @@
 pkgname=phraseapp-client
-pkgver=1.4.5
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="PhraseApp CLI tool"
 arch=('i686' 'x86_64')
 url="https://phraseapp.com/cli"
 license=('MIT')
 
-source_i686=('https://github.com/phrase/phraseapp-client/releases/download/1.4.5/phraseapp_linux_386.tar.gz')
-source_x86_64=('https://github.com/phrase/phraseapp-client/releases/download/1.4.5/phraseapp_linux_amd64.tar.gz')
+source_i686=("https://github.com/phrase/phraseapp-client/releases/download/$pkgver/phraseapp_linux_386.tar.gz")
+source_x86_64=("https://github.com/phrase/phraseapp-client/releases/download/$pkgver/phraseapp_linux_amd64.tar.gz")
 
-sha256sums_i686=('7e69dcf9e24fc9c7e64ffbb201d991a7f3ba9a840125ab334b0c0dc86cc2c554')
-sha256sums_x86_64=('6fa4463fc74e602ccc3b93c25038aedf7cbdb8e7afa2997a3629d6678f959cf1')
+sha256sums_i686=('5e97031ec540a311d94defa503b090295f34dab441c1b99af06de6d3b0ac5bff')
+sha256sums_x86_64=('922765971e88e4ab13c2de575bcb000f585455a90cf9d454ee41b16d6894ae64')
 
 package() {
   if [ $CARCH == 'i686' ]; then
