@@ -3,6 +3,9 @@ todo.cpp
 
 Todo list program
 
+![Screenshot](capture.png)
+
+
 Usage : todo [show,add,remove,check,set]
 
 todo use the file named ".todo.txt" in the current dir. So you can use many todo-list, one per directory.
@@ -53,9 +56,4 @@ Exemple of how you can use it :
 [✓]  Push it on github
 ```
 
-
-
- - [ ]  Factoriser les modifications
- - [ ]  Ajouter des commentaires
- - [ ]  Ajouter une capture d'écran
 
