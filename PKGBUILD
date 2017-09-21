@@ -4,8 +4,8 @@
 
 pkgname=mono-beta
 _pkgname=mono
-pkgver=5.2.0.215
-pkgrel=0
+pkgver=5.2.0.224
+pkgrel=1
 pkgdesc="Free implementation of the .NET platform including runtime and compiler"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL2.1' 'MPL')
