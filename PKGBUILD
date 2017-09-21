@@ -2,7 +2,7 @@
 # Contributor: Maciej Sieczka <msieczka at sieczka dot org>
 
 pkgname=grass
-pkgver=7.2.1
+pkgver=7.2.2
 pkgrel=1
 _shortver=${pkgver%.*}; _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
@@ -15,16 +15,11 @@ depends=('cairo' 'fftw' 'fontconfig' 'freetype2' 'gcc-libs' 'gdal' 'geos' 'glibc
 makedepends=('libxt')
 optdepends=('postgresql: PostgreSQL database interface'
             'sqlite: SQLite database interface')
-source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz"
-        "changeset_71219.diff::https://trac.osgeo.org/grass/changeset/71219?format=diff&new=71219")
-md5sums=('5c858c718d40a4f3e82741e60c9f7b97'
-         '107f39c90d40f566edff5095cc1264a1')
+source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
+md5sums=('4a908a63bb9b7af34fee9569316c0fb6')
 
 prepare() {
   cd $pkgname-$pkgver
-
-  # GCC7 patch
-  patch -Np4 -i ../changeset_71219.diff
 
   # Change everything to use python2
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
