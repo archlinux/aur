@@ -11,8 +11,8 @@ pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit (32-bit)"
 arch=('x86_64')
-url='http://www.oracle.com/technetwork/java/javase/downloads/index.html'
-license=('custom')
+url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
+license=('custom: Oracle')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java32-environment-common' 'java32-runtime-common'
          'lib32-gcc-libs' 'lib32-libxrender' 'lib32-libxtst' 'lib32-nss' 'xdg-utils')
 optdepends=('eclipse-java: "Oracle Java Mission Control" plugins for Eclipse'
