@@ -9,19 +9,19 @@ url="https://github.com/rhysd/vim-crystal"
 license=('MIT')
 depends=('neovim')
 makedepends=('git')
-provides=('nvim-crystal')
-conflicts=('nvim-crystal')
-source=('nvim-crystal::git+https://github.com/rhysd/vim-crystal.git')
+provides=('neovim-crystal')
+conflicts=('neovim-crystal')
+source=('neovim-crystal::git+https://github.com/rhysd/vim-crystal.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/nvim-crystal"
+	cd "$srcdir/neovim-crystal"
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/nvim-crystal"
+	cd "$srcdir/neovim-crystal"
     install -d "$pkgdir/usr/share/nvim/runtime/"
     cp -r 'autoload' 'ftdetect' 'ftplugin' 'indent' 'plugin' 'syntax' "$pkgdir/usr/share/nvim/runtime"
 }
