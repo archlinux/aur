@@ -1,7 +1,7 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=kodi-addon-quasar
 pkgver=0.9.78
-pkgrel=1
+pkgrel=2
 pkgdesc='Quasar is an torrent finding and streaming engine for Kodi (fork of Pulsar add-on)'
 classname=plugin.video.quasar
 arch=('any')
@@ -15,11 +15,7 @@ options=(!strip)
 noextract=(${classname}-${pkgver}.zip)
 
 case "$CARCH" in 
-  arm)
-  _pkgarch="arm"
-  md5sums=('a9430a6bd17065099348acbc18101d45')
-  ;;
-  armv6h)
+  arm|armv6h)
   _pkgarch="arm"
   md5sums=('a9430a6bd17065099348acbc18101d45')
   ;;
@@ -38,7 +34,7 @@ case "$CARCH" in
 esac
 
 source=("https://github.com/scakemyer/plugin.video.quasar/releases/download/v${pkgver}/plugin.video.quasar-${pkgver}.linux_${_pkgarch}.zip")
-install=kodi-addon-quasar.install
+# install=kodi-addon-quasar.install
 installpath=/var/lib/kodi/.kodi/addons/
 
 package() {
