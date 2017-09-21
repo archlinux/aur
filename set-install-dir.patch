@@ -1,0 +1,11 @@
+--- testssl.sh.orig	2017-09-21 11:49:04.161576009 +0200
++++ testssl.sh	2017-09-21 11:49:28.451753722 +0200
+@@ -112,7 +112,7 @@
+
+ readonly PROG_NAME="$(basename "$0")"
+ readonly RUN_DIR="$(dirname "$0")"
+-TESTSSL_INSTALL_DIR="${TESTSSL_INSTALL_DIR:-""}"  # if you run testssl.sh from a different path you can set either TESTSSL_INSTALL_DIR
++TESTSSL_INSTALL_DIR="${TESTSSL_INSTALL_DIR:-"/usr/share/testssl.sh"}"  # if you run testssl.sh from a different path you can set either TESTSSL_INSTALL_DIR
+ CA_BUNDLES_PATH="${CA_BUNDLES_PATH:-""}"          # or CA_BUNDLES_PATH to find the CA BUNDLES. TESTSSL_INSTALL_DIR helps you to find the RFC mapping also
+ CIPHERS_BY_STRENGTH_FILE=""
+ TLS_DATA_FILE=""                                  # mandatory file for socket based handdhakes
