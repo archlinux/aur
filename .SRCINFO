@@ -1,0 +1,60 @@
+pkgbase = jdk8
+	pkgdesc = Oracle Java 8 Development Kit
+	pkgver = 8u144
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = jdk8.install
+	arch = i686
+	arch = x86_64
+	license = custom:Oracle
+	depends = ca-certificates-java
+	depends = hicolor-icon-theme
+	depends = java-environment-common
+	depends = java-runtime-common
+	depends = nss
+	depends = xdg-utils
+	optdepends = alsa-lib: for basic sound support
+	optdepends = eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse
+	optdepends = gtk2: for Gtk+ look and feel (desktop)
+	provides = java-runtime=8
+	provides = java-runtime-headless=8
+	provides = java-web-start=8
+	provides = java-environment=8
+	provides = java-runtime-jre=8
+	provides = java-runtime-headless-jre=8
+	provides = java-web-start-jre=8
+	provides = java-environment-jdk=8
+	provides = java-openjfx=8
+	options = !strip
+	backup = etc/java-jdk8/amd64/jvm.cfg
+	backup = etc/java-jdk8/images/cursors/cursors.properties
+	backup = etc/java-jdk8/management/jmxremote.access
+	backup = etc/java-jdk8/management/management.properties
+	backup = etc/java-jdk8/security/java.policy
+	backup = etc/java-jdk8/security/java.security
+	backup = etc/java-jdk8/security/javaws.policy
+	backup = etc/java-jdk8/content-types.properties
+	backup = etc/java-jdk8/flavormap.properties
+	backup = etc/java-jdk8/fontconfig.properties.src
+	backup = etc/java-jdk8/logging.properties
+	backup = etc/java-jdk8/net.properties
+	backup = etc/java-jdk8/psfont.properties.ja
+	backup = etc/java-jdk8/psfontj2d.properties
+	backup = etc/java-jdk8/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
+	source = jconsole-jdk8.desktop
+	source = jmc-jdk8.desktop
+	source = jvisualvm-jdk8.desktop
+	source = policytool-jdk8.desktop
+	md5sums = b3c7031bc65c28c2340302065e7d00d3
+	md5sums = 8a66f50efdc867ffd6a27168bc93b210
+	md5sums = 1cbde70639abd98db4bace284dbf2bc4
+	md5sums = f0b39865361437f3778ecbe6ffbc0a06
+	md5sums = 89704501aff8efe859c31968d8d168e6
+	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-i586.tar.gz
+	md5sums_i686 = 13d771707f326b02e2497c99e0a2ca37
+	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz
+	md5sums_x86_64 = 2d59a3add1f213cd249a67684d4aeb83
+
+pkgname = jdk8
+
