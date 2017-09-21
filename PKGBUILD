@@ -20,6 +20,7 @@ _gourl="github.com/docker/docker-credential-helpers"
 source=("docker-credential-helpers-$pkgver.tar.gz::https://$_gourl/archive/v$pkgver.tar.gz")
 sha512sums=('bc9ab4f4f047d32a5783c992d5f73fb05c9f096ef7994d14db117340dd3fd1931ff2c17f48b02a994b6ac5778fdfd4eec5d04856d0c74f4422ba5340ebb4cefc')
 noextract=("docker-credential-helpers-$pkgver.tar.gz")
+install=$pkgname.install
 
 prepare() {
   mkdir -p "$srcdir/src/$_gourl"
