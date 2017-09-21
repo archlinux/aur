@@ -1,7 +1,7 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
 pkgname=hackmd-desktop
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An electron wrapped desktop client for HackMD"
 arch=('any')
 url="https://github.com/hackmdio/hackmd-desktop"
@@ -21,5 +21,5 @@ package() {
     cp -a ${srcdir}/opt ${pkgdir}/opt
 
     install -dm755 ${pkgdir}/usr/bin
-    ln -sf ${srcdir}/opt/HackMD/hackmd-desktop ${pkgdir}/usr/bin/hackmd-desktop
+    ln -sf /opt/HackMD/hackmd-desktop ${pkgdir}/usr/bin/hackmd-desktop
 }
