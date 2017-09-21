@@ -1,8 +1,3 @@
-post_install() {
-    chown -R hass:hass /var/lib/hass
-}
-
 post_remove() {
     echo "Home Assistant data directory '/var/lib/hass' is left untouched. Remove it if you are really sure you won't need your data in the future."
-    systemctl stop home-assistant.service
 }
