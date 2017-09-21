@@ -1,6 +1,6 @@
 # Maintainer: Adrien 'Litarvan' Navratil <adrien1975@live.fr>
 pkgname=lightdm-webkit-theme-litarvan
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Modern and full-featured LightDM theme"
 arch=('any')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('lightdm-webkit2-greeter')
 source=("https://github.com/Litarvan/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 noextract=()
-md5sums=('026ce10de7857bd05a4b1578c4bca6aa')
+md5sums=('99e5b254d719642fc40be2c6f8084787')
 
 package() {
   install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
