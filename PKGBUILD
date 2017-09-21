@@ -12,7 +12,7 @@ pkgrel=1
 pkgdesc="Documentation for Oracle Java $_major Development Kit Snapshot"
 arch=('any')
 url="http://jdk.java.net/$_major/"
-license=('custom')
+license=('custom:Oracle')
 optdepends=("java-environment>=$_major: Compile and run examples")
 options=('!strip')
 source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/jdk-${_pkgver}_doc-api-spec.tar.gz"

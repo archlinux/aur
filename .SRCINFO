@@ -4,7 +4,7 @@ pkgbase = jdk-devel-docs
 	pkgrel = 1
 	url = http://jdk.java.net/9/
 	arch = any
-	license = custom
+	license = custom:Oracle
 	optdepends = java-environment>=9: Compile and run examples
 	options = !strip
 	source = http://download.java.net/java/jdk9/archive/181/binaries/jdk-9_doc-api-spec.tar.gz
