@@ -7,7 +7,7 @@
 #
 pkgname="zfs-utils-common-git"
 
-pkgver=0.7.0.r78.ga35b4cc8c
+pkgver=0.7.0.r86.g5df5d06a8
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("")
