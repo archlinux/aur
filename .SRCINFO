@@ -7,6 +7,7 @@ pkgbase = iqoption-bin
 	license = custom:iqoption
 	makedepends = binutils
 	makedepends = tar
+	makedepends = sed
 	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_mixer
