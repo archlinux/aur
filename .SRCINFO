@@ -1,0 +1,16 @@
+pkgbase = neovim-crystal-git
+	pkgdesc = Neovim filetype and tools support for Crystal language.
+	pkgver = r148.dd5470e
+	pkgrel = 1
+	url = https://github.com/rhysd/vim-crystal
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = nvim-crystal
+	conflicts = nvim-crystal
+	source = nvim-crystal::git+https://github.com/rhysd/vim-crystal.git
+	md5sums = SKIP
+
+pkgname = neovim-crystal-git
+
