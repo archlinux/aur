@@ -1,7 +1,7 @@
 # Maintainer: Andrew O'Neill <andrew at meanjollies dot com>
 
 pkgname=musikcube
-pkgver=0.25.2
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="A terminal-based cross-platform music player, audio engine, metadata indexer, and server"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('faad2' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame' 'ncurses' 'b
 makedepends=('cmake')
 source=(https://github.com/clangen/musikcube/archive/$pkgver.tar.gz
         LICENSE.txt)
-sha256sums=('90628413e254e59415f49c77008a6d54b489b272ef65865806bdb2526210ecf3'
+sha256sums=('ff606d05624352d2e31a630d5d6cb899610d52d4027162b3d4acd565d2880112'
             'f6b4cd2e08c8a93cd447eb4a077ecb0c7eca8c3d175aaeedb1f49731f86c8e5b')
 
 build() {
