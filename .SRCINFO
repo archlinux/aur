@@ -1,0 +1,16 @@
+pkgbase = terraform-provider-google
+	pkgdesc = Terraform goolge provider
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = http://www.terraform.io/
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = go
+	makedepends = git
+	conflicts = terraform-provider-google-bin
+	source = https://github.com/terraform-providers/terraform-provider-google/archive/v0.1.3.tar.gz
+	sha256sums = b5ed4e2b758ae494b0a9e865439dfed7065ac8dc417058c8a766a5f2a48de2b8
+
+pkgname = terraform-provider-google
+
