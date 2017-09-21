@@ -1,5 +1,4 @@
 # Maintainer: Det <nimetonmaili g-mail>
-# Based on jre-devel: https://aur.archlinux.org/packages/jre-devel/
 # Contributors: Damian Nowak
 
 _pkgname=jre
@@ -15,7 +14,7 @@ pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Environment Snapshot (32-bit)"
 arch=('x86_64')
 url="http://jdk.java.net/$_major/"
-license=('custom')
+license=('custom:Oracle')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java32-runtime-common' 'lib32-gcc-libs'
          'lib32-libxrender' 'lib32-libxtst' 'lib32-nss' 'xdg-utils')
 optdepends=('lib32-alsa-lib: for basic sound support'
