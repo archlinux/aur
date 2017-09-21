@@ -3,11 +3,11 @@
 @@ -1,8 +1,8 @@
  [Desktop Entry]
 -Version=1.0
-+Version=1.8
++Version=2.2.0
  Name=OpenStudio
  Comment=Supports whole building energy modeling using EnergyPlus
 -Exec=/usr/local/bin/OpenStudio %f
-+Exec=LD_LIBRARY_PATH=/usr/local/share/openstudio-1.8.0/lib/:$LD_LIBRARY_PATH /usr/local/bin/OpenStudio %f
++Exec=LD_LIBRARY_PATH=/usr/local/share/openstudio-2.2.0/lib/:$LD_LIBRARY_PATH /usr/local/bin/OpenStudio %f
  Terminal=false
  Type=Application
  Icon=OpenStudio
