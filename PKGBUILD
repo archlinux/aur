@@ -7,7 +7,7 @@ pkgname='ros-kinetic-theora-image-transport'
 pkgver='1.9.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-rosbag
@@ -43,7 +43,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="image_transport_plugins-release-release-kinetic-theora_image_transport-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_transport_plugins-release/archive/release/kinetic/theora_image_transport/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0c75d2a56ddea491534f953e5e30035415314e8b782d3c42624d4f637b6b2164')
+sha256sums=('88c28d0f55dd9ca60a3dc313b3eccf4ba387728ccd50890ff302119cbb59dac7')
 
 build() {
   # Use ROS environment variables
