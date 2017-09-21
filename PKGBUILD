@@ -2,14 +2,14 @@
 # Contributor: Anton Leontiev <scileont /at/ gmail.com>
 pkgname=ttf-andika
 pkgver=5.000
-pkgrel=1
+pkgrel=2
 pkgdesc='A sans serif, Unicode-compliant font designed especially for literacy use'
 url='http://software.sil.org/andika/'
 arch=('any')
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-sil-fonts')
-source=(http://software.sil.org/downloads/d/andika/Andika-$pkgver.zip)
+source=(https://software.sil.org/downloads/r/andika/Andika-$pkgver.zip)
 md5sums=('b1667e145cdf1f074887b632d72a52d4')
 
 package() {
