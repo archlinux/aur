@@ -7,7 +7,7 @@ pkgname='ros-kinetic-joint-state-controller'
 pkgver='0.13.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-realtime-tools
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-kinetic-joint_state_controller-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/kinetic/joint_state_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5be8f80693b4f308239ee261a9d93536de60d68a91301ce5cdbf15fbea56c3db')
+sha256sums=('8f3d42a1f619da53e6264c640f4bbacf6d22433b3e3e04015430ad922a31d643')
 
 build() {
   # Use ROS environment variables
