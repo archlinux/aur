@@ -1,6 +1,6 @@
 pkgbase = papirus-icon-theme
 	pkgdesc = Papirus icon theme
-	pkgver = 20170828
+	pkgver = 20170921
 	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = papirus-icon-theme
 	provides = papirus-icon-theme
 	conflicts = papirus-icon-theme-git
 	options = !strip
-	source = papirus-icon-theme-20170828.tar.gz::https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/20170828.tar.gz
-	sha256sums = 661ed89eb7be4ffc6501dab3402bef78d3e2acfe8e10db14338b665bff54fb97
+	source = papirus-icon-theme-20170921.tar.gz::https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/20170921.tar.gz
+	sha256sums = a45965c6b1d8f8d046ac458b9d462badfaac3a38076f1610350a990fa2bf5024
 
 pkgname = papirus-icon-theme
 
