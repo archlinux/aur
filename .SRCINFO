@@ -1,0 +1,22 @@
+pkgbase = python-borgmatic-git
+	pkgdesc = a simple Python wrapper script for the Borg backup software
+	pkgver = 1.1.7.r3.gf3d6d7c
+	pkgrel = 2
+	url = https://github.com/witten/borgmatic.git
+	arch = any
+	license = GPL3
+	checkdepends = python-flexmock
+	checkdepends = python-pytest
+	makedepends = git
+	depends = python
+	depends = python-pykwalify
+	depends = python-ruamel-yaml<=0.15.0
+	depends = python-setuptools
+	provides = borgmatic
+	conflicts = borgmatic
+	options = !emptydirs
+	source = git+https://github.com/witten/borgmatic.git
+	md5sums = SKIP
+
+pkgname = python-borgmatic-git
+
