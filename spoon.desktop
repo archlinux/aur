@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/usr/bin/spoon %f
+Icon=spoon
+Terminal=false
+Type=Application
+Name=Pentaho Data Integration
+Comment=ETL tool also known as Kettle
+Categories=Development;IDE;
