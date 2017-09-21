@@ -1,7 +1,8 @@
-# Maintainer: youngunix <>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: youngunix <>
 
 
-_version=3.1.1
+_version=4.0
 pkgname=swift-bin
 pkgver=${_version//-/.}
 pkgrel=1
@@ -12,16 +13,15 @@ license=('apache')
 depends=('icu55' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'python2-six' 'libxml2')
 conflicts=('lldb' 'swift-language-git')
 options=('!strip')
-validpgpkeys=('A3BAFD3556A59079C06894BD63BC1CFE91D306C6')
+validpgpkeys=('5E4DF843FB065D7F7E24FBA2EF5430F071E1B235')
 provides=('swift-language')
 replaces=('swift-language-bin')
-
 source=(
   "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz"
   "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz.sig"
 )
-sha256sums=('bdb1bd31bed391e27cd6aefba1fc98e18c12df64ad03f25b3f1431b344841d09'
-            '8562aeb942902bcf9ea6a8cb8855aafcbd401c2fe68509b91fc45e072469044d')
+sha256sums=('2c4dd2067411efb46e33c4dd999b651a34263a16dfa6d23df420fd301268cf1f'
+           '3039dc572d876f1dcda7dd8ea57684002274d3987fc592636dad8344e3314d92')
 
 package() {
     tar -C "$pkgdir" -xf "swift-${_version}-RELEASE"*.tar.gz --strip 1
@@ -49,3 +49,5 @@ package() {
     install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
     mv ${pkgdir}/usr/share/swift/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}
 }
+
+
