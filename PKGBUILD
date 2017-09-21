@@ -13,7 +13,7 @@ url="http://code.google.com/p/eiskaltdc/"
 options=(!emptydirs)
 source=(https://github.com/${_name}/${_name}/archive/v${_tarver}.tar.gz)
 sha256sums=('e461c8c499e459651d6382a6ded6788e5ac9a9c4ff26386c3cf073d94d606127')
-makedepends=(gcc make cmake gtk2 libnotify qt4 bzip2 openssl lua52 libidn pcre)
+makedepends=(gcc make cmake gtk2 libnotify qt4 bzip2 openssl openssl-1.0 lua52 libidn pcre)
 
 build() {
   cd ${srcdir}/${_name}-${_tarver}
@@ -68,7 +68,7 @@ package_eiskaltdcpp-daemon() {
 }
 
 package_eiskaltdcpp-core() {
-    depends=(bzip2 openssl lua52 libidn pcre)
+    depends=(bzip2 openssl lua52 libidn pcre openssl-1.0)
     pkgdesc="EiskaltDC++ Core"
     conflicts=(${_name}-core)
     provides=(${_name}-core)
