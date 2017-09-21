@@ -10,10 +10,6 @@ license=('GPL')
 source=("https://dl.opendesktop.org/api/files/download/id/1502985503/ocsstore-2.2.0-1-x86_64.pkg.tar.xz")
 md5sums=('SKIP')
 
-prepare(){
-    rm ../ocsstore-2.2.0-1-x86_64.pkg.tar.xz
-}
-
 package() {
     cp -r $srcdir/usr $pkgdir
 }
