@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('conan')
-pkgver=0.26.1
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -15,22 +15,16 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<2.0.0'
          'python-patch=1.16'
          'python-fasteners>=0.14.1'
          'python-six>=1.10.0'
-         'python-node-semver=0.1.1'
+         'python-node-semver=0.2.0'
          'python-bottle>=0.12.8' 'python-bottle<0.13'
          'python-distro>=1.0.2' 'python-distro<1.1.0'
          'python-pluginbase>=0.5' 'python-pluginbase<1.0'
-         'python-pylint>=1.6.5'
+         'python-pylint>=1.6.5' 'python-pylint<=1.8.0'
          'python-future=0.16.0'
          'python-pygments>=2.0' 'python-pygments<3.0')
-source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "arch-deps.patch")
-md5sums=('53d5dfecd5a3a799f43096d4b8520786'
-         'a354ef73eb5bf895bb7f6773ad5d4f01')
+source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz")
+md5sums=('f228373fc97d1283d8454243cfdc57a6')
 
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -Np1 -i "${srcdir}/arch-deps.patch"
-}
 
 build() {
   cd "$srcdir/conan-$pkgver"
