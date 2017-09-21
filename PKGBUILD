@@ -1,7 +1,7 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
 pkgname=hackmd-desktop
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An electron wrapped desktop client for HackMD"
 arch=('any')
 url="https://github.com/hackmdio/hackmd-desktop"
