@@ -1,7 +1,7 @@
 pkgbase = kalu-cli
 	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jjacky.com/kalu
 	install = kalu.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = kalu-cli
 	depends = pacman>=5.0
 	depends = pacman<5.1
 	depends = curl
+	conflicts = kalu
 	source = http://jjacky.com/kalu/kalu-4.1.0.tar.gz
 	sha1sums = dbcc37899302d402717653f11ff303c5dc73b86d
 
