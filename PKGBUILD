@@ -1,6 +1,6 @@
 # Maintainer: Braeden Mollot <3mollot at gmail dot com>
 pkgname=min-browser-bin
-pkgver=1.6.0
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A faster, smarter web browser."
 arch=('x86_64')
