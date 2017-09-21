@@ -1,7 +1,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet-skins
-pkgver=20170901
+pkgver=20170921
 pkgrel=1
 pkgdesc="DDraceNetwork skin database"
 arch=(any)
@@ -13,10 +13,6 @@ conflicts=('teeworlds-ddnet-skins')
 replaces=('teeworlds-ddnet-skins')
 source=("$pkgname-$pkgver.zip::https://ddnet.tw/skins/zip/database.zip")
 md5sums=('SKIP')
-
-pkgver() {
-  date +%Y%m%d
-}
 
 package() {
   rm -rf $pkgname-$pkgver
