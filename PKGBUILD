@@ -13,8 +13,10 @@ depends=('curl' 'json-c' 'libxml2' 'sqlite3' 'stfl')
 optdepends=('ruby')
 makedepends=('asciidoc' 'docbook-xsl' 'swig')
 options=('docs' '!libtool')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/r$pkgver.tar.gz")
-sha512sums=('8c5101fd0ca9d70583e7152e970fa268f6249e1d545b4779fc1a58e0741d8e2cc967643d9683220bbe67cddaec17f712f82d488606d7907e1dba6eb3ed8f75dc')
+source=("$url/releases/$pkgver/newsboat-$pkgver.tar.xz"{,.asc})
+sha512sums=('1d7efacd4614572fed490f828c8e70f31dd7d4897ff882a6a79cfbf8295909e24aabcf39f927bec6842fac9d7beb3ea6f8db34cf54efd29ea8e9188f5a1afe8c'
+            'SKIP')
+validpgpkeys=('B8B1756A0DDBF0760CE67CCF4ED6CD61932B9EBE') # Newsboat project
 
 build() {
   cd $pkgname-r$pkgver
