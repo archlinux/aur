@@ -7,7 +7,7 @@ pkgname='ros-kinetic-robot-state-publisher'
 pkgver='1.13.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-tf2-kdl
@@ -48,7 +48,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_state_publisher-release-release-kinetic-robot_state_publisher-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_state_publisher-release/archive/release/kinetic/robot_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b9c34a02ca457a5e3cdd256c805121eb1da7dfcc281d9de98fb188d04599809c')
+sha256sums=('1432c77c4f37fe90e95390c413707f43c4e9b050318f1609086b2d747ec32fe9')
 
 build() {
   # Use ROS environment variables
