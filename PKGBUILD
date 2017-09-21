@@ -1,15 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
-# for more information on packaging from GIT sources.
-
 # Maintainer: Abhishek Mukherjee <amukherjee@tripadvisor.com>
 pkgname=docker-credential-secretservice
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="program to use secretservice to keep Docker credentials safe"
 arch=(x86_64)
 url="https://github.com/docker/docker-credential-helpers"
@@ -18,7 +10,7 @@ depends=('libsecret')
 makedepends=('go')
 _gourl="github.com/docker/docker-credential-helpers"
 source=("docker-credential-helpers-$pkgver.tar.gz::https://$_gourl/archive/v$pkgver.tar.gz")
-sha512sums=('bc9ab4f4f047d32a5783c992d5f73fb05c9f096ef7994d14db117340dd3fd1931ff2c17f48b02a994b6ac5778fdfd4eec5d04856d0c74f4422ba5340ebb4cefc')
+sha512sums=('359e8ec700f423ce0687f13ce02946007f90456abe86659a87c59419ebde5e79adb4d28ee5e6a9762a44cfd65648c247629a5273326abf18a8880bee637e74d8')
 noextract=("docker-credential-helpers-$pkgver.tar.gz")
 install=$pkgname.install
 
