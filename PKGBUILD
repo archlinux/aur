@@ -22,15 +22,15 @@ makedepends=('git')
 conflicts=('multipath-tools-git')
 install=multipath-tools.install
 source=("multipath-tools::git+http://git.opensvc.com/multipath-tools/.git#tag=${pkgver}"
-        no-systemd.patch)
+        0001-multipathd-fix-build-without-systemd.patch)
 sha256sums=('SKIP'
-            '91188fc348b1620b9a20c354f84c0fd751d2435ed46e40fe8dd40d6ba1a86236')
+            '753a7c4c09fe9c93c42beddaf25a913a92cb1bf91bddc6f5cb22c722e9d60bf7')
 
 prepare() {
   cd  "${srcdir}/${pkgname}"
 
   # Patch multipathd to build when no systemd is installed
-  patch -p2 < "${srcdir}"/no-systemd.patch
+  patch -p1 < "${srcdir}"/0001-multipathd-fix-build-without-systemd.patch
 
   # Fix bindir in Makefile
   sed -i 's|$(exec_prefix)/sbin|$(exec_prefix)/bin|g' Makefile.inc
