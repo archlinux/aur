@@ -7,7 +7,7 @@ pkgname='ros-kinetic-gazebo-plugins'
 pkgver='2.5.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD, Apache 2.0')
 
 ros_makedepends=(ros-kinetic-trajectory-msgs
@@ -73,7 +73,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-kinetic-gazebo_plugins-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('840d6e6e1d699c6a949ee63299565df6ce3bec1e8298889d37c05ea082a02023')
+sha256sums=('44a0373d9bac70e54ea2421674de27481647c190f7e0c39136cd01077dc3f8d8')
 
 build() {
   # Use ROS environment variables
