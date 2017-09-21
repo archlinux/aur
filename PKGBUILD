@@ -7,7 +7,7 @@ pkgname='ros-kinetic-compressed-image-transport'
 pkgver='1.9.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-image-transport
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="image_transport_plugins-release-release-kinetic-compressed_image_transport-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_transport_plugins-release/archive/release/kinetic/compressed_image_transport/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2c429e306222219bec7ae6e018d025af7bf560a276c816b92bf27f36c06c3d3e')
+sha256sums=('a5889f67c061753e8971189c93b8da7fa9222c180cd61da7b1b6c473ce957816')
 
 build() {
   # Use ROS environment variables
