@@ -1,12 +1,12 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mit-scheme-git
-pkgver=9.2.0.1159.gad146c13b
+pkgver=9.2.0.1160.g6a6efe648
 pkgrel=1
 pkgdesc="MIT/GNU Scheme from git"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/mit-scheme/"
 license=('GPL')
-depends=('ncurses' 'libx11' 'postgresql-libs')
+depends=('mhash' 'libmcrypt' 'ncurses' 'libx11' 'postgresql-libs')
 optdepends=('openssl: support for openssl')
 makedepends=('git' 'mit-scheme')
 provides=('mit-scheme')
