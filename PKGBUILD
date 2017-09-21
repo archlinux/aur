@@ -5,12 +5,14 @@
 
 pkgname=qwtpolar
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Qwt library that contains classes for displaying values on a polar coordinate system'
 arch=('i686' 'x86_64')
 url='http://qwtpolar.sourceforge.net/'
 license=('custom:qwt')
 depends=('gcc-libs' 'glibc' 'qt5-base' 'qt5-svg' 'qwt')
+optdepends=('qt5-tools: For Designer plugin')
+makedepends=('qt5-tools')
 conflicts=('qwtpolar-qt5')
 provides=("qwtpolar-qt5=$pkgver")
 replaces=('qwtpolar-qt5')

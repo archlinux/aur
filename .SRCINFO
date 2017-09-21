@@ -1,16 +1,18 @@
 pkgbase = qwtpolar
 	pkgdesc = Qwt library that contains classes for displaying values on a polar coordinate system
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://qwtpolar.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = custom:qwt
+	makedepends = qt5-tools
 	depends = gcc-libs
 	depends = glibc
 	depends = qt5-base
 	depends = qt5-svg
 	depends = qwt
+	optdepends = qt5-tools: For Designer plugin
 	provides = qwtpolar-qt5=1.1.1
 	conflicts = qwtpolar-qt5
 	replaces = qwtpolar-qt5
