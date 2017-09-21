@@ -7,7 +7,7 @@ pkgname='ros-kinetic-interactive-markers'
 pkgver='1.11.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-visualization-msgs
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="interactive_markers-release-release-kinetic-interactive_markers-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/interactive_markers-release/archive/release/kinetic/interactive_markers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d55f1bcf8fb6c5ac5f0c112a7126be7cb310ba626cc2ccd4c256c99f657a8ae2')
+sha256sums=('ba4409ef114c440a1a2f007b1677ec2e4848777ad69762b5c44972cd142e8880')
 
 build() {
   # Use ROS environment variables
