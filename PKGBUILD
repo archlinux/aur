@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=cura-git
-pkgver=2.7.0.348.g90240af8
+pkgver=2.7.0.643.gf7d14c5b
 pkgrel=1
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker."
 arch=('any')
@@ -15,17 +15,12 @@ optdepends=('python-zeroconf: Detecting mDNS printers'
             'cura-binary-data-git: Firmwares and translations'
             'python-pyserial: USB printing'
             'cura-fdm-materials-git: Default Materials')
-source=('git+https://github.com/Ultimaker/Cura.git' 'site-packages-dir.patch')
-md5sums=('SKIP' '68ddf58623d21a736d1075099667bdef')
+source=('git+https://github.com/Ultimaker/Cura.git')
+md5sums=('SKIP')
 
 pkgver() {
   cd Cura
   git describe --tags | sed 's/-/./g'
-}
-
-prepare() {
-  cd Cura
-  patch -Np1 -i ../site-packages-dir.patch
 }
 
 build() {
