@@ -1,12 +1,11 @@
 pkgbase = jre
-	pkgdesc = Oracle Java Runtime Environment
-	pkgver = 8u144
+	pkgdesc = Oracle Java Runtime Environment Snapshot
+	pkgver = 9u0
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jre.install
-	arch = i686
 	arch = x86_64
-	license = custom
+	license = custom:Oracle
 	depends = ca-certificates-java
 	depends = hicolor-icon-theme
 	depends = java-runtime-common
@@ -14,36 +13,28 @@ pkgbase = jre
 	depends = xdg-utils
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for Gtk+ look and feel (desktop)
-	provides = java-runtime=8
-	provides = java-runtime-headless=8
-	provides = java-web-start=8
-	provides = java-runtime-jre=8
-	provides = java-runtime-headless-jre=8
-	provides = java-web-start-jre=8
-	provides = java-openjfx=8
-	backup = etc/java-jre8/amd64/jvm.cfg
-	backup = etc/java-jre8/images/cursors/cursors.properties
-	backup = etc/java-jre8/management/jmxremote.access
-	backup = etc/java-jre8/management/management.properties
-	backup = etc/java-jre8/security/java.policy
-	backup = etc/java-jre8/security/java.security
-	backup = etc/java-jre8/security/javaws.policy
-	backup = etc/java-jre8/content-types.properties
-	backup = etc/java-jre8/flavormap.properties
-	backup = etc/java-jre8/fontconfig.properties.src
-	backup = etc/java-jre8/logging.properties
-	backup = etc/java-jre8/net.properties
-	backup = etc/java-jre8/psfont.properties.ja
-	backup = etc/java-jre8/psfontj2d.properties
-	backup = etc/java-jre8/sound.properties
-	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
-	source = policytool-jre8.desktop
-	md5sums = b3c7031bc65c28c2340302065e7d00d3
-	md5sums = 762729fa0faba8ff2b5a29c249c95079
-	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jre-8u144-linux-i586.tar.gz
-	md5sums_i686 = 794e74d0395124337809dcc225c80411
-	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jre-8u144-linux-x64.tar.gz
-	md5sums_x86_64 = e3808f24d0f588b0c313fa18b50683c6
+	provides = java-runtime=9
+	provides = java-runtime-headless=9
+	provides = java-web-start=9
+	provides = java-runtime-jre=9
+	provides = java-runtime-headless-jre=9
+	provides = java-web-start-jre=9
+	provides = java-openjfx=9
+	backup = etc/java-jre9/management/jmxremote.access
+	backup = etc/java-jre9/management/management.properties
+	backup = etc/java-jre9/security/java.policy
+	backup = etc/java-jre9/security/java.security
+	backup = etc/java-jre9/security/javaws.policy
+	backup = etc/java-jre9/fontconfig.properties.src
+	backup = etc/java-jre9/logging.properties
+	backup = etc/java-jre9/net.properties
+	backup = etc/java-jre9/psfont.properties.ja
+	backup = etc/java-jre9/psfontj2d.properties
+	backup = etc/java-jre9/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jdk/9+181/jre-9_linux-x64_bin.tar.gz
+	source = policytool-jre9.desktop
+	sha256sums = abf54b9905850851ae5de10db1d664ca0625c79ccd505c5e3fc62f6d969424a2
+	sha256sums = de76dfab62f38b061fe3c99053451ed0d1b9971e892c44e7b893c604607e5694
 
 pkgname = jre
 
