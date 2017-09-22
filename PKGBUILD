@@ -5,7 +5,7 @@
 
 pkgname=gtk3-patched-filechooser-icon-view
 pkgver=3.22.21
-_patchver=4bd54b03cb9b36aeb5b6c9b9dd299484287a9e63
+_patchver=05788afcab61c684b200fe3859e4127b09f4d1d7
 pkgrel=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(i686 x86_64)
