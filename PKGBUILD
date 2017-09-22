@@ -1,11 +1,12 @@
-# Maintainer: wenLiangcan <boxeed at gmail dot com>
+# Maintainer: Giampaolo Mancini <mancho at trmpln dot com>
+# Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: Dustin Falgout <dustin@falgout.us>
 # Contributor: Gifts <gifts.antichat@gmail.com>
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-_buildver=171.4456.1432
-_pkgver=2017.1
+_buildver=172.4144.486
+_pkgver=2017.2
 _eap="True"
 pkgver="${_pkgver}.${_buildver}"
 pkgrel=1
@@ -21,7 +22,7 @@ provides=("rider")
 conflicts=("rider")
 groups=("development" "IDE" "editor" "jetbrains")
 
-_srcfile="Rider-RC-${_buildver}.tar.gz"
+_srcfile="JetBrains.Rider-${_pkgver}-${_buildver}.tar.gz"
 source=("https://download.jetbrains.com/resharper/${_srcfile}"
         "${pkgname}.desktop")
 sha256sums=($(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
@@ -35,7 +36,7 @@ package() {
         "${pkgdir}/usr/share/applications/"
 
     if [[ "True" = "${_eap}" ]]; then
-        cp -R --no-preserve=ownership "${srcdir}/rider-${_buildver}-RC/"* "${pkgdir}/opt/${pkgname}"
+        cp -R --no-preserve=ownership "${srcdir}/Rider-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
     # else
     fi
 
