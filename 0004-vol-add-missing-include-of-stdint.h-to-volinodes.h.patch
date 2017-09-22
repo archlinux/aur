@@ -1,4 +1,4 @@
-From f718c1e4de1254cdcaae5f06a257e3895d9de2a8 Mon Sep 17 00:00:00 2001
+From 0de03c2765139142e156550cabd4757da9958500 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <lass@mail.uni-paderborn.de>
 Date: Tue, 12 Sep 2017 19:33:15 +0200
 Subject: [PATCH 4/4] vol: add missing include of stdint.h to volinodes.h
