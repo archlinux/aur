@@ -1,16 +1,17 @@
 # Contributor: Ulf WInkelvos <ulf ät winkelvos dot de>
 # Former Maintainer: anonymous_user <31337h4ck3r at gmail dot com>
 # Former Maintainer: 3V0LU710N <db_eee at hotmail dot com>
-# Maintainer: nous at archlinux.us
+# Former Maintainer: nous at archlinux.us
+# Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=desktop-privileges
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of polkit rules to manage automounting of removable media, suspend and hibernate actions and CPU frequency settings."
 arch=('any')
 url="https://aur.archlinux.org/packages/desktop-privileges/"
 license=('GPL')
-depends=('polkit-consolekit' 'udisks2-nosystemd' 'upower' 'pm-utils')
+depends=('polkit' 'udisks2' 'upower' 'pm-utils')
 optdepends=('mate-power-manager-upower')
 conflicts=('polkit-automount-upower-rules')
 replaces=('polkit-automount-upower-rules')
@@ -24,7 +25,7 @@ true
 
 package() {
   install -dm755 "${pkgdir}/etc/polkit-1/"
-  install -dm700 "${pkgdir}/etc/polkit-1/rules.d/"
+  install -dm750 "${pkgdir}/etc/polkit-1/rules.d/"
   install -Dm644 *.rules ${pkgdir}/etc/polkit-1/rules.d/
 }
 
