@@ -3,11 +3,11 @@
 
 pkgname=python-euclid3
 pkgver=0.01
-pkgrel=2
+pkgrel=3
 pkgdesc="2D and 3D vector, matrix, quaternion and geometry module."
 arch=('any')
 license=('LGPL2.1')
-url="https://github.com/SolidCode/SolidPython"
+url="https://pypi.python.org/pypi/euclid3"
 makedepends=()
 depends=()
 source=("https://pypi.io/packages/source/e/euclid3/euclid3-${pkgver}.tar.gz")

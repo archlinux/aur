@@ -1,8 +1,8 @@
 pkgbase = python-euclid3
 	pkgdesc = 2D and 3D vector, matrix, quaternion and geometry module.
 	pkgver = 0.01
-	pkgrel = 2
-	url = https://github.com/SolidCode/SolidPython
+	pkgrel = 3
+	url = https://pypi.python.org/pypi/euclid3
 	arch = any
 	license = LGPL2.1
 	source = https://pypi.io/packages/source/e/euclid3/euclid3-0.01.tar.gz
