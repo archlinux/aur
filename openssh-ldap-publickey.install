@@ -7,4 +7,8 @@ post_upgrade() {
   post_install $1
 }
 
+post_remove() {
+  echo
+}
+
 # vim:set ts=2 sw=2 et:
