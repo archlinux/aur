@@ -1,7 +1,7 @@
 pkgbase = avro-cpp
 	pkgdesc = C++ implementation of the Apache Avro data serialization system
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://avro.apache.org/
 	arch = i686
 	arch = x86_64

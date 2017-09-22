@@ -1,7 +1,7 @@
 # Maintainer: Andrew Nelless <andrew at nelless dot net>
 pkgname='avro-cpp'
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 
 pkgdesc="C++ implementation of the Apache Avro data serialization system"
