@@ -6,8 +6,8 @@ pkgdesc="Simple Terminal Emulator"
 arch=("x86_64")
 url="https://github.com/vicr123/theterminal"
 license=('GPL2')
-depends=('xdg-utils' 'qtermwidget' 'qt5-base' 'qt5-x11extras')
-makedepends=('git' 'clang')
+depends=('xdg-utils' 'qtermwidget' 'qt5-base' 'qt5-x11extras' 'the-libs')
+makedepends=('git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theterminal#branch=master')
 md5sums=('SKIP')
 

@@ -6,11 +6,11 @@ pkgbase = theterminal
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = clang
 	depends = xdg-utils
 	depends = qtermwidget
 	depends = qt5-base
 	depends = qt5-x11extras
+	depends = the-libs
 	source = theterminal-2.1::git+https://github.com/vicr123/theterminal#branch=master
 	md5sums = SKIP
 
