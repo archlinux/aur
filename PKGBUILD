@@ -20,5 +20,5 @@ package()
 {
     install -d $pkgdir/usr/share/icons
     cd "$srcdir"
-    cp -r $pkgname-$pkgver.r$pkgrel $pkgdir/usr/share/icons/
+    cp -r $pkgname $pkgdir/usr/share/icons/
 }
