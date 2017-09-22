@@ -17,5 +17,5 @@ prepare() {
 package () {
         mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/"
         mv "$srcdir" "$pkgdir/usr/share/$pkgname"
-        ln -s "$pkgdir/usr/share/$pkgname/main.py" "$pkgdir/usr/bin/learnpdf"
+        ln -s "/usr/share/$pkgname/main.py" "$pkgdir/usr/bin/learnpdf"
 }
