@@ -3,7 +3,7 @@
 pkgname=armory-bin
 pkgver=0.96.3
 _binver=0.96.3-gcc5.4
-pkgrel=2
+pkgrel=1
 pkgdesc="Full-featured Bitcoin wallet management application (official binary)"
 arch=('x86_64')
 url="https://github.com/goatpig/BitcoinArmory"
