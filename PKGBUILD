@@ -3,7 +3,7 @@
 
 pkgname=quiterss-qt4
 _pkgname=QuiteRSS
-pkgver=0.18.4
+pkgver=0.18.8
 pkgrel=1
 pkgdesc='Fast and light RSS/Atom feed reader written on Qt/С++'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('qtwebkit' 'phonon-qt4' 'icu')
 makedepends=('cmake' 'gettext' 'automoc4')
 conflicts=('quiterss')
 source=("http://quiterss.org/files/$pkgver/$_pkgname-$pkgver-src.tar.gz")
-sha512sums=('effca5c2f187d8eb73838c2668a14bcf64dfd99c2e4a3f2f70fa344e9b74073e588477f74e1f5750d96f8bff7ee765306d5bf91aecd1c2155d60bf0c51e0e3e9')
+sha512sums=('a39913c0a4d1693032234d4a0ebf70905427c9938427027751af72535efa6973667e55c7e331f25c2de8733a6730b3e5e56c5addef510f85c343d61460319d23')
 
 build() {
   cd "$srcdir"
