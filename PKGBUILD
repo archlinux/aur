@@ -1,7 +1,7 @@
 #Maintainer: M0Rf30
 
 pkgname=soundcloud-dl-git
-pkgver=r185.7bde733
+pkgver=v1.3.3b1.r100.g5a41cf2
 pkgrel=1
 pkgdesc="Souncloud music downloader"
 url="https://github.com/flyingrub/scdl"
@@ -22,13 +22,12 @@ license=(GPL2)
 
 pkgver() {
 	cd $pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
 	cd $srcdir/$pkgname
 	python3 setup.py install --root="$pkgdir"
 }
-
 
 md5sums=('SKIP')
