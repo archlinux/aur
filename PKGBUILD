@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=todoman
-pkgver=3.2.1
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="A simple CalDav-based todo manager."
 arch=("any")
@@ -16,7 +16,7 @@ checkdepends=('python-pytest' 'python-hypothesis' 'python-pytest-runner'
 source=("https://github.com/pimutils/todoman/releases/download/v${pkgver}/todoman-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/pimutils/$pkgname/v$pkgver/bin/todo")
 noextract=("$pkgname-$pkgver-py3-none-any.whl")
-md5sums=('8c8f4d61a67b883aa5775e2e02e9bb7c'
+md5sums=('d970432621d1493ddd2c9fe591940421'
          '929003485379647ca3967f2b395dd6f7')
 
 build() {
@@ -27,9 +27,6 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  # Skip tests if pyicu is installed, since it makes tests fail:
-  python -c "import icu" 2> /dev/null && return
 
   export PYTHONPATH="${PYTHONPATH%:}:${PWD}"
   export TZ=UTC
