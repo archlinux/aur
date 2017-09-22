@@ -13,7 +13,7 @@ replaces=('python-home-assistant')
 makedepends=('python-setuptools')
 # NB: this package will install additional python packages in /var/lib/hass/lib depending on components present in the configuration files.
 depends=('python' 'python-pip' 'python-requests>=2.14.2' 'python-yaml' 'python-pytz>=2017.2'
-         'python-vincenty' 'python-jinja>=2' 'python-voluptuous>=0.9.3' 'python-netifaces'
+         'python-vincenty' 'python-voluptuous>=0.9.3' 'python-netifaces'
          'python-webcolors' 'python-async-timeout>=1.3.0' 'python-aiohttp>=2.2.5'
          'python-jinja>=2.9.5' 'python-yarl>=0.11.0' 'python-chardet>=3.0.4' 'python-astral')
 optdepends=('git: install component requirements from github'
@@ -34,8 +34,8 @@ install='hass.install'
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # typing package is a backport of standard library < 3.5
   # TODO remove in future versions https://github.com/home-assistant/home-assistant/issues/9525
+  # typing package is a backport of standard library < 3.5
   replace 'typing>=3,<4' '' setup.py
   replace 'aiohttp==2.2.5' 'aiohttp>=2.2.5' setup.py
   replace 'chardet==3.0.4' 'chardet>=3.0.4' setup.py
