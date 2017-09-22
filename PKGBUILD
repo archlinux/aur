@@ -7,7 +7,7 @@ pkgname='ros-kinetic-eigen-stl-containers'
 pkgver='0.1.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-cmake-modules
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="eigen_stl_containers-release-release-kinetic-eigen_stl_containers-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/eigen_stl_containers-release/archive/release/kinetic/eigen_stl_containers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a1462965b24806ba0cf25c558a5a559a78568dd0f22809f0d9fbe467ec6626aa')
+sha256sums=('c29f14419997cb09120b564b1463d281c1739739f93b43525f6677c363365b3c')
 
 build() {
   # Use ROS environment variables
