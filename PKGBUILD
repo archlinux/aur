@@ -1,5 +1,5 @@
 # By MBC (Matteo's Basic Computing)
-# Maintainer : Matteo Rossillol <mbasiccomputing@gmail.com>
+# Maintainer : Matteo Rossillol <mbasiccomputing(at)gmail(dot)com>
 
 
 _dname=navigraph-fms-data-manager
