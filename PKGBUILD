@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostic_common_diagnostics."
 url='http://ros.org/wiki/diagnostic_common_diagnostics'
 
 pkgname='ros-kinetic-diagnostic-common-diagnostics'
-pkgver='1.9.0'
+pkgver='1.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,6 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-kinetic-diagnostic-updater
   ros-kinetic-rospy
+  ros-kinetic-rostest
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
@@ -20,7 +21,8 @@ ros_depends=(ros-kinetic-diagnostic-updater
   ros-kinetic-rospy
   ros-kinetic-tf)
 depends=(${ros_depends[@]}
-  hddtemp)
+  hddtemp
+  python2-psutil)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/diagnostic_common_diagnostics/${pkgver}-${_pkgver_patch}
@@ -31,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="diagnostics-release-release-kinetic-diagnostic_common_diagnostics-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/kinetic/diagnostic_common_diagnostics/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a488870a43cbc655eb41e0f0a2ffaf3f410233918d37161f07f16491510bea87')
+sha256sums=('f7626ab9df831ce2dab76121bbd8f76474fba6f93e9195998379fd013bca42ab')
 
 build() {
   # Use ROS environment variables
