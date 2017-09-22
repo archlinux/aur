@@ -13,6 +13,7 @@ pkgbase = ts-qtplatform
 	depends = contemporary-icons
 	depends = qt5-multimedia
 	depends = contemporary-cursors
+	depends = libxcursor
 	source = ts-qtplatform-1.6::git+https://github.com/vicr123/ts-qtplatform#branch=master
 	md5sums = SKIP
 
