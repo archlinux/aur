@@ -4,7 +4,7 @@
 
 pkgname=newsboat
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc='RSS feed reader for the text console with special Podcast support'
 url=https://newsboat.org
 arch=('i686' 'x86_64')
@@ -19,14 +19,14 @@ sha512sums=('1d7efacd4614572fed490f828c8e70f31dd7d4897ff882a6a79cfbf8295909e24aa
 validpgpkeys=('B8B1756A0DDBF0760CE67CCF4ED6CD61932B9EBE') # Newsboat project
 
 build() {
-  cd $pkgname-r$pkgver
+  cd $pkgname-$pkgver
   ./config.sh
   make
   make doc
 }
 
 package() {
-  cd $pkgname-r$pkgver
+  cd $pkgname-$pkgver
 
   make prefix=/usr DESTDIR="$pkgdir" install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
