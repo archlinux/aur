@@ -7,7 +7,7 @@ pkgname='ros-kinetic-opencv3'
 pkgver='3.2.0'
 _pkgver_patch=4
 arch=('any')
-pkgrel=7
+pkgrel=8
 license=('BSD')
 
 ros_makedepends=()
@@ -49,7 +49,7 @@ depends=(${ros_depends[@]}
 _dir="opencv3-release-release-kinetic-opencv3-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/opencv3-release/archive/release/kinetic/opencv3/${pkgver}-${_pkgver_patch}.tar.gz"
 		cmake_fix.patch)
-sha256sums=('2e2e35fe81f5764915ec998eeb1a4fc82053b46862662bf2b291328436653237'
+sha256sums=('e8360d978bc0d0c878877e2748e5da219018b19a69b920649ea96a54ce05824d'
             '1549289a92fff0464bfa343756f15b087e625bdd3e6ac74674a5a75b7a15bfaf')
 
 prepare() {
