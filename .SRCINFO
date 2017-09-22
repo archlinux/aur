@@ -1,0 +1,18 @@
+pkgbase = rust-i586-git
+	pkgdesc = Rust for i586 machines without SSE2 (needs to be built on newer machines)
+	pkgver = 1.0.0.beta.r27177.ge2504cfc76
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = git
+	depends = llvm-libs
+	depends = gcc-libs
+	provides = rust
+	conflicts = rustup
+	source = rust-i586-git::git://github.com/rust-lang/rust.git
+	md5sums = SKIP
+
+pkgname = rust-i586-git
+

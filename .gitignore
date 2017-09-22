@@ -1,0 +1,7 @@
+src
+pkg
+rust-i586-git/
+*.tar
+*.tar.xz
+*.tar.gz
+*.log
