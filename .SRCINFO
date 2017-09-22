@@ -1,6 +1,6 @@
 pkgbase = openmw-git
 	pkgdesc = An open-source engine reimplementation for the role-playing game Morrowind.
-	pkgver = 0.37.0.280.g7796550
+	pkgver = 0.41.0.1240.g0e648222b
 	pkgrel = 1
 	url = http://www.openmw.org
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = openmw-git
 	depends = sdl2
 	depends = unshield
 	depends = libxkbcommon-x11
+	optdepends = openscenegraph-openmw-git: experimental performance enhancements for OpenMW that are too controversial to be included in the general purpose OSG project
 	provides = openmw
 	conflicts = openmw
 	source = git://github.com/openmw/openmw.git
