@@ -27,9 +27,9 @@ if [[ $_build = ? ]]; then
   source_i686=("firefox-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-i686/en-US/firefox-$_major.tar.bz2")
   source_x86_64=("firefox-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2")
 fi
-sha512sums=('865c832fe683f4ebeca7704058d56f834ec5d9d56391d31912cf4a928c56a268cf25064965cf8bbf935a45f638d0a8b24ffa744a47934e5ed8b8bb78883db4c0')
-sha512sums_i686=('')
-sha512sums_x86_64=('')
+sha256sums=('bf7fc4daf728dff72baedc91f6f54db3b9473a5bcef34fbc6e06af562a27c97d')
+sha256sums_i686=('093e2fa6e60b65af7830e8347a613e18fb9cc8c9ee94b9ea00fe0f134e2a1e16')
+sha256sums_x86_64=('78d1380f7aad75a05d02667fe71e9a03b7a7eb94152380af15085d16a6bd1c44')
 
 package() {
   # Create directories
