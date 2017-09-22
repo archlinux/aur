@@ -11,7 +11,8 @@ pkgver=${_major}b${_build}
 #pkgver=${_major}u${_minor}.b${_build}
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot"
-arch=('i686' 'x86_64')
+#arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://jdk.java.net/$_major/"
 license=('custom:Oracle')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-environment-common' 'java-runtime-common' 'nss' 'xdg-utils')
@@ -37,23 +38,24 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/psfont.properties.ja"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
-[[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("jconsole-$_jname.desktop"
+source=("http://download.java.net/java/GA/jdk${_major}/${_major}/binaries/${pkgname}-${_major}+${_build}_linux-x64_bin.tar.gz"
+        "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop"
         'LICENSE-Early-Adopter-Terms.txt')
-source_i686=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}+${_build}_linux-x86_bin.tar.gz")
-source_x86_64=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}+${_build}_linux-x64_bin.tar.gz")
-sha256sums=('76a1e9a15e13bd62d953c1a4806be7821b2b09d974b6ed622b6d85c8d6dfc8b2'
+#source_i686=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}+${_build}_linux-x86_bin.tar.gz")
+#source_x86_64=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}+${_build}_linux-x64_bin.tar.gz")
+sha256sums=('0afa4ff751925e039489b4690667aad746412567ffc71393d6a253001874e592'
+            '76a1e9a15e13bd62d953c1a4806be7821b2b09d974b6ed622b6d85c8d6dfc8b2'
             '9e557bacfc3b78272c71ccef8d3d45a2772e0f942eba0e16bfe86f6f59f4a5ab'
             'f5bf5f941a118d2db45a7e451e762e0f04ff38cea0f6674a09268daed09c4052'
             'e9735a8bb202e64a9e9a949d202932e7e92587b4354f768cd29ba8f322dbd013'
             'a8b0ecff3221f39c53092d910dfd903ff243a185835ad6d121abbbe82225d335')
-sha256sums_i686=('ba0c77644ece024cdb933571d79f0f035e91a9c9ab70de9c82446c9fbd000c97')
-sha256sums_x86_64=('2ef49c97ddcd5e0de20226eea4cca7b0d7de63ddec80eff8291513f6474ca0dc')
+#sha256sums_i686=('ba0c77644ece024cdb933571d79f0f035e91a9c9ab70de9c82446c9fbd000c97')
+#sha256sums_x86_64=('2ef49c97ddcd5e0de20226eea4cca7b0d7de63ddec80eff8291513f6474ca0dc')
 
 package() {
     cd ${_pkgname}-${_major}
