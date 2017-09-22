@@ -1,0 +1,7 @@
+[Unit]
+Description=rusty-keys keymapper service
+After=systemd-udevd.service
+
+[Install]
+WantedBy=default.target
+

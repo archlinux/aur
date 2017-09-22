@@ -1,0 +1,23 @@
+pkgbase = rusty-keys
+	pkgdesc = uinput level keyboard mapper for linux
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://code.moparisthebest.com/moparisthebest/rusty-keys
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	makedepends = cargo
+	makedepends = systemd
+	depends = libsystemd
+	source = rusty-keys-0.0.1.tar.gz::https://crates.io/api/v1/crates/rusty-keys/0.0.1/download
+	source = rusty-keys-0.0.1.tar.gz.asc::https://code.moparisthebest.com/attachments/97f6888b-df43-4e7c-a3f5-d4982b24341b
+	source = rusty-keys@.service
+	source = rusty-keys.target
+	validpgpkeys = 81F1C22DD41109D4A9C0A7B5B070F8D97D1A0BBA
+	sha256sums = f26dd1a1b2005b82929e6bc64966f545834a1f77c1ed9221f7de42a3d6c84239
+	sha256sums = SKIP
+	sha256sums = 4b8df8362d87c2aa31c028cf7aeaae109678f044f19be7ad2e492056e9d96b03
+	sha256sums = 70afa48c38901dd7de377f8ab4432806adeb944bd171df02091da617ed138862
+
+pkgname = rusty-keys
+

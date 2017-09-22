@@ -1,0 +1,9 @@
+[Unit]
+Description=rusty-keys keymapper service
+After=systemd-udevd.service
+
+[Service]
+ExecStart=/usr/bin/rusty-keys -c /etc/rusty-keys/keymap.toml -d /dev/input/%I
+
+[Install]
+WantedBy=rusty-keys.target
