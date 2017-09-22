@@ -14,7 +14,7 @@ conflicts=("$_pkgname")
 source=('git+git://github.com/AndriiGrytsenko/openssh-ldap-publickey'
         'openssh-ldap-publickey.install')
 sha256sums=('SKIP'
-            '6d278c4f8c5db66bb958cee64e54b40f96cd7ae410f4e89f41df54017164c4bf')
+            'ce5a0c98b60c8d422acfc706fa23b4ea66f9fc03ea599e0ccf032024a3267810')
 pkgver() {
   cd "$_pkgname"
   date '+%Y%m%d'
