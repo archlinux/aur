@@ -1,0 +1,14 @@
+pkgbase = ghoffline-git
+	pkgdesc = Check offline site in a repository of Github
+	pkgver = 9.c73bdc9
+	pkgrel = 1
+	url = https://tiagodanin.github.io/ghoffline/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	source = git://github.com/tiagodanin/ghoffline.git
+	md5sums = SKIP
+
+pkgname = ghoffline-git
+
