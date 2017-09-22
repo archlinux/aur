@@ -1,7 +1,7 @@
 # Maintainer: emersion <contact emersion.fr>
 pkgname=browserpass
 pkgver=1.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrome & Firefox browser extension for pass, a UNIX password manager"
 arch=('i686' 'x86_64')
 url="https://github.com/dannyvankooten/browserpass"
@@ -9,8 +9,15 @@ license=('MIT')
 depends=('pass')
 makedepends=('go')
 optdepends=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dannyvankooten/browserpass/releases/download/$pkgver/browserpass-src.tar.gz")
-md5sums=('06fc24f781b7b136e865d391eddd3ef8')
+source=(
+	"$pkgname-$pkgver.tar.gz::https://github.com/dannyvankooten/browserpass/releases/download/$pkgver/browserpass-src.tar.gz"
+	"$pkgname-$pkgver.tar.gz.sig::https://github.com/dannyvankooten/browserpass/releases/download/$pkgver/browserpass-src.tar.gz.sig"
+)
+md5sums=(
+	'06fc24f781b7b136e865d391eddd3ef8'
+	'ecf54114401d469fc1d96fd20f6086b0'
+)
+validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
 
 build() {
 	export GOPATH="$(pwd)/.go"
