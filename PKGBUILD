@@ -3,7 +3,8 @@
 pkgname=cartaodecidadao
 pkgver=2.4.0.4973
 _rev=${pkgver##*.}
-pkgrel=1
+_ver=${pkgver%.*}
+pkgrel=2
 pkgdesc="Portuguese Citizen Card Application"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -22,9 +23,13 @@ optdepends=('autenticacao-gov-pt: Necessário para autenticações online'
             'cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC'
             'ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)')
 
-source=("svn+https://svn.gov.pt/projects/ccidadao/repository/middleware-offline/tags/version${pkgver}-${_rev}/source/_src/eidmw")
+source=("svn+https://svn.gov.pt/projects/ccidadao/repository/middleware-offline/tags/version${_ver}-${_rev}/source/_src/eidmw"
+        "00-fix_certs_path.patch"
+        "01-fix_pteiddialogsQTsrv_path.patch")
 
-sha512sums=('SKIP')
+sha512sums=('SKIP'
+            '0c2e434ee00d0b0b3f40d32bd7926d43332d9b1a0adb8d1ef53bd0a357caff92765ab6081207051ef94b7e5ad6800031573bfdb5ed9b45c956414ab6e2f89571'
+            'f47e75015582fddd0e97995ec27103fd26e5c72e987dc927cbbc0cd152522579115f3853bf727f4090b4689861fc7a9803c00ce1776b701d2a595c692fed1eb2')
 
 prepare() {
 	chmod +x ${srcdir}/eidmw/configure
@@ -36,6 +41,10 @@ prepare() {
 	sed -i -e "s|local/||g" ${srcdir}/eidmw/pteid-poppler/poppler/Makefile
 
 	sed -i -e "/^INSTALLS/d" ${srcdir}/eidmw/eidmw.pro
+
+	cd ${srcdir}/eidmw
+	patch -p0 < ${srcdir}/00-fix_certs_path.patch
+	patch -p0 < ${srcdir}/01-fix_pteiddialogsQTsrv_path.patch
 }
 
 build() {
@@ -71,4 +80,7 @@ package() {
 
 	# Install MIME Types
 	install -Dm644 ${srcdir}/eidmw/debian/pteid-mw.sharedmimeinfo ${pkgdir}/usr/share/mime/packages/pteid-mw.xml
+
+	# Install certificates
+	install -Dm644 -t ${pkgdir}/usr/share/${pkgname}/certs/ ${srcdir}/eidmw/misc/certs/*
 }
