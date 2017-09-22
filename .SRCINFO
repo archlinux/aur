@@ -1,0 +1,21 @@
+pkgbase = jdk9-openj9-bin
+	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk9
+	pkgver = 9.181
+	pkgrel = 1
+	url = https://adoptopenjdk.net/index.html?variant=openjdk9-openj9
+	arch = x86_64
+	license = custom
+	makedepends = coreutils
+	makedepends = bash
+	depends = java-environment-common
+	depends = ca-certificates-utils
+	depends = nss
+	provides = java-environment=9
+	provides = java-runtime=9
+	provides = java-runtime-headless=9
+	noextract = jdk9-j9.tar.gz
+	source = jdk9-j9.tar.gz::https://github.com/AdoptOpenJDK/openjdk9-openj9-releases/releases/download/jdk-9%2B181/OpenJDK9-OPENJ9_x64_Linux_jdk-9.181.tar.gz
+	sha256sums = 74c7656a1f538476fe01471255e2d2bae57dfbd36cc6ab3bccb9c98b486c1a48
+
+pkgname = jdk9-openj9-bin
+
