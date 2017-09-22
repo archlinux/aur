@@ -222,64 +222,67 @@ _arch_specific_configure_options="\
     -no-rpath \
 "
 
-#-no-xcb \
-_exhaustive_static_specific_configure_options="\
-    -no-direct2d \
-    -no-directfb \
-    -no-eglfs \
-    -no-gbm \
-    -no-kms \
-    -no-linuxfb \
-    -no-mirclient \
-    -no-cups \
-    -no-iconv \
-    -no-accessibility \
-    -no-gif \
-    -skip qtconnectivity \
-    -skip qtlocation \
-    -skip qtremoteobjects \
-    -skip qtsvg \
-    -skip qtwebglplugin \
-    -skip qt3d \
-    -skip qtdatavis3d \
-    -skip qtmacextras
-    -skip qtscript \
-    -skip qttools \
-    -skip qtwebsockets \
-    -skip qtactiveqt
-    -skip qtmultimedia \
-    -skip qtscxml \
-    -skip qttranslations \
-    -skip qtwebview \
-    -skip qtandroidextras \
-    -skip qtdoc \
-    -skip qtnetworkauth \
-    -skip qtsensors \
-    -skip qtvirtualkeyboard \
-    -skip qtwinextras \
-    -skip qtgamepad \
-    -skip qtpurchasing
-    -skip qtserialbus \
-    -skip qtwayland \
-    -skip qtx11extras \
-    -skip qtcanvas3d \
-    -skip qtgraphicaleffects \
-    -skip qtquickcontrols \
-    -skip qtserialport \
-    -skip qtwebchannel \
-    -skip qtcharts \
-    -skip qtimageformats \
-    -skip qtquickcontrols2 \
-    -skip qtspeech \
-    -skip qtwebengine \
-    -no-sql-mysql \
-    -no-sql-psql \
-    -no-qml-debug \
-    -no-tslib \
-    -no-feature-bearermanagement \
-"
-
 if $_static_build; then
+    if $_target_host; then
+        _additional_configure_flags="$_additional_configure_flags -no-eglfs"
+    else
+        _additional_configure_flags="$_additional_configure_flags -no-xcb"
+    fi
+    _exhaustive_static_specific_configure_options="\
+        -no-direct2d \
+        -no-directfb \
+        -no-gbm \
+        -no-kms \
+        -no-linuxfb \
+        -no-mirclient \
+        -no-cups \
+        -no-iconv \
+        -no-accessibility \
+        -no-gif \
+        -skip qtconnectivity \
+        -skip qtlocation \
+        -skip qtremoteobjects \
+        -skip qtsvg \
+        -skip qtwebglplugin \
+        -skip qt3d \
+        -skip qtdatavis3d \
+        -skip qtmacextras
+        -skip qtscript \
+        -skip qttools \
+        -skip qtwebsockets \
+        -skip qtactiveqt
+        -skip qtmultimedia \
+        -skip qtscxml \
+        -skip qttranslations \
+        -skip qtwebview \
+        -skip qtandroidextras \
+        -skip qtdoc \
+        -skip qtnetworkauth \
+        -skip qtsensors \
+        -skip qtvirtualkeyboard \
+        -skip qtwinextras \
+        -skip qtgamepad \
+        -skip qtpurchasing
+        -skip qtserialbus \
+        -skip qtwayland \
+        -skip qtx11extras \
+        -skip qtcanvas3d \
+        -skip qtgraphicaleffects \
+        -skip qtquickcontrols \
+        -skip qtserialport \
+        -skip qtwebchannel \
+        -skip qtcharts \
+        -skip qtimageformats \
+        -skip qtquickcontrols2 \
+        -skip qtspeech \
+        -skip qtwebengine \
+        -no-sql-mysql \
+        -no-sql-psql \
+        -no-qml-debug \
+        -no-tslib \
+        -no-feature-bearermanagement \
+    "
+
     _additional_configure_flags="$_additional_configure_flags $_exhaustive_static_specific_configure_options"
 fi
 
