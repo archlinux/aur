@@ -1,0 +1,24 @@
+diff -Naur ./radiotray-ng-0.1.7.orig/CMakeLists.txt ./radiotray-ng-0.1.7/CMakeLists.txt
+--- ./radiotray-ng-0.1.7.orig/CMakeLists.txt	2017-09-21 21:13:04.449893764 -0400
++++ ./radiotray-ng-0.1.7/CMakeLists.txt	2017-09-21 21:12:46.776560740 -0400
+@@ -37,7 +37,6 @@
+ find_package(CURL      REQUIRED)
+ find_package(PkgConfig REQUIRED)
+ find_package(Boost     REQUIRED filesystem system log)
+-find_package(GMock)
+ 
+ pkg_search_module(JSONCPP     REQUIRED jsoncpp)
+ pkg_search_module(GSTREAMER   REQUIRED gstreamer-1.0)
+@@ -80,12 +79,6 @@
+     set(APPINDICATOR_FOUND false)
+ endif()
+ 
+-# gmock available?
+-if (GMOCK_FOUND)
+-	enable_testing()
+-	add_subdirectory(tests)
+-endif()
+-
+ add_subdirectory(src/radiotray-ng)
+ add_subdirectory(src/radiotray-ng/config)
+ add_subdirectory(src/radiotray-ng/playlist)
