@@ -1,0 +1,53 @@
+# arg 1:  the new package version
+# arg 2:  the old package versio
+
+# Set by PKGBUILD
+KERNEL_VERSION=4.13.1-1-gc3f9ab6ba936-dirty
+BOOT_DIR=/boot
+
+# Image file name must match with the name in the .preset file for mkinitcpio
+INITRAMFS_IMAGE=initramfs-linux
+
+# Packed image file name should match the default name in uboot-odroid package
+PACKED_INITRAMFS_IMAGE=${INITRAMFS_IMAGE}.img
+
+make_initrd() {
+  echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
+  mkinitcpio -p linux-odroid
+  mkimage -A arm -O linux -T ramdisk -C none \
+          -n "image ${source_archive}" \
+          -d ${BOOT_DIR}/${INITRAMFS_IMAGE} \
+          ${BOOT_DIR}/${PACKED_INITRAMFS_IMAGE} >/dev/null
+}
+
+post_install () {
+  # updating module dependencies
+  echo ">>> Updating module dependencies. Please wait ..."
+  depmod ${KERNEL_VERSION}
+  make_initrd
+  sync
+
+  echo ">>> Remeber to set root file system in /boot/uEnv.txt"
+}
+
+post_upgrade() {
+  if grep "^[^#]*[[:space:]]/boot" etc/fstab 2>&1 >/dev/null; then
+    if ! grep "[[:space:]]/boot" etc/mtab 2>&1 >/dev/null; then
+      echo "WARNING: /boot appears to be a seperate partition but is not mounted"
+      echo "         This is most likely not what you want.  Please mount your /boot"
+      echo "         partition and reinstall the kernel unless you are sure this is OK"
+    fi
+  fi
+
+  # updating module dependencies
+  echo ">>> Updating module dependencies. Please wait ..."
+  depmod ${KERNEL_VERSION}
+  make_initrd
+  sync
+
+  echo ">>> Remeber to set root file system in /boot/uEnv.txt"
+}
+
+post_remove() {
+  rm -f ${BOOT_DIR}/${INITRAMFS_IMAGE} ${BOOT_DIR}/${PACKED_INITRAMFS_IMAGE}
+}
