@@ -26,8 +26,6 @@ package() {
   mkdir -p "$pkgdir/usr/share/netExtender/icons"
   cd "$srcdir/netExtenderClient"
 
-  touch "$pkgdir/etc/arch-release"
-
   install -Dm 644 sslvpn "$pkgdir/etc/ppp/peers/sslvpn"
   install -Dm 755 netExtender "$pkgdir/usr/bin/netExtender"
   install -Dm 755 netExtenderGui "$pkgdir/usr/bin/netExtenderGui"
