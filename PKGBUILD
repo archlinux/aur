@@ -1,52 +1,74 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=cartaodecidadao
-pkgver=1.61.0
-pkgrel=3
+pkgver=2.4.0.4973
+_rev=${pkgver##*.}
+pkgrel=1
 pkgdesc="Portuguese Citizen Card Application"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
-license=('custom')
-depends=('qt4>=4.5.0' 'pcsclite>=1.5.0' 'openssl' 'ccid')
+license=('GPL2' 'LGPL3' 'custom:EUPL')
+depends=('java-runtime-openjdk'
+         'qt5-base'
+         'qt5-tools'
+         'pcsclite>=1.5.0'
+         'openssl-1.0'
+         'ccid'
+         'poppler-qt5'
+         'xerces-c'
+         'xml-security-c')
+makedepends=('swig')
 optdepends=('autenticacao-gov-pt: Necessário para autenticações online'
-			'cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC'
-			'ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)')
+            'cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC'
+            'ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)')
 
-source_x86_64=("https://www.autenticacao.gov.pt/documents/10179/11962/Aplica%C3%A7%C3%A3o+do+Cart%C3%A3o+de+Cidad%C3%A3o+%28Linux+-+Ubuntu+-+64+bits%29%20%28v.1.61.0%29%20Jan+2016/013924f5-dee7-4eeb-ac82-ef81e3db1dec")
-source_i686=("https://www.autenticacao.gov.pt/documents/10179/11962/Aplica%C3%A7%C3%A3o+do+Cart%C3%A3o+de+Cidad%C3%A3o+%28Linux+-+Ubuntu+-+32+bits%29%20%28v.1.61.0%29%20Jan+2016/e69e59f5-781d-4095-bdd4-9c1c8af8cb1a")
+source=("svn+https://svn.gov.pt/projects/ccidadao/repository/middleware-offline/tags/version${pkgver}-${_rev}/source/_src/eidmw")
 
-md5sums_i686=('115be572c30ccc35028bf878c4300b9e')
-md5sums_x86_64=('630442660ffc7419a6d8c82a40c1f8cc')
+sha512sums=('SKIP')
 
 prepare() {
-	tar -xf data.tar.xz
+	chmod +x ${srcdir}/eidmw/configure
+
+	sed -i -e "s|CFLAGS ?=|CFLAGS +=|g" ${srcdir}/eidmw/FreeImagePTEiD/Makefile.gnu
+	sed -i -e "s|CXXFLAGS ?=|CXXFLAGS +=|g" ${srcdir}/eidmw/FreeImagePTEiD/Makefile.gnu
+	sed -i -e "s|local/||g" ${srcdir}/eidmw/FreeImagePTEiD/Makefile.gnu
+
+	sed -i -e "s|local/||g" ${srcdir}/eidmw/pteid-poppler/poppler/Makefile
+
+	sed -i -e "/^INSTALLS/d" ${srcdir}/eidmw/eidmw.pro
+}
+
+build() {
+	cd ${srcdir}/eidmw
+
+	./configure  \
+		--prefix=/usr \
+		--include+="/usr/include/openssl-1.0/" \
+		--lib+="-L/usr/lib/openssl-1.0"  \
+
+	make
 }
 
 package() {
-	# Fix desktop files
-	sed -i -e "s|/local||g" ${srcdir}/usr/share/applications/*
-	sed -i -e "s|bin/images/app.png|share/pixmaps/cartaodecidadao.png|g" ${srcdir}/usr/share/applications/*
+	cd ${srcdir}/eidmw
 
-	# Move binaries out of local
-	cp -r ${srcdir}/usr/local/* ${srcdir}/usr/
-	rm -r ${srcdir}/usr/local
+	# Install programs and libraries
+	INSTALL_ROOT="$pkgdir" make install
+	install -Dm644 ${srcdir}/eidmw/misc/DSS/dss-standalone-app-3.0.4.jar ${pkgdir}/usr/share/${pkgname}/DSS/dss-standalone-app-3.0.4.jar
+	install -Dm644 ${srcdir}/eidmw/misc/DSS/config.properties ${pkgdir}/usr/share/${pkgname}/DSS/config.properties
 
-	# Move images to pixmaps
-	mkdir -p ${pkgdir}/usr/share/pixmaps/
-	mv ${srcdir}/usr/bin/images/app.png ${pkgdir}/usr/share/pixmaps/cartaodecidadao.png
+	# Install EUPL License
+	install -Dm644 ${srcdir}/eidmw/misc/licenses/License_pt.rtf ${pkgdir}/usr/share/licenses/${pkgname}/EUPL
 
-	# remove uneeeded stuff
-	rm -rf ${srcdir}/etc
-	rm ${srcdir}/usr/bin/arranque.sh
-	rm -rf ${srcdir}/usr/{local,}/bin/images
+	# Install desktop files
+	install -Dm644 ${srcdir}/eidmw/debian/pteid-mw-gui.desktop ${pkgdir}/usr/share/desktop/applications/pteid-mw-gui.desktop
+	install -Dm644 ${srcdir}/eidmw/debian/pteid-dss.desktop ${pkgdir}/usr/share/desktop/applications/pteid-dss.desktop
+	sed -i -e "s|local/bin|share/${pkgname}|g" ${pkgdir}/usr/share/desktop/applications/pteid-dss.desktop
 
-	# Fix some filenames
-	mv "${srcdir}/usr/share/applications/Aplicação da Área da Notificação.desktop" "${srcdir}/usr/share/applications/areadenotificacao.desktop"
-	mv "${srcdir}/usr/share/applications/Cartão de Cidadão.desktop"	"${srcdir}/usr/share/applications/cartaodecidadao.desktop"
+	# Install image files
+	install -Dm644 ${srcdir}/eidmw/debian/pteid-signature.png ${pkgdir}/usr/share/pixmaps/pteid-signature.png
+	install -Dm644 ${srcdir}/eidmw/debian/pteid-scalable.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/pteid-scalable.svg
 
-	# Add missing link to file
-	ln -sr ${srcdir}/usr/lib/libpteiddlg.so.1 ${srcdir}/usr/lib/libpteiddlg.so
-
-	# Move everything to install dir
-	cp -r ${srcdir}/usr* ${pkgdir}
+	# Install MIME Types
+	install -Dm644 ${srcdir}/eidmw/debian/pteid-mw.sharedmimeinfo ${pkgdir}/usr/share/mime/packages/pteid-mw.xml
 }

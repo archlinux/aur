@@ -1,22 +1,28 @@
 pkgbase = cartaodecidadao
 	pkgdesc = Portuguese Citizen Card Application
-	pkgver = 1.61.0
-	pkgrel = 3
+	pkgver = 2.4.0.4973
+	pkgrel = 1
 	url = http://www.cartaodecidadao.pt/
 	arch = i686
 	arch = x86_64
-	license = custom
-	depends = qt4>=4.5.0
+	license = GPL2
+	license = LGPL3
+	license = custom:EUPL
+	makedepends = swig
+	depends = java-runtime-openjdk
+	depends = qt5-base
+	depends = qt5-tools
 	depends = pcsclite>=1.5.0
-	depends = openssl
+	depends = openssl-1.0
 	depends = ccid
+	depends = poppler-qt5
+	depends = xerces-c
+	depends = xml-security-c
 	optdepends = autenticacao-gov-pt: Necessário para autenticações online
 	optdepends = cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC
 	optdepends = ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)
-	source_i686 = https://www.autenticacao.gov.pt/documents/10179/11962/Aplica%C3%A7%C3%A3o+do+Cart%C3%A3o+de+Cidad%C3%A3o+%28Linux+-+Ubuntu+-+32+bits%29%20%28v.1.61.0%29%20Jan+2016/e69e59f5-781d-4095-bdd4-9c1c8af8cb1a
-	md5sums_i686 = 115be572c30ccc35028bf878c4300b9e
-	source_x86_64 = https://www.autenticacao.gov.pt/documents/10179/11962/Aplica%C3%A7%C3%A3o+do+Cart%C3%A3o+de+Cidad%C3%A3o+%28Linux+-+Ubuntu+-+64+bits%29%20%28v.1.61.0%29%20Jan+2016/013924f5-dee7-4eeb-ac82-ef81e3db1dec
-	md5sums_x86_64 = 630442660ffc7419a6d8c82a40c1f8cc
+	source = svn+https://svn.gov.pt/projects/ccidadao/repository/middleware-offline/tags/version2.4.0.4973-4973/source/_src/eidmw
+	sha512sums = SKIP
 
 pkgname = cartaodecidadao
 
