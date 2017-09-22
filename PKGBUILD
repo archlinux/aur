@@ -7,6 +7,7 @@ pkgdesc='Unit conversion tool and library written in rust'
 arch=('x86_64')
 url=https://github.com/tiffany352/rink-rs
 license=('Custom:MPLv2' 'GPL3')
+depends=('gcc-libs' 'gmp' 'openssl')
 makedepends=('rust')
 source=("rink-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'https://github.com/tiffany352/rink-rs/commit/b91f9c1031fc39e298d25efde8b27f26f1061542.patch')
