@@ -7,7 +7,7 @@
 # mupen64plus component receives a new commit.
 
 pkgname=mupen64plus-git
-pkgver=2.5.r477.g138625a.20170819.230455
+pkgver=2.5.r518.g9caf564.20170922.044119
 pkgrel=1
 pkgdesc='Nintendo64 Emulator (git version)'
 arch=('i686' 'x86_64')
