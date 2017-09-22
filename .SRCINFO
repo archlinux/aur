@@ -1,5 +1,5 @@
 pkgbase = jre
-	pkgdesc = Oracle Java Runtime Environment Snapshot
+	pkgdesc = Oracle Java Runtime Environment
 	pkgver = 9u0
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
