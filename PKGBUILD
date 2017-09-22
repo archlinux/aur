@@ -14,17 +14,17 @@ optdepends=('konsole: For the Konsole color scheme'
             'adapta-gtk-theme: Matching GTK theme')
 makedepends=('git' 'make')
 conflicts=('adapta-kde' 'adapta-aurorae-theme-git')
-source=("git+https://github.com/PapirusDevelopmentTeam/${gitname}.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${gitname}"
+  cd ${srcdir}/${gitname}
 
   git log -1 --format="%cd" --date=short | tr -d '-'
   
 }
 
  package() {
-  make -C "${srcdir}/${gitname}" DESTDIR="${pkgdir}/" install
+  make -C ${srcdir}/${gitname} DESTDIR=${pkgdir}/ install
 }
 
