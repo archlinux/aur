@@ -5,7 +5,7 @@
 
 pkgname=openafs-modules
 _srcname=openafs
-pkgver=1.6.21
+pkgver=1.6.21.1
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
@@ -15,11 +15,9 @@ depends=('openafs')
 makedepends=('linux-headers')
 conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
-source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
-        0001-Linux-4.13-use-designated-initializers-where-require.patch)
+source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2)
 install=openafs-modules.install
-sha256sums=('ba9c1f615edd53b64fc271ad369c49a816acedca70cdd090975033469a84118f'
-            '84e8686a04e27edfc040fccfa7fd2553eb2cfd1e0f254741b8da0018bdee4b55')
+sha256sums=('aed896b0f598e3033e9ceb2a1eae24addff9ec0bb2d713ab63945a449ded3a5a')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -28,9 +26,6 @@ _kernelver=$(cat ${_extramodules}/version)
 
 prepare() {
   cd ${srcdir}/${_srcname}-${pkgver}
-
-  # Fix build with Linux 4.13
-  patch -p1 < ${srcdir}/0001-Linux-4.13-use-designated-initializers-where-require.patch
 
   # Only needed when changes to configure were made
   # ./regen.sh -q
