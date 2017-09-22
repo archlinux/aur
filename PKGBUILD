@@ -1,29 +1,26 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: beest <gnubeest at zoho dot com>
+# Contributor: Alexander F Rødseth <xyproto at archlinux dot org>
 
 pkgname=ski
-pkgver=6.9
+pkgver=6.12
 pkgrel=1
-pkgdesc='Ski game for the console'
+pkgdesc='A hotdogging game, evade the deadly Yeti on your jet-powered skis.'
 arch=('any')
-depends=('python2')
+depends=('python')
+makedepends=('xmlto')
 url='http://www.catb.org/esr/ski/'
 license=('GPL')
-options=('zipman')
 source=("http://www.catb.org/esr/ski/ski-$pkgver.tar.gz")
-md5sums=('6ccf2ebcc74d75d7d434cb22875f4032')
+sha256sums=('2f34f64868deb0cc773528c68d9829119fac359c44a704695214d87773df5a33')
 
 build() {
-  cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
 
-  sed 's:python:python2:' -i ski
+    make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
 
-  install -Dm644 ski.6 "$pkgdir/usr/share/man/man6/ski.6"
-  install -Dm755 ski "$pkgdir/usr/bin/ski"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    make DESTDIR="$pkgdir/" install
 }
-
-# vim:set ts=2 sw=2 et:

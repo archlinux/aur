@@ -1,14 +1,14 @@
 pkgbase = ski
-	pkgdesc = Ski game for the console
-	pkgver = 6.9
+	pkgdesc = A hotdogging game, evade the deadly Yeti on your jet-powered skis.
+	pkgver = 6.12
 	pkgrel = 1
 	url = http://www.catb.org/esr/ski/
 	arch = any
 	license = GPL
-	depends = python2
-	options = zipman
-	source = http://www.catb.org/esr/ski/ski-6.9.tar.gz
-	md5sums = 6ccf2ebcc74d75d7d434cb22875f4032
+	makedepends = xmlto
+	depends = python
+	source = http://www.catb.org/esr/ski/ski-6.12.tar.gz
+	sha256sums = 2f34f64868deb0cc773528c68d9829119fac359c44a704695214d87773df5a33
 
 pkgname = ski
 
