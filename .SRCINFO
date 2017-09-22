@@ -1,0 +1,16 @@
+pkgbase = edi
+	pkgdesc = EFL based IDE.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://www.enlightenment.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = efl
+	depends = bear
+	provides = edi
+	source = http://download.enlightenment.org/rel/apps/edi/edi-0.5.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = edi
+
