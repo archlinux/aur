@@ -1,7 +1,7 @@
 _pkgbase=r8168
 pkgname=${_pkgbase}-dkms
-pkgver=8.044.02
-pkgrel=3
+pkgver=8.045.08
+pkgrel=1
 pkgdesc="A kernel module for Realtek 8168 network cards"
 url="http://www.realtek.com.tw"
 license=("GPL")
@@ -11,15 +11,16 @@ conflicts=("${_pkgbase}")
 optdepends=('linux-headers: Needed for build the module for Arch kernel'
 	'linux-lts-headers: Needed for build the module for LTS Arch kernel'
 	'linux-zen-headers: Needed for build the module for ZEN Arch kernel')
-source=(https://github.com/mtorromeo/r8168/archive/$pkgver/r8168-$pkgver.tar.gz
-        'dkms.conf' 
-        linux-4.11.patch)
+#source=(https://github.com/mtorromeo/r8168/archive/$pkgver/r8168-$pkgver.tar.gz
+source=(http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0010-r8168-8.045.08.tar.bz2
+        'dkms.conf') 
+#        linux-4.11.patch)
 install=r8168-dkms.install
 
-prepare() {
-	cd "r8168-$pkgver"
-	patch -p1 -i "$srcdir/linux-4.11.patch"
-}
+#prepare() {
+#	cd "r8168-$pkgver"
+#	patch -p1 -i "$srcdir/linux-4.11.patch"
+#}
  
 
 package() {
@@ -33,6 +34,5 @@ package() {
 	rm src/Makefile_linux24x
 	cp -dr --no-preserve='ownership' src "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/src"
 }
-sha256sums=('aad7bccc4f625c35abe0455b2a6271e9938b76b46e11b24b4f138eb5c95db6d3'
-            '260d8142e944f3144cbc704534e662d427318d8b32dc7a2852a855be72e8d763'
-            '21857077bd5b26a08456f97f170b2772e8cadfb331577ddb2bcb680b31c5c0d3')
+sha256sums=('29a17aa12b80786cf016799bbe01da8fdd8ee0a4e90b18e740935d81046ec74d'
+            '260d8142e944f3144cbc704534e662d427318d8b32dc7a2852a855be72e8d763')
