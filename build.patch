@@ -1,0 +1,44 @@
+diff --git a/src/build/build-info b/src/build/build-info
+index ddc9d77..979fa14 100755
+--- a/src/build/build-info
++++ b/src/build/build-info
+@@ -11,7 +11,7 @@ if 'MACOSX_DEPLOYMENT_TARGET' in os.environ:
+ from distutils import sysconfig as sc
+ 
+ import sipconfig
+-from PyQt4 import pyqtconfig
++#from PyQt4 import pyqtconfig
+ 
+ def main():
+     parser = argparse.ArgumentParser()
+@@ -55,8 +55,7 @@ def python_site(args):
+ 
+ 
+ def pyqt4_sip(args):
+-    pkg_cfg = pyqtconfig._pkg_config
+-    return pkg_cfg['pyqt_sip_dir']
++    return os.path.join(sipconfig.Configuration().default_sip_dir, 'PyQt4')
+ 
+ 
+ def sip_inc(args):
+diff --git a/src/SeExprEditor/CMakeLists.txt b/src/SeExprEditor/CMakeLists.txt
+index 33c6cab..2b98580 100644
+--- a/src/SeExprEditor/CMakeLists.txt
++++ b/src/SeExprEditor/CMakeLists.txt
+@@ -13,9 +13,11 @@
+ # You may obtain a copy of the License at
+ # http://www.apache.org/licenses/LICENSE-2.0
+ 
++set(Python_ADDITIONAL_VERSIONS 2.7 2.6 2.5 2.4)
+ find_package(PythonInterp)
+ find_package(PythonLibs)
+ 
++if(PYTHONLIBS_FOUND)
+ macro(get_build_info NAME STORAGE)
+     execute_process(
+         COMMAND ${PYTHON_EXECUTABLE} ${PROJECT_SOURCE_DIR}/src/build/build-info ${NAME}
+@@ -118,3 +120,4 @@ ENDIF(WIN32)
+             DESTINATION ${CMAKE_INSTALL_PYTHON})
+ 
+ endif(QT4_FOUND)
++endif(PYTHONLIBS_FOUND)
