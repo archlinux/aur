@@ -1,0 +1,14 @@
+pkgbase = python-learnpdf
+	pkgdesc = LearnPDF is a file crawler and downloader for Moodle APIs
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/liamdiprose/LearnPDF
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python>3.3
+	depends = python-requests>2.0
+
+pkgname = python-learnpdf
+
