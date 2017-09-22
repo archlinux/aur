@@ -2,8 +2,8 @@
 
 pkgbase=decred
 pkgname=('dcrd' 'dcrwallet')
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
 groups=('decred')
@@ -12,8 +12,8 @@ license=('ISC')
 options=('!strip' '!emptydirs')
 source=(dcrd-$pkgver.tar.gz::https://codeload.github.com/decred/dcrd/tar.gz/v$pkgver
         dcrwallet-$pkgver.tar.gz::https://codeload.github.com/decred/dcrwallet/tar.gz/v$pkgver)
-sha256sums=('de56c6d89f7cfc608c588e60e42b656087b00143078ece25ba5308a66be7e2d3'
-            '68976c3417f926b4ae5b23c1f4f068e7431449c0c5ccb5b61610b014a73792cb')
+sha256sums=('bc5a565e9b60880b54548fe7857ad2e09c8ceda59f123351701815576ec08d90'
+            '26c91f38e293e739dc833472e89f37255e9bde809882c09d7126338aaf2d7796')
 
 prepare() {
   export GOPATH="$srcdir"
