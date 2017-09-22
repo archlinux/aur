@@ -5,6 +5,4 @@
 !chromium-dev.install
 !chromium-dev.svg
 !chromium-widevine-r1.patch
-!minizip.patch
-!chromium-intel-vaapi_r2.patch
 !chromium-blink-gcc7-r2.patch

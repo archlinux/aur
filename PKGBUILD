@@ -17,7 +17,7 @@ _debug_mode=0    # Build in debug mode.
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=63.0.3213.3
+pkgver=63.0.3218.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
@@ -77,18 +77,17 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc5-r2.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r19.patch'
         # Misc Patches
-        'minizip.patch'
         'chromium-intel-vaapi_r14.patch.base64::https://chromium-review.googlesource.com/changes/532294/revisions/d60511c973e432b97d9929dcfbd77c9af25dbd51/patch?download'
         'https://raw.githubusercontent.com/sjnewbury/gentoo-playground/master/www-client/chromium/files/chromium-intel-vaapi-fix.patch'
-        'https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/master/debian/patches/specify-max-resolution.patch'
         # Patch from crbug (chromium bugtracker) or Arch chromium package
         'breakpad-use-ucontext_t.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/breakpad-use-ucontext_t.patch?h=packages/chromium'
         'chromium-gcc-r1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-gcc-r1.patch?h=packages/chromium'
         'chromium-blink-gcc7-r2.patch' # https://bugs.chromium.org/p/chromium/issues/detail?id=614289
         'chromium-widevine-r1.patch'
-        'c++17.patch::https://github.com/google/crc32c/commit/d0f929a5db87cb34d03afb0d8e8bfc95b8f786e3.patch'
         'chromium-gn-bootstrap-r18.patch.base64::https://chromium-review.googlesource.com/changes/667107/revisions/a6c6d28e705b834664c2ea6688b89c2c106204ae/patch?download'
+        'use_sysroot_false.patch.base64::https://chromium-review.googlesource.com/changes/670745/revisions/79cd919891958c00e8d8b87b504d478cc0eb437b/patch?download'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -97,18 +96,17 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             # Patch form Gentoo
             'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
             'd44b90fc7313afaa6d6f77cde72c0e9a5e4a1cc792216cbca2ed45c39658c472'
+            '034b06ab8a9f09414b823564e0d7d2c46e542eb9dce36bbafdb26ea581a72178'
             # Misc Patches
-            '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             '1974fb5891b6a620113e9527026faa5af771042841ef7b8016ef74e0eaabc926'
             'a688de2b3a7183ebf9eb25108b0d28a8c6228cc71c8e3519062a51224f5b3488'
-            '46eb584fc844e62a3e7bde19ac449698616c9373b23962b6d98e814ab73fe9c0'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
             '11cffe305dd49027c91638261463871e9ecb0ecc6ecc02bfa37b203c5960ab58'
             'fab4c65e2802e709a32d059784182be5a89bc3ca862a7e27810714ea7b86f868'
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
-            '35435e8dae76737baafecdc76d74a1c97281c4179e416556e033a06a31468e6d'
             '08a5678998a96679a02fcc1b9473e98b4563aa57b3eaa7b444ed2941ab6acd7d'
+            '24e97e38421ac8ad474c37408d2a92c3385bee86fda8d578a54f24cc9af10c7f'
             )
 options=('!strip')
 install=chromium-dev.install
@@ -399,20 +397,16 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r2.patch"
-  base64 -d "${srcdir}/chromium-gn-bootstrap-r18.patch.base64" | patch -p1 -i -
   patch -p1 -i "${srcdir}/chromium-gcc5-r2.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r19.patch"
 
   # Misc Patches:
-  patch -p1 -i "${srcdir}/minizip.patch"
-  patch -d third_party/crc32c/src -p1 -i "${srcdir}/c++17.patch"
 
   # Apply VAAPI patch
   base64 -d "${srcdir}/chromium-intel-vaapi_r14.patch.base64" > chromium-intel-vaapi_r14.patch
   sed '39,50d' -i chromium-intel-vaapi_r14.patch
   patch -Np1 -i chromium-intel-vaapi_r14.patch
   patch -p1 -i "${srcdir}/chromium-intel-vaapi-fix.patch"
-  patch -p1 -i "${srcdir}/specify-max-resolution.patch"
-  sed 's|chromium-browser|chromium-dev|' -i media/gpu/vaapi_wrapper.h
 
   if [ "${_vulkan}" = "1" ]; then
     export VULKAN_SDK="/usr"
@@ -430,6 +424,9 @@ prepare() {
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
+
+  # Fix fail build
+  base64 -d "${srcdir}/use_sysroot_false.patch.base64" | patch -p1 -i -
 
   # Setup nodejs dependency
   mkdir -p third_party/node/linux/node-linux-x64/bin/
@@ -451,13 +448,8 @@ prepare() {
   msg2 "Removing unnecessary components to save space."
   python2 build/linux/unbundle/remove_bundled_libraries.py ${_keeplibs[@]} --do-remove
 
-  # Can lead fail
-  rm -fr native_client/toolchain
-  rm -fr build/linux/debian*
-
   msg2 "Make sure use Python2"
-  find . -name '*.py' -exec sed -r 's|/usr/bin/python$|&2|g' -i {} +
-  find . -name '*.py' -exec sed -r 's|/usr/bin/env python$|&2|g' -i {} +
+  find -name '*.py' | xargs sed -e 's|env python|&2|g' -e 's|bin/python|&2|g' -i
 
   msg2 "Changing bundle libraries to system ones."
   python2 build/linux/unbundle/replace_gn_files.py --system-libraries ${_use_system[@]}
