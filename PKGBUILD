@@ -3,7 +3,7 @@
 
 pkgname=lix-git
 pkgver=r973.a2b7c3f
-pkgrel=2
+pkgrel=3
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
@@ -68,7 +68,7 @@ package()
 	install -Dm644 "${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
 	
 	cd "${pkgname%-git}"
-	install -Dm644 "data/images/app_icon.I.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${pkgname%-git}.png"
+	install -Dm644 "data/images/lix_logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
 	install -Dm644 "doc/copying.txt" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 	install -Dm755 "bin/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
 	

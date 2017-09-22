@@ -1,73 +1,68 @@
-* commit a2b7c3fe224eea7cbff8e2dc647f3541d9b8e95d
-| Author: SimonN <eiderdaus@gmail.com>
-| Date:   Tue Sep 5 03:52:24 2017 +0200
+* commit 9f99d65bfe566e1ea9edae6805060036f5ef9fd3
+| Author: Lucki <Lucki@holarse-linuxgaming.de>
+| Date:   Fri Sep 22 17:09:04 2017 +0200
 | 
-|     0.8.5
-| 
-* commit 2e35c3cc363d6bb3fb004a51e6cc261b5a05811c
-| Author: SimonN <eiderdaus@gmail.com>
-| Date:   Sat Sep 9 02:32:29 2017 +0200
-| 
-|     fix #224: don't interpret grouped tiles as anim
-| 
-* commit 6c459cb86f6c3b02fd0d95ab62796f5483899c06
-| Author: SimonN <eiderdaus@gmail.com>
-| Date:   Fri Sep 8 18:49:24 2017 +0200
-| 
-|     fix: newly-inserted tile rounds to grid
-| 
-* commit 5406122244f7814ea26ee4b5ce5651156a05e4d0
-| Author: SimonN <eiderdaus@gmail.com>
-| Date:   Mon Sep 4 04:41:15 2017 +0200
-| 
-|     levels: hanging gardens 3p, 6p
-| 
-* commit 883af44817dfb7f11acde5c9d8860f4915fab64b
-| Author: SimonN <eiderdaus@gmail.com>
-| Date:   Fri Sep 8 00:19:03 2017 +0200
-| 
-|     part of #216: button to flash own goals
-| 
-* commit 7b571e601d0bbb90a686e869f3c60b16c0f14948
-| Author: SimonN <eiderdaus@gmail.com>
-| Date:   Tue Sep 5 03:52:24 2017 +0200
-| 
-|     optimized Lixxie/Jobs by packing into structs
-| 
-* commit dcc6321d387cfb82e54f4ca4435cd0b82d60c697
-| Author: SimonN <eiderdaus@gmail.com>
-| Date:   Thu Aug 31 18:11:53 2017 +0200
-| 
-|     fix #211: FHS-friendly, opt. build with XDG dirs
+|     Add logo
 |     
-|     To build Lix self-contained:
-|             dub, or dub -b release
+|     fix #223
 |     
-|     To build Lix following the XDG Base Directory specification:
-|             dub -b releaseXDG
+|     File is an identical-looking, filesize-reduced version of the SVG in
+|     Lucki's pull request. Many thanks!
+| 
+* commit 5d215d85639dfc167efa29af6a697066776e5b1b
+| Author: geoo89 <geoo89@gmail.com>
+| Date:   Wed Sep 20 23:08:47 2017 +0200
+| 
+|     new and updated multiplayer levels by geoo
+| 
+* commit 5060ea4245bb7b39929dfd8affc23b9f130a7656
+| Author: Simon Naarmann <s.naarmann@gmail.com>
+| Date:   Tue Sep 19 16:43:47 2017 +0200
+| 
+|     0.8.7, fix too common skill-empty beeps
 |     
-|     Linux package maintainers, please see `doc/build/package.txt'
-|     for a longer description of this build flag.
+|     Have 2 miners in the skillset. Have a walking lix. Assign miner. Click
+|     again. This second click will not assign miner, but beep as if we were
+|     out of skills. It shouldn't beep. This is fixed now.
 | 
-* commit 0bc1eeb7a599579b401ddb664bd503bd5f1dec6a
+* commit 986ee1192c07ab8ea3a513f9a9477829ac198253
 | Author: SimonN <eiderdaus@gmail.com>
-| Date:   Mon Sep 4 17:28:02 2017 +0200
+| Date:   Sun Sep 10 16:44:46 2017 +0200
 | 
-|     enforce bitmap creation, not assert
+|     0.8.6
 | 
-* commit a939d73e85d1d4b16d4e6d8b6f4e49ba3bae4a09
+* commit 5e0ff5217d91aba253f5b72d1006f1bbafa8d232
 | Author: SimonN <eiderdaus@gmail.com>
-| Date:   Sun Sep 3 00:54:01 2017 +0200
+| Date:   Sat Sep 9 17:54:19 2017 +0200
 | 
-|     fix #162: options menu warns about duplicate keys
-|     
-|     All KeyButtons with duplicate bindings have red text.
-|     It's perfectly fine to have these, but the user shall
-|     at least know that he has bound a key to two functions.
-|     This red text, never deleting binds, seems least intrusive.
+|     Rubix's race maps, Eater Island, Diagonal 8p
 | 
-* commit 4e4751a6d7c1bf2f5bfe44b66fc0528f423958f5
+* commit b8a823fc851dcfc04b136f17bbd1099df067b2ff
+| Author: Simon Naarmann <s.naarmann@gmail.com>
+| Date:   Tue Sep 19 11:00:53 2017 +0200
+| 
+|     fix #228: edge-scroll only when mouse in window
+| 
+* commit 8bf44788cbafe2a1c73a1a31e9aa33bb99656973
+| Author: Simon Naarmann <s.naarmann@gmail.com>
+| Date:   Tue Sep 19 10:42:39 2017 +0200
+| 
+|     fix #227: lobby player list buttons bled over
+| 
+* commit ddf70cd3b06d598f27e5cbd1d39f05eeca71fc80
+| Author: Simon Naarmann <s.naarmann@gmail.com>
+| Date:   Mon Sep 18 01:12:46 2017 +0200
+| 
+|     fix #229: hotkey of empty skill deselects skill
+| 
+* commit 2174f8576e1524e39cfdaf2ddafba8c0ed8185b7
 | Author: SimonN <eiderdaus@gmail.com>
-| Date:   Mon Aug 28 06:51:34 2017 +0200
+| Date:   Sat Sep 16 04:05:50 2017 +0200
 | 
-|     0.8.4
+|     ballpark-guessing VRAM, often undershoots
+| 
+* commit 26e44df2f2d9c46243ee5c23296fd477f277cd04
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Thu Sep 14 03:44:47 2017 +0200
+| 
+|     show phyus next to fps
