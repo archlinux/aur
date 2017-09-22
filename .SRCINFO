@@ -8,6 +8,8 @@ pkgbase = ts-polkitagent
 	makedepends = git
 	depends = polkit-qt5
 	depends = qt5-base
+	depends = the-libs
+	depends = qt5-x11extras
 	source = ts-polkitagent-1.4::git+https://github.com/vicr123/ts-polkitagent#branch=master
 	md5sums = SKIP
 
