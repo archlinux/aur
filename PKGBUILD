@@ -15,7 +15,7 @@ depends=("zlib" "mesa" "libxcb" "glibc>=2.19")
 source=("http://download.navigraph.com/software/fmsdatamanager/$_dname-$pkgver.$arch.rpm"
         "COPYING")
 md5sums=('bebed1bb93388714867552326caa1ce0'
-         'bb50f767914fa907cfc7244e5544077e')
+         '804bbe7a45a6d49e01d71c8e684e6f4c')
 
 package()
 {
