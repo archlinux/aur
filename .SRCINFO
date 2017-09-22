@@ -1,5 +1,5 @@
 pkgbase = jdk
-	pkgdesc = Oracle Java Development Kit Snapshot
+	pkgdesc = Oracle Java Development Kit
 	pkgver = 9u0
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
