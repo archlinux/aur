@@ -8,6 +8,7 @@ pkgdesc='Weather app for the terminal'
 url=https://github.com/schachmat/wego
 arch=('x86_64')
 license=('ISC')
+depends=('glibc')
 makedepends=('git' 'go')
 source=("wego-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
 sha512sums=('f7c0d2da770ff311c62c4ab9e539edbd785ac21dbf7578d281876e621bb933c5ed168597d209c5140e686e3f27df5a3d89a87a49cc42298dd5af2c29fe03d09a')
