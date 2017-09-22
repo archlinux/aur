@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
 pkgname=vapoursynth-editor-git
-pkgver=r8.54.g98002cc
+pkgver=r16.115.ga450665
 pkgrel=1
 pkgdesc="A simple program for edit/create VapourSynth scripts. (GIT version)"
 arch=('i686' 'x86_64')
@@ -10,8 +10,6 @@ url='http://forum.doom9.org/showthread.php?p=1688477'
 license=('CCPL' 'MIT' 'LGPL')
 depends=('qt5-base'
          'vapoursynth'
-         'desktop-file-utils'
-         'hicolor-icon-theme'
          )
 makedepends=('git')
 provides=('vapoursynth-editor')
@@ -19,9 +17,9 @@ conflicts=('vapoursynth-editor')
 source=('git+https://bitbucket.org/mystery_keeper/vapoursynth-editor.git'
         'vsedit.desktop'
         )
-sha1sums=('SKIP'
-          '33df6813bdcceb3e11a094576515812f9df7eff6'
-          )
+sha256sums=('SKIP'
+            '7c73f873a970bb295be8fdcf8ef570ef9bb812232b3cc2dce79b42c57c742623'
+            )
 
 pkgver() {
   cd vapoursynth-editor
@@ -42,7 +40,7 @@ package() {
 
   cd "vapoursynth-editor/build/release-${_arch}bit-gcc"
   install -Dm755 vsedit "${pkgdir}/usr/bin/vsedit"
-  install -Dm644 vsedit.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/vsedit.svg"
+  install -Dm644 vsedit.svg "${pkgdir}/usr/share/pixmaps/vsedit.svg"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README "${pkgdir}/usr/share/doc/vsedit/README"
 }
