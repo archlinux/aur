@@ -2,7 +2,7 @@
 
 pkgname=moolticute-git
 _pkgname="${pkgname%-git}"
-pkgver=0.6.2.r7.g42caf55
+pkgver=0.9.8.r2.g2d985db
 pkgrel=1
 pkgdesc="Easy companion for Mooltipass device"
 arch=('x86_64' 'i686')
@@ -13,11 +13,15 @@ conflicts=("${_pkgname}")
 depends=('libusb'
          'mooltipass-udev'
          'qt5-base'
-         'qt5-websockets')
+         'qt5-websockets'
+         'hicolor-icon-theme')
 makedepends=('git'
-             'make')
-source=("git+${url}.git")
-sha256sums=('SKIP')
+             'make'
+             'qt5-tools')
+source=("git+${url}.git"
+        'moolticute.sysusers')
+sha256sums=('SKIP'
+           'a0cb3d71b107359efc6807b0b728a1abc4c9c3a2d908db63cf9d59f0c659022c')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -29,6 +33,8 @@ prepare() {
     cd "${srcdir}/${_pkgname}"
 
     sed -i "s/#define APP_VERSION \"git\"/#define APP_VERSION \"git-${pkgver}\"/" ./src/version.h
+    # sed -i 's/#User=nobody/User=moolticute/' ./systemd/moolticuted.service
+    # sed -i 's/#Group=plugdev/Group=moolticute/' ./systemd/moolticuted.service
 }
 
 build() {
@@ -49,4 +55,6 @@ package() {
     cd "${srcdir}/${_pkgname}/build/"
 
     make INSTALL_ROOT="${pkgdir}/" install
+
+    # install -Dm644 ../../moolticute.sysusers "${pkgdir}/usr/lib/sysusers.d/moolticute.conf"
 }
