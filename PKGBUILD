@@ -6,7 +6,7 @@ url="https://www.iotatoken.com/"
 arch=('any')
 license=('GPL')
 depends=("java-runtime")
-makedepends=("java-environment" "maven")
+makedepends=("java-environment>=8" "maven")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iotaledger/iri/archive/v$pkgver.tar.gz")
 md5sums=('3f4bd184c2f197a58c5506274c54f388')
  

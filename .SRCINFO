@@ -5,7 +5,7 @@ pkgbase = iri
 	url = https://www.iotatoken.com/
 	arch = any
 	license = GPL
-	makedepends = java-environment
+	makedepends = java-environment>=8
 	makedepends = maven
 	depends = java-runtime
 	source = iri-1.3.2.2.tar.gz::https://github.com/iotaledger/iri/archive/v1.3.2.2.tar.gz
