@@ -5,7 +5,7 @@
 BUILD_SELINUX=false
 
 pkgname=389-ds-base
-pkgver=1.3.7.3
+pkgver=1.4.0.0
 pkgrel=1
 pkgdesc="389 Directory Server (base)"
 arch=(i686 x86_64)
@@ -26,8 +26,8 @@ backup=(etc/default/dirsrv
         etc/dirsrv/config/template-initconfig)
 options=(!libtool)
 install=${pkgname}.install
-source=("http://www.port389.org/binaries/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('1f1fa3cbe44af3cdbb205fc49790ccdf66d9653849c537a8c32b57477fb66b91697c1da58112aa0bacfdcdf2a7925365904dc7f4488ece258159c5c74f850aba')
+source=("https://releases.pagure.org/389-ds-base/${pkgname}-${pkgver}.tar.bz2")
+sha512sums=('bfb64abeae5217b6877eea984b87a4d135078df1c5da667a602e4906b88da0efeba660a83ccaad4cd51e131f475b3acb11d2d9de759279113dc642cedfba1940')
 
 build() {
   cd "${pkgname}-${pkgver}"
