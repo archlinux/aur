@@ -1,7 +1,7 @@
 # Maintainer: Tomas Jasek <tomsik68(at)gmail(dot)com>
 
 pkgname="papyrus"
-pkgver="2.0.2"
+pkgver="3.0.0"
 pkgrel=1
 pkgdesc="Graphical editing tool for UML based on eclipse."
 arch=('i686' 'x86_64')
@@ -17,10 +17,10 @@ backup=()
 options=()
 install=
 changelog=
-_eclipsever="neon"
+_eclipsever="oxygen"
 source_i686=("http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/mdt/papyrus/rcp/${_eclipsever}/${pkgver}/papyrus-${_eclipsever}-${pkgver}-linux32.tar.gz")
-md5sums_i686=('55ab4ea4cc6da06fbdea4e2659f49498')
-md5sums_x86_64=('6304576c21d5560f9dd1d112e7c4364b')
+md5sums_i686=('608176cd672d425ce4d21f9cf2cf0149')
+md5sums_x86_64=('dcf605876567afcfd5d1a3a7ce617e5b')
 source_x86_64=("http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/mdt/papyrus/rcp/${_eclipsever}/${pkgver}/papyrus-${_eclipsever}-${pkgver}-linux64.tar.gz")
 noextract=()
 
