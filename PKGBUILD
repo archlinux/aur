@@ -1,5 +1,5 @@
 # By MBC (Matteo's Basic Computing)
-# Maintainer : Matteo Rossillol <mbasiccomputing@gmail.com>
+# Maintainer : Matteo Rossillol <mbasiccomputing(at)gmail(dot)com>
 
 
 _CompName=zfw-module-330r3
@@ -13,8 +13,8 @@ license=('GPL3')
 groups=('MBC')
 depends=('qt5-base')
 makedepends=('gcc' 'qt5-base')
-install=Script.install
-validpgpkeys=('94832C0DBAC3B295A91C5F4081D2921276951309')   # Mattéo Rossillol
+install=script.install
+validpgpkeys=('2AAD360C4E62BF09D814B4B5E5CB73CCC1ACB118')   # Mattéo Rossillol-Laruelle
 source=("https://github.com/CompFile/My_AUR_PKG/raw/master/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz"{,.sig})
 md5sums=('8821e0f5f7ae086238760b2eb90c10bf'
          'SKIP')
