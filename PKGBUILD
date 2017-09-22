@@ -1,10 +1,10 @@
-# Maintainer: dudemanguy <random342@openmailbox.org>
+# Maintainer: dudemanguy <random342@airmail.cc>
 # Contributor: Vaporeon <vaporeon@tfwno.gf>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gtk2-patched-filechooser-icon-view
 pkgver=2.24.31
-_patchver=96d5d611d0a2e586f50e7accb7fbb6aaf44f7940
+_patchver=37f99d6e77b6c083fe57ba7bc06cd75b3c42f8e2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="GTK2 patched with ahodesuka's filechooser-icon-view patch."
@@ -21,15 +21,16 @@ license=('LGPL')
 install=gtk2.install
 _commit=09c0b9c8a0f3dad599c179829ffb3a2e81f6efde
 source=("git://git.gnome.org/gtk+#commit=$_commit"
-        https://gist.github.com/Dudemanguy911/d70734d5bdf82e79cbfb22894fac8a1b/raw/$_patchver/gtk2-filechooser-icon-view.patch
         gtkrc
         gtk-query-immodules-2.0.hook
-        xid-collision-debug.patch)
+        xid-collision-debug.patch
+        https://gist.github.com/Dudemanguy911/d70734d5bdf82e79cbfb22894fac8a1b/raw/$_patchver/gtk2-filechooser-icon-view.patch)
+
 sha256sums=('SKIP'
-            'c79c596c7b56b4df44885da7111799b1c56ec77357daec9f81a17276bef2826f'
             'b77a427df55a14182c10ad7e683b4d662df2846fcd38df2aa8918159d6be3ae2'
             '9656a1efc798da1ac2dae94e921ed0f72719bd52d4d0138f305b993f778f7758'
-            'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558')
+            'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558'
+            'cd2e48443de19377c802b74ec024d6d8fefacb1539ed51cf643250b889877b27')
 pkgver() {
     cd gtk+
     git describe --tags | sed 's/-/+/g'
