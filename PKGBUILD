@@ -35,7 +35,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  sed -i 's/^lua\b/luajit/' build-utils/lgi-check.sh
   sed -i 's/COMMAND lua\b/COMMAND luajit/' awesomeConfig.cmake tests/examples/CMakeLists.txt
   sed -i 's/LUA_COV_RUNNER lua\b/LUA_COV_RUNNER luajit/' tests/examples/CMakeLists.txt
 }
