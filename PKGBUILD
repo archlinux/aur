@@ -4,7 +4,7 @@
 pkgname=zfs-auto-snapshot
 pkgdesc="Implementation of a snapshotting service for ZFS"
 pkgver=1.2.1.1
-pkgrel=0
+pkgrel=1
 arch=('any')
 url="https://github.com/zfsonlinux/zfs-auto-snapshot"
 license=('GPL2')
