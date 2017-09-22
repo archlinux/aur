@@ -2,8 +2,8 @@
 Name=ODrive
 GenericName=Google Drive
 Comment=Google Drive GUI
-Exec=/usr/bin/odrive/odrive
-Path=/usr/bin/odrive/
+Exec=/usr/share/odrive/odrive
+Path=/usr/share/odrive/
 Icon=odrive-bin
 Terminal=false
 Type=Application
