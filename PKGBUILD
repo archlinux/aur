@@ -49,7 +49,7 @@ build() {
 }
 
 package_projectm-git() {
-  pkgdesc='Music visualizer which uses 3D accelerated iterative image based rendering'
+  pkgdesc='Music visualizer which uses 3D accelerated iterative image based rendering (git version)'
   depends=('ftgl' 'glew' 'libgl')
   conflicts=('projectm')
   provides=('projectm')
@@ -59,7 +59,7 @@ package_projectm-git() {
 }
 
 package_projectm-libvisual-git() {
-  pkgdesc='ProjectM plugin for XMMS'
+  pkgdesc='ProjectM plugin for XMMS (git version)'
   depends=('projectm' 'libvisual' 'gcc-libs')
   provides=('libvisual-projectm' 'projectm-libvisual')
   conflicts=('projectm-libvisual')
@@ -68,7 +68,7 @@ package_projectm-libvisual-git() {
 }
 
 package_projectm-pulseaudio-git() {
-  pkgdesc='ProjectM support for Pulseaudio'
+  pkgdesc='ProjectM support for Pulseaudio (git version)'
   depends=('projectm-qt' 'pulseaudio')
   conflicts=('projectm-pulseaudio')
   provides=('projectm-pulseaudio')
@@ -78,7 +78,7 @@ package_projectm-pulseaudio-git() {
 
 # JACK support is broken upstream atm
 package_projectm-jack-git() {
-  pkgdesc='ProjectM support for Jack'
+  pkgdesc='ProjectM support for Jack (git version)'
   depends=('projectm-qt' 'jack')
   conflicts=('projectm-jack')
   provides=('projectm-jack')
@@ -87,7 +87,7 @@ package_projectm-jack-git() {
 }
 
 package_projectm-qt-git() {
-  pkgdesc='Qt bindings for ProjectM'
+  pkgdesc='Qt bindings for ProjectM (git version)'
   depends=('projectm' 'qt4' 'libgl')
   conflicts=('projectm-qt')
   provides=('projectm-qt')
@@ -96,7 +96,7 @@ package_projectm-qt-git() {
 }
 
 package_projectm-test-git() {
-  pkgdesc='ProjectM test applications'
+  pkgdesc='ProjectM test applications (git version)'
   depends=('projectm' 'sdl' 'libgl')
   conflicts=('projectm-test')
   provides=('projectm-test')
