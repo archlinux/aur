@@ -8,13 +8,13 @@
 
 _gitname=projectm
 pkgbase=projectm-git
-pkgname=('projectm-git' 'projectm-libvisual-git' 'projectm-pulseaudio-git' 'projectm-qt-git' 'projectm-test-git')
+pkgname=('projectm-git' 'projectm-libvisual-git' 'projectm-pulseaudio-git' 'projectm-qt-git' 'projectm-test-git' 'projectm-jack-git')
 pkgver=1392.b6e7beae
 pkgrel=1
 arch=('x86_64' 'i686')
 url='http://projectm.sourceforge.net/'
 license=('LGPL')
-makedepends=('mesa-libgl' 'qt4' 'cmake' 'ftgl' 'glew' 'gtkglext' 'libvisual' 'sdl' 'libxext' 'pulseaudio')
+makedepends=('mesa-libgl' 'qt4' 'cmake' 'ftgl' 'glew' 'gtkglext' 'libvisual' 'sdl' 'libxext' 'pulseaudio' 'jack')
 source=("git+https://github.com/projectM-visualizer/${_gitname}.git"
 		'projectm-install-vera-ttf.patch')
 sha256sums=('SKIP'
@@ -43,7 +43,7 @@ build() {
 	-DINCLUDE-PROJECTM-QT=ON \
 	-DINCLUDE-PROJECTM-TEST=ON \
 	-DINCLUDE-PROJECTM-PULSEAUDIO=ON \
-    -DINCLUDE-PROJECTM-JACK=OFF \
+    -DINCLUDE-PROJECTM-JACK=ON \
     "../${_gitname}"
   make
 }
@@ -76,7 +76,6 @@ package_projectm-pulseaudio-git() {
   DESTDIR="$pkgdir" install -Dm644 "${srcdir}/${_gitname}/src/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# JACK support is broken upstream atm
 package_projectm-jack-git() {
   pkgdesc='ProjectM support for Jack (git version)'
   depends=('projectm-qt' 'jack')
