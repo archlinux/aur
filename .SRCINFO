@@ -1,0 +1,20 @@
+pkgbase = zulu-jdk
+	pkgdesc = Zulu JVM built upon OpenJDK 8
+	pkgver = 8u144b01
+	pkgrel = 1
+	url = http://zulu.org/
+	arch = x86_64
+	license = GPL2
+	depends = java-runtime-common
+	depends = ca-certificates-java
+	depends = java-environment-common
+	provides = java-runtime=8
+	provides = java-runtime-headless=8
+	provides = java-environment=8
+	provides = java-runtime-openjdk=8
+	provides = java-runtime-headless-jre=8
+	provides = java-environment-openjdk=8
+	source = http://cdn.azul.com/zulu/bin/zulu8.23.0.3-jdk8.0.144-linux_x64.tar.gz
+
+pkgname = zulu-jdk
+
