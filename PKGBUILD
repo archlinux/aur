@@ -3,7 +3,7 @@
 pkgname=caffe-cpu
 _srcname=caffe
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (cpu only)"
 arch=('i686' 'x86_64')
 url="http://caffe.berkeleyvision.org/"
