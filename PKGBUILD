@@ -24,6 +24,18 @@ build() {
       -e 's@^(SNAPGLOB="\$)(opt_prefix)(.*})([?]+)@\1{\2}\4\3@' \
       src/zfs-auto-snapshot.sh
 
+  ### Fix --fast mode sorting improperly when the patch above is applied
+  patch -p1 -N <<'EOF'
+--- a/src/zfs-auto-snapshot.sh
++++ b/src/zfs-auto-snapshot.sh
+@@ -375,3 +375,3 @@ if [ -n "$opt_fast_zfs_list" ]
+ then
+-	SNAPSHOTS_OLD=$(env LC_ALL=C zfs list -H -t snapshot -o name -s name|grep $opt_prefix |awk '{ print substr( $0, length($0) - 14, length($0) ) " " $0}' |sort -r -k1,1 -k2,2|awk '{ print substr( $0, 17, length($0) )}') \
++	SNAPSHOTS_OLD=$(env LC_ALL=C zfs list -H -t snapshot -o name -s name | grep $opt_prefix | sort -t'@' -k2r,2 -k1,1) \
+	  || { print_log error "zfs list $?: $SNAPSHOTS_OLD"; exit 137; }
+EOF
+
+
   mkdir -p systemd
   ### "Label|NumberOfKeptSnapshots|systemd-timer-spec" of snapshots,
   ### eg. timer and service files, being created adjust/extend if required
