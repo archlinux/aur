@@ -9,6 +9,8 @@ pkgbase = tsscreenlock
 	depends = tscheckpass
 	depends = qt5-base
 	depends = qt5-multimedia
+	depends = qt5-x11extras
+	depends = qt5-svg
 	source = tsscreenlock-2.0::git+https://github.com/vicr123/tsscreenlock#branch=master
 	md5sums = SKIP
 
