@@ -6,8 +6,8 @@ pkgdesc="Audio Player based on Phonon"
 arch=("x86_64")
 url="https://github.com/vicr123/thebeat"
 license=('GPL3')
-depends=('libmusicbrainz5' 'xdg-utils' 'phonon-qt5'  'qt5-base' 'taglib')
-makedepends=('git' 'clang')
+depends=('libmusicbrainz5' 'xdg-utils' 'phonon-qt5'  'qt5-base' 'taglib' 'the-libs')
+makedepends=('git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/thebeat.git')
 md5sums=('SKIP')
 
