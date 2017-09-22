@@ -1,7 +1,7 @@
 pkgbase = rusty-keys
 	pkgdesc = uinput level keyboard mapper for linux
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.moparisthebest.com/moparisthebest/rusty-keys
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = rusty-keys
 	makedepends = cargo
 	makedepends = systemd
 	depends = libsystemd
+	backup = etc/rusty-keys/keymap.toml
 	source = rusty-keys-0.0.1.tar.gz::https://crates.io/api/v1/crates/rusty-keys/0.0.1/download
 	source = rusty-keys-0.0.1.tar.gz.asc::https://code.moparisthebest.com/attachments/97f6888b-df43-4e7c-a3f5-d4982b24341b
 	source = rusty-keys@.service

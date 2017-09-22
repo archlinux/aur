@@ -2,13 +2,14 @@
 
 pkgname=rusty-keys
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="uinput level keyboard mapper for linux"
 url="https://code.moparisthebest.com/moparisthebest/rusty-keys"
 makedepends=('cargo' 'systemd')
 depends=('libsystemd')
 arch=('i686' 'x86_64')
 license=('AGPL')
+backup=('etc/rusty-keys/keymap.toml')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download"
         "$pkgname-$pkgver.tar.gz.asc::https://code.moparisthebest.com/attachments/97f6888b-df43-4e7c-a3f5-d4982b24341b"
         'rusty-keys@.service'
