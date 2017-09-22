@@ -1,7 +1,7 @@
 
 # Maintainer: LighDot <lightdot -a-t- g m a i l>
 pkgname=lgeneral
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A turn-based strategy engine heavily inspired by Panzer General (pg-data and kukgen-data included)"
 arch=('i686' 'x86_64')
@@ -16,20 +16,12 @@ source=(
  "http://downloads.sourceforge.net/${pkgname}/pg-data.tar.gz"
  "http://downloads.sourceforge.net/${pkgname}/kukgen-data-1.1.tar.gz")
 md5sums=(
- 'a5c039c1ebc3f4ac24280db1bef2d31a'
+ '88d2b4a13d61fd0feaa9d55932a8804a'
  '40c4be23f60d1dc732aabe13b58fc5e3'
  '5a9755bdb2ae0a94910c093c5feafd61')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    # patch for https://sourceforge.net/p/lgames/bugs/78/
-    sed -i 's;$(mkinstalldirs) $(flagsdir);$(mkinstalldirs) $(DESTDIR)$(flagsdir);g' 'src/gfx/flags/Makefile.am'
-    sed -i 's;$(mkinstalldirs) $(terraindir);$(mkinstalldirs) $(DESTDIR)$(terraindir);g' 'src/gfx/terrain/Makefile.am'
-    sed -i 's;$(mkinstalldirs) $(unitsdir);$(mkinstalldirs) $(DESTDIR)$(unitsdir);g' 'src/gfx/units/Makefile.am'
-    # patch for https://sourceforge.net/p/lgames/bugs/79/
-    sed -i 's;AC_INIT(Makefile.am);AC_INIT(lgeneral,1.4.0)\
-AC_CONFIG_SRCDIR(Makefile.am);g' 'configure.in'
-    sed -i 's;AM_INIT_AUTOMAKE(lgeneral,1.4.0);AM_INIT_AUTOMAKE;g' 'configure.in'
     ./configure --prefix=/usr
     make
 }
