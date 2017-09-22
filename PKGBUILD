@@ -7,8 +7,8 @@ pkgdesc="Take a Break"
 arch=('i686' 'x86_64')
 license=('AGPL3')
 depends=('python' 'wmctrl' 'xprintidle' 'notify-osd')
-url=(https://launchpad.net/takeabreak)
-source=(http://ppa.launchpad.net/vlijm/takeabreak/ubuntu/pool/main/t/takeabreak/takeabreak_$pkgver.orig.tar.gz)
+url="https://launchpad.net/takeabreak"
+source=("http://ppa.launchpad.net/vlijm/takeabreak/ubuntu/pool/main/t/takeabreak/takeabreak_$pkgver.orig.tar.gz")
 
 md5sums=('d0f2be28d5e543e9ccbc64827e2d21db')
 
