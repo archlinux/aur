@@ -6,7 +6,7 @@
 
 pkgname=netextender
 pkgver=8.6.801
-pkgrel=1
+pkgrel=2
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('i686' 'x86_64')
 url="http://www.sonicwall.com/us/en/products/324.html"
@@ -22,6 +22,8 @@ DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o
 package() {
   mkdir -p "$pkgdir/usr/share/netExtender/icons"
   cd "$srcdir/netExtenderClient"
+
+  touch /etc/arch-release
 
   install -Dm 644 sslvpn "$pkgdir/etc/ppp/peers/sslvpn"
   install -Dm 755 netExtender "$pkgdir/usr/bin/netExtender"
