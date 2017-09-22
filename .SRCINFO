@@ -1,14 +1,14 @@
 pkgbase = dotgit-git
 	pkgdesc = Development version of dotgit
 	pkgver = 26.06.2017
-	pkgrel = 5
-	url = http://github.com/Cube777/dotgit
+	pkgrel = 6
+	url = http://github.com/kobus-v-schoor/dotgit
 	arch = any
 	depends = git
 	depends = bash
 	depends = gnupg
 	conflicts = dotgit
-	source = git+https://github.com/Cube777/dotgit.git
+	source = git+https://github.com/kobus-v-schoor/dotgit.git
 	md5sums = SKIP
 
 pkgname = dotgit-git

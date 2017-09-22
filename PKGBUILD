@@ -1,13 +1,13 @@
 # Maintainer: Kobus van Schoor <pbscube at gmail dot com>
 pkgname=dotgit-git
 pkgver=26.06.2017
-pkgrel=5
+pkgrel=6
 pkgdesc="Development version of dotgit"
-url="http://github.com/Cube777/dotgit"
+url="http://github.com/kobus-v-schoor/dotgit"
 arch=('any')
 depends=('git' 'bash' 'gnupg')
 conflicts=('dotgit')
-source=('git+https://github.com/Cube777/dotgit.git')
+source=('git+https://github.com/kobus-v-schoor/dotgit.git')
 md5sums=('SKIP')
 
 package()
