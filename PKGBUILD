@@ -2,14 +2,14 @@
 # Maintainer: kryptxy <kryptxy@protonmail.com>
 
 pkgname=torrench
-pkgver=1.0.51
+pkgver=1.0.53
 pkgrel=1
 pkgdesc="Command-line torrent search program"
 arch=('any')
 url="https://github.com/kryptxy/torrench"
 license=('GPL')
 depends=("python-tabulate" "python-setuptools" "python-beautifulsoup4" "python-lxml" "python-requests" 
-"python-colorama")
+"python-colorama" "python-pyperclip" "xclip")
 provides=("torrench")
 conflicts=("torrench")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")

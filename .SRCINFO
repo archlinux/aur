@@ -1,6 +1,6 @@
 pkgbase = torrench
 	pkgdesc = Command-line torrent search program
-	pkgver = 1.0.51
+	pkgver = 1.0.53
 	pkgrel = 1
 	url = https://github.com/kryptxy/torrench
 	arch = any
@@ -11,9 +11,11 @@ pkgbase = torrench
 	depends = python-lxml
 	depends = python-requests
 	depends = python-colorama
+	depends = python-pyperclip
+	depends = xclip
 	provides = torrench
 	conflicts = torrench
-	source = torrench-1.0.51.tar.gz::https://github.com/kryptxy/torrench/archive/v1.0.51.tar.gz
+	source = torrench-1.0.53.tar.gz::https://github.com/kryptxy/torrench/archive/v1.0.53.tar.gz
 	md5sums = SKIP
 
 pkgname = torrench
