@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0d3d5eeaf..4eb39a8f3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -662,11 +662,6 @@ install (
+     DESTINATION .
+ )
+ 
+-install (
+-    CODE "FILE (MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/images)"
+-    CODE "FILE (MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/images/autosave)"
+-)
+-
+ install (
+     DIRECTORY
+         "sandbox/tests/unit benchmarks"

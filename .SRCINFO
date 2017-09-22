@@ -1,0 +1,27 @@
+pkgbase = appleseed-git
+	pkgdesc = physically-based global illumination rendering engine primarily designed for animation and visual effects.
+	pkgver = 1.7.0.beta.r719.g7ebe81fc2
+	pkgrel = 1
+	url = http://appleseedhq.net
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = python2
+	depends = qt4
+	depends = seexpr>=2.11
+	depends = boost
+	depends = openexr
+	depends = opencolorio
+	depends = openimageio
+	depends = openshadinglanguage
+	depends = xerces-c
+	depends = zlib
+	source = appleseed-git::git+https://github.com/appleseedhq/appleseed.git
+	source = cmake.extra.install.dirs.remove.patch
+	md5sums = SKIP
+	md5sums = d4ca0164563a11be1608c3e5f957c684
+
+pkgname = appleseed-git
+
