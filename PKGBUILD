@@ -25,3 +25,5 @@ package() {
 	ln -sf /etc/ssl/certs/java/cacerts "$pkgdir/usr/lib/jvm/$pkgname/jre/lib/security/cacerts"
 }
 
+md5sums=('6ecd67688407b9f7e45c2736f003398b')
+sha512sums=('9ddbf47569494b3a2a6bba229e4a090b01b706389adb376a6470838a53e2266febbfb2a9ebc720873ce3c9b190b3bd9b8ac4ac45c124b527fea1b31b5c06d701')
