@@ -1,12 +1,12 @@
 # Maintainer: Kobus van Schoor <v dot schoor dot kobus at gmail dot com>
 pkgname=dotgit
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A comprehensive solution to managing your dotfiles"
-url="http://github.com/Cube777/dotgit"
+url="http://github.com/kobus-v-schoor/dotgit"
 arch=('any')
 depends=('git' 'bash' 'gnupg')
-source=('git+https://github.com/Cube777/dotgit.git')
+source=('git+https://github.com/kobus-v-schoor/dotgit.git')
 md5sums=('SKIP')
 
 prepare()
