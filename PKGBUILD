@@ -11,12 +11,12 @@ license=('GPL2')
 depends=('qt5-base' 'kauth' 'knotifications' 'polkit' 'hicolor-icon-theme' 'dnscrypt-proxy' 'systemd')
 makedepends=('cmake' 'extra-cmake-modules' 'desktop-file-utils')
 conflicts=('dnscrypt-proxy-gui-git')
-source=("https://github.com/F1ash/dnscrypt-proxy-gui/archive/$pkgver.tar.gz")
+source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('4b103500fb260d1837e80b1dec1513df4def8dfddd0df08db380c04df31fb11c')
 
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd ${srcdir}/${pkgname}-${pkgver}
 
   mkdir build && cd build
 
@@ -29,8 +29,8 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/build"
+  cd ${srcdir}/${pkgname}-${pkgver}/build
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR=${pkgdir} install
 }
 
