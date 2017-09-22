@@ -2,7 +2,7 @@
 # Maintainer: Isaac Curtis <isaaccurtis1@gmail.com>
 
 pkgname=zotero-beta
-pkgver="5.0.22_beta.1+19447e7b9"
+pkgver="5.0.22_beta.2+da21c9c47"
 pkgrel=1
 pkgdesc="Zotero Standalone. A free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('dbus-glib' 'gtk2' 'gtk3' 'gcc-libs' 'nss' 'libxt')
 optdepends=('xpdf: PDF indexing')
 conflicts=('zotero')
 sha256sums=('8ec2a82b5c9b37e30cbe5ef968f5baa29e324a0e024a8cc28c38738ca3db7c7a')
-sha256sums_i686=('3d0e44683b0123a671dae94f1063b39b7fa0c92e27cd77cc78233d78013d672f')
-sha256sums_x86_64=('6d595944dc90cd7717e9e092afca9cc2ab48f3f70c8f8ff9639173f34fd35e5b')
+sha256sums_i686=('b88a8ec89656d2c2e9993e7d464fa3133d8d6755d704342ef37cd1c423850c7e')
+sha256sums_x86_64=('3d8278cebcd3923b347ae65a9c28f7192d801022301e9e2217e4b36ebdc8d2f9')
 
 _ver=${pkgver//_/-}
 _ver=${_ver//+/%2B}
