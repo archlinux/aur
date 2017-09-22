@@ -73,3 +73,15 @@ diff -ura src/gazebo-8.1.1/media/materials/scripts/ShadowCaster.material src2/ga
 -		}
 -	}
 -}
+diff -ura src/gazebo-8.1.1/gazebo/rendering/deferred_shading/MergeMaterialGenerator.cc src2/gazebo-8.1.1/gazebo/rendering/deferred_shading/MergeMaterialGenerator.cc
+--- src/gazebo-8.1.1/gazebo/rendering/deferred_shading/MergeMaterialGenerator.cc	2017-06-05 17:01:57.000000000 +0200
++++ src2/gazebo-8.1.1/gazebo/rendering/deferred_shading/MergeMaterialGenerator.cc	2017-09-22 18:07:48.348154448 +0200
+@@ -25,6 +25,8 @@
+ 
+ #include "gazebo/rendering/deferred_shading/MergeMaterialGenerator.hh"
+ 
++#include <iostream>
++
+ using namespace gazebo;
+ using namespace rendering;
+ 
