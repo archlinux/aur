@@ -1,4 +1,7 @@
-# Maintainer: Chet Gray
+# Maintainer: Andrew Crouthamel
+# Contributor: Liviu Cristian Mirea-Ghiban
+# Contributor: Lars Øyvind Hagland
+# Contributor: Vishnu V K
 # Contributor: George Shammas
 # Contributor: Ainola
 # Contributor: Jeff Sharpe
@@ -6,7 +9,7 @@
 
 pkgname=netextender
 pkgver=8.6.801
-pkgrel=2
+pkgrel=3
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('i686' 'x86_64')
 url="http://www.sonicwall.com/us/en/products/324.html"
@@ -23,7 +26,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/netExtender/icons"
   cd "$srcdir/netExtenderClient"
 
-  touch /etc/arch-release
+  touch "$pkgdir/etc/arch-release"
 
   install -Dm 644 sslvpn "$pkgdir/etc/ppp/peers/sslvpn"
   install -Dm 755 netExtender "$pkgdir/usr/bin/netExtender"
