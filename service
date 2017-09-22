@@ -1,0 +1,8 @@
+[Unit]
+Description=Python software for USB Wireless WeatherStations
+
+[Service]
+ExecStart=/usr/bin/pywws-livelog /var/lib/pywws
+
+[Install]
+WantedBy=multi-user.target
