@@ -183,6 +183,7 @@ _installprefix=${_baseprefix}/${pkgname}
 
 if $_static_build; then
  _additional_configure_flags="$_additional_configure_flags
+                                -ltcg \
                                 -no-ico \
                                 -no-glib \
                                 -no-fontconfig \
@@ -217,12 +218,73 @@ _arch_specific_configure_options="\
     -datadir /usr/share/qt \
     -sysconfdir /etc/xdg \
     -examplesdir /usr/share/doc/qt/examples \
-    -no-rpath"
+    -no-rpath \
+"
+
+#-no-xcb \
+_exhaustive_static_specific_configure_options="\
+    -no-direct2d \
+    -no-directfb \
+    -no-eglfs \
+    -no-gbm \
+    -no-kms \
+    -no-linuxfb \
+    -no-mirclient \
+    -no-cups \
+    -no-iconv \
+    -no-accessibility \
+    -no-gif \
+    -skip qtconnectivity \
+    -skip qtlocation \
+    -skip qtremoteobjects \
+    -skip qtsvg \
+    -skip qtwebglplugin \
+    -skip qt3d \
+    -skip qtdatavis3d \
+    -skip qtmacextras
+    -skip qtscript \
+    -skip qttools \
+    -skip qtwebsockets \
+    -skip qtactiveqt
+    -skip qtmultimedia \
+    -skip qtscxml \
+    -skip qttranslations \
+    -skip qtwebview \
+    -skip qtandroidextras \
+    -skip qtdoc \
+    -skip qtnetworkauth \
+    -skip qtsensors \
+    -skip qtvirtualkeyboard \
+    -skip qtwinextras \
+    -skip qtgamepad \
+    -skip qtpurchasing
+    -skip qtserialbus \
+    -skip qtwayland \
+    -skip qtx11extras \
+    -skip qtcanvas3d \
+    -skip qtgraphicaleffects \
+    -skip qtquickcontrols \
+    -skip qtserialport \
+    -skip qtwebchannel \
+    -skip qtcharts \
+    -skip qtimageformats \
+    -skip qtquickcontrols2 \
+    -skip qtspeech \
+    -skip qtwebengine \
+    -no-sql-mysql \
+    -no-sql-psql \
+    -no-qml-debug \
+    -no-tslib \
+    -no-feature-bearermanagement \
+"
+
+if $_static_build; then
+    _additional_configure_flags="$_additional_configure_flags $_exhaustive_static_specific_configure_options"
+fi
 
 # Seems to be creating a large amount of breakage
 _core_configure_options="\
                  -prefix ${_installprefix} \
-                 -optimized-tools \
                  -optimized-qmake \
                  -optimize-size \
                  -confirm-license \
@@ -235,10 +297,11 @@ _core_configure_options="\
                  -egl \
                  -journald \
                  -make libs \
-                 -ltcg \
+                 -nomake tools \
                  \
                  -reduce-exports"
 
+#-optimized-tools \
 if ! $_testing; then
   _core_configure_options="\
                     $_core_configure_options \
@@ -393,6 +456,7 @@ else
                  -device ${_mkspec} \
                  -device-option CROSS_COMPILE=/opt/${_toolchain_name}/bin/${_toolchain_name}- \
                  -no-xcb \
+                 -qpa eglfs \
                  ${_additional_configure_flags}"
 fi
   local _configure_line_fn=configure_line
