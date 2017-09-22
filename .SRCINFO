@@ -1,7 +1,7 @@
 pkgbase = python-euclid3
-	pkgdesc = SolidPython: OpenSCAD for Python
+	pkgdesc = 2D and 3D vector, matrix, quaternion and geometry module.
 	pkgver = 0.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SolidCode/SolidPython
 	arch = any
 	license = LGPL2.1
