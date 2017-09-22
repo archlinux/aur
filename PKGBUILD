@@ -29,7 +29,7 @@ package() {
 	cd "$srcdir/$_pkgname"
 	
     # install openssh-ldap-publickey to /usr/local/bin 
-    install -Dm754 "bin/openssh-ldap-publickey" \
+    install -Dm755 "bin/openssh-ldap-publickey" \
         "${pkgdir}/usr/local/bin/openssh-ldap-publickey"
 
     # install man page 
