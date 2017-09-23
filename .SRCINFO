@@ -6,7 +6,8 @@ pkgbase = cvsps2
 	arch = i686
 	arch = x86_64
 	license = GPL
-	provides = cvsps
+	provides = cvsps=2.1
+	conflicts = cvsps
 	source = https://github.com/bbidulock/cvsps/releases/download/cvsps-2.1/cvsps-2.1.tar.gz
 	source = inet_addr-64bit.patch
 	md5sums = bde2110ed9f5d14de8f8cb04e9d596fe
