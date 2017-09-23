@@ -13,10 +13,8 @@ depends=('rust' 'protobuf' 'libvorbis' 'alsa-lib')
 makedepends=('git' 'cargo')
 provides=('librespot')
 conflicts=('librespot')
-source=('git+https://github.com/plietar/librespot'
-        'librespot.conf')
-sha256sums=('SKIP'
-            '3d48207e0be5cf2e68a9ecfd8f418aa1d71fa7f97d562780aa73d2db1a46cac5')
+source=('git+https://github.com/plietar/librespot')
+sha256sums=('SKIP')
 
 pkgver()
 {
