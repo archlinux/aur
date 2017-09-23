@@ -25,7 +25,7 @@ build(){
   npm rebuild node-sass
   npm run build
   npm run sass:build process-index --parallel sass:watch index:watch browsersync
-  rm -rf {.babelrc,.editorconfig,.eslint*,.github,.travis*}
+  rm -rf {.eslint*,.travis*}
 # npm prune --production
   asar pack ../${_pkgname} ../${_pkgname}-next.asar
 }
