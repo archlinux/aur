@@ -1,9 +1,9 @@
 # Maintainer:   AstroFloyd  < AstroFloyd [at] gmail [dt] com >
 pkgname=astrotools
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tools for astronomy and astrophysics"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://astrotools.sourceforge.net/"
 license=('GPL3')
 depends=('libsufr' 'libthesky')
