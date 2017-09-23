@@ -17,7 +17,7 @@ echo 'The first part of the version number = '"$FIRST" # Debug info
 echo -e '\e[34mMicro Editor version = \e[33m'"$MICROEDITORVERSION"'\e[0m'
 # change 5 line from the version.info file
 # example pkgver=1.3.2.dev.10
-cat .PKGBUILD.template | sed '5s/.*/pkgver='"$FIRST"'.dev.'"$LAST"'/' - > test
+cat .PKGBUILD.template | sed '5s/.*/pkgver='"$FIRST"'.'"$LAST"'/' - > test
 # change 7 line from the version.info file
 # _hash="1.3.2-10"
 cat test | sed '7s/.*/_hash="'"$MICROEDITORVERSION"'"/' - > PKGBUILD
@@ -36,4 +36,4 @@ cat .SRCINFO # Debug info
 echo -e '\n\n Update git AUR repo'
 git add .
 git commit -m 'micro edtior - nightly update'
-git push origin master
+#git push origin master
