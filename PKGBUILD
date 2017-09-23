@@ -3,7 +3,7 @@
 pkgname=brave
 pkgver=0.18.36
 _pkgver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
 url='https://www.brave.com/'
@@ -148,7 +148,7 @@ Comment[zh_CN]=访问互联网
 Comment[zh_HK]=連線到網際網路
 Comment[zh_TW]=連線到網際網路
 StartupNotify=true
-StartupWMClass=Brave
+StartupWMClass=brave
 TryExec=$pkgname
 Exec=$pkgname %U
 Terminal=false
