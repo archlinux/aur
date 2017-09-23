@@ -1,11 +1,12 @@
-# Maintainer: Archer777 <NAME at gmx dot com>
+# Maintainer: Thibault Boyeux <thibault.boyeux@gmail.com>
 # Contributor: Army
+# Contributor : Archer777
 # Contributor: Dave Reisner <d@falconindy.com>
 # Contributor: Karol Cichy <slothck@gmail.com>
 
 _pkgname=conky
 pkgname=conky-cli
-pkgver=1.10.5
+pkgver=1.10.6
 pkgrel=1
 pkgdesc="Lightweight system monitor for X, without X11 dependencies"
 url='https://github.com/brndnmtthws/conky'
@@ -16,14 +17,19 @@ conflicts=('conky')
 makedepends=('cmake' 'docbook2x' 'docbook-xml' 'man-db' 'git')
 depends=('curl' 'lua' 'wireless_tools' 'libxml2')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz"
-        'lua53.patch')
+        'lua53.patch'
+        'gcc7.patch')
 
-sha1sums=('a560c356ce4c3e2918601743b57d19a18fe01a72'
-          'a3a74542b6524e5663ad37aaba292b48e8bea3b1')
+sha256sums=('4c80982960b2a72e3e33cef33347c97b9239ed110d9584da4e7f17f28faf60ca'
+          '50844ccdd2b1f8e1b4b110d8b9069dc35af11650163013e2b98cc2e59aeda569'
+          '55ed017f56e657df4528b38ecafaab234ad164a899e19d704f6b397f4c82657b')
+
+options=('!strip' 'debug')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	patch -p1 -i ../lua53.patch # lua_gettable returns an int in lua-5.3
+	patch -p1 -i ../gcc7.patch # FS#54223
 }
 
 build() {
