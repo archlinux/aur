@@ -8,7 +8,9 @@ pkgbase = jdk-docs
 	optdepends = java-environment>=9: Compile and run examples
 	options = !strip
 	source = http://download.oracle.com/otn-pub/java/jdk/9+181/jdk-9_doc-all.zip
+	source = LICENSE-Oracle-Legal-Notices.txt
 	md5sums = 226081b7beb1ac91c3d5037e05522bc6
+	md5sums = f7f540e6cc3ff25f0a393ece9128ee6c
 
 pkgname = jdk-docs
 

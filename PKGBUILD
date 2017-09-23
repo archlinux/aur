@@ -13,8 +13,10 @@ license=('custom:Oracle')
 optdepends=("java-environment>=$_major: Compile and run examples")
 options=('!strip')
 #source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/jdk-${pkgver}-docs-all.zip"
-source=("http://download.oracle.com/otn-pub/java/jdk/${_major}+${_build}/jdk-${_major}_doc-all.zip")
-md5sums=('226081b7beb1ac91c3d5037e05522bc6')
+source=("http://download.oracle.com/otn-pub/java/jdk/${_major}+${_build}/jdk-${_major}_doc-all.zip"
+        'LICENSE-Oracle-Legal-Notices.txt')
+md5sums=('226081b7beb1ac91c3d5037e05522bc6'
+         'f7f540e6cc3ff25f0a393ece9128ee6c')
 
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
