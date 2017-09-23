@@ -17,20 +17,20 @@ source=("${_appname}::git+https://github.com/zealdocs/${_appname}")
 sha1sums=('SKIP')
 
 pkgver() {
-	cd ${_appname}
+    cd ${_appname}
     # TODO: Use on next version update.
     # git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/\1/;s/-/./g'
 }
 
 build() {
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ${srcdir}/${_appname}
-	make
+    mkdir -p build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ${srcdir}/${_appname}
+    make
 }
 
 package() {
-	cd build
-	make DESTDIR=${pkgdir} install
+    cd build
+    make DESTDIR=${pkgdir} install
 }
