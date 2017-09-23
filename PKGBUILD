@@ -9,7 +9,7 @@
 
 _pkgname=synergy
 pkgname=$_pkgname-git
-pkgver=20170905.r3132.3ccf3d17e
+pkgver=20170918.r3153.856e93df
 pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
@@ -22,7 +22,7 @@ makedepends=('cmake' 'git' 'libxt')
 optdepends=('openssl: encryption support')
 
 source=(
-  "$_pkgname::git+https://github.com/symless/$_pkgname.git"
+  "$_pkgname::git+https://github.com/symless/$_pkgname-core.git"
   "$_pkgname.png"
   "${_pkgname}s_at.socket"
   "${_pkgname}s_at.service"
@@ -59,9 +59,8 @@ package() {
   # Install binary
   cd $_pkgname
   install -Dm755 bin/${_pkgname}c "$pkgdir/usr/bin/${_pkgname}c"
-  install -Dm755 bin/${_pkgname}d "$pkgdir/usr/bin/${_pkgname}d"
   install -Dm755 bin/${_pkgname}s "$pkgdir/usr/bin/${_pkgname}s"
-  install -Dm755 bin/syntool "$pkgdir/usr/bin/syntool"
+  install -Dm755 bin/${_pkgname}-core "$pkgdir/usr/bin/${_pkgname}-core"
 
   # Install config
   install -Dm644 doc/$_pkgname.conf.example "$pkgdir/etc/$_pkgname.conf.example"
