@@ -1,6 +1,6 @@
 pkgbase = yalpam-git
 	pkgdesc = Yet another Arch Linux PAckage Manager
-	pkgver = 45.8907b3b
+	pkgver = 46.f358422
 	pkgrel = 1
 	url = https://github.com/drxspace/yalpam
 	arch = i686

@@ -2,7 +2,7 @@
 
 pkgname=yalpam-git
 _pkgname=yalpam
-pkgver=45.8907b3b
+pkgver=46.f358422
 pkgrel=1
 pkgdesc="Yet another Arch Linux PAckage Manager"
 arch=('i686' 'x86_64')
