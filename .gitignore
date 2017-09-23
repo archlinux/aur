@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/durden-git/
+/*.pkg.tar
+/*.pkg.tar.*

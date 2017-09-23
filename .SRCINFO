@@ -1,0 +1,15 @@
+pkgbase = durden-git
+	pkgdesc = Desktop Environment for the Arcan display server
+	pkgver = 0.2.r118.g716e753
+	pkgrel = 1
+	url = http://durden.arcan-fe.com/
+	arch = x86_64
+	license = GPL2
+	license = LGPL
+	license = custom:BSD
+	depends = arcan
+	source = durden-git::git+https://github.com/letoram/durden.git
+	sha512sums = SKIP
+
+pkgname = durden-git
+
