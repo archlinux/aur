@@ -153,6 +153,7 @@ touch $install
 if [[ -n ${_piver} ]] || ! $_building; then
   pkgname="${pkgname}-raspberry-pi${_piver}"
 fi
+provides=($pkgname)
 
 if $_static_build; then
   pkgname="${pkgname}-static"
