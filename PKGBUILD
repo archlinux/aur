@@ -8,8 +8,7 @@ _major=8
 _minor=144
 _build=b01
 _hash=090f390dda5b47b9b721c7dfaa008135
-_pkgver=${_major}u${_minor}
-pkgver=99
+pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Environment"
 arch=('i686' 'x86_64')
@@ -44,18 +43,16 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
         "etc/java-$_jname/sound.properties")
 [[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 install=$pkgname.install
-#source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
-source=("jce_policy-$_major.zip"
+source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
         "policytool-$_jname.desktop")
-source_i686=("http://download.oracle.com/otn-pub/java/jdk/$_pkgver-$_build/$_hash/$_pkgname-$_pkgver-linux-i586.tar.gz")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$_pkgver-$_build/$_hash/$_pkgname-$_pkgver-linux-x64.tar.gz")
-#md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-md5sums=('8274425de767b30b2fff1124ab54abb5'
+source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$_pkgname-$pkgver-linux-i586.tar.gz")
+source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$_pkgname-$pkgver-linux-x64.tar.gz")
+md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          'ef3ff483db5d38ed106e0b819006bdae')
 md5sums_i686=('794e74d0395124337809dcc225c80411')
 md5sums_x86_64=('e3808f24d0f588b0c313fa18b50683c6')
 ## Alternative mirror, if your local one is throttled:
-#source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$_pkgname-$_pkgver-linux-x64.gz")
+#source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$_pkgname-$pkgver-linux-x64.gz")
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
