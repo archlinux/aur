@@ -1,13 +1,13 @@
 pkgbase = jaxx
 	pkgdesc = Multi-chain cryptocurrency wallet
-	pkgver = 1.2.33
+	pkgver = 1.2.41
 	pkgrel = 1
 	url = https://jaxx.io/
 	arch = x86_64
 	license = unknown
-	source = https://jaxx.io/files/1.2.33/Jaxx-v1.2.33_linux-x64.tar.gz
+	source = https://jaxx.io/files/1.2.41/Jaxx-v1.2.41_linux-x64.tar.gz
 	source = jaxx.desktop
-	sha256sums = ebe3183d1151282a22521be614a7e9cc37303259bb9c31c6d2b594784935320c
+	sha256sums = e8e6ca8fce2ea54e387fffc973aaf2b1d8de52ade7fc3a7cd1532707b738bcc6
 	sha256sums = 4e4323a365c878378b5ed019a4a78e0cd94148abbc649e0972414ef38e9f7139
 
 pkgname = jaxx
