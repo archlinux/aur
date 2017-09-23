@@ -3,10 +3,10 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=haguichi-indicator-bzr
-pkgver=r31
+pkgver=r32
 pkgrel=1
 pkgdesc="Provides an indicator for Haguichi. Development version."
-arch=('x86_64' 'i686' 'arm' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://www.haguichi.net"
 license=('GPL3')
 depends=('gtk3' 'libappindicator-gtk3' 'haguichi')
