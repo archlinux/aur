@@ -11,7 +11,7 @@ makedepends=('make')
 conflicts=('wintoggle')
 provides=('wintoggle')
 source=("https://github.com/v--/wintoggle/archive/v$pkgver.tar.gz")
-sha256sums=('9058a04c6f010cbbd0d79ac09dd1ac595545b7024c8f816b8eeb01e55adf2766')
+sha256sums=('544d0c59d4019785eefb704fdb4ea2ff8a91d25886c74d0c2493b92f960536ce')
 
 build() {
     tar --gunzip --extract --file v$pkgver.tar.gz

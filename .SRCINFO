@@ -11,7 +11,7 @@ pkgbase = wintoggle
 	provides = wintoggle
 	conflicts = wintoggle
 	source = https://github.com/v--/wintoggle/archive/v3.0.3.tar.gz
-	sha256sums = 9058a04c6f010cbbd0d79ac09dd1ac595545b7024c8f816b8eeb01e55adf2766
+	sha256sums = 544d0c59d4019785eefb704fdb4ea2ff8a91d25886c74d0c2493b92f960536ce
 
 pkgname = wintoggle
 
