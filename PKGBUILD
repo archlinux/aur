@@ -1,13 +1,15 @@
 # Contributor: damir <damir at archlinux dot org>
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
-# Maintainer: aksr <aksr at t-com dot me>
+# Contributor: aksr <aksr at t-com dot me>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=yudit-beta
 pkgver=2.9.7.beta4
 pkgrel=1
 pkgdesc="A free Unicode plain-text editor for Unix-like systems - beta version"
 arch=('i686' 'x86_64')
 url="http://www.yudit.org/"
-license=('GPL')
+license=('GPL2')
 depends=('libx11' 'gcc-libs')
 conflicts=('yudit')
 provides=('yudit')
