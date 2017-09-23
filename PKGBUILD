@@ -3,8 +3,8 @@
 # Contributor: oozyslug <oozyslug at gmail dot com>
 
 pkgname=neobundle-git
-pkgver=4.0.15.gc6fa48c
-pkgrel=2
+pkgver=4.0.17.g4c9a273
+pkgrel=1
 pkgdesc="Ultimate Vim plugin manager inspired by Vundle"
 arch=('any')
 url="https://github.com/Shougo/neobundle.vim"
