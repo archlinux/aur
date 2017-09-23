@@ -1,0 +1,11 @@
+pkgbase = pkgrepo
+	pkgdesc = Pacman repository manager
+	pkgver = 3.0.2.r0.g7354e4e
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	source = git+https://git.maze.io/maze/pkgrepo.git
+	sha256sums = SKIP
+
+pkgname = pkgrepo
+
