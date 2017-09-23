@@ -1,7 +1,7 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=ghc-pristine
 pkgver=8.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Symlinks to GHC with only boot libs, useful for building static binaries"
 arch=(any)
 url=https://www.haskell.org/ghc/
@@ -27,7 +27,7 @@ package() {
     ver=`pacman -Q ghc`
     ver=${ver#* }
     ver=${ver%-*}
-    pacman -Ql ghc | while read -r line; do
+    pacman -Ql ghc ghc-libs | while read -r line; do
         f=${line#* }
         f=${f%/}
         case $f in
