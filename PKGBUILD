@@ -1,23 +1,28 @@
 # Maintainer:  VirtualTam      <virtualtam@flibidi.net>
 # Contributor: Deon Spengler   <deon.spengler@gmail.com>
+# Contributor: Jimmy Aguilar   <spacibba@yandex.com>
+
 pkgname=gnu-cobol
-pkgver=2.0rc2
-_pkgmaj=2.0
-_pkgmin=rc-2
+_pkgmaj=2.2
+_pkgmin=rc
+_tarname=gnucobol
+
+pkgver="${_pkgmaj}${_pkgmin}"
 pkgrel=1
 pkgdesc="An open-source COBOL compiler"
+
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/open-cobol/"
 license=('GPL')
-depends=('db' 'gmp')
+depends=('db' 'gmp' 'help2man')
 options=('!libtool')
-source=("http://sourceforge.net/projects/open-cobol/files/${pkgname}/${_pkgmaj}/${pkgname}-${_pkgmaj}_${_pkgmin}.tar.gz"
+source=("http://sourceforge.net/projects/open-cobol/files/${pkgname}/${_pkgmaj}/${_tarname}-${_pkgmaj}-${_pkgmin}.tar.gz"
 	"cob-cflags.patch")
-md5sums=('e604d8c81fc83c29768bcb3c98b8d215'
+md5sums=('95daec84e72034d4c1bcf216e0ebc34a'
          '1ed5d24c0e51f4825e014546c83984c9')
 
 build() {
-  cd "${srcdir}/${pkgname}-${_pkgmaj}"
+  cd "${srcdir}/${_tarname}-${_pkgmaj}-${_pkgmin}"
 
   msg "cob-cflags.patch"
   patch -p1 -i ${srcdir}/cob-cflags.patch configure
@@ -27,6 +32,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_pkgmaj}"
+  cd "${srcdir}/${_tarname}-${_pkgmaj}-${_pkgmin}"
   make DESTDIR="${pkgdir}" install
 }
