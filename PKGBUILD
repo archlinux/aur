@@ -35,6 +35,7 @@ pkgver=9.0.32150
 #pkgver=11.0.67687
 #pkgver=12.0.69753
 #pkgver=12.0.76279
+#pkgver=12.0.85001
 pkgrel=1
 _pkgver_major="${pkgver%%.*}"
 
@@ -103,7 +104,7 @@ provides=("teamviewer=${_pkgver_major}")
 conflicts=('teamviewer')
 options=('!strip')
 install="${pkgname%%[0-9]*}.install"
-_verwatch=('https://www.teamviewer.com/en/download/linux.aspx' '\s\+<span id="_ctl2_Version">v\([0-9\.]\+\)</span>.*' 'f')
+_verwatch=('https://www.teamviewer.com/en/download/linux/' '.*v\([0-9\.]\+\) (tar\.xz).*' 'f')
 
 if [ "${_pkgver_major}" -ge 10 ]; then
   source=("http://download.teamviewer.com/download/version_${_pkgver_major}x/teamviewer_${pkgver}.i686.rpm")
