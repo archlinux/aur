@@ -4,6 +4,7 @@ pkgver=3.0.2.r0.g7354e4e
 pkgrel=1
 pkgdesc="Pacman repository manager"
 pkgname=pkgrepo
+url="https://git.maze.io/maze/pkgrepo"
 arch=('x86_64')
 license=('MIT')
 builddepends=('go' 'git')
