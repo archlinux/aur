@@ -3,7 +3,8 @@
 # Author: Mike Brown <mbrown@archlinuxarm.org>
 
 pkgbase=linux-odroid-u3-git
-pkgname=('linux-odroid-u3-git' 'linux-headers-odroid-git')
+pkgmain=linux-odroid
+pkgname=('linux-odroid-u3-git' 'linux-headers-odroid-u3-git')
 _kernelname=${pkgname#linux}
 _basekernel=4.13
 pkgver=${_basekernel}
@@ -14,10 +15,9 @@ license=('GPL2')
 groups=('customized')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'git' 'inetutils' 'bc' 'uboot-tools')
 options=('!strip')
-backup=('boot/uEnv.txt')
 source=("git+https://github.com/tobiasjakobi/linux-odroid-public"
 	'config_u3'
-        'linux-odroid-u3-git.preset'
+        'linux-odroid.preset'
         'arch-logo.ppm'
 	'uEnv.txt')
 
@@ -71,11 +71,11 @@ build_kernel_package() {
     -i "${startdir}/${pkgbase}.install"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${startdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  install -D -m644 "${startdir}/${pkgmain}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgmain}.preset"
   sed \
     -e "s|ALL_kver=.*|ALL_kver=${_kernver}|" \
     -e "s|BOOT_DIR=.*|BOOT_DIR=${_bootdir}|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    -i "${pkgdir}/etc/mkinitcpio.d/${pkgmain}.preset"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -95,6 +95,9 @@ build_kernel_package() {
   # move module tree /lib -> /usr/lib
   mkdir -p "${pkgdir}/usr"
   mv "$pkgdir/lib" "$pkgdir/usr"
+
+  install -D -m644 "${startdir}/uEnv.txt" "${pkgdir}${_bootdir}/uEnv.txt"
+  install -D -m644 "arch/arm/boot/dts/exynos4412-odroidu3.dtb" "${pkgdir}${_bootdir}/exynos4412-odroidu3.dtb"
 }
 
 package_linux-odroid-u3-git() {
@@ -104,16 +107,16 @@ package_linux-odroid-u3-git() {
   provides=('kernel26' "linux=${pkgver}")
   conflicts=('linux-odroid-u2' 'linux-odroidx' 'linux-odroid-x' 'linux-odroid-x-mali' 'linux-odroid-u2-mali' 'linux-odroid-x2')
   replaces=('linux-odroid-u2-mali')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup=("etc/mkinitcpio.d/${pkgmain}.preset" "boot/uEnv.txt")
   install=${pkgbase}.install
 
   build_kernel_package config_u3
 }
 
-package_linux-headers-odroid-git() {
+package_linux-headers-odroid-u3-git() {
   pkgdesc="Header files and scripts for building modules for linux kernel for ODROID U3"
   provides=("linux-headers=${pkgver}")
-  conflicts=('linux-headers-odroidx')
+  conflicts=('linux-headers-odroidx' 'linux-headers-odroid')
   replaces=('linux-headers-odroidx')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
@@ -128,8 +131,6 @@ package_linux-headers-odroid-git() {
     "${pkgdir}/usr/src/linux-${_kernver}/kernel/Makefile"
   install -D -m644 .config \
     "${pkgdir}/usr/src/linux-${_kernver}/.config"
-  install -D -m644 "${startdir}/uEnv.txt" "${pkgdir}${_bootdir}/uEnv.txt"
-  install -D -m644 "arch/arm/boot/dts/exynos4412-odroidu3.dtb" "${pkgdir}${_bootdir}/exynos4412-odroidu3.dtb"
 
   mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/include"
 
