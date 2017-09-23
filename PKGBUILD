@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=27.0.50.r130485
+pkgver=27.0.50.r130498
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ build() {
     --with-x-toolkit=lucid \
     --mandir=/usr/share/man \
     --pdfdir=/usr/share/doc/emacs \
-    --with-sound \
+    --with-modules \
     --without-gconf \
     --with-xft \
     --without-xwidgets \
