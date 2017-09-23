@@ -2,7 +2,7 @@
 pkgname=jetbrains-mps
 _pkgname=mps
 _pkgver=2017.2
-pkgver=${_pkgver}.1
+pkgver=${_pkgver}.2
 pkgrel=1
 pkgdesc="JetBrains Meta Programming System"
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom: MPS license agreement')
 depends=('jdk')
 
 source=("https://download.jetbrains.com/mps/${_pkgver}/MPS-${pkgver}.tar.gz")
-sha256sums=('df4450aab0f599a095404cc100fef87c74101f2625a332f5fe3b9f5195b62b78')
+sha256sums=('b40b1baeb1a6cbcd5e300ec1e5dc9c8a9392c2b892a5968fc0e86686c8048905')
 
 build() {
   cd "${srcdir}"
