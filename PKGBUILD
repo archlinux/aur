@@ -6,31 +6,33 @@
 
 _target="arm-linux-gnueabihf"
 pkgname="${_target}-gcc"
-pkgver=7.1.1
+pkgver=7.2.0
 _pkgver=${pkgver:0:1}
 _islver=0.18
-pkgrel=4
-_commit=d791474f3fc2133fa0c310e566988b0cbdff321e
+pkgrel=3
+_commit=1bd23ca8c30f4827c4bea23deedf7ca33a86ffb5
 pkgdesc="The GNU Compiler Collection (${_target})"
-arch=('i686' 'x86_64')
-license=('GPL' 'LGPL' 'FDL' 'custom')
-url="http://gcc.gnu.org"
-depends=("${_target}-binutils>=2.28.0-4" "${_target}-glibc>=2.25-7" 'libmpc' 'elfutils' 'zlib')
-checkdepends=('dejagnu' 'inetutils')
-options=('!emptydirs' '!distcc' '!strip')
+arch=(i686 x86_64)
+license=(GPL LGPL FDL custom)
+url='http://gcc.gnu.org'
+depends=("${_target}-binutils>=2.29.0-1" "${_target}-glibc>=2.26-4" libmpc elfutils zlib)
+checkdepends=(dejagnu inetutils)
+options=(!emptydirs !distcc !strip)
 conflicts=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 replaces=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 provides=("${_target}-gcc-stage1=${pkgver}" "${_target}-gcc-stage2=${pkgver}")
 source=(https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        Revert-eeb6872bf.patch)
-md5sums=('22748db692c5e409b7f3fa9482faa9cb'
+        Revert-eeb6872bf.patch
+        PR82155.patch)
+md5sums=('1b6966a45fe43445ae7ae4ffd5d43df9'
          '11436d6b205e516635b666090b94ab32'
-         'e4c9c8b498b04c0f51d219d025ca8407')
+         'e4c9c8b498b04c0f51d219d025ca8407'
+         'e77419f7d25aad0980c765012dc8c417')
 
 prepare() {
   mv gcc-${_commit}* gcc
-  cd ${srcdir}/gcc
+  cd gcc
 
   # link isl for in-tree build
   ln -s ../isl-${_islver} isl
@@ -44,18 +46,21 @@ prepare() {
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=80717
   patch -p1 -i ${srcdir}/Revert-eeb6872bf.patch
 
-  mkdir ${srcdir}/gcc-build
+  mkdir -p "$srcdir/gcc-build"
+
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=82155
+  patch -p1 -i ../PR82155.patch
 }
 
 build() {
-  cd ${srcdir}/gcc-build
+  cd gcc-build
 
   # using -pipe causes spurious test-suite failures
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
-  ${srcdir}/gcc/configure --prefix=/usr \
+  "$srcdir/gcc/configure" --prefix=/usr \
       --program-prefix=${_target}- \
       --with-local-prefix=/usr/${_target} \
       --with-sysroot=/usr/${_target} \
@@ -97,15 +102,15 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/gcc-build
+  cd gcc-build
 
-  make DESTDIR=${pkgdir} install-gcc install-target-libgcc \
+  make DESTDIR="$pkgdir" install-gcc install-target-libgcc \
     install-target-libstdc++-v3
 
-  rm -rf ${pkgdir}/usr/share
+  rm -rf "$pkgdir/usr/share"
 
   # strip it manually
-  strip ${pkgdir}/usr/bin/* 2>/dev/null || true
-  find ${pkgdir}/usr/lib -type f -exec /usr/bin/${_target}-strip \
+  strip "$pkgdir/usr/bin/"* 2>/dev/null || true
+  find "$pkgdir/usr/lib" -type f -exec /usr/bin/${_target}-strip \
     --strip-unneeded {} \; 2>/dev/null || true
 }
