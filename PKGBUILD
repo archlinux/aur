@@ -1,7 +1,7 @@
 # Maintainer: guns <self@sungpae.com>
 # Contributor: Vianney le Clément de Saint-Marcq <vleclement AT gmail·com>
 pkgname=go-luks-suspend
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Encrypt LUKS volumes on system suspend'
 arch=('x86_64')
@@ -12,9 +12,9 @@ makedepends=('go')
 install=install
 conflicts=('arch-luks-suspend' 'arch-luks-suspend-git')
 source=("https://github.com/guns/$pkgname/archive/v$pkgver.tar.gz")
-sha1sums=('2a52307f65c6e0734cf502a9a7803ceb85fdef39')
-sha256sums=('1e6146b3caa365d924c818b204d05846a986080360436dd384f6dd1b45f042a9')
-sha512sums=('7efe4be97fe8d2a4a00a9df998fe53d227918a42914f6da0ba68e341d0939788f58338684c9efc4bbd2e3664821dab8532d55663baea8e8ecf097a1bc969b0d6')
+sha1sums=('b6c2341cc966af2c3c89a5f85599e5f29a3d0b7c')
+sha256sums=('4627e81eecf7675d79823369a75c02cab629035ebfcc4b341f3c31c02314c41d')
+sha512sums=('bcc466806e1eda7fb67c47ddde7ade1deec1b6d4073ca9f612e1073443c3ddd5fa3bc9b2fb8f5cf195edf53fc5b8e20ab984abfaa7b2cc81c75a95b4f0284a5d')
 
 build() {
   cd "$pkgname-$pkgver"
