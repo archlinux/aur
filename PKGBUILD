@@ -2,10 +2,10 @@
 pkgname=watch-with-mpv-git
 _pkgname=watch-with-mpv
 pkgver=20170923.598067b
-pkgrel=1
+pkgrel=2
 pkgdesc="The native host for the Watch with MPV Chrome extension."
 arch=("any")
-url="https://github.com/winneon/${pkgname}"
+url="https://github.com/winneon/${_pkgname}"
 license=("GPL2")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
