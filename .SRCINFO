@@ -1,0 +1,39 @@
+pkgbase = sygnm-cantor-git
+	pkgdesc = Cantor (https://edu.kde.org/cantor/) with experimental sygnm backend
+	pkgver = 1.0.0alpha1
+	pkgrel = 1
+	url = https://sygnm.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = python
+	makedepends = python2
+	makedepends = kdoctools
+	makedepends = luajit
+	makedepends = r
+	makedepends = julia
+	depends = analitza
+	depends = libspectre
+	depends = kpty
+	depends = ktexteditor
+	depends = knewstuff
+	depends = libqalculate
+	depends = hicolor-icon-theme
+	optdepends = maxima: Maxima backend
+	optdepends = octave: Octave backend
+	optdepends = r: R backend
+	optdepends = luajit: LUA backend
+	optdepends = python: Python 3 backend
+	optdepends = python2: Python 2 backend
+	optdepends = sagemath: SageMath backend
+	optdepends = julia: Julia backend
+	optdepends = sygnm-git: sygnm backend
+	conflicts = cantor
+	source = cantor-sygnm::git+https://git.sygnm.org/sygnmdev/cantor-sygnm.git#branch=sygnm
+	md5sums = SKIP
+
+pkgname = sygnm-cantor-git
+
