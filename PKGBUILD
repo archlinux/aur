@@ -3,10 +3,10 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=haguichi-bzr
-pkgver=r211
+pkgver=r237
 pkgrel=1
 pkgdesc="Provides a user friendly GUI to control the Hamachi client on Linux. Development version."
-arch=('x86_64' 'i686' 'arm' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://www.haguichi.net"
 license=('GPL3')
 depends=('gtk3' 'libnotify' 'logmein-hamachi')
