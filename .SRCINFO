@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-mconnect
+	pkgdesc = KDE Connect/MConnect integration for Gnome Shell
+	pkgver = 15
+	pkgrel = 1
+	url = https://github.com/andyholmes/gnome-shell-extension-mconnect
+	install = gnome-shell-extension-mconnect.install
+	arch = any
+	license = GPL2
+	depends = gnome-shell
+	optdepends = gnome-tweak-tool
+	source = https://github.com/andyholmes/gnome-shell-extension-mconnect/releases/download/v15/mconnect.andyholmes.github.io.zip
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-mconnect
+

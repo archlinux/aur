@@ -1,0 +1,15 @@
+read -r -d '' msg << TIP
+================================\n
+Now,you should install\e[1m the KDE connect \e[0min your \e[1m Android mobile \e[0m.\n
+this is the google play link:\n
+---\e[1mhttps://play.google.com/store/apps/details?id=org.kde.kdeconnect_tp\e[0m---\n
+(also you can search kdeconnect in your mobile google play)\n
+================================
+TIP
+post_install(){
+    echo -e $msg
+}
+
+post_upgrade(){
+    echo -e $msg
+}
