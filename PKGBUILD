@@ -1,6 +1,6 @@
-# Maintainer:  VirtualTam      <virtualtam@flibidi.net>
-# Contributor: Deon Spengler   <deon.spengler@gmail.com>
-# Contributor: Jimmy Aguilar   <spacibba@yandex.com>
+# Maintainer: Jimmy Aguilar  <spacibba@yandex.com>
+# Contributor: VirtualTam    <virtualtam@flibidi.net>
+# Contributor: Deon Spengler <deon.spengler@gmail.com>
 
 pkgname=gnu-cobol
 _pkgmaj=2.2
