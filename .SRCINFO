@@ -1,13 +1,13 @@
 pkgbase = hpp-fcl-git
 	pkgdesc = An extension of the Flexible Collision Library
 	pkgver = 0.5.r538.5641ae1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/humanoid-path-planner/hpp-fcl-git
 	arch = i686
 	arch = x86_64
 	license = BSD 3-clause
 	makedepends = cmake
-	depends = eigen32
+	depends = eigen
 	depends = assimp
 	provides = hpp-fcl
 	conflicts = hpp-fcl
