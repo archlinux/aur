@@ -1,14 +1,14 @@
 pkgbase = mstdn
 	pkgdesc = Tiny web-based mastodon client for your desktop
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/rhysd/Mstdn#readme
 	arch = any
 	depends = nodejs
 	depends = npm
-	noextract = mstdn-0.2.5.tgz
-	source = http://registry.npmjs.org/mstdn/-/mstdn-0.2.5.tgz
-	sha1sums = ed5015be453f593aa209a962658e431b97721adc
+	noextract = mstdn-0.2.6.tgz
+	source = http://registry.npmjs.org/mstdn/-/mstdn-0.2.6.tgz
+	sha1sums = 9c797fa1a52beb94da957b7459cb7859a6bb892d
 
 pkgname = mstdn
 

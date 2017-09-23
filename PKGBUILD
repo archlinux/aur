@@ -1,7 +1,7 @@
 _npmname=mstdn
-_npmver=0.2.5
+_npmver=0.2.6
 pkgname=mstdn # All lowercase
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Tiny web-based mastodon client for your desktop"
 arch=(any)
@@ -10,7 +10,7 @@ license=()
 depends=('nodejs' 'npm' )
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(ed5015be453f593aa209a962658e431b97721adc)
+sha1sums=(9c797fa1a52beb94da957b7459cb7859a6bb892d)
 
 package() {
   cd $srcdir
