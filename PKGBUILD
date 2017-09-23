@@ -14,12 +14,12 @@ source=('git://github.com/v--/wintoggle.git')
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd wintoggle
     make wintoggle
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd wintoggle
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 man/wintoggle.1 "${pkgdir}/usr/share/man/man1/wintoggle.1"
     install -Dm755 wintoggle "${pkgdir}/usr/bin/wintoggle"
