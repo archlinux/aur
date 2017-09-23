@@ -17,9 +17,11 @@ provides=('vapoursynth-editor')
 conflicts=('vapoursynth-editor')
 source=('git+https://bitbucket.org/mystery_keeper/vapoursynth-editor.git'
         'vsedit.desktop'
+        'vsedit_server_watch.desktop'
         )
 sha256sums=('SKIP'
             '7c73f873a970bb295be8fdcf8ef570ef9bb812232b3cc2dce79b42c57c742623'
+            'bc6443a2dfa48ee1e2156039be2195074dfd4a02f5f1696f8406c715a1b19ccf'
             )
 
 pkgver() {
@@ -27,21 +29,26 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-build() {
+prepare() {
   cd vapoursynth-editor/pro
   qmake-qt5
+}
+
+build() {
+  cd vapoursynth-editor/pro
   make
 }
 
 package() {
   install -Dm644 vsedit.desktop "${pkgdir}/usr/share/applications/vsedit.desktop"
+  install -Dm644 vsedit_server_watch.desktop "${pkgdir}/usr/share/applications/vsedit_server_watch.desktop"
 
   [ "${CARCH}" = "i686" ] && _arch=32
   [ "${CARCH}" = "x86_64" ] && _arch=64
 
   cd "vapoursynth-editor/build/release-${_arch}bit-gcc"
   install -Dm755 vsedit "${pkgdir}/usr/bin/vsedit"
-  install -Dm755 vsedit-job-server "${pkgdir}/usr/bin/job-server"
+  install -Dm755 vsedit-job-server "${pkgdir}/usr/bin/vsedit-job-server"
   install -Dm755 vsedit-job-server-watcher "${pkgdir}/usr/bin/vsedit-job-server-watcher"
   install -Dm644 vsedit.svg "${pkgdir}/usr/share/pixmaps/vsedit.svg"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

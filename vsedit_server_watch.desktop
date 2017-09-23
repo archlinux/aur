@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=VSEdit Job Server Watcher
+GenericName=VapourSynth Editor Job Server Watcher
+Comment=Create or connect to VSedit job server
+Type=Application
+Exec=vsedit-job-server-watcher
+Icon=vsedit
+Terminal=false
+StartupNotify=false
+Categories=AudioVideo;
