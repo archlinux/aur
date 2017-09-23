@@ -1,3 +1,16 @@
+# [v1.4.4 - 2017-09-22](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.3)
+
+## Added
+
+- Style editor content after saving a new file.
+
+## Fixed
+
+- Fixed style of tag reference badges that point to the HEAD.
+- Fixed regression in showing images in the diff area.
+- Fixed regression in indexing by lexical class.
+- (Win) Fixed regression in staging "exectuable" files.
+
 # [v1.4.3 - 2017-09-15](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.2)
 
 ## Added
