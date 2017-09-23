@@ -1,6 +1,6 @@
 # Maintainer: Andrej Radovic <r.andrej@gmail.com>
 pkgname="kicadlibrarian-git"
-pkgver=r32.eccc226
+pkgver=20170817.81f6567
 pkgrel=1
 pkgdesc="A utility to manage and maintain KiCad libraries with schematic symbols and footprints"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
 }
 
 build() {

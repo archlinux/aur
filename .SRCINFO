@@ -1,6 +1,6 @@
 pkgbase = kicadlibrarian-git
 	pkgdesc = A utility to manage and maintain KiCad libraries with schematic symbols and footprints
-	pkgver = r32.eccc226
+	pkgver = 20170817.81f6567
 	pkgrel = 1
 	url = https://github.com/compuphase/KiCad-Librarian
 	install = kicadlibrarian-git.install
