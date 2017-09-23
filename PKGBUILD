@@ -2,7 +2,7 @@
 
 pkgname=mattermost-git
 _pkgname="${pkgname%-git}"
-pkgver=4.1.0.r64.gc81d0f120
+pkgver=4.2.0.rc1.r61.g3463e1fc9
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
 arch=('i686' 'x86_64')
@@ -28,15 +28,17 @@ source=(
     # repository first, either a full clone or with the --dept argument. You
     # can also specify the --depth git argument in your in makepkg.conf file.
     # For local tests, simply replace this git URL by
+    #'mattermost-server::git+file:///home/user/whatever/mattermost-server#branch=release-4.2'
     # For the URL syntax, please check this link:
     # https://wiki.archlinux.org/index.php/VCS_package_guidelines#VCS_sources
-    #'platform::git+file:///home/user/whatever/mattermost-platform#branch=release-4.1'
-    'git+https://github.com/mattermost/platform'
+    'git+https://github.com/mattermost/mattermost-server'
+    'git+https://github.com/mattermost/mattermost-webapp'
     'mattermost.service'
     'mattermost.sh'
     'tmpfile.conf'
     'user.conf')
 sha512sums=(
+    'SKIP'
     'SKIP'
     '3e3d46dc7778be256da9a366ec96cde684fcb07732d0adfd40ea00d6ec61a161a9d7e784f7773d34e4f058e6919b13053ac228255a05f175e7ce20538f07ec93'
     '5fe6c343e9739b12f8ea9390dafd729fa9f980978bbc0fa7eb6a2eb2d437929078d3efede23c28a6b399c407b8b5e92755169a468462088de0eb148b360acc4b'
@@ -48,7 +50,7 @@ sha512sums=(
 # Remove the v prefix:
 # src.: http://stackoverflow.com/a/7979255/3514658
 pkgver() {
-    cd "$srcdir"/src/github.com/mattermost/platform
+    cd "$srcdir"/src/github.com/mattermost/mattermost-server
     git describe --long --tags | \
         sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -64,35 +66,51 @@ prepare() {
     mkdir -p src/github.com/mattermost
     cd src/github.com/mattermost
     # Remove previous platform folder if any previous clone was effective
-    rm -f platform
-    ln -s "$srcdir"/platform platform
-    cd platform
+    rm -f mattermost-server
+    rm -f mattermost-webapp
+    # Even if we do not have a repository called platform any more, creating
+    # this directory structure is needed as the Mattermost Go namespaces are
+    # still named this way.
+    ln -s "$srcdir"/mattermost-server mattermost-server
+    ln -s "$srcdir"/mattermost-webapp mattermost-webapp
+    cd mattermost-server
 
-    # Prevent the build to crash when some dependencies are not met or
-    # outdated.
-    make clean
+    # We are not using docker, no need to stop it.
+    sed -r -i Makefile \
+        -e 's/^clean: stop-docker/clean:/'
+
+    # Enforce build hash to Arch Linux (Enterprise hash is already set to
+    # none), instead of the official git hash value.
+    sed -r -i Makefile \
+        -e 's/^(\s*)BUILD_HASH(_ENTERPRISE)? =.*/\1BUILD_HASH\2 = Arch Linux/' \
+        -e 's/-X (.*)(\$\(BUILD_HASH(_ENTERPRISE)?\))(.*)/-X '\''\1\2'\''\4/'
+
+    # The configuration isn't available at this time yet, modify the default.
+    sed -r -i build/release.mk \
+        -e 's/\$\(DIST_PATH\)\/config\/config.json/\$\(DIST_PATH\)\/config\/default.json/'
 
     # Remove platform specific lines from the Makefile from the line beginning
-    # with "cp README.md" to the line beginning with run-server
-    sed -n '1,/cp README.md/p;/^run-server:/,$p' -i Makefile
-
-    # Build build-linux directly, because the package target in the
-    # Makefile has as dependency build which itself has build-linux,
-    # build-osx and build-windows as dependencies.
-    #
-    # Remove GOARCH=amd64 statement
-    sed -E -i Makefile \
-        -e 's/^package: build build-client/package: build-linux build-client/' \
-        -e 's/GOARCH=amd64//'
+    # with that statement to the end of file (we do not care of the additional
+    # file copy, nor the tar compression defined below the file).
+    sed '/# ----- PLATFORM SPECIFIC -----/,//d' -i ./build/release.mk
 }
 
 build() {
-    cd "$srcdir"/src/github.com/mattermost/platform
+    # No need to build mattermost-webapp as the server is taking care of this
+    # step via its build-client make instruction.
+
+    cd "$srcdir"/src/github.com/mattermost/mattermost-server
+    # Prevent the build to crash when some dependencies are not met or
+    # outdated. This clean the webapp as well (cf. mattermost-server/Makefile,
+    # clean target).
+    make clean
+    GOPATH="$srcdir" BUILD_NUMBER=$pkgver-$pkgrel make build-linux
+    GOPATH="$srcdir" BUILD_NUMBER=$pkgver-$pkgrel make build-client
     GOPATH="$srcdir" BUILD_NUMBER=$pkgver-$pkgrel make package
 }
 
 package() {
-    cd "$srcdir"/src/github.com/mattermost/platform
+    cd "$srcdir"/src/github.com/mattermost/mattermost-server
 
     install -dm755 \
         "$pkgdir"/usr/share/webapps \
@@ -103,9 +121,11 @@ package() {
     cp -a dist/mattermost "$pkgdir"/usr/share/webapps/$_pkgname
 
     cd "$pkgdir"/usr/share/webapps/$_pkgname
+
     rm -rf logs
     ln -s /var/log/$_pkgname logs
 
+    cp config/default.json config/config.json
     mv config "$pkgdir"/etc/webapps/$_pkgname
     ln -s /etc/webapps/$_pkgname config
 
@@ -113,7 +133,10 @@ package() {
         -e 's@tcp(dockerhost:3306)@unix(/run/mysqld/mysqld.sock)@g' \
         -i "$pkgdir"/etc/webapps/$_pkgname/config.json
 
-    mv NOTICE.txt README.md "$pkgdir"/usr/share/doc/$_pkgname
+    # When MIT license, the one bundled with the package must always be copied
+    # on the system.
+    # src.: https://wiki.archlinux.org/index.php/PKGBUILD#license
+    mv NOTICE.txt README.md MIT-COMPILED-LICENSE.md "$pkgdir"/usr/share/doc/$_pkgname
 
     cd "$srcdir"
     install -Dm755 bin/platform "$pkgdir"/usr/share/webapps/$_pkgname/bin/platform
