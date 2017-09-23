@@ -31,6 +31,6 @@ package() {
   local profiled_dir=${pkgdir}/etc/profile.d
   mkdir -p $profiled_dir
   cd "${srcdir}/gtkplatform"
-  cp ${startdir}/qt-force-gtk-platform ${profiled_dir}
+  cp ${startdir}/qt-force-gtk-platform.sh ${profiled_dir}
   INSTALL_ROOT="$pkgdir" make install
 }
