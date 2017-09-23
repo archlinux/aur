@@ -1,6 +1,6 @@
 pkgbase = flannel
 	pkgdesc = Etcd backed network fabric for containers
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/coreos/flannel
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = flannel
 	makedepends = git
 	depends = glibc
 	source = flannel.service
-	source = git+https://github.com/coreos/flannel#commit=6bbf8bf4923f7185465f46ca09d83667938c4993
+	source = git+https://github.com/coreos/flannel#commit=317b7d199e3fe937f04ecb39beed025e47316430
 	source = go-pkg::git+https://github.com/coreos/pkg#commit=3ac0863d7acf3bc44daf49afef8919af12f704ef
 	source = git+https://github.com/golang/glog#commit=23def4e6c14b4da8ac2ed8007337bc5eb5007998
-	source = git+https://github.com/joho/godotenv#commit=9d9ddadf44b4c17c42bafdc530ddeee1927c067d
+	source = git+https://github.com/joho/godotenv#commit=a79fa1e548e2c689c241d10173efd51e5d689d5b
 	source = git+https://github.com/coreos/go-systemd#commit=d2196463941895ee908e13531a23a39feb9e1243
 	sha512sums = 78d44de0f262606c70b328e5d3f7b8fa1abdf234b51c8ace48b812d8c5b00fd169cfe578f0ce187040720baddc8e281e4bfb5146a38012fe83f8c4478a4977b6
 	sha512sums = SKIP

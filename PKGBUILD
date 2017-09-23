@@ -1,18 +1,18 @@
 # Maintainer: Tim Meusel <tim@bastelfreak.de>
 # Contributor: Iwan Timmer <irtimmer@gmail.com>
-# Maintainer: Christian Rebischke <Chris.Rebischke[at]archlinux[dot]org>
+# Contributor: Christian Rebischke <Chris.Rebischke[at]archlinux[dot]org>
 
 pkgname=flannel
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Etcd backed network fabric for containers"
 depends=('glibc')
 makedepends=('go' 'git')
 arch=('any')
-_flannel_commit='6bbf8bf4923f7185465f46ca09d83667938c4993' # v0.8.0
+_flannel_commit='317b7d199e3fe937f04ecb39beed025e47316430' # v0.8.0
 _pkg_commit='3ac0863d7acf3bc44daf49afef8919af12f704ef' # v3
 _glog_commit='23def4e6c14b4da8ac2ed8007337bc5eb5007998' # HEAD
-_godotenv_commit='9d9ddadf44b4c17c42bafdc530ddeee1927c067d' # HEAD
+_godotenv_commit='a79fa1e548e2c689c241d10173efd51e5d689d5b' # v1.2.0
 _systemd_commit='d2196463941895ee908e13531a23a39feb9e1243' # v15
 source=("flannel.service"
         "git+https://github.com/coreos/flannel#commit=${_flannel_commit}"
