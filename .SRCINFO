@@ -10,6 +10,7 @@ pkgbase = moneymanagerex-git
 	makedepends = git
 	makedepends = boost
 	makedepends = gettext
+	makedepends = lsb-release
 	depends = wxgtk3
 	depends = webkit2gtk
 	optdepends = cups: for printing support
