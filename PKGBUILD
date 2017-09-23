@@ -12,8 +12,9 @@ url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 
 _version=58.0a1
 declare -A _build_id
+
 _build_id=(
-	[id]="$(curl https://ftp.mozilla.org/pub/${_name}/nightly/latest-mozilla-central/${_name}-${_version}.en-US.linux-${CARCH}.txt | head -n1)"
+	[id]="$(curl https://ftp.mozilla.org/pub/${_name}/${_channel}/latest-mozilla-central-l10n/${_name}-${_version}.${_lang}.linux-${CARCH}.checksums | grep -E -o '[[:digit:]]{14}' | sort | tail -n1)"
 	[year]="${_build_id[id]:0:4}"
 	[month]="${_build_id[id]:4:2}"
 	[day]="${_build_id[id]:6:2}"
@@ -40,7 +41,7 @@ optdepends=('pulseaudio: audio support'
             'speech-dispatcher: text-to-speech'
             'startup-notification: support for FreeDesktop Startup Notification')
 
-_url="https://ftp.mozilla.org/pub/firefox/nightly/${_build_id[year]}/${_build_id[month]}/${_build_id[year]}-${_build_id[month]}-${_build_id[day]}-${_build_id[hour]}-${_build_id[min]}-${_build_id[sec]}-mozilla-central-l10n"
+_url="https://ftp.mozilla.org/pub/${_name}/${_channel}/${_build_id[year]}/${_build_id[month]}/${_build_id[year]}-${_build_id[month]}-${_build_id[day]}-${_build_id[hour]}-${_build_id[min]}-${_build_id[sec]}-mozilla-central-l10n"
 _src="${_name}-${_version}.${_lang}.linux-${CARCH}"
 _filename="${_build_id[date]}-${_build_id[time]}-${_src}"
 source=('firefox-nightly.desktop'
