@@ -2,16 +2,16 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=haguichi-indicator
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Provides an indicator for Haguichi"
-arch=('x86_64' 'i686' 'arm' 'armv7h')
-url="http://www.haguichi.net"
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+url="https://www.haguichi.net"
 license=('GPL3')
 depends=('gtk3' 'libappindicator-gtk3' 'haguichi')
-makedepends=('cmake' 'vala')
+makedepends=('meson' 'vala')
 source=("http://launchpad.net/$pkgname/${pkgver%.*}/$pkgver/+download/$pkgname-$pkgver.tar.xz")
-sha256sums=('b79ede33b255b2477316413b1d4bc5b72ad44288e92ed9934f4ab06b2c5ef8cc')
+sha256sums=('3c67456d731dbf6f1c9d61302c48a76cc9975559af0d8bc59c8a57e6f00aa7da')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -23,10 +23,10 @@ prepare() {
 build() {
   cd $pkgname-$pkgver/build
 
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  meson ..
+  ninja
 }
 
 package() {
-  make -C $pkgname-$pkgver/build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C $pkgname-$pkgver/build install
 }
