@@ -1,9 +1,9 @@
 # Maintainer:   AstroFloyd  < AstroFloyd [at] gmail [dt] com >
 pkgname=gwtool
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple tools for working with gravitational waves"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://gwtool.sourceforge.net/"
 license=('GPL3')
 depends=('libsufr')
