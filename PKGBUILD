@@ -3,7 +3,7 @@
 
 pkgname=linuxcnc-sim
 pkgver=2.7.8
-pkgrel=1
+pkgrel=2
 pkgdesc="It can interpret G-code and simulate a CNC machine (formerly EMC2)."
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -11,7 +11,7 @@ url="http://linuxcnc.org/"
 depends=('bc' 'bwidget' 'tcl' 'tk' 'xorg-server' 'python2-imaging' 'tkimg' 'python2-gtkglext' 'tclx' 'boost' 'boost-libs')
 install=$pkgname.install
 _gitname='linuxcnc'
-source=($_gitname::'git://git.linuxcnc.org/git/linuxcnc.git#tag=v2.7.8' 'boost.patch' 'image-to-gcode.patch' 'linuxcnc-sim.sh')
+source=($_gitname::'git://github.com/LinuxCNC/linuxcnc.git#tag=v2.7.8' 'boost.patch' 'image-to-gcode.patch' 'linuxcnc-sim.sh')
 #source=($_gitname::'git://git.linuxcnc.org/git/linuxcnc.git#tag=739df958aca9d246daad36f439c82bfbeac681b9' 'boost.patch')
 md5sums=('SKIP'
         'ba6948dc5dc155849f55039e454cdbd6'
@@ -52,6 +52,8 @@ package() {
   #Stop hiding it from GNOME
   cp -PR $srcdir/linuxcnc/share/applications $pkgdir/usr/share/
   mkdir -p $pkgdir/etc/xdg
+#  echo To avoid conflict with linux-manpages...
+#  mv -v $pkgdir/usr/share/man/man9/abs.9.gz $pkgdir/usr/share/man/man9/linuxcnc_abs.9.gz
   cp -PR $srcdir/linuxcnc/share/menus $pkgdir/etc/xdg/
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
 }
