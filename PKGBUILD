@@ -1,7 +1,7 @@
 # Maintainer: Leonard de Ruijter <dev@systeemdenker.nl>
 
 pkgname=liquidsoap
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://savonet.sourceforge.net/"
 license=('GPL')
 depends=('faad2' 'ffmpeg' 'fluidsynth' 'gavl' 'gd' 'giflib' 'gst-plugins-bad'  'gst-plugins-base'  'gst-plugins-good'  'gst-plugins-ugly' 'libao' 'libfdk-aac' 'liblo' 'libmad' 'libxpm' 'ocaml-camomile' 'openssl' 'portaudio' 'sdl_image' 'sdl_ttf' 'soundtouch' 'taglib')
 makedepends=('dssi' 'frei0r-plugins' 'ladspa' 'libxml-perl' 'ocaml-gd4o' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-ssl' 'ocaml-xmlm' 'ocaml-yojson' 'perl-xml-dom')
-source=(https://github.com/savonet/$pkgname/releases/download/$pkgver/$pkgname-$pkgver-full.tar.bz2
+source=(https://github.com/savonet/$pkgname/releases/download/$pkgver/$pkgname-$pkgver-full.tar.gz
 	PACKAGES
 	$pkgname.service
 	$pkgname.tmpfilesd)
@@ -39,7 +39,7 @@ package() {
   install -Dm0644 $srcdir/$pkgname.tmpfilesd $pkgdir/usr/lib/tmpfiles.d/liquidsoap.conf
 }
 
-md5sums=('8ddd8e35a1f614ed79e5917486da1271'
+md5sums=('0a49f5586b18adf79cfcaaa76b3ce662'
          'f2e0f1966f3258f737300947e729edb6'
          '762d6607ff0889e34b8c874970b38bc9'
          'f9106e5c42cabc21c4c8464d9b1ad63e')
