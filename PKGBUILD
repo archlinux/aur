@@ -2,11 +2,11 @@
 
 pkgname=bennugd-modules
 pkgver=343
-pkgrel=1
+pkgrel=2
 pkgdesc="a programming language to create games (Fenix successor) - modules"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/bennugd/"
-license=('GPL')
+license=('zlib')
 depends=('zlib' 'libdes' 'bennugd-core' 'sdl_mixer' 'libpng')
 source=("http://sourceforge.net/code-snapshots/svn/b/be/bennugd/code/bennugd-code-${pkgver}.zip")
 md5sums=('SKIP')
