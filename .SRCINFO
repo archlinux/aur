@@ -11,7 +11,7 @@ pkgbase = doomretro
 	depends = sdl2_mixer
 	optdepends = timidity++: for music playback
 	source = doomretro-2.5.5.tar.gz::https://github.com/bradharding/doomretro/archive/v2.5.5.tar.gz
-	sha256sums = 5e16e47ca203c8ade3a1e9c0283993ee3db55995d267fbf867ab60c1996a1fb5
+	sha256sums = bd99c257460b5de26aab4d2b1744efa4bfe97cfb023108589171036ce74046bb
 
 pkgname = doomretro
 
