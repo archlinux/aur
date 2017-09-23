@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.1.beta4.r0.gf34394d84e
+pkgver=8.1.beta6.r0.g6cd99718a8
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -29,13 +29,15 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups'
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
   'latte-integrale: integral point count in polyhedra' 'polymake: polymake backend for polyhedral computations'
+  'meataxe: faster matrix arithmetic over finite fields'
   'sirocco: for computing the fundamental group of the complement of a plane curve'
   'three.js: alternative 3D plots engine' 'tachyon: alternative 3D plots engine')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
   mcqd coxeter3 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
 source=(git://git.sagemath.org/sage.git#branch=develop
         env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
-        r-no-readline.patch fes02.patch sagemath-ecl-no-sigfpe.patch sagemath-pynac-0.7.11.patch)
+        r-no-readline.patch fes02.patch sagemath-ecl-no-sigfpe.patch
+        sagemath-detect-igraph.patch sagemath-networkx2.patch)
 sha256sums=('SKIP'
             'e0b5b8673300857fde823209a7e90faecf9e754ab812cc5e54297eddc0c79571'
             '4a2297e4d9d28f0b3a1f58e1b463e332affcb109eafde44837b1657e309c8212'
@@ -46,7 +48,8 @@ sha256sums=('SKIP'
             'ef9f401fa84fe1772af9efee6816643534f2896da4c23b809937b19771bdfbbf'
             'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea'
             'c31809f887bf9acc45c5bd9dd30bb93e73601d3efbf3016594c3c1d241731c8a'
-            '3e23ff449a5a3a032684287722455633762636b93ecfc35fb00e875c69eff240')
+            '90be1d1a90120bd5bd3620769480106ba809dd23e896bc4a3f8931e5340f3cda'
+            'a1a0ab5b794136b518f5f66fe9f1689411fabb3b81560b159eae81f6f69000e3')
 
 pkgver() {
   cd sage
@@ -74,14 +77,16 @@ prepare(){
 # fix Cremona database detection
   sed -e "s|is_package_installed('database_cremona_ellcurve')|os.path.exists('/usr/share/cremona/cremona.db')|" \
    -i src/sage/databases/cremona.py
+# fix python-igraph detection
+  patch -p1 -i ../sagemath-detect-igraph.patch
+# adapt to networkx 2 changes
+  patch -p1 -i ../sagemath-networkx2.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
   patch -p1 -i ../fes02.patch
 # disable SIGFPE for ecl https://trac.sagemath.org/ticket/22191
-  patch -p1 -i ../sagemath-ecl-no-sigfpe.patch
-# fix build with pynac 0.7.11 https://trac.sagemath.org/ticket/23820
-  patch -p1 -i ../sagemath-pynac-0.7.11.patch
+# patch -p1 -i ../sagemath-ecl-no-sigfpe.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*
@@ -141,9 +146,6 @@ package_sagemath-git() {
 
 # Split jupyter kernel
   rm -r "$pkgdir"/usr/share/jupyter
-
-# Drop meataxe extension, it segfaults
-#  rm "$pkgdir"/usr/lib/python2.7/site-packages/sage/matrix/matrix_gfpn_dense.*
 }
 
 package_sagemath-jupyter-git() {

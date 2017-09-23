@@ -1,0 +1,26 @@
+diff --git a/src/sage/graphs/digraph.py b/src/sage/graphs/digraph.py
+index 8c29602da6..e7a185d586 100644
+--- a/src/sage/graphs/digraph.py
++++ b/src/sage/graphs/digraph.py
+@@ -751,7 +751,7 @@ class DiGraph(GenericGraph):
+             self.allow_multiple_edges(multiedges,check=False)
+             self.allow_loops(loops,check=False)
+             self.add_vertices(data.nodes())
+-            self.add_edges((u,v,r(l)) for u,v,l in data.edges_iter(data=True))
++            self.add_edges((u,v,r(l)) for u,v,l in data.edges(data=True))
+         elif format == 'igraph':
+             if not data.is_directed():
+                 raise ValueError("A *directed* igraph graph was expected. To "+
+diff --git a/src/sage/graphs/graph.py b/src/sage/graphs/graph.py
+index b63135d8e6..5775042976 100644
+--- a/src/sage/graphs/graph.py
++++ b/src/sage/graphs/graph.py
+@@ -1199,7 +1199,7 @@ class Graph(GenericGraph):
+             self.allow_loops(loops, check=False)
+             self.allow_multiple_edges(multiedges, check=False)
+             self.add_vertices(data.nodes())
+-            self.add_edges((u,v,r(l)) for u,v,l in data.edges_iter(data=True))
++            self.add_edges((u,v,r(l)) for u,v,l in data.edges(data=True))
+         elif format == 'igraph':
+             if data.is_directed():
+                 raise ValueError("An *undirected* igraph graph was expected. "+
