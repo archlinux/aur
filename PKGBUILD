@@ -15,8 +15,8 @@ source=('https://dl.opendesktop.org/api/files/download/id/1497095343/Solarized-D
 md5sums=('SKIP')
 
 package() {
-    install -Ddm755 $pkgdir/usr/share/grub/themes/
-    cp $srcdir/$_pkgname $pkgdir/usr/share/grub/themes/ -r
+    install -Ddm755 $pkgdir/boot/grub/themes/
+    cp $srcdir/$_pkgname $pkgdir/boot/grub/themes/ -r
 
     echo '======='
     echo -e 'You should:\n1. edit\e[36m /etc/default/grub \e[0m,add (or modify) the line \n \e[1m GRUB_THEME="/boot/grub/themes/solarized-dark-materialized/theme.txt"\e[0m'
