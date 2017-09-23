@@ -3,7 +3,7 @@
 pkgname=brave-bin
 pkgver=0.18.36
 _pkgver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="A web browser that stops ads and trackers by default. Binary release."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -145,7 +145,7 @@ Comment[zh_CN]=访问互联网
 Comment[zh_HK]=連線到網際網路
 Comment[zh_TW]=連線到網際網路
 StartupNotify=true
-StartupWMClass=Brave
+StartupWMClass=brave
 TryExec=brave
 Exec=brave %U
 Terminal=false
