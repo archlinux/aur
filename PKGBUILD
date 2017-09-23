@@ -4,6 +4,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sebastien Piccand <sebcactus gmail com>
 
+pkgbase=handbrake-fdkaac-git
 pkgname=('handbrake-fdkaac-git' 'handbrake-cli-fdkaac-git')
 gitname=('HandBrake')
 pkgver=1.0.0.r495.g2123622dd
