@@ -12,9 +12,8 @@ url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 
 _version=58.0a1
 declare -A _build_id
-
 _build_id=(
-	[id]="$(curl https://ftp.mozilla.org/pub/${_name}/${_channel}/latest-mozilla-central-l10n/${_name}-${_version}.${_lang}.linux-${CARCH}.checksums | grep -E -o '[[:digit:]]{14}' | sort | tail -n1)"
+	[id]="$(curl https://ftp.mozilla.org/pub/${_name}/${_channel}/latest-mozilla-central-l10n/${_name}-${_version}.${_lang}.linux-${CARCH}.checksums | grep '.partial.mar' | cut -f4 | grep -E -o '[[:digit:]]{14}' | sort | tail -n1)"
 	[year]="${_build_id[id]:0:4}"
 	[month]="${_build_id[id]:4:2}"
 	[day]="${_build_id[id]:6:2}"
