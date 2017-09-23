@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?p=1688477'
 license=('CCPL' 'MIT' 'LGPL')
 depends=('qt5-base'
+         'qt5-websockets'
          'vapoursynth'
          )
 makedepends=('git')
