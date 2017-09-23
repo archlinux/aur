@@ -1,0 +1,16 @@
+pkgbase = python-codeintel
+	pkgdesc = Komodo Edit CodeIntel
+	pkgver = 2.0.0b33
+	pkgrel = 1
+	url = https://github.com/Kronuz/CodeIntel
+	arch = any
+	license = MPL 1.1
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/cc/7c/ace9843f71374185b62b2910410a5777e4e0de5d6651a705339c877091c2/CodeIntel-2.0.0b33.tar.gz
+	md5sums = 347d80fd0f859fe58f8d49391a60e530
+
+pkgname = python-codeintel
+
+pkgname = python2-codeintel
+
