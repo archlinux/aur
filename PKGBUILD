@@ -33,8 +33,8 @@ package_jdk8-docs() {
   pkgdesc="Documentation for Oracle Java $_major Development Kit"
   
   # Install
-  install -d "$pkgdir"/usr/share/doc/java/
-  mv docs/* "$pkgdir"/usr/share/doc/java/
+  install -d "$pkgdir"/usr/share/doc/java$_major/
+  mv docs/* "$pkgdir"/usr/share/doc/java$_major/
 
   # License
   install -Dm644 LICENSE-Documentation.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
@@ -44,8 +44,8 @@ package_javafx8-docs() {
   pkgdesc="Documentation for Oracle JavaFX $_major Development Kit"
   
   # Install
-  install -d "$pkgdir"/usr/share/doc/java/javafx/
-  mv api "$pkgdir"/usr/share/doc/java/javafx/
+  install -d "$pkgdir"/usr/share/doc/java/javafx$_major/
+  mv api "$pkgdir"/usr/share/doc/java/javafx$_major/
 
   # License
   install -Dm644 LICENSE-Oracle-Legal-Notices.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
