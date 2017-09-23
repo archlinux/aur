@@ -1,10 +1,10 @@
 pkgbase = watch-with-mpv
 	pkgdesc = The native host for the Watch with MPV Chrome extension.
 	pkgver = 1.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/winneon/watch-with-mpv
 	arch = any
-	license = MIT
+	license = GPL2
 	depends = mpv>=1:0.27.0
 	depends = youtube-dl>=2017.08.06
 	conflicts = watch-with-mpv-git

@@ -1,11 +1,11 @@
 # Maintainer: Jesse Bryan <jesse@winneon.moe>
 pkgname=watch-with-mpv
 pkgver=1.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="The native host for the Watch with MPV Chrome extension."
 arch=("any")
 url="https://github.com/winneon/${pkgname}"
-license=("MIT")
+license=("GPL2")
 conflicts=("${pkgname}-git")
 depends=("mpv>=1:0.27.0" "youtube-dl>=2017.08.06")
 options=("!strip") # Required to keep the packaged node binary intact.
