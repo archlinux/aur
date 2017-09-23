@@ -3,7 +3,7 @@
 
 pkgname=emacs-psvn
 pkgver=2015.07.20_21.42.00
-pkgrel=3
+pkgrel=4
 pkgdesc="Subversion interface for emacs"
 url="http://www.emacswiki.org/cgi-bin/wiki/SubVersion"
 license=('GPL2')
@@ -17,10 +17,9 @@ arch=('any')
 pkgver() {
   printf "%s_%s" $(awk '/The revision date of psvn/ {print $3}' psvn.el| head -1|tr - .|tr -d '"'|tr -d ',') $(awk '/The revision date of psvn/ {print $4}' psvn.el | head -1 | tr -d '"'|tr ':' '.')
 }
-  
+
 build() {
-  cd $srcdir
-  emacs -batch -q -f batch-byte-compile psvn.el
+  emacs -batch -q -f batch-byte-compile ${pkgname#emacs-}.el
 }
 
 package () {
