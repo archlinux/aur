@@ -1,8 +1,8 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=bit-babbler
-pkgver=0.6
-pkgrel=3
+pkgver=0.7
+pkgrel=1
 pkgdesc='BitBabbler hardware TRNG and kernel entropy source support'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -13,7 +13,7 @@ source=("${url}/downloads/${pkgname}_${pkgver}.tar.gz"
         "${url}/downloads/${pkgname}_${pkgver}.tar.gz.asc"
         "seedd.service")
 install="${pkgname}.install"
-sha256sums=('2187f3c783019084b66290e1b5447959418d4859dd3d3897a3b797c04db9e5e0'
+sha256sums=('9541547f0efb8954a3544ca1495b603e920f9b9509c9ee64840a389a0f665e4e'
             'SKIP'
             'c5dbc6f87530c9dee67e7a9df73bffd9b425a3cf03c6a82081f9b7b4f55f59b1')
 validpgpkeys=('8EAF735424339DDDFE835628125831AE66E70556') # BitBabbler Support <support@bitbabbler.org>
