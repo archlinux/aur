@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
 pkgname=vapoursynth-editor-git
-pkgver=r16.115.ga450665
+pkgver=r17.0.gb5b9e9c
 pkgrel=1
 pkgdesc="A simple program for edit/create VapourSynth scripts. (GIT version)"
 arch=('i686' 'x86_64')
@@ -40,6 +40,8 @@ package() {
 
   cd "vapoursynth-editor/build/release-${_arch}bit-gcc"
   install -Dm755 vsedit "${pkgdir}/usr/bin/vsedit"
+  install -Dm755 vsedit-job-server "${pkgdir}/usr/bin/job-server"
+  install -Dm755 vsedit-job-server-watcher "${pkgdir}/usr/bin/vsedit-job-server-watcher"
   install -Dm644 vsedit.svg "${pkgdir}/usr/share/pixmaps/vsedit.svg"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README "${pkgdir}/usr/share/doc/vsedit/README"
