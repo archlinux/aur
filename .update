@@ -36,4 +36,4 @@ cat .SRCINFO # Debug info
 echo -e '\n\n Update git AUR repo'
 git add .
 git commit -m 'micro edtior - nightly update'
-#git push origin master
+git push origin master
