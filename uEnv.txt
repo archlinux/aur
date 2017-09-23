@@ -43,6 +43,6 @@ fdtfile=exynos4412-odroidu3.dtb
 ## 1024x768 without monitor data using generic information
 # optargs=drm_kms_helper.edid_firmware=edid/1024x768.bin
 
-setbootargs=setenv bootargs console=${console} ${optargs} root=${mmcroot}
+setbootargs=setenv bootargs console=${console} console=tty0 ${optargs} root=${mmcroot} consoleblank=180
 
 mmcboot=run setbootargs; load mmc ${bootpart} ${loadaddr} ${bootfile};load mmc ${bootpart} ${rdaddr} ${rdfile};load mmc ${bootpart} ${fdtaddr} ${fdtfile};bootz ${loadaddr} ${rdaddr} ${fdtaddr}

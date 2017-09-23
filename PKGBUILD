@@ -25,7 +25,7 @@ md5sums=('SKIP'
 	 '4da91890b628b52e195639f2335a1556'
 	 '8b51e60c925e54b36747f36d9ae7dd37'
 	 'de302b1a6bc612f6eb95714341003ac0'
-	 'aefb05e29ab94ad70e857d174e372898')
+	 '44f2b32fbb2d064a365af698e8f78739')
 
 _repodir=linux-odroid-public
 
