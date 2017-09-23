@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/arcan-git/
+/*.pkg.tar
+/*.pkg.tar.*

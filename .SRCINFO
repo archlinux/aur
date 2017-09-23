@@ -1,0 +1,30 @@
+pkgbase = arcan-git
+	pkgdesc = Game Engine meets a Display Server meets a Multimedia Framework
+	pkgver = 0.5.1.r408.gc849baf2
+	pkgrel = 1
+	url = https://arcan-fe.com/
+	arch = x86_64
+	license = GPL2
+	license = LGPL
+	license = custom:BSD
+	makedepends = cmake
+	makedepends = ruby
+	depends = freetype2
+	depends = harfbuzz
+	depends = harfbuzz-icu
+	depends = mesa
+	depends = luajit
+	depends = sqlite
+	depends = libxkbcommon
+	depends = libvncserver
+	depends = libusb
+	depends = openal
+	depends = ffmpeg
+	depends = apr
+	provides = arcan
+	conflicts = arcan
+	source = arcan-git::git+https://github.com/letoram/arcan.git
+	sha512sums = SKIP
+
+pkgname = arcan-git
+
