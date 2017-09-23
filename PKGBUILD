@@ -3,7 +3,7 @@
 
 pkgname=firefox-beta-bin
 _pkgname=firefox-beta
-pkgver=56.0rc3
+pkgver=56.0rc4
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -28,8 +28,8 @@ if [[ $_build = ? ]]; then
   source_x86_64=("firefox-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2")
 fi
 sha256sums=('bf7fc4daf728dff72baedc91f6f54db3b9473a5bcef34fbc6e06af562a27c97d')
-sha256sums_i686=('093e2fa6e60b65af7830e8347a613e18fb9cc8c9ee94b9ea00fe0f134e2a1e16')
-sha256sums_x86_64=('78d1380f7aad75a05d02667fe71e9a03b7a7eb94152380af15085d16a6bd1c44')
+sha256sums_i686=('cb871b65af0ae75330ef43b0d688a8c21116fdbbde1d71f9e7fbe273b49c78b0')
+sha256sums_x86_64=('acc8b47115ac439a3d46440bc66765842e0f6a0ce6ad3fa75c4d3d39cc90d9ad')
 
 package() {
   # Create directories
