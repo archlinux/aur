@@ -26,7 +26,7 @@ makedepends=('jdk7-openjdk' 'libxp' 'libxslt'
 
 _icedtea_url=http://icedtea.classpath.org/download
 _drops_url=${_icedtea_url}/drops/icedtea7/${_icedtea_ver}
-source=(${_icedtea_url}/source/icedtea-${_icedtea_ver}.tar.gz
+source=(${_icedtea_url}/source/icedtea-${_icedtea_ver}.tar.xz{,.sig}
         icedtea_${_icedtea_ver}_openjdk.tar.bz2::${_drops_url}/openjdk.tar.bz2
         icedtea_${_icedtea_ver}_corba.tar.bz2::${_drops_url}/corba.tar.bz2
         icedtea_${_icedtea_ver}_jaxp.tar.bz2::${_drops_url}/jaxp.tar.bz2
@@ -37,7 +37,11 @@ source=(${_icedtea_url}/source/icedtea-${_icedtea_ver}.tar.gz
         fontconfig-paths.diff
         openjdk7_nonreparenting-wm.diff)
 
-sha256sums=('55dc6f3cf3a49745132c53592f0980c1aca37385c12dce33fea229471979c88e'
+# EdDSA key may require `keyserver sks-keyservers.net` in GPG config
+validpgpkeys=('5132579DD1540ED23E04C5A0CFDA0F9B35964222') # Andrew John Hughes
+
+sha256sums=('d0922d6ecffca8e246a0b60db6e1d0c5ff924a8d5a86362991e2d4269d0a9ee4'
+            'SKIP'
             '5cacafbe543ad4b9179ab1cbfdb7d9baf8aa04d954510b9e7baf0bfef7db6878'
             '0049439ea08f8391c0dae464ceb249f0af9d8e70c68142a734ceb25fa145e764'
             '9fbd60855406879b898843d7eeac2a5df64b0ccdeb927c615c5be648b8fac70b'
