@@ -1,7 +1,7 @@
 # Maintainer: liberodark
 
 pkgname=tusk
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Refined Evernote desktop app"
 arch=('x86_64')
