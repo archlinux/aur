@@ -3,8 +3,8 @@
 # Contributor: Thorsten Toepper <atsutane@freethoughts.de>
 
 pkgname=newsboat
-pkgver=2.10
-pkgrel=2
+pkgver=2.10.1
+pkgrel=1
 pkgdesc='RSS feed reader for the text console with special Podcast support'
 url=https://newsboat.org
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('ruby')
 makedepends=('asciidoc' 'docbook-xsl' 'swig')
 options=('docs' '!libtool')
 source=("$url/releases/$pkgver/newsboat-$pkgver.tar.xz"{,.asc})
-sha512sums=('1d7efacd4614572fed490f828c8e70f31dd7d4897ff882a6a79cfbf8295909e24aabcf39f927bec6842fac9d7beb3ea6f8db34cf54efd29ea8e9188f5a1afe8c'
+sha512sums=('f2e9e9f60aa3996977fd13cb54140ae035da0ad6e47c6f50646bf0f67e241fe27a7938879a489322a738fbcf34ac21fb899558435e0248b05d469d80e2ab0e1e'
             'SKIP')
 validpgpkeys=('B8B1756A0DDBF0760CE67CCF4ED6CD61932B9EBE') # Newsboat project
 
