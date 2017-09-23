@@ -7,7 +7,7 @@ pkgname='ros-kinetic-camera-calibration-parsers'
 pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-roscpp
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="image_common-release-release-kinetic-camera_calibration_parsers-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_common-release/archive/release/kinetic/camera_calibration_parsers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('802879de639a9af752579915e8ebb02c17c3b21c17805cf1fa0e1492d88b5862')
+sha256sums=('fdc72b82a4126e9c842bee212c5d44b181c37259cb50681debd6dfb533bb6400')
 
 build() {
   # Use ROS environment variables
