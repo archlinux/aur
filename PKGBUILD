@@ -20,7 +20,7 @@ package() {
   tar xvf cudatext-linux-gtk2-amd64-1.19.2.0.tar.gz
   mkdir -p "$pkgdir/usr/share/cudatext"
   cp -r "cudatext-linux-gtk2-amd64-1.19.2.0/." "$pkgdir/usr/share/cudatext"
-  chmod 777 -R "$pkgdir/usr/share/cudatext"
+  chmod 775 -R "$pkgdir/usr/share/cudatext"
   install -vDm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
   install -vDm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 }
