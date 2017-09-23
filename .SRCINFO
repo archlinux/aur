@@ -1,0 +1,23 @@
+pkgbase = hpp-model-urdf-git
+	pkgdesc = Implements a library that allows you to load an hpp-model robot by parsing an urdf robot model file.
+	pkgver = 3.2.r166.c6eff38
+	pkgrel = 1
+	url = https://github.com/humanoid-path-planner/hpp-model-urdf-git
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	depends = assimp
+	depends = hpp-util-git
+	depends = hpp-model-git
+	depends = urdf-git
+	depends = resource-retriever
+	depends = urdfdom
+	depends = srdfdom-git
+	provides = hpp-model-urdf
+	conflicts = hpp-model-urdf
+	source = hpp-model-urdf::git://github.com/nim65s/hpp-model-urdf.git
+	md5sums = SKIP
+
+pkgname = hpp-model-urdf-git
+
