@@ -4,7 +4,7 @@
 
 pkgname=gtk2-patched-filechooser-icon-view
 pkgver=2.24.31
-_patchver=064d3d5452cf8edf4cd69cab3bbbd9834a29ea66
+_patchver=bfae699e7bd6ee70948cf056c34021b875a4b153
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="GTK2 patched with ahodesuka's filechooser-icon-view patch."
