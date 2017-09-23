@@ -2,7 +2,7 @@
 
 pkgname=icecast-kh
 pkgver=2.4.0_kh6
-pkgrel=1
+pkgrel=2
 pkgdesc='The KH branche extends the official release of Icecast with features that may be (if found to be working out well) merged into the next official release.'
 arch=('i686' 'x86_64')
 url='http://karlheyes.github.com'
@@ -27,7 +27,7 @@ _srcpath=$pkgname-${pkgname/-*}-${pkgver//_/-}
 build() {
   cd "$srcdir/$_srcpath"
   patch -Np1 -i "${srcdir}/start-by-icecast.patch"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-openssl=/usr/bin/openssl
   make 
 }
 
