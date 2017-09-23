@@ -13,7 +13,7 @@ license=('GPL')
 depends=('qt5-script' 'qt5-svg' 'qt5-webkit' 'glu' 'procps-ng' 'python')
 makedepends=('qt5-tools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ugeneunipro/ugene/archive/${pkgver}.tar.gz")
-sha256sums=('ef523e1987fc5ec690083b52459536c848b079453804aeadec03b76fedef4d42')
+sha256sums=('edc6460434c30f566c78f94615869198e25330d641eee71de1ed5be94ca86839')
 
 build() {
   cd ${pkgname}-${pkgver}
