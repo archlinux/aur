@@ -1,0 +1,30 @@
+pkgbase = clonk_rage-git
+	pkgdesc = An entertaining, action-packed game of strategy, tactics, and skill.
+	pkgver = r66.aeee02d
+	pkgrel = 1
+	url = http://clonk.de
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = ISC
+	license = CCPL:by-nc
+	license = custom:trademark
+	makedepends = git
+	depends = glu
+	depends = libxpm
+	depends = sdl_mixer
+	depends = gtk2
+	depends = libpng12
+	depends = libjpeg-turbo
+	depends = desktop-file-utils
+	depends = timidity++
+	depends = glew
+	provides = clonk_rage-git,
+	provides = clonk_rage
+	conflicts = clonk_rage,
+	conflicts = openclonk
+	source = clonk_rage-git::git+https://git.maxmitti.tk/lc#branch=master
+	md5sums = SKIP
+
+pkgname = clonk_rage-git
+
