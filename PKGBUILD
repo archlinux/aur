@@ -20,11 +20,6 @@ pkgver() {
   date '+%Y%m%d'
 }
 
-build() {
-    cd "$srcdir/$_pkgname"
-    msg "Nothing to build.."
-}
-
 package() {
 	cd "$srcdir/$_pkgname"
 	
