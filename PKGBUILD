@@ -1,7 +1,7 @@
-pkgname=libctru-git
+pkgname=libctru-fixed-git
 _gitname=ctrulib
 _libname=libctru
-pkgver=24fd71c
+pkgver=v1.1.0.316.gfa6eb5db
 pkgrel=1
 pkgdesc="Library for Nintendo 3DS homebrew development"
 arch=('any')
@@ -9,10 +9,11 @@ url="https://github.com/smealum/ctrulib"
 license=('custom: zlib')
 depends=('devkitarm')
 makedepends=('git')
-provides=('libctru')
-conflicts=('libctru')
+provides=('libctru' 'libctru-git')
+conflicts=('libctru' 'libctru-git')
 source=('ctrulib::git://github.com/smealum/ctrulib')
 md5sums=('SKIP')
+options=(staticlibs !strip)
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -21,7 +22,7 @@ pkgver() {
 
 build() {
   source /etc/profile.d/devkitarm.sh
-  make -C "${srcdir}/${_gitname}/${_libname}"
+  make -j $(nproc) -C "${srcdir}/${_gitname}/${_libname}"
 }
 
 package() {
