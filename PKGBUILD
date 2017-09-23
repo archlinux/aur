@@ -1,11 +1,11 @@
 pkgname=perl-json-rpc
 _realname='JSON-RPC'
 pkgver=1.06
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl implementation of JSON-RPC 1.1 protocol"
 arch=('i686' 'x86_64')
 conflicts=('perl-json-rpc-legacy')
-url='https://search.mcpan.org/dist/JSON-RPC'
+url='http://search.cpan.org/~dmaki/JSON-RPC'
 license=('GPL' 'PerlArtistic')
 depends=('perl'
          'perl-libwww'
@@ -14,6 +14,7 @@ depends=('perl'
          'perl-json'
          'perl-cgi'
          )
+makedepends=('perl-module-build')
 checkdepends=('perl-test-pod')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/D/DM/DMAKI/JSON-RPC-${pkgver}.tar.gz")
