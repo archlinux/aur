@@ -1,66 +1,92 @@
 # Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
-# Forked from @xenom PKGBUILD, contributor of firefox-nightly
+# Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
+# Contributor: Cedric MATHIEU <me.xenom @ gmail.com>
 
 # Before you complain about unverifiable signature, please read Allan's post:
 # http://allanmcrae.com/2015/01/two-pgp-keyrings-for-package-management-in-arch-linux/
 # TL;DR: gpg --keyserver pgp.mit.edu --recv-keys 14F26682D0916CDD81E37B6D61B7B526D98F0353
+# TL;DR: gpg --keyserver pgp.mit.edu --recv-keys BBBEBDBB24C6F355
 
 _name=firefox
 _channel=nightly
 _lang=es-MX
-pkgname="${_name}-${_channel}-${_lang,,}"
-pkgdesc="Standalone web browser from mozilla.org, nightly build (${_lang})"
-url='http://www.mozilla.org/projects/firefox'
-pkgver=57.0a1.20170816
-_version=57.0a1
+_pkgname=${_name}-${_channel}
+pkgname=${_pkgname}-${_lang,,}
+pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
+url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
+_version=58.0a1
+pkgver=58.0a1.20170923
 pkgrel=1
 arch=('i686' 'x86_64')
 conflicts=('firefox-nightly')
 license=('MPL' 'GPL' 'LGPL')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
 optdepends=('pulseaudio: audio support'
-  'ffmpeg: h.264 video'
-  'gtk2: flash plugin support'
-  'hunspell: spell checking'
-  'hyphen: hyphenation'
-  'libnotify: notification integration'
-  'networkmanager: location detection via available WiFi networks'
-  'speech-dispatcher: text-to-speech'
-  'startup-notification: support for FreeDesktop Startup Notification')
-_file="${_name}-${_version}.en-US.linux"
-_file_l10n="${_name}-${_version}.${_lang}.linux"
-_srcurl="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central"
-_srcurl_l10n="${_srcurl}-l10n"
-source=(
-  'firefox-nightly.desktop' 'firefox-nightly-safe.desktop' 'vendor.js'
-  "${_srcurl_l10n}/${_file_l10n}-${CARCH}.tar.bz2"
-  "${_srcurl}/${_file}-${CARCH}.txt")
+            'ffmpeg: h.264 video'
+            'gtk2: flash plugin support'
+            'hunspell: spell checking'
+            'hyphen: hyphenation'
+            'libnotify: notification integration'
+            'networkmanager: location detection via available WiFi networks'
+            'speech-dispatcher: text-to-speech'
+            'startup-notification: support for FreeDesktop Startup Notification')
+_url="https://ftp.mozilla.org/pub/${_name}/nightly/latest-mozilla-central"
+_urlsrc="${_url}-l10n"
+_src="${_name}-${_version}.${_lang}.linux"
+_srctxt="${_name}-${_version}.en-US.linux"
+_filename="$(date +%Y%m%d)-${_src}"
+source=("${_pkgname}.desktop" 'vendor.js')
+source_i686=("${_filename}-i686.tar.bz2"::"${_urlsrc}/${_src}-i686.tar.bz2"
+             "${_filename}-i686.tar.bz2.asc"::"${_urlsrc}/${_src}-i686.tar.bz2.asc"
+             "${_filename}-i686.txt"::"${_url}/${_srctxt}-i686.txt")
+source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_urlsrc}/${_src}-x86_64.tar.bz2"
+               "${_filename}-x86_64.tar.bz2.asc"::"${_urlsrc}/${_src}-x86_64.tar.bz2.asc"
+               "${_filename}-x86_64.txt"::"${_url}/${_srctxt}-x86_64.txt")
 sha512sums=(
-  '2d8feaf128775efbab958e2614613cd45a7a172a3c687b6af054d61eabd3592cf1dd1c85ca92bff82834f43eb7ebedeb4f8c2fe6f116b6a22eb14a7ff98a1f25'
-  '88510ea986776bb8ed9fc8c1217728f8cf0f8b3a8aa4dbc07608e7b2803cd13dcb6809363208fd9531ccee5a9ba2cee39af498a1279d3e1268511982ecb559ec'
-  'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
-  '47f6f4f8e5830492b602acd6563f6bc2736793faad243f00b6118e3ace0517b9f4ee755b07767878639f87910b96a357731c74707c12345be9a11a7dfc8ee369'
-  '0bc94b7d8a96d5384e916afc5500c04cab32b4db8549e175f38e430aaec18e6c35bff72aea8afe3b762aaa1a02321fd1274c3f8744ce73e5c4634af6d075d47f')
-validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
+    'b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
+    'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
+)
+sha512sums_i686=('SKIP' 'SKIP' 'SKIP')
+sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
 pkgver() {
-  echo "${_version}.$(head -n1 "${srcdir}/${_file}-${CARCH}.txt" | cut -c-8)"
+  echo "${_version}.$(head -n1 ${_filename}-${CARCH}.txt | cut -c-8)"
 }
 
 package() {
-  #  uncomment this line to remove these
-  #  rm -rf firefox/{extensions,plugins,searchplugins}
-  install -d "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
-  cp -r firefox "${pkgdir}/opt/firefox-${_version}"
+  OPT_PATH="opt/${_pkgname}"
 
-  ln -s "/opt/firefox-${_version}/firefox" \
-    "${pkgdir}/usr/bin/firefox-nightly"
-  install -m644 "${srcdir}"/{firefox-nightly.desktop,firefox-nightly-safe.desktop} \
-    "${pkgdir}/usr/share/applications/"
-  install -m644 "${srcdir}/firefox/browser/icons/mozicon128.png" \
-    "${pkgdir}/usr/share/pixmaps/${pkgname}-icon.png"
-  install -Dm644 "${srcdir}/vendor.js" \
-    "${pkgdir}/opt/firefox-${_version}/browser/defaults/preferences/vendor.js"
+  # Install the package files
+  install -d "${pkgdir}"/{usr/bin,opt}
+  cp -r ${_name} "${pkgdir}"/${OPT_PATH}
+  ln -s "/${OPT_PATH}/${_name}" "${pkgdir}"/usr/bin/${_pkgname}
+
+  # Install .desktop files
+  install -Dm644 "${srcdir}"/${_pkgname}.desktop -t \
+    "${pkgdir}"/usr/share/applications
+
+  # Install icons
+  SRC_LOC="${srcdir}"/${_name}/browser
+  DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
+
+  for i in 16 32 48
+  do
+    install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png \
+      "${DEST_LOC}"/${i}x${i}/apps/${_pkgname}.png
+  done
+
+  install -Dm644 "${SRC_LOC}"/icons/mozicon128.png \
+    "${DEST_LOC}"/128x128/apps/${_pkgname}.png
+
+  # Disable auto-updates
+  install -Dm644 "${srcdir}"/vendor.js -t \
+    "${pkgdir}"/${OPT_PATH}/browser/defaults/preferences
+
+  # Use system-provided dictionaries
+  rm -rf "${pkgdir}"/${OPT_PATH}/{dictionaries,hyphenation}
+  ln -sf /usr/share/hunspell "${pkgdir}"/${OPT_PATH}/dictionaries
+  ln -sf /usr/share/hyphen "${pkgdir}"/${OPT_PATH}/hyphenation
 }
 
 # vim:set ts=2 sw=2 cc=80 et:
