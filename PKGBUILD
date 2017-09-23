@@ -6,37 +6,33 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
-pkgver=2.28.0
-_basever=2.28
-pkgrel=4
-_commit=09e514a92b6bb7c910051a7fafc9fded8a687848
+pkgver=2.29.0
+_basever=2.29
+pkgrel=1
+_commit=dd9a28c0966d13924fbd1096a724ae334954d830
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
-arch=('i686' 'x86_64')
-url="http://www.gnu.org/software/binutils/"
-license=('GPL')
-depends=('glibc>=2.25' 'zlib')
-options=('staticlibs' '!distcc' '!ccache')
+arch=(i686 x86_64)
+url='http://www.gnu.org/software/binutils/'
+license=(GPL)
+depends=('glibc>=2.26' zlib)
+options=(staticlibs !distcc !ccache)
 source=(#git://sourceware.org/git/binutils-gdb.git#commit=${_commit}
-        http://ftp.gnu.org/gnu/binutils/binutils-${_basever}.tar.bz2
-        binutils-${_commit}.patch)
-md5sums=('9e8340c96626b469a603c15c9d843727'
-         'a9222673b14b37df920f25dbe60c1ae2')
+        http://ftp.gnu.org/gnu/binutils/binutils-${_basever}.tar.bz2)
+md5sums=('23733a26c8276edbb1168c9bee60e40e')
 
 prepare() {
-  cd binutils-${_basever}
+  mkdir -p binutils-build
 
-  patch -p1 -i ${srcdir}/binutils-${_commit}.patch
+  cd "binutils-$_basever"
 
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
-
-  mkdir ${srcdir}/binutils-build
 }
 
 build() {
   cd binutils-build
 
-  ../binutils-${_basever}/configure \
+  "$srcdir/binutils-${_basever}/configure" \
       --prefix=/usr \
       --program-prefix=${_target}- \
       --with-lib-path=/usr/lib/binutils/${_target} \
@@ -52,13 +48,13 @@ build() {
       --with-pic \
       --disable-werror \
       --disable-gdb \
+      --with-system-zlib \
       --disable-sim \
       --target=${_target} \
       --host=${CHOST} \
       --build=${CHOST}
 
   make configure-host
-
   make tooldir=/usr
 }
 
@@ -72,9 +68,9 @@ check() {
 
 package() {
   cd binutils-build
-  make prefix=${pkgdir}/usr tooldir=${pkgdir}/usr install
+  make prefix="$pkgdir/usr" tooldir="$pkgdir/usr" install
 
   # Remove unwanted files
-  rm -rf ${pkgdir}/usr/share
-  rm -f ${pkgdir}/usr/bin/{ar,as,ld,nm,objdump,ranlib,readelf,strip,objcopy}
+  rm -rf "$pkgdir/usr/share"
+  rm -f "$pkgdir/usr/bin/"{ar,as,ld,nm,objdump,ranlib,readelf,strip,objcopy}
 }
