@@ -14,7 +14,6 @@ source=('git://github.com/v--/wintoggle.git')
 sha256sums=('SKIP')
 
 build() {
-    tar --gunzip --extract --file v$pkgver.tar.gz
     cd "$pkgname-$pkgver"
     make wintoggle
 }
