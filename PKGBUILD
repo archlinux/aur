@@ -7,7 +7,7 @@
 
 pkgname=doomsday
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced Doom engine that supports DOOM, Heretic and Hexen."
 url="http://dengine.net/"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('doom1-wad: Doom shareware',
             'hexen1-wad: Hexen shareware'
 		    'soundfont-fluid')
 source=("http://files.dengine.net/archive/doomsday-$pkgver.tar.gz")
-sha256sums=('eb7b37035637a2ef36cf8128f1380be01838b4576c3b5a962b107a67bedc55fd')
+sha256sums=('b1321edf9df4d955601a2cc8d71d2443bd3007a943630f5d473f810678de65d2')
 
 build() {
         
@@ -45,5 +45,4 @@ package() {
     # For Music
     echo "Do not forget to start fluidsynth service after adding your soundfonts to etc/conf.d/fluidsynth (SOUND_FONT line) if you want to use fluidsynth music output"
 }
-
 
