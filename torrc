@@ -1,5 +1,3 @@
-## CONFIGURED FOR ARCHLINUX
-
 ## Configuration file for a typical Tor user
 ## Last updated 22 September 2015 for Tor 0.2.7.3-alpha.
 ## (may or may not work for much older or much newer versions of Tor.)
@@ -14,11 +12,11 @@
 ## Tor will look for this file in various places based on your platform:
 ## https://www.torproject.org/docs/faq#torrc
 
-## Tor opens a socks proxy on port 9050 by default -- even if you don't
-## configure one below. Set "SocksPort 0" if you plan to run Tor only
+## Tor opens a SOCKS proxy on port 9050 by default -- even if you don't
+## configure one below. Set "SOCKSPort 0" if you plan to run Tor only
 ## as a relay, and not make any local application connections yourself.
-SocksPort 127.0.0.1:9050 # Default: Bind to localhost:9050 for local connections.
-#SocksPort 192.168.0.1:9100 # Bind to this address:port too.
+SOCKSPort 127.0.0.1:9050 # Default: Bind to localhost:9050 for local connections.
+#SOCKSPort 192.168.0.1:9100 # Bind to this address:port too.
 
 ## Entry policies to allow/deny SOCKS requests based on IP address.
 ## First entry that matches wins. If no SOCKSPolicy is set, we accept
