@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=v2.0.11.r26.g6eb4d682
+pkgver=v2.0.12.rc1.r1.g4a823b7e
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (Latest devel version)" 
 arch=(any)
@@ -25,7 +25,7 @@ build(){
   npm rebuild node-sass
   npm run build
   npm run sass:build process-index --parallel sass:watch index:watch browsersync
-  rm -rf {.git*,.eslint*,.travis*}
+  rm -rf {.babelrc,.editorconfig,.eslint*,.github,.travis*}
 # npm prune --production
   asar pack ../${_pkgname} ../${_pkgname}-next.asar
 }
