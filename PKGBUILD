@@ -1,9 +1,9 @@
 # Maintainer:   AstroFloyd  < AstroFloyd [at] gmail >
 pkgname=libsufr
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A LIBrary containing Some Useful Fortran Routines"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://libsufr.sourceforge.net/"
 license=('GPL3')
 depends=('gcc-libs')
