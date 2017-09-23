@@ -3,13 +3,13 @@
 # Contributor: Frank Endres <frankendres@tuxfamily.org>
 # Maintainer: 4javier <4javiereg4_at@_gmail_dot._com>
 pkgname=simpleburn
-pkgver=1.8.2
-pkgrel=1
+pkgver=1.8.3.1
+pkgrel=2
 pkgdesc="A simple GTK+ application for burning CDs and DVDs"
 arch=('i686' 'x86_64')
 url="http://simpleburn.tuxfamily.org/"
 license=('CeCILL')
-depends=('cdrtools' 'gtk3' 'libdvdread' 'libcddb' 'libcdio')
+depends=('gtk3' 'libdvdread' 'libcdio')
 makedepends=('cmake>=2.8' 'pkgconfig')
 optdepends=('mpg123: needed for burning audio CD from MP3 encoded files (or mpg321)'
 			'vorbis-tools: needed for burning audio CD from Vorbis encoded files'
