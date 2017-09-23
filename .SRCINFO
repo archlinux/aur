@@ -1,0 +1,23 @@
+pkgbase = matcha-terminal-git
+	pkgdesc = A simple VTE base terminal emulator.
+	pkgver = r20.52f0156
+	pkgrel = 1
+	url = https://github.com/green7ea/matcha-terminal
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkg-config
+	depends = gtk3
+	depends = glibc
+	depends = vte3
+	depends = desktop-file-utils
+	provides = matcha-terminal
+	conflicts = matcha-terminal
+	source = git+https://github.com/green7ea/matcha-terminal.git
+	md5sums = SKIP
+
+pkgname = matcha-terminal-git
+
