@@ -1,0 +1,47 @@
+HOTP-TOTP.PHP v4.4.1
+====================
+
+Introduction
+------------
+
+This project consists of two PHP files:
+
+	* index.php
+	* index_oauth.php
+
+These files generate HTML forms that can be used to generate one-time password
+values based on:
+
+	* HOTP: An HMAC-Based One-Time Password Algorithm (rfc4226)
+	* TOTP: Time-Based One-Time Password Algorithm (rfc6238)
+	* OCRA: OATH Challenge-Response Algorithm (rfc6287)
+
+Further, it also supports the client side of the OAuth protocols (1.0a
+and 2.0).
+
+
+How to Use
+----------
+
+1.	Copy `index.php' and `index_oauth.php' to a location readable by a
+PHP-aware web server, such as ~/public_html in your home directory
+(assuming `User Home Directories' are enabled).
+
+
+2.	Open `index.php' in your web-browser.
+
+3.	Read the instructions on the generated page, choose the appropriate
+algorithm and click "NOW!"
+
+
+Notes
+-----
+
+A newer GSMA-side Mobile Connect version has been published since this 
+version of HOTP-TOTP.PHP was released.
+
+The next release of this software will include new GSM-specific OpenID
+Connect code.
+
+Thank you!
+
