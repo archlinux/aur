@@ -1,6 +1,5 @@
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 # Contributor: Laurie Clark-Michalek <bluepepper@archlinux.us>
-# Contributor: Frank Endres <frankendres@tuxfamily.org>
 # Maintainer: 4javier <4javiereg4_at@_gmail_dot._com>
 pkgname=simpleburn
 pkgver=1.8.3.1
@@ -13,23 +12,28 @@ depends=('gtk3' 'libdvdread' 'libcdio')
 makedepends=('cmake>=2.8' 'pkgconfig')
 optdepends=('mpg123: needed for burning audio CD from MP3 encoded files (or mpg321)'
 			'vorbis-tools: needed for burning audio CD from Vorbis encoded files'
-			'lame: needed for cd audio extraction to mp3'
-			'gnome-mplayer: needed for video and audio preview (or smplayer)'
+			'normalize: used in encoding if available'
+			'mpg321: alternative to mpg123'
+			'mplayer: needed for video DVD extraction'
 			'mencoder: needed for video DVD extraction')
 source=(http://simpleburn.tuxfamily.org/IMG/gz/$pkgname-$pkgver.tar.gz )
-md5sums=('9df96114ff3eb71ad3b9f16eb6848f3a')
+md5sums=('b13d5d5a7f78c53d626cf04e2be815f4')
 
 
 build() {
 	cd $pkgname-$pkgver
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr\
-	#-DGTK2=ON
-	# uncomment last line above and strip 'gtk3' from depends array if you want to build against gtk2 
+	-DGTK3=ON
+	# comment out last line above and strip 'gtk3' from depends array if you want to build against gtk2 
 	make || return 1
 }
 package() {
-	cd $pkgname-$pkgver	
+	cd $pkgname-$pkgver
+		
 	make DESTDIR="$pkgdir" install
+
 	mv -f "$pkgdir"/usr/doc "$pkgdir"/usr/share/
-	install -Dm644 $srcdir/$pkgname-$pkgver/doc/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+	install -Dm644 $srcdir/$pkgname-$pkgver/doc/LICENSE\
+	"$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
