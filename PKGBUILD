@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://liri.io"
 license=('LGPL3')
 depends=('qt5-base' 'qt5-declarative' 'qt5-tools' 'solid' 'networkmanager-qt'
-         'modemmanager-qt' 'pulseaudio' 'fluid-git' 'libliri-git')
+         'modemmanager-qt' 'pulseaudio' 'polkit-qt5' 'fluid-git' 'libliri-git')
 makedepends=('git' 'liri-qbs-shared-git')
 options=(debug !strip)
 conflicts=('vibe')
