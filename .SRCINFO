@@ -1,6 +1,6 @@
 pkgbase = handbrake-fdkaac-git
 	pkgver = 1.0.0.r495.g2123622dd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HandBrake/HandBrake
 	arch = i686
 	arch = x86_64
