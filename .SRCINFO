@@ -1,15 +1,14 @@
 pkgbase = emacs-adoc-mode
 	pkgdesc = Emacs major mode for editing asciidoc files
 	pkgver = 0.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/sensorflo/adoc-mode
 	install = emacs-adoc-mode.install
 	arch = any
 	license = GPL
-	depends = emacs
-	depends = emacs-markup-faces>=1.0.0
-	source = git+http://github.com/sensorflo/adoc-mode#commit=995785538489e573ad208f73c4e833ba60c5cfdb
-	md5sums = SKIP
+	depends = emacs-markup-faces
+	source = emacs-adoc-mode-0.6.6.tar.gz::http://github.com/sensorflo/adoc-mode/archive/V0.6.6.tar.gz
+	sha256sums = 4ad811081ab69caa83e3f02f68b75a41b9031a1715720045cdd33801523b930f
 
 pkgname = emacs-adoc-mode
 
