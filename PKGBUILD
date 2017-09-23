@@ -1,9 +1,9 @@
 # Maintainer:   AstroFloyd  < AstroFloyd [at] gmail >
 pkgname=soltrack
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, fast and accurate C/C++ routine to compute the position of the Sun"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://soltrack.sourceforge.net/"
 license=('LGPL3')
 depends=('glibc')
