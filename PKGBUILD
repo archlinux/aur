@@ -23,8 +23,7 @@ backup=('etc/vimrc')
 sha256sums=('c4de0175fb00f1a24cbc32d8026598e98dfe3182c597fd182038ec9b13507322'
             'b16e85e457397ab2043a7ee0a3c84307c6b4eac157fd0b721694761f25b3ed5b'
             '0cf8b42732111d0c66c3908a76d832736e8f8dc3abef81cb092ddf84cb862ea2'
-            '9f1c00aa96458caa2cdfc02164e58bc08bcfcbe5aa95dc618d2fc7e1b12b9a12'
-            '198505d7a7a3f2245034174f015e77641c7c7427ed1c8a9b5eb38105eed6f83f')
+            '9f1c00aa96458caa2cdfc02164e58bc08bcfcbe5aa95dc618d2fc7e1b12b9a12')
 install=gvim.install
 
 prepare() {
