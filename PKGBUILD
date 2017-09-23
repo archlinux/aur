@@ -236,7 +236,9 @@ package_jre7-openjdk-infinality() {
 
   # Install desktop files.
   install -d -m755 "${pkgdir}/usr/share/applications"
-  install -m644 "${srcdir}/icedtea-${_icedtea_ver}/policytool.desktop" "${pkgdir}/usr/share/applications"
+  sed "s#_BINDIR_#${_jvmdir}/jre/bin#" \
+    "${srcdir}/icedtea-${_icedtea_ver}/policytool.desktop" \
+    > "${pkgdir}/usr/share/applications/policytool.desktop"
 
   # link license
   install -d -m755 "${pkgdir}/usr/share/licenses"
@@ -283,7 +285,9 @@ package_jdk7-openjdk-infinality() {
 
   # Install desktop files.
   install -d -m755 "${pkgdir}/usr/share/applications"
-  install -m644 "${srcdir}/icedtea-${_icedtea_ver}/jconsole.desktop" "${pkgdir}/usr/share/applications"
+  sed "s#_BINDIR_#${_jvmdir}/bin#" \
+    "${srcdir}/icedtea-${_icedtea_ver}/jconsole.desktop" \
+    > "${pkgdir}/usr/share/applications/jconsole.desktop"
 
   # Temporarily fixing FS#35141
   chmod go+r "${pkgdir}${_jvmdir}/lib/sa-jdi.jar"
