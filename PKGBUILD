@@ -8,8 +8,8 @@
 pkgname=('jre7-openjdk-headless-infinality' 'jre7-openjdk-infinality' 'jdk7-openjdk-infinality')
 pkgbase=java7-openjdk
 _java_ver=7
-_icedtea_ver=2.6.7
-_updatever=111
+_icedtea_ver=2.6.11
+_updatever=151
 pkgver=${_java_ver}.u${_updatever}_${_icedtea_ver}
 pkgrel=1
 
@@ -40,15 +40,15 @@ source=(${_icedtea_url}/source/icedtea-${_icedtea_ver}.tar.xz{,.sig}
 # EdDSA key may require `keyserver sks-keyservers.net` in GPG config
 validpgpkeys=('5132579DD1540ED23E04C5A0CFDA0F9B35964222') # Andrew John Hughes
 
-sha256sums=('d0922d6ecffca8e246a0b60db6e1d0c5ff924a8d5a86362991e2d4269d0a9ee4'
+sha256sums=('20063c314535e4ed4b8099e497b880e4f346c85e7315a2573d0f398b973777c5'
             'SKIP'
-            '5cacafbe543ad4b9179ab1cbfdb7d9baf8aa04d954510b9e7baf0bfef7db6878'
-            '0049439ea08f8391c0dae464ceb249f0af9d8e70c68142a734ceb25fa145e764'
-            '9fbd60855406879b898843d7eeac2a5df64b0ccdeb927c615c5be648b8fac70b'
-            'c9fcc1553bbb4fe1dd5ae4616b6a1f52f42c2bb990fd1cbdafeac43bfd6b30f7'
-            'e93cd330b2346bc6145bb76a141233aa1cc083eb25bbc82819632e1581290d81'
-            '13e700318ed4a00bc85890525a1fe16b7ff4798ad9e49acdf730b6dfe1a6b4e4'
-            '0412594f4dabd77a759957bba038aedf277dee87d06153505fb63919c0cb6a5c'
+            '0d521feed6275102ba3b3ee394330fefe20463dd63caa7197c7fd93e132519fe'
+            'ff818ceedd154fa4d55d38b50fccd6a19de242a592d9ffbed7368bc56c091b81'
+            'a2642f8792edf7e40169ddafcd7a3c297e75b41f7c65fac2a84787376a65977d'
+            'a299f434b48e5ed1e57085be5515ea1dbfbad971d08d386f070d653d2ea878be'
+            'ce4eca8a320c7514a7ecaa513a2a9cbb82a74e0256c8ba277fa692debe952eb5'
+            '650a2d3881ba02ea10cbb6ddeef3888103fccaa904cb23517e07b3acd26d4c7f'
+            'a6055f2eb2c6f159fdc20fc5268ffb27d6cb7959ed7af28ee8a0f862b5b6dbf8'
             '9ad943ceb3dbcdf45d72974fc3667886a7ed65c69ab9abc17be5412827551a7f'
             '56b919ababb13bd6afdcdaceb112b529b6e82539255f2dae9a7e5eb91645164b')
 
