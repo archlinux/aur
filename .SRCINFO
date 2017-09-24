@@ -1,6 +1,6 @@
 pkgbase = seexpr-git
 	pkgdesc = An embeddable expression evaluation engine (git version)
-	pkgver = 3.0.beta.2.r37.g176c8eb
+	pkgver = 3.0.beta.2.r76.gdb4cfca
 	pkgrel = 1
 	url = http://www.disneyanimation.com/technology/seexpr.html
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = seexpr-git
 	provides = seexpr
 	conflicts = seexpr
 	source = git+https://github.com/wdas/SeExpr.git
-	source = build.patch
+	source = install-UI-headers.patch
 	md5sums = SKIP
-	md5sums = d83afd628601603e8120ac7613526634
+	md5sums = 4ca54b352f6aec08e7ef0e54e57d2e2d
 
 pkgname = seexpr-git
 

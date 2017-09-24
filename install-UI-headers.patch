@@ -1,0 +1,13 @@
+diff --git a/src/ui/CMakeLists.txt b/src/ui/CMakeLists.txt
+index 9e978c9..ba4ef9c 100644
+--- a/src/ui/CMakeLists.txt
++++ b/src/ui/CMakeLists.txt
+@@ -121,6 +121,8 @@ if(QT4_FOUND)
+     endif()
+ 
+     install(TARGETS SeExpr2Editor DESTINATION ${CMAKE_INSTALL_LIBDIR})
++    install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION include/SeExpr2/UI
++            FILES_MATCHING PATTERN "*.h")
+ 
+     # Setup header files
+     file(GLOB public_includes "*.h")
