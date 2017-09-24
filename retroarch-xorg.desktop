@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=RetroArch on Xorg
+Name[de]=RetroArch unter Xorg
+Name[fr]=RetroArch sur Xorg
+
+Comment=
+Exec=/usr/bin/retroarch-session.sh
+Type=Application

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=RetroArch
+Comment=
+Exec=/usr/bin/retroarch-session.sh
+Type=Application
