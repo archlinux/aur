@@ -9,7 +9,7 @@ url='https://git.gnome.org/browse/sysprof'
 license=('GPL3')
 options=('!libtool')
 depends=('gtk3' 'polkit')
-makedepends=('intltool' 'git' 'autoconf-archive')
+makedepends=('git' 'meson')
 provides=('sysprof')
 conflicts=('sysprof')
 source=('git+https://git.gnome.org/browse/sysprof')
@@ -27,7 +27,7 @@ build() {
   rm -rf build
   mkdir build
   cd build
-  meson --prefix /usr ..
+  meson --libexecdir=lib --buildtype=release --prefix /usr ..
   ninja
 }
 
