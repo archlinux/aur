@@ -9,7 +9,7 @@
 
 pkgname=keepassxc-git
 _gitname=keepassxc
-pkgver=2.1.4.r428.gf817eaa5
+pkgver=2.2.0.r90.g8e8d9f39
 pkgrel=1
 pkgdesc="A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
@@ -33,6 +33,7 @@ pkgver() {
 prepare() {
     cd "${_gitname}"
     mkdir -p build
+    sed -i'' -e 's:/usr/local/share/man/:${CMAKE_INSTALL_MANDIR}:' src/cli/CMakeLists.txt
 }
 
 build() {
