@@ -14,7 +14,7 @@ conflicts=('clonk_rage', 'openclonk')
 depends=('glu' 'libxpm' 'sdl_mixer' 'gtk2' 'libpng12'
          'libjpeg-turbo' 'desktop-file-utils' 'timidity++' 'glew')
 
-makedepends=('git')
+makedepends=('git' 'cmake' 'make')
 
 source=("$pkgname::git+https://git.maxmitti.tk/lc#branch=master")
 
