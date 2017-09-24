@@ -7,6 +7,7 @@ pkgbase = gnome-shell-extension-mconnect
 	arch = any
 	license = GPL2
 	depends = gnome-shell
+	depends = mconnect-git
 	optdepends = gnome-tweak-tool
 	source = https://github.com/andyholmes/gnome-shell-extension-mconnect/releases/download/v15/mconnect.andyholmes.github.io.zip
 	md5sums = SKIP

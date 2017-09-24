@@ -9,7 +9,7 @@ pkgdesc='KDE Connect/MConnect integration for Gnome Shell'
 arch=(any)
 url='https://github.com/andyholmes/gnome-shell-extension-mconnect'
 license=('GPL2')
-depends=('gnome-shell')
+depends=('gnome-shell' 'mconnect-git')
 optdepends=('gnome-tweak-tool')
 install=$pkgname.install
 
