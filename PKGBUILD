@@ -3,7 +3,7 @@
 # Contributor: Teteros <teteros -at- opmbx -dot- org>
 
 pkgname=radium
-pkgver=4.9.14
+pkgver=5.1.4
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ optdepends=('calf-ladspa' 'ladspa-plugins')
 makedepends=(
     'cmake'
     'boost'
-    'llvm'
+    'llvm39'
     'lld'
     'qt5-tools'
     'libxrandr'
@@ -42,7 +42,7 @@ source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "use-system-vstsdk.patch"
         "use-new-cxx11-abi.patch"
 )
-md5sums=('e12d11c59d4365af87fbaa3fbacf636c'
+md5sums=('24ebb86862173e0b6c25258c7324eaeb'
          '092735a1ff69f02e41b28a0e849179f4'
          'ec8251af460ad72ebba82c718615de1b'
          'e587c15b18f761ae9af31d86162355ad'
