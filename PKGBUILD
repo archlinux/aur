@@ -2,12 +2,12 @@
 
 pkgname=gcc6-gcj-compat
 pkgver=6.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="wapper package for gcc6-gcj to gcc-gcj compatability"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://aur.archlinux.org/gcc6-gcj-compat"
-depends=("gcc6-gcj=$pkgver")
+depends=("gcc6-gcj=$pkgver" 'classpath')
 provides=("gcc-gcj=$pkgver")
 conflicts=("gcc-gcj")
 source=()

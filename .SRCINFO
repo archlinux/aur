@@ -1,12 +1,13 @@
 pkgbase = gcc6-gcj-compat
 	pkgdesc = wapper package for gcc6-gcj to gcc-gcj compatability
 	pkgver = 6.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/gcc6-gcj-compat
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gcc6-gcj=6.4.0
+	depends = classpath
 	provides = gcc-gcj=6.4.0
 	conflicts = gcc-gcj
 
