@@ -1,14 +1,14 @@
 pkgbase = cargo-outdated
 	pkgdesc = A cargo subcommand for displaying when Rust dependencies are out of date
-	pkgver = 0.3.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/kbknapp/cargo-outdated
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = cargo
-	source = https://github.com/kbknapp/cargo-outdated/archive/v0.3.0/cargo-outdated-0.3.0.tar.gz
-	sha256sums = e892ffaa4527f2ca64c577f77239b490da4d996d9a65a574ec29cc29e8e4035d
+	source = https://github.com/kbknapp/cargo-outdated/archive/v0.5.1/cargo-outdated-0.5.1.tar.gz
+	sha256sums = 8c4c45cf02bef27a22cf385c9de19f9ddfa5648a6350169597b2e9ed020dafd4
 
 pkgname = cargo-outdated
 
