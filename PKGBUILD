@@ -14,9 +14,9 @@ groups=("MBC")
 depends=("zlib" "mesa" "libxcb" "glibc>=2.19")
 source=("http://download.navigraph.com/software/fmsdatamanager/$_dname-$pkgver.$arch.rpm"
         "COPYING")
-md5sums=('bebed1bb93388714867552326caa1ce0'
-         '804bbe7a45a6d49e01d71c8e684e6f4c')
-
+sha256sums=('bbb7d69f4c74f5ea3eabd24742ed7c96acc9634c6c485359e13f52276daee57b'
+            '9ba364164734166c653ada50f16d71926cbc79445d98bfec65bee13f3d138a57')
+            
 package()
 {
     cd $srcdir
