@@ -16,7 +16,7 @@ package() {
     # Install License
     install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
    
-    # Put check_email_delivery checks in /usr/lib/monitoring-plugins'
+    # Put check_email_delivery checks in /usr/lib/monitoring-plugins
     install -Dm755 "check_email_delivery"       "$pkgdir/usr/lib/monitoring-plugins/check_email_delivery"
     install -Dm755 "check_email_delivery_epn"   "$pkgdir/usr/lib/monitoring-plugins/check_email_delivery_epn"
     install -Dm755 "check_imap_quota"           "$pkgdir/usr/lib/monitoring-plugins/check_imap_quota"
