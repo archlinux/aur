@@ -1,12 +1,12 @@
 pkgbase = dracut
 	pkgdesc = Generic, modular, cross-distribution initramfs generation tool
 	pkgver = 046
-	pkgrel = 2
+	pkgrel = 2.1
 	url = https://dracut.wiki.kernel.org/
 	install = dracut.install
 	arch = i686
 	arch = x86_64
-	arch = aarm64
+	arch = aarch64
 	license = GPL
 	makedepends = docbook-xsl
 	makedepends = asciidoc
