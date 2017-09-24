@@ -14,7 +14,7 @@ _lang=hu
 pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc='Standalone web browser from mozilla.org, developer build - Hungarian'
 url='http://www.mozilla.org/firefox/developer'
-pkgver='56.0b12'
+pkgver='57.0b2'
 pkgrel=1
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -26,8 +26,8 @@ source=("${_url}/${_loc}/${_file}.tar.bz2"
         "${_url}/SHA512SUMS.asc"
         "${_name}-${_channel}.desktop"
         "vendor.js")
-sha512sums=('0a49d7c1cb0980e42d69018964b56519148e3733871131c84c443694f452ef32c31a8a153e604f89665f499eb9b395b3ce22d07429958ae02bd2b08f0d278ae7'
-            '8b45467d73a1e664b5e330f6a9b5ac257004e9e383c6b2aa498bec799d250b1904d78160af179b0ca1adb75c5a51437553e1edd92537ae5c5edfbe13be3f14e1'
+sha512sums=('d3adc7f72fbd0fe39221ff51eb2b3fa26a688bb24895e38979487caae52e73ebfb8044eb549c5aacd592e95156db20554b31068a28992cdd6e1348a58af718cc'
+            '521d37d1011284a13e4dafb9386e79f9de3443b4c1f4bf6f9b2b7a81196fe39f6c8dcedcce473f51044a4207d0f423400150a6025f4d1886e9ac3a8e1b7d2a50'
             'SKIP'
             '11fdb7d17b51f2e94f08de487cafab6cda1a93e84b6f2dca1c49f38e7737ed05c05d8d22b8b82ad4a6758e8da43029bf37137b9976203f96f84bb3b23d126f42'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
