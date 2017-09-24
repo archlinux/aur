@@ -1,0 +1,15 @@
+read -r -d '' msg << TIP
+================================\n
+You should execute this command for the first updating hosts: \e[1m adhost \e[0m \n
+-------------------------\n
+你应该执行这条命令进行第一次hosts升级：\e[1m adhost \e[0m\n
+================================
+TIP
+
+post_install(){
+    echo -e $msg
+}
+
+post_upgrade(){
+    echo -e $msg
+}
