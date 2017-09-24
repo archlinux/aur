@@ -26,7 +26,8 @@ ros_depends=(ros-lunar-rosgraph
   ros-lunar-rqt-gui
   ros-lunar-rostopic)
 depends=(${ros_depends[@]}
-  python2-rospkg)
+  python2-rospkg
+  qt5-svg)
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rqt_graph/${pkgver}-${_pkgver_patch}
