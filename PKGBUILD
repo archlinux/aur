@@ -13,8 +13,8 @@ groups=('MBC')
 replaces=('breath-icon-theme')
 validpgpkeys=('CCA838293E0445BEB825D428B5A1B707E9FCFB7E')   # Mattéo Rossillol-Laruelle
 source=("https://github.com/CompFile/My_AUR_PKG/raw/master/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz"{,.sig})
-md5sums=('8998c97b0841341ae42b40cda26af6a0'
-         'SKIP')
+sha256sums=('d04bb5fbd81ff17d5c70a415b8150f35573aaf49d30383e1b46587124c953996'
+            'SKIP')
 
 package()
 {
