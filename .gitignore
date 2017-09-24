@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/arcan-waybridge-git/
+/*.pkg.tar
+/*.pkg.tar.*
