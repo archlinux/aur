@@ -1,8 +1,9 @@
 # Maintainer: Wijnand Modderman-Lenstra <maze@pyth0n.org>
 pkgname=pwnypack
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Official Certified Edible Dinosaurs CTF toolkit"
+_srchash="0e/e5/7ea712cc0a2b37a1efc1ae314ae1c39438a16a70ac43e36f3d190911ce94"
 arch=('any')
 url="https://github.com/edibledinos/pwnypack"
 license=('MIT')
@@ -17,10 +18,8 @@ depends=(
 makedepends=('python')
 options=(!emptydirs)
 install=
-source=(https://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-md5sums=(a5d58847eaa35dc6d13e0fa7f444a2ce)
-sha1sums=(d51ae658ec2b192af5b33bf0376ae891fae0fbbd)
-sha256sums=(fc129e22a078e68bbe96d1afe62d5aa497a75d69eae2c54fb90d2cd4364dc155)
+source=(https://pypi.python.org/packages/${_srchash}/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('30d88155707a9b2a11aaf6bc8004dddc7c7545d8fa8f17b8d42de54e87a1b57d')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
