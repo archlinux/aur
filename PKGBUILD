@@ -6,15 +6,15 @@
 
 pkgname=openni
 pkgver=1.5.7.10
-pkgrel=4
-pkgdesc="Framework for sensor-based 'Natural Interaction'"
+pkgrel=5
+pkgdesc='Framework for sensor-based Natural Interaction'
 arch=('i686' 'x86_64')
-url="https://github.com/OpenNI/OpenNI/"
+url='https://github.com/OpenNI/OpenNI/'
 license=('APACHE')
 depends=('freeglut' 'glu' 'libusb' 'java-environment' 'libjpeg-turbo' 'tinyxml')
 makedepends=('dos2unix')
 install="${pkgname}.install"
-_srcprefix="OpenNI-Stable"
+_srcprefix='OpenNI-Stable'
 source=("${_srcprefix}-${pkgver}.tar.gz"::"https://github.com/OpenNI/OpenNI/archive/Stable-${pkgver}.tar.gz"
         '0003-Change-path-of-config-files-to-etc-openni-modified-for-1.5.7.10.patch'
         '0006-Use-system-wide-libjpeg.patch'
@@ -31,7 +31,7 @@ sha256sums=('34b0bbf68633bb213dcb15408f979d5384bdceb04e151fa519e107a12e225852'
             '90b67ed122eb33df96d9935421d79b620f87e791d8773e00c1406ebafd01a364')
 
 prepare() {
-    cd "${srcdir}/${_srcprefix}-${pkgver}"
+    cd "${_srcprefix}-${pkgver}"
     
     # needed for patch 0003
     dos2unix Samples/NiAudioSample/NiAudioSample.cpp
@@ -55,17 +55,18 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${_srcprefix}-${pkgver}/Platform/Linux/Build"
+    cd "${_srcprefix}-${pkgver}/Platform/Linux/Build"
     make
 }
 
 package() {
-    if [ "${CARCH}" = "x86_64" ] 
+    if [ "$CARCH" = 'x86_64' ] 
     then
-        _architecture="x64"
-    elif [ "${CARCH}" = "i686" ] 
+        _architecture='x64'
+        
+    elif [ "$CARCH" = 'i686' ] 
     then
-        _architecture="x86"
+        _architecture='x86'
     fi
     
     # directories creation
@@ -75,7 +76,7 @@ package() {
     mkdir -p "${pkgdir}/var/lib/ni" # config (populated at install time)
     
     # binaries and libraries
-    cd "${srcdir}/${_srcprefix}-${pkgver}/Platform/Linux/Bin/${_architecture}-Release"
+    cd "${_srcprefix}-${pkgver}/Platform/Linux/Bin/${_architecture}-Release"
     install -D -m755 niLicense niReg NiViewer "${pkgdir}/usr/bin"
     install -D -m755 *.so "${pkgdir}/usr/lib"
     
@@ -94,7 +95,7 @@ package() {
     install -D -m644 libopenni.pc "${pkgdir}/usr/lib/pkgconfig"
     
     # documentation
-    cd "${srcdir}/${_srcprefix}-${pkgver}/Documentation"
+    cd "${_srcprefix}-${pkgver}/Documentation"
     install -D -m644 * "${pkgdir}/usr/share/doc/${pkgname}"
     
     # license
