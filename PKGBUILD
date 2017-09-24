@@ -2,7 +2,7 @@
 
 pkgname=switchboard-plug-power
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Power plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/switchboard-plug-power'
@@ -28,7 +28,7 @@ build() {
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib'
-  make
+  make -j1
 }
 
 package() {
