@@ -4,12 +4,12 @@
 pkgname=kvantum-qt5-git
 pluginname=kvantum
 gitname=Kvantum
-pkgver=0.10.4.r147.g09319e6
-pkgrel=1
+pkgver=0.10.4.r148.g8130f49
+pkgrel=2
 pkgdesc="SVG-based Qt5 theme engine plus a config tool and extra themes - git version"
 arch=('x86_64')
 url="https://github.com/tsujan/Kvantum"
-license=('GPL')
+license=('GPL3')
 groups=('qt')
 depends=('qt5-base' 'qt5-svg' 'qt5-x11extras' 'libx11' 'libxext>')
 makedepends=('cmake' 'qt5-tools' "git")
@@ -35,7 +35,7 @@ package() {
 	cd ${srcdir}/${gitname}/${gitname}
 	make DESTDIR=${pkgdir}/ install
 	mkdir -p ${pkgdir}/usr/share/doc/kvantum
-	cp ChangeLog ${pkgdir}/usr/share/doc/kvantum
-	cp COPYING ${pkgdir}/usr/share/doc/kvantum
-	cp -r doc ${pkgdir}/usr/share/doc/kvantum
+	install -Dm664 ChangeLog ${pkgdir}/usr/share/doc/kvantum
+	install -Dm664 COPYING ${pkgdir}/usr/share/doc/kvantum
+	install -dm755 doc ${pkgdir}/usr/share/doc/kvantum
 }
