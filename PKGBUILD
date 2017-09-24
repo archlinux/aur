@@ -32,6 +32,6 @@ package_hyperledger-composer-playground() {
   mkdir -p $_npmdir
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" composer-playground@$pkgver
-  chmod 755 -R $pkgdir/usr/bin/composer
+  chmod 755 -R $pkgdir/usr/bin/
   npm prune --production
 }
