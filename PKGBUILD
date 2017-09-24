@@ -13,13 +13,12 @@ depends=("gcc-libs")
 conflicts=("shaderc")
 provides=("shaderc" "glslc")
 
-source=("shaderc::git+https://github.com/google/shaderc"
-        "googletest::git+https://github.com/google/googletest.git"
+source=("shaderc::git+https://github.com/google/shaderc.git"
         "glslang::git+https://github.com/google/glslang.git"
         "spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git"
         "spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git")
 
-sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
   cd "$srcdir/shaderc"
@@ -28,7 +27,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/shaderc"
-  ln -s -f "$srcdir/googletest" third_party/
   ln -s -f "$srcdir/glslang" third_party/
   ln -s -f "$srcdir/spirv-tools" third_party/
   ln -s -f "$srcdir/spirv-headers" third_party/spirv-tools/external/
@@ -45,7 +43,6 @@ build() {
     -DSHADERC_SKIP_TESTS=on \
     -DSKIP_GLSLANG_INSTALL=on \
     -DSKIP_SPIRV_TOOLS_INSTALL=on \
-    -DSKIP_GOOGLETEST_INSTALL=on \
     -GNinja
 
   ninja
