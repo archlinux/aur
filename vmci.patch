@@ -74,26 +74,32 @@ index f676166..9e42f3f 100644
        data_buffer = NULL;
        return retval;
     }
-@@ -1722,11 +1733,19 @@
+@@ -1722,12 +1734,25 @@
        vmci_dev.msix_entries[i].vector = i;
     }
  
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 12, 0)
     result = pci_enable_msix(pdev, vmci_dev.msix_entries, VMCI_MAX_INTRS);
-+#else
-+   result = pci_enable_msix_range(pdev, vmci_dev.msix_entries, VMCI_MAX_INTRS, VMCI_MAX_INTRS);
-+#endif
     if (!result) {
        vmci_dev.exclusive_vectors = TRUE;
     } else if (result > 0) {
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 12, 0)
        result = pci_enable_msix(pdev, vmci_dev.msix_entries, 1);
-+#else
-+      result = pci_enable_msix_range(pdev, vmci_dev.msix_entries, 1, 1);
-+#endif
     }
++#else
++   result = pci_enable_msix_range(pdev, vmci_dev.msix_entries, VMCI_MAX_INTRS,
++                                  VMCI_MAX_INTRS);
++   if (result > 0) {
++      vmci_dev.exclusive_vectors = TRUE;
++   } else if (result == -ENOSPC) {
++      result = pci_enable_msix_range(pdev, vmci_dev.msix_entries, 1, 1);
++   }
++
++   if (result > 0)
++       result = 0;
++#endif
     return result;
  }
+ 
 @@ -2473,7 +2485,11 @@ vmci_exit(void)
  
     if (guestDeviceInit) {

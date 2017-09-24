@@ -15,7 +15,11 @@
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
 pkgver=12.5.7_5813279
-pkgrel=4
+_pkgver=${pkgver}
+#pkgver=12.5.7
+#_buildver=5813279
+#_pkgver=${pkgver}_${_buildver}
+pkgrel=5
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -63,7 +67,7 @@ backup=(
   'etc/profile.d/vmware.sh'
 )
 source=(
-  "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${pkgver/_/-}.${CARCH}.bundle"
+  "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle"
 
   'bootstrap'
   'config'
@@ -98,7 +102,7 @@ sha256sums=(
   '55af509a4328fa88518e7008c65ff5598e6007e99ca2b4421a8f9b26126f6ff3'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
-  'fee6dbd1aab2590c58ee2da797c72746c0707bea718fbfd31764b4fd353d0992'
+  '49a8e01674d91c5910cf07527c4a1c825db685523dd756f00cf49bd19878f448'
   '6f57e027f0eb95b7cfaf5d7c10089e99be5b9ccab7c3785fcc6f98dbecaf47bc'
 
   'd0806b6cb99af04232585def7b8043df3104b9b17470ea70abbd5bedc1e7ca16'
@@ -112,10 +116,10 @@ sha256sums=(
   'f9297948eba55fbaa6c9d1846b92070f27fda17afe78b41ed0e4c2eaa452b56c'
   'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
 
-  '71339774bf2b962735013e8683d80591a7cf073607cc992f94b75207f3337485'
-  '3a62d45f046b22d1fba9c34db42d8b2774b084f82356b9f18f05bd2cef214ace'
+  '911a68af1c62f409e5e97c230ab67505ba2d1fe2e214d3ca4e0a11282d16efda'
+  'f03c329dff2cf9a2fdfad938c4ce4ac5502fad5de1ef76a951dbc365748d1698'
   '0a5aa819ca73513407acaf67779d95745314f7222afbd3fc2eadc80f24054d47'
-  '7c666fa2c09c19d8af7b97227ee564ce0d5e044897167db583ecd67217a36394'
+  '6b0edcccad66ee1f971b675de4af704749d4677a4fc75a5026e47dc11435902c'
   'b04baffa8ee7b5be56aba3d49d9c06be5e34a31808a6f93b899408dbda9aef40'
   '4c960079fec78682000a1c2e82dcaae69a6e91858dea641b707cf60674f3799f'
   'd7e6b21fef94b4d3fe655a68c20a9556a718a252826a899fb46c4f2475046954'
@@ -162,7 +166,7 @@ _create_database_file() {
   for isoimage in ${_isoimages[@]}
   do
 	local version=$(cat "$srcdir/extracted/vmware-tools-$isoimage/manifest.xml" | grep -oPm1 "(?<=<version>)[^<]+")
-	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"$version\",\"${pkgver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
+	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"$version\",\"${_pkgver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
   done
 
 if [ -n "$_enable_macOS_guests" ]; then
@@ -178,7 +182,7 @@ prepare() {
   [[ -d "$extracted_dir" ]] && rm -r "$extracted_dir"
 
   bash \
-    "$(readlink -f "$srcdir/VMware-Workstation-Full-${pkgver/_/-}.${CARCH}.bundle")" \
+    "$(readlink -f "$srcdir/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle")" \
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
@@ -190,7 +194,7 @@ if [ -n "$_enable_macOS_guests" ]; then
 
   sed -i -e "s/vmx_path = '/vmx_path = '${pkgdir//\//\\/}/" \
       -i -e "s/vmwarebase = '/vmwarebase = '${pkgdir//\//\\/}/" \
-      -i -e "s/vmx_version = .*$/vmx_version = 'VMware Player ${pkgver/_/ build-}'/" "$srcdir/unlocker.py"
+      -i -e "s/vmx_version = .*$/vmx_version = 'VMware Player ${_pkgver/_/ build-}'/" "$srcdir/unlocker.py"
 fi
 }
 
@@ -303,7 +307,7 @@ package() {
 
   install -Dm 644 "$srcdir/pam.d-vmware-authd" "$pkgdir/etc/pam.d/vmware-authd"
 
-  echo -e "vmci\nvmmon" > "$pkgdir/usr/lib/modules-load.d/vmware.conf"
+  echo -e "vmw_vmci\nvmmon" > "$pkgdir/usr/lib/modules-load.d/vmware.conf"
   install -Dm 644 "$srcdir/90-vmware-load-modules.hook" "$pkgdir/usr/share/libalpm/hooks/90-vmware-load-modules.hook"
 
   for service_file in \
@@ -391,14 +395,14 @@ package() {
 
   # Patch up the VMware kernel sources and configure DKMS.
 
-  dkms_dir="$pkgdir/usr/src/$pkgname-$pkgver"
+  dkms_dir="$pkgdir/usr/src/$pkgname-$_pkgver"
 
   install -Dm 644 "$srcdir/Makefile" "$dkms_dir/Makefile"
   install -Dm 644 "$srcdir/dkms.conf.in" "$dkms_dir/dkms.conf"
 
   sed \
     -e "s/@PKGNAME@/$pkgname/g" \
-    -e "s/@PKGVER@/$pkgver/g" \
+    -e "s/@PKGVER@/$_pkgver/g" \
     -i "$dkms_dir/dkms.conf"
 
   find vmware-vmx/lib/modules/source -mindepth 1 -exec bsdtar -xf {} -C "$dkms_dir" \;

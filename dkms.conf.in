@@ -10,17 +10,18 @@ BUILT_MODULE_NAME[0]="vmblock"
 BUILT_MODULE_LOCATION[0]='vmblock-only'
 DEST_MODULE_LOCATION[0]="/kernel/fs/vmblock"
 
-BUILT_MODULE_NAME[1]="vmci"
-BUILT_MODULE_LOCATION[1]='vmci-only'
+BUILT_MODULE_NAME[1]="vmmon"
+BUILT_MODULE_LOCATION[1]='vmmon-only'
 DEST_MODULE_LOCATION[1]="/kernel/drivers/misc"
 
-BUILT_MODULE_NAME[2]="vmmon"
-BUILT_MODULE_LOCATION[2]='vmmon-only'
-DEST_MODULE_LOCATION[2]="/kernel/drivers/misc"
+BUILT_MODULE_NAME[2]="vmnet"
+BUILT_MODULE_LOCATION[2]='vmnet-only'
+DEST_MODULE_LOCATION[2]="/kernel/drivers/net"
 
-BUILT_MODULE_NAME[3]="vmnet"
-BUILT_MODULE_LOCATION[3]='vmnet-only'
-DEST_MODULE_LOCATION[3]="/kernel/drivers/net"
+# vmci is already provided by the kernel with vmw_vmci
+#BUILT_MODULE_NAME[3]="vmci"
+#BUILT_MODULE_LOCATION[3]='vmci-only'
+#DEST_MODULE_LOCATION[3]="/kernel/drivers/misc"
 
 # vsock is already provided by the kernel
 #BUILT_MODULE_NAME[4]="vsock"

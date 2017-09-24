@@ -6,5 +6,5 @@ Target = vmware-workstation
 [Action]
 Description = Loading VMware modules
 When = PostTransaction
-Exec = /usr/bin/modprobe vmci
+Exec = /usr/bin/modprobe vmw_vmci
 Exec = /usr/bin/modprobe vmmon

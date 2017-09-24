@@ -2,9 +2,9 @@
 
 MODULES = \
 	vmblock \
-	vmci \
 	vmmon \
 	vmnet \
+	#vmci \
 	#vsock
 
 all: $(foreach m, $(MODULES), $m.ko)
