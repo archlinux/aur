@@ -3,8 +3,8 @@
 pkgbase=nikola-git
 _pyname=nikola
 _gitname=nikola
-pkgname=nikola-git
-pkgver=7.8.8.r166.ge72038fc
+pkgname=('nikola-git' 'python-nikola-doc-git')
+pkgver=7.8.8.r170.g1a9049ca
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator. (git version)'
 arch=('any')
@@ -31,21 +31,29 @@ optdepends=('python-jinja: for Jinja2 themes'
 makedepends=('git')
 source=("git+https://github.com/getnikola/${_gitname}.git")
 md5sums=('SKIP')
-conflicts=('python-nikola' 'nikola')
-replaces=('python-nikola-git' 'python2-nikola-git' 'python-nikola-git-doc')
+conflicts=('python-nikola' 'python2-nikola' 'python-nikola-git' 'python2-nikola-git' 'nikola')
+replaces=('python-nikola-git' 'python2-nikola-git')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
   git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
 }
 
-package() {
+package_nikola-git() {
   cd "${srcdir}/${_gitname}"
   python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   ln -s ${_gitname} "${pkgdir}/usr/bin/${_gitname}3"
 
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgbase}"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+}
+
+package_python-nikola-doc-git() {
+  pkgdesc="(deprecated -- merged into 'nikola-git')"
+  install='python-nikola-doc-git.install'
+  optdepends=()
+  depends=()
+  echo "WARNING: python-nikola-doc-git is deprecated, please uninstall it"
 }
 
 # vim:set ts=2 sw=2 et:

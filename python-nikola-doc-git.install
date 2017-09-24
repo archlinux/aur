@@ -1,0 +1,10 @@
+post_install() {
+    printf "\n\n>> WARNING! <<\n"
+    printf "The package 'python-nikola-doc-git' is deprecated (it has been merged into 'nikola-git').\n"
+    printf "Please remove 'python-nikola-doc-git' manually.\n"
+    printf ">> WARNING! <<\n\n\n"
+}
+
+post_upgrade() {
+    post_install
+}
