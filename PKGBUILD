@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 makedepends=('linux-headers')
 conflicts=(${_pkgname})
 provides=(${_pkgname})
-depends=('krb5' 'openssl' 'libedit' 'ldns')
+depends=('krb5' 'openssl-1.0' 'libedit' 'ldns')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X')
 validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30')
@@ -48,6 +48,13 @@ build() {
     patch -p1 -i ../gssapi-p0.patch
     patch -p1 -i ../gssapi-p1.patch
     patch -p1 -i ../gssapi-p2.patch
+
+    # compile against openssl-1.0
+    ssldir="$srcdir"/openssl-1.0
+    mkdir "$ssldir"
+    ln -s /usr/include/openssl-1.0 "$ssldir"/include
+    ln -s /usr/lib/openssl-1.0 "$ssldir"/lib
+
 	./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
@@ -64,6 +71,7 @@ build() {
 		--with-md5-passwords \
 		--with-pid-dir=/run \
         --with-gssapi \
+        --with-ssl-dir="$ssldir"
 
 	make
 }
