@@ -1,7 +1,7 @@
 # Maintainer: Jian Zeng <anonymousknight96 AT gmail.com>
 
 pkgname=cargo-expand
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc='Subcommand to show result of macro expansion and `#[derive]` expansion'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/dtolnay/cargo-expand'
 license=('APACHE' 'MIT')
 depends=('cargo')
 source=("https://github.com/dtolnay/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('324259d98f3822334505d6f0bd8f72ea')
+md5sums=('48b7e3cc488418638dc68a72431e1235')
 
 build() {
   cd "$pkgname-$pkgver" || exit 1

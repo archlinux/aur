@@ -1,6 +1,6 @@
 pkgbase = cargo-expand
 	pkgdesc = Subcommand to show result of macro expansion and `#[derive]` expansion
-	pkgver = 0.3.8
+	pkgver = 0.3.9
 	pkgrel = 1
 	url = https://github.com/dtolnay/cargo-expand
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = cargo-expand
 	license = APACHE
 	license = MIT
 	depends = cargo
-	source = https://github.com/dtolnay/cargo-expand/archive/0.3.8.tar.gz
-	md5sums = 324259d98f3822334505d6f0bd8f72ea
+	source = https://github.com/dtolnay/cargo-expand/archive/0.3.9.tar.gz
+	md5sums = 48b7e3cc488418638dc68a72431e1235
 
 pkgname = cargo-expand
 
