@@ -9,6 +9,7 @@ url='https://www.gnome-look.org/p/1009237/'
 license=('GPL')
 depends=('grub')
 optdepends=('grub-customizer')
+install=${pkgname}.install
 
 source=('https://dl.opendesktop.org/api/files/download/id/1503588288/grub-themes-stylishdark.tar.xz')
 md5sums=('SKIP')
