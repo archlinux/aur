@@ -1,6 +1,8 @@
-# Maintainer: Wyatt J. Brown <sushidudeteam@gmail.com>
+# Maintainer: Nathaniel Stickney <nstickney@gmail.com>
+# Contributor: Wyatt J. Brown <sushidudeteam@gmail.com>
+# shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20160709
+pkgver=20170921
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -12,24 +14,33 @@ depends=('adobe-source-code-pro-fonts'
          'adobe-source-han-sans-kr-fonts'
          'adobe-source-han-sans-otc-fonts'
          'adobe-source-han-sans-tw-fonts'
+         'adobe-source-han-serif-cn-fonts'
+         'adobe-source-han-serif-jp-fonts'
+         'adobe-source-han-serif-kr-fonts'
+         'adobe-source-han-serif-otc-fonts'
+         'adobe-source-han-serif-tw-fonts'
          'adobe-source-sans-pro-fonts'
          'adobe-source-serif-pro-fonts'
          'artwiz-fonts'
+         'awesome-terminal-fonts'
          'bdf-unifont'
          'cantarell-fonts'
          'dina-font'
          'font-bh-ttf'
          'font-bitstream-speedo'
          'font-mathematica'
+         'fonts-tlwg'
          'gnu-free-fonts'
          'gsfonts'
          'noto-fonts'
          'noto-fonts-cjk'
          'noto-fonts-emoji'
+         'noto-fonts-extra'
          'opendesktop-fonts'
          'otf-fira-mono'
          'otf-fira-sans'
          'otf-ipafont'
+         'otf-overpass'
          'powerline-fonts'
          'profont'
          'tamsyn-font'
@@ -61,8 +72,7 @@ depends=('adobe-source-code-pro-fonts'
          'ttf-linux-libertine'
          'ttf-linux-libertine-g'
          'ttf-mph-2b-damase'
-         'ttf-overpass'
-         'ttf-oxygen'
+         'ttf-roboto'
          'ttf-sazanami'
          'ttf-symbola'
          'ttf-tibetan-machine'
@@ -83,7 +93,6 @@ sha512sums=('57f083acfdb3b05be097f27d8df8afb77820c61ca138f097f22564d3e10dd0b713a
 
 package()
 {
-	cd "$srcdir"
-
+	cd "$srcdir" || exit
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
