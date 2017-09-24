@@ -54,6 +54,6 @@ pkgname = nikola
 pkgname = python-nikola-doc
 	pkgdesc = (deprecated -- merged into 'nikola')
 	install = python-nikola-doc.install
-	depends = 
+	depends = nikola
 	optdepends = 
 

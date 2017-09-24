@@ -50,7 +50,7 @@ package_python-nikola-doc() {
   pkgdesc="(deprecated -- merged into 'nikola')"
   install='python-nikola-doc.install'
   optdepends=()
-  depends=()
+  depends=('nikola')
   echo "WARNING: python-nikola-doc is deprecated, please uninstall it"
 }
 
