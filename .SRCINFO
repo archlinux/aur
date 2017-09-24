@@ -1,28 +1,5 @@
 pkgbase = pdfsizeopt-git
 	pkgdesc = PDF file size optimizer
-	pkgver = r271.6f1d901
-	pkgrel = 1
-	url = https://github.com/pts/pdfsizeopt
-	arch = any
-	license = GPL2
-	makedepends = git
-	depends = python2>=2.4
-	depends = ghostscript>=8.61
-	depends = sam2p
-	depends = tif22pnm
-	optdepends = multivalent-pdf-tools: to optimise cross reference table and object serialisation [use --use-multivalent=true]
-	optdepends = pngout: to optimise the size of PNG parts [use --use-jbig2=true]
-	optdepends = jbig2enc: to manage JBIG2 parts [use --use-pngout=true]
-	provides = pdfsizeopt
-	conflicts = pdfsizeopt-svn
-	replaces = pdfsizeopt-svn
-	source = git+https://github.com/pts/pdfsizeopt
-	md5sums = SKIP
-
-pkgname = pdfsizeopt-git
-
-pkgbase = pdfsizeopt-git
-	pkgdesc = PDF file size optimizer
 	pkgver = r429.a91903b
 	pkgrel = 1
 	url = https://github.com/pts/pdfsizeopt
