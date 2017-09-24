@@ -12,7 +12,7 @@ source=("http://buhacoff.net/software/check_email_delivery/archive/${pkgname}-${
 sha512sums=('d1fdc3082e443b4f54f230eb6231581edf6563d0012c333ef50a35b26579f93568cee8b70cfb2dfc332d0eceb5add31a8c7f93681d2baeeb08d229c0de32ac39')
 
 package() {
-	cd ${pkgname}-${pkgver}
+    cd ${pkgname}-${pkgver}
     # Install License
     install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
    
