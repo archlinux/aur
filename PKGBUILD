@@ -5,24 +5,24 @@
 pkgname=gnu-cobol
 _pkgmaj=2.2
 _pkgmin=rc
-_tarname=gnucobol
+_tarname="gnucobol-${_pkgmaj}-${_pkgmin}"
 
-pkgver="${_pkgmaj}${_pkgmin}"
+pkgver="${_pkgmaj}_${_pkgmin}"
 pkgrel=1
-pkgdesc="An open-source COBOL compiler"
-
+pkgdesc="The open source GNU COBOL compiler"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/open-cobol/"
 license=('GPL')
-depends=('db' 'gmp' 'help2man')
+depends=('db' 'gmp')
+makedepends=('help2man')
 options=('!libtool')
-source=("http://sourceforge.net/projects/open-cobol/files/${pkgname}/${_pkgmaj}/${_tarname}-${_pkgmaj}-${_pkgmin}.tar.gz"
+source=("http://sourceforge.net/projects/open-cobol/files/${pkgname}/${_pkgmaj}/${_tarname}.tar.gz"
 	"cob-cflags.patch")
 md5sums=('95daec84e72034d4c1bcf216e0ebc34a'
          '1ed5d24c0e51f4825e014546c83984c9')
 
 build() {
-  cd "${srcdir}/${_tarname}-${_pkgmaj}-${_pkgmin}"
+  cd "${srcdir}/${_tarname}"
 
   msg "cob-cflags.patch"
   patch -p1 -i ${srcdir}/cob-cflags.patch configure
@@ -32,6 +32,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_tarname}-${_pkgmaj}-${_pkgmin}"
+  cd "${srcdir}/${_tarname}"
   make DESTDIR="${pkgdir}" install
 }
