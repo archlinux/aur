@@ -2,10 +2,10 @@
 
 pkgname=openni2-git
 pkgver=2.2.beta.r25.g1fce8ed
-pkgrel=2
-pkgdesc="Framework for sensor-based 'Natural Interaction' (Git version)"
+pkgrel=3
+pkgdesc='Framework for sensor-based Natural Interaction (git version)'
 arch=('i686' 'x86_64')
-url="https://github.com/occipital/OpenNI2/"
+url='https://github.com/occipital/OpenNI2/'
 license=('APACHE')
 depends=('freeglut' 'glu' 'libusb' 'java-environment' 'libjpeg-turbo')
 makedepends=('git' 'python' 'doxygen' 'graphviz')
@@ -25,12 +25,12 @@ sha256sums=('SKIP'
             '57c9236c77133437a533d3cac6775da4749a070dd468e88e29b07d7a83aaaab1')
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
+    cd "$pkgname"
     
     # fix building documentation with java 8
     # https://github.com/OpenNI/OpenNI2/issues/87
     local _javaver="$(archlinux-java get | grep -o '^[^-]*.[0-9]*')"
-    if [ "$(vercmp "$_javaver" "java-8")" -ge "0" ] 
+    if [ "$(vercmp "$_javaver" "java-8")" -ge '0' ] 
     then
         sed -i "s/cmd = \[javaDocExe, '-d', 'java'\]/cmd = [javaDocExe, '-d', 'java', '-Xdoclint:none']/" Source/Documentation/Runme.py
     fi
@@ -43,25 +43,24 @@ prepare() {
 }
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    
-    # Git, tags availabe
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$pkgname"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "$pkgname"
     make
     make doc
 }
 
 package() {
-    if [ "${CARCH}" = "x86_64" ] 
+    if [ "$CARCH" = 'x86_64' ] 
     then
         _architecture="x64"
-    elif [ "${CARCH}" = "i686" ] 
+        
+    elif [ "$CARCH" = 'i686' ] 
     then
-        _architecture="x86"
+        _architecture='x86'
     fi
     
     # directories creation
@@ -72,7 +71,7 @@ package() {
     mkdir -p "${pkgdir}/etc/openni2/Drivers"  # config
     
     # binaries and libraries
-    cd "${srcdir}/${pkgname}/Bin/${_architecture}-Release"
+    cd "${pkgname}/Bin/${_architecture}-Release"
     install    -m755 NiViewer             "${pkgdir}/usr/bin/NiViewer2"
     install -D -m755 ClosestPointViewer   "${pkgdir}/usr/bin"
     install -D -m755 EventBasedRead       "${pkgdir}/usr/bin"
@@ -105,10 +104,10 @@ package() {
     
     # pkg-config file
     cd "$srcdir"
-    install -D -m644 "${srcdir}/libopenni2.pc" "${pkgdir}/usr/lib/pkgconfig"
+    install -D -m644 libopenni2.pc "${pkgdir}/usr/lib/pkgconfig"
     
     # license
-    cd "${srcdir}/${pkgname}"
+    cd "$pkgname"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}"
 }
