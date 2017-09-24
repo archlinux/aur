@@ -1,7 +1,7 @@
 pkgbase = freetype2-old-hinting
 	pkgdesc = Font rasterization library (including the old hinting engine)
-	pkgver = 2.8
-	pkgrel = 2
+	pkgver = 2.8.1
+	pkgrel = 1
 	url = https://www.freetype.org/
 	arch = i686
 	arch = x86_64
@@ -12,21 +12,19 @@ pkgbase = freetype2-old-hinting
 	depends = sh
 	depends = libpng
 	depends = harfbuzz
-	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.8.tar.bz2
-	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.8.tar.bz2.sig
-	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-2.8.tar.bz2
-	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-2.8.tar.bz2.sig
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.8.1.tar.bz2
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.8.1.tar.bz2.sig
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-2.8.1.tar.bz2
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-2.8.1.tar.bz2.sig
 	source = 0001-Enable-table-validation-modules.patch
-	source = 0002-Enable-subpixel-rendering.patch
 	source = 0003-Enable-infinality-subpixel-hinting.patch
 	source = 0004-Enable-long-PCF-family-names.patch
 	source = freetype2.sh
-	sha1sums = 42c6b1f733fe13a3eba135f5025b22cb68450f91
+	sha1sums = 417bb3747c4ac95b6f2652024a53fad45581fa1c
 	sha1sums = SKIP
-	sha1sums = 5b221ee14fe674cd5f6db0193d55360bc0bd3655
+	sha1sums = 9ee079ee02e6b6895802104f58cd5e5be517dce7
 	sha1sums = SKIP
 	sha1sums = b31882ef5e8447e761acee1c4a44c0630cd4d465
-	sha1sums = b1494810ed3aca25cdd8e8cedf634e5adfe6c09e
 	sha1sums = 41d27140fd590945e22e012c9dce62de3d6f11e6
 	sha1sums = 334f229875039794adeb574e27d365bb445fb314
 	sha1sums = bc6df1661c4c33e20f5ce30c2da8ad3c2083665f
@@ -34,7 +32,7 @@ pkgbase = freetype2-old-hinting
 pkgname = freetype2-old-hinting
 	install = freetype2.install
 	provides = libfreetype.so
-	provides = freetype2=2.8-2
+	provides = freetype2=2.8.1-1
 	conflicts = freetype2
 	backup = etc/profile.d/freetype2.sh
 

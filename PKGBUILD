@@ -4,8 +4,8 @@
 
 pkgbase=freetype2-old-hinting
 pkgname=('freetype2-old-hinting')
-pkgver=2.8
-pkgrel=2
+pkgver=2.8.1
+pkgrel=1
 pkgdesc="Font rasterization library (including the old hinting engine)"
 arch=(i686 x86_64)
 license=('GPL')
@@ -17,16 +17,14 @@ makedepends=('libx11')
 source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
         https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-${pkgver}.tar.bz2{,.sig}
         0001-Enable-table-validation-modules.patch
-        0002-Enable-subpixel-rendering.patch
         0003-Enable-infinality-subpixel-hinting.patch
         0004-Enable-long-PCF-family-names.patch
         freetype2.sh)
-sha1sums=('42c6b1f733fe13a3eba135f5025b22cb68450f91'
+sha1sums=('417bb3747c4ac95b6f2652024a53fad45581fa1c'
           'SKIP'
-          '5b221ee14fe674cd5f6db0193d55360bc0bd3655'
+          '9ee079ee02e6b6895802104f58cd5e5be517dce7'
           'SKIP'
           'b31882ef5e8447e761acee1c4a44c0630cd4d465'
-          'b1494810ed3aca25cdd8e8cedf634e5adfe6c09e'
           '41d27140fd590945e22e012c9dce62de3d6f11e6'
           '334f229875039794adeb574e27d365bb445fb314'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f')
@@ -38,7 +36,6 @@ prepare() {
 
   cd freetype2
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
-  patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
   patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
 
@@ -64,11 +61,7 @@ package_freetype2-old-hinting() {
 
   cd freetype2
   make DESTDIR="${pkgdir}" install
-  install -Dm644 ../freetype2.sh "${pkgdir}/etc/profile.d/freetype2.sh"
-
-  # Package docs
-  install -d "${pkgdir}/usr/share/doc"
-  cp -a docs "${pkgdir}/usr/share/doc/freetype2"
+  install -Dt "${pkgdir}/etc/profile.d" -m644 ../freetype2.sh
 }
 
 # vim:set ts=2 sw=2 et:
