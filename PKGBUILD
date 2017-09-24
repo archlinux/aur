@@ -2,7 +2,7 @@
 
 pkgname=openni2-git
 pkgver=2.2.beta.r25.g1fce8ed
-pkgrel=3
+pkgrel=4
 pkgdesc='Framework for sensor-based Natural Interaction (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/occipital/OpenNI2/'
@@ -16,12 +16,16 @@ source=('openni2-git'::'git+https://github.com/occipital/OpenNI2.git'
         '0003-Use-system-wide-libjpeg.patch'
         '0005-change-default-ni-drivers-path.patch'
         '0013-Fix-GCC6-compilation.patch'
+        '0014-fix-format-overflow-for-GCC7.patch'
+        '0015-Initialize-variable-for-gcc7.patch'
         'libopenni2.pc')
 sha256sums=('SKIP'
             '368c0b41a26a65377359ce22a914cb8b6f4020e2972f67f151f2b9bdbf1a5a50'
             '1ca20e60ac10a193cbf0ca4759230ba7930479baa7d237476583359e7b62f604'
             '635c762230a2dc57977c7f42cc7d1c25438d3864baca7632360466e8c031e3b5'
             '0fd53b2c41a48cb4b28e67c6cfcedf4d17ffbe675bd2eb21793a683bbb0d85bb'
+            '05e95ab2375294a37354dab5ed746ff5c6de6e5ed1792ad398f489d6d35af93e'
+            '196128c92803cbfaa67643703e043247475b6c718af8cd9b4333806d2e04d762'
             '57c9236c77133437a533d3cac6775da4749a070dd468e88e29b07d7a83aaaab1')
 
 prepare() {
@@ -40,6 +44,8 @@ prepare() {
     patch -Np1 -i "${srcdir}/0003-Use-system-wide-libjpeg.patch"
     patch -Np1 -i "${srcdir}/0005-change-default-ni-drivers-path.patch"
     patch -Np1 -i "${srcdir}/0013-Fix-GCC6-compilation.patch"
+    patch -Np1 -i "${srcdir}/0014-fix-format-overflow-for-GCC7.patch"
+    patch -Np1 -i "${srcdir}/0015-Initialize-variable-for-gcc7.patch"
 }
 
 pkgver() {
