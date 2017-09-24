@@ -27,9 +27,12 @@ build() {
 }
 
 package() {
-  local profiled_dir=${pkgdir}/etc/profile.d
-  mkdir -p $profiled_dir
+  local env_dir=${pkgdir}/usr/share/gdm/env.d/
+  local env_file=${startdir}/qt-force-gtk-platform.env
+
+  mkdir -p $env_dir
+  cp ${env_file} ${env_dir}
+
   cd "${srcdir}/gtkplatform"
-  cp ${startdir}/qt-force-gtk-platform.sh ${profiled_dir}
   INSTALL_ROOT="$pkgdir" make install
 }
