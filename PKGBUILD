@@ -1,17 +1,20 @@
-# Maintainer: Marti Raudsepp <marti@juffo.org>
+# Maintainer: pancho horrillo <pancho at pancho dot name>
+# Contributor: Bram Swenson <bram at craniumisajar dot com>
+# Contributor: Marti Raudsepp <marti at juffo dot org>
 
 pkgname='concourse-fly-git'
 pkgver=1
-pkgrel=1
-pkgdesc="Command line interface to the Concourse continuous integration tool"
-arch=(i686 x86_64)
-url="https://concourse.ci/fly-cli.html"
+pkgrel=2
+pkgdesc='Command line interface to the Concourse continuous integration tool'
+arch=('x86_64')
+url='https://concourse.ci/fly-cli.html'
 license=('Apache')
 makedepends=('go')
-source=(git://github.com/concourse/concourse.git)
-md5sums=(SKIP)
+checkdepends=()
+source=('git://github.com/concourse/concourse.git')
+sha512sums=('SKIP')
 
-build() {
+build () {
     cd concourse
     export GOPATH="$PWD"
     git submodule update --init --recursive
@@ -19,8 +22,16 @@ build() {
     go build
 }
 
-package() {
+check () {
     cd concourse
-    mkdir -p "$pkgdir/usr/bin"
-    cp "src/github.com/concourse/fly/fly" "$pkgdir/usr/bin"
+    export GOPATH="$PWD"
+    go get github.com/onsi/ginkgo/ginkgo
+    cd src/github.com/concourse/fly
+    "$GOPATH"/bin/ginkgo -r
+}
+
+package () {
+    cd concourse
+    mkdir -p "$pkgdir"/usr/bin
+    cp -a src/github.com/concourse/fly/fly "$pkgdir"/usr/bin
 }
