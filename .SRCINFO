@@ -1,7 +1,7 @@
 pkgbase = tor-browser
 	pkgdesc = Tor Browser Bundle: Anonymous browsing using firefox and tor (international PKGBUILD)
 	pkgver = 7.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.torproject.org/projects/torbrowser.html
 	install = tor-browser.install
 	arch = i686
@@ -36,7 +36,7 @@ pkgbase = tor-browser
 	validpgpkeys = EF6E286DDA85EA2A4BA7DE684E2C6E8793298290
 	md5sums = 914bc94601657ac143f21acd8ed75747
 	md5sums = 494afbfa60fb4ce21840244cc3f7208c
-	md5sums = 9ba504d97e5841d80e0d1388d3e18951
+	md5sums = 01b9fc74fb2ecb96cfa8a1fce1866bb8
 	source_i686 = https://dist.torproject.org/torbrowser/7.0.5/tor-browser-linux32-7.0.5_en-US.tar.xz
 	source_i686 = https://dist.torproject.org/torbrowser/7.0.5/tor-browser-linux32-7.0.5_en-US.tar.xz.asc
 	md5sums_i686 = SKIP
