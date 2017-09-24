@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/arcan-aloadimage-git/
+/*.pkg.tar
+/*.pkg.tar.*
