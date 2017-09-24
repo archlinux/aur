@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-citra-git
-pkgver=r5017.070430ed
+pkgver=r5167.c8921662
 pkgrel=1
 pkgdesc='Nintendo 3DS core'
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'a9404c4eb4fb8a4caca9efbbd764bd272381a7a6f4378a05e956e3efbe4ba79e')
+            '1fd275b44c1b8a46dce4b5fa1e00d65daf2b19a28079bb643e8f3f22b9997187')
 
 pkgver() {
   cd libretro-citra
@@ -70,11 +70,12 @@ build() {
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_PREFIX='/usr' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
     -DDISABLE_LIBPNG='ON' \
     -DENABLE_LIBRETRO='ON' \
     -DENABLE_QT='OFF' \
-    -DENABLE_SDL2='OFF'
+    -DENABLE_SDL2='OFF' \
+    -DUSE_SYSTEM_CURL='ON'
   make
 }
 
