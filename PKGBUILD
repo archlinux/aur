@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=elementary-wallpapers-git
-pkgver=r73.e28f613
+pkgver=r78.1977ad5
 pkgrel=1
 pkgdesc='elementary Wallpapers'
 arch=('any')
@@ -26,7 +26,7 @@ package() {
   cd elementary-wallpapers
 
   install -dm 755 "${pkgdir}"/usr/share/backgrounds/elementary
-  install -m 644 *.jpg extra/*.jpg "${pkgdir}"/usr/share/backgrounds/elementary/
+  install -m 644 *.jpg "${pkgdir}"/usr/share/backgrounds/elementary/
   install -m 644 elementaryos-default "${pkgdir}"/usr/share/backgrounds/
 }
 
