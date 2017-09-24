@@ -1,27 +1,52 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 
-pkgname=thue
-pkgver=1.5_2012.0916
+pkgbase=thue
+pkgname=('thue' 'thue.py' 'thue.rb' 'thue.doc')
+arch=('x86_64')
+pkgver=1.5_2015.0827
 pkgrel=1
 pkgdesc='Thue programming language'
-arch=('any')
 url='http://catseye.tc/node/Thue.html'
 license=('custom:PD')
-depends=('python')
 source=("http://catseye.tc/distfiles/$pkgname-${pkgver/_/-}.zip")
-sha256sums=('28834a581bbf75822f965e97ff2717c7de705252fb4cebc306f4a1789fdfebc5')
+md5sums=('8c987bfe06d3aa255fc2694e82f9faf1')
 
 prepare() {
   2to3 -w -n "$pkgname-${pkgver/_/-}/src/thue.py" >/dev/null 2>&1
 }
 
-package() {
-  cd "$pkgname-${pkgver/_/-}"
-  install -Dm755 src/thue.py "$pkgdir/usr/bin/thue"
+build() {
+  cd "$pkgbase-${pkgver/_/-}/src"
+  gcc thue.c -o thue
+}
+
+package_thue.doc() {
+  arch=('any')
+  cd "${pkgname%.doc}-${pkgver/_/-}"
   install -Dm644 doc/license.txt "$pkgdir/usr/share/licenses/thue/LICENSE"
   install -Dm644 doc/thue.txt "$pkgdir/usr/share/doc/thue/REFERENCE"
   install -Dm644 README.markdown "$pkgdir/usr/share/doc/thue/README.md"
   cp -r eg "$pkgdir/usr/share/doc/thue/examples"
 }
 
-# vim:set ts=2 sw=2 et:
+package_thue() {
+  depends=('thue.doc')
+  arch=('x86_64')
+  cd "$pkgname-${pkgver/_/-}"/src
+  install -Dm755 thue "$pkgdir/usr/bin/thue"
+}
+
+package_thue.py() {
+  depends=('thue.doc' 'python')
+  arch=('any')
+  cd "${pkgname%.py}-${pkgver/_/-}"
+  install -Dm755 src/thue.py "$pkgdir/usr/bin/thue.py"
+}
+
+package_thue.rb() {
+  depends=('thue.doc' 'ruby')
+  arch=('any')
+  cd "${pkgname%.rb}-${pkgver/_/-}"
+  install -Dm755 src/thue.rb "$pkgdir/usr/bin/thue.rb"
+}
+
