@@ -1,6 +1,6 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=kicost
-pkgver=0.1.23
+pkgver=0.1.36
 pkgrel=1
 pkgdesc="KiCAD script to convert BOM xml into spreadsheet"
 url="https://github.com/xesscorp/KiCost/"
@@ -16,8 +16,8 @@ depends=('python2'
 optdepends=()
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/source/k/${pkgname}/${pkgname}-${pkgver}.zip")
-sha512sums=('42cd9a40acb8dc6ab9c30006edb72e2c1d8c284fa69c595e9f3eec4e09f3a2bf4db7a04de015535acab2e5286a32efc1a54e9c3742a756c0e6ae4c2a9f9c9095')
+source=("https://pypi.python.org/packages/5c/f9/b61a9d11905868d36a92d76ff9ba5f9e92b441d6d2eeca4a6989ff28e7dd/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('52c76b92e515717d9431b22670087e1c0c9027f2e6b53dad508970628b3c43baeac4a8763be43eccc2840a13001e92d51fe391f137a4396f96786343e1a96a4b')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
