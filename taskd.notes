@@ -17,9 +17,6 @@
 # Source the environment variables
 export $(cat /etc/conf.d/taskd | sed -e '/^#/d' -e '/^\s*$/d')
 
-# Create the storage path
-sudo install -o taskd -g taskd -Dm770 -d /var/lib/taskd
-
 # Initialize the database
 taskd init
 sudo chown taskd: $TASKDDATA/*  # this may be necessary to do again after adding
