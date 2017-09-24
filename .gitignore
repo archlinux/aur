@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/arcan-aclip-git/
+/*.pkg.tar
+/*.pkg.tar.*

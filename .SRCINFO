@@ -1,0 +1,18 @@
+pkgbase = arcan-aclip-git
+	pkgdesc = Arcan command line clipboard manager
+	pkgver = 0.5.1.r408.gc849baf2
+	pkgrel = 1
+	url = https://arcan-fe.com/
+	arch = x86_64
+	license = GPL2
+	license = LGPL
+	license = custom:BSD
+	makedepends = cmake
+	depends = arcan
+	provides = arcan-aclip
+	conflicts = arcan-aclip
+	source = arcan-aclip-git::git+https://github.com/letoram/arcan.git
+	sha512sums = SKIP
+
+pkgname = arcan-aclip-git
+
