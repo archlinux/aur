@@ -1,30 +1,32 @@
 # Maintainer: Ondrej Patrovic <ondrej@patrovic.com>
+
 pkgname=010editor
-pkgver=7.0.2
+pkgver=8.0
+
 pkgrel=1
 pkgdesc="Professional text and hex editing with Binary Templates technology"
 arch=('i686' 'x86_64')
-url="http://www.sweetscape.com/010editor/"
+url="https://www.sweetscape.com/010editor/"
 license=('custom')
-depends=('qt5-tools')
+depends=('qt5-tools' 'libpng12')
 makedepends=('fakechroot')
-options=(!strip)
+_urlver=${pkgver//./}
 
 source=('010editor.desktop')
 sha256sums=('e3398b117934840828a96cd33534fc9b9242ec96089c2f283add137975499766')
 
-source_i686=('http://www.sweetscape.com/download/010EditorLinux32Installer.tar.gz')
-source_x86_64=('http://www.sweetscape.com/download/010EditorLinux64Installer.tar.gz')
+source_i686=(https://download.sweetscape.com/010EditorLinux32Installer$_urlver.tar.gz)
+source_x86_64=(https://download.sweetscape.com/010EditorLinux64Installer$_urlver.tar.gz)
 
-sha256sums_i686=('f3c7f202f4a34e5b3b125acef4bc4dbd6604814d106d4820f2a60563c0097ba1')
-sha256sums_x86_64=('f44d4091327264ffa57f0ba2a0a3d50a92f735e41ca71ffc8fc2330d2dafab1c')
+sha256sums_i686=('94d81558ff0c0d8375a68b5250d509d1dbcd5aa61544b0fbf2d644ab095390ad')
+sha256sums_x86_64=('741a0cdad18bbcbe3661f736fd7d3227162f9b50e315a39c7524965900dfb595')
 
 package() {
 	cd "${srcdir}"
 
 	_source=source_${CARCH}
 	_filename=${!_source##*/}
-	_installer=${_filename%%.*}
+	_installer=${_filename%%$_urlver*}
 
 	install -dm 755 "${pkgdir}/opt"
 
