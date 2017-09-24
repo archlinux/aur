@@ -28,49 +28,24 @@ _srcver="$(curl -s "$_digest" | grep -o "${_srcname}-7[0-9\.-]*\.tar\.xz" |
 _srcver_regex="$(printf '%s' "$_srcver" | sed 's/\./\\\./g')" # translate to a regular expression
 _qdepth='32'
 
-pkgname=imagemagick-full
+pkgbase=imagemagick-full
+pkgname=('imagemagick-full' 'imagemagick-full-doc')
 pkgver="$(printf '%s' "$_srcver"| tr '-' '.')" # ImageMagick does not provide a download archive of all previous versions
-pkgrel=1
-pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://www.imagemagick.org/'
 license=('custom')
-depends=(
+makedepends=(
     # official repositories:
         'libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript'
         'openexr' 'libwmf' 'librsvg' 'libxml2' 'liblqr' 'openjpeg2' 'libraw'
-        'opencl-icd-loader' 'libwebp' 'glu'
+        'opencl-headers' 'opencl-icd-loader' 'libwebp' 'glu'
         'bzip2' 'djvulibre' 'ttf-dejavu' 'fftw' 'freetype2' 'fontconfig'
         'gsfonts' 'graphviz' 'jbigkit' 'jemalloc' 'lcms2' 'libjpeg-turbo'
         'libpng' 'libtiff' 'pango' 'perl' 'xz' 'zlib'
     # AUR:
         'autotrace-nomagick' 'flif' 'libfpx' 'libraqm' 'libumem-git'
 )
-optdepends=(
-    # AUR:
-        'ttf-mac-fonts: for Apple fonts support'
-)
-makedepends=('opencl-headers')
-provides=('imagemagick' 'imagemagick7' 'imagemagick-fftw'
-          "libMagickCore-${pkgver%%.*}.Q${_qdepth}HDRI.so"
-          "libMagickWand-${pkgver%%.*}.Q${_qdepth}HDRI.so"
-            "libMagick++-${pkgver%%.*}.Q${_qdepth}HDRI.so")
-conflicts=('imagemagick' 'imagemagick7' 'imagemagick-git' 'imagemagick-full-git'
-           'imagemagick-fftw' 'imagemagick-no-hdri')
-backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
-        "etc/ImageMagick-${pkgver%%.*}/colors.xml"
-        "etc/ImageMagick-${pkgver%%.*}/delegates.xml"
-        "etc/ImageMagick-${pkgver%%.*}/log.xml"
-        "etc/ImageMagick-${pkgver%%.*}/magic.xml"
-        "etc/ImageMagick-${pkgver%%.*}/mime.xml"
-        "etc/ImageMagick-${pkgver%%.*}/policy.xml"
-        "etc/ImageMagick-${pkgver%%.*}/quantization-table.xml"
-        "etc/ImageMagick-${pkgver%%.*}/thresholds.xml"
-        "etc/ImageMagick-${pkgver%%.*}/type.xml"
-        "etc/ImageMagick-${pkgver%%.*}/type-dejavu.xml"
-        "etc/ImageMagick-${pkgver%%.*}/type-ghostscript.xml"
-        "etc/ImageMagick-${pkgver%%.*}/type-windows.xml")
-options=('!docs' 'libtool' '!emptydirs')
 source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz")
 sha256sums=("$(curl -s "$_digest" | grep -A5 "${_srcname}-${_srcver_regex}\.tar\.xz" |
                                     grep 'sha256'                                    |
@@ -140,7 +115,44 @@ build() {
     make
 }
 
-package() {
+package_imagemagick-full() {
+    pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
+    depends=(
+        # official repositories:
+            'libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript'
+            'openexr' 'libwmf' 'librsvg' 'libxml2' 'liblqr' 'openjpeg2' 'libraw'
+            'opencl-icd-loader' 'libwebp' 'glu'
+            'bzip2' 'djvulibre' 'ttf-dejavu' 'fftw' 'freetype2' 'fontconfig'
+            'gsfonts' 'graphviz' 'jbigkit' 'jemalloc' 'lcms2' 'libjpeg-turbo'
+            'libpng' 'libtiff' 'pango' 'perl' 'xz' 'zlib'
+        # AUR:
+            'autotrace-nomagick' 'flif' 'libfpx' 'libraqm' 'libumem-git'
+    )
+    optdepends=(
+        # AUR:
+            'ttf-mac-fonts: for Apple fonts support'
+    )
+    provides=('imagemagick' 'imagemagick7' 'imagemagick-fftw'
+              "libMagickCore-${pkgver%%.*}.Q${_qdepth}HDRI.so"
+              "libMagickWand-${pkgver%%.*}.Q${_qdepth}HDRI.so"
+                "libMagick++-${pkgver%%.*}.Q${_qdepth}HDRI.so")
+    conflicts=('imagemagick' 'imagemagick7' 'imagemagick-fftw' 'imagemagick-no-hdri'
+               'imagemagick-git' 'imagemagick-full-git')
+    backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
+            "etc/ImageMagick-${pkgver%%.*}/colors.xml"
+            "etc/ImageMagick-${pkgver%%.*}/delegates.xml"
+            "etc/ImageMagick-${pkgver%%.*}/log.xml"
+            "etc/ImageMagick-${pkgver%%.*}/magic.xml"
+            "etc/ImageMagick-${pkgver%%.*}/mime.xml"
+            "etc/ImageMagick-${pkgver%%.*}/policy.xml"
+            "etc/ImageMagick-${pkgver%%.*}/quantization-table.xml"
+            "etc/ImageMagick-${pkgver%%.*}/thresholds.xml"
+            "etc/ImageMagick-${pkgver%%.*}/type.xml"
+            "etc/ImageMagick-${pkgver%%.*}/type-dejavu.xml"
+            "etc/ImageMagick-${pkgver%%.*}/type-ghostscript.xml"
+            "etc/ImageMagick-${pkgver%%.*}/type-windows.xml")
+    options=('!docs' 'libtool' '!emptydirs')
+    
     cd "${_srcname}-${_srcver}"
     
     make DESTDIR="$pkgdir" install
@@ -160,4 +172,18 @@ package() {
     sed -i '71i\  \<policy domain="coder" rights="none" pattern="SHOW" />'      "${pkgdir}/etc/ImageMagick-${pkgver%%.*}/policy.xml"
     sed -i '72i\  \<policy domain="coder" rights="none" pattern="WIN" />'       "${pkgdir}/etc/ImageMagick-${pkgver%%.*}/policy.xml"
     sed -i '73i\  \<policy domain="coder" rights="none" pattern="PLT" />'       "${pkgdir}/etc/ImageMagick-${pkgver%%.*}/policy.xml"
+}
+
+package_imagemagick-full-doc() {
+    pkgdesc='The ImageMagick documentation (utilities manuals and libraries API)'
+    arch=('any')
+    provides=('imagemagick-doc')
+    conflicts=('imagemagick-doc' 'imagemagick-git-doc' 'imagemagick-full-doc-git')
+    
+    cd "${_srcname}-${_srcver}"
+    
+    make DESTDIR="$pkgdir" install-data-html
+    
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
