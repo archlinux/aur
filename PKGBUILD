@@ -1,11 +1,11 @@
-# Maintainer: TingPing tingping@tingping.se
+# Maintainer: albfan albertofanjul@gmail.com
 
 pkgname=sysprof2-git
-pkgver=3.20.0.r25.gb97425b
+pkgver=3.26.0.r5.g00887d7
 pkgrel=1
 pkgdesc='CPU Profiler'
 arch=('i686' 'x86_64' 'armv6h')
-url='https://github.com/chergert/sysprof2'
+url='https://git.gnome.org/browse/sysprof'
 license=('GPL3')
 options=('!libtool')
 depends=('gtk3' 'polkit')
@@ -24,12 +24,15 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-
-  ./autogen.sh --prefix=/usr --disable-debug
-  make -s
+  rm -rf build
+  mkdir build
+  cd build
+  meson --prefix /usr ..
+  ninja
 }
 
 package() {
   cd "$_gitname"
-  make DESTDIR="$pkgdir" install
+  cd build
+  DESTDIR="$pkgdir" ninja install
 }
