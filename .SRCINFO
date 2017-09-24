@@ -1,14 +1,14 @@
 pkgbase = racer-cg-car-87-dodge-omni-america
 	pkgdesc = 1987 Dodge Omni America car model for Racer (CG version) by Harey
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.racedepartment.com/threads/1987-dodge-omni-america.93506/
 	arch = any
 	license = custom
 	makedepends = unrar
 	depends = racer-cg
-	noextract = 87DodgeOmniAmerica.rar
-	source = https://yihmwq.dm2301.livefilestore.com/y3mvn6PjBcQwJyanVlgvaGL8iGPsfMR1IvmMj1M0GesgQUHqZSD8notmludgWo481qTXKEh1Ygdi3yeYzE0Ix7t0iHj7t3EQLXsEGxwE8w5jHwEA9wEhcD2Coe_i07M3RA4/87DodgeOmniAmerica.rar
+	noextract = DodgeOmniAmerica.rar
+	source = http://www.tracciontrasera.net/descargas/racer/coches/DodgeOmniAmerica.rar
 	md5sums = d343e44ee0acd3b1b57373db4adcf5d6
 
 pkgname = racer-cg-car-87-dodge-omni-america
