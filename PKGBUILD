@@ -1,7 +1,7 @@
 # Maintainer: Andrew Penkrat <contact.aldrog@gmail.com>
 
 pkgname=liri-text-git
-pkgver=20170428.23b1b3e
+pkgver=20170918.90b23f5
 pkgrel=1
 pkgdesc="Advanced text editor built in accordance with Material Design"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
