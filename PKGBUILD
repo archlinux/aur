@@ -20,7 +20,7 @@ _language='nl'
 _pkgname='tor-browser'
 pkgname="${_pkgname}-${_language,,}"
 pkgver='7.0.5'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Tor Browser Bundle: Anonymous browsing using firefox and tor (${_language})"
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
@@ -50,7 +50,7 @@ source=("${_pkgname}.desktop"
 
 md5sums=('9178c9325979377f7ec57569b15fcb61'
 	'494afbfa60fb4ce21840244cc3f7208c'
-	'446369d66d37b1f9df458c80b27c4bc5')
+	'01b9fc74fb2ecb96cfa8a1fce1866bb8')
 md5sums_i686=('SKIP'
 	'SKIP')
 md5sums_x86_64=('SKIP'

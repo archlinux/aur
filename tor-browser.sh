@@ -68,6 +68,7 @@ _refresh_local_() {
 	local DIR_IS_KEPT=0
 
 	if [[ -d "${KEEP_DIR}" ]]; then
+		[[ -d "${KEPT_DIR}" ]] && rm -R "${KEPT_DIR}"
 		mv "${KEEP_DIR}" "${KEPT_DIR}"
 		echo "${0}: Preserving files in ${KEPT_DIR}/." >> "${_TB_LOG_FILE_}"
 		DIR_IS_KEPT=1
@@ -81,7 +82,10 @@ _refresh_local_() {
 		\nCheck permissions of ${_TB_APP_DIR_}. \
 		\nThe error log can be found in ${_TB_LOG_FILE_}."
 
-	[[ ! ${DIR_IS_KEPT} -eq 0 ]] && mv "${KEPT_DIR}" "${KEEP_DIR}"
+	if [[ ! ${DIR_IS_KEPT} -eq 0 ]]; then
+		rm -R "${KEEP_DIR}"
+		mv "${KEPT_DIR}" "${KEEP_DIR}"
+	fi
 
 	[[ -f "${_TB_APP_DIR_}/Browser/start-tor-browser" ]] && echo "${_TB_VERSION_}" > "${_TB_VER_FILE_}"
 
