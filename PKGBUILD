@@ -5,7 +5,7 @@
 pkgname='concourse-fly-git'
 _pkgname='concourse'
 pkgver=3.4.1.rc.34.r0.g5416da9
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line interface to the Concourse continuous integration tool'
 arch=('x86_64')
 url='https://concourse.ci/fly-cli.html'
@@ -39,7 +39,6 @@ check () {
 }
 
 package () {
-    cd concourse
-    mkdir -p "$pkgdir"/usr/bin
-    cp -a src/github.com/concourse/fly/fly "$pkgdir"/usr/bin
+    cd "${_pkgname}"
+    install -m 755 -D src/github.com/concourse/fly/fly "$pkgdir"/usr/bin/fly
 }
