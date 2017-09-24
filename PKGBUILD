@@ -19,7 +19,7 @@ source=("git+https://github.com/tobiasjakobi/linux-odroid-public"
 	'config_u3'
         'linux-odroid.preset'
         'arch-logo.ppm'
-	'uEnv.txt')
+	'uEnv-mainline.txt')
 
 md5sums=('SKIP'
 	 '4da91890b628b52e195639f2335a1556'
@@ -96,7 +96,7 @@ build_kernel_package() {
   mkdir -p "${pkgdir}/usr"
   mv "$pkgdir/lib" "$pkgdir/usr"
 
-  install -D -m644 "${startdir}/uEnv.txt" "${pkgdir}${_bootdir}/uEnv.txt"
+  install -D -m644 "${startdir}/uEnv-mainline.txt" "${pkgdir}${_bootdir}/uEnv-mainline.txt"
   install -D -m644 "arch/arm/boot/dts/exynos4412-odroidu3.dtb" "${pkgdir}${_bootdir}/exynos4412-odroidu3.dtb"
 }
 
@@ -107,7 +107,7 @@ package_linux-odroid-u3-git() {
   provides=('kernel26' "linux=${pkgver}")
   conflicts=('linux-odroid-u2' 'linux-odroidx' 'linux-odroid-x' 'linux-odroid-x-mali' 'linux-odroid-u2-mali' 'linux-odroid-x2')
   replaces=('linux-odroid-u2-mali')
-  backup=("etc/mkinitcpio.d/${pkgmain}.preset" "boot/uEnv.txt")
+  backup=("etc/mkinitcpio.d/${pkgmain}.preset")
   install=${pkgbase}.install
 
   build_kernel_package config_u3

@@ -27,7 +27,8 @@ post_install () {
   make_initrd
   sync
 
-  echo ">>> Remeber to set root file system in /boot/uEnv.txt"
+  echo ">>> Remeber to set root file system in /boot/uEnv-mainline.txt"
+  echo ">>> and rename it to uEnv.txt"
 }
 
 post_upgrade() {
@@ -45,7 +46,8 @@ post_upgrade() {
   make_initrd
   sync
 
-  echo ">>> Remeber to set root file system in /boot/uEnv.txt"
+  echo ">>> Remeber to set root file system in /boot/uEnv-mainline.txt"
+  echo ">>> and rename it to uEnv.txt"
 }
 
 post_remove() {
