@@ -1,7 +1,7 @@
 pkgbase = python2-catkin_tools
 	pkgdesc = Command line tools for working with catkin.
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://catkin-tools.readthedocs.org/
 	arch = any
 	license = Apache
@@ -9,6 +9,7 @@ pkgbase = python2-catkin_tools
 	depends = python2
 	depends = python2-catkin_pkg
 	depends = python2-osrf_pycommon
+	depends = python2-trollius
 	depends = python2-yaml
 	provides = python2-catkin-tools
 	conflicts = python-catkin_tools
