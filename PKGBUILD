@@ -5,13 +5,13 @@
 _dname=navigraph-fms-data-manager
 pkgname=navigraph-fms-data-manager-beta
 pkgver=1.6.1.1129   
-pkgrel=1
-arch=("x86_64")
+pkgrel=2
+arch=('x86_64')
 url="https://www.navigraph.com/FmsDataManager.aspx"
 pkgdesc="It's a client software which allows you to effortlessly download and install FMS Data for your flight simulation addons and tools." 
-license=("custom:commercial")
-groups=("MBC")
-depends=("zlib" "mesa" "libxcb" "glibc>=2.19")
+license=('custom:commercial')
+groups=('MBC')
+depends=('zlib' 'mesa' 'libxcb' 'glibc>=2.19')
 source=("http://download.navigraph.com/software/fmsdatamanager/$_dname-$pkgver.$arch.rpm"
         "COPYING")
 sha256sums=('bbb7d69f4c74f5ea3eabd24742ed7c96acc9634c6c485359e13f52276daee57b'
@@ -19,6 +19,7 @@ sha256sums=('bbb7d69f4c74f5ea3eabd24742ed7c96acc9634c6c485359e13f52276daee57b'
             
 package()
 {
+    sed -i "s%LD_LIBRARY_PATH=%LD_LIBRARY_PATH=/usr/lib/openssl-1.0/:%g" "$srcdir/usr/share/applications/Navigraph FMS Manager.desktop"
     cd $srcdir
     cp -r usr $pkgdir
     install -d "$pkgdir/usr/share/licenses/$pkgname"
