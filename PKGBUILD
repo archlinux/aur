@@ -2,9 +2,9 @@
 # Contributor: shmilee <echo c2htaWxlZS56anVAZ21haWwuY29tCg==|base64 -d>
 pkgbase=nikola
 _pyname=Nikola
-pkgname=nikola
+pkgname=('nikola' 'python-nikola-doc')
 pkgver=7.8.10
-pkgrel=2
+pkgrel=3
 pkgdesc='A modular, fast, simple, static website generator.'
 arch=('any')
 url='https://getnikola.com/'
@@ -29,26 +29,29 @@ optdepends=('python-jinja: for Jinja2 themes'
             'python-watchdog: for nikola auto')
 source=("https://pypi.io/packages/source/N/Nikola/${_pyname}-${pkgver}.tar.gz")
 md5sums=('a3a4e7f5417f6ce19b6edbbe8b778131')
+conflicts=('python-nikola' 'python2-nikola' 'python-nikola-git' 'python2-nikola-git')
+replaces=('python-nikola' 'python2-nikola')
 
 build() {
   cd "${srcdir}/${_pyname}-${pkgver}"
 }
 
-package() {
-  conflicts=('python-nikola-git')
+package_nikola() {
   replaces=('python-nikola' 'python2-nikola')
   cd "${srcdir}/${_pyname}-${pkgver}"
   python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   ln -s ${pkgbase} "${pkgdir}/usr/bin/${pkgbase}3"
-  rm -rf "${pkgdir}/usr/share"
 
-  install -d -m755 "${pkgdir}/usr/share"/{doc/${pkgbase},man/man1,licenses/${pkgbase}}
+  install -d -m755 "${pkgdir}/usr/share/licenses/${pkgbase}"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
-  cd "docs/"
-  install -m644 man/nikola.1.gz "${pkgdir}/usr/share/man/man1/nikola.1.gz"
-  install -m644 manual.txt "${pkgdir}/usr/share/doc/${pkgbase}/manual.txt"
-  install -m644 theming.txt "${pkgdir}/usr/share/doc/${pkgbase}/theming.txt"
-  install -m644 extending.txt "${pkgdir}/usr/share/doc/${pkgbase}/extending.txt"
+}
+
+package_python-nikola-doc() {
+  pkgdesc="(deprecated -- merged into 'nikola')"
+  install='python-nikola-doc.install'
+  optdepends=()
+  depends=()
+  echo "WARNING: python-nikola-doc is deprecated, please uninstall it"
 }
 
 # vim:set ts=2 sw=2 et:

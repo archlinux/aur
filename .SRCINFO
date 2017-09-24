@@ -1,7 +1,7 @@
 pkgbase = nikola
 	pkgdesc = A modular, fast, simple, static website generator.
 	pkgver = 7.8.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getnikola.com/
 	arch = any
 	license = MIT
@@ -36,12 +36,23 @@ pkgbase = nikola
 	optdepends = python-phpserialize: for WordPress imports
 	optdepends = python-ws4py: for nikola auto
 	optdepends = python-watchdog: for nikola auto
+	conflicts = python-nikola
+	conflicts = python2-nikola
+	conflicts = python-nikola-git
+	conflicts = python2-nikola-git
+	replaces = python-nikola
+	replaces = python2-nikola
 	options = !emptydirs
 	source = https://pypi.io/packages/source/N/Nikola/Nikola-7.8.10.tar.gz
 	md5sums = a3a4e7f5417f6ce19b6edbbe8b778131
 
 pkgname = nikola
-	conflicts = python-nikola-git
 	replaces = python-nikola
 	replaces = python2-nikola
+
+pkgname = python-nikola-doc
+	pkgdesc = (deprecated -- merged into 'nikola')
+	install = python-nikola-doc.install
+	depends = 
+	optdepends = 
 
