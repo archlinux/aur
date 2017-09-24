@@ -4,7 +4,7 @@
 
 pkgname='minisatip-git'
 pkgdesc="SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards (experimental)"
-pkgver=0.7.6_g6548479
+pkgver=0.7.6_g9659c44
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://minisatip.org"
@@ -27,14 +27,19 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd ${srcdir}/minisatip
-	printf "%s_g%s" "$(tac minisatip.h | awk -F"[^.^0-9]*" '/VERSION_BUILD/ {printf $2}')" "$(git rev-parse --short HEAD)"
+	printf "%s_g%s" "$(tac src/minisatip.h | awk -F"[^.^0-9]*" '/VERSION_BUILD/ {printf $2}')" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 	cd ${srcdir}/minisatip
 	./configure
-	sed -i 's/FLAGS?/FLAGS/g' Makefile
-	make EXTRA_CFLAGS="${CFLAGS}" EXTRA_LDFLAGS="${LDFLAGS}"
+	sed -e 's/FLAGS?/FLAGS/g' -i */Makefile
+	make EXTRA_CFLAGS="${CFLAGS}"
+}
+
+check() {
+	cd ${srcdir}/minisatip/tests
+	make EXTRA_CFLAGS="${CFLAGS}"
 }
 
 package() {
