@@ -53,6 +53,6 @@ pkgname = nikola-git
 pkgname = python-nikola-doc-git
 	pkgdesc = (deprecated -- merged into 'nikola-git')
 	install = python-nikola-doc-git.install
-	depends = 
+	depends = nikola-git
 	optdepends = 
 

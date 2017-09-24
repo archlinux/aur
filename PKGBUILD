@@ -52,7 +52,7 @@ package_python-nikola-doc-git() {
   pkgdesc="(deprecated -- merged into 'nikola-git')"
   install='python-nikola-doc-git.install'
   optdepends=()
-  depends=()
+  depends=('nikola-git')
   echo "WARNING: python-nikola-doc-git is deprecated, please uninstall it"
 }
 
