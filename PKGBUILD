@@ -27,6 +27,8 @@ prepare() {
     rm -rf build
   fi
   mkdir build
+
+  sed 's/extra/io.elementary.screenshot-tool.extra/' -i pantheon-screenshot/po/extra/meson.build
 }
 
 build() {
