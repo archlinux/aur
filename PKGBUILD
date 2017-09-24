@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-freetype2
-pkgver=2.8
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='Font rasterization library (mingw-w64)'
 arch=('any')
@@ -17,15 +17,13 @@ replaces=(mingw-w64-freetype)
 conflicts=(mingw-w64-freetype)
 source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
         0001-Enable-table-validation-modules.patch
-        0002-Enable-subpixel-rendering.patch
         0003-Enable-infinality-subpixel-hinting.patch
         0004-Enable-long-PCF-family-names.patch)
 options=(!strip !buildflags !libtool staticlibs)
-sha1sums=('42c6b1f733fe13a3eba135f5025b22cb68450f91'
+sha1sums=('417bb3747c4ac95b6f2652024a53fad45581fa1c'
           'SKIP'
-          'b31882ef5e8447e761acee1c4a44c0630cd4d465'
-          'b1494810ed3aca25cdd8e8cedf634e5adfe6c09e'
-          '41d27140fd590945e22e012c9dce62de3d6f11e6'
+          'c3e91e668936206d3c158bffde0f69788a086a5b'
+          '81586014ea44375ddc85dd9dbcabae6e91c34d62'
           '334f229875039794adeb574e27d365bb445fb314')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
@@ -47,7 +45,6 @@ prepare() {
   cd "${srcdir}/freetype-${pkgver}"
 
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
-  patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
   patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
 }
