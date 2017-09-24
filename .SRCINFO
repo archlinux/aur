@@ -1,0 +1,36 @@
+pkgbase = vuescan
+	pkgdesc = An integrated scanning UI, providing it's own scanner drivers, also for older scanners.
+	pkgver = 9.5.86
+	pkgrel = 1
+	url = http://www.hamrick.com/
+	arch = i686
+	arch = x86_64
+	license = custom:shareware
+	depends = libsm
+	depends = gcc-libs
+	depends = libusb-compat
+	depends = gtk2
+	provides = vuescan-doc=9.5.86
+	conflicts = vuescan-doc
+	replaces = vuescan-doc<=9.5.86
+	source = http://www.hamrick.com/files/vuex6495.tgz
+	source = vuescan.pdf::http://www.hamrick.com/vuescan/vuescan.pdf
+	source = quicknotes.html::http://www.hamrick.com/vuescan/vuescan.htm
+	source = license.html::http://www.hamrick.com/reg.html
+	source = website.url
+	source = supported-scanners.url
+	source = usersguide_html.url
+	source = license.url
+	source = shareware-dummy.txt
+	sha256sums = 13f166e91507be780d4a445ea52ee012ff8ccf359c55116f192565b7ecb923b5
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = d7d05142fa9e1245b0ef6b1ccb49a41378b99d4cfa0ecd57d67dc0b1ce4c8776
+	sha256sums = 191e2556d73af8c79f7044b3a85cf43443fe462e211af5ccea1befbf2bea1b73
+	sha256sums = dd1978295df20be26d44ababcc1c99434b23b00033917b3ba46652ef4ba29f72
+	sha256sums = 6e8e6ee047947d000626c6730858cb421a10d8a5d42c793cd4261f528b905ea1
+	sha256sums = 14f557c10f419d2d1d234952eb6e239446bd1d27b81da7d6c475915caf12b438
+
+pkgname = vuescan
+

@@ -1,0 +1,5 @@
+VueScan has a proprietary license and copyright, but I, the PKGBUILD-creator, could not find the license agreement.
+
+Wikipedia states it is shareware, but on http://www.hamrick.com/reg.html there are also options to buy a license. This website also states that one can try it out as long as one wishes before buying a license.
+
+Consider all rights reserved to the authors, and do not redistribute the software by yourself (you only may point others to the upstream download URL, as the PKGBUILD also does).
