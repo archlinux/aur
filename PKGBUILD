@@ -29,7 +29,7 @@ optdepends=('python-jinja: for Jinja2 themes'
             'python-watchdog: for nikola auto')
 source=("https://pypi.io/packages/source/N/Nikola/${_pyname}-${pkgver}.tar.gz")
 md5sums=('a3a4e7f5417f6ce19b6edbbe8b778131')
-conflicts=('python-nikola' 'python2-nikola' 'python-nikola-git' 'python2-nikola-git')
+conflicts=('python-nikola' 'python2-nikola' 'python-nikola-git' 'python2-nikola-git' 'nikola-git')
 replaces=('python-nikola' 'python2-nikola')
 
 build() {

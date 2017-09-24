@@ -40,6 +40,7 @@ pkgbase = nikola
 	conflicts = python2-nikola
 	conflicts = python-nikola-git
 	conflicts = python2-nikola-git
+	conflicts = nikola-git
 	replaces = python-nikola
 	replaces = python2-nikola
 	options = !emptydirs
