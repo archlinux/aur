@@ -1,7 +1,7 @@
 pkgbase = emacs-sml-mode
-	pkgdesc = An SML editing mode for emacs
+	pkgdesc = An emacs editing mode for Standard ML
 	pkgver = 6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://elpa.gnu.org/packages/sml-mode.html
 	install = emacs-sml-mode.install
 	arch = any
