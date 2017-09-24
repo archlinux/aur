@@ -1,0 +1,19 @@
+--- configure.ac	2017-09-24 09:48:25.070908716 -0600
++++ configure.ac.fix	2017-09-24 09:58:16.125697541 -0600
+@@ -507,14 +507,14 @@
+ AS_IF([test "$with_guile" = "2.0"],
+       [PKG_CHECK_MODULES(GUILE, [guile-2.0 >= 2.0.0],
+                          [GUILE_EFFECTIVE_VERSION=2.0
+-                          AC_PATH_PROG([GUILD], guild)])],
++                          AC_PATH_PROGS([GUILD], guild2.0 guild)])],
+       [test "$with_guile" = "1.8"],
+       [PKG_CHECK_MODULES(GUILE, [guile-1.8 >= 1.8.5],
+                          [GUILE_EFFECTIVE_VERSION=1.8])],
+       [test "$with_guile" = "auto"],
+       [PKG_CHECK_MODULES(GUILE, [guile-2.0 >= 2.0.0],
+           [GUILE_EFFECTIVE_VERSION=2.0
+-           AC_PATH_PROG([GUILD], guild)],
++           AC_PATH_PROG([GUILD], guild2.0 guild)],
+           [PKG_CHECK_MODULES(GUILE, [guile-1.8 >= 1.8.5],
+                              [GUILE_EFFECTIVE_VERSION=1.8],
+                              [GUILE_EFFECTIVE_VERSION=0])

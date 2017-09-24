@@ -4,7 +4,7 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash-gtk3-git
-pkgver=2.6.17b.r1566.g29a92431c
+pkgver=2.7.0.r13.g4d59be7f4
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application (GTK3 development version)"
 arch=('i686' 'x86_64')
@@ -12,19 +12,26 @@ url="http://www.gnucash.org"
 license=("GPL")
 conflicts=('gnucash')
 provides=('gnucash')
-depends=('guile' 'slib' 'goffice' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'desktop-file-utils' 'webkit2gtk' 'libgnome-keyring' 'dconf' 'boost-libs')
+depends=('guile2.0' 'slib' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'desktop-file-utils' 'webkit2gtk' 'libgnome-keyring' 'dconf' 'boost-libs')
 makedepends=('intltool' 'git' 'boost' 'swig' 'gmock' 'gtest' 'gconf')
 optdepends=('evince: for print preview'
 	    'yelp: help browser'
             'perl-finance-quote: for stock information lookups'
             'perl-date-manip: for stock information lookups')
 options=('!emptydirs')
-source=("git+https://github.com/Gnucash/gnucash")
-sha1sums=('SKIP')
+source=("git+https://github.com/Gnucash/gnucash"
+	"guild-2.0.patch")
+sha1sums=('SKIP'
+          '965124ae07f3048c0232139c71f2da4b2eabf253')
 
 pkgver() {
   cd "${srcdir}/gnucash"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/gnucash"
+  patch -N < ../guild-2.0.patch
 }
 
 build() {
@@ -60,5 +67,4 @@ package() {
   # are not included with the package and the executable is hardlinked
   # to the location that it was built at.
   rm -f "${pkgdir}"/usr/bin/gnucash-valgrind
-
 }
