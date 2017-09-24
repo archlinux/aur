@@ -1,23 +1,21 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-network
-pkgver=0.1.0.3
+pkgver=0.1.1
 pkgrel=3
-pkgdesc='Network plug for Switchboard'
+pkgdesc='Switchboard Network Plug'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/switchboard-plug-networking'
+url='https://github.com/elementary/switchboard-plug-networking'
 license=('GPL3')
 groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libnm-glib' 'nm-connection-editor'
          'polkit'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('bzr' 'cmake' 'switchboard' 'vala')
-source=("https://launchpad.net/switchboard-plug-networking/loki/${pkgver}/+download/switchboard-plug-networking-${pkgver}.tar.xz")
-sha256sums=('9436cc3ae1aa014b48bc0aba01096b929f21ec8bd7a1374ea9cd4c1144c3af15')
+source=("switchboard-plug-network-${pkgver}.tar.gz::https://github.com/elementary/switchboard-plug-networking/archive/${pkgver}.tar.gz")
+sha256sums=('3859f1a7fb607ac94cb11a377f0747d0596d8510f5b3ee248a1d81125c3197bc')
 
 prepare() {
-  cd switchboard-plug-networking-${pkgver}
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -25,9 +23,9 @@ prepare() {
 }
 
 build() {
-  cd switchboard-plug-networking-${pkgver}/build
+  cd build
 
-  cmake .. \
+  cmake ../switchboard-plug-networking-${pkgver} \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib'
@@ -35,7 +33,7 @@ build() {
 }
 
 package() {
-  cd switchboard-plug-networking-${pkgver}/build
+  cd build
 
   make DESTDIR="${pkgdir}" install
 }
