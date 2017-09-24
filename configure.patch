@@ -1,0 +1,65 @@
+diff --git a/configure b/configure
+index c356465..7302ec5 100755
+--- a/configure
++++ b/configure
+@@ -18706,9 +18706,9 @@ else
+   as_fn_error $? "Could not find crypto library" "$LINENO" 5
+ fi
+ 
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for SSL_library_init in -lssl" >&5
+-$as_echo_n "checking for SSL_library_init in -lssl... " >&6; }
+-if ${ac_cv_lib_ssl_SSL_library_init+:} false; then :
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for OPENSSL_init_ssl in -lssl" >&5
++$as_echo_n "checking for OPENSSL_init_ssl in -lssl... " >&6; }
++if ${ac_cv_lib_ssl_OPENSSL_init_ssl+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+@@ -18722,27 +18722,27 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ #ifdef __cplusplus
+ extern "C"
+ #endif
+-char SSL_library_init ();
++char OPENSSL_init_ssl ();
+ int
+ main ()
+ {
+-return SSL_library_init ();
++return OPENSSL_init_ssl ();
+   ;
+   return 0;
+ }
+ _ACEOF
+ if ac_fn_c_try_link "$LINENO"; then :
+-  ac_cv_lib_ssl_SSL_library_init=yes
++  ac_cv_lib_ssl_OPENSSL_init_ssl=yes
+ else
+-  ac_cv_lib_ssl_SSL_library_init=no
++  ac_cv_lib_ssl_OPENSSL_init_ssl=no
+ fi
+ rm -f core conftest.err conftest.$ac_objext \
+     conftest$ac_exeext conftest.$ac_ext
+ LIBS=$ac_check_lib_save_LIBS
+ fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_ssl_SSL_library_init" >&5
+-$as_echo "$ac_cv_lib_ssl_SSL_library_init" >&6; }
+-if test "x$ac_cv_lib_ssl_SSL_library_init" = xyes; then :
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_ssl_OPENSSL_init_ssl" >&5
++$as_echo "$ac_cv_lib_ssl_OPENSSL_init_ssl" >&6; }
++if test "x$ac_cv_lib_ssl_OPENSSL_init_ssl" = xyes; then :
+   cat >>confdefs.h <<_ACEOF
+ #define HAVE_LIBSSL 1
+ _ACEOF
+diff --git a/configure.ac b/configure.ac
+index 0c10fdf..4b09467 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -203,7 +203,7 @@ AC_CHECK_HEADERS([openssl/aes.h openssl/bio.h openssl/evp.h openssl/hmac.h opens
+ # OpenSSL has been installed under at least two different names...
+ # note that crypto requires zlib
+ AC_CHECK_LIB([crypto],[EVP_get_digestbyname],[],[AC_MSG_ERROR([Could not find crypto library])])	
+-AC_CHECK_LIB([ssl],[SSL_library_init],[],[AC_MSG_ERROR([Could not find ssl library])])
++AC_CHECK_LIB([ssl],[OPENSSL_init_ssl],[],[AC_MSG_ERROR([Could not find ssl library])])
+ AC_CHECK_FUNCS([EVP_get_digestbyname],,
+ 	AC_MSG_ERROR([SSL/OpenSSL support required]))
+ 
