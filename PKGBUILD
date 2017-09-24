@@ -1,7 +1,7 @@
 # Maintainer: Brendan Van Hook <brendan at vastactive dot com>
 
 pkgname=tarsnap-gui
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 pkgdesc="Cross-platform GUI for the Tarsnap backup service."
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/Tarsnap/tarsnap-gui"
 license=('BSD')
 depends=('qt5-base' 'tarsnap')
 source=("https://github.com/Tarsnap/${pkgname}/archive/v${pkgver}.zip")
-sha256sums=('75c2649538f3965d55b744683e88bda5e9064e3de53c4387cd0dccf05530047c')
+sha256sums=('83d7a9155059c32d8b10aa1123fe4c22bcf8a0337a216269dfdfa04cd911dddf')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
