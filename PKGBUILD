@@ -2,8 +2,8 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs
-pkgver=2016.3
-pkgrel=2
+pkgver=2016.4
+pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -17,12 +17,14 @@ optdepends=('cuda: Nvidia GPU support'
 makedepends=('cmake' 'libxml2' 'hwloc' 'gcc5')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('1ae1ea922b94c74f43ee066e3ea64bafa1c6c3b6')
+sha1sums=('b142c9c77e793fa8def24aeacebaf8b8f1dd55fc')
 
 #With gcc5 currently there are less errors in the tests
 # also the compilation is possible in cuda capable machines
 export CC=gcc-5
 export CXX=g++-5
+export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
+export CXXFLAGS="${CFLAGS}"
 
 
 build() {
