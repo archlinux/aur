@@ -19,13 +19,9 @@ package() {
     # Put check_email_delivery checks in /usr/lib/monitoring-plugins
     install -Dm755 "check_email_delivery"       "$pkgdir/usr/lib/monitoring-plugins/check_email_delivery"
     install -Dm755 "check_email_delivery_epn"   "$pkgdir/usr/lib/monitoring-plugins/check_email_delivery_epn"
-    install -Dm755 "check_imap_quota"           "$pkgdir/usr/lib/monitoring-plugins/check_imap_quota"
-    install -Dm755 "check_imap_quota_epn"       "$pkgdir/usr/lib/monitoring-plugins/check_quota_epn"
     install -Dm755 "check_imap_receive"         "$pkgdir/usr/lib/monitoring-plugins/check_imap_receive"
     install -Dm755 "check_imap_receive_epn"     "$pkgdir/usr/lib/monitoring-plugins/check_imap_receive_epn"
     install -Dm755 "check_smtp_send"            "$pkgdir/usr/lib/monitoring-plugins/check_smtp_send"
     install -Dm755 "check_smtp_send_epn"        "$pkgdir/usr/lib/monitoring-plugins/check_smtp_send_epn"
-    install -Dm755 "imap_ssl_cert"              "$pkgdir/usr/lib/monitoring-plugins/imap_ssl_cert"
-    install -Dm755 "imap_ssl_cert_epn"          "$pkgdir/usr/lib/monitoring-plugins/imap_ssl_cert_epn"
 }
 
