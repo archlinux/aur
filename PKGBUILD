@@ -1,74 +1,58 @@
-# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Maintainer: Bin Jin <bjin@ctrl-d.org>
 
-realname=shaderc
-pkgname=$realname-git
-pkgver=156.7b94f85
+pkgname=shaderc-git
+pkgver=r414.eadd549
 pkgrel=1
-epoch=1
-pkgdesc="A collection of tools, libraries and tests for shader compilation. Contains glslc and SPIR-V binary tools."
-arch=('i686' 'x86_64')
+pkgdesc="A collection of tools, libraries and tests for shader compilation"
 url="https://github.com/google/shaderc"
-license=('apache')
-makedepends=('git' 'cmake' 'ninja')
-provides=("${pkgname}=${pkgver}")
+license=("Apache")
+
+arch=("x86_64")
+makedepends=("ninja" "cmake" "python")
+depends=("gcc-libs")
 conflicts=("shaderc")
-source=("git://github.com/google/shaderc.git")
-md5sums=("SKIP")
+provides=("shaderc" "glslc")
+
+source=("shaderc::git+https://github.com/google/shaderc"
+        "googletest::git+https://github.com/google/googletest.git"
+        "glslang::git+https://github.com/google/glslang.git"
+        "spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git"
+        "spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git")
+
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
-  cd $realname
-  hash=$(git log --pretty=format:'%h' -n 1)
-  revision=$(git rev-list --count HEAD)
-  echo $revision.$hash
+  cd "$srcdir/shaderc"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  # Fetch source dependencies
-  cd $realname/third_party/
-  if [ ! -d googletest ]; then
-    git clone https://github.com/google/googletest.git
-  fi
-  if [ ! -d glslang ]; then
-    git clone https://github.com/google/glslang.git
-  fi
-  if [ ! -d spirv-tools ]; then
-    git clone https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
-  fi
+  cd "$srcdir/shaderc"
+  ln -s -f "$srcdir/googletest" third_party/
+  ln -s -f "$srcdir/glslang" third_party/
+  ln -s -f "$srcdir/spirv-tools" third_party/
+  ln -s -f "$srcdir/spirv-headers" third_party/spirv-tools/external/
 }
 
 build() {
-  cd $srcdir
-  if [ ! -d build ]; then
-    mkdir build
-  fi
+  mkdir -p "$srcdir/build"
+  cd "$srcdir/build"
 
-  cd build
-
-  cmake $srcdir/$realname \
+  cmake "$srcdir/shaderc" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -GNinja \
-    -Dshaderc_SOURCE_DIR=$srcdir/$realname \
-    -DPYTHON_EXE=/usr/bin/python2
+    -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DSHADERC_SKIP_TESTS=on \
+    -DSKIP_GLSLANG_INSTALL=on \
+    -DSKIP_SPIRV_TOOLS_INSTALL=on \
+    -DSKIP_GOOGLETEST_INSTALL=on \
+    -GNinja
+
   ninja
 }
 
 package() {
-  cd $srcdir/build
-  DESTDIR="$pkgdir" ninja install
-  
-  cp glslc/glslc $pkgdir/usr/bin
-  #cp glslc/libglslc.a $pkgdir/usr/lib
-  #cp libshaderc/libshaderc.a $pkgdir/usr/lib
-  #cp libshaderc/libshaderc_combined.a $pkgdir/usr/lib
-  #cp libshaderc_util/libshaderc_util.a $pkgdir/usr/lib
-  
-  # remove gmock and gtest
-  rm $pkgdir/usr/include/gmock -R
-  rm $pkgdir/usr/include/gtest -R
-  
-  rm $pkgdir/usr/lib/libgtest*
-  rm $pkgdir/usr/lib/libgmock*
-  
-  
+  cd "$srcdir/build"
+
+  ninja install
 }
