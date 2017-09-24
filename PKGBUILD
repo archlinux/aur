@@ -1,14 +1,14 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-keyboard-git
-pkgver=r688.3b2a437
+pkgver=r761.4768b15
 pkgrel=1
 pkgdesc='Switchboard Keyboard Plug'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/switchboard-plug-keyboard'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libxml2'
+depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libgnomekbd' 'libxklavier' 'libxml2'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
 provides=('switchboard-plug-keyboard')
@@ -24,8 +24,6 @@ pkgver() {
 }
 
 prepare() {
-  cd switchboard-plug-keyboard
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -33,9 +31,9 @@ prepare() {
 }
 
 build() {
-  cd switchboard-plug-keyboard/build
+  cd build
 
-  cmake .. \
+  cmake ../switchboard-plug-keyboard \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib'
@@ -43,7 +41,7 @@ build() {
 }
 
 package() {
-  cd switchboard-plug-keyboard/build
+  cd build
 
   make DESTDIR="${pkgdir}" install
 }
