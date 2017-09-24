@@ -79,10 +79,6 @@ package() {
   chmod 774 "$pkgdir"/usr/share/$pkgname/c4group
   chown root:root "$pkgdir"/usr/share/$pkgname/c4group
   
-  # c4group link
-  mkdir --parents $pkgdir/usr/bin || true
-  ln -s /usr/share/$pkgname/c4group "$pkgdir"/usr/bin/
-  
   # desktop launcher
   mkdir --parents $pkgdir/usr/share/applications || true
   install -Dm644 "$srcdir"/../clonk_rage.desktop "$pkgdir"/usr/share/applications/clonk_rage.desktop
