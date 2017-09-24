@@ -9,7 +9,7 @@ arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.8.1')
-makedepends=()
+makedepends=('perl-module-install')
 checkdepends=('perl-test-requires')
 url='http://search.mcpan.org/dist/Data-MessagePack'
 source=('http://search.mcpan.org/CPAN/authors/id/G/GF/GFUJI/Data-MessagePack-0.48.tar.gz')
