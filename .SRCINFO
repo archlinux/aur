@@ -1,0 +1,13 @@
+pkgbase = check_email_delivery
+	pkgdesc = The check_email_delivery plugin uses the included plugins to check on a complete email loop.
+	pkgver = 0.7.1b
+	pkgrel = 1
+	url = http://buhacoff.net/software/check_email_delivery/
+	arch = any
+	license = GPL3
+	depends = perl-mail-imapclient
+	source = http://buhacoff.net/software/check_email_delivery/archive/check_email_delivery-0.7.1b.tar.gz
+	sha512sums = d1fdc3082e443b4f54f230eb6231581edf6563d0012c333ef50a35b26579f93568cee8b70cfb2dfc332d0eceb5add31a8c7f93681d2baeeb08d229c0de32ac39
+
+pkgname = check_email_delivery
+
