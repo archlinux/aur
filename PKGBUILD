@@ -47,7 +47,6 @@ build() {
 	CMAKE_FLAGS+=" -DBUILD_TESTS=ON "
 	CMAKE_FLAGS+=" -DBUILD_GUI_DEPS=ON "
 	CMAKE_FLAGS+=" -Wno-dev " # silence warnings for devs
-	CMAKE_FLAGS+=" -DCMAKE_LINKER=/usr/bin/ld.gold " # #974 ld segfault on ARM
 
 	mkdir -p $_builddir && cd $_builddir
 	cmake $CMAKE_FLAGS ..
