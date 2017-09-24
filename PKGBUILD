@@ -5,20 +5,20 @@
 _version=4.0
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Official binary builds of the Swift programming language."
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
-depends=('icu' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'python2-six' 'libxml2')
+depends=('icu55' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'python2-six' 'libxml2')
 conflicts=('lldb' 'swift-language-git')
 options=('!strip')
 validpgpkeys=('5E4DF843FB065D7F7E24FBA2EF5430F071E1B235')
 provides=('swift-language')
 replaces=('swift-language-bin')
-source=(
-  "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz"
-  "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz.sig"
+source=(  
+"https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz"
+"https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz.sig"
 )
 sha256sums=('2c4dd2067411efb46e33c4dd999b651a34263a16dfa6d23df420fd301268cf1f'
            '3039dc572d876f1dcda7dd8ea57684002274d3987fc592636dad8344e3314d92')
