@@ -5,7 +5,6 @@ pkgbase = polychromatic
 	url = https://github.com/lah7/polychromatic
 	arch = any
 	license = GPL2
-	makedepends = rsync
 	makedepends = nodejs-less
 	depends = python
 	depends = hicolor-icon-theme
