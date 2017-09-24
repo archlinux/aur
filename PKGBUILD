@@ -1,7 +1,7 @@
 # Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=pywws
 pkgver=16.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python software for USB Wireless WeatherStations"
 arch=('any')
 url="https://github.com/jim-easterbrook/pywws"

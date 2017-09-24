@@ -1,7 +1,7 @@
 pkgbase = pywws
 	pkgdesc = Python software for USB Wireless WeatherStations
 	pkgver = 16.12.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jim-easterbrook/pywws
 	arch = any
 	license = GPL
