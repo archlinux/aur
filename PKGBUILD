@@ -1,25 +1,25 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=lightdm-pantheon-greeter
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Pantheon greeter for LightDM'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/pantheon-greeter'
+url='https://github.com/elementary/greeter'
 license=('GPL')
 depends=('cairo' 'clutter' 'clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
          'libgee' 'libgl' 'libx11' 'lightdm'
          'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('cmake' 'vala' 'wingpanel')
-source=("https://launchpad.net/pantheon-greeter/loki/${pkgver}/+download/pantheon-greeter-${pkgver}.tar.xz"
+source=("lightdm-pantheon-greeter-${pkgver}.tar.gz::https://github.com/elementary/greeter/archive/${pkgver}.tar.gz"
         'lightdm-pantheon-greeter-paths.patch')
-sha256sums=('4aae117c5741ab889463ebdb8f260e4de977b6be14f04bf1d195e7311b9de2f0'
-            '2f9dcb41971221f824a314dd935e8b37506e7eb47f58112031f08f1e35283fb1')
+sha256sums=('3d97370e94067ecc6040e825e7e8122f58c50ff04e168c3cc73fa2dbffdcb130'
+            '64911a77369693a85563459ff372c4f7daba09825e7f66f2b98b60ab2b7ecd76')
 
 prepare() {
-  cd pantheon-greeter-${pkgver}
-
+  pushd greeter-${pkgver}
   patch -Np1 -i ../lightdm-pantheon-greeter-paths.patch
+  popd
 
   if [[ -d build ]]; then
     rm -rf build
@@ -28,9 +28,9 @@ prepare() {
 }
 
 build() {
-  cd pantheon-greeter-${pkgver}/build
+  cd build
 
-  cmake .. \
+  cmake ../greeter-${pkgver} \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DGSETTINGS_COMPILE='FALSE'
@@ -38,7 +38,7 @@ build() {
 }
 
 package() {
-  cd pantheon-greeter-${pkgver}/build
+  cd build
 
   make DESTDIR="${pkgdir}" install
 }
