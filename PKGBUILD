@@ -8,7 +8,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20170913
+pkgver=20170923
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -43,7 +43,7 @@ optdepends=('desktop-file-utils: update desktop icon'
             'xdg-utils: update desktop icon'
             'zbar: QR code reading support')
 url="https://github.com/spesmilo/electrum"
-license=('GPL3')
+license=('MIT')
 source=(git+https://github.com/spesmilo/electrum)
 sha256sums=('SKIP')
 provides=('electrum')
