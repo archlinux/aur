@@ -2,16 +2,16 @@
 
 pkgname=cubesql
 pkgdesc='cubeSQL is a relational database management system built on top of the sqlite database engine.'
-pkgver=5.6.0
+pkgver=5.6.1
 pkgrel=1
 arch=('x86_64')
 url='http://www.sqlabs.com/cubesql.php'
 license=('custom:cubesql')
 depends=('')
 optdepends=('gtk2' 'libgtkhtml')
-_cubesql_ver=560
+_cubesql_ver=561
 source=("http://www.sqlabs.com/download/cubesql/${_cubesql_ver}/cubesql_linux64bit.tgz" 'cubesql.service' 'cubesql-admin')
-sha256sums=('1c8d68992152ad0da713ebc1ac27aa1a1524d2c882429e7ac17d8e3d3378dbae' 'SKIP' 'SKIP')
+sha256sums=('ac83e3d8abee283fbaea8f1faf4c6178d7dfbefb466a337227fb03e7f05f4ee1' 'SKIP' 'SKIP')
 
 package() {
   mkdir -p $pkgdir/usr/bin
