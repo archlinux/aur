@@ -14,7 +14,7 @@ groups=('MBC')
 depends=('qt5-base')
 makedepends=('gcc' 'qt5-base')
 install=script.install
-validpgpkeys=('2AAD360C4E62BF09D814B4B5E5CB73CCC1ACB118')   # Mattéo Rossillol-Laruelle
+validpgpkeys=('CCA838293E0445BEB825D428B5A1B707E9FCFB7E')   # Mattéo Rossillol-Laruelle
 source=("https://github.com/CompFile/My_AUR_PKG/raw/master/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz"{,.sig})
 md5sums=('8821e0f5f7ae086238760b2eb90c10bf'
          'SKIP')
