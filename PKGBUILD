@@ -26,7 +26,7 @@ provides=('midori')
 conflicts=('midori' 'midori-gtk2-git' 'midori-git' 'midori-gtk2-bzr')
 options=('!emptydirs' '!makeflags')
 install='midori.install'
-source=("midori::bzr+http://bazaar.launchpad.net/~midori/midori/trunk/")
+source=("midori::bzr+https://code.launchpad.net/~midori/midori/trunk")
 md5sums=('SKIP')
 
 pkgver() {
