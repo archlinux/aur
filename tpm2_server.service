@@ -1,0 +1,9 @@
+[Unit]
+Description=TPM2 Server Implementation by IBM
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tpm2_server
+
+[Install]
+WantedBy=multi-user.target
