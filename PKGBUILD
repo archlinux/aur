@@ -3,7 +3,7 @@
 # Former Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='a scalable c++ machine learning library'
 arch=('i686' 'x86_64')
 url="http://www.mlpack.org"
@@ -18,6 +18,7 @@ sha256sums=('e24e64d8451a3db23eafb7c94f9fa075dd540f5ac04953c82260a9d4d9fc4fcf')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i '/load_save_test.cpp/d' src/mlpack/tests/CMakeLists.txt
 }
 
 build() {
