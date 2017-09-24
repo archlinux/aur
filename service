@@ -3,6 +3,8 @@ Description=Python software for USB Wireless WeatherStations
 
 [Service]
 ExecStart=/usr/bin/pywws-livelog /var/lib/pywws
+RestartSec=120
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target

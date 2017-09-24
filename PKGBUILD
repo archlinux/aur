@@ -13,7 +13,7 @@ options=(!emptydirs)
 source=(https://pypi.python.org/packages/e5/99/00bf9e1ee8eaa615f1fe9e63e7881d64b1e6eecfdfa4818cdb259cf9cfe8/$pkgname-$pkgver.tar.gz
 'service')
 md5sums=('6ea2679277c7887fd49fa0dbc6faea17'
-         '7292097afd09a1bacbf4672e31b842e1')
+         '7eda2524060c6fc0d4dcf3e10be9b7ee')
 
 
 package() {
