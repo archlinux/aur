@@ -20,11 +20,13 @@ prepare() {
 }
 
 build() {
+    export PATH=$PATH:/usr/bin/core_perl
     cd "$srcdir/$pkgname-$pkgver"
     make
 }
 
 package() {
+    export PATH=$PATH:/usr/bin/core_perl
     cd "$srcdir/$pkgname-$pkgver"
     make PREFIX=/usr DESTDIR="$pkgdir" install
 
