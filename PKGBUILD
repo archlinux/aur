@@ -7,13 +7,13 @@
 
 pkgname=monodevelop-stable
 _pkgname=monodevelop
-pkgver=7.0.1.24
-pkgrel=2
+pkgver=7.1.5.2
+pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages"
 arch=('x86_64' 'i686')
 url="http://www.monodevelop.com"
 license=('GPL')
-depends=('mono>=5.0.0' 'mono-addins>=0.6.2' 'gtk-sharp-2' 'fsharp' 'libssh2' 'curl' 'msbuild-15-bin')
+depends=('mono>=5.4.0' 'mono-addins>=0.6.2' 'gtk-sharp-2' 'fsharp' 'libssh2' 'curl' 'msbuild-15-bin')
 makedepends=('rsync' 'cmake' 'git' 'nuget' 'openssl-1.0')
 replaces=('monodevelop-debugger-gdb')
 provides=('monodevelop' 'monodevelop-debugger-gdb')
