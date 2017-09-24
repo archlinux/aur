@@ -9,6 +9,7 @@ pkgbase = guile-reader
 	makedepends = gperf
 	makedepends = git
 	depends = guile
+	options = !strip
 	source = http://download.savannah.nongnu.org/releases/guile-reader/guile-reader-0.6.2.tar.gz
 	source = reader_flag.patch
 	md5sums = 4491d6c601c151b48bcdb0b30c919a99

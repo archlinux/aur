@@ -13,6 +13,7 @@ makedepends=('gperf' 'git')
 source=("http://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz" reader_flag.patch)
 md5sums=('4491d6c601c151b48bcdb0b30c919a99'
          '577ee71c71dda2ac1fdd942dd18adc82')
+options=('!strip')
 
 prepare() {
   cd $pkgname-$pkgver
