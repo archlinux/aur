@@ -16,7 +16,7 @@ license=('MIT')
 
 install=taskd.install
 
-source=("${pkgname}::git+https://git.tasktools.org/scm/tm/taskd.git#branch=${_branch}"
+source=("${pkgname}::git+https://git.tasktools.org/TM/taskd.git#branch=${_branch}"
         'taskd.conf'
         'taskd.notes'
         'taskd.service')
@@ -35,6 +35,13 @@ provides=('taskd')
 pkgver() {
     cd "${pkgname}"
     git describe --long origin/$_branch | sed 's/^s//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd ${srcdir}/${pkgname}
+    git submodule init
+    git config submodule.libshared.url src/libshared
+    git submodule update
 }
 
 build() {
