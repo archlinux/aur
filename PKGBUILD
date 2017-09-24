@@ -1,7 +1,7 @@
 # Maintainer: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=exodus-eden
-pkgver=1.34.2
+pkgver=1.34.3
 pkgrel=1
 pkgdesc="An unsupported, advanced version of Exodus"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gconf' 'gtk2' 'nss' 'libxss')
 source=("https://exodusbin.azureedge.net/releases/exodus-eden-linux-x64-${pkgver}.zip"
 	"http://marceloneil.com/exodus-icons/eden-icons.zip"
 	"${pkgname}.desktop")
-sha256sums=('26b3be7ddf5488626b76b705e8c103adb7980fcddd7470c4cd9d577ba1b4ec2d'
+sha256sums=('27a20d378f4a6d9df36ef05e2bd0be224ff42583bd3eb24e9387891d3301c0ec'
             '531447b0b49a27a4169fcd2639fa793135acf2776b05f52f36557b384bace7cb'
             '820c6de206ffdd5882f26a8b7d5a2720d0b2df6f9fe62d31aa3a9aaefb9b6322')
 
