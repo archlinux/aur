@@ -1,0 +1,22 @@
+pkgbase = ripcord-bin
+	pkgver = 0.2.18
+	pkgrel = 1
+	arch = x86_64
+	makedepends = libxml2
+	makedepends = p7zip
+	makedepends = curl
+	depends = qt5-base
+	depends = qt5-imageformats
+	depends = qt5-multimedia
+	depends = qt5-websockets
+	provides = ripcord
+	conflicts = ripcord
+	source = ripcord.sh
+	source = ripcord.desktop
+	source = ripcord.png
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ripcord-bin
+
