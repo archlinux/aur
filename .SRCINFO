@@ -1,7 +1,7 @@
 pkgbase = ttf-inter-ui
 	pkgdesc = A font for highly legible text on computer screens
 	pkgver = 1.10
-	pkgrel = 11
+	pkgrel = 12
 	url = https://rsms.me/inter/
 	arch = any
 	license = custom:SIL Open Font License
