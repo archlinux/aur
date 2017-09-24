@@ -2,7 +2,7 @@
 
 pkgname=guile-reader
 _gitname=guile-reader
-pkgver=0.6.1.5.ga4d3e18
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="a simple framework for building readers for GNU Guile"
 url="http://www.nongnu.org/guile-reader"
@@ -10,22 +10,17 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('guile')
 makedepends=('gperf' 'git')
-source=("git://git.sv.gnu.org/guile-reader.git#commit=a4d3e18" reader_flag.patch)
-md5sums=('SKIP'
+source=("http://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz" reader_flag.patch)
+md5sums=('4491d6c601c151b48bcdb0b30c919a99'
          '577ee71c71dda2ac1fdd942dd18adc82')
 
-pkgver() {
-  cd $_gitname
-  git describe | tr - . | cut -c2-
-}
-
 prepare() {
-  cd $_gitname
+  cd $pkgname-$pkgver
   patch -Np1 < $srcdir/reader_flag.patch
 }
 
 build() {
-  cd $_gitname
+  cd $pkgname-$pkgver
   # avoid autoreconf failure
   [[ -d  build-aux ]] || mkdir -p build-aux
   touch build-aux/config.rpath
@@ -39,7 +34,7 @@ build() {
 }
 
 package() {
-  cd $_gitname
+  cd $pkgname-$pkgver
   make DESTDIR=$pkgdir install
   rm $pkgdir/usr/share/info/dir
 }
