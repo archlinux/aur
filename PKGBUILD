@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-kde-bin
-pkgver=55.0.2.1
+pkgver=55.1.0
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -18,8 +18,9 @@ provides=("waterfox=$pkgver")
 conflicts=('waterfox')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
-source=("waterfox-kde_${pkgver}_amd64.deb::https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox-kde/waterfox-kde_${pkgver}_amd64.deb")
-sha256sums=('9bf88fb0dd1e8f177821f87e26dc6a8409b9e424855185cc0403146baeb78e5e')
+source=("waterfox-kde_${pkgver}_amd64.deb::https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-kde_${pkgver}_amd64.deb")
+sha256sums=('871c59fcd56cc78c7ec68c76eda3f86651d2b2b681dcf1e74f571d42f3f99439')
+
 package() {
 # Extract Waterfox from .deb package
 msg2 "Extracting the data.tar.xz..."
