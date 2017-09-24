@@ -16,7 +16,7 @@
 +if (options.gss_keyex) {
 +	/* Add the GSSAPI mechanisms currently supported on this 
 +     * client to the key exchange algorithm proposal */
-+    orig = myproposal[PROPOSAL_KEX_ALGS];
++    orig = options.kex_algorithms;
 +    if (options.gss_trust_dns)
 +	    gss_host = (char *)get_canonical_hostname(1);
 +    else
@@ -25,7 +25,7 @@
 +    gss = ssh_gssapi_client_mechanisms(gss_host, options.gss_client_identity);
 +    if (gss) {
 +    	debug("Offering GSSAPI proposal: %s", gss);
-+	    xasprintf(&myproposal[PROPOSAL_KEX_ALGS], "%s,%s", gss, orig);
++	    xasprintf(&options.kex_algorithms, "%s,%s", gss, orig);
 +    }
 +}
 +#endif
