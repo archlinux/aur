@@ -37,5 +37,5 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/doc/kvantum
 	install -Dm664 ChangeLog ${pkgdir}/usr/share/doc/kvantum
 	install -Dm664 COPYING ${pkgdir}/usr/share/doc/kvantum
-	install -dm755 doc ${pkgdir}/usr/share/doc/kvantum
+	cp -r doc ${pkgdir}/usr/share/doc/kvantum
 }
