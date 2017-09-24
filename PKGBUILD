@@ -1,8 +1,8 @@
 # Maintainer: Chris Snell <chris.snell@gmail.com>
 
 pkgname=ttf-inter-ui
-pkgver=1.9
-pkgrel=10
+pkgver=1.10
+pkgrel=11
 pkgdesc="A font for highly legible text on computer screens"
 url="https://rsms.me/inter/"
 arch=(any)
@@ -10,7 +10,7 @@ license=(custom:"SIL Open Font License")
 conflicts=('ttf-interface')
 
 source=("Inter-UI-${pkgver}.zip::https://github.com/rsms/inter/releases/download/v${pkgver}/Inter-UI-${pkgver}.zip")
-sha256sums=('5e50e63f631528105957aaca01b7c752e4b9ef4b7f31b7c72c865496bb3e13ba')
+sha256sums=('abafc30f9d2e803abcb82947ab6453a8cdb4207cc624a4f4a8cf4aa8975519e9')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
