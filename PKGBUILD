@@ -2,7 +2,7 @@
 
 #_qmake_args="CONFIG+=debug"
 pkgname=qt-gtk-platform-plugin
-pkgver=0.0.193
+pkgver=0.0.201
 pkgrel=1
 pkgdesc='GTK platform backend for Qt'
 arch=('any')
