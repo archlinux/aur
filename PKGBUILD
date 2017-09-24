@@ -36,7 +36,7 @@ build() {
 }
 
 package_handbrake-fdkaac-git() {
-  pkgdesc="Multithreaded video transcoder - Fraunhofer AAC enabled"
+  pkgdesc="Multithreaded video transcoder - Fraunhofer AAC enabled (git version)"
   conflicts=('handbrake' 'handbrake-fdkaac')
   provides=('handbrake')
   depends=('bzip2' 'gcc-libs' 'zlib' 'gst-plugins-base' 'libnotify' 'dbus-glib'
@@ -50,14 +50,14 @@ package_handbrake-fdkaac-git() {
   cd ${srcdir}/${gitname}/build
   make DESTDIR=${pkgdir} install
   
-  mkdir -p ${pkgdir}/usr/share/licenses/fdkaac-ghb
+  mkdir -pm755 ${pkgdir}/usr/share/licenses/fdkaac-ghb
   install -Dm644 ${srcdir}/${gitname}/build/contrib/fdkaac/fdk-aac-0.1.5/NOTICE ${pkgdir}/usr/share/licenses/fdkaac-ghb/LICENSE
   
   rm ${pkgdir}/usr/bin/HandBrakeCLI
 }
 
 package_handbrake-cli-fdkaac-git() {
-  pkgdesc="Multithreaded video transcoder (CLI) - Fraunhofer AAC enabled"
+  pkgdesc="Multithreaded video transcoder (CLI) - Fraunhofer AAC enabled (git version)"
   conflicts=('handbrake-cli' 'handbrake-cli-fdkaac')
   provides=('handbrake-cli')
   depends=('bzip2' 'gcc-libs' 'zlib' 'libass' 'lame' 'libxml2' 'opus'
@@ -67,7 +67,7 @@ package_handbrake-cli-fdkaac-git() {
   cd ${srcdir}/${gitname}/build
   install -D HandBrakeCLI ${pkgdir}/usr/bin/HandBrakeCLI
    
-  mkdir -p ${pkgdir}/usr/share/licenses/fdkaac-ghb-cli
+  mkdir -pm755 ${pkgdir}/usr/share/licenses/fdkaac-ghb-cli
   install -Dm644 ${srcdir}/${gitname}/build/contrib/fdkaac/fdk-aac-0.1.5/NOTICE ${pkgdir}/usr/share/licenses/fdkaac-ghb-cli/LICENSE
 }
 
