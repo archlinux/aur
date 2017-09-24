@@ -3,19 +3,27 @@
 # Contributor: Marti Raudsepp <marti at juffo dot org>
 
 pkgname='concourse-fly-git'
-pkgver=1
-pkgrel=2
+_pkgname='concourse'
+pkgver=3.4.1.rc.34.r0.g5416da9
+pkgrel=1
 pkgdesc='Command line interface to the Concourse continuous integration tool'
 arch=('x86_64')
 url='https://concourse.ci/fly-cli.html'
 license=('Apache')
 makedepends=('go')
 checkdepends=()
-source=('git://github.com/concourse/concourse.git')
+source=('git+https://github.com/concourse/concourse.git')
 sha512sums=('SKIP')
 
+pkgver () {
+    cd "${_pkgname}"
+    git submodule update --init --recursive > /dev/null 2>&1
+    cd src/github.com/concourse/fly
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build () {
-    cd concourse
+    cd "${_pkgname}"
     export GOPATH="$PWD"
     git submodule update --init --recursive
     cd src/github.com/concourse/fly
@@ -23,7 +31,7 @@ build () {
 }
 
 check () {
-    cd concourse
+    cd "${_pkgname}"
     export GOPATH="$PWD"
     go get github.com/onsi/ginkgo/ginkgo
     cd src/github.com/concourse/fly
