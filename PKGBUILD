@@ -1,20 +1,21 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.30
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname='perl-sane'
-pkgver='0.05'
-pkgrel='1'
+pkgname=perl-sane
+pkgver=0.14
+pkgrel=1
 pkgdesc="Perl extension for the SANE (Scanner Access Now Easy) Project"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'sane>=1.0.24' 'perl-extutils-depends' 'perl-extutils-pkgconfig')
-makedepends=('gcc')
-url='https://metacpan.org/release/Sane'
-source=('http://search.cpan.org/CPAN/authors/id/R/RA/RATCLIFFE/Sane-0.05.tar.gz')
-md5sums=('ad42db3b9173a82e02490283665416a5')
-sha512sums=('03e67ffbc5d89b3e2b9c7d4c0221c1dadfd4f2ea0c33c761f599e1ea953dbbae24d5d78780d8a3e660550105550901b37a4ec67a3ccaf7c56a1b713e1fc69473')
-_distdir="Sane-0.05"
+depends=('perl' 'sane' 'perl-extutils-depends' 'perl-extutils-pkgconfig' 'perl-readonly' 'perl-test-requires' )
+makedepends=()
+url='https://cpan.metacpan.org/authors/id/R/RA/RATCLIFFE/Image-Sane-0.14.tar.gz'
+source=('https://cpan.metacpan.org/authors/id/R/RA/RATCLIFFE/Image-Sane-0.14.tar.gz')
+md5sums=('5a8687379630a272cacbcb52d66ae65a')
+sha512sums=('d08be5f0d18f367178b7d76d50abe12faaba48525374c782f6a91fdb44d314b1943617bab9f6e7b2bbbf4c95dcc221bfbd92cdf7c80783916aad24daf5b04bea')
+_distdir="Image-Sane-0.14"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +43,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
