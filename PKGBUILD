@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-prime-util'
-pkgver='0.66'
+pkgver='0.67'
 pkgrel='1'
 pkgdesc="Utilities related to prime numbers, including fast sieves and factoring"
 arch=('i686' 'x86_64')
@@ -37,8 +37,8 @@ provides=(
 )
 url='https://metacpan.org/release/Math-Prime-Util'
 source=("https://cpan.metacpan.org/authors/id/D/DA/DANAJ/Math-Prime-Util-$pkgver.tar.gz")
-md5sums=('df3bd5f46a2d7472910b3c93ee7d3755')
-sha512sums=('dafe91993cd48309a8bc7b675e9b37f7cb119295da31c404a4405d5dc3faa507c689e014db769f8d0552dffecd317df4a83118a017f62222f3c3215947692eae')
+md5sums=('6de3cc1db40e95171de513642399edeb')
+sha512sums=('0be38e6edb2d878103e0570eeb40430527b9389676d7e861889f42b235668be67c19019fe6c756087100110fb8c40c87b0440ea5d04079c8d14db38448c9e39d')
 _distdir="Math-Prime-Util-$pkgver"
 
 build() {
@@ -64,7 +64,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
