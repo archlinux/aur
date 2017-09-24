@@ -2,7 +2,7 @@
 _pkgname=slabikar
 pkgname=latex-${_pkgname}-font
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Handwritten Czech/Slovak font slabikar"
 arch=('any')
 url="http://petr.olsak.net/ftp/olsak/slabikar/"
@@ -19,13 +19,13 @@ source=("${base_url}README"
         "${base_url}ukazka.tex"
 	)
 
-md5sums=('5a5f423bc814a89b204158021e3ccfef'
-         '595f74f20f5d6ab0fcb6511c44cdeeae'
-         'a94fdeb01142c6bae60ac51627a5b5ab'
-         '42952a0c246cd675e2de43098e95df33'
-         '77f82f966e1877c86aa783b118ffe8fa'
-         'ab2941416f6c883b1dd2c040abaa8357'
-         '990def34b958b28acfb511f31bd78d2d')
+md5sums=('a9fc4fd0c46e519ef0c750fb9ae3eeb4'
+         'a88d137e93bde8f82fd906d16e5e7bf7'
+         '2e90a35b1ad670787d4b08bb76f1fbd4'
+         '59e208a02d98b9b3f4f7cbc37f158cde'
+         '290903b3e0ca91dab6219f0f6e97cd65'
+         '6a233dcd1330fb28201d58272bf9d6d8'
+         '6fb7cac040ee2ccf8ef52bd3610c8688')
 
 prepare() {
 	cd $srcdir
