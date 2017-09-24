@@ -1,6 +1,6 @@
 diff -ura a/gruntfile.js b/gruntfile.js
---- a/gruntfile.js	2017-04-22 11:30:05.000000000 +0200
-+++ b/gruntfile.js	2017-04-22 16:44:11.418409532 +0200
+--- a/gruntfile.js	2017-09-23 10:02:56.000000000 +0200
++++ b/gruntfile.js	2017-09-24 11:45:31.328097911 +0200
 @@ -6,6 +6,7 @@
  
  module.exports = function (grunt) {
@@ -17,20 +17,22 @@ diff -ura a/gruntfile.js b/gruntfile.js
    const OSX_COMMON_NAME = authCode != null ? authCode.OSX_COMMON_NAME : ''
    const WIN_CERT_PASSWORD = authCode != null ? authCode.WIN_CERT_PASSWORD : ''
  
-@@ -55,9 +57,6 @@
+@@ -55,9 +57,11 @@
  
    grunt.initConfig(initConfig)
    grunt.loadNpmTasks('grunt-electron-installer')
--  if (!WIN) {
--    grunt.loadNpmTasks('grunt-electron-installer-debian')
--  }
++  /*
+   if (!WIN) {
+     grunt.loadNpmTasks('grunt-electron-installer-debian')
+   }
++  */
  
    grunt.registerTask('compile', function () {
      var done = this.async()
 diff -ura a/package.json b/package.json
---- a/package.json	2017-04-22 11:30:05.000000000 +0200
-+++ b/package.json	2017-04-22 16:45:28.247081093 +0200
-@@ -90,14 +90,13 @@
+--- a/package.json	2017-09-23 10:02:56.000000000 +0200
++++ b/package.json	2017-09-24 11:47:08.785280478 +0200
+@@ -98,15 +98,14 @@
      "css-loader": "^0.19.0",
      "devtron": "^1.1.0",
      "dom-storage": "^2.0.2",
@@ -48,8 +50,8 @@ diff -ura a/package.json b/package.json
 +    "grunt-electron-installer": "^2.1.0",
      "history": "^1.17.0",
      "jsdom": "^9.4.2",
-     "merge-stream": "^1.0.0",
-@@ -109,14 +108,11 @@
+     "json-loader": "^0.5.4",
+@@ -119,14 +118,11 @@
      "react-router-redux": "^4.0.4",
      "standard": "^8.4.0",
      "style-loader": "^0.12.4",
