@@ -89,7 +89,7 @@ package() {
             "${pkgdir}/usr/lib/taskd/pki/README"
 
     # TODO: Install a modified .service where logging is fixed,
-    #       until upstream fixes it.
+    #       until upstream fixes issue TD-136
     #install -Dm644 scripts/systemd/taskd.service \
     #        "${pkgdir}/usr/lib/systemd/system/taskd.service"
     install -Dm644 ${srcdir}/taskd.service \
