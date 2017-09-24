@@ -30,9 +30,8 @@ pkgver() {
 build() {
   cd "${srcdir}/gnucash"
 
-  # the line in the boost includes is actually correct.
-  # the check fails for a different reason (-D_FORTIFY_SOURCE without -O)
-  sed -i '180s#-Werror ##' configure.ac
+  # add -O to the boost c++11 compatibility detection so that -D_FORTIFY_SOURCE doesn't cause an error
+  sed -i '/CXXFLAGS="-Werror -std=gnu++11 $BOOST_CPPFLAGS"/s/-Werror/-Werror -O/' configure.ac
 
   ./autogen.sh
   ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
