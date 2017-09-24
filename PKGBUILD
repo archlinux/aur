@@ -16,9 +16,9 @@ makedepends=('gcc' 'qt5-base')
 install=script.install
 validpgpkeys=('CCA838293E0445BEB825D428B5A1B707E9FCFB7E')   # Mattéo Rossillol-Laruelle
 source=("https://github.com/CompFile/My_AUR_PKG/raw/master/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz"{,.sig})
-md5sums=('8821e0f5f7ae086238760b2eb90c10bf'
-         'SKIP')
-
+sha256sums=('2e887ea6a3f97e3ad84ad77d0c06f51c751c500d90d785a5db334067933983b7'
+            'SKIP')
+            
 
 build()
 {
