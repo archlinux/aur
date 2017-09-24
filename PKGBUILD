@@ -1,7 +1,7 @@
 # Maintainer: Salvador Pardiñas <darkfm@vera.com.uy>
 pkgname=higan-git
-pkgver=103
-pkgrel=2
+pkgver=104.14
+pkgrel=1
 pkgdesc="Multisystem emulator by Byuu"
 arch=('x86_64' 'i686')
 url="https://byuu.org"
@@ -20,7 +20,7 @@ source=(
 	'getver.patch')
 noextract=()
 md5sums=('SKIP'
-         '6bc32fa73fafec579fcc608feed43523'
+         '5aaffc97c4c58e95b3f1db33e8184518'
          '0b32b7421da621785ee29070782cfb77')
 
 prepare() {
