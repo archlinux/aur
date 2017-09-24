@@ -4,13 +4,12 @@
 
 pkgname=perl-sane
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl extension for the SANE (Scanner Access Now Easy) Project"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'sane' 'perl-extutils-depends' 'perl-extutils-pkgconfig' 'perl-readonly' 'perl-test-requires' )
-makedepends=()
+depends=('perl' 'sane' 'perl-extutils-depends' 'perl-extutils-pkgconfig' 'perl-readonly' 'perl-test-requires' 'perl-exception-class' 'perl-try-tiny')
 url='https://cpan.metacpan.org/authors/id/R/RA/RATCLIFFE/Image-Sane-0.14.tar.gz'
 source=('https://cpan.metacpan.org/authors/id/R/RA/RATCLIFFE/Image-Sane-0.14.tar.gz')
 md5sums=('5a8687379630a272cacbcb52d66ae65a')

@@ -1,7 +1,7 @@
 pkgbase = perl-sane
 	pkgdesc = Perl extension for the SANE (Scanner Access Now Easy) Project
 	pkgver = 0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cpan.metacpan.org/authors/id/R/RA/RATCLIFFE/Image-Sane-0.14.tar.gz
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = perl-sane
 	depends = perl-extutils-pkgconfig
 	depends = perl-readonly
 	depends = perl-test-requires
+	depends = perl-exception-class
+	depends = perl-try-tiny
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/R/RA/RATCLIFFE/Image-Sane-0.14.tar.gz
 	md5sums = 5a8687379630a272cacbcb52d66ae65a
