@@ -15,7 +15,7 @@ provides=('test-use-ok=0.11'
           'perl-test-use-ok=0.11'
           )
 source=('http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/Test-use-ok-0.11.tar.gz')
-sha256sums=('014364cc2f0df651d8416ebb60451f18')
+sha256sums=('8410438a2acf127bffcf1ab92205b747a615b487e80a48e8c3d0bb9fa0dbb2a8')
 
 build() {
   cd "${_realname}-${pkgver}"
