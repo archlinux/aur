@@ -1,8 +1,9 @@
-# Maintainer: Romain Porte <microjoe@microjoe.org>
+# Mantainer: Marcin Kornat <rarvolt@rarvolt.net>
+# Contributor: Romain Porte <microjoe@microjoe.org>
 
 pkgname=sw4stm32
-pkgver=v1.8
-pkgrel=2
+pkgver=v2.2
+pkgrel=1
 pkgdesc="SystemWorkbench for STM32"
 arch=('x86_64')
 url="http://www.openstm32.org/System+Workbench+for+STM32"
@@ -14,9 +15,9 @@ source=(http://www.ac6-tools.com/downloads/SW4STM32/install_sw4stm32_linux_64bit
 	sw4stm32
 	sw4stm32.desktop)
 
-md5sums=('f4cf8d73b867cf7c7f261a8bfea3a8b2'
-	'2cb47631f9c17ae30890001eec765107'
-	'fab1a998b1f24153827bfb4d9013240f')
+md5sums=('7c05ae9f355e0c11f238454e35e5bd0b'
+         '2cb47631f9c17ae30890001eec765107'
+         'fab1a998b1f24153827bfb4d9013240f')
 
 noextract=(install_sw4stm32_linux_64bits-$pkgver.run)
 
