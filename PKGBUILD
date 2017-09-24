@@ -3,7 +3,7 @@
 
 pkgname=cargo-edit-git
 _pkgname=cargo-edit
-pkgver=r262.c914202
+pkgver=r365.ac284bb7
 pkgrel=1
 pkgdesc="A utility for adding cargo dependencies from the command line"
 url="https://github.com/killercup/cargo-edit"
@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname/"
-  for sub in rm add list; do
+  for sub in rm add upgrade; do
       install -Dm755 "target/release/cargo-$sub" "$pkgdir/usr/bin/cargo-$sub"
   done
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
