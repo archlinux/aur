@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-calculator-git
-pkgver=r382.530438d
+pkgver=r438.4d93534
 pkgrel=1
 pkgdesc='The Pantheon Calculator'
 arch=('i686' 'x86_64')
@@ -10,10 +10,9 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3'
          'libgranite.so')
-makedepends=('cmake' 'git' 'granite-git' 'intltool' 'vala')
+makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala')
 provides=('pantheon-calculator')
 conflicts=('pantheon-calculator')
-replaces=('pantheon-calculator-bzr')
 source=('pantheon-calculator::git+https://github.com/elementary/calculator.git')
 sha256sums=('SKIP')
 
@@ -24,28 +23,27 @@ pkgver() {
 }
 
 prepare() {
-  cd pantheon-calculator
-
   if [[ -d build ]]; then
     rm -rf build
   fi
   mkdir build
+
+  sed 's/extra/io.elementary.calculator.extra/' -i pantheon-calculator/po/extra/meson.build
 }
 
 build() {
-  cd pantheon-calculator/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DGSETTINGS_COMPILE='OFF'
-  make
+  meson ../pantheon-calculator \
+    --buildtype='release' \
+    --prefix='/usr'
+  ninja
 }
 
 package() {
-  cd pantheon-calculator/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
