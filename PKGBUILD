@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-screenshot-git
-pkgver=r420.6bdfcd1
+pkgver=r543.ed4dafa
 pkgrel=1
 pkgdesc='The Pantheon Screenshot Tool'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libcanberra'
          'libgranite.so')
-makedepends=('cmake' 'git' 'granite-git' 'intltool' 'vala')
+makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala')
 provides=('pantheon-screenshot')
 conflicts=('pantheon-screenshot')
 source=("pantheon-screenshot::git+https://github.com/elementary/screenshot-tool.git")
@@ -23,8 +23,6 @@ pkgver() {
 }
 
 prepare() {
-  cd pantheon-screenshot
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -32,20 +30,18 @@ prepare() {
 }
 
 build() {
-  cd pantheon-screenshot/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DGSETTINGS_COMPILE='OFF' \
-    -DICON_UPDATE='OFF'
-  make
+  meson ../pantheon-screenshot \
+    --buildtype='release' \
+    --prefix='/usr'
+  ninja
 }
 
 package() {
-  cd pantheon-screenshot/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
