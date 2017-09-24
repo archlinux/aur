@@ -1,13 +1,13 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=dispmanx_vnc
-pkgver=21fa4e9
-pkgrel=2
+pkgver=8af7fcf
+pkgrel=1
 pkgdesc="VNC Server for Raspberry Pi using dispmanx"
 arch=('armv7h')
 url="https://github.com/hanzelpeter/dispmanx_vnc"
 license=('MIT')
-depends=('libvncserver')
+depends=('libvncserver' 'raspberrypi-firmware')
 makedepends=('git')
 source=("git://github.com/hanzelpeter/dispmanx_vnc")
 md5sums=('SKIP')
