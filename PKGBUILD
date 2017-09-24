@@ -22,7 +22,7 @@ source=("git+https://github.com/tobiasjakobi/linux-odroid-public"
 	'uEnv-mainline.txt')
 
 md5sums=('SKIP'
-	 '4da91890b628b52e195639f2335a1556'
+	 '000b9a51d19e86ccd43eaa7453d3ce3b'
 	 '8b51e60c925e54b36747f36d9ae7dd37'
 	 'de302b1a6bc612f6eb95714341003ac0'
 	 '44f2b32fbb2d064a365af698e8f78739')
