@@ -1,15 +1,15 @@
 pkgbase = epfl-scripts-git
-	pkgdesc = Collection of scripts for simplifying one's life at the EPFL
-	pkgver = r47.b0979bf
+	pkgdesc = Collection of scripts for simplifying one's life at EPFL
+	pkgver = r50.46ba816
 	pkgrel = 1
-	url = https://gitlab.gnugen.ch/mtweber/epfl-scripts
+	url = https://gitlab.gnugen.ch/gnugen/epfl-scripts
 	changelog = changelog
 	arch = any
 	license = Apache
 	depends = coreutils
 	provides = epfl-scripts
 	conflicts = epfl-scripts
-	source = git+https://gitlab.gnugen.ch/mtweber/epfl-scripts.git
+	source = git+https://gitlab.gnugen.ch/gnugen/epfl-scripts.git
 	md5sums = SKIP
 
 pkgname = epfl-scripts-git
