@@ -1,6 +1,6 @@
 post_install() {
   echo "Installed MESA SDK to /opt/mesasdk"
-  /opt/mesasdk/libexec/gcc/x86_64-pc-linux-gnu/5.4.0/install-tools/mkheaders /opt/mesasdk
+  /opt/mesasdk/libexec/gcc/x86_64-pc-linux-gnu/7.2.0/install-tools/mkheaders /opt/mesasdk
   echo "Fixed header files"
 }
 
