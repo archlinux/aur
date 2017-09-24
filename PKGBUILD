@@ -33,7 +33,7 @@ pkgver() {
 prepare() {
     cd "${_gitname}"
     mkdir -p build
-    sed -i'' -e 's:/usr/local/share/man/:${CMAKE_INSTALL_MANDIR}:' src/cli/CMakeLists.txt
+    sed -i'' -e 's:/usr/local/share/man/:${CMAKE_INSTALL_MANDIR}/:' src/cli/CMakeLists.txt
 }
 
 build() {
