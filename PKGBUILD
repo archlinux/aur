@@ -1,18 +1,19 @@
 # Maintainer: Kaan Kasım <kaankasim88@gmail.com>
 
 pkgname=doomretro-git
-pkgver=2.4.5.r356.g06d5feff
+pkgver=2.5.5.r67.g05fefe4b
 pkgrel=1
-pkgdesc='The classic, refined DOOM source port.'
+pkgdesc='The classic, refined DOOM source port (git version)'
 arch=('i686' 'x86_64')
-url='http://doomretro.com/'
+url='http://doomretro.com'
 license=('GPL3')
-depends=('sdl2' 'sdl2_image' 'sdl2_mixer')
+depends=('sdl2_image' 'sdl2_mixer')
+optdepends=('timidity++: for music playback')
 makedepends=('cmake' 'git')
 conflicts=('doomretro')
 provides=('doomretro')
-source=('git://github.com/bradharding/doomretro.git')
-md5sums=('SKIP')
+source=("git+https://github.com/bradharding/doomretro.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd doomretro
@@ -33,5 +34,5 @@ build() {
 
 package() {
   cd build
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 }
