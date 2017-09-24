@@ -1,6 +1,6 @@
 # Contributor: Bug <bug2000@gmail.com>
 pkgname=xpmidi
-pkgver=3.5
+pkgver=4.0
 pkgrel=1
 pkgdesc="pmidi X frontend"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="http://www.mellowood.ca/xpmidi/"
 license=('GPL')
 depends=('python' 'tk')
 source=("http://www.mellowood.ca/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('3b48c8e63c5173f672992d7269565afe')
+md5sums=('d3e66fcc1702d71d9ce3da4c9a82fc56')
 DLAGENTS=('http::/usr/bin/wget')
 
 build() {
