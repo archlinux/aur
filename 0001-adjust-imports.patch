@@ -1,4 +1,4 @@
-From 16f8ac11d79db9ccd9e8c89d74a56df67b3dc063 Mon Sep 17 00:00:00 2001
+From 0cec0b3173d09b080da49281041781c465243794 Mon Sep 17 00:00:00 2001
 From: Carl George <carl.george@rackspace.com>
 Date: Fri, 17 Mar 2017 14:53:05 -0500
 Subject: [PATCH] adjust imports
@@ -44,7 +44,6 @@ Subject: [PATCH] adjust imports
  sickbeard/providers/privatehd.py    | 2 +-
  sickbeard/providers/ptf.py          | 2 +-
  sickbeard/providers/revtt.py        | 2 +-
- sickbeard/providers/scc.py          | 2 +-
  sickbeard/providers/scenetime.py    | 2 +-
  sickbeard/providers/shazbat.py      | 2 +-
  sickbeard/providers/thepiratebay.py | 2 +-
@@ -58,10 +57,10 @@ Subject: [PATCH] adjust imports
  sickbeard/rssfeeds.py               | 2 +-
  sickbeard/webapi.py                 | 2 +-
  sickbeard/webserve.py               | 2 +-
- 54 files changed, 55 insertions(+), 55 deletions(-)
+ 53 files changed, 54 insertions(+), 54 deletions(-)
 
 diff --git a/SickBeard.py b/SickBeard.py
-index 5d6276d3..e55b11b6 100755
+index 7c07671e..bc3c03fe 100755
 --- a/SickBeard.py
 +++ b/SickBeard.py
 @@ -51,7 +51,7 @@ except:
@@ -96,7 +95,7 @@ index a7eab0da..404b23e4 100644
  class TMDB:
      def __init__(self, api_key, version=3):
 diff --git a/sickbeard/__init__.py b/sickbeard/__init__.py
-index 71c6bb5b..9fad486e 100755
+index 3c631f94..3b7a5fdd 100755
 --- a/sickbeard/__init__.py
 +++ b/sickbeard/__init__.py
 @@ -48,7 +48,7 @@ from indexers.indexer_api import indexerApi
@@ -145,7 +144,7 @@ index fe246b3e..88daf104 100644
  import threading
  
 diff --git a/sickbeard/helpers.py b/sickbeard/helpers.py
-index 99e7f093..629b4a5a 100644
+index 9c2d28b2..2f4c655f 100644
 --- a/sickbeard/helpers.py
 +++ b/sickbeard/helpers.py
 @@ -58,7 +58,7 @@ from sickbeard.common import USER_AGENT, mediaExtensions, subtitleExtensions, cp
@@ -171,7 +170,7 @@ index b905356a..ae4e6836 100644
  from libtrakt.exceptions import TraktAuthException, TraktException
  from sickbeard import db, logger
 diff --git a/sickbeard/network_timezones.py b/sickbeard/network_timezones.py
-index 60acd15d..4f97c1af 100644
+index 0010a0bf..ded1da1b 100644
 --- a/sickbeard/network_timezones.py
 +++ b/sickbeard/network_timezones.py
 @@ -16,7 +16,7 @@
@@ -496,7 +495,7 @@ index eeabc768..1ba5dd3f 100644
  
  class MoreThanProvider(generic.TorrentProvider):
 diff --git a/sickbeard/providers/ncore.py b/sickbeard/providers/ncore.py
-index 0316fce0..6c99ad72 100644
+index 11226e95..88a5dcea 100644
 --- a/sickbeard/providers/ncore.py
 +++ b/sickbeard/providers/ncore.py
 @@ -24,7 +24,7 @@ from . import generic
@@ -586,19 +585,6 @@ index 0cfabc6a..1bbe592d 100644
  
  
  class RevTTProvider(generic.TorrentProvider):
-diff --git a/sickbeard/providers/scc.py b/sickbeard/providers/scc.py
-index df6aa952..bdedc913 100644
---- a/sickbeard/providers/scc.py
-+++ b/sickbeard/providers/scc.py
-@@ -23,7 +23,7 @@ from . import generic
- from sickbeard import logger
- from sickbeard.bs4_parser import BS4Parser
- from sickbeard.helpers import tryInt
--from lib.unidecode import unidecode
-+from unidecode import unidecode
- 
- 
- class SCCProvider(generic.TorrentProvider):
 diff --git a/sickbeard/providers/scenetime.py b/sickbeard/providers/scenetime.py
 index 1be278a8..17babf8f 100644
 --- a/sickbeard/providers/scenetime.py
@@ -756,7 +742,7 @@ index 3e5635d0..acf61a25 100644
              _call_dispatcher = profile(_call_dispatcher, immediate=True)
              del kwargs["profile"]
 diff --git a/sickbeard/webserve.py b/sickbeard/webserve.py
-index cf9aff6f..a2c4eb56 100644
+index 0dd045d5..a0c02b21 100644
 --- a/sickbeard/webserve.py
 +++ b/sickbeard/webserve.py
 @@ -62,7 +62,7 @@ from tornado.web import RequestHandler, StaticFileHandler, authenticated
@@ -769,5 +755,5 @@ index cf9aff6f..a2c4eb56 100644
  
  from lib.libtrakt import TraktAPI
 -- 
-2.13.2
+2.14.1
 
