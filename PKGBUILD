@@ -18,7 +18,7 @@ options=('!emptydirs')
 source=('vbam::git+https://github.com/visualboyadvance-m/visualboyadvance-m.git'
         'gtk3.patch')
 sha256sums=('SKIP'
-            '2287d90b3b4c7481251f95fcbc900e1c368c2d7b5e28f5549645c66770a60bb7')
+            'c7847c7be27f4251bc7ba06ca6ecb1fe0caffd39a683bc5a471932591d871dcf')
 
 pkgver() {
   cd vbam
