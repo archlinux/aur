@@ -1,44 +1,26 @@
 # Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
+# CO-Maintainer: Laramy Black <laramy2020@gmail.com>
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=nuvola-app-amazon-cloud-player
-pkgdesc='Amazon Cloud Player integration for Nuvola Player 3.0'
-pkgver=5.3
-pkgrel=2
-
-license=('BSD')
-
-arch=('any')
-conflicts=('nuvola-app-amazon-cloud-player-git')
-depends=('nuvolaplayer>=3' 'nuvolaplayer<4')
-makedepends=('lasem' 'scour' 'python-virtualenv')
-sha256sums=('c831951d6b1ce45d957f6823e2fef79b05e38ffa7cc506fe40a9bfe62a4eb0eb')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz")
-url="https://github.com/tiliado/${pkgname}"
-
-prepare() {
-	cd "${pkgname}-${pkgver}"
-
-	virtualenv ve
-	source ve/bin/activate
-	pip install nuvolasdk
-
-	# Generate Makefile
-	./configure --prefix=/usr
-}
+pkgver=5.4
+pkgrel=1
+pkgdesc="amazon cloud player integration for Nuvola Player."
+arch=("any")
+url="https://github.com/tiliado/nuvola-app-amazon-cloud-player"
+license=('custom:BSD')
+depends=('nuvolaruntime' 'imagemagick')
+makedepends=('nuvolasdk' 'scour')
+source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
+sha256sums=('4867590c4d12f79bc2ed3e914cc284d546fd29dbc87bf7a2a902d63332be3413')
 
 build() {
-	cd "${pkgname}-${pkgver}"
-
-	# Optimize SVG icons (scour), generate PNG icons (lasem)
-	make
+    cd "$srcdir/${pkgname}-${pkgver}"
+    ./configure --prefix=/usr 
+    make all
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-
-	make install DESTDIR="${pkgdir}"
-
-	# Install all available licenses.
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
+    cd "$srcdir/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
