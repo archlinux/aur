@@ -39,8 +39,8 @@ _FORCE_AVX2=OFF
 
 pkgbase=opencv2-opt
 pkgname=('opencv2-opt' 'opencv2-opt-samples')
-pkgver=2.4.13
-pkgrel=2
+pkgver=2.4.13.3
+pkgrel=1
 _pkgbase=opencv2
 _pkgname=opencv
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
@@ -55,9 +55,11 @@ optdepends=('opencv2-opt-samples'
             'python2-numpy: Python 2.x interface')
 
 source=("$_pkgname-$pkgver.zip::https://github.com/Itseez/opencv/archive/$pkgver.zip"
-        "opencv_a0fdc91a14f07de25d858037940fcd3ba859b4e2.patch")
-sha512sums=('b5ccaa22deabfedd29b697296d265a32c7db959f2e94ca3643c1cde65fb84463809535f2e6bd49c4baa06958fa223a32bbfdd7234b8e160ec333fd9cd7800d3b'
-            '5f233ad26768253cbcda29cfd7a51709049790b1c909f0ee362e08811f7d9bd04bb47d1c280b561d18df163f4feb05e14fbf71773b5ffedf76bb9184359252f9')
+cmake.diff
+#         "opencv_a0fdc91a14f07de25d858037940fcd3ba859b4e2.patch"
+        )
+sha512sums=('00e27853c93bfaa6a0f8334d38aff52bf02fb2c2ce26b36670ceac35284fe6ef1624ccf2b4eeeab075b57ed441e686c28b98cb446da6d7c400a576b4203b64fb'
+            '3b9ec5a5445b605a392b7bf81912fe561c853ebe80feb7e5b5eb8333e783d8f4242d2028ce28f414fc00a18a59300bc4cc4faa101d459d8b4b5673de26e6b165')
 
 _cmakeopts=('-D WITH_CUDA=OFF' # Disable CUDA for now because GCC 6.1.1 and nvcc don't play along yet
             '-D WITH_OPENCL=ON'
@@ -94,18 +96,22 @@ prepare() {
   cd $_pkgname-$pkgver
 # Patch for gcc 6
 # See https://github.com/Itseez/opencv/issues/6517
-  patch -p1 -i ../opencv_a0fdc91a14f07de25d858037940fcd3ba859b4e2.patch
+#   patch -p1 -i ../opencv_a0fdc91a14f07de25d858037940fcd3ba859b4e2.patch
+#   patch -p1 -i $srcdir/cmake.diff
 }
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
-  cmake ${_cmakeopts[@]} .
+  mkdir -p build
+  cd build
+
+  cmake ${_cmakeopts[@]} ..
   make
 }
 package_opencv2-opt() {
   options=('staticlibs')
   provides=(opencv2)
 
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver/build"
 
   make DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir/$_pkgname-$pkgver/LICENSE" \
@@ -131,11 +137,11 @@ package_opencv2-opt-samples() {
   unset optdepends
   provides=(opencv2-samples)
 
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver/build"
   install -dm755 "$pkgdir/opt/$_pkgbase"
   cp -r samples "$pkgdir/opt/$_pkgbase"
 
   # install license file
-  install -Dm644 "LICENSE" \
+  install -Dm644 "../LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
