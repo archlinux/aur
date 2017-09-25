@@ -4,7 +4,7 @@ pkgver=0.11
 pkgrel=3
 pkgdesc="Alternative to Test::More::use_ok"
 arch=('any')
-license=('perl')
+license=('GPL' 'PerlArtistic')
 url='http://search.cpan.org/~audreyt/Test-use-ok'
 options=(!emptydirs)
 depends=('perl>=5.8.9')
