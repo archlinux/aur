@@ -2,7 +2,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-amd-staging-git-drm-next
+pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=$pkgbase
 _kernel_rel=4.13
