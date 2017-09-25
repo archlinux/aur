@@ -8,9 +8,11 @@ pkgbase = libratbag
 	license = MIT
 	makedepends = systemd
 	makedepends = meson
+	makedepends = git
 	depends = glibc
 	depends = libevdev
 	depends = libudev.so
+	depends = python
 	conflicts = libratbag-git
 	conflicts = ratbagd<=0.4
 	source = https://github.com/libratbag/libratbag/archive/v0.9.900.tar.gz

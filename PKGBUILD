@@ -7,8 +7,8 @@ pkgdesc='A library to configure gaming mice'
 arch=('i686' 'x86_64')
 url='https://github.com/libratbag/libratbag'
 license=('MIT')
-depends=('glibc' 'libevdev' 'libudev.so')
-makedepends=('systemd' 'meson')
+depends=('glibc' 'libevdev' 'libudev.so' 'python')
+makedepends=('systemd' 'meson' 'git')
 source=("https://github.com/libratbag/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('95277e97afcaa393e05b80797681384842af6f803b8e51d49de6669498779c95')
 conflicts=('libratbag-git' 'ratbagd<=0.4')
