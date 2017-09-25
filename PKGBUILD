@@ -2,8 +2,8 @@
 
 
 pkgname=blender-2.8-git
-pkgver=2.8_r70965.673c9dce085
-pkgrel=2
+pkgver=2.8_r71599.76444a13c36
+pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
 url="http://blender.org/"
@@ -64,6 +64,9 @@ build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "python version detected: ${_pyver}"
 
+  export CFLAGS="${CFLAGS} -DOPENVDB_3_ABI_COMPATIBLE"
+  export CXXFLAGS="${CXXFLAGS} -DOPENVDB_3_ABI_COMPATIBLE"
+
   cmake "$srcdir/blender" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_INSTALL_PORTABLE=OFF \
@@ -74,7 +77,7 @@ build() {
         -DWITH_SYSTEM_GLEW=ON \
         -DWITH_CODEC_FFMPEG=ON \
         -DWITH_PYTHON_INSTALL=OFF \
-        -DPYTHON_VERSION=${_pyver}m \
+        -DPYTHON_VERSION=${_pyver} \
         -DWITH_MOD_OCEANSIM=ON \
         -DWITH_CYCLES_OPENSUBDIV=ON \
         -DWITH_CYCLES_OSL=ON \

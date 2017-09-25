@@ -1,7 +1,7 @@
 pkgbase = blender-2.8-git
 	pkgdesc = Development version of Blender 2.8 branch
-	pkgver = 2.8_r70965.673c9dce085
-	pkgrel = 2
+	pkgver = 2.8_r71599.76444a13c36
+	pkgrel = 1
 	url = http://blender.org/
 	install = blender.install
 	arch = i686
