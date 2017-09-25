@@ -1,7 +1,7 @@
 pkgbase = mono-alpha
 	pkgdesc = Free implementation of the .NET platform including runtime and compiler. Alpha version.
 	pkgver = 5.4.0.167
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.mono-project.com/
 	install = mono.install
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = mono-alpha
 	depends = python
 	depends = ca-certificates
 	provides = monodoc
-	provides = mono
+	provides = mono=${pkgver}
 	conflicts = monodoc
 	conflicts = mono
 	replaces = mono
