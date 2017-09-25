@@ -2,7 +2,7 @@
 
 pkgname=adapta-aurorae-theme-git
 gitname=adapta-kde
-pkgver=r1.gc56cf14
+pkgver=r98.418ab02
 pkgrel=1
 pkgdesc="adapta decorations for Kwin (git version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd ${srcdir}/${gitname}
 
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'|cut -b10-20
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   
 }
 
