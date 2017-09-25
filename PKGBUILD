@@ -8,8 +8,8 @@ _srcname=$pkgbase
 _kernel_rel=4.12
 _branch=amd-staging-${_kernel_rel}
 _kernelname=${pkgbase#linux}
-pkgver=4.12.680794.2a69a4b35621
-pkgrel=2
+pkgver=4.12.681059.780529c874f6
+pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
@@ -69,7 +69,7 @@ _package() {
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('linux')
-  backup=("etc/mkinitcpio.d/linux.preset")
+  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
   cd "${_srcname}"
