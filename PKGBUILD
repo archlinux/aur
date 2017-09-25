@@ -12,6 +12,11 @@ checkdepends=('python-nose')
 source=("gixy-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('08746568d2e7bd03197ac3e3beb438ec999f32a32a0e9ecfe6aa8e9a9ce4a30f00f1aec0b8b9a4ab7bac1f5c22df3348bc3acbac391dd54c729140e87fe042bb')
 
+build() {
+  cd gixy-$pkgver
+  python setup.py build
+}
+
 check() {
   cd gixy-$pkgver
   nosetests
@@ -19,7 +24,7 @@ check() {
 
 package() {
   cd gixy-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/gixy/LICENSE
 }
 
