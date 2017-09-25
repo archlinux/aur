@@ -2,8 +2,8 @@
 
 pkgname=adapta-kde-git
 gitname=adapta-kde
-pkgver=20170921
-pkgrel=1
+pkgver=r1.gc56cf14
+pkgrel=2
 pkgdesc="Complete Adapta theme pack for KDE Plasma using Kvantum theme engine (git version)"
 arch=('any')
 url="https://github.com/PapirusDevelopmentTeam/adapta-kde"
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd ${srcdir}/${gitname}
 
-  git log -1 --format="%cd" --date=short | tr -d '-'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'|cut -b10-20
   
 }
 
