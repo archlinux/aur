@@ -3,7 +3,7 @@
 _basename=gst-plugins-bad
 pkgname="lib32-$_basename"
 pkgver=1.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=('x86_64')
@@ -55,7 +55,7 @@ build() {
     --with-package-origin="http://www.archlinux.org/" \
     --with-gtk=3.0 \
     --disable-static --enable-experimental --disable-gtk-doc \
-    --disable-lv2 --disable-ofa --disable-curl --disable-x265
+    --disable-lv2 --disable-ofa --disable-curl --disable-qt --disable-x265
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
