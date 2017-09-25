@@ -5,7 +5,7 @@
 
 pkgname=pdftk
 pkgver=2.02
-pkgrel=17
+pkgrel=18
 pkgdesc="Pdftk is a simple tool for doing everyday things with PDF documents"
 arch=('i686' 'x86_64')
 url="http://www.pdfhacks.com/pdftk"
