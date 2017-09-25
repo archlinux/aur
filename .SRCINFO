@@ -10,18 +10,18 @@ pkgbase = thue
 
 pkgname = thue
 	arch = x86_64
-	depends = thue.doc
+	depends = thue-doc
 
-pkgname = thue.py
+pkgname = thue-py
 	arch = any
-	depends = thue.doc
+	depends = thue-doc
 	depends = python
 
-pkgname = thue.rb
+pkgname = thue-rb
 	arch = any
-	depends = thue.doc
+	depends = thue-doc
 	depends = ruby
 
-pkgname = thue.doc
+pkgname = thue-doc
 	arch = any
 

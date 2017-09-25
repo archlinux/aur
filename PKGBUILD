@@ -1,7 +1,7 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 
 pkgbase=thue
-pkgname=('thue' 'thue.py' 'thue.rb' 'thue.doc')
+pkgname=('thue' 'thue-py' 'thue-rb' 'thue-doc')
 arch=('x86_64')
 pkgver=1.5_2015.0827
 pkgrel=1
@@ -20,9 +20,9 @@ build() {
   gcc thue.c -o thue
 }
 
-package_thue.doc() {
+package_thue-doc() {
   arch=('any')
-  cd "${pkgname%.doc}-${pkgver/_/-}"
+  cd "${pkgname%-doc}-${pkgver/_/-}"
   install -Dm644 doc/license.txt "$pkgdir/usr/share/licenses/thue/LICENSE"
   install -Dm644 doc/thue.txt "$pkgdir/usr/share/doc/thue/REFERENCE"
   install -Dm644 README.markdown "$pkgdir/usr/share/doc/thue/README.md"
@@ -30,23 +30,23 @@ package_thue.doc() {
 }
 
 package_thue() {
-  depends=('thue.doc')
+  depends=('thue-doc')
   arch=('x86_64')
   cd "$pkgname-${pkgver/_/-}"/src
   install -Dm755 thue "$pkgdir/usr/bin/thue"
 }
 
-package_thue.py() {
-  depends=('thue.doc' 'python')
+package_thue-py() {
+  depends=('thue-doc' 'python')
   arch=('any')
-  cd "${pkgname%.py}-${pkgver/_/-}"
+  cd "${pkgname%-py}-${pkgver/_/-}"
   install -Dm755 src/thue.py "$pkgdir/usr/bin/thue.py"
 }
 
-package_thue.rb() {
-  depends=('thue.doc' 'ruby')
+package_thue-rb() {
+  depends=('thue-doc' 'ruby')
   arch=('any')
-  cd "${pkgname%.rb}-${pkgver/_/-}"
+  cd "${pkgname%-rb}-${pkgver/_/-}"
   install -Dm755 src/thue.rb "$pkgdir/usr/bin/thue.rb"
 }
 
