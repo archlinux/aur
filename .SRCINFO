@@ -1,7 +1,7 @@
 pkgbase = antibody
 	pkgdesc = A shell plugin manager.
 	pkgver = 3.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getantibody.github.io/
 	arch = i686
 	arch = x86_64

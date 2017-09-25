@@ -2,7 +2,7 @@
 
 pkgname=antibody
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A shell plugin manager."
 arch=('i686' 'x86_64')
 url="https://getantibody.github.io/"
@@ -19,7 +19,7 @@ prepare() {
 	ln -sf "$srcdir/$pkgname-$pkgver" \
           "$srcdir/$_repodir/$pkgname"
 	cd "$srcdir/$_repodir/$pkgname"
-	sed -i "5s/dev/$pkgver/" "main.go"
+	sed -i "21s/dev/$pkgver/" "main.go"
 	go get -u github.com/golang/dep/...
 	go get -u github.com/pierrre/gotestcover
 	dep ensure
