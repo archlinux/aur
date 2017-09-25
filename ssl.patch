@@ -1,6 +1,26 @@
+diff --git a/src/cpp/core/CMakeLists.txt b/src/cpp/core/CMakeLists.txt
+index 5803988968..eb8d4d5efd 100644
+--- a/src/cpp/core/CMakeLists.txt
++++ b/src/cpp/core/CMakeLists.txt
+@@ -201,8 +201,12 @@ if (UNIX)
+    endif()
+ 
+    if(RSTUDIO_SERVER)
+-      find_package(OpenSSL REQUIRED QUIET)
++           #find_package(OpenSSL REQUIRED QUIET)
+       find_package(PAM REQUIRED)
++      find_library(SSL ssl PATHS /usr/lib/openssl-1.0)
++      find_library(CRYPTO crypto PATHS /usr/lib/openssl-1.0)
++      set(OPENSSL_INCLUDE_DIRS /usr/include/openssl-1.0)
++      set(OPENSSL_LIBRARIES /usr/lib/openssl-1.0/libssl.so /usr/lib/openssl-1.0/libcrypto.so)
+       set(CORE_SYSTEM_LIBRARIES
+          ${CORE_SYSTEM_LIBRARIES}
+          ${OPENSSL_LIBRARIES}
+diff --git a/src/cpp/core/system/PosixCrypto.cpp b/src/cpp/core/system/PosixCrypto.cpp
+index 2e4c01bb12..9653edb244 100644
 --- a/src/cpp/core/system/PosixCrypto.cpp
 +++ b/src/cpp/core/system/PosixCrypto.cpp
-@@ -18,13 +18,13 @@
+@@ -18,14 +18,14 @@
  
  #include <fcntl.h>
  
@@ -8,6 +28,7 @@
 -#include <openssl/hmac.h>
 -#include <openssl/bio.h>
 -#include <openssl/buffer.h>
+-#include <openssl/evp.h>
 -#include <openssl/pem.h>
 -#include <openssl/rand.h>
 -#include <openssl/rsa.h>
@@ -15,26 +36,10 @@
 +#include <openssl-1.0/openssl/hmac.h>
 +#include <openssl-1.0/openssl/bio.h>
 +#include <openssl-1.0/openssl/buffer.h>
++#include <openssl-1.0/openssl/evp.h>
 +#include <openssl-1.0/openssl/pem.h>
 +#include <openssl-1.0/openssl/rand.h>
 +#include <openssl-1.0/openssl/rsa.h>
  
  #include <algorithm>
-
---- a/src/cpp/core/CMakeLists.txt
-+++ b/src/cpp/core/CMakeLists.txt
-@@ -200,7 +200,12 @@ if (UNIX)
-    endif()
- 
-    if(RSTUDIO_SERVER)
--      find_package(OpenSSL REQUIRED QUIET)
-+          #     find_package(OpenSSL REQUIRED QUIET)
-+      find_library(SSL ssl PATHS /usr/lib/openssl-1.0)
-+      find_library(CRYPTO crypto PATHS /usr/lib/openssl-1.0)
-+      set(OPENSSL_INCLUDE_DIRS /usr/include/openssl-1.0)
-+      #set(OPENSSL_LIBRARIES ${SSL} ${CRYPTO} )
-+      set(OPENSSL_LIBRARIES /usr/lib/openssl-1.0/libssl.so /usr/lib/openssl-1.0/libcrypto.so)
-       find_package(PAM REQUIRED)
-       set(CORE_SYSTEM_LIBRARIES
-          ${CORE_SYSTEM_LIBRARIES}
  

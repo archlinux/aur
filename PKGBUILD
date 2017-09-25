@@ -8,8 +8,8 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.1.271.r0.ge631e32417
-_gwtver=2.7.0
+pkgver=v1.1.371.r116.g7da421da88
+_gwtver=2.8.1
 _ginver=1.5
 _clangver=3.8.0
 pkgrel=1
@@ -18,7 +18,7 @@ arch=('i686' 'x86_64')
 url="http://www.rstudio.org/"
 license=('AGPL3')
 depends=('r>=2.11.1' 'boost-libs>=1.5' 'openssl-1.0' 'mathjax' 'pandoc' 'clang')
-makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'java-runtime' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget')
+makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'jre8-openjdk' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget')
 install="${pkgname}.install"
 conflicts=('rstudio-server')
 source=('git://github.com/rstudio/rstudio.git'
@@ -26,13 +26,14 @@ source=('git://github.com/rstudio/rstudio.git'
 	"https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
 	"https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
 	'socketproxy-openssl.patch'
-	'ssl.patch')
+	'ssl.patch'
+)
 md5sums=('SKIP'
          'eea28f7865720f6c8d5de12f3f631880'
          '2409168cc18bf5f341e107e6887fe359'
-         'a8f3704a597b392910ea060284f21a03'
+         'ddd572887957fd5cdfde3469bd8c1102'
          'd571313f511ad4a17014c4aef6d01bbc'
-         '9012aeab620b45aa74f6f4db3f192b44')
+         '1d253e9f6c2700d257de1ccc30958c7d')
          
 
 pkgver() {
