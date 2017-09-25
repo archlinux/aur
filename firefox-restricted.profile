@@ -28,7 +28,6 @@ noblacklist /run/user
 blacklist /run/.*
 blacklist /run/*
 
-whitelist /usr/lib/firefox
 blacklist /boot
 blacklist /mnt
 blacklist /opt
