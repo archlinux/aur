@@ -21,7 +21,7 @@ pkgver() {
   
 }
 
-	package() {
-	mkdir -p $pkgdir/usr/share/aurorae/themes
+package() {
+    mkdir -p $pkgdir/usr/share/aurorae/themes
     cp -r ${srcdir}/${gitname}/aurorae/themes/Adapta ${pkgdir}/usr/share/aurorae/themes/
 }
