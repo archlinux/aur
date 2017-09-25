@@ -1,0 +1,14 @@
+pkgbase = dict-freedict-deu-eng
+	pkgdesc = Japanese -> English dictionary for dictd et al. from Freedict.org
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.freedict.org/
+	install = dict-freedict-jpn-eng.install
+	arch = any
+	license = GPL
+	optdepends = dictd: dict client and server
+	source = https://sourceforge.net/projects/freedict/files/Japanese%20-%20English/0.1/freedict-jpn-eng-0.1.tar.bz2
+	md5sums = bc3b8e3f9b93432ddefff7c3505f0001
+
+pkgname = dict-freedict-jpn-eng
+
