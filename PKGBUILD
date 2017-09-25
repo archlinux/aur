@@ -1,29 +1,24 @@
-# Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
+# Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-google-calendar
-pkgdesc='(Experimental) Google Calendar integration for Nuvola Player 3.0'
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
+pkgdesc="google calendar integration for Nuvola Player."
+arch=("any")
+url="https://github.com/tiliado/nuvola-app-google-calendar"
+license=('custom:BSD')
+depends=('nuvolaruntime' 'imagemagick')
+makedepends=('nuvolasdk' 'scour')
+source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
+sha256sums=('d637522c312e94d14963f4bec1e28ea1f8c6e0100fc2e3d0fe06c27006582a03')
 
-license=('BSD' 'CCPL:by')
-
-# template start; name=nuvola-app; version=1.0.1;
-# Template-Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
-
-arch=('any')
-depends=('nuvolaplayer')
-makedepends=('lasem' 'scour')
-sha256sums=('0aafa9f441c5b7bcd6594a09efee79ecd963c50254b360c64616b0652ac7b933')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz")
-url="https://github.com/tiliado/${pkgname}"
+build() {
+    cd "$srcdir/${pkgname}-${pkgver}"
+    ./configure --prefix=/usr 
+    make all
+}
 
 package() {
-	cd "${pkgname}-${pkgver}"
-
-	# Optimize SVG icons (scour), generate PNG icons (lasem), build and install.
-	make install DEST="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
-
-	# Install all available licenses.
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
+    cd "$srcdir/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
-# template end;
