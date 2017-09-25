@@ -3,11 +3,11 @@
 
 pkgname=urw-classico
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='URW Classico font from CTAN (for texlive)'
 arch=('any')
 license=('CUSTOM:alladin')
-url='http://www.ctan.org/pkg/urw-classico'
+url='https://www.ctan.org/tex-archive/fonts/urw/classico'
 depends=('texlive-core')
 install=$pkgname.install
 source=('http://mirrors.ctan.org/install/fonts/urw/classico.tds.zip'
