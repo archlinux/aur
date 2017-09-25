@@ -2,7 +2,7 @@
 
 pkgname=adapta-kde-git
 gitname=adapta-kde
-pkgver=r1.gc56cf14
+pkgver=r97.c56cf14
 pkgrel=1
 pkgdesc="Complete Adapta theme pack for KDE Plasma using Kvantum theme engine (git version)"
 arch=('any')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd ${srcdir}/${gitname}
 
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'|cut -b10-20
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
