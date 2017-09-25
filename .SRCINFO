@@ -1,13 +1,12 @@
 pkgbase = antibody
-	pkgdesc = A faster and simpler antigen written in Golang.
+	pkgdesc = A shell plugin manager.
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getantibody.github.io/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	depends = zsh
 	source = https://github.com/getantibody/antibody/archive/v3.3.1.tar.gz
 	sha256sums = e9fbca761c93cf2c590f2c2fc68db4559a6825bd3a093a875a767d56f87ce7c7
 
