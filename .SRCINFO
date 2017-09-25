@@ -1,0 +1,16 @@
+pkgbase = nuvola-app-jupiter-broadcasting
+	pkgdesc = Jupiter broadcasting integration for Nuvola Player.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/tiliado/nuvola-app-jupiter-broadcasting
+	arch = any
+	license = custom:BSD
+	makedepends = nuvolasdk
+	makedepends = scour
+	depends = nuvolaruntime
+	depends = imagemagick
+	source = https://github.com/tiliado/nuvola-app-jupiter-broadcasting/archive/1.1.tar.gz
+	sha256sums = 657d9ecfca342148eec7f95d788ca7d78109eefcb8e0d3d62fe39fc17b79518f
+
+pkgname = nuvola-app-jupiter-broadcasting
+
