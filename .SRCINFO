@@ -1,7 +1,7 @@
 pkgbase = urw-classico
 	pkgdesc = URW Classico font from CTAN (for texlive)
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ctan.org/pkg/urw-classico
 	install = urw-classico.install
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = urw-classico
 	depends = texlive-core
 	source = http://mirror.ctan.org/fonts/urw/classico.zip
 	source = license
-	md5sums = e8ce4a2c293ffe386bf5800e0f9f89df
-	md5sums = 330cccd8a2978150e99c5e20926af5f3
+	md5sums = 166eb8e7f2e1ca764b02e00aae5e86fb
+	md5sums = 7689a58e80bcc8546b76e397b83a572b
 
 pkgname = urw-classico
 

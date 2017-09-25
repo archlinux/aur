@@ -20,7 +20,6 @@ package() {
     cd "$srcdir"
     texmf_root=usr/share/texmf
     mkdir -p "$pkgdir/$texmf_root"
-    bsdtar -xf $srcdir/classico.tds.zip -C "$pkgdir/$texmf_root"
-    chown -R 0:0 $pkgdir/$texmf_root
+    bsdtar -poxf $srcdir/classico.tds.zip -C "$pkgdir/$texmf_root"
     install -Dm644 $srcdir/license "$pkgdir/usr/share/licenses/$pkgname/license"
 }
