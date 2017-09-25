@@ -1,4 +1,5 @@
-# Maintainer: Pavel Antonov <pvantonov@gmail.com>
+# Maintainer: Laramy Black <laramy2020@gmail.com>
+# Contrubitor: Previous Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=nuvolaruntime
 pkgver=4.7.0
