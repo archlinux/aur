@@ -19,14 +19,16 @@ pkgver() {
   git describe --long | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  python setup.py build
+}
+
 check() {
-  cd xandikos
-  python setup.py test
+  python -m unittest xandikos.tests.test_suite
 }
 
 package() {
-  cd xandikos
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 xandikos.1 "$pkgdir"/usr/share/man/man1/xandikos.1
 }
 
