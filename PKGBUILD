@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=pwndbg-git
-pkgver=2016.09.22.469.30f1498
+pkgver=2017.02.01.610.70784f2
 pkgrel=1
 pkgdesc='Makes debugging with GDB suck less'
 url='https://github.com/pwndbg/pwndbg'
@@ -11,7 +11,8 @@ depends=('python-capstone' 'python-unicorn' 'python-pycparser' 'python-psutil' '
          'python-pyelftools' 'python-six' 'python-future')
 optdepends=('checksec: checksec command support'
             'ropper: ropper command support'
-            'ropgadget: ropgadget command support')
+            'ropgadget: ropgadget command support'
+            'radare2: radare2 command support')
 makedepends=('git')
 provides=('pwndbg')
 conflicts=('pwndbg')
