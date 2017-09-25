@@ -1,7 +1,7 @@
 pkgbase = oni
 	pkgdesc = An IDE built around Neovim
 	pkgver = 0.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/extr0py/oni
 	arch = any
 	license = MIT
@@ -10,10 +10,14 @@ pkgbase = oni
 	depends = neovim-git
 	depends = gconf
 	depends = libxss
-	source = https://github.com/extr0py/oni/releases/download/v0.2.8/oni-0.2.8-linux.tar.gz
+	source = https://github.com/extr0py/oni/releases/download/v0.2.9/oni-0.2.9-linux.tar.gz
 	source = oni.sh
+	source = oni.desktop
+	source = icons.tar.gz
 	sha256sums = 839eb3e1034d538f005bfac35865e98f25d57dbe7b4139075f868ccea24cd15f
 	sha256sums = 72a945d501f33cfc2fd0d8e832942ba75c09518abd2248973c4df461c3229aee
+	sha256sums = edcda81d04ba34f5196d298e6848798f4bf5c6a00132a1fd9f6832d4cf120a3a
+	sha256sums = db54f67cd9f83e8fd65b609dd2e4ff4f888dfb9a4eff422f8553e9a3aeefe3ff
 
 pkgname = oni
 
