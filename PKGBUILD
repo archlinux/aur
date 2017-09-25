@@ -1,8 +1,8 @@
 # Maintainer: elementh <lucasmmarino@icloud.com>
 pkgname=flatplat-blue-theme
 pkgrel=1
-_date=20170325
-_gnomever=3.24.1
+_date=20170917
+_gnomever=3.25.1
 pkgver=${_gnomever}.${_date}
 pkgver=3.24.1
 pkgdesc="Flat-Plat-Blue Theme is a GNOME Shell/GTK Theme forked from Flat-Plat Theme with blue tones"
