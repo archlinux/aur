@@ -1,36 +1,28 @@
-# Maintainer: Vonpupp <vonpupp@gmail.com>
-# Contributor: Menche <menche_mt at yahoo dot com>
-# Contributor: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: Andrea Scarpino
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Contributor: TripleE <eric1548@yahoo.com>
+# Contributor: Christopher Bayliss <christopher.j.bayliss@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=xiphos
-pkgver=4.0.4
+pkgver=4.0.7
 pkgrel=1
-pkgdesc="Bible study tool for GTK+"
-arch=('x86_64' 'i686')
-url="http://xiphos.org/"
-depends=('webkitgtk2' 'libgsf' 'libglade' 'gtkhtml3' 'sword' 'biblesync')
-makedepends=('gnome-doc-utils' 'intltool' 'python2')
+pkgdesc="A Bible study tool - This version is built to use GTK3 and WebKit2GTK+."
+arch=('i686' 'x86_64')
+url="http://xiphos.org"
 license=('GPL')
-conflicts=('gnomesword')
+depends=('webkit2gtk' 'libgsf' 'gconf' 'sword' 'biblesync' 'gtkhtml4' 'festival')
+makedepends=('gnome-common' 'gnome-doc-utils' 'intltool' 'python2')
 provides=('gnomesword')
-replaces=('gnomesword')
-install=xiphos.install
-source=("http://downloads.sourceforge.net/gnomesword/$pkgname-$pkgver-20150830.tar.gz")
-md5sums=('a1d88b7d6812fd261d71a229999c669d')
+conflicts=('gnomesword')
+source=("xiphos-${pkgver}.tar.gz::https://github.com/crosswire/xiphos/archive/${pkgver}.tar.gz")
+md5sums=('b28df49270a2aef4f33297e0d40dd421')
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  sed -i '0,/python/s//python2/' waf
-  ./waf configure --gtk=2 --prefix=/usr
-  ./waf build
+  cd "xiphos-${pkgver}"
+  python2 ./waf --prefix=/usr --gtk=3 --enable-webkit2 configure 
+  python2 ./waf --prefix=/usr --gtk=3 --enable-webkit2 build 
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  ./waf install --destdir="$pkgdir"
+  cd "xiphos-${pkgver}"
+  python2 ./waf --destdir=$pkgdir --no-post-install install 
 }
+
