@@ -2,8 +2,8 @@
 _pkgname=neovim-gtk
 pkgname=neovim-gtk-git
 pkgver=319
-pkgrel=1
-pkgdesc='A simple, fast and user-friendly alternative to find.'
+pkgrel=2
+pkgdesc='GTK UI for Neovim written in Rust'
 arch=('i686' 'x86_64')
 url="https://github.com/daa84/neovim-gtk"
 license=('GPL3')

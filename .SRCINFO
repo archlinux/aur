@@ -1,7 +1,7 @@
 pkgbase = neovim-gtk-git
-	pkgdesc = A simple, fast and user-friendly alternative to find.
+	pkgdesc = GTK UI for Neovim written in Rust
 	pkgver = 319
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daa84/neovim-gtk
 	arch = i686
 	arch = x86_64
