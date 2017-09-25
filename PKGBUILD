@@ -4,11 +4,12 @@
 _gitname=la-capitaine-icon-theme
 pkgname=la-capitaine-icon-theme-git
 pkgver=r400.81a15fbe
-pkgrel=1
+pkgrel=2
 pkgdesc="An icon pack designed to integrate with most desktop environments"
 arch=('any')
 url="https://github.com/keeferrourke/${_gitname}"
 license=('GPL3')
+makedepends=('git')
 options=('!strip')
 conflicts=(${_gitname})
 source=("git+${url}.git")
