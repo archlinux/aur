@@ -1,0 +1,12 @@
+pkgbase = stern-bin
+	pkgdesc = Multi pod and container log tailing for Kubernetes
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/wercker/stern
+	arch = x86_64
+	license = apache
+	source = https://github.com/wercker/stern/releases/download/1.5.1/stern_linux_amd64
+	sha256sums = 3b7a89db0bede21d16e17625f245ce9d6f6a7267653ae06ac46bd21ae2835d76
+
+pkgname = stern-bin
+
