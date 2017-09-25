@@ -1,8 +1,8 @@
 pkgbase = nuvolaruntime
-	pkgdesc = NuvolaRuntime.
+	pkgdesc = Nuvola Apps Runtime - Tight integration of web apps with your desktop
 	pkgver = 4.7.0
 	pkgrel = 1
-	url = https://github.com/tiliado/nuvola-app-google-play-music
+	url = https://github.com/tiliado/nuvolaruntime
 	arch = any
 	license = custom:BSD
 	makedepends = scour

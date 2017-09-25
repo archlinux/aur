@@ -3,9 +3,9 @@
 pkgname=nuvolaruntime
 pkgver=4.7.0
 pkgrel=1
-pkgdesc="NuvolaRuntime."
+pkgdesc="Nuvola Apps Runtime - Tight integration of web apps with your desktop"
 arch=("any")
-url="https://github.com/tiliado/nuvola-app-google-play-music"
+url="https://github.com/tiliado/nuvolaruntime"
 license=('custom:BSD')
 provides=('nuvolaplayer')
 conflicts=('nuvolaplayer')
