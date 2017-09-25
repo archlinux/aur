@@ -3,7 +3,7 @@
 
 pkgname=brackets-bin
 _pkgname=brackets
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc="A code editor for HTML, CSS and JavaScript. "
 arch=("i686" "x86_64")
@@ -22,8 +22,8 @@ install=$pkgname.install
 
 source_i686=("https://github.com/adobe/$_pkgname/releases/download/release-$pkgver/Brackets.Release.$pkgver.32-bit.deb")
 source_x86_64=("https://github.com/adobe/$_pkgname/releases/download/release-$pkgver/Brackets.Release.$pkgver.64-bit.deb")
-sha512sums_i686=('4b71cd70e94ac0510cf1ac2779accacbaab0782ca01864402f4492495304e9fecedc04ad7ac129cc8f0fe15eda585ebad3c4901d4260439a31c9d26265cb821f')
-sha512sums_x86_64=('fdc9deea875c34c6250506714dd088b7c77036de88f14539a4cf51ecf64f3cbfc527d16f97d41cee154b54c556a4b28ce6a5b838860479792451376c92fb1b14')
+sha512sums_i686=('937bd438a6ce89f5ac3546369ed7889717a771d2d6619f63d37bfdbd1b11596b888044cf5089610b18a260e51b99e98b47b4b72aa0d58e90b77bed918abbd23d')
+sha512sums_x86_64=('5a09977c1cf8f7496f6d8f4e3b01ce9eb02819e0c42071706ef8ef0185009b825f04f60f5354801dc74df2ab525791d701eb193e8c8ccc70de7504068028285d')
 
  
 prepare() {
@@ -49,14 +49,7 @@ package() {
   ln -s /opt/brackets/brackets $pkgdir/usr/bin/$_pkgname
 
   msg2 "  -> Installing icons..."
-  local _icon_dir="usr/share/icons/hicolor"
-  install -d $pkgdir/$_icon_dir/scalable/apps
-  install -Dm644 $_icon_dir/scalable/apps/$_pkgname.svg $pkgdir/$_icon_dir/scalable/apps/$_pkgname.svg
-  for _icon in "opt/brackets/appshell"*.png; do
-    local _icon_size=${_icon##*/appshell}
-    install -d $pkgdir/$_icon_dir/${_icon_size%.png}x${_icon_size%.png}/apps
-    install -Dm644 $_icon $pkgdir/$_icon_dir/${_icon_size%.png}x${_icon_size%.png}/apps/$_pkgname.png
-  done
+  cp -r usr $pkgdir/usr
 
   msg2 "  -> Installing .desktop file..."
   install -d $pkgdir/usr/share/applications
