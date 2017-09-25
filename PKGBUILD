@@ -2,7 +2,7 @@
 
 pkgname=antibody
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A shell plugin manager."
 arch=('i686' 'x86_64')
 url="https://getantibody.github.io/"
@@ -26,12 +26,15 @@ prepare() {
 }
 
 build() {
-	cd "$_repodir/$pkgname"
+	export GOPATH="$srcdir/.go"
+	cd "$srcdir/$_repodir/$pkgname"
 	make
 }
 
 check() {
-	cd "$_repodir/$pkgname"
+	export GOPATH="$srcdir/.go"
+	export PATH="$GOPATH/bin:$PATH"
+	cd "$srcdir/$_repodir/$pkgname"
 	make test
 }
 
