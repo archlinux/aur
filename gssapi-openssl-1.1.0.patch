@@ -1,0 +1,178 @@
+commit 62325de6d29b58db4e2c5d1c63547714d774e625
+Author: Christoph Gysin <christoph.gysin@gmail.com>
+Date:   Tue Sep 26 20:01:13 2017 +0300
+
+    gssapi openssl-1.1
+
+diff --git a/gss-genr.c b/gss-genr.c
+index 0a929bc..a091200 100644
+--- a/gss-genr.c
++++ b/gss-genr.c
+@@ -98,7 +98,7 @@ ssh_gssapi_kex_mechs(gss_OID_set gss_supported, ssh_gssapi_check_fn *check,
+ 	u_char digest[EVP_MAX_MD_SIZE];
+ 	char deroid[2];
+ 	const EVP_MD *evp_md = EVP_md5();
+-	EVP_MD_CTX md;
++	EVP_MD_CTX *md = EVP_MD_CTX_new();
+ 
+ 	if (gss_enc2oid != NULL) {
+ 		for (i = 0; gss_enc2oid[i].encoded != NULL; i++)
+@@ -119,12 +119,12 @@ ssh_gssapi_kex_mechs(gss_OID_set gss_supported, ssh_gssapi_check_fn *check,
+ 			deroid[0] = SSH_GSS_OIDTYPE;
+ 			deroid[1] = gss_supported->elements[i].length;
+ 
+-			EVP_DigestInit(&md, evp_md);
+-			EVP_DigestUpdate(&md, deroid, 2);
+-			EVP_DigestUpdate(&md,
++			EVP_DigestInit(md, evp_md);
++			EVP_DigestUpdate(md, deroid, 2);
++			EVP_DigestUpdate(md,
+ 			    gss_supported->elements[i].elements,
+ 			    gss_supported->elements[i].length);
+-			EVP_DigestFinal(&md, digest, NULL);
++			EVP_DigestFinal(md, digest, NULL);
+ 
+ 			encoded = xmalloc(EVP_MD_size(evp_md) * 2);
+ 			enclen = __b64_ntop(digest, EVP_MD_size(evp_md),
+@@ -164,6 +164,8 @@ ssh_gssapi_kex_mechs(gss_OID_set gss_supported, ssh_gssapi_check_fn *check,
+ 		mechs = NULL;
+ 	}
+ 
++	EVP_MD_CTX_free(md);
++
+ 	return (mechs);
+ }
+ 
+diff --git a/kexgssc.c b/kexgssc.c
+index 4708fd0..172b14a 100644
+--- a/kexgssc.c
++++ b/kexgssc.c
+@@ -56,8 +56,9 @@ kexgss_client(struct ssh *ssh) {
+ 	DH *dh;
+ 	BIGNUM *dh_server_pub = NULL;
+ 	BIGNUM *shared_secret = NULL;
+-	BIGNUM *p = NULL;
+-	BIGNUM *g = NULL;
++	const BIGNUM *p = NULL;
++	const BIGNUM *g = NULL;
++	const BIGNUM *pub_key = NULL;
+ 	u_char *kbuf;
+ 	u_char *serverhostkey = NULL;
+ 	u_char *empty = "";
+@@ -167,7 +168,8 @@ kexgss_client(struct ssh *ssh) {
+ 				packet_start(SSH2_MSG_KEXGSS_INIT);
+ 				packet_put_string(send_tok.value,
+ 				    send_tok.length);
+-				packet_put_bignum2(dh->pub_key);
++				DH_get0_key(dh, &pub_key, NULL);
++				packet_put_bignum2(pub_key);
+ 				first = 0;
+ 			} else {
+ 				packet_start(SSH2_MSG_KEXGSS_CONTINUE);
+@@ -269,6 +271,7 @@ kexgss_client(struct ssh *ssh) {
+ 	switch (ssh->kex->kex_type) {
+ 	case KEX_GSS_GRP1_SHA1:
+ 	case KEX_GSS_GRP14_SHA1:
++		DH_get0_key(dh, &pub_key, NULL);
+ 		kex_dh_hash(
+ 		    ssh->kex->hash_alg,
+ 		    ssh->kex->client_version_string,
+@@ -276,13 +279,15 @@ kexgss_client(struct ssh *ssh) {
+ 		    buffer_ptr(ssh->kex->my), buffer_len(ssh->kex->my),
+ 		    buffer_ptr(ssh->kex->peer), buffer_len(ssh->kex->peer),
+ 		    (serverhostkey ? serverhostkey : empty), slen,
+-		    dh->pub_key,	/* e */
++		    pub_key,	/* e */
+ 		    dh_server_pub,	/* f */
+ 		    shared_secret,	/* K */
+ 		    hash, &hashlen
+ 		);
+ 		break;
+ 	case KEX_GSS_GEX_SHA1:
++		DH_get0_pqg(dh, &p, NULL, &g);
++		DH_get0_key(dh, &pub_key, NULL);
+ 		kexgex_hash(
+ 		    ssh->kex->hash_alg,
+ 		    ssh->kex->client_version_string,
+@@ -291,8 +296,8 @@ kexgss_client(struct ssh *ssh) {
+ 		    buffer_ptr(ssh->kex->peer), buffer_len(ssh->kex->peer),
+ 		    (serverhostkey ? serverhostkey : empty), slen,
+  		    min, nbits, max,
+-		    dh->p, dh->g,
+-		    dh->pub_key,
++		    p, g,
++		    pub_key,
+ 		    dh_server_pub,
+ 		    shared_secret,
+ 		    hash, &hashlen
+diff --git a/kexgsss.c b/kexgsss.c
+index cfb8680..922c4ec 100644
+--- a/kexgsss.c
++++ b/kexgsss.c
+@@ -70,6 +70,9 @@ kexgss_server(struct ssh *ssh)
+ 	int min = -1, max = -1, nbits = -1;
+ 	BIGNUM *shared_secret = NULL;
+ 	BIGNUM *dh_client_pub = NULL;
++	const BIGNUM *p = NULL;
++	const BIGNUM *g = NULL;
++	const BIGNUM *pub_key = NULL;
+ 	int type = 0;
+ 	gss_OID oid;
+ 	char *mechs;
+@@ -121,8 +124,9 @@ kexgss_server(struct ssh *ssh)
+ 			packet_disconnect("Protocol error: no matching group found");
+ 
+ 		packet_start(SSH2_MSG_KEXGSS_GROUP);
+-		packet_put_bignum2(dh->p);
+-		packet_put_bignum2(dh->g);
++		DH_get0_pqg(dh, &p, NULL, &g);
++		packet_put_bignum2(p);
++		packet_put_bignum2(g);
+ 		packet_send();
+ 
+ 		packet_write_wait();
+@@ -218,6 +222,7 @@ kexgss_server(struct ssh *ssh)
+ 	switch (ssh->kex->kex_type) {
+ 	case KEX_GSS_GRP1_SHA1:
+ 	case KEX_GSS_GRP14_SHA1:
++		DH_get0_key(dh, &pub_key, NULL);
+ 		kex_dh_hash(
+ 		    ssh->kex->hash_alg,
+ 		    ssh->kex->client_version_string,
+@@ -225,11 +230,13 @@ kexgss_server(struct ssh *ssh)
+ 		    buffer_ptr(ssh->kex->peer), buffer_len(ssh->kex->peer),
+ 		    buffer_ptr(ssh->kex->my), buffer_len(ssh->kex->my),
+ 		    NULL, 0, /* Change this if we start sending host keys */
+-		    dh_client_pub, dh->pub_key, shared_secret,
++		    dh_client_pub, pub_key, shared_secret,
+ 		    hash, &hashlen
+ 		);
+ 		break;
+ 	case KEX_GSS_GEX_SHA1:
++		DH_get0_pqg(dh, &p, NULL, &g);
++		DH_get0_key(dh, &pub_key, NULL);
+ 		kexgex_hash(
+ 		    ssh->kex->hash_alg,
+ 		    ssh->kex->client_version_string, ssh->kex->server_version_string,
+@@ -237,9 +244,9 @@ kexgss_server(struct ssh *ssh)
+ 		    buffer_ptr(ssh->kex->my), buffer_len(ssh->kex->my),
+ 		    NULL, 0,
+ 		    min, nbits, max,
+-		    dh->p, dh->g,
++		    p, g,
+ 		    dh_client_pub,
+-		    dh->pub_key,
++		    pub_key,
+ 		    shared_secret,
+ 		    hash, &hashlen
+ 		);
+@@ -263,7 +270,8 @@ kexgss_server(struct ssh *ssh)
+ 		fatal("Couldn't get MIC");
+ 
+ 	packet_start(SSH2_MSG_KEXGSS_COMPLETE);
+-	packet_put_bignum2(dh->pub_key);
++	DH_get0_key(dh, &pub_key, NULL);
++	packet_put_bignum2(pub_key);
+ 	packet_put_string(msg_tok.value,msg_tok.length);
+ 
+ 	if (send_tok.length != 0) {

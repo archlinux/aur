@@ -28,7 +28,8 @@ source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgname}-${pkgv
         'sshd.pam'
         'openssl-1.1.0.patch'
         'get_canonical_hostname.patch'
-        'gssapi.patch')
+        'gssapi.patch'
+        'gssapi-openssl-1.1.0.patch')
 sha1sums=('5e8f185d00afb4f4f89801e9b0f8b9cee9d87ebd'
           'SKIP'
           'cc1ceec606c98c7407e7ac21ade23aed81e31405'
@@ -39,7 +40,8 @@ sha1sums=('5e8f185d00afb4f4f89801e9b0f8b9cee9d87ebd'
           'd93dca5ebda4610ff7647187f8928a3de28703f3'
           '6d9ea19bb4fa2e4b5f14cad331f36bfbdaafd067'
           '16a3dc0ddcffbcfb7b166dc5839cee6536597c8e'
-          '1f835864ef2a64d919e57c8337f711a1b9442af4')
+          '1f835864ef2a64d919e57c8337f711a1b9442af4'
+          '445edf93cd3f66294d6465a95ee32437ac1d4c56')
 
 backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
 
@@ -52,6 +54,7 @@ prepare() {
     # GSSAPI patches
     patch -Np1 -i ../get_canonical_hostname.patch
     patch -Np1 -i ../gssapi.patch
+    patch -Np1 -i ../gssapi-openssl-1.1.0.patch
 }
 
 build() {
