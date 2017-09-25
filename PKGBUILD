@@ -18,13 +18,12 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${gitname}
+    cd ${srcdir}/${gitname}
 
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'|cut -b10-20
-  
 }
 
- package() {
-  make -C ${srcdir}/${gitname} DESTDIR=${pkgdir}/ install
+package() {
+    make -C ${srcdir}/${gitname} DESTDIR=${pkgdir}/ install
 }
 
