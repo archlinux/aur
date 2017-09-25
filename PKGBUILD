@@ -2,7 +2,7 @@
 
 pkgname=dotnet-runtime-1.1
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Provides the .NET core shared framework, i.e. coreclr and corefx."
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
@@ -27,8 +27,8 @@ source=(
   'clang-4-patchset.patch'
   'libcurl.patch')
 
-sha256sums=('3dcc98d981b85008b44c994c2805bdbe30a650bfe7ef665a21ce6e36da807435'
-            '6d7c4598433843129a48ab106b029f5d9f9572c283cbc522114d8fbe3bff04ea'
+sha256sums=('efbb9f237615722085188077371d525fb094d9add9942b2e4d6fd56a8694240f'
+            '29d4632e17734fc241e0f6cd28e5f4c6339ee7bd9efd969d9a2ae55ea2c17789'
             '0a4d4061931e0154c9186446dbc8d4c3e69ba49537699be98185d55fc24a1b56'
             '581d6484626bbae820feb19d0613955fea333c025fb06d43a731a3db776686f7'
             '84a0e56d00fd2f3f9f82b7d017652f03d4e7f80c6968d7fa1274f6e46af0ff3d'
