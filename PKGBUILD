@@ -1,29 +1,24 @@
-# Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
+# Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-groove
-pkgdesc='Microsoft Groove Music integration for Nuvola Player 3.0'
-pkgver=1.1
+pkgver=2.0
 pkgrel=1
+pkgdesc="groove integration for Nuvola Player."
+arch=("any")
+url="https://github.com/tiliado/nuvola-app-groove"
+license=('custom:BSD')
+depends=('nuvolaruntime' 'imagemagick')
+makedepends=('nuvolasdk' 'scour')
+source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
+sha256sums=('e72f8983ad7eaabe191cd7d1a750bdb00809c7af6c3c2299eb9a386ee9d21c79')
 
-license=('BSD')
-
-# template start; name=nuvola-app; version=1.0.1;
-# Template-Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
-
-arch=('any')
-depends=('nuvolaplayer')
-makedepends=('lasem' 'scour')
-sha256sums=('b6db0874979f107648579c4989ff4cdb5b7bba9fdd8cf513f8bba92147881aa0')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz")
-url="https://github.com/tiliado/${pkgname}"
+build() {
+    cd "$srcdir/${pkgname}-${pkgver}"
+    ./configure --prefix=/usr 
+    make all
+}
 
 package() {
-	cd "${pkgname}-${pkgver}"
-
-	# Optimize SVG icons (scour), generate PNG icons (lasem), build and install.
-	make install DEST="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
-
-	# Install all available licenses.
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
+    cd "$srcdir/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
-# template end;
