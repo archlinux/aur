@@ -1,8 +1,8 @@
 [Desktop Entry]
+Type=Application
 Name=VueScan
 Comment=A powerful proprietary scanning tool
-Type=Application
-Categories=Application;Graphics
+Categories=Application;Graphics;
 Terminal=false
 Icon=scanner
 Exec=vuescan
