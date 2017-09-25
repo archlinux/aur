@@ -8,7 +8,7 @@ pkgbase = nuvolaruntime
 	makedepends = scour
 	depends = python
 	depends = vala
-	depends = diorite
+	depends = diorite>=4.7.0
 	depends = glib2
 	depends = ruby-gio2
 	depends = python-gobject2
