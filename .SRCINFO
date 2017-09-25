@@ -1,0 +1,15 @@
+pkgbase = python-gpsd-git
+	pkgdesc = A library for polling gpsd in Python3
+	pkgver = 0.2.0.r9.gf166c78
+	pkgrel = 1
+	url = https://github.com/MartijnBraam/gpsd-py3
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = python-setuptools
+	depends = gpsd
+	source = python-gpsd::git+https://github.com/MartijnBraam/gpsd-py3.git
+	sha256sums = SKIP
+
+pkgname = python-gpsd-git
+
