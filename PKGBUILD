@@ -1,8 +1,8 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=xflux-gui-git
-pkgver=r187.0b56204
-pkgrel=4
+pkgver=v1.1.10.r4.g7537228
+pkgrel=1
 pkgdesc='Better lighting for Linux. Open source GUI for xflux'
 arch=(any)
 url='https://justgetflux.com/linux.html'
