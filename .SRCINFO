@@ -1,7 +1,7 @@
 pkgbase = cartaodecidadao
 	pkgdesc = Portuguese Citizen Card Application
 	pkgver = 2.4.0.4973
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cartaodecidadao.pt/
 	arch = i686
 	arch = x86_64

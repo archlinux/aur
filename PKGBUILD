@@ -4,7 +4,7 @@ pkgname=cartaodecidadao
 pkgver=2.4.0.4973
 _rev=${pkgver##*.}
 _ver=${pkgver%.*}
-pkgrel=2
+pkgrel=3
 pkgdesc="Portuguese Citizen Card Application"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -70,9 +70,9 @@ package() {
 	install -Dm644 ${srcdir}/eidmw/misc/licenses/License_pt.rtf ${pkgdir}/usr/share/licenses/${pkgname}/EUPL
 
 	# Install desktop files
-	install -Dm644 ${srcdir}/eidmw/debian/pteid-mw-gui.desktop ${pkgdir}/usr/share/desktop/applications/pteid-mw-gui.desktop
-	install -Dm644 ${srcdir}/eidmw/debian/pteid-dss.desktop ${pkgdir}/usr/share/desktop/applications/pteid-dss.desktop
-	sed -i -e "s|local/bin|share/${pkgname}|g" ${pkgdir}/usr/share/desktop/applications/pteid-dss.desktop
+	install -Dm644 ${srcdir}/eidmw/debian/pteid-mw-gui.desktop ${pkgdir}/usr/share/applications/pteid-mw-gui.desktop
+	install -Dm644 ${srcdir}/eidmw/debian/pteid-dss.desktop ${pkgdir}/usr/share/applications/pteid-dss.desktop
+	sed -i -e "s|local/bin|share/${pkgname}|g" ${pkgdir}/usr/share/applications/pteid-dss.desktop
 
 	# Install image files
 	install -Dm644 ${srcdir}/eidmw/debian/pteid-signature.png ${pkgdir}/usr/share/pixmaps/pteid-signature.png
