@@ -43,12 +43,13 @@ package() {
   sed '/sv_test_cmds/s/1/0/' -i "$_datadir/autoexec_server.cfg"
   
     # Append a '#' to line of the map type you DO NOT want to be installed
-  cp -a types/novice    $_datadir/types/
-  cp -a types/moderate  $_datadir/types/
   cp -a types/brutal    $_datadir/types/
-  cp -a types/dummy     $_datadir/types/
   cp -a types/ddmax     $_datadir/types/
+  cp -a types/dummy     $_datadir/types/
+  cp -a types/insane    $_datadir/types/
+  cp -a types/moderate  $_datadir/types/
+  cp -a types/novice    $_datadir/types/
   cp -a types/oldschool $_datadir/types/
-  cp -a types/solo      $_datadir/types/
   cp -a types/race      $_datadir/types/
+  cp -a types/solo      $_datadir/types/
 }
