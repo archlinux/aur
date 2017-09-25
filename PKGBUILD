@@ -1,16 +1,16 @@
-# Maintainer: barcia <barcia@opmbx.org>
+# Submitter: barcia <barcia@opmbx.org>
+# Maintainer: Amal Karunarathna <nasashinega@gmail.com>
 
 _gitname=la-capitaine-icon-theme
-_pkgname=La-Capitaine
-pkgname=('la-capitaine-icon-theme-git')
-pkgver=r35.5a3c661
+pkgname=la-capitaine-icon-theme-git
+pkgver=r400.81a15fbe
 pkgrel=1
 pkgdesc="An icon pack designed to integrate with most desktop environments"
 arch=('any')
 url="https://github.com/keeferrourke/${_gitname}"
 license=('GPL3')
 options=('!strip')
-conflicts=('')
+conflicts=(${_gitname})
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -25,4 +25,9 @@ package() {
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
     find ${pkgdir}/usr -type f -name '.directory' -delete
+    rm -rf "$pkgdir/usr/share/icons/la-capitaine-icon-theme/.gitignore"
+    rm -rf "$pkgdir/usr/share/icons/la-capitaine-icon-theme/.git"
+    rm -rf "$pkgdir/usr/share/icons/la-capitaine-icon-theme/.github"
+    rm -rf "$pkgdir/usr/share/icons/la-capitaine-icon-theme/.product"
+    rm -rf "$pkgdir/usr/share/icons/la-capitaine-icon-theme/configure"
 }
