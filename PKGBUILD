@@ -1,43 +1,25 @@
 # Maintainer: Andrew Stubbs <andrew.stubbs at gmail dot com>
+# CO-Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-youtube
 pkgver=1.3
-pkgrel=1
-pkgdesc="Integration of YouTube into your linux desktop via Nuvola Player 3.0."
-arch=('any')
+pkgrel=2
+pkgdesc="youtube integration for Nuvola Player."
+arch=("any")
 url="https://github.com/tiliado/nuvola-app-youtube"
-license=('2-Clause BSD-license')
-depends=('nuvolaplayer>=3', 'nuvolaplayer<4')
-makedepends=('lasem' 'scour' 'python-virtualenv')
-options=(!emptydirs)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tiliado/nuvola-app-youtube/archive/${pkgver}.tar.gz")
-md5sums=('efc8d734e9cdb905ef9b275bcb17200e')
-
-prepare() {
-	cd "${pkgname}-${pkgver}"
-
-	virtualenv ve
-	source ve/bin/activate
-	pip install nuvolasdk
-
-	# Generate Makefile
-	./configure --prefix=/usr
-}
+license=('custom:BSD')
+depends=('nuvolaruntime' 'imagemagick')
+makedepends=('nuvolasdk' 'scour')
+source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
+sha256sums=('4b6819e2f888b1b2e45e3dee2401c5dad69015a77b3c9d9b68be1b044f200422')
 
 build() {
-	cd "${pkgname}-${pkgver}"
-
-	# Optimize SVG icons (scour), generate PNG icons (lasem)
-	make
+    cd "$srcdir/${pkgname}-${pkgver}"
+    ./configure --prefix=/usr 
+    make all
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-
-	make install DESTDIR="${pkgdir}"
-
-	# Install all available licenses.
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
+    cd "$srcdir/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
-
-# vim:set ts=4 sw=4 et:
