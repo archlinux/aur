@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@ctrl-d.org>
 
 pkgname=shaderc-git
-pkgver=r414.eadd549
+pkgver=r414.eadd549.glslang_r2310
 pkgrel=1
 pkgdesc="A collection of tools, libraries and tests for shader compilation"
 url="https://github.com/google/shaderc"
@@ -21,12 +21,16 @@ source=("shaderc::git+https://github.com/google/shaderc.git"
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
+  cd "$srcdir/glslang"
+  glslang_rev="$(git rev-list --count HEAD)"
+
   cd "$srcdir/shaderc"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s.glslang_r$glslang_rev" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "$srcdir/shaderc"
+
   ln -s -f "$srcdir/glslang" third_party/
   ln -s -f "$srcdir/spirv-tools" third_party/
   ln -s -f "$srcdir/spirv-headers" third_party/spirv-tools/external/
