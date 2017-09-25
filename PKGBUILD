@@ -6,7 +6,7 @@
 
 pkgname=firejail-extras
 pkgver=0.9.445
-pkgrel=7
+pkgrel=8
 pkgdesc="Extra profiles for firejail"
 arch=('any')
 url="https://github.com/triceratops1/fe"
@@ -73,10 +73,8 @@ package() {
         rm   ${srcdir}/fe/keepassx.profile
         rm   ${srcdir}/fe/zathura.profile
         rm   ${srcdir}/fe/cvlc.profile
-        rm   ${srcdir}/fe/fossamail.profile
         rm   ${srcdir}/fe/gjs.profile
         rm   ${srcdir}/fe/gpa.profile
-        rm   ${srcdir}/fe/kino.profile
         rm   ${srcdir}/fe/lynx.profile
         rm   ${srcdir}/fe/pluma.profile
         rm   ${srcdir}/fe/qupzilla.profile
