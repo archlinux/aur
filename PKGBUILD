@@ -2,7 +2,7 @@
 
 pkgname=qbittorrent-dark-git
 pkgver=3.3.11.r730.g3e50ca15f
-pkgrel=1
+pkgrel=2
 pkgdesc="A dark version of bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
