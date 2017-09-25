@@ -11,7 +11,7 @@ url="https://getmonero.org/"
 license=('custom:Cryptonote')
 
 depends=('boost-libs>=1.45'  'unbound>=1.4.16'  'miniupnpc>=1.6' 'libunwind'
-         'readline' 'openssl')
+         'readline' 'openssl' 'zeromq')
 makedepends=('git' 'cmake' 'boost' 'gtest')
 
 
