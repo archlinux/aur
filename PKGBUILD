@@ -40,7 +40,7 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.java.net/java/GA/jdk${_major}/${_major}/binaries/${pkgname}-${_major}+${_build}_linux-x64_bin.tar.gz"
+source=("http://download.java.net/java/GA/jdk${_major}/${_major}/binaries/${_pkgname}-${_major}+${_build}_linux-x64_bin.tar.gz"
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
