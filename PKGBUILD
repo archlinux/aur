@@ -81,6 +81,7 @@ check() {
 package_monero-git() {
 
 	provides=('monero')
+	conflicts=('monero')
 
 	backup=('etc/monerod.conf')
 	install=monero.install
@@ -101,6 +102,7 @@ package_monero-git() {
 package_libmonero-wallet-git() {
 
 	provides=('libmonero-wallet')
+	conflicts=('libmonero-wallet')
 
         # NOTE: this is crucial, otherwise stripping breaks the .a archive:
         # monero-core (GUI) fails to link against it (it can't find symbols
