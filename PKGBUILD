@@ -1,29 +1,24 @@
-# Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
+# Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-jango
-pkgdesc='Jango integration for Nuvola Player 3.0'
-pkgver=2.1
+pkgver=2.3
 pkgrel=1
+pkgdesc="jango integration for Nuvola Player."
+arch=("any")
+url="https://github.com/tiliado/nuvola-app-jango"
+license=('custom:BSD')
+depends=('nuvolaruntime' 'imagemagick')
+makedepends=('nuvolasdk' 'scour')
+source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
+sha256sums=('e8c6acd7461956f16dde284e111d97a95759c0f2b69d07fe753cf0bb965e64cd')
 
-license=('BSD')
-
-# template start; name=nuvola-app; version=1.0.1;
-# Template-Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
-
-arch=('any')
-depends=('nuvolaplayer')
-makedepends=('lasem' 'scour')
-sha256sums=('4e417c6ad86b4ca9ac681d5fca0e19ce0f8dcb3e5e61dbd966d744c1b8a158aa')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz")
-url="https://github.com/tiliado/${pkgname}"
+build() {
+    cd "$srcdir/${pkgname}-${pkgver}"
+    ./configure --prefix=/usr 
+    make all
+}
 
 package() {
-	cd "${pkgname}-${pkgver}"
-
-	# Optimize SVG icons (scour), generate PNG icons (lasem), build and install.
-	make install DEST="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
-
-	# Install all available licenses.
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
+    cd "$srcdir/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
-# template end;
