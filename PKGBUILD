@@ -7,7 +7,7 @@
 pkgname=openssh-gssapi
 _pkgname=openssh
 pkgver=7.5p1
-pkgrel=1
+pkgrel=2
 pkgdesc='Free version of the SSH connectivity tools'
 url='https://www.openssh.com/portable.html'
 license=('custom:BSD')
@@ -26,6 +26,7 @@ source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgname}-${pkgv
         'sshd.socket'
         'sshd.conf'
         'sshd.pam'
+        'openssl-1.1.0.patch'
         'get_canonical_hostname.patch'
         'gssapi.patch')
 sha1sums=('5e8f185d00afb4f4f89801e9b0f8b9cee9d87ebd'
@@ -36,6 +37,7 @@ sha1sums=('5e8f185d00afb4f4f89801e9b0f8b9cee9d87ebd'
           'e12fa910b26a5634e5a6ac39ce1399a132cf6796'
           'c9b2e4ce259cd62ddb00364d3ee6f00a8bf2d05f'
           'd93dca5ebda4610ff7647187f8928a3de28703f3'
+          '6d9ea19bb4fa2e4b5f14cad331f36bfbdaafd067'
           '16a3dc0ddcffbcfb7b166dc5839cee6536597c8e'
           '1f835864ef2a64d919e57c8337f711a1b9442af4')
 
@@ -44,6 +46,9 @@ backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
 
+    # OpenSSL 1.1.0 patch from http://vega.pgw.jp/~kabe/vsd/patch/openssh-7.4p1-openssl-1.1.0c.patch.html
+    patch -Np1 -i ../openssl-1.1.0.patch
+
     # GSSAPI patches
     patch -Np1 -i ../get_canonical_hostname.patch
     patch -Np1 -i ../gssapi.patch
@@ -51,12 +56,6 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-
-    # compile against openssl-1.0
-    ssldir="$srcdir"/openssl-1.0
-    mkdir "$ssldir"
-    ln -s /usr/include/openssl-1.0 "$ssldir"/include
-    ln -s /usr/lib/openssl-1.0 "$ssldir"/lib
 
     ./configure \
         --prefix=/usr \
@@ -73,8 +72,7 @@ build() {
         --with-mantype=man \
         --with-md5-passwords \
         --with-pid-dir=/run \
-        --with-gssapi \
-        --with-ssl-dir="$ssldir"
+        --with-gssapi
 
     make
 }
