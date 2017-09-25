@@ -1,0 +1,26 @@
+pkgbase = paraview-git
+	pkgdesc = Open-source, multi-platform data analysis and visualization application
+	pkgver = v5.4.1.r609.2b5d6611ec
+	pkgrel = 1
+	url = https://www.paraview.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	depends = python2
+	depends = intel-tbb
+	depends = openmpi
+	depends = libxt
+	depends = qt5-x11extras
+	depends = qt5-tools
+	depends = ffmpeg
+	optdepends = python2-numpy: numpy support
+	optdepends = python2-matplotlib: matplotlib drawing support
+	optdepends = python2-scipy: scipy support
+	source = git+https://gitlab.kitware.com/paraview/paraview.git
+	md5sums = SKIP
+
+pkgname = paraview-git
+
