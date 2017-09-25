@@ -8,15 +8,16 @@
 
 _name=gajim
 pkgname="$_name-git"
-pkgver=r14625.1750217e7
+pkgver=r14743.ab23757f0
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
 url="https://gajim.org/"
 license=('GPL3')
 depends=('python-gobject' 'python-pyopenssl' 'hicolor-icon-theme'
-         'python-pyasn1' 'python-nbxmpp-git' 'python-cairo' 'libsecret')
-makedepends=('git' 'intltool')
+         'python-pyasn1' 'python-nbxmpp-git' 'python-cairo' 'libsecret'
+         'python-distro')
+makedepends=('git' 'python-setuptools')
 optdepends=('python-dbus: dbus support'
             'farstream: for video/voice support'
             'gst-plugins-bad: for video/voice support'
@@ -40,13 +41,7 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "$srcdir/$_name"
-  ./autogen.sh --prefix=/usr --enable-site-packages
-  make
-}
-
 package() {
   cd "$srcdir/$_name"
-  make DESTDIR="$pkgdir/" install
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
