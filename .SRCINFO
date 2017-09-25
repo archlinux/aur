@@ -1,0 +1,22 @@
+pkgbase = perl-http-oai
+	pkgdesc = API for the OAI-PMH
+	pkgver = 3.28
+	pkgrel = 1
+	url = https://metacpan.org/release/HTTP-OAI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-cgi
+	depends = perl-http-message
+	depends = perl-uri
+	depends = perl-xml-libxml>=1.6
+	depends = perl-xml-sax
+	depends = perl-xml-sax-base>=1.04
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TI/TIMBRODY/HTTP-OAI-3.28.tar.gz
+	md5sums = 09fb4ba4b9da2cda3910fa4b31273568
+	sha512sums = 9b848ec6213189532e7bc104ec928f2b66c2a4945a3a7a0f37bd5cbb0171e2046e038634079d9c47a005d8cd7531bc636c0d74a20fd697bf312b8f3b8a5e007c
+
+pkgname = perl-http-oai
+
