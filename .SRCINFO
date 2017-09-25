@@ -1,0 +1,15 @@
+pkgbase = kimai-git
+	pkgdesc = Kimai is a free open source timetracker
+	pkgver = 1.1.0.r54.g968bceaa
+	pkgrel = 1
+	url = http://www.kimai.org/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = php,
+	depends = mariadb
+	source = kimai-git::git+https://github.com/kimai/kimai.git
+	sha512sums = SKIP
+
+pkgname = kimai-git
+
