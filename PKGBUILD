@@ -1,6 +1,6 @@
 pkgname=terasology-devbuild
-pkgver=2050
-_omega_ver=808
+pkgver=2054
+_omega_ver=811
 pkgrel=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft! (Last succesful development build)"
 arch=('x86_64' 'i686')
@@ -12,11 +12,11 @@ makedepends=('unzip')
 source=(
     "$pkgname"
     "${pkgname}.desktop"
-    "http://jenkins.terasology.org/job/DistroOmega/${_omega_ver}/artifact/distros/omega/build/distributions/TerasologyOmega.zip"
+    "TerasologyOmega${_omega_ver}.zip::http://jenkins.terasology.org/job/DistroOmega/${_omega_ver}/artifact/distros/omega/build/distributions/TerasologyOmega.zip"
 )
 sha512sums=('9d2562e769aee38a09de315f9900754827ec2720400e10553f0cbf78c0834bf325220c42c249f17999bc764aa4a0c12aa7abe162d43ea5327672c2fa88fa2669'
             '9ecacc34ae0a17cfe1031f32ee4f25e4e840bed072445ac0a8ffc1b2a012a7b60fed739fcc2ceab8083293a31e7409406bc190c4295022df82815f48c5541d19'
-            '5848c289e0b23940b9a4f18ed117cb4ffd7d72657dcdb263c87256460980169f806ec374f21aecbf25129413e7a839597cbc32ece08e99edd0ff723013b9aa66')
+            'f984be63cb620448fcfc902b6ab7cdf9fba0466b1544d642bc21c590cb3d1171aff7a3aae3fa88f21e0ceee92192d6ce747f729efccab3b0f516bbb4e03ca588')
 
 package() {
     cd "$srcdir"
@@ -24,7 +24,7 @@ package() {
     install -Dm 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     #cleanup
-    rm "${srcdir}/${pkgname}" "${srcdir}/${pkgname}.desktop" "${srcdir}/TerasologyOmega.zip"
+    rm "${srcdir}/${pkgname}" "${srcdir}/${pkgname}.desktop" "${srcdir}/TerasologyOmega${_omega_ver}.zip"
 
     #extract and install icons
     unzip -u libs/engine-* "org/terasology/icons/*"
