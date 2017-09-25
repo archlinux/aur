@@ -1,0 +1,18 @@
+pkgbase = ktexteditorpreviewplugin
+	pkgdesc = Plugin for previewing content using the KTextEditor Framework
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://www.kde.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	depends = ktexteditor
+	source = https://download.kde.org/stable/ktexteditorpreviewplugin/0.1.0/src/ktexteditorpreviewplugin-0.1.0.tar.xz
+	source = https://download.kde.org/stable/ktexteditorpreviewplugin/0.1.0/src/ktexteditorpreviewplugin-0.1.0.tar.xz.sig
+	validpgpkeys = E191FD5BE6F46870F09E82B2024E7FB43D015474
+	sha256sums = 21e17a97fe2b942991ce564371ce822564397488847f8d21d7d5b24d4c120796
+	sha256sums = SKIP
+
+pkgname = ktexteditorpreviewplugin
+
