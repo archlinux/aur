@@ -1,0 +1,16 @@
+pkgbase = slstatus-git
+	pkgdesc = A status monitor for window managers
+	pkgver = r330.7246dc4
+	pkgrel = 1
+	url = http://tools.suckless.org/slstatus
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	source = git+https://git.suckless.org/slstatus
+	source = config.h
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = slstatus-git
+
