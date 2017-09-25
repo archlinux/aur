@@ -1,13 +1,12 @@
 pkgbase = python-pyfai
 	pkgdesc = Fast Azimuthal Integration in Python.
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = http://www.silx.org
 	arch = any
 	license = GPLv3
 	license = BSD
 	license = MIT
-	makedepends = git
 	makedepends = cython
 	depends = python-numpy
 	depends = python-scipy
@@ -18,8 +17,8 @@ pkgbase = python-pyfai
 	depends = python-pyqt5
 	depends = fftw
 	depends = opencl-driver
-	source = https://github.com/silx-kit/pyFAI/archive/v0.14.1.tar.gz
-	sha256sums = 089dc3301e44bb954cf11fa5b044d2d9fe8905011e90123feec8b088a2152f3f
+	source = https://github.com/silx-kit/pyFAI/archive/v0.14.2.tar.gz
+	sha256sums = dade57673f28c0a486635aad6f23843141ab2130f8efaa9d518f753dc18a8db2
 
 pkgname = python-pyfai
 
