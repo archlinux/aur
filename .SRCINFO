@@ -1,0 +1,21 @@
+pkgbase = neovim-gtk-git
+	pkgdesc = A simple, fast and user-friendly alternative to find.
+	pkgver = 319
+	pkgrel = 1
+	url = https://github.com/daa84/neovim-gtk
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = neovim
+	depends = gtk3
+	depends = vte3
+	provides = neovim-gtk
+	conflicts = neovim-gtk
+	source = git+https://github.com/daa84/neovim-gtk.git
+	md5sums = SKIP
+
+pkgname = neovim-gtk-git
+
