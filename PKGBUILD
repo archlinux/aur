@@ -1,5 +1,4 @@
 # Maintainer: Ankit R Gadiya <arch@argp.in>
-# Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname=slstatus-git
 pkgver=r330.7246dc4
