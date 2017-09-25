@@ -1,5 +1,6 @@
-*.tar.gz
-*.tar.xz
+oni-*.tar.xz
+oni-*.tar.gz
 
+icons/
 pkg/
 src/
