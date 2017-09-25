@@ -52,7 +52,7 @@ build() {
 	git submodule update --recursive
 
 	# Download dependencies
-	nuget restore -configfile NuGet.config
+	nuget restore -configfile NuGet.config || true
 	nuget restore
 
 	# Build
