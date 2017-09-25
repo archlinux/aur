@@ -1,29 +1,24 @@
-# Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
+# Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-deezer
-pkgdesc='Deezer integration for Nuvola Player 3.0'
-pkgver=2.4
-pkgrel=2
+pkgver=2.7
+pkgrel=1
+pkgdesc="deezer integration for Nuvola Player."
+arch=("any")
+url="https://github.com/tiliado/nuvola-app-deezer"
+license=('custom:BSD')
+depends=('nuvolaruntime' 'imagemagick')
+makedepends=('nuvolasdk' 'scour')
+source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
+sha256sums=('b8a9c408465c95d16eb3a3512e65eee3e4660a6a87ac7d2737d6d4ed02ec4e04')
 
-license=('BSD')
-
-# template start; name=nuvola-app; version=1.0.1;
-# Template-Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
-
-arch=('any')
-depends=('nuvolaplayer')
-makedepends=('lasem' 'scour')
-sha256sums=('860fe0eb45a7bc6a9ca24af02dbb1887ffdb0e1d52b3292f2c0d46d0e01b567f')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz")
-url="https://github.com/tiliado/${pkgname}"
+build() {
+    cd "$srcdir/${pkgname}-${pkgver}"
+    ./configure --prefix=/usr 
+    make all
+}
 
 package() {
-	cd "${pkgname}-${pkgver}"
-
-	# Optimize SVG icons (scour), generate PNG icons (lasem), build and install.
-	make install DEST="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
-
-	# Install all available licenses.
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
+    cd "$srcdir/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
-# template end;
