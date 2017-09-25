@@ -2,7 +2,7 @@
 
 pkgname=icecast-kh
 pkgver=2.4.0_kh6
-pkgrel=2
+pkgrel=3
 pkgdesc='The KH branche extends the official release of Icecast with features that may be (if found to be working out well) merged into the next official release.'
 arch=('i686' 'x86_64')
 url='http://karlheyes.github.com'
@@ -17,17 +17,20 @@ install=$pkgname.install
 source=(https://github.com/karlheyes/$pkgname/archive/${pkgname/-*}-${pkgver//_/-}.tar.gz
         $pkgname.logrotate
         start-by-icecast.patch
+fixssl.patch
         $pkgname.service)
 sha256sums=('53f842c7ed41004a853a3d6b814878663c601b321058298e7d68c3f8b6055f16'
             '46f4d6942223a6d82f0b188e616a8a9cda3911663d59cc976c44b7a9822149f0'
             'b09ac79daccf8347ead4088aca31d2214dcd27e211e9ee2e96ef1a44b65df84f'
+            '71880af596141b4f4d3766b7336bb40deffbd34d546fb3d3675f99f3ac84cccd'
             '4b7f31aff45c6a572d54279531b7944567363d4c2bcd86d9c48887dc7da80a73')
 _srcpath=$pkgname-${pkgname/-*}-${pkgver//_/-}
 
 build() {
   cd "$srcdir/$_srcpath"
   patch -Np1 -i "${srcdir}/start-by-icecast.patch"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-openssl=/usr/bin/openssl
+  patch -Np1 -i "${srcdir}/fixssl.patch"
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make 
 }
 

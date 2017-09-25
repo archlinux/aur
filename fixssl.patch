@@ -1,0 +1,35 @@
+diff --git a/src/connection.c b/src/connection.c
+index 9af06b2..157556c 100644
+--- a/src/connection.c
++++ b/src/connection.c
+@@ -84,16 +84,25 @@ static DH *get_dh2048()
+         0x02,
+     };
+     DH *dh;
++    BIGNUM *p, *g;
+ 
+-	if ((dh=DH_new()) == NULL) return NULL;
+-	dh->p = BN_bin2bn (dh2048_p, sizeof(dh2048_p), NULL);
+-	dh->g = BN_bin2bn (dh2048_g, sizeof(dh2048_g), NULL);
+-    if ((dh->p == NULL) || (dh->g == NULL))
++    if ((dh=DH_new()) == NULL) return NULL;
++    p = BN_bin2bn (dh2048_p, sizeof(dh2048_p), NULL);
++    g = BN_bin2bn (dh2048_g, sizeof(dh2048_g), NULL);
++    if ((p == NULL) || (g == NULL))
+     {
++        BN_free (p);
++        BN_free (g);
+         DH_free (dh);
+         return NULL;
+     }
+-	return dh;
++#if OPENSSL_VERSION_NUMBER >= 0x10100005L
++    DH_set0_pqg(dh, p, NULL, g);
++#else
++    dh->p = p;
++    dh->g = g;
++#endif
++    return dh;
+ }
+ #endif
+ #endif  // END DH CODE
