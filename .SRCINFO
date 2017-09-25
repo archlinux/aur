@@ -1,6 +1,6 @@
 pkgbase = mmonit
 	pkgdesc = Easy, proactive monitoring of Unix systems, network and cloud services. Conduct automatic maintenance and recovery and execute meaningful causal actions in error situations.
-	pkgver = 3.6.2
+	pkgver = 3.7.1
 	pkgrel = 3
 	url = http://mmonit.com/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = mmonit
 	backup = opt/mmonit/conf/server.xml
 	backup = opt/mmonit/conf/web.xml
 	backup = opt/mmonit/db/mmonit.db
-	source = https://mmonit.com/dist/mmonit-3.6.2-linux-x64.tar.gz
+	source = https://mmonit.com/dist/mmonit-3.7.1-linux-x64.tar.gz
 	source = mmonit.service
-	sha256sums = 3a1626cd55a590948eb0f09f04726892eb55b105a0954c8df92987cc1c11adda
+	sha256sums = 8d392898fb4cb6c6e3563c5baab49947ceb2ff2d943bb88470b22127887a8d86
 	sha256sums = 9a4edf62ef3da3af1e3dcfebd7b3bb3f96e81c5a9767021f0e4ed775f2dbb469
 
 pkgname = mmonit
