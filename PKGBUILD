@@ -1,16 +1,24 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=libsignal-protocol-c
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Signal Protocol C Library"
 arch=('i686' 'x86_64')
-url="https://github.com/rizsotto/Bear"
+url="https://github.com/WhisperSystems/libsignal-protocol-c"
 license=('GPL3')
 makedepends=('cmake')
 testdepends=('check', 'openssl>=1.0')
-source=(https://github.com/WhisperSystems/$pkgname/archive/v$pkgver.tar.gz)
-md5sums=('987c0ae7cd054816016e6e286cd4fd7b')
+source=(https://github.com/WhisperSystems/$pkgname/archive/v$pkgver.tar.gz
+'openssl1.1.patch')
+md5sums=('8321edeba3e0642c4c98d5d2870db8cd'
+         '59f4b598a16fde94b3305377adbf7b83')
+
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+
+  patch -p1 < $srcdir/openssl1.1.patch
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -19,18 +27,20 @@ build() {
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_TESTING=1 \
     ..
-    # -DBUILD_TESTING=1 \
 
 	make
 }
 
-# check() {
-# 	cd "$srcdir/$pkgname-$pkgver/tests"
-#   make 
-#   cd ..
-#   ctest
-# }
+check() {
+	cd "$srcdir/$pkgname-$pkgver/build/tests"
+
+  make
+  cd ..
+
+	ctest
+}
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver/build"
