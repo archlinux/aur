@@ -5,7 +5,8 @@ user="gogs"
 group="gogs"
 
 # Where is Gogs installed?
-basedir="/usr/share/gogs"
+basedir="/usr/share/gogs" # never used
+homedir="/var/lib/gogs"
 
 # What is the Gogs executable called?
 daemon="gogs"
@@ -16,13 +17,13 @@ daemon_opts="web"
 
 # Where does Gogs keep configuration files?
 # Only for user information messages at the moment
-defaultconf="${basedir}/conf/app.ini"
-customconf="${basedir}/custom/conf/app.ini"
+# default configuration file is in {basedir}/conf/app.ini
+conffile="/etc/gogs/app.ini"
 
 # Where should logs be stored?
 # Default is ${basedir}/${SVCNAME}.log"
 # 	eg /usr/share/gogs/gogs.log
-logfile="${logfile:-${basedir}/${SVCNAME}.log}"
+logfile="${logfile:-/var/log/${SVCNAME}/${SVCNAME}.log}"
 
 # Where should the PID file be saved while Gogs is running?
 # Default is "/run/${SVCNAME}.pid"

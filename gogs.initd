@@ -1,17 +1,23 @@
 #!/usr/bin/openrc-run
 # Apache License 2015
 
+description="Gogs"
 user="${user:-gogs}"
 group="${group:-gogs}"
-pidfile="${pidfile:-/run/${SVCNAME}.pid}"
+homedir="${homedir:-/var/lib/gogs}"
+USER="${user}"
+HOME="${homedir}"
 basedir="${basedir:-/usr/share/gogs}"
-daemon="${daemon:-gogs}"
 daemon_opts="${daemon_opts:-web}"
-logfile="${logfile:-${basedir}/${SVCNAME}.log}"
-defaultconf="${defaultconf:-${basedir}/conf/app.ini}"
-customconf="${conffile:-${basedir}/custom/conf/app.ini}"
+logfile="${logfile:-/var/log/${SVCNAME}/${SVCNAME}.log}"
+conffile="${conffile:-/etc/gogs/app.ini}"
 startwait=${startwait:-500}
 timeout=${timeout:-1000}
+pidfile="${pidfile:-/run/${SVCNAME}.pid}"
+command="${daemon:-gogs}"
+command_args="${daemon_opts} --config \"${conffile}\""
+command_background=true
+start_stop_daemon_args="--chdir=${homedir} --user ${user} --group ${group} --wait=${startwait} --stderr=${logfile} --stdout=${logfile} ${DEBUG:+"--verbose"}"
 
 depend() {
 	need gogs net localmount
@@ -20,32 +26,13 @@ depend() {
 }
 
 start_pre() {
-	if [ ! -r "${customconf}" ] ; then
-		einfo "Cannot read custom configuration file '${customconf}'"
-		if [ ! -r "${defaultconf}" ] ; then
-			eerror "Cannot read default configuration file '${defaultconf}'"
-			return 1
-		else
-			einfo "Falling back to '${defaultconf}'"
-		fi
+	if [ ! -r "${conffile}" ] ; then
+		eerror "Cannot read configuration file '${conffile}'"
+		return 1
 	fi
 }
 
-start() {
-	ebegin "Starting ${SVCNAME}"
-
-	sh -c "start-stop-daemon \
-		--start \
-		--user ${user} \
-		--group ${group} \
-		--background \
-		--make-pidfile \
-		--pidfile=${pidfile} \
-		--wait=${startwait} \
-		--stderr=${logfile} \
-		--stdout=${logfile} \
-		--exec ${basedir}/${daemon} \
-		${daemon_opts}"
+start_post() {
 	local i=0
 	while [ ! -f ${pidfile} ] && [ $i -le ${timeout} ]; do
 		sleep 1
@@ -53,18 +40,8 @@ start() {
 	done
 
 	[ $timeout -gt $i ]
-	eend $?
 }
 
-stop() {
-	ebegin "Stopping ${SVCNAME}"
-
-	start-stop-daemon \
-		${DEBUG:+"--verbose"} \
-		--stop \
-		--exec "${basedir}"/gogs \
-		--pidfile "${pidfile}"
-	eend $?
-	rm -f $PIDFILE
-	return 0;
+stop_post() {
+	rm -f ${pidfile}
 }
