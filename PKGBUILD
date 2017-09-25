@@ -23,9 +23,12 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${pkgname%-*}"
-  
   #get the latest release without commit
-  git describe --abbrev=0
+  #git describe --abbrev=0
+  
+  #the 6.0-pre0 tag breaks the detection of the pkgversion.
+  #Hard coding version as a workaroud to fix the build until a better way is found (which defeats the purpose of this package).
+  echo "5.12"  
 }
 
 build() {
