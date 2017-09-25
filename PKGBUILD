@@ -3,7 +3,7 @@
 pkgname=sodium-git
 pkgver=0.1.0.319.3bb1da3
 pkgrel=1
-pkgdesc="Application automation framework that allows you to build applications that have automation built-in"
+pkgdesc="Sodium is an editor inspired by Vim (but not a clone). It aims to be efficient, fast, and productive."
 arch=('x86_64')
 url="https://github.com/redox-os/sodium"
 license=('MIT')
