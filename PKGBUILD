@@ -2,7 +2,7 @@
 
 pkgname=tiedot
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A NoSQL document database engine powered by Go"
 arch=('i686' 'x86_64')
 url="https://github.com/HouzuoGuo/tiedot/"
@@ -43,7 +43,7 @@ package() {
   install -Dm644 distributable/etc/tiedot "${pkgdir}/etc/tiedot"
 
   # Copy source
-  local dir_ext="${pkgdir}/usr/lib/go/src/github.com/rwcarlsen/goexif"
+  local dir_ext="${pkgdir}/usr/lib/go/src/github.com/HouzuoGuo/tiedot"
   mkdir -p "${dir_ext}"
   cp -ra "data" "${dir_ext}/data"
   cp -ra "db" "${dir_ext}/db"
