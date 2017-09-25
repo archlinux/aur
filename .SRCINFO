@@ -1,15 +1,14 @@
 pkgbase = gnucap
 	pkgdesc = GNU Circuit Analysis Package
-	pkgver = 20091207
-	pkgrel = 5
+	pkgver = 20160724
+	pkgrel = 1
 	url = http://gnucap.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = gcc-libs
 	depends = readline
-	source = http://gnucap.org/devel/archive/gnucap-2009-12-07.tar.gz
-	sha1sums = a64be626b3e971437d677f14bc72eda0df6e7e3a
+	source = http://git.savannah.gnu.org/cgit/gnucap.git/snapshot/gnucap-20160724.tar.gz
+	sha1sums = 42b3ce44530e59f40387f70ab22a745c7b9e6272
 
 pkgname = gnucap
 

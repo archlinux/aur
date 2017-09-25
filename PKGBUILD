@@ -1,30 +1,27 @@
-# $Id: PKGBUILD 194793 2016-11-06 20:26:05Z bpiotrowski $
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 # Contributor: Georgij Kondratjev <smpuj@bk.ru>
 
 pkgname=gnucap
-pkgver=20091207
-_pkgver=2009-12-07
-pkgrel=5
+pkgver=20160724
+pkgrel=1
 pkgdesc="GNU Circuit Analysis Package"
 arch=('i686' 'x86_64')
 url="http://gnucap.org/"
 license=('GPL')
-depends=('gcc-libs' 'readline')
-source=(http://gnucap.org/devel/archive/$pkgname-$_pkgver.tar.gz)
-sha1sums=('a64be626b3e971437d677f14bc72eda0df6e7e3a')
+depends=('readline')
+source=("http://git.savannah.gnu.org/cgit/$pkgname.git/snapshot/$pkgname-$pkgver.tar.gz")
+sha1sums=('42b3ce44530e59f40387f70ab22a745c7b9e6272')
 
 build() {
-  cd "$srcdir/$pkgname-$_pkgver"
-
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr
+  make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$_pkgver"
-
-  make
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
 
