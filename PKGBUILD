@@ -4,10 +4,10 @@ pkgname='perl-module-install'
 _perlmod=Module-Install
 _author='E/ET/ETHER'
 pkgver=1.18
-pkgrel=2
+pkgrel=3
 pkgdesc="Module::Install - Standalone, extensible Perl module installer"
 arch=('any')
-url='http://serch.cpan.org/dist/Module-Install'
+url='http://search.cpan.org/dist/Module-Install'
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=(
@@ -30,5 +30,5 @@ build(){
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
-  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+  make install INSTALLDIRS=perl DESTDIR="$pkgdir"
 }
