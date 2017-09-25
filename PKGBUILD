@@ -14,14 +14,19 @@ makedepends=('python-setuptools')
 source=("icalendar-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('7331e65cea5e4371042cf2e4c547146e99458ea86be39572951f045039ed97fd821296bdb6940a5a8ffdc6273b5b09562557fbd19fa9e5c1839be5396cf16f6a')
 
+build() {
+  cd icalendar-$pkgver
+  python setup.py build
+}
+
 check() {
   cd icalendar-$pkgver
-  python setup.py -q test
+  python -m unittest discover src
 }
 
 package() {
   cd icalendar-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
