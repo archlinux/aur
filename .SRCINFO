@@ -1,0 +1,16 @@
+pkgbase = nuvola-app-siriusxm
+	pkgdesc = siriusxm integration for Nuvola Player.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/tiliado/nuvola-app-siriusxm
+	arch = any
+	license = custom:BSD
+	makedepends = nuvolasdk
+	makedepends = scour
+	depends = nuvolaruntime
+	depends = imagemagick
+	source = https://github.com/tiliado/nuvola-app-siriusxm/archive/1.3.tar.gz
+	sha256sums = d7e09f8e526b38652b21d98280c66a18ae1e766ccf42b28b2811b2513f42dae8
+
+pkgname = nuvola-app-siriusxm
+
