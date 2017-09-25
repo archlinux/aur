@@ -1,0 +1,16 @@
+pkgbase = nuvola-app-kexp
+	pkgdesc = kexp integration for Nuvola Player.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/tiliado/nuvola-app-kexp
+	arch = any
+	license = custom:BSD
+	makedepends = nuvolasdk
+	makedepends = scour
+	depends = nuvolaruntime
+	depends = imagemagick
+	source = https://github.com/tiliado/nuvola-app-kexp/archive/1.2.tar.gz
+	sha256sums = b3c2377427cecb8dd599acf354f6caff01e6463329568f2d209b512613e34720
+
+pkgname = nuvola-app-kexp
+
