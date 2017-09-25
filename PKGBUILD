@@ -3,7 +3,7 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=sandy-git
-pkgver=r4.6dcd566
+pkgver=0.5r4.6dcd566
 pkgrel=1
 pkgdesc="An ncurses text editor with an easy-to-read, hackable C source."
 arch=('i686' 'x86_64')

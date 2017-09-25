@@ -1,6 +1,6 @@
 pkgbase = sandy-git
 	pkgdesc = An ncurses text editor with an easy-to-read, hackable C source.
-	pkgver = r4.6dcd566
+	pkgver = 0.5r4.6dcd566
 	pkgrel = 1
 	url = http://tools.suckless.org/sandy
 	arch = i686
