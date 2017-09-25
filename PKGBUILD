@@ -2,7 +2,7 @@
 
 pkgname=perl-alien-base-modulebuild
 pkgver=0.045
-pkgrel=1
+pkgrel=2
 _author="P/PL/PLICEASE"
 _perlmod="Alien-Base-ModuleBuild"
 pkgdesc="Alien::Base::ModuleBuild - A Module::Build subclass for building Alien:: modules and their libraries"
@@ -15,14 +15,7 @@ perl-shell-config-generate
 perl-shell-guess
 perl-module-build
 )
-checkdepends=()
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-install=
-noextract=()
+conflicts=(perl-alien-base)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
 sha256sums=('3588dee87ea8baac76d350bed758ea914a1660c372fba27dd015dc4be5098a11')
