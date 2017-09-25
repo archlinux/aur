@@ -8,7 +8,7 @@ url="https://github.com/google/shaderc"
 license=("Apache")
 
 arch=("x86_64")
-makedepends=("ninja" "cmake" "python")
+makedepends=("git" "ninja" "cmake" "python" "asciidoctor")
 depends=("gcc-libs")
 conflicts=("shaderc")
 provides=("shaderc" "glslc")
@@ -46,10 +46,15 @@ build() {
     -GNinja
 
   ninja
+
+  cd "$srcdir/shaderc/glslc"
+  asciidoctor -b manpage README.asciidoc -o glslc.1
 }
 
 package() {
   cd "$srcdir/build"
 
   ninja install
+
+  install -D -m644 -t "${pkgdir}/usr/share/man/man1/" "$srcdir/shaderc/glslc/glslc.1"
 }
