@@ -37,10 +37,13 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="rospack-release-release-lunar-rospack-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/lunar/rospack/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a72936e9aaa10a1a40d47e2c5b4d9d010d5041f58b2ee4760e280fc3afede92f')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/lunar/rospack/${pkgver}-${_pkgver_patch}.tar.gz" "boost165.patch")
+sha256sums=('a72936e9aaa10a1a40d47e2c5b4d9d010d5041f58b2ee4760e280fc3afede92f'
+            '4666a04ad052f4ae17c92cd14ff4722aa17f85be5ccf6e01231403abe289f5d3')
 
 build() {
+  cd ${srcdir}/${_dir}
+  patch -p1 < ../boost165.patch
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
