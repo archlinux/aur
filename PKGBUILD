@@ -2,7 +2,7 @@
 
 _target="msp430-elf"
 pkgname=${_target}-gcc
-pkgver=7.1.0
+pkgver=7.2.0
 _islver=0.18
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
@@ -15,11 +15,11 @@ conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
 source=(http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
+        ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz
         revert-pr71289.patch
         0001-Use-GET_MODE_BITSIZE-when-setting-TYPE_SIZE.patch)
 sha256sums=('6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
-            '8a8136c235f64c6fef69cac0d73a46a1a09bb250776a050aec8f9fc880bebc17'
+            '1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a'
             '836ecb799c88b1c4db7e6ef2df72437a8fe162d1a2d3fb395198fba702f7d9d6'
             '28f39dd3ef931d87de1eccf7700406c5b76fa7a6ecf47cfb3f199b33cd1fdf02')
 
