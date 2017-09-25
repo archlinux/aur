@@ -1,18 +1,18 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
-# Contributor: meatatt <meatatt at aliyun dot com>
+# Maintainer: meatatt <meatatt at aliyun dot com>
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=55.0.2
-pkgrel=3
+pkgver=55.1.0
+pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
 url="https://www.waterfoxproject.org/"
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
-         'nss' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'libvpx' 'kwaterfoxhelper' 'libevent' 'nspr' 'hicolor-icon-theme')
+         'nss' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr' 'hicolor-icon-theme')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf' 'inetutils' 'xorg-server-xvfb'
-             'autoconf2.13' 'cargo' 'clang' 'llvm' 'ccache')
+             'autoconf2.13' 'rust' 'clang' 'llvm' 'ccache' 'bc')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -22,14 +22,14 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=("waterfox=${pkgver}")
 conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
-_patchrev=fde25c29562d
+_patchrev=b2ba34e0dc10
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=49aea8cd7265240eab5d1361c5094f0586987dbd
+_commit=1bcdd45bce59bd83fde3af263a56647223837130
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
         no-crmf.diff
-        "fix-wifi-scanner.diff::https://github.com/hawkeye116477/Waterfox/raw/plasma/_Plasma_Build/fix-wifi-scanner.diff"
+        "wifi-fix-interface.patch::https://raw.githubusercontent.com/manjaro/packages-community/master/firefox-kde/wifi-fix-interface.patch"
         "mozilla-kde.patch::$_patchurl/mozilla-kde.patch"
         "firefox-kde.patch::$_patchurl/firefox-kde.patch"
         "fix_waterfox_browser-kde_xul.patch::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/fix_waterfox_browser-kde_xul.patch"
@@ -38,12 +38,16 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/distribution.ini"
         "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.1"
         jack-system-ports.patch
-        disable_e10s.patch)
+        disable_e10s.patch
+        "wifi-disentangle.patch::https://raw.githubusercontent.com/manjaro/packages-community/099344c3c9cb7ec70a6b769b7069bf9f815e5640/firefox-kde/wifi-disentangle.patch"
+        "harmony-fix.diff::https://raw.githubusercontent.com/manjaro/packages-community/099344c3c9cb7ec70a6b769b7069bf9f815e5640/firefox-kde/harmony-fix.diff"
+        "clip-ft-glyph.diff::https://raw.githubusercontent.com/manjaro/packages-community/099344c3c9cb7ec70a6b769b7069bf9f815e5640/firefox-kde/clip-ft-glyph.diff"
+        "mozilla-ucontext.patch::$_patchurl/mozilla-ucontext.patch")
 sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
-            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
+            'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
             '512d9a06acdb30b023a0601ecf2f7b5104e2838d4431957b97910f24d98b5bef'
             'a3af6d55c07fd4cd06c044bc1bf289caf16f40d8eb150bc505e035e37696bfa2'
             '774d13c0d319b83a3f90d15ceed093e80ff07a2794038c95ffa79539ca2819cc'
@@ -52,7 +56,11 @@ sha256sums=('SKIP'
             'e144a6fac4466acdba86194b43fb41c185c38e296d6262f26c3bff3d2b6db3be'
             '03a25b7bde971ecfa35326b3c6e45450da325babed29d9cc2e10dd639f816ef6'
             'be19426cd658ea0ff0dedbdd80da6bf84580c80d92f9b3753da107011dfdd85c'
-            'b7170633c30d69ee4de646dcf24b161ef8c79927a835c925697f8db5d1175da3')
+            'b7170633c30d69ee4de646dcf24b161ef8c79927a835c925697f8db5d1175da3'
+            'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
+            '16bb776e9f3039321db747b2eaece0cda1320f3711fb853a68d67247b0aa065d'
+            'd5e5580a96ecc4a66ce12dde0737c1ed5cb31017a6ec488ffe372192ed893e1b'
+            '96d9accb74e19f640e356572b3c0914c6be867cbdf351392b0cb5c00161ee012')
 
 prepare() {
   mkdir path
@@ -71,8 +79,19 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
   patch -Np1 -i ../no-crmf.diff
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
+  patch -Np1 -i $srcdir/mozilla-ucontext.patch
+  
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
-  patch -Np1 -i $srcdir/fix-wifi-scanner.diff
+  patch -Np1 -i $srcdir/wifi-disentangle.patch
+  patch -Np1 -i $srcdir/wifi-fix-interface.patch
+  
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1393467
+  patch -Np1 -i ../clip-ft-glyph.diff
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1400721
+  patch -Np1 -i ../harmony-fix.diff
 
   cat >.mozconfig <<END
 export CC=clang
@@ -87,8 +106,9 @@ ac_add_options --enable-alsa
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-jack
 
+X=$(bc <<< "1.5*$(getconf _NPROCESSORS_ONLN)")
 mk_add_options AUTOCLOBBER=1
-mk_add_options MOZ_MAKE_FLAGS=-j6
+mk_add_options MOZ_MAKE_FLAGS=-j${X%.*}
 
 ac_add_options --prefix=/usr
 ac_add_options --libdir=/opt
@@ -105,13 +125,9 @@ ac_add_options --x-libraries=/usr/lib
 # System libraries
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-jpeg
+ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
-ac_add_options --with-system-png
-ac_add_options --with-system-libevent
-ac_add_options --with-system-libvpx
-ac_add_options --with-system-icu
 ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
@@ -174,7 +190,7 @@ END
 build() {
   cd Waterfox
   export PATH="$srcdir/path:$PATH"
-    make -f client.mk build
+  ./mach build
 }
 
 package() {
@@ -182,7 +198,7 @@ package() {
 
   cp "$srcdir/kde.js" obj-$CARCH-pc-linux-gnu/dist/bin/defaults/pref
 
-  make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
+  DESTDIR="$pkgdir" ./mach install
 
   _vendor_js="$pkgdir/opt/waterfox/browser/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendor_js" <<END
@@ -202,9 +218,6 @@ pref("intl.locale.matchOS", true);
 
 // Fall back to en-US search plugins if none exist for the current locale
 pref("distribution.searchplugins.defaultLocale", "en-US");
-
-// Enable Screenshots extension
-pref("extensions.screenshots.system-disabled", false);
 
 END
 
