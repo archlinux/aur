@@ -1,4 +1,4 @@
-pkgbase = dict-freedict-deu-eng
+pkgbase = dict-freedict-jpn-eng
 	pkgdesc = Japanese -> English dictionary for dictd et al. from Freedict.org
 	pkgver = 0.1
 	pkgrel = 1
