@@ -2,7 +2,7 @@
 # Contributor: Nicole Fontenot <nfontenot27@gmail.com>
 
 pkgname=osu-lazer-git
-pkgver=2017.919.0_2_g278e51eeb
+pkgver=2017.919.0_48_g2d0555b55
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64' 'i686')
@@ -21,12 +21,14 @@ source=('git+https://github.com/ppy/osu.git'
         'osu-launcher'
         'osu-lazer.desktop'
         'osu-lazer.png'
-        'x-osu-lazer.xml')
+        'x-osu-lazer.xml'
+        'NuGet.config')
 sha256sums=('SKIP'
             'c499dbff1d9a8f382e7b3cf4a95b58b9f02fb98e66e50cddb5d7d6c8a5223d2d'
             '11d29c2654896607f37bc5c8e558ea245d8e3b1b412dcba03033bf1db6580ebe'
             '3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
-            'd22f0d922856639c7cc5f71bdd620cc8b3eb54af923b1a43703faac217b8b13b')
+            'd22f0d922856639c7cc5f71bdd620cc8b3eb54af923b1a43703faac217b8b13b'
+            '171dc778d3f4408856b5b5bb9bffc272c7c9bd14cf0b11fd4026ccd57a2c4038')
 
 case "$CARCH" in
 	x86_64)
@@ -49,12 +51,8 @@ build() {
 	git submodule init
 	git submodule update --recursive
 
-	# HACK: OpenTK dependency that nuget can't find
-	wget \
-		-O "$HOME/.local/share/NuGet/Cache/OpenTK.3.0.0-git00009.nupkg" \
-		'https://www.myget.org/F/opentk-develop/api/v2/package/OpenTK/3.0.0-git00009'
-
 	# Download dependencies
+	nuget restore -configfile NuGet.config
 	nuget restore
 
 	# Build
