@@ -1,9 +1,10 @@
 # Contributor: Army
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: aksr <aksr at t-com dot me>
+
 pkgname=sandy-git
-pkgver=0.4.r109.gb6e956c
-pkgrel=2
+pkgver=r4.6dcd566
+pkgrel=1
 pkgdesc="An ncurses text editor with an easy-to-read, hackable C source."
 arch=('i686' 'x86_64')
 url="http://tools.suckless.org/sandy"
@@ -12,19 +13,19 @@ depends=('ncurses')
 makedepends=('git')
 provides=('sandy' 'sandy-hg')
 conflicts=('sandy' 'sandy-hg')
-source=("$pkgname::git+http://git.suckless.org/sandy")
+source=("$pkgname::git+http://github.com/antics/sandy.git")
 md5sums=('SKIP')
 sha1sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  cd $pkgname
+  printf "%sr%s.%s" "$(awk '/VERSION =/ {print $3}' config.mk)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd $pkgname
 
-  if [ -e $startdir/config.h ];
+  if [ -e "$srcdir"/config.h ];
   then
     msg "use custom config.h"
     cp $startdir/config.h .
@@ -34,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd $pkgname
   make PREFIX=/usr DESTDIR=$pkgdir install
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
