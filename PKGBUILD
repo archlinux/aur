@@ -1,7 +1,7 @@
 # Maintainer: now-im <now.im.627@gmail.com>
 
 pkgname=adapta-kde
-pkgver=20170921
+pkgver=20170925
 pkgrel=1
 pkgdesc="Adapta KDE customization"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('konsole: For the Konsole color scheme'
 makedepends=('make')
 conflicts=('adapta-aurorae-theme-git' 'adapta-kde-git')
 source=("https://github.com/PapirusDevelopmentTeam/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('425cf4093a1fda74cb8bfa1edbec0e2860331f89c485d38a1a68cfa201e78d92')
+sha256sums=('6e0278ac794fce33d73d950db100111c16cbcf679b133ec9766f90440127bb69')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"  

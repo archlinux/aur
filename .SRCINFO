@@ -1,6 +1,6 @@
 pkgbase = adapta-kde
 	pkgdesc = Adapta KDE customization
-	pkgver = 20170921
+	pkgver = 20170925
 	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/adapta-kde
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = adapta-kde
 	optdepends = kvantum-qt5: Customizing theme more
 	conflicts = adapta-aurorae-theme-git
 	conflicts = adapta-kde-git
-	source = https://github.com/PapirusDevelopmentTeam/adapta-kde/archive/20170921.tar.gz
-	sha256sums = 425cf4093a1fda74cb8bfa1edbec0e2860331f89c485d38a1a68cfa201e78d92
+	source = https://github.com/PapirusDevelopmentTeam/adapta-kde/archive/20170925.tar.gz
+	sha256sums = 6e0278ac794fce33d73d950db100111c16cbcf679b133ec9766f90440127bb69
 
 pkgname = adapta-kde
 
