@@ -3,7 +3,7 @@
 
 pkgname=nuvolaruntime
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nuvola Apps Runtime - Tight integration of web apps with your desktop"
 arch=("any")
 url="https://github.com/tiliado/nuvolaruntime"
@@ -45,7 +45,7 @@ optdepends=(
 )
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    ./waf configure --prefix=/usr --nounity --noappindicator
+    ./waf configure --prefix=/usr --nounity --noappindicator --webkitgtk-supports-mse
     ./waf build
 }
 
