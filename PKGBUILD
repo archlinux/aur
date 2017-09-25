@@ -8,11 +8,11 @@
 pkgbase=gcc6
 _ver=6
 pkgname=('gcc6' 'gcc6-libs' 'gcc6-fortran' 'gcc6-objc' 'gcc6-ada' 'gcc6-go' 'gcc6-gcj')
-pkgver=6.4.0
-pkgrel=3
+pkgver=6.4.1
+pkgrel=1
 _islver=0.17
 _cloogver=0.18.4
-_commit=45dd06cef49fe00a7839d7dff312b09e88910a51
+_snapshot=6-20170920
 pkgdesc="The GNU Compiler Collection"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -20,17 +20,17 @@ url="http://gcc.gnu.org"
 makedepends=('binutils>=2.28' 'libmpc'  'doxygen' 'gcc-ada' 'java-environment-common' 'zip' 'jdk8-openjdk' 'gtk2' 'libart-lgpl' 'libxtst')
 checkdepends=('dejagnu' 'inetutils')
 options=(!emptydirs)
-source=(https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz
+source=("http://gcc.skazkaforyou.com/snapshots/LATEST-6/gcc-${_snapshot}.tar.xz"
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz)
-sha1sums=('07d9f8b6ab556745733c15da16778036cfd007c7'
+sha1sums=('5c2eb39b8779e746b651c883b1b8893a058c4089'
           '6243384d1b1d4b3043037698485a468a485b111a'
           '8f7568ca1873f8d55bb694c8b9b83f7f4c6c1aa5')
 
 _libdir="/usr/lib/gcc/$CHOST/$pkgver"
 
 prepare() {
-  cd "$srcdir"/gcc-${_commit}/
+  cd "$srcdir"/gcc-${_snapshot}/
 
   # Link isl/cloog for in-tree builds
   ln -sf ../isl-${_islver} isl
@@ -48,14 +48,14 @@ prepare() {
   # Arch uses python version 3 as default python (for gcc6-gcj).
   sed -i '1s+python+python2+' libjava/contrib/aot-compile.in
 
-  mkdir -p ${srcdir}/gcc-${_commit}/gcc-build
+  mkdir -p ${srcdir}/gcc-${_snapshot}/gcc-build
 
 }
 
 build() {
 
   # Configure and build gcc.
-  cd ${srcdir}/gcc-${_commit}/gcc-build
+  cd ${srcdir}/gcc-${_snapshot}/gcc-build
 
   # using -pipe causes spurious test-suite failures
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
@@ -102,7 +102,7 @@ build() {
 }
 
 #check() {
-#  cd ${srcdir}/gcc-${_commit}/gcc-build
+#  cd ${srcdir}/gcc-${_snapshot}/gcc-build
 #
 #  # increase stack size to prevent test failures
 #  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
@@ -120,7 +120,7 @@ package_gcc6-libs() {
   depends=('glibc>=2.25')
   options=('!emptydirs' '!strip')
 
-  cd ${srcdir}/gcc-${_commit}/gcc-build
+  cd ${srcdir}/gcc-${_snapshot}/gcc-build
 
   make -C $CHOST/libgcc DESTDIR=${pkgdir} install-shared
   rm ${pkgdir}/${_libdir}/libgcc_eh.a
@@ -162,7 +162,7 @@ package_gcc6-libs() {
    rm -rf ${pkgdir}/${_libdir}/libgo*
 
    # Install Runtime Library Exception
-   install -Dm644 ${srcdir}/gcc-${_commit}/COPYING.RUNTIME \
+   install -Dm644 ${srcdir}/gcc-${_snapshot}/COPYING.RUNTIME \
     ${pkgdir}/usr/share/licenses/$pkgname/RUNTIME.LIBRARY.EXCEPTION
 }
 
@@ -172,7 +172,7 @@ package_gcc6()
   depends=("gcc6-libs=${pkgver}-${pkgrel}" 'binutils>=2.28' 'libmpc')
   options=('staticlibs')
 
-  cd ${srcdir}/gcc-${_commit}/gcc-build
+  cd ${srcdir}/gcc-${_snapshot}/gcc-build
 
   make -C gcc DESTDIR=${pkgdir} install-driver install-cpp install-gcc-ar \
     c++.install-common install-headers install-plugin install-lto-wrapper
@@ -216,7 +216,7 @@ package_gcc6()
 
   #make -C libiberty DESTDIR=${pkgdir} install
   # install PIC version of libiberty
-  #install -m644 ${srcdir}/gcc-${_commit}/gcc-build/libiberty/pic/libiberty.a ${pkgdir}/${_libdir}/
+  #install -m644 ${srcdir}/gcc-${_snapshot}/gcc-build/libiberty/pic/libiberty.a ${pkgdir}/${_libdir}/
 
   make -C gcc DESTDIR=${pkgdir} install-man install-info
   rm ${pkgdir}/usr/share/man/man1/{gccgo-${_ver},gfortran-${_ver}}.1
@@ -279,7 +279,7 @@ package_gcc6-fortran()
   depends=("gcc6=$pkgver-$pkgrel")
   options=('!emptydirs')
 
-  cd ${srcdir}/gcc-${_commit}/gcc-build
+  cd ${srcdir}/gcc-${_snapshot}/gcc-build
   make -C $CHOST/libgfortran DESTDIR=$pkgdir install-cafexeclibLTLIBRARIES \
     install-{toolexeclibDATA,nodist_fincludeHEADERS}
   make -C $CHOST/libgomp DESTDIR=$pkgdir install-nodist_fincludeHEADERS
@@ -298,7 +298,7 @@ package_gcc6-objc()
   pkgdesc="Objective-C front-end for GCC"
   depends=("gcc6=$pkgver-$pkgrel")
 
-  cd ${srcdir}/gcc-${_commit}/gcc-build
+  cd ${srcdir}/gcc-${_snapshot}/gcc-build
   make DESTDIR=$pkgdir -C $CHOST/libobjc install-headers
   install -dm755 $pkgdir/${_libdir}
   install -m755 gcc/cc1obj     $pkgdir/${_libdir}/cc1obj-${_ver}
@@ -315,7 +315,7 @@ package_gcc6-ada()
   depends=("gcc6=$pkgver-$pkgrel")
   options=('staticlibs' '!emptydirs')
 
-  cd ${srcdir}/gcc-${_commit}/gcc-build/gcc
+  cd ${srcdir}/gcc-${_snapshot}/gcc-build/gcc
   make DESTDIR=$pkgdir ada.install-common
   install -m755 gnat1 $pkgdir/${_libdir}/gnat1-${_ver}
 
@@ -339,7 +339,7 @@ package_gcc6-go()
   conflicts=('go')
   options=('!emptydirs')
 
-  cd ${srcdir}/gcc-${_commit}/gcc-build/
+  cd ${srcdir}/gcc-${_snapshot}/gcc-build/
 
   make -C $CHOST/libgo DESTDIR=$pkgdir install-exec-am
   rm ${pkgdir}/${_libdir}/libgo.so*
@@ -360,7 +360,7 @@ package_gcc6-gcj() {
   options=('!emptydirs')
 
   # Install libjava.
-  cd ${srcdir}/gcc-${_commit}/gcc-build
+  cd ${srcdir}/gcc-${_snapshot}/gcc-build
   make -j1 DESTDIR=${pkgdir} install-target-libjava
 
   # Install java-common.
