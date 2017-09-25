@@ -3,7 +3,7 @@
 name=gaffer
 git_user_name=gregzaal
 pkgname=blender-plugin-${name}-git
-pkgver=v3.0.3.r1.gdef0717
+pkgver=3.0.3.r1.gdef0717
 pkgrel=1
 pkgdesc="Blender addon for light and hdri managament."
 arch=('any')
@@ -12,12 +12,20 @@ license=('GPL')
 depends=('blender')
 makedepends=('git')
 install="${pkgname}.install"
-source=("${name}::git+https://github.com/${git_user_name}/${name}.git")
-md5sums=('SKIP')
+source=("${name}::git+https://github.com/${git_user_name}/${name}.git"
+        "remove.updater.patch")
+md5sums=('SKIP'
+         'ea6aa0e22871607e9b8d9285c367ad86')
+
+prepare() {
+  cd ${name}
+  patch -Np1 -i ../remove.updater.patch 
+  rm addon_updater.py addon_updater_ops.py
+}
 
 pkgver() {
   cd "$name"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

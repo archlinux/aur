@@ -1,0 +1,107 @@
+diff --git a/__init__.py b/__init__.py
+index 0a39c25..d0ca78a 100644
+--- a/__init__.py
++++ b/__init__.py
+@@ -34,16 +34,13 @@ if "bpy" in locals():
+     imp.reload(functions)
+     imp.reload(operators)
+     imp.reload(ui)
+-    imp.reload(addon_updater)
+-    imp.reload(addon_updater_ops)
+ else:
+-    from . import constants, functions, operators, ui, addon_updater, addon_updater_ops
++    from . import constants, functions, operators, ui
+ 
+ import bpy
+ import os
+ import json
+ import bgl, blf
+-from . import addon_updater_ops
+ from collections import OrderedDict
+ from math import pi, cos, sin, log
+ from mathutils import Vector, Matrix
+@@ -54,40 +51,6 @@ from bpy.app.handlers import persistent
+ class GafferPreferences(bpy.types.AddonPreferences):
+     bl_idname = __package__
+ 
+-    # addon updater preferences
+-    auto_check_update = bpy.props.BoolProperty(
+-        name = "Auto-check for Update",
+-        description = "If enabled, auto-check for updates using an interval",
+-        default = True,
+-        )
+-    updater_intrval_months = bpy.props.IntProperty(
+-        name='Months',
+-        description = "Number of months between checking for updates",
+-        default=0,
+-        min=0
+-        )
+-    updater_intrval_days = bpy.props.IntProperty(
+-        name='Days',
+-        description = "Number of days between checking for updates",
+-        default=1,
+-        min=0,
+-        )
+-    updater_intrval_hours = bpy.props.IntProperty(
+-        name='Hours',
+-        description = "Number of hours between checking for updates",
+-        default=0,
+-        min=0,
+-        max=23
+-        )
+-    updater_intrval_minutes = bpy.props.IntProperty(
+-        name='Minutes',
+-        description = "Number of minutes between checking for updates",
+-        default=0,
+-        min=0,
+-        max=59
+-        )
+-    updater_expand_prefs = bpy.props.BoolProperty(default=False)
+-
+     hdri_path = bpy.props.StringProperty(
+         name="HDRI Folder",
+         subtype='DIR_PATH',
+@@ -166,7 +129,6 @@ class GafferPreferences(bpy.types.AddonPreferences):
+         row.alignment = 'RIGHT'
+         row.prop(self, 'include_8bit')
+ 
+-        addon_updater_ops.update_settings_ui(self,context)
+ 
+         box = layout.box()
+         col = box.column()
+@@ -531,7 +493,6 @@ class GafferProperties(bpy.types.PropertyGroup):
+ 
+ 
+ def register():
+-    addon_updater_ops.register(bl_info)
+ 
+     functions.previews_register()
+     functions.cleanup_logs()
+diff --git a/ui.py b/ui.py
+index c6a35bb..6394b67 100644
+--- a/ui.py
++++ b/ui.py
+@@ -17,7 +17,6 @@
+ # END GPL LICENSE BLOCK #####
+ 
+ import bpy
+-from . import addon_updater_ops
+ from collections import OrderedDict
+ import bgl, blf
+ from math import pi, cos, sin, log
+@@ -664,7 +663,6 @@ class GafferPanelLights(bpy.types.Panel):
+         return True if context.scene.render.engine in supported_renderers else False
+ 
+     def draw(self, context):
+-        addon_updater_ops.check_for_update_background(context)
+ 
+         scene = context.scene
+         gaf_props = scene.gaf_props
+@@ -704,7 +702,6 @@ class GafferPanelLights(bpy.types.Panel):
+         else:
+             layout.label ("Render Engine not supported!")
+ 
+-        addon_updater_ops.update_notice_box_ui(self, context)
+ 
+ 
+ class GafferPanelTools(bpy.types.Panel):
