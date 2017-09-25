@@ -24,7 +24,7 @@ package() {
 
   install -Dm644 oni.desktop "$pkgdir/usr/share/applications/oni.desktop"
 
-	tar -xf ${srcdir}/icons.tar.gz
+  tar -xf ${srcdir}/icons.tar.gz
   for i in 16x16 32x32 64x64 128x128 256x256 512x512 1024x1024; do
     install -Dm644 ${srcdir}/icons/$i.png "${pkgdir}/usr/share/icons/hicolor/$i/apps/oni.png"
   done
