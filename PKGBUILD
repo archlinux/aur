@@ -1,4 +1,4 @@
-# Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
+# Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-8tracks
 pkgdesc='8tracks.com integration for Nuvola Player 3.0'
