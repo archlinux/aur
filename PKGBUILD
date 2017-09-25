@@ -3,7 +3,7 @@
 pkgname=lib32-libgphoto2
 _basename=libgphoto2
 pkgver=2.5.14+6+g695b55887
-pkgrel=1
+pkgrel=2
 pkgdesc="The core library of gphoto2, designed to allow access to digital camera by external programs. (32-bit)"
 arch=(x86_64)
 url="http://www.gphoto.org/"
@@ -33,8 +33,6 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   ./configure --prefix=/usr --disable-rpath --build=i686-pc-linux-gnu --libdir=/usr/lib32
-
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
 
   make
 }
