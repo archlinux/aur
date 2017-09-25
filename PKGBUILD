@@ -1,4 +1,4 @@
-# Maintainer: <gmail.com: jese.jaara>
+# Maintainer: <dave.f.kleinschmidt@gmail.com>
 
 pkgname=pandoc-xnos
 pkgver=0.10
