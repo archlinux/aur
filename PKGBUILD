@@ -19,7 +19,7 @@ _pkgver=${pkgver}
 #pkgver=12.5.7
 #_buildver=5813279
 #_pkgver=${pkgver}_${_buildver}
-pkgrel=5
+pkgrel=6
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -73,7 +73,6 @@ source=(
   'config'
   'pam.d-vmware-authd'
   'configure-initscript.sh'
-  '90-vmware-load-modules.hook'
   'vmware-profile.sh'
 
   'config.xml'
@@ -102,7 +101,6 @@ sha256sums=(
   '55af509a4328fa88518e7008c65ff5598e6007e99ca2b4421a8f9b26126f6ff3'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
-  '49a8e01674d91c5910cf07527c4a1c825db685523dd756f00cf49bd19878f448'
   '6f57e027f0eb95b7cfaf5d7c10089e99be5b9ccab7c3785fcc6f98dbecaf47bc'
 
   'd0806b6cb99af04232585def7b8043df3104b9b17470ea70abbd5bedc1e7ca16'
@@ -308,7 +306,6 @@ package() {
   install -Dm 644 "$srcdir/pam.d-vmware-authd" "$pkgdir/etc/pam.d/vmware-authd"
 
   echo -e "vmw_vmci\nvmmon" > "$pkgdir/usr/lib/modules-load.d/vmware.conf"
-  install -Dm 644 "$srcdir/90-vmware-load-modules.hook" "$pkgdir/usr/share/libalpm/hooks/90-vmware-load-modules.hook"
 
   for service_file in \
     vmware-hostd-certificates.service \
