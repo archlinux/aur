@@ -20,7 +20,6 @@ depends=(python2-btchip
          python2-qrcode
          python2-requests
          zbar)
-makedepends=(python2-pycurl)
 source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz
         https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz.asc)
 validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
