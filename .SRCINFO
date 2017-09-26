@@ -1,10 +1,11 @@
 pkgbase = python-sslib
 	pkgdesc = A Python3 library for sharing secrets
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jqueiroz/python-sslib
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
 	source = https://github.com/jqueiroz/python-sslib/archive/v0.2.0.tar.gz

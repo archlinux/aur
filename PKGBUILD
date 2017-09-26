@@ -2,7 +2,7 @@
 
 pkgname=python-sslib
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python3 library for sharing secrets"
 arch=("any")
 url="https://github.com/jqueiroz/python-sslib"
