@@ -1,5 +1,5 @@
 pkgname=jackett
-pkgver=0.8.199
+pkgver=0.8.225
 pkgrel=1
 pkgdesc='Use many trackers with Sonarr'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/Jackett/Jackett'
 depends=('mono' 'curl')
 source=("Jackett.Binaries.Mono-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.Mono.tar.gz"
         "jackett.service")
-md5sums=('d0376356449b4714885aaad72f095086'
+md5sums=('5307cc87cf9fea6629b569525ab2e8f6'
          '1c3c0b8c8114d121060eacea251eaf28')
 install=$pkgname.install
 
