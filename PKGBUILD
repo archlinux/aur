@@ -3,8 +3,8 @@
 
 pkgname=openvpn-openssl-1.0
 _pkgname=openvpn
-pkgver=2.4.3
-pkgrel=2
+pkgver=2.4.4
+pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) (build against openssl-1.0)'
 arch=('i686' 'x86_64')
 url='http://openvpn.net/index.php/open-source.html'
@@ -13,15 +13,11 @@ conflicts=('openvpn')
 provides=('openvpn')
 optdepends=('easy-rsa: easy CA and certificate handling')
 makedepends=('systemd')
-validpgpkeys=('6D04F8F1B0173111F499795E29584D9F40864578'  # Samuli Seppänen <samuli@openvpn.net>
-              '7ACD56B74144925C6214329757DB9DAB613B8DA1'  # David Sommerseth (OpenVPN Technologies, Inc) <davids@openvpn.net>
-              'F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7') # OpenVPN - Security Mailing List <security@openvpn.net>
 license=('custom')
-source=("http://www.eurephia.net/openvpn/openvpn-${pkgver}.tar.xz"
-  "http://community.openvpn.net/openvpn/raw-attachment/wiki/release-packages-2.4.3-2.3.17/openvpn-${pkgver}.tar.xz.asc")
-sha256sums=('7aa86167a5b8923e54e8795b814ed77288c793671f59fd830d9ab76d4b480571'
-            '9f5f089f4a4b3e270ddb53cb0b689f4c0bad89d7e2ee08a1d4666e7ab869f210')
-
+validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7') # OpenVPN - Security Mailing List <security@openvpn.net>
+source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz"{,.asc})
+sha256sums=('96cd1b8fe1e8cb2920f07c3fd3985faea756e16fdeebd11d3e146d5bd2b04a80'
+            'SKIP')
 
 build() {
   cd "${srcdir}"/${_pkgname}-${pkgver}
