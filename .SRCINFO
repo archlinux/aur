@@ -9,6 +9,7 @@ pkgbase = cartaodecidadao
 	license = LGPL3
 	license = custom:EUPL
 	makedepends = swig
+	makedepends = subversion
 	depends = java-runtime-openjdk
 	depends = qt5-base
 	depends = qt5-tools

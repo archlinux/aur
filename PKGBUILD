@@ -18,7 +18,7 @@ depends=('java-runtime-openjdk'
          'poppler-qt5'
          'xerces-c'
          'xml-security-c')
-makedepends=('swig')
+makedepends=('swig' 'subversion')
 optdepends=('autenticacao-gov-pt: Necessário para autenticações online'
             'cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC'
             'ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)')
