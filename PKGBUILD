@@ -1,7 +1,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet-skins
-pkgver=20170924
+pkgver=20170925
 pkgrel=1
 pkgdesc="DDraceNetwork skin database"
 arch=(any)
@@ -12,7 +12,7 @@ provides=('teeworlds-ddnet-skins')
 conflicts=('teeworlds-ddnet-skins')
 replaces=('teeworlds-ddnet-skins')
 source=("$pkgname-$pkgver.zip::https://ddnet.tw/skins/zip/database.zip")
-sha256sums=('90c6a3a3dbd48907c429a4091f4babd7e86caa06e0ff6bb7f0ce6936fbdcfbbd')
+sha256sums=('995912d65d2660b7b6571127ee08632fcca1d173312de1518efca8ec60018405')
 
 prepare() {
   rm -rf $pkgname-$pkgver
