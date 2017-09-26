@@ -1,12 +1,13 @@
 pkgbase = microbrust-git
 	pkgdesc = Linux interface to Arturia Microbrute
 	pkgver = r31.61b177e
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jmatraszek/microbrust
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
+	makedepends = git
 	depends = alsa-lib
 	source = microbrust::git+https://github.com/jmatraszek/microbrust.git
 	sha1sums = SKIP
