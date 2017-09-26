@@ -3,7 +3,7 @@
 
 pkgname=falkon-git
 _pkgname=falkon
-pkgver=2.1.99.r4444.02f7c68e
+pkgver=2.1.99.r4446.f7a364b9
 _pkgver=2.1.99 
 pkgrel=1
 pkgdesc="Cross-platform Qt Web Browser"
@@ -36,6 +36,8 @@ build() {
   cd "$srcdir/build"
   cmake ../"$_pkgname" \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INTEGRATION=ON \
+    -DGNOME_INTEGRATION=ON \
     -DKDE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DDISABLE_UPDATES_CHECK=ON
