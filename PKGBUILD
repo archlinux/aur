@@ -1,4 +1,4 @@
-# Maintainer: Alin Porcic <alin.porcic@gmail.com
+# Maintainer: Alin Porcic <alin.porcic@gmail.com>
 pkgname=qlibc
 pkgver=2.4.2
 pkgrel=1
