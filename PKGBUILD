@@ -1,5 +1,6 @@
-# Maintainer Yurii Kolesnykov <yurikoles@gmail.com>
-# Credit: Jan de Groot <jgc@archlinux.org>
+# Contributor: Yurii Kolesnykov <yurikoles@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgbase=gstreamer0.10-base
 _pkgname=gst-plugins-base
