@@ -1,9 +1,9 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com>
 pkgname=qdirstat
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt-based directory statistics (KDirStat/K4DirStat without any KDE - from the original KDirStat author)"
-arch=(i686 x86_64)
+arch=(any)
 url="https://github.com/shundhammer/qdirstat"
 license=('GPL2')
 groups=()
