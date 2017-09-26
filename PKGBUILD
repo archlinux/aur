@@ -6,8 +6,8 @@
 # The source is over 8 GiB, with an extra 3 GiB of dependencies downloaded in build(), and may take several hours to compile.
 
 pkgname='unreal-engine'
-pkgver=4.17.1
-pkgrel=3
+pkgver=4.17.2
+pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
