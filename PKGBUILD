@@ -1,7 +1,7 @@
 # Maintainer: Moritz Schönherr <moritz.schoenherr@gmail.com>
 pkgname=ttf-sparks-scrapbook
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free sparks scrapbook miniatures" 
 arch=('any')
 license=('custom')
@@ -10,7 +10,7 @@ depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 install=ttf.install
 source=("http://www222.pair.com/sjohn/free/scrapbook.zip")
 
-md5sums=('2ade7bd63b79739ef51862c2824b2062')
+md5sums=('a8f0e71aba97829b857b42167020fd0b')
 
 package() {
   cd $srcdir
