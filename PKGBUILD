@@ -101,7 +101,7 @@ ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
 export MOZILLA_OFFICIAL=1
-export MOZ_TELEMETRY_REPORTING=0
+export MOZ_TELEMETRY_REPORTING=1
 export MOZ_ADDON_SIGNING=1
 export MOZ_REQUIRE_SIGNING=0
 
