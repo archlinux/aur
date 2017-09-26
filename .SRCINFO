@@ -1,6 +1,6 @@
 pkgbase = python2-rospkg
 	pkgdesc = ROS package library
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = http://wiki.ros.org/rospkg
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python2-rospkg
 	depends = python2
 	depends = python2-yaml
 	conflicts = python-rospkg
-	source = https://files.pythonhosted.org/packages/source/r/rospkg/rospkg-1.1.2.tar.gz
-	md5sums = e14bc946c8309d6e5b70a730dc056f8e
+	source = https://files.pythonhosted.org/packages/source/r/rospkg/rospkg-1.1.3.tar.gz
+	md5sums = 11468dd5007ca89ebdce70d2766fd836
 
 pkgname = python2-rospkg
 
