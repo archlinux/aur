@@ -1,7 +1,7 @@
 # Maintainer: Andrej Marolt <andrej.marolt@gmail.com>
 pkgname=openshift-origin-git
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="OpenShift Origin is a platform for developing, building, and deploying containerized applications. See https://docs.openshift.org/latest for more on running OpenShift Origin."
 arch=(x86_64)
 url="https://github.com/openshift/origin"
@@ -21,7 +21,7 @@ build() {
     export OS_GIT_MAJOR=
     export OS_GIT_MINOR=
 
-    cd ./origin-master
+    cd ./origin-release-3.6
     make clean build
     cd ./_output/local/bin/linux/amd64/
     mv ./openshift $srcdir/
