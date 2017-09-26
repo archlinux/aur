@@ -15,3 +15,4 @@ bleach==2.0.0
 html5lib
 service_identity==17.0.0
 certifi==2017.7.27.1
+requests

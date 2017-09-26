@@ -2,18 +2,19 @@
 
 pkgname=openbazaard-standalone
 pkgver=0.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
 depends=(python2)
-makedepends=(python2-virtualenv ucl upx)
+makedepends=(python2-virtualenv ucl upx tk)
 source=("https://github.com/OpenBazaar/OpenBazaar-Server/archive/v$pkgver.tar.gz"
 	"${pkgname}.service"
 	"${pkgname}.conf"
 	"${pkgname}.spec"
 	requirements.txt
+	b5e6d38160d41b9155d5b6bec8b5e2cee4ce77d1.patch
 )
 install=${pkgname}.install
 options=('!strip')
@@ -27,6 +28,7 @@ _srcfolder=OpenBazaar-Server-$pkgver
 
 package(){
   cd $srcdir/${_srcfolder}
+  patch -Np1 -i ../b5e6d38160d41b9155d5b6bec8b5e2cee4ce77d1.patch
   cp ../requirements.txt .
   cp ../${pkgname}.spec .
 
@@ -43,7 +45,7 @@ msg2 "Activating virtualenv2..."
   source env/bin/activate
   pip2 install -r requirements.txt
   pip2 install https://github.com/pyinstaller/pyinstaller/archive/master.zip
-  pyinstaller -F ${pkgname}.spec
+  pyinstaller -F ${pkgname}.spec --exclude-module tkinter
 
 msg2 "Symlinking to allow gui to automatically call daemon..."
   install -dm755 $pkgdir/opt
@@ -64,4 +66,5 @@ md5sums=('ebf7299e9d83069f9d6037df98047c56'
          '58f846fbc1742fea9d245b6f93f6db15'
          '7949d40abcd8bdaee27ff670d5b6c1c7'
          'e4d7b1c3fdceca262a517dd103f59260'
-         'b7469817ddf578c9b633df8d2a517f0b')
+         '46ec3bbe265a469e7e6159f8a9a4486e'
+         '76c3727be7a8f1eb2a7c5e1dda7e8649')
