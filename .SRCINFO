@@ -1,8 +1,8 @@
 pkgbase = python33
 	pkgdesc = Major release 3.3 of the Python high-level programming language
-	pkgver = 3.3.7rc1
+	pkgver = 3.3.7
 	pkgrel = 1
-	url = http://www.python.org/
+	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -24,9 +24,9 @@ pkgbase = python33
 	optdepends = xz
 	optdepends = net-tools: arp, ifconfig and netstat are used in the uuid module
 	options = !makeflags
-	source = https://www.python.org/ftp/python/3.3.7/Python-3.3.7rc1.tar.xz
+	source = https://www.python.org/ftp/python/3.3.7/Python-3.3.7.tar.xz
 	source = python-3.3-ssl-nosslv3.patch
-	sha256sums = 98cc1bb74774ce0b4cdb6adcbf183fa757bea3dfd2374d7a76d16698c684f52e
+	sha256sums = 85f60c327501c36bc18c33370c14d472801e6af2f901dafbba056f61685429fe
 	sha256sums = d54bc0ac72218b37c1c2f7a8f03f904a06c2270518a5f3b9e27e54578fe1fb04
 
 pkgname = python33

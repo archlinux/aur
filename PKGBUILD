@@ -4,14 +4,14 @@
 # Contributor: Christopher Arndt <chris@chrisarndt.de>
 
 pkgname=python33
-pkgver=3.3.7rc1
+pkgver=3.3.7
 pkgrel=1
 _pybasever=3.3
 _pymajver=3
 pkgdesc="Major release 3.3 of the Python high-level programming language"
 arch=('i686' 'x86_64')
 license=('custom')
-url="http://www.python.org/"
+url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl-1.0' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal')
 optdepends=('mpdecimal: for decimal'
@@ -23,7 +23,7 @@ checkdepends=('net-tools')
 options=('!makeflags')
 source=(https://www.python.org/ftp/python/${pkgver/rc*/}/Python-${pkgver}.tar.xz
         python-3.3-ssl-nosslv3.patch)
-sha256sums=('98cc1bb74774ce0b4cdb6adcbf183fa757bea3dfd2374d7a76d16698c684f52e'
+sha256sums=('85f60c327501c36bc18c33370c14d472801e6af2f901dafbba056f61685429fe'
             'd54bc0ac72218b37c1c2f7a8f03f904a06c2270518a5f3b9e27e54578fe1fb04')
 
 prepare() {
