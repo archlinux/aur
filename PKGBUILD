@@ -1,5 +1,5 @@
+# Maintainer:  TC <crt@archlinux.email>
 # Contributor: Laszlo Papp <djszapi2 at gmail com>
-# Maintainer: CRT <cirkit@archlinux.email>
 pkgname=vim-tetris
 pkgver=0.53
 _scriptid=24952
