@@ -1,4 +1,4 @@
-# Maintainer: Tony C <crt@archlinux.email>
+# Maintainer: TC <crt@archlinux.email>
 # Former Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ossec-hids
 pkgver=2.9.1
