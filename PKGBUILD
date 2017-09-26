@@ -1,5 +1,5 @@
-#Contributor: Leif Thande <leif.thande@gmail.com>
-##Maintainer: CRT <cirkit@archlinux.email>
+# Maintainer:  TC <crt@archlinux.email>
+# Contributor: Leif Thande <leif.thande@gmail.com>
 pkgname=memfetch
 pkgver=0.05b
 pkgrel=2
