@@ -7,7 +7,7 @@ _lang=it
 pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc='Standalone web browser from mozilla.org, Developer Edition - Italian'
 url='https://www.mozilla.org/firefox/developer/'
-pkgver=57.0b2
+pkgver=57.0b3
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -21,8 +21,8 @@ sha512sums=('f536b6790233d609182ae4940193727e1e0188b6e49f0c47a5d8ade1bb15a3e3111
 source_i686=("firefox-i686-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/devedition/releases/$pkgver/linux-i686/$_lang/firefox-$pkgver.tar.bz2")
 source_x86_64=("firefox-x86_64-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/devedition/releases/$pkgver/linux-x86_64/$_lang/firefox-$pkgver.tar.bz2")
 
-sha512sums_i686=('ef39ad6a111c1c67831b970df7e2e4f41a1ef6fd74574caaf68a1dc22b132479d5d0464fcef458bef88e1400078e7ff5946170225d29b8f5c5866de15ec169e8')
-sha512sums_x86_64=('2cbbe07a43e13a967650c963787782b1dbf59dc3fd937825890affa9cbf5c02f443a573e652b973c800ac66b785f72b801d19774e9401dfb7e9d3720a6ceabbc')
+sha512sums_i686=('6e0cd3650f2366a28f60b7c67d4ffca3b900c3edc1181f9ae3708b89c37df58c1e9dbcae39fb2b9c10a8885dd0a69a80000579e92312b0a7c0b444677b5133ba')
+sha512sums_x86_64=('6ab35fc6892d4a58d77ed5159e4f357caaff1caff7131441a766d554ed0ba4c14c3a170df14ba887f0f1e11bb5b14da718e855ceae75bb274500950f64d937d5')
 
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'nss' 'hunspell' 'sqlite' 'ttf-font' 'libpulse' 'icu' 'gtk-update-icon-cache')
