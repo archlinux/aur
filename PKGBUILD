@@ -17,7 +17,7 @@
 pkgbase="zfs-linux-zen-git"
 pkgname=("zfs-linux-zen-git" "zfs-linux-zen-git-headers")
 
-pkgver=0.7.0.r93.g7e9807337.4.13.3.1
+pkgver=0.7.0.r94.g0c484ab56.4.13.3.1
 pkgrel=1
 makedepends=("linux-zen-headers=4.13.3-1" "git" "spl-linux-zen-git-headers")
 arch=("x86_64")
@@ -25,7 +25,7 @@ url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-zen-git" "zfs-utils-common-git>=0.7.0.r93.g7e9807337" "linux-zen=4.13.3-1")
+depends=("kmod" "spl-linux-zen-git" "zfs-utils-common-git>=0.7.0.r94.g0c484ab56" "linux-zen=4.13.3-1")
 
 pkgver() {
     cd "${srcdir}/zfs"
@@ -37,7 +37,7 @@ build() {
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.7.1 --with-config=kernel \
+                --libexecdir=/usr/lib/zfs-0.7.2 --with-config=kernel \
                 --with-linux=/usr/lib/modules/4.13.3-1-zen/build \
                 --with-linux-obj=/usr/lib/modules/4.13.3-1-zen/build
     make
