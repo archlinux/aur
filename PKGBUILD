@@ -8,10 +8,10 @@ url='https://sourceforge.net/projects/nv-tv-out'
 license=('GPL')
 depends=('gtk2' 'pciutils' 'libxmu' 'libxxf86vm')
 makedepends=('quilt')
-source=("https://downloads.sourceforge.net/project/nv-tv-out/nvtv-src/$pkgver/nvtv-$pkgver.tar.gz"
-        "http://archive.ubuntu.com/ubuntu/pool/universe/n/nvtv/nvtv_$pkgver-8.debian.tar.gz")
-md5sums=('35348d7608f94b7d114cd6ef46b66fc7'
-         'f02bd41d3a17229214c3b1f5bd5da029')
+source=("http://http.debian.net/debian/pool/main/n/nvtv/nvtv_$pkgver.orig.tar.gz"
+	"http://http.debian.net/debian/pool/main/n/nvtv/nvtv_$pkgver-8.debian.tar.gz")
+sha256sums=('f044c6de2df66196fa589ed0d33203bd10d88604f447befce1a6f62eb7b08dac'
+            '14fdab90295f74e82e17143faf3c1aaf23c30484c2d7b4de4d796a40b9281c31')
 
 prepare() {
     cd "$pkgname-$pkgver"
