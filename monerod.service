@@ -1,24 +1,18 @@
 [Unit]
-Description=Monero Daemon
+Description=Monero Full Node
 After=network.target
 
 [Service]
 User=monero
 Group=monero
 WorkingDirectory=~
+RuntimeDirectory=monero
 
 Type=forking
-ExecStart=/usr/bin/monerod --config-file /etc/monerod.conf --pidfile /var/lib/monero/monerod.pid --detach
+PIDFile=/run/monero/monerod.pid
 
-# NOTE: if systemd complains with "monerod.service: Failed to read PID from file /var/lib/monero/monerod.pid: Invalid argument"
-# From https://www.freedesktop.org/software/systemd/man/systemd.service.html
-#  "In case more than one process remains, systemd will be unable to determine the main process, so it will not assume there is one.
-#   In that case, $MAINPID will not expand to anything.
-#   However, if the process decides to write a traditional PID file, systemd will be able to read the main PID from there.
-#   Please set PIDFile= accordingly.
-#   Note that the daemon should write that file before finishing with its initialization.
-#   Otherwise, systemd might try to read the file before it exists."
-PIDFile=/var/lib/monero/monerod.pid
+ExecStart=/usr/bin/monerod --config-file /etc/monerod.conf \
+    --detach --pidfile /run/monero/monerod.pid
 
 [Install]
 WantedBy=multi-user.target
