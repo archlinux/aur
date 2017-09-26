@@ -1,0 +1,227 @@
+From d8baff07042e64d4e36f131e633c5a9d3ff5dc3e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rapha=C3=ABl=20Doursenaud?= <rdoursenaud@gpcsolutions.fr>
+Date: Fri, 21 Jul 2017 19:06:50 +0200
+Subject: [PATCH 2/2] Python 3 compatibility
+
+---
+ letsencrypt_gandi/shs.py | 111 +++++++++++++++++++++--------------------------
+ 1 file changed, 49 insertions(+), 62 deletions(-)
+
+diff --git a/letsencrypt_gandi/shs.py b/letsencrypt_gandi/shs.py
+index 5a4e455..644c129 100644
+--- a/letsencrypt_gandi/shs.py
++++ b/letsencrypt_gandi/shs.py
+@@ -3,7 +3,10 @@
+ import logging
+ import os
+ import re
+-import xmlrpclib
++try:
++    import xmlrpclib
++except ImportError:
++    import xmlrpc.client as xmlrpclib
+ import tempfile
+ import subprocess
+ 
+@@ -44,6 +47,8 @@ def get_user_environment():
+     return new_env
+ 
+ 
++@zope.interface.implementer(interfaces.IAuthenticator, interfaces.IInstaller)
++@zope.interface.provider(interfaces.IPluginFactory)
+ class GandiSHSConfigurator(common.Plugin):
+     # pylint: disable=too-many-instance-attributes,too-many-public-methods
+ 
+@@ -53,9 +58,6 @@ class GandiSHSConfigurator(common.Plugin):
+     :type config: :class:`~letsencrypt.interfaces.IConfig`
+     """
+ 
+-    zope.interface.implements(interfaces.IAuthenticator, interfaces.IInstaller)
+-    zope.interface.classProvides(interfaces.IPluginFactory)
+-
+     description = "Gandi Simple Hosting - Alpha"
+ 
+     htaccess_content = None
+@@ -192,7 +194,7 @@ class GandiSHSConfigurator(common.Plugin):
+ 
+     def _base_path(self):
+         if re.match('^php', self.shs_info['type']):
+-            return 'vhosts/{vhost}/htdocs/'.format(vhost=self.vhost)
++            return 'vhosts/{vhost}/htdocs'.format(vhost=self.vhost)
+         elif re.match('^(python|nodejs)', self.shs_info['type']):
+             return 'vhosts/default'
+         # if ruby
+@@ -246,18 +248,16 @@ class GandiSHSConfigurator(common.Plugin):
+         sftp = subprocess.Popen(process, stdin=subprocess.PIPE, close_fds=True,
+                                 env=get_user_environment())
+ 
+-        print >> sftp.stdin, 'exit'
+-
+-        ret = sftp.wait()
++        sftp.communicate('exit\n'.encode())
+ 
+-        if ret != 0:
++        if sftp.returncode != 0:
+             raise errors.PluginError("Couldn't connect to the instance at {url}"
+                                      .format(url=sftp_url))
+ 
+     def _upload_tmpfile(self, tmpfile, user, sftp_url, path, destfile, mkdir):
+ 
+         process = ['sftp', '-b', '-',
+-                    '-o', 'UserKnownHostsFile={home}/.ssh/known_hosts'.format(home=get_user_environment()['HOME']),
++                   '-o', 'UserKnownHostsFile={home}/.ssh/known_hosts'.format(home=get_user_environment()['HOME']),
+                    '{user}@{sftp_url}'.format(user=user, sftp_url=sftp_url)]
+ 
+         logger.info("sftp %s", process)
+@@ -265,6 +265,7 @@ class GandiSHSConfigurator(common.Plugin):
+         sftp = subprocess.Popen(process, stdin=subprocess.PIPE, close_fds=True,
+                                 env=get_user_environment())
+ 
++        commands = ''
+         for p in mkdir:
+             # sftp will abort if any of the following commands fail:
+             # get, put, reget, reput, rename, ln, rm, mkdir, chdir, ls, lchdir,
+@@ -273,17 +274,16 @@ class GandiSHSConfigurator(common.Plugin):
+             # prefixing the command with a '-' character (for example,
+             # -rm /tmp/blah*).
+ 
+-            print >> sftp.stdin, '-mkdir {path}'.format(path=p)
++            commands += '-mkdir {path}\n'.format(path=p)
+ 
+-        print >> sftp.stdin, 'cd {path}'.format(path=path)
+-        print >> sftp.stdin, 'put {tmpfile} {destfile}'.format(
+-            tmpfile=tmpfile, destfile=destfile)
+-        print >> sftp.stdin, 'chmod 444 {destfile}'.format(destfile=destfile)
+-        print >> sftp.stdin, 'exit'
++        commands += 'cd {path}\n'.format(path=path)
++        commands += 'put {tmpfile} {destfile}\n'.format(tmpfile=tmpfile, destfile=destfile)
++        commands += 'chmod 444 {destfile}\n'.format(destfile=destfile)
++        commands += 'exit\n'
+ 
+-        ret = sftp.wait()
++        sftp.communicate(commands.encode())
+ 
+-        if ret != 0:
++        if sftp.returncode != 0:
+             raise errors.PluginError("Couldn't place file in domain: {0}"
+                                      .format(path))
+ 
+@@ -302,18 +302,13 @@ class GandiSHSConfigurator(common.Plugin):
+         sftp = subprocess.Popen(process, stdin=subprocess.PIPE, close_fds=True,
+                                 env=get_user_environment())
+ 
+-        print >> sftp.stdin, 'cd {path}/.well-known'.format(path=path)
+-        try:
+-            tmpfile = tempfile.mkstemp(suffix='.letsencrypt.gandi.shs')
+-            print >> sftp.stdin, 'get .htaccess {tmpfile}'.format(
+-                tmpfile=tmpfile[1])
+-            print >> sftp.stdin, 'exit'
+-            sftp.wait()
+-            with open(tmpfile[1], 'r') as htaccess:
+-                content = htaccess.read()
+-        finally:
+-            os.close(tmpfile[0])
+-            os.remove(tmpfile[1])
++        commands = ''
++        commands += 'cd {path}/.well-known\n'.format(path=path)
++        with tempfile.NamedTemporaryFile(suffix='.letsencrypt.gandi.shs') as htaccess:
++            commands += 'get .htaccess {tmpfile}\n'.format(tmpfile=htaccess.name)
++            commands += 'exit\n'
++            sftp.communicate(commands.encode())
++            content = htaccess.read()
+ 
+         if content:
+             new_content = content + HTACCESS_PATCH
+@@ -323,21 +318,16 @@ class GandiSHSConfigurator(common.Plugin):
+         sftp = subprocess.Popen(process, stdin=subprocess.PIPE, close_fds=True,
+                                 env=get_user_environment())
+ 
+-        print >> sftp.stdin, 'cd {path}/.well-known'.format(path=path)
+-        try:
+-            # Patch
+-            tmpfile = tempfile.mkstemp(suffix='.letsencrypt.gandi.shs')
+-            os.write(tmpfile[0], new_content)
++        commands = ''
++        commands += 'cd {path}/.well-known\n'.format(path=path)
++        with tempfile.NamedTemporaryFile(suffix='.letsencrypt.gandi.shs') as htaccess:
++            htaccess.write(new_content.encode())
+ 
+             # Upload with patch
+-            print >> sftp.stdin, 'put {tmpfile} .htaccess'.format(
+-                tmpfile=tmpfile[1])
+-            print >> sftp.stdin, 'chmod 644 .htaccess'
+-            print >> sftp.stdin, 'exit'
+-            sftp.wait()
+-        finally:
+-            os.close(tmpfile[0])
+-            os.remove(tmpfile[1])
++            commands += 'put {tmpfile} .htaccess\n'.format(tmpfile=htaccess.name)
++            commands += 'chmod 644 .htaccess\n'
++            commands += 'exit\n'
++            sftp.communicate(commands.encode())
+ 
+         return content
+ 
+@@ -354,23 +344,19 @@ class GandiSHSConfigurator(common.Plugin):
+         sftp = subprocess.Popen(process, stdin=subprocess.PIPE, close_fds=True,
+                                 env=get_user_environment())
+ 
++        commands = ''
+         if not self.htaccess_content:
+-            print >> sftp.stdin, 'cd {path}/.well-known'.format(path=path)
+-            print >> sftp.stdin, '-rm .htaccess'
+-            print >> sftp.stdin, 'exit'
+-            sftp.wait()
++            commands += 'cd {path}/.well-known\n'.format(path=path)
++            commands += '-rm .htaccess\n'
++            commands += 'exit\n'
++            sftp.communicate(commands.encode())
+         else:
+-            print >> sftp.stdin, 'cd {path}/.well-known'.format(path=path)
+-            try:
+-                tmpfile = tempfile.mkstemp(suffix='.letsencrypt.gandi.shs')
+-                os.write(tmpfile[0], self.htaccess_content)
+-                print >> sftp.stdin, 'put {tmpfile} .htaccess'.format(
+-                    tmpfile=tmpfile[1])
+-                print >> sftp.stdin, 'exit'
+-                sftp.wait()
+-            finally:
+-                os.close(tmpfile[0])
+-                os.remove(tmpfile[1])
++            commands += 'cd {path}/.well-known\n'.format(path=path)
++            with tempfile.mkstemp(suffix='.letsencrypt.gandi.shs') as tmpfile:
++                os.write(tmpfile[0], self.htaccess_content.encode())
++                commands += 'put {tmpfile} .htaccess\n'.format(tmpfile=tmpfile[1])
++                commands += 'exit\n'
++                sftp.communicate(commands.encode())
+ 
+     def cleanup(self, achalls):
+         """Revert all challenges."""
+@@ -397,7 +383,8 @@ class GandiSHSConfigurator(common.Plugin):
+         sftp = subprocess.Popen(process, stdin=subprocess.PIPE, close_fds=True,
+                                 env=get_user_environment())
+ 
+-        print >> sftp.stdin, 'rm {path}'.format(path=path)
++        commands = ''
++        commands += 'rm {path}\n'.format(path=path)
+         for p in dirs:
+             # sftp will abort if any of the following commands fail:
+             # get, put, reget, reput, rename, ln, rm, mkdir, chdir, ls, lchdir,
+@@ -406,11 +393,11 @@ class GandiSHSConfigurator(common.Plugin):
+             # prefixing the command with a '-' character (for example,
+             # -rm /tmp/blah*).
+ 
+-            print >> sftp.stdin, 'rmdir {path}'.format(path=p)
++            commands += '-rmdir {path}\n'.format(path=p)
+ 
+-        print >> sftp.stdin, 'exit'
++        commands += 'exit\n'
+ 
+-        sftp.wait()
++        sftp.communicate(commands.encode())
+ 
+     #
+     # Installer Section
+-- 
+2.14.1
+

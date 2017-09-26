@@ -1,0 +1,26 @@
+From cf3f6783060dafd955a24aa68ed31fffad85c3ad Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rapha=C3=ABl=20Doursenaud?= <rdoursenaud@gpcsolutions.fr>
+Date: Fri, 21 Jul 2017 19:04:07 +0200
+Subject: [PATCH 1/2] Update setuptools entry point to certbot
+
+See: https://certbot.eff.org/docs/contributing.html#writing-your-own-plugin
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index dc839d9..b3ac39d 100644
+--- a/setup.py
++++ b/setup.py
+@@ -47,7 +47,7 @@ setup(
+     include_package_data=True,
+     install_requires=install_requires,
+     entry_points={
+-        'letsencrypt.plugins': [
++        'certbot.plugins': [
+             'gandi-shs = letsencrypt_gandi.shs:GandiSHSConfigurator',
+         ],
+     },
+-- 
+2.14.1
+
