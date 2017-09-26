@@ -7,7 +7,7 @@
 pkgname=openssh-gssapi
 _pkgname=openssh
 pkgver=7.1p2
-pkgrel=1
+pkgrel=2
 pkgdesc='Free version of the SSH connectivity tools'
 url='http://www.openssh.org/portable.html'
 license=('custom:BSD')
