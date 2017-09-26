@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Language and environment for statistical computing and graphics, linked to the Intel(R) MKL."
 arch=('x86_64')
 license=('GPL')
@@ -60,16 +60,16 @@ sha512sums=('19bd50c87dc001ef947c15c1760f27ac8986ff6b43c6d90d3093ae184e42963027e
             'aae388c5b6c02d9fb857914032b0cd7d68a9f21e30c39ba11f5a29aaf1d742545482054b57ce18872eabb6605bbb359b2fc1e9be5ce6881443fdbdf6b67fab3b')
 
 # Build with the Intel Compiler Suite or GCC/GFortran
-_CC="icc" # comment this line to build the package with GCC
+# _CC="icc" # comment this line to build the package with GCC
 
 prepare() {
   cd R-${pkgver}
   # set texmf dir correctly in makefile
   sed -i 's|$(rsharedir)/texmf|${datarootdir}/texmf|' share/Makefile.in
-  # fix for texinfo 5.X
-  sed -i 's|test ${makeinfo_version_min} -lt 7|test ${makeinfo_version_min} -lt 0|' configure
-  # Fix the config script to look in Makeconf for LDFLAGS
-  sed -i '/LIBS=`eval $query VAR=LIBS`/a\LDFLAGS=`eval $query VAR=LDFLAGS`' src/scripts/config
+  # DEPRECATED: fix for texinfo 5.X
+  # sed -i 's|test ${makeinfo_version_min} -lt 7|test ${makeinfo_version_min} -lt 0|' configure
+  # DEPRECATED: Fix the config script to look in Makeconf for LDFLAGS
+  # sed -i '/LIBS=`eval $query VAR=LIBS`/a\LDFLAGS=`eval $query VAR=LDFLAGS`' src/scripts/config
 }
 
 build() {
@@ -87,7 +87,7 @@ build() {
 
   if [ $_CC = "icc" ]; then
     source ${MKLROOT}/../bin/compilervars.sh ${_intel_arch}
-    _intel_cc_opt=" -O3 -xHost -m64 -qopenmp -fp-model precise -fp-model source -diag-disable=188,308"
+    _intel_cc_opt=" -O3 -xHost -m64 -qopenmp -march=native -fp-model precise -fp-model source -diag-disable=188,308"
     # If `-ipo` is used, LDFLAGS need to match CFLAGS
     # because IPO is done at link time
     # export MAIN_LDFLAGS=${_intel_cc_opt}
@@ -115,7 +115,7 @@ build() {
     export FFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
     export FCFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
   else
-    _gcc_opt=" -O3 -m64 -fopenmp"
+    _gcc_opt=" -O3 -m64 -fopenmp -march=native"
     export MAIN_LDFLAGS=" -fopenmp"
 
     # Dynamic Linking
@@ -129,6 +129,10 @@ build() {
       -lm \
       -ldl"
 
+    export CC="gcc"
+    export CXX="g++"
+    export AR="ar"
+    export LD="ld"
     export F77="gfortran"
     export FC="gfortran"
     export CFLAGS="${_gcc_opt} -I${MKLROOT}/include"
