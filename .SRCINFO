@@ -1,6 +1,6 @@
 pkgbase = myrddin
 	pkgdesc = Compiler and tools for the Myrddin programming language.
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://myrlang.org/
 	install = myrddin.install
@@ -9,8 +9,8 @@ pkgbase = myrddin
 	license = MIT
 	depends = glibc
 	conflicts = myrddin-git
-	source = https://myrlang.org//releases/myrddin-0.1.1.tar.xz
-	sha512sums = e838e79942e21512acf293e4efac015c1b0481598f381a123288fbc721b11905fe27ea98a4a3e21d0fe4f4ed35f2a445f0107d41197ba1cde67ee6ca30e374a0
+	source = https://myrlang.org//releases/myrddin-0.2.0.tar.xz
+	sha512sums = ff06f0981c8cf6c1acb4ed66d4fe02dbfeb1334278784e1b219ac60a24adcb5c7761281be155af0c7c26bd27f25532d346ddf79ee86928b14d593e529f4f7ecb
 
 pkgname = myrddin
 
