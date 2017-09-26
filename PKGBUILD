@@ -2,12 +2,12 @@
 pkgname='qc-git'
 pkgdesc='C frontend for the QBE C compiler backend'
 pkgver=r263.f25f9d3
-pkgrel=2
+pkgrel=3
 url='https://github.com/andrewchambers/qc'
 arch=('x86_64')
 depends=('qbe-git')
 license=('custom:MIT')
-makedepends=('myrddin-git')
+makedepends=('myrddin>=0.2.0')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 

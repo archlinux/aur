@@ -1,11 +1,11 @@
 pkgbase = qc-git
 	pkgdesc = C frontend for the QBE C compiler backend
 	pkgver = r263.f25f9d3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/andrewchambers/qc
 	arch = x86_64
 	license = custom:MIT
-	makedepends = myrddin-git
+	makedepends = myrddin>=0.2.0
 	depends = qbe-git
 	source = qc-git::git+https://github.com/andrewchambers/qc
 	sha512sums = SKIP
