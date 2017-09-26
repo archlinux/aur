@@ -1,0 +1,15 @@
+diff --git a/dlls/gdi32/freetype.c b/dlls/gdi32/freetype.c
+index 13edef6601..e8ed9a9751 100644
+--- a/dlls/gdi32/freetype.c
++++ b/dlls/gdi32/freetype.c
+@@ -5150,6 +5150,10 @@ static FT_Encoding pick_charmap( FT_Face face, int charset )
+         if (select_charmap( face, *encs )) break;
+         encs++;
+     }
++
++    if (!*encs && face->num_charmaps)
++        face->charmap = face->charmaps[0];
++
+     return *encs;
+ }
+ 
