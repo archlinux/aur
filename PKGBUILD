@@ -11,7 +11,7 @@ pkgdesc='Minimalistic Text Based Status Bar'
 url='https://hackage.haskell.org/package/xmobar'
 arch=('i686' 'x86_64')
 license=('custom:BSD3')
-depends=('libxft' 'libxinerama' 'wireless_tools' 'libxrandr' 'libxpm' 'ghc' 'haskell-x11'
+depends=('libxft' 'libxinerama' 'wireless_tools' 'libxrandr' 'libxpm' 'ghc-libs' 'haskell-x11'
          'haskell-x11-xft' 'haskell-utf8-string' 'haskell-network-uri' 'haskell-hinotify'
          'haskell-stm' 'haskell-parsec' 'haskell-mtl' 'haskell-regex-base' 'haskell-regex-compat'
          'haskell-http' 'haskell-dbus' 'haskell-libmpd')
