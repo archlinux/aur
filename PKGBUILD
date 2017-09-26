@@ -26,7 +26,7 @@ package() {
 
   install -D ysoccer.jar "$pkgdir/usr/share/java/ysoccer/ysoccer.jar"
 
-  mkdir -p /usr/share/ysoccer
+  mkdir -p "$pkgdir/usr/share/ysoccer"
 
   cp -R images "$pkgdir/usr/share/ysoccer/"
 
