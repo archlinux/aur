@@ -1,0 +1,7 @@
+pkg/
+src/
+*x86_64.pkg.tar.xz
+*x86_64.pkg.tar
+*.src.tar.gz
+*.src.tar.xz
+grobi-git/
