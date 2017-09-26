@@ -1,14 +1,14 @@
 pkgbase = atlassian-plugin-sdk
 	pkgdesc = Atlassian plugin software developer kit
-	pkgver = 6.2.6
+	pkgver = 6.2.14
 	pkgrel = 1
 	url = https://marketplace.atlassian.com/plugins/atlassian-plugin-sdk-tgz
 	arch = i686
 	arch = x86_64
 	license = Apache License 2.0
 	depends = jdk
-	source = https://maven.atlassian.com/public/com/atlassian/amps/atlassian-plugin-sdk/6.2.6/atlassian-plugin-sdk-6.2.6.tar.gz
-	sha256sums = 948920bcac333a86509e6f13c8e2a32df3dbd674f5820f1ff2ca49b8a6686220
+	source = https://maven.atlassian.com/public/com/atlassian/amps/atlassian-plugin-sdk/6.2.14/atlassian-plugin-sdk-6.2.14.tar.gz
+	sha256sums = 4c9e33d67106abc609807995e8909a3d46e5140ebc34104649b24ebdece0a474
 
 pkgname = atlassian-plugin-sdk
 
