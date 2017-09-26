@@ -1,0 +1,38 @@
+From 40747056394893a77200e463562beaed1478f58b Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Tue, 26 Sep 2017 19:50:11 +0200
+Subject: [PATCH] Enable QML debugging
+
+---
+ plasmoidviewer/CMakeLists.txt | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/plasmoidviewer/CMakeLists.txt b/plasmoidviewer/CMakeLists.txt
+index 1c0ff46..ad7708d 100644
+--- a/plasmoidviewer/CMakeLists.txt
++++ b/plasmoidviewer/CMakeLists.txt
+@@ -1,3 +1,9 @@
++# allow enabling debug build specificly for plasmoidviewer
++option(PLASMOIDVIEWER_DEBUG "enables debug build for plasmoidviewer" OFF)
++if(PLASMOIDVIEWER_DEBUG)
++    set(CMAKE_BUILD_TYPE "Debug")
++endif()
++
+ set(plasmoidviewer_SRCS
+     main.cpp
+     view.cpp
+@@ -6,6 +12,11 @@ set(plasmoidviewer_SRCS
+ add_executable(plasmoidviewer ${plasmoidviewer_SRCS})
+ target_compile_definitions(plasmoidviewer PRIVATE -DPROJECT_VERSION="${PROJECT_VERSION}")
+ 
++# enable QML debugging for debug build
++if(CMAKE_BUILD_TYPE STREQUAL "Debug")
++    target_compile_definitions(plasmoidviewer PRIVATE -DQT_QML_DEBUG)
++endif()
++
+ target_link_libraries(plasmoidviewer
+     Qt5::Quick
+     Qt5::DBus
+-- 
+2.14.1
+
