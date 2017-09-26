@@ -29,7 +29,7 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         wifi-disentangle.patch wifi-fix-interface.patch
         clip-ft-glyph.diff harmony-fix.diff
         firefox-install-dir.patch no-crmf.diff glibc-2.26-fix.diff
-	disable-pocket.diff add-restart.diff)
+	disable-pocket.diff add-restart.diff fixformach.diff)
 sha256sums=('SKIP'
             'ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
@@ -40,8 +40,9 @@ sha256sums=('SKIP'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
             'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8'
-	    'a454ba3ac3a5c5f6594ae60a71fc3a83138a320e41ea159a3cf44aab4d1362bb'
-	    '44d9b10d4031445fcb3e5cdbb15e36851d3de3c37a921d230968667ee29a29e2')		
+            'a454ba3ac3a5c5f6594ae60a71fc3a83138a320e41ea159a3cf44aab4d1362bb'
+            '44d9b10d4031445fcb3e5cdbb15e36851d3de3c37a921d230968667ee29a29e2'
+            '9a354afad0042e2fa4bf29cb32f6c179669ad26f1764325443d1339a23f245f0')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -84,6 +85,9 @@ prepare() {
 
   # Add restart to file menu
   patch -Np1 -i ../add-restart.diff
+
+  # Fix build with latest Python
+  patch -Np1 -i ../fixformach.diff
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
