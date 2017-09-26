@@ -1,3 +1,4 @@
+# Maintainer: Bjorn Pagen <bjornpagenatgmailcom>
 # Maintainer: Justin R. St-Amant <jstamant24 at gmail dot com>
 pkgname=googlecl-git
 pkgver=0.9.15
