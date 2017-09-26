@@ -1,6 +1,6 @@
 pkgbase = harvard-linux-printer
 	pkgdesc = Connect to Harvard University's printer network from an Arch Linux machine.
-	pkgver = 15.30afe11
+	pkgver = 21.ff91980
 	pkgrel = 1
 	url = https://github.com/djsavvy/harvard-linux-printer
 	arch = any
