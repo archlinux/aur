@@ -1,6 +1,6 @@
 pkgbase = scmpuff
 	pkgdesc = Add numbered shortcuts to common git commands
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://mroth.github.io/scmpuff/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = scmpuff
 	depends = git
 	optdepends = bash: shell integration
 	optdepends = zsh: shell integration
-	source = https://github.com/mroth/scmpuff/releases/download/v0.2.0/scmpuff_0.2.0_linux_386.tar.gz
-	md5sums = c7cdca8b1bd43acce6a3f63c0cc3f95b
+	source = https://github.com/mroth/scmpuff/releases/download/v0.2.1/scmpuff_0.2.1_linux_386.tar.gz
+	md5sums = deb4c7afea0d2868f3a825332fe67909
 
 pkgname = scmpuff
 
