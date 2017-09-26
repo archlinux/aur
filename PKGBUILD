@@ -1,25 +1,22 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=isoimagewriter
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A program to write hybrid ISO files onto a USB disk from Linux, Mac or Windows ready to boot."
 arch=("x86_64" "i686")
 url="https://community.kde.org/ISOImageWriter"
 license=('GPL3')
-depends=('ki18n' 'kauth' 'qgpgme')
+depends=('ki18n' 'kauth' 'qgpgme' 'kiconthemes' 'kwidgetsaddons')
 makedepends=('cmake' 'extra-cmake-modules' 'python')
-source=("https://download.kde.org/unstable/isoimagewriter/0.1/isoimagewriter-0.1.tar.xz"{,.sig}
-        fix_build.patch)
-sha512sums=('3a11772b916438dd1683dec8e9bf60aa88e2db8cbd06dc5c8044531108baf6a01fbb37176b4722024a0c9a466394988dcd800ecad9b6f642093e988b85e39a2f'
-            'SKIP'
-            '6cdb771a4c54f59d6884fa1d43ad4c913c91e86437de9255ec6ed133179d84f8bf44509fa7682ac7b70166e48a1d010371a637ec8756a1e40d631396878d477a')
+source=("https://download.kde.org/unstable/isoimagewriter/${pkgver}/isoimagewriter-${pkgver}.tar.xz"{,.sig})
+sha512sums=('cec7d67e8255caaaccc14d07da3677a13b8081f599136516b0a31262e20eec884fa738dcc2d3aa1bfd49c00bb6c5bc6c3a62c767b13cdb06799cb53cf1e6ecc1'
+            'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E') # Jonathan Riddell
+options=(!buildflags)
 
 prepare() {
   mkdir -p build
-  cd $pkgname-$pkgver
-  patch -Np0 < $srcdir/fix_build.patch
 }
 
 build() {
