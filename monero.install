@@ -20,7 +20,4 @@ post_upgrade() {
     echo ">>> before starting daemon systemd service:"
     echo ">>>     sudo mv /var/lib/bitmonero /var/lib/monero/"
     echo ">>>     sudo chown -R monero:monero  /var/lib/monero/"
-
-    echo ">>> NOTICE: Soon, this package will be renamed to 'monero-git':"
-    echo ">>> this package will be deprecated and a new package will be created."
 }
