@@ -1,6 +1,6 @@
 # Maintainer: Mathieu Westphal <mathieu.westphal@kitware.com>
 pkgname=paraview-git
-pkgrel=1
+pkgrel=2
 pkgver=v5.4.1.r609.2b5d6611ec
 pkgdesc="Open-source, multi-platform data analysis and visualization application"
 arch=('i686' 'x86_64')
