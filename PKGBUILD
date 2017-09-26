@@ -2,22 +2,16 @@
 pkgname=stage-git
 pkgver=r2323.0a7eb63f
 pkgrel=1
-pkgdesc=""
+pkgdesc='Stage is a robot simulator providing a virtual world populated by mobile robots and sensors, along with various objects for the robots to sense and manipulate.'
 arch=('i686' 'x86_64')
-url=""
+url="http://rtv.github.io/Stage/"
 license=('GPLv2')
-groups=()
-depends=()
-makedepends=('git')
+depends=('fltk>=1.1' 'libpng' 'libjpeg' 'glu')
+makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
 source=('stage::git+https://github.com/rtv/Stage.git')
-md5sums=('SKIP')
-noextract=()
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
