@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   cd ${pkgname}
-  runhaskell Setup configure -O\
+  runhaskell Setup configure -O \
     --enable-shared \
     --prefix=/usr \
     --enable-executable-dynamic \
