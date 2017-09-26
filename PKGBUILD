@@ -18,7 +18,7 @@
 pkgbase="zfs-linux-hardened-git"
 pkgname=("zfs-linux-hardened-git" "zfs-linux-hardened-git-headers")
 
-pkgver=0.7.0.r86.g5df5d06a8.4.13.3.a.1
+pkgver=0.7.0.r93.g7e9807337.4.13.3.a.1
 pkgrel=1
 makedepends=("linux-hardened-headers=4.13.3.a-1" "git" "spl-linux-hardened-git-headers")
 arch=("x86_64")
@@ -26,7 +26,7 @@ url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-hardened-git" "zfs-utils-common-git>=0.7.0.r86.g5df5d06a8" "linux-hardened=4.13.3.a-1")
+depends=("kmod" "spl-linux-hardened-git" "zfs-utils-common-git>=0.7.0.r93.g7e9807337" "linux-hardened=4.13.3.a-1")
 
 pkgver() {
     cd "${srcdir}/zfs"
@@ -38,7 +38,7 @@ build() {
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.7.1 --with-config=kernel \
+                --libexecdir=/usr/lib/zfs-0.7.2 --with-config=kernel \
                 --with-linux=/usr/lib/modules/4.13.3-1-hardened/build \
                 --with-linux-obj=/usr/lib/modules/4.13.3-1-hardened/build
     make
