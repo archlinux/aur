@@ -1,12 +1,12 @@
 # Maintainer: Alad Wenter <alad@mailbox.org>
 pkgname=nvtv
 pkgver=0.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc='TV-out for NVidia cards'
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/nv-tv-out'
 license=('GPL')
-depends=('gtk2' 'pciutils' 'libxmu')
+depends=('gtk2' 'pciutils' 'libxmu' 'libxxf86vm')
 makedepends=('quilt')
 source=("https://downloads.sourceforge.net/project/nv-tv-out/nvtv-src/$pkgver/nvtv-$pkgver.tar.gz"
         "http://archive.ubuntu.com/ubuntu/pool/universe/n/nvtv/nvtv_$pkgver-8.debian.tar.gz")
