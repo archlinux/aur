@@ -1,3 +1,5 @@
+# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+
 pkgname=uftrace-git
 pkgver=0.8+13.g4a9b1ed
 pkgrel=1
