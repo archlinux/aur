@@ -9,6 +9,7 @@ pkgbase = oscam-git
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = pcsclite
