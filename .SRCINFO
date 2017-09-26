@@ -1,0 +1,14 @@
+pkgbase = tapocalc
+	pkgdesc = Thanos Apostolou' Calculator
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/ThanosApostolou/tapocalc/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	source = https://github.com/ThanosApostolou/tapocalc//archive/v0.2.tar.gz
+	sha256sums = 31625ed0b6cf6ac32152b9b82de869c930b1bfa388ae9453754ab10e76f890c5
+
+pkgname = tapocalc
+
