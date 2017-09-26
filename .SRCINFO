@@ -1,0 +1,11 @@
+pkgbase = gpuvis-git
+	pkgver = r859.5b8f4bc
+	pkgrel = 1
+	url = https://github.com/mikesart/gpuvis
+	arch = x86_64
+	license = MIT
+	source = https://github.com/mikesart/gpuvis
+	sha1sums = SKIP
+
+pkgname = gpuvis-git
+
