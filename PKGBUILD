@@ -1,8 +1,8 @@
 # Maintainer: Andre <andre-arch@delorus.de>
 pkgname=antfs-cli-git
 _gitname=antfs-cli
-pkgver=r52.afdc5ff
-pkgrel=4
+pkgver=r77.85a6cc6
+pkgrel=1
 pkgdesc="A python library to download and upload files from ANT-FS compliant devices (Garmin products)."
 arch=('i686' 'x86_64')
 source=(git+https://github.com/Tigge/antfs-cli.git)
