@@ -290,6 +290,7 @@ fi
 _core_configure_options="\
                  -prefix ${_installprefix} \
                  -optimized-qmake \
+                 -optimized-tools \
                  -optimize-size \
                  -confirm-license \
                  -opensource \
@@ -305,7 +306,6 @@ _core_configure_options="\
                  \
                  -reduce-exports"
 
-#-optimized-tools \
 if ! $_testing; then
   _core_configure_options="\
                     $_core_configure_options \
@@ -448,7 +448,6 @@ fi
 # -platform linux-clang \
 if $_target_host; then
   local _configure_line="${_srcdir}/configure \
-                 -make tools \
                  ${_core_configure_options} \
                  ${_additional_configure_flags}"
 # ${_arch_specific_configure_options} \
