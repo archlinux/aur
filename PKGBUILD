@@ -1,7 +1,7 @@
+# Maintainer:  TC <crt@archlinux.email>
 # Contributor: Sébastien Duquette <ekse.0x@gmail.com>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
-# Maintainer: crt <cirkit@archlinux.email>
 
 pkgname=lft
 pkgver=3.79
