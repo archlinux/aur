@@ -1,4 +1,5 @@
-#Maintainer: Jan Dolinar <dolik.rce@gmail.com>
+#Maintainer: Mike Javorski <mike.javorski@gmail.com>
+#Contributor: Jan Dolinar <dolik.rce@gmail.com>
 #Contributor: A. Klitzing <aklitzing@gmail.com>
 
 pkgname=pbuilder-ubuntu
