@@ -2,3 +2,4 @@
 *.xz
 /pkg
 /src
+*.log*
