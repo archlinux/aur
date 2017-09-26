@@ -9,10 +9,26 @@ if [[ -z $_piver ]] && [[ -n $LOCAL_PI_VER ]]; then
   _piver=$LOCAL_PI_VER
 fi
 
+_pi_qmake="/opt/qt-sdk-raspberry-pi${_piver}/bin/qmake"
+_pi_qmake_static="/opt/qt-sdk-raspberry-pi${_piver}-static/bin/qmake"
+_qmake_static="/opt/qt-sdk-static/bin/qmake"
+_static=false
+
+if [[ -x "${_pi_qmake_static}" ]]; then
+  _qmake=${_pi_qmake_static}
+  _static=true
+elif [[ -x "${_pi_qmake}" ]]; then
+  _qmake=${_pi_qmake}
+elif [[ -x "${_qmake_static}" ]]; then
+  _qmake=${_qmake_static}
+  _static=true
+fi
+
 if [[ -n "$_piver" ]]; then
-  _qmake="/opt/qt-sdk-raspberry-pi${_piver}/bin/qmake"
-  depends=('qt-sdk-raspberry-pi-target-libs')
-  makedepends=("qt-sdk-raspberry-pi${_piver}")
+  if ! $_static; then
+    depends=('qt-sdk-raspberry-pi-target-libs')
+  fi
+  #makedepends=("qt-sdk-raspberry-pi${_piver}")
 fi
 
 # Uncomment for a debug build
