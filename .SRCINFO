@@ -1,0 +1,12 @@
+pkgbase = qlibc
+	pkgdesc = A simple and powerful C library.
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://github.com/wolkykim/qlibc
+	arch = any
+	license = custom
+	source = https://github.com/wolkykim/qlibc/archive/v2.4.2.tar.gz
+	md5sums = 86d434674491d9f9906a238f7bea8837
+
+pkgname = qlibc
+
