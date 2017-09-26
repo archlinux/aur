@@ -1,0 +1,14 @@
+pkgbase = cxxopts
+	pkgdesc = Lightweight C++ command line option parser
+	pkgver = 1.4.3.r0.g0b76869
+	pkgrel = 1
+	url = https://github.com/jarro2783/cxxopts
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	source = cxxopts::git+https://github.com/jarro2783/cxxopts.git
+	md5sums = SKIP
+
+pkgname = cxxopts
+
