@@ -1,15 +1,14 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
-
 pkgname=pijul
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Patch-based distributed version control system"
 url='https://pijul.org'
 makedepends=('cargo')
+depends=('gcc-libs')
 arch=('i686' 'x86_64')
 license=('GPL')
-source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('e92e51eb21f089d8f8365b62474826abbfc96b63752b26c9d3d608f069d71245')
+source=("${url}/releases/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('c1fa9c56f8371544fc95283c27b8e92d37ce4454a28f49c40d68366ecc82738c')
 
 build() {
   cd "$pkgname-$pkgver"
