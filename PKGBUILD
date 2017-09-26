@@ -3,7 +3,7 @@
 pkgname=brave
 pkgver=0.18.36
 _pkgver=$pkgver
-pkgrel=2
+pkgrel=3
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
 url='https://www.brave.com/'
@@ -22,6 +22,10 @@ build() {
 
 	npm install
 	CHANNEL=dev npm run build-package
+
+	if [[ ! (-r /proc/sys/kernel/unprivileged_userns_clone && $(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n $(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ) ]]; then
+		echo "User namespaces are not detected as enabled on your system, brave will run with the sandbox disabled"
+	fi
 }
 
 package() {
@@ -35,7 +39,13 @@ package() {
 	install -Dm0755 /dev/stdin "$_launcher"<<END
 #!/usr/bin/sh
 
-exec /usr/lib/$pkgname/brave --no-sandbox -- "\$@"
+FLAG="--no-sandbox"
+
+if [[ -r /proc/sys/kernel/unprivileged_userns_clone && \$(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n \$(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ]]; then
+	FLAG=""
+fi
+
+exec /usr/lib/$pkgname/brave "\$FLAG" -- "\$@"
 END
 
 	_deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
