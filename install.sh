@@ -12,6 +12,7 @@ pre_remove()
     rm /usr/bin/kubectl
     rm /usr/bin/openshift
     rm /usr/bin/oc
+    rm /usr/bin/kubefed
 
 }
 
