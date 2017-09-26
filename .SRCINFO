@@ -1,0 +1,17 @@
+pkgbase = qemu-guest-agent-windows
+	pkgdesc = qemu-ga
+	pkgver = 2.10.0
+	pkgrel = 1
+	arch = any
+	license = GPL2
+	license = LGPL2.1
+	makedepends = python2
+	makedepends = mingw-w64-glib2
+	makedepends = msitools
+	source = https://download.qemu.org/qemu-2.10.0.tar.xz
+	source = mingw-ga.patch
+	md5sums = a89e3293cf69c32cf4be4188dfa25544
+	md5sums = 2e16b8e07ed9c82df1a568d311133def
+
+pkgname = qemu-guest-agent-windows
+

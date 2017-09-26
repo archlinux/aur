@@ -1,0 +1,24 @@
+diff -ruN a/configure b/configure
+--- a/configure	2017-08-30 12:50:40.000000000 -0400
++++ b/configure	2017-09-26 18:27:30.217837292 -0400
+@@ -5138,7 +5138,7 @@
+       QEMU_GA_VERSION=$(cat $source_path/VERSION)
+   fi
+ 
+-  QEMU_GA_MSI_MINGW_DLL_PATH="-D Mingw_dlls=$($pkg_config --variable=prefix glib-2.0)/bin"
++  QEMU_GA_MSI_MINGW_DLL_PATH="-D Mingw_dlls=$($pkg_config --variable=prefix glib-2.0)/bin -D Mingw_bin=$($pkg_config --variable=prefix glib-2.0)/bin"
+ 
+   case "$cpu" in
+   x86_64)
+diff -ruN a/qga/installer/qemu-ga.wxs b/qga/installer/qemu-ga.wxs
+--- a/qga/installer/qemu-ga.wxs	2017-08-30 12:50:41.000000000 -0400
++++ b/qga/installer/qemu-ga.wxs	2017-09-26 18:35:30.851242393 -0400
+@@ -108,7 +108,7 @@
+           </Component>
+           <?endif?>
+           <Component Id="iconv" Guid="{35EE3558-D34B-4F0A-B8BD-430FF0775246}">
+-            <File Id="iconv.dll" Name="iconv.dll" Source="$(var.Mingw_bin)/iconv.dll" KeyPath="yes" DiskId="1"/>
++            <File Id="libiconv-2.dll" Name="libiconv-2.dll" Source="$(var.Mingw_bin)/libiconv-2.dll" KeyPath="yes" DiskId="1"/>
+           </Component>
+           <Component Id="libgcc_arch_lib" Guid="{ADD4D07D-4515-4AB6-AF3E-C904961B4BB0}">
+             <File Id="libgcc_arch_lib" Name="$(var.ArchLib)" Source="$(var.Mingw_bin)/$(var.ArchLib)" KeyPath="yes" DiskId="1"/>
