@@ -1,7 +1,7 @@
 # Maintainer: Savvy Raghuvanshi <sraghuvanshi at college dot harvard dot edu>
 
 pkgname=harvard-linux-printer
-pkgver=15.30afe11
+pkgver=21.ff91980
 pkgrel=1
 pkgdesc="Connect to Harvard University's printer network from an Arch Linux machine." 
 arch=('any')
