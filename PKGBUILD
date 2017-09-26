@@ -42,6 +42,9 @@ package() {
 	cd "$srcdir/${pkgname%-git}/build"
 	ninja install
 
-  #Install license
+  # Install license
   install -Dm644 "${srcdir}/${pkgname%-git}/License_v1.2.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Rename hdf5 settings to avoid potential conflicts
+   mv "${pkgdir}/usr/share/cmake/hdf5" "${pkgdir}/usr/share/cmake/paraview-git_hdf5"
 }
