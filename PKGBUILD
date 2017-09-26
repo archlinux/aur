@@ -1,7 +1,7 @@
 # Maintainer: Moritz Schoenherr <moritz.schoenherr[at]gmail[dot]com>
 pkgname=ysoccer
 pkgver=16
-pkgrel=1
+pkgrel=2
 pkgdesc="Soccer game in the style of Sensible Soccer"
 url="http://ysoccer.sourceforge.net/dloads.htm"
 arch=('x86_64')

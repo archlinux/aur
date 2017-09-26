@@ -1,7 +1,7 @@
 pkgbase = ysoccer
 	pkgdesc = Soccer game in the style of Sensible Soccer
 	pkgver = 16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ysoccer.sourceforge.net/dloads.htm
 	arch = x86_64
 	license = GPL2
