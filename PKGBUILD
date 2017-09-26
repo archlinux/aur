@@ -3,7 +3,7 @@
 #Contributor: A. Klitzing <aklitzing@gmail.com>
 
 pkgname=pbuilder-ubuntu
-pkgver=0.223
+pkgver=0.228.8
 pkgrel=1
 pkgdesc="personal package builder for Debian packages"
 arch=(any)
@@ -11,13 +11,13 @@ url="https://launchpad.net/ubuntu/+source/pbuilder"
 license=('GPL')
 depends=('debootstrap' 'dpkg' 'coreutils' 'wget' 'debianutils' 'perl-timedate')
 optdepends=('ubuntu-keyring: checking release signatures of ubuntu distributions'
-	'debian-archive-keyring: checking release signatures of debian distributions'
-	'debian-keyring: checking release signatures of debian distributions (alternative package)')
+    'debian-archive-keyring: checking release signatures of debian distributions'
+    'debian-keyring: checking release signatures of debian distributions (alternative package)')
 provides=('pbuilder')
 conflicts=('pbuilder')
 source=(http://archive.ubuntu.com/ubuntu/pool/main/p/pbuilder/pbuilder_${pkgver}_all.deb)
 backup=('etc/pbuilderrc')
-md5sums=('083adaae9bc2ac90a87ddc19e5b5f4ae')
+md5sums=('3fc8d1bd0d67cbc27829ad2e63b4011c')
 
 package() {
   ar x pbuilder_${pkgver}_all.deb
