@@ -1,5 +1,5 @@
 pkgname=mingw-w64-glew
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="GLEW, The OpenGL Extension Wrangler Library (mingw-w64)"
 arch=('any')
@@ -8,8 +8,8 @@ license=('Modified BSD/MIT/GPL')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("http://downloads.sourceforge.net/glew/glew-${pkgver}.tgz")
-md5sums=('2a2cd7c98f13854d2fcddae0d2b20411')
+source=("https://github.com/nigels-com/glew/releases/download/glew-${pkgver}/glew-${pkgver}.tgz")
+sha256sums=('04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 #Config file to use included in ${srcdir}/glew-${pkgver}/config
