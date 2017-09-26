@@ -50,6 +50,11 @@ if [[ -z ${startdir} ]]; then
   _building=false
 fi
 
+prepare() {
+  cd ${srcdir}/${_filename}
+  patch -p1 < ${startdir}/0001-Remove-Qt-Creator-making-several-hostile-platform-as.patch
+}
+
 build() {
   set -o nounset
   local src_dir=${srcdir}/${_filename}
