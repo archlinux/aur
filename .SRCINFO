@@ -1,6 +1,6 @@
 pkgbase = zbectl-git
 	pkgdesc = Utility for managing ZFS Boot Environments in Arch Linux
-	pkgver = v1.0.r5.gd2d0fc6
+	pkgver = v1.0.r7.g290eb87
 	pkgrel = 1
 	url = https://github.com/Finic8/zbectl
 	arch = any
