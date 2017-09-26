@@ -1,0 +1,62 @@
+diff -r 10a244c0f835 browser/base/content/browser-menubar.inc
+--- a/browser/base/content/browser-menubar.inc  Wed Aug 23 04:23:13 2017 -0400
++++ b/browser/base/content/browser-menubar.inc  Wed Aug 30 08:50:53 2017 +0000
+@@ -99,7 +99,11 @@
+                           type="checkbox"
+                           observes="workOfflineMenuitemState"
+                           oncommand="BrowserOffline.toggleOfflineStatus();"/>
++                <menuitem id="menu_restart"
++                         label="&menu_restart.label;"
++                         accesskey="&menu_restart.accesskey;"
++                         command="cmd_restart"/>
+                 <menuitem id="menu_FileQuitItem"
+ #ifdef XP_WIN
+                           label="&quitApplicationCmdWin2.label;"
+                           accesskey="&quitApplicationCmdWin2.accesskey;"
+diff -r 10a244c0f835 browser/locales/en-US/chrome/browser/browser.dtd
+--- a/browser/locales/en-US/chrome/browser/browser.dtd  Wed Aug 23 04:23:13 2017 -0400
++++ b/browser/locales/en-US/chrome/browser/browser.dtd  Wed Aug 30 08:50:53 2017 +0000
+@@ -680,6 +680,9 @@
+ <!ENTITY sidebarCloseButton.tooltip     "Close sidebar">
+ <!ENTITY sidebarMenuClose.label         "Close Sidebar">
+ 
++<!ENTITY menu_restart.label            "Restart">
++<!ENTITY menu_restart.accesskey                "R">
++
+ <!ENTITY quitApplicationCmdWin2.label       "Exit">
+ <!ENTITY quitApplicationCmdWin2.accesskey   "x">
+ <!ENTITY quitApplicationCmdWin2.tooltip     "Exit &brandShorterName;">
+diff -r 10a244c0f835 browser/base/content/browser-sets.inc
+--- a/browser/base/content/browser-sets.inc     Wed Aug 23 04:23:13 2017 -0400
++++ b/browser/base/content/browser-sets.inc     Wed Aug 30 11:23:19 2017 +0000
+@@ -40,6 +40,7 @@
+     <command id="cmd_closeWindow" oncommand="BrowserTryToCloseWindow()"/>
+     <command id="cmd_toggleMute" oncommand="gBrowser.selectedTab.toggleMuteAudio()"/>
+     <command id="cmd_CustomizeToolbars" oncommand="BrowserCustomizeToolbar()"/>
++    <command id="cmd_restart" oncommand="restartApplication()"/>
+     <command id="cmd_quitApplication" oncommand="goQuitApplication()"/>
+ 
+
+diff -r 10a244c0f835 browser/base/content/browser.js
+--- a/browser/base/content/browser.js   Wed Aug 23 04:23:13 2017 -0400
++++ b/browser/base/content/browser.js   Wed Aug 30 21:22:04 2017 +0000
+@@ -8267,6 +8267,18 @@
+   enumerable: true
+ });
+ 
++// Restart the browser
++function restartApplication() {
++  let cancelQuit = Cc["@mozilla.org/supports-PRBool;1"].
++                  createInstance(Ci.nsISupportsPRBool);
++  Services.obs.notifyObservers(cancelQuit, "quit-application-requested", "restart")
++
++  if (cancelQuit.data)
++    return;
++
++  Services.startup.quit(Ci.nsIAppStartup.eRestart | Ci.nsIAppStartup.eAttemptQuit);
++}
++
+ // Prompt user to restart the browser in safe mode
+ function safeModeRestart() {
+   if (Services.appinfo.inSafeMode) {
+ 
