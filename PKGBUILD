@@ -3,15 +3,15 @@
 
 pkgname=falkon-git
 _pkgname=falkon
-pkgver=2.1.2.r4422.d42b1ecf
-_pkgver=2.1.2
+pkgver=2.1.99.r4444.02f7c68e
+_pkgver=2.1.99 
 pkgrel=1
-pkgdesc="Cross-platform Qt Web Browser "
+pkgdesc="Cross-platform Qt Web Browser"
 arch=('i686' 'x86_64')
 url="http://www.qupzilla.com"
 license=('GPL')
 depends=('qt5-webengine' 'qt5-x11extras' 'qt5-svg' 'hicolor-icon-theme' 'openssl>=1.1.0')
-makedepends=('git' 'qt5-tools' 'kwallet' 'libgnome-keyring')
+makedepends=('git' 'qt5-tools' 'kwallet' 'libgnome-keyring' 'extra-cmake-modules')
 conflicts=('qupzilla' 'qupzilla-qt5' 'qupzilla-qt5-git' 'falkon')
 optdepends=(
   'bash-completion: bash completion support'
@@ -28,21 +28,24 @@ pkgver() {
   printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare(){
+  rm -rf "$srcdir/build"
+  mkdir "$srcdir/build"
+}
 build() {
-  cd "$_pkgname"
-
-  export FALKON_PREFIX="/usr/"
-  export KDE_INTEGRATION=true
-  export GNOME_INTEGRATION=true
-
-  qmake
+  cd "$srcdir/build"
+  cmake ../"$_pkgname" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INSTALL_LIBDIR=lib \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DDISABLE_UPDATES_CHECK=ON
   make
 }
 
 package() {
-  cd "$_pkgname"
-  make INSTALL_ROOT="$pkgdir/" install
+  cd "$srcdir/build"
+  make DESTDIR="$pkgdir/" install
 
   # zsh completion
-  install -Dm644 linux/completion/_falkon "$pkgdir/usr/share/zsh/site-functions/_falkon"
+  install -Dm644 $srcdir/$_pkgname/linux/completion/_falkon "$pkgdir/usr/share/zsh/site-functions/_falkon"
 }
