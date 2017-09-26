@@ -1,7 +1,7 @@
 # Maintainer: Moritz Schönherr <moritz.schoenherr@gmail.com>
 pkgname=ttf-sparks-ffa
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free sparks miniature font by J. Ross"
 arch=('any')
 license=('custom')
@@ -10,7 +10,7 @@ depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 install=ttf.install
 source=("http://www222.pair.com/sjohn/free/sprkffa.zip")
 
-md5sums=('4423fc211c636eadecbb3c4c0ef7f499')
+md5sums=('3682a4dab12861218fbdce29cc16173f')
 
 package() {
   cd $srcdir
