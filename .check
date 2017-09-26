@@ -1,7 +1,5 @@
 #!/bin/bash
 # get version info for the lastest build of micro editor from github release nightly
-#cd /home/tommy/micro-nightly-bin/
-#NOW=$(date +"%H-%M-%d-%m-%y")
 NOW=$(date -R)
 cat .version.info > .old-version.info
 curl -i https://api.github.com/repos/zyedidia/micro/releases/tags/nightly | grep -P -o "\B\"micro.*linux64.tar.gz" > .name.info
