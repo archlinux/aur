@@ -8,6 +8,7 @@ arch=("any")
 url="https://github.com/jqueiroz/python-sslib"
 license=("MIT")
 depends=("python")
+makedepends=("python-setuptools")
 options=("!emptydirs")
 source=("https://github.com/jqueiroz/python-sslib/archive/v$pkgver.tar.gz")
 sha512sums=("596dc9a7c3b5ca4c301aeae98c56a7df653f08b22e89e93482a1b96796637ef7b9270d5400b495a0fd743c50954cd0939f18f0d80cfb2f2fc56479424b203947")
