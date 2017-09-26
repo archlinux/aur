@@ -44,7 +44,7 @@ backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
 install=install
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     patch -p1 -i ../gssapi-p0.patch
     patch -p1 -i ../gssapi-p1.patch
     patch -p1 -i ../gssapi-p2.patch
@@ -55,58 +55,58 @@ build() {
     ln -s /usr/include/openssl-1.0 "$ssldir"/include
     ln -s /usr/lib/openssl-1.0 "$ssldir"/lib
 
-	./configure \
-		--prefix=/usr \
-		--sbindir=/usr/bin \
-		--libexecdir=/usr/lib/ssh \
-		--sysconfdir=/etc/ssh \
-		--with-ldns \
-		--with-libedit \
-		--with-ssl-engine \
-		--with-pam \
-		--with-privsep-user=nobody \
-		--with-kerberos5=/usr \
-		--with-xauth=/usr/bin/xauth \
-		--with-mantype=man \
-		--with-md5-passwords \
-		--with-pid-dir=/run \
+    ./configure \
+        --prefix=/usr \
+        --sbindir=/usr/bin \
+        --libexecdir=/usr/lib/ssh \
+        --sysconfdir=/etc/ssh \
+        --with-ldns \
+        --with-libedit \
+        --with-ssl-engine \
+        --with-pam \
+        --with-privsep-user=nobody \
+        --with-kerberos5=/usr \
+        --with-xauth=/usr/bin/xauth \
+        --with-mantype=man \
+        --with-md5-passwords \
+        --with-pid-dir=/run \
         --with-gssapi \
         --with-ssl-dir="$ssldir"
 
-	make
+    make
 }
 
 check() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
 
-	make tests || true
-	# hard to suitably test connectivity:
-	# - fails with /bin/false as login shell
-	# - fails with firewall activated, etc.
+    make tests || true
+    # hard to suitably test connectivity:
+    # - fails with /bin/false as login shell
+    # - fails with firewall activated, etc.
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
 
-	make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install
 
-	ln -sf ssh.1.gz "${pkgdir}"/usr/share/man/man1/slogin.1.gz
-	install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENCE"
+    ln -sf ssh.1.gz "${pkgdir}"/usr/share/man/man1/slogin.1.gz
+    install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENCE"
 
-	install -Dm644 ../sshdgenkeys.service "${pkgdir}"/usr/lib/systemd/system/sshdgenkeys.service
-	install -Dm644 ../sshd@.service "${pkgdir}"/usr/lib/systemd/system/sshd@.service
-	install -Dm644 ../sshd.service "${pkgdir}"/usr/lib/systemd/system/sshd.service
-	install -Dm644 ../sshd.socket "${pkgdir}"/usr/lib/systemd/system/sshd.socket
-	install -Dm644 ../sshd.conf "${pkgdir}"/usr/lib/tmpfiles.d/sshd.conf
-	install -Dm644 ../sshd.pam "${pkgdir}"/etc/pam.d/sshd
+    install -Dm644 ../sshdgenkeys.service "${pkgdir}"/usr/lib/systemd/system/sshdgenkeys.service
+    install -Dm644 ../sshd@.service "${pkgdir}"/usr/lib/systemd/system/sshd@.service
+    install -Dm644 ../sshd.service "${pkgdir}"/usr/lib/systemd/system/sshd.service
+    install -Dm644 ../sshd.socket "${pkgdir}"/usr/lib/systemd/system/sshd.socket
+    install -Dm644 ../sshd.conf "${pkgdir}"/usr/lib/tmpfiles.d/sshd.conf
+    install -Dm644 ../sshd.pam "${pkgdir}"/etc/pam.d/sshd
 
-	install -Dm755 contrib/findssl.sh "${pkgdir}"/usr/bin/findssl.sh
-	install -Dm755 contrib/ssh-copy-id "${pkgdir}"/usr/bin/ssh-copy-id
-	install -Dm644 contrib/ssh-copy-id.1 "${pkgdir}"/usr/share/man/man1/ssh-copy-id.1
+    install -Dm755 contrib/findssl.sh "${pkgdir}"/usr/bin/findssl.sh
+    install -Dm755 contrib/ssh-copy-id "${pkgdir}"/usr/bin/ssh-copy-id
+    install -Dm644 contrib/ssh-copy-id.1 "${pkgdir}"/usr/share/man/man1/ssh-copy-id.1
 
-	sed \
-		-e '/^#ChallengeResponseAuthentication yes$/c ChallengeResponseAuthentication no' \
-		-e '/^#PrintMotd yes$/c PrintMotd no # pam does that' \
-		-e '/^#UsePAM no$/c UsePAM yes' \
-		-i "${pkgdir}"/etc/ssh/sshd_config
+    sed \
+        -e '/^#ChallengeResponseAuthentication yes$/c ChallengeResponseAuthentication no' \
+        -e '/^#PrintMotd yes$/c PrintMotd no # pam does that' \
+        -e '/^#UsePAM no$/c UsePAM yes' \
+        -i "${pkgdir}"/etc/ssh/sshd_config
 }
