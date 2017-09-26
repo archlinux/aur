@@ -1,20 +1,20 @@
-# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-strictures'
-pkgver='2.000002'
+pkgver='2.000003'
 pkgrel='1'
 pkgdesc="turn on strict and make most warnings fatal"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-bareword-filehandles' 'perl-indirect' 'perl-multidimensional' 'perl>=5.006')
+depends=('perl-bareword-filehandles>=0' 'perl-indirect>=0' 'perl-multidimensional>=0' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/strictures'
-source=('http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/strictures-2.000002.tar.gz')
-md5sums=('fb1fada8260992bc85e126c21ffcc6d5')
-sha512sums=('30e7d02b4a240ef201e80f49066205f8563efade402bded4d0a818b0bde7c3bc5c4378e65b4e537ebd22d97ccab44e245764862eba5919770340d3811de346ef')
-_distdir="strictures-2.000002"
+source=('http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/strictures-2.000003.tar.gz')
+md5sums=('78244cfab6168dcf196370d1e2309536')
+sha512sums=('c187a32f70c2be97cbe783e700d54d1e7b7ce7a8ea0b5ce72851b1efbe9b64121fb4b626463c4c62fb384893e4e3102afeaa21cd3e500fefc61c5b4b3924d21b')
+_distdir="strictures-2.000003"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
