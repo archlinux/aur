@@ -2,7 +2,7 @@
 
 _pkgname=click-log
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver="0.2.0"
+pkgver="0.2.1"
 pkgrel="1"
 pkgdesc="Logging integration for Click"
 arch=("any")
@@ -14,7 +14,7 @@ checkdepends=("python-pytest" "python-click"
               "python2-pytest" "python2-click")
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/click-contrib/${_pkgname}/archive/${pkgver}.tar.gz")
 #source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('a452eabb37bec8ea3fdc7017cf314eb3ecf896f233d1cfcde235c3b5ad8186e1')
+sha256sums=('411746a885c9f13fc5cc83909e99a217c2544a0f32ddb3927e1579844427adc9')
 
 prepare() {
   rm -rf -- "${srcdir}/${_pkgname}-${pkgver}-py2"
