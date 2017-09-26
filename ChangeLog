@@ -1,10 +1,18 @@
+2017-09-26 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 10.5.24-2 :
+	Weird, md5sum has changed and version is back to 10.5.24 upstream.
+	pkgver reversed to 10.5.24, and pkgrel updated to 2. This
+	requires a manual intervention from user side as version has been
+	downgraded.
+
 2017-04-24 Fabien Dubosson <fabien.dubosson@gmail.com>
 
 	* 10.5.25-1 :
 	New upstream release
 
 2015-09-16 Fabien Dubosson <fabien.dubosson@gmail.com>
-	
+
 	* 10.5.24-1 :
 	New upstream release
 
