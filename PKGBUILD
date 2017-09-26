@@ -1,11 +1,12 @@
-# Maintainer: Étienne Baritaud Figueroa
+# Maintainer: Alexandre Moine: nobrakal <zach {at} cthugha {dot} org>
+# Contributor: Étienne Baritaud Figueroa
 # Contributor: zach <zach {at} zach-adams {dot} com>
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de
 
 pkgname=gtk-theme-arc-grey-git
 _pkgname=arc-grey-theme
 _pkgauthor=eti1337
-pkgver=605.4cb45e6
+pkgver=r727.ac2e88f
 pkgrel=1
 pkgdesc="A flat, grey theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. Latest commit from the master branch on Github."
 arch=('any')
@@ -20,7 +21,8 @@ provides=('gtk-theme-arc-grey')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	# echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
