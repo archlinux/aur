@@ -2,7 +2,7 @@
 # Co-Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 
 pkgname=teleport
-pkgver=2.2.7
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('x86_64' 'arm')
@@ -12,11 +12,11 @@ depends=('glibc')
 install=teleport.install
 source_x86_64=("https://github.com/gravitational/teleport/releases/download/v${pkgver}/teleport-v${pkgver}-linux-amd64-bin.tar.gz"
         "teleport.service")
-sha256sums_x86_64=('17845cf4c3912a754e261f03889b5ef34515294b55fafdc92f8378aecd0224ae'
+sha256sums_x86_64=('114bcdca73a5c772fe0a183555b1662a3fda02625202a185fba1e8911fbff3cd'
             '3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc')
 source_arm=("https://github.com/gravitational/teleport/releases/download/v${pkgver}/teleport-v${pkgver}-linux-arm-bin.tar.gz"
         "teleport.service")
-sha256sums_arm=('b41bbac5147eac2b938063ea64b19e85e5419bf71d788122070553d3e0b2d62e'
+sha256sums_arm=('e72c17cfef54edfbea740badc06e923d7744c9efb62cbc4513fb823bcf2aaf09'
             '3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc')
 options=(!strip)
 
