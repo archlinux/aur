@@ -2,7 +2,7 @@
 pkgname='libdazzle-git'
 pkgdesc='Companion library to GObject and GTK+'
 license=('GPL3')
-pkgver=r193.a86b759
+pkgver=3.26.0.r5.g3c0cd8b
 pkgrel=1
 provides=('libdazzle')
 conflicts=('libdazzle')
@@ -25,11 +25,18 @@ pkgver () {
 
 build () {
 	cd "${pkgname}"
-	meson --buildtype release --prefix /usr build
+	rm -rf build
+	meson --buildtype release  \
+		--prefix /usr \
+		--sysconfdir /etc \
+		--localstatedir /var \
+		-Denable_gtk_doc=true \
+		-Dwith_introspection=true \
+		-Dwith_vapi=true \
+		build
 	ninja -C build
 }
 
 package () {
-	cd "${pkgname}"
-	DESTDIR="${pkgdir}" ninja -C build install
+	DESTDIR="${pkgdir}" ninja -C "${pkgname}/build" install
 }
