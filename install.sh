@@ -3,16 +3,16 @@ pre_remove()
 {
     echo "Running openshift pre_remove script..."
 
-    rm /usr/bin/kube-apiserver
-    rm /usr/bin/kube-controller-manager
-    rm /usr/bin/kubelet
-    rm /usr/bin/kube-proxy
-    rm /usr/bin/kube-scheduler
-    rm /usr/bin/oadm
-    rm /usr/bin/kubectl
-    rm /usr/bin/openshift
-    rm /usr/bin/oc
-    rm /usr/bin/kubefed
+    rm -f -- /usr/bin/kube-apiserver
+    rm -f -- /usr/bin/kube-controller-manager
+    rm -f -- /usr/bin/kubelet
+    rm -f -- /usr/bin/kube-proxy
+    rm -f -- /usr/bin/kube-scheduler
+    rm -f -- /usr/bin/oadm
+    rm -f -- /usr/bin/kubectl
+    rm -f -- /usr/bin/openshift
+    rm -f -- /usr/bin/oc
+    rm -f -- /usr/bin/kubefed
 
 }
 
