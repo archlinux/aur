@@ -1,7 +1,8 @@
-# $Id: PKGBUILD 244503 2015-08-23 08:42:41Z bisson $
+# $Id$
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
+# Contributor: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=openssh-gssapi
 _pkgname=openssh
