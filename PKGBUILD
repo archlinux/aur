@@ -5,7 +5,7 @@
 
 pkgname=brave-git
 pkgver=0.21.0.^3.0.17897.
-pkgrel=1
+pkgrel=2
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -36,8 +36,12 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
 
-  npm install 
+  npm install
   CHANNEL=dev npm run build-package
+
+  if [[ ! (-r /proc/sys/kernel/unprivileged_userns_clone && $(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n $(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ) ]]; then
+    echo "User namespaces are not detected as enabled on your system, brave will run with the sandbox disabled"
+  fi
 }
 
 package() {
@@ -50,7 +54,13 @@ package() {
   install -Dm0755 /dev/stdin "$_launcher"<<END
 #!/usr/bin/sh
 
-exec /usr/lib/brave-git/brave --no-sandbox -- "\$@"
+FLAG="--no-sandbox"
+
+if [[ -r /proc/sys/kernel/unprivileged_userns_clone && \$(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n \$(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ]]; then
+	FLAG=""
+fi
+
+exec /usr/lib/$pkgname/brave "\$FLAG" -- "\$@"
 END
 
   _deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
@@ -178,7 +188,7 @@ END
   install -Dm0755 LICENSE.txt "$pkgdir"/usr/share/licenses/"$pkgname"/MPL2
 
   cp -a --reflink=auto "$pkgdir"/usr/lib/"$pkgname"/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/"$pkgname"/
-  ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree 
+  ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
 }
 
 # vim:set ts=2 sw=2 et:
