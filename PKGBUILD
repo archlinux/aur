@@ -1,6 +1,6 @@
 # Maintainer: Michael Alexander <beefsack@gmail.com>
 pkgname=hhvm-hack-git
-pkgver=3.21.0
+pkgver=3.22.0
 pkgrel=1
 pkgdesc="HHVM's Hack tools (hh_client, hh_server, hh_format et al.)"
 arch=('x86_64')
@@ -30,5 +30,5 @@ build() {
 package() {
 	cd "$srcdir/hhvm/hphp/hack/bin"
 	mkdir -p "$pkgdir/usr/bin"
-	cp hh_client hh_format hh_server hh_single_type_check "$pkgdir/usr/bin/"
+	cp hackfmt hh_client hh_format hh_parse hh_server hh_single_type_check "$pkgdir/usr/bin/"
 }
