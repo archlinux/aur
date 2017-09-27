@@ -1,6 +1,6 @@
 pkgbase = fitspng
 	pkgdesc = FITS to PNG convertor
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = http://integral.physics.muni.cz/fitspng/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = fitspng
 	license = GPL3
 	depends = libpng
 	depends = cfitsio
-	source = ftp://integral.physics.muni.cz/pub/fitspng/fitspng-1.2.tar.gz
-	md5sums = 1c87ce12dda7a17d30b20d7c9f7af192
+	source = ftp://integral.physics.muni.cz/pub/fitspng/fitspng-1.3.tar.gz
+	md5sums = 3642824991afd9af1d37b2e8fabc9bd7
 
 pkgname = fitspng
 
