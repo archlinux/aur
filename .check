@@ -1,14 +1,17 @@
 #!/bin/bash
 # get version info for the lastest build of micro editor from github release nightly
 NOW=$(date -R)
+MICROVERSION=$(<.version.info)
+MICROOLDVERSION=$(<.old-version.info)
 cat .version.info > .old-version.info
 curl -i https://api.github.com/repos/zyedidia/micro/releases/tags/nightly | grep -P -o "\B\"micro.*linux64.tar.gz" > .name.info
 grep -P -o "\d.*-" .name.info | head --bytes -2 > .version.info
 # check version numbers
-if [ $(<.version.info) == $(<.old-version.info) ]
+#if [ $(<.version.info) == $(<.old-version.info) ]
+if [ MICROVERSION == MICROOLDVERSION ]
 then
-    echo "$NOW" ' -> Micro Editor version numbers are the same, so no changes needed.' >> micro-editor-check.log
+    echo "$NOW" ' -> Checked Github versions -> no changes from last check.' >> micro-editor-check.log
 else
-    echo -e "$NOW" ' -> \e[32mMicro Editor version differ - so PKGBUILD and .SRCINFO needs updating to latest version info.\e[0m' >> micro-editor-check.log
+    echo -e "$NOW" ' -> \e[32mChecked Github versions -> differ - oldversion = ' "$MICROOLDVERSION" ' new version = ' "$MICROVERSION" '\e[0m' >> micro-editor-check.log
     source ./.update
 fi
