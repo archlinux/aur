@@ -1,24 +1,18 @@
 pkgbase = taisei
 	pkgdesc = Open source Touhou clone
-	pkgver = 1.0a
-	pkgrel = 3
+	pkgver = 1.1
+	pkgrel = 1
 	url = http://taisei-project.org/
-	install = taisei.install
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = mesa
-	depends = sdl_ttf
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = libzip
 	depends = hicolor-icon-theme
-	depends = libgl
-	depends = libpng
-	depends = freealut
-	depends = glu
-	source = taisei-1.0a.tar.gz::https://github.com/laochailan/taisei/archive/v1.0a.tar.gz
-	source = taisei-no-inlining.patch
-	sha256sums = 1561c84c9fd8b9c7a91b864bdfc07fb811bb6da5c54cf32a2b6bd63de5f8f3ff
-	sha256sums = 2a39d4d9dbb0b8a3ab776ab24daa4ba29a97c739d2e74025bfd6b4149f8dc98c
+	source = taisei-1.1.tar.gz::https://github.com/laochailan/taisei/archive/v1.1.tar.gz
+	sha256sums = b9eb3150af79942e6a5dda8b833045dd69b8148c9ba0f451a7a911db7dfd2a3f
 
 pkgname = taisei
 
