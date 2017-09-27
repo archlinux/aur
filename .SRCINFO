@@ -1,0 +1,19 @@
+pkgbase = esev-git
+	pkgdesc = Extremely simple EXIF viewer
+	pkgver = r5.c300a70
+	pkgrel = 1
+	url = https://github.com/nathan-osman/esev
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = libexif
+	provides = esev
+	conflicts = esev
+	source = esev-git::git+https://github.com/nathan-osman/esev.git
+	sha256sums = SKIP
+
+pkgname = esev-git
+
