@@ -2,11 +2,11 @@
 pkgname="filius"
 pkgver="1.7.2"
 pkgrel=2
-epoch=
-pkgdesc=""
+pkgdesc="Network simulation program"
 arch=('x86_64')
 url="http://www.lernsoftware-filius.de/downloads/"
 license=('GPL')
+depends=('java-environment>=8')
 makedepends=(rpmextract)
 file="$url$pkgname-$pkgver-$pkgrel.noarch.rpm"
 source=("$file")
@@ -16,3 +16,4 @@ package() {
 	cd $srcdir
 	cp -r usr/ etc/ $pkgdir
 }
+
