@@ -2,12 +2,12 @@
 
 pkgname=caffeine-bzr
 pkgver=r665
-pkgrel=1
+pkgrel=2
 pkgdesc="A easy way to control powersaving on your desktop."
 arch=(any)
 url="https://launchpad.net/caffeine"
 license=(GPL3)
-depends=(python2-gobject python2-ewmh)
+depends=(python-gobject python-ewmh)
 makedepends=(bzr)
 conflicts=(caffeine caffeine-ng caffeine-oneclick caffeine-systray)
 provides=(caffeine caffeine-ng caffeine-oneclick caffeine-systray)
@@ -29,5 +29,5 @@ build() {
 
 package() {
   cd "$srcdir"/"$pkgname"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
 }
