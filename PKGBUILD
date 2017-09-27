@@ -7,14 +7,14 @@ pkgname='astah-professional'
 _pkgname=${pkgname//-/_}
 pkgver='7.2.0'
 _pkgver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 _pkgrel=1ff236
 pkgdesc='easy-to-use UML2.x modeler'
 arch=('any')
 url="http://astah.net/editions/professional"
 conflicts=('astah_community')
 license=('custom:none')
-depends=('java-runtime')
+depends=('java-runtime>=8')
 source=("http://cdn.change-vision.com/files/${pkgname}-${_pkgver}-$_pkgrel.zip"
 	"astah-professional.desktop"
 	"astah-professional.png"
