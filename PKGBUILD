@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=rapid-photo-downloader-bzr
-pkgver=0.9.3.r1022
+pkgver=0.9.4b1.r1029
 pkgrel=1
 pkgdesc="Photo and video downloader"
 arch=('any')
