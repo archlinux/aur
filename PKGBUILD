@@ -7,7 +7,7 @@
 pkgname=openssh-gssapi
 _pkgname=openssh
 pkgver=7.5p1
-pkgrel=2
+pkgrel=3
 pkgdesc='Free version of the SSH connectivity tools'
 url='https://www.openssh.com/portable.html'
 license=('custom:BSD')
@@ -15,7 +15,7 @@ arch=('i686' 'x86_64')
 makedepends=('linux-headers')
 conflicts=(${_pkgname})
 provides=(${_pkgname})
-depends=('krb5' 'openssl-1.0' 'libedit' 'ldns')
+depends=('krb5' 'openssl' 'libedit' 'ldns')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X')
 validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30')
