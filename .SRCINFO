@@ -1,6 +1,6 @@
 pkgbase = mopidy-iris
 	pkgdesc = A Mopidy Web client that utilizes the Spotify and EchoNest frameworks. (Formerly Spotmop)
-	pkgver = 3.4.5
+	pkgver = 3.4.8
 	pkgrel = 1
 	url = https://github.com/jaedb/iris
 	arch = any
@@ -15,9 +15,10 @@ pkgbase = mopidy-iris
 	depends = mopidy-local-images
 	depends = python2-spotipy
 	depends = python2-pylast
+	depends = python2-raven
 	optdepends = mopidy-local-sqlite: local library support
-	source = https://files.pythonhosted.org/packages/source/M/Mopidy-Iris/Mopidy-Iris-3.4.5.tar.gz
-	sha256sums = d26fb74a2f20848d57468a21d4d393d51d50ab38bfe18a31e24a4e250698179c
+	source = https://files.pythonhosted.org/packages/source/M/Mopidy-Iris/Mopidy-Iris-3.4.8.tar.gz
+	sha256sums = 6f2f8ee735f9790bf65bc2ed2eadfb380841ca0b292e0730b724a60e7a7db21d
 
 pkgname = mopidy-iris
 
