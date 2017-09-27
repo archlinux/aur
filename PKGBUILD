@@ -9,16 +9,16 @@ url="http://aspell.net/"
 license=('GPL2')
 depends=('aspell')
 source=("https://github.com/Pavel-Sayekat/aspell-bn/archive/master.zip")
-sha256sums=('1e774ffdc728def394fd11aefaa3b1f8128998e1ab54897e7fd3d622ab9a3cf80304f811c5ed73abe953cdb6eace9b847a713de2ffc9a883fc6546b528dd5eb4')
+sha256sums=('e1e16c11d651863ec1c1273e60417aaaa5f88a4905565e7bf2a17cbec0b5c247')
 build() {
-  cd "${srcdir}/aspell6-bn-${pkgver}"
+  cd "${srcdir}/aspell-bn-master"
 
   ./configure
   make
 }
 
 package() {
-  cd "${srcdir}/aspell6-bn-${pkgver}"
+  cd "${srcdir}/aspell-bn-master"
 
   make DESTDIR="${pkgdir}" install
 }
