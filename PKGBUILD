@@ -4,11 +4,12 @@
 
 pkgname=jdk-dcevm
 _major=8
-_minor=112
-_build=b15
-_dcevmbuild=8
+_minor=144
+_build=b01
+_dcevmbuild=2
+_hash=090f390dda5b47b9b721c7dfaa008135
 pkgver=${_major}u${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc="Oracle Java Development Kit with DCEVM patches"
 arch=('i686' 'x86_64')
 url=https://dcevm.github.io/
@@ -47,21 +48,21 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
-        "http://github.com/dcevm/dcevm/releases/download/light-jdk$pkgver%2B$_dcevmbuild/DCEVM-light-$pkgver-installer.jar"
+        "http://github.com/dcevm/dcevm/releases/download/light-jdk$pkgver%2B$_dcevmbuild/DCEVM-$pkgver-installer.jar"
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop")
-source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/jdk-$pkgver-linux-i586.tar.gz")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/jdk-$pkgver-linux-x64.tar.gz")
+source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/jdk-$pkgver-linux-i586.tar.gz")
+source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/jdk-$pkgver-linux-x64.tar.gz")
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         '5458fff57ad1550cd34721ea59d562b7'
+         'edda2df7054c969b4d15cd10343c98c0'
          'b4f0da18e03f7a9623cb073b65dde6c1'
          '8f0ebcead2aecad67fbd12ef8ced1503'
          'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
          '98245ddb13914a74f0cc5a028fffddca')
-md5sums_i686=('66ccf8e7c28969d56863034d030134bf')
-md5sums_x86_64=('de9b7a90f0f5a13cfcaa3b01451d0337')
+md5sums_i686=('13d771707f326b02e2497c99e0a2ca37')
+md5sums_x86_64=('2d59a3add1f213cd249a67684d4aeb83')
 ## Alternative mirror, if your local one is throttled:
 #source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$pkgname-$pkgver-linux-x64.gz")
 
