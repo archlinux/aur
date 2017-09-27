@@ -1,13 +1,13 @@
 pkgbase = nodejs-docs
 	pkgdesc = Node.js API documentation.
-	pkgver = 8.2.1
+	pkgver = 8.6.0
 	pkgrel = 1
 	url = https://nodejs.org/en/docs/
 	arch = any
 	license = MIT
 	options = docs
-	source = https://nodejs.org/dist/v8.2.1/node-v8.2.1.tar.gz
-	sha256sums = 66fe1379bc7daf9a16c6b5c45ab695bf1cdcfae9738d2989e940104d6b31973f
+	source = https://nodejs.org/dist/v8.6.0/node-v8.6.0.tar.gz
+	sha256sums = 80551d47440c602c5825a3f6611e13cb0c57d277234dbff693af433a88351a08
 
 pkgname = nodejs-docs
 
