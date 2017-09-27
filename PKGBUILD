@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=getdist
 pkgname=python-$_modulename
-pkgver=0.2.7
-pkgrel=2
+pkgver=0.2.8.1
+pkgrel=1
 pkgdesc="MCMC sample analysis, kernel densities, plotting, and GUI"
 arch=(any)
 url="https://github.com/cmbant/getdist"
@@ -16,11 +16,11 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("${url}/archive/master.tar.gz")
-sha256sums=('7c103e8efa34959b01286b568913a839c5c1fe3c61d6c0b36bfcca2a2a8ed83a')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('2383b63c34be1eaac3e004ab5bb773587849c0007c095700a827bdf5d578311a')
 
 package() {
-  cd "$srcdir/$_modulename-master"
+  cd "$srcdir/$_modulename-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 }
