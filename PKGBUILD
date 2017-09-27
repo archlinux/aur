@@ -3,13 +3,13 @@
 pkgname=nuvolaruntime
 pkgver=4.7.0
 pkgrel=3
-pkgdesc="NuvolaRuntime."
+pkgdesc="Nuvola Apps Runtime - Tight integration of web apps with your desktop"
 arch=("any")
 url="https://github.com/tiliado/nuvola-app-google-play-music"
 license=('custom:BSD')
 provides=('nuvolaplayer')
 conflicts=('nuvolaplayer')
-depends=('python' 'vala' 'diorite' 'glib2' 'ruby-gio2' 'python-gobject2' 'gtk3' 'json-glib' 'webkit2gtk' 'libnotify' 'gstreamer' 'libdri2' 'libdrm')
+depends=('python' 'vala' 'diorite>=4.7.0' 'glib2' 'ruby-gio2' 'python-gobject2' 'gtk3' 'json-glib' 'webkit2gtk' 'libnotify' 'gstreamer' 'libdri2' 'libdrm')
 makedepends=('scour' 'dri2proto')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
 sha256sums=('6b4da3b371d2e3259b86317fd3c6fde2142912b84d7a5d1563adfafeb67b147c')

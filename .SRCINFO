@@ -1,5 +1,5 @@
 pkgbase = nuvolaruntime
-	pkgdesc = NuvolaRuntime.
+	pkgdesc = Nuvola Apps Runtime - Tight integration of web apps with your desktop
 	pkgver = 4.7.0
 	pkgrel = 3
 	url = https://github.com/tiliado/nuvola-app-google-play-music
@@ -9,7 +9,7 @@ pkgbase = nuvolaruntime
 	makedepends = dri2proto
 	depends = python
 	depends = vala
-	depends = diorite
+	depends = diorite>=4.7.0
 	depends = glib2
 	depends = ruby-gio2
 	depends = python-gobject2
