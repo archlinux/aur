@@ -1,8 +1,8 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
 
 pkgname=mpd-sacd
-pkgver=0.20.6
-pkgrel=2
+pkgver=0.20.10
+pkgrel=1
 pkgdesc='MPD with patches for SACD and DVDA ISO playback.'
 url='http://git.musicpd.org/cgit/manisiutkin/mpd.git/'
 license=('GPL')
@@ -10,11 +10,11 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 depends=('libao' 'ffmpeg' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl' 'faad2'
 	'sqlite' 'jack' 'libmms' 'wavpack' 'avahi' 'libid3tag' 'yajl' 'libmpdclient'
 	'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'smbclient' 'libcdio-paranoia'
-	'libgme')
+	'libgme' 'zziplib')
 makedepends=('boost' 'doxygen')
 conflicts=('mpd')
 provides=("mpd=${pkgver}")
-source=('git://git.musicpd.org/manisiutkin/mpd.git#commit=11bf019c0232b952a29f7e0462d4db222f204e28'
+source=('git://git.musicpd.org/manisiutkin/mpd.git#commit=13d80b829dd9b89f9e9f407d09413712f843e008'
 	'tmpfiles.d'
 	'conf')
 sha1sums=('SKIP'
@@ -31,16 +31,18 @@ build() {
 		--prefix=/usr \
 		--sysconfdir=/etc \
 		--enable-cdio-paranoia \
-		--enable-libmpdclient \
+		--enable-iso9660 \
 		--enable-jack \
-		--enable-soundcloud \
+		--enable-libmpdclient \
 		--enable-pipe-output \
 		--enable-pulse \
-		--enable-sacdiso \
-		--enable-dvdaiso \
+		--enable-soundcloud \
+		--enable-zzip \
 		--disable-sidplay \
 		--with-systemduserunitdir=/usr/lib/systemd/user \
-		--with-systemdsystemunitdir=/usr/lib/systemd/system
+		--with-systemdsystemunitdir=/usr/lib/systemd/system \
+		--enable-sacdiso \
+		--enable-dvdaiso
 
 	make
 }
@@ -53,5 +55,5 @@ package() {
 	install -d -g 45 -o 45 "${pkgdir}"/var/lib/mpd{,/playlists}
 
 	sed '/\[Service\]/a User=mpd' -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
-	sed '/WantedBy=/c WantedBy=default.target' -i "${pkgdir}"/usr/lib/systemd/{system,user}/mpd.service
+	sed '/WantedBy=/c WantedBy=default.target' -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
 }
