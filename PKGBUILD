@@ -3,7 +3,7 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=55.1.0
+pkgver=55.1.0.1
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://www.waterfoxproject.org/"
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'nss' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr' 'hicolor-icon-theme')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf' 'inetutils' 'xorg-server-xvfb'
-             'autoconf2.13' 'rust' 'clang' 'llvm' 'ccache' 'bc')
+             'autoconf2.13' 'rust' 'clang' 'llvm' 'ccache')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -24,7 +24,7 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=b2ba34e0dc10
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=1bcdd45bce59bd83fde3af263a56647223837130
+_commit=ffd62b838aaf70b271d978f12059ddc93f0c5878
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
@@ -42,7 +42,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "wifi-disentangle.patch::https://raw.githubusercontent.com/manjaro/packages-community/099344c3c9cb7ec70a6b769b7069bf9f815e5640/firefox-kde/wifi-disentangle.patch"
         "harmony-fix.diff::https://raw.githubusercontent.com/manjaro/packages-community/099344c3c9cb7ec70a6b769b7069bf9f815e5640/firefox-kde/harmony-fix.diff"
         "clip-ft-glyph.diff::https://raw.githubusercontent.com/manjaro/packages-community/099344c3c9cb7ec70a6b769b7069bf9f815e5640/firefox-kde/clip-ft-glyph.diff"
-        "mozilla-ucontext.patch::$_patchurl/mozilla-ucontext.patch")
+        "fixformach.diff::https://aur.archlinux.org/cgit/aur.git/plain/fixformach.diff?h=firefox-clean"
+        "glibc-2.26-fix.diff::https://aur.archlinux.org/cgit/aur.git/plain/glibc-2.26-fix.diff?h=firefox-clean")
 sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -60,7 +61,8 @@ sha256sums=('SKIP'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             '16bb776e9f3039321db747b2eaece0cda1320f3711fb853a68d67247b0aa065d'
             'd5e5580a96ecc4a66ce12dde0737c1ed5cb31017a6ec488ffe372192ed893e1b'
-            '96d9accb74e19f640e356572b3c0914c6be867cbdf351392b0cb5c00161ee012')
+            '9a354afad0042e2fa4bf29cb32f6c179669ad26f1764325443d1339a23f245f0'
+            'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8')
 
 prepare() {
   mkdir path
@@ -81,18 +83,21 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
-  patch -Np1 -i $srcdir/mozilla-ucontext.patch
+  patch -Np1 -i ../glibc-2.26-fix.diff
   
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
-  patch -Np1 -i $srcdir/wifi-disentangle.patch
-  patch -Np1 -i $srcdir/wifi-fix-interface.patch
+  patch -Np1 -i ../wifi-disentangle.patch
+  patch -Np1 -i ../wifi-fix-interface.patch
   
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1393467
   patch -Np1 -i ../clip-ft-glyph.diff
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1400721
   patch -Np1 -i ../harmony-fix.diff
-
+  
+  # Fix build with latest Python
+  patch -Np1 -i ../fixformach.diff
+  
   cat >.mozconfig <<END
 export CC=clang
 export CXX=clang++
@@ -106,9 +111,8 @@ ac_add_options --enable-alsa
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-jack
 
-X=$(bc <<< "1.5*$(getconf _NPROCESSORS_ONLN)")
 mk_add_options AUTOCLOBBER=1
-mk_add_options MOZ_MAKE_FLAGS=-j${X%.*}
+mk_add_options MOZ_MAKE_FLAGS="-j6"
 
 ac_add_options --prefix=/usr
 ac_add_options --libdir=/opt
@@ -174,9 +178,9 @@ ac_add_options --enable-eme=widevine
 END
 
   msg "Patching for KDE"
-  patch -Np1 -i "$srcdir/mozilla-kde.patch"
-  patch -Np1 -i "$srcdir/firefox-kde.patch"
-  patch -Np1 -i "$srcdir/fix_waterfox_browser-kde_xul.patch"
+  patch -Np1 -i "../mozilla-kde.patch"
+  patch -Np1 -i "../firefox-kde.patch"
+  patch -Np1 -i "../fix_waterfox_browser-kde_xul.patch"
   patch -Np1 -i "../disable_e10s.patch"
 
   msg "Add missing file in Makefile for pgo builds"
