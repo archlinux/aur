@@ -50,5 +50,5 @@ package() {
 
   msg2 'Installing desktop files'
   install -D -m644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -D -m644 "${pkgdir}/opt/${_pkgname}/help/matlab/matlab_env/matlab_desktop_icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -D -m644 "/opt/${_pkgname}/help/matlab/matlab_env/matlab_desktop_icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
