@@ -1,0 +1,20 @@
+pkgbase = sendxmpp-git
+	pkgdesc = A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
+	pkgver = 1.24.r15.g9186b8c
+	pkgrel = 1
+	url = https://sendxmpp.hostname.sk/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = perl-net-xmpp
+	depends = perl-io-socket-ssl
+	provides = sendxmpp
+	conflicts = sendxmpp
+	options = !emptydirs
+	options = docs
+	source = sendxmpp-git::git+https://github.com/lhost/sendxmpp.git
+	sha256sums = SKIP
+
+pkgname = sendxmpp-git
+
