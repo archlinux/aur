@@ -2,7 +2,7 @@
 
 pkgname="liblogcpp"
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A intuitive and highly customizable LGPL library for logging with C++."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://github.com/nullptrT/liblogcpp.git"
@@ -11,7 +11,7 @@ replaces=('liblogcpp-qt')
 provides=('liblogcpp')
 conflicts=('liglogcpp-git')
 depends=()
-makedepends=('cmake' 'git')
+makedepends=('cmake')
 source=("liblogcpp-v${pkgver}.tar.gz::https://github.com/nullptrT/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('51394e36772012ac5c8505b07159ccc844393be615cecb0d1404c999f32ff266c1298e49bafe5aa3c32f0799c4a2f672c146e8329e684a650d6ba128498becdc')
 
