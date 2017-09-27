@@ -5,24 +5,24 @@
 
 pkgname='astah-professional'
 _pkgname=${pkgname//-/_}
-pkgver='7.1.0'
+pkgver='7.2.0'
 _pkgver=${pkgver//./_}
 pkgrel=1
-_pkgrel=f2c212
+_pkgrel=1ff236
 pkgdesc='easy-to-use UML2.x modeler'
 arch=('any')
 url="http://astah.net/editions/professional"
 conflicts=('astah_community')
 license=('custom:none')
 depends=('java-runtime')
-source=("http://cdn.astah.net/downloads/${pkgname}-${_pkgver}-$_pkgrel.zip"
+source=("http://cdn.change-vision.com/files/${pkgname}-${_pkgver}-$_pkgrel.zip"
 	"astah-professional.desktop"
 	"astah-professional.png"
 	"astah-professional.xml"
 	"astah-professional-doc.png"
 	"LICENSE")
 
-md5sums=('592e66d570840003da521fcc912642a1'
+md5sums=('bda39b1fc3030ce97f31899bd7893be4'
          '7f85e4ae3c0331d8a7d842a0c17090f9'
          'df84e754977e1958963779b3a59182e1'
          '2fbccb662c6435f75c62751437fb3f1e'
