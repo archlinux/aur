@@ -4,7 +4,7 @@
 
 pkgname=waterfox-kde
 pkgver=55.1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -43,7 +43,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "harmony-fix.diff::https://raw.githubusercontent.com/manjaro/packages-community/099344c3c9cb7ec70a6b769b7069bf9f815e5640/firefox-kde/harmony-fix.diff"
         "clip-ft-glyph.diff::https://raw.githubusercontent.com/manjaro/packages-community/099344c3c9cb7ec70a6b769b7069bf9f815e5640/firefox-kde/clip-ft-glyph.diff"
         "fixformach.diff::https://aur.archlinux.org/cgit/aur.git/plain/fixformach.diff?h=firefox-clean"
-        "glibc-2.26-fix.diff::https://aur.archlinux.org/cgit/aur.git/plain/glibc-2.26-fix.diff?h=firefox-clean")
+        "mozilla-ucontext.patch::$_patchurl/mozilla-ucontext.patch")
 sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -62,7 +62,7 @@ sha256sums=('SKIP'
             '16bb776e9f3039321db747b2eaece0cda1320f3711fb853a68d67247b0aa065d'
             'd5e5580a96ecc4a66ce12dde0737c1ed5cb31017a6ec488ffe372192ed893e1b'
             '9a354afad0042e2fa4bf29cb32f6c179669ad26f1764325443d1339a23f245f0'
-            'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8')
+            '96d9accb74e19f640e356572b3c0914c6be867cbdf351392b0cb5c00161ee012')
 
 prepare() {
   mkdir path
@@ -83,7 +83,7 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
-  patch -Np1 -i ../glibc-2.26-fix.diff
+  patch -Np1 -i ../mozilla-ucontext.patch
   
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -Np1 -i ../wifi-disentangle.patch
