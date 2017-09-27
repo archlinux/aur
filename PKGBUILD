@@ -30,9 +30,6 @@ md5sums=('SKIP'
 prepare() {
   cd "${srcdir}/Slic3r"
   patch -p1 -i "$srcdir/Move-Slic3r-data-to-usr-share-slic3r.patch"
-#  sed -i 's/^use Slic3r/use Slic3r-Prusa3D/g' *.pl utils/*.pl
-#  sed -i 's/^use Slic3r/use Slic3r-Prusa3D/g' t/*.t xs/t/*.t
-#  sed -i 's/^use Slic3r/use Slic3r-Prusa3D/g' lib/*.pm lib/*/*.pm lib/*/*/*.pm lib/*/*/*/*.pm
   mkdir -p build
 }
 
@@ -48,13 +45,10 @@ build() {
   make
 }
 
-check () {
-  cd "${srcdir}/Slic3r"
-  prove -Ixs/blib/arch -Ixs/blib/lib/ xs/t/
-  prove -Ixs/blib/arch -Ixs/blib/lib/ t/
-}
-
 check() {
+  cd "${srcdir}/Slic3r/t" # We're on linux. We don't want to user local::lib
+  sed -i '/local::lib/d' *.t
+
   cd "${srcdir}/Slic3r/build"
   ctest -V
 }
