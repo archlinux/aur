@@ -1,0 +1,17 @@
+pkgbase = ensime-server-bin
+	pkgdesc = ENSIME server
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ensime/ensime-server
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = java-environment
+	depends = scala
+	noextract = ensime_2.12-2.0.0-assembly.jar
+	source = https://github.com/ensime/ensime-server/releases/download/v2.0.0/ensime_2.12-2.0.0-assembly.jar
+	md5sums = 0712c847fc868c1060c93e0e159f1d79
+	sha256sums = c2085775e5d98214737abc9504771717cd210ba193c7450445a2e8a7cc211061
+
+pkgname = ensime-server-bin
+
