@@ -6,6 +6,7 @@
 pkgname=gnucash
 pkgver=2.6.18
 pkgrel=2
+_sourcerel=1
 pkgdesc="A personal and small-business financial-accounting application"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
@@ -17,8 +18,8 @@ optdepends=('evince: for print preview'
             'perl-finance-quote: for stock information lookups'
             'perl-date-manip: for stock information lookups')
 options=('!makeflags' '!emptydirs')
-source=(https://github.com/Gnucash/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('dcc6f7f449d7be46a543021f65f310e712dfc99a')
+source=(https://github.com/Gnucash/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-${_sourcerel}.tar.bz2)
+sha1sums=('41b2580ba1fe586fbdb4629f2b36b12e9161b546')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
