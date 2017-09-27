@@ -2,7 +2,7 @@
 
 pkgname="liblogcpp"
 pkgver=1.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A intuitive and highly customizable LGPL library for logging with C++."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://github.com/nullptrT/liblogcpp.git"
@@ -28,7 +28,7 @@ build() {
 	cmake -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
 		-DLOGCPP_SHARED=ON \
 		-DLOGCPP_INSTALL_LIBS=ON \
-		"../liblogcpp"
+		"../liblogcpp-${pkgver}"
 	
 	make
 }
