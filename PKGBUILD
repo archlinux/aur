@@ -2,7 +2,7 @@
 # Maintainer: Adrian Petrescu <apetresc@gmail.com>
 
 pkgname=sabaki
-pkgver=0.31.3
+pkgver=0.31.4
 pkgrel=2
 pkgdesc='An elegant SGF editor for the game of Go'
 arch=('any')
@@ -13,16 +13,9 @@ install=${pkgname}.install
 source=("https://github.com/yishn/Sabaki/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         'sabaki.xml')
-md5sums=('cf374e056f2763585821c9535eef9f61'
+md5sums=('3f981d49bc7629296dc23eafce9c148e'
          'b39f3b91292cb3983124bd38035fbd8e'
          'efbd547e892c7781a5ece702d389dd9e')
-
-prepare() {
-    # Hackishly revert electron from ^1.8.0 to 1.7.7
-    # This should only be necessary until the next Sabaki release
-    sed -i 's/electron\(.*\)\^1\.8\.0/electron\11.7.7/' \
-        "${srcdir}/Sabaki-${pkgver}/package.json"
-}
 
 build() {
   cd $srcdir/Sabaki-$pkgver
