@@ -1,11 +1,11 @@
 # Maintainer: SanskritFritz (gmail)
 
-pkgname=("pzl_common" "pzl_akari" "pzl_boggle" "pzl_codeword" "pzl_futoshiki" "pzl_jigsaw" "pzl_kakuro" "pzl_minesweeper" "pzl_scrabbler" "pzl_sumpuzzle" "pzl_sudoku" "pzl_sokoban" "pzl_bridges" "pzl_shikaku" "pzl_suguru" "pzl_hidato" )
+pkgname=("pzl_common" "pzl_akari" "pzl_boggle" "pzl_codeword" "pzl_futoshiki" "pzl_jigsaw" "pzl_kakuro" "pzl_minesweeper" "pzl_scrabbler" "pzl_sumpuzzle" "pzl_sudoku" "pzl_sokoban" "pzl_bridges" "pzl_shikaku" "pzl_suguru" "pzl_hidato" "pzl_fillomino")
 pkgbase="pzl_games"
-pkgver=8.0
-_pkgver=8_0
-pkgrel=2
-pkgdesc="Small collection of computer games."
+pkgver=10.0
+_pkgver=10_0
+pkgrel=1
+pkgdesc="Small collection of puzzle games."
 arch=('any')
 url="http://pzl.org.uk/"
 license=('GPL')
@@ -24,9 +24,10 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
 	"pzl_bridges.desktop"
 	"pzl_shikaku.desktop"
 	"pzl_suguru.desktop"
-	"pzl_hidato.desktop" )
+	"pzl_hidato.desktop"
+	"pzl_fillomino.desktop" )
 
-md5sums=('5745c1a75bb7bffea49d7db8bc11ee4e'
+md5sums=('af32329375f1b123808e1c32b32e32e3'
          'b7d0a414fc22aa750b7e4d758a6e04cd'
          '898534ec921c3c165fc11a7b5ef9b8d2'
          '02df03e4c57e8b77062df51971f7c582'
@@ -41,7 +42,8 @@ md5sums=('5745c1a75bb7bffea49d7db8bc11ee4e'
          'b62c538e5baba89f6fe1e195af8e39af'
          '38dc1f1869c03d4cc8e2724e6060fc65'
          '0c1b99051ab88c9aacf108a4d7d577e2'
-         'a07ce126d031c9fbed8c1cbe2c6af1a1')
+         'a07ce126d031c9fbed8c1cbe2c6af1a1'
+         '493fa819c6a145a873ec81bab55bf96a')
 
 package_pzl_common() {
 	pkgdesc="Common files for pzl games."
@@ -199,6 +201,16 @@ package_pzl_hidato() {
 	install -m644 pzl3_download/hidato.pyw "$pkgdir/usr/share/pzl_games"
 	install -m644 pzl3_download/hidato_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
 	install -m644 pzl_hidato.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_fillomino() {
+	pkgdesc="Fill in all empty cells with numbers by dividing all of the board into blocks."
+	url="http://pzl.org.uk/fillomino.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/fillomino.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/fillomino_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_fillomino.desktop "$pkgdir/usr/share/applications"
 }
 
 
