@@ -30,7 +30,9 @@ makedepends=(
     'make'
     'pkg-config'
 )
-optdepends=()
+optdepends=(
+    'torch7-cudnn-r7-git: for CUDNN backend'
+)
 provides=('waifu2x')
 conflicts=('waifu2x')
 replaces=()

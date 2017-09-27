@@ -21,6 +21,7 @@ pkgbase = waifu2x-git
 	depends = torch7-image-git
 	depends = torch7-xlua-git
 	depends = torch7-dok-git
+	optdepends = torch7-cudnn-r7-git: for CUDNN backend
 	provides = waifu2x
 	conflicts = waifu2x
 	source = git+https://github.com/nagadomi/waifu2x.git
