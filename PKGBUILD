@@ -18,11 +18,12 @@ sha256sums_i686=('fd7b1f7b48aa84205c1c0f60f630f1a33504e0e4904c5b0e8ae2477494899c
 
 package() {
   if [ $CARCH == ${arch[0]} ]; then
-    install -Dm644 $pkgname.binfmt.d $pkgdir/usr/lib/binfmt.d/$pkgname.conf
+    install -D -m 644 $pkgname.binfmt.d $pkgdir/usr/lib/binfmt.d/$pkgname.conf
   fi
 
   cd $pkgname-$pkgver-${arch[1]}/bin
-  install -Dm755 $pkgname $pkgdir/usr/bin/$pkgname
-  install -Dm755 $pkgname-analyzer $pkgdir/usr/bin/$pkgname-analyzer
-  install -Dm755 plog-converter $pkgdir/usr/bin/plog-converter
+  install -D -m 755 -t $pkgdir/usr/bin \
+    $pkgname \
+    $pkgname-analyzer \
+    plog-converter
 }
