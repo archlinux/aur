@@ -65,10 +65,10 @@ _kyber_disable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.13.3
+pkgver=4.13.4
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -119,7 +119,7 @@ source=(# mainline kernel patches
 sha256sums=(# mainline kernel patches
             '2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            'bfebd5121512f76ed835223679fc11fc7826aabc31233cefb522e0e1b515d3fe'
+            '1e34c35dfbd3b7451a7b3eb93c5e342acc006b5d1906b5e542a8f203723bb8d6'
             'SKIP'
             # gcc cpu optimizatons from graysky and ck forked by sir_lucjan
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
