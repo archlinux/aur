@@ -15,22 +15,16 @@ optdepends=('alsa-utils: for volume controls'
 	    'pocketsphinx: for theWave'
 	    'festival: for theWave')
 makedepends=('git')
-source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theshell#branch=blueprint'
-	"theshellb.desktop")
-md5sums=('SKIP' 'SKIP')
+source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theshell#branch=blueprint')
+md5sums=('SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"
-	git checkout blueprint
-	qdbuscpp2xml -a -o org.thesuite.power.xml upowerdbus.h
-	qdbuscpp2xml -a -o org.thesuite.theshell.xml dbussignals.h
-	qmake theShell.pro
+	qmake "CONFIG+=blueprint" theShell.pro
 	make
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
-	cp "$pkgname-$pkgver/theshell" "$pkgdir/usr/bin/theshellb"
-	mkdir -p "$pkgdir/usr/share/xsessions"
-	cp "theshellb.desktop" "$pkgdir/usr/share/xsessions"
+	cd "$pkgname-$pkgver"
+	make install INSTALL_ROOT=$pkgdir
 }
