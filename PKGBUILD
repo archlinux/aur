@@ -1,12 +1,12 @@
 # Maintainer: Dmitry Barker Medvedev <dimon@bitel.ru>
 pkgname=bgbillingclient70
-pkgver=7.0.796
+pkgver=7.0.909
 pkgrel=1
 pkgdesc='Client for billing system BGBilling 7.0'
 arch=('i686' 'x86_64')
 url='http://bgbilling.ru'
 license=('custom')
-depends=('java-runtime=8')
+depends=('java-runtime>=8')
 install=bgbillingclient.install
 source=(bgbillingclient{_versuf}.sh bgbillingclient{_versuf}.desktop bgbillingclient{_versuf}.png)
 md5sums=('5c6031713ab88c1d6fa71e43d27d1071'
