@@ -4,7 +4,7 @@ _pkgname=radiotray-ng
 pkgname=${_pkgname}-git
 _pkgver=0.1.8
 _branch=v${_pkgver}-dev
-pkgver=0.1.8.r26.08e56c7
+pkgver=0.1.8.r27.8e772f7
 pkgrel=1
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/ebruck/radiotray-ng#branch=${_branch}"
         'remove_GMock_check.patch')
 sha256sums=('SKIP'
-            'c08b2a85ad7b83e70c9bfd843abaa2b13381736a9acf837eb68ca341b79e89e1')
+            'd2af2f79007ddf2aad38b9531d0adc69859632a14a562983f5be3dcec973df02')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -31,8 +31,6 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
   # Build fails when GMock is found, so don't check for it, don't compile tests
   patch -uNp2 -r- -i ../remove_GMock_check.patch
-  # Fix for boost >= 1.65
-  sed -i 's:find_package(Boost     REQUIRED [^)]*:& thread:' CMakeLists.txt
 }
 
 build() {

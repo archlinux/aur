@@ -4,7 +4,7 @@ diff -Naur ./radiotray-ng.bak/CMakeLists.txt ./radiotray-ng/CMakeLists.txt
 @@ -37,7 +37,6 @@
  find_package(CURL      REQUIRED)
  find_package(PkgConfig REQUIRED)
- find_package(Boost     REQUIRED filesystem system log program_options)
+ find_package(Boost     REQUIRED filesystem system log program_options thread)
 -find_package(GMock)
  
  pkg_search_module(JSONCPP     REQUIRED jsoncpp)
