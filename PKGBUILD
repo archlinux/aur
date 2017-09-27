@@ -32,6 +32,10 @@ makedepends=(
 )
 optdepends=(
     'torch7-cudnn-r7-git: for CUDNN backend'
+    'torch7-optim-git: for model training'
+    'lua51-cjson: for model training'
+    'lua51-csvigo-git: for model training'
+    'lua51-csnappy: for model training'
 )
 provides=('waifu2x')
 conflicts=('waifu2x')
