@@ -1,7 +1,7 @@
 # Maintainer: Mathieu Westphal <mathieu.westphal@kitware.com>
 pkgname=paraview-git
-pkgrel=2
-pkgver=v5.4.1.r609.2b5d6611ec
+pkgrel=3
+pkgver=v5.4.1.r618.7ac67aad77
 pkgdesc="Open-source, multi-platform data analysis and visualization application"
 arch=('i686' 'x86_64')
 url="https://www.paraview.org/"
@@ -20,13 +20,13 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
   git submodule update --init
-	mkdir -p build
+  mkdir -p build
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}/build"
+  cd "$srcdir/${pkgname%-git}/build"
   cmake -G Ninja \
     -DCMAKE_INSTALL_PREFIX:STRING="$pkgdir/usr/" \
     -DCMAKE_BUILD_TYPE:STRING=Release \
@@ -34,13 +34,14 @@ build() {
     -DPARAVIEW_USE_MPI:BOOL=ON \
     -DPARAVIEW_ENABLE_FFMPEG:BOOL=ON \
     -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=TBB \
+    -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON \
     ../
   ninja
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/build"
-	ninja install
+  cd "$srcdir/${pkgname%-git}/build"
+  ninja install
 
   # Install license
   install -Dm644 "${srcdir}/${pkgname%-git}/License_v1.2.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
