@@ -1,23 +1,24 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Andrei Alexeyev <akari@alienslab.net>
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Lukas Weber <laochailan@web.de>
 
 pkgname=taisei-git
-pkgver=1.0a.r463.g67128fa
+pkgver=1.1.r19.ge0d76df
 pkgrel=1
 pkgdesc="Open source Touhou clone (development version)"
 arch=('i686' 'x86_64')
 url="http://taisei-project.org/"
 license=('MIT')
-depends=('sdl2_mixer' 'sdl2_ttf' 'libgl' 'libpng')
+depends=('sdl2_mixer' 'sdl2_ttf' 'libzip' 'hicolor-icon-theme')
 provides=('taisei')
 conflicts=('taisei')
-makedepends=('git' 'cmake' 'mesa')
+makedepends=('git' 'cmake')
 source=(taisei::"git+https://github.com/laochailan/taisei.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd taisei
-  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+  git describe --long --tags --match "v[0-9]*[!a-z]" | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
