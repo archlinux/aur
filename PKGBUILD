@@ -3,7 +3,7 @@
 
 pkgname=pygmed
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple editor for ".desktop" files."
 arch=(any)
 url="http://sourceforge.net/projects/pygmed/"
