@@ -2,7 +2,7 @@
 
 pkgname=asn1c-git
 _pkgname=asn1c
-pkgver=r2101.c8c286ab
+pkgver=r2129.c8a0b9dd
 pkgrel=1
 pkgdesc="An ASN.1 compiler"
 arch=('i686' 'x86_64')
