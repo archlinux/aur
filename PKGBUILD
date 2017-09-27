@@ -1,10 +1,10 @@
-# Submitter: barcia <barcia@opmbx.org>
 # Maintainer: Amal Karunarathna <nasashinega@gmail.com>
+# Contributor: barcia <barcia@opmbx.org>
 
 _gitname=la-capitaine-icon-theme
 pkgname=la-capitaine-icon-theme-git
 pkgver=r400.81a15fbe
-pkgrel=2
+pkgrel=3
 pkgdesc="An icon pack designed to integrate with most desktop environments"
 arch=('any')
 url="https://github.com/keeferrourke/${_gitname}"

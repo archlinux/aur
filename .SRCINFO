@@ -1,7 +1,7 @@
 pkgbase = la-capitaine-icon-theme-git
 	pkgdesc = An icon pack designed to integrate with most desktop environments
 	pkgver = r400.81a15fbe
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/keeferrourke/la-capitaine-icon-theme
 	arch = any
 	license = GPL3
