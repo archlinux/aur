@@ -2,7 +2,7 @@
 # Contributors: Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK
 
 pkgname=chromium-snapshot-bin
-pkgver=58.0.3001.0.r447745
+pkgver=63.0.3226.0.r504727
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Latest Snapshot)"
 arch=('x86_64')
@@ -73,8 +73,10 @@ package() {
   done
 
   # Man page
-  gzip -9 chrome-linux/chrome.1
-  mv chrome-linux/chrome.1.gz "$pkgdir"/usr/share/man/man1/$pkgname.1.gz
+  if [[ -f chrome-linux/chrome.1 ]]; then
+    gzip -9 chrome-linux/chrome.1
+    mv chrome-linux/chrome.1.gz "$pkgdir"/usr/share/man/man1/$pkgname.1.gz
+  fi
 
   # License
   install -m644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname/-bin}/
