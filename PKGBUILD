@@ -44,9 +44,12 @@ package() {
 
   msg2 'Creating links for executables'
   install -d -m755 "${pkgdir}/usr/bin/"
-  for _executable in deploytool matlab mbuild mcc mex; do
-    ln -s "/opt/${_pkgname}/bin/${_executable}" "${pkgdir}/usr/bin/${_executable}"
+  for executable in deploytool matlab mbuild mcc mex; do
+    ln -s "/opt/${_pkgname}/bin/${executable}" "${pkgdir}/usr/bin/${executable}"
   done
+  msg2 'If you see a conflict with texlive on /usr/bin/mex upon install, edit PKGBUILD and uncomment the following lines'
+  # rm "${pkgdir}/usr/bin/mex"
+  # ln -s "/opt/${_pkgname}/bin/mex" "${pkgdir}/usr/bin/matlab-mex"
 
   msg2 'Installing desktop files'
   install -D -m644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
