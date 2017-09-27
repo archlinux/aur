@@ -4,7 +4,7 @@
 _pkgbasename=webkitgtk
 pkgname=lib32-$_pkgbasename
 pkgver=2.4.11
-pkgrel=9
+pkgrel=10
 pkgdesc="Legacy Web content engine for GTK+ 3"
 arch=(x86_64)
 url="https://webkitgtk.org/"
@@ -12,6 +12,8 @@ license=(custom)
 depends=(lib32-libxt lib32-libxslt lib32-sqlite lib32-libsoup lib32-libgl lib32-gst-plugins-base-libs
          lib32-libsecret lib32-libwebp lib32-harfbuzz-icu lib32-gtk3)
 makedepends=(gcc-multilib gperf gobject-introspection python2 mesa ruby)
+# Some headers are used
+makedepends+=(gst-plugins-base-libs)
 optdepends=('gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
@@ -54,7 +56,9 @@ build() (
     --disable-webkit2 \
     --disable-gtk-doc \
     --disable-geolocation \
-    --disable-spellcheck
+    --disable-spellcheck \
+    --disable-accelerated_compositing
+    # Remove the last option when lib32-cairo 1.15.8 is pushed to [multilib]
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool

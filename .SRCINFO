@@ -1,7 +1,7 @@
 pkgbase = lib32-webkitgtk
 	pkgdesc = Legacy Web content engine for GTK+ 3
 	pkgver = 2.4.11
-	pkgrel = 9
+	pkgrel = 10
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = lib32-webkitgtk
 	makedepends = python2
 	makedepends = mesa
 	makedepends = ruby
+	makedepends = gst-plugins-base-libs
 	depends = lib32-libxt
 	depends = lib32-libxslt
 	depends = lib32-sqlite
