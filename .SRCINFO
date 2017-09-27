@@ -1,0 +1,14 @@
+pkgbase = nlohmann-json
+	pkgdesc = JSON for Modern C++, whole code consistes of a single header file
+	pkgver = 2.1.1.r487.gb05ea3de
+	pkgrel = 1
+	url = https://github.com/nlohmann/json
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	source = nlohmann-json::git+https://github.com/nlohmann/json.git
+	md5sums = SKIP
+
+pkgname = nlohmann-json
+
