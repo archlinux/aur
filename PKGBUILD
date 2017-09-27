@@ -1,14 +1,14 @@
 # Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
 
 pkgname=budgie-desktop-git
-pkgver=v10.3.1.r1.g932cd0c
+pkgver=v10.4.r6.g9e2cc0f2
 pkgrel=1
 pkgdesc="Simple GTK3 desktop experience"
 arch=('i686' 'x86_64')
 url="https://solus-project.com/budgie"
 license=('GPLv2')
 depends=('gnome-bluetooth' 'gnome-menus' 'gnome-session' 'gnome-themes-standard' 'libpeas' 'libwnck3'
-         'mutter' 'accountsservice' 'gnome-desktop' 'libpulse')
+         'mutter' 'accountsservice' 'gnome-desktop' 'libpulse' 'sassc')
 makedepends=('meson' 'git' 'gobject-introspection' 'intltool' 'vala' 'gtk-doc')
 optdepends=('gnome-backgrounds: Default background'
             'gnome-control-center: System settings'
