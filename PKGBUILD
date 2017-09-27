@@ -1,6 +1,6 @@
 # Maintainer: Dmitry Barker Medvedev <dimon@bitel.ru>
 pkgname=bgbillingclient51
-pkgver=5.1.698
+pkgver=5.1.719
 pkgrel=1
 pkgdesc='Client for billing system BGBilling 5.1'
 arch=('i686' 'x86_64')
