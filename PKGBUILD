@@ -1,16 +1,16 @@
-# Maintainer: korrode <korrode at gmail>
+# Maintainer: oberon2007
 # Co-Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Contributor: korrode <korrode at gmail>
 # Contributor: sumt <sumt at sci dot fi>
 pkgname=palemoon-bin
-pkgver=27.4.2
+pkgver=27.5.0
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu')
-optdepends=('palemoon-i18n-default: language pack for system active language'
-            'hunspell: spell checker and morphological analyzer'
+optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: record, convert, and stream audio and video')
 provides=("palemoon=$pkgver")
@@ -21,9 +21,9 @@ source_i686=("http://linux.palemoon.org/datastore/release/palemoon-$pkgver.en-US
 source_x86_64=("http://linux.palemoon.org/datastore/release/palemoon-$pkgver.en-US.linux-x86_64.tar.bz2"{,.sig})
 validpgpkeys=('439F46F42C6AE3D23CF52E70865E6C87C65285EC') # T. Wine
 sha256sums=('c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e')
-sha256sums_i686=('cfdba0ffa470046d669619de0677f1fdef5c90569d599bab52f06029ca8b2545'
+sha256sums_i686=('ed6cad44fc20896af72921906889c7b589751dfbf14fb8b8938851470dd9be8f'
                  'SKIP')
-sha256sums_x86_64=('7ad342ee245ca9e34216a89d4e4d3c60eaa5602b5f634457e39ad1c8bcddfe5c'
+sha256sums_x86_64=('7298bffcbeff4793d45412f4fa3d4b79a044fcf449ec899fd4df568cb17b1f7f'
                    'SKIP')
 
 package() {
