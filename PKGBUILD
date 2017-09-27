@@ -9,7 +9,7 @@ license=('GPL')
 arch=('any')
 depends=('gtk-engines')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_snapshot.tar.gz")
-md5sums=('e0e0b343d1713fdaaf1c2051fdea080c')
+md5sums=('25280c0c5a725695d6edf051007152ed')
 
 package() {
 	cd $pkgname-$_snapshot
