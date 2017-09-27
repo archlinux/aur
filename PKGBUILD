@@ -33,12 +33,12 @@ build() {
 }
 
 package() {
-	cd "$srcdir/arch-plymouthize"
-	install -Dm755 "arch-plymouthize.sh" "$pkgdir/usr/bin/arch-plymouthize"
-	install -Dm644 "arch-plymouthize.1" "$pkgdir/usr/share/man/man1/arch-plymouthize.1"
-	install -Dm644 "copyright.txt" "$pkgdir/usr/share/licenses/arch-plymouthize"
-	install -Dm644 "arch-plymouthize.desktop" "$pkgdir/usr/share/applications/arch-plymouthize.desktop"
-	cd "$srcdir/arch-plymouthize/arch-plymouthize"
+	install -Dvm755 "$srcdir/arch-plymouthize/arch-plymouthize.sh" "$pkgdir/usr/bin/arch-plymouthize"
+	install -Dvm644 "$srcdir/arch-plymouthize/arch-plymouthize.1" "$pkgdir/usr/share/man/man1/arch-plymouthize.1"
+	install -Dvm644 "$srcdir/arch-plymouthize/copyright.txt" "$pkgdir/usr/share/licenses/arch-plymouthize"
+	install -Dvm644 "$srcdir/arch-plymouthize/arch-plymouthize.desktop" "$pkgdir/usr/share/applications/arch-plymouthize.desktop"
 	mkdir -p "$pkgdir/usr/share/arch-plymouthize/"
-	install -Dvm644 * "$pkgdir/usr/share/arch-plymouthize/"
+	for N in "$srcdir/arch-plymouthize/arch-plymouthize/"; do
+		install -Dvm644 $N "$pkgdir/usr/share/arch-plymouthize/"
+	done;
 }
