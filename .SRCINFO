@@ -1,6 +1,6 @@
 pkgbase = cassandra-cpp-driver
 	pkgdesc = DataStax C/C++ Driver for Apache Cassandra
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = http://datastax.github.io/cpp-driver/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = cassandra-cpp-driver
 	makedepends = libuv
 	depends = libuv
 	depends = openssl-1.0
-	source = https://codeload.github.com/datastax/cpp-driver/tar.gz/2.7.0
-	sha256sums = 44a97679e719b2b046ef90323beab4fe3a491ae79396e7f28e6a9677b618a0e4
+	source = https://codeload.github.com/datastax/cpp-driver/tar.gz/2.7.1
+	sha256sums = eb22b7b148507253d2ca24f419e6768d5f9525dbc6f60afcd40906df3ae7cf8d
 
 pkgname = cassandra-cpp-driver
 
