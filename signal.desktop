@@ -4,7 +4,7 @@ Name=Signal
 GenericName=Messenger
 Comment=Signal Private Messenger for the Desktop
 Icon=signal
-Exec=signal
+Exec=signal-desktop
 Categories=Network;Messenger;
 StartupNotify=true
 
