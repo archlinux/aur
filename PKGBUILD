@@ -1,5 +1,5 @@
-# Maintainer: Alexandre Moine: nobrakal <zach {at} cthugha {dot} org>
-# Contributor: Étienne Baritaud Figueroa
+# Maintainer: Alexandre Moine <nobrakal {at} cthugha {dot} org>
+# Contributor: < eti {at} eti {dot} tf >
 # Contributor: zach <zach {at} zach-adams {dot} com>
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de
 
