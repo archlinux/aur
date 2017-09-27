@@ -1,9 +1,10 @@
 # $Id$
-# Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
+# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-max98090
 _srcname=linux-4.13
-pkgver=4.13.3
+pkgver=4.13.4
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,9 +24,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            'bfebd5121512f76ed835223679fc11fc7826aabc31233cefb522e0e1b515d3fe'
+            '1e34c35dfbd3b7451a7b3eb93c5e342acc006b5d1906b5e542a8f203723bb8d6'
             'SKIP'
-            'e384b661655e77ec2cc3fddd24a4275e79eec43330d11a15f82a46c26508856a'
+            'bb95b567a3c04276e21876e4259a9900fda5fbb17f84b0c461d137a4f2496346'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
