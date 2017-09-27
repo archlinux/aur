@@ -1,17 +1,16 @@
-# Maintainer: Laramy Black <laramy2020@gmail.com>
-# Contrubitor: Previous Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
+# Maintainer: Pavel Antonov <pvantonov@gmail.com>
 
 pkgname=nuvolaruntime
 pkgver=4.7.0
-pkgrel=2
-pkgdesc="Nuvola Apps Runtime - Tight integration of web apps with your desktop"
+pkgrel=3
+pkgdesc="NuvolaRuntime."
 arch=("any")
-url="https://github.com/tiliado/nuvolaruntime"
+url="https://github.com/tiliado/nuvola-app-google-play-music"
 license=('custom:BSD')
 provides=('nuvolaplayer')
 conflicts=('nuvolaplayer')
-depends=('python' 'vala' 'diorite>=4.7.0' 'glib2' 'ruby-gio2' 'python-gobject2' 'gtk3' 'json-glib' 'webkit2gtk' 'libnotify' 'gstreamer' 'libdri2' 'libdrm')
-makedepends=('scour')
+depends=('python' 'vala' 'diorite' 'glib2' 'ruby-gio2' 'python-gobject2' 'gtk3' 'json-glib' 'webkit2gtk' 'libnotify' 'gstreamer' 'libdri2' 'libdrm')
+makedepends=('scour' 'dri2proto')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
 sha256sums=('6b4da3b371d2e3259b86317fd3c6fde2142912b84d7a5d1563adfafeb67b147c')
 optdepends=(
@@ -45,7 +44,7 @@ optdepends=(
 )
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    ./waf configure --prefix=/usr --nounity --noappindicator --webkitgtk-supports-mse
+    ./waf configure --prefix=/usr --nounity --libdir=/usr/lib --noappindicator
     ./waf build
 }
 
