@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index a28398f..a86d049 100644
+--- a/Makefile
++++ b/Makefile
+@@ -24,7 +24,7 @@ install: all
+   # Manually copying the remaining files
+ #	 $(V)cp src/quickChickLib.cmx $(COQLIB)/user-contrib/QuickChick
+ #	 $(V)cp src/quickChickLib.o $(COQLIB)/user-contrib/QuickChick
+-	 $(V)cp src/quickChickTool $(shell echo $(PATH) | tr ':' "\n" | grep opam | uniq)/quickChick
++	 $(V)cp src/quickChickTool $(COQLIB)/user-contrib/QuickChick
+ 
+ src/quickChickToolLexer.cmo : src/quickChickToolLexer.mll 
+ 	ocamllex src/quickChickToolLexer.mll
