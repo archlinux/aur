@@ -7,7 +7,7 @@
 
 pkgname=mpv-full-git
 pkgver=0.27.0.r70.g77547d7c19
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -62,8 +62,8 @@ build() {
     ./waf configure \
         --color='yes' \
         --prefix='/usr' \
-        --confdir='/etc/mpv' \
         --progress \
+        --confdir='/etc/mpv' \
         \
         --enable-libmpv-shared \
         --disable-libmpv-static \
@@ -79,6 +79,7 @@ build() {
         --disable-test \
         --disable-clang-database \
         \
+        --disable-android \
         --disable-uwp \
         --disable-win32-internal-pthreads \
         --enable-iconv \
@@ -145,7 +146,6 @@ build() {
         --enable-caca \
         --enable-jpeg \
         --disable-direct3d \
-        --disable-android \
         --disable-rpi \
         --disable-ios-gl \
         --enable-plain-gl \
