@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-middleclickclose-git
 	pkgdesc = Close windows with a button click when in overview mode
-	pkgver = r26
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/p91paul/middleclickclose
 	install = gschemas.install
@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-middleclickclose-git
 	license = GPL
 	makedepends = git
 	depends = gnome-shell
-	provides = gnome-shell-extension-middleclickclose=r26
+	provides = gnome-shell-extension-middleclickclose=1.1
 	conflicts = gnome-shell-extension-middleclickclose
 	source = gnome-shell-extension-middleclickclose::git+https://github.com/p91paul/middleclickclose
 	md5sums = SKIP
