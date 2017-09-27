@@ -20,6 +20,8 @@ optdepends=('evince: for print preview'
 options=('!makeflags' '!emptydirs')
 source=(https://github.com/Gnucash/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-${_sourcerel}.tar.bz2)
 sha1sums=('41b2580ba1fe586fbdb4629f2b36b12e9161b546')
+sha256sums=('68730bcfcead7485011eb43d3b2c5df032c714571c81f9a15d33d8494fc4249d')
+sha512sums=('81cc0e2e567ddb95e31f303e0146354cdefd53771e831f2d4ae8921610097d46cccaab4599effddbed76bb57263e8f1566229463fb2afc441b6ec5c05a36a36b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
