@@ -1,0 +1,18 @@
+pkgbase = dopen-git
+	pkgdesc = Execute .desktop files from the command line
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/tmccombs/dopen
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = dopen
+	conflicts = dopen
+	source = git+https://github.com/tmccombs/dopen.git
+	md5sums = SKIP
+
+pkgname = dopen-git
+
