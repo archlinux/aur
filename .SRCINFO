@@ -1,14 +1,14 @@
 pkgbase = aspell-bn
 	pkgdesc = Bengali spellcheck dictionary for aspell
-	pkgver = 0.01.1
+	pkgver = 0.02
 	pkgrel = 1
 	url = http://aspell.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = aspell
-	source = ftp://ftp.gnu.org/gnu/aspell/dict/bn/aspell6-bn-0.01.1-1.tar.bz2
-	sha256sums = b03f9cc4feb00df9bfd697b032f4f4ae838ad5a6bb41db798eefc5639a1480d9
+	source = https://github.com/Pavel-Sayekat/aspell-bn/archive/master.zip
+	sha256sums = 1e774ffdc728def394fd11aefaa3b1f8128998e1ab54897e7fd3d622ab9a3cf80304f811c5ed73abe953cdb6eace9b847a713de2ffc9a883fc6546b528dd5eb4
 
 pkgname = aspell-bn
 
