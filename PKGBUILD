@@ -135,7 +135,7 @@ _package() {
   pkgdesc="The linux-lts310 kernel and modules - 3.10 longterm stable kernel"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
-              'modprobed_db: Keeps track of EVERY kernel module that has ever been probed')
+              'modprobed-db: Keeps track of EVERY kernel module that has ever been probed')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=${pkgbase}.install
 
