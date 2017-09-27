@@ -8,7 +8,7 @@ curl -i https://api.github.com/repos/zyedidia/micro/releases/tags/nightly | grep
 grep -P -o "\d.*-" .name.info | head --bytes -2 > .version.info
 # check version numbers
 #if [ $(<.version.info) == $(<.old-version.info) ]
-if [ MICROVERSION == MICROOLDVERSION ]
+if [ $MICROVERSION == $MICROOLDVERSION ]
 then
     echo "$NOW" ' -> Checked Github versions -> no changes from last check.' >> micro-editor-check.log
 else
