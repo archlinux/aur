@@ -1,0 +1,24 @@
+pkgbase = arch-plymouthize
+	pkgdesc = A GUI program made for manipulating Plymouth on Arch Linux
+	pkgver = 1.5.5
+	pkgrel = 5
+	url = alekw3@gmail.com
+	arch = x86_64
+	license = GPL
+	depends = xorg-xrandr
+	depends = xterm
+	depends = gksu
+	depends = tar
+	depends = qt5-base
+	depends = sudo
+	depends = sed
+	optdepends = ttf-dejavu
+	provides = arch-plymouthize
+	conflicts = arch-plymouthize
+	options = !libtool
+	options = !emptydirs
+	source = git+https://bitbucket.org/eiNjel/arch-plymouthize
+	sha256sums = SKIP
+
+pkgname = arch-plymouthize
+
