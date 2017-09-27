@@ -2,18 +2,19 @@
 
 pkgname=freefem++-hg
 pkgver=3.56.1r4192.4b2f46f5231d
-pkgrel=1
+pkgrel=2
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
 arch=('i686' 'x86_64')
 url="http://www.freefem.org/ff++/index.htm"
 license=('LGPL')
-depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-cpp-fortran' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'parmetis' 'python')
+depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-openmpi' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'parmetis' 'python')
 makedepends=('mercurial' 'flex-git' 'texlive-core')
 provides=("freefem++=$_pkgver")
 conflicts=('freefem++')
 backup=('etc/freefem++.pref')
-source=('hg+http://www.freefem.org/ff++/ff++/')
-sha256sums=('SKIP')
+source=('hg+http://www.freefem.org/ff++/ff++/' getall.patch)
+sha256sums=('SKIP'
+            '456cd15503c01484559bd8710cf816edcdf4ffbea9cb028c9c635ae4ae2c0bd8')
 options=('!makeflags')
 
 pkgver() {
@@ -23,14 +24,12 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/ff++/download"
-  sed -i 's+e0af74476935c9ff6d971df8bb6b82fc+0a5b38af0016f009409a9606d2f1b555+' getall
-  sed -i 's+cc1244d656e8c37bbdd3e4e897d0e391+d41d8cd98f00b204e9800998ecf8427e+' getall
-  sed -i 's+70f26f95c93fd3871a886bf4237e8268+cd132aea6f7055a49aa48ca0a61e7cd5+' getall
+  cd ff++/download
+  patch -p0 < "$srcdir"/getall.patch || true
 }
 
 build() {
-  cd "$srcdir/ff++"
+  cd ff++
   autoreconf -fi 
   perl download/getall -a
    ./configure CC=mpicc CXX=mpic++ FC=mpifort CXXFLAGS=" -std=c++11" \
@@ -47,7 +46,7 @@ build() {
 #}
 
 package() {
-  cd "$srcdir/ff++"
+  cd ff++
   make -d DESTDIR="$pkgdir" install||true
   install -Dm644 examples++/freefem++.pref $pkgdir/etc/freefem++.pref
   find $pkgdir/usr/lib/ff++/ -name "*.h" -exec chmod o+r {} \;

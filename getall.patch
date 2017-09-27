@@ -1,0 +1,35 @@
+--- getall.orig	2017-09-26 21:52:49.798455547 +0200
++++ getall	2017-09-26 21:53:06.385076546 +0200
+@@ -98,14 +98,6 @@
+ # big package so we download it in any situation just in case an
+ # offline Windows compile follows.
+ 
+-download('OpenBLAS-Win64','http://downloads.sourceforge.net/project/openblas/v0.2.14/OpenBLAS-v0.2.14-Win64-int64.zip',
+-	 'http://www.openblas.net/','OpenBLAS-v0.2.14-Win64-int64.zip',
+-	 '9f2d41076857a514b921bf0bf03b5d39');
+-
+-download('OpenBLAS-Win32','http://downloads.sourceforge.net/project/openblas/v0.2.14/OpenBLAS-v0.2.14-Win32.zip',
+-	 'http://www.openblas.net/','OpenBLAS-v0.2.14-Win32.zip',
+-	 'eefdf170439620d78fabb3139b7aeb2f');
+-
+ download('FFTW','http://www.fftw.org/fftw-3.3.2.tar.gz','http://www.fftw.org','fftw-3.3.2.tar.gz',
+ 	 '6977ee770ed68c85698c7168ffa6e178');
+ 
+@@ -181,7 +173,7 @@
+ #	 'http://faculty.cse.tamu.edu/davis/SuiteSparse/','SuiteSparse-4.5.5.tar.gz',
+ #	 '0a5b38af0016f009409a9606d2f1b555') ;
+ 	 'http://faculty.cse.tamu.edu/davis/SuiteSparse/','SuiteSparse-4.4.4.tar.gz',
+-  	 '0a5b38af0016f009409a9606d2f1b555') ;
++  	 'e0af74476935c9ff6d971df8bb6b82fc') ;
+ 
+ download('SuperLU','http://crd-legacy.lbl.gov/~xiaoye/SuperLU/superlu_4.3.tar.gz',
+ 	 'http://crd-legacy.lbl.gov/~xiaoye/SuperLU/','superlu_4.3.tar.gz','b72c6309f25e9660133007b82621ba7c');
+@@ -197,7 +189,7 @@
+ 	 'http://ftp.mcs.anl.gov/pub/petsc/release-snapshots','petsc-lite-3.7.6.tar.gz','152c1f15f535af22fc015de1d3099db3');
+ 
+ download('SLEPc','http://slepc.upv.es/download/distrib/slepc-3.7.4.tar.gz',
+-	 'http://slepc.upv.es','slepc-3.7.4.tar.gz','d41d8cd98f00b204e9800998ecf8427e');
++	 'http://slepc.upv.es','slepc-3.7.4.tar.gz','cc1244d656e8c37bbdd3e4e897d0e391');
+ 
+ download('hpddm','https://github.com/hpddm/hpddm/archive/5b244c67ec8ab064071f3922022785f3e7a96b07.zip',
+ 	 'https://github.com/hpddm','hpddm.zip','86b222165a281e007c97bef4dd131a3b','BAD_CERT');
