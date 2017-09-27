@@ -6,8 +6,8 @@
 # highlighted at https://github.com/bitpay/copay/issues/6204
 
 pkgname=copay
-pkgver=3.7.3
-pkgrel=2
+pkgver=3.8.2
+pkgrel=1
 pkgdesc="Copay Bitcoin Wallet"
 arch=('x86_64')
 url="https://copay.io"
@@ -25,7 +25,7 @@ md5sums_x86_64=('SKIP')
 # Ideally the upstream git repo tags would signed, or the repo source snapshots were signed.
 # Would be nice if anything was signed and worked.
 # TODO: Try to verify the git tag we are about to build
-source_x86_64=("${pkgname}-${pkgver}::git+https://github.com/bitpay/copay.git#tag=${pkgver}")
+source_x86_64=("${pkgname}-${pkgver}::git+https://github.com/bitpay/copay.git#tag=v${pkgver}")
 
 # Previously used for signed binary releases
 # gpg --recv-keys 9D17E656BB3B6163AE9D71725CD600A61112CFA1
