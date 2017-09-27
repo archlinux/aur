@@ -1,6 +1,6 @@
 pkgbase = esev-git
 	pkgdesc = Extremely simple EXIF viewer
-	pkgver = r5.c300a70
+	pkgver = r6.aff6a24
 	pkgrel = 1
 	url = https://github.com/nathan-osman/esev
 	arch = i686

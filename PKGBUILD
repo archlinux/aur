@@ -2,7 +2,7 @@
 
 pkgname=esev-git
 _pkgname=esev
-pkgver=r5.c300a70
+pkgver=r6.aff6a24
 pkgrel=1
 pkgdesc="Extremely simple EXIF viewer"
 arch=('i686' 'x86_64')
