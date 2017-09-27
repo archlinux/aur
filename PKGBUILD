@@ -29,9 +29,6 @@ build() {
 check() {
 	cd ${srcdir}/zlib-$pkgver
 	make test
-
-	cd contrib/minizip
-	make -f Makefile.orig test
 }
 
 package() {
