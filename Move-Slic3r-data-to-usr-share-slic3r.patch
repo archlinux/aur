@@ -1,26 +1,67 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 43d7dee7..3e4e0c82 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -45,13 +45,14 @@ find_package(Perl REQUIRED)
+ add_subdirectory(xs)
+ 
+ enable_testing ()
+-get_filename_component(PERL_BIN_PATH "${PERL_EXECUTABLE}" DIRECTORY)
+-add_test (NAME xs COMMAND "${PERL_EXECUTABLE}" ${PERL_BIN_PATH}/prove -I ${PROJECT_SOURCE_DIR}/local-lib/lib/perl5 WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/xs)
+-add_test (NAME integration COMMAND "${PERL_EXECUTABLE}" ${PERL_BIN_PATH}/prove WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
++add_test (NAME xs COMMAND prove -I ${PROJECT_SOURCE_DIR}/local-lib/lib/perl5 WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/xs)
++add_test (NAME integration COMMAND prove WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+ 
+ install(PROGRAMS slic3r.pl DESTINATION bin RENAME slic3r-prusa3d)
+ 
+ file(GLOB MyVar var/*.png)
++
++find_package(PerlLibs REQUIRED)
+ install(FILES ${MyVar} DESTINATION share/slic3r-prusa3d)
+-install(FILES lib/Slic3r.pm DESTINATION lib/slic3r-prusa3d)
+-install(DIRECTORY lib/Slic3r DESTINATION lib/slic3r-prusa3d)
++install(FILES lib/Slic3r.pm DESTINATION ${PERL_VENDORLIB})
++install(DIRECTORY lib/Slic3r DESTINATION ${PERL_VENDORLIB})
 diff --git a/lib/Slic3r.pm b/lib/Slic3r.pm
-index 5f4357a9..e37a5e17 100644
+index 17b78326..92f1842c 100644
 --- a/lib/Slic3r.pm
 +++ b/lib/Slic3r.pm
-@@ -49,7 +49,7 @@ warn "Running Slic3r under Perl 5.16 is neither supported nor recommended\n"
+@@ -51,7 +51,7 @@ warn "Running Slic3r under Perl 5.16 is neither supported nor recommended\n"
  
  use FindBin;
  # Path to the images.
 -our $var = sub { decode_path($FindBin::Bin) . "/var/" . $_[0] };
-+our $var = sub { '/usr/share/slic3r-prusa3d/' . $_[0] };
++our $var = sub { decode_path($FindBin::Bin) . "/../share/slic3r-prusa3d/" . $_[0] };
  
  use Moo 1.003001;
  
 diff --git a/slic3r.pl b/slic3r.pl
-index c1371472..6cd50804 100755
+index 4b6e43e4..96cd91ec 100755
 --- a/slic3r.pl
 +++ b/slic3r.pl
-@@ -5,7 +5,7 @@ use warnings;
+@@ -3,12 +3,6 @@
+ use strict;
+ use warnings;
  
- BEGIN {
-     use FindBin;
+-BEGIN {
+-    use FindBin;
 -    use lib "$FindBin::Bin/lib";
-+    use lib "$FindBin::Bin/lib", "/usr/lib/slic3r-prusa3d/";
- }
- 
+-    use local::lib '--no-create', "$FindBin::Bin/local-lib";
+-}
+-
  use File::Basename qw(basename);
+ use Getopt::Long qw(:config no_auto_abbrev);
+ use List::Util qw(first);
+diff --git a/xs/CMakeLists.txt b/xs/CMakeLists.txt
+index 9d7c3110..59b6f335 100644
+--- a/xs/CMakeLists.txt
++++ b/xs/CMakeLists.txt
+@@ -532,5 +532,5 @@ elseif (NOT MSVC)
+ endif ()
+ 
+ # Installation
+-install(TARGETS XS DESTINATION lib/slic3r-prusa3d/auto/Slic3r/XS)
+-install(FILES lib/Slic3r/XS.pm DESTINATION lib/slic3r-prusa3d/Slic3r)
++install(TARGETS XS DESTINATION ${PERL_VENDORARCH}/auto/Slic3r/XS)
++install(FILES lib/Slic3r/XS.pm DESTINATION ${PERL_VENDORARCH}/Slic3r)
+
