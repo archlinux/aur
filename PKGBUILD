@@ -2,11 +2,11 @@
 
 pkgname=gtk-theme-ant
 pkgver=2017_09_22
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat and light theme with a modern look."
 arch=(any)
 url="https://github.com/EliverLara/Ant"
-license=('GPL3')
+license=('custom')  # No license provided
 source=('https://dl.opendesktop.org/api/files/download/id/1506053162/Ant-Dracula.tar.xz'
         'https://dl.opendesktop.org/api/files/download/id/1506053156/Ant-Bloody.tar.xz'
         'https://dl.opendesktop.org/api/files/download/id/1506053152/Ant.tar.xz')
