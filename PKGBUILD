@@ -2,9 +2,9 @@
 # Author: Steffen Weber <-boenki-gmx-de->
 
 pkgname=otter-browser-weekly
-pkgver=0.9.91.dev192
-_filename=0.9.91-dev192
-_foldername=weekly192
+pkgver=0.9.91.dev195
+_filename=0.9.91-dev195
+_foldername=weekly195
 _productname=otter-browser
 pkgrel=1
 
@@ -18,7 +18,7 @@ optdepends=('hunspell>=1.3.0: for spell checking'
             'qt5-webengine: for experimental backend using the Chromium browser project')
 conflicts=('otter-browser-git' 'otter-browser')
 source=("${_productname}-$pkgver.tar.bz2::http://netcologne.dl.sourceforge.net/project/${_productname}/${_productname}-${_foldername}/${_productname}-${_filename}.tar.bz2")
-md5sums=('023911d33e74e40dc0008906a5dd4f7c')
+md5sums=('13b69f170de00e079db0193bb3515807')
 
 
 build() {
