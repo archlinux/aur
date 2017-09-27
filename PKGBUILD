@@ -14,6 +14,6 @@ md5sums=('SKIP')
 
 package() {
     cd ${srcdir}/${pkgname}-master/
-    install -m 755 -D ${pkgname}.py "${pkgdir}/usr/share/nautilus-python/extensions/{pkgname}.py"
+    install -m 755 -D ${pkgname}.py "${pkgdir}/usr/share/nautilus-python/extensions/${pkgname}.py"
     install -m 644 -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
