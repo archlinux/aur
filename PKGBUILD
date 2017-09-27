@@ -2,7 +2,7 @@
 
 pkgname=hasmail
 pkgver=20150928
-pkgrel=3
+pkgrel=4
 pkgdesc="System tray application that checks for and notifies about new mail"
 arch=('x86_64' 'i686')
 url="http://github.com/Jonhoo/hasmail"
@@ -18,7 +18,7 @@ build() {
 }
 
 check() {
-  GOPATH="$GOPATH:$srcdir" go test -v -x ${_gourl}
+  GOPATH="$srcdir" go test -v -x ${_gourl}
 }
 
 package() {
