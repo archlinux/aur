@@ -38,7 +38,7 @@ package() {
 	install -Dvm644 "$srcdir/arch-plymouthize/copyright.txt" "$pkgdir/usr/share/licenses/arch-plymouthize"
 	install -Dvm644 "$srcdir/arch-plymouthize/arch-plymouthize.desktop" "$pkgdir/usr/share/applications/arch-plymouthize.desktop"
 	mkdir -p "$pkgdir/usr/share/arch-plymouthize/"
-	for N in "$srcdir/arch-plymouthize/arch-plymouthize/"; do
+	for N in "$srcdir/arch-plymouthize/arch-plymouthize/*"; do
 		install -Dvm644 $N "$pkgdir/usr/share/arch-plymouthize/"
 	done;
 }
