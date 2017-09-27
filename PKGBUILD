@@ -1,8 +1,8 @@
 # Maintainer: JC FRANCOIS <jc.francois@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.12
-pkgbuild=60
+pkgver=1.12.2
+pkgbuild=64
 pkgrel=1
 pkgdesc="CraftBukkit & Spigot Minecraft servers"
 arch=(any)
@@ -22,7 +22,7 @@ source=("https://hub.spigotmc.org/jenkins/job/BuildTools/${pkgbuild}/artifact/ta
         "stop_server.sh"
         "backup.sh"
         "readme.md")
-md5sums=('b1bb5ce70ba8f34259fa4643822b886f'
+md5sums=('59683171f76e92a06018b3271dd967d4'
          'ec1fa48d148fc3967e516772f6b7ca7b'
          'dd8955f7f9f19715ddfd6aefa697f845'
          'f9f56e25b7a31004a723ba1884e79c28'
