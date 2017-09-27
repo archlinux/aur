@@ -1,0 +1,30 @@
+pkgbase = mattercontrol-git
+	pkgdesc = Software solution for 3D printers
+	pkgver = 1.7.4.r28.fa9f5f9e
+	pkgrel = 1
+	url = http://www.mattercontrol.com
+	install = mattercontrol.install
+	arch = i386
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = nuget
+	depends = mono
+	depends = lib32-glibc
+	depends = gtk-sharp-2
+	optdepends = mattercontrol-plugins: Closed source plugins for cloud functionality
+	provides = mattercontrol
+	conflicts = mattercontrol
+	source = git://github.com/MatterHackers/MatterControl.git#branch=1.7
+	source = mattercontrol
+	source = mattercontrol.desktop
+	source = mattercontrol.png
+	source = mattercontrol.install
+	sha256sums = SKIP
+	sha256sums = 4954c0de00d6701d37c15c73d3509d0d91e67339c08afa3b273e9343dfd5cc61
+	sha256sums = 89854894868127bdb8d7ebdef8cccf1c528b0a07e526380dcc0e1024a15c033c
+	sha256sums = 6470dfabd982109638c2e9fc01acca51dc1109ce07aec261dbc4c86ead9f9927
+	sha256sums = 41e907de000d6b57c7788229a36ff4b247de928597401631e2b1036fdf97aa77
+
+pkgname = mattercontrol-git
+

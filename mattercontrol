@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/lib/mattercontrol/
+MONO_IOMAP=case exec mono /usr/lib/mattercontrol/MatterControl.exe $@
