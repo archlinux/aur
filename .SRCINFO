@@ -1,11 +1,11 @@
 pkgbase = bwsyncandshare
 	pkgdesc = file sync and share client
 	pkgver = 11.3.476
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bwsyncandshare.kit.edu
 	arch = any
 	license = custom
-	depends = jre
+	depends = jre8
 	depends = gtk2
 	noextract = bwSyncAndShare_Latest_Linux.tar.gz
 	source = https://download.bwsyncandshare.kit.edu/clients/bwSyncAndShare_Latest_Linux.tar.gz

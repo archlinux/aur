@@ -1,7 +1,7 @@
 # Maintainer: wilga <wilga at cat3 dot de>
 pkgname=bwsyncandshare
 pkgver=11.3.476
-pkgrel=1
+pkgrel=2
 pkgdesc="file sync and share client"
 arch=('any')
 url="https://bwsyncandshare.kit.edu"
@@ -9,7 +9,7 @@ license=('custom')
 
 # the upstream package includes a bundled Oracle jre8 but we install it as a dependency instead
 # NOTE: current version seems to require oracle jre and does NOT run with openjdk
-depends=('jre' 'gtk2')
+depends=('jre8' 'gtk2')
 
 # need to download "Latest" version since no version-numbered tarball exists
 # this will break when a new version is published
