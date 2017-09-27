@@ -4,27 +4,26 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=faac
-pkgver=1.29.3
+pkgver=1.29.7.6
 pkgrel=1
 pkgdesc="An AAC audio encoder"
 arch=('i686' 'x86_64')
 url="http://www.audiocoding.com/"
 license=('GPL' 'custom')
 depends=('libmp4v2')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://sourceforge.net/projects/faac/files/faac-src/faac-${pkgver:0:3}/faac-$pkgver.tar.gz")
+sha256sums=('36298549deab66b4b9bb274ecbe74514bb7c83f309265f8f649cf49a44b9bd9f')
 
 build() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
-  ./bootstrap
+  cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 "${srcdir}"/${pkgname}-${pkgver}/libfaac/kiss_fft/COPYING \
+  install -Dm644 "${srcdir}"/${pkgname}-${pkgver}/COPYING \
     "${pkgdir}"/usr/share/licenses/faac/LICENSE
 }
-md5sums=('20108ccff238813937ae1fec6eb80e7c')
