@@ -6,7 +6,7 @@
 # CUDA is x86_64 only and so it will not be available in i686 builds.
 
 pkgname=mpv-full-git
-pkgver=0.27.0.r41.gfab0448c5e
+pkgver=0.27.0.r70.g77547d7c19
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -153,12 +153,9 @@ build() {
         --enable-gl \
         \
         --enable-vaapi-hwaccel \
-        --disable-videotoolbox-hwaccel-new \
-        --disable-videotoolbox-hwaccel-old \
         --disable-videotoolbox-gl \
         --enable-vdpau-hwaccel \
         --disable-d3d-hwaccel \
-        --disable-d3d-hwaccel-new \
         --disable-d3d9-hwaccel \
         --disable-gl-dxinterop-d3d9 \
         "$_cuda" \
