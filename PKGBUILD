@@ -35,6 +35,7 @@ optdepends=(
 'nuvola-app-tunein:			tunein integration for Nuvola Player.'
 'nuvola-app-yandex-music:		yandex music integration for Nuvola Player.'
 'nuvola-app-youtube:			youtube integration for Nuvola Player.'
+'nuvola-app-logitech-media-server:	Logitech Media Server integration for Nuvola Player.'
 'libdbusmenu-glib:			Library for passing menus over DBus'
 'libappindicator-gtk2:			Systray icon support'
 'libappindicator-gtk3:                  Systray icon support'
