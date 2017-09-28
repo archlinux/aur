@@ -6,13 +6,13 @@
 
 pkgname=gnome-shell-extension-mediaplayer-git
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A mediaplayer indicator for the Gnome Shell'
 arch=('any')
 url='https://github.com/eonpatapon/gnome-shell-extensions-mediaplayer'
 license=('GPL2')
 makedepends=('meson' 'intltool')
-optdepends=('mpdris2-git: MPD support')
+optdepends=('mpdris2: MPD support')
 install=gschemas.install
 
 makedepends+=('git')
