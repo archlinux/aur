@@ -5,13 +5,13 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-mediaplayer-git
-pkgver=2.8
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='A mediaplayer indicator for the Gnome Shell'
 arch=('any')
 url='https://github.com/eonpatapon/gnome-shell-extensions-mediaplayer'
 license=('GPL2')
-makedepends=('gnome-common' 'intltool')
+makedepends=('meson' 'intltool')
 optdepends=('mpdris2-git: MPD support')
 install=gschemas.install
 
@@ -33,9 +33,9 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 build() {
   cd "$_gitname"
-  ./autogen.sh
-  ./configure --prefix='/usr' --disable-schemas-compile
-  make
+  rm -rf builddir
+  meson builddir --prefix='/usr'
+  ninja -C builddir
 }
 
 package() {
@@ -45,9 +45,15 @@ package() {
   done
 }
 
-package_01_make_install() {
+package_01_ninja_install() {
   cd "$_gitname"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" ninja -C builddir install
+}
+
+package_02_move_schema() {
+  cd "$pkgdir/usr/share"
+  mkdir -p glib-2.0/schemas
+  mv gnome-shell/extensions/*/schemas/*.xml glib-2.0/schemas
 }
 
 depends[125]=gnome-shell
