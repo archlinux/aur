@@ -2,7 +2,7 @@
 
 pkgname=('yubikey-manager-git')
 _gitname='yubikey-manager'
-pkgver=0.4.4.r7.08eba06
+pkgver=0.4.5.r11.e23d0bd
 pkgrel=1
 pkgdesc='Command line and GUI tool for configuring YubiKeys, over all transports.'
 arch=('any')
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --long | sed 's/^yubikey-manager.//;s/\([^-]*-\)g/r\1/;s/-/./g'
+  git describe --tag --long | sed 's/^yubikey-manager.//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
