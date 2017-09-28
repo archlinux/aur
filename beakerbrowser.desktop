@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=0.7.5
+Type=Application
+Name=beakerbrowser
+GenericName=An experimental peer-to-peer Web browser
+Comment=Build peer-to-peer Web applications
+Exec=beakerbrowser
+Terminal=true
+MimeType=text/plain;
+Icon=beaker
+Categories=Development;
+StartupNotify=beakerbrowser
+StartupWMClass=beakerbrowser
