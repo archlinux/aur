@@ -2,12 +2,12 @@
 
 pkgname="perl-gd-barcode"
 pkgver="1.15"
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Create barcode image with GD"
 arch=('any')
 url="http://search.cpan.org/dist/GD-Barcode"
 license=('GPL' 'PerlArtistic')
-depends=('perl' 'perl-gd')
+depends=('perl-gd')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/K/KW/KWITKNR/GD-Barcode-${pkgver}.tar.gz")
 sha512sums=('3128ef0376f2d31b55bdf9e206a16982632a7e7e7eae6d0d846fe0f80f3998a893f22f910a7d053e15b9fd94a9408805a7b862d735e6be03e1fcb9ff7d4d5155')
