@@ -3,9 +3,9 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=1.3.5
-_gitrev=689
-_gitver=a36fa532
+pkgver=2.1.1
+_gitrev=703
+_gitver=79cdfa5c
 _fullname="$pkgname-$pkgver.$_gitrev-$_gitver"
 pkgrel=1
 pkgdesc='Next generation Plex Desktop Client'
@@ -17,7 +17,7 @@ makedepends=('cmake' 'conan')
 source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive/v${pkgver}.${_gitrev}-${_gitver}.tar.gz"
         'plex-media-player.desktop')
 noextract=("plex-web-client-konvergo-$_webclientver.cpp.tbz2")
-sha512sums=('a97835d9aff4148ebca3b99aad4beee10e4e00c1439b2dece5cb90cf9577acbcffd9d31495f9d5bc974829a00ff1ca7a324d200c44f6828a492540e97f32ca37'
+sha512sums=('2d46db7a62ac8be519c3e6487277aca6705a9aec9ee5db50fdac89956a27e9a3d3ce24a03c39f65b214a6f904c1f949693e59ff0710dd41c878655588aec1cb3'
             'f24d70646babc2d248d6159442e3b9d5518276e7d8e33004f13d260953ebcd741067c507a47de25c24842e4391f4c403cdb46dc989b52fa1dde38a7312382db1')
 
 prepare() {
