@@ -6,7 +6,7 @@
 
 pkgname=chromium-gtk2
 _pkgname=chromium
-pkgver=61.0.3163.79
+pkgver=61.0.3163.100
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security (GTK2 version)"
@@ -34,7 +34,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-blink-gcc7.patch
         chromium-widevine.patch
         ca40720.diff)
-sha256sums=('bdbc139ed86f3b5d1ec3c3b00caeaef4f9ac2c363438f03dded56e217ad10727'
+sha256sums=('4135968cac6623c1d2b224494600cd274098cce41c298f8c3908b354a34c281b'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
