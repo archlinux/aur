@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
 _pkgname=AVALON
 pkgname=python-avalon_framework
 pkgver=1.4
