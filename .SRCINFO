@@ -1,0 +1,19 @@
+pkgbase = perl-lingua-en-number-isordinal
+	pkgdesc = Perl/CPAN Module Lingua::EN::Number::IsOrdinal: Detect if English number is ordinal or cardinal
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Lingua-EN-Number-IsOrdinal
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal
+	depends = perl-lingua-en-findnumber
+	depends = perl-try-tiny
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RK/RKITOVER/Lingua-EN-Number-IsOrdinal-0.05.tar.gz
+	md5sums = dbf1a6563300a31141eb9276a32e31eb
+	sha512sums = 45edc8343a89cd87a8d707ad6b406ed89708b88d7edc3edfdd1eb63e43520206e7accac6768e18d2db7bb81db3185fd2fb7537289f4bb29131e5e8ce774f70d1
+
+pkgname = perl-lingua-en-number-isordinal
+
