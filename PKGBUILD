@@ -2,7 +2,7 @@
 
 pkgname="perl-algorithm-checkdigits"
 pkgver="1.3.2"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="Perl extension to generate and test check digits"
 arch=('any')
 url="http://search.cpan.org/dist/Algorithm-CheckDigits/"
@@ -35,7 +35,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
