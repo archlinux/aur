@@ -6,8 +6,8 @@
 # CUDA is x86_64 only and so it will not be available in i686 builds.
 
 pkgname=mpv-full-git
-pkgver=0.27.0.r70.g77547d7c19
-pkgrel=2
+pkgver=0.27.0.r74.g791b9c4024
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -17,8 +17,9 @@ depends=(
         'lcms2' 'libgl' 'libxss' 'libxinerama' 'libxv' 'libxkbcommon' 'wayland'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'vapoursynth' 'libarchive' 'uchardet' 'zlib'
+        'vulkan-icd-loader'
     # AUR:
-        'mujs' 'rsound' 'sndio'
+        'mujs' 'rsound' 'sndio' 'shaderc-git'
 )
 depends_i686=(
     'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
@@ -29,7 +30,7 @@ depends_x86_64=(
         'ffmpeg-full'
 )
 optdepends=('youtube-dl: for video-sharing websites playback')
-makedepends=('git' 'mesa' 'python-docutils' 'ladspa')
+makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers')
 provides=('mpv')
 conflicts=('mpv' 'mpv-git')
 options=('!emptydirs')
@@ -151,6 +152,8 @@ build() {
         --enable-plain-gl \
         --disable-mali-fbdev \
         --enable-gl \
+        --enable-vulkan \
+        --enable-shaderc \
         \
         --enable-vaapi-hwaccel \
         --disable-videotoolbox-gl \
