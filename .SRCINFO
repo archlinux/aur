@@ -1,7 +1,7 @@
 pkgbase = python-pyowm
 	pkgdesc = A Python wrapper around the OpenWeatherMap API
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/csparpa/pyowm
 	arch = any
 	license = MIT
