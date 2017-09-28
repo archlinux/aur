@@ -31,6 +31,15 @@ diff --git a/vmblock/linux/control.c b/vmblock/linux/control.c
 index 79716bd..5b6acb2 100644
 --- a/vmblock/linux/control.c
 +++ b/vmblock/linux/control.c
+@@ -29,7 +29,7 @@
+ #include <linux/stat.h>
+ #include <linux/fs.h>
+ 
+-#include <asm/uaccess.h>
++#include <linux/uaccess.h>
+ 
+ #include "vmblockInt.h"
+ #include "block.h"
 @@ -208,9 +208,17 @@ SetupProcDevice(void)
     VMBlockSetProcEntryOwner(controlProcMountpoint);
  

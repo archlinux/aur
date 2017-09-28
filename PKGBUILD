@@ -19,7 +19,7 @@ _pkgver=${pkgver}
 #pkgver=12.5.7
 #_buildver=5813279
 #_pkgver=${pkgver}_${_buildver}
-pkgrel=6
+pkgrel=7
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -116,7 +116,7 @@ sha256sums=(
 
   '911a68af1c62f409e5e97c230ab67505ba2d1fe2e214d3ca4e0a11282d16efda'
   'f03c329dff2cf9a2fdfad938c4ce4ac5502fad5de1ef76a951dbc365748d1698'
-  '0a5aa819ca73513407acaf67779d95745314f7222afbd3fc2eadc80f24054d47'
+  '00be9dbef75266d882cbdc8cc0b8f78cd3b081d8ca9a3cbfa17cfc34b3f1a52f'
   '6b0edcccad66ee1f971b675de4af704749d4677a4fc75a5026e47dc11435902c'
   'b04baffa8ee7b5be56aba3d49d9c06be5e34a31808a6f93b899408dbda9aef40'
   '4c960079fec78682000a1c2e82dcaae69a6e91858dea641b707cf60674f3799f'
