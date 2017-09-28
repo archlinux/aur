@@ -1,3 +1,10 @@
+2017-09-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 1.4.1-1:
+    Fixed arguments of module-level functions.
+    Fixed bug of execution with pipe.
+    Fixed wrong excption is raised.
+    pkg: removed git from makedepends
+    pkg: added JavaScript runtimes to optdepends
 2016-09-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 1.4.0-2:
     pkg: replace dep on python(2)-packaging with python(2)-setuptools
