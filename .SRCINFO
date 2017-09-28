@@ -1,0 +1,16 @@
+pkgbase = perl-lingua-en-words2nums
+	pkgdesc = Perl/CPAN Module Lingua::EN::Words2Nums: Convert English text to numbers
+	pkgver = 0.18
+	pkgrel = 1
+	url = https://metacpan.org/release/Lingua-EN-Words2Nums
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JO/JOEY/Lingua-EN-Words2Nums-0.18.tar.gz
+	md5sums = 088e398a5f98ec6e3dc41a43babaf389
+	sha512sums = c26cc004f4df5d7a2b17e240c9e08dcc45f9da02d7c8488da98757ce38d29e78022c09b8f5ecb8b93219b9b36d13de0af965e86c0559a3d4dc5ad268dcaa2e76
+
+pkgname = perl-lingua-en-words2nums
+
