@@ -4,7 +4,7 @@
 
 pkgname='perl-net-ipaddress-util'
 pkgver='4.001'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Version-agnostic representation of an IP address'
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -37,7 +37,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
