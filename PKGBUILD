@@ -2,7 +2,7 @@
 
 pkgname=perl-datetime-format-oracle
 pkgver=0.06
-pkgrel="2"
+pkgrel='3'
 pkgdesc="Parse and format Oracle dates and timestamps"
 arch=(any)
 license=('PerlArtistic')
@@ -27,5 +27,5 @@ package() {
   make install DESTDIR=${pkgdir}
 
   # remove perllocal.pod and .packlist
-  find ${pkgdir} '(' -name perllocal.pod -o -name .packlist ')' -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
