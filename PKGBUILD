@@ -2,7 +2,7 @@
 pkgname=wire-desktop-beta
 _pkgname=${pkgname%-beta}
 pkgver=2.17.2813
-pkgrel=2
+pkgrel=3
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
@@ -20,7 +20,8 @@ sha256sums=('66e532a8b64231f0b7f11cce0dad389e56eff25cc4481976bcc466525d0aa8f6'
 build() {
   cd "${srcdir}/${_pkgname}-release-${pkgver}"
   npm install
-  $(npm bin)/grunt 'linux-other'
+  $(npm bin)/grunt 'clean:linux' 'update-keys' 'gitinfo' 'release-internal' 'bundle'
+  $(npm bin)/grunt "electronbuilder:linux_other"
 }
 
 package() {
