@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://beakerbrowser.com/"
 license=('Modified MIT License (MIT)')
 
-depends=('electron' 'nodejs')
+depends=('electron' 'nodejs' 'p7zip')
 checkdepends=('npm')
 makedepends=('libtool' 'm4' 'automake' 'make' 'git')
 optdepends=('gksu: sudo-save support')
@@ -41,7 +41,7 @@ build() {
 
 	cd "${srcdir}/beaker"
 	npm install
-	#npm run rebuild #see https://github.com/electron/electron/issues/5851
+	npm run rebuild #see https://github.com/electron/electron/issues/5851
 }
 
 check() {
@@ -73,8 +73,8 @@ package() {
 	cd "${srcdir}/beaker"
 
 	#Copy icons for Desktop Integration
-	install -Dm644 build/icons/48x48.png \
-    "$pkgdir/usr/share/icons/hicolor/48x48/apps/beaker.png"
+	#install -Dm644 build/icons/48x48.png \
+    #"$pkgdir/usr/share/icons/hicolor/48x48/apps/beaker.png"
 	
 	cd "${srcdir}"
 
@@ -89,8 +89,43 @@ package() {
 
 	echo -e "\033[1;31m==> Please wait until that installation is complete, Building the package... \033[1;0m \033[1;1m$1\033[1;0m" >&2
 
-	#Copy source to /opt	
-	#mv "${srcdir}/beaker" "${pkgdir}/opt/${pkgname}/"
+	#Copy source to /opt
+	cd "${srcdir}/beaker/"
+	echo "------------------------------------------------"
+	pwd
+
+	if [ -d "node_modules" ]; then
+		echo "OK node modules"
+	else 
+		npm install
+		npm run rebuild #see https://github.com/electron/electron/issues/5851
+	fi
+
+	echo "------------------------------------------------"
+
+	cd "${srcdir}"
+
+	if [ -d "beaker" ]; then
+
+		echo -e "\033[1;31m==> Please wait: Copy data and files \033[1;0m \033[1;1m$1\033[1;0m" >&2
+
+		cd "${srcdir}/beaker"
+
+		ls
+
+		#Before install icons and data
+		#Copy icons for Desktop Integration
+		install -Dm644 build/icons/48x48.png \
+    	"$pkgdir/usr/share/icons/hicolor/48x48/apps/beaker.png"
+	
+		mv * "${pkgdir}/opt/${pkgname}/"
+
+		#exit 1
+
+		#cp -R --preserve=mode "beaker/*" "${pkgdir}/opt/${pkgname}/"
+	fi
+
+	#mv "${pkgdir}/beakerbrowser/*" "${pkgdir}/opt/${pkgname}/"
 
 	#cp -rf "${srcdir}/beaker" "${pkgdir}/opt/${pkgname}"
 
@@ -99,6 +134,8 @@ package() {
 	#chmod a+rx ${pkgdir}/opt/${pkgname}
 
 	echo -e "\033[1;31m==> Copy binaries \033[1;0m \033[1;1m$1\033[1;0m" >&2
+
+	cd "${srcdir}"
 
 	# Install Binaries/Launchers
 	install -Dm755 ${pkgname} "$pkgdir"/usr/bin/${pkgname}
@@ -113,9 +150,29 @@ package() {
 	echo -e "\033[1;31m==> FIX permissions \033[1;0m \033[1;1m$1\033[1;0m" >&2
 
 	# Fix wonky permissions
-    find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
-    find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} \;
-    chmod 755 "${pkgdir}/opt/${pkgname}"
+	chown -R $USER /usr/local
+    #chown -R $USER "${pkgdir}/opt/${pkgname}/node_modules/*"
+    #chown -R $USER "${pkgdir}/opt/${pkgname}/app/node_modules/*"
+    #chmod 765 "${pkgdir}/opt/${pkgname}/node_modules/*"
+    #chmod 765 "${pkgdir}/opt/${pkgname}/app/node_modules/*"
+
+    chown -R $('whoami') /opt/beakerbrowser
+
+    #find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
+    #find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} \;
+    #chmod 755 "${pkgdir}/opt/${pkgname}"
+    
+    #sudo find /opt/beakerbrowser/node_modules/* -type d -exec chmod 755 {} \;
+    #find "${pkgdir}/opt/${pkgname}/node_modules/*" -type d -exec chmod 755 {} \;
+    #find "${pkgdir}/opt/${pkgname}/app/node_modules/*" -type d -exec chmod 755 {} \;
+
+    #sudo chown -R $("whoami") /opt/${pkgname}
+
+    #find "/opt/${pkgname}/node_modules/*" -type d -exec chmod 755 {} \;
+    #find "/opt/${pkgname}/app/node_modules/*" -type d -exec chmod 755 {} \;
+
+
+    #which beakerbrowser
 
     echo -e "\033[1;31m==> The package is completed .... \033[1;0m \033[1;1m$1\033[1;0m" >&2
 }
