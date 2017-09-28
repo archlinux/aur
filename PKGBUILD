@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='TIC-80 tiny computer emulator'
 arch=('i686' 'x86_64')
 url="https://tic.computer/"
-license=('CUSTOM')
+license=('MIT')
 
 source_i686=("https://github.com/nesbox/tic.computer/releases/download/v$pkgver/tic_32bit_$pkgver.tar.gz")
 source_x86_64=("https://github.com/nesbox/tic.computer/releases/download/v$pkgver/tic_64bit_$pkgver.tar.gz")
