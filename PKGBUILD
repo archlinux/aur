@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='perl-audio-scan'
 pkgver="0.98"
-pkgrel="3"
+pkgrel='4'
 pkgdesc="Fast C metadata and tag reader for all common audio file formats"
 arch=('i686' 'x86_64' 'arm')
 license=('PerlArtistic' 'GPL')
@@ -34,7 +34,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
