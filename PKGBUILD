@@ -2,7 +2,7 @@
 
 pkgname='perl-file-tempdir'
 pkgver='0.02'
-pkgrel="2"
+pkgrel='3'
 pkgdesc="Extensible and flexible object <-> relational mapper."
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -34,7 +34,7 @@ check() {
 package() {
   cd "${srcdir}/File-Tempdir-${pkgver}"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
