@@ -1,28 +1,26 @@
+# Maintainer: Alad Wenter <alad at mailbox dot org>
 # Contributor: Dr.Schliemann <doktor.schliemann at gmail dot com>
 # Contributor: JHeaton <jheaton at archlinux dot us>
 
 pkgname=basenji
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Volume indexing tool designed for easy and fast indexing of CD/DVD and other type of volume collections."
-arch=('any')
-url="https://launchpad.net/basenji"
+arch=('i686' 'x86_64')
+url='https://github.com/pulb/basenji'
 license=('GPL')
-depends=('dbus-sharp-glib' 'gnome-desktop2' 'gtk-sharp-2' 'taglib-sharp' 'udisks')
+depends=('gtk-sharp-2' 'taglib-sharp' 'gnome-desktop')
 makedepends=('gio-sharp')
-source=(https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz)
-md5sums=('eee951ac995359bedab23b964a8e5502')
-
-prepare() {
-  sed -i 's/dbus-sharp-1.0/dbus-sharp-2.0/
-          s/dbus-sharp-glib-1.0/dbus-sharp-glib-2.0/' configure Platform/Makefile
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pulb/basenji/archive/$pkgver.tar.gz")
+sha256sums=('3a4f63d0cc3dd78081d8063206f44f933c87f8f17705dca88d17c2b825538cf4')
 
 build() {
-  ./configure --prefix=/usr
-  make
+    cd "$pkgname-$pkgver"
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-  make DESTDIR="$pkgdir" install
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir" install
 }
