@@ -6,7 +6,7 @@
 # Contributor: MetaNova
 
 pkgname=epson-inkjet-printer-escpr
-pkgver=1.6.15
+pkgver=1.6.16
 pkgrel=1
 pkgdesc="Epson Inkjet Printer Driver (ESC/P-R) for Linux"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
