@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@domain.com>
 _pkgname=AVALON
-pkgname=python-avalon
+pkgname=python-avalon_framework
 pkgver=1.4
 pkgrel=1
 pkgdesc="Avalon Framework is a library that can make python printing in Linux much easier."
