@@ -5,14 +5,14 @@
 
 pkgbase=virtualbox-modules-uksm
 pkgname=('virtualbox-host-modules-uksm' 'virtualbox-guest-modules-uksm')
-pkgver=5.0.8
+pkgver=5.1.28
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-uksm-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.0-uksm
+_extramodules=extramodules-4.13-uksm
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -21,20 +21,20 @@ build() {
 	echo "dkms_tree='$srcdir/dkms'" > dkms.conf
 	# build host modules
 	msg2 'Host modules'
-	dkms --dkmsframework dkms.conf build "vboxhost/$pkgver" -k "$_kernver"
+	dkms --dkmsframework dkms.conf build "vboxhost/${pkgver}_OSE" -k "$_kernver"
 	# build guest modules
 	msg2 'Guest modules'
-	dkms --dkmsframework dkms.conf build "vboxguest/$pkgver" -k "$_kernver"
+	dkms --dkmsframework dkms.conf build "vboxguest/${pkgver}_OSE" -k "$_kernver"
 }
 
 package_virtualbox-host-modules-uksm() {
 	pkgdesc='Host kernel modules for VirtualBox running under Linux-uksm.'
 	license=('GPL')
-	depends=('linux-uksm>=4.0' 'linux-uksm<4.1')
+	depends=('linux-uksm>=4.13' 'linux-uksm<4.14')
 	install=host.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
-	cd "dkms/vboxhost/$pkgver/$_kernver/$CARCH/module"
+	cd "dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
 	install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
 	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/host.install"
@@ -43,12 +43,15 @@ package_virtualbox-host-modules-uksm() {
 package_virtualbox-guest-modules-uksm() {
 	pkgdesc='Guest kernel modules for VirtualBox running under Linux-uksm.'
 	license=('GPL')
-	depends=('linux-uksm>=4.0' 'linux-uksm<4.1')
+	depends=('linux-uksm>=4.13' 'linux-uksm<4.14')
 	install=guest.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
-	cd "dkms/vboxguest/$pkgver/$_kernver/$CARCH/module"
+	cd "dkms/vboxguest/${pkgver}_OSE/$_kernver/$CARCH/module"
 	install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
 	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/guest.install"
 }
+
+
+
