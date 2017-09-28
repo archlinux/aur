@@ -2,7 +2,7 @@
 
 pkgname=perl-latex-encode
 pkgver='0.092.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Encode characters for LaTeX formatting"
 arch=(any)
 license=('PerlArtistic')
@@ -36,7 +36,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
