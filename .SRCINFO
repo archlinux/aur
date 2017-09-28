@@ -1,7 +1,7 @@
 pkgbase = python-pyexcel
 	pkgdesc = A wrapper library that provides one API to read, manipulate and write data in different excel formats
-	pkgver = 0.5.3
-	pkgrel = 3
+	pkgver = 0.5.4
+	pkgrel = 1
 	url = https://github.com/pyexcel/pyexcel
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = python-pyexcel
 	depends = python-texttable
 	depends = python-pyexcel-io
 	depends = python-lml
-	source = https://github.com/pyexcel/pyexcel/archive/v0.5.3.tar.gz
-	md5sums = b9e168f9c3b1488e13708c354a2c1660
+	source = https://github.com/pyexcel/pyexcel/archive/v0.5.4.tar.gz
+	md5sums = 1104526cab0a75cf3058db675bb355f3
 
 pkgname = python-pyexcel
 
