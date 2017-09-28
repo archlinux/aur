@@ -4,6 +4,7 @@ download
 *.pkg.tar.xz
 *.tar.bz2
 *.tar.gz
+*.tar.xz
 
 # Created by https://www.gitignore.io/api/vim
 
