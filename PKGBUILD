@@ -30,9 +30,15 @@ _sha256sums=('SKIP'
              'SKIP'
              '9a10dc166ef275fe5958bcc2523a47c35d642a17f18ce8aaaecde615ce1c474f')
 
-## Fetch linux sources from ABS
+## Fetch linux package sources from git
 if [ ! -d core-linux ];then
-  rsync -mrtv --no-motd --no-p --no-o --no-g "rsync.archlinux.org::abs/${CARCH}/core/linux/" core-linux || exit 1
+  mkdir core-linux || exit 1
+  pushd core-linux || exit 1
+  git init -q || exit 1
+  git remote add packages git://git.archlinux.org/svntogit/packages.git || exit 1
+  git fetch packages packages/linux || exit 1
+  git archive "packages/packages/linux:repos/core-${CARCH}" | tar x || exit 1
+  popd || exit 1
 fi
 
 # add AUFS patches
