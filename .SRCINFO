@@ -1,7 +1,7 @@
 pkgbase = munge
 	pkgdesc = An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment.
-	pkgver = 0.5.12
-	pkgrel = 2
+	pkgver = 0.5.13
+	pkgrel = 1
 	url = https://github.com/dun/munge/wiki
 	install = munge.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = munge
 	depends = openssl
 	optdepends = zlib: zlib compression support
 	optdepends = bzip2: bzip2 compression support
-	source = https://github.com/dun/munge/archive/munge-0.5.12.tar.gz
-	sha512sums = 551b3da8de11a50e2cfbdb19de5c2e64dae9d8082bc55219d4f532a48ba01e802e33bac920568cd8b36220d7bd892a6a6e2a963b63199224343eedf204657ce5
+	source = https://github.com/dun/munge/archive/munge-0.5.13.tar.gz
+	sha512sums = a577e9824320849da1efce12b42a5cd9a591f6f9f42a38c5c26f787fd0f21021144a0b7bbb9fd0a46f1d72a49b355bfc5bc078ca55cf4bd7cf0c3b9b4797b2a9
 
 pkgname = munge

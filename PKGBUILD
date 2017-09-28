@@ -2,8 +2,8 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=munge
-pkgver=0.5.12
-pkgrel=2
+pkgver=0.5.13
+pkgrel=1
 pkgdesc="An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment."
 arch=('i686' 'x86_64')
 url="https://github.com/dun/munge/wiki"
@@ -13,15 +13,12 @@ optdepends=("zlib: zlib compression support"
 	"bzip2: bzip2 compression support")
 install="${pkgname}.install"
 source=("https://github.com/dun/munge/archive/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('551b3da8de11a50e2cfbdb19de5c2e64dae9d8082bc55219d4f532a48ba01e802e33bac920568cd8b36220d7bd892a6a6e2a963b63199224343eedf204657ce5')
+sha512sums=('a577e9824320849da1efce12b42a5cd9a591f6f9f42a38c5c26f787fd0f21021144a0b7bbb9fd0a46f1d72a49b355bfc5bc078ca55cf4bd7cf0c3b9b4797b2a9')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
 
-	# '--with-crypto-lib=libgcrypt' is a temporary workaround for an OpenSSL 1.1.0 conversion bug
-	# refer to https://github.com/dun/munge/issues/54 for more information
 	./configure \
-		--with-crypto-lib=libgcrypt \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
 		--localstatedir=/var \
@@ -38,9 +35,6 @@ package() {
 	# Remove obsolete init script (Arch Linux uses SystemD)
 	rm -f "${pkgdir}"/etc/init.d/munge
 	rmdir "${pkgdir}"/etc/init.d
-
-	# /usr/sbin is deprecated in Arch Linux
-	sed -i 's/\/usr\/sbin/\/usr\/bin/g' "${pkgdir}"/usr/lib/systemd/system/munge.service
 
 	# It is bad practice to put package-files in /run
 	# The dir /var/run/munge will be created in post_install, see .install
