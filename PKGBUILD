@@ -5,8 +5,8 @@ pkgrel=1
 pkgdesc="A bundle of R packages needed by JASP desktop"
 url="http://cran.r-project.org/"
 arch=('any')
-depends=('r')
-makedepends=('r' 'gcc-fortran')
+depends=('r' 'r-cran-rcpp')
+makedepends=('r' 'gcc-fortran' 'r-cran-rcpp')
 source=("rbundle.R")
 
 pkgver() {
