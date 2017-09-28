@@ -2,7 +2,7 @@
 
 pkgname=perl-rose-db-object
 pkgver="0.815"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="Extensible, high performance object-relational mapper (ORM)"
 arch=(any)
 license=('PerlArtistic')
@@ -36,5 +36,5 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
