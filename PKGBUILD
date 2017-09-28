@@ -2,7 +2,7 @@
 
 pkgname=perl-eval-linenumbers
 pkgver=0.34
-pkgrel="2"
+pkgrel='3'
 pkgdesc="Add line numbers to hereis blocks that contain perl source code"
 arch=('any')
 url="http://search.cpan.org/dist/Eval-LineNumbers"
@@ -36,7 +36,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
