@@ -2,7 +2,7 @@
 # Contributor: Simon Conseil <contact+aur at saimon dot org>
 
 pkgname=pip-tools
-pkgver=1.9.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="A set of tools to keep your pinned Python dependencies fresh."
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python-click' 'python-first' 'python-pip' 'python-six')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         LICENSE.txt)
-md5sums=('28401a367a9a9c37cac56f76cf7f91d9'
+md5sums=('5feedbb9a7b91c2619f1162711b430b0'
          'b542fe20de254615b3ab48020bc73441')
 
 package() {
