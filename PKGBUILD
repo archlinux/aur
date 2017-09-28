@@ -1,14 +1,13 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='perl-dbix-class'
 pkgver='0.082840'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Extensible and flexible object <-> relational mapper."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 
 depends=(
-  'perl'
   'perl-class-accessor-grouped>=0.10012'
   'perl-class-c3-componentised>=1.0009'
   'perl-class-inspector>=1.24'
@@ -32,6 +31,7 @@ depends=(
 
 makedepends=(
   'perl-dbd-sqlite>=1.29'
+  'perl-module-install'
   'perl-package-stash>=0.28'
   'perl-test-deep>=0.101'
   'perl-test-exception>=0.31'
