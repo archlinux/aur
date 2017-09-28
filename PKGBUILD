@@ -2,7 +2,7 @@
 
 pkgname=perl-convert-nlsdateformat
 pkgver="0.06"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="Convert Oracle NLS_DATE_FORMAT to/from strftime format strings"
 arch=(any)
 license=('PerlArtistic')
@@ -36,7 +36,7 @@ check() {
 package() {
   prepare_environment
   ./Build install
-  find "$pkgdir" '(' -name .packlist -o -name perllocal.pod ')' -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
