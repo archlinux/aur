@@ -1,38 +1,36 @@
-# Contributor: Thomas Fanninger <thomas@fanninger.at>
-# Maintainer: Thomas Fanninger <thomas@fanninger.at>
+# Former maintainer: Thomas Fanninger <thomas@fanninger.at>
 
 pkgbase=transwhat
 pkgname=('python-transwhat' 'python2-transwhat')
-pkgver=0.2
-pkgrel=9
+pkgver=0.2.2
+pkgrel=1
 epoch=1
 pkgdesc="A gateway between the XMPP and the WhatsApp IM networks"
 arch=('any')
 url="https://github.com/stv0g/transwhat"
 license=('GPL')
-makedepends=('python2-setuptools' 'python2-protobuf3' 'python2-pillow' 'python2-dateutil' 'python2-yowsup>=2' 'python2-e4u')
+makedepends=('python-setuptools' 'python2-setuptools')
 options=('!strip' '!emptydirs')
-
-source=("$pkgbase-$pkgver"::"git+http://github.com/stv0g/transwhat.git#branch=setuptools")
-sha512sums=(SKIP)
-
-build(){
-  cd $srcdir
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/stv0g/transwhat/archive/v0.2.2.tar.gz")
+md5sums=('75f44a8dd5a1abb449e0b4426f457dc7')
 
 package_python-transwhat() {
   cd "${srcdir}/transwhat-${pkgver}"
+  depends=('python' 'python-protobuf' 'python-pillow' 'python-dateutil' 'python-yowsup>=2' 'python-e4u')
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  find "$pkgdir" -type f -exec sed -i 's#/usr/bin/python2#/usr/bin/python#g' {} \;
 }
 
 package_python2-transwhat() {
   pkgdesc='A gateway between the XMPP and the WhatsApp IM networks - Python 2'
-  depends=('python2' 'python2-protobuf3' 'python2-pillow' 'python2-dateutil' 'python2-yowsup>=2' 'python2-e4u' "python-transwhat=${epoch}:${pkgver}-${pkgrel}")
+  depends=('python2' 'python2-protobuf' 'python2-pillow' 'python2-dateutil' 'python2-yowsup>=2' 'python2-e4u' "python-transwhat=${epoch}:${pkgver}-${pkgrel}")
 
   cd "${srcdir}/transwhat-${pkgver}"
-  python2 setup.py install --prefix=/usr --root=$pkgdir --optimize=1
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
-check(){
-  cd "${srcdir}/transwhat-${pkgver}"
-  python2 setup.py test
-}
+# disabled for now
+#check(){
+#  cd "${srcdir}/transwhat-${pkgver}"
+#  python2 setup.py test
+#}
