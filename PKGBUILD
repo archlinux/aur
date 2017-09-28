@@ -19,7 +19,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/fern-wifi-cracker"
-  git describe --tags | sed 's|-|.|g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
