@@ -1,0 +1,14 @@
+pkgbase = typescript-vim-git
+	pkgdesc = Typescript syntax files for Vim
+	pkgver = 7843f89
+	pkgrel = 1
+	url = https://github.com/leafgarland/typescript-vim
+	arch = any
+	license = none
+	makedepends = git
+	depends = vim
+	source = typescript-vim-git::git+https://github.com/leafgarland/typescript-vim.git
+	md5sums = SKIP
+
+pkgname = typescript-vim-git
+

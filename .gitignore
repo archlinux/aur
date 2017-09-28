@@ -1,0 +1,7 @@
+*.swp
+
+# makepkg
+pkg/
+src
+typescript-vim-git/
+typescript-vim-git-*.pkg.tar.xz
