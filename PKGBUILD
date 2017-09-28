@@ -4,7 +4,7 @@
 _pkgname=qt-gtk-platform-plugin
 pkgname=${_pkgname}-git
 provides=($_pkgname)
-pkgver=0.0.202
+pkgver=20170928.30b8b6a
 pkgrel=1
 pkgdesc='GTK platform backend for Qt'
 arch=('any')
@@ -15,11 +15,7 @@ sha256sums=('SKIP')
 
 pkgver () {
   cd "${srcdir}/gtkplatform"
-  if git describe --tags --long; then
-    git describe --tags --long | sed -r 's/^v//;s/-RC/RC/;s/([^-]*-g)/r\1/;s/-/./g'
-  else
-    echo "0.0.$(git rev-list --count HEAD)"
-  fi
+  echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
 }
 
 build() {
