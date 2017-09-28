@@ -1,1 +1,2216 @@
-advance on click or assign during pause
+Version history
+===============
+
+0.9.0
+-----
+
+2017-09-28
+
+Raymanni's Toy, Lab, and Gore tilesets to v3: Raymanni has drawn Lab monitors,
+Gore tentacles, eyes, and a bonesaw, a Toy chalkbox, and several more. All
+tiles have shading from the top-left as normal for Lix tiles. Thanks!
+
+Added Proxima's and mobius's multiplayer levels, merged geoo's level changes
+for the tileset update.
+
+Level search.
+
+Fix #230: Frogs ate cubers, and flung cubers reanimated. Now, cubers stay dead.
+
+Fix #231: Tumblers oscillated in thin walls. Now, tumblers will either move or
+land. (The tumbler code is not perfect yet, I'm planning to rewrite it, but
+the rewrite's subtle physics changes would invalidate too many replays still.)
+
+Fix #214: Players permute correctly in networking games.
+
+Fix #239: The server sends a permutation of correct size. This fixes wrong
+hatch/goal distributions in games with many observers and larger teams.
+
+Fix #217: Skip remaining overtime when everybody has nuked or finished
+playing.
+
+Race maps (= maps that have zero overtime) nuke automatically on the first
+scoring.
+
+Fix #240: Observers don't have to cancel the end-of-game dialog anymore. I
+print the game result to the console. This is not beautiful, but it's an
+acceptable medium-term solution.
+
+
+
+0.8.8
+-----
+
+2017-09-24
+
+(Still 0.8.5 physics: This 0.8.8 still has the severe bug where you can fling
+cubers and thereby reanimate them, leading to wrong counts of lix alive. 0.9
+will fix this.)
+
+Merged 9 new multiplayer maps by Colorful Arty. Merged multiplayer map updates
+by geoo.
+
+All racing maps, and geoo's Tower Defense 22934, have zero overtime. All other
+maps have nonzero overtime.
+
+The ping button highlights both your hatches and your exits in multiplayer.
+
+Multiplayer colors: Orange and yellow are more distinct. Grey is lighter. Blue
+and black are darker.
+
+Warn about fewer key collisions in the the options tab for hotkeys in menus.
+
+Linux packaging: You can override the XDG install path with a custom path, see
+doc/build/package.txt. In the git repository, data/images/lix_logo.svg has a
+large logo as SVG. I don't ship that in the download because it's over 3 MB.
+
+
+
+0.8.7
+-----
+
+2017-09-19
+
+The out-of-skills beep was too trigger-happy: When we clicked a mining lix
+and had miners left in the skill panel, the game beeped as if we were out of
+skills. Fixed.
+
+
+
+0.8.6
+-----
+
+2017-09-19
+
+Fix #227: Lobby player list shows 8 entries at a time and scrolls. Before, it
+let the the 9th, 10th, ..., button bleed underneath the list.
+
+Fix #228: Edge scrolling requires the hardware mouse inside the window.
+
+Fix #229: Pressing the hotkey of an empty skill deselects all skills instead
+of keeping the previous selection.
+
+Included Rubix's variants on Marble Run, Eater Island, Diagonal 8p, and removed dead space on Across the Gap. Everybody else: Post your multiplayer maps, then I can include them in the next version.
+
+Optionally print during play the number of physics updates, frames per second, and a ballpark guess of allocated VRAM.
+
+
+
+0.8.5
+-----
+
+2017-09-09
+
+Fix #244: Grouping certain tiles led to an assertion failure: The game
+attempted to cut the group like a gridded animation. Fixed.
+
+Most of #216: Ping button: A small button in multipalyer games, next to the
+nuke. Button clicks highlight all own goals for 4 seconds by flashing them
+inside black and white boxes above the terrain. Can be hotkeyed; by default,
+no key is bound.
+
+Fix #162: In the hotkey options, if you bind the same key twice, all its
+bindings show in red. You can decide whether to remove one binding or keep
+all.
+
+Fix: When the editor inserts a tile from the terrain browser into a level, the
+tile will be aligned to the grid.
+
+I enforce bitmap creation: If you run out of VRAM, Lix should now terminate
+with a proper exception, not crash later in unrelated functions. If you crash,
+screenshot the error, or send me [tt]data/log.txt[/tt].
+
+I optimized the lix Job hierarchy for speed: Lixes are value types, and carry
+their job as a value type within themselves. (Drawing many exploder fuses at
+once is still slow. Organ Symphony will still kill the framerate.)
+
+Fix #211: On Linux, you can pass a compiler switch to make Lix system-wide
+installable, follwing the XDG base directory structure. For arbitrary
+installation paths, open an issue on github.
+
+
+0.8.4
+-----
+
+2017-08-30
+
+Fix #4 and #213: Some graphics cards cannot load textures wider or taller than
+4096 pixels. Amanda's tar and occult hatch were too wide. Now, I allow
+two-dimensional spritesheets for single-animation gadgets, and I've
+rearranged the frames in the tar and occult hatch. In Lix, looks and physics
+should be unaffected.
+
+lemforum: Over the Hump out, Duality in. Duality and Round Trip swap places
+within Daunting.
+
+5 new multiplayer maps by Rubix.
+
+0.8.3
+-----
+
+2017-08-27
+
+Fix #176: Make a tile group with at least one non-dark tile where all non-dark
+tiles are covered entirely by dark tiles. This crashed the game before. This
+crash is now fixed.
+
+Fix #191: Initial zoom on tall narrow maps (e.g., Rubix's Hamunaptra for 4
+players) is fit-to-height, or zoom 1 if fit-to-height would zoom even further
+out. Initial zoom on small narrow maps (e.g., The Runaround) fits the entire
+map on the screen, obviating scrolling, allowing dark borders.
+
+Merged editor's Topology and Looks dialogs into a single new Map dialog.
+No new functionality yet. I'm thinking about custom screen starts.
+
+For a new player, the singleplayer browser highlights Any Way You Want,
+the first map of the lemforum pack.
+
+lemforum, Forest of Fears: Wider exit platform, should look less cramped now.
+
+0.8.2
+-----
+
+2017-08-24
+
+Fixed magic crash: The Wine build, in release mode, run in Wine but not in
+Windows, crashed on entering a nonexistant user name. This would have been
+very bad because can't do anything on new installation before entering a name.
+The fix is pure magic, a mere rearrangement of lines. Fixed for safety, even
+though it was OK in Windows.
+
+0.8.1
+-----
+
+2017-08-24
+
+The save-as browser (used by the editor to save levels) allows to create
+new directories.
+
+Editor defaults to 30 seconds of overtime on new levels. Singleplayer levels
+discard their time.
+
+Removed hints during levels and manual screen start.
+
+Rebevelled [tt]matt/underworld/{00,01,02}.png[/tt]: Better shading, these
+bricks don't look flattened near their left edge anymore.
+
+lemforum: Sinking Ship, geoo is author. namida written in only small letters.
+Setting a Fundament, renamed to Cubic Interpolation. Forest of fears, removed
+2 backroutes.
+
+0.8.0
+-----
+
+2017-08-22
+
+Stable 0.7.22 physics. I would like to keep these physics at least for several
+months.
+
+Tooltips during game explain directional select, priority invert,
+and double-click on nuke. Can disable tooltips in the options menu.
+
+Removed the unused editor button to add decoration. To fill the void,
+the button to add terrain is twice as large. Not perfect, but good for now.
+
+0.7.22
+------
+
+2017-08-20
+
+Physics: Flinging downwards initializes pixelsFallen with the distance that
+speed-0 tumblers normally fall before reaching the given speed. Still, all
+flinging overwrites pixelsFallen without respect to earlier values. Tumblers
+splat when pixelsFallen on impact is larger than 126.
+
+Re-introduced downwards steam and the 2016 decoration on Goblin City, Gomen
+ne, 100 Ways to Die.
+
+Digger unchanged since 0.7.19: Still 5/9 with anti-razor-edging. Discussing.
+
+lemforum: Bulldozer out, Sinking Ship v2 in. Empty Space reverted to the 2014
+version, rejecting both propesed versions from 2017. Renamed Cuber Replacement
+to Jack in the Box.
+
+0.7.21
+------
+
+2017-08-18
+
+Fix: The last exiter didn't play the exiter sound.
+
+Renamed Rubix's "Just a Minute... (Part three)" to "Come on Down! The Price Is
+Right", which is almost too long but still fits well.
+
+Removed lemforum/wip-0.7/ and images/geoo/construction/chain1.png, the
+now-obsolete tile because its size doesn't conform to multiples of 8.
+[url=http://www.lixgame.com/etc/unused-levels-0.7.zip]Download unused levels
+and chain1[/url].
+
+Removed simon/wood/ tileset. I've replaced these tiles with Matt's wooden
+planks in the 3 multiplayer levels by Rubix used them:
+Going Up, Coming Down (2p); Naoh's Ark (2p), Naoh's Ark (Team).
+
+0.7.19
+------
+
+2017-08-16
+
+Physics: Digger has anti-razor-edging: Whenever a digger ignores steel, he
+cannot remove earth pixels beyond the steel in the same row. (The digger stays
+at 5/9 steel sensitivity, i.e., chokes on steel in the central 10 of 18 hi-res
+pixels and continues despite steel in the outermost 4 hi-res pixels on either
+side.)
+
+Updated lemforum's Down Among the Dead Lix, Let's All Go Down the Strand,
+Division of Labor, Empty Space is Hardly a Waste (Proxima's 2017-08-15
+version). Theresa v2 has been up-to-date since 0.7.16.
+
+Merged Rubix's remakes of The Clairvoyant and Flatlined. Thanks!
+
+Removed the downwards steam. I adapted the decoration in the only 3 lemforum
+levels that used downwards steam: Giblin City, Gomen Ne, 100 Ways To Die.
+(Downwards transportation beams are slow, not intended to kill, and therefore
+still in the game.)
+
+In the editor, you can delete tiles by dragging them onto the panel. While
+hovering over the panel with dragged tiles, the mouse cursor becomes a
+trashcan and the tiles become invisible.
+
+Fix: Drag tiles around in the editor, tap the tile-deleting hotkey, and
+continue to drag around nothing. The game crashed. Fixed by stopping the
+dragging on deleting a selection.
+
+Fix #174: The ingame level map, during non-integral zoom, sometimes
+didn't initialize/overwrite outside rows of pixels. Fixed by rounding up.
+
+Fix #201: The ingame level map during large integral zoom that didn't
+divide the length of the map, didn't initialize/overwrite outside rows of
+pixels. Fixed by rounding up.
+
+0.7.18
+------
+
+2017-08-12
+
+Tumblers remember how many pixels they have moved downwards since (they got
+flung for the last time, or since they moved upwards, whatever of these
+happened later). When non-floatable tumblers hit the ground, they splat if the
+fallen hi-res pixels exceed 126. They ignore the y-speed for splatting.
+
+I've drawn 4 new digger frames before the animation loop begins.
+
+In multiplayer, when overtime starts, the bell sounds and the console warns
+about how much time will be left before the nuke.
+
+0.7.17
+------
+
+2017-08-10
+
+100 % proof coverage for lemforum and NepsterLix! Thanks to all who submit
+replays. The coverage is for the 5/9 digger.
+
+Rubix's singleplayer levels are almost covered: 155/157. Uncovered levels are
+The Clairvoyant and Flatlined, these Oriental levels need an overhaul due to
+tileset breakage. I'll PM Rubix. Removed The More You Know because that's a
+nuke level, but D Lix locks the exits during the nuke. Lowered initial lix on
+many levels.
+
+No decision yet for the digger. 5/9 is implemented. I'm leaning towards
+keeping this 5/9 digger, but I want to read over yesterday's chatlogs again
+and Proxima might post to the 0.7-steel-sensitivity topic.
+
+0.7.16
+------
+
+2017-08-09
+
+All water gadgets in images/simon have multiples of 16 for their sizes: 48x48
+or 48x32 or 48x16. The old water size was 50x50. I've looked through all
+singleplayer levels -- lemforum, NepsterLix, and Rubix -- and fixed the few
+water placements that had not yet looked good with 48x48.
+
+All triggered gadgets (triggered traps and triggered flingers) have two rows
+of animations: The first row loops while idle, the second row plays while
+busy. After the final frame of the second row has played, the gadget will
+eat another lix and jump back to the frontmost frame of the second row, or,
+if nobody is in range, begin looping the idling animation from the front.
+
+Kept digger at 5/9 sensitivity for now: Digger chokes on steel when the
+innermost 10 of 18 pixels contain any steel. I should make a final decision
+this week.
+
+Rubix's singleplayer levels, Perplexing: Lowered initial lix on some levels.
+Coverage 108/158 -> 119/158, need 39 more.
+
+Get Hype and Theresa V2 merged into lemforum from the 0.7-lemforum thread.
+lemforum coverage is 239/240, need 1 more: Theresa V2.
+
+0.7.15
+------
+
+2017-08-04
+
+Revert basher mask: Bottom 16 pixels are steel-sensitive, not only the
+bottom 13. I.e., we have 2, not 5, insensitive pixels over the sensitive.
+
+Replay verifier logs to `data/verifier.txt' and closes the file after
+writing its last line or after closing the dialog.
+
+0.7.14
+------
+
+2017-08-02
+
+Proxima's planned changes to the lemforum pack. Snowball Battle: Spawn
+interval 20->22, to keep it solvable.
+
+0.7.13
+------
+
+2017-08-01
+
+Physics: The basher ignores steel in its top 5/18 rows, not merely 2/18.
+The digger ignores steel in its 4 outermost hi-res pixels on both sides,
+not merely in its outermost 2 on each side. The digger digs every (16*n)
+frames following its assignment, not already every (16*n - 4).
+
+Fixed bug #202: Small levels image-export with all stats again, not only
+with their skills.
+
+0.7.12
+------
+
+2017-07-31
+
+lemforum pack: Simple renamed to Lovely. Some backwards-compatibility code
+that converts progress checkmarks during loading the user file.
+
+lemforum/wip-0.7 has all levels in consideration for lemforum pack's stable
+release with 0.7.x in 2 weeks. I hope all levels are up-to-date.
+
+Raymanni's 3 water tiles have higher trigger areas. (Lixes drown earlier and
+higher up than before when they drop into the water.)
+
+Zoom 1x is always allowed, even if the level doesn't fill the available area.
+
+Fix #206: Editor browsers show the innermost directory of hatches, goals,
+traps, and other gadgets.
+
+Goals are locked during the nuke. The nuke is purely for decoration and
+to finish replays in style.
+
+Mouse code reverted to the 0.6 mouse code. If anybody has trouble, tell me.
+
+Keyboard key duration before first repeat for moving selected editor
+pieces: 0.33 seconds -> 0.2 seconds.
+
+Lots of multiplayer nuke code that handles conceding and calling for the nuke.
+When you press the nuke button, you lose control over your lix, overtime
+starts, but your lix don't explode yet. We'll see how it feels.
+
+Editor allows to set overtime in multiplayer levels. Existing multiplayer
+levels are tagged with the correct player number.
+
+0.7.11
+------
+
+When you want to nuke, you can't assign skills anymore. The game core dismisses
+assignments after your nuke, and the GUI shows zero skills.
+
+Game doesn't show FPS in the panel by default. It's an option still.
+
+0.7.10
+------
+
+2017-07-17
+
+Updated lemforum/Vicious/_order.X.txt, ordering One-Lix Showdown.
+
+0.7.9
+-----
+
+2017-07-17
+
+Physics change:
+Reverted the physics change from 0.7.8: The walker skill behaves like in 0.6
+again. Either the lix cancels her activity and walks on, or turns.
+
+Shotgun-debugged mobius's mouse problem by applying a Linux workaround for
+all systems. I couldn't test, hope this helps.
+
+More lemforum level pack coverage. Only 7 levels left to cover:
+fromtheotherside.txt metalcitymayhem.txt thecontinuum.txt
+dreamtheimpossible.txt lixsterquadrille.txt survivalofthecraft.txt
+toccata.txt
+
+0.7.8
+-----
+
+2017-07-01
+
+Physics change:
+0.6 walker: If target lix is working, revert to walker. Otherwise, turn.
+0.7.8 walker: If target lix is working, revert to walker. Turn in every case.
+
+0.7.6
+-----
+
+2017-06-20
+
+Fix: Builders and platformers duplicate bricks for free when turning at
+blockers. Before, number bricks left decreased for these extra bricks.
+
+0.7.5
+-----
+
+2017-06-20
+
+lemforum: Completely Ridiculous Level is narrower by 48 pixels.
+203/240 levels are proven solvable in 0.7 physics, let's cover 37 more.
+
+Down-facing tumblers drown head-first, not feet-first.
+
+0.7.4
+-----
+
+2017-06-14
+
+simon/oriental/bonsai: This tree got lixes stuck beneath its leaves.
+Changed some pixels and therefore the tree's physics. Didn't affect any
+levels for the worse.
+
+Rubix's Pleasand and Sinister are 100 % covered. The higher difficulties
+aren't covered yet.
+
+When you verify dirs in the replay browser, that dir becomes the most recent
+dir for exiting and restarting the browser.
+
+0.7.3
+-----
+
+2017-06-14
+
+NepsterLix is 100 % solvable with 0.7.2 physics.
+
+The replay browser offers a button "Verify dir" that verifies all replays
+in the current directory, recursing through subdirectories. Lix shows the
+results in the GUI and copies them to the logfile.
+
+0.7.2
+-----
+
+2017-06-11
+
+Blocker field is back like in 0.6: LLLLLL-RRRRRR against everything.
+This is simplest and allows crowd-follows-builder in at least 70 % of the
+cases.
+
+0.7.1
+-----
+
+2017-05
+
+Blocker fields by geoo's suggestion, LLLLLL-RRRRRR against nonbuilders and
+LLLLL---RRRRR against builders.
+
+0.7.0
+-----
+
+2017-05
+
+Lots of changes, see experimental version thread on lemmingsforums.com.
+
+0.6.39
+------
+
+2017-07-01
+
+The replay browser allows you to batch-verify all replays in the current
+directory. The results are printed on screen and to the logfile.
+
+Fixed 3 backroutes in NepsterLix; the changed levels are A Day in Lixtown,
+House of the Mad Trickster, and No Matter What I Try.
+
+0.6.38
+------
+
+2017-05-14
+
+Fixed #158: When you exported levels as images from the game and your game's
+resolution was not 640x480, the images had blank stripes instead of skillbars.
+
+Editor draws teams on hatches and goals. (Bug: When you have fewer gadgets
+of either type than teams, only the first team will be drawn.)
+
+Editor terrain browser shows more tiles with smaller buttons.
+
+0.6.37
+------
+
+2017-04-29
+
+Codebase builds with dmd 2.074.
+
+Fix #197: Create a new level, never save, then instruct the editor to exit.
+When the editor asks about potential data loss, choose to save. The buttons
+in the save browser didn't work, the level was lost. This is now fixed.
+
+Fix #198: When the editor inserts a tile from a browser, the new tile
+aligns to the grid.
+
+0.6.36
+------
+
+2017-04-28
+
+Re-enable the option to untrap mouse with fast movement. I have a kludgy fix
+against the buggy mouse jump (Arch 2016, Allegro 5.2, my old code or Allegro
+generated extra move events when I merely wanted to warp the mouse).
+* This kludge is only helpful when you always trap the mouse inside Lix.
+* If you allow the mouse to leave with fast movement, you'll still have a
+    warp when you begin right-click scrolling. Need kludge on top of kludge?
+* The kludge is only active on Linux, I've static-if'd it away elsewhere.
+
+0.6.35
+------
+
+2017-04-25
+
+Fix #183: Multiplayer panel shows only number of saved, not any requirement.
+We can still improve this later, e.g., by showing the score of the best
+opponent.
+
+Fix #180: Chat during play implemented.
+
+Fix #181: Chat message length is unlimited. The entry box scrolls along.
+
+Fix #146: Skill arrows scale only once. There are only 1x-zoomed arrows,
+they are drawn straight to the map, then scroll and zoom along with the
+terrain. Maybe GUI-scaled arrows should move as GUI components along with
+the scrolling, but that would be very hard and force frequent total redraws.
+
+0.6.34
+------
+
+2017-04-16
+
+Fix #192: While you are in the multiplayer level browser, incoming console
+messages don't overwrite the browser anymore.
+
+Fix #194: Show both the score bar graph and the tape recorder buttons
+when you watch a saved multiplayer replay.
+
+Fix #195: Client shows version mismatch in their console when they attempt to
+connect to a server running an incompatible version. Versions X.Y.Z are
+compatible iff they have the same X and the same Y. The patch version Z
+doesn't matter.
+
+Fixed asserts in the delayed exploder code. Undelayed, lix explode in the next
+fame following their assignment. Delayed exploders explode in the 75-th-next
+frame after the assignment, this is 74 frames later than undelayed.
+
+Removed my desert tileset (images/simon/desert). It has become unacceptable
+MS-Paint programmer art. Almost nobody used it. The levels "Hrududu" and
+"Group Therapy" used it for decoration, I have re-decorated them in similar
+style. The asymmetric multiplayer maps "Shine On You Crazy Lix" used desert
+for the main terrain. I won't ship these until they're redesigned; this is
+a good opportunity to fix the advantage of the higher-spawning players.
+
+0.6.33
+------
+
+2017-04-14
+
+Fix #182: Timed exploders in multiplayer have a nice burning fuse. I examine
+the spritesheet for the eye position. The fuse burns slow at the beginning,
+then faster when it's short, for visibility.
+
+Fix #193: Most opponents' sounds aren't played. Opponents' deaths and baseball
+bats still play sounds.
+
+Fix #168: Server resets all room data once a room is empty, and deallocates
+the level. Before, you could find old levels when entering a new room.
+
+NaOH's forest exit has animated candles. Physics remain identical.
+
+Singleplayer nuke buttons don't have a red background anymore. I want to
+redesign multiplayer nuke buttons, e.g., by printing overtime on them.
+
+0.6.32
+------
+
+2017-04-11
+
+Partly fix #182: Draw a rudimentary exploder flame over the lix's head
+in multiplayer. I don't draw a fuse yet, and I don't examine the spritesheet
+for the exact eye position.
+
+Fix #190: Override "asdfasdf.ethz.ch" with "lixgame.com" in outdated
+config files left behind by C++ Lix.
+
+0.6.31
+------
+
+2017-04-06
+
+Fix #186: Observers can't assign skills even locally.
+
+Fix #58: Option to keep replay actions after framestepping backwards over them,
+this is enabled by default. mobius likes to remove them on framestepping.
+
+Don't float-downscale UI CutbitElements, always display at integer scale >= 1.
+
+Removed images/matt/oriental/dragon.png. That tile was huge, clashed
+in style with other pieces, and is nowhere used.
+
+0.6.30
+------
+
+2017-03-30
+
+Fix #184: Observing players don't add colors to the game. There is still a
+bug with observers: The can assign skills, changing their own replay, even
+though others won't interpret these assignments.
+
+Maybe fix #177: Multiplayer or state-loaded singleplayer produced outdated
+land, even though physics were correct. Copying the land without transparency
+should fix that.
+
+0.6.29
+------
+
+2017-03-29
+
+Moved gamestate memory management from GC with manual GC calls to reference
+counting. Maybe that fixes #177, outdated terrain during multiplayer?
+
+Fix #179: Unfocus lobby chat when a game starts.
+
+Fix #178: Don't flash the R for replaying during multiplayer.
+
+Fix #185: Hotkeyed zoom during multiplayer, even if the button isn't shown.
+
+Fix #171: Terrain browser doesn't upscale small tiles.
+
+0.6.28
+------
+
+2017-03-18
+
+First version for the networking test on lemmingsforums.net.
+
+Removed the option to untrap the mouse with quick mouse movements. This
+option was buggy on linux and has always required workarounds. To untrap
+the mouse now, press Alt+Tab.
+
+Matt's winter hatch has no snow, but wooden triangles.
+
+0.6.27
+------
+
+2017-03-16
+
+In multiplayer, the server sends time-syncing packets to all players in a
+room. This happens every 0.5 seconds during the first few seconds in the game,
+and every 5 seconds later on. Players adjust their physics' speed to match.
+Even if players open the ESC menu, a networked game will continue to run.
+
+0.6.26
+------
+
+2017-03-09
+
+NepsterLix 1.6 is an excellent singleplayer puzzle pack with 106 levels.
+It was released in 2016, now it's finally included in the main download.
+
+Sharper small text on small resolutions such as 800x600 and below: Instead
+of small shadow text, I print small text with a dark outline.
+
+More networking code: Transferring and interpreting game data works.
+Can't interrupt other players' replay actions anymore. Game's network
+connection is picked up by lobby after game. But the server doesn't yet
+send time-syncing packets every few seconds, thus clients will time-shift.
+
+0.6.25
+------
+
+2017-03-05
+
+The Windows executable has a Lix icon in the file manager. On all operating
+systems, the application window and taskbar entry have a Lix icon.
+
+0.6.24
+------
+
+2017-03-04
+
+Fix #167: Editor button zooms again. Map is rezoomed when editor resizes map.
+
+Fix #170: Game crashed due to the Nurse indexing players in the replay by
+PlNr. Now, the replay uses a PlNr-indexed associative array.
+
+I offer more zoom values: 1/sqrt(2), 1, sqrt(2), 2, 3, 4, 6, 8, 16, and
+fitting the level's width or height to screen.
+
+0.6.23
+------
+
+2017-03-02
+
+Fewer zooms are considered similar. This addresses Nepster's concerns:
+http://www.lemmingsforums.net/index.php?topic=3128.msg63116#msg63116
+
+Fix #169: I validate all user files for good UTF-8 before calling Phobos.
+
+Implemented the transparent console for networking messages during play.
+
+I've worked on starting networking games and transferring game data.
+I haven't tested this yet, don't expect anything yet.
+
+0.6.22
+------
+
+2017-02-18
+
+When you zoom in or out, the mouse points to the same pixel on the land
+before and after the zoom. Exception: Map scrolling is restricted on low zoom.
+
+Fix: In-game map boundary was sometimes too thin, there was a 1-pixel wide
+column or row of non-erased pixels between the boundary and the land.
+
+Fix #94: Show spawn interval only when hovering over a hatch. I'm showing
+it in the panel still, not laid over the hatch, which would have been better.
+
+If a map is taller than wide, it tries to fit its width to the screen width,
+not the height.
+
+0.6.21
+------
+
+2017-02-16
+
+Merged a contribution by CyberShadow to upscale the 640x480 GUI icons
+for high resolutions by integer factors when no high-res icon exists. Thanks!
+
+Initial zoom fits the level height on the screen height, allowing horizontal
+scrolling if the map is very wide. Exception: The map is only slightly wider
+than the screen, then initial zoom fits the width on the screen width,
+generating a black border at the top.
+
+When you increase the zoom factor, the game centers on the mouse cursor.
+
+0.6.20
+------
+
+2017-02-04
+
+Code compiles with dmd 2.073: Masks initialize at runtime, before main menu.
+I removed tharsis.prof, that dependency didn't build with dmd 2.072.
+
+Reworkings under the hood towards minimum viable multiplayer. In case you
+have replays from old C++ Lix, you can watch them in D Lix now. But you still
+cannot start multiplayer games yet in D Lix.
+
+0.6.19
+------
+
+2016-11-01
+
+I require Allegro 5.2 now instead of 5.0.
+
+Included Rubix's levels. They're all solvable in D Lix.
+
+Fix #159: Better encapsulation for physics caching. Don't switch timelines
+merely by framestepping back. Maybe this fixes Rubix's sporadic crashes, #154.
+
+Fix #24: GUI text vertically centered on buttons. I'd like to see how this
+looks on Windows machines.
+
+More work on the networking lobby. You can chat, browse rooms, send and receive
+levels, but can't start a game yet.
+
+0.6.18
+------
+
+2016-10-08
+
+Fix: When you picked a tile from the editor's tile browsers, the tile wouldn't
+appear in the level. Now it does again.
+
+0.6.17
+------
+
+2016-09-21
+
+Fix #153: I have culled the no-effect decoration. The still decoration is now
+solid terrain. Animated decoration is gone, except for the beach bonfire, which
+became a fire trap. I have changed levels that I distribute with the game to
+use the new tiles. Backwards compatibility for levels that I don't maintain:
+The level loading function silently replaces decoration with the new tiles.
+
+I removed the auto-replacements for Matt's terrain that I made in 2010 and
+2011. Almost no levels relied on them anymore, and I've changed the remaining
+two levels that did. These levels remain functionally identical.
+
+Fix #156: Switching to a parent directory in the singleplayer browser clears
+the preview again.
+
+Rubix has created a cute sound for (singleplayer, you have lost too many lix).
+It's included, and plays once when triggered, not five times like the old tick.
+
+The warning sound for empty skill doesn't play on mouse click, only on hotkey.
+
+0.6.16
+------
+
+2016-09-14
+
+Fix #152: The singleplayer browser has a button to create a new level.
+This button is always visible, whether a level is selected or not.
+
+Fixed smearing FPS text in the editor.
+
+0.6.15
+------
+
+2016-09-13
+
+Started networking backend, lobby, and console. You can log onto the central
+server at lixgame.com and chat.
+
+Fix #145: The editor calced twice after its boxes lost focus. You could cancel
+a box with a hotkey, and the editor interpreted the hotkey itself once more.
+
+Fix #151: When there is no savestate, the state-load button is hidden.
+
+Fast movement frees mouse: This option is off by default.
+
+0.6.14
+------
+
+2016-09-01
+
+Command-line switches to jump into play:
+    lix level.txt                plays the level.
+    lix replay.txt               plays the replay against its included level.
+    lix --pointed-to replay.txt  plays the replay against its pointed-to level.
+    lix level.txt replay.txt     plays the replay against the given level.
+
+Minor bugs left behind here: Depending on from where the levels are run,
+they do or don't generate checkmarks. Auto-replays should always be saved,
+even if, when not run from the root directory, the replays are called unknown.
+
+Command-line switch to export images. The following command-line exports as
+images the two given levels, and all levels recursively found in mydir:
+    lix --image level1.txt level2.txt mydir
+
+Fix #149: Singleplayer always displays a dialog at end of play again,
+so you can control the entire application with the mouse alone. You can
+framestep back from this dialog.
+
+0.6.13
+------
+
+2016-08-27
+
+Lemforum levels got updates from August 2016. I deleted the tutorial levels:
+The lemforum pack is our flagship pack and starts with very easy levels.
+Other packs need not provide tutorial levels.
+
+Fix #142: There is a virtual file system. It recognizes ./ and ../ now.
+Other directories, in particular installations in Linux File System Hierarchy
+trees, aren't supported yet, but the necessary changes have become easy.
+
+Fix #148: When you fail a singleplayer level, the game halts and allows you
+to go back in time. It doesn't spawn a dialog box anymore.
+
+Fix #144: In the editor, when you mirrored a piece with transparent pixels at
+its sides, the piece moved. Entire selections diverged on repeated mirroring.
+
+Fix #84 and #90: The options menu explains its options, except on the editor
+tab. The box near the menu's bottom provides two lines of explanation.
+
+0.6.12
+------
+
+2016-08-07
+
+Fix #134: Select multiple tiles in the editor and press rotate.
+The tiles rotate correctly with respect to each other. Rotating 4 times
+puts them back exactly where they started, they don't wander. This works
+even if oddly-sized tiles or unrotatable gadgets are in the selection.
+
+Fix #139: The browsers for hatches, goals, decoration, and hazards display
+all tiles in the images/ tree in one listing.
+
+Fix #140: The terrain browser starts browsing from the directory of the
+tile you have selected at the moment. If you haven't selected anything,
+they start from the directory from which you've most recently added a tile.
+
+Fix #143: The file selector scrolls to the final row, even if it's less
+than half-filled. Before, the scrollbar looked like there were more files,
+but didn't make the tiler display these extra files.
+
+Swapped author and level title in the editor's constant-setting window.
+
+0.6.11
+------
+
+2016-08-06
+
+lemforum pack: Many updates by Proxima and geoo. Fewer lix in Hopeless.
+geoo has rebuilt Spin Geometry with completely new terrain, and renamed it
+to All Aboard the Pain Train. Off the Rails is now Railroad Plot, and
+Derailed Level got a derailing locomotive as decoration.
+
+Fix #117: Name-asking menu for new players exits with plain Esc. I don't
+display anything for this.
+
+Fix #131 and #111: Simpler starting zoom. Depending on your game
+resolution, either all levels start as 1x or all levels start as 2x. Test
+and see if you like the zoom for your resolution.
+
+Fix #122: When you continue from a saved replay, then win, or save
+manually, the new replay goes into the correct directory and points to the
+correct level file.
+
+Fix #133: The singleplayer menu shows the player's best score: Lix saved
+and skills used.
+
+Fix #138: Editor hotkeys work even while you're dragging. The buttons on
+screen are disabled for the mouse during drag.
+
+Fix #127: I hide dot-files, like .git, in level directories.
+
+0.6.10
+------
+
+2016-07-31
+
+In the lemforum pack, 237 of all 240 levels are guaranteed to be solvable.
+The remaining possibly-unsovable levels are Trading and Cooperating,
+The Mile High Club, and Striking News at Ten.
+
+Fix #116: Editor shows the top-left point of a multiple selection, the minimal
+coordinate each in both the x- and y-direction.
+
+Fix #130: After state-loading a different timeline, framestepping moved back
+to the undesired timeline. Now, I discard old savestates until the merge base
+of the two timelines, and recompute from there on savestate.
+
+Fix #91: Editor buttons are disabled when dragging.
+
+0.6.9
+-----
+
+2016-07-27
+
+Miners throw their pickaxe into the air when they hit steel.
+
+Option: Do fast mouse movements untrap the mouse from windowed Lix?
+
+lemforum pack updated by Proxima, again first 5 ranks solvable.
+
+0.6.8
+-----
+
+2016-07-22
+
+Decoration updated on Any Way You Want, The Road Goes Ever On, Just Stop
+the Bleeding.
+
+Fix #125: disksave.ogg was too loud, changed from 0 dBFS to -4.5 dBFS.
+
+0.6.7
+-----
+
+2016-07-22
+
+The lemforum pack's first 5 ranks are guaranteed to be solvable. geoo has
+given maintenance of the lemforum pack to Proxima. Proxima has spent days
+on careful level adaption to D Lix and difficulty reordering.
+Out: Get Down From There, Minimalism Part 3.
+In: Don't Look Back (jagged floor instead of a time-limit gadget),
+    Canadian Glade (inspired by Get Down From There, uses the forest tileset).
+
+Fix #111: Initial zoom on torus maps was too zoomed in.
+
+Fix #112: Hotkey labels ran over nearby buttons.
+
+Fix #118: When Lix wasn't the foreground window, it trapped the mouse
+nonetheless when the cursor passed over the inactive window. Now, you must
+click into the window to trap the mouse. This fix made visible another bug:
+In the inactive Lix, the ingame cursor moves offset from the hardware cursor.
+
+Worked on #124: I don't add 0x0 as a fullscreen mode anymore.
+
+0.6.6
+-----
+
+2016-07-17
+
+The lemforum community pack has Proxima's suggestions up to 2016-07-17.
+Several levels have moved between ranks. Some have been replaced entirely:
+Out: Minimalism (Part 1), Fear of Heights, That Pesky Gap, Don't Look Back,
+    Too Far to Walk
+In: A Necklace of Raindrops, The Road Not Taken, All Around the World,
+    Diggin' the Air, A Soulful Bounding Leap
+
+--coverage switch to use along with --verify, to compute level directory
+coverage. From all levels that reside in level directories from where you
+have tested at least one pointed-to level of a replay with --verify,
+--coverage lists those levels that didn't enjoy even a single solution.
+Please read levmaint.txt for detailed instructions. Example command line:
+
+    lix --verify=replays/path/to/dir --coverage
+
+Fix #113: Shorter key names with unicode symbols. In particular, keys on
+the numeric pad have a nice symbol that looks like the keypad.
+
+Fix #120: Topology updates correct equation, not only the horizontal equation
+
+Some assertions to debug issue #121 on MacOS.
+
+0.6.5
+-----
+
+2016-07-03
+
+Fix #103: When you re-enter the window, the ingame mouse starts moving from
+where the hardware mouse entered the window.
+
+Fix #108: Adventure Playground displays again in the preview and is playable.
+
+The replay browser has two buttons to start replays: One replays against the
+included level, one replays against the pointed-to level.
+
+Updated the lemforum community pack to geoo89/lixlfpack commit 2a91852.
+This reorders some levels. Two levels have been replaced entirely:
+Out: Three Days of the Condor, Absolute Zero
+In: Lixes in Motion, Eye of the Needle
+
+Afterwards, the lemforum pack got fewer initial lix in the lower three ratings
+Simple, Quirky, Cunning. Proxima has played all these levels, tested for
+solvability under a fixed spawn interval, and recommended lower initial lix
+counts that keep the level idea fully intact. We have removed about 2,000 lix.
+
+0.6.4
+-----
+
+2016-06-27
+
+Editor increases the level's $BUILT when saving a changed level.
+
+Fix #106: With mixed dirs and files, picker couldn't scroll to the last file.
+Fix #107: Prefer queuing builders to spamming, then you couldn't queue at all.
+
+New user option to unpause on skill assignments.
+
+Tutorial levels are solvable again, and you can't die in them as easily.
+
+0.6.3
+-----
+
+2016-06-22
+
+Fix #97: The game advances physics on assignment and unpauses on nuking.
+
+The browsers' breadcrumbs are wider and less tall. I don't display the current
+directory in the browser's title bar anymore. The picker shows 20 files
+instead of 19, this fixes #96.
+
+The preview draws a dark border around the level instead of the menu color.
+Under the preview, I write the level name.
+
+0.6.2
+-----
+
+2016-06-20
+
+Multiple hotkeys can be bound to the same function. By default, the editor
+moves tiles both with the arrow keys and with ESDF. Pause is bound to [Space]
+and to the middle mouse button.
+
+Editor grouping, ungrouping, saving, and save-as can be hotkeyed.
+
+0.6.1
+-----
+
+2016-06-18
+
+Editor displays the trigger area of all gadgets.
+
+0.6.0
+-----
+
+2016-06-15
+
+Physics: Imploder mask is symmetric. It's wider by 1 lo-res pixel to the right.
+
+You can drag the scrollbar thumb with the left mouse button.
+
+0.5.0
+-----
+
+2016-06-14
+
+Physics: Groups with steel have correct distribution of steel, earth, air.
+
+I highlight on the map the lix under the mouse cursor who would get assigned.
+
+The Editor allows to ungroup tiles.
+
+I show hatch spawn direction, describe hovered tiles, and use a more
+peaceful color flow for hovers and selections. Save-as forbids special chars.
+
+The game shows the constant spawn interval in the panel. I don't know
+whether I want to keep this and make an icon for it, or whether people
+don't need it later.
+
+0.4.4
+-----
+
+2016-06-06
+
+Bugfixes for these github issues:
+#67: Z-ordering several tiles
+#85: Hover sorting guarantees group's z-order
+#81: Crash on nonexistant base directory of a browser
+Button hotkeys are drawn on top of buttons, not behind main text.
+
+I now try to paint the screen black immediately on display creation.
+I don't want a white flash before showing the main menu. I have to test at
+Icho's Windows machine whether this prevents the white flash.
+
+0.4.3
+-----
+
+2016-06-02
+
+Loading levels auto-converts from no-overwrite to tile groups.
+
+Even in a release build, an on-the-fly conversion takes 5.5 seconds for
+A Day In Lixtown and 1.2 seconds for Heed the Traffic Light. Lixtown has 2000
+pieces and does fancy tricks with no-overwrite. I have to decide whether
+the performance is acceptable, whether to improve the algorithm, or whether
+to save converted levels to file.
+
+Merged a tree tile by Amanda to prevent getting stuck in its leaves.
+
+Editor remembers the recently-loaded or recently-saved file, similar to how
+the game remembers the recently-played level. The singleplayer browser
+shows the most recent file.
+
+Don't show elapsed time in singleplayer. It looks like a time limit.
+Does anyone want the elapsed time shown nonetheless?
+
+0.4.2
+-----
+
+2016-06-01
+
+Level reads and writes tile groups.
+
+The game renders groups with correct air parts inside.
+I haven't tested steel, I expect bugs when grouping steel.
+
+There is no conversion yet from no-overwrite to groups.
+
+0.4.1
+-----
+
+2016-05-25
+
+Game and editor draw a thin line at the torus seam. This is optional.
+
+The automatic screen start snaps to the level boundary if it's close to it
+and the level has no wrapping in that direction.
+
+Started tile grouping using Nepster's algorithm. Thanks for the straightforward
+idea in O(n^2), with tips on how to optimize to O(n log n) if wanted!
+
+0.4.0
+-----
+
+2016-05-23
+
+Physics change: Climbers couldn't ascend into 1-pixel high gaps with an
+overhanging ceiling.
+
+Fix #73: Tile selection boxes were offset. Reason: A5 rotates tiles clockwise.
+Many parts of the D Lix source assumed a counter-clockwise rotation.
+
+0.3.7
+-----
+
+2016-05-21
+
+The editor's save-as dialog is implemented. It doesn't preview the old level,
+but asks before overwriting.
+
+0.3.6
+-----
+
+2016-05-18
+
+Editor: new file, quit, and save to existing file are implemented. The editor
+asks whether you would like to save when you would lose data on new or quit.
+
+Fixed an editor crash on querying terrain on tiles with negative coordinates.
+
+The editor saves to ./levels/editor-emergency-save.txt when you click save-as,
+because save-as is not implemented yet. The editor saves to that file too
+on assertion fails, as a safeguard.
+
+0.3.5
+-----
+
+2016-05-15
+
+geoo has designed awesome glyphs, representing mouse wheel and buttons.
+The infinity symbol is now a big lemniscate. I've included the new glyphs
+in the default font. Thank you, geoo!
+
+Editor has a window to set the main level constants, and another to set
+the level topology. Non-browser-opening editor buttons have words, not icons.
+This addresses issue #74 partially.
+
+The editor can only set the English level title. You can set the intended
+number of players per level, but that field has no effect anywhere yet.
+
+0.3.4
+-----
+
+2016-05-08
+
+Right mouse button, middle mouse button, wheel up, wheel down are all available
+keys to map in the hotkey dialog. There are two keys to map for zoom now.
+Default value for zoom-in is wheel-up, default for zoom-out is wheel-down.
+
+Removed the boolean options that became superfluous after allowing mouse
+buttons as hotkey bindings. Set the edge scroll speed to 0 to disable it.
+
+Pause accepts two keybindings. I'd like multiple keys for any function.
+
+Singleplayer browser shows author and save requirement, allows to delete level.
+
+Culled variable spawn interval UI and level variables.
+
+Fixed wrong phymap querying: clamping coordinates on a torus must wrap them.
+
+Fixed a crash, the game tried to dispose a null state after long play.
+
+0.3.3
+-----
+
+2016-05-03
+
+Fix #42: Zoom increases at level start until at least 70 % of map screen
+space is filled. This makes for dynamic zoom per level, per resolution.
+
+Fix #31: I drew air where solid after batch-framestepping, when lots of
+drawing and removing happened in short succession. geoo has suggested
+the new algorithm that's both simpler and bug-free. Thanks!
+
+0.3.2
+-----
+
+2016-05-03
+
+Editor skill window: Clicking the label "Fling-exploder" affects checkbox,
+too. Buttons resized and captioned according to Proxima's suggestions.
+
+0.3.1
+-----
+
+2016-05-01
+
+File picker scrolls with the mouse wheel.
+
+Replay browser can delete files and lists player names next to files.
+
+The editor keeps the manual or automatic screen start from old levels,
+even though it cannot change the screen start yet.
+
+Fix #66: Boolean options react to mouse clicks on their label, not only
+to mouse clicks on the checkbox itself.
+
+0.3.0
+-----
+
+2016-04-27
+
+Physics change: We don't check for physics near the eye, which would have
+depended on the spritesheet. Instead we check at (foot) + (0, y), where
+y is 0, -4, -8, and -12. This check is independent from the current lix job.
+Rationale: http://www.lemmingsforums.net/index.php?topic=2678
+
+0.2.49
+------
+
+2016-04-27
+
+Level and replay browsers select adjacent directories and files by hotkey.
+
+Tile browsers in the editor remember the last-chosen tile's directory,
+and use the screen real estate better with 6 x 10 items at a time.
+
+0.2.48
+------
+
+Fix: Singleplayer results overwrite outdated level results.
+
+Editor rotates and mirrors terrain pieces, and toggles the dark flag.
+
+When you enter a directory in a browser and the picker highlights the
+recent file, this file is scrolled into view.
+
+0.2.47
+------
+
+2016-04-20
+
+Fix #65: Sign error when computing the offset for steel checks. The error
+shifted steel checks too far into the ground and to the right.
+
+Backwards framestepping is accelerated by 1/lag, where the lag is measured
+as ratio (FPS / ideal number of FPS). Slight difference in memory management
+for savestates, but no manual management yet.
+
+0.2.46
+------
+
+2016-04-20
+
+Fix regression #64: Options menu didn't offer choice of language.
+
+Fix minor bug #62: Profiling via version statements, not empty structs that
+would make a call to an allocating string-formatter.
+
+Fixed a crash on opening non-UTF8 files in the Lix file format reader.
+
+Editor allows to clone and z-order-rearrange tiles. There is a bug left behind
+when reordering many pieces at once: Sometimes, they reorder among each other
+only, producing no change after the entire reordering command.
+
+Sound effects are loaded lazily, that boosts the program start.
+
+0.2.45
+------
+
+2016-03-11
+
+Editor UI allows to set the grid by mouse and hotkeys, as in C++/A4 Lix.
+
+Editor moves tiles according to the grid. The clicked-and-dragged tile snaps
+to the grid. All other selected tiles move along with it, without snapping to
+grid themselves. When moving by keyboard, nothing snaps to grid. The behavior
+in this paragraph is identical to C++/A4 Lix.
+
+Editor saves on exiting to ./levels/editor-test.txt.
+
+0.2.44
+------
+
+2016-03-30
+
+Browsers offer breadcrumb navigation to pick directories.
+We're missing some central features in these browsers now:
+https://github.com/SimonN/LixD/issues/63
+
+Fixed imports for dmd 2.071.
+
+0.2.43
+------
+
+2016-03-26
+
+Editor offers the window to set skills.
+
+The chosen ploder is loaded and offered during play. Levels remember the
+chosen ploder, even if 0 ploders are available. The ploder shown on the
+panel is the nuke skill.
+
+Bug #4 (game ignores tiles that don't fit into VRAM) doesn't crash anymore,
+but ignores the tile instead. The game shows the missing-image error.
+
+0.2.42
+------
+
+2016-03-23
+
+Editor adds pieces selected from the tile browser. Editor moves tiles by
+keyboard and mouse. No snapping to grid yet.
+
+Fixed #57: The builder gets closer to a vertical wall before stopping.
+Fixed #60: The editor selects newly-added tiles immediately.
+Fix: Editor-added tiles are clamped to the map, they don't spawn off-bounds.
+Fix: The file listing ignores files with pre-extension X, like _order.X.txt.
+
+Rewrote many functions everywhere to take one Point instead of 2 ints.
+I have to test for performance regressions.
+
+0.2.41
+------
+
+2016-03-18
+
+Singleplayer browser, replay browser, and editor terrain browser all use
+the new file picker.
+
+Bugs:
+*   Keyboard controls for file up/down are missing. Regression due to rewrite.
+*   Scrollbar doesn't react to mouse wheel, or to clicks on the track or car.
+*   Replay browser formats the button like the level browser. There is a
+    child class for replay button formatting, which I am not using yet.
+
+Misdesign: Picker should control UpOneDirButton. See comment in uponedir.d.
+
+0.2.40
+------
+
+2016-03-13
+
+Editor has a terrain browser that can only exit. No browsing for terrain yet.
+There's a scrollbar in that terrain browser. The buttons at its end can be
+clicked and move the car. The car doesn't do anything when dragged or pulled.
+
+0.2.39
+------
+
+Fixed bug #51: Basher always left relics after his first swing.
+
+0.2.38
+------
+
+Editor moves tiles by dragging with the mouse. No keyboard movement yet.
+
+0.2.37
+------
+
+2016-03-06
+
+Editor can select all tiles.
+
+Editor can add and remove tiles to/from the existing selection.
+
+0.2.36
+------
+
+2016-03-05
+
+Fixed the bug described in 0.2.35: Frame-spanning goes across or not across
+the torus seam, according to mouse position on the screen. I like the results
+in many cases so far. Anything more would require tracking the map scrolling.
+
+Editor has a button for frame-dragging. The button's on-ness and its hotkey
+are handled in a nonstandard way, which we want.
+
+Editor has a zoom button toggling between 1x, 2x, 4x zoom, like the game.
+We should brainstorm about the zoom UI, and about default zoom.
+
+0.2.35
+------
+
+2016-03-05
+
+Editor frame dragging implemented. It selects the correct pieces on a torus.
+
+Bug: It doesn't yet span the frame in the correct direction. Right now,
+it always spans so that the torus seam is not included.
+
+0.2.34
+------
+
+2016-03-03
+
+Top edge kills unconditionally.
+
+The editor counts and annotates hatches and exits.
+
+0.2.33
+------
+
+2016-03-01
+
+I run D's garbage collection whenever there are obsolete game states during
+play. Profiling result: My 9-year-old laptop takes 3 ms per collection.
+At 16.6 ms per frame, this slows down the back-by-1-second command.
+My goal is to attack this bug: https://github.com/SimonN/LixD/issues/38
+Let's see whether anybody experiences this bug #38 still, then think again.
+
+0.2.32
+------
+
+2016-03-01
+
+Application starts much faster. All bitmap-loading and recoloring is lazy.
+Only eye matrix generation is eagerly done at application start.
+
+0.2.31
+------
+
+2016-02-28
+
+Implemented editor delete button.
+
+0.2.30
+------
+
+2016-02-27
+
+Fix #52: Mose over a transparent terrain tile, gadget behind it:
+This selects the gadget now. Before, it selected the terrain tile.
+
+0.2.29
+------
+
+2016-02-25
+
+Editor selects pieces on mouse click. No moving yet.
+
+Game starts slightly faster, because I'm not searching through all internal
+graphics of all resolutions. Most internal graphics are loaded lazily.
+Spritesheet/player-dependent GUI elements are still eagerly loaded, so there
+is opportunity for optimization here.
+
+0.2.28
+------
+
+2016-02-24
+
+Fix: Replays were saved with a null $BUILT instead of the level's $BUILT.
+
+Editor mouse hovering: Solid pixels are more important than the selection box.
+Holding priority invert inverts the entire sequence of terrain and gadgets.
+
+Refactored the code, Filename and Date are immutable by default.
+
+0.2.27
+------
+
+2016-02-21
+
+Fix #49: Animate gadgets (most importantly, water and fire) on level start.
+
+0.2.26
+------
+
+2016-02-21
+
+Game saves level result on leaving play, or on loading an old state.
+Autoreplays are only saved on leaving the game. Should they be saved on
+reaching the end-of-game dialog already?
+
+0.2.25
+------
+
+2016-02-20
+
+The singleplayer browser shows checkmarks next to solved levels. However,
+the game doesn't save any new checkmarks on winning yet.
+
+0.2.24
+------
+
+2016-02-17
+
+The editor draws white rectangles around all mouse-hovered terrain pieces.
+Refactored TerPos and GadPos to be subclasses of AbstractPos, not structs.
+
+Fix: Editor dark terrain doesn't overwrite gadgets anymore.
+
+0.2.23
+------
+
+2016-02-16
+
+Editor renders terrain and gadgets. It uses the same scroll starting position
+as the game. I want to reintroduce the manual scroll starting position.
+
+0.2.22
+------
+
+2016-02-15
+
+Fixed #44: We sort dirs and levels according to the listing _order.X.txt.
+
+0.2.21
+------
+
+2016-02-14
+
+In singleplayer, lix start spawning 1 second after level start, not 4 seconds
+after start. The nan-nan sound is played when you start the game, or whenever
+you revert to the starting position.
+
+Fixed #48: Assertion failure of climber on torus maps.
+Fixed sprite positioning of the climber.
+
+0.2.20
+------
+
+2016-02-12
+
+The panel displays elapsed minutes and seconds since level start.
+
+Time limits or overtime haven't been introduced yet. I'm considering to
+cull singleplayer time limits from the game altogether.
+
+0.2.19
+------
+
+2016-02-11
+
+Fixed an assert fail for new users upon entering the singleplayer browser.
+
+Added a command-line switch to force true fullscreen an arbitrary resolution.
+This makes the game run for Ramond. If you have problems getting Lix to run,
+try the following, replacing 1600x900 with your possibly different resolution:
+
+    lix --hardfull=1600x900
+
+0.2.18
+------
+
+2016-02-10
+
+Sped up turbo-fast-forward: I auto-savestate only every 50 frames instead of
+every 10 frames during turbo-fast-forward.
+
+0.2.17
+------
+
+2016-02-09
+
+Tiles are loaded differently, depending on whether they're terrain or gadgets.
+Terrain tiles are loaded with an extra physics map, and a white copy of
+themselves for fast dark-drawing.
+
+I don't think this speeds up the creation of the physics mask, I'm still pretty
+slow with that. This vastly speeds up the creation of the level preview image
+and the VRAM level bitmap. There is profiling by RAM/VRAM and by drawing mode
+of the tiles.
+
+Fixed an assert fail in the file listings used by the browser.
+
+Fixed #40: Misaligned image/physics for dark piece.
+I want to ask Clam before I close this issue.
+
+Culled the trampolines.
+
+0.2.16
+------
+
+2016-02-06
+
+Started the editor. It displays terrain and can be exited.
+There is much to do still with terrain handling, dark, and no-overwrite.
+
+0.2.15
+------
+
+2016-02-04
+
+Slightly simplified the keyboard code. I don't believe this fixes Nepster's
+stuck keys, but it might be worthwhile to ask Nepster nonetheless about it.
+
+0.2.14
+------
+
+2016-02-03
+
+Culled the per-level option to set a custom screen starting position.
+The game centers on the average position of all hatches. This accounts
+for arbitrary distributions of hatches on tori.
+
+0.2.13
+------
+
+2016-02-02
+
+Blocker -> walker: removed 1 frame of the anim, to mimick C++ behavior.
+There is an entire unused frame now in the blocker->walker anim now.
+
+Most things -> walker: Added a stand-still walker frame.
+
+Floater y speed should match C++ floater.
+
+0.2.12
+------
+
+2016-02-02
+
+Platformer should behave as in C++ Lix now: The first brick is 8 pixels long,
+all bricks while kneeling are 6 pixels long.
+
+0.2.11
+------
+
+2016-02-01
+
+Fixed left-facing bashers, they now ignore steel in the top 2 hi-res pixels.
+
+Floater assignments don't cancel the builder queue anymore.
+
+0.2.10
+------
+
+2016-01-31
+
+Disabled the extra console on Windows by linking with -L/subsystem:windows.
+
+Panel offers imploders.
+
+Listing the included level's name in the replay browser when the pointed-to
+level is not there. There's a bug left over for now anyway, see commit message.
+
+0.2.9
+-----
+
+2016-01-31
+
+Fixed 3 little bugs: Effects are correctly deleted after framestepping back.
+On deleting a replay, the browser highlights the next one correctly again.
+The file browser title bar shows the correct subdirectory on browser startup.
+
+0.2.8
+-----
+
+2016-01-31
+
+Implement #34: The game mimicks the level tree when saving replays.
+
+0.2.7
+-----
+
+2016-01-30
+
+Fix #35: Omitting drawing allowed bypassing traps.
+
+The lix eye coordinate is used to determine where trigger areas affect the
+lix. Before this fix, the eye coordinate was only updated on drawing the
+lix, becasue the fuse should be positioned there. This allowed to bypass
+traps with the head.
+
+Also refactored over 1,000 lines of game code, for a slightly better separation
+of physics model and controlling/drawing code.
+
+0.2.6
+-----
+
+2016-01-28
+
+Fixed crash during replay verification upon nuking.
+
+0.2.5
+-----
+
+2016-01-28
+
+Making shutdown much faster by not freeing any RAM or VRAM.
+This is standard for RAM, I have to read up on VRAM practises.
+
+Loading way less internal data for replay verification, speeding up the
+startup in that mode massively. We have to decide whether the spritesheet
+should affect physics. Right now, existence of frames and eye positions
+are meaningful for the physics.
+
+0.2.4
+-----
+
+2016-01-27
+
+Noninteractive Replay verification implemented.
+Run it from the command line, as in C++ Lix:
+bin/lix --verify=replays/solutions
+bin/lix --verify=replays/manual/myreplay.txt
+
+Fix: Don't save every possible replay into replays/network/.
+
+Refactoring: Renamed PerformedActivity to Job. Made graphic objects, lixes,
+and gadgets take a Topology on construction instead of a Torbit. This makes
+the design much more lightweight, we don't even have to generate a Map for the
+noninteractive Game.
+
+0.2.3
+-----
+
+2016-01-26
+
+Command-line argument `--fullscreen' forces fullscreen, no matter what the
+user settings are.
+
+The menu-OK hotkey always performs the most sensible action in the window
+during a singleplayer game: resume if it's not at the end, exit if won,
+restart if failed.
+
+Editor button in the singleplayer browser, but it doesn't do anything yet.
+
+0.2.2
+-----
+
+2016-01-25
+
+Fix #15: Basher always left relics. The basher mask is 2 pixels wider in D
+Lix. The relics check accounts for that now.
+
+We wanted to start the basher faster by 2 frames in C++ Lix, to make it
+more powerful. Right now, this is implemented in D Lix, because I used as
+many recommendations by geoo as I could. In light of the mask that reaches
+further by 2 pixels, we should discuss that again. The faster-starting
+basher is still OK, probably.
+
+0.2.1
+-----
+
+2016-01-25
+
+Implemented ask-for-username menu when no name is given. This prevents having
+no name set, and therefore being unable to save options.
+
+Covered the empty space for the spawnint buttons with the info bar for now.
+
+0.2.0
+-----
+
+2016-01-24
+
+This is a test release, designed to try singleplayer. Don't replace your
+existing installation of Lix with this D/A5 port yet. Keep it separate.
+
+Minim has designed several scaled-up versions of the internal graphics.
+They're visible whenever the game's resolution is at least 1.5 times as big
+as the old 640x480. Many thanks to Minim for this work!
+
+Levels and terrain graphics have been updated from C++ Lix.
+
+I'm cross-compiling to Windows from Linux now. Let me know of any problems.
+
+0.1.40
+------
+
+2016-01-23
+
+Top-left corner of map shows the floating 'R' while replaying. The FPS are
+shown on the panel right now, that's intended as a temporary solution only.
+
+Lix target info in the panel shows (RCF) for runners/climbers/floaters, and
+displays the number of bricks left for builders and platformers.
+
+Replays cancel on LMB anywhere, and on activating the nuke.
+
+Fix: With lixes returning equal priority, the closest one to the cursor is
+preferred for an assignment. Previous bug: the farthest one was preferred.
+Inverting priority doesn't invert this check, which is correct.
+
+0.1.39
+------
+
+2016-01-22
+
+Fix #32: With mouse speed different from 20, RMB-scrolling continued to
+move even after the mouse has stopped moving, as long as RMB was kept down.
+
+0.1.38
+------
+
+2016-01-22
+
+The panel info bar uses the correctly recolored garden icons. They have the
+correct shadow, according to the user's GUI color settings. (Even though, like
+all GUI parts, they aren't recolored until the next program start.)
+
+graphic.gralib has been refactored into a package for better readability.
+
+0.1.37
+------
+
+2016-01-21
+
+The replay browser can delete replays. It asks for confirmation with a message
+box and moves the highlighting to the next replay.
+
+During the game, the panel's info bar shows colored icons with numbers,
+instead of the previously text-only lix counts.
+
+0.1.36
+------
+
+2016-01-19
+
+Faster drawing code, by holding bitmaps. Empty skills don't show their hotkey.
+Fixed an assert fail on framestepping backwards across Phybit.needCol.
+
+0.1.35
+------
+
+2016-01-18
+
+Hatches marked as rotated in the level format spawn lemmings facing left.
+
+0.1.34
+------
+
+2016-01-18
+
+Replays are saved automatically on quitting a solved singleplayer level.
+This still holds for exiting the game with Shift+Esc immediately.
+No replay tree yet; replays are saved as manual/*.txt or solved/*.txt.
+
+0.1.33
+------
+
+2016-01-18
+
+Fix #12: Builders, platformers and cubers won't overwrite existing terrain.
+Fix #22: Terrain removers don't draw over steel pixels.
+
+Neither fix has affected physics. The remover visuals were particularly
+urgent, because they made steel transparent, even though they didn't remove
+the steel.
+
+These fixes are implemented with iteration over the lookup map, then issuing
+many copies of 1x1 rectangles to the graphics card. This is likely slower
+than hardware shaders that examine the existing pixel. It's faster than
+making lots of 1x1 sub-bitmaps on the heap, then destroying these again.
+
+(Miner hits steel on my 9.5-year-old laptop: 30 ms for 1x1 sub-bitmaps, 7 ms
+for 1x1 rectangles. Miner digging only through non-steel earth is much faster,
+about 0.1 ms, and therefore uses the previously existing drawing code.)
+
+The cuber sprite is transparent where it has been drawn to land already.
+Now, the player can guess much better when which pixels are added.
+I've added a few sparky lines to the cuber's last few frames.
+
+I have removed the tumbler assert. See comment on issue #21:
+https://github.com/SimonN/LixD/issues/21
+
+0.1.32
+------
+
+2016-01-17
+
+Fix #28: Empty skills are now re-selected if replenished after state loading.
+Fix #29: Drawing explosions properly now.
+
+I haven't tested implosions. They should be drawn behind the terrain anyway,
+or get a completely new animation.
+
+0.1.31
+------
+
+2016-01-16
+
+Basher ignores top two rows of his 18 rows for steel.
+
+Partial fix of #22: basher/miner cancels on hitting steel, but still takes
+out some of the graphics. Physics are correct.
+
+After class Game finishes, the correct browser is loaded, either singleplayer
+or replay. Browsers exit on RMB. No option to auto-save singleplayer replays
+that fail the level.
+
+0.1.30
+------
+
+2016-01-15
+
+Replay browser implemented. Loads replays, renders the correct level in the
+preview. Program main loop calls game with the correct level and replay file,
+the game plays back the correct replay. After viewing the replay, the program
+goes back to the singleplayer browser, not to the replay browser.
+
+Framestepping backwards is more performant over long distances, it omits
+unnecessary intermediate savestates that would be discarded anyway. More ideas:
+https://github.com/SimonN/LixD/issues/26
+
+Slightly better text shadow positioning. Removed demo and benchmark code.
+
+0.1.29
+------
+
+2016-01-12
+
+Level preview renders and scales the level correctly, instead of displaying
+only a colorful rectangle.
+
+User savestating is implemented including saving/loading, but it doesn't
+preserve effects, see issue #23.
+
+Fixed bug #13: Framestepping buttons execute continuously on holding RMB.
+
+0.1.28
+------
+
+Implemented the nuke.
+
+Implemented replay arrows upon skill assignments, which are correctly
+played back during framestepping and after restarting the level.
+
+Explosions, flying pixels, and flying terrain remover equipment isn't in yet.
+
+0.1.27
+------
+
+Miner implemented with geoo's anti-shock C++ code.
+
+Flingers and trampolines are implemented.
+
+0.1.26
+------
+
+2016-01-04
+
+Singleplayer browser remembers the most recently played level.
+
+Fixed bug #18: Assigning runner to a walker didn't make her run immediately.
+Fixed bug #20: Assigning exploder to builder crashed the game due to
+inability to return skills.
+
+Fixed climber horizontal alignment with the wall, the alignment was set
+correctly previously, but never reset correctly.
+
+Exploder with flinging is now implemented similar to how it was in C++.
+It should be checked for accuracy, once loading replays from disk is
+implemented.
+
+Fixed a crash on becoming tumbler. There is still an elusive assert fail
+triggerable in the tumbler function. That should be debugged once replays
+can be loaded from disk.
+
+0.1.25
+------
+
+2016-01-03
+
+Fixed bug #19: Tumbler selected only frames 2 or 3. Now, it selects its frame
+by angle of flight now, while not advancing too far in any single frame.
+https://github.com/SimonN/LixD/issues/19
+
+0.1.24
+------
+
+2016-01-02
+
+Fixed bug #10: Map drawing: Target area too large.
+https://github.com/SimonN/LixD/issues/10
+
+0.1.23
+------
+
+2016-01-01
+
+Options menu complete. Some options don't do anything yet, but are loaded/saved
+correctly nonetheless. Removed fullscreen resolution option. Switching users
+works. Switching Language works.
+
+I found the first bug of 2016 in the D compiler. ^_^
+
+0.1.22
+------
+
+2015-12-31
+
+Implemented GUI elements: Text entry, number picker, hotkey picker.
+In the options menu, implemented 2/3 hotkey pages, and the graphics page.
+Each hotkeyed button displays its hotkey in the bottom-right-hand corner.
+
+Added 0.5f to the djvuM offset (the main font's vertical position), now
+it looks great on 640x480, 800x600, 1280x1024, and 1400x1050.
+
+0.1.21
+------
+
+2015-12-29
+
+Implemented goals (exits), triggered traps, and dying outside of the level.
+Implemented the Esc-during-level menu and the end-of-level menu. No browser
+to save/view replays yet. Begun implementing the options menu.
+
+0.1.17
+------
+
+2015-12-17
+
+Bugfix: Blockers are now released upon walker assignment.
+
+0.1.16
+------
+
+2015-12-16
+
+All skills are implemented fully or mostly each, except for the miner,
+which is missing completely still. Effects, like arrows, flying dig hammers,
+and explosions, are missing.
+
+Skills behave mostly identical to C++ Lix. Some extremely arcane behavioral
+bugs were fixed while porting; report if things behave obviously strangely.
+Probably also report if things behave differently.
+
+Known differences: Exploder crater is 1 pixel smaller, diameter of 46 pixels
+instead of 47 pixels, but should be completely symmetrical now. Blocker
+doesn't get released on walker assignment; this fixed only in 0.1.17.
+
+0.1.12
+------
+
+2015-11-30
+
+Implemented builder and digger. The builder still draws on top of existing
+land, which is merely a visual bug, not a physics bug. The digger makes
+steel transparent, but the steel and terrain data inside the steel remains
+present for physics; again only a visual bug.
+
+0.1.5
+-----
+
+2015-11-19
+
+Map detects mouse on the land properly, at least with zoom == 1. Priority
+computation has been ported over. You can click lix and hear the assign
+sound being played if the assignment were legal. Assignments aren't in yet.
+
+0.1.4
+-----
+
+2015-11-15
+
+Walker, Faller and Ascender are implemented and should perform like their
+C++ versions. I would like to keep close to the C++ behavior for now.
+Savestates have been implemented for framestepping. Skill assignments
+are not possible yet.
+
+0.1.2
+-----
+
+2015-10-30
+
+Started implementing Lix skills. There will likely be no problem with them
+scanning the terrain from the lookupmap. I'm anxious about them writing to
+the terrain later on, when the more interesting skills get added.
+
+0.1.0
+-----
+
+2015-08-24
+
+First Windows build released on Lemmings Forums as a smoke test. It runs
+well for most people. Drawing has bad performance still with about 3,500
+animated gadgets, but is much better with about 200 than in the previous
+months.
+
+0.0.0
+-----
+
+2015-02-28
+
+Started development by porting the fundamental Lix graphic classes from
+Allegro 4.4 to Allegro 5 with the D Programming Language.
+
+C++ Lix
+-------
+
+2006 to 2016
+

@@ -1,9 +1,0 @@
-post_install() {
-	echo "Add your user to the games group to save configurations."
-}
-
-post_remove() {
-	if [ -d "/opt/lix" ]; then
-		rm -r /opt/lix
-	fi
-}
