@@ -14,9 +14,9 @@ url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('GPL2')
 depends=('cups' 'ghostscript')
 options=('!libtool')
-source=('https://download3.ebz.epson.net/dsc/f/03/00/06/25/43/f63808b4062f7f527e09e75a8f0dd9db46c573fe/epson-inkjet-printer-escpr-1.6.15-1lsb3.2.tar.gz'
+source=('https://download3.ebz.epson.net/dsc/f/03/00/06/41/54/29588ed107f800e5bc3f91706661567efb369c1c/epson-inkjet-printer-escpr-1.6.16-1lsb3.2.tar.gz'
         'bug_x86_64.patch')
-sha256sums=('a9ee2e682cdd854a269e55ddd962e553343618cfbd1f3a0bd03bb747d520b8dd'
+sha256sums=('c69adbd432cc3e8294f0300df56a341b9e344900f5b10651d07cbc366064356d'
             '277bc9afe581d2c434217db646e20ecfd1b6045bdcce861f2f08992ccf854084')
 
 prepare() {
