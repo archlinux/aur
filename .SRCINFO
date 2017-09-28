@@ -1,0 +1,15 @@
+pkgbase = adg-gtk-theme
+	pkgdesc = Slight gray modification of Adwaita theme from the GNOME Project.
+	pkgver = 3.22.3
+	pkgrel = 1
+	url = https://github.com/leipero/adg-gtk-theme
+	arch = any
+	license = GPL
+	makedepends = sassc
+	depends = sassc
+	options = !emptydirs
+	source = adg-gtk-theme-3.22.3.tar.gz::https://github.com/leipero/adg-gtk-theme/archive/3.22.3.tar.gz
+	sha256sums = 3956c7cf438d19245f63f4a03b6a393e070ef95dc826b8e029d2ac1793c5d304
+
+pkgname = adg-gtk-theme
+
