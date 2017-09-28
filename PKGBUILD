@@ -2,7 +2,7 @@
 
 pkgname=perl-datetime-format-pg
 pkgver="0.16013"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="'Parse and format PostgreSQL dates and times'"
 arch=(i686 x86_64)
 license=('perl')
@@ -37,5 +37,5 @@ check() {
 package() {
   prepare_environment
   ./Build install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
