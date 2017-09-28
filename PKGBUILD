@@ -2,7 +2,7 @@
 
 pkgname=perl-file-flock
 pkgver='2014.01'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="file locking with flock"
 arch=('any')
 url="http://search.cpan.org/dist/File-Flock"
@@ -41,7 +41,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
