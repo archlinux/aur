@@ -2,7 +2,7 @@
 
 pkgname='perl-module-install-autolicense'
 pkgver='0.10'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A Module::Install extension to automagically generate LICENSE files"
 arch=('any')
 license=('PerlArtistic')
@@ -35,7 +35,7 @@ check() {
 package() {
   cd ${srcdir}/Module-Install-AutoLicense-${pkgver}
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
