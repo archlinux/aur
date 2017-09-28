@@ -24,8 +24,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/fern-wifi-cracker/Fern-Wifi-Cracker"
-
-  sed -i 's|python$|python2|g' execute.py
 }
 
 package() {
