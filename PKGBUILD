@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=wordgrinder-git
-pkgver=0.6.r7.g0e2b004
+pkgver=0.6.r78.g5c8f43b
 pkgrel=1
 epoch=
 pkgdesc="A word processor which gets the hell out of your way and lets you get some work done."
@@ -11,7 +11,7 @@ license=('MIT')
 categories=()
 groups=()
 depends=('')
-makedepends=('git')
+makedepends=('git' 'ninja')
 optdepends=()
 checkdepends=()
 provides=("${pkgname%-*}")
@@ -30,14 +30,9 @@ pkgver() {
   git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-build() {
-  cd "$srcdir/$pkgname"
-  make
-}
-
 package() {
   cd "$srcdir/$pkgname"
-  make PREFIX="$pkgdir/usr" install
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
   install -Dm644 COPYING $pkgdir/usr/share/licenses/${pkgname%-*}/COPYING
 }
 
