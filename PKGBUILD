@@ -1,7 +1,7 @@
 # Maintainer: Stephen R. Martin <stephensrmmartin at gmail dot com>
 _cranname=RInside
 _cranver=0.2.14
-pkgname=r-cran-rcpp
+pkgname=r-cran-rinside
 pkgver=${_cranver}
 pkgrel=1
 pkgdesc="Seamless R and C++ Integration"
