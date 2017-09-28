@@ -2,38 +2,40 @@
 # Contributor: Bazon <bazonbloch@arcor.de> 
 # Contributor: Christian Bühler <christian@cbuehler.de>
 # Contributor: Zsolt Udvari <udvzsolt@gmail.com>
+
 pkgname=activdriver
-pkgver=5.10.15
-pkgrel=4
+pkgver=5.16.7
+pkgrel=1
 pkgdesc="The kernel mode and X11 drivers for Promethean ActivBoard and ActivHub."
 arch=('i686' 'x86_64')
-url="http://activsoftware.co.uk/linux/repos/ubuntu/dists/precise/Release"
+url="https://support.prometheanworld.com/product/activdriver"
 license=('unknown')
 makedepends=(linux-headers)
 optdepends=('activinspire: activboard presentation'
             'activtools: hardware calibration')
 install=$pkgname.install
-if [ "$CARCH" = "i686" ]; then
-  _arch='i386'
-  _md5sum='a90ae7a20d6704e2c2090136bb505c84'
-elif [ "$CARCH" = "x86_64" ]; then
-  _arch='amd64'
-  _md5sum='6263eb7993f45cef97d84a5fb9619a94'
-fi
-source=("http://activsoftware.co.uk/linux/repos/ubuntu/pool/oss/a/$pkgname/${pkgname}_$pkgver-1~ubuntu~1204_$_arch.deb"
+source_x86_64=(
+	"http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/oss/a/$pkgname/${pkgname}_$pkgver-0~Ubuntu~1604_amd64.deb"
         "10-promethean.conf"
 	"activdriver.install")
-md5sums=( $_md5sum
-         '11effc25fd592acacb9f9f3108618963'
-         '8a8a6ddd6741a80a5839593ed385cd9a')
+source_i686=(
+	"http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/oss/a/$pkgname/${pkgname}_$pkgver-0~Ubuntu~1604_i386.deb"
+        "10-promethean.conf"
+	"activdriver.install")
+md5sums_x86_64=('27dc008ac59a9c8d7007c6cae1b5824e'
+         	'11effc25fd592acacb9f9f3108618963'
+         	'8a8a6ddd6741a80a5839593ed385cd9a')
 
+md5sums_x86_64=('6774da3dec3ee3f9fb820f99581565ec'
+         	'11effc25fd592acacb9f9f3108618963'
+         	'8a8a6ddd6741a80a5839593ed385cd9a')
 
 build() {
-  tar xf data.tar.gz
+  tar xf data.tar.xz
   echo " "
   echo "Attention!"
   echo "Build will fail if run in a directory with space(s) in its path."
-  #(reason: makefile of the source. if you know how to fix: please tell!)
+  # (reason: makefile of the source. if you know how to fix: please tell!)
   echo " "
   make -C /lib/modules/$(uname -r)/build SUBDIRS="$srcdir"/usr/src/promethean/kernel modules
   sed -i "s%KERN_INC = /usr/src/promethean%KERN_INC = ..%" usr/src/promethean/activlc/Makefile
