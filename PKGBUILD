@@ -23,7 +23,7 @@ build() {
   mv "${srcdir}/opt/${_basename}/${_originalbasename}.desktop" "${srcdir}/opt/${_basename}/${_basename}.desktop"
   mv "${srcdir}/opt/${_basename}/${_originalbasename}.png" "${srcdir}/opt/${_basename}/${_basename}.png"
 echo "[Desktop Entry]
-Name=${_basename}
+Name=Scene Builder 9
 Comment=Gluon Scene Builder for Java 9
 Exec=/opt/${_basename}/${_originalbasename}
 Icon=/opt/${_basename}/${_basename}.png
