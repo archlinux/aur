@@ -2,7 +2,7 @@
 
 pkgname=perl-ipc-signal
 pkgver="1.00"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="utility functions dealing with signals"
 arch=('any')
 url="http://search.cpan.org/dist/IPC-Signal"
@@ -35,7 +35,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
