@@ -7,7 +7,7 @@
 
 pkgname=gnome-shell-extension-mediaplayer-git
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A mediaplayer indicator for the Gnome Shell'
 arch=('any')
 url='https://github.com/JasonLG1979/gnome-shell-extensions-mediaplayer'
@@ -33,10 +33,11 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  sed -i \
-    "/^SCHEMA_DIR/s/EXTENSION_DIR/$(
-      )get_option('prefix'), get_option('datadir'), 'glib-2.0'/" \
-    "$_gitname"/meson.build
+  sed -i "
+    /^if/s/not//
+    /DATA_DIR =/s/$/[1:]/
+    /^EXTENSION_DIR =/s/path\\.join(/&DEST_DIR,/
+  " "$_gitname"/meson_post_install.py
 }
 
 build() {

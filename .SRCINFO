@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-mediaplayer-git
 	pkgdesc = A mediaplayer indicator for the Gnome Shell
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JasonLG1979/gnome-shell-extensions-mediaplayer
 	install = gschemas.install
 	arch = any
