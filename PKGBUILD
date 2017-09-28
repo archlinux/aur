@@ -4,7 +4,7 @@
 
 pkgname='perl-sql-abstract'
 pkgver='1.84'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Generate SQL from Perl data structures"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -39,7 +39,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
