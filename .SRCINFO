@@ -1,0 +1,17 @@
+pkgbase = perl-lingua-en-findnumber
+	pkgdesc = Perl/CPAN Module Lingua::EN::FindNumber: Locate (written) numbers in English text
+	pkgver = 1.32
+	pkgrel = 1
+	url = https://metacpan.org/release/Lingua-EN-FindNumber
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-lingua-en-words2nums>=0
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Lingua-EN-FindNumber-1.32.tar.gz
+	md5sums = edc9b091b4b97b8b3d37984ff50959d5
+	sha512sums = 2e1ea42ebeb60d4be4a54bdb3b379cfb4949720f7e2c0dd6243d16908843c2daf1abd638675aea2a6d804a5b59facfeceaea39e580e67214b89ee1a061d7a330
+
+pkgname = perl-lingua-en-findnumber
+
