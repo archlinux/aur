@@ -1,0 +1,20 @@
+diff --git a/canvas/generator.go b/canvas/generator.go
+index c24e566..abd340a 100644
+--- a/canvas/generator.go
++++ b/canvas/generator.go
+@@ -333,7 +333,7 @@ func DrawDiagram(content string, output string) error {
+ 	}
+ 
+ 	ctx := gg.NewContext(width, height)
+-	canvas := NewCanvas(ctx, "./font/gloriahallelujah.ttf", 3)
++	canvas := NewCanvas(ctx, "/usr/share/diagram/gloriahallelujah.ttf", 3)
+ 	canvas.DrawRectangle(0, 0, float64(width), float64(height))
+ 	canvas.SetRGBA(1, 1, 1, 1)
+ 	canvas.Fill()
+@@ -349,4 +349,4 @@ func DrawDiagram(content string, output string) error {
+ 		return err
+ 	}
+ 	return nil
+-}
+\ No newline at end of file
++}

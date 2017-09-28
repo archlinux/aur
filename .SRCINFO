@@ -1,6 +1,6 @@
 pkgbase = diagram
 	pkgdesc = CLI app to convert ascii arts into hand drawn diagrams written in go.
-	pkgver = 20170819
+	pkgver = 20170903
 	pkgrel = 1
 	url = https://github.com/esimov/diagram
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = diagram
 	makedepends = git
 	options = !strip
 	options = !emptydirs
+	source = fix_font_path.patch
+	sha1sums = 4fbd6599370ecd7d41ce5d6f5abc3f63ae60ffe8
 
 pkgname = diagram
 
