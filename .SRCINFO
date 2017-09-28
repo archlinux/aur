@@ -1,0 +1,17 @@
+pkgbase = slack-term
+	pkgdesc = Slack client for your terminal
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/erroneousboat/slack-term
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/erroneousboat/slack-term
+	source = https://github.com/erroneousboat/slack-term/releases/download/v0.2.3/slack-term-linux-amd64
+	sha1sums = SKIP
+	sha1sums = bed924ec8d107bd1412a69cd7af20914e1d2b182
+
+pkgname = slack-term
+
