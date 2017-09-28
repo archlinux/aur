@@ -1,6 +1,6 @@
 pkgbase = haskell-simtreelo
 	pkgdesc = Loads data organized in a tree
-	pkgver = 0.1.1.1
+	pkgver = 0.1.1.2
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/simtreelo
 	install = haskell-simtreelo.install
@@ -8,8 +8,8 @@ pkgbase = haskell-simtreelo
 	arch = x86_64
 	license = GPL3
 	depends = ghc
-	source = http://hackage.haskell.org/package/simtreelo-0.1.1.1/simtreelo-0.1.1.1.tar.gz
-	sha256sums = 0c990c2e520069d07030f63fc861c1a8c2e287bf2fc2ae4ebf24504d89cd1b64
+	source = http://hackage.haskell.org/package/simtreelo-0.1.1.2/simtreelo-0.1.1.2.tar.gz
+	sha256sums = bd3e612bcbad269329bab7c90b8524a6e63e3f34cf24d0942c2202cb9987c3f2
 
 pkgname = haskell-simtreelo
 
