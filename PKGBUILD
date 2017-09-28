@@ -1,3 +1,5 @@
+# Maintainer: Moritz Bunkus <moritz@bunkus.org>
+
 pkgname=perl-getopt-mixed
 pkgver=1.12
 pkgrel="2"
