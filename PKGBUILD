@@ -1,7 +1,7 @@
 # Maintainer: Alia Skywol <skywol@qq.com>
 pkgname=deepin.com.wechat
-pkgver=2.4.5.48deepin0
-pkgrel=2
+pkgver=2.4.5.48deepin2
+pkgrel=1
 epoch=
 pkgdesc="Deepin Wine Wechat 2.4.5"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgver}_i386.deb")
 noextract=("${pkgname}_${pkgver}_i386.deb")
-md5sums=('92198b30edd3a0f1f0faa694320fe14c')
+md5sums=('65a297ea7ec081cb43b68e1b32ab63b3')
 validpgpkeys=()
 
 prepare() {

@@ -1,7 +1,7 @@
 pkgbase = deepin.com.wechat
 	pkgdesc = Deepin Wine Wechat 2.4.5
-	pkgver = 2.4.5.48deepin0
-	pkgrel = 2
+	pkgver = 2.4.5.48deepin2
+	pkgrel = 1
 	url = http://weixin.qq.com/
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = deepin.com.wechat
 	makedepends = tar
 	depends = deepin-wine
 	conflicts = deepin-wechat
-	noextract = deepin.com.wechat_2.4.5.48deepin0_i386.deb
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.wechat/deepin.com.wechat_2.4.5.48deepin0_i386.deb
-	md5sums = 92198b30edd3a0f1f0faa694320fe14c
+	noextract = deepin.com.wechat_2.4.5.48deepin2_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.wechat/deepin.com.wechat_2.4.5.48deepin2_i386.deb
+	md5sums = 65a297ea7ec081cb43b68e1b32ab63b3
 
 pkgname = deepin.com.wechat
 
