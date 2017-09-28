@@ -2,7 +2,7 @@
 
 pkgname='perl-class-accessor-grouped'
 pkgver='0.10012'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Lets you build groups of accessors"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -40,7 +40,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
