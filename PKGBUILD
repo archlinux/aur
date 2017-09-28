@@ -1,7 +1,7 @@
 # Maintainer: Paolo Stivanin <info [at] paolostivanin [DOT] com>
 
 pkgname=libbaseencode
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Library written in C for encoding and decoding data using base32 or base64 (RFC-4648)'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 
 source=("https://github.com/paolostivanin/$pkgname/archive/v$pkgver.tar.gz")
 
-sha256sums=("8e3ac719c76a4f5aa2e1e93b194a596bf14370ad1ae2865b7c2972b60c7a53cf")
+sha256sums=("1ed0a3dd29a0ed70c7113f1b1b7d17f72c65454946a9fb915edf5050f8e0c65d")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
