@@ -5,7 +5,7 @@
 # Contributor: Roberto Alsina <ralsina@kde.org>
 
 pkgname=afnix
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='Multi-threaded functional programming language'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('custom')
 depends=('ncurses' 'gcc-libs')
 makedepends=('libtinfo')
 source=("$url/ftp/afnix-src-$pkgver.tgz")
-sha1sums=('9A8D1FBC8C3BB8AF5E665AC313A3C69A9D1A0AAA')
+sha256sums=('d6505024ce3dc1e051772b1d853197405d4f7e10d54dfcc15c73f8d82411ec72')
 
 build() {
   cd "$pkgname-src-$pkgver"
