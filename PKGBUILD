@@ -6,7 +6,7 @@
 # Contributor: Victor Hugo Souza <vhbsouza@gmail.com>
 
 pkgname=gitkraken
-pkgrel=2
+pkgrel=1
 pkgver=3.0.2
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="https://www.gitkraken.com/"
