@@ -7,8 +7,8 @@ pkgdesc="R Bundle for Jamovi"
 arch=('any')
 url="http://www.jamovi.org"
 license=('GPL')
-depends=('r')
-makedepends=('nodejs' 'r')
+depends=('r' 'r-cran-rcpp')
+makedepends=('nodejs' 'r' 'r-cran-rcpp')
 source=("rbundle.R"
 	"rbundleJMV.R"
 	"git+https://github.com/jamovi/jamovi-compiler.git"
