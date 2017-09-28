@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=munge-git
-pkgver=1075.cc79ce4
+pkgver=0.5.13.r0.ged26bd9
 pkgrel=1
 pkgdesc="An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment."
 arch=('i686' 'x86_64')
@@ -19,7 +19,10 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	( set -o pipefail
+	git describe --long 2>/dev/null | sed 's/^munge-//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+	|| printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 build() {
