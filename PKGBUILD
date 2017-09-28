@@ -1,3 +1,5 @@
+# Maintainer: Moritz Bunkus <moritz@bunkus.org>
+
 # Contributor: AUR Perl <aurperl@juster.info>
 # Generator  : CPANPLUS::Dist::Arch 1.18
 
