@@ -2,7 +2,7 @@
 # Modified from latex-beamer pkgbuild by Daniel Ehlers <danielehlers@mindeye.net>
 
 pkgname=latex-beamer-ctan
-pkgver=3.41
+pkgver=3.43
 pkgrel=1
 pkgdesc='A LaTeX class for creating slides for presentations. CTAN package'
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('latex-beamer','latex-beamer-hg')
 install='latex-beamer-ctan.install'
 source=("http://mirror.ctan.org/macros/latex/contrib/beamer.zip")
 DLAGENTS=("http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u")
-md5sums=('41f0c90c23f5c807a585fb94ad3c223d')
+md5sums=('983c1fdae91754724604f7f5e1f6bbb6')
 
 package() {
   cd beamer
