@@ -1,13 +1,13 @@
 # Maintainer: Karol Babioch <karol@babioch.de>
 
 pkgname=('python-pendulum' 'python2-pendulum')
-pkgver=1.2.5
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Python datetimes made easy"
 arch=('any')
 url="https://pendulum.eustace.io"
 license=('MIT')
-makedepends=('python' 'python2')
+makedepends=('python-setuptools' 'python2-setuptools')
 #options=('!emptydirs')
 source=("git+https://github.com/sdispater/pendulum.git#tag=$pkgver")
 sha256sums=('SKIP')
