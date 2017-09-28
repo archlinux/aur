@@ -1,8 +1,8 @@
 # Maintainer: buckket <buckket@cock.li>
 
 pkgname=htwtxt
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="hosted twtxt server (in Go)"
 arch=("x86_64" "i686")
 license=("AGPL")
@@ -12,8 +12,8 @@ makedepends=("go" "git")
 options=('!strip' '!emptydirs')
 install=htwtxt.install
 source=("https://github.com/plomlompom/${pkgname}/archive/${pkgver}.tar.gz" "htwtxt.patch")
-sha256sums=("33f93146b93b33ee6946e9aae3a3df137ab7e7a912f0008a03e88d42072a847a"
-            "dfc87ef17977d28e490a59312b2a772f30aa57a07ad2106d3ff2a8319714e827")
+sha256sums=('13059ce7285a2245e46cac35794babbf7218eb14e43e54ee5aec2a4b992702bd'
+            'dfc87ef17977d28e490a59312b2a772f30aa57a07ad2106d3ff2a8319714e827')
 
 prepare() {
   cd ${pkgname}-${pkgver}
