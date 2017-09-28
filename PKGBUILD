@@ -1,10 +1,10 @@
 # Maintainer: Orlando Arias <orlandoarias at gmail <dot> com>
 
 _target=msp430-elf
-_tiver=1.198
+_tiver=1.201
 pkgname=${_target}-mcu
-pkgver=5.0.0.0
-pkgrel=2
+pkgver=5.1.0.0
+pkgrel=1
 pkgdesc="Header files and linker scripts for MSP430 microcontrollers"
 arch=('any')
 url="http://www.ti.com/tool/msp430-gcc-opensource"
@@ -12,7 +12,7 @@ license=('custom')
 options=('!strip' 'staticlibs' 'emptydirs')
 source=(http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/exports/msp430-gcc-support-files-${_tiver}.zip
         license)
-sha256sums=('8d411d61eebf794d4f786f77c901223c931146ba2dfe2ae0798433c7ddb15137'
+sha256sums=('85731a9ecc57883436a3156baf7809a321c8d1faf696055a20f82a675f82eb9a'
             'cd344f1a8da5c24768fbcc3494ad12b9880a82097dfb5a4d63d2a52f2833cc38')
 
 
@@ -37,9 +37,9 @@ package() {
   
   # install linker scripts
   # binutils does weird stuff and does not look in lib/ldscripts
-  install -dm755 "${pkgdir}/usr/${_target}/lib"
+  install -dm755 "${pkgdir}/usr/${_target}/lib/430"
   for f in *.ld; do
-    install -m644 ${f} "${pkgdir}/usr/${_target}/lib"
+    install -m644 ${f} "${pkgdir}/usr/${_target}/lib/430"
   done
   
   # install header files
