@@ -1,6 +1,6 @@
 pkgbase = qtox-git
 	pkgdesc = Powerful Tox client written in C++/Qt that follows the Tox design guidelines.
-	pkgver = 1.10.0.r0.g496f8548
+	pkgver = 1.11.0.r162.gce0c1020
 	pkgrel = 1
 	url = https://github.com/qTox/qTox
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = qtox-git
 	makedepends = cmake
 	makedepends = qt5-tools
 	depends = desktop-file-utils
+	depends = libexif
 	depends = libxss
 	depends = openal
 	depends = qrencode
