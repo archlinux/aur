@@ -7,14 +7,14 @@
 
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
-pkgver=2.2.0
-pkgrel=3
+pkgver=2.2.1
+pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('i686' 'x86_64')
 url='http://tengine.taobao.org'
 license=('custom')
 depends=('pcre' 'zlib' 'openssl-1.0' 'gperftools' 'geoip')
-makedepends=('hardening-wrapper' 'lua51')
+makedepends=('lua51' 'git')
 backup=('etc/tengine/fastcgi.conf'
         'etc/tengine/fastcgi_params'
         'etc/tengine/koi-win'
@@ -34,14 +34,10 @@ optdepends=(
 source=($url/download/tengine-$pkgver.tar.gz
         service
         logrotate
-        patch-for-cve-2017-7529.patch::https://github.com/alibaba/tengine/commit/4621add34c5e3c4a95784304f4b2ac59b306ee54.patch
-        range-filter-avoid-negative-range-start.patch::https://github.com/alibaba/tengine/commit/2fc738c72177e4293caa6e413c6a1a0159044012.patch
         )
-sha256sums=('af09cf35e5f978521c27a2fee8a2d5251f425cba2e39f6c6ea285541c5be6009'
+sha256sums=('1d164fdbc4d460cce5f202de332447556ec9439016fa33ceddc736acfaa53be2'
             '7abffe0f1ba1ea4d6bd316350a03257cc840a9fbb2e1b640c11e0eb9351a9044'
-            '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97'
-            '9e8d2d5cc65e9bca25403bc58d086640e0d41a2e1e5a05243e888ff824ac1841'
-            'db0e68b200ce88313af2b7b30a3fb33f97e9ee0845649c8407e0b5500ae75f7e')
+            '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
 
 prepare() {
     cd "$srcdir"
@@ -56,8 +52,6 @@ prepare() {
     msg "GIT checkout done or server timeout"
 
     cd "$srcdir"/tengine-$pkgver
-    patch -p1 -i $srcdir/patch-for-cve-2017-7529.patch
-    patch -p1 -i $srcdir/range-filter-avoid-negative-range-start.patch
     patch -p1 -i "$srcdir"/"$_tcp_module_gitname"/tcp.patch
 }
 
