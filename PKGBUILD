@@ -2,7 +2,7 @@
 
 pkgname="perl-email-filter"
 pkgver="1.034"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="Library for creating easy email filters"
 arch=('any')
 url="http://search.cpan.org/dist/Email-Filter/"
@@ -36,7 +36,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
