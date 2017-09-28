@@ -1,0 +1,10 @@
+diff -Nur package.orig/index.js package/index.js
+--- package.orig/index.js	2017-09-28 18:06:57.291132100 +0900
++++ package/index.js	2017-09-28 18:07:25.054830498 +0900
+@@ -1,4 +1,5 @@
+-#!/usr/local/bin/node
++#!/usr/bin/env node
++
+ var SlackChannel = (function () {
+     function SlackChannel(id, name) {
+         this.id = id;
