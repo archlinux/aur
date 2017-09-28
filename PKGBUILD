@@ -2,7 +2,7 @@
 
 pkgname=lib32-gd
 _basename=gd
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="Library for the dynamic creation of images by programmers (32-bit)"
 arch=('x86_64')
@@ -11,14 +11,11 @@ license=('custom')
 depends=('lib32-fontconfig' 'lib32-libxpm' 'lib32-libwebp' 'gd')
 optdepends=('perl: bdftogd script')
 checkdepends=('ttf-liberation')
-source=("https://github.com/libgd/libgd/releases/download/gd-${pkgver}/libgd-${pkgver}.tar.xz"
-        'gd-2.2.4-upstream.patch')
-md5sums=('a244855a323a3ea1975d708eb1e12b7a'
-         '7db6743a61b30471d0b466e6a6c54a49')
+source=("https://github.com/libgd/libgd/releases/download/gd-${pkgver}/libgd-${pkgver}.tar.xz")
+md5sums=('8d8d6a6189513ecee6e893b1fb109bf8')
 
 prepare() {
   cd libgd-${pkgver}
-  patch -p1 -i ${srcdir}/gd-2.2.4-upstream.patch
 }
 
 build() {

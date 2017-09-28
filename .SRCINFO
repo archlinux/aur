@@ -1,6 +1,6 @@
 pkgbase = lib32-gd
 	pkgdesc = Library for the dynamic creation of images by programmers (32-bit)
-	pkgver = 2.2.4
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = http://www.libgd.org/
 	arch = x86_64
@@ -11,10 +11,8 @@ pkgbase = lib32-gd
 	depends = lib32-libwebp
 	depends = gd
 	optdepends = perl: bdftogd script
-	source = https://github.com/libgd/libgd/releases/download/gd-2.2.4/libgd-2.2.4.tar.xz
-	source = gd-2.2.4-upstream.patch
-	md5sums = a244855a323a3ea1975d708eb1e12b7a
-	md5sums = 7db6743a61b30471d0b466e6a6c54a49
+	source = https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz
+	md5sums = 8d8d6a6189513ecee6e893b1fb109bf8
 
 pkgname = lib32-gd
 
