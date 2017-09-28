@@ -2,12 +2,11 @@
 
 pkgname="perl-encode-imaputf7"
 pkgver="1.05"
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Modification of UTF-7 encoding for IMAP"
 arch=('any')
 url="http://search.cpan.org/dist/Encode-IMAPUTF7"
 license=('PerlArtistic')
-depends=('perl')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/P/PM/PMAKHOLM/Encode-IMAPUTF7-${pkgver}.tar.gz")
 sha512sums=('e286e059db72c498173a312223152ca492700282345cccbd21ea49e0334fedcd922ae40b018aa8a6b474a10fbff9ac49f46d4c6f9920f3e508adab42bdca976f')
