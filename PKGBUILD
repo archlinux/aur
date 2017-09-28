@@ -7,7 +7,7 @@ pkgdesc="construct and optionally mail MIME messages"
 arch=('any')
 url="http://www.argon.org/~roderick/"
 license=('GPL')
-depends=('perl' 'perl-email-date-format' 'perl-mime-types' 'perl-proc-waitstat')
+depends=('perl-email-date-format' 'perl-mime-types' 'perl-proc-waitstat')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/R/RO/ROSCH/mime-construct-${pkgver}.tar.gz"
         "include-date-header.diff")
@@ -38,7 +38,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" '(' -name .packlist -o -name perllocal.pod ')' -delete
 }
 
 # Local Variables:
