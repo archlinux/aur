@@ -18,6 +18,7 @@ prepare-push:
 	makepkg --printsrcinfo > .SRCINFO	
 
 uploadpkg:
+	makepkg --printsrcinfo > .SRCINFO
 	git add PKGBUILD .SRCINFO beakerbrowser beakerbrowser.desktop beakerbrowser.install LICENSE Makefile
 
 sum_pkg:

@@ -14,6 +14,7 @@ pkgbase = beakerbrowser
 	makedepends = git
 	depends = electron
 	depends = nodejs
+	depends = p7zip
 	optdepends = gksu: sudo-save support
 	source = git+https://github.com/beakerbrowser/beaker.git
 	source = beakerbrowser

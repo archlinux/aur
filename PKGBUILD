@@ -111,8 +111,6 @@ package() {
 
 		cd "${srcdir}/beaker"
 
-		ls
-
 		#Before install icons and data
 		#Copy icons for Desktop Integration
 		install -Dm644 build/icons/48x48.png \
@@ -120,18 +118,7 @@ package() {
 	
 		mv * "${pkgdir}/opt/${pkgname}/"
 
-		#exit 1
-
-		#cp -R --preserve=mode "beaker/*" "${pkgdir}/opt/${pkgname}/"
 	fi
-
-	#mv "${pkgdir}/beakerbrowser/*" "${pkgdir}/opt/${pkgname}/"
-
-	#cp -rf "${srcdir}/beaker" "${pkgdir}/opt/${pkgname}"
-
-	#cp -R --preserve=mode "${srcdir}/beaker" "${pkgdir}/opt/${pkgname}"
-	#install -Dm755 "${srcdir}/beaker" "${pkgdir}/opt/${pkgname}"
-	#chmod a+rx ${pkgdir}/opt/${pkgname}
 
 	echo -e "\033[1;31m==> Copy binaries \033[1;0m \033[1;1m$1\033[1;0m" >&2
 
@@ -139,7 +126,6 @@ package() {
 
 	# Install Binaries/Launchers
 	install -Dm755 ${pkgname} "$pkgdir"/usr/bin/${pkgname}
-	#ln -s /opt/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
 	#copy launcher to desktop
 	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
@@ -150,29 +136,11 @@ package() {
 	echo -e "\033[1;31m==> FIX permissions \033[1;0m \033[1;1m$1\033[1;0m" >&2
 
 	# Fix wonky permissions
-	chown -R $USER /usr/local
-    #chown -R $USER "${pkgdir}/opt/${pkgname}/node_modules/*"
-    #chown -R $USER "${pkgdir}/opt/${pkgname}/app/node_modules/*"
-    #chmod 765 "${pkgdir}/opt/${pkgname}/node_modules/*"
-    #chmod 765 "${pkgdir}/opt/${pkgname}/app/node_modules/*"
-
-    chown -R $('whoami') /opt/beakerbrowser
-
-    #find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
-    #find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} \;
-    #chmod 755 "${pkgdir}/opt/${pkgname}"
-    
-    #sudo find /opt/beakerbrowser/node_modules/* -type d -exec chmod 755 {} \;
-    #find "${pkgdir}/opt/${pkgname}/node_modules/*" -type d -exec chmod 755 {} \;
-    #find "${pkgdir}/opt/${pkgname}/app/node_modules/*" -type d -exec chmod 755 {} \;
-
-    #sudo chown -R $("whoami") /opt/${pkgname}
-
-    #find "/opt/${pkgname}/node_modules/*" -type d -exec chmod 755 {} \;
-    #find "/opt/${pkgname}/app/node_modules/*" -type d -exec chmod 755 {} \;
-
-
-    #which beakerbrowser
+	if [ -d "/opt/beakerbrowser" ]; then
+	
+		chown -R $USER /usr/local
+		chown -R $('whoami') /opt/beakerbrowser
+	fi
 
     echo -e "\033[1;31m==> The package is completed .... \033[1;0m \033[1;1m$1\033[1;0m" >&2
 }
