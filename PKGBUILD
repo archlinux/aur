@@ -1,3 +1,5 @@
+# Maintainer: Moritz Bunkus <moritz@bunkus.org>
+
 pkgname='perl-hash-merge'
 pkgver='0.200'
 pkgrel="2"
