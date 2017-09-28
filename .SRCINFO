@@ -1,0 +1,14 @@
+pkgbase = javafx9-scenebuilder
+	pkgdesc = The latest version of Scene Builder for Java 9, it was released on Sep 26, 2017.
+	pkgver = 9.0.0
+	pkgrel = 1
+	url = http://gluonhq.com/labs/scene-builder/
+	arch = x86_64
+	arch = i686
+	license = BSD License
+	depends = libarchive
+	source = http://download.gluonhq.com/scenebuilder/9.0.0/install/linux/scenebuilder-9.0.0.deb
+	sha1sums = 55d4a20888365f8c8ca96f0b98a3ea4cb03854c7
+
+pkgname = javafx9-scenebuilder
+
