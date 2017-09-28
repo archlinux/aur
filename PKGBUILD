@@ -2,7 +2,7 @@
 
 pkgname='perl-time-period'
 pkgver='1.25'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A Perl module to deal with time periods"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -36,7 +36,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
