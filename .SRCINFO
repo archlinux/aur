@@ -1,7 +1,7 @@
 pkgbase = fern-wifi-cracker-git
 	pkgdesc = WEP, WPA wifi cracker for wireless penetration testing
 	pkgver = 2.6.d25e58e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/fern-wifi-cracker/
 	arch = any
 	groups = blackarch
@@ -17,6 +17,7 @@ pkgbase = fern-wifi-cracker-git
 	depends = scapy
 	depends = macchanger
 	depends = gksu
+	replaces = fern-wifi-cracker
 	source = git+https://github.com/savio-code/fern-wifi-cracker.git
 	sha1sums = SKIP
 
