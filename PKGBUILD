@@ -2,7 +2,7 @@
 # Contributor: Niels Martignène <niels.martignene@gmail.com>
 
 pkgname=arduino-mk
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A Makefile for Arduino Sketches'
 arch=(any)
@@ -12,7 +12,7 @@ depends=('arduino-avr-core' 'make' 'python-pyserial')
 optdepends=('screen: monitor support'
             'picocom: monitor support')
 source=("https://github.com/sudar/Arduino-Makefile/archive/${pkgver}.tar.gz")
-sha256sums=('4473d25a658397affa56cd76283b42fad1700f49dcd120bef2d7e36813401958')
+sha256sums=('113f68cd2224c8014c10e04e0f3a49ad6d41520a44556942f11aa69cd0046b17')
 
 prepare() {
   cd "${srcdir}/Arduino-Makefile-${pkgver}"
