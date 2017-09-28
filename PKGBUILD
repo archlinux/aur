@@ -13,7 +13,7 @@ DLAGENTS=("http::/usr/bin/wget --user ${_username} --password ${_password} %u")
 
 pkgname=adom-restricted
 epoch=1
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="A roguelike game with a quest-centric, plot driven structure"
 arch=("i686" "x86_64" "armv6h")
@@ -29,9 +29,9 @@ source_x86_64=(${_source_url}/adom_linux_debian_64_${pkgver}.tar.gz)
 source_armv6h=(${_source_url}/adom_linux_arm_${pkgver}.tar.gz)
 
 sha1sums=('51d28fe3f0420cd354113fd7ceb2a1a7abf1b069')
-sha1sums_i686=('0e565a576ad778b545b3289ed119d96493290c0d')
-sha1sums_x86_64=('fd8c22bd5d0f2a3161123a47297dfa0db0773f3d')
-sha1sums_armv6h=('746a095cdee271927387299aea0c08100faabd74')
+sha1sums_i686=('5c18a27cd7027aba73c6d99533b00249ccd415b4')
+sha1sums_x86_64=('f430b3b909b2baa45393937eeca1d732d6f683fc')
+sha1sums_armv6h=('d76310f1b1d0483555a48062d5744929e318482d')
 
 package() {
   cd ${srcdir}/adom
