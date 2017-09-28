@@ -1,13 +1,13 @@
 # Maintainer: Karol Babioch <karol@babioch.de>
 
 pkgname=('python-pytzdata' 'python2-pytzdata')
-pkgver=2017.2
+pkgver=2017.2.2
 pkgrel=1
 pkgdesc="Official timezone database for Python."
 arch=('any')
 url="https://pypi.python.org/pypi/pytzdata"
 license=('MIT')
-makedepends=('python' 'python2')
+makedepends=('python-setuptools' 'python2-setuptools' )
 options=('!emptydirs')
 source=("git+https://github.com/sdispater/pytzdata#tag=$pkgver")
 sha256sums=('SKIP')
