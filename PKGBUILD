@@ -9,10 +9,10 @@ pkgbase=gcc6
 _ver=6
 pkgname=('gcc6' 'gcc6-libs' 'gcc6-fortran' 'gcc6-objc' 'gcc6-ada' 'gcc6-go' 'gcc6-gcj')
 pkgver=6.4.1
-pkgrel=1
+pkgrel=2
 _islver=0.17
 _cloogver=0.18.4
-_snapshot=6-20170920
+_snapshot=6-20170927
 pkgdesc="The GNU Compiler Collection"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -23,7 +23,7 @@ options=(!emptydirs)
 source=("http://gcc.skazkaforyou.com/snapshots/LATEST-6/gcc-${_snapshot}.tar.xz"
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz)
-sha1sums=('5c2eb39b8779e746b651c883b1b8893a058c4089'
+sha1sums=('cda991c759c02c9f714099036e9338a788bd61f5'
           '6243384d1b1d4b3043037698485a468a485b111a'
           '8f7568ca1873f8d55bb694c8b9b83f7f4c6c1aa5')
 
