@@ -35,7 +35,6 @@ build() {
 
 EOD
 
-  tree
   [[ -d "build" ]] || mkdir -p "build"
   cd "build"
 
