@@ -2,7 +2,7 @@
 
 pkgname="perl-encode-imaputf7"
 pkgver="1.05"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="Modification of UTF-7 encoding for IMAP"
 arch=('any')
 url="http://search.cpan.org/dist/Encode-IMAPUTF7"
@@ -35,7 +35,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
