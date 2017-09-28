@@ -84,7 +84,7 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-gcc-r1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-gcc-r1.patch?h=packages/chromium'
         'chromium-blink-gcc7-r2.patch' # https://bugs.chromium.org/p/chromium/issues/detail?id=614289
         'chromium-widevine-r1.patch'
-        'chromium-gn-bootstrap-r20.patch.base64::https://chromium-review.googlesource.com/changes/686415/revisions/8ddf0976e671bc0aad990378e7676d3397b28e3d/patch?downloadbase'
+        'chromium-gn-bootstrap-r20.patch.base64::https://chromium-review.googlesource.com/changes/686415/revisions/8ddf0976e671bc0aad990378e7676d3397b28e3d/patch?download'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
