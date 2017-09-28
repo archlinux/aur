@@ -2,12 +2,12 @@
 
 pkgname='perl-hash-merge'
 pkgver='0.200'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Merges arbitrarily deep hashes into a single hash"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'perl-clone')
+depends=('perl-clone')
 url='http://search.cpan.org/dist/Hash-Merge'
 source=("http://search.cpan.org/CPAN/authors/id/R/RE/REHSACK/Hash-Merge-${pkgver}.tar.gz")
 md5sums=('54b5743103fb3b3986a384b5424f21f4')
