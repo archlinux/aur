@@ -338,7 +338,7 @@ package_lldb-svn() {
         "llvm-libs-svn=${pkgver}-${pkgrel}"
         'libedit'
         'libxml2'
-        'python2'
+        'python2-six'
     )
     groups=('llvm-toolchain-svn')
     provides=('lldb')
@@ -347,6 +347,10 @@ package_lldb-svn() {
     cd "${srcdir}/build/tools/lldb"
 
     make DESTDIR="${pkgdir}" install
+
+    # Clean up conflicting files
+    # TODO: This should probably be discussed with upstream.
+    rm -rf "${pkgdir}/usr/lib/python2.7/site-packages/six.py"
 
     _fix_python_exec_path \
         "${pkgdir}${_py_sitepkg_dir}/lldb/utils/symbolication.py"
