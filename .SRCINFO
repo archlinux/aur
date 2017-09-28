@@ -6,7 +6,7 @@ pkgbase = clamtk-gnome
 	arch = any
 	license = GPL
 	depends = clamtk
-	depends = nautilus
+	depends = python2-nautilus
 	source = https://github.com/dave-theunsub/clamtk-gnome/archive/master.zip
 	md5sums = SKIP
 

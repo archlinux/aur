@@ -6,7 +6,7 @@ pkgdesc="a simple plugin for ClamTk to allow a right-click, context menu scan of
 arch=('any')
 url="https://github.com/dave-theunsub/clamtk-gnome"
 license=('GPL')
-depends=('clamtk' 'nautilus')
+depends=('clamtk' 'python2-nautilus')
 
 source=("https://github.com/dave-theunsub/clamtk-gnome/archive/master.zip")
 
