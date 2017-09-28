@@ -1,8 +1,8 @@
 # Maintainer Paul Sajna <sajattack@gmail.com>
 
 pkgname='fern-wifi-cracker-git'
-pkgver=2.6.14.gd25e58e
-pkgrel=2
+pkgver=2.6.r14.gd25e58e
+pkgrel=1
 groups=('blackarch' 'blackarch-cracker' 'blackarch-wireless')
 pkgdesc='WEP, WPA wifi cracker for wireless penetration testing'
 arch=('any')
