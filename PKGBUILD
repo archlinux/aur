@@ -1,8 +1,8 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=nginx-mod-nchan
-pkgver=1.1.6
-pkgrel=2
+pkgver=1.1.7
+pkgrel=1
 
 _nginxver=1.12.1
 
@@ -33,4 +33,4 @@ package() {
 }
 
 sha256sums=('8793bf426485a30f91021b6b945a9fd8a84d87d17b566562c3797aba8fac76fb'
-            'df037766e3a152d8cf2a8b644dd10db8cac3679523adc3c063d41ffeb20d43bc')
+            'c8ae7791560ef19a0fec459f424366a09e3baf52ab0fc4938ffce8d962b6abd6')
