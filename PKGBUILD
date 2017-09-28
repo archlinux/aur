@@ -4,12 +4,12 @@
 
 pkgname='perl-data-page'
 pkgver='2.02'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="help when paging through sets of results"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'perl-class-accessor-chained' 'perl-test-exception')
+depends=('perl-class-accessor-chained' 'perl-test-exception')
 url='http://search.cpan.org/dist/Data-Page'
 source=('http://search.cpan.org/CPAN/authors/id/L/LB/LBROCARD/Data-Page-2.02.tar.gz')
 md5sums=('57f9aed8a79687a2712adf7bf2f9cc4d')
