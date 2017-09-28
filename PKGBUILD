@@ -1,3 +1,5 @@
+# Maintainer: Moritz Bunkus <moritz@bunkus.org>
+
 # Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-net-sip'
