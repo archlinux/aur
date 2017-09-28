@@ -4,20 +4,20 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=rtaudio
-pkgver=4.1.2
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A set of C++ classes that provide a common API for realtime audio input/output."
 arch=('i686' 'x86_64')
 url="http://www.music.mcgill.ca/~gary/rtaudio/"
 license=('MIT')
-depends=('jack' 'rtmidi')
+depends=('jack' 'libpulse' 'python2')
 source=("${url}release/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('1e7f7f0f4dc451d023a7c8ab287fe63034cf6b4e18fe138bab253c307d6dd0cddb669b031f6c21325aaac0ce53002acd2a17dd1e47bd8ac2cb14e058cfce1a21')
+sha512sums=('390b6c454c42cf066fa94af397b784430dadc1650de320be377b7bbd09eda8705936bff3ee4327358815c3d5247a38fead81c8778cd85db30a12a6ace742c84a')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  ./configure --prefix=/usr --with-alsa --with-jack
-  sed -i 's/Requires: /Requires: jack /' rtaudio.pc
+  ./configure --prefix=/usr --with-alsa --with-jack --with-pulse
+  sed -i 's/Requires: /Requires: jack/' rtaudio.pc
   make
 }
 
@@ -25,14 +25,6 @@ package() {
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   
-  # Install RtAudio configuration tool.
-  install -Dm755 rtaudio-config "${pkgdir}/usr/bin/rtaudio-config"
-
-  # Install test utilities with prefix 'rtaudio-'
-  for _bin in `find tests/.libs -maxdepth 1 -type f -perm 755 ! -name "*.*"`; do
-    install -Dm755 $_bin "${pkgdir}/usr/bin/${pkgname}-"`basename $_bin`
-  done
-
   # Text documentation.
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
   install -m644 readme doc/release.txt "${pkgdir}/usr/share/doc/${pkgname}"
@@ -46,8 +38,7 @@ package() {
   csplit -s readme "%LEGAL AND%"
   install -Dm644 xx00 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # Install python2 bindings - Currently fails to build.
-  #cd contrib/python/pyrtaudio
-  #python2 setup.py install --root="${pkgdir}/"
-  #install -Dm644 PyRtAudioTest.py "${pkgdir}/usr/share/doc/${pkgname}/"
+  # Install python2 bindings.
+  cd contrib/python/pyrtaudio
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
