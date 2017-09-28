@@ -198,7 +198,7 @@ build() {
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
-_package-kernel() {
+_package() {
     pkgdesc='Linux Kernel and modules with the  UKSM.'
     depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
     optdepends=('crda: to set the correct wireless channels of your country' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
@@ -346,7 +346,7 @@ _package-docs() {
     chmod -R u=rwX,go=rX "${_builddir}"
 }
 
-pkgname=("${pkgbase}-kernel" "${pkgbase}-headers" "${pkgbase}-docs")
+pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
     $(declare -f "_package${_p#${pkgbase}}")

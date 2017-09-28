@@ -32,7 +32,7 @@ pkgbase = linux-uksm
 	sha512sums = d6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22
 	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
 
-pkgname = linux-uksm-kernel
+pkgname = linux-uksm
 	pkgdesc = Linux Kernel and modules with the UKSM.
 	install = linux.install
 	depends = coreutils
