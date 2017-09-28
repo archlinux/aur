@@ -2,12 +2,12 @@
 
 pkgname="perl-algorithm-checkdigits"
 pkgver="1.3.2"
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Perl extension to generate and test check digits"
 arch=('any')
 url="http://search.cpan.org/dist/Algorithm-CheckDigits/"
 license=('GPL' 'PerlArtistic')
-depends=('perl' 'perl-module-build' 'perl-probe-perl')
+depends=('perl-module-build' 'perl-probe-perl')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/M/MA/MAMAWE/Algorithm-CheckDigits-v${pkgver}.tar.gz")
 sha512sums=('f55f9f8244e287d9fe8519688a543517260063655625c2de0646ae9e29663f8d08c6b2c7897b4c62f0dd132334a488b06f417b096b05db4550446f95bc73d26e')
