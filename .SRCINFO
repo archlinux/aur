@@ -1,6 +1,6 @@
 pkgbase = haskell-descrilo
 	pkgdesc = Loads a list of items with fields
-	pkgver = 0.1.0.4
+	pkgver = 0.1.0.5
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/descrilo
 	install = haskell-descrilo.install
@@ -8,8 +8,8 @@ pkgbase = haskell-descrilo
 	arch = x86_64
 	license = GPL3
 	depends = ghc
-	source = http://hackage.haskell.org/package/descrilo-0.1.0.4/descrilo-0.1.0.4.tar.gz
-	sha256sums = 17a392388b1e6f7206d720aca846c2da1a50a6cd1a0f5a97bba3d7be6c412142
+	source = http://hackage.haskell.org/package/descrilo-0.1.0.5/descrilo-0.1.0.5.tar.gz
+	sha256sums = 2531d6b52a6a1a44c00581d952631401cadb3e3b2c9f6111fbdc05ad17b3f58e
 
 pkgname = haskell-descrilo
 

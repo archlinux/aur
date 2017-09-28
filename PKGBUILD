@@ -1,7 +1,7 @@
 # Maintainer: Marcelo Garlet Millani <marcelogmillani at gmail dot com>
 _hkgname=descrilo
 pkgname=haskell-descrilo
-pkgver=0.1.0.4
+pkgver=0.1.0.5
 pkgrel=1
 pkgdesc='Loads a list of items with fields'
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -11,14 +11,13 @@ depends=("ghc")
 source=( "http://hackage.haskell.org/package/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz" )
 #options=('staticlibs')
 install=${pkgname}.install
-sha256sums=('17a392388b1e6f7206d720aca846c2da1a50a6cd1a0f5a97bba3d7be6c412142')
+sha256sums=('2531d6b52a6a1a44c00581d952631401cadb3e3b2c9f6111fbdc05ad17b3f58e')
 
 build() {
 	cd ${srcdir}/${_hkgname}-${pkgver}
 
 	runhaskell Setup configure -O --enable-split-objs --enable-shared \
 		--prefix=/usr --docdir=/usr/share/doc/${pkgname} --libsubdir=\$compiler/site-local/\$pkgid
-	# runhaskell Setup configure --prefix=/usr --docdir=/usr/share/doc/${pkgname} -O --enable-shared --libsubdir=\$compiler/site-local/\$pkgid
 	runhaskell Setup build
 	runhaskell Setup haddock
 	runhaskell Setup register   --gen-script
@@ -36,4 +35,3 @@ package() {
 	gzip ${pkgdir}/usr/share/man/man5/descrilo.5
 	rm -f ${pkgdir}/usr/share/doc/${pkgname}/LICENSE
 }
-
