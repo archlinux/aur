@@ -1,0 +1,27 @@
+pkgbase = sysdig-inspect
+	pkgdesc = A powerful opensource interface for container troubleshooting and security investigation
+	pkgver = 0.1.42
+	pkgrel = 1
+	url = https://github.com/draios/sysdig-inspect
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = expat
+	depends = gconf
+	depends = gtk2
+	depends = gvfs
+	depends = hunspell
+	depends = hunspell-en
+	depends = libcurl-compat
+	depends = libgcrypt
+	depends = libgnome-keyring
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	optdepends = gnome-keyring
+	source = https://download.sysdig.com/stable/sysdig-inspect/sysdig-inspect_0.1.42_amd64.deb
+	sha256sums = 1790d7a4b6c6b618b1618c1767ad7b0ba4a1cf4b61e6a252c075f27488b93bec
+
+pkgname = sysdig-inspect
+
