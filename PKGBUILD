@@ -2,7 +2,7 @@
 
 pkgname=perl-pod-latex
 pkgver='0.61'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Convert Pod data to formatted LaTeX"
 arch=(any)
 license=('PerlArtistic')
@@ -35,7 +35,7 @@ check() {
 package() {
   prepare_environment
   ./Build install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
