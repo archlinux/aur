@@ -1,4 +1,5 @@
 # Maintainer: XZS <d dot f dot fischer at web dot de>
+# Contributor: Mantas Mikulėnas <grawity at gmail dot com>
 # Contributor: Morris Jobke <hey at morrisjobke dot de>
 # Contributor: alucryd <alucryd at gmail dot com>
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
