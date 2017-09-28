@@ -2,7 +2,7 @@
 
 pkgname='perl-devel-repl'
 pkgver='1.003028'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="a modern perl interactive shell"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -37,7 +37,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
