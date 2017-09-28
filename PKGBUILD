@@ -1,3 +1,5 @@
+# Maintainer: Moritz Bunkus <moritz@bunkus.org>
+
 pkgname=perl-datetime-format-pg
 pkgver="0.16013"
 pkgrel="1"
