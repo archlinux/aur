@@ -1,12 +1,12 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='perl-xml-simpleobject-libxml'
 pkgver='0.60'
-pkgrel="2"
+pkgrel='4'
 pkgdesc="simple(r) object representation of an XML::LibXML DOM object"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'perl-xml-libxml')
+depends=('perl-xml-libxml')
 url='http://search.cpan.org/dist/XML-SimpleObject-LibXML'
 source=('http://search.cpan.org/CPAN/authors/id/D/DB/DBRIAN/XML-SimpleObject-LibXML-0.60.tar.gz')
 md5sums=('6a722598b78a09fcfd35af804576fcd4')
@@ -33,7 +33,7 @@ check() {
 package() {
   cd "${srcdir}/XML-SimpleObject-LibXML-0.60"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
