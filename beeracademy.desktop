@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Beeracademy
+GenericName=Beeracademy
+Comment=The Beeracademy drinking game.
+Exec=beeracademy
+Icon=/usr/share/pixmaps/beeracademy.png
+Terminal=false
+Type=Application
+Categories=Game;

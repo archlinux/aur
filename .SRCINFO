@@ -1,0 +1,20 @@
+pkgbase = beeracademy
+	pkgdesc = The official BeerAcademy package
+	pkgver = 2.0.466
+	pkgrel = 1
+	url = https://beeracademy.nu/
+	arch = any
+	license = Freeware
+	depends = java-runtime<=8
+	noextract = downloadfile?file=Academy_466.jar&type=0
+	source = https://beeracademy.nu/site/downloadfile?file=Academy_466.jar&type=0
+	source = beeracademy
+	source = beeracademy.desktop
+	source = beeracademy.png
+	md5sums = 3f123726c711cdb751193d1c9cf03023
+	md5sums = d3c37726f8b97f27f8b2f86b6284fb82
+	md5sums = ed5bdf5c5b7010468b1970eddb74294f
+	md5sums = cbbf7238f09e2cfbc3fe5df3cc585cac
+
+pkgname = beeracademy
+
