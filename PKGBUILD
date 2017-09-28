@@ -2,12 +2,13 @@
 
 pkgname=perl-pod-latex
 pkgver='0.61'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Convert Pod data to formatted LaTeX"
 arch=(any)
 license=('PerlArtistic')
 url="http://search.cpan.org/dist/Pod-LaTeX/"
 options=('!emptydirs')
+depends=('perl')
 makedepends=('perl-module-build')
 source=("http://search.cpan.org/CPAN/authors/id/T/TJ/TJENNESS/Pod-LaTeX-${pkgver}.tar.gz")
 sha512sums=('c9b5d8b50f630e25e1f913d95d83a1323e71d2c5a3a794a543bdc9962800e5979b3e58595e7a653a96f9aea1f321c1564e2062e9b9d70d8c4d1c6729cb8df498')
