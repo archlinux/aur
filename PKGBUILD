@@ -4,7 +4,7 @@ pkgname="javafx-scenebuilder"
 _debpkg=scenebuilder
 pkgver="8.4.0"
 pkgrel=1
-pkgdesc="Gluon Scene Builder based on debian package, this version is regognized by Netbeans,it was released on Sep 26, 2017."
+pkgdesc="Gluon Scene Builder for Java 8, based on debian package, this version is regognized by Netbeans,it was released on Sep 26, 2017."
 arch=('x86_64' 'i686')
 url="http://gluonhq.com/labs/scene-builder/"
 license=('BSD License')
@@ -25,8 +25,8 @@ build() {
   cd "$srcdir/"
   tar -xf data.tar.xz
 echo "[Desktop Entry]
-Name=${_basename}
-Comment=SceneBuilder
+Name=Scene Builder
+Comment=Gluon Scene Builder for Java 8.
 Exec=/opt/${_basename}/${_basename}
 Icon=/opt/${_basename}/${_basename}.png
 Terminal=false

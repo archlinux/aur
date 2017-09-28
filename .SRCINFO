@@ -1,5 +1,5 @@
 pkgbase = javafx-scenebuilder
-	pkgdesc = Gluon Scene Builder based on debian package, this version is regognized by Netbeans,it was released on Sep 26, 2017.
+	pkgdesc = Gluon Scene Builder for Java 8, based on debian package, this version is regognized by Netbeans,it was released on Sep 26, 2017.
 	pkgver = 8.4.0
 	pkgrel = 1
 	url = http://gluonhq.com/labs/scene-builder/
