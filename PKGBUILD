@@ -7,7 +7,7 @@ pkgdesc="iftop does for network usage what top(1) does for CPU usage - pre-1.0 r
 arch=('i686' 'x86_64')
 url="http://www.ex-parrot.com/~pdw/iftop/"
 license=('GPL')
-depends=('libpcap>=1.0.0' 'ncurses')
+depends=('libpcap>=1.0.0')
 provides=('iftop')
 conflicts=('iftop' 'iftop-ipv6')
 options=('!makeflags')
