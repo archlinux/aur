@@ -2,7 +2,7 @@
 
 pkgname=diagram
 pkgver=20170903
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI app to convert ascii arts into hand drawn diagrams written in go."
 arch=('x86_64' 'i686')
 url="https://github.com/esimov/diagram"
@@ -27,9 +27,6 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   install -p -m755 "$srcdir/src/$_gourl/diagram" "$pkgdir/usr/bin"
   install -Dm644 "$srcdir/src/$_gourl/font/gloriahallelujah.ttf" "$pkgdir/usr/share/diagram/gloriahallelujah.ttf"
-
-  mkdir -p "$pkgdir/usr/lib/go"
-  cp -Rv --preserve=timestamps "$srcdir/"{src,pkg} "$pkgdir/usr/lib/go"
 
   # Package license (if available)
   for f in LICENSE COPYING LICENSE.* COPYING.*; do
