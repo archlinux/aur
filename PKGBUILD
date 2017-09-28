@@ -5,7 +5,7 @@ pkgname="javafx9-scenebuilder"
 _debpkg=scenebuilder
 pkgver="9.0.0"
 pkgrel=1
-pkgdesc="The latest version of Scene Builder for Java 9, it was released on Sep 26, 2017."
+pkgdesc="The latest version of Gluon Scene Builder for Java 9, it was released on Sep 26, 2017."
 arch=('x86_64' 'i686')
 url="http://gluonhq.com/labs/scene-builder/"
 license=('BSD License')
@@ -24,7 +24,7 @@ build() {
   mv "${srcdir}/opt/${_basename}/${_originalbasename}.png" "${srcdir}/opt/${_basename}/${_basename}.png"
 echo "[Desktop Entry]
 Name=${_basename}
-Comment=Scene Builder for Java 9.
+Comment=Gluon Scene Builder for Java 9.
 Exec=/opt/${_basename}/${_originalbasename}
 Icon=/opt/${_basename}/${_basename}.png
 Terminal=false

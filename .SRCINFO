@@ -1,5 +1,5 @@
 pkgbase = javafx9-scenebuilder
-	pkgdesc = The latest version of Scene Builder for Java 9, it was released on Sep 26, 2017.
+	pkgdesc = The latest version of Gluon Scene Builder for Java 9, it was released on Sep 26, 2017.
 	pkgver = 9.0.0
 	pkgrel = 1
 	url = http://gluonhq.com/labs/scene-builder/
