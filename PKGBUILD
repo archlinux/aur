@@ -1,3 +1,5 @@
+# Maintainer: Moritz Bunkus <moritz@bunkus.org>
+
 pkgname='perl-module-install-autolicense'
 pkgver='0.10'
 pkgrel='1'
