@@ -1,25 +1,33 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: Bazon <bazonbloch@arcor.de>
+
 pkgname=activinspire
-pkgver=2.3.65940
-pkgrel=3
+pkgver=2.10.66827
+pkgrel=1
 pkgdesc="Presentation Software to use with Promethean Hardware products."
 arch=('i686' 'x86_64')
-url="http://activsoftware.co.uk/linux/repos/ubuntu/dists/precise/Release"
+url="https://support.prometheanworld.com/product/activinspire"
 license=('unknown')
-if [ "$CARCH" = "i686" ]; then
-  _arch='i386'
-  _md5sum='faed7e0ca0f04190df6702ebc18c7489'
-  depends=('qt4' 'gstreamer0.10-good-plugins' 'libjpeg6' 'jre7-openjdk' 'openssl098' 'libpulse')
+depends_i686=('qt4' 'gst-plugins-base' 'libjpeg6' 'jre7-openjdk' 'openssl-1.0' 'libpulse')
+depends_x86_64=('qt4' 'lib32-gst-plugins-base' 'bin32-jre' 'lib32-libjpeg' 'lib32-libjpeg6' 'lib32-libxmu' 'lib32-alsa-lib' 'lib32-openssl-1.0' 'lib32-libpulse')
+md5sum_i686='08044e50534527a7a88ac6ff0586c934'
+md5sum_x86_64='59b14c0463a4f11c5e9cacd4d7206fae'
+if [ ${CARCH} = "i686" ]
+then
+	_arch="i386"
 else
-  _arch='amd64'
-  _md5sum='3b5ada7a4a713d2e3b0d4547530f2919'
-  depends=('qt4' 'gstreamer0.10-good-plugins' 'bin32-jre' 'lib32-libjpeg' 'lib32-libjpeg6' 'lib32-libxmu' 'lib32-gstreamer0.10-base' 'lib32-alsa-lib' 'lib32-openssl098' 'lib32-libpulse')
+	_arch="amd64"
 fi
-optdepends=('activdriver: promethean hardware support'
-            'activtools: hardware calibration')
-source=(http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/activinspire/activinspire_$pkgver-1."$_arch"_"$_arch".deb)
-md5sums=( $_md5sum ) 
+
+_u="http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/"
+source=(
+	${_u}activinspire/activinspire_${pkgver}-1."$_arch"_"$_arch".deb
+	)
+
+prepare() {
+	bsdtar -xf activinspire_${pkgver}-1.${_arch}_${_arch}.deb
+}
+
 package() {
         # extract the archive
         bsdtar -xf data.tar.gz -C "$pkgdir"
@@ -27,12 +35,6 @@ package() {
         # move out of the local directory to match arch standards
         mv "$pkgdir"/usr/local/bin "$pkgdir"/usr/
         rmdir "$pkgdir"/usr/local
-
-        # the included libphonon_gstreamer.so makes inspire crash on64bit, so take a link to a working one instead
-        if [ "$CARCH" = "x86_64" ]; then
-            rm "$pkgdir"/usr/bin/activsoftware/phonon_backend/libphonon_gstreamer.so
-            ln -s /usr/lib/libphonon.so "$pkgdir"/usr/bin/activsoftware/phonon_backend/libphonon_gstreamer.so
-        fi
 
         # the starting script contains a lot of stuff specific to ubuntu, we don't need that and make a shorter one
         mv "$pkgdir"/usr/bin/inspire "$pkgdir"/usr/bin/inspire-for-ubuntu
