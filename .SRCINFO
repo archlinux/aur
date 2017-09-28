@@ -1,0 +1,15 @@
+pkgbase = nodejs-slack-tui
+	pkgdesc = TUI-based Slack client.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/hikalium/slack-tui#readme
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = slack-tui-0.1.2.tgz
+	source = http://registry.npmjs.org/slack-tui/-/slack-tui-0.1.2.tgz
+	sha1sums = 05068168680352056c4ff74b78076bf25f634257
+
+pkgname = nodejs-slack-tui
+
