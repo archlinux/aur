@@ -10,16 +10,15 @@ url='http://code.google.com/p/fern-wifi-cracker/'
 license=('GPL2')
 depends=('python2' 'python2-pyqt4' 'aircrack-ng' 'xterm' 'subversion' 'scapy'
          'macchanger' 'gksu')
-makedepends=('sed unzip')
+makedepends=('unzip')
 replaces=('fern-wifi-cracker-git')
+conflicts=('fern-wifi-cracker-git')
 source=("https://github.com/savio-code/fern-wifi-cracker/archive/2.6.zip")
 sha1sums=('SKIP')
 
 prepare() {
   unzip $pkgver.zip
   cd "$srcdir/$pkgname-$pkgver/Fern-Wifi-Cracker"
-
-  sed 's|python$|python2|g' execute.py
 }
 
 package() {
