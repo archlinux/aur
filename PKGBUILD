@@ -4,7 +4,7 @@
 
 pkgname='perl-config-any'
 pkgver='0.32'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Load configuration from different file formats, transparently"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -37,7 +37,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
