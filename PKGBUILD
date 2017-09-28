@@ -2,7 +2,7 @@
 
 pkgname=perl-proc-waitstat
 pkgver="1.00"
-pkgrel="2"
+pkgrel='3'
 pkgdesc="interpret and act on wait() status values"
 arch=('any')
 url="http://www.argon.org/~roderick/"
@@ -35,7 +35,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
