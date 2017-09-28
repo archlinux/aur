@@ -21,7 +21,7 @@ _gtk3=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=55.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -58,9 +58,10 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
 	unity-menubar.patch
 	add_missing_pgo_rule.patch
         pgo_fix_missing_kdejs.patch
-        fix-wifi-scanner.diff
-        no-crmf.diff
         fix_pgo_bug1389436_explicitly_instantiate_gfxFont.patch
+        wifi-disentangle.patch wifi-fix-interface.patch
+        clip-ft-glyph.diff harmony-fix.diff
+        firefox-install-dir.patch no-crmf.diff glibc-2.26-fix.diff
 )
 
 
@@ -122,13 +123,24 @@ prepare() {
   # https://bugs.archlinux.org/task/34644
   # sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
 
-
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
+  patch -Np1 -i ../no-crmf.diff
+  
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
+  patch -Np1 -i ../glibc-2.26-fix.diff
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
-  patch -Np1 -i "$srcdir"/fix-wifi-scanner.diff
-  
-   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
-  patch -Np1 -i "$srcdir"/no-crmf.diff
+  patch -Np1 -i ../wifi-disentangle.patch
+  patch -Np1 -i ../wifi-fix-interface.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1393467
+  patch -Np1 -i ../clip-ft-glyph.diff
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1400721
+  patch -Np1 -i ../harmony-fix.diff
+
+
   
   # WebRTC build tries to execute "python" and expects Python 2
   mkdir -p "$srcdir/path"
@@ -234,6 +246,11 @@ md5sums=('SKIP'
          '730e43106f0a4b19066c9c1e15ff7888'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3fa8bd22d97248de529780f5797178af'
-         'e2396b9918aa602427f80d48caf319b4'
+         'b358b5ed3726ecd4ed054bdc09901982'
+         'c6ebac35e9e9c3b031f2cf9ee3e6ed96'
+         'a819433292665a6f06a223a0a718e67a'
+         '7601506112cd12f21dea65d840968d1f'
+         '2f51339d122d19f57ec49fc2da07654a'
+         'dbf14588e85812ee769bd735823a0146'
          '196edf030efc516e3de5ae3aa01e9851'
-         'b358b5ed3726ecd4ed054bdc09901982')
+         '11427899801d5e8f66df835f5806f851')
