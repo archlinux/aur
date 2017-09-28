@@ -5,7 +5,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-mediaplayer-git
-pkgver=2.7
+pkgver=2.7.1
 pkgrel=1
 pkgdesc='A mediaplayer indicator for the Gnome Shell'
 arch=('any')
