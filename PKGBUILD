@@ -4,7 +4,7 @@
 
 pkgname='perl-dbix-log4perl'
 pkgver='0.26'
-pkgrel="3"
+pkgrel='4'
 pkgdesc="Extension for DBI to log via Log::Log4perl"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -38,7 +38,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
