@@ -3,7 +3,7 @@
 pkgbase = albert
 	pkgdesc = A DE agnostic omnilauncher.
 	pkgver = 0.13.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/albertlauncher/albert
 	arch = i686
 	arch = x86_64

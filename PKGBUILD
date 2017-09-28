@@ -1,14 +1,15 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
 pkgver=0.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A DE agnostic omnilauncher."
 arch=('i686' 'x86_64')
 url="https://github.com/albertlauncher/albert"
 license=('GPL')
 depends=('qt5-base' 'libx11' 'qt5-x11extras' 'qt5-svg')
 makedepends=('cmake' 'qt5-base' 'qt5-tools')
-optdepends=('virtualbox' 'muparser')
+optdepends=('virtualbox: VirtualBox plugin'
+            'muparser: Calculator plugin')
 provides=('albert')
 conflicts=('albert-git')
 source=( git://github.com/albertlauncher/albert.git )
