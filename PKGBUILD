@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='perl-test-mock-lwp-dispatch'
 pkgver='0.08'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="mocks LWP::UserAgent and dispatches your requests/responses"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -37,7 +37,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
