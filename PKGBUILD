@@ -6,13 +6,13 @@
 
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
-pkgver=4.1.r2483.g1f3411cd1
+pkgver=4.3.r504.g75c2b30a2
 pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/"
 license=('GPL3')
-depends=('avahi' 'openssl' 'uriparser' 'ffmpeg' 'linuxtv-dvb-apps')
+depends=('avahi' 'openssl' 'uriparser' 'ffmpeg' 'linuxtv-dvb-apps' 'pcre2' 'libfdk-aac')
 makedepends=('git' 'python')
 optdepends=('xmltv: For an alternative source of programme listings')
 provides=('tvheadend')
@@ -49,7 +49,8 @@ build() {
         --disable-libvpx_static \
         --disable-libtheora_static \
         --disable-libvorbis_static \
-        --disable-libfdkaac_static \
+        --disable-libfdkaac_static --enable-libfdkaac \
+        --disable-libopus_static \
         --disable-libmfx_static --disable-qsv \
         --disable-nvenc \
         --disable-hdhomerun_static
