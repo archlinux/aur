@@ -3,7 +3,7 @@
 
 pkgname=python-euclid3
 pkgver=0.01
-pkgrel=3
+pkgrel=4
 pkgdesc="2D and 3D vector, matrix, quaternion and geometry module."
 arch=('any')
 license=('LGPL2.1')
@@ -25,7 +25,7 @@ build() {
 
     # Build Python 2 module
     cd ${srcdir}/euclid3-${pkgver}-python2
-    python2 seutp.py build
+    python2 setup.py build
 }
 
 package_python-euclid3() {
