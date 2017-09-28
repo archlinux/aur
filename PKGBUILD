@@ -31,6 +31,13 @@ pkgver() {
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  sed -i \
+    "/^SCHEMA_DIR/s/EXTENSION_DIR/$(
+      )get_option('prefix'), get_option('datadir'), 'glib-2.0'/" \
+    "$_gitname"/meson.build
+}
+
 build() {
   cd "$_gitname"
   rm -rf builddir
@@ -48,12 +55,6 @@ package() {
 package_01_ninja_install() {
   cd "$_gitname"
   DESTDIR="$pkgdir" ninja -C builddir install
-}
-
-package_02_move_schema() {
-  cd "$pkgdir/usr/share"
-  mkdir -p glib-2.0/schemas
-  mv gnome-shell/extensions/*/schemas/*.xml glib-2.0/schemas
 }
 
 depends[125]=gnome-shell
