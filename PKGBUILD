@@ -1,3 +1,5 @@
+# Maintainer: Moritz Bunkus <moritz@bunkus.org>
+
 # Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-dbix-log4perl'
