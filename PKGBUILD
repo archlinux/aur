@@ -4,7 +4,7 @@
 
 pkgname='perl-data-page'
 pkgver='2.02'
-pkgrel="3"
+pkgrel='4'
 pkgdesc="help when paging through sets of results"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -38,5 +38,5 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
