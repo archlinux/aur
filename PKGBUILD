@@ -12,12 +12,12 @@ sha1sums=('30267fb92592495c1bc1c6a845d553b9758b93e2')
 arch=('i686' 'x86_64')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
+  cd $pkgname-$pkgver
+  cmake -DCMAKE_INSTALL_PREFIX=$pkgdir/usr -DCMAKE_BUILD_TYPE=Release .
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  imake -C $pkgname install
+  cd $pkgname-$pkgver
+  make install
 }
