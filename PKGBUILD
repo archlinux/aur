@@ -5,8 +5,8 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.13.3
-xanmod=5
+pkgver=4.13.4
+xanmod=6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
@@ -19,9 +19,9 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
-source_x86_64=("config.x86_64")
-source_i686=("config.i686")
-sha256sums=('7a272ef5fc6c6a0322ac3d78aafba76eb5901ce67787360a0c823c485eabaf92'
+source_x86_64=("config.x86_64::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.x86_64?h=packages/linux")
+source_i686=("config.i686::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.i686?h=packages/linux")
+sha256sums=('877d7ad3a7ceeaa87db28d1f9886336db940a669396d5102b7a08b1d21789e14'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 sha256sums_i686=('73278ee56c5d3855e67ff50caa77a7cb47fb29ebd8f9b7ca9ebee4e2d446529c')
@@ -33,7 +33,7 @@ prepare() {
   cd "${srcdir}/linux-${pkgver}-xanmod${xanmod}"
 
   msg2 "What config you want?"
-  echo -en "     1. upstream Xanmod\n     2. Archlinux stock\n     Selection: "
+  echo -en "     1. upstream Xanmod\n     2. Archlinux stock\n   Selection: "
   read -n 1 answer && echo
   case $answer in
     1) true ;;
