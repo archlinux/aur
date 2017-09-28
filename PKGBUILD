@@ -2,25 +2,24 @@
 # vim: set ts=2 sw=2 et ft=sh:
 
 pkgname=qutebrowser-git
-pkgver=0.11.0.r842.g66e4c3286
+pkgver=0.11.0.r1041.g02bcec37f
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
 arch=(any)
 url="http://www.qutebrowser.org/"
 license=('GPL')
-depends=('python>=3.4' 'python-setuptools' 'python-pyqt5>=5.2' 'qt5-base>=5.2'
-         'qt5-webkit' 'qt5-declarative' 'libxkbcommon-x11' 'python-pypeg2'
-         'python-jinja' 'python-pygments' 'xdg-utils' 'desktop-file-utils'
-         'python-yaml' 'python-attrs' 'hicolor-icon-theme')
+depends=('python' 'python-setuptools' 'python-pyqt5' 'qt5-base'
+         'qt5-webengine' 'qt5-declarative' 'python-pypeg2' 'python-jinja'
+         'python-pygments' 'python-yaml' 'python-attrs')
 makedepends=('asciidoc' 'source-highlight' 'git')
 optdepends=(
-  'gst-libav: media playback'
-  'gst-plugins-base: media playback'
-  'gst-plugins-good: media playback'
-  'gst-plugins-bad: media playback'
-  'gst-plugins-ugly: media playback'
-  'pdfjs: Displaying PDF in-browser'
-  'qt5-webengine: To use --backend webengine'
+  'qt5-webkit: To use the QtWebKit backend'
+  'gst-libav: media playback with QtWebKit'
+  'gst-plugins-base: media playback with QtWebKit'
+  'gst-plugins-good: media playback with QtWebKit'
+  'gst-plugins-bad: media playback with QtWebKit'
+  'gst-plugins-ugly: media playback with QtWebKit'
+  'pdfjs: Displaying PDF in-browser with QtWebKit'
 )
 
 options=(!emptydirs)
