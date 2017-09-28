@@ -2,7 +2,7 @@
 
 pkgname=perl-rose-object
 pkgver=0.860
-pkgrel="2"
+pkgrel='3'
 pkgdesc="A simple object base class"
 arch=(any)
 license=('PerlArtistic')
@@ -35,7 +35,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
