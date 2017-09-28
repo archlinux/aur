@@ -2,7 +2,7 @@
 
 pkgname="perl-gd-barcode"
 pkgver="1.15"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="Create barcode image with GD"
 arch=('any')
 url="http://search.cpan.org/dist/GD-Barcode"
@@ -35,7 +35,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
