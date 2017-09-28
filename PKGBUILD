@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=lmod
-pkgver=7.3.20
+pkgver=7.7.3
 pkgrel=1
 pkgdesc="environment modules system based on Lua, supports legacy TCL modules"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ build() {
 package() {
   cd $srcdir/Lmod-$pkgver
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR=$pkgdir pre-install
 
   install -Dm644 License $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
@@ -34,6 +34,7 @@ package() {
   rm -r $pkgdir/usr/share/lmod/$pkgver/share
 
   install -d $pkgdir/etc/profile.d
+
   pushd $pkgdir/etc/profile.d
   ln -sf /usr/share/lmod/lmod/init/profile modules.sh
   ln -sf /usr/share/lmod/lmod/init/cshrc   modules.csh
@@ -41,4 +42,4 @@ package() {
   popd
 }
 
-md5sums=('494690fe26cefdbab9ee4a1afb6637cc')
+md5sums=('f3a58d0e78a78e153cf32d52db556402')
