@@ -2,7 +2,7 @@
 
 pkgname=perl-io-event
 pkgver=0.813
-pkgrel="2"
+pkgrel='3'
 pkgdesc="Tied Filehandles for Nonblocking IO with Object Callbacks"
 arch=('any')
 url="http://search.cpan.org/dist/IO-Event"
@@ -37,7 +37,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
