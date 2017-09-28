@@ -2,7 +2,7 @@
 
 pkgname=perl-rose-datetime
 pkgver=0.540
-pkgrel="2"
+pkgrel='3'
 pkgdesc="DateTime helper functions and objects"
 arch=(any)
 license=('PerlArtistic')
@@ -38,7 +38,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
