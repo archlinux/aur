@@ -4,8 +4,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=52.3.0
-pkgrel=6
+pkgver=52.4.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -25,19 +25,15 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
         firefox-install-dir.patch fix-wifi-scanner.diff
 		glibc-2.26-fix.diff
-		clip-ft-glyph.diff
-		harmony-fix.diff
 		rust-i686.patch
 		make_SystemResourceMonitor.stop_more_resilient_to_errors.patch)
-sha256sums=('c16bc86d6cb8c2199ed1435ab80a9ae65f9324c820ea0eeb38bf89a97d253b5b'
+sha256sums=('58ae7cb6c2fb81d22762ab3c60e46cadbe7c5b687f24c2823d9533ec998a21ee'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
             'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8'
-            'dc4feddbf22ea11ae2513c68b7f3fc9047850d055a7f30d31a7ee94d7d5de12a'
-            '8ed42e75b577d57e4b07f1d70137cb8e82f757abb616f1cfea694a041ad5679e'
             'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
             '7760ebe71f4057cbd2f52b715abaf0d944c14c39e2bb2a5322114ad8451e12d9')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
@@ -71,12 +67,6 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
   patch -d toolkit/crashreporter/google-breakpad/src/client -Np4 < ../glibc-2.26-fix.diff
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1393467
-  patch -Np1 -i ../clip-ft-glyph.diff
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1400721
-  patch -Np1 -i ../harmony-fix.diff
 
   # Build with the rust targets we actually ship
   patch -Np1 -i ../rust-i686.patch
