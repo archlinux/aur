@@ -17,7 +17,7 @@ _debug_mode=0    # Build in debug mode.
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=63.0.3218.0
+pkgver=63.0.3223.8
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
@@ -77,17 +77,14 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc5-r2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r19.patch'
         # Misc Patches
         'chromium-intel-vaapi_r14.patch.base64::https://chromium-review.googlesource.com/changes/532294/revisions/d60511c973e432b97d9929dcfbd77c9af25dbd51/patch?download'
         'https://raw.githubusercontent.com/sjnewbury/gentoo-playground/master/www-client/chromium/files/chromium-intel-vaapi-fix.patch'
         # Patch from crbug (chromium bugtracker) or Arch chromium package
-        'breakpad-use-ucontext_t.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/breakpad-use-ucontext_t.patch?h=packages/chromium'
         'chromium-gcc-r1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-gcc-r1.patch?h=packages/chromium'
         'chromium-blink-gcc7-r2.patch' # https://bugs.chromium.org/p/chromium/issues/detail?id=614289
         'chromium-widevine-r1.patch'
-        'chromium-gn-bootstrap-r18.patch.base64::https://chromium-review.googlesource.com/changes/667107/revisions/a6c6d28e705b834664c2ea6688b89c2c106204ae/patch?download'
-        'use_sysroot_false.patch.base64::https://chromium-review.googlesource.com/changes/670745/revisions/79cd919891958c00e8d8b87b504d478cc0eb437b/patch?download'
+        'chromium-gn-bootstrap-r20.patch.base64::https://chromium-review.googlesource.com/changes/686415/revisions/8ddf0976e671bc0aad990378e7676d3397b28e3d/patch?downloadbase'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -96,17 +93,14 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             # Patch form Gentoo
             'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
             'd44b90fc7313afaa6d6f77cde72c0e9a5e4a1cc792216cbca2ed45c39658c472'
-            '034b06ab8a9f09414b823564e0d7d2c46e542eb9dce36bbafdb26ea581a72178'
             # Misc Patches
             '1974fb5891b6a620113e9527026faa5af771042841ef7b8016ef74e0eaabc926'
             'a688de2b3a7183ebf9eb25108b0d28a8c6228cc71c8e3519062a51224f5b3488'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
-            '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
             '11cffe305dd49027c91638261463871e9ecb0ecc6ecc02bfa37b203c5960ab58'
             'fab4c65e2802e709a32d059784182be5a89bc3ca862a7e27810714ea7b86f868'
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
-            '08a5678998a96679a02fcc1b9473e98b4563aa57b3eaa7b444ed2941ab6acd7d'
-            '24e97e38421ac8ad474c37408d2a92c3385bee86fda8d578a54f24cc9af10c7f'
+            '094d88e618fe7001a1f350d7e8e2398d821fdd93f5dc29b4d1fd638261fbd352'
             )
 options=('!strip')
 install=chromium-dev.install
@@ -387,26 +381,27 @@ prepare() {
 
   cd "${srcdir}/chromium-${pkgver}"
 
-  # Fix to save configuration in ~/.config/chromium-dev.
+  # Use chromium-dev as branch name.
   sed -e 's|filename = "chromium-browser"|filename = "chromium-dev"|' \
-      -e 's|confdir = "chromium"|confdir = "chromium-dev"|' \
+      -e 's|confdir = "chromium|&-dev|' \
       -i chrome/BUILD.gn
-  sed -e 's|config_dir.Append("chromium")|config_dir.Append("chromium-dev")|' \
+  sed -e 's|config_dir.Append("chromium|&-dev|' \
       -i chrome/common/chrome_paths_linux.cc
+  sed -e 's|/etc/chromium|&-dev|' \
+      -e 's|/usr/share/chromium|&-dev|' \
+      -i chrome/common/chrome_paths.cc
+  sed -e 's|/etc/chromium|&-dev|' \
+      -i components/policy/tools/template_writers/writer_configuration.py
 
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r2.patch"
+  # Fix build with gcc 7(?)
   patch -p1 -i "${srcdir}/chromium-gcc5-r2.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r19.patch"
+  # Pats to chromium dev's about why always they forget add/remove missing build rules
+  base64 -d "${srcdir}/chromium-gn-bootstrap-r20.patch.base64" | patch -p1 -i -
 
   # Misc Patches:
-
-  # Apply VAAPI patch
-  base64 -d "${srcdir}/chromium-intel-vaapi_r14.patch.base64" > chromium-intel-vaapi_r14.patch
-  sed '39,50d' -i chromium-intel-vaapi_r14.patch
-  patch -Np1 -i chromium-intel-vaapi_r14.patch
-  patch -p1 -i "${srcdir}/chromium-intel-vaapi-fix.patch"
 
   if [ "${_vulkan}" = "1" ]; then
     export VULKAN_SDK="/usr"
@@ -414,19 +409,21 @@ prepare() {
     sed 's|/x86_64-linux-gnu||' -i gpu/vulkan/BUILD.gn
   fi
 
-  # Patch from crbug (chromium bugtracker) or Arch chromium package
-  # Fix build with glibc 2.26
-  patch -p1 -i "${srcdir}/breakpad-use-ucontext_t.patch"
+  # Apply VAAPI patch
+  base64 -d "${srcdir}/chromium-intel-vaapi_r14.patch.base64" > chromium-intel-vaapi_r14.patch
+  sed '39,50d' -i chromium-intel-vaapi_r14.patch
+  patch -Np1 -i chromium-intel-vaapi_r14.patch
+  patch -p1 -i "${srcdir}/chromium-intel-vaapi-fix.patch"
 
+  # Patch from crbug (chromium bugtracker) or Arch chromium package
+
+  # Fix build with gcc 7(?)
   patch -p1 -i "${srcdir}/chromium-gcc-r1.patch"
   patch -p1 -i "${srcdir}/chromium-blink-gcc7-r2.patch"
 
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
-
-  # Fix fail build
-  base64 -d "${srcdir}/use_sysroot_false.patch.base64" | patch -p1 -i -
 
   # Setup nodejs dependency
   mkdir -p third_party/node/linux/node-linux-x64/bin/
