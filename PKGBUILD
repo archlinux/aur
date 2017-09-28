@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='perl-lwp-useragent-cached'
 pkgver='0.06'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="LWP::UserAgent with simple caching mechanism"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -37,7 +37,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
