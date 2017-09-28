@@ -1,7 +1,7 @@
 # Maintainer: Jingrong Chen <crazyboycjr at gmail dot com>
 pkgname=dingtalk-electron
 _pkgname=${pkgname//-/_}
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="钉钉Linux版本"
 arch=('x86_64')
@@ -26,4 +26,4 @@ package() {
 	find "${pkgdir}" -type f | xargs chown root:root
 }
 
-md5sums=('3ac9a70aab0bc5a359f6ccee1d42e696')
+md5sums=('afd39275de30be6f9170b7eb1b067f4e')
