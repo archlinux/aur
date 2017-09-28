@@ -1,13 +1,14 @@
-# Maintainer: Andre <andre-arch@delorus.de>
+# Maintainer: Janis <janis.klaise at gmail dot com>
+# Contributor: Andre <andre-arch at delorus dot de>
 pkgname=python2-openant-git
 _gitname=openant
-pkgver=r86.4500761
-pkgrel=4
+pkgver=r133.082f2ea
+pkgrel=1
 pkgdesc="A python library to download and upload files from ANT-FS compliant devices (Garmin products)."
 arch=('i686' 'x86_64')
 source=('git+https://github.com/Tigge/openant')
 url="https://github.com/Tigge/openant"
-license=("custom:${_gitname}")
+license=('MIT')
 depends=('python2' 'python2-pyusb')
 makedepends=('python2-setuptools')
 optdepends=('antfs-cli-git: To extract all activity FIT files from a device and write them to a folder.')
@@ -29,8 +30,8 @@ package() {
 
   python2 setup.py install --root="$pkgdir/" --optimize=1
 
-  install -Dm644 README.md ${pkgdir}/usr/share/${_gitname}/README
+  install -Dm644 README.md ${pkgdir}/usr/share/${pkgname}/README
 
-  install -Dm644 LICENCE ${pkgdir}/usr/share/licenses/${_gitname}/LICENSE
+  install -Dm644 LICENCE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
