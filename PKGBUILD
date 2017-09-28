@@ -5,7 +5,7 @@
 
 pkgname='perl-class-c3-componentised'
 pkgver='1.001000'
-pkgrel="3"
+pkgrel='4'
 pkgdesc='Load mix-ins or components to your C3-based class'
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -38,7 +38,7 @@ check() {
 package() {
   cd "${srcdir}/Class-C3-Componentised-${pkgver}"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
