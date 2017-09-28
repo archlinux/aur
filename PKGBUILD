@@ -3,15 +3,15 @@
 # Contributor: speps <speps at aur dot archlinux dot org> 
 
 pkgname=rtmidi
-pkgver=2.1.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A set of C++ classes that provides a common API for realtime MIDI input/output."
 arch=('i686' 'x86_64')
 url="http://www.music.mcgill.ca/~gary/rtmidi/"
 license=('MIT')
-depends=('alsa-lib' 'jack')
+depends=('jack')
 source=("${url}release/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('964825a73ca24cbda5b6546cf89e9e28f8d0c3528ad1e4996e525892a09b94c5df039044b9c47b58177e80441fd1b4feb81b71b4e88d58ef2bf98d186e4db880')
+sha512sums=('b5cba769e4641ac453493e2e6ca6f947d7ef5fe71870dd10aa19c93ad18dd62ed01358c468c0e1e326dbc29bd00ecc32b9d8895276d9f46e9e0aa20ed6e0b70f')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -23,14 +23,9 @@ package() {
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
-  # Install test utilities with prefix 'rtmidi-'
-  for _bin in `find tests/.libs -maxdepth 1 -type f -perm 755 ! -name "*.*"`; do
-    install -Dm755 $_bin "${pkgdir}/usr/bin/${pkgname}-"`basename $_bin`
-  done
-
   # Text documentation.
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm644 readme doc/release.txt  "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 README.md doc/release.txt  "${pkgdir}/usr/share/doc/${pkgname}"
 
   # HTML documentation.
   install -d "${pkgdir}/usr/share/doc/${pkgname}/"{html,images}
@@ -38,6 +33,6 @@ package() {
   install -Dm644 doc/images/*  "${pkgdir}/usr/share/doc/${pkgname}/images"
 
   # License.
-  csplit -s readme "%LEGAL AND%"
+  csplit -s README.md "%Legal and%"
   install -Dm644 xx00 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
