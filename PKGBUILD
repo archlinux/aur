@@ -2,7 +2,7 @@
 
 pkgname='fern-wifi-cracker-git'
 pkgver='2.6.d25e58e'
-pkgrel=3
+pkgrel=4
 groups=('blackarch' 'blackarch-cracker' 'blackarch-wireless')
 pkgdesc='WEP, WPA wifi cracker for wireless penetration testing'
 arch=('any')
@@ -10,7 +10,7 @@ url='http://code.google.com/p/fern-wifi-cracker/'
 license=('GPL2')
 depends=('python2' 'python2-pyqt4' 'aircrack-ng' 'xterm' 'subversion' 'scapy'
          'macchanger' 'gksu')
-makedepends=('git', 'sed')
+makedepends=('git' 'sed')
 replaces=('fern-wifi-cracker')
 source=("git+https://github.com/savio-code/fern-wifi-cracker.git")
 sha1sums=('SKIP')

@@ -1,14 +1,14 @@
 pkgbase = fern-wifi-cracker-git
 	pkgdesc = WEP, WPA wifi cracker for wireless penetration testing
 	pkgver = 2.6.d25e58e
-	pkgrel = 3
+	pkgrel = 4
 	url = http://code.google.com/p/fern-wifi-cracker/
 	arch = any
 	groups = blackarch
 	groups = blackarch-cracker
 	groups = blackarch-wireless
 	license = GPL2
-	makedepends = git,
+	makedepends = git
 	makedepends = sed
 	depends = python2
 	depends = python2-pyqt4
