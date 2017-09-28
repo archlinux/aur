@@ -2,7 +2,7 @@
 
 pkgname=pi-blaster-git
 _gitname=${pkgname%-*}
-pkgver=20150610.r130.2cd6659
+pkgver=20170925.r203.1035ad7
 pkgrel=1
 pkgdesc="Daemon for Raspberry Pi which provides an interface to drive multiple PWM via the GPIO pins"
 
@@ -24,6 +24,7 @@ pkgver() {
 
 prepare() {
   cd "$_gitname"
+  patch -Np1 -i ../../01-makefile-do-not-install-service.patch
   ./autogen.sh
 }
 
@@ -36,4 +37,5 @@ build() {
 package() {
   cd "$_gitname"
   make DESTDIR="$pkgdir/" install
+  install -Dm0644 pi-blaster.service $pkgdir/usr/lib/systemd/system/pi-blaster.service
 }
