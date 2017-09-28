@@ -22,7 +22,7 @@ changelog=
 _file="${pkgname}_${pkgver}-${pkgrel}_linux_${arch}"
 source=("https://github.com/mattmoore/photon/releases/download/${pkgver}/${_file}.tar.xz")
 noextract=()
-md5sums=("ae6ca352842d16d30c1f5c16eda4c568")
+md5sums=("6cc63ebb856b04c23cfa06287602e74c")
 validpgpkeys=()
 
 package() {

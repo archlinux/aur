@@ -6,7 +6,7 @@ pkgbase = photon
 	arch = x86_64
 	license = unknown
 	source = https://github.com/mattmoore/photon/releases/download/0.1.2/photon_0.1.2-1_linux_x86_64.tar.xz
-	md5sums = ae6ca352842d16d30c1f5c16eda4c568
+	md5sums = 6cc63ebb856b04c23cfa06287602e74c
 
 pkgname = photon
 
