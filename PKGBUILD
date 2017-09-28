@@ -2,7 +2,7 @@
 pkgbase=qpmx
 pkgname=(qpmx qpmx-gitsource qpmx-qpmsource)
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A frontend for qpm, to provide source and build caching"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/$pkgname"
@@ -15,12 +15,28 @@ source=("$_pkgfqn::git+https://github.com/Skycoder42/$pkgname.git#tag=$pkgver"
 sha256sums=('SKIP'
             '6029d42b05d32d99a6e673e5a7c95ac657e6258f88835f8aff05bde7535e543b')
 
+git_submod_rm() {
+  submod=$1
+
+  mv $submod $submod.tmp
+  git submodule deinit -f -- $submod
+  rm -rf .git/modules/$submod
+  git rm -f $submod
+}
+
 prepare() {
   mkdir -p build
   
   cd "$_pkgfqn"
+  
+  git_submod_rm submodules/qpmx-sample-package
+  git_submod_rm submodules/qtifw-advanced-setup
+  
   git submodule update --init --recursive
   echo "CONFIG += no_installer" >> .qmake.conf
+  
+  mkdir -p submodules/qtifw-advanced-setup
+  echo "" > submodules/qtifw-advanced-setup/de_skycoder42_qtifw-advanced-setup.pri
 }
 
 build() {
