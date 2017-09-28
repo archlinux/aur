@@ -42,7 +42,6 @@ build() {
   cd "$_gitname"
   rm -rf builddir
   meson builddir --prefix='/usr'
-  ninja -C builddir
 }
 
 package() {
