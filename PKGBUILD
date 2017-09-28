@@ -2,7 +2,7 @@
 
 pkgbase=dcos-cli
 pkgname=(dcos-cli python-dcos)
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="DC/OS Command Line Interface"
 arch=(any)
@@ -29,7 +29,7 @@ package_dcos-cli() {
              'python-rollbar' 'python-toml' 'python-virtualenv')
     cd "$srcdir"/$pkgbase-$pkgver/cli
     python setup.py install -O1 --skip-build --root="$pkgdir"
-    rm "$pkgdir"/usr/bin/env-setup
+    rm -rf "$pkgdir"/usr/lib/python*/site-packages/tests
 }
 
 package_python-dcos() {
@@ -40,4 +40,4 @@ package_python-dcos() {
     python setup.py install -O1 --skip-build --root="$pkgdir"
 }
 
-sha256sums=('f82e0bb22aa011d6b095c63e54dec4524a82110d2166f71945b3f73a4e43a197')
+sha256sums=('e57bfc35739baad260addc509d8eb5604751c645152c875ed6436893ab94e8d7')
