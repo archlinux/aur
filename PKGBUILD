@@ -6,13 +6,14 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-git
-pkgver=5.1.40.r39311.22db7c2e9d
-pkgrel=3
+pkgver=0.0.0
+pkgrel=4
 pkgdesc="A C/C++ development environment for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
 url='http://www.kdevelop.org'
 license=('GPL')
 depends=('clang'
+         'llvm'
          'libksysguard'
          'grantlee'
          'kcmutils'
@@ -37,7 +38,7 @@ optdepends=(
             'qt5-tools: qthelp plugin'
             'purpose: patch review plugin'
             'okteta: hex editor integration'
-            'kdevelop-pg-qt-git: Parser Generator'
+            'kdevelop-pg-qt-git: qmake integration'
             'krunner: For enabling the KDevelop runner'
             'plasma-framework: for enabling the plasma addons'
             'cppcheck: code analyzer'
@@ -47,7 +48,6 @@ makedepends=('extra-cmake-modules'
              'okteta'
              'krunner'
              'plasma-framework'
-             'kdevelop-pg-qt-git'
              'clang')
 conflicts=('kdevelop' 'kdevplatform')
 provides=('kdevelop' 'kdevplatform' 'kdevplatform-git')
