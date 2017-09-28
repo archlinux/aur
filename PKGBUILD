@@ -2,7 +2,7 @@
 
 pkgname="perl-daemon-generic"
 pkgver="0.85"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="framework to provide start/stop/reload for a daemon"
 arch=('any')
 url="http://search.cpan.org/dist/Daemon-Generic"
@@ -36,7 +36,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
