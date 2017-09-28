@@ -2,7 +2,7 @@
 
 pkgname=perl-rose-db
 pkgver="0.778"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="A DBI wrapper and abstraction layer"
 arch=(any)
 license=('PerlArtistic')
@@ -47,5 +47,5 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
