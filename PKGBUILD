@@ -1,4 +1,4 @@
-# Maintainer: Tom Richards <tom@tomrichards.net>
+# Contributor: Tom Richards <tom@tomrichards.net>
 # Contributor: grimsock <lord.grimsock at gmail dot com>
 # Contributor: David Danier <david.danier@team23.de>
 
