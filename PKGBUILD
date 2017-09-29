@@ -1,4 +1,5 @@
-# Maintainer: Arthur Țițeică arthur.titeica/gmail/com
+# Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
+# Contributor: Arthur Țițeică arthur.titeica/gmail/com
 
 pkgname=pdf2htmlex-git
 pkgver=1742.f12fc15
