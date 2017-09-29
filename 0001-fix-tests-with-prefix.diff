@@ -1,0 +1,20 @@
+--- a/rtmidi-3.0.0/configure	2017-08-31 18:53:21.000000000 -0700
++++ b/rtmidi-3.0.0/configure	2017-09-28 19:18:37.512786478 -0700
+@@ -16625,7 +16625,6 @@
+ # Set paths if prefix is defined
+ if test "x$prefix" != "x" && test "x$prefix" != "xNONE"; then
+   LIBS="$LIBS -L$prefix/lib"
+-  CPPFLAGS="$CPPFLAGS -I$prefix/include/rtmidi"
+ fi
+ 
+ # For -I and -D flags
+--- a/rtmidi-3.0.0/configure.ac	2017-08-31 17:10:07.000000000 -0700
++++ b/rtmidi-3.0.0/configure.ac	2017-09-28 19:19:37.515888982 -0700
+@@ -77,7 +77,6 @@
+ # Set paths if prefix is defined
+ if test "x$prefix" != "x" && test "x$prefix" != "xNONE"; then
+   LIBS="$LIBS -L$prefix/lib"
+-  CPPFLAGS="$CPPFLAGS -I$prefix/include/rtmidi"
+ fi
+ 
+ # For -I and -D flags
