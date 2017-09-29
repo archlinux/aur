@@ -1,7 +1,7 @@
 # Maintainer: Yegorius <yegorius@domic.us>
 
 pkgname=teamcity
-pkgver=2017.1.3
+pkgver=2017.1.4
 pkgrel=1
 pkgdesc='Continuous integration server from JetBrains'
 arch=('any')
@@ -9,13 +9,13 @@ url="http://www.jetbrains.com/teamcity/"
 license=('custom:JetBrains TeamCity')
 depends=('java-runtime-headless')
 install="$pkgname.install"
-source=("http://download.jetbrains.com/teamcity/TeamCity-${pkgver}.tar.gz"
+source=('https://download.jetbrains.com/teamcity/TeamCity-2017.1.4.tar.gz'
         'teamcity-agent.service'
         'teamcity-server.service'
         'teamcity-sysusers.conf'
         'teamcity-tmpfiles.conf'
         'teamcity.confd')
-sha512sums=('6bde0866ae73497b7673fc70992c0ea2be6c3715b4f50a9f8392f34b2d197251c18a115913d0ffb4de8ca35497d2530451490d8c4fb632ac79753ec87b52af8b'
+sha512sums=('86372026f01def31f7c25dbb007b1615437df0ad26feea7e11435edf471702d4d8ec39f82abd007be7b8e7e1363ad3ef8e631e19d983f4103d6625bf0c7da104'
             'bf8786f45d9b9101027b6efe2e1732988d032cb1ae1655b2188b61eda70d0df49d48c0de191e2eb00378fd44722a61592fcd26f5426ff150fc72d78b448a3223'
             '4cf06ff10623ede0e37fd76727845c9574ef52f2309f93bb44604422cbce633b0cfeed783bc1a5840c457cc8f3e602cb10e9b995a30ca94097d51da23534a063'
             '7f13bbb039741a66836d4a2e48ce348e2cc22bf198c932179017654f15275c8f811bed6cc131d4639b8f98ae72dbf7ecac0894b74cf287c5b1d4079da1191e1a'
