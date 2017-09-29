@@ -9,7 +9,9 @@ license=('GPL')
 depends=('qt5-base' 'libx11' 'qt5-x11extras' 'qt5-svg')
 makedepends=('cmake' 'gcc' 'qt5-base' 'virtualbox-sdk' 'muparser')
 optdepends=('virtualbox: VirtualBox plugin'
-            'muparser: Calculator plugin')
+            'muparser: Calculator plugin'
+            'qt5-quickcontrols: QML frontend'
+            'qt5-graphicaleffects: QML frontend' )
 provides=('albert')
 conflicts=('albert-git')
 source=( git://github.com/albertlauncher/albert.git )
