@@ -1,21 +1,20 @@
 pkgbase = i3lock-color
 	pkgdesc = An improved screenlocker based upon XCB and PAM with color configuration support
-	pkgver = 2.7.e003249
+	pkgver = 2.9.1
 	pkgrel = 1
-	url = https://github.com/kageurufu/i3lock-color
+	url = https://github.com/chrjguill/i3lock-color
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	depends = xcb-util-image
 	depends = xcb-util-keysyms
 	depends = pam
 	depends = libev
-	depends = libx11
 	depends = cairo
+	depends = libxkbcommon-x11
 	provides = i3lock
 	conflicts = i3lock
-	source = git+https://github.com/kageurufu/i3lock-color.git
+	source = https://github.com/chrjguill/i3lock-color/archive/2.9.1-c.tar.gz
 	md5sums = SKIP
 
 pkgname = i3lock-color

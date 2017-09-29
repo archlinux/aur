@@ -1,32 +1,25 @@
-# Maintainer: Franklyn Tackitt <franklyn@tackitt.net>
-
 pkgname="i3lock-color"
-pkgver=2.7.e003249
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
-url="https://github.com/kageurufu/i3lock-color"
+url="https://github.com/chrjguill/i3lock-color"
 license=('MIT')
-depends=('xcb-util-image' 'xcb-util-keysyms' 'pam' 'libev' 'libx11' 'cairo')
+depends=('xcb-util-image' 'xcb-util-keysyms' 'pam' 'libev' 'cairo' 'libxkbcommon-x11')
 provides=('i3lock')
 conflicts=('i3lock')
-makedepends=('git')
-source=("git+https://github.com/kageurufu/$pkgname.git")
+source=("https://github.com/chrjguill/i3lock-color/archive/2.9.1-c.tar.gz")
 md5sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  echo "$(git describe --tags --abbrev=0).$(git rev-parse --short HEAD)"
-}
+_version="2.9.1-c"
 
 build() {
-cd "${srcdir}/${pkgname}"
-make
+	cd "${srcdir}/${pkgname}-${_version}"
+	make
 }
 
 package() {
-cd "${srcdir}/${pkgname}"
-make DESTDIR="$pkgdir" install
-install -Dm644 i3lock.1 ${pkgdir}/usr/share/man/man1/i3lock.1
-install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	cd "${srcdir}/${pkgname}-${_version}"
+	make DESTDIR="$pkgdir" install
+	install -Dm644 i3lock.1 ${pkgdir}/usr/share/man/man1/i3lock.1
+	install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
