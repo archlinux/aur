@@ -1,7 +1,7 @@
 pkgbase = klfc
 	pkgdesc = Tool to create advanced keyboard layouts in various formats
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/39aldo39/klfc
 	arch = i686
 	arch = x86_64
@@ -19,8 +19,7 @@ pkgbase = klfc
 	depends = haskell-mtl
 	depends = haskell-microlens-platform
 	depends = haskell-base-unicode-symbols
-	depends = haskell-megaparsec
-	depends = haskell-filepath
+	depends = haskell-megaparsec>=6
 	depends = haskell-filepath
 	depends = haskell-directory
 	depends = haskell-optparse-applicative
