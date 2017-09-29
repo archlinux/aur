@@ -1,14 +1,15 @@
 pkgbase = c2esp
 	pkgdesc = CUPS printer driver for Kodak ESP and HERO printers
-	pkgver = 26
+	pkgver = 27
 	pkgrel = 1
 	url = http://sourceforge.net/projects/cupsdriverkodak/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = cups
-	source = http://downloads.sourceforge.net/cupsdriverkodak/c2esp26.tar.gz
-	md5sums = 6da864afb429910b0b30dfad07686580
+	depends = jbigkit
+	source = http://downloads.sourceforge.net/cupsdriverkodak/c2esp-27.tar.gz
+	sha256sums = f095f9cbb539cd48b75cec6fe2f844ba0cb8866ce5e4318ad4ca5ba0224396d4
 
 pkgname = c2esp
 
