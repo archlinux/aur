@@ -4,6 +4,7 @@
 _pkgname=qt-gtk-platform-plugin
 pkgname=${_pkgname}-git
 provides=($_pkgname)
+conflicts=($_pkgname)
 pkgver=20170928.30b8b6a
 pkgrel=1
 pkgdesc='GTK platform backend for Qt'
