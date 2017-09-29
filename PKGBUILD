@@ -1,13 +1,13 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
-pkgname=sdrangel-git
-pkgver=r1688.7e6ab820
+pkgname=sdrangel-no-sdrplay-git
+pkgver=r2774.69be1d59
 pkgrel=1
 pkgdesc="Qt5/OpenGL SDR and signal analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR, SDRplay and FunCube"
 arch=('i686' 'x86_64')
 url="https://github.com/f4exb/sdrangel"
 license=('GPL3')
 depends=('gnuradio-osmosdr' 'boost' 'fftw' 'log4cpp' 'pkg-config' 'lz4' 'nanomsg' 'dsdcc-git'
-         'cm256cc-git' 'libmirisdr4-git' 'pulseaudio' 'qt5-base' 'qt5-tools' 'qt5-multimedia')
+         'cm256cc-git' 'libmirisdr-git' 'pulseaudio' 'qt5-base' 'qt5-tools' 'qt5-multimedia')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -21,6 +21,8 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
+    patch plugins/samplesource/CMakeLists.txt ../../CMakeList.txt.patch
+    rm -r build || true # clean if exists
     mkdir build
     cd build
     cmake .. \
@@ -28,7 +30,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/sdrangel \
         -DLIBDSDCC_INCLUDE_DIR=/usr/include/dsdcc \
         -DCM256CC_INCLUDE_DIR=/usr/include/cm256cc
-    make
+    make -j4
 }
 
 package() {
