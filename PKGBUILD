@@ -2,7 +2,7 @@
 
 pkgname=xmobar-alsa
 pkgver=0.24.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minimalistic Text Based Status Bar compiled with ALSA"
 url="https://hackage.haskell.org/package/xmobar"
 license=('BSD')
@@ -19,7 +19,12 @@ md5sums=('9befdb157b5adedd7150e4e07f0efbde')
 build() {
     cd xmobar-$pkgver
 
-    runhaskell Setup configure --prefix=/usr --enable-executable-dynamic --flags="with_utf8 with_xft with_iwlib with_xpm with_inotify with_alsa"
+    runhaskell Setup configure -O \
+        --enable-shared \
+        --prefix=/usr \
+        --enable-executable-dynamic \
+        --disable-library-vanilla \
+        --flags="with_utf8 with_xft with_iwlib with_xpm with_inotify with_alsa"
     runhaskell Setup build
 }
 
