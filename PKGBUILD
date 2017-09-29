@@ -1,6 +1,6 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.3.1
+_oomox_ver=1.4.0
 _numix_ver=1.2.8.1
 _flatplat_ver=20170917
 
@@ -48,7 +48,7 @@ source=(
     'oomoxify-cli'
     'oomox.desktop'
 )
-md5sums=('735fb5f2a5ebd381eb8695848cf4e722'
+md5sums=('c2d3cd340f119f6a98bbada595c4ebd6'
          '983b4dfa91d0f0bc87afa82d28090c18'
          '6dfc7197161e37e363f9356d353a81d8'
          'efc83d981e1fcfb41c6d439f1013efbd'
