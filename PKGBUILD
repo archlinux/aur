@@ -1,12 +1,12 @@
 # Maintainer: ibrokemypie <ibrokemypie@bastardi.net>
 pkgname=i3lock-next-git
 pkgver=r66.def806c
-pkgrel=1
+pkgrel=2
 pkgdesc="Create a fancy image to use with i3lock."
 arch=('i686' 'x86_64')
 url="https://github.com/owenthewizard/i3lock-next"
 license=('MIT')
-depends=(i3lock-color-git imlib2 bash fontconfig libxrandr)
+depends=(i3lock-color imlib2 bash fontconfig libxrandr)
 provides=(i3lock-next)
 makedepends=(git)
 source=("git+https://github.com/owenthewizard/i3lock-next/")

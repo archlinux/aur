@@ -1,13 +1,13 @@
 pkgbase = i3lock-next-git
 	pkgdesc = Create a fancy image to use with i3lock.
 	pkgver = r66.def806c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/owenthewizard/i3lock-next
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = i3lock-color-git
+	depends = i3lock-color
 	depends = imlib2
 	depends = bash
 	depends = fontconfig
