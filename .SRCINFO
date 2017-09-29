@@ -8,7 +8,6 @@ pkgbase = adg-gtk-theme
 	makedepends = sassc
 	makedepends = git
 	depends = gtk-engine-murrine
-	depends = gtk-engines
 	optdepends = optipng
 	optdepends = inkscape
 	options = !emptydirs
