@@ -4,6 +4,16 @@
 
 [Amber](https://www.amberframework.org/) is an open source efficient, cohesive and fun web framework for the [Crystal language](https://crystal-lang.org/).
 
+Execute it before publish a new version of amber:
+
 ```
 makepkg --printsrcinfo > .SRCINFO
+```
+
+This package is avaliable on [AUR](https://aur.archlinux.org/packages/amber/)
+
+Install this package using:
+
+```
+yaourt -S amber
 ```
