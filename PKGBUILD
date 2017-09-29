@@ -2,8 +2,8 @@
 
 pkgname=pamcan
 pkgver=0.1
-pkgrel=1
-pkgdesc='Output an image of a Pam can on the console'
+pkgrel=2
+pkgdesc='Learn to type pacman by showing an image of a Pam Can when typing pamcan'
 arch=('x86_64')
 url='https://github.com/xyproto/pamcan/'
 license=('MIT')
