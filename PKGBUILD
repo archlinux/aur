@@ -33,6 +33,7 @@ license=('custom:University of Illinois')
 
 makedepends=(
     'cmake'
+    'libedit'
     'libffi'
     'ocaml-ctypes'
     'ocaml-findlib'
