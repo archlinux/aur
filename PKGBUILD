@@ -3,7 +3,7 @@
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 
 pkgname=tor-browser-dev-en
-pkgver=7.5a1
+pkgver=7.5a5
 _language='en-US'
 pkgrel=1
 pkgdesc="Tor Browser is +1 for privacy and -1 for mass surveillance"
@@ -24,9 +24,9 @@ source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-lin
 source+=(${pkgname}.desktop
          ${pkgname}.png
          ${pkgname}.sh)
-sha256sums_i686=('d183dc0f4c8f5400ae03703cc89bfe2daaac253ca43eb402f3336a88cad11488'
+sha256sums_i686=('3adaa978f8d33104f73255d4dd8a5e2efcd4702ccc1bd4c5a665e23706743e66'
                  'SKIP')
-sha256sums_x86_64=('8d908b0476faf8b0a0b0a941007bb6ef9d861c66b2675c40b01cf322aefd686f'
+sha256sums_x86_64=('8cee4cc0f82463da782cf3e7817e0b72507e6b200b5cccd549fe9f7e77d1d90d'
                    'SKIP')
 sha1sums+=('344ded68e188649c0d0347f8f675e006c36c03f1'
            'aa3f84762b5f0b39aea5e03befdb03c4f53e8078'

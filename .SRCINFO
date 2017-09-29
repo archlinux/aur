@@ -2,7 +2,7 @@
 # Sun Jan  1 18:26:10 UTC 2017
 pkgbase = tor-browser-dev-en
 	pkgdesc = Tor Browser is +1 for privacy and -1 for mass surveillance
-	pkgver = 7.5a1
+	pkgver = 7.5a5
 	pkgrel = 1
 	url = https://www.torproject.org/projects/torbrowser.html.en
 	arch = i686
@@ -24,7 +24,6 @@ pkgbase = tor-browser-dev-en
 	depends = hunspell
 	depends = sqlite
 	optdepends = zenity: simple dialog boxes
-	optdepends = kdebase-kdialog: KDE dialog boxes
 	optdepends = gst-plugins-good: h.264 video
 	optdepends = gst-libav: h.264 video
 	optdepends = libpulse: PulseAudio audio driver
@@ -35,13 +34,13 @@ pkgbase = tor-browser-dev-en
 	sha1sums = 344ded68e188649c0d0347f8f675e006c36c03f1
 	sha1sums = aa3f84762b5f0b39aea5e03befdb03c4f53e8078
 	sha1sums = 309aac05a0b0f022eda2f292fb572b523726409c
-	source_i686 = https://dist.torproject.org/torbrowser/7.0a4/tor-browser-linux32-7.5a1_en-US.tar.xz
-	source_i686 = https://dist.torproject.org/torbrowser/7.0a4/tor-browser-linux32-7.5a1_en-US.tar.xz.asc
-	sha256sums_i686 = d183dc0f4c8f5400ae03703cc89bfe2daaac253ca43eb402f3336a88cad11488
+	source_i686 = https://dist.torproject.org/torbrowser/7.5a5/tor-browser-linux32-7.5a5_en-US.tar.xz
+	source_i686 = https://dist.torproject.org/torbrowser/7.5a5/tor-browser-linux32-7.5a5_en-US.tar.xz.asc
+	sha256sums_i686 = 3adaa978f8d33104f73255d4dd8a5e2efcd4702ccc1bd4c5a665e23706743e66
 	sha256sums_i686 = SKIP
-	source_x86_64 = https://dist.torproject.org/torbrowser/7.0a4/tor-browser-linux64-7.5a1_en-US.tar.xz
-	source_x86_64 = https://dist.torproject.org/torbrowser/7.0a4/tor-browser-linux64-7.5a1_en-US.tar.xz.asc
-	sha256sums_x86_64 = 8d908b0476faf8b0a0b0a941007bb6ef9d861c66b2675c40b01cf322aefd686f
+	source_x86_64 = https://dist.torproject.org/torbrowser/7.5a5/tor-browser-linux64-7.5a5_en-US.tar.xz
+	source_x86_64 = https://dist.torproject.org/torbrowser/7.5a5/tor-browser-linux64-7.5a5_en-US.tar.xz.asc
+	sha256sums_x86_64 = 8cee4cc0f82463da782cf3e7817e0b72507e6b200b5cccd549fe9f7e77d1d90d
 	sha256sums_x86_64 = SKIP
 
 pkgname = tor-browser-dev-en
