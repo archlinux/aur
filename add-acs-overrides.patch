@@ -1,7 +1,7 @@
-From 14fa9884ba1082e0280e8d477e22df917326fca5 Mon Sep 17 00:00:00 2001
+From 9c86ad69c5c974e229de02c8cdf32120e302269d Mon Sep 17 00:00:00 2001
 From: Mark Weiman <mark.weiman@markzz.com>
-Date: Sat, 29 Jul 2017 09:15:32 -0400
-Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.12+)
+Date: Fri, 29 Sep 2017 17:20:25 -0400
+Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.13+)
 
 This an updated version of Alex Williamson's patch from:
 https://lkml.org/lkml/2013/5/30/513
@@ -46,14 +46,14 @@ capability.  Please contact me to have your devices added and save
 your customers the hassle of this boot option.
 ---
  Documentation/admin-guide/kernel-parameters.txt |   9 +++
- drivers/pci/quirks.c                            | 102 ++++++++++++++++++++++++
- 2 files changed, 111 insertions(+)
+ drivers/pci/quirks.c                            | 101 ++++++++++++++++++++++++
+ 2 files changed, 110 insertions(+)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 7737ab5d04b2..e7353191fa5c 100644
+index d9c171ce4190..e1d4b9cdfc8d 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -2866,6 +2866,15 @@
+@@ -2914,6 +2914,15 @@
  		nomsi		[MSI] If the PCI_MSI kernel config parameter is
  				enabled, this kernel boot option can be used to
  				disable the use of MSI interrupts system-wide.
@@ -61,19 +61,19 @@ index 7737ab5d04b2..e7353191fa5c 100644
 +					[PCIE] Override missing PCIe ACS support for:
 +				downstream
 +					All downstream ports - full ACS capabilities
-+				multfunction
-+					All multifunction devices - multifunction ACS subset
++				multifunction
++					Add multifunction devices - multifunction ACS subset
 +				id:nnnn:nnnn
-+					Specfic device - full ACS capabilities
++					Specific device - full ACS capabilities
 +					Specified as vid:did (vendor/device ID) in hex
  		noioapicquirk	[APIC] Disable all boot interrupt quirks.
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 085fb787aa9e..73a2b4cb61a0 100644
+index 140760403f36..01398d2d0e47 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
-@@ -3654,6 +3654,107 @@ static int __init pci_apply_final_quirks(void)
+@@ -3671,6 +3671,106 @@ static int __init pci_apply_final_quirks(void)
  
  fs_initcall_sync(pci_apply_final_quirks);
  
@@ -117,11 +117,10 @@ index 085fb787aa9e..73a2b4cb61a0 100644
 +				goto next;
 +			}
 +			acs_on_ids[max_acs_id].vendor = val;
-+
-+			p += strcspn(p, ":");
-+			if (*p != ';') {
-+				pr_warn("PCIe ACS invalid ID\n");
-+				goto next;
++		p += strcspn(p, ":");
++		if (*p != ';') {
++			pr_warn("PCIe ACS invalid ID\n");
++			goto next;
 +			}
 +
 +			p++;
@@ -161,7 +160,7 @@ index 085fb787aa9e..73a2b4cb61a0 100644
 +			acs_on_ids[i].device == dev->device)
 +				return 1;
 +
-+	switch (pci_pcie_type(dev)) {
++switch (pci_pcie_type(dev)) {
 +	case PCI_EXP_TYPE_DOWNSTREAM:
 +	case PCI_EXP_TYPE_ROOT_PORT:
 +		if (acs_on_downstream)
@@ -181,7 +180,7 @@ index 085fb787aa9e..73a2b4cb61a0 100644
  /*
   * Following are device-specific reset methods which can be used to
   * reset a single function if other methods (e.g. FLR, PM D0->D3) are
-@@ -4368,6 +4469,7 @@ static const struct pci_dev_acs_enabled {
+@@ -4474,6 +4574,7 @@ static const struct pci_dev_acs_enabled {
  	{ 0x10df, 0x720, pci_quirk_mf_endpoint_acs }, /* Emulex Skyhawk-R */
  	/* Cavium ThunderX */
  	{ PCI_VENDOR_ID_CAVIUM, PCI_ANY_ID, pci_quirk_cavium_acs },
@@ -190,5 +189,5 @@ index 085fb787aa9e..73a2b4cb61a0 100644
  };
  
 -- 
-2.13.3
+2.14.2
 
