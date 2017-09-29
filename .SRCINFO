@@ -1,0 +1,13 @@
+pkgbase = gem_home
+	pkgdesc = A tools for changing your $GEM_HOME
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/postmodern/gem_home
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = https://github.com/postmodern/gem_home/archive/v0.1.0.tar.gz
+	sha256sums = 67e9e174de42de640f144f88cd16b2a315bdec55567467743f8fbb96cba14e4e
+
+pkgname = gem_home
+
