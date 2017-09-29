@@ -47,7 +47,7 @@ source=(
 )
 
 
-md5sums=('35ef4877738ebf6de7eb578eb855cd4ag'
+md5sums=('35ef4877738ebf6de7eb578eb855cd4a'
          '2d04c2e2d8c71558c910a51ec773731a'
          'fe60f9510502bea67383d9198ae8c13c'
          'c159d683ba1947290fc2ad2c64194150'
