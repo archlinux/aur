@@ -43,7 +43,7 @@ NOGZ="YES"        # Don't compress el files. Info and man pages are
 
 #######################################################################
 pkgname=emacs-git-shallow
-pkgver=26.0.50.20170911T1615
+pkgver=27.0.50.20170929T1655
 pkgrel=1
 pkgdesc="GNU Emacs [master] (shallow clone [20% disk space])"
 arch=('i686' 'x86_64')
