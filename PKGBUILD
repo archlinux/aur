@@ -1,7 +1,8 @@
 # Maintainer: Jesús Castro <x51v4n@gmail.com>
 pkgname=otf-san-francisco
 pkgver=1.0
-pkgrel=3
+pkgrel=4
+epoch=1
 pkgdesc='The system font for macOS, iOS, watchOS, and tvOS'
 arch=('any')
 license=('custom')
