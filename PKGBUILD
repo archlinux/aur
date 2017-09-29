@@ -1,14 +1,14 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 pkgname=python-coloredlogs
 pkgver=7.3
-pkgrel=3
+pkgrel=1
 pkgdesc="Colored terminal output for Python's logging module"
 url="https://github.com/xolox/python-coloredlogs"
 license=('MIT')
 depends=('python' 'python-humanfriendly')
 makedepends=('python-setuptools')
 source=("https://github.com/xolox/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('14919bf91614cbc563479328cc11b9f1')
+md5sums=('ca921f5176cfefc580e8985c448b705e')
 arch=('any')
 
 package() {
