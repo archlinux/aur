@@ -9,7 +9,7 @@
 
 pkgname=bitcoin-segwit2x-git
 pkgver=v1.14.5.2.ga301696f4
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The "official" segwit2x software representing the New York scaling agreement, a.k.a. the Silbert agreement'
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ build() {
     git checkout segwit2x > /dev/null 2>&1
     git reset --hard HEAD > /dev/null 2>&1
     ./autogen.sh
-    ./configure --prefix=/usr --enable-upnp-default --enable-hardening --with-gui=qt5
+    ./configure --prefix=/usr --enable-upnp-default --enable-hardening --with-gui=qt5 --disable-tests
     make DESTDIR="$srcdir/tmp"
     make DESTDIR="$srcdir/tmp" install
 }
