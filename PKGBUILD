@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.27.0.r1.g67d1ec8fad
+pkgver=0.27.0.r84.g052ae5393a
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -173,11 +173,9 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --disable-mali-fbdev \
 	            --enable-gl \
 	            --enable-vaapi-hwaccel \
-	            --disable-videotoolbox-hwaccel-new \
 	            --disable-videotoolbox-gl \
 	            --enable-vdpau-hwaccel \
 	            --disable-d3d-hwaccel \
-              --disable-d3d-hwaccel-new \
               --enable-javascript \
               --enable-tv \
 	            --enable-tv-v4l2 \
