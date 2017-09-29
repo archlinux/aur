@@ -16,6 +16,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support')
 makedepends=('perl-file-slurp' 'perl-lwp-protocol-https' 'perl-switch')
 provides=("firefox=$pkgver")
+conflicts=("firefox-beta-bin")
 source=('firefox-beta-bin.desktop' 'ff-downloader.pl' 'firefox-beta.sh')
 
 build() {
