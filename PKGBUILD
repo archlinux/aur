@@ -11,11 +11,11 @@
 
 pkgname=wine-gaming-nine
 pkgver=2.17
-pkgrel=2
+pkgrel=3
 
 _pkgbasever=${pkgver/rc/-rc}
-#_d3d9ver=$_pkgbasever
-_d3d9ver=2.16
+_d3d9ver=$_pkgbasever
+#_d3d9ver=2.16
 _winesrcdir="wine-overwatch-overwatch-$_pkgbasever"
 
 source=("https://github.com/gamax92/wine-overwatch/archive/overwatch-$_pkgbasever.tar.gz"
@@ -28,7 +28,7 @@ source=("https://github.com/gamax92/wine-overwatch/archive/overwatch-$_pkgbaseve
         wbemprox_query_v2.patch
         )
 sha1sums=('1e2a147a74195f0ebbf35028b33a7dce3e26abf8'
-          '21ad1a8cf8f9151d1e81ffab36d7398927fd73e9'
+          'f37e9190466faa67741b49b60e9268d70c5b4644'
 	  'SKIP'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
 	  'aabb80b412adc99fcc42b02fa2d6692321f1c3ac'
