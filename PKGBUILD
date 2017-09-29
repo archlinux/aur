@@ -1,4 +1,5 @@
-# Maintainer: Yegorius <yegorius@domic.us>
+# Maintainer: Mastacheata <benedikt "at" xenzilla "dot" de>
+# Contributor: Yegorius <yegorius@domic.us>
 
 pkgname=teamcity
 pkgver=2017.1.4
