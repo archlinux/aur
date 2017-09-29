@@ -1,5 +1,5 @@
 pkgname=python-dkim
-pkgver=0.6.1
+pkgver=0.6.2
 _branch=${pkgver%.*}
 pkgrel=1
 pkgdesc="Python module that implements DKIM email signing and verification"
@@ -10,7 +10,7 @@ depends=('python' 'python-dnspython')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://launchpad.net/dkimpy/${_branch}/${pkgver}/+download/dkimpy-${pkgver}.tar.gz")
-sha512sums=('c65a790e3e645fe0a18f267766639f23b19704034d8487aae0165b77d1cec420f1d53be472eb92730e3aa41e03f0660ec57791e74143c6a8901fbffa790737f6')
+sha512sums=('7592153270ea11f59dc67e31a10c91345389d4391f3a9dc9fbd1224410edab4743935763ad5b1016b321bfa7b1c4c0255f26323bd5556f359b0b743bda4e515b')
 
 package() {
   cd "$srcdir/dkimpy-$pkgver"
