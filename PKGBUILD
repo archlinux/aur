@@ -7,16 +7,8 @@ pkgdesc="Avalon Framework is a library that can make python printing in Linux mu
 arch=('any')
 url="https://github.com/K4YT3X/AVALON"
 license=('LGPLv3')
-groups=('K4YT3X')
 depends=('python')
-makedepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
+makedepends=('python')
 source=("https://github.com/K4YT3X/AVALON/archive/${pkgver}.tar.gz")
 sha256sums=('c08621b4754736218a665b83c142d65aa53481995ff0199556d594f3800fd983')
 
