@@ -8,7 +8,7 @@ license=('BSD')
 depends=('python' 'python-numpy' 'python-nine' 'python-utils')
 makedepends=('python-setuptools')
 source=("https://github.com/WoLpH/numpy-stl/archive/v${pkgver}.tar.gz")
-md5sums=('b7537b89ca4ded8cecee1b5c4bb52668')
+md5sums=('b34f714d1775f703a5d11466efda8a91')
 arch=('any')
 
 package() {
