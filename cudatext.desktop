@@ -2,7 +2,7 @@
 Name=CudaText
 GenericName=Text Editor
 Comment=Advanced code editor. Syntax highlighting for 190+ languages. Supports all major encoding. Multi-carets and multi-selections. Implemented many editing commands found in common text editors. UI with tabs and sidebar. Search and replace with regex.
-Exec=/usr/share/cudatext/cudatext %F
+Exec=/usr/bin/cudatext %F
 Terminal=false
 Type=Application
 StartupNotify=true
