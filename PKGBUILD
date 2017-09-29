@@ -2,7 +2,7 @@
 # Previous Maintainer: Youngbin Han <sukso96100 at gmail com>
 # Previous Contributor: blainester <theblainestory at gmail com>
 pkgname=micro-bin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
@@ -15,11 +15,10 @@ provides=("micro")
 source_x86_64=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux64.tar.gz")
 source_i686=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux32.tar.gz")
 
-sha256sums_x86_64=('f4b31deca253c933e1ee9fa462472b302d16c9d88ad4460b7a22bc25967e6ca3')
-sha256sums_i686=('aa989d2c75d78e2d3aa1fa2498b10e5428d0e3fc8465780e8598bc2b91803d02')
+sha256sums_x86_64=('329f746e4ee9edf244618dda4208b638fda34c593d5cd96d8f71dc3b53e3d994')
+sha256sums_i686=('7600666ae08a878c40efa2448fce03a042a18132a2a7f27e134502d36065193d')
 
 package(){
  install -Dm755 "${srcdir}/micro-${pkgver}/micro" "${pkgdir}/usr/bin/micro"
  install -Dm644 "${srcdir}/micro-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
-
