@@ -8,11 +8,11 @@ _productRename='CEWE Fotobuch'
 pkgname=cewe-fotobuch
 conflicts=(cewe-fotoservice)
 pkgdesc='an offline client for creating photobooks, uploading and ordering them at cewe.de'
-md5sums=('145594fb7e849b1a6ab0746fb1a9405b'
+md5sums=('19b8ff60e5973fb816b86b94af9a0835'
          '422a405d520e18ef9afade2e7c24440b')
 
 pkgver=6.2.4
-pkgrel=1
+pkgrel=2
 url="http://www.cewe.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget' 'gstreamer0.10-base')
