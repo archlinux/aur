@@ -1,7 +1,7 @@
 # Maintainer: Paolo Stivanin <info A,T paolostivanin D,O,T com>
 
 pkgname=libcotp
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='C library that generates TOTP and HOTP'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL3')
 
 source=("https://github.com/paolostivanin/$pkgname/archive/v$pkgver.tar.gz")
 
-sha256sums=("96514f2767a18391cd41a5051761452961a939fbbf53d99dce207cf5646e15df")
+sha256sums=("34af119cb367b8ea6cf15a7dfbcd87687be27e55b3a95f82ac84e6dc735bce4e")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
