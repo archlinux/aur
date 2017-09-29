@@ -23,18 +23,18 @@ source=("git+$url#tag=$_commit"
 sha256sums=('SKIP'
             '5e2347d73349cee56c17ef53b69418d0b083e2fe26d19af61ef2ba55ef43cf16')
 
-pkgver() {
-  cd ${pkgname#lib32-}
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
-
 prepare() {
   cd ${pkgname#lib32-}
   patch -Np1 -i ../0001-avahi-python-Use-the-agnostic-DBM-interface.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
-  build() {
+pkgver() {
+  cd ${pkgname#lib32-}
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
+build() {
   # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
   export CFLAGS="-m32 ${CFLAGS}"
   export CXXFLAGS="-m32 ${CXXFLAGS}"
