@@ -8,7 +8,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20170923
+pkgver=20170929
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -20,12 +20,12 @@ depends=('hicolor-icon-theme'
          'python-pbkdf2'
          'python-protobuf'
          'python-pyaes'
-         'python-pyqt4'
+         'python-pyqt5'
          'python-pysocks'
          'python-qrcode'
          'python-requests'
          'python-six'
-         'qt4')
+         'qt5-base')
 makedepends=('gettext'
              'git'
              'protobuf'
@@ -59,7 +59,7 @@ build() {
   cd ${pkgname%-git}
 
   msg2 'Compiling icons...'
-  pyrcc4 icons.qrc -o gui/qt/icons_rc.py -py3
+  pyrcc5 icons.qrc -o gui/qt/icons_rc.py
 
   msg2 'Compiling protobuf description file...'
   protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
