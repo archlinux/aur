@@ -1,7 +1,7 @@
 # Maintainer: Bernd Kast < kastbernd at gmx dot de >
 
 pkgname=r8169aspm-dkms
-pkgver=v1.1
+pkgver=v4.13
 pkgrel=2
 pkgdesc="Driver for Realtek Ethernet chips with aspm enabled for power saving"
 arch=('any')

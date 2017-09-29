@@ -1,6 +1,6 @@
 pkgbase = r8169aspm-dkms
 	pkgdesc = Driver for Realtek Ethernet chips with aspm enabled for power saving
-	pkgver = v1.1
+	pkgver = v4.13
 	pkgrel = 2
 	url = https://github.com/KastB/r8169
 	arch = any
