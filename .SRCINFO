@@ -8,7 +8,7 @@ pkgbase = libconfini
 	license = GPL
 	makedepends = intltool
 	source = https://github.com/madmurphy/libconfini/archive/1.4.1.tar.gz
-	md5sums = c4f9e2d75d63cfad2eaac492f04d215e
+	md5sums = 025416d384cae577afea32cd4fb8c46d
 
 pkgname = libconfini
 
