@@ -1,0 +1,10 @@
+source:
+    github: 'WoLpH/numpy-stl'
+
+format: 'archlinux'
+
+script:
+    - sed -i "s|^pkgver.*|pkgver=$RELEASE_VERSION|" PKGBUILD
+    - cp "$RELEASE_FILE" v$RELEASE_VERSION.tar.gz
+    - updpkgsums
+    - mksrcinfo
