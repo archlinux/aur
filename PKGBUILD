@@ -1,6 +1,7 @@
 # Maintainer: Bram Swenson <bram@amplified.work>
 
-pkgname='concourse'
+pkgname_base='concourse'
+pkgname="${pkgname_base}-bin"
 pkgver=v3.5.0
 pkgrel=1
 pkgdesc="Concourse is a pipeline-based CI system written in Go."
