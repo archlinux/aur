@@ -1,8 +1,9 @@
-# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# Maintainer: Alex Peltzer ("alexpe87") <alexpe.aur@mailbox.org>
+# Former Maintainer (thanks dude!) : Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 # Contributor: Markus Heuser <markus.heuser@web.de>
 
 pkgname=samtools
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="tools for manipulating next-generation sequencing data"
 arch=('i686' 'x86_64')
@@ -57,4 +58,4 @@ package() {
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-md5sums=('56239b2ede8d0571d0af2065e62eb777')
+md5sums=('b756f05fd5d1a7042074417edb8c9aea')
