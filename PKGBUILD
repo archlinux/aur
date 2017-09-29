@@ -3,7 +3,7 @@
 
 pkgname=activinspire
 pkgver=2.10.66827
-pkgrel=2
+pkgrel=3
 pkgdesc="Presentation Software to use with Promethean Hardware products."
 arch=('i686' 'x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
@@ -12,7 +12,12 @@ depends_i686=('qt4' 'gst-plugins-base' 'libjpeg6' 'jre7-openjdk' 'openssl-1.0' '
 depends_x86_64=('qt4' 'lib32-gst-plugins-base' 'bin32-jre' 'lib32-libjpeg' 'lib32-libjpeg6' 'lib32-libxmu' 'lib32-alsa-lib' 'lib32-openssl-1.0' 'lib32-libpulse' 'recordmydesktop')
 md5sum_i686='08044e50534527a7a88ac6ff0586c934'
 md5sum_x86_64='59b14c0463a4f11c5e9cacd4d7206fae'
-if [ ${CARCH} = "i686" ]
+
+optdepends=('activdriver: promethean hardware support'
+            'activtools: hardware calibration'
+	    'activrelay: promethean driver with classflow')
+
+if [ "${CARCH}" = "i686" ]
 then
 	_arch="i386"
 else
