@@ -15,7 +15,7 @@ license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/organizations/"
 depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
          libvpx libevent nss hunspell sqlite ttf-font icu)
-makedepends=(gcc63 unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
+makedepends=(gcc6 unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
              autoconf2.13 rust)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
