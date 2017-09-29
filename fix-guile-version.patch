@@ -1,13 +1,14 @@
-diff -ura guile-commonmark-0.1.orig/Makefile.am guile-commonmark-0.1.new/Makefile.am
---- guile-commonmark-0.1.orig/Makefile.am	2016-07-16 21:17:53.000000000 +0200
-+++ guile-commonmark-0.1.new/Makefile.am	2017-05-10 12:44:20.540177575 +0200
-@@ -1,7 +1,7 @@
- include guile.am
- 
--moddir=$(prefix)/share/guile/site/2.0
--godir=$(prefix)/share/guile/site/2.0
-+moddir=$(prefix)/share/guile/site/2.2
-+godir=$(prefix)/share/guile/site/2.2
- 
- SOURCES =                           \
+diff -ura guile-commonmark-0.1.orig/Makefile.in guile-commonmark-0.1.new/Makefile.in
+--- guile-commonmark-0.1.orig/Makefile.in	2017-09-29 10:43:31.394594440 +0200
++++ guile-commonmark-0.1.new/Makefile.in	2017-09-29 11:43:03.333562429 +0200
+@@ -447,8 +447,8 @@
+ 	test-env.in $(TESTS)
+ GUILE_WARNINGS = -Wunbound-variable -Warity-mismatch -Wformat
+ SUFFIXES = .scm .go
+-moddir = $(prefix)/share/guile/site/2.0
+-godir = $(prefix)/share/guile/site/2.0
++moddir = $(prefix)/share/guile/site/2.2
++godir = $(prefix)/share/guile/site/2.2
+ SOURCES = \
    commonmark/utils.scm              \
+   commonmark/common.scm             \

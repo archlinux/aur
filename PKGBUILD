@@ -10,7 +10,7 @@ depends=('guile')
 source=("https://github.com/OrangeShark/guile-commonmark/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "fix-guile-version.patch")
 sha512sums=('cacb58392b0c5bc69e06da04b2f1d8ea7d6e8a06f1d76a92a7a6fbd97279a234ba435f065ee928343f96bdce5becf61d503a3d1a674a61d3a3d2d86f951f6f38'
-            'b43dacc6c0c0953c1c98ed9e2a5f17b0b9f45d325a55db9bc050f9c4e46cd2f75936a38b8e194cb6b4689eaa5316d720134ae5a0d799c26326188e38849fd7bb')
+            '76b47b8ab054bfea9dec221d796db1cb01eb6de0742f24082a1fabdba9478eb35c131abecfb6dd642937a13e15fc6a5b38b18b3c60f2531cd966fec4b7020325')
 
 prepare() {
   cd "$pkgname"-"$pkgver"
