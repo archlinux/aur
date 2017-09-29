@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python' 'python-coloredlogs' 'python-fasteners' 'python-humanfriendly' 'python-property-manager' 'python-six')
 makedepends=('python-setuptools')
 source=("https://github.com/xolox/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('8419bfaa23f7bb5e634221d47f9ae1c4')
+md5sums=('c0d42131b412adc99845254cddaded5b')
 arch=('any')
 
 package() {
