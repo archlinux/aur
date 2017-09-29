@@ -1,6 +1,6 @@
 # Maintainer: Lars HagstrÃ¶m <lars@foldspace.nu>
 pkgname=s-tui
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Terminal UI stress test and monitoring tool "
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 options=(!emptydirs)
 install=
 source=("$url/archive/v$pkgver.tar.gz")
-sha1sums=('cff6545b4ddb740923e9d15217148c54b5a86397')
+sha1sums=('6897b98e572026a209ed162d87a96e999a77254a')
 conflicts=("s-tui-git")
 
 
