@@ -4,13 +4,14 @@
 pkgname=snft-git
 _pkgname=snft
 pkgver=v1.1.0.r0.g12332f0
-pkgrel=1
+pkgrel=2
 pkgdesc="Script for simple configuring firewall based on nftables."
 arch=(any)
 url="https://github.com/vvl-rulez/snft"
 license=('MIT')
 source=("$_pkgname::git+https://github.com/vvl-rulez/snft.git")
 depends=('nftables')
+conflicts=('snft')
 makedepends=('git')
 sha256sums=('SKIP')
 pkgver() {
