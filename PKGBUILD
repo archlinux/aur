@@ -6,7 +6,7 @@ pkgdesc="A CLI program to manage Firefox userChrome.css changes."
 url="https://github.com/Admicos/userfirefox"
 arch=("any")
 license=('GPLv3')
-depends=("python" "python-requests")
+depends=("python" "python-requests" "python-yaml")
 source=("userFirefox::git+https://github.com/Admicos/userfirefox" "ufox.sh")
 md5sums=('SKIP'
          '3145ba7dd5cb2f7669ea8ae9634f407d')
