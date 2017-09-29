@@ -4,10 +4,10 @@
 PKGEXT='.pkg.tar'
 pkgname='xscreensaver-aerial-videos'
 pkgver=1.05
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos"
-pkgdesc='Apple TV4 HD aerial movies'
+pkgdesc='Apple TV4 HD aerial movies in 1080p'
 source=("$url/b10-1.mov"
 "$url/b10-2.mov"
 "$url/b10-3.mov"
@@ -42,27 +42,27 @@ source=("$url/b10-1.mov"
 "$url/b9-1.mov"
 "$url/b9-2.mov"
 "$url/b9-3.mov"
-"$url/comp_GL_G004_C010_v03_6Mbps.mov"
-"$url/comp_DB_D011_D009_SIGNCMP_v15_6Mbps.mov"
-"$url/comp_HK_H004_C008_v10_6Mbps.mov"
-"$url/comp_LA_A009_C009_t9_6M_tag0.mov"
 "$url/comp_C002_C005_0818SC_001_v01_6M_HB_tag0.mov"
-"$url/comp_GL_G010_C006_v08_6Mbps.mov"
-"$url/comp_LW_L001_C006_t9_6M_tag0.mov"
-"$url/comp_DB_D011_C010_v10_6Mbps.mov"
-"$url/comp_LA_A005_C009_v05_t9_6M.mov"
-"$url/comp_HK_B005_C011_t9_6M_tag0.mov"
-"$url/plate_G002_C002_BG_t9_6M_HB_tag0.mov"
 "$url/comp_C007_C011_08244D_001_v01_6M_HB_tag0.mov"
-"$url/comp_LA_A006_C008_t9_6M_HB_tag0.mov"
-"$url/comp_DB_D001_C001_v03_6Mbps.mov"
-"$url/comp_HK_H004_C010_4k_v01_6Mbps.mov"
-"$url/comp_LA_A008_C004_ALT_v33_6Mbps.mov"
-"$url/comp_DB_D002_C003_t9_6M_HB_tag0.mov"
 "$url/comp_C007_C004_0824AJ_001_v01_6M_HB_tag0.mov"
-"$url/comp_DB_D001_C005_t9_6M_HB_tag0.mov"
-"$url/comp_HK_H004_C013_t9_6M_HB_tag0.mov"
+"$url/comp_DB_D011_D009_SIGNCMP_v15_6Mbps.mov"
+"$url/comp_DB_D011_C010_v10_6Mbps.mov"
+"$url/comp_DB_D001_C001_v03_6Mbps.mov"
 "$url/comp_DB_D008_C010_v04_6Mbps.mov"
+"$url/comp_DB_D001_C005_t9_6M_HB_tag0.mov"
+"$url/comp_DB_D002_C003_t9_6M_HB_tag0.mov"
+"$url/comp_GL_G004_C010_v03_6Mbps.mov"
+"$url/comp_GL_G010_C006_v08_6Mbps.mov"
+"$url/comp_HK_H004_C008_v10_6Mbps.mov"
+"$url/comp_HK_B005_C011_t9_6M_tag0.mov"
+"$url/comp_HK_H004_C010_4k_v01_6Mbps.mov"
+"$url/comp_HK_H004_C013_t9_6M_HB_tag0.mov"
+"$url/comp_LA_A009_C009_t9_6M_tag0.mov"
+"$url/comp_LA_A005_C009_v05_t9_6M.mov"
+"$url/comp_LA_A006_C008_t9_6M_HB_tag0.mov"
+"$url/comp_LA_A008_C004_ALT_v33_6Mbps.mov"
+"$url/comp_LW_L001_C006_t9_6M_tag0.mov"
+"$url/plate_G002_C002_BG_t9_6M_HB_tag0.mov"
 )
 
 sha1sums=('21eaac6e0f0f4d5ca56f4a4b809d550776950852'
@@ -99,34 +99,34 @@ sha1sums=('21eaac6e0f0f4d5ca56f4a4b809d550776950852'
           '4b61a0cdcecc262863ab60543bedcd52b122ce03'
           'a1a9569428dbf924c2c77e0d6398e607c99bcae9'
           '8cfa5a6152be807ff458174f8420eb0a4a307ec2'
-          '154e7752a50de08a0346ab19137a65dd5f2cce39'
-          'f9d149be3f2164e99ec7b3e5620959c1c8d90387'
-          '52cf260444ef7a2fd08077477512e74b164510dc'
-          '833bd9a154832b78ca7630ba1287d5842b31f38d'
           'f0bce45fe4d1fe8f81b188025cca7ea79946b1d0'
-          '1ce74e30eb845a1b8af05a44ad5d93df16373c8b'
-          'a880b2a628d3fe49a443bb07a3fe2e43c1fc30cd'
-          '01c671e89ea1666887c280de7e069a9a17c46356'
-          'db2af5d6b3396e8c3558e11fa67302fc8f606aa2'
-          '277c25e7e8439aed99da841a3eb5232c5a38da74'
-          '7c08f6640d80e32cb318fea57677896cd75587cd'
           'fa6a9dc1ce0c0ccc42cbd197bfc821e696409c64'
-          'dafe27dd64d070a4157e6b606507a749de1dd05b'
-          'e01664bf3c8d12682138889da3b811eb5f36b240'
-          '1a3c7a441a6d2473ed07b9f552583229787f80a7'
-          '29daf9c3a4ad2eb15c7b8e9bfe2d24a1f50dbddd'
-          '53dd0f2f0d9647de7c35269c89f16e3df6ffd165'
           'e3453dab425d7e80a62a650a4ad85ffc69adbdf4'
+          'f9d149be3f2164e99ec7b3e5620959c1c8d90387'
+          '01c671e89ea1666887c280de7e069a9a17c46356'
+          'e01664bf3c8d12682138889da3b811eb5f36b240'
+          '27ba0beb3c3527e78206d60f2f00b8d55f238f02'
           'd10475844eeed3c23b514933d1c235d901a18ad4'
+          '53dd0f2f0d9647de7c35269c89f16e3df6ffd165'
+          '154e7752a50de08a0346ab19137a65dd5f2cce39'
+          '1ce74e30eb845a1b8af05a44ad5d93df16373c8b'
+          '52cf260444ef7a2fd08077477512e74b164510dc'
+          '277c25e7e8439aed99da841a3eb5232c5a38da74'
+          '1a3c7a441a6d2473ed07b9f552583229787f80a7'
           'cd6a53387ac77982e390fe362526923e68653037'
-          '27ba0beb3c3527e78206d60f2f00b8d55f238f02')
+          '833bd9a154832b78ca7630ba1287d5842b31f38d'
+          'db2af5d6b3396e8c3558e11fa67302fc8f606aa2'
+          'dafe27dd64d070a4157e6b606507a749de1dd05b'
+          '29daf9c3a4ad2eb15c7b8e9bfe2d24a1f50dbddd'
+          'a880b2a628d3fe49a443bb07a3fe2e43c1fc30cd'
+          '7c08f6640d80e32cb318fea57677896cd75587cd')
 
 package() {
-	# This package is optional as the xscreensaver will stream the videos directly
-	# from apple which will save approx 11.9 GB of disk space but know that you
-	# will be using bandwidth every time your screensaver comes on which might
-	# impact you if your ISP caps your bandwidth
-	cd "$srcdir"
+  # This package is optional as the xscreensaver will stream the videos directly
+  # from apple which will save approx 11.9 GB of disk space but know that you
+  # will be using bandwidth every time your screensaver comes on which might
+  # impact you if your ISP caps your bandwidth
+  cd "$srcdir"
   for i in *.mov; do
     install -Dm644 "$i" "${pkgdir}/opt/ATV4/$i"
   done
