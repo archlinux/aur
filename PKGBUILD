@@ -22,7 +22,7 @@ _opt_DKMS=1            # This can be toggled between installs
 
 set -u
 pkgname='nslink'
-pkgver='7.22'
+pkgver='7.26'
 pkgrel='1'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
@@ -45,7 +45,7 @@ source=("http://downloads.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-li
 #source+=('ftp://ftp.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz')
 source+=('http://downloads.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz')
 source+=('dmupdate.py.usage.patch')
-sha256sums=('1754211e69ccc058b7cb2f2dfaa870fe5b54bf96a872a09c2cf9e4ecc8e374ad'
+sha256sums=('5c00939eb945c98336211cd61408b5a8623b01a7059356e663ccc638b0d159fb'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
             '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073')
 
