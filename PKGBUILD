@@ -4,19 +4,20 @@
 
 pkgname=purple-events
 pkgver=0.99.1
-pkgrel=1
+pkgrel=2
 pkgdesc="libpurple events handling plugin and library"
 license=('GPL3')
 url="https://github.com/sardemff7/purple-events"
-source=("http://download.tuxfamily.org/purpleevents/purple-events/purple-events-0.99.1.tar.xz")
+source=("https://github.com/sardemff7/purple-events/archive/v0.99.1.tar.gz")
 makedepends=('perl-xml-parser' 'intltool')
 depends=('glib2' 'libpurple')
 arch=('i686' 'x86_64')
-md5sums=('c0471d39c013d39becd00f29e4732f24')
+md5sums=('1d0c650950201ce9b5e7049580289f23')
 
 build () {
 	cd "$srcdir/$pkgname-$pkgver"
 
+    ./autogen.sh
 	./configure --prefix=/usr
 	make
 }
