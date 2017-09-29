@@ -1,12 +1,12 @@
 pkgname="i3lock-color"
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
 url="https://github.com/chrjguill/i3lock-color"
 license=('MIT')
 depends=('xcb-util-image' 'xcb-util-keysyms' 'pam' 'libev' 'cairo' 'libxkbcommon-x11')
-provides=('i3lock')
+provides=('i3lock' 'i3lock-color')
 conflicts=('i3lock')
 source=("https://github.com/chrjguill/i3lock-color/archive/2.9.1-c.tar.gz")
 md5sums=('SKIP')
