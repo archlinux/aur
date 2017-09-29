@@ -1,8 +1,8 @@
-# Maintainer: Tom Richards <tom@tomrichards.net>
+# Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=3dm2
 pkgver='2.11.00.021'
 pkgrel=1
-pkgdesc="LSI 3ware SATA+SAS RAID controller web interface"
+pkgdesc="LSI 3ware SATA+SAS RAID controller software. Includes 3dm2 and tw_cli."
 arch=('x86' 'x86_64')
 url="http://www.3ware.com"
 license=('custom')
