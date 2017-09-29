@@ -1,13 +1,13 @@
 pkgbase = prosody-mod-smacks
 	pkgdesc = XEP-0198: Reliability and fast reconnects for Prosody
-	pkgver = 2017.05.08
+	pkgver = 2017.08.27
 	pkgrel = 1
 	url = http://modules.prosody.im/mod_smacks.html
 	arch = any
 	license = MIT
 	depends = prosody
-	source = mod_smacks_eea1d5bac451.lua::https://hg.prosody.im/prosody-modules/raw-file/eea1d5bac451/mod_smacks/mod_smacks.lua
-	sha1sums = fd69e481ea448fa9397958d1dcd0e3ceb3249d28
+	source = mod_smacks_dbba101601b4.lua::https://hg.prosody.im/prosody-modules/raw-file/dbba101601b4/mod_smacks/mod_smacks.lua
+	sha1sums = 75a4ab9f91014ce3db9c411c0528c963595e3783
 
 pkgname = prosody-mod-smacks
 
