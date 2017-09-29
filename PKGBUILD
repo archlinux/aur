@@ -1,4 +1,3 @@
- 
 # Maintainer: Jan Neumann <neum dot ja at gmail dot com>
 
 
@@ -8,14 +7,14 @@ pkgver=r139.bf5c364
 pkgrel=1
 pkgdesc='Audex is an audio grabber tool for CD-ROM drives built with KDE Frameworks.'
 arch=('i686' 'x86_64')
-url='git://anongit.kde.org/audex.git'
+url='https://cgit.kde.org/audex.git/'
 license=('GPL')
-depends=('libkcddb' 'cdparanoia' 'plasma-framework')
+depends=('qt5-base' 'qt5-script' 'qt5-x11extras' 'libkcddb' 'cdparanoia' 'kconfig' 'kcompletion' 'kcoreaddons' 'kiconthemes' 'kcmutils' 'kio' 'solid' 'ktextwidgets' 'kwidgetsaddons' 'kxmlgui')
 optdepends=('libvorbis' 'flac' 'lame' 'faac' 'python-eyed3')
 makedepends=('git')
 conflicts=('audex')
 provides=('audex')
-source=("git+${url}")
+source=("git+git://anongit.kde.org/audex.git")
 sha256sums=('SKIP')
 
 pkgver() {
