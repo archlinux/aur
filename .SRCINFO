@@ -1,0 +1,16 @@
+pkgbase = netdata-ts3-git
+	pkgdesc = TS3 statistics for netdata
+	pkgver = 21.5c12ce2
+	pkgrel = 1
+	url = https://github.com/coraxx/netdata_ts3_plugin
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = netdata
+	backup = etc/netdata/python.d/ts3.conf
+	source = git+https://github.com/coraxx/netdata_ts3_plugin
+	sha256sums = SKIP
+
+pkgname = netdata-ts3-git
+
