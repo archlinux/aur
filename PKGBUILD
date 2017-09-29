@@ -1,7 +1,7 @@
 # Maintainer: Arthur Țițeică arthur.titeica/gmail/com
 
 pkgname=pdf2htmlex-git
-pkgver=1694.984c118
+pkgver=1742.f12fc15
 pkgrel=1
 epoch=1
 pkgdesc="Convert PDF to HTML without losing format. Text is preserved as much as possible."
@@ -14,8 +14,10 @@ optdepends=('ttfautohint: Provides automated hinting process for web fonts')
 provides=('pdf2htmlex')
 conflicts=('pdf2htmlex')
 replaces=('pdf2htmlex')
-source=('git://github.com/coolwanglu/pdf2htmlEX.git')
-md5sums=('SKIP')
+source=('git://github.com/coolwanglu/pdf2htmlEX.git'
+        '735.patch')
+md5sums=('SKIP'
+         '61100dcfa593c90ef9ee2ac3f6206a77')
 
 _gitname=pdf2htmlEX
 _pkgname=pdf2htmlEX
@@ -26,7 +28,10 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-
+prepare() {
+  cd "${_gitname}"
+  patch -p1 < "${srcdir}/735.patch"
+}
 
 build() {
   cd "${_gitname}"

@@ -1,0 +1,2038 @@
+diff --git a/3rdparty/poppler/git/CairoFontEngine.cc b/3rdparty/poppler/git/CairoFontEngine.cc
+index 4571b7fb..be53d25c 100644
+--- a/3rdparty/poppler/git/CairoFontEngine.cc
++++ b/3rdparty/poppler/git/CairoFontEngine.cc
+@@ -17,16 +17,17 @@
+ // Copyright (C) 2005-2007 Jeff Muizelaar <jeff@infidigm.net>
+ // Copyright (C) 2005, 2006 Kristian Høgsberg <krh@redhat.com>
+ // Copyright (C) 2005 Martin Kretzschmar <martink@gnome.org>
+-// Copyright (C) 2005, 2009, 2012, 2013 Albert Astals Cid <aacid@kde.org>
++// Copyright (C) 2005, 2009, 2012, 2013, 2015, 2017 Albert Astals Cid <aacid@kde.org>
+ // Copyright (C) 2006, 2007, 2010, 2011 Carlos Garcia Campos <carlosgc@gnome.org>
+ // Copyright (C) 2007 Koji Otani <sho@bbr.jp>
+ // Copyright (C) 2008, 2009 Chris Wilson <chris@chris-wilson.co.uk>
+-// Copyright (C) 2008, 2012 Adrian Johnson <ajohnson@redneon.com>
++// Copyright (C) 2008, 2012, 2014, 2016 Adrian Johnson <ajohnson@redneon.com>
+ // Copyright (C) 2009 Darren Kenny <darren.kenny@sun.com>
+ // Copyright (C) 2010 Suzuki Toshiya <mpsuzuki@hiroshima-u.ac.jp>
+ // Copyright (C) 2010 Jan Kümmel <jan+freedesktop@snorc.org>
+ // Copyright (C) 2012 Hib Eris <hib@hiberis.nl>
+ // Copyright (C) 2013 Thomas Freitag <Thomas.Freitag@alfa.de>
++// Copyright (C) 2015, 2016 Jason Crain <jason@aquaticape.us>
+ //
+ // To see a description of the changes please see the Changelog file that
+ // came with your tarball or type make ChangeLog if you are building from git
+@@ -58,16 +59,11 @@
+ #pragma implementation
+ #endif
+ 
+-/*
+- * pdf2htmlEX: disabled multi thread 
+ #if MULTITHREADED
+ #  define fontEngineLocker()   MutexLocker locker(&mutex)
+ #else
+-*/
+ #  define fontEngineLocker()
+-/*
+ #endif
+-*/
+ 
+ //------------------------------------------------------------------------
+ // CairoFont
+@@ -116,7 +112,7 @@ CairoFont::getGlyph(CharCode code,
+ double
+ CairoFont::getSubstitutionCorrection(GfxFont *gfxFont)
+ {
+-  double w1, w2;
++  double w1, w2, w3;
+   CharCode code;
+   char *name;
+ 
+@@ -146,7 +142,8 @@ CairoFont::getSubstitutionCorrection(GfxFont *gfxFont)
+ 	cairo_font_options_destroy(options);
+ 	w2 = extents.x_advance;
+       }
+-      if (!gfxFont->isSymbolic()) {
++      w3 = ((Gfx8BitFont *)gfxFont)->getWidth(0);
++      if (!gfxFont->isSymbolic() && w2 > 0 && w1 > w3) {
+ 	// if real font is substantially narrower than substituted
+ 	// font, reduce the font size accordingly
+ 	if (w1 > 0.01 && w1 < 0.9 * w2) {
+@@ -260,12 +257,16 @@ _ft_done_face (void *closure)
+   else
+     _ft_open_faces = data->next;
+ 
++  if (data->fd != -1) {
+ #if defined(__SUNPRO_CC) && defined(__sun) && defined(__SVR4)
+-  munmap ((char*)data->bytes, data->size);
++    munmap ((char*)data->bytes, data->size);
+ #else
+-  munmap (data->bytes, data->size);
++    munmap (data->bytes, data->size);
+ #endif
+-  close (data->fd);
++    close (data->fd);
++  } else {
++    gfree (data->bytes);
++  }
+ 
+   FT_Done_Face (data->face);
+   gfree (data);
+@@ -322,6 +323,8 @@ _ft_new_face (FT_Library lib,
+         munmap (tmpl.bytes, tmpl.size);
+ #endif
+         close (tmpl.fd);
++      } else {
++	gfree (tmpl.bytes);
+       }
+       *face_out = l->face;
+       *font_face_out = cairo_font_face_reference (l->font_face);
+@@ -399,7 +402,7 @@ CairoFreeTypeFont *CairoFreeTypeFont::create(GfxFont *gfxFont, XRef *xref,
+   GfxFontType fontType;
+   GfxFontLoc *fontLoc;
+   char **enc;
+-  char *name;
++  const char *name;
+   FoFiTrueType *ff;
+   FoFiType1C *ff1c;
+   Ref ref;
+@@ -421,8 +424,7 @@ CairoFreeTypeFont *CairoFreeTypeFont::create(GfxFont *gfxFont, XRef *xref,
+   ref = *gfxFont->getID();
+   fontType = gfxFont->getType();
+ 
+-  // pdf2htmlEX: changed gFlase to nullptr
+-  if (!(fontLoc = gfxFont->locateFont(xref, nullptr))) {
++  if (!(fontLoc = gfxFont->locateFont(xref, NULL))) {
+     error(errSyntaxError, -1, "Couldn't find a font for '{0:s}'",
+     	gfxFont->getName() ? gfxFont->getName()->getCString()
+ 	                       : "(unnamed)");
+@@ -462,7 +464,18 @@ CairoFreeTypeFont *CairoFreeTypeFont::create(GfxFont *gfxFont, XRef *xref,
+     for (i = 0; i < 256; ++i) {
+       codeToGID[i] = 0;
+       if ((name = enc[i])) {
+-	codeToGID[i] = FT_Get_Name_Index(face, name);
++	codeToGID[i] = FT_Get_Name_Index(face, (char*)name);
++	if (codeToGID[i] == 0) {
++	  Unicode u;
++	  u = globalParams->mapNameToUnicodeText (name);
++	  codeToGID[i] = FT_Get_Char_Index (face, u);
++	}
++	if (codeToGID[i] == 0) {
++	  name = GfxFont::getAlternateName(name);
++	  if (name) {
++	    codeToGID[i] = FT_Get_Name_Index(face, (char*)name);
++	  }
++	}
+       }
+     }
+     break;
+@@ -491,6 +504,7 @@ CairoFreeTypeFont *CairoFreeTypeFont::create(GfxFont *gfxFont, XRef *xref,
+     codeToGIDLen = n;
+     /* Fall through */
+   case fontTrueType:
++  case fontTrueTypeOT:
+     if (font_data != NULL) {
+       ff = FoFiTrueType::make(font_data, font_data_len);
+     } else {
+@@ -501,7 +515,7 @@ CairoFreeTypeFont *CairoFreeTypeFont::create(GfxFont *gfxFont, XRef *xref,
+       goto err2;
+     }
+     /* This might be set already for the CIDType2 case */
+-    if (fontType == fontTrueType) {
++    if (fontType == fontTrueType || fontType == fontTrueTypeOT) {
+       codeToGID = ((Gfx8BitFont *)gfxFont)->getCodeToGIDMap(ff);
+       codeToGIDLen = 256;
+     }
+@@ -532,13 +546,45 @@ CairoFreeTypeFont *CairoFreeTypeFont::create(GfxFont *gfxFont, XRef *xref,
+     }
+ 
+     if (! _ft_new_face (lib, fileNameC, font_data, font_data_len, &face, &font_face)) {
+-      gfree(codeToGID);
+-      codeToGID = NULL;
+       error(errSyntaxError, -1, "could not create cid face\n");
+       goto err2;
+     }
+     break;
+-    
++
++  case fontCIDType0COT:
++    codeToGID = NULL;
++    n = 0;
++    if (((GfxCIDFont *)gfxFont)->getCIDToGID()) {
++      n = ((GfxCIDFont *)gfxFont)->getCIDToGIDLen();
++      if (n) {
++	codeToGID = (int *)gmallocn(n, sizeof(int));
++	memcpy(codeToGID, ((GfxCIDFont *)gfxFont)->getCIDToGID(),
++	       n * sizeof(int));
++      }
++    }
++    codeToGIDLen = n;
++
++    if (!codeToGID) {
++      if (!useCIDs) {
++	if (font_data != NULL) {
++	  ff = FoFiTrueType::make(font_data, font_data_len);
++	} else {
++	  ff = FoFiTrueType::load(fileNameC);
++	}
++	if (ff) {
++	  if (ff->isOpenTypeCFF()) {
++	    codeToGID = ff->getCIDToGIDMap((int *)&codeToGIDLen);
++	  }
++	  delete ff;
++	}
++      }
++    }
++    if (! _ft_new_face (lib, fileNameC, font_data, font_data_len, &face, &font_face)) {
++      error(errSyntaxError, -1, "could not create cid (OT) face\n");
++      goto err2;
++    }
++    break;
++
+   default:
+     fprintf (stderr, "font type %d not handled\n", (int)fontType);
+     goto err2;
+@@ -554,6 +600,8 @@ CairoFreeTypeFont *CairoFreeTypeFont::create(GfxFont *gfxFont, XRef *xref,
+  err2:
+   /* hmm? */
+   delete fontLoc;
++  gfree (codeToGID);
++  gfree (font_data);
+   fprintf (stderr, "some font thing failed\n");
+   return NULL;
+ }
+@@ -659,7 +707,8 @@ _render_type3_glyph (cairo_scaled_font_t  *scaled_font,
+   output_dev->startDoc(info->doc, info->fontEngine);
+   output_dev->startPage (1, gfx->getState(), gfx->getXRef());
+   output_dev->setInType3Char(gTrue);
+-  gfx->display(charProcs->getVal(glyph, &charProc));
++  charProc = charProcs->getVal(glyph);
++  gfx->display(&charProc);
+ 
+   output_dev->getType3GlyphWidth (&wx, &wy);
+   cairo_matrix_transform_distance (&matrix, &wx, &wy);
+@@ -678,7 +727,6 @@ _render_type3_glyph (cairo_scaled_font_t  *scaled_font,
+ 
+   delete gfx;
+   delete output_dev;
+-  charProc.free();
+ 
+   return CAIRO_STATUS_SUCCESS;
+ }
+@@ -768,12 +816,9 @@ CairoFontEngine::CairoFontEngine(FT_Library libA) {
+   FT_Library_Version(lib, &major, &minor, &patch);
+   useCIDs = major > 2 ||
+             (major == 2 && (minor > 1 || (minor == 1 && patch > 7)));
+-/*
+- * pdf2htmlEX: disabled multi thread 
+ #if MULTITHREADED
+   gInitMutex(&mutex);
+ #endif
+-*/
+ }
+ 
+ CairoFontEngine::~CairoFontEngine() {
+@@ -783,12 +828,9 @@ CairoFontEngine::~CairoFontEngine() {
+     if (fontCache[i])
+       delete fontCache[i];
+   }
+-/*
+- * pdf2htmlEX: disabled multi thread 
+ #if MULTITHREADED
+   gDestroyMutex(&mutex);
+ #endif
+-*/
+ }
+ 
+ CairoFont *
+@@ -827,4 +869,4 @@ CairoFontEngine::getFont(GfxFont *gfxFont, PDFDoc *doc, GBool printing, XRef *xr
+   }
+   fontCache[0] = font;
+   return font;
+-}
++}
+\ No newline at end of file
+diff --git a/3rdparty/poppler/git/CairoFontEngine.h b/3rdparty/poppler/git/CairoFontEngine.h
+index 96cc4c15..af637197 100644
+--- a/3rdparty/poppler/git/CairoFontEngine.h
++++ b/3rdparty/poppler/git/CairoFontEngine.h
+@@ -74,7 +74,7 @@ class CairoFont {
+ class CairoFreeTypeFont : public CairoFont {
+ public:
+   static CairoFreeTypeFont *create(GfxFont *gfxFont, XRef *xref, FT_Library lib, GBool useCIDs);
+-  virtual ~CairoFreeTypeFont();
++  ~CairoFreeTypeFont();
+ 
+ private:
+   CairoFreeTypeFont(Ref ref, cairo_font_face_t *cairo_font_face,
+@@ -88,9 +88,9 @@ class CairoType3Font : public CairoFont {
+   static CairoType3Font *create(GfxFont *gfxFont, PDFDoc *doc,
+ 				CairoFontEngine *fontEngine,
+ 				GBool printing, XRef *xref);
+-  virtual ~CairoType3Font();
++  ~CairoType3Font();
+ 
+-  virtual GBool matches(Ref &other, GBool printing);
++  GBool matches(Ref &other, GBool printing) override;
+ 
+ private:
+   CairoType3Font(Ref ref, PDFDoc *doc,
+@@ -121,12 +121,9 @@ class CairoFontEngine {
+   CairoFont *fontCache[cairoFontCacheSize];
+   FT_Library lib;
+   GBool useCIDs;
+-/*
+- * pdf2htmlEX: disabled multi thread 
+ #if MULTITHREADED
+   GooMutex mutex;
+ #endif
+-*/
+ };
+ 
+-#endif
++#endif
+\ No newline at end of file
+diff --git a/3rdparty/poppler/git/CairoOutputDev.cc b/3rdparty/poppler/git/CairoOutputDev.cc
+index ff52824a..c4f50650 100644
+--- a/3rdparty/poppler/git/CairoOutputDev.cc
++++ b/3rdparty/poppler/git/CairoOutputDev.cc
+@@ -16,18 +16,19 @@
+ //
+ // Copyright (C) 2005-2008 Jeff Muizelaar <jeff@infidigm.net>
+ // Copyright (C) 2005, 2006 Kristian Høgsberg <krh@redhat.com>
+-// Copyright (C) 2005, 2009, 2012 Albert Astals Cid <aacid@kde.org>
++// Copyright (C) 2005, 2009, 2012, 2017 Albert Astals Cid <aacid@kde.org>
+ // Copyright (C) 2005 Nickolay V. Shmyrev <nshmyrev@yandex.ru>
+-// Copyright (C) 2006-2011, 2013 Carlos Garcia Campos <carlosgc@gnome.org>
++// Copyright (C) 2006-2011, 2013, 2014 Carlos Garcia Campos <carlosgc@gnome.org>
+ // Copyright (C) 2008 Carl Worth <cworth@cworth.org>
+-// Copyright (C) 2008-2013 Adrian Johnson <ajohnson@redneon.com>
++// Copyright (C) 2008-2017 Adrian Johnson <ajohnson@redneon.com>
+ // Copyright (C) 2008 Michael Vrable <mvrable@cs.ucsd.edu>
+ // Copyright (C) 2008, 2009 Chris Wilson <chris@chris-wilson.co.uk>
+ // Copyright (C) 2008, 2012 Hib Eris <hib@hiberis.nl>
+ // Copyright (C) 2009, 2010 David Benjamin <davidben@mit.edu>
+-// Copyright (C) 2011-2013 Thomas Freitag <Thomas.Freitag@alfa.de>
++// Copyright (C) 2011-2014 Thomas Freitag <Thomas.Freitag@alfa.de>
+ // Copyright (C) 2012 Patrick Pfeifer <p2000@mailinator.com>
+-// Copyright (C) 2012 Jason Crain <jason@aquaticape.us>
++// Copyright (C) 2012, 2015, 2016 Jason Crain <jason@aquaticape.us>
++// Copyright (C) 2015 Suzuki Toshiya <mpsuzuki@hiroshima-u.ac.jp>
+ //
+ // To see a description of the changes please see the Changelog file that
+ // came with your tarball or type make ChangeLog if you are building from git
+@@ -44,9 +45,9 @@
+ #include <math.h>
+ #include <assert.h>
+ #include <cairo.h>
+-#include <stdint.h>
+ 
+ #include "goo/gfile.h"
++//#include "goo/gtypes_p.h"
+ #include "GlobalParams.h"
+ #include "Error.h"
+ #include "Object.h"
+@@ -63,6 +64,7 @@
+ #include "CairoFontEngine.h"
+ #include "CairoRescaleBox.h"
+ #include "UnicodeMap.h"
++#include "JBIG2Stream.h"
+ //------------------------------------------------------------------------
+ 
+ // #define LOG_CAIRO
+@@ -141,12 +143,18 @@ CairoOutputDev::CairoOutputDev() {
+   strokePathClip = NULL;
+   cairo = NULL;
+   currentFont = NULL;
++#if CAIRO_VERSION >= CAIRO_VERSION_ENCODE(1, 14, 0)
++  prescaleImages = gFalse;
++#else
+   prescaleImages = gTrue;
++#endif
+   printing = gTrue;
+   use_show_text_glyphs = gFalse;
+   inUncoloredPattern = gFalse;
+   inType3Char = gFalse;
+   t3_glyph_has_bbox = gFalse;
++  text_matrix_valid = gTrue;
++  antialias = CAIRO_ANTIALIAS_DEFAULT;
+ 
+   groupColorSpaceStack = NULL;
+   maskStack = NULL;
+@@ -203,6 +211,7 @@ void CairoOutputDev::setCairo(cairo_t *cairo)
+ 	/* save the initial matrix so that we can use it for type3 fonts. */
+ 	//XXX: is this sufficient? could we miss changes to the matrix somehow?
+ 	cairo_get_matrix(cairo, &orig_matrix);
++	setContextAntialias(cairo, antialias);
+   } else {
+     this->cairo = NULL;
+     this->cairo_shape = NULL;
+@@ -225,6 +234,26 @@ void CairoOutputDev::setTextPage(TextPage *text)
+   }
+ }
+ 
++void CairoOutputDev::setAntialias(cairo_antialias_t antialias)
++{
++  this->antialias = antialias;
++  if (cairo)
++    setContextAntialias (cairo, antialias);
++  if (cairo_shape)
++    setContextAntialias (cairo_shape, antialias);
++}
++
++void CairoOutputDev::setContextAntialias(cairo_t *cr, cairo_antialias_t antialias)
++{
++  cairo_font_options_t *font_options;
++  cairo_set_antialias (cr, antialias);
++  font_options = cairo_font_options_create ();
++  cairo_get_font_options (cr, font_options);
++  cairo_font_options_set_antialias (font_options, antialias);
++  cairo_set_font_options (cr, font_options);
++  cairo_font_options_destroy (font_options);
++}
++
+ void CairoOutputDev::startDoc(PDFDoc *docA,
+ 			      CairoFontEngine *parentFontEngine) {
+   doc = docA;
+@@ -275,6 +304,9 @@ void CairoOutputDev::saveState(GfxState *state) {
+   ms->mask_matrix = mask_matrix;
+   ms->next = maskStack;
+   maskStack = ms;
++
++  if (strokePathClip)
++    strokePathClip->ref_count++;
+ }
+ 
+ void CairoOutputDev::restoreState(GfxState *state) {
+@@ -283,6 +315,8 @@ void CairoOutputDev::restoreState(GfxState *state) {
+   if (cairo_shape)
+       cairo_restore (cairo_shape);
+ 
++  text_matrix_valid = gTrue;
++
+   /* These aren't restored by cairo_restore() since we keep them in
+    * the output device. */
+   updateFillColor(state);
+@@ -300,6 +334,14 @@ void CairoOutputDev::restoreState(GfxState *state) {
+     maskStack = ms->next;
+     delete ms;
+   }
++
++  if (strokePathClip && --strokePathClip->ref_count == 0) {
++    delete strokePathClip->path;
++    if (strokePathClip->dashes)
++      gfree (strokePathClip->dashes);
++    gfree (strokePathClip);
++    strokePathClip = NULL;
++  }
+ }
+ 
+ void CairoOutputDev::updateAll(GfxState *state) {
+@@ -657,11 +699,13 @@ void CairoOutputDev::updateFont(GfxState *state) {
+   */
+   invert_matrix = matrix;
+   if (cairo_matrix_invert(&invert_matrix)) {
+-    error(errSyntaxWarning, -1, "font matrix not invertible\n");
++    error(errSyntaxWarning, -1, "font matrix not invertible");
++    text_matrix_valid = gFalse;
+     return;
+   }
+ 
+   cairo_set_font_matrix (cairo, &matrix);
++  text_matrix_valid = gTrue;
+ }
+ 
+ /* Tolerance in pixels for checking if strokes are horizontal or vertical
+@@ -773,7 +817,14 @@ void CairoOutputDev::stroke(GfxState *state) {
+   align_stroke_coords = gFalse;
+   cairo_set_source (cairo, stroke_pattern);
+   LOG(printf ("stroke\n"));
+-  cairo_stroke (cairo);
++  if (strokePathClip) {
++    cairo_push_group (cairo);
++    cairo_stroke (cairo);
++    cairo_pop_group_to_source (cairo);
++    fillToStrokePathClip (state);
++  } else {
++    cairo_stroke (cairo);
++  }
+   if (cairo_shape) {
+     doPath (cairo_shape, state, state->getPath());
+     cairo_stroke (cairo_shape);
+@@ -796,6 +847,11 @@ void CairoOutputDev::fill(GfxState *state) {
+   if (mask) {
+     cairo_save (cairo);
+     cairo_clip (cairo);
++    if (strokePathClip) {
++      cairo_push_group (cairo);
++      fillToStrokePathClip (state);
++      cairo_pop_group_to_source (cairo);
++    }
+     cairo_set_matrix (cairo, &mask_matrix);
+     cairo_mask (cairo, mask);
+     cairo_restore (cairo);
+@@ -816,8 +872,16 @@ void CairoOutputDev::eoFill(GfxState *state) {
+   cairo_set_fill_rule (cairo, CAIRO_FILL_RULE_EVEN_ODD);
+   cairo_set_source (cairo, fill_pattern);
+   LOG(printf ("fill-eo\n"));
+-  cairo_fill (cairo);
+ 
++  if (mask) {
++    cairo_save (cairo);
++    cairo_clip (cairo);
++    cairo_set_matrix (cairo, &mask_matrix);
++    cairo_mask (cairo, mask);
++    cairo_restore (cairo);
++  } else {
++    cairo_fill (cairo);
++  }
+   if (cairo_shape) {
+     cairo_set_fill_rule (cairo_shape, CAIRO_FILL_RULE_EVEN_ODD);
+     doPath (cairo_shape, state, state->getPath());
+@@ -837,11 +901,15 @@ GBool CairoOutputDev::tilingPatternFill(GfxState *state, Gfx *gfxA, Catalog *cat
+   cairo_pattern_t *pattern;
+   cairo_surface_t *surface;
+   cairo_matrix_t matrix;
++  cairo_matrix_t pattern_matrix;
+   cairo_t *old_cairo;
+   double xMin, yMin, xMax, yMax;
+   double width, height;
++  double scaleX, scaleY;
+   int surface_width, surface_height;
+   StrokePathClip *strokePathTmp;
++  GBool adjusted_stroke_width_tmp;
++  cairo_pattern_t *maskTmp;
+ 
+   width = bbox[2] - bbox[0];
+   height = bbox[3] - bbox[1];
+@@ -850,8 +918,20 @@ GBool CairoOutputDev::tilingPatternFill(GfxState *state, Gfx *gfxA, Catalog *cat
+     return gFalse;
+   /* TODO: implement the other cases here too */
+ 
+-  surface_width = (int) ceil (width);
+-  surface_height = (int) ceil (height);
++  // Find the width and height of the transformed pattern
++  cairo_get_matrix (cairo, &matrix);
++  cairo_matrix_init (&pattern_matrix, mat[0], mat[1], mat[2], mat[3], mat[4], mat[5]);
++  cairo_matrix_multiply (&matrix, &matrix, &pattern_matrix);
++
++  double widthX = width, widthY = 0;
++  cairo_matrix_transform_distance (&matrix, &widthX, &widthY);
++  surface_width = ceil (sqrt (widthX * widthX + widthY * widthY));
++
++  double heightX = 0, heightY = height;
++  cairo_matrix_transform_distance (&matrix, &heightX, &heightY);
++  surface_height = ceil (sqrt (heightX * heightX + heightY * heightY));
++  scaleX = surface_width / width;
++  scaleY = surface_height / height;
+ 
+   surface = cairo_surface_create_similar (cairo_get_target (cairo),
+ 					  CAIRO_CONTENT_COLOR_ALPHA,
+@@ -862,11 +942,18 @@ GBool CairoOutputDev::tilingPatternFill(GfxState *state, Gfx *gfxA, Catalog *cat
+   old_cairo = cairo;
+   cairo = cairo_create (surface);
+   cairo_surface_destroy (surface);
++  setContextAntialias(cairo, antialias);
+ 
+   box.x1 = bbox[0]; box.y1 = bbox[1];
+   box.x2 = bbox[2]; box.y2 = bbox[3];
++  cairo_scale (cairo, scaleX, scaleY);
++  cairo_translate (cairo, -box.x1, -box.y1);
++
+   strokePathTmp = strokePathClip;
+   strokePathClip = NULL;
++  adjusted_stroke_width_tmp = adjusted_stroke_width;
++  maskTmp = mask;
++  mask = NULL;
+   gfx = new Gfx(doc, this, resDict, &box, NULL, NULL, NULL, gfxA->getXRef());
+   if (paintType == 2)
+     inUncoloredPattern = gTrue;
+@@ -875,6 +962,8 @@ GBool CairoOutputDev::tilingPatternFill(GfxState *state, Gfx *gfxA, Catalog *cat
+     inUncoloredPattern = gFalse;
+   delete gfx;
+   strokePathClip = strokePathTmp;
++  adjusted_stroke_width = adjusted_stroke_width_tmp;
++  mask = maskTmp;
+ 
+   pattern = cairo_pattern_create_for_surface (cairo_get_target (cairo));
+   cairo_destroy (cairo);
+@@ -885,11 +974,11 @@ GBool CairoOutputDev::tilingPatternFill(GfxState *state, Gfx *gfxA, Catalog *cat
+   state->getUserClipBBox(&xMin, &yMin, &xMax, &yMax);
+   cairo_rectangle (cairo, xMin, yMin, xMax - xMin, yMax - yMin);
+ 
+-  cairo_matrix_init_scale (&matrix, surface_width / width, surface_height / height);
++  cairo_matrix_init_scale (&matrix, scaleX, scaleY);
++  cairo_matrix_translate (&matrix, -box.x1, -box.y1);
+   cairo_pattern_set_matrix (pattern, &matrix);
+ 
+-  cairo_matrix_init (&matrix, mat[0], mat[1], mat[2], mat[3], mat[4], mat[5]);
+-  cairo_transform (cairo, &matrix);
++  cairo_transform (cairo, &pattern_matrix);
+   cairo_set_source (cairo, pattern);
+   cairo_pattern_set_extend (pattern, CAIRO_EXTEND_REPEAT);
+   if (strokePathClip) {
+@@ -903,6 +992,107 @@ GBool CairoOutputDev::tilingPatternFill(GfxState *state, Gfx *gfxA, Catalog *cat
+   return gTrue;
+ }
+ 
++#if CAIRO_VERSION >= CAIRO_VERSION_ENCODE(1, 12, 0)
++GBool CairoOutputDev::functionShadedFill(GfxState *state, GfxFunctionShading *shading)
++{
++  // Function shaded fills are subdivided to rectangles that are the
++  // following size in device space.  Note when printing this size is
++  // in points.
++  const int subdivide_pixels = 10;
++
++  double x_begin, x_end, x1, x2;
++  double y_begin, y_end, y1, y2;
++  double x_step;
++  double y_step;
++  GfxColor color;
++  GfxRGB rgb;
++  double *matrix;
++  cairo_matrix_t mat;
++
++  matrix = shading->getMatrix();
++  mat.xx = matrix[0];
++  mat.yx = matrix[1];
++  mat.xy = matrix[2];
++  mat.yy = matrix[3];
++  mat.x0 = matrix[4];
++  mat.y0 = matrix[5];
++  if (cairo_matrix_invert(&mat)) {
++    error(errSyntaxWarning, -1, "matrix not invertible\n");
++    return gFalse;
++    }
++
++  // get cell size in pattern space
++  x_step = y_step = subdivide_pixels;
++  cairo_matrix_transform_distance (&mat, &x_step, &y_step);
++
++  cairo_pattern_destroy(fill_pattern);
++  fill_pattern = cairo_pattern_create_mesh ();
++  cairo_pattern_set_matrix(fill_pattern, &mat);
++  shading->getDomain(&x_begin, &y_begin, &x_end, &y_end);
++
++  for (x1 = x_begin; x1 < x_end; x1 += x_step) {
++    x2 = x1 + x_step;
++    if (x2 > x_end)
++      x2 = x_end;
++
++    for (y1 = y_begin; y1 < y_end; y1 += y_step) {
++      y2 = y1 + y_step;
++      if (y2 > y_end)
++	y2 = y_end;
++
++      cairo_mesh_pattern_begin_patch (fill_pattern);
++      cairo_mesh_pattern_move_to (fill_pattern, x1, y1);
++      cairo_mesh_pattern_line_to (fill_pattern, x2, y1);
++      cairo_mesh_pattern_line_to (fill_pattern, x2, y2);
++      cairo_mesh_pattern_line_to (fill_pattern, x1, y2);
++
++      shading->getColor(x1, y1, &color);
++      shading->getColorSpace()->getRGB(&color, &rgb);
++      cairo_mesh_pattern_set_corner_color_rgb (fill_pattern, 0,
++					       colToDbl(rgb.r),
++					       colToDbl(rgb.g),
++					       colToDbl(rgb.b));
++
++      shading->getColor(x2, y1, &color);
++      shading->getColorSpace()->getRGB(&color, &rgb);
++      cairo_mesh_pattern_set_corner_color_rgb (fill_pattern, 1,
++					       colToDbl(rgb.r),
++					       colToDbl(rgb.g),
++					       colToDbl(rgb.b));
++
++      shading->getColor(x2, y2, &color);
++      shading->getColorSpace()->getRGB(&color, &rgb);
++      cairo_mesh_pattern_set_corner_color_rgb (fill_pattern, 2,
++					       colToDbl(rgb.r),
++					       colToDbl(rgb.g),
++					       colToDbl(rgb.b));
++
++      shading->getColor(x1, y2, &color);
++      shading->getColorSpace()->getRGB(&color, &rgb);
++      cairo_mesh_pattern_set_corner_color_rgb (fill_pattern, 3,
++					       colToDbl(rgb.r),
++					       colToDbl(rgb.g),
++					       colToDbl(rgb.b));
++
++      cairo_mesh_pattern_end_patch (fill_pattern);
++    }
++  }
++
++  double xMin, yMin, xMax, yMax;
++  // get the clip region bbox
++  state->getUserClipBBox(&xMin, &yMin, &xMax, &yMax);
++  state->moveTo(xMin, yMin);
++  state->lineTo(xMin, yMax);
++  state->lineTo(xMax, yMax);
++  state->lineTo(xMax, yMin);
++  state->closePath();
++  fill(state);
++  state->clearPath();
++
++  return gTrue;
++}
++#endif /* CAIRO_VERSION >= CAIRO_VERSION_ENCODE(1, 12, 0) */
++
+ GBool CairoOutputDev::axialShadedFill(GfxState *state, GfxAxialShading *shading, double tMin, double tMax) {
+   double x0, y0, x1, y1;
+   double dx, dy;
+@@ -934,18 +1124,32 @@ GBool CairoOutputDev::axialShadedSupportExtend(GfxState *state, GfxAxialShading
+ GBool CairoOutputDev::radialShadedFill(GfxState *state, GfxRadialShading *shading, double sMin, double sMax) {
+   double x0, y0, r0, x1, y1, r1;
+   double dx, dy, dr;
++  cairo_matrix_t matrix;
++  double scale;
+ 
+   shading->getCoords(&x0, &y0, &r0, &x1, &y1, &r1);
+   dx = x1 - x0;
+   dy = y1 - y0;
+   dr = r1 - r0;
++
++  // Cairo/pixman do not work well with a very large or small scaled
++  // matrix.  See cairo bug #81657.
++  //
++  // As a workaround, scale the pattern by the average of the vertical
++  // and horizontal scaling of the current transformation matrix.
++  cairo_get_matrix(cairo, &matrix);
++  scale = (sqrt(matrix.xx * matrix.xx + matrix.yx * matrix.yx)
++	   + sqrt(matrix.xy * matrix.xy + matrix.yy * matrix.yy)) / 2;
++  cairo_matrix_init_scale(&matrix, scale, scale);
++
+   cairo_pattern_destroy(fill_pattern);
+-  fill_pattern = cairo_pattern_create_radial (x0 + sMin * dx,
+-					      y0 + sMin * dy,
+-					      r0 + sMin * dr,
+-					      x0 + sMax * dx,
+-					      y0 + sMax * dy,
+-					      r0 + sMax * dr);
++  fill_pattern = cairo_pattern_create_radial ((x0 + sMin * dx) * scale,
++					      (y0 + sMin * dy) * scale,
++					      (r0 + sMin * dr) * scale,
++					      (x0 + sMax * dx) * scale,
++					      (y0 + sMax * dy) * scale,
++					      (r0 + sMax * dr) * scale);
++  cairo_pattern_set_matrix(fill_pattern, &matrix);
+   if (shading->getExtend0() && shading->getExtend1())
+     cairo_pattern_set_extend (fill_pattern, CAIRO_EXTEND_PAD);
+   else
+@@ -1152,6 +1356,7 @@ void CairoOutputDev::clipToStrokePath(GfxState *state) {
+   strokePathClip->cap = cairo_get_line_cap (cairo);
+   strokePathClip->join = cairo_get_line_join (cairo);
+   strokePathClip->miter = cairo_get_miter_limit (cairo);
++  strokePathClip->ref_count = 1;
+ }
+ 
+ void CairoOutputDev::fillToStrokePathClip(GfxState *state) {
+@@ -1159,7 +1364,6 @@ void CairoOutputDev::fillToStrokePathClip(GfxState *state) {
+ 
+   cairo_set_matrix (cairo, &strokePathClip->ctm);
+   cairo_set_line_width (cairo, strokePathClip->line_width);
+-  strokePathClip->dash_count = cairo_get_dash_count (cairo);
+   cairo_set_dash (cairo, strokePathClip->dashes, strokePathClip->dash_count, strokePathClip->dash_offset);
+   cairo_set_line_cap (cairo, strokePathClip->cap);
+   cairo_set_line_join (cairo, strokePathClip->join);
+@@ -1168,12 +1372,6 @@ void CairoOutputDev::fillToStrokePathClip(GfxState *state) {
+   cairo_stroke (cairo);
+ 
+   cairo_restore (cairo);
+-
+-  delete strokePathClip->path;
+-  if (strokePathClip->dashes)
+-    gfree (strokePathClip->dashes);
+-  gfree (strokePathClip);
+-  strokePathClip = NULL;
+ }
+ 
+ void CairoOutputDev::beginString(GfxState *state, GooString *s)
+@@ -1250,10 +1448,8 @@ void CairoOutputDev::endString(GfxState *state)
+   // ignore empty strings and invisible text -- this is used by
+   // Acrobat Capture
+   render = state->getRender();
+-  if (render == 3 || glyphCount == 0) {
+-    gfree(glyphs);
+-    glyphs = NULL;
+-    return;
++  if (render == 3 || glyphCount == 0 || !text_matrix_valid) {
++    goto finish;
+   }
+ 
+   if (!(render & 1)) {
+@@ -1305,6 +1501,7 @@ void CairoOutputDev::endString(GfxState *state)
+     }
+   }
+ 
++finish:
+   gfree (glyphs);
+   glyphs = NULL;
+   if (use_show_text_glyphs) {
+@@ -1319,6 +1516,7 @@ void CairoOutputDev::endString(GfxState *state)
+ GBool CairoOutputDev::beginType3Char(GfxState *state, double x, double y,
+ 				      double dx, double dy,
+ 				      CharCode code, Unicode *u, int uLen) {
++
+   cairo_save (cairo);
+   double *ctm;
+   cairo_matrix_t matrix;
+@@ -1412,29 +1610,15 @@ static inline int splashFloor(SplashCoord x) {
+ static
+ cairo_surface_t *cairo_surface_create_similar_clip (cairo_t *cairo, cairo_content_t content)
+ {
+-  double x1, y1, x2, y2;
+-  int width, height;
+-  cairo_clip_extents (cairo, &x1, &y1, &x2, &y2);
+-  cairo_matrix_t matrix;
+-  cairo_get_matrix (cairo, &matrix);
+-  //cairo_matrix_transform_point(&matrix, &x1, &y1);
+-  //cairo_matrix_transform_point(&matrix, &x2, &y2);*/
+-  cairo_user_to_device(cairo, &x1, &y1);
+-  cairo_user_to_device(cairo, &x2, &y2);
+-  width = splashCeil(x2) - splashFloor(x1);
+-  //XXX: negative matrix
+-  ////height = splashCeil(y2) - splashFloor(y1);
+-  height = splashFloor(y1) - splashCeil(y2);
+-  cairo_surface_t *target = cairo_get_target (cairo);
+-  cairo_surface_t *result;
+-
+-  result = cairo_surface_create_similar (target, content, width, height);
+-  double x_offset, y_offset;
+-    cairo_surface_get_device_offset(target, &x_offset, &y_offset);
+-    cairo_surface_set_device_offset(result, x_offset, y_offset);
++  cairo_pattern_t *pattern;
++  cairo_surface_t *surface = NULL;
+ 
+- 
+-  return result;
++  cairo_push_group_with_content (cairo, content);
++  pattern = cairo_pop_group (cairo);
++  cairo_pattern_get_surface (pattern, &surface);
++  cairo_surface_reference (surface);
++  cairo_pattern_destroy (pattern);
++  return surface;
+ }
+ 
+ 
+@@ -1460,6 +1644,7 @@ void CairoOutputDev::beginTransparencyGroup(GfxState * /*state*/, double * /*bbo
+       cairo_surface_t *cairo_shape_surface = cairo_surface_create_similar_clip (cairo, CAIRO_CONTENT_ALPHA);
+       cairo_shape = cairo_create (cairo_shape_surface);
+       cairo_surface_destroy (cairo_shape_surface);
++      setContextAntialias(cairo_shape, antialias);
+ 
+       /* the color doesn't matter as long as it is opaque */
+       cairo_set_source_rgb (cairo_shape, 0, 0, 0);
+@@ -1467,8 +1652,6 @@ void CairoOutputDev::beginTransparencyGroup(GfxState * /*state*/, double * /*bbo
+       cairo_get_matrix (cairo, &matrix);
+       //printMatrix(&matrix);
+       cairo_set_matrix (cairo_shape, &matrix);
+-    } else {
+-      cairo_reference (cairo_shape);
+     }
+   }
+   if (groupColorSpaceStack->next && groupColorSpaceStack->next->knockout) {
+@@ -1508,33 +1691,22 @@ void CairoOutputDev::paintTransparencyGroup(GfxState * /*state*/, double * /*bbo
+ 
+   cairo_save (cairo);
+   cairo_set_matrix (cairo, &groupColorSpaceStack->group_matrix);
+-  cairo_set_source (cairo, group);
+ 
+-  if (!mask) {
+-    //XXX: deal with mask && shape case
+-    if (shape) {
+-      cairo_save (cairo);
+-
+-      /* OPERATOR_SOURCE w/ a mask is defined as (src IN mask) ADD (dest OUT mask)
+-       * however our source has already been clipped to mask so we only need to
+-       * do ADD and OUT */
+-
+-      /* clear the shape mask */
+-      cairo_set_source (cairo, shape);
+-      cairo_set_operator (cairo, CAIRO_OPERATOR_DEST_OUT);
+-      cairo_paint (cairo);
+-
+-      cairo_set_operator (cairo, CAIRO_OPERATOR_ADD);
+-      cairo_set_source (cairo, group);
+-      cairo_paint (cairo);
++  if (shape) {
++    /* OPERATOR_SOURCE w/ a mask is defined as (src IN mask) ADD (dest OUT mask)
++     * however our source has already been clipped to mask so we only need to
++     * do ADD and OUT */
+ 
+-      cairo_restore (cairo);
++    /* clear the shape mask */
++    cairo_set_source (cairo, shape);
++    cairo_set_operator (cairo, CAIRO_OPERATOR_DEST_OUT);
++    cairo_paint (cairo);
++    cairo_set_operator (cairo, CAIRO_OPERATOR_ADD);
++  }
++  cairo_set_source (cairo, group);
+ 
+-      cairo_pattern_destroy (shape);
+-      shape = NULL;
+-    } else {
+-      cairo_paint_with_alpha (cairo, fill_opacity);
+-    }
++  if (!mask) {
++    cairo_paint_with_alpha (cairo, fill_opacity);
+     cairo_status_t status = cairo_status(cairo);
+     if (status)
+       printf("BAD status: %s\n", cairo_status_to_string(status));
+@@ -1554,6 +1726,16 @@ void CairoOutputDev::paintTransparencyGroup(GfxState * /*state*/, double * /*bbo
+     mask = NULL;
+   }
+ 
++  if (shape) {
++    if (cairo_shape) {
++      cairo_set_source (cairo_shape, shape);
++      cairo_paint (cairo_shape);
++      cairo_set_source_rgb (cairo_shape, 0, 0, 0);
++    }
++    cairo_pattern_destroy (shape);
++    shape = NULL;
++  }
++
+   popTransparencyGroup();
+   cairo_restore(cairo);
+ }
+@@ -1617,9 +1799,10 @@ void CairoOutputDev::setSoftMask(GfxState * state, double * bbox, GBool alpha,
+ 
+     cairo_surface_t *source = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, width, height);
+     cairo_t *maskCtx = cairo_create(source);
++    setContextAntialias(maskCtx, antialias);
+ 
+     //XXX: hopefully this uses the correct color space */
+-    if (!alpha) {
++    if (!alpha && groupColorSpaceStack->cs) {
+       GfxRGB backdropColorRGB;
+       groupColorSpaceStack->cs->getRGB(backdropColor, &backdropColorRGB);
+       /* paint the backdrop */
+@@ -1782,7 +1965,7 @@ CairoOutputDev::getFilterForSurface(cairo_surface_t *image,
+ 				    GBool interpolate)
+ {
+   if (interpolate)
+-    return CAIRO_FILTER_BILINEAR;
++    return CAIRO_FILTER_BEST;
+ 
+   int orig_width = cairo_image_surface_get_width (image);
+   int orig_height = cairo_image_surface_get_height (image);
+@@ -1802,7 +1985,7 @@ CairoOutputDev::getFilterForSurface(cairo_surface_t *image,
+   if (scaled_width / orig_width >= 4 || scaled_height / orig_height >= 4)
+ 	  return CAIRO_FILTER_NEAREST;
+ 
+-  return CAIRO_FILTER_BILINEAR;
++  return CAIRO_FILTER_BEST;
+ }
+ 
+ void CairoOutputDev::drawImageMask(GfxState *state, Object *ref, Stream *str,
+@@ -1879,46 +2062,44 @@ void CairoOutputDev::setSoftMaskFromImageMask(GfxState *state, Object *ref, Stre
+     delete imgStr;
+ 
+     invert_bit = invert ? 1 : 0;
+-    if (pix ^ invert_bit)
+-      return;
+-
+-    cairo_save (cairo);
+-    cairo_rectangle (cairo, 0., 0., width, height);
+-    cairo_fill (cairo);
+-    cairo_restore (cairo);
+-    if (cairo_shape) {
+-      cairo_save (cairo_shape);
+-      cairo_rectangle (cairo_shape, 0., 0., width, height);
+-      cairo_fill (cairo_shape);
+-      cairo_restore (cairo_shape);
++    if (!(pix ^ invert_bit)) {
++      cairo_save (cairo);
++      cairo_rectangle (cairo, 0., 0., width, height);
++      cairo_fill (cairo);
++      cairo_restore (cairo);
++      if (cairo_shape) {
++        cairo_save (cairo_shape);
++        cairo_rectangle (cairo_shape, 0., 0., width, height);
++        cairo_fill (cairo_shape);
++        cairo_restore (cairo_shape);
++      }
+     }
+-    return;
+-  }
++  } else {
++    cairo_push_group_with_content (cairo, CAIRO_CONTENT_ALPHA);
+ 
+-  cairo_push_group_with_content (cairo, CAIRO_CONTENT_ALPHA);
++    /* shape is 1.0 for painted areas, 0.0 for unpainted ones */
+ 
+-  /* shape is 1.0 for painted areas, 0.0 for unpainted ones */
++    cairo_matrix_t matrix;
++    cairo_get_matrix (cairo, &matrix);
++    //XXX: it is possible that we should only do sub pixel positioning if 
++    // we are rendering fonts */
++    if (!printing && prescaleImages && matrix.xy == 0.0 && matrix.yx == 0.0) {
++      drawImageMaskPrescaled(state, ref, str, width, height, invert, gFalse, inlineImg);
++    } else {
++      drawImageMaskRegular(state, ref, str, width, height, invert, gFalse, inlineImg);
++    }
+ 
+-  cairo_matrix_t matrix;
+-  cairo_get_matrix (cairo, &matrix);
+-  //XXX: it is possible that we should only do sub pixel positioning if 
+-  // we are rendering fonts */
+-  if (!printing && prescaleImages && matrix.xy == 0.0 && matrix.yx == 0.0) {
+-    drawImageMaskPrescaled(state, ref, str, width, height, invert, gFalse, inlineImg);
+-  } else {
+-    drawImageMaskRegular(state, ref, str, width, height, invert, gFalse, inlineImg);
+-  }
++    if (state->getFillColorSpace()->getMode() == csPattern) {
++      cairo_set_source_rgb (cairo, 1, 1, 1);
++      cairo_set_matrix (cairo, &mask_matrix);
++      cairo_mask (cairo, mask);
++    }
+ 
+-  if (state->getFillColorSpace()->getMode() == csPattern) {
+-    cairo_set_source_rgb (cairo, 1, 1, 1);
+-    cairo_set_matrix (cairo, &mask_matrix);
+-    cairo_mask (cairo, mask);
++    if (mask)
++      cairo_pattern_destroy (mask);
++    mask = cairo_pop_group (cairo);
+   }
+ 
+-  if (mask)
+-    cairo_pattern_destroy (mask);
+-  mask = cairo_pop_group (cairo);
+-
+   saveState(state);
+   double bbox[4] = {0,0,1,1}; // dummy
+   beginTransparencyGroup(state, bbox, state->getFillColorSpace(),
+@@ -2271,7 +2452,6 @@ void CairoOutputDev::drawImageMaskPrescaled(GfxState *state, Object *ref, Stream
+    * images with CAIRO_FILTER_NEAREST to look really bad */
+   cairo_pattern_set_filter (pattern,
+ 			    interpolate ? CAIRO_FILTER_BEST : CAIRO_FILTER_FAST);
+-  cairo_pattern_set_extend (pattern, CAIRO_EXTEND_PAD);
+ 
+   if (state->getFillColorSpace()->getMode() == csPattern) {
+     cairo_matrix_init_translate (&matrix, 0, scaledHeight);
+@@ -2300,6 +2480,11 @@ void CairoOutputDev::drawImageMaskPrescaled(GfxState *state, Object *ref, Stream
+ 
+     cairo_rectangle (cairo, 0., 0., scaledWidth, scaledHeight);
+     cairo_clip (cairo);
++    if (strokePathClip) {
++      cairo_push_group (cairo);
++      fillToStrokePathClip (state);
++      cairo_pop_group_to_source (cairo);
++    }
+     cairo_mask (cairo, pattern);
+ 
+     //cairo_get_matrix(cairo, &matrix);
+@@ -2572,7 +2757,7 @@ void CairoOutputDev::drawSoftMaskedImage(GfxState *state, Object *ref, Stream *s
+ 
+   cairo_surface_mark_dirty (image);
+ 
+-  setMimeData(str, ref, image);
++  setMimeData(state, str, ref, colorMap, image);
+ 
+   pattern = cairo_pattern_create_for_surface (image);
+   cairo_surface_destroy (image);
+@@ -2675,49 +2860,160 @@ GBool CairoOutputDev::getStreamData (Stream *str, char **buffer, int *length)
+   return gTrue;
+ }
+ 
+-void CairoOutputDev::setMimeData(Stream *str, Object *ref, cairo_surface_t *image)
++static GBool colorMapHasIdentityDecodeMap(GfxImageColorMap *colorMap)
++{
++  for (int i = 0; i < colorMap->getNumPixelComps(); i++) {
++    if (colorMap->getDecodeLow(i) != 0.0 || colorMap->getDecodeHigh(i) != 1.0)
++      return gFalse;
++  }
++  return gTrue;
++}
++
++#if CAIRO_VERSION >= CAIRO_VERSION_ENCODE(1, 11, 2)
++static cairo_status_t setMimeIdFromRef(cairo_surface_t *surface,
++				       const char *mime_type,
++				       const char *mime_id_prefix,
++				       Ref ref)
++{
++  GooString *mime_id;
++  char *idBuffer;
++  cairo_status_t status;
++
++  mime_id = new GooString;
++
++  if (mime_id_prefix)
++    mime_id->append(mime_id_prefix);
++
++  mime_id->appendf("{0:d}-{1:d}", ref.gen, ref.num);
++
++  idBuffer = copyString(mime_id->getCString());
++  status = cairo_surface_set_mime_data (surface, mime_type,
++                                        (const unsigned char *)idBuffer,
++                                        mime_id->getLength(),
++                                        gfree, idBuffer);
++  delete mime_id;
++  if (status)
++    gfree (idBuffer);
++  return status;
++}
++#endif
++
++#if CAIRO_VERSION >= CAIRO_VERSION_ENCODE(1, 14, 0)
++GBool CairoOutputDev::setMimeDataForJBIG2Globals(Stream  *str,
++                                                 cairo_surface_t *image)
++{
++  JBIG2Stream *jb2Str = static_cast<JBIG2Stream *>(str);
++  Object* globalsStr = jb2Str->getGlobalsStream();
++  char *globalsBuffer;
++  int globalsLength;
++
++  // nothing to do for JBIG2 stream without Globals
++  if (!globalsStr->isStream())
++    return gTrue;
++
++  if (setMimeIdFromRef(image, CAIRO_MIME_TYPE_JBIG2_GLOBAL_ID, NULL,
++                       jb2Str->getGlobalsStreamRef()))
++    return gFalse;
++
++  if (!getStreamData(globalsStr->getStream(), &globalsBuffer, &globalsLength))
++    return gFalse;
++
++  if (cairo_surface_set_mime_data (image, CAIRO_MIME_TYPE_JBIG2_GLOBAL,
++                                   (const unsigned char*)globalsBuffer,
++                                   globalsLength,
++                                   gfree, (void*)globalsBuffer))
++  {
++    gfree (globalsBuffer);
++    return gFalse;
++  }
++
++  return gTrue;
++}
++#endif
++
++void CairoOutputDev::setMimeData(GfxState *state, Stream *str, Object *ref,
++				 GfxImageColorMap *colorMap, cairo_surface_t *image)
+ {
+   char *strBuffer;
+   int len;
+   Object obj;
++  GfxColorSpace *colorSpace;
++  StreamKind  strKind = str->getKind();
++  const char *mime_type;
+ 
+-  if (!printing || !(str->getKind() == strDCT || str->getKind() == strJPX))
++  if (!printing)
+     return;
+ 
++  switch (strKind) {
++    case strDCT:
++      mime_type = CAIRO_MIME_TYPE_JPEG;
++      break;
++    case strJPX:
++      mime_type = CAIRO_MIME_TYPE_JP2;
++      break;
++#if CAIRO_VERSION >= CAIRO_VERSION_ENCODE(1, 14, 0)
++    case strJBIG2:
++      mime_type = CAIRO_MIME_TYPE_JBIG2;
++      break;
++#endif
++    default:
++      return;
++  }
++
++  obj = str->getDict()->lookup("ColorSpace");
++  colorSpace = GfxColorSpace::parse(NULL, &obj, this, state);
++
+   // colorspace in stream dict may be different from colorspace in jpx
+   // data
+-  if (str->getKind() == strJPX) {
+-    GBool hasColorSpace = !str->getDict()->lookup("ColorSpace", &obj)->isNull();
+-    obj.free();
+-    if (hasColorSpace)
+-      return;
++  if (strKind == strJPX && colorSpace)
++    return;
++
++  // only embed mime data for gray, rgb, and cmyk colorspaces.
++  if (colorSpace) {
++    GfxColorSpaceMode mode = colorSpace->getMode();
++    delete colorSpace;
++    switch (mode) {
++      case csDeviceGray:
++      case csCalGray:
++      case csDeviceRGB:
++      case csCalRGB:
++      case csDeviceCMYK:
++      case csICCBased:
++	break;
++
++      case csLab:
++      case csIndexed:
++      case csSeparation:
++      case csDeviceN:
++      case csPattern:
++	return;
++    }
+   }
+ 
++  if (!colorMapHasIdentityDecodeMap(colorMap))
++    return;
++
++#if CAIRO_VERSION >= CAIRO_VERSION_ENCODE(1, 14, 0)
++  if (strKind == strJBIG2 && !setMimeDataForJBIG2Globals(str, image))
++    return;
++#endif
++
+   if (getStreamData (str->getNextStream(), &strBuffer, &len)) {
+-    cairo_status_t st;
++    cairo_status_t status = CAIRO_STATUS_SUCCESS;
+ 
+ #if CAIRO_VERSION >= CAIRO_VERSION_ENCODE(1, 11, 2)
+     if (ref && ref->isRef()) {
+-      Ref imgRef = ref->getRef();
+-      GooString *surfaceId = new GooString("poppler-surface-");
+-      surfaceId->appendf("{0:d}-{1:d}", imgRef.gen, imgRef.num);
+-      char *idBuffer = copyString(surfaceId->getCString());
+-      st = cairo_surface_set_mime_data (image, CAIRO_MIME_TYPE_UNIQUE_ID,
+-                                        (const unsigned char *)idBuffer,
+-                                        surfaceId->getLength(),
+-                                        gfree, idBuffer);
+-      if (st)
+-        gfree(idBuffer);
+-      delete surfaceId;
++      status = setMimeIdFromRef(image, CAIRO_MIME_TYPE_UNIQUE_ID,
++                                "poppler-surface-", ref->getRef());
+     }
+ #endif
++    if (!status) {
++      status = cairo_surface_set_mime_data (image, mime_type,
++					    (const unsigned char *)strBuffer, len,
++					    gfree, strBuffer);
++    }
+ 
+-    st = cairo_surface_set_mime_data (image,
+-				      str->getKind() == strDCT ?
+-				      CAIRO_MIME_TYPE_JPEG : CAIRO_MIME_TYPE_JP2,
+-				      (const unsigned char *)strBuffer, len,
+-				      gfree, strBuffer);
+-    if (st)
++    if (status)
+       gfree (strBuffer);
+   }
+ }
+@@ -2730,6 +3026,7 @@ class RescaleDrawImage : public CairoRescaleBox {
+   GfxImageColorMap *colorMap;
+   int *maskColors;
+   int current_row;
++  GBool imageError;
+ 
+ public:
+   cairo_surface_t *getSourceImage(Stream *str,
+@@ -2746,6 +3043,7 @@ class RescaleDrawImage : public CairoRescaleBox {
+     maskColors = maskColorsA;
+     width = widthA;
+     current_row = -1;
++    imageError = gFalse;
+ 
+     /* TODO: Do we want to cache these? */
+     imgStr = new ImageStream(str, width,
+@@ -2824,7 +3122,7 @@ class RescaleDrawImage : public CairoRescaleBox {
+     return image;
+   }
+ 
+-  void getRow(int row_num, uint32_t *row_data) {
++  void getRow(int row_num, uint32_t *row_data) override {
+     int i;
+     Guchar *pix;
+ 
+@@ -2836,7 +3134,13 @@ class RescaleDrawImage : public CairoRescaleBox {
+       current_row++;
+     }
+ 
+-    if (lookup) {
++    if (unlikely(pix == NULL)) {
++      memset(row_data, 0, width*4);
++      if (!imageError) {
++	error(errInternal, -1, "Bad image stream");
++	imageError = gTrue;
++      }
++    } else if (lookup) {
+       Guchar *p = pix;
+       GfxRGB rgb;
+ 
+@@ -2902,7 +3206,7 @@ void CairoOutputDev::drawImage(GfxState *state, Object *ref, Stream *str,
+     filter = getFilterForSurface (image, interpolate);
+ 
+   if (!inlineImg) /* don't read stream twice if it is an inline image */
+-    setMimeData(str, ref, image);
++    setMimeData(state, str, ref, colorMap, image);
+ 
+   pattern = cairo_pattern_create_for_surface (image);
+   cairo_surface_destroy (image);
+@@ -2937,7 +3241,8 @@ void CairoOutputDev::drawImage(GfxState *state, Object *ref, Stream *str,
+   if (maskPattern) {
+     if (!printing)
+       cairo_clip (cairo);
+-    cairo_set_matrix (cairo, &mask_matrix);
++    if (mask)
++      cairo_set_matrix (cairo, &mask_matrix);
+     cairo_mask (cairo, maskPattern);
+   } else {
+     if (printing)
+@@ -3186,4 +3491,4 @@ void CairoImageOutputDev::drawMaskedImage(GfxState *state, Object *ref, Stream *
+     cairo_surface_destroy (surface);
+     cairo_destroy (cr);
+   }
+-}
++}
+\ No newline at end of file
+diff --git a/3rdparty/poppler/git/CairoOutputDev.h b/3rdparty/poppler/git/CairoOutputDev.h
+index f345e399..a61bd637 100644
+--- a/3rdparty/poppler/git/CairoOutputDev.h
++++ b/3rdparty/poppler/git/CairoOutputDev.h
+@@ -18,9 +18,11 @@
+ // Copyright (C) 2005, 2006 Kristian Høgsberg <krh@redhat.com>
+ // Copyright (C) 2005 Nickolay V. Shmyrev <nshmyrev@yandex.ru>
+ // Copyright (C) 2006-2011, 2013 Carlos Garcia Campos <carlosgc@gnome.org>
+-// Copyright (C) 2008, 2009, 2011-2013 Adrian Johnson <ajohnson@redneon.com>
++// Copyright (C) 2008, 2009, 2011-2016 Adrian Johnson <ajohnson@redneon.com>
+ // Copyright (C) 2008 Michael Vrable <mvrable@cs.ucsd.edu>
+ // Copyright (C) 2010-2013 Thomas Freitag <Thomas.Freitag@alfa.de>
++// Copyright (C) 2015 Suzuki Toshiya <mpsuzuki@hiroshima-u.ac.jp>
++// Copyright (C) 2016 Jason Crain <jason@aquaticape.us>
+ //
+ // To see a description of the changes please see the Changelog file that
+ // came with your tarball or type make ChangeLog if you are building from git
+@@ -95,114 +97,121 @@ class CairoOutputDev: public OutputDev {
+ 
+   // Does this device use upside-down coordinates?
+   // (Upside-down means (0,0) is the top left corner of the page.)
+-  virtual GBool upsideDown() { return gTrue; }
++  GBool upsideDown() override { return gTrue; }
+ 
+   // Does this device use drawChar() or drawString()?
+-  virtual GBool useDrawChar() { return gTrue; }
++  GBool useDrawChar() override { return gTrue; }
+ 
+   // Does this device use tilingPatternFill()?  If this returns false,
+   // tiling pattern fills will be reduced to a series of other drawing
+   // operations.
+-  virtual GBool useTilingPatternFill() { return gTrue; }
++  GBool useTilingPatternFill() override { return gTrue; }
+ 
+   // Does this device use functionShadedFill(), axialShadedFill(), and
+   // radialShadedFill()?  If this returns false, these shaded fills
+   // will be reduced to a series of other drawing operations.
+ #if CAIRO_VERSION >= CAIRO_VERSION_ENCODE(1, 12, 0)
+-  virtual GBool useShadedFills(int type) { return type <= 7; }
++  GBool useShadedFills(int type) override { return type <= 7; }
+ #else
+-  virtual GBool useShadedFills(int type) { return type < 4; }
++  GBool useShadedFills(int type) override { return type > 1 && type < 4; }
+ #endif
+ 
+   // Does this device use FillColorStop()?
+-  virtual GBool useFillColorStop() { return gTrue; }
++  GBool useFillColorStop() override { return gTrue; }
+ 
+   // Does this device use beginType3Char/endType3Char?  Otherwise,
+   // text in Type 3 fonts will be drawn with drawChar/drawString.
+-  virtual GBool interpretType3Chars() { return gFalse; }
++  GBool interpretType3Chars() override { return gFalse; }
++
++  // Does this device need to clip pages to the crop box even when the
++  // box is the crop box?
++  GBool needClipToCropBox() override { return gTrue; }
+ 
+   //----- initialization and control
+ 
+   // Start a page.
+-  virtual void startPage(int pageNum, GfxState *state, XRef *xref);
++  void startPage(int pageNum, GfxState *state, XRef *xref) override;
+ 
+   // End a page.
+-  virtual void endPage();
++  void endPage() override;
+ 
+   //----- save/restore graphics state
+-  virtual void saveState(GfxState *state);
+-  virtual void restoreState(GfxState *state);
++  void saveState(GfxState *state) override;
++  void restoreState(GfxState *state) override;
+ 
+   //----- update graphics state
+-  virtual void updateAll(GfxState *state);
+-  virtual void setDefaultCTM(double *ctm);
+-  virtual void updateCTM(GfxState *state, double m11, double m12,
+-			 double m21, double m22, double m31, double m32);
+-  virtual void updateLineDash(GfxState *state);
+-  virtual void updateFlatness(GfxState *state);
+-  virtual void updateLineJoin(GfxState *state);
+-  virtual void updateLineCap(GfxState *state);
+-  virtual void updateMiterLimit(GfxState *state);
+-  virtual void updateLineWidth(GfxState *state);
+-  virtual void updateFillColor(GfxState *state);
+-  virtual void updateStrokeColor(GfxState *state);
+-  virtual void updateFillOpacity(GfxState *state);
+-  virtual void updateStrokeOpacity(GfxState *state);
+-  virtual void updateFillColorStop(GfxState *state, double offset);
+-  virtual void updateBlendMode(GfxState *state);
++  void updateAll(GfxState *state) override;
++  void setDefaultCTM(double *ctm) override;
++  void updateCTM(GfxState *state, double m11, double m12,
++		 double m21, double m22, double m31, double m32) override;
++  void updateLineDash(GfxState *state) override;
++  void updateFlatness(GfxState *state) override;
++  void updateLineJoin(GfxState *state) override;
++  void updateLineCap(GfxState *state) override;
++  void updateMiterLimit(GfxState *state) override;
++  void updateLineWidth(GfxState *state) override;
++  void updateFillColor(GfxState *state) override;
++  void updateStrokeColor(GfxState *state) override;
++  void updateFillOpacity(GfxState *state) override;
++  void updateStrokeOpacity(GfxState *state) override;
++  void updateFillColorStop(GfxState *state, double offset) override;
++  void updateBlendMode(GfxState *state) override;
+ 
+   //----- update text state
+-  virtual void updateFont(GfxState *state);
++  void updateFont(GfxState *state) override;
+ 
+   //----- path painting
+-  virtual void stroke(GfxState *state);
+-  virtual void fill(GfxState *state);
+-  virtual void eoFill(GfxState *state);
+-  virtual void clipToStrokePath(GfxState *state);
+-  virtual GBool tilingPatternFill(GfxState *state, Gfx *gfx, Catalog *cat, Object *str,
+-				  double *pmat, int paintType, int tilingType, Dict *resDict,
+-				  double *mat, double *bbox,
+-				  int x0, int y0, int x1, int y1,
+-				  double xStep, double yStep);
+-  virtual GBool axialShadedFill(GfxState *state, GfxAxialShading *shading, double tMin, double tMax);
+-  virtual GBool axialShadedSupportExtend(GfxState *state, GfxAxialShading *shading);
+-  virtual GBool radialShadedFill(GfxState *state, GfxRadialShading *shading, double sMin, double sMax);
+-  virtual GBool radialShadedSupportExtend(GfxState *state, GfxRadialShading *shading);
++  void stroke(GfxState *state) override;
++  void fill(GfxState *state) override;
++  void eoFill(GfxState *state) override;
++  void clipToStrokePath(GfxState *state) override;
++  GBool tilingPatternFill(GfxState *state, Gfx *gfx, Catalog *cat, Object *str,
++			  double *pmat, int paintType, int tilingType, Dict *resDict,
++			  double *mat, double *bbox,
++			  int x0, int y0, int x1, int y1,
++			  double xStep, double yStep) override;
++#if CAIRO_VERSION >= CAIRO_VERSION_ENCODE(1, 12, 0)
++  GBool functionShadedFill(GfxState *state, GfxFunctionShading *shading) override;
++#endif
++  GBool axialShadedFill(GfxState *state, GfxAxialShading *shading, double tMin, double tMax) override;
++  GBool axialShadedSupportExtend(GfxState *state, GfxAxialShading *shading) override;
++  GBool radialShadedFill(GfxState *state, GfxRadialShading *shading, double sMin, double sMax) override;
++  GBool radialShadedSupportExtend(GfxState *state, GfxRadialShading *shading) override;
+ #if CAIRO_VERSION >= CAIRO_VERSION_ENCODE(1, 12, 0)
+-  virtual GBool gouraudTriangleShadedFill(GfxState *state, GfxGouraudTriangleShading *shading);
+-  virtual GBool patchMeshShadedFill(GfxState *state, GfxPatchMeshShading *shading);
++  GBool gouraudTriangleShadedFill(GfxState *state, GfxGouraudTriangleShading *shading) override;
++  GBool patchMeshShadedFill(GfxState *state, GfxPatchMeshShading *shading) override;
+ #endif
+ 
+   //----- path clipping
+-  virtual void clip(GfxState *state);
+-  virtual void eoClip(GfxState *state);
++  void clip(GfxState *state) override;
++  void eoClip(GfxState *state) override;
+ 
+   //----- text drawing
+-  void beginString(GfxState *state, GooString *s);
+-  void endString(GfxState *state);
++  void beginString(GfxState *state, GooString *s) override;
++  void endString(GfxState *state) override;
+   void drawChar(GfxState *state, double x, double y,
+ 		double dx, double dy,
+ 		double originX, double originY,
+-		CharCode code, int nBytes, Unicode *u, int uLen);
+-  void beginActualText(GfxState *state, GooString *text);
+-  void endActualText(GfxState *state);
++		CharCode code, int nBytes, Unicode *u, int uLen) override;
++  void beginActualText(GfxState *state, GooString *text) override;
++  void endActualText(GfxState *state) override;
+ 
+-  virtual GBool beginType3Char(GfxState *state, double x, double y,
+-			       double dx, double dy,
+-			       CharCode code, Unicode *u, int uLen);
+-  virtual void endType3Char(GfxState *state);
+-  virtual void beginTextObject(GfxState *state);
+-  virtual void endTextObject(GfxState *state);
++  GBool beginType3Char(GfxState *state, double x, double y,
++		       double dx, double dy,
++		       CharCode code, Unicode *u, int uLen) override;
++  void endType3Char(GfxState *state) override;
++  void beginTextObject(GfxState *state) override;
++  void endTextObject(GfxState *state) override;
+ 
+   //----- image drawing
+-  virtual void drawImageMask(GfxState *state, Object *ref, Stream *str,
+-			     int width, int height, GBool invert, GBool interpolate,
+-			     GBool inlineImg);
+-  virtual void setSoftMaskFromImageMask(GfxState *state,
+-					Object *ref, Stream *str,
+-					int width, int height, GBool invert,
+-					GBool inlineImg, double *baseMatrix);
+-  virtual void unsetSoftMaskFromImageMask(GfxState *state, double *baseMatrix);
++  void drawImageMask(GfxState *state, Object *ref, Stream *str,
++		     int width, int height, GBool invert, GBool interpolate,
++		     GBool inlineImg) override;
++  void setSoftMaskFromImageMask(GfxState *state,
++				Object *ref, Stream *str,
++				int width, int height, GBool invert,
++				GBool inlineImg, double *baseMatrix) override;
++  void unsetSoftMaskFromImageMask(GfxState *state, double *baseMatrix) override;
+   void drawImageMaskPrescaled(GfxState *state, Object *ref, Stream *str,
+ 			      int width, int height, GBool invert, GBool interpolate,
+ 			      GBool inlineImg);
+@@ -210,42 +219,42 @@ class CairoOutputDev: public OutputDev {
+ 			    int width, int height, GBool invert, GBool interpolate,
+ 			    GBool inlineImg);
+ 
+-  virtual void drawImage(GfxState *state, Object *ref, Stream *str,
+-			 int width, int height, GfxImageColorMap *colorMap,
+-			 GBool interpolate, int *maskColors, GBool inlineImg);
+-  virtual void drawSoftMaskedImage(GfxState *state, Object *ref, Stream *str,
+-				   int width, int height,
+-				   GfxImageColorMap *colorMap,
+-				   GBool interpolate,
+-				   Stream *maskStr,
+-				   int maskWidth, int maskHeight,
+-				   GfxImageColorMap *maskColorMap,
+-				   GBool maskInterpolate);
+-
+-  virtual void drawMaskedImage(GfxState *state, Object *ref, Stream *str,
+-			       int width, int height,
+-			       GfxImageColorMap *colorMap,
+-			       GBool interpolate,
+-			       Stream *maskStr,
+-			       int maskWidth, int maskHeight,
+-			       GBool maskInvert, GBool maskInterpolate);
++  void drawImage(GfxState *state, Object *ref, Stream *str,
++		 int width, int height, GfxImageColorMap *colorMap,
++		 GBool interpolate, int *maskColors, GBool inlineImg) override;
++  void drawSoftMaskedImage(GfxState *state, Object *ref, Stream *str,
++			   int width, int height,
++			   GfxImageColorMap *colorMap,
++			   GBool interpolate,
++			   Stream *maskStr,
++			   int maskWidth, int maskHeight,
++			   GfxImageColorMap *maskColorMap,
++			   GBool maskInterpolate) override;
++
++  void drawMaskedImage(GfxState *state, Object *ref, Stream *str,
++		       int width, int height,
++		       GfxImageColorMap *colorMap,
++		       GBool interpolate,
++		       Stream *maskStr,
++		       int maskWidth, int maskHeight,
++		       GBool maskInvert, GBool maskInterpolate) override;
+ 
+   //----- transparency groups and soft masks
+-  virtual void beginTransparencyGroup(GfxState * /*state*/, double * /*bbox*/,
++  void beginTransparencyGroup(GfxState * /*state*/, double * /*bbox*/,
+                                       GfxColorSpace * /*blendingColorSpace*/,
+                                       GBool /*isolated*/, GBool /*knockout*/,
+-                                      GBool /*forSoftMask*/);
+-  virtual void endTransparencyGroup(GfxState * /*state*/);
++                                      GBool /*forSoftMask*/) override;
++  void endTransparencyGroup(GfxState * /*state*/) override;
+   void popTransparencyGroup();
+-  virtual void paintTransparencyGroup(GfxState * /*state*/, double * /*bbox*/);
+-  virtual void setSoftMask(GfxState * /*state*/, double * /*bbox*/, GBool /*alpha*/,
+-                           Function * /*transferFunc*/, GfxColor * /*backdropColor*/);
+-  virtual void clearSoftMask(GfxState * /*state*/);
++  void paintTransparencyGroup(GfxState * /*state*/, double * /*bbox*/) override;
++  void setSoftMask(GfxState * /*state*/, double * /*bbox*/, GBool /*alpha*/,
++		   Function * /*transferFunc*/, GfxColor * /*backdropColor*/) override;
++  void clearSoftMask(GfxState * /*state*/) override;
+ 
+   //----- Type 3 font operators
+-  virtual void type3D0(GfxState *state, double wx, double wy);
+-  virtual void type3D1(GfxState *state, double wx, double wy,
+-      double llx, double lly, double urx, double ury);
++  void type3D0(GfxState *state, double wx, double wy) override;
++  void type3D1(GfxState *state, double wx, double wy,
++	       double llx, double lly, double urx, double ury) override;
+ 
+   //----- special access
+   
+@@ -257,6 +266,7 @@ class CairoOutputDev: public OutputDev {
+   void setCairo (cairo_t *cr);
+   void setTextPage (TextPage *text);
+   void setPrinting (GBool printing) { this->printing = printing; needFontUpdate = gTrue; }
++  void setAntialias(cairo_antialias_t antialias);
+ 
+   void setInType3Char(GBool inType3Char) { this->inType3Char = inType3Char; }
+   void getType3GlyphWidth (double *wx, double *wy) { *wx = t3_glyph_wx; *wy = t3_glyph_wy; }
+@@ -272,11 +282,14 @@ class CairoOutputDev: public OutputDev {
+   cairo_filter_t getFilterForSurface(cairo_surface_t *image,
+ 				     GBool interpolate);
+   GBool getStreamData (Stream *str, char **buffer, int *length);
+-  // pdf2htmlEX: make setMimeData virtual, we need to override it
+-  virtual 
+-  void setMimeData(Stream *str, Object *ref, cairo_surface_t *image);
++  void setMimeData(GfxState *state, Stream *str, Object *ref,
++		   GfxImageColorMap *colorMap, cairo_surface_t *image);
+   void fillToStrokePathClip(GfxState *state);
+   void alignStrokeCoords(GfxSubpath *subpath, int i, double *x, double *y);
++#if CAIRO_VERSION >= CAIRO_VERSION_ENCODE(1, 14, 0)
++  GBool setMimeDataForJBIG2Globals (Stream *str, cairo_surface_t *image);
++#endif
++  static void setContextAntialias(cairo_t *cr, cairo_antialias_t antialias);
+ 
+   GfxRGB fill_color, stroke_color;
+   cairo_pattern_t *fill_pattern, *stroke_pattern;
+@@ -298,6 +311,7 @@ class CairoOutputDev: public OutputDev {
+     cairo_line_cap_t cap;
+     cairo_line_join_t join;
+     double miter;
++    int ref_count;
+   } *strokePathClip;
+ 
+   PDFDoc *doc;			// the current document
+@@ -313,6 +327,7 @@ class CairoOutputDev: public OutputDev {
+   GBool needFontUpdate;                // set when the font needs to be updated
+   GBool printing;
+   GBool use_show_text_glyphs;
++  GBool text_matrix_valid;
+   cairo_surface_t *surface;
+   cairo_glyph_t *glyphs;
+   int glyphCount;
+@@ -327,7 +342,7 @@ class CairoOutputDev: public OutputDev {
+   double t3_glyph_wx, t3_glyph_wy;
+   GBool t3_glyph_has_bbox;
+   double t3_glyph_bbox[4];
+-
++  cairo_antialias_t antialias;
+   GBool prescaleImages;
+ 
+   TextPage *text;		// text for the current page
+@@ -373,118 +388,118 @@ class CairoImageOutputDev: public CairoOutputDev {
+ 
+   // Does this device use upside-down coordinates?
+   // (Upside-down means (0,0) is the top left corner of the page.)
+-  virtual GBool upsideDown() { return gTrue; }
++  GBool upsideDown() override { return gTrue; }
+ 
+   // Does this device use drawChar() or drawString()?
+-  virtual GBool useDrawChar() { return gFalse; }
++  GBool useDrawChar() override { return gFalse; }
+ 
+   // Does this device use tilingPatternFill()?  If this returns false,
+   // tiling pattern fills will be reduced to a series of other drawing
+   // operations.
+-  virtual GBool useTilingPatternFill() { return gTrue; }
++  GBool useTilingPatternFill() override { return gTrue; }
+ 
+   // Does this device use functionShadedFill(), axialShadedFill(), and
+   // radialShadedFill()?  If this returns false, these shaded fills
+   // will be reduced to a series of other drawing operations.
+ #if CAIRO_VERSION >= CAIRO_VERSION_ENCODE(1, 11, 2)
+-  virtual GBool useShadedFills(int type) { return type <= 7; }
++  GBool useShadedFills(int type) override { return type <= 7; }
+ #else
+-  virtual GBool useShadedFills(int type) { return type < 4; }
++  GBool useShadedFills(int type) override { return type < 4; }
+ #endif
+ 
+   // Does this device use FillColorStop()?
+-  virtual GBool useFillColorStop() { return gFalse; }
++  GBool useFillColorStop() override { return gFalse; }
+ 
+   // Does this device use beginType3Char/endType3Char?  Otherwise,
+   // text in Type 3 fonts will be drawn with drawChar/drawString.
+-  virtual GBool interpretType3Chars() { return gFalse; }
++  GBool interpretType3Chars() override { return gFalse; }
+ 
+   // Does this device need non-text content?
+-  virtual GBool needNonText() { return gTrue; }
++  GBool needNonText() override { return gTrue; }
+ 
+   //----- save/restore graphics state
+-  virtual void saveState(GfxState *state) { }
+-  virtual void restoreState(GfxState *state) { }
++  void saveState(GfxState *state) override { }
++  void restoreState(GfxState *state) override { }
+ 
+   //----- update graphics state
+-  virtual void updateAll(GfxState *state) { }
+-  virtual void setDefaultCTM(double *ctm) { }
+-  virtual void updateCTM(GfxState *state, double m11, double m12,
+-				 double m21, double m22, double m31, double m32) { }
+-  virtual void updateLineDash(GfxState *state) { }
+-  virtual void updateFlatness(GfxState *state) { }
+-  virtual void updateLineJoin(GfxState *state) { }
+-  virtual void updateLineCap(GfxState *state) { }
+-  virtual void updateMiterLimit(GfxState *state) { }
+-  virtual void updateLineWidth(GfxState *state) { }
+-  virtual void updateFillColor(GfxState *state) { }
+-  virtual void updateStrokeColor(GfxState *state) { }
+-  virtual void updateFillOpacity(GfxState *state) { }
+-  virtual void updateStrokeOpacity(GfxState *state) { }
+-  virtual void updateBlendMode(GfxState *state) { }
++  void updateAll(GfxState *state) override { }
++  void setDefaultCTM(double *ctm) override { }
++  void updateCTM(GfxState *state, double m11, double m12,
++		 double m21, double m22, double m31, double m32) override { }
++  void updateLineDash(GfxState *state) override { }
++  void updateFlatness(GfxState *state) override { }
++  void updateLineJoin(GfxState *state) override { }
++  void updateLineCap(GfxState *state) override { }
++  void updateMiterLimit(GfxState *state) override { }
++  void updateLineWidth(GfxState *state) override { }
++  void updateFillColor(GfxState *state) override { }
++  void updateStrokeColor(GfxState *state) override { }
++  void updateFillOpacity(GfxState *state) override { }
++  void updateStrokeOpacity(GfxState *state) override { }
++  void updateBlendMode(GfxState *state) override { }
+ 
+   //----- update text state
+-  virtual void updateFont(GfxState *state) { }
++  void updateFont(GfxState *state) override { }
+ 
+   //----- path painting
+-  virtual void stroke(GfxState *state) { }
+-  virtual void fill(GfxState *state) { }
+-  virtual void eoFill(GfxState *state) { }
+-  virtual void clipToStrokePath(GfxState *state) { }
+-  virtual GBool tilingPatternFill(GfxState *state, Gfx *gfx, Catalog *cat, Object *str,
+-				  double *pmat, int paintType, int tilingType, Dict *resDict,
+-				  double *mat, double *bbox,
+-				  int x0, int y0, int x1, int y1,
+-				  double xStep, double yStep) { return gTrue; }
+-  virtual GBool axialShadedFill(GfxState *state,
+-				GfxAxialShading *shading,
+-				double tMin, double tMax) { return gTrue; }
+-  virtual GBool radialShadedFill(GfxState *state,
+-				 GfxRadialShading *shading,
+-				 double sMin, double sMax) { return gTrue; }
++  void stroke(GfxState *state) override { }
++  void fill(GfxState *state) override { }
++  void eoFill(GfxState *state) override { }
++  void clipToStrokePath(GfxState *state) override { }
++  GBool tilingPatternFill(GfxState *state, Gfx *gfx, Catalog *cat, Object *str,
++			  double *pmat, int paintType, int tilingType, Dict *resDict,
++			  double *mat, double *bbox,
++			  int x0, int y0, int x1, int y1,
++			  double xStep, double yStep) override { return gTrue; }
++  GBool axialShadedFill(GfxState *state,
++			GfxAxialShading *shading,
++			double tMin, double tMax) override { return gTrue; }
++  GBool radialShadedFill(GfxState *state,
++			 GfxRadialShading *shading,
++			 double sMin, double sMax) override { return gTrue; }
+ 
+   //----- path clipping
+-  virtual void clip(GfxState *state) { }
+-  virtual void eoClip(GfxState *state) { }
++  void clip(GfxState *state) override { }
++  void eoClip(GfxState *state) override { }
+ 
+   //----- image drawing
+-  virtual void drawImageMask(GfxState *state, Object *ref, Stream *str,
+-			     int width, int height, GBool invert,
+-			     GBool interpolate, GBool inlineImg);
+-  virtual void drawImage(GfxState *state, Object *ref, Stream *str,
+-			 int width, int height, GfxImageColorMap *colorMap,
+-			 GBool interpolate, int *maskColors, GBool inlineImg);
+-  virtual void drawSoftMaskedImage(GfxState *state, Object *ref, Stream *str,
+-				   int width, int height,
+-				   GfxImageColorMap *colorMap,
+-				   GBool interpolate,
+-				   Stream *maskStr,
+-				   int maskWidth, int maskHeight,
+-				   GfxImageColorMap *maskColorMap,
+-				   GBool maskInterpolate);
+-  virtual void drawMaskedImage(GfxState *state, Object *ref, Stream *str,
+-			       int width, int height,
+-			       GfxImageColorMap *colorMap,
+-			       GBool interpolate,
+-			       Stream *maskStr,
+-			       int maskWidth, int maskHeight,
+-			       GBool maskInvert, GBool maskInterpolate);
+-  virtual void setSoftMaskFromImageMask(GfxState *state, Object *ref, Stream *str,
+-                                        int width, int height, GBool invert,
+-                                        GBool inlineImg, double *baseMatrix);
+-  virtual void unsetSoftMaskFromImageMask(GfxState *state, double *baseMatrix) {}
++  void drawImageMask(GfxState *state, Object *ref, Stream *str,
++		     int width, int height, GBool invert,
++		     GBool interpolate, GBool inlineImg) override;
++  void drawImage(GfxState *state, Object *ref, Stream *str,
++		 int width, int height, GfxImageColorMap *colorMap,
++		 GBool interpolate, int *maskColors, GBool inlineImg) override;
++  void drawSoftMaskedImage(GfxState *state, Object *ref, Stream *str,
++			   int width, int height,
++			   GfxImageColorMap *colorMap,
++			   GBool interpolate,
++			   Stream *maskStr,
++			   int maskWidth, int maskHeight,
++			   GfxImageColorMap *maskColorMap,
++			   GBool maskInterpolate) override;
++  void drawMaskedImage(GfxState *state, Object *ref, Stream *str,
++		       int width, int height,
++		       GfxImageColorMap *colorMap,
++		       GBool interpolate,
++		       Stream *maskStr,
++		       int maskWidth, int maskHeight,
++		       GBool maskInvert, GBool maskInterpolate) override;
++  void setSoftMaskFromImageMask(GfxState *state, Object *ref, Stream *str,
++				int width, int height, GBool invert,
++				GBool inlineImg, double *baseMatrix) override;
++  void unsetSoftMaskFromImageMask(GfxState *state, double *baseMatrix) override {}
+ 
+ 
+   //----- transparency groups and soft masks
+-  virtual void beginTransparencyGroup(GfxState * /*state*/, double * /*bbox*/,
+-				      GfxColorSpace * /*blendingColorSpace*/,
+-				      GBool /*isolated*/, GBool /*knockout*/,
+-				      GBool /*forSoftMask*/) {}
+-  virtual void endTransparencyGroup(GfxState * /*state*/) {}
+-  virtual void paintTransparencyGroup(GfxState * /*state*/, double * /*bbox*/) {}
+-  virtual void setSoftMask(GfxState * /*state*/, double * /*bbox*/, GBool /*alpha*/,
+-			   Function * /*transferFunc*/, GfxColor * /*backdropColor*/) {}
+-  virtual void clearSoftMask(GfxState * /*state*/) {}
++  void beginTransparencyGroup(GfxState * /*state*/, double * /*bbox*/,
++			      GfxColorSpace * /*blendingColorSpace*/,
++			      GBool /*isolated*/, GBool /*knockout*/,
++			      GBool /*forSoftMask*/) override {}
++  void endTransparencyGroup(GfxState * /*state*/) override {}
++  void paintTransparencyGroup(GfxState * /*state*/, double * /*bbox*/) override {}
++  void setSoftMask(GfxState * /*state*/, double * /*bbox*/, GBool /*alpha*/,
++		   Function * /*transferFunc*/, GfxColor * /*backdropColor*/) override {}
++  void clearSoftMask(GfxState * /*state*/) override {}
+ 
+   //----- Image list
+   // By default images are not rendred
+@@ -506,4 +521,4 @@ class CairoImageOutputDev: public CairoOutputDev {
+   void *imgDrawCbkData;
+ };
+ 
+-#endif
++#endif
+\ No newline at end of file
+diff --git a/3rdparty/poppler/git/CairoRescaleBox.cc b/3rdparty/poppler/git/CairoRescaleBox.cc
+index 3d196892..37c6c890 100644
+--- a/3rdparty/poppler/git/CairoRescaleBox.cc
++++ b/3rdparty/poppler/git/CairoRescaleBox.cc
+@@ -51,6 +51,7 @@
+ #include <stdlib.h>
+ #include <math.h>
+ #include "goo/gmem.h"
++//#include "goo/gtypes_p.h"
+ #include "CairoRescaleBox.h"
+ 
+ 
+@@ -374,4 +375,4 @@ GBool CairoRescaleBox::downScaleImage(unsigned orig_width, unsigned orig_height,
+   free (scanline);
+ 
+   return retval;
+-}
++}
+\ No newline at end of file
+diff --git a/3rdparty/poppler/git/CairoRescaleBox.h b/3rdparty/poppler/git/CairoRescaleBox.h
+index 072e8a9c..b4117b8f 100644
+--- a/3rdparty/poppler/git/CairoRescaleBox.h
++++ b/3rdparty/poppler/git/CairoRescaleBox.h
+@@ -58,4 +58,4 @@ class CairoRescaleBox {
+ 
+ };
+ 
+-#endif /* CAIRO_RESCALE_BOX_H */
++#endif /* CAIRO_RESCALE_BOX_H */
+\ No newline at end of file
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4cad8476..d7589225 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -81,7 +81,7 @@ endif()
+ if(CYGWIN)
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++0x")
+ else()
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -pthread")
+ endif()
+ 
+ # check the C++11 features we need
+diff --git a/src/BackgroundRenderer/CairoBackgroundRenderer.cc b/src/BackgroundRenderer/CairoBackgroundRenderer.cc
+index 1ce6eacc..8266a011 100644
+--- a/src/BackgroundRenderer/CairoBackgroundRenderer.cc
++++ b/src/BackgroundRenderer/CairoBackgroundRenderer.cc
+@@ -235,11 +235,10 @@ string CairoBackgroundRenderer::build_bitmap_path(int id)
+     return string(html_renderer->str_fmt("%s/o%d.jpg", param.dest_dir.c_str(), id));
+ }
+ // Override CairoOutputDev::setMimeData() and dump bitmaps in SVG to external files.
+-void CairoBackgroundRenderer::setMimeData(Stream *str, Object *ref, cairo_surface_t *image)
+-{
++void CairoBackgroundRenderer::setMimeData(GfxState *state, Stream *str, Object *ref, GfxImageColorMap *colorMap, cairo_surface_t *image) {
+     if (param.svg_embed_bitmap)
+     {
+-        CairoOutputDev::setMimeData(str, ref, image);
++        CairoOutputDev::setMimeData(state, str, ref, colorMap, image);
+         return;
+     }
+ 
+@@ -263,21 +262,20 @@ void CairoBackgroundRenderer::setMimeData(Stream *str, Object *ref, cairo_surfac
+     //
+     // In PDF, jpeg stream objects can also specify other color spaces like DeviceN and Separation,
+     // It is also not safe to dump them directly.
+-    Object obj;
+-    str->getDict()->lookup("ColorSpace", &obj);
++    Object obj = str->getDict()->lookup("ColorSpace");
+     if (!obj.isName() || (strcmp(obj.getName(), "DeviceRGB") && strcmp(obj.getName(), "DeviceGray")) )
+     {
+-        obj.free();
++        //obj.free();
+         return;
+     }
+-    obj.free();
+-    str->getDict()->lookup("Decode", &obj);
++    //obj.free();
++    obj = str->getDict()->lookup("Decode");
+     if (obj.isArray())
+     {
+-        obj.free();
++        //obj.free();
+         return;
+     }
+-    obj.free();
++    //obj.free();
+ 
+     int imgId = ref->getRef().num;
+     auto uri = strdup((char*) html_renderer->str_fmt("o%d.jpg", imgId));
+diff --git a/src/BackgroundRenderer/CairoBackgroundRenderer.h b/src/BackgroundRenderer/CairoBackgroundRenderer.h
+index 4ed9c863..e4e92d26 100644
+--- a/src/BackgroundRenderer/CairoBackgroundRenderer.h
++++ b/src/BackgroundRenderer/CairoBackgroundRenderer.h
+@@ -51,7 +51,7 @@ class CairoBackgroundRenderer : public BackgroundRenderer, CairoOutputDev
+   void updateRender(GfxState *state);
+ 
+ protected:
+-  virtual void setMimeData(Stream *str, Object *ref, cairo_surface_t *image);
++  virtual void setMimeData(GfxState *state, Stream *str, Object *ref, GfxImageColorMap *colorMap, cairo_surface_t *image);
+ 
+ protected:
+   HTMLRenderer * html_renderer;
+diff --git a/src/HTMLRenderer/font.cc b/src/HTMLRenderer/font.cc
+index 0f4680ab..c6c292cd 100644
+--- a/src/HTMLRenderer/font.cc
++++ b/src/HTMLRenderer/font.cc
+@@ -66,10 +66,10 @@ string HTMLRenderer::dump_embedded_font (GfxFont * font, FontInfo & info)
+ 
+         auto * id = font->getID();
+ 
+-        Object ref_obj;
+-        ref_obj.initRef(id->num, id->gen);
+-        ref_obj.fetch(xref, &font_obj);
+-        ref_obj.free();
++        Object ref_obj(id->num, id->gen);
++        //ref_obj.initRef(id->num, id->gen);
++        font_obj = ref_obj.fetch(xref);
++        //ref_obj.free();
+ 
+         if(!font_obj.isDict())
+         {
+@@ -78,7 +78,8 @@ string HTMLRenderer::dump_embedded_font (GfxFont * font, FontInfo & info)
+         }
+ 
+         Dict * dict = font_obj.getDict();
+-        if(dict->lookup("DescendantFonts", &font_obj2)->isArray())
++        font_obj2 = dict->lookup("DescendantFonts");
++        if(font_obj2.isArray())
+         {
+             if(font_obj2.arrayGetLength() == 0)
+             {
+@@ -86,27 +87,31 @@ string HTMLRenderer::dump_embedded_font (GfxFont * font, FontInfo & info)
+             }
+             else
+             {
+-                if(font_obj2.arrayGetLength() > 1)
++                if(font_obj2.arrayGetLength() > 1) {
+                     cerr << "TODO: multiple entries in DescendantFonts array" << endl;
+-
+-                if(font_obj2.arrayGet(0, &obj2)->isDict())
++                }
++                
++                obj2 = font_obj2.arrayGet(0);
++                if(obj2.isDict())
+                 {
+                     dict = obj2.getDict();
+                 }
+             }
+         }
+ 
+-        if(!dict->lookup("FontDescriptor", &fontdesc_obj)->isDict())
++        fontdesc_obj = dict->lookup("FontDescriptor");
++        if(!fontdesc_obj.isDict())
+         {
+             cerr << "Cannot find FontDescriptor " << endl;
+             throw 0;
+         }
+ 
+         dict = fontdesc_obj.getDict();
+-
+-        if(dict->lookup("FontFile3", &obj)->isStream())
++        obj = dict->lookup("FontFile3");
++        if(obj.isStream())
+         {
+-            if(obj.streamGetDict()->lookup("Subtype", &obj1)->isName())
++            obj1 = obj.streamGetDict()->lookup("Subtype");
++            if(obj1.isName())
+             {
+                 subtype = obj1.getName();
+                 if(subtype == "Type1C")
+@@ -132,19 +137,19 @@ string HTMLRenderer::dump_embedded_font (GfxFont * font, FontInfo & info)
+                 cerr << "Invalid subtype in font descriptor" << endl;
+                 throw 0;
+             }
+-        }
+-        else if (dict->lookup("FontFile2", &obj)->isStream())
+-        { 
+-            suffix = ".ttf";
+-        }
+-        else if (dict->lookup("FontFile", &obj)->isStream())
+-        {
+-            suffix = ".pfa";
+-        }
+-        else
+-        {
+-            cerr << "Cannot find FontFile for dump" << endl;
+-            throw 0;
++        } else {
++            obj = dict->lookup("FontFile2");
++            if (obj.isStream()) {
++                suffix = ".ttf";
++            } else {
++                obj = dict->lookup("FontFile");
++                if (obj.isStream()) {
++                    suffix = ".pfa";
++                } else {
++                    cerr << "Cannot find FontFile for dump" << endl;
++                    throw 0;
++                }
++            }
+         }
+ 
+         if(suffix == "")
+@@ -175,13 +180,13 @@ string HTMLRenderer::dump_embedded_font (GfxFont * font, FontInfo & info)
+         cerr << "Something wrong when trying to dump font " << hex << fn_id << dec << endl;
+     }
+ 
+-    obj2.free();
+-    obj1.free();
+-    obj.free();
++    //obj2.free();
++    //obj1.free();
++    //obj.free();
+ 
+-    fontdesc_obj.free();
+-    font_obj2.free();
+-    font_obj.free();
++    //fontdesc_obj.free();
++    //font_obj2.free();
++    //font_obj.free();
+ 
+     return filepath;
+ }
