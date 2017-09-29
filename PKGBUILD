@@ -3,7 +3,7 @@
 _basename=gst-plugins-bad
 pkgname="lib32-$_basename"
 pkgver=1.12.1
-pkgrel=3
+pkgrel=4
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=('x86_64')
@@ -38,6 +38,7 @@ prepare() {
   git submodule update
 
   sed -i 's/cmu_us_kal/&16/g' configure.ac ext/flite/gstflitetestsrc.c
+  sed -i 's/openjpeg-2.1/openjpeg-2.2/' -i ext/openjpeg/gstopenjpeg.h
 
   NOCONFIGURE=1 ./autogen.sh
 }
