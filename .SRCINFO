@@ -1,0 +1,24 @@
+pkgbase = audex-git
+	pkgdesc = Audex is an audio grabber tool for CD-ROM drives built with KDE Frameworks.
+	pkgver = r139.bf5c364
+	pkgrel = 1
+	url = git://anongit.kde.org/audex.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libkcddb
+	depends = cdparanoia
+	depends = plasma-framework
+	optdepends = libvorbis
+	optdepends = flac
+	optdepends = lame
+	optdepends = faac
+	optdepends = python-eyed3
+	provides = audex
+	conflicts = audex
+	source = git+git://anongit.kde.org/audex.git
+	sha256sums = SKIP
+
+pkgname = audex-git
+

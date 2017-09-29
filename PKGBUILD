@@ -1,0 +1,43 @@
+ 
+# Maintainer: Jan Neumann <neum dot ja at gmail dot com>
+
+
+pkgname=audex-git
+gitname=audex
+pkgver=r139.bf5c364
+pkgrel=1
+pkgdesc='Audex is an audio grabber tool for CD-ROM drives built with KDE Frameworks.'
+arch=('i686' 'x86_64')
+url='git://anongit.kde.org/audex.git'
+license=('GPL')
+depends=('libkcddb' 'cdparanoia' 'plasma-framework')
+optdepends=('libvorbis' 'flac' 'lame' 'faac' 'python-eyed3')
+makedepends=('git')
+conflicts=('audex')
+provides=('audex')
+source=("git+${url}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd ${gitname}
+
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+ 
+ 
+  cd ${gitname}
+  mkdir build && cd build
+
+  
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DKDE_L10N_BRANCH=trunk -DKDE_L10N_AUTO_TRANSLATIONS=ON -DCMAKE_BUILD_TYPE=Release ..
+  make fetch-translations
+
+}
+
+package() {
+  cd ${gitname}/build
+
+  make DESTDIR=${pkgdir} install
+}
