@@ -1,20 +1,20 @@
-# Maintainer: Jesús Castro (51v4n) <51v4n@openmailbox.org>
-
+# Maintainer: Jesús Castro <x51v4n@gmail.com>
 pkgname=otf-san-francisco
-pkgver=1.1
+pkgver=1.0
 pkgrel=3
 pkgdesc='The system font for macOS, iOS, watchOS, and tvOS'
 arch=('any')
 license=('custom')
-url='https://developer.apple.com/fonts/' 
-depends=('fontconfig' 'xorg-font-utils')
-source=("https://developer.apple.com/fonts/downloads/SFPro.zip")
-sha256sums=('1235856837d0123a4ea3f434933381c90f808e0e05e04af965c873a5d7ce3bd6')
+url='https://developer.apple.com/fonts/'
+depends=('fontconfig' 
+		 'xorg-font-utils')
+source=(SFPro-1.0.zip::https://developer.apple.com/fonts/downloads/SFPro.zip)
+md5sums=('c816b5ff4a82103fc6ff39674a4233d6')
 
 package() {
   cd "$srcdir/SFPro"
 
-#  mkdir pkg
+  mkdir pkg
   bsdtar xvPf 'San Francisco Pro.pkg' || true
   bsdtar xvPf 'San Francisco Pro.pkg/Payload'
 
