@@ -7,12 +7,13 @@ pkgbase = adg-gtk-theme
 	license = GPL
 	makedepends = sassc
 	makedepends = git
+	makedepends = libarchive
 	depends = gtk-engine-murrine
 	optdepends = optipng
 	optdepends = inkscape
 	options = !emptydirs
 	source = adg-gtk-theme-3.22.3.tar.gz::https://github.com/leipero/adg-gtk-theme/archive/3.22.3.tar.gz
-	sha256sums = 3956c7cf438d19245f63f4a03b6a393e070ef95dc826b8e029d2ac1793c5d304
+	sha256sums = a47c0af0a88ccb062b81378adfadfceeaab8ffd5b642686b46ff13fe76fa6f1c
 
 pkgname = adg-gtk-theme
 

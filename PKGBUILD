@@ -8,26 +8,24 @@ url="https://github.com/leipero/adg-gtk-theme"
 arch=(any)
 license=(GPL)
 depends=('gtk-engine-murrine')
-makedepends=('sassc' 'git')
+makedepends=('sassc' 'git' 'libarchive')
 optdepends=('optipng' 'inkscape')
 options=(!emptydirs)
-source=("adg-gtk-theme-$pkgver.tar.gz"::"https://github.com/leipero/adg-gtk-theme/archive/$pkgver.tar.gz")
-sha256sums=('3956c7cf438d19245f63f4a03b6a393e070ef95dc826b8e029d2ac1793c5d304')
+source=("adg-gtk-theme-$pkgver.tar.gz"::"https://github.com/leipero/adg-gtk-theme/archive/3.22.3.tar.gz")
+sha256sums=('a47c0af0a88ccb062b81378adfadfceeaab8ffd5b642686b46ff13fe76fa6f1c')
 
 build() {
 	cd "$pkgname-$pkgver"
 
 	./configure
 	make
-	make install
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -dm755 "$pkgdir/usr/share/themes"
+	install -dm755 "$pkgdir/usr/share"
 
-	cp -r "$srcdir"/$pkgname-$pkgver/themes/ "$pkgdir/usr/share"
+	cp -r "$srcdir"/$pkgname-$pkgver/build-aux/themes "$pkgdir/usr/share"
 	make DESTDIR="$pkgdir/"
-	make uninstall
 	make clean
 }
