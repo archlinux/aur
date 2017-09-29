@@ -3,13 +3,13 @@
 pkgname=lib32-imagemagick
 _basename=imagemagick
 pkgver=6.9.9.15
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (32-bit)"
 arch=('x86_64')
 url="http://www.imagemagick.org/"
 license=('custom')
 depends=('lib32-libltdl' 'lib32-lcms2' 'lib32-libxt' 'lib32-fontconfig'
-         'lib32-libxext' 'lib32-liblqr' 'lib32-ocl-icd')
+         'lib32-libxext' 'lib32-liblqr' 'lib32-ocl-icd' 'lib32-libraqm')
 makedepends=('lib32-libltdl' 'lib32-lcms2' 'lib32-libxt' 'lib32-fontconfig'
              'lib32-libxext' 'ghostscript' 'lib32-openexr' 'lib32-libwmf'
              'lib32-librsvg' 'lib32-libxml2' 'lib32-liblqr' 'lib32-openjpeg2' 'lib32-libraw'
