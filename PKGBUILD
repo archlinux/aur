@@ -4,7 +4,7 @@
 
 pkgname=gtk2-patched-filechooser-icon-view
 pkgver=2.24.31
-_patchver=bfae699e7bd6ee70948cf056c34021b875a4b153
+_patchver=0c714824e9baedbb0fce9bb0940b19d073771a77
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="GTK2 patched with ahodesuka's filechooser-icon-view patch."
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
             'b77a427df55a14182c10ad7e683b4d662df2846fcd38df2aa8918159d6be3ae2'
             '9656a1efc798da1ac2dae94e921ed0f72719bd52d4d0138f305b993f778f7758'
             'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558'
-            'cd2e48443de19377c802b74ec024d6d8fefacb1539ed51cf643250b889877b27')
+            '91e5c18be6dffc05af41561b38934259494bc14041a9c1d91b0b9b1a1dcd2be5')
 pkgver() {
     cd gtk+
     git describe --tags | sed 's/-/+/g'
