@@ -51,7 +51,7 @@ source=("${_pkgname}.desktop"
 
 md5sums=('9178c9325979377f7ec57569b15fcb61'
 	'494afbfa60fb4ce21840244cc3f7208c'
-	'01b9fc74fb2ecb96cfa8a1fce1866bb8')
+	'120910366e4094c652fe7c4ee55abbca')
 md5sums_i686=('SKIP'
 	'SKIP')
 md5sums_x86_64=('SKIP'
