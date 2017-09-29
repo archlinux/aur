@@ -1,4 +1,5 @@
 #!/bin/sh
-java -Dawt.useSystemAAFontSettings=on \
+java -Djavafx.embed.singleThread=true \
+        -Dawt.useSystemAAFontSettings=on \
         -cp /opt/bluej/bluej.jar bluej.Boot \
         "$@"
