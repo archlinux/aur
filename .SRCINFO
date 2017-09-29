@@ -1,7 +1,7 @@
 pkgbase = betcon
 	pkgdesc = Sports betting management
-	pkgver = 1.5.2
-	pkgrel = 3
+	pkgver = 1.6
+	pkgrel = 1
 	url = https://github.com/soker90/betcon
 	arch = any
 	license = GPLv3
@@ -10,8 +10,9 @@ pkgbase = betcon
 	depends = python-pyqt5
 	depends = sqlite
 	depends = python-pyexcel-ods
-	source = https://github.com/soker90/betcon/archive/1.5.2.tar.gz
-	md5sums = 99f4da48bf9ba9cba4bd53c1e1a76e90
+	depends = python-yaml
+	source = https://github.com/soker90/betcon/archive/1.6.tar.gz
+	md5sums = f1284030540fdb2fe99c2ba00ee85818
 
 pkgname = betcon
 
