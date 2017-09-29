@@ -1,7 +1,8 @@
-# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# Maintainer: Alexander Peltzer ("alexpe87") <alexpe.aur@mailbox.org>
+# Former Maintainer (thanks man!) : Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=htslib
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="library for high-throughput sequencing data formats"
 arch=('i686' 'x86_64')
@@ -42,4 +43,4 @@ package() {
   chmod +x $pkgdir/usr/lib/libhts.so.*.*
 }
 
-md5sums=('e7c269d519a0c01de680bbc72fc76a57')
+md5sums=('d6fd14e208aca7e08cbe9072233d0af9')
