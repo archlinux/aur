@@ -1,9 +1,10 @@
-# Maintainer: Rainmaker <rainmaker52@gmail.com>
+# Previous Maintainer: Rainmaker <rainmaker52@gmail.com>
+# Maintainer: gary9872	<garysBoXatgeemale.com>
 # Original script by: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=5.1.26
-_build=117224
+pkgver=5.1.28
+_build=117968
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
@@ -46,7 +47,7 @@ source=(
 )
 
 
-md5sums=('0d8e04b60127b81df1714aeac877189e'
+md5sums=('35ef4877738ebf6de7eb578eb855cd4ag'
          '2d04c2e2d8c71558c910a51ec773731a'
          'fe60f9510502bea67383d9198ae8c13c'
          'c159d683ba1947290fc2ad2c64194150'
