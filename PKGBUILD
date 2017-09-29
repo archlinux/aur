@@ -25,6 +25,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('3a66fc469dd3b081337c9e213a1b2262f25f30977ee6ef65b9fa5a8b6aa341637832d1a5dbb74e30d68e2824e0d19d7a911eb3390dc6062707a552f429b483e8')
 
 package() {
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  mkdir -p "${pkgdir}/usr/share/${pkgname}/themes/icons"
+  mkdir -p "${pkgdir}/usr/share/${pkgname}/bumblebee/modules"
+
   install -d "$pkgdir"/usr/bin \
     "$pkgdir"/usr/share/$pkgname/{bumblebee/modules,themes/icons}
   ln -s /usr/share/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
