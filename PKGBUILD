@@ -7,7 +7,7 @@ url="https://github.com/xolox/python-npm-accel"
 license=('MIT')
 depends=('python' 'python-chardet' 'python-executor' 'python-humanfriendly' 'python-property-manager' 'python-verboselogs')
 source=("https://github.com/xolox/python-${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('7d269f2ba93d802ce015b92ac7b6cad4')
+md5sums=('3917fc0806dbd5796a020ac1f43c2f3c')
 arch=('any')
 
 package() {
