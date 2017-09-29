@@ -1,19 +1,19 @@
 pkgname=tp_smapi-dkms
 pkgver=0.42
-pkgrel=1
+pkgrel=2
 pkgdesc="DKMS controlled modules for ThinkPad's SMAPI functionality"
 arch=(any)
 url="http://www.thinkwiki.org/wiki/Tp_smapi"
 license=('GPL')
 depends=('dkms')
 conflicts=('tp_smapi')
-provides=("tp_smapi=${pkgver%.*}")
+provides=("tp_smapi=${pkgver}")
 options=(!strip)
-install='tp_smapi-dkms.install'
 source=("https://github.com/evgeni/tp_smapi/releases/download/tp-smapi%2F${pkgver}/tp_smapi-${pkgver}.tgz" 'dkms.conf' 'kbase.patch')
 sha256sums=('7b8d9f488c3859805f1f292bf4d518cc5b32ebb69b0ebe96367d0852dd792d27'
-            'e2d3db8b9bd5c53cba1d702e36814ec56ef52dd37dfe8a03f58deb83c11c8bed'
+            'ad75d30622f7d40ad00daa784776bb595c2ac4736fa58f492d7f0d6948e0a832'
             '4bcce516a9f3c486a934cfe6e3d3c92443833f4094ec008ce25264d1a5b66097')
+
 prepare() {
     cd tp_smapi-${pkgver}
     # patch Makefile for recent kernel module directory change
@@ -22,10 +22,14 @@ prepare() {
     sed -ri 's/^(PACKAGE_VERSION=).*/\1'${pkgver}'/g' "${srcdir}"/dkms.conf
 }
 
-package() 
-{
+package() {
     mkdir -p "${pkgdir}"/usr/src/${pkgname}-${pkgver}
     cp -a tp_smapi-${pkgver}/{*.{h,c},Makefile} "${pkgdir}"/usr/src/${pkgname}-${pkgver}
     cp dkms.conf "${pkgdir}"/usr/src/${pkgname}-${pkgver}
+
+    sed -e "s/@PKGNAME@/${pkgname}/" \
+    -e "s/@PKGVER@/${pkgver}/" \
+    -i "${pkgdir}"/usr/src/${pkgname}-${pkgver}/dkms.conf
+
     sed -i 's/KVER/KERNELRELEASE/g' "${pkgdir}"/usr/src/${pkgname}-${pkgver}/Makefile
 }
