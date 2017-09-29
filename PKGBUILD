@@ -1,6 +1,6 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 pkgname=controllermap
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Game controller mapping generator"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="http://www.libsdl.org"
 license=('MIT')
 depends=('sdl2')
 source=("http://www.libsdl.org/release/SDL2-${pkgver}.tar.gz")
-md5sums=('d4055424d556b4a908aa76fad63abd3c')
+md5sums=('4c2d602766b48b8f1b19a6f903ef5ecf')
 
 build() {
 cd $srcdir/SDL2-${pkgver}/test
