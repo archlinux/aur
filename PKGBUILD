@@ -1,7 +1,7 @@
 pkgname=python-dkim
 pkgver=0.6.2
 _branch=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module that implements DKIM email signing and verification"
 arch=('any')
 url="https://launchpad.net/dkimpy"
