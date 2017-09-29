@@ -3,8 +3,8 @@
 _pkgname=pinocchio
 _pkgver=1.2.4
 pkgname=${_pkgname}-git
-pkgver=1.2.4.r1449.5355d67
-pkgrel=3
+pkgver=1.2.4.r1493.3352afb
+pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra."
 arch=('i686' 'x86_64')
 url="https://stack-of-tasks.github.io/pinocchio/"
@@ -24,6 +24,7 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
+    git checkout devel
     git submodule update --init
 }
 

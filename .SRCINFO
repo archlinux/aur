@@ -1,14 +1,14 @@
 pkgbase = pinocchio-git
 	pkgdesc = Dynamic computations using Spatial Algebra.
-	pkgver = 1.2.4.r1449.5355d67
-	pkgrel = 2
+	pkgver = 1.2.4.r1493.3352afb
+	pkgrel = 1
 	url = https://stack-of-tasks.github.io/pinocchio/
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	makedepends = cmake
 	makedepends = git
-	depends = eigen32
+	depends = eigen
 	depends = eigenpy
 	depends = urdfdom
 	optdepends = metapod-git
