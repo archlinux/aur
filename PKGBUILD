@@ -1,7 +1,7 @@
 # Maintainer: David Stark <david@starkers.org>
 
 pkgver=0.67
-pkgrel=8
+pkgrel=9
 pkgname=telepresence
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster - http://www.telepresence.io"
 arch=('any')
@@ -28,6 +28,7 @@ build(){
 }
 
 package(){
+  install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/cli/stamp-telepresence" "${pkgdir}/usr/bin/stamp-telepresence"
   install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/cli/telepresence" "${pkgdir}/usr/bin/telepresence"
   install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/virtualenv/bin/sshuttle-telepresence" "${pkgdir}/usr/bin/sshuttle-telepresence"
 }
