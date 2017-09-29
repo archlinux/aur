@@ -7,7 +7,7 @@
 
 pkgname=firefox-esr-gtk2
 _pkgname=firefox-esr
-pkgver=52.3.0
+pkgver=52.4.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -16,26 +16,30 @@ url="https://www.mozilla.org/en-US/firefox/organizations/"
 depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
          libvpx libevent nss hunspell sqlite ttf-font icu)
 makedepends=(gcc63 unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
-             autoconf2.13 cargo)
+             autoconf2.13 rust)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
 provides=("firefox=$pkgver")
 conflicts=(firefox)
 replaces=(firefox-gtk2)
-options=(!emptydirs !makeflags !strip)
+options=(!emptydirs !makeflags)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg
-        0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
         0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
-        firefox-install-dir.patch fix-wifi-scanner.diff)
-sha256sums=('c16bc86d6cb8c2199ed1435ab80a9ae65f9324c820ea0eeb38bf89a97d253b5b'
+        firefox-install-dir.patch fix-wifi-scanner.diff
+        glibc-2.26-fix.diff
+        rust-i686.patch
+        make_SystemResourceMonitor.stop_more_resilient_to_errors.patch)
+sha256sums=('58ae7cb6c2fb81d22762ab3c60e46cadbe7c5b687f24c2823d9533ec998a21ee'
             'ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
-            '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
             '93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
+            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
+            'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8'
+            'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
+            '7760ebe71f4057cbd2f52b715abaf0d944c14c39e2bb2a5322114ad8451e12d9')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -50,7 +54,6 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 # more information.
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
-
 prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
@@ -62,11 +65,18 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -Np1 -i ../fix-wifi-scanner.diff
 
-  # https://bugs.archlinux.org/task/53890
-  patch -Np1 -i ../0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
-
   # https://bugs.archlinux.org/task/54395 // https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
   patch -Np1 -i ../0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
+  patch -d toolkit/crashreporter/google-breakpad/src/client -Np4 < ../glibc-2.26-fix.diff
+
+  # Build with the rust targets we actually ship
+  patch -Np1 -i ../rust-i686.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1384062
+  patch -Np1 -i ../make_SystemResourceMonitor.stop_more_resilient_to_errors.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -113,8 +123,6 @@ ac_add_options --enable-startup-notification
 ac_add_options --enable-crashreporter
 ac_add_options --enable-alsa
 ac_add_options --disable-updater
-
-STRIP_FLAGS="--strip-debug"
 END
 }
 
@@ -131,13 +139,15 @@ build() {
 
   # Do PGO
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
-  #  make -f client.mk build MOZ_PGO=1
-  make -f client.mk build CC=gcc-6.3
+  #  MOZ_PGO=1 ./mach build
+  ./mach build CC=gcc-6.3
+  #  ./mach buildsymbols
 }
 
 package() {
   cd firefox-${pkgver}esr
-  make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
+  DESTDIR="$pkgdir" ./mach install
+  #  find . -name '*crashreporter-symbols.zip' -exec cp -fvt "$startdir" {} +
 
   _vendorjs="$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
@@ -160,7 +170,7 @@ END
 [Global]
 id=archlinux
 version=1.0
-about=Mozilla Firefox for Arch Linux
+about=Mozilla Firefox ESR for Arch Linux
 
 [Preferences]
 app.distributor=archlinux
