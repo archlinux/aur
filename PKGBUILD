@@ -1,7 +1,8 @@
 pkgname=privatebin
 pkgver=1.1
 pkgrel=1
-url='privatebin.info'
+description="a minimalist, open source online pastebin where the server has zero knowledge of pasted data"
+url='https://privatebin.info'
 arch=("any")
 license=("zlib")
 depends=("php" "php-gd")
