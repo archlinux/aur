@@ -6,7 +6,7 @@
 
 pkgname=asymptote-git
 epoch=1
-pkgver=2.42r7.g21f5e431f
+pkgver=2.42r9.gfa3de734b
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
