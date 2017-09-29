@@ -15,12 +15,12 @@ source=('git+https://github.com/f4exb/sdrangel.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-no-sdrplay-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-no-sdrplay-git}"
     patch plugins/samplesource/CMakeLists.txt ../../CMakeList.txt.patch
     rm -r build || true # clean if exists
     mkdir build
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}/build"
+    cd "$srcdir/${pkgname%-no-sdrplay-git}/build"
     make DESTDIR="$pkgdir/" install
 
     # For some reason SDRangel only works if it is installed outside of /usr,
