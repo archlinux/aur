@@ -11,9 +11,9 @@ license=('MIT' 'custom:University of Illinois/NCSA Open Source License')
 arch=('i686' 'x86_64')
 depends=('gcc-libs')
 makedepends=('clang' 'cmake' 'python' 'libunwind')
-source=("http://llvm.org/releases/$pkgver/llvm-$pkgver.src.tar.xz"{,.sig}
-        "http://llvm.org/releases/$pkgver/libcxx-$pkgver.src.tar.xz"{,.sig}
-        "http://llvm.org/releases/$pkgver/libcxxabi-$pkgver.src.tar.xz"{,.sig})
+source=("http://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz"{,.sig}
+        "http://releases.llvm.org/$pkgver/libcxx-$pkgver.src.tar.xz"{,.sig}
+        "http://releases.llvm.org/$pkgver/libcxxabi-$pkgver.src.tar.xz"{,.sig})
 noextract=("${source[@]##*/}")
 sha512sums=('e6d8fdcb5bf27bded814d02f39f69c6171bc3a512d5957c03e5ac2e231f903b7de87634b059bd5c5da670f7c3a8f7a538f6299225799f15f921857f1452f6b3a'
             'SKIP'
