@@ -1,6 +1,6 @@
 pkgbase = i3lock-next-git
 	pkgdesc = Create a fancy image to use with i3lock.
-	pkgver = 1
+	pkgver = r66.def806c
 	pkgrel = 1
 	url = https://github.com/owenthewizard/i3lock-next
 	arch = i686
