@@ -1,8 +1,8 @@
-# Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
+# Maintainer: Aleksander Alekseev <afiskon@gmail.com>
 pkgname=sdrangel-no-sdrplay-git
 pkgver=r2774.69be1d59
 pkgrel=1
-pkgdesc="Qt5/OpenGL SDR and signal analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR, SDRplay and FunCube"
+pkgdesc="Qt5/OpenGL SDR and signal analyzer frontend (with disabled SDRPlay support)"
 arch=('i686' 'x86_64')
 url="https://github.com/f4exb/sdrangel"
 license=('GPL3')
