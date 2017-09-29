@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Trello
+Exec=trello
+Terminal=false
+Type=Application
+Icon=trello
+Categories=Network;
