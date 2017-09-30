@@ -1,66 +1,41 @@
+mkinitcpio TPM hook
+===================
 
-This is a modified version of the default Archlinux encrypt hook.
-The only difference is that the cryptkey file from the commandline
-is handled by tpm_unsealdata before it is passed to cryptosetup.
+This hook allows for an encrypted root device to use a keyfile sealed by the
+TPM. It should be placed immediately before the `encrypt` hook in
+`/etc/mkinitcpio.conf`.
 
-Fist the TPM has to be configured and trousers and tpm_tools
-have to be installed.
+    HOOKS="base udev ... block tpm encrypt filesystems ..."
 
-To initialize the TPM run
+The `tpm` hook attempts to "unseal" a dm-crypt keyfile previously sealed by the
+TPM. This file must reside on an unencrypted filesystem available to the kernel
+at boot. For example, assuming your unencrypted keyfile is at `/root/mykey`:
 
-# tpm_takeownership
+    # tpm_sealdata -i /root/mykey -o /boot/mykey.enc -p 0 -p 1 -p 2 -p 3 -p 5 -p 7 -p 8
 
-Don't use either -y or -z these are the all-zero default
-passwords. The Storage Root Key (SRK) password will be requestet on
-every boot to open the encrypted LUKS key.
+After generating a TPM-sealed keyfile, 'tpmkey=device:fstype:path' should be
+specified on the kernel cmdline, where 'device' represents the raw block device
+where the key exists, 'fstype' is the filesystem type of 'device' (or auto),
+and 'path' is the absolute path of the keyfile within the device. For example,
+if `/dev/sda1` is an EFI partition mounted at `/boot`:
 
-The SRK password can be changed with 
+    tpmkey=/dev/sda1:vfat:/mykey.enc
 
-# tpm_changeownerauth -s
+You may also need to add the file system driver to the `MODULES` array:
 
-In order to create a valid key file run:
+    MODULES="vfat"
 
-# tpm_sealdata --pcr 0 --pcr 1 --pcr 2 --pcr 3 --pcr 4 --pcr 8 --pcr 9 --pcr 12 --pcr 14 -o root.enc
+Finally, rebuild the initramfs:
 
-where root.enc is the resulting encrypted file. Save it on your
-EFI System Partition, and specifiy it in the kernel commandline:
+    # mkinitcpio -p linux
 
-cryptkey=/dev/sda1:vfat:/root.enc 
+During boot, the hook will initialize the TPM and attempt to unseal the keyfile.
+If the SRK is protected by a passphrase, you will be prompted to enter it. If
+the file is successfully unsealed, it will be passed to the `encrypt` hook to
+perform the actual unlocking of the root fs.
 
-where /dev/sda1 is your ESP, and /root.enc the path to the key.
-
-Modify /etc/mkinitcpio.conf and add the tpm hook
-in the HOOKS array:
-
-HOOKS="base udev keymap autodetect keyboard block tpm filesystems fsck"
-
-(the same as with normal encrypt, you need to add keymap and keyboard
-if you need support for either non US keyboards or keyboards that
-require i.e. USB). Don't forget to add the filesystem dirver
-from cryptkey= to the MODULES array
-
-MODULES="vfat"
-
-Now you can run mkinitcpio, to be save make a backup copy of your working
-initram disk, so that you can use it if the new one is corrupt.
-
-# mkinitcpio -p linux
-
-If everything worked the scipt will ask for your SRK password.
-
-In case a kernel update was performed or if a Firmware configuration
-setting was changed, unsealdata will not return the LUKS key, and a
-warning is displayed.
-
-If you haven't changed something on your system, this warining could
-indicate a possible evil maiden attack.
-
-In order to continue booting the LUKS key has to
-be supplied manually.
-
-So it is IMHO best to have two LUKS keys configured, one that is typable
-in case of an update, and one that is encrypted on the ESP.
-
-After the LUKS key was manually entered, the key has to be reencrypted
-with tpm_seal data as described before with the new PCR data.
-
+Depending on the PCRs the sealed keyfile is bound to, system changes such as
+kernel updates or firmware adjustments may prevent the file from being unsealed.
+If this happens, the disk must be manually unlocked with a passphrase and a new
+sealed key file needs to be generated. For this reason, it is CRUCIAL to add
+a separate "recovery" passphrase to the LUKS keys.
