@@ -1,6 +1,6 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=xx-net
-pkgver=3.6.3
+pkgver=3.6.4
 pkgrel=1
 
 pkgdesc="XX-Net, a web proxy tool."
@@ -11,7 +11,7 @@ depends=('python2' 'supervisor')
 options=('!strip')
 
 optdepends=(
-	'python: A high-level scripting language'
+	'python2: A high-level scripting language'
 	'supervisor: A system for controlling process state under UNIX'
 		)
 makedepends=()
@@ -26,7 +26,7 @@ source=(
 		)
 noextract=()
 md5sums=(
-	'8e09c8b247aa16204d8914b11e90f0e5'
+	'd5c90fa7b0d1e751dfc995815664bc08'
 	'd439251c0022e4537231bbde87d36bac'
 		)
 validpgpkeys=()
