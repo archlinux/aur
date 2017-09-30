@@ -1,0 +1,16 @@
+pkgbase = hpp-corbaserver
+	pkgdesc = Corba server for Humanoid Path Planner applications
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/humanoid-path-planner/hpp-corbaserver
+	arch = i686
+	arch = x86_64
+	license = BSD 3-clause
+	makedepends = cmake
+	depends = omniorb
+	depends = python2
+	source = https://github.com/humanoid-path-planner/hpp-corbaserver/releases/download/v3.2/hpp-corbaserver-3.2.tar.gz
+	sha256sums = db95b6be8a81d32766a20f11e85fda9189a498e216c268197299656cdaeb0eb7
+
+pkgname = hpp-corbaserver
+
