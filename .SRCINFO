@@ -1,7 +1,7 @@
 pkgbase = weston-eglstream
 	pkgdesc = Reference implementation of a Wayland compositor with EGLStream support
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wayland.freedesktop.org/
 	arch = i686
 	arch = x86_64
