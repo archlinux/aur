@@ -2,7 +2,7 @@
 
 pkgname=domoticz-latest
 pkgver=3.8153
-pkgrel=2
+pkgrel=3
 pkgdesc="Web based home automation"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://www.domoticz.com"
