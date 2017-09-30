@@ -1,7 +1,7 @@
 # Maintainer: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=quetoo-git
-pkgver=r2747.dce443a
+pkgver=r4328.43d8b8cd
 pkgrel=1
 pkgdesc="Quetoo is a Free first person shooter for Mac, PC and Linux."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://quetoo.org"
 license=('GPLv2')
 
 makedepends=('git' 'clang' 'autoconf' 'automake' 'check')
-depends=('objectivelymvc-git' 'quetoo-data-git' 'curl' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'physfs' 'mesa' 'libgl')
+depends=('objectivelymvc-git' 'curl' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'physfs' 'mesa' 'libgl' 'libxml2' 'ncurses' 'glib2')
 
 source=(git://github.com/jdolan/quetoo
 		quetoo.desktop
