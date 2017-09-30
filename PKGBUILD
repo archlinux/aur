@@ -7,13 +7,13 @@ pkgrel=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('any')
 url="https://github.com/KDAB/hotspot"
-license=('GPL')
+license=('GPL2')
 depends=('qt5-base>=5.6.0' 'libelf' 'elfutils' 'threadweaver' 'ki18n' 'kconfig' 'kitemviews' 'kcoreaddons' 'kitemmodels' 'kconfigwidgets')
 makedepends=('git' 'cmake>=3.1.0' 'extra-cmake-modules')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('hotspot::git+https://github.com/KDAB/hotspot.git')
-md5sums=('SKIP')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
@@ -21,21 +21,19 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir"
-	mkdir -p build-hotspot
-	cd "${pkgname%-git}"
-	git submodule update --init --recursive
+    cd "${pkgname%-git}"
+    git submodule update --init --recursive
 }
 
 build() {
-	cd "$srcdir/build-hotspot"
-	env CC=gcc CXX=g++ cmake "-DCMAKE_INSTALL_PREFIX=$pkgdir/usr" "$srcdir/${pkgname%-git}"
-	make
+    cd "${pkgname%-git}"
+    env CC=gcc CXX=g++ cmake . -DCMAKE_INSTALL_PREFIX=/usr
+    make
 }
 
 package() {
-	cd "$srcdir/build-hotspot"
-	make install
-	mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
-	rm -rf "$pkgdir/usr/share/icons"
+    cd "${pkgname%-git}"
+    make DESTDIR="${pkgdir}/" install
+    mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
+    rm -rf "$pkgdir/usr/share/icons"
 }
