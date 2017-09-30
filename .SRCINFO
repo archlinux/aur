@@ -1,0 +1,28 @@
+pkgbase = perl-asciio
+	pkgdesc = It has always been painful to do ASCII diagrams by hand. This perl application allows you to draw ASCII diagrams in a modern (but simple) graphical interface.
+	pkgver = 1.51.3
+	pkgrel = 1
+	url = https://metacpan.org/release/App-Asciio
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-carp-clan
+	makedepends = perl-module-build
+	makedepends = perl-test-most
+	depends = perl
+	depends = gtk2-perl
+	depends = perl-file-slurp
+	depends = perl-readonly
+	depends = perl-module-util
+	depends = perl-data-compare
+	depends = perl-text-diff
+	depends = perl-data-treedumper
+	depends = perl-compress-bzip2
+	depends = perl-list-moreutils
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/N/NK/NKH/App-Asciio-1.51.3.tar.gz
+	md5sums = 2ad2baddc9cb1dac4189990e1bb220e5
+
+pkgname = perl-asciio
+
