@@ -1,0 +1,724 @@
+From 5e379d534765cd15531156f1986ae1c5942b6348 Mon Sep 17 00:00:00 2001
+From: Chris PeBenito <pebenito@ieee.org>
+Date: Sat, 23 Sep 2017 14:03:26 -0400
+Subject: [PATCH 1/1] Update NetworkX support to 2.0. NetworkX 2.0 has API
+ breakage.
+
+Now SETools requires NetworkX 2.0+.
+
+Backported commit 856b56accba1 ("Update NetworkX support to 2.0.
+NetworkX 2.0 has API breakage.") on setools 4.1.1 release.
+---
+ README.md           |   2 +-
+ setools/dta.py      |  22 ++++-----
+ setools/infoflow.py |  29 ++++++------
+ tests/dta.py        | 130 ++++++++++++++++++++++++++--------------------------
+ tests/infoflow.py   |  32 ++++++-------
+ tox.ini             |   6 +--
+ 6 files changed, 109 insertions(+), 112 deletions(-)
+
+diff --git a/README.md b/README.md
+index 6b48a6e1465c..27f04e3afe43 100644
+--- a/README.md
++++ b/README.md
+@@ -15,7 +15,7 @@ As such it contains a setup.py script that will install the tools.
+ 
+ To run SETools command line tools, the following packages are required:
+ * Python 2.7 or 3.3+
+-* NetworkX 1.8+
++* NetworkX 2.0+
+ * setuptools
+ * enum34 (on Python 2.7 and 3.3 only)
+ * libselinux Python bindings (optional but recommended)
+diff --git a/setools/dta.py b/setools/dta.py
+index 63317d1f87e9..b507d1186270 100644
+--- a/setools/dta.py
++++ b/setools/dta.py
+@@ -23,7 +23,7 @@ import logging
+ from collections import defaultdict, namedtuple
+ 
+ import networkx as nx
+-from networkx.exception import NetworkXError, NetworkXNoPath
++from networkx.exception import NetworkXError, NetworkXNoPath, NodeNotFound
+ 
+ from .descriptors import EdgeAttrDict, EdgeAttrList
+ from .policyrep import TERuletype
+@@ -112,8 +112,8 @@ class DomainTransitionAnalysis(object):
+ 
+         try:
+             yield self.__generate_steps(nx.shortest_path(self.subG, s, t))
+-        except (NetworkXNoPath, NetworkXError):
+-            # NetworkXError: the type is valid but not in graph, e.g. excluded
++        except (NetworkXNoPath, NodeNotFound):
++            # NodeNotFound: the type is valid but not in graph, e.g. excluded
+             # NetworkXNoPath: no paths or the target type is
+             # not in the graph
+             pass
+@@ -150,8 +150,8 @@ class DomainTransitionAnalysis(object):
+         try:
+             for path in nx.all_simple_paths(self.subG, s, t, maxlen):
+                 yield self.__generate_steps(path)
+-        except (NetworkXNoPath, NetworkXError):
+-            # NetworkXError: the type is valid but not in graph, e.g. excluded
++        except (NetworkXNoPath, NodeNotFound):
++            # NodeNotFound: the type is valid but not in graph, e.g. excluded
+             # NetworkXNoPath: no paths or the target type is
+             # not in the graph
+             pass
+@@ -183,12 +183,10 @@ class DomainTransitionAnalysis(object):
+         try:
+             for path in nx.all_shortest_paths(self.subG, s, t):
+                 yield self.__generate_steps(path)
+-        except (NetworkXNoPath, NetworkXError, KeyError):
+-            # NetworkXError: the type is valid but not in graph, e.g. excluded
++        except (NetworkXNoPath, NodeNotFound):
++            # NodeNotFound: the type is valid but not in graph, e.g. excluded
+             # NetworkXNoPath: no paths or the target type is
+             # not in the graph
+-            # KeyError: work around NetworkX bug
+-            # when the source node is not in the graph
+             pass
+ 
+     def transitions(self, type_):
+@@ -214,7 +212,7 @@ class DomainTransitionAnalysis(object):
+                       format(s, "in to" if self.reverse else "out from"))
+ 
+         try:
+-            for source, target in self.subG.out_edges_iter(s):
++            for source, target in self.subG.out_edges(s):
+                 edge = Edge(self.subG, source, target)
+ 
+                 if self.reverse:
+@@ -434,7 +432,7 @@ class DomainTransitionAnalysis(object):
+         clear_transition = []
+         clear_dyntransition = []
+ 
+-        for s, t in self.G.edges_iter():
++        for s, t in self.G.edges():
+             edge = Edge(self.G, s, t)
+             invalid_trans = False
+             invalid_dyntrans = False
+@@ -510,7 +508,7 @@ class DomainTransitionAnalysis(object):
+ 
+     def __remove_excluded_entrypoints(self):
+         invalid_edges = []
+-        for source, target in self.subG.edges_iter():
++        for source, target in self.subG.edges():
+             edge = Edge(self.subG, source, target)
+             entrypoints = set(edge.entrypoint)
+             entrypoints.intersection_update(self.exclude)
+diff --git a/setools/infoflow.py b/setools/infoflow.py
+index 59d95911e354..a8d1a2816927 100644
+--- a/setools/infoflow.py
++++ b/setools/infoflow.py
+@@ -20,7 +20,7 @@ import itertools
+ import logging
+ 
+ import networkx as nx
+-from networkx.exception import NetworkXError, NetworkXNoPath
++from networkx.exception import NetworkXError, NetworkXNoPath, NodeNotFound
+ 
+ from .descriptors import EdgeAttrIntMax, EdgeAttrList
+ from .policyrep import TERuletype
+@@ -119,8 +119,8 @@ class InfoFlowAnalysis(object):
+ 
+         try:
+             yield self.__generate_steps(nx.shortest_path(self.subG, s, t))
+-        except (NetworkXNoPath, NetworkXError):
+-            # NetworkXError: the type is valid but not in graph, e.g.
++        except (NetworkXNoPath, NodeNotFound):
++            # NodeNotFound: the type is valid but not in graph, e.g.
+             # excluded or disconnected due to min weight
+             # NetworkXNoPath: no paths or the target type is
+             # not in the graph
+@@ -161,8 +161,8 @@ class InfoFlowAnalysis(object):
+         try:
+             for path in nx.all_simple_paths(self.subG, s, t, maxlen):
+                 yield self.__generate_steps(path)
+-        except (NetworkXNoPath, NetworkXError):
+-            # NetworkXError: the type is valid but not in graph, e.g.
++        except (NetworkXNoPath, NodeNotFound):
++            # NodeNotFound: the type is valid but not in graph, e.g.
+             # excluded or disconnected due to min weight
+             # NetworkXNoPath: no paths or the target type is
+             # not in the graph
+@@ -197,13 +197,11 @@ class InfoFlowAnalysis(object):
+         try:
+             for path in nx.all_shortest_paths(self.subG, s, t):
+                 yield self.__generate_steps(path)
+-        except (NetworkXNoPath, NetworkXError, KeyError):
+-            # NetworkXError: the type is valid but not in graph, e.g.
++        except (NetworkXNoPath, NodeNotFound):
++            # NodeNotFound: the type is valid but not in graph, e.g.
+             # excluded or disconnected due to min weight
+             # NetworkXNoPath: no paths or the target type is
+             # not in the graph
+-            # KeyError: work around NetworkX bug
+-            # when the source node is not in the graph
+             pass
+ 
+     def infoflows(self, type_, out=True):
+@@ -233,12 +231,13 @@ class InfoFlowAnalysis(object):
+         self.log.info("Generating all information flows {0} {1}".
+                       format("out of" if out else "into", s))
+ 
+-        if out:
+-            flows = self.subG.out_edges_iter(s)
+-        else:
+-            flows = self.subG.in_edges_iter(s)
+ 
+         try:
++            if out:
++                flows = self.subG.out_edges(s)
++            else:
++                flows = self.subG.in_edges(s)
++
+             for source, target in flows:
+                 yield Edge(self.subG, source, target)
+         except NetworkXError:
+@@ -338,14 +337,14 @@ class InfoFlowAnalysis(object):
+ 
+         # delete excluded types from subgraph
+         nodes = [n for n in self.G.nodes() if n not in self.exclude]
+-        self.subG = self.G.subgraph(nodes)
++        self.subG = self.G.subgraph(nodes).copy()
+ 
+         # delete edges below minimum weight.
+         # no need if weight is 1, since that
+         # does not exclude any edges.
+         if self.min_weight > 1:
+             delete_list = []
+-            for s, t in self.subG.edges_iter():
++            for s, t in self.subG.edges():
+                 edge = Edge(self.subG, s, t)
+                 if edge.weight < self.min_weight:
+                     delete_list.append(edge)
+diff --git a/tests/dta.py b/tests/dta.py
+index 32b927184f7f..0664fad14e58 100644
+--- a/tests/dta.py
++++ b/tests/dta.py
+@@ -46,7 +46,7 @@ class DomainTransitionAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         dyntrans100 = self.p.lookup_type("dyntrans100")
+         bothtrans200 = self.p.lookup_type("bothtrans200")
+ 
+-        edges = set(self.a.G.out_edges_iter())
++        edges = set(self.a.G.out_edges())
+         self.assertSetEqual(set([(dyntrans100, bothtrans200),
+                                  (start, dyntrans100),
+                                  (start, trans1),
+@@ -62,46 +62,46 @@ class DomainTransitionAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         e = self.p.lookup_type("bothtrans200_exec")
+ 
+         # regular transition
+-        r = self.a.G.edge[s][t]["transition"]
++        r = self.a.G.edges[s, t]["transition"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, t, "process", set(["transition", "dyntransition"]))
+ 
+         # setexec perms
+-        r = self.a.G.edge[s][t]["setexec"]
++        r = self.a.G.edges[s, t]["setexec"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, s, "process", set(["setexec", "setcurrent"]))
+ 
+         # exec perms
+-        k = sorted(self.a.G.edge[s][t]["execute"].keys())
++        k = sorted(self.a.G.edges[s, t]["execute"].keys())
+         self.assertEqual(k, [e])
+ 
+-        r = self.a.G.edge[s][t]["execute"][e]
++        r = self.a.G.edges[s, t]["execute"][e]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, e, "file", set(["execute"]))
+ 
+         # entrypoint perms
+-        k = sorted(self.a.G.edge[s][t]["entrypoint"].keys())
++        k = sorted(self.a.G.edges[s, t]["entrypoint"].keys())
+         self.assertEqual(k, [e])
+ 
+-        r = self.a.G.edge[s][t]["entrypoint"][e]
++        r = self.a.G.edges[s, t]["entrypoint"][e]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, t, e, "file", set(["entrypoint"]))
+ 
+         # type_transition
+-        k = sorted(self.a.G.edge[s][t]["type_transition"].keys())
++        k = sorted(self.a.G.edges[s, t]["type_transition"].keys())
+         self.assertEqual(k, [e])
+ 
+-        r = self.a.G.edge[s][t]["type_transition"][e]
++        r = self.a.G.edges[s, t]["type_transition"][e]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.type_transition, s, e, "process", t)
+ 
+         # dynamic transition
+-        r = self.a.G.edge[s][t]["dyntransition"]
++        r = self.a.G.edges[s, t]["dyntransition"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, t, "process", set(["transition", "dyntransition"]))
+ 
+         # setcurrent
+-        r = self.a.G.edge[s][t]["setcurrent"]
++        r = self.a.G.edges[s, t]["setcurrent"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, s, "process", set(["setexec", "setcurrent"]))
+ 
+@@ -112,32 +112,32 @@ class DomainTransitionAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         t = self.p.lookup_type("dyntrans100")
+ 
+         # regular transition
+-        r = self.a.G.edge[s][t]["transition"]
++        r = self.a.G.edges[s, t]["transition"]
+         self.assertEqual(len(r), 0)
+ 
+         # setexec perms
+-        r = self.a.G.edge[s][t]["setexec"]
++        r = self.a.G.edges[s, t]["setexec"]
+         self.assertEqual(len(r), 0)
+ 
+         # exec perms
+-        k = sorted(self.a.G.edge[s][t]["execute"].keys())
++        k = sorted(self.a.G.edges[s, t]["execute"].keys())
+         self.assertEqual(len(k), 0)
+ 
+         # entrypoint perms
+-        k = sorted(self.a.G.edge[s][t]["entrypoint"].keys())
++        k = sorted(self.a.G.edges[s, t]["entrypoint"].keys())
+         self.assertEqual(len(k), 0)
+ 
+         # type_transition
+-        k = sorted(self.a.G.edge[s][t]["type_transition"].keys())
++        k = sorted(self.a.G.edges[s, t]["type_transition"].keys())
+         self.assertEqual(len(k), 0)
+ 
+         # dynamic transition
+-        r = self.a.G.edge[s][t]["dyntransition"]
++        r = self.a.G.edges[s, t]["dyntransition"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, t, "process", set(["dyntransition"]))
+ 
+         # setcurrent
+-        r = self.a.G.edge[s][t]["setcurrent"]
++        r = self.a.G.edges[s, t]["setcurrent"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, s, "process", set(["setcurrent"]))
+ 
+@@ -149,44 +149,44 @@ class DomainTransitionAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         e = self.p.lookup_type("trans1_exec")
+ 
+         # regular transition
+-        r = self.a.G.edge[s][t]["transition"]
++        r = self.a.G.edges[s, t]["transition"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, t, "process", set(["transition"]))
+ 
+         # setexec perms
+-        r = self.a.G.edge[s][t]["setexec"]
++        r = self.a.G.edges[s, t]["setexec"]
+         self.assertEqual(len(r), 0)
+ 
+         # exec perms
+-        k = sorted(self.a.G.edge[s][t]["execute"].keys())
++        k = sorted(self.a.G.edges[s, t]["execute"].keys())
+         self.assertEqual(k, [e])
+ 
+-        r = self.a.G.edge[s][t]["execute"][e]
++        r = self.a.G.edges[s, t]["execute"][e]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, e, "file", set(["execute"]))
+ 
+         # entrypoint perms
+-        k = sorted(self.a.G.edge[s][t]["entrypoint"].keys())
++        k = sorted(self.a.G.edges[s, t]["entrypoint"].keys())
+         self.assertEqual(k, [e])
+ 
+-        r = self.a.G.edge[s][t]["entrypoint"][e]
++        r = self.a.G.edges[s, t]["entrypoint"][e]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, t, e, "file", set(["entrypoint"]))
+ 
+         # type_transition
+-        k = sorted(self.a.G.edge[s][t]["type_transition"].keys())
++        k = sorted(self.a.G.edges[s, t]["type_transition"].keys())
+         self.assertEqual(k, [e])
+ 
+-        r = self.a.G.edge[s][t]["type_transition"][e]
++        r = self.a.G.edges[s, t]["type_transition"][e]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.type_transition, s, e, "process", t)
+ 
+         # dynamic transition
+-        r = self.a.G.edge[s][t]["dyntransition"]
++        r = self.a.G.edges[s, t]["dyntransition"]
+         self.assertEqual(len(r), 0)
+ 
+         # setcurrent
+-        r = self.a.G.edge[s][t]["setcurrent"]
++        r = self.a.G.edges[s, t]["setcurrent"]
+         self.assertEqual(len(r), 0)
+ 
+     def test_030_setexec(self):
+@@ -197,41 +197,41 @@ class DomainTransitionAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         e = self.p.lookup_type("trans2_exec")
+ 
+         # regular transition
+-        r = self.a.G.edge[s][t]["transition"]
++        r = self.a.G.edges[s, t]["transition"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, t, "process", set(["transition"]))
+ 
+         # setexec perms
+-        r = self.a.G.edge[s][t]["setexec"]
++        r = self.a.G.edges[s, t]["setexec"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, s, "process", set(["setexec"]))
+ 
+         # exec perms
+-        k = sorted(self.a.G.edge[s][t]["execute"].keys())
++        k = sorted(self.a.G.edges[s, t]["execute"].keys())
+         self.assertEqual(k, [e])
+ 
+-        r = self.a.G.edge[s][t]["execute"][e]
++        r = self.a.G.edges[s, t]["execute"][e]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, e, "file", set(["execute"]))
+ 
+         # entrypoint perms
+-        k = sorted(self.a.G.edge[s][t]["entrypoint"].keys())
++        k = sorted(self.a.G.edges[s, t]["entrypoint"].keys())
+         self.assertEqual(k, [e])
+ 
+-        r = self.a.G.edge[s][t]["entrypoint"][e]
++        r = self.a.G.edges[s, t]["entrypoint"][e]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, t, e, "file", set(["entrypoint"]))
+ 
+         # type_transition
+-        k = sorted(self.a.G.edge[s][t]["type_transition"].keys())
++        k = sorted(self.a.G.edges[s, t]["type_transition"].keys())
+         self.assertEqual(len(k), 0)
+ 
+         # dynamic transition
+-        r = self.a.G.edge[s][t]["dyntransition"]
++        r = self.a.G.edges[s, t]["dyntransition"]
+         self.assertEqual(len(r), 0)
+ 
+         # setcurrent
+-        r = self.a.G.edge[s][t]["setcurrent"]
++        r = self.a.G.edges[s, t]["setcurrent"]
+         self.assertEqual(len(r), 0)
+ 
+     def test_040_two_entrypoint(self):
+@@ -242,53 +242,53 @@ class DomainTransitionAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         e = [self.p.lookup_type("trans3_exec1"), self.p.lookup_type("trans3_exec2")]
+ 
+         # regular transition
+-        r = self.a.G.edge[s][t]["transition"]
++        r = self.a.G.edges[s, t]["transition"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, t, "process", set(["transition"]))
+ 
+         # setexec perms
+-        r = self.a.G.edge[s][t]["setexec"]
++        r = self.a.G.edges[s, t]["setexec"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, s, "process", set(["setexec"]))
+ 
+         # exec perms
+-        k = sorted(self.a.G.edge[s][t]["execute"].keys())
++        k = sorted(self.a.G.edges[s, t]["execute"].keys())
+         self.assertEqual(k, e)
+ 
+-        r = self.a.G.edge[s][t]["execute"][e[0]]
++        r = self.a.G.edges[s, t]["execute"][e[0]]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, e[0], "file", set(["execute"]))
+ 
+-        r = self.a.G.edge[s][t]["execute"][e[1]]
++        r = self.a.G.edges[s, t]["execute"][e[1]]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, e[1], "file", set(["execute"]))
+ 
+         # entrypoint perms
+-        k = sorted(self.a.G.edge[s][t]["entrypoint"].keys())
++        k = sorted(self.a.G.edges[s, t]["entrypoint"].keys())
+         self.assertEqual(k, e)
+ 
+-        r = self.a.G.edge[s][t]["entrypoint"][e[0]]
++        r = self.a.G.edges[s, t]["entrypoint"][e[0]]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, t, e[0], "file", set(["entrypoint"]))
+ 
+-        r = self.a.G.edge[s][t]["entrypoint"][e[1]]
++        r = self.a.G.edges[s, t]["entrypoint"][e[1]]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, t, e[1], "file", set(["entrypoint"]))
+ 
+         # type_transition
+-        k = sorted(self.a.G.edge[s][t]["type_transition"].keys())
++        k = sorted(self.a.G.edges[s, t]["type_transition"].keys())
+         self.assertEqual(k, [e[0]])
+ 
+-        r = self.a.G.edge[s][t]["type_transition"][e[0]]
++        r = self.a.G.edges[s, t]["type_transition"][e[0]]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.type_transition, s, e[0], "process", t)
+ 
+         # dynamic transition
+-        r = self.a.G.edge[s][t]["dyntransition"]
++        r = self.a.G.edges[s, t]["dyntransition"]
+         self.assertEqual(len(r), 0)
+ 
+         # setcurrent
+-        r = self.a.G.edge[s][t]["setcurrent"]
++        r = self.a.G.edges[s, t]["setcurrent"]
+         self.assertEqual(len(r), 0)
+ 
+     def test_050_cond_type_trans(self):
+@@ -299,44 +299,44 @@ class DomainTransitionAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         e = self.p.lookup_type("trans5_exec")
+ 
+         # regular transition
+-        r = self.a.G.edge[s][t]["transition"]
++        r = self.a.G.edges[s, t]["transition"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, t, "process", set(["transition"]))
+ 
+         # setexec perms
+-        r = self.a.G.edge[s][t]["setexec"]
++        r = self.a.G.edges[s, t]["setexec"]
+         self.assertEqual(len(r), 0)
+ 
+         # exec perms
+-        k = sorted(self.a.G.edge[s][t]["execute"].keys())
++        k = sorted(self.a.G.edges[s, t]["execute"].keys())
+         self.assertEqual(k, [e])
+ 
+-        r = self.a.G.edge[s][t]["execute"][e]
++        r = self.a.G.edges[s, t]["execute"][e]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, s, e, "file", set(["execute"]))
+ 
+         # entrypoint perms
+-        k = sorted(self.a.G.edge[s][t]["entrypoint"].keys())
++        k = sorted(self.a.G.edges[s, t]["entrypoint"].keys())
+         self.assertEqual(k, [e])
+ 
+-        r = self.a.G.edge[s][t]["entrypoint"][e]
++        r = self.a.G.edges[s, t]["entrypoint"][e]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, t, e, "file", set(["entrypoint"]))
+ 
+         # type_transition
+-        k = sorted(self.a.G.edge[s][t]["type_transition"].keys())
++        k = sorted(self.a.G.edges[s, t]["type_transition"].keys())
+         self.assertEqual(k, [e])
+ 
+-        r = self.a.G.edge[s][t]["type_transition"][e]
++        r = self.a.G.edges[s, t]["type_transition"][e]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.type_transition, s, e, "process", t, cond="trans5")
+ 
+         # dynamic transition
+-        r = self.a.G.edge[s][t]["dyntransition"]
++        r = self.a.G.edges[s, t]["dyntransition"]
+         self.assertEqual(len(r), 0)
+ 
+         # setcurrent
+-        r = self.a.G.edge[s][t]["setcurrent"]
++        r = self.a.G.edges[s, t]["setcurrent"]
+         self.assertEqual(len(r), 0)
+ 
+     def test_100_forward_subgraph_structure(self):
+@@ -359,7 +359,7 @@ class DomainTransitionAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         dyntrans100 = self.p.lookup_type("dyntrans100")
+         bothtrans200 = self.p.lookup_type("bothtrans200")
+ 
+-        edges = set(self.a.subG.out_edges_iter())
++        edges = set(self.a.subG.out_edges())
+         self.assertSetEqual(set([(dyntrans100, bothtrans200),
+                                  (start, dyntrans100),
+                                  (start, trans1),
+@@ -387,7 +387,7 @@ class DomainTransitionAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         dyntrans100 = self.p.lookup_type("dyntrans100")
+         bothtrans200 = self.p.lookup_type("bothtrans200")
+ 
+-        edges = set(self.a.subG.out_edges_iter())
++        edges = set(self.a.subG.out_edges())
+         self.assertSetEqual(set([(bothtrans200, dyntrans100),
+                                  (dyntrans100, start),
+                                  (trans1, start),
+@@ -411,7 +411,7 @@ class DomainTransitionAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         dyntrans100 = self.p.lookup_type("dyntrans100")
+         bothtrans200 = self.p.lookup_type("bothtrans200")
+ 
+-        edges = set(self.a.subG.out_edges_iter())
++        edges = set(self.a.subG.out_edges())
+         self.assertSetEqual(set([(dyntrans100, bothtrans200),
+                                  (start, dyntrans100),
+                                  (trans2, trans3),
+@@ -434,7 +434,7 @@ class DomainTransitionAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         dyntrans100 = self.p.lookup_type("dyntrans100")
+         bothtrans200 = self.p.lookup_type("bothtrans200")
+ 
+-        edges = set(self.a.subG.out_edges_iter())
++        edges = set(self.a.subG.out_edges())
+         self.assertSetEqual(set([(dyntrans100, bothtrans200),
+                                  (start, dyntrans100),
+                                  (start, trans1),
+@@ -459,7 +459,7 @@ class DomainTransitionAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         dyntrans100 = self.p.lookup_type("dyntrans100")
+         bothtrans200 = self.p.lookup_type("bothtrans200")
+ 
+-        edges = set(self.a.subG.out_edges_iter())
++        edges = set(self.a.subG.out_edges())
+         self.assertSetEqual(set([(dyntrans100, bothtrans200),
+                                  (start, dyntrans100),
+                                  (start, trans1),
+@@ -484,7 +484,7 @@ class DomainTransitionAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         dyntrans100 = self.p.lookup_type("dyntrans100")
+         bothtrans200 = self.p.lookup_type("bothtrans200")
+ 
+-        edges = set(self.a.subG.out_edges_iter())
++        edges = set(self.a.subG.out_edges())
+         self.assertSetEqual(set([(dyntrans100, bothtrans200),
+                                  (start, dyntrans100),
+                                  (start, trans1),
+diff --git a/tests/infoflow.py b/tests/infoflow.py
+index 7751ddac0c57..c68b492b7f32 100644
+--- a/tests/infoflow.py
++++ b/tests/infoflow.py
+@@ -57,12 +57,12 @@ class InfoFlowAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         node8 = self.p.lookup_type("node8")
+         node9 = self.p.lookup_type("node9")
+ 
+-        nodes = set(self.a.G.nodes_iter())
++        nodes = set(self.a.G.nodes())
+         self.assertSetEqual(set([disconnected1, disconnected2, node1,
+                                  node2, node3, node4, node5,
+                                  node6, node7, node8, node9]), nodes)
+ 
+-        edges = set(self.a.G.out_edges_iter())
++        edges = set(self.a.G.out_edges())
+         self.assertSetEqual(set([(disconnected1, disconnected2),
+                                  (disconnected2, disconnected1),
+                                  (node1, node2),
+@@ -76,54 +76,54 @@ class InfoFlowAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+                                  (node8, node9),
+                                  (node9, node8)]), edges)
+ 
+-        r = self.a.G.edge[disconnected1][disconnected2]["rules"]
++        r = self.a.G.edges[disconnected1, disconnected2]["rules"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, "disconnected1", "disconnected2", "infoflow2",
+                            set(["super"]))
+ 
+-        r = self.a.G.edge[disconnected2][disconnected1]["rules"]
++        r = self.a.G.edges[disconnected2, disconnected1]["rules"]
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, "disconnected1", "disconnected2", "infoflow2",
+                            set(["super"]))
+ 
+-        r = sorted(self.a.G.edge[node1][node2]["rules"])
++        r = sorted(self.a.G.edges[node1, node2]["rules"])
+         self.assertEqual(len(r), 2)
+         self.validate_rule(r[0], TERT.allow, "node1", "node2", "infoflow", set(["med_w"]))
+         self.validate_rule(r[1], TERT.allow, "node2", "node1", "infoflow", set(["hi_r"]))
+ 
+-        r = sorted(self.a.G.edge[node1][node3]["rules"])
++        r = sorted(self.a.G.edges[node1, node3]["rules"])
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, "node3", "node1", "infoflow", set(["low_r", "med_r"]))
+ 
+-        r = sorted(self.a.G.edge[node2][node4]["rules"])
++        r = sorted(self.a.G.edges[node2, node4]["rules"])
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, "node2", "node4", "infoflow", set(["hi_w"]))
+ 
+-        r = sorted(self.a.G.edge[node3][node5]["rules"])
++        r = sorted(self.a.G.edges[node3, node5]["rules"])
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, "node5", "node3", "infoflow", set(["low_r"]))
+ 
+-        r = sorted(self.a.G.edge[node4][node6]["rules"])
++        r = sorted(self.a.G.edges[node4, node6]["rules"])
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, "node4", "node6", "infoflow2", set(["hi_w"]))
+ 
+-        r = sorted(self.a.G.edge[node5][node8]["rules"])
++        r = sorted(self.a.G.edges[node5, node8]["rules"])
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, "node5", "node8", "infoflow2", set(["hi_w"]))
+ 
+-        r = sorted(self.a.G.edge[node6][node5]["rules"])
++        r = sorted(self.a.G.edges[node6, node5]["rules"])
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, "node5", "node6", "infoflow", set(["med_r"]))
+ 
+-        r = sorted(self.a.G.edge[node6][node7]["rules"])
++        r = sorted(self.a.G.edges[node6, node7]["rules"])
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, "node6", "node7", "infoflow", set(["hi_w"]))
+ 
+-        r = sorted(self.a.G.edge[node8][node9]["rules"])
++        r = sorted(self.a.G.edges[node8, node9]["rules"])
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, "node8", "node9", "infoflow2", set(["super"]))
+ 
+-        r = sorted(self.a.G.edge[node9][node8]["rules"])
++        r = sorted(self.a.G.edges[node9, node8]["rules"])
+         self.assertEqual(len(r), 1)
+         self.validate_rule(r[0], TERT.allow, "node8", "node9", "infoflow2", set(["super"]))
+ 
+@@ -151,7 +151,7 @@ class InfoFlowAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         # assume NetworkX copies into the subgraph
+         # correctly.
+ 
+-        edges = set(self.a.subG.out_edges_iter())
++        edges = set(self.a.subG.out_edges())
+         self.assertSetEqual(set([(disconnected1, disconnected2),
+                                  (disconnected2, disconnected1),
+                                  (node1, node2),
+@@ -187,7 +187,7 @@ class InfoFlowAnalysisTest(mixins.ValidateRule, unittest.TestCase):
+         # assume NetworkX copies into the subgraph
+         # correctly.
+ 
+-        edges = set(self.a.subG.out_edges_iter())
++        edges = set(self.a.subG.out_edges())
+         self.assertSetEqual(set([(disconnected1, disconnected2),
+                                  (disconnected2, disconnected1),
+                                  (node1, node2),
+diff --git a/tox.ini b/tox.ini
+index eed56ea8f86b..420744db5c67 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -19,7 +19,7 @@ commands        = pep8 --version
+ 
+ [testenv:coverage]
+ basepython      = python3.3
+-deps            = networkx==1.9
++deps            = networkx==2.0
+                   coverage
+                   enum34
+ commands        = coverage --version
+@@ -30,7 +30,7 @@ commands        = coverage --version
+ [testenv:lint]
+ basepython      = python3.3
+ deps            = pylint
+-                  networkx==1.9
++                  networkx==2.0
+                   mock
+                   enum34
+ commands        = {envpython} setup.py build_ext -i
+@@ -40,7 +40,7 @@ commands        = {envpython} setup.py build_ext -i
+                   pylint -E --rcfile .pylintrc --disable=no-member,import-error setoolsgui
+ 
+ [testenv]
+-deps            = networkx==1.9
++deps            = networkx==2.0
+                   py27: mock
+                   py27: enum34
+                   py33: enum34
+-- 
+2.14.2
+

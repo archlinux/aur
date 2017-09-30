@@ -1,7 +1,7 @@
 pkgbase = setools
 	pkgdesc = Policy analysis tools for SELinux
 	pkgver = 4.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TresysTechnology/setools/wiki
 	arch = i686
 	arch = x86_64
@@ -17,21 +17,23 @@ pkgbase = setools
 	makedepends = python-tox
 	makedepends = python2
 	makedepends = python2-setuptools
-	makedepends = python2-networkx
+	makedepends = python2-networkx>=2.0
 	makedepends = python2-mock
 	makedepends = python2-tox
 	depends = libselinux>=2.7
 	depends = python
-	depends = python-networkx
+	depends = python-networkx>=2.0
 	optdepends = python-pyqt5: needed for graphical tools
 	optdepends = python2: Python2 support
 	optdepends = python2-enum34: Python2 support
 	optdepends = python2-networkx: Python2 support
 	optdepends = qt5-tools: display apol help with Qt Assistant
-	provides = selinux-setools=4.1.1-2
+	provides = selinux-setools=4.1.1-3
 	conflicts = selinux-setools
 	source = setools-4.1.1.tar.gz::https://github.com/TresysTechnology/setools/archive/4.1.1.tar.gz
+	source = 0001-Update-NetworkX-support-to-2.0.-NetworkX-2.0-has-API.patch
 	sha256sums = 46a927ea2b163cbe1d35cc35da43e45853e13720c7e02d4cf75a498783c19610
+	sha256sums = 4ff4c3e33de6fddcf42b766904a65926f5d4a2bc543a66e8c1e1f24c71350176
 
 pkgname = setools
 
