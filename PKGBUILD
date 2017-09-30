@@ -3,7 +3,7 @@
 
 pkgname=nuvola-app-youtube
 pkgver=1.3
-pkgrel=2
+pkgrel=1
 pkgdesc="youtube integration for Nuvola Player."
 arch=("any")
 url="https://github.com/tiliado/nuvola-app-youtube"
