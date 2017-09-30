@@ -29,5 +29,5 @@ pre_remove() {
 # arg 1:  the old package version
 post_remove() {
 	echo post_remove $1
-	rm /opt/XX-net/ -rf
+	rm /opt/XX-net/{code,README.md,start,start.bat,start.vbs,SwitchyOmega,xx_net.sh} -rf
 }

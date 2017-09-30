@@ -31,7 +31,6 @@ md5sums=(
 		)
 validpgpkeys=()
 
-
 package() {
 	echo $pkgdir
 
