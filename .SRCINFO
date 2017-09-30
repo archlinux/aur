@@ -1,7 +1,7 @@
 pkgbase = purple-line-git
 	pkgdesc = Line plugin for pidgin (libpurple)
-	pkgver = 20150426
-	pkgrel = 1
+	pkgver = 20170331
+	pkgrel = 2
 	url = http://altrepo.eu/git/purple-line.git/
 	arch = x86_64
 	arch = i686

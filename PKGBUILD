@@ -1,36 +1,34 @@
-#! /bin/sh
-# Contributor: Yen Chi Hsuan <yan12125 at gmail dot com>
-# Maintainer: Jorge Barroso <jorge.barroso.11 at gmail dot com>
+# Contributor: Yen Chi Hsuan <yan12125@gmail.com>
+# Maintainer: Brian Clemens <brian@teknik.io>
+pkgname=purple-line-git
+pkgver=0.1
+pkgrel=2
+epoch=0
+pkgdesc="libpurple plugin for LINE."
+arch=('i686' 'x86_64')
+url="http://altrepo.eu/git/purple-line"
+license=('MIT')
+depends=('thrift' 'libpurple' 'libgcrypt')
+makedepends=('boost' 'git')
+provides=('purple-line')
+conflicts=('purple-line')
+source=('git+http://altrepo.eu/git/purple-line.git')
+md5sums=('SKIP')
 
-_pkgname=purple-line
-pkgname=${_pkgname}-git
-pkgver=20150426
-pkgrel=1
-pkgdesc="Line plugin for pidgin (libpurple)"
-arch=('x86_64' 'i686')
-license=('custom')
-url='http://altrepo.eu/git/purple-line.git/'
-depends=('libpurple' 'thrift')
-makedepends=('git' 'boost')
-source=(
-    "${_pkgname}"::"git+http://altrepo.eu/git/purple-line.git/"
-    "line-protocol"::"git+http://altrepo.eu/git/line-protocol.git/"
-)
-sha256sums=("SKIP" "SKIP")
-
-pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    git log -1 --format='%cd' --date=short | tr -d -- '-'
-}
+#prepare() {
+#	cd purple-line
+#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+#}
 
 build() {
-    cd ${srcdir}/${_pkgname}/
-    ln -s ../line-protocol/line_main.thrift
-    make
+	cd purple-line
+	make clean
+	make
 }
 
 package() {
-    cd ${srcdir}/${_pkgname}/libpurple/
-    install -Dm755 libline.so "${pkgdir}/usr/lib/purple-2/libline.so"
+	cd purple-line
+	make DESTDIR="$pkgdir/" install
+	install -D LICENSE $pkgdir/usr/share/licenses/purple-line/LICENSE
 }
 
