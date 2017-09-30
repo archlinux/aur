@@ -3,7 +3,7 @@
 # Contributor: Franco Iacomella <yaco@gnu.org>
 
 pkgname=synfig-git
-pkgver=r8165.bd7d8b2cc
+pkgver=r8212.cdd534e1c
 pkgrel=1
 pkgdesc="Professional vector animation program (CLI renderer only)"
 arch=(i686 x86_64)
@@ -30,14 +30,16 @@ pkgver() {
 prepare() {
   cd synfig/synfig-core
   patch -p1 -i "$srcdir"/ffmpeg-3.0.patch
-
-  autoreconf -fi
 }
 
 build() {
   cd synfig/synfig-core
 
-  CXXFLAGS="$CXXFLAGS -std=gnu++11"
+  export CXXFLAGS="$CXXFLAGS -std=gnu++11"
+
+  ./bootstrap.sh
+  intltoolize --force --copy
+
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --disable-static \

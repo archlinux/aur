@@ -1,6 +1,6 @@
 pkgbase = synfig-git
 	pkgdesc = Professional vector animation program (CLI renderer only)
-	pkgver = r8165.bd7d8b2cc
+	pkgver = r8212.cdd534e1c
 	pkgrel = 1
 	url = http://synfig.org
 	arch = i686
