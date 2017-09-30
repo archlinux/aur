@@ -1,7 +1,7 @@
 pkgbase = nuvola-app-bandcamp
 	pkgdesc = bandcamp integration for Nuvola Player.
 	pkgver = 2.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/tiliado/nuvola-app-bandcamp
 	arch = any
 	license = custom:BSD

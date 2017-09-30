@@ -3,7 +3,7 @@
 
 pkgname=nuvola-app-bandcamp
 pkgver=2.2
-pkgrel=2
+pkgrel=1
 pkgdesc="bandcamp integration for Nuvola Player."
 arch=("any")
 url="https://github.com/tiliado/nuvola-app-bandcamp"
