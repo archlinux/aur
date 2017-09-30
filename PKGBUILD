@@ -11,7 +11,7 @@ _commit='d52e2bb9c20216972754c054e8534bca28baab66'
 # Bump this to latest major release for signed tag verification,
 # the commit count is handled by pkgver() function.
 pkgver=234.11
-pkgrel=8
+pkgrel=9
 arch=('i686' 'x86_64')
 url="https://www.github.com/systemd/systemd"
 groups=('selinux')
