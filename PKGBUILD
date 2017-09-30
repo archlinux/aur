@@ -8,7 +8,7 @@ pkgdesc="EEPROM Editor for OpenTX RC transmitter firmwares"
 arch=('x86_64')
 url="http://www.open-tx.org/"
 license=('GPL')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'sdl')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'sdl' 'hicolor-icon-theme')
 makedepends=('cmake' 'xsd' 'bc' 'python' 'avr-gcc' 'avr-libc' 'sed' 'qt5-tools' 'python-pyqt5' 'arm-none-eabi-gcc' 'arm-none-eabi-binutils' 'arm-none-eabi-newlib' 'fox')
 provides=('companion')
 conflicts=('companion' 'companion9x-svn')
@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd build
-  make DESTDIR=$pkgdir/ install
+  make -j`nproc` DESTDIR=$pkgdir/ install
   cd $pkgdir/usr/share/applications
   sed -i -e 's/Categories=Application/Categories=Development;/' companion22.desktop
   sed -i -e 's/Categories=Application/Categories=Development;/' simulator22.desktop

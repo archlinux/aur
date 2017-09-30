@@ -22,6 +22,7 @@ pkgbase = opentx-companion
 	depends = qt5-multimedia
 	depends = qt5-svg
 	depends = sdl
+	depends = hicolor-icon-theme
 	provides = companion
 	conflicts = companion
 	conflicts = companion9x-svn
