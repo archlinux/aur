@@ -1,4 +1,6 @@
-# Maintainer: Jon Gjengset <jon@thesquareplanet.com>
+# Maintainer:  Florian Lindner <florian.lindner@xgm.de>
+# Contributor: Jon Gjengset <jon@thesquareplanet.com>
+
 pkgname=hotspot-git
 pkgver=r289.ec0cf00
 pkgrel=1
