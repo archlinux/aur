@@ -5,7 +5,6 @@ pkgbase = nuvola-app-logitech-media-server
 	url = https://github.com/tiliado/nuvola-app-logitech-media-server
 	arch = any
 	license = custom:BSD
-	makedepends = nuvolasdk
 	makedepends = scour
 	depends = nuvolaruntime
 	source = https://github.com/tiliado/nuvola-app-logitech-media-server/archive/2.2.tar.gz
