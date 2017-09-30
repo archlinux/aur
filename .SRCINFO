@@ -1,0 +1,16 @@
+pkgbase = perl-test-block
+	pkgdesc = This packages the Foo-Bar distribution, containing the Foo::Bar module!
+	pkgver = 0.13
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Block
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADIE/Test-Block-0.13.tar.gz
+	md5sums = SKIP
+
+pkgname = perl-test-block
+
