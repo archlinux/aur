@@ -2,7 +2,7 @@
 # Contributor: j1simon
 pkgname=buttercup-desktop
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Javascript Password Vault - Multi-Platform Desktop Application'
 arch=('i686' 'x86_64')
 url="https://github.com/buttercup/buttercup-desktop"
@@ -12,7 +12,7 @@ makedepends=('npm' 'sed')
 source=("https://github.com/buttercup/buttercup-desktop/archive/v$pkgver.tar.gz"
 "buttercup-desktop.desktop")
 sha512sums=('33c16a5476a0417f5174ea43044628146f8e27bbc06b167bd4b17b25a5a976c2ccb016b3641bcee4fb0184c238e93641930ea6e9e6d30ef2274364f1f54c7a43'
-            '4113fd636c3e1cd596d1805555951dbcd0b05971af2968a5617268b3c1f84be46581a02c89a6edffe37eb1ff7b8ea3fd086f8f0327c25b8fce53fa978fe762a0')
+            '7ecea9e3e00b3b967d669ddb1777f194c5a4ae3e7e6bd941831b9a594ddb5215d264e513d25203268a1de1fa684a2a9ec4642f32233c403b5e425ecf9e7ae988')
 prepare(){
   sed -i '/"rpm",/d' "$srcdir/$pkgname-$pkgver/package.json"
   sed -i '/"AppImage",/d' "$srcdir/$pkgname-$pkgver/package.json"
@@ -35,6 +35,7 @@ package() {
   else
     _distname="linux-unpacked"
   fi
-  mkdir -p "$pkgdir/usr/share"
-  mv "$srcdir/$pkgname-$pkgver/release/$_distname" "$pkgdir/usr/share/$pkgname"
+  mkdir -p "$pkgdir/usr/lib"
+  mv "$srcdir/$pkgname-$pkgver/release/$_distname" "$pkgdir/usr/lib/$pkgname"
+  ln -s /usr/lib/$pkgname/buttercup "$pkgdir/usr/bin/buttercup"
 }
