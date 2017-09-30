@@ -1,25 +1,25 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# CO-Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvola-app-soundcloud
 pkgver=1.3
 pkgrel=1
-pkgdesc="SoundCloud integration for Nuvola Player"
-arch=("i686" "x86_64")
-url="https://github.com/tiliado/$pkgname"
-license=('BSD' 'MIT' 'CCPL')
-depends=('nuvolaplayer')
-makedepends=('python-nuvolasdk' 'scour')
-source=("https://github.com/tiliado/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+pkgdesc="soundcloud integration for Nuvola Player."
+arch=("any")
+url="https://github.com/tiliado/nuvola-app-soundcloud"
+license=('custom:BSD')
+depends=('nuvolaruntime' 'imagemagick')
+makedepends=('nuvolasdk' 'scour')
+source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
 sha256sums=('bf6cd6c9bdd9232f15cf3f3c07ef6c1ab8a1b7418087b36bd774fdf9a207b63b')
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --with-dbus-launcher
-	make all
+    cd "$srcdir/${pkgname}-${pkgver}"
+    ./configure --prefix=/usr 
+    make all
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -Dm644 LICENSE-*.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
-	make install DESTDIR="$pkgdir"
+    cd "$srcdir/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
