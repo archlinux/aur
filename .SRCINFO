@@ -1,0 +1,21 @@
+pkgbase = meow-proxy-git
+	pkgdesc = A fork of MEOW that uses whitelist mode with IPv6 support
+	pkgver = r1159.9f97da6
+	pkgrel = 1
+	url = https://github.com/netheril96/MEOW
+	install = meow-proxy-git.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = go
+	makedepends = git
+	conflicts = meow-proxy
+	source = git+https://github.com/netheril96/MEOW
+	source = meow@.service
+	source = meow_user.service
+	sha1sums = SKIP
+	sha1sums = bf9f1c5c58807e39c969d1ec5cb6535579f0dc92
+	sha1sums = 4ab8d5afaf78c992bdd7c45a7fcd7dd4ae3875d5
+
+pkgname = meow-proxy-git
+

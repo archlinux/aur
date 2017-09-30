@@ -1,0 +1,52 @@
+post_install() {
+
+cat << EOF
+  The meow.service is only available for an available user  
+  Configuration sample can be found at : https://github.com/renzhn/meow/tree/master/doc/sample-config
+
+	mkdir -p ~/.meow && cd ~/.meow
+	wget https://raw.githubusercontent.com/renzhn/meow/master/doc/sample-config/rc
+	wget https://raw.githubusercontent.com/renzhn/meow/master/doc/sample-config/direct
+ 	
+	and edit listen and proxy settings.
+
+    you can also edit direct list at ~/.meow/direct
+EOF
+post_upgrade
+}
+
+post_upgrade() {
+
+cat << EOF
+
+  Running meow system instance for user account:
+
+        To reload system systemd modules, execute
+
+                systemctl daemon-reload
+
+        To start meow, execute:
+
+                systemctl start meow@user
+
+        To autostart meow on system start, execute
+
+                systemctl enable meow@user
+
+  Running meow user instance (will used current user account):
+
+        To reload user systemd modules, execute
+
+                systemctl --user daemon-reload
+
+        To start meow manually, execute:
+
+                systemctl --user start meow
+
+        To autostart meow on user login, execute
+
+                systemctl --user enable meow
+
+EOF
+
+}
