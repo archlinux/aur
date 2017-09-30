@@ -90,7 +90,7 @@ set -u
 # http://wiki.linuxcnc.org/cgi-bin/wiki.pl?Startech
 pkgname='sunix-snx'
 pkgver='2.0.4_2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='kernel module driver for Sunix SUN1889 SUN1989 SUN1999 SUN2212 SUN2410 UL7502AQ UL7512EQ UL7522EQ PCI PCIe multi I/O parallel serial RS-232 422 485 port Dell Lenovo Acer Startech'
 arch=('i686' 'x86_64')
 url='http://www.sunix.com/'
@@ -107,9 +107,11 @@ source=(
   # http://rglinuxtech.com/?p=1930
   # https://forum.manjaro.org/t/error-with-rtl8812au/24066
   'sunix-patch-signal_pending-kernel-4-11.patch'
+  'sunix-patch-alt_speed-kernel-4-13.patch'
 )
 sha256sums=('56ef81518184116bd4fd158e39d0e5ceace53f26f85398371bb230d44da4ff9a'
-            'b589ba0e9d18638b26c8584cefaa5ed500a4984b9d03ed1d6863ba34a559742c')
+            'b589ba0e9d18638b26c8584cefaa5ed500a4984b9d03ed1d6863ba34a559742c'
+            '7743a276081292b6b97fc6a836e1a8331eb10396619882bb611b81b971df3988')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -168,6 +170,11 @@ prepare() {
 
   # diff -pNau3 driver/snx_common.h{.orig,} > 'sunix-patch-signal_pending-kernel-4-11.patch'
   patch -Nbup0 < 'sunix-patch-signal_pending-kernel-4-11.patch'
+  # diff -pNau3 driver/snx_serial.c{.orig,} > 'sunix-patch-alt_speed-kernel-4-13.patch'
+  patch -Nbup0 < 'sunix-patch-alt_speed-kernel-4-13.patch'
+
+  # Fix kernel harding error. Must do in sed in case version changes. We put in more than necessary in case the version gets shorter.
+  sed -e 's:^\(#define SNX_DRIVER_VERSION .*\)":\1\\0\\0\\0\\0\\0\\0\\0\\0":g' -i 'driver/snx_common.h'
 
   # Forgot to clean tarball
   'ma'ke -s -j1 clean
