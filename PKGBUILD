@@ -1,4 +1,4 @@
-# Maintainer: Laramy Black <laramy2020@gmail.com>
+# Maintainer: Pavel Antonov <pvantonov@gmail.com>
 
 pkgname=nuvolasdk
 pkgver=4.7.0
@@ -10,7 +10,6 @@ license=('custom:BSD')
 makedepends=('scour')
 depends=('imagemagick')
 provides=('python-nuvolasdk')
-conflicts=('python-nuvolasdk')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
 sha256sums=('5d22c985446d83a93040082057187d2419ce5dc8f6b6cc82ee20238515656fe0')
 
