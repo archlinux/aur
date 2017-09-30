@@ -99,7 +99,18 @@ source=(
 	"http://xenbits.xen.org/xen-extfiles/ipxe-git-${_git_tag_ipxe}.tar.gz"
 
 	# XSA patches
-	# None yet
+	'https://xenbits.xen.org/xsa/xsa226-4.9/0001-gnttab-dont-use-possibly-unbounded-tail-calls.patch'
+	'https://xenbits.xen.org/xsa/xsa226-4.9/0002-gnttab-fix-transitive-grant-handling.patch'
+	'https://xenbits.xen.org/xsa/xsa227.patch'
+	'https://xenbits.xen.org/xsa/xsa228.patch'
+	'https://xenbits.xen.org/xsa/xsa230.patch'
+	'https://xenbits.xen.org/xsa/xsa231-4.9.patch'
+	'https://xenbits.xen.org/xsa/xsa232.patch'
+	'https://xenbits.xen.org/xsa/xsa233.patch'
+	'https://xenbits.xen.org/xsa/xsa234-4.9.patch'
+	'https://xenbits.xen.org/xsa/xsa235-4.9.patch'
+	'https://xenbits.xen.org/xsa/xsa245/0001-xen-page_alloc-Cover-memory-unreserved-after-boot-in.patch'
+	'https://xenbits.xen.org/xsa/xsa245/0002-xen-arm-Correctly-report-the-memory-region-in-the-du.patch'
 
 	# Files
 	'grub-mkconfig-helper'
@@ -129,7 +140,19 @@ sha256sums=(
 	'36deacb946c59ad1d6600f6e5b89d6a7a8961e65eb000900e184075920120f49'
 
 	# XSA patches
-	# None yet. Last checked: XSA-225
+	'3878c27b77ba24012599289e0e0fb1e5198b1e4efe2f87f7c46def5f335f2fd5'
+	'01d773c5bb4cafe54daf0d14e8a3af899a7c5863513d18927c4a570a74afdb15'
+	'9923a47e5f86949800887596f098954a08ef73a01d74b1dbe16cab2e6b1fabb2'
+	'1979e111442517891b483e316a15a760a4c992ac4440f95e361ff12f4bebff62'
+	'77a73f1c32d083e315ef0b1bbb119cb8840ceb5ada790cad76cbfb9116f725cc'
+	'71a53a5133c8d4e381dd0e3e54205d31dea545ab62b261084dd3aea140f88cad'
+	'5068a78293daa58557c30c95141b775becfb650de6a5eda0d82a4a321ced551c'
+	'f721cc49ba692b2f36299b631451f51d7340b8b4732f74c98f01cb7a80d8662b'
+	'213f9d81a4ab785db67b9f579c9e88c9c8586c46b93f466a309060750df2df32'
+	'd8f012734fbf6019c1ff864744e308c41dfb9c7804ca3be2771c2c972cdf4bd5'
+	'526f9e1b127fbb316762ce8e8f4563bc9de0c55a1db581456a3017d570d35bdd'
+	'7164010112fcccd9cd88e72ace2eeabdb364dd6f4d05c434686267d18067f420'
+	# Last checked: XSA-245
 	# PKGBUILD files
 	'06c9f6140f7ef4ccfc4b1a7d9732a673313e269733180f53afcd9e43bf6c26bb'
 	'ceaff798a92a7aef1465a0a0b27b1817aedd2c857332b456aaa6dd78dc72438f'
@@ -180,7 +203,17 @@ prepare() {
 	# XSA Patches
 	msg2 'Applying XSA Patches...'
 	# None yet. Example:
-	#patch -Np1 -i "${srcdir}/xsa214.patch"
+	patch -Np1 -i "${srcdir}/0001-gnttab-dont-use-possibly-unbounded-tail-calls.patch"
+	patch -Np1 -i "${srcdir}/0002-gnttab-fix-transitive-grant-handling.patch"
+	patch -Np1 -i "${srcdir}/xsa227.patch"
+	patch -Np1 -i "${srcdir}/xsa228.patch"
+	patch -Np1 -i "${srcdir}/xsa230.patch"
+	patch -Np1 -i "${srcdir}/xsa231-4.9.patch"
+	patch -Np1 -i "${srcdir}/xsa232.patch"
+	patch -Np1 -i "${srcdir}/xsa233.patch"
+	patch -Np1 -i "${srcdir}/xsa234-4.9.patch"
+	patch -Np1 -i "${srcdir}/0001-xen-page_alloc-Cover-memory-unreserved-after-boot-in.patch"
+	patch -Np1 -i "${srcdir}/0002-xen-arm-Correctly-report-the-memory-region-in-the-du.patch"
 	# qemu-xen-traditional
 	pushd 'tools/qemu-xen-traditional' >/dev/null
 	# None yet. Example:
