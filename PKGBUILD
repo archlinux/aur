@@ -1,9 +1,9 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
 pkgver=0.13.1
-pkgrel=1
-pkgdesc="A DE agnostic omnilauncher."
-arch=('i686' 'x86_64')
+pkgrel=2
+pkgdesc="A sophisticated standalone keyboard launcher."
+arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/albertlauncher/albert"
 license=('GPL')
 depends=(
@@ -28,32 +28,33 @@ optdepends=(
 )
 provides=('albert')
 conflicts=('albert-git')
-source=("git://github.com/albertlauncher/albert.git#tag=v${pkgver}")
-noextract=()
-md5sums=('SKIP')
+source=('git://github.com/albertlauncher/albert.git'
+        'git://github.com/albertlauncher/plugins.git')
+md5sums=('SKIP' 'SKIP')
 
 
 prepare() {
-  cd ${pkgname}
-
-  # Workaround permission problems, this should be fixed in v0.13.1
-  sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
-
-  git submodule update --init --recursive
+  cd "${srcdir}/albert"
+  git checkout "v${pkgver}" > /dev/null 2>&1
+  git submodule init
+  git config submodule.plugins.url $srcdir/plugins
+  git submodule update plugins
 }
 
 
 build() {
-  cat << EOD
+  echo -e "
 
    ╭──────────────────────────────────────────────╮
+   │                                              │
+   │      \e[31mThis is a plugin based application\e[0m      │
+   │       \e[31mCheck the optional dependencies\e[0m        │
    │                                              │
    │   If you plan to report bugs please modify   │
    │   the PKGBUILD to build the debug version.   │
    │                                              │
    ╰──────────────────────────────────────────────╯
-
-EOD
+"
 
   [[ -d "build" ]] || mkdir -p "build"
   cd "build"
