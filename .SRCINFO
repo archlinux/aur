@@ -5,6 +5,7 @@ pkgbase = irrlicht-svn
 	url = http://irrlicht.sourceforge.net/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = ZLIB
 	makedepends = mesa
 	makedepends = unzip
