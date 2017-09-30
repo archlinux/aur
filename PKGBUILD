@@ -2,7 +2,7 @@
 pkgname=perl-eval-context
 pkgver=0.09.11
 pkgrel=1
-pkgdesc='This packages the Foo-Bar distribution, containing the Foo::Bar module!'
+pkgdesc='This module define a subroutine that let you evaluate Perl code in a specific context.'
 _dist=Eval-Context
 arch=('any')
 url="https://metacpan.org/release/$_dist"
