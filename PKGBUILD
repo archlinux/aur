@@ -1,8 +1,8 @@
-# Maintainer: Pavel Antonov <pvantonov@gmail.com>
+#Maintainer: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvolaruntime
 pkgver=4.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nuvola Apps Runtime - Tight integration of web apps with your desktop"
 arch=("any")
 url="https://github.com/tiliado/nuvola-app-google-play-music"
@@ -46,7 +46,7 @@ optdepends=(
 )
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    ./waf configure --prefix=/usr --nounity --libdir=/usr/lib --noappindicator
+    ./waf configure --prefix=/usr --nounity --libdir=/usr/lib --noappindicator --webkitgtk-supports-mse
     ./waf build
 }
 
