@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-092-git
-pkgver=20170928.18126
+pkgver=20170929.18129
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, from git branch 0.92.x"
 url="https://gitlab.com/inkscape/inkscape"
@@ -19,8 +19,9 @@ makedepends=('boost' 'intltool' 'git' 'gettext' 'pango' 'fontconfig' 'python' 'c
 provides=('inkscape')
 conflicts=('inkscape')
 options=('!libtool' '!makeflags')
-source=('inkscape.git::git+https://gitlab.com/inkscape/inkscape#branch=0.92.x')
-md5sums=('SKIP')
+source=('inkscape.git::git+https://gitlab.com/inkscape/inkscape#branch=0.92.x' is.po.diff.xz)
+md5sums=('SKIP'
+         '7c9e8771688e7fd2a335c245710937ec')
 _gitname="inkscape.git"
 
 pkgver() {
@@ -39,6 +40,8 @@ prepare() {
   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/svg.py
   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/canvas.py
   sed -i '1s|/usr/bin/env python3\>|/usr/bin/env python2|g' CMakeScripts/cmake_consistency_check.py
+  cd po
+  patch -p0 < "$srcdir"/is.po.diff || true
 }
 
 build() {
