@@ -10,7 +10,7 @@
 
 _pkgbase=vim
 pkgname=vim-x11
-pkgver=8.0.1127
+pkgver=8.0.1159
 _versiondir=74
 pkgrel=1
 _upstream_pkgrel=1
