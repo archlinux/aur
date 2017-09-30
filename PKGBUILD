@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('glibc')
 url="https://esp-idf.readthedocs.io/en/latest/get-started/linux-setup.html"
 source=("https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-73-ge28a011-5.2.0.tar.gz")
-license=('custom')
+license=('GPL' 'LGPL')
 options=(!strip staticlibs)
 sha256sums=('3763dbed9fd43901c07757622e9c46d29e89eda812b83627df5cb9d019cae0e5')
 
