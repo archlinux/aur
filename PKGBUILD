@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-maps-chaps-trains-europe
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2017_7_25
+pkgver=2017_9_27
 pkgrel=1
 pkgdesc="Map data for the timetable search engines by CHAPS: European railway."
 arch=(any)
