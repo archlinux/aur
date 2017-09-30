@@ -2,7 +2,7 @@
 pkgname=perl-directory-scratch-structured
 pkgver=0.04
 pkgrel=1
-pkgdesc='This packages the Foo-Bar distribution, containing the Foo::Bar module!'
+pkgdesc='This module adds a create_structured_tree subroutine to the Directory::Scratch.'
 _dist=Directory-Scratch-Structured
 arch=('any')
 url="https://metacpan.org/release/$_dist"

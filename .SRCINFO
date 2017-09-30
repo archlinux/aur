@@ -1,5 +1,5 @@
 pkgbase = perl-directory-scratch-structured
-	pkgdesc = This packages the Foo-Bar distribution, containing the Foo::Bar module!
+	pkgdesc = This module adds a create_structured_tree subroutine to the Directory::Scratch.
 	pkgver = 0.04
 	pkgrel = 1
 	url = https://metacpan.org/release/Directory-Scratch-Structured
