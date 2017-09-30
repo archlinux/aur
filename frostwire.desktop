@@ -14,4 +14,3 @@ MimeType=application/x-bittorrent;x-scheme-handler/magnet;
 X-Ubuntu-Gettext-Domain=frostwire
 X-AppInstall-Keywords=torrent
 Keywords=P2P,BitTorrent,Torrent,FrostWire,Vuze,uTorrent,Transmission,Transfer,Cloud;
-Name[fr_FR.utf8]=FrostWire
