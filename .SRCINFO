@@ -1,0 +1,26 @@
+pkgbase = esp32-openocd
+	pkgdesc = Fork of OpenOCD that has ESP32 support
+	pkgver = 0.10.0.dev.g77b10c51
+	pkgrel = 1
+	url = https://github.com/espressif/openocd-esp32
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	makedepends = git
+	makedepends = automake>=1.11
+	makedepends = autoconf
+	makedepends = libtool
+	makedepends = tcl
+	depends = libftdi
+	depends = libftdi-compat
+	depends = libusb
+	depends = libusb-compat
+	depends = hidapi
+	options = !strip
+	source = esp32-openocd::git+https://github.com/espressif/openocd-esp32.git
+	md5sums = SKIP
+	sha1sums = SKIP
+
+pkgname = esp32-openocd
+
