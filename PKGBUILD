@@ -4,8 +4,8 @@
 
 pkgname=st-patched-git
 _pkgname=st
-pkgver=20170712.8dacdfb
-pkgrel=2
+pkgver=0.7.r37.gb1338e9
+pkgrel=3
 pkgdesc='Simple virtual terminal emulator for X with patches and easy configurable colorscheme'
 arch=('i686' 'x86_64')
 url='http://st.suckless.org/'
@@ -16,8 +16,8 @@ makedepends=('ncurses' 'libxext' 'git')
 optdepends=('dmenu: for unicode input')
 
 _patches=(
-    "http://st.suckless.org/patches/st-vertcenter-20170601-5a10aca.diff"
-    "http://st.suckless.org/patches/st-hidecursor-20170404-745c40f.diff"
+    "https://st.suckless.org/patches/vertcenter/st-vertcenter-20170601-5a10aca.diff"
+    "https://st.suckless.org/patches/hidecursor/st-hidecursor-20170404-745c40f.diff"
     "st-alpha-20170715.diff"
     "st-extra-config-20170715.diff"
     "st-fix-keyboard-input-20170715.diff"
@@ -40,7 +40,7 @@ conflicts=("${_pkgname}")
 
 pkgver() {
   cd "${_pkgname}"
-  git log -1 --format='%cd.%h' --date=short | tr -d -
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
