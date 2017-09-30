@@ -27,6 +27,7 @@ prepare() {
   git submodule init
   git config submodule.fluid.url $srcdir/fluid
   git submodule update
+  rm -rf "$srcdir/fluid"
 }
 
 build() {
