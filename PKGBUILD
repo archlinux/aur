@@ -2,11 +2,11 @@
 
 pkgname=multistrap
 pkgver=2.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A more flexible debootstrap'
 url='https://packages.qa.debian.org/m/multistrap.html'
 license=('GPL3')
-depends=('perl')
+depends=('perl' 'perl-config-auto' 'perl-parse-debian-packages')
 makedepends=('po4a')
 conflicts=("${pkgname}-git")
 source=("git+https://git.dgit.debian.org/multistrap#tag=debian/${pkgver}")
