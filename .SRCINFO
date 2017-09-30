@@ -1,5 +1,5 @@
 pkgbase = perl-test-block
-	pkgdesc = This packages the Foo-Bar distribution, containing the Foo::Bar module!
+	pkgdesc = This module allows you to specify the number of expected tests at a finer level of granularity than an entire test script.
 	pkgver = 0.13
 	pkgrel = 1
 	url = https://metacpan.org/release/Test-Block

@@ -2,7 +2,7 @@
 pkgname=perl-test-block
 pkgver=0.13
 pkgrel=1
-pkgdesc='This packages the Foo-Bar distribution, containing the Foo::Bar module!'
+pkgdesc='This module allows you to specify the number of expected tests at a finer level of granularity than an entire test script.'
 _dist=Test-Block
 arch=('any')
 url="https://metacpan.org/release/$_dist"
