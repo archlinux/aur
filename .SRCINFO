@@ -1,20 +1,19 @@
 pkgbase = fiddler
 	pkgdesc = The free web debugging proxy by Telerik (running on mono)
-	pkgver = 4.4.8.4
+	pkgver = 4.6.20171.26113
 	pkgrel = 1
 	url = http://getfiddler.com/
 	arch = any
 	license = custom
-	makedepends = unzip
 	depends = mono
-	source = http://ericlawrence.com/dl/MonoFiddler-v4484.zip
-	source = LICENSE
+	source = http://telerik-fiddler.s3.amazonaws.com/fiddler/fiddler-linux.zip
 	source = fiddler.desktop
 	source = fiddler.png
-	sha1sums = 37bd8a58d02dae2455d9517af98703e9b833e5df
-	sha1sums = 7f96e962d882d554b2a606d3f76bc3dd85c9fdd1
+	source = fiddler.sh
+	sha1sums = 112a1ae7c350d702b1dc368b24f16e3bb1843dbd
 	sha1sums = bee1aeabed80319c5c24b7930bf763b982675b58
-	sha1sums = f92dd0c975af05de485ad9be49b209a3d88be346
+	sha1sums = da3c1afeb3a4ec8911766a548175b1138810e14d
+	sha1sums = 2f84386c418f50c10229deb8416047bae6333969
 
 pkgname = fiddler
 

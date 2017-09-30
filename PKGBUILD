@@ -1,38 +1,35 @@
-# Maintainer: Vincent van Donselaar <vincent@van-donselaar.nl>
+# Maintainer: Jake <ja.ke@posteo.de>
+# Last Maintainer (Submitter): Vincent van Donselaar <vincent@van-donselaar.nl>
 pkgname=fiddler
-pkgver=4.4.8.4
+pkgver=4.6.20171.26113
 pkgrel=1
 pkgdesc="The free web debugging proxy by Telerik (running on mono)"
 arch=('any')
 url="http://getfiddler.com/"
 license=('custom')
-groups=()
 depends=('mono')
-makedepends=('unzip')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-source=("http://ericlawrence.com/dl/MonoFiddler-v4484.zip"
-		"LICENSE"
-		"fiddler.desktop"
-		"fiddler.png")
-sha1sums=('37bd8a58d02dae2455d9517af98703e9b833e5df'
-		'7f96e962d882d554b2a606d3f76bc3dd85c9fdd1'
-		'bee1aeabed80319c5c24b7930bf763b982675b58'
-		'f92dd0c975af05de485ad9be49b209a3d88be346')
+source=("http://telerik-fiddler.s3.amazonaws.com/${pkgname}/${pkgname}-linux.zip"
+		"${pkgname}.desktop"
+		"${pkgname}.png"
+		"${pkgname}.sh")
+sha1sums=('112a1ae7c350d702b1dc368b24f16e3bb1843dbd'
+          'bee1aeabed80319c5c24b7930bf763b982675b58'
+          'da3c1afeb3a4ec8911766a548175b1138810e14d'
+          '2f84386c418f50c10229deb8416047bae6333969')
 
 package() {
-  cd "$pkgdir"
+  rm "${srcdir}/${pkgname}-linux.zip"
 
-  # The license should be in /usr/share/licenses.
-  install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  # Desktop file
+  cd "${pkgdir}"  
+  
+  install -d "${pkgdir}/opt" 
+  cp -r "${srcdir}" "${pkgdir}/opt/${pkgname}"  
+  install -D -m644 "${srcdir}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"  
   install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -D -m644 "${srcdir}/${pkgname}.png" "${pkgdir}/opt/${pkgname}/${pkgname}.png"
-
-  mkdir -p opt
-  cp -a "${srcdir}/app/." "${pkgdir}/opt/${pkgname}/"
+  install -D -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  
+  # Files that get written on runtime 
+  cd ${pkgdir}/opt/${pkgname}/
+  touch proxyinfo.conf proxiesFromInterfaces.txt listeningProcess.txt gsettings.txt
+  chmod 777 proxyinfo.conf proxiesFromInterfaces.txt listeningProcess.txt gsettings.txt
 }
