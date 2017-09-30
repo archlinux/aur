@@ -5,8 +5,8 @@
 
 _pkgname="binaryninja"
 _branch="stable"
-_edition="personal"
-pkgname="${_pkgname}-${_edition}"
+_edition="-personal"
+pkgname="${_pkgname}${_edition}"
 [[ "${_branch}" != "stable" ]] && pkgname="${pkgname}-${_branch}"
 pkgdesc="Binary Ninja is a binary multi-tool and reversing platform"
 url="https://binary.ninja"
@@ -26,10 +26,10 @@ depends=(
 )
 # https://binary.ninja/recover/
 source=(
-	"file://BinaryNinja-${_edition}.zip"
+	"file://BinaryNinja${_edition}.zip"
 	"binaryninja.png"
 )
-_hash=$(curl -s https://binary.ninja/js/hashes.js | perl -pe "s/.*Ninja-${_edition}.zip\":\s\"([\da-f]+)\".*/\$1/g")
+_hash=$(curl -s https://binary.ninja/js/hashes.js | perl -pe "s/.*Ninja${_edition}.zip\":\s\"([\da-f]+)\".*/\$1/g")
 sha256sums=(
 	"${_hash}"
 	'ac2e652f617d5ef8aaa34a5113164f51f3f673c872a635d29c93878a00650bf8'
