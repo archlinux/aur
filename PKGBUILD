@@ -7,11 +7,11 @@
 
 pkgname='rofi-git'
 _gitname='rofi'
-pkgver=1.3.1.r790.ge9c31ed7
+pkgver=1.4.0.r4.ga1ea3e26
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement'
 arch=('i686' 'x86_64')
-url='https://davedavenport.github.io/rofi/'
+url='https://github.com/DaveDavenport/rofi/'
 license=('MIT')
 depends=(
   'cairo' 'flex' 'freetype2' 'librsvg' 'libx11' 'libxcb' 'libxdg-basedir'
