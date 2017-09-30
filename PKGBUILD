@@ -4,7 +4,7 @@ pkgver=0.13.1
 pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('i686' 'x86_64' 'armv7h')
-url="https://github.com/albertlauncher/albert"
+url="https://github.com/albertlauncher"
 license=('GPL')
 depends=(
   'qt5-svg'
