@@ -10,7 +10,7 @@ pkgbase=apparmor
 pkgname=("${pkgbase}" 'apparmor-parser' 'apparmor-libapparmor' 'apparmor-utils' 'apparmor-profiles' 'apparmor-pam' 'apparmor-vim')
 pkgver=2.11.0
 _majorver="$(expr "${pkgver}" : '\([0-9]*\.[0-9]*\)\.')"
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux application security framework - mandatory access control for programs'
 arch=('i686' 'x86_64')
 url='http://wiki.apparmor.net/index.php/Main_Page'
@@ -49,6 +49,10 @@ prepare() {
 		-i logprof.conf
 	# do not build/install vim file with utils package (causes ref to $srcdir and wrong location)
 	sed -i '/vim/d' Makefile
+
+	# Regression in python 3.6; Fixed in apparmor version 2.11.1, see https://bugs.launchpad.net/apparmor/+bug/1661766
+	cd "${srcdir}/${pkgbase}-${pkgver}/utils/apparmor"
+	sed -i -e 's/\(re.search([^,]\+,\s[^,]\+\),\sre\.LOCALE/\1/g' ui.py
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/profiles/apparmor.d"
 	# /usr merge vs. profiles
