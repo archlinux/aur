@@ -1,0 +1,16 @@
+pkgbase = perl-check-isa
+	pkgdesc = This module provides several functions to assist in testing whether a value is an object, and if so asking about its class.
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://metacpan.org/release/Check-ISA
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MANWAR/Check-ISA-0.09.tar.gz
+	md5sums = SKIP
+
+pkgname = perl-check-isa
+
