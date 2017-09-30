@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=sympa
-pkgver=6.2.16
+pkgver=6.2.20
 pkgrel=1
 pkgdesc='Electronic mailing list manager'
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ optdepends=('perl-cgi-fast'
 	'mod_fcgid: fast-CGI support')
 backup=('etc/sympa/sympa.conf')
 install=$pkgname.install
-source=("http://www.sympa.org/distribution/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/sympa-community/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'sympa.service'
         'sympa-bulk.service'
         'sympa-archived.service'
@@ -41,7 +41,7 @@ source=("http://www.sympa.org/distribution/${pkgname}-${pkgver}.tar.gz"
         'sympa.tmpfiles'
         'apache.conf'
         'sympa.sysusers')
-md5sums=('cc9dea56afc159ef3bacf6c9b09ae338'
+md5sums=('3b55350e4a8a0432270251c12d632dfd'
          'a34e73c086e4d63da3166c7010ea9d8b'
          '356475e4f0cdc6b1a1db8e0e9a327038'
          '84bf724827201d02572938d1c2ad26eb'
