@@ -2,7 +2,7 @@
 
 pkgbase=linux-samus4
 pkgver=4.13
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/raphael/linux-samus"
 license=('GPL2')
@@ -245,6 +245,6 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-md5sums=('fce65226c69ec02bc72bff5b100f2912'
+md5sums=('c3aa79092a29ef4dad9130764e3ceb65'
          'a143cf816bfabff7b4515f9c15cc4096'
          '5aae464a8085b2f3adcdcaff29853d04')
