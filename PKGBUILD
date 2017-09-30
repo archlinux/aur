@@ -1,33 +1,44 @@
-# Maintainer: Jan Cholasta <grubber at grubber cz>
+# Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
+# Contributor: Jan Cholasta <grubber at grubber cz>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
-# The documentation fails to build right now
-
-pkgname=python-nss
-pkgver=1.0.0
+_py_pkgname=nss
+pkgbase=python-${_py_pkgname}
+pkgname=(python-${_py_pkgname} python2-${_py_pkgname})
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Python 3 bindings for NSS and NSPR"
+pkgdesc="Python bindings for NSS and NSPR"
 arch=(i686 x86_64)
-url="ftp://ftp.mozilla.org/pub/mozilla.org/security/python-nss"
+url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/Python_binding_for_NSS"
 license=(MPL GPL LGPL)
-depends=(python nspr nss)
-#makedepends=(python-setuptools python-docutils epydoc)
-makedepends=(python-setuptools)
-options=(!emptydirs)
-# Official mirror isn't working. We'll use Fedora's mirror
+depends=(nss)
+makedepends=(python-setuptools python2-setuptools)
 source=("https://ftp.mozilla.org/pub/security/python-nss/releases/PYNSS_RELEASE_${pkgver//./_}/src/python-nss-${pkgver}.tar.bz2")
-sha512sums=('cf0ab25be1f31eca1e48253de43d8740556c9cb060ad13e6ab59bb277c8bb53d4e2d2d354ca23bcf178c5a522d01f5c1e00c4f473a2e3f8e9ab9eb5ec1677f99')
+sha512sums=('88fc5a066a54524f0dd73cba8947bb3cd4cc078cf59a72253f0e56d835f39679a10a4ee87b5d9f4c167d0ff7a40704dee2e4d890e1d304afbe346ba02b8750b9')
 
 build() {
-  cd "python-nss-${pkgver}"
-
-  python3 setup.py build
-  #python3 setup.py build_doc
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python setup.py build
+    python2 setup.py build
 }
 
-package() {
-  cd "python-nss-${pkgver}"
+# Automatically create package functions using Bash magic
+source /dev/stdin << EOF
+package_python-${_py_pkgname}() {
+    depends+=('python')
 
-  python3 setup.py install --skip-build --root="${pkgdir}/" --optimize=1
-  #python3 setup.py install_doc --skip-build
+    cd "\${srcdir}/${pkgname}-${pkgver}"
+
+    python setup.py install --skip-build --root="\${pkgdir}" --optimize=1
 }
+
+package_python2-${_py_pkgname}() {
+    depends+=('python2')
+
+    cd "\${srcdir}/${pkgname}-${pkgver}"
+
+    python2 setup.py install --skip-build --root="\${pkgdir}" --optimize=1
+}
+EOF
+
+# vim:set ts=4 sw=4 et:
