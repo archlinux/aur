@@ -1,7 +1,7 @@
 pkgbase = st-patched-git
 	pkgdesc = Simple virtual terminal emulator for X with patches and easy configurable colorscheme
 	pkgver = 20170712.8dacdfb
-	pkgrel = 1
+	pkgrel = 2
 	url = http://st.suckless.org/
 	arch = i686
 	arch = x86_64

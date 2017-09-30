@@ -5,7 +5,7 @@
 pkgname=st-patched-git
 _pkgname=st
 pkgver=20170712.8dacdfb
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple virtual terminal emulator for X with patches and easy configurable colorscheme'
 arch=('i686' 'x86_64')
 url='http://st.suckless.org/'
