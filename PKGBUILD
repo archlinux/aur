@@ -2,7 +2,7 @@
 pkgname=perl-treedumper
 pkgver=0.40
 pkgrel=1
-pkgdesc='This packages the Foo-Bar distribution, containing the Foo::Bar module!'
+pkgdesc='Data::TreeDumper also dumps data in a tree-like fashion but hopefully in a format more easily understood.'
 _dist=Data-TreeDumper
 arch=('any')
 url="https://metacpan.org/release/$_dist"
