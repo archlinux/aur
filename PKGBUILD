@@ -28,28 +28,28 @@ source=("$_pkgname::git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd $_pkgname
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $_pkgname
-  install -d build
+    cd $_pkgname
+    install -d build
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX="/usr"
 }
 
 check() {
-  cd $_pkgname
-  cd build
-  make test
+    cd $_pkgname/build
+    make test
 }
 
 build() {
-  cd $_pkgname/build
-  cmake .. -DCMAKE_INSTALL_PREFIX="/usr"
-  make $MAKEFLAGS
+    cd $_pkgname/build
+    make $MAKEFLAGS
 }
 
 package() {
-  cd $_pkgname/build
-  make DESTDIR="$pkgdir" install
+    cd $_pkgname/build
+    make DESTDIR="$pkgdir" install
 }
