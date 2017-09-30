@@ -1,8 +1,9 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgbase=qpmx
 pkgname=(qpmx qpmx-gitsource qpmx-qpmsource)
-pkgver=1.0.0
-pkgrel=3
+group=qpmx-full
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A frontend for qpm, to provide source and build caching"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/$pkgname"
