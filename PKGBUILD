@@ -7,7 +7,7 @@ pkgdesc="FrostWire is a free and easy Downloader, BitTorrent Client and Media Pl
 arch=('x86_64')
 url="http://www.frostwire.com"
 license=('custom')
-depends=('xdg-utils' 'jre8-openjdk')
+depends=('xdg-utils' 'jre8-openjdk' 'mplayer')
 source_x86_64=("https://github.com/frostwire/frostwire/releases/download/frostwire-desktop-${pkgver}-build-245/frostwire-${pkgver}.noarch.tar.gz")
 source=($pkgname.desktop
         $pkgname.png)
