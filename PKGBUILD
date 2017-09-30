@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-pkgver=62.0.3202.18
+pkgver=63.0.3213.3
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-developer"
 arch=('x86_64')
@@ -17,13 +17,13 @@ source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
   'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r17.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r18.patch'
   'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc5-r2.patch'
 )
-sha512sums=('7017bc7f17af969fc460f0001ae935dca48253d2dea65d5375a126434549bb7ce748518c716b6d06aa6ae357577ca08ec73c7fe0e11b606595c15768388bab87'
+sha512sums=('994ef6b733d3e3bc35ead7281ca9274206f1ca1f810f0890afa45eeeca164606ff219660452083034a29e37b861bd8f0dcd037874ff5aff21a314d96292c7f75'
             '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
             '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c'
-            '28812a8bd6d591831a3bbd749f1d7c6dd434eb0237970d4e8ea8cfd48fa8efb4d98906eca3d175218fe62c50bcb0b6472b2d7dfdde73d5641cd3fde1d9dc5f3b'
+            'bdb0f92cee8cfd386d19b3fec87e092557c201221b66434c0cbbb3dd180effd4cc52beabc893a507fad82457d80533a227a2f6dfe9d1400e10bff4de31d1ba6a'
             '55723ffe9c34b5336450e75db8354c1ce5d6429b7296cbf575941eef5f3de3cdc40836e8f9b6905b4153913b10136a12d4c6d37f6a9f447677aa40588bfac182')
 
 prepare() {
@@ -43,7 +43,7 @@ prepare() {
 
   patch -p1 -i "$srcdir/chromium-last-commit-position-r1.patch"
   patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r2.patch"
-  patch -p1 -i "$srcdir/chromium-gn-bootstrap-r17.patch"
+  patch -p1 -i "$srcdir/chromium-gn-bootstrap-r18.patch"
   patch -p1 -i "$srcdir/chromium-gcc5-r2.patch"
 }
 
