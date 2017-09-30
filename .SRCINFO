@@ -1,6 +1,6 @@
 pkgbase = qssh
 	pkgdesc = System tray that connects and monitors the status of ssh tunnels
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt4&package=qssh&full=0
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = qssh
 	license = GPL2
 	depends = openssh
 	depends = qt4
-	source = http://hugo.pereira.free.fr/software/tgz/qssh-1.4.1.tar.gz
-	md5sums = 2c8f4899a9a7ecccf28375d9b3fe4465
+	source = http://hugo.pereira.free.fr/software/tgz/qssh-1.4.3.tar.gz
+	md5sums = 55070abf24cf4c0ffa97dfa3f308653f
 
 pkgname = qssh
 

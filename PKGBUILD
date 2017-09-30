@@ -2,7 +2,7 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=qssh
-pkgver=1.4.1
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="System tray that connects and monitors the status of ssh tunnels"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://hugo.pereira.free.fr/software/index.php?page=package&package_list=so
 license=('GPL2')
 depends=('openssh' 'qt4')
 source=(http://hugo.pereira.free.fr/software/tgz/qssh-$pkgver.tar.gz)
-md5sums=('2c8f4899a9a7ecccf28375d9b3fe4465')
+md5sums=('55070abf24cf4c0ffa97dfa3f308653f')
 
 build() {
   cd $pkgname-$pkgver
