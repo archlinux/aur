@@ -1,0 +1,20 @@
+pkgbase = perl-eval-context
+	pkgdesc = This packages the Foo-Bar distribution, containing the Foo::Bar module!
+	pkgver = 0.09.11
+	pkgrel = 1
+	url = https://metacpan.org/release/Eval-Context
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-test-output
+	makedepends = perl-test-block
+	makedepends = perl-directory-scratch-structured
+	depends = perl
+	depends = perl-package-generator
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/N/NK/NKH/Eval-Context-0.09.11.tar.gz
+	md5sums = SKIP
+
+pkgname = perl-eval-context
+
