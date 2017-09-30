@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname='lxc-snapshots'
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc='Run pi-hole or openvpn in lxc snapshot containers via systemd'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('systemd' 'lxc>=1:2.1.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graysky2/$pkgname/archive/v$pkgver.tar.gz")
 backup=('etc/conf.d/openvpn-lxc-snapshot.conf' 'etc/conf.d/pihole-lxc-snapshot.conf')
-sha256sums=('ed14568d7b7ee3011b29cc712a07a76b8fcd26ab2e16e057047d78df54152ea9')
+sha256sums=('6bfd8d6d96b6d5588150f7e35cfe8535b377fb7824de1ebed81a1173cbf8ec6e')
 install=readme.install
 
 build() {
