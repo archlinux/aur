@@ -1,0 +1,7 @@
+post_install() {
+cat << 'EOM'
+  ==> Convpot needs an unixODBC source for MDBTools to work
+  ==> Please add a [MDBToolsODBC] section to /etc/odbcinst.ini
+  ==> An example is given in /usr/share/convpot
+EOM
+}
