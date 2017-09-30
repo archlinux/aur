@@ -1,6 +1,6 @@
 pkgbase = tibia
 	pkgdesc = fast-paced free massively multiplayer online role-playing game
-	pkgver = 11.46.5556
+	pkgver = 11.47.5674
 	pkgrel = 1
 	url = http://www.tibia.com
 	arch = x86_64
@@ -15,14 +15,14 @@ pkgbase = tibia
 	depends = pcre
 	depends = qt5-base
 	depends = qt5-declarative
-	source = tibia-11.46.5556.tar.gz::http://static.tibia.com/download/tibia.x64.tar.gz
+	source = tibia-11.47.5674.tar.gz::http://static.tibia.com/download/tibia.x64.tar.gz
 	source = tibia-agreement.php::http://www.tibia.com/support/agreement.php
 	source = 01_openssl102.patch
 	source = 02_freetype.patch
-	sha256sums = 69c30de82219b0f7de746a07d9413a7c51f80a1d01ede27a399944de0d3df087
+	sha256sums = be1b1e775143d57109f1a98f5006a0569512af9a7e2d6c4e10c0903de47f489b
 	sha256sums = 965edf1cf67698f9dcfcbced495e0e96a666207a9a0b91fb769ed386a5f1efe5
-	sha256sums = 3b978ee2567908e15e9eec4d6970ac7bb58107b03b804555fe0f35f7aa15adb5
-	sha256sums = 7f1c6b6aedaa751dd466c8d4d4d86570558965123d8f2618c3b344318c8e6c5c
+	sha256sums = 96f4a640769990f30460f5ad7f73a7bd2f7222f77a33c2bc2e2f2f9810e48740
+	sha256sums = 112704e3666c5cc679cc807e093487da3ad8b51014ab69d6f4a4da0216e83895
 
 pkgname = tibia
 
