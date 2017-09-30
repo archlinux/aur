@@ -2,7 +2,7 @@
 pkgname=perl-package-generator
 pkgver=1.106
 pkgrel=1
-pkgdesc='This packages the Foo-Bar distribution, containing the Foo::Bar module!'
+pkgdesc='This module lets you quickly and easily construct new packages. It gives them unused names and sets up their package data, if provided.'
 _dist=Package-Generator
 arch=('any')
 url="https://metacpan.org/release/$_dist"

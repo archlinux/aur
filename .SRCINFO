@@ -1,5 +1,5 @@
 pkgbase = perl-package-generator
-	pkgdesc = This packages the Foo-Bar distribution, containing the Foo::Bar module!
+	pkgdesc = This module lets you quickly and easily construct new packages. It gives them unused names and sets up their package data, if provided.
 	pkgver = 1.106
 	pkgrel = 1
 	url = https://metacpan.org/release/Package-Generator
