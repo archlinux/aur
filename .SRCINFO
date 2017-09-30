@@ -1,7 +1,7 @@
 pkgbase = memtier_benchmark
 	pkgdesc = NoSQL Redis and Memcache traffic generation and benchmarking tool.
-	pkgver = 1.2.4
-	pkgrel = 1
+	pkgver = 1.2.10
+	pkgrel = 2
 	url = https://github.com/RedisLabs/memtier_benchmark
 	arch = any
 	license = GPL2

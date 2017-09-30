@@ -1,7 +1,8 @@
-# Maintainer: Jon Gjengset <jon@thesquareplanet.com>
+# Maintainer: Sandro Kalbermatter <info.kalsan [ät-symbol] valaiscom.ch>
+# Formerly (until 2017-09-30): Jon Gjengset <jon@thesquareplanet.com>
 pkgname=memtier_benchmark
-pkgver=1.2.4
-pkgrel=1
+pkgver=1.2.10
+pkgrel=2
 pkgdesc="NoSQL Redis and Memcache traffic generation and benchmarking tool."
 arch=('any')
 url="https://github.com/RedisLabs/memtier_benchmark"
