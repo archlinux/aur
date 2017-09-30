@@ -4,17 +4,19 @@
 pkgname=firefox-nightly-ru
 pkgdesc='Web browser from mozilla.org, nightly build, russian version'
 url='http://nightly.mozilla.org/'
-pkgver=57.0a1
+_version=58.0a1
+pkgver=58.0a1.20170930
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-_filename="firefox-${pkgver}.ru.linux-${CARCH}"
+_filename="firefox-${_version}.ru.linux-${CARCH}"
 _baseurl="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n"
 _sha512sum="$(curl -vs "${_baseurl}/${_filename}.checksums" 2>&1 | grep bz | grep sha512 | cut -d " " -f1 | head -n 1)"
+_date="$(curl -sL https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/ | grep -A2 "firefox-57.0a1.ru.linux-x86_64.tar.bz2\"" | tail -n1 | cut -f2 -d'>' | cut -f1 -d' ' | date +%Y%m%d)"
 source=('firefox-nightly.desktop'
         'firefox-nightly-ru.install'
         'vendor.js'
-        "${_baseurl}/${_filename}.tar.bz2")
+        "${_date}-${_filename}.tar.bz2::${_baseurl}/${_filename}.tar.bz2")
 sha512sums=('5c825fab6b7bd279d372cfb5dad35293d212c89b73dcfb9b0e83f166159567d8ba3fc642b35fda57b20a0f2e8cc346b83ee1d469920d973096257d718ec3beb7'
          'bc940986f5acb02706714d5dcbc32e17b167190dc9a30c7d63bf5317a45a1a0ff9da5ea302b9c8efc32acf7b75d2dec1420f542cb0ba08c3e3d59273d18baa96'
          'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
@@ -23,6 +25,10 @@ install=${pkgname}.install
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 
 'sqlite' 'dbus-glib' 'desktop-file-utils')
 conflicts=('firefox-nightly')
+
+pkgver() {
+  echo "${_version}.${_date}"
+}
 
 package() {
   mkdir -p "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
