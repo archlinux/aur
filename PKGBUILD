@@ -4,19 +4,20 @@
 pkgname=duply
 _mainver=2.0
 pkgver=$_mainver.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A shell front end for duplicity. It manages backup job settings in profiles and allows to batch execute commands."
 arch=('any')
 url="http://duply.net/"
 license=('GPL2')
 depends=('duplicity')
 makedepends=('txt2man')
-source=( "duply_python2.patch"
-         "http://downloads.sourceforge.net/project/ftplicity/duply%20%28simple%20duplicity%29/${_mainver}.x/${pkgname}_${pkgver}.tgz")
+source=( "http://downloads.sourceforge.net/project/ftplicity/duply%20%28simple%20duplicity%29/${_mainver}.x/${pkgname}_${pkgver}.tgz")
+md5sums=('3d68604a87103ee6ff1bfd029c0e1627')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}_${pkgver}"
-  patch -p1 < "${srcdir}/duply_python2.patch"
+  sed -i $'s|^DEFAULT_PYTHON=\'python\'$|DEFAULT_PYTHON=\'python2\'|' duply
+  sed -i 's|^#PYTHON="python"$|#PYTHON="python2"|' duply
 }
 
 package() {
@@ -26,5 +27,3 @@ package() {
 
 }
 
-md5sums=('adcc36b695e44387747ecc70f0a35b72'
-         '3d68604a87103ee6ff1bfd029c0e1627')
