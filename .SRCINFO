@@ -1,0 +1,15 @@
+pkgbase = mqtt-sn-tools
+	pkgdesc = Command line tools written in C for the MQTT-SN (MQTT For Sensor Networks) protocol
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = Command line tools written in C for the MQTT-SN (MQTT For Sensor Networks) protocol
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	license = custom:LICENSE.md
+	depends = glibc
+	source = https://github.com/njh/mqtt-sn-tools/releases/download/0.0.6/mqtt-sn-tools-0.0.6.tar.gz
+	sha256sums = 107d762dcd9fe01dc2229dab480765224f10b027cb6dcb273a7a0987298c788a
+
+pkgname = mqtt-sn-tools
+
