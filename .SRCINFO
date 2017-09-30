@@ -56,14 +56,6 @@ pkgname = apparmor-utils
 pkgname = apparmor-profiles
 	pkgdesc = AppArmor sample pre-made profiles
 	depends = apparmor-parser
-	backup = etc/apparmor.d/apparmor-2.11.0.tar.gz
-	backup = etc/apparmor.d/apparmor-2.11.0.tar.gz.asc
-	backup = etc/apparmor.d/apparmor.service
-	backup = etc/apparmor.d/apparmor_load.sh
-	backup = etc/apparmor.d/apparmor_unload.sh
-	backup = etc/apparmor.d/.SRCINFO
-	backup = etc/apparmor.d/apparmor.install
-	backup = etc/apparmor.d/PKGBUILD
 
 pkgname = apparmor-pam
 	pkgdesc = AppArmor PAM library

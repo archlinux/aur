@@ -38,16 +38,17 @@ export MAKEFLAGS+=" PYTHON=python3"
 
 prepare() {
 	cd "${srcdir}/${pkgbase}-${pkgver}/parser"
-	# avoid depend on texlive-latex
+	# Skip compiling LaTex documents and hence avoid an additional dependency on texlive-latex
 	sed -i -e 's/pdflatex/true/g' Makefile
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/utils"
-	# Set Arch paths
+	# Adapt logprof paths to Arch Linux defaults
 	sed -e '/logfiles/ s/syslog /syslog.log /g' \
 		-e '/logfiles/ s/messages/messages.log/g' \
 		-e '/parser/ s# /sbin/# /usr/bin/#g' \
 		-i logprof.conf
-	# do not build/install vim file with utils package (causes ref to $srcdir and wrong location)
+	# Skip building and installing vim related files within the utils package
+	# becuase of false references to $srcdir and non-default file locations
 	sed -i '/vim/d' Makefile
 
 	# Regression in python 3.6; Fixed in apparmor version 2.11.1, see https://bugs.launchpad.net/apparmor/+bug/1661766
@@ -55,7 +56,7 @@ prepare() {
 	sed -i -e 's/\(re.search([^,]\+,\s[^,]\+\),\sre\.LOCALE/\1/g' ui.py
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/profiles/apparmor.d"
-	# /usr merge vs. profiles
+	# Adapt profile names to Arch linux defaults
 	find . -name "*sbin*" -print0 | while read -r -d $'\0' i; do
 		sed -i -e 's@sbin@bin@g' "${i}"
 		mv "${i}" "${i/sbin/bin}"
@@ -134,9 +135,10 @@ package_apparmor-profiles() {
 	pkgdesc='AppArmor sample pre-made profiles'
 	depends=('apparmor-parser')
 
-	# backup /etc/apparmor.d/* so using logprof is safe
+	# Add default profiles to the backup array
 	cd "${srcdir}/${pkgbase}-${pkgver}/profiles/apparmor.d"
-	backup=($(find . -type f | sed 's@./@etc/apparmor.d/@'))
+	# Without the PKGBUILD check the following command would confuse `makepkg --printsrcinfo`
+	[[ -f "./PKGBUILD" ]] || backup=($(find . -type f | sed 's@./@etc/apparmor.d/@'))
 
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 	make -C profiles DESTDIR="${pkgdir}" install
