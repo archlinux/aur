@@ -1,4 +1,4 @@
-# Contributor: Your Name <youremail@domain.com>
+# Maintainer: awe00 < awe00 AT hotmail DOT fr>
 pkgname=perl-eval-context
 pkgver=0.09.11
 pkgrel=1
