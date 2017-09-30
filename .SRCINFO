@@ -11,6 +11,7 @@ pkgbase = quetoo-git
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = check
+	depends = quetoo-data-git
 	depends = objectivelymvc-git
 	depends = curl
 	depends = sdl2

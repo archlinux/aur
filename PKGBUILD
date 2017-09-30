@@ -9,7 +9,9 @@ url="http://quetoo.org"
 license=('GPLv2')
 
 makedepends=('git' 'clang' 'autoconf' 'automake' 'check')
-depends=('objectivelymvc-git' 'curl' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'physfs' 'mesa' 'libgl' 'libxml2' 'ncurses' 'glib2')
+depends=('quetoo-data-git' 'objectivelymvc-git' 'curl' 'sdl2' 
+'sdl2_image' 'sdl2_mixer' 
+'physfs' 'mesa' 'libgl' 'libxml2' 'ncurses' 'glib2')
 
 source=(git://github.com/jdolan/quetoo
 		quetoo.desktop
