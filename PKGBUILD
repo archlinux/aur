@@ -2,7 +2,7 @@
 
 pkgbase=linux-4.13.y-dc
 _srcname=linux-4.13.y-dc
-pkgver=4.13.4.r2187.gae3152254b4c
+pkgver=4.13.4.r2201.g9b76449e55e1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -37,7 +37,7 @@ prepare() {
   fi
 
   # set localversion to git commit
-  sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config
+  sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-dc-${pkgver##*.}\"|g" ./.config
   sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
@@ -49,7 +49,7 @@ prepare() {
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
-  make nconfig # new CLI menu for configuration
+  #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
   make olddefconfig # old config from previous kernel, defaults for new options
