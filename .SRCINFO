@@ -1,9 +1,8 @@
 pkgbase = geary-git
 	pkgdesc = A new lightweight, easy-to-use, feature-rich email client (beta version)
-	pkgver = r3042.5ab6f426
+	pkgver = r3094.6154e2ea
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Geary
-	install = geary.install
 	arch = i686
 	arch = x86_64
 	license = GPL

@@ -1,8 +1,9 @@
-# Maintainer: Techlive Zheng <techlivezheng@gmail.com>
+# Maintainer: emersion <contact emersion fr>
+# Contributor: Techlive Zheng <techlivezheng@gmail.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=geary-git
-pkgver=r3042.5ab6f426
+pkgver=r3094.6154e2ea
 pkgrel=1
 pkgdesc="A new lightweight, easy-to-use, feature-rich email client (beta version)"
 arch=(i686 x86_64)
@@ -12,7 +13,6 @@ depends=('libcanberra' 'gmime' 'webkit2gtk' 'libgnome-keyring' 'libnotify' 'libg
 makedepends=('cmake' 'vala' 'git' 'intltool' 'gnome-doc-utils')
 provides=('geary')
 conflicts=('geary')
-install=geary.install
 source=('git://git.gnome.org/geary')
 md5sums=('SKIP')
 
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/geary"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --disable-schemas-compile --disable-desktop-update --disable-icon-update
 	make
 }
 
