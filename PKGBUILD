@@ -1,8 +1,8 @@
 # Maintainer: Kevin Alberts <kevin@kevinalberts.nl>
 
 pkgname=fastonosql
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="Cross-platform open source Redis, Memcached, SSDB, LevelDB, RocksDB, UnQLite, LMDB, UpscaleDB GUI management tool."
 arch=('x86_64')
 license=('GPL3')
@@ -10,7 +10,7 @@ url="http://fastonosql.com"
 options=('!strip' '!upx')
 
 source=(
-	"https://www.fastonosql.com/downloads/linux/fastonosql-1.8.0-x86_64.deb"
+	"https://www.fastonosql.com/downloads/linux/fastonosql-1.8.2-x86_64.deb"
 	"fastonosql_22.png"
 	"fastonosql_24.png"
 	"fastonosql_32.png"
@@ -21,7 +21,7 @@ source=(
 	"fastonosql_512.png"
 	)
 sha256sums=(
-	'd80d2675b06f2997357cc6b4b9fe9291a38da2b2e7f3133a89b31174d576ef3c'
+	'1634524186599e159e7f4f1079e7e92b54314d903317825b9fba0d725ac7568a'
 	'b131877859b40e6b0844bdef09c24e485e242f6e6ad87584bddf5ad2d036ff86'
 	'6b15df2d57033e73d121eb1e7b6d9803d07c933aa8b3f4ca73f4bc361fd28647'
 	'4e92352b348651eee0b2e02c7c69b8661dc1c070c9955472e66323a34ffcc5da'
