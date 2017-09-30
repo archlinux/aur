@@ -1,7 +1,7 @@
 pkgbase = vim-x11
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor (X11 support, no GUI)
 	pkgver = 8.0.1159
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vim.org
 	arch = i686
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = vim-x11
 	source = vim-8.0.1159.tar.gz::http://github.com/vim/vim/archive/v8.0.1159.tar.gz
 	source = vimrc
 	source = archlinux.vim
-	sha1sums = 1f83a41f0ab29796e983e3de63669620dd238239
+	sha1sums = 9b5fe42c2ab9be3996ea109e08e5d040d2ee41ce
 	sha1sums = b8ca9132826e53cd14431ef9767e4fd820faa782
 	sha1sums = 94f7bb87b5d06bace86bc4b3ef1372813b4eedf2
 
