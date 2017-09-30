@@ -68,7 +68,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.13.4
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -76,8 +76,10 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
 _mergepath="${_bfqpath}/merges/${pkgver}"
-_mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance-V4"
+#_mlpath_1="${_bfqpath}/mailing-list/blk-mq-sched-improve-SCSI-MQ-performance-V4"
 _mlpath_2="${_bfqpath}/mailing-list/block-bfq-disable-wbt"
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/lucjan-kernels/master/patches/4.13"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.13"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
 _bfq_mq_patch='4.13-bfq-mq-20170921.patch'
@@ -93,20 +95,35 @@ source=(# mainline kernel patches
         # tentative patches
         "${_bfqpath}/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch"
         # mailing-list (ML1) patches
-        "${_mlpath_1}/ML1-0001-blk-mq-sched-fix-scheduler-bad-performance.patch"
-        "${_mlpath_1}/ML1-0002-sbitmap-introduce-__sbitmap_for_each_set.patch"
-        "${_mlpath_1}/ML1-0003-blk-mq-introduce-blk_mq_dispatch_rq_from_ctx.patch"
-        "${_mlpath_1}/ML1-0004-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
-        "${_mlpath_1}/ML1-0005-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
-        "${_mlpath_1}/ML1-0006-blk-mq-sched-don-t-dequeue-request-until-all-in-disp.patch"
-        "${_mlpath_1}/ML1-0007-blk-mq-sched-introduce-blk_mq_sched_queue_depth.patch"
-        "${_mlpath_1}/ML1-0008-blk-mq-sched-use-q-queue_depth-as-hint-for-q-nr_requ.patch"
-        "${_mlpath_1}/ML1-0009-block-introduce-rqhash-helpers.patch"
-        "${_mlpath_1}/ML1-0010-block-move-actual-bio-merge-code-into-__elv_merge.patch"
-        "${_mlpath_1}/ML1-0011-block-add-check-on-elevator-for-supporting-bio-merge.patch"
-        "${_mlpath_1}/ML1-0012-block-introduce-.last_merge-and-.hash-to-blk_mq_ctx.patch"
-        "${_mlpath_1}/ML1-0013-blk-mq-sched-refactor-blk_mq_sched_try_merge.patch"
-        "${_mlpath_1}/ML1-0014-blk-mq-improve-bio-merge-from-blk-mq-sw-queue.patch"
+        #"${_mlpath_1}/ML1-0001-blk-mq-sched-fix-scheduler-bad-performance.patch"
+        #"${_mlpath_1}/ML1-0002-sbitmap-introduce-__sbitmap_for_each_set.patch"
+        #"${_mlpath_1}/ML1-0003-blk-mq-introduce-blk_mq_dispatch_rq_from_ctx.patch"
+        #"${_mlpath_1}/ML1-0004-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
+        #"${_mlpath_1}/ML1-0005-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
+        #"${_mlpath_1}/ML1-0006-blk-mq-sched-don-t-dequeue-request-until-all-in-disp.patch"
+        #"${_mlpath_1}/ML1-0007-blk-mq-sched-introduce-blk_mq_sched_queue_depth.patch"
+        #"${_mlpath_1}/ML1-0008-blk-mq-sched-use-q-queue_depth-as-hint-for-q-nr_requ.patch"
+        #"${_mlpath_1}/ML1-0009-block-introduce-rqhash-helpers.patch"
+        #"${_mlpath_1}/ML1-0010-block-move-actual-bio-merge-code-into-__elv_merge.patch"
+        #"${_mlpath_1}/ML1-0011-block-add-check-on-elevator-for-supporting-bio-merge.patch"
+        #"${_mlpath_1}/ML1-0012-block-introduce-.last_merge-and-.hash-to-blk_mq_ctx.patch"
+        #"${_mlpath_1}/ML1-0013-blk-mq-sched-refactor-blk_mq_sched_try_merge.patch"
+        #"${_mlpath_1}/ML1-0014-blk-mq-improve-bio-merge-from-blk-mq-sw-queue.patch"
+        "${_lucjanpath}/blk-mq-v5/0050-blk-mq-issue-rq-directly-in-blk_mq_request_bypass_insert().patch"
+        "${_lucjanpath}/blk-mq-v5/0051-blk-mq-sched-fix-scheduler-bad-performance.patch"
+        "${_lucjanpath}/blk-mq-v5/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch"
+        "${_lucjanpath}/blk-mq-v5/0053-blk-mq-introduc-blk_mq_dequeue_from_ctx().patch"
+        "${_lucjanpath}/blk-mq-v5/0054-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
+        "${_lucjanpath}/blk-mq-v5/0055-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
+        "${_lucjanpath}/blk-mq-v5/0056-blk-mq-sched-don't-dequeue-request-until-all-in->dispatch-are-flushed.patch"
+        "${_lucjanpath}/blk-mq-v5/0057-blk-mq-sched-introduce-blk_mq_sched_queue_depth().patch"
+        "${_lucjanpath}/blk-mq-v5/0058-blk-mq-sched-use-q->queue_depth-as-hint-for-q->nr_requests.patch"
+        "${_lucjanpath}/blk-mq-v5/0059-blk-mq-block-introduce-rqhash-helpers.patch"
+        "${_lucjanpath}/blk-mq-v5/0060-blk-mq-block-move-actual-bio-merge-code-into__elv_merge.patch"
+        "${_lucjanpath}/blk-mq-v5/0061-blk-mq-block-add-check-on-elevator-for-supporting-bio-merge-via-hashtable-from-blk-mq-sw-qu.patch"
+        "${_lucjanpath}/blk-mq-v5/0062-blk-mq-block-introduce-last_merge-and-hash-to-blk_mq_ctx.patch"
+        "${_lucjanpath}/blk-mq-v5/0063-blk-mq-sched-refactor-blk_mq_sched_try_merge().patch"
+        "${_lucjanpath}/blk-mq-v5/0064-blk-mq-improve-bio-merge-from-blk-mq-sw-queue.patch"
         # mailing-list (ML2) patches
         "${_mlpath_2}/ML2-0001-block-bfq-Disable-writeback-throttling.patch"
         # the main kernel config files
@@ -116,40 +133,32 @@ source=(# mainline kernel patches
         # standard config files for mkinitcpio ramdisk
         'linux.preset')
 
-sha256sums=(# mainline kernel patches
-            '2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
+sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
             '1e34c35dfbd3b7451a7b3eb93c5e342acc006b5d1906b5e542a8f203723bb8d6'
             'SKIP'
-            # gcc cpu optimizatons from graysky and ck forked by sir_lucjan
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
-            # bfq-mq patch
             '9742e1c7d8b836c5c7e8052d71247bb2cbf11732d238233b3090ff1b883d418b'
-            # tentative patches
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            # mailing-list (ML1) patches
-            'dbbcfc44c676f86e98e9a25ff0d2145f8b909f4a8bf7e25029bf24f315cbc4bb'
-            '50092d4e4e408937fa9a7a374b27144854ed676dac6ba48a9d6d14827703e15b'
-            '1f9a234069b487c6372517f4b29f75bb66e7c5a72e963dad8b8985d7bff7f38f'
-            '2ea4aedb93ad21d9832f96e0c13e42415060ebde1642c1a6de2164e8c9b61841'
-            '9e0c964332ba735c4c03b0b12b85ea120bf72236f06bf90e2840f6b4bcb62596'
-            '7862c2ea18f4fd61186c34f4a24df0d0b3639fe33c0be4fec0e1735a4f4f02ab'
-            '6926d21e260e058b99c7fae26aa63619b1eefa00fb108e0f0ee0ac8d0e2a31f4'
-            '0c4ab9933063ee8d4e1ed55fbff9e44f16a721c035d498a1cb778aa91799e01b'
-            '4d78f4e4c42a33fa3602bb3758d15bb3fe572ffd7794f6241449a2b0c96431e1'
-            '27bf68a36f635ed13c8ab613d40e72043284754a92a026eabb5ae589414faaa5'
-            'f37476acbe136e0ad5e2bf0be199678f4263d3e5e33bec1d1d8b8f19f5a0dfec'
-            '00346abf88880eaa8b200705b5a63e322df518eb2129e34ca45e1d90c4742037'
-            'bbb9dfdc98f5cdeaf1113d9c24cfafb95bc764af76d56dd57d964a16d81986b7'
-            '4f7bbc6d983ab947474f5ab44194328321def86ab3f8b095f4def198d5604d08'
-            # mailing-list (ML2) patches
+            '91d3a2d15ccc84de43f19a9538b4378fe7702e9e90e63207a1a519bdcc7614e4'
+            '0f5e66a42e4985495937e6407f00b4747a35e73c31d59d0c3be61c14fb629e0e'
+            'd0f1d2478965b2a8ae7f7d65e0ed4b74315b264b87608406e6f6332f0866581c'
+            'e4454eba9f744872c67286a6b102da552191d7ac187dc50764fe85127fa5d59d'
+            '2477a46621301f0a2b4bfdf51bcf6480bce9f86915f89b4867b92ee8d8680d62'
+            'f48be244c917c2f6f5bbc5fb335c441e3152d83cb21d80e6d2d2d14850685bb0'
+            'cdf3bdf4f90a97f1814dee15cc5c21ee455ea702f7ada44ea6b18f1eb4db022b'
+            '1011d65e7bd36667fb82a3729a62a1e237ed9d14f92702cd30bb0ddf9d13bd63'
+            'e0060c551bd084c4a1c56d2755973c4fa0936eff74edf6226e6464d382aa894a'
+            '89d85dcfa0253ef3a27a363987cbfd086d09f1888baaf8d537533f231422047d'
+            '160975f33c3083e8cf9524e34d8c0dd0dd50258ce0810c065742fd7eb6cdb7a4'
+            '89ab286aa6e0e8ccf233e2db563d78142f108467e1b6c94d4ea9a379c9ccd41b'
+            '78c1030dfb650d92cefaeea0516f945cc5c57849d993328f97a2e358f26fe1e5'
+            '8114b75c12cb816c68c69a7b37c87560daf8c4d1afd8eea7947e0c74c77fc342'
+            'd235d19767373cd1ddc70e1002b975f7f4df87409af560ef86d802ee61215e66'
             '5e57c8d1d87a63e1c5947aba02346862992f39be2b2761ea142b3897995495aa'
-            # the main kernel config files
             'c3b90be8c525f770090e58eac502a5ed2bdde2528960de97e2de1e64acc21854'
             '9bc042875c43c868166924c7ed7f3feed553206a971ebf7bb02bd4e1072257b9'
-            # pacman hook for initramfs regeneration
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            # standard config files for mkinitcpio ramdisk
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -185,8 +194,9 @@ prepare() {
   # ML1 - [PATCH V4 00/14] blk-mq-sched: improve SCSI-MQ performance: https://marc.info/?l=linux-block&m=150436546704854&w=2
   if [ -n "$_use_ml1_patches" ]; then
     msg "Apply mailing-list patches 1"
-    for p in ../ML1*.patch; do
-      msg " $p"
+    #for p in ../ML1*.patch; do
+    for p in ../*-blk-mq*.patch*; do
+    msg " $p"
     patch -Np1 -i "$p"; done
   fi
 
