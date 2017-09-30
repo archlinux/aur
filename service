@@ -10,7 +10,8 @@ WorkingDirectory=/opt/logitechmediaserver
 ExecStart=/opt/logitechmediaserver/slimserver.pl \
 	--prefsdir /opt/logitechmediaserver/prefs \
 	--cachedir /opt/logitechmediaserver/cache \
-	--logdir /opt/logitechmediaserver/Logs
+	--logdir /opt/logitechmediaserver/Logs \
+	--noimage --novideo
 
 [Install]
 WantedBy=multi-user.target
