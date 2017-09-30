@@ -1,0 +1,14 @@
+# mkinitcpio preset file for the 'linux-4.13.y-dc' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-4.13.y-dc"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-4.13.y-dc.img"
+#default_options=""
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-4.13.y-dc-fallback.img"
+fallback_options="-S autodetect"

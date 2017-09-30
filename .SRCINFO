@@ -1,0 +1,43 @@
+pkgbase = linux-4.13.y-dc
+	pkgver = 4.13.4.r2187.gae3152254b4c
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	options = !strip
+	source = git+https://github.com/darkbasic/linux-4.13.y-dc.git
+	source = config.i686
+	source = config.x86_64
+	source = linux-4.13.y-dc.preset
+	sha256sums = SKIP
+	sha256sums = ea075df0621d00942934e67f052a90210e8c1e9e3707cc1fd18f5213ebe6cbef
+	sha256sums = 5e8fe7a31eb40992b36ede09200c28024ee1089809a38e85bb2a1c0ca4c14770
+	sha256sums = bc36cc3fc72ce5526a0dff57dba1cb27dbd30ed53bb17ef9e31a3c0cd95dca3c
+
+pkgname = linux-4.13.y-dc
+	pkgdesc = The Linux kernel and modules (git version)
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-4.13.y-dc.preset
+
+pkgname = linux-4.13.y-dc-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
+	provides = linux-headers
+
+pkgname = linux-4.13.y-dc-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
+	provides = linux-docs
+
