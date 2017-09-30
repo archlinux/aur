@@ -1,6 +1,7 @@
 2017-09-30 Janne Heß
 	* 4.9.0-2
 	Add spice-glib dependency
+	Fix build with PIC
 	Apply XSA patches: 226 227 228 229 230 231 232 233 234 235
 
 2017-07-20 Janne Heß

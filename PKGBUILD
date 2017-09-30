@@ -113,6 +113,7 @@ source=(
 	'https://xenbits.xen.org/xsa/xsa245/0002-xen-arm-Correctly-report-the-memory-region-in-the-du.patch'
 
 	# Files
+	'nopic.patch'
 	'grub-mkconfig-helper'
 	'efi-xen.cfg'
 	'grub.conf'
@@ -154,6 +155,7 @@ sha256sums=(
 	'7164010112fcccd9cd88e72ace2eeabdb364dd6f4d05c434686267d18067f420'
 	# Last checked: XSA-245
 	# PKGBUILD files
+	'b270ce2dc383cf350ef00dae47064056cad382d8f3db7985a6d55207030c53de'
 	'06c9f6140f7ef4ccfc4b1a7d9732a673313e269733180f53afcd9e43bf6c26bb'
 	'ceaff798a92a7aef1465a0a0b27b1817aedd2c857332b456aaa6dd78dc72438f'
 	'3f0af16958c3e057b9baa5afc47050d9adf7dd553274dd97ae4f35938fefb568'
@@ -225,6 +227,9 @@ prepare() {
 	#patch -Np1 -i "${srcdir}/xsa211-qemuu-4.8.patch"
 	popd >/dev/null
 
+	# Patch build with PIC
+	patch -Np1 -i "${srcdir}/nopic.patch"
+
 	# Patch EFI binary build with mingw
 	msg2 'Patching EFI build...'
 	sed -i.bak '/ EFI_LD/s/LD/LD_EFI/' xen/arch/x86/Makefile
@@ -283,9 +288,6 @@ build() {
 	msg2 'Building Xen...'
 	# NO_WERROR is required for iPXE, as the sources are not extracted before the build
 	# and the Werror cannot be patched out
-	make LANG=C PYTHON=python2 NO_WERROR=1 dist || :
-	# This is an honestly ugly hack. If someone finds out why the build fails the first time, please contact me.
-	# It's ugly but it makes the package build
 	make LANG=C PYTHON=python2 NO_WERROR=1 dist
 }
 
