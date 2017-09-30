@@ -1,0 +1,2 @@
+#!/bin/bash
+java -jar /usr/lib/origami-editor-3d/OrigamiEditor3D.jar

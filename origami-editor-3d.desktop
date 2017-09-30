@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Origami Editor 3D
+Comment=Virtual paper folding program 
+Comment[de]=Virtuelles Papierfalten Programm
+Exec=origami-editor-3d
+Icon=origami-editor-3d-icon
+Terminal=false
+Type=Application
+Categories=Graphics;Science;
+StartupNotify=true
+
