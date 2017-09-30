@@ -2,7 +2,7 @@
 
 _upstream=RazerGenie
 pkgname=razergenie
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Standalone Qt application for configuring your Razer devices under GNU/Linux."
 arch=("x86_64" "i686")
@@ -10,9 +10,8 @@ url="https://github.com/z3ntu/RazerGenie"
 license=('GPL3')
 depends=('qt5-base' 'hicolor-icon-theme' 'razer-daemon')
 makedepends=('cmake' 'extra-cmake-modules')
-source=("https://github.com/z3ntu/RazerGenie/archive/v$pkgver.tar.gz"
-        "https://github.com/z3ntu/RazerGenie/releases/download/v$pkgver/v$pkgver.tar.gz.asc")
-sha512sums=('46cd1d8365e4aa90f057fa34e319fcb115ea96255cc42be1fc48e047f63e780ec8ecce3689b6855d41583900139179474240e978fe3af0ceb706f02df15ba39d'
+source=("https://github.com/z3ntu/RazerGenie/releases/download/v$pkgver/RazerGenie-$pkgver.tar.xz"{,.asc})
+sha512sums=('b8ea90f982ed25231c10c7244615c8e6db97cb36a7740ab02855c0c5efdf22c19f8c770f1d51080f8d5d68ff6c212f290fc213bf393baf60517fe622b8b77cc9'
             'SKIP')
 validpgpkeys=('BD04DA24C971B8D587B2B8D7FAF69CF6CD2D02CD') # Luca Weiss <luca@z3ntu.xyz>
 
