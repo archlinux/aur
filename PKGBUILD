@@ -1,8 +1,8 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer-alpha
-pkgver=1.8.7.6937
-pkgrel=3
+pkgver=1.8.7.6939
+pkgrel=1
 _harfbuzzver=1.3.4-1
 _cairover=1.14.10-1
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (alpha version)"
@@ -29,8 +29,7 @@ source=("http://sourceforge.net/projects/singularityview/files/alphas/Singularit
 	"singularityviewer.launcher"
 	"https://archive.archlinux.org/packages/h/harfbuzz/harfbuzz-${_harfbuzzver}-x86_64.pkg.tar.xz"
 	"https://archive.archlinux.org/packages/c/cairo/cairo-${_cairover}-x86_64.pkg.tar.xz")
-
-md5sums=('d52e582343b5f173fa10aef7b5eb5ce1'
+md5sums=('27a2d9a834371051dbe5c69c9f63ae7e'
          'ff7aa34dcd7548e3acdb3c2d44ae6604'
          'eb596f5cf7b6f2d0c55c0082fb99a905'
          '0a3e4654c3009d740a6be09e58a2d451'
