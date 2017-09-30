@@ -5,7 +5,7 @@
 
 _srcname=knot
 pkgname=${_srcname}
-pkgver=2.5.4
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='high-performance authoritative-only DNS server'
 url='https://www.knot-dns.cz/'
@@ -25,11 +25,15 @@ depends=('fstrm'
          'zlib')
 makedepends=('systemd')
 source=("https://secure.nic.cz/files/knot-dns/${_srcname}-${pkgver}.tar.xz"
+        "https://secure.nic.cz/files/knot-dns/${_srcname}-${pkgver}.tar.xz.asc"
         'knot.service'
         'knot.tmpfiles')
-sha256sums=('3fde76e9084b75df374709cb73a8289f77c6a95b7ccff8584d7423566faa24f0'
+sha256sums=('68e04961d0bf6ba193cb7ec658b295c4ff6e60b3754d64bcd77ebdcee0f283fd'
+            'SKIP'
             'caa870a9c93c57c6311f9e8fb5685a9179bb9839a27a30cc1712c91df0d15090'
             '592ffb904b697b8c09ab95b3874ad00637333f1805ab2ab0ee50b4f484108ee2')
+validpgpkeys=(# Daniel Salzman <daniel.salzman@nic.cz>
+              '742FA4E95829B6C5EAC6B85710BB7AF6FEBBD6AB')
 
 build() {
 	cd "${srcdir}/${_srcname}-${pkgver}"
