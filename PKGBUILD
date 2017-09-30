@@ -1,17 +1,20 @@
-# Maintainer: Bram Swenson <bram@amplified.work>
+# Maintainer: Bram Swenson <bram at amplified dot work>
+# Maintainer: pancho horrillo <pancho at pancho dot name>
 
-pkgname_base='concourse-fly'
-pkgname="${pkgname_base}-bin"
+_pkgname='concourse-fly'
+pkgname="${_pkgname}-bin"
 pkgver=v3.5.0
-pkgrel=1
-pkgdesc="A command line interface that runs a build in a container with ATC."
+pkgrel=2
+pkgdesc='A command line interface that runs a build in a container with ATC.'
 arch=(x86_64)
-url="https://concourse.ci/fly-cli.html"
+url='https://concourse.ci/fly-cli.html'
 license=('Apache')
-source=(concourse-fly-bin-${pkgver}::https://github.com/concourse/concourse/releases/download/${pkgver}/fly_linux_amd64)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+replaces=("${_pkgname}")
+source=("${pkgname}-${pkgver}::https://github.com/concourse/concourse/releases/download/${pkgver}/fly_linux_amd64")
 sha512sums=('12aaeb0e8065b66b055ad8be9014334cfcf7d24f84a0bf6ecd1544f52a3e891ff7bc492dd57e36a78100b64610a9cf066bd3470dccef01888ec538a95715cc24')
-provides=('fly')
 
 package() {
-  install -Dm755 "concourse-fly-bin-${pkgver}" "$pkgdir/usr/bin/fly"
+    install -Dm755 "${pkgname}-${pkgver}" "$pkgdir/usr/bin/fly"
 }
