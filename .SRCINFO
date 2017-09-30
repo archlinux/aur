@@ -10,11 +10,10 @@ pkgbase = quickcurver-git
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-svg
-	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
 	source = git+https://github.com/magnus-gross/quickcurver.git
-	source = git+https://github.com/magnus-gross/qml-material
+	source = git+https://github.com/lirios/fluid.git
 	md5sums = SKIP
 	md5sums = SKIP
 

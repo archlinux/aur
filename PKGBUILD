@@ -31,7 +31,10 @@ prepare() {
 
 build() {
   cd "$_pkgname"
-  ./build.sh
+  mkdir build
+  cd build
+  qmake ..
+  make
 }
 
 package() {
