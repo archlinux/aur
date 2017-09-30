@@ -3,8 +3,8 @@
 # Contributor: Mikhail felixoid Shiryaev <mr dot felixoid na gmail com>
 
 pkgname=neovim-kotlin
-pkgver=r56.7fa99d0
-pkgrel=2
+pkgver=r57.6f60b66
+pkgrel=1
 pkgdesc='Kotlin highlighting and indentation for NeoVim'
 arch=('any')
 license=('LGPL3')
