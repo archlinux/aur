@@ -1,0 +1,20 @@
+pkgbase = perl-package-generator
+	pkgdesc = This packages the Foo-Bar distribution, containing the Foo::Bar module!
+	pkgver = 1.106
+	pkgrel = 1
+	url = https://metacpan.org/release/Package-Generator
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-check-isa
+	makedepends = perl-term-size
+	makedepends = perl-class-isa
+	makedepends = perl-sort-naturally
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Package-Generator-1.106.tar.gz
+	md5sums = SKIP
+
+pkgname = perl-package-generator
+
