@@ -1,0 +1,9 @@
+# arg 1:  the new package version
+post_install() {
+  ln -s /usr/share/htcap/htcap.py /usr/local/bin/htcap
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  rm /usr/local/bin/htcap
+}
