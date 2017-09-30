@@ -1,0 +1,20 @@
+pkgbase = domjura-git
+	pkgdesc = DOMjudge Results Application
+	pkgver = r149.b1e4a1d
+	pkgrel = 1
+	url = https://github.com/nickygerritsen/DOMjura
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = qt5-base
+	depends = ttf-dejavu
+	provides = domjura
+	conflicts = domjura
+	source = domjura::git+https://github.com/nickygerritsen/DOMjura
+	source = DOMjura.desktop
+	sha256sums = SKIP
+	sha256sums = 522c8ac4b2a2831d9ac4ba1d25ec3b767de228873428dcb5eda48ace6a516e6e
+
+pkgname = domjura-git
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=DOMjura
+Comment=Flash card based learning tool
+Exec=DOMjura
+Icon=DOMjura
+Terminal=false
