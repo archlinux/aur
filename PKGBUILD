@@ -4,7 +4,7 @@ set -u
 _pyver="python"
 _pybase='parse_type'
 pkgname="${_pyver}-${_pybase}"
-pkgver='0.3.4'
+pkgver='0.4.2'
 pkgrel='1'
 pkgdesc='simplifies to build parse types based on the parse module'
 arch=('any')
@@ -21,8 +21,8 @@ _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
 #source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 _verwatch=("https://pypi.python.org/simple/${_pybase//_/-}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
-source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('3dd0b323bafcb8c25e000ce5589042a1c99cba9c3bec77b9f591e46bc9606147')
+source=("https://pypi.io/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
+sha256sums=('f596bdc75d3dd93036fbfe3d04127da9f6df0c26c36e01e76da85adef4336b3c')
 
 build() {
   set -u
