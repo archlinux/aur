@@ -8,6 +8,7 @@ pkgrel=1
 arch=('x86_64')
 url="http://kubernetes.io"
 license=('apache')
+depends=('kubelet-bin')
 conflicts=('kubernetes')
 source_x86_64=(https://packages.cloud.google.com/apt/pool/kubeadm_1.7.5-00_amd64_5683ceb924f3cefd14a3307ddef30af20d567ad90692ef6a92f229ac9fa1b3a0.deb)
 sha256sums_x86_64=('5683ceb924f3cefd14a3307ddef30af20d567ad90692ef6a92f229ac9fa1b3a0')
