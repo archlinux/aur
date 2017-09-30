@@ -14,12 +14,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=12.5.7_5813279
-_pkgver=${pkgver}
-#pkgver=12.5.7
-#_buildver=5813279
-#_pkgver=${pkgver}_${_buildver}
-pkgrel=7
+pkgver=14.0.0
+_buildver=6661328
+_pkgver=${pkgver}_${_buildver}
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -38,13 +36,12 @@ depends=(
   dkms
   fuse2
   gksu
-  gtkmm
+  gtkmm3
   libcanberra
+  pcsclite
   hicolor-icon-theme
   # needed to replace internal libs:
-  fontconfig
-  freetype2
-  zlib
+  #zlib
 )
 optdepends=(
   'linux-headers: build modules against Arch kernel'
@@ -58,7 +55,6 @@ backup=(
   'etc/vmware/hostd/config.xml'
   'etc/vmware/hostd/datastores.xml'
   'etc/vmware/hostd/dispatcher.xml'
-  'etc/vmware/hostd/environments.xml'
   'etc/vmware/hostd/proxy.xml'
   'etc/vmware/hostd/tagExtractor.xml'
   'etc/vmware/netmap.conf'
@@ -95,17 +91,17 @@ source=(
   'vsock.patch'
 )
 sha256sums=(
-  '82178c109f987bb6740171572516f533a725f3563a26d628c769a88bcd4a84f7'
+  'f758e06d302b339c23f9c498d6dbf8a0182cfdfb71e4cdcc209ecfb68e20500a'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
-  '55af509a4328fa88518e7008c65ff5598e6007e99ca2b4421a8f9b26126f6ff3'
+  'd9a5f8b919d52aa2f279d8eaf0bb495780eb9fd8bbc2c58bba223cdca78cc991'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
   '6f57e027f0eb95b7cfaf5d7c10089e99be5b9ccab7c3785fcc6f98dbecaf47bc'
 
-  'd0806b6cb99af04232585def7b8043df3104b9b17470ea70abbd5bedc1e7ca16'
+  '9f508d5f7ce4b69d9f40f6fb0ff0fb3d5b26a3c48658da994bf63975d1b589ab'
   '434cd4aa440d36b75ee20e0b588aaad874bb0d796173990bc4046667c66f5099'
-  '25c5aa39489d14a60f9cb30bdd7b21d36399c3355daee8bf5fbebcb62fe9f45f'
+  '57c7568a89e8af1914cf7aea84d8fefd6e7af4155557081292344326d652ae70'
   '3c802523606184a5e8ebbe931d9c6c70d83ff8c6833b9f48aa264f0bd5a18a88'
 
   'f9440479f3ae5ad0a39bba3150276627878bf83d6879444fb327c53a1dbb5a4d'
@@ -114,13 +110,13 @@ sha256sums=(
   'f9297948eba55fbaa6c9d1846b92070f27fda17afe78b41ed0e4c2eaa452b56c'
   'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
 
-  '911a68af1c62f409e5e97c230ab67505ba2d1fe2e214d3ca4e0a11282d16efda'
-  'f03c329dff2cf9a2fdfad938c4ce4ac5502fad5de1ef76a951dbc365748d1698'
+  '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
+  '6ce902b1dab8fc69be253abd8e79017011985eca850ff7acc7282f9ab668e35d'
   '00be9dbef75266d882cbdc8cc0b8f78cd3b081d8ca9a3cbfa17cfc34b3f1a52f'
-  '6b0edcccad66ee1f971b675de4af704749d4677a4fc75a5026e47dc11435902c'
-  'b04baffa8ee7b5be56aba3d49d9c06be5e34a31808a6f93b899408dbda9aef40'
-  '4c960079fec78682000a1c2e82dcaae69a6e91858dea641b707cf60674f3799f'
-  'd7e6b21fef94b4d3fe655a68c20a9556a718a252826a899fb46c4f2475046954'
+  '18ac27b66e54bb4841756957c017ff9d8de1f5ccdbffbdc0017eef1d5dbfe1fb'
+  'caa200a78a29e786753b27a42970ee86865c15fd529fd413080b3f053d541dd1'
+  '4f07320c1f9e71e649cf3e98ec107ba5521d52e50ad781ccc9dc1b61817342ae'
+  '61dc56d66de042f247a9d7354fcf5a93779c7ea16c1cd5a82d917598283e08f0'
 )
 options=(!strip emptydirs)
 
@@ -129,7 +125,7 @@ _isoimages=(freebsd linux linuxPreGlibc25 netware solaris windows winPre2k winPr
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=8.5.8_5824040
+_vmware_fusion_ver=10.0.1_6754183
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 makedepends+=(
@@ -143,9 +139,9 @@ source+=(
   'unlocker.py'
 )
 sha256sums+=(
-  '01b187cb9a951190eda545e5d0235a98b0018f50942b4485844b627c3617d8d2'
-  '86702271b192c6116dbfe107206b10c0ab39d10cbbfcb53756dc09009f54f765'
-  '2ad5c0e7a31d7c2009e449fe16acfd5a9036b9d69258be82004cbd0ee41b42cf'
+  '3aeee4ddad2e94e5dbd8da3f995ad3f887f35a241d82e8c64a22f792c159cc44'
+  '2c6076d55da659723fb7b7871baaee95df3bdcd90e448955ed1ec53df6a1f2d0'
+  'a3877c72e4eaed6546a2d066f73f71665c51ea87cc752655185d99340deb7d70'
 )
 
 _fusion_isoimages=(darwin darwinPre15)
@@ -231,7 +227,7 @@ package() {
   cp -r \
     vmware-workstation/lib/* \
     vmware-player-app/lib/* \
-    vmware-vmx/lib/* \
+    vmware-vmx/{lib/*,roms} \
     vmware-vprobe/lib/* \
     vmware-workstation-server/{bin,lib,hostd} \
     vmware-usbarbitrator/bin \
@@ -249,7 +245,7 @@ package() {
     "$pkgdir/etc/vmware"
 
   cp -r \
-    vmware-vix-lib-Workstation1200/lib/Workstation-12.0.0 \
+    vmware-vix-lib-Workstation1400/lib/Workstation-14.0.0 \
     vmware-vix-core/{lib/*,vixwrapper-config.txt} \
     "$pkgdir/usr/lib/vmware-vix"
   cp vmware-vix-core/vix-perl.tar.nogz "$pkgdir/usr/lib/vmware-vix/vix-perl.tar.gz"
@@ -269,7 +265,9 @@ package() {
   cp -r \
     vmware-player-app/etc/cups/* \
     "$pkgdir/etc/cups"
-
+  cp -r \
+    vmware-player-app/extras/.thnumod \
+    "$pkgdir/etc/thnuclnt"
   cp -r \
     vmware-player-app/extras/thnucups \
     "$pkgdir/usr/lib/cups/filter"
@@ -284,7 +282,6 @@ package() {
     install -Dm 644 "vmware-tools-$isoimage/$isoimage.iso.sig" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso.sig"
   done
 
-  install -Dm 644 "vmware-player-app/doc/LearnMore.txt" "$pkgdir/usr/share/licenses/$pkgname/Privacy.txt"
   install -Dm 644 "vmware-workstation/doc/EULA" "$pkgdir/usr/share/licenses/$pkgname/VMware Workstation - EULA.txt"
   install -Dm 644 "vmware-workstation/doc"/*open_source_licenses.txt "$pkgdir/usr/share/licenses/$pkgname"
   mv "$pkgdir/usr/lib/vmware-ovftool/vmware.eula" "$pkgdir/usr/share/licenses/$pkgname/VMware OVF Tool component for Linux - EULA.txt"
@@ -326,15 +323,16 @@ package() {
     "$pkgdir/usr/bin"/* \
     "$pkgdir/usr/lib/vmware/bin"/* \
     "$pkgdir/usr/lib/vmware/setup"/* \
-    "$pkgdir/usr/lib/vmware/lib"/{wrapper-gtk24.sh,libgksu2.so.0/gksu-run-helper} \
+    "$pkgdir/usr/lib/vmware/lib"/libvmware-gksu.so/gksu-run-helper \
     "$pkgdir/usr/lib/vmware-ovftool"/{ovftool,ovftool.bin} \
     "$pkgdir/usr/lib/vmware-installer/$vmware_installer_version"/{vmware-installer,vmis-launcher} \
     "$pkgdir/usr/lib/cups/filter"/* \
-    "$pkgdir/usr/lib/vmware-vix/setup"/*
+    "$pkgdir/usr/lib/vmware-vix/setup"/* \
+    "$pkgdir/etc/thnuclnt/.thnumod"
 
   chmod -R 600 "$pkgdir/etc/vmware/ssl"
   chmod +s \
-    "$pkgdir/usr/bin"/{vmware-authd,vmware-mount} \
+    "$pkgdir/usr/bin"/vmware-authd \
     "$pkgdir/usr/lib/vmware/bin"/{vmware-vmx,vmware-vmx-debug,vmware-vmx-stats}
 
 
@@ -342,19 +340,22 @@ package() {
 
   for link in \
     licenseTool \
-    thnuclnt \
     vmplayer \
     vmware \
     vmware-app-control \
     vmware-enter-serial \
     vmware-fuseUI \
     vmware-gksu \
+    vmware-hostd \
     vmware-modconfig \
     vmware-modconfig-console \
     vmware-netcfg \
     vmware-tray \
     vmware-unity-helper \
+    vmware-vim-cmd \
     vmware-vmblock-fuse \
+    vmware-vprobe \
+    vmware-wssc-adminTool \
     vmware-zenity
   do
     ln -s /usr/lib/vmware/bin/appLoader "$pkgdir/usr/lib/vmware/bin/$link"
@@ -362,17 +363,12 @@ package() {
 
   ln -s /usr/lib/vmware/icu "$pkgdir/etc/vmware/icu"
   ln -s /usr/lib/vmware-ovftool/ovftool "$pkgdir/usr/bin/ovftool"
-  ln -s /usr/lib/vmware/bin/appLoader "$pkgdir/etc/thnuclnt/.thnumod"
 
 
   # Replace placeholder "variables" with real paths.
 
   for file in \
-    pango/pangorc \
-    pango/pango.modules \
-    pango/pangox.aliases \
-    gtk-2.0/gdk-pixbuf.loaders \
-    gtk-2.0/gtk.immodules
+    gtk-3.0/gdk-pixbuf.loaders
   do
     sed -i 's,@@LIBCONF_DIR@@,/usr/lib/vmware/libconf,g' "$pkgdir/usr/lib/vmware/libconf/etc/$file"
   done
@@ -402,13 +398,13 @@ package() {
     -e "s/@PKGVER@/$_pkgver/g" \
     -i "$dkms_dir/dkms.conf"
 
-  find vmware-vmx/lib/modules/source -mindepth 1 -exec bsdtar -xf {} -C "$dkms_dir" \;
-  rm -r "$pkgdir/usr/lib/vmware/modules/source"
-
   for module in vmblock vmci vmmon vmnet vsock; do
+    tar -xf "vmware-vmx/lib/modules/source/$module.tar" -C "$dkms_dir"
     msg "Patching $module module for DKMS"
     patch -p2 --read-only=ignore --directory="$dkms_dir/$module-only" < "$srcdir/$module.patch"
   done
+
+  rm -r "$pkgdir/usr/lib/vmware/modules/source"
 
 if [ -n "$_enable_macOS_guests" ]; then
   msg "Patching VMware for macOS guest support"
@@ -423,12 +419,8 @@ fi
 
   _create_database_file
 
-  # use system font rendering
-  ln -sf /usr/lib/libfreetype.so.6 "$pkgdir/usr/lib/vmware/lib/libfreetype.so.6/"
+  install -Dm 755 "$srcdir/vmware-profile.sh" "$pkgdir/etc/profile.d/vmware.sh"
 
   # to solve bugs with incompatibles library versions:
-  ln -sf /usr/lib/libz.so.1 "$pkgdir/usr/lib/vmware/lib/libz.so.1/"
-  # if there is not a better solution, define environment variable VMWARE_USE_SHIPPED_LIBS
-  install -Dm 755 "$srcdir/vmware-profile.sh" "$pkgdir/etc/profile.d/vmware.sh"
-  ln -sf /usr/lib/libfontconfig.so.1 "$pkgdir/usr/lib/vmware/lib/libfontconfig.so.1/" # avoid a conflict with fontconfig when VMWARE_USE_SHIPPED_LIBS is defined
+  #ln -sf /usr/lib/libz.so.1 "$pkgdir/usr/lib/vmware/lib/libz.so.1/"
 }

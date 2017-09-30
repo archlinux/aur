@@ -100,7 +100,7 @@ index f676166..9e42f3f 100644
     return result;
  }
  
-@@ -2473,7 +2485,11 @@ vmci_exit(void)
+@@ -2480,7 +2505,11 @@ vmci_exit(void)
  
     if (guestDeviceInit) {
        pci_unregister_driver(&vmci_driver);
@@ -109,10 +109,10 @@ index f676166..9e42f3f 100644
 +#else
 +      kvfree(data_buffer);
 +#endif
+       data_buffer = NULL;
        guestDeviceInit = FALSE;
     }
- 
-@@ -2482,7 +2498,7 @@ vmci_exit(void)
+@@ -2490,7 +2519,7 @@ vmci_exit(void)
  
        VMCI_HostCleanup();
  
@@ -283,12 +283,12 @@ diff --git a/vmci/shared/vmci_kernel_if.h b/vmci/shared/vmci_kernel_if.h
 index 9def671..082fe59 100644
 --- a/vmci/shared/vmci_kernel_if.h
 +++ b/vmci/shared/vmci_kernel_if.h
-@@ -93,7 +93,7 @@
+@@ -100,7 +100,7 @@
    typedef Semaphore VMCIEvent;
    typedef Semaphore VMCIMutex;
    typedef World_ID VMCIHostVmID;
 -  typedef uint32 VMCIHostUser;
 +  typedef uint32_t VMCIHostUser;
    typedef PPN *VMCIQPGuestMem;
- #elif defined(linux)
+ #elif defined(__linux__)
    typedef spinlock_t VMCILock;

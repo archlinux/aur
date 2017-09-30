@@ -42,6 +42,7 @@ Offset  Length  Struct Type Description
 """
 
 from __future__ import print_function
+import codecs
 import os
 import sys
 import struct
@@ -60,8 +61,8 @@ if sys.platform == 'win32' \
 def rot13(s):
     chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz'
     trans = chars[26:] + chars[:26]
-    rot_char = lambda c: trans[chars.find(c)] if chars.find(c) > -1 else c
-    return ''.join(rot_char(c) for c in s)
+    rotchar = lambda c: trans[chars.find(c)] if chars.find(c) > -1 else c
+    return ''.join(rotchar(c) for c in s)
 
 
 def bytetohex(data):
@@ -172,7 +173,7 @@ def patchkeys(f, key):
 
             # Write new data for key
             f.seek(offset + 24)
-            smc_new_data = rot13('bheuneqjbexolgurfrjbeqfthneqrqcy')
+            smc_new_data = codecs.encode('bheuneqjbexolgurfrjbeqfthneqrqcy', 'rot_13')
             f.write(smc_new_data.encode('UTF-8'))
             f.flush()
 
@@ -194,7 +195,7 @@ def patchkeys(f, key):
 
             # Write new data for key
             f.seek(offset + 24)
-            smc_new_data = rot13('rnfrqbagfgrny(p)NccyrPbzchgreVap')
+            smc_new_data = codecs.encode('rnfrqbagfgrny(p)NccyrPbzchgreVap', 'rot_13')
             f.write(smc_new_data.encode('UTF-8'))
             f.flush()
 
@@ -300,14 +301,14 @@ def patchbase(name):
         '\x02\x00\x00\x00\x00\x00\x00\x00'
         '\x00\x00\x00\x00\x00\x00\x00\x00'
         '\x00\x00\x00\x00\x00\x00\x00\x00'
-        '\xBE'
+        '\x3E'
     )
 
     # Read file into string variable
     base = f.read()
 
     # Loop thorugh each entry and set top bit
-    # 0xBE --> 0xBF
+    # 0x3E --> 0x3F
     offset = 0
     while offset < len(base):
         offset = base.find(darwin, offset)
@@ -315,9 +316,9 @@ def patchbase(name):
             break
         f.seek(offset + 32)
         flag = f.read(1)
-        if flag == '\xBE':
+        if flag == '\x3E':
             f.seek(offset + 32)
-            f.write('\xBF')
+            f.write('\x3F')
             print('GOS Patched flag @: ' + hex(offset))
         else:
             print('GOS Unknown flag @: ' + hex(offset) + '/' + hex(int(flag)))
@@ -372,7 +373,7 @@ def main():
         vmx_debug = joinpath(vmx_path, 'vmware-vmx-debug')
         vmx_stats = joinpath(vmx_path, 'vmware-vmx-stats')
         vmx_version = subprocess.check_output(["vmplayer", "-v"])
-        if vmx_version.startswith('VMware Player 12'):
+        if vmx_version.startswith('VMware Player 14'):
             vmx_so = True
             vmwarebase = '/usr/lib/vmware/lib/libvmwarebase.so/libvmwarebase.so'
         else:

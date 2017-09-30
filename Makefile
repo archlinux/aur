@@ -1,9 +1,9 @@
 #!/usr/bin/make -f
 
 MODULES = \
-	vmblock \
 	vmmon \
 	vmnet \
+	#vmblock \
 	#vmci \
 	#vsock
 
