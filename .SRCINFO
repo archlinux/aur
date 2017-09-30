@@ -1,5 +1,5 @@
 pkgbase = linux-4.13.y-dc
-	pkgver = 4.13.4.r2187.gae3152254b4c
+	pkgver = 4.13.4.r2201.g9b76449e55e1
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
