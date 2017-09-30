@@ -1,13 +1,12 @@
 pkgbase = firejail-apparmor
 	pkgdesc = Apparmor support for Firejail
 	pkgver = 0.9.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://firejail.wordpress.com/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = apparmor-profiles
-	depends = apparmor-utils
+	depends = apparmor
 	provides = firejail
 	conflicts = firejail
 	backup = etc/firejail/login.users

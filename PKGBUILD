@@ -1,12 +1,12 @@
 # Maintainer: Irvine <irvinemcminn_at_that gmail_place>
 pkgname=firejail-apparmor
 pkgver=0.9.50
-pkgrel=1
+pkgrel=2
 pkgdesc="Apparmor support for Firejail"
 arch=('i686' 'x86_64')
 url="https://firejail.wordpress.com/"
 license=('GPL2')
-depends=('apparmor-profiles' 'apparmor-utils')
+depends=('apparmor')
 provides=('firejail')
 conflicts=('firejail')
 backup=('etc/firejail/login.users'
