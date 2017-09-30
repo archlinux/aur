@@ -22,6 +22,7 @@ pkgver() {
 }
 
 build() {
+  unset EMACS
   cd "$_gitrepo"
   make EFLAGS="-L /usr/share/emacs/site-lisp -L /usr/share/emacs/site-lisp/dash -L ${srcdir}/${_gitrepo}/lisp" \
        lisp info
