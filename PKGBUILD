@@ -3,7 +3,7 @@ pkgname=ocaml-curl
 pkgver=0.7.10
 pkgrel=1
 pkgdesc="OCaml bindings to libcurl networking library"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('BSD')
 depends=('ocaml' 'curl>=7.9.8')
 makedepends=('ocaml-findlib')
