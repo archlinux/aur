@@ -2,7 +2,7 @@
 # Contributor: Jon Gjengset <jon@thesquareplanet.com>
 
 pkgname=hotspot-git
-pkgver=r289.ec0cf00
+pkgver=v1.1.0.r2.g442c10e
 pkgrel=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('any')
