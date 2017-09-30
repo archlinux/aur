@@ -1,0 +1,22 @@
+pkgbase = perl-directory-scratch-structured
+	pkgdesc = This packages the Foo-Bar distribution, containing the Foo::Bar module!
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://metacpan.org/release/Directory-Scratch-Structured
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-install
+	makedepends = perl-directory-scratch
+	makedepends = perl-check-isa
+	makedepends = perl-term-size
+	makedepends = perl-class-isa
+	makedepends = perl-sort-naturally
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/N/NK/NKH/Directory-Scratch-Structured-0.04.tar.gz
+	md5sums = SKIP
+
+pkgname = perl-directory-scratch-structured
+
