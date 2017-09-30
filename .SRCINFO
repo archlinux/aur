@@ -14,8 +14,8 @@ pkgbase = irrlicht-svn
 	depends = bzip2
 	depends = libpng
 	optdepends = libxcursor: run examples
-	provides = $_pkgname
-	conflicts = $_pkgname
+	provides = irrlicht
+	conflicts = irrlicht
 	source = irrlicht-svn::svn://svn.code.sf.net/p/irrlicht/code/trunk
 	md5sums = SKIP
 
