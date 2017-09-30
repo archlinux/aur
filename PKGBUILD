@@ -2,7 +2,7 @@
 pkgname=perl-hash-slice
 pkgver=0.03
 pkgrel=1
-pkgdesc='This packages the Foo-Bar distribution, containing the Foo::Bar module!'
+pkgdesc='Hash::Slice lets you easily make a deep slice of a hash, specifically a hash containing one or more nested hashes.'
 _dist=Hash-Slice
 arch=('any')
 url="https://metacpan.org/release/$_dist"
