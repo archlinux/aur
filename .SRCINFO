@@ -1,7 +1,7 @@
 pkgbase = nuvolaruntime
 	pkgdesc = Nuvola Apps Runtime - Tight integration of web apps with your desktop
-	pkgver = 4.7.0
-	pkgrel = 3
+	pkgver = 4.8.0
+	pkgrel = 1
 	url = https://github.com/tiliado/nuvola-app-google-play-music
 	arch = any
 	license = custom:BSD
@@ -18,7 +18,7 @@ pkgbase = nuvolaruntime
 	depends = webkit2gtk
 	depends = libnotify
 	depends = gstreamer
-	depends = libdri2-git
+	depends = libdri2
 	depends = libdrm
 	optdepends = nuvola-app-8tracks: 8tracks integration for Nuvola Player.
 	optdepends = nuvola-app-amazon-cloud-player: amazon cloud player integration for Nuvola Player.
@@ -50,8 +50,8 @@ pkgbase = nuvolaruntime
 	optdepends = unit.js: Unit testing framework for javascript / Node.js.
 	provides = nuvolaplayer
 	conflicts = nuvolaplayer
-	source = https://github.com/tiliado/nuvolaruntime/archive/4.7.0.tar.gz
-	sha256sums = 6b4da3b371d2e3259b86317fd3c6fde2142912b84d7a5d1563adfafeb67b147c
+	source = https://github.com/tiliado/nuvolaruntime/archive/4.8.0.tar.gz
+	md5sums = d251e4928690bf46dedc8c02a072c836
 
 pkgname = nuvolaruntime
 
