@@ -5,11 +5,11 @@ _pkgname=i3-sensible-browser
 pkgver=18.a537351
 pkgrel=1
 pkgdesc='Launches $BROWSER with fallbacks'
-url='https://gitlab.com/ilpianista/i3-sensible-browser'
+url='https://github.com/ilpianista/i3-sensible-browser'
 arch=('any')
 license=('GPL')
 makedepends=('git')
-source=(${_pkgname}::'git+https://gitlab.com/ilpianista/i3-sensible-browser.git')
+source=(${_pkgname}::'git+https://github.com/ilpianista/i3-sensible-browser.git')
 md5sums=('SKIP')
 
 pkgver() {
