@@ -1,0 +1,36 @@
+From 465dcb345c232f9da26d6182c970d5533fceeff4 Mon Sep 17 00:00:00 2001
+From: Michael Lass <bevan@bi-co.net>
+Date: Sat, 30 Sep 2017 22:21:26 +0200
+Subject: [PATCH] multipath-tools: libdmmp: Fix build for members of samba
+ domain
+
+When the user building libdmmp is part of a samba domain, mktemp will create
+a path like /tmp/MYDOMAIN\mylogin/tmp.* Use quotation marks to allow using a
+path containing backslashes as build otherwise fails for these users.
+
+Signed-off-by: Michael Lass <bevan@bi-co.net>
+---
+ libdmmp/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libdmmp/Makefile b/libdmmp/Makefile
+index cdd26ed7..a5031b67 100644
+--- a/libdmmp/Makefile
++++ b/libdmmp/Makefile
+@@ -75,10 +75,10 @@ docs/man/$(EXTRA_MAN_FILES).gz: $(HEADERS)
+ 		$(INSTALL_PROGRAM) -v -m 644 -D docs/$$file docs/man/$$file; \
+ 	done
+ 	cat $(HEADERS) | \
+-	    perl docs/doc-preclean.pl > $(TEMPFILE)
+-	perl docs/kernel-doc -man $(TEMPFILE) | \
++	    perl docs/doc-preclean.pl > "$(TEMPFILE)"
++	perl docs/kernel-doc -man "$(TEMPFILE)" | \
+ 	    perl docs/split-man.pl docs/man
+-	-rm -f $(TEMPFILE)
++	-rm -f "$(TEMPFILE)"
+ 	@for file in docs/man/*.3; do \
+ 		gzip -f $$file; \
+ 	done
+-- 
+2.14.2
+
