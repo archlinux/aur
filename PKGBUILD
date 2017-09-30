@@ -27,7 +27,7 @@ prepare() {
 
 build() {
     cd "${pkgname%-git}"
-    env CC=gcc CXX=g++ cmake . -DCMAKE_INSTALL_PREFIX=/usr
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
