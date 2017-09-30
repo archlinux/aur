@@ -46,7 +46,7 @@ fi
 pkgbase=xen
 pkgname=(xen xen-docs)
 pkgver="${_xen_version}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual Machine Hypervisor & Tools'
 url='http://www.xenproject.org/'
 license=('GPL2')
@@ -70,6 +70,7 @@ makedepends=(
 	pandoc
 	perl
 	spice-protocol
+	spice-glib
 	wget
 	# Dependencies from xen
 	bridge-utils
