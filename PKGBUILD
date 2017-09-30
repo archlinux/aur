@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=dispmanx_vnc
-pkgver=8af7fcf
+pkgver=r17.8af7fcf
 pkgrel=1
 pkgdesc="VNC Server for Raspberry Pi using dispmanx"
 arch=('armv7h' 'armv6h')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --always | sed 's|-|.|g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
