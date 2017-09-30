@@ -1,0 +1,20 @@
+pkgbase = perl-data-treedumper-renderer-gtk
+	pkgdesc = This Gtk2::TreeView derived widget allows you to diplay a Data::TreeDumper generated dump in a GTK window. The nodes are collapsable.
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/Data-TreeDumper-Renderer-GTK
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-treedumper
+	depends = gtk2-perl
+	depends = glib-perl
+	depends = perl-class-isa
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/N/NK/NKH/Data-TreeDumper-Renderer-GTK-0.02.tar.gz
+	md5sums = SKIP
+
+pkgname = perl-data-treedumper-renderer-gtk
+
