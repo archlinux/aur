@@ -4,12 +4,12 @@
 
 pkgname=atlassian-confluence
 pkgver=6.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Enterprise wiki"
 url="https://www.atlassian.com/software/confluence"
 license=('custom')
 arch=('any')
-depends=('java-environment=8')
+depends=('jdk8')
 optdepends=('mysql-connector-java: connect to MySQL')
 backup=('etc/conf.d/confluence'
         'etc/webapps/atlassian-confluence/server.xml')
