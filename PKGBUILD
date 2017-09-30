@@ -35,5 +35,4 @@ package() {
     cd "${pkgname%-git}"
     make DESTDIR="${pkgdir}/" install
     mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
-    rm -rf "$pkgdir/usr/share/icons"
 }
