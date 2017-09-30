@@ -1,0 +1,20 @@
+pkgbase = perl-treedumper
+	pkgdesc = This packages the Foo-Bar distribution, containing the Foo::Bar module!
+	pkgver = 0.40
+	pkgrel = 1
+	url = https://metacpan.org/release/Data-TreeDumper
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-check-isa
+	makedepends = perl-term-size
+	makedepends = perl-class-isa
+	makedepends = perl-sort-naturally
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/N/NK/NKH/Data-TreeDumper-0.40.tar.gz
+	md5sums = SKIP
+
+pkgname = perl-treedumper
+
