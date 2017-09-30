@@ -1,0 +1,16 @@
+--- old/canon-pixma-mx410-complete/usr/share/ppd/canonmx410.ppd 2017-09-30 12:16:04.727708230 +0200
++++ new/canon-pixma-mx410-complete/usr/share/ppd/canonmx410.ppd	2017-09-30 12:14:44.104370851 +0200
+
+@@ -68,6 +68,12 @@
+ *ColorModel rgb/RGB: "<</cupsColorOrder 0/cupsColorSpace 1/cupsCompression 0/cupsBitsPerColor 8>>setpagedevice"
+ *CloseUI: *ColorModel
+ 
++*OpenUI *CNGrayscale/Grayscale: PickOne
++*DefaultCNGrayscale: false
++*CNGrayscale false/Off: "false"
++*CNGrayscale true/On: "true"
++*CloseUI: *CNGrayscale
++
+ *OpenUI *PageSize/Page Size: PickOne
+ *DefaultPageSize: A4.bl
+ *PageSize Letter/Letter [8.50"x11.00" 215.9x279.4mm]: "<</CNPageSizeName(Letter)/PageSize[612 792]/ImagingBBox null>>setpagedevice"

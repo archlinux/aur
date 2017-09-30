@@ -1,0 +1,22 @@
+pkgbase = canon-pixma-mx410-complete
+	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MX410 series. Includes Greyscale patch.
+	pkgver = 3.50
+	pkgrel = 1
+	url = https://www.canon-europe.com/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mx_series/pixma_mx410.aspx?type=drivers&language=EN
+	install = canon_mx410.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = deb2targz
+	depends = popt
+	depends = libpng12
+	depends = libusb-compat
+	depends = libtiff4
+	depends = gtk2
+	source = http://gdlp01.c-wss.com/gds/6/0100003296/01/cnijfilter-mx410series-3.50-1-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/6/0100003306/01/scangearmp-mx410series-1.70-1-deb.tar.gz
+	md5sums = e31980a7927c81f78af5c63f2e6880e9
+	md5sums = 40fa7089790aac9379add59e44429dc0
+
+pkgname = canon-pixma-mx410-complete
+
