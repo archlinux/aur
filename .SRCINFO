@@ -32,6 +32,7 @@ pkgbase = weston-eglstream
 	depends = libva
 	depends = libxcursor
 	depends = colord
+	depends = egl-wayland-git
 	provides = weston
 	conflicts = weston
 	source = https://wayland.freedesktop.org/releases/weston-3.0.0.tar.xz

@@ -13,7 +13,7 @@ license=('MIT')
 depends=('glibc' 'wayland' 'libxkbcommon' 'libinput' 'libunwind' 'pixman'
          'libdrm' 'pam' 'libsystemd' 'cairo' 'libpng' 'libjpeg-turbo' 'libwebp'
          'libegl' 'libgles' 'glib2' 'pango' 'lcms2' 'mtdev' 'libx11'
-         'libxcb' 'dbus' 'libva' 'libxcursor' 'colord')
+         'libxcb' 'dbus' 'libva' 'libxcursor' 'colord' 'egl-wayland-git')
 makedepends=('wayland-protocols')
 provides=('weston')
 conflicts=('weston')
