@@ -6,7 +6,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=173.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform (gcloud), plus Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
