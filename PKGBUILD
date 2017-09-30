@@ -13,7 +13,7 @@ source=("http://telerik-fiddler.s3.amazonaws.com/${pkgname}/${pkgname}-linux.zip
 		"${pkgname}.png"
 		"${pkgname}.sh")
 sha1sums=('112a1ae7c350d702b1dc368b24f16e3bb1843dbd'
-          'bee1aeabed80319c5c24b7930bf763b982675b58'
+          '814285f8a69e15b43afb47317cdfb5910c725f76'
           'da3c1afeb3a4ec8911766a548175b1138810e14d'
           '2f84386c418f50c10229deb8416047bae6333969')
 
@@ -26,6 +26,7 @@ package() {
   cp -r "${srcdir}" "${pkgdir}/opt/${pkgname}"  
   install -D -m644 "${srcdir}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"  
   install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -D -m644 "${srcdir}/${pkgname}.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -D -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
   
   # Files that get written on runtime 

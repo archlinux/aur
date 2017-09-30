@@ -2,7 +2,7 @@
 Name=Fiddler Web Debugger Proxy
 Comment=The Free Web Debugger Proxy by Telerik
 Exec=mono /opt/fiddler/Fiddler.exe %u
-Icon=/opt/fiddler/fiddler.png
+Icon=fiddler
 Terminal=false
 Type=Application
 Categories=Development;
