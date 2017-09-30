@@ -9,13 +9,13 @@ url='https://madmurphy.github.io/libconfini/'
 license=('GPL')
 makedepends=('intltool')
 source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('7f8f066d722570a5018a109d13c02ad6')
+md5sums=('63b12cca85a85fcfe5666152a33f5b52')
 
 prepare() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	./autogen.sh
-	./configure --prefix=/usr CFLAGS='-g -O3'
+	./configure --prefix=/usr CFLAGS='-pedantic -std=c99 -g -O3'
 
 }
 
