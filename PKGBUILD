@@ -7,7 +7,7 @@ pkgname='ros-kinetic-libfreenect'
 pkgver='0.5.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Apache 2.0')
 
 ros_makedepends=()
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="libfreenect-ros-release-release-kinetic-libfreenect-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-drivers-gbp/libfreenect-ros-release/archive/release/kinetic/libfreenect/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f88cec77b3e7847bc4ee13e63bd644565980f039dc0431b94f8823af93212e08')
+sha256sums=('c1523f04c9e92d69fe6bf05189a87b74f2b1db907aee16c7fe38d87b7e45457a')
 
 build() {
   # Use ROS environment variables
