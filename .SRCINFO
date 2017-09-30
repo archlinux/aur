@@ -1,7 +1,7 @@
 pkgbase = qpmx
 	pkgdesc = A frontend for qpm, to provide source and build caching
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Skycoder42/qpmx
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,10 @@ pkgbase = qpmx
 	depends = qt5-jsonserializer
 	source = qpmx-1.1.0::git+https://github.com/Skycoder42/qpmx.git#tag=1.1.0
 	source = qpmx.rule
+	source = plugin.rule
 	sha256sums = SKIP
 	sha256sums = 6029d42b05d32d99a6e673e5a7c95ac657e6258f88835f8aff05bde7535e543b
+	sha256sums = a7f6099680d692285332ae7db3cf1414f4d664ceccb701d45ac73ecaa08a65dc
 
 pkgname = qpmx
 	optdepends = qpmx-qpmsource: Adds support for cloning qpm packages
