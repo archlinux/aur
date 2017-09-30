@@ -2,7 +2,7 @@
 # Contributor: j1simon
 pkgname=buttercup-desktop
 pkgver=0.21.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Javascript Password Vault - Multi-Platform Desktop Application'
 arch=('i686' 'x86_64')
 url="https://github.com/buttercup/buttercup-desktop"
@@ -35,7 +35,7 @@ package() {
   else
     _distname="linux-unpacked"
   fi
-  mkdir -p "$pkgdir/usr/lib"
+  mkdir -p "$pkgdir"/usr/{lib,bin}
   mv "$srcdir/$pkgname-$pkgver/release/$_distname" "$pkgdir/usr/lib/$pkgname"
   ln -s /usr/lib/$pkgname/buttercup "$pkgdir/usr/bin/buttercup"
 }
