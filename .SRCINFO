@@ -1,0 +1,20 @@
+pkgbase = elibsrv
+	pkgdesc = a light OPDS library server for EPUB and PDF ebooks
+	pkgver = 20170325
+	pkgrel = 1
+	url = http://elibsrv.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = ebook-tools
+	depends = php
+	depends = sqlite
+	depends = php-sqlite
+	depends = php-gd
+	optdepends = kindlegen
+	optdepends = poppler
+	source = http://downloads.sourceforge.net/sourceforge/elibsrv/elibsrv-20170325.tar.xz
+	sha256sums = 2530853a48c542876eef719240d3bb3b28132e76090dbe56a902d80d2f08ddb2
+
+pkgname = elibsrv
+
