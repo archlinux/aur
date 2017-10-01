@@ -46,6 +46,12 @@ package_nikola-git() {
 
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgbase}"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+
+  echo "Creating tab completion..."
+  "${pkgdir}/usr/bin/${pkgbase}" tabcompletion -s zsh > zsh_completion 2> /dev/null
+  "${pkgdir}/usr/bin/${pkgbase}" tabcompletion -s bash > bash_completion 2> /dev/null
+  install -D -m755 'zsh_completion' "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -D -m755 'bash_completion' "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
 }
 
 package_python-nikola-doc-git() {
