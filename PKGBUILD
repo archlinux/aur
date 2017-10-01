@@ -5,15 +5,16 @@
 pkgname=st-patched-git
 _pkgname=st
 pkgver=0.7.r37.gb1338e9
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple virtual terminal emulator for X with patches and easy configurable colorscheme'
 arch=('i686' 'x86_64')
-url='http://st.suckless.org/'
+url='https://st.suckless.org/'
 license=('MIT')
 options=('zipman')
 depends=('libxft' 'xorg-fonts-misc')
 makedepends=('ncurses' 'libxext' 'git')
-optdepends=('dmenu: for unicode input')
+optdepends=('dmenu: for unicode input'
+            'otf-fantasque-sans-mono: default defined font' )
 
 _patches=(
     "https://st.suckless.org/patches/vertcenter/st-vertcenter-20170601-5a10aca.diff"

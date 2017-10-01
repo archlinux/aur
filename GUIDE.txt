@@ -6,7 +6,7 @@ ScrollBack:
 
 COLORSCHEME:
 	Modify colorscheme.h. 'alpha' is for tranparency in hex, must be set if alpha patch is to be enabled.
-	Defualt colorscheme shipped is 'Gruvbox'.
+	N.B: unicode input is bugged if not full opaque.
 
 	Opacity/alpha Values: 
 	100% — FF				50% — 80
@@ -20,6 +20,8 @@ COLORSCHEME:
 	60% — 99				10% — 1A
 	55% — 8C				5% — 0D
 				0% — 00
+
+FONT: change in st-extra-config-20170715.diff file
 
 KEYBINDINGS CHANGE:
 	Primary Selection Paste -> Shift-Insert
