@@ -9,8 +9,8 @@ url="https://github.com/KDE/qt1"
 license=("custom:Qt Free Edition License")
 depends=("libx11" "libxext") # TODO : Fill
 _commit="78811a56cc111d17f42221566e7e4430d5de8d40"
-source=("https://github.com/KDE/$pkgname/archive/$_commit.zip")
-sha256sums=('7a43fd9d30af8f07f94e6cbfee13b257b1ab6261c1b25f4a880e9eda033351d0')
+source=("https://github.com/KDE/$pkgname/archive/$_commit.tar.gz")
+sha256sums=('cf745bb7a40f4fe2c830f3ece3133853eb5d99280e6b108852c4655e83fa30af')
 
 prepare() {
   cd $srcdir/$pkgname-$_commit
