@@ -1,33 +1,32 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=ldcad
-pkgver=1.5
-pkgrel=2
+pkgver=1.6
+pkgrel=1
 pkgdesc="A multiplatform LDraw (virtual LEGO) editor that lets you edit LDraw model documents in real-time"
 arch=('i686' 'x86_64')
 url="http://www.melkert.net/LDCad"
 license=('custom')
 depends=('gtk2' 'glu' 'xdg-utils')
 backup=('etc/LDCad.cfg')
-source_i686=("http://www.melkert.net/action/download/LDCad-${pkgver//./-}-Linux-32.tar.bz2")
-source_x86_64=("http://www.melkert.net/action/download/LDCad-${pkgver//./-}-Linux-64.tar.bz2")
-source=('license.txt')
-md5sums=('9917fda1740c892e0e7d240fb4fd8812')
-md5sums_i686=('9855dab2af49cb68405fd254c44f2b96')
-md5sums_x86_64=('9448e18efe67da91fba0e424c18aa726')
+source=("http://www.melkert.net/action/download/LDCad-${pkgver//./-}-Linux.tar.bz2"
+        "license.txt")
+sha256sums=('0f118400e23a5b1cfbb6cf0f00e73b5f20271c7c072a51ff735de837d2ef1211'
+            '9f94daabad96e05f398e634ab1ed713a1c1326c147825896d8af1b251035e217')
 
-if [ "$CARCH" == x86_64 ]; then
-	_srcname=LDCad-${pkgver//./-}-Linux-64/
-elif [ "$CARCH" == i686 ]; then
-	_srcname=LDCad-${pkgver//./-}-Linux-32/
-fi
 
 prepare() {
-	cd "${srcdir}/${_srcname}"
+	cd "${srcdir}/LDCad-${pkgver//./-}-Linux"
 	# Make the setup script install to the correct paths
 	sed -i -e "s:/usr:$pkgdir/usr:" \
 		   -e "s:/etc:$pkgdir/etc:" \
 		   -e '/update-mime-database/d' \
 		   -e '/update-desktop-database/d' setup.sh
+    
+    if [ "$CARCH" == x86_64 ]; then
+	    cp LDCad64 LDCad
+    elif [ "$CARCH" == i686 ]; then
+	    cp LDCad32 LDCad
+    fi
 }
 
 package() {
@@ -39,7 +38,7 @@ package() {
 	mkdir -p usr/share/applications/
 	
 	# Run installer
-	cd "${srcdir}/${_srcname}"
+	cd "${srcdir}/LDCad-${pkgver//./-}-Linux"
 	./setup.sh
 	
 	# Move mime file so it doesn't conflict with other packages
@@ -52,5 +51,4 @@ package() {
 		
 	# Install license
 	install -D -m644 "${srcdir}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
 }
