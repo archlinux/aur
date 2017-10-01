@@ -20,7 +20,11 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    cargo build --release
+    cargo build \
+        --package protoc \
+        --package protoc-rust \
+        --package protobuf \
+        --release
 }
 
 package() {
