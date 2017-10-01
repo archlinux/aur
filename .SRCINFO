@@ -1,17 +1,17 @@
 pkgbase = evolution-mapi
 	pkgdesc = MAPI plugin for evolution.
-	pkgver = 3.22.0
+	pkgver = 3.26.0
 	pkgrel = 1
 	url = http://www.gnome.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = intltool
-	depends = evolution>=3.22.0
+	depends = evolution>=3.26.0
 	depends = openchange
-	source = http://ftp.gnome.org/pub/gnome/sources/evolution-mapi/3.22/evolution-mapi-3.22.0.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/evolution-mapi/3.26/evolution-mapi-3.26.0.tar.xz
 	source = auto_reconnection.patch
-	sha256sums = d4d4e899b246698565de31edafbd407f582a5214032c9c8f0393e7c78fca050d
+	sha256sums = 5312dd98f789a77ef2d514d6d1d9596770bb9566e803b3ff13db0f95a2a0ba9e
 	sha256sums = 9e9f6259452107195f38729b5a1c2803d95361aa3848fa9a980b2a25ca156983
 
 pkgname = evolution-mapi

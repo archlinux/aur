@@ -3,7 +3,7 @@
 # Contributor: Marco A Rojas <marquicus@gmail.com>
 # Contributor: Corentin Rossignon <corentin.rossignon@gmail.com>
 pkgname=evolution-mapi
-pkgver=3.22.0
+pkgver=3.26.0
 pkgrel=1
 pkgdesc="MAPI plugin for evolution."
 arch=('i686' 'x86_64')
@@ -13,19 +13,21 @@ depends=("evolution>=${pkgver}" "openchange")
 makedepends=("intltool")
 source=(http://ftp.gnome.org/pub/gnome/sources/evolution-mapi/${pkgver:0:4}/${pkgname}-${pkgver}.tar.xz
         auto_reconnection.patch)
-sha256sums=('d4d4e899b246698565de31edafbd407f582a5214032c9c8f0393e7c78fca050d'
+sha256sums=('5312dd98f789a77ef2d514d6d1d9596770bb9566e803b3ff13db0f95a2a0ba9e'
             '9e9f6259452107195f38729b5a1c2803d95361aa3848fa9a980b2a25ca156983')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+        cd ${srcdir}/${pkgname}-${pkgver}
 
-	patch -p1 < "${srcdir}/auto_reconnection.patch"
+        patch -p1 < "${srcdir}/auto_reconnection.patch"
 
-	./configure --prefix=/usr
-	make
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX="$pkgdir/"
+        make
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
-	make DESTDIR="$pkgdir/" install
+        cd ${srcdir}/${pkgname}-${pkgver}/build
+        make DESTDIR="$pkgdir/" install
 }
