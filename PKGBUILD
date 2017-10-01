@@ -17,7 +17,7 @@
 pkgbase=linux-up       # Build kernel with a different name
 _srcname=linux-4.13
 pkgver=4.13.4
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://www.kernel.org/"
 pkgdesc="kernel for UP board with GPIO patches"
