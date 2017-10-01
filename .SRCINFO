@@ -1,0 +1,26 @@
+pkgbase = atril-nocaja-gtk2
+	pkgdesc = MATE document viewer without caja dependency (GTK2 version)
+	pkgver = 1.19.3
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-extra-gtk2
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = texlive-bin
+	depends = djvulibre
+	depends = libspectre
+	depends = libgxps
+	depends = mathjax
+	depends = poppler-glib
+	depends = webkit2gtk
+	provides = atril
+	conflicts = atril
+	source = http://pub.mate-desktop.org/releases/1.19/atril-1.19.3.tar.xz
+	sha1sums = 7b4b2493e39020120bb710da6fc25af81591b82e
+
+pkgname = atril-nocaja-gtk2
+
