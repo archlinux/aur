@@ -8,8 +8,8 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.27.0.r89.geb69e73eb4
-pkgrel=2
+pkgver=0.27.0.r90.g910600a36f
+pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
@@ -209,7 +209,7 @@ package() {
   
   
     #install ahjolinna "config-build" files
- cp -R ${srcdir}/mpv-conf/mpv/etc*/* ${pkgdir}/etc/mpv
+ cp -R ${srcdir}/mpv-conf/mpv/etc/* ${pkgdir}/etc/mpv
     install -d "${pkgdir}/etc/mpv/"
   
 
