@@ -1,0 +1,10 @@
+diff -Naur a/Makefile.lnx b/Makefile.lnx
+--- a/Makefile.lnx	2014-05-03 21:05:26.619853000 +0200
++++ b/Makefile.lnx	2014-05-03 21:04:42.977667000 +0200
+@@ -1,5 +1,5 @@
+ CC := gcc
+-CFLAGS += -I$(PWD)/include -DDEBUG_BUILD=0 -D_FILE_OFFSET_BITS=64 -D LINUX=1 -D BSD=1
++CFLAGS += `pkg-config --cflags libbsd` -I$(PWD)/include -DDEBUG_BUILD=0 -D_FILE_OFFSET_BITS=64 -D LINUX=1 -D BSD=1
+ SUBDIRS := newfs_hfs.tproj fsck_hfs.tproj
+ 
+ all clean:
