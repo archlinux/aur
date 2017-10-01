@@ -2,7 +2,7 @@
 # Contributor: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=bumblebee-status
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='Modular, theme-able status line generator for the i3 window manager'
 arch=('any')
@@ -22,17 +22,16 @@ optdepends=('xorg-xbacklight: to display a displays brightness'
             'i3ipc-python: display titlebar'
             'fakeroot: dependency of the pacman module')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b33560d5037f4cd6731c32f8e0955511dd6beb91b0b6c7af2ac03614865295eb669409137346a8e9482daf345e15297cbc268282aeb327f98da7c7b87a0cba2f')
+sha512sums=('a4a2fa312a92c66a9fa567a3789684f5406646c59706105b5dc9ae7e1d792db0c9c416a111113c1f3054c6c4e0d0193e2bdf7bf1591265f630c4b779609647a3')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   mkdir -p "${pkgdir}/usr/share/${pkgname}/themes/icons"
   mkdir -p "${pkgdir}/usr/share/${pkgname}/bumblebee/modules"
-  mkdir -p "${pkgdir}/usr/share/${pkgname}/thirdparty/xkbgroup"
 
   install -d "$pkgdir"/usr/bin \
-    "$pkgdir"/usr/share/$pkgname/{bumblebee/modules,themes/icons,thirdparty/xkbgroup}
+    "$pkgdir"/usr/share/$pkgname/{bumblebee/modules,themes/icons}
   ln -s /usr/share/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
 
   cd $pkgname-$pkgver
