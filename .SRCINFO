@@ -12,9 +12,13 @@ pkgbase = rsmb-git
 	source = git+https://github.com/MichalFoksa/rsmb.git
 	source = broker.sh
 	source = broker_mqtts.sh
+	source = broker.ini
+	source = broker_mqtts.ini
 	md5sums = SKIP
-	md5sums = d9ca501c2e89ce4813575e25135018d2
-	md5sums = fdd99423a7c57fb34905218d902261d4
+	md5sums = 0192bdbe34f3c41993e2a576264e2278
+	md5sums = 77a591b959078781ce5cadfd123905d5
+	md5sums = 36b72de48a91b74d500d4d53a31def29
+	md5sums = c8fdde013b1c22babd52baefd836de52
 
 pkgname = rsmb-git
 

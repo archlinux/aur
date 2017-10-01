@@ -27,11 +27,15 @@ install=
 changelog=
 source=("git+https://github.com/MichalFoksa/rsmb.git"
         "broker.sh"
-        "broker_mqtts.sh")
+        "broker_mqtts.sh"
+        "broker.ini"
+        "broker_mqtts.ini")
 noextract=()
 md5sums=('SKIP'
-        'd9ca501c2e89ce4813575e25135018d2'
-        'fdd99423a7c57fb34905218d902261d4')
+        '0192bdbe34f3c41993e2a576264e2278'
+        '77a591b959078781ce5cadfd123905d5'
+        '36b72de48a91b74d500d4d53a31def29'
+        'c8fdde013b1c22babd52baefd836de52')
 validpgpkeys=()
 
 pkgver() {
@@ -61,4 +65,7 @@ package() {
 	cd "${srcdir}"
         install -Dm755 broker.sh ${pkgdir}/usr/bin/${_pkgname}
         install -Dm755 broker_mqtts.sh ${pkgdir}/usr/bin/${_pkgname}-mqtts
+        mkdir -p "${pkgdir}/usr/share/${pkgname}"
+        install -Dm755 broker.ini ${pkgdir}/usr/share/${pkgname}/
+        install -Dm755 broker_mqtts.ini ${pkgdir}/usr/share/${pkgname}/
 }
