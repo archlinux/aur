@@ -151,9 +151,6 @@ build() {
 	            --enable-gl \
 	            \
 	            --enable-vaapi-hwaccel \
-	            --disable-videotoolbox-hwaccel-new \
-	            --disable-videotoolbox-hwaccel-old \
-	            --disable-videotoolbox-gl \
 	            --enable-vdpau-hwaccel \
 	            --disable-d3d-hwaccel \
 	            "$_cuda" \
