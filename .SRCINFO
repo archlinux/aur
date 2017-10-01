@@ -9,7 +9,7 @@ pkgbase = libconfini
 	makedepends = intltool
 	conflicts = libconfini-git
 	source = https://github.com/madmurphy/libconfini/archive/1.4.1.tar.gz
-	md5sums = 90c19e3b2d5e2399e25fe80049e2c035
+	md5sums = 8ef9afff1e5a6e7861529731e234a520
 
 pkgname = libconfini
 
