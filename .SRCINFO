@@ -1,0 +1,16 @@
+pkgbase = python-inputs
+	pkgdesc = Cross-platform Python support for keyboards, mice and gamepads
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zeth/inputs
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	source = ::git+https://github.com/zeth/inputs.git
+	sha256sums = SKIP
+
+pkgname = python-inputs
+
