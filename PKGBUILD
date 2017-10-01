@@ -1,27 +1,34 @@
-# Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
+# Maintainer: Gordon Schulz <gordon.schulz@gmail.com>
 
 pkgname=physlock-git
-pkgver=0.4.5.r3.gb64dccc
+_pkgname='physlock'
+pkgver=v11.r16.g4f131cc
 pkgrel=1
-pkgdesc="lightweight linux console locking tool (Git version)"
-arch=('i686' 'x86_64')
+pkgdesc="lightweight linux console locking tool"
+arch=(i686 x86_64)
 license=('GPL')
-url='https://github.com/muennich/physlock'
+url="https://github.com/muennich/physlock"
+depends=(pam)
+makedepends=('git')
 conflicts=('physlock')
-source=("${pkgname}::git+https://github.com/muennich/physlock.git#branch=master")
-md5sums=('SKIP')
-
-pkgver () {
-  cd "${srcdir}/${pkgname}"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//'
-}
+source=("${_pkgname}::git+${url}.git")
+sha512sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  make
+  cd "${_pkgname}"
+  make PREFIX="/usr"
+}
+
+pkgver() {
+  cd "$_pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  make PREFIX=${pkgdir}/usr install
+  cd "$_pkgname"
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
+
