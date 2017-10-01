@@ -9,7 +9,7 @@ pkgbase = python-inputs
 	makedepends = git
 	depends = python
 	depends = python-setuptools
-	source = ::git+https://github.com/zeth/inputs.git
+	source = python-inputs::git+https://github.com/zeth/inputs.git
 	sha256sums = SKIP
 
 pkgname = python-inputs

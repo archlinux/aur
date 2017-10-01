@@ -9,15 +9,15 @@ url="https://github.com/zeth/inputs"
 licens="BSD 3"
 depends=('python' 'python-setuptools')
 makedepends=('git')
+_dir=$pkgname
 source=("${_dir}"::"git+https://github.com/zeth/inputs.git")
 sha256sums=('SKIP')
 
 package() {
-
-  cd "$srcdir"/$_gitname
+  cd "$srcdir"/$pkgname
   python setup.py install --root "$pkgdir"
   # Install LICENSE file
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
   # Install README file
-  install -Dm644 README "${pkgdir}/usr/share/${pkgname}/README"
+  install -Dm644 README.rst "${pkgdir}/usr/share/${pkgname}/README"
 }
