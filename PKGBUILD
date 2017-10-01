@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('sh')
 options=('!emptydirs')
 provides=('sccs')
-source=(http://ftp.gnu.org/gnu/$pkgname/$_PKGNAME-$pkgver.tar.gz)
+source=($pkgname-$pkgver.tar.gz::http://ftp.gnu.org/gnu/$pkgname/$_PKGNAME-$pkgver.tar.gz)
 md5sums=('e1a973092577012f0c25421e7005f0f1')
 
 build() {
