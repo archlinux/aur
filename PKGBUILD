@@ -23,7 +23,8 @@ build() {
 
         mkdir build
         cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX="$pkgdir/"
+        echo "install in $pkgdir/"
+        cmake .. -DCMAKE_INSTALL_PREFIX=/usr 
         make
 }
 
