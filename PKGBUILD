@@ -1,4 +1,5 @@
 # Maintainer: Gordon Schulz <gordon.schulz@gmail.com>
+# Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=physlock-git
 _pkgname='physlock'
