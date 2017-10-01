@@ -1,9 +1,9 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatvi-git
-pkgver=r199.33fa385
+pkgver=r208.5ed4bbc
 pkgrel=1
 epoch=
-pkgdesc="A small ex/vi editor."
+pkgdesc="A small vi/ex editor for editing bidirectional UTF-8 text."
 arch=('i686' 'x86_64')
 url="http://repo.or.cz/w/neatvi.git"
 license=('custom:BSD')
