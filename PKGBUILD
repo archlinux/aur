@@ -62,7 +62,7 @@ _bfqrel=v7r11
 _bfqver=v8r11
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.11.0-${_bfqver}"
 #_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.11.0-${_bfqver}"
-#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/lucjan-kernels/master/patches/4.11"
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.11"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.11"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
