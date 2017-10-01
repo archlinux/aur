@@ -2,7 +2,7 @@
 
 pkgname=kde1-kdebase
 pkgver=1.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Historical copy of the base applications module of KDE 1, adapted to compile on modern systems (circa. 2016)"
 arch=('i686' 'x86_64')
 url="https://github.com/KDE/kde1-kdebase"
@@ -11,13 +11,14 @@ groups=("kde1")
 depends=("qt1" "kde1-kdelibs" "libjpeg" "libtiff" "perl")
 makedepends=("cmake")
 _commit="444ba45c273384ddbb4257027bdd60ec09fda13e"
-source=("https://github.com/KDE/$pkgname/archive/$_commit.zip")
-sha256sums=('29fcd478d9b2b568f426f719059e8ae9f9161d843b0ca122f8ae1f0b6e76aeaf')
+source=("https://github.com/KDE/$pkgname/archive/$_commit.tar.gz" 0001-kcmikbd-also-needs-the-moc-files.patch)
+sha256sums=('ff402fb14d1befb606c98a28a1bfe710a290dcf5ffa89849b61607eefc8ef4bf'
+            'dbb7fa69167c6f8f175793ae0be445450a89a941562a641f462ae518b89135a8')
 
-#prepare() {
-#  cd $srcdir/$pkgname-$_commit
-#  patch -p1 kfm/pics/CMakeLists.txt < $srcdir/kfm_CMakeLists.patch
-#}
+prepare() {
+  cd $srcdir/$pkgname-$_commit
+  patch -Np1 < $srcdir/0001-kcmikbd-also-needs-the-moc-files.patch
+}
 
 build() {
   cd $srcdir/$pkgname-$_commit
