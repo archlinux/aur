@@ -10,7 +10,7 @@ depends=("python" "libinput" "xdotool" "wmctrl" "hicolor-icon-theme")
 conflicts=("$pkgname-git")
 replaces=("$pkgname-git")
 backup=("etc/$pkgname.conf")
-source=("$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 install=install.sh
 md5sums=('b9e3015ea6e059e9c85c8ebd6cb56594')
 
