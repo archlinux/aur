@@ -11,8 +11,8 @@ groups=("kde1")
 depends=("qt1" "kde1-kdelibs")
 makedepends=("cmake")
 _commit="1c14d5cdf59803a8f41165e296f37837e102696d"
-source=("https://github.com/KDE/$pkgname/archive/$_commit.zip")
-sha256sums=('a3d6fa09e6b2c23215782611726f6aeea6b8fb6001cae22d0add3f697be9a557')
+source=("https://github.com/KDE/$pkgname/archive/$_commit.tar.gz")
+sha256sums=('7f07ed51ef70cfaeead5caef34dd96de173978c6c0d5babaeb785a1b2c4308ae')
 
 #prepare() {
 #  cd $srcdir/$pkgname-$_commit
