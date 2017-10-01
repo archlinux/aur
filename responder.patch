@@ -1,0 +1,38 @@
+diff -ura Responder-2.3.3.8/Responder.conf res.new/Responder.conf
+--- Responder-2.3.3.8/Responder.conf	2017-09-04 22:15:27.000000000 -0400
++++ res.new/Responder.conf	2017-10-01 14:40:43.439999999 -0400
+@@ -21,6 +21,9 @@
+ ; Delete this file to re-capture previously captured hashes
+ Database = Responder.db
+ 
++; Path to log folder
++LogPath = /var/log/responder
++
+ ; Default log file
+ SessionLog = Responder-Session.log
+ 
+diff -ura Responder-2.3.3.8/settings.py res.new/settings.py
+--- Responder-2.3.3.8/settings.py	2017-09-04 22:15:27.000000000 -0400
++++ res.new/settings.py	2017-10-01 14:42:58.903333323 -0400
+@@ -77,6 +77,8 @@
+ 		config = ConfigParser.ConfigParser()
+ 		config.read(os.path.join(self.ResponderPATH, 'Responder.conf'))
+ 
++                self.LogPath = config.get('Responder Core', 'LogPath')
++
+ 		# Servers
+ 		self.HTTP_On_Off     = self.toBool(config.get('Responder Core', 'HTTP'))
+ 		self.SSL_On_Off      = self.toBool(config.get('Responder Core', 'HTTPS'))
+@@ -91,10 +93,10 @@
+ 		self.Krb_On_Off      = self.toBool(config.get('Responder Core', 'Kerberos'))
+ 
+ 		# Db File
+-		self.DatabaseFile    = os.path.join(self.ResponderPATH, config.get('Responder Core', 'Database'))
++		self.DatabaseFile    = os.path.join(self.LogPath, config.get('Responder Core', 'Database'))
+ 
+ 		# Log Files
+-		self.LogDir = os.path.join(self.ResponderPATH, 'logs')
++		self.LogDir = os.path.join(self.LogPath, 'logs')
+ 
+ 		if not os.path.exists(self.LogDir):
+ 			os.mkdir(self.LogDir)
