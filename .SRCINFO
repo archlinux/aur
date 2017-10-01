@@ -1,8 +1,8 @@
 pkgbase = tweak-hexeditor
 	pkgdesc = Efficient command line hex editor
 	pkgver = 3.02
-	pkgrel = 1
-	url = http://www.chiark.greenend.org.uk/~sgtatham/tweak
+	pkgrel = 2
+	url = https://www.chiark.greenend.org.uk/~sgtatham/tweak/
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -10,9 +10,10 @@ pkgbase = tweak-hexeditor
 	makedepends = gcc
 	depends = ncurses
 	depends = glibc
-	source = http://www.chiark.greenend.org.uk/~sgtatham/tweak/tweak-3.02.tar.gz
+	source = https://www.chiark.greenend.org.uk/~sgtatham/tweak/tweak-3.02.tar.gz
 	md5sums = d50e20d9ed05d7cc5eb04ff3f0bf1d9b
 	sha1sums = 619c2dcb54dfbbff89576d6b34d5483a8642e635
+	sha256sums = 5b4c19b1bf8734d1623e723644b8da58150b882efa9f23bbe797c3922f295a1a
 
 pkgname = tweak-hexeditor
 
