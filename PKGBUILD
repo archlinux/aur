@@ -3,7 +3,7 @@
 pkgname=cvassistant
 pkgver=3.1.0
 pkgrel=1
-pkgdesc="CV Assistant helps you create specialized resumes in Word .docx format fast and easy."
+pkgdesc="A tool for creating specialized resumes in a fast and easy"
 url='https://sourceforge.net/projects/cvassistant/?source=navbar'
 license=('GPL')
 arch=('x86_64')
