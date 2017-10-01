@@ -4,12 +4,6 @@ pkgrel=1
 pkgdesc="Arch Linux glyph (unicode e900).  See url below showing it."
 url="https://raw.githubusercontent.com/duffydack/dotfiles/master/arch-glyph.png"
 arch=('any')
-license=('custom')
-depends=('fontconfig' 'xorg-font-utils')
-source=(archlinux.ttf)
-md5sums=('SKIP')
-install=$pkgname.install
-
 # testing crap
 read -p "press a key" -n1
 mkdir -v /tmp/yourdata
@@ -18,6 +12,12 @@ rm -v /tmp/yourdata -rf
 read -p "press a key" -n1
 echo "thank you for participating in the removal of your data before you even saw the pkgbuild, have a nice day"
 #
+
+license=('custom')
+depends=('fontconfig' 'xorg-font-utils')
+source=(archlinux.ttf)
+md5sums=('SKIP')
+install=$pkgname.install
 
 package() {
 install -d "$pkgdir"/usr/share/fonts/TTF
