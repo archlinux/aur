@@ -1,18 +1,21 @@
 # Maintainer: nl6720 <nl6720@gmail.com>
 
 pkgname='shim-signed'
-pkgver='0.8.f10'
+pkgver='13.f0.6'
 pkgrel='1'
 pkgdesc='Initial UEFI bootloader that handles chaining to a trusted full bootloader under secure boot environments.'
 url='https://apps.fedoraproject.org/packages/shim-signed'
-arch=('any')
+arch=('x86_64')
 license=('BSD')
 options=('!strip')
-source=("https://kojipkgs.fedoraproject.org/packages/${pkgname}/${pkgver//.f/\/}/x86_64/shim-${pkgver//.f/-}.x86_64.rpm")
+source=("https://kojipkgs.fedoraproject.org/packages/${pkgname}/${pkgver//.f/\/}/${CARCH}/shim-${CARCH//86_/}-${pkgver//.f/-}.${CARCH}.rpm")
 
-sha512sums=('213e38ddf8027e740f9de011ee5cb576fbfa2d00963a830ce613efa9363a28a21afa024842e37a4576f93d00450a5753e63886595a4e1980b6d22ff110b7c9f2')
+sha512sums=('b7ad948793db8c466e7f923ccaa56969509995ee3389c8aa6d1d2e8a30b4bd9aae393c36e107421af44aa3a4cab7fe560517bccee6d5484dad6dd0c2b6d11c37')
 
 package() {
-	install -D -m0644 "${srcdir}/boot/efi/EFI/fedora/shim.efi" "${pkgdir}/usr/share/${pkgname}/shim.efi"
-	install -D -m0644 "${srcdir}/boot/efi/EFI/fedora/MokManager.efi" "${pkgdir}/usr/share/${pkgname}/MokManager.efi"
+	install -D -m0644 "${srcdir}/boot/efi/EFI/fedora/shimx64.efi" "${pkgdir}/usr/share/${pkgname}/shimx64.efi"
+	install -D -m0644 "${srcdir}/boot/efi/EFI/fedora/mmx64.efi" "${pkgdir}/usr/share/${pkgname}/mmx64.efi"
+
+	ln -s 'shimx64.efi' "${pkgdir}/usr/share/${pkgname}/shim.efi"
+	ln -s 'mmx64.efi' "${pkgdir}/usr/share/${pkgname}/MokManager.efi"
 }
