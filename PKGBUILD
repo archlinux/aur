@@ -20,7 +20,7 @@ case "$CARCH" in
 		md5sums+=('38f0d2b508e6d47f53a765bdf27df094')
 		;;
 	armv6h|armv7h)
-		source=("http://wxtoimg.com/beta/$pkgname-linux-armhf-$pkgver-beta.tar.gz")
+		source=("http://wxtoimg.com/beta/$_pkgname-linux-armhf-$pkgver-beta.tar.gz")
 		md5sums+=('c6956c97ad0c88a888f32e973ba1b139')
 		;;
 esac
