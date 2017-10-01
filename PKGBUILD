@@ -64,7 +64,7 @@ package() {
         install -Dm644 epl-v10 ${pkgdir}/usr/share/licenses/${pkgname}/epl-v10
 	cd "${srcdir}"
         install -Dm755 broker.sh ${pkgdir}/usr/bin/${_pkgname}
-        install -Dm755 broker_mqtts.sh ${pkgdir}/usr/bin/${_pkgname}-mqtts
+        install -Dm755 broker_mqtts.sh ${pkgdir}/usr/bin/${_pkgname}-sn
         mkdir -p "${pkgdir}/usr/share/${pkgname}"
         install -Dm755 broker.ini ${pkgdir}/usr/share/${pkgname}/
         install -Dm755 broker_mqtts.ini ${pkgdir}/usr/share/${pkgname}/
