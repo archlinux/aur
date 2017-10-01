@@ -9,7 +9,7 @@
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
 pkgver=0.27.0.r89.geb69e73eb4
-pkgrel=1
+pkgrel=2
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
@@ -50,10 +50,8 @@ conflicts=('mpv' 'mpv-vapoursynth' 'mpv-ahjolinna-build-git' 'mpv-build-git' 'mp
 options=('!emptydirs')
 install=mpv.install
 source=('git+https://github.com/mpv-player/mpv'
+        'git+https://github.com/ahjolinna/mpv-conf'
         'find-deps.py'
-         #"ftp://ftp.ritual.org/common/ColorManagement/BT.709_Profiles.zip"
-	 "https://raw.githubusercontent.com/ahjolinna/mpv-conf/master/PKGBUILD/BT.709_Profiles.zip"
-         "https://github.com/ahjolinna/mpv-conf/raw/master/PKGBUILD/mpv.tar.gz"
         'mpv-hq.desktop'
          'mpv-lq.desktop'
          'mpv-mq.desktop'
@@ -62,9 +60,8 @@ source=('git+https://github.com/mpv-player/mpv'
          'mpv-CUDA.desktop')
 
 sha256sums=('SKIP'
+            'SKIP'
             'ce974e160347202e0dc63f6a7a5a89e52d2cc1db2d000c661fddb9dc1d007c02'
-            'd53aa2c59350a8e364b1a18a5509ba995826f7d37e34ad029251bee082f3c360'
-            '8be87f68786ec3a01af23f2213b61ff962249f87a2ce2e7baccf9cba61b3ac07'
             'ddd18dbccdaa4513586cb97299e88564e3289940f25d7ebe762c4482fbad3809'
             'e02f7b07653ea4ce9745b9f699954f5a4eafd416ada5a5d032c7dd7294921f90'
             '8cf41f23572417836084209fce343f779e72dea9688dc84e23e8eb913d002d5f'
@@ -203,13 +200,16 @@ package() {
   
   
   # install BT.709 ICC profiles (https://github.com/mpv-player/mpv/issues/534#issuecomment-35823203)
-   install -Dm755 "${srcdir}/BT.709_Profiles/BT.709.gamma.1.95.icc" "${pkgdir}/usr/share/color/icc/BT.709_Profiles/BT.709.gamma.1.95.icc"
-   install -Dm755 "${srcdir}/BT.709_Profiles/BT.709.gamma.1.95.icc" "${pkgdir}/usr/share/color/icc/BT.709_Profiles/BT.709.icc"
-   install -Dm755 "${srcdir}/BT.709_Profiles/BT.709.gamma.1.95.icc" "${pkgdir}/usr/share/color/icc/BT.709_Profiles/BT.709.linear.icc"
+
+   cd ${srcdir}/mpv-conf/PKGBUILD
+   unzip BT.709_Profiles.zip
+   install -Dm755 "BT.709_Profiles/BT.709.gamma.1.95.icc" "${pkgdir}/usr/share/color/icc/BT.709_Profiles/BT.709.gamma.1.95.icc"
+   install -Dm755 "BT.709_Profiles/BT.709.gamma.1.95.icc" "${pkgdir}/usr/share/color/icc/BT.709_Profiles/BT.709.icc"
+   install -Dm755 "BT.709_Profiles/BT.709.gamma.1.95.icc" "${pkgdir}/usr/share/color/icc/BT.709_Profiles/BT.709.linear.icc"
   
   
     #install ahjolinna "config-build" files
- cp -R ${srcdir}/mpv/etc*/* ${pkgdir}/etc/mpv
+ cp -R ${srcdir}/mpv-conf/mpv/etc*/* ${pkgdir}/etc/mpv
     install -d "${pkgdir}/etc/mpv/"
   
 
