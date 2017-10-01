@@ -14,6 +14,7 @@ license=('custom')
 depends_x86_64=('zlib' 'ncurses')
 provides=("${_pkgname}" 'adb' 'android-tools')
 conflicts=("${_pkgname}" 'adb')
+install="${pkgname}.install"
 source=("adb.service::https://aur.archlinux.org/cgit/aur.git/plain/adb.service?h=android-sdk-platform-tools"
         "license.html::https://aur.archlinux.org/cgit/aur.git/plain/license.html?h=android-sdk-platform-tools")
 sha256sums=('1c219abea7584ae13f3f76b04e269ef21c1699d6bd29b7615523f927a9d10deb'
