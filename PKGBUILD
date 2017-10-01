@@ -17,7 +17,7 @@ pkgname=vmware-workstation
 pkgver=14.0.0
 _buildver=6661328
 _pkgver=${pkgver}_${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -60,7 +60,7 @@ backup=(
   'etc/vmware/netmap.conf'
   'etc/vmware/ssl/hostd.ssl.config'
   'etc/pam.d/vmware-authd'
-  'etc/profile.d/vmware.sh'
+  'etc/conf.d/vmware'
 )
 source=(
   "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle"
@@ -69,7 +69,7 @@ source=(
   'config'
   'pam.d-vmware-authd'
   'configure-initscript.sh'
-  'vmware-profile.sh'
+  'vmware-environment.sh'
 
   'config.xml'
   'datastores.xml'
@@ -97,7 +97,7 @@ sha256sums=(
   'd9a5f8b919d52aa2f279d8eaf0bb495780eb9fd8bbc2c58bba223cdca78cc991'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
-  '6f57e027f0eb95b7cfaf5d7c10089e99be5b9ccab7c3785fcc6f98dbecaf47bc'
+  'ad2ceafa8a0b9b6e95b10a0650a776b8c0795f863267005751544083c84d31e3'
 
   '9f508d5f7ce4b69d9f40f6fb0ff0fb3d5b26a3c48658da994bf63975d1b589ab'
   '434cd4aa440d36b75ee20e0b588aaad874bb0d796173990bc4046667c66f5099'
@@ -419,7 +419,12 @@ fi
 
   _create_database_file
 
-  install -Dm 755 "$srcdir/vmware-profile.sh" "$pkgdir/etc/profile.d/vmware.sh"
+  # Define some environment variables for VMware
+  install -Dm 755 "$srcdir/vmware-environment.sh" "$pkgdir/etc/conf.d/vmware"
+  for program in vmware vmplayer vmware-netcfg vmware-tray; do
+    sed '/export PRODUCT_NAME/asource /etc/conf.d/vmware' \
+        -i "$pkgdir/usr/bin/$program"
+  done
 
   # to solve bugs with incompatibles library versions:
   #ln -sf /usr/lib/libz.so.1 "$pkgdir/usr/lib/vmware/lib/libz.so.1/"
