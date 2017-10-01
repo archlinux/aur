@@ -7,8 +7,9 @@ pkgbase = libconfini
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
+	conflicts = libconfini-git
 	source = https://github.com/madmurphy/libconfini/archive/1.4.1.tar.gz
-	md5sums = 3b0a92440de36f470e6af003f3b895ab
+	md5sums = 8d97819a8757028ee3f16408b9326a85
 
 pkgname = libconfini
 

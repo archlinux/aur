@@ -8,8 +8,9 @@ arch=('i686' 'x86_64')
 url='https://madmurphy.github.io/libconfini/'
 license=('GPL')
 makedepends=('intltool')
+conflicts=('libconfini-git')
 source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('3b0a92440de36f470e6af003f3b895ab')
+md5sums=('8d97819a8757028ee3f16408b9326a85')
 
 prepare() {
 
