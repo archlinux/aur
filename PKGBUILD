@@ -7,7 +7,7 @@
 pkgname=google-chrome-beta
 pkgver=62.0.3202.38
 pkgrel=1
-pkgdesc="An attempt at creating a safer, faster, and more stable browser (Beta Channel)"
+pkgdesc="The popular and trusted web browser by Google (Beta Channel)"
 arch=('x86_64')
 url="https://www.google.com/chrome"
 license=('custom:chrome')
