@@ -33,7 +33,7 @@ makedepends=('git' 'mesa' 'python-docutils' 'ladspa')
 provides=('mpv')
 conflicts=('mpv' 'mpv-git')
 options=('!emptydirs')
-source=("$pkgname"::'git+https://github.com/mpv/mpv.git')
+source=("$pkgname"::'git+https://github.com/mpv-player/mpv.git')
 sha256sums=('SKIP')
 
 pkgver() {
