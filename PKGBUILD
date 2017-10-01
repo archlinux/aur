@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/${_orgname}/${_projname}"
 license=('MIT')
 depends=('python')
+makedepends=('python-setuptools')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/${_orgname}/${_projname}/archive/${pkgver}.tar.gz")
 sha256sums=('06b4bea1c0dafe7e36b88388f0ef0e1afdaba0def446c7426a216b7511d5f7c6')
 
