@@ -2,7 +2,7 @@
 # Maintainer: Hector Martinez-Seara Monne <hseara ##[at]## gmail?com>
 
 pkgname=("python2-espressopp")
-pkgver=1.9.2
+pkgver=1.9.4.1
 pkgrel=1
 pkgdesc="ESPResSo++ is an extensible, flexible, fast and parallel simulation software for soft matter research."
 url="http://www.espresso-pp.de/"
@@ -12,9 +12,9 @@ depends=('fftw' 'openmpi' 'python2' 'boost' 'python2-mpi4py')
 optdepends=()
 makedepends=('cmake' 'doxygen')
 source=(
-http://www.espresso-pp.de/Download/espressopp-${pkgver}.tgz
+https://github.com/espressopp/espressopp/archive/v${pkgver}.tar.gz
 )
-sha1sums=('7e9ad6ed25448275fa33e63fbf2e00c9399acf87')
+sha1sums=('7ffed56799d0719bf2a98157f343d99352742c23')
 
 build() {
 
