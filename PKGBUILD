@@ -11,12 +11,11 @@ groups=("kde1")
 depends=("qt1" "libpng" "libjpeg-turbo" "libtiff")
 makedepends=("cmake")
 _commit="ca9e8f0f2806ca5879ca3dccac1ca2cb5feab6fa"
-source=("https://github.com/KDE/$pkgname/archive/$_commit.zip")
-sha256sums=('75caeda268519aab31dfc94ea889ec2599185cb1febff8ff358e810b58348a20')
+source=("https://github.com/KDE/$pkgname/archive/$_commit.tar.gz")
+sha256sums=('761e8a98c3c5259ed664b9ef7305192cc246c770369690c3e1d142321849bbeb')
 
 prepare() {
   cd $srcdir/$pkgname-$_commit
-#  patch -p1 cmake/KDE1Macros.cmake < $srcdir/KDE1Macros.patch
   sed -i 's/lib64/lib/' cmake/FindQt1.cmake
   sed -i 's/lib64/lib/' cmake/KDE1InstallDirs.cmake
 }
