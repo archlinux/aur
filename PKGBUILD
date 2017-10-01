@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=sam-git
-pkgver=r298.1f4860a
+pkgver=r432.6cbe895
 pkgrel=1
 epoch=
 pkgdesc="An updated version of the sam text editor."
@@ -39,7 +39,7 @@ package() {
   make DESTDIR="$pkgdir/usr" install
   install -Dm644 README.rst $pkgdir/usr/share/doc/${pkgname%-*}/README.rst
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
-  cd doc; for i in keyboard sam.ps samrc se.ps; do
+  cd doc; for i in sam.ps se.ps samrc; do
     install -Dm644 $i $pkgdir/usr/share/doc/${pkgname%-*}/$i
   done
 }
