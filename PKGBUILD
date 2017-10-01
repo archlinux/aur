@@ -3,12 +3,12 @@
 
 pkgname=coffee-git
 pkgver=1.0.7.r7.gdb3ac9e
-pkgrel=1
+pkgrel=2
 pkgdesc="Keep up with current news and weather with Coffee"
 arch=('i686' 'x86_64')
 url="https://nick92.github.io/coffee/"
 license=('GPL3')
-depends=('geocode-glib' 'glib' 'libgee' 'webkit2gtk')
+depends=('geocode-glib' 'libgee' 'webkit2gtk')
 makedepends=('git' 'meson' 'vala')
 provides=('coffee')
 conflicts=('coffee')
