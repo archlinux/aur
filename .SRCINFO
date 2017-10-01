@@ -1,0 +1,22 @@
+pkgbase = python-pecan
+	pkgdesc = A WSGI object-dispatching web framework, designed to be lean and fast with few dependencies.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/pecan/pecan
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-tox
+	makedepends = python-sphinx
+	source = python2-pecan-1.2.1.tar.gz::https://github.com/pecan/pecan/archive/1.2.1.tar.gz
+	sha512sums = eced82e4c3ceaaf9b2d6135da9e108b6334f56fc9e356ea05cfa7a7048c41eba019b87e1e793e310b95aa0740314aa6235ff24fc1735f222da741390c44a8735
+
+pkgname = python2-pecan
+	depends = python2
+
+pkgname = python-pecan
+	depends = python
+
