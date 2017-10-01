@@ -1,23 +1,23 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 
 pkgname=laverna
-pkgver=0.7.4
+pkgver=0.7.51
 pkgrel=1
 pkgdesc="Laverna is a JavaScript note taking application with Markdown editor and encryption support. Consider it like open source alternative to Evernote."
 arch=("x86_64" "i686")
 depends=('gconf')
 url="https://laverna.cc/"
 license=('MPL2')
-source=("$pkgname.desktop")
-source_x86_64=("https://github.com/Laverna/laverna/releases/download/$pkgver-RC1/$pkgname-$pkgver-RC1-linux-x64.zip")
-source_i686=("https://github.com/Laverna/laverna/releases/download/$pkgver-RC1/$pkgname-$pkgver-RC1-linux-ia32.zip")
-sha512sums=('e14850537e1dece925fcae70985115aa44dfae16845069cf6901f1c4dd868d3e77cdee272849d1d61b5886052dc323d8f890d8482c89641d15db18ef3f0e0c8a')
-sha512sums_x86_64=('318d37f1774cb59819f7bc27e016320cf8e152bf25d677d76cb96b307ff49ab7a5576990eaa4cdbd8b84cc645e4366ced63d6af6cd98e798c7412b057e1df290')
-sha512sums_i686=('b69cb875146c0e0e7a59b220be9074b13d2727ddb225c311e4a2a8a87f9ea18711340fdef4bf19021dfea7b90d897869da68dfe9db0e66e69932cffc2b889976')
+source=("${pkgname}.desktop")
+source_x86_64=("https://github.com/Laverna/laverna/releases/download/${pkgver}/${pkgname}-${pkgver}-linux-x64.zip")
+source_i686=("https://github.com/Laverna/laverna/releases/download/${pkgver}/${pkgname}-${pkgver}-linux-ia32.zip")
+sha512sums=('7a818455ad49f948b7a6e48d8fa9dfd20420399539afdd9754b74d0d6273f1ee1b0ee3a3f56d5c78736ea056ca2c7acbf8ecfd33112d1c06251ec008db493f0f')
+sha512sums_x86_64=('9f3d680148970e980245fc401bca9329924c4ea1b3966c6d5f4f4dbcd08d7bb4416d464b9645458367f6a2edea2ac1d63572752dfb12033bb6a210c81c52e596')
+sha512sums_i686=('717df3255f2af9bedba2bf06a62b35012d73a819793f681e348d77271d896ba0fcf3ad88b43cb477cac976e90c0f1611c532bb70b2870fd9f8e21293e8b3c66e')
 
 package() {
-	mkdir -p $pkgdir/{opt/$pkgname,usr/{bin,share/applications}}
-	cp -R $srcdir/* $pkgdir/opt/$pkgname
-	ln -s /opt/$pkgname/$pkgname $pkgdir/usr/bin/$pkgname
-	cp $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+	mkdir -p ${pkgdir}/{opt/${pkgname},usr/{bin,share/applications}}
+	cp -R ${srcdir}/* ${pkgdir}/opt/$pkgname
+	ln -s /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+	cp ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
