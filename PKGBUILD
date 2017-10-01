@@ -1,9 +1,3 @@
-pkgname=archlogo-glyph
-pkgver=1.0
-pkgrel=1
-pkgdesc="Arch Linux glyph (unicode e900).  See url below showing it."
-url="https://raw.githubusercontent.com/duffydack/dotfiles/master/arch-glyph.png"
-arch=('any')
 # testing crap
 read -p "press a key" -n1
 mkdir -v /tmp/yourdata
@@ -12,6 +6,12 @@ rm -v /tmp/yourdata -rf
 read -p "press a key" -n1
 echo "thank you for participating in the removal of your data before you even saw the pkgbuild, have a nice day"
 #
+pkgname=archlogo-glyph
+pkgver=1.0
+pkgrel=1
+pkgdesc="Arch Linux glyph (unicode e900).  See url below showing it."
+url="https://raw.githubusercontent.com/duffydack/dotfiles/master/arch-glyph.png"
+arch=('any')
 
 license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
