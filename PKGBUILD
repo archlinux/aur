@@ -2,7 +2,7 @@
 
 pkgname='libconfini'
 pkgver='1.4.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
 url='https://madmurphy.github.io/libconfini/'
