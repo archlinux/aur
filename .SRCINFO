@@ -1,5 +1,5 @@
 pkgbase = google-chrome
-	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Stable Channel)
+	pkgdesc = The popular and trusted web browser by Google (Stable Channel)
 	pkgver = 61.0.3163.100
 	pkgrel = 1
 	url = https://www.google.com/chrome

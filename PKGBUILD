@@ -7,7 +7,7 @@
 pkgname=google-chrome
 pkgver=61.0.3163.100
 pkgrel=1
-pkgdesc="An attempt at creating a safer, faster, and more stable browser (Stable Channel)"
+pkgdesc="The popular and trusted web browser by Google (Stable Channel)"
 arch=('x86_64')
 url="https://www.google.com/chrome"
 license=('custom:chrome')
