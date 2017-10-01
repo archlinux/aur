@@ -4,13 +4,13 @@
 _pkgname=mintstick
 pkgname=$_pkgname-git
 pkgver=r177.860ea2c
-pkgrel=1
+pkgrel=2
 pkgdesc="Format or write images to usb-sticks (Linux Mint tool)"
 arch=('any')
 url="https://github.com/linuxmint/mintstick"
 license=('GPL')
 depends=('desktop-file-utils' 'dosfstools' 'python2-dbus' 'python2-gobject' 'python2-pyparted' 'python2-xapp' 'udisks2' 'xapps')
-optdepends=('e2fsprogs: Ext filesystems' 'ntfs-3g: NTFS filesystems')
+optdepends=('dosfstools: FAT filesystems' 'e2fsprogs: Ext filesystems' 'ntfs-3g: NTFS filesystems')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -34,6 +34,9 @@ package() {
   install -d "$pkgdir/usr/share/applications"
   install -d "$pkgdir/usr/share/kde4/apps/solid/actions"
   install -d "$pkgdir/usr/share/polkit-1/actions"
+
+  cp -rp share/nemo "$pkgdir/usr/share"
+
   ./install.sh
 }
 
