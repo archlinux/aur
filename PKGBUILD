@@ -7,7 +7,7 @@ url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")
 depends=("python")
-source=("$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 install=install.sh
 md5sums=('5bb5924bd40d51471ff9db78da877ace')
 
