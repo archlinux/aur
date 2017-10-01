@@ -7,7 +7,7 @@
 pkgname=google-chrome-dev
 pkgver=63.0.3223.8
 pkgrel=1
-pkgdesc="An attempt at creating a safer, faster, and more stable browser (Dev Channel)"
+pkgdesc="The popular and trusted web browser by Google (Dev Channel)"
 arch=('x86_64')
 url="https://www.google.com/chrome"
 license=('custom:chrome')
