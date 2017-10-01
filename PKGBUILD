@@ -10,7 +10,7 @@
 # flite1
 
 pkgname=ffmpeg-semifull-git
-pkgver=N.86539.g155f071bad
+pkgver=N.87636.g9e271e3fa3
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -167,8 +167,7 @@ build() {
 	        --enable-omx \
 	        --enable-omx-rpi \
 	        --enable-vaapi \
-	        --enable-vdpau \
-	        --enable-videotoolbox
+	        --enable-vdpau 
 	
 	make
 	
