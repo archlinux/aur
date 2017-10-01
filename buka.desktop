@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Buka
+Comment=EBook Management
+GenericName=Buka
+Exec=Buka %U
+Icon=buka
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
+
