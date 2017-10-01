@@ -4,12 +4,12 @@ _github_url=https://github.com/kmike/port-for
 pkgbase=python-${_py_pkgname}
 pkgname=(python-${_py_pkgname} python2-${_py_pkgname})
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility that helps with local TCP ports managment. It can find an unused TCP localhost port and remember the association."
 arch=('any')
 url="${_github_url}"
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
 checkdepends=('python-tox' 'python2-tox')
 source=(${_py_pkgname}::git+${_github_url}.git#tag=$pkgver)
 sha256sums=('SKIP')
