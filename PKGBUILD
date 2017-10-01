@@ -2,7 +2,7 @@
 
 pkgbase=wireguard-git
 pkgname=(wireguard-dkms-git wireguard-tools-git)
-pkgver=0.0.20161230.r6.g7adc1f5
+pkgver=0.0.20170918.r25.g37d2b14
 pkgrel=1
 pkgdesc='next generation secure network tunnel - git checkout'
 arch=('x86_64' 'i686')
@@ -54,12 +54,14 @@ package_wireguard-dkms-git() {
 
 package_wireguard-tools-git() {
 	depends=('libmnl' 'WIREGUARD-MODULE')
+	optdepends=('openresolv: for DNS functionality')
 	provides=('wireguard-tools')
 	conflicts=('wireguard-tools')
 
 	cd WireGuard/
 
-	make -C src/tools/ DESTDIR="${pkgdir}/" \
+	make -C src/tools/ \
+		DESTDIR="${pkgdir}/" \
 		WITH_BASHCOMPLETION=yes \
 		WITH_WGQUICK=yes \
 		WITH_SYSTEMDUNITS=yes \
