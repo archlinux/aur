@@ -6,7 +6,7 @@
 _pkgname=qtox
 pkgname=qtox-git
 pkgver=1.11.0.r162.gce0c1020
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guidelines.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/qTox/qTox'
@@ -28,28 +28,27 @@ source=("$_pkgname::git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd $_pkgname
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $_pkgname
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd $_pkgname
-    install -d build
-    cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX="/usr"
+  cd $_pkgname
+  install -d build
 }
 
 check() {
-    cd $_pkgname/build
-    make test
+  cd $_pkgname/build
+  make test
 }
 
 build() {
-    cd $_pkgname/build
-    make $MAKEFLAGS
+  cd $_pkgname/build
+  cmake .. -DCMAKE_INSTALL_PREFIX="/usr"
+  make $MAKEFLAGS
 }
 
 package() {
-    cd $_pkgname/build
-    make DESTDIR="$pkgdir" install
+  cd $_pkgname/build
+  make DESTDIR="$pkgdir" install
 }
