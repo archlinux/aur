@@ -1,7 +1,7 @@
 pkgbase = libconfini
 	pkgdesc = Yet another INI parser
 	pkgver = 1.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://madmurphy.github.io/libconfini/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libconfini
 	makedepends = intltool
 	conflicts = libconfini-git
 	source = https://github.com/madmurphy/libconfini/archive/1.4.1.tar.gz
-	md5sums = dd21c26ae0447fce8b6c5fd4a2d51d35
+	md5sums = 90c19e3b2d5e2399e25fe80049e2c035
 
 pkgname = libconfini
 
