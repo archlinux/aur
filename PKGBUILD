@@ -1,8 +1,9 @@
+# Contributor: Tyler Swagar <buttpickle69@shaw.ca>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mojolicious'
-pkgver='7.31'
+pkgver='7.46'
 pkgrel='1'
 pkgdesc="Real-time web framework"
 arch=('any')
@@ -11,10 +12,10 @@ options=('!emptydirs')
 depends=('perl>=5.10.1')
 makedepends=()
 url='https://metacpan.org/release/Mojolicious'
-source=('http://search.cpan.org/CPAN/authors/id/S/SR/SRI/Mojolicious-7.31.tar.gz')
-md5sums=('6586909c37d344669575ad4e0f61dcc5')
-sha512sums=('2ba4eb664c2e21e3b2b73ecd18931bb39e1de9e8b0998bc723044abcb77d489ec9099de3d2b87d13f3cbd08adb829031e6746059df3657d5d2378374b4f98966')
-_distdir="Mojolicious-7.31"
+source=("https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-${pkgver}.tar.gz")
+md5sums=('ca87060aa22894dcf7337ee27063fa0c')
+sha512sums=('6986bd71c5b8c95d63a11ec6044db54450f727eea07146e3b65f99d58380dc69580434be82180c3674a106ef87f37b6e2fcc45c4fa329d0477ea42513a30fdd4')
+_distdir="Mojolicious-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
