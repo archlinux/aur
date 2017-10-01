@@ -3,25 +3,29 @@ _py_pkgname=sphinx-argparse
 _github_url=https://github.com/ribozz/sphinx-argparse
 pkgbase=python-${_py_pkgname}
 pkgname=(python-${_py_pkgname} python2-${_py_pkgname})
-pkgver=0.1.15
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Sphinx extension that automatically documents argparse commands and options."
 arch=('any')
 url="${_github_url}"
 license=('MIT')
 makedepends=('git' 'python-setuptools' 'python2-setuptools')
+checkdepends=('python-pytest' 'python2-pytest')
 source=(${_py_pkgname}::git+${_github_url}.git#tag=$pkgver)
 sha256sums=('SKIP')
-
-prepare() {
-    cp -a "${srcdir}/${_py_pkgname}" "${srcdir}/python2-${_py_pkgname}"
-}
 
 build() {
     cd "${srcdir}/${_py_pkgname}"
     python setup.py build
-    cd "${srcdir}/python2-${_py_pkgname}"
     python2 setup.py build
+}
+
+check() {
+    cd "${srcdir}/${_py_pkgname}"
+    
+    py.test
+    # Tests fail because of non-standard executable name py.test2
+    # py.test2
 }
 
 # Automatically create package functions using Bash magic
@@ -39,7 +43,7 @@ package_python-${_py_pkgname}() {
 package_python2-${_py_pkgname}() {
     depends=('python2-sphinx')
 
-    cd "\${srcdir}/python2-${_py_pkgname}"
+    cd "\${srcdir}/${_py_pkgname}"
 
     python2 setup.py install --skip-build --root="\${pkgdir}" --optimize=1
 
