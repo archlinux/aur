@@ -3,7 +3,7 @@
 
 pkgbase=rust-nightly
 pkgname=('rust-nightly' 'rust-nightly-doc')
-pkgver=1.22.0.2017.09.29
+pkgver=1.22.0.2017.09.30
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
@@ -14,7 +14,7 @@ source=("http://static.rust-lang.org/dist/rustc-nightly-src.tar.gz")
 options=('staticlibs' '!strip' '!emptydirs' '!makeflags')
 conflicts=('rust')
 provides=('rust')
-md5sums=('68a8d3572dd4c59c0e39262d4b208132')
+md5sums=('80cf7964b91e0132572c4de295c1cc55')
 export RUSTFLAGS="$RUSTFLAGS -C link-args=-lffi"
 
 build() {
