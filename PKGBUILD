@@ -1,6 +1,7 @@
-# Maintainer: Lars Hagström <lars@foldspace.nu>
+# Original: Lars Hagström <lars@foldspace.nu>
+# Maintainer: Lestofante <lestofante88@gmail.com>
 pkgname=s-tui-git
-pkgver=r83.4ee6c9e
+pkgver=r222.397e17f
 pkgrel=1
 pkgdesc="Terminal UI stress test and monitoring tool "
 arch=('any')
@@ -13,6 +14,7 @@ options=(!emptydirs)
 install=
 source=("$pkgname"::"git+$url")
 sha1sums=('SKIP')
+conflicts=("s-tui")
 
 pkgver() {
   cd "$srcdir/$pkgname"
