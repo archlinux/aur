@@ -4,11 +4,11 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 # Contributor: Ace <a.mad.coder at gmail dot com>
 
-_version=2017.1.1
+_version=2017.2.0
 _build=f1
-_buildtag=20170905
-_randomstring=f4fc8fd4067d
-_extractiondir=unity-editor-${_version}x${_build}Linux
+_buildtag=20170925
+_randomstring=ad31c9083c46
+_extractiondir=unity-editor-${_version}${_build}
 
 pkgname=('unity-editor' 'monodevelop-unity')
 pkgver=${_version}${_build}+${_buildtag}
@@ -38,13 +38,13 @@ optdepends=('ffmpeg: for WebGL exporting'
             'monodevelop-unity: for old MonoDevelop + Unity-specific addins')
 conflicts=('unity3d')
 replaces=('unity3d')
-source=("http://beta.unity3d.com/download/${_randomstring}/unity-editor-installer-${_version}x${_build}Linux.sh"
+source=("http://beta.unity3d.com/download/${_randomstring}/unity-editor-installer-${_version}${_build}.sh"
         'EULA'
         'unity-editor'
         'monodevelop-unity'
         'unity-monodevelop.png')
-noextract=("unity-editor-installer-${_version}x${_build}Linux.sh")
-sha1sums=('fe7dca4513f2e22c11ac34f861e642cada7989f9'
+noextract=("unity-editor-installer-${_version}${_build}.sh")
+sha1sums=('deddbac06b0849b1074791cf30140c40ac131194'
           'b0b08428b5df109916db396717ec7a8ec5f4c0c4'
           'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
           '8ffbfd8f4577b146d25217720ac6689c5d929e84'
