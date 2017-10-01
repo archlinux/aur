@@ -1,13 +1,13 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-tkfontchooser' 'python2-tkfontchooser')
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Font chooser dialog for tkinter"
 arch=('any')
 url="https://pypi.python.org/pypi/tkFontChooser"
 license=('GPL3')
 source=("tkfontchooser-$pkgver.tar.gz::https://github.com/j4321/tkFontChooser/archive/v$pkgver.tar.gz")
-sha512sums=('3d4d6f6a214ef04448118e5e2a803747f6600a31e16400c292bcd34327ea3f44928de5acbec6530e25893d3f7bc6b74d5ee3fc11616d72624c8471dc2f9ab354')
+sha512sums=('43073f4b7e57bb1b4e4806a9523693147a304d73bf9ef7ddc67e79baf22d8b0f26cdb89e87a07b84e3dec47b73bd5d10f454b228f49913db23bc1da5b0e73617')
 
 package_python-tkfontchooser() {
   makedepends=('python-setuptools')
