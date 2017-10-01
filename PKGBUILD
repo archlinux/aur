@@ -14,16 +14,16 @@ source=($pkgname::git+https://github.com/stepancheg/rust-protobuf.git)
 sha256sums=('SKIP')
 
 pkgver() {
-    cd $pkgname
+    cd "$pkgname"
     echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD)
 }
 
 build() {
-    cd $pkgname
+    cd "$pkgname"
     cargo build --release
 }
 
 package() {
-    cd $pkgname
+    cd "$pkgname"
     install -D -m755 "$srcdir/$pkgname/target/release/protoc-gen-rust" "$pkgdir/usr/bin/protoc-gen-rust"
 }
