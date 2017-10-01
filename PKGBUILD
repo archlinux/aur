@@ -7,7 +7,7 @@ url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")
 depends=("encfs" "fuse2" "zenity" "xdg-utils")
-source=("$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 md5sums=('58b61a7f9d1b5ad13563d44fd00112d0')
 
 package() {
