@@ -14,7 +14,7 @@ depends=('perl' 'rofi' 'tmux' 'perl-inc-latest' 'perl-net-mpd' 'perl-data-messag
 makedeps=('perl-module-scandeps' 'perl-module-install' 'perl-cpanplus-dist-build')
 install=clerk-git.install
 makedepends=('git' 'perl-module-install')
-source=('git+https://github.com/carnager/clerk#branch=perl')
+source=('git+https://github.com/carnager/clerk#branch=next')
 
 pkgver() {
     cd ${_pkgname}
