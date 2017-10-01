@@ -11,6 +11,14 @@
 # Don't add your tape drive to the existing file. An upgrade will overwrite it and disappear.
 #   Add it to /etc/amanda/TestConfig/tapetypes and add an includefile to amanda.conf
 
+# http://blog.learnadmin.com/2010/07/install-and-configure-amanda-backup.html
+
+# More guides using the old fashioned configuration method
+# http://fedoranews.org/ghenry/amanda/
+# http://blog.secaserver.com/2012/09/centos-install-configure-amanda-backup-server/
+# https://wiki.centos.org/HowTos/AmandaBackups
+# https://www.novell.com/coolsolutions/feature/18050.html
+
 # If your backup is not working, see if these demos work before reporting. You can also set some
 # values back to legacy.
 
@@ -57,46 +65,77 @@ _amlog='/var/log/amanda'
 set -u
 pkgname='amanda'
 #pkgver='3.3.9'
-pkgver='3.4.5'
+pkgver='3.5'
 pkgrel='1'
 pkgdesc='Advanced Maryland Automatic Network Disk Archiver network backup for Linux Windows clients, supports SSH, AES, GPG, encryption, tape, RAIT, mirror, changers, Amazon S3, ipv6, DVD, NDMP, VTL, advanced scripting'
 arch=('i686' 'x86_64')
 url='http://www.amanda.org'
 license=('custom' 'GPL')
-depends=('perl>=5.6.0' 'glib2>=2.2.0' 'gawk' 'tar>=1.12' 'gzip' 'curl>=7.10' 'openssl' 'openssh' 'cron' 'libarchive' 'readline' 'netcat' 'sudo' 'bash')
+depends=('perl>=5.6.0' 'glib2>=2.2.0' 'gawk' 'tar>=1.12' 'gzip' 'curl>=7.10' 'openssl' 'openssh' 'cron' 'libarchive' 'readline' 'netcat' 'bash')
 # perl-module-scandeps: cd pkg; scandeps.pl $(grep -lR '/usr/bin/perl' .) | sort -u | grep -v "^'Amanda::"
 depends+=(
- 'perl-encode-locale'
- 'perl-io-socket-ssl'
- 'perl-json'
- 'perl-net-ssleay'
- 'perl-uri'
- 'perl-xml-namespacesupport'
- 'perl-xml-parser'
- 'perl-xml-sax'
- 'perl-xml-simple'
+  'perl-encode-locale'
+  'perl-io-socket-ssl'
+  'perl-json'
+  'perl-net-ssleay'
+  'perl-uri'
+  'perl-xml-namespacesupport'
+  'perl-xml-parser'
+  'perl-xml-sax'
+  'perl-xml-simple'
+  ## from CentOS 3.3.9 install https://linoxide.com/tools/setup-centralized-backup-server-amanda-centos-7/
+  # I can't find any reference to the non builtins. Maybe for old versions.
+  #'perl-business-isbn'
+  #'perl-business-isbn-data'
+  ##'perl-compress-raw-bzip2' # built in
+  ##'perl-compress-raw-zlib'  # built in
+  ##'perl-data-dumper' # built in
+  ##'perl-digest' # built in
+  ##'perl-digest-md5' # built in
+  ##'perl-file-listing' # built in
+  #'perl-html-parser'
+  #'perl-html-tagset'
+  #'perl-http-cookies'
+  #'perl-http-daemon'
+  #'perl-http-date'
+  #'perl-http-message'
+  #'perl-http-negotiate'
+  #?'perl-io-compress'
+  #'perl-io-html'
+  #?'perl-io-socket-ip'
+  #'perl-lwp-mediatypes'
+  #'perl-net-http'
+  #'perl-net-libidn'
+  #'perl-timedate'
+  #'perl-www-robotrules'
+  #'perl-xml-sax-base'
+  #'perl-libwww' # perl-libwww-perl
+  # From manual install
+  #'perl-extutils-embed' # developers only
 )
 optdepends=(
+  'sudo: run commands as amanda user'
   'gnuplot: amplot pictures'
   'dump: creating backups in dump format'
   'samba: backing up Windows hosts'
+  'pigz: parallel gzip compression for dumptype'
   'bzip2: better compression for dumptype'
   'xz: better compression for dumptype'
+  'ncompress: LZW .Z compression'
   'gnupg: amcrypt encryption'
   'aespipe: amcrypt encryption'
-  'sharutils: amcrypt encryption with uuencode'
+  'sharutils: uuencode for amcrypt encryption'
   'mt-st-git: manual tape drive control for blocksize, testing, and restore' # some tape drive support is built in
-  'mtx-svn: advanced tape media changer support' # some changer support is built in
+  'mtx-svn: advanced tape autoloader support' # some changer support is built in
   'cups: printed reports'
   'mailx: email notifications'
-  'ncompress: .Z compression'
   #'git: taper transfer' # does not seem to be current
   #'svn: ' # lots of references but no action
   'xfsdump: direct XFS backup with xfsdump xfsrestore' # This is why amanda needs to be in the disk group
   'dump: direct EXT backup with dump restore' # see sendsize.c for the OS of various dump programs
 )
 # grep 'checking for' config.log | cut -d' ' -f2- | sort -u | grep -v '\.h$'
-makedepends=('swig' 'grep' 'splint' 'gettext' 'sed')
+makedepends=('swig' 'grep' 'splint' 'gettext' 'sed') # swig is for developers only
 backup=(
   "${_amsecurity#/}"
   "${_amhome#/}/.amandahosts"
@@ -109,7 +148,7 @@ _tapetypes=('tapetypes.txt')
 _verwatch=('http://www.amanda.org/download.php' '\([0-9\.]\+\)' 't')
 _srcdir="${pkgname}-${pkgver}"
 source=("https://prdownloads.sourceforge.net/amanda/amanda-${pkgver}.tar.gz" "xinetd.${pkgname}".{udp,tcp} "${_tapetypes[@]}")
-sha256sums=('bf05ea512676c7520ccff8d711e17176ea2aec47f7c517669cee02e8ab201343'
+sha256sums=('099eb36321b1360ebde6156fb1e75f3e0245520b6f886a0e8e0f31a7a6169be4'
             '3db294c9d7c610e9c0d531dcc2725dbddf1213fad64f04bc7cf9b1b9c30e9803'
             '46446a8dc4ee8ec39ed0a3e2636fb02a198565e8111abe8392c456da56a007ce'
             'c368e7f9d6d1df703619476e0fcf06e841a7ec86a5a7b86dc499821fbb0a137e')
@@ -136,26 +175,19 @@ _testAmandaUserGroup() {
 }
 unset -f _testAmandaUserGroup
 
+# We can't modify .install but we can stop and force the user to fix it.
 _install_check() {
-  # We can't modify .install but we can stop and force the user to fix it.
-  if ! grep -q "^_amlibexec='${_amlibexec}'"'$' "${startdir}/${install}"; then
-    set +u
-    msg "${install} _amlibexec must be fixed"
-    echo "_amlibexec='${_amlibexec}'"
-    false
-  fi
-  if ! grep -q "^_amsecurity='${_amsecurity}'"'$' "${startdir}/${install}"; then
-    set +u
-    msg "${install} _amsecurity must be fixed"
-    echo "_amsecurity='${_amsecurity}'"
-    false
-  fi
-  if ! grep -q "^_amhome='${_amhome}'"'$' "${startdir}/${install}"; then
-    set +u
-    msg "${install} _amhome must be fixed"
-    echo "_amhome='${_amhome}'"
-    false
-  fi
+  local _ckvar
+  local _ckline
+  for _ckvar in _amlibexec _amsecurity _amhome; do
+    _ckline="${_ckvar}='${!_ckvar}'"
+    if ! grep -q "^${_ckline}"'$' "${startdir}/${install}"; then
+      set +u
+      msg "${install} must be fixed"
+      echo "${_ckline}"
+      false
+    fi
+  done
 }
 
 prepare() {
@@ -209,6 +241,14 @@ prepare() {
   sed -e "/^\s*user\s\+=/ s:amandabackup:${_amandauser}:g" \
       -e "/^\s*group\s\+=/ s:disk:${_amandagroup}:g" \
     -i 'example/xinetd.'*
+
+  # Various fixes
+  #cp -p 'example/template.d/advanced.conf.in' 'example/template.d/advanced.conf.in.Arch'
+  sed -e 's:@CONFIG_DIR/:@CONFIG_DIR@/:g' \
+      -e 's:DailySet1:@DEFAULT_CONFIG@:g' \
+      -e '/^netusage/ s:8000 :80000 :g' \
+    -i 'example/template.d/advanced.conf.in'
+
   set +u
 }
 
@@ -529,7 +569,8 @@ EOF
 
 _fn_post_install() {
   echo "Test the system with"
-  echo "  sudo -u '${_amandauser}' amcheck 'MyConfig'"
+  echo "  sudo -u '\${_amandauser}' amcheck 'MyConfig'"
+  echo "  su -c \"su \${_amandauser} -c 'amcheck MyConfig'\""
 }
 
 _fn_post_upins() {
@@ -540,7 +581,7 @@ _fn_post_upins() {
   if [ -z "\$(getent passwd "\${_amandauser}")" ]; then
     # Amanda is in the disk group so it can image drives using xfsrestore and other tools
     useradd -u "\${_amandauid}" -g "\${_amandagroup}" -G "storage,disk" -m -d "\${_amhome}" -s '/bin/bash' -c 'Amanda Backup Daemon' "\${_amandauser}"
-    echo "amanda: User \${_amandauser} \${_amandauid} created"
+    echo "amanda: User \${_amandauser} \${_amandauid} added"
   fi
   if ! grep -q '^[a-z]\+tar:' "\${_amsecurity}"; then
     echo "amanda warning: no archivers are enabled in \${_amsecurity}"
@@ -579,7 +620,6 @@ fi
 _delself=1
 '
   rm -f '/usr/bin/amanda-uninstall.sh'
-  # Ask this first since it shows the names of backups
   local _file
   for _file in${_pacsave}; do
     if [ -f "\${_file}" ]; then
@@ -645,13 +685,12 @@ else
     if [ "\$#" -eq 0 ]; then
       echo 'The package installer runs this, not you!'
       echo 'Nothing to see here, Move along!'
-      exit 0
+    else
+      while [ "\$#" -gt 0 ]; do
+        _fn_\$1
+        shift
+      done
     fi
-
-    while [ "\$#" -gt 0 ]; do
-      _fn_\$1
-      shift
-    done
   fi
 fi
 EOF
