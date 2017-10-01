@@ -1,7 +1,7 @@
 pkgbase = shim-signed
 	pkgdesc = Initial UEFI bootloader that handles chaining to a trusted full bootloader under secure boot environments.
 	pkgver = 13.f0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.fedoraproject.org/packages/shim-signed
 	arch = x86_64
 	license = BSD
