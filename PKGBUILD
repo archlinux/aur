@@ -6,8 +6,8 @@ pkgdesc="a light OPDS library server for EPUB and PDF ebooks"
 arch=('x86_64' 'i686')
 url="http://elibsrv.sourceforge.net/"
 license=('GPL')
-depends=('ebook-tools' 'php' 'sqlite' 'php-sqlite' 'php-gd')
-optdepends=('kindlegen' 'poppler')
+depends=('ebook-tools' 'php' 'sqlite' 'php-sqlite' 'php-gd' 'poppler')
+optdepends=('kindlegen')
 source=("http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.xz")
 sha256sums=('2530853a48c542876eef719240d3bb3b28132e76090dbe56a902d80d2f08ddb2')
 
