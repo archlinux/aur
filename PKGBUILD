@@ -8,7 +8,7 @@ license=("GPL3")
 arch=("any")
 depends=("curl" "python-html2text")
 backup=("etc/$pkgname.conf")
-source=("$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 install=install.sh
 md5sums=('15ace7a5624fcc5abff8ac24120b9d7d')
 
