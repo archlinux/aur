@@ -1,7 +1,7 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
 pkgver=0.13.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/albertlauncher"
@@ -18,6 +18,7 @@ makedepends=(
   'qt5-svg'
   'qt5-declarative'
   'virtualbox'
+  'virtualbox-sdk'
   'muparser'
 )
 optdepends=(
