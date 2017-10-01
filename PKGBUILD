@@ -1,5 +1,5 @@
 pkgname=protobuf-rust-git
-pkgver=1.0.24.511
+pkgver=1.4.1.12.gdf787b8
 pkgrel=1
 pkgdesc="Rust Support for Google's protocol buffers"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD)
+    git describe --tags | sed -e 's/-/./g' -e 's/^v//'
 }
 
 build() {
