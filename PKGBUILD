@@ -12,7 +12,6 @@ depends=('perl-b-hooks-op-check>=0.19' 'perl-lexical-sealrequirehints>=0.005' 'p
 makedepends=()
 url='https://metacpan.org/release/multidimensional'
 source=('http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/multidimensional-0.013.tar.gz')
-md5sums=('60113584ddf6daf651998b7f01cf2cc4')
 sha512sums=('9abc93efd0060042f16c9e89c37a11a08c781ab2d095964701661a17f4adfeaf7cf3cb134db9c91a366b5ddda482716eda5d3b002fdb38fa4694d7e24dbc76f6')
 _distdir="multidimensional-0.013"
 
