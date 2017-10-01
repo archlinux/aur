@@ -2,15 +2,15 @@
 pkgname=python-json2csv-git
 pkgver=1
 pkgrel=1
-pkgdesc="A converter to extract nested JSON data to CSV files."
+pkgdesc="A python2 converter to extract nested JSON data to CSV files."
 arch=('any')
 url="https://github.com/evidens/json2csv"
 license=('MIT')
 groups=()
-depends=('python'
+depends=('python2'
         'python2-unicodecsv')
-makedepends=('python-setuptools'
-			'python-pip'
+makedepends=('python2-setuptools'
+			'python2-pip'
 			'git')
 provides=('python-json2csv')
 conflicts=()
@@ -42,12 +42,12 @@ build() {
   rm -rf "$srcdir/$_gitname-build"
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
-  python setup.py build
+  python2 setup.py build
 }
 
 package() {
   cd "$srcdir/$_gitname-build"
   #make DESTDIR="$pkgdir/" install
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
