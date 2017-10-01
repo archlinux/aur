@@ -1,7 +1,7 @@
 # Maintainer: Magnus Groß magnus dot gross 21 at gmail dot com
 _pkgname=quickcurver
 pkgname="$_pkgname"-git
-pkgver=r250.5f367d2
+pkgver=r255.5913253
 pkgrel=1
 pkgdesc="Qt Material design implementation of Achtung die Kurve with online multiplayer"
 arch=('i686' 'x86_64')
