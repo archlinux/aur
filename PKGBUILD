@@ -8,7 +8,7 @@ _srcname=$pkgbase
 _kernel_rel=4.13
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=4.13.695032.dcae401d1113
+pkgver=4.13.695148.f5a16c561fb8
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -23,7 +23,7 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
         # standard config files for mkinitcpio ramdisk
         'linux.preset')
 sha256sums=('SKIP'
-            '6d7a52b0ae947fe0984e11f1d88c701ceaa535eb176b3e905a78aa3ead656197'
+            '532cbf91e8baa4dd15fac032ed8595f3e2f70604ac8d124085350c78470a6321'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
