@@ -1,36 +1,37 @@
-# Maintainer: Andreas B. Wagner <andreas.wagner@lowfatcomputing.org>
-_pkgname=xdotool
-pkgname=${_pkgname}-git
-pkgver=0.r512.f5309ec
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Andreas B. Wagner <andreas.wagner@lowfatcomputing.org>
+
+pkgname=xdotool-git
+pkgver=3.20160805.1.r21.g1334329
 pkgrel=1
-pkgdesc="Command-line X11 automation tool"
+pkgdesc='Command-line X11 automation tool (git version)'
 arch=('i686' 'x86_64')
-url="http://www.semicomplete.com/projects/xdotool"
+url='http://www.semicomplete.com/projects/xdotool/'
 license=('BSD')
-depends=('libxkbcommon' 'libxinerama' 'libxtst')
+depends=('libxtst' 'libxinerama' 'libxkbcommon')
 makedepends=('git')
-provides=($_pkgname)
-conflicts=($_pkgname)
-replaces=(${_pkgname}-svn)
-source=("$pkgname::git+https://github.com/jordansissel/${_pkgname}.git")
+provides=('xdotool' 'libxdo.so')
+conflicts=('xdotool')
+replaces=('xdotool-svn')
+source=("$pkgname"::'git+https://github.com/jordansissel/xdotool.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
-	printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	find $srcdir/$pkgname -type f -exec sed -i 's/\r//g' {} \;
+    cd "$pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-	export PATH=$PATH:/usr/bin/core_perl/ make PREFIX="$pkgdir/usr" INSTALLMAN="$pkgdir/usr/share/man"
+    cd "$pkgname"
+    make WITHOUT_RPATH_FIX='1'
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	make PREFIX="$pkgdir/usr" INSTALLMAN="$pkgdir/usr/share/man" install
-	install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$_pkgname/COPYRIGHT"
-} 
+    cd "$pkgname"
+    make PREFIX='/usr' INSTALLMAN='/usr/share/man' DESTDIR="$pkgdir" install
+    
+    # remove execute bit from header file
+    chmod -x "${pkgdir}/usr/include/xdo.h"
+    
+    install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
