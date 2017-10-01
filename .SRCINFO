@@ -1,6 +1,6 @@
 pkgbase = popular-packages
 	pkgdesc = Lists popular packages not (yet) installed
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = http://public.files.xavion.name/Software/popular-packages/popular-packages.jpg
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = popular-packages
 	optdepends = pacman-cage: Better performance
 	options = !emptydirs
 	source = http://public.files.xavion.name/Software/popular-packages/popular-packages
-	sha1sums = 35bed58f93921a3dc05395482efefe002a076b9f
+	sha1sums = baab7eacc9244d56508ea9910a3621a8fa8bce0a
 
 pkgname = popular-packages
 
