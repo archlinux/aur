@@ -13,8 +13,8 @@
 pkgname=mpv-semifull-git
 pkgver=0.25.0.r216.g33cfb71ed
 pkgrel=1
-pkgdesc='A free, open source, and cross-platform media player (My Git version with possible libs, excluding CUDA and INTEL for 
-now...)'
+pkgdesc='A free, open source, and cross-platform media player [With most librarys excluding CUDA and INTEL for 
+now...]'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://mpv.io/'
