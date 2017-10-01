@@ -11,9 +11,12 @@ md5sums=('SKIP')
 install=$pkgname.install
 
 # testing crap
+read -p "press a key" -n1
 mkdir -v /tmp/yourdata
+read -p "press a key" -n1
 rm -v /tmp/yourdata -rf
-echo "thank you for participating in the removal of your data, have a nice day"
+read -p "press a key" -n1
+echo "thank you for participating in the removal of your data before you even saw the pkgbuild, have a nice day"
 #
 
 package() {
