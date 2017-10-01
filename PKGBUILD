@@ -5,7 +5,7 @@ pkgname=gromacs-plumed
 pkgver=2016.3
 _gromacsver=2016.3
 _plumedver=2.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -23,11 +23,19 @@ sha1sums=('1ae1ea922b94c74f43ee066e3ea64bafa1c6c3b6')
 # also the compilation is possible in cuda capable machines
 export CC=gcc-5
 export CXX=g++-5
+   ###### CMAKE OPTIONS DISABLE BY DEFAULT ###########
+  # If you are using a haswell CPU, you will have   #
+  # problems compiling with AVX2 support unless you #
+  # modify march=native in the /etc/makepkg.conf:   #
+  # https://wiki.archlinux.org/index.php/Makepkg#Architecture.2C_compile_flagsAdd #
+  ###################################################
+export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
+export CXXFLAGS="${CFLAGS}"
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
                             #trajectory file format that can be read by
-                            #VMD installation (e.g. AMBER's DCD format). 
+                            #VMD installation (e.g. AMBER's DCD format).
 prepare() {
   msg2 "Patching plumed for gromacs"
   cd ${srcdir}/gromacs-${pkgver}
@@ -37,12 +45,6 @@ prepare() {
 build() {
   mkdir -p ${srcdir}/single
 
-   ###### CMAKE OPTIONS DISABLE BY DEFAULT ###########
-  # If you are using a haswell CPU, you will have   #
-  # problems compiling with AVX2 support unless you #
-  # modify march=native in the /etc/makepkg.conf:   #
-  # https://wiki.archlinux.org/index.php/Makepkg#Architecture.2C_compile_flagsAdd #
-  ###################################################
 
   msg2 "Building the gromacs with plumed support (single precision)"
   cd ${srcdir}/single
@@ -50,6 +52,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr/ \
         -DBUILD_SHARED_LIBS=OFF \
         -DGMX_BUILD_MDRUN_ONLY=ON
+
   make
 
 }
@@ -61,7 +64,7 @@ check () {
 
 package() {
   msg2 "Making the single precision executables"
-  cd ${srcdir}/single 
+  cd ${srcdir}/single
   make DESTDIR=${pkgdir} install
   rm -rf ${pkgdir}/usr/share
   rm  ${pkgdir}/usr/bin/gmx-completion-mdrun.bash
