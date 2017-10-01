@@ -15,15 +15,15 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd $pkgname
-	echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD)
+    echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD)
 }
 
 build() {
     cd $pkgname
-	cargo build --release
+    cargo build --release
 }
 
 package() {
-	cd $pkgname
-	install -D -m755 "$srcdir/$pkgname/target/release/protoc-gen-rust" "$pkgdir/usr/bin/protoc-gen-rust"
+    cd $pkgname
+    install -D -m755 "$srcdir/$pkgname/target/release/protoc-gen-rust" "$pkgdir/usr/bin/protoc-gen-rust"
 }
