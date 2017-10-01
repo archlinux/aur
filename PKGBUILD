@@ -1,7 +1,7 @@
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=topcat
-pkgver=4.4
-_pkgver=4.4
+pkgver=4.5
+_pkgver=4.5
 pkgrel=1
 pkgdesc="Tool for OPerations on Catalogues And Tables"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 noextract=('topcat-full.jar')
 source=("ftp://andromeda.star.bris.ac.uk/pub/star/topcat/v${_pkgver}/topcat-full.jar"
         "topcat" "topcat.png" "topcat.desktop")
-md5sums=('3e4b50eccca6331003cc5eb9b6ca8299'
+md5sums=('f6b836cd5101c1cdb128eb5520d20cd9'
          '5f2df6a05c72b5641bf6a2b1c29173ed'
          '787868860ed7b0cc70595fa96dbff3da'
          'c00fecfd325398c2bcbd08ac76456c6e')
