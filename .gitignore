@@ -1,0 +1,4 @@
+/protobuf-rust-git/
+/src/
+/pkg/
+/*.tar.*
