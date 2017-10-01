@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.27.0.r84.g052ae5393a
+pkgver=0.27.0.r89.geb69e73eb4
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -70,7 +70,7 @@ sha256sums=('SKIP'
             '8cf41f23572417836084209fce343f779e72dea9688dc84e23e8eb913d002d5f'
             '9a7f7d78a71c5492709abfb8f4ad598fa02867e71b5645bb639850163264762b'
             '6e1d8057524f69f204f0f0468e7d4f8f6b41a6d22ac1e4bdf3bc1e2efa0e0284'
-            'aa27eb7993f9b6246bee3bcca18274491fe428622e658f1e1ad0067dff2622a5')
+            'b703510f6e1f36d3f00008c282c7fef52057aa5703b412a7b750fb05c3a6a2e5')
 
 pkgver() {
 	cd "${srcdir}/$_gitname"
