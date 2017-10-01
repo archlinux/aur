@@ -1,22 +1,21 @@
 # Contributor: kaptoxic
 
 pkgname=cvassistant
-_pkgname=CVAssistant
-pkgver=2.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="CV Assistant helps you create specialized resumes in Word .docx format fast and easy."
 url='https://sourceforge.net/projects/cvassistant/?source=navbar'
 license=('GPL')
 arch=('x86_64')
 depends=('qt5-base')
 #makedepends=('qt5-tools')
-source=("http://sourceforge.net/projects/cvassistant/files/${pkgname}_${pkgver}.tar.bz2"
+source=("http://sourceforge.net/projects/cvassistant/files/${pkgname}-${pkgver}-src.tar.bz2"
        'pro.diff')
-md5sums=('7f8aa019ef2cacb327b18f97a1e1f7d8'
+md5sums=('1f14e91e090896feca3b037edf973e19'
          '47ecfa602ab70a588fa9c2c10ac5a802')
 
 build() {
-  cd ${srcdir}/${_pkgname}
+  cd ${srcdir}/${pkgname}-${pkgver}-src
   patch -p1 -i $srcdir/pro.diff
   
   qmake 
@@ -24,7 +23,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
+  cd ${srcdir}${pkgname}-${pkgver}-src
 
   make INSTALL_ROOT=${pkgdir} install
 }
