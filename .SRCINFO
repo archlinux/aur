@@ -1,7 +1,7 @@
 pkgbase = htcap-git
 	pkgdesc = Single Page Application (SPA) crawler by intercepting AJAX calls and DOM changes
 	pkgver = 1.0.1.r36.gdcc0078
-	pkgrel = 1
+	pkgrel = 2
 	url = http://htcap.org/
 	install = htcap.install
 	arch = x86_64

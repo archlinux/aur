@@ -3,7 +3,7 @@
 pkgname=htcap-git
 _pkgname=htcap
 pkgver=1.0.1.r36.gdcc0078
-pkgrel=1
+pkgrel=2
 pkgdesc="Single Page Application (SPA) crawler by intercepting AJAX calls and DOM changes"
 arch=('x86_64' 'i686')
 url="http://htcap.org/"
