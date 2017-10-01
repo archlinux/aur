@@ -14,7 +14,6 @@ depends_x86_64=('zlib' 'ncurses')
 provides=('adb' 'android-tools')
 conflicts=('adb')
 install="${pkgname}.install"
-
 source=("https://dl.google.com/android/repository/platform-tools_${pkgver}-linux.zip"
         "adb.service"
         "license.html")
