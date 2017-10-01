@@ -4,4 +4,4 @@
 ---
 >             pass
 >             #raise CompilerNotFound()
->         return '17.0'
+>         return '18.0'
