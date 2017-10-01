@@ -1,15 +1,14 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=ultravnc-viewer
-pkgver=1.2.1.1
+pkgver=1.2.1.6
 pkgrel=1
 pkgdesc="A powerful VNC Client with a lot of features, compatible with Windows' UltraVNC servers"
 arch=('any')
 url="http://www.uvnc.com"
 license=('GPL')
-depends=('wine' 'gtk-update-icon-cache')
-makedepends=('unzip')
-source=("http://www.uvnc.eu/download/${pkgver//./}/uvnc_${pkgver//./}.zip"
+depends=('wine' 'hicolor-icon-theme')
+source=("https://support1.uvnc.com/download/${pkgver//./}/uvnc_${pkgver//./}_W32.zip"
         "${pkgname}"
         "${pkgname}-16.png"
         "${pkgname}-24.png"
@@ -18,7 +17,7 @@ source=("http://www.uvnc.eu/download/${pkgver//./}/uvnc_${pkgver//./}.zip"
         "${pkgname}-256.png"
         "${pkgname}.desktop"
         "${pkgname}-listen.desktop")
-sha256sums=('69ec0a50e33bceb0808c6c522e9329a4ab79ed871c0780e15e1690c508622126'
+sha256sums=('65db3869885f5755fbfcdd973b079937976739b7d7accbdcb65f557c116240d2'
             '1738d173c1cb89e46207c70fda6a36b7eeea9ba31b469a0cce10bbd9e8deb9b0'
             '5386feaf65fff389db4e4e30950f97d64803815b1e1a219d45bf41c2bde45e21'
             '098876231f8006bb89fc54986175ec6d938fae2c9e4a6dafe9b5c9d36f7fb3a2'
@@ -27,12 +26,10 @@ sha256sums=('69ec0a50e33bceb0808c6c522e9329a4ab79ed871c0780e15e1690c508622126'
             '1106710eab5b5603c15a1c216ad181e60110e8dc17f6442985e24f631b6f5f1b'
             'c2a3cb12b9fdbd06fc9faf9907a591d7988233dd5e0046ccba625f5f8b3b367d'
             '6eefe94d1dacc0ca414a1e2ff5cc0fb2c272d3743b39240247000e5d03e6d9f2')
-_referer_page="http://www.uvnc.com/component/jdownloads/finish/5-bins/303-ultravnc-${pkgver//./}-all-bin-zip/0.html"
-DLAGENTS="http::/usr/bin/curl --referer ${_referer_page} -o %o %u"
 
 package() {
   # Install binary files
-  install -m 644 -D "${srcdir}/32/w2k/vncviewer.exe" "${pkgdir}/usr/lib/${pkgname}/vncviewer.exe"
+  install -m 644 -D "${srcdir}/xp/vncviewer.exe" "${pkgdir}/usr/lib/${pkgname}/vncviewer.exe"
   # Install startup script
   install -m 755 -D "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   # Install icons
