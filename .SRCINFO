@@ -6,7 +6,7 @@ pkgbase = evolution-mapi
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = intltool
+	makedepends = cmake
 	depends = evolution>=3.26.0
 	depends = openchange
 	source = http://ftp.gnome.org/pub/gnome/sources/evolution-mapi/3.26/evolution-mapi-3.26.0.tar.xz

@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://www.gnome.org"
 license=('GPL3')
 depends=("evolution>=${pkgver}" "openchange")
-makedepends=("intltool")
+makedepends=("cmake")
 source=(http://ftp.gnome.org/pub/gnome/sources/evolution-mapi/${pkgver:0:4}/${pkgname}-${pkgver}.tar.xz
         auto_reconnection.patch)
 sha256sums=('5312dd98f789a77ef2d514d6d1d9596770bb9566e803b3ff13db0f95a2a0ba9e'
