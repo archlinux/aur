@@ -5,8 +5,8 @@
 # Contributor: Jelle van der Waa <jellevdwaa@gmail.com>
 
 pkgname=xmind
-pkgver=3.7.4
-_filename=$pkgname-8-update4-linux
+pkgver=3.7.5
+_filename=$pkgname-8-update5-linux
 pkgrel=1
 pkgdesc="Brainstorming and Mind Mapping Software"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("http://www.xmind.net/xmind/downloads/${_filename}.zip"
 "XMind"
 "XMind.desktop"
 "XMind.png")
-sha512sums=('adee77c9a3e262a9bcbcb528bd983beec66550221e5dc1ac4c2a2d36fcbafb0250af9305df5ce2584f6a61a77e44783d2f89c9dc25d8a5e1a4692a71374b30e5'
+sha512sums=('0f532ea9486fad35a04d9c0caa747130b92d4413e0dc55053b5216b4bdb9928899b289018e27a2b08be9ae813b22946e7676d11fa23485487f265399dc48e14b'
 'SKIP'
 'SKIP'
 'SKIP'
