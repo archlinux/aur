@@ -1,0 +1,15 @@
+pkgbase = relational
+	pkgdesc = Educational tool for relational algebra
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://ltworf.github.io/relational/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-pyqt5
+	depends = python-xtermcolor
+	source = relational-2.5.tar.gz::https://github.com/ltworf/relational/archive/2.5.tar.gz
+	sha256sums = 0b509ed4ba8cda881006e4b439ea5b59acc164fd823486275857c8c4c64eafd3
+
+pkgname = relational
+
