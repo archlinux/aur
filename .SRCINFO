@@ -1,12 +1,13 @@
 pkgbase = xde-styles
 	pkgdesc = Four consistent styles across light-weight WMs for XDE
 	pkgver = 1.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/bbidulock/xde-styles
 	arch = any
 	groups = xde
 	license = CCPL:by-sa
 	makedepends = git
+	makedepends = perl-timedate
 	depends = m4
 	optdepends = xdg-launch: for key bindings
 	optdepends = xde-menu: for root menus

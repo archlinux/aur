@@ -1,14 +1,14 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=xde-styles
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Four consistent styles across light-weight WMs for XDE"
 groups=('xde')
 arch=('any')
 license=('CCPL:by-sa')
 url="http://github.com/bbidulock/xde-styles"
 depends=('m4')
-makedepends=('git')
+makedepends=('git' 'perl-timedate')
 optdepends=('xdg-launch: for key bindings'
             'xde-menu: for root menus'
             'xde-ctools: for window menus'
