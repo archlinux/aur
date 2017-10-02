@@ -1,0 +1,31 @@
+pkgbase = gnome-terminal-csd1
+	pkgdesc = The GNOME Terminal Emulator with CSD support
+	pkgver = 3.24.2
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Terminal
+	arch = i686
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = docbook-xsl
+	makedepends = libnautilus-extension
+	makedepends = appdata-tools
+	makedepends = gnome-shell
+	makedepends = gconf
+	makedepends = vala
+	makedepends = yelp-tools
+	makedepends = git
+	depends = vte3
+	depends = gsettings-desktop-schemas
+	depends = dconf
+	conflicts = gnome-terminal
+	options = !emptydirs
+	source = https://download.gnome.org/sources/gnome-terminal/3.24/gnome-terminal-3.24.2.tar.xz
+	source = https://raw.githubusercontent.com/leipero/gnome-terminal-csd-patch/master/gnome-terminal-csd.patch
+	sha256sums = 281edac30a07ca45beaaaf0a13fe2219cf8b87ece5e55dccbfc49ef769dfec0f
+	sha256sums = bd15026f1c1e811481ddf6b478a9d291897383ab581e69cbac1ab47019719268
+
+pkgname = gnome-terminal-csd1
+
