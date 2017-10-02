@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=libreport
-pkgver=2.7.2
+pkgver=2.9.2
 pkgrel=1
 pkgdesc='Generic library for reporting various problems'
 arch=('i686' 'x86_64')
@@ -11,15 +11,15 @@ optdepends=('python: python 3.x bindings'
 	'python2: python 2.x bindings')
 url='https://github.com/abrt/libreport'
 license=('GPL')
-source=("https://fedorahosted.org/released/abrt/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('88d79b0c5fe2e87acabeb99707207f027ccb705cb4721226014fdd0d7703f0cb')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/abrt/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('87b771f837c4868d9c2a4d7f47355b6853f58492a6bcb86c1ee627017583d6b2')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
+	./autogen.sh
 	sed -i 's/PYTHON2_LIBS/PYTHON_LIBS/' src/report-python/Makefile.am
 	sed -i 's/python-config/python2-config/' configure
-	export PYTHON='/usr/bin/python2' PYTHON_CONFIG='/usr/bin/python2-config'
 	./configure --prefix=/usr
 	make
 }
