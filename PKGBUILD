@@ -1,6 +1,6 @@
 # Maintainer: Stephan Windmüller <arch at freewarepoint dot de>
 pkgname=psi
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Free instant messaging application designed for the XMPP network"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('qca-qt5' 'qt5-x11extras' 'qt5-multimedia' 'aspell' 'libxss' 'minizip' 
 conflicts=('psi-git')
 replaces=('psi-git')
 source=("https://downloads.sourceforge.net/project/${pkgname}/Psi/${pkgver}/psi-${pkgver}.tar.xz")
-sha256sums=("16ce1b767d40453032cd5d9ad5a9d4c6dba43989acc9a09538da3f74b7c614f5")
+sha256sums=("59debd16e61ab1d4ff88aca9f41b9caaaca8395f1576418fb99214d5e2c6fa8b")
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
