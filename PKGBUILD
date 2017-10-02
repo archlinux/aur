@@ -182,25 +182,6 @@ _source_package_name=${_qt_package_name_prefix}-${_pkgver}
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
 
-if $_static_build; then
- _additional_configure_flags="$_additional_configure_flags
-                                -ltcg \
-                                -no-ico \
-                                -no-glib \
-                                -no-fontconfig \
-                                -qt-freetype \
-                                -qt-harfbuzz \
-                                "
-else
- _additional_configure_flags="$_additional_configure_flags \
-                                -hostprefix ${_installprefix} \
-                                -fontconfig \
-                                -system-sqlite \
-                                -system-freetype \
-                                -system-harfbuzz \
-                                "
-fi
-
 pkgdesc="Qt SDK for the Raspberry Pi 1/2/3"
 arch=("x86_64")
 url="http://chaos-reins.com/qpi/"
@@ -284,6 +265,22 @@ if $_static_build; then
     "
 
     _additional_configure_flags="$_additional_configure_flags $_exhaustive_static_specific_configure_options"
+    _additional_configure_flags="$_additional_configure_flags
+        -ltcg \
+        -no-ico \
+        -no-glib \
+        -no-fontconfig \
+        -qt-freetype \
+        -qt-harfbuzz \
+    "
+else
+    _additional_configure_flags="$_additional_configure_flags \
+        -hostprefix ${_installprefix} \
+        -fontconfig \
+        -system-sqlite \
+        -system-freetype \
+        -system-harfbuzz \
+    "
 fi
 
 # Seems to be creating a large amount of breakage
@@ -298,8 +295,6 @@ _core_configure_options="\
                  -silent \
                  -release \
                  -pch \
-                 -opengl es2 \
-                 -egl \
                  -journald \
                  -make libs \
                  -nomake tools \
@@ -448,6 +443,8 @@ fi
 # -platform linux-clang \
 if $_target_host; then
   local _configure_line="${_srcdir}/configure \
+                 -opengl desktop \
+                 -glx \
                  ${_core_configure_options} \
                  ${_additional_configure_flags}"
 # ${_arch_specific_configure_options} \
@@ -460,6 +457,8 @@ else
                  -device-option CROSS_COMPILE=/opt/${_toolchain_name}/bin/${_toolchain_name}- \
                  -no-xcb \
                  -qpa eglfs \
+                 -opengl es2 \
+                 -egl \
                  ${_additional_configure_flags}"
 fi
   local _configure_line_fn=configure_line
