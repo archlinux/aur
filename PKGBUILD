@@ -3,7 +3,7 @@
 
 pkgname=falkon-git
 _pkgname=falkon
-pkgver=2.1.99.r4446.f7a364b9
+pkgver=2.1.99.r4449.75bd63ff
 _pkgver=2.1.99 
 pkgrel=1
 pkgdesc="Cross-platform Qt Web Browser"
