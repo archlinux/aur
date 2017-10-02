@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-git
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 1.1.365
+	pkgver = 1.1.371
 	pkgrel = 1
 	url = https://www.rstudio.com/products/rstudio/
 	install = rstudio-desktop-git.install
@@ -9,7 +9,7 @@ pkgbase = rstudio-desktop-git
 	license = AGPL3
 	makedepends = git
 	makedepends = cmake>=2.8
-	makedepends = boost>=1.5
+	makedepends = boost>=1.63
 	makedepends = java-environment
 	makedepends = apache-ant
 	makedepends = unzip
@@ -44,11 +44,11 @@ pkgbase = rstudio-desktop-git
 	conflicts = rstudio-desktop-preview
 	source = git+https://github.com/rstudio/rstudio.git
 	source = https://s3.amazonaws.com/rstudio-buildtools/gin-1.5.zip
-	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.7.0.zip
+	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.8.1.zip
 	source = socketproxy-openssl.patch
 	md5sums = SKIP
 	md5sums = 2409168cc18bf5f341e107e6887fe359
-	md5sums = a8f3704a597b392910ea060284f21a03
+	md5sums = ddd572887957fd5cdfde3469bd8c1102
 	md5sums = d571313f511ad4a17014c4aef6d01bbc
 
 pkgname = rstudio-desktop-git
