@@ -61,8 +61,9 @@ package() {
 
   install -dm0700 "${pkgdir}/var/log/${_pkgname}"
   install -dm0700 "${pkgdir}/var/lib/${_pkgname}"
+
   install -dm0755 "${pkgdir}/usr/share/${_pkgname}"
-  install -dm0644 "${pkgdir}/etc/${_pkgname}"
+  install -dm0755 "${pkgdir}/etc/${_pkgname}"
 
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/conf" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/public" "${pkgdir}/usr/share/${_pkgname}"
