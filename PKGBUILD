@@ -1,6 +1,6 @@
 # Maintainer: Yuri Iozzelli <y.iozzelli@gmail.com>
 pkgname=python-llvmlite-bin
-pkgver=0.18.0
+pkgver=0.20.0
 pkgrel=1
 epoch=
 pkgdesc="A lightweight LLVM python binding for writing JIT compilers"
@@ -18,4 +18,4 @@ package() {
 	  mkdir -p "$pkgdir/usr/lib/python3.6/site-packages/"
 	  cp -r * "$pkgdir/usr/lib/python3.6/site-packages/"
 }
-md5sums=('bac228367ae76745a8373dcdd99a6a08')
+md5sums=('80a000535012892cca5fb40697eaf2b4')
