@@ -2,11 +2,11 @@
 
 pkgbase=wireguard-git
 pkgname=(wireguard-dkms-git wireguard-tools-git)
-pkgver=0.0.20170918.r25.g37d2b14
+pkgver=0.0.20171001.r5.gdeb80e5
 pkgrel=1
 pkgdesc='next generation secure network tunnel - git checkout'
 arch=('x86_64' 'i686')
-url='http://www.wireguard.io/'
+url='http://www.wireguard.com/'
 license=('GPL')
 makedepends=('git' 'libmnl' 'bash-completion')
 source=('git+https://git.zx2c4.com/WireGuard')
