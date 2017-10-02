@@ -1,11 +1,12 @@
 pkgname=openmodelica-omc
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
 license=('OSMC-PL')
+groups=(openmodelica)
 
 _group=OpenModelica
 _name=OMCompiler
@@ -15,7 +16,7 @@ depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 
 
 makedepends=('gcc-fortran' 'boost' 'clang' 'cmake' 'java-environment' 'antlr2' 'git' 'expat' 'ncurses' 'readline' 'opencl-headers' 'imagemagick')
 
-conflicts=('openmodelica-dev' 'openmodelica-git')
+conflicts=('openmodelica-dev' 'openmodelica-dev-omc' 'openmodelica-git')
 
 source=(  "git+https://github.com/${_group}/${_name}.git#tag=${_tag}")
 sha1sums=('SKIP')
