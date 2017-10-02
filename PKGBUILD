@@ -4,7 +4,7 @@
 # Contributor: Matthew <pyther@pyther.net>
 
 pkgname=bacula-client
-pkgver=7.4.7
+pkgver=9.0.4
 pkgrel=1
 pkgdesc='A network backup tool for Linux, Unix, Mac and Windows - client edition'
 conflicts=('bacula')
@@ -15,11 +15,11 @@ url='http://www.bacula.org/'
 license=('GPL2')
 backup=('etc/bacula/bconsole.conf'
 	'etc/bacula/bacula-fd.conf')
-# verification fails for DSA signatures, so disabled for now...
-#validpgpkeys=('2CA9F510CA5CCAF61AB529F59E98BF3210A792AD') # Bacula Distribution Verification Key (www.bacula.org)
-source=("http://downloads.sourceforge.net/project/bacula/bacula/${pkgver}/bacula-${pkgver}.tar.gz" #{,.sig}
+validpgpkeys=('86260C02E82A8FC5CA5FB0638363575EFBD8D142') # Bacula 4096 Distribution Verification Key (www.bacula.org) <kern@bacula.org>
+source=("http://downloads.sourceforge.net/project/bacula/bacula/${pkgver}/bacula-${pkgver}.tar.gz"{,.sig}
 	'bacula-fd.service')
-sha256sums=('6f6075c2ca90a63cdeeca39b0b82a3ea07ce9999dedc68951d88bed7fbc0be40'
+sha256sums=('cafa2d9a9e89a77d3b79984972487e72fb90d949269c77a74a68e97a9d28996f'
+            'SKIP'
             '37cdab95a99142a7e8494f0a49e54a5bfb1dca28561d0ce70ea64bf98e0c50fd')
 
 build() {
