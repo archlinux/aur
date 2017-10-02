@@ -19,7 +19,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
-# Arch stock configuration files are directly pulled from specefic trunk
+# Arch stock configuration files are directly pulled from a specific trunk
 arch_config_trunk=6c9f606816c018a38542520b3e8b2b6f60c901ac
 source_x86_64=("config.x86_64::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.x86_64?h=packages/linux&id=${arch_config_trunk}")
 source_i686=("config.i686::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.i686?h=packages/linux&id=${arch_config_trunk}")
