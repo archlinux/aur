@@ -73,7 +73,7 @@ _bldtype=Release
 
 _mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
 _mozcver=2.20.2673.102
-_utdicver=20170529
+_utdicver=20171002
 _zipcoderel=201709
 _uimmozcrev=321.3ea28b1
 
@@ -81,7 +81,7 @@ pkgbase=mozc-ut2
 pkgname=mozc-ut2
 true && pkgname=('mozc-ut2')
 pkgver="${_mozcver}.${_utdicver}"
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
@@ -96,8 +96,8 @@ source=(
   mod-generate-dictionary.sh
 )
 sha1sums=('SKIP'
-          '62cd3a980518f3b200b677343f50ab2aa1eb05f6'
-          'caaedb35ce7c303e841e8c151c6c67b48fb33004'
+          'abf29758a6c73b630efa33978b407ab67db79c95'
+          'efa752a0c4d705e1300907215d41bef842dfd0fc'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           '722847f9b2483cfae3da9183dac0d0b608977c71'
           '9dbf340458bfd0d63f9f6b8787c45222cff6e50e'
