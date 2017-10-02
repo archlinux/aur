@@ -6,7 +6,6 @@ pkgbase = linux-xanmod
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
-	makedepends = docbook-xsl
 	makedepends = kmod
 	makedepends = inetutils
 	makedepends = bc
@@ -18,6 +17,10 @@ pkgbase = linux-xanmod
 	sha256sums = 6c38be8a9ac1f38d59bc760be0bdde2b143d61f00a7fe98d77c9f5086595334d
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	source_i686 = config.i686::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.i686?h=packages/linux&id=6c9f606816c018a38542520b3e8b2b6f60c901ac
+	sha256sums_i686 = 73278ee56c5d3855e67ff50caa77a7cb47fb29ebd8f9b7ca9ebee4e2d446529c
+	source_x86_64 = config.x86_64::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.x86_64?h=packages/linux&id=6c9f606816c018a38542520b3e8b2b6f60c901ac
+	sha256sums_x86_64 = 1b9cbe1c25653d563515344a7c6cc9f79447ac9274fcf4de0007228e979b55dd
 
 pkgname = linux-xanmod
 	pkgdesc = The Linux kernel and modules with Xanmod patches
