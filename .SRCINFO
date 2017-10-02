@@ -1,0 +1,21 @@
+pkgbase = kmarkdownwebview-qt5webkit
+	pkgdesc = KPart for rendering Markdown content
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://www.kde.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	depends = kparts
+	depends = qt5-webkit
+	provides = kmarkdownwebview
+	conflicts = kmarkdownwebview
+	source = kmarkdownwebview-0.2.0.tar.xz::https://download.kde.org/stable/kmarkdownwebview/0.2.0/src/kmarkdownwebview-0.2.0.tar.xz
+	source = kmarkdownwebview-0.2.0.tar.xz::https://download.kde.org/stable/kmarkdownwebview/0.2.0/src/kmarkdownwebview-0.2.0.tar.xz.sig
+	validpgpkeys = E191FD5BE6F46870F09E82B2024E7FB43D015474
+	sha256sums = c5a73c02bd2761d1786b080148e465ef69e4686d17e6adfc047350f36e7f6b16
+	sha256sums = SKIP
+
+pkgname = kmarkdownwebview-qt5webkit
+
