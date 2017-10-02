@@ -65,7 +65,7 @@ package() {
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/templates" "${pkgdir}/usr/share/${_pkgname}"
 
   install -Dm0644 "${pkgdir}/usr/share/${_pkgname}/conf/app.ini" "${pkgdir}/etc/${_pkgname}/app.ini"
-  install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/scripts/systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
   install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}"
 
   install -dm0700 "${pkgdir}/var/log/${_pkgname}"
