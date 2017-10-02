@@ -1,7 +1,7 @@
 pkgbase = alephone-evil
-	pkgdesc = A radical new scenario for the AlephOne engine
+	pkgdesc = A radical new scenario for the Aleph One engine
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://trilogyrelease.bungie.org/
 	arch = any
 	license = unknown
@@ -10,8 +10,8 @@ pkgbase = alephone-evil
 	source = alephone-evil.sh
 	source = alephone-evil.desktop
 	sha256sums = 25ade4be0e9f0a4456511830e1abf55f48a095390bae8cef02a16771e5fad122
-	sha256sums = 298cd98fc67350c9462d7962fd95db21451db2adc21716c88342a1bf5942b0af
-	sha256sums = 287df7f3c6e4b8fd3161fd0a62c01de35525613f857568073c2213d263b0aec9
+	sha256sums = 73a27f33ab234dc96bf63105d6f8b98a730247ff7611d682b967173e7bdb2466
+	sha256sums = 68247e727749dcf17439fc98b92f9ad6a86ff795e3f5859ec6a3c4bdd174805c
 
 pkgname = alephone-evil
 
