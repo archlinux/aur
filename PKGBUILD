@@ -3,14 +3,14 @@
 pkgname=wingide
 _wingver=6.0.7
 _wingrel=1
-_wing_patch_lvl=21 #bump this when adding a patch
+_wing_patch_lvl=22 #bump this when adding a patch
 pkgver=$_wingver.$_wingrel.$_wing_patch_lvl
 pkgrel=1
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
 url="http://www.wingware.com"
 license=('custom')
 arch=('x86_64')
-_wingpatch=("fix-vi-mark-ranges-6.0.7p1-all.tar" "remote-healing-6.0.7p2-all.tar")
+_wingpatch=("fix-vi-mark-ranges-6.0.7p1-all.tar" "remote-healing-6.0.7p2-all.tar" "optimize-recent-6.0.7p3-all.tar")
 _patch_url_prefix=http://wingware.com/pub/$pkgname/$_wingver/patches/
 _wingpatch=( "${_wingpatch[@]/#/$_patch_url_prefix}" )
 source=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-x86_64-linux.tar.bz2" ${_wingpatch[*]})
@@ -18,7 +18,8 @@ depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
 md5sums=('f3ed3fec851faab4ad3a9fe822151cfe'
          '3f173e4b04f7cfdab3dc66a8a54613b7'
-         'bd4739f28056900fd3c9797f43f6ee28')
+         'bd4739f28056900fd3c9797f43f6ee28'
+         '47cc2e08696830188ba5ec145361e032')
 
 install=${pkgname}.install
 
