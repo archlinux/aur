@@ -59,12 +59,12 @@ build() {
 package() {
   install -Dm0755 "${srcdir}/src/${_gourl}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -dm0700 "${pkgdir}/var/log/${_pkgname}"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/{custom,repos,data,indexers,conf}"
+  install -dm0700 "${pkgdir}/var/log/${_pkgname}/"
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/"
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/"{custom,repos,data,indexers,conf}
 
-  install -dm0755 "${pkgdir}/usr/share/${_pkgname}"
-  install -dm0755 "${pkgdir}/etc/${_pkgname}"
+  install -dm0755 "${pkgdir}/usr/share/${_pkgname}/"
+  install -dm0755 "${pkgdir}/etc/${_pkgname}/"
 
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options/locale" "${pkgdir}/var/lib/${_pkgname}/conf"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/conf" "${pkgdir}/usr/share/${_pkgname}"
