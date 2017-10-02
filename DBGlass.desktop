@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=DBGlass
+Comment=Simple cross-platform PostgreSQL client
+Exec=dbglass
+Icon=DBGlass
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Development;SQL;
+MimeType=text/plain;

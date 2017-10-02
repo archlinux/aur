@@ -1,0 +1,15 @@
+pkgbase = dbglass-bin
+	pkgdesc = Simple cross-platform PostgreSQL client. Built with Electron, React, Redux, FixedDataTable.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/web-pal/DBGlass
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	source = https://github.com/web-pal/DBGlass/releases/download/v0.1.0-beta.6/linux-x64.tar.gz
+	source = DBGlass.desktop
+	sha1sums = 2477e8974f7309dd53cefe6eaa12761cd20b662b
+	sha1sums = cba58f494602974cd968777ece6cb4ec963492cc
+
+pkgname = dbglass-bin
+
