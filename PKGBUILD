@@ -2,7 +2,7 @@
 
 pkgname=mailmotion
 pkgver=0.0.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Send email when motion create picture"
 arch=('any')
 url="https://github.com/Chipsterjulien/mailmotion"
@@ -56,6 +56,10 @@ package() {
 
     # Create log directory
     install -dm755 "$pkgdir"/var/log/$pkgname || return 1
+
+    # mailmotion.service
+    install -Dm644 systemd/"$pkgname".service \
+        "$pkgdir"/usr/lib/systemd/system/"$pkgname".service || return 1
 
     # mailmotion binary
     install -m755 -o root -g root -D "$srcdir"/$pkgname-$pkgver/$pkgname-$pkgver \
