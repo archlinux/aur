@@ -2,7 +2,7 @@
 # Contributor: Julian Knauer <jpk@goatpr0n.de>
 
 pkgname=sieve-connect
-pkgver=0.88
+pkgver=0.89
 pkgrel=1
 pkgdesc="Client for the MANAGESIEVE protocol"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('perl-term-readline')
 provides=('sieve-connect')
 validpgpkeys=('ACBB4324393ADE3515DA2DDA4D1E900E14C1CC04') # Phil Pennock <phil.pennock@spodhuis.org>
 source=("https://people.spodhuis.org/phil.pennock/software/${pkgname}-${pkgver}.tar.bz2"{,.asc})
-sha256sums=('b8b0146120d76de7407017573d695680b9cae5fc4d9974f4a7cbf166328a3872'
+sha256sums=('6d8962516458a27d4d904cfb370db01ca7e495e61c966f236ba6b65f5b4caa5f'
             'SKIP')
 
 build() {
