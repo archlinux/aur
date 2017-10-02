@@ -2,7 +2,7 @@
 # Please report issues at https://github.com/sanduhrs/arch-aur-phpmetrics
 
 pkgname=phpmetrics
-pkgver=2.2.0
+pkgver=2.3.0
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="A static analysis tool for PHP"
@@ -12,7 +12,7 @@ license=("MIT")
 depends=("php")
 source=("https://github.com/Halleck45/PhpMetrics/raw/v${_pkgver}/build/${pkgname}.phar"
         "https://raw.githubusercontent.com/Halleck45/PhpMetrics/v${_pkgver}/LICENSE")
-sha512sums=('cdd346eedf7e60c052cdc8d6029ebed5d92358cd08b4bbd5b82d906beb34358100ea6c8ec37b6552f37b60b26ce0b3127b3950f52f033765175517943aa95bf3'
+sha512sums=('28a0f1e3c2ce8a497bdab9e29146a229d6ab084d7eb7df0714a435aab820d9e62869304be566d4b1d4cde3425c98c6e6de70d4a4aa64f4cc655fb812f1d38625'
             'be822058c3c747ff43933ef66163ae99ed3901f8633f561811ada1d7d761309188301ae6ace33d3f53195793f0a500462ee666c7089faa2c80b6d9809a1b61b3')
 
 package() {
