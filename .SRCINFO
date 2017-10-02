@@ -1,6 +1,6 @@
 pkgbase = zs-git
 	pkgdesc = Copy objects from one AS/400 to another
-	pkgver = 1.7.1
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/andlrc/zs
 	arch = any
