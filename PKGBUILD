@@ -2,14 +2,13 @@
 
 pkgname=multiplehogc
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Launch many intances of hogc"
 arch=('any')
 url="https://github.com/Chipsterjulien/multiplehogc"
 license=('WTFPL')
 makedepends=('go')
 options=('!strip')
-#backup=('etc/mailmotion/mailmotion.toml')
 source=("$pkgname-$pkgver.tar.gz")
 install=multiplehogc.install
 
@@ -64,4 +63,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('b8ef17b1e970c0f0dbc3b2fa0624b1a9619b2415a056dca23b8abd6dc92915bc586dc89aeb44cdafdc05f7212005ba97cf90bd82c7e7fee8549eb691c7f2efb2')
+sha512sums=('f947acc5e4cedb97529295d2c343ebaedc95886ad2fe52e8003ab306de9e4128d3faec11f8a9741871cd7759ab0d765fed710efa61856cd96acf68a2d7a7d872')
