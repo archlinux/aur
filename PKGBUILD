@@ -1,8 +1,8 @@
+# Maintainer: Dirk Langer <dirk.langer@vvovgonik.de>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-hook-lexwrap'
-pkgver='0.25'
+pkgver='0.26'
 pkgrel='1'
 pkgdesc="Lexically scoped subroutine wrappers"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Hook-LexWrap'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Hook-LexWrap-0.25.tar.gz')
-md5sums=('140af3d36b3e80dce414b9a68adf0ad8')
-sha512sums=('63623164ac67a33bd12ef771725a09647bdfe19d2f8eb84a0049ca0bdf4adc325143889a5751b1aefaca23eedb1a503ee42071b2fe3e7e3f033c148c0716eca9')
-_distdir="Hook-LexWrap-0.25"
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Hook-LexWrap-0.26.tar.gz')
+md5sums=('5d022159b0c56d48d04ef9334309b488')
+sha512sums=('f7771d4fb8379f43fa5b864e345f4526603914c3c486c637ea07fb9e2d41569bf40948a9039fab7d10c683fb85e16a8653876613903d34cc6801fcc9e92aa58b')
+_distdir="Hook-LexWrap-0.26"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
