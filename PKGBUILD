@@ -4,10 +4,10 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com>
 
 pkgname=spotify-stable
-pkgver=1.0.49.125
-_commit=g72ee7853
-_ver_x86_64=111
-_ver_i686=22
+pkgver=1.0.64.407
+_commit=g9bd02c2d
+_ver_x86_64=26
+_ver_i686=26
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64' 'i686')
@@ -37,12 +37,12 @@ source_i686=("${pkgname}-${pkgver}-i686.deb::http://repository.spotify.com/pool/
 sha512sums=('73124cb25e831534c94232ad607d6cf7716c6fb5e0cbb7ad4cd0976a45f6fa9efdc50c58109cd9594021476c9879d6b1a90cdb4ecbb03d5ad89ae52c82fc473a'
             '999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
-            '0db53b40b56a27c32eb2ac4d4b2db3d2720ed022b099922ec2a1604db2df27d7f54a697dfc1dfffc81e1a036e1e2507e4d71e039d9050e7cc09df768ebee9b1a'
-            'a016748e64faa4b205b354407679628d63178e58703e9e9027c2bafb122b4aaaefeb85ac80ed148363fad4a94bd97160c935507754e11259e1a8f72371cb7cc9')
-sha512sums_x86_64=('f6152f71fae3827e1f9dfb07cbe30319f090db151702ca02f3566f3deeec369da0c70f9995a548e0df92d655b593de520ab387a011201317753d3def70741e24'
-                   'e4257161e44d605f30adc28eaea8222facb054df941c75c06d75b7e1a6762d807e25999244d8c2c1abfe145060daef4c286db9c718737b4441a283bedf2c2458')
-sha512sums_i686=('4a8aab47b6b0c2ac9b349c858e4728451e713c466bcff9c1eac9c6215259ad9325a51b0fc8bd2afcfa141a6ad518f97d408b5d779a126f2ac62c9e8be93f5f93'
-                 '39663f138ef7ba075799b370db586aede31b93e00a056c9a2ade4ca31a327b5d769bb1a27f3f2b95f32f97f8f368ca7bbc5953641a3ec04b22896cac590aebc7')
+            'b109cb5ada86d6056961ce5f5c99d1ecf2de6a3b2296c26e5ad46eb5ecbc3531be0b06edebc3c237e2b5fc6286713976c2c9c180c58d785212433746204da2e2'
+            '4b3c3a54a04f27599126a1e2735009efa0a5cf291ede0361028456d295625f5baf4597192fe710eb9e6cb8beb6a92f9d4c56e3018db1e5ba3f10b9e70b05994d')
+sha512sums_x86_64=('78352ed0cd116b8ef8c2b9ffc3c186d2fecd3dd5f49f0f732ccf0a3a796b72faf60cd4997355bb4f34f450f8af0b7684e28e8e21a14b7902cba2ea49fe4a81eb'
+                   'b2cff3e4a3798a22077941af3cff0d5e840096943996165deeafa4842dfe96801e45636d3b6002a4bd4ca47d97a1559b49655a89d8b26a4ea735a7229940732c')
+sha512sums_i686=('43342faf26b7530dbb3fecafebcb7dac6ed6b7323c845f373bb63760ab309f4f01c6f4dd1cb4ab1bfd9a97b383fb863ba5f2aa7e73d32d1575bf8964dcdf30a5'
+                 'd4e75d9a766cc0269140495a3097c649399f95133b83d239f8a857e80888a836dd69bb52a51d7753cf88aa43450dbcfc2a25d67ba30df629e692f72ab2f71cb8')
 validpgpkeys=('BBEBDCB318AD50EC6865090613B00F1FD2C19886') # Spotify <tux@spotify.com>
 
 # Spotify uses different names for the arch
@@ -67,6 +67,7 @@ package() {
     cd "${srcdir}"
 
     tar -xzf data.tar.gz -C "${pkgdir}"
+    umask 022
 
     install -Dm644 "${pkgdir}"/usr/share/spotify/spotify.desktop "${pkgdir}"/usr/share/applications/spotify.desktop
     install -Dm644 "${pkgdir}"/usr/share/spotify/icons/spotify-linux-512.png "${pkgdir}"/usr/share/pixmaps/spotify-client.png
