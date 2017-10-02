@@ -57,7 +57,7 @@ build() {
 }
 
 package() {
-  install -Dm0755 "${srcdir}/src/${_gourl}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm0755 "${srcdir}/src/${_gourl}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   mkdir -p "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/conf" "${pkgdir}/usr/share/${_pkgname}"
