@@ -1,0 +1,27 @@
+pkgbase = ombi-beta
+	pkgdesc = Ombi v3.0 Open Beta. Gives Plex or Emby users the ability to request content by themselves
+	pkgver = aad5c2a4bcef89c1c29111c8239aecd9337ce067
+	pkgrel = 1
+	url = https://www.ombi.io
+	install = ombi.install
+	arch = any
+	license = GPL2
+	optdepends = sonarr
+	optdepends = radarr
+	optdepends = plex-media-server
+	optdepends = emby-server
+	provides = ombi
+	conflicts = ombi
+	replaces = plexrequests
+	noextract = ombi-beta-aad5c2a4bcef89c1c29111c8239aecd9337ce067.tar.gz
+	options = staticlibs
+	backup = opt/ombi/Ombi.sqlite
+	source = ombi-beta-aad5c2a4bcef89c1c29111c8239aecd9337ce067.tar.gz::https://ci.appveyor.com/api/projects/tidusjar/requestplex/artifacts/linux.tar.gz?branch=DotNetCore
+	source = ombi.service
+	source = ombi.sysusers
+	sha256sums = SKIP
+	sha256sums = 5f2eae8da2cf938eb7d0014bf7acfe7727eb9df3aa04b96469bcaed753ef9843
+	sha256sums = 27704e4b5c5d944b774bf4d180684ff76f157d37ba9c5e39f7d03493962c81c6
+
+pkgname = ombi-beta
+
