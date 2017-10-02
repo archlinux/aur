@@ -1,33 +1,30 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
-# Contributor: prettyvanilla <prettyvanilla@lavabit.com>
-# Contributor: rabyte <rabyte__gmail>
-# Contributor: Marcin Skory <armitage at q84fh dot net>
+# Contributors: prettyvanilla, rabyte, Marcin Skory
 
 pkgname=alephone-infinity
 pkgver=20150620
-pkgrel=1
+pkgrel=2
 pkgdesc="Marathon Infinity scenario data files for Aleph One"
 arch=('any')
-url="http://marathon.sourceforge.net"
+url="https://alephone.lhowon.org/"
 license=('custom')
 depends=('alephone')
-conflicts=('alephone-highres')
-source=("http://downloads.sourceforge.net/marathon/MarathonInfinity-$pkgver-Data.zip"
+source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$pkgver/MarathonInfinity-$pkgver-Data.zip"
         "$pkgname.sh"
         "LICENSE" # TODO: clarify where this file comes from
         "$pkgname.desktop")
 sha256sums=('c4e001a430d021d10d7d2f8ebfea87efb73c5505af95102e60e95a752f54ee69'
-            '593fbb16d2f72de59c7507219f84284fde65ad5f878c468f0ef604b8217b4d85'
+            '5ec43ca790491113335cc0f22abc2acbf204d9d3551a1b45e41f157753ee826b'
             '0dde70e490e4cb3e262ed7cc4f7ef6bdc49db557a14fc8674de38b2a9a426504'
-            'e0ebb401ab4cac3404f25762b87e1b9a3bf9d28c3129d6fb47c7a8ccc7163b11')
+            '9f0fa2edac76cf9a5d1a4b6c97bdfc040831fb4401f8626be85a0170ec756b25')
 
 package() {
   # scenario data
-  install -d "$pkgdir"/usr/share/alephone/scenarios
-  cp -r "Marathon Infinity" "$pkgdir"/usr/share/alephone/scenarios/infinity
+  install -d "$pkgdir"/usr/share/AlephOne/scenarios
+  cp -r "Marathon Infinity" "$pkgdir"/usr/share/AlephOne/scenarios/infinity
 
   # sane permissions
-  find "$pkgdir"/usr/share/alephone/scenarios/infinity -type f -exec chmod 644 {} \;
+  find "$pkgdir"/usr/share/AlephOne/scenarios/infinity -type f -exec chmod 644 {} \;
 
   # launcher script, license and .desktop file
   install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
