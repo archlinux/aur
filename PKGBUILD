@@ -2,8 +2,8 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=gocr
-pkgver=0.50
-pkgrel=2
+pkgver=0.51
+pkgrel=1
 pkgdesc="Open-source character recognition (OCR)"
 arch=("i686" "x86_64")
 url="http://jocr.sourceforge.net/index.html"
@@ -12,7 +12,7 @@ depends=('glibc' 'netpbm')
 optdepends=('tk: to use the tk frontend')
 validpgpkeys=('3816B803D578F5AD12FDFE065D330C4953BDFBE3')
 source=(https://www-e.uni-magdeburg.de/jschulen/ocr/gocr-${pkgver}.tar.gz{,.asc})
-sha256sums=('bc261244f887419cba6d962ec1ad58eefd77176885093c4a43061e7fd565f5b5'
+sha256sums=('6eb2ae0fa4eb07cf4163081e0194ea65f605f7db9709dd30680686804dfc2692'
             'SKIP')
 
 build() {
