@@ -3,7 +3,7 @@
 
 pkgname=thunderbird-enigmail-bin
 _pkg_main_ver=1.9
-pkgver=${_pkg_main_ver}.8.2
+pkgver=${_pkg_main_ver}.8.3
 pkgrel=1
 pkgdesc="The Mozilla Thunderbird GnuPG encryption plugin. Binary version."
 arch=('any')
@@ -17,7 +17,7 @@ source=("https://www.enigmail.net/download/release/${_pkg_main_ver}/enigmail-${p
 noextract=("enigmail-${pkgver}-sm+tb.xpi")
 validpgpkeys=('10B2E4A0E718BB1B2791DAC4F040E41B9369CDF3'
               '4F9F89F5505AC1D1A260631CDB1187B9DD5F693B')
-sha512sums=('1e50866984c6a7f81d563ea2626ba1f9f32b830ff93df85684cb75038eb3e927efa695535f11394af2b657c9309067baf6552131e864a0a87f007b53b675ff52'
+sha512sums=('b351727a9ed2daf32f033b52fb4761b0c82d3f713fba6ae0a0092e76a1177837b55b5fe690c3edfc596f51cd4faa55d106d55026621c49db6240625e0a863bec'
             'SKIP')
 
 package() {
