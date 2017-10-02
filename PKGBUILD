@@ -1,6 +1,6 @@
 pkgname=openmodelica-dev
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
@@ -34,6 +34,7 @@ prepare() {
     #exit 1
     cd "$srcdir/$_name"
     git checkout "tags/${_tag}"
+    sed -i "s,../,https://github.com/${_name}/,g" .gitmodules
     git submodule sync
     git submodule update --init --recursive
     cd "$srcdir"
