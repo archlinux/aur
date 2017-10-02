@@ -10,9 +10,9 @@
 # Contributor: chuckdaniels
 
 pkgname=paraview-manta
-_pkgver=5.4.0
+_pkgver=5.4.1
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (with MantaView plugin, Qt4, legacy OpenGL)'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
@@ -26,14 +26,19 @@ depends=('qt4'
 makedepends=('cmake' 'mesa' 'gcc-fortran' 'ninja')
 conflicts=('paraview')
 provides=('paraview')
-source=("ParaView-v${_pkgver}.tar.gz::http://paraview.org/files/v${pkgver:0:3}/ParaView-v${_pkgver}.tar.gz")
-sha1sums=('d1bc9112d76f603d3232069b4ea9c507c4e1b1a7')
+source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${_pkgver}.tar.gz"
+       "visit_fix_gcc7.patch")
+sha1sums=('3b7df6f6bbf978bb9a8583c97208a58af9afcdde'
+          'f86feb14e7e17ce3ad5341ee4f52b40111cecbec')
 
 prepare() {
   cd "${srcdir}/ParaView-v${_pkgver}"
 
   rm -rf "${srcdir}/build"
   mkdir -p "${srcdir}/build"
+
+  patch Utilities/VisItBridge/databases/readers/Vs/VsStaggeredField.C \
+    "${srcdir}/visit_fix_gcc7.patch"
 }
 
 build() {
@@ -62,7 +67,7 @@ build() {
       -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON \
       -DPARAVIEW_QT_VERSION:STRING=4 \
       -DPARAVIEW_USE_MPI:BOOL=ON \
-      -DPARAVIEW_USE_VISITBRIDGE:BOOL=OFF \
+      -DPARAVIEW_USE_VISITBRIDGE:BOOL=ON \
       -DPARAVIEW_USE_OSPRAY:BOOL=ON \
       -DVISIT_BUILD_READER_CGNS:BOOL=ON \
       -DVTK_PYTHON_FULL_THREADSAFE:BOOL=ON \
