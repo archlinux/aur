@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=cdist
-pkgver=3.1.13
+pkgver=4.7.1
 pkgrel=1
 pkgdesc='A usable configuration management system'
 arch=('any')
@@ -9,8 +9,10 @@ url='https://github.com/ungleich/cdist'
 license=('GPL3')
 depends=('python' 'openssh')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ungleich/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('2891aec4b84333ad0a4eb523b8cb99c98037106f73937f33faac9a04641ab442')
+validpgpkeys=('69767822F3ECC3C349C1EFFFEFD2AE4EC36B6901') # ungleich GmbH (ungleich FOSS) <foss@ungleich.ch>')
+source=("https://github.com/ungleich/cdist/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
+sha256sums=('6c1bf094f08e89ab103f7b07474728bf9de063ae39184e1c5d9015eaff8a4cd2'
+            'SKIP')
 
 prepare() {
 	echo "VERSION = \"${pkgver}\"" > ${pkgname}-${pkgver}/cdist/version.py
