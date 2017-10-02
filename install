@@ -1,16 +1,11 @@
 #!/bin/bash
 
 message='NOTE: If stanza fails with the error message
-
     Could not locate .stanza configuration file.
-
 then run the command (NOT AS ROOT!)
-
     $ cd /opt/stanza && stanza install -platform linux
-
 to generate ~/.stanza. The command must be run with current directory 
 /opt/stanza, or else it will fail with the error message
-
     Could not determine Stanza installation directory.'
 
 # arg 1:  the new package version
