@@ -1,0 +1,17 @@
+pkgbase = cargo-benchcmp
+	pkgdesc = A small utility to compare Rust micro-benchmarks
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/BurntSushi/cargo-benchcmp
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = MIT
+	license = UNLICENSE
+	makedepends = cargo
+	source = cargo-benchcmp-0.2.0.tar.gz::https://github.com/BurntSushi/cargo-benchcmp/archive/0.2.0.tar.gz
+	sha256sums = d6e1f54d84af202e7ce4807bcfdb78053e33066a33dc3a803cba75f591441cbe
+	sha512sums = b4b41b929cabb0d0c5e885395ba4d1c87524854c7c5680013f0cda8f9dd80c7c4faab768ca443c29132d8cb383b57f9dec84a4a476bf414198c34c4f7f8b12ab
+
+pkgname = cargo-benchcmp
+
