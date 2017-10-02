@@ -53,7 +53,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/src/${_gourl}/${_pkgname}"
-  GOPATH="${srcdir}" make DESTDIR="${pkgdir}/" TAGS="sqlite tidb pam" clean generate build
+  GOPATH="${srcdir}" make DESTDIR="${pkgdir}/" TAGS="bindata sqlite tidb pam" clean generate build
 }
 
 package() {
@@ -74,7 +74,6 @@ package() {
   install -dm0700 "${pkgdir}/var/lib/${_pkgname}/indexers/"
   install -dm0700 "${pkgdir}/var/lib/${_pkgname}/repos/"
 
-  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options/locale" "${pkgdir}/var/lib/${_pkgname}/conf"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/conf" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/public" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/templates" "${pkgdir}/usr/share/${_pkgname}"
