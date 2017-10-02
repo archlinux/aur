@@ -5,7 +5,7 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=0.1.0_alpha1.r0.g2820b95
+pkgver=3.0.0_alpha1.r0.g0ed49dd
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -55,5 +55,5 @@ package() {
 cd "$srcdir/$_pkgname"
 # install text files
   install -d "$pkgdir/usr/share/doc/$_pkgname/"
-  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS ChangeLog NEWS README
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS ChangeLog README
 }
