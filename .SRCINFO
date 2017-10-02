@@ -1,18 +1,17 @@
 pkgbase = alephone-eternalx
 	pkgdesc = A free scenario for Aleph One that continues the story of the Marathon trilogy
-	pkgver = 1.1.0b4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://eternal.bungie.org/
 	arch = any
 	license = unknown
 	depends = alephone
-	noextract = EternalXv110b4Full.zip
-	source = http://eternal.bungie.org/files/_releases/EternalXv110b4Full.zip
+	source = http://eternal.bungie.org/files/_releases/EternalXv110Full.zip
 	source = alephone-eternalx.sh
 	source = alephone-eternalx.desktop
-	sha256sums = d60caee357b59399dd9225895a3c6a5d76d68a75250afa48be113da1e23d4e6d
-	sha256sums = c627fdd3812a04d4de4a0249c5c560ba1089559fb0dfd0307192c6dc908c3d06
-	sha256sums = 729ea2e7a90a92a55fd47eae1568df72172f393370ceeabee657b378c663ec43
+	sha256sums = 74810c7bbc2442e9a953440f4b090507cbf1552bd64812a2edb2aa438c6bdf92
+	sha256sums = 367eac6d3652cb0aaa2d66c74770190d0e8eccfb8e46acf7fc991d652bfc70d0
+	sha256sums = 57dfa56c798a325f4a673d608c71dd5dda73c06270229b6bdf2379a06b9a1df0
 
 pkgname = alephone-eternalx
 
