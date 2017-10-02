@@ -7,9 +7,13 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="https://mongoose-os.com/software.html"
 depends=('libftdi-compat' 'libusb')
+conflicts=('go-bindata')
+provides=('go-bindata')
 makedepends=(
 	'go'
 	'git'
+	'python2'
+	'python2-gitpython'
 	'govendor'
 )
 
