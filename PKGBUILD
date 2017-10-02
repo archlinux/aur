@@ -5,7 +5,7 @@
 # Maintainer: Nikos Skalkotos <skalkoto (at) Gmail.com>
 
 pkgname=libguestfs
-pkgver=1.36.4
+pkgver=1.36.6
 pkgver_short=${pkgver%.*}
 pkgrel=1
 pkgdesc="Access and modify virtual machine disk image"
@@ -64,7 +64,7 @@ provides=("guestfish=${pkgver}")
 options=()
 source=("http://libguestfs.org/download/${pkgver_short}-stable/${pkgname}-${pkgver}.tar.gz"
         "update-libguestfs-appliance")
-sha512sums=('195e458ced82fda7ee7cdf9d97eec72e47699937878e244c3eae3b0579d9350900f81149666203d171b5ff639b8ad67869fee94368ff0011ae72ba715b34fe75'
+sha512sums=('c5b8745185bcdb2effecbd8c698d1f3c742fda92ac1214f85c58075065047b811bc7e8b4b6e0c99fb2ef6b65b719634399dd71648c378e7941317272e5b10405'
             'b16a8a15d39392ab2d5c51ac4cbbcd0fd1e6e8e064bf5b866e7c9f93a639fb8e96fc4328b05963ac24c3333e454b63a6a700e6e6fb1584c9d671f289ee1bcade')
 
 check() {
