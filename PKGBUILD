@@ -2,7 +2,7 @@
 # Adopted from: Félix Saparelli <aur@passcod.name>
 pkgname=sirikali-git
 _pkgname=${pkgname%-git}
-pkgver=1.2.5.r27.0b14bd6
+pkgver=1.3.1.r0.4cc7d70
 pkgrel=1
 pkgdesc="A Qt/C++ GUI front end to cryfs, gocryptfs, securefs and encfs"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url="https://mhogomchungu.github.io/sirikali/"
 license=('GPL')
 depends=('qt5-base' 'libpwquality' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'libgcrypt' 'gcc-libs')
-optdepends=('libsecret: support for Gnome libsecret password storage'
-            'kwallet: support for KDE wallet storage'
+optdepends=('libsecret: support for Gnome libsecret password storage (must recompile)'
+            'kwallet: support for KDE wallet storage (must recompile)'
             'cryfs: for CryFS support'
             'gocryptfs: for gocryptfs support'
             'securefs: for securefs support'
