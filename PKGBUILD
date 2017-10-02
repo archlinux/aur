@@ -2,7 +2,7 @@
 
 
 pkgname=edi
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="EFL based IDE."
 arch=('i686' 'x86_64')
