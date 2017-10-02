@@ -3,3 +3,4 @@
 *.zip
 /pkg
 /src
+*.log*
