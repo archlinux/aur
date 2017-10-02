@@ -1,5 +1,5 @@
-# Maintainer: Francois Menning <f.menning@protonmail.com>
-# Contributor: Anton Kudryavtsev <anton@anidetrix.ru>
+# Maintainer: Anton Kudryavtsev <anton@anidetrix.ru>
+# Contributor: Francois Menning <f.menning@protonmail.com>
 # Contributor: Frederik Schwan <frederik dot schwan at linux dot com>
 # Contributor: Thomas Fanninger <thomas@fanninger.at>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
