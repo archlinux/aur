@@ -13,7 +13,7 @@ replaces=()
 source=(${pkgname}::git+https://github.com/nana-4/Flat-Plat.git)
 sha256sums=('SKIP')
 
-pkgver=r381.97235ec
+pkgver=r522.dd93698
 pkgver() {
   cd "$srcdir/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
