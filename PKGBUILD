@@ -1,4 +1,5 @@
-# Contributor: Dirk Langer <dirk.langer@vvovgonik.de>
+# Maintainer: Dirk Langer <dirk.langer@vvovgonik.de>
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname='perl-moose'
 pkgver='2.2006'
