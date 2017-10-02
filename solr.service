@@ -1,0 +1,14 @@
+[Unit]
+Description=Solr full text search engine
+After=network.target
+
+[Service]
+Type=simple
+User=solr
+Group=solr
+PrivateTmp=true
+WorkingDirectory=/opt/solr
+ExecStart=/opt/solr/bin/solr start -f
+
+[Install]
+WantedBy=multi-user.target
