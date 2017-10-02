@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=bees-git
-pkgver=v0.4.r32.g06b8fd8
+pkgver=v0.4.r40.g29d2d51
 pkgrel=1
 pkgdesc="Best-Effort Extent-Same, a btrfs deduplicator daemon"
 arch=('any')
@@ -17,7 +17,7 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
+build() {
 	cd ${pkgname}
 	make
 }
