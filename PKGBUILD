@@ -4,7 +4,7 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-pdcurses-win32a
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 _commit=10ee49e4fb96a808aed0882374dcc22b668db722
 pkgdesc="Curses library on the Win32 API for MinGW-w64"
 arch=(any)
@@ -17,13 +17,18 @@ conflicts=('mingw-w64-pdcurses')
 license=("public domain")
 url="http://www.projectpluto.com/win32a.htm"
 source=(#"http://www.projectpluto.com/win32a.zip"
-        "git+https://github.com/Bill-Gray/PDCurses.git#commit=$_commit")
-md5sums=('SKIP')
+        "git+https://github.com/Bill-Gray/PDCurses.git#commit=$_commit"
+        "pdcurses.diff")
+sha512sums=('SKIP'
+            '6d360684f29211a3beb3da5285cb468f66c2f67ade8678be01b822d1ccb2dcf84ff9f76a6e0550da4e76e5952f6c0eb42e22fe31e4c6846b5a0d450e75bd81ef')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd "${srcdir}/PDCurses"
+  cd "${srcdir}"
+
+  # export functions in terms.h
+  patch -Np0 -i pdcurses.diff
 }
 
 build() {
