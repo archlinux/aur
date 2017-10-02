@@ -1,17 +1,17 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=sniffglue
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Secure multithreaded packet sniffer"
 url="https://github.com/kpcyrd/sniffglue"
 depends=('libpcap')
 makedepends=('cargo')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h')
 license=('GPL3')
 source=("https://github.com/kpcyrd/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5231acbd94fa22d29a69dd746ecdf1dd20afd8c8283f95cf16690d53581ccac1')
-sha512sums=('7425fc5f7b33fbd69f8a5dce9abb2cb98b1288361a1dc6b9229aae938fded1667b13b49d5e1b81a4507bb5689d5fcc2feefa1df5fd7f1110608b5a628e1263c0')
+sha256sums=('83e21d20b863bf588ca2603ac7053df585e84ade627268fbbf93c858fad33251')
+sha512sums=('d9b679dddd9136f6c356a23def485b1a938f8c4d4158d683be8e8dd22c8dc095ddab46f707398b1015b74d115889f7627a8e95962dda53a1be6ab1edf9ad42f0')
 
 build() {
   cd "$pkgname-$pkgver"
