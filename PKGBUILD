@@ -1,7 +1,7 @@
 # Maintainer: Kiril Zyapkov <kiril.zyapkov@gmail.com>
 pkgname=mos-git
-pkgver=20170814.3586_761f3601
-pkgrel=1
+pkgver=20171002.3710_5e128cde
+pkgrel=2
 pkgdesc="Mongoose-OS build tool"
 arch=('i686' 'x86_64')
 license=('GPL')
