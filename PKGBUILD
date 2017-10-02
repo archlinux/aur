@@ -9,7 +9,7 @@ arch=('any')
 license=('Apache')
 url='https://github.com/tkrajina/srtm.py'
 makedepends=('git' 'python-setuptools')
-depends=()
+depends=('python-gpxpy')
 source=(${_pkgname}::git+https://github.com/tkrajina/srtm.py.git)
 sha256sums=('SKIP')
 
