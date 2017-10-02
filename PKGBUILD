@@ -1,6 +1,6 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=knightos-sdk
-pkgver=1.9.9
+pkgver=2.0.3
 pkgrel=1
 license=('MIT')
 pkgdesc='The KnightOS developer SDK'
