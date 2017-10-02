@@ -6,7 +6,7 @@
 # Contributor: Olaf Leidinger <leidola@newcon.de>
 
 pkgname=gscan2pdf
-pkgver=1.8.6
+pkgver=1.8.7
 pkgrel=1
 pkgdesc='A GUI with OCR capability to produce PDFs or DjVus from scanned documents'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=('djvulibre: DjVu image format'
             'cuneiform: OCR support'
             'perl-gtk2-ex-podviewer: view inline documentation')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('0674d9f1decc84b0abfa7849a66d0d50fc508cef2b901a3806addb017c4e4645')
+sha256sums=('91ac65d3a331109bcb4995e3a379991cb50815dab7f8e3fe68e055bbc271f78a')
 
 build() {
   cd "${pkgname}-${pkgver}"
