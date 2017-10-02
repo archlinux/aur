@@ -10,7 +10,7 @@ license=('GPL')
 makedepends=('intltool')
 conflicts=('libconfini-git')
 source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('2a3c11da4ba6c4fd86ae03fce3a89f92')
+md5sums=('603037c36cb60b68a767f72ecf2e20d3')
 
 prepare() {
 
