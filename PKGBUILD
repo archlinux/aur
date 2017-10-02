@@ -1,9 +1,9 @@
 # Maintainer: Sebba <sebba at cock dot li>
 pkgname=transmission-remote-gui-bin
 _pkgname=transgui
-pkgver=5.8.1
-_pkgver=5.8.1
-pkgrel=2
+pkgver=5.10.0
+_pkgver=5.10.0
+pkgrel=1
 pkgdesc="Cross platform remote GUI for the Transmission daemon"
 arch=(x86_64)
 url="https://github.com/leonsoft-kras/transmisson-remote-gui/"
@@ -11,9 +11,9 @@ license=('GPL2')
 depends=('gtk2' 'desktop-file-utils')
 provides=(transmission-remote-gui)
 conflicts=(transmission-remote-gui-gtk2 transmission-remote-gui-qt4 transmission-remote-gui-svn transmission-remote-gui)
-source=(https://github.com/leonsoft-kras/transmisson-remote-gui/releases/download/v$_pkgver/$_pkgname-$pkgver-$arch-linux.zip
+source=(https://github.com/leonsoft-kras/transmisson-remote-gui/releases/download/v$_pkgver/$_pkgname-$pkgver-$arch-linux.txz
         ${_pkgname}.desktop)
-md5sums=('40c887b531a60cbc55f8ff73234c0eac'
+md5sums=('16e0bf5c72b7cf2da00247e027b9f017'
          'c8d5f3b951261ef8568291007f976a0a')
 
 package() {
