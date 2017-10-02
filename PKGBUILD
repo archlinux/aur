@@ -1,38 +1,41 @@
 # Maintainer: Francois Menning <f.menning@protonmail.com>
+# Contributor: Anton Kudryavtsev <anton@anidetrix.ru>
 # Contributor: Frederik Schwan <frederik dot schwan at linux dot com>
 # Contributor: Thomas Fanninger <thomas@fanninger.at>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Thomas Laroche <tho.laroche@gmail.com>
 
-_pkgname=gitea
+_pkgname="gitea"
 _gourl="code.gitea.io"
-pkgname=gitea-git
-pkgver=r5108.888dee3b
+
+pkgname=$_pkgname-git
+pkgver=latest
 pkgrel=1
-pkgdesc='A painless self-hosted Git service.'
-url='https://gitea.io/'
-license=('MIT')
-source=('git://github.com/go-gitea/gitea.git'
-        'gitea.service.patch'
-        'app.ini')
-sha256sums=('SKIP'
-            'f7b570315bd98a4e2d1c82ebdc2e78d76f6df49286ca4ac59cfb2b3f9985d1f9'
-            '6ec975577a54e68d05a9292230c1aee19358459366688819cec4445e8d3c5210')
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
-depends=('go')
-makedepends=('patch' 'git' 'go-bindata')
-optdepends=('mariadb: MariaDB database support'
-            'postgresql: PostgreSQL database support'
-            'sqlite: SQLite database support'
-            'redis: Redis session support'
-            'memcached: MemCached session support'
-            'openssh: Git over SSH support'
-            'pam: Authentication via PAM support')
-install=gitea.install
-backup=("var/lib/gitea/custom/conf/app.ini")
-conflicts=('gitea')
-options=('!strip' 'emptydirs')
-provides=('gitea')
+pkgdesc="A painless self-hosted Git service."
+url="https://gitea.io/"
+license=("MIT")
+arch=("i686" "x86_64" "armv6h" "armv7h")
+depends=("git")
+makedepends=("go")
+optdepends=("sqlite: SQLite support"
+            "mariadb: MariaDB support"
+            "postgresql: PostgreSQL support"
+            "mssql-server: MSSQL support"
+            "redis: Redis support"
+            "memcached: MemCached support"
+            "openssh: GIT over SSH support"
+            "pam: Authentication via PAM support")
+conflicts=("gitea")
+provides=("gitea")
+options=("!strip" "emptydirs")
+backup=("etc/gitea/app.ini")
+install=${_pkgname}.install
+source=("git://github.com/go-gitea/gitea.git"
+        "0001-Adjust-config-for-Arch-Linux-package.patch"
+        "0002-Adjust-service-file-for-Arch-Linux-package.patch")
+sha256sums=("SKIP"
+            "b50a9ef21216a1cd2183238f7baa2d37f9bca11706625a8ffb345ed8f838e540"
+            "6cd1daa666659a68c98376f8bfae55402b5ffc39c1bf42b5ae0ee700249a3b73")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -41,25 +44,30 @@ pkgver() {
 
 prepare() {
   mkdir -p "${srcdir}/src/${_gourl}/${_pkgname}"
-  cp -r "${srcdir}/gitea" "${srcdir}/src/${_gourl}"
+  cp -r "${srcdir}/${_pkgname}" "${srcdir}/src/${_gourl}"
 
-  # patch
-  msg2 "Patch gitea.service"
-  patch -Np1 -i "${srcdir}/gitea.service.patch" "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/gitea.service"
+  msg2 "Patch config and service file"
+  patch -Np1 -i "${srcdir}/0001-Adjust-config-for-Arch-Linux-package.patch" "${srcdir}/src/${_gourl}/${_pkgname}/conf/app.ini"
+  patch -Np1 -i "${srcdir}/0002-Adjust-service-file-for-Arch-Linux-package.patch" "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/${_pkgname}.service"
 }
 
 build() {
-  cd ${srcdir}/src/${_gourl}/${_pkgname}
-  GOPATH="${srcdir}" make DESTDIR="$pkgdir/" TAGS="sqlite tidb pam" clean generate build
+  cd "${srcdir}/src/${_gourl}/${_pkgname}"
+  GOPATH="${srcdir}" make DESTDIR="${pkgdir}/" TAGS="sqlite tidb pam" clean generate build
 }
 
 package() {
-  install -dm755 ${pkgdir}/var/lib/${_pkgname}/{custom/conf,conf,data/{attachments,avatars,sessions,tmp},options,repo}
-  install -dm755 ${pkgdir}/var/log/gitea
-  install -Dm755 "${srcdir}/src/${_gourl}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/src/${_gourl}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/gitea.service" "${pkgdir}/usr/lib/systemd/system/gitea.service"
-  install -Dm644 "${srcdir}/app.ini" "${pkgdir}/var/lib/${_pkgname}/custom/conf/app.ini"
-  cp -r ${srcdir}/src/${_gourl}/${_pkgname}/{conf,templates,options,public} ${pkgdir}/var/lib/${_pkgname}
-  cp -r ${srcdir}/src/${_gourl}/${_pkgname}/options/locale ${pkgdir}/var/lib/${_pkgname}/conf
+  install -Dm0755 "${srcdir}/src/${_gourl}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+  mkdir -p "${pkgdir}/usr/share/${_pkgname}"
+  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/conf" "${pkgdir}/usr/share/${_pkgname}"
+  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/public" "${pkgdir}/usr/share/${_pkgname}"
+  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/templates" "${pkgdir}/usr/share/${_pkgname}"
+
+  install -Dm0644 "${pkgdir}/usr/share/${_pkgname}/conf/app.ini" "${pkgdir}/etc/${_pkgname}/app.ini"
+  install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/scripts/systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm0644 "${srcdir}/src/${_gourl}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}"
+
+  install -dm0700 "${pkgdir}/var/log/${_pkgname}"
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}"
 }

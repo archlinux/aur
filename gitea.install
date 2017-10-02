@@ -1,17 +1,38 @@
-post_install() {
+pre_install() {
   if ! getent group gitea >/dev/null; then
     groupadd --system gitea
   fi
   if ! getent passwd gitea >/dev/null; then
-    useradd --system -c 'Gitea' -g gitea -m -d /home/gitea -s /bin/bash gitea
+    useradd -m --system -c 'gitea daemon users' -g gitea -s /bin/false gitea -d /var/lib/gitea
   fi
-  chown -R gitea:gitea /var/log/gitea
-  chown -R gitea:gitea /var/lib/gitea
-  systemctl daemon-reload
-  echo ":: Configure gitea in /var/lib/gitea/custom/conf/app.ini"
+  chsh gitea -s /bin/bash
 }
 
-post_upgrade(){
+post_install(){
+  chown -R gitea:gitea /var/log/gitea
+  chown -R gitea:gitea /var/lib/gitea
+
+  systemctl daemon-reload
+}
+
+pre_upgrade(){
+  pre_install $1
+}
+
+post_upgrade() {
   post_install $1
-  echo ":: Consider restarting gitea.service"
+}
+
+pre_remove() {
+  systemctl stop gitea.service
+  systemctl disable gitea.service
+}
+
+post_remove() {
+  if getent passwd gitea >/dev/null; then
+    userdel -r gitea
+  fi
+  if getent group gitea >/dev/null; then
+    groupdel gitea
+  fi
 }
