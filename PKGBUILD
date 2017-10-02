@@ -1,33 +1,30 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
-# Contributor: prettyvanilla <prettyvanilla@lavabit.com>
-# Contributor: rabyte <rabyte__gmail>
-# Contributor: Marcin Skory <armitage at q84fh dot net>
+# Contributors: prettyvanilla, rabyte, Marcin Skory
 
 pkgname=alephone-marathon2
 pkgver=20150620
-pkgrel=1
+pkgrel=2
 pkgdesc="Marathon 2 scenario data files for Aleph One"
 arch=('any')
-url="http://marathon.sourceforge.net"
+url="https://alephone.lhowon.org/"
 license=('custom')
 depends=('alephone')
-conflicts=('alephone-highres')
-source=("http://downloads.sourceforge.net/marathon/Marathon2-$pkgver-Data.zip"
+source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$pkgver/Marathon2-$pkgver-Data.zip"
         "$pkgname.sh"
         "LICENSE" # TODO: clarify where this file comes from
         "$pkgname.desktop")
 sha256sums=('1b739ea4715892543c151943964038a7634ac20e475a5267db39a23f6603efbe'
-            '906e1acbe135bdd4f9310928b965e184451cdf600bac892b823469cf5273a5b3'
+            '21a58e60e6e3fd6f45a38c7ced637fc0a4a1fb40c897d25b53762e17b956a69b'
             '0dde70e490e4cb3e262ed7cc4f7ef6bdc49db557a14fc8674de38b2a9a426504'
-            '766f2e8b15a6754906bd136984199f4088a402ce08320ae23b630998975466aa')
+            'ca9ce9efdc95f0b3bcf05ebbca0dd27348dcb073dc9866802737ad248efaf948')
 
 package() {
   # scenario data
-  install -d "$pkgdir"/usr/share/alephone/scenarios
-  cp -r "Marathon 2" "$pkgdir"/usr/share/alephone/scenarios/marathon2
+  install -d "$pkgdir"/usr/share/AlephOne/scenarios
+  cp -r "Marathon 2" "$pkgdir"/usr/share/AlephOne/scenarios/marathon2
 
   # sane permissions
-  find "$pkgdir"/usr/share/alephone/scenarios/marathon2 -type f -exec chmod 644 {} \;
+  find "$pkgdir"/usr/share/AlephOne/scenarios/marathon2 -type f -exec chmod 644 {} \;
 
   # launcher script, license and .desktop file
   install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
