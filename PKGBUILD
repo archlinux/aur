@@ -2,12 +2,12 @@
 
 pkgname=soxt
 pkgver=1.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A high-level 3D graphics toolkit on top of OpenGL.'
 arch=('i686' 'x86_64')
 url='http://www.coin3d.org/'
 license=('GPL')
-depends=('coin' 'libxi' 'libxmu' 'libxpm' 'lesstif')
+depends=('coin' 'libxi' 'libxmu' 'libxpm' 'openmotif')
 makedepends=('doxygen' 'coin')
 source=("https://bitbucket.org/Coin3D/coin/downloads/SoXt-${pkgver}.tar.gz")
 sha256sums=('f5443aadafe8e2222b9b5a23d1f228bb0f3e7d98949b8ea8676171b7ea5bf013')
