@@ -1,5 +1,5 @@
 #!/bin/sh
 
-export ALEPHONE_DATA=/usr/share/alephone:/usr/share/alephone/scenarios/marathon
+export ALEPHONE_DATA=/usr/share/AlephOne:/usr/share/AlephOne/scenarios/marathon
 
 exec /usr/bin/alephone "$@"
