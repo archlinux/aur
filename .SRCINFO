@@ -1,6 +1,6 @@
 pkgbase = dte
 	pkgdesc = A small and easy to use text editor
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/craigbarnes/dte
 	arch = i686
@@ -9,11 +9,11 @@ pkgbase = dte
 	license = GPL2
 	depends = glibc
 	depends = ncurses
-	source = https://craigbarnes.gitlab.io/dist/dte/dte-1.2.tar.gz
-	source = https://craigbarnes.gitlab.io/dist/dte/dte-1.2.tar.gz.sig
+	source = https://craigbarnes.gitlab.io/dist/dte/dte-1.3.tar.gz
+	source = https://craigbarnes.gitlab.io/dist/dte/dte-1.3.tar.gz.sig
 	validpgpkeys = A3FB922E15870DA250D9DCE1FBCC7A6B0330BEB4
-	sha256sums = 06460364cfbba6e64fecba46012931d238308aa7ea8b5fd21a51b0c2e22e94ea
-	sha256sums = SKIP
+	sha256sums = 5656bb1cf45c0d14109ec82d55456a79f4fd30da6d78bc792ca253e6a6baaa5b
+	sha256sums = 1c1386afad2e95d7dfef46f580ad82c09ad210344184ad68b71b74e671152d07
 
 pkgname = dte
 
