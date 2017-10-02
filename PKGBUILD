@@ -1,6 +1,6 @@
 # Maintainer: Yuri Iozzelli <y.iozzelli@gmail.com>
 pkgname=python2-llvmlite-bin
-pkgver=0.18.0
+pkgver=0.20.0
 pkgrel=1
 epoch=
 pkgdesc="A lightweight LLVM python binding for writing JIT compilers"
@@ -17,4 +17,4 @@ package() {
 	  mkdir -p "$pkgdir/usr/lib/python2.7/site-packages/"
 	  cp -r * "$pkgdir/usr/lib/python2.7/site-packages/"
 }
-md5sums=('354ddb65ec77f98aab7f44cfc708f013')
+md5sums=('be0e1083f71d7814991f9e62789fee74')
