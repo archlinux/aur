@@ -1,0 +1,22 @@
+post_install() {
+    pkgname=multiplehogc
+
+    # Fixing membership
+    chown http: /var/log/$pkgname
+    chown -R http: /etc/$pkgname
+
+    true
+}
+
+post_upgrade() {
+  chown http: /var/log/$pkgname
+  chown -R http: /etc/$pkgname
+
+	true
+}
+
+pre_remove() {
+  systemctl disable multiplehogc.service
+
+	true
+}
