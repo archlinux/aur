@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=xf86-input-tslib
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='X.org tslib input driver'
 arch=(arm i686 x86_64)
@@ -11,8 +11,10 @@ depends=('glibc' 'tslib')
 makedepends=('xorg-server-devel')
 options=('!libtool')
 groups=('xorg-drivers')
-source=("https://github.com/merge/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('2e888893b766bb987ed4d788555dc221e3974068580ba782753a4a80532a42e7')
+validpgpkeys=('F2082B880F9E423934686E3F500398DF5AB387D3') # Martin Kepplinger <martink@posteo.de>
+source=("https://github.com/merge/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2"{,.asc})
+sha256sums=('8b6a9f2ad73598a3619e66e252bd54b1792c4deba0213101fa4d272b5e9217ec'
+            'SKIP')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
