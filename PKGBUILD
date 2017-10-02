@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=xde-styles
-pkgver=1.1.84
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Four consistent styles across light-weight WMs for XDE"
 groups=('xde')
@@ -9,14 +9,16 @@ license=('CCPL:by-sa')
 url="http://github.com/bbidulock/xde-styles"
 depends=('m4')
 makedepends=('git')
-optdepends=('xde-menu: for root menus'
-            'xde-ctools: for window menus')
+optdepends=('xdg-launch: for key bindings'
+            'xde-menu: for root menus'
+            'xde-ctools: for window menus'
+            'xde-session: for key bindings')
 source=("$pkgname::git://github.com/bbidulock/$pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --always | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
+  git describe --tags | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
 }
 
 prepare() {
