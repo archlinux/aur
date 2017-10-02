@@ -1,0 +1,32 @@
+pkgbase = alephone-git
+	pkgdesc = A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software (development version)
+	pkgver = 1.3a2.r4938.7d24fec4
+	pkgrel = 1
+	url = https://alephone.lhowon.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = mesa
+	makedepends = icoutils
+	depends = sdl2_ttf
+	depends = sdl2_image
+	depends = sdl2_net
+	depends = libmad
+	depends = glu
+	depends = zziplib
+	depends = ffmpeg
+	depends = boost-libs
+	depends = curl
+	optdepends = alephone-eternalx: community-made scenario
+	optdepends = alephone-evil: community-made scenario
+	optdepends = alephone-infinity: original data for Marathon Infinity
+	optdepends = alephone-marathon: M1A1 data converted for AlephOne
+	optdepends = alephone-marathon2: original data for Marathon 2: Durandal
+	provides = alephone
+	conflicts = alephone
+	source = git+https://github.com/Aleph-One-Marathon/alephone
+	md5sums = SKIP
+
+pkgname = alephone-git
+
