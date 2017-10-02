@@ -1,20 +1,21 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=satyr
-pkgver=0.21
+pkgver=0.23
 pkgrel=1
 pkgdesc='Automatic problem management with anonymous reports'
 arch=('i686' 'x86_64')
 depends=('libelf' 'python')
-makedepends=('python-sphinx')
+makedepends=('python-sphinx' 'rpm-org')
 url='https://github.com/abrt/satyr'
 license=('GPL')
-source=("https://fedorahosted.org/released/abrt/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('9be4244d8d80de5e384cb4b2802f9b68921d65bc4ef14bc05b98e9cd06493b5c')
+source=("${pkgname}-${pkgver}.tar.xz::https://github.com/abrt/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('7ff8b49f9dc9ccd65323c0689182a73eafb0f34262798ca06d23f38a0a22e7c2')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
+	./autogen.sh
 	./configure --prefix=/usr
 	make
 }
