@@ -1,0 +1,11 @@
+--- usr/share/applications/tomtomsportsconnect.desktop	2017-03-13 14:32:34.000000000 +0100
++++ usr/share/share/applications/tomtomsportsconnect.desktop	2017-07-25 21:04:29.697509896 +0200
+@@ -2,7 +2,7 @@
+ Name=TomTom Sports Connect
+ Type=Application
+ Comment=Support Application for TomTom Fitness devices
+-Exec=/usr/local/TomTomSportsConnect/bin/TomTomSportsConnect 
++Exec=/opt/TomTomSportsConnect/bin/TomTomSportsConnect
+ Icon=tomtomsportsconnect
+ Terminal=false
+ Categories=Utility;
