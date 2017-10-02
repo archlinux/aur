@@ -1,0 +1,21 @@
+pkgbase = esee-git
+	pkgdesc = Extremely simple EXIF editor
+	pkgver = r18.ea1d728
+	pkgrel = 1
+	url = https://github.com/nathan-osman/esee
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = libexif
+	provides = esee
+	conflicts = esee
+	conflicts = esev
+	conflicts = esev-git
+	source = esee-git::git+https://github.com/nathan-osman/esee.git
+	sha256sums = SKIP
+
+pkgname = esee-git
+
