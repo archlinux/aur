@@ -1,7 +1,7 @@
 # Maintainer: Ross Whitfield <whitfieldre@ornl.gov>
 pkgname=('python-ase' 'python2-ase')
-pkgver=3.14.1
-_sha=4983cddaa5074d3969fe717b54a6a59ef0db30e8
+pkgver=3.15.0
+_sha=36bd17dda869775b1aed91e39767bb4e7359a983
 pkgrel=1
 pkgdesc="Atomic Simulation Environment (ASE) is a set of tools and Python modules for setting up, manipulating, running, visualizing and analyzing atomistic simulations."
 url="http://wiki.fysik.dtu.dk/ase"
@@ -9,7 +9,7 @@ arch=("any")
 license=('LGPLv2.1+')
 makedepends=('python-setuptools')
 source=("https://gitlab.com/ase/ase/repository/archive.tar.gz?ref=$pkgver")
-md5sums=('42b79fc31887cfad75136a5d2ba1cd61')
+md5sums=('4a07b1e03aaaec4a673e1cde0e0f8401')
 
 prepare() {
     cp -a "${srcdir}/ase-$pkgver-$_sha"{,-py2}
