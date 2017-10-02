@@ -4,15 +4,14 @@ pkgdesc="DJI Onboard SDK - git version, 3.3 branch"
 url="https://github.com/dji-sdk/Onboard-SDK"
 pkgver=3.3.r7.g2295710
 arch=('any')
-pkgrel=1
+pkgrel=2
 
 source=('git+https://github.com/dji-sdk/Onboard-SDK#branch=3.3'
 		'includes_fix.patch')
 
-makedepends=('cmake')
-#depends=('yaml-cpp')
+depends=('cmake')
 sha256sums=('SKIP'
-            'e3bca20b6932521830e41f300602560bd5e6492fea096709d5dbcfce8accf518')
+'e3bca20b6932521830e41f300602560bd5e6492fea096709d5dbcfce8accf518')
 
 _pkgdir="Onboard-SDK"
 
@@ -32,6 +31,7 @@ build() {
 
 	# Build project
 	cmake ${srcdir}/${_pkgdir} \
+        -DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release
 
 	make djiosdk-core
