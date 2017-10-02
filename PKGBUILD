@@ -26,7 +26,7 @@ optdepends=('libxslt:         Web Map Service'
             'mod_wsgi2:       Web Map Service')
 makedepends=('scons' 'boost' 'git')
 conflicts=('mapnik')
-provides=('mapnik=3.0.12')
+provides=('mapnik=3.0.15')
 options=(staticlibs)
 install="mapnik.install"
 source=("git://github.com/mapnik/mapnik.git")
