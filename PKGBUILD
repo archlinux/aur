@@ -9,7 +9,7 @@ _pkgname="gitea"
 _gourl="code.gitea.io"
 
 pkgname=$_pkgname-git
-pkgver=latest
+pkgver=r5656.a04718a2
 pkgrel=1
 pkgdesc="A painless self-hosted Git service."
 url="https://gitea.io/"
