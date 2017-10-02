@@ -1,7 +1,7 @@
 # Maintainer: Jakub Luzny (jakub@luzny.cz)
 pkgname=nrf5x-command-line-tools
-pkgver=9.6.0
-pkgrel=2
+pkgver=9.7.0
+pkgrel=0
 pkgdesc="Tools for programming Nordic nRF51 MCU using J-Link"
 arch=('i686' 'x86_64')
 url="https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF51822"
@@ -10,11 +10,11 @@ depends=('jlink-software-and-documentation')
 provides=('nrfjprog')
 conflicts=('nrfjprog')
 options=()
-source_i686=("nRF5x-Command-Line-Tools_${pkgver//./_}_Linux-i386.tar::https://www.nordicsemi.com/eng/nordic/download_resource/52615/19/33929334/97746")
-source_x86_64=("nRF5x-Command-Line-Tools_${pkgver//./_}_Linux-x86-64.tar::https://www.nordicsemi.com/eng/nordic/download_resource/51386/24/31267006/94917")
+source_i686=("nRF5x-Command-Line-Tools_${pkgver//./_}_Linux-i386.tar::https://www.nordicsemi.com/eng/nordic/download_resource/52615/20/86348032/97746")
+source_x86_64=("nRF5x-Command-Line-Tools_${pkgver//./_}_Linux-x86-64.tar::https://www.nordicsemi.com/eng/nordic/download_resource/51386/25/15331685/94917")
 
-md5sums_i686=('5fa79b9d46faa0c3365f72c4dc55db6b')
-md5sums_x86_64=('f68caffe9cc6854a049e742530f9807a')
+md5sums_i686=('66f4f6cba0f2993454d8fdd071a66531')
+md5sums_x86_64=('c8c54da491d5f4018644d680169f864e')
 
 package() {
     # Install nrfjprog and mergehex
