@@ -2,7 +2,7 @@
 # Maintainer: Hy Goldsher aka hyness <hyness-at-gmail>
 pkgname=squirrel-sql
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java SQL client for any JDBC compliant database"
 arch=('i686' 'x86_64')
 url="http://www.squirrelsql.org/"
@@ -12,7 +12,7 @@ depends=('java-runtime')
 arch=('i686' 'x86_64')
 source=(http://downloads.sourceforge.net/squirrel-sql/squirrelsql-$pkgver-optional.zip $pkgname $pkgname.desktop)
 install=$pkgname.install
-md5sums=('70ac7011a7d693ec00e48b32c67ffc97'
+md5sums=('0dc6ba651f57a1ee8b114a3a052a2fe4'
          '13fcedb38028ddafae5d5d4526dad5a3'
          '14f0b383472e67040112c446cd2dc3d4')
 package() {
