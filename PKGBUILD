@@ -1,8 +1,7 @@
-# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
+# Contributor: Dirk Langer <dirk.langer@vvovgonik.de>
 
 pkgname='perl-moose'
-pkgver='2.2004'
+pkgver='2.2006'
 pkgrel='1'
 pkgdesc="A postmodern object system for Perl 5"
 arch=('any')
@@ -12,10 +11,10 @@ depends=('perl-cpan-meta-check>=0.011' 'perl-class-load>=0.09' 'perl-class-load-
 makedepends=()
 checkdepends=('perl-test-cleannamespaces>=0.13' 'perl-test-fatal>=0.001' 'perl-test-requires>=0.05')
 url='https://metacpan.org/release/Moose'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Moose-2.2004.tar.gz')
-md5sums=('f1038784cb5427d4e67868eb87ca6fa1')
-sha512sums=('30db47b7416347e059b0a43ac4c95c253aac9391a999cb5a484a040b9ce9e33404ae89b34cd28e0cce35506cdfe3a576b91fc941c4dbbe601f4a7d97a01867e9')
-_distdir="Moose-2.2004"
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Moose-2.2006.tar.gz')
+md5sums=('929c6b3877a6054ef617cf7ef1e220b5')
+sha512sums=('9a5132cd55dd052ce854ee4770c9b9e81e88adc6eded60278ecfc31d9bbb086066cba9544310e0b202ce072f47933a89c36ff793961f875a115e23f8ad260958')
+_distdir="Moose-2.2006"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
