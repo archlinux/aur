@@ -1,0 +1,14 @@
+pkgbase = python-srtm-git
+	pkgdesc = Python parser for the Shuttle Radar Topography Mission elevation data
+	pkgver = 141
+	pkgrel = 1
+	url = https://github.com/tkrajina/srtm.py
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	source = python-srtm::git+https://github.com/tkrajina/srtm.py.git
+	sha256sums = SKIP
+
+pkgname = python-srtm-git
+
