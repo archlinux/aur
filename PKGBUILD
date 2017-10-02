@@ -14,6 +14,7 @@ url="http://www.xmind.net"
 license=('EPL' 'LGPL')
 depends=('desktop-file-utils' 'fontconfig' 'libxrender' 'java-runtime' 'shared-mime-info' 'libxext')
 optdepends=('lame: needed for the feature audio notes')
+conflicts=('xmind')
 source_i686=("http://www.xmind.net/xmind/downloads/${_filename}_i386.deb")
 source_x86_64=("http://www.xmind.net/xmind/downloads/${_filename}_amd64.deb")
 sha512sums_i686=('27b5b1eea2f5b2b085aa0ebbcb046e0aa8f146ec4619fc3b9c926021a93cd840fea0a8242975d96eabb0f5aaab95156624d6f369074dbf5f0af52d0eca07f3f4')
