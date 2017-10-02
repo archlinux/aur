@@ -6,7 +6,7 @@
 _pkgname=slic3r-prusa3d
 pkgname=${_pkgname}
 pkgver=1.37.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://www.prusa3d.com/"
@@ -15,7 +15,7 @@ depends=('boost-libs' 'intel-tbb' 'perl' 'perl-class-accessor' 'perl-libwww' 'pe
          'perl-moo' 'perl-opengl' 'perl-sub-quote' 'perl-wx-glcanvas')
 makedepends=('boost' 'git' 'perl-alien-wxwidgets' 'perl-devel-checklib' 'perl-extutils-cppguess'
              'perl-extutils-typemaps-default' 'perl-module-build-withxspp')
-checkdepends=('perl-io-stringy')
+checkdepends=('perl-io-stringy' 'perl-local-lib')
 optdepends=('perl-net-dbus: notifications support via any dbus-based notifier'
             'perl-net-bonjour: support for autodiscovery of printers on network (octoprint)'
             'perl-class-xsaccessor: creating faster accessor methods')
@@ -23,7 +23,7 @@ source=("git+https://github.com/prusa3d/Slic3r.git#tag=version_$pkgver"
         "Move-Slic3r-data-to-usr-share-slic3r.patch"
         'slic3r.desktop')
 md5sums=('SKIP'
-         'b10622cb1abb008679c19988f3ed2e59'
+         '7ae5572aa5f23f073dd696f7446d6529'
          '1941c1ede2f03774ffb77f68a7c33572')
 
         
@@ -47,7 +47,7 @@ build() {
 
 check() {
   cd "${srcdir}/Slic3r/t" # We're on linux. We don't want to user local::lib
-  sed -i '/local::lib/d' *.t
+  #sed -i '/local::lib/d' *.t
 
   cd "${srcdir}/Slic3r/build"
   ctest -V

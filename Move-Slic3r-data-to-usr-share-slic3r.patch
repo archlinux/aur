@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 43d7dee7..3e4e0c82 100644
+index 43d7dee7..7939a767 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -45,13 +45,14 @@ find_package(Perl REQUIRED)
+@@ -45,13 +45,13 @@ find_package(Perl REQUIRED)
  add_subdirectory(xs)
  
  enable_testing ()
@@ -16,12 +16,9 @@ index 43d7dee7..3e4e0c82 100644
  
  file(GLOB MyVar var/*.png)
 +
-+find_package(PerlLibs REQUIRED)
  install(FILES ${MyVar} DESTINATION share/slic3r-prusa3d)
--install(FILES lib/Slic3r.pm DESTINATION lib/slic3r-prusa3d)
--install(DIRECTORY lib/Slic3r DESTINATION lib/slic3r-prusa3d)
-+install(FILES lib/Slic3r.pm DESTINATION ${PERL_VENDORLIB})
-+install(DIRECTORY lib/Slic3r DESTINATION ${PERL_VENDORLIB})
+ install(FILES lib/Slic3r.pm DESTINATION lib/slic3r-prusa3d)
+ install(DIRECTORY lib/Slic3r DESTINATION lib/slic3r-prusa3d)
 diff --git a/lib/Slic3r.pm b/lib/Slic3r.pm
 index 17b78326..92f1842c 100644
 --- a/lib/Slic3r.pm
@@ -36,32 +33,16 @@ index 17b78326..92f1842c 100644
  use Moo 1.003001;
  
 diff --git a/slic3r.pl b/slic3r.pl
-index 4b6e43e4..96cd91ec 100755
+index 4b6e43e4..d833ed1b 100755
 --- a/slic3r.pl
 +++ b/slic3r.pl
-@@ -3,12 +3,6 @@
- use strict;
- use warnings;
+@@ -5,8 +5,7 @@ use warnings;
  
--BEGIN {
--    use FindBin;
+ BEGIN {
+     use FindBin;
 -    use lib "$FindBin::Bin/lib";
 -    use local::lib '--no-create', "$FindBin::Bin/local-lib";
--}
--
- use File::Basename qw(basename);
- use Getopt::Long qw(:config no_auto_abbrev);
- use List::Util qw(first);
-diff --git a/xs/CMakeLists.txt b/xs/CMakeLists.txt
-index 9d7c3110..59b6f335 100644
---- a/xs/CMakeLists.txt
-+++ b/xs/CMakeLists.txt
-@@ -532,5 +532,5 @@ elseif (NOT MSVC)
- endif ()
++    use lib "$FindBin::Bin/lib", "/usr/lib/slic3r-prusa3d/";
+ }
  
- # Installation
--install(TARGETS XS DESTINATION lib/slic3r-prusa3d/auto/Slic3r/XS)
--install(FILES lib/Slic3r/XS.pm DESTINATION lib/slic3r-prusa3d/Slic3r)
-+install(TARGETS XS DESTINATION ${PERL_VENDORARCH}/auto/Slic3r/XS)
-+install(FILES lib/Slic3r/XS.pm DESTINATION ${PERL_VENDORARCH}/Slic3r)
-
+ use File::Basename qw(basename);
