@@ -1,6 +1,6 @@
 # Maintainer: Michael Gisbers <michael@gisbers.de>
 pkgname=flashprint
-pkgver=3.18.0
+pkgver=3.19.1
 pkgrel=1
 pkgdesc="Slicer for the FlashForge 3D printers."
 ### no i686 link for version 3.16.0 available
@@ -23,9 +23,9 @@ package() {
     sed -i "/^Exec=/ c Exec=/usr/bin/flashprint" ${pkgdir}/usr/share/applications/FlashPrint.desktop
 }
 
-md5sums=('7c9936a8c1aad7216074439eadaf633f'
+md5sums=('14a0f7f8ac486e1ac652cffe4d528272'
          '1fa4e9abedbfb0fe9744986e2725d443')
-sha256sums=('47b0e17d8d5f2b8a4e69e764b0782a81d04a7d0eb8530858e076007d870a3f7a'
+sha256sums=('80e72a972f5fdf6cad4b688bfbeb435973a5d17895b56402bcd31c8977907e1b'
             'c981bd5d01b885ee952331f60a5545f1e667055f2c1fd0a37d9bb1d227bc281a')
-sha512sums=('76aced60659a8144e837d6ed0bd2b238586e9fe567fa84661653969d020d1b284501ab3fbfaad640f46f72738e1d07637b7400461d1b1bc1d2a12025bf94676e'
+sha512sums=('4df36b05ffdf7a4e1097a1d7327f368025fa890127d1a7a769c6adad2edfaab59ecffad992d2afec6695f8bbef422464e5ae9fee5258901076e627887f67fa2b'
             'e233d1f4eac6b69ecb43bbd2a7a18ded87896109d1e20b7e41cae76377bd16901fd8defa7d89225a958f2d80aa44de52d8a6533619a2fc237aaae056d971fe0f')
