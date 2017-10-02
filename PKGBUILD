@@ -1,14 +1,14 @@
 # Maintainer: Till von Ahnen <till@tillvonahnen.de>
 pkgname=bytecoinwallet
-pkgver=1.1.4
+pkgver=1.1.9.2
 pkgrel=1
 pkgdesc="Bytecoin(BCN) Wallet"
 arch=('any')
 url="https://bytecoin.org/downloads/"
 license=('GPL')
 depends=()
-source=("https://bytecoin.org/static/files/BytecoinWallet-1.1.4.amd64.deb")
-md5sums=("f5669271aa3c12be433bdfa7e3a11d5b")
+source=("https://bytecoin.org/static/files/bytecoinwallet-1.1.9.2.amd64.deb")
+md5sums=("ec22826fc5dca156de9ec0b6ce45a262")
 
 
 build() {
