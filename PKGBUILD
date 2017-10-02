@@ -60,11 +60,19 @@ package() {
   install -Dm0755 "${srcdir}/src/${_gourl}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -dm0700 "${pkgdir}/var/log/${_pkgname}/"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/"{custom,repos,data,indexers,conf}
-
   install -dm0755 "${pkgdir}/usr/share/${_pkgname}/"
   install -dm0755 "${pkgdir}/etc/${_pkgname}/"
+
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/"
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/conf/"
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/custom/"
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/data/"
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/data/attachments/"
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/data/avatars/"
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/data/lfs/"
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/data/sessions/"
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/indexers/"
+  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/repos/"
 
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options/locale" "${pkgdir}/var/lib/${_pkgname}/conf"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/conf" "${pkgdir}/usr/share/${_pkgname}"
