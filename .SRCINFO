@@ -1,4 +1,5 @@
 pkgbase = mythfs-perl
+	pkgdesc = Fuse filesystem for accessing MythTV media
 	pkgver = 1.36
 	pkgrel = 1
 	url = https://github.com/lstein/mythfs-perl
