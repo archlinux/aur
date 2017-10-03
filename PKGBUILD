@@ -2,7 +2,7 @@
 
 pkgname=epfl-scripts-git
 _pkgname=epfl-scripts
-pkgver=r52.eb0bdd4
+pkgver=r53.4ff9727
 pkgrel=1
 pkgdesc="Collection of scripts for simplifying one's life at EPFL"
 arch=('any')
