@@ -1,14 +1,14 @@
 # Maintainer: Caio Prado <cagprado at gmail dot com>
 pkgname=deezer-native-sdk
-pkgver=1.1.1
+pkgver=1.2.10
 pkgrel=1
 pkgdesc="Software development kit for the Deezer's API."
 arch=('i686' 'x86_64')
 url="https://developers.deezer.com/"
 license=('custom')
 depends=('libpulse')
-source=("https://files.deezer.com/developers/${pkgname}-v${pkgver}-v00351755.zip")
-md5sums=('8752f0fce65b2cbf1b8861d9b370a3ed')
+source=("https://build-repo.deezer.com/native_sdk/${pkgname}-v${pkgver}.zip")
+sha256sums=('6198ae56778f9ef39c1d7e2e6d23d779a245c19742e58cf85dd2ad0662e45cae')
 
 if [ "$CARCH" = "i686" ]; then
   DEEZER_ARCH="i386"
