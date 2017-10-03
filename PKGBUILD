@@ -2,7 +2,7 @@
 
 pkgname=background-wallpaper-slideshow-git
 _pkgname=background-wallpaper-slideshow
-pkgver=1.0.r8.g6014567
+pkgver=1.0.r9.g277434a
 pkgrel=1
 pkgdesc="A simple bash script that changes the background wallpaper periodically."
 arch=('any')
