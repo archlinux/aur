@@ -1,6 +1,6 @@
 pkgbase = gnome-manual-duplex
 	pkgdesc = Utility allowing manual duplex printing
-	pkgver = 0.66
+	pkgver = 0.67
 	pkgrel = 1
 	url = http://sourceforge.net/projects/g-manual-duplex/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = gnome-manual-duplex
 	depends = netpbm
 	depends = psutils
 	depends = gamin
-	source = http://downloads.sourceforge.net/project/g-manual-duplex/gnome-manual-duplex-0.66.tar.gz
-	md5sums = cbd437d6534a9c98aec19ca7a9267466
+	source = http://downloads.sourceforge.net/project/g-manual-duplex/gnome-manual-duplex-0.67.tar.gz
+	md5sums = cfc3b4d5d41552ff3bffeafd7c550131
 
 pkgname = gnome-manual-duplex
 
