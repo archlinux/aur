@@ -1,6 +1,6 @@
 pkgname=openmodelica-qwt
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The Open Source Modelica Suite - OpenModelica qwt Library"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ _commit=8e9e7fd085ebb6d43674e33f9d516988a2194ce9
 
 depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'sundials' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'qjson' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-svg' 'qt5-tools')
 
-makedepends=('gcc-fortran' 'boost' 'clang' 'cmake' 'java-environment' 'antlr2' 'git' 'expat' 'ncurses' 'readline' 'opencl-headers' 'imagemagick')
+makedepends=('openmodelica-omc' 'gcc-fortran' 'boost' 'clang' 'cmake' 'java-environment' 'antlr2' 'git' 'expat' 'ncurses' 'readline' 'opencl-headers' 'imagemagick')
 
 conflicts=('openmodelica-dev' 'openmodelica-dev-qwt' 'openmodelica-git')
 
