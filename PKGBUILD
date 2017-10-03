@@ -16,7 +16,7 @@ url="https://gitea.io/"
 license=("MIT")
 arch=("i686" "x86_64" "armv6h" "armv7h")
 depends=("git")
-makedepends=("go" "go-bindata")
+makedepends=("go")
 optdepends=("sqlite: SQLite support"
             "mariadb: MariaDB support"
             "postgresql: PostgreSQL support"
@@ -53,7 +53,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/src/${_gourl}/${_pkgname}"
-  GOPATH="${srcdir}" make DESTDIR="${pkgdir}/" TAGS="bindata sqlite tidb pam" clean generate build
+  GOPATH="${srcdir}" make DESTDIR="${pkgdir}/" TAGS="sqlite tidb pam" clean generate build
 }
 
 package() {
@@ -73,6 +73,12 @@ package() {
   install -dm0700 "${pkgdir}/var/lib/${_pkgname}/data/sessions/"
   install -dm0700 "${pkgdir}/var/lib/${_pkgname}/indexers/"
   install -dm0700 "${pkgdir}/var/lib/${_pkgname}/repos/"
+
+  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options/gitignore" "${pkgdir}/var/lib/${_pkgname}/conf"
+  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options/label" "${pkgdir}/var/lib/${_pkgname}/conf"
+  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options/license" "${pkgdir}/var/lib/${_pkgname}/conf"
+  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options/locale" "${pkgdir}/var/lib/${_pkgname}/conf"
+  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options/readme" "${pkgdir}/var/lib/${_pkgname}/conf"
 
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/conf" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/public" "${pkgdir}/usr/share/${_pkgname}"
