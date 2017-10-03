@@ -1,0 +1,7 @@
+post_upgrade() {
+  echo "To use UFMG network: copy the template..."
+  echo "    cp /etc/netctl/examples/ufmg /etc/netctl/ufmg"
+  echo "Then edit the file. Replace <wireless-interface> by the name of your wireless network interface."
+  echo "Use iw dev or ip link to find out your interface name."
+  echo "Also fill the username and password sections with your credentials from minhaUFMG"
+}
