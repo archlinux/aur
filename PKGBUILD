@@ -1,7 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgdesc='A CUDA backend for Torch7'
 pkgname='torch7-cutorch-git'
-pkgver=r717.deb77ae
+pkgver=r1026.5e9d86c
 pkgrel=1
 makedepends=('cmake' 'git')
 depends=('torch7-git>=r819' 'cuda')
@@ -23,8 +23,11 @@ pkgver(){
 }
 
 build(){
+	CFLAGS="${CFLAGS/-fno-plt/}"
+	CFLAGS="${CFLAGS/-fno-plt/}"
 	cd "${pkgname}"
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-5 -DCMAKE_BUILD_TYPE=Release
+	CPATH=/usr/include/lua5.1 \
+		cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-5 -DCMAKE_CXX_COMPILER=g++-5 -DCMAKE_BUILD_TYPE=Release
 	make
 }
 
