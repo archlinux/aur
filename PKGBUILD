@@ -3,11 +3,11 @@ pkgname=kodi-addon-inputstream-rtmp-git
 pkgver=r37.6c1af46
 pkgrel=1
 pkgdesc="librtmp support for Kodi 17+"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv7h')
 url="https://github.com/notspiff/inputstream.rtmp"
 license=('GPL2')
 depends=('rtmpdump')
-makedepends=('kodi-dev')
+makedepends=('kodi-dev' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 #kodi 17
