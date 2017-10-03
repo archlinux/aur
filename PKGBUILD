@@ -1,6 +1,6 @@
 # Maintainer: Asger Hautop Drewsen <asgerdrewsen@gmail.com>
 pkgname=albert-pass
-pkgver=r15.eac451c
+pkgver=r17.d755a27
 pkgrel=1
 pkgdesc="Albert extension for pass"
 arch=('any')
@@ -16,5 +16,5 @@ pkgver() {
 }
 
 package() {
-	install -D "${srcdir}/albert-extensions/pass.py" "${pkgdir}/usr/share/albert/external/pass.py"
+	install -D "${srcdir}/albert-extensions/pass.py" "${pkgdir}/usr/share/albert/org.albert.extension.externalextensions/extensions/pass.py"
 }
