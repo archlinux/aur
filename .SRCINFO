@@ -1,12 +1,12 @@
 pkgbase = piptube
 	pkgdesc = Picture-in-picture wrapper for mpv and YouTube
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jgthomas/piptube
 	arch = any
 	license = GPL3
 	depends = mpv
-	optdepends = youtube-dl: for URL playback and YouTube search
+	depends = youtube-dl
 	source = piptube
 	source = ytubejb
 	source = https://github.com/jgthomas/piptube/archive/v1.0.1.tar.gz
