@@ -3,7 +3,7 @@
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 
 pkgname=xfce-theme-greybird-git
-pkgver=3.22.4.r738
+pkgver=v3.22.5+3
 pkgrel=1
 pkgdesc="Desktop theme suite from Xubuntu, with support for Xfce, Metacity and Unity"
 arch=('any')
@@ -25,7 +25,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "Greybird"
-  echo $(git describe --always --abbrev=0).r$(git rev-list --count master) | sed 's|-|.|g' | sed 's|v||g'
+#  echo $(git describe --always --abbrev=0).r$(git rev-list --count master) | sed 's|-|.|g' | sed 's|v||g'
+	echo "$(git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/+/' )"
 }
 
 package() {
