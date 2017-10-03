@@ -2,7 +2,7 @@
 
 pkgname=background-wallpaper-slideshow-git
 _pkgname=background-wallpaper-slideshow
-pkgver=1.0.r13.g2b27210
+pkgver=1.3.r0.g2b27210
 pkgrel=1
 pkgdesc="A simple bash script that changes the background wallpaper periodically."
 arch=('any')
@@ -15,7 +15,7 @@ source=('background-wallpaper-slideshow::git+https://github.com/DiegoFHG/backgro
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
 }
 
 package() {
