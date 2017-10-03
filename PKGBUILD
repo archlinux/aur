@@ -1,7 +1,7 @@
 # Maintainer: Asger Hautop Drewsen <asgerdrewsen@gmail.com>
 pkgname=albert-mathematica-evaluate
 pkgver=r17.d755a27
-pkgrel=1
+pkgrel=2
 pkgdesc="Albert extension for easily evaluating mathematica statements"
 arch=('any')
 url="https://github.com/Tyilo/albert-extensions"
@@ -17,5 +17,5 @@ pkgver() {
 }
 
 package() {
-	install -D "${srcdir}/albert-extensions/mathematica_eval.py" "${pkgdir}/usr/share/albert/org.albert.extension.externalextensions/extensionsmathematica_eval.py"
+	install -D "${srcdir}/albert-extensions/mathematica_eval.py" "${pkgdir}/usr/share/albert/org.albert.extension.externalextensions/extensions/mathematica_eval.py"
 }
