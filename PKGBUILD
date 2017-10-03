@@ -1,22 +1,45 @@
-# Maintainer Keerthan Jaic <jckeerthan at gmail dot com>
-# Contributor Artem Klevtsov <a.a.klevtsov at gmail dot com>
-
 pkgname=pandoc-bin
-pkgver=1.15.2
-pkgrel=2
-pkgdesc="Universal markup converter (Binary build from official deb)"
-url="http://pandoc.org/"
-license=('GPL2')
+pkgver=1.19.2.1
+pkgrel=1
+pkgdesc="Pandoc - executable only, without 750MB Haskell depends/makedepends"
+url="http://pandoc.org"
+license=("GPL")
 arch=('x86_64')
-depends=('gmp' 'zlib')
-optdepends=('texlive-most: for PDF creation')
-provides=('pandoc' 'haskell-pandoc-citeproc' 'pandoc-cabal' 'pandoc-static' 'pandoc-rstudio')
-conflicts=('pandoc' 'haskell-pandoc-citeproc' 'pandoc-cabal' 'pandoc-static' 'pandoc-rstudio')
-source_x86_64=("https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-1-amd64.deb")
-md5sums_x86_64=('8eedd750b0c6825ceb3f365f54c7e226')
+conflicts=("pandoc")
+provides=("pandoc")
+replaces=('pandoc-static' 'pandoc-lite')
+depends=('cmark')
+
+source=(
+    "https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-1-amd64.deb"
+
+    # Note that they use a git submodule for data/templates, so soure tarballs from github are incomplete.
+    # Fetching from hackage gets us a complete tarball without writing our own `git submodule` commands.
+    "https://hackage.haskell.org/package/pandoc-${pkgver}/pandoc-${pkgver}.tar.gz"
+)
+sha256sums=(
+    "db828cbab2a6d0d33f3754c4061a844ae2d1f0a01cbb12c512ef109117595dd2"
+    "08692f3d77bf95bb9ba3407f7af26de7c23134e7efcdafad0bdaf9050e2c7801"
+)
 
 package() {
-  bsdtar -xf data.tar.gz -C "${pkgdir}/"
-  # This folder only has the license
-  rm -r "${pkgdir}"/usr/share/doc
+    cd "${srcdir}"
+
+    # To avoid having to download over a gigabyte of haskell makedepends (400-ish for ghc, plus 750 in libs), we
+    # just yoink the binary from static compiled binary distributed by pandoc:
+    tar -zxf data.tar.gz
+    cp -R usr "${pkgdir}/"
+
+    # Citeproc is provided by a different package, and depends on various other datafiles we don't handle here.
+    rm "${pkgdir}/usr/bin/pandoc-citeproc"
+    rm "${pkgdir}/usr/share/man/man1/pandoc-citeproc.1.gz"
+    rm -R "${pkgdir}/usr/share/doc/pandoc-citeproc"
+
+    # We're still missing all the datafiles and so on. We get those from the source tarball...
+    cd "pandoc-${pkgver}"
+    mkdir -p "${pkgdir}/usr/share/pandoc/"
+
+    cp -R data "${pkgdir}/usr/share/pandoc/"
+    cp COPYRIGHT "${pkgdir}/usr/share/pandoc/COPYRIGHT"
+    cp MANUAL.txt "${pkgdir}/usr/share/pandoc/MANUAL.txt"
 }
