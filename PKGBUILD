@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=freeorion
-pkgver=0.4.7
+pkgver=0.4.7.1
 pkgrel=1
 pkgdesc="turn-based space empire and galactic conquest (4X) computer game"
 url="http://www.freeorion.org/"
@@ -10,7 +10,8 @@ license=('GPL2')
 depends=('boost-libs' 'python2' 'sdl2' 'libvorbis' 'glew' 'openal' 'hicolor-icon-theme' 'freetype2')
 makedepends=('boost' 'cmake')
 conflicts=('freeorion-git')
-source=("https://github.com/freeorion/freeorion/releases/download/v0.4.7/FreeOrion_v0.4.7_2017-04-24.60d06dc_Source.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/freeorion/freeorion/releases/download/v0.4.7.1/FreeOrion_v0.4.7.1_2017-09-03.139ffd9_Source.tar.gz")
+md5sums=('74f6338622cc1ff262fc1e4412f92d45')
 
 prepare() {
   cd $srcdir/src-tarball
@@ -35,5 +36,3 @@ package() {
 
   make DESTDIR=$pkgdir install
 }
-
-md5sums=('30db1505f398403df04707b6e69f79f2')
