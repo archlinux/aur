@@ -2,7 +2,7 @@
 
 _pkgname=gnome-catgen
 pkgname=$_pkgname-git
-pkgver=20171002.r65.9770ea7
+pkgver=20171003.r66.98dbed6
 pkgrel=1
 pkgdesc='A Gnome 3.12 and 3.14 application-overview folder configuration tool'
 url='https://github.com/prurigro/gnome-catgen'
