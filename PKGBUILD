@@ -1,0 +1,48 @@
+# Maintainer: aksr <aksr at t-com dot me>
+pkgname=es-shell-git
+pkgver=0.9.1.r2.ge65327f
+pkgrel=1
+epoch=
+pkgdesc="A extensible shell with higher-order functions, derived from the Plan 9 shell, rc."
+arch=('i686' 'x86_64')
+url="https://github.com/wryun/es-shell"
+license=('Public Domain')
+categories=()
+groups=()
+depends=('')
+makedepends=('git')
+optdepends=()
+checkdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+changelog=
+install=${pkgname%-*-*}.install
+source=("$pkgname::git+https://github.com/wryun/es-shell.git")
+noextract=()
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
+}
+
+build() {
+  cd "$srcdir/$pkgname"
+  aclocal
+  autoconf
+  libtoolize -qi
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  make prefix="$pkgdir/usr" install
+  mkdir -p "$pkgdir/usr/share/doc/${pkgname%-*-*}"
+  install -m644 README initial.es mksignal esdebug \
+    doc/usenix-w93.ps doc/ERRATA doc/TODO "$pkgdir/usr/share/doc/${pkgname%-*-*}"
+}
+
