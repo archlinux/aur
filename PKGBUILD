@@ -1,6 +1,6 @@
 pkgname=openmodelica-dev
 pkgver=1.13.0
-pkgrel=3
+pkgrel=4
 
 pkgdesc="The Open Source Modelica Suite - Metapackage"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://openmodelica.org"
 license=('OSMC-PL')
 groups=(openmodelica)
 
-depends=('openmodelica-dev-omc' 'openmodelica-dev-omlibraries' 'openmodelica-dev-qwt' 'openmodelica-dev-omplot' 'openmodelica-dev-omedit' 'openmodelica-dev-omnotebook' 'openmodelica-dev-omshell')
+depends=('openmodelica-dev-omc' 'openmodelica-dev-omlibraries' 'openmodelica-dev-qwt' 'openmodelica-dev-omplot' 'openmodelica-dev-omedit' 'openmodelica-dev-omnotebook' 'openmodelica-dev-omshell' 'openmodelica-dev-omoptim')
 
 provides=('openmodelica')
-conflicts=('openmodelica' 'openmodelica-git' 'openmodelica-omc' 'openmodelica-omlibraries' 'openmodelica-qwt' 'openmodelica-omplot' 'openmodelica-omedit' 'openmodelica-omnotebook' 'openmodelica-omshell')
+conflicts=('openmodelica' 'openmodelica-git' 'openmodelica-omc' 'openmodelica-omlibraries' 'openmodelica-qwt' 'openmodelica-omplot' 'openmodelica-omedit' 'openmodelica-omnotebook' 'openmodelica-omshell' 'openmodelica-omoptim')
