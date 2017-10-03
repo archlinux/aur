@@ -16,7 +16,7 @@ url="https://gitea.io/"
 license=("MIT")
 arch=("i686" "x86_64" "armv6h" "armv7h")
 depends=("git")
-makedepends=("go")
+makedepends=("go" "go-bindata")
 optdepends=("sqlite: SQLite support"
             "mariadb: MariaDB support"
             "postgresql: PostgreSQL support"
