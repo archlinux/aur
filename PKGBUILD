@@ -13,7 +13,7 @@ conflicts=("$pkgname-git")
 replaces=("$pkgname-git")
 backup=("etc/$pkgname/conf/client.conf" "etc/$pkgname/conf/server.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/snakesocks-linux-$pkgver-all.tar.gz")
-sha256sums=("1283331e773e048e206a47581151660ef477db752c44b94499bfdb21514de3bd")
+sha256sums=("c1c42c35e988fb4d6e8f88533216881b40fb1b0848d0875ab21e7802b142f339")
 
 package() {
   export pkgdir
