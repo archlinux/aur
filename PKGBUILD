@@ -9,7 +9,7 @@ url="https://github.com/Uberi/speech_recognition"
 license=('MIT')
 makedepends=('flac' 'python-setuptools' 'python2-setuptools' 'python-pyaudio' 'python2-pyaudio' 'python-pocketsphinx' 'python2-pocketsphinx' 'python2-monotonic')
 source=("https://github.com/Uberi/speech_recognition/archive/${pkgver}.tar.gz")
-md5sums=('de475cbe9bfe968a27c371c381fd7227')
+sha256sums=('2caafe07a1557a77f9e0bb38e1a05f6cd48a52486b91d51c720fcead9202e33f')
 
 prepare () {
   cp -r "$srcdir"/$_pkgname-$pkgver "$srcdir"/$_pkgname-$pkgver-py2
