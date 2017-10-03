@@ -1,0 +1,27 @@
+pkgbase = red-discordbot-git
+	pkgdesc = Red - A fully customizable Discord bot
+	pkgver = r640.39a0f25
+	pkgrel = 1
+	url = https://github.com/Cog-Creators/Red-DiscordBot
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-pip
+	depends = git
+	depends = openssl
+	depends = libffi
+	depends = libsodium
+	depends = python-discord
+	optdepends = ffmpeg: voice
+	optdepends = python-imgurpython: images cog
+	provides = red-discordbot
+	conflicts = red-discordbot
+	source = red-discordbot::git+https://github.com/Cog-Creators/Red-DiscordBot#branch=develop
+	source = red-discordbot.sysusers
+	source = red-discordbot.service
+	sha256sums = SKIP
+	sha256sums = 64bf000274890f04051d18310de64c1a5e76cfea798591ffb2a5db29a2a306e5
+	sha256sums = 707399f1f759b4562f5f06f2d7501bc0b6c77db5a7e4a14aedc4ca1be4914b4e
+
+pkgname = red-discordbot-git
+
