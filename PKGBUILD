@@ -27,7 +27,7 @@ conflicts=("$_pkgname")
 backup=('etc/enlightenment/sysactions.conf'
         'etc/xdg/menus/e-applications.menu')
 options=('debug')
-source=("git://git.enlightenment.org/core/$_pkgname.git")
+source=("https://git.enlightenment.org/core/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
