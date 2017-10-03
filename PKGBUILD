@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=gcc6-gcj-compat
-pkgver=6.4.0
-pkgrel=2
+pkgver=6.4.1
+pkgrel=1
 pkgdesc="wapper package for gcc6-gcj to gcc-gcj compatability"
 arch=('i686' 'x86_64')
 license=('GPL')
