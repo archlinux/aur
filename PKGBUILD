@@ -1,7 +1,7 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
 pkgver=0.13.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/albertlauncher"
@@ -29,8 +29,8 @@ optdepends=(
 )
 provides=('albert')
 conflicts=('albert-git')
-source=('git://github.com/albertlauncher/albert.git'
-        'git://github.com/albertlauncher/plugins.git')
+source=('git+https://github.com/albertlauncher/albert.git'
+        'git+https://github.com/albertlauncher/plugins.git')
 md5sums=('SKIP' 'SKIP')
 
 
