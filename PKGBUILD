@@ -29,7 +29,7 @@ optdepends=('geoclue: For elocation'
 provides=("$_pkgname=$pkgver" elementary{,-git}=$pkgver "evas_generic_loaders=$pkgver")
 conflicts=("$_pkgname" elementary{,-git} elementary_test{,-git} evas_generic_loaders{,-git})
 options=('debug')
-source=("git://git.enlightenment.org/core/$_pkgname.git")
+source=("https://git.enlightenment.org/core/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
