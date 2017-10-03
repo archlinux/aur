@@ -2,7 +2,7 @@
 pkgbase=alienfx
 pkgname=alienfx
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="AlienFX Configuration Utility"
 arch=('any')
 url="https://github.com/trackmastersteve/alienfx"
@@ -10,7 +10,7 @@ license=('GPLv3')
 makedepends=('python2-setuptools')
 depends=('python2' 'python2-cairo' 'python2-gobject' 'python2-pyusb')
 source=("https://github.com/trackmastersteve/${pkgbase}/archive/master.zip")
-sha256sums=('2f5342482ba370663cdbebe7237d71f1c177e25ad24d0523315dec83557d2b43')
+sha256sums=('3b67a8aaea8580c8ec8bfc37970e305a9a258096f66587ed8acab7d204878323')
 
 package_alienfx() {  
   cd "${srcdir}/${pkgbase}-master"

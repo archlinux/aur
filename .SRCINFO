@@ -1,7 +1,7 @@
 pkgbase = alienfx
 	pkgdesc = AlienFX Configuration Utility
 	pkgver = 2.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/trackmastersteve/alienfx
 	arch = any
 	license = GPLv3
@@ -11,7 +11,7 @@ pkgbase = alienfx
 	depends = python2-gobject
 	depends = python2-pyusb
 	source = https://github.com/trackmastersteve/alienfx/archive/master.zip
-	sha256sums = 2f5342482ba370663cdbebe7237d71f1c177e25ad24d0523315dec83557d2b43
+	sha256sums = 3b67a8aaea8580c8ec8bfc37970e305a9a258096f66587ed8acab7d204878323
 
 pkgname = alienfx
 
