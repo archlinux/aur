@@ -4,7 +4,7 @@ pkgbase=nikola
 _pyname=Nikola
 pkgname=('nikola' 'python-nikola-doc')
 pkgver=7.8.10
-pkgrel=4
+pkgrel=5
 pkgdesc='A modular, fast, simple, static website generator.'
 arch=('any')
 url='https://getnikola.com/'
@@ -27,8 +27,9 @@ optdepends=('python-jinja: for Jinja2 themes'
             'python-phpserialize: for WordPress imports'
             'python-ws4py: for nikola auto'
             'python-watchdog: for nikola auto')
-source=("https://pypi.io/packages/source/N/Nikola/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a3a4e7f5417f6ce19b6edbbe8b778131')
+source=("https://pypi.io/packages/source/N/Nikola/${_pyname}-${pkgver}.tar.gz"
+        "make_tab_completion.py")
+md5sums=('a3a4e7f5417f6ce19b6edbbe8b778131' '0c5b36c239ac465da024dac76e4892e7')
 conflicts=('python-nikola' 'python2-nikola' 'python-nikola-git' 'python2-nikola-git' 'nikola-git')
 replaces=('python-nikola' 'python2-nikola')
 
@@ -44,11 +45,9 @@ package_nikola() {
 
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgbase}"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
-  echo "Creating tab completion..."
-  "${pkgdir}/usr/bin/${pkgbase}" tabcompletion -s zsh > zsh_completion 2> /dev/null
-  "${pkgdir}/usr/bin/${pkgbase}" tabcompletion -s bash > bash_completion 2> /dev/null
-  install -D -m755 'zsh_completion' "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -D -m755 'bash_completion' "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+
+  export pkgdir
+  python3 ../make_tab_completion.py
 }
 
 package_python-nikola-doc() {
