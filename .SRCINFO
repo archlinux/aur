@@ -9,3 +9,4 @@ pkgbase = aleo-fonts
 	sha512sums = 53bf3f067015e86ed53d3d71d0f2439de271d0d326992b77621434b2a5b3352a65baadb2dacdd62c5ee3057b52f159af69cebf2456db3096a7dcff0a13fcc8a4
 
 pkgname = aleo-fonts
+
