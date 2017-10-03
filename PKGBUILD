@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=knightos-sdk
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='The KnightOS developer SDK'
 depends=(
@@ -17,7 +17,7 @@ optdepends=(
 arch=(i386 x86_64)
 url='https://github.com/KnightOS/sdk'
 source=("https://github.com/KnightOS/sdk/archive/${pkgver}.tar.gz")
-sha1sums=('fa48c00261cf6249ff45d12b7083c8204530958d')
+sha1sums=('afffd76b2caa880032c6c2dc21cbb5a7844c86c5')
 
 package() {
 	cd "${srcdir}/sdk-${pkgver}"
