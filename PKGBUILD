@@ -7,7 +7,7 @@ pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('i686' 'x86_64')
 url="http://www.grycap.upv.es/slepc"
 license=('GNUv3')
-depends=('python2' 'gcc' 'gcc-fortran' 'petsc>=3.7.0')
+depends=('python2' 'gcc' 'gcc-fortran' 'petsc>=3.7.0' 'petsc<3.8.0')
 install=slepc.install
 source=(http://www.grycap.upv.es/slepc/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
 md5sums=('cc1244d656e8c37bbdd3e4e897d0e391')
