@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=bauerbill
-pkgver=2017.8
+pkgver=2017.10
 pkgrel=1
 pkgdesc='Extension of Powerpill with AUR and ABS support.'
 arch=(any)
@@ -9,16 +9,16 @@ url="https://xyne.archlinux.ca/projects/bauerbill"
 depends=(pbget pm2ml powerpill python-xdg python3 python3-aur python3-colorsysplus python3-memoizedb python3-xcgf python3-xcpf)
 backup=(etc/bauerbill/bauerbill.json)
 source=(
-  https://xyne.archlinux.ca/projects/bauerbill/src/bauerbill-2017.8.tar.xz
-  https://xyne.archlinux.ca/projects/bauerbill/src/bauerbill-2017.8.tar.xz.sig
+  https://xyne.archlinux.ca/projects/bauerbill/src/bauerbill-2017.10.tar.xz
+  https://xyne.archlinux.ca/projects/bauerbill/src/bauerbill-2017.10.tar.xz.sig
 )
 sha512sums=(
-  54f122cf5fbf95d5fcfb4c3800f998f07f343014ca47d4e3998a8d5258adf03f1c43c79c57f0f7132b6a5f141e640669732cb2e1a6ed35a8b5dca479c7f5fed0
-  15c88ef9531f638138de09c6cd703ad08b9637707a00a6b1ddb44352aea163c57439ca36493a6fe61ce9899e8a2bfa297e56aab12e1b9baa866ba99b81924e90
+  1dab78c9b296c3cd10c2f3c58b8a5985a6ffc8ed007dd35783f9ad58d773fbcc08b6e8abec7721889615381109d320fbf65ec0a019a4575b940148e5ad5feff2
+  93e73bde362499f352ba650b480aaba6d2b23fa6b39050c93da71c8beaa37a547a80a0d4efdc829ef966389caa8d8b472627894f52cd9676f9dedd17635adcb9
 )
 md5sums=(
-  b8116fffd3799377f7edd21ef46a5758
-  5bc2e4c21bc00c536003c3c2061f026b
+  0c0dc68073782e577a7d7ebeb03c4c7b
+  82edc93d159ea13dbe47397224207210
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
