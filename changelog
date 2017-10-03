@@ -1,3 +1,6 @@
+2017-10-03  Tinu Weber  <martin.weber@epfl.ch>
+	* epfl-vpn: Add option for running command in a separate namespace
+
 2017-09-24  Tinu Weber  <martin.weber@epfl.ch>
 	* epfl-scripts-git: Update for upstream merge (no new features downstream)
 

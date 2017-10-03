@@ -2,7 +2,7 @@
 
 pkgname=epfl-scripts-git
 _pkgname=epfl-scripts
-pkgver=r50.46ba816
+pkgver=r52.eb0bdd4
 pkgrel=1
 pkgdesc="Collection of scripts for simplifying one's life at EPFL"
 arch=('any')
@@ -21,9 +21,11 @@ pkgver() {
 }
 
 package() {
-  depends+=(curl file openconnect perl-html-tree perl-io-stringy
+  depends+=(curl bash file openconnect perl-html-tree perl-io-stringy
             perl-lwp-protocol-https perl-html-treebuilder-xpath
-            perl-www-mechanize perl-xml-xpathengine sh)
+            perl-www-mechanize perl-xml-xpathengine)
+  optdepends=('iproute2: network-namespaces in epfl-vpn'
+              'iptables: network-namespaces in epfl-vpn')
   cd "$srcdir"/"$_pkgname"
   install -Dm 755 bin/epfl-vpn "$pkgdir"/usr/bin/epfl-vpn
   install -Dm 755 bin/gnupaste "$pkgdir"/usr/bin/gnupaste

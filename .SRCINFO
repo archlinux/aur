@@ -1,6 +1,6 @@
 pkgbase = epfl-scripts-git
 	pkgdesc = Collection of scripts for simplifying one's life at EPFL
-	pkgver = r50.46ba816
+	pkgver = r52.eb0bdd4
 	pkgrel = 1
 	url = https://gitlab.gnugen.ch/gnugen/epfl-scripts
 	changelog = changelog
@@ -15,6 +15,7 @@ pkgbase = epfl-scripts-git
 pkgname = epfl-scripts-git
 	depends = coreutils
 	depends = curl
+	depends = bash
 	depends = file
 	depends = openconnect
 	depends = perl-html-tree
@@ -23,5 +24,6 @@ pkgname = epfl-scripts-git
 	depends = perl-html-treebuilder-xpath
 	depends = perl-www-mechanize
 	depends = perl-xml-xpathengine
-	depends = sh
+	optdepends = iproute2: network-namespaces in epfl-vpn
+	optdepends = iptables: network-namespaces in epfl-vpn
 
