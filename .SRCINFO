@@ -1,0 +1,16 @@
+pkgbase = albert-tex-to-unicode
+	pkgdesc = Albert extension for converting tex math to unicode symbols
+	pkgver = r17.d755a27
+	pkgrel = 1
+	url = https://github.com/Tyilo/albert-extensions
+	arch = any
+	license = GPL
+	depends = albert
+	depends = python
+	depends = python-pylatexenc
+	optdepends = xclip
+	source = git+https://github.com/Tyilo/albert-extensions
+	md5sums = SKIP
+
+pkgname = albert-tex-to-unicode
+
