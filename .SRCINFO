@@ -64,7 +64,7 @@ pkgbase = efl-git
 	conflicts = evas_generic_loaders
 	conflicts = evas_generic_loaders-git
 	options = debug
-	source = git://git.enlightenment.org/core/efl.git
+	source = git+https://git.enlightenment.org/core/efl.git
 	sha256sums = SKIP
 
 pkgname = efl-git
