@@ -4,7 +4,7 @@
 # Contributor: Matej Lach <matej.lach@gmail.com>
 
 pkgname=birdfont
-pkgver=2.19.0
+pkgver=2.19.4
 pkgrel=1
 pkgdesc='A free font editor that lets you create vector graphics and export TTF, EOT & SVG fonts'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('libgee' 'webkit2gtk' 'libnotify' 'libxmlbird')
 makedepends=('vala' 'gettext' 'python')
 source=(https://birdfont.org/releases/${pkgname}-${pkgver}.tar.xz{,.sig})
-sha512sums=('07436a98a35c0692886b1fe359cb0abbd8418ae97774a321368d03e53be1b04daf749cd36c09d5a7ffd14ff717e0c949f00397aa78949533f387bb25d5d9584f'
+sha512sums=('1cdb1227a10d8e46b5d0c632582d46ae7bd6482c40fe718d0e264e619517b461e8176f47bf40889b42629d909afb3b6d0d382be47ee8cc2420e1e9698be57a3b'
             'SKIP')
 validpgpkeys=('FB3BEFA59A6FF7F0E0682B68BCD31D4CCCEB9DD4') # Johan Mattsson <gmail: johan dot mattsson dot m>
 install="${pkgname}.install"
