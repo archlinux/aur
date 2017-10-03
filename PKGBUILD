@@ -1,7 +1,7 @@
 # Maintainer: Joseph Brains <jnbrains@gmail.com>
 _pkgname=ubridge
 pkgname=${_pkgname}-git
-pkgver=0.9.12
+pkgver=0.9.13
 pkgrel=1
 pkgdesc='Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces.'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${_pkgname}/archive/v${pkgver}.tar.gz")
 install="${_pkgname}.install"
-md5sums=('8ad0653edf2818b3714730014874b3aa')
+md5sums=('6432fac8d2832b7ef1ce87c4e7d94f00')
 
 build() {
   cd $srcdir/${_pkgname}-$pkgver
