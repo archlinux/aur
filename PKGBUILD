@@ -75,8 +75,8 @@ package() {
     "${pkgdir}/usr/share/$pkgname/scripts"
 
   # Remove win32 and other distributions specific scripts
-  rm -rf "${pkgdir}/usr/share/$pkgname/scripts/build"
-  rm -rf "${pkgdir}/usr/share/$pkgname/scripts/upgrade/win32"
+  rm -rf "${pkgdir}/usr/share/${pkgname}/build"
+  rm -rf "${pkgdir}/usr/share/${pkgname}/upgrade/win32"
 
   # Install systemd service
   install -D -m644 "${srcdir}/seafile-server@.service" \
