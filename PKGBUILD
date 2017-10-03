@@ -9,9 +9,9 @@ _pkgnames=('United-Antergos-Compact'
 	'United-Manjaro'
 )
 _pkgver=2.2
-_myrevision=4
+_myrevision=5
 pkgname=gtk-theme-united-archers-git
-pkgver=v2.2.r4.gca00a01
+pkgver=v2.2.r5.g3ff60f0
 pkgrel=1
 pkgdesc='GTK2/3 + GNOME Shell theme based on a Ubuntu 18.04 design concept.'
 arch=('any')
@@ -33,7 +33,7 @@ source=("${_pkgnames[0]}.tar.gz::${url}/blob/master/${_pkgnames[0]}.tar.gz?raw=t
 	"${_pkgnames[4]}.tar.gz::${url}/blob/master/${_pkgnames[4]}.tar.gz?raw=true"
 	"${_pkgnames[5]}.tar.gz::${url}/blob/master/${_pkgnames[5]}.tar.gz?raw=true"
 )
-sha256sums=('25199351aed816a4ceb613e19b31c3ee29ddf4311d5b606e3563950d187ebbe1' 'ad56ec81d2674e12ffce5c515052796bbe14d1392f0bf3c7454e238fe9a024ba' '7978311f055429f170b451f72f8d86fdac4b686aa79d8c058e014611d705f1d7' 'e65e65fd9c9bdadc5566354d8c979fb0aa290bd1212ad07d0795b105b027f216' '6b73fb4dd101f19377ddc989aa7634c8c4764d974ac4cbd1b4f62418cf87a50d' '33754d5e772f34d8a0ee55f76def895495551077da1672f227cc4c81e3822a2b')
+sha256sums=('6fc26435dec597590fe8045fba5fe271fbef3d32ca0b1338d988c59831b375d5' 'a1adbbc472d10da194ab69ffbc553362345cad111fb6e1d6cf59b1ac61ff8486' '576cc10a15c85f77a28f7ed8069885237a66e8ba668cb7fe942f54b2e40ad830' 'd0df91dcb03d9eddeecc1221c181ab1c543dc24d7955bf5d039b3c0d62c07c47' '0ccdebeb980bfe2f964dfcf62aadcd5568dcb9ed0592ae63fe0eb2592c518d0a' 'ecfec11d43b1cf9a3bc5f0d1d15c5e484cc2929cbd7ffbd9a7d0dd96a0dab65b')
 
 pkgver() {
 	echo -n "v${_pkgver}.r${_myrevision}.g"; git ls-remote -q -h "${url}" master | cut -c1-7
