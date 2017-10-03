@@ -1,7 +1,7 @@
 pkgbase = sw4stm32
 	pkgdesc = SystemWorkbench for STM32
 	pkgver = v2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openstm32.org/System+Workbench+for+STM32
 	arch = x86_64
 	license = unknown
