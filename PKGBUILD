@@ -1,7 +1,7 @@
 # Maintainer: Andreas Louv <andreas@louv.dk>
 
 pkgname=zs-git
-pkgver=0.4.1
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Copy objects from one AS/400 to another"
 arch=("any")
@@ -25,4 +25,5 @@ package()
 	make
 	install -D zs $pkgdir/usr/bin/zs
 	install -Dm644 zs.1 $pkgdir/usr/share/man/man1/zs.1
+	install -Dm600 default.conf $pkgdir/etc/zs/default.conf
 }
