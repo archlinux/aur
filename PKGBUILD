@@ -3,7 +3,7 @@
 # Contributor: oozyslug <oozyslug at gmail dot com>
 
 pkgname=neobundle-git
-pkgver=4.0.17.g4c9a273
+pkgver=4.0.19.g26d0378
 pkgrel=1
 pkgdesc="Ultimate Vim plugin manager inspired by Vundle"
 arch=('any')
