@@ -1,13 +1,13 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.5.1
+pkgver=1.6
 pkgrel=1
-pkgdesc='Pure Go web server with Lua, Markdown, HTTP/2 and template support'
+pkgdesc='Pure Go web server with Lua, Markdown, HyperApp and Pongo2 support'
 arch=('x86_64' 'i686')
 url='http://algernon.roboticoverlords.org/'
 license=('MIT')
-makedepends=('go' 'git' 'glide' 'setconf')
+makedepends=('go' 'git' 'setconf')
 optdepends=('redis: For using the Redis database backend'
             'mariadb: For using the MariaDB/MySQL database backend'
             'postgresql: For using the PostgreSQL database backend')
@@ -18,6 +18,11 @@ md5sums=('SKIP')
 _gourl=github.com/xyproto/algernon
 
 prepare() {
+  cd "$pkgname"
+  git submodule init
+  git submodule update
+  cd "$srcdir"
+
   export GOROOT=/usr/lib/go
 
   rm -rf build; mkdir -p build/go; cd build/go
@@ -35,10 +40,6 @@ prepare() {
   mv "$srcdir/$pkgname" "$(dirname $DESTPATH)"
 
   cd "$GOPATH/src/$_gourl"
-
-  # Manage Go dependencies with Glide
-  glide update
-  glide install
 
   # Startup parameters
   setconf system/algernon_dev.service \
