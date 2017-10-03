@@ -4,7 +4,7 @@ pkgbase=nikola-git
 _pyname=nikola
 _gitname=nikola
 pkgname=('nikola-git' 'python-nikola-doc-git')
-pkgver=7.8.8.r170.g1a9049ca
+pkgver=7.8.8.r175.g8367f952
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator. (git version)'
 arch=('any')
@@ -29,8 +29,8 @@ optdepends=('python-jinja: for Jinja2 themes'
             'python-ws4py: for nikola auto'
             'python-watchdog: for nikola auto')
 makedepends=('git')
-source=("git+https://github.com/getnikola/${_gitname}.git")
-md5sums=('SKIP')
+source=("git+https://github.com/getnikola/${_gitname}.git" "make_tab_completion.py")
+md5sums=('SKIP' '0c5b36c239ac465da024dac76e4892e7')
 conflicts=('python-nikola' 'python2-nikola' 'python-nikola-git' 'python2-nikola-git' 'nikola')
 replaces=('python-nikola-git' 'python2-nikola-git')
 
@@ -47,11 +47,8 @@ package_nikola-git() {
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgbase}"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 
-  echo "Creating tab completion..."
-  "${pkgdir}/usr/bin/${pkgbase}" tabcompletion -s zsh > zsh_completion 2> /dev/null
-  "${pkgdir}/usr/bin/${pkgbase}" tabcompletion -s bash > bash_completion 2> /dev/null
-  install -D -m755 'zsh_completion' "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -D -m755 'bash_completion' "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  export pkgdir
+  python3 ../make_tab_completion.py
 }
 
 package_python-nikola-doc-git() {
