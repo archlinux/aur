@@ -1,0 +1,15 @@
+pkgbase = prosody-modules-hg
+	pkgdesc = prosody modules
+	pkgver = r2779.c53cc1ae4788
+	pkgrel = 1
+	url = https://modules.prosody.im/
+	arch = any
+	license = MIT
+	makedepends = mercurial
+	makedepends = wget
+	depends = prosody
+	source = hg+https://hg.prosody.im/prosody-modules/
+	sha512sums = SKIP
+
+pkgname = prosody-modules-hg
+
