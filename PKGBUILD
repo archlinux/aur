@@ -1,13 +1,13 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=xwallpaper-git
-pkgver=0.2.1+4+g3e396f1
+pkgver=0.2.2+3+ga9855d2
 pkgrel=1
 pkgdesc='Wallpaper setting utility for X'
 url='https://github.com/stoeckmann/xwallpaper'
 arch=('i686' 'x86_64')
 license=('ISC')
-depends=('pixman' 'libpng' 'libxpm' 'xcb-util' 'xcb-util-image' 'libjpeg-turbo')
+depends=('pixman' 'libpng' 'libxpm' 'xcb-util' 'xcb-util-image' 'libjpeg-turbo' 'libseccomp')
 makedepends=('git')
 provides=('xwallpaper')
 conflicts=('xwallpaper')
