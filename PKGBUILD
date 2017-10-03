@@ -3,7 +3,8 @@
 
 pkgname=lib32-allegro
 pkgver=5.2.2
-pkgrel=1
+_ver=$pkgver.0
+pkgrel=2
 pkgdesc='Portable library mainly aimed at video game and multimedia programming (32 bit)'
 arch=('x86_64')
 url='http://liballeg.org'
@@ -12,7 +13,7 @@ depends=('lib32-jack' 'lib32-libxpm' 'lib32-libxxf86dga' 'lib32-libgl' 'lib32-ph
          'lib32-gtk2' 'lib32-libpulse' 'lib32-alsa-lib' 'lib32-libtheora'
          'lib32-opusfile' "${pkgname#*-}")
 makedepends=('cmake' 'gcc-multilib' 'lib32-mesa' 'lib32-glu')
-source=("http://download.gna.org/allegro/allegro/$pkgver/allegro-$pkgver.tar.gz")
+source=("https://github.com/liballeg/allegro5/releases/download/$_ver/allegro-$_ver.tar.gz")
 sha256sums=('e285b9e12a7b33488c0e7e139326903b9df10e8fa9adbfcfe2e1105b69ce94fc')
 
 prepare() {
@@ -28,7 +29,7 @@ build() {
 
   cd build
 
-  cmake ../${pkgname#*-}-$pkgver.0 \
+  cmake ../allegro-$_ver \
     -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_SUFFIX="32" -DCMAKE_LIBRARY_PATH=/usr/lib32 \
     -DWANT_PHYSFS=ON -DWANT_OPENAL=OFF \
@@ -44,5 +45,5 @@ package() {
 
   # link to license
   install -d "$pkgdir"/usr/share/licenses
-  ln -s ${pkgname#*-} "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s allegro "$pkgdir"/usr/share/licenses/$pkgname
 }
