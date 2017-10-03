@@ -3,7 +3,7 @@
 
 pkgname=ponysay-devel-git
 _pkgname=ponysay
-pkgver=3.0.1.git2243
+pkgver=3.0.1+365
 pkgrel=1
 pkgdesc="Pony reimplementation of cowsay. (develop branch)"
 arch=("any")
@@ -18,9 +18,10 @@ source=("$_pkgname::git+https://github.com/erkin/ponysay#branch=$branch")
 md5sums=("SKIP")
 
 pkgver(){
-	cd "$_pkgname"
-	echo "$(git describe --abbrev=0 | sed 's/-/./g' ).git$(git rev-list --count HEAD | sed 's/-/./g' )"
+	cd "${_pkgname}"
+	echo "$(git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/+/' )"
 }
+
 
 package() {
 	cd "$srcdir/$_pkgname"
