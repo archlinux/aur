@@ -1,7 +1,7 @@
 # Maintainer: Asger Hautop Drewsen <asgerdrewsen@gmail.com>
 pkgname=albert-python-evaluate
 pkgver=r17.d755a27
-pkgrel=1
+pkgrel=2
 pkgdesc="Albert extension for easily evaluating python expressions"
 arch=('any')
 url="https://github.com/Tyilo/albert-extensions"
@@ -17,6 +17,6 @@ pkgver() {
 }
 
 package() {
-	install -D "${srcdir}/albert-extensions/python_eval.py" "${pkgdir}/usr/share/albert/org.albert.extension.externalextensions/extensionspython_eval.py"
+	install -D "${srcdir}/albert-extensions/python_eval.py" "${pkgdir}/usr/share/albert/org.albert.extension.externalextensions/extensions/python_eval.py"
 	install -Dm 644 "${srcdir}/albert-extensions/python.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/albert-python-evaluate.svg"
 }
