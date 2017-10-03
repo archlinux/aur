@@ -1,7 +1,7 @@
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname='geant4'
-pkgver=10.3.1
-_pkgver=10.03.p01
+pkgver=10.3.2
+_pkgver=10.03.p02
 pkgrel=2
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=2.8.2'
@@ -45,7 +45,7 @@ options=('!emptydirs')
 install="${pkgname}.install"
 source=("http://geant4.cern.ch/support/source/${pkgname}.${_pkgver}.tar.gz"
   "${pkgname}.install")
-md5sums=('6da9fdff93437913cf4f548b5590bc29'
+md5sums=('9146da898ffbeb650fb03c85057af3ee'
          'bfe6791027de966cad240d8584c6b657')
 
 ## Remove this if you want to keep an even smaller package
@@ -56,27 +56,28 @@ build() {
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
   env -i \
-    QT_SELECT=5 \
-    PATH=/usr/bin \
-    cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DGEANT4_BUILD_MULTITHREADED=ON \
-    -DGEANT4_BUILD_CXXSTD=14 \
-    -DGEANT4_INSTALL_DATA=OFF \
-    -DGEANT4_USE_GDML=ON \
-    -DGEANT4_USE_G3TOG4=ON \
-    -DGEANT4_USE_QT=ON \
-    -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
-    -DGEANT4_USE_XM=ON \
-    -DGEANT4_USE_OPENGL_X11=ON \
-    -DGEANT4_USE_INVENTOR=ON \
-    -DGEANT4_USE_RAYTRACER_X11=ON \
-    -DGEANT4_USE_SYSTEM_CLHEP=OFF \
-    -DGEANT4_USE_SYSTEM_EXPAT=ON \
-    -DGEANT4_USE_SYSTEM_ZLIB=ON \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    ../${pkgname}.${_pkgver}
+      CXXFLAGS="${CXXFLAGS} -std=c++14" \
+      QT_SELECT=5 \
+      PATH=/usr/bin \
+      cmake \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DGEANT4_BUILD_MULTITHREADED=ON \
+      -DGEANT4_BUILD_CXXSTD=14 \
+      -DGEANT4_INSTALL_DATA=OFF \
+      -DGEANT4_USE_GDML=ON \
+      -DGEANT4_USE_G3TOG4=ON \
+      -DGEANT4_USE_QT=ON \
+      -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
+      -DGEANT4_USE_XM=ON \
+      -DGEANT4_USE_OPENGL_X11=ON \
+      -DGEANT4_USE_INVENTOR=ON \
+      -DGEANT4_USE_RAYTRACER_X11=ON \
+      -DGEANT4_USE_SYSTEM_CLHEP=OFF \
+      -DGEANT4_USE_SYSTEM_EXPAT=ON \
+      -DGEANT4_USE_SYSTEM_ZLIB=ON \
+      -DCMAKE_INSTALL_LIBDIR=lib \
+      ../${pkgname}.${_pkgver}
 
   make
 
