@@ -9,7 +9,7 @@ _lib32=0
 
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-egl-wayland-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
 pkgver=387.12
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -150,14 +150,14 @@ package_nvidia-libgl-full-beta() {
 }
 
 package_nvidia-egl-wayland-full-beta() {
-  pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.1) for 'nvidia-utils-full-beta'"
+  pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.2) for 'nvidia-utils-full-beta'"
   depends=('nvidia-utils-full-beta')
   provides=('egl-wayland')
   conflicts=('egl-wayland')
   cd $_pkg
 
-  install -Dm755 libnvidia-egl-wayland.so.1.0.1 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1.0.1
-  ln -s libnvidia-egl-wayland.so.1.0.1 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1
+  install -Dm755 libnvidia-egl-wayland.so.1.0.2 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1.0.2
+  ln -s libnvidia-egl-wayland.so.1.0.2 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1
 }
 
 package_nvidia-utils-full-beta() {
@@ -167,7 +167,7 @@ package_nvidia-utils-full-beta() {
               'gtk3: nvidia-settings (GTK+ v3)'
               'opencl-nvidia-full-beta: OpenCL support'
               'xorg-server-devel: nvidia-xconfig'
-              'egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.1)')
+              'egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.2)')
   provides=("nvidia-utils=$pkgver" "nvidia-settings=$pkgver" 'libglvnd' 'vulkan-driver')
   conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
   backup=('etc/X11/xorg.conf.d/20-nvidia.conf')
