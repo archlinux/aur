@@ -1,22 +1,24 @@
 pkgbase = gnome-keysign
 	pkgdesc = An easier way to sign OpenPGP keys over the local network.
-	pkgver = 0.9
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/gnome-keysign/gnome-keysign
 	arch = any
 	license = GPL3
-	makedepends = python2-setuptools
-	depends = python2
-	depends = python2-requests
-	depends = python2-gobject
-	depends = python2-qrcode
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-gobject
+	depends = python-qrcode
+	depends = python-twisted
 	depends = avahi
 	depends = dbus
-	depends = monkeysign-git
-	source = https://github.com/gnome-keysign/gnome-keysign/archive/0.9.tar.gz
+	depends = zbar
+	optdepends = python-pybluez
+	source = https://github.com/gnome-keysign/gnome-keysign/archive/0.9.5.tar.gz
 	source = avoid_monkeysign.patch
-	sha256sums = 141bdb20a84a3b1fb5deb0fc52c5af0e02c601b2cc4923f89409b2a1b8509f88
-	sha256sums = c749fed5028b61c99292416f980decb23f9b90ce96eae05190aace764251575a
+	sha256sums = 0bb55d834f957fe438dc32b311d7035f12cf36af07c3bded462fc9d72451a224
+	sha256sums = 74a1ac5d76d21977d2a8c3fcbc7630ccf063600ff94a30ba20df47984c44bf2e
 
 pkgname = gnome-keysign
 
