@@ -1,3 +1,11 @@
+checkmails-1.2.0-1
+  * New upstream version:
+    + Fix font settings
+    + Add support for several system tray icon gui toolkits:
+      increase the number of compatible desktop environments
+    + Improve style consistency
+
+    
 checkmails-1.1.5-1
   * New upstream version:
     + Add log file ~/.checkmails/checkmails.log
