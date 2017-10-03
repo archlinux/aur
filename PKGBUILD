@@ -3,12 +3,12 @@
 
 _pkgname=mconnect
 pkgname=$_pkgname-git
-pkgver=305.3f3f373
+pkgver=309.332cadb
 pkgrel=1
 pkgdesc="KDE Connect protocol implementation in Vala/C"
 arch=('i686' 'x86_64')
 depends=('gtk3' 'libgee' 'gnutls' 'json-glib' 'libnotify')
-makedepends=('at-spi2-atk' 'git' 'vala' 'json-glib' 'glib2' 'gobject-introspection')
+makedepends=('at-spi2-atk' 'git' 'vala' 'json-glib' 'glib2' 'gobject-introspection' 'meson')
 url="https://github.com/bboozzoo/mconnect"
 license=('GPL2')
 install=$pkgname.install
@@ -24,16 +24,16 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  autoreconf -if
+  mkdir build
 }
 
 build() {
-  cd "$_pkgname"
-  ./configure --prefix=/usr
-  make
+  cd "$_pkgname/build"
+  meson --prefix=/usr/
+  ninja
 }
 
 package() {
-	cd "$_pkgname"
-  make prefix="$pkgdir/usr/" install
+	cd "$_pkgname/build"
+    DESTDIR="$pkgdir" ninja install
 } 
