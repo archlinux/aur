@@ -2,8 +2,8 @@
 
 pkgbase=libopenmpt
 pkgname=(libopenmpt openmpt123 openmpt123-minimal libopenmpt-modplug)
-_pkgver=0.2.8414-beta25
-pkgver=${_pkgver/-/.}
+_pkgver=0.3.1+release
+pkgver=${_pkgver%+*}
 pkgrel=1
 pkgdesc='A cross-platform C++ and C library to decode tracked music files (modules) into a raw PCM audio stream.'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ url='http://lib.openmpt.org/'
 license=('BSD')
 depends=('zlib' 'gcc-libs' 'libvorbis' 'mpg123')
 makedepends=('sdl2' 'portaudio' 'libsndfile' 'flac' 'help2man' 'libpulse')
-source=("http://lib.openmpt.org/files/$pkgname/src/$pkgname-${_pkgver}.tar.gz")
-sha256sums=('97d66425efc7fbff0f214218f958525cb7ac6238b1194b7e57372a063fc503a6')
+source=("https://lib.openmpt.org/files/$pkgname/src/$pkgname-${_pkgver}.makefile.tar.gz")
+sha256sums=('9b0639d131106c872d3988b9af3400e275b73d87953f90c58b16a42bfa96a94c')
 
 build() {
   cd $pkgbase-${_pkgver%-*}
@@ -39,7 +39,7 @@ package_libopenmpt() {
   make PREFIX=/usr DESTDIR="$pkgdir" OPENMPT123=0 TEST=0 install
 
   # license
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_libopenmpt-modplug() {
@@ -51,11 +51,6 @@ package_libopenmpt-modplug() {
 
   cd $pkgbase-${_pkgver%-*}
   make PREFIX=/usr DESTDIR="$pkgdir" TEST=0 install-modplug
-
-  # fix soname to match libmodplug
-  rm -f "$pkgdir"/usr/lib/libmodplug.so.*
-  ln -s libmodplug.so "$pkgdir"/usr/lib/libmodplug.so.1
-  ln -s libmodplug.so.1 "$pkgdir"/usr/lib/libmodplug.so.1.0.0
 
   # link license
   install -d "$pkgdir"/usr/share/licenses
