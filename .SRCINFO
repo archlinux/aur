@@ -1,6 +1,6 @@
 pkgbase = background-wallpaper-slideshow-git
 	pkgdesc = A simple bash script that changes the background wallpaper periodically.
-	pkgver = 1.0.r1.gb52312a
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/DiegoFHG/background-wallpaper-slideshow
 	arch = any
