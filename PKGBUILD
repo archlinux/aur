@@ -6,13 +6,13 @@
 
 pkgname=rinse
 pkgver=3.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Bootstrap a rpm based distribution like debootstrap"
 arch=('any')
 url="http://collab-maint.alioth.debian.org/rinse/"
 license=('GPL')
 groups=()
-depends=('glibc' 'perl' 'perl-html-parser' 'perl-uri' 'perl-libwww' 'rpm2cpio' 'wget' 'rpm' 'cpio')
+depends=('glibc' 'perl' 'perl-html-parser' 'perl-uri' 'perl-libwww' 'wget' 'rpm-org' 'cpio')
 makedepends=('make')
 optdepends=()
 provides=()
