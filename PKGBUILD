@@ -1,0 +1,48 @@
+# Maintainer: Alexander Sobolevkiy <smak.nsk [at] gmail [dot] com>
+# Based on https://github.com/aerospike/aerospike-client-c
+
+pkgname=aerospike-client-c-libev
+pkgver=4.1.10
+pkgrel=1
+pkgdesc="The Aerospike C client provides a C interface for interacting with the Aerospike Database."
+arch=('any')
+url="https://github.com/aerospike/aerospike-client-c"
+license=('Proprietary')
+depends=('libev' 'python2')
+makedepends=('git')
+conflicts=('aerospike-client-c-libev')
+_gitroot="https://github.com/aerospike/aerospike-client-c.git"
+_gitname="aerospike-client-c"
+
+build() {
+  cd ${srcdir}/
+
+  if [[ -d ${srcdir}/${_gitname} ]] ; then
+    rm -rf "${srcdir}/${_gitname}"
+  fi
+
+  git clone --recursive --branch ${pkgver} ${_gitroot}
+
+  cd ${srcdir}/${_gitname}/
+
+  make EVENT_LIB=libev
+}
+
+package() {
+
+  mkdir -p -m 755 "${pkgdir}/usr/include"
+  mkdir -p -m 755 "${pkgdir}/usr/lib/"
+  mkdir -p -m 755 "${pkgdir}/opt/aerospike/client/sys/udf/lua/"
+  mkdir -p -m 755 "${pkgdir}/opt/aerospike/client/usr/udf/lua/"
+
+  cd ${srcdir}/${_gitname}/
+
+  cp -r target/Linux-x86_64/include/aerospike/ "${pkgdir}/usr/include/"
+  cp -r target/Linux-x86_64/include/citrusleaf/ "${pkgdir}/usr/include/"
+
+  install -Dm644 target/Linux-x86_64/lib/libaerospike.a "${pkgdir}/usr/lib/"
+
+  install -Dm644 modules/lua-core/src/aerospike.lua "${pkgdir}/opt/aerospike/client/sys/udf/lua/"
+  install -Dm644 modules/lua-core/src/as.lua "${pkgdir}/opt/aerospike/client/sys/udf/lua/"
+  install -Dm644 modules/lua-core/src/stream_ops.lua "${pkgdir}/opt/aerospike/client/sys/udf/lua/"
+}
