@@ -1,0 +1,21 @@
+pkgbase = mythfs-perl
+	pkgver = 1.36
+	pkgrel = 1
+	url = https://github.com/lstein/mythfs-perl
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-fuse
+	depends = perl-libwww
+	depends = perl-timedate
+	depends = perl-xml-simple
+	depends = perl-json
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/L/LD/LDS/Mythfs-perl-1.36.tar.gz
+	source = fuse-version.patch
+	md5sums = 6be14cb1821d945dddd78a4790e4615e
+	md5sums = ffef02d1818aae7d3a8b5f065e8efd16
+
+pkgname = mythfs-perl
+

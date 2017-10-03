@@ -1,0 +1,26 @@
+diff --git a/Build.PL b/Build.PL
+index 8a4c10f..6a7b416 100644
+--- a/Build.PL
++++ b/Build.PL
+@@ -12,7 +12,7 @@ my $build = Module::Build->new(
+     dist_author       => 'Lincoln Stein <lincoln.stein@oicr.on.ca>',
+     configure_requires => { 'Module::Build' => 0 },
+     requires          => {
+-      'Fuse'          => '0.09',
++      'Fuse'          => '0.09.0',
+       'LWP::UserAgent'=> '6.00',
+       'Date::Parse'   => '2.30',
+       'XML::Simple'   => '2.18',
+diff --git a/bin/mythfs.pl b/bin/mythfs.pl
+index 50d3851..ec5216e 100755
+--- a/bin/mythfs.pl
++++ b/bin/mythfs.pl
+@@ -412,7 +412,7 @@ sub check_disable_threads {
+ 	warn "This version of perl is not compiled for ithreads. Running with slower non-threaded version.\n";
+ 	return 1;
+     }
+-    if ($] >= 5.014 && $Fuse::VERSION < 0.15) {
++    if ($] >= 5.014 && version->parse($Fuse::VERSION) < version->parse("0.15.0")) {
+ 	warn "You need Fuse version 0.15 or higher to run under this version of Perl.\n";
+ 	warn "Threads will be disabled. Running with slower non-threaded version.\n";
+ 	return 1;
