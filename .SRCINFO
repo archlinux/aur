@@ -1,6 +1,6 @@
 pkgbase = albert-mathematica-evaluate
 	pkgdesc = Albert extension for easily evaluating mathematica statements
-	pkgver = r10.b4b8342
+	pkgver = r17.d755a27
 	pkgrel = 1
 	url = https://github.com/Tyilo/albert-extensions
 	arch = any
