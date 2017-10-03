@@ -4,7 +4,7 @@ pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
 pkgver=0.87
 srcrel=1 # Incremented when there is a new release for the same version number
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
 url="http://www.xnview.com/en/xnviewmp/"
 
@@ -48,6 +48,12 @@ package() {
   for dir in "${pkgdir}/opt/${_pkgname}/lib/"*; do
     rm -r "${dir}"
     ln -s "/usr/lib/qt/plugins/$(basename "${dir}")" "${dir}"
+  done
+  # Since system directories are not looked up, it may be useful to have
+  # additional symlinks for other plugin directories, even though they are not
+  # normally provided with XnView.
+  for dir in "styles"; do
+    ln -s "/usr/lib/qt/plugins/${dir}" "${pkgdir}/opt/${_pkgname}/lib/"
   done
   # XnView MP does a weird font lookup with random results under certain
   # circumstances, when not using the bundled libs. It seems that forcing
