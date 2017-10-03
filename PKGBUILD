@@ -7,7 +7,7 @@
 pkgname=xmind-legacy
 pkgver=3.6.51
 _filename=xmind-7.5-update1-linux
-pkgrel=2
+pkgrel=4
 pkgdesc="Brainstorming and Mind Mapping Software - legacy version 7.5"
 arch=('i686' 'x86_64')
 url="http://www.xmind.net"
