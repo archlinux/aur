@@ -1,14 +1,15 @@
 # Maintainer: Bernhard Landauer <oberon@manjaro.org>
+# Contributor: Philip Müller <philm@manjaro.org>
 # Contributor: Dennis E. Mungai <dmngaie@gmail.com>
 
 pkgname=nvidia-prime
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to enable NVIDIA's Prime."
 url="https://launchpad.net/ubuntu/+source/nvidia-prime"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=('bash' 'bbswitch' 'dpkg' 'lightdm' 'nvidia' 'python')
+depends=('bash' 'bbswitch' 'dpkg' 'lightdm' 'nvidia' 'python2')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz"
     'https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-drivers-common_0.4.17.3.tar.xz')
 md5sums=('8241ef91d6065b79c58277e3c2bfaf95'
@@ -27,6 +28,7 @@ package() {
   install -Dm755 get-quirk-options $pkgdir/usr/bin/get-quirk-options
   install -m755 prime-offload $pkgdir/usr/bin/prime-offload
   install -m755 prime-select $pkgdir/usr/bin/prime-select
+  sed -i -e 's|python|python2|' $pkgdir/usr/bin/prime-select
   install -m755 prime-supported $pkgdir/usr/bin/prime-supported
   install -m755 prime-switch $pkgdir/usr/bin/prime-switch
 
