@@ -16,11 +16,6 @@ prepare() {
   cd $pkgbase-$pkgver
   grep -lr 'COMMAND python' contrib/ginac|xargs sed -i "s|COMMAND python |COMMAND python2 |g"
 
-  # need https://github.com/boostorg/qvm/commit/5209c985d843a52e428a497f9fb740e1741c86d4
-  curl -L https://github.com/boostorg/qvm/archive/master.zip -o qvm-master.zip
-  bsdtar -xf qvm-master.zip
-  cp -r qvm-master/include/boost .
-  
   patch -p1 -i "$srcdir"/fix-compilation.patch
 }
 
@@ -47,7 +42,7 @@ build() {
     -DFEELPP_ENABLE_APPLICATIONS=OFF \
     -DFEELPP_ENABLE_TESTS=OFF \
     -DFEELPP_ENABLE_RESEARCH=OFF \
-    -DFEELPP_USE_GMSH_PACKAGE=OFF \
+    -DFEELPP_ENABLE_GMSH=OFF \
     -DBUILD_GUILE=OFF -DBUILD_MATLAB=OFF -DUSE_SWIG=OFF \
     -DSUPPORT_OMP=OFF -DEIGEN_TEST_OPENMP=OFF \
     ..
