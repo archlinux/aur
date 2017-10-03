@@ -2,7 +2,7 @@
 pkgname=mythfs-perl
 pkgver=1.36
 pkgrel=1
-pkgdesc=''
+pkgdesc='Fuse filesystem for accessing MythTV media'
 _dist=Mythfs-perl
 arch=('any')
 url="https://github.com/lstein/mythfs-perl"
