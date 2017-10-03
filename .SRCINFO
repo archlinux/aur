@@ -24,6 +24,8 @@ pkgbase = jdk
 	provides = java-web-start-jre=9
 	provides = java-environment-jdk=9
 	provides = java-openjfx=9
+	conflicts = java-runtime-jre=9
+	conflicts = java-environment-jdk=9
 	options = !strip
 	backup = etc/java-jdk9/management/jmxremote.access
 	backup = etc/java-jdk9/management/management.properties
