@@ -1,8 +1,9 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
+# Contributor: Jaseem Abid <jaseemabid@gmail.com>
 
 _pkgname=gnome-usage
 pkgname=$_pkgname-git
-pkgver=0.4.5.20.g18032a6
+pkgver=0.4.5.60.ge656a5b
 pkgrel=1
 pkgdesc="A nice way to view information about use of system resources"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,7 +13,7 @@ depends=('gtk3' 'libgtop')
 makedepends=('git' 'vala' 'gobject-introspection' 'meson')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git://git.gnome.org/$_pkgname")
+source=("git+https://gitlab.gnome.org/GNOME/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {

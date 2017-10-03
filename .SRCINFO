@@ -1,6 +1,6 @@
 pkgbase = gnome-usage-git
 	pkgdesc = A nice way to view information about use of system resources
-	pkgver = 0.4.5.20.g18032a6
+	pkgver = 0.4.5.60.ge656a5b
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Usage
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = gnome-usage-git
 	depends = libgtop
 	provides = gnome-usage
 	conflicts = gnome-usage
-	source = git://git.gnome.org/gnome-usage
+	source = git+https://gitlab.gnome.org/GNOME/gnome-usage.git
 	md5sums = SKIP
 
 pkgname = gnome-usage-git
