@@ -3,7 +3,7 @@
 pkgname=aleo-fonts
 pkgver=1.3
 pkgrel=1
-pkgdesc="Slab serif type family"
+pkgdesc="Slab serif type family designed by Alessio Laiso"
 url="https://alessiolaiso.com/aleo-font"
 arch=(any)
 license=(custom)
