@@ -6,7 +6,7 @@ _pkgname=paraview
 _PkgName=ParaView
 _pkgver=5.4.1
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="ParaView is an open-source, multi-platform data analysis and visualization application"
 arch=('x86_64')
 url="http://www.paraview.org/"
@@ -37,6 +37,6 @@ package() {
 
   # Symlink for desktop entries
   mkdir -p "${pkgdir}/usr/share/applications"
-  ln -sf "${pkgdir}/opt/${_pkgname}/share/applications/${_pkgname}.desktop" \
+  ln -sf "/opt/${_pkgname}/share/applications/${_pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/"
 }
