@@ -4,10 +4,10 @@
 
 pkgname=gnu-cobol
 _pkgmaj=2.2
-_pkgmin=rc
-_tarname="gnucobol-${_pkgmaj}-${_pkgmin}"
+_pkgmin=
+_tarname="gnucobol-${_pkgmaj}${_pkgmin}"
 
-pkgver="${_pkgmaj}_${_pkgmin}"
+pkgver="${_pkgmaj}${_pkgmin}"
 pkgrel=1
 pkgdesc="The open source GNU COBOL compiler"
 arch=('i686' 'x86_64')
@@ -16,9 +16,9 @@ license=('GPL')
 depends=('db' 'gmp')
 makedepends=('help2man')
 options=('!libtool')
-source=("http://sourceforge.net/projects/open-cobol/files/${pkgname}/${_pkgmaj}/${_tarname}.tar.gz"
+source=("http://sourceforge.net/projects/open-cobol/files/${pkgname}/${_pkgmaj}/${_tarname}.tar.xz"
 	"cob-cflags.patch")
-md5sums=('95daec84e72034d4c1bcf216e0ebc34a'
+md5sums=('a96dd83d0ad96b2013317b66538d5fab'
          '1ed5d24c0e51f4825e014546c83984c9')
 
 build() {
