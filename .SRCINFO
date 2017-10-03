@@ -1,0 +1,18 @@
+pkgbase = python-discord
+	pkgdesc = An API wrapper for Discord written in Python
+	pkgver = v0.16.12
+	pkgrel = 1
+	url = https://github.com/Rapptz/discord.py
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-websockets
+	depends = python-aiohttp
+	optdepends = python-pynacl: voice
+	optdepends = libffi: voice
+	source = python-discord-v0.16.12::git+https://github.com/Rapptz/discord.py#tag=v0.16.12
+	sha256sums = SKIP
+
+pkgname = python-discord
+
