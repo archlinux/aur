@@ -1,6 +1,7 @@
 # Contributor: Michael Manley <mmanley@nasutek.com>
 # Contributor: Patrick CRESSANT <pcressant@yahoo.fr>
 # Contributor: Konstantin Oblaukhov <obko@mail.ru>
+# Maintainer: Sebastian Sonne <sebastiansonne at hush dot com>
 
 # Rinse RPM Distro Bootstrapper
 
@@ -29,6 +30,7 @@ md5sums=('51c7875ae363ed35963e3b9fad344dd1'
 
 prepare() {
   patch -p0 -i $srcdir/sbin.patch 
+  sed -i 's|pod2man.*$|pod2man --release=3.0.2 --official --section=8 ./bin/rinse ./bin/rinse.8|' $srcdir/$pkgname/Makefile
 }
 
 package() {
