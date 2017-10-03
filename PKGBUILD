@@ -24,10 +24,10 @@ pkgver(){
 
 build(){
 	CFLAGS="${CFLAGS/-fno-plt/}"
-	CFLAGS="${CFLAGS/-fno-plt/}"
+
 	cd "${pkgname}"
 	CPATH=/usr/include/lua5.1 \
-		cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-5 -DCMAKE_CXX_COMPILER=g++-5 -DCMAKE_BUILD_TYPE=Release
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-5 -DCMAKE_BUILD_TYPE=Release
 	make
 }
 
