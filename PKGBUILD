@@ -4,7 +4,7 @@
 
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
 pkgver=387.12
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 makedepends=('nvidia-libgl-beta')  # To avoid conflict during installation in the build chroot
@@ -113,7 +113,7 @@ package_lib32-nvidia-utils-beta() {
   install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib32/nvidia/libEGL.so.1
   install -Dm755 libEGL_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libEGL_nvidia.so.$pkgver
   install -Dm755 libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-eglcore.so.$pkgver
-  install -Dm755 libnvidia-egl-wayland.so.1.0.1 "$pkgdir"/usr/lib32/libnvidia-egl-wayland.so.1.0.1
+  install -Dm755 libnvidia-egl-wayland.so.1.0.2 "$pkgdir"/usr/lib32/libnvidia-egl-wayland.so.1.0.2
 
   # OpenGL ES
   install -Dm755 libGLESv1_CM.so.1 "$pkgdir"/usr/lib32/nvidia/libGLESv1_CM.so.1
