@@ -1,0 +1,17 @@
+Description: fix CMake Error not found QT_QT_INCLUDE_DIR when specify both --with-qt4 and --with-qt5.
+Author: HIGUCHI Daisuke (VDR dai) <dai@debian.org>
+Forwarded: https://github.com/uim/uim/pull/62
+Last-Update: 2015-07-22
+
+diff --git a/qt4/toolbar/CMakeLists.txt b/qt4/toolbar/CMakeLists.txt
+index 4601afb..45bc23c 100644
+--- a/qt4/toolbar/CMakeLists.txt
++++ b/qt4/toolbar/CMakeLists.txt
+@@ -1,6 +1,7 @@
+ project(plasma-uim)
+ set(CMAKE_VERBOSE_MAKEFILE on)
+ 
++find_package(Qt4)
+ find_package(KDE4 REQUIRED)
+ include(KDE4Defaults)
+ 

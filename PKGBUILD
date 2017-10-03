@@ -4,8 +4,8 @@
 
 pkgname=uim-debian
 pkgver=1.8.6+gh20161003.0.d63dadd
-_debrel=4
-pkgrel=4
+_debrel=5
+pkgrel=5
 pkgdesc='Multilingual input method library with Debian patches (supports gtk3 and qt5)'
 url='https://packages.debian.org/sid/uim'
 license=('custom:BSD')
@@ -20,9 +20,11 @@ conflicts=('uim')
 provides=('uim')
 install=${pkgname}.install
 source=("http://http.debian.net/debian/pool/main/u/uim/uim_${pkgver}.orig.tar.gz"
-        "http://http.debian.net/debian/pool/main/u/uim/uim_${pkgver}-${_debrel}.debian.tar.xz")
+        "http://http.debian.net/debian/pool/main/u/uim/uim_${pkgver}-${_debrel}.debian.tar.xz"
+       qt5-qt4-coexist.patch)
 sha256sums=('7a2d1667553afc0bca4cc33f9bc8fb01a6867177d2a3e13b1b85c7add16110e9'
-            'dc72a2d995a8334ff7ca2e9494c463dd5ecf8be76be21ce2ad39cdd2d0e172ec')
+            '724b62430f789e5ed0d6dfaaedd8611798c7ff1ad4609717dd1c8bc61d9ba771'
+            'a3511837b8fc827e3ff79defff6480fc6b3a4ac031bde478bfd5d6c1b77acfdd')
 
 prepare() {
     cd "${srcdir}/uim-${pkgver}"
@@ -32,6 +34,8 @@ prepare() {
       patch -p1 -i "${srcdir}/debian/patches/${p}"
 
     done < "${srcdir}/debian/patches/series"
+
+    patch -p1 -i "${srcdir}/qt5-qt4-coexist.patch"
 
 }
 
