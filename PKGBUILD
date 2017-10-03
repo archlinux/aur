@@ -20,6 +20,7 @@ optdepends=('alsa-lib: for basic sound support'
 provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start=$_major"
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major"
           "java-openjfx=$_major")
+conflicts=("java-runtime-jre=$_major")
 
 # Variables
 _jname=${_pkgname}${_major}

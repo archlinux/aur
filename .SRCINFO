@@ -21,6 +21,7 @@ pkgbase = jre-devel
 	provides = java-runtime-headless-jre=9
 	provides = java-web-start-jre=9
 	provides = java-openjfx=9
+	conflicts = java-runtime-jre=9
 	backup = etc/java-jre9/management/jmxremote.access
 	backup = etc/java-jre9/management/management.properties
 	backup = etc/java-jre9/security/java.policy
