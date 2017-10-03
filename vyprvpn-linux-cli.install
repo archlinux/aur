@@ -1,0 +1,10 @@
+post_install() {
+	echo "==> Enable/Start vyprvpn.service before using the command-line."
+	echo "==> Login to VyprVPN:"
+	echo "  $ vyprvpn l"
+	echo "==> Now you can connect and disconnect as you please."
+}
+
+post_upgrade() {
+	post_install
+}
