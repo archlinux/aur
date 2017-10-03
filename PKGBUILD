@@ -8,7 +8,7 @@ pkgdesc="Tools to enable NVIDIA's Prime."
 url="https://launchpad.net/ubuntu/+source/nvidia-prime"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=('bash' 'bbswitch' 'lightdm' 'nvidia' 'python')
+depends=('bash' 'bbswitch' 'dpkg' 'lightdm' 'nvidia' 'python')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz"
     'https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-drivers-common_0.4.17.3.tar.xz')
 md5sums=('8241ef91d6065b79c58277e3c2bfaf95'
