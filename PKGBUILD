@@ -24,5 +24,5 @@ prepare() {
 package() {
   cd "${srcdir}/prosody-modules"
   install -dm 755 "${pkgdir}/usr/lib/prosody/modules/"
-  find . -maxdepth 1 -type d -iname "mod_*" -exec cp -r "{}"  "${pkgdir}/usr/lib/prosody/modules/" \;
+  find . -maxdepth 1 -type d -iname "mod_*" -and -not -iname "mod_mam" -exec cp -r "{}"  "${pkgdir}/usr/lib/prosody/modules/" \;
 }
