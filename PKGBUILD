@@ -2,7 +2,7 @@
 
 pkgname="printer-driver-ptouch"
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='printer driver Brother P-touch label printers'
 arch=('i686' 'x86_64')
 url='https://bitbucket.org/philpem/printer-driver-ptouch'
@@ -11,12 +11,16 @@ license=('GPL')
 depends=('ghostscript' 'foomatic-db')
 makedepends=('autoconf' 'libcups' 'foomatic-db-engine')
 
-source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/philpem/$pkgname/get/$pkgver.tar.bz2")
-sha256sums=('588b6ef0d10a693a8e8fc3e6e01dcbe31d502410a2a37ff99db3198ffe0516a2')
+source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/philpem/$pkgname/get/$pkgver.tar.bz2"
+        'Add-include-cups-ppd.h.patch')
+sha256sums=('588b6ef0d10a693a8e8fc3e6e01dcbe31d502410a2a37ff99db3198ffe0516a2'
+            '22721f6f371114f8725b70cc2877276bce1a38eb9680dcaa7d268eba990e8b4c')
 
 prepare() {
     ln -sf --no-dereference "philpem-$pkgname-"*/ "$pkgname-$pkgver"
     cd "$pkgname-$pkgver"
+
+    patch -p1 < ../Add-include-cups-ppd.h.patch
 }
 
 build() {

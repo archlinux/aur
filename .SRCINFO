@@ -1,7 +1,7 @@
 pkgbase = printer-driver-ptouch
 	pkgdesc = printer driver Brother P-touch label printers
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/philpem/printer-driver-ptouch
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = printer-driver-ptouch
 	depends = ghostscript
 	depends = foomatic-db
 	source = printer-driver-ptouch-1.4.2.tar.bz2::https://bitbucket.org/philpem/printer-driver-ptouch/get/1.4.2.tar.bz2
+	source = Add-include-cups-ppd.h.patch
 	sha256sums = 588b6ef0d10a693a8e8fc3e6e01dcbe31d502410a2a37ff99db3198ffe0516a2
+	sha256sums = 22721f6f371114f8725b70cc2877276bce1a38eb9680dcaa7d268eba990e8b4c
 
 pkgname = printer-driver-ptouch
 
