@@ -12,7 +12,7 @@ pkgbase = snakesocks
 	backup = etc/snakesocks/conf/client.conf
 	backup = etc/snakesocks/conf/server.conf
 	source = snakesocks-1.2.tar.gz::https://github.com/SnakeSocks/snakesocks/releases/download/v1.2/snakesocks-linux-1.2-all.tar.gz
-	sha256sums = 1283331e773e048e206a47581151660ef477db752c44b94499bfdb21514de3bd
+	sha256sums = c1c42c35e988fb4d6e8f88533216881b40fb1b0848d0875ab21e7802b142f339
 
 pkgname = snakesocks
 
