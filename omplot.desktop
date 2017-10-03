@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=OMPlot
+Comment=Open Modelicas OMPlot
+Terminal=false
+Type=Application
+Categories=Development;OpenModelica;
+Exec=OMPlot
+Icon=omplot
+NoDisplay=true
