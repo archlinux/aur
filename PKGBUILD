@@ -9,7 +9,7 @@
 
 pkgname=smath
 pkgver=0_98_6484
-pkgrel=1
+pkgrel=2
 pkgdesc="A mathematical program with many features and paper-like interface, similar to Mathcad"
 _pkgcode=h73AT
 arch=('i686' 'x86_64')
@@ -19,9 +19,9 @@ groups=('math')
 depends=('mono')
 install=smath.install
 backup=(opt/$pkgname/settings.inf)
-source=("http://smath.info/file/${_pkgcode}/SMathStudioDesktop.${pkgver}.mono.tar.gz")
-md5sums=('faa6145d3bd33838f762c164707a6c5d')
-DLAGENTS=("http::/usr/bin/wget --post-data RefMem=&PostBack=${_pkgcode} %u")
+source=("https://smath.info/file/${_pkgcode}/SMathStudioDesktop.${pkgver}.mono.tar.gz")
+md5sums=('09be7a7db14c6348c5890359f3388b11')
+DLAGENTS=("https::/usr/bin/wget --post-data RefMem=&PostBack=${_pkgcode} %u")
 
 package() {
   cd "$srcdir"
