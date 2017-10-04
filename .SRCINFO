@@ -1,7 +1,7 @@
 pkgbase = gnome-keysign
 	pkgdesc = An easier way to sign OpenPGP keys over the local network.
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gnome-keysign/gnome-keysign
 	arch = any
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = gnome-keysign
 	depends = python-gobject
 	depends = python-qrcode
 	depends = python-twisted
+	depends = python-gpgme
 	depends = avahi
 	depends = dbus
 	depends = zbar
