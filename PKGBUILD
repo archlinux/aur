@@ -29,10 +29,10 @@ build() {
 
 check() {
   cd "$srcdir/iocapture"
-  python setup.py ptr
+  python setup.py pytest
 
   cd "$srcdir/iocapture-py2"
-  python2 setup.py ptr
+  python2 setup.py pytest
 }
 
 package_python-iocapture() {
