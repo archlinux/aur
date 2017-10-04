@@ -1,9 +1,9 @@
-# Contributor: int <int [ate] arcor [dot] de>
+# Maintainer: int <int [ate] arcor [dot] de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dbd-mock'
 pkgver='1.45'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module DBD::Mock: Mock database driver for testing"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -40,7 +40,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:

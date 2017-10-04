@@ -1,7 +1,7 @@
 pkgbase = perl-dbd-mock
 	pkgdesc = Perl/CPAN Module DBD::Mock: Mock database driver for testing
 	pkgver = 1.45
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/DBD-Mock
 	arch = any
 	license = PerlArtistic
