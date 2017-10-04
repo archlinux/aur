@@ -2,7 +2,7 @@
 # Contributor: mac <poczciwiec at gmail dot com>
 
 pkgname=extraterm
-pkgver=0.27.0
+pkgver=0.29.1
 pkgrel=1
 pkgdesc="The swiss army chainsaw of terminal emulators . "
 arch=("i686" "x86_64")
@@ -11,13 +11,14 @@ license=("MIT")
 depends=("nodejs")
 source_i686=("$url/releases/download/v$pkgver/extraterm-$pkgver-linux-ia32.zip")
 source_x86_64=("$url/releases/download/v$pkgver/extraterm-$pkgver-linux-x64.zip")
-sha256sums_i686=('3b71bc410dc1a70e5872d0bb82d4e16264603bb21f3cf9aa7bfa80ec74cc2365')
-sha256sums_x86_64=('4154b95b2a8100e4aa4de49ff4abb3d589531a4ed63cf788866f2c900a093e22')
+sha256sums_i686=('ec1b81547ed8c0e83409624c88b471819a9fc9c27252dc20d796d3ef55c5162d')
+sha256sums_x86_64=('0cdce9e4d68a659d4d89f87ff0e46b7204a145148a17cc8e7bebd0ae03afe690')
 
 prepare(){
 rm -rf "$srcdir/$pkgname-$pkgver"
 mv "$srcdir/$pkgname-$pkgver-linux-x64" "$srcdir/$pkgname-$pkgver"
 }
+
 package() {
   cd $srcdir
 
@@ -28,9 +29,14 @@ package() {
 
   install -d $pkgdir/usr/bin
   cp -r "$srcdir/$pkgname-$pkgver"/* "$pkgdir/opt/$pkgname"
-  ln -s /opt/extraterm/extraterm $pkgdir/usr/bin/$_pkgname
 
- # msg2 "  -> Installing icons..."
+   install -Dm755 /dev/stdin "$pkgdir"/usr/bin/$_pkgname <<END
+     #!/usr/bin/bash
+    /opt/extraterm/extraterm
+   
+END
+
+  msg2 "  -> Installing icons..."
   local _icon_dir="usr/share/icons/hicolor"
   install -Dm644 $pkgdir/opt/$pkgname/resources/app/src/logo/extraterm_small_logo.svg $pkgdir/$_icon_dir/scalable/apps/$pkgname.svg
 
