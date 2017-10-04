@@ -3,7 +3,7 @@ post_install() {
  echo ">>> Enable it executing 'systemctl enable avahi-daemon'"
  echo ">>> If you want to also use Bluetooth you need to install"
  echo ">>> the optional dependency python-pybluez and enable the"
- echo ">>> Bluetooth daemon with 'systemctl start bluetooth'"
+ echo ">>> Bluetooth daemon with 'systemctl enable bluetooth'"
 }
 
 post_upgrade() {
