@@ -1,11 +1,10 @@
 pkgbase = waterfox-bin
 	pkgdesc = 64-Bit optimized Firefox, no data collection, allows unsigned extensions
-	pkgver = 55.1.0.1
+	pkgver = 55.2.0
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
 	arch = x86_64
 	license = MPL
-	depends = alsa-lib
 	depends = libxt
 	depends = libnotify
 	depends = mime-types
@@ -14,12 +13,14 @@ pkgbase = waterfox-bin
 	depends = gtk3
 	depends = sqlite
 	depends = dbus-glib
+	optdepends = alsa-lib
+	optdepends = pulseaudio
 	provides = waterfox
 	conflicts = waterfox
 	source = waterfox.desktop
-	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-55.1.0.1.en-US.linux-x86_64.tar.bz2
+	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-55.2.0.en-US.linux-x86_64.tar.bz2
 	md5sums = 0e8dbbeaf61ad27b0f0d6c31038b529e
-	md5sums = 39c23fe71f7ae21f8c43adb05232f0a0
+	md5sums = 2d719581b3a6f5019db50098c0cfc793
 
 pkgname = waterfox-bin
 
