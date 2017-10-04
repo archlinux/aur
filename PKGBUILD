@@ -1,10 +1,10 @@
-# Contributor: int <int [ate] arcor [dot] de>
+# Maintainer: int <int [ate] arcor [dot] de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-barcode-code128'
 pkgver='2.21'
-pkgrel='1'
-pkgdesc="Generate CODE 128 bar codes"
+pkgrel='2'
+pkgdesc="Perl/CPAN Module Barcode::Code128: Generate CODE 128 bar codes"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
@@ -39,7 +39,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
