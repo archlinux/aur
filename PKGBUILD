@@ -11,7 +11,8 @@ license=("MIT")
 depends=("ruby")
 options=("!emptydirs")
 source=("${_gemname}-${pkgver}.tar.gz::https://github.com/sass/listen/archive/v$pkgver.tar.gz")
-md5sums=('cc72a3086b4f07961bf75d96ec8739e7')
+sha256sums=('5b09daf811df4ae3d8657cf919976b9795d275a3792ab08bdf3b1cccaecd3f4b')
+sha512sums=('799e1e70f86b4be671c3286ae860cbcec83d8a1311d67fb37956dc527e2961888094439fd8377d50c78798c494f19ddbed3a412f02e76e429dcc1717c93b7e19')
 
 prepare() {
 	cd "${_gemname#sass-}-${pkgver}"
