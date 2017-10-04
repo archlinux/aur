@@ -1,0 +1,24 @@
+pkgbase = canon-pixma-mg2400-complete
+	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MG2400 series (MG2400, MG2440S etc.)
+	pkgver = 4.00
+	pkgrel = 1
+	url = https://www.usa.canon.com/internet/portal/us/home/support/details/printers/inkjet-multifunction/mg-series-inkjet/mg2420
+	install = canon-pixma-mg2400-complete.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = deb2targz
+	makedepends = sed
+	depends = popt
+	depends = libpng12
+	depends = libusb-compat
+	depends = libtiff
+	depends = libxml2
+	depends = gtk2
+	source = http://gdlp01.c-wss.com/gds/0/0100005500/01/cnijfilter-mg2400series-4.00-1-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/7/0100005517/01/scangearmp-mg2400series-2.20-1-deb.tar.gz
+	md5sums = 0040b57e3b662617dbb8f065793f2aa0
+	md5sums = a832afc551a25cf9029fe5d35efbfbf1
+
+pkgname = canon-pixma-mg2400-complete
+

@@ -1,0 +1,8 @@
+post_install() {
+   echo "==============================================================================="
+   echo "* Do not use Canon-specific instructions for adding printers."
+   echo "* Do not use cnijusb to find the printer's path. The path given will not work."
+   echo "* Add the printer that points to 'usb:', not 'cnijusb:'"
+   echo "* Scanning also just works with 'scanimage'. 'scangearmp' is not needed."
+   echo "==============================================================================="
+}
