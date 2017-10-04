@@ -2,8 +2,9 @@
 
 pkgname=gnucash-xbt
 _pkgname=gnucash
-pkgver=2.6.17
-pkgrel=3
+pkgver=2.6.18
+pkgrel=1
+_sourcerel=1
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin support"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
@@ -17,9 +18,9 @@ optdepends=('evince: for print preview'
 options=('!makeflags' '!emptydirs')
 conflicts=('gnucash' 'gnucash-devel')
 provides=('gnucash')
-source=("http://downloads.sourceforge.net/sourceforge/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/Gnucash/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${_sourcerel}.tar.bz2"
 		"xbt.patch")
-sha1sums=('d970d876f1fc7cd3fad9155463cdda348bcf0c7e'
+sha1sums=('41b2580ba1fe586fbdb4629f2b36b12e9161b546'
 		  '7244b9cc71d0d03c43055c062f3eeba5e3544630')
 
 prepare() {
