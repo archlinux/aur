@@ -1,0 +1,17 @@
+pkgbase = perl-marc-charset
+	pkgdesc = Perl/CPAN Module MARC::Charset: convert MARC-8 encoded strings to UTF-8
+	pkgver = 1.35
+	pkgrel = 1
+	url = https://metacpan.org/release/MARC-Charset
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-accessor
+	depends = perl-xml-sax
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GM/GMCHARLT/MARC-Charset-1.35.tar.gz
+	md5sums = 91bd9e001f6d8b621b173280be444cac
+	sha512sums = a75f5d09a45c3abf78899649fb8f0eb8e9973fbcf4eeacf8aae515f0533c60d78b66dbfaecb18c3228b70d815aa90a1e4c7a55f978c4407fda093b094e833d30
+
+pkgname = perl-marc-charset
+
