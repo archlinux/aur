@@ -22,10 +22,12 @@ md5sums=('89b4db7c6840ce69a8e315a3f83d996b'
 
 build() {
   cd $srcdir/WordNet-$_srcver
-  ./configure --prefix=/usr --mandir=/usr/share/man
+  ./configure --prefix=/usr --mandir=/usr/share/man \
+              CFLAGS="$CFLAGS -fPIC -DUSE_INTERP_RESULT" \
+              CXXFLAGS="$CXXFLAGS -fPIC"
   sed 's:#define DEFAULTPATH "/usr/dict":#define DEFAULTPATH "/usr/share/wordnet/dict":' -i config.h
   sed 's:"/usr/local/WordNet-3.0/lib/wnres":"/usr/share/wordnet/wnres":' -i src/wnb
-  make CFLAGS="$CFLAGS -DUSE_INTERP_RESULT"
+  make
 }
 
 package() {
