@@ -33,6 +33,7 @@ pkgbase = git-git
 	optdepends = cvsps2: git cvsimport
 	optdepends = gnome-keyring: GNOME keyring credential helper
 	provides = git-core
+	provides = git
 	conflicts = git-core
 	source = git+https://github.com/git/git.git
 	source = git-daemon@.service

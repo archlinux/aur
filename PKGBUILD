@@ -26,7 +26,7 @@ optdepends=('tk: gitk and git gui'
             'cvsps2: git cvsimport'
             'gnome-keyring: GNOME keyring credential helper')
 conflicts=('git-core')
-provides=('git-core')
+provides=('git-core' 'git')
 install=git-git.install
 source=('git+https://github.com/git/git.git'
         git-daemon@.service
