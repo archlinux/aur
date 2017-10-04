@@ -37,10 +37,10 @@ sha256sums=("5dd56905a3641d7094964a69030fda4d79565a87ccd6dcc4a714b423ccfce9af"
 
 prepare() {
   msg2 "Retrieving bindata"
-  GOPATH="${srcdir}" go get -u github.com/go-macaron/bindata
+  GOPATH="${srcdir}" go get -v -u github.com/go-macaron/bindata
 
   msg2 "Retrieving source files"
-  GOPATH="${srcdir}" go get -d -u ${_gourl}/${_pkgname}
+  GOPATH="${srcdir}" go get -v -d -u ${_gourl}/${_pkgname}
 
   msg2 "Patch config and service file"
   patch -Np1 -i "${srcdir}/0001-Adjust-config-for-Arch-Linux-package.patch" "${srcdir}/src/${_gourl}/${_pkgname}/conf/app.ini"
