@@ -1,12 +1,12 @@
 # Maintainer: DeedleFake <deedlefake at users dot noreply dot github dot com>
 pkgname=coinomi-desktop
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Coinomi desktop wallet beta."
 arch=(any)
 url="https://coinomi.com"
 license=('unknown')
-depends=(java-environment)
+depends=(java-runtime=8 java-openjfx)
 source=("https://beta.coinomi.com/desktopinstallers/Coinomi.deb"
 				"coinomi.png")
 md5sums=('45aa4155b562df136255a774adc84230'
