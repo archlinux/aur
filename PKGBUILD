@@ -4,7 +4,7 @@
 # Contributor: Alexander Neumann <alexander@bumpern.de>
 options=(!strip)
 pkgname=restic-git
-pkgver=v0.7.2.r0.g5b1e4df1
+pkgver=v0.7.3.r111.geb59d281
 pkgrel=1
 pkgdesc="restic is a program that does backups right."
 arch=('i686' 'x86_64')
@@ -27,6 +27,7 @@ pkgver() {
 build() {
   cd "$pkgname"
   go run build.go
+  ./restic generate --man doc/man
 }
 
 package() {
