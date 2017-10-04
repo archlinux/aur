@@ -12,8 +12,8 @@
 #
 pkgname='perl-http-oai'
 pkgver='3.28'
-pkgrel='1'
-pkgdesc="API for the OAI-PMH"
+pkgrel='2'
+pkgdesc="Perl/CPAN Module HTTP:.OAI: API for the OAI-PMH"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
@@ -48,7 +48,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:

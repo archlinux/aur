@@ -1,7 +1,7 @@
 pkgbase = perl-http-oai
-	pkgdesc = API for the OAI-PMH
+	pkgdesc = Perl/CPAN Module HTTP:.OAI: API for the OAI-PMH
 	pkgver = 3.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/HTTP-OAI
 	arch = any
 	license = PerlArtistic
