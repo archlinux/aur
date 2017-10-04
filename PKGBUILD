@@ -7,7 +7,7 @@ pkgbase=nvidia-zen
 pkgname=(nvidia-zen nvidia-zen-dkms)
 pkgver=384.90
 _extramodules=extramodules-4.13-zen
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-zen"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -16,8 +16,8 @@ license=('custom')
 options=('!strip')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha512sums_i686=('7bd55906111ed00bc8aef75a70ee636dc5a8fc22196a94d29cd651b5083b1974e45194ee7091dbb7db4f70706297bdf1c9e5f658500fc28323030684a3670663')
-sha512sums_x86_64=('8e48416fb4d0cb781ae3611fcd710c73ef9276eebc79950bf8ae5ea484fb2f06356b1f9628b35062a2e98bfb4b1fa70322e1ac243b97b28766f73ef6e630cabf')
+sha512sums_i686=('4376be6ade4380f8416a7d07a77b2e71bf07f62488c6887d2023973ca57574a0c6d294327159d4a0cf12400e4156b48fa989e3a80615cefd25d918e6d558784f')
+sha512sums_x86_64=('64b9a30c1a92435202b67c65f6a33fa5bb533f7009ee24b4f5632f100aa5842bf2f5fd83d63d9c3ce7599ceacd29c585c31e83c1e214cb7c542279d1287c4b34')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
