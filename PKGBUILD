@@ -3,7 +3,7 @@
 
 pkgname='perl-lingua-en-words2nums'
 pkgver='0.18'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module Lingua::EN::Words2Nums: Convert English text to numbers"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -39,8 +39,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:

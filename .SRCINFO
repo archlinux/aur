@@ -1,7 +1,7 @@
 pkgbase = perl-lingua-en-words2nums
 	pkgdesc = Perl/CPAN Module Lingua::EN::Words2Nums: Convert English text to numbers
 	pkgver = 0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Lingua-EN-Words2Nums
 	arch = any
 	license = PerlArtistic
