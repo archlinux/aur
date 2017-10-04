@@ -3,7 +3,7 @@
 pkgname=devtools-git
 _pkgname=devtools
 pkgver=20170914
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools for Arch Linux package maintainers'
 arch=('any')
 license=('GPL')
@@ -11,7 +11,7 @@ url='https://git.archlinux.org/devtools.git/'
 depends=('namcap' 'openssh' 'subversion' 'rsync' 'arch-install-scripts'
          'git' 'bzr' 'mercurial')
 provides=($_pkgname=$pkgver)
-conflict=($_pkgname)
+conflicts=($_pkgname)
 source=("https://sources.archlinux.org/other/$pkgname/$pkgname-$pkgver.tar.gz"{,.sig})
 source=("$pkgname::git+https://git.archlinux.org/devtools.git")
 validpgpkeys=('487EACC08557AD082088DABA1EB2638FF56C0C53'
