@@ -1,6 +1,6 @@
 pkgbase = virtualgo
 	pkgdesc = Easy and powerful workspace-based development for Go
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/GetStream/vg
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = virtualgo
 	depends = bindfs
 	options = !emptydirs
 	options = !strip
-	source = https://github.com/GetStream/vg/archive/v0.7.1.tar.gz
-	sha256sums = accd2f96ddfd289f5146778fce20d00ba4ca00529dcf63936280410b397c4ad8
+	source = https://github.com/GetStream/vg/archive/v0.7.2.tar.gz
+	sha256sums = 830ab3bdd40a367ed6963e91c598c43174dfe6f0e77dbf2cba7cf04dde699060
 
 pkgname = virtualgo
 
