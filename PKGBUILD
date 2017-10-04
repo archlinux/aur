@@ -1,34 +1,50 @@
-# Maintainer: anekos <anekos@snca.net>
-pkgname=lfe-git
-pkgver=20160518
-pkgrel=3
+# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Contributor: anekos <anekos@snca.net>
+
+pkgname='lfe-git'
+_pkgname='lfe'
+pkgver=r963.2880c8a
+pkgrel=1
 pkgdesc="Lisp Flavoured Erlang"
-url="http://lfe.io/"
-arch=('i686' 'x86_64')
+url='http://lfe.io/'
+arch=('x86_64')
 license=('Apache_v2')
-depends=('erlang')
-source=("$pkgname::git+https://github.com/rvirding/lfe/")
-md5sums=('SKIP')
-makedep=('pandoc')
+depends=('erlang-nox')
+conflicts=("${_pkgname}")
+source=('git+https://github.com/rvirding/lfe.git#branch=develop')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+
+  printf "r%s.%s"                  \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${_pkgname}"
+
+  make
+}
 
 package () {
-  cd $srcdir/$pkgname
+  cd "${_pkgname}"
 
-  mkdir -p "$pkgdir/opt/lfe"
-  cp -r * "$pkgdir/opt/lfe/"
+  make PREFIX="${pkgdir}/usr" install
 
-  cd "$pkgdir/opt/lfe/"
+  cd "${pkgdir}/usr/bin"
 
-  make compile
-  make install-man MANINSTDIR="$pkgdir/usr/share/man"
+  # Properly symlink lfe binaries:
+  for link in *; do
+    ln -sfv "../lib/lfe/bin/${link}" "${link}"
+  done
 
-  install -d -m755 "$pkgdir/usr/bin"
-
-  ln -sf /opt/lfe/bin/lfe "$pkgdir/usr/bin/"
-  ln -sf /opt/lfe/bin/lfec "$pkgdir/usr/bin/"
-  ln -sf /opt/lfe/bin/lfedoc "$pkgdir/usr/bin/"
-  ln -sf /opt/lfe/bin/lfescript "$pkgdir/usr/bin/"
+  # Remove useless files / folders:
+  rm -rv "${pkgdir}/usr/share/man/cat1"
+  rm -rv "${pkgdir}/usr/share/man/cat3"
+  rm -rv "${pkgdir}/usr/share/man/cat7"
+  rm -v "${pkgdir}/usr/share/man/index.db"
 }
 
 # vim:set ts=2 sw=2 et:
-
