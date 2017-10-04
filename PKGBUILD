@@ -6,7 +6,7 @@
 
 pkgname=aircrack-ng-svn
 _pkgname=aircrack-ng
-pkgver=20170324.2901
+pkgver=20170911.2917
 pkgrel=1
 pkgdesc='Key cracker for the 802.11 WEP and WPA-PSK protocols'
 url='http://www.aircrack-ng.org/'
@@ -25,14 +25,16 @@ pkgver() {
 	svn info | awk '/Revision/{r=$2}/Date/{gsub(/-/,"");d=$4}END{print d"."r}'
 }
 
+_opts='sqlite=true experimental=true ext_scripts=true'
+
 build() {
 	cd "${srcdir}/${_pkgname}"
-	make sqlite=true unstable=true ext_scripts=true
+	make ${_opts}
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	make sqlite=true unstable=true ext_scripts=true \
+	make ${_opts} \
 		DESTDIR="${pkgdir}" \
 		sbindir=/usr/bin \
 		prefix=/usr \
