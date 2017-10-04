@@ -27,7 +27,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
     --libexecdir=/usr/lib --disable-schemas-compile --enable-ofx --enable-aqbanking
-  make GUILD=/usr/bin/guild2.0
+  make GUILD=/usr/bin/guild
 }
 
 package() {
