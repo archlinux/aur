@@ -6,26 +6,27 @@
 # Contributor: TripleE <eric1548@yahoo.com>
 
 pkgname=xiphos
-pkgver=4.0.4
+pkgver=4.0.7
 pkgrel=1
+_pkgdate=20170924
 pkgdesc="Bible study tool for GTK+"
 arch=('x86_64' 'i686')
 url="http://xiphos.org/"
-depends=('webkitgtk2' 'libgsf' 'libglade' 'gtkhtml3' 'sword' 'biblesync')
+depends=('sword' 'webkitgtk2' 'libgsf' 'libglade' 'gtkhtml4' 'biblesync')
 makedepends=('gnome-doc-utils' 'intltool' 'python2')
 license=('GPL')
 conflicts=('gnomesword')
 provides=('gnomesword')
 replaces=('gnomesword')
 install=xiphos.install
-source=("http://downloads.sourceforge.net/gnomesword/$pkgname-$pkgver-20150830.tar.gz")
-md5sums=('a1d88b7d6812fd261d71a229999c669d')
+source=("https://github.com/crosswire/xiphos/releases/download/$pkgver/$pkgname-$pkgver-$_pkgdate.tar.gz")
+sha512sums=('041e0e9c6a7406b02c5b45066b44a3d44c37a34a799c3dfd617b6aa52dc50efbf800e475e107108fcf1d0d23a3522d0a9fa0838c474d2e4dd39f3af9d3429bd4')
 
 build() {
   cd "$pkgname-$pkgver"
 
   sed -i '0,/python/s//python2/' waf
-  ./waf configure --gtk=2 --prefix=/usr
+  ./waf configure --gtk=3 --prefix=/usr --enable-webkit2
   ./waf build
 }
 
