@@ -1,6 +1,6 @@
 # Maintainer: David Scholl <djscholl at gmail dot com>
 pkgname=elog
-pkgver=3.1.1.1
+pkgver=3.1.3.1
 pkgrel=1
 pkgdesc="Electronic logbook w/ attached file support, doesn't use a database."
 arch=('i686' 'x86_64')
@@ -11,12 +11,12 @@ optdepends=('imagemagick: inline thumbnail support'
             'ghostscript: inline thumbnail support')
 install=elog.install
 backup=('etc/elog/elogd.cfg')
-source=(https://midas.psi.ch/elog/download/tar/elog-3.1.1-1.tar.gz elogd.service)
-md5sums=('6f67024af6b5b7d2a1e8101cb8f52abc'
-         'a56aee958b9d524312c9392c74484e9e')
+source=(https://midas.psi.ch/elog/download/tar/elog-3.1.3-1.tar.gz elogd.service)
+sha256sums=('22540c1a0762bbb06693cf39d0c9719a7940ae8823567dd036ff7a66851a489f'
+            'deb0a58546262562ecaa89886e7ec18e4382d76718fb1afdcd9f384e96fb079e')
 
 build() {
-  cd $srcdir/$pkgname-3.1.1
+  cd $srcdir/$pkgname-3.1.3
   # make things more Arch-friendly
   sed -i '/^ELOGDIR/s/$(PREFIX)\/elog/\/etc\/elog/' Makefile
   sed -i '/^BINOWNER/s/bin/root/' Makefile
@@ -25,7 +25,7 @@ build() {
   make PREFIX=/usr
   }
 package() {
-  cd $srcdir/$pkgname-3.1.1
+  cd $srcdir/$pkgname-3.1.3
   # install
   make PREFIX=/usr ROOT=$pkgdir MANDIR=$pkgdir/usr/share/man install
   # substitute an elogd.service file in place of the default init script
