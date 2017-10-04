@@ -1,6 +1,6 @@
 # Maintainer: Radu Birzu <radu@webative.net>
 pkgname=andrei-desktop
-pkgver=r231.6e2e455
+pkgver=r231.304243c
 pkgrel=1
 pkgdesc="An openbox based desktop environment focused on productivity and speed"
 arch=('any')
@@ -24,11 +24,6 @@ makedepends=('tar')
 install="${pkgname}.install"
 source=('git+https://gitlab.com/webative-open-source/andrei-linux.git')
 md5sums=('SKIP')
-
-pkgver() {
-  cd "andrei-linux"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
 	cd "$srcdir/andrei-linux/"
