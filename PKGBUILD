@@ -3,7 +3,7 @@
 
 pkgname='perl-lingua-en-number-isordinal'
 pkgver='0.05'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module Lingua::EN::Number::IsOrdinal: Detect if English number is ordinal or cardinal"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -40,8 +40,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
