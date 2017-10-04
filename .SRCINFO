@@ -1,7 +1,7 @@
 pkgbase = mono-alpha
 	pkgdesc = Free implementation of the .NET platform including runtime and compiler. Alpha version.
-	pkgver = 5.4.0.167
-	pkgrel = 8
+	pkgver = 5.4.0.199
+	pkgrel = 1
 	url = http://www.mono-project.com/
 	install = mono.install
 	arch = i686
@@ -25,9 +25,9 @@ pkgbase = mono-alpha
 	conflicts = mono
 	replaces = mono
 	replaces = monodoc
-	source = https://download.mono-project.com/sources/mono/mono-5.4.0.167.tar.bz2
+	source = https://download.mono-project.com/sources/mono/mono-5.4.0.199.tar.bz2
 	source = mono.binfmt.d
-	md5sums = 103c7a737632046a9e9a0b039d752ee1
+	md5sums = 7b2b9284922d311c75bda4c519ac7c1e
 	md5sums = b9ef8a65fea497acf176cca16c1e2402
 
 pkgname = mono-alpha
