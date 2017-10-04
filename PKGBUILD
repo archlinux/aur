@@ -78,5 +78,5 @@ package() {
    sed -i -e "s/SYSFS/ATTR/g" "${pkgdir}/etc/udev/rules.d/80-canon_mfp.rules"
 
    # Install custom license file
-install -vDm 644 "$pkgdir/usr/share/doc/cnijfilter-mg2500series/LICENSE-cnijfilter-4.00EN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+   install -vDm 644 "$pkgdir/usr/share/doc/cnijfilter-mg2400series/LICENSE-cnijfilter-4.00EN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
