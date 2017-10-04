@@ -1,0 +1,19 @@
+pkgbase = lammps-git
+	pkgdesc = versatile package to perform molecular dynamics
+	pkgver = r13609.f2c117274
+	pkgrel = 1
+	url = http://lammps.sandia.gov/
+	arch = any
+	license = GPL2
+	makedepends = cmake>=3.1
+	depends = openmpi
+	optdepends = cuda: Nvidia GPU support
+	optdepends = fftw: fast Fourier transform
+	optdepends = vmd: visualization and molfile support
+	provides = lammps
+	conflicts = lammps
+	source = git://github.com/lammps/lammps.git
+	sha512sums = SKIP
+
+pkgname = lammps-git
+
