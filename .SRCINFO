@@ -1,16 +1,14 @@
 pkgbase = ttcp
 	pkgdesc = TCP benchmarking tool
-	pkgver = 20100419
-	pkgrel = 1
-	url = http://www.pcausa.com/Utilities/pcattcp.htm
+	pkgver = 20071201
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
 	license = custom:Public Domain
+	makedepends = gcc
 	depends = glibc
-	source = http://www.pcausa.com/Utilities/pcattcp/LinuxTTCP.zip
-	source = LICENSE
-	md5sums = 5b4707910c24fec212609f862bc53749
-	md5sums = d8d09df3d799fec1b0b8a080948ffbb2
+	source = http://www.netcore.fi/pekkas/linux/ipv6/ttcp.c
+	md5sums = 2f6ffb3e9132f4815c3ade3bd1dba99b
 
 pkgname = ttcp
 
