@@ -1,15 +1,15 @@
 pkgbase = argbash
 	pkgdesc = Bash argument parsing code generator
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://argbash.io
 	arch = any
 	license = BSD
 	makedepends = make
 	depends = autoconf
-	source = https://github.com/matejak/argbash/archive/2.4.0.tar.gz
+	source = https://github.com/matejak/argbash/archive/2.5.0.tar.gz
 	source = LICENSE
-	sha256sums = e48a19ba70cf88a5133a03f72cd9840e278676273081f5fcab03e154fad57c44
+	sha256sums = 2c105bbaf9e07f576913ef9a6669fa2a4e4e9be008011a32ab15e6a44e4e6323
 	sha256sums = 2dd898f51dae8239523717e0c9e5a35fcc47da5db8a1d5170cd74d4ca24a52ef
 
 pkgname = argbash
