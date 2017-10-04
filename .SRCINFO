@@ -1,6 +1,6 @@
 pkgbase = subsurface-git
 	pkgdesc = Divelog program
-	pkgver = 20170802.37b45224
+	pkgver = 20171003.52445ec8f
 	pkgrel = 1
 	url = https://subsurface-divelog.org/
 	arch = i686

@@ -3,7 +3,7 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20170802.37b45224
+pkgver=20171003.52445ec8f
 pkgrel=1
 pkgdesc='Divelog program'
 url='https://subsurface-divelog.org/'
@@ -31,7 +31,6 @@ build() {
 	install -d build
 	cd build
 	cmake \
-		-DNO_MARBLE=ON \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIBDIVECOMPUTER_INCLUDE_DIR=/usr/include/libdivecomputer \
