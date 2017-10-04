@@ -5,7 +5,8 @@ pkgbase = serve
 	url = https://github.com/ItsJimi/serve
 	arch = any
 	license = MIT
-	makedepends = go git
+	makedepends = go
+	makedepends = git
 
 pkgname = serve
 

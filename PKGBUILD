@@ -17,7 +17,7 @@ replaces=()
 backup=()
 options=()
 install=
-makedepends=('go git')
+makedepends=('go' 'git')
 _gitroot="git://github.com/ItsJimi/serve"
 _gitname="serve"
 
