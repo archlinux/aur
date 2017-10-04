@@ -1,54 +1,59 @@
 # Maintainer: Yurii Kolesnykov <yurikoles@gmail.com>
+# Contributor: Brad McCormack <bradmccormack100@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
-_srcname=$pkgbase
-_kernel_rel=4.13
-_branch=amd-staging-drm-next
+_srcname=${pkgbase}
+_kernel_rel=4.15
+_branch=drm-next-4.15-dc
 _kernelname=${pkgbase#linux}
-pkgver=4.13.695148.f5a16c561fb8
+pkgver=4.15.1.d8c893b4
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
-source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
-        # the main kernel config files
+
+source=(
+        "${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
+        # The main kernel config files
         'config.x86_64'
-        # pacman hook for initramfs regeneration
+        # Pacman hook for initramfs regeneration
         '90-linux.hook'
-        # standard config files for mkinitcpio ramdisk
+        # Standard config files for mkinitcpio ramdisk
         'linux.preset')
-sha256sums=('SKIP'
-            '532cbf91e8baa4dd15fac032ed8595f3e2f70604ac8d124085350c78470a6321'
+sha256sums=(
+            'SKIP'
+            '6d7a52b0ae947fe0984e11f1d88c701ceaa535eb176b3e905a78aa3ead656197'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+
 pkgver() {
-  cd "${_srcname}"
+  cd "${_srcname}" || exit
 
   # git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
   echo ${_kernel_rel}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
-  cd "${_srcname}"
+  cd "${_srcname}" || exit
 
   cat "${srcdir}/config.x86_64" > ./.config
 
-  # set localversion to git commit
+  # Set localversion to git commit
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config
   sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
 
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
+  # Don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # get kernel version
+  # Get kernel version
   make prepare
 
-  # load configuration
+  # Load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
@@ -59,8 +64,7 @@ prepare() {
 }
 
 build() {
-  cd "${_srcname}"
-
+  cd "${_srcname}" || exit
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
@@ -72,25 +76,32 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-  cd "${_srcname}"
+  cd "${_srcname}" || exit
 
   KARCH=x86
 
-  # get kernel version
+  # TODO figure out why the resulting built kernel doesn't show 4.15.xx as per the AMD's branch name
+  # The branch is called drm-next-4.15 but the built kernel shows 4.13.xx
+  # The actual release is drm-next-4.15 (see https://cgit.freedesktop.org/~agd5f/linux/tree/Makefile?h=drm-next-4.15)
+  # It's confusing. It's likely that the code is intended to be merged into 4.15 but if that's the case,
+  # I would expect that 4.15 code is in this branch and therefore the makefile should be up to date....
+
+  # Get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  cp arch/${KARCH}/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
-  # set correct depmod command for install
-  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+  # Set correct depmod command for install
+  sed "s|KERNEL_NAME=.*|KERNEL_NAME=${pkgbase}|g;s|KERNEL_VERSION=.*|KERNEL_VERSION=${_kernver}|g" \
     "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
 
-  # install mkinitcpio preset file for kernel
+  # Copy the local linux.preset to a preset matching our custom kernel name and update the contents
+  # Install mkinitcpio preset file for kernel
   install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   sed \
     -e "1s|'linux.*'|'${pkgbase}'|" \
@@ -99,27 +110,30 @@ _package() {
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
-  # remove build and source links
+  # Remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-  # remove the firmware
+
+  # Remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  # make room for external modules
+  
+  # Make room for external modules
   ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-  # add real version for building modules and running depmod from post_install/upgrade
+  
+  # Add real version for building modules and running depmod from post_install/upgrade
   mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
   echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
 
   # Now we call depmod...
   depmod -b "${pkgdir}" -F System.map "${_kernver}"
 
-  # move module tree /lib -> /usr/lib
+  # Move module tree /lib -> /usr/lib
   mkdir -p "${pkgdir}/usr"
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
-  # add vmlinux
+  # Add vmlinux
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 
-  # add System.map
+  # Add System.map
   install -D -m644 System.map "${pkgdir}/boot/System.map-${_kernver}"
 }
 
@@ -129,7 +143,7 @@ _package-headers() {
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-  cd "${_srcname}"
+  cd "${_srcname}" || exit
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 kernel/Makefile \
@@ -144,15 +158,15 @@ _package-headers() {
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
-  # copy arch includes for external modules
+  # Copy arch includes for external modules
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86"
   cp -a arch/x86/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86/"
 
-  # copy files necessary for later builds, like nvidia and vmware
+  # Copy files necessary for later builds, like nvidia and vmware
   cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -a scripts "${pkgdir}/usr/lib/modules/${_kernver}/build"
 
-  # fix permissions on scripts dir
+  # Fix permissions on scripts dir
   chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
 
@@ -166,19 +180,19 @@ _package-headers() {
 
   cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
 
-  # add dm headers
+  # Add dm headers
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
   cp drivers/md/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
 
-  # add inotify.h
+  # Add inotify.h
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux"
   cp include/linux/inotify.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux/"
 
-  # add wireless headers
+  # Add wireless headers
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
   cp net/mac80211/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
 
-  # add dvb headers for external modules
+  # Add dvb headers for external modules
   # in reference to:
   # http://bugs.archlinux.org/task/9912
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core"
@@ -188,7 +202,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
   cp include/config/dvb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
 
-  # add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
+  # Add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
   # in reference to:
   # http://bugs.archlinux.org/task/13146
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
@@ -196,7 +210,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
   cp drivers/media/i2c/msp3400-driver.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
 
-  # add dvb headers
+  # Add dvb headers
   # in reference to:
   # http://bugs.archlinux.org/task/20402
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb"
@@ -206,13 +220,13 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners"
   cp drivers/media/tuners/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners/"
 
-  # add xfs and shmem for aufs building
+  # Add xfs and shmem for aufs building
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/mm"
   # removed in 3.17 series
   # cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
 
-  # copy in Kconfig files
+  # Copy in Kconfig files
   for i in $(find . -name "Kconfig*"); do
     mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
@@ -228,7 +242,7 @@ _package-headers() {
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
 
-  # strip scripts directory
+  # Strip scripts directory
   find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
     case "$(file -bi "${binary}")" in
       *application/x-sharedlib*) # Libraries (.so)
@@ -240,7 +254,7 @@ _package-headers() {
     esac
   done
 
-  # remove unneeded architectures
+  # Remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
@@ -248,7 +262,7 @@ _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel with AMDGPU DC patches"
   provides=('linux-docs')
 
-  cd "${_srcname}"
+  cd "${_srcname}" || exit
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
@@ -260,7 +274,7 @@ _package-docs() {
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
-for _p in ${pkgname[@]}; do
+for _p in "${pkgname[@]}"; do
   eval "package_${_p}() {
     $(declare -f "_package${_p#${pkgbase}}")
     _package${_p#${pkgbase}}
