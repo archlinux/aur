@@ -2,8 +2,8 @@
 
 pkgname=lib32-imagemagick
 _basename=imagemagick
-pkgver=6.9.9.15
-pkgrel=2
+pkgver=6.9.9.18
+pkgrel=1
 pkgdesc="An image viewing/manipulation program (32-bit)"
 arch=('x86_64')
 url="http://www.imagemagick.org/"
@@ -27,7 +27,7 @@ options=('!docs' 'libtool' '!emptydirs')
 
 source=(http://www.imagemagick.org/download/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz{,.asc}
         perlmagick.rpath.patch)
-sha1sums=('9d056aa6127b1898693fb57514cd289827085cc8'
+sha1sums=('402c64151d1c38d59901a7229aaaf69a5e3a7c3f'
           'SKIP'
           'e143cf9d530fabf3b58023899b5cc544ba93daec')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')
