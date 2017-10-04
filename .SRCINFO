@@ -1,6 +1,6 @@
 pkgbase = gitea-git
 	pkgdesc = A painless self-hosted Git service.
-	pkgver = r5656.a04718a2
+	pkgver = r5658.4b2c8ca5
 	pkgrel = 1
 	url = https://gitea.io/
 	install = gitea.install
@@ -10,6 +10,7 @@ pkgbase = gitea-git
 	arch = armv7h
 	license = MIT
 	makedepends = go
+	makedepends = go-bindata
 	depends = git
 	optdepends = sqlite: SQLite support
 	optdepends = mariadb: MariaDB support
@@ -28,7 +29,7 @@ pkgbase = gitea-git
 	source = 0001-Adjust-config-for-Arch-Linux-package.patch
 	source = 0002-Adjust-service-file-for-Arch-Linux-package.patch
 	sha256sums = SKIP
-	sha256sums = b50a9ef21216a1cd2183238f7baa2d37f9bca11706625a8ffb345ed8f838e540
+	sha256sums = 5dd56905a3641d7094964a69030fda4d79565a87ccd6dcc4a714b423ccfce9af
 	sha256sums = 6cd1daa666659a68c98376f8bfae55402b5ffc39c1bf42b5ae0ee700249a3b73
 
 pkgname = gitea-git

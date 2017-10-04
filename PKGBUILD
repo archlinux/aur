@@ -9,8 +9,8 @@ _pkgname="gitea"
 _gourl="code.gitea.io"
 
 pkgname=$_pkgname-git
-pkgver=r5656.a04718a2
 pkgrel=1
+pkgver=r5658.4b2c8ca5
 pkgdesc="A painless self-hosted Git service."
 url="https://gitea.io/"
 license=("MIT")
@@ -34,7 +34,7 @@ source=("git://github.com/go-gitea/gitea.git"
         "0001-Adjust-config-for-Arch-Linux-package.patch"
         "0002-Adjust-service-file-for-Arch-Linux-package.patch")
 sha256sums=("SKIP"
-            "b50a9ef21216a1cd2183238f7baa2d37f9bca11706625a8ffb345ed8f838e540"
+            "5dd56905a3641d7094964a69030fda4d79565a87ccd6dcc4a714b423ccfce9af"
             "6cd1daa666659a68c98376f8bfae55402b5ffc39c1bf42b5ae0ee700249a3b73")
 
 pkgver() {
@@ -60,26 +60,12 @@ package() {
   install -Dm0755 "${srcdir}/src/${_gourl}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -dm0700 "${pkgdir}/var/log/${_pkgname}/"
-  install -dm0755 "${pkgdir}/usr/share/${_pkgname}/"
-  install -dm0755 "${pkgdir}/etc/${_pkgname}/"
+  install -dm0700 "${pkgdir}/var/cache/${_pkgname}/"
 
   install -dm0700 "${pkgdir}/var/lib/${_pkgname}/"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/conf/"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/custom/"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/data/"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/data/attachments/"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/data/avatars/"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/data/lfs/"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/data/sessions/"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/indexers/"
-  install -dm0700 "${pkgdir}/var/lib/${_pkgname}/repos/"
+  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options" "${pkgdir}/var/lib/${_pkgname}/conf"
 
-  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options/gitignore" "${pkgdir}/var/lib/${_pkgname}/conf"
-  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options/label" "${pkgdir}/var/lib/${_pkgname}/conf"
-  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options/license" "${pkgdir}/var/lib/${_pkgname}/conf"
-  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options/locale" "${pkgdir}/var/lib/${_pkgname}/conf"
-  cp -r "${srcdir}/src/${_gourl}/${_pkgname}/options/readme" "${pkgdir}/var/lib/${_pkgname}/conf"
-
+  install -dm0755 "${pkgdir}/usr/share/${_pkgname}/"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/conf" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/public" "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/src/${_gourl}/${_pkgname}/templates" "${pkgdir}/usr/share/${_pkgname}"

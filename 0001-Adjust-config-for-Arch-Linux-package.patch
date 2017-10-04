@@ -1,5 +1,5 @@
 --- app.ini
-+++ app.ini	2017-10-02 23:16:35.000000000 +0300
++++ app.ini	2017-10-04 10:39:12.000000000 +0300
 @@ -1,12 +1,12 @@
  ; App name that shows on every page title
  APP_NAME = Gitea: Git with a cup of tea
@@ -37,7 +37,7 @@
  SSH_LISTEN_PORT = %(SSH_PORT)s
  ; Root path of SSH directory, default is '~/.ssh', but you have to use '/home/git/.ssh'.
 -SSH_ROOT_PATH =
-+SSH_ROOT_PATH = /var/lib/gitea/repos/.ssh
++SSH_ROOT_PATH = /var/lib/gitea/.ssh
  ; Directory to create temporary files when test public key using ssh-keygen,
  ; default is system temporary directory.
  SSH_KEY_TEST_PATH =
@@ -47,8 +47,8 @@
  ; $ openssl pkcs12 -in cert.pfx -out key.pem -nocerts -nodes
 -CERT_FILE = custom/https/cert.pem
 -KEY_FILE = custom/https/key.pem
-+CERT_FILE = /var/lib/gitea/custom/https/cert.pem
-+KEY_FILE = /var/lib/gitea/custom/https/key.pem
++CERT_FILE = /var/lib/gitea/cert/cert.pem
++KEY_FILE = /var/lib/gitea/cert/key.pem
  ; Upper level of template and static file path
  ; default is the path where Gitea is executed
 -STATIC_ROOT_PATH =
