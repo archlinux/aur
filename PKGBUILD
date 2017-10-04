@@ -3,8 +3,8 @@
 
 pkgname=nteract-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Interactive literate coding notebook"
 url='https://nteract.io'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('ihaskell-git: support for Haskell'
             'sagemath-jupyter: support for SageMath')
 install=$pkgname.install
 
-source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/nteract/nteract/releases/download/v0.2.0/nteract_0.2.0_amd64.deb"
+source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/nteract/nteract/releases/download/v0.3.0/nteract_0.3.0_amd64.deb"
         "LICENSE")
 sha256sums=('0fa8aeed3f8bbcb92677375913a57d894e6a85f341e8ee67e7b887f2a98c6ead'
             '9810f3d57c552d3b3f6c82cb3b6f3402d6faf94fc5a63067fe28360fb3b8b688')
@@ -36,7 +36,7 @@ package() {
   # Place files
   install -d "${pkgdir}/usr/lib/${_pkgname}"
   cp -a "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${_pkgname}"
-  
+
   # Symlink main binary
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
