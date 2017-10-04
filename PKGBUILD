@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@ctrl-d.org>
 
 pkgname=shaderc-git
-pkgver=r414.eadd549.glslang_r2310
+pkgver=r427.5c4fd69.glslang_r2319
 pkgrel=1
 pkgdesc="A collection of tools, libraries and tests for shader compilation"
 url="https://github.com/google/shaderc"
@@ -33,7 +33,7 @@ prepare() {
 
   ln -s -f "$srcdir/glslang" third_party/
   ln -s -f "$srcdir/spirv-tools" third_party/
-  ln -s -f "$srcdir/spirv-headers" third_party/spirv-tools/external/
+  ln -s -f "$srcdir/spirv-headers" third_party/
 }
 
 build() {
