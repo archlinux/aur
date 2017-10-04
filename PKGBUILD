@@ -2,8 +2,8 @@
 # Contributors: Igor Duarte Cardoso, haagch, Olivier Médoc
 
 pkgname=vmware-patch
-pkgver=12.5.7
-pkgrel=3
+pkgver=14.0.0
+pkgrel=1
 pkgdesc="A post-install configuration solution for VMware Workstation (Pro) and Player (Plus and Pro)"
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/VMware#Configuration"
@@ -12,6 +12,10 @@ depends=('fuse' 'gtkmm' 'linux-headers' 'ncurses5-compat-libs')
 options=('!emptydirs')
 install=$pkgname.install
 source=('vmware-patch.sh' 'vmware-unpatch.sh' 'common-functions.sh' 'vmware.service' 'vmware-usbarbitrator.service' 'vmware-workstation.service'
+        # Workstation Pro/Player 14.0.0
+        'vmmon-14.0.0-4.13.3.patch'
+        'vmnet-14.0.0-4.13.3.patch'
+        'vmci-14.0.0-4.13.3.patch'
         # Workstation Pro/Player 12.5.7
         'vmmon-12.5.7-4.13.3.patch'
         'vmnet-12.5.7-4.13.3.patch'
@@ -64,12 +68,15 @@ package() {
 }
 
 # Generated using 'updpkgsums'
-md5sums=('9ddd739d1327a56f7adbf121fa0076d1'
+md5sums=('bdfa2b348fb501dc46f3c6d65c9cff1d'
          'ba054b375308442d43a408dbae5e9401'
          'ca1382966804d694894539c7bcac6bbb'
          'c12e765985b324585a548718a6ac9b43'
          'ea3817fb7952932707bfedcf33a70697'
          '56f7f642683e54250372bb57faaf4e95'
+         '3c165edb6847fc9bfa04657f346ac4cc'
+         'eca2542e4c484ea2ca06b7e9c065b8af'
+         'ced58cf32a21adfe21d612366c52116a'
          '3c165edb6847fc9bfa04657f346ac4cc'
          'eca2542e4c484ea2ca06b7e9c065b8af'
          'a2c3e2bbbe6dcbf66737a5e33df5b892'
