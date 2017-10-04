@@ -1,9 +1,9 @@
-# Contributor: int <int [ate] arcor [dot] de>
+# Maintainer: int <int [ate] arcor [dot] de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-cgi-session-serialize-yaml'
 pkgver='4.26'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module CGI::Session::Serialize::yaml: Add YAML and YAML::Syck support to CGI::Session's serializers"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -42,7 +42,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
