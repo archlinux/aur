@@ -1,17 +1,17 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=diffoscope-git
-pkgver=85+4+g9f868ab
+pkgver=87+7+g70cb725
 pkgrel=1
 pkgdesc='Tool for in-depth comparison of files, archives, and directories'
 url='https://diffoscope.org/'
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('python-magic' 'python-libarchive-c' 'python-setuptools' 'python-distro' 'python-progressbar' 'python-defusedxml')
-# TODO: python-argcomplete
+depends=('python-magic' 'python-libarchive-c' 'python-setuptools' 'python-distro' 'python-defusedxml')
 optdepends=(
   'acl: access control list utilities support'
   'binutils: binary utilities support'
+  'binwalk: binwalk support'
   'bzip2: bzip2 utilities support'
   'cdrtools: ISO utilities support'
   'colord: ICC profiles support'
@@ -39,7 +39,9 @@ optdepends=(
   'sqlite: SQLite support'
   'squashfs-tools: squashfs filesystem support'
   #'python-guestfs: guestfs filesystem support'
+  'python-argcomplete: completion support'
   'python-jsbeautifier: javascript beautifier support'
+  'python-progressbar: show progressbar support'
   'tcpdump: pcap matching support'
   'tlsh: fuzzy matching supprt'
   'unzip: zip utilities support'
@@ -52,7 +54,8 @@ makedepends=('git')
 checkdepends=(
   'python-pytest' 'python-jsbeautifier' 'acl' 'binutils' 'bzip2' 'cdrtools' 'cpio' 'diffutils' 'e2fsprogs' 'enjarify' 'imagemagick'
   'java-environment>=8' 'fontforge' 'gettext' 'ghc' 'gnupg' 'mono' 'mono-tools' 'poppler' 'sqlite' 'squashfs-tools'
-  'tlsh' 'unzip' 'gzip' 'tar' 'tcpdump' 'vim' 'xz' 'llvm' 'colord' 'fpc' 'openssh' 'odt2txt' 'docx2txt' 'r' 'dtc' 'giflib')
+  'tlsh' 'unzip' 'gzip' 'tar' 'tcpdump' 'vim' 'xz' 'llvm' 'colord' 'fpc' 'openssh' 'odt2txt' 'docx2txt' 'r' 'dtc' 'giflib'
+  'python-progressbar' 'binwalk' 'python-argcomplete')
 provides=('diffoscope')
 conflicts=('diffoscope')
 source=(${pkgname}::"git+https://anonscm.debian.org/git/reproducible/diffoscope.git")
@@ -75,10 +78,8 @@ build() {
 
 check() {
   cd ${pkgname}
-  # TODO: readd fpc
-  # TODO: colord test fails with lcms2 >= 2.8
-  PYTHONPATH=".:${PYTHONPATH}" LC_CTYPE=en_US.UTF-8 py.test \
-    -k 'not test_icc and not test_ppu and not test_iso9660 and not test_sqlite and not test_ico_image and not test_presenters'
+  PYTHONPATH=".:${PYTHONPATH}" py.test \
+    -k 'not test_rlib and not test_progress and not test_ppu and not test_elf'
 }
 
 package() {
