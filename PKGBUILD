@@ -3,7 +3,7 @@
 
 pkgname='perl-lingua-stem-snowball'
 pkgver='0.952'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module Lingua::Stem::Snowball: Perl interface to Snowball stemmers."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -39,7 +39,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:

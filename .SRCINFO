@@ -1,7 +1,7 @@
 pkgbase = perl-lingua-stem-snowball
 	pkgdesc = Perl/CPAN Module Lingua::Stem::Snowball: Perl interface to Snowball stemmers.
 	pkgver = 0.952
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Lingua-Stem-Snowball
 	arch = i686
 	arch = x86_64
