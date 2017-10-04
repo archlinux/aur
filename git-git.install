@@ -1,12 +1,21 @@
+#!/bin/sh
+
 post_install() {
   if ! getent group git >/dev/null; then
-    groupadd --system git 
+    groupadd --system git
   fi
   if ! getent passwd git >/dev/null; then
-    useradd --system -c 'git daemon user' -g git -d / -s /bin/bash git 
+    useradd --system -c 'git daemon user' -g git -d / -s /usr/bin/git-shell git
+  fi
+  if ! grep -qe '^/usr/bin/git-shell$' etc/shells; then
+    echo '/usr/bin/git-shell' >> etc/shells
   fi
 }
 
 post_upgrade() {
   post_install $1
+}
+
+post_remove() {
+  sed -i -r '/^\/usr\/bin\/git-shell$/d' etc/shells
 }
