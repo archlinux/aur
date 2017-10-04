@@ -1,35 +1,35 @@
 pkgbase = nvidia-zen
 	pkgdesc = NVIDIA drivers for linux-zen
-	pkgver = 384.90
+	pkgver = 387.12
 	pkgrel = 2
 	url = http://www.nvidia.com/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = nvidia-libgl
-	makedepends = nvidia-utils=384.90
+	makedepends = nvidia-utils=387.12
 	makedepends = linux-zen
 	makedepends = linux-zen-headers>=4.13
 	makedepends = linux-zen-headers<4.14
 	options = !strip
-	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/384.90/NVIDIA-Linux-x86-384.90.run
-	sha512sums_i686 = 4376be6ade4380f8416a7d07a77b2e71bf07f62488c6887d2023973ca57574a0c6d294327159d4a0cf12400e4156b48fa989e3a80615cefd25d918e6d558784f
-	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/384.90/NVIDIA-Linux-x86_64-384.90-no-compat32.run
-	sha512sums_x86_64 = 64b9a30c1a92435202b67c65f6a33fa5bb533f7009ee24b4f5632f100aa5842bf2f5fd83d63d9c3ce7599ceacd29c585c31e83c1e214cb7c542279d1287c4b34
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/387.12/NVIDIA-Linux-x86-387.12.run
+	sha512sums_i686 = aa88bed1bbde790779b270b331b6a5f6008259f46291076c67cb22bc79c23dc1bf29177a7ce040784d986988b768c0574cd2ad28d71a0759873b13a68fcaa7f8
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/387.12/NVIDIA-Linux-x86_64-387.12-no-compat32.run
+	sha512sums_x86_64 = 67617031a3387d0aaa389dfc9d8f68d5d6fd435646ecd1928d8ec034401ff21579b2472052038393c97290d4a521d0a2e3f29d49d5b05c64ce250ef2d43e4acd
 
 pkgname = nvidia-zen
 	pkgdesc = NVIDIA drivers for linux-zen
 	install = nvidia.install
 	depends = linux-zen>=4.13
 	depends = linux-zen<4.14
-	depends = nvidia-utils=384.90
+	depends = nvidia-utils=387.12
 	depends = libgl
 
 pkgname = nvidia-zen-dkms
 	pkgdesc = NVIDIA driver sources for linux-zen
 	install = nvidia-dkms.install
 	depends = dkms
-	depends = nvidia-utils=384.90
+	depends = nvidia-utils=387.12
 	optdepends = linux-zen-headers: Build the module for Arch Zen kernel
 	optdepends = linux-headers: Build the module for Arch kernel
 	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
