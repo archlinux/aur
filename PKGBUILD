@@ -5,7 +5,7 @@
 
 pkgbase=nvidia-zen
 pkgname=(nvidia-zen nvidia-zen-dkms)
-pkgver=384.69
+pkgver=384.90
 _extramodules=extramodules-4.13-zen
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux-zen"
