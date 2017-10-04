@@ -29,10 +29,10 @@ build() {
 
 check() {
   cd "$srcdir"/billiard-$pkgver
-  python setup.py ptr
+  python setup.py pytest
 
   cd "$srcdir"/billiard-$pkgver-py2
-  python2 setup.py ptr
+  python2 setup.py pytest
 }
 
 package_python-billiard() {
