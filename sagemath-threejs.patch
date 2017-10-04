@@ -1,0 +1,11 @@
+--- a/src/sage/repl/rich_output/display_manager.py
++++ b/src/sage/repl/rich_output/display_manager.py
+@@ -744,7 +744,7 @@ class DisplayManager(SageObject):
+         """
+         if online:
+             from sage.misc.package import installed_packages
+-            version = installed_packages()['threejs']
++            version = 'r80'
+             return """
+ <script src="https://cdn.rawgit.com/mrdoob/three.js/{0}/build/three.min.js"></script>
+ <script src="https://cdn.rawgit.com/mrdoob/three.js/{0}/examples/js/controls/OrbitControls.js"></script>
