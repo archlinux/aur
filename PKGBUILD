@@ -2,8 +2,8 @@
 # Maintainer: Sergej Pupykin <arch+pub@sergej.pp.ru>
 
 pkgname=gerbera
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="UPnP Media Server"
 arch=(i686 x86_64 armv7h)
 url="https://github.com/v00d00/gerbera"
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/v00d00/gerbera/archive/v$pk
 	gerbera-mysql.service
 	gerbera.service
 	gerbera.sysusers)
-sha256sums=('297c26e0b4223ea96cc6db403e2a2e8f81c51b64284535f3bc644abf24f66975'
+sha256sums=('225247e94983d24d50c0877cd7c9ef1e013091f2ec43fac7e2a3c3b82c11d5bd'
             'f8abf002308fabb8327f3bff0fd100357360921fcbfde61795f044af96ab9257'
             '766383ece7e5fc308b52d8c9df3924e31c65e0ac0a954033248c7d80a8c40140'
             'b3f956a6eaee8753cff7a04b51091b8b283dd0da054190ced13362a5b050d73f')
