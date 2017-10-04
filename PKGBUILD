@@ -1,7 +1,7 @@
 # Maintainer: Andreas Louv <andreas@louv.dk>
 
 pkgname=zs-git
-pkgver=0.4.5
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Copy objects from one AS/400 to another"
 arch=("any")
