@@ -1,6 +1,6 @@
 pkgbase = pick-colour-picker
 pkgdesc = Pick. A colour picker that remembers where you picked colours from
-pkgver = 1.5.0
+pkgver = 1.5
 pkgrel = 2
 url = http://kryogenix.org/code/pick/
 arch = any
