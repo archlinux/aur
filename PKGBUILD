@@ -1,28 +1,17 @@
-# Maintainer: Mellich <mellich@gmx.net>
+# Maintainer: Mellich <>
+# Contributor: Jonathon Fernyhough <>
+
 pkgname=light-locker-settings
-pkgver=master
+pkgver=1.5.3
 pkgrel=1
-epoch=
-pkgdesc="A simple GUI configuration utility for light-locker"
-arch=("any")
-url="https://github.com/Antergos/light-locker-settings"
+pkgdesc='A simple GUI configuration utility for light-locker'
+arch=('any')
+url='https://github.com/Antergos/light-locker-settings'
 license=('GPL')
-groups=()
-depends=("light-locker" "python-psutil" "python")
-makedepends=()
-checkdepends=()
+depends=('intltool' 'light-locker' 'python-psutil')
 optdepends=("xfce4-power-manager>=1.3.0: Sync settings with XFCE4")
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/Antergos/light-locker-settings/archive/master.zip")
-noextract=()
-md5sums=('600dcfb665cb45cee58d793057e68e72')
-validpgpkeys=()
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Antergos/light-locker-settings/archive/${pkgver}.tar.gz")
+sha256sums=('9174ee896d9ea7f41cb14eed61bea473de4b57278858bbd32045f1ed64858fcd')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
