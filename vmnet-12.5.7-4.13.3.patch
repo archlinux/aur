@@ -1,0 +1,11 @@
+diff --git a/vmnet-only/userif.c b/vmnet-only/userif.c
+--- vmnet-only/userif.c
++++ vmnet-only/userif.c
+@@ -33,6 +33,7 @@
+ #include <linux/proc_fs.h>
+ #include <linux/sockios.h>
+ #include <linux/sched.h>
++#include <linux/sched/signal.h>
+ #include <linux/slab.h>
+ #include <linux/version.h>
+ #include <linux/wait.h>
