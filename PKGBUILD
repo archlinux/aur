@@ -1,8 +1,9 @@
+# Maintainer: Brian Bidulock <bidulock@Openss7.org>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-log-dispatch'
-pkgver='2.57'
+pkgver='2.65'
 pkgrel='1'
 pkgdesc="Dispatches messages to one or more outputs"
 arch=('any')
@@ -10,12 +11,13 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-devel-globaldestruction' 'perl-dist-checkconflicts>=0.02' 'perl-ipc-run3' 'perl-module-runtime' 'perl-params-validate>=1.03' 'perl>=5.006')
 makedepends=()
-checkdepends=('perl-test-fatal' 'perl-test-needs')
+checkdepends=('perl-test-fatal' 'perl-test-needs' 'perl-specio' 'perl-namespace-autoclean'
+              'perl-eval-closure' 'perl-params-validationcompiler')
 url='https://metacpan.org/release/Log-Dispatch'
-source=('http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/Log-Dispatch-2.57.tar.gz')
-md5sums=('2cb5bc33f3bb11ccdff5f584b6b573b5')
-sha512sums=('eca2938493ec2e846d857f5fb39349cea1956f487a71b89ef1aca2b85cd5aa1c409ae6348468fcf86a9b1d877f81c224b629da0fb60dbf483fe14886afeb196e')
-_distdir="Log-Dispatch-2.57"
+source=("http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/Log-Dispatch-${pkgver}.tar.gz")
+md5sums=('4812027cba17baa22a3cedde9f1ea3c3')
+sha512sums=('c686d78e249155f1fb5e25c113ad768826e1fc615f4c65400250480330ccdf77b198e57645ebedc53e98d2a33d46308a985e8cd1f084d12c5475963931498a6a')
+_distdir="Log-Dispatch-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
