@@ -8,7 +8,7 @@ pkgver=1.0.64.407
 _commit=g9bd02c2d
 _ver_x86_64=26
 _ver_i686=26
-pkgrel=1
+pkgrel=2
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64' 'i686')
 license=('custom')
@@ -67,7 +67,6 @@ package() {
     cd "${srcdir}"
 
     tar -xzf data.tar.gz -C "${pkgdir}"
-    umask 022
 
     install -Dm644 "${pkgdir}"/usr/share/spotify/spotify.desktop "${pkgdir}"/usr/share/applications/spotify.desktop
     install -Dm644 "${pkgdir}"/usr/share/spotify/icons/spotify-linux-512.png "${pkgdir}"/usr/share/pixmaps/spotify-client.png
@@ -90,4 +89,7 @@ package() {
     # Install license
     # https://www.spotify.com/legal/end-user-agreement
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # Fix permissions
+    chmod -R go-w "${pkgdir}"
 }
