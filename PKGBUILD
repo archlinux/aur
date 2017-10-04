@@ -7,7 +7,6 @@ _build=181
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Runtime Environment"
-#arch=('i686' 'x86_64')
 arch=('x86_64')
 url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
 license=('custom:Oracle')
@@ -38,14 +37,8 @@ backup=("etc/java-$_jname/management/jmxremote.access"
 install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jdk/${_major}+${_build}/${pkgname}-${_major}_linux-x64_bin.tar.gz"
         "policytool-$_jname.desktop")
-#source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$pkgname-$pkgver-linux-i586.tar.gz")
-#source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$pkgname-$pkgver-linux-x64.tar.gz")
 sha256sums=('abf54b9905850851ae5de10db1d664ca0625c79ccd505c5e3fc62f6d969424a2'
             'de76dfab62f38b061fe3c99053451ed0d1b9971e892c44e7b893c604607e5694')
-#sha256sums_i686=('5eab48ae34b1b2bb6ae3050fd12fdc31f9f5ed736aa406a03ac932ae6e24025c')
-#sha256sums_x86_64=('69a4e792953127c0827255e64a925cf1fb2e75e7ad1fe0dc07004fd46ed3d890')
-## Alternative mirror, if your local one is throttled:
-#source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$pkgname-$pkgver-linux-x64.gz")
 
 package() {
     cd $pkgname-$_major
@@ -110,10 +103,7 @@ package() {
     done
 
     # Link NPAPI plugin
-    case "$CARCH" in
-        i686)   ln -sf $_jvmdir/lib/i386/libnpjp2.so  "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-        x86_64) ln -sf $_jvmdir/lib/amd64/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-    esac
+    ln -sf $_jvmdir/lib/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so
 
     # Replace JKS keystore with 'ca-certificates-java'
     ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
@@ -122,12 +112,12 @@ package() {
     mv legal/ "$pkgdir"/usr/share/licenses/java$_major-$pkgname/
     ln -sf /usr/share/licenses/java$_major-$pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
 
-    msg2 "Enabling Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy..."
-    # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
-    # things like 256-bit AES. Enabled by default in OpenJDK:
-    # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
-    # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-    sed -i "s/crypto.policy=limited/crypto.policy=unlimited/" "$pkgdir"/etc/java-$_jname/security/java.security
+    # msg2 "Enabling Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy..."
+    # # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
+    # # things like 256-bit AES. Enabled by default in OpenJDK:
+    # # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
+    # # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
+    # sed -i "s/crypto.policy=limited/crypto.policy=unlimited/" "$pkgdir"/etc/java-$_jname/security/java.security
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
