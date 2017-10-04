@@ -1,9 +1,10 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-glib-object-introspection'
-pkgver='0.042'
-pkgrel='4'
+pkgver='0.043'
+pkgrel='1'
 pkgdesc="Dynamically create Perl language bindings"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -11,10 +12,10 @@ options=('!emptydirs')
 depends=('glib-perl>=1.32' 'glib2>=2.50.3' 'gobject-introspection-runtime>=1.50.0+1+gb8d92b0' 'libffi>=3.2.1' 'perl-extutils-depends>=0.3' 'perl-extutils-pkgconfig')
 makedepends=('gobject-introspection' 'perl-extutils-depends>=0.3' 'perl-extutils-pkgconfig')
 url='https://metacpan.org/release/Glib-Object-Introspection'
-source=('http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.042.tar.gz')
-md5sums=('2d40625d5d45ec6ec3da0bddb9ebdc59')
-sha512sums=('a91ba7d553187ed0eb6b35bd68c70de40c82d5e42422ec0a370fa77268cc5b81be3b9b76947ceaf78541224bd188ab902f12be7a5e0efaf94638fea39ba57ba0')
-_distdir="Glib-Object-Introspection-0.042"
+source=("http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Glib-Object-Introspection-${pkgver}.tar.gz")
+md5sums=('c3d3609e15d386c00a9c8000709bf4be')
+sha512sums=('b812ac4faca2f1df1192f7ac2374f5552811c353a363a33b3e6877c568ef68f0b4e1b8181a4738988017150317eb27e43976989cca802e7ba24d2a3cc2fa537e')
+_distdir="Glib-Object-Introspection-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

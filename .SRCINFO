@@ -1,7 +1,7 @@
 pkgbase = perl-glib-object-introspection
 	pkgdesc = Dynamically create Perl language bindings
-	pkgver = 0.042
-	pkgrel = 4
+	pkgver = 0.043
+	pkgrel = 1
 	url = https://metacpan.org/release/Glib-Object-Introspection
 	arch = i686
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = perl-glib-object-introspection
 	depends = perl-extutils-depends>=0.3
 	depends = perl-extutils-pkgconfig
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.042.tar.gz
-	md5sums = 2d40625d5d45ec6ec3da0bddb9ebdc59
-	sha512sums = a91ba7d553187ed0eb6b35bd68c70de40c82d5e42422ec0a370fa77268cc5b81be3b9b76947ceaf78541224bd188ab902f12be7a5e0efaf94638fea39ba57ba0
+	source = http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.043.tar.gz
+	md5sums = c3d3609e15d386c00a9c8000709bf4be
+	sha512sums = b812ac4faca2f1df1192f7ac2374f5552811c353a363a33b3e6877c568ef68f0b4e1b8181a4738988017150317eb27e43976989cca802e7ba24d2a3cc2fa537e
 
 pkgname = perl-glib-object-introspection
 
