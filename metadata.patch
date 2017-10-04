@@ -1,0 +1,10 @@
+--- metadata.in.json	2017-02-12 14:24:43.000000000 -0700
++++ metadata.in.json1	2017-10-03 21:00:42.542338366 -0600
+@@ -10,6 +10,7 @@
+     "categories": "AudioVideo;Audio;", 
+     "home_url": "https://music.yandex.ru/", 
+     "license": "2-Clause BSD", 
++    "requirements": "Feature[MSE] Codec[mp3] WebKitGTK[2.16.3]",
+     "build": {
+         "icons": [
+             "src/icon.svg SCALABLE 64 128 256", 
