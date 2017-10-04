@@ -3,3 +3,4 @@ libpsi
 psi
 src
 pkg
+*.tar.xz

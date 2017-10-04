@@ -1,6 +1,6 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname=psi-git
-pkgver=0.16_dev_20170505
+pkgver=1.3_dev_20171004
 pkgrel=1
 pkgdesc="A jabber client. GIT version"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=('git+https://github.com/psi-im/psi.git')
 md5sums=('SKIP')
 
 pkgver() {
-echo  0.16_dev_$(date +"%Y%m%d")
+echo  1.3_dev_$(date +"%Y%m%d")
 }
 
 prepare() {
