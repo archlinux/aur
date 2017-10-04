@@ -1,10 +1,10 @@
-# Contributor: int <int [ate] arcor [dot] de>
+# Maintainer: int <int [ate] arcor [dot] de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-authen-cas-client'
 pkgver='0.08'
-pkgrel='2'
-pkgdesc="Provides an easy-to-use interface for authentication using JA-SIG's Central Authentication Service"
+pkgrel='3'
+pkgdesc="Perl/CPAN Module Authen::CAS::Client: Provides an easy-to-use interface for authentication using JA-SIG's Central Authentication Service"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
@@ -40,7 +40,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
