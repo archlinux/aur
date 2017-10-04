@@ -7,8 +7,8 @@
 pkgbase=handbrake-fdkaac-git
 pkgname=('handbrake-fdkaac-git' 'handbrake-cli-fdkaac-git')
 gitname=('HandBrake')
-pkgver=1.0.0.r495.g2123622dd
-pkgrel=2
+pkgver=1.0.0.r496.gdda2863c2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/HandBrake/HandBrake"
 license=('GPL2' 'custom:FDKAAC')
@@ -49,10 +49,7 @@ package_handbrake-fdkaac-git() {
 
   cd ${srcdir}/${gitname}/build
   make DESTDIR=${pkgdir} install
-  
-  mkdir -pm755 ${pkgdir}/usr/share/licenses/fdkaac-ghb
   install -Dm644 ${srcdir}/${gitname}/build/contrib/fdkaac/fdk-aac-0.1.5/NOTICE ${pkgdir}/usr/share/licenses/fdkaac-ghb/LICENSE
-  
   rm ${pkgdir}/usr/bin/HandBrakeCLI
 }
 
@@ -66,8 +63,6 @@ package_handbrake-cli-fdkaac-git() {
 
   cd ${srcdir}/${gitname}/build
   install -D HandBrakeCLI ${pkgdir}/usr/bin/HandBrakeCLI
-   
-  mkdir -pm755 ${pkgdir}/usr/share/licenses/fdkaac-ghb-cli
   install -Dm644 ${srcdir}/${gitname}/build/contrib/fdkaac/fdk-aac-0.1.5/NOTICE ${pkgdir}/usr/share/licenses/fdkaac-ghb-cli/LICENSE
 }
 
