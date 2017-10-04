@@ -1,7 +1,7 @@
 pkgbase = gajim-plugin-omemo-gtk3
 	pkgdesc = Gajim plugin for OMEMO Multi-End Message and Object Encryption.
 	pkgver = 2.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin
 	arch = any
 	license = GPL

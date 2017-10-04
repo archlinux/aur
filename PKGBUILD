@@ -2,7 +2,7 @@
 
 pkgname=gajim-plugin-omemo-gtk3
 pkgver=2.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Gajim plugin for OMEMO Multi-End Message and Object Encryption."
 arch=(any)
 url="https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin"
@@ -20,8 +20,8 @@ package() {
   rm -r CHANGELOG COPYING
 
   # Install the plugin
-  install -d ${pkgdir}/usr/share/gajim/plugins/omemo
-  cp -r * ${pkgdir}/usr/share/gajim/plugins/omemo/
+  install -d ${pkgdir}/usr/lib/python3.6/site-packages/gajim/data/plugins/omemo
+  cp -r * ${pkgdir}/usr/lib/python3.6/site-packages/gajim/data/plugins/omemo/
 }
 
 # vim:set ts=2 sw=2 et:
