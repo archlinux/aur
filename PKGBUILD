@@ -1,9 +1,9 @@
-# Contributor: int <int [ate] arcor [dot] de>
+# Maintainer: int <int [ate] arcor [dot] de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-net-z3950-zoom'
 pkgver='1.30'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module Net::Z3950::ZOOM: Perl extension for invoking the ZOOM-C API."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -39,7 +39,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:

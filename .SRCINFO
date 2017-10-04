@@ -1,7 +1,7 @@
 pkgbase = perl-net-z3950-zoom
 	pkgdesc = Perl/CPAN Module Net::Z3950::ZOOM: Perl extension for invoking the ZOOM-C API.
 	pkgver = 1.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Net-Z3950-ZOOM
 	arch = i686
 	arch = x86_64
