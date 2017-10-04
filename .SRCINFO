@@ -1,7 +1,8 @@
 pkgbase = ohrrpgce
 	pkgdesc = A role playing game creation engine
-	pkgver = callipygous.r8062
+	pkgver = dwimmercrafty.r9545
 	pkgrel = 1
+	epoch = 1
 	url = http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page
 	arch = i686
 	arch = x86_64
@@ -16,9 +17,8 @@ pkgbase = ohrrpgce
 	depends = libxpm
 	depends = libxrandr
 	depends = ncurses
-	depends = xterm
 	optdepends = timidity-freepats: midi music support
-	source = svn://gilgamesh.hamsterrepublic.com/ohrrpgce/rel/callipygous
+	source = svn+https://rpg.hamsterrepublic.com/source/rel/dwimmercrafty
 	md5sums = SKIP
 
 pkgname = ohrrpgce

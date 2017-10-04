@@ -9,12 +9,12 @@ url="http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page"
 depends=('sdl_mixer' 'openeuphoria' 'libxpm' 'libxrandr' 'ncurses' 'xterm')
 makedepends=('subversion' 'freebasic' 'scons' 'openeuphoria' 'dos2unix')
 optdepends=('timidity-freepats: midi music support')
-source=(svn://gilgamesh.hamsterrepublic.com/ohrrpgce/rel/callipygous)
+source=(svn://gilgamesh.hamsterrepublic.com/ohrrpgce/rel/dwimmercrafty)
 
 pkgver(){
 	cd "${srcdir}/callipygous"
 	local ver="$(svnversion)"
-	printf "%s.r%s" "callipygous" "${ver//[[:alpha:]]}"
+	printf "%s.r%s" "dwimmercrafty+1" "${ver//[[:alpha:]]}"
 }
 
 prepare() {
