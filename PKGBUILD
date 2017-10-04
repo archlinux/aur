@@ -42,7 +42,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=tip
+_patchrev=6c6109948e35
 _debianrev=2113
 options=('!emptydirs'  'strip')
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
@@ -56,7 +56,7 @@ source=("http://archive.mozilla.org/pub/$_pkgname/releases/$pkgver/source/$_pkgn
         # Gecko/toolkit patchset
         $_patchurl/mozilla-kde.patch mozilla-kde.patch.diff
         $_patchurl/mozilla-nongnome-proxies.patch
-        firefox-trunk.debsrc.tar.gz::http://bazaar.launchpad.net/~mozillateam/$_pkgname/$_pkgname-trunk.head/tarball/"$_debianrev"
+        firefox-trunk.debsrc.tar.gz::https://bazaar.launchpad.net/~mozillateam/$_pkgname/$_pkgname-trunk.head/tarball/"$_debianrev"
         add_missing_pgo_rule.patch
         pgo_fix_missing_kdejs.patch
         wifi-disentangle.patch wifi-fix-interface.patch
@@ -280,7 +280,7 @@ sha256sums=('bbe48656693e562b60f643a76a825b84d57581bb83dcb9a3a7fa90ac47455d5d'
             'e25b9fa2e4ac279b5e073286b7dc9956822bf508eccb67eb870921013274a709'
             'd43305705aab0520ac55c94dab4a545e90b15093d7b4c25359f7f145fa3723c4'
             'ef0f90c9134ef05b950f06a3ffbd699c2e5a5f99a4cdf9868e799534d68c204f'
-            'beb277cf54a23faf5aab8d2ebea3683d75f60367468dd418e8f62ec834681b0c'
+            'SKIP'
             'f9067f62a25a7a77276e15f91cc9e7ba6576315345cfc6347b1b2e884becdb0c'
             '2797d1e61031d24ee24bf682c9447b3b9c1bca10f8e6cbd597b854af2de1ec54'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
