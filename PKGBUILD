@@ -1,7 +1,7 @@
 # Maintainer: Felix Schindler <aur at felixschindler dot net>
 
 pkgname=ngsolve-git
-pkgver=v6.2.1706.5.geee9d5a7
+pkgver=v6.2.1709.108.g9513c994
 pkgrel=1
 pkgdesc="A general purpose Finite Element Library on top of Netgen."
 url=https://sourceforge.net/projects/ngsolve/
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 makedepends=('git' 'cmake')
 depends=('lapack' 'blas' 'netgen-git')
 options=('!buildflags')
-source=("${pkgname%-git}::git+http://git.code.sf.net/p/ngsolve/git#branch=master")
+source=("${pkgname%-git}::git+https://github.com/NGSolve/ngsolve.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
