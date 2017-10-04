@@ -17,7 +17,7 @@ _debug_mode=0    # Build in debug mode.
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=63.0.3223.8
+pkgver=63.0.3230.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
@@ -76,7 +76,8 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-dev.svg'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc5-r2.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc5-r4.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-clang-r1.patch'
         # Misc Patches
         'chromium-intel-vaapi_r14.patch.base64::https://chromium-review.googlesource.com/changes/532294/revisions/d60511c973e432b97d9929dcfbd77c9af25dbd51/patch?download'
         'https://raw.githubusercontent.com/sjnewbury/gentoo-playground/master/www-client/chromium/files/chromium-intel-vaapi-fix.patch'
@@ -84,7 +85,7 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-gcc-r1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-gcc-r1.patch?h=packages/chromium'
         'chromium-blink-gcc7-r2.patch' # https://bugs.chromium.org/p/chromium/issues/detail?id=614289
         'chromium-widevine-r1.patch'
-        'chromium-gn-bootstrap-r20.patch.base64::https://chromium-review.googlesource.com/changes/686415/revisions/8ddf0976e671bc0aad990378e7676d3397b28e3d/patch?download'
+        'chromium-gn-bootstrap-r21.patch.base64::https://chromium-review.googlesource.com/changes/700435/revisions/bf8877ba9a564c69358807a9b4e2d83e1a97b42a/patch?download'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -92,7 +93,8 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             # Patch form Gentoo
             'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
-            'd44b90fc7313afaa6d6f77cde72c0e9a5e4a1cc792216cbca2ed45c39658c472'
+            '6f525ea6b22a432b1c2cdc2bff8482a30b76c7ada606d9f333fc7f3caf2841a3'
+            'ab5368a3e3a67fa63b33fefc6788ad5b4a79089ef4db1011a14c3bee9fdf70c6'
             # Misc Patches
             '1974fb5891b6a620113e9527026faa5af771042841ef7b8016ef74e0eaabc926'
             'a688de2b3a7183ebf9eb25108b0d28a8c6228cc71c8e3519062a51224f5b3488'
@@ -100,7 +102,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             '11cffe305dd49027c91638261463871e9ecb0ecc6ecc02bfa37b203c5960ab58'
             'fab4c65e2802e709a32d059784182be5a89bc3ca862a7e27810714ea7b86f868'
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
-            '094d88e618fe7001a1f350d7e8e2398d821fdd93f5dc29b4d1fd638261fbd352'
+            'f4eec8ef6168c9a2a832eaaa711100b5a73781184e4950962ad0e8f6dd7fdde1'
             )
 options=('!strip')
 install=chromium-dev.install
@@ -160,7 +162,6 @@ _keeplibs=(
            'base/third_party/valgrind'
            'base/third_party/xdg_mime'
            'base/third_party/xdg_user_dirs'
-           'breakpad/src/third_party/curl'
            'chrome/third_party/mozilla_security_manager'
            'courgette/third_party'
            'native_client/src/third_party/dlmalloc'
@@ -177,6 +178,8 @@ _keeplibs=(
            'third_party/angle/src/third_party/trace_event'
            'third_party/blink'
            'third_party/boringssl'
+           'third_party/breakpad'
+           'third_party/breakpad/breakpad/src/third_party/curl'
            'third_party/brotli'
            'third_party/cacheinvalidation'
            'third_party/catapult'
@@ -397,9 +400,11 @@ prepare() {
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r2.patch"
   # Fix build with gcc 7(?)
-  patch -p1 -i "${srcdir}/chromium-gcc5-r2.patch"
+  patch -p1 -i "${srcdir}/chromium-gcc5-r4.patch"
+  # Better support for clang
+  patch -p1 -i "${srcdir}/chromium-clang-r1.patch"
   # Pats to chromium dev's about why always they forget add/remove missing build rules
-  base64 -d "${srcdir}/chromium-gn-bootstrap-r20.patch.base64" | patch -p1 -i -
+  base64 -d "${srcdir}/chromium-gn-bootstrap-r21.patch.base64" | patch -p1 -i -
 
   # Misc Patches:
 
@@ -539,6 +544,13 @@ package() {
 
   pushd "chromium-${pkgver}/out/Release" &> /dev/null
 
+  # Set info
+  source "${srcdir}/chromium-${pkgver}/chrome/installer/linux/common/installer.include"
+  PACKAGE=chromium-dev
+  PROGNAME=chromium-dev
+  MENUNAME="Chromium-dev Web Browser"
+  USR_BIN_SYMLINK_NAME=chromium-dev
+
   # Build with debug needs a tons of space. remove this save that space, but break the rebuild process.
   if [ "${_debug_mode}" = "1" ]; then
     rm -fr "chromium-${pkgver}/third_party"
@@ -546,7 +558,6 @@ package() {
 
   # Install binaries.
   install -Dm755 chrome "${pkgdir}/usr/lib/chromium-dev/chromium-dev"
-  install -Dm644 chrome.1 "${pkgdir}/usr/share/man/man1/chromium-dev.1"
   install -Dm4755 chrome_sandbox "${pkgdir}/usr/lib/chromium-dev/chrome-sandbox"
   install -Dm755 chromedriver "${pkgdir}/usr/lib/chromium-dev/chromedriver"
   ln -sf /usr/lib/chromium-dev/chromedriver "${pkgdir}/usr/bin/chromedriver-dev"
@@ -590,6 +601,12 @@ package() {
   done
   find resources -type f -name "*" -exec install -Dm644 '{}' "${pkgdir}/usr/lib/chromium-dev/{}" \;
 
+  # Install .desktop and manpages
+  process_template "${srcdir}/chromium-${pkgver}/chrome/app/resources/manpage.1.in" chromium-dev.1
+  install -Dm644 chromium-dev.1 "${pkgdir}/usr/share/man/man1/chromium-dev.1"
+  process_template "${srcdir}/chromium-${pkgver}/chrome/installer/linux/common/desktop.template" chromium-dev.desktop
+  install -Dm644 chromium-dev.desktop "${pkgdir}/usr/share/applications/chromium-dev.desktop"
+
   # Install locales.
   find locales -type f -name "*.pak" -exec install -Dm644 '{}' "${pkgdir}/usr/lib/chromium-dev/{}" \;
 
@@ -619,12 +636,7 @@ package() {
 
   popd &> /dev/null
 
-  # Install some external files.
-  install -Dm644 "chromium-${pkgver}/chrome/installer/linux/common/desktop.template" "${pkgdir}/usr/share/applications/chromium-dev.desktop"
-  sed -e 's|@@MENUNAME@@|Chromium-dev|g' \
-      -e 's|@@USR_BIN_SYMLINK_NAME@@|chromium-dev|g' \
-      -e 's|@@PACKAGE@@|chromium-dev|g' \
-      -i "${pkgdir}/usr/share/applications/chromium-dev.desktop"
+  # Install License
   install -Dm644 "chromium-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE"
 
   if [ "${_debug_mode}" = "0" ]; then
