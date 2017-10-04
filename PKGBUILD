@@ -2,13 +2,13 @@
 
 pkgname=background-wallpaper-slideshow-git
 _pkgname=background-wallpaper-slideshow
-pkgver=1.3.1.r0.g3a0aaa5
+pkgver=2.0.r0.g8aae3fd
 pkgrel=1
 pkgdesc="A simple bash script that changes the background wallpaper periodically."
 arch=('any')
 url="https://github.com/DiegoFHG/background-wallpaper-slideshow"
 license=('GPL3')
-depends=('nitrogen' 'bash')
+depends=('feh' 'bash')
 makedepends=('git')
 md5sums=('SKIP')
 source=('background-wallpaper-slideshow::git+https://github.com/DiegoFHG/background-wallpaper-slideshow.git#branch=master')
