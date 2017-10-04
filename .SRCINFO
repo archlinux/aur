@@ -1,7 +1,7 @@
 pkgbase = nvidia-zen
 	pkgdesc = NVIDIA drivers for linux-zen
 	pkgver = 387.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	arch = i686
 	arch = x86_64
