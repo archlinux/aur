@@ -4,7 +4,7 @@
 pkgname=wordnet
 pkgver=3.1
 _srcver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electronic Lexical Database from Princeton University"
 arch=('i686' 'x86_64')
 url="http://wordnet.princeton.edu/"

@@ -1,7 +1,7 @@
 pkgbase = wordnet
 	pkgdesc = An Electronic Lexical Database from Princeton University
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wordnet.princeton.edu/
 	arch = i686
 	arch = x86_64
