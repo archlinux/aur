@@ -1,4 +1,4 @@
-nam = $(shell sed -n 's/^pkgname=//p' PKGBUILD)
+nam = cssc
 src = PKGBUILD
 inf = .SRCINFO
 pkg = $(shell ls -v $(nam)*.pkg.tar* 2>/dev/null | tail -1)
