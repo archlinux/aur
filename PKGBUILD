@@ -1,4 +1,5 @@
-# Maintainer: Thaodan <theodorstormgrade@gmail.com>
+# Maintainer: Isabell Cowan <izzi@izzette.com>
+# Contributor: Thaodan <theodorstormgrade@gmail.com>
 # Contributor: Weng Xuetian <wengxt@gmail.com>
 
 
