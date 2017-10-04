@@ -2,39 +2,36 @@
 # Based on wine-staging PKGBUILD
 
 #Additional patches:
-# -Overwatch patches
 # -Gallium Nine support
 # -Keybind patch reversion
-# -Heap allocation perfomance improvement patch
 # -Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
+# -Linked lists perfomances improvements
 
 pkgname=wine-gaming-nine
-pkgver=2.17
-pkgrel=3
+pkgver=2.18
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
-_d3d9ver=$_pkgbasever
-#_d3d9ver=2.16
-_winesrcdir="wine-overwatch-overwatch-$_pkgbasever"
+#_d3d9ver=$_pkgbasever
+_d3d9ver=2.17
+_winesrcdir="wine-patched-staging-$_pkgbasever"
 
-source=("https://github.com/gamax92/wine-overwatch/archive/overwatch-$_pkgbasever.tar.gz"
+source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
         "https://github.com/sarnex/wine-d3d9-patches/archive/wine-d3d9-$_d3d9ver.tar.gz"
-	"https://github.com/laino/wine-patches/archive/master.tar.gz"
         30-win32-aliases.conf
-        freetype_2.8.1_fix.patch
 	keybindings.patch
         steam.patch
         wbemprox_query_v2.patch
+	wine-list.h-linked-list-cache-line-prefetching.patch
         )
-sha1sums=('1e2a147a74195f0ebbf35028b33a7dce3e26abf8'
+sha1sums=('089a7ca0d83b9dbbad42ce127bf66ba60d5669d7'
           'f37e9190466faa67741b49b60e9268d70c5b4644'
-	  'SKIP'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
-	  'aabb80b412adc99fcc42b02fa2d6692321f1c3ac'
 	  'f3febb8836f38320742a546c667106608d4c4395'
           '74aae040fde9ff3c9e8da9c840557e87afdbc3a0'
           '644e141125a9f2407e64d23c85ec84a691c7caae'
+	  '360b9725286690b34313590076538a402e03ecb5'
           )
 
 pkgdesc="Based off wine-staging, including the gallium-nine patches and some more hacks"
@@ -91,7 +88,6 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   dri3proto
   xf86driproto
   pkg-config
-  'freetype2<2.8.1-1'
 )
 
 optdepends=(
@@ -137,26 +133,14 @@ prepare()
 {
     cd "$_winesrcdir"
 
-    patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_d3d9ver/staging-helper.patch" #for wine-staging
+    patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_d3d9ver/staging-helper.patch"
     patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_d3d9ver/wine-d3d9.patch"
     patch -p1 < ../steam.patch
 
-#    patch -p1 -R < ../0001-ntdll-Improve-heap-allocation-performance-by-using-m.patch
-
-#    patch -p1 < ../wine-patches-master/0001-ntdll-improve-heap-allocation-performance.patch
-#    patch -p1 < ../wine-patches-master/0002-ntdll-heap.c-align-everything-to-64-byte-to-reduce-f.patch
-    patch -p1 < ../wine-patches-master/0003-wine-list.h-linked-list-cache-line-prefetching.patch
-#    patch -p1 < ../wine-patches-master/0004-ntdll-heap.c-freelist_balance-prefetch-next-entry-ca.patch
-#   This patch has been upstreamed 
-#    patch -p1 < ../wine-patches-master/0005-oleaut32-typelib.c-fix-cursor2-having-the-wrong-type.patch
-#    patch -p1 < ../wine-patches-master/0006-Ensure-16-byte-alignment-of-data.patch
-#    patch -p1 < ../wine-patches-master/0007-wined3d-use-SwitchToThread-waits-in-wined3d_pause.patch
-    
+    patch -p1 < ../wine-list.h-linked-list-cache-line-prefetching.patch    
     patch -p1 < ../wbemprox_query_v2.patch
 
     patch -p1 -R < ../keybindings.patch
-
-    patch -p1 < ../freetype_2.8.1_fix.patch
 
     autoreconf -f
 

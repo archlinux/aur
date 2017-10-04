@@ -1,0 +1,104 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Nils Kuhnhenn <kuhnhenn.nils@gmail.com>
+Date: Wed, 24 Aug 2016 19:44:37 +0200
+Subject: [PATCH 3/7] wine/list.h: linked list cache line prefetching
+
+---
+ include/wine/list.h | 36 ++++++++++++++++++++----------------
+ 1 file changed, 20 insertions(+), 16 deletions(-)
+
+diff --git a/include/wine/list.h b/include/wine/list.h
+index b4d681fe0f..49b1e23a39 100644
+--- a/include/wine/list.h
++++ b/include/wine/list.h
+@@ -105,7 +105,8 @@ static inline void list_remove( struct list *elem )
+ static inline struct list *list_next( const struct list *list, const struct list *elem )
+ {
+     struct list *ret = elem->next;
+-    if (elem->next == list) ret = NULL;
++    if (ret == list) return NULL;
++    __builtin_prefetch(ret->next, 0, 1);
+     return ret;
+ }
+ 
+@@ -113,7 +114,8 @@ static inline struct list *list_next( const struct list *list, const struct list
+ static inline struct list *list_prev( const struct list *list, const struct list *elem )
+ {
+     struct list *ret = elem->prev;
+-    if (elem->prev == list) ret = NULL;
++    if (ret == list) return NULL;
++    __builtin_prefetch(ret->prev, 0, 1);
+     return ret;
+ }
+ 
+@@ -176,51 +178,53 @@ static inline void list_move_head( struct list *dst, struct list *src )
+ 
+ /* iterate through the list */
+ #define LIST_FOR_EACH(cursor,list) \
+-    for ((cursor) = (list)->next; (cursor) != (list); (cursor) = (cursor)->next)
++    for ((cursor) = (list)->next, __builtin_prefetch((cursor)->next, 0, 1); \
++         (cursor) != (list); (cursor) = (cursor)->next, __builtin_prefetch((cursor)->next, 0, 1))
+ 
+ /* iterate through the list, with safety against removal */
+ #define LIST_FOR_EACH_SAFE(cursor, cursor2, list) \
+-    for ((cursor) = (list)->next, (cursor2) = (cursor)->next; \
++    for ((cursor) = (list)->next, (cursor2) = (cursor)->next, __builtin_prefetch((cursor2)->next, 0, 1); \
+          (cursor) != (list); \
+-         (cursor) = (cursor2), (cursor2) = (cursor)->next)
++         (cursor) = (cursor2), (cursor2) = (cursor)->next, __builtin_prefetch((cursor2)->next, 0, 1))
+ 
+ /* iterate through the list using a list entry */
+ #define LIST_FOR_EACH_ENTRY(elem, list, type, field) \
+-    for ((elem) = LIST_ENTRY((list)->next, type, field); \
++    for ((elem) = LIST_ENTRY((list)->next, type, field), __builtin_prefetch((elem)->field.next, 0, 1); \
+          &(elem)->field != (list); \
+-         (elem) = LIST_ENTRY((elem)->field.next, type, field))
++         (elem) = LIST_ENTRY((elem)->field.next, type, field), __builtin_prefetch((elem)->field.next, 0, 1))
+ 
+ /* iterate through the list using a list entry, with safety against removal */
+ #define LIST_FOR_EACH_ENTRY_SAFE(cursor, cursor2, list, type, field) \
+     for ((cursor) = LIST_ENTRY((list)->next, type, field), \
+-         (cursor2) = LIST_ENTRY((cursor)->field.next, type, field); \
++         (cursor2) = LIST_ENTRY((cursor)->field.next, type, field), __builtin_prefetch((cursor2)->field.next, 0, 1); \
+          &(cursor)->field != (list); \
+          (cursor) = (cursor2), \
+-         (cursor2) = LIST_ENTRY((cursor)->field.next, type, field))
++         (cursor2) = LIST_ENTRY((cursor)->field.next, type, field), __builtin_prefetch((cursor2)->field.next, 0, 1))
+ 
+ /* iterate through the list in reverse order */
+ #define LIST_FOR_EACH_REV(cursor,list) \
+-    for ((cursor) = (list)->prev; (cursor) != (list); (cursor) = (cursor)->prev)
++    for ((cursor) = (list)->prev, __builtin_prefetch((cursor)->prev, 0, 1); \
++         (cursor) != (list); (cursor) = (cursor)->prev, __builtin_prefetch((cursor)->prev, 0, 1))
+ 
+ /* iterate through the list in reverse order, with safety against removal */
+ #define LIST_FOR_EACH_SAFE_REV(cursor, cursor2, list) \
+-    for ((cursor) = (list)->prev, (cursor2) = (cursor)->prev; \
++    for ((cursor) = (list)->prev, (cursor2) = (cursor)->prev, __builtin_prefetch((cursor2)->prev, 0, 1); \
+          (cursor) != (list); \
+-         (cursor) = (cursor2), (cursor2) = (cursor)->prev)
++         (cursor) = (cursor2), (cursor2) = (cursor)->prev, __builtin_prefetch((cursor2)->prev, 0, 1))
+ 
+ /* iterate through the list in reverse order using a list entry */
+ #define LIST_FOR_EACH_ENTRY_REV(elem, list, type, field) \
+-    for ((elem) = LIST_ENTRY((list)->prev, type, field); \
++    for ((elem) = LIST_ENTRY((list)->prev, type, field), __builtin_prefetch((elem)->field.prev, 0, 1); \
+          &(elem)->field != (list); \
+-         (elem) = LIST_ENTRY((elem)->field.prev, type, field))
++         (elem) = LIST_ENTRY((elem)->field.prev, type, field), __builtin_prefetch((elem)->field.prev, 0, 1))
+ 
+ /* iterate through the list in reverse order using a list entry, with safety against removal */
+ #define LIST_FOR_EACH_ENTRY_SAFE_REV(cursor, cursor2, list, type, field) \
+     for ((cursor) = LIST_ENTRY((list)->prev, type, field), \
+-         (cursor2) = LIST_ENTRY((cursor)->field.prev, type, field); \
++         (cursor2) = LIST_ENTRY((cursor)->field.prev, type, field), __builtin_prefetch((cursor2)->field.prev, 0, 1); \
+          &(cursor)->field != (list); \
+          (cursor) = (cursor2), \
+-         (cursor2) = LIST_ENTRY((cursor)->field.prev, type, field))
++         (cursor2) = LIST_ENTRY((cursor)->field.prev, type, field), __builtin_prefetch((cursor2)->field.prev, 0, 1))
+ 
+ /* macros for statically initialized lists */
+ #undef LIST_INIT
+-- 
+2.12.2
+
