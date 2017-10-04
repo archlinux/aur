@@ -1,7 +1,7 @@
 pkgbase = snakesocks
 	pkgdesc = An extensible proxy which prevents some ISP from detecting network traffic.
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SnakeSocks/snakesocks
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = snakesocks
 	backup = etc/snakesocks/conf/client.conf
 	backup = etc/snakesocks/conf/server.conf
 	source = snakesocks-1.2.1.tar.gz::https://github.com/SnakeSocks/snakesocks/archive/v1.2.1.tar.gz
-	sha256sums = f5ee3440b4a5ccf1156f821c38963a3b83a8eed366549deaf0eb2e0087869f5c
+	sha256sums = 0b654224d26cfc885902340872a6a214af4c23a19c982acfcb143c72380230f6
 
 pkgname = snakesocks
 

@@ -3,7 +3,7 @@
 
 pkgname=snakesocks
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible proxy which prevents some ISP from detecting network traffic."
 url="https://github.com/SnakeSocks/$pkgname"
 license=("GPL2")
@@ -14,11 +14,12 @@ conflicts=("$pkgname-bin")
 replaces=("$pkgname-bin")
 backup=("etc/$pkgname/conf/client.conf" "etc/$pkgname/conf/server.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("f5ee3440b4a5ccf1156f821c38963a3b83a8eed366549deaf0eb2e0087869f5c")
+sha256sums=("0b654224d26cfc885902340872a6a214af4c23a19c982acfcb143c72380230f6")
 
 package() {
   export pkgdir
   cd "$pkgname-$pkgver"
+  make default_modules
   make client # requires cmake and boost
   make server # requires go. comment it if you dont want it.
   make install
