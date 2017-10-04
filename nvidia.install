@@ -1,5 +1,5 @@
 post_install() {
-    EXTRAMODULES='extramodules-4.12-zen'
+    EXTRAMODULES='extramodules-4.13-zen'
     depmod $(cat /usr/lib/modules/${EXTRAMODULES}/version)
     echo 'In order to use nvidia module, reboot the system.'
 }
