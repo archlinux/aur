@@ -7,16 +7,15 @@
 
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.14-rc3
+_tag=v4.14-rc3
 pkgver=4.14rc3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
-source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+source=("git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_tag"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -25,7 +24,7 @@ source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
         'linux.preset'
         )
 
-sha256sums=('6721f10de2c31a0a72005c4692dd0d425633f8d1367f48cf29a621c9ae233d11'
+sha256sums=('SKIP'
             '73278ee56c5d3855e67ff50caa77a7cb47fb29ebd8f9b7ca9ebee4e2d446529c'
             '1b9cbe1c25653d563515344a7c6cc9f79447ac9274fcf4de0007228e979b55dd'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
@@ -38,7 +37,7 @@ validpgpkeys=(
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/linux"
 
   # mainline: not needed
   # add upstream patch
@@ -77,7 +76,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/linux"
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
@@ -90,7 +89,7 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/linux"
 
   KARCH=x86
 
@@ -142,7 +141,7 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
-  cd ${_srcname}
+  cd linux
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
@@ -217,7 +216,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  cd ${_srcname}
+  cd linux
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   mkdir -p "${_builddir}"
