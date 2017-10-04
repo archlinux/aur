@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=es-shell-git
 pkgver=0.9.1.r2.ge65327f
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A extensible shell with higher-order functions, derived from the Plan 9 shell, rc."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ categories=()
 groups=()
 depends=('')
 makedepends=('git')
-optdepends=()
+optdepends=('termcap: for mksignal')
 checkdepends=()
 provides=()
 conflicts=()
