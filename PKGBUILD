@@ -3,7 +3,7 @@
 
 
 pkgname=obsidian-icon-theme
-pkgver=3.1.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="Obsidian Icon Theme"
 arch=('any')
@@ -13,7 +13,7 @@ source=(
 	"https://github.com/madmaxms/iconpack-obsidian/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-	'60f0c8899968e047b07a5a9102fe844988c52322c0e98576cf5543a7eab2207e'
+	'bcd5b714fbe82237a6e61c731a661fad2e56153205068f58d7d817ede663d444'
 )
 
 package() {
