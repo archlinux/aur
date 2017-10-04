@@ -3,7 +3,7 @@
 # Contributor: Renan Birck <renan.ee.ufsm at gmail.com>
 
 pkgname=logisim-evolution-git
-pkgver=2.13.r146.ddd0f0c
+pkgver=2.14.r288.f65ea76
 pkgrel=1
 provides=('logisim-evolution')
 conflicts=('logisim-evolution')
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/logisim-evolution"
-    printf "2.13.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "2.14.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
