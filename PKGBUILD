@@ -9,7 +9,7 @@ arch=('any')
 url="http://sourceforge.net/projects/g-manual-duplex/"
 license=('GPL')
 depends=('python2' 'python2-pycups' 'python2-gobject' 'file' 'transfig' 'netpbm' 'psutils' 'gamin')
-makedepends=()
+makedepends=('gtk2')
 source=(http://downloads.sourceforge.net/project/g-manual-duplex/$pkgname-$pkgver.tar.gz )
 md5sums=('cfc3b4d5d41552ff3bffeafd7c550131')
 
