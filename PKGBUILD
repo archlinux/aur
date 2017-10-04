@@ -1,7 +1,7 @@
 pkgname=mingw-w64-cgns
 _PKGNAME=CGNS
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Standard for recording and recovering computer data associated with the numerical solution of fluid dynamics equations (mingw-w64)'
 arch=('any')
 url='http://www.cgns.org'
@@ -19,6 +19,9 @@ prepare(){
 
   # https://github.com/CGNS/CGNS/pull/45
   sed -i "s|#ifdef CG_BUILD_64BIT|#if 0|g" src/cgnstypes.h.in
+
+  # https://github.com/CGNS/CGNS/pull/46
+  sed -i "s|add_library(cgns_static|add_library(cgns_static STATIC|g" src/CMakeLists.txt
 }
 
 build() {
