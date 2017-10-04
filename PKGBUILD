@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-git
-pkgver=20171003.19546
+pkgver=20171004.19548
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://launchpad.net/inkscape"
