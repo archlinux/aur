@@ -1,0 +1,17 @@
+pkgbase = musicforprogramming
+	pkgdesc = cli application for downloading music from musicforprogramming.net
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Granitosaurus/musicforprogramming-dl
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-setuptools
+	depends = python-requests
+	depends = python-click
+	source = https://github.com/Granitosaurus/musicforprogramming-dl/archive/v1.0.tar.gz
+	md5sums = 61306571c7f9d4bda1b1d86b75dff189
+
+pkgname = musicforprogramming
+
