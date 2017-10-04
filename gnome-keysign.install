@@ -1,0 +1,11 @@
+post_install() {
+ echo ">>> GNOME-Keysign requires a working Avahi local server."
+ echo ">>> Enable it executing 'systemctl enable avahi-daemon'"
+ echo ">>> If you want to also use Bluetooth you need to install"
+ echo ">>> the optional dependency python-pybluez and enable the"
+ echo ">>> Bluetooth daemon with 'systemctl start bluetooth'"
+}
+
+post_upgrade() {
+    post_install
+}
