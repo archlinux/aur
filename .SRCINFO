@@ -1,7 +1,7 @@
 pkgbase = perl-email-date
 	pkgdesc = Perl/CPAN Module Email::Date: Find and Format Date Headers
 	pkgver = 1.104
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Email-Date
 	arch = any
 	license = PerlArtistic

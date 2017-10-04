@@ -3,7 +3,7 @@
 
 pkgname='perl-email-date'
 pkgver='1.104'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module Email::Date: Find and Format Date Headers"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -39,7 +39,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
