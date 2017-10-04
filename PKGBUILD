@@ -3,14 +3,15 @@
 # Contributor: Yu-Shin Huang <hyslion AT gmail.com>
 
 pkgname=pcmanx-gtk3-git
-pkgver=742.0bd42c1
+pkgver=743.3b3ab60
 pkgrel=1
 pkgdesc="A gtk+ based free BBS client (yan12125's experimental GTK+3 branch)"
-url="http://code.google.com/p/pcmanx-gtk2"
+url="https://github.com/pcman-bbs/pcmanx"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('gtk3' 'librsvg')
-makedepends=('autoconf' 'automake' 'git' 'intltool')
+depends=('gtk3' 'librsvg' 'libltdl')
+# This requires gtk2 due to the AM_PATH_GTK_2_0 macro in configure.ac
+makedepends=('autoconf' 'automake' 'git' 'intltool' 'gtk2')
 options=('!libtool')
 provides=('pcmanx-gtk2')
 conflicts=('pcmanx-gtk2')
