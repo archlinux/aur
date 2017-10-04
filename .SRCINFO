@@ -1,11 +1,11 @@
 pkgbase = zcoin-git
 	pkgdesc = The Zerocoin Cryptocurrency
-	pkgver = 221.61cca65
+	pkgver = 256.0544bcc
 	pkgrel = 1
 	url = https://github.com/zcoinofficial/zcoin
 	arch = any
 	license = MIT
-	depends = db
+	depends = db4.8
 	depends = boost
 	depends = miniupnpc
 	depends = qt5-base
