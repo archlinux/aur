@@ -5,7 +5,7 @@
 pkgname=emulationstation-git
 _gitname=EmulationStation
 pkgrel=1
-pkgver=899.268e6c8
+pkgver=1034.99c1ddb
 pkgdesc="A graphical front-end for emulators with controller navigation. Developed for the Raspbery Pi, but runs on most Linux systems."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/RetroPie/EmulationStation"
@@ -47,6 +47,4 @@ package() {
     cd $_gitname
     install -Dm755 "$srcdir/$_gitname/emulationstation" "$pkgdir/usr/bin/emulationstation"
     install -Dm644 "$srcdir/$_gitname/LICENSE.md" "$pkgdir/usr/share/licenses/emulationstation-git/LICENSE"
-    rm -r "$srcdir"
 }
-
