@@ -7,9 +7,9 @@ _pkgname=gst-plugins-base
 pkgname=('gstreamer0.10-base' 'gstreamer0.10-base-plugins')
 pkgver=0.10.36
 pkgrel=11
-arch=('x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
-makedepends=('pkgconfig' 'gstreamer0.10>=0.10.36-7' 'orc' 'libxv' 'alsa-lib' 'cdparanoia' 
+makedepends=('gstreamer0.10>=0.10.36' 'orc' 'libxv' 'alsa-lib' 'cdparanoia' 
              'libvisual' 'libvorbis' 'libtheora' 'pango' 'gobject-introspection')
 options=(!emptydirs)
 url='http://gstreamer.freedesktop.org/'
@@ -39,7 +39,7 @@ prepare() {
 build() {
   cd ${_pkgname}-${pkgver}
   NOCONFIGURE=1 ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static --enable-experimental --disable-gnome_vfs --disable-gtk-doc 
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static --enable-experimental --disable-gnome_vfs --disable-gtk-doc
   make
   sed -e 's/^SUBDIRS_EXT =.*/SUBDIRS_EXT =/' -i Makefile
 }
