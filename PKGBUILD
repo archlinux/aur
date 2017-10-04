@@ -4,7 +4,7 @@
 
 pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git')
 _pkgname=pamac
-pkgver=v6.0.2.r1.g8f19ea1
+pkgver=v6.0.3
 _pkgver=6.0
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
@@ -40,11 +40,6 @@ build() {
   make all
 }
 
-#package() {
-#  cd "$_pkgname"
-#  make prefix="$pkgdir"/usr sysconfdir="$pkgdir"/etc install
-#}
-
 package_pamac-aur-git() {
   optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
               'lxsession: needed for authentification in Xfce, LXDE etc.'
@@ -56,6 +51,8 @@ package_pamac-aur-git() {
   install=pamac.install
   cd "$_pkgname"
   make prefix="$pkgdir"/usr sysconfdir="$pkgdir"/etc install
+  # delete timer no pamac-mirror for Arch Linux 
+  rm "$pkgdir"/etc/systemd/system/multi-user.target.wants/pamac-mirrorlist.timer
 }
 
 package_pamac-aur-tray-appindicator-git() {
