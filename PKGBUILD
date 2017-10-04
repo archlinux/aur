@@ -5,6 +5,7 @@
 # Before you complain about unverifiable signature, please read Allan's post:
 # http://allanmcrae.com/2015/01/two-pgp-keyrings-for-package-management-in-arch-linux/
 # TL;DR: gpg --keyserver pgp.mit.edu --recv-keys 14F26682D0916CDD81E37B6D61B7B526D98F0353
+# TL;DR: gpg --keyserver pgp.mit.edu --recv-keys BBBEBDBB24C6F355
 
 _name=firefox
 _channel=developer
@@ -12,35 +13,53 @@ _lang=es-ES
 pkgname="${_name}-${_channel}-${_lang,,}"
 pkgdesc="Standalone web browser from mozilla.org, developer build (${_lang})"
 url="http://www.mozilla.org/projects/firefox"
-pkgver=57.0b1.20170919
-_version=57.0b1
+pkgver=57.0b5.20171004
+_version=57.0b5
 pkgrel=1
 arch=('i686' 'x86_64')
 conflicts=('firefox-developer')
 license=('MPL' 'GPL' 'LGPL')
-_srcurl="https://download-installer.cdn.mozilla.net/pub/devedition/releases"
+_srcurl="https://ftp.mozilla.org/pub/devedition/releases/${_version}"
 source=(
-  'firefox-developer.desktop'
-  'vendor.js'
-  "${_srcurl}/${_version}/linux-${CARCH}/${_lang}/${_name}-${_version}.tar.bz2")
+        'firefox-developer.desktop'
+        'vendor.js'
+        "${_srcurl}/SHA512SUMS"{,.asc}
+        "${_srcurl}/linux-${CARCH}/${_lang}/${_name}-${_version}.tar.bz2")
 sha512sums=('018c9995046572ed85bd8b6b569ed5dfd3fdfeec3ca25d013879ce1fd6faac13362d2c1554af3351e9ed672e316f7e6c4130760b48c973e65ef37abaf44f7864'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
-            '06c3eb778ea1c16def1da59021132f0b2252b84fb5bfd1ba2b573291d1a51a3fc17d96b1f3e0479b6611c4607bff5f06b00eb94a184b02f2ff564c63ca47da42')
+            'SKIP'
+            'SKIP'
+            'SKIP')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
 optdepends=('pulseaudio: audio support'
-  'ffmpeg: h.264 video'
-  'gtk2: flash plugin support'
-  'hunspell: spell checking'
-  'hyphen: hyphenation'
-  'libnotify: notification integration'
-  'networkmanager: location detection via available WiFi networks'
-  'speech-dispatcher: text-to-speech'
-  'startup-notification: support for FreeDesktop Startup Notification')
+            'ffmpeg: h.264 video'
+            'gtk2: flash plugin support'
+            'hunspell: spell checking'
+            'hyphen: hyphenation'
+            'libnotify: notification integration'
+            'networkmanager: location detection via available WiFi networks'
+            'speech-dispatcher: text-to-speech'
+            'startup-notification: support for FreeDesktop Startup Notification')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
 
 prepare() {
+  # Verifying checksums
+  grep -e "linux-${CARCH}/${_lang}/${_name}-${_version}.tar.bz2" "${srcdir}/SHA512SUMS" \
+    | echo "$(cut -d " " -f1,4) ${_name}-${_version}.tar.bz2" > "${srcdir}/checksums"
+
+  msg 'Verifying checksums...'
+  if [ ! "$(wc -l <"${srcdir}/checksums")" -eq '1' ]; then
+    error 'Wrong number of lines in a checksums file'
+    exit 1
+  fi
+  sha512sum -c --strict "${srcdir}/checksums"
+
   # remove the dictionaries included in the archive
   rm -rf firefox/dictionaries
+}
+
+pkgver() {
+  echo "${_version}.$(date +%Y%m%d)"
 }
 
 package() {
