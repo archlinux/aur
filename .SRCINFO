@@ -1,7 +1,7 @@
 pkgbase = perl-dbix-runsql
 	pkgdesc = Perl/CPAN Module DBIx::RunSQL: run SQL from a file
 	pkgver = 0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/DBIx-RunSQL
 	arch = any
 	license = PerlArtistic
