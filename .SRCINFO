@@ -1,7 +1,7 @@
 pkgbase = perl-lingua-en-findnumber
 	pkgdesc = Perl/CPAN Module Lingua::EN::FindNumber: Locate (written) numbers in English text
 	pkgver = 1.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Lingua-EN-FindNumber
 	arch = any
 	license = PerlArtistic
