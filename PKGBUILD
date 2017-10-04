@@ -16,9 +16,9 @@ source_i686=(code_ia32_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net
               ${pkgname}.desktop
               )
 sha256sums_x86_64=('dc3e9fd7b62e00085d9dbcfd52e7e6276e5088e04332c9302bc05527775b5dd0'
-                   '56dd8ab151c13ae09be3d1d289027c664974070cb053c711e0071f3c9db5ad88')
+                   'de88d95db3f55ce58ffd3c229cbde566099384d4f005cf887b00ccaeed605984')
 sha256sums_i686=('00845b112806ce88401baf18a50a19edd75dc0a341f8bf67c630a80075cc06cc'
-                 '56dd8ab151c13ae09be3d1d289027c664974070cb053c711e0071f3c9db5ad88')
+                 'de88d95db3f55ce58ffd3c229cbde566099384d4f005cf887b00ccaeed605984')
 package() {
   _pkg=VSCode-linux-x64
   if [ "${CARCH}" = "i686" ]; then
