@@ -72,7 +72,7 @@ _NUMAdisable=y	# Disable NUMA in kernel config
 pkgname=(linux-lts41-ck linux-lts41-ck-headers)
 _kernelname=-lts41-ck
 _srcname=linux-4.1
-pkgver=4.1.43
+pkgver=4.1.44
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -103,7 +103,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            'f0156d23ee2c05308e21de051a88ad85509f68609e1543bd3cebb42372e5b294ee147a09b6cf5e3efae4ecfe77d07378a1defb15cb705dbdd67ff25e456d3ed7'
+            '8ab36ac700eaf4e54ed5aad56038c67de7127c72c107f7d3f86ba992ef770eb7869eddb581f0ff2e0435a9a4273144505256b0cf1ddf80ce3fff9d845bc560c4'
             'SKIP'
             '3048d5a5e54bdf2f97d512ec12f21a296a5d54527525fafb8f2609151cd88fa4b0b69e1161ed6126c0fae4930884bf564f1218f767e897dcafa0d6ebf952ecc9'
             '7a9112366bd3659216855e33b48bb9a7af8722ed3f6ead3a705235aa632a75e85db8f4cd6e82fb04ab9b532d60a9470e6d355581af1fc5e421cc7be52b7144f0'
@@ -268,7 +268,7 @@ package_linux-lts41-ck() {
 	#_Kpkgdesc='Linux Kernel and modules with the ck2 patchset featuring the Brain Fuck Scheduler v0.464.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
-	optdepends=('crda: to set the correct wireless channels of your country'  'nvidia-dkms: nVidia drivers for linux-lts41-ck' 'nvidia-340xx-dkms: nVidia drivers for linux-lts41-ck' 'modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+	optdepends=('crda: to set the correct wireless channels of your country'  'nvidia-dkms: nVidia drivers for linux-lts41-ck' 'nvidia-340xx-dkms: nVidia drivers for linux-lts41-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
 	provides=("linux-lts41-ck=${pkgver}")
 	replaces=('kernel26-lts41-ck')
 	backup=("etc/mkinitcpio.d/linux-lts41-ck.preset")
