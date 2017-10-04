@@ -19,49 +19,47 @@ _gtk3=true
 # /view/head:/debian/patches/unity-menubar.patch
 
 _pkgname=firefox
-pkgname=$_pkgname-kde-opensuse
-pkgver=55.0.3
-pkgrel=3
+pkgname=$_pkgname-kde-opensuse-beta
+pkgver=57.0b5
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'hicolor-icon-theme'
-	 'libvpx' 'icu'  'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
-	 'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' )
+         'libvpx' 'icu'  'libevent' 'nss>=3.33' 'nspr>=4.17' 'hunspell'
+         'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' )
 if [ $_gtk3 ] ; then
     depends+=('gtk3')
 fi
 
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake'
              'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13' 'rust'
-            'cargo' 'mercurial')
+            'cargo' 'clang' 'llvm')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=74bc4d049531
+_patchrev=tip
+_debianrev=2113
 options=('!emptydirs'  'strip')
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_repo=https://hg.mozilla.org/mozilla-unified
-source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
-        mozconfig firefox.desktop firefox-install-dir.patch vendor.js kde.js firefox-fixed-loading-icon.png
-	# Firefox patchset
-	firefox-branded-icons-$_patchrev.patch::$_patchurl/firefox-branded-icons.patch
-	firefox-kde-$_patchrev.patch::$_patchurl/firefox-kde.patch
-	firefox-no-default-ualocale-$_patchrev.patch::$_patchurl/firefox-no-default-ualocale.patch
-	# Gecko/toolkit patchset
-	mozilla-kde-$_patchrev.patch::$_patchurl/mozilla-kde.patch
-	mozilla-language-$_patchrev.patch::$_patchurl/mozilla-language.patch
-	mozilla-nongnome-proxies-$_patchrev.patch::$_patchurl/mozilla-nongnome-proxies.patch
-	unity-menubar.patch
-	add_missing_pgo_rule.patch
+source=("http://archive.mozilla.org/pub/$_pkgname/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz"
+        mozconfig firefox.desktop vendor.js kde.js firefox-fixed-loading-icon.png
+        # Firefox patchset
+        browser-kde.xul.diff
+        $_patchurl/firefox-branded-icons.patch
+        $_patchurl/firefox-kde.patch firefox-kde.patch.diff
+        $_patchurl/firefox-no-default-ualocale.patch firefox-no-default-ualocale.patch.diff
+        # Gecko/toolkit patchset
+        $_patchurl/mozilla-kde.patch mozilla-kde.patch.diff
+        $_patchurl/mozilla-nongnome-proxies.patch
+        firefox-trunk.debsrc.tar.gz::http://bazaar.launchpad.net/~mozillateam/$_pkgname/$_pkgname-trunk.head/tarball/"$_debianrev"
+        add_missing_pgo_rule.patch
         pgo_fix_missing_kdejs.patch
-        fix_pgo_bug1389436_explicitly_instantiate_gfxFont.patch
         wifi-disentangle.patch wifi-fix-interface.patch
-        clip-ft-glyph.diff harmony-fix.diff
-        firefox-install-dir.patch no-crmf.diff glibc-2.26-fix.diff
+        firefox-install-dir.patch no-crmf.diff
 )
 
 
@@ -82,13 +80,22 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
-  cd mozilla-unified
+  mkdir -p "$srcdir/patched-patches"
+  cd "$srcdir/patched-patches"
+
+  msg2 "Patching OpenSUSE Patches"
+  for patch in mozilla-kde firefox-kde firefox-no-default-ualocale; do
+    cp "$srcdir/$patch.patch" .
+    patch -Ni "$srcdir/$patch.patch.diff"
+  done
+
+  cd "$srcdir/$_pkgname-$pkgver"
 
   cp "$srcdir/mozconfig" .mozconfig
 
   patch -Np1 -i "$srcdir/firefox-install-dir.patch"
 
-  
+
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
 
@@ -97,18 +104,24 @@ prepare() {
 
   echo -n "$_mozilla_api_key" >mozilla-api-key
   echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
-  
-  msg "Patching for KDE"
-  patch -Np1 -i "$srcdir/mozilla-nongnome-proxies-$_patchrev.patch"
-  patch -Np1 -i "$srcdir/mozilla-kde-$_patchrev.patch"
-  patch -Np1 -i "$srcdir/mozilla-language-$_patchrev.patch"
 
-  patch -Np1 -i "$srcdir/firefox-kde-$_patchrev.patch"
-  patch -Np1 -i "$srcdir/firefox-no-default-ualocale-$_patchrev.patch"
-  patch -Np1 -i "$srcdir/firefox-branded-icons-$_patchrev.patch"
-  
+  msg2 "Patching for KDE"
+  patch -Np1 -i "$srcdir/mozilla-nongnome-proxies.patch"
+
+  patch -Np1 -i "$srcdir/patched-patches/mozilla-kde.patch"
+
+  cp \
+    browser/base/content/browser.xul \
+    browser/base/content/browser-kde.xul
+  patch -Np1 -i "$srcdir/browser-kde.xul.diff"
+
+  patch -Np1 -i "$srcdir/patched-patches/firefox-kde.patch"
+  patch -Np1 -i "$srcdir/patched-patches/firefox-no-default-ualocale.patch"
+
+  patch -Np1 -i "$srcdir/firefox-branded-icons.patch"
+
   # add globalmenu support
-  patch -Np1 -i "$srcdir/unity-menubar.patch"
+  patch -Np1 -i "$srcdir/~mozillateam/firefox/firefox-trunk.head/debian/patches/unity-menubar.patch"
 
   # add missing rule for pgo builds
   patch -Np1 -i "$srcdir"/add_missing_pgo_rule.patch
@@ -116,32 +129,17 @@ prepare() {
   # add missing file Makefile for pgo builds
   patch -Np1 -i "$srcdir"/pgo_fix_missing_kdejs.patch
 
-  # fix bug 1389436 - Explicitly instantiate gfxFont::GetShapedWord<uint8_t> for its use in gfxTextRun.cpp. r=jfkthame
-  patch -Np1 -i "$srcdir"/fix_pgo_bug1389436_explicitly_instantiate_gfxFont.patch
-
   # configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
   # sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
   patch -Np1 -i ../no-crmf.diff
-  
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
-  patch -Np1 -i ../glibc-2.26-fix.diff
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -Np1 -i ../wifi-disentangle.patch
   patch -Np1 -i ../wifi-fix-interface.patch
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1393467
-  patch -Np1 -i ../clip-ft-glyph.diff
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1400721
-  patch -Np1 -i ../harmony-fix.diff
-
-
-  
   # WebRTC build tries to execute "python" and expects Python 2
   mkdir -p "$srcdir/path"
   ln -sf /usr/bin/python2 "$srcdir/path/python"
@@ -152,18 +150,16 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=759252
   cp "$srcdir/firefox-fixed-loading-icon.png" \
      browser/themes/linux/tabbrowser/loading.png
-     
+
+  touch sourcestamp.txt
+
+  mkdir -p "$srcdir/build"
+  mkdir -p "$srcdir/build/dist/include"
 }
 
 build() {
-  #export CXXFLAGS="${CFLAGS}"
-  cd mozilla-unified
-
   export PATH="$srcdir/path:$PATH"
   export PYTHON="/usr/bin/python2"
-  
-  # _FORTIFY_SOURCE causes configure failures
-  CPPFLAGS+=" -O2"
 
   # Hardening
   LDFLAGS+=" -Wl,-z,now"
@@ -172,22 +168,58 @@ build() {
     LDFLAGS+=" -Xlinker --no-keep-memory"
   fi
 
-  if [[ -n $_pgo ]]; then
-    # Do PGO
-    xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
-      make -f client.mk build MOZ_PGO=1
-  else
-    make -f client.mk build
+  cd "$srcdir"
+
+  if [[ "build/configure.txt" -ot "$_pkgname-$pkgver/sourcestamp.txt" ]]; then
+    cd "$srcdir/$_pkgname-$pkgver"
+
+    autoreconf-2.13 -i --force
+    autoconf-2.13
+
+    cd "$srcdir/build"
+
+    # _FORTIFY_SOURCE causes configure failures
+    CPPFLAGS_ORIGINAL="$CPPFLAGS"
+    CPPFLAGS+=" -O2"
+
+    "../$_pkgname-$pkgver"/configure \
+      --prefix='/usr' \
+      --disable-system-pixman  # With system pixman doesn't work?
+
+    touch configure.txt
+
+    CPPFLAGS="$CPPFLAGS_ORIGINAL"
   fi
+
+  cd "$srcdir/build"
+
+  # some headers are missing for some reason.
+  ln -fs \
+      "$srcdir/$_pkgname-$pkgver/nsprpub/lib/ds"/* \
+      "$srcdir/$_pkgname-$pkgver/nsprpub/pr/include"/* \
+      "$srcdir/$_pkgname-$pkgver/config/external/nspr"/* \
+      "$srcdir/$_pkgname-$pkgver/gfx/cairo/libpixman/src"/* \
+      "$srcdir/$_pkgname-$pkgver/nsprpub/lib/libc/include"/* \
+      "dist/include"/
+
+  MAKEARGS=('MOZ_SOURCE_CHANGESET="opensuse-kde-beta"')
+  if [[ -n $_pgo ]]; then
+    MAKEARGS+=('MOZ_PGO=1')
+    MAKECMD=(xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" make "${MAKEARGS[@]}")
+  else
+    MAKECMD=(make "${MAKEARGS[@]}")
+  fi
+
+  "${MAKECMD[@]}"
 }
 
 package() {
-  cd mozilla-unified
+  cd "$srcdir/build"
 
-  [[ "$CARCH" == "i686" ]] && cp "$srcdir/kde.js" obj-i686-pc-linux-gnu/dist/bin/defaults/pref
-  [[ "$CARCH" == "x86_64" ]] && cp "$srcdir/kde.js" obj-x86_64-pc-linux-gnu/dist/bin/defaults/pref
+  [[ "$CARCH" == "i686" ]] && cp "$srcdir/kde.js" dist/bin/defaults/pref
+  [[ "$CARCH" == "x86_64" ]] && cp "$srcdir/kde.js" dist/bin/defaults/pref
 
-  make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
+  make install DESTDIR="$pkgdir" INSTALL_SDK=
 
   install -Dm644 "$srcdir/vendor.js" "$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
   install -Dm644 "$srcdir/kde.js" "$pkgdir/usr/lib/firefox/browser/defaults/preferences/kde.js"
@@ -204,6 +236,8 @@ app.distributor=archlinux
 app.distributor.channel=$pkgname
 app.partner.archlinux=archlinux
 END
+
+  cd "$srcdir/$_pkgname-$pkgver"
 
   for i in 16 22 24 32 48 256; do
       install -Dm644 browser/branding/official/default$i.png \
@@ -230,27 +264,25 @@ END
   #https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
-md5sums=('SKIP'
-         'a438d28b6644036d79a20c16efad80b2'
-         '14e0f6237a79b85e60256f4808163160'
-         'dbf14588e85812ee769bd735823a0146'
-         'aa9f776d2187cba09de65cbb02b39ca0'
-         '05bb69d25fb3572c618e3adf1ee7b670'
-         '6e335a517c68488941340ee1c23f97b0'
-         '46a4971f26c990a66b913ba700c7f3fa'
-         'ec5bf2759be835054e9d1d803e9b5897'
-         '1fad9a988826d69fe712ea973e43f6da'
-         '1d3a8171492b6e1c672f639fd44d4cf4'
-         'fa6ac817f576b486419b5f308116a7cd'
-         '0c684360f1df4536512d51873c1d243d'
-         '730e43106f0a4b19066c9c1e15ff7888'
-         'fe24f5ea463013bb7f1c12d12dce41b2'
-         '3fa8bd22d97248de529780f5797178af'
-         'b358b5ed3726ecd4ed054bdc09901982'
-         'c6ebac35e9e9c3b031f2cf9ee3e6ed96'
-         'a819433292665a6f06a223a0a718e67a'
-         '7601506112cd12f21dea65d840968d1f'
-         '2f51339d122d19f57ec49fc2da07654a'
-         'dbf14588e85812ee769bd735823a0146'
-         '196edf030efc516e3de5ae3aa01e9851'
-         '11427899801d5e8f66df835f5806f851')
+sha256sums=('bbe48656693e562b60f643a76a825b84d57581bb83dcb9a3a7fa90ac47455d5d'
+            'cf218e2f68556261726168b60be8fc4fa91832a1ed5309880516519f6d832d4b'
+            '75c526e9669b91b4fe5dcea650a1e8419220abb2e9564184f0d984c71eae82e8'
+            '93c5df00f409988bbfa890ac175103476ead3af68f7501973ee70bd11dc472f8'
+            'b8cc5f35ec35fc96ac5c5a2477b36722e373dbb57eba87eb5ad1276e4df7236d'
+            '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213'
+            '8da046206e98649a371ce8e9b3dffc9532f78e963f764c866bc4e021b8b6fb5a'
+            'c85a37e71f2bd511fac88d41ca0618ee375c49fc86bc2beddf6dc17c3f17508d'
+            'f672e60e22869381e9c4cdd90353a053a0171778eca40d4664bc733822fd535f'
+            'ecb7c3ae3f52ee9b430c1e8e69370b1dedb06674e1fcdc856d60942680bf7b62'
+            'b941790009bb9eda46c2d96fb0d1c83b0fe2d1acf74754ab08e6b18c1e0c6b16'
+            'f3c50e4ec8d58b23530d87a3162e0b33af58ea73b35dc51bd29b1fad0d26f43f'
+            'e25b9fa2e4ac279b5e073286b7dc9956822bf508eccb67eb870921013274a709'
+            'd43305705aab0520ac55c94dab4a545e90b15093d7b4c25359f7f145fa3723c4'
+            'ef0f90c9134ef05b950f06a3ffbd699c2e5a5f99a4cdf9868e799534d68c204f'
+            'beb277cf54a23faf5aab8d2ebea3683d75f60367468dd418e8f62ec834681b0c'
+            'f9067f62a25a7a77276e15f91cc9e7ba6576315345cfc6347b1b2e884becdb0c'
+            '2797d1e61031d24ee24bf682c9447b3b9c1bca10f8e6cbd597b854af2de1ec54'
+            'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
+            'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
+            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
+            'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb')

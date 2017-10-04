@@ -1,0 +1,11 @@
+--- a/browser/base/content/browser-kde.xul
++++ b/browser/base/content/browser-kde.xul
+@@ -209,7 +209,7 @@
+       </row>
+       <vbox id="editBookmarkPanelContent" flex="1" hidden="true"/>
+       <hbox id="editBookmarkPanelBottomButtons" pack="end">
+-#ifndef XP_UNIX
++#ifdef XP_UNIX
+         <button id="editBookmarkPanelDoneButton"
+                 class="editBookmarkPanelBottomButton"
+                 label="&editBookmark.done.label;"
