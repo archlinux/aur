@@ -5,11 +5,12 @@ _minor_version=0
 
 pkgname=idp
 pkgver=${_major_version}.${_minor_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Knowledge Base System"
 arch=('i686' 'x86_64')
 url="http://dtai.cs.kuleuven.be/software/idp"
 license=('LGPL3')
+install=idp.install
 
 
 source=("https://dtai.cs.kuleuven.be/krr/files/releases/idp/${_major_version}.${_minor_version}/idp-${_major_version}.${_minor_version}-Linux.tar.gz")
