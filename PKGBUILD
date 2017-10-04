@@ -1,18 +1,19 @@
+# Maintainer: Brian Bidulock <bidulock@Openss7.org>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname='perl-event'
-pkgver='1.24'
-pkgrel='6'
+pkgver='1.26'
+pkgrel='1'
 pkgdesc="Event loop processing"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 makedepends=()
 url='http://search.mcpan.org/dist/Event'
-source=('http://search.mcpan.org/CPAN/authors/id/E/ET/ETJ/Event-1.24.tar.gz')
-md5sums=('cf44203f30750bfa706c2c8005c38e3b')
-_distdir="Event-1.24"
+source=("http://search.mcpan.org/CPAN/authors/id/E/ET/ETJ/Event-${pkgver}.tar.gz")
+md5sums=('a7d576cf90288333a5470bf98bdb948a')
+_distdir="Event-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
