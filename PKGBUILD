@@ -5,14 +5,14 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python2-pytorch" "python-pytorch-cuda" "python2-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="http://pytorch.org"
 license=('BSD')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools'
              'python-yaml' 'python2-yaml' 'python-numpy' 'python2-numpy'
-             'gcc5' 'cmake' 'cuda' 'cudnn')
+             'gcc6' 'cmake' 'cuda' 'cudnn')
 source=("https://github.com/pytorch/pytorch/archive/v${pkgver}.tar.gz"
         2334.patch)
 sha256sums=('b76d61aaa8fc18b928ca3c910c398687be08f5661d6615884c4faba3e8742a26'
@@ -34,7 +34,7 @@ prepare() {
 }
 
 build() {
-  msg "Building Python 2 without cuda"
+  msg2 "Building Python 2 without cuda"
   cd "$srcdir/${_pkgname}-${pkgver}-py2"
   # Uncomment and modify the following line to enable Intel MKL and magma support
   #CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
@@ -45,7 +45,7 @@ build() {
   WITH_CUDNN=0 \
   python2 setup.py build
 
-  msg "Building Python 3 without cuda"
+  msg2 "Building Python 3 without cuda"
   cd "$srcdir/${_pkgname}-${pkgver}-py3"
   # Uncomment and modify the following line to enable Intel MKL and magma support
   #CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
@@ -56,12 +56,12 @@ build() {
   WITH_CUDNN=0 \
   python setup.py build
 
-  msg "Building Python 2 with cuda"
+  msg2 "Building Python 2 with cuda"
   cd "$srcdir/${_pkgname}-${pkgver}-py2-cuda"
   # Uncomment and modify the following line to enable Intel MKL and magma support
   #CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
-  CC=gcc-5 \
-  CXX=g++-5 \
+  CC=gcc-6 \
+  CXX=g++-6 \
   CFLAGS="${CFLAGS/-fno-plt/}" \
   CXXFLAGS="${CFLAGS/-fno-plt/}" \
   WITH_CUDA=1 \
@@ -69,14 +69,14 @@ build() {
   WITH_CUDNN=1 \
   CUDNN_LIB_DIR=/opt/cuda/lib64 \
   CUDNN_INCLUDE_DIR=/opt/cuda/include \
-  python2 setup.py build
+  python2 setup.py build --verbose
 
-  msg "Building Python 3 with cuda"
+  msg2 "Building Python 3 with cuda"
   cd "$srcdir/${_pkgname}-${pkgver}-py3-cuda"
   # Uncomment and modify the following line to enable Intel MKL and magma support
   #CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
-  CC=gcc-5 \
-  CXX=g++-5 \
+  CC=gcc-6 \
+  CXX=g++-6 \
   CFLAGS="${CFLAGS/-fno-plt/}" \
   CXXFLAGS="${CFLAGS/-fno-plt/}" \
   WITH_CUDA=1 \
@@ -84,7 +84,7 @@ build() {
   WITH_CUDNN=1 \
   CUDNN_LIB_DIR=/opt/cuda/lib64 \
   CUDNN_INCLUDE_DIR=/opt/cuda/include \
-  python setup.py build
+  python setup.py build --verbose
 }
 
 package_python2-pytorch() {
