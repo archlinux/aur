@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
 url='https://gstreamer.freedesktop.org'
 depends=('libxml2' 'glib2')
-makedepends=('intltool' 'pkgconfig' 'gobject-introspection' 'automake' 'bison' 'flex')
+makedepends=('intltool' 'gobject-introspection')
 source=("https://gstreamer.freedesktop.org/src/gstreamer/${_pkgname}-${pkgver}.tar.xz"
         'tests-remove-silly-test_fail_abstract_new-check.patch'
         'bison3.patch')
