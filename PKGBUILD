@@ -9,7 +9,7 @@ pkgver() {
 }
 pkgrel=1
 pkgdesc="Port Allwinner xradio driver to mainline Linux"
-arch=(armv7h x86_64)
+arch=(armv7h)
 url="https://github.com/fifteenhex/xradio.git"
 license=('GPL')
 depends=()
