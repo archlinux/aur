@@ -3,7 +3,7 @@
 
 pkgname='perl-class-unload'
 pkgver='0.11'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module Class::Unload: Unload a class"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -40,8 +40,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
