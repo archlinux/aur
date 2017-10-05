@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=agrep-git
-pkgver=r30.eef2041
+pkgver=r33.7b7f350
 pkgrel=1
 epoch=
 pkgdesc="Approximate GREP for fast fuzzy string searching."
