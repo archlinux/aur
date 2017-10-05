@@ -38,7 +38,7 @@ optdepends=('zenity: simple dialog boxes'
 	'libnotify: Gnome dialog boxes')
 install="${_pkgname}.install"
 
-_archstr=$([ $CARCH = 'x86_64' ] && echo "${_idstr64}" || echo "${_idstr32}")
+_archstr=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${_idstr64}" || echo -n "${_idstr32}")
 
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 
