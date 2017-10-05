@@ -13,7 +13,7 @@
 _makenconfig=
 
 # Tweak kernel options prior to a build via menuconfig
-_makemenuconfig=
+_makemenuconfig=y
 
 # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
 # actually run slower with NUMA enabled. Most users will want to set this option
@@ -35,13 +35,6 @@ _NUMAdisable=y
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
-
-# Alternative I/O scheduler by Paolo Valente
-# Set this if you want it enabled globally i.e. for all devices in your system
-# If you want it enabled on a device-by-device basis, leave this unset and see:
-# https://wiki.archlinux.org/index.php/Improving_performance#Tuning_IO_schedulers
-
-_BFQ_enable_=
 
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
@@ -158,13 +151,6 @@ prepare() {
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
 
-#  ### Optionally enable BFQ as the default I/O scheduler
-#  if [ -n "$_BFQ_enable_" ]; then
-#    msg "Setting BFQ as default I/O scheduler..."
-#    sed -i -e '/CONFIG_DEFAULT_IOSCHED/ s,cfq,bfq,' \
-#      -i -e s'/CONFIG_DEFAULT_CFQ=y/# CONFIG_DEFAULT_CFQ is not set\nCONFIG_DEFAULT_BFQ=y/' ./.config
-#  fi
-#
   # set extraversion to pkgrel
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
