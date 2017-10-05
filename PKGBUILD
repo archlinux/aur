@@ -3,7 +3,7 @@
 
 pkgname=kirigami2
 pkgver=5.38.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A QtQuick based components set'
 arch=(i686 x86_64)
 url='https://community.kde.org/Frameworks'
@@ -26,6 +26,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
+    -DBUILD_EXAMPLES=ON \
     -DBUILD_TESTING=OFF
   make
 }
