@@ -1,5 +1,5 @@
 pkgname=sql-workbench
-pkgver=122
+pkgver=123
 pkgrel=1
 epoch=
 pkgdesc="SQL Workbench/J is a free, DBMS-independent, cross-platform SQL query tool."
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("http://www.sql-workbench.net/Workbench-Build${pkgver}.zip")
 noextract=("Workbench-Build${pkgver}.zip")
-sha256sums=('84ae40327b2f47ad00fade69d68f45f095af5e01afc558536dd3166f197311bc')
+sha256sums=('93014068baa6efdd44b546c4c1cf3dc1279e0ff51d398bc6d1f304c368dab693')
 
 build() {
   unzip "Workbench-Build${pkgver}".zip
