@@ -1,0 +1,19 @@
+pkgbase = qemu-user-static-bin
+	pkgdesc = A generic and open source machine emulator, statically linked
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = http://wiki.qemu.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = perl
+	provides = qemu-user-static
+	conflicts = qemu-user-static
+	source = qemu-user-static.deb::http://ftp.debian.org/debian/pool/main/q/qemu/qemu-user-static_2.10.0+dfsg-1_amd64.deb
+	source = qemu.binfmt
+	sha256sums = 8b9a049de297ebdb9c69200edaee68c4c94b757829bbcb74235db1a067bc7ad1
+	sha256sums = 0c1e998022f3306946cd66678f363b10d93b1309c5bbc9f0e6064080a3b604f9
+
+pkgname = qemu-user-static-bin
+
