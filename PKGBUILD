@@ -8,9 +8,9 @@
 _pkgname="gitea"
 _gourl="code.gitea.io"
 
-pkgname=$_pkgname-git
-pkgrel=1
-pkgver=r5666.6b62f042
+pkgname=gitea-git
+pkgrel=2
+pkgver=v1.1.0.r619.g6b62f042
 pkgdesc="A painless self-hosted Git service."
 url="https://gitea.io/"
 license=("MIT")
@@ -29,13 +29,21 @@ conflicts=("gitea")
 provides=("gitea")
 options=("!strip" "emptydirs")
 backup=("etc/gitea/app.ini")
-install=${_pkgname}.install
+install=gitea.install
 source=("git://github.com/go-gitea/gitea.git"
         "0001-Adjust-config-for-Arch-Linux-package.patch"
         "0002-Adjust-service-file-for-Arch-Linux-package.patch")
 sha256sums=("SKIP"
             "c786772cccc26a4044d3c31d4974581c56fdd18f1eef96f1e54e6b7a03aef543"
             "6cd1daa666659a68c98376f8bfae55402b5ffc39c1bf42b5ae0ee700249a3b73")
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 prepare() {
   mkdir -p "${srcdir}/src/${_gourl}/${_pkgname}"
@@ -47,11 +55,6 @@ prepare() {
   msg2 "Patch config and service file"
   patch -Np1 -i "${srcdir}/0001-Adjust-config-for-Arch-Linux-package.patch" "${srcdir}/src/${_gourl}/${_pkgname}/conf/app.ini"
   patch -Np1 -i "${srcdir}/0002-Adjust-service-file-for-Arch-Linux-package.patch" "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/${_pkgname}.service"
-}
-
-pkgver() {
-  cd "${srcdir}/src/${_gourl}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

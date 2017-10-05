@@ -1,7 +1,7 @@
 pkgbase = gitea-git
 	pkgdesc = A painless self-hosted Git service.
-	pkgver = r5666.6b62f042
-	pkgrel = 1
+	pkgver = v1.1.0.r619.g6b62f042
+	pkgrel = 2
 	url = https://gitea.io/
 	install = gitea.install
 	arch = i686
