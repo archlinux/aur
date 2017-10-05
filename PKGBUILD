@@ -2,7 +2,7 @@
 
 pkgname=pyakm
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GUI to manage arch linux kernels"
 arch=('x86_64')
 url="https://github.com/pssncp142/pyakm"
@@ -27,5 +27,5 @@ package(){
    install -D -m644 data/systemd/pyakm-system.service "$pkgdir"/usr/lib/systemd/system/pyakm-system.service
    install -D -m644 data/desktop/pyakm.desktop "$pkgdir"/usr/share/applications/pyakm.desktop
    install -D -m644 data/desktop/pyakm.png "$pkgdir"/usr/share/pixmaps/pyakm.png
-   install -D -m644 data/LICENSE "$pkgdir"/usr/share/licenses/pyakm/LICENSE   
+   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/pyakm/LICENSE   
 }
