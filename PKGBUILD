@@ -9,7 +9,7 @@ _pybasever=2.6
 pkgdesc="Legacy version Python 2.6 of the high-level scripting language"
 arch=('i686' 'x86_64' 'arm')
 license=('PSF')
-url="http://www.python.org/"
+url="https://www.python.org/"
 depends=('db>=4.8' 'bzip2' 'gdbm' 'openssl-1.0' 'zlib' 'expat' 'sqlite3' 'libffi')
 makedepends=('gcc5' 'tk>=8.5.0')
 optdepends=('tk: for IDLE, pynche and modulator'
@@ -17,7 +17,7 @@ optdepends=('tk: for IDLE, pynche and modulator'
 checkdepends=('net-tools')
 provides=(python2=${pkgver})
 changelog=ChangeLog
-source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
+source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
         modulator-launcher
         pynche-launcher
         python-2.6-db-4.8.patch
@@ -55,34 +55,34 @@ prepare() {
 
   patch -Np0 -i ${srcdir}/python-2.6-internal-expat.patch
 
-  # http://bugs.python.org/issue6949
+  # https://bugs.python.org/issue6949
   patch -Np0 -i ${srcdir}/python-2.6-db-4.8.patch
 
   patch -Np0 -i ${srcdir}/python-2.6-dbm.patch
 
-  # http://bugs.python.org/issue10126
+  # https://bugs.python.org/issue10126
   patch -Np1 -i ${srcdir}/python-2.6-distutils.patch
 
-  # http://bugs.python.org/issue7759
+  # https://bugs.python.org/issue7759
   patch -Np1 -i ${srcdir}/python-2.6-mhlib-nlinks.patch
 
-  # http://bugs.python.org/issue9054
+  # https://bugs.python.org/issue9054
   patch -Np1 -i ${srcdir}/python-2.6-pyexpat-segfault.patch
 
-  # http://bugs.python.org/issue20374
+  # https://bugs.python.org/issue20374
   patch -Np1 -i ${srcdir}/python-2.6-readline-6.3.patch
 
-  # http://bugs.python.org/issue20901
+  # https://bugs.python.org/issue20901
   patch -Np1 -i ${srcdir}/python-2.6-sqlite-test.patch
 
   patch -Np1 -i ${srcdir}/python-2.6-ssl-nosslv3.patch
 
   patch -Np1 -i ${srcdir}/python-2.6-tkinter-86.patch
 
-  # http://bugs.python.org/issue13007
+  # https://bugs.python.org/issue13007
   patch -Np1 -i ${srcdir}/python-2.6-whichdb-gdbm-1.9.patch
 
-  # http://bugs.python.org/issue27369
+  # https://bugs.python.org/issue27369
   patch -Np0 -i ${srcdir}/python-2.6-expat-2.2.patch
 
   # CPython SVN r86565
@@ -137,10 +137,10 @@ check() {
 
   if [ "x$CARCH" = "xarm" ]; then
     # test_float fails on arm
-    # issue with no fix: http://bugs.python.org/issue8265
-    LD_LIBRARY_PATH="$(pwd)" ./python Lib/test/regrtest.py -x test_float
+    # issue with no fix: https://bugs.python.org/issue8265
+    LD_LIBRARY_PATH="$(pwd)" ./python Lib/test/regrtest.py -x test_float -w
   else
-    make test
+    make test EXTRATESTOPTS="-w"
   fi
 }
 
