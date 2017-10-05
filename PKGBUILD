@@ -2,13 +2,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdialog-git
-pkgver=1.0.1036.60c9569
+pkgver=1.0.1056.60c6600a3
 pkgrel=1
 pkgdesc="KDialog can be used to show nice dialog boxes from shell scripts. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/applications/kdialog'
 license=('LGPL')
-depends=('kdelibs4support')
+depends=('kio')
 makedepends=('extra-cmake-modules'
              'git'
              'python'
@@ -17,7 +17,7 @@ conflicts=('kdebase-kdialog'
            'kdialog'
            )
 provides=('kdialog')
-source=('git://anongit.kde.org/kdialog')
+source=('git+https://anongit.kde.org/kdialog')
 sha256sums=('SKIP')
 
 pkgver() {
