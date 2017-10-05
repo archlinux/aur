@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python-dbus' 'python-gobject' 'python-beautifulsoup4' 'python-requests' 'pyalpm')
 provides=('pyakm')
 source=("pyakm-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=("d8ab26f0ea8fffc2eb96b362dae514915193662719307fd45a0a7609efa03e47")
+sha256sums=("dca0f6a3f18330be655c5e391add16e35164171a21e29756770ac3a65f2e6a23")
 
 prepare(){
    cd "$srcdir/pyakm-$pkgver"
