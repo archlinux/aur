@@ -84,11 +84,8 @@ source=(
 
   'dkms.conf.in'
   'Makefile'
-  'vmblock.patch'
-  'vmci.patch'
   'vmmon.patch'
   'vmnet.patch'
-  'vsock.patch'
 )
 sha256sums=(
   'f758e06d302b339c23f9c498d6dbf8a0182cfdfb71e4cdcc209ecfb68e20500a'
@@ -112,11 +109,8 @@ sha256sums=(
 
   '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
   '6ce902b1dab8fc69be253abd8e79017011985eca850ff7acc7282f9ab668e35d'
-  '00be9dbef75266d882cbdc8cc0b8f78cd3b081d8ca9a3cbfa17cfc34b3f1a52f'
-  '18ac27b66e54bb4841756957c017ff9d8de1f5ccdbffbdc0017eef1d5dbfe1fb'
   'caa200a78a29e786753b27a42970ee86865c15fd529fd413080b3f053d541dd1'
   '4f07320c1f9e71e649cf3e98ec107ba5521d52e50ad781ccc9dc1b61817342ae'
-  '61dc56d66de042f247a9d7354fcf5a93779c7ea16c1cd5a82d917598283e08f0'
 )
 options=(!strip emptydirs)
 
@@ -398,7 +392,7 @@ package() {
     -e "s/@PKGVER@/$_pkgver/g" \
     -i "$dkms_dir/dkms.conf"
 
-  for module in vmblock vmci vmmon vmnet vsock; do
+  for module in vmmon vmnet; do # vmblock vmci vsock
     tar -xf "vmware-vmx/lib/modules/source/$module.tar" -C "$dkms_dir"
     msg "Patching $module module for DKMS"
     patch -p2 --read-only=ignore --directory="$dkms_dir/$module-only" < "$srcdir/$module.patch"
