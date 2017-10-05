@@ -1,7 +1,7 @@
 pkgbase = wavebox-bin
 	pkgdesc = The next generation of web-desktop communication
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wavebox.io/
 	arch = x86_64
 	arch = i686
@@ -17,6 +17,8 @@ pkgbase = wavebox-bin
 	optdepends = libnotify
 	provides = wavebox
 	options = !strip
+	source = wavebox.desktop
+	sha512sums = a6a55a0b0597eea63e2869ab27e3ddab802b020c89059b0b32399b63e64f0271e4685e363448da71c6ba90c810b83542cd0c9f40e2ce49057a8e33c54b82663b
 	source_x86_64 = https://github.com/wavebox/waveboxapp/releases/download/v3.4.0/Wavebox_3_4_0_linux_x86_64.tar.gz
 	sha512sums_x86_64 = 20a12bd7dcca6d5eda3497c64f4bbcfe06a108b30840ecbe3aee39d62b1f553f2b103dee890864da03b709b9a70c19da2396e62da7251c69df2b7c804c0af819
 	source_i686 = https://github.com/wavebox/waveboxapp/releases/download/v3.4.0/Wavebox_3_4_0_linux_ia32.tar.gz
