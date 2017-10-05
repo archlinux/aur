@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nrgrep
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="NR-grep ([N]ondeterministic [R]everse [g]rep): a fast and flexible pattern matching tool"
 arch=('i686' 'x86_64')
@@ -41,6 +41,6 @@ package() {
   install -D -m755 nrgrep $pkgdir/usr/bin/nrgrep
   install -D -m644 README $pkgdir/usr/share/doc/$pkgname/README
   install -D -m644 ../spe01.pdf $pkgdir/usr/share/doc/$pkgname/spe01.pdf
-  install -D -m644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/README
+  install -D -m644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/COPYRIGHT
 }
 
