@@ -2,7 +2,7 @@
 # Contributor: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
 
 pkgname=unifi
-pkgver=5.5.20
+pkgver=5.5.24
 pkgrel=1
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
 arch=('any')
@@ -16,7 +16,7 @@ source=("UniFi-$pkgver.zip::https://dl.ubnt.com/unifi/$pkgver/UniFi.unix.zip"
         'unifi.service'
         'unifi.sysusers'
         'LICENSE')
-sha512sums=('f0feb90ef764562760c52c2c48e263a4b353fcf19c5f27b956a287fdb825e7560d370211dccb46c769f759fffa9378c8c9386ff7b225626425b5cd23b11c6120'
+sha512sums=('aaf8ce0679d7b9605e10c717efe8b676638891f15916e75003d897881ba6df5dcebb2818df769164efcb6e97265a2fdccaea34638a62e2fc6bb0072e12e78ba3'
             '4b77e480dac9acef58e2d8f088491aa056a55edc9ca613c1b707d53ca802579513082e7c16f5a59689813609b97c2391253c99d77709be4a536abb683e5106ed'
             '0fdd04112236bb3f4d96e4e1c43e0a9d97412831b44837466d70e15521336275a0496dbd47dd28873dc85ba4982ef2234e31c78146eb45c20b158dadf2cec7b8'
             '22e0a4d5be7645e7f1dd760a1b93fa5a49a7e92ce6f23f2a7d0f72043cd0be057bd3faecabd1d3048ecf93480b47d278926b99b5abc17ecbe91a5b15763f0a9c')
