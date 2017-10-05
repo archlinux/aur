@@ -1,135 +1,123 @@
+# Maintainer: Vladimir Krivopalov <vladimir.krivopalov@gmail.com>
+
+# Main package information
 pkgname=scylla
-pkg_major_minor=1.6
-pkgver=${pkg_major_minor}.1
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="NoSQL data store using the Seastar framework, compatible with Apache Cassandra"
+pkgdesc="Scylla is an open source NoSQL drop-in replacement for Apache Cassandra with fast throughput and low latency"
 arch=('x86_64')
 url="http://www.scylladb.com/"
 license=('AGPL')
-depends=('antlr3' 'libantlr3c' 'libyaml' 'yaml-cpp' 'lz4' 'zlib' 'snappy'
-		 'jsoncpp' 'gnutls' 'ninja' 'ragel' 'libaio' 'crypto++' 'xfsprogs' 'jre8-openjdk-headless'
-		 'numactl' 'hwloc' 'libpciaccess' 'libxml2' 'python-pyparsing' 'boost-libs'
-		 'lksctp-tools' 'protobuf' 'libunwind' 'systemtap-git' 'dpkg' 'xmlcutty-bin')
-makedepends=('git' 'gcc')
+
+# Dependencies
+depends=('hwloc' 'systemd' 'collectd' 'python-yaml' 'python2-yaml' 'python-urwid'
+            'pciutils' 'python-pyparsing' 'python2-requests' 'util-linux'
+            'python-pyudev' 'python-setuptools' 'boost' 'boost-libs')
+
+makedepends=('git' 'gcc' 'antlr3-cpp-headers-git' 'libyaml' 'yaml-cpp'
+                'lz4' 'zlib' 'snappy' 'jsoncpp' 'gnutls' 'ninja'
+                'ragel' 'libaio' 'crypto++' 'xfsprogs' 'jre8-openjdk-headless'
+                'numactl' 'libpciaccess' 'libxml2' 'thrift' 'lksctp-tools'
+                'protobuf' 'libunwind' 'systemtap' 'make' 'libtool' 'cmake')
+# Relations
 provides=('scylla')
+conflicts=('scylla-git')
+
+# Others
+backup=('etc/scylla/scylla.yaml'
+        'etc/scylla/cassandra-rackdc.properties'
+        'etc/scylla.d/housekeeping.cfg'
+        'etc/sysconfig/scylla-server'
+        'etc/collectd.d/scylla.conf'
+        'etc/scylla.d/cpuset.conf'
+        'etc/scylla.d/dev-mode.conf'
+        'etc/scylla.d/io.conf')
+install=.install
+changelog=
 source=("git+https://github.com/scylladb/scylla.git#tag=scylla-${pkgver}"
-'git+https://github.com/scylladb/scylla-ami.git'
-'git+https://github.com/scylladb/scylla-swagger-ui.git'
-'git+https://github.com/scylladb/scylla-seastar.git'
-'git+https://github.com/scylladb/fmt.git'
-'git+https://github.com/scylladb/dpdk.git'
-'git+https://github.com/scylladb/c-ares.git'
-)
-md5sums=('SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
+    'git+https://github.com/scylladb/scylla-ami.git'
+    'git+https://github.com/scylladb/scylla-swagger-ui.git'
+    'git+https://github.com/scylladb/scylla-seastar.git'
+    'git+https://github.com/scylladb/fmt.git'
+    'git+https://github.com/scylladb/dpdk.git'
+    'git+https://github.com/scylladb/c-ares.git'
 )
 
-# install dependencies
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+
 prepare() {
-
-	# extract source zip
-#	unzip -o scylla-${pkgver}.zip || echo 'ignore error'
-#	cd ${pkgname}-${pkgname}-${pkgver}
-	cd ${pkgname}
-	git checkout tags/${pkgname}-${pkgver}
-	
-	# init submodules
-	git submodule init
-#	git config submodule.scylla-seastar.url ${srcdir}/scylla-seastar
-#	git config submodule.swagger-ui.url ${srcdir}/scylla-swagger-ui
-#	git config submodule.dist/ami/files/scylla-ami.url ${srcdir}/scylla-ami
-	git submodule update --init --recursive
-	
-	# init seastar
-#	cp -R ${srcdir}/seastar/* seastar
-#	cd seastar
-#	git submodule init 
-#	git config submodule.dpdk.url ${srcdir}/dpdk
-#	git config submodule.fmt.url ${srcdir}/fmt
-#	git config submodule.c-ares.url ${srcdir}/c-ares
-#	git submodule update 
-#	cd ..
-	
-	# downgrade thrift
-	wget -c 'http://ala.seblu.net/packages/t/thrift/thrift-0.9.1-3-x86_64.pkg.tar.xz'
-	sudo pacman --noconfirm -U thrift-0.9.1-3-x86_64.pkg.tar.xz
-
-	# install antlr3++ headers
-	DST=${srcdir}/antlr3
-	if [ ! -d "$DST/.git" ]; then 
-		rm -rf antlr3
-		git clone --depth 1 https://github.com/antlr/antlr3.git
-		sudo cp antlr3/runtime/Cpp/include/* /usr/include/
-	fi
-	
-	# compile
-	echo `pwd`
-	python3 configure.py --mode=release --with=scylla --disable-xen --static
-	CORES=`lscpu | grep 0- | tail -n 1 | cut -d '-' -f 2`
-	ninja build/release/iotune -j${CORES}
-	ninja build/release/scylla -j${CORES}
-	
-	# download deb scripts
-	URL=http://downloads.scylladb.com.s3.amazonaws.com/
-	if [ ! -f pkgs.xml ]; then
-		wget -c ${URL} -O pkgs.xml
-	fi
-	xmlcutty -path /ListBucketResult/Contents/Key -rename '\n' pkgs.xml | grep .deb | grep trusty_backup/scylladb-${pkg_major_minor}/ | grep -v '~rc' | grep -v '\-dbg' > pkgs.txt
-	
-	mkdir -p dpkg
-	cat pkgs.txt | cut -d '/' -f 8 | cut -d '_' -f 1 | uniq > pkgs-unique.txt
-	cat pkgs-unique.txt | while read line; do 
-		FURL="$URL"`cat pkgs.txt | grep ${line} | tail -n 1`
-		wget -c "$FURL"; 
-		FNAME=`echo "$FURL" | cut -d '/' -f 11`
-		echo "extracting $FNAME"
-		dpkg-deb -x "$FNAME" dpkg/
-	done
+    cd "$srcdir/${pkgname}"
+    git submodule update --init --recursive
 }
 
-# packaging
+build() {
+    cd "$srcdir/${pkgname}"
+    ./configure.py --mode=release
+    ninja -j`nproc --all` build/release/scylla build/release/iotune
+    cp dist/common/systemd/scylla-server.service.in build/scylla-server.service
+    sed -i -e "s#@@SYSCONFDIR@@#${_sysconfdir}/sysconfig#g" build/scylla-server.service
+}
+
+# Directory prefixes
+_bindir=/usr/bin
+_sysconfdir=/etc
+_sysctldir=/etc/sysctl.d
+_docdir=/usr/share/doc
+_unitdir=/usr/lib/systemd/system
+_libdir=/usr/lib/scylla
+_sharedstatedir=/var/lib
+
 package() {
-#	DIR=${pkgname}-${pkgname}-${pkgver}
-	DIR=${pkgname}
-	src="$srcdir/$DIR/dpkg"
+    mkdir -p "${pkgdir}${_bindir}"
+    mkdir -p "${pkgdir}${_sysconfdir}/sysconfig/"
+    mkdir -p "${pkgdir}${_sysconfdir}/security/limits.d/"
+    mkdir -p "${pkgdir}${_sysconfdir}/collectd.d/"
+    mkdir -p "${pkgdir}${_sysconfdir}/scylla/"
+    mkdir -p "${pkgdir}${_sysconfdir}/scylla.d/"
+    mkdir -p "${pkgdir}${_sysctldir}"
+    mkdir -p "${pkgdir}${_docdir}/scylla/"
+    mkdir -p "${pkgdir}${_unitdir}"
+    mkdir -p "${pkgdir}${_libdir}"
 
-	# lib
-	dst="$pkgdir/lib"
-	mkdir -p ${dst}
-	cp -Rv --preserve=timestamps "$src/lib/"* ${dst}
-
-	# etc
-	dst="$pkgdir/etc"
-	mkdir -p ${dst}
-	cp -Rv --preserve=timestamps "$src/etc/"* ${dst}
-	
-	src="$src/usr"
-	
-	# usr/share
-	dst="$pkgdir/usr/share"
-	mkdir -p ${dst}
-	cp -Rv --preserve=timestamps "$src/share/"* ${dst}
-
-	# usr/lib
-	dst="$pkgdir/usr/lib"
-	mkdir -p ${dst}
-	cp -Rv --preserve=timestamps "$src/lib/"* ${dst}
-		
-	# remove missing symlink
-	rm "$dst/scylla/jmx/symlinks/scylla-jmx"
-	
-	# usr/bin
-	dst="$pkgdir/usr/bin"
-	mkdir -p ${dst}
-	cp -Rv --preserve=timestamps "$src/bin/"* ${dst}
-	
-	# overwrite with built 
-	src="$srcdir/$DIR/build/release"
-	install -p -m755 "$src/scylla" ${dst}
-	install -p -m755 "$src/iotune" ${dst}
+    cd "$srcdir/${pkgname}"
+    install -m644 dist/common/sysconfig/scylla-server "${pkgdir}${_sysconfdir}/sysconfig/"
+    install -m644 dist/common/limits.d/scylla.conf "${pkgdir}${_sysconfdir}/security/limits.d/"
+    install -m644 dist/common/collectd.d/scylla.conf "${pkgdir}${_sysconfdir}/collectd.d/"
+    install -m644 dist/common/scylla.d/*.conf "${pkgdir}${_sysconfdir}/scylla.d/"
+    install -m644 dist/common/sysctl.d/*.conf "${pkgdir}${_sysctldir}"
+    install -d -m755 "${pkgdir}${_sysconfdir}/scylla"
+    install -m644 conf/scylla.yaml "${pkgdir}${_sysconfdir}/scylla/"
+    install -m644 conf/cassandra-rackdc.properties "${pkgdir}${_sysconfdir}/scylla/"
+    install -m644 build/*.service "${pkgdir}${_unitdir}"
+    install -m644 dist/common/systemd/*.service  "${pkgdir}${_unitdir}"
+    install -m644 dist/common/systemd/*.timer "${pkgdir}${_unitdir}"
+    install -m755 dist/common/scripts/* "${pkgdir}${_libdir}"
+    install -m755 seastar/scripts/posix_net_conf.sh  "${pkgdir}${_libdir}"
+    install -m755 seastar/scripts/perftune.py  "${pkgdir}${_libdir}"
+    install -m755 seastar/dpdk/usertools/dpdk-devbind.py "${pkgdir}${_libdir}"
+    install -m755 build/release/scylla "${pkgdir}${_bindir}"
+    install -m755 build/release/iotune "${pkgdir}${_bindir}"
+    install -m755 dist/common/bin/scyllatop "${pkgdir}${_bindir}"
+    install -m755 scylla-blocktune "${pkgdir}${_libdir}"
+    install -m755 scylla-housekeeping "${pkgdir}${_libdir}"
+    install -m644 conf/housekeeping.cfg "${pkgdir}${_sysconfdir}/scylla.d/"
+    install -d -m755 "${pkgdir}${_docdir}/scylla"
+    install -m644 README.md "${pkgdir}${_docdir}/scylla/"
+    install -m644 README-DPDK.md "${pkgdir}${_docdir}/scylla/"
+    install -m644 NOTICE.txt "${pkgdir}${_docdir}/scylla/"
+    install -m644 ORIGIN "${pkgdir}${_docdir}/scylla/"
+    install -d -m755 "${pkgdir}${_docdir}/scylla/licenses/"
+    install -m644 licenses/* "${pkgdir}${_docdir}/scylla/licenses/"
+    install -d -m755 "${pkgdir}${_sharedstatedir}/scylla/"
+    install -d -m755 "${pkgdir}${_sharedstatedir}/scylla/data"
+    install -d -m755 "${pkgdir}${_sharedstatedir}/scylla/commitlog"
+    install -d -m755 "${pkgdir}${_sharedstatedir}/scylla/coredump"
+    install -d -m755 "${pkgdir}${_sharedstatedir}/scylla-housekeeping"
+    install -d -m755 "${pkgdir}${_libdir}/swagger-ui"
+    cp -r swagger-ui/dist "${pkgdir}${_libdir}/swagger-ui"
+    install -d -m755 "${pkgdir}${_libdir}/api"
+    cp -r api/api-doc "${pkgdir}${_libdir}/api"
+    cp -r tools/scyllatop "${pkgdir}${_libdir}/scyllatop"
+    cp -r scylla-housekeeping "${pkgdir}${_libdir}/scylla-housekeeping"
+    cp -P dist/common/sbin/*  "${pkgdir}${_bindir}"
 }
