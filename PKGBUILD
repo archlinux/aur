@@ -1,6 +1,6 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=peek
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Simple screen recorder with an easy to use interface"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=(
   'gst-plugins-good: WebM output under Gnome Shell'
   'gst-plugins-ugly: MP4 output under Gnome Shell'
 )
-source=(${pkgname}-${pkgver}::git+https://github.com/phw/${pkgname}.git#tag=v${pkgver})
+source=(${pkgname}-${pkgver}::git+https://github.com/phw/${pkgname}.git#tag=${pkgver})
 sha1sums=('SKIP')
 
 prepare() {
