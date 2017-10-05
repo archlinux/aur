@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-beta-ffmpeg-codecs
-pkgver=61.0.3163.79
+pkgver=62.0.3202.29
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-beta"
 arch=('x86_64')
@@ -17,17 +17,14 @@ source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
   'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc-r1.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r14.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc5-r1.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r17.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc5-r2.patch'
 )
-sha512sums=('3729c4888737824937386b73e17ffce0c8c902582e0395da20d2ea86eb179bf0edc2be0d2ea780a6fc76accdeb8967a66392bea5069c7ebb71322c750f614d61'
+sha512sums=('426e7ff721a1292ef1dbdce77fad84ba419cdbf9e8ee1d66d42634198e1ef794dbf2eb78e92650efac9874fcff4ee6cdb01dfa483155c601e666c981d4ff9843'
             '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
             '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c'
-            '0e3459e58a32e6eee83673e688a75e19a0e6925f5f34c860d60c37b05a7816bbe1fd29712c1259611b856ae6576cbef8fa71425b7acc39f51ded706534c72281'
-            'd297728681538fd6d6d48da4477e6e42b0ac1585a243dca60c0d9896387a1bf17770aa70966344c8d3551b774cbea6d6acbeaa0dbbfc3c17367dda5daa912297'
-            '11fcfa704c05dbced579329b02844c6dd2c9ff7df59e95499f6778074d24d2b4e6903a53dd12833c322c50873f7aa5bae0d103bf0a1a977868f8cce67b53f15c')
-
+            '28812a8bd6d591831a3bbd749f1d7c6dd434eb0237970d4e8ea8cfd48fa8efb4d98906eca3d175218fe62c50bcb0b6472b2d7dfdde73d5641cd3fde1d9dc5f3b'
+            '55723ffe9c34b5336450e75db8354c1ce5d6429b7296cbf575941eef5f3de3cdc40836e8f9b6905b4153913b10136a12d4c6d37f6a9f447677aa40588bfac182')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -46,9 +43,8 @@ prepare() {
 
   patch -p1 -i "$srcdir/chromium-last-commit-position-r1.patch"
   patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r2.patch"
-  patch -p1 -i "$srcdir/chromium-gcc-r1.patch"
-  patch -p1 -i "$srcdir/chromium-gn-bootstrap-r14.patch"
-  patch -p1 -i "$srcdir/chromium-gcc5-r1.patch"
+  patch -p1 -i "$srcdir/chromium-gn-bootstrap-r17.patch"
+  patch -p1 -i "$srcdir/chromium-gcc5-r2.patch"
 }
 
 build() {
