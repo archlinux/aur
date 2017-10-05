@@ -1,12 +1,13 @@
 pkgbase = espresso-logic
 	pkgdesc = The espresso PLA logic minimization program
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/galengold/espresso-logic
 	arch = x86_64
 	license = MIT
-	source = https://github.com/galengold/espresso-logic/archive/1.0.tar.gz
-	md5sums = 73b82c76740d2d5a35e0c7cbe1210d3f
+	depends = glibc
+	source = espresso-logic-1.1.tar.gz::https://github.com/galengold/espresso-logic/archive/1.1.tar.gz
+	md5sums = 611f8b45b2828402aae791364bc9b6d5
 
 pkgname = espresso-logic
 

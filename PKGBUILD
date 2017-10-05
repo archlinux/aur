@@ -1,13 +1,14 @@
 # Maintainer: Galen Gold <galen@galengold.me>
 pkgname=espresso-logic
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="The espresso PLA logic minimization program"
 arch=('x86_64')
+depends=('glibc')
 url="https://github.com/galengold/espresso-logic"
 license=('MIT')
-source=(https://github.com/galengold/espresso-logic/archive/$pkgver.tar.gz)
-md5sums=('73b82c76740d2d5a35e0c7cbe1210d3f')
+source=($pkgname-$pkgver.tar.gz::https://github.com/galengold/$pkgname/archive/$pkgver.tar.gz)
+md5sums=('611f8b45b2828402aae791364bc9b6d5')
 
 build() {
   cd "$pkgname-$pkgver/espresso-src"
@@ -16,10 +17,11 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/man/man1"
-  mkdir -p "$pkgdir/usr/share/man/man5"
-  install -D "./bin/espresso" "$pkgdir/usr/bin/espresso"
-  install -D "./man/espresso.1" "$pkgdir/usr/share/man/man1/espresso.1"
-  install -D "./man/espresso.5" "$pkgdir/usr/share/man/man5/espresso.5"
+  install -Dm755 "./bin/espresso" "$pkgdir/usr/bin/espresso"
+  install -Dm644 "./man/espresso.1" "$pkgdir/usr/share/man/man1/espresso.1"
+  install -Dm644 "./man/espresso.5" "$pkgdir/usr/share/man/man5/espresso.5"
+  install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/examples/" ./examples/*
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/hard_examples/" ./hard_examples/*
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/tlex/" ./tlex/*
 }
