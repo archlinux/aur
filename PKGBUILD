@@ -8,7 +8,7 @@
 # https://developer.nvidia.com/nccl/
 
 _srcver=2.0.5
-_srcrel=2
+_srcrel=3
 _cudaver=8.0
 
 pkgname=nccl
@@ -21,8 +21,8 @@ license=('custom')
 depends=('cuda')
 conflicts=('nccl-git')
 options=('!strip')
-source=("file://${pkgname}_${_srcver}-${_srcrel}-cuda${_cudaver}_amd64.txz")
-sha256sums=('3c92881f3f01e1252570fea693335003edc5f610e3834cf179136a6d98795599')
+source=("file://${pkgname}_${_srcver}-${_srcrel}+cuda${_cudaver}_amd64.txz")
+sha256sums=('c32125ac945da865f7b688e15643fa970d2e245694344ec9e60a5fbe3d34ec1a')
 
 package() {
     cd "${pkgname}_${_srcver}-${_srcrel}+cuda${_cudaver}_amd64"
