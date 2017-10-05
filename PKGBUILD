@@ -1,10 +1,10 @@
 # Maintainer: willemw <willemw12@gmail.com>
-# Contibutor: gnomeye <gnomeye at gmail dot com>
+# Contributor: gnomeye <gnomeye at gmail dot com>
 
 _name=ts
 pkgname=task-spooler
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Queue up tasks from the shell for batch execution"
 arch=('i686' 'x86_64')
 url="http://vicerveza.homeunix.net/~viric/soft/ts/"
@@ -22,5 +22,6 @@ package() {
   #make PREFIX="$pkgdir/" install
   install -Dm755 ts "$pkgdir/usr/bin/tsp"
   install -Dm644 ts.1 "$pkgdir/usr/share/man/man1/tsp.1"
+  install -Dm644 TRICKS "$pkgdir/usr/share/doc/$pkgname/TRICKS"
 }
 
