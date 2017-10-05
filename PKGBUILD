@@ -3,8 +3,8 @@
 
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
-pkgver=1.19.3 # https://lists.x.org/archives/xorg/2017-March/058662.html
-pkgrel=3 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=c24304917e61de5de15695065f8a9be89d77818c
+pkgver=1.19.4 # https://lists.x.org/archives/xorg/2017-October/058926.html
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -19,23 +19,16 @@ makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtra
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         nvidia-add-modulepath-support.patch
         xserver-autobind-hotplug.patch
-        modesetting-Set-correct-DRM-event-context-version.patch
-        CVE-2017-10971.patch
-        CVE-2017-10972.patch
-        bug99708.patch
         xvfb-run
         xvfb-run.1)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
-              'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
-sha256sums=('677a8166e03474719238dfe396ce673c4234735464d6dadf2959b600d20e5a98'
+              'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3'
+              '995ED5C8A6138EB0961F18474C09DD83CAAA50B2')
+sha256sums=('aa758acea91deaf1f95069ddc5ea3818e13675fb14fef40ad1b3d0b2bf03c9a8'
             'SKIP'
             '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
             'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
-            '831a70809e6bec766138d7a1c96643732df9a2c0c5f77ee44b47ce4be882e0af'
-            '3950d5d64822b4a34ca0358389216eed25e159751006d674e7cb491aa3b54d0b'
-            '700af48c541f613b376eb7a7e567d13c0eba7a835d0aaa9d4b0431ebdd9f397c'
-            '67013743ba8ff1663b233f50fae88989d36504de83fca5f93af5623f2bef6920'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
@@ -47,18 +40,6 @@ prepare() {
 
   msg2 "patch from Fedora, not yet merged"
   patch -Np1 -i ../xserver-autobind-hotplug.patch
-
-  msg2 "merged in trunk"
-  patch -Np1 -i ../modesetting-Set-correct-DRM-event-context-version.patch
-
-  msg2 "Security: CVE-2017-10971"
-  patch -Np1 -i ../CVE-2017-10971.patch
-
-  msg2 "Security: CVE-2017-10972"
-  patch -Np1 -i ../CVE-2017-10972.patch
-
-  msg2 "Fix Glamor lines: https://bugs.archlinux.org/task/53404"
-  patch -Np1 -i ../bug99708.patch
 
   msg2 "Starting autoreconf..."
   autoreconf -vfi
