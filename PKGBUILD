@@ -25,7 +25,8 @@ prepare() {
   sed -i -e '144icp -r nccl gloo/third-party/' torch/lib/build_all.sh
   sed -i -e '470,475d' setup.py
 
-  rm -r torch/lib/nccl/*
+  # Hack to build with new cuda 9
+  rm -r torch/lib/nccl/src
   cp -r "${srcdir}"/nccl-*/* torch/lib/nccl
 
   patch -Np1 < ${srcdir}/2334.patch
