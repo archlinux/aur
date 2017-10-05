@@ -8,6 +8,7 @@ pkgbase = lib32-cmocka
 	license = Apache
 	makedepends = cmake
 	depends = lib32-glibc
+	depends = cmocka
 	source = https://cmocka.org/files/1.1/cmocka-1.1.1.tar.xz
 	source = https://cmocka.org/files/1.1/cmocka-1.1.1.tar.asc
 	validpgpkeys = 8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D
