@@ -1,0 +1,8 @@
+resolver: lts-6.35
+allow-newer: true
+packages:
+  - elm-compiler
+  - elm-make
+  - elm-package
+  - elm-reactor
+  - elm-repl
