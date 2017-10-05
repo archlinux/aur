@@ -14,14 +14,19 @@ makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools'
              'python-yaml' 'python2-yaml' 'python-numpy' 'python2-numpy'
              'gcc6' 'cmake' 'cuda' 'cudnn')
 source=("https://github.com/pytorch/pytorch/archive/v${pkgver}.tar.gz"
+        "nccl.tar.gz::https://github.com/NVIDIA/nccl/archive/29a1a916dc14bb2c00feed3d4820d51fa85be1e6.tar.gz"
         2334.patch)
 sha256sums=('b76d61aaa8fc18b928ca3c910c398687be08f5661d6615884c4faba3e8742a26'
+            '6387030e37d14762f87eefbc86ee527293ec04745c66ccd820cf7fc0fdc23f92'
             '1933b0e73785cc3d24013815c79f36267380239f2cbf0561b7702e0d5af61daf')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
   sed -i -e '144icp -r nccl gloo/third-party/' torch/lib/build_all.sh
   sed -i -e '470,475d' setup.py
+
+  rm -r torch/lib/nccl/*
+  cp -r "${srcdir}"/nccl-*/* torch/lib/nccl
 
   patch -Np1 < ${srcdir}/2334.patch
 
@@ -69,7 +74,8 @@ build() {
   WITH_CUDNN=1 \
   CUDNN_LIB_DIR=/opt/cuda/lib64 \
   CUDNN_INCLUDE_DIR=/opt/cuda/include \
-  python2 setup.py build --verbose
+  TORCH_NVCC_FLAGS="-D__CUDA_NO_HALF_OPERATORS__" \
+  python2 setup.py build
 
   msg2 "Building Python 3 with cuda"
   cd "$srcdir/${_pkgname}-${pkgver}-py3-cuda"
@@ -84,7 +90,8 @@ build() {
   WITH_CUDNN=1 \
   CUDNN_LIB_DIR=/opt/cuda/lib64 \
   CUDNN_INCLUDE_DIR=/opt/cuda/include \
-  python setup.py build --verbose
+  TORCH_NVCC_FLAGS="-D__CUDA_NO_HALF_OPERATORS__" \
+  python setup.py build
 }
 
 package_python2-pytorch() {
