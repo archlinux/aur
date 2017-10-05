@@ -19,6 +19,10 @@ pkgbase = msp-flasher
 	source = msp-flasher.sh
 	sha1sums = 1a719aeb32f56dc1d1b8c4581f49356eaf41c6e5
 	sha1sums = 8b01a45ab7ac219ff00824e53c324126b3c39763
+	depends_x86_64 = lib32-gcc-libs
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-libstdc++5
+	depends_x86_64 = lib32-zlib
 
 pkgname = msp-flasher
 

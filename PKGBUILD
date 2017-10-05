@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://www.ti.com/tool/msp430-flasher"
 license=('GPL')
 depends=('elfutils' 'libmpc' 'zlib')
-[ $CARCH = x86_64 ] && depends+=('lib32-gcc-libs' 'lib32-glibc' 'lib32-libstdc++5' 'lib32-zlib')
+depends_x86_64=('lib32-gcc-libs' 'lib32-glibc' 'lib32-libstdc++5' 'lib32-zlib')
 options=(!strip !emptydirs !libtool staticlibs !upx)
 PKGEXT=".pkg.tar"
 install=msp-flasher.install
