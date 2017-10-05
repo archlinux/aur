@@ -1,6 +1,6 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
 pkgname=deepin-wine-helper
-pkgver=1.0deepin22
+pkgver=1.0deepin24
 pkgrel=2
 epoch=
 pkgdesc="Deepin Wine Helper"
