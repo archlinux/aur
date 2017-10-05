@@ -1,6 +1,6 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=xx-net
-pkgver=3.6.4
+pkgver=3.6.7
 pkgrel=1
 
 pkgdesc="XX-Net, a web proxy tool."
@@ -26,7 +26,7 @@ source=(
 		)
 noextract=()
 md5sums=(
-	'd5c90fa7b0d1e751dfc995815664bc08'
+	'b3027d7965984901682d561a018c49e5'
 	'd439251c0022e4537231bbde87d36bac'
 		)
 validpgpkeys=()
