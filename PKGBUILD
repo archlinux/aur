@@ -6,7 +6,7 @@
 
 _pkgname=get_iplayer
 pkgname=$_pkgname-git
-pkgver=3.02
+pkgver=3.04
 pkgrel=1
 pkgdesc="Download TV and radio programmes from BBC iPlayer"
 arch=('any')
@@ -14,7 +14,8 @@ url="https://github.com/get-iplayer/get_iplayer"
 license=('GPL3')
 
 # perl-libwww is the LWP module
-depends=('perl-libwww'
+depends=('perl-json-pp'
+         'perl-libwww'
          'perl-lwp-protocol-https'
          'perl-xml-libxml')
 
@@ -27,7 +28,6 @@ optdepends=(
 makedepends=('git')
 conflicts=($_pkgname)
 provides=($_pkgname)
-#source=($pkgname::git://github.com/get-iplayer/get_iplayer.git#branch=develop)
 source=($pkgname::git://github.com/get-iplayer/get_iplayer.git)
 md5sums=('SKIP')
 
