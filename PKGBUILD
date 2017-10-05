@@ -6,7 +6,7 @@ _TARGET_API=19
 _pkgname=fb-adb
 pkgname=$_pkgname-git
 pkgver=20170602.r363.b931596
-pkgrel=2
+pkgrel=3
 pkgdesc='A better shell to use in place of adb when connecting to Android devices'
 url='https://github.com/facebook/fb-adb'
 license=('GPL3')
@@ -29,6 +29,8 @@ build() {
 
   # In case that this package is built immediately after installing android-sdk...
   [ -z "$ANDROID_HOME" ] && ANDROID_HOME=/opt/android-sdk
+  # And NDK...
+  [ -z "$ANDROID_NDK" ] && ANDROID_NDK=/opt/android-ndk
 
   # build
   install -d build
