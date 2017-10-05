@@ -1,7 +1,7 @@
 pkgbase = python-flask-paginate
 	pkgdesc = flask-paginate is a simple paginate extension for flask which is reference to will_paginate, and use bootstrap as css framework.
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/lixxu/flask-paginate
 	arch = any
 	license = BSD-3
