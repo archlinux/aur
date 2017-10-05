@@ -1,0 +1,16 @@
+pkgbase = perl-marc-record
+	pkgdesc = Perl/CPAN Module MARC::Record: Perl extension for handling MARC records
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = https://metacpan.org/release/MARC-Record
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GM/GMCHARLT/MARC-Record-2.0.6.tar.gz
+	md5sums = cf2ddaa83059c5f135b0ee9463520b88
+	sha512sums = 7a3436adbe6e5365ec2810ebf3c64d22ae707cedbfccf02f562d253c7727c33f9ea36a47a7acdba12bbf32693b4c70913a0c551b5605388fb39fa379d099af8d
+
+pkgname = perl-marc-record
+
