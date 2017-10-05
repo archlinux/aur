@@ -1,5 +1,5 @@
 pkgbase = pyakm
-	pkgdesc = Simple GUI to manager arch linux kernels
+	pkgdesc = Simple GUI to manage arch linux kernels
 	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/pssncp142/pyakm
@@ -12,7 +12,7 @@ pkgbase = pyakm
 	depends = pyalpm
 	provides = pyakm
 	source = pyakm-0.0.2-1.tar.gz::https://github.com/pssncp142/pyakm/archive/0.0.2.tar.gz
-	sha256sums = d8ab26f0ea8fffc2eb96b362dae514915193662719307fd45a0a7609efa03e47
+	sha256sums = dca0f6a3f18330be655c5e391add16e35164171a21e29756770ac3a65f2e6a23
 
 pkgname = pyakm
 
