@@ -1,8 +1,8 @@
 # Maintainer: Michael Hansen <zrax0111 gmail com>
 
 pkgname=gscope
-pkgver="3.10"
-_ghver='2.10+v3.10'
+pkgver="3.12"
+_ghver='2.12+v3.12'
 _tarver=${_ghver//+/-}
 pkgrel=1
 pkgdesc="Interactive source code browsing tool for C (and other languages)"
@@ -11,7 +11,7 @@ url="https://github.com/tefletch/gscope"
 license=('MIT')
 depends=('gtk3' 'gtksourceview3')
 source=("https://github.com/tefletch/${pkgname}/archive/v${_ghver}.tar.gz")
-sha256sums=('e530438a42998c3f4f61468f8d917377a22861f39c9b338e42c021a5efe925ed')
+sha256sums=('36b52fefe46b111b3835f9b9394bbc89ef671b5697cb5452dd2c225aebe72cfc')
 
 prepare() {
     cd "${pkgname}-${_tarver}/packages/gscope3"
