@@ -40,7 +40,7 @@ _FORCE_AVX2=OFF
 pkgbase=opencv2-opt
 pkgname=('opencv2-opt' 'opencv2-opt-samples')
 pkgver=2.4.13.3
-pkgrel=1
+pkgrel=2
 _pkgbase=opencv2
 _pkgname=opencv
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
@@ -97,7 +97,7 @@ prepare() {
 # Patch for gcc 6
 # See https://github.com/Itseez/opencv/issues/6517
 #   patch -p1 -i ../opencv_a0fdc91a14f07de25d858037940fcd3ba859b4e2.patch
-#   patch -p1 -i $srcdir/cmake.diff
+  patch -p1 -i $srcdir/cmake.diff
 }
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
