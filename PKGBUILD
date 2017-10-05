@@ -6,7 +6,7 @@
 pkgbase=python-coreapi
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-coreapi python2-coreapi)
-pkgver=2.3.1
+pkgver=2.3.3
 pkgrel=1
 pkgdesc='Python client library for Core API. http://core-api.github.io/python-client/'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(
 )
 options=(!emptydirs)
 source=("https://github.com/core-api/python-client/archive/${pkgver}.tar.gz")
-sha256sums=('9fd9c51206c74a3290ce758bc3ad51eadf73fcadbe95039c9cc067bde076fee9')
+sha256sums=('e4a29e73793efb4dc34006f00ff966b3fe05ca9fe36868145c8dad7cfe0a816c')
 
 package_python-coreapi() {
   depends=(
