@@ -7,13 +7,13 @@ else
 _arch="x86"
 fi
 
-_major="10.2.2"
-_minor=17703
+_major="11.0.0"
+_minor=18063
 
 pkgname="komodo-edit"
 _bigname="Komodo-Edit"
 pkgver="${_major}_${_minor}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Free & Open-Source counterpart of ActiveState Komodo IDE - XUL based"
 arch=(i686 x86_64)
 url="http://www.activestate.com/komodo-edit"
@@ -30,8 +30,8 @@ source_x86_64=("${_srcbase}/${_major}/${_bigname}-${_major}-${_minor}-linux-x86_
 
 sha256sums=('98177ee92e13036baa0a4f61ef398c0e23ab5d250cf7aa1b1c5a557efaaec3a8'
             'c68d7e94955e0f7b32cf3863136891d6441d9dd3a6346481b911d2c250cf32e9')
-sha256sums_i686=('d232f955c64aa25f58e9981c158e441c6df907348ce94fea6a997ea8e0474b35')
-sha256sums_x86_64=('36f6e9f08c5b498a0f01937b9bff926a5eae0eb7827e5fa10b94b9b77d14a851')
+sha256sums_i686=('531bfe3ae5b33372e8ebbab6254babbb6b00e990fc463edb9b3476d0fd13b470')
+sha256sums_x86_64=('7d32dd0e8dec0575ed5f186abdd261feaa5dd5b9e399a3326fd2cca47a64ce3b')
 
 prepare() {
   cd ${srcdir}/${_bigname}-${_major}-${_minor}-linux-${_arch}
