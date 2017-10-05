@@ -3,7 +3,7 @@
 
 pkgname=freeplane-git
 _NEXT_VERSION=1.6.x
-pkgver=1.6.x.2977e2fad
+pkgver=1.6.x.864d54537
 pkgrel=1
 pkgdesc="A Java mindmapping tool"
 arch=('any')
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname%-*}/BUILD
+  cd ${srcdir}/${pkgname%-*}/BIN
   find plugins -type f | while read file; do
     install -Dm644 ${file} ${pkgdir}/usr/share/freeplane/${file}
   done
