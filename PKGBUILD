@@ -1,15 +1,15 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=nnn
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
-pkgdesc="Free, fast, friendly file browser"
+pkgdesc="The missing terminal file browser for X."
 arch=("i686" "x86_64")
 depends=("ncurses" "readline")
 url="https://github.com/jarun/nnn"
 license=('CUSTOM')
 source=("https://github.com/jarun/nnn/archive/v${pkgver//_/-}.tar.gz")
-md5sums=('c42160e9f87cfa3838553d1dcb39c978')
+md5sums=('9969dc74c8baacecf2bc77f19fd21cc3')
 
 
 package() {
