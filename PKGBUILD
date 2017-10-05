@@ -1,20 +1,19 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 # Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
 pkgname=substance-painter
-pkgver=2017.2.0
-pkgrel=2
+pkgver=2017.3.0
+pkgrel=1
 pkgdesc="3D painting software allowing you to texture, render and share your work."
 arch=('x86_64')
 url='https://www.allegorithmic.com/products/substance-painter'
 license=('custom')
 depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
 options=('!strip' '!optipng') # PNG assets here should be left untouched!
-source=('https://download.allegorithmic.com/substance-painter/2017.x/Substance_Painter-2017.2.0-1.el6.standard.full.x86_64.rpm'
+source=('https://download.allegorithmic.com/substance-painter/2017.x/unsigned_Substance_Painter-2017.3.0-1837-linux-x64-standard-full.rpm'
         'substance-painter-icon.png'
         'substance-painter.desktop'
         'substance-painter')
-noextract=()
-sha256sums=('940d4c3ed7458d9c6126302a8de00f28870e9b7767f898b3b99d55633d515d12'
+sha256sums=('8306d0fdedce8d132b0c575aa799eda1e7faf2f760651a8d2014f1ba8e004c4c'
             '6744c1fbe8e9fb1fb91bd291e3ef8ac645bbfec1aa97915f440e6fbfebf4edbd'
             '70d973bbc0459f80285a52d6054c2ac72ab2e639c4c7dc42ca1dad81ef892d1d'
             'e736a5e160be09cfe1588d349084e2f769815687db080b8c7b790e8751f185f1')
