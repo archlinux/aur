@@ -3,7 +3,7 @@
 # Contributor: Christopher Krooß <didi2002@web.de>
 
 pkgname=greyhole
-pkgver=0.10.13
+pkgver=0.10.14
 pkgrel=1
 pkgdesc='Application that uses Samba to create a storage pool of all your available hard drives and allows you to create redundant copies of the files you store, in order to prevent data loss when part of your hardware fails.'
 arch=('x86_64')
@@ -12,10 +12,8 @@ license=('GPL3')
 depends=('php-intl>=5' 'samba>3.4.3' 'mysql' 'rsync' 'lsof' 'sysstat')
 backup=('etc/greyhole.conf')
 install='greyhole.install'
-source=("https://greyhole.net/releases/$pkgname-$pkgver.tar.gz"
-        "greyhole.service")
-sha256sums=('73f1510c9f97f5cd94f477cdd773cc3f1cc94ff0bb2e59a9bd0503f65c3882dd'
-            '04b57cd86a092032e3b323d18b5380bfbc22ea7334832574a2e536887554ffc4')
+source=("https://greyhole.net/releases/$pkgname-$pkgver.tar.gz")
+sha256sums=('5bea3e3c9679e1df56a8654074419216f4bff863468d08c5fe0d176339af36f7')
 
 package() {
   cd "$pkgname-$pkgver"
@@ -36,7 +34,7 @@ package() {
   install -m 0644 -D -p greyhole.example.conf "$pkgdir/usr/share/greyhole/greyhole.example.conf"
 
   install -m 0644 -D -p greyhole.example.conf "$pkgdir/etc/greyhole.conf"
-  install -m 0644 -D -p "$srcdir/greyhole.service" "$pkgdir/usr/lib/systemd/system/greyhole.service"
+  install -m 0644 -D -p greyhole.systemd "$pkgdir/usr/lib/systemd/system/greyhole.service"
   install -m 0644 -D -p logrotate.greyhole "$pkgdir/etc/logrotate.d/greyhole"
   install -m 0644 -D -p greyhole.cron.d "$pkgdir/etc/cron.d/greyhole"
   install -m 0755 -D -p greyhole.cron.weekly "$pkgdir/etc/cron.weekly/greyhole"
@@ -103,6 +101,10 @@ package() {
     46 )
 	install -m 644 "samba-module/bin/4.6/$_vfs_file" "$pkgdir/usr/lib/greyhole/greyhole-samba46.so"
 	ln -s "/usr/lib/greyhole/greyhole-samba46.so" "$pkgdir/usr/lib/samba/vfs/greyhole.so"
+	;;
+    47 )
+	install -m 644 "samba-module/bin/4.7/$_vfs_file" "$pkgdir/usr/lib/greyhole/greyhole-samba47.so"
+	ln -s "/usr/lib/greyhole/greyhole-samba47.so" "$pkgdir/usr/lib/samba/vfs/greyhole.so"
 	;;
     * )
         echo 'Incompatible Samba version: Please see https://github.com/gboudreau/Greyhole/blob/master/INSTALL for manual build directions'
