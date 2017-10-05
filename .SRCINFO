@@ -1,6 +1,7 @@
 pkgbase = pachctl-bin
+	pkgdesc = Pachyderm lets you deploy and manage multi-stage, language-agnostic data pipelines while maintaining complete reproducibility and provenance.
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = pachyderm.io
 	arch = x86_64
 	license = Apache License 2.0
