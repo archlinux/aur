@@ -9,7 +9,8 @@ pkgdesc='Standalone Netflix Browser using qtwebengine'
 arch=('i686' 'x86_64')
 url='https://github.com/gort818/qtwebflix'
 license=('GPL3')
-depends=('qt5-webengine-widevine' 'xdg-utils')
+depends=('xdg-utils')
+optdepends=('qt5-webengine-widevine' 'chromium-widevine')
 makedepends=('git')
 source=("git+${url}.git"
         "netflix.desktop")

@@ -7,12 +7,13 @@ pkgbase = qtwebflix-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = qt5-webengine-widevine
 	depends = xdg-utils
+	optdepends = qt5-webengine-widevine
+	optdepends = chromium-widevine
 	source = git+https://github.com/gort818/qtwebflix.git
 	source = netflix.desktop
 	sha256sums = SKIP
-	sha256sums = d78844d1b9b8fce9ec462fa56eb70b359626b19102cb68d2d4b9b50e382b0a56
+	sha256sums = 2cf2a44a42f1e8275521e30e42a0f56f6e3c82a94d247555f68ed4fbfeec6ab0
 
 pkgname = qtwebflix-git
 
