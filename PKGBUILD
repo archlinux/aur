@@ -2,8 +2,8 @@
 
 pkgname=pachctl-bin
 pkgver=1.6.0
-pkgrel=1
-pkgdes="Pachyderm lets you deploy and manage multi-stage, language-agnostic data pipelines while maintaining complete reproducibility and provenance."
+pkgrel=2
+pkgdesc="Pachyderm lets you deploy and manage multi-stage, language-agnostic data pipelines while maintaining complete reproducibility and provenance."
 url='pachyderm.io'
 license=('Apache License 2.0')
 provides=('pachctl')
