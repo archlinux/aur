@@ -13,7 +13,7 @@
 _makenconfig=
 
 # Tweak kernel options prior to a build via menuconfig
-_makemenuconfig=y
+_makemenuconfig=
 
 # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
 # actually run slower with NUMA enabled. Most users will want to set this option
