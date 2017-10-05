@@ -6,10 +6,10 @@
 pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=${pkgbase}
-_kernel_rel=4.15
+_kernel_rel=4.13
 _branch=drm-next-4.15-dc
 _kernelname=${pkgbase#linux}
-pkgver=4.15.1.d8c893b4
+pkgver=4.13.rc5.d8c893b4
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -115,10 +115,10 @@ _package() {
 
   # Remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  
+
   # Make room for external modules
   ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-  
+
   # Add real version for building modules and running depmod from post_install/upgrade
   mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
   echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
