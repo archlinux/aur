@@ -4,7 +4,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.28
 
 pkgname='perl-type-tiny'
-pkgver='1.000005'
+pkgver='1.002001'
 pkgrel='1'
 pkgdesc="tiny, yet Moo(se)-compatible type constraint"
 arch=('any')
@@ -13,10 +13,9 @@ options=('!emptydirs')
 depends=('perl-exporter-tiny>=0.026' 'perl>=5.6.1')
 makedepends=()
 url='http://search.cpan.org/dist/Type-Tiny'
-source=('http://www.cpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-1.000005.tar.gz')
-md5sums=('2914b0e6b35c35f657d426fba29b4520')
-sha512sums=('5817ee937384cccbea71fa69f8c2202d721c648a18eedf089529fbb956b2d050b889606e69c8bc3e1d94fb6f638b6cac01394b5534f17a8be6cdf82d69b965b6')
-_distdir="Type-Tiny-1.000005"
+source=("http://www.cpan.org/authors/id/T/TO/TOBYINK/Type-Tiny-${pkgver}.tar.gz")
+sha512sums=('e499c4f113e5a327294012daac9f0cd60a42a6c40b9d0c9c523a229f574a7dd0f672f209d0596d25edcbc39b79cd2ea65791b6a5146345e75fdd1d84ee1cd161')
+_distdir="Type-Tiny-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
