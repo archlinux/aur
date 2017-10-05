@@ -1,5 +1,4 @@
 # Maintainer: RcrdBrt <riccardobrt@gmail.com>
-# Prev maintainer: ser
 
 _pkgname=flask-paginate
 pkgname=python-flask-paginate
