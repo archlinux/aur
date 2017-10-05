@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core
 pkgver=0.15.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://bitcoin.org"
@@ -39,7 +39,7 @@ _nproc=$(($(nproc)/2))
 [[ ${_nproc} < 1 ]] && _nproc=1
 
 build() {
-  cd "$srcdir/${pkgname%-core}-$pkgver"
+  cd "$srcdir/${pkgname%-core}-0.15.0"
 
   msg2 'Building...'
   ./autogen.sh
@@ -58,14 +58,14 @@ build() {
 }
 
 check() {
-  cd "$srcdir/${pkgname%-core}-$pkgver"
+  cd "$srcdir/${pkgname%-core}-0.15.0"
 
   msg2 'Testing...'
   make -j$_nproc check
 }
 
 package() {
-  cd "$srcdir/${pkgname%-core}-$pkgver"
+  cd "$srcdir/${pkgname%-core}-0.15.0"
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-core}"
