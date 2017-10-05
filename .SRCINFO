@@ -1,0 +1,18 @@
+pkgbase = lib32-cmocka
+	pkgdesc = Elegant unit testing framework for C with support for mock objects
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://cmocka.org/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = lib32-glibc
+	source = https://cmocka.org/files/1.1/cmocka-1.1.1.tar.xz
+	source = https://cmocka.org/files/1.1/cmocka-1.1.1.tar.asc
+	validpgpkeys = 8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D
+	sha512sums = 801c4a3e1bb9047241b1cb5a90c1cbdee1b0aff5e3d0a84ec8b2dbaee79274618c24fbe5e9fedbf0b3ee18c6c98b55d93e135d037ac33ab872edc7665af41577
+	sha512sums = SKIP
+
+pkgname = lib32-cmocka
+
