@@ -2,8 +2,8 @@
 
 pkgbase=postgresql-src
 pkgname=('postgresql-src-libs' 'postgresql-src-docs' 'postgresql-src')
-pkgver=9.6.5
-_majorver=9.6
+pkgver=10.0
+_majorver=10.0
 pkgrel=1
 CFLAGS=`echo $CFLAGS | sed s/-Ofast/-O3/`
 CFLAGS="${CFLAGS} -flto"
@@ -18,19 +18,20 @@ makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0')
 source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
         postgresql.pam postgresql.logrotate
-        postgresql.service postgresql-check-db-dir)
-md5sums=('7a387fa6a75c84f25e7250007980679e'
+        postgresql.service 
+        postgresql-check-db-dir)
+md5sums=('cc582bda3eda3763926e1de404709026'
          '75c579eed03ffb2312631f0b649175b4'
          '96f82c38f3f540b53f3e5144900acf17'
          'd28e443f9f65a5712c52018b84e27137'
          '5a7933453a572bbe12320b088272ee71'
-         '6eb990a98cdd2e385de2c53c288a388c')
-sha256sums=('06da12a7e3dddeb803962af8309fa06da9d6989f49e22865335f0a14bad0744c'
+         'f763a2cf07c08df2ee074a9f7e286da5')
+sha256sums=('712f5592e27b81c5b454df96b258c14d94b6b03836831e015c65d6deeae57fd1'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
             'b48fe97f8e43ed0d2041d519119a4dafb70fcae72870951bf4fb7350fe169ac8'
-            '40da687da4fb1f6b35f406dd0f48922065d8c905d678e2a27da05806f874b780')
+            '5e551630ee443a6985551da2ab72789f669deba8bf4443465d5c76a064dc675d')
 
 build() {
   cd "${srcdir}/postgresql-${pkgver}"
@@ -73,7 +74,7 @@ package_postgresql-src-libs() {
   done
 
   for util in pg_config pg_dump pg_dumpall pg_restore psql \
-      clusterdb createdb createlang createuser dropdb droplang dropuser pg_isready reindexdb vacuumdb; do
+      clusterdb createdb createuser dropdb dropuser pg_isready reindexdb vacuumdb; do
     install -D -m644 doc/src/sgml/man1/${util}.1 "${pkgdir}"/usr/share/man/man1/${util}.1
   done
 
@@ -140,7 +141,7 @@ package_postgresql-src() {
     make -C ${dir} DESTDIR="${pkgdir}" uninstall
   done
   for util in pg_config pg_dump pg_dumpall pg_restore psql \
-      clusterdb createdb createlang createuser dropdb droplang dropuser pg_isready reindexdb vacuumdb; do
+      clusterdb createdb createuser dropdb dropuser pg_isready reindexdb vacuumdb; do
     rm "${pkgdir}"/usr/share/man/man1/${util}.1
   done
 
