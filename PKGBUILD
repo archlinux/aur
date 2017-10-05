@@ -1,7 +1,7 @@
 # Maintainer: ninian <mcfadzean.org.uk ta linux>
 
 pkgname=runa
-pkgver=5.1.1
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Fast and light desktop application launcher"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:MPL2')
 depends=('bash' 'dmenu' 'libnotify')
 optdepends=('gxmessage: to view .desktop files' 'perl-file-mimeinfo: to better determine mimetypes')
 source=("http://appstogo.mcfadzean.org.uk/dl/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('4b4147e63380463608ae8abace03ff61')
+md5sums=('220a345bcd68fcd5c087e2d65387e126')
 
 package() {
   cd "$srcdir/${pkgname}-$pkgver"
