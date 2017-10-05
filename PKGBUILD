@@ -10,7 +10,7 @@ _gourl="code.gitea.io"
 
 pkgname=$_pkgname-git
 pkgrel=1
-pkgver=r5659.a79af9cf
+pkgver=r5666.6b62f042
 pkgdesc="A painless self-hosted Git service."
 url="https://gitea.io/"
 license=("MIT")
@@ -30,17 +30,19 @@ provides=("gitea")
 options=("!strip" "emptydirs")
 backup=("etc/gitea/app.ini")
 install=${_pkgname}.install
-source=("0001-Adjust-config-for-Arch-Linux-package.patch"
+source=("git://github.com/go-gitea/gitea.git"
+        "0001-Adjust-config-for-Arch-Linux-package.patch"
         "0002-Adjust-service-file-for-Arch-Linux-package.patch")
-sha256sums=("5dd56905a3641d7094964a69030fda4d79565a87ccd6dcc4a714b423ccfce9af"
+sha256sums=("SKIP"
+            "5dd56905a3641d7094964a69030fda4d79565a87ccd6dcc4a714b423ccfce9af"
             "6cd1daa666659a68c98376f8bfae55402b5ffc39c1bf42b5ae0ee700249a3b73")
 
 prepare() {
-  msg2 "Retrieving bindata"
-  GOPATH="${srcdir}" go get -v -u github.com/go-macaron/bindata
+  mkdir -p "${srcdir}/src/${_gourl}/${_pkgname}"
+  cp -r "${srcdir}/${_pkgname}" "${srcdir}/src/${_gourl}"
 
-  msg2 "Retrieving source files"
-  GOPATH="${srcdir}" go get -v -d -u ${_gourl}/${_pkgname}
+  msg2 "Retrieve bindata"
+  GOPATH="${srcdir}" go get -v -u github.com/go-macaron/bindata
 
   msg2 "Patch config and service file"
   patch -Np1 -i "${srcdir}/0001-Adjust-config-for-Arch-Linux-package.patch" "${srcdir}/src/${_gourl}/${_pkgname}/conf/app.ini"
