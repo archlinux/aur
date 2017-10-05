@@ -1,0 +1,13 @@
+pkgbase = pachctl-bin
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = pachyderm.io
+	arch = x86_64
+	license = Apache License 2.0
+	provides = pachctl
+	source_x86_64 = https://github.com/pachyderm/pachyderm/releases/download/v1.6.0/pachctl_1.6.0_amd64.deb
+	md5sums_x86_64 = ad6b943424365f5eb509615165290eed
+	sha256sums_x86_64 = 4289190e740b45f11291633aee15a3137e07f02905e2604772d0f29e93ac63cf
+
+pkgname = pachctl-bin
+
