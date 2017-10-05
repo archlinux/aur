@@ -1,0 +1,33 @@
+From d2d6b21ae50a9e50fe5cb7fe1f1bf2e73cee7e1e Mon Sep 17 00:00:00 2001
+From: borgified <borgified@gmail.com>
+Date: Sat, 16 Sep 2017 13:29:58 -0700
+Subject: [PATCH] extra pacman life at every 10000 pts
+
+---
+ src/game.cpp | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/game.cpp b/src/game.cpp
+index c8c7567..caf4b7b 100644
+--- a/src/game.cpp
++++ b/src/game.cpp
+@@ -325,9 +325,17 @@ bool Game::checkLastPillEaten() {
+ void Game::checkScoreForExtraLife() {
+ 	int lastScore = currentScore;
+ 	currentScore = Labyrinth::getInstance()->getScore();
+-	if ((lastScore<10000 && currentScore>=10000) || (lastScore<30000 && currentScore>=30000)) {
++
++        int target = ( currentScore / 10000 ) * 10000;
++
++	if (lastScore<10000 && currentScore>=10000){
+ 		Pacman::getInstance()->addLives(1);
+ 		Sounds::getInstance()->playSingleSound(Sounds::EXTRA_MAN);
++	}else{
++                if (lastScore<target && currentScore>=target){
++		  Pacman::getInstance()->addLives(1);
++		  Sounds::getInstance()->playSingleSound(Sounds::EXTRA_MAN);
++		}
+ 	}
+ }
+ 
+
