@@ -65,10 +65,10 @@ _kyber_disable=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-pkgver=4.13.4
+pkgver=4.13.5
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -135,7 +135,7 @@ source=(# mainline kernel patches
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '1e34c35dfbd3b7451a7b3eb93c5e342acc006b5d1906b5e542a8f203723bb8d6'
+            'ba0cf285525e24850917c2f5cc7c2283b6509e2185bb70108f140f7ec695d57d'
             'SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             '9742e1c7d8b836c5c7e8052d71247bb2cbf11732d238233b3090ff1b883d418b'
@@ -156,8 +156,8 @@ sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             '8114b75c12cb816c68c69a7b37c87560daf8c4d1afd8eea7947e0c74c77fc342'
             'd235d19767373cd1ddc70e1002b975f7f4df87409af560ef86d802ee61215e66'
             '5e57c8d1d87a63e1c5947aba02346862992f39be2b2761ea142b3897995495aa'
-            'c3b90be8c525f770090e58eac502a5ed2bdde2528960de97e2de1e64acc21854'
-            '9bc042875c43c868166924c7ed7f3feed553206a971ebf7bb02bd4e1072257b9'
+            '86018270c7dbdc3dd798562e5cb4299390ee7a0119ff3b08e30e4dd81e47d05b'
+            'b1c82fa9693114dc0a4beffcb733dbe5c44f90fa226c6cc1f8f1ab2b1d455e27'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
