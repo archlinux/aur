@@ -49,9 +49,6 @@ prepare() {
   mkdir -p "${srcdir}/src/${_gourl}/${_pkgname}"
   cp -r "${srcdir}/${_pkgname}" "${srcdir}/src/${_gourl}"
 
-  msg2 "Retrieve bindata"
-  GOPATH="${srcdir}" go get -v -u github.com/go-macaron/bindata
-
   msg2 "Patch config and service file"
   patch -Np1 -i "${srcdir}/0001-Adjust-config-for-Arch-Linux-package.patch" "${srcdir}/src/${_gourl}/${_pkgname}/conf/app.ini"
   patch -Np1 -i "${srcdir}/0002-Adjust-service-file-for-Arch-Linux-package.patch" "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/${_pkgname}.service"
@@ -59,6 +56,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/src/${_gourl}/${_pkgname}"
+  GOPATH="${srcdir}" go get -v -u github.com/go-macaron/bindata
   PATH="${srcdir}/bin:$PATH" GOPATH="${srcdir}" make DESTDIR="${pkgdir}/" TAGS="bindata sqlite tidb pam" clean generate build
 }
 
