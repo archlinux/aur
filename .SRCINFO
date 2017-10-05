@@ -1,7 +1,7 @@
 pkgbase = tweak-hexeditor
 	pkgdesc = Efficient command line hex editor
 	pkgver = 3.02
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.chiark.greenend.org.uk/~sgtatham/tweak/
 	arch = i686
 	arch = x86_64

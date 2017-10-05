@@ -4,7 +4,7 @@
 pkgname=tweak-hexeditor
 pkgdesc='Efficient command line hex editor'
 pkgver=3.02
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 depends=('ncurses' 'glibc')
 makedepends=('make' 'gcc')
@@ -17,11 +17,16 @@ sha256sums=('5b4c19b1bf8734d1623e723644b8da58150b882efa9f23bbe797c3922f295a1a')
 
 build() {
     cd "tweak-$pkgver"
-    make
+    # The upstream Makefile is very poorly implemented and doesn't pick
+    # up CFLAGS or CPPFLAGS from the environment.
+    make XFLAGS="$CPPFLAGS $CFLAGS"
 }
 
 package() {
     cd "tweak-$pkgver"
-    make install PREFIX="$pkgdir/usr" MANDIR="$pkgdir/usr/share/man/man1"
-    install -Dm 644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # The "make install" target doesn't support DESTDIR and sets MANDIR
+    # incorrectly. It's simple enough to just install without using it.
+    install -Dm755 tweak "$pkgdir/usr/bin/tweak"
+    install -Dm644 tweak.1 "$pkgdir/usr/share/man/man1/tweak.1"
+    install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
