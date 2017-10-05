@@ -1,47 +1,51 @@
-
-post_install() {
-	set -e
-	
-	# symlink java
-	ln -sf /usr/bin/java /usr/lib/scylla/jmx/symlinks/scylla-jmx
-
-	# from scylla-kernel-conf
-	sysctl -p/etc/sysctl.d/99-scylla-sched.conf
-
-	# from scylla-server
-	if [ -d /var/lib/scylla/conf ] && [ ! -L /var/lib/scylla/conf ]; then
-		mkdir -p /etc/scylla/
-		cp -a /var/lib/scylla/conf/* /etc/scylla/
-	fi
-		
-	if [ "$1" = configure ]; then
-		adduser --system \
-			--quiet \
-			--home /var/lib/scylla \
-			--no-create-home \
-			--disabled-password \
-			--group scylla
-		chown -R scylla:scylla /var/lib/scylla
-		chown -R scylla:scylla /var/lib/scylla-housekeeping
-	fi
-	
-	ln -sfT /etc/scylla /var/lib/scylla/conf
-	
-	grep -v api_ui_dir /etc/scylla/scylla.yaml | grep -v api_doc_dir > /tmp/scylla.yaml
-	echo "api_ui_dir: /usr/lib/scylla/swagger-ui/dist/" >> /tmp/scylla.yaml
-	echo "api_doc_dir: /usr/lib/scylla/api/api-doc/" >> /tmp/scylla.yaml
-	mv /tmp/scylla.yaml /etc/scylla/scylla.yaml
-
-	# starting services
-	echo 'run these commands if you need to:'
-	for svc in node-exporter scylla-housekeeping scylla-jmx scylla-server; do 
-		echo 'sudo systemctl enable '${svc}
-		echo 'sudo systemctl start '${svc}
-	done
+## arg 1:  the new package version
+pre_install() {
+    echo "Creating 'scylla' group..."
+    getent group scylla || /usr/sbin/groupadd scylla 2> /dev/null || :
+    echo "Creating 'scylla' user..."
+    getent passwd scylla || /usr/sbin/useradd -g scylla -s /sbin/nologin -r -d /var/lib/scylla scylla 2> /dev/null || :
 }
 
-pre_remove() {
+## arg 1:  the new package version
+post_install() {
+    # Set permissions to the data directories
+    chown -R scylla:scylla /var/lib/scylla
+    chown -R scylla:scylla /var/lib/scylla-housekeeping
 
-	# remove symlink
-	rm /usr/lib/scylla/jmx/symlinks/scylla-jmx
+    # Patch Scylla YAML config for Swagger UI and Doc directories
+    grep -v api_ui_dir /etc/scylla/scylla.yaml | grep -v api_doc_dir > /tmp/scylla.yaml
+    echo "api_ui_dir: /usr/lib/scylla/swagger-ui/dist/" >> /tmp/scylla.yaml
+    echo "api_doc_dir: /usr/lib/scylla/api/api-doc/" >> /tmp/scylla.yaml
+    mv /tmp/scylla.yaml /etc/scylla/scylla.yaml
+
+    echo
+    echo "ScyllaDB installation is complete. To configure ScyllaDB, please run:"
+    echo "    >> sudo scylla_setup"
+    echo "After configuration is done, start ScyllaDB using systemctl:"
+    echo "    >> sudo systemctl start scylla-server.service"
+    echo
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+	:
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	ln -sfT /etc/scylla /var/lib/scylla/conf
+    systemctl restart collectd
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	systemctl stop scylla-server.service
+	systemctl disable scylla-server.service
+}
+
+## arg 1:  the old package version
+post_remove() {
+    :
 }
