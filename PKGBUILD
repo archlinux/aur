@@ -89,9 +89,9 @@ package() {
 	# use colors only if we have them
 	if [[ $(which tput > /dev/null 2>&1 && tput -T "${TERM}" colors || echo -n '0') -ge 8 ]] ; then
 		local _COL_YELLOW_='\e[0;33m'
+		local _COL_LIGHTGREY_='\e[0;37m'
 		local _COL_BRED_='\e[1;31m'
 		local _COL_BBLUE_='\e[1;34m'
-		local _COL_BPURPLE_='\e[1;35m'
 		local _COL_BWHITE_='\e[1;37m'
 		local _COL_DEFAULT_='\e[0m'
 	fi
@@ -101,14 +101,10 @@ package() {
 	msg "Packaging ${pkgname} (language: ${_language})..."
 
 	if [[ -z "${TORBROWSER_PKGLANG}" ]]; then
-		echo
-		echo -e "  ${_COL_BBLUE_}->${_COL_DEFAULT_} ${_COL_BRED_}NOTE:${_COL_DEFAULT_} If you want to package ${_COL_BPURPLE_}${pkgname}${_COL_BWHITE_} in a different language, please"
-		echo '     set a `TORBROWSER_PKGLANG` environment variable before running makepkg.'
-		echo
+		echo -e "  ${_COL_BBLUE_}->${_COL_DEFAULT_} ${_COL_BRED_}NOTE:${_COL_DEFAULT_} If you want to package ${_COL_BWHITE_}${pkgname}${_COL_DEFAULT_} in a different language, please"
+		echo -e "     set a \`${_COL_YELLOW_}TORBROWSER_PKGLANG${_COL_DEFAULT_}\` environment variable before running makepkg.\n"
 		echo '     For instance:'
-		echo
-		echo -e "        ${_COL_YELLOW_}TORBROWSER_PKGLANG='en-US' makepkg${_COL_DEFAULT_}"
-		echo
+		echo -e "\n        ${_COL_LIGHTGREY_}TORBROWSER_PKGLANG='en-US' makepkg${_COL_DEFAULT_}\n"
 	fi
 
 	sed -i "s/__REPL_LANGUAGE__/${_language}/g"	"${pkgname}.desktop"
