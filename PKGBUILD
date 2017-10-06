@@ -26,10 +26,12 @@ options=('!emptydirs' '!strip')
 install="remarkable.install"
 source=("remarkable_${pkgver}_all.deb::http://remarkableapp.github.io/files/remarkable_${pkgver}_all.deb"
         "remarkable.install"
+        "LICENSE"
         "http://raw.githubusercontent.com/timeraider4u/Remarkable/2cce6ea49696927300d324637255d3c2cd377e8b/remarkable/RemarkableWindow.py"
         "http://raw.githubusercontent.com/timeraider4u/Remarkable/2cce6ea49696927300d324637255d3c2cd377e8b/data/ui/RemarkableWindow.ui")
 sha1sums=('95f45865faecc86cc0f7d84d78b0c87c834bf405'
           'bdbfb750df9e5fb3022f47a46a80555259628cd1'
+          '6e5ea06076c85fdd25b79bfc41588f7f7ee9ba29'
           '0eda512ff55fd570612587e252b37582b4f0c288'
           '0482be20f02314614ea9b2e3650788146f38196b')
 
