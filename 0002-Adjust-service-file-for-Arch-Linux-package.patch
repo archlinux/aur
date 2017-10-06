@@ -1,4 +1,4 @@
-From dee8353d947958b5d545f18b4304ad5685eabe2d Mon Sep 17 00:00:00 2001
+From 6c229c932878e189e3a785c337a1c5d1cdbea2c3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 19 Mar 2017 18:04:48 +0100
 Subject: [PATCH 2/2] Adjust service file for Arch Linux package
@@ -8,7 +8,7 @@ Subject: [PATCH 2/2] Adjust service file for Arch Linux package
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/scripts/systemd/gogs.service b/scripts/systemd/gogs.service
-index 9f105bf8..99ca11e0 100644
+index 9f105bf8e..07ffa1f66 100644
 --- a/scripts/systemd/gogs.service
 +++ b/scripts/systemd/gogs.service
 @@ -12,12 +12,12 @@ After=mariadb.service mysqld.service postgresql.service memcached.service redis.
@@ -25,10 +25,10 @@ index 9f105bf8..99ca11e0 100644
 +ExecStart=/usr/bin/gogs web --config /etc/gogs/app.ini
  Restart=always
 -Environment=USER=git HOME=/home/git
-+Environment=USER=gogs HOME=/var/lib/gogs
++Environment=USER=gogs HOME=/var/lib/gogs GOGS_CUSTOM=/var/lib/gogs/custom
  
  [Install]
  WantedBy=multi-user.target
 -- 
-2.13.1
+2.14.2
 
