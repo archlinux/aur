@@ -8,12 +8,12 @@ pkgver=0.6.1
 pkgrel=3
 pkgdesc="Cap'n Proto serialization/RPC system"
 arch=('i686' 'x86_64')
-url='http://kentonv.github.io/capnproto/'
+url='https://capnproto.org/'
 license=('MIT')
 replaces=('capnproto-0.6')
 provides=('capnproto')
 conflicts=('capnproto-git')
-source=("http://capnproto.org/capnproto-c++-${pkgver}.tar.gz")
+source=("https://capnproto.org/capnproto-c++-${pkgver}.tar.gz")
 sha512sums=('cd35aec18175b28149cf39ccbf360f8023d2762d04c0d6fdfbd7789ca26eac6228dfec6a414f48ff78aec4aad4c3d9d5f143a6a59dd86c16f653fc538e64b58e')
 
 build() {
