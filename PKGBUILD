@@ -3,7 +3,11 @@
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
-pkgname=mutter
+# Patched package maintainer: Saren Arterius <saren@wtako.net>
+# Patch origin: https://gist.github.com/DeadMetaler/12622bf9415c1100f2d436ffbd6778c6
+
+pkgname=mutter-781835-workaround
+_pkgname=mutter
 pkgver=3.26.1
 pkgrel=1
 pkgdesc="A window manager for GNOME"
@@ -14,6 +18,8 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libcanberra startup-notification zenity libsm gnome-desktop upower
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire)
 makedepends=(intltool gobject-introspection git gnome-common)
+provides=(mutter)
+conflicts=(mutter)
 groups=(gnome)
 options=(!emptydirs)
 _commit=0e154ccf76aeb97c7e4b541322b4a1e898609936  # tags/3.26.1^0
@@ -25,12 +31,12 @@ sha256sums=('SKIP'
             '07f87412f2a24dc03fab95eb8aba437fad0927aad844db0557c193c811e03f88')
 
 pkgver() {
-  cd $pkgname
+  cd $_pkgname
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd $pkgname
+  cd $_pkgname
 
   # https://bugs.archlinux.org/task/51940
   patch -Np1 -i ../startup-notification.patch
@@ -40,10 +46,10 @@ prepare() {
 }
 
 build() {
-  cd $pkgname
+  cd $_pkgname
 
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-      --libexecdir=/usr/lib/$pkgname --disable-static \
+      --libexecdir=/usr/lib/$_pkgname --disable-static \
       --disable-schemas-compile --enable-compile-warnings=minimum \
       --enable-gtk-doc --enable-egl-device --enable-remote-desktop
 
@@ -55,6 +61,6 @@ build() {
 }
 
 package() {
-  cd $pkgname
+  cd $_pkgname
   make DESTDIR="$pkgdir" install
 }
