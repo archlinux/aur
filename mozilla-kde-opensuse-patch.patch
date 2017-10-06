@@ -1,5 +1,5 @@
---- mozilla-kde.patch	2017-10-03
-+++ mozilla-kde.patch	2017-10-03
+--- mozilla-kde.patch
++++ mozilla-kde.patch
 @@ -9,12 +9,7 @@
  diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  --- a/modules/libpref/Preferences.cpp
@@ -122,6 +122,20 @@
  @@ -1143,26 +1143,26 @@ nsresult nsOSHelperAppService::OSProtoco
       ContentAction::Action::defaultActionForScheme(QString(aProtocolScheme) + ':');
   
+@@ -3200,12 +3180,12 @@
+ --- a/widget/gtk/moz.build
+ +++ b/widget/gtk/moz.build
+ @@ -109,16 +109,17 @@ else:
+- include('/ipc/chromium/chromium-config.mozbuild')
+  
+  FINAL_LIBRARY = 'xul'
+  
+  LOCAL_INCLUDES += [
+      '/layout/generic',
++     '/layout/style',
+      '/layout/xul',
+      '/other-licenses/atk-1.0',
+ +    '/toolkit/xre',
 @@ -3303,7 +3283,7 @@
  +    return NS_OK;
  +  }

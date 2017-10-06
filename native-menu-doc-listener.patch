@@ -1,0 +1,22 @@
+--- a/widget/gtk/nsNativeMenuDocListener.cpp
++++ b/widget/gtk/nsNativeMenuDocListener.cpp
+@@ -64,7 +64,8 @@
+ {
+     MOZ_ASSERT(mContentToObserverTable.Count() == 0,
+                "Some nodes forgot to unregister listeners. This is bad! (and we're lucky we made it this far)");
+-    MOZ_COUNT_DTOR(nsNativeMenuDocListener);
++    // This shouldn't be here?  https://bugzilla.mozilla.org/show_bug.cgi?id=977380
++    // MOZ_COUNT_DTOR(nsNativeMenuDocListener);
+ }
+ 
+ void
+@@ -287,7 +288,8 @@
+     mLastSource(nullptr),
+     mLastTarget(nullptr)
+ {
+-    MOZ_COUNT_CTOR(nsNativeMenuDocListener);
++    // This shouldn't be here, see destructor for details.
++    // MOZ_COUNT_CTOR(nsNativeMenuDocListener);
+ }
+ 
+ void
