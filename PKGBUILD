@@ -9,7 +9,7 @@
 pkgbase=linux-rt          # Build kernel with a different name
 _srcname=linux-4.11
 _pkgver=4.11.12
-_rtpatchver=rt13
+_rtpatchver=rt14
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
             '707c5f18dfb795761b0b7ac6f946f03774f9f99317306fd54d8724d17d9c7729'
             'SKIP'
-            'd7a0e66fd187142cd65034c5b37a5c80268aabf7a88f1c37fb02116269045878'
+            '0ba8106cea3808d40966ba687df844e83f966a5daf4d4d9b527c2932b8eb007e'
             'SKIP'
             '1d0354bb05ec64a8fb583e41fb67ad911310613c6788af4f7f31da3e0fd4eec7'
             '2e14302caebc3590a4791ff57d69a4b75eba6da6f394ad142e286446a1da04f4'
@@ -81,7 +81,7 @@ prepare() {
   fi
 
   # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+#  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
