@@ -1,6 +1,6 @@
 pkgbase = wget2-git
 	pkgdesc = Updated version of popular Wget tool
-	pkgver = 0.0.r1346.g689e403
+	pkgver = 0.0.r1589.g1383c21e
 	pkgrel = 1
 	url = http://www.gnu.org/software/wget/wget.html
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = wget2-git
 	optdepends = ca-certificates: HTTPS Downloads
 	provides = wget2
 	conflicts = wget2
-	source = git://git.savannah.gnu.org/wget/wget2.git
+	source = git+https://gitlab.com/gnuwget/wget2.git
 	source = git://git.savannah.gnu.org/gnulib.git
 	md5sums = SKIP
 	md5sums = SKIP

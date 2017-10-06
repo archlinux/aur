@@ -2,7 +2,7 @@
 
 _gitname=wget2
 pkgname=${_gitname}-git
-pkgver=0.0.r1346.g689e403
+pkgver=0.0.r1589.g1383c21e
 pkgrel=1
 pkgdesc="Updated version of popular Wget tool"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=("ca-certificates: HTTPS Downloads")
 makedepends=('git' 'rsync')
 provides=('wget2')
 conflicts=('wget2')
-source=("git://git.savannah.gnu.org/wget/${_gitname}.git"
+source=("git+https://gitlab.com/gnuwget/wget2.git"
         "git://git.savannah.gnu.org/gnulib.git")
 md5sums=('SKIP' 'SKIP')
 
