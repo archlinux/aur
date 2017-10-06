@@ -6,8 +6,8 @@
 
 pkgname=root-extra-dev
 _pkgname=root
-pkgver=6.09.02
-pkgrel=2
+pkgver=6.11.02
+pkgrel=1
 provides=('root' 'root-extra' 'root-extra-dev')
 conflicts=('root' 'root-dev' 'root-extra')
 pkgdesc='C++ data analysis framework and interpreter from CERN with extra features enabled - development release.'
@@ -47,7 +47,7 @@ source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
         'root.xml'
         'rootd'
         'settings.cmake')
-sha256sums=('5348096084adea514297050884baa33f6cf6fd9e91e83e9967c6f07528588639'
+sha256sums=('39fc90ebd12f184572e9e5713ea1f3fb804bc0996b416c90d6b17f2db1e7aaca'
             'f1796729b0403026382bca43329692f5356c8ec46fc2c09f799a8b3d12d49a6f'
             '9d1f8e7ad923cb5450386edbbce085d258653c0160419cdd6ff154542cc32bd7'
             '50c08191a5b281a39aa05ace4feb8d5405707b4c54a5dcba061f954649c38cb0'
