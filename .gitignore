@@ -1,6 +1,7 @@
 *.xz
 *.zip
 *.deb
+*.tar
 *.tar.gz
 *.tar.gz.asc
 *.tgz
@@ -9,3 +10,4 @@
 /src
 *.gz
 rc
+go/
