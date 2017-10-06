@@ -3,8 +3,8 @@
 # Contributor: Niklas Schmuecker (IRC: nisc) <nschmuecker (gmail)>
 
 pkgname=9menu
-pkgver=1.8
-pkgrel=6
+pkgver=1.9
+pkgrel=1
 pkgdesc='Simple and easily configurable X-menu / program launcher.'
 arch=('i686' 'x86_64')
 license=('custom')
@@ -12,7 +12,7 @@ url='ftp://freefriends.org/arnold/Source/'
 depends=('libxext')
 makedepends=('imake')
 source=("ftp://freefriends.org/arnold/Source/$pkgname-$pkgver.shar.gz")
-md5sums=('3947bbd16be0f3146208fcfbe0146071')
+md5sums=('39b18a247c8b1b72332aa136fc4ec17c')
 
 prepare() {
   cd "$srcdir"
