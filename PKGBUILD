@@ -3,7 +3,7 @@
 
 pkgname=('icinga2-common' 'icinga2' 'icinga-studio')
 pkgbase=icinga2
-pkgver=2.6.3
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
@@ -12,7 +12,7 @@ url="http://www.icinga.org"
 depends=('boost-libs' 'libedit' 'openssl' 'yajl')
 makedepends=('boost' 'cmake' 'libmariadbclient' 'postgresql-libs' 'wxgtk')
 source=("https://github.com/Icinga/$pkgbase/archive/v$pkgver.tar.gz")
-sha256sums=('83d44871a70d1b368b1af717873ff9b1b185344d23fc79b83118e47a85da6d90')
+sha256sums=('79f2cd2cba66b2d2a785d37cccd4a47611f7b0b7d52b9a625a22f0c7ff12f7f0')
 
 build() {
   mkdir -p "$srcdir/$pkgbase-$pkgver/build"
@@ -29,7 +29,7 @@ build() {
     -DICINGA2_PLUGINDIR=/usr/lib/monitoring-plugins \
     -DUSE_SYSTEMD=ON \
     -DICINGA2_WITH_STUDIO=ON \
-    -DLOGROTATE_HAS_SU=OFF
+    -DLOGROTATE_HAS_SU=OFF \
 
   make
 }
@@ -41,6 +41,7 @@ package_icinga2-common() {
   make DESTDIR="$pkgdir" install
   rm -r $pkgdir/{etc,run,var}
   rm -r $pkgdir/usr/{bin,share}
+  rm -r $pkgdir/usr/lib/monitoring-plugins
   rm -r $pkgdir/usr/lib/systemd
   rm -r $pkgdir/usr/lib/icinga2/{prepare-dirs,safe-reload,sbin}
 }
@@ -53,8 +54,8 @@ package_icinga2() {
   backup=(etc/default/icinga2
           etc/icinga2/features-available/{api,checker,command,compatlog}.conf
           etc/icinga2/features-available/{debuglog,gelf,graphite}.conf
-          etc/icinga2/features-available/{ido-mysql,ido-pgsql,livestatus,mainlog}.conf
-          etc/icinga2/features-available/{notification,perfdata,statusdata,syslog}.conf
+          etc/icinga2/features-available/{ido-mysql,ido-pgsql,influxdb,livestatus,mainlog}.conf
+          etc/icinga2/features-available/{notification,opentsdb,perfdata,statusdata,syslog}.conf
           etc/icinga2/{constants,icinga2,init,zones}.conf
           etc/logrotate.d/icinga2)
   install='icinga2.install'
