@@ -3,7 +3,7 @@
 pkgname=('python-opencv')
 _module='opencv_python'
 pkgver='3.3.0.10'
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper package for OpenCV python bindings."
 url="https://github.com/skvark/opencv-python"
 license=('MIT' 'LGPL2')
@@ -14,6 +14,7 @@ source_x86_64=("https://pypi.python.org/packages/47/da/d7cc32630062e75cac5df51fc
 md5sums_x86_64=('43a0e261c74e68d0b80df5bc7c3aa06a')
 md5sums_i686=('8efba6083e38ccd58123d0472a02cd00')
 source_i686=("https://pypi.python.org/packages/a7/ae/7b631633120159827389ffd9e3f81c384d892d18b5d12501e78f68426e4c/${_module}-${pkgver}-cp36-cp36m-manylinux1_i686.whl")
+options=(!strip)
 
 package() {
     cd "${srcdir}"
