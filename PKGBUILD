@@ -5,9 +5,9 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.13.4
-xanmod=8
-pkgrel=3
+pkgver=4.13.5
+xanmod=9
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -23,7 +23,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 arch_config_trunk=6c9f606816c018a38542520b3e8b2b6f60c901ac
 source_x86_64=("config.x86_64::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.x86_64?h=packages/linux&id=${arch_config_trunk}")
 source_i686=("config.i686::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.i686?h=packages/linux&id=${arch_config_trunk}")
-sha256sums=('9c8591d9ad3ffadfc35ab1267d755112020d112fceac538eb6d10e2994f1ae59'
+sha256sums=('30b109e773088a87b193833393316928f10bc0f90bd2fca7cf4caf540522b37a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 sha256sums_i686=('73278ee56c5d3855e67ff50caa77a7cb47fb29ebd8f9b7ca9ebee4e2d446529c')
