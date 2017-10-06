@@ -2,9 +2,9 @@
 
 pkgbase='vte3-tilix'
 pkgname=("${pkgbase}" 'vte-tilix-common')
-_vtever=0.48.3
-_tilixver=1.5.6
-pkgver=0.48.3+1.5.6
+_vtever=0.50.1
+_tilixver=1.6.4
+pkgver=0.50.1+1.6.4
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora and Tilix patches'
 arch=('x86_64')
@@ -16,9 +16,9 @@ options=('!emptydirs')
 
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
 _frepourl='http://pkgs.fedoraproject.org/rpms/vte291'
-_frepobranch='f26'
+_frepobranch='f27'
 _fpatchfile='vte291-command-notify-scroll-speed.patch'
-_fcommit='d8ae8b98633dc0bbe18946b55ac89414bda09938'
+_fcommit='b9f188ca9e3cf4db02d82d41441359ef6c0e0e57'
 
 # VTE source ref
 #_vtecommit='837cce9ced6bfe317cb97aeca171001da92cb3a1'
@@ -35,7 +35,7 @@ source=(
 	"${_tilixpatchfile2}-${_tilixver}::https://github.com/gnunn1/tilix/raw/${_tilixver}/experimental/vte/${_tilixpatchfile2}"
 )
 sha256sums=('SKIP'
-            'e03c3ddaa240c9c997d89b8fac03ab5f0fa2d3160cf51a7a14c08a4e9e4df47c'
+            '87f943425a94dbe534157ab87ad12326342cceb470c8203485edc8944d932679'
             '150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a'
             '980b6bc75a30ec56fe70387784083b5c7ded79715b7a0611e1d4358ee27c4720'
             'aa56313332850becb0b02aba1e05888ed978f7d8c006147679e2544cc0ca40cf')
