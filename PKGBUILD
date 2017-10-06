@@ -4,7 +4,7 @@
 # Contributor: Georgij Kondratjev <smpuj@bk.ru>
 
 pkgname=gnucap
-pkgver=20160724
+pkgver=20171003
 pkgrel=1
 pkgdesc="GNU Circuit Analysis Package"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://gnucap.org/"
 license=('GPL')
 depends=('readline')
 source=("http://git.savannah.gnu.org/cgit/$pkgname.git/snapshot/$pkgname-$pkgver.tar.gz")
-sha1sums=('42b3ce44530e59f40387f70ab22a745c7b9e6272')
+sha1sums=('599e43d3fe00399c1df675580161aa0b52f72de1')
 
 build() {
   cd $pkgname-$pkgver
