@@ -18,9 +18,11 @@ groups=(gnome)
 options=(!emptydirs)
 _commit=0e154ccf76aeb97c7e4b541322b4a1e898609936  # tags/3.26.1^0
 source=("git+https://git.gnome.org/browse/mutter#commit=$_commit"
-        startup-notification.patch)
+        startup-notification.patch
+        revert.patch)
 sha256sums=('SKIP'
-            '5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366')
+            '5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366'
+            '07f87412f2a24dc03fab95eb8aba437fad0927aad844db0557c193c811e03f88')
 
 pkgver() {
   cd $pkgname
@@ -32,6 +34,7 @@ prepare() {
 
   # https://bugs.archlinux.org/task/51940
   patch -Np1 -i ../startup-notification.patch
+  patch -Np1 -i ../revert.patch
 
   NOCONFIGURE=1 ./autogen.sh
 }

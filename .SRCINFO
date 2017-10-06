@@ -28,8 +28,10 @@ pkgbase = mutter
 	options = !emptydirs
 	source = git+https://git.gnome.org/browse/mutter#commit=0e154ccf76aeb97c7e4b541322b4a1e898609936
 	source = startup-notification.patch
+	source = revert.patch
 	sha256sums = SKIP
 	sha256sums = 5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366
+	sha256sums = 07f87412f2a24dc03fab95eb8aba437fad0927aad844db0557c193c811e03f88
 
 pkgname = mutter
 
