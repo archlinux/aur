@@ -1,0 +1,16 @@
+pkgbase = python-monerowallet
+	pkgdesc = Python library for the Monero Wallet
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/chaica/pymonerowallet
+	arch = any
+	license = GPL
+	makedepends = python
+	makedepends = python-distribute
+	depends = python
+	depends = python-requests>=2.11.1
+	source = https://github.com/chaica/pymonerowallet/archive/0.1.tar.gz
+	md5sums = 2e774b79e46b8007173117ae1ec73cff
+
+pkgname = python-monerowallet
+
