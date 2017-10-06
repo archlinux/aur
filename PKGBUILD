@@ -1,7 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.lli>
 pkgname='kaldi'
 pkgdesc='Speech recognition research toolkit'
-pkgver=5.2.r7501.97922a856
+pkgver=5.2.r7589.fad21abdf
 pkgrel=1
 makedepends=('gcc5' 'git' 'wget' 'subversion')
 depends=('python2' 'openblas-lapack')
@@ -40,6 +40,8 @@ prepare(){
 }
 
 build () {
+	CFLAGS="${CFLAGS/-fno-plt/}"
+	CXXFLAGS="${CFLAGS/-fno-plt/}"
 	cd $srcdir/$pkgname/tools
 	sed \
 		-e '/^sclite_compiled/s/ sctk_configured//' \
