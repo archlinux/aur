@@ -19,6 +19,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/ec"
+  sed -i "s/-Werror /-std=gnu90 /g" Makefile.toolchain
   make PREFIX=/usr -j5 BOARD=samus
 }
 
