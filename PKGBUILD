@@ -4,7 +4,7 @@
 
 pkgbase=python-libnacl
 pkgname=('python-libnacl' 'python2-libnacl')
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A simple ctypes based python binding to libsodium'
 arch=('any')
@@ -12,7 +12,7 @@ url='http://libnacl.readthedocs.org'
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools' 'libsodium')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/saltstack/libnacl/archive/v$pkgver.tar.gz")
-sha512sums=('b4aa26b407855a73ac08ab5abc684f37338e960f534c04edb471634029388b9b11a79b02220eced99fcc94df7e1c05cbf4a0df48bb8b45b5f79e43cddfee790a')
+sha512sums=('6f5202ca50bf30526bc51e2c528fe86aa412eff4b912d0b09da7f019de2929d2be2a9a8f80340849cf77b3593eae4fa96f2c0920b5201c5786f5009ad5f32c34')
 
 prepare() {
   cp -r libnacl-$pkgver{,-py2}
