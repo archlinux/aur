@@ -1,3 +1,5 @@
+# Maintainer : Sebastian Lau <lauseb644 _at_ gmail .dot. com>
+
 pkgname=('python-opencv')
 _module='opencv_python'
 pkgver='3.3.0.10'
