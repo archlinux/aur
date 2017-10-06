@@ -27,7 +27,7 @@ _optimize="-O2"
 
 # Upstream name, version, and source URL
 _realname='firefox'
-_pkgver=57.0b5
+_pkgver=57.0b6
 _mozffurl="http://archive.mozilla.org/pub/$_realname/releases/$_pkgver/source/$_realname-$_pkgver.source.tar.xz"
 
 # Debian Firefox trunk Debian source revision and URL (for Unity (global) menubar patch).
@@ -82,7 +82,7 @@ fi
 
 pkgname=("$_realname-kde-opensuse-beta")
 pkgver="$_pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with openSUSE patches to integrate better with KDE Plasma 5"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -121,7 +121,7 @@ source=("$_mozffurl"
         'vendor.js' 'kde.js'
         'firefox-fixed-loading-icon.png'
         'firefox.desktop')
-sha256sums=('bbe48656693e562b60f643a76a825b84d57581bb83dcb9a3a7fa90ac47455d5d'
+sha256sums=('b24378cf0eb66ab5cfb217a0fb756b75d45e79de1d12cb6c2db795c4bf28d91a'
             'SKIP'  # Debian source tarball is generated each time it is requested.
             'e25b9fa2e4ac279b5e073286b7dc9956822bf508eccb67eb870921013274a709'
             'ef0f90c9134ef05b950f06a3ffbd699c2e5a5f99a4cdf9868e799534d68c204f'
