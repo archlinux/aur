@@ -1,7 +1,7 @@
 # Maintainer: liberodark
 
 pkgname=cudatext
-pkgver=1.21.0.0
+pkgver=1.21.0.1
 pkgrel=1
 pkgdesc="Cross-platform text editor"
 arch=('x86_64')
