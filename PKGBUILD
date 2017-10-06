@@ -7,7 +7,7 @@
 # Go read http://www.courier-mta.org/install.html b4 running or building courier
 
 pkgname=courier-mta
-pkgver=0.78.0
+pkgver=0.78.1
 pkgrel=1
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
@@ -34,7 +34,7 @@ source=(http://downloads.sourceforge.net/project/courier/courier/${pkgver}/couri
 	webmaild.service
 	courier-courierfilter.service
 	courier-mta.conf)
-sha1sums=('f45eac5679e977591101f9f0fc7417e8ccf513e0'
+sha1sums=('27cbcce10d4f113af0c02d0f89497cceb86263ad'
           '160f270d8214ac39adc0d1618bc981c59f080adf'
           '71d07d57d3c211abf267be140ffb074ac2492448'
           '6b06348e019e8883bcac314169e920f156ed1fa4'
