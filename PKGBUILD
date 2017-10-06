@@ -1,7 +1,7 @@
 # Maintainer: Wes Barnett <wes AT w barnett DOT us>
 pkgname=lammps-git
 _pkgname=lammps
-pkgver=r13609.f2c117274
+pkgver=r13672.f7cbdcf99
 pkgrel=1
 pkgdesc='versatile package to perform molecular dynamics'
 url='http://lammps.sandia.gov/'
@@ -26,9 +26,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-  cd "$srcdir/${_pkgname}"
-  # Fix to cmake file (won't build without patch)
-  git apply <(curl -L https://github.com/lammps/lammps/pull/660.patch)
 }
 
 build() {
