@@ -1,0 +1,25 @@
+From 1e16b62746576f594a5da9859a8a58e5f5be74f1 Mon Sep 17 00:00:00 2001
+From: Alad Wenter <alad@mailbox.org>
+Date: Fri, 6 Oct 2017 23:10:04 +0200
+Subject: [PATCH 2/2] aurbuild: disable verbose signing
+
+---
+ bin/aurbuild | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/aurbuild b/bin/aurbuild
+index 4672372..951a9ba 100755
+--- a/bin/aurbuild
++++ b/bin/aurbuild
+@@ -4,7 +4,7 @@ readonly basedir=$PWD
+ readonly PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+ set -e
+ 
+-declare -a gpg_args=(--detach-sign --no-armor --verbose --batch)
++declare -a gpg_args=(--detach-sign --no-armor --batch)
+ declare -a makechrootpkg_args=(-cnu) makepkg_args=(-Lcrs)
+ declare -i chroot=0 sign_pkg=0
+ 
+-- 
+2.14.2
+
