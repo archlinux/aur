@@ -3,23 +3,23 @@
 # Contributor: Alda <alda@leetchee.fr>
 
 pkgname=signal
-pkgver=1.0.26
-pkgrel=2
+pkgver=1.0.27
+pkgrel=1
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
 depends=('electron')
-makedepends=('npm' 'ruby-sass')
+makedepends=('npm' 'ruby-sass' 'python2' 'gconf' 'phantomjs')
 arch=("i686" "x86_64")
 url='https://whispersystems.org'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WhisperSystems/Signal-Desktop/archive/v${pkgver}.tar.gz"
 	"signal.desktop")
-sha512sums=('fc0fb319111fab431f32194c12e8b38110ee9e4d35a19f9b385778e783e27b3c1516a0c590da9b438bfc7f0367d75b675ffa9c659f85143ac85b60306b7b888b'
+sha512sums=('1caf4da64d38fbfcfbd237a3e3495f11b711ee55d1d73180117567d96631c07f05a82ac173578b4b6ac03c323b656ad74d7bd7bcbbfbb26c0e0afcbfc836db08'
 	    'a264bfc7a4a7aac747daa588a2acbf1eddfd201bc795f0fbc18460a9b25f4460f364124e227a527fec22631cd84bc9e190f9f4978069e9c119eb556b9ff2d327')
 
 build() {
   cd "Signal-Desktop-${pkgver}"
-  npm install
-  npm run dist-prod
+  yarn install
+  yarn pack-prod
 }
 
 package() {
@@ -31,7 +31,7 @@ package() {
   cp -r * "${pkgdir}/usr/lib/${pkgname}/"
 
   install -dm755 "${pkgdir}"/usr/share/icons/hicolor/256x256/apps
-  cp ../../build/icons/png/256.png \
+  cp ../../build/icons/png/256x256.png \
       "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
 
   install -Dm644 "${srcdir}"/${pkgname}.desktop \
