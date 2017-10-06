@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=openjpeg-git
-pkgver=2.2.0.r50.g5a4a1012
+pkgver=2.3.0.r2.gacd91508
 pkgrel=1
 pkgdesc="An open-source JPEG 2000 codec written in C language"
 arch=('i686' 'x86_64')
@@ -44,5 +44,5 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/openjpeg2/LICENSE"
-  rm -r "$pkgdir/usr/share/doc/openjpeg-2.2"
+  rm -r "$pkgdir/usr/share/doc"/openjpeg-2.*
 }
