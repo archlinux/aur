@@ -74,9 +74,15 @@ package() {
     ln -s . jre
 
     msg2 "Fixing directory structure..."
-    # Suffix .desktops + icons (sun-java.png -> sun-java-$_jname.png)
+    # Suffix .desktops + icon (sun-jcontrol.png -> sun-jcontrol-$_jname.png)
     for i in $(find lib/desktop/ -type f); do
         rename -- "." "-$_jname." $i
+    done
+
+    # Link missing icons
+    for i in $(find lib/desktop/icons/ -name "*-$_jname.png" -type f); do
+        ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/java}"
+        ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/javaws}"
     done
 
     # Fix .desktop's
