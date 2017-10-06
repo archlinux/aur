@@ -1,0 +1,17 @@
+pkgbase = perl-pdf-api2-simple
+	pkgdesc = Perl/CPAN Module PDF::API2::Simple: Simplistic wrapper for the excellent PDF::API2 modules
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://metacpan.org/release/PDF-API2-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-install
+	depends = perl-pdf-api2
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RE/REDTREE/PDF-API2-Simple-1.1.4u.tar.gz
+	md5sums = e2c4f5d8eb4ad775f6ca8816cbf45d12
+	sha512sums = 8db8ede9044ac25dd74b79cb6046b53dada09ee64b6ffedec5d8f8d952ff71b655e1c4d901555cb55970492535160eed37e33d4a28cc99266ab607a8f3589b07
+
+pkgname = perl-pdf-api2-simple
+
