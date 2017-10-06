@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Syncro SVN Client
+GenericName=SVN Client
+Comment=SVN Client
+Exec=/usr/bin/syncrosvn/syncroSVNClient.sh %U
+Icon=syncrosvn
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;SVN;
+Keywords=SVN,Syncro;
