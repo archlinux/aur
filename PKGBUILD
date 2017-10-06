@@ -1,15 +1,14 @@
 # $Id$
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: duffydack <duffydack73 {at] gmail>
 
 pkgbase=linux-max98090
 _srcname=linux-4.13
-pkgver=4.13.4
+pkgver=4.13.5
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'patch' 'make')
+makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf' 'patch' 'make')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -21,12 +20,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset')
-
+        
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '1e34c35dfbd3b7451a7b3eb93c5e342acc006b5d1906b5e542a8f203723bb8d6'
+            'ba0cf285525e24850917c2f5cc7c2283b6509e2185bb70108f140f7ec695d57d'
             'SKIP'
-            'bb95b567a3c04276e21876e4259a9900fda5fbb17f84b0c461d137a4f2496346'
+            '721f2c8ed2ed5847ae4ace82fcc6e49a8c921d1c21d8e63e43c8542f18a11d3b'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -46,7 +45,7 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
+  #
   cp -Tf ../config.${CARCH} .config
 
   if [ "${_kernelname}" != "" ]; then
