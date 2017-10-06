@@ -1,5 +1,5 @@
 pkgname=dnf
-pkgver=2.7.2
+pkgver=2.7.3
 pkgrel=1
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
@@ -12,7 +12,7 @@ checkdepends=('python-nose')
 backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf")
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('a724c4787fba9ffa93594d220398f3de')
+md5sums=('583854684c9f424888d12beab6a3ce40')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -44,7 +44,7 @@ package() {
 	ln -s $pkgname-3 "$pkgdir/usr/bin/$pkgname"
 	ln -s $pkgname-automatic-3 "$pkgdir/usr/bin/$pkgname-automatic"
 
-	install -D -m644 ../README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
+	install -Dp -m644 ../README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
