@@ -1,8 +1,8 @@
 # Maintainer: Reynaldo Gil <gilcu3@gmail.com>
 
 pkgname=desproxy
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="TCP tunnel for HTTP proxies"
 arch=('i686' 'x86_64')
 url="https://github.com/gilcu3/desproxy/"
