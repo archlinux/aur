@@ -1,0 +1,12 @@
+pkgbase = mstd
+	pkgdesc = Stuff that could be in std::, but is not
+	pkgver = 1.1.v1
+	pkgrel = 1
+	url = https://github.com/m-ou-se/mstd
+	arch = any
+	license = BSD
+	source = mstd-1.1.v1.tar.gz::https://github.com/de-vri-es/mstd/archive/cmake.tar.gz
+	sha512sums = 0e6f3b6eded1ff2c918c1802f8a08a7cacb49a699bb81384761ee60ff05d71ceb0be1754af2a4869642ee1a4abd356d12a92a11e5d9f3db6f24864480438625b
+
+pkgname = mstd
+
