@@ -3,7 +3,7 @@
 # Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
 
 pkgname=thunderbird-beta
-pkgver=56.0b3
+pkgver=56.0b4
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -23,7 +23,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         thunderbird-install-dir.patch
         no-crmf.diff
         fix-wifi-scanner.diff)
-sha512sums=('566b82510cd83d49441a2c4506add99d2496e160e28c853f809f68fe9d4be491c23cbe838104399c8bd8699201b23eb30a73f84df0d6c074282695518e76f1ed'
+sha512sums=('6f207fde96237500608cee37b11b1eb47f4578fbeef6a83b3204553179265d552768bbad41995df093626382154708939fa139d5cfdf0aa576261f7e04cb18dc'
             'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
             '8100fd3ea37d998905498d41c8504bfdd6d86766542d6b93107c92382a7525da7f75a83f8ff1e15ad95039d51da2add7e6b18af76d45516a41cdfd1e9f98f262'
             '951667941520e66e7b6aad55619ec2b38364da58c5cf8a71775a3032921cfc0a8e5c7ba14e0df35588175f94a6b4785566d39177ff536ab9cefcbd19a03dc065'
