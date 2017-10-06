@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r2545.g7c395b0e
+pkgver=1.0.0.r2598.g1b67a056
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
@@ -12,14 +12,16 @@ provides=('ipxe')
 conflicts=('ipxe')
 install=ipxe.install
 source=('git://github.com/ipxe/ipxe.git'
-	'0001-git-version.patch::https://github.com/eworm-de/ipxe/commit/3386cf39.patch'
-	'0002-banner.patch::https://github.com/eworm-de/ipxe/commit/59dec952.patch'
+	'ipxe-0001-git-version.patch::https://github.com/eworm-de/ipxe/commit/112774bdead6000de74b0b7a18f8e9c4fb4c9278.patch'
+	'ipxe-0002-banner.patch::https://github.com/eworm-de/ipxe/commit/4c2b79d62492ca09cbeff4f3ca59401374643e88.patch'
+	'ipxe-0003-efi-iso.patch::https://github.com/eworm-de/ipxe/commit/3003d1d64e90ccda1e0b90af09d75f35cf9fe5fa.patch'
 	'grub'
 	'chain-default.ipxe'
 	'chain-default-3928.ipxe')
 sha256sums=('SKIP'
-            'a72ebfc3ab294cdf0d2a495597e84e87feba0fb48b618b504c1a8fc277b7366d'
-            'e60a4c6569e426a6ce7298a17c4f062d73391aa00aff5085694fee98a2618c8f'
+            '6066e8b746dc11ab16866679aca5d5af5a16e6e6c4f82dfe003e429011943b81'
+            '6e55f81c2371f8feeef6cadc37c7c86e40aad203c0a0fece39d68730d6958b4e'
+            '7a2c97b65dcd303f4826e1b1a838eea210fc123cb8c691ad2e80069c85b3b6e5'
             'ead8e9b386206bc0e95838a6e074c218e038cd3fa1ca5cff2b73e34b40d5552f'
             'f7ec78e26671f4df90d89440d8b2a69473c15cb6b25dda32c773023378fec42a'
             'e26a54b4e99816b34baebcb7a15d99d57c9395c9689ffbae2329cc675248f9b9')
@@ -43,13 +45,13 @@ prepare() {
 	cd ipxe/src/
 
 	# git version
-	patch -Np2 < "${srcdir}/0001-git-version.patch"
+	patch -Np2 < "${srcdir}/ipxe-0001-git-version.patch"
 
 	# ArchLinux branding
-	patch -Np2 < "${srcdir}/0002-banner.patch"
+	patch -Np2 < "${srcdir}/ipxe-0002-banner.patch"
 
 	# ISO image with EFI support
-	git cherry-pick -n 189652b0
+	patch -Np2 < "${srcdir}/ipxe-0003-efi-iso.patch"
 
 	# read and set keymap
 	[ -s /etc/vconsole.conf ] && source /etc/vconsole.conf
