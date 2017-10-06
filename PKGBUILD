@@ -1,16 +1,17 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=watsup
-pkgver=3.7
+pkgver=4.0
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('xdg-utils')
-depends=('gtk3' 'gdk-pixbuf2' 'pango' 'lm_sensors')
+depends=('libappindicator-gtk3')
 license=('GPL3')
 pkgdesc="Showing some system status informations"
 url="http://www.kornelix.com/watsup"
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-md5sums=('02607506ad8f716678c77bd703ba5e6e')
+sha512sums=('d17a08b35c99e8963ca9624b61ac2e8d1ffb5701a8e574122b31b8cfd33da11df0358ceaf25be84d6600898ebfd8c3290e73459d4c6eb29d8ce971dcc61a4daa')
+options=('!emptydirs')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
