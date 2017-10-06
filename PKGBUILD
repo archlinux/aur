@@ -2,7 +2,7 @@
 
 pkgname=mailspring
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
 arch=('x86_64')
 license=('GPL3')
@@ -22,7 +22,10 @@ package() {
 	tar -xvf data.tar.xz -C ${pkgdir} --exclude='./control'
 
   # mailspring calls libsasl2.so.2 for some reason when arch have .3
-  ln -s /usr/lib/libsasl2.so.3 /usr/lib/libsasl2.so.2
+  if [[ ! -f "/usr/lib/libsasl2.so.2" && -f /usr/lib/libsasl2.so.3 ]]
+  then
+    ln -s /usr/lib/libsasl2.so.3 /usr/lib/libsasl2.so.2
+  fi
 
 	chmod -R go-w "${pkgdir}"/usr
 }
