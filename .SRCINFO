@@ -1,6 +1,6 @@
 pkgbase = dnf-plugins-core
 	pkgdesc = Core DNF Plugins
-	pkgver = 2.1.4
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf-plugins-core
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = dnf-plugins-core
 	backup = etc/dnf/plugins/local.conf
 	backup = etc/dnf/plugins/versionlock.conf
 	backup = etc/dnf/plugins/versionlock.list
-	source = https://github.com/rpm-software-management/dnf-plugins-core/archive/2.1.4/dnf-plugins-core-2.1.4.tar.gz
-	md5sums = d28e6642840e044371ad9664cf00bb0e
+	source = https://github.com/rpm-software-management/dnf-plugins-core/archive/2.1.5/dnf-plugins-core-2.1.5.tar.gz
+	md5sums = 2b33955237713aa57e72d87e6248c49e
 
 pkgname = dnf-plugins-core
 

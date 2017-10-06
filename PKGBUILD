@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
@@ -15,7 +15,7 @@ backup=('etc/dnf/plugins/debuginfo-install.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('d28e6642840e044371ad9664cf00bb0e')
+md5sums=('2b33955237713aa57e72d87e6248c49e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -42,7 +42,7 @@ package() {
 	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
 
-	install -D -m644 ../README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
+	install -Dp -m644 ../README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
