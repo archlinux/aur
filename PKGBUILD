@@ -6,7 +6,7 @@
 pkgbase=linux-covolunablu-gaming
 _srcname=linux-4.11
 pkgver=4.11.12
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
