@@ -16,8 +16,8 @@ optdepends=('devtools: systemd-nspawn support'
             'repose: repo-add alternative')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/$pkgver/$pkgver.tar.gz.asc"
-	"0001-aurbuild-backport-fix-for-236.patch"
-	"0002-aurbuild-disable-verbose-signing.patch")
+        "0001-aurbuild-backport-fix-for-236.patch"
+        "0002-aurbuild-disable-verbose-signing.patch")
 sha256sums=('a09088a460e352179dbf799d915e866af47aa280474a9c943f8e6885490734c5'
             'SKIP'
             '5001ece7fc2a4ec7e1860a0162e042f19adab13bad5c1070436306f2fe2f2b86'
