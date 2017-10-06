@@ -8,9 +8,9 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.16.1
+pkgver=1.17.0
 pkgrel=1
-_commit=27492b6bf3acb0775d82d2f87b25a93490673c6d
+_commit=be377c0faf7574a59f84940f593a6849f12e4de7
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
 license=('MIT')
