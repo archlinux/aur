@@ -1,6 +1,6 @@
 # Maintainer: Josh VanderLinden <arch@cloudlery.com>
 pkgname=aws-lanes
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Utility for interacting with different lanes of servers on AWS."
 arch=('x86_64')
@@ -11,7 +11,7 @@ sources=(
   "https://github.com/codekoala/go-aws-lanes/raw/v${pkgver}/LICENSE"
 )
 sha25sums=(
-  "c0d16c02aeac6d5b8445959a71553f37541ee4724e483a9ed2a2c8c86c550d97"
+  "17030d6bb783cbcc9b2e5961abbb62a730d737611573cdd2502bb7ba20ea6864"
   "cf03ea3ea781a1e6291c16bebe5424b122dc0a996b4807f9f9c5909838909613"
 )
 options=(!strip)
