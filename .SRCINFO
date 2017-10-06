@@ -8,6 +8,7 @@ pkgbase = qtwebflix-git
 	license = GPL3
 	makedepends = git
 	depends = xdg-utils
+	depends = qt5-webengine
 	optdepends = qt5-webengine-widevine
 	optdepends = chromium-widevine
 	source = git+https://github.com/gort818/qtwebflix.git
