@@ -47,3 +47,4 @@ package() {
   install -t "$pkgdir/usr/share/licenses/$pkgname/" -Dm755 CopyRight COMMERCIAL_LICENSE REGISTER     
 }
 
+
