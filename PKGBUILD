@@ -2,12 +2,12 @@
 
 pkgname=waterfox-kde-bin
 pkgver=55.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 url="https://www.waterfoxproject.org/"
 license=('MPL')
-depends=('libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kwaterfoxhelper>=5.0.1.6')
+depends=('libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kwaterfoxhelper')
 makedepends=('wget')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -18,8 +18,8 @@ provides=("waterfox=$pkgver")
 conflicts=('waterfox')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
-source=("waterfox-kde_${pkgver}_amd64.deb::https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-kde_${pkgver}_amd64.deb")
-sha256sums=('54aaa2f67042ebb76116f765a0790da350e7acb18a52d382678d8da72bdfbc04')
+source=("waterfox-kde_${pkgver}.2_amd64.deb::https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-kde_${pkgver}.2_amd64.deb")
+sha256sums=('7adfd3416dd4090d4be6de2f038cb8ae8d12e893b5884f5da5d6ab123404f1d1')
 
 package() {
 # Extract Waterfox from .deb package
