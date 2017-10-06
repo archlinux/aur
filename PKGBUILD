@@ -2,37 +2,38 @@
 
 _pkgname=cleanupdate
 pkgname=cleanupdate-git
-pkgver=r116.df3368c
-pkgrel=0
+pkgver=r147.2d49451
+pkgrel=1
 pkgdesc="A simple script to speed up updating and cleaning your system"
 arch=('any')
 url="https://github.com/cubanpit/$_pkgname"
 license=('GPL3')
-depends=('ncurses'
-		'sudo'
-		'bash')
+depends=('bash'
+        'bc'
+        'ncurses'
+        'sudo')
 makedepends=('git')
 optdepends=('yaourt: needed for AUR support (alternative to pacaur)'
-			'pacaur: needed for AUR support (preferred to yaourt)')
+		'pacaur: needed for AUR support (preferred to yaourt)')
 conflicts=()
 source=("git://github.com/cubanpit/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
-	cd ${_pkgname}
-	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+        cd ${_pkgname}
+        echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package () {
-	cd "$srcdir"
-	install -Dm755 "$srcdir/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-	install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-	install -Dm644 "$srcdir/$_pkgname/$_pkgname"16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/$_pkgname.png"
-	install -Dm644 "$srcdir/$_pkgname/$_pkgname"24.png "$pkgdir/usr/share/icons/hicolor/24x24/apps/$_pkgname.png"
-	install -Dm644 "$srcdir/$_pkgname/$_pkgname"32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png"
-	install -Dm644 "$srcdir/$_pkgname/$_pkgname"48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/$_pkgname.png"
-	install -Dm644 "$srcdir/$_pkgname/$_pkgname"64.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/$_pkgname.png"
-	install -Dm644 "$srcdir/$_pkgname/$_pkgname"128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
-	install -Dm644 "$srcdir/$_pkgname/$_pkgname"256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
-	install -Dm644 "$srcdir/$_pkgname/$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+        cd "$srcdir"
+        install -Dm755 "$srcdir/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+        install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+
+        for i in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 ; do
+                install -Dm644 "$srcdir/$_pkgname/icons/$_pkgname$i".png "$pkgdir/usr/share/icons/hicolor/$i/apps/$_pkgname".png
+        done
+        install -Dm644 "$srcdir/$_pkgname/icons/$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+
+        install -Dm644 "$srcdir/$_pkgname/man/$_pkgname-it.7.gz" "$pkgdir/usr/share/man/it/man7/$_pkgname.7.gz"
+        install -Dm644 "$srcdir/$_pkgname/man/$_pkgname.7.gz" "$pkgdir/usr/share/man/man7/$_pkgname.7.gz"
 }
