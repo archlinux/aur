@@ -26,7 +26,7 @@ pkgver() {
 build() {
 	cd ${srcdir}/${pkgname}
 
-	export CFLAGS="-mtune=generic"
+	export CFLAGS="-march=native"
 	./configure --prefix=/usr
 	make
 }
