@@ -22,10 +22,10 @@ _ccache=false
 _debug=false
 
 # Use optimization flags (required if -D_FORTIFY_SOURCE is set and non-zero).
-# Warning, firefox may crash if set to anything but -O2.
+# Warning, Firefox may crash if set to anything but -O2.
 _optimize="-O2"
 
-# Upstream name, version, and soruce URL
+# Upstream name, version, and source URL
 _realname='firefox'
 _pkgver=57.0b5
 _mozffurl="http://archive.mozilla.org/pub/$_realname/releases/$_pkgver/source/$_realname-$_pkgver.source.tar.xz"
@@ -34,7 +34,7 @@ _mozffurl="http://archive.mozilla.org/pub/$_realname/releases/$_pkgver/source/$_
 _debianrev=2113
 _debianurl="https://bazaar.launchpad.net/~mozillateam/$_realname/$_realname-trunk.head/tarball/$_debianrev"
 
-# OpenSUSE Firefox source revision and URL (for OpenSUSE patches).
+# openSUSE Firefox source revision and URL (for openSUSE patches).
 _opensuserev=6c6109948e35
 _opensusebaseurl="http://www.rosenauer.org/hg/mozilla/raw-file/$_opensuserev"
 
@@ -67,11 +67,11 @@ fi
 # --- PATCH INFORMATION --- #
 # ------------------------- #
 
-# To support globalmenu a patch from Ubuntu is applied.
+# To support global menu a patch from Ubuntu is applied.
 # source (replace ${_debianrev} with the revision above):
 # https://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head/revision/${_debianrev}#debian/patches/unity-menubar.patch
 
-# To integrate better with KDE Plasma 5 patches for OpenSUSE are applied.
+# To integrate better with KDE Plasma 5 patches for openSUSE are applied.
 # source (replace ${_opensuserev} with the revision above):
 # http://www.rosenauer.org/hg/mozilla/file/${_opensuserev}
 
@@ -83,7 +83,7 @@ fi
 pkgname=("$_realname-kde-opensuse-beta")
 pkgver="$_pkgver"
 pkgrel=2
-pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patchs to integrate better with KDE Plasma 5"
+pkgdesc="Standalone web browser from mozilla.org with openSUSE patches to integrate better with KDE Plasma 5"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
@@ -202,7 +202,7 @@ prepare() {
     fi
   } > .mozconfig
 
-  msg2 "Fixing OpenSUSE patches for Firefox $pkgver"
+  msg2 "Fixing openSUSE patches for Firefox $pkgver"
   mkdir -p "$srcdir/patched-patches"
   cd "$srcdir/patched-patches"
   for patch in mozilla-kde firefox-kde firefox-no-default-ualocale; do
@@ -216,7 +216,7 @@ prepare() {
   patch -Np1 -i "$srcdir/~mozillateam/firefox/firefox-trunk.head/debian/patches/unity-menubar.patch"
   patch -Np1 -i "$srcdir/native-menu-doc-listener.patch"
 
-  msg2 "Applying OpenSUSE patches"
+  msg2 "Applying openSUSE patches"
   patch -Np1 -i "$srcdir/mozilla-nongnome-proxies_g$_opensuserev.patch"
   patch -Np1 -i "$srcdir/patched-patches/mozilla-kde.patch"
   cp \
@@ -242,7 +242,7 @@ prepare() {
   mkdir -p "$srcdir/path"
   ln -sf /usr/bin/python2 "$srcdir/path/python"
 
-  msg2 "Replacing loading icon iwth fixed one"
+  msg2 "Replacing loading icon with fixed one"
   # Fix tab loading icon (flickers with libpng 1.6)
   # https://bugzilla.mozilla.org/show_bug.cgi?id=841734
   # TODO: Remove this; Firefox 34 might use CSS animations for the loading icon
@@ -259,7 +259,7 @@ build() {
   export PATH="$srcdir/path:$PATH"
   export PYTHON="/usr/bin/python2"
 
-  # Build fails with -D_FORTIFY_SOURCE if optimazations are not in CPPFLAGS
+  # Build fails with -D_FORTIFY_SOURCE if optimizations are not in CPPFLAGS
   if [[ -z "${CPPFLAGS/*-D_FORTIFY_SOURCE*/}" && ! -z "$_optimize" ]]; then
     CPPFLAGS+=" $_optimize"
   fi
@@ -308,7 +308,7 @@ package() {
 
   msg2 "Installing distribution metadata file"
   install -dm755 "$pkgdir/usr/lib/firefox/distribution"
-  cat > "$pkgdir/usr/lib/firefox/distribution/distribution.ini" <<END
+  cat > "$pkgdir/usr/lib/firefox/distribution/distribution.ini" <<EOF
 [Global]
 id=archlinux
 version=1.0
@@ -318,7 +318,7 @@ about=Mozilla Firefox for Arch Linux
 app.distributor=archlinux
 app.distributor.channel=${pkgname[0]}
 app.partner.archlinux=archlinux
-END
+EOF
 
   msg2 "Installing Firefox branded icons"
   for i in 16 22 24 32 48 256; do
@@ -343,7 +343,7 @@ END
   ln -s /usr/share/hunspell "$pkgdir/usr/lib/firefox/dictionaries"
   ln -s /usr/share/hyphen "$pkgdir/usr/lib/firefox/hyphenation"
 
-  msg2 "Linking forefox to usr/lib/firefox/firefox-bin"
+  msg2 "Linking usr/lib/firefox/firefox-bin to firefox"
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 
