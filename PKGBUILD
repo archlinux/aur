@@ -1,11 +1,12 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.26.0.55.g53188a14bf
+pkgver=v0.27.0.107.g9c806bc299
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
 depends=('desktop-file-utils'
+         'hicolor-icon-theme'
          'libxv'
          'libcdio-paranoia'
          'openal'
@@ -16,29 +17,29 @@ depends=('desktop-file-utils'
          'libxss'
          'libdvdnav'
          'jack2'
-         'libbluray'
+         'libbluray.so'
          'libpulse'
          'libbs2b'
          'libgme'
-         'mesa'
          'libxinerama'
          'libxrandr'
          'libxkbcommon'
-         'hicolor-icon-theme'
          'sdl2'
          'lcms2'
          'libva'
+         'fribidi'
          'rubberband'
          'uchardet'
          'libarchive'
          'libsoxr'
          'v4l-utils'
          'libvdpau'
-         'fribidi'
          'libmysofa'
          'mujs'
+         'vulkan-icd-loader'
+         'shaderc-git'
          )
-license=('GPL2' 'GPL3' 'LGPL')
+license=('GPL2' 'GPL3' 'LGPL3' 'LGPL2.1' 'BSD')
 url='http://mpv.io'
 makedepends=('git'
              'python-docutils'
@@ -46,7 +47,7 @@ makedepends=('git'
              'nasm'
              'ladspa'
              'fontconfig'
-             'fribidi'
+             'vulkan-headers'
              )
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
@@ -121,12 +122,7 @@ prepare() {
 
 if [ ${_enable_cuda} = "1" ]; then
     _ffmpeg_cuda=(
-      '--enable-cuda'
-      '--enable-cuvid'
       '--extra-cflags="-I/opt/cuda/include"'
-    )
-    _mpv_cuda=(
-      '--enable-cuda-hwaccel'
     )
 fi
 
