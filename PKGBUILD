@@ -18,7 +18,7 @@ license=("GPL")
 depends=('bzip2' 'paraview' 'parmetis' 'scotch' 'boost' 'flex' 'cgal')
 source=("https://github.com/OpenFOAM/$_gitname/archive/version-$pkgver.tar.gz")
 install="${pkgname}.install"
-md5sums=('318a446c4ae6366c7296b61184acd37c')
+md5sums=('afd7d8e66e7db0ffaf519b14f1a8e1d4')
 
 prepare() {
   mv $srcdir/$_gitname-version-$pkgver $srcdir/$_distpkgname-$pkgver
