@@ -3,5 +3,5 @@ Description=Run kanboard's cron job
 
 [Service]
 Type=oneshot
-WorkingDir=/usr/share/webapps/kanboard
+WorkingDirectory=/usr/share/webapps/kanboard
 ExecStart=/usr/share/webapps/kanboard/cli cronjob

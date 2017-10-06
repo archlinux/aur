@@ -4,7 +4,7 @@ pre_upgrade() {
     echo "BACKUP YOUR KANBOARD DATABASE AND DATA DIRECTORY BEFORE UPGRADING!!!"
 }
 post_install() {
-    ln /etc/webapps/${pkgname}/config.php /usr/share/webapps/${pkgname}/config.php
+    ln -s /etc/webapps/${pkgname}/config.php /usr/share/webapps/${pkgname}/config.php
     echo 'To get started you need to:
 - INSTALL either php-sqlite, php-pgsql, or mariadb-clients and enable the correct database plugin in php.ini
 - Configure nginx or apache
