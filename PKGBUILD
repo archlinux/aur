@@ -1,22 +1,25 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libbluray-git
-pkgver=0.9.3.84.g05c9fdec
+pkgver=1.0.1.72.gb5e30fca
 pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback. (GIT version)"
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
 url='http://www.videolan.org/developers/libbluray.html'
 depends=('libxml2'
-         'java-environment'
          'fontconfig'
          )
 makedepends=('git'
              'apache-ant'
              'libaacs'
              )
-optdepends=('libaacs: Enable AACS decryption')
-provides=('libbluray' 'libbluray.so')
+optdepends=('libaacs: Enable AACS decryption'
+            'java-environment: BD-J library'
+            )
+provides=('libbluray'
+          'libbluray.so'
+          )
 conflicts=('libbluray')
 source=('git+https://git.videolan.org/git/libbluray.git'
         'git+https://git.videolan.org/git/libudfread.git'
