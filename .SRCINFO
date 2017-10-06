@@ -1,12 +1,13 @@
 pkgbase = haskell-shelly
 	pkgdesc = Convenient systems programming in Haskell
 	pkgver = 1.6.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yesodweb/Shelly.hs
 	arch = i686
 	arch = x86_64
 	license = BSD3
 	makedepends = ghc
+	depends = ghc-libs
 	depends = haskell-async
 	depends = haskell-enclosed-exceptions
 	depends = haskell-exceptions
