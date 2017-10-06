@@ -1,22 +1,23 @@
-# Maintainer: Anthony Boccia <aboccia [at] boccia [dot] me>
-# Contributer: Griffin Smith <wildgriffin [at] gmail [dot] com>
+# Maintainer: Aaron Miller <aaronm [at] cldtk [dot] com>
+# Contributor: Anthony Boccia <aboccia [at] boccia [dot] me>
+# Contributor: Griffin Smith <wildgriffin [at] gmail [dot] com>
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
-pkgver=4.8.3
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('java-runtime') 
+depends=('java-environment' 'gcc-libs-multilib' 'bash')
 makedepends=('grep' 'cpio' 'gzip')
 optdepends=('swt: needed by some to open the GUI')
 backup=()
 install=crashplan-pro.install
-source=(http://download1.us.code42.com/installs/linux/install/CrashPlanPRO/CrashPlanPRO_${pkgver}_Linux.tgz
+source=(https://web-ebm-msp.crashplanpro.com/client/installers/CrashPlanPRO_${pkgver}_1436674888490_33_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha256sums=('d298dee27bddb5e543e7d48997cc3f5717c4286a0190dd1224b2b9144380edf5'
+sha256sums=('891426d6180c13a25e65bb935a9c0df36b733be121e547d47f35eb4b7175856d'
             'b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6'
             'c631a971f300bfbfe52e3ec8faa4d7b735eaa069d73e11d6021567e29d053dc3')
 

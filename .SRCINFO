@@ -1,6 +1,6 @@
 pkgbase = crashplan-pro
 	pkgdesc = An business online/offsite backup solution
-	pkgver = 4.8.3
+	pkgver = 4.9.0
 	pkgrel = 1
 	url = http://www.crashplan.com/business
 	install = crashplan-pro.install
@@ -10,12 +10,14 @@ pkgbase = crashplan-pro
 	makedepends = grep
 	makedepends = cpio
 	makedepends = gzip
-	depends = java-runtime
+	depends = java-environment
+	depends = gcc-libs-multilib
+	depends = bash
 	optdepends = swt: needed by some to open the GUI
-	source = http://download1.us.code42.com/installs/linux/install/CrashPlanPRO/CrashPlanPRO_4.8.3_Linux.tgz
+	source = https://web-ebm-msp.crashplanpro.com/client/installers/CrashPlanPRO_4.9.0_1436674888490_33_Linux.tgz
 	source = crashplan-pro
 	source = crashplan-pro.service
-	sha256sums = d298dee27bddb5e543e7d48997cc3f5717c4286a0190dd1224b2b9144380edf5
+	sha256sums = 891426d6180c13a25e65bb935a9c0df36b733be121e547d47f35eb4b7175856d
 	sha256sums = b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6
 	sha256sums = c631a971f300bfbfe52e3ec8faa4d7b735eaa069d73e11d6021567e29d053dc3
 
