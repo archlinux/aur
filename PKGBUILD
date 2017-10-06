@@ -8,7 +8,7 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.1.371.r116.g7da421da88
+pkgver=v1.1.371.r181.g47545b0a1c
 _gwtver=2.8.1
 _ginver=1.5
 _clangver=3.8.0
@@ -33,7 +33,7 @@ md5sums=('SKIP'
          '2409168cc18bf5f341e107e6887fe359'
          'ddd572887957fd5cdfde3469bd8c1102'
          'd571313f511ad4a17014c4aef6d01bbc'
-         '1d253e9f6c2700d257de1ccc30958c7d')
+         '57fcbdd42207d978e405fd5072d59189')
          
 
 pkgver() {
