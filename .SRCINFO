@@ -1,6 +1,6 @@
 pkgbase = boxes-git
 	pkgdesc = Text mode box and comment drawing filter
-	pkgver = 294
+	pkgver = 304
 	pkgrel = 1
 	url = http://boxes.thomasjensen.com/
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: stitran <tristan dot zuerl at gmx dot net
 
 pkgname=boxes-git
-pkgver=294
+pkgver=304
 pkgrel=1
 pkgdesc="Text mode box and comment drawing filter"
 url="http://boxes.thomasjensen.com/"
