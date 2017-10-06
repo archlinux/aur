@@ -1,0 +1,17 @@
+pkgbase = perl-pdf-reuse
+	pkgdesc = Perl/CPAN Module PDF::Reuse: Reuse and mass produce PDF documents
+	pkgver = 0.39
+	pkgrel = 1
+	url = https://metacpan.org/release/PDF-Reuse
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-font-ttf
+	depends = perl-text-pdf
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CN/CNIGHS/PDF-Reuse-0.39.tar.gz
+	md5sums = 2a4d8a2f82ef07a40f8c8bc946f988c6
+	sha512sums = b9c570788990a5e21963577b2227e0a0d50ab7be87c7fa1bfcf2d6ff994c12a260fe6777eaf4ff95447e18d2ccaee6f55813df29aa4c205ddbe89529e9f9b60c
+
+pkgname = perl-pdf-reuse
+
