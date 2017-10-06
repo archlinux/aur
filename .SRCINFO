@@ -1,12 +1,13 @@
 pkgbase = super-user-spark
 	pkgdesc = Configure your dotfile deployment with a DSL
 	pkgver = 0.3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NorfairKing/super-user-spark
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = ghc
+	depends = ghc-libs
 	depends = haskell-aeson
 	depends = haskell-aeson-pretty
 	depends = haskell-mtl
