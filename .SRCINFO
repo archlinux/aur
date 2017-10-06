@@ -1,6 +1,6 @@
 pkgbase = nuvola-app-bbc-iplayer
 	pkgdesc = bbc iplayer integration for Nuvola Player.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/tiliado/nuvola-app-bbc-iplayer
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = nuvola-app-bbc-iplayer
 	makedepends = scour
 	depends = nuvolaruntime
 	depends = imagemagick
-	source = https://github.com/tiliado/nuvola-app-bbc-iplayer/archive/1.1.tar.gz
-	sha256sums = 1a499ffa175ff10de99f46592faf6a9de0afe8f4154142f77bfdbdaf428ddfed
+	source = https://github.com/tiliado/nuvola-app-bbc-iplayer/archive/1.2.tar.gz
+	sha256sums = bd9ab24ad1f3cbd9e4bd258dc03a8a4ae98e7edc78d9c32c74b63a17d111a634
 
 pkgname = nuvola-app-bbc-iplayer
 
