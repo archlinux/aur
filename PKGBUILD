@@ -1,14 +1,14 @@
 # Maintainer: Thomas Bork <tab.epic@gmail.com>
 pkgname=pamac-classic
-_pkgver=5.2.0
+_pkgver=5.2.1
 pkgver=$_pkgver
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - classic version"
 arch=('x86_64')
 url="https://github.com/cromnix/pamac-classic"
 license=('GPL3')
-depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' 'gtk3>=3.22'
-         'libnotify' 'desktop-file-utils' 'pacman>=5.0' 'gnutls>=3.4')
+depends=('libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38'
+         'libnotify' 'pacman>=5.0')
 
   optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
               'lxsession: needed for authentification in Xfce, LXDE etc.')
@@ -20,7 +20,7 @@ options=(!emptydirs)
 install=pamac-classic.install
 
 source=("pamac-classic-$pkgver-$pkgrel.tar.gz::$url/archive/v$_pkgver.tar.gz")
-sha256sums=('ce291b8fbbfdbd92a52d7ddb4a582e5af149036fd8ad07f9e8000b3e189a5ea8')
+sha256sums=('e3b2c7c72a10b5a806c3b9eab86a2366054550b0f01c2f5b293ae0a1420f98cb')
 
 prepare() {
   cd "$srcdir/pamac-classic-$_pkgver"

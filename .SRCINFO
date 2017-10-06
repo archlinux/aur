@@ -1,6 +1,6 @@
 pkgbase = pamac-classic
 	pkgdesc = A Gtk3 frontend for libalpm - classic version
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/cromnix/pamac-classic
 	install = pamac-classic.install
@@ -9,17 +9,12 @@ pkgbase = pamac-classic
 	makedepends = gettext
 	makedepends = itstool
 	makedepends = vala>=0.36
-	depends = glib2>=2.42
-	depends = json-glib
 	depends = libsoup
 	depends = dbus-glib
 	depends = polkit
 	depends = vte3>=0.38
-	depends = gtk3>=3.22
 	depends = libnotify
-	depends = desktop-file-utils
 	depends = pacman>=5.0
-	depends = gnutls>=3.4
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
 	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
 	provides = pamac
@@ -28,8 +23,8 @@ pkgbase = pamac-classic
 	conflicts = pamac-aur
 	options = !emptydirs
 	backup = etc/pamac.conf
-	source = pamac-classic-5.2.0-1.tar.gz::https://github.com/cromnix/pamac-classic/archive/v5.2.0.tar.gz
-	sha256sums = ce291b8fbbfdbd92a52d7ddb4a582e5af149036fd8ad07f9e8000b3e189a5ea8
+	source = pamac-classic-5.2.1-1.tar.gz::https://github.com/cromnix/pamac-classic/archive/v5.2.1.tar.gz
+	sha256sums = e3b2c7c72a10b5a806c3b9eab86a2366054550b0f01c2f5b293ae0a1420f98cb
 
 pkgname = pamac-classic
 
