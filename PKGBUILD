@@ -20,14 +20,14 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=6c9f606816c018a38542520b3e8b2b6f60c901ac
+arch_config_trunk=a12b2132b905e1d16939ebdca5b0d6393552f8f1
 source_x86_64=("config.x86_64::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.x86_64?h=packages/linux&id=${arch_config_trunk}")
 source_i686=("config.i686::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.i686?h=packages/linux&id=${arch_config_trunk}")
 sha256sums=('30b109e773088a87b193833393316928f10bc0f90bd2fca7cf4caf540522b37a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
-sha256sums_i686=('73278ee56c5d3855e67ff50caa77a7cb47fb29ebd8f9b7ca9ebee4e2d446529c')
-sha256sums_x86_64=('1b9cbe1c25653d563515344a7c6cc9f79447ac9274fcf4de0007228e979b55dd')
+sha256sums_i686=('f68bb8bccbbd6b86dc9f182ee25b2953638aec2729387c70d2787318ad4ea16c')
+sha256sums_x86_64=('9be58e0adea94ccd51aabdd568fa65ba84097f31589de57c5fcc7c71c257a6e0')
 
 _kernelname=${pkgbase#linux}
 
