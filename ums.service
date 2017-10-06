@@ -1,6 +1,7 @@
 [Unit]
 Description=Universal Media Server
-After=syslog.target network.target rpcbind.service
+Wants=network.target
+After=syslog.target network-online.target rpcbind.service
 
 [Service]
 #Environment="UMS_MAX_MEMORY=1280M"

@@ -2,7 +2,7 @@
 # Based on UMS PKGBUILD
 
 pkgname=ums-headless
-pkgver=6.7.3
+pkgver=6.7.4
 pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems. Build based on Java 8."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'armv6h' 'arm')
@@ -19,10 +19,12 @@ backup=(opt/ums/UMS.conf \
         opt/ums/WEB.conf)
 source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver.tgz"
         'ums.desktop'
-        'ums.service')
-sha256sums=('2365f1457c276649f5b08204873480a305083012c987be043a3bd2779f16cfc3'
+        'ums.service'
+        'ums.timer')
+sha256sums=('41e2665a2d65e868afe4c3f8d426f11dc3b960bf55d7b79ef2fe6fa03e4484d3'
             '0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
-            '6444b0ad9a61c1f7d450d79497bbdd80d5b6d2da893550cd7260e6e233c8d886')
+            '1f6efefa58dde9148396bd9236a6985db0fa27f1c767067b52bfae1832f32284'
+            '7fd36db71f39fde3d515c697101190f979b308d910b3c4210b90422669683ab0')
 
 package() {
   mkdir -p $pkgdir/opt/ums
@@ -49,4 +51,5 @@ package() {
   install -D -m 644 $srcdir/ums_jar/resources/images/logo.png $pkgdir/usr/share/pixmaps/ums.png
   install -D -m 644 $srcdir/ums.desktop $pkgdir/usr/share/applications/ums.desktop
   install -D -m 644 $srcdir/ums.service $pkgdir/usr/lib/systemd/system/ums@.service
+  install -D -m 644 ${srcdir}/ums.timer ${pkgdir}/usr/lib/systemd/system/ums@.timer
 }
