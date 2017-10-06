@@ -1,7 +1,7 @@
 pkgbase = pythia
 	pkgdesc = High-energy physics events generator.
-	pkgver = 8.2.26
-	pkgrel = 3
+	pkgver = 8.2.30
+	pkgrel = 1
 	url = http://home.thep.lu.se/Pythia/
 	install = pythia.install
 	arch = i686
@@ -17,14 +17,14 @@ pkgbase = pythia
 	provides = pythia
 	provides = pythia8
 	options = !emptydirs
-	source = http://home.thep.lu.se/~torbjorn/pythia8/pythia8226.tgz
+	source = http://home.thep.lu.se/~torbjorn/pythia8/pythia8230.tgz
 	source = pythia.sh
 	source = pythia.install
 	source = respect_lib_suffix.patch
-	sha256sums = 8ff4281bce9d22b17f1ec88e9e9353e8172512d5ef96296ace9486860e9ed2c9
+	sha256sums = 332fad0ed4f12e6e0cb5755df0ae175329bc16bfaa2ae472d00994ecc99cd78d
 	sha256sums = 12fabaa56db80537b94a89de18f688f1258f467ed01b1ee6595efe75cde801d2
 	sha256sums = f1796729b0403026382bca43329692f5356c8ec46fc2c09f799a8b3d12d49a6f
-	sha256sums = 528c2b89df60e2c9845d215792e241806189417a782fda1fbdb85d8f18fc21e1
+	sha256sums = c9c31223c0c38f8d844ee1f8c984d4b723b7d960f2e13fe7847325785736127b
 
 pkgname = pythia
 
