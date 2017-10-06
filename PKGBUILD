@@ -1,8 +1,9 @@
 # Maintainer: Joakim Nylén <me@jnylen.nu>
+# Contributor: ahrs
 
 pkgname=mailspring
 pkgver=1.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
 arch=('x86_64')
 license=('GPL3')
@@ -24,7 +25,8 @@ package() {
   # mailspring calls libsasl2.so.2 for some reason when arch have .3
   if [[ ! -f "/usr/lib/libsasl2.so.2" && -f /usr/lib/libsasl2.so.3 ]]
   then
-    ln -s /usr/lib/libsasl2.so.3 /usr/lib/libsasl2.so.2
+    install -dm755 ${pkgdir}/usr/lib
+    ln -s /usr/lib/libsasl2.so.3 ${pkgdir}/usr/lib/libsasl2.so.2
   fi
 
 	chmod -R go-w "${pkgdir}"/usr
