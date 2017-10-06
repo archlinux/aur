@@ -3,9 +3,9 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zencash
-pkgver=2.0.9.2
+pkgver=2.0.10
 _pkgname=zen
-_commit=c400f0676d7c2d1facab15563982e4c812f4e6d3
+_commit=5ceedb5c8f9eb663add5f15bf5d2a49405641c19
 pkgrel=1
 pkgdesc='The zencash cryptocurrency daemon and tools.'
 arch=('x86_64')
@@ -79,7 +79,7 @@ package() {
         install -Dm644 contrib/bitcoin${ext}.bash-completion \
             "${pkgdir}"/usr/share/bash-completion/completions/zen${ext}
     done
-    
+
     rename zcash zen "${pkgdir}"/usr/share/man/man1/*
 
     install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
