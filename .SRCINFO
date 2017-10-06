@@ -1,0 +1,11 @@
+pkgbase = stringpool
+	pkgdesc = C++ string pool
+	pkgver = 0.0.p2
+	pkgrel = 1
+	url = https://github.com/m-ou-se/string-pool
+	arch = any
+	source = stringpool-0.0.p2.tar.gz::https://github.com/de-vri-es/string-pool/archive/0.0.p2.tar.gz
+	sha512sums = 4282c9c48cb0081e6d370a23ecafcfecb9ff2ddc3f17507a2adf8385487ce2f613277ecb48379f21b5625c07d95f6e38be0ddbb3e5708e82314c89d9d7db1d3e
+
+pkgname = stringpool
+
