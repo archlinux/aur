@@ -3,14 +3,14 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=55.1.0.1
-pkgrel=2
+pkgver=55.2.0
+pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
 url="https://www.waterfoxproject.org/"
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
-         'nss' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr' 'hicolor-icon-theme' 'jemalloc')
+         'nss>=3.32.1' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr>=4.15' 'hicolor-icon-theme' 'jemalloc')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf' 'inetutils' 'xorg-server-xvfb'
              'autoconf2.13' 'rust' 'clang' 'llvm' 'ccache')
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -24,12 +24,12 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=b2ba34e0dc10
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=ffd62b838aaf70b271d978f12059ddc93f0c5878
+_commit=4f725e960f942a09ed03fefc68043cd4d0206f35
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
         no-crmf.diff
-        "wifi-fix-interface.patch::https://raw.githubusercontent.com/manjaro/packages-community/master/firefox-kde/wifi-fix-interface.patch"
+        wifi-fix-interface.patch
         "mozilla-kde.patch::$_patchurl/mozilla-kde.patch"
         "firefox-kde.patch::$_patchurl/firefox-kde.patch"
         "fix_waterfox_browser-kde_xul.patch::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/fix_waterfox_browser-kde_xul.patch"
@@ -39,11 +39,10 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.1"
         jack-system-ports.patch
         disable_e10s.patch
-        "wifi-disentangle.patch::https://raw.githubusercontent.com/manjaro/packages-community/099344c3c9cb7ec70a6b769b7069bf9f815e5640/firefox-kde/wifi-disentangle.patch"
-        "harmony-fix.diff::https://raw.githubusercontent.com/manjaro/packages-community/099344c3c9cb7ec70a6b769b7069bf9f815e5640/firefox-kde/harmony-fix.diff"
-        "clip-ft-glyph.diff::https://raw.githubusercontent.com/manjaro/packages-community/099344c3c9cb7ec70a6b769b7069bf9f815e5640/firefox-kde/clip-ft-glyph.diff"
-        "fixformach.diff::https://aur.archlinux.org/cgit/aur.git/plain/fixformach.diff?h=firefox-clean"
-        "mozilla-ucontext.patch::$_patchurl/mozilla-ucontext.patch")
+        wifi-disentangle.patch
+        0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
+        "mozilla-ucontext.patch::$_patchurl/mozilla-ucontext.patch"
+        no-plt.diff)
 sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -59,10 +58,9 @@ sha256sums=('SKIP'
             'be19426cd658ea0ff0dedbdd80da6bf84580c80d92f9b3753da107011dfdd85c'
             'b7170633c30d69ee4de646dcf24b161ef8c79927a835c925697f8db5d1175da3'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
-            '16bb776e9f3039321db747b2eaece0cda1320f3711fb853a68d67247b0aa065d'
-            'd5e5580a96ecc4a66ce12dde0737c1ed5cb31017a6ec488ffe372192ed893e1b'
-            '9a354afad0042e2fa4bf29cb32f6c179669ad26f1764325443d1339a23f245f0'
-            '96d9accb74e19f640e356572b3c0914c6be867cbdf351392b0cb5c00161ee012')
+            'aba767995ffb1a55345e30aaba667f43d469e23bd9b1b68263cf71b8118acc96'
+            '96d9accb74e19f640e356572b3c0914c6be867cbdf351392b0cb5c00161ee012'
+            'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa')
 
 prepare() {
   mkdir path
@@ -89,14 +87,11 @@ prepare() {
   patch -Np1 -i ../wifi-disentangle.patch
   patch -Np1 -i ../wifi-fix-interface.patch
   
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1393467
-  patch -Np1 -i ../clip-ft-glyph.diff
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1400721
-  patch -Np1 -i ../harmony-fix.diff
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1384062
+  patch -Np1 -i ../0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
   
-  # Fix build with latest Python
-  patch -Np1 -i ../fixformach.diff
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
+  patch -Np1 -i ../no-plt.diff
   
   cat >.mozconfig <<END
 export CC=clang
@@ -193,6 +188,7 @@ END
 
 build() {
   cd Waterfox
+  
   export PATH="$srcdir/path:$PATH"
   ./mach build
 }
