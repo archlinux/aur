@@ -1,18 +1,18 @@
 # Maintainer: max.bra <max dot bra at alice dot it>
 
 pkgname=booktab
-pkgver=1.7
+pkgver=1.9
 pkgrel=1
 pkgdesc="MyZanichelli - La piattaforma che ti permette di consultare tutti i tuoi libri scolastici in versione multimediale e interattiva."
 arch=('x86_64')
-url="http://mystudio.rizzolieducation.it/"
+url="https://booktab.it/"
 license=('unknown')
 depends=("fontconfig" "libxrandr" "libxdamage" "libcups" "nss" "libxcursor" "gstreamer0.10-base" "libpulse" "qt5-svg" "qt5-webkit")
 
 _debname=BooktabZSetup-16.04.deb
 
 source=(https://booktab.it/setup-z/${_debname})
-md5sums=('07a7fb9efb841a1b52ca6e9fa9c8b505')
+md5sums=('93a4c81c4253a14eb413c40c79de27be')
 
 noextract=(${_debname})
 
