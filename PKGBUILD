@@ -2,8 +2,8 @@
 
 pkgbase=linux-ec2
 _srcname=linux-4.13
-pkgver=4.13.4
-pkgrel=4
+pkgver=4.13.5
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://git.uplinklabs.net/steven/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
 license=('GPL2')
@@ -23,7 +23,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '1e34c35dfbd3b7451a7b3eb93c5e342acc006b5d1906b5e542a8f203723bb8d6'
+            'ba0cf285525e24850917c2f5cc7c2283b6509e2185bb70108f140f7ec695d57d'
             'SKIP'
             '92d10b01c1393d44317ed1626922dd3b7e96588aed3e59cfc7b8e35bfd290c1c'
             'e7d44fad5d3d0a3f7134e0dadc35abd18442ee5a7becf7e7da50cc4f2d85b0f4'
