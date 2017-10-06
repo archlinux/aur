@@ -151,6 +151,9 @@ fi
 if [[ ! -z "$_pgo" ]] && $_pgo; then
   makedepends+=('xorg-server-xvfb')
 fi
+if [[ ! -z "$_ccache" ]] && $_ccache; then
+  makedepends+=('ccache')
+fi
 if [[ ! -z "$_debug" ]] && $_debug; then
   options+=('debug' '!strip')
 else
@@ -256,16 +259,17 @@ build() {
   export PATH="$srcdir/path:$PATH"
   export PYTHON="/usr/bin/python2"
 
+  # Build fails with -D_FORTIFY_SOURCE if optimazations are not in CPPFLAGS
+  if [[ -z "${CPPFLAGS/*-D_FORTIFY_SOURCE*/}" && ! -z "$_optimize" ]]; then
+    CPPFLAGS+=" $_optimize"
+  fi
+
   # Hardening
   LDFLAGS+=" -Wl,-z,now"
 
-  if [[ -n $_lowmem || $CARCH == i686 ]]; then
+  # Prevent ENOMEM during linking.
+  if [[ ! -z "$_lowmem" ]] && $_lowmem || [[ "$CARCH" == i*86 ]]; then
     LDFLAGS+=" -Xlinker --no-keep-memory"
-  fi
-
-  # Build fails with -D_FORTIFY_SOURCE if optimazations are not in CPPFLAGS
-  if [[ -z "${CPPFLAGS/-D_FORTIFY_SOURCE*/}" && ! -z "$_optimize" ]]; then
-    CPPFLAGS+=" $_optimize"
   fi
 
   if [[ ! -z "$_pgo" ]] && $_pgo; then
