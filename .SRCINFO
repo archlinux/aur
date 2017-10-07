@@ -1,0 +1,17 @@
+pkgbase = eukleides
+	pkgdesc = Eukleides is a computer language devoted to elementary plane geometry.
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = http://eukleides.org/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = texinfo
+	source = http://eukleides.org/files/eukleides-1.5.4.tar.bz2
+	source = eukleides-1.5.4.patch
+	md5sums = 2c88fc857008c2ce23c7848c60621548
+	md5sums = ab133aa2149f27e0b99a3536f26af411
+
+pkgname = eukleides
+
