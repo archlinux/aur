@@ -1,6 +1,5 @@
-
 pkgname=szsol-git
-pkgver=r34.14af5a5
+pkgver=r36.a14b067
 pkgrel=1
 pkgdesc="ncurses clone of Shenzhen Solitaire"
 arch=('any')
