@@ -4,7 +4,7 @@
 
 pkgname=libinput-no-hysteresis
 _pkgname=libinput
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="Input device management and event handling library sans hysteresis"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
 makedepends=('doxygen' 'graphviz' 'gtk3' 'meson')
 optdepends=('gtk3: libinput debug-gui')
 source=(https://freedesktop.org/software/$_pkgname/$_pkgname-$pkgver.tar.xz{,.sig} disable-hysteresis.patch)
-sha512sums=('555a7680cc8aaf62c5370a865f3aff0a933d42d94a3d8861c072666b02c9e1be45ea39de9a749a9575cdfb613b6150e412e18559d94d4919f21ca4680a3c76a7'
+sha512sums=('88006d217e3507858fa6b9ac1f25c267255fb51d1bcf1208d2afd423bf2a9292944bc5526ea91f27fad3ff04c2f9f43ab3aa25fd9fb7ace1231ecd33ddf18de6'
             'SKIP'
             '22c97898b8bd2ed6757ce2a0f2c19d8ff908b3134a9bd435285bc5c59d9d4a17cc5bb4ef0bfb01001ef9aeb2c917bdcc79324cc68bc442c2038d9c448773ac5e')
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
