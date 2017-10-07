@@ -58,7 +58,7 @@ check() {
 	cd build
 
 	# Run unit_tests test separately to exclude DNS tests which often fail with
-	# DNS nameservers configured on some systems
+	# DNS nameservers configured on some systems (#2172)
 	EXCLUDED_UNIT_TESTS+='DNSResolver.IPv4Failure'
 	EXCLUDED_UNIT_TESTS+=':DNSResolver.DNSSECSuccess'
 	EXCLUDED_UNIT_TESTS+=':AddressFromURL.Failure'
