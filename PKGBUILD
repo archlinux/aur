@@ -4,7 +4,7 @@
 
 _pkgname="MechanicalSoup"
 pkgname=python-mechanicalsoup
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A Python library for automating interaction with websites"
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python' 'python-beautifulsoup4' 'python-requests' 'python-six')
 makedepends=('python-setuptools')
 source=("https://github.com/hickford/MechanicalSoup/archive/v${pkgver}.tar.gz")
-sha512sums=('3311bd3a45db5235b5798b1d995bb4d6dc5df5b5acdad45ee4f6b6c0fa0230b793cd258c23fa7b6be1987d1f09a695803080014624f4ae6042bf1f987460a78c')
+sha512sums=('6f39ca77fc295af73a367cf635ab8c48403a78b3f06d1760591ad5635eb39572889684c061dadada0cbdcce02109d51a00d0303fbcd32490b59c1926ca8ec3d0')
 
 check() {
   cd $srcdir/${_pkgname}-$pkgver 
