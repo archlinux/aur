@@ -3,14 +3,14 @@
 _npmname=web-ext
 pkgname=nodejs-$_npmname # All lowercase
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
 url='https://developer.mozilla.org/en-US/Add-ons/WebExtensions'
-license=('custom:MPL2')
+license=('MPL2')
 depends=('nodejs')
 makedepends=('npm')
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 sha256sums=('0cfa6a78e1cf09fdb2051fa4a216cbe6e41b92a61cc58622d99eef9cd3111465')
 
 package() {
@@ -26,9 +26,6 @@ package() {
 
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/usr/lib/node_modules/$_npmname/bin/$_npmname" "$pkgdir/usr/bin/$_npmname"
-
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s "/usr/lib/node_modules/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

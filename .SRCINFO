@@ -1,13 +1,13 @@
 pkgbase = nodejs-web-ext
 	pkgdesc = A command line tool to help build, run, and test web extensions
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.mozilla.org/en-US/Add-ons/WebExtensions
 	arch = any
-	license = custom:MPL2
+	license = MPL2
 	makedepends = npm
 	depends = nodejs
-	source = http://registry.npmjs.org/web-ext/-/web-ext-2.0.0.tgz
+	source = https://registry.npmjs.org/web-ext/-/web-ext-2.0.0.tgz
 	sha256sums = 0cfa6a78e1cf09fdb2051fa4a216cbe6e41b92a61cc58622d99eef9cd3111465
 
 pkgname = nodejs-web-ext
