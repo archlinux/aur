@@ -1,0 +1,17 @@
+pkgbase = perl-text-csv-encoded
+	pkgdesc = Perl/CPAN Module Text::CSV::Encoded: Encoding aware Text::CSV.
+	pkgver = 0.25
+	pkgrel = 1
+	url = https://metacpan.org/release/Text-CSV-Encoded
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-text-csv>=1.31
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Z/ZA/ZARQUON/Text-CSV-Encoded-0.25.tar.gz
+	md5sums = 7625a81cabddd8f8d7e98dc4dc18861c
+	sha512sums = 1f602e647803bf6af5bc7841c8b322998e98f2f5b3e61084b7273d60d28fd7171b69b629bece6def7c4e304cfcbe323658a594049606db220744cdc21ec688f3
+
+pkgname = perl-text-csv-encoded
+
