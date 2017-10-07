@@ -1,5 +1,7 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 # Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
+# Co-maintainer: t-ask <t-ask-aur at agt24.com>
+
 pkgname=substance-painter
 pkgver=2017.3.0
 pkgrel=1
@@ -9,7 +11,7 @@ url='https://www.allegorithmic.com/products/substance-painter'
 license=('custom')
 depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
 options=('!strip' '!optipng') # PNG assets here should be left untouched!
-source=('https://download.allegorithmic.com/substance-painter/2017.x/unsigned_Substance_Painter-2017.3.0-1837-linux-x64-standard-full.rpm'
+source=("https://download.allegorithmic.com/substance-painter/2017.x/Substance_Painter-${pkgver}-1837-linux-x64-standard-full.rpm"
         'substance-painter-icon.png'
         'substance-painter.desktop'
         'substance-painter')
