@@ -1,6 +1,6 @@
 pkgbase = moonplayer-plugins
 	pkgdesc = Plugins for Moon Player
-	pkgver = 0.1
+	pkgver = 18.409d820
 	pkgrel = 1
 	url = https://github.com/coslyk/moonplayer-plugins
 	arch = any

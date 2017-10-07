@@ -1,7 +1,7 @@
 # Maintainer: Levinit <levinit at outlook>
 
 pkgname=moonplayer-plugins
-pkgver=0.1
+pkgver=18.409d820
 pkgrel=1
 pkgdesc="Plugins for Moon Player"
 arch=('any')
@@ -12,6 +12,11 @@ makedepends=('git')
 
 source=("git://github.com/coslyk/moonplayer-plugins")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
     install -dm755 ${pkgdir}/usr/share/moonplayer/plugins
