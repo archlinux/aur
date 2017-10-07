@@ -3,14 +3,14 @@
 
 pkgname=razercommander-git
 pkgver=1.2.0.r6.gefd04b3
-pkgrel=1
+pkgrel=2
 pkgdesc='Razer device manager for Linux'
 arch=('any')
 url='https://github.com/gabmus/razercommander'
 license=('GPL3')
 depends=('python-razer' 'gtk3>=3.14' 'python')
 makedepends=('git' 'meson')
-install=razercommander-git.install
+#install=razercommander-git.install
 provides=('razercommander')
 conflicts=('razercommander')
 source=("razercommander::git+https://github.com/gabmus/razercommander")
