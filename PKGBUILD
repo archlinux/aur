@@ -6,7 +6,7 @@ pkgname="${_gitname}-git"
 _gitbranch=master
 _gitauthor=cryptsetup
 pkgver=v1.7.0.r318.gde2f07b
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace setup tool for transparent encryption of block devices using dm-crypt"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 license=('GPL')
@@ -14,6 +14,8 @@ url="https://gitlab.com/${_gitauthor}/${_gitname}"
 groups=('base')
 depends=('device-mapper' 'libgcrypt' 'popt' 'libutil-linux' 'json-c')
 makedepends=('util-linux' 'git')
+conflicts=('cryptsetup')
+provides=('cryptsetup')
 options=('!emptydirs')
 source=("git+https://gitlab.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}"
         "encrypt_hook"
