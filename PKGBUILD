@@ -55,7 +55,7 @@ build() {
 
 check() {
 	cd "$srcdir/$_gitname"
-	cd build
+	cd $_builddir
 
 	# Run unit_tests test separately to exclude DNS tests which often fail with
 	# DNS nameservers configured on some systems (#2172)
