@@ -2,7 +2,7 @@
 # Contributor: Tomasz Hamerla <tomasz.hamerla@outlook.com>
 
 pkgname=powershell-bin
-_pkgver=6.0.0-beta.7
+_pkgver=6.0.0-beta.8
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework (binary package)"
@@ -12,13 +12,9 @@ license=('MIT')
 provides=('powershell')
 conflicts=('powershell')
 options=(staticlibs !strip)
-depends=('libunwind' 'icu55' 'libcurl-openssl-1.0')
-makedepends=('rsync')
 install=powershell.install
-
-md5sums=('725a93bb5cc730abbf1d1d301c82abba')
-
-source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell_${_pkgver}-1ubuntu1.16.04.1_amd64.deb")
+md5sums=('dd698384f5a0f9cd3ce7dd8dd85cbb92')
+source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell_${_pkgver}-1.ubuntu.17.04_amd64.deb")
 
 package() {
     bsdtar xf data.tar.gz
@@ -28,7 +24,7 @@ package() {
 
     # Fix man path
     cd "${pkgdir}"
-    rsync --recursive usr/local/share usr
+    cp -r usr/local/share usr
     rm -rf usr/local
 
     # Force powershell to load appropriate libs
@@ -38,7 +34,5 @@ package() {
 #!/bin/sh
 LD_PRELOAD='/usr/lib/libcurl-openssl-1.0.so /usr/lib/openssl-1.0-compat/libssl.so /usr/lib/openssl-1.0-compat/libcrypto.so' exec lnbin.powershell "\$@" 2>/dev/null
 EOF
-    # Fix script permissions
     chmod 755 powershell
-
 }
