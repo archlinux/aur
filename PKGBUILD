@@ -5,7 +5,7 @@
 pkgbase=linux-bld       # Build kernel with a different name
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.13.4
+pkgver=4.13.5
 _srcname=linux-4.13
 _pkgver2=${_srcname#*-}.0
 pkgrel=1
@@ -29,20 +29,20 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
 # Arch stock configuration files are directly pulled from specefic trunk
-arch_config_trunk=6c9f606816c018a38542520b3e8b2b6f60c901ac
+arch_config_trunk=a12b2132b905e1d16939ebdca5b0d6393552f8f1
 source_x86_64=("config.x86_64::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.x86_64?h=packages/linux&id=${arch_config_trunk}")
 source_i686=("config.i686::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.i686?h=packages/linux&id=${arch_config_trunk}")
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '1e34c35dfbd3b7451a7b3eb93c5e342acc006b5d1906b5e542a8f203723bb8d6'
+            'ba0cf285525e24850917c2f5cc7c2283b6509e2185bb70108f140f7ec695d57d'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
             '58939b88d928bbb7844d80ab6952d61d97fe671b2a182fe62ad3885ada80fd76')
-sha256sums_i686=('73278ee56c5d3855e67ff50caa77a7cb47fb29ebd8f9b7ca9ebee4e2d446529c')
-sha256sums_x86_64=('1b9cbe1c25653d563515344a7c6cc9f79447ac9274fcf4de0007228e979b55dd')
+sha256sums_i686=('f68bb8bccbbd6b86dc9f182ee25b2953638aec2729387c70d2787318ad4ea16c')
+sha256sums_x86_64=('9be58e0adea94ccd51aabdd568fa65ba84097f31589de57c5fcc7c71c257a6e0')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
