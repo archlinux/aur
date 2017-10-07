@@ -3,11 +3,11 @@
 _npmname=jpm
 pkgname=nodejs-$_npmname # All lowercase
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Jetpack Mechanic utilities for creating, testing, running and packaging Mozilla Jetpack Addons'
 arch=(any)
 url='https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm'
-license=('custom:MPL2')
+license=('MPL2')
 depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
@@ -26,9 +26,6 @@ package() {
 
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/usr/lib/node_modules/jpm/bin/jpm" "$pkgdir/usr/bin/jpm"
-
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s "/usr/lib/node_modules/jpm/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
