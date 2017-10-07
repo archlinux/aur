@@ -1,17 +1,17 @@
-# $Id: PKGBUILD 186648 2013-05-30 12:12:51Z tomegun $
-# Mantainer: Tom Gundersen <teg@jklm.no>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=yp-tools
 pkgver=2.14
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux NIS Tools'
 arch=('i686' 'x86_64')
 url='http://www.linux-nis.org/nis/yp-tools/'
 license=('GPL2')
-depends=('ypbind-mt')
+depends=('glibc')
 backup=('etc/nisdomainname')
 install=yp-tools.install
 source=("http://www.linux-nis.org/download/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
