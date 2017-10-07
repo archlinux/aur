@@ -18,7 +18,7 @@ sha256sums=('d4f08e0d5f1238e3f218a8d58723b2b29668864d40163186e3bbdf811134de5b')
 _filename=addon-3173-latest.xpi
 
 package() {
-  local _extension_id="trackmenot@mrl.nyu.edu.xpi"
+  local _extension_id="trackmenot@mrl.nyu.edu"
   local _extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
 
   cd "${srcdir}"
