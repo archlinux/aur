@@ -39,8 +39,15 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="usb_cam-release-release-kinetic-usb_cam-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/usb_cam-release/archive/release/kinetic/usb_cam/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('43d0e60d5ed77191015411fbf3d0485f34dc2e2f6d3c60fc574f25c587c7c06b')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/usb_cam-release/archive/release/kinetic/usb_cam/${pkgver}-${_pkgver_patch}.tar.gz"
+		"libav_defines.patch")
+sha256sums=('43d0e60d5ed77191015411fbf3d0485f34dc2e2f6d3c60fc574f25c587c7c06b'
+            '908f11fc5b1020a39fac9d4d4924be49023ee66ad701333979cbb612c035000e')
+
+prepare() {
+	cd ${srcdir}
+	patch -p1 -i "libav_defines.patch"
+}
 
 build() {
   # Use ROS environment variables
