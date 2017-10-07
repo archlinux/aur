@@ -1,6 +1,6 @@
 # Maintainer: PyroDevil <p dot devil at gmail dot com>
 pkgname=systemrescuecd
-pkgver=5.0.3
+pkgver=5.1.1
 pkgrel=1
 epoch=
 pkgdesc="Installs a rescue system into the boot partition to allow grub to boot it."
@@ -22,7 +22,7 @@ changelog=
 source=("http://downloads.sourceforge.net/project/systemrescuecd/sysresccd-x86/$pkgver/$pkgname-x86-$pkgver.iso"
         "25_systemrescuecd"
         "systemrescuecd")
-sha256sums=('e892d3e0aeabec2c435484f0a6913d56b5cc4505e61032bd86f39443e3ab162e'
+sha256sums=('5ab22119f2ca2e53d28880367e53b887df5cd82599b38d3175870d023455117a'
             '0aadc8a84195f00035c38a36692998206f6243e16921a14ae64ebf1541efae02'
             '44fc4471d3afba5a48fc9305a1a687762e5d595c23c82d3b0e018d7b210e52cc')
 noextract=("$pkgname-x86-$pkgver.iso")
