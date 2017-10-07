@@ -1,0 +1,14 @@
+pkgbase = szsol-git
+	pkgdesc = ncurses clone of Shenzhen Solitaire
+	pkgver = r34.14af5a5
+	pkgrel = 1
+	url = https://github.com/usrshare/szsol
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = ncurses5-compat-libs
+	source = git+https://github.com/usrshare/szsol
+	sha256sums = SKIP
+
+pkgname = szsol-git
+
