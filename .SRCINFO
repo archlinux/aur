@@ -1,27 +1,26 @@
 pkgbase = libfm-directory_thumbnails
 	pkgdesc = Library for file management. Patched to allow directory thumbnails.
-	pkgver = 1.2.4
-	pkgrel = 2
-	url = https://github.com/lxde/libfm
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://sourceforge.net/projects/pcmanfm/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = git
 	makedepends = gtk-doc
-	makedepends = libexif
 	makedepends = intltool
 	makedepends = vala
+	depends = gtk2
+	depends = libexif
+	depends = libfm-extra=1.2.5
 	depends = menu-cache
-	provides = libfm=1.2.4
-	provides = libfm-extra=1.2.4
-	conflicts = libfm=1.2.4
-	conflicts = libfm-extra=1.2.4
-	source = git+https://github.com/lxde/libfm.git
+	provides = libfm=1.2.5
+	conflicts = libfm=1.2.5
+	source = https://downloads.sourceforge.net/pcmanfm/libfm-1.2.5.tar.xz
 	source = https://sourceforge.net/p/pcmanfm/bugs/1020/attachment/directory_thumbnails.patch
 	source = https://github.com/tsujan/libfm/commit/49150d1f66e1be15ac9fdcb4416e4f0cd06a9dd3.patch
-	sha256sums = SKIP
+	sha256sums = c706bb1020cf5f2d6f5a9226f692ce1985947134dcf2bde64278bd0420779b5a
 	sha256sums = 7065c345ae29762a6e3d75c6757b999c5d609a967f61522c15f6e85d8b4bc9ef
-	sha256sums = b288c7ba468e954f67dddc05c8447e1c6192c08069d564fa40724781a1caa709
+	sha256sums = 531a17d3673149b48622221fff997e1dd1d9eeea604902207ce95e8bcfee679d
 
 pkgname = libfm-directory_thumbnails
 
