@@ -1,14 +1,14 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=bcal
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
-pkgdesc="Byte CALculator. The engineer's utility for storage conversions and calculations."
+pkgdesc="Byte CALculator for storage conversions and calculations."
 arch=("x86_64")
 url="https://github.com/jarun/bcal"
 license=('GPL3')
 source=("https://github.com/jarun/bcal/archive/v${pkgver//_/-}.tar.gz")
-md5sums=('a19de8d329a2b34a5ff3f3cfaa8c6a19')
+md5sums=('ec28d56c935a3c0c3180ae40e6b62c58')
 conflicts=('bcal-git')
 provides=('bcal')
 
