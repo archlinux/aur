@@ -22,7 +22,7 @@ backup=()
 options=()
 install=$_pkgname.install
 changelog=
-source=(astroid::git+https://github.com/gauteh/astroid.git#branch=meson)
+source=(astroid::git+https://github.com/astroidmail/astroid.git)
 noextract=()
 md5sums=('SKIP')
 
