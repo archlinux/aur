@@ -2,13 +2,13 @@ pkgname=pandoc-citeproc-bin
 pkgver=1.19.2.1
 pkgrel=1
 pkgdesc="Pandoc Cite Processor - executable only, without 750MB Haskell depends/makedepends"
-url="http://pandoc.org"
-license=("GPL")
+url="https://hackage.haskell.org/package/pandoc-citeproc"
+license=("custom:BSD3")
 arch=('x86_64')
 conflicts=("pandoc-citeproc")
 provides=("pandoc-citeproc")
 replaces=('pandoc-citeproc-static' 'pandoc-citeproc-lite')
-depends=('cmark')
+depends=('pandoc')
 
 source=(
     "https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-1-amd64.deb"
