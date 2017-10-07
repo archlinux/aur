@@ -1,6 +1,6 @@
 # Maintainer: Matt Moore <mattmoore@carbonhelix.com>
 pkgname="photon"
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 epoch=
 pkgdesc="A command-line client utility, written in Haskell, similar to curl that also integrates API-Auth authentication for RESTable API endpoints."
@@ -22,7 +22,7 @@ changelog=
 _file="${pkgname}_${pkgver}-${pkgrel}_linux_${arch}"
 source=("https://github.com/mattmoore/photon/releases/download/${pkgver}/${_file}.tar.xz")
 noextract=()
-md5sums=("e115b15f5bff2064b072d8b05fa86203")
+sha256sums=("5ae5020bc5325bfb72d6bca52a581ccaf80f355f66b38a0b848f3148ce603a11")
 validpgpkeys=()
 
 package() {
