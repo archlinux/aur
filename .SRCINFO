@@ -1,0 +1,21 @@
+pkgbase = npm53
+	pkgdesc = A package manager for javascript
+	pkgver = 5.3.0
+	pkgrel = 1
+	url = https://www.npmjs.com/
+	arch = any
+	license = custom:Artistic
+	makedepends = procps-ng
+	makedepends = marked-man
+	depends = nodejs
+	depends = semver
+	optdepends = python2: for node-gyp
+	provides = nodejs-node-gyp
+	provides = npm=5.3.0
+	conflicts = npm
+	options = !emptydirs
+	source = npm53-5.3.0.tar.gz::https://github.com/npm/npm/archive/v5.3.0.tar.gz
+	sha512sums = df4c6b974b242094ea1a91dcb79d33053cdfdb0c98aae6433a3fe518be9ef0c9341272c0cd960aeab8b400a699c481aed260b4610144fb45ff1ae12f636e56fd
+
+pkgname = npm53
+
