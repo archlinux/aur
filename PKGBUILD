@@ -42,7 +42,6 @@ check() {
   make test
 }
 
-
 package() {
   cd $pkgname/src/powershell-unix
 
