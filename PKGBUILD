@@ -1,28 +1,21 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=numix-themes-green
-pkgver=2.6.6.r27.582f09f
+pkgver=2.6.7
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look using Green color (GNOME, MATE, Openbox, Unity, XFCE)"
 arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
-makedepends=('git' 'ruby-bundler' 'inkscape')
-source=("git+https://github.com/numixproject/numix-gtk-theme.git#commit=582f09f")
-sha256sums=('SKIP')
-
-
-
-pkgver() {
-   cd numix-gtk-theme
-   git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./'
-}
+makedepends=('ruby-bundler' 'inkscape')
+source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/numixproject/numix-gtk-theme/archive/${pkgver}.tar.gz")
+sha256sums=('4590c6077828d73aecbc2521acf5b8d4669aacff1e9d09575888be67f2dc0d1b')
 
 
 prepare() {
    local color="#697740" name="Green"
-   cd numix-gtk-theme/src
+   cd numix-gtk-theme-${pkgver}/src
    for file in gtk-2.0/gtkrc \
       gtk-3.0/scss/_global.scss \
       assets/*.svg \
@@ -53,14 +46,14 @@ prepare() {
 
 
 build() {
-   cd numix-gtk-theme
+   cd numix-gtk-theme-${pkgver}
    bundle install --path .
    make SASS="bundle exec sass"
 }
 
 
 package() {
-   cd numix-gtk-theme
+   cd numix-gtk-theme-${pkgver}
    make SASS="bundle exec sass" DESTDIR="${pkgdir}" install
 }
 
