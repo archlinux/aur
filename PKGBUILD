@@ -4,7 +4,7 @@
 
 pkgname=evince-no-gnome
 _pkgname=evince
-pkgver=3.24.1
+pkgver=3.26.0+14+g2a499547
 pkgrel=1
 pkgdesc="GTK3 document viewer, complete features, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
@@ -17,7 +17,7 @@ optdepends=('texlive-bin: DVI support'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "evince-light")
 options=('!emptydirs')
-_commit=d2cc3c95afdc1edf0864a1735cf727adf3f2db0d  # tags/3.24.1^0
+_commit=2a4995479ccf65f5bd15df13f9b6c810c3156b58 # master
 source=("git+https://git.gnome.org/browse/evince#commit=$_commit")
 md5sums=('SKIP')
 
