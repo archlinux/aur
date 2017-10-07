@@ -1,7 +1,7 @@
 # Maintainer: Peter Sutton <foxxy@foxdogstudios.com>
 pkgname=pangolin-git
 pkgver=2017.10.07
-pkgrel=1
+pkgrel=2
 pkgdesc="Pangolin is a lightweight portable rapid development library for managing OpenGL display / interaction and abstracting video input."
 arch=(x86_64)
 url="https://github.com/stevenlovegrove/Pangolin"
@@ -13,7 +13,7 @@ depends=(
 )
 optdepends=(
     'cuda'
-    'eignen'
+    'eigen'
     'ffmpeg'
     'libdc1394'
     'libjpeg-turbo'
