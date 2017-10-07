@@ -2,7 +2,7 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
-_pkgver=6.0.0-beta.7
+_pkgver=6.0.0-beta.8
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework (latest release)"
@@ -18,7 +18,7 @@ source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         'ae733aaf023f7d07e6ed9e8fffcd8ff1')
+         '4c096f1ce88fd387c9ec81f7ac0581ea')
 install=powershell.install
 
 prepare() {
@@ -34,18 +34,11 @@ prepare() {
 
 build() {
   cd $pkgname
-
-  pushd src/libpsl-native
-  cmake .
-  make -j
-  popd
-
   "$srcdir"/build.sh
 }
 
 check() {
   cd $pkgname/src/libpsl-native
-
   make test
 }
 
