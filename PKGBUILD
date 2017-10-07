@@ -1,14 +1,15 @@
-pkgname=pandoc-bin
-pkgver=1.19.2.1
+pkgname=pandoc-crossref-bin
+pkgver=0.2.6.0
+pandoc_pkgver=1-19
 pkgrel=1
-pkgdesc="Pandoc - executable only, without 750MB Haskell depends/makedepends"
+pkgdesc="Pandoc Cross References - executable only, without 750MB Haskell depends/makedepends"
 url="http://pandoc.org"
-license=("GPL")
+license=("GPL2")
 arch=('x86_64')
-conflicts=("pandoc")
-provides=("pandoc")
-replaces=('pandoc-static' 'pandoc-lite')
-depends=('cmark')
+conflicts=("pandoc-crossref")
+provides=("pandoc-crossref")
+replaces=('pandoc-crossref-static' 'pandoc-crossref-lite')
+depends=('pandoc')
 
 source=(
     "https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-1-amd64.deb"
