@@ -1,0 +1,14 @@
+--- Makefile	2016-01-18 16:19:39.000000000 +0200
++++ Makefile.fix	2017-10-07 13:10:35.737878065 +0300
+@@ -9,8 +9,8 @@
+ COMMON_HEADERS = common/esteid_certinfo.h common/atr_fetcher.h common/pkcs11_path.h common/pkcs11_errors.h common/esteid_log.h common/esteid_sign.h common/esteid_timer.h common/esteid_time.h common/l10n.h common/labels.h common/esteid_map.h common/esteid_dialog_common.h common/dialogs.h
+ COMMON_SOURCES = common/esteid_certinfo.c common/atr_fetcher.c common/pkcs11_path.c common/pkcs11_errors.c common/esteid_log.c common/esteid_sign.c common/esteid_timer.c common/esteid_time.c common/l10n.c common/l10n-linux.c common/esteid_map.c common/esteid_dialog_common.c
+ C_FLAGS = -g -O2 -std=gnu99 -Wall $(CPPFLAGS)
+-I_FLAGS = -Iinclude -Icommon `pkg-config --cflags gtk+-2.0 libpcsclite`
+-L_FLAGS = -ldl -lcrypto -lpthread `pkg-config --libs gtk+-2.0 libpcsclite`
++I_FLAGS = -Iinclude -Icommon `pkg-config --cflags gtk+-2.0 libpcsclite openssl`
++L_FLAGS = -ldl -lpthread `pkg-config --libs gtk+-2.0 libpcsclite openssl`
+ D_FLAGS = -DXP_UNIX -DMOZ_X11 -DVERSION=\"$(VERSION)\"
+ PLUGIN_HEADERS = firefox/plugin.h firefox/plugin-class.h firefox/cert-class.h
+ PLUGIN_SOURCES = firefox/plugin.c firefox/plugin-class.c firefox/cert-class.c firefox/dialogs-gtk.c
+
