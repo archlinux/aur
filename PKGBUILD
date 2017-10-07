@@ -4,7 +4,7 @@
 # Contributor: Michael Hansen <zrax0111 gmail com>
 
 pkgname=qt5-doc
-_qtver=5.9.1
+_qtver=5.9.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('qt5-tools' 'python2' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr'
 groups=('qt' 'qt5')
 _pkgfqn="qt-everywhere-opensource-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_pkgfqn}.tar.xz")
-sha256sums=('7b41a37d4fe5e120cdb7114862c0153f86c07abbec8db71500443d2ce0c89795')
+sha256sums=('6c6171a4d1ea3fbd4212d6a04899650218583df3ec583a8a6a4a589fe18620ff')
 
 prepare() {
   cd ${_pkgfqn}
