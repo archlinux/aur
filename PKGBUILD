@@ -2,7 +2,7 @@
 
 pkgname=lain-git
 pkgcom=1619
-pkgsha=9e33a71
+pkgsha=055e663
 pkgver=$pkgcom.$pkgsha
 pkgrel=1
 pkgdesc="Layouts, asynchronous widgets and utilities for Awesome WM"
@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/copycat-killer/lain"
 license=('GPL2')
 depends=('awesome')
-optdepends=('curl: for widgets accessing network resources')
+optdepends=('curl: for IMAP, MPD and weather widgets')
 makedepends=('git')
 provides=('lain')
 conflicts=('lain')
