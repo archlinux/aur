@@ -2,31 +2,32 @@
 # Contributor: davideddu <me at davideddu dot org>
 
 pkgname=scuolabook
-pkgver=3.1
-pkgrel=3
+_intpkgname=Scuolabook
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="Puoi leggere su computer desktop, sul portatile e sul tablet i tuoi libri scolastici digitali."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.scuolabook.it/applicazioni"
 license=('custom')
-depends=("gstreamer0.10-base" "gtk2" "libpulse" "qt5-svg" "qt5-webkit")
+depends=("gst-plugins-bad" "libpulse" "nss" "mesa" "libxrandr" "qt5-svg" "qt5-webkit")
 
-source=(license)
-source_i686+=(http://s3.amazonaws.com/scuolabook_support/"$pkgname"_"$pkgver"_i386.deb)
-source_x86_64+=(http://s3.amazonaws.com/scuolabook_support/"$pkgname"_"$pkgver"_amd64.deb)
-md5sums=('94f26429ae1b95e18457020be1d7dc08')
-md5sums_i686=('94a2864189a6e4039cfc66cf30a908da')
-md5sums_x86_64=('b6db6055f4abd09ce0f0546402f91e89')
+source=(license http://s3.amazonaws.com/scuolabook_support/"$_intpkgname"_"$pkgver"_16.04_amd64.deb)
+md5sums=('94f26429ae1b95e18457020be1d7dc08'
+         'f1d8bdce890fd85311e56bf165bb750c')
 
-noextract=("$pkgname"_"$pkgver"_amd64.deb "$pkgname"_"$pkgver"_i386.deb)
+noextract=("$_intpkgname"_"$pkgver"_16.04_amd64.deb)
 
 prepare() {
   cd "$srcdir"
   msg2 "Decompressing Debian package..."
-  ar xv "$pkgname"_"$pkgver"_*.deb > /dev/null
-  tar -xf data.tar.gz > /dev/null
+  ar xv "$_intpkgname"_"$pkgver"_*.deb > /dev/null
+  tar -xf data.tar.xz > /dev/null
   tar -xf control.tar.gz > /dev/null
   msg2 "Checking archive integrity..."
   md5sum -c md5sums > /dev/null
+
+  # i know, i know...
+  ln -s /usr/lib/libpcre16.so ./opt/scuolabook/libpcre16.so.3
 }
 
 package() {
