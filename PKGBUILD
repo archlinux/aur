@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=python-whois
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Whois querying and parsing of domain registration information"
 arch=( 'i686' 'x86_64' )
 url="https://bitbucket.org/richardpenman/pywhois"
@@ -25,6 +25,7 @@ package_python-whois() {
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm 0644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-whois() {
@@ -32,4 +33,5 @@ package_python2-whois() {
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm 0644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
