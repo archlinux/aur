@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=libregexp-git
-pkgver=r18.f64437a
+pkgver=r19.7a0c356
 pkgrel=1
 epoch=
 pkgdesc="A Unix port of the Plan 9 regular expression library, originally done for the Inferno operating system."
@@ -27,11 +27,6 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  sed -i '28s!/man/man7!/share/man/man7!' Makefile
 }
 
 build() {
