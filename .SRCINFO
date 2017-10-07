@@ -11,10 +11,10 @@ pkgbase = linux-xanmod
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/4.13.5-xanmod9.tar.gz
+	source = https://github.com/xanmod/linux/archive/4.13.5-xanmod10.tar.gz
 	source = 90-linux.hook
 	source = linux-xanmod.preset
-	sha256sums = 30b109e773088a87b193833393316928f10bc0f90bd2fca7cf4caf540522b37a
+	sha256sums = c62ea1fa0a699a288451e1055ea0e4d2e6941105822a9c5b45724b1fba9799c9
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	source_i686 = config.i686::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.i686?h=packages/linux&id=a12b2132b905e1d16939ebdca5b0d6393552f8f1

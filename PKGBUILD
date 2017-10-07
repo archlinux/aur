@@ -6,7 +6,7 @@
 pkgbase=linux-xanmod
 _srcname=linux
 pkgver=4.13.5
-xanmod=9
+xanmod=10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
@@ -23,7 +23,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 arch_config_trunk=a12b2132b905e1d16939ebdca5b0d6393552f8f1
 source_x86_64=("config.x86_64::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.x86_64?h=packages/linux&id=${arch_config_trunk}")
 source_i686=("config.i686::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.i686?h=packages/linux&id=${arch_config_trunk}")
-sha256sums=('30b109e773088a87b193833393316928f10bc0f90bd2fca7cf4caf540522b37a'
+sha256sums=('c62ea1fa0a699a288451e1055ea0e4d2e6941105822a9c5b45724b1fba9799c9'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 sha256sums_i686=('f68bb8bccbbd6b86dc9f182ee25b2953638aec2729387c70d2787318ad4ea16c')
