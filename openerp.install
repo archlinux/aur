@@ -5,7 +5,7 @@ post_install() {
   fi
   id openerp &>/dev/null || useradd -g openerp -d /  openerp
   echo "This package requires a functional PostgreSQL server. "
-  echo "To use with a locally installed PostgreSQL:
+  echo "To use with a locally installed PostgreSQL:"
   echo "-- Make sure PostgreSQL is correctly installed (see wiki), start it,"
   echo "-- create user with database creation rights for OpenERP in PostgreSQL"
   echo "-- e.g: # su - postgres -c \"createuser -dRSP <myopenerpuser>\""

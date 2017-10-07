@@ -4,7 +4,7 @@
 pkgname=openerp
 pkgver=7.0
 _pkgsubver=20170329
-pkgrel=15
+pkgrel=16
 pkgdesc="Advanced OpenSource ERP and CRM server"
 url=http://openerp.com/
 arch=('any')
@@ -72,11 +72,6 @@ package()
   install -Dm 644 ${srcdir}/openerp.confd ${pkgdir}/etc/conf.d/openerp
   install -Dm 644 ${srcdir}/openerp.service ${pkgdir}/usr/lib/systemd/system/openerp.service
   install -Dm 644 ${srcdir}/openerp-server.conf ${pkgdir}/etc/openerp/openerp-server.conf
-  #No more man pages
-  #zip -c openerp-server.1 > openerp-server.1.gz
-  #gzip -c openerp_serverrc.5 > openerp_serverrc.5.gz
-  #install -Dm 644  openerp-server.1.gz ${pkgdir}/usr/share/man/man1
-  #install -Dm 644  openerp_serverrc.5.gz ${pkgdir}/usr/share/man/man5
 }
 md5sums=('7bc0dbc2e3e0ed2667541c943282bf81'
          'effb44e444602a0e59f8fe5b4ebc47b4'
