@@ -1,8 +1,8 @@
 # Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=4.3
-pkgrel=4
+pkgver=4.3.1
+pkgrel=5
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven TUI written in Bash"
 depends=('dialog' 'expac')
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
 
-md5sums=('c3ca20ebbb19dd758d3d8a30cd975cfd')
+md5sums=('86a0bf63ef0bc690ad4b37bb016c0af4')
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     install -D -m755 Cylon.sh "$pkgdir"/usr/bin/"${pkgname}" 
@@ -39,6 +39,7 @@ package() {
     install -D -m644 documentation/cylon.7   "$pkgdir/usr/share/man/man7/cylon.7"
     install -D -m644 documentation/changelog.md "$pkgdir/usr/share/doc/${pkgname}/changelog.md"
     install -D -m644 documentation/LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/License.md"
+
 
     install -D  -m644 desktop/cylon.desktop "$pkgdir/usr/share/applications/cylon.desktop"
     install -D  -m644 desktop/cylonicon.png "$pkgdir/usr/share/pixmaps/cylonicon.png"
