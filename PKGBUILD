@@ -12,7 +12,6 @@ arch=('any')
 url='http://www.gust.org.pl/projects/e-foundry/latin-modern'
 license=('custom:GFL')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-install=$pkgname.install
 source=("http://www.gust.org.pl/projects/e-foundry/latin-modern/download/lm${pkgver}otf.zip"
         "GUST-FONT-LICENSE.txt::http://www.gust.org.pl/projects/e-foundry/licenses/GUST-FONT-LICENSE.txt/at_download/file")
 sha256sums=('5b0236051d3728be6616f1b274e3b910473875b5a3ef9382f0ef00384ddb161b'
