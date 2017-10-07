@@ -5,17 +5,17 @@ _gitname=cryptsetup
 pkgname="${_gitname}-git"
 _gitbranch=master
 _gitauthor=cryptsetup
-pkgver=v1.6.8.r2.ge97048d
+pkgver=v1.7.0.r318.gde2f07b
 pkgrel=1
 pkgdesc="Userspace setup tool for transparent encryption of block devices using dm-crypt"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 license=('GPL')
 url="https://gitlab.com/${_gitauthor}/${_gitname}"
 groups=('base')
-depends=('device-mapper' 'libgcrypt' 'popt' 'libutil-linux')
+depends=('device-mapper' 'libgcrypt' 'popt' 'libutil-linux' 'json-c')
 makedepends=('util-linux' 'git')
 options=('!emptydirs')
-source=("git://gitlab.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}"
+source=("git+https://gitlab.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}"
         "encrypt_hook"
         "encrypt_install"
         "sd-encrypt")
@@ -47,6 +47,7 @@ package() {
   install -D -m644 "${srcdir}"/encrypt_hook "${pkgdir}"/usr/lib/initcpio/hooks/encrypt
   install -D -m644 "${srcdir}"/encrypt_install "${pkgdir}"/usr/lib/initcpio/install/encrypt
   install -D -m644 "${srcdir}"/sd-encrypt "${pkgdir}"/usr/lib/initcpio/install/sd-encrypt
+  install -D -m644 "${srcdir}"/"${_gitname}"/scripts/cryptsetup_tmpfiles.conf "${pkgdir}"/usr/lib/tmpfiles.d/cryptsetup.conf
 }
 
 # vim:set et sw=2 sts=2 tw=80:
