@@ -31,7 +31,7 @@ build() {
   export PYTHON=$(which python2)
   ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
     --libexecdir=/usr/lib --disable-schemas-compile --enable-ofx --enable-aqbanking --enable-python
-  make GUILD=/usr/bin/guild
+  make
 }
 
 package() {
