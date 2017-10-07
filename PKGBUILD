@@ -80,7 +80,7 @@ package() {
     done
 
     # Link missing icons
-    for i in $(find lib/desktop/icons/ -name "*-$_jname.png" -type f); do
+    for i in $(find lib/desktop/icons/ -name "sun-jcontrol-$_jname.png" -type f); do
         ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/java}"
         ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/javaws}"
     done
