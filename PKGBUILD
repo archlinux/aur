@@ -1,17 +1,17 @@
 pkgname=tribler
-pkgver=7.0.0rc2
-_pkgver=7.0.0-rc2
+pkgver=7.0.0rc3
+_pkgver=7.0.0-rc3
 pkgrel=1
 pkgdesc="Privacy enhanced BitTorrent client with P2P content discovery"
 url="http://www.tribler.org/"
 arch=(any)
 license=('LGPL')
-depends=('python2-cryptography' 'python2-feedparser' 'python2-apsw' 'python2-cherrypy' 'python2-plyvel' 'python2-pillow' 'python2-pyqt5' 'qt5-svg' 'phonon-qt5-vlc' 'python2-feedparser' 'python2-chardet'
+depends=('python2-cryptography' 'python2-feedparser' 'python2-apsw' 'python2-cherrypy' 'python2-plyvel' 'python2-pillow' 'python2-pyqt5' 'qt5-svg' 'phonon-qt5-vlc' 'python2-feedparser' 'python2-chardet' 'python2-psutil' 'python2-meliae'
 'python2-decorator' 'python2-netifaces' 'python2-requests' 'python2-twisted' 'libsodium' 'libtorrent-rasterbar' 'python2-m2crypto' 'python2-configobj' 'python2-matplotlib')
 optdepends=('vlc: for internal video player')
 makedepends=('python2-setuptools')
 source=("https://github.com/Tribler/tribler/releases/download/v${_pkgver}/Tribler-v${_pkgver}.tar.xz")
-sha1sums=('9087b7a945350afbda773ab19f357d727b3ed3ad')
+sha256sums=('477daf0947750b4dd6b875f74a52136153bd6bd2c1a74d119ccf87b97e452e38')
 
 build () {
   cd "${srcdir}/tribler"
@@ -32,6 +32,7 @@ package() {
   install -m755 debian/bin/tribler "${pkgdir}"/usr/bin
   install -m644 logger.conf "${pkgdir}"/usr/share/tribler/
   install -m644 run_tribler.py "${pkgdir}"/usr/share/tribler/
+  install -m644 check_os.py "${pkgdir}"/usr/share/tribler/
   cp -r twisted "${pkgdir}"/usr/share/tribler
 }
 
