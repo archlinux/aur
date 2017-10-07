@@ -12,10 +12,11 @@ arch=('x86_64')
 url="https://www.google.com/chrome"
 license=('custom:chrome')
 depends=('alsa-lib' 'gconf' 'gtk3' 'libcups' 'libxss' 'libxtst' 'nss')
-optdepends=('kdialog: needed for file dialogs in KDE'
+optdepends=('kdialog: for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
-            'libunity: download progress on KDE'
+            'gtk3-print-backends: for printing'
+            'libunity: for download progress on KDE'
             'ttf-liberation: fix fonts for some PDFs (CRBug #369991)'
             'xdg-utils')
 options=('!emptydirs' '!strip')
