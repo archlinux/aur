@@ -2,7 +2,7 @@
 pkgname=esteidfirefoxplugin
 pkgver=3.12.1.1142
 pkgrel=2
-pkgdesc="Firefox ID card signing plugin."
+pkgdesc="Firefox legacy NPAPI ID card signing plugin."
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
 license=('LGPL')

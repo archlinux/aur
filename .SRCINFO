@@ -1,5 +1,5 @@
 pkgbase = esteidfirefoxplugin
-	pkgdesc = Firefox ID card signing plugin.
+	pkgdesc = Firefox legacy NPAPI ID card signing plugin.
 	pkgver = 3.12.1.1142
 	pkgrel = 2
 	url = http://www.id.ee/
