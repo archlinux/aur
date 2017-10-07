@@ -2,8 +2,9 @@
 # Contributor: ahrs
 
 pkgname=mailspring
-pkgver=1.0.1
-pkgrel=5
+pkgver=1.0.2
+pkgrel=1
+pkghash=4eab3f85
 pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
 arch=('x86_64')
 license=('GPL3')
@@ -12,9 +13,9 @@ options=('!strip' '!upx')
 
 source=()
 sha256sums=()
-sha256sums_x86_64=('3d1796268d6169d24427f00dce229305943d516bbe060dc4cdef4db615f4f380')
+sha256sums_x86_64=('dcdc6c67006ee148e1db943dd6cd20e41a4846798071b5ab08b59c24637d97ef')
 
-source_x86_64=("https://mailspring-builds.s3.amazonaws.com/client/ba1d6734/linux/mailspring-${pkgver}-amd64.deb")
+source_x86_64=("https://mailspring-builds.s3.amazonaws.com/client/${pkghash}/linux/mailspring-${pkgver}-amd64.deb")
 depends=("libsasl>=2.0.0" "libgnome-keyring" "libtool" "c-ares" "ctemplate" "icu" "libxext" "openssl" "tidy" "libxtst" "libxkbfile" "glib2" "libxml2" "libutil-linux")
 
 package() {
