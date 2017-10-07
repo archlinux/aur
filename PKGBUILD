@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/gabmus/razercommander
 
 pkgname=razercommander-git
-pkgver=1.2.0.r31.g760e251
+pkgver=1.2.0.r6.gefd04b3
 pkgrel=1
 pkgdesc='Razer device manager for Linux'
 arch=('any')

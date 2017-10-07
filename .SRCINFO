@@ -1,6 +1,6 @@
 pkgbase = razercommander-git
 	pkgdesc = Razer device manager for Linux
-	pkgver = 1.2.0.r31.g760e251
+	pkgver = 1.2.0.r6.gefd04b3
 	pkgrel = 1
 	url = https://github.com/gabmus/razercommander
 	install = razercommander-git.install
