@@ -6,3 +6,4 @@ After=sshdgenkeys.service
 ExecStart=-/usr/bin/sshd -i
 StandardInput=socket
 StandardError=syslog
+KillMode=process
