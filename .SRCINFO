@@ -1,0 +1,17 @@
+pkgbase = perl-template-plugin-json-escape
+	pkgdesc = Perl/CPAN Module Template::Plugin::JSON::Escape: Adds a .json vmethod and a json filter.
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/Template-Plugin-JSON-Escape
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-json>=2.12
+	depends = perl-template-toolkit
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NA/NANTO/Template-Plugin-JSON-Escape-0.02.tar.gz
+	md5sums = e80fc7d043dd7df1e1fa2fd59090846a
+	sha512sums = cc1325d6e9ac2bc9cd051cb1e29542b339795de36c269c586a951ca0e06bb3e9690a52dc3a617d83502aa366223bbd0754ecc52df8c2a2a9ba42f1904fa7b34d
+
+pkgname = perl-template-plugin-json-escape
+
