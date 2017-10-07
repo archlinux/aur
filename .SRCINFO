@@ -1,0 +1,30 @@
+pkgbase = shadowsocks-git
+	pkgdesc = A lightweight tunnel proxy
+	pkgver = 2.9.1.r21.g2ab8c6b
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/shadowsocks
+	install = shadowsocks.install
+	arch = any
+	license = Apache
+	checkdepends = python-coverage
+	checkdepends = python-pyflakes
+	checkdepends = libsodium
+	checkdepends = python-nose
+	checkdepends = dante
+	checkdepends = procps-ng
+	checkdepends = util-linux
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	optdepends = libsodium: For salsa20 and chacha20 support
+	provides = shadowsocks
+	conflicts = shadowsocks
+	source = shadowsocks::git+https://github.com/shadowsocks/shadowsocks.git
+	source = shadowsocks@.service
+	source = shadowsocks-server@.service
+	sha512sums = SKIP
+	sha512sums = 96ecb174a476f64dec3ec086732d93a76d27e9a1cc56b1dc3fa87bf8e00d4b3c44076a01a0d525e42174cacc58fd5c16d5c8af5d4636dae13df549dec8204f7d
+	sha512sums = f2f8240c18a4483bf3e03b3a5ac8822c3deae713224f732bf28f7fddfcc5d0b02aa91652665ff93f05731e162a9407109c18f43d732a3a9b19d9eacfc806a4df
+
+pkgname = shadowsocks-git
+
