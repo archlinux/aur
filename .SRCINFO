@@ -1,0 +1,16 @@
+pkgbase = perl-text-pdf
+	pkgdesc = Perl/CPAN Module Text::PDF: Module for manipulating PDF files
+	pkgver = 0.31
+	pkgrel = 1
+	url = https://metacpan.org/release/Text-PDF
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BH/BHALLISSY/Text-PDF-0.31.tar.gz
+	md5sums = bf63812e65f2e2012e10e422a637760a
+	sha512sums = 6413bddaefbb57918763d395b9c751ad630a2095970c2c1febb01235343339fd4eae2820a30b449775d95071cca000a0f11e955fe304c2c56a45e80b384308d5
+
+pkgname = perl-text-pdf
+
