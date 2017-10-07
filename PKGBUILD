@@ -3,7 +3,7 @@
 
 _name=gzdoom
 pkgname=${_name}
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
 depends=('hicolor-icon-theme'
          'libgl'
-         'libjpeg'
          'libgme'
+         'libjpeg'
          'sdl2')
 makedepends=('cmake'
              'desktop-file-utils'
@@ -36,15 +36,24 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'libsndfile: WAV/FLAC/OGG audio support'
             'mpg123: MP3 audio support'
             'openal: in-game sound'
+            'soundfont-fluid: FluidR3 soundfont for FluidSynth'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
             'timidity++: Timidity MIDI device'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
 source=("${_name}::git://github.com/coelckers/${_name}.git#tag=g${pkgver}"
-        "${_name}.desktop")
+        "${_name}.desktop"
+        '0001-Fix-path-to-FluidR3-soundfont.patch')
 sha256sums=('SKIP'
-            '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d')
+            '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
+            '94834c91230c5c3743d47fc83b7d143d827e11e10b528a7d4f2b96e577c1123d')
+
+prepare() {
+    cd $_name
+
+    patch -p1 -i"$srcdir"/0001-Fix-path-to-FluidR3-soundfont.patch
+}
 
 build() {
     cd $_name
