@@ -3,7 +3,7 @@
 
 _pkgname=faac
 pkgname=lib32-$_pkgname
-pkgver=1.29.7.6
+pkgver=1.29.7.7
 pkgrel=1
 pkgdesc="An AAC audio encoder (32 bit)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('lib32-libmp4v2' "$_pkgname")
 makedepends=('gcc-multilib')
 #source=("https://sourceforge.net/projects/faac/files/faac-src/faac-${pkgver:0:3}/faac-$pkgver.tar.gz")
 source=("http://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('a263c98506cacfb57591bdf70c695f35')
+md5sums=('05d3152c6922fedd42c1aef13ea13de7')
 
 #prepare() {
 #cd ${_pkgname}-${pkgver}
