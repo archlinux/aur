@@ -1,38 +1,38 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=skribilo-git
 pkgver=v0.9.3_9_gc3d1019r987
-pkgrel=1
+pkgrel=2
 pkgdesc="The Ultimate Document Programming Framework from git"
 arch=('any')
 url="http://www.nongnu.org/skribilo/"
 license=('GPL')
 depends=('bash')
-makedepends=('git' 'guile-reader-git' 'ploticus')
+makedepends=('git' 'guile-reader' 'ploticus')
 provides=('skribilo')
 conflicts=('skribilo')
-source=("git://git.sv.gnu.org/skribilo.git")
-_gitname="${pkgname%-git}"
-md5sums=('SKIP')
+source=("git://git.sv.gnu.org/skribilo.git" aclocal.patch)
+md5sums=('SKIP'
+         'eed9671ced1e1af98d8fdad2b578cce0')
 
 pkgver() {
-  cd "$_gitname"
+  cd "${pkgname%-git}"
   printf "%sr%s" $(git describe --tags|tr - _) $(git rev-list --count HEAD)
 }
-pkgver() {
-  cd "$_gitname"
-  printf "%sr%s" $(git describe --tags|tr - _) $(git rev-list --count HEAD)
+
+prepare() {
+  cd "${pkgname%-git}"
+  patch -Np0 < "$srcdir"/aclocal.patch
 }
 
 build() {
-  cd "$srcdir"/"$_gitname"
-
-  autoreconf -i
-  ./configure --prefix=/usr
+  cd "${pkgname%-git}"
+  autoconf
+  GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "${pkgname%-git}"
   make DESTDIR="$pkgdir/" install
   rm $pkgdir/usr/share/info/*.png
   install -d $pkgdir/usr/share/doc/$pkgname
