@@ -1,0 +1,16 @@
+pkgbase = adwaita-slim-gtk-theme
+	pkgdesc = Adwaita Slim GTK theme
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/godlyranchdressing/Adwaita-Slim
+	arch = any
+	license = GPL3
+	noextract = Adwaita-Slim.tar.gz
+	noextract = Adwaita-Slim-Dark.tar.gz
+	source = https://github.com/godlyranchdressing/Adwaita-Slim/releases/download/V1/Adwaita-Slim.tar.gz
+	source = https://github.com/godlyranchdressing/Adwaita-Slim/releases/download/V1/Adwaita-Slim-Dark.tar.gz
+	sha256sums = 1488c9cee960b32bc4feeca1ff1309822ccfba10b76db1bc87551d416aec1ccd
+	sha256sums = f0eaeeb7b5a2a8413aa520c956ef518812d3d8d3fb356f382e6720eae6f2bc96
+
+pkgname = adwaita-slim-gtk-theme
+
