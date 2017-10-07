@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=python-whois
 pkgver=0.6.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Whois querying and parsing of domain registration information"
 arch=( 'i686' 'x86_64' )
 url="https://bitbucket.org/richardpenman/pywhois"
@@ -25,7 +25,7 @@ sha512sums=('23d328ed45593b814079f52e24ca1df0d4db90cec5bc5ac8f5a4a19754588715118
             'SKIP')
 
 package_python-whois() {
-  depends=('python')
+  depends=('python' 'python-future')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
