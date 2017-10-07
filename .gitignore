@@ -1,0 +1,5 @@
+oftb-git-*.pkg.*
+
+oftlisp-rs/
+pkg/
+src/

@@ -1,0 +1,18 @@
+pkgbase = oftb-git
+	pkgdesc = The OftLisp bootstrapper.
+	pkgver = 20171006
+	pkgrel = 1
+	url = https://github.com/oftlisp/oftlisp-rs.git
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = oftlisp-std
+	provides = oftb
+	conflicts = oftb
+	source = oftlisp-rs::git+https://github.com/oftlisp/oftlisp-rs.git#branch=master
+	md5sums = SKIP
+
+pkgname = oftb-git
+
