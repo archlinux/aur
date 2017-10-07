@@ -12,15 +12,10 @@ replaces=('pandoc-crossref-static' 'pandoc-crossref-lite')
 depends=('pandoc')
 
 source=(
-    "https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-1-amd64.deb"
-
-    # Note that they use a git submodule for data/templates, so soure tarballs from github are incomplete.
-    # Fetching from hackage gets us a complete tarball without writing our own `git submodule` commands.
-    "https://hackage.haskell.org/package/pandoc-${pkgver}/pandoc-${pkgver}.tar.gz"
+    "https://github.com/lierdakil/pandoc-crossref/releases/download/v${pkgver}/linux-ghc8-pandoc-${pandoc_pkgver}.tar.gz"
 )
 sha256sums=(
-    "db828cbab2a6d0d33f3754c4061a844ae2d1f0a01cbb12c512ef109117595dd2"
-    "08692f3d77bf95bb9ba3407f7af26de7c23134e7efcdafad0bdaf9050e2c7801"
+    "78fec4867aeee470505c46b6e1ec986cbaef06588e0a8951fa1feb4e2b41d197"
 )
 
 package() {
@@ -28,19 +23,8 @@ package() {
 
     # To avoid having to download over a gigabyte of haskell makedepends (400-ish for ghc, plus 750 in libs), we
     # just yoink the binary from static compiled binary distributed by pandoc:
-    tar -zxf data.tar.gz
-    cp -R usr "${pkgdir}/"
+    tar -zxf "linux-ghc8-pandoc-${pandoc_pkgver}.tar.gz"
+    mkdir -p "${pkgdir}/usr/bin"
+    cp pandoc-crossref "${pkgdir}/usr/bin/"
 
-    # Citeproc is provided by a different package, and depends on various other datafiles we don't handle here.
-    rm "${pkgdir}/usr/bin/pandoc-citeproc"
-    rm "${pkgdir}/usr/share/man/man1/pandoc-citeproc.1.gz"
-    rm -R "${pkgdir}/usr/share/doc/pandoc-citeproc"
-
-    # We're still missing all the datafiles and so on. We get those from the source tarball...
-    cd "pandoc-${pkgver}"
-    mkdir -p "${pkgdir}/usr/share/pandoc/"
-
-    cp -R data "${pkgdir}/usr/share/pandoc/"
-    cp COPYRIGHT "${pkgdir}/usr/share/pandoc/COPYRIGHT"
-    cp MANUAL.txt "${pkgdir}/usr/share/pandoc/MANUAL.txt"
 }
