@@ -1,6 +1,6 @@
 pkgbase = python-pyxstitch
 	pkgdesc = takes source code files and produces syntax-highlighted patterns for cross stitching.
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/enckse/pyxstitch
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-pyxstitch
 	depends = python
 	depends = python-pillow
 	depends = python-pygments
-	source = https://github.com/enckse/pyxstitch/archive/v1.4.1.tar.gz
-	md5sums = 1422a4c7fb4b59cdf76a5372ef5cf35d
+	source = https://github.com/enckse/pyxstitch/archive/v1.4.2.tar.gz
+	md5sums = 18ca8796165265f8ef78021e32076f99
 
 pkgname = python-pyxstitch
 
