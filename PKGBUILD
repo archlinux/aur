@@ -6,7 +6,7 @@
 _pkgbase=gdm
 pkgbase=gdm-plymouth
 pkgname=(gdm-plymouth libgdm-plymouth)
-pkgver=3.24.2
+pkgver=3.26.1
 pkgrel=1
 pkgdesc="Gnome Display Manager with Plymouth support."
 arch=(i686 x86_64)
@@ -16,9 +16,11 @@ depends=('plymouth' 'gnome-shell>=3.24.1' 'gnome-session' 'upower' 'xorg-xrdb' '
 makedepends=('intltool' 'yelp-tools' 'gobject-introspection')
 checkdepends=('check')
 source=("https://git.gnome.org/browse/gdm/snapshot/${_pkgbase}-${pkgver}.tar.xz"
-	"0002-Xsession-Don-t-start-ssh-agent-by-default.patch")
-sha256sums=('75c2f3c20ebf42484cd10889df123a9c27d3c4b138b9cc8496952e36bf40e440'
-            '63f99db7623f078e390bf755350e5793db8b2c4e06622caf42eddc63cd39ecca')
+	"0002-Xsession-Don-t-start-ssh-agent-by-default.patch"
+	"gdm.sysusers")
+sha256sums=('7eaa3b4bfea6cd7461719114b374a269618c2a92441a1b2289ba58449a3c6a72'
+            '63f99db7623f078e390bf755350e5793db8b2c4e06622caf42eddc63cd39ecca'
+            'd665e8f82ea2f6b03147223c04ca53ddb02eb3f550e3cf54dc96a44e50fb811d')
 
 prepare() {
   cd $_pkgbase-${pkgver}
@@ -43,9 +45,10 @@ build() {
     --with-plymouth \
     --with-at-spi-registryd-directory=/usr/lib/at-spi2-core \
     --with-check-accelerated-directory=/usr/lib/gnome-session \
+    --with-default-pam-config=arch \
+    --with-default-path=/usr/local/bin:/usr/local/sbin:/usr/bin \
     --with-gnome-settings-daemon-directory=/usr/lib/gnome-settings-daemon \
-    --without-tcp-wrappers \
-    --with-default-pam-config=arch
+    --without-tcp-wrappers
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
@@ -71,16 +74,21 @@ package_gdm-plymouth() {
   cd $_pkgbase-${pkgver}
   make DESTDIR="$pkgdir" install
 
-  rm -r "$pkgdir/var/run"
+  chown -R 120:120 "$pkgdir/var/lib/gdm"
 
-### Split libgdm
+  # Unused or created at start
+  rm -r "$pkgdir"/var/{cache,log,run}
+
+  install -Dm644 ../gdm.sysusers "$pkgdir/usr/lib/sysusers.d/gdm.conf"
+
+  ### Split libgdm
   make -C libgdm DESTDIR="$pkgdir" uninstall
   mv "$pkgdir/usr/share/glib-2.0/schemas/org.gnome.login-screen.gschema.xml" "$srcdir"
 }
 
 package_libgdm-plymouth() {
   pkgdesc="GDM support library including Plymouth support"
-  depends=(systemd glib2)
+  depends=(systemd glib2 dconf)
   provides=("libgdm")
   conflicts=("libgdm")
 
