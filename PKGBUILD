@@ -44,7 +44,7 @@ build() {
 
 	CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=$_buildtype "
 	CMAKE_FLAGS+=" -DCMAKE_INSTALL_PREFIX=/usr "
-	CMAKE_FLAGS+=" -DBUILD_TESTS=ON "
+	CMAKE_FLAGS+=" -DBUILD_TESTS=OFF "
 	CMAKE_FLAGS+=" -DBUILD_GUI_DEPS=ON "
 	CMAKE_FLAGS+=" -Wno-dev " # silence warnings for devs
 
@@ -56,6 +56,9 @@ build() {
 check() {
 	cd "$srcdir/$_gitname"
 	cd $_builddir
+
+	cmake -DBUILD_TESTS=ON ..
+	make
 
 	# Run unit_tests test separately to exclude DNS tests which often fail with
 	# DNS nameservers configured on some systems (#2172)
