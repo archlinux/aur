@@ -1,8 +1,8 @@
 pkgbase = shadowsocks-git
 	pkgdesc = A lightweight tunnel proxy
 	pkgver = 2.9.1.r21.g2ab8c6b
-	pkgrel = 1
-	url = http://pypi.python.org/pypi/shadowsocks
+	pkgrel = 2
+	url = https://github.com/shadowsocks/shadowsocks/tree/master
 	install = shadowsocks.install
 	arch = any
 	license = Apache
