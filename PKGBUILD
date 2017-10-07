@@ -7,7 +7,7 @@ license=("GPL")
 arch=('x86_64')
 conflicts=("pandoc-citeproc")
 provides=("pandoc-citeproc")
-replaces=('pandoc-citeproc-static' 'pando-cite-lite')
+replaces=('pandoc-citeproc-static' 'pandoc-citeproc-lite')
 depends=('cmark')
 
 source=(

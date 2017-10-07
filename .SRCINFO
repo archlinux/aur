@@ -9,7 +9,7 @@ pkgbase = pandoc-citeproc-bin
 	provides = pandoc-citeproc
 	conflicts = pandoc-citeproc
 	replaces = pandoc-citeproc-static
-	replaces = pando-cite-lite
+	replaces = pandoc-citeproc-lite
 	source = https://github.com/jgm/pandoc/releases/download/1.19.2.1/pandoc-1.19.2.1-1-amd64.deb
 	sha256sums = db828cbab2a6d0d33f3754c4061a844ae2d1f0a01cbb12c512ef109117595dd2
 
