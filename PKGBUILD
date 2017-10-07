@@ -7,48 +7,56 @@
 
 pkgname=kdevelop-git
 pkgver=0.0.0
-pkgrel=4
-pkgdesc="A C/C++ development environment for KDE. (GIT Version)"
+pkgrel=5
+pkgdesc="A C/C++ development environment for KDE. (Git version)"
 arch=('i686' 'x86_64')
 url='http://www.kdevelop.org'
 license=('GPL')
-depends=('clang'
-         'llvm'
-         'libksysguard'
-         'grantlee'
-         'kcmutils'
-         'threadweaver'
-         'kitemmodels'
-         'ktexteditor'
-         'knotifyconfig'
-         'knewstuff'
-         'libkomparediff2'
-         'qt5-webengine'
-        )
+depends=(
+    'clang'
+    'libksysguard'
+    'grantlee'
+    'kcmutils'
+    'threadweaver'
+    'kitemmodels'
+    'ktexteditor'
+    'knotifyconfig'
+    'knewstuff'
+    'libkomparediff2'
+    'qt5-webengine'
+)
 optdepends=(
-            'konsole: embedded terminal'
-            'git: Git support'
-            'subversion: SVN support'
-            'cvs: CVS support'
-            'gdb: GNU Debugger support'
-            'lldb: LLDB Debugger support'
-            'cmake: CMake integration'
-            'qt4-doc: qt4 documentation integration'
-            'qt5-doc: qt5 documentation integration'
-            'qt5-tools: qthelp plugin'
-            'purpose: patch review plugin'
-            'okteta: hex editor integration'
-            'kdevelop-pg-qt-git: qmake integration'
-            'krunner: For enabling the KDevelop runner'
-            'plasma-framework: for enabling the plasma addons'
-            'cppcheck: code analyzer'
-            )
-makedepends=('extra-cmake-modules'
-             'git'
-             'okteta'
-             'krunner'
-             'plasma-framework'
-             'clang')
+    'konsole: embedded terminal'
+    'git: Git support'
+    'subversion: SVN support'
+    'cvs: CVS support'
+    'gdb: GNU Debugger support'
+    'lldb: LLDB Debugger support'
+    'cmake: CMake integration'
+    'qt4-doc: qt4 documentation integration'
+    'qt5-doc: qt5 documentation integration'
+    'qt5-tools: qthelp plugin'
+    'purpose: patch review plugin'
+    'okteta: hex editor integration'
+    'krunner: for enabling the KDevelop runner'
+    'plasma-framework: for enabling the plasma addons'
+    'cppcheck: code analyzer'
+    'heaptrack: heap memory profiler plugin'
+)
+makedepends=(
+    'extra-cmake-modules'
+    'git'
+    'subversion'
+    'okteta'
+    'krunner'
+    'boost'
+    'llvm'
+    'qt5-tools'
+    'plasma-framework'
+    'kdevelop-pg-qt'
+    'purpose'
+    'clang'
+)
 conflicts=('kdevelop' 'kdevplatform')
 provides=('kdevelop' 'kdevplatform' 'kdevplatform-git')
 replaces=('kdevplatform-git')
@@ -57,8 +65,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd kdevelop
-  _ver="$(cat CMakeLists.txt | grep -m3 -e KDEVELOP_VERSION_MAJOR -e KDEVELOP_VERSION_MINOR -e KDEVELOP_VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
-  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
