@@ -15,15 +15,21 @@ _pkgname=python-whois
 install=
 changelog=
 noextract=()
-source=("https://pypi.python.org/packages/c0/02/b663e0981606224657251b8bd64c95e0cfb74c9632585ab892f63420d929/python-whois-0.6.5.tar.gz#md5=af4a64d4a14df8af9907cf27edc069c0"
-        "python-whois-0.6.5.tar.gz#md5=af4a64d4a14df8af9907cf27edc069c0.sig")
+source=("https://files.pythonhosted.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
+        "${_pkgname}-${pkgver}.tar.gz.sig")
 sha512sums=('23d328ed45593b814079f52e24ca1df0d4db90cec5bc5ac8f5a4a1975458871511828ce0180b08c8edf9716ad0628eef38e087e6b9941e53636636332e5c5dc1'
             'SKIP')
-build() {
-        cd "${srcdir}/${_pkgname}/src"
-        make prefix=${pkgdir}/usr
+
+package_python-whois() {
+  depends=('python')
+
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
-package() {
-        install -D -m755 ${srcdir}/${_pkgname}/src/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-        install -D -m644 ${srcdir}/${_pkgname}/docs/README.html.en ${pkgdir}/usr/share/doc/${_pkgname}/README.html
+
+package_python2-whois() {
+  depends=('python2' 'python2-futures')
+
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
