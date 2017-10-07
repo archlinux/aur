@@ -4,7 +4,7 @@
 pkgname=openerp
 pkgver=7.0
 _pkgsubver=20170329
-pkgrel=16
+pkgrel=17
 pkgdesc="Advanced OpenSource ERP and CRM server"
 url=http://openerp.com/
 arch=('any')
