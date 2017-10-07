@@ -1,6 +1,6 @@
 pkgbase = aura-bin
 	pkgdesc = A secure package manager for Arch Linux and the AUR written in Haskell - Prebuilt binary
-	pkgver = 1.3.9
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/fosskers/aura
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = aura-bin
 	conflicts = aura
 	conflicts = aura-git
 	options = strip
-	source = https://github.com/aurapm/aura/releases/download/v1.3.9/aura-1.3.9-x86_64.tar.gz
-	md5sums = 13a327d26e803fbe4061afecd122cedf
+	source = https://github.com/aurapm/aura/releases/download/v1.4.0/aura-1.4.0-x86_64.tar.gz
+	md5sums = aa26c5ef0f1cf71ed1c809ef8bef1c65
 
 pkgname = aura-bin
 
