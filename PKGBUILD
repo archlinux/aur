@@ -10,24 +10,19 @@ depends=('bash')
 makedepends=('git' 'guile-reader' 'ploticus')
 provides=('skribilo')
 conflicts=('skribilo')
-source=("git://git.sv.gnu.org/skribilo.git" aclocal.patch)
-md5sums=('SKIP'
-         'eed9671ced1e1af98d8fdad2b578cce0')
+source=("git://git.sv.gnu.org/skribilo.git")
+md5sums=('SKIP')
+options=("!makeflags")
 
 pkgver() {
   cd "${pkgname%-git}"
   printf "%sr%s" $(git describe --tags|tr - _) $(git rev-list --count HEAD)
 }
 
-prepare() {
-  cd "${pkgname%-git}"
-  patch -Np0 < "$srcdir"/aclocal.patch
-}
-
 build() {
   cd "${pkgname%-git}"
   autoconf
-  GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr
+  GUILE_EFFECTIVE_VERSION=2.0 GUILE=/usr/bin/guile2.0 ./configure --prefix=/usr
   make
 }
 
