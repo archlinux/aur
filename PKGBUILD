@@ -6,8 +6,14 @@
 # Contributor: Jens Kapitza <j dot kapitza at schwarze-allianz dot de>
 # Contributor: Olli <olli at coderkun dot de>
 
-# Demos available in `apps/samples`
-# To build them: `ant -Dplatforms.JDK_1.8.home=/usr/lib/jvm/default jar`
+# Demos available in ``
+# To build and test this pakcage:
+# - install this version of java-openjfx
+# - cd apps/samples
+# - ant -Dplatforms.JDK_1.8.home=/usr/lib/jvm/default jar
+# - java -jar ./Ensemble8/dist/Ensemble8.jar
+# - java -jar ./Modena/dist/Modena.jar
+# - java -jar ./3DViewer/dist/3DViewer.jar
 
 pkgbase=java-openjfx
 pkgname=('java-openjfx' 'java-openjfx-doc' 'java-openjfx-src')
