@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A (WIP) low-level game engine written in C++ with C and Lua bindings."
 arch=('x86_64')
 url="https://redcrane.net/"
-license=("custom")
+license=("custom:BSD-3-Clause")
 depends=("boost-libs"
          "sdl2"
          "freetype2"
