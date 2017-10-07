@@ -1,0 +1,21 @@
+pkgbase = yrd-git
+	pkgdesc = cjdns swiss army knife
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/kpcyrd/yrd
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-setuptools
+	depends = python-argh
+	depends = python-requests
+	depends = cjdns
+	provides = yrd
+	conflicts = yrd
+	source = yrd-git::git+https://github.com/kpcyrd/yrd
+	source = yrd.tmpfiles.conf
+	sha512sums = SKIP
+	sha512sums = 191fdf5687886357c01b72b2b9037045ca24d0ee888dc2bf6b2748a769eeb9a481eb01a9807f8f32b783d0970229f18d1264e937c2dd44b282ac764c49450cca
+
+pkgname = yrd-git
+
