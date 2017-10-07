@@ -2,45 +2,33 @@
 # Maintainer: Chrys <chrys@linux-a11y.org>
 
 pkgname='fenrir'
-pkgver=1.06
-pkgrel=2
+pkgver=1.5.post5
+pkgrel=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url="https://linux-a11y.org/index.php?page=fenrir-screenreader"
 license=('LGPL')
-depends=('python' 'python-daemonize' 'python-evdev' 'python-dbus')
+depends=('python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus')
 optdepends=('brltty: For Braille support'
 'gstreamer: for soundicons via gstreamer'
   'sox: The default sound driver'
   'python-espeak: TTS support'
   'python-pyenchant: for spell check functionality'
+  'xclip: for copy to X session clipboard'
   'speech-dispatcher: TTS support')
-makedepends=('unzip')
+makedepends=('python-setuptools')
 provides=('fenrir')
 conflicts=('fenrir')
 backup=('etc/fenrir/settings/settings.conf')
 install="$pkgname".install
-source=("https://github.com/chrys87/${pkgname}/archive/${pkgver}.zip"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}-screenreader/${pkgname}-screenreader-${pkgver}.tar.gz"
   'fenrir.install')
-md5sums=('65b3dd806540c557f219932f0c4e4122'
-         '6e9e07056b744789e8d62fcf56b612ce')
+md5sums=('2ad1a65261ceace09423c06f012c7652'
+         'e3f7651a51d3562ab314b1da3afd1ee2') 
 
-package()
-{
-  cd "$srcdir/${pkgname}-${pkgver}"
-  install -m755 -d "$pkgdir/opt/fenrir"
-  install -m755 -d "$pkgdir/usr/share/fenrir/scripts"
-  install -m755 -d "$pkgdir/usr/share/fenrir/tools"
-  install -m644 -D "config/keyboard/desktop.conf" "$pkgdir/etc/fenrir/keyboard/desktop.conf"
-  install -m644 -D "config/keyboard/laptop.conf" "$pkgdir/etc/fenrir/keyboard/laptop.conf"
-  install -m644 -D "config/punctuation/default.conf" "$pkgdir/etc/fenrir/punctuation/default.conf"
-  install -m644 -D "config/settings/settings.conf" "$pkgdir/etc/fenrir/settings/settings.conf"
-  install -d "$pkgdir/usr/share/sounds/fenrir"
-  install -m644 -D "autostart/systemd/fenrir.service" "$pkgdir/usr/lib/systemd/system/fenrir.service"
-  cp -a src/fenrir/* "$pkgdir/opt/fenrir"
-  cp -a config/scripts/* "$pkgdir/usr/share/fenrir/scripts"
-  cp -a tools/* "$pkgdir/usr/share/fenrir/tools"
-  cp -a config/sound/* "$pkgdir/usr/share/sounds/fenrir"
+package() {
+  cd "${srcdir}/${pkgname}-screenreader-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 # vim: set ts=2 sw=2 et:
