@@ -16,7 +16,7 @@ provides=(${_pkgname})
 license=('GPL')
 conflicts=(${_pkgname})
 depends=('bzip2' 'expat>=2.0' 'gpm>=1.20.4' 'openssl' 'lua51' 'libidn' 'gc' 'tre')
-source=("git+http://elinks.cz/elinks.git"
+source=("git+http://repo.or.cz/elinks.git"
         "lua_strlen_fix.patch")
 md5sums=('SKIP'
          'b0ea32b03eb8775d122c723a29e0db1e')
