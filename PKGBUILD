@@ -2,7 +2,7 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-pkgver=6.0.0.beta.7.17.g03e3257b0
+pkgver=6.0.0.beta.8.16.g5cec92294
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework (git version)"
 arch=('x86_64')
@@ -19,12 +19,11 @@ source=($_pkgname::'git+https://github.com/PowerShell/PowerShell.git'
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         'ae733aaf023f7d07e6ed9e8fffcd8ff1')
+         '4c096f1ce88fd387c9ec81f7ac0581ea')
 install=powershell.install
 
 pkgver() {
   cd $_pkgname
-
   git describe --tags --long | sed 's/^v//;s/-/./;s/-/./g'
 }
 
@@ -41,12 +40,6 @@ prepare() {
 
 build() {
   cd $_pkgname
-
-  pushd src/libpsl-native
-  cmake .
-  make -j
-  popd
-
   "$srcdir"/build.sh
 }
 
@@ -54,7 +47,6 @@ check() {
   cd $_pkgname/src/libpsl-native
   make test
 }
-
 
 package() {
   cd $_pkgname/src/powershell-unix

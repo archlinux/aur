@@ -2,5 +2,6 @@ googletest/
 pester/
 pkg/
 *.xz
+*.gz
 powershell/
 src/
