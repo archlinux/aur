@@ -3,8 +3,8 @@
 # Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-net-ipaddress-util'
-pkgver='4.001'
-pkgrel='2'
+pkgver='4.004'
+pkgrel='1'
 pkgdesc='Version-agnostic representation of an IP address'
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl-list-moreutils')
 url='http://search.cpan.org/dist/Net-IPAddress-Util'
 source=("https://cpan.metacpan.org/authors/id/P/PW/PWBENNETT/Net-IPAddress-Util-${pkgver}.tar.gz")
-sha512sums=('984303e7f682180126d69f261e51e5f773c5505df0ad270e708bc7e31a4e53059d70d3daf3d739ca6e47473cf1893578bf992e4e1360b22aab6002dc1ad010cc')
+sha512sums=('a05d9440fbf94d19b9cfdb44b69edbc2e23bfd453b344d24e539362a2aca72095d421bf74a53d8e24aaf900181ecd1d0fef4f73d4ecd85d2e7eed0cdc4af533c')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
