@@ -1,7 +1,5 @@
 [Unit]
 Description=Advanced OpenSource ERP and CRM server
-Requires=postgresql.service
-After=postgresql.service
 
 
 [Service]

@@ -4,7 +4,7 @@
 pkgname=openerp
 pkgver=7.0
 _pkgsubver=20170329
-pkgrel=14
+pkgrel=15
 pkgdesc="Advanced OpenSource ERP and CRM server"
 url=http://openerp.com/
 arch=('any')
@@ -12,7 +12,6 @@ license=(GPLv3)
 replaces=('openerp-server' 'openerp-web')
 depends=(
     'gzip'
-    'postgresql'
     'python2'
     'python2-babel'
     'python2-dateutil'
@@ -82,4 +81,4 @@ package()
 md5sums=('7bc0dbc2e3e0ed2667541c943282bf81'
          'effb44e444602a0e59f8fe5b4ebc47b4'
          'a6b183fa1bb5c8e4224b81d6480cecbc'
-         '3fd6f291a4ca289e3d1354e4e09a1d70')
+         '1ec984813e3713c61243957d7374aa93')

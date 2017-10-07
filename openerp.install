@@ -4,11 +4,12 @@ post_install() {
     groupadd openerp &>/dev/null;
   fi
   id openerp &>/dev/null || useradd -g openerp -d /  openerp
+  echo "This package requires a functional PostgreSQL server. "
+  echo "To use with a locally installed PostgreSQL:
   echo "-- Make sure PostgreSQL is correctly installed (see wiki), start it,"
   echo "-- create user with database creation rights for OpenERP in PostgreSQL"
   echo "-- e.g: # su - postgres -c \"createuser -dRSP <myopenerpuser>\""
   echo "-- then edit '/etc/openerp/openerp-server.conf' accordingly."
-  echo "-- Starting OpenERP will automatically start PostgreSQL as well."
 }
 
 post_upgrade() {
