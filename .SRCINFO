@@ -1,0 +1,13 @@
+pkgbase = python2-pdftools
+	pkgdesc = Basic classes for handling information in PDF files.
+	pkgver = 0.37
+	pkgrel = 1
+	url = http://www.boddie.org.uk/david/Projects/Python/pdftools/
+	arch = any
+	license = GPL2
+	depends = python2
+	source = http://www.boddie.org.uk/david/Projects/Python/pdftools/Software/pdftools-0.37.tar.gz
+	sha256sums = 634cb50bcd276dda5ab39e3602acfb0370694b61b70eb357201f2bd40240ab4e
+
+pkgname = python2-pdftools
+
