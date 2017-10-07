@@ -7,7 +7,7 @@ pkgbase="python-numpy-mkl"
 pkgname="python-numpy-mkl"
 true && pkgname=('python-numpy-mkl' 'python2-numpy-mkl')
 #pkgname=('python-numpy')
-pkgver=1.13.2
+pkgver=1.13.3
 pkgrel=1
 pkgdesc="Scientific tools for Python compiled with intel mkl"
 arch=('i686' 'x86_64')
@@ -15,13 +15,13 @@ license=('custom')
 options=('staticlibs')
 url="http://numpy.scipy.org/"
 depends=( 'intel-mkl' 'python' 'python2' )
-makedepends=( 'python-setuptools' 'python2-setuptools' 'intel-compiler-base' 'intel-fortran-compiler' 'python-nose' 'python2-nose' 'cython' 'glibc<2.26' )
+makedepends=( 'python-setuptools' 'python2-setuptools' 'intel-compiler-base' 'intel-fortran-compiler' 'python-nose' 'python2-nose' 'cython' 'glibc' )
 
 source=( https://github.com/numpy/numpy/archive/v${pkgver}.tar.gz 
          'site64.cfg' 
          'site32.cfg') 
 
-sha256sums=( '11add7a40a868e70b7de8e568e5f20504f4dbfc7fce18887472220c2f5167ae4' # main pkg§
+sha256sums=( '1db97b12ea8f2ae5a8b847505f634dcd8c670ee311057ff5412a126becca45b8' # main pkg§
              '86cd68a695a5e1d76f8e53cda70c888c4ed04349f15c8096d4492e346e7187e1' # site64
              '882f2717deca0fd6a2e2384aac2dc7973c566f9cd2ba46777c3b5ffdffa814df' # site32
 )
@@ -44,10 +44,14 @@ cp -a numpy-${pkgver} numpy-py2-${pkgver}
 export Atlas=None
 export LDFLAGS="$LDFLAGS -shared"
 
+export __INTEL_PRE_CFLAGS="$__INTEL_PRE_CFLAGS -D_Float128=__float128"
+
+
 echo "Building Python2"
 cd "${srcdir}"
 cp ${srcdir}/site.cfg "${srcdir}/numpy-py2-${pkgver}"
 cd "${srcdir}/numpy-py2-${pkgver}"
+
 
 python2 setup.py config --compiler=${_compiler} build_clib --compiler=${_compiler} build_ext --compiler=${_compiler}
 
@@ -55,6 +59,7 @@ echo "Building Python3"
 cd "${srcdir}"
 cp ${srcdir}/site.cfg "${srcdir}/numpy-${pkgver}"
 cd "${srcdir}/numpy-${pkgver}"
+
 
 python setup.py config --compiler=${_compiler} build_clib --compiler=${_compiler} build_ext --compiler=${_compiler}
 }
