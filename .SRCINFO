@@ -1,0 +1,19 @@
+pkgbase = redcrane-engine-git
+	pkgdesc = A (WIP) low-level game engine written in C++ with C and Lua bindings.
+	pkgver = ad727e5
+	pkgrel = 1
+	url = https://redcrane.net/
+	arch = x86_64
+	license = custom
+	depends = boost-libs
+	depends = sdl2
+	depends = freetype2
+	depends = bullet
+	depends = luajit
+	depends = glm
+	depends = libuv
+	source = redcrane-engine::git+https://github.com/RedcraneStudio/redcrane-engine
+	md5sums = SKIP
+
+pkgname = redcrane-engine-git
+
