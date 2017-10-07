@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 
 pkgname=fbmenugen
-pkgver=0.80
+pkgver=0.81
 pkgrel=1
 pkgdesc="A simple menu generator for the Fluxbox Window Manager."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('perl>=5.14.0' 'fluxbox' 'gtk2-perl' 'perl-data-dump' 'perl-linux-desktopfiles>=0.08')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('8346911f965da239006f867329b7f4c2bbc3233f173fbdd61db8d269ed8aba1d')
+sha256sums=('f8757dd57e41df1778052da9b4a90f52049c0851142afe1d134709a816c2c445')
 
 package() {
     cd "$pkgname-$pkgver"
