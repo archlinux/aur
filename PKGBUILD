@@ -3,7 +3,7 @@
 pkgname=skicka
 pkgver=r272.70827bf
 pkgrel=1
-pkgdesc="skicka"
+pkgdesc="CLI utility for working with files and folders stored on Google Drive/Photos"
 arch=('i686' 'x86_64')
 license=('GPL')
 makedepends=('go' 'git')
