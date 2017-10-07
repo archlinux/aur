@@ -6,7 +6,7 @@
 
 _pkgname=gnome-terminal
 pkgname=gnome-terminal-csd1
-pkgver=3.24.2
+pkgver=3.26.1
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator with CSD support"
 url="https://wiki.gnome.org/Apps/Terminal"
@@ -21,7 +21,7 @@ groups=(gnome)
 # CSD Patch: https://github.com/leipero/gnome-terminal-csd-patch
 source=("https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
 	"https://raw.githubusercontent.com/leipero/gnome-terminal-csd-patch/master/gnome-terminal-csd.patch")
-sha256sums=('281edac30a07ca45beaaaf0a13fe2219cf8b87ece5e55dccbfc49ef769dfec0f'
+sha256sums=('b9ac564ef77fea0b10502c06bdfca15c4fbdc32fdadaa88d69d7bf0fa1de073a'
             'bd15026f1c1e811481ddf6b478a9d291897383ab581e69cbac1ab47019719268')
 
 
