@@ -2,8 +2,8 @@
 pkgbase=qpmx
 pkgname=(qpmx qpmx-gitsource qpmx-qpmsource)
 group=qpmx-full
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A frontend for qpm, to provide source and build caching"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/$pkgname"
@@ -12,8 +12,8 @@ depends=('qt5-base' 'qt5-jsonserializer')
 makedepends=('qt5-tools' 'git')
 _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/$pkgname.git#tag=$pkgver"
-		"$pkgname.rule"
-		"plugin.rule")
+        "$pkgname.rule"
+        "plugin.rule")
 sha256sums=('SKIP'
             '6029d42b05d32d99a6e673e5a7c95ac657e6258f88835f8aff05bde7535e543b'
             'a7f6099680d692285332ae7db3cf1414f4d664ceccb701d45ac73ecaa08a65dc')
@@ -51,9 +51,10 @@ build() {
 
 package_qpmx() {
   optdepends=("qpmx-qpmsource: Adds support for cloning qpm packages"
-			  "qpmx-gitsource: Adds support for cloning git and github packages"
-			  "repkg: Automatically rebuild the package on dependency updates")
-			  
+              "qpmx-gitsource: Adds support for cloning git and github packages"
+              "repkg: Automatically rebuild the package on dependency updates")
+  install="${pkgname}.install"
+
   cd build/qpmx
   make INSTALL_ROOT="$pkgdir" install
   

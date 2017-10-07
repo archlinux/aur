@@ -1,0 +1,15 @@
+pkgname='qpmx'
+
+post_upgrade() {
+	echo
+	echo "==> If you experience build problems clean the build cache:"
+	echo "==> Run: qpmx clean-caches"
+	echo
+}
+
+post_remove() {
+	echo
+	echo "==> For a clean uninstall remove the qpmx cache directory at:"
+	echo '==> $HOME/.cache/Skycoder42/qpmx/'
+	echo
+}
