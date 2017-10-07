@@ -1,7 +1,7 @@
 # Maintainer: Gaute Hope <eg@gaute.vetsj.com>
 _pkgname=astroid
 pkgname=$_pkgname-git
-pkgver=v0.7.r56.ge4c070d
+pkgver=v0.10.1.r29.g6d78b7f
 pkgrel=1
 epoch=
 pkgdesc="a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others"
@@ -10,7 +10,7 @@ url="https://github.com/astroidmail/astroid"
 license=('GPL')
 groups=()
 depends=('notmuch' 'boost' 'boost-libs' 'gmime' 'gtkmm3' 'webkitgtk' 'libsass' 'libpeas' 'gobject-introspection')
-makedepends=('scons' 'git' 'pkg-config' 'python-gobject')
+makedepends=('meson' 'git' 'pkg-config' 'python-gobject')
 checkdepends=('notmuch-runtime')
 optdepends=('gvim: default editor'
             'emacs: can be used as editor'
@@ -22,23 +22,27 @@ backup=()
 options=()
 install=$_pkgname.install
 changelog=
-source=(astroid::git+https://github.com/astroidmail/astroid.git)
+source=(astroid::git+https://github.com/gauteh/astroid.git#branch=meson)
 noextract=()
 md5sums=('SKIP')
 
 build() {
   cd "$srcdir/astroid"
-  scons --release="$pkgver" --prefix=/usr build
+  meson build --prefix=/usr -Dbuildtype=release
+  cd build
+  ninja
 }
 
 check() {
   cd "$srcdir/astroid"
-  scons --release="$pkgver" --prefix=/usr test
+  cd build
+  meson test
 }
 
 package() {
   cd "$srcdir/astroid"
-  scons --release="$pkgver" --install-sandbox="$pkgdir/" --prefix=/usr install
+  cd build
+  DESTDIR="$pkgdir" ninja install
 }
 
 pkgver() {
