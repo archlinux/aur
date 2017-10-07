@@ -46,7 +46,7 @@ package() {
   cp -r firefox/ "$pkgdir"/opt/$_pkgname
 
   # Launchers
-  install -m644 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
+  install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
   ln -s $_pkgname "$pkgdir"/usr/bin/$pkgname  # compatibility
 
   # Desktops
