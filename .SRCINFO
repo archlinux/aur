@@ -1,0 +1,14 @@
+pkgbase = ftp-upload
+	pkgdesc = put files with FTP from a script
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.argon.org/~roderick/
+	arch = any
+	license = GPL
+	makedepends = gzip
+	depends = perl
+	source = http://www.argon.org/~roderick/ftp-upload-1.5.tar.gz
+	sha512sums = d17fba062f057724a181cf774e500a4a273d6a605db58b467df74bbd48beabe1ca60daac89951336903d958adf3330da7211e3754ac217b372dbed82566199a6
+
+pkgname = ftp-upload
+
