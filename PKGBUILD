@@ -1,4 +1,5 @@
 # Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
+# Contributor: William Gathoye <william + archlinux at gathoye dot be>
 # Contributor: Emanuel Couto <emanuel dot amaral dot couto at gmail dot com>
 # Contributor: Richard Jackson <rdjack21 at gmail dot com>
 # Contributor: Tinx <arch at tinx dot eu>
@@ -11,8 +12,8 @@
 pkgbase=java-openjfx
 pkgname=('java-openjfx' 'java-openjfx-doc' 'java-openjfx-src')
 _java_ver=8
-_jdk_update=121
-_jdk_build=13
+_jdk_update=172
+_jdk_build=00
 _hgtag=${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgver=${_java_ver}.u${_jdk_update}
 pkgrel=1
@@ -21,20 +22,18 @@ arch=('i686' 'x86_64')
 url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
 license=('GPL')
 makedepends=('java-environment-openjdk=8' 'bison' 'gperf' 'gtk2'
-             'libxtst' 'ffmpeg' 'python2' 'qt5-base' 'webkit2gtk' 'ruby' 'cmake')
+             'libxtst' 'ffmpeg' 'python2' 'qt5-base' 'webkit2gtk' 'ruby' 'cmake' 'unzip')
+             # TODO add junit antlr3 swt so that they are not downloaed during the build
 source=(http://hg.openjdk.java.net/openjfx/8u-dev/rt/archive/${_hgtag}.tar.bz2
         gradle.properties
         https://services.gradle.org/distributions/gradle-1.8-bin.zip
         # https://anonscm.debian.org/cgit/pkg-java/openjfx.git/tree/debian/patches/17-gcc-compatibility.patch
-        17-gcc-compatibility.patch
-        # https://anonscm.debian.org/cgit/pkg-java/openjfx.git/tree/debian/patches/18-fix-ambiguous-pow.patch
-        18-fix-ambiguous-pow.patch)
+        17-gcc-compatibility.patch)
 
-sha256sums=('51008376a03c6603d0d0f039f3253cda98822fdda757f6cee385b594ef4ac85b'
+sha256sums=('435a59c9883ce79b74e2c1e61eac4ce7da54ba58179363a572bfbd8d2363c4bf'
             '1d09385ac23d755aec079954247365de3875507641f5ecd7bd3511ebf3fa9e3c'
             'a342bbfa15fd18e2482287da4959588f45a41b60910970a16e6d97959aea5703'
-            '864967467efeaffdabe1e60b7cfd0a27ce93be55ef45ef9993790219ad164554'
-            'e909ae1dcb1d6c0fb0148815c3fcdbff8a15b2f05520eed2c830dc0859f75115')
+            '864967467efeaffdabe1e60b7cfd0a27ce93be55ef45ef9993790219ad164554')
 
 _openjdk8dir="/usr/lib/jvm/java-8-openjdk"
 
@@ -45,9 +44,7 @@ esac
 
 prepare() {
   cd "rt-${_hgtag}"
-  for p in 17-gcc-compatibility.patch 18-fix-ambiguous-pow.patch; do
-    patch -p1 < "${srcdir}/${p}"
-  done
+  patch -p1 < "${srcdir}/17-gcc-compatibility.patch"
 }
 
 build() {
