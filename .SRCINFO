@@ -1,14 +1,15 @@
 pkgbase = python-yappi
-	pkgdesc = Yet Another Python Profiler, but this time Thread-Aware
-	pkgver = 0.94
+	pkgdesc = Yet Another Python Profiler
+	pkgver = 0.98
 	pkgrel = 1
-	url = http://code.google.com/p/yappi/
+	url = https://bitbucket.org/sumerc/yappi
 	arch = any
 	license = MIT
-	depends = python
-	options = !emptydirs
-	source = https://pypi.python.org/packages/source/y/yappi/yappi-0.94.tar.gz
-	md5sums = a02c49efe783c4e31d6bbd805a37adec
+	source = https://pypi.python.org/packages/35/43/489bf1dd0923c16b4abe09271da979ca0576662d02ba59f26cfb54e93be1/yappi-0.98.tar.gz#md5=dc56240575c99938a924eaeb7c0d8beb
+	source = https://bitbucket.org/sumerc/yappi/raw/f2ec7bda4fca19f8a6ef81fb9807ab8ee73f7033/LICENSE
+	md5sums = dc56240575c99938a924eaeb7c0d8beb
+	md5sums = 084addf3f5099fe4c94ff0c220d493de
 
 pkgname = python-yappi
+	depends = python
 
