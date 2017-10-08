@@ -2,7 +2,7 @@
 # Maintainer: 2GMon <t_2gmon@yahoo.co.jp>
 pkgname=mikutter
 #pkgver=3.5.0_alpha2
-pkgver=3.5.11
+pkgver=3.5.12
 pkgrel=1
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://mikutter.hachune.net/"
 license=('MIT')
 depends=(
 'ruby-gtk2>=2.2.3' 'ruby-moneta' 'ruby-nokogiri' 'ruby-httpclient' 'ruby-mini_portile2' 'ruby-totoridipjp'
-'ruby-gettext' 'ruby-native-package-installer'
+'ruby-gettext' 'ruby-native-package-installer' 'ruby-cairo-gobject'
 )
 optdepends=('libnotify: notify support')
 source=(
@@ -20,10 +20,6 @@ mikutter.desktop
 )
 
 package() {
-  # mikutter require cairo-gobject 3.1.6 but https://aur.archlinux.org/packages/ruby-cairo-gobject/ is old (3.1.3)
-  mkdir "$srcdir/$pkgname/gems"
-  gem install --no-user-install -i "$srcdir/$pkgname/gems" cairo-gobject
-
   mkdir "$pkgdir/opt"
   cp -r "$srcdir/$pkgname" "$pkgdir/opt"
 
@@ -39,5 +35,5 @@ EOF
   chmod +x $pkgdir/usr/share/applications/mikutter.desktop
 }
 
-md5sums=('1465679e1442dfeb19107c516cd5c01f'
+md5sums=('abdb34d12403fb9d26db00c35df6cf8f'
          '18e28a76097af88457462b08752382df')
