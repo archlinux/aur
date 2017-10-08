@@ -1,8 +1,8 @@
 # Maintainer: Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
 
 pkgname=gajim-plugin-omemo-gtk3
-pkgver=2.3.7
-pkgrel=2
+pkgver=2.3.8
+pkgrel=1
 pkgdesc="Gajim plugin for OMEMO Multi-End Message and Object Encryption."
 arch=(any)
 url="https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin"
@@ -10,8 +10,8 @@ license=('GPL')
 depends=("gajim-git" "python-qrcode" "python-setuptools" "python-cryptography" "python-axolotl")
 provides=('gajim-plugin-omemo')
 conflicts=('gajim-plugin-omemo' 'gajim-plugin-omemo-git')
-source=("https://dev.gajim.org/gajim/gajim-plugins/uploads/fc40aa3a214bb2c41aca743d2199f0f2/omemo_2.3.7.zip")
-sha512sums=('e08661d32f7f27a1bc97ccec2dc0b69013e811fc371241b0c66e02f506a6bef7b623bdf3a505db26890fa31e7496b579cfa334c5bf491817765fc5c7e52ab508')
+source=("https://dev.gajim.org/gajim/gajim-plugins/uploads/f241700d59b16e3563d00b6e7851bbf3/omemo_2.3.8.zip")
+sha512sums=('ef2446e474c27ee330239217f8617bb07c2af6080008b72b035b4df4b243e65b44d00ceb329d35be41ba9d34ce7248fd2f870a146df778110858bf66701546c8')
 
 package() {
   cd ${srcdir}/omemo
