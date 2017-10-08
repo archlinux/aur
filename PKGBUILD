@@ -1,13 +1,13 @@
-# Maintainer: jerry73204 <jerry73204@gmail.com>
+# Maintainer: Firmy <firmianay@gmail.com>
 _pkgname=pwntools
 
 pkgname="python2-${_pkgname}-git"
-pkgver=3.9.0beta0.r3.g5831796f
+pkgver=3.10.0beta2.r17.g7ad5a4e3
 pkgrel=1
-pkgdesc='The CTF framework used by Gallopsled in every CTF'
+pkgdesc='A CTF framework and exploit development library.'
 arch=('any')
-url='http://pwntools.com/'
-license=('MIT' 'GPL2' 'BSD')
+url='https://github.com/Gallopsled/pwntools'
+license=('GPL2' 'BSD' 'MIT')
 makedepends=('lib32-glibc'
              'python2-setuptools')
 depends=('python2>=2.7'
