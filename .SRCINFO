@@ -1,12 +1,15 @@
 pkgbase = laldetchar
 	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. laldetchar
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
 	arch = any
 	groups = lalsuite
 	license = unknown
 	depends = lalcore
+	depends = lalmetaio
+	depends = lalsimulation
+	depends = lalburst
 	options = !emptydirs
 	source = http://software.ligo.org/lscsoft/source/lalsuite/laldetchar-0.3.5.tar.xz
 	sha256sums = b0900de0b9520aae61e1ad5b97d4be46a47cbf1b12485b7fb783d2e0db804e70

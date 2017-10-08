@@ -1,13 +1,13 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=laldetchar
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. laldetchar"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
 license=('unknown')
 groups=('lalsuite')
-depends=('lalcore')
+depends=('lalcore' 'lalmetaio' 'lalsimulation' 'lalburst')
 makedepends=()
 provides=()
 conflicts=()
