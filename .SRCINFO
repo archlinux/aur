@@ -1,0 +1,16 @@
+pkgbase = perl-locale-currency-format
+	pkgdesc = Perl/CPAN Module Locale::Currency::Format: Perl functions for formatting monetary values
+	pkgver = 1.35
+	pkgrel = 1
+	url = https://metacpan.org/release/Locale-Currency-Format
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TN/TNGUYEN/Locale-Currency-Format-1.35.tar.gz
+	md5sums = 3eb24b6459a3a3f6201773c4cbac2b32
+	sha512sums = fce9a107e7efbff39f853ff7937a934300cc85ddd81a5bdb1e0c18dc49e6b21d1312652a5c939962c05f3402d25ba4ed69feaeb97588183685e755243666e8c6
+
+pkgname = perl-locale-currency-format
+
