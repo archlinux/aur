@@ -130,6 +130,7 @@ build() {
     'is_clang=false'
     'clang_use_chrome_plugins=false'
     'is_debug=false'
+    'exclude_unwind_tables=true'
     'fatal_linker_warnings=false'
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
