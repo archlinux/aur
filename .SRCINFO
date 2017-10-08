@@ -1,0 +1,17 @@
+pkgbase = lalapps
+	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. lalapps
+	pkgver = 6.21.0
+	pkgrel = 1
+	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
+	arch = any
+	groups = lalsuite
+	license = unknown
+	depends = lal
+	depends = lalinference
+	depends = lalstochastic
+	options = !emptydirs
+	source = http://software.ligo.org/lscsoft/source/lalsuite/lalapps-6.21.0.tar.xz
+	sha256sums = 2b997406b7bca358295e6d060919346fd5281ec0217a357c91849012bc2c9973
+
+pkgname = lalapps
+
