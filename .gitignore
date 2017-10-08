@@ -1,0 +1,4 @@
+zcash-swing-wallet-ui/
+pkg/
+src/
+*.tar.xz
