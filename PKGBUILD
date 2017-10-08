@@ -3,7 +3,7 @@
 # Contributor: Zack Baldwin <zack@zackb.com>
 
 pkgname=ombi-beta
-pkgver=aad5c2a4bcef89c1c29111c8239aecd9337ce067
+pkgver=23f0ef3b0da4eb0aa1723d877ea8606290b24c8e
 pkgrel=1
 _branch="DotNetCore"
 pkgdesc="Ombi v3.0 Open Beta. Gives Plex or Emby users the ability to request content by themselves"

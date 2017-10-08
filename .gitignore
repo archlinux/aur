@@ -1,0 +1,4 @@
+src/
+pkg/
+ombi-beta-*.tar.gz
+*.pkg.*
