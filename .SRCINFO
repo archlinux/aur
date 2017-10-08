@@ -1,12 +1,14 @@
 pkgbase = lalcore
 	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. lalcore
 	pkgver = 6.18.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
 	arch = any
 	groups = lalsuite
 	license = unknown
+	depends = python
 	depends = gsl
+	depends = fftw
 	depends = hdf5
 	options = !emptydirs
 	source = http://software.ligo.org/lscsoft/source/lalsuite/lal-6.18.0.tar.xz

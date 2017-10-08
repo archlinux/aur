@@ -1,13 +1,13 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=lalcore
 pkgver=6.18.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. lalcore"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
 license=('unknown')
 groups=('lalsuite')
-depends=('gsl' 'hdf5')
+depends=('python' 'gsl' 'fftw' 'hdf5')
 makedepends=()
 provides=()
 conflicts=()
