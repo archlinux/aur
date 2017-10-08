@@ -2,12 +2,12 @@
 
 pkgname=jotasync
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="rsync GUI with integrated scheduler"
 arch=('any')
 url="https://trixon.se/projects/jotasync"
 license=('Apache')
-depends=('java-runtime=8')
+depends=('java-runtime>=8')
 makedepends=('desktop-file-utils')
 source=(
 	"https://trixon.se/files/$pkgname-$pkgver-bin.zip"
