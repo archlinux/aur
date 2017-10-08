@@ -2,12 +2,12 @@
 
 pkgname=filebydate
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="date based file organizer"
 arch=('any')
 url="https://trixon.se/projects/filebydate/"
 license=('Apache')
-depends=('java-runtime=8')
+depends=('java-runtime>=8')
 makedepends=('desktop-file-utils')
 source=(
 	"https://trixon.se/files/$pkgname-$pkgver-bin.zip"
