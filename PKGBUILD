@@ -1,13 +1,13 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=lalsimulation
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. lalsimulation"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
 license=('unknown')
 groups=('lalsuite')
-depends=('lalcore' 'libframe')
+depends=('lalcore')
 makedepends=()
 provides=()
 conflicts=()

@@ -1,13 +1,12 @@
 pkgbase = lalsimulation
 	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. lalsimulation
 	pkgver = 1.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
 	arch = any
 	groups = lalsuite
 	license = unknown
 	depends = lalcore
-	depends = libframe
 	options = !emptydirs
 	source = http://software.ligo.org/lscsoft/source/lalsuite/lalsimulation-1.7.3.tar.xz
 	sha256sums = 84ea0c91daca9fac547b2d3344140c809d940f593b678265b616e7e0d6fc5d07
