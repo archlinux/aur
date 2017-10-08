@@ -1,5 +1,6 @@
 #!/usr/bin/bash
-
+# script courtesy of @papajoke
+# modifed by @fhdk
 # get last ffver
 ffpkgver=$(curl -s "https://ftp.mozilla.org/pub/devedition/releases/" | awk -F'/' '/href.*releases\// {print $5}' | sort -Vr | head -n1)
 echo "Latest release  : ${ffpkgver}"
