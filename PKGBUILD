@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-unite-git
-pkgver=108.11bc761
+pkgver=168.8539fc5
 pkgrel=1
 pkgdesc="Unite makes GNOME Shell look like Ubuntu Unity Shell"
 arch=("any")
@@ -22,6 +22,6 @@ pkgver() {
 package() {
   mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/"
 
-  cd "$srcdir/$pkgname/dist"
+  cd "$srcdir/$pkgname"
   cp -af "unite@hardpixel.eu" "$pkgdir/usr/share/gnome-shell/extensions/"
 }
