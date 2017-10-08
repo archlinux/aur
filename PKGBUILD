@@ -1,7 +1,8 @@
 pkgname=steve++
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A joke c++ compiler that does nothing."
+url="https://blog.stevefan1999.me"
 arch=('i686' 'x86_64')
 depends=('bash')
 source=('steve++')

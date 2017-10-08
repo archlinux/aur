@@ -1,7 +1,8 @@
 pkgbase = steve++
 	pkgdesc = A joke c++ compiler that does nothing.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
+	url = https://blog.stevefan1999.me
 	arch = i686
 	arch = x86_64
 	depends = bash
