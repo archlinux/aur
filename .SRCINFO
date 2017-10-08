@@ -1,0 +1,15 @@
+pkgbase = lalxml
+	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. lalxml
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
+	arch = any
+	groups = lalsuite
+	license = unknown
+	depends = lalcore
+	options = !emptydirs
+	source = http://software.ligo.org/lscsoft/source/lalsuite/lalxml-1.2.4.tar.xz
+	sha256sums = 5509bcc9cbce0b497036d3fc87628d1cbaa9f33af20cf33609cabd9c6ee398f1
+
+pkgname = lalxml
+
