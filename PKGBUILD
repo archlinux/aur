@@ -1,7 +1,7 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
 
 pkgname=mstd
-pkgver=1.1.v1
+pkgver=1.1.v2
 pkgrel=2
 pkgdesc="Stuff that could be in std::, but is not"
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/m-ou-se/mstd'
 license=('BSD')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/de-vri-es/mstd/archive/$pkgver.tar.gz")
-sha512sums=('7399cdbc9fbcd27f37ab472a6d8d6647c371dc59364d8c73ceb7cb91483dbe818d3c07ef81ad7bb3854d8bf798ee931e550272d2de6178f13ee38b7cefb754cc')
+sha512sums=('ea152f653e2a29e158efe574cfbe07487b614aadb1cdac38fd3edef58ca6a5a0fd589efbd29baa94fa63affae4cfb07faeecb8134699650f2679748d309aa093')
 
 prepare() {
 	rm -rf "$srcdir/build"
