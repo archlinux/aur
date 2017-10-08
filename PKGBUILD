@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 
