@@ -1,14 +1,14 @@
 pkgbase = python-gpapi
 	pkgdesc = Google Play Unofficial Python API
-	pkgver = 0.1.5
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/NoMore201/googleplay-api
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = python-gpapi-0.1.5.tar.gz::https://github.com/NoMore201/googleplay-api/archive/v0.1.5.tar.gz
-	md5sums = fea2ced621abaa59e8c1879344170e0a
+	source = python-gpapi-0.2.tar.gz::https://github.com/NoMore201/googleplay-api/archive/v0.2.tar.gz
+	md5sums = 3a69e2e2422b7c05c13160c7fa73f183
 
 pkgname = python-gpapi
 	depends = python
