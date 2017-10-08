@@ -4,7 +4,7 @@
 # Contributor: codekoala <codekoala at gmail dot com>
 
 pkgname=etcd
-pkgver=3.2.7
+pkgver=3.2.9
 pkgrel=1
 pkgdesc='A highly-available key value store for shared configuration and service discovery.'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/coreos/${pkgname}/relea
          '10-EnvironmentFile.conf'
          'etcd.env')
 validpgpkeys=('18AD5014C99EF7E3BA5F6CE950BDD3E0FC8A365E') # CoreOS Application Signing Key <security@coreos.com>
-sha256sums=('b91a40102b944ba8e4dad439721c7068eccbc1d0cb0e7f2ded9dad134d2875ce'
+sha256sums=('7ad70d9b0d206fe09abc40e82d29ac748d09c0423ddf255ddf4334d21867eb6f'
             'SKIP'
             '5c65989c7c9309e07ad1f7d886d9869e6fa326f5c6c85dea3e59da5f34e17d05'
             '14843a1bba6ca70fc60f3a5694ca47d533dae9401c5134aca85bfdbdea4098d8')
