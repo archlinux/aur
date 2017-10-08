@@ -4,13 +4,14 @@
 
 pkgname=urbanterror
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A team-based tactical shooter based on the Quake 3 Engine"
 arch=('i686' 'x86_64')
 url="http://www.urbanterror.info"
 license=('GPL2')
-depends=('sdl' 'openal' 'curl' 'urbanterror-data')
+depends=('sdl' 'openal' 'curl')
+backup=('opt/urbanterror/q3ut4/server.cfg' 'opt/urbanterror/q3ut4/mapcycle.txt')
 makedepends=('mesa')
 source=("http://www.happyurtday.com/releases/4x/UrbanTerror${pkgver//.}_full.zip"
         "urbanterror.sh"
@@ -24,23 +25,28 @@ sha512sums=('6611fd9c6309a95e479015764b082934f072a17394764491d8b025ab0eb97795480
             'aad7cf50335d7d1a1bcb03be0cf52f8e8214e91d7ff1c76045ffed57ba599023468341a3ae07abb8b06ef2857deeae8610defdd2dc8a3e5fb48eeb3ca2033074')
 
 package() {
-  install -d $pkgdir/opt/urbanterror
+  install -d "${pkgdir}/opt/urbanterror"
 
-  cd $pkgdir/opt/urbanterror
+  cd "${pkgdir}/opt/urbanterror"
 
   # Copy binaries.
-  [[ $CARCH == "i686" ]] && install -m755 $srcdir/UrbanTerror43/Quake3-UrT.i386 urbanterror
-  [[ $CARCH == "i686" ]] && install -m755 $srcdir/UrbanTerror43/Quake3-UrT-Ded.i386 urbanterror-ded
-  [[ $CARCH == "x86_64" ]] && install -m755 $srcdir/UrbanTerror43/Quake3-UrT.x86_64 urbanterror
-  [[ $CARCH == "x86_64" ]] && install -m755 $srcdir/UrbanTerror43/Quake3-UrT-Ded.x86_64 urbanterror-ded
+  [[ $CARCH == "i686" ]] && install -m755 "${srcdir}/UrbanTerror43/Quake3-UrT.i386" urbanterror
+  [[ $CARCH == "i686" ]] && install -m755 "${srcdir}/UrbanTerror43/Quake3-UrT-Ded.i386" urbanterror-ded
+  [[ $CARCH == "x86_64" ]] && install -m755 "${srcdir}/UrbanTerror43/Quake3-UrT.x86_64" urbanterror
+  [[ $CARCH == "x86_64" ]] && install -m755 "${srcdir}/UrbanTerror43/Quake3-UrT-Ded.x86_64" urbanterror-ded
+
+  # Copy data
+  cp -r "${srcdir}/UrbanTerror43/q3ut4" "${pkgdir}/opt/urbanterror/q3ut4"  
+  install -Dm644 "${srcdir}/UrbanTerror43/q3ut4/readme43.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  echo -e "\nseta cl_cURLLib \"/usr/lib/libcurl.so.4\"" >> "${pkgdir}/opt/urbanterror/q3ut4/autoexec.cfg"
 
   # Copy desktop launcher.
-  install -Dm644 $srcdir/urbanterror.desktop $pkgdir/usr/share/applications/urbanterror.desktop
-  install -Dm644 $srcdir/urbanterror.png $pkgdir/usr/share/pixmaps/urbanterror.png
+  install -Dm644 "${srcdir}/urbanterror.desktop" "${pkgdir}/usr/share/applications/urbanterror.desktop"
+  install -Dm644 "${srcdir}/urbanterror.png" "${pkgdir}/usr/share/pixmaps/urbanterror.png"
 
   # Copy launch scripts.
-  install -Dm755 $srcdir/urbanterror.sh $pkgdir/usr/bin/urbanterror
-  install -Dm755 $srcdir/urbanterror-server.sh $pkgdir/usr/bin/urbanterror-server
+  install -Dm755 "${srcdir}/urbanterror.sh" "${pkgdir}/usr/bin/urbanterror"
+  install -Dm755 "${srcdir}/urbanterror-server.sh" "${pkgdir}/usr/bin/urbanterror-server"
 }
 
 # vim: sw=2:ts=2 et:
