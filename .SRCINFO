@@ -1,0 +1,22 @@
+pkgbase = lalinference
+	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. lalinference
+	pkgver = 1.9.4
+	pkgrel = 1
+	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
+	arch = any
+	groups = lalsuite
+	license = unknown
+	depends = lalcore
+	depends = lalmetaio
+	depends = hdf5
+	depends = lalframe
+	depends = lalsimulation
+	depends = lalinspiral
+	depends = lalpulsar
+	depends = lalburst
+	options = !emptydirs
+	source = http://software.ligo.org/lscsoft/source/lalsuite/lalinference-1.9.4.tar.xz
+	sha256sums = 73e9ee32507da91f176db790dc12b9a3d16a769ca3047af7c4fa279eaf915e31
+
+pkgname = lalinference
+
