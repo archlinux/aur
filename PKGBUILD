@@ -34,6 +34,6 @@ package() {
     cd "$srcdir/${pkgname%-VCS}"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -D -m755 examples/* -t "$pkgdir/usr/share/$pkgname/examples/"
-    install -D -m755 bin/glslViewer "$pkgdir/usr/local/bin/glslviewer"
-    install -D -m755 bin/glslLoader "$pkgdir/usr/local/bin/glslloader"
+    install -D -m755 bin/glslViewer "$pkgdir/usr/bin/glslviewer"
+    install -D -m755 bin/glslLoader "$pkgdir/usr/bin/glslloader"
 }
