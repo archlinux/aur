@@ -2,29 +2,29 @@
 # Contributor: Sander Zuidema <s.zuidema at bazix dot nl>
 
 pkgname=gluon-scenebuilder
-pkgver=8.3.0
+pkgver=8.4.0
 pkgrel=1
-pkgdesc="Open-source drag & drop UI design tool for JavaFX by Gluon (bin)"
+pkgdesc="Open-source drag & drop UI design tool for JavaFX (Java 8) by Gluon (binary)"
 arch=('any')
 url="https://gluonhq.com/products/scene-builder/"
 license=('BSD')
 depends=('java-environment>=8' 'java-openjfx')
 conflicts=('javafx-scenebuilder')
-source=("http://download.gluonhq.com/scenebuilder/$pkgver/scenebuilder-all-$pkgver-all.jar"
+source=("http://download.gluonhq.com/scenebuilder/$pkgver/scenebuilder-$pkgver-all.jar"
         "$pkgname.sh"
         "$pkgname.desktop")
-noextract=("scenebuilder-all-$pkgver-all.jar")
-sha256sums=('ce59812646d6fce13b535f2113ac2ac086284f0cf4a6c43356a690c3e6c19359'
+noextract=("scenebuilder-$pkgver-all.jar")
+sha256sums=('851d1dc74c82acf7262eebb195a7caad282d5680ae3f2bd19da42b62cec93b4a'
             'be575929e72b20f8cbeef6118d13b02783f72206053339a9fcbae21bd7f4b933'
-            '85012a1c560592cc0e76d762f1351758d75f6d1ac61eadb3b3b12e21319207fa')
+            '546a550cc5d4e1314a625a6071afbb8936bb4b9f8b7380a1641be32a5366f72c')
 
 package() {
-  bsdcpio --extract --make-directories "LICENSE" "com/oracle/javafx/scenebuilder/app/about/scenebuilder-logo.png" < scenebuilder-all-$pkgver-all.jar 
+  bsdcpio --extract --make-directories "LICENSE" "com/oracle/javafx/scenebuilder/app/about/scenebuilder-logo.png" < "scenebuilder-$pkgver-all.jar"
 
   cd "$srcdir"
-  install -Dm 0755 "scenebuilder-all-$pkgver-all.jar" "$pkgdir/opt/$pkgname/$pkgname.jar"
+  install -Dm 0755 "scenebuilder-$pkgver-all.jar" "$pkgdir/opt/$pkgname/$pkgname.jar"
   install -Dm 0755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-  install -Dm 0644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm 0644 "com/oracle/javafx/scenebuilder/app/about/scenebuilder-logo.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm 0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm 644 "com/oracle/javafx/scenebuilder/app/about/scenebuilder-logo.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
