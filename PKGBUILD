@@ -5,7 +5,7 @@ pkgdesc="ncurses clone of Shenzhen Solitaire"
 arch=('any')
 url="https://github.com/usrshare/szsol"
 license=('MIT')
-makedepends=('git' 'ncurses5-compat-libs')
+makedepends=('git' 'ncurses')
 source=('git+https://github.com/usrshare/szsol')
 sha256sums=('SKIP')
 
@@ -16,6 +16,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/szsol"
+  sed -i 's/ncursesw5-config/ncursesw6-config/' Makefile
   make
 }
 

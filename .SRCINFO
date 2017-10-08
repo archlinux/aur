@@ -6,7 +6,7 @@ pkgbase = szsol-git
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = ncurses5-compat-libs
+	makedepends = ncurses
 	source = git+https://github.com/usrshare/szsol
 	sha256sums = SKIP
 
