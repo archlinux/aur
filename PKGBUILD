@@ -1,7 +1,7 @@
 _name=zcash-swing-wallet-ui
 pkgname="$_name-git"
 pkgver=r138.2247791
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop GUI Wallet for ZCash"
 arch=('any')
 url="https://github.com/vaklinov/zcash-swing-wallet-ui"
