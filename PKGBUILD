@@ -1,13 +1,13 @@
 # Maintainer: condy chen <condy0919@gmail.com>
 pkgname=crow-git
-pkgver=r237.da4bb3a
+pkgver=r351.16a0f6b
 pkgrel=1
 pkgdesc='Crow is very fast and easy to use C++ micro web framework (inspired by Python Flask)'
 arch=('any')
 url="https://github.com/ipkn/crow"
 license=('GPL')
 depends=('boost')
-makedepends=('git' 'cmake' 'make' 'boost')
+makedepends=('git' 'cmake' 'make' 'boost' 'python')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 optoptions=('gperftools: Fast, multi-threaded malloc and nifty performance analysis tools')
