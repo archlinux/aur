@@ -34,5 +34,5 @@ package() {
 
   install -Dm644 build/jars/ZCashSwingWalletUI.jar "${pkgdir}/usr/share/$_name/ZCashSwingWalletUI.jar"
 
-  install -Dm755 ../../launch.sh "${pkgdir}/usr/bin/zcash-swing-wallet-ui"
+  install -Dm755 ../launch.sh "${pkgdir}/usr/bin/zcash-swing-wallet-ui"
 }
