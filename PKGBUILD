@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=lalxml
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. lalxml"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
