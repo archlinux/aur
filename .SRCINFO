@@ -1,0 +1,16 @@
+pkgbase = mikelpint-keyring
+	pkgdesc = The mikelpint repository keyring.
+	pkgver = 20171008
+	pkgrel = 1
+	url = http://mikelpint.github.io/packages
+	install = mikelpint-keyring.install
+	arch = any
+	source = mikelpint-keyring.install
+	source = mikelpint.gpg
+	source = mikelpint-trusted
+	md5sums = 450239f70708ff4036ca6643a212e47a
+	md5sums = d4913de3bde7ab9018bad72ec3c818c6
+	md5sums = dfe31dfaaf218360cbee66d5bf220cd9
+
+pkgname = mikelpint-keyring
+
