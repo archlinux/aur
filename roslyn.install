@@ -1,7 +1,4 @@
-pre_install() {
-  echo
-  echo "This package will NOT compile with mono 3.12, i.e. extra/mono"
-  echo "You must use aur/mono-git until mono 3.13 is released."
+post_install() {
+    echo "Use this in your dotnet build command to override the dotnet-cli's csc with the csc built by this package:"
+    echo "/p:CscToolPath=/usr/bin /p:CscToolExe=csc"
 }
-
-# vim:set ts=2 sw=2 et:
