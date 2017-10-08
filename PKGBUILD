@@ -10,7 +10,7 @@ pkgdesc="A very feature-rich ncurses-based music player"
 arch=('i686' 'x86_64')
 url="https://cmus.github.io/"
 depends=('ncurses')
-makedepends=()
+makedepends=('git')
 optdepends=('libpulse: PulseAudio'
 		'alsa-lib: ALSA'
 		'OSS: OSS'
