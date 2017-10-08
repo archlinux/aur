@@ -1,20 +1,23 @@
+# Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-mp3-m3u-parser'
-pkgver='2.31'
-pkgrel='1'
-pkgdesc="MP3 playlist parser."
+pkgname=perl-mp3-m3u-parser
+pkgver=2.32
+pkgrel=1
+pkgdesc="MP3 playlist parser"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-text-template')
 makedepends=()
 url='http://search.cpan.org/dist/MP3-M3U-Parser'
-source=('http://search.cpan.org/CPAN/authors/id/B/BU/BURAK/MP3-M3U-Parser-2.31.tar.gz')
-md5sums=('b55900f7e2783b9ffb66f7a0ca41c02a')
-sha512sums=('bf3971b0f55b18eda3af9d5230106c8fac723710598f22ecb9c841c6535a694300c7c259c18c548a56bc45485cae2b9a2c1e3a1246f5c844577abaad988a53ec')
-_distdir="MP3-M3U-Parser-2.31"
+source=('http://search.cpan.org/CPAN/authors/id/B/BU/BURAK/MP3-M3U-Parser-2.32.tar.gz'
+        'Spec.pm.patch')
+md5sums=('57610dc9fe2bc57e709e87f125c7bdfc'
+         'c5ada23139ee68d4bb9849aa258b571e')
+sha512sums=('629f1cb3d66c1fa0971298be8df1b1f4cd8e435406e666279120fc1c786441c2d80e973d6a8a469e9ce6fe79b4451c4b29530a1345f57ab86cd6554e974219db'
+            '8ac97464af66b78adb92664225ec29161c28de7fdbcb1eff3f461b1c6c15f2ba4e8303a7575ef32703399ef15498568c75e0d30fedc8a38a814739eb0d325356')
+_distdir="MP3-M3U-Parser-2.32"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -23,6 +26,7 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
+    patch -Np1 < Spec.pm.patch
     cd "$srcdir/$_distdir"
     /usr/bin/perl Makefile.PL
     make

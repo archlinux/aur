@@ -1,0 +1,13 @@
+diff --git a/MP3-M3U-Parser-2.32/builder/lib/Build/Spec.pm b/MP3-M3U-Parser-2.32/builder/lib/Build/Spec.pm
+index 394132a..1808fc5 100644
+--- a/MP3-M3U-Parser-2.32/builder/lib/Build/Spec.pm
++++ b/MP3-M3U-Parser-2.32/builder/lib/Build/Spec.pm
+@@ -15,7 +15,7 @@ BEGIN {
+ 
+ sub spec {
+     my %opt  = @_;
+-    my $file = 'SPEC';
++    my $file = './SPEC';
+     my $spec = do $file;
+ 
+     my %rv   =
