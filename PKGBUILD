@@ -1,6 +1,6 @@
 # Maintainer: Julien Hartmann <juli1.hartmann@gmail.com>
 pkgname=keyleds
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Logitech Keyboard per-key lighting control"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=("https://github.com/spectras/keyleds/archive/v$pkgver/$pkgname-$pkgver.t
 
 build() {
   cd "$pkgname-$pkgver/build"
-  cmake -DCMAKE_BUILD_TYPE=RelSize -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib ..
+  cmake -DCMAKE_BUILD_TYPE=RelSize -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR:PATH=lib ..
   make 
   gzip -9 ../keyledsd/keyledsd.1 -c > keyledsd.1.gz
   gzip -9 ../keyledsctl/keyledsctl.1 -c > keyledsctl.1.gz
@@ -45,4 +45,4 @@ package() {
   install -m 644 -D build/keyledsctl.1.gz "$pkgdir/usr/share/man/man1/keyledsctl.1"
 }
 
-md5sums=('9d31ab53c52c06a32d03e8ff3c9c190c')
+md5sums=('2adc726e6a530f75bfe7da7e8093cb4d')
