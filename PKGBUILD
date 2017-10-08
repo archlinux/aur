@@ -1,13 +1,13 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=lalapps
 pkgver=6.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. lalapps"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
 license=('unknown')
 groups=('lalsuite')
-depends=('lalcore' 'lalinference' 'lalstochastic')
+depends=('lalcore' 'lalframe' 'lalmetaio' 'lalxml' 'lalsimulation' 'lalburst' 'lalinspiral' 'lalpulsar' 'lalinference' 'lalstochastic')
 makedepends=()
 provides=()
 conflicts=()
