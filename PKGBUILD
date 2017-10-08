@@ -6,7 +6,7 @@
 
 _pkgname=rhythmbox
 pkgname=$_pkgname-git
-pkgver=3.4.1+74+g24ac42b1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="Music playback and management application"
 arch=(i686 x86_64)
@@ -52,7 +52,7 @@ build() {
 	MOZILLA_PLUGINDIR=/usr/lib/epiphany/plugins \
         --localstatedir=/var --disable-static \
         --enable-daap --enable-python --enable-vala \
-	--enable-gtk-doc
+	--enable-gtk-doc --disable-werror
     make
 }
 
