@@ -19,11 +19,11 @@ optdepends=('python-pyinotify: Autoaway with screen plugin'
 sha512sums=('1df750f889c898ea3f463cf9de405d47b53f8d6ef9c75cdc6a8d5279ea4115033a431ff20525601603e1eea0e59355971b400fb5de2bc20df491003928a7064d')
 
 build() {
-    cd $srcdir/$pkgname-$pkgver
+    cd "$srcdir/$pkgname-$pkgver"
     python3 setup.py build_ext --inplace
 }
 
 package() {
-    cd $srcdir/$pkgname-$pkgver
+    cd "$srcdir/$pkgname-$pkgver"
     python3 setup.py install --root="$pkgdir/" --optimize=1
 }
