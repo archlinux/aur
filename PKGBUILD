@@ -1,13 +1,14 @@
 # Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: Andrej Gelenberg <andrej.gelenberg@udo.edu>
 # Contributor: Alexander Konarev <AVKonarev@gmail.com>
+# Contributor: Germain Bossu <germainbossu@yahoo.fr>
 
 pkgname=brother-dcp7030
 pkgver=2.0.2
 pkgrel=4
 pkgdesc="Brother cupd and lpd driver for DCP-7030"
 arch=('i686' 'x86_64')
-url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html#DCP-7030"
+url="http://support.brother.com/g/b/downloadlist.aspx?c=de&lang=de&prod=dcp7030_all&os=128&flang=English"
 license=('custom')
 
 if [ "$(uname -m)" = "x86_64" ]; then
@@ -35,9 +36,6 @@ sha256sums=('a9a4e0ec5f941cf17fcc7156febf8aff21673bc78a6313176527a0423847627d'
             '11bfa0871ec5fda4e49e8d768840ca0de8a5aa6e8aec740b0a42ef8bc9e53c8a')
 
 build() {
-  srcdir="$startdir/src"
-  mkdir -p "$srcdir" && cd "$srcdir"
-
   for i in $startdir/*.deb; do
     ar -x $i
     bsdtar xf data.tar.gz
@@ -52,9 +50,6 @@ END
 }
 
 package() {
-  srcdir="$startdir/src"
-  cd $srcdir
-
   cp -r "$srcdir/usr" "$pkgdir"
   cp -r "$srcdir/var" "$pkgdir"
 
