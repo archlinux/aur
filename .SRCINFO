@@ -1,0 +1,15 @@
+pkgbase = lalstochastic
+	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. lalstochastic
+	pkgver = 1.1.20
+	pkgrel = 1
+	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
+	arch = any
+	groups = lalsuite
+	license = unknown
+	depends = lalcore
+	options = !emptydirs
+	source = http://software.ligo.org/lscsoft/source/lalsuite/lalstochastic-1.1.20.tar.xz
+	sha256sums = e384f21f788c8c0521e3f9d50cc40e9e7d333f63cebbdac73b206658c45ffffe
+
+pkgname = lalstochastic
+
