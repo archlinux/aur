@@ -1,7 +1,7 @@
 pkgbase = la-capitaine-cursor-theme
 	pkgdesc = The La Capitaine x-cursor theme
 	pkgver = r24.fbb3887
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keeferrourke/capitaine-cursors
 	arch = any
 	license = LGPL3

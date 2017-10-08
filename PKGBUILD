@@ -2,7 +2,7 @@
 _pkgname=capitaine-cursors
 pkgname=la-capitaine-cursor-theme
 pkgver=r24.fbb3887
-pkgrel=1
+pkgrel=2
 pkgdesc="The La Capitaine x-cursor theme "
 arch=('any')
 url="https://github.com/keeferrourke/capitaine-cursors"
@@ -22,6 +22,6 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   # Install the program.
-  mkdir -p "${pkgdir}/usr/share/icons/capitaine-cursors1"
-  cp -r dist/* "${pkgdir}/usr/share/icons/capitaine-cursors1"
+  mkdir -p "${pkgdir}/usr/share/icons/capitaine-cursors"
+  cp -r dist/* "${pkgdir}/usr/share/icons/capitaine-cursors"
 }
