@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qt5-jsonserializer
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to perform generic seralization and deserialization of QObjects"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QJsonSerializer"
@@ -10,7 +10,7 @@ depends=('qt5-base')
 makedepends=('git' 'qt5-tools')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
-source=("$_pkgfqn::git+https://github.com/Skycoder42/QJsonSerializer.git#tag=$pkgver"
+source=("$_pkgfqn::git+https://github.com/Skycoder42/QJsonSerializer.git#tag=$pkgver-2" #temporary fix for Qt 5.9.2
 		"$pkgname.rule")
 sha256sums=('SKIP'
             '2147916eaeebda7109b04f17e122a873388f42f2015e4b6b9fbf6f98e8e80d15')
