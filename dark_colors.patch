@@ -44,7 +44,7 @@
  @import "functions";
  
  // default color scheme
--$bg_color: if($variant == "dark", #444, #eee);
+-$bg_color: if($variant == "dark", #444, #dedede);
 -$fg_color: if($variant == "dark", #ddd, #555);
 +$bg_color: if($variant == "dark", #333, #eee);
 +$fg_color: if($variant == "dark", #dcdcdc, #555);
@@ -74,7 +74,7 @@
  $dark_shadow: #000;
 --- a/index.theme
 +++ b/index.theme
-@@ -1,10 +1,10 @@
+@@ -1,11 +1,11 @@
  [Desktop Entry]
  Type=X-GNOME-Metatheme
 -Name=Numix
@@ -85,7 +85,8 @@
  
  [X-GNOME-Metatheme]
 -GtkTheme=Numix
--MetacityTheme=Numix
 +GtkTheme=Numix-DarkBlue
+ IconTheme=Numix
+-MetacityTheme=Numix
 +MetacityTheme=Numix-DarkBlue
  ButtonLayout=:minimize,maximize,close
