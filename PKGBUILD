@@ -6,7 +6,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gnome-commander
-pkgver=1.6.4
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Graphical two-pane filemanager for Gnome'
 arch=('i686' 'x86_64')
@@ -15,15 +15,7 @@ license=('GPL')
 depends=('libgnomeui' 'python2' 'libunique' 'libgsf' 'exiv2' 'taglib' 'poppler-glib')
 makedepends=('perl-xml-parser' 'gnome-doc-utils' 'intltool')
 source=(https://download.gnome.org/sources/gnome-commander/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('d1c5de5245a4852f8aa86e5283530674ec3fc3a5312bd89305c9934718b90b3d')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  # Python 2 fix
-  for f in doc/*/gnome-commander.xml; do
-      sed -i 's:env python:env python2:' "$f"
-  done
-}
+sha256sums=('d0e73077fe22ae1e00d93f0112e0e019cf40b15419dfa82e51c9d5f30849946b')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -32,7 +24,6 @@ build() {
 	--libdir=/usr/lib \
 	--sysconfdir=/etc \
 	--localstatedir=/var \
-	--disable-scrollkeeper \
 	--enable-python
   make
 }
