@@ -1,0 +1,5 @@
+#!/bin/bash
+bold=$(tput bold)
+>&2 echo -e "${bold}steve++: \e[0;31m${bold}fatal error: \e[0mYour code is shit, refusing to compile. \nFuck off."
+exit 1
+# No code is not shit
