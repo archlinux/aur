@@ -1,6 +1,6 @@
 pkgbase = piptube
 	pkgdesc = Picture-in-picture wrapper for mpv and YouTube
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/jgthomas/piptube
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = piptube
 	depends = youtube-dl
 	source = piptube
 	source = ytubejb
-	source = https://github.com/jgthomas/piptube/archive/v1.1.0.tar.gz
+	source = https://github.com/jgthomas/piptube/archive/v1.2.0.tar.gz
 	sha512sums = facaf51e7c8de9df1c87430fc5dc85ea8ff63258c64ae297918261b6dcbe2861a9891621aaffdf6bb64dd890647d18c60243fcac6e93e120e36f85d79b91bde6
 	sha512sums = 1b0e06a51741db6a5f4f0cb06ca27669de8f63785db9d1d49cbf122d2b03dbcee0173a13d351deeae410f22a53a10ce947b695ab40aef96273d6a1fc35a1f875
-	sha512sums = c97c397176b6cf471925ed390d357dcb56306f72ac23a7ab6f489ffc42237846d950658a53725831f9b6e5baa52e40c6b06ca135676f71d4c5dc68b0f29a84a1
+	sha512sums = a0cad58ecc25859129507ad2907e59940c1139c0aa9d7ce0e2a50b0a1de8ea7bc38b68da33d03405baab9792dc126852daedeb6383738fc9ee5594c423359aa8
 
 pkgname = piptube
 
