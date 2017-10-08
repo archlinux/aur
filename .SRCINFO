@@ -7,6 +7,7 @@ pkgbase = ffmpeg-mmal
 	epoch = 1
 	url = http://ffmpeg.org/
 	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = ladspa
 	makedepends = libvdpau
