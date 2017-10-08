@@ -94,7 +94,7 @@ build() {
         --enable-daemon \
         --enable-sqlite \
         --enable-icu \
-        --disable-systemd-daemon \
+        --enable-systemd-daemon \
         --with-systemduserunitdir=/usr/lib/systemd/user \
         --without-systemdsystemunitdir \
         --with-zeroconf=no
@@ -105,4 +105,6 @@ package() {
     cd ${_pkgname}-${pkgver}
 
     make DESTDIR="${pkgdir}" install
+    sed -e 's/network.target //g' -e 's/AF_INET AF_INET6 AF_UNIX AF_NETLINK/AF_UNIX/g' -i "${pkgdir}"/usr/lib/systemd/user/mpd.service
+
 }
