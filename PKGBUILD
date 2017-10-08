@@ -1,18 +1,16 @@
 # Maintainer: Sherlock Holo <Sherlockya@gmail.com>
 pkgname=python-locust-git
 _pkgname=locust
-pkgver=v0.8a1.82.g8c4eeae
-pkgrel=5
+pkgver=v0.8.45.g71e4864
+pkgrel=1
 pkgdesc="An easy-to-use, distributed, user load testing tool."
 arch=('any')
 url="http://locust.io/"
 license=('MIT')
-depends=('python-gevent' 'python-flask' 'python-requests' 'python-msgpack' 'python-pyzmq')
+depends=('python-gevent' 'python-flask' 'python-requests' 'python-msgpack' 'python-pyzmq' 'python-six')
 makedepends=('git' 'python-setuptools')
-source=('git://github.com/locustio/locust.git'
-        'locust.patch')
-md5sums=('SKIP'
-         'cd7c5b5fafcd7ca2561ea9450b4bf26a')
+source=('git+https://github.com/locustio/locust')
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -21,13 +19,17 @@ pkgver() {
 
 build() {
     cd $srcdir
-    mv locust.patch $_pkgname
     cd $_pkgname
-    patch -p0 -i locust.patch
+    sed -i "s/gevent>=1.2.2/gevent/" setup.py
+    sed -i "s/flask>=0.10.1/flask/" setup.py
+    sed -i "s/requests>=2.9.1/requests/" setup.py
+    sed -i "s/msgpack-python>=0.4.2/msgpack-python/" setup.py
+    sed -i "s/six>=1.10.0/six/" setup.py
+    sed -i "s/pyzmq>=16.0.2/pyzmq/" setup.py
     python setup.py build
 }
 
 package() {
     cd $srcdir/$_pkgname
-    python setup.py install --root=${pkgdir}/ --optimize=1
+    python setup.py install --skip-build --root=${pkgdir}/ --optimize=1
 }
