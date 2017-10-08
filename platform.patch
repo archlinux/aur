@@ -1,0 +1,37 @@
+diff -aur avr/platform.txt avr.new/platform.txt
+--- avr/platform.txt	2016-09-21 10:05:40.000000000 +0200
++++ avr.new/platform.txt	2016-10-08 16:52:00.513630471 +0200
+@@ -5,7 +5,7 @@
+ # For more info:
+ # https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5-3rd-party-Hardware-specification
+
+-name=Arduino AVR Boards
++name=Arch Linux Arduino AVR Boards
+ version=1.6.16
+
+ # AVR compile variables
+@@ -18,14 +18,14 @@
+ compiler.warning_flags.all=-Wall -Wextra
+
+ # Default "compiler.path" is correct, change only if you want to override the initial value
+-compiler.path={runtime.tools.avr-gcc.path}/bin/
++compiler.path=/usr/bin/
+ compiler.c.cmd=avr-gcc
+ compiler.c.flags=-c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD -flto -fno-fat-lto-objects
+ compiler.c.elf.flags={compiler.warning_flags} -Os -g -flto -fuse-linker-plugin -Wl,--gc-sections
+ compiler.c.elf.cmd=avr-gcc
+ compiler.S.flags=-c -g -x assembler-with-cpp -flto -MMD
+ compiler.cpp.cmd=avr-g++
+-compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -flto
++compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -flto -fno-devirtualize -fno-use-cxa-atexit
+ compiler.ar.cmd=avr-gcc-ar
+ compiler.ar.flags=rcs
+ compiler.objcopy.cmd=avr-objcopy
+@@ -91,7 +91,7 @@
+ # AVR Uploader/Programmers tools
+ # ------------------------------
+
+-tools.avrdude.path={runtime.tools.avrdude.path}
++tools.avrdude.path=/
+ tools.avrdude.cmd.path={path}/bin/avrdude
+ tools.avrdude.config.path={path}/etc/avrdude.conf
