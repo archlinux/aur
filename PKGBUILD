@@ -1,6 +1,6 @@
 # Maintainer: Agorgianitis Loukas <agorglouk@gmail.com>
 pkgname=glslviewer-git
-pkgver=r314.765aed8
+pkgver=r425.8d5effb
 pkgrel=1
 pkgdesc="Live GLSL coding render for MacOS and Linux"
 arch=('i686' 'x86_64')
@@ -33,6 +33,7 @@ build() {
 package() {
     cd "$srcdir/${pkgname%-VCS}"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m755 examples/* -t "$pkgdir/usr/share/$pkgname/examples/"
     install -D -m755 bin/glslViewer "$pkgdir/usr/local/bin/glslviewer"
     install -D -m755 bin/glslLoader "$pkgdir/usr/local/bin/glslloader"
 }
