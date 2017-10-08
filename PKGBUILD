@@ -19,7 +19,7 @@ pkgname=(exim-heavy
          exim-lookup-sqlite)
 pkgname=exim-heavy
 pkgver=4.89
-pkgrel=1
+pkgrel=2
 pkgdesc='Message Transfer Agent with maximal-enabled features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.exim.org/'
@@ -145,7 +145,7 @@ package_exim-lookup-lsearch() {
 }
 
 package_exim-lookup-mysql() {
-  depends=(${pkgbase} 'libmysqlclient')
+  depends=(${pkgbase} 'libmariadbclient')
   cd "${srcdir}/${_pkgname}-${pkgver}"
   cd build-Linux-*
   install -Dm0755 lookups/mysql.so "$pkgdir"/usr/lib/exim/lookups/mysql.so

@@ -1,7 +1,7 @@
 pkgbase = exim-heavy
 	pkgdesc = Message Transfer Agent with maximal-enabled features
 	pkgver = 4.89
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.exim.org/
 	arch = x86_64
 	arch = i686
@@ -82,7 +82,7 @@ pkgname = exim-lookup-lsearch
 
 pkgname = exim-lookup-mysql
 	depends = exim-heavy
-	depends = libmysqlclient
+	depends = libmariadbclient
 
 pkgname = exim-lookup-passwd
 	depends = exim-heavy
