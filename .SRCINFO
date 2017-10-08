@@ -1,4 +1,5 @@
 pkgbase = zcash-swing-wallet-ui-git
+	pkgdesc = Desktop GUI Wallet for ZCash
 	pkgver = r138.2247791
 	pkgrel = 1
 	url = https://github.com/vaklinov/zcash-swing-wallet-ui
