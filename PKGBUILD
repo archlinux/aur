@@ -1,7 +1,7 @@
 # Maintainer: ibrokemypie <ibrokemypie@bastardi.net>
 pkgname=i3lock-next-git
-pkgver=r66.def806c
-pkgrel=2
+pkgver=r69.c7634f4
+pkgrel=1
 pkgdesc="Create a fancy image to use with i3lock."
 arch=('i686' 'x86_64')
 url="https://github.com/owenthewizard/i3lock-next"
@@ -23,11 +23,10 @@ pkgver() {
 
 build() {
   cd "$_name"
-  make DESTDIR="$pkgdir" PREFIX="/usr" LIBEXECDIR="/usr/lib"
+  make DESTDIR="$pkgdir" PREFIX="/usr" LIBDIR="/lib"
 }
 package() {
   cd "$_name"
-  make DESTDIR="$pkgdir" PREFIX="/usr" LIBEXECDIR="/usr/lib" install
-  sed -i "s;/libexec/i3lock-next;/lib/$_name;" "$pkgdir/usr/bin/i3lock-next"
+  make DESTDIR="$pkgdir" PREFIX="/usr" LIBDIR="/lib" install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
