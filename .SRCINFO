@@ -1,14 +1,14 @@
 pkgbase = html-xml-utils
 	pkgdesc = A number of simple utilities for manipulating HTML and XML files.
-	pkgver = 7.1
+	pkgver = 7.2
 	pkgrel = 1
 	url = http://www.w3.org/Tools/HTML-XML-utils/
 	arch = i686
 	arch = x86_64
 	license = W3C
 	depends = curl
-	source = http://www.w3.org/Tools/HTML-XML-utils//html-xml-utils-7.1.tar.gz
-	sha256sums = ec0efd2263b864bb7e0ae5c59f02c43c5d8aebd0e1c0d2bfce391e665766d56e
+	source = http://www.w3.org/Tools/HTML-XML-utils//html-xml-utils-7.2.tar.gz
+	sha256sums = 9381d41a9bb7715bb9d970e24c4cdc43a8ff76c0500b9bbaf048b9f8d32d2bee
 
 pkgname = html-xml-utils
 
