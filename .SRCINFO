@@ -1,11 +1,12 @@
- pkgbase = poketty
-	pkgdesc = Pokemon battle simulator for tty
-	pkgver = 1.4
+pkgbase = poketty
+	pkgdesc = Pokemon battle simulator for tty, .pkg files not included
+	pkgver = git
 	pkgrel = 1
 	url = hispagnu.org/poketty
 	arch = any
 	license = GPL
-	source = http://hispagnu.org/poketty/releases/poketty1.4.tar.gz
-	md5sums = de38a3fea982003bf104f0b219b1d441
+	source = https://github.com/sonozaki/poketty/archive/master.zip
+	md5sums = 7755c2b7bcf25ba0e192bda9fde67520
 
 pkgname = poketty
+
