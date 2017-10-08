@@ -1,13 +1,13 @@
 pkgbase = zcash-swing-wallet-ui-git
 	pkgdesc = Desktop GUI Wallet for ZCash
 	pkgver = r138.2247791
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vaklinov/zcash-swing-wallet-ui
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = apache-ant
-	depends = java-runtime-headless
+	depends = java-runtime
 	source = zcash-swing-wallet-ui::git+https://github.com/vaklinov/zcash-swing-wallet-ui
 	source = launch.sh
 	source = launch.sh.sig

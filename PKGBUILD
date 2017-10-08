@@ -1,12 +1,12 @@
 _name=zcash-swing-wallet-ui
 pkgname="$_name-git"
 pkgver=r138.2247791
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop GUI Wallet for ZCash"
 arch=('any')
 url="https://github.com/vaklinov/zcash-swing-wallet-ui"
 license=('MIT')
-depends=('java-runtime-headless')
+depends=('java-runtime')
 makedepends=('git' 'apache-ant')
 source=("$_name::git+https://github.com/vaklinov/zcash-swing-wallet-ui"
 "launch.sh"{,.sig})
