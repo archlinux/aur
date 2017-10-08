@@ -5,7 +5,7 @@
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.24.2
+pkgver=3.26.1
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator, with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
@@ -21,8 +21,8 @@ groups=(gnome)
 changelog=$pkgname.changelog
 source=(https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
         gnome-terminal-transparency.patch)
-sha256sums=('281edac30a07ca45beaaaf0a13fe2219cf8b87ece5e55dccbfc49ef769dfec0f'
-            'e3bf5e22fc08de6a29f856ac396b63bd45d135a79907876a7071c0d738bf5224')
+sha256sums=('b9ac564ef77fea0b10502c06bdfca15c4fbdc32fdadaa88d69d7bf0fa1de073a'
+            'eb0e16e215caac3099d0e7c6573fdf9dbd0f7fe47849dee6157ec12f80074b7c')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+  LDFLAGS+=" -pthread"  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib/$_pkgname --disable-static --with-nautilus-extension
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
