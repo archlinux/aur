@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-shell-git
-pkgver=20170918.72c55245
+pkgver=20171008.25dc1fc8
 pkgrel=1
 pkgdesc="QtQuick and Wayland based shell for convergence"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -39,10 +39,11 @@ build() {
 	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
 	qbs setup-qt /usr/bin/qmake-qt5 qt5
 	qbs config profiles.qt5.baseProfile gcc
-	qbs build --no-install -d build profile:qt5 qbs.installRoot:/ qbs.installPrefix:usr modules.lirideployment.qmlDir:lib/qt/qml modules.lirideployment.pluginsDir:lib/qt/plugins
+	qbs build --no-install -d build qt5-debug qbs.buildVariant:debug profile:qt5 \
+		qbs.installRoot:/ qbs.installPrefix:usr modules.lirideployment.qmlDir:lib/qt/qml modules.lirideployment.pluginsDir:lib/qt/plugins
 }
 
 package() {
 	cd ${srcdir}/${_gitname}
-	qbs install -d build --no-build -v --install-root $pkgdir profile:qt5
+	qbs install -d build --no-build -v --install-root $pkgdir qt5-debug profile:qt5
 }
