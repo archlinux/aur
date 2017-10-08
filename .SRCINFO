@@ -1,0 +1,22 @@
+pkgbase = zcash-swing-wallet-ui-git
+	pkgver = r138.2247791
+	pkgrel = 1
+	url = https://github.com/vaklinov/zcash-swing-wallet-ui
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = apache-ant
+	depends = java-runtime-headless
+	source = zcash-swing-wallet-ui::git+https://github.com/vaklinov/zcash-swing-wallet-ui
+	source = launch.sh
+	source = launch.sh.sig
+	validpgpkeys = 7E0E7188BA50536DB5FCF07E45CE8E0631DED8DE
+	sha256sums = SKIP
+	sha256sums = 16388c0c59bc17f7a2771ce9a4e5eb432be83809fb3577f067423fee002744cb
+	sha256sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 0df586929a226571a7624adefeb7ca053022089f4cd56a0dd09fb74fec14854a35dce083f596ab6c033eb7735e9c044337e7801c42e6f1356c5d40e84bc52e5a
+	sha512sums = SKIP
+
+pkgname = zcash-swing-wallet-ui-git
+
