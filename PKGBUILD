@@ -4,7 +4,7 @@
 
 pkgname=sam2p
 pkgver=0.49.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A bitmap-to-eps-or-pdf-converter that produces very small files"
 arch=('i686' 'x86_64')
 url="http://www.inf.bme.hu/~pts"
@@ -29,12 +29,13 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  CXX="g++ --std=c++98" ./configure --prefix="$pkgdir"/usr --enable-lzw --enable-gif
+  autoconf
+  CXX="g++ --std=c++98" PREFIX=/usr ./configure --prefix="$pkgdir"/usr --enable-lzw --enable-gif
   PERL5LIB+=. make all
 }
 
 package() {
   cd $pkgname-$pkgver
-  make install
+  make DESTDIR=$pkgdir install
   install -D -m644 README "$pkgdir"/usr/share/sam2p/docs/README
 }
