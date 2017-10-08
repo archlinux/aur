@@ -24,12 +24,10 @@ check() {
 package() {
   cd fd-$pkgver
   install -Dm755 target/release/fd "$pkgdir"/usr/bin/fd
+  install -Dm644 target/release/build/fd-find-*/out/fd.bash-completion "$pkgdir"/usr/share/bash-completion/completions/fd.bash-completion
+  install -Dm644 target/release/build/fd-find-*/out/fd.fish "$pkgdir"/usr/share/fish/vendor_completions.d/fd.fish
+  install -Dm644 target/release/build/fd-find-*/out/_fd "$pkgdir"/usr/share/zsh/site-functions/_fd
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/fd-rs/LICENSE
-
-  cd target/release/build/fd-find-*/out
-  install -Dm644 fd.bash-completion "$pkgdir"/usr/share/bash-completion/completions/fd.bash-completion
-  install -Dm644 fd.fish "$pkgdir"/usr/share/fish/vendor_completions.d/fd.fish
-  install -Dm644 _fd "$pkgdir"/usr/share/zsh/site-functions/_fd
 }
 
 # vim:set ts=2 sw=2 et:
