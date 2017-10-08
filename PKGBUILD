@@ -3,13 +3,13 @@
 _basename='vcvrack'
 
 pkgname='vcvrack-git'
-pkgver=r141.9e5076a
-pkgrel=1
+pkgver=r224.a358e98
+pkgrel=2
 pkgdesc='Open-source virtual Eurorack DAW'
 url='https://github.com/VCVRack/Rack'
 license=(BSD)
 arch=(i686 x86_64)
-depends=(glew glfw-x11 jansson libsamplerate libcurl-compat libzip portmidi portaudio gtk2)
+depends=(glew glfw-x11 jansson libsamplerate libcurl-compat libzip rtmidi portaudio gtk2)
 makedepends=(git)
 
 source=(
