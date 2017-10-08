@@ -1,0 +1,15 @@
+The format of the cluster created by PostgreSQL 9.6.3-3.1C is changed
+The new cluster format is identical to the cluster format created by the standard version of PostgreSQL.
+In a cluster, the data type of the timestamp data type is set to integer_datetimes = on in accordance with the format,
+used by the standard version of PostgreSQL.
+Support for this version in 1C: Enterprise 8.3 is implemented in version 8.3.10 and later.
+Load testing was conducted on the versions 1C: Enterprise 8.3.10.
+To use PostgreSQL 9.6.3-3.1C with versions of 1C: Enterprise below 8.3.10, it is necessary to assemble it with the set parameter value integer_datetimes = off
+
+Изменен формат кластера, создаваемого PostgreSQL 9.6.3-3.1C
+Новый формат кластера идентичен формату кластера, создаваемого стандартной версией PostgreSQL.
+В кластере формат хранения типа данных timestamp установлен со значением integer_datetimes=on в соответствии с форматом,
+используемым стандартной версией PostgreSQL.
+Поддержка этой версии в 1С:Предприятии 8.3 реализована в версии 8.3.10 и старше.
+Нагрузочное тестирование проводилось на версиях 1С:Предприятия 8.3.10.
+Для использования PostgreSQL 9.6.3-3.1C с версиями 1С:Предприятия ниже 8.3.10 необходимо его собрать с установленным значением параметра integer_datetimes=off

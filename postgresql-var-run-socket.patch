@@ -1,0 +1,47 @@
+Change the built-in default socket directory to be /var/run/postgresql.
+For backwards compatibility with (probably non-libpq-based) clients that
+might still expect to find the socket in /tmp, also create a socket in
+/tmp.  This is to resolve communication problems with clients operating
+under systemd's PrivateTmp environment, which won't be using the same
+global /tmp directory as the server; see bug #825448.
+
+Note that we apply the socket directory change at the level of the
+hard-wired defaults in the C code, not by just twiddling the setting in
+postgresql.conf.sample; this is so that the change will take effect on
+server package update, without requiring any existing postgresql.conf
+to be updated.  (Of course, a user who dislikes this behavior can still
+override it via postgresql.conf.)
+
+--- src/backend/utils/misc/guc.c.old	2016-09-28 23:52:17.410314055 +0300
++++ src/backend/utils/misc/guc.c	2016-09-28 23:53:01.735921591 +0300
+@@ -3353,7 +3353,7 @@
+ 		},
+ 		&Unix_socket_directories,
+ #ifdef HAVE_UNIX_SOCKETS
+-		DEFAULT_PGSOCKET_DIR,
++		DEFAULT_PGSOCKET_DIR ", /tmp",
+ #else
+ 		"",
+ #endif
+--- src/bin/initdb/initdb.c.old	2016-09-28 23:53:22.081741447 +0300
++++ src/bin/initdb/initdb.c	2016-09-28 23:53:42.546560249 +0300
+@@ -1221,7 +1221,7 @@
+ 
+ #ifdef HAVE_UNIX_SOCKETS
+ 	snprintf(repltok, sizeof(repltok), "#unix_socket_directories = '%s'",
+-			 DEFAULT_PGSOCKET_DIR);
++			 DEFAULT_PGSOCKET_DIR ", /tmp");
+ #else
+ 	snprintf(repltok, sizeof(repltok), "#unix_socket_directories = ''");
+ #endif
+--- src/include/pg_config_manual.h.old	2016-09-28 23:54:02.615382558 +0300
++++ src/include/pg_config_manual.h	2016-09-28 23:54:22.287208381 +0300
+@@ -164,7 +164,7 @@
+  * here's where to twiddle it.  You can also override this at runtime
+  * with the postmaster's -k switch.
+  */
+-#define DEFAULT_PGSOCKET_DIR  "/tmp"
++#define DEFAULT_PGSOCKET_DIR  "/var/run/postgresql"
+ 
+ /*
+  * This is the default event source for Windows event log.
