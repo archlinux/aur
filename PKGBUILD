@@ -4,8 +4,8 @@ _basename='vcvrack'
 _plugname='AudibleInstruments'
 
 pkgname='vcvrack-audible-instruments-git'
-pkgver=r21.31135d1
-pkgrel=1
+pkgver=r39.10524f5
+pkgrel=2
 pkgdesc="Mutable Instruments' VCV modules"
 url='https://github.com/VCVRack/AudibleInstruments'
 license=(BSD)
@@ -16,6 +16,7 @@ makedepends=(git)
 source=(
     "$_basename-$_plugname::git+https://github.com/VCVRack/$_plugname.git"
     "$_basename::git+https://github.com/VCVRack/Rack.git"
+    AndrewBelt-eurorack::git+https://github.com/AndrewBelt/eurorack.git
     git+https://github.com/AndrewBelt/osdialog.git
     git+https://github.com/AndrewBelt/oui-blendish.git
     git+https://github.com/mackron/dr_libs.git
@@ -24,7 +25,6 @@ source=(
     git+https://github.com/pichenettes/avr-audio-bootloader.git
     git+https://github.com/pichenettes/avril.git
     git+https://github.com/pichenettes/avrilx.git
-    git+https://github.com/pichenettes/eurorack.git
     git+https://github.com/pichenettes/stm-audio-bootloader.git
     git+https://github.com/pichenettes/stmlib.git
 )
@@ -65,7 +65,7 @@ prepare() {
 
     cd AudibleInstruments
     git submodule init
-    git config submodule.eurorack.url "$srcdir/eurorack"
+    git config submodule.eurorack.url "$srcdir/AndrewBelt-eurorack"
     git submodule update
 
     cd eurorack
