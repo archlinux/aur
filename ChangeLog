@@ -1,5 +1,10 @@
 2017-01-22 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
+	* 2.0.0.r486.7c0ffdf :
+	Make depends on 'ttl2c-git' instead of 'ttl2c'
+
+2017-01-22 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
 	* 2.0.0.r484.6bfe981-1 :
 	Fixed pkgver
 
