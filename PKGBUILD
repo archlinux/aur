@@ -1,13 +1,13 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=lalinference
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. lalinference"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
 license=('unknown')
 groups=('lalsuite')
-depends=('lalcore' 'lalmetaio' 'hdf5' 'lalframe' 'lalsimulation' 'lalinspiral' 'lalpulsar' 'lalburst')
+depends=('lalcore' 'lalmetaio' 'lalframe' 'lalsimulation' 'lalinspiral' 'lalpulsar' 'lalburst' 'lalxml')
 makedepends=()
 provides=()
 conflicts=()
