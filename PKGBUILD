@@ -1,18 +1,25 @@
-# Maintainer: Jan Tojnar <jtojnar@gmail.com>
+# Maintainer: Bruno Dupuis <lisael@lisael.org>
+# Contributor: Jan Tojnar <jtojnar@gmail.com>
 pkgname=perl-test-dir
-pkgver=1.014
+pkgver=1.16
 pkgrel=1
 pkgdesc='test directory attributes'
 _dist=Test-Dir
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('perl_5')
-depends=('perl')
-checkdepends=('perl-test-pod' 'perl-test-pod-coverage')
+depends=(
+    'perl'
+    'perl-module-install'
+)
+checkdepends=(
+    'perl-test-pod'
+    'perl-test-pod-coverage'
+)
 
 options=('!emptydirs' purge)
 source=("http://search.cpan.org/CPAN/authors/id/M/MT/MTHURN/$_dist-$pkgver.tar.gz")
-sha512sums=('d314ad2aea917550b47af75845ac74c5dbf838881f98fa7d38c6dabbd4e5bad2c21ae2bca569bd55cf3a9fa180dc37a847693af0fcf43956deb6413beff0066a')
+sha512sums=('d0f22091e834ffc1111f9a56ecbd38c95c2e593ab680cf342744b8344c0c4dfd1bcbfe1ba753b23b420b089aa855c1b2b4a183fd8458c95a9cc6506123ec0a23')
 
 build() {
 	cd "$srcdir/$_dist-$pkgver"
