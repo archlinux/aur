@@ -1,13 +1,13 @@
 pkgbase = lalmetaio
 	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. lalmetaio
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
 	arch = any
 	groups = lalsuite
 	license = unknown
-	depends = gsl
 	depends = metaio
+	depends = lalcore
 	options = !emptydirs
 	source = http://software.ligo.org/lscsoft/source/lalsuite/lalmetaio-1.3.1.tar.xz
 	sha256sums = f88e4baed92fd064e055ec7975d3098dfd6978b1a3209b220d1e87fdd4da2991
