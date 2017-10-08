@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=sympa
-pkgver=6.2.20
+pkgver=6.2.22
 pkgrel=1
 pkgdesc='Electronic mailing list manager'
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ source=("https://github.com/sympa-community/${pkgname}/releases/download/${pkgve
         'sympa.tmpfiles'
         'apache.conf'
         'sympa.sysusers')
-md5sums=('3b55350e4a8a0432270251c12d632dfd'
+md5sums=('7398c2bf44006be32fe0236b7ba224a4'
          'a34e73c086e4d63da3166c7010ea9d8b'
          '356475e4f0cdc6b1a1db8e0e9a327038'
          '84bf724827201d02572938d1c2ad26eb'
