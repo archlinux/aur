@@ -1,7 +1,7 @@
 # Maintainer: Christos Nouskas <nous at archlinux us>
 pkgname=xchat-greek
 pkgver=1.60
-pkgrel=3
+pkgrel=4
 pkgdesc="A perl script to allow reading both 8-bit ISO and utf-8 text inside xchat/hexchat. Initially intended for the greek IRC users but also works with baltic, cyrillic and turkish; probably arabic and hebrew."
 url="http://sourceforge.net/projects/xchat-greek/"
 depends=('perl-text-iconv')
@@ -15,8 +15,8 @@ install=xchat-greek.install
 license=('GPL')
 
 package() {
-  mkdir -p $startdir/pkg/usr/lib/xchat/plugins
-  mkdir -p $startdir/pkg/usr/lib/hexchat/plugins
-  cp -v $pkgname-$pkgver.pl $startdir/pkg/usr/lib/xchat/plugins
-  cp -v $pkgname-$pkgver.pl $startdir/pkg/usr/lib/hexchat/plugins
+  mkdir -p $pkgdir/usr/lib/xchat/plugins
+  mkdir -p $pkgdir/usr/lib/hexchat/plugins
+  install -vm755 $pkgname-$pkgver.pl $pkgdir/usr/lib/xchat/plugins
+  install -vm755 $pkgname-$pkgver.pl $pkgdir/usr/lib/hexchat/plugins
 }
