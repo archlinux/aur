@@ -1,6 +1,6 @@
 # Maintainer: lilydjwg <lilydjwg@gmail.com>
 pkgname=archsocks
-pkgdesc="archsocks 网络加速代理"
+pkgdesc="A proxy service client (in Chinese)"
 pkgver=0.7
 pkgrel=1
 arch=('any')
