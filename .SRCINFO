@@ -1,0 +1,16 @@
+pkgbase = mcabber-module-disco-hg
+	pkgdesc = mcabber module to send service discovery requests
+	pkgver = r63.d644c08bbc27
+	pkgrel = 1
+	url = https://isbear.org.ua/hg/isbear/mcabber-disco/
+	arch = i386
+	arch = x86_64
+	license = GPL2
+	makedepends = mercurial
+	makedepends = cmake
+	depends = mcabber
+	source = mcabber-module-disco-hg::hg+https://isbear.org.ua/hg/isbear/mcabber-disco/
+	md5sums = SKIP
+
+pkgname = mcabber-module-disco-hg
+
