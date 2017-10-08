@@ -1,6 +1,6 @@
 # Maintainer: Florian Jacob <projects+arch AT florianjacob )DOT( de>
 pkgname=earlyoom
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc="Early OOM Daemon for Linux"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 source=(
 	"https://github.com/rfjakob/$pkgname/archive/v$pkgver.tar.gz"
 )
-sha256sums=('167a8cd194df5d1c5bd5327efd7bcad824a99381c02a2969f9e2684b7c5317d7')
+sha256sums=('854c4b2d02cf630db6128eb46275416b97fc48c917c7f9f9af9b84c8065da09e')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -19,9 +19,15 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
+	DESTDIR="${pkgdir}"
+	PREFIX="/usr"
+	SYSTEMDDIR="${PREFIX}/lib/systemd"
+	export DESTDIR
+	export PREFIX
+	export SYSTEMDDIR
 
-	# earlyoom's install script doesn't support a staged build or prefix configuration, so do this by hand.
-	install -D -m 755 ./earlyoom "${pkgdir}/usr/bin/earlyoom"
-	install -D -m 644 ./earlyoom.service "${pkgdir}/usr/lib/systemd/system/earlyoom.service"
-	sed -i s~/usr/local/bin/earlyoom~/usr/bin/earlyoom~g "${pkgdir}/usr/lib/systemd/system/earlyoom.service"
+	make install
+	# make install doesn't install the manpage for some reason
+	gzip earlyoom.1
+	install -Dm644 earlyoom.1.gz "${DESTDIR}${PREFIX}/share/man/man1/earlyoom.1.gz"
 }
