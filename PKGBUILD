@@ -1,20 +1,21 @@
 # CPAN Name : Test-File
-# Maintainer: Rafael Reggiani Manzo <rr.manzo@gmail.com>
+# Maintainer: Bruno Dupuis <lisael@lisael.org>
+# Contributor: Rafael Reggiani Manzo <rr.manzo@gmail.com>
 # Template  : CPANPLUS::Dist::Arch
 
 pkgname=perl-test-file
-pkgver=1.44
-pkgrel=2
+pkgver=1.443
+pkgrel=1
 pkgdesc="This modules provides a collection of test utilities for file attributes."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=(perl-test-utf8)
 makedepends=()
-url='http://search.cpan.org/~bdfoy/Test-File-1.44/lib/Test/File.pm'
+url='http://search.cpan.org/~bdfoy/Test-File-1.443/lib/Test/File.pm'
 _distdir="Test-File"
 source=("http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/$_distdir-$pkgver.tar.gz")
-sha512sums=('428b4027ba8a20fcf92dedb1c1a9ca9866bb41b679f78a7640fee1e0c60c9daa77713e41995b3cba9a271a4df538985276df34ea649efef8592896eade96cb89')
+sha512sums=('9ad66b3a9dc1c3752a4ec22934db9139ac010ac3237a3de018d4ec4a65ac047f0152ab9e7979a2615412c1af02a1f2dfa0dbfdf5eba5358628b1b443232c45b2')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
