@@ -1,9 +1,9 @@
 # Maintainer: StoneCold <forumi0721[at]gmail[dot]com>
 
 pkgname=("qemu-user-static-deb")
-pkgver=2.10.0+dfsg_1
+pkgver=2.10.0+dfsg_2
 pkgrel=1
-_postfix=2.10.0+dfsg-1
+_postfix=2.10.0+dfsg-2
 pkgdesc="A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation, statically linked."
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="http://wiki.qemu.org/Index.html"
