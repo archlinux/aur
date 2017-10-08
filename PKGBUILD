@@ -1,13 +1,13 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=lalframe
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. lalframe"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
 license=('unknown')
 groups=('lalsuite')
-depends=('lalcore' 'libframe')
+depends=('libframe' 'lalcore')
 makedepends=()
 provides=()
 conflicts=()

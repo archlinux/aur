@@ -1,13 +1,13 @@
 pkgbase = lalframe
 	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. lalframe
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
 	arch = any
 	groups = lalsuite
 	license = unknown
-	depends = lalcore
 	depends = libframe
+	depends = lalcore
 	options = !emptydirs
 	source = http://software.ligo.org/lscsoft/source/lalsuite/lalframe-1.4.3.tar.xz
 	sha256sums = cbb6ed39abb5a02d792523fc53208330cf8adf02bc4290cac635d42577acb5b1
