@@ -7,8 +7,8 @@ url="https://github.com/CrimsonAS/gtkplatform"
 license=('LGPL3' 'GPL2')
 depends=('gtk3' 'libnotify' 'qt5-base')
 makedepends=('git')
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=('git+https://github.com/CrimsonAS/gtkplatform.git')
 md5sums=('SKIP')
 

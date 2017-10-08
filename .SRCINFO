@@ -11,8 +11,8 @@ pkgbase = gtkplatform-git
 	depends = gtk3
 	depends = libnotify
 	depends = qt5-base
-	provides = gtkplatform-git
-	conflicts = gtkplatform-git
+	provides = gtkplatform=0.1.0.r8.1e6222f
+	conflicts = gtkplatform
 	source = git+https://github.com/CrimsonAS/gtkplatform.git
 	md5sums = SKIP
 
