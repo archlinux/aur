@@ -1,13 +1,13 @@
 pkgbase = startw
 	pkgdesc = Script to initialise a Wayland session - similar to startx
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.hans.ninja/hans/startw
 	arch = any
 	license = MIT
 	optdepends = sway: A Tiling Wayland shell based on i3
-	source = startw-1.1.1.tar.gz::https://git.hans.ninja/hans/startw/archive/1.1.1.tar.gz
-	md5sums = f0e214e410240cd56d3ccb87bdc8cff7
+	source = startw-1.1.1.tar.gz::https://git.hans.ninja/hans/startw/repository/1.1.1/archive.tar.gz
+	md5sums = 634c60aa1e6b265757ce041c6648abd2
 
 pkgname = startw
 
