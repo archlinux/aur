@@ -1,0 +1,20 @@
+pkgbase = mpc-qt
+	pkgdesc = A clone of Media Player Classic reimplimented in Qt.
+	pkgver = 17.10
+	pkgrel = 1
+	url = https://github.com/cmdrkotori/mpc-qt
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = qt5-tools
+	depends = mpv
+	depends = qt5-x11extras
+	optdepends = adobe-source-sans-pro-fonts: default font for mpv-stats script
+	optdepends = libva-vdpau-driver: backend for Nvidia and AMD cards
+	optdepends = libva-intel-driver: backend for Intel cards
+	source = git+https://github.com/cmdrkotori/mpc-qt.git#tag=v17.10
+	sha256sums = SKIP
+
+pkgname = mpc-qt
+
