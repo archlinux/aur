@@ -14,5 +14,5 @@ updpkgsums
 makepkg --printsrcinfo >.SRCINFO
 makepkg -scf
 rm SHA512SUMS*
-git commit PKGBUILD .SRCINFO -m "${ffver}"
+git commit PKGBUILD .SRCINFO -m "${ffpkgver}"
 git push -u origin
