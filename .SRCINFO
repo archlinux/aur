@@ -1,12 +1,12 @@
 pkgbase = mapollage
 	pkgdesc = mapollage is a photo album generator for Google Earth, a photo kml maker
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://trixon.se/projects/mapollage/
 	arch = any
 	license = Apache
 	makedepends = desktop-file-utils
-	depends = java-runtime=8
+	depends = java-runtime>=8
 	source = https://trixon.se/files/mapollage-1.1.1-bin.zip
 	source = mapollage.sh
 	source = mapollage.desktop
