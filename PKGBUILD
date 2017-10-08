@@ -1,6 +1,6 @@
 # Maintainer: Julien Hartmann <juli1.hartmann@gmail.com>
 pkgname=keyleds
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Logitech Keyboard per-key lighting control"
 arch=('i686' 'x86_64')
@@ -45,4 +45,4 @@ package() {
   install -m 644 -D build/keyledsctl.1.gz "$pkgdir/usr/share/man/man1/keyledsctl.1"
 }
 
-md5sums=('2adc726e6a530f75bfe7da7e8093cb4d')
+md5sums=('55cd9b3cb3a80016d1e8dbc00c1a92ae')
