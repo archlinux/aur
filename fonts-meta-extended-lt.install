@@ -1,0 +1,4 @@
+post_install() {
+    echo "An optional config file has been placed at /etc/fonts/conf.avail/30-infinality-aliases.conf"
+    echo "If you would like the infinality font substitutions, copy this file to /etc/fonts/conf.d/"
+}
