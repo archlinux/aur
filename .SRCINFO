@@ -1,12 +1,15 @@
 pkgbase = lalinspiral
 	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. lalinspiral
 	pkgver = 1.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
 	arch = any
 	groups = lalsuite
 	license = unknown
 	depends = lalcore
+	depends = lalmetaio
+	depends = lalsimulation
+	depends = lalframe
 	options = !emptydirs
 	source = http://software.ligo.org/lscsoft/source/lalsuite/lalinspiral-1.7.7.tar.xz
 	sha256sums = cb95e290693df143b4a11f6e08cffd74b29c1beb71790f9d774d4dc159d7ffd1
