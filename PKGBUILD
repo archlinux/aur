@@ -7,10 +7,10 @@ pkgrel=1
 pkgdesc='LDAP module for libuser'
 arch=('i686' 'x86_64')
 license=('LGPL')
-url='https://fedorahosted.org/libuser/'
+url='https://pagure.io/libuser/'
 depends=('libuser' 'libldap')
-source=("https://fedorahosted.org/releases/l/i/libuser/libuser-${pkgver}.tar.xz")
-md5sums=('63e5e5c551e99dc5302b40b80bd6d4f2')
+source=("https://releases.pagure.org/libuser/libuser-${pkgver}.tar.xz")
+sha256sums=('a58ff4fabb01a25043b142185a33eeea961109dd60d4b40b6a9df4fa3cace20b')
 
 build() {
   cd libuser-${pkgver}
