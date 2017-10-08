@@ -10,9 +10,9 @@
 
 _pkgbase=vim
 pkgname=vim-x11
-pkgver=8.0.1159
+pkgver=8.0.1176
 _versiondir=74
-pkgrel=2
+pkgrel=1
 _upstream_pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
@@ -21,7 +21,7 @@ makedepends=('gpm' 'python2' 'python' 'ruby' 'libxt' 'lua' 'gawk' 'tcl')
 source=("vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz"
         'vimrc'
         'archlinux.vim')
-sha1sums=('9b5fe42c2ab9be3996ea109e08e5d040d2ee41ce'
+sha1sums=('03a79ded3946072bfeddd25f7b64a2d7493092fa'
           'b8ca9132826e53cd14431ef9767e4fd820faa782'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
 
