@@ -10,11 +10,11 @@
 
 pkgname=wine-gaming-nine
 pkgver=2.18
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
-#_d3d9ver=$_pkgbasever
-_d3d9ver=2.17
+_d3d9ver=$_pkgbasever
+#_d3d9ver=2.17
 _winesrcdir="wine-patched-staging-$_pkgbasever"
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
@@ -26,7 +26,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
 	wine-list.h-linked-list-cache-line-prefetching.patch
         )
 sha1sums=('089a7ca0d83b9dbbad42ce127bf66ba60d5669d7'
-          'f37e9190466faa67741b49b60e9268d70c5b4644'
+          '21a6e2bcd7ef6d261feca036cc4e0d43a633494f'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
 	  'f3febb8836f38320742a546c667106608d4c4395'
           '74aae040fde9ff3c9e8da9c840557e87afdbc3a0'
@@ -55,7 +55,6 @@ _depends=(
   libsm            lib32-libsm
   gcc-libs         lib32-gcc-libs
   libpcap          lib32-libpcap
-  lib32-libtxc_dxtn
   desktop-file-utils
 )
 
