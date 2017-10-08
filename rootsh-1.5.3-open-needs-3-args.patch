@@ -1,0 +1,12 @@
+diff -up rootsh-1.5.3/src/rootsh.c.BAD rootsh-1.5.3/src/rootsh.c
+--- rootsh-1.5.3/src/rootsh.c.BAD	2008-05-14 16:38:30.000000000 -0400
++++ rootsh-1.5.3/src/rootsh.c	2008-05-14 16:38:37.000000000 -0400
+@@ -680,7 +680,7 @@ int beginlogging(void) {
+     //  Open the logfile 
+     */
+     if ((logFile = open(logFileName, O_RDWR|O_CREAT|O_SYNC|O_CREAT|O_APPEND|
+-        S_IRUSR|S_IWUSR)) == -1) {
++        S_IRUSR|S_IWUSR, 0777)) == -1) {
+       perror(logFileName);
+       return(0);
+     }
