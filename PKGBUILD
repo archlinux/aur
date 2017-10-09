@@ -39,5 +39,5 @@ package() {
     install -Dm644 License.txt "${pkgdir}/usr/share/licenses/roslyn/License.txt"
 
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "${pkgdir}/usr/share/roslyn/csc" "${pkgdir}/usr/bin/csc"
+    ln -s "/usr/share/roslyn/csc" "${pkgdir}/usr/bin/csc"
 }
