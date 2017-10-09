@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.27.0.111.g622610bad5
+pkgver=v0.27.0.121.gcdef69103a
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -67,7 +67,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-          )
+            )
+backup=('etc/mpv/encoding-profiles.conf')
 
 _enable_cuda=0
 if [ -d /opt/cuda ]; then
@@ -86,9 +87,9 @@ pkgver() {
 
 prepare() {
   cd mpv-build
-  ln -s ../mpv
-  ln -s ../ffmpeg
-  ln -s ../libass
+  git clone "${srcdir}/mpv"
+  git clone "${srcdir}/ffmpeg"
+  git clone "${srcdir}/libass"
 
   # Set ffmpeg/libass/mpv flags
   _ffmpeg_options=(
@@ -123,13 +124,13 @@ prepare() {
     )
 
 if [ ${_enable_cuda} = "1" ]; then
-    _ffmpeg_cuda=(
-      '--extra-cflags="-I/opt/cuda/include"'
+  _ffmpeg_cuda=(
+    '--extra-cflags="-I/opt/cuda/include"'
     )
 fi
 
   echo ${_ffmpeg_options[@]} ${_ffmpeg_cuda[@]} > ffmpeg_options
-  echo ${_mpv_options[@]} ${_mpv_cuda[@]} > mpv_options
+  echo ${_mpv_options[@]} > mpv_options
 
   cd mpv
 
