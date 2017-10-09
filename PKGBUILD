@@ -2,9 +2,9 @@
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
-pkgname=python-pygpgme-rshk-git
+pkgname=('python-pygpgme-rshk-git' 'python2-pygpgme-rshk-git')
 pkgver=r18.6c7566b
-pkgrel=3
+pkgrel=4
 pkgdesc="A Python interface to the gpgme GnuPG library (rshk fork)"
 arch=('x86_64' )
 url="https://github.com/rshk/pygpgme"
