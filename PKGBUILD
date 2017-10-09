@@ -1,7 +1,7 @@
 # Maintainer: ajs124
 
 pkgname=evdi-git
-pkgver=1.0.68.r83.gee1c578
+pkgver=1.5.0.r0.ge7a08d0
 pkgrel=1
 pkgdesc="A Linux® kernel module that enables management of multiple screens. Git version."
 arch=('i686' 'x86_64')
@@ -14,11 +14,11 @@ changelog=$pkgname.Changelog
 source=(git+https://github.com/DisplayLink/evdi/)
 md5sums=(SKIP)
 conflicts=(evdi)
-provides=(evdi=1.4.1)
+provides=(evdi)
 
 pkgver() {
 	cd ${pkgname/-git/}
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
