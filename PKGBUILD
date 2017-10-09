@@ -1,14 +1,15 @@
 # Maintainer: shellkr <revoltism+AUR$gmail.com>
 
 pkgname=minetest-usrdir_patch
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='A patch and a pacman-hook to fix a bug in Minetest not dicovering /usr/share/minetest'
 arch=('any')
 license=('GPL')
 depends=('minetest')
+install=$pkgname.install
 source=($pkgname.patch $pkgname.hook)
-md5sums=('4d034e96cc8823530874a472daa1242f' 
+md5sums=('4d034e96cc8823530874a472daa1242f'
 	 '87aebfe99cadcba1bc63c331f3746d00')
 
 package() {
