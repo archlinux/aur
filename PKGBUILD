@@ -3,7 +3,7 @@
 pkgname=neovim-gtk
 _pkgname=neovim-gtk
 pkgver=v0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='GTK UI for Neovim written in Rust'
 arch=('i686' 'x86_64')
 url="https://github.com/daa84/neovim-gtk"
@@ -12,11 +12,6 @@ depends=('neovim' 'gtk3' 'vte3')
 makedepends=('rust' 'cargo' 'git')
 source=("git+https://github.com/daa84/neovim-gtk.git")
 md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  git rev-list --count HEAD
-}
 
 build() {
   cd "$srcdir/$_pkgname"
