@@ -3,7 +3,7 @@
 pkgbase=python-control
 pkgname=('python2-control' 'python-control')
 pkgver=0.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Implements basic operations for analysis and design of feedback control systems in Python"
 arch=('any')
 license=('BSD')
@@ -47,8 +47,6 @@ check() {
 }
 
 package_python2-control() {
-  _pyver=2.7
-
   export LDFLAGS="$LDFLAGS -shared"
 
   cd control-py2-$pkgver
@@ -60,9 +58,6 @@ package_python2-control() {
 
 package_python-control() {
   provides=('python3-control')
-
-  _pyver=3.4
-  _pyinc=3.4m
 
   export LDFLAGS="$LDFLAGS -shared"
 
