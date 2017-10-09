@@ -1,9 +1,10 @@
 pkgbase = libframe
 	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. libframe
 	pkgver = 8.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
 	arch = any
+	groups = lalsuite
 	license = unknown
 	options = !emptydirs
 	source = http://software.ligo.org/lscsoft/source/libframe-8.30.tar.gz
