@@ -1,9 +1,10 @@
-# Maintainer: Benjamin James <bjames@openmailbox.org>
+# Contributor: Benjamin James <bjames@openmailbox.org>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=clx-git
 _clname=clx
-pkgver=r248.9b210e8
-pkgrel=2
+pkgver=r305.3878c50
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="An X11 client for Common Lisp"
 url="https://github.com/sharplispers/clx"
@@ -16,7 +17,7 @@ install=clx.install
 source=(${pkgname}::git+https://github.com/sharplispers/clx.git
         README.licensing)
 md5sums=('SKIP'
-         'SKIP')
+         '74858379015567928f1eee186d9db1a4')
 
 pkgver() {
     cd ${srcdir}/${pkgname}
@@ -43,7 +44,6 @@ package() {
     install -d        ${pkgdir}/usr/share/common-lisp/source/${_clname}/demo
     install -m 644 -t ${pkgdir}/usr/share/common-lisp/source/${_clname}/demo demo/*.lisp
     install -d        ${pkgdir}/usr/share/common-lisp/source/${_clname}/test
-    install -m 644 -t ${pkgdir}/usr/share/common-lisp/source/${_clname}/test test/*.lisp
     install -d        ${pkgdir}/usr/share/info
     install -m 644 -t ${pkgdir}/usr/share/info manual/${_clname}.info
     install -d        ${pkgdir}/usr/share/licenses/${_clname}
