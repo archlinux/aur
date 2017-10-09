@@ -1,0 +1,15 @@
+pkgbase = fortune-mod-rickandmorty
+	pkgdesc = Fortune quotes from Rick and Morty. GOTTA GET SCHWIFTY
+	pkgver = 10.09.2017
+	pkgrel = 1
+	url = http://en.wikiquote.org/wiki/Rick_and_Morty
+	arch = any
+	license = custom:cc-sa-3.0
+	makedepends = fortune-mod
+	makedepends = make
+	makedepends = coreutils
+	makedepends = wikiquote-fortune>=1.4
+	depends = fortune-mod
+
+pkgname = fortune-mod-rickandmorty
+
