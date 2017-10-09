@@ -5,25 +5,37 @@
 
 pkgbase=lib32-mesa-noglvnd
 pkgname=('lib32-vulkan-intel-noglvnd' 'lib32-vulkan-radeon-noglvnd' 'lib32-mesa-vdpau-noglvnd' 'lib32-mesa-noglvnd' 'lib32-mesa-libgl-noglvnd')
-pkgver=17.1.4
+pkgver=17.2.2
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto'
              'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'gcc-multilib' 'lib32-libelf' 'lib32-llvm' 'lib32-libvdpau'
              'lib32-wayland'
              'lib32-lm_sensors')
-url="http://mesa3d.sourceforge.net"
+url="https://www.mesa3d.org/"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
-	LICENSE)
-sha256sums=('06f3b0e6a28f0d20b7f3391cf67fe89ae98ecd0a686cd545da76557b6cec9cad'
+	LICENSE
+        0002-glvnd-fix-gl-dot-pc.patch
+        swr-rast-do-not-crash-on-NULL-strings-returned-by-getenv.patch)
+sha256sums=('cf522244d6a5a1ecde3fc00e7c96935253fe22f808f064cab98be6f3faa65782'
             'SKIP'
-            '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2')
+            '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2'
+            '64a77944a28026b066c1682c7258d02289d257b24b6f173a9f7580c48beed966'
+            '2dcbd3b311b18e473000fb496a93a4a7a4ae9f9413aace209c0ea4aebbba715b')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D') # Emil Velikov <emil.l.velikov@gmail.com>
 validpgpkeys+=('946D09B5E4C9845E63075FF1D961C596A7203456') # "Andres Gomez <tanty@igalia.com>"
+validpgpkeys+=('E3E8F480C52ADD73B278EE78E1ECBE07D7D70895') # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>"
 
 prepare() {
   cd ${srcdir}/mesa-${pkgver}
+
+  # glvnd support patches - from Fedora
+  # non-upstreamed ones
+  patch -Np1 -i ../0002-glvnd-fix-gl-dot-pc.patch
+
+  # swr driver
+  patch -Np1 -i ../swr-rast-do-not-crash-on-NULL-strings-returned-by-getenv.patch
 
   autoreconf -fiv
 }
