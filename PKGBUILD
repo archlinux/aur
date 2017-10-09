@@ -1,8 +1,9 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=lalpulsar
+_pkgname=${pkgname}
 pkgver=1.16.0
-pkgrel=2
-pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. lalpulsar"
+pkgrel=3
+pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
 license=('unknown')
@@ -15,12 +16,19 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("http://software.ligo.org/lscsoft/source/lalsuite/${pkgname}-${pkgver}.tar.xz")
+source=("http://software.ligo.org/lscsoft/source/lalsuite/${_pkgname}-${pkgver}.tar.xz")
 sha256sums=('ed7c2537db74c24cb5e22bbd72ba6906e4c85a4c649a3e88441fddc55ce1462c')
-package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
+build() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
     sed -i 's/\-Werror//g' configure
-    ./configure --prefix=$pkgdir/usr
+    ./configure --prefix=$pkgdir/usr CFLAGS=-O3
     make -j
+}
+package() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
     make install
+}
+check() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
+    make -j check
 }

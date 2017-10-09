@@ -1,7 +1,7 @@
 pkgbase = lalpulsar
 	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. lalpulsar
 	pkgver = 1.16.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
 	arch = any
 	groups = lalsuite
