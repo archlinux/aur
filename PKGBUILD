@@ -1,0 +1,31 @@
+# Maintainer: Paul Knopf <pauldotknopf@gmail.com>
+pkgname=darch
+pkgver=0.3.0
+pkgrel=1
+epoch=
+pkgdesc=""
+arch=('x86_64')
+url=""
+license=('MIT')
+groups=()
+depends=("docker")
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pauldotknopf/darch/releases/download/v$pkgver/darch-amd64.tar.gz")
+md5sums=("22e1040c9fbd75aefd67a813f3151cff")
+noextract=()
+validpgpkeys=()
+package() {
+	install -d $pkgdir/usr/bin
+	install darch $pkgdir/usr/bin
+	install -d $pkgdir/etc/grub.d/
+	install grub-mkconfig-script $pkgdir/etc/grub.d/60_darch
+}
