@@ -1,6 +1,3 @@
 post_install() {
 /bin/sh -c 'cd / && patch -p1 -i /usr/share/libalpm/scripts/minetest-usrdir_patch.patch'
 }
-
-post_upgrade() {
-}
