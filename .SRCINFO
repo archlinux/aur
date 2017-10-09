@@ -1,7 +1,7 @@
 pkgbase = mesa-noglvnd
-	pkgver = 17.1.4
+	pkgver = 17.2.2
 	pkgrel = 1
-	url = http://mesa3d.sourceforge.net
+	url = https://www.mesa3d.org/
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -26,12 +26,16 @@ pkgbase = mesa-noglvnd
 	makedepends = clang
 	makedepends = libunwind
 	makedepends = lm_sensors
-	source = https://mesa.freedesktop.org/archive/mesa-17.1.4.tar.xz
-	source = https://mesa.freedesktop.org/archive/mesa-17.1.4.tar.xz.sig
+	source = https://mesa.freedesktop.org/archive/mesa-17.2.2.tar.xz
+	source = https://mesa.freedesktop.org/archive/mesa-17.2.2.tar.xz.sig
 	source = LICENSE
-	sha256sums = 06f3b0e6a28f0d20b7f3391cf67fe89ae98ecd0a686cd545da76557b6cec9cad
+	source = 0002-glvnd-fix-gl-dot-pc.patch
+	source = swr-rast-do-not-crash-on-NULL-strings-returned-by-getenv.patch
+	sha256sums = cf522244d6a5a1ecde3fc00e7c96935253fe22f808f064cab98be6f3faa65782
 	sha256sums = SKIP
 	sha256sums = 7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2
+	sha256sums = 64a77944a28026b066c1682c7258d02289d257b24b6f173a9f7580c48beed966
+	sha256sums = 2dcbd3b311b18e473000fb496a93a4a7a4ae9f9413aace209c0ea4aebbba715b
 
 pkgname = opencl-mesa-noglvnd
 	pkgdesc = OpenCL support for AMD/ATI Radeon mesa drivers - non-libglvnd version
@@ -141,6 +145,7 @@ pkgname = mesa-noglvnd
 	replaces = mesa-dri
 	replaces = mesa
 	replaces = mesa-git
+	backup = etc/drirc
 
 pkgname = mesa-libgl-noglvnd
 	pkgdesc = Mesa 3-D graphics library - non-libglvnd version
