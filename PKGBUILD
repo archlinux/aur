@@ -1,3 +1,4 @@
+# Maintainer: David McInnis <dave@dave3.xyz>
 # Contributor: Charles Bos <charlesbos1 AT gmail>
 # Contributor: Fabian Kosmale <0inkane@googlemail.com>
 # Contributor: Giuseppe Calà <jiveaxe@gmail.com>
@@ -5,7 +6,7 @@
 
 pkgname=strigi
 pkgver=0.7.8
-pkgrel=10
+pkgrel=11
 pkgdesc="Fast crawling desktop search engine with Qt4 GUI"
 arch=('x86_64')
 url="http://www.vandenoever.info/software/strigi/"
