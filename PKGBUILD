@@ -23,11 +23,11 @@ makedepends=('cmake' 'libffi' 'python2' "ocaml=$_ocaml_ver" 'python-sphinx'
 # Use gcc-multilib to build 32-bit compiler-rt libraries on x86_64 (FS#41911)
 makedepends_x86_64=('gcc-multilib')
 options=('staticlibs')
-source=(http://llvm.org/releases/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
-        http://llvm.org/releases/$pkgver/cfe-$pkgver.src.tar.xz{,.sig}
-        http://llvm.org/releases/$pkgver/clang-tools-extra-$pkgver.src.tar.xz{,.sig}
-        http://llvm.org/releases/$pkgver/compiler-rt-$pkgver.src.tar.xz{,.sig}
-        http://llvm.org/releases/$pkgver/lldb-$pkgver.src.tar.xz{,.sig}
+source=(http://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
+        http://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz{,.sig}
+        http://releases.llvm.org/$pkgver/clang-tools-extra-$pkgver.src.tar.xz{,.sig}
+        http://releases.llvm.org/$pkgver/compiler-rt-$pkgver.src.tar.xz{,.sig}
+        http://releases.llvm.org/$pkgver/lldb-$pkgver.src.tar.xz{,.sig}
         D17567-PR23529-Sema-part-of-attrbute-abi_tag-support.patch
         D18035-PR23529-Mangler-part-of-attrbute-abi_tag-support.patch
         llvm-Config-llvm-config.h)
