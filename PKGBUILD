@@ -8,7 +8,7 @@ _realname=sat
 _medianame=sat_media
 _pubsubname=sat_pubsub
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 url="http://salut-a-toi.org/"
 arch=('any')
 depends=('python2' )
@@ -32,7 +32,7 @@ build() {
 
 package_sat-xmpp(){
     pkgdesc="Salut à Toi, multi-frontends multi-purposes XMPP client (core)"
-    depends=('dbus' 'python2-lxml>=3.1.0' 'python2-pillow' 'python2-crypto>=2.6.1' 'python2-pyopenssl' 'python2-dbus' 'python2-pure-python-otr' 'python2-twisted>=15.2.0' 'python2-wokkel>=0.7.1' 'python-xdg' 'python2-zope-interface' 'mutagen' 'python2-markdown' 'python2-html2text' 'python2-netifaces' 'python2-miniupnpc' 'python2-service-identity')
+    depends=('dbus' 'python2-lxml>=3.1.0' 'python2-pillow' 'python2-crypto>=2.6.1' 'python2-pyopenssl' 'python2-dbus' 'python2-potr' 'python2-twisted>=15.2.0' 'python2-wokkel>=0.7.1' 'python2-xdg' 'python2-zope-interface' 'mutagen' 'python2-markdown' 'python2-html2text' 'python2-netifaces' 'python2-miniupnpc' 'python2-service-identity' 'python2-dateutil' 'python2-gobject2')
 
      cd "$pkgdir"
      install -dm755 usr/bin/
