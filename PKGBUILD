@@ -22,20 +22,20 @@
 # Contributor: gentoo (part of 4.3 kernel patches)
 # Contributor: Philip Muller @ Manjaro (4.4 kernel patch)
 # Contributor: aslmaswd (acpi main script)
-# Contributor: npfeiler (libcl/opencl-icd-loader cleaning, 4.11 and 4.12 kernel patch)
 # Contributor: sling00 (4.10 kernel patch)
+# Contributor: npfeiler (libcl/opencl-icd-loader cleaning, 4.11, 4.12 and 4.13 kernel patch)
 
 
 pkgname=catalyst-total
 pkgver=15.9
-pkgrel=21
+pkgrel=22
 _amdver=15.201.1151
 pkgdesc="AMD/ATI Catalyst drivers for linux. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('dkms' 'linux>=3.0' 'linux<4.13' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa-noglvnd')
+depends=('dkms' 'linux>=3.0' 'linux<4.14' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa-noglvnd')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -102,7 +102,8 @@ source=(
     4.11-npfeiler-signal_vmf.patch
     4.12-npfeiler-PUD_OFFSET.patch
     4.12-arch-remove_clts.patch
-    4.12-npfeiler-movsl_mask.patch)
+    4.12-npfeiler-movsl_mask.patch
+    4.13-npfeiler-wait_queue_t.patch)
 
 md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
@@ -136,7 +137,8 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '8e53ba65a0aad42eb2ff771c1ace6609'
 	 'f090e47160403e4ba65d1e0de69973c9'
 	 '782769206ed12ded10c347be3e476729'
-	 'cb25bc7fbb7d5cb1c07d2f3fa5fda826')
+	 'cb25bc7fbb7d5cb1c07d2f3fa5fda826'
+	 '0a725f40bc980d578cbed3e57a05b765')
 
 
 build() {
@@ -333,6 +335,7 @@ package() {
       patch -Np1 -i ../4.12-npfeiler-PUD_OFFSET.patch
       patch -Np1 -i ../4.12-arch-remove_clts.patch
       patch -Np1 -i ../4.12-npfeiler-movsl_mask.patch
+      patch -Np1 -i ../4.13-npfeiler-wait_queue_t.patch
 
     # Prepare modules source files
       install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
