@@ -3,14 +3,14 @@
 _pkgname=ttl2c
 pkgname="${_pkgname}-git"
 pkgver=1.0.0.r3.d832ab8
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Turtle to header conversion utility for LV2 Plugin developers "
 arch=('i686' 'x86_64')
 url="https://github.com/lvtk/ttl2c"
 license=('GPL3')
 depends=('boost-libs')
-makedepends=('python2')
+makedepends=('python')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/lvtk/ttl2c.git"
@@ -33,14 +33,14 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python2 waf configure --prefix=/usr
-  python2 waf build
+  python waf configure --prefix=/usr
+  python waf build
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  python2 waf install --destdir="$pkgdir"
+  python waf install --destdir="$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
