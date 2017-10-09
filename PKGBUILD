@@ -1,14 +1,21 @@
 # Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic-git
-pkgver=0.r8125.5f2676f
+pkgver=0.r8978.85c2c925
 pkgrel=1
 pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images"
 arch=('i686' 'x86_64')
 url="http://dcpomatic.com/"
 license=('GPL2')
-depends=('pangomm>=1.4' 'libcxml>=0.15.1' 'libdcp>=1.4.0' 'libsub' 'ffmpeg' 'glib2' 'imagemagick' 'openjpeg>=1.5.0' 'openjpeg<=1.5.2' 'libssh' 'wxgtk>=3.0.1' 'libquickmail>=0.1.19' 'libzip' 'xz' 'libsndfile')
-makedepends=('python2' 'boost>=1.45' 'git')
+#depends=('pangomm>=1.4' 'libcxml>=0.15.1' 'libdcp>=1.4.0' 'libsub' 'ffmpeg' 'glib2' 'imagemagick' 'openjpeg>=1.5.0' 'openjpeg<=1.5.2' 'libssh' 'wxgtk>=3.0.1' 'libquickmail>=0.1.19' 'libzip' 'xz' 'libsndfile')
+
+depends=('pangomm>=1.4' 'libsub-git' 'libcxml-git' 'libdcp-git' 'ffmpeg' 'glib2' 'imagemagick' 'libssh' 'wxgtk2>=3.0.1' 'libquickmail>=0.1.22' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio')
+
+makedepends=('python2' 'boost>=1.65.1' 'git' )
+
+
+
+
 provides=('dcpomatic')
 conflicts=('dcpomatic')
 source=('dcpomatic-git::git://git.carlh.net/git/dcpomatic.git')
