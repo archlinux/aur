@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ktexteditorpreviewplugin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Plugin for previewing content using the KTextEditor Framework'
 url='https://www.kde.org'
@@ -10,7 +10,7 @@ arch=(i686 x86_64)
 depends=(ktexteditor)
 makedepends=(extra-cmake-modules)
 source=("https://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('21e17a97fe2b942991ce564371ce822564397488847f8d21d7d5b24d4c120796'
+sha256sums=('ab54382dfd8e88247b53b72fdd9b259feb7c0266300b604db899edf0828677ae'
             'SKIP')
 validpgpkeys=(E191FD5BE6F46870F09E82B2024E7FB43D015474) # Friedrich W. H. Kossebau <kossebau@kde.org>
 
