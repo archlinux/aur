@@ -1,6 +1,6 @@
 pkgbase = openal-git
 	pkgdesc = Cross-platform 3D audio library, software implementation
-	pkgver = 1.18.1.r4.g8a735d0b
+	pkgver = 1.18.1.r84.g5ec11a01
 	pkgrel = 1
 	url = https://github.com/kcat/openal-soft
 	arch = i686
@@ -25,15 +25,15 @@ pkgbase = openal-git
 pkgname = openal-git
 	optdepends = qt5-base: alsoft-config GUI Configurator
 	optdepends = fluidsynth: MIDI rendering
-	provides = openal=1.18.1.r4.g8a735d0b
+	provides = openal=1.18.1.r84.g5ec11a01
 	conflicts = openal
 
 pkgname = openal-examples-git
 	pkgdesc = Cross-platform 3D audio library, software implementation (example programs)
-	depends = openal-git=1.18.1.r4.g8a735d0b-1
+	depends = openal-git=1.18.1.r84.g5ec11a01-1
 	depends = sdl2
 	depends = sdl_sound
 	depends = ffmpeg
-	provides = openal-examples=1.18.1.r4.g8a735d0b
+	provides = openal-examples=1.18.1.r84.g5ec11a01
 	conflicts = openal-examples
 

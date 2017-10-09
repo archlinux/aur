@@ -1,11 +1,11 @@
-# Maintainer: Kozeid <kozeid2@gmail.com>
+# Maintainer: Rafał Kozdrój <kozeid2@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Jason Chu <jchu@xentac.net>
 
 pkgbase=openal-git
 pkgname=(openal-git openal-examples-git)
-pkgver=1.18.1.r4.g8a735d0b
+pkgver=1.18.1.r84.g5ec11a01
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation"
 arch=(i686 x86_64)
@@ -23,8 +23,7 @@ pkgver() {
 }
 
 build() {
-  rm -rf build examples
-  mkdir build examples
+  mkdir -p build examples
   cd build
   cmake ../openal-soft -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
