@@ -5,7 +5,7 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.24.4
+pkgver=3.26.1
 pkgrel=1
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://git.gnome.org/browse/mutter"
@@ -24,6 +24,7 @@ depends=('dconf'
   'gnome-settings-daemon'
   'libgudev'
   'libinput'
+  'pipewire'
 )
 makedepends=('intltool'
   'gobject-introspection'
@@ -34,7 +35,7 @@ conflicts=('mutter' "gnome-shell>${pkgver:0:6}+999")
 provides=("mutter=${pkgver}")
 groups=('gnome')
 options=('!emptydirs')
-_commit=4c3e166469b724ff1b3c232473b1dacca2a42fe4  # gnome-3-24
+_commit=0e154ccf76aeb97c7e4b541322b4a1e898609936  # tags/3.26.1^0
 source=("git+https://git.gnome.org/browse/mutter#commit=$_commit"
   "startup-notification.patch"
   "catalyst-workaround.patch"
@@ -76,7 +77,8 @@ build() {
     --disable-schemas-compile \
     --enable-compile-warnings=minimum \
     --enable-gtk-doc \
-    --enable-egl-device
+    --enable-egl-device \
+    --enable-remote-desktop
 
   #https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' \
