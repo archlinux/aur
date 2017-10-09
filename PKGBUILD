@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-calculator-git
-pkgver=20170918.3f44656
+pkgver=20171001.dac34cc
 pkgrel=1
 pkgdesc="A cross-platform material design calculator"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
