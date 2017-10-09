@@ -3,7 +3,7 @@ Description=Lantern
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/lantern -headless=true
+ExecStart=/usr/bin/lantern -headless
 
 [Install]
 WantedBy=default.target

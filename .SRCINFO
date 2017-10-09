@@ -1,32 +1,33 @@
 pkgbase = lantern-beta
-	pkgdesc = Lantern is a free desktop application that delivers fast, reliable and secure access to the open Internet. (Beta Channel)
-	pkgver = 2.0.9
+	pkgdesc = Free desktop application that delivers fast, reliable and secure access to the open Internet.
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = https://getlantern.org
 	install = lantern-beta.install
 	arch = i686
 	arch = x86_64
 	license = Apache
-	depends = hicolor-icon-theme
-	depends = bzip2
-	depends = dbus
-	depends = glib2
-	depends = gtk3
+	makedepends = go>=1.6
+	makedepends = make
+	makedepends = git
+	makedepends = npm
 	depends = libappindicator-gtk3
-	depends = mesa
 	depends = xcb-util
 	depends = xdg-utils
-	depends = zlib
 	provides = lantern
+	conflicts = lantern
+	conflicts = lantern-git
+	conflicts = lantern-headless
+	conflicts = lantern-headless-git
 	options = !emptydirs
 	options = !strip
 	options = !docs
 	source = lantern.service
-	sha1sums = da705ba2fa3608a17258009b933e8bb58b3172a2
-	source_i686 = lantern-installer-beta-32-bit.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-32-bit.deb
-	sha1sums_i686 = 014396848a63531145971edd573f2c1afe3697e7
-	source_x86_64 = lantern-installer-beta-64-bit.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb
-	sha1sums_x86_64 = 6add655d00518794ef7c62f35dff4859ac766164
+	sha256sums = fdece37945be10c00210bbde7b4058c356ef1df0554bd963fcddd12990ff930b
+	source_i686 = lantern-beta-4.1.2-i686.deb::https://github.com/getlantern/lantern-binaries/raw/238a2b64fd7c69ad89721c53885e84d4a6b7268e/lantern-installer-beta-32-bit.deb
+	sha256sums_i686 = a8c26d603d1f98548c6c71b1431f5ea702250c84be8d63f8eddfc34a006ac3a4
+	source_x86_64 = lantern-beta-4.1.2-x86_64.deb::https://github.com/getlantern/lantern-binaries/raw/238a2b64fd7c69ad89721c53885e84d4a6b7268e/lantern-installer-beta-64-bit.deb
+	sha256sums_x86_64 = 4cab6a373f5e1704048bdef94052f8c990c8a1a877a60db9caa685a2d1d2ae26
 
 pkgname = lantern-beta
 
