@@ -8,9 +8,9 @@
 # http://bitcoin-otc.com/viewgpg.php?nick=ThomasV
 #
 
-pkgname=electron-cash-git
-pkgdesc="Lightweight Bitcoin Cash wallet"
-pkgver=2.9.2.r5.g8b2bdb6b
+pkgname='electron-cash-git'
+pkgdesc='Lightweight Bitcoin Cash wallet'
+pkgver=2.9.3.r29.gcd7042fc
 pkgrel=1
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
