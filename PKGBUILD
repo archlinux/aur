@@ -2,7 +2,7 @@
 
 pkgname=yalpam-git
 _pkgname=yalpam
-pkgver=50.1de6333
+pkgver=51.73c1111
 pkgrel=1
 pkgdesc="Yet another Arch Linux PAckage Manager"
 arch=('i686' 'x86_64')
@@ -13,6 +13,10 @@ depends=(
 	'xterm'
 	'yad'
 	'yaourt'
+)
+optdepends=(
+	'lostfiles: Find orphaned files not owned by any Arch packages'
+	'reflector: A Python 3 module and script to retrieve and filter the latest Pacman mirror list'
 )
 source=("git+${url}.git")
 sha1sums=('SKIP')
@@ -38,10 +42,10 @@ package() {
 
 	# Symlink main binaries
 	install -d "${pkgdir}/usr/bin"
-	ln -s "/usr/lib/${_pkgname}/${_pkgname}".sh "${pkgdir}/usr/bin/${_pkgname}"
-	ln -s "/usr/lib/${_pkgname}/"yup.sh "${pkgdir}/usr/bin/"yup
-	ln -s "/usr/lib/${_pkgname}/"update-sys.sh "${pkgdir}/usr/bin/"update-sys
-	ln -s "/usr/lib/${_pkgname}/"libfuncs.sh "${pkgdir}/usr/bin/"libfuncs
+	ln -fs "/usr/lib/${_pkgname}/${_pkgname}".sh "${pkgdir}/usr/bin/${_pkgname}"
+	ln -fs "/usr/lib/${_pkgname}/"yup.sh "${pkgdir}/usr/bin/"yup
+	ln -fs "/usr/lib/${_pkgname}/"update-sys.sh "${pkgdir}/usr/bin/"update-sys
+	ln -fs "/usr/lib/${_pkgname}/"libfuncs.sh "${pkgdir}/usr/bin/"libfuncs
 
 	# Place license file
 	install -D -m644 "${pkgdir}/usr/lib/${_pkgname}/"LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.GPL"
