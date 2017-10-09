@@ -1,9 +1,9 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
-# Maintainer: meatatt <meatatt at aliyun dot com>
+# Contributor: meatatt <meatatt at aliyun dot com>
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=55.2.0
+pkgver=55.2.1
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -24,14 +24,14 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=b2ba34e0dc10
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=4f725e960f942a09ed03fefc68043cd4d0206f35
+_commit=d6e4ba44dc372d353f84beb06f6ec94b9a90475e
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
         no-crmf.diff
         wifi-fix-interface.patch
-        "mozilla-kde.patch::$_patchurl/mozilla-kde.patch"
-        "firefox-kde.patch::$_patchurl/firefox-kde.patch"
+        "mozilla-kde-$_patchrev.patch::$_patchurl/mozilla-kde.patch"
+        "firefox-kde-$_patchrev.patch::$_patchurl/firefox-kde.patch"
         "fix_waterfox_browser-kde_xul.patch::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/fix_waterfox_browser-kde_xul.patch"
         pgo_fix_missing_kdejs.patch
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js"
@@ -41,7 +41,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         disable_e10s.patch
         wifi-disentangle.patch
         0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch
-        "mozilla-ucontext.patch::$_patchurl/mozilla-ucontext.patch"
+        "mozilla-ucontext-$_patchrev.patch::$_patchurl/mozilla-ucontext.patch"
         no-plt.diff)
 sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
@@ -81,7 +81,7 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
-  patch -Np1 -i ../mozilla-ucontext.patch
+  patch -Np1 -i ../mozilla-ucontext-$_patchrev.patch
   
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -Np1 -i ../wifi-disentangle.patch
@@ -173,8 +173,8 @@ ac_add_options --enable-eme=widevine
 END
 
   msg "Patching for KDE"
-  patch -Np1 -i "../mozilla-kde.patch"
-  patch -Np1 -i "../firefox-kde.patch"
+  patch -Np1 -i "../mozilla-kde-$_patchrev.patch"
+  patch -Np1 -i "../firefox-kde-$_patchrev.patch"
   patch -Np1 -i "../fix_waterfox_browser-kde_xul.patch"
   patch -Np1 -i "../disable_e10s.patch"
 
