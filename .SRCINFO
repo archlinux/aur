@@ -1,0 +1,17 @@
+pkgbase = neovim-gtk
+	pkgdesc = GTK ui for neovim written in rust using gtk-rs bindings. With ligatures support.
+	pkgver = v0.1.1
+	pkgrel = 1
+	url = https://github.com/daa84/neovim-gtk
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gtk3
+	source = neovim-gtk::git+https://github.com/daa84/neovim-gtk.git
+	sha256sums = SKIP
+
+pkgname = neovim-gtk
+
