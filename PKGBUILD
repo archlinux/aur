@@ -1,6 +1,6 @@
 # Maintainer: Seth Hendrick <seth@shendrick.net>
 pkgname=chaskis
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 epoch=
 pkgdesc="A generic framework written in C# for making IRC Bots."
@@ -11,7 +11,7 @@ groups=()
 depends=('mono>=4.2.2')
 makedepends=('nuget' 'git')
 checkdepends=()
-optdepends=("sqlite: For some Plugins")
+optdepends=()
 provides=()
 conflicts=()
 replaces=()
@@ -21,7 +21,7 @@ install=
 changelog=()
 source=("https://github.com/xforever1313/Chaskis/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('54C009DE0D22F6C249E7042FBF6A80DB9D723609943CEA67878352BC24340B6F')
+sha256sums=('0d82a0d41415f714371c1f4bacd5bdd0b042303424727fce90080a2719064928')
 validpgpkeys=()
 
 prepare() {
