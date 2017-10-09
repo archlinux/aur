@@ -1,7 +1,7 @@
 pkgbase = lalstochastic
 	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. lalstochastic
 	pkgver = 1.1.20
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
 	arch = any
 	groups = lalsuite
