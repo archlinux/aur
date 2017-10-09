@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-gsettings-git
-pkgver=20170915.8dcb30e
+pkgver=20170924.1f9eee0
 pkgrel=1
 pkgdesc="Qt-style wrapper for GSettings"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
