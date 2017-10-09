@@ -3,11 +3,11 @@
 pkgname=ttf-sil-abyssinica
 _fname=AbyssinicaSIL
 pkgver=1.500
-pkgrel=6
+pkgrel=7
 pkgdesc="OpenType calligraphic font for Ethiopic languages from SIL"
 arch=('any')
 url="http://software.sil.org/abyssinica/"
-license=('OFL')
+license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=()
 install=ttf.install
