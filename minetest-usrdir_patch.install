@@ -2,3 +2,8 @@ post_install() {
 echo 'Applying the patch...'
 /bin/sh -c 'cd / && patch -p1 -i /usr/share/libalpm/scripts/minetest-usrdir_patch.patch' && echo 'done'
 }
+
+post_upgrade() {
+echo 'Applying the patch...'
+/bin/sh -c 'cd / && patch -p1 -i /usr/share/libalpm/scripts/minetest-usrdir_patch.patch' && echo 'done'
+}
