@@ -5,7 +5,7 @@
 
 pkgname=gnucash
 pkgver=2.6.18
-pkgrel=2
+pkgrel=3
 _sourcerel=1
 pkgdesc="A personal and small-business financial-accounting application"
 arch=('i686' 'x86_64')
