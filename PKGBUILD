@@ -2,7 +2,7 @@
 
 pkgname=irccloud
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Chat on IRC from anywhere, and never miss a message"
 
 arch=('arm' 'i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 url="http://irccloud.com"
 depends=('electron')
 makedepends=('npm')
-source=("https://github.com/irccloud/irccloud-desktop/archive/v${pkgver}.tar.gz"
+source=("irccloud-${pkgver}.tar.gz::https://github.com/irccloud/irccloud-desktop/archive/v${pkgver}.tar.gz"
         "irccloud"
 	"irccloud.desktop"
         "irccloud.png") 
