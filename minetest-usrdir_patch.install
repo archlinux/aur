@@ -1,9 +1,9 @@
 post_install() {
-echo 'Applying the patch...'
-/bin/sh -c 'cd / && patch -p1 -i /usr/share/libalpm/scripts/minetest-usrdir_patch.patch' && echo 'done'
+/bin/sh -c 'cd / && patch -RNp1 -r- -i /usr/share/libalpm/scripts/minetest-usrdir_patch.patch'
+/bin/sh -c 'cd / && patch -Np1 -r- -i /usr/share/libalpm/scripts/minetest-usrdir_patch.patch'
 }
 
 post_upgrade() {
-echo 'Applying the patch...'
-/bin/sh -c 'cd / && patch -p1 -i /usr/share/libalpm/scripts/minetest-usrdir_patch.patch' && echo 'done'
+/bin/sh -c 'cd / && patch -RNp1 -r- -i /usr/share/libalpm/scripts/minetest-usrdir_patch.patch'
+/bin/sh -c 'cd / && patch -Np1 -r- -i /usr/share/libalpm/scripts/minetest-usrdir_patch.patch'
 }
