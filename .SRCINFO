@@ -1,7 +1,7 @@
 pkgbase = ttf-nanum
 	pkgdesc = Nanum series TrueType fonts
 	pkgver = 3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://hangeul.naver.com/
 	install = ttf.install
 	arch = any
