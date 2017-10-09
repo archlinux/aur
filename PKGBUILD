@@ -7,7 +7,7 @@ pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) 
 arch=('i686' 'x86_64')
 url="http://dcpomatic.com/"
 license=('GPL2')
-#depends=('pangomm>=1.4' 'libcxml>=0.15.1' 'libdcp>=1.4.0' 'libsub' 'ffmpeg' 'glib2' 'imagemagick' 'openjpeg>=1.5.0' 'openjpeg<=1.5.2' 'libssh' 'wxgtk>=3.0.1' 'libquickmail>=0.1.19' 'libzip' 'xz' 'libsndfile')
+#depends=('pangomm>=1.4' 'libcxml-git' 'libdcp>=1.4.0' 'libsub' 'ffmpeg' 'glib2' 'imagemagick' 'openjpeg>=1.5.0' 'openjpeg<=1.5.2' 'libssh' 'wxgtk>=3.0.1' 'libquickmail>=0.1.19' 'libzip' 'xz' 'libsndfile')
 
 depends=('pangomm>=1.4' 'libsub-git' 'libcxml-git' 'libdcp-git' 'ffmpeg' 'glib2' 'imagemagick' 'libssh' 'wxgtk2>=3.0.1' 'libquickmail>=0.1.22' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio')
 
