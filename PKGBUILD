@@ -2,15 +2,16 @@
 # Contributor: Max Schlemmer <max.schlemmer@gmail.com>
 pkgname=python-kwant
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package for numerical calculations on tight-binding models with a strong focus on quantum transport"
 arch=('any')
 url="http://kwant-project.org/"
 license=('BSD')
 depends=(python python-scipy lapack blas python-tinyarray)
 optdepends=(
-	'python-matplotlib: needed for plotting support and the tutorial'
-	'mumps: a sparse linear algebra library for speed up and memory usage reduction (use AUR mumps-seq-shared or any other built as shared library)'
+  'python-matplotlib: needed for plotting support and the tutorial'
+  'python-sympy: needed for the kwant.continuum submodule'
+  'mumps: a sparse linear algebra library for speed up and memory usage reduction (use AUR mumps-seq-shared or any other built as shared library)'
 )
 checkdepends=(python-nose)
 source=(
