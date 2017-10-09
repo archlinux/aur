@@ -1,31 +1,27 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-# Contributors: Nabil Freij <nabil.freij@gmail.com>
+# Maintainer: Amal Karunarathna <nasashinega@gmail.com>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributor: Nabil Freij <nabil.freij@gmail.com>
 
 pkgname=gnome-shell-extension-workspaces-to-dock
-pkgver=41_3.24.r0.ga544f98
+_gitname=workspaces-to-dock
+pkgver=44_3.26
 pkgrel=1
 pkgdesc="Gnome shell extension, Workspaces to Dock, Transform Gnome Shell's overview workspaces into an intelligent dock."
 arch=('any')
-url="https://extensions.gnome.org/extension/427/workspaces-to-dock/"
-license=('GPL')
-depends=('gnome-shell')
-groups=('gnome-shell-extensions')
-makedepends=('git' 'gnome-common')
-source=("git+https://github.com/passingthru67/workspaces-to-dock.git")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/workspaces-to-dock"
-  git describe --long | sed 's/workspaces-to-dock.v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+url="https://github.com/passingthru67/workspaces-to-dock"
+license=('GPL3')
+depends=('gnome-shell>=3.26')
+conflicts=("${_gitname}-git")
+source=("https://github.com/passingthru67/${_gitname}/archive/${_gitname}.v${pkgver}.tar.gz")
+sha256sums=('adabf07456e75673eaa01147cf6f2f87bbd7ee88e22d07491eb314fc24730ad1')
 
 build() {
-  cd "$srcdir/workspaces-to-dock"
+  cd "${srcdir}/${_gitname}-${_gitname}.v${pkgver}"
   glib-compile-schemas "workspaces-to-dock@passingthru67.gmail.com/schemas/"
 }
 
 package() {
-  cd "$srcdir/workspaces-to-dock"
-  install -d "$pkgdir/usr/share/gnome-shell/extensions"
-  cp -a "workspaces-to-dock@passingthru67.gmail.com" "$pkgdir/usr/share/gnome-shell/extensions/"
+  cd "${srcdir}/${_gitname}-${_gitname}.v${pkgver}"
+  install -d "${pkgdir}/usr/share/gnome-shell/extensions"
+  cp -a "workspaces-to-dock@passingthru67.gmail.com" "${pkgdir}/usr/share/gnome-shell/extensions/"
 }
