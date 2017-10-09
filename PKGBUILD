@@ -2,9 +2,9 @@
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
-pkgname=python-lvm2py
+pkgname=('python-lvm2py' 'python2-lvm2py')
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A ctypes based binding for lvm’s liblvm2app api"
 arch=('i686' 'x86_64')
 url="http://xzased.github.com/lvm2py"
@@ -21,14 +21,14 @@ sha512sums=('2d3761880ce81a56062ffb489c6f8a0dfb99c0a6deb1b5ee8d5df5e121f25137ef0
             'SKIP')
 
 package_python-lvm2py() {
-  depends=('python' 'python-future')
+  depends=('python')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-lvm2py() {
-  depends=('python2' 'python2-futures')
+  depends=('python2')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize=1
