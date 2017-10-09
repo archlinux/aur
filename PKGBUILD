@@ -2,8 +2,8 @@
 
 pkgname=openfaas-cli
 pkgdesc="OpenFaaS CLI"
-pkgver=0.4.18.rebuild
-pkgrel=1
+pkgver=0.4.18
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/openfaas/faas-cli"
 license=('mit')
