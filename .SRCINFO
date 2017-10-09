@@ -1,0 +1,19 @@
+pkgbase = fibre-git
+	pkgdesc = A prototype for a lighter desktop client for Wire
+	pkgver = 2017.10.08.1f43469
+	pkgrel = 1
+	url = https://gitlab.com/ddobrev/Fibre
+	arch = x86_64
+	license = unspecified
+	makedepends = git
+	makedepends = imagemagick
+	depends = qt5-webview
+	source = fibre::git+https://gitlab.com/ddobrev/Fibre
+	source = fibre.desktop
+	source = Fibre.svg
+	sha256sums = SKIP
+	sha256sums = 88edb23f0b37b61dfe6a0e783d9720983e4ab68af9aba7aa054241a4ee5e0f74
+	sha256sums = fbf23f4bcb8cb407242184388ae39a01eb854c6eda85f5b80595ec15de643b06
+
+pkgname = fibre-git
+

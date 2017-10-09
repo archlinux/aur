@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.1
+Name=Fibre
+GenericName=Privacy-Oriented Messenger
+Comment=Lightweight prototype client for Wire
+Exec=fibre
+Icon=fibre
+Terminal=false
+Categories=Network;InstantMessaging;Chat;VideoConference
+Keywords=chat;encrypt;e2e;messenger;videocall
