@@ -10,7 +10,7 @@ pkgbase = spotify-ripper-git
 	depends = python2
 	depends = python2-pyspotify=2.0.5
 	depends = python2-colorama-0.3.3
-	depends = python2-mutagen-1.30
+	depends = python2-mutagen
 	depends = python2-requests>=2.3.0
 	depends = python2-schedule>=0.3.1
 	optdepends = lame: Rip songs to mp3
