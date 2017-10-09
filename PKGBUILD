@@ -3,8 +3,8 @@
 
 _pypi_name=mypy
 pkgname=${_pypi_name}
-pkgver=0.521
-pkgrel=3
+pkgver=0.530
+pkgrel=1
 pkgdesc='Optional static typing for Python 2 and 3'
 url="https://github.com/python/mypy"
 arch=('any')
@@ -21,8 +21,7 @@ package() {
     install -Dm644 "$pkgname.LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     cd "${srcdir}/${_pypi_name}-${pkgver}"
-    sed -i "s/'typed-ast >= 1.0.4, < 1.1.0'/'typed-ast >= 1.0.4, < 1.2.0'/" setup.py
     python setup.py install --prefix="/usr" --root="${pkgdir}" --optimize=1
 }
-sha256sums=('9d30df20cd937b80cfc6007d75426f27a232789cfa288c63bf9370f2542c9658'
+sha256sums=('f94b4600b3ed3daa8da17648f08d29d6336b9da0bb1709d260bb4d14f20a9343'
             'b2f0953f966a13bc1b01f4225420fd106ef870a39c8f8ff8b22aaf4cc77c0cfe')
