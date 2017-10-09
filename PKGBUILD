@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  help2man -N -n "${pkgdesc}" -h -h -v -v ${pkgname} | gzip - > ${pkgname}.1.gz
+  help2man -N -n "${pkgdesc}" -h -h -v -v ./${pkgname} | gzip - > ${pkgname}.1.gz
 }
 
 package() {
