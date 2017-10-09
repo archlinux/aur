@@ -3,7 +3,7 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=4.4.3
-pkgrel=2
+pkgrel=4
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -40,7 +40,7 @@ prepare() {
   rm *.tar.gz
 
   cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}"
-  rm -r core dictionaries sdkjs sdkjs-plugins server
+  rm -r core dictionaries sdkjs sdkjs-plugins server web-apps
   mv ../core* core
   mv ../dictionaries* dictionaries
   mv ../sdkjs-plugins* sdkjs-plugins
@@ -50,12 +50,19 @@ prepare() {
 
   # patching v8 compile error
   sed -i 's/-fPIC/-Wno-unused-function -Wno-unused-variable -fPIC/g' core/Common/3dParty/v8/build.sh
+
+  # python2 dependency for gclient
+  sed -i '13iexport PATH="'${srcdir}'/path:$PATH"' core/Common/3dParty/v8/fetch.sh
+  # gcc6 dependency for v8
+  sed -i '3iexport PATH="'${srcdir}'/path:$PATH"' core/Common/3dParty/v8/build.sh
+
+  # patching core/desktopeditor/docbuilder file
+  patch -p0 -i ../docbuilder_p.patch
 }
 
 build() {
   cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}"
 
-  export PATH="$srcdir/path:$PATH"
 
   # Download & build third party modules 
   cd core/Common/3dParty
