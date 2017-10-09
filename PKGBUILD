@@ -1,7 +1,7 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
 
 pkgname=cloudsql-proxy
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc="Google Cloud Platform - Cloud SQL Proxy"
 arch=('x86_64' 'i686')
@@ -24,4 +24,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+
 
