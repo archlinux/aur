@@ -1,6 +1,6 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
 pkgname=gandi.cli
-pkgver=0.22
+pkgver=1.0
 pkgrel=1
 pkgdesc="Gandi command line interface"
 arch=('any')
@@ -19,7 +19,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/Gandi/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('615e6fac3d63ccf04535c8abba786f3f67b30b05f9a1d24e087ba1c776e6af16')
+sha256sums=('5b0da1b31cf7414c0c165dcf7e51704f3b4cbe37bbf659f6bdd479bc14922469')
 
 build() {
   # Building the manpage
@@ -27,11 +27,10 @@ build() {
   rst2man --no-generator gandicli.man.rst > gandi.1
 }
 
-# FIXME: Tests disabled to mitigate https://github.com/Gandi/gandi.cli/issues/224
-#check() {
-#  cd "${srcdir}/${pkgname}-${pkgver}"
-#  python setup.py test
-#}
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py test
+}
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
