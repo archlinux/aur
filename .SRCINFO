@@ -1,9 +1,10 @@
 pkgbase = metaio
 	pkgdesc = The LIGO Scientific Consortium Algorithm Library Suite. metaio
 	pkgver = 8.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ligo.org/DASWG/LALSuiteInstall
 	arch = any
+	groups = lalsuite
 	license = unknown
 	options = !emptydirs
 	source = http://software.ligo.org/lscsoft/source/metaio-8.4.0.tar.gz
