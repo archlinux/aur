@@ -4,4 +4,5 @@
 *.tgz
 pkg/
 src/
+powerline-go-*
 
