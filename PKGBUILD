@@ -6,7 +6,7 @@
 pkgname=boostnote
 _pkgname=Boostnote
 pkgver=0.8.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source note-taking app for programmers"
 arch=('any')
 url="https://boostnote.io/"
@@ -19,7 +19,7 @@ source=(
   "${pkgname}.js"
   "${pkgname}.desktop"
   "warning-fix.patch"
-  "disable-analytics.patch"
+  "remove-analytics.patch"
   )
 
 sha512sums=(
@@ -27,14 +27,14 @@ sha512sums=(
   'f0abbdcca34d7f74d3dc66ffc2d0995416e7708c715d55fa58c4c2abc31d191ea42f3434e3105292b4817f83ac0ca89f456f5f93007ae80ab2426c8941f615f9'
   '18bcda13580da8ceeaa86793a77ec00a053b8fd51451dad7e2b1a19553fe1a467ac647b44b789212e783f3f6a80968cc9404e884ef7ff6b1f6588473b3229d40'
   '4bc6ed51f34496fe3354e55f5bee7c00997b48c5fa45f0565390a73fab0ecc4ab80285a6835ca6e5d5cb94de61063dbc6e49f0e0ac40983e96a99155fe4e6ab9'
-  '951a57d051d6961563915bd480155bdb28b0e779716311c657f5cfca63b4fdaa9d71de2dc3a12cdf3d57f4a0b0a735a7599781a8085c7189be40d5974f065fb9'
+  '8c959700471883769955da93de60b871083bce6849721274d7e29540dde342c406c0713c123eaf61c153dab7d1816075c71e078454302ce79b0ef04bf89f0989'
   )
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
   patch -Np1 -i "${srcdir}/warning-fix.patch"
-  patch -Np1 -i "${srcdir}/disable-analytics.patch"
+  patch -Np1 -i "${srcdir}/remove-analytics.patch"
 }
 
 build() {

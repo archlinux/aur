@@ -1,0 +1,244 @@
+diff -ura a/browser/finder/index.js b/browser/finder/index.js
+--- a/browser/finder/index.js	2017-09-23 10:02:56.000000000 +0200
++++ b/browser/finder/index.js	2017-10-09 14:31:25.779635690 +0200
+@@ -10,7 +10,6 @@
+ import NoteList from './NoteList'
+ import NoteDetail from './NoteDetail'
+ import SideNavFilter from 'browser/components/SideNavFilter'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ require('!!style!css!stylus?sourceMap!../main/global.styl')
+ require('../lib/customMeta')
+ 
+@@ -95,7 +94,6 @@
+ 
+     if (e.keyCode === 13) {
+       this.refs.detail.saveToClipboard()
+-      AwsMobileAnalyticsConfig.recordDynamicCustomEvent('COPY_FINDER')
+       hideFinder()
+       e.preventDefault()
+     }
+diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/MarkdownNoteDetail.js
+--- a/browser/main/Detail/MarkdownNoteDetail.js	2017-09-23 10:02:56.000000000 +0200
++++ b/browser/main/Detail/MarkdownNoteDetail.js	2017-10-09 14:31:23.729616329 +0200
+@@ -13,7 +13,6 @@
+ import StatusBar from '../StatusBar'
+ import _ from 'lodash'
+ import { findNoteTitle } from 'browser/lib/findNoteTitle'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ import TrashButton from './TrashButton'
+ import InfoButton from './InfoButton'
+ import InfoPanel from './InfoPanel'
+@@ -106,7 +105,6 @@
+           type: 'UPDATE_NOTE',
+           note: note
+         })
+-        AwsMobileAnalyticsConfig.recordDynamicCustomEvent('EDIT_NOTE')
+       })
+   }
+ 
+@@ -145,7 +143,6 @@
+ 
+   handleStarButtonClick (e) {
+     let { note } = this.state
+-    if (!note.isStarred) AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_STAR')
+ 
+     note.isStarred = !note.isStarred
+ 
+diff -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/SnippetNoteDetail.js
+--- a/browser/main/Detail/SnippetNoteDetail.js	2017-09-23 10:02:56.000000000 +0200
++++ b/browser/main/Detail/SnippetNoteDetail.js	2017-10-09 14:31:22.269602537 +0200
+@@ -16,7 +16,6 @@
+ import ConfigManager from 'browser/main/lib/ConfigManager'
+ import _ from 'lodash'
+ import { findNoteTitle } from 'browser/lib/findNoteTitle'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ import TrashButton from './TrashButton'
+ import InfoButton from './InfoButton'
+ import InfoPanel from './InfoPanel'
+@@ -116,7 +115,6 @@
+           type: 'UPDATE_NOTE',
+           note: note
+         })
+-        AwsMobileAnalyticsConfig.recordDynamicCustomEvent('EDIT_NOTE')
+       })
+   }
+ 
+@@ -155,7 +153,6 @@
+ 
+   handleStarButtonClick (e) {
+     let { note } = this.state
+-    if (!note.isStarred) AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_STAR')
+ 
+     note.isStarred = !note.isStarred
+ 
+diff -ura a/browser/main/Detail/TagSelect.js b/browser/main/Detail/TagSelect.js
+--- a/browser/main/Detail/TagSelect.js	2017-09-23 10:02:56.000000000 +0200
++++ b/browser/main/Detail/TagSelect.js	2017-10-09 14:31:20.859589219 +0200
+@@ -2,7 +2,6 @@
+ import CSSModules from 'browser/lib/CSSModules'
+ import styles from './TagSelect.styl'
+ import _ from 'lodash'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ 
+ class TagSelect extends React.Component {
+   constructor (props) {
+@@ -57,7 +56,6 @@
+   }
+ 
+   submitTag () {
+-    AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_TAG')
+     let { value } = this.props
+     let newTag = this.refs.newTag.value.trim().replace(/ +/g, '_')
+ 
+diff -ura a/browser/main/Main.js b/browser/main/Main.js
+--- a/browser/main/Main.js	2017-09-23 10:02:56.000000000 +0200
++++ b/browser/main/Main.js	2017-10-09 14:31:19.529576656 +0200
+@@ -12,7 +12,6 @@
+ import modal from 'browser/main/lib/modal'
+ import InitModal from 'browser/main/modals/InitModal'
+ import mixpanel from 'browser/main/lib/mixpanel'
+-import mobileAnalytics from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ import eventEmitter from 'browser/main/lib/eventEmitter'
+ import RealtimeNotification from 'browser/components/RealtimeNotification'
+ 
+@@ -24,10 +23,6 @@
+   constructor (props) {
+     super(props)
+ 
+-    if (process.env.NODE_ENV === 'production') {
+-      mobileAnalytics.initAwsMobileAnalytics()
+-    }
+-
+     let { config } = props
+ 
+     this.state = {
+diff -ura a/browser/main/modals/CreateFolderModal.js b/browser/main/modals/CreateFolderModal.js
+--- a/browser/main/modals/CreateFolderModal.js	2017-09-23 10:02:56.000000000 +0200
++++ b/browser/main/modals/CreateFolderModal.js	2017-10-09 14:31:17.979562013 +0200
+@@ -5,7 +5,6 @@
+ import store from 'browser/main/store'
+ import consts from 'browser/lib/consts'
+ import ModalEscButton from 'browser/components/ModalEscButton'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ 
+ class CreateFolderModal extends React.Component {
+   constructor (props) {
+@@ -49,7 +48,6 @@
+   }
+ 
+   confirm () {
+-    AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_FOLDER')
+     if (this.state.name.trim().length > 0) {
+       let { storage } = this.props
+       let input = {
+diff -ura a/browser/main/modals/NewNoteModal.js b/browser/main/modals/NewNoteModal.js
+--- a/browser/main/modals/NewNoteModal.js	2017-09-23 10:02:56.000000000 +0200
++++ b/browser/main/modals/NewNoteModal.js	2017-10-09 14:31:16.569548694 +0200
+@@ -5,7 +5,6 @@
+ import { hashHistory } from 'react-router'
+ import ee from 'browser/main/lib/eventEmitter'
+ import ModalEscButton from 'browser/components/ModalEscButton'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ 
+ class NewNoteModal extends React.Component {
+   constructor (props) {
+@@ -24,8 +23,6 @@
+   }
+ 
+   handleMarkdownNoteButtonClick (e) {
+-    AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_MARKDOWN')
+-    AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_ALLNOTE')
+     let { storage, folder, dispatch, location } = this.props
+     dataApi
+       .createNote(storage, {
+@@ -56,8 +53,6 @@
+   }
+ 
+   handleSnippetNoteButtonClick (e) {
+-    AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_SNIPPET')
+-    AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_ALLNOTE')
+     let { storage, folder, dispatch, location } = this.props
+ 
+     dataApi
+diff -ura a/browser/main/modals/PreferencesModal/InfoTab.js b/browser/main/modals/PreferencesModal/InfoTab.js
+--- a/browser/main/modals/PreferencesModal/InfoTab.js	2017-09-23 10:02:56.000000000 +0200
++++ b/browser/main/modals/PreferencesModal/InfoTab.js	2017-10-09 14:31:14.859532537 +0200
+@@ -1,9 +1,6 @@
+ import React from 'react'
+ import CSSModules from 'browser/lib/CSSModules'
+ import styles from './InfoTab.styl'
+-import ConfigManager from 'browser/main/lib/ConfigManager'
+-import store from 'browser/main/store'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ 
+ const electron = require('electron')
+ const { shell, remote } = electron
+@@ -14,7 +11,6 @@
+     super(props)
+ 
+     this.state = {
+-      config: this.props.config
+     }
+   }
+ 
+@@ -23,29 +19,6 @@
+     e.preventDefault()
+   }
+ 
+-  handleConfigChange (e) {
+-    const newConfig = { amaEnabled: this.refs.amaEnabled.checked }
+-
+-    this.setState({ config: newConfig })
+-  }
+-
+-  handleSaveButtonClick (e) {
+-    let newConfig = {
+-      amaEnabled: this.state.config.amaEnabled
+-    }
+-
+-    if (!newConfig.amaEnabled) {
+-      AwsMobileAnalyticsConfig.recordDynamicCustomEvent('DISABLE_AMA')
+-    }
+-
+-    ConfigManager.set(newConfig)
+-
+-    store.dispatch({
+-      type: 'SET_CONFIG',
+-      config: newConfig
+-    })
+-  }
+-
+   render () {
+     return (
+       <div styleName='root'>
+@@ -95,18 +68,6 @@
+             License: GPL v3
+           </li>
+         </ul>
+-        <hr />
+-        <div styleName='policy'>Data collection policy</div>
+-        <div>We collect only the number of DAU for Boostnote and **DO NOT collect** any detail information such as your note content.</div>
+-        <div>You can see how it works on <a href='https://github.com/BoostIO/Boostnote' onClick={(e) => this.handleLinkClick(e)}>GitHub</a>.</div>
+-        <div>These data are only used for Boostnote improvements.</div>
+-        <input onChange={(e) => this.handleConfigChange(e)}
+-          checked={this.state.config.amaEnabled}
+-          ref='amaEnabled'
+-          type='checkbox'
+-        />
+-        Enable to send analytics to our servers<br />
+-        <button styleName='policy-submit' onClick={(e) => this.handleSaveButtonClick(e)}>Save</button>
+       </div>
+     )
+   }
+diff -ura a/package.json b/package.json
+--- a/package.json	2017-09-23 10:02:56.000000000 +0200
++++ b/package.json	2017-10-09 14:31:11.479500600 +0200
+@@ -50,8 +50,6 @@
+   "dependencies": {
+     "@rokt33r/markdown-it-math": "^4.0.1",
+     "@rokt33r/season": "^5.3.0",
+-    "aws-sdk": "^2.48.0",
+-    "aws-sdk-mobile-analytics": "^0.9.2",
+     "codemirror": "^5.19.0",
+     "electron-config": "^0.2.1",
+     "electron-gh-releases": "^2.0.2",
