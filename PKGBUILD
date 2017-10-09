@@ -1,8 +1,9 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=lalburst
+_pkgname=${pkgname}
 pkgver=1.4.4
-pkgrel=2
-pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. lalburst"
+pkgrel=3
+pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
 license=('unknown')
@@ -15,12 +16,19 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("http://software.ligo.org/lscsoft/source/lalsuite/${pkgname}-${pkgver}.tar.xz")
+source=("http://software.ligo.org/lscsoft/source/lalsuite/${_pkgname}-${pkgver}.tar.xz")
 sha256sums=('2fc15ecd5cf195c2794234977f2c320efbcab2f294a03f8b5eda9ac7edbc93f1')
-package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
+build() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
     sed -i 's/\-Werror//g' configure
-    ./configure --prefix=$pkgdir/usr
+    ./configure --prefix=$pkgdir/usr CFLAGS=-O3
     make -j
+}
+package() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
     make install
+}
+check() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
+    make -j check
 }
