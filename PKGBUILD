@@ -1,8 +1,8 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
 _pkgname=gandi.cli
 pkgname=${_pkgname}-git
-pkgver=0.19.r23.g68bc705
-pkgrel=2
+pkgver=1.0.r0.g2d0903c
+pkgrel=1
 pkgdesc="Gandi command line interface"
 arch=('any')
 url="http://cli.gandi.net"
@@ -11,7 +11,7 @@ groups=()
 depends=('python' 'python-yaml' 'python-click>=3.1' 'python-requests' 'python-ipy' 'openssl' 'openssh' 'git')
 optdepends=('docker: gandi docker support')
 makedepends=('git' 'python-setuptools')
-checkdepends=('python-nose' 'python-coverage' 'python-tox' 'python-mock')
+checkdepends=('python-nose' 'python-coverage' 'python-tox' 'python-mock' 'python-httpretty')
 makedepends=('python-docutils')
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
 conflicts=("${pkgname%-git}")
