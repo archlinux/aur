@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=fibre-git
 _pkgname=${pkgname%-git}
-pkgver=2017.10.08.1f43469
+pkgver=2017.10.09.5650a2d
 pkgrel=1
 pkgdesc="A prototype for a lighter desktop client for Wire"
 arch=('x86_64')
@@ -10,11 +10,9 @@ license=('unspecified')
 depends=('qt5-webview')
 makedepends=('git' 'imagemagick')
 source=('fibre::git+https://gitlab.com/ddobrev/Fibre'
-        'fibre.desktop'
-        'Fibre.svg')
+        'fibre.desktop')
 sha256sums=('SKIP'
-            '88edb23f0b37b61dfe6a0e783d9720983e4ab68af9aba7aa054241a4ee5e0f74'
-            'fbf23f4bcb8cb407242184388ae39a01eb854c6eda85f5b80595ec15de643b06')
+            '88edb23f0b37b61dfe6a0e783d9720983e4ab68af9aba7aa054241a4ee5e0f74')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
@@ -38,9 +36,9 @@ package() {
   desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_pkgname}.desktop"
   for res in 32x32 48x48 64x64 128x128 256x256; do
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
-    convert -resize ${res} -background transparent "${startdir}/Fibre.svg" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${_pkgname}.png"
+    convert -resize ${res} -background transparent Fibre.svg "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${_pkgname}.png"
     chmod 644 "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${_pkgname}.png"
   done
   install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-  install -Dm644 "${startdir}/Fibre.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+  install -Dm644 Fibre.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 }
