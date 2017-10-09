@@ -6,8 +6,8 @@
 # Contributor: Cody Maloney <cmaloney@theoreticalchaos.com>
 
 pkgname=mingw-w64-gtest
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Google Test - C++ testing utility based on the xUnit framework (like JUnit)"
 arch=(any)
 url="https://github.com/google/googletest"
@@ -16,12 +16,12 @@ depends=(mingw-w64-crt)
 makedepends=(mingw-w64-cmake python2)
 options=(!buildflags staticlibs !strip)
 source=("https://github.com/google/googletest/archive/release-${pkgver}.tar.gz")
-sha512sums=('c623d5720c4ed574e95158529872815ecff478c03bdcee8b79c9b042a603533f93fe55f939bcfe2cd745ce340fd626ad6d9a95981596f1a4d05053d874cd1dfc')
+sha512sums=('1dbece324473e53a83a60601b02c92c089f5d314761351974e097b2cf4d24af4296f9eb8653b6b03b1e363d9c5f793897acae1f0c7ac40149216035c4d395d9d')
 
 _mingw_arch=(i686-w64-mingw32 x86_64-w64-mingw32)
 
 build() {
-    cd "googletest-release-${pkgver}"
+    cd "googletest-release-${pkgver}/googletest"
 
     for _arch in "${_mingw_arch[@]}"; do
         mkdir -p "build_${_arch}"
@@ -31,6 +31,7 @@ build() {
             -DLIB_INSTALL_DIR=lib \
             -DBUILD_SHARED_LIBS=ON \
             -DCMAKE_SKIP_RPATH=ON \
+            -Dgtest_disable_pthreads=ON \
             ..
         make
         popd
@@ -40,7 +41,7 @@ build() {
 }
 
 package() {
-    cd "googletest-release-${pkgver}"
+    cd "googletest-release-${pkgver}/googletest"
 
     for _arch in "${_mingw_arch[@]}"; do
         mkdir -pm 0755 "${pkgdir}/usr/${_arch}"/{bin,lib,include/gtest/internal,share/licenses/${pkgname},src/gtest/src,src/gtest/cmake}
