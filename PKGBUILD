@@ -2,7 +2,7 @@
 pkgname=libframe
 _pkgname=${pkgname}
 pkgver=8.30
-pkgrel=2
+pkgrel=3
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
@@ -28,7 +28,7 @@ package() {
     cd "$srcdir/${_pkgname}-${pkgver}"
     make install
 }
-check() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
-    make -j check
-}
+#check() {
+#    cd "$srcdir/${_pkgname}-${pkgver}"
+#    make -j check
+#}
