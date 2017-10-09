@@ -1,6 +1,6 @@
 pkgbase = irccloud
 	pkgdesc = Chat on IRC from anywhere, and never miss a message
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = http://irccloud.com
 	arch = arm
@@ -9,12 +9,12 @@ pkgbase = irccloud
 	license = Apache
 	makedepends = npm
 	depends = electron
-	source = https://github.com/irccloud/irccloud-desktop/archive/v0.3.0.tar.gz
+	source = https://github.com/irccloud/irccloud-desktop/archive/v0.4.0.tar.gz
 	source = irccloud
 	source = irccloud.desktop
 	source = irccloud.png
-	sha256sums = a0ca46cbcea6030d4b68f53fbca28bdfb0ff6fe8e46f32a51a4d9fd4922efe8a
-	sha256sums = 620a7208a4a0c0d79546079273e6d4297cd35da897995ca3c15f1c15970222a0
+	sha256sums = 994edff685111359b51884cdf565fdfd1e47e08ab756217b9a6b366ad0932aee
+	sha256sums = 019f90a6bb3ec816a2ac8224b85792025e2885ef7cb451e2d2c70fdd68255acc
 	sha256sums = 2f58dd2b70e6867bfddc216c25f704c4ebd9a427bdcbe4de92b0a2ed06407569
 	sha256sums = d95945490c9728dee963fd98b441293a1e6d664e7a760e610f4622239b26a4d8
 
