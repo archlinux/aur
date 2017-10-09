@@ -1,7 +1,7 @@
 pkgbase = wire-desktop-beta
 	pkgdesc = Modern, private messenger. Based on Electron.
 	pkgver = 2.17.2813
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wire.com/
 	arch = x86_64
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = wire-desktop-beta
 	depends = libxss
 	depends = libxtst
 	depends = nss
+	depends = xdg-utils
 	optdepends = hunspell-en: for English spellcheck support
 	provides = wire-desktop
 	conflicts = wire-desktop-bin

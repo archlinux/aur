@@ -2,13 +2,13 @@
 pkgname=wire-desktop-beta
 _pkgname=${pkgname%-beta}
 pkgver=2.17.2813
-pkgrel=3
+pkgrel=4
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop-bin' 'wire-desktop' 'wire-desktop-git')
-depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
+depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss' 'xdg-utils')
 makedepends=('cargo' 'npm' 'python2' 'git')
 optdepends=('hunspell-en: for English spellcheck support')
 provides=('wire-desktop')
