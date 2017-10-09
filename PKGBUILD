@@ -11,13 +11,13 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/NoMore201/googleplay-api/ar
 md5sums=('3a69e2e2422b7c05c13160c7fa73f183')
  
 package_python-gpapi() {
-    depends=("python")
+    depends=("python" "python-crypto" "python-protobuf" "python-clint" "python-requests")
     cd googleplay-api-$pkgver
     python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 package_python2-gpapi() {
-    depends=("python2")
+    depends=("python2" "python2-crypto" "python2-protobuf" "python2-clint" "python2-requests")
     cd googleplay-api-$pkgver
     python2 setup.py install --root="${pkgdir}/" --optimize=1
     find "$pkgdir" -name '*.py' -exec sed -i 's|#!/usr/bin/python$|#!/usr/bin/python2|g' {} \;
