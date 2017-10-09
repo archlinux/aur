@@ -4,7 +4,7 @@
 # Contributor: Jason Chu <jchu@xentac.net>
 
 pkgname=lib32-openal-git
-pkgver=1.18.1.r54.g2916efee
+pkgver=1.18.1.r84.g5ec11a01
 pkgrel=1
 pkgdesc="A cross-platform 3D audio library (32-bit)"
 arch=(x86_64)
@@ -28,8 +28,7 @@ build() {
   export CXX="g++ -m32 -mstackrealign"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  rm -rf build
-  mkdir build
+  mkdir -p build
   cd build
   cmake ../openal-soft -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
