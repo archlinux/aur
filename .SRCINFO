@@ -1,0 +1,16 @@
+pkgbase = minetest-mod-meshnodes-git
+	pkgdesc = Meshnodes is a Minetest-mod that transforms ordinary minetest nodes into a connected array of replica entities to which players can attach to and manoeuvre.
+	pkgver = 30.5901137
+	pkgrel = 1
+	url = https://github.com/stujones11/meshnode
+	install = minetest-mod-meshnodes-git.install
+	arch = any
+	license = custom
+	makedepends = git
+	optdepends = minetest-usrdir_patch
+	provides = minetest-mod-meshnodes
+	source = minetest-mod-meshnodes::git://github.com/stujones11/meshnode.git
+	md5sums = SKIP
+
+pkgname = minetest-mod-meshnodes-git
+
