@@ -7,7 +7,7 @@ pkgdesc="libsub is a small C++ library to read and write subtitles in a few diff
 arch=('i686' 'x86_64')
 url="http://carlh.net/libsub"
 license=('GPL')
-depends=('libdcp-git'  'liblocked-sstream-git' 'libcxml>=0.15.2' 'openssl' 'libxml++>=2.6' 'xmlsec' 'openjpeg'  'libsigc++>=2.0' 'boost-libs>=1.45')
+depends=('libdcp-git'  'liblocked-sstream-git' 'libcxml-git' 'openssl' 'libxml++>=2.6' 'xmlsec' 'openjpeg'  'libsigc++>=2.0' 'boost-libs>=1.45')
 makedepends=('python2' 'boost>=1.45')
 provides=('libsub')
 conflicts=('libsub')
