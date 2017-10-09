@@ -4,10 +4,9 @@
 
 pkgname='ripit'
 pkgver='4.0.0_beta20140508'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Command line tool to rip tracks from audio cds and encode them'
 arch=('any')
-url='http://www.suwald.com/ripit'
 license=('GPL')
 depends=('cdparanoia' 'cddb_get' 'perl-xml-simple' 'perl-mp3-tag')
 optdepends=(
@@ -21,7 +20,7 @@ optdepends=(
   'perl-libwww: Submitting to CDDB' 
   'libmusicbrainz3: Tagging (Musicbrainz.org)'
 )
-source=(${url}/${pkgname}-${pkgver}.tar.bz2)
+source=(${pkgname}-${pkgver}.tar.bz2)
 md5sums=('aba1187fc3040ef4814c43e5c788bbeb')
 backup=('etc/ripit/config')
 
