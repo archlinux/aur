@@ -1,8 +1,9 @@
 # Maintainer: SanskritFritz (gmail)
+# Contributor: yuntan_t (AUR)
 
 pkgname=timeoutd
 pkgver=1.5u10.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Flexible user timeout daemon. Enforces user login restrictions."
 arch=('i686' 'x86_64')
 url="https://github.com/sohonet/timeoutd"
@@ -35,4 +36,4 @@ package() {
 
 md5sums=('48ba0c3cdc6446ce8536109aad10e726'
          '6f8a7ac7b8abdd40f04264ad132a81e6'
-         '8ced5cbe1e96e0f35e240858c1b21fb6')
+         'ae68577854b73a906451856f5ccbf809')
