@@ -1,9 +1,9 @@
 pkgbase = gpac-git
 	pkgdesc = A multimedia framework based on the MPEG-4 Systems standard (git version)
-	pkgver = 0.5.2.r2867.g278ba386a
+	pkgver = 0.5.2.r3092.ge64a7d229
 	pkgrel = 1
 	epoch = 1
-	url = http://gpac.sourceforge.net
+	url = https://gpac.wp.imt.fr/
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -28,11 +28,7 @@ pkgbase = gpac-git
 	options = staticlibs
 	options = !makeflags
 	source = git://github.com/gpac/gpac.git
-	source = ssl3.patch
-	source = openssl-1.1.patch
 	sha256sums = SKIP
-	sha256sums = f5391273c9b77283469362f02a31e65f8ce8c80343d80c5b0b0c019068831a41
-	sha256sums = 6048e519aebd9cb6293059042fb48a9d8531fc1aa70c2214892686877a6f594d
 
 pkgname = gpac-git
 
