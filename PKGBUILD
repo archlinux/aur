@@ -2,7 +2,7 @@
 pkgname=lalxml
 _pkgname=${pkgname}
 pkgver=1.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
@@ -28,7 +28,7 @@ package() {
     cd "$srcdir/${_pkgname}-${pkgver}"
     make install
 }
-check() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
-    make -j check
-}
+#check() {
+#    cd "$srcdir/${_pkgname}-${pkgver}"
+#    make -j check
+#}
