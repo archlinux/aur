@@ -1,4 +1,5 @@
-#Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
+#Maintainer: Yaseen Mowzer <yaseen@mowzer.co.za>
+#Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 #Contributor: Juergen Hoetzel <juergen@archlinux.org>
 #Contributor: Comete <la_comete@tiscali.fr>
 
