@@ -1,6 +1,6 @@
 pkgbase = wire-desktop-git
 	pkgdesc = Modern, private messenger
-	pkgver = 2.15.2751.r2.g8fa5025
+	pkgver = 2.17.2813.r12.g6b21ba3
 	pkgrel = 1
 	url = https://wire.com/
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = wire-desktop-git
 	depends = libxss
 	depends = libxtst
 	depends = nss
+	depends = xdg-utils
 	optdepends = hunspell-en: for English spellcheck support
 	provides = wire-desktop
 	conflicts = wire-desktop-bin
@@ -22,7 +23,7 @@ pkgbase = wire-desktop-git
 	source = git://github.com/wireapp/wire-desktop.git
 	source = wire-desktop.desktop
 	sha256sums = SKIP
-	sha256sums = e0b05829d1a91d935ffbafb319f676968716241804094e46f080093aebf61f79
+	sha256sums = 84d869ca111010a5f45f3d5cb8ef4320fa46ac01104773559fb3a7c501f8313b
 
 pkgname = wire-desktop-git
 
