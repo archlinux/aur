@@ -1,7 +1,7 @@
 pkgbase = pamac-aur
 	pkgdesc = A Gtk3 frontend for libalpm
 	pkgver = 6.0.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/manjaro/pamac
 	install = pamac.install
 	arch = any
@@ -29,8 +29,12 @@ pkgbase = pamac-aur
 	conflicts = pamac
 	options = !emptydirs
 	backup = etc/pamac.conf
-	source = pamac-6.0.3-1.tar.gz::https://github.com/manjaro/pamac/archive/v6.0.3.tar.gz
-	sha256sums = db0bc0477bb687d99e60c74e15367f5df9d3d9450085800aae5dabcc9b43bcb6
+	source = pamac-6.0.3-3.tar.gz::https://github.com/manjaro/pamac/archive/v6.0.3.tar.gz
+	source = 01-fix-auto-update.patch::https://github.com/manjaro/pamac/commit/d53e98603a340becd33c05db09410447d4b73d93.patch
+	source = 02-fix-auto-update.patch::https://github.com/manjaro/pamac/commit/78b82572dc5bcbace11f637b3a185afbdc052730.patch
+	sha256sums = 312aa6c932c90e2fc54aedbf88f6cc889007ff40c3e45654ec584687d6b7eac4
+	sha256sums = 9a8b868fc5184f2e7c92aa0788c9d4629f4cf9fa3ef218f2efb85de5144bf6d9
+	sha256sums = f94d1ee1b13819e77e890ed2d9410d2dc01f5b11a32a3e06231925b9fb0512c8
 
 pkgname = pamac-aur
 
