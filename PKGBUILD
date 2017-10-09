@@ -5,18 +5,16 @@
 pkgname=ttf-sil-lateef
 _fname=LateefGR
 pkgver=1.200
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenType Arabic font from SIL'
 arch=('i686' 'x86_64')
 url='http://software.sil.org/lateef/'
-license=('OFL')
+license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-sil-arabic' 'ttf-sil-fonts')
 install=ttf.install
-source=("http://software.sil.org/downloads/r/lateef/${_fname}-${pkgver}.zip"
-        'LICENSE::http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt')
-sha256sums=('ef6c6b4b4cb8d8502c78efc43cb99d29f391e6cb9eba1b133a661ffda3ddc7e1'
-            'ca122f3bda0154f692817450168cb650a7fc59ef96c93582acd2e7a744d464d3')
+source=("http://software.sil.org/downloads/r/lateef/${_fname}-${pkgver}.zip")
+sha256sums=('ef6c6b4b4cb8d8502c78efc43cb99d29f391e6cb9eba1b133a661ffda3ddc7e1')
 
 package() {
     cd "${_fname}-${pkgver}"
