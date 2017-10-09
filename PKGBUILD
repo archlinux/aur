@@ -1,47 +1,51 @@
-# Maintainer: Ruben Kelevra <ruben@vfn-nrw.de>
+# Maintainer : int <int [ate] arcor [dot] de>
+# Contributor: Ruben Kelevra <ruben@vfn-nrw.de>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname=perl-class-returnvalue
-_cpanname="Class-ReturnValue"
-pkgver=0.55
-pkgrel=3
-pkgdesc="A smart return value object"
-arch=('i686' 'x86_64')
-url="http://search.cpan.org/dist/Class-ReturnValue/"
+pkgname='perl-class-returnvalue'
+pkgver='0.55'
+pkgrel='4'
+pkgdesc="Perl/CPAN Module Class::ReturnValue: A smart return value object"
+arch=('any')
 license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl-devel-stacktrace')
+makedepends=()
+url='https://metacpan.org/release/Class-ReturnValue'
 source=('http://search.cpan.org/CPAN/authors/id/J/JE/JESSE/Class-ReturnValue-0.55.tar.gz')
 md5sums=('047fbbcfd90d5c399a1feba55781329e')
-sha256sums=('ed3836885d78f734ccd7a98550ec422a616df7c31310c1b7b1f6459f5fb0e4bd')
-depends=('perl-devel-stacktrace' )
-options=(!emptydirs)
-
-prepareEnvironment() {
-	cd "$srcdir/$_cpanname-$pkgver"
-        export \
-                PERL_MM_USE_DEFAULT=1 \
-                PERL_AUTOINSTALL=--skipdeps \
-                PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-                PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-                MODULEBUILDRC=/dev/null
-}
+sha512sums=('27aecf99a7db6c943c5300048a4e51aa7646fc83d2a6494f24a68fc76755a9e565099fa830e7f745b76c9ab1b2a8c5ac2a90cf3b22f250245413923bf03b315c')
+_distdir="Class-ReturnValue-0.55"
 
 build() {
-        prepareEnvironment
-        /usr/bin/perl Makefile.PL
-        make
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
 }
 
 check() {
-        prepareEnvironment
-        make test
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
 }
 
 package() {
-        prepareEnvironment
-        make install
+  cd "$srcdir/$_distdir"
+  make install
 
-        # Remove "perllocal.pod" and ".packlist".
-        find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
-
-
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
