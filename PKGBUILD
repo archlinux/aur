@@ -2,7 +2,7 @@
 # Contributor: Jonathon Fernyhough <jonathon@manjaro.org>
 
 pkgname=zef
-pkgver=0.1.29
+pkgver=0.1.30
 pkgrel=1
 pkgdesc="Perl6 Module Management"
 arch=('any')
@@ -14,7 +14,7 @@ url="https://github.com/ugexe/zef"
 license=('PerlArtistic')
 options=('!purge')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/ugexe/$pkgname/tar.gz/v$pkgver)
-sha256sums=('acab39b7ff53660ce261683f078e9a3ca8c769c9eb65ff2f6c89ec24da25b8d7')
+sha256sums=('365c1fae0d418f30e3d98cbf389700d64ba67cd34242c467645583fcc3df8d39')
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
