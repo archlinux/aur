@@ -2,7 +2,7 @@
 _pkgname=subway-launcher
 pkgname=$_pkgname-git
 pkgver=r35.7edce43
-pkgrel=1
+pkgrel=2
 pkgdesc='An HTML5-based application launcher for GNU/Linux with modern (metro) style.'
 arch=('any')
 url='https://github.com/SubwayDesktop/subway-launcher'
@@ -42,7 +42,7 @@ then
   --type=method_call \
   /view org.subwaydesktop.cubway.activateWindow
 else
-  /opt/Subway/Cubway/cubway /opt/Subway/launcher 
+  /opt/Subway/Cubway/cubway /opt/Subway/launcher/main.html
 fi
 EOF
 	chmod 755 "${pkgdir}/usr/bin/subway-launcher"
@@ -53,7 +53,7 @@ Encoding=UTF-8
 Name=Subway Launcher
 Comment=MS Modern Style Launcher
 Exec=subway-launcher
-Icon=applications-others
+Icon=applications-other
 Categories=Application;Utility
 EOF
 	chmod 644 "${pkgdir}/usr/share/applications/subway-launcher.desktop"
