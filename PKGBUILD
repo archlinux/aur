@@ -3,8 +3,8 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=2.1.r285.gd00f7315e0
-pkgrel=4
+pkgver=2.18.r144.gee7ddd1ed3
+pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('i686' 'x86_64')
 url='https://www.winehq.org'
@@ -84,10 +84,12 @@ then
     makedepends=(${makedepends[@]/*32-*/} ${_depends[@]})
     makedepends=(${makedepends[@]/*-multilib*/})
     optdepends=(${optdepends[@]/*32-*/})
+    provides=("wine=${pkgver}")
+    conflicts=('wine' 'wine-staging' 'wine-staging-git')
 else
     makedepends=(${makedepends[@]} ${_depends[@]})
-    provides=("bin32-wine=$pkgver" "wine=$pkgver" "wine-wow64=$pkgver")
-    conflicts=('bin32-wine' 'wine' 'wine-wow64')
+    provides=("wine=${pkgver}" "bin32-wine=${pkgver}" "wine-wow64=${pkgver}")
+    conflicts=('wine' 'wine-staging' 'wine-staging-git' 'bin32-wine' 'wine-wow64')
     replaces=('bin32-wine')
 fi
 
