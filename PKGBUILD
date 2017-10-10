@@ -2,10 +2,10 @@
 
 pkgbase=decred-git
 pkgname=('dcrd-git' 'dcrwallet-git')
-pkgver=20170926
+pkgver=20171009
 pkgrel=1
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
-makedepends=('dep' 'git' 'glide' 'go')
+makedepends=('dep' 'git' 'go')
 groups=('decred')
 url="https://decred.org"
 license=('ISC')
@@ -29,8 +29,8 @@ build() {
 
   msg2 'Building dcrd and dependencies...'
   cd "$GOPATH/src/github.com/decred/dcrd"
-  glide install
-  go install $(glide novendor)
+  dep ensure
+  go install . ./cmd/...
 
   msg2 'Building dcrwallet and dependencies...'
   cd "$GOPATH/src/github.com/decred/dcrwallet"
@@ -68,7 +68,6 @@ package_dcrd-git() {
               dcrcheckdevpremine \
               dcrctl \
               dcrd \
-              dcrdbtool \
               dcrfindcheckpoint \
               dcrgencerts \
               dcrpromptsecret; do
