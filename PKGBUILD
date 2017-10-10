@@ -1,20 +1,20 @@
 pkgname=libdnf
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Library providing simplified C and Python API to libsolv"
 arch=('i686' 'x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('LGPL2.1')
-depends=('glib2' 'librepo' 'libsolv' 'zlib')
+depends=('glib2' 'librepo' 'libsolv' 'rpm-org' 'zlib')
 makedepends=('cmake' 'gobject-introspection' 'gtk-doc' 'python'
-             'python-sphinx' 'rpm-org')
+             'python-sphinx')
 checkdepends=('check' 'python-nose')
 optdepends=('python: for python bindings')
 provides=( 'hawkey')
 conflicts=('hawkey')
 replaces=( 'hawkey')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('d274c09f458541c2d5b7b5f174cee798')
+md5sums=('f920b88b33144f2317a380d088fd08f3')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -57,7 +57,7 @@ package() {
 		rmdir "$pkgdir/"usr/lib64
 	fi
 
-	install -D -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dp -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
