@@ -12,7 +12,7 @@ pkgbase = openflap
 	depends = sdl2_image
 	depends = sdl2_ttf
 	depends = sdl2_mixer
-	source = https://github.com/jazztickets/openflap/archive/1.0.0.tar.gz
+	source = https://github.com/jazztickets/openflap/archive/v1.0.0.tar.gz
 	sha256sums = d8be341b7287892517a54e1a1d6155388c8d0da5695037aab4894b27ae68392d
 
 pkgname = openflap
