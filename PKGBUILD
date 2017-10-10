@@ -1,48 +1,37 @@
 # Maintainer: Marcel Campello Ferreira <marcel.campello.ferreira@gmail.com>
 pkgname=neo4j-enterprise
-pkgver=3.0.6
+pkgver=3.2.6
 pkgrel=1
-pkgdesc="A fully transactional graph database implemented in Java"
+pkgdesc='A fully transactional graph database implemented in Java'
 arch=(any)
 url=http://neo4j.org/
 license=(custom)
 makedepends=(patch)
-depends=(bash 'java-runtime-headless>=8')
+depends=('java-runtime-headless>=8')
 conflicts=(neo4j-community)
-backup=(etc/neo4j/jmx.access
-        etc/neo4j/jmx.password
-        etc/neo4j/neo4j-wrapper.conf
-        etc/neo4j/neo4j.conf)
+backup=(etc/neo4j/neo4j.conf)
 options=(!strip)
 install=neo4j.install
 source=(http://dist.neo4j.org/neo4j-enterprise-$pkgver-unix.tar.gz
-        bin.patch
-        conf.patch
+        neo4j.conf
         neo4j.install
         neo4j.service
         neo4j-tmpfile.conf)
-sha256sums=('f58450760a92b0913c5418e26278a6a65bf6c5ba01f9b12a033f56e80f0c3d23'
-            '43f8ab546b510598d9fc6f2dde3c9d1784f96bd0f8a2f4525eadff39a2a8ffa1'
-            '8bbeb8236809cef334bbd88fa47b92f49bea81cdcc4dc96b20d35d6f672f58fb'
-            '3c4f3daea1623a5bc4c56d87ff4d76ff4737722eb730e2f9b65a0980bf3633a3'
+sha256sums=('a615a0bfd81cc98cfa25b9cabe2222004de53e6bc31ca9c0de86fac5f64d6a37'
+            '40ecfbdcb843577a0e9b677e9c0cc7ab4899962309d6148ce8fcd1da35560103'
+            'f95936abc4a519b01d2cd987cd38a253003cf4cd39bfab29948708e82d98de66'
             'cf3148bd65ddc06f5ca8cf2ad37013d2e1aa561c5759e4b295f361465e603928'
             'e1311352e05b1e698599b91883141b938ceb418abd7e6bc11cc964854f0a21e1')
 
-prepare() {
-
-  cd $srcdir/neo4j-enterprise-$pkgver
-  patch -Np1 -i ../bin.patch
-  patch -Np1 -i ../conf.patch
-}
-
 package() {
-
   cd $srcdir/neo4j-enterprise-$pkgver
 
   # Config files
   CONFIG_DIR=etc/neo4j
   install -dm755 $pkgdir/$CONFIG_DIR
-  [[ $(ls -A conf/* 2>/dev/null) ]] && cp -r conf/* $pkgdir/$CONFIG_DIR
+  install -dm700 $pkgdir/$CONFIG_DIR/certificates
+  [[ $(ls -A conf/* 2>/dev/null) ]] && cp -r data/* $pkgdir/$CONFIG_DIR
+  install -Dm644 $srcdir/neo4j.conf $pkgdir/etc/neo4j/neo4j.conf
 
   # Data, import and log files
   DATA_DIR=var/lib/neo4j/data
@@ -89,9 +78,8 @@ package() {
   cp LICENSE.txt LICENSES.txt NOTICE.txt $pkgdir/$LICENSES_DIR
 
   # Service definition files
-  cd $srcdir
-  install -Dm644 neo4j.service $pkgdir/usr/lib/systemd/system/neo4j.service
+  install -Dm644 $srcdir/neo4j.service $pkgdir/usr/lib/systemd/system/neo4j.service
 
   # Runtime files
-  install -Dm644 neo4j-tmpfile.conf $pkgdir/usr/lib/tmpfiles.d/neo4j.conf
+  install -Dm644 $srcdir/neo4j-tmpfile.conf $pkgdir/usr/lib/tmpfiles.d/neo4j.conf
 }

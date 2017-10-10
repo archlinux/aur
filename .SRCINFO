@@ -1,30 +1,24 @@
 pkgbase = neo4j-enterprise
 	pkgdesc = A fully transactional graph database implemented in Java
-	pkgver = 3.0.6
+	pkgver = 3.2.6
 	pkgrel = 1
 	url = http://neo4j.org/
 	install = neo4j.install
 	arch = any
 	license = custom
 	makedepends = patch
-	depends = bash
 	depends = java-runtime-headless>=8
 	conflicts = neo4j-community
 	options = !strip
-	backup = etc/neo4j/jmx.access
-	backup = etc/neo4j/jmx.password
-	backup = etc/neo4j/neo4j-wrapper.conf
 	backup = etc/neo4j/neo4j.conf
-	source = http://dist.neo4j.org/neo4j-enterprise-3.0.6-unix.tar.gz
-	source = bin.patch
-	source = conf.patch
+	source = http://dist.neo4j.org/neo4j-enterprise-3.2.6-unix.tar.gz
+	source = neo4j.conf
 	source = neo4j.install
 	source = neo4j.service
 	source = neo4j-tmpfile.conf
-	sha256sums = f58450760a92b0913c5418e26278a6a65bf6c5ba01f9b12a033f56e80f0c3d23
-	sha256sums = 43f8ab546b510598d9fc6f2dde3c9d1784f96bd0f8a2f4525eadff39a2a8ffa1
-	sha256sums = 8bbeb8236809cef334bbd88fa47b92f49bea81cdcc4dc96b20d35d6f672f58fb
-	sha256sums = 3c4f3daea1623a5bc4c56d87ff4d76ff4737722eb730e2f9b65a0980bf3633a3
+	sha256sums = a615a0bfd81cc98cfa25b9cabe2222004de53e6bc31ca9c0de86fac5f64d6a37
+	sha256sums = 40ecfbdcb843577a0e9b677e9c0cc7ab4899962309d6148ce8fcd1da35560103
+	sha256sums = f95936abc4a519b01d2cd987cd38a253003cf4cd39bfab29948708e82d98de66
 	sha256sums = cf3148bd65ddc06f5ca8cf2ad37013d2e1aa561c5759e4b295f361465e603928
 	sha256sums = e1311352e05b1e698599b91883141b938ceb418abd7e6bc11cc964854f0a21e1
 
