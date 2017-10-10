@@ -1,0 +1,20 @@
+pkgbase = transmission-daemon-openrc
+	pkgdesc = OpenRC transmission-daemon init script
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/manjaro/packages-openrc
+	install = transmission-daemon-openrc.install
+	arch = any
+	license = GPL
+	depends = transmission-cli
+	depends = openrc
+	provides = transmission-openrc
+	conflicts = transmission-openrc
+	replaces = transmission-openrc
+	source = transmission-daemon-openrc.confd
+	source = transmission-daemon-openrc.initd
+	md5sums = 339e22502d7f416806cfe98d28f26940
+	md5sums = fa5aae549cd57255a052f71de1fcb035
+
+pkgname = transmission-daemon-openrc
+

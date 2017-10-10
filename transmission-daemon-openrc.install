@@ -1,0 +1,13 @@
+SERVICE_NAME=transmission
+
+## arg 1:  the new package version
+post_upgrade() {
+    echo ":: We got a new version of transmission-daemon-openrc"
+}
+
+
+## arg 1:  the old package version
+pre_remove() {
+    sudo rc-service transmission stop
+    sudo rc-update del $SERVICE_NAME
+}
