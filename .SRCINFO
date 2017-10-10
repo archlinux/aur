@@ -1,7 +1,7 @@
 pkgbase = why3
 	pkgdesc = The next generation of the software verification platform Why
 	pkgver = 0.86.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://why3.lri.fr/
 	arch = x86_64
 	arch = i686

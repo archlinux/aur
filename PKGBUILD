@@ -5,7 +5,7 @@
 pkgname=why3
 pkgver=0.86.3
 _pkgvercode=35537 # IMPORTANT: update from gforge!
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation of the software verification platform Why"
 arch=(x86_64 i686)
 url="http://why3.lri.fr/"
@@ -24,5 +24,5 @@ build() {
 
 package() {
     cd "$srcdir"/$pkgname-$pkgver
-    make DESTDIR="$pkgdir" OCAMLLIB="$pkgdir"/usr/lib/ocaml install install-lib
+    make -j 1 DESTDIR="$pkgdir" OCAMLLIB="$pkgdir"/usr/lib/ocaml install install-lib
 }
