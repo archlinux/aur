@@ -5,7 +5,7 @@ _phpver=7.1.10
 _pkgname=php-pear
 pkgname=php-pear-src
 pkgver=1.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP Extension and Application Repository"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -16,7 +16,10 @@ makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'smtp-forwarder'
              'libmcrypt' 'tidyhtml' 'aspell' 'libltdl' 'gd' 'icu'
              'curl' 'libxslt' 'openssl' 'db' 'gmp' 'systemd')
 
-source=("http://php.net/distributions/${_pkgbase}-${_phpver}.tar.xz")
+source=("http://php.net/distributions/${_pkgbase}-${_phpver}.tar.xz"
+	"http://php.net/distributions/${_pkgbase}-${_phpver}.tar.xz.asc")
+
+validpgpkeys=('528995BFEDFBA7191D46839EF9BA0ADA31CBD89E')
 
 build() {
 	local _phpconfig="--srcdir=../${_pkgbase}-${_phpver} \
@@ -124,4 +127,5 @@ package() {
 	rm -rf ${pkgdir}/usr/share/${_pkgbase}/pear/.{channels,depdb,depdblock,filemap,lock,registry}
 
 }
-md5sums=('de80c2f119d2b864c65f114ba3e438f1')
+md5sums=('de80c2f119d2b864c65f114ba3e438f1'
+	 'SKIP')
