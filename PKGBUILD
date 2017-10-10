@@ -1,13 +1,13 @@
 _repo="znc-clientbuffer"
 pkgname=${_repo}-git
-pkgver=r17.8691abf
+pkgver=r35.d55a108
 pkgrel=1
 pkgdesc=" ZNC module for client specific buffers"
 arch=('i686' 'x86_64' 'armv7h')
-url="https://github.com/jpnurmi/znc-clientbuffer"
+url="https://github.com/CyberShadow/znc-clientbuffer"
 license=('Apache')
 depends=('znc')
-source=("git+https://github.com/jpnurmi/znc-clientbuffer.git")
+source=("git+https://github.com/CyberShadow/znc-clientbuffer.git")
 
 pkgver() {
   cd "$_repo"
