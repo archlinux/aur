@@ -5,21 +5,20 @@
 
 _pkgname=gnuplot
 pkgname=$_pkgname-nogui
-pkgver=5.0.6
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, files and others. Without wxgtk/qt."
 arch=("i686" "x86_64")
 url="http://www.gnuplot.info"
 license=("custom")
 depends=("cairo" "libjpeg" "lua" "gd" "gnutls" "readline")
-makedepends=("emacs" "texinfo" "texlive-core" "texlive-latexextra")
+makedepends=("emacs" "texlive-core" "texlive-latexextra")
 provides=("gnuplot")
 conflicts=("gnuplot" "gnuplot-nox")
 replaces=("gnuplot-notk")
-install="$_pkgname.install"
 source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz"
 	"lua53_compat.patch")
-sha256sums=('5bbe4713e555c2e103b7d4ffd45fca69551fff09cf5c3f9cb17428aaacc9b460'
+sha256sums=('7dfe6425a1a6b9349b1fb42dae46b2e52833b13e807a78a613024d6a99541e43'
             'bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695')
 
 prepare() {
@@ -51,7 +50,7 @@ build() {
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
-	make pkglibexecdir=/usr/bin DESTDIR="$pkgdir" install install-info
+	make pkglibexecdir=/usr/bin DESTDIR="$pkgdir" install
 
 	install -Dm644 Copyright "$pkgdir/usr/share/licenses/$_pkgname/Copyright"
 
