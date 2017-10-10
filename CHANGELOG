@@ -1,2 +1,4 @@
 * v1.0
 	- The first version of emacs daemon openrc script ported from gentoo
+* v1.0-1
+	- Remove post_install to post_upgrade on emacs-openrc.install
