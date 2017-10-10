@@ -1,0 +1,17 @@
+pkgbase = apertium-nob
+	pkgdesc = Apertium language data for Norwegian Bokmål
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://wiki.apertium.org/wiki/Norwegian_Nynorsk_and_Norwegian_Bokmål
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = apertium>=3.4.2
+	depends = vislcg3>=0.9.7.6010
+	source = http://downloads.sourceforge.net/sourceforge/apertium/apertium-nob-0.9.0.tar.gz
+	md5sums = 9f3d8636111f9b79ed62461200758085
+	sha256sums = 07277e50f0d0f0ce1356455673a6075dd3b496488d12514d1fabce9a80c3dca9
+
+pkgname = apertium-nob
+
