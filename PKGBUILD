@@ -18,6 +18,7 @@ source=("torque-"$pkgver".tar.gz"::'http://www.adaptivecomputing.com/index.php?w
 md5sums=('ec4979262e5f259e539873b208a191dd')
 
 build() {
+	CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 	cd "$srcdir/$pkgname-$pkgver"
 	sed 's/#include <sys\/tty.h>/#include <linux\/tty.h>/' -i src/resmom/mom_inter.c
 	sed 's/\/sbin\/ldconfig/:/g' -i src/resmom/Makefile.{am,in}
