@@ -6,7 +6,7 @@ pkgver=3.1
 _ver=09102017
 _gitver=g9db9fd
 _pkgver="${_ver}.0-${_gitver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementtion of C11 Annex K + ISO TR24731 Bounds Checking Interface'
 arch=('i686' 'x86_64')
 url='https://rurban.github.io/safeclib'
@@ -38,6 +38,10 @@ package() {
   cd "${srcdir}/${pkgname}-${_pkgver}/"
   make DESTDIR="${pkgdir}" install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  # temp fix
+  mv "${pkgdir}/usr/share/man/man3/towlower.3" "${pkgdir}/usr/share/man/man3/towlower_s.3"
+  mv "${pkgdir}/usr/share/man/man3/towupper.3" "${pkgdir}/usr/share/man/man3/towupper_s.3"
+  mv "${pkgdir}/usr/share/man/man3/wcsstr.3" "${pkgdir}/usr/share/man/man3/wcsstr_s.3"
 }
 
 # vim:set ft=sh ts=2 sw=2 et:
