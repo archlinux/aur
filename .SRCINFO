@@ -1,7 +1,7 @@
 pkgbase = kiwix-bin
 	pkgdesc = Offline reader for Web content. It's especially intended to make Wikipedia available offline.
 	pkgver = 0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kiwix.org
 	install = kiwix.install
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = kiwix-bin
 	depends = libcanberra
 	depends = sqlite3
 	depends = java-environment
+	depends = zlib
 	provides = kiwix
 	conflicts = kiwix
 	source = http://sourceforge.net/projects/kiwix/files/0.9/kiwix-0.9-linux-x86_64.tar.bz2

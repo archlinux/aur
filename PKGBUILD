@@ -1,12 +1,12 @@
 # Maintainer: nic96
 pkgname=kiwix-bin
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Offline reader for Web content. It's especially intended to make Wikipedia available offline."
 arch=('i686' 'x86_64')
 url="http://www.kiwix.org"
 license=('GPL3')
-depends=('rpcbind' 'gtk2' 'alsa-lib' 'libxt' 'libcanberra' 'sqlite3' 'java-environment')
+depends=('rpcbind' 'gtk2' 'alsa-lib' 'libxt' 'libcanberra' 'sqlite3' 'java-environment' 'zlib')
 provides=('kiwix')
 conflicts=('kiwix')
 install='kiwix.install'
@@ -26,4 +26,5 @@ package() {
 	ln -f -s /usr/lib/kiwix/bin/kiwix-serve ${pkgdir}/usr/bin/kiwix-serve
 	install -D -m644 ${srcdir}/kiwix.desktop ${pkgdir}/usr/share/applications/kiwix.desktop
 	install -D -m644 ${srcdir}/kiwix/chrome/icons/default/main.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/kiwix.png
+	ln -sf /usr/lib/libz.so.1 ${pkgdir}/usr/lib/kiwix/xulrunner/libz.so.1
 }
