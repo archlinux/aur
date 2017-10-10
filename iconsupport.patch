@@ -11,10 +11,10 @@ index d461dc08..f32a7e1e 100644
  xmacro(WM_DELETE_WINDOW)
  xmacro(UTF8_STRING)
 diff --git a/include/data.h b/include/data.h
-index 69a79ade..4bd84a02 100644
+index 31ef1dc1..0d24b8b7 100644
 --- a/include/data.h
 +++ b/include/data.h
-@@ -460,6 +460,11 @@ struct Window {
+@@ -470,6 +470,11 @@ struct Window {
  
      /* aspect ratio from WM_NORMAL_HINTS (MPlayer uses this for example) */
      double aspect_ratio;
@@ -27,7 +27,7 @@ index 69a79ade..4bd84a02 100644
  
  /**
 diff --git a/include/libi3.h b/include/libi3.h
-index dbb29e1f..bd898b06 100644
+index b7a1e2aa..612dfd3f 100644
 --- a/include/libi3.h
 +++ b/include/libi3.h
 @@ -601,6 +601,11 @@ color_t draw_util_hex_to_color(const char *color);
@@ -104,10 +104,10 @@ index 6a2e93dc..2147effc 100644
   * Draws a filled rectangle.
   * This function is a convenience wrapper and takes care of flushing the
 diff --git a/src/handlers.c b/src/handlers.c
-index c273e116..0bea73bb 100644
+index 3140e405..621c38e8 100644
 --- a/src/handlers.c
 +++ b/src/handlers.c
-@@ -1400,6 +1400,19 @@ static bool handle_strut_partial_change(void *data, xcb_connection_t *conn, uint
+@@ -1402,6 +1402,19 @@ static bool handle_strut_partial_change(void *data, xcb_connection_t *conn, uint
      return true;
  }
  
@@ -127,7 +127,7 @@ index c273e116..0bea73bb 100644
  /* Returns false if the event could not be processed (e.g. the window could not
   * be found), true otherwise */
  typedef bool (*cb_property_handler_t)(void *data, xcb_connection_t *c, uint8_t state, xcb_window_t window, xcb_atom_t atom, xcb_get_property_reply_t *property);
-@@ -1421,7 +1434,8 @@ static struct property_handler_t property_handlers[] = {
+@@ -1423,7 +1436,8 @@ static struct property_handler_t property_handlers[] = {
      {0, 128, handle_class_change},
      {0, UINT_MAX, handle_strut_partial_change},
      {0, UINT_MAX, handle_window_type},
@@ -137,7 +137,7 @@ index c273e116..0bea73bb 100644
  #define NUM_HANDLERS (sizeof(property_handlers) / sizeof(struct property_handler_t))
  
  /*
-@@ -1443,6 +1457,7 @@ void property_handlers_init(void) {
+@@ -1445,6 +1459,7 @@ void property_handlers_init(void) {
      property_handlers[8].atom = A__NET_WM_STRUT_PARTIAL;
      property_handlers[9].atom = A__NET_WM_WINDOW_TYPE;
      property_handlers[10].atom = A__MOTIF_WM_HINTS;
@@ -146,7 +146,7 @@ index c273e116..0bea73bb 100644
  
  static void property_notify(uint8_t state, xcb_window_t window, xcb_atom_t atom) {
 diff --git a/src/manage.c b/src/manage.c
-index 86a361c3..adbd3456 100644
+index 004e8038..9bf910d8 100644
 --- a/src/manage.c
 +++ b/src/manage.c
 @@ -91,6 +91,8 @@ void manage_window(xcb_window_t window, xcb_get_window_attributes_cookie_t cooki
@@ -183,23 +183,8 @@ index 86a361c3..adbd3456 100644
      xcb_size_hints_t wm_size_hints;
      if (!xcb_icccm_get_wm_size_hints_reply(conn, wm_normal_hints_cookie, &wm_size_hints, NULL))
          memset(&wm_size_hints, '\0', sizeof(xcb_size_hints_t));
-diff --git a/src/render.c b/src/render.c
-index 85548f26..6380f51a 100644
---- a/src/render.c
-+++ b/src/render.c
-@@ -125,6 +125,10 @@ void render_con(Con *con, bool render_fullscreen) {
-     /* find the height for the decorations */
-     params.deco_height = render_deco_height();
- 
-+    /* minimum decoration height to allow icon to fit
-+     * not actually required, icon would be cropped otherwise */
-+    params.deco_height = (params.deco_height < 16) ? 16 : params.deco_height;
-+
-     /* precalculate the sizes to be able to correct rounding errors */
-     params.sizes = precalculate_sizes(con, &params);
- 
 diff --git a/src/window.c b/src/window.c
-index db6215d0..5b694593 100644
+index 68c6933a..9df3e631 100644
 --- a/src/window.c
 +++ b/src/window.c
 @@ -17,6 +17,7 @@ void window_free(i3Window *win) {
@@ -210,15 +195,16 @@ index db6215d0..5b694593 100644
      FREE(win->ran_assignments);
      FREE(win);
  }
-@@ -365,3 +366,75 @@ void window_update_motif_hints(i3Window *win, xcb_get_property_reply_t *prop, bo
+@@ -365,3 +366,91 @@ void window_update_motif_hints(i3Window *win, xcb_get_property_reply_t *prop, bo
  #undef MWM_DECOR_BORDER
  #undef MWM_DECOR_TITLE
  }
 +
-+void window_update_icon(i3Window *win, xcb_get_property_reply_t *prop)
-+{
++void window_update_icon(i3Window *win, xcb_get_property_reply_t *prop) {
 +    uint32_t *data = NULL;
++    uint32_t width, height;
 +    uint64_t len = 0;
++    const int pref_size = render_deco_height() - logical_px(2);
 +
 +    if (!prop || prop->type != XCB_ATOM_CARDINAL || prop->format != 32) {
 +        DLOG("_NET_WM_ICON is not set\n");
@@ -229,26 +215,37 @@ index db6215d0..5b694593 100644
 +    uint32_t prop_value_len = xcb_get_property_value_length(prop);
 +    uint32_t *prop_value = (uint32_t *) xcb_get_property_value(prop);
 +
-+    /* Find the number of icons in the reply. */
++    /* Find an icon matching the preferred size.
++     * If there is no such icon, take the smallest icon having at least
++     * the preferred size
++     */
 +    while (prop_value_len > (sizeof(uint32_t) * 2) && prop_value &&
-+            prop_value[0] && prop_value[1])
-+    {
++            prop_value[0] && prop_value[1]) {
 +        /* Check that the property is as long as it should be (in bytes),
 +           handling integer overflow. "+2" to handle the width and height
 +           fields. */
-+        const uint64_t crt_len = prop_value[0] * (uint64_t) prop_value[1];
-+        const uint64_t expected_len = (crt_len + 2) * 4;
++        const uint64_t cur_len = prop_value[0] * (uint64_t) prop_value[1];
++        const uint64_t expected_len = (cur_len + 2) * 4;
++        const uint32_t cur_width = prop_value[0];
++        const uint32_t cur_height = prop_value[1];
 +
 +        if (expected_len > prop_value_len) {
 +            break;
 +        }
 +
-+        if (len == 0 || (crt_len >= 16*16 && crt_len < len)) {
-+            len = crt_len;
++        DLOG("Found _NET_WM_ICON of size: (%d,%d)\n", cur_width, cur_height);
++
++        if (len == 0 || (cur_width >= pref_size && cur_height >= pref_size &&
++                         (cur_width < width || cur_height < height ||
++                          width < pref_size || height < pref_size))) {
++            len = cur_len;
++            width = cur_width;
++            height = cur_height;
 +            data = prop_value;
 +        }
-+        if (len == 16*16) {
-+            break; /* found 16 pixels icon */
++
++        if (width == pref_size && height == pref_size) {
++            break;
 +        }
 +
 +        /* Find pointer to next icon in the reply. */
@@ -262,12 +259,16 @@ index db6215d0..5b694593 100644
 +        return;
 +    }
 +
-+    LOG("Got _NET_WM_ICON of size: (%d,%d)\n", data[0], data[1]);
++    DLOG("Using icon of size (%d,%d) (preferred size: %d)\n",
++         width, height, pref_size
++    );
++
 +    win->name_x_changed = true; /* trigger a redraw */
 +
-+    win->icon_width = data[0];
-+    win->icon_height = data[1];
++    win->icon_width = width;
++    win->icon_height = height;
 +    win->icon = srealloc(win->icon, len * 4);
++
 +
 +    for (uint64_t i = 0; i < len; i++) {
 +        uint8_t r, g, b, a;
@@ -287,28 +288,47 @@ index db6215d0..5b694593 100644
 +    FREE(prop);
 +}
 diff --git a/src/x.c b/src/x.c
-index ee5ed2ce..00d86829 100644
+index 09a60493..ed118b52 100644
 --- a/src/x.c
 +++ b/src/x.c
-@@ -546,6 +546,7 @@ void x_draw_decoration(Con *con) {
+@@ -544,8 +544,9 @@ void x_draw_decoration(Con *con) {
+     /* 5: draw two unconnected horizontal lines in border color */
+     x_draw_title_border(con, p);
  
-     /* 6: draw the title */
+-    /* 6: draw the title */
++    /* 6: draw the icon and title */
      int text_offset_y = (con->deco_rect.height - config.font.height) / 2;
 +    int text_offset_x = 0;
  
      struct Window *win = con->window;
      if (win == NULL) {
-@@ -572,6 +573,9 @@ void x_draw_decoration(Con *con) {
+@@ -572,6 +573,25 @@ void x_draw_decoration(Con *con) {
          goto after_title;
      }
  
-+    if (win->icon)
-+        text_offset_x = 18;
++    /* Draw the icon */
++    if (win->icon) {
++        uint16_t icon_size = con->deco_rect.height - 2 * logical_px(1);
++
++        int icon_offset_y = (con->deco_rect.height - icon_size) / 2;
++
++        text_offset_x += icon_size + logical_px(1);
++
++        draw_util_image(
++                (unsigned char *)win->icon,
++                win->icon_width,
++                win->icon_height,
++                &(parent->frame_buffer),
++                con->deco_rect.x + logical_px(1),
++                con->deco_rect.y + icon_offset_y,
++                icon_size,
++                icon_size);
++    }
 +
      int mark_width = 0;
      if (config.show_marks && !TAILQ_EMPTY(&(con->marks_head))) {
          char *formatted_mark = sstrdup("");
-@@ -611,14 +615,32 @@ void x_draw_decoration(Con *con) {
+@@ -611,9 +631,9 @@ void x_draw_decoration(Con *con) {
  
      draw_util_text(title, &(parent->frame_buffer),
                     p->color->text, p->color->background,
@@ -320,26 +340,3 @@ index ee5ed2ce..00d86829 100644
  
      if (con->title_format != NULL) {
          I3STRING_FREE(title);
-     }
- 
-+    /* Draw the icon */
-+    if (win->icon) {
-+        uint16_t width = 16;
-+        uint16_t height = 16;
-+
-+        int icon_offset_y = (con->deco_rect.height - height) / 2;
-+
-+        draw_util_image(
-+                (unsigned char *)win->icon,
-+                win->icon_width,
-+                win->icon_height,
-+                &(parent->frame_buffer),
-+                con->deco_rect.x + logical_px(2),
-+                con->deco_rect.y + icon_offset_y,
-+                width,
-+                height);
-+    }
-+
- after_title:
-     x_draw_decoration_after_title(con, p);
- copy_pixmaps:
