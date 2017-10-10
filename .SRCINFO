@@ -11,7 +11,7 @@ pkgbase = pharo-launcher
 	source = http://files.pharo.org/media/logo/icon-lighthouse-128x128.png
 	source = http://files.pharo.org/platform/launcher/PharoLauncher-user-stable-2017.10.05.zip
 	md5sums = dec67d08d24433696375a319de029f34
-	md5sums = c35f7d34648f8bf046e5d7401d28bf57
+	md5sums = 9e524c9406f11c25a20829140f66319b
 
 pkgname = pharo-launcher
 
