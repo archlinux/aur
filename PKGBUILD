@@ -4,7 +4,7 @@
 
 _pkgname=pithos
 pkgname=$_pkgname-git
-pkgver=1.3.1.r36.gc584d2d
+pkgver=1.4.0.r4.g33c0a1c
 pkgrel=1
 pkgdesc='Native Pandora Radio client'
 arch=('any')
