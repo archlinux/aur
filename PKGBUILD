@@ -2,7 +2,7 @@
 # Maintainer: Kevin Brubeck Unhammer <unhammer@gmail.com>
 pkgname=apertium-nn-nb
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Apertium language data for the Norwegian Nynorsk-Norwegian Bokmål translator."
 url="http://wiki.apertium.org/wiki/Norwegian_Nynorsk_and_Norwegian_Bokmål"
 license=('GPL')
@@ -15,6 +15,7 @@ source=("http://downloads.sourceforge.net/sourceforge/apertium/${pkgname}-${pkgv
 md5sums=('708ece31d9017963f2adac14a30fdf62')
 
 build() {
+    echo "DEPRECATED: Replaced by apertium-nno-nob"
   cd "$srcdir/$pkgname-$pkgver"
 
   ./configure --prefix=/usr
