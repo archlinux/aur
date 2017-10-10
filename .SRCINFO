@@ -1,0 +1,18 @@
+pkgbase = asanawarrior-git
+	pkgdesc = The only Asana command line interface you'll ever need.
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/manishrjain/asanawarrior
+	arch = x86_64
+	arch = i686
+	license = apache
+	makedepends = go
+	provides = asanawarrior
+	conflicts = asanawarrior
+	options = !strip
+	options = !emptydirs
+	source = asanawarrior::git+http://github.com/manishrjain/asanawarrior#branch=master
+	sha256sums = SKIP
+
+pkgname = asanawarrior-git
+
