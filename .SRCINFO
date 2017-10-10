@@ -1,6 +1,6 @@
 pkgbase = subway-launcher-git
-	pkgdesc = An HTML5-based application launcher for GNU/Linux with MS-modern-like style.
-	pkgver = r33.fd12ae3
+	pkgdesc = An HTML5-based application launcher for GNU/Linux with modern (metro) style.
+	pkgver = r35.7edce43
 	pkgrel = 1
 	url = https://github.com/SubwayDesktop/subway-launcher
 	arch = any
