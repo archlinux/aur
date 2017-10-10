@@ -1,21 +1,24 @@
 # Contributor: Kevin Brubeck Unhammer <unhammer+dill@mm.st>
 # Maintainer: Kevin Brubeck Unhammer <unhammer+dill@mm.st>
 pkgname=ordbanken
-pkgver=2013.02.17
-upstreampkgver=2013-02-17
+pkgver=2016.03.20
 pkgrel=1
 pkgdesc="Look up Norwegian Nynorsk or Bokmål words in an inflectional dictionary"
 url="http://huftis.org/artiklar/ordbanken/"
 license=('GPL3')
 makedepends=('')
-depends=('util-linux-ng' 'sh')
+depends=('')
 arch=('i686' 'x86_64')
-source=("http://download-mirror.savannah.gnu.org/releases/$pkgname/$pkgname-$upstreampkgver.tar.xz")
-md5sums=('c2abe87b472da23423734a52a8d7a609')
+source=("http://download-mirror.savannah.gnu.org/releases/$pkgname/$pkgname-${pkgver//./-}.tar.xz")
+md5sums=('dd5d84f8c43bd60d23b813cd103f1e91')
+sha256sums=('0d89b8457c7456212a02b025c6dd995899278551aec57c6be102e4ac4dd264b6')
 
 build() {
   cd "$srcdir/$pkgname"
+  make PREFIX="/usr"
+}
 
-  make PREFIX="/usr" || return 1
-  make PREFIX="/usr" DESTDIR="$pkgdir/" install || return 1
+package() {
+  cd "$srcdir/$pkgname"
+  make PREFIX="/usr" DESTDIR="$pkgdir/" install
 }
