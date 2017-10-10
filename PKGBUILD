@@ -5,19 +5,19 @@
 # Contributor: Mantas Mikulėnas <grawity at gmail.com>
 
 pkgname=eggdrop
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="The world's most popular Open Source IRC bot."
 arch=('i686' 'x86_64')
 url="http://www.eggheads.org/"
 license=('GPL2')
-depends=('sh' 'tcl')
+depends=('tcl' 'openssl')
 source=("http://ftp.eggheads.org/pub/$pkgname/source/1.8/$pkgname-$pkgver.tar.gz"
         "http://ftp.eggheads.org/pub/$pkgname/source/1.8/$pkgname-$pkgver.tar.gz.asc"
         'dlopen.c' 'utf8.patch')
 backup=("etc/$pkgname.conf")
 #options=('!makeflags')
-sha512sums=('cb3fafc52add6abb6376f4fb5a38a18a2a8b2be415d5658d0cc3dd3d61329e43dc0d65acc6c43f592ce444d7aeb7149329fb1e943bb6b84bacb4c3853df22b41'
+sha512sums=('72436e2e56f92ec33ab2ff6b11607aac94e41216098f6141bc00b643c60a8b320ce5dfbf7cd870399479a3c328c08b9f0d1d628e7a8f618b446afb010a773b9b'
             'SKIP'
             'e1d254a6adae76198f7e20729aaff5d01a0947cb07faed560574886c1ce3794242204ec0c2f5905584240b243bf36103fffbb06f4154c022228c1b701a070e5c'
             '7966d4d42994e44a0e571b89f1c66cb41f672d75e6ced7051d1ece23d8c209059c3565b41de950bf9c907701ce7a5e33a215b637587075ed300a002a58eda503')
