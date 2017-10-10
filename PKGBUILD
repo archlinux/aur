@@ -19,7 +19,7 @@ conflicts=('waterfox')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 source=("waterfox-kde_${pkgver}.2_amd64.deb::https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-kde_${pkgver}.2_amd64.deb")
-sha256sums=('461a684aae7282c7a9cdbc298c4510397703a4155107fe2850f336177b78620d')
+sha256sums=('ebea4f73ee509242cab1e45291a55a5762cc0211498963445c1859e1d1d5a00')
 
 package() {
 # Extract Waterfox from .deb package
