@@ -12,7 +12,6 @@ echo "Current package : ${curpkgver}"
 # update PGKBUILD
 sed -i -e "s/pkgver=.*/pkgver=${ffpkgver}/" ./PKGBUILD
 updpkgsums
-makepkg --printsrcinfo >.SRCINFO
-rm -f SHA512SUM* *.tar.bz2
+makepkg -cf --printsrcinfo >.SRCINFO
 git commit PKGBUILD .SRCINFO -m "${ffpkgver}"
 git push -u origin
