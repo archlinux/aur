@@ -1,9 +1,10 @@
-# Maintainer: oberon2007
+# Maintainer: Bernhard Landauer <oberon@mnajaro.org>
 # Co-Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: korrode <korrode at gmail>
 # Contributor: sumt <sumt at sci dot fi>
+
 pkgname=palemoon-bin
-pkgver=27.5.0
+pkgver=27.5.1
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -21,9 +22,9 @@ source_i686=("http://linux.palemoon.org/datastore/release/palemoon-$pkgver.en-US
 source_x86_64=("http://linux.palemoon.org/datastore/release/palemoon-$pkgver.en-US.linux-x86_64.tar.bz2"{,.sig})
 validpgpkeys=('439F46F42C6AE3D23CF52E70865E6C87C65285EC') # T. Wine
 sha256sums=('c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e')
-sha256sums_i686=('ed6cad44fc20896af72921906889c7b589751dfbf14fb8b8938851470dd9be8f'
+sha256sums_i686=('6ad5278046923d99acdced0b8b8646c6dc3470fd5eeb8b5f8f949675e386ea12'
                  'SKIP')
-sha256sums_x86_64=('7298bffcbeff4793d45412f4fa3d4b79a044fcf449ec899fd4df568cb17b1f7f'
+sha256sums_x86_64=('284b0f1a4fd909896befe0ca300c67784540cafe9f2660531a771d5e4054ae46'
                    'SKIP')
 
 package() {
