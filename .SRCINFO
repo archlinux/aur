@@ -1,0 +1,14 @@
+pkgbase = indicator-sound-switcher
+	pkgdesc = Sound input/output selector indicator for Ubuntu/Unity
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/yktoo/indicator-sound-switcher
+	arch = any
+	license = GPL
+	depends = python
+	options = !emptydirs
+	source = https://github.com/yktoo/indicator-sound-switcher/archive/v2.1.1.tar.gz
+	md5sums = 3533349b468588d128341de9106e6114
+
+pkgname = indicator-sound-switcher
+
