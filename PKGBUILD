@@ -2,7 +2,7 @@
 
 _pkgname=asanawarrior
 pkgname=asanawarrior-git
-pkgver=VERSION
+pkgver=v1.0.r11.g1d3c661
 pkgrel=1
 pkgdesc="The only Asana command line interface you'll ever need."
 arch=('x86_64' 'i686')
