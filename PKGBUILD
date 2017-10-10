@@ -4,7 +4,7 @@
 # Contributor: Matthew Bowra-Dean <matthew@ijw.co.nz>
 #
 pkgname=openra-git
-pkgver=BLEED.20170909.43664a12b
+pkgver=BLEED.20171009.249e81344
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL. DuneII and Red Alert 2, mods Included. -GIT VERSION"
 arch=('any')
@@ -20,12 +20,10 @@ options=(!strip)
 
 source=('OpenRA::git://github.com/OpenRA/OpenRA.git#branch=bleed'
         'RA2::git://github.com/OpenRA/ra2.git'
-        'D2::git://github.com/OpenRA/d2.git'
-	'RA2-mod.config.patch')
+        'D2::git://github.com/OpenRA/d2.git')
 md5sums=('SKIP'
          'SKIP'
-         'SKIP'
-	 '17da3f549c51bc2d25840167cd79bbbc')
+         'SKIP')
 
 
 pkgver() {
@@ -58,7 +56,9 @@ build() {
   	rm -r engine
   fi
   ln -s ../OpenRA engine
-  patch -p1 mod.config < $srcdir/RA2-mod.config.patch
+  #patch -p1 mod.config < $srcdir/RA2-mod.config.patch
+  cat mod.config | sed -e s/$SPEC_VER/'"{DEV_VERSION}"'/g > mod.config.1
+  mv mod.config.1 mod.config
   make
   
 }
