@@ -1,8 +1,0 @@
-post_install(){
-  echo
-  echo ":: Node.js Aerospike client install:"
-  echo "--------------------------------"
-  echo "   npm install aerospike"
-  echo "--------------------------------"
-
-}
