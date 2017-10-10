@@ -3,13 +3,14 @@
 
 pkgname=aerospike-client-c-libev
 pkgver=4.1.10
-pkgrel=2
+pkgrel=3
 pkgdesc="The Aerospike C client provides a C interface for interacting with the Aerospike Database."
 arch=('any')
 url="https://github.com/aerospike/aerospike-client-c"
 license=('Proprietary')
 depends=('libev' 'python2')
 makedepends=('git')
+provides=('aerospike-client-c')
 conflicts=('aerospike-client-c-libuv', 'aerospike-client-c-libevent')
 _gitroot="https://github.com/aerospike/aerospike-client-c.git"
 _gitname="aerospike-client-c"
