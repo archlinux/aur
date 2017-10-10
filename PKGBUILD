@@ -26,5 +26,5 @@ package() {
 	cd "${srcdir}/${pkgname}_${pkgver}"
   install -D -m 0755 pwhois_milter "${pkgdir}"/usr/local/bin/pwhois_milter
   install -Dm0644 "${srcdir}/${pkgname}".service "${pkgdir}"/usr/lib/systemd/system/"${pkgname}".service
-	install -D -m644 COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING
+  install -D -m644 COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING
 }
