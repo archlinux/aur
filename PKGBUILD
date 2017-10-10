@@ -24,6 +24,7 @@ pkgver(){
 
 build(){
 	CFLAGS="${CFLAGS/-fno-plt/}"
+	CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
 	cd "${pkgname}"
 	CPATH=/usr/include/lua5.1 \
