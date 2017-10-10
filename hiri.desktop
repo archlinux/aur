@@ -1,9 +1,9 @@
 [Desktop Entry]
-Version=1.0
 Type=Application
 Name=Hiri
-Comment=Hiri email client
-Categories=Network;Office;
+Comment=Exchange email client
+Categories=Network;Office;Email;Calendar;ContactManagement;
 Terminal=false
-Exec="/opt/hiri/hiri.sh"
+StartupNotify=true
+Exec=/opt/hiri/hiri.sh %u
 Icon=/opt/hiri/hiri.png
