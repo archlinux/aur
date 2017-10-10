@@ -3,12 +3,12 @@
 
 pkgname=apache-spark
 pkgver=2.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
 license=('APACHE')
-depends=('java-environment>=6')
+depends=('java-environment>=6' 'java-environment<9')
 optdepends=('python2: python2 support for pyspark'
             'ipython2: ipython2 support for pyspark'
             'python: python3 support for pyspark'
@@ -27,7 +27,7 @@ source=("http://d3kbcqa49mib13.cloudfront.net/spark-${pkgver}-bin-without-hadoop
 sha1sums=('15b9577049638fc1afe8d2843ac1ae9dec470962'
           'ac71d12070a9a10323e8ec5aed4346b1dd7f21c6'
           'a191e4f8f7f8bbc596f4fadfb3c592c3efbc4fc0'
-          'e52d327571e84b9b350bc594131fcaf50a3dd0f4'
+          '3fa39d55075d4728bd447692d648053c9f6b07ec'
           '08557d2d5328d5c99e533e16366fd893fffaad78'
           '323445b8d64aea0534a2213d2600d438f406855b'
           '65b1bc5fce63d1fa7a1b90f2d54a09acf62012a4')
@@ -48,10 +48,11 @@ package() {
         cp -r "$srcdir/spark-${pkgver}-bin-without-hadoop" "$pkgdir/opt/apache-spark/"
 
         cd "$pkgdir/usr/bin"
-        for binary in beeline pyspark sparkR spark-class spark-shell spark-sql spark-submit load-spark-env.sh; do
+        for binary in beeline pyspark sparkR spark-class spark-shell find-spark-home spark-sql spark-submit load-spark-env.sh; do
                 binpath="/opt/apache-spark/bin/$binary"
                 ln -s "$binpath" $binary
                 sed -i 's|^export SPARK_HOME=.*$|export SPARK_HOME=/opt/apache-spark|' "$pkgdir/$binpath"
+                sed -i -Ee 's/\$\(dirname "\$0"\)/$(dirname "$(readlink -f "$0")")/g' "$pkgdir/$binpath"
         done
 
         mkdir -p $pkgdir/etc/profile.d
