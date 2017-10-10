@@ -4,7 +4,7 @@
 
 pkgname=wine-git
 pkgver=2.1.r285.gd00f7315e0
-pkgrel=2
+pkgrel=3
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('i686' 'x86_64')
 url='https://www.winehq.org'
@@ -73,11 +73,9 @@ optdepends=(
 )
 options=('staticlibs')
 source=("$pkgname"::'git://source.winehq.org/git/wine.git'
-        '30-win32-aliases.conf'
-        '0001-winhlp32-Workaround-a-bug-in-Flex.patch')
+        '30-win32-aliases.conf')
 sha256sums=('SKIP'
-            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
-            '140f489aeea9ff9bd605eb5b6f763fabeea51897ffa1138a6e5b01c4784b646c')
+            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7')
 
 if [ "$CARCH" = 'i686' ] 
 then
@@ -94,12 +92,10 @@ else
 fi
 
 prepare() {
-    # https://bugs.winehq.org/show_bug.cgi?id=42132
     cd "$pkgname"
-    patch -p1 -i "${srcdir}/0001-winhlp32-Workaround-a-bug-in-Flex.patch"
     
     # fix path of opencl headers
-    sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i "$pkgname"/configure*
+    sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 }
 
 pkgver() {
