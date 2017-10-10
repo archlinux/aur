@@ -3,7 +3,7 @@
 
 pkgname=dbus-broker
 pkgver=5
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Linux D-Bus Message Broker'
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ prepare() {
 
 build() {
   cd build
-  meson setup ../$pkgname --prefix=/usr --buildtype=release -Db_lto=true
+  arch-meson ../$pkgname
   ninja
 }
 
