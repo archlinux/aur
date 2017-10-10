@@ -24,7 +24,7 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=b2ba34e0dc10
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=14ee15ceb522862e23febd1be0486e1e84824253
+_commit=2c741a0309c0d0e3d01b967b30e36cca4a1cf2f9
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
