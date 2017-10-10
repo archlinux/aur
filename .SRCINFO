@@ -1,13 +1,14 @@
 pkgbase = aerospike-client-c-libevent
 	pkgdesc = The Aerospike C client provides a C interface for interacting with the Aerospike Database.
 	pkgver = 4.1.10
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/aerospike/aerospike-client-c
 	arch = any
 	license = Proprietary
 	makedepends = git
 	depends = libevent
 	depends = python2
+	provides = aerospike-client-c
 	conflicts = aerospike-client-c-libev,
 	conflicts = aerospike-client-c-libuv
 
