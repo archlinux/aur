@@ -10,8 +10,7 @@ url="https://pwhois.org/milter.who/"
 options=(emptydirs)
 license=("GPL")
 depends=('libmilter')
-optdepends=('postfix: the recommended MTA for use with pwhois_milter'
-	    			'exim: an alternative MTA')
+optdepends=('postfix: the recommended MTA for use with pwhois_milter' 'exim: an alternative MTA')
 install=${pkgname}.install
 source=("https://pwhois.org/dl/index.who?file=${pkgname}_${pkgver}.tgz"	
 				"${pkgname}.service")
