@@ -2,7 +2,7 @@
 
 pkgname=argos3-git
 _gitname=argos3
-pkgver=3.0.0.beta45.r1.g1971aa8
+pkgver=3.0.0.beta48.r0.g52c6b34
 pkgrel=1
 
 pkgdesc="ARGoS 3 Large-scale robot simulator"
