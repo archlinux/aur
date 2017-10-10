@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer')
 makedepends=('cmake')
 changelog=Changelog
-source=("https://github.com/jazztickets/openflap/archive/$pkgver.tar.gz")
+source=("https://github.com/jazztickets/openflap/archive/v${pkgver}.tar.gz")
 sha256sums=('d8be341b7287892517a54e1a1d6155388c8d0da5695037aab4894b27ae68392d')
 
 prepare() {
