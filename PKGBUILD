@@ -1,5 +1,5 @@
 # Maintainer: Till von Ahnen <till@tillvonahnen.de>
-# Maintainer: David Rodriguez <developedopenly@gmail.com>
+# Maintainer: David Rodriguez <openlydeveloped@gmail.com>
 pkgname=bytecoinwallet
 pkgver=1.1.9.2
 pkgrel=1
