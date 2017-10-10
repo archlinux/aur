@@ -5,7 +5,7 @@
 # Contributor: AdriÃ¡n Chaves FernÃ¡ndez (Gallaecio) <adriyetichaves@gmail.com>
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
-pkgver=18291
+pkgver=19901
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://play0ad.com/"
@@ -46,7 +46,7 @@ build() {
 }
 
 package_0ad-git() {
-  pkgdesc="Cross-platform, 3D and historically-based real-time strategy game — built from git source tree. WARNING: the 0ad git repo is 2.7 GB in size!"
+  pkgdesc="Cross-platform, 3D and historically-based real-time strategy game — built from git source tree. WARNING: the 0ad git repo is approximately 3 GB in size!"
   conflicts=('0ad')
   provides=('0ad')
 
@@ -63,7 +63,7 @@ package_0ad-git() {
 }
 
 package_0ad-data-git() {
-  pkgdesc="Data package for 0ad built from source code. WARNING: the 0ad git repo is 2.7 GB in size!"
+  pkgdesc="Data package for 0ad built from source code. WARNING: the 0ad git repo is approximately 3 GB in size!"
   conflicts=('0ad-data')
   provides=('0ad-data')
 
