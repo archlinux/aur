@@ -23,6 +23,8 @@ pkgver () {
 
 build () {
 	CFLAGS="${CFLAGS/-fno-plt/}"
+	CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
 	cd "${pkgname}"
 	sed 's/luajit/luajit-5.1/g' -i CMakeLists.txt
 	# Uncomment this line if you are using a Pascal GPU
