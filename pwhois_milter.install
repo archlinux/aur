@@ -2,8 +2,8 @@ post_install() {
     mkdir -p var/run/pwhois_milter run/pwhois_milter
     chown postfix:postfix var/run/pwhois_milter
     chown postfix:postfix run/pwhois_milter
-		echo "-> Add to your Postfix main.cf smtpd_milters chain >>> inet:127.0.0.1:8472"
-		echo "-> If you have existing milters in your Postfix milter chain, separate them with a comma or space."
+    echo "-> Add to your Postfix main.cf smtpd_milters chain >>> inet:127.0.0.1:8472"
+    echo "-> If you have existing milters in your Postfix milter chain, separate them with a comma or space."
 }
 
 post_upgrade() {
