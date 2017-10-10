@@ -1,0 +1,19 @@
+pkgbase = pwhois_milter
+	pkgdesc = annotates an email message with information about the remote SMTP client IP address (City, Country, ISP).
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://pwhois.org/milter.who/
+	install = pwhois_milter.install
+	arch = any
+	license = GPL
+	depends = libmilter
+	optdepends = postfix: the recommended MTA for use with pwhois_milter
+	optdepends = exim: an alternative MTA
+	options = emptydirs
+	source = https://pwhois.org/dl/index.who?file=pwhois_milter_1.3.tgz
+	source = pwhois_milter.service
+	sha256sums = 70884e04fbcf8fba3f68023554f19eb5727d9bd9b74f97e24466d4dcaa0f19f5
+	sha256sums = 5cd1b734940ed95b31efe3bdfe5f89395be6e0eb2a5579a2f6fb0f738373a3e2
+
+pkgname = pwhois_milter
+
