@@ -15,7 +15,7 @@ url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
-source=("git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_tag"
+source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_tag"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
