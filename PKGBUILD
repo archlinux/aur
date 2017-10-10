@@ -6,8 +6,8 @@
 #  Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-zfs
-pkgver=3.4.0
-pkgrel=1
+pkgver=3.8.0
+pkgrel=0
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc) with ZFS support enabled"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
