@@ -27,7 +27,7 @@ _optimize="-O2"
 
 # Upstream name, version, and source URL
 _realname='firefox'
-_pkgver=57.0b6
+_pkgver=57.0b7
 _mozffurl="http://archive.mozilla.org/pub/$_realname/releases/$_pkgver/source/$_realname-$_pkgver.source.tar.xz"
 
 # Debian Firefox trunk Debian source revision and URL (for Unity (global) menubar patch).
@@ -121,7 +121,7 @@ source=("$_mozffurl"
         'vendor.js' 'kde.js'
         'firefox-fixed-loading-icon.png'
         'firefox.desktop')
-sha256sums=('b24378cf0eb66ab5cfb217a0fb756b75d45e79de1d12cb6c2db795c4bf28d91a'
+sha256sums=('57912a543890a9a9fd236875c7f461c339124db1c3004379d3492afc9fcb4545'
             'SKIP'  # Debian source tarball is generated each time it is requested.
             'e25b9fa2e4ac279b5e073286b7dc9956822bf508eccb67eb870921013274a709'
             'ef0f90c9134ef05b950f06a3ffbd699c2e5a5f99a4cdf9868e799534d68c204f'

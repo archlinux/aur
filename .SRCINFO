@@ -1,6 +1,6 @@
 pkgbase = firefox-kde-opensuse-beta
 	pkgdesc = Standalone web browser from mozilla.org with openSUSE patches to integrate better with KDE Plasma 5
-	pkgver = 57.0b6
+	pkgver = 57.0b7
 	pkgrel = 1
 	url = https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox
 	arch = i686
@@ -45,12 +45,12 @@ pkgbase = firefox-kde-opensuse-beta
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = firefox=57.0b6
+	provides = firefox=57.0b7
 	conflicts = firefox
 	options = !emptydirs
 	options = !debug
 	options = strip
-	source = http://archive.mozilla.org/pub/firefox/releases/57.0b6/source/firefox-57.0b6.source.tar.xz
+	source = http://archive.mozilla.org/pub/firefox/releases/57.0b7/source/firefox-57.0b7.source.tar.xz
 	source = firefox-trunk+r2113.debian.tar.gz::https://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head/tarball/2113
 	source = mozilla-kde_g6c6109948e35.patch::http://www.rosenauer.org/hg/mozilla/raw-file/6c6109948e35/mozilla-kde.patch
 	source = mozilla-nongnome-proxies_g6c6109948e35.patch::http://www.rosenauer.org/hg/mozilla/raw-file/6c6109948e35/mozilla-nongnome-proxies.patch
@@ -73,7 +73,7 @@ pkgbase = firefox-kde-opensuse-beta
 	source = kde.js
 	source = firefox-fixed-loading-icon.png
 	source = firefox.desktop
-	sha256sums = b24378cf0eb66ab5cfb217a0fb756b75d45e79de1d12cb6c2db795c4bf28d91a
+	sha256sums = 57912a543890a9a9fd236875c7f461c339124db1c3004379d3492afc9fcb4545
 	sha256sums = SKIP
 	sha256sums = e25b9fa2e4ac279b5e073286b7dc9956822bf508eccb67eb870921013274a709
 	sha256sums = ef0f90c9134ef05b950f06a3ffbd699c2e5a5f99a4cdf9868e799534d68c204f
