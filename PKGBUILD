@@ -1,8 +1,8 @@
 # Maintainer: Ebrahim Azarisooreh <ebrahim.azarisooreh@gmail.com>
 
-_pkgnum=3112
+_pkgnum=3120
 pkgname=logtalk
-pkgver=3.11.2
+pkgver=3.12.0
 pkgrel=1
 pkgdesc='Object-Oriented Logic Programming Language'
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ optdepends=(
 	'yap: Prolog backend for logtalk'
 )
 source=("https://github.com/LogtalkDotOrg/logtalk3/archive/lgt${_pkgnum}stable.tar.gz")
-sha256sums=('01f040a7184e1985e5e1eecbc555c79261211db3dc14614f65712a40c818b769')
+sha256sums=('a5d71db80200e0bd2fac3c0d4153a86fe0601f9f66f1763df423139420c3597a')
 conflicts=()
 provides=('logtalk')
 install=logtalk.install
