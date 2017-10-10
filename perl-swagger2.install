@@ -1,0 +1,22 @@
+print_deprecation_warning() {
+    echo ""
+    echo "This Perl/CPAN module is deprecated. Don't install and use it!"
+    echo "See http://search.cpan.org/~ashimema/Swagger2-0.89/lib/Swagger2.pm#DEPRECATION_WARNING"
+    echo "for details and what to do instead."
+    echo "So don't install and use it ... unless you know what your are doing."
+    echo "But we all know the ugly truth about this. Don't! Really don't."
+    echo "Cancel this installation know! And live happy."
+    echo ""
+}
+
+## arg 1:  the new package version
+pre_install() {
+    print_deprecation_warning
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+    print_deprecation_warning
+}
+

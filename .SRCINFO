@@ -1,0 +1,21 @@
+pkgbase = perl-swagger2
+	pkgdesc = Perl/CPAN Module Swagger2: Swagger RESTful API Documentation
+	pkgver = 0.89
+	pkgrel = 1
+	url = https://metacpan.org/release/Swagger2
+	install = perl-swagger2.install
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-json-validator>=0.90
+	depends = perl-mojolicious>=6.00
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AS/ASHIMEMA/Swagger2-0.89.tar.gz
+	source = perl-swagger2.install
+	md5sums = b3dfe65225f5e0091cfbca71b27b263b
+	md5sums = acfc9c7136d12661e0a5f07ab65ece44
+	sha512sums = 0458e13a330cda883dc1c2d65d0eb2edc7c551c83b49ae665a9489d569951ad05ac1ec8c891b6020bdce255409b6110e1ae24eb9cdf13e817dcf9630d91aeb50
+	sha512sums = e61a69575c3f3501b5cbdc6ad475201ff5dd63563207de225335f9464c7daf9f2d409e54dee0fa99bdc486f86be72d9c1da9a0946169cc46d3f17f42f37cc5b3
+
+pkgname = perl-swagger2
+
