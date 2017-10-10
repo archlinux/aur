@@ -2,13 +2,13 @@
 # Based on https://github.com/aerospike/aerospike-client-php
 
 pkgname=aerospike-client-php
-pkgver=7.0.1
+pkgver=7.0.2
 pkgrel=1
 pkgdesc="The Aerospike PHP client as a C-extension for PHP7"
 arch=('any')
 url="https://github.com/aerospike/aerospike-client-php"
 license=('Proprietary')
-makedepends=('git' 'aerospike-client-c-libuv')
+makedepends=('git' 'aerospike-client-c')
 _gitroot="https://github.com/aerospike/aerospike-client-php.git"
 _gitname="aerospike-client-php"
 _extname=aerospike
