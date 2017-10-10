@@ -1,12 +1,12 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 pkgname=localtime-git
-pkgver=r37.10b6c51
+pkgver=r38.c166204
 pkgrel=1
 pkgdesc="Automatic Timezone Updater"
 arch=('any')
 url="http://stebalien.com/projects/localtime/"
 license=('GPL3')
-depends=('dbus' 'geoclue2' 'systemd>=232-7' 'polkit')
+depends=('dbus' 'geoclue2' 'systemd>=235' 'polkit')
 makedepends=('git' 'go')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
