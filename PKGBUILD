@@ -1,20 +1,19 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Antonio Rojas
 
 pkgname=ksysguard
-pkgver=5.10.5
+pkgver=5.11.0
 pkgrel=1
 pkgdesc='Track and control the processes running in your system'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url='https://userbase.kde.org/KSysGuard'
-license=('LGPL')
-depends=('knewstuff' 'libksysguard' 'lm_sensors' 'hicolor-icon-theme')
-makedepends=('extra-cmake-modules' 'kdoctools' 'python' 'kinit')
-conflicts=('kdebase-workspace')
-groups=('plasma')
-source=("https://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('16cba11ec6f046f2d9587c84a1046af3fedd8b9d8d773ad8a90ff824ba029f7b'
+license=(LGPL)
+depends=(knewstuff libksysguard lm_sensors hicolor-icon-theme kinit)
+makedepends=(extra-cmake-modules kdoctools python)
+groups=(plasma)
+source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
+sha256sums=('f2f465d7310910774bb7ce2dd21ee17261f2768faffc448046b9d2f7484a737a'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
               '348C8651206633FD983A8FC4DEACEA00075E1D76'  # KDE Neon
@@ -26,15 +25,15 @@ prepare() {
 
 build() {
   cd build
-  cmake ../${pkgname}-${pkgver} \
+  cmake ../$pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
   make
 }
 
 package() {
   cd build
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 }
