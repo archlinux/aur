@@ -67,6 +67,6 @@ package_0ad-data-git() {
   conflicts=('0ad-data')
   provides=('0ad-data')
 
-  mkdir -p ${pkgdir}/usr/share/${_pkgname}
-  cp -r ${srcdir}/${_pkgname}/binaries/data ${pkgdir}/usr/share/${_pkgname}
+  mkdir -p ${pkgdir}/usr/share/${_pkgname}-git
+  cp -r ${srcdir}/${_pkgname}/binaries/data ${pkgdir}/usr/share/${_pkgname}-git
 }
