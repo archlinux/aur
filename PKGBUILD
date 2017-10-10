@@ -4,7 +4,7 @@
 
 pkgname=waterfox-kde
 pkgver=55.2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -67,11 +67,11 @@ prepare() {
   ln -s /usr/bin/python2 path/python
   
   # Fix openSUSE's patches for Waterfox
-  sed -i 's/Firefox/Waterfox/g' $srcdir/mozilla-kde.patch
-  sed -i 's/KMOZILLAHELPER/KWATERFOXHELPER/g' $srcdir/mozilla-kde.patch
-  sed -i 's|/usr/lib/mozilla/kmozillahelper|/opt/waterfox/kwaterfoxhelper|g' $srcdir/mozilla-kde.patch
-  sed -i 's/kmozillahelper/kwaterfoxhelper/g' $srcdir/mozilla-kde.patch
-  sed -i 's/firefox/waterfox/g' $srcdir/firefox-kde.patch
+  sed -i 's/Firefox/Waterfox/g' $srcdir/mozilla-kde-$_patchrev.patch
+  sed -i 's/KMOZILLAHELPER/KWATERFOXHELPER/g' $srcdir/mozilla-kde-$_patchrev.patch
+  sed -i 's|/usr/lib/mozilla/kmozillahelper|/opt/waterfox/kwaterfoxhelper|g' $srcdir/mozilla-kde-$_patchrev.patch
+  sed -i 's/kmozillahelper/kwaterfoxhelper/g' $srcdir/mozilla-kde-$_patchrev.patch
+  sed -i 's/firefox/waterfox/g' $srcdir/firefox-kde-$_patchrev.patch
   
   cd Waterfox
   patch -Np1 -i ../waterfox-install-dir.patch
