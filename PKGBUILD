@@ -30,6 +30,10 @@ package() {
   cp -r firefox "${pkgdir}/usr/lib/${_mypkgn}"
   install -m755 ${srcdir}/firefox-beta.sh ${pkgdir}/usr/bin/firefox-beta
 
+  # Use system-provided dictionaries
+  rm -r "${pkgdir}/usr/lib/${_mypkgn}/dictionaries"
+  ln -Ts /usr/share/hunspell "${pkgdir}/usr/lib/${_mypkgn}/dictionaries"
+
   install -m644 firefox-beta-bin.desktop ${pkgdir}/usr/share/applications/
   install -m644 ${srcdir}/firefox/browser/icons/mozicon128.png ${pkgdir}/usr/share/pixmaps/${_mypkgn}.png
 }
