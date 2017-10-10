@@ -1,0 +1,16 @@
+pkgbase = asanawarrior
+	pkgdesc = The only Asana command line interface you'll ever need. https://wiki.dgraph.io/Asanawarrior
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/manishrjain/asanawarrior
+	arch = x86_64
+	arch = i686
+	license = apache
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/manishrjain/asanawarrior/archive/v1.0.tar.gz
+	sha256sums = db409b9d4b2be31e229dabba840664c0323f02af1fd804c659541b27e0e33d97
+
+pkgname = asanawarrior
+
