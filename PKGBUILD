@@ -21,7 +21,8 @@ build() {
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --disable-rpath \
-	      --with-openldap
+	      --with-openldap \
+	      --with-systemdsystemunitdir=/usr/lib/systemd/system
 
   msg2 "Running make..."
   make
