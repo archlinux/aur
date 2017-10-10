@@ -6,7 +6,7 @@
 pkgbase=linux-covolunablu-gaming
 _srcname=linux-4.13
 pkgver=4.13.4
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -36,8 +36,8 @@ sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
             '1e34c35dfbd3b7451a7b3eb93c5e342acc006b5d1906b5e542a8f203723bb8d6'
             'SKIP'
-            'cde46b8c6f9cdb2df530b032dc8d079c9c79d9b60bb4a038a62311fe92cb15a0'
-            '63aa10e142ba5b79e17db79166251bdf2d23334acd74f8447560a458753862c3'
+            '1f6e13239345a46bec763c490757fd8d5695a3312d892d153fe0b21c6195a8eb'
+            'fa0348d3849b4f4a41ac73056d4c3603798a80d1beb0d6b7012f16cf22de4bcb'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             # -- patches
