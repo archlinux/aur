@@ -1,0 +1,11 @@
+--- apertium-nno.nno.rlx	2016-06-07 21:25:54.000000000 +0200
++++ apertium-nno.nno.rlx.mine	2017-10-10 09:39:35.381965708 +0200
+@@ -6987,7 +6987,7 @@
+ 
+ #:6072
+  "<vita>"   REMOVE:6072   (n nt) IF
+-	 (O inf)
++	 (0 inf)
+ ;
+ #sjeldent i fleirtal - og eintal
+ 
