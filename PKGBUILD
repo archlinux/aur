@@ -1,46 +1,36 @@
 # Maintainer: Marcel Campello Ferreira <marcel.campello.ferreira@gmail.com>
 pkgname=neo4j-community
-pkgver=3.0.6
+pkgver=3.2.6
 pkgrel=1
 pkgdesc='A fully transactional graph database implemented in Java'
 arch=(any)
 url=http://neo4j.org/
 license=(custom)
 makedepends=(patch)
-depends=(bash 'java-runtime-headless>=8')
+depends=('java-runtime-headless>=8')
 conflicts=(neo4j-enterprise)
-backup=(etc/neo4j/neo4j-wrapper.conf
-        etc/neo4j/neo4j.conf)
+backup=(etc/neo4j/neo4j.conf)
 options=(!strip)
 install=neo4j.install
 source=(http://dist.neo4j.org/neo4j-community-$pkgver-unix.tar.gz
-        bin.patch
-        conf.patch
+        neo4j.conf
         neo4j.install
         neo4j.service
         neo4j-tmpfile.conf)
-sha256sums=('efeab41183e9e5fa94a2d396c65ea93a24e9f105cb3b5f0d0a8e42fb709f4660'
-            'dc94f5d51ed73fdb4fbbc32b5d479dd22de40fb0fcca7e9a8cc5e864e3d8f7fc'
-            '71ef1d3c9d981cb27c95aa9f0d59e7adca0c6b7431a0e5a39540625a977fe18f'
-            '3c4f3daea1623a5bc4c56d87ff4d76ff4737722eb730e2f9b65a0980bf3633a3'
+sha256sums=('6d68363595c9288dc734301de6d8f935b7a0febcb59b88ff77676b95cd0a8950'
+            'f3ad973ba00f14980bb6ece9a619cb4775c0084a5eaf19f76f74675eea4803e8'
+            'f95936abc4a519b01d2cd987cd38a253003cf4cd39bfab29948708e82d98de66'
             'cf3148bd65ddc06f5ca8cf2ad37013d2e1aa561c5759e4b295f361465e603928'
             'e1311352e05b1e698599b91883141b938ceb418abd7e6bc11cc964854f0a21e1')
 
-prepare() {
-
-  cd $srcdir/neo4j-community-$pkgver
-  patch -Np1 -i ../bin.patch
-  patch -Np1 -i ../conf.patch
-}
-
 package() {
-
   cd $srcdir/neo4j-community-$pkgver
 
   # Config files
   CONFIG_DIR=etc/neo4j
   install -dm755 $pkgdir/$CONFIG_DIR
-  [[ $(ls -A conf/* 2>/dev/null) ]] && cp -r conf/* $pkgdir/$CONFIG_DIR
+  install -dm700 $pkgdir/$CONFIG_DIR/certificates
+  install -Dm644 $srcdir/neo4j.conf $pkgdir/etc/neo4j/neo4j.conf
 
   # Data, import and log files
   DATA_DIR=var/lib/neo4j/data
@@ -87,9 +77,8 @@ package() {
   cp LICENSE.txt LICENSES.txt NOTICE.txt $pkgdir/$LICENSES_DIR
 
   # Service definition files
-  cd $srcdir
-  install -Dm644 neo4j.service $pkgdir/usr/lib/systemd/system/neo4j.service
+  install -Dm644 $srcdir/neo4j.service $pkgdir/usr/lib/systemd/system/neo4j.service
 
   # Runtime files
-  install -Dm644 neo4j-tmpfile.conf $pkgdir/usr/lib/tmpfiles.d/neo4j.conf
+  install -Dm644 $srcdir/neo4j-tmpfile.conf $pkgdir/usr/lib/tmpfiles.d/neo4j.conf
 }
