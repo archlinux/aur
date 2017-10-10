@@ -3,8 +3,7 @@ pkgbase = ttf-dijkstra
 	pkgver = 1
 	pkgrel = 1
 	url = http://lucacardelli.name/indexartifacts.html
-	arch = i686
-	arch = x86_64
+	arch = any
 	source = http://lucacardelli.name/Artifacts/Fonts/Pc/dijkstra.ttf
 	md5sums = SKIP
 
