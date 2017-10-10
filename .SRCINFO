@@ -1,6 +1,6 @@
 pkgbase = lifeograph
 	pkgdesc = off-line and private journal and note taking application
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://launchpad.net/lifeograph
 	install = lifeograph.install
@@ -16,8 +16,8 @@ pkgbase = lifeograph
 	conflicts = lifeograph
 	options = !emptydirs
 	options = !makeflags
-	source = https://launchpad.net/lifeograph/trunk/1.4.1/+download/lifeograph-1.4.1.tar.gz
-	sha256sums = 328588547b2debbb980ea0fc463c3c24f507daf1cace96c5140f1b0e9bbcd3e0
+	source = https://launchpad.net/lifeograph/trunk/1.4.2/+download/lifeograph-1.4.2.tar.bz2
+	sha256sums = c7ff8930fb2c3935435ad3ecc513587ace9b14dac157b3d5cbaef8729393f7b0
 
 pkgname = lifeograph
 

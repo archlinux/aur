@@ -1,7 +1,7 @@
-# Maintainer : ksj <podhorsky.ksj@gmail.com>
+# Maintainer : itsme <mymail@ishere.ru>
 
 pkgname=lifeograph
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="off-line and private journal and note taking application"
 arch=('i686' 'x86_64')
@@ -14,9 +14,9 @@ install=$pkgname.install
 options=('!emptydirs' '!makeflags')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz")
+source=("https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.bz2")
 
-sha256sums=('328588547b2debbb980ea0fc463c3c24f507daf1cace96c5140f1b0e9bbcd3e0')
+sha256sums=('c7ff8930fb2c3935435ad3ecc513587ace9b14dac157b3d5cbaef8729393f7b0')
 
 build() {
   cd $pkgname-$pkgver
