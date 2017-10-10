@@ -3,7 +3,7 @@
 pkgname=minishift-bin
 minishift_version=1.7.0
 pkgver=${minishift_version//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool that makes it easy to run OpenShift locally."
 url="https://github.com/minishift/minishift"
 license=('Apache')
@@ -24,5 +24,5 @@ prepare() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/minishift" "${pkgdir}/usr/bin/minishift"
+  install -Dm755 "${srcdir}/minishift-${minishift_version}-linux-amd64/minishift" "${pkgdir}/usr/bin/minishift"
 }
