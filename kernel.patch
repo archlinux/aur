@@ -35,7 +35,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
 +#if 1
 +/*
 + * LED handling:
-+ * Some Synaptics devices have an embeded LED at the top-left orner.
++ * Some Synaptics devices have an embeded LED at the top-left corner.
 + */
 +
 +struct synaptics_led {
