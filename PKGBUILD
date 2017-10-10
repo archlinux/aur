@@ -1,4 +1,4 @@
-# Maintainer Frede Hundewadt <f at hundewadt dot dk>
+# Maintainer @fhdk <echo "ZmhAdWV4LmRrCg==" | base64 -d>
 # Based on PKGBUILD:
 # * `firefox-developer`
 # * `firefox-developer-es-mx`
@@ -49,8 +49,8 @@ optdepends=(
 )
 
 prepare() {
-    msg2 "Vigtigt: Det er nødvendigt at importere"
-    msg2 "    PGP nøgle for 'Mozilla Sofware Releases' <release@mozilla.com>"
+    msg2 ""
+    msg2 "Husk PGP nøgle for 'Mozilla Sofware Releases' <release@mozilla.com>"
     msg2 "\$ gpg --keyserver pgp.mit.edu --recv-keys D98F0353"
 
     # Check if hash of the source archive matches the one provided by Mozilla (which was signed with GPG).
