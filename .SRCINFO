@@ -1,0 +1,15 @@
+pkgbase = libndi3-bin
+	pkgdesc = NDI library for OBS Studio
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/Palakis/obs-ndi
+	arch = x86_64
+	license = LGPL2.1
+	depends = obs-studio>=20
+	provides = libndi3
+	conflicts = libndi3
+	source = https://github.com/Palakis/obs-ndi/releases/download/4.1.3/libndi3_3.0.1-1_amd64.deb
+	sha256sums = c926bd193e604d85d50ee2a00a7c69c853920d7625057a36701d6384c639051c
+
+pkgname = libndi3-bin
+
