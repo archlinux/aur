@@ -1,11 +1,11 @@
 #Maintainer: Sam Bazley <samb1999@hotmail.co.uk>
 pkgname=esp-open-sdk-git
 pkgver=1
-pkgrel=8
+pkgrel=9
 pkgdesc="Free and open (as much as possible) integrated SDK for ESP8266 chips"
 arch=("i686" "x86_64")
 url="https://github.com/pfalcon/esp-open-sdk"
-makedepends=("git" "gperf" "help2man" "unzip")
+makedepends=("git" "gperf" "help2man" "unzip" "wget")
 depends=("python" "python2" "python-pyserial" "python2-pyserial" "esptool")
 provides=("esp-open-sdk")
 conflicts=("esp-open-sdk")
