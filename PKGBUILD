@@ -1,27 +1,33 @@
-# $Id: PKGBUILD 217568 2017-03-20 13:42:00Z tpowa $
+# $Id$
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Sébastien Luttringer
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
+pkgdesc='Virtualbox kernel modules for LTS Kernel'
 pkgbase=virtualbox-modules-lts
 pkgname=('virtualbox-host-modules-lts' 'virtualbox-guest-modules-lts')
 pkgver=5.1.28
-pkgrel=1
+pkgrel=3
+# remember to also adjust the .install file!
+_linux_major=4
+_linux_minor=9
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
-makedepends=('linux-lts>=4.9' 'linux-lts<4.10'
-             'linux-lts-headers>=4.9' 'linux-lts-headers<4.10'
+makedepends=("linux-lts>=${_linux_major}.${_linux_minor}"
+             "linux-lts<${_linux_major}.$((_linux_minor+1))"
+             "linux-lts-headers>=${_linux_major}.${_linux_minor}"
+             "linux-lts-headers<${_linux_major}.$((_linux_minor+1))"
              "virtualbox-host-dkms>=$pkgver"
              "virtualbox-guest-dkms>=$pkgver")
 
-# remember to also adjust the .install files and the package deps below
-_extramodules=extramodules-4.9-lts
+_extramodules=extramodules-${_linux_major}.${_linux_minor}-lts
 
 package_virtualbox-host-modules-lts(){
   _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
   pkgdesc='Virtualbox host kernel modules for LTS Kernel'
-  depends=('linux-lts>=4.9' 'linux-lts<4.10')
+  depends=("linux-lts>=${_linux_major}.${_linux_minor}"
+           "linux-lts<${_linux_major}.$((_linux_minor+1))")
   replaces=('virtualbox-modules' 'virtualbox-host-modules')
   conflicts=('virtualbox-modules' 'virtualbox-host-modules'
 			 'virtualbox-host-dkms')
@@ -45,7 +51,8 @@ package_virtualbox-guest-modules-lts(){
   _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
   pkgdesc='Virtualbox guest kernel modules for LTS Kernel'
   license=('GPL')
-  depends=('linux-lts>=4.9' 'linux-lts<4.10')
+  depends=("linux-lts>=${_linux_major}.${_linux_minor}"
+           "linux-lts<${_linux_major}.$((_linux_minor+1))")
   replaces=('virtualbox-archlinux-modules' 'virtualbox-guest-modules')
   conflicts=('virtualbox-archlinux-modules' 'virtualbox-guest-modules'
              'virtualbox-guest-dkms')
@@ -66,10 +73,4 @@ package_virtualbox-guest-modules-lts(){
 }
 
 # vim:set ts=2 sw=2 et:
-
-
-
-
-
-
 

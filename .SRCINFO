@@ -1,6 +1,7 @@
 pkgbase = virtualbox-modules-lts
+	pkgdesc = Virtualbox kernel modules for LTS Kernel
 	pkgver = 5.1.28
-	pkgrel = 1
+	pkgrel = 3
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64
