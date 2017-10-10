@@ -4,7 +4,7 @@
 
 pkgname=wine-git
 pkgver=2.1.r285.gd00f7315e0
-pkgrel=3
+pkgrel=4
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('i686' 'x86_64')
 url='https://www.winehq.org'
