@@ -1,0 +1,16 @@
+pkgbase = minetest-mod-stargate-git
+	pkgdesc = StarGate SF series inspired travel network.
+	pkgver = 11.b8bd9cf
+	pkgrel = 1
+	url = https://github.com/minetest-mods/stargate
+	install = minetest-mod-stargate-git.install
+	arch = any
+	license = custom
+	makedepends = git
+	optdepends = minetest-usrdir_patch
+	provides = minetest-mod-stargate
+	source = minetest-mod-stargate::git://github.com/minetest-mods/stargate.git
+	md5sums = SKIP
+
+pkgname = minetest-mod-stargate-git
+
