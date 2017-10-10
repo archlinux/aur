@@ -2,16 +2,15 @@
 
 pkgname=private-internet-access-vpn
 pkgver=3.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
 license=('GPL')
-depends=('python' 'python-setuptools' 'python-docopt')
+depends=('python' 'python-setuptools' 'python-docopt' 'openvpn')
 makedepends=('git')
-optdepends=('networkmanager: Enables PIA for Network Manager'
-            'connman: Enables PIA for Connman'
-            'openvpn: Allows running configurations from command-line')
+optdepends=('networkmanager: Enables PIA for Network Manager (needs a openvpn plugin)'
+            'connman: Enables PIA for Connman')
 			
 sha256sums=('07639745ad1f790e7aaebfadfa4dd7a4b6eae176cc607803e0971d1411cfdec3'
             '1ac34e3a4ade51dd726f1de8697f280f78433e1f3cd9c888751383dfdf7605b4'
@@ -69,7 +68,7 @@ package() {
   cd "${srcdir}"
 
   install -D -m 644 restart.conf "${pkgdir}/usr/lib/system/openvpn-client@.service.d/restart.conf"
-  install -D -m 755 vpn.sh "${pkgdir}/usr/lib/system/systemd/system-sleep/vpn.sh"
+  install -D -m 755 vpn.sh "${pkgdir}/usr/lib/systemd/system/system-sleep/vpn.sh"
   install -D -m 644 pia.8.gz "${pkgdir}/usr/share/man/man8/pia.8.gz"
 
   
