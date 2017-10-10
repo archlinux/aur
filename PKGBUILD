@@ -1,6 +1,6 @@
 # Maintainer: Alan Witkowski <alan dot witkowski at gmail dot com>
 pkgname=openflap
-pkgver=1.0.0
+pkgver=1.0.0r42
 pkgrel=1
 pkgdesc="A game about bouncing balls through holes"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=('GPL3')
 depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer')
 makedepends=('cmake')
 changelog=Changelog
-source=("https://github.com/jazztickets/openflap/archive/v${pkgver}.tar.gz")
-sha256sums=('d8be341b7287892517a54e1a1d6155388c8d0da5695037aab4894b27ae68392d')
+source=("https://github.com/jazztickets/openflap/releases/download/v1.0.0/openflap-${pkgver}-src.tar.gz")
+sha256sums=('6166605328b8061af3c227f4d640704e405bef82245422f3498bd95e7b79bbce')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
