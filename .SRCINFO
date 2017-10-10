@@ -4,7 +4,7 @@ pkgbase = photon
 	pkgrel = 1
 	url = https://github.com/mattmoore/photon
 	arch = x86_64
-	license = unknown
+	license = MIT
 	source = https://github.com/mattmoore/photon/releases/download/0.1.5/photon_0.1.5-1_linux_x86_64.tar.xz
 	sha256sums = 0627970d15487883a19b41ab3374e13574bd73b2675229519d412a99163949fb
 
