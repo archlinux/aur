@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -48,14 +48,17 @@ conflicts=(
 )
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'ffmpeg-openjpeg2.2.patch'
+        'ffmpeg-openjpeg2.3.patch'
         'LICENSE')
 sha256sums=('98b97e1b908dfeb6aeb6d407e5a5eacdfc253a40c2d195f5867ed2d1d46ea957'
             '490598f78d7879af8ef5b8d7f92ada83d0ee64f9609f6c7b989eb331c2539f68'
+            'b69a99b11de840f3a5d8e1ded7d4cc8c22cee7aef0b04df82046c8652ec2d40d'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
     cd "${_srcname}-${pkgver}"
     patch -Np1 -i "${srcdir}/ffmpeg-openjpeg2.2.patch"
+    patch -Np1 -i "${srcdir}/ffmpeg-openjpeg2.3.patch"
 }
 
 build() {
