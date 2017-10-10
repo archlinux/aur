@@ -1,0 +1,13 @@
+pkgbase = ruby-liquid
+	pkgdesc = Liquid markup language. Safe, customer facing template language for flexible web apps.
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://shopify.github.io/liquid/
+	arch = any
+	license = MIT
+	depends = ruby
+	options = !emptydirs
+	source = ruby-liquid-4.0.0.tar.gz::https://github.com/Shopify/liquid/archive/v4.0.0.tar.gz
+	sha512sums = 3aa09813e2c6c3b75b9ab0eb1c11ae83f62e6d3dba19c91d8877bf8162edf867b06fbbc4fc3193116313ff98c1fa964b8a01f0cf58c9fb7ed89338f3bffb9cdb
+
+pkgname = ruby-liquid
