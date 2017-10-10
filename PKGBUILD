@@ -10,10 +10,11 @@ url="https://pwhois.org/milter.who/"
 options=(emptydirs)
 license=("GPL")
 depends=('libmilter')
-optdepends=('postfix: the recommended MTA for use with pwhois_milter' 'exim: an alternative MTA')
+optdepends=('postfix: the recommended MTA for use with pwhois_milter' 
+            'exim: an alternative MTA')
 install=${pkgname}.install
-source=("https://pwhois.org/dl/index.who?file=${pkgname}_${pkgver}.tgz"	
-				"${pkgname}.service")
+source=("https://pwhois.org/dl/index.who?file=${pkgname}_${pkgver}.tgz"
+        "${pkgname}.service")
 sha256sums=('70884e04fbcf8fba3f68023554f19eb5727d9bd9b74f97e24466d4dcaa0f19f5'
             'c511e64f865ca3c569549b7514525e52d71d4f00763201870dbe1ade46a64e74')
 build() {
