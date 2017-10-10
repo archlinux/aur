@@ -3,7 +3,7 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=55.2.1
+pkgver=55.2.1.1
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=b2ba34e0dc10
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=d6e4ba44dc372d353f84beb06f6ec94b9a90475e
+_commit=14ee15ceb522862e23febd1be0486e1e84824253
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
