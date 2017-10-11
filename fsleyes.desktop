@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=FSL image viewer
+Exec=/usr/bin/fsleyes
+Icon=fsleyes
+Name=FSLeyes
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Utility;
