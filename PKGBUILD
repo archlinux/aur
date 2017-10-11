@@ -68,7 +68,7 @@ package() {
 }
 
 # Generated using 'updpkgsums'
-md5sums=('6a0e0cf4aa366a764492ecc17f991973'
+md5sums=('24d65739dce6549553805756a430e28e'
          'ba054b375308442d43a408dbae5e9401'
          'ca1382966804d694894539c7bcac6bbb'
          'c12e765985b324585a548718a6ac9b43'

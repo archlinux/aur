@@ -146,7 +146,7 @@ for kernel in ${kernels[@]}; do
 
         # Sync VMware Player (Pro / Plus) version by incrementing by 4
         ver2=$ver
-        if [[ $name =~ Player ]] && [[ $ver != 12.* ]]; then
+        if [[ $name =~ Player ]] && [[ $ver != 12.* ]] && [[ $ver != 14.* ]]; then
             major=$(( ${ver/.*} + 4 ))
             ver2=$major.${ver#*.}
         fi
