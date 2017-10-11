@@ -1,0 +1,13 @@
+pkgbase = isa-l
+	pkgdesc = A collection of optimized low-level functions targeting storage applications
+	pkgver = 2.20.0
+	pkgrel = 1
+	url = https://github.com/01org/isa-l
+	arch = x86_64
+	license = BSD
+	makedepends = nasm
+	source = https://github.com/01org/isa-l/archive/v2.20.0.tar.gz
+	sha1sums = 4e5c7c5f16080ce86f7a8299cc65f9bd33214725
+
+pkgname = isa-l
+
