@@ -4,7 +4,7 @@
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 pkgver=4.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
 arch=('i686' 'x86_64')
@@ -70,10 +70,16 @@ package() {
   echo "" >> $srcdir/crashplan-install/scripts/run.conf
   echo "export LC_ALL=$LANG" >> $srcdir/crashplan-install/scripts/run.conf
 
+  # Use systemctl start/stop commands when it attempts to auto-update
+  sed -i 's/^$ENGINE_SCRIPT stop.*/systemctl stop crashplan-pro >> $logfile 2>\&1/g' "$pkgdir/opt/${pkgname}/bin/restartLinux.sh"
+  sed -i 's/^$ENGINE_SCRIPT start.*/systemctl start crashplan-pro >> $logfile 2>\&1/g' "$pkgdir/opt/${pkgname}/bin/restartLinux.sh"
+
   install -D -m 644 $srcdir/crashplan-install/install.vars $pkgdir/opt/$pkgname/install.vars
-#Removed as of Version 4.8.0 as the EULA is no longer included in the source
+
+  #Removed as of Version 4.8.0 as the EULA is no longer included in the source
   #install -D -m 644 $srcdir/crashplan-install/EULA.txt $pkgdir/opt/$pkgname/EULA.txt
   #install -D -m 644 $srcdir/crashplan-install/EULA.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
   install -D -m 755 $srcdir/crashplan-install/scripts/CrashPlanDesktop $pkgdir/opt/$pkgname/bin/CrashPlanDesktop
   install -D -m 644 $srcdir/crashplan-install/scripts/run.conf $pkgdir/opt/$pkgname/bin/run.conf
   install -D -m 755 $srcdir/crashplan-install/scripts/CrashPlanEngine $pkgdir/opt/$pkgname/bin/CrashPlanEngine
