@@ -1,7 +1,7 @@
 pkgbase = mailspring
 	pkgdesc = A beautiful, fast and maintained fork of Nylas Mail by one of the original authors.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getmailspring.com/
 	arch = x86_64
 	license = GPL3
@@ -17,6 +17,7 @@ pkgbase = mailspring
 	depends = libxtst
 	depends = libxkbfile
 	depends = glib2
+	depends = glibc
 	depends = libxml2
 	depends = libutil-linux
 	depends = libsecret
