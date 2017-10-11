@@ -2,13 +2,13 @@
 
 pkgname=libnd4j-git
 pkgver=20171010
-pkgrel=2
+pkgrel=4
 pkgdesc="LibND4J is a C++ library for exposing accelerated arrays to Java"
 license=('APACHE')
 url='https://github.com/deeplearning4j/libnd4j'
 arch=('i686' 'x86_64')
 provides=('libnd4j')
-conflicts=('')
+conflicts=('libnd4j')
 depends=('cmake>=3.2' 'gcc>=5.0')
 optdepends=('cuda>=8.0: cuda support')
 makedepends=('git' 'python' 'python-beautifulsoup4' 'python-urllib3')
@@ -21,7 +21,7 @@ build() {
         # Avoid '-fno-plt'
         export CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong"
         cd ${pkgname%-git}
-        ./buildnativeoperations.sh -a native
+        nice ./buildnativeoperations.sh -a native
         if (ldconfig -p | grep -q libcuda\.so); then
           COMPUTE=""
           if (nvidia-smi); then
@@ -29,15 +29,20 @@ build() {
             COMPUTE=$(python get_ccompute.py $GPU)
             COMPUTE=$(echo $COMPUTE| tr -d '.')
           fi
-          ./buildnativeoperations.sh -c cuda -cc $COMPUTE
+          nice ./buildnativeoperations.sh -c cuda -cc $COMPUTE
         fi
 }
 
 package() {
         cd ${pkgname%-git}
-        install -dm755 "$pkgdir/usr/lib"
-        install -Dm755 "blasbuild/cpu/blas/libnd4jcpu.so" "$pkgdir/usr/lib"
+        install -dm755 "$pkgdir/usr/lib/libnd4j/blasbuild/cpu/blas/"
+        install -dm755 "$pkgdir/usr/lib/libnd4j/blasbuild/cuda/blas/"
+        install -Dm644 "blasbuild/cpu/blas/libnd4jcpu.so" "$pkgdir/usr/lib/libnd4j/blasbuild/cpu/blas/"
         if (ldconfig -p | grep -q libcuda\.so); then
-          install -Dm755 "blasbuild/cuda/blas/libnd4jcuda.so" "$pkgdir/usr/lib"
+          install -Dm644 "blasbuild/cuda/blas/libnd4jcuda.so" "$pkgdir/usr/lib/libnd4j/blasbuild/cuda/blas/"
         fi
+        echo '#!/bin/sh' > libnd4j.sh
+        echo 'LIBND4J_HOME=/usr/lib/libnd4j' >> libnd4j.sh
+        echo 'export LIBND4J_HOME' >> libnd4j.sh
+        install -Dm 755 libnd4j.sh $pkgdir/etc/profile.d/libnd4j.sh
 }
