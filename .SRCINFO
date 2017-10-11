@@ -14,6 +14,7 @@ pkgbase = ldoce5viewer-pyqt5-git
 	depends = qt5-multimedia
 	depends = gst-plugins-good
 	depends = gst-plugins-ugly
+	depends = python-gobject
 	conflicts = ldoce5viewer-git
 	conflicts = ldoce5viewer
 	source = git://github.com/purboo/ldoce5viewer-pyqt5.git
