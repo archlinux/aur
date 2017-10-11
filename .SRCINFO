@@ -1,0 +1,12 @@
+pkgbase = python-indexed-gzip
+	pkgver = 0.6.1
+	pkgrel = 1
+	arch = any
+	license = ZLIB
+	depends = python
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/i/indexed_gzip/indexed_gzip-0.6.1.tar.gz
+	sha256sums = d65bf88fe9dc0293b8075eb0a1b1ba0d2dac0eefa9d421c412a97a3ef0ea7c43
+
+pkgname = python-indexed-gzip
+
