@@ -1,0 +1,12 @@
+pkgbase = ant-dracula-gtk-theme
+	pkgdesc = Ant Dracula Theme for GTK 3.x
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1099856/
+	arch = any
+	depends = gtk3
+	source = https://dl.opendesktop.org/api/files/download/id/1507003564/Ant-Dracula.tar.xz
+	md5sums = 059b2b9bc4b95b7c2b20e5a3ee35b3be
+
+pkgname = ant-dracula-gtk-theme
+
