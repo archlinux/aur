@@ -1,9 +1,10 @@
-# Maintainer: Sjoerd Sterk <sjoerd at sterk dot io>
+# Maintainer: Cornelius Wild < arch-aur at dervomsee dot de >
+# Contributor: Sjoerd Sterk <sjoerd at sterk dot io>
 # Contributor: Jason Lenz <Jason at Lenzplace dot org>
 # Contributor: Rafał Michalski <plum.michalski at gmail dot com>
 pkgname="burp-backup-dev"
 _pkgname="burp"
-pkgver=2.1.18
+pkgver=2.1.20
 pkgrel=1
 pkgdesc="A next generation experimental version of the burp backup and restore program."
 arch=('i686' 'x86_64')
@@ -26,12 +27,12 @@ source=(
 )
 
 sha256sums=(
-  ad12a38d58ac0608b5e39f67bc57cfaee4c1a3d5712234268a88bcb19fd53904 # burp-2.1.18.tar.bz2
+  779a869b4b950b7264d1427d4a681c71184fff6f60a1c3cf642f5f469408c7df # burp-2.1.18.tar.bz2
   1d2c97471494dd5924bd0676e817ebfac54465c4ec0e23b49ad1c3c91d36460f # burp.install
   94e1b5f8cf61c44f84675f685279e0d3376abd61ac1e6e4f5da0dd6b922c481f # burp-server.service
   7908970e23cfb08554cbf53da1f8f3193a6b6ee076584f797644efab8431bfe3 # burp-client.service
   0310a26e9a0af76f847130019cb865dfa09a5e8f9899bfd6526c69e82d160bf4 # burp-client.timer
-  d37a66f9dcb39a77379a38e9a763e071103036343e35911a28841bf41976eda6 # 01-runpath_fix.patch
+  84c68c433c25e84be71b13c42f10fea9697aaa08245c01c30d4400aeb7c08095 # 01-runpath_fix.patch
   e3e633f09d03efa3f2c1e769a2e31f514466ebd97cf6bb5f1ef0761e17abec67 # readme-archlinux.txt
 )
 
