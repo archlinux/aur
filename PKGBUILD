@@ -3,7 +3,7 @@
 pkgname=ipe
 _dirver=7.2
 pkgver=7.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The extensible drawing editor"
 url="http://tclab.kaist.ac.kr/ipe/"
 depends=('lua' 'qt5-base' 'freetype2' 'zlib' 'poppler' 'python2')
@@ -20,6 +20,7 @@ source=("http://dl.bintray.com/otfried/generic/$pkgname/$_dirver/$pkgname-$pkgve
 prepare() {
   cd "$srcdir/$pkgname-$pkgver/src"
   patch config.mak < "$srcdir/config.patch"
+  sed -i '/#include <xlocale.h>/d' ipelib/ipeplatform.cpp
 }
 
 build() {
