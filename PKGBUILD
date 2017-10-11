@@ -1,40 +1,38 @@
-# Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org>
+# Maintainer: Lucas Hoffmann
+# Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 # Contributor: Kazuo Teramoto <kaz.rag at gmail.com>
-pkgname=afew-git
-pkgver=1.0.0.r21.g6f4244e
+pkgname=afew
+pkgver=1.2.0
 pkgrel=1
-epoch=1
 pkgdesc="afew is an initial tagging script for notmuch mail"
 arch=(any)
 url="https://github.com/teythoon/afew"
 license=('custom:BSD')
 depends=('python' 'notmuch' 'dbacl' 'python-chardet' 'python-setuptools')
-makedepends=('git' 'python-sphinx')
-source=('LICENSE' 'git://github.com/teythoon/afew.git')
-md5sums=('295b245540aa61538f9a3556c4be846c'
-         'SKIP')
+makedepends=('python-sphinx')
+source=('LICENSE' "https://github.com/afewmail/afew/archive/$pkgver.tar.gz")
+sha1sums=(26af0a66e96e073a476f9f5006d45a349f81faf3
+          c6f89bec7fa7b0d12decf8e9d3b878ade82c247b)
 
-pkgver() {
-  cd "$srcdir/afew"
-
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+prepare () {
+  # We build from the versioned tarball from github so we do not need to
+  # depend on the git tag to find the version number.  Also there seems to be
+  # no clean way to override the safety checks that setuptools_scm do.
+  # Solution: We remove the dependecy on setuptools_scm and fake the version
+  # file.
+  cd "$srcdir/$pkgname-$pkgver"
+  sed -i '/use_scm_version/d;/setuptools_scm/d' setup.py
+  echo "version = '$pkgver'" > afew/version.py
 }
-
 build() {
-  cd "$srcdir/afew"
-
+  cd "$srcdir/$pkgname-$pkgver"
   python setup.py build
-
   make -C docs man
 }
-
 package() {
-  cd "$srcdir/afew"
-
+  cd "$srcdir/afew-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
-
   install -D -m 644 docs/build/man/afew.1 "$pkgdir/usr/share/man/man1/afew.1"
-
   install -D -m644 "$srcdir/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
