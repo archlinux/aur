@@ -2,7 +2,7 @@
 
 pkgname=libnd4j-git
 pkgver=20171010
-pkgrel=4
+pkgrel=5
 pkgdesc="LibND4J is a C++ library for exposing accelerated arrays to Java"
 license=('APACHE')
 url='https://github.com/deeplearning4j/libnd4j'
@@ -35,6 +35,10 @@ build() {
 
 package() {
         cd ${pkgname%-git}
+        install -dm755 "$pkgdir/usr/lib/libnd4j/blas"
+        for file in blas/*.h;do
+          install -m 644 "$file" "$pkgdir/usr/lib/libnd4j/blas/"
+        done
         install -dm755 "$pkgdir/usr/lib/libnd4j/blasbuild/cpu/blas/"
         install -dm755 "$pkgdir/usr/lib/libnd4j/blasbuild/cuda/blas/"
         install -Dm644 "blasbuild/cpu/blas/libnd4jcpu.so" "$pkgdir/usr/lib/libnd4j/blasbuild/cpu/blas/"
