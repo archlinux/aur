@@ -24,7 +24,6 @@ pkgbase = kubernetes-built
 	conflicts = kubectl-bin
 	conflicts = kubeadm-git
 	conflicts = kubeadm-bin
-	conflicts = 
 	backup = etc/kubernetes/apiserver
 	backup = etc/kubernetes/config
 	backup = etc/kubernetes/controller-manager
