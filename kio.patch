@@ -1,0 +1,186 @@
+--- a/src/ioslaves/file/file_unix.cpp	2017-09-03 11:08:44.000000000 +0300
++++ b/src/ioslaves/file/file_unix.cpp	2017-10-12 01:25:54.032505161 +0300
+@@ -29,6 +29,7 @@
+ 
+ #include <QtCore/QFile>
+ #include <QtCore/QDir>
++#include <QtCore/QFileInfo>
+ #include <qplatformdefs.h>
+ 
+ #include <QDebug>
+@@ -38,6 +39,16 @@
+ 
+ #include <errno.h>
+ #include <utime.h>
++#include <limits.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <string.h>
++
++#ifdef Q_OS_LINUX
++#include <mntent.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#endif
+ 
+ //sendfile has different semantics in different platforms
+ #if defined HAVE_SENDFILE && defined Q_OS_LINUX
+@@ -50,7 +61,86 @@
+ 
+ using namespace KIO;
+ 
+-#define MAX_IPC_SIZE (1024*32)
++
++
++#ifdef Q_OS_LINUX
++/*!
++ * \brief Find device by path
++ * \param filename path to file or directory
++ * \return path to storage device /dev/sdX
++ */
++static QString blockDeviceByPath(const QString &filename)
++{
++    struct mntent mnt;
++    char        buf[PATH_MAX];
++    struct stat s;
++    FILE *      fp;
++    dev_t       dev;
++    QDir        dir = QFileInfo(filename).absoluteDir();
++
++    if( stat(dir.absolutePath().toUtf8().constData(), &s) != 0 )
++        return QString();
++
++    dev = s.st_dev;
++    if( (fp = setmntent("/proc/mounts", "r")) == NULL )
++        return QString();
++
++    while (getmntent_r(fp, &mnt, buf, PATH_MAX)) {
++        if (stat(mnt.mnt_dir, &s) != 0) {
++            continue;
++        }
++
++        if (s.st_dev == dev) {
++            endmntent(fp);
++            return QString::fromUtf8( mnt.mnt_fsname );
++        }
++    }
++
++    endmntent(fp);
++    return QString();
++}
++#endif
++
++/*!
++ * \brief Get device parameters by file/dir path
++ */
++// TODO move it to KMountPoint?
++static int statsDeviceByFile(const QString &filename, int &max_hw_single_transfer_chunk, bool &is_removeable)
++{
++    QString device;
++#ifdef Q_OS_LINUX
++    device = blockDeviceByPath(filename);
++
++    if( device.isEmpty() )
++        return -1;
++    
++    // /dev/sdXX -> sdX
++    int lastSep = device.lastIndexOf('/');
++    if( lastSep > -1 )
++        device = device.mid(lastSep+1, 3);
++    
++    // get hardware single transfer chunk
++    QFile fMaxHwSector("/sys/block/" + device + "/queue/max_hw_sectors_kb");
++    if( fMaxHwSector.open(QFile::ReadOnly | QFile::Text) ) {
++        max_hw_single_transfer_chunk = (fMaxHwSector.readAll().trimmed().toInt()) * 1024;
++    }
++    
++    // check if device removable
++    QFile fIsRemovable("/sys/block/" + device + "/removable");
++    if( fIsRemovable.open(QFile::ReadOnly | QFile::Text) ) {
++        is_removeable = (fIsRemovable.readAll().trimmed().toInt()) == 1;
++    }
++    
++#else
++    Q_UNUSED(device);
++    Q_UNUSED(filename);
++    Q_UNUSED(max_hw_single_transfer_chunk);
++    Q_UNUSED(is_removeable);
++    
++#endif
++    return 0;
++}
++
+ 
+ static bool
+ same_inode(const QT_STATBUF &src, const QT_STATBUF &dest)
+@@ -63,6 +153,7 @@
+     return false;
+ }
+ 
++
+ void FileProtocol::copy(const QUrl &srcUrl, const QUrl &destUrl,
+                         int _mode, JobFlags _flags)
+ {
+@@ -131,9 +222,24 @@
+ #if HAVE_FADVISE
+     posix_fadvise(src_file.handle(), 0, 0, POSIX_FADV_SEQUENTIAL);
+ #endif
+-
++    
++    // set default is non removable and chunk size 512k
++    int block_size = 1024 * 1024 * 1;
++    bool is_removeable = false;
++    statsDeviceByFile(dest, block_size, is_removeable);
++
++    // minimum block size 1M
++    if( block_size < (1024 * 1024 * 1) )
++        block_size = (1024 * 1024 * 1);
++    
++    // maximum 5 MB
++    else if( block_size > (1024 * 1024 * 5) )
++        block_size = (1024 * 1024 * 5);
++    
++    // open dest file with O_SYNC if used drive is removable
+     QFile dest_file(dest);
+-    if (!dest_file.open(QIODevice::Truncate | QIODevice::WriteOnly)) {
++    int dest_fd = ::open(dest.toStdString().c_str(), O_CREAT | O_TRUNC | (is_removeable? O_SYNC : 0) | O_WRONLY);
++    if (!dest_file.open(dest_fd, QIODevice::Truncate | QIODevice::WriteOnly, QFile::AutoCloseHandle)) {
+         // qDebug() << "###### COULD NOT WRITE " << dest;
+         if (errno == EACCES) {
+             error(KIO::ERR_WRITE_ACCESS_DENIED, dest);
+@@ -162,7 +268,7 @@
+     totalSize(buff_src.st_size);
+ 
+     KIO::filesize_t processed_size = 0;
+-    char buffer[ MAX_IPC_SIZE ];
++    QScopedPointer<char> buffer(new char[ block_size ]);
+     int n;
+ #ifdef USE_SENDFILE
+     bool use_sendfile = buff_src.st_size < 0x7FFFFFFF;
+@@ -171,7 +277,7 @@
+ #ifdef USE_SENDFILE
+         if (use_sendfile) {
+             off_t sf = processed_size;
+-            n = ::sendfile(dest_file.handle(), src_file.handle(), &sf, MAX_IPC_SIZE);
++            n = ::sendfile(dest_file.handle(), src_file.handle(), &sf, block_size);
+             processed_size = sf;
+             if (n == -1 && (errno == EINVAL || errno == ENOSYS)) {     //not all filesystems support sendfile()
+                 // qDebug() << "sendfile() not supported, falling back ";
+@@ -180,7 +286,7 @@
+         }
+         if (!use_sendfile)
+ #endif
+-            n = ::read(src_file.handle(), buffer, MAX_IPC_SIZE);
++            n = ::read(src_file.handle(), (void *)&(*buffer), block_size);
+ 
+         if (n == -1) {
+             if (errno == EINTR) {
+@@ -215,7 +321,7 @@
+ #ifdef USE_SENDFILE
+         if (!use_sendfile) {
+ #endif
+-            if (dest_file.write(buffer, n) != n) {
++            if (dest_file.write(&(*buffer), n) != n) {
+                 if (dest_file.error() == QFileDevice::ResourceError) {  // disk full
+                     error(KIO::ERR_DISK_FULL, dest);
+                 } else {
