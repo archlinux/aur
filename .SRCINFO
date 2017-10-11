@@ -1,7 +1,7 @@
 pkgbase = pamac-classic
 	pkgdesc = A Gtk3 frontend for libalpm - classic version
-	pkgver = 6.0.0
-	pkgrel = 3
+	pkgver = 6.0.1
+	pkgrel = 1
 	url = https://github.com/cromnix/pamac-classic
 	install = pamac-classic.install
 	arch = x86_64
@@ -36,8 +36,8 @@ pkgbase = pamac-classic
 	conflicts = pamac
 	conflicts = pamac-aur
 	backup = etc/pamac.conf
-	source = pamac-classic-6.0.0-3.tar.gz::https://github.com/cromnix/pamac-classic/archive/v6.0.0.tar.gz
-	sha256sums = f0d98d735210c999f450c977c63de5b0e4665fa2646bef0f0076752fff912942
+	source = pamac-classic-6.0.1-1.tar.gz::https://github.com/cromnix/pamac-classic/archive/v6.0.1.tar.gz
+	sha256sums = 820bc2617eedf44cdefb1f3d6d26e1d1b78c3437849d5f726f60025eaf53518f
 
 pkgname = pamac-classic
 
