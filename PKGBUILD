@@ -10,7 +10,7 @@
 # You have to login to https://backstage.renoise.com and download your copy
 
 pkgname="renoise"
-pkgver="3.1.0"
+pkgver="3.1.1"
 pkgrel="1"
 pkgdesc="A music composition program"
 arch=("i686" "x86_64")
