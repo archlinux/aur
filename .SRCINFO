@@ -1,0 +1,14 @@
+pkgbase = nodejs-generator-ansible
+	pkgdesc = Yeoman generator for ansible
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/zshannon/generator-ansible/
+	arch = any
+	license = MIT
+	depends = nodejs-yeoman
+	noextract = generator-ansible-0.0.5.tgz
+	source = http://registry.npmjs.org/generator-ansible/-/generator-ansible-0.0.5.tgz
+	sha256sums = e42420dc1e7fc57c8735a92bd2105e0e8c020085d4f32c8727e3a799e3842ca8
+
+pkgname = nodejs-generator-ansible
+
