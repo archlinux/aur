@@ -1,0 +1,29 @@
+pkgbase = wxpython-phoenix
+	pkgdesc = Python 3 implementation of wxPython
+	pkgver = 4.0.0b2
+	pkgrel = 1
+	url = https://github.com/wxWidgets/Phoenix
+	arch = any
+	license = custom:wxWindows
+	makedepends = mesa
+	makedepends = glu
+	makedepends = git
+	makedepends = libpng
+	makedepends = libjpeg-turbo
+	makedepends = libtiff
+	makedepends = sdl
+	makedepends = gst-plugins-base
+	makedepends = libnotify
+	makedepends = freeglut
+	makedepends = gtk3
+	makedepends = webkit2gtk
+	depends = python
+	provides = wxpython-phoenix
+	conflicts = wxpython-phoenix-bin
+	conflicts = wxpython-phoenix-git
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/w/wxPython/wxPython-4.0.0b2.tar.gz
+	sha256sums = 1d34c3e2ff475ca6d2a11e8addd0333e4f616cc74f6bfcda5c6e96f51478666d
+
+pkgname = wxpython-phoenix
+
