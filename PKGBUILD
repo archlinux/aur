@@ -2,7 +2,7 @@
 pkgname="transmission-daemon-openrc"
 _service="transmission"
 pkgver="1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenRC transmission-daemon init script"
 arch=('any')
 url="https://github.com/manjaro/packages-openrc"
@@ -16,7 +16,7 @@ changelog=
 source=("$pkgname.confd"
         "$pkgname.initd")
 md5sums=('339e22502d7f416806cfe98d28f26940'
-         'fa5aae549cd57255a052f71de1fcb035')
+         'bda7138d524be731e5c93a56d7044fda')
 
 
 package() {

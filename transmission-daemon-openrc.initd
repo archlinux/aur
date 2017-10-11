@@ -19,31 +19,31 @@ runas_user=${runas_user:-transmission:transmission}
 retry="TERM/45/QUIT/15"
 
 start_pre() {
-	command_args="--config-dir ${config_dir} --pid-file ${pidfile}"
-	command_user="${runas_user}"
+    command_args="--config-dir ${config_dir} --pid-file ${pidfile}"
+    command_user="${runas_user}"
 
-	# Call mkdir -p in case parent dirs are missing
-	mkdir -p "${rundir}" "${config_dir}" "${download_dir}"
+    # Call mkdir -p in case parent dirs are missing
+    mkdir -p "${rundir}" "${config_dir}" "${download_dir}"
 
-	# Call checkpath to fixup permissions
-	checkpath -d -o "${runas_user}" "${rundir}" "${config_dir}" "${download_dir}" || return
+    # Call checkpath to fixup permissions
+    checkpath -d -o "${runas_user}" "${rundir}" "${config_dir}" "${download_dir}" || return
 
-	if [ ! -e "${config_dir}/settings.json" ]; then
-		# Only set download dir if settings don't exist
-		# https://bugs.gentoo.org/576640
-		command_args="${command_args} --download-dir ${download_dir}"
-	fi
+    if [ ! -e "${config_dir}/settings.json" ]; then
+        # Only set download dir if settings don't exist
+        # https://bugs.gentoo.org/576640
+        command_args="${command_args} --download-dir ${download_dir}"
+    fi
 
-	if [ "${logfile}" != syslog ]; then
-		checkpath -d -o "${runas_user}" /var/log/transmission || return
-		command_args="${command_args} --logfile ${logfile}"
-	fi
+    if [ "${logfile}" != syslog ]; then
+        checkpath -d -o "${runas_user}" /var/log/transmission || return
+        command_args="${command_args} --logfile ${logfile}"
+    fi
 
-	command_args="${command_args} ${TRANSMISSION_OPTIONS}"
+    command_args="${command_args} ${TRANSMISSION_OPTIONS}"
 }
 
 reload() {
-	ebegin "Reloading ${RC_SVCNAME}"
-	start-stop-daemon --signal HUP --exec "${command}" --pidfile "${pidfile}"
-	eend $?
+    ebegin "Reloading ${RC_SVCNAME}"
+    start-stop-daemon --signal HUP --exec "${command}" --pidfile "${pidfile}"
+    eend $?
 }
