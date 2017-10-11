@@ -123,7 +123,7 @@ package() {
 }
 
 md5sums=('SKIP'
-         'a5246cf3bed53798ddc4d95c6b8c1b37')
+         '6d9430b5b06b93a43a1cb79e14637f0b')
 if test "$CARCH" == "x86_64"; then
 	md5sums+=('2ba12c71625919ddc282172b74fa4887')
 else
