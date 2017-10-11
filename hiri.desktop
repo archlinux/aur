@@ -7,3 +7,4 @@ Terminal=false
 StartupNotify=true
 Exec=/opt/hiri/hiri.sh %u
 Icon=/opt/hiri/hiri.png
+MimeType=x-scheme-handler/mailto;
