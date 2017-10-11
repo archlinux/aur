@@ -3,11 +3,11 @@
 
 pkgname=buku-git
 _pkgname=buku
-pkgver=998.6abfea2
-pkgrel=2
-pkgdesc="cmdline bookmark management utility written in Python3 and SQLite3"
+pkgver=1114.fd49d30
+pkgrel=1
+pkgdesc="Powerful command-line bookmark manager."
 arch=('any')
-depends=('python' 'python-crypto' 'sqlite')
+depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'python-requests' 'python-urllib3')
 conflicts=('buku')
 provides=('buku')
 makedepends=('make')
