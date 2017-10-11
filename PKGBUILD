@@ -1,35 +1,29 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
  
 pkgname=linux-steam-integration
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Helper for enabling better Steam integration on Linux"
 url="https://github.com/solus-project/linux-steam-integration"
 arch=('x86_64')
 license=('LGPL2.1')
 depends=('gtk3' 'steam')
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'gcc-multilib')
 optdepends=('steam-native-runtime: A package for installing all required deps for the native runtime.')
 provides=('linux-steam-integration')
 conflicts=('linux-steam-integration')
-source=("https://github.com/solus-project/linux-steam-integration/releases/download/v${pkgver}/linux-steam-integration-${pkgver}.tar.xz"{,.asc}
-        meson_fix.patch)
-sha512sums=('28256634d78f01a2bed00257f6328d76fadce6be1215c1890e9fa79316b9499583cf4796aebd8783cddc81ca3e6b2a3885179c21c2366f8368c54af5f8989d8f'
-            'SKIP'
-            '52ca7decac01e65451b37cc8b0d2535e6596321c347ff898f2c9ec5d3e2ef94d265eb0a6c497b0455f598d80fe1bd9adbfcf08d5277f77b63bdb2efafb26dbd5')
+source=("https://github.com/solus-project/linux-steam-integration/releases/download/v${pkgver}/linux-steam-integration-${pkgver}.tar.xz"{,.asc})
+sha512sums=('99dcc24049c5f9f0405bc18513cd97a49eb50cc088a27a4d3b3aef6c5528bcc441220a0fed8833ba6ae535daa91c4cd447fa35e4cc205ace172c658db218b344'
+            'SKIP')
 validpgpkeys=('8876CC8EDAEC52CEAB7742E778E2387015C1205F') # Ikey Doherty
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch -Np1 < "$srcdir"/meson_fix.patch
-}
 
 build() {
   # 64-bit build
   arch-meson "$pkgname-$pkgver" build \
     -Dwith-shim=co-exist \
     -Dwith-frontend=true \
-    -Dwith-steam-binary=/usr/lib/steam/steam
+    -Dwith-steam-binary=/usr/lib/steam/steam \
+    -Dwith-new-libcxx-abi=true
 
   ninja -C build
 

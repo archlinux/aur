@@ -1,8 +1,0 @@
---- a/meson_options.txt	2017-10-11 01:32:29.000000000 +0200
-+++ b/meson_options.txt	2017-10-11 10:33:18.994398657 +0200
-@@ -1,4 +1,4 @@
--option('with-shim', type : 'combo', choices : ['replacement', 'co-exist', 'none'], default: 'replacement',
-+option('with-shim', type : 'combo', choices : ['replacement', 'co-exist', 'none'],
-        description : 'control how the shim is deployed')
- option('with-steam-binary', type: 'string', description: 'Set the path to the Steam binary', value: '/usr/lib/steam/steam')
- option('with-frontend', type: 'boolean', description: 'Build the LSI Settings UI', value: false)
