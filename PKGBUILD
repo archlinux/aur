@@ -29,7 +29,7 @@ package() {
 
     binaries=(apiextensions-apiserver cloud-controller-manager kube-proxy kube-apiserver kube-controller-manager kubelet kubeadm kubemark hyperkube kube-aggregator kube-scheduler kubectl kubefed kubemark gke-certificates-controller)
     for bin in "${binaries[@]}"; do
-        install -Dm755 _output/local/bin/linux/$_kubearch/$bin $pkgdir/usr/bin/$bin
+        install -Dm755 $srcdir/usr/bin/$bin $pkgdir/usr/bin/$bin
     done
    
     # install manpages
