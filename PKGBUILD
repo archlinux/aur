@@ -32,7 +32,7 @@ build() {
   cd "${srcdir}/${_pkgname}${_pkgver}"
 
   CFLAGS+=" -fPIC" ./configure --prefix=/usr \
-    --enable-ssl \
+    --disable-ssl \
     --enable-sqlite \
     --enable-alsa \
     --disable-gstreamer \
@@ -40,8 +40,7 @@ build() {
     --mandir=/usr/share/man \
     --infodir=/usr/share/info \
     --docdir=/usr/share/doc/bigloo \
-    --strip=no \
-    --sharedcompiler=yes
+    --strip=no
   make
   make compile-bee
 }
@@ -56,16 +55,4 @@ package() {
   make DESTDIR="${pkgdir}" install install-bee
   make -C manuals DESTDIR="${pkgdir}" install-bee
   chmod 644 "${pkgdir}/usr/lib/${_pkgname}/${_pkgver}"/*.a
-  # Slake ldconfig's thirst for symlinks.
-  find "${pkgdir}/usr/lib/${_pkgname}/${_pkgver}" -type f -name '*_es-*.so' \
-       -exec "${srcdir}/satisfy-ldconfig.sh" '{}' \;
-  
-  sed -e "s|^BOOTDIR=.*|BOOTDIR=/usr|g" \
-      -e "s|^BOOTBINDIR=.*|BOOTBINDIR=/usr/bin|g" \
-      -e "s|^BOOTLIBDIR=.*|BOOTLIBDIR=/usr/lib/bigloo/${pkgver}|g" \
-      -e "s|^BGLBUILDBINDIR=.*|BGLBUILDBINDIR=/usr/bin|g" \
-      -e "s|^BGLBUILDLIBDIR=.*|BGLBUILDLIBDIR=/usr/lib/bigloo/${pkgver}|g" \
-      -e "s|^\(BIGLOO=.*\)\.sh|\1|" \
-      -e "s|^\(BGL.*=.*\)\.sh|\1|" \
-      -i  ${pkgdir}/usr/lib/bigloo/${_pkgver}/Makefile.config
 }
