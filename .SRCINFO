@@ -1,7 +1,7 @@
 pkgbase = gnome-commander
 	pkgdesc = Graphical two-pane filemanager for Gnome
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcmd.github.io/
 	arch = i686
 	arch = x86_64
@@ -9,13 +9,12 @@ pkgbase = gnome-commander
 	makedepends = perl-xml-parser
 	makedepends = gnome-doc-utils
 	makedepends = intltool
-	depends = libgnomeui
 	depends = python2
-	depends = libunique
 	depends = libgsf
 	depends = exiv2
 	depends = taglib
 	depends = poppler-glib
+	depends = libgnomeui
 	source = https://download.gnome.org/sources/gnome-commander/1.8/gnome-commander-1.8.0.tar.xz
 	sha256sums = d0e73077fe22ae1e00d93f0112e0e019cf40b15419dfa82e51c9d5f30849946b
 
