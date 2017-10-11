@@ -1,24 +1,25 @@
 # $Id$
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgorigname=kwin
 pkgname=kwin-presentwindows-close
-pkgver=5.10.5
+pkgver=5.11.0
 pkgrel=1
 pkgdesc='An easy to use, but flexible, composited Window Manager'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
-license=('LGPL')
-depends=('kscreenlocker' 'xcb-util-cursor' 'hicolor-icon-theme' 'plasma-framework' 'kcmutils' 'breeze')
-makedepends=('extra-cmake-modules' 'qt5-tools' 'kdoctools' 'python')
+license=(LGPL)
+depends=(kscreenlocker xcb-util-cursor hicolor-icon-theme plasma-framework kcmutils breeze kinit)
+makedepends=(extra-cmake-modules qt5-tools kdoctools python)
 optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland')
-groups=('plasma')
-conflicts=('kdebase-workspace')
-provides=('kwin')
+conflicts=(kwin)
+provides=(kwin)
+groups=(plasma)
 source=("https://download.kde.org/stable/plasma/${pkgver}/${_pkgorigname}-${pkgver}.tar.xz"{,.sig}
         "presentwindows-close.patch")
-sha256sums=('cc7f6b6c5d86270b30a8c7087f00152b084e67dfd515ae009c2903a0c2b0bedb'
+sha256sums=('fa1b12470f639858ce3d07b820c8336c643f52bcea71fca06f9191d97e1def05'
             'SKIP'
             'a42e050f873632240595026b0f0f98ce4e109dd36a7768ba6b361d1b4854aefb')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
@@ -38,8 +39,8 @@ build() {
   cmake ../$_pkgorigname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_LIBEXECDIR=lib \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   make
 }
