@@ -10,7 +10,7 @@ license=('WTFPL')
 depends=('python2' 'python2-setuptools' 'python2-bottle' 'python2-cherrypy' 'python2-clize' 'python2-privilege')
 makedepends=('git')
 backup=('usr/lib/python2.7/site-packages/zerobin/default_settings.py')
-source=("$pkgname"::'git+https://github.com/sametmax/0bin.git' 'LICENSE' 'zerobin.install' 'zerobin.service')
+source=("$pkgname"::'git+https://github.com/sametmax/0bin.git#revision=66fe5d4088692bed0b9e2740dee9991d3c41e2b4' 'LICENSE' 'zerobin.install' 'zerobin.service')
 md5sums=('SKIP'
          '1b71aebc25e7533ebaa5b320a20e7ed2'
          'fe5002a67ee21f5cd66f6d8f709607bc'
