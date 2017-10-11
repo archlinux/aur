@@ -1,38 +1,38 @@
-# Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 pkgname=roomeqwizard
-pkgver=5.14
-_pkgver=5_14
+pkgver=5.18
+_pkgver=5_18
 pkgrel=1
-pkgdesc="free room acoustics analysis software for measuring and analysing room and loudspeaker responses"
+pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
 arch=('any')
 url="http://www.roomeqwizard.com"
 license=('custom')
-depends=('java-environment' 'xdg-utils')
-source=("http://www.roomeqwizard.com/installers/REW_linux_$_pkgver.sh")
-md5sums=('8432c31df1cdf5042df022bb4e9c7a8b')
+depends=('java-environment')
+source=("https://www.roomeqwizard.com/installers/REW_linux_$_pkgver.sh")
+sha512sums=('e256d2ad57bbed4c1e90380e1aa7247815f0ff91a4426a68caa200cf3f4af971515598c04a48f8657a8f4ada65bc8aa106469f46133f8a39a87f62e7e205af8b')
 
 package() {
-  # install
-  mkdir -p "$pkgdir/opt/REW" \
-           "$pkgdir/usr/bin" \
+  sh REW_linux_$_pkgver.sh -q -dir "$pkgdir/opt/$pkgname"
+
+  mkdir -p "$pkgdir/usr/bin" \
            "$pkgdir/usr/share/licenses/$pkgname" \
            "$pkgdir/usr/share/doc/$pkgname" \
            "$pkgdir/usr/share/applications/$pkgname"
-  sh REW_linux_$_pkgver.sh -q -dir "$pkgdir/opt/REW"
-  mv "$pkgdir/opt/REW/EULA.html" "$pkgdir/usr/share/licenses/$pkgname/EULA.html"
-  mv "$pkgdir/opt/REW/readme.txt" "$pkgdir/usr/share/doc/$pkgname/readme"
-  mv "$pkgdir/opt/REW/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
-  ln -s "/opt/REW/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-  # basic cleanup
-  rm -rf "$pkgdir/opt/REW/.install4j/installation.log"
-  rm -rf "$pkgdir/opt/REW/uninstall"
-  rm -rf "$pkgdir/opt/REW/uninstall.png"
+  ln -s "$pkgdir/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  mv "$pkgdir/opt/$pkgname/EULA.html" "$pkgdir/usr/share/licenses/$pkgname/"
+  mv "$pkgdir/opt/$pkgname/readme.txt" "$pkgdir/usr/share/doc/$pkgname/"
+  mv "$pkgdir/opt/$pkgname/REW.desktop" "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
 
   # repair
-  sed "s#$pkgdir##g" -i "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
-  sed "s#$pkgdir##g" -i "$pkgdir/opt/REW/.install4j/response.varfile"
-  sed "s#$pkgdir##g" -i "$pkgdir/opt/REW/.install4j/install.prop"
-}
+  sed "s%$pkgdir%%g" -i "$pkgdir/opt/$pkgname/.install4j/response.varfile"
+  sed "s%$pkgdir%%g" -i "$pkgdir/opt/$pkgname/.install4j/install.prop"
 
-# vim:set ts=2 sw=2 et:
+  sed "s%$pkgdir%%g" -i "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
+  sed "s/REW/Room EQ Wizard/g" -i "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
+
+  # basic cleanup
+  rm -rf "$pkgdir/opt/$pkgname/.install4j/files.log"
+  rm -rf "$pkgdir/opt/$pkgname/.install4j/installation.log"
+  rm -rf "$pkgdir/opt/$pkgname/.install4j/uninstall.png"
+  rm -rf "$pkgdir/opt/$pkgname/uninstall"
+}
