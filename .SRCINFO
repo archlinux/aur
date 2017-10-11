@@ -1,6 +1,6 @@
 pkgbase = komodo-ide-nightly
 	pkgdesc = Code smarter and faster with the leading IDE for today's major web languages, including Python, PHP, Node.js, Perl, Go and Ruby. - XUL based
-	pkgver = 11.0.1_90739
+	pkgver = 11.0.1_90755
 	pkgrel = 1
 	url = http://www.activestate.com/komodo-ide
 	arch = i686
