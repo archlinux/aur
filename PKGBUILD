@@ -3,21 +3,20 @@
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
 
 pkgname=libtomcrypt
-pkgver=1.18.0rc5
-_pkgver="${pkgver/rc/-rc}"
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="A fairly comprehensive, modular and portable cryptographic toolkit"
 arch=('i686' 'x86_64')
 url="http://www.libtom.net/LibTomCrypt/"
 license=('custom:PublicDomain')
 depends=('libtommath' 'gmp')
-source=("https://github.com/libtom/${pkgname}/releases/download/v${_pkgver}/${pkgname#libtom}-${_pkgver}.tar.xz"{,.asc})
-sha256sums=('55af6a820e7be83efb99a39a98eb005c188655078e4c1683b4099d89e415ec55'
+source=("https://github.com/libtom/${pkgname}/releases/download/v${pkgver}/${pkgname#libtom}-${pkgver}.tar.xz"{,.asc})
+sha256sums=('da9df56a314afaab71963aa71bb6a075ea6bdee3d4db4af045f6bfe23e88b87a'
             'SKIP')
 validpgpkeys=('C4386A237ED43A475541B9427B2CD0DD4BCFF59B') # Steffen Jaeckel <s_jaeckel@gmx.de>
 
 build() {
-  cd "${pkgname}-${_pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   export CPPFLAGS+=" -DLTM_DESC -DGMP_DESC -DUSE_LTM"
   export EXTRALIBS="-ltommath -lgmp"
@@ -25,12 +24,12 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${_pkgver}"
+  cd "${pkgname}-${pkgver}"
   ./test
 }
 
 package() {
-  cd "${pkgname}-${_pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   make -f makefile.shared DESTDIR="${pkgdir}" PREFIX="/usr" INSTALL_GROUP="root" INSTALL_OPTS="" install
 
