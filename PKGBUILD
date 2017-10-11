@@ -2,13 +2,14 @@
 
 pkgname=('gitahead')
 pkgrel=1
-pkgver=1.4.4
+pkgver=1.4.5
 pkgdesc='THE MOST POWERFUL GIT GUI'
 url='http://gitahead.scitools.com/'
 provides=('gitahead')
 conflicts=('gitahead')
 arch=('x86_64')
 license=('custom')
+depends=('qt5-base')
 source=(
   "gitahead-${pkgver}.bin::https://gitahead.com/downloads/v${pkgver}/GitAhead-${pkgver}.sh"
   "gitahead-license"
@@ -16,7 +17,7 @@ source=(
   "gitahead.png"
   "gitahead.sh"
 )
-sha256sums=('e6f5f02d15c896b986be818c02721e253f53ec4378272615f68deee67f765d2b'
+sha256sums=('efa825d76841d28ca3b84db7f42cf39155bb75962368bbe05178cb2d8d8d4060'
             'd71bfb48c954d213986816fc29478c7f80c8bd2dd10d2889bf51897d649eedd6'
             '6070ebf6752f55f8b7d8a79107ce491c3acf04310eeb9a8242b83cfb4df055f2'
             '66cb53fc57eb2ce2e6cd02ff392476fdfb91b723b76ef5da1856e9b5dc1b5c75'
@@ -29,13 +30,13 @@ prepare() {
 }
 
 package() {
-  install -d "${pkgdir}/opt"
-  cp -R "${srcdir}/gitahead-${pkgver}" "${pkgdir}/opt/gitahead"
-
+  install -d "${pkgdir}/opt/gitahead"
+  cp -R "${srcdir}/gitahead-${pkgver}/Resources" "${pkgdir}/opt/gitahead"
   find "${pkgdir}/opt/gitahead/" -type f -exec chmod 644 {} \;
-  chmod 755 "${pkgdir}/opt/gitahead/GitAhead"
 
-  install -d "${pkgdir}/usr/bin"
+  install -D -m755 "${srcdir}/gitahead-${pkgver}/GitAhead" "${pkgdir}/opt/gitahead/GitAhead"
+  install -D -m755 "${srcdir}/gitahead-${pkgver}/indexer" "${pkgdir}/opt/gitahead/indexer"
+  install -D -m755 "${srcdir}/gitahead-${pkgver}/relauncher" "${pkgdir}/opt/gitahead/relauncher"
 
   install -D -m644 "${srcdir}/gitahead-license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m755 "${srcdir}/gitahead.sh" "${pkgdir}/usr/bin/gitahead"

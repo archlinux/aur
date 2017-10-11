@@ -1,3 +1,20 @@
+# [v1.4.5 - 2017-10-10](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.4)
+
+## Added
+
+- Added option to merge without committing.
+- Added context menu actions to stage/unstage multiple files at once.
+
+## Fixed
+
+- Fixed usability issues in the custom external tools editor interface.
+- Don't yield focus to the commit message editor when staging files with the keyboard.
+- Fixed state of stash toolbar button and menu item when the working directory is clean except for untracked files.
+- Fixed failure to cherry-pick and revert when the working directory is dirty.
+- Fixed hang on some diffs.
+- Fixed garbage remote transfer rate when the elapsed time is too small to measure.
+- (Mac) Fixed several issues on macOS 10.13.
+
 # [v1.4.4 - 2017-09-22](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.3)
 
 ## Added
