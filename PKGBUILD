@@ -4,15 +4,15 @@
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 pkgver=4.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('java-environment' 'gcc-libs-multilib' 'bash')
-makedepends=('grep' 'cpio' 'gzip')
-optdepends=('swt: needed by some to open the GUI')
-backup=()
+depends=('bash' 'java-runtime-headless>=8')
+makedepends=('cpio')
+optdepends=('java-runtime>=8: For Crashplan GUI'
+            'gtk2: For Crashplan GUI')
 install=crashplan-pro.install
 source=(https://web-ebm-msp.crashplanpro.com/client/installers/CrashPlanPRO_${pkgver}_1436674888490_33_Linux.tgz
         crashplan-pro
