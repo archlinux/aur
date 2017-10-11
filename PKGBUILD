@@ -1,6 +1,7 @@
 # Maintainer: Reza Farrahi M <imriss@yahoo.com>
 
 pkgname=kubernetes-built
+pkgnameorg=kubernetes
 pkgver=1.8.0
 pkgrel=1
 pkgdesc="Production-Grade Container Scheduling and Management - binary version of aur-kubernetes"
@@ -22,7 +23,7 @@ sha256sums=('5409e19ce8d461e4d27253320f1b00be361a80f50ddcb7e424f4f5eb3bb566a0')
 md5sums=('8482913f2937d9925763c09f206ff1e3')
 
 prepare() {
-  cd "${srcdir}"/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgnameorg-$pkgver
 }
 
 package() {
