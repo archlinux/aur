@@ -1,0 +1,10 @@
+[Unit]
+Description=Photo Backup service
+Documentation=http://photobackup.github.io/
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/photobackup
+
+[Install]
+WantedBy=default.target

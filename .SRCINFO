@@ -17,7 +17,9 @@ pkgbase = go-photobackup
 	options = !strip
 	options = !emptydirs
 	source = https://github.com/PhotoBackup/server-go/archive/v0.1.0.tar.gz
+	source = photobackup.service
 	sha256sums = 7c5eb3210884428faee33cb3cdb3b3dabf7c9d3251c2dcfb66babb7710a0af0a
+	sha256sums = eb72ac1298300cb502f063ee909594262c4e6b5081d553e75e00c9ebe3eb4572
 
 pkgname = go-photobackup
 
