@@ -1,6 +1,6 @@
 # Maintainer: Magnus Groß magnus dot gross 21 at gmail dot com
 pkgname=ttf-dijkstra
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="A beautiful handwriting font of unknown origin, first popularized by E.W.Dijkstra."
 arch=('any')
@@ -12,5 +12,4 @@ sha256sums=('2e0f0ea076b7c183c1975a3dec5ad4601f2059aa4d24d7b4d991de19ba80ee06')
 
 package() {
 	install -D "$srcdir/dijkstra.ttf" "$pkgdir/usr/share/fonts/TTF/dijkstra.ttf"
-	fc-cache
 }
