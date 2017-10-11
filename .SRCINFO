@@ -1,8 +1,8 @@
 pkgbase = astah-community
 	pkgdesc = Lightweight, easy-to-use, and free UML2.x modeler
-	pkgver = 7.1.0
+	pkgver = 7.2.0
 	pkgrel = 1
-	url = http://astah.change-vision.com/en/product/astah-community.html
+	url = http://astah.net/editions/community
 	install = astah-community.install
 	arch = any
 	license = custom
@@ -13,18 +13,18 @@ pkgbase = astah-community
 	provides = astah_community
 	conflicts = astah_community
 	conflicts = astah-professional
-	source = http://cdn.astah.net/downloads/astah-community-7_1_0-f2c212.zip
+	source = http://cdn.change-vision.com/files/astah-community-7_2_0-1ff236.zip
 	source = astah_community.desktop
 	source = astah_community.xml
 	source = astah_community.png
 	source = astah_splash_community.png
 	source = LICENSE
-	md5sums = b77ae6bf4ca2b4fb626d58f1260cc54b
+	md5sums = de053e4ca0e36781a32d2c5b37464beb
 	md5sums = e374756203ba7e4a52309cbe38208683
 	md5sums = d821b7726b61ce1c15ef84e31c0c0505
 	md5sums = b20ec64a7e6b1ad395c6eed7e8a851b7
 	md5sums = 95e5566bcef2eb2f7ee5a8ec99eae8af
-	md5sums = 3b5f3a3c4e453544e9c665c7950960fc
+	md5sums = 2082f9bbd578952fbc464416100ac3ff
 
 pkgname = astah-community
 
