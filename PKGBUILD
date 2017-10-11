@@ -16,7 +16,7 @@ backup=('etc/kubernetes/apiserver'
         'etc/kubernetes/proxy'
         'etc/kubernetes/scheduler')
 provides=('kubernetes')
-conflicts=('kubernetes' 'kubernetes-bin')
+conflicts=('kubernetes' 'kubernetes-bin' 'minikube-bin' 'minikube' 'kubernetes-kubectl' 'kubernetes-cni-bin' 'kubelet-bin' 'kubectl-bin' 'kubeadm-git' 'kubeadm-bin' '')
 depends=('glibc' 'bash' 'go' 'go-bindata' 'rsync' 'docker' 'ebtables' 'ethtool')
 source=("https://versaweb.dl.sourceforge.net/project/aur-kubernetes-built/kubernetes-$pkgver-$pkgrel-x86_64.pkg.tar.xz"
 	"https://github.com/kubernetes/contrib/archive/$_contribver.tar.gz"
@@ -30,7 +30,6 @@ md5sums=('8482913f2937d9925763c09f206ff1e3'
 )
 
 package() {
-    sleep 6
     [ "$CARCH" = 'x86_64' ] && _kubearch=amd64
 
     binaries=(apiextensions-apiserver cloud-controller-manager kube-proxy kube-apiserver kube-controller-manager kubelet kubeadm kubemark hyperkube kube-aggregator kube-scheduler kubectl kubefed kubemark gke-certificates-controller)
