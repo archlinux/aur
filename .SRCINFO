@@ -1,6 +1,6 @@
 pkgbase = ttf-dijkstra
 	pkgdesc = A beautiful handwriting font of unknown origin, first popularized by E.W.Dijkstra.
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = http://lucacardelli.name/indexartifacts.html
 	arch = any

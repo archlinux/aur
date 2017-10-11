@@ -1,6 +1,6 @@
 # Maintainer: Magnus Groß magnus dot gross 21 at gmail dot com
 pkgname=ttf-dijkstra
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="A beautiful handwriting font of unknown origin, first popularized by E.W.Dijkstra."
 arch=('any')
