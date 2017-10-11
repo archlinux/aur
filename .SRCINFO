@@ -16,6 +16,15 @@ pkgbase = kubernetes-built
 	provides = kubernetes
 	conflicts = kubernetes
 	conflicts = kubernetes-bin
+	conflicts = minikube-bin
+	conflicts = minikube
+	conflicts = kubernetes-kubectl
+	conflicts = kubernetes-cni-bin
+	conflicts = kubelet-bin
+	conflicts = kubectl-bin
+	conflicts = kubeadm-git
+	conflicts = kubeadm-bin
+	conflicts = 
 	backup = etc/kubernetes/apiserver
 	backup = etc/kubernetes/config
 	backup = etc/kubernetes/controller-manager
@@ -23,8 +32,11 @@ pkgbase = kubernetes-built
 	backup = etc/kubernetes/proxy
 	backup = etc/kubernetes/scheduler
 	source = https://versaweb.dl.sourceforge.net/project/aur-kubernetes-built/kubernetes-1.8.0-1-x86_64.pkg.tar.xz
+	source = https://github.com/kubernetes/contrib/archive/0.7.0.tar.gz
 	md5sums = 8482913f2937d9925763c09f206ff1e3
+	md5sums = bcbca37b78cf18848976593b97580037
 	sha256sums = 5409e19ce8d461e4d27253320f1b00be361a80f50ddcb7e424f4f5eb3bb566a0
+	sha256sums = f04c0a90c20af6c7f4e448f2405938ea5c821b33d0f977d58598adc1e189bcda
 
 pkgname = kubernetes-built
 
