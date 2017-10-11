@@ -1,15 +1,15 @@
 # Maintainer: Till von Ahnen <till@tillvonahnen.de>
 # Maintainer: David Rodriguez <openlydeveloped@gmail.com>
 pkgname=bytecoinwallet
-pkgver=1.1.9.2
+pkgver=1.1.9.3
 pkgrel=1
 pkgdesc="Bytecoin(BCN) Wallet"
 arch=('any')
 url="https://bytecoin.org/downloads/"
 license=('GPL')
 depends=()
-source=("https://bytecoin.org/static/files/bytecoinwallet-1.1.9.2.amd64.deb")
-md5sums=("ec22826fc5dca156de9ec0b6ce45a262")
+source=("https://bytecoin.org/static/files/bytecoinwallet-1.1.9.3.amd64.deb")
+md5sums=("e94f6248e25c08847d352f12339d03ba")
 
 
 build() {
