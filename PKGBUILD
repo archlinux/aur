@@ -1,4 +1,4 @@
-# Maintainer: Viech <viech unvanquished net>
+# Contributor: Viech <viech unvanquished net>
 # Contributor: Gereon Schomber
 # Contributor: Martin F. Schumann
 
@@ -9,13 +9,13 @@ _type='branch'
 _checkout='master'
 
 pkgname=unvanquished-git
-pkgver=v0.40.0.4.g449a475
+pkgver=v0.50.0.219.gac31a80c1
 pkgrel=1
 
 # set this to share more text with the non-git version
 _gitdir="${pkgname}"
 
-_depver="3"
+_depver="4"
 if test "$CARCH" == "x86_64"; then
 	_depbasename=linux64-${_depver}
 else
@@ -28,7 +28,7 @@ arch=('x86_64' 'i686')
 url='http://www.unvanquished.net'
 license=('GPL3')
 
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'python2' 'python2-yaml' 'python2-jinja')
 depends=('unvanquished-data'
          'zlib' 'gmp' 'nettle' 'geoip' 'curl' 'sdl2' 'glew' 'libpng'
          'libjpeg-turbo' 'libwebp>=0.2.0' 'freetype2' 'openal' 'libogg'
@@ -49,12 +49,24 @@ pkgver() {
 	printf "%s" "${ver//-/.}"
 }
 
+prepare() {
+	cd "${srcdir}"
+
+	cd "${_gitdir}"
+	git submodule init
+	git submodule update
+	cd ..
+	ln -sfr "${_depbasename}" -t "${_gitdir}/daemon/external_deps"
+}
+
 build() {
 	cd "${srcdir}/${_gitdir}"
 
-	cp -r "${srcdir}/${_depbasename}" external_deps/
+	#cp -r "${srcdir}/${_depbasename}" external_deps/
+	mkdir -p build
+	cd build
 
-	cmake -D BUILD_GAME_NACL=OFF -D BUILD_GAME_NATIVE_DLL=OFF -D BUILD_GAME_NATIVE_EXE=OFF .
+	cmake -D BUILD_GAME_NACL=OFF -D BUILD_GAME_NATIVE_DLL=OFF -D BUILD_GAME_NATIVE_EXE=OFF ..
 	make
 }
 
@@ -77,12 +89,17 @@ package() {
 	# install content
 	cd "${srcdir}/${_gitdir}"
 
-	install -m 755 daemon*                 "${pkgdir}/usr/lib/unvanquished/"
+	install -m 644 debian/unvanquished.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
+	install -m 644 COPYING.txt             "${pkgdir}/usr/share/licenses/unvanquished/"
+
+	cd "${srcdir}/${_gitdir}/build"
+
+	install -m 755 daemon                  "${pkgdir}/usr/lib/unvanquished/"
+	install -m 755 daemonded               "${pkgdir}/usr/lib/unvanquished/"
+	install -m 755 daemon-tty              "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 irt_core-x86*.nexe      "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 nacl_helper_bootstrap   "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 nacl_loader             "${pkgdir}/usr/lib/unvanquished/"
-	install -m 644 debian/unvanquished.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
-	install -m 644 COPYING.txt             "${pkgdir}/usr/share/licenses/unvanquished/"
 
 	# install starters and dedicated server config
 	cd "${srcdir}/${_gitdir}/archlinux"
@@ -108,7 +125,7 @@ package() {
 md5sums=('SKIP'
          'a5246cf3bed53798ddc4d95c6b8c1b37')
 if test "$CARCH" == "x86_64"; then
-	md5sums+=('9f73b3b0b4536b022be5d3e218b48ea1')
+	md5sums+=('2ba12c71625919ddc282172b74fa4887')
 else
-	md5sums+=('64aa86d0d0d469c1f2272377e06322a1')
+	md5sums+=('dd2cb5419bac9a1b81a8a996312e33ff')
 fi
