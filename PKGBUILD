@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='https://community.pentaho.com/projects/data-integration/'
 license=('Apache')
 
-depends=('java-runtime' 'gtk2' 'libxtst')
+depends=('java-runtime' 'gtk2' 'libxtst' 'webkitgtk2')
 
 source=(
   "https://downloads.sourceforge.net/project/pentaho/Data%20Integration/$(echo $pkgver | grep -Po '^\d+\.\d+')/pdi-ce-${pkgver//_/-}.zip"
