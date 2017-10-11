@@ -3,7 +3,7 @@
 _application=shellshape
 pkgname=gnome-shell-extension-${_application}-git
 pkgrel=1
-pkgver=r333.64af90c
+pkgver=r335.eeaa880
 license=('GPL3')
 pkgdesc="Tiling window manager extension for gnome-shell."
 url="http://gfxmonk.net/shellshape"
