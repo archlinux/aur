@@ -10,7 +10,7 @@ pkgver=1783.0e31564f
 pkgrel=1
 # LLVM JIT
 pkgdesc='A modern, very lightweight, portable, optionally typed programming language and VM written in C featuring blazingly fast real concurrency, defer, OOP, AOP, bytecode, high-level standard library, advanced modules & bindings and much more!'
-url='http://www.daovm.net/'
+url='http://daoscript.org/'
 license=('BSD')
 arch=('i686' 'x86_64')
 # FIXME add + update_optdepends
