@@ -2,12 +2,12 @@
 pkgbase=python-rawpy
 pkgname=('python-rawpy' 'python2-rawpy')
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for the LibRaw library"
 arch=(any)
 license=('MIT License')
 url="https://pypi.python.org/pypi/rawpy"
-depends=('python' 'libraw' )
+depends=('python' 'libraw' 'python-numpy')
 
 source=("https://codeload.github.com/letmaik/rawpy/tar.gz/v0.10.1")
 sha256sums=('62454597ae36e3ae91219775ff7323aa508afe451b7a48740c8720a6a5e9fd4b')
