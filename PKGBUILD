@@ -1,21 +1,20 @@
 # Maintainer: Remi Gacogne <rgacogne-arch at coredump dot fr>
 
 pkgname=getdns
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A modern asynchronous DNS API"
 arch=('i686' 'x86_64')
 url="http://getdnsapi.net/"
 license=('BSD')
-depends=('libbsd' 'libev' 'libevent' 'libidn' 'libuv' 'unbound')
+depends=('libev' 'libevent' 'libidn' 'libuv' 'libyaml' 'unbound')
 source=("https://getdnsapi.net/dist/${pkgname}-${pkgver}.tar.gz"
 	"https://getdnsapi.net/dist/${pkgname}-${pkgver}.tar.gz.asc"
 )
-sha256sums=('685fbd493601c88c90b0bf3021ba0ee863e3297bf92f01b8bf1b3c6637c86ba5'
+sha256sums=('06e6494b5d8b9404f439d5a98a3ab8f1f4b3557fb7aa3db005b021a6289b4229'
             'SKIP')
 validpgpkeys=('DC34EE5DB2417BCC151E5100E5F8F8212F77A498' # Willem Toorop <willem@nlnetlabs.nl>
 )
-options=('!makeflags')
 
 install=install
 
@@ -28,13 +27,15 @@ build() {
     --enable-static=no \
     --with-libev       \
     --with-libevent    \
-    --with-libuv
+    --with-libuv       \
+    --with-stubby
+  make
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
 
-  make prefix="${pkgdir}/usr" install
+  make DESTDIR="${pkgdir}" install
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
