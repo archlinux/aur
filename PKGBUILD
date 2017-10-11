@@ -1,31 +1,36 @@
-# Maintainer: DeedleFake <deedlefake at users.noreply.github.com>
+# Contributor: DeedleFake <deedlefake at users.noreply.github.com>
+# Maintainer: barchl <benschau at users.noreply.github.com>
+
 pkgname=complx-git
-pkgver=4.10.0.0.0.g5ac638a
+pkgver=4.15.6.10.g9c9c36b
 pkgrel=1
-pkgdesc="Complx the LC-3 Simulator used in CS2110 managed by Brandon"
-arch=('i686' 'x86_64')
+pkgdesc="Complx: LC-3 Simulator used in GT:CS2110, created by Brandon."
+arch=('x86_64')
 url="https://www.github.com/TricksterGuy/complx"
-license=('unknown')
+license=('GPL')
 depends=('wxgtk')
-makedepends=('git' 'webkitgtk2')
+makedepends=('git' 'cmake')
 provides=('complx')
 conflicts=('complx')
 source=("${pkgname}::git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/-/./g'
+    cd "$srcdir/$pkgname"
+    git describe --long --tags | sed 's/-/./g'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  make PREFIX="/usr"
+    mkdir -p "$srcdir/$pkgname/build"
+    cd "$srcdir/$pkgname/build"
+    cmake ..
+
+    make PREFIX="/usr"
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make PREFIX="$pkgdir/usr" install
-}
+    cd "$srcdir/$pkgname/build"
+    sudo make PREFIX="$pkgdir/usr" install
 
-# vim:set ts=2 sw=2 et:
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib/"
+}

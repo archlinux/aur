@@ -1,13 +1,12 @@
 pkgbase = complx-git
-	pkgdesc = Complx the LC-3 Simulator used in CS2110 managed by Brandon
-	pkgver = 4.10.0.0.0.g5ac638a
+	pkgdesc = Complx: LC-3 Simulator used in GT:CS2110, created by Brandon.
+	pkgver = 4.15.6.10.g9c9c36b
 	pkgrel = 1
 	url = https://www.github.com/TricksterGuy/complx
-	arch = i686
 	arch = x86_64
-	license = unknown
+	license = GPL
 	makedepends = git
-	makedepends = webkitgtk2
+	makedepends = cmake
 	depends = wxgtk
 	provides = complx
 	conflicts = complx
