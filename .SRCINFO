@@ -5,7 +5,6 @@ pkgbase = mailspring
 	url = https://getmailspring.com/
 	arch = x86_64
 	license = GPL3
-	depends = libsasl>=2.0.0
 	depends = libgnome-keyring
 	depends = libtool
 	depends = c-ares

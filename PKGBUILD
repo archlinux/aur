@@ -16,7 +16,7 @@ sha256sums=()
 sha256sums_x86_64=('e686c39ee9462866eec864b96c519a757677db57c21048fc6cf8577b48ddd6bb')
 
 source_x86_64=("https://mailspring-builds.s3.amazonaws.com/client/${pkghash}/linux/mailspring-${pkgver}-amd64.deb")
-depends=("libsasl>=2.0.0" "libgnome-keyring" "libtool" "c-ares" "ctemplate" "icu" "libxext" "openssl" "tidy" "libxtst" "libxkbfile" "glib2" "glibc" "libxml2" "libutil-linux" "libsecret")
+depends=("libgnome-keyring" "libtool" "c-ares" "ctemplate" "icu" "libxext" "openssl" "tidy" "libxtst" "libxkbfile" "glib2" "glibc" "libxml2" "libutil-linux" "libsecret")
 
 package() {
 	cd ${srcdir}
