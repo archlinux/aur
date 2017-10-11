@@ -11,7 +11,7 @@
 set -u
 _pkgname='pom-ng'
 pkgname="${_pkgname}-git"
-pkgver=0.0.18.r83.g6bd33ac
+pkgver=0.0.19.r0.g48da973
 pkgrel=1
 pkgdesc='Packet-o-Matic real time network packet capture forensic tool'
 arch=('i686' 'x86_64')
