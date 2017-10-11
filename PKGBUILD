@@ -3,7 +3,7 @@
 
 pkgname=extraterm
 pkgver=0.29.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The swiss army chainsaw of terminal emulators . "
 arch=("i686" "x86_64")
 url="https://github.com/sedwards2009/extraterm"
@@ -30,10 +30,9 @@ package() {
   install -d $pkgdir/usr/bin
   cp -r "$srcdir/$pkgname-$pkgver"/* "$pkgdir/opt/$pkgname"
 
-   install -Dm755 /dev/stdin "$pkgdir"/usr/bin/$_pkgname <<END
+   install -Dm755 /dev/stdin "$pkgdir"/usr/bin/$pkgname <<END
      #!/usr/bin/bash
     /opt/extraterm/extraterm
-   
 END
 
   msg2 "  -> Installing icons..."
