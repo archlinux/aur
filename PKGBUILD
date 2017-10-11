@@ -23,10 +23,10 @@ source=("https://versaweb.dl.sourceforge.net/project/aur-kubernetes-built/kubern
 		)
 # noextract=("kubernetes-built-$pkgver-$pkgrel-x86_64.pkg.tar.xz")
 sha256sums=('5409e19ce8d461e4d27253320f1b00be361a80f50ddcb7e424f4f5eb3bb566a0'
-	''
+	'f04c0a90c20af6c7f4e448f2405938ea5c821b33d0f977d58598adc1e189bcda'
 )
 md5sums=('8482913f2937d9925763c09f206ff1e3'
-	''
+	'bcbca37b78cf18848976593b97580037'
 )
 
 package() {
