@@ -2,9 +2,9 @@
 
 pkgname=libnd4j-git
 pkgver=20171010
-pkgrel=1
+pkgrel=2
 pkgdesc="LibND4J is a C++ library for exposing accelerated arrays to Java"
-license=('GPL')
+license=('APACHE')
 url='https://github.com/deeplearning4j/libnd4j'
 arch=('i686' 'x86_64')
 provides=('libnd4j')
