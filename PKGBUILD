@@ -15,7 +15,7 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
 )
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('be264736cfb0b19c00289e2ea4e5487a01df28ef8bf47df5dacd273d9d43412c')
+sha256sums=('f5f0e3d541c09ace912e0fa75dafd46f5a54314a929913c7de9709e677d5aa09')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
