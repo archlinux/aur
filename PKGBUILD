@@ -1,8 +1,8 @@
 # Maintainer: Jingbei Li <i@jingbei.lli>
 pkgdesc='A fast parallel implementation of CTC, on both CPU and GPU.'
 pkgname='torch7-warp-ctc'
-pkgver=r56.5bfb46e
-pkgrel=2
+pkgver=v1.0.r28.g14858fe
+pkgrel=1
 makedepends=('cmake' 'git' 'torch7-cutorch-git')
 depends=('torch7-git>=r819')
 optdepends=('torch7-cutorch-git:	For GPU support')
@@ -22,8 +22,8 @@ pkgver () {
 }
 
 build () {
-	CFLAGS="${CFLAGS/-fno-plt/}"
-	CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+	CFLAGS="${CFLAGS/-fno-plt/} -fPIC"
+	CXXFLAGS="${CXXFLAGS/-fno-plt/} -fPIC"
 
 	cd "${pkgname}"
 	sed 's/luajit/luajit-5.1/g' -i CMakeLists.txt
@@ -35,12 +35,5 @@ build () {
 
 package () {
 	cd "${pkgname}"
-	# Move Lua C module
-	mkdir -p "${pkgdir}/usr/lib/lua/5.1"
-	install -Dm755 "libwarpctc.so" "${pkgdir}/usr/lib/"
-	install -Dm755 "libwarp_ctc.so" "${pkgdir}/usr/lib/lua/5.1/"
-
-	# Move pure Lua modules
-	mkdir -p "${pkgdir}/usr/share/lua/5.1/warp_ctc"
-	install -Dm644 "torch_binding/init.lua" "${pkgdir}/usr/share/lua/5.1/warp_ctc"
+	make DESTDIR=$pkgdir install
 }
