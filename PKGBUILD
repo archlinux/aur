@@ -16,7 +16,7 @@ backup=('etc/kubernetes/apiserver'
 provides=('kubernetes')
 conflicts=('kubernetes' 'kubernetes-bin')
 depends=('go' 'go-bindata' 'docker' 'ebtables' 'ethtool')
-source=("https://sourceforge.net/projects/aur-kubernetes-built/files/kubernetes-1.8.0-1$pkgver-$pkgrel-x86_64.pkg.tar.xz/download"
+source=("https://downloads.sourceforge.net/project/aur-kubernetes-built/kubernetes-1.8.0-1$pkgver-$pkgrel-x86_64.pkg.tar.xz"
 		)
 sha256sums=('5409e19ce8d461e4d27253320f1b00be361a80f50ddcb7e424f4f5eb3bb566a0')
 md5sums=('8482913f2937d9925763c09f206ff1e3')
