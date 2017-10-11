@@ -26,6 +26,7 @@ package() {
   # I've used the naming convention established in wxpython-phoenix-git
   cd "$pkgdir/usr/bin"
   for file in *; do mv ${file} ${file}-phoenix; done
+  chmod 644 "$pkgdir"/usr/lib/python3.6/site-packages/wxPython-4.0.0b2-py3.6.egg-info/*
 }
 
 # vim:set ts=2 sw=2 et:
