@@ -1,5 +1,5 @@
 pkgname=supertuxkart-git
-pkgver=17691+17013
+pkgver=17985+17350
 pkgrel=1
 pkgdesc="A kart racing game featuring Tux and his friends - development version"
 url="http://supertuxkart.sourceforge.net/"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 
 makedepends=("git" "subversion" "cmake" "bluez-libs")
 
-depends=("libvorbis" "freealut" "libgl" "glut" "fribidi" "glew" "libopenglrecorder")
+depends=("libvorbis" "freealut" "libgl" "glut" "fribidi" "glew" "libopenglrecorder" "libjpeg-turbo" "libpng" "freetype2")
 
 conflicts=("supertuxkart")
 replaces=("supertuxkart-cmakesvn" "supertuxkart-svn")
@@ -24,15 +24,15 @@ md5sums=('SKIP' 'SKIP')
 pkgver() {
     cd "${srcdir}/stk-code"
     local _git_rev="$(git rev-list --count HEAD)"
-    
+
     cd "${srcdir}/stk-assets"
     local _assets_rev="$(svnversion)"
 
     printf "%s+%s" "${_git_rev}" "${_assets_rev}"
 }
 
-build() 
-{    cd "${srcdir}/stk-code"
+build() {
+    cd "${srcdir}/stk-code"
     msg "Starting build..."
 
     [ -d "cmake_build" ] && rm -rf cmake_build
@@ -48,5 +48,7 @@ package() {
     make DESTDIR=${pkgdir} install
 
     cd "${pkgdir}/usr/share/pixmaps"
-    [ ! -f supertuxkart.png ] && ln -s supertuxkart{_128,}.png
+    if [ ! -f supertuxkart.png ]; then
+        ln -s supertuxkart{_128,}.png
+    fi
 }
