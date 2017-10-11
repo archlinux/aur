@@ -15,9 +15,9 @@ sha256sums=('983dfb9821d4a3b2350fb062578350f54cc81485f985dad7364d96fb4df99f0e')
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  # Don't install to /opt and install locales to correct directory
+  # Don't install to ubuntu- directory
   find . -type f -exec sed -i 's:ubuntu-indicator-weather:simple-weather-indicator:g' '{}' \;
-  
+  # python2 fix
   sed -i 's:exec python:&2:' indicator-weather
 }
 
