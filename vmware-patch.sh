@@ -227,6 +227,8 @@ for kernel in ${kernels[@]}; do
     msg "Installing modules.."
     if [[ $verbose ]]; then
         # Run vmware-modconfig
+        # workaround for vmci building problem, thanks to AlexKornitzer
+        vmware-modconfig --console --build-mod vmci
         if ! vmware-modconfig --console --install-all -k "$kernel"; then
             # See logs
             if ls /tmp/vmware-root/vmware-[0-9]*.log &>/dev/null; then
@@ -240,6 +242,7 @@ for kernel in ${kernels[@]}; do
         fi
     else
         # Run vmware-modconfig
+        vmware-modconfig --console --build-mod vmci &>/dev/null
         if ! vmware-modconfig --console --install-all -k "$kernel" &>/dev/null; then
             # See logs
             if ls /tmp/vmware-root/vmware-*.log &>/dev/null; then
