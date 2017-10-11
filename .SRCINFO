@@ -1,6 +1,6 @@
 pkgbase = camlp5-transitional-git
 	pkgdesc = A preprocessor-pretty-printer of OCaml. (transitional)
-	pkgver = 7.01+27+g732cfae1
+	pkgver = 7.02
 	pkgrel = 1
 	url = https://camlp5.github.io/
 	arch = i686

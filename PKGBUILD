@@ -7,7 +7,7 @@
 # Contributor: Massimiliano Brocchini <brocchini@netseven.it>
 
 pkgname=camlp5-transitional-git
-pkgver=7.01+27+g732cfae1
+pkgver=7.02
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A preprocessor-pretty-printer of OCaml. (transitional)'
