@@ -1,6 +1,6 @@
 pkgbase = smartgit_preview
 	pkgdesc = Git client with Hg and SVN support. Preview version.
-	pkgver = 17.1_preview_17
+	pkgver = 17.1_rc_4
 	pkgrel = 1
 	url = https://www.syntevo.com/smartgit/preview
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = smartgit_preview
 	provides = smartgit
 	conflicts = smartgit
 	replaces = smartgithg
-	source = https://www.syntevo.com/static/smart/download/smartgit/smartgit-linux-17.1-preview-17.tar.gz
+	source = https://www.syntevo.com/static/smart/download/smartgit/smartgit-linux-17.1-rc-4.tar.gz
 	source = smartgit.desktop
-	sha1sums = fd4223521f8bb8a1f586d4c0d6245d3862a6ffa2
+	sha1sums = a99b817f2385e052c5c251c253a98249b7c2f259
 	sha1sums = bafa47c0b43ad89aaa3b34a078771b3cd12bd1f3
 
 pkgname = smartgit_preview

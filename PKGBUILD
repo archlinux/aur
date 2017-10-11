@@ -3,7 +3,7 @@
 
 _appname=smartgit
 pkgname=${_appname}_preview
-pkgver=17.1_preview_17
+pkgver=17.1_rc_4
 pkgrel=1
 pkgdesc="Git client with Hg and SVN support. Preview version."
 arch=("any")
@@ -21,7 +21,7 @@ _pkgver=${pkgver//_/-}
 
 source=("https://www.syntevo.com/static/smart/download/${_appname}/${_appname}-linux-${_pkgver}.tar.gz"
         "smartgit.desktop")
-sha1sums=('fd4223521f8bb8a1f586d4c0d6245d3862a6ffa2'
+sha1sums=('a99b817f2385e052c5c251c253a98249b7c2f259'
           'bafa47c0b43ad89aaa3b34a078771b3cd12bd1f3')
 
 package() {
