@@ -15,7 +15,7 @@ optdepends=('gksu' 'kdesu')
 makedepends=('qt5-tools')
 conflicts=('qt4-fsarchiver')
 source=("http://tenet.dl.sourceforge.net/project/qt4-fsarchiver/${pkgname}/source/${pkgname}-${pkgver//_/-}.tar.gz")
-md5sums=('67bb7ee7190268458132e8dbca44e6fc')
+md5sums=('f754c56287b03b876cb7fda5ddce37d6')
 
 build() {
     cd "${srcdir}/${pkgname}"
