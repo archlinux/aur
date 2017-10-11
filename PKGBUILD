@@ -3,7 +3,7 @@
 # Contributor: Kazuo Teramoto <kaz.rag at gmail.com>
 pkgname=afew
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="afew is an initial tagging script for notmuch mail"
 arch=(any)
 url="https://github.com/teythoon/afew"
@@ -21,7 +21,7 @@ prepare () {
   # Solution: We remove the dependecy on setuptools_scm and fake the version
   # file.
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i '/use_scm_version/d;/setuptools_scm/d' setup.py
+  sed -i "/use_scm_version/d;/setuptools_scm/d;/name=/a version='$pkgver'," setup.py
   echo "version = '$pkgver'" > afew/version.py
 }
 build() {
