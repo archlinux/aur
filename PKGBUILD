@@ -98,7 +98,8 @@ makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm'
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech')
+            'speech-dispatcher: Text-to-Speech'
+            'firefox-beta-i18n: Localization support')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
 options=('!emptydirs')

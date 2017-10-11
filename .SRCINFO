@@ -45,6 +45,7 @@ pkgbase = firefox-kde-opensuse-beta
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = firefox-beta-i18n: Localization support
 	provides = firefox=57.0b7
 	conflicts = firefox
 	options = !emptydirs
