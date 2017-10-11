@@ -1,7 +1,7 @@
 # Maintainer: Maurizio D'Addona <mauritiusdadd@gmail.com>
 
 pkgname=calculix-doc
-pkgver=2.12
+pkgver=2.13
 pkgrel=1
 pkgdesc="CalculiX: 3D finite element solver and post-processor (documentation and examples)"
 arch=('any')
@@ -14,9 +14,9 @@ source=("http://www.dhondt.de/ccx_${pkgver}.htm.tar.bz2"
         "http://www.dhondt.de/cgx_${pkgver}.htm.tar.bz2"
         "http://www.dhondt.de/cgx_${pkgver}.exa.tar.bz2")
 
-sha256sums=('79f16a016d37ae8b1599946dbbeb56fc256ba848413fa8ccfbab5b565b41a9e9'
-            'c648c1e53d5622716f35b15b8a35b09de82f23c1507c101e24d75dbc2ff6daa4'
-            '610afec56cd964f7a12179d59c4402f4ded6cb6c27b9e0f296ca0e446af4ee20')
+sha256sums=('34061658590d9c584c52037cfe3cb6d4305287092cce693a3776423459851b8b'
+            '39911f2b75730a844050faab48b729d8ebba5bbd6a467e561df76da091e31c69'
+            'f77fbbe41e5feecd9671c4d72b2a53d19f7641dce59a5e7dc219d32b46cf451a')
 
 prepare()
 {
