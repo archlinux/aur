@@ -1,3 +1,8 @@
+2017-10-11 FoolEcho <foolecho@gmail.com>
+	* 2.1.0.5-1:
+	Game updated.
+	libjson and openssl-1.0 needed as dependencies.
+
 2015-11-07 FoolEcho <foolecho@gmail.com>
 	* 2.1.0.4-1:
 	Game updated (always 1.4.0 though) for the new installer (thanks to carstene1ns).
