@@ -1,7 +1,7 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=libwebrtc-static
 pkgver=1.0.0.faf3
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Google's WebRTC as static library"
 url="https://webrtc.org/native-code/development/"
@@ -40,5 +40,7 @@ build() {
 
 package() {
   cd "libwebrtc"
-  ninja install
+  mkdir -p $pkgdir/usr
+  cp -r ./include $pkgdir/usr/include
+  cp -r ./lib $pkgdir/usr/lib
 }
