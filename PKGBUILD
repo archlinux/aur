@@ -1,7 +1,7 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=gnome-shell-extension-freon
-pkgver=27
+pkgver=28
 pkgrel=1
 pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in a GNOME Shell top bar pop-down."
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
 conflicts=('gnome-shell-extensions-git')
 install="gschemas.install"
 source=("${pkgname}.tar.gz::https://github.com/UshakovVasilii/gnome-shell-extension-freon/archive/EGO-${pkgver}.tar.gz")
-sha512sums=('f1a7f41b7270e7e60002ae1990667c554d1cbe4baaa886482d4058f4add5e8a053dfd75edfd08ea9f508f2d8577dd333ec92c2a534e9f6d4258b53e140294ad3')
+sha512sums=('e85899accc9dc41b2223ca4126c455ed8d9832b4509599ad018a7f5291493c8802605a88139337a9586cb9dee85b72ba620a6624a3a5d1469af9ffd8ef3db75c')
 
 package() {
   # Locate the extension.
