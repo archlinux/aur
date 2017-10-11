@@ -1,36 +1,54 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
  
 pkgname=linux-steam-integration
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Helper for enabling better Steam integration on Linux"
 url="https://github.com/solus-project/linux-steam-integration"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('LGPL2.1')
 depends=('gtk3' 'steam')
-makedepends=('git')
+makedepends=('git' 'meson')
 optdepends=('steam-native-runtime: A package for installing all required deps for the native runtime.')
 provides=('linux-steam-integration')
 conflicts=('linux-steam-integration')
-source=("https://github.com/solus-project/linux-steam-integration/releases/download/v${pkgver}/linux-steam-integration-${pkgver}.tar.xz")
-sha512sums=('2327aad27db67cce2fe9ba3c95583363d99f649e813c5ba25f817cbd59a2bbd2ab7c7ce93d8db102369b5db595e9661f3b88372b06656c7b927178339e22d3e0')
+source=("https://github.com/solus-project/linux-steam-integration/releases/download/v${pkgver}/linux-steam-integration-${pkgver}.tar.xz"{,.asc}
+        meson_fix.patch)
+sha512sums=('28256634d78f01a2bed00257f6328d76fadce6be1215c1890e9fa79316b9499583cf4796aebd8783cddc81ca3e6b2a3885179c21c2366f8368c54af5f8989d8f'
+            'SKIP'
+            '52ca7decac01e65451b37cc8b0d2535e6596321c347ff898f2c9ec5d3e2ef94d265eb0a6c497b0455f598d80fe1bd9adbfcf08d5277f77b63bdb2efafb26dbd5')
+validpgpkeys=('8876CC8EDAEC52CEAB7742E778E2387015C1205F') # Ikey Doherty
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -Np1 < "$srcdir"/meson_fix.patch
+}
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  args="\
-  --sysconfdir=/etc \
-  --localstatedir=/var \
-  --prefix=/usr \
-  --enable-frontend \
-  --enable-silent-rules \
-  --disable-replace-steam"
-  ./configure CFLAGS="-g -O1 $CFLAGS" $args "$@"
-  make
+  # 64-bit build
+  arch-meson "$pkgname-$pkgver" build \
+    -Dwith-shim=co-exist \
+    -Dwith-frontend=true \
+    -Dwith-steam-binary=/usr/lib/steam/steam
+
+  ninja -C build
+
+  # 32-bit build
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+
+  arch-meson "$pkgname-$pkgver" build32 \
+    -Dwith-shim=none \
+    --libexecdir /usr/lib32 \
+    --libdir /usr/lib32
+
+  ninja -C build32
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build32 install
 }
 
 # vim:set ts=2 sw=2 et:
