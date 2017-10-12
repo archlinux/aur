@@ -62,11 +62,11 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "https://github.com/skydrome/db4o-7.4-java/raw/master/seednodes.fref"
         #"https://downloads.freenetproject.org/contrib/jar/latest/commons-compress.jar"
         "commons-compress.jar::http://central.maven.org/maven2/org/apache/commons/commons-compress/1.4.1/commons-compress-1.4.1.jar"
-        "https://www.bouncycastle.org/download/bcprov-jdk15on-156.jar"
+        "https://www.bouncycastle.org/download/bcprov-jdk15on-158.jar"
         "http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.tar.bz2"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/include/jcpuid.h"
-        'fred.properties' 'contrib.properties' 'run.sh'
+        'fred.properties' 'contrib.properties' 'gradle.properties' 'run.sh'
         'freenet.service' 'freenet.ini' 'wrapper.config'
         "${_deps[@]}")
 
@@ -78,12 +78,13 @@ sha256sums=('SKIP'
             'SKIP'
             '7b375cbd2c715fd3d239985ae2a97021cfef8483c88ff57f6364016451e65c21'
             '28a00d80716f073d644b9da76e94b5e8ff94de8e9323f06f558fba653fcf5f86'
-            '963e1ee14f808ffb99897d848ddcdb28fa91ddda867eb18d303e82728f878349'
+            'eb61ab61065ed96f9f2d5cde94d326233c09fdec9333c1185f2fa65ee88a4236'
             '96effcca2581c1ab42a4828c770b48d54852edf9e71cefc9ed2ffd6590571ad1'
             '1966a96a0733cb19b8172f03b3582141fea8f82abcc4b79800ba0a92a5c1122d'
             '9ec758801a9864ae10caf851ee60ed22c3ef44428e77689c203d9b890921a6d2'
             '236adfd42be0a7a74f2dec1356e517442b2ddcbb5d44cb0dab3671b6fddfca79'
             '865c1f259d9c544861cc12b4ea64ad35ec6388c1392b3e5247eaed0f316e42b7'
+            '305d00533d3efcf31dfbb9944c703a9b01227ba38495add70b9bc4849c29498d'
             '9912dcfc8f30143b68e6f9c51505ae921100eb6b24690a8680582bb23559d95a'
             '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
             'c0ce093a098d91dee6be294f8a2fc929aabad95612f994933194d0da5c4cdd25'
@@ -114,6 +115,9 @@ prepare() {
     ln -sf ../contrib contrib
     mkdir -p contrib/freenet-ext/{dist,lib}
 
+    ln -sf "$srcdir/gradle.properties" .
+    ln -sf "$srcdir/gradle.properties" ./contrib/freenet-ext
+
     # no need to fetch this file every time freenet starts as its only updated
     # monthly, if it even changes at all
     sed -i src/freenet/node/updater/NodeUpdateManager.java \
@@ -126,7 +130,7 @@ prepare() {
     ln -sf /usr/share/java/wrapper.jar contrib/freenet-ext/dist/
     ln -sf /usr/share/java/{hamcrest-core,junit}.jar lib/
     ln -sf "$srcdir"/ant-contrib/{ant-contrib-1.0b3,ant-contrib}.jar
-    cp "$srcdir"/bcprov-jdk15on-156.jar lib/bcprov.jar
+    cp "$srcdir"/bcprov-jdk15on-158.jar lib/bcprov.jar
     cp "$srcdir"/{lzma465.tar.bz2,league-lzmajio-0.95-0-gd38bf5c.tar.gz,jBitcollider-0.8.zip,mantissa-7.2-src.zip,db4o-7.4-java.zip} contrib/freenet-ext/lib
 
     # we're going to compile our own C libraries
