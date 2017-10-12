@@ -1,7 +1,7 @@
 # Maintainer: Dan McCurry <dan.mccurry at linux dot com>
 
 pkgname=libsdrplay
-pkgver=2.10.1
+pkgver=2.10.2
 pkgrel=2
 pkgdesc="Modules for the SDRplay receiver"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.sdrplay.com"
 license=('custom:EULA')
 depends=('libusb>=1.0')
 source=("http://www.sdrplay.com/software/SDRplay_RSP_API-Linux-${pkgver}.run")
-md5sums=('cb18ef3510e9b788a8d2a918e35d62c8')
+md5sums=('2b77d0ce2fbb770e9526b6f17656a716')
 
 prepare() {
 	cd ${srcdir}
