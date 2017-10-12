@@ -1,5 +1,6 @@
 #!/bin/sh
 
-# Force usage of latest java version
-JVM_PATH=$(find /usr/lib/jvm/* -maxdepth 0 -type d | sort | tail -n1)
-exec $JVM_PATH/jre/bin/java -jar /usr/share/java/jabref/JabRef.jar "$@"
+# Uncomment the line below if an unsupported default is set in archlinux-java
+
+#export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
+exec java -jar /usr/share/java/jabref/JabRef.jar "$@"

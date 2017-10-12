@@ -1,9 +1,13 @@
-# Maintainer: Dan McCurry <dan.mccurry at linux dot com>
+# Maintainer: Dan McCurry <dan.mc at protonmail dot com>
 # Contributer: Nikola Milinković <nikmil@gmail.com>
 # Submitter: Stefan Husmann <stefan-husmann@t-online.de>
 
+# If an unsupported java environment is set using archlinux-java,
+# uncomment/edit the appropriate line in /usr/bin/jabref after
+# installation.
+
 pkgname=jabref-git
-pkgver=2.9.2.r7259.g47b949a80
+pkgver=2.9.2.r7414.gef7f8248b
 epoch=1
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
@@ -20,7 +24,7 @@ source=("${pkgname%-git}::git+https://github.com/JabRef/jabref.git"
 	"${pkgname%-git}.sh")
 md5sums=('SKIP'
          '5f76feb6b2f66a2ea8b52bca999a934f'
-         '97c6daba4b3fc1ff1bee0f5b3a4c627f')
+         '0b052f22c614f89f9ce854fdd1e5a3c8')
 
 pkgver() {
   cd ${srcdir}/${pkgname%-git}
