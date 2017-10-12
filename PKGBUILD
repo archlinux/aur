@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-menu-git
-pkgver=0.4.17.g06d6112
+pkgver=0.5.0.gbb8d5f3
 pkgrel=1
 pkgdesc="XDG compliant menu generator"
 arch=('i686' 'x86_64')
@@ -9,7 +9,9 @@ url="https://github.com/bbidulock/xde-menu"
 license=('GPL')
 provides=('xde-menu')
 conflicts=('xde-menu')
-depends=('libwnck' 'libsm' 'gnome-menus' 'gtk2')
+depends=('libwnck+-git' 'libsm' 'gnome-menus')
+optdepends=('xdg-launch-git: for LW WM launch notification'
+	    'xde-theme: for LW WM style and theme change support')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/bbidulock/xde-menu.git")
 md5sums=('SKIP')
