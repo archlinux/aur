@@ -4,13 +4,12 @@
 _pkgname=liblqr
 pkgname=lib32-${_pkgname}
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A seam-carving C/C++ library called Liquid Rescale (32-bit)"
 arch=('x86_64')
 url="http://liblqr.wikidot.com/"
 license=('GPL')
 depends=('lib32-glib2')
-makedepends=('pkgconfig')
 options=('!emptydirs')
 source=("http://liblqr.wikidot.com/local--files/en:download-page/${_pkgname}-1-${pkgver}.tar.bz2")
 md5sums=('915643d993da97e10665d48c0bf8f3d0')
