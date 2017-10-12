@@ -12,19 +12,20 @@
 
 pkgname=codelite
 pkgver=11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
 makedepends=('pkgconfig' 'cmake' 'clang')
-depends=('wxgtk' 'webkitgtk2'
-          'libedit' 'libssh'
+depends=('wxgtk'
+          'clang' 'lldb'
+          'libedit' 
+          'libssh'
           'libmariadbclient'
           'ncurses'
           'xterm' 'curl'
           'python2'
-          'clang' 'lldb'
         )
 optdepends=('graphviz: callgraph visualization'
              'clang: compiler'
