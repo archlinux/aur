@@ -11,7 +11,7 @@ license=('custom')
 depends=('desktop-file-utils' 'gconf' 'hicolor-icon-theme' 'libnotify' 'libxtst' 'nss')
 optdepends=('spotify: Display the lyrics of the currently playing song')
 source=('eula.html')
-sha256sums=('cfbc4ad07b1566e0ebf88927349f35f5064ecf71d363027614ec18ec293f8664')
+sha256sums=('988119d55691f5bdc91da81d31f2cc460de9c0d74312f4739f813ded7efdf03c')
 
 prepare() {
   curl 'https://download-app.musixmatch.com/' -A 'Linux x86_64' -D headers.txt -OJf
