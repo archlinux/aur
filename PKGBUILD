@@ -3,9 +3,9 @@
 
 pkgname=('python-websockets')
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of the WebSocket Protocol (RFC 6455)"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/aaugustin/websockets"
 license=('BSD')
 depends=('python')
