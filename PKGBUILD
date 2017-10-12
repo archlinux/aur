@@ -34,7 +34,7 @@ source=("git://github.com/go-gitea/gitea.git"
         "0001-Adjust-config-for-Arch-Linux-package.patch"
         "0002-Adjust-service-file-for-Arch-Linux-package.patch")
 sha256sums=("SKIP"
-            "c786772cccc26a4044d3c31d4974581c56fdd18f1eef96f1e54e6b7a03aef543"
+            "38665da6b49fe1dea68239babf00dd94815321191eb73f7b023bed4aa2b7bde7"
             "6cd1daa666659a68c98376f8bfae55402b5ffc39c1bf42b5ae0ee700249a3b73")
 
 pkgver() {
