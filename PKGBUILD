@@ -2,7 +2,7 @@
 
 pkgname=libsdrplay
 pkgver=2.10.2
-pkgrel=2
+pkgrel=1
 pkgdesc="Modules for the SDRplay receiver"
 arch=('i686' 'x86_64')
 url="http://www.sdrplay.com"
