@@ -1,20 +1,21 @@
+# Maintainer : int <int [ate] arcor [dot] de>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-devel-cover'
-pkgver='1.23'
+pkgver='1.28'
 pkgrel='1'
-pkgdesc="Code coverage metrics for Perl"
+pkgdesc="Perl/CPAN Module Devel::Cover: Code coverage metrics for Perl"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-html-parser')
 makedepends=()
 url='https://metacpan.org/release/Devel-Cover'
-source=('http://search.cpan.org/CPAN/authors/id/P/PJ/PJCJ/Devel-Cover-1.23.tar.gz')
-md5sums=('cddff9d89521078d241cd57d6790a8cb')
-sha512sums=('075a89950f2b02aaae085d99b9fd6c8e52b173aa0ed46dc57980ca8fea9d6f6ec63fe776789d9436bfdd719c7701bad5b741e75e898582f1ceb3d0098e4574a3')
-_distdir="Devel-Cover-1.23"
+source=("http://search.cpan.org/CPAN/authors/id/P/PJ/PJCJ/Devel-Cover-$pkgver.tar.gz")
+md5sums=('408abc70f14f8a999b65487925a850b2')
+sha512sums=('0413bfa9b976dc1b5d62793ae075ad1ad0f90947d065c4216b7f23bbbee2a565bc328df912b0e4d1b3afbcd468b9e6f04f6e85fadd2fa9b32877156034679fe1')
+_distdir="Devel-Cover-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +41,7 @@ package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
