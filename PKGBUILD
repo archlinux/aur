@@ -16,7 +16,7 @@ makedepends=('cmake' 'ros-build-tools'
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  gazebo-ogre-1.10)
+  gazebo)
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/gazebo_dev/${pkgver}-${_pkgver_patch}
