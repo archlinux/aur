@@ -1,8 +1,8 @@
-pkgbase = gcalcli
-	pkgdesc = Google Calendar Command Line Interface
+pkgbase = gcalcli-eoe-git
+	pkgdesc = Google Calendar Command Line Interface with end of event time
 	pkgver = 3.4.0
 	pkgrel = 1
-	url = https://github.com/insanum/gcalcli
+	url = https://github.com/nemanjan00/gcalcli
 	arch = any
 	license = MIT
 	depends = python2-google-api-python-client
@@ -11,8 +11,8 @@ pkgbase = gcalcli
 	depends = python2-oauth2client1412
 	optdepends = python2-vobject: for ics/vcal importing
 	optdepends = python2-parsedatetime: for fuzzy dates/times like "now", "today", "eod tomorrow", etc.
-	source = gcalcli-3.4.0::https://raw.githubusercontent.com/insanum/gcalcli/v3.4.0/gcalcli
-	sha256sums = b3b1946136e140fed457778802329af7ce936da052688365e23ecb4b37e5dbe8
+	source = gcalcli-3.4.0::https://raw.githubusercontent.com/nemanjan00/gcalcli/17ce5c2125f24e46cf644df82d242629ffb237fc/gcalcli
+	sha256sums = 9e833ae676bca4944cd9c34354f0d263ee196749fe888b235ca7aa3f200a2d59
 
-pkgname = gcalcli
+pkgname = gcalcli-eoe-git
 
