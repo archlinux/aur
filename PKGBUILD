@@ -61,19 +61,19 @@ prepare() {
   # https://github.com/docker/docker/blob/master/hack/dockerfile/binaries-commits
   . "$srcdir/moby/hack/dockerfile/binaries-commits"
   pushd "$srcdir/runc" >/dev/null
-    msg3 'runc'
+    msg2 'checking out runc'
     git checkout -q "$RUNC_COMMIT"
   popd
   pushd "$srcdir/containerd" >/dev/null
-    msg3 'containerd'
+    msg2 'checking out containerd'
     git checkout -q "$CONTAINERD_COMMIT"
   popd
   pushd "$srcdir/libnetwork" >/dev/null
-    msg3 'libnetwork'
+    msg2 'checking out libnetwork'
     git checkout -q "$LIBNETWORK_COMMIT"
   popd
   pushd "$srcdir/cli" >/dev/null
-    msg3 'cli'
+    msg2 'checking out cli'
     git checkout -q "$DOCKERCLI_COMMIT"
   popd
 
