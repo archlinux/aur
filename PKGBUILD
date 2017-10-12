@@ -1,18 +1,17 @@
 # Maintainer: dr34m/KarlFiabeschi 1984itsnow[at]gmail[dot]com
 
 pkgname=keep
-pkgver=2.1.3
-pkgrel=1.2
+pkgver=2.4.2
+pkgrel=1.3
 pkgdesc="A Meta CLI toolkit : Personal shell command keeper"
 arch=('any')
 url="https://github.com/OrkoHunter/keep"
 license=('MIT')
-makedepends=('')
 depends=('python-setuptools' 'python-click' 'python-requests' 'python-tabulate' )
 source=("https://pypi.io/packages/source/k/keep/keep-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/OrkoHunter/keep/master/LICENSE.md")
-md5sums=('9a452405588da649a17e539f4041e210' 
-         'd88a347b3647d9938bdcdb68182c7315')
+sha1sums=('48b302f2ec7e811466a58d9c6ccfd7f755655105' 
+         '07b3e631d4a0653c802d196bfef7dc06a74d9c5c')
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"
