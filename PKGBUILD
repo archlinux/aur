@@ -1,7 +1,7 @@
 # Maintainer: Stefano Campanella <stefanocampanella1729@gmail.com>
 pkgname=form-git
 _pkgid=${pkgname%-git}
-pkgver=4.1.20131025.r201.g805031b
+pkgver=4.2.0.r18.gd15ec75
 pkgrel=1
 pkgdesc="Symbolic Manipulation System developed at Nikhef."
 arch=('i686' 'x86_64')
@@ -28,4 +28,6 @@ build(){
 package() {
 	cd $_pkgid
 	make DESTDIR="$pkgdir/" install
+  mkdir -p $pkgdir/usr/share/man/man1
+  install doc/form.1 $pkgdir/usr/share/man/man1
 }
