@@ -11,7 +11,7 @@
 #
 
 pkgname=codelite
-pkgver=10.0
+pkgver=11.0
 pkgrel=1
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
@@ -33,11 +33,10 @@ optdepends=('graphviz: callgraph visualization'
              'valgrind: debugger'
             )
 
-source=(https://github.com/eranif/${pkgname}/archive/${pkgver//_/-}.tar.gz
-	http://repos.codelite.org/wxCrafterLibs/wxgui.zip)
+source=(https://github.com/eranif/${pkgname}/archive/${pkgver//_/-}.tar.gz http://repos.codelite.org/wxCrafterLibs/wxgui.zip)
 
-md5sums=('aa00490c9e9eb8b756c9597355a5019e'
-         '093485fcae62073ca8d0ba6ff3a5cb69')
+md5sums=('5e1c798d42ca0e1425fb6d71a4099c64'
+         '20f3428eb831c3ff2539a7228afaa3b4')
 
 #if [[ "$CARCH" == 'i686' ]]; then
 #  source+=(http://repos.codelite.org/wxCrafterLibs/ArchLinux/32/wxCrafter.so)
@@ -56,24 +55,24 @@ pkg_name_ver="${pkgname}-${pkgver//_/-}"
 # 20151027: sudo chmod 000 /usr/lib/codelite/LLDBDebugger.so
 
 build() {
-    cd "${srcdir}/${pkg_name_ver}"
+cd "${srcdir}/${pkg_name_ver}"
 
-    CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
+CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 
-    mkdir -p build
-    cd build
-    # ArchLinux: CL 9.1.0 needs to be built without LLDB (clang-3.7) because of error: Option 'aarch64-reserve-x18' registered more than once
-    #cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=0 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
-    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=1 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
-    make
+mkdir -p build
+cd build
+# ArchLinux: CL 9.1.0 needs to be built without LLDB (clang-3.7) because of error: Option 'aarch64-reserve-x18' registered more than once
+#cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=0 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=1 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
+make
 }
 
 package() {
-    cd "${srcdir}/${pkg_name_ver}/build"
-    make -j1 DESTDIR="${pkgdir}" install
-#    install -m 755 -D "${srcdir}/wxCrafter.so" "${pkgdir}/usr/lib/codelite/wxCrafter.so"
-    install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
-    install -m 644 -D "${srcdir}/${pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+cd "${srcdir}/${pkg_name_ver}/build"
+make -j1 DESTDIR="${pkgdir}" install
+#install -m 755 -D "${srcdir}/wxCrafter.so" "${pkgdir}/usr/lib/codelite/wxCrafter.so"
+install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
+install -m 644 -D "${srcdir}/${pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 #
