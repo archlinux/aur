@@ -1,0 +1,27 @@
+pkgbase = vcvrack-sonusmodular-git
+	pkgdesc = Sonus Dept. VCV modules
+	pkgver = r87.5085c86
+	pkgrel = 1
+	url = https://sonusmodular.sonusdept.com
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = vcvrack-git
+	source = vcvrack-sonusmodular::git+https://gitlab.com/sonusdept/sonusmodular.git
+	source = vcvrack::git+https://github.com/VCVRack/Rack.git
+	source = git+https://github.com/AndrewBelt/osdialog.git
+	source = git+https://github.com/AndrewBelt/oui-blendish.git
+	source = git+https://github.com/mackron/dr_libs.git
+	source = git+https://github.com/memononen/nanosvg.git
+	source = git+https://github.com/memononen/nanovg.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vcvrack-sonusmodular-git
+
