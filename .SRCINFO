@@ -1,4 +1,4 @@
-pkgbase = vert.x
+pkgbase = vertx
 	pkgdesc = Effortless asynchronous application development for the modern web and enterprise
 	pkgver = 3.4.2
 	pkgrel = 2
@@ -9,5 +9,5 @@ pkgbase = vert.x
 	source = https://bintray.com/artifact/download/vertx/downloads/vert.x-3.4.2-full.tar.gz
 	sha256sums = 03abce899a6752069e0eff49c0bded3c71635bf3bcbb8b277c80ced029e5ffac
 
-pkgname = vert.x
+pkgname = vertx
 
