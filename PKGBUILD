@@ -3,8 +3,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=okular
-pkgver=17.08.1
-pkgrel=2
+pkgver=17.08.2
+pkgrel=1
 pkgdesc='Document Viewer'
 arch=(i686 x86_64)
 url="https://kde.org/applications/graphics/okular/"
@@ -17,8 +17,8 @@ optdepends=('ebook-tools: mobi and epub support'
             'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support')
 conflicts=(kdegraphics-okular)
 replaces=(kdegraphics-okular)
-source=("https://download.kde.org/stable/applications/${pkgver}/src/okular-${pkgver}.tar.xz"{,.sig})
-sha256sums=('8625462d8426ad903500fe1d6821a65776715932f5746f2a46e911c59cd3f108'
+source=("https://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
+sha256sums=('c56f57dc47b8c00208e374f3249d2cf69d6293cb9ebfeeb3601f1c64cbc37e56'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
