@@ -5,7 +5,7 @@
 _pkgname=sonic-visualiser
 pkgname="${_pkgname}3"
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A viewer and analyser of music audio files."
 arch=('i686' 'x86_64')
 url="http://www.sonicvisualiser.org/"
@@ -14,7 +14,7 @@ depends=('desktop-file-utils' 'capnproto>=0.6' 'libfishsound' 'libid3tag'
          'liblo' 'liblrdf' 'libmad' 'liboggz' 'libpulse' 'portaudio' 'qt5-base'
          'rubberband' 'sord' 'hicolor-icon-theme')
 conflicts=("${_pkgname}")
-provideds=("${_pkgname}")
+provides=("${_pkgname}")
 source=("https://code.soundsoftware.ac.uk/attachments/download/2246/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/piper-audio/piper/02bafb5284eb20e4c8d96ac5fe5b697ed11f59a4/capnp/piper.capnp")
 md5sums=('e0297a5024944f78d0b44ee49c2022de'
