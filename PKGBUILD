@@ -8,7 +8,7 @@ pkgname=ocaml-pcre
 pkgver=7.2.3
 pkgrel=2
 pkgdesc="Perl compatible regular expressions for OCaml"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://mmottl.github.io/pcre-ocaml"
 license=('LGPL')
 depends=('pcre>=4.5')
