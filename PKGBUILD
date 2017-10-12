@@ -29,7 +29,7 @@ package() {
   cp -r * "${pkgdir}"/usr/share/java/$pkgnameorg
 
   install -d "${pkgdir}"/usr/bin
-  ln -s "${pkgdir}"/usr/share/java/$pkgnameorg/jGnashFx "${pkgdir}"/usr/bin/$pkgnameorg 
+  ln -s /usr/share/java/$pkgnameorg/jGnashFx "${pkgdir}"/usr/bin/$pkgnameorg 
   chmod +x "${pkgdir}"/usr/bin/$pkgnameorg
 }
 
