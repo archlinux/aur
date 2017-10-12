@@ -1,4 +1,4 @@
-# Maintainer: Dan McCurry <dan.mccurry at linux dot com>
+# Maintainer: Dan McCurry <dan.mc at protonmail dot com>
 pkgname=soapysdrplay-git
 pkgver=r66.3890517
 pkgrel=1
