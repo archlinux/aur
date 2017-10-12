@@ -5,7 +5,7 @@
 
 pkgname=python2-vpython
 pkgver=6.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy-to-use 3D graphics module for Python."
 arch=('i686' 'x86_64')
 url="http://www.vpython.org"
@@ -43,7 +43,7 @@ build() {
   cd "${srcdir}/boost_${_boostversion_underscore}"
   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python2 --with-libraries=python,signals
 
-   b2 \
+   ./b2 \
       variant=release \
       debug-symbols=off \
       threading=multi \
