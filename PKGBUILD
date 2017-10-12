@@ -160,8 +160,8 @@ package() {
   install -Dm755 "$GOPATH/src/github.com/docker/libnetwork/bin/docker-proxy" "$pkgdir/usr/bin/docker-proxy"
 
   msg2 'package dockerd binary'
+  _dockerver="$(cat $srcdir/moby/VERSION)"
   pushd "$srcdir/moby/bundles/dynbinary-daemon"
-    _dockerver="$(cat VERSION)"
     install -Dm755 "dockerd-$_dockerver" "$pkgdir/usr/bin/dockerd"
   popd
 
