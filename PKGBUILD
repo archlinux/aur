@@ -1,18 +1,25 @@
-# Maintainer: user6553591 <Message on Reddit>
+# Maintainer: Sherlock Holo <sherlockya@gmail.com>
+# Collaborator: user6553591 <Message on Reddit>
 
 pkgname=('python-websockets')
-pkgver=3.2
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 pkgdesc="An implementation of the WebSocket Protocol (RFC 6455)"
 arch=('any')
 url="https://github.com/aaugustin/websockets"
-license=('custom:BSD')
+license=('BSD')
 depends=('python')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('cc6620f33b5d68f7f36cc82f2fb947a92f572f569c3f905b232bcf81623e6128')
+makedepends=('python-setuptools')
+source=("https://github.com/aaugustin/websockets/archive/$pkgver.tar.gz")
+sha256sums=('c3ddd55c1a89ea52712be4fe643b4a60d79e28b9b789215b6f8dfb0dd113bc88')
+
+build() {
+    cd "$srcdir"/websockets-$pkgver
+    python setup.py build
+}
 
 package() {
     cd "$srcdir"/websockets-$pkgver
-    python setup.py install --optimize=1 --root="$pkgdir"
+    python setup.py install --skip-build --optimize=1 --root="$pkgdir"
     install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
