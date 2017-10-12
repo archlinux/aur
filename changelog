@@ -1,3 +1,7 @@
+2017-10-12  Tinu Weber  <martin.weber@epfl.ch>
+	* gnupaste: Upstream bugfix: Symlinks are correctly dereferenced for
+	determining their MIME type
+
 2017-10-03  Tinu Weber  <martin.weber@epfl.ch>
 	* epfl-vpn: Add option for running command in a separate namespace
 
