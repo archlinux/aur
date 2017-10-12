@@ -1,11 +1,11 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dcraddrgen
-pkgver=20170815
+pkgver=20171011
 pkgrel=1
 pkgdesc="Simple offline address generator for Decred"
-arch=('i686' 'x86_64')
-makedepends=('git' 'glide' 'go')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+makedepends=('dep' 'git' 'go')
 groups=('decred')
 url="https://github.com/decred/dcraddrgen"
 license=('ISC')
@@ -28,7 +28,7 @@ build() {
 
   msg2 'Building dcraddrgen and dependencies...'
   cd "$GOPATH/src/github.com/decred/dcraddrgen"
-  glide install
+  dep ensure
   go install
 }
 
