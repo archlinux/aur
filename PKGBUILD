@@ -1,7 +1,7 @@
 # Maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=jules-git
-pkgver=0.3.1.r0.g9866025
+pkgver=0.4.r0.gce2417d
 pkgrel=1
 pkgdesc="Statistical computing library that aims to provide R-like experience in modern C++"
 arch=('any')
@@ -21,10 +21,8 @@ pkgver() {
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/include/jules"
-  for module in {array,base,core,dataframe}; do
-    cp -R "$srcdir/${pkgname%-git}/jules/$module" "$pkgdir/usr/include/jules/"
-  done
+  mkdir -p "$pkgdir/usr"
+  cp -R "$srcdir/${pkgname%-git}/include" "$pkgdir/usr/"
   find "$pkgdir/usr/include/jules" -type f -not -name '*.hpp' -exec rm {} \;
   install -D -m644 "$srcdir/${pkgname%-git}/license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
