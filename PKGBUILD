@@ -2,7 +2,7 @@
 
 pkgname=libnitrokey
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Communicate with Nitrokey stick devices in a clean and easy manner"
 arch=('i686' 'x86_64')
 url="https://www.nitrokey.com"
@@ -31,20 +31,10 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver/build"
   make DESTDIR="$pkgdir" install
-  install -d -m755 "$pkgdir/usr/lib/$pkgname"
 
   cd ..
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "${pkgdir}/usr/"
-  mv include/libnitrokey $pkgdir/usr/lib/${pkgname}/include
-  rmdir include
-
-  mv lib64/libnitrokey.so lib/libnitrokey/
-  mv lib64/libnitrokey.so.3 lib/libnitrokey/
-  mv lib64/libnitrokey.so.$pkgver.0 lib/libnitrokey/
-  mv lib64/libnitrokey-log.so lib/libnitrokey/
-  mv lib64/libnitrokey-log.so.3 lib/libnitrokey/
-  mv lib64/libnitrokey-log.so.$pkgver.0 lib/libnitrokey/
-  rmdir lib64
+  mv lib64 lib
 }
