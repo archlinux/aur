@@ -4,7 +4,7 @@
 # Contributor: Jishnu Mohan jishnu7 at gmail dot com
 
 pkgname=ttf-malayalam-font-meera
-pkgver=7.0.0+20170909
+pkgver=7.0.0+20171009
 pkgrel=1
 pkgdesc="This is Meera, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language."
 arch=(any)
@@ -12,7 +12,7 @@ url="http://smc.org.in/fonts/"
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/meera/Meera.ttf"
         "https://gitlab.com/smc/meera/raw/master/65-0-smc-meera.conf")
-md5sums=('8f37ad2b4792ce86d770290091881603'
+md5sums=('cbb502b60c4b6d9a3b78f186f3beefe8'
          '4c02bd80a4d2b9fcfd47ef7685357359')
 install=ttf-malayalam-fonts.install
 
