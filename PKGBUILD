@@ -7,7 +7,7 @@
 
 pkgname=murmur-snapshot-ice
 pkgver=1.3.0_2569_gd196a4b
-pkgrel=1
+pkgrel=2
 pkgdesc="The voice chat application server for Mumble (development snapshot)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.mumble.info/wiki/"
@@ -20,11 +20,14 @@ provides=('murmur')
 backup=("etc/murmur.ini")
 install=murmur.install
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig}
-	murmur.tmpfilesd)
+	murmur.tmpfilesd
+	murmur.sysusers)
 sha256sums=('7ed89709a3dd51aa149e2bd215bb14463118669e8bb1b43854f9581c9b535503'
             'SKIP'
-            '25bf2dbd7574459724b4621fb93c09484dc7520297fa1d0f247a19b592d8cb8e')
+            '25bf2dbd7574459724b4621fb93c09484dc7520297fa1d0f247a19b592d8cb8e'
+            'ff58059e77eb73a5c9ad8eb4ad8d8d7c865f3ae1fb6cb236a729f742da95d83d')
 validpgpkeys=('C4666C6767A26017CE68406988048D0D625297A0')
+options=('emptydirs')
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
@@ -55,4 +58,5 @@ package() {
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     install -Dm644 src/murmur/Murmur.ice ${pkgdir}/usr/share/murmur/Murmur.ice
     install -Dm644 ${srcdir}/murmur.tmpfilesd ${pkgdir}/usr/lib/tmpfiles.d/murmur.conf
+    install -dm644 ${srcdir}/murmur.sysusers ${pkgdir}/usr/lib/sysusers.d/murmur.conf
 }
