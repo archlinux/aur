@@ -2,9 +2,9 @@
 
 _pkgname=radiotray-ng
 pkgname=${_pkgname}-git
-_pkgver=0.1.8
+_pkgver=0.2.0
 _branch=v${_pkgver}-dev
-pkgver=0.1.8.r27.8e772f7
+pkgver=0.2.0.r20.d5d7f9c
 pkgrel=1
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64')
@@ -17,10 +17,8 @@ optdepends=('python2-lxml: Convert radiotray bookmarks to radiotray-ng format')
 options=('!libtool')
 provides=("${_pkgname}=${pkgver%\.r*}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/ebruck/radiotray-ng#branch=${_branch}"
-        'remove_GMock_check.patch')
-sha256sums=('SKIP'
-            'd2af2f79007ddf2aad38b9531d0adc69859632a14a562983f5be3dcec973df02')
+source=("${_pkgname}::git+https://github.com/ebruck/radiotray-ng#branch=${_branch}")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -30,7 +28,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
   # Build fails when GMock is found, so don't check for it, don't compile tests
-  patch -uNp2 -r- -i ../remove_GMock_check.patch
+  sed -i 's:if (GMOCK_FOUND):if (GMOCK_FOUND AND ENABLE_GMOCK):' CMakeLists.txt
 }
 
 build() {
