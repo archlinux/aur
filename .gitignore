@@ -1,0 +1,6 @@
+src/
+pkg/
+sonic-visualiser3-*.tar.xz
+sonic-visualiser-*.tar.gz
+sonic-visualiser-*.src.tar.gz
+.AURINFO
