@@ -1,15 +1,16 @@
 # Maintainer: Silvio Knizek <killermoehre@gmx.net>
 pkgname=hdx-realtime-media-engine
-pkgver=2.2.100
-_short_pkgver=221
-_long_pkgver=2.2.100
-_deb_rebuild=949
+pkgver=2.3
+_short_pkgver=23
+_long_pkgver=2.3.0
+_deb_rebuild=1075
 pkgrel=1
 pkgdesc='Plug-In for Citrix Receiver to support clear, crisp high-definition audio-video calls, particularly with Microsoft Skype® for Business.'
 arch=('i686' 'x86_64')
-url='https://www.citrix.com/downloads/citrix-receiver/additional-client-software/'
+_url='https://www.citrix.com/downloads/citrix-receiver/additional-client-software'
+url="${url}/${pkgname}-${short_pkgver}.html"
 license=('custom')
-depends=('icaclient')
+depends=('icaclient' 'pulseaudio' 'xorg-xvinfo')
 if [[ "$CARCH" == 'x86_64' ]]; then
     depends+=('lib32-libxv' 'lib32-libpulse')
 elif [[ "$CARCH" == 'i686' ]]; then
@@ -17,10 +18,10 @@ elif [[ "$CARCH" == 'i686' ]]; then
 fi
 makedepends=('binutils' 'tar' 'xz' 'awk')
 install="${pkgname}.install"
-source_i686=("HDX_RealTime_Media_Engine_${pkgver}_for_Linux.zip::https:$(curl -L -silent "https://www.citrix.com/downloads/citrix-receiver/additional-client-software/hdx-realtime-media-engine-${_short_pkgver}.html#ctx-dl-eula" | awk -F'"' '/href=.*rel=.*Linux.zip/ { print $10 }')")
-source_x86_64=("HDX_RealTime_Media_Engine_${pkgver}_for_Linux_x64.zip::https:$(curl -L -silent "https://www.citrix.com/downloads/citrix-receiver/additional-client-software/hdx-realtime-media-engine-${_short_pkgver}.html#ctx-dl-eula" | awk -F'"' '/href=.*rel=.*Linux_x64.zip/ { print $10 }')")
-sha256sums_i686=('ad0e1416ad89225a154b114e6d9bbf091c6e789034144c8f8ca31d58eeaf4908')
-sha256sums_x86_64=('22638ae01f9d4bce999e8aeadd0e9eed8acfd4de8b79c6678d1b6e06bd269022')
+source_i686=("HDX_RealTime_Media_Engine_${pkgver}_for_Linux.zip::https:$(curl -L -silent "${_url}/${pkgname}-${_short_pkgver}.html#ctx-dl-eula" | awk -F'"' '/href=.*rel=.*Linux.zip/ { print $10 }')")
+source_x86_64=("HDX_RealTime_Media_Engine_${pkgver}_for_Linux_x64.zip::https:$(curl -L -silent "${_url}/${pkgname}-${_short_pkgver}.html#ctx-dl-eula" | awk -F'"' '/href=.*rel=.*Linux_x64.zip/ { print $10 }')")
+sha256sums_i686=('dc79ab4b9cc222642d4c46e4178fb4952f4d73546835ae14d984d8bdb4d46e81')
+sha256sums_x86_64=('0613dd5885541dce1f595e39d895eb5b26aa835ca839d83e13b6969474060733')
 
 package() {
     ICAROOT='/opt/Citrix/ICAClient'
@@ -34,7 +35,7 @@ package() {
         my_dir_name="HDX_RealTime_Media_Engine_${pkgver}_for_Linux_x64"
     fi
     cd "${srcdir}/${my_dir_name}/${CARCH}"
-    ar p citrix-hdx-realtime-media-engine_${_long_pkgver}-${_deb_rebuild}_${my_deb_arch}.deb data.tar.xz | tar xJ
+    ar p "citrix-hdx-realtime-media-engine_${_long_pkgver}-${_deb_rebuild}_${my_deb_arch}.deb" data.tar.xz | tar xJ
     install -d -m 0755 -g root -o root "${pkgdir}/usr/lib/udev/rules.d/"
     install -d -m 0777 -g root -o root "${pkgdir}/var/lib/RTMediaEngineSRV"
     install -d -m 0777 -g root -o root "${pkgdir}/var/log/RTMediaEngineSRV"
