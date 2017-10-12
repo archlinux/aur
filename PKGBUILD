@@ -1,6 +1,6 @@
 # Maintainer: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=sam-ba
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Atmel SAM Boot Assistant"
 arch=('i686' 'x86_64')
