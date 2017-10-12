@@ -7,7 +7,7 @@
 
 pkgname=mpv-full-git
 pkgver=0.27.0.r227.g91ebc34344
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -30,7 +30,10 @@ depends_x86_64=(
         'ffmpeg-full'
 )
 optdepends=('youtube-dl: for video-sharing websites playback')
-makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers')
+makedepends=(
+    'git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
+    'wayland-protocols'
+)
 provides=('mpv')
 conflicts=('mpv' 'mpv-git')
 options=('!emptydirs')
