@@ -1,5 +1,5 @@
 --- app.ini
-+++ app.ini	2017-10-05 18:08:31.000000000 +0300
++++ app.ini	2017-10-12 10:50:05.000000000 +0300
 @@ -1,12 +1,12 @@
  ; App name that shows on every page title
  APP_NAME = Gitea: Git with a cup of tea
@@ -21,14 +21,14 @@
  [repository.local]
  ; Path for uploads. Defaults to `tmp/local-repo`
 -LOCAL_COPY_PATH = tmp/local-repo
-+LOCAL_COPY_PATH = /var/cache/gitea/local-repo
++LOCAL_COPY_PATH = /var/lib/gitea/tmp/local-repo
  
  [repository.upload]
  ; Whether repository file uploads are enabled. Defaults to `true`
  ENABLED = true
  ; Path for uploads. Defaults to `data/tmp/uploads` (tmp gets deleted on gitea restart)
 -TEMP_PATH = data/tmp/uploads
-+TEMP_PATH = /var/cache/gitea
++TEMP_PATH = /var/lib/gitea/data/tmp/uploads
  ; One or more allowed types, e.g. image/jpeg|image/png. Nothing means any file type
  ALLOWED_TYPES =
  ; Max size of each file in MB. Defaults to 3MB
