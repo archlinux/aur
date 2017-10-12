@@ -7,13 +7,4 @@
 -	public int texture_get_data (Cogl.Texture texture, Cogl.PixelFormat format, uint rowstride, [CCode (array_length = false)] uint8[] pixels);
 -}
 -
---- src/wingpanel/wingpanel-interface/CMakeLists.txt	2017-05-13 02:48:18.587182018 +0900
-+++ src/wingpanel/wingpanel-interface/CMakeLists.txt.new	2017-05-13 02:50:36.857811056 +0900
-@@ -20,7 +20,6 @@
-   Utils.vala
- PACKAGES
-   granite
--  cogl-fixes
- OPTIONS
-   --thread
-   --vapidir=${CMAKE_SOURCE_DIR}/vapi
+

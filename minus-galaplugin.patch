@@ -1,150 +1,735 @@
---- src/wingpanel/wingpanel-interface/BackgroundManager.vala	2016-10-21 23:51:49.434036000 +0900
-+++ src/wingpanel/wingpanel-interface/BackgroundManager.vala.new	2016-10-22 00:31:35.323418157 +0900
-@@ -17,7 +17,7 @@
-  * Boston, MA 02111-1307, USA.
-  */
- 
--public enum BackgroundState {
-+/* public enum BackgroundState {
-     LIGHT,
-     DARK,
-     MAXIMIZED,
-@@ -152,7 +152,7 @@
-      *  - If the background is too bright, it should be DARK;
-      *  - Else it should be LIGHT.
-      */
--    private void check_for_state_change (uint animation_duration) {
-+    /*private void check_for_state_change (uint animation_duration) {
-         bool has_maximized_window = false;
- 
-         foreach (Meta.Window window in current_workspace.list_windows ()) {
-@@ -184,4 +184,4 @@
-             state_changed (current_state = new_state, animation_duration);
-         }
-     }
--}
-+} */
---- src/wingpanel/wingpanel-interface/DBusServer.vala	2016-10-22 00:31:41.667214839 +0900
-+++ src/wingpanel/wingpanel-interface/DBusServer.vala.new	2016-10-22 00:31:51.473900535 +0900
-@@ -17,7 +17,7 @@
-  * Boston, MA 02111-1307, USA.
-  */
- 
--[DBus (name = "org.pantheon.gala.WingpanelInterface")]
-+/* [DBus (name = "org.pantheon.gala.WingpanelInterface")]
- public class WingpanelInterface.DBusServer : Object {
-     private BackgroundManager background_manager;
- 
-@@ -37,4 +37,4 @@
-     public void restore_focused_window () {
-         FocusManager.get_default ().restore_focused_window ();
-     }
--}
-+} */
---- src/wingpanel/wingpanel-interface/FocusManager.vala	2016-10-21 23:51:49.434036000 +0900
-+++ src/wingpanel/wingpanel-interface/FocusManager.vala.new	2016-10-22 00:32:26.189787894 +0900
-@@ -17,7 +17,7 @@
-  * Boston, MA 02111-1307, USA.
-  */
- 
--public class WingpanelInterface.FocusManager : Object {
-+/* public class WingpanelInterface.FocusManager : Object {
-     private static FocusManager? instance = null;
- 
-     private Meta.Workspace? current_workspace = null;
-@@ -69,4 +69,4 @@
- 
-         return instance;
-     }
--}
-\ No newline at end of file
-+} */
---- src/wingpanel/wingpanel-interface/Main.vala	2016-10-21 23:51:49.434036000 +0900
-+++ src/wingpanel/wingpanel-interface/Main.vala.new	2016-10-22 00:33:13.987255987 +0900
-@@ -22,7 +22,7 @@
-  *   about windows and workspaces for the panel.
-  */
- 
+--- src/wingpanel/wingpanel-interface/Main.vala	2017-10-12 18:58:46.125181484 +0900
++++ /dev/null	2017-10-12 18:36:39.960762875 +0900
+@@ -1,83 +0,0 @@
+-/*
+- * Copyright (c) 2011-2015 Wingpanel Developers (http://launchpad.net/wingpanel)
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public
+- * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public
+- * License along with this program; if not, write to the
+- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+- * Boston, MA 02110-1301 USA.
+- */
+-
+-/*
+- *   This plugin adds a dbus-interface to gala that provides additional information
+- *   about windows and workspaces for the panel.
+- */
+-
 -public class WingpanelInterface.Main : Gala.Plugin {
-+/* public class WingpanelInterface.Main : Gala.Plugin {
-     private const string DBUS_NAME = "org.pantheon.gala.WingpanelInterface";
-     private const string DBUS_PATH = "/org/pantheon/gala/WingpanelInterface";
- 
-@@ -80,4 +80,4 @@
-                Gala.PluginFunction.ADDITION,
-                Gala.LoadPriority.IMMEDIATE
-     };
+-    private const string DBUS_NAME = "org.pantheon.gala.WingpanelInterface";
+-    private const string DBUS_PATH = "/org/pantheon/gala/WingpanelInterface";
+-
+-    public static Gala.WindowManager wm;
+-    public static Meta.Screen screen;
+-
+-    private DBusConnection? dbus_connection = null;
+-
+-    public override void initialize (Gala.WindowManager _wm) {
+-        if (_wm == null) {
+-            return;
+-        }
+-
+-        wm = _wm;
+-        screen = wm.get_screen ();
+-
+-        Bus.own_name (BusType.SESSION,
+-                      DBUS_NAME,
+-                      BusNameOwnerFlags.NONE,
+-                      on_bus_aquired,
+-                      null,
+-                      () => warning ("Aquirering \"%s\" failed.", DBUS_NAME));
+-    }
+-
+-    public override void destroy () {
+-        try {
+-            if (dbus_connection != null) {
+-                dbus_connection.close_sync ();
+-            }
+-        } catch (Error e) {
+-            warning ("Closing DBus service failed: %s", e.message);
+-        }
+-    }
+-
+-    private void on_bus_aquired (DBusConnection connection) {
+-        dbus_connection = connection;
+-
+-        try {
+-            var server = new DBusServer ();
+-
+-            dbus_connection.register_object (DBUS_PATH, server);
+-
+-            debug ("DBus service registered.");
+-        } catch (Error e) {
+-            warning ("Registering DBus service failed: %s", e.message);
+-        }
+-    }
 -}
-\ No newline at end of file
-+} */
---- src/wingpanel/wingpanel-interface/Settings.vala	2016-10-21 23:51:49.434036000 +0900
-+++ src/wingpanel/wingpanel-interface/Settings.vala.new	2016-10-22 00:33:49.443163806 +0900
-@@ -17,7 +17,7 @@
-  * Boston, MA 02111-1307, USA.
-  */
- 
+-
+-public Gala.PluginInfo register_plugin () {
+-    return {
+-               "wingpanel-interface",
+-               "Wingpanel Developers",
+-               typeof (WingpanelInterface.Main),
+-               Gala.PluginFunction.ADDITION,
+-               Gala.LoadPriority.IMMEDIATE
+-    };
+-}
+--- src/wingpanel/wingpanel-interface/Settings.vala	2017-10-12 18:58:46.125181484 +0900
++++ /dev/null	2017-10-12 18:36:39.960762875 +0900
+@@ -1,42 +0,0 @@
+-/*
+- * Copyright (c) 2011-2015 Wingpanel Developers (http://launchpad.net/wingpanel)
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public
+- * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public
+- * License along with this program; if not, write to the
+- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+- * Boston, MA 02110-1301 USA.
+- */
+-
 -public class WingpanelInterface.AnimationSettings : Granite.Services.Settings {
-+/* public class WingpanelInterface.AnimationSettings : Granite.Services.Settings {
-     public bool enable_animations { get; set; }
-     public int open_duration { get; set; }
-     public int snap_duration { get; set; }
-@@ -39,4 +39,4 @@
- 
-         return instance;
-     }
+-    public bool enable_animations { get; set; }
+-    public int open_duration { get; set; }
+-    public int snap_duration { get; set; }
+-    public int close_duration { get; set; }
+-    public int minimize_duration { get; set; }
+-    public int workspace_switch_duration { get; set; }
+-    public int menu_duration { get; set; }
+-
+-    static AnimationSettings? instance = null;
+-
+-    private AnimationSettings () {
+-        base ("org.pantheon.desktop.gala.animations");
+-    }
+-
+-    public static unowned AnimationSettings get_default () {
+-        if (instance == null) {
+-            instance = new AnimationSettings ();
+-        }
+-
+-        return instance;
+-    }
 -}
-\ No newline at end of file
-+} */
---- src/wingpanel/wingpanel-interface/Utils.vala	2016-10-21 23:51:49.434036000 +0900
-+++ src/wingpanel/wingpanel-interface/Utils.vala.new	2016-10-22 00:34:59.172928972 +0900
-@@ -22,7 +22,7 @@
-  *   related to it are copied from Gala.DBus.
-  */
- 
+--- src/wingpanel/wingpanel-interface/FocusManager.vala	2017-10-12 18:58:46.125181484 +0900
++++ /dev/null	2017-10-12 18:36:39.960762875 +0900
+@@ -1,72 +0,0 @@
+-/*
+- * Copyright (c) 2011-2015 Wingpanel Developers (http://launchpad.net/wingpanel)
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public
+- * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public
+- * License along with this program; if not, write to the
+- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+- * Boston, MA 02110-1301 USA.
+- */
+-
+-public class WingpanelInterface.FocusManager : Object {
+-    private static FocusManager? instance = null;
+-
+-    private Meta.Workspace? current_workspace = null;
+-    private Meta.Window? last_focused_window = null;
+-
+-    public FocusManager () {
+-        Main.screen.workspace_switched.connect (() => {
+-            update_current_workspace ();
+-        });
+-
+-        update_current_workspace ();
+-    }
+-
+-    public void remember_focused_window () {
+-        var windows = current_workspace.list_windows ();
+-
+-        foreach (Meta.Window window in windows) {
+-            if (window.has_focus ()) {
+-                last_focused_window = window;
+-
+-                return;
+-            }
+-        }
+-    }
+-
+-    public void restore_focused_window () {
+-        if (last_focused_window != null) {
+-            var display = Main.screen.get_display ();
+-            last_focused_window.focus (display.get_current_time ());
+-        }
+-    }
+-
+-    private void update_current_workspace () {
+-        var workspace = Main.screen.get_workspace_by_index (Main.screen.get_active_workspace_index ());
+-
+-        if (workspace == null) {
+-            warning ("Cannot get active workspace");
+-
+-            return;
+-        }
+-
+-        current_workspace = workspace;
+-    }
+-
+-    public static FocusManager get_default () {
+-        if (instance == null) {
+-            instance = new FocusManager ();
+-        }
+-
+-        return instance;
+-    }
+-}
+--- src/wingpanel/wingpanel-interface/BackgroundManager.vala	2017-10-13 03:00:24.840092343 +0900
++++ /dev/null	2017-10-13 01:49:26.502721048 +0900
+@@ -1,187 +0,0 @@
+-/*
+- * Copyright (c) 2011-2015 Wingpanel Developers (http://launchpad.net/wingpanel)
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public
+- * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public
+- * License along with this program; if not, write to the
+- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+- * Boston, MA 02110-1301 USA.
+- */
+-
+-public enum BackgroundState {
+-    LIGHT,
+-    DARK,
+-    MAXIMIZED,
+-    TRANSLUCENT
+-}
+-
+-public class WingpanelInterface.BackgroundManager : Object {
+-    private const int WALLPAPER_TRANSITION_DURATION = 150;
+-    private const double ACUTANCE_THRESHOLD = 8;
+-    private const double STD_THRESHOLD = 45;
+-    private const double LUMINANCE_THRESHOLD = 180;
+-
+-    public signal void state_changed (BackgroundState state, uint animation_duration);
+-
+-    public int monitor { private get; construct; }
+-    public int panel_height{ private get; construct; }
+-
+-    private ulong wallpaper_hook_id;
+-
+-    private Meta.Workspace? current_workspace = null;
+-
+-    private BackgroundState current_state = BackgroundState.LIGHT;
+-    
+-    private Utils.ColorInformation? bk_color_info = null;
+-
+-    public BackgroundManager (int monitor, int panel_height) {
+-        Object (monitor : monitor, panel_height: panel_height);
+-
+-        connect_signals ();
+-        update_bk_color_info.begin ((obj, res) => {
+-            update_bk_color_info.end (res);
+-            update_current_workspace ();
+-        });
+-    }
+-
+-    ~BackgroundManager () {
+-        var signal_id = GLib.Signal.lookup ("changed", Main.wm.background_group.get_type ());
+-        GLib.Signal.remove_emission_hook (signal_id, wallpaper_hook_id);
+-    }
+-
+-    private void connect_signals () {
+-        Main.screen.workspace_switched.connect (() => {
+-            update_current_workspace ();
+-        });
+-
+-        var signal_id = GLib.Signal.lookup ("changed", Main.wm.background_group.get_type ());
+-
+-        wallpaper_hook_id = GLib.Signal.add_emission_hook (signal_id, 0, (ihint, param_values) => {
+-            update_bk_color_info.begin ((obj, res) => {
+-                update_bk_color_info.end (res);
+-                check_for_state_change (WALLPAPER_TRANSITION_DURATION);
+-            });
+-
+-            return true;
+-        }, null);
+-    }
+-
+-    private void update_current_workspace () {
+-        var workspace = Main.screen.get_workspace_by_index (Main.screen.get_active_workspace_index ());
+-
+-        if (workspace == null) {
+-            warning ("Cannot get active workspace");
+-
+-            return;
+-        }
+-
+-        if (current_workspace != null) {
+-            current_workspace.window_added.disconnect (on_window_added);
+-            current_workspace.window_removed.disconnect (on_window_removed);
+-        }
+-
+-        current_workspace = workspace;
+-
+-        foreach (Meta.Window window in current_workspace.list_windows ()) {
+-            if (window.is_on_primary_monitor ()) {
+-                register_window (window);
+-            }
+-        }
+-
+-        current_workspace.window_added.connect (on_window_added);
+-        current_workspace.window_removed.connect (on_window_removed);
+-
+-        check_for_state_change (AnimationSettings.get_default ().workspace_switch_duration);
+-    }
+-
+-    private void register_window (Meta.Window window) {
+-        window.notify["maximized-vertically"].connect (() => {
+-            check_for_state_change (AnimationSettings.get_default ().snap_duration);
+-        });
+-
+-        window.notify["minimized"].connect (() => {
+-            check_for_state_change (AnimationSettings.get_default ().minimize_duration);
+-        });
+-    }
+-
+-    private void on_window_added (Meta.Window window) {
+-        register_window (window);
+-
+-        check_for_state_change (AnimationSettings.get_default ().snap_duration);
+-    }
+-
+-    private void on_window_removed (Meta.Window window) {
+-        check_for_state_change (AnimationSettings.get_default ().snap_duration);
+-    }
+-
+-    public async void update_bk_color_info () {
+-        SourceFunc callback = update_bk_color_info.callback;
+-        Gdk.Rectangle monitor_geometry;
+-
+-        Gdk.Screen.get_default ().get_monitor_geometry (monitor, out monitor_geometry);
+-
+-        Utils.get_background_color_information.begin (Main.wm, monitor, 0, 0, monitor_geometry.width, panel_height, (obj, res) => {
+-            try {
+-                bk_color_info = Utils.get_background_color_information.end (res);
+-            } catch (Error e) {
+-                warning (e.message);
+-            } finally {
+-                callback ();
+-            }
+-        });
+-        
+-        yield;
+-    }
+-
+-    /**
+-     * Check if Wingpanel's background state should change.
+-     *
+-     * The state is defined as follows:
+-     *  - If there's a maximized window, the state should be MAXIMIZED;
+-     *  - If no information about the background could be gathered, it should be TRANSLUCENT;
+-     *  - If there's too much contrast or sharpness, it should be TRANSLUCENT;
+-     *  - If the background is too bright, it should be DARK;
+-     *  - Else it should be LIGHT.
+-     */
+-    private void check_for_state_change (uint animation_duration) {
+-        bool has_maximized_window = false;
+-
+-        foreach (Meta.Window window in current_workspace.list_windows ()) {
+-            if (window.get_monitor () == monitor) {
+-                if (!window.minimized && window.maximized_vertically) {
+-                    has_maximized_window = true;
+-                    break;
+-                }
+-            }
+-        }
+-
+-        BackgroundState new_state;
+-
+-        if (has_maximized_window) {
+-            new_state = BackgroundState.MAXIMIZED;
+-        } else if (bk_color_info == null) {
+-            new_state = BackgroundState.TRANSLUCENT;
+-        } else {
+-            var luminance_std = Math.sqrt (bk_color_info.luminance_variance);
+-            
+-            new_state = luminance_std > STD_THRESHOLD ||
+-                (bk_color_info.mean_luminance < LUMINANCE_THRESHOLD &&
+-                    bk_color_info.mean_luminance + 1.645 * luminance_std > LUMINANCE_THRESHOLD ) || 
+-                bk_color_info.mean_acutance > ACUTANCE_THRESHOLD ? BackgroundState.TRANSLUCENT :
+-                    bk_color_info.mean_luminance > LUMINANCE_THRESHOLD ? BackgroundState.DARK : BackgroundState.LIGHT;
+-        }
+-
+-        if (new_state != current_state) {
+-            state_changed (current_state = new_state, animation_duration);
+-        }
+-    }
+-}
+--- src/wingpanel/wingpanel-interface/DBusServer.vala	2017-10-13 03:00:24.840092343 +0900
++++ /dev/null	2017-10-13 01:49:26.502721048 +0900
+@@ -1,40 +0,0 @@
+-/*
+- * Copyright (c) 2011-2015 Wingpanel Developers (http://launchpad.net/wingpanel)
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public
+- * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public
+- * License along with this program; if not, write to the
+- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+- * Boston, MA 02110-1301 USA.
+- */
+-
+-[DBus (name = "org.pantheon.gala.WingpanelInterface")]
+-public class WingpanelInterface.DBusServer : Object {
+-    private BackgroundManager background_manager;
+-
+-    public signal void state_changed (BackgroundState state, uint animation_duration);
+-
+-    public void initialize (int monitor, int panel_height) {
+-        background_manager = new BackgroundManager (monitor, panel_height);
+-        background_manager.state_changed.connect ((state, animation_duration) => {
+-            state_changed (state, animation_duration);
+-        });
+-    }
+-
+-    public void remember_focused_window () {
+-        FocusManager.get_default ().remember_focused_window ();
+-    }
+-
+-    public void restore_focused_window () {
+-        FocusManager.get_default ().restore_focused_window ();
+-    }
+-}
+--- src/wingpanel/wingpanel-interface/Utils.vala	2017-10-13 03:00:24.841092296 +0900
++++ /dev/null	2017-10-13 01:49:26.502721048 +0900
+@@ -1,199 +0,0 @@
+-/*
+- * Copyright (c) 2011-2015 Wingpanel Developers (http://launchpad.net/wingpanel)
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public
+- * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public
+- * License along with this program; if not, write to the
+- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+- * Boston, MA 02110-1301 USA.
+- */
+-
+-/*
+- *   The method for calculating the background information and the classes that are
+- *   related to it are copied from Gala.DBus.
+- */
+-
 -namespace WingpanelInterface.Utils {
-+/* namespace WingpanelInterface.Utils {
-     private const double SATURATION_WEIGHT = 1.5;
-     private const double WEIGHT_THRESHOLD = 1.0;
- 
-@@ -92,7 +92,7 @@
-              * plank's lib/Drawing/DrawingService.vala average_color()
-              * http://bazaar.launchpad.net/~docky-core/plank/trunk/view/head:/lib/Drawing/DrawingService.vala
-              */
+-    private const double SATURATION_WEIGHT = 1.5;
+-    private const double WEIGHT_THRESHOLD = 1.0;
+-
+-    private class DummyOffscreenEffect : Clutter.OffscreenEffect {
+-        public signal void done_painting ();
+-
+-        public override void post_paint () {
+-            base.post_paint ();
+-            done_painting ();
+-        }
+-    }
+-
+-    public struct ColorInformation {
+-        double average_red;
+-        double average_green;
+-        double average_blue;
+-        double mean_luminance;
+-        double luminance_variance;
+-        double mean_acutance;
+-    }
+-
+-    public async ColorInformation get_background_color_information (Gala.WindowManager wm, int monitor,
+-                                                                    int reference_x, int reference_y, int reference_width, int reference_height) throws DBusError {
+-        var background = wm.background_group.get_child_at_index (monitor);
+-
+-        if (background == null) {
+-            throw new DBusError.INVALID_ARGS ("Invalid monitor requested: %i".printf (monitor));
+-        }
+-
+-        var effect = new DummyOffscreenEffect ();
+-        background.add_effect (effect);
+-
+-        var tex_width = (int)background.width;
+-        var tex_height = (int)background.height;
+-
+-        int x_start = reference_x;
+-        int y_start = reference_y;
+-        int width = int.min (tex_width - reference_x, reference_width);
+-        int height = int.min (tex_height - reference_y, reference_height);
+-
+-        if (x_start > tex_width || x_start > tex_height || width <= 0 || height <= 0) {
+-            throw new DBusError.INVALID_ARGS ("Invalid rectangle specified: %i, %i, %i, %i".printf (x_start, y_start, width, height));
+-        }
+-
+-        double mean_acutance = 0, variance = 0, mean = 0, rTotal = 0, gTotal = 0, bTotal = 0;
+-        ulong paint_signal_handler = 0;
+-
+-        paint_signal_handler = effect.done_painting.connect (() => {
+-            SignalHandler.disconnect (effect, paint_signal_handler);
+-            background.remove_effect (effect);
+-
+-            var texture = (Cogl.Texture)effect.get_texture ();
+-            var pixels = new uint8[texture.get_width () * texture.get_height () * 4];
+-            var pixel_lums = new double[texture.get_width () * texture.get_height ()];
+-
+-            CoglFixes.texture_get_data (texture, Cogl.PixelFormat.BGRA_8888_PRE, 0, pixels);
+-
+-            int size = width * height;
+-
+-            double mean_squares = 0;
+-            double pixel = 0;
+-
+-            double max, min, score, delta, scoreTotal = 0, rTotal2 = 0, gTotal2 = 0, bTotal2 = 0;
+-
+-            /*
+-             * code to calculate weighted average color is copied from
+-             * plank's lib/Drawing/DrawingService.vala average_color()
+-             * http://bazaar.launchpad.net/~docky-core/plank/trunk/view/head:/lib/Drawing/DrawingService.vala
+-             */
 -            for (int y = y_start; y < height; y++) {
-+            /* for (int y = y_start; y < height; y++) {
-                 for (int x = x_start; x < width; x++) {
-                     int i = y * width * 4 + x * 4;
- 
-@@ -110,7 +110,7 @@
-                     delta = max - min;
- 
-                     /* prefer colored pixels over shades of grey */
+-                for (int x = x_start; x < width; x++) {
+-                    int i = y * width * 4 + x * 4;
+-
+-                    uint8 r = pixels[i];
+-                    uint8 g = pixels[i + 1];
+-                    uint8 b = pixels[i + 2];
+-
+-                    pixel = (0.3 * r + 0.59 * g + 0.11 * b) ;
+-                    
+-                    pixel_lums[y * width + x] = pixel;
+-
+-                    min = uint8.min (r, uint8.min (g, b));
+-                    max = uint8.max (r, uint8.max (g, b));
+-
+-                    delta = max - min;
+-
+-                    /* prefer colored pixels over shades of grey */
 -                    score = SATURATION_WEIGHT * (delta == 0 ? 0.0 : delta / max);
-+                    /*score = SATURATION_WEIGHT * (delta == 0 ? 0.0 : delta / max);
- 
-                     rTotal += score * r;
-                     gTotal += score * g;
-@@ -161,7 +161,7 @@
-              * if saturation isn't reasonable enough
-              * s = 0.0 -> f = 0.0 ; s = WEIGHT_THRESHOLD -> f = 1.0
-              */
+-
+-                    rTotal += score * r;
+-                    gTotal += score * g;
+-                    bTotal += score * b;
+-                    scoreTotal += score;
+-
+-                    rTotal += r;
+-                    gTotal += g;
+-                    bTotal += b;
+-
+-                    mean += pixel;
+-                    mean_squares += pixel * pixel;
+-                }
+-            }
+-            
+-            for (int y = y_start + 1; y < height - 1; y++) {
+-                for (int x = x_start + 1; x < width - 1; x++) {
+-                    var acutance =
+-                        (pixel_lums[y * width + x] * 4) -
+-                        (
+-                            pixel_lums[y * width + x - 1] +
+-                            pixel_lums[y * width + x + 1] +
+-                            pixel_lums[(y - 1) * width + x] +
+-                            pixel_lums[(y + 1) * width + x]
+-                        );
+-                    
+-                    mean_acutance += acutance > 0 ? acutance : -acutance;
+-                }
+-            }
+-
+-            scoreTotal /= size;
+-            bTotal /= size;
+-            gTotal /= size;
+-            rTotal /= size;
+-
+-            if (scoreTotal > 0.0) {
+-                bTotal /= scoreTotal;
+-                gTotal /= scoreTotal;
+-                rTotal /= scoreTotal;
+-            }
+-
+-            bTotal2 /= size * uint8.MAX;
+-            gTotal2 /= size * uint8.MAX;
+-            rTotal2 /= size * uint8.MAX;
+-
+-            /*
+-             * combine weighted and not weighted sum depending on the average "saturation"
+-             * if saturation isn't reasonable enough
+-             * s = 0.0 -> f = 0.0 ; s = WEIGHT_THRESHOLD -> f = 1.0
+-             */
 -            if (scoreTotal <= WEIGHT_THRESHOLD) {
-+            /* if (scoreTotal <= WEIGHT_THRESHOLD) {
-                 var f = 1.0 / WEIGHT_THRESHOLD * scoreTotal;
-                 var rf = 1.0 - f;
- 
-@@ -171,7 +171,7 @@
-             }
- 
-             /* there shouldn't be values larger then 1.0 */
+-                var f = 1.0 / WEIGHT_THRESHOLD * scoreTotal;
+-                var rf = 1.0 - f;
+-
+-                bTotal = bTotal * f + bTotal2 * rf;
+-                gTotal = gTotal * f + gTotal2 * rf;
+-                rTotal = rTotal * f + rTotal2 * rf;
+-            }
+-
+-            /* there shouldn't be values larger then 1.0 */
 -            var max_val = double.max (rTotal, double.max (gTotal, bTotal));
-+            /* var max_val = double.max (rTotal, double.max (gTotal, bTotal));
- 
-             if (max_val > 1.0) {
-                 bTotal /= max_val;
-@@ -196,4 +196,4 @@
-         return { rTotal, gTotal, bTotal, mean, variance, mean_acutance };
-     }
- 
+-
+-            if (max_val > 1.0) {
+-                bTotal /= max_val;
+-                gTotal /= max_val;
+-                rTotal /= max_val;
+-            }
+-
+-            mean /= size;
+-            mean_squares = mean_squares / size;
+-
+-            variance = (mean_squares - (mean * mean));
+-            
+-            mean_acutance /= (width - 2) * (height - 2);
+-
+-            get_background_color_information.callback ();
+-        });
+-
+-        background.queue_redraw ();
+-
+-        yield;
+-
+-        return { rTotal, gTotal, bTotal, mean, variance, mean_acutance };
+-    }
+-
 -}
-+} */
+--- src/wingpanel/wingpanel-interface/CMakeLists.txt	2017-10-13 03:17:01.659234024 +0900
++++ /dev/null	2017-10-13 01:49:26.502721048 +0900
+@@ -1,80 +0,0 @@
+-find_package (PkgConfig)
+-
+-pkg_check_modules (PLUGIN REQUIRED gala granite)
+-
+-add_definitions (${PLUGIN_CFLAGS})
+-link_directories (${PLUGIN_LIBRARY_DIRS})
+-set (WINGPANELINTERFACE "wingpanel-interface")
+-
+-find_package (Vala REQUIRED)
+-include (ValaVersion)
+-ensure_vala_version ("0.12.0" MINIMUM)
+-
+-# We need to know which version of the Mutter API is in use
+-pkg_check_modules(MUTTER320 QUIET libmutter>=3.19)
+-pkg_check_modules(MUTTER322 QUIET libmutter>=3.21)
+-pkg_check_modules(MUTTER324 QUIET libmutter-0>=3.23.90)
+-pkg_check_modules(MUTTER326 QUIET libmutter-1>=3.25.90)
+-
+-set (EXTRA_VALA_FLAGS "")
+-set (EXTRA_MUTTER_PKS cogl-1.0 clutter-1.0 libmutter)
+-set (EXTRA_MUTTER_PACKAGES cogl-1.0 clutter-1.0 libmutter)
+-if (MUTTER320_FOUND)
+-    set (EXTRA_VALA_FLAGS ${EXTRA_VALA_FLAGS} --define HAS_MUTTER320)
+-endif ()
+-
+-if (MUTTER322_FOUND)
+-    set (EXTRA_VALA_FLAGS ${EXTRA_VALA_FLAGS} --define HAS_MUTTER322)
+-    set (EXTRA_MUTTER_PKS mutter-cogl-1.0 mutter-cogl-pango-1.0 mutter-cogl-path-1.0 mutter-clutter-1.0 libmutter)
+-    set (EXTRA_MUTTER_PACKAGES mutter-cogl-1.0 mutter-clutter-1.0)
+-endif ()
+-
+-if (MUTTER324_FOUND)
+-    set (EXTRA_VALA_FLAGS ${EXTRA_VALA_FLAGS} --define HAS_MUTTER320 --define HAS_MUTTER322 --define HAS_MUTTER324)
+-    set (EXTRA_MUTTER_PKS mutter-cogl-0 mutter-cogl-pango-0 mutter-cogl-path-0 mutter-clutter-0 libmutter-0)
+-    set (EXTRA_MUTTER_PACKAGES mutter-cogl-0 mutter-clutter-0)
+-endif ()
+-
+-if (MUTTER326_FOUND)
+-    set (EXTRA_VALA_FLAGS ${EXTRA_VALA_FLAGS} --define HAS_MUTTER320 --define HAS_MUTTER322 --define HAS_MUTTER324 --define HAS_MUTTER326)
+-    set (EXTRA_MUTTER_PKS mutter-cogl-1 mutter-cogl-pango-1 mutter-cogl-path-1 mutter-clutter-1 libmutter-1)
+-    set (EXTRA_MUTTER_PACKAGES mutter-cogl-1 mutter-clutter-1)
+-endif ()
+-
+-pkg_check_modules (PLUGIN_MUTTER REQUIRED ${EXTRA_MUTTER_PKS})
+-
+-include (ValaPrecompile)
+-vala_precompile (VALA_C ${WINGPANELINTERFACE}
+-  Main.vala
+-  DBusServer.vala
+-  BackgroundManager.vala
+-  FocusManager.vala
+-  Settings.vala
+-  Utils.vala
+-PACKAGES
+-  gala
+-  granite
+-  cogl-fixes
+-  ${EXTRA_MUTTER_PACKAGES}
+-OPTIONS
+-  --thread
+-  --vapidir=${CMAKE_SOURCE_DIR}/vapi
+-  ${EXTRA_VALA_FLAGS}
+-)
+-
+-add_library (${WINGPANELINTERFACE} MODULE ${VALA_C})
+-target_link_libraries(${WINGPANELINTERFACE} ${PLUGIN_LIBRARIES} ${PLUGIN_MUTTER_LIBRARIES})
+-
+-# Add -rpath ldflag if libgala is using mutter >= 3.21 to pick up libmutter-*.so
+-if (MUTTER326_FOUND)
+-  _pkgconfig_invoke("libmutter-1" MUTTER TYPELIB_DIR "" "--variable=typelibdir")
+-  set_target_properties(${WINGPANELINTERFACE} PROPERTIES LINK_FLAGS -Wl,-rpath,${MUTTER_TYPELIB_DIR})
+-elseif (MUTTER324_FOUND)
+-  _pkgconfig_invoke("libmutter-0" MUTTER TYPELIB_DIR "" "--variable=typelibdir")
+-  set_target_properties(${WINGPANELINTERFACE} PROPERTIES LINK_FLAGS -Wl,-rpath,${MUTTER_TYPELIB_DIR})
+-elseif (MUTTER322_FOUND)
+-  _pkgconfig_invoke("libmutter" MUTTER TYPELIB_DIR "" "--variable=typelibdir")
+-  set_target_properties(${WINGPANELINTERFACE} PROPERTIES LINK_FLAGS -Wl,-rpath,${MUTTER_TYPELIB_DIR})
+-endif ()
+-
+-install (TARGETS ${WINGPANELINTERFACE} DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/gala/plugins)
+--- src/wingpanel/CMakeLists.txt	2017-10-13 03:25:28.007664080 +0900
++++ src/wingpanel/CMakeLists.txt.new	2017-10-13 03:27:00.135900068 +0900
+@@ -121,8 +121,6 @@
+ set (DEPS_LIBRARIES ${DEPS_LIBRARIES} ${LIB_NAME})
+ add_subdirectory (src)
+ 
+-add_subdirectory (wingpanel-interface)
+-
+ if (BUILD_SAMPLE)
+   add_subdirectory (sample)
+ endif ()

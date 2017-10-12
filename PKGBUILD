@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r291.74e81f3
+pkgver=r321.d95e3a6
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
@@ -25,15 +25,15 @@ replaces=('wingpanel-standalone-bzr')
 source=('git+https://github.com/elementary/wingpanel.git'
         'minus-backgroundmanager.patch'
         'minus-galaplugin.patch'
-        'minus-gala-cmake.patch'
+        'minus-gala.patch'
         'y-is-broken-cogl.patch'
         'autohide-evbox.patch')
 sha256sums=('SKIP'
-            '0fd440cdb4b9871c5ee8812866b365e4a45b29813800345556db74429bacca3e'
-            '1f50f34a7d36fc8331c1080c42c38f8208e35f4551eed97705919d304d410c95'
-            '910130e7033db8874ed8d5e1734c6eb0ce75eed7ddf2620400c2a129cf05755d'
-            'df03ebb7fe08da77d51e6b96ab033b5c712530727d9fa2dd61420d2c7923fced'
-            'f187b0a8b4022b1d5c2222ac41717ea78b1138e20f27e261345e5dabd20e306c')
+            '92220350b702dcfa0586ff5400909c89173f75feb50847b7176bf5f9714a8a1b'
+            'cea553913c2f44ad73886642f01abd2b21bbccb19d8dc2eb271d89a39cb20dc7'
+            '47934e9aff119cedcfe7d184078ad60d3d715e07f1ca7cb1715e50b2e0c517e8'
+            'b1902c1d44ac546df63cd0224a7d2ef2cb6394ca556512c30c370d387db7bbab'
+            '3bb9fce8ba4834bfaad30fcf4dc22283814f8c8b0c90939f5f9279c8eb9a746f')
 
 pkgver() {
   cd wingpanel
@@ -44,26 +44,26 @@ pkgver() {
 prepare() {
   cd wingpanel
 
+  #Standalone patches
+  msg2 "minus background manager"
+  patch -Np2 < ../minus-backgroundmanager.patch
+  msg2 "minus gala plugin"
+  patch -Np2 < ../minus-galaplugin.patch
+  msg2 "minus gala"
+  patch -Np2 < ../minus-gala.patch
+
+  #autohide
+  #msg2 "autohide"
+  #patch -Np2 < ../autohide-evbox.patch
+
+  #Cogl can't be found when not using gala's cmake package; wtf?
+  msg2 "minus cogl"
+  patch -Np2 < ../y-is-broken-cogl.patch
+
   if [[ -d build ]]; then
     rm -rf build
   fi
   mkdir build
-
-  #Standalone patches
-  msg2 "minus bgm"
-  patch -Np2 < ../minus-backgroundmanager.patch
-  msg2 "minus gpg"
-  patch -Np2 < ../minus-galaplugin.patch
-  msg2 "minus gcm"
-  patch -Np2 < ../minus-gala-cmake.patch
-
-  #autohide
-  msg2 "autohide"
-  patch -Np2 < ../autohide-evbox.patch
-
-  #Cogl can't be found when not using gala's cmake package; wtf?
-  msg2 "minus cgl"
-  patch -Np2 < ../y-is-broken-cogl.patch
 }
 
 build() {
