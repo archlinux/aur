@@ -139,7 +139,7 @@ build() {
 # }
 
 package() {
-  msg 'runc binary'
+  msg2 'package runc binary'
   install -Dm755 "$GOPATH/src/github.com/opencontainers/runc/runc" "$pkgdir/usr/bin/runc"
   msg 'runc manpages'
   pushd "$srcdir/runc/man/man8" >/dev/null
@@ -148,21 +148,21 @@ package() {
     done
   popd
 
-  msg 'containerd binaries'
+  msg2 'package containerd binaries'
   pushd "$GOPATH/src/github.com/containerd/containerd/bin" >/dev/null
     for file in $(find . -type f -print); do
       install -Dm755 "$file" "$pkgdir/usr/bin/$file"
     done
   popd
 
-  msg 'docker-proxy binary'
+  msg2 'package docker-proxy binary'
   # (from libnetwork)
   install -Dm755 "$GOPATH/src/github.com/docker/libnetwork/bin/docker-proxy" "$pkgdir/usr/bin/docker-proxy"
 
-  # dockerd
-  pushd 'moby' >/dev/null
+  msg2 'package dockerd binary'
+  pushd "$srcdir/moby/bundles/dynbinary-daemon"
     _dockerver="$(cat VERSION)"
-    install -Dm755 "bundles/$_dockerver/dynbinary-daemon/dockerd-$_dockerver" "$pkgdir/usr/bin/dockerd"
+    install -Dm755 "dockerd-$_dockerver" "$pkgdir/usr/bin/dockerd"
   popd
 
   msg 'docker cli binary'
