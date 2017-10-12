@@ -1,7 +1,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=pmsg
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='Prompt notifications at certain intervals'
 arch=('any')
@@ -12,14 +12,18 @@ optdepends=('zsh: for zsh support'
             'fish: for fish support')
 depends=('python')
 makedepends=('setconf')
-source=('git+https://github.com/xyproto/pmsg.git#commit=05a1428774160f7f1801751e0d498bfe35f468a2')
+source=("git+https://github.com/xyproto/pmsg.git#tag=$pkgver")
 md5sums=('SKIP')
 
 prepare() {
-  setconf $pkgname/install.sh SOURCE_DIR=/usr/share/$pkgname
-  setconf $pkgname/install.sh PREFIX=/
-  setconf $pkgname/install.sh BIN_DIR=usr/bin
-  setconf $pkgname/install.sh INSTALL_BINARY=0
+  for opt in \
+    SOURCE_DIR=/usr/share/$pkgname \
+    PREFIX=/ \
+    BIN_DIR=usr/bin \
+    INSTALL_BINARY=0
+  do
+    setconf $pkgname/install.sh $opt
+  done
 }
 
 package() {
