@@ -2,18 +2,18 @@
 
 _tag=$(git ls-remote -t --refs https://github.com/mbunkus/mkvtoolnix.git | awk '{print $2}' | LC_ALL=C sort -bfV | tail -n1 | sed -n -e 's/^.*tags\///p')
 pkgname=mkvtoolnix-stable-git
-pkgver=15.0.0.r0.g07e5be07a
+pkgver=16.0.0.r0.g515b3b2fa
 pkgrel=1
 pkgdesc="MKVToolnix latest stable release with unit tests"
 arch=(x86 x86_64)
 url="https://www.bunkus.org/videotools/mkvtoolnix"
 license=('GPL')
-depends=('libmatroska' 'expat' 'flac' 'libvorbis' 'file' 'boost-libs' 'lzo' 'wxgtk' 'xdg-utils' 'desktop-file-utils' 'qt5-base' 'libogg' 'zlib' 'curl' 'libxkbcommon-x11')
+depends=('libmatroska' 'expat' 'flac' 'libvorbis' 'file' 'boost-libs' 'lzo' 'wxgtk' 'xdg-utils' 'desktop-file-utils' 'qt5-base' 'libogg' 'zlib' 'curl' 'libxkbcommon-x11' 'qt5-multimedia')
 makedepends=('libmatroska' 'flac' 'libvorbis' 'file' 'wxgtk' 'boost-libs' 'lzo' 'xdg-utils' 'boost' 'ruby' 'git' 'libxslt' 'po4a' 'docbook-xsl' 'gtest')
 provides=('mkvtoolnix')
 conflicts=('mkvtoolnix' 'mkvtoolnix-cli' 'mkvtoolnix-gui' 'mkvtoolnix-git')
 replaces=('mkvtoolnix')
-source=("git://github.com/mbunkus/mkvtoolnix.git#tag=$_tag")
+source=("git+https://github.com/mbunkus/mkvtoolnix.git#tag=$_tag")
 md5sums=('SKIP')
 
 
@@ -30,7 +30,7 @@ prepare() {
 build() {
 	cd "$srcdir/mkvtoolnix"
   ln -s -T "/usr/include/gtest" "$srcdir/mkvtoolnix/lib/gtest"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --disable-update-check
   rake
   cd "$srcdir/mkvtoolnix/tests/unit"
   rake
