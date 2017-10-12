@@ -3,13 +3,13 @@
 
 pkgname=nitrokey-app
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 _cppcodecver=61d9b044d6644293f99fb87dfadc15dcab951bd9
 pkgdesc="Nitrokey management application"
 arch=('i686' 'x86_64')
 url="https://www.nitrokey.com"
 license=('GPL3')
-depends=('qt5-base' 'hicolor-icon-theme' 'libnitrokey-git')
+depends=('qt5-base' 'hicolor-icon-theme' 'libnitrokey')
 makedepends=('cmake' 'qt5-tools')
 install=nitrokey-app.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Nitrokey/nitrokey-app/archive/v$pkgver.tar.gz"
@@ -26,8 +26,6 @@ prepare() {
   sed -i 's|DESTINATION ${UDEV_MAIN_DIR}|DESTINATION lib/udev/rules.d|' \
       CMakeLists.txt
 
-  rmdir libnitrokey
-  ln -s /usr/lib/libnitrokey .
   sed -i '/^add_subdirectory (libnitrokey)$/d' CMakeLists.txt
 
   sed -i 's|libnitrokey/LICENSE|/usr/share/licenses/libnitrokey/LICENSE|' \
@@ -36,7 +34,10 @@ prepare() {
   sed -i 's/^LIBNITROKEY= -lnitrokey-static$/LIBNITROKEY= -lnitrokey/' \
       nitrokey-app-qt5.pro
 
-  cd 3rdparty
+  cd libnitrokey
+  ln -s /usr/include/libnitrokey include
+
+  cd ../3rdparty
   rmdir cppcodec
   ln -s $srcdir/cppcodec-${_cppcodecver} cppcodec
 
