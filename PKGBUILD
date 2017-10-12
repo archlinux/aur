@@ -2,14 +2,14 @@
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 pkgbase=(harfbuzz-git)
 pkgname=(harfbuzz-git harfbuzz-icu-git)
-pkgver=1.4.5.r11.g7d64c0ef
+pkgver=1.5.1.r76.g4f9a83ec
 pkgrel=1
 pkgdesc="OpenType text shaping engine"
 arch=(i686 x86_64)
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 license=(MIT)
 makedepends=(ragel python2 glib2 freetype2 graphite cairo icu gobject-introspection)
-source=(git://github.com/behdad/harfbuzz.git)
+source=('git://github.com/behdad/harfbuzz.git')
 sha256sums=('SKIP')
 _gitname=harfbuzz
 
