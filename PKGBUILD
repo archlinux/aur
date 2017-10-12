@@ -1,26 +1,23 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=adjbacklight
-pkgver=7.3.2
+pkgver=8.0
 pkgrel=1
 pkgdesc="Convenient method for adjusting the backlight on your portable computer"
 arch=('x86_64' 'i686')
 url="https://github.com/maandree/adjbacklight"
-license=('GPL3')
+license=('custom:ISC')
 depends=('linux')
-makedepends=('texinfo' 'auto-auto-complete')
-install=adjbacklight.install
 source=(https://github.com/maandree/adjbacklight/archive/${pkgver}.tar.gz)
-sha256sums=(75b7760a2cda157b0a27d3d4290c73e6b4219d9b08a3b6f466e8486aa6be7d0a)
+sha256sums=(4df27ee6e01f9c0dae6ac0100b6f49e88aca13e4f3cee6c15944a96fed061840)
 
 
 build() {
   cd "${srcdir}/adjbacklight-${pkgver}"
-  make DESTDIR="${pkgdir}/"
+  make DESTDIR="${pkgdir}/" PREFIX=/usr
 }
 
 package() {
   cd "${srcdir}/adjbacklight-${pkgver}"
-  make DESTDIR="${pkgdir}/" install
+  make DESTDIR="${pkgdir}/" PREFIX=/usr install
 }
-
