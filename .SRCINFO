@@ -1,16 +1,14 @@
 pkgbase = python-xkbgroup
 	pkgdesc = Query and change XKB layout state
-	pkgver = 0.1.4.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/hcpl/xkbgroup
 	arch = any
 	license = MIT
 	makedepends = python
 	depends = python
-	source = https://github.com/hcpl/xkbgroup/archive/v0.1.4.3.tar.gz
-	source = xkbgroup.patch
-	md5sums = 82ed59597add176fa8b69835de83f841
-	md5sums = fb81fd181f54b9dd743d12da03f4be47
+	source = https://github.com/hcpl/xkbgroup/archive/v0.2.0.tar.gz
+	md5sums = ab49e9c66b73ae2d30d3dc17f8c8d197
 
 pkgname = python-xkbgroup
 
