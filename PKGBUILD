@@ -49,25 +49,31 @@ pkgver() {
 }
 
 prepare() {
+  export GOPATH="$srcdir/go"
+
+  msg2 'preparing directories'
   mkdir -p "$srcdir/go/src/github.com/docker"
   mkdir -p "$srcdir/go/src/github.com/moby"
   mkdir -p "$srcdir/go/src/github.com/containerd"
   mkdir -p "$srcdir/go/src/github.com/opencontainers"
-  export GOPATH="$srcdir/go"
 
-  # update specific commits used
+  msg2 'update specific commits for upstream repositories'
   # https://github.com/docker/docker/blob/master/hack/dockerfile/binaries-commits
   . "$srcdir/moby/hack/dockerfile/binaries-commits"
   pushd "$srcdir/runc" >/dev/null
+    msg2 'runc'
     git checkout -q "$RUNC_COMMIT"
   popd
   pushd "$srcdir/containerd" >/dev/null
+    msg2 'containerd'
     git checkout -q "$CONTAINERD_COMMIT"
   popd
   pushd "$srcdir/libnetwork" >/dev/null
+    msg2 'libnetwork'
     git checkout -q "$LIBNETWORK_COMMIT"
   popd
   pushd "$srcdir/cli" >/dev/null
+    msg2 'cli'
     git checkout -q "$DOCKERCLI_COMMIT"
   popd
 
