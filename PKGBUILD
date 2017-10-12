@@ -11,7 +11,7 @@ makedepends=('qt5-tools')
 source=("https://github.com/atmelcorp/sam-ba/archive/v$pkgver.tar.gz"
         "0001-Dont-install-thirdparty-libs.patch"
         "0002-Dont-rely-on-applicationDirPath.patch")
-md5sums=('45050cb8efabf12581524de76a2d9e40'
+md5sums=('fe1502362765716e4afe723442ab3744'
          '6b29a65bbc96b608d7628e8a25ae1f50'
          '2218a4d3c49cdfe9965da98840939926')
 
