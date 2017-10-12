@@ -165,9 +165,10 @@ package() {
     install -Dm755 "dockerd-$_dockerver" "$pkgdir/usr/bin/dockerd"
   popd
 
-  msg 'docker cli binary'
+  msg2 'package docker cli binary'
   install -Dm755 "$GOPATH/src/github.com/docker/cli/build/docker" "$pkgdir/usr/bin/docker"
-  msg 'docker cli manpages'
+
+  msg2 'package docker cli manpages'
   pushd "$srcdir/cli/man/man1" >/dev/null
     for i in *; do
       install -Dm644 "$i" "$pkgdir/usr/share/man/man8/$i"
