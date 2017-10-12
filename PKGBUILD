@@ -1,6 +1,6 @@
 # Maintainer: Paul Knopf <pauldotknopf@gmail.com>
 pkgname=darch
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 epoch=
 pkgdesc="A utility to that uses Docker to build stateless Arch images that can be booted bare-metal."
@@ -20,12 +20,10 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pauldotknopf/darch/releases/download/v$pkgver/darch-amd64.tar.gz")
-md5sums=('815b8c34f3ab94e25ecd7e402caef51c')
+md5sums=('b1ebe9c9fee9a37ceaca3abe14278283')
 noextract=()
 validpgpkeys=()
 package() {
-	install -d $pkgdir/usr/bin
-	install darch $pkgdir/usr/bin
-	install -d $pkgdir/etc/grub.d/
-	install grub-mkconfig-script $pkgdir/etc/grub.d/60_darch
+	# The tarball has all the directories setup correctly.
+	cp * -r $pkgdir
 }
