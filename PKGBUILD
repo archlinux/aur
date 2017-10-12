@@ -11,7 +11,7 @@
 
 pkgname=('llvm40' 'llvm40-libs' 'clang40')
 pkgver=4.0.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
