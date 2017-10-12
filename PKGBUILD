@@ -14,6 +14,7 @@ source=('eula.html')
 sha256sums=('988119d55691f5bdc91da81d31f2cc460de9c0d74312f4739f813ded7efdf03c')
 
 prepare() {
+  msg2 'Downloading from download-app.musixmatch.com...'
   curl 'https://download-app.musixmatch.com/' -A 'Linux x86_64' -D headers.txt -OJf
 }
 
