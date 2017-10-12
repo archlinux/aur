@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Package Tool."
 url='http://wiki.ros.org/rospack'
 
 pkgname='ros-lunar-rospack'
-pkgver='2.4.2'
+pkgver='2.4.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,11 +14,7 @@ ros_makedepends=(ros-lunar-cmake-modules
   ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  tinyxml2
-  gtest
-  pkg-config
-  boost
-  python2)
+  gtest)
 
 ros_depends=()
 depends=(${ros_depends[@]}
@@ -37,26 +33,23 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="rospack-release-release-lunar-rospack-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/lunar/rospack/${pkgver}-${_pkgver_patch}.tar.gz" "boost165.patch")
-sha256sums=('a72936e9aaa10a1a40d47e2c5b4d9d010d5041f58b2ee4760e280fc3afede92f'
-            '4666a04ad052f4ae17c92cd14ff4722aa17f85be5ccf6e01231403abe289f5d3')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/lunar/rospack/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('c1dca972942e40ffa58018f10dec25a8e33371dfd6350da2485e80fb02bf7046')
 
 build() {
-  cd ${srcdir}/${_dir}
-  patch -p1 < ../boost165.patch
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
