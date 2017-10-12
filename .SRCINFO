@@ -1,0 +1,14 @@
+pkgbase = pinentry-rofi
+	pkgdesc = Pinentry rofi-based bare implementation
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gist.github.com/759cbf956bea20d382a6128c641d2746.git
+	arch = any
+	depends = ruby
+	source = git+https://gist.github.com/759cbf956bea20d382a6128c641d2746.git
+	source = rofi.patch
+	md5sums = SKIP
+	md5sums = 4a4a8dd65f39aef30be31a278051971c
+
+pkgname = pinentry-rofi
+
