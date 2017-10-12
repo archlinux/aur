@@ -31,7 +31,7 @@ options=('!strip')
 source=('moby::git+https://github.com/moby/moby.git'
         'cli::git+https://github.com/docker/cli.git'
         'containerd::git+https://github.com/containerd/containerd.git'
-        'runc::git+https://github.com/docker/runc.git'
+        'runc::git+https://github.com/opencontainers/runc.git'
         'libnetwork::git+https://github.com/docker/libnetwork.git'
         'docker.install')
 md5sums=('SKIP'
@@ -61,19 +61,19 @@ prepare() {
   # https://github.com/docker/docker/blob/master/hack/dockerfile/binaries-commits
   . "$srcdir/moby/hack/dockerfile/binaries-commits"
   pushd "$srcdir/runc" >/dev/null
-    msg2 'runc'
+    msg3 'runc'
     git checkout -q "$RUNC_COMMIT"
   popd
   pushd "$srcdir/containerd" >/dev/null
-    msg2 'containerd'
+    msg3 'containerd'
     git checkout -q "$CONTAINERD_COMMIT"
   popd
   pushd "$srcdir/libnetwork" >/dev/null
-    msg2 'libnetwork'
+    msg3 'libnetwork'
     git checkout -q "$LIBNETWORK_COMMIT"
   popd
   pushd "$srcdir/cli" >/dev/null
-    msg2 'cli'
+    msg3 'cli'
     git checkout -q "$DOCKERCLI_COMMIT"
   popd
 
