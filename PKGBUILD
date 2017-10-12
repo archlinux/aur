@@ -1,6 +1,6 @@
 # Maintainer: Edison Ibañez <edison@opmbx.org>
 pkgname=sqlectron-gui
-pkgver=1.22.0
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="A simple and lightweight SQL client desktop with cross database and platform support."
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("Sqlectron.sh"
         "Sqlectron-512x512.png")
 source_x86_64=("https://github.com/sqlectron/$pkgname/releases/download/v$pkgver/Sqlectron-$pkgver.tar.gz")
 md5sums=('58802570c7d263582272aab558f9ce47'
-         '59f6894e35ab7ce3da5ee594fad41ed4'
+         'ff57c64abc7b2f8a5e2c384750312d59'
          '85d6ce586470159c1fc3722c0df19fa7'
          '3f2b8a5e1a3efa6fb2d40ff03f11475c'
          '2ead1b0701b8b251693f436b2a44ba87'
@@ -30,7 +30,7 @@ md5sums=('58802570c7d263582272aab558f9ce47'
          'b3e2568f1044efaa5113f1b14c51f377'
          'e1d936527e73ada838cd97b144c87174'
          'd68539a49b186bfdb4c461b0ee52442b')
-md5sums_x86_64=('6cffce057921e515ddfdeb8a0f34a90a')
+md5sums_x86_64=('4f954f9654d656cf1877e6f047357c03')
 
 depends=('libnotify')
 
