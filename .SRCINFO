@@ -1,0 +1,13 @@
+pkgbase = pscripts
+	pkgdesc = Noeljunior's pscripts: some handy scripts for users and sysadmins
+	pkgver = 0.1a
+	pkgrel = 1
+	url = https://github.com/Noeljunior/pscripts
+	arch = any
+	license = GPL
+	depends = git
+	source = pscripts::git+https://github.com/Noeljunior/pscripts
+	md5sums = SKIP
+
+pkgname = pscripts
+
