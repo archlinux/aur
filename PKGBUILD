@@ -2,13 +2,14 @@
 
 pkgname=yabar-git
 _pkgname=yabar
-pkgver=0.4.0.r145.g0a8d11a
+pkgver=0.4.0.r158.g7135437
 pkgrel=1
 pkgdesc="A modern and lightweight status bar for X window managers"
 arch=('i686' 'x86_64')
 url="https://github.com/geommer/yabar"
 license=('MIT')
 depends=('alsa-lib' 'pango' 'libconfig' 'xcb-util-wm' 'gdk-pixbuf2' 'wireless_tools')
+optdepends=('playerctl: playerctl integration')
 makedepends=('git' 'asciidoc')
 provides=('yabar')
 conflicts=('yabar')
@@ -23,8 +24,11 @@ pkgver() {
 
 build() {
   cd $_pkgname
-
-  make
+  if pkg-config --exists playerctl-1.0; then
+    make PLAYERCTL=1
+  else
+    make
+  fi
 }
 
 package() {
