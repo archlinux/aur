@@ -11,7 +11,7 @@ license=("APACHE")
 depends=("java-environment>=7")
 
 source=("https://bintray.com/artifact/download/vertx/downloads/vert.x-${pkgver}-full.tar.gz")
-sha1sums=("da39a3ee5e6b4b0d3255bfef95601890afd80709")
+sha256sums=("03abce899a6752069e0eff49c0bded3c71635bf3bcbb8b277c80ced029e5ffac")
 
 package() {
     install -d -m 755 ${pkgdir}/opt
