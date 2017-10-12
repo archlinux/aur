@@ -1,0 +1,16 @@
+pkgbase = tidyp
+	pkgdesc = Validates and outputs cleaned-up HTML.
+	pkgver = 1.04
+	pkgrel = 1
+	url = http://tidyp.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://github.com/downloads/petdance/tidyp/tidyp-1.04.tar.gz
+	source = https://raw.githubusercontent.com/petdance/tidyp/1.04/htmldoc/license.html
+	sha512sums = dc58f8deb5d9878bb76acba015c71e06e09000762e446110df680ba9654fb4848e8fbbb95b9573d0c1a2a267980389cb348b7342967924bccd51ec0db84322b6
+	sha512sums = 56efd9ceae13acaef2afeaa3fb39a333078d4aae5eceb1f0e09615f86db0f7739809f231858c6d8b91cbd659115f213ed2f88044c44f036155434a6561bb8c27
+
+pkgname = tidyp
+
