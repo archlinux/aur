@@ -1,7 +1,7 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmai.com>
 
 pkgname=xfce-theme-albatross-git
-pkgver=v1.7.4+1
+pkgver=1.7.4+1
 pkgrel=1
 pkgdesc="A dark, smooth Xfce theme, introduced in the release of Xubuntu 9.10"
 arch=('any')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "Albatross"
 #  echo $(git describe --always --abbrev=0).r$(git rev-list --count master) | sed 's|-|.|g' | sed 's|v||g'
-	echo "$(git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/+/' )"
+	echo "$(git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/+/' | sed 's/v//g' )"
 }
 
 package() {
