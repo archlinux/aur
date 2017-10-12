@@ -1,39 +1,27 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
-# NOTE:
-# To enable CUDA support you need a ffmpeg build that has been
-# compiled with CUDA (ffmpeg-full).
-# CUDA is x86_64 only and so it will not be available in i686 builds.
-
 pkgname=mpv-full-git
-pkgver=0.27.0.r227.g91ebc34344
-pkgrel=2
+pkgver=0.27.0.r228.gb4c1f0aae3
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url='http://mpv.io/'
 depends=(
     # official repositories:
-        'lcms2' 'libgl' 'libxss' 'libxinerama' 'libxv' 'libxkbcommon' 'wayland'
+        'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-        'libxrandr' 'jack' 'vapoursynth' 'libarchive' 'uchardet' 'zlib'
-        'vulkan-icd-loader'
+        'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
+        'openal' 'smbclient' 'vapoursynth' 'vulkan-icd-loader' 'zlib'
+        
     # AUR:
         'mujs' 'rsound' 'sndio' 'shaderc-git'
 )
-depends_i686=(
-    'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
-    'libbluray' 'sdl2' 'openal' 'ffmpeg'
-)
-depends_x86_64=(
-    # AUR:
-        'ffmpeg-full'
-)
-optdepends=('youtube-dl: for video-sharing websites playback')
-makedepends=(
-    'git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
-    'wayland-protocols'
-)
+optdepends=('youtube-dl: for video-sharing websites playback'
+            'nvidia-utils: for hardware accelerated video decoding with CUDA')
+makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
+             'wayland-protocols')
 provides=('mpv')
 conflicts=('mpv' 'mpv-git')
 options=('!emptydirs')
@@ -51,14 +39,6 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    
-    # Add CUDA to the build if architecture is x86_64
-    if [ "$CARCH" = 'x86_64' ] 
-    then
-        _cuda='--enable-cuda-hwaccel'
-    else
-        _cuda='--disable-cuda-hwaccel'
-    fi
     
     msg2 'Running bootstrap. Please wait...'
     ./bootstrap.py
@@ -166,7 +146,7 @@ build() {
         --disable-d3d-hwaccel \
         --disable-d3d9-hwaccel \
         --disable-gl-dxinterop-d3d9 \
-        "$_cuda" \
+        --enable-cuda-hwaccel \
         \
         --enable-tv \
         --enable-tv-v4l2 \
