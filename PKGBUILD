@@ -7,7 +7,11 @@ pkgdesc="Arduino SAM core for arduino Due"
 arch=('any')
 url="https://github.com/arduino/Arduino"
 license=('GPL')
-depends=('bossa')
+depends=()
+optdepends=(
+	'bossa: uploading support'
+	'arm-none-eabi-gcc: compilation support'
+)
 options=(!strip !emptydirs)
 source=(
 	"https://downloads.arduino.cc/cores/sam-${pkgver}.tar.bz2"
