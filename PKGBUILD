@@ -4,7 +4,7 @@
 
 pkgname=rssguard
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple (yet powerful) Qt5 feed reader."
 arch=('i686' 'x86_64')
 url="https://github.com/martinrotter/rssguard/"
@@ -26,4 +26,7 @@ build() {
 package() {
   cd $pkgname-$pkgver
   make INSTALL_ROOT="$pkgdir/" install
+
+  # install rssguard icon manually
+  install -Dm644 resources/graphics/rssguard.png "$pkgdir/usr/share/pixmaps/rssguard.png"
 }

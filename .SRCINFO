@@ -1,7 +1,7 @@
 pkgbase = rssguard
 	pkgdesc = A simple (yet powerful) Qt5 feed reader.
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/martinrotter/rssguard/
 	arch = i686
 	arch = x86_64
