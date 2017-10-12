@@ -1,7 +1,7 @@
 # Maintainer: Pablo Lezaeta <prflr88 arro'a gmail puntocom>
 
 pkgname=xfce-theme-orion-git
-pkgver=v1.5+0
+pkgver=1.5+0
 pkgrel=1
 pkgdesc="Modern light theme. It supports GNOME, Xfce and Openbox."
 arch=("any")
@@ -18,7 +18,7 @@ md5sums=("SKIP")
 pkgver() {
 	cd "${srcdir}/Orion"
 #	echo $(git describe --always --abbrev=0).r$(git rev-list --count master) | sed 's|-|.|g' | sed 's|v||g'
-	echo "$(git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/+/' )"
+	echo "$(git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/+/' | sed 's/v//g' )"
 }
 
 package() {
