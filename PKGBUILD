@@ -53,8 +53,8 @@ prepare() {
   patch -Np2 < ../minus-gala.patch
 
   #autohide
-  #msg2 "autohide"
-  #patch -Np2 < ../autohide-evbox.patch
+  msg2 "autohide"
+  patch -Np2 < ../autohide-evbox.patch
 
   #Cogl can't be found when not using gala's cmake package; wtf?
   msg2 "minus cogl"
