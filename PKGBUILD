@@ -1,6 +1,7 @@
 # Maintainer: Reza Farrahi M <imriss@yahoo.com>
 
 pkgname=jgnash-git
+pkgnameorg=jgnash
 pkgver=2.33.1
 pkgrel=1
 pkgdesc="Cross platform personal finance application written in Java - Build from GitHub"
@@ -17,5 +18,15 @@ md5sums=('8b1e987b2f826884877813f79e0d08ed')
 prepare() {
   cd "${srcdir}"/jgnash-master
   gradle clean DistTar
+}
+
+package() {
+  cd "${srcdir}"/jgnash-master/jgnash-fx/build/distributions
+  tar -xvf jGnash-$pkgver.tar
+  cd jGnash-$pkgver/
+
+  install -d "${pkgdir}"/usr/share/java/$pkgnameorg
+  cp -r * "${pkgdir}"/usr/share/java/$pkgnameorg
+
 }
 
