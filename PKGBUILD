@@ -1,4 +1,4 @@
-# Maintainer: Dan McCurry <dan.mccurry at linux dot com>
+# Maintainer: Dan McCurry <dan.mc at protonmail dot com>
 
 pkgname=libsdrplay
 pkgver=2.10.2
