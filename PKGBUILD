@@ -11,7 +11,7 @@
 
 pkgname=('llvm40' 'llvm40-libs' 'clang40')
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
@@ -21,6 +21,7 @@ source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
         https://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz{,.sig}
         0001-GCC-compatibility-Ignore-the-fno-plt-flag.patch
         0002-Enable-SSP-and-PIE-by-default.patch
+        0003-Fix-sanitizer-build-against-latest-glibc.patch
         disable-llvm-symbolizer-test.patch)
 sha256sums=('da783db1f82d516791179fe103c71706046561f7972b18f0049242dee6712b51'
             'SKIP'
@@ -28,6 +29,7 @@ sha256sums=('da783db1f82d516791179fe103c71706046561f7972b18f0049242dee6712b51'
             'SKIP'
             'ed4a1c3c73b31421caa0ba50d14cabc16de676a88f045d06b207bbb3006963ac'
             '79f1a409700a83d983d7237a907aeddf342c28aa810b87b28ee27b8c5560644a'
+            '0afff7e5cf0f6df596517f63a9a9f085eab3b53f42a1eb14bbd83861c36c9fd7'
             '6fff47ab5ede79d45fe64bb4903b7dfc27212a38e6cd5d01e60ebd24b7557359')
 validpgpkeys=('11E521D646982372EB577A1F8F0871F202119294')
 
@@ -44,6 +46,10 @@ prepare() {
   # Enable SSP and PIE by default
   patch -Np1 -d tools/clang < ../0001-GCC-compatibility-Ignore-the-fno-plt-flag.patch
   patch -Np1 -d tools/clang < ../0002-Enable-SSP-and-PIE-by-default.patch
+
+  # Fix sanitizer build against latest glibc
+  # https://reviews.llvm.org/D35246
+  patch -Np0 -d projects/compiler-rt < ../0003-Fix-sanitizer-build-against-latest-glibc.patch
 }
 
 build() {
