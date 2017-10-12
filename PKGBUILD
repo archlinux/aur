@@ -7,7 +7,7 @@
 
 pkgname=murmur-snapshot-ice
 pkgver=1.3.0_2569_gd196a4b
-pkgrel=2
+pkgrel=3
 pkgdesc="The voice chat application server for Mumble (development snapshot)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.mumble.info/wiki/"
@@ -58,5 +58,5 @@ package() {
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     install -Dm644 src/murmur/Murmur.ice ${pkgdir}/usr/share/murmur/Murmur.ice
     install -Dm644 ${srcdir}/murmur.tmpfilesd ${pkgdir}/usr/lib/tmpfiles.d/murmur.conf
-    install -dm644 ${srcdir}/murmur.sysusers ${pkgdir}/usr/lib/sysusers.d/murmur.conf
+    install -Dm644 ${srcdir}/murmur.sysusers ${pkgdir}/usr/lib/sysusers.d/murmur.conf
 }
