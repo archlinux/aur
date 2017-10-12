@@ -2,14 +2,14 @@
 
 pkgname=kubelet-bin
 pkgdesc="Kubernetes.io kubelet binary"
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 arch=('x86_64')
 url="http://kubernetes.io"
 license=('apache')
 conflicts=('kubernetes')
-source_x86_64=(https://packages.cloud.google.com/apt/pool/kubelet_1.8.0-00_amd64_00b7c77c924d654c7def52c83cfeb9a3d1836c1e7b40683c3fe8207b0bd299d1.deb)
-sha256sums_x86_64=('00b7c77c924d654c7def52c83cfeb9a3d1836c1e7b40683c3fe8207b0bd299d1')
+source_x86_64=(https://packages.cloud.google.com/apt/pool/kubelet_1.8.1-00_amd64_c0f1902d204f6741eff08560120bfe193b992596068158a2042988203132cd51.deb)
+sha256sums_x86_64=('c0f1902d204f6741eff08560120bfe193b992596068158a2042988203132cd51')
 
 package() {
   tar -vxf data.tar.xz
