@@ -1,7 +1,7 @@
 # Maintainer: Gaute Hope <eg@gaute.vetsj.com>
 _pkgname=astroid
 pkgname=$_pkgname-git
-pkgver=v0.10.1.r29.g6d78b7f
+pkgver=v0.10.2.r0.gaa8789f
 pkgrel=1
 epoch=
 pkgdesc="a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others"
@@ -28,7 +28,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/astroid"
-  meson build --prefix=/usr -Dbuildtype=release
+  meson build --prefix=/usr --buildtype release
   cd build
   ninja
 }
