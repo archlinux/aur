@@ -3,7 +3,7 @@
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-binutils
 pkgver=2.29
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=(i686 x86_64)
 license=(GPL)
@@ -32,7 +32,6 @@ build() {
     --enable-gold=default \
     --enable-plugins
 
-  make configure-host
   make
 }
 
