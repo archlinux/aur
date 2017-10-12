@@ -1,4 +1,4 @@
-# Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
+# Maintainer: Iván Ruvalcaba <mario.i.ruvalcaba[at]gmail[dot]com>
 # Contributor: cesasol <cesasol at hotmail dot com>
 # Forked from @xenom PKGBUILD, contributor of firefox-nightly
 
@@ -13,8 +13,8 @@ _lang=es-MX
 pkgname="${_name}-${_channel}-${_lang,,}"
 pkgdesc="Standalone web browser from mozilla.org, developer build (${_lang})"
 url="http://www.mozilla.org/projects/firefox"
-pkgver=57.0b5.20171004
-_version=57.0b5
+pkgver=57.0b7.20171012
+_version=57.0b7
 pkgrel=1
 arch=('i686' 'x86_64')
 conflicts=('firefox-developer')
