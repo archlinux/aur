@@ -11,7 +11,7 @@ license=('LGPL' 'GPL')
 depends=('libidl2')
 makedepends=('gtk-doc')
 options=('!makeflags' 'staticlibs')
-url="http://www.gnome.org"
+url="https://projects.gnome.org/ORBit2/"
 source=(https://download.gnome.org/sources/ORBit2/2.14/ORBit2-${pkgver}.tar.bz2
         git-fixes.patch)
 sha256sums=('55c900a905482992730f575f3eef34d50bda717c197c97c08fa5a6eafd857550'
