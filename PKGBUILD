@@ -1,6 +1,6 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld_fr>
 pkgname=safeeyes
-pkgver=1.2.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A Linux alternative for EyeLeo"
 arch=("any")
@@ -10,14 +10,14 @@ depends=("python"
          "hicolor-icon-theme"
          "libappindicator-gtk3"
          "python-xlib"
-         "python-pyaudio"
          "python-psutil"
          "python-babel"
          "python-dbus"
+         "alsa-utils"
          "xorg-xprop"
          "xprintidle")
 source=(safeeyes-$pkgver.tar.gz::"https://github.com/slgobinath/SafeEyes/archive/v$pkgver.tar.gz")
-sha1sums=('0f10b298116e62fce79fe50dfe4f6af738d09c36')
+sha1sums=('3e5e0d848ca70a16c0534861d75ed63afdf4f6f7')
 
 package() {
     cd "$srcdir/SafeEyes-$pkgver"
