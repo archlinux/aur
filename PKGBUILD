@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=0.35dev.git20170803
+pkgver=0.35dev.git20171012
 pkgrel=1
 arch=('any')
 pkgdesc='VHDL simulator - GCC flavour'
@@ -16,17 +16,17 @@ makedepends=('gcc-ada' 'git')
 install=ghdl.install
 options=(!emptydirs staticlibs)
 
-_gccver=7.1.0
+_gccver=7.2.0
 _islver=0.18
 
 source=(
 	"ghdl::git://github.com/tgingold/ghdl.git"
-	"ftp://ftp.gnu.org/gnu/gcc/gcc-${_gccver}/gcc-${_gccver}.tar.bz2"
+	"ftp://ftp.gnu.org/gnu/gcc/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
 	"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 )
 md5sums=(
 	'SKIP'
-	'6bf56a2bca9dac9dbbf8e8d1036964a8'
+	'ff370482573133a7fcdd96cd2f552292'
 	'11436d6b205e516635b666090b94ab32'
 )
 
