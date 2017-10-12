@@ -1,35 +1,25 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
-# NOTE:
-# To enable CUDA support you need a ffmpeg build that has been
-# compiled with CUDA (ffmpeg-full).
-# CUDA is x86_64 only and so it will not be available in i686 builds.
-
 _srcname=mpv
 pkgname=mpv-full
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url='http://mpv.io/'
 depends=(
     # official repositories:
-        'lcms2' 'libgl' 'libxss' 'libxinerama' 'libxv' 'libxkbcommon' 'wayland'
+        'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-        'libxrandr' 'jack' 'vapoursynth' 'libarchive' 'uchardet'
+        'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
+        'openal' 'smbclient' 'vapoursynth' 'vulkan-icd-loader' 'zlib'
     # AUR:
         'mujs' 'rsound' 'sndio'
 )
-depends_i686=(
-    'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
-    'libbluray' 'sdl2' 'openal' 'ffmpeg'
-)
-depends_x86_64=(
-    # official repositories:
-        'ffmpeg-full'
-)
-optdepends=('youtube-dl: for video-sharing websites playback')
+optdepends=('youtube-dl: for video-sharing websites playback'
+            'nvidia-utils: for hardware accelerated video decoding with CUDA')
 makedepends=('mesa' 'python-docutils' 'ladspa')
 provides=('mpv')
 conflicts=('mpv' 'mpv-git' 'mpv-full-git')
@@ -39,7 +29,6 @@ source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcnam
 sha256sums=('341d8bf18b75c1f78d5b681480b5b7f5c8b87d97a0d4f53a5648ede9c219a49c'
             '609e0530f1b0cdb910dcffb5f62bf55936540e24105ce1b2daf1bd6291a7d58a')
 
-
 prepare() {
     cd "${_srcname}-${pkgver}"
     patch -Np1 -i "${srcdir}/0001-opengl-backend-support-multiple-backends.patch"
@@ -47,14 +36,6 @@ prepare() {
 
 build() {
     cd "${_srcname}-${pkgver}"
-    
-    # Add CUDA to the build if architecture is x86_64
-    if [ "$CARCH" = 'x86_64' ] 
-    then
-        _cuda='--enable-cuda-hwaccel'
-        else
-        _cuda='--disable-cuda-hwaccel'
-    fi
     
     msg2 'Running bootstrap. Please wait...'
     ./bootstrap.py
@@ -161,7 +142,7 @@ build() {
         --disable-d3d-hwaccel-new \
         --disable-d3d9-hwaccel \
         --disable-gl-dxinterop-d3d9 \
-        "$_cuda" \
+        --enable-cuda-hwaccel \
         \
         --enable-tv \
         --enable-tv-v4l2 \
