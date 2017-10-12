@@ -19,6 +19,7 @@ makedepends=('cmake' 'libffi' 'python2' 'libedit')
 options=('staticlibs')
 source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
         https://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz{,.sig}
+        https://releases.llvm.org/$pkgver/compiler-rt-$pkgver.src.tar.xz{,.sig}
         0001-GCC-compatibility-Ignore-the-fno-plt-flag.patch
         0002-Enable-SSP-and-PIE-by-default.patch
         0003-Fix-sanitizer-build-against-latest-glibc.patch
@@ -26,6 +27,8 @@ source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
 sha256sums=('da783db1f82d516791179fe103c71706046561f7972b18f0049242dee6712b51'
             'SKIP'
             '61738a735852c23c3bdbe52d035488cdb2083013f384d67c1ba36fabebd8769b'
+            'SKIP'
+            'a3c87794334887b93b7a766c507244a7cdcce1d48b2e9249fc9a94f2c3beb440'
             'SKIP'
             'ed4a1c3c73b31421caa0ba50d14cabc16de676a88f045d06b207bbb3006963ac'
             '79f1a409700a83d983d7237a907aeddf342c28aa810b87b28ee27b8c5560644a'
@@ -38,6 +41,7 @@ prepare() {
   mkdir build
 
   mv "$srcdir/cfe-$pkgver.src" tools/clang
+  mv "$srcdir/compiler-rt-$pkgver.src" projects/compiler-rt
 
   # Disable test that fails when compiled as PIE
   # https://bugs.llvm.org/show_bug.cgi?id=31870
@@ -74,6 +78,8 @@ build() {
 
   # Disable automatic installation of components that go into subpackages
   sed -i '/clang\/cmake_install.cmake/d' tools/cmake_install.cmake
+  sed -i '/extra\/cmake_install.cmake/d' tools/clang/tools/cmake_install.cmake
+  sed -i '/compiler-rt\/cmake_install.cmake/d' projects/cmake_install.cmake
 }
 
 check() {
@@ -90,11 +96,9 @@ package_llvm40() {
 
   make -C build DESTDIR="$pkgdir" install
 
-  # The runtime library goes into llvm40-libs
-  mv -f "$pkgdir"/usr/lib/libLLVM-*.so "$srcdir"
-
-  # Remove files which conflict with llvm-libs
-  rm "$pkgdir"/usr/lib/{LLVMgold,lib{LLVM,LTO}}.so
+  # The runtime libraries go into llvm-libs
+  mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO}*.so* "$srcdir"
+  mv -f "$pkgdir"/usr/lib/LLVMgold.so "$srcdir"
 
   install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
@@ -104,7 +108,10 @@ package_llvm40-libs() {
   depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses')
 
   install -d "$pkgdir/usr/lib"
-  cp -P "$srcdir"/libLLVM-*.so "$pkgdir/usr/lib/"
+  cp -P \
+    "$srcdir"/lib{LLVM,LTO}*.so* \
+    "$srcdir"/LLVMgold.so \
+    "$pkgdir/usr/lib/"
 
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -121,6 +128,7 @@ package_clang40() {
   cd "$srcdir/llvm-$pkgver.src"
 
   make -C build/tools/clang DESTDIR="$pkgdir" install
+  make -C build/projects/compiler-rt DESTDIR="$pkgdir" install
 
   install -Dm644 tools/clang/LICENSE.TXT \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
