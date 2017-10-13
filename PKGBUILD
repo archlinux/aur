@@ -6,7 +6,7 @@
 
 pkgname=armory
 pkgver=0.96.3.99
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-featured Bitcoin wallet management application"
 arch=('i686' 'x86_64')
 url="https://github.com/goatpig/BitcoinArmory"
@@ -74,6 +74,9 @@ package() {
 
   mkdir -p "$pkgdir/opt"
   cp -R "$srcdir/${pkgname}_${pkgver}-src/." "$pkgdir/opt/$pkgname/"
+
+  mkdir -p "$pkgdir/usr/local/bin"
+  ln -s "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/local/bin/$pkgname"
 
   rm -rf "$pkgdir/opt/$pkgname/cppForSwig/"
   rm -rf "$pkgdir/opt/$pkgname/.git/"
