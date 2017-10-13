@@ -8,7 +8,7 @@ url="https://github.com/maandree/alarm"
 arch=(i686 x86_64)
 license=(custom:ISC)
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(c5f4f3f7ae975f4f64093eed85cc838cd43ab7af1773f250597de36ba0c3c68d)
+sha256sums=(c39eec06fd7678acfedaffbedcdf00e95744dab48c97e0ca1055a9ea2164537a)
 
 build() {
     cd "${srcdir}/alarm-${pkgver}"
