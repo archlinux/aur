@@ -1,11 +1,11 @@
 # Maintainer: Geoffrey Frogeye <geoffrey@frogeye.fr>
 pkgname=mercpcl-git
-pkgver=r8.a3f64c4
+pkgver=r9.ce3d815
 pkgrel=1
 pkgdesc="Command Line Mercury FPGA Programmer"
 arch=('i686' 'x86_64')
 url="https://github.com/cr1901/mercpcl"
-license=('unknown')
+license=('GPL3')
 depends=('libftdi-compat' 'libusb')
 makedepends=('git')
 provides=("${pkgname%-git}")
