@@ -1,0 +1,27 @@
+pkgbase = python-root_numpy
+	pkgdesc = The interface between ROOT and NumPy
+	pkgver = 4.7.3
+	pkgrel = 1
+	url = https://arogozhnikov.github.io/hep_ml/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	makedepends = cython2
+	makedepends = cython
+	makedepends = python2-numpy
+	makedepends = python-numpy
+	makedepends = root
+	options = !emptydirs
+	source = https://github.com/scikit-hep/root_numpy/archive/4.7.3.zip
+	sha256sums = 62f467ffad6608566c943b8dffea212e12caccc96155e81ba451a1034adf1f33
+
+pkgname = python2-root_numpy
+	depends = python2-numpy
+	depends = root
+
+pkgname = python-root_numpy
+	depends = python-numpy
+	depends = root
+
