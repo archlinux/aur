@@ -6,13 +6,13 @@
 
 pkgname=armory
 pkgver=0.96.3.99
-pkgrel=2
+pkgrel=3
 pkgdesc="Full-featured Bitcoin wallet management application"
 arch=('i686' 'x86_64')
 url="https://github.com/goatpig/BitcoinArmory"
 license=('AGPL3' 'MIT')
 depends=('crypto++' 'swig' 'qt4' 'python2' 'python2-twisted' 'python2-pyqt4' 'python2-bsddb' 'python2-psutil')
-makedepends=('git' 'gcc' 'make')
+makedepends=('gcc' 'make')
 optdepends=('bitcoin-daemon: Communicate with the Bitcoin network')
 provides=('armory')
 conflicts=('armory' 'armory-git' 'armory-bin' 'armory-goatpig-git')
@@ -42,8 +42,6 @@ check() {
 
 prepare() {
   cd "$srcdir/${pkgname}_${pkgver}-src"
-
-  git submodule update --init
 
   ## Get Python2 Version
   _py2longver=$(pacman -Qi python2 | grep "Version" | sed 's/^Version\s*:\s//')
