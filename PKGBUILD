@@ -3,9 +3,9 @@
 
 pkgname=balena
 pkgver=17.06.rev1
-pkgrel=1
+pkgrel=2
 epoch=1
-pkgdesc='Pack, ship and run any application as a lightweight container'
+pkgdesc='A Moby-based container engine for IoT'
 arch=('x86_64' 'i686')
 url='https://www.balena.io/'
 license=('Apache')
