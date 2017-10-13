@@ -2,18 +2,18 @@
 
 pkgname='perl-test-www-mechanize'
 _pkgname='Test-WWW-Mechanize'
-pkgver='1.44'
-pkgrel='2'
+pkgver='1.48'
+pkgrel='1'
 pkgdesc="Testing-specific WWW::Mechanize subclass"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.008' 'perl-carp-assert-more' 'perl-html-tree' 'perl-http-server-simple>=0.42' 'perl-libwww' 'perl-test-longstring>=0.15' 'perl-uri' 'perl-www-mechanize>=1.68')
-makedepends=()
+depends=('perl>=5.008' 'perl-carp-assert-more' 'perl-html-parser' 'perl-html-tree' 'perl-http-server-simple>=0.42' 'perl-libwww' 'perl-test-longstring>=0.15' 'perl-uri' 'perl-www-mechanize>=1.68')
+makedepends=('perl-cgi')
 url='http://search.cpan.org/dist/Test-WWW-Mechanize'
 source=("http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('fd3e4fe5b6adc66470752dd261d62542')
-sha512sums=('ab6f8c210a42ef14cd83bc4644a338f76d2e0c908855fe4fbf03b2dc3376476e418b5e71a080cf889b0c6a8f20185def1b54568e1cb2ba130fe484516614393d')
+md5sums=('187d487b8ad71f8c94916365b7ad28ac')
+sha512sums=('90a1d365479245d159ba7aa954bb01b617f1526423a00b41f3347e0e708a3eb79f0ba5a20315e74032d817154e52ef6178571528bcc183e38a9c53577ef8235d')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -38,7 +38,7 @@ check() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
