@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/vaab/colour"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 # autogen.sh requires git metadata, so a tarball isn't useful.
 source=("git+https://github.com/vaab/$_pyname#tag=$pkgver")
 md5sums=('SKIP')
