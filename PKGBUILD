@@ -4,7 +4,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=173.2941.3
+_buildver=173.3188.29
 _pkgver=2017.3
 pkgver="${_pkgver}.${_buildver}"
 pkgrel=1
@@ -34,7 +34,7 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
 provides=("pycharm" "pycharm-professional")
 source=("https://download.jetbrains.com/python/pycharm-professional-${_buildver}.tar.gz"
 	"${pkgname}.desktop")
-sha256sums=("155040200e6e0c5f93f8697afebb6ec0470ba74d5010fe40fe6c65f232639cc6"
+sha256sums=("6f5d56ad71eaeb99887b8be02031e680b95a18aa59bcfa7cd25ad43d282ff2f2"
 	    "aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
 
 build() {
