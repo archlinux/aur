@@ -7,10 +7,10 @@
 #_qmake_args="CONFIG+=debug"
 _building=true
 pkgname=qtcreator-prerelease
-_pkgvermajmin=4.4
+_pkgvermajmin=4.5
 pkgver=${_pkgvermajmin}.0
-_verpostfix=""
-pkgrel=4
+_verpostfix="beta1"
+pkgrel=1
 _pkgver=${pkgver}
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
@@ -38,7 +38,7 @@ optdepends=('qbs'
             'valgrind: analyze support')
 makedepends=('qbs' 'clang' 'qt5-base')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha256sums=('8c97d40a98ceb5dcff7f56668b0942d7a31821439fa76022c0145775c55a6202')
+sha256sums=('4dff363bae87c8a6899bc8238f9c543b641e9d2fb317dde80e7a84291b75c47f')
 
 _qmake_cmd=qmake
 _tmp_dir=$(mktemp -d)
@@ -52,7 +52,7 @@ fi
 
 prepare() {
   cd ${srcdir}/${_filename}
-  patch -p1 < ${startdir}/0001-Remove-Qt-Creator-making-several-hostile-platform-as.patch
+  patch -p1 < ${startdir}/0001-Fix-linux-breaking-shit.patch
 }
 
 build() {

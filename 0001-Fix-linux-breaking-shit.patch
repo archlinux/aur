@@ -1,9 +1,9 @@
-From 984086a4b544991fb6e9b32fc992c8000793086d Mon Sep 17 00:00:00 2001
+From 6734dc2ff83d4884ee22a679d76618e2f0ca7807 Mon Sep 17 00:00:00 2001
 From: Donald Carr <d@chaos-reins.com>
-Date: Tue, 26 Sep 2017 12:51:06 -0700
-Subject: [PATCH] Remove plethora of Qt Creator platform hacks
+Date: Thu, 12 Oct 2017 20:33:34 -0700
+Subject: [PATCH] Fix linux breaking shit
 
-Change-Id: If147e62c63a326e5316f3f7ba22f8790ca8c66f6
+Change-Id: I8679e1767b6f12eab871a70a4822442abc37aece
 ---
  src/app/main.cpp | 10 ----------
  1 file changed, 10 deletions(-)
@@ -38,5 +38,5 @@ index 7235796e3f..fbf5166c46 100644
  
      setHighDpiEnvironmentVariable();
 -- 
-2.14.1
+2.14.2
 
