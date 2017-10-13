@@ -2,7 +2,7 @@
 
 _pkgname=fabric
 pkgname=hyperledger-${_pkgname}
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability"
 arch=(x86_64)
@@ -39,4 +39,4 @@ package() {
 
 }
 
-md5sums=('c1b9c961a9ccc339c9d205b58ebe42c2')
+md5sums=('f2bb35c77b4a4070f017b723884a2761')
