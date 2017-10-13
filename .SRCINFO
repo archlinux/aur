@@ -117,6 +117,7 @@ pkgbase = ttf-google-fonts-git
 	conflicts = ttf-source-sans-pro
 	conflicts = ttf-ubuntu-font-family
 	conflicts = ttf-vollkorn
+	conflicts = ttf-arabeyes-fonts
 	source = git+https://github.com/google/fonts.git
 	sha512sums = SKIP
 
