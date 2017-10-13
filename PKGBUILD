@@ -8,7 +8,7 @@ url="http://gnunet.org"
 license=('GPL3')
 conflicts=('gnunet-gtk')
 provides=('gnunet-gtk')
-depends=('gnunet-git' 'gtk3' 'glade')
+depends=('gnunet-git' 'gtk3' 'libglade')
 source=('git+https://gnunet.org/git/gnunet-gtk.git')
 md5sums=('SKIP')
 
