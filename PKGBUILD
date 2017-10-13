@@ -2,7 +2,7 @@
 # Contributor: Pieter Kokx <pieter@kokx.nl>
 # Contributor: Patrick Glandien <patrick@synix.io>
 pkgname=armory-git
-pkgver=v0.96.3.r0.g2b65ac06
+pkgver=v0.96.3.99.r0.g1c7f3e91
 pkgrel=1
 pkgdesc="Full-featured Bitcoin wallet management application"
 arch=('i686' 'x86_64')
