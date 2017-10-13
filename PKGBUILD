@@ -1,6 +1,8 @@
+# Maintainer: Oliver Paschke <oli.paschke@gmail.com>
+
 pkgname=tt-rss-theme-feedly-git
 _gitname=tt-rss-feedly-theme
-pkgver=r267.c91d4a6
+pkgver=r307.a177292
 pkgrel=1
 pkgdesc="Feedly theme for Tiny Tiny RSS"
 arch=('any')
@@ -11,7 +13,7 @@ makedepends=('git')
 provides=('tt-rss-theme-feedly')
 conflicts=('tt-rss-theme-feedly')
 source=('git+https://github.com/levito/tt-rss-feedly-theme.git')
-md5sums=('SKIP') #generate with 'makepkg -g'
+md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
@@ -22,6 +24,6 @@ package() {
   cd "$_gitname"
   install -d -m755 "$pkgdir/usr/share/webapps/tt-rss/themes/"
   install -D -m644 feedly.css "$pkgdir/usr/share/webapps/tt-rss/themes/"
+  install -D -m644 feedly-night.css "$pkgdir/usr/share/webapps/tt-rss/themes/"
   cp -r feedly/ "$pkgdir/usr/share/webapps/tt-rss/themes/"
 }
-
