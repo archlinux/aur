@@ -1,23 +1,15 @@
 pkgbase = emacs26-git
-	pkgdesc = GNU Emacs. Emacs 26 development and maintenance branch.
-	pkgver = 25.1.50.r127001
+	pkgdesc = GNU Emacs. Emacs 26 development and maintenance branch. Dummy package.
+	pkgver = 26.0.90.130765
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
-	depends = gpm
-	depends = giflib
-	depends = m17n-lib
-	depends = desktop-file-utils
-	depends = alsa-lib
-	depends = imagemagick
-	depends = gtk3
+	depends = emacs-git
 	provides = emacs
 	conflicts = emacs
-	source = emacs-git::git://git.savannah.gnu.org/emacs.git
-	md5sums = SKIP
+	source = read_this.txt
 
 pkgname = emacs26-git
 
