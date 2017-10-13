@@ -1,0 +1,14 @@
+pkgbase = libdvd-audio
+	pkgdesc = A C library for extracting audio from DVD-Audio discs.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://libdvd-audio.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/libdvd-audio/libdvd-audio-1.0.0.tar.gz
+	sha512sums = b0a19670b07d9bbc3622ecd0d50b2ead56f1d7b2c9c3082a02f7cee75532fd333e1ebd5fafeeb431d2427c2dfcebdb9ffb03fb3b6b4d6ce6f307e0333e5beb64
+
+pkgname = libdvd-audio
+
