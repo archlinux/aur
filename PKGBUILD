@@ -74,7 +74,8 @@ conflicts=('adobe-source-code-pro-fonts'
            'ttf-source-code-pro'
            'ttf-source-sans-pro'
            'ttf-ubuntu-font-family'
-           'ttf-vollkorn')
+           'ttf-vollkorn'
+           'ttf-arabeyes-fonts')
 provides=("${conflicts[@]}" 'ttf-font')
 source=("git+${url}.git")
 sha512sums=('SKIP')
