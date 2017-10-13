@@ -3,7 +3,7 @@
 
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
-pkgver=1.19.4 # https://lists.x.org/archives/xorg/2017-October/058926.html
+pkgver=1.19.5 # https://lists.x.org/archives/xorg/2017-October/058940.html
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
@@ -25,7 +25,7 @@ validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3'
               '995ED5C8A6138EB0961F18474C09DD83CAAA50B2')
-sha256sums=('aa758acea91deaf1f95069ddc5ea3818e13675fb14fef40ad1b3d0b2bf03c9a8'
+sha256sums=('18fffa8eb93d06d2800d06321fc0df4d357684d8d714315a66d8dfa7df251447'
             'SKIP'
             '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
             'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
