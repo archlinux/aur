@@ -23,7 +23,7 @@ sha1sums=('3b11071d8314e656c316d31527b4150624931871'
 package() {
     cd "$srcdir"
 
-    #install -D -m644 "${_pkgfolder}"/licenses/* "${pkgdir}/usr/share/licenses/${pkgname}"
+    #install -D -m644 "${_pkgfolder}"/licenses/* "${pkgdir}/usr/share/licenses/${pkgname}" # licenses are in /opt/smartgit/licenses
     mkdir -p "${pkgdir}"/opt
     mv "${_pkgfolder}" ${pkgdir}/opt/${pkgname} || return 1
 
