@@ -1,6 +1,6 @@
 pkgbase = paxchange
 	pkgdesc = A tool to synchronize installed packages across multiple machines
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Baum42/paxchange
 	arch = i686
@@ -8,18 +8,17 @@ pkgbase = paxchange
 	license = BSD
 	makedepends = qt5-tools
 	makedepends = git
-	makedepends = qpm
-	makedepends = python
+	makedepends = qpmx-qpmsource
 	depends = qt5-base
 	depends = qt5-svg
 	depends = qt5-jsonserializer
 	depends = pacman
 	optdepends = pacaur: Adds support for synchronizing AUR packages
 	optdepends = repkg: Automatically rebuild the package on dependency updates
-	source = paxchange-1.0.1::git+https://github.com/Baum42/paxchange.git#tag=1.0.1
+	source = paxchange-1.1.0::git+https://github.com/Baum42/paxchange.git#tag=1.1.0
 	source = paxchange.rule
 	sha256sums = SKIP
-	sha256sums = a30602ce3d02e36374c60bcb61bb97ed68ef580eddc86e4c1ac82dcdd90ebb6a
+	sha256sums = 6029d42b05d32d99a6e673e5a7c95ac657e6258f88835f8aff05bde7535e543b
 
 pkgname = paxchange
 
