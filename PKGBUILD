@@ -2,12 +2,12 @@
 
 pkgname=cpt
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for flashing ubports onto devices"
 arch=('any')
 url="https://ubports.com"
 license=('GPL3')
-depends=('python' 'android-tools')
+depends=('gksu' 'python' 'android-tools')
 source=("${pkgname}_${pkgver}_all.deb::https://ubports.com/r/downloads-cpt-linux")
 sha256sums=('fad3dfa56125ddd9f135af07e4d421784d7121c6bf14abc9ffee38353368fd6f')
 
