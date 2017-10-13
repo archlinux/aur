@@ -3,12 +3,12 @@ pkgbase=qpmx
 pkgname=(qpmx qpmx-gitsource qpmx-qpmsource)
 group=qpmx-full
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A frontend for qpm, to provide source and build caching"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/$pkgname"
 license=('BSD')
-depends=('qt5-base' 'qt5-jsonserializer')
+depends=('qt5-base' 'qt5-jsonserializer' 'qt5-declarative')
 makedepends=('qt5-tools' 'git')
 _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/$pkgname.git#tag=$pkgver"
