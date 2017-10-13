@@ -96,8 +96,6 @@ pkgver() {
 prepare() {
     local qt_patch_file="$srcdir/tdesktop/Telegram/Patches/qtbase_${_qt_version//./_}.diff"
     local qt_base_dir="$srcdir/qtbase-opensource-src-$_qt_version"
-    local qt_imagedormats_dir="$srcdir/qtimageformats-opensource-src-$_qt_version"
-    local qt_wayland_dir="$srcdir/qtwayland-opensource-src-$_qt_version"
     local fcitx_dir="$srcdir/qtbase-opensource-src-$_qt_version/src/plugins/platforminputcontexts/fcitx"
     local hime_dir="$srcdir/qtbase-opensource-src-$_qt_version/src/plugins/platforminputcontexts/hime"
 
@@ -143,7 +141,7 @@ prepare() {
 
 build() {
     local qt_base_dir="$srcdir/qtbase-opensource-src-$_qt_version"
-    local qt_imagedormats_dir="$srcdir/qtimageformats-opensource-src-$_qt_version"
+    local qt_imageformats_dir="$srcdir/qtimageformats-opensource-src-$_qt_version"
     local qt_wayland_dir="$srcdir/qtwayland-opensource-src-$_qt_version"
 
     # Build slightly patched Qt
@@ -171,7 +169,7 @@ build() {
     make install
     export PATH="$srcdir/qt/bin:$PATH"
 
-    cd "$qt_imagedormats_dir"
+    cd "$qt_imageformats_dir"
     qmake .
     make
     make install
