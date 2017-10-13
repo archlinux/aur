@@ -1,0 +1,18 @@
+pkgbase = gnunet-gtk-git
+	pkgdesc = A framework for secure peer-to-peer networking (GTK 3 interfaces)
+	pkgver = 0.10.1_git_087f8e16
+	pkgrel = 1
+	url = http://gnunet.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gnunet-git
+	depends = gtk3
+	depends = glade
+	provides = gnunet-gtk
+	conflicts = gnunet-gtk
+	source = git+https://gnunet.org/git/gnunet-gtk.git
+	md5sums = SKIP
+
+pkgname = gnunet-gtk-git
+
