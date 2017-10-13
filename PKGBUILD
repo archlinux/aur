@@ -1,7 +1,7 @@
 # Maintainer: Jean-Baptiste Delisle <jb dot delisle at aliceadsl dot fr>
 pkgname=bed-latex-git
-pkgver=1.2-1-g9ccca69
-pkgrel=1
+pkgver=1.2.r1.g9ccca69
+pkgrel=2
 pkgdesc="BEd: Beamer Editor, GUI for LaTeX Beamer presentations."
 arch=(any)
 url="https://framagit.org/delisle/bed"
