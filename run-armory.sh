@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python2 /opt/BitcoinArmory/ArmoryQt.py $@
+python2 /opt/armory/ArmoryQt.py $@
