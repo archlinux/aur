@@ -49,7 +49,9 @@ package() {
   done
 
   # Man page
-  gzip "$pkgdir"/usr/share/man/man1/google-chrome-$_channel.1
+  if [[ -f "$pkgdir"/usr/share/man/man1/google-chrome-$_channel.1 ]]; then
+    gzip "$pkgdir"/usr/share/man/man1/google-chrome-$_channel.1
+  fi
 
   # License
   install -Dm644 eula_text.html "$pkgdir"/usr/share/licenses/google-chrome-$_channel/eula_text.html
