@@ -1,10 +1,10 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=gitea
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service in the Go Programming Language.'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://gitea.io'
 license=('MIT')
 makedepends=('go' 'git')
@@ -21,9 +21,9 @@ install=gitea.install
 source=(https://github.com/go-gitea/gitea/archive/v${pkgver}.tar.gz
         gitea.service
         app.ini)
-sha512sums=('4427c4c1a588dcf201f707c3e2827fd702a0f8c0add63c6a5eff0d6ef8d21fdaaaf275f8e790017751f161431d563df22f71a6ea046085f9fb1d57da99f20524'
+sha512sums=('801de93ceecbe58e7303109a21c5e08cf17c6968a675b40b12a0cffdf5cefaa1cf9285143bbe297944f15128f6ffdf8aed0ffa0dcbf2819241dff11d9cea0ddc'
             '692ea79b3195f3222f69b485f8a7905223fa457dc5cb2b480edbac6f480ac4f74075accb04ae0c17b90e98e41f53224e661a85762310d7263921e763cb3fc257'
-            'f72a6ea944e9f6b55c33a1b8f7bf5ff3c2f6dd6e12e3ab0702c74ec2e4ce6c7190aaf97676c3408004089688b91ead04f8a8054906aa73ebf4034fbf0d9d1104')
+            '03f2947aa80c1f9a9390b1d9fcce8bd7c930b6ae1afb9ee971666e7259992fe1d4e71584a1268abb2283add8d746aca1749e0b6e7355a7404edeb65d62efea63')
 
 prepare() {
   mkdir -p "${srcdir}/src/code.gitea.io"
@@ -45,7 +45,7 @@ package() {
   install -Dm755 "${srcdir}/src/code.gitea.io/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/gitea.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${srcdir}/src/code.gitea.io/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/app.ini" "${pkgdir}/etc/gitea/app.ini"
+  install -Dm664 "${srcdir}/app.ini" "${pkgdir}/etc/gitea/app.ini"
 
   cp -r "${srcdir}/src/code.gitea.io/${pkgname}/"{templates,options,public} "${pkgdir}/var/lib/${pkgname}"
   cp -r "${srcdir}/src/code.gitea.io/${pkgname}/options/locale" "${pkgdir}/var/lib/${pkgname}/conf"
