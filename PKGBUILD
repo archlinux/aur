@@ -1,8 +1,8 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 # Contributor: Veeti Paananen <veeti.paananen@rojekti.fi>
 pkgname=armory-bin
-pkgver=0.96.3
-_binver=0.96.3-gcc5.4
+pkgver=0.96.3.99
+_binver=0.96.3.99-gcc5.4
 pkgrel=1
 pkgdesc="Full-featured Bitcoin wallet management application (official binary)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('armory' 'armory-git')
 # https://github.com/goatpig/BitcoinArmory/releases with GPG ID 8C5211764922589A
 _signatures="https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/sha256sum.txt.asc"
 source=("https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/armory_${_binver}_amd64.deb")
-sha256sums=('2ddb07ff5d8d19872e0b7547b5a90d0fe8da2d254d8e678b14c0eee9c4e31b98')
+sha256sums=('51f23f2363d583c14f452d7b90f10f0f8bd014f14848a09ec5cd3937b768500b')
 
 check() {
   msg 'Validating GPG signature...'
