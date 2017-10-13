@@ -2,7 +2,7 @@
 # Based on the python-pillow package (Maintainer: Kyle Keen <keenerd@gmail.com>, Contributor: minder)
 
 pkgname=python-pillow-simd
-pkgver=4.2.1.post0
+pkgver=4.3.0.post0
 pkgrel=1
 _appname=Pillow-SIMD
 _py3basever=3.6m
@@ -32,5 +32,5 @@ package() {
   done
 }
 
-sha1sums=('0da27c7919d9180c2b3a9184bc809a5cd62eeeab')
-sha256sums=('9d443cc04979794f21ec5afb16df4ddd287679b99f7225ee299daa150a8e2737')
+sha1sums=('1b4b740ac360da459714b18a8e9e7e2a5c31f9b1')
+sha256sums=('29bb005a5d49664649b717d2b0cb410fc6e4a01d99506f602da8fcef52a05bc6')
