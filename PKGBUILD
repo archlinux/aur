@@ -1,6 +1,6 @@
 pkgname=sks
 pkgver=1.1.6
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 license=('GPL')
 pkgdesc='Synchronizing OpenPGP Key Server'
@@ -18,14 +18,16 @@ source=(
   '500_debian_fhs.patch'
   'sks-db.service'
   'sks-recon.service'
-  'cryptokit-1.7-sks-uint32.patch')
+  'cryptokit-1.7-sks-uint32.patch'
+  'debian_eventloopfix.patch'
+  )
 sha512sums=(
-  'f7c54194274834840b9701bf827b81add0f807dd4c6019968a6b0c755c9117519433ebb1161da38d23c465b163dd31a766700023afa13174e4dc82542fa98099'
-  SKIP
+  'f7c54194274834840b9701bf827b81add0f807dd4c6019968a6b0c755c9117519433ebb1161da38d23c465b163dd31a766700023afa13174e4dc82542fa98099' SKIP
   '0fd57ccd86f289cf51638995555988a572ee00d6f28f3797092ffda19a0f668ee950be1ef381e94c64301db2dd1ad308834a45b7eaec148e9d8c01ed0a1829bc'
-  '5628e6a0065ec9bab4df84e77bed0af51379e70021543dfee4d4181f55b2779735fcea7848b51e2ab555f9f988da5aff8f0f15e522b801d7330e4bb2e53701fc'
-  '41352e9862996170c70ed8e546ad89e26c94bf3c4ef7e91b64f330273b94c2666cf3f11f13a54e66b1a29b3ef46b75c8c6dfbe49fe12e2b11451e8311faf68a9'
+  'cc10998ac8a072bdd35d22438aa1a4bfb5eda2271887c3f1bb1dc0ee6029228201dd903f36580df43552ad6c8227012f039ed5353147a00d61a05bd5c4333695'
+  '615ac9237359e89332bbaeabe7f36ba1e33877d1b06f8c302fd3af8faa0eee0d785714405a26b92859b9d3fddb4cd708ca0c343db8e4b8c5ffe16323338323bb'
   '6ee333ce8aec0b103a36be376da43a569ed455f554fe853d007afc1d2e3a30d29735f515d22646832a8b4efa1ffdbfadb4a85ec22f2e5159180fc8373252c171'
+  '9463538f5668cdd41b25c43e31a2621e1c0953430b8dde84e54be4a45aa3f9ffbfcd270c83583df2a5462163eaf014fee3c3ed49f436faf71db7e87db88626b4'
 )
 validpgpkeys=(C90EF1430B3AC0DFD00E6EA541259773973A612A) # SKS Keyserver Signing Key
 
@@ -35,6 +37,7 @@ prepare() {
 
   # patch path
   patch -Np1 -i "$srcdir/500_debian_fhs.patch"
+  patch -Np1 -i "$srcdir/debian_eventloopfix.patch"
 
   cp Makefile.local.unused Makefile.local
 
