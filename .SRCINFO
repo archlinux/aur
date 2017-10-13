@@ -1,0 +1,15 @@
+pkgbase = mjml-app
+	pkgdesc = The desktop app for MJML
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://github.com/mjmlio/mjml-app
+	arch = any
+	license = MIT
+	depends = yarn
+	source = https://github.com/mjmlio/mjml-app/archive/2.7.1.tar.gz
+	source = mjml-app.desktop
+	md5sums = ed024f35219e586dd572db1224ceaa5e
+	md5sums = 1f20e11d8f8e674500bdda8054e859c8
+
+pkgname = mjml-app
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=mjml-app
+Comment=The desktop app for MJML
+Path=/opt/mjml-app
+Exec=mjml-app
+Icon=mjml-app
+Type=Application
+StartupNotify=true
+Categories=Development;Utility;
+StartupWMClass=mjml-app
