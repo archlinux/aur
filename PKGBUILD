@@ -7,10 +7,11 @@
 # -Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 # -Linked lists perfomances improvements
+# -Harmony Fix (from https://git.archlinux.org/svntogit/community.git/tree/trunk?h=packages/wine-staging-nine )
 
 pkgname=wine-gaming-nine
 pkgver=2.18
-pkgrel=2
+pkgrel=3
 
 _pkgbasever=${pkgver/rc/-rc}
 _d3d9ver=$_pkgbasever
@@ -20,6 +21,7 @@ _winesrcdir="wine-patched-staging-$_pkgbasever"
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
         "https://github.com/sarnex/wine-d3d9-patches/archive/wine-d3d9-$_d3d9ver.tar.gz"
         30-win32-aliases.conf
+	harmony-fix.diff
 	keybindings.patch
         steam.patch
         wbemprox_query_v2.patch
@@ -28,6 +30,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
 sha1sums=('089a7ca0d83b9dbbad42ce127bf66ba60d5669d7'
           '21a6e2bcd7ef6d261feca036cc4e0d43a633494f'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
+	  'b5a4faccf9109d2da5017779113ea270bf189957'
 	  'f3febb8836f38320742a546c667106608d4c4395'
           '74aae040fde9ff3c9e8da9c840557e87afdbc3a0'
           '644e141125a9f2407e64d23c85ec84a691c7caae'
@@ -132,10 +135,15 @@ prepare()
 {
     cd "$_winesrcdir"
 
+    # https://bugs.winehq.org/show_bug.cgi?id=43530
+    export CFLAGS="${CFLAGS/-fno-plt/}"
+    export LDFLAGS="${LDFLAGS/,-z,now/}"
+
     patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_d3d9ver/staging-helper.patch"
     patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_d3d9ver/wine-d3d9.patch"
     patch -p1 < ../steam.patch
 
+    patch -p1 < ../harmony-fix.diff
     patch -p1 < ../wine-list.h-linked-list-cache-line-prefetching.patch    
     patch -p1 < ../wbemprox_query_v2.patch
 
