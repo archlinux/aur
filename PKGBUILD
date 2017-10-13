@@ -1,31 +1,30 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter-git
-_pkgname=vidcutter
 pkgver=4.5.0.DEV
-pkgrel=9
+pkgrel=10
 pkgdesc="the simplest + fastest video cutter and joiner"
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="http://vidcutter.ozmartians.com"
-source=(https://github.com/ozmartian/${_pkgname}/archive/${pkgver}.tar.gz)
+source=(https://github.com/ozmartian/${pkgname%-git}/archive/${pkgver}.tar.gz)
 depends=('python-pyqt5' 'mpv' 'ffmpeg' 'mediainfo' 'python-opengl')
 makedepends=('python-setuptools')
 install=${pkgname}.install
-provides=('vidcutter-git')
-conflicts=('vidcutter')
+provides=('${pkgname%-git}')
+conflicts=('${pkgname%-git}')
 sha256sums=('SKIP')
 
 # pkgver() {
-#     cd "${_pkgname}-${pkgver}"
+#     cd "${pkgname%-git}-${pkgver}"
 #     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 # }
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname%-git}-${pkgver}"
     python3 setup.py build
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname%-git}-${pkgver}"
     python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
