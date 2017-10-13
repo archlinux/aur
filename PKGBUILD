@@ -8,9 +8,8 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
-_commit=be377c0faf7574a59f84940f593a6849f12e4de7
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
 license=('MIT')
@@ -20,7 +19,7 @@ depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
 conflicts=('vscode-oss')
 provides=('vscode-oss')
 
-source=("vscode::git+https://github.com/Microsoft/vscode#commit=${_commit}"
+source=("vscode::git+https://github.com/Microsoft/vscode#tag=${pkgver}"
         "startup_script.patch"
         "${pkgname}.desktop")
 sha256sums=('SKIP'
