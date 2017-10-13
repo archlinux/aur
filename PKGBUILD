@@ -1,4 +1,5 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Sebastian Stammler <stammler.s@gmail.com>
@@ -8,7 +9,7 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=20170830
+pkgver=20171011
 pkgrel=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=('any')
@@ -75,8 +76,8 @@ conflicts=('adobe-source-code-pro-fonts'
            'ttf-ubuntu-font-family'
            'ttf-vollkorn')
 provides=("${conflicts[@]}" 'ttf-font')
-source=("git+${url}.git")   
-sha256sums=('SKIP')
+source=("git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
     cd fonts
