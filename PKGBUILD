@@ -7,7 +7,7 @@ pkgdesc="free runtime environment for java applications"
 arch=('i686' 'x86_64')
 url="https://www.willuhn.de/products/jameica/"
 license=("GPL2")
-depends=('java-runtime>=8' 'java-environment' 'swt')
+depends=('java-runtime>=8' 'java-environment' 'swt' 'gtk2')
 optdepends=('java-jce_ustrength: Required for mashup plugin used as new scripting platform for non-HBCI accounts (credit cards etc)')
 makedepends=('unzip')
 install="jameica.install"
@@ -24,6 +24,7 @@ source=("jameica-start-script.patch"
         "jameica.install")
 
 prepare() {
+    false
     patch jameica/jameica.sh jameica-start-script.patch
     patch jameica/jameicaserver.sh jameicaserver-start-script.patch
 }

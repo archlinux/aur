@@ -1,20 +1,15 @@
-diff --git a/jameica.sh b/jameica.sh
-index 589e3dd..347922e 100755
---- a/jameica.sh
-+++ b/jameica.sh
-@@ -3,14 +3,7 @@
- # Linux Start-Script fuer regulaeren Standalone-Betrieb.
- # Jameica wird hierbei mit GUI gestartet.
- 
--#_JCONSOLE="-Dcom.sun.management.jmxremote"
--
--# https://www.willuhn.de/bugzilla/show_bug.cgi?id=774
--# https://www.willuhn.de/bugzilla/show_bug.cgi?id=798
--
--link=$(readlink -f "$0")
--dir=$(dirname "$link")
--cd "$dir" 
-+cd /opt/jameica
- 
- if uname -m |grep -q 64; then
- 	archsuffix="64"
+6,13c6
+< #_JCONSOLE="-Dcom.sun.management.jmxremote"
+< 
+< # https://www.willuhn.de/bugzilla/show_bug.cgi?id=774
+< # https://www.willuhn.de/bugzilla/show_bug.cgi?id=798
+< 
+< link=$(readlink -f "$0")
+< dir=$(dirname "$link")
+< cd "$dir" 
+---
+> cd /opt/jameica
+19a13,15
+> 
+> # fix for java9, see https://willuhn.de/blog/index.php?/archives/766-Stolpersteine-unter-Java-9,-Teil-1.html for details
+> export JDK_JAVA_OPTIONS='--add-modules=java.se.ee'
