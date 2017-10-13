@@ -1,0 +1,20 @@
+pkgbase = python2-keepasshttp-git
+	pkgdesc = Access passwords stored in keepass using the http plugin
+	pkgver = r12.85bdd2c
+	pkgrel = 1
+	url = https://github.com/jobevers/python-keepasshttp
+	arch = any
+	license = custom:Unlicense
+	makedepends = python2-nose
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-cryptography
+	depends = python2-yaml
+	depends = python2-xdg
+	depends = python2-requests
+	provides = python2-keepasshttp
+	source = python2-keepasshttp-git::git+https://github.com/jobevers/python-keepasshttp.git
+	md5sums = SKIP
+
+pkgname = python2-keepasshttp-git
+
