@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop-git
 _pkgname=${pkgname%-git}
-pkgver=2.17.2813.r12.g6b21ba3
+pkgver=2.17.2813.r31.g38a133b
 pkgrel=1
 pkgdesc='Modern, private messenger'
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ provides=('wire-desktop')
 source=("git://github.com/wireapp/wire-desktop.git"
         "wire-desktop.desktop")
 sha256sums=('SKIP'
-            '84d869ca111010a5f45f3d5cb8ef4320fa46ac01104773559fb3a7c501f8313b')
+            'd2afa9a754c852bf6b915cfc1ad2d6482d576c1f7fa396de0faf07fe2ca951e7')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
