@@ -6,11 +6,11 @@
 # See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
 # for more information on packaging from GIT sources.
 
-# Maintainer: Peter Feigl <craven@gmx.net>
+# Maintainer: Peter <craven@gmx.net>
 pkgname=chez-scheme-git
-pkgver=9.4
+pkgver=9.5.1
 pkgrel=1
-pkgdesc="Chez Scheme is an implementation of the Revised6 Report on Scheme [27] (R6RS) with numerous language and programming environment extensions. (threaded build)"
+pkgdesc="Chez Scheme is an implementation of the Revised6 Report on Scheme (R6RS) with numerous language and programming environment extensions. (threaded build)"
 arch=(i686 x86_64)
 url="https://github.com/cisco/ChezScheme"
 license=('APL')
@@ -24,6 +24,7 @@ backup=()
 options=()
 install=
 source=()
+
 noextract=()
 #generate with 'makepkg -g'
 
