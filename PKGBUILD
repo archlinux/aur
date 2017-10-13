@@ -6,7 +6,7 @@ _mypkgn=firefox-beta
 pkgdesc='Perl script for installing latest FF beta in the language of your choice'
 url='https://www.mozilla.com/firefox/channel/#beta'
 pkgver=57.0b8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk3' 'libxt' 'dbus-glib' 'nss')
@@ -31,7 +31,9 @@ package() {
   install -m755 ${srcdir}/firefox-beta.sh ${pkgdir}/usr/bin/firefox-beta
 
   # Use system-provided dictionaries
-  rm -r "${pkgdir}/usr/lib/${_mypkgn}/dictionaries"
+  if [[ -d ${pkgdir}/usr/lib/${_mypkgn}/dictionaries ]]; then
+    rm -r "${pkgdir}/usr/lib/${_mypkgn}/dictionaries"
+  fi
   ln -Ts /usr/share/hunspell "${pkgdir}/usr/lib/${_mypkgn}/dictionaries"
 
   install -m644 firefox-beta-bin.desktop ${pkgdir}/usr/share/applications/
