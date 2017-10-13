@@ -1,12 +1,13 @@
 pkgbase = perl-schedule-at
 	pkgdesc = Perl/CPAN Module Schedule::At: OS independent interface to the Unix 'at' command
 	pkgver = 1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Schedule-At
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl
+	depends = at
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/J/JO/JOSERODR/Schedule-At-1.15.tar.gz
 	md5sums = 218b42b6ad2a2c2ddb0d54aeb0921496
