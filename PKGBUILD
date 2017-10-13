@@ -7,7 +7,7 @@ pkgver=4.7.3
 pkgrel=1
 pkgdesc="The interface between ROOT and NumPy"
 arch=('i686' 'x86_64')
-url="https://arogozhnikov.github.io/hep_ml/"
+url="http://scikit-hep.org/root_numpy/"
 license=('BSD')
 makedepends=('python2-setuptools' 'python-setuptools' 'cython2' 'cython'
              'python2-numpy' 'python-numpy' 'root')
