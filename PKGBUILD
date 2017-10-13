@@ -10,6 +10,22 @@
 #######################################################################
 
 #######################################################################
+# Track a maintenance branch or by default track master.
+#
+# Pick a branch from the output of "git branch" ran on your local copy
+# of the emacs repository.
+# 
+# E.g.: 
+# BRANCH=master
+# BRANCH=emacs-26
+# BRANCH=emacs-25
+# BRANCH=emacs-24
+# BRANCH=emacs-23
+# BRANCH=xwidget  # If you are a glutton for punishment
+#
+BRANCH=master
+
+#######################################################################
 # Assign "YES" to the variable you want enabled; empty or other value
 # for NO.
 #
@@ -38,9 +54,9 @@ NOGZ="YES"        # Don't compress el files. Info and man pages are
 
 #######################################################################
 pkgname=emacs-git
-pkgver=26.0.50.130000
+pkgver=27.0.50.130834
 pkgrel=1
-pkgdesc="GNU Emacs. Master development branch."
+pkgdesc="GNU Emacs. Development."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
@@ -115,9 +131,8 @@ fi
 #######################################################################
 conflicts=('emacs')
 provides=('emacs')
-#source=("$pkgname::git://git.savannah.gnu.org/emacs.git#branch=master")
-#source=("$pkgname::git+https://git.savannah.gnu.org/git/emacs.git#branch=master")
-source=("$pkgname::git+https://github.com/emacs-mirror/emacs.git")
+  #source=("$pkgname::git://git.savannah.gnu.org/emacs.git#branch=$BRANCH")
+  source=("$pkgname::git+https://github.com/emacs-mirror/emacs.git#branch=$BRANCH")
 md5sums=('SKIP')
 
 pkgver() {
