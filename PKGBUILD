@@ -1,6 +1,6 @@
 # Maintainer: hfte@posteo.org
 pkgname=sws
-pkgver=2.9.6.0
+pkgver=2.9.7.0
 pkgrel=1
 pkgdesc="A collection of features that seamlessly integrate into REAPER"
 arch=('x86_64')
