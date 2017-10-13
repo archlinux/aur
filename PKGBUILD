@@ -3,7 +3,7 @@
 
 _pkgbase="sddm"
 pkgname="$_pkgbase-git"
-pkgver=0.15.0.r1044.ge26c1e6
+pkgver=0.16.0.1.gd19d874
 pkgrel=1
 pkgdesc="The Simple Desktop Display Manager"
 arch=("i686" "x86_64")
@@ -25,8 +25,9 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/$_pkgbase"
-	_ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
-        echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+	#ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
+        #echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+	git describe --long | sed 's/^v//;s/-/./g'
 }
 
 build() {
