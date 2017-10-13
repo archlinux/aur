@@ -3,7 +3,7 @@
 pkgname=ssowat-git
 pkgver=master
 pkgrel=1
-pkgdesc="A simple SSO for nginx, written in Lua"
+pkgdesc="A simple single sign-on (SSO) for nginx, written in Lua"
 arch=('any')
 url="https://github.com/tYYGH/SSOwat"
 license=('AGPL')

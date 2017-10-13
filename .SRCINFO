@@ -1,5 +1,5 @@
 pkgbase = ssowat-git
-	pkgdesc = A simple SSO for nginx, written in Lua
+	pkgdesc = A simple single sign-on (SSO) for nginx, written in Lua
 	pkgver = master
 	pkgrel = 1
 	url = https://github.com/tYYGH/SSOwat
