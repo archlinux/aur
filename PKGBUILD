@@ -1,10 +1,10 @@
 pkgbase=hyperledger-composer
 pkgname=('hyperledger-composer-cli' 'hyperledger-composer-playground')
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A framework for building Blockchain business networks"
 arch=(i686 x86_64)
-url="https://github.com/hyperledger/fabric"
+url="https://github.com/hyperledger/composer"
 license=('APACHE')
 groups=('hyperledger')
 depends=('nodejs-lts-boron')
