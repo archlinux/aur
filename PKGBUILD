@@ -8,7 +8,7 @@ _locale="en-US"
 pkgname="${_name}-${_channel}"
 pkgdesc='Standalone web browser from mozilla.org, developer build'
 url='http://www.mozilla.org/firefox/developer'
-pkgver=57.0b7
+pkgver=57.0b8
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -19,8 +19,8 @@ sha512sums=(
 	'9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631'
 	'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
 )
-sha512sums_i686=('4f8797bb38e4c4496c08b5542e95f5546e8c2dac9a6d1109e07539ccbd865de3a5bb3ce57cdb2ab85001fe3c0fde22f8533c086561eef22a835941fe6f1b0cee')
-sha512sums_x86_64=('1f6d64d29944ad05333f8e0e8bd7cabba0b36dc80aacc53765b2f0743fefd2975f03cd2b175fc66d0ae9f805ce625ba6e304382e22ef93733cbad328c22537ca')
+sha512sums_i686=('a37875973326916e2f83f9b5ceb625e3fa3d714d5fb5335d33ae59bf8b196a55a1a9aa24b553ceb6c5048c15eade78e0f1e050f253cf580020a9d24c8227bd74')
+sha512sums_x86_64=('28a8d28566b79b787ca675221ee918dadbd03b839717eb3bb18b8d9a9b8fae036d6e9e84d68450fe9a6976d856e7a8607edbe71563f7fd4217e75f4c3fb5e952')
 
 depends=('dbus-glib'
          'gtk2'
