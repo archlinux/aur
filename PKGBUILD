@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop
 pkgver=2.17.2813
-pkgrel=2
+pkgrel=3
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
@@ -14,7 +14,7 @@ provides=('wire-desktop')
 source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz"
         "${pkgname}.desktop")
 sha256sums=('66e532a8b64231f0b7f11cce0dad389e56eff25cc4481976bcc466525d0aa8f6'
-            '84d869ca111010a5f45f3d5cb8ef4320fa46ac01104773559fb3a7c501f8313b')
+            'd2afa9a754c852bf6b915cfc1ad2d6482d576c1f7fa396de0faf07fe2ca951e7')
 
 build() {
   cd "${srcdir}/${pkgname}-release-${pkgver}"
