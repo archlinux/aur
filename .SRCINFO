@@ -1,0 +1,12 @@
+pkgbase = cron-dummy
+	pkgdesc = Make pacman think cron is installed
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://chrisdown.name
+	arch = any
+	license = Public Domain
+	provides = cron
+	conflicts = cron
+
+pkgname = cron-dummy
+
