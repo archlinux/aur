@@ -1,0 +1,16 @@
+pkgbase = bcrypt-tool
+	pkgdesc = A simple command line tool for generating bcrypted passwords.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/coreos/bcrypt-tool
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = go-pie
+	makedepends = glide
+	makedepends = git
+	source = https://github.com/coreos/bcrypt-tool/archive/v1.0.0.tar.gz
+	sha256sums = c69a7d4867627711686f1f7ebe9171ec127454e2151c82d254ca949120f1c1f6
+
+pkgname = bcrypt-tool
+
