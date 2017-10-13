@@ -3,17 +3,17 @@
 # Contributor: Patrick Glandien <patrick@synix.io>
 pkgname=armory-git
 pkgver=v0.96.3.99.r0.g1c7f3e91
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-featured Bitcoin wallet management application"
 arch=('i686' 'x86_64')
 url="https://github.com/goatpig/BitcoinArmory"
-license=('AGPL3')
+license=('AGPL3' 'MIT')
 depends=('crypto++' 'swig' 'qt4' 'python2' 'python2-twisted' 'python2-pyqt4' 'python2-bsddb' 'python2-psutil')
 makedepends=('git' 'gcc' 'make')
 optdepends=('bitcoin-daemon: Communicate with the Bitcoin network')
 install="${pkgname}.install"
 provides=('armory')
-conflicts=('armory')
+conflicts=('armory' 'armory-bin' 'armory-goatpig-git')
 source=("$pkgname"::'git+https://github.com/goatpig/BitcoinArmory.git'
         'run-armory.sh')
 noextract=()
@@ -59,6 +59,9 @@ package() {
 
   mkdir -p "$pkgdir/opt"
   cp -R "$srcdir/$pkgname/" "$pkgdir/opt/"
+
+  mkdir -p "$pkgdir/usr/local/bin"
+  ln -s "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/local/bin/$pkgname"
 
   rm -rf "$pkgdir/opt/$pkgname/cppForSwig/"
   rm -rf "$pkgdir/opt/$pkgname/.git/"
