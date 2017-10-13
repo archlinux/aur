@@ -2,10 +2,10 @@
 
 pkgname=ostinato
 pkgver=0.8
-pkgrel=1
-url="http://code.google.com/p/ostinato/"
+pkgrel=2
+url="http://ostinato.org/"
 pkgdesc="Cross-platform network packet/traffic generator and analyzer"
-source=("http://dl.bintray.com/pstavirs/ostinato/ostinato-src-$pkgver.tar.gz")
+source=("https://github.com/pstavirs/ostinato/archive/v$pkgver.tar.gz")
 arch=('i686' 'x86_64')
 depends=('protobuf' 'qt4' 'libpcap')
 optdepends=('wireshark-cli' 'gzip' 'diffutils' 'awk')
@@ -23,4 +23,4 @@ package(){
    make INSTALL_ROOT=$pkgdir install
 }
 
-md5sums=('8333c849044f5edad1190831d748110f')
+md5sums=('827b026a0443b07c99500dc3f361d3f6')
