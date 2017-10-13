@@ -1,6 +1,6 @@
 pkgbase = emacs26-git
 	pkgdesc = GNU Emacs. Emacs 26 development and maintenance branch. Dummy package.
-	pkgver = 26.0.90.130765
+	pkgver = 26.0.90.130767
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = emacs26-git
 	provides = emacs
 	conflicts = emacs
 	source = read_this.txt
+	md5sums = 44002f031317f01fea6146d8be5a9b8f
 
 pkgname = emacs26-git
 
