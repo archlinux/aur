@@ -9,12 +9,14 @@ post_install() {
 }
 
 post_upgrade() {
-	chown http: /var/log/$pkgname
+    chown http: /var/log/$pkgname
     chown -R http: /etc/$pkgname
+
+    echo "You must update your config file !"
     
-	true
+    true
 }
 
 pre_remove() {
-	true
+    true
 }

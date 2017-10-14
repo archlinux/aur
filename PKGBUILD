@@ -2,7 +2,7 @@
 
 pkgname=mailmotion
 pkgver=0.0.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Send email when motion create picture"
 arch=('any')
 url="https://github.com/Chipsterjulien/mailmotion"
@@ -66,4 +66,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('6887900e5b3032cc422e7587ab6fe17475fbf794a950cdd1f1971d70bdb07412e602ff705cfd1aa7bfd1e43a16858d2a0018da32587b0d6786d7d67a9b913c6c')
+sha512sums=('0f77525e0056933a1b5fb343a14162217ee63ffd07980fe00e9af1c86d6dbd024b50d199dddf4f5e3494b9a82f513ff899aa60d9d279215b64e446ba262c1e62')
