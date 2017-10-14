@@ -1,7 +1,7 @@
 pkgbase = arc-greyed-theme-git
 	pkgdesc = A flat, grey theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. Latest commit from the master branch on Github.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/byeoriy/arc-greyed-theme
 	arch = any
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = arc-greyed-theme-git
 	makedepends = pkg-config
 	depends = gtk3
 	depends = gtk-engine-murrine
-	provides = gtk-theme-arc-greyed
-	conflicts = gtk-theme-arc-greyed
+	provides = arc-greyed-theme-git
+	conflicts = arc-greyed-theme-git
 	source = arc-greyed-theme::git+https://github.com/byeoriy/arc-greyed-theme.git
 	sha256sums = SKIP
 
