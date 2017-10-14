@@ -1,0 +1,80 @@
+# Maintainer: Michael Schubert <mschu.dev at gmail>
+pkgname=copasi
+pkgver=4.21.166
+_pkgver=${pkgver##*.}
+pkgrel=1
+pkgdesc="COmplex PAthway SImulator for analysis of biochemical networks and their dynamics"
+arch=('i686' 'x86_64')
+url="http://www.copasi.org/"
+license=('Artistic 2.0')
+makedepends=('cmake' 'git' 'python')
+depends=('cppunit' 'expat' 'lapack' 'libnuml' 'qtwebkit' 'qwt5' 'qwtplot3d')
+optdepends=('python')
+source=("copasi-desktop.tar.gz"
+        "git+https://github.com/copasi/copasi-dependencies.git"
+        "https://github.com/copasi/COPASI/releases/download/Build-$_pkgver/COPASI-$pkgver-Source.tar.gz")
+install=copasi.install
+md5sums=('9582e4e3d0d1d5433dea4c48f1f5f396'
+         'SKIP'
+         '99ea39c37f2657c6804711fabd4d34da')
+
+build() {
+  # QtMmlWidget is required even if we deactivate it
+  # raptor in extra is not compatible
+  # libsbml needs 'render' package, is not in current version
+  cd "$srcdir"/copasi-dependencies
+  ./createLinux.sh MML raptor libSBML libCombine
+
+  mkdir -p "$srcdir"/copasi && cd "$srcdir"/copasi
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCOPASI_INSTALL_C_API=ON \
+    -DRAPTOR_INCLUDE_DIR="$srcdir"/copasi-dependencies/bin/include \
+    -DRAPTOR_LIBRARY="$srcdir"/copasi-dependencies/bin/lib/libraptor.a \
+    -DMML_INCLUDE_DIR="$srcdir"/copasi-dependencies/bin/include \
+    -DMML_LIBRARY="$srcdir"/copasi-dependencies/bin/lib/libmml.a \
+    -DLIBSBML_INCLUDE_DIR="$srcdir"/copasi-dependencies/bin/include \
+    -DLIBSBML_LIBRARY="$srcdir"/copasi-dependencies/bin/lib/libsbml-static.a \
+    -DQWT_INCLUDE_DIR=/usr/include/qwt5 \
+    -DQWT_LIBRARY=/usr/lib/libqwt5.so \
+    -DENABLE_SBW_INTEGRATION=OFF \
+    -DENABLE_PYTHON=ON \
+    ../COPASI-$pkgver-Source
+
+# enable bindings:
+#    -DENABLE_CSHARP=ON \
+#    -DENABLE_JAVA=ON \
+#    -DENABLE_PERL=ON \
+#    -DENABLE_OCTAVE=ON \
+#    -DENABLE_R=ON \
+
+  make
+}
+
+package() {
+  cd "$srcdir"/copasi
+  make DESTDIR="$pkgdir" install
+
+#  DESTDIR="$pkgdir" cmake \
+#    -DCMAKE_INSTALL_PREFIX=/usr \
+#    -P "$srcdir/$pkgname-master"/cmake_install.cmake
+
+#  cd "$srcdir"
+#  tar -xf $pkgname-$pkgver.tar.gz --strip=1
+#
+#  # install program files
+#  install -d "$pkgdir"/usr/{bin,share}
+#  install -m755 bin/* "$pkgdir/usr/bin"
+#  cp -R share/$pkgname "$pkgdir/usr/share/"
+#  
+  # desktop integration
+  cd "$srcdir/$pkgname-desktop"
+  install -Dm755 copasi.sh "$pkgdir/etc/profile.d/copasi.sh"
+  install -Dm644 copasi.desktop "$pkgdir/usr/share/applications/copasi.desktop"
+  install -Dm644 copasi.xml "$pkgdir/usr/share/mime/packages/copasi.xml"
+  install -d "$pkgdir/usr/share/icons/hicolor"
+  cp -R icons/* "$pkgdir/usr/share/icons/hicolor/"
+  # copasi starts CopasiUI after setting COPASIDIR environment variable
+  # useful for launching COPASI using the menu entry
+  install -Dm755 copasi "$pkgdir/usr/bin/copasi"
+}

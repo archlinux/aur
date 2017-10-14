@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at google mail>
-
 pkgname=copasi
-pkgver=4.13.87
+pkgver=4.21.166
+_pkgver=${pkgver##*.}
 pkgrel=1
 pkgdesc="COmplex PAthway SImulator for analysis of biochemical networks and their dynamics"
 arch=('i686' 'x86_64')
@@ -12,14 +12,14 @@ source=('copasi-desktop.tar.gz')
 md5sums=('9582e4e3d0d1d5433dea4c48f1f5f396')
 install=copasi.install
 noextract=($pkgname-$pkgver.tar.gz)
-
+_source=https://github.com/copasi/COPASI/releases/download/Build-$_pkgver
 if [ "$CARCH" = "i686" ]; then
-  source=("${source[@]}" $pkgname-$pkgver.tar.gz::http://www.copasi.org/static/packages/COPASI-$pkgver-Linux-32bit.tar.gz)
-  md5sums=("${md5sums[@]}" '4b66ff9bfb02d7441db0031b7a22e722')
+  source=("${source[@]}" $pkgname-$pkgver.tar.gz::$_source/COPASI-$pkgver-Linux-32bit.tar.gz)
+  md5sums=("${md5sums[@]}" 'd1a6873e635e456f75119b46149b5da6')
 fi
 if [ "$CARCH" = "x86_64" ]; then
-  source=("${source[@]}" $pkgname-$pkgver.tar.gz::http://www.copasi.org/static/packages/COPASI-$pkgver-Linux-64bit.tar.gz)
-  md5sums=("${md5sums[@]}" '95bf0c46c12bc241c729e708a771ec9f')  
+  source=("${source[@]}" $pkgname-$pkgver.tar.gz::$_source/COPASI-$pkgver-Linux-64bit.tar.gz)
+  md5sums=("${md5sums[@]}" '3ebcd05ce65fa6387c47bae2539c445b')  
 fi
 
 package() {
