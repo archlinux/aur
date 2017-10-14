@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=libctru
-pkgver=1.3.0
+pkgver=1.4.0
 _pkgverexamples=20170714
 pkgrel=1
 pkgdesc="Library for Nintendo 3DS (CTR) homebrew development"
@@ -11,7 +11,7 @@ license=('custom: zlib')
 depends=('devkitarm')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/smealum/ctrulib/archive/v$pkgver.tar.gz"
         "https://github.com/devkitPro/3ds-examples/releases/download/v$_pkgverexamples/3ds-examples-$_pkgverexamples.tar.bz2")
-sha256sums=('320f4fd04654d40484a719b7cba69350107520e1aa42ca0daff00f03bbf53362'
+sha256sums=('2deeca1f4d9a2050b848958faec46617b854fdcf36c509fe8e3323f242e95141'
             '533dcf4ee6e7c0117e04ad30fe8436d19df786915ff6f3ade27bc9cad6924bde')
 noextract=("3ds-examples-$_pkgverexamples.tar.bz2")
 options=(!strip staticlibs)
