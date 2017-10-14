@@ -2,13 +2,13 @@
 
 pkgname=antergos-wallpapers
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The default wallpapers for Antergos"
 arch=('any')
 url="http://www.antergos.com"
 license=('CCPL:by-nc-sa')
 source=("http://repo.antergos.info/antergos/x86_64/${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
-sha256sums=('264e8ae7c7aae28c647055becd0979056236a97cfba5f1f62724c209705b8cbe')
+sha256sums=('00a03ab227bb25cc4fa170c60b95f0464c930e58fac5870cbb99b267ad162789')
 
 package() {
   cd "${srcdir}"

@@ -1,12 +1,12 @@
 pkgbase = antergos-wallpapers
 	pkgdesc = The default wallpapers for Antergos
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.antergos.com
 	arch = any
 	license = CCPL:by-nc-sa
-	source = http://repo.antergos.info/antergos/x86_64/antergos-wallpapers-0.7-1-any.pkg.tar.xz
-	sha256sums = 264e8ae7c7aae28c647055becd0979056236a97cfba5f1f62724c209705b8cbe
+	source = http://repo.antergos.info/antergos/x86_64/antergos-wallpapers-0.7-2-any.pkg.tar.xz
+	sha256sums = 00a03ab227bb25cc4fa170c60b95f0464c930e58fac5870cbb99b267ad162789
 
 pkgname = antergos-wallpapers
 
