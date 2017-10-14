@@ -6,6 +6,7 @@ pkgrel=2
 pkgdesc="C++ Bindings for Vulkan"
 url="https://github.com/KhronosGroup/Vulkan-Hpp"
 license=('Apache')
+provides=()
 groups=('vulkan-devel')
 arch=('any')
 source=("https://github.com/KhronosGroup/Vulkan-Hpp/raw/0b8ab65be2e03b50268547e9661fa6c70d9017a4/vulkan/vulkan.hpp")
