@@ -11,7 +11,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=2.18
-pkgrel=3
+pkgrel=4
 
 _pkgbasever=${pkgver/rc/-rc}
 _d3d9ver=$_pkgbasever
@@ -26,6 +26,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         steam.patch
         wbemprox_query_v2.patch
 	wine-list.h-linked-list-cache-line-prefetching.patch
+	wined3d-Cache-shader-compile-arguments-and-precompil.patch
         )
 sha1sums=('089a7ca0d83b9dbbad42ce127bf66ba60d5669d7'
           '21a6e2bcd7ef6d261feca036cc4e0d43a633494f'
@@ -35,6 +36,7 @@ sha1sums=('089a7ca0d83b9dbbad42ce127bf66ba60d5669d7'
           '74aae040fde9ff3c9e8da9c840557e87afdbc3a0'
           '644e141125a9f2407e64d23c85ec84a691c7caae'
 	  '360b9725286690b34313590076538a402e03ecb5'
+	  '18fa2f600a477d01d5c7fe770b67bbdc52757061'
           )
 
 pkgdesc="Based off wine-staging, including the gallium-nine patches and some more hacks"
@@ -146,6 +148,7 @@ prepare()
     patch -p1 < ../harmony-fix.diff
     patch -p1 < ../wine-list.h-linked-list-cache-line-prefetching.patch    
     patch -p1 < ../wbemprox_query_v2.patch
+    patch -p1 < ../wined3d-Cache-shader-compile-arguments-and-precompil.patch
 
     patch -p1 -R < ../keybindings.patch
 
