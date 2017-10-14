@@ -1,0 +1,23 @@
+pkgbase = python-pylint-odoo
+	pkgdesc = Pylint Odoo plugin
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://github.com/OCA/pylint-odoo
+	arch = any
+	license = unknown
+	makedepends = python
+	makedepends = python-pip
+	depends = eslint
+	depends = python-astroid
+	depends = python-pylint
+	depends = python-pylint-plugin-utils
+	depends = python-docutils
+	depends = python-lxml
+	depends = python-pygments
+	depends = python-restructuredtext_lint
+	depends = python-isort
+	depends = python-whichcraft
+	depends = python-rfc3986
+
+pkgname = python-pylint-odoo
+
