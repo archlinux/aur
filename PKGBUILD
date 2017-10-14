@@ -11,7 +11,7 @@ url="http://taisei-project.org/"
 license=('MIT')
 depends=('sdl2_mixer' 'sdl2_ttf' 'libzip' 'hicolor-icon-theme')
 makedepends=('cmake')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/laochailan/taisei/archive/v$pkgver.tar.gz")
+source=($pkgname-$pkgver.tar.gz::"https://github.com/taisei-project/taisei/archive/v$pkgver.tar.gz")
 sha256sums=('b9eb3150af79942e6a5dda8b833045dd69b8148c9ba0f451a7a911db7dfd2a3f')
 
 build() {

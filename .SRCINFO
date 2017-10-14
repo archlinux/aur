@@ -11,7 +11,7 @@ pkgbase = taisei
 	depends = sdl2_ttf
 	depends = libzip
 	depends = hicolor-icon-theme
-	source = taisei-1.1.tar.gz::https://github.com/laochailan/taisei/archive/v1.1.tar.gz
+	source = taisei-1.1.tar.gz::https://github.com/taisei-project/taisei/archive/v1.1.tar.gz
 	sha256sums = b9eb3150af79942e6a5dda8b833045dd69b8148c9ba0f451a7a911db7dfd2a3f
 
 pkgname = taisei
