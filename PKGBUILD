@@ -3,7 +3,7 @@
 pkgname=kubernetes-built
 pkgnameorg=kubernetes
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 _contribver=0.7.0
 _contribdate="2017-10-01"
 pkgdesc="Production-Grade Container Scheduling and Management - binary version of aur-kubernetes"
