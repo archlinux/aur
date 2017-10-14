@@ -2,13 +2,13 @@
 
 pkgname=gambit
 pkgver=15.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools for doing computation in game theory - git version"
 arch=('i686' 'x86_64')
 url="http://www.gambit-project.org"
 license=('GPL')
 depends=('wxgtk')
-makedepends=('git' 'gcc5')
+makedepends=('git' 'gcc6')
 provides=('gambit')
 conflicts=('gambit')
 source=("https://sourceforge.net/projects/$pkgname/files/gambit15/$pkgver/$pkgname-$pkgver.tar.gz" ludecomp.diff)
@@ -22,7 +22,7 @@ build() {
   libtoolize
   automake --add-missing
   autoconf
-  CXX=g++-5 CPP=cpp-5 ./configure --prefix=/usr --disable-enumpoly
+  CXX=g++-6 CPP=cpp-6 ./configure --prefix=/usr --disable-enumpoly
   make 
 }
 
