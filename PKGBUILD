@@ -5,7 +5,7 @@
 
 pkgname=freefilesync
 pkgver=9.4
-pkgrel=0
+pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="http://www.freefilesync.org/"
@@ -13,19 +13,22 @@ license=('GPLv3')
 depends=(wxgtk webkit2gtk boost-libs)
 makedepends=(boost)
 source=(
-	"FreeFileSync_${pkgver}_Source.zip::https://staticghost.net/FreeFileSync_9.4_Source.zip"		#ffs
+	"FreeFileSync_${pkgver}_Source.zip::https://www.freefilesync.org/download_redirect.php?file=FreeFileSync_${pkgver}_Source.zip"		#ffs
 	FreeFileSync.desktop
 	ffsicon.png
 	RealTimeSync.desktop
 	rtsicon.png
 	)
-md5sums=(
-	 'a91d0052f3c0bdc3fcdb8c48cf1a909e'	#ffs source
-	 'eab0ccfc6a88e229a0f07507b93cfcff'	#FreeFileSync.desktop
-	 '1f452dff6f970d95839411008d86250b'	#ffsicon.png
-	 'ab266177f69d16ad9f4099ae4edd77a2'	#RealTimeSync.desktop
-	 'ee5587fa0a8d906ad416564e4daf5a06'	#rtsicon.png
+
+sha256sums=(
+	 'a3f1529ddabc9cbacdc7111c7991e35e0afa481575ff67367bbedc34f0930d2e'	#ffs source
+	 'b381bb9dbda25c3c08a67f18072a2761abe34339ddf3318e1758eb7c349f1a3b'	#FreeFileSync.desktop
+	 '31df3fa1f1310de14bbd379f891d4f8ed2df5b0d68913eb52c88b3be682933fb'	#ffsicon.png
+	 '1502efdbf1638856a18ab9916e0431bf6a53471792cb2daa380345bac33f67c4'	#RealTimeSync.desktop
+	 'f28042587dbe99cf5d6bef2c1be4b026488e418e4ba8332b3016d246b7053a4e'	#rtsicon.png
 	 )
+	 
+DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -A Mozilla -o %o %u')
 
 prepare() {
 # wxgtk < 3.1.0

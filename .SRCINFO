@@ -1,7 +1,7 @@
 pkgbase = freefilesync
 	pkgdesc = Backup software to synchronize files and folders
 	pkgver = 9.4
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.freefilesync.org/
 	arch = i686
 	arch = x86_64
@@ -10,16 +10,16 @@ pkgbase = freefilesync
 	depends = wxgtk
 	depends = webkit2gtk
 	depends = boost-libs
-	source = FreeFileSync_9.4_Source.zip::https://staticghost.net/FreeFileSync_9.4_Source.zip
+	source = FreeFileSync_9.4_Source.zip::https://www.freefilesync.org/download_redirect.php?file=FreeFileSync_9.4_Source.zip
 	source = FreeFileSync.desktop
 	source = ffsicon.png
 	source = RealTimeSync.desktop
 	source = rtsicon.png
-	md5sums = a91d0052f3c0bdc3fcdb8c48cf1a909e
-	md5sums = eab0ccfc6a88e229a0f07507b93cfcff
-	md5sums = 1f452dff6f970d95839411008d86250b
-	md5sums = ab266177f69d16ad9f4099ae4edd77a2
-	md5sums = ee5587fa0a8d906ad416564e4daf5a06
+	sha256sums = a3f1529ddabc9cbacdc7111c7991e35e0afa481575ff67367bbedc34f0930d2e
+	sha256sums = b381bb9dbda25c3c08a67f18072a2761abe34339ddf3318e1758eb7c349f1a3b
+	sha256sums = 31df3fa1f1310de14bbd379f891d4f8ed2df5b0d68913eb52c88b3be682933fb
+	sha256sums = 1502efdbf1638856a18ab9916e0431bf6a53471792cb2daa380345bac33f67c4
+	sha256sums = f28042587dbe99cf5d6bef2c1be4b026488e418e4ba8332b3016d246b7053a4e
 
 pkgname = freefilesync
 
