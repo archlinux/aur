@@ -1,7 +1,7 @@
 pkgbase = gnome-twitch-player-backend-gstreamer-clutter
 	pkgdesc = GStreamer Clutter (hardware rendering) player backend for GNOME Twitch
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinszent/gnome-twitch
 	arch = i686
 	arch = x86_64
