@@ -2,7 +2,7 @@
 # This PKGBUILD is inspired from the package sdcc in Archlinux repos.
 
 pkgname=sdcc-svn
-pkgver=3.6.5.svn9828M
+pkgver=3.6.9.svn10062M
 pkgrel=1
 pkgdesc="Small Device C Compiler suite"
 url="http://sdcc.sourceforge.net/"
@@ -12,7 +12,7 @@ license=('GPL')
 provides=('sdcc')
 conflicts=('sdcc')
 depends=('bash' 'gcc-libs' 'boost-libs')
-makedepends=('gputils' 'flex' 'bison' 'patch' 'boost')
+makedepends=('gputils' 'flex' 'bison' 'patch' 'boost' 'subversion')
 optdepends=('python')
 
 options=(!strip staticlibs)
