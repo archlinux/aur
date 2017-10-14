@@ -2,15 +2,20 @@
 
 _gitname=meandmyshadow_levelpack_akos
 pkgname=$_gitname-git
-pkgver=1
+pkgver=2017.09.30
 pkgrel=1
 pkgdesc="Ákos level pack for the Me and my Shadow game"
 arch=('any')
-url='http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=293'
+url='https://github.com/SanskritFritz/meandmyshadow_levelpack_akos'
 license=('free')
 depends=('meandmyshadow')
 source=("$_gitname::git+https://github.com/SanskritFritz/meandmyshadow_levelpack_akos.git")
 md5sums=('SKIP')
+
+pkgver() {
+	cd "$_gitname"
+	git log -1 --format="%cd" --date=short | sed 's|-|.|g'
+}
 
 package() {
 	mkdir --parents "$pkgdir/usr/share/meandmyshadow/data/levelpacks/akos"
