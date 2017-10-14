@@ -101,29 +101,3 @@ index 8efb6202..7f9d64aa 100644
    ADD_OSQUERY_LINK_ADDITIONAL("gcrypt gpg-error")
    ADD_OSQUERY_LINK_ADDITIONAL("blkid")
    ADD_OSQUERY_LINK_ADDITIONAL("ip4tc")
-diff --git a/osquery/tables/system/linux/tests/md_tables_tests.cpp b/osquery/tables/system/linux/tests/md_tables_tests.cpp
-index bfe71092..2415ae1f 100644
---- a/osquery/tables/system/linux/tests/md_tables_tests.cpp
-+++ b/osquery/tables/system/linux/tests/md_tables_tests.cpp
-@@ -72,7 +72,7 @@ void GetDrivesForArrayTestHarness(std::string arrayName,
-   EXPECT_CALL(md, getArrayInfo(arrayDevPath, _))
-       .WillOnce(DoAll(SetArgReferee<1>(arrayInfo), Return(true)));
-
--  Sequence::Sequence s1;
-+  Sequence s1;
-   for (int i = 0; i < MD_SB_DISKS; i++) {
-     mdu_disk_info_t diskInfo;
-     diskInfo.number = i;
-diff --git a/osquery/devtools/shell.cpp b/osquery/devtools/shell.cpp
-index 84507f66..7811b9c8 100644
---- a/osquery/devtools/shell.cpp
-+++ b/osquery/devtools/shell.cpp
-@@ -1185,7 +1185,7 @@ inline void meta_show(struct callback_data* p) {
-
-   {
-     fprintf(p->out, "\nNon-default flags/options:\n");
--    auto results = osquery::SQL::SQL(
-+    auto results = osquery::SQL(
-         "select * from osquery_flags where default_value <> value");
-     for (const auto& flag : results.rows()) {
-       fprintf(p->out,
