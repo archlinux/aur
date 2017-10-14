@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=oh-my-git
-pkgver=r227.42c11f0
+pkgver=r231.fd13327
 pkgrel=1
 pkgdesc="An opinionated git prompt for bash and zsh"
 arch=("any")
