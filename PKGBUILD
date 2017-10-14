@@ -1,7 +1,7 @@
 # Maintainer: grzegorz225 <gorbak25@gmail.com>
 pkgname=neptune-cli
 _module='neptune-cli'
-pkgver=2.0.24
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Neptune client library"
 arch=('any')
