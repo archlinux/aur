@@ -1,0 +1,6 @@
+post_install() {
+        echo "When first run, an example systems configuration file will be created at ~/.emulationstation/es_systems.cfg"
+        echo "See https://github.com/RetroPie/EmulationStation/blob/master/SYSTEMS.md on how to tell EmulationStation"
+        echo "what systems you have, what platform they correspond to (for scraping), and where the games are located."
+        echo "See https://github.com/RetroPie/EmulationStation#writing-an-es_systemscfg for an example."
+}
