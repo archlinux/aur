@@ -5,7 +5,7 @@ pkgrel=2
 epoch=1
 pkgdesc="Customizeable Wayland compositor written in Rust"
 arch=('i686' 'x86_64')
-url="https://github.com/Immington-Industries/way-cooler"
+url="https://github.com/way-cooler/way-cooler"
 license=('MIT')
 depends=('wlc')
 makedepends=('cargo' 'rust' 'git')
@@ -13,7 +13,7 @@ optdepends=('weston: default terminal emulator'
             'dmenu: default launcher'
             'way-cooler-bg: draws a background for Way Cooler')
 backup=('etc/way-cooler/init.lua')
-source=("${pkgname}::git+https://github.com/Immington-Industries/way-cooler.git#tag=v${pkgver}")
+source=("${pkgname}::git+https://github.com/way-cooler/way-cooler.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {

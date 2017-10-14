@@ -3,7 +3,7 @@ pkgbase = way-cooler
 	pkgver = 0.6.2
 	pkgrel = 2
 	epoch = 1
-	url = https://github.com/Immington-Industries/way-cooler
+	url = https://github.com/way-cooler/way-cooler
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = way-cooler
 	optdepends = dmenu: default launcher
 	optdepends = way-cooler-bg: draws a background for Way Cooler
 	backup = etc/way-cooler/init.lua
-	source = way-cooler::git+https://github.com/Immington-Industries/way-cooler.git#tag=v0.6.2
+	source = way-cooler::git+https://github.com/way-cooler/way-cooler.git#tag=v0.6.2
 	md5sums = SKIP
 
 pkgname = way-cooler
