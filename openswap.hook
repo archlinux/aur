@@ -6,7 +6,7 @@ run_hook ()
     if [ -z "$keyfile_device" ] || [ -z "$keyfile_filename" ]
     then
       ## case when no keyfile provided in configurations
-      cryptsetup open "$swap_device" "$crypt_swap_name"
+      cryptsetup open $cryptsetup_options "$swap_device" "$crypt_swap_name"
     else
       ## case when keyfile is provided in configurations
       mkdir openswap_keymount
