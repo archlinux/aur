@@ -187,7 +187,6 @@ package() {
   popd >/dev/null
   install -Dm644 "$startdir/docker.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
-  # this should cover all manpages possible to generate from the source
   msg2 'manpages'
   pushd "$srcdir/runc/man/man8" >/dev/null
     for i in *; do
