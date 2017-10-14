@@ -2,7 +2,7 @@
 
 pkgname=tilix-git
 _pkgname=tilix
-pkgver=1.6.4.r61.2b45f19
+pkgver=1.7.0.r0.cef8f01
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64' 'i686')
