@@ -2,7 +2,7 @@
 # Based on hunspell-fr PKGBUILD
 
 pkgname=hunspell-fr-revised-base
-pkgver=6.0.2
+pkgver=6.1
 pkgrel=1
 pkgdesc="French (1990 reform) hunspell dictionary. No symlink (fr_BE, fr_CA, etc.)"
 arch=(any)
@@ -10,15 +10,15 @@ url="http://www.dicollecte.org/"
 license=('custom:MPLv2')
 optdepends=('hunspell: the spell checking libraries and apps')
 provides=('hunspell-fr')
-source=(http://www.dicollecte.org/download/fr/hunspell-french-dictionaries-v${pkgver}.zip
+source=(${url}download/fr/hunspell-french-dictionaries-v${pkgver}.zip
         LICENSE)
-sha256sums=('434956a8f572494718a7d7e79af1d778a6a0192936305daa74e2ada297327af8'
+sha256sums=('0c6acc29d3ec88feed4e4772af4521af1d52ce3fb092e685d474486e06fc5070'
             'fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85')
 package() {
   cd "${srcdir}"
   install -dm755 ${pkgdir}/usr/share/hunspell
-  install -m644 fr-reforme1990.dic ${pkgdir}/usr/share/hunspell/fr_FR.dic
-  install -m644 fr-reforme1990.aff ${pkgdir}/usr/share/hunspell/fr_FR.aff
+  install -m644 fr-reforme1990.dic ${pkgdir}/usr/share/hunspell/fr.dic
+  install -m644 fr-reforme1990.aff ${pkgdir}/usr/share/hunspell/fr.aff
 
   # the symlinks
   install -dm755 ${pkgdir}/usr/share/myspell/dicts
