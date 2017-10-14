@@ -3,8 +3,8 @@
 # Contributor: Tiago Camargo <tcamargo@gmail.com>
 
 pkgname=libogc
-pkgver=1.8.16
-_pkgverexamples=20161115
+pkgver=1.8.17
+_pkgverexamples=20170228
 pkgrel=1
 pkgdesc="Library for Nintendo Gamecube/Wii homebrew development"
 arch=('any')
@@ -18,9 +18,9 @@ source=("http://downloads.sourceforge.net/sourceforge/devkitpro/$pkgname-src-$pk
         "http://downloads.sourceforge.net/sourceforge/devkitpro/gamecube-examples-$_pkgverexamples.tar.bz2")
 noextract=("wii-examples-$_pkgverexamples.tar.bz2"
            "gamecube-examples-$_pkgverexamples.tar.bz2")
-sha256sums=('59a7474c9c8f920553dea2ca645df054630840034e4c1b0568a7e992da87f657'
-            '451a656b3af9900be1f1ae1253573d13fb448a27818ed2a403174ec28a749e56'
-            '6ef8a17aa863916865aab635a6e026ec1eb16d52b1a196e555c84fe53ad6a19f')
+sha256sums=('44324fdad655efa237c4b894e6cc0eb4c359ee816e62d40e527e9e5efb081ed7'
+            '23d08ca833aa68af012cc69e8cb3a3393a0f6501fd0a6008a08d72411785c8f8'
+            'daff012038ac36a8214d85225b4e5b3f6f343c29c3644be8c531df4a08879221')
 options=(!strip staticlibs)
 
 build() {
