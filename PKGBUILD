@@ -1,16 +1,20 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
+# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=slapi-nis
-pkgver=0.54
+pkgver=0.56.1
 pkgrel=1
 pkgdesc="NIS Server and Schema Compatibility plugins for Directory Server"
 arch=(i686 x86_64)
-url="http://slapi-nis.fedorahosted.org/"
+url="https://pagure.io/slapi-nis"
 license=(GPL)
-depends=(389-ds-base libtirpc nspr nss openldap tcp_wrappers)
+depends=(389-ds-base libtirpc nspr nss openldap tcp-wrappers)
 options=(!libtool)
-source=("https://fedorahosted.org/releases/s/l/slapi-nis/slapi-nis-${pkgver}.tar.gz")
-sha512sums=('4afd1f19b8c2c958200e4916044a514abf0ecd237766d501840dcbf913d753214eef90014069d2bd61cbc1fd07f7b000af64a512ead046d47e7dc8e9a2e28753')
+source=("https://releases.pagure.org/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        "https://releases.pagure.org/${pkgname}/${pkgname}-${pkgver}.tar.gz.sig")
+sha512sums=('9a3f58f71e59671969040bf48754f315acf09762c2d4a21c3c176ac9d427bf795c4e85570f23d5caf4879512a4dad3ffc128c9dd28a851a89c494ad77ac08152'
+            'SKIP')
+validpgpkeys=(0E3F7F5E41BA4F0B010B3618252F74950A10D5A8)
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -23,12 +27,6 @@ build() {
     --with-ldap=openldap
 
   make
-}
-
-check() {
-  cd "${pkgname}-${pkgver}"
-  # 389 needs to be running for this to work
-  #make check
 }
 
 package() {
