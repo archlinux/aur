@@ -1,7 +1,7 @@
 pkgbase = emby-server-unlocked
 	pkgdesc = Emby Server compiled with a patch to unlock Emby Premiere features
 	pkgver = 3.2.33.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nvllsvm/emby-unlocked
 	install = emby-server.install
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = emby-server-unlocked
 	depends = referenceassemblies-pcl
 	depends = sqlite
 	provides = emby-server
+	conflicts = emby-server
 	backup = etc/conf.d/emby-server
 	source = emby-server-3.2.33.0.tar.gz::https://github.com/MediaBrowser/Emby/archive/3.2.33.0.tar.gz
 	source = emby-unlocked-3.2.33.0.tar.gz::https://github.com/nvllsvm/emby-unlocked/archive/3.2.33.0.tar.gz
