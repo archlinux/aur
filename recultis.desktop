@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Recultis
+Comment=
+Exec=/opt/Recultis/main.py
+Icon=recultis.png
+Categories=Game;
+Terminal=false
