@@ -1,6 +1,6 @@
 # Maintainer: Ecmel B. CANLIER <aur@admicos.cf>
 pkgname=userfirefox-git
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A CLI program to manage Firefox userChrome.css changes."
 url="https://github.com/Admicos/userfirefox"
