@@ -20,7 +20,7 @@ options=('!strip')
 myname=natron-port
 source=("natron.desktop" "x-natron.xml" "natronIcon256_linux.png" "natronProjectIcon_linux.png")
 
-source_x86_64=("${srcdir}/natron-port-2.3.2-2-x86_64.pkg.tar.tgz::https://sourceforge.net/projects/natron/files/Linux/64/releases/Natron-2.3.2-Linux-x86_64bit.tgz/download")
+source_x86_64=("natron-port-2.3.2-2-x86_64.pkg.tar.tgz::https://sourceforge.net/projects/natron/files/Linux/64/releases/Natron-2.3.2-Linux-x86_64bit.tgz/download")
 
 
 

@@ -23,7 +23,7 @@ pkgbase = natron-portable
 	sha512sums = 1dddf35b232345df38b930db70c50f5f7ec814ff81489ecb45e7ebda69fe00e5ceee9c0d2573740b41f2bd9ea29ffe01c4df2370a6f2c510cfab36b4ce0b2e1a
 	sha512sums = c00522ac142b52e444cc015478817b73e9c3dbcab8a1b9c3d8e5ca11c0d3a2560a2cfebb952a347e1ba181ae69592a02860872fdac2f55b47b07e75c9238b97f
 	sha512sums = eecccebf9a9f2cb88e4294bafe81ccb7fe3ccf02b0e4989a0fb1115184db32e2808ac0b5fe95df9434e3e07ae05339d08fa74dd5c5273ee127c6f5d624663102
-	source_x86_64 = /natron-port-2.3.2-2-x86_64.pkg.tar.tgz::https://sourceforge.net/projects/natron/files/Linux/64/releases/Natron-2.3.2-Linux-x86_64bit.tgz/download
+	source_x86_64 = natron-port-2.3.2-2-x86_64.pkg.tar.tgz::https://sourceforge.net/projects/natron/files/Linux/64/releases/Natron-2.3.2-Linux-x86_64bit.tgz/download
 	md5sums_x86_64 = 96ed725dc472fe778ff9030dceae621c
 	sha512sums_x86_64 = e8062a62db50bc86801af8e3dc1eca73ba273c67326bf0fdfda18b0681d370be681fdcd19455ab2353070158b2e51a7588a3ed11093bed1da2d5b7d1cd1d6fae
 
