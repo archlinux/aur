@@ -1,0 +1,25 @@
+From 20dc81ad04a647ef66b08c274590666554df40c9 Mon Sep 17 00:00:00 2001
+From: Alad Wenter <alad@mailbox.org>
+Date: Sat, 14 Oct 2017 16:59:57 +0200
+Subject: [PATCH] aursync(1): -r is not a default option
+
+---
+ man1/aursync.1 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/man1/aursync.1 b/man1/aursync.1
+index 5569c36..82b8d82 100644
+--- a/man1/aursync.1
++++ b/man1/aursync.1
+@@ -78,7 +78,7 @@ value of the configured repository.
+ .RE
+ 
+ .SS makepkg
+-The default set of options is \fImakepkg -Lcrs\fR.
++The default set of options is \fImakepkg -Lcs\fR.
+ 
+ .B \-f, --force
+ .RS
+-- 
+2.14.2
+
