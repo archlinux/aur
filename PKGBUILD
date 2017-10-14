@@ -8,8 +8,8 @@
 
 pkgname=snort-nfqueue
 _pkgname=snort
-pkgver=2.9.9.0
-pkgrel=3
+pkgver=2.9.11
+pkgrel=1
 pkgdesc='A lightweight network intrusion detection system.'
 arch=('i686' 'x86_64')
 url='http://www.snort.org'
@@ -33,8 +33,8 @@ source=("https://www.snort.org/downloads/snort/${_pkgname}-${pkgver}.tar.gz"
         'local.rules'
         'logrotate'
 	'snort.service')
-sha256sums=('71b147125e96390a12f3d55796ed5073df77206bd3563d84d3e5a1f19e7d7a56'
-            'd6ae35120698353a6066088401d945fd94e6fed6ae9370d0fba4d5436d71cc16'
+sha256sums=('23a45e3ea1e155a3d871c691a10fe23f2bfcfe4d6abc0ebbcdc2ab1fccca14ee'
+            '2c5994e2442f6e4c881e00d6c619aab80f90ac4481b9bff5d3bea43953438d52'
             'b65d8d8e37f686244dfb7293b1ea378f1dfd8141c14dbaf5e83dba9440152808'
             'ec4d81936b3905ba980ee694ae77ad15d5adda45c9f87fa0c27adc38f11bca08'
             '4df93871c41f94d688a6c8b9762fa221a703b54d309ee1436c90eebbd3fb8c9d'
