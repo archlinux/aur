@@ -3,9 +3,9 @@
 
 pkgname=clx-git
 _clname=clx
-pkgver=r305.3878c50
+pkgver=r309.139097b
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('any')
 pkgdesc="An X11 client for Common Lisp"
 url="https://github.com/sharplispers/clx"
 license=('custom')
@@ -46,8 +46,8 @@ package() {
     install -d        ${pkgdir}/usr/share/common-lisp/source/${_clname}/test
     install -d        ${pkgdir}/usr/share/info
     install -m 644 -t ${pkgdir}/usr/share/info manual/${_clname}.info
-    install -d        ${pkgdir}/usr/share/licenses/${_clname}
-    install -m 644 -t ${pkgdir}/usr/share/licenses/${_clname} ${srcdir}/README.licensing
+    install -d        ${pkgdir}/usr/share/licenses/$pkgname
+    install -m 644 -t ${pkgdir}/usr/share/licenses/$pkgname ${srcdir}/README.licensing
 
     install -d ${pkgdir}/usr/share/common-lisp/systems
     cd         ${pkgdir}/usr/share/common-lisp/systems
