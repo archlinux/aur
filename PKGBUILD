@@ -1,42 +1,52 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname="asf"
-pkgver="2.3.2.0"
-pkgrel=2
+pkgver="3.0.3.0"
+pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('any')
 url="https://github.com/JustArchi/ArchiSteamFarm"
 license=('Apache')
-depends=('mono>=4.8')
+depends=('dotnet-sdk-2.0')
+makedepends=('p7zip')
 changelog=changelog
-backup=('opt/asf/config/ASF.json' 'var/lib/asf/config/ASF.json')
+backup=('var/lib/asf/config/ASF.json')
 install=${pkgname}.install
-source=("https://github.com/JustArchi/ArchiSteamFarm/releases/download/${pkgver}/ASF.zip"
+source=("${pkgname}-${pkgver}.zip::https://github.com/JustArchi/ArchiSteamFarm/releases/download/${pkgver}/ASF-generic.zip"
         "${pkgname}.sh"
-        "${pkgname}-config.sh"
         "${pkgname}.service"
         "${pkgname}-user.service"
-        "${pkgname}.sysusers")
-sha256sums=('1a9f50c3cf2eb00e5148bc21a209b0c7c275b6c36c8cae8b4d9b2469bee7ff33'
-            'a5d0324c029efb1f99264e787fea26ad53953b4df59bf642bca1ffabad4027f5'
-            '63b8d4718e8cc61016ef415ff418e6180102b077315f5ce77bfcab9c03433565'
-            '183d7c2f93ca8ca95e00523c4920275e52ad83d049af95610b7cc0672983421c'
-            '1948780515929c7fc8ffa6033bc79a55cbae375a1397326ef9dba0dfbe91cc56'
-            '883373be23f6f49ae597f61c1310d8cd45bce7c3ee1b5d456ffc9fedbe7dd486')
+        "${pkgname}.sysusers"
+        "NLog.config")
+sha256sums=('8d3ed5d970a4fd2736f738cdec6428d7585223a2ed0d2bce5b5fa1376538cf9c'
+            '8d76996c1024b80704b25af8a8800ef3f8a8a518d19c2a1e85ba62b58b22cdfd'
+            'e63b55f65e1c0c935945bd788f47a77be82e96a409b64660b5a96b9c190964ff'
+            'dcaf43586125e07488e338438158097b31ba335fcb238127dfb785a41d223f49'
+            '883373be23f6f49ae597f61c1310d8cd45bce7c3ee1b5d456ffc9fedbe7dd486'
+            'cd2c704c01217c103f8ad1729920a142f63f686351c6a9557c50a33fb3c723fe')
+noextract=('asf-3.0.3.0.zip')
+
+prepare() {
+    7z x -o"${srcdir}/asf" ${pkgname}-${pkgver}.zip
+}
 
 package() {
-    install -d -m 755 "${pkgdir}/opt/${pkgname}"
+    install -d -m 755 "${pkgdir}/usr/lib/${pkgname}"
+    cp -rdp --no-preserve=ownership "${srcdir}/asf" "${pkgdir}/usr/lib"
+    find "${pkgdir}/usr/lib/${pkgname}" -type f -exec chmod 644 {} \;
+    find "${pkgdir}/usr/lib/${pkgname}" -type d -exec chmod 755 {} \;
+
     install -d -m 755 "${pkgdir}/var/lib/${pkgname}/config"
-    cp -dp --no-preserve=ownership *.exe "${pkgdir}/opt/${pkgname}"
-    cp -dp --no-preserve=ownership config/* "${pkgdir}/var/lib/${pkgname}/config"
+    mv "${pkgdir}/usr/lib/${pkgname}/config" "${pkgdir}/var/lib/${pkgname}"
+    ln -sf "/var/lib/${pkgname}/config" "${pkgdir}/usr/lib/${pkgname}/config"
 
     install -D -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -D -m755 "${srcdir}/${pkgname}-config.sh" "${pkgdir}/usr/bin/${pkgname}-config"
     install -D -m644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -D -m644 "${srcdir}/${pkgname}-user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
     install -D -m644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -D -m644 "${srcdir}/NLog.config" "${pkgdir}/usr/lib/${pkgname}/NLog.config"
 
     # disable auto-updates and version checks
-    sed -i 's/"AutoUpdates": true,/"AutoUpdates": false,/g' ${pkgdir}/var/lib/${pkgname}/config/ASF.json
-    sed -i 's/"UpdateChannel": 1,/"UpdateChannel": 0,/g' ${pkgdir}/var/lib/${pkgname}/config/ASF.json
+    sed -i 's/"AutoUpdates": true,/"AutoUpdates": false,/g' "${pkgdir}/var/lib/${pkgname}/config/ASF.json"
+    sed -i 's/"UpdateChannel": 1/"UpdateChannel": 0/g' "${pkgdir}/var/lib/${pkgname}/config/ASF.json"
 }

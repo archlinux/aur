@@ -1,3 +1,52 @@
+2017-10-11 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.0.3.0-1:
+    [!] Fixed wrong SteamTradeMatcher dupes logic (ref: #657).
+    ASF Windows variant now includes (once again) proper icon. Other variants might make use of ArchiSteamFarm.ico that is now added to the release.
+    Patched up WebSocket SteamProtocols option not working correctly on Windows 7 SP1.
+    IPC will now follow standard alphabetical bot sorting order when used without target bot instance.
+    Usual amount of code improvements, optimizations and bugfixes.
+    package: refactored for v3
+    package: default logging now done in /var/log/asf.log
+    package: removed legacy config migration
+  * 3.0.2.8:
+    Extra out-of-range command arguments are now joined into the last one.
+    ASF Trace logging will now also log echo messages (ref: #653).
+  * 3.0.2.7:
+  * 3.0.1.9:
+    Fixed a small regression introduced in 3.0.1.8 that could cause infinite relogin if GamesPlayedWhileIdle was enabled (ref: #623)
+    Fixed ASF not always (re)starting farming after getting disconnected.
+    Decreased default ASF memory usage by re-enabling old workstation GC, visit high-performance setup if you'd like to keep using server GC.
+    Misc code improvements, optimizations and bugfixes.
+  * 3.0.1.8:
+    Fixed a small regression introduced in 3.0.1.5 that caused GamesPlayedWhileIdle and CustomGamePlayedWhileIdle not always being triggered.
+    Improved reliability of CustomGamePlayed* display order.
+    Improved reliability of having IdleRefundableGames disabled.
+    Misc code improvements, optimizations and bugfixes.
+  * 3.0.1.6:
+    [!] ASF now runs on .NET Core, see V3 migration. You might be also interested in updated wiki sections, such as compatibility.
+    Added support for automatic Steam discovery queue, AutoDiscoveryQueue bot configuration property (ref: #580).
+    Removed !redeem^ and !redeem& commands. Re-added !redeem^ command that requires redeeming mode now (ref: #542).
+    Removed WCFHost, WCFPort and WCFBinding global configuration properties.
+    Added BackgroundGCPeriod, IPCHost and IPCPort global configuration properties.
+    Added MatchableTypes bot configuration property.
+    Added IdleRefundableGames bot configuration property (ref: #522).
+    Added Random, RedeemDateTimesAscending and RedeemDateTimesDescending to FarmingOrder bot configuration property.
+    Added BadgeLevelsAscending and BadgeLevelsDescending to FarmingOrder bot configuration property (ref: #510).
+    Added Double Fine Adventure (402590) to global blacklist.
+    Added !iq, !iqadd and !iqrm commands (ref: #545).
+    Added !pause& command (ref: #509).
+    Added !unpack command (ref: #537)
+    Added !transfer command (ref: #609)
+    Fixed ASF not aborting farming in Complex mode when getting disconnected from Steam network.
+    Fixed ASF sending multiple trades instead of one when multiple events arrive (ref: #583).
+    Fixed ASF attempting to initialize ASF 2FA time without network connectivity (ref: #598).
+    Greatly improved ASF logic as in when to check badge pages (no more useless checks after games switching)
+    Increased default value of IdleFarmingPeriod global configuration property from 3 to 8.
+    GiftsLimiterDelay will now also apply to !redeem, !owns and !addlicense requests (ref: #577).
+    Forwarding RedeemingPreferences will now also respect SteamUserPermissions.
+    ASF will now automatically include your trading token and MatchableTypes if you participate in our public listing.
+    !owns command will now also state extra owned bots count (ref: #564).
+    Gigantic amount of code improvements, optimizations and bugfixes.
 2017-07-10 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.3.2.0-2:
     package: solved a bug in systemd-sysusers by removing an empty line
@@ -40,20 +89,20 @@
     Major code improvements, optimizations and bugfixes.
 2017-03-29 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.3.0.5-1:
-    [!] Reworked permissions, this is a breaking change [1].
-    [!] Changed behaviour of !api command, this is a breaking change [2].
+    [!] Reworked permissions, this is a breaking change.
+    [!] Changed behaviour of !api command, this is a breaking change.
     Added !api <Bots> command (ref: #485).
     Added !nickname command.
-    Added extra workaround for invalidating old trades [3].
+    Added extra workaround for invalidating old trades.
     Fixed ASF compilation on OS X, also added OS X as a test platform to our Travis CI.
     Fixed ASF being able to trigger a rare Steam glitch that could lead to change of bot's nickname to [unassigned] when FarmOffline is set to false.
     Fixed recent Steam breaking change introduced by Valve that broke discovering of keys being redeemed in all ASF versions prior to 2.3.0.4 (ref: #508).
-    ASF release is now compiled with latest Visual Studio 2017 by our AppVeyor CI (previously: VS15) [4].
+    ASF release is now compiled with latest Visual Studio 2017 by our AppVeyor CI (previously: VS15).
     Major code improvements, optimizations and bugfixes.
 2017-03-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.2.3.2-1:
     [!] ASF is now smart enough to automatically choose proper appID for "Series" (video) apps with trading cards in them. Previously it'd be stuck farming wrong game (ref: #473).
-    From now on running ASF will prevent Windows OS from going to sleep (ref: #457) [1].
+    From now on running ASF will prevent Windows OS from going to sleep (ref: #457).
     Added extra logic for handling locked/disabled accounts (ref: #469).
     Added KeepMissingGames to RedeemingPreferences bot config property (ref: #470).
     Added back metadata publishing to all WCF bindings (ref: #448).
@@ -64,10 +113,10 @@
     Fixed SendTradePeriod not working properly.
     Fixed NLog issue that could lead to ASF crash when run via Mono in systemd environment without custom NLog.config (ref: #292).
     Fixed WCF refusing to handle too large !api responses.
-    Updated statistics and privacy policy (ref: #450) [2].
+    Updated statistics and privacy policy (ref: #450).
     Updated internal SteamKit2 code, this results in some misc changes of !redeem statuses. I took the opportunity and documented them in the FAQ while I was at it.
     Further unified ASF commands by adding bot identifier to all of them (ref: #468).
-    Removed AcceptConfirmationsPeriod [3].
+    Removed AcceptConfirmationsPeriod.
     Removed default entries in Blacklist global config property, since they're defined in hardcoded ASF GlobalBlacklist already.
     ASF will no longer accept SteamTradeMatcher trades without MatchEverything, if we can't fetch our inventory during parsing the trade.
     Major code improvements, optimizations and bugfixes.
@@ -196,7 +245,7 @@
     [ConfigGenerator] Properties are now being categorized for easier modifications.
 2016-08-05 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.3.9-1:
-    [!] Important ForwardKeysToOtherBots enhancements [1].
+    [!] Important ForwardKeysToOtherBots enhancements.
     [!] CardDropsRestricted is now true by default.
     Added new FarmingOrder bot config property, thanks to @stackia in #312 . Visit wiki for more info.
     WCF now supports metadata publishing, thanks to @stackia in #309

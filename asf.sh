@@ -1,2 +1,2 @@
 #!/bin/sh
-exec mono /opt/asf/ASF.exe "$@"
+exec /usr/bin/dotnet /usr/lib/asf/ArchiSteamFarm.dll "$@"
