@@ -5,6 +5,6 @@ RC=2
 
 while [ $RC -eq 2 ]
 do
-  /usr/lib/jvm/java-8-openjdk/bin/java -jar Blizcord.exe --disable-update-checker --gui
+  /usr/lib/jvm/java-8-openjdk/bin/java -jar Blizcord.exe --disable-update-checker --gui "$@"
   RC=$?
 done
