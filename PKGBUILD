@@ -7,7 +7,7 @@
 
 pkgname=avant-window-navigator
 pkgver=0.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc='AWN is a customisable dock-like bar at the edge of the screen.'
 arch=('x86_64' 'i686')
 url='https://launchpad.net/awn'
