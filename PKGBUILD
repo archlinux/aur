@@ -6,7 +6,7 @@
 
 pkgname=ccd2cue
 pkgver=0.5
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Convert CloneCD cuesheets (.ccd) to less-compatible CDRWIN cuesheets (.cue)."
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/ccd2cue/"
