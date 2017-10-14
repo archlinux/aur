@@ -27,7 +27,7 @@ _optimize="-O2"
 
 # Upstream name, version, and source URL
 _realname='firefox'
-_pkgver=57.0b7
+_pkgver=57.0b8
 _mozffurl="http://archive.mozilla.org/pub/$_realname/releases/$_pkgver/source/$_realname-$_pkgver.source.tar.xz"
 
 # Debian Firefox trunk Debian source revision and URL (for Unity (global) menubar patch).
@@ -35,7 +35,7 @@ _debianrev=2113
 _debianurl="https://bazaar.launchpad.net/~mozillateam/$_realname/$_realname-trunk.head/tarball/$_debianrev"
 
 # openSUSE Firefox source revision and URL (for openSUSE patches).
-_opensuserev=6c6109948e35
+_opensuserev=932b3ad009d5
 _opensusebaseurl="http://www.rosenauer.org/hg/mozilla/raw-file/$_opensuserev"
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -122,9 +122,9 @@ source=("$_mozffurl"
         'vendor.js' 'kde.js'
         'firefox-fixed-loading-icon.png'
         'firefox.desktop')
-sha256sums=('57912a543890a9a9fd236875c7f461c339124db1c3004379d3492afc9fcb4545'
+sha256sums=('6c15d37a6ff88986a8137e6f1d68cf8157cbd4ecae932511bc3e16953288102f'
             'SKIP'  # Debian source tarball is generated each time it is requested.
-            'e25b9fa2e4ac279b5e073286b7dc9956822bf508eccb67eb870921013274a709'
+            'c4c0a726115eca89ab82a85b364cef6cc897f58317b2890f214510810a30cfa3'
             'ef0f90c9134ef05b950f06a3ffbd699c2e5a5f99a4cdf9868e799534d68c204f'
             'c85a37e71f2bd511fac88d41ca0618ee375c49fc86bc2beddf6dc17c3f17508d'
             'f672e60e22869381e9c4cdd90353a053a0171778eca40d4664bc733822fd535f'
@@ -132,7 +132,7 @@ sha256sums=('57912a543890a9a9fd236875c7f461c339124db1c3004379d3492afc9fcb4545'
             '70bdf9e58397e6483b7a4d925176be74defbde0221cc3d5f253ec4ede55e6f21'
             'ecb7c3ae3f52ee9b430c1e8e69370b1dedb06674e1fcdc856d60942680bf7b62'
             'f3c50e4ec8d58b23530d87a3162e0b33af58ea73b35dc51bd29b1fad0d26f43f'
-            '297db5d883f7f2e086d7dfe2631f1b5dcfd5909f68462940a02cc039186b65c5'
+            'fd58b8fa5716c5724885af280b15ec3915fa3d48b0991a0c92af7a1b414fd665'
             '8da046206e98649a371ce8e9b3dffc9532f78e963f764c866bc4e021b8b6fb5a'
             'f9067f62a25a7a77276e15f91cc9e7ba6576315345cfc6347b1b2e884becdb0c'
             '2797d1e61031d24ee24bf682c9447b3b9c1bca10f8e6cbd597b854af2de1ec54'
