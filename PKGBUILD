@@ -1,36 +1,38 @@
+# $Id$
+# Contributor: Guillaume Horel <guillaume.horel@gmail.com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
+# Contributor: William Rea <sillywilly@gmail.com>
+
 pkgname=ortp-git
-_basename="ortp"
-pkgver=0.22.0.r276.gfbe5a32
+_pkgname=ortp
+pkgver=1.0.2.r11.g5f8fcdd
 pkgrel=1
-pkgdesc="oRTP is a LGPL licensed C library implementing the RTP protocol (rfc3550)"
-arch=(i686 x86_64)
-url="http://www.linphone.org/"
-license=('LGPL2')
-options=(!libtool)
-depends=('openssl' 'libsrtp')
-source=("git://git.linphone.org/${_basename}.git")
+pkgdesc="A Real-time Transport Protocol (RTP) library"
+arch=('i686' 'x86_64')
+url="https://github.com/BelledonneCommunications/ortp"
+license=('GPL3')
+conflicts=('ortp')
+provides=('ortp')
+depends=('bctoolbox-git')
+makedepends=('cmake')
+source=("git+https://github.com/BelledonneCommunications/ortp.git")
 sha256sums=('SKIP')
 
-provides=("${_basename}")
-conflicts=("${_basename}")
-
-prepare() {
-  cd "$_basename"
-  ./autogen.sh
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {
-  cd "$_basename"
-  ./configure --prefix=/usr 
+  cd ${_pkgname}
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+      -DENABLE_STATIC="NO" .
   make
 }
 
 package() {
-  cd "$_basename"
-  make DESTDIR=$pkgdir install
-}
-
-pkgver() {
- cd "$_basename"
- git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd ${_pkgname}
+  make DESTDIR="${pkgdir}" install
 }
