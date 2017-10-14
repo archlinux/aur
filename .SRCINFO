@@ -1,0 +1,18 @@
+pkgbase = xorg-xmh
+	pkgdesc = An xaw based mail program.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	groups = xorg-apps
+	groups = xorg
+	license = custom
+	makedepends = xorg-util-macros
+	makedepends = xbitmaps
+	depends = libxaw
+	source = https://xorg.freedesktop.org/releases/individual/app/xmh-1.0.3.tar.bz2
+	sha1sums = 09f7b3f683b0fe93da62e4dc8ed023fcacca078a
+
+pkgname = xorg-xmh
+
