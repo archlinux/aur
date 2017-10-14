@@ -37,4 +37,6 @@ package()
         "$pkgdir"/usr/bin/librespot
     install -D -m 644 "$_pkgname"/contrib/librespot.service \
         "$pkgdir"/usr/lib/systemd/system/librespot.service
+    install -D -m 644 "$_pkgname"/LICENSE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
