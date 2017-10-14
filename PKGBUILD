@@ -1,38 +1,40 @@
+# $Id$
+# Maintainer:
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Adrià Arrufat <swiftscythe@gmail.com>
+# Contributor: Mark Lee <mark@markelee.com>
+
 pkgname=mediastreamer-git
-_basename="mediastreamer2"
-pkgver=2.10.0.r880.g7f2055c
+_pkgname=mediastreamer2
+pkgver=2.16.1.r73.g212ca580
 pkgrel=1
-pkgdesc="Mediastreamer2 is a GPL licensed library to make audio and video real-time streaming and processing."
+pkgdesc="A library written in C that allows you to create and run audio and video streams"
 arch=('i686' 'x86_64')
-url="http://www.linphone.org/"
+url="https://github.com/BelledonneCommunications/mediastreamer2"
 license=('GPL')
-options=(!libtool)
-depends=('gsm' 'v4l-utils' 'ffmpeg' 'libxv' 'ortp-git' 'speex')
-makedepends=('git' 'cmake' 'automoc4' 'intltool')
-optdepends=('mediastreamer-plugin-msamr-git: amr plugin' 'mediastreamer-plugin-msx264-git: x264 plugin')
-source=("git://git.linphone.org/$_basename.git")
+conflicts=('mediastreamer')
+provides=('mediastreamer')
+depends=('ortp-git' 'ffmpeg' 'libxv' 'libupnp' 'bzrtp-git' 'glew' 'libsrtp' 'mbedtls' 'bctoolbox-git')
+# xxd from Vim is needed to build
+makedepends=('cmake' 'intltool')
+source=("git+https://github.com/BelledonneCommunications/mediastreamer2.git")
 sha256sums=('SKIP')
 
-provides=("mediastreamer")
-conflicts=("mediastreamer")
-
-prepare() {
-  cd "$_basename"
-  ./autogen.sh
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g' 
 }
 
 build() {
-  cd "$_basename"
-  ./configure --prefix=/usr --enable-external-ortp --libexecdir=/usr/lib/mediastreamer/
+  cd ${_pkgname}
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
+      -DENABLE_STATIC="NO" .
   make
 }
 
 package() {
-  cd "$_basename"
-  make DESTDIR=$pkgdir install
-}
-
-pkgver() {
- cd "$_basename"
- git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd ${_pkgname}
+  make DESTDIR="${pkgdir}" install
 }
