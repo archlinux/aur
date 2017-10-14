@@ -1,12 +1,12 @@
 #Maintainer Mike Harris <mike.a.harris@outlook.com>
 pkgname=plasma5-applets-kde-arch-update-notifier-git
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="A KDE plasmoid for your system tray notifying you of available updates"
 url="https://github.com/I-Dream-in-Code/kde-arch-update-plasmoid"
 arch=('any')
 license=('GPL')
-depends=("fakeroot" "konsole")
+depends=("fakeroot" "konsole" "checkupdates-aur")
 makedepends=("make" "cmake" "git" "extra-cmake-modules")
 conflicts=()
 replaces=()
