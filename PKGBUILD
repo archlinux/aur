@@ -2,7 +2,7 @@
 # Based on hunspell-de PKGBUILD
 
 pkgname=hunspell-de-base
-pkgver=20151222
+pkgver=20161207
 pkgrel=1
 pkgdesc="German hunspell dictionaries, no de_BE, de_LI and de_LU symlinks"
 arch=('any')
@@ -12,8 +12,8 @@ makedepends=('hunspell' 'ispell')
 optdepends=('hunspell: the spell checking libraries and apps')
 provides=('hunspell-de')
 conflicts=('hunspell-de')
-source=("http://www.j3e.de/ispell/igerman98/dict/igerman98-$pkgver.tar.bz2")
-md5sums=('d4cc73954389454e4045e0c4c6824813')
+source=("https://www.j3e.de/ispell/igerman98/dict/igerman98-$pkgver.tar.bz2")
+sha256sums=('17296f03c5fea62d76ecc530ebe80f6adc430278f58d472dc1842d71612960a8')
 
 build() {
   cd "$srcdir/igerman98-$pkgver"
