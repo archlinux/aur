@@ -3,7 +3,7 @@
 _gitname=gnome-twitch
 pkgname=gnome-twitch-player-backend-mpv-opengl
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MPV OpenGL (hardware rendering) player backend for GNOME Twitch"
 arch=('i686' 'x86_64')
 url="https://github.com/vinszent/gnome-twitch"
@@ -11,10 +11,18 @@ license=('GPL3')
 makedepends=('git' 'meson')
 depends=('gnome-twitch' 'gtk3' 'libpeas' 'gobject-introspection' 'mpv')
 replaces=('gnome-twitch-mpv')
-source=("https://github.com/Ippytraxx/gnome-twitch/archive/v${pkgver}.tar.gz")
-md5sums=('42abec672144865828a9eb4764037a3a')
+source=("https://github.com/Ippytraxx/gnome-twitch/archive/v${pkgver}.tar.gz"
+        "0001-Fix-typo-in-Meson-build-options.patch")
+md5sums=('42abec672144865828a9eb4764037a3a'
+         '9efc76e74fbfd6ca20a2b474b0980002')
 conflicts=('gnome-twitch-player-backend-mpv-opengl-git'
            'gnome-twitch-mpv')
+
+prepare()
+{
+  cd "${_gitname}-${pkgver}"
+  patch -p1 -i ../0001-Fix-typo-in-Meson-build-options.patch
+}
 
 build()
 {
