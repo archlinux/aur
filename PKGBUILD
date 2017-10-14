@@ -1,43 +1,46 @@
-pkgname=belle-sip-git
-_basename=belle-sip
-pkgver=1.3.3.r62.gfe20a9e
-pkgrel=1
-pkgdesc="A Voice-over-IP phone (git version)"
-arch=('i686' 'x86_64')
-url="http://www.linphone.org/index.php/eng"
-license=('GPL')
-depends=('libantlr3c' 'gcc-libs' 'polarssl')
-makedepends=('java-runtime')
-options=('!emptydirs')
-source=("git://git.linphone.org/$_basename.git" \
-         "antlr.jar::https://github.com/antlr/website-antlr3/blob/gh-pages/download/antlr-3.4-complete.jar?raw=true")
+# $Id$
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Darwin Bautista <djclue917@gmail.com>
 
-provides=("${_basename}")
-conflicts=("${_basename}")
+pkgname=belle-sip-git
+_pkgname=belle-sip
+pkgver=1.6.3.r27.ge3b9709c
+pkgrel=1
+pkgdesc="A Voice-over-IP phone"
+arch=('i686' 'x86_64')
+url="https://github.com/BelledonneCommunications/belle-sip/"
+license=('GPL')
+depends=('libantlr3c' 'gcc-libs' 'mbedtls' 'bctoolbox-git')
+makedepends=('java-runtime')
+provides=('belle-sip')
+conflicts=('belle-sip')
+options=('!emptydirs')
+source=("git+https://github.com/BelledonneCommunications/belle-sip.git"
+	"antlr.jar::https://github.com/antlr/website-antlr3/blob/gh-pages/download/antlr-3.4-complete.jar?raw=true")
+noextract=('antlr.jar')
+sha256sums=('SKIP'
+            '9d3e866b610460664522520f73b81777b5626fb0a282a5952b9800b751550bf7')
+
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
+}
 
 prepare() {
-  cd $_basename
-  ./autogen.sh
-  sed -i "s#antlr_java_prefixes=.*#antlr_java_prefixes=$srcdir#" configure{,.ac}
-  sed -i "s#-Werror##" configure{,.ac}
-
+  cd $_pkgname
+  sed -i -e "s|/opt/local|../..|" cmake/FindAntlr3.cmake
 }
 
 build() {
-  cd $_basename
-  ./configure --prefix=/usr  --libexecdir=/usr/lib/$pkgname \
-    --disable-tests --disable-static --enable-tls
-  CFLAGS="$CFLAGS -Wno-error=cpp"  make
+  cd $_pkgname
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DENABLE_STATIC=NO .
+  make
 }
 
 package() {
-  cd $_basename
+  cd "$_pkgname"
   make DESTDIR="$pkgdir" install
 }
-
-pkgver() {
- cd "$_basename"
- git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-sha256sums=('SKIP'
-            '9d3e866b610460664522520f73b81777b5626fb0a282a5952b9800b751550bf7')

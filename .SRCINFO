@@ -1,19 +1,21 @@
 pkgbase = belle-sip-git
-	pkgdesc = A Voice-over-IP phone (git version)
-	pkgver = 1.3.3.r62.gfe20a9e
+	pkgdesc = A Voice-over-IP phone
+	pkgver = 1.6.3.r27.ge3b9709c
 	pkgrel = 1
-	url = http://www.linphone.org/index.php/eng
+	url = https://github.com/BelledonneCommunications/belle-sip/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = java-runtime
 	depends = libantlr3c
 	depends = gcc-libs
-	depends = polarssl
+	depends = mbedtls
+	depends = bctoolbox-git
 	provides = belle-sip
 	conflicts = belle-sip
+	noextract = antlr.jar
 	options = !emptydirs
-	source = git://git.linphone.org/belle-sip.git
+	source = git+https://github.com/BelledonneCommunications/belle-sip.git
 	source = antlr.jar::https://github.com/antlr/website-antlr3/blob/gh-pages/download/antlr-3.4-complete.jar?raw=true
 	sha256sums = SKIP
 	sha256sums = 9d3e866b610460664522520f73b81777b5626fb0a282a5952b9800b751550bf7
