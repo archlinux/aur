@@ -1,8 +1,9 @@
 pkgbase = natron-portable
 	pkgdesc = Video compositing software similar to Nuke and Adobe After Effects, portable snapshot
-	pkgver = 2.1.7
+	pkgver = 2.3.2
 	pkgrel = 2
 	url = http://natron.fr/
+	install = natron-portable.install
 	arch = x86_64
 	license = GPL
 	depends = ffmpeg
@@ -18,14 +19,13 @@ pkgbase = natron-portable
 	md5sums = ca5186feb5a7f336517c015f72d0f8c8
 	md5sums = 60eb9f97a0ddeab5acda48d15894559a
 	md5sums = 475e14142c51d8b545f7cbc4b5426ce2
-	source_x86_64 = https://bitbucket.org/juanperez89/natron/downloads/natron-port-2.1.7-2-x86_64.pkg.tar.xz
-	source_x86_64 = natron-port-2.1.7-2-x86_64.pkg.tar.xz.sig
-	sha256sums_x86_64 = d697a3b0557cd2596a04a1ea68002cf1e0b3117939b3a0bd4c039f13aff4b859
-	sha256sums_x86_64 = SKIP
-	sha384sums_x86_64 = 46862f6a9ea43f3e32c41c9c1dd87ac18d36ec11738fc47f12532375ae9462029602b86a18d36fa565922125ef580d8d
-	sha384sums_x86_64 = SKIP
-	sha512sums_x86_64 = 1312b187e0cb7c3b39b50da5e5055a8aebc5569415b5368870909bb58a8efca188e496ad60b6073ee3d50ff3c84a7ef4fd796f6d8dd8ef160990c6fcc87e4eec
-	sha512sums_x86_64 = SKIP
+	sha512sums = 7d190bbbb43fc5aef5a204bbb4abb4cef039a36fc38ede54d310ff77e335587cb4e14943bfc7497005a2d42e9a71a4f7b58d942120a1bab45264043f2f9447f7
+	sha512sums = 1dddf35b232345df38b930db70c50f5f7ec814ff81489ecb45e7ebda69fe00e5ceee9c0d2573740b41f2bd9ea29ffe01c4df2370a6f2c510cfab36b4ce0b2e1a
+	sha512sums = c00522ac142b52e444cc015478817b73e9c3dbcab8a1b9c3d8e5ca11c0d3a2560a2cfebb952a347e1ba181ae69592a02860872fdac2f55b47b07e75c9238b97f
+	sha512sums = eecccebf9a9f2cb88e4294bafe81ccb7fe3ccf02b0e4989a0fb1115184db32e2808ac0b5fe95df9434e3e07ae05339d08fa74dd5c5273ee127c6f5d624663102
+	source_x86_64 = /natron-port-2.3.2-2-x86_64.pkg.tar.tgz::https://sourceforge.net/projects/natron/files/Linux/64/releases/Natron-2.3.2-Linux-x86_64bit.tgz/download
+	md5sums_x86_64 = 96ed725dc472fe778ff9030dceae621c
+	sha512sums_x86_64 = e8062a62db50bc86801af8e3dc1eca73ba273c67326bf0fdfda18b0681d370be681fdcd19455ab2353070158b2e51a7588a3ed11093bed1da2d5b7d1cd1d6fae
 
 pkgname = natron-portable
 

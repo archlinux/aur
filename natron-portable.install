@@ -1,0 +1,4 @@
+post_install() {
+	/tmp/Natron-2.3.2-Linux-x86_64bit
+}
+
