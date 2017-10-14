@@ -1,4 +1,9 @@
 # Maintainer: Tilman Blumenbach <tilman AT ax86 DOT net>
+#
+# Credits:
+#   - Thanks to gamezelda and Magotchi for pointing out that newer versions
+#     of the plugin are also hosted on GitHub, which makes downloading the
+#     latest version a lot easier.
 
 pkgname=keepass-plugin-rpc
 epoch=1
