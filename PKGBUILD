@@ -2,7 +2,7 @@
 # Contributor: Morten Linderud <morten@linderud.pw>
 
 pkgname=pipenv
-pkgver=8.2.6
+pkgver=8.2.7
 pkgrel=1
 pkgdesc="Sacred Marriage of Pipfile, Pip, & Virtualenv."
 url="https://docs.pipenv.org"
@@ -14,7 +14,7 @@ depends=('python' 'python-pip' 'python-pew'
          'python-urllib3')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kennethreitz/pipenv/archive/v${pkgver}.tar.gz")
-sha256sums=('89f1731e91a75b2501eccaedd72f105d8b36492e076034d1a694620bec96c902')
+sha256sums=('60e1674f26a5ca8261404f054e46bc5755dc7237300d2b18525eacd1849c704b')
 
 build(){
   cd "$srcdir/pipenv-$pkgver"
