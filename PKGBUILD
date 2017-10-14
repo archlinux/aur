@@ -10,9 +10,17 @@ url="https://github.com/vinszent/gnome-twitch"
 license=('GPL3')
 makedepends=('git' 'meson')
 depends=('gnome-twitch' 'gtk3' 'gstreamer' 'gst-libav' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'libpeas' 'gobject-introspection' 'clutter-gst' 'clutter-gtk')
-source=("https://github.com/Ippytraxx/gnome-twitch/archive/v${pkgver}.tar.gz")
-md5sums=('42abec672144865828a9eb4764037a3a')
+source=("https://github.com/Ippytraxx/gnome-twitch/archive/v${pkgver}.tar.gz"
+        "0001-Fix-typo-in-Meson-build-options.patch")
+md5sums=('42abec672144865828a9eb4764037a3a'
+         '9efc76e74fbfd6ca20a2b474b0980002')
 conflicts=('gnome-twitch-player-backend-gstreamer-clutter-git')
+
+prepare()
+{
+  cd "${_gitname}-${pkgver}"
+  patch -p1 -i ../0001-Fix-typo-in-Meson-build-options.patch
+}
 
 build()
 {
