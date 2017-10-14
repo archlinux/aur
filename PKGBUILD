@@ -1,6 +1,6 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 pkgname='vlmcsd-svn'
-pkgver=svn1108
+pkgver=svn1111
 pkgrel=1
 pkgdesc="KMS activation using vlmcs."
 arch=('any')
@@ -10,16 +10,19 @@ depends=('glibc')
 makedepends=('p7zip')
 replaces=('vlmcsd')
 conflicts=('vlmcsd')
-source=('vlmcsd.7z::http://meson.ad-file.net/download/8z9BVlkVC/2d37e948339d0478b9f86ec87c154715e6fa8fe5/b0df743fdaaf9eb3284787dea3e83967f5160645/vlmcsd-1108-2017-01-19-Hotbird64-source-only.7z'
-        'vlmcsd.service')
+source=('vlmcsd.service')
 install='vlmcsd.install'
-sha256sums=("fffa42d56e9b1d793895d4e481cdcf3541885b5d6f176b6934cea74f3c2650c3"
-            "c145194521ebf5eadc858d89b77a468f878c9a6e1699130ff9822e133ba6917f")
-noextract=('vlmcsd.7z')
+sha256sums=("c145194521ebf5eadc858d89b77a468f878c9a6e1699130ff9822e133ba6917f")
 
 prepare() {
   cd "${srcdir}"
-  7z x -p2017 "${srcdir}/vlmcsd.7z" -y -o"${srcdir}/vlmcsd" > /dev/null
+  curl -c _rghost_session='abc' -o vlmcsd.7z 'http://meson.ad-file.net/download/7JwqCtsJG/9535b1e4bc29e1e3df3c3ac2ba5279cf5ae1b8d3/vlmcsd-1111-2017-06-17-Hotbird64-source-only.7z'
+  if [ "$(sha256sum vlmcsd.7z |awk '{print $1}')" == 'db22d890bc364991eb52f1f94bb3a04cd08cd98033716ccacfbec643805d282c' ]
+  then
+    7z x -p2017 "${srcdir}/vlmcsd.7z" -y -o"${srcdir}/vlmcsd" > /dev/null
+  else
+    exit 1
+  fi
 }
 
 build() {
