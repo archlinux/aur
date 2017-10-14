@@ -1,6 +1,6 @@
 pkgbase = taisei-git
 	pkgdesc = Open source Touhou clone (development version)
-	pkgver = 1.1.r19.ge0d76df
+	pkgver = 1.1.r136.g33a5da6
 	pkgrel = 1
 	url = http://taisei-project.org/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = taisei-git
 	depends = hicolor-icon-theme
 	provides = taisei
 	conflicts = taisei
-	source = taisei::git+https://github.com/laochailan/taisei.git
+	source = taisei::git+https://github.com/taisei-project/taisei.git
 	md5sums = SKIP
 
 pkgname = taisei-git
