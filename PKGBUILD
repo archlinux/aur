@@ -1,8 +1,8 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-lame
-pkgver=3.99.5
-pkgrel=5
+pkgver=3.100
+pkgrel=1
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder (mingw-w64)"
 arch=('any')
 url="http://lame.sourceforge.net/"
@@ -12,7 +12,7 @@ options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'nasm')
 license=('LGPL')
 source=("http://downloads.sourceforge.net/lame/lame-$pkgver.tar.gz")
-md5sums=('84835b313d4a8b68f5349816d33e07ce')
+md5sums=('83e260acbe4389b54fe08e0bdbf7cddb')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
