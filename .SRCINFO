@@ -1,7 +1,7 @@
 pkgbase = arc-greyed-theme-git
 	pkgdesc = A flat, grey theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. Latest commit from the master branch on Github.
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = r737.0c75a25
+	pkgrel = 1
 	url = https://github.com/byeoriy/arc-greyed-theme
 	arch = any
 	license = GPL3

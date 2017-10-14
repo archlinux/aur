@@ -3,8 +3,8 @@
 pkgname=arc-greyed-theme-git
 _pkgname=arc-greyed-theme
 _pkgauthor=byeoriy
-pkgver=0.1.0
-pkgrel=2
+pkgver=r737.0c75a25
+pkgrel=1
 pkgdesc="A flat, grey theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. Latest commit from the master branch on Github."
 arch=('any')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
