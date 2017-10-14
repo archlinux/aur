@@ -14,7 +14,7 @@ conflicts=("$pkgname-bin")
 replaces=("$pkgname-bin")
 backup=("etc/$pkgname/conf/client.conf" "etc/$pkgname/conf/server.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("0b654224d26cfc885902340872a6a214af4c23a19c982acfcb143c72380230f6")
+sha256sums=("eaeb4f63dfea44c93c4bb78f5c037e253edf7ee6b0c2c97dbc5c6bb8b712ab2c")
 
 package() {
   export pkgdir
