@@ -1,19 +1,17 @@
 # $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=shabnam-fonts
-pkgver=1.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A beautiful Persian font based on Vazir font."
 url="https://rastikerdar.github.io/shabnam-font/"
 arch=(any)
 license=('OFL')
 depends=('fontconfig')
-provides=('ttf-shabnam' "$pkgname")
-conflicts=('ttf-shabnam' "$pkgname")
-replaces=('ttf-shabnam')
-source=("$pkgname-$pkgver.zip::https://github.com/rastikerdar/shabnam-font/releases/download/v$pkgver/shabnam-font-v$pkgver.zip")
-sha256sums=('6356816fec2c8fcec223f9bb9468e0826b2a15b38c57db3f9ee2f38787c1508b')
+provides=('ttf-shabnam')
+conflicts=('ttf-shabnam')
+source=("${pkgname}-${pkgver}.zip::https://github.com/rastikerdar/shabnam-font/releases/download/v${pkgver}/shabnam-font-v${pkgver}.zip")
+sha256sums=('1a116e9648cb6df10bb387c821df5149fcc7deb1ef8883ace3ca3805b892ab85')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
