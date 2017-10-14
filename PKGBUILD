@@ -29,6 +29,8 @@ package() {
 	
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
 	
+	echo "/etc/lounge" > "$pkgdir/usr/lib/node_modules/$_npmname/.lounge_home"
+	
 	install -dm700 "$_etc" "$_etc/users"
 	install -Dm600 \
 		"$pkgdir/usr/lib/node_modules/$_npmname/defaults/config.js" \
