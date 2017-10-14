@@ -3,7 +3,7 @@ pkgname=cli53
 pkgver=0.8.10
 pkgrel=1
 pkgdesc="Command line tool for Amazon Route 53"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('BSD')
 depends=()
 makedepends=('go>=1.5' 'make')
