@@ -1,0 +1,33 @@
+#!/usr/bin/openrc-run
+# init script openrc for xboxdrv
+# maintainer: Manoel Vilela <manoel_vilela@engineer.com>
+
+RC_SVCNAME=xboxdrv
+command=/usr/bin/xboxdrv
+config_file=/etc/default/xboxdrv
+command_args="-c $config_file"
+pidfile=/run/$RC_SVCNAME.pid
+required_files=/etc/default/xboxdrv
+
+depend()
+{
+    use dbus
+    need localmount
+    after bootmisc
+}
+
+start() {
+    ebegin "Starting ${RC_SVCNAME}"
+    start-stop-daemon --start --background \
+                      --make-pidfile --pidfile "$pidfile" \
+                      --exec "${command}" -- $command_args
+    eend $?
+}
+
+stop() {
+    ebegin "Stoping ${RC_SVCNAME}"
+    start-stop-daemon --stop \
+                      --pidfile "$pidfile" \
+                      --exec "${command}" -- $command_args
+    eend $?
+}
