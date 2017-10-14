@@ -1,15 +1,15 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=fpaste
-pkgver=0.3.8.1
+pkgver=0.3.9.0
 pkgrel=1
 pkgdesc='A cli frontend for the fpaste.org pastebin'
 arch=('any')
 url='http://fpaste.org/'
 license=('GPL3')
 depends=('python')
-source=("https://fedorahosted.org/released/fpaste/$pkgname-$pkgver.tar.gz")
-sha256sums=('2cf565f2a803371b13292db8f243da5f49c0509eb2e89d6236b4096d74f161df')
+source=("https://releases.pagure.org/fpaste/$pkgname-$pkgver.tar.gz")
+sha256sums=('785cbf8d0db96127051151f442c3cfb97bd97aed8d27a8300c7a2d67e0a7d1d1')
 
 package() {
 	cd "$pkgname-$pkgver"
