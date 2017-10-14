@@ -2,7 +2,7 @@
 
 _npmname=web-ext
 pkgname=nodejs-$_npmname # All lowercase
-pkgver=2.2.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
@@ -11,7 +11,7 @@ license=('MPL2')
 depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-sha256sums=('31f0a3b761686596f00dc8a8e85d710475c7893fcad688302d5bcc62ce252d6f')
+sha256sums=('802293cb2fce76ff8cd5acb831131efdd73210da062808818fc331a2a94359a1')
 
 package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
