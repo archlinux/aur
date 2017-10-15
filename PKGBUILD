@@ -3,7 +3,7 @@
 
 pkgname=dbus-broker
 pkgver=6
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Linux D-Bus Message Broker'
 arch=('i686' 'x86_64')
@@ -44,6 +44,8 @@ prepare() {
 
 build() {
   cd build
+  CFLAGS="$CFLAGS -Wno-unused-parameter"
+  CFLAGS="$CFLAGS -Wno-maybe-uninitialized"
   arch-meson ../$pkgname
   ninja
 }
