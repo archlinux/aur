@@ -1,0 +1,15 @@
+pkgbase = python-bullettrain-git
+	pkgdesc = Bullettrain prompt builder written in Python
+	pkgver = r32.750dc8c
+	pkgrel = 1
+	url = https://github.com/jtyr/python-bullettrain
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = nerd-fonts-complete
+	source = git+https://github.com/jtyr/python-bullettrain.git
+	sha256sums = SKIP
+
+pkgname = python-bullettrain-git
+
