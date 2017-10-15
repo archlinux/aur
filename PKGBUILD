@@ -1,7 +1,7 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
 
 pkgname=stringpool
-pkgver=0.0.p3
+pkgver=0.0.p4
 pkgrel=1
 pkgdesc="C++ string pool"
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/m-ou-se/stringpool'
 license=()
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/de-vri-es/stringpool/archive/$pkgver.tar.gz")
-sha512sums=('59090b55a6cbc897399937a246ef6cf3995043876027b45d40562de58b76acfe4cceacdea204edf9faf1975909a2bdd8f03a7f10814506439629de0fb8b383bd')
+sha512sums=('1bb73b31a165641c9ad46e865c4200bde3efa41c74037d70eb05294863ec21310022f9348f02d33a95fb626bbf8d2a6ab5fd846458d0dee8c20c2b41c976c7d1')
 
 prepare() {
 	rm -rf "$srcdir/build"
