@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=just-git
-pkgver=0.3.1.326
+pkgver=0.3.3.334
 pkgrel=1
 pkgdesc="Just a command runner, like make."
 arch=('x86_64' 'i686')
@@ -14,16 +14,16 @@ source=(git+https://github.com/casey/just.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  echo $(git describe|tr -d v).$(git rev-list --count HEAD)
+  cd ${pkgname%-git}
+  echo $(git describe --tags|tr - .|tr -d v).$(git rev-list --count HEAD)
 }
 
 build() {
-  cd $pkgname
+  cd ${pkgname%-git}
   cargo build --release
 }
 
 package() {
-  cd $pkgname
-  install -D -m755 "$srcdir/$pkgname/target/release/just" "$pkgdir/usr/bin/just"
+  cd ${pkgname%-git}
+  install -Dm755 "$srcdir"/${pkgname%-git}/target/release/just "$pkgdir"/usr/bin/just
 }
