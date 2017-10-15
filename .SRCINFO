@@ -1,0 +1,17 @@
+pkgbase = muximux
+	pkgdesc = A Lightweight portal to your webapps
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/mescon/Muximux
+	install = muximux.install
+	arch = any
+	license = GPL2
+	depends = php
+	optdepends = apache: Web server to run Muximux
+	optdepends = nginx: Web server to run Muximux
+	optdepends = cherokee: Web server to run Muximux
+	source = https://github.com/mescon/Muximux/archive/v2.0.tar.gz
+	sha256sums = 5d422c2de809a7d69036ac877c3bd1034298dad2ab436637b25b973fc1bd95db
+
+pkgname = muximux
+
