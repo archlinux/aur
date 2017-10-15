@@ -6,9 +6,9 @@
 # Contributor: Andrew Kotsyuba <avallach2000@gmail.com>
 
 pkgname=iscan-plugin-gt-f720
-pkgver=0.1.1
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="EPSON Image Scan! plugin for Epson Perfection V30 scanner"
+pkgdesc="EPSON Image Scan! plugin for Epson scanners (GT-F720, GT-S620, Perfection V30, Perfection V300 Photo)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:AVASYSPL')
@@ -17,6 +17,7 @@ conflicts=('iscan-plugin-gt-x720')
 _plugin=${pkgname/iscan-plugin-/}
 _iscan_ver=1.0.0
 _plugin_rel=2
+_file_ver=0.1.1
 source_i686=("https://download2.ebz.epson.net/iscan/plugin/${_plugin}/deb/x86/iscan-${_plugin}-bundle-${_iscan_ver}.x86.deb.tar.gz")
 source_x86_64=("https://download2.ebz.epson.net/iscan/plugin/${_plugin}/deb/x64/iscan-${_plugin}-bundle-${_iscan_ver}.x64.deb.tar.gz")
 sha256sums_i686=('594523472475bf2c822f77b3f60b78a0eaa2e0affb263e8e1a7c82b43bc94e0c')
@@ -34,7 +35,7 @@ fi
 
 build() {
   cd "iscan-${_plugin}-bundle-${_iscan_ver}.${_filearch}.deb/plugins"
-  bsdtar -xf esci-interpreter-${_plugin}_${pkgver}-${_plugin_rel}_${_debarch}.deb
+  bsdtar -xf esci-interpreter-${_plugin}_${_file_ver}-${_plugin_rel}_${_debarch}.deb
   bsdtar -xf data.tar.gz
   gzip -fkd "usr/share/doc/esci-interpreter-${_plugin}/NEWS.gz"
 }
