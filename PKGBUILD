@@ -1,12 +1,11 @@
 # Maintainer: Marcel Radzio <info@nordgedanken.de>
 pkgbase=riot-desktop-git
-pkgver=r4528.65f0bd04
+pkgver=v0.12.6.r0.g2b7ee756
 pkgrel=1
 pkgname=riot-desktop-git
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=('any')
 url="https://riot.im"
-_url="https://github.com/vector-im/riot-web"
 license=('Apache')
 depends=('gtk2' 'libxtst' 'libxss' 'gconf' 'nss' 'libvpx' 'libevent' 'ffmpeg')
 makedepends=('git' 'npm')
@@ -22,7 +21,11 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "$srcdir/${pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	( set -o pipefail
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 prepare() {
@@ -52,7 +55,7 @@ build() {
 package() {
 	cd "$srcdir/${pkgname}"
 	npm install -g --user root --prefix "$pkgdir/usr" electron --cache "${srcdir}/npm-cache"
-	mv "$pkgdir"/usr/bin/electron "$pkgdir"/usr/bin/electron-1_6_11
+	mv "$pkgdir"/usr/bin/electron "$pkgdir"/usr/bin/electron-1_7_9
 	chmod -R go-w "$pkgdir"/usr
 
 	install -d "${pkgdir}"/{usr/share/webapps,etc/webapps}/riot
