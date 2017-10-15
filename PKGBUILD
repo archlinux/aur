@@ -1,5 +1,8 @@
+# $Id$
+# Maintainer: Abuzer Rafey <arafey@vyvygen.org>
+# Contributor: Jacqueline Outka <joutka@vyvygen.org>
 pkgname="mkdocs-material"
-pkgver=1.3.0
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="Material design theme for MkDocs"
 arch=("any")
