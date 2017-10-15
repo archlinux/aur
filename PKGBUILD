@@ -2,7 +2,7 @@
 # Contributor: Huguenin Loïs <huguenindl at gmail dot com>
 
 pkgname=oqapy
-pkgver=3.0.1
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="An application intended to sort files of the image type in graphic mode."
 arch=(any)
@@ -21,7 +21,7 @@ opencv
 hdf5
 )
 source=(http://www.oqapy.eu/releases/$pkgname-$pkgver.tar.gz oqapy.sh)
-sha256sums=('6aed4929f7295d94da8f9770225424edd6f7d4ace97e76dd9209872830e0fd20'
+sha256sums=('39ed959552bbb5323241d6dbffbd4177ebdeb13eacc574f2e573e42431d8a0eb'
             'e5bd611647c50b21fb2b1f61801ee45172ee0aa052c3cf15e5e15cf8a0646a27')
 package() {
   cd "$srcdir"/$pkgname-$pkgver
@@ -40,7 +40,7 @@ package() {
     "$pkgdir"/usr/share/pixmaps/
   # workaround for:
   # Cannot decode file /usr/bin/tgz ...
-  install -Dm755 "$srcdir"/oqapy.sh "$pkgdir"/usr/bin/oqapy
-#   cd "$pkgdir/usr/bin"
-#   ln -s /usr/share/oqapy/oqapy
+#   install -Dm755 "$srcdir"/oqapy.sh "$pkgdir"/usr/bin/oqapy
+   cd "$pkgdir/usr/bin"
+   ln -s /usr/share/oqapy/oqapy
 }
