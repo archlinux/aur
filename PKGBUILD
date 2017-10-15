@@ -1,6 +1,6 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare-git
-pkgver=v4.1.r193.g6d92fe1
+pkgver=v4.1.r194.g6d92fe1
 pkgrel=1
 pkgdesc="The free and open source and cross platform screen sharing software."
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ build() {
 package() {
   cd KShare
   install -Dm755 src/kshare "$pkgdir/usr/bin/kshare"
-  install -Dm644 icons/icon.png "$pkgdir/usr/share/pixmaps/KShare.png"
+  install -Dm644 src/icons/icon.png "$pkgdir/usr/share/pixmaps/KShare.png"
   install -Dm644 KShare.desktop "$pkgdir/usr/share/applications/KShare.desktop"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
