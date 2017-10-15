@@ -1,0 +1,23 @@
+pkgbase = srelay
+	pkgdesc = A Free SOCKS proxy server for Linux, macos and FreeBSD
+	pkgver = 0.4.8
+	pkgrel = 1
+	url = https://sourceforge.net/p/socks-relay
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	depends = sh
+	optdepends = python: generating password
+	provides = srelay
+	conflicts = srelay
+	options = !emptydirs
+	backup = etc/srelay/srelay.conf
+	backup = etc/srelay/srelay.passwd
+	source = git+https://git.code.sf.net/p/socks-relay/srelay
+	sha256sums = SKIP
+
+pkgname = srelay
+
