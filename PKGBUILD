@@ -1,28 +1,31 @@
+# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
 # Contributor: Marek Kubica <marek@xivilization.net>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Paolo Herms
 
 pkgname=why3
-pkgver=0.86.3
-_pkgvercode=35537 # IMPORTANT: update from gforge!
-pkgrel=2
-pkgdesc="The next generation of the software verification platform Why"
-arch=(x86_64 i686)
-url="http://why3.lri.fr/"
+pkgver=0.88.0
+_pkgvercode=37147 # Update when bumping release
+pkgrel=1
+pkgdesc='The next generation of the software verification platform Why'
+arch=('x86_64' 'i686')
+options=('!makeflags')
+url='http://why3.lri.fr/'
 license=('LGPL')
-depends=('gtksourceview2' 'sqlite')
-makedepends=('ocaml' 'ocaml-sqlite3' 'lablgtk2' 'ocaml-menhir')
-source=(https://gforge.inria.fr/frs/download.php/$_pkgvercode/$pkgname-$pkgver.tar.gz)
-sha512sums=('f6df47c01094a9eda1a416ad1787a5f0601022f4889e6f557fca59bd3b59faa9887be3d33f051d10f21a2b5b43bc76c4f5a9f6d1904c07ecee7ceef836ec9b7a')
+depends=('gtksourceview2')
+makedepends=('ocaml' 'ocaml-menhir' 'rubber' 'gtksourceview2' 'lablgtk2' 'ocaml-ocamlgraph' 'zarith' 'coq' 'isabelle')
+source=(https://gforge.inria.fr/frs/download.php/file/$_pkgvercode/$pkgname-$pkgver.tar.gz)
+sha256sums=('523b2566aa8f2089e52d2ea78bce310a7668c1e488fca49b3272ccef1c24bda4')
 
 build() {
-    cd "$srcdir"/$pkgname-$pkgver
-    ./configure --prefix=/usr --disable-pvs-libs
-    make clean
-    make all # src/why3.cma
+  cd $pkgname-$pkgver
+
+  ./configure --prefix=/usr --disable-pvs-libs
+  make
 }
 
 package() {
-    cd "$srcdir"/$pkgname-$pkgver
-    make -j 1 DESTDIR="$pkgdir" OCAMLLIB="$pkgdir"/usr/lib/ocaml install install-lib
+  cd $pkgname-$pkgver
+
+  make DESTDIR=$pkgdir install
 }
