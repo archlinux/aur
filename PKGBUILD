@@ -1,25 +1,30 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=texman
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Texinfo-like syntax for manpages'
 arch=('any')
 url='https://github.com/maandree/texman'
-license=('GPL3')
+license=('custom:ISC')
 depends=('perl')
-makedepends=('perl' 'gzip' 'sed' 'coreutils' 'make')
-source=(https://github.com/maandree/texman/archive/1.0.tar.gz)
-sha256sums=(2eaffe293112baee4a4c98cefe70c74802c3065514020aae9fa8ab29756214ac)
+checkdepends=('perl')
+makedepends=('perl' 'coreutils' 'make')
+source=(texman-$pkgver.tar.gz::https://github.com/maandree/texman/archive/$pkgver.tar.gz)
+sha256sums=(e1a811b6d84cf88785e1801841f2e972c4dda90559f0368efa3ab7034d064719)
 
 
 build() {
   cd "texman-${pkgver}"
-  make
+  make PREFIX=/usr
+}
+
+check() {
+  cd "texman-${pkgver}"
+  make check
 }
 
 package() {
   cd "texman-${pkgver}"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
-
