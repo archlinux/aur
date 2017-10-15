@@ -1,20 +1,21 @@
+# Maintainer : int <int [ate] arcor [dot] de>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-indirect'
-pkgver='0.33'
+pkgver='0.37'
 pkgrel='1'
-pkgdesc="Lexically warn about using the indirect method call syntax."
+pkgdesc="Perl/CPAN Module indirect: Lexically warn about using the indirect method call syntax."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.8.1')
 makedepends=()
-url='http://search.mcpan.org/dist/indirect'
-source=('http://search.mcpan.org/CPAN/authors/id/V/VP/VPIT/indirect-0.33.tar.gz')
-md5sums=('3a8c66e97f46120ff44023ee295d5acb')
-sha512sums=('3cee58c3e14e6eb896916ffacef20ad41d66ed433fe0419c93eaf524db5ddfda628697241b2e8ae021835921ffc62b9db7df5e22a1465311e252de80c9e14e91')
-_distdir="indirect-0.33"
+url='https://metacpan.org/release/indirect'
+source=("http://search.cpan.org/CPAN/authors/id/V/VP/VPIT/indirect-$pkgver.tar.gz")
+md5sums=('d6ae968af42ab90e03f70a2f93ac6b51')
+sha512sums=('8d46ff62c86b23519b030474155f7d8aa4872a9a4a2bb1e3199ac506aee60343b4c572eae8fa41dc5148c115de3c80bcb7f21900ad30822dc9eb437033defe09')
+_distdir="indirect-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +41,7 @@ package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
