@@ -17,12 +17,13 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd Quince
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd Quince
-  cmake . && make
+  cmake .
+  make
 }
 
 package() {
