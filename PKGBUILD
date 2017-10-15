@@ -2,12 +2,12 @@
 
 pkgname=adapta-kde
 pkgver=20171014
-pkgrel=2
+pkgrel=3
 pkgdesc="Adapta KDE customization"
 arch=('any')
 url="https://github.com/PapirusDevelopmentTeam/adapta-kde"
 license=('GPL3')
-depends=('kwin' 'plasma-desktop' 'papirus-icon-theme' 'kvantum-qt5: Customizing theme more')
+depends=('kwin' 'plasma-desktop' 'papirus-icon-theme' 'kvantum-qt5')
 optdepends=('konsole: For the Konsole color scheme'
             'yakuake: For the Yakuake skin'
             'adapta-gtk-theme: Matching GTK theme')
