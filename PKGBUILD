@@ -2,10 +2,10 @@
 # Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=cqrlog
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="An advanced ham radio logger based on MySQL database ( MariaDB replaces MySQL in repositories ). (Binary Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.cqrlog.com"
 license=('GPL')
 groups=()
@@ -17,13 +17,9 @@ groups=()
 depends=('mariadb' 'libmariadbclient' 'mariadb-clients' 'hamlib' 'trustedqsl' 'xplanet' 'glabels' )
 
 
-if [ "$CARCH" = "i686" ]; then
-    _arch='i386'
-    sha256sums=('i2b4d4abd4eb7d6a4956b3a249b62ebf554eb49d6933c3630d1f08f5d268579ce')
-
-elif [ "$CARCH" = "x86_64" ]; then
+if [ "$CARCH" = "x86_64" ]; then
     _arch='amd64'
-    sha256sums=('a822ee8b22c325de9308afd60b1a8393ee70cbc38fe2f193ab134dc516831fd9')
+sha256sums=('b79f8fa3de776e0697a6045d94d103d59ef1d27d091449b71a2eeaaf4e38c76d')
 fi
 
 _pkg="${pkgname//_/-}_${pkgver//_/-}_${_arch}"
