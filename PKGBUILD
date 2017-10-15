@@ -1,10 +1,14 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
+# NOTE:
+# To enable NewTek NDI (libndi), install the package 'ndi-sdk'
+# and add '--enable-libndi_newtek' to the configure options.
+
 pkgname=ffmpeg-full
 _srcname=ffmpeg
-pkgver=3.3.4
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -16,25 +20,25 @@ depends=(
         'libbluray' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394' 'libavc1394'
         'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm' 'libiec61883'
         'libmodplug' 'lame' 'opencore-amr' 'opencv' 'openjpeg2' 'opus' 'pulseaudio'
-        'rubberband' 'rtmpdump' 'schroedinger' 'smbclient' 'snappy' 'libsoxr' 'speex'
+        'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex'
         'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
-        'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'zimg'
-        'zeromq' 'zvbi' 'xz' 'netcdf' 'openal' 'opencl-icd-loader' 'mesa' 'openssl'
+        'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'libxml2'
+        'zimg' 'zeromq' 'zvbi' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'openssl'
         'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'libbs2b' 'flite1' 'libilbc' 'kvazaar' 'nut-multimedia-git'
-        'openh264' 'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs'
+        'chromaprint-fftw' 'libbs2b' 'flite1' 'libilbc' 'kvazaar' 'openh264'
+        'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'libmysofa'
 )
-depends_x86_64=('cuda')
+depends_x86_64=('cuda' 'nvidia-utils')
 optdepends_x86_64=(
     # AUR:
         'intel-media-sdk: for Intel QSV support (experimental)'
 )
 makedepends=(
     # official repositories:
-        'yasm' 'opencl-headers'
+        'nasm' 'opencl-headers'
     # AUR:
-        'blackmagic-decklink-sdk' 'libmfx'
+        'blackmagic-decklink-sdk' 'libmfx' 'libvmaf'
 )
 provides=(
     'ffmpeg' 'ffmpeg-full-nvenc' 'ffmpeg-nvenc' 'ffmpeg-libfdk_aac' 'ffmpeg-decklink'
@@ -47,19 +51,9 @@ conflicts=(
     'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-semifull-git' 'ffmpeg-qsv-git'
 )
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
-        'ffmpeg-openjpeg2.2.patch'
-        'ffmpeg-openjpeg2.3.patch'
         'LICENSE')
-sha256sums=('98b97e1b908dfeb6aeb6d407e5a5eacdfc253a40c2d195f5867ed2d1d46ea957'
-            '490598f78d7879af8ef5b8d7f92ada83d0ee64f9609f6c7b989eb331c2539f68'
-            'b69a99b11de840f3a5d8e1ded7d4cc8c22cee7aef0b04df82046c8652ec2d40d'
+sha256sums=('aeee06e4d8b18d852c61ebbfe5e1bb7014b1e118e8728c1c2115f91e51bffbef'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
-
-prepare() {
-    cd "${_srcname}-${pkgver}"
-    patch -Np1 -i "${srcdir}/ffmpeg-openjpeg2.2.patch"
-    patch -Np1 -i "${srcdir}/ffmpeg-openjpeg2.3.patch"
-}
 
 build() {
     cd "${_srcname}-${pkgver}"
@@ -67,11 +61,25 @@ build() {
     # set x86_64 specific options
     if [ "$CARCH" = 'x86_64' ] 
     then
-        _cuda='--enable-cuda'
-        _cuvid='--enable-cuvid'
-        _libnpp='--enable-libnpp'
-        _cflags='--extra-cflags=-I/opt/cuda/include'
-        _ldflags='--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins'
+        local _cuda='--enable-cuda'
+        local _cudasdk='--enable-cuda-sdk'
+        local _cuvid='--enable-cuvid'
+        local _libnpp='--enable-libnpp'
+        local _cflags='--extra-cflags=-I/opt/cuda/include'
+        
+        # '-L/usr/lib/nvidia' (for cuda_sdk) needs to be enabled only on
+        # systems with nvidia-340xx-utils or nvidia-304xx-utils
+        if pacman -Qqs '^nvidia-340xx-utils$' | grep -q '^nvidia-340xx-utils$' ||
+           pacman -Qqs '^nvidia-304xx-utils$' | grep -q '^nvidia-304xx-utils$'
+        then
+            local _nvidia_340xx_ldflags='-L/usr/lib/nvidia'
+        fi
+        local _ldflags="--extra-ldflags=-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
+        local _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins"
+        
+        # strictly specifying nvcc path is needed if package is installing
+        # cuda for the first time (nvcc path will be in $PATH only after relogin)
+        sed -i "s@^nvcc_default=.*@nvcc_default='/opt/cuda/bin/nvcc'@" configure
     fi
     
     msg2 'Running ffmpeg configure script. Please wait...'
@@ -90,6 +98,7 @@ build() {
         --enable-gray \
         --enable-avresample \
         \
+        --enable-alsa \
         --enable-avisynth \
         --enable-bzlib \
         --enable-chromaprint \
@@ -98,6 +107,7 @@ build() {
         --enable-gmp \
         --enable-gnutls \
         --enable-iconv \
+        --enable-jack \
         --enable-ladspa \
         --enable-libass \
         --enable-libbluray \
@@ -118,7 +128,6 @@ build() {
         --enable-libkvazaar \
         --enable-libmodplug \
         --enable-libmp3lame \
-        --enable-libnut \
         --enable-libopencore-amrnb \
         --enable-libopencore-amrwb \
         --enable-libopencv \
@@ -127,9 +136,9 @@ build() {
         --enable-libopenmpt \
         --enable-libopus \
         --enable-libpulse \
+        --enable-librsvg \
         --enable-librubberband \
         --enable-librtmp  \
-        --enable-libschroedinger \
         --enable-libshine \
         --enable-libsmbclient \
         --enable-libsnappy \
@@ -141,6 +150,7 @@ build() {
         --enable-libtwolame \
         --enable-libv4l2 \
         --enable-libvidstab \
+        --enable-libvmaf \
         --enable-libvo-amrwbenc \
         --enable-libvorbis \
         --enable-libvpx \
@@ -154,30 +164,33 @@ build() {
         --enable-libxcb-xfixes \
         --enable-libxcb-shape \
         --enable-libxvid \
+        --enable-libxml2 \
         --enable-libzimg \
         --enable-libzmq \
         --enable-libzvbi \
         --enable-lzma \
         --enable-decklink \
-        --enable-netcdf \
+        --enable-libmysofa \
         --enable-openal \
         --enable-opencl \
         --enable-opengl \
         --enable-openssl \
+        --enable-sndio \
         --enable-sdl2 \
         --enable-xlib \
         --enable-zlib \
         \
         $_cuda \
+        $_cudasdk \
         $_cuvid \
+        --enable-libdrm \
         --enable-libmfx \
         $_libnpp \
         --enable-nvenc \
         --enable-omx \
         --enable-omx-rpi \
         --enable-vaapi \
-        --enable-vdpau \
-        --enable-videotoolbox
+        --enable-vdpau
     make
     make tools/qt-faststart
 }
