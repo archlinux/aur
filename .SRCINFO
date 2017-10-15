@@ -1,14 +1,14 @@
 pkgbase = dashticz-git
 	pkgdesc = Alternative dashboard for Domoticz
 	pkgver = 2.r3127
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robgeerts/dashticz_v2/tree/master
 	install = dashticz.install
 	arch = x86_64
 	arch = arm
 	arch = armv6h
 	arch = armv7h
-	depends = domoticz
+	depends = domoticz-latest
 	source = git+https://github.com/robgeerts/dashticz_v2.git
 	source = dashticz.install
 	sha256sums = SKIP

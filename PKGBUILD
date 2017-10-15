@@ -2,7 +2,7 @@
 
 pkgname=dashticz-git
 pkgver=2.r3127
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative dashboard for Domoticz"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/robgeerts/dashticz_v2/tree/master"
