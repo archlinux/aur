@@ -1,0 +1,14 @@
+pkgbase = vndr-bin
+	pkgdesc = Vndr is simple vendoring tool, which is inspired by Docker vendor script.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/LK4D4/vndr
+	arch = x86_64
+	license = Apache License Version 2.0
+	makedepends = go
+	provides = vndr
+	source = vndr::git+https://github.com/LK4D4/vndr
+	sha1sums = SKIP
+
+pkgname = vndr-bin
+
