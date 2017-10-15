@@ -21,8 +21,8 @@ source_i686=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i68
 source_x86_64=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2")
 sha512sums=('e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_i686=('1940c97cd382194621e0bb33b523718e54999090bec00e6463a8c93bdff6cfbdc8994be702c6c74ce7f0dd94a76d408020fa5d170584e129beccc9d126ca60ed')
-sha512sums_x86_64=('ade54824ca8181e5c6c8864155b1676e3d191c16ea78bbd1353185c304c3c2e45fdc67a2d1ca96103863d7ae5739297384e1bcfc9214874ce6ffcfe614d64c15')
+sha512sums_i686=('97c3193f10abcaf2009cc8bd979e85bb1132aa8fe4c2e7fc37baf89c1c0db196dea923e2bd5eaf58b85a84222e57a2be8b508f4c4d51af15856bd0eeab7e61fd')
+sha512sums_x86_64=('daed7174b6402f7ee08c5f4e79912b30ecf2364cf3c90b47af50566854d9a3d9dcd17d64f92d5e2690ce623836c3c3642e025d636514e0e3f0c7782853aab6c2')
 # RC
 if [[ $_build = ? ]]; then
   source_i686=("https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/linux-i686/en-US/thunderbird-$_major.tar.bz2")
