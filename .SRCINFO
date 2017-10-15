@@ -7,6 +7,7 @@ pkgbase = audex-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = subversion
 	depends = qt5-script
 	depends = libkcddb
 	depends = cdparanoia
