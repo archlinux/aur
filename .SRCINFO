@@ -1,0 +1,13 @@
+pkgbase = perl-dbix-safe
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://bucardo.org/DBIx-Safe/
+	arch = any
+	license = BSD
+	options = emptydirs
+	source = http://bucardo.org/downloads/DBIx-Safe-1.2.5.tar.gz
+	md5sums = 738fd4e994e84bb5ca09908308e904c6
+	sha256sums = d44e52f3d555a974dad440adf680069f441de9e70806aa5104018b9769085dff
+
+pkgname = perl-dbix-safe
+
