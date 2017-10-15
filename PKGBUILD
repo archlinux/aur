@@ -4,8 +4,8 @@
 
 pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git') 
 _pkgname=pamac
-pkgver=v6.0.4.r3.gb440fa1
-_pkgver=6.0
+pkgver=v6.1.1
+_pkgver=6.1
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('any')
@@ -77,4 +77,5 @@ package_pamac-aur-tray-appindicator-git() {
 }
 
 # vim:set ts=2 sw=2 et:
+
 
