@@ -4,7 +4,7 @@
 pkgname=pwhois_milter
 pkgver=1.3
 pkgrel=1
-pkgdesc="annotates an email message with information about the remote SMTP client IP address (City, Country, ISP)."
+pkgdesc="Postfix add-on which annotates an email message with information about the remote SMTP client IP address (City, Country, ISP)."
 arch=('any')
 url="https://pwhois.org/milter.who/"
 options=(emptydirs)
