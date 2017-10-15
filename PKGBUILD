@@ -2,8 +2,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=dbus-broker
-pkgver=5
-pkgrel=2
+pkgver=6
+pkgrel=1
 
 pkgdesc='Linux D-Bus Message Broker'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('libsystemd' 'expat' 'glib2')
 makedepends=('git' 'meson' 'systemd' 'python-docutils')
 
-_commit=6ef7065b46ea1c3e4835cfd112da07ce30c7534e  # tags/v5^0
+_commit=dbcffd129c46a1dfc7071503832d4833573d9ceb  # tags/v6^0
 source=("git+https://github.com/bus1/dbus-broker#commit=$_commit"
         "git+https://github.com/c-util/c-rbtree"
         "git+https://github.com/c-util/c-sundry"
