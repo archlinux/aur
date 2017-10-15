@@ -1,0 +1,42 @@
+From 441bf5973aff8741a6b5bd93254b79a955a2c0eb Mon Sep 17 00:00:00 2001
+From: fafryd <dz1125.bug.tracker@gmail.com>
+Date: Mon, 9 Oct 2017 20:53:34 +0200
+Subject: [PATCH] fix Invalid kwargs for option "udev-dir" FS#55925
+
+---
+ meson_options.txt | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/meson_options.txt b/meson_options.txt
+index 9861d2d..144f916 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,20 +1,20 @@
+ option('udev-dir',
+        type: 'string',
+-       default: '',
++       value: '',
+        description: 'udev base directory [default=$prefix/lib/udev]')
+ option('libwacom',
+        type: 'boolean',
+-       default: true,
++       value: true,
+        description: 'Use libwacom for tablet identification (default=true)')
+ option('debug-gui',
+        type: 'boolean',
+-       default: true,
++       value: true,
+        description: 'Enable the "debug-gui" feature in the libinput tool [default=true]')
+ option('tests',
+        type: 'boolean',
+-       default: true,
++       value: true,
+        description: 'Build the tests [default=true]')
+ option('documentation',
+        type: 'boolean',
+-       default: true,
++       value: true,
+        description: 'Build the documentation [default=true]')
+-- 
+2.14.2
+

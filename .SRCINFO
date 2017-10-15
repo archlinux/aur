@@ -1,7 +1,7 @@
 pkgbase = libinput-no-hysteresis
 	pkgdesc = Input device management and event handling library sans hysteresis
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/libinput/
 	arch = i686
 	arch = x86_64
@@ -19,10 +19,12 @@ pkgbase = libinput-no-hysteresis
 	source = https://freedesktop.org/software/libinput/libinput-1.8.3.tar.xz
 	source = https://freedesktop.org/software/libinput/libinput-1.8.3.tar.xz.sig
 	source = disable-hysteresis.patch
+	source = 0001-fix-Invalid-kwargs-for-option-udev-dir-FS-55925.patch
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
 	sha512sums = 88006d217e3507858fa6b9ac1f25c267255fb51d1bcf1208d2afd423bf2a9292944bc5526ea91f27fad3ff04c2f9f43ab3aa25fd9fb7ace1231ecd33ddf18de6
 	sha512sums = SKIP
 	sha512sums = 22c97898b8bd2ed6757ce2a0f2c19d8ff908b3134a9bd435285bc5c59d9d4a17cc5bb4ef0bfb01001ef9aeb2c917bdcc79324cc68bc442c2038d9c448773ac5e
+	sha512sums = dd07a48986a2d335b4b4bd68a280e73ded422974489d8b4c2ed3337f6de103b3374400ebd732a54445ab451c3a15ed4b3a73c9cab5053cd7658d27cc0e2cd427
 
 pkgname = libinput-no-hysteresis
 
