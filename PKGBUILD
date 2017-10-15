@@ -3,7 +3,7 @@
 pkgname=hdf5_18-openmpi
 _pkgname=hdf5
 pkgver=1.8.19
-pkgrel=1
+pkgrel=2
 pkgdesc="The hdf5 legacy 1.8 series compiled with openmpi support"
 arch=('i686' 'x86_64')
 url="https://support.hdfgroup.org/HDF5/"
@@ -43,7 +43,6 @@ build() {
   --enable-fortran \
   --enable-fortran2003 \
   --with-pic \
-  --docdir=/opt/share/doc/hdf5 \
   --disable-static \
   --disable-sharedlib-rpath \
   --with-zlib
