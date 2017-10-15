@@ -8,7 +8,7 @@ arch=('any')
 url="http://pypi.python.org/pypi/${_name}"
 license=('GPLv3')
 makedepends=('python-setuptools')
-depends=('python python-pyparsing')
+depends=('python' 'python-pyparsing')
 options=(!emptydirs)
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
