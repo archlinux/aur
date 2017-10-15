@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=libkeccak
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Keccak-family hashing library"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(glibc)
 checkdepends=(glibc valgrind make coreutils)
 makedepends=(glibc gcc make coreutils binutils texinfo)
 source=(libkeccak-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(7d6d7aef8e5cbb189a59ecbd096c253e616fba5f15f2af7212f49fbbc9d910f3)
+sha256sums=(642e9beb7b9f860ce22ac98fe401233b694da25ddb8a8670d19372f4cd0e88d5)
 
 
 build() {
