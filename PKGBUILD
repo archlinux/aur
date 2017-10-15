@@ -2,22 +2,22 @@
 
 pkgname=linphone-desktop-git
 _pkgname=linphone-desktop
-pkgver=4.1.1.r137.gc7db0134
+pkgver=4.1.1.r163.g36aeecf0
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
 arch=('i686' 'x86_64')
 url="http://www.linphone.org"
 license=('GPL')
-depends=('linphone-git' 
-	 'libpulse' 'libxv' 'mediastreamer-git' 'ortp-git' 'bzrtp-git'
-     'bcg729' 'libsoup' 'belle-sip-git' 'libnotify' 'qt5-quickcontrols'
-     'qt5-quickcontrols2' 'qt5-graphicaleffects')
+depends=('bcg729' 'belcard-git' 'belle-sip-git' 'belr-git' 'bzrtp-git'
+    'linphone-git' 'libpulse' 'libxv' 'mediastreamer-git' 'ortp-git' 
+    'libsoup' 'libnotify' 'qt5-quickcontrols'
+    'qt5-quickcontrols2' 'qt5-graphicaleffects')
 makedepends=('cmake' 'pkg-config' 'python-pystache' 'perl-xml-parser' 'intltool')
 optdepends=('pulseaudio')
 options=('!emptydirs')
 provides=('linphone-desktop')
 conflicts=('linphone-desktop')
-source=("git+https://github.com/BelledonneCommunications/linphone-desktop.git")
+source=("git+https://github.com/BelledonneCommunications/linphone-desktop.git#commit=36aeecf0b008d2c5102d92cd93c9b9914eabac3e")
 sha256sums=('SKIP')
 
 pkgver() {

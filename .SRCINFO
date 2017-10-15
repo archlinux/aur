@@ -1,6 +1,6 @@
 pkgbase = linphone-desktop-git
 	pkgdesc = A Voice-over-IP phone
-	pkgver = 4.1.1.r137.gc7db0134
+	pkgver = 4.1.1.r163.g36aeecf0
 	pkgrel = 1
 	url = http://www.linphone.org
 	arch = i686
@@ -11,15 +11,17 @@ pkgbase = linphone-desktop-git
 	makedepends = python-pystache
 	makedepends = perl-xml-parser
 	makedepends = intltool
+	depends = bcg729
+	depends = belcard-git
+	depends = belle-sip-git
+	depends = belr-git
+	depends = bzrtp-git
 	depends = linphone-git
 	depends = libpulse
 	depends = libxv
 	depends = mediastreamer-git
 	depends = ortp-git
-	depends = bzrtp-git
-	depends = bcg729
 	depends = libsoup
-	depends = belle-sip-git
 	depends = libnotify
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
@@ -28,7 +30,7 @@ pkgbase = linphone-desktop-git
 	provides = linphone-desktop
 	conflicts = linphone-desktop
 	options = !emptydirs
-	source = git+https://github.com/BelledonneCommunications/linphone-desktop.git
+	source = git+https://github.com/BelledonneCommunications/linphone-desktop.git#commit=36aeecf0b008d2c5102d92cd93c9b9914eabac3e
 	sha256sums = SKIP
 
 pkgname = linphone-desktop-git
