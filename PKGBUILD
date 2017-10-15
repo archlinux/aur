@@ -13,7 +13,7 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=17.06.0.dev.32959.7117d5ef25
+pkgver=17.06.0.dev.33726.f2afa26235
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container.'
@@ -21,6 +21,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/docker/docker"
 license=('Apache License Version 2.0')
 depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd')
+optdepends=('vndr')
 makedepends=('glibc' 'git' 'go' 'btrfs-progs' 'go-md2man' 'apparmor-libapparmor' 'cmake')
 provides=('docker')
 conflicts=('docker' 'containerd' 'containerd-git' 'runc' 'runc-git')
@@ -226,3 +227,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+
