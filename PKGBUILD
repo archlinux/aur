@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/maandree/adjbacklight"
 license=('custom:ISC')
 depends=('linux')
-source=(https://github.com/maandree/adjbacklight/archive/${pkgver}.tar.gz)
+source=(adjbacklight-$pkgver.tar.gz::https://github.com/maandree/adjbacklight/archive/${pkgver}.tar.gz)
 sha256sums=(e643c199ab333c75e88304b922e8823d385e464181fdf389fe23c79ff2e91a04)
 
 
