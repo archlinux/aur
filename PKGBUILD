@@ -2,7 +2,7 @@
 
 pkgname=rpw
 
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 
 # jar filename on dropbox
@@ -22,7 +22,7 @@ _comment="$pkgdesc"
 _exec=("rpw")
 _categories="Application;Development"
 
-source=("https://github.com/mcRPW/rpw/releases/download/v4.4.0/$FNAME"
+source=("https://github.com/mcRPW/rpw/releases/download/v4.5.0/$FNAME"
         "https://raw.githubusercontent.com/mcRPW/rpw/master/LICENSE.txt")
 
 depends=('java-runtime')
@@ -36,7 +36,7 @@ makedepends=("unzip"
 
 provides=("rpw")
 
-md5sums=('804aa7850d427c4651d5536b19bd61ca'
+md5sums=('49c7864029decd66c92a6d8998ce157f'
          '604f46ee27f8c28ba680499f436b80b6')
 
 prepare() {
