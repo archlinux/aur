@@ -5,9 +5,9 @@
 # Contributor: Ace <a.mad.coder at gmail dot com>
 
 _version=2017.2.0
-_build=f1
-_buildtag=20170925
-_randomstring=ad31c9083c46
+_build=f3
+_buildtag=20171013
+_randomstring=ee86734cf592
 _extractiondir=unity-editor-${_version}${_build}
 
 pkgname=('unity-editor' 'monodevelop-unity')
@@ -44,7 +44,7 @@ source=("http://beta.unity3d.com/download/${_randomstring}/unity-editor-installe
         'monodevelop-unity'
         'unity-monodevelop.png')
 noextract=("unity-editor-installer-${_version}${_build}.sh")
-sha1sums=('deddbac06b0849b1074791cf30140c40ac131194'
+sha1sums=('ca8b798a29d81140193956905937feb2fbe32b71'
           'b0b08428b5df109916db396717ec7a8ec5f4c0c4'
           'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
           '8ffbfd8f4577b146d25217720ac6689c5d929e84'
