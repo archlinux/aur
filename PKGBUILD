@@ -1,12 +1,12 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=picapport
 pkgver=7.0.02
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use, free of charge, photo server for your home network"
 arch=('any')
 url="http://www.picapport.de/"
 license=('CC BY-NC-ND 4.0')
-depends=('java-runtime-headless')
+depends=('java-runtime-headless' 'shared-mime-info')
 optdepends=('java-openjfx: for running the interactive GUI')
 source=("${pkgname}.jar::https://www.picapport.de/prepare_download.php?dlfile=${pkgver//\./-}/picapport.jar")
 
