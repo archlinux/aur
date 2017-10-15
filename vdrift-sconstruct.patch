@@ -1,0 +1,59 @@
+--- ./SConstruct.orig	2014-08-04 08:43:04.000000000 -0400
++++ ./SConstruct	2017-10-15 11:18:01.792656230 -0400
+@@ -92,9 +92,9 @@ elif sys.platform == 'darwin':
+ 
+     for a in env['universal']:
+         if not sdk_path:
+-            print 'Building a universal binary require access to an ' + \
++            print ('Building a universal binary require access to an ' + \
+                 'SDK that has universal \nbinary support.If you know ' + \
+-                'the location of such an SDK, specify it using the \n"SDK" option'
++                'the location of such an SDK, specify it using the \n"SDK" option')
+             Exit(1)
+         env.Append( CCFLAGS = ['-arch', a],  LINKFLAGS = ['-arch', a] )
+ 
+@@ -141,11 +141,11 @@ else:
+         CC = 'gcc', CXX = 'g++',
+         options = opts)
+     # Take environment variables into account
+-    if os.environ.has_key('CXX'):
++    if 'CXX' in os.environ:
+         env['CXX'] = os.environ['CXX']
+-    if os.environ.has_key('CXXFLAGS'):
++    if 'CXXFLAGS' in os.environ:
+         env['CXXFLAGS'] += SCons.Util.CLVar(os.environ['CXXFLAGS'])
+-    if os.environ.has_key('LDFLAGS'):
++    if 'LDFLAGS' in os.environ:
+         env['LINKFLAGS'] += SCons.Util.CLVar(os.environ['LDFLAGS'])
+     check_headers = ['GL/gl.h', 'SDL2/SDL.h', 'SDL2/SDL_image.h', 'vorbis/vorbisfile.h', 'curl/curl.h', 'bullet/btBulletCollisionCommon.h', 'bullet/btBulletDynamicsCommon.h']
+     check_libs = []
+@@ -232,7 +232,7 @@ def distcopy (target, source, env):
+ def tarballer (target, source, env):            
+     cmd = 'tar -jcf "%s" -C "%s" .'  % ( str(target[0]), str(source[0]) )
+     #cmd = 'tar -jcf ' + str (target[0]) +  ' ' + str(source[0]) + "  --exclude '*~' "
+-    print 'running ', cmd, ' ... '
++    print ('running ', cmd, ' ... ')
+     p = os.popen (cmd)
+     return p.close ()
+ 
+@@ -362,11 +362,11 @@ env.ParseConfig('pkg-config bullet --lib
+ conf = Configure(env)
+ for header in check_headers:
+     if not conf.CheckCXXHeader(header):
+-        print 'You do not have the %s headers installed. Exiting.' % header
++        print ('You do not have the %s headers installed. Exiting.' % header)
+         Exit(1)
+ for lib in check_libs:
+     if not conf.CheckLibWithHeader(lib[0], lib[1], 'C', lib[2]):
+-        print lib[3]
++        print (lib[3])
+         Exit(1)
+ 
+ env = conf.Finish()
+@@ -535,4 +535,5 @@ if 'data-package' in COMMAND_LINE_TARGET
+ if 'autopackage' in COMMAND_LINE_TARGETS:
+     os.system("CXX1=g++-3.4 CXX2=g++-4.1 APBUILD_CXX1=g++-3.4 APBUILD_NO_STATIC_X=1 VDRIFT_VERSION=%s VDRIFT_MINIMAL=%d VDRIFT_RELEASE=%d makepackage tools/autopackage/vdrift.apspec" % (version, env['minimal'], env['release']))
+ 
+-SConscript('src/SConscript', variant_dir = build_dir, duplicate = 0)
++VariantDir(build_dir, '.', duplicate = 0)
++SConscript('src/SConscript')

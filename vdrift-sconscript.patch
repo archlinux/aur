@@ -1,0 +1,11 @@
+--- ./src/SConscript.orig	2014-09-04 16:06:21.000000000 -0400
++++ ./src/SConscript	2017-10-15 11:22:06.536446627 -0400
+@@ -151,7 +151,7 @@ src = Split("""
+ 		utils.cpp
+ 		window.cpp""")
+ 
+-src.sort(lambda x, y: cmp(x.lower(),y.lower()))
++src.sort(key=lambda x: x.lower())
+ 
+ #------------------------#
+ # Copy Build Environment #
