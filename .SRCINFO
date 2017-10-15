@@ -1,7 +1,7 @@
 pkgbase = perl-data-ical
 	pkgdesc = Perl/CPAN Module Data::ICal: Generates iCalendar (RFC 2445) calendar files
 	pkgver = 0.22
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/release/Data-ICal
 	arch = any
 	license = PerlArtistic
