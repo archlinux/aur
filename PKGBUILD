@@ -2,8 +2,8 @@
 
 pkgbase=python-abjad
 pkgname=(python-abjad python2-abjad)
-pkgver=2.20
-pkgrel=2
+pkgver=2.21
+pkgrel=1
 pkgdesc="Tool for formalized music score control. Package for Python"
 arch=('any')
 url="https://github.com/Abjad/abjad"
@@ -13,7 +13,7 @@ optdepends=('graphviz: to create rhythm-trees graphs and other tree structures'
             'timidity++: to play generated MIDI files'
             'jupyter: browser-based interactive notebook for programming')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('c8ba4ea9707ba87e9a2ede40c97d14d6b6c701ae884667dcd44c828a50c97cb0')
+sha256sums=('5fc1fc977b9521d4b9ce1aa8bdea1aa07306e313bd03feea15e8c680b4f27c5b')
 
 prepare() {
     cp -rup $srcdir/abjad-$pkgver $srcdir/abjad-$pkgver-python2
