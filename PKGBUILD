@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('eist-returns')
 pkgver=0.0.7
-pkgrel=8
+pkgrel=9
 pkgdesc="Arcade-puzzle game"
 arch=('i686' 'x86_64')
 url="https://github.com/nwg-piotr/EistReturns"
@@ -14,7 +14,7 @@ source=("https://github.com/nwg-piotr/EistReturns/raw/master/arch/eist-returns.j
 "https://github.com/nwg-piotr/EistReturns/raw/master/arch/eist-returns-editor"
 "https://github.com/nwg-piotr/EistReturns/raw/master/arch/eist-returns.desktop"
 "https://github.com/nwg-piotr/EistReturns/raw/master/arch/eist-editor.desktop")
-md5sums=('d06532ef155856feb669076f487dcffd'
+md5sums=('e3cd0937c5ce59a9b94a62c86e109640'
          '5ce6928eb681ed62b1028b17f7f372b6'
          'edd0e85ff15b8c02c69c766d59443b74'
          'bd051e745cca93a3b94e345c5b2b91bc'
@@ -38,3 +38,4 @@ package() {
  	install -D -m 644 eist-editor.png \
      "$pkgdir"/usr/share/eist-returns/eist-editor.png
 }
+
