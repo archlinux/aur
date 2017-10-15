@@ -1,0 +1,8 @@
+post_install() {
+  chown -R http:http "${pkgdir}/opt/domoticz/www/dashboard"
+  echo "After the installation is finished, go to the /domoticz/www/<dashticzv2 folder>/custom/ folder, copy the CONFIG_DEFAULT.js file to CONFIG.js (mind the CAPITALS!).
+
+cd domoticz/www/<dashticzv2 folder>/custom/
+cp CONFIG_DEFAULT.js CONFIG.js"
+}
+

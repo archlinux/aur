@@ -1,0 +1,7 @@
+*.tar.gz
+*.tar.xz
+*.tgz
+*.txt
+src/
+pkg/
+dashticz_v2/
