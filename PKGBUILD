@@ -1,6 +1,6 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=openav-luppp-git
-pkgver=1.1.r1.g01f71ec
+pkgver=1.1.1.r15.gbe14f40
 pkgrel=1
 pkgdesc="Luppp is a live performance tool, created by OpenAV productions"
 arch=('i686' 'x86_64')
