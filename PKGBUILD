@@ -10,7 +10,7 @@
 #       -DNCCL_ROOT_DIR:PATH='/opt/cuda'
 
 pkgname=caffe2-git
-pkgver=0.8.1.r218.gf2a14f34
+pkgver=0.8.1.r509.g27747b79
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
 arch=('x86_64')
@@ -38,7 +38,7 @@ depends=(
 )
 makedepends=(
     # official repositories:
-        'git' 'cmake' 'gcc5' 'ninja'
+        'git' 'cmake' 'gcc6' 'ninja'
     # AUR:
         'confu-git' 'python-peachpy-git'
 )
@@ -99,6 +99,9 @@ prepare() {
     done
     unset _submodule
     git submodule update
+    
+    # allow building with cuda 9.0
+    sed -i '/if[[:space:]](CMAKE_C_COMPILER_ID[[:space:]]STREQUAL[[:space:]]"GNU"[[:space:]]AND/s/(/(CUDA_VERSION VERSION_EQUAL 8.0 AND /' cmake/Dependencies.cmake
 }
 
 pkgver() {
@@ -110,6 +113,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
+    
     mkdir -p build
     cd build
     
@@ -122,25 +126,21 @@ build() {
         \
         -DBUILD_TEST:BOOL='OFF' \
         \
-        -DCAFFE2_CPU_FLAGS:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
-        -DCMAKE_CXX_COMPILER='/usr/bin/g++-5' \
-        -DCMAKE_CXX_FLAGS:STRING="$(printf '%s' "$CXXFLAGS" | sed 's/-fno-plt//')" \
-        -DCMAKE_C_COMPILER='/usr/bin/gcc-5' \
-        -DCMAKE_C_FLAGS:STRING="$(printf '%s' "$CFLAGS" | sed 's/-fno-plt//')" \
+        -DCMAKE_CXX_COMPILER='/usr/bin/g++-6' \
+        -DCMAKE_C_COMPILER='/usr/bin/gcc-6' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='NO' \
         -DCMAKE_SKIP_RPATH:BOOL='NO' \
         -DCMAKE_VERBOSE_MAKEFILE:BOOL='FALSE' \
         \
         -DCUDA_64_BIT_DEVICE_CODE:BOOL='ON' \
-        -DCUDA_ARCH_NAME:STRING='Auto' \
         -DCUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE:BOOL='ON' \
         -DCUDA_BUILD_CUBIN:BOOL='OFF' \
         -DCUDA_BUILD_EMULATION:BOOL='OFF' \
         -DCUDA_HOST_COMPILATION_CPP:BOOL='ON' \
-        -DCUDA_HOST_COMPILER:FILEPATH='/usr/bin/gcc-5' \
+        -DCUDA_HOST_COMPILER:FILEPATH='/usr/bin/gcc-6' \
         -DCUDA_NVCC_EXECUTABLE:FILEPATH='/opt/cuda/bin/nvcc' \
         -DCUDA_PROPAGATE_HOST_FLAGS:BOOL='ON' \
         -DCUDA_SDK_ROOT_DIR:PATH='/opt/cuda' \
@@ -184,14 +184,7 @@ build() {
         \
         -Wno-dev \
         ..
-        
-    # NOTE:
-    # The recommended approach of running make in build() and make install in
-    # package() produces two compilations (being the second one unnecessary).
-    # A workaround is to suppress make in build() and run only make install
-    # in package().
-    
-    #make
+    make
 }
 
 package() {
@@ -209,5 +202,4 @@ package() {
     # license
     cd "${srcdir}/${pkgname}"
     install -D -m644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 'PATENTS' "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
 }
