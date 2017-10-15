@@ -21,7 +21,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/docker/docker"
 license=('Apache License Version 2.0')
 depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd')
-makedepends=('glibc' 'git' 'go' 'btrfs-progs' 'go-md2man' 'apparmor-libapparmor')
+makedepends=('glibc' 'git' 'go' 'btrfs-progs' 'go-md2man' 'apparmor-libapparmor' 'cmake')
 provides=('docker')
 conflicts=('docker' 'containerd' 'containerd-git' 'runc' 'runc-git')
 replaces=('docker' 'containerd' 'containerd-git' 'runc' 'runc-git')
@@ -33,8 +33,10 @@ source=('moby::git+https://github.com/moby/moby.git'
         'containerd::git+https://github.com/containerd/containerd.git'
         'runc::git+https://github.com/opencontainers/runc.git'
         'libnetwork::git+https://github.com/docker/libnetwork.git'
+        'tini::git+https://github.com/krallin/tini.git'
         'docker.install')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -71,6 +73,10 @@ prepare() {
   pushd "$srcdir/libnetwork" >/dev/null
     msg2 "checking out libnetwork ($LIBNETWORK_COMMIT)"
     git checkout -q "$LIBNETWORK_COMMIT"
+  popd >/dev/null
+  pushd "$srcdir/tini" >/dev/null
+    msg2 "checking out tini ($TINI_COMMIT)"
+    git checkout -q "$TINI_COMMIT"
   popd >/dev/null
 
   # apply any patches for runc
@@ -110,7 +116,6 @@ build() {
   ln -sf "$srcdir/libnetwork" "$GOPATH/src/github.com/docker/"
   pushd "$GOPATH/src/github.com/docker/libnetwork" >/dev/null
     : "${PROXY_LDFLAGS:=-linkmode=external}"
-
     go build -ldflags="$PROXY_LDFLAGS" -o ./bin/docker-proxy 'github.com/docker/libnetwork/cmd/proxy'
   popd >/dev/null
 
@@ -134,6 +139,13 @@ build() {
     export AUTO_GOPATH=1
     ./hack/make.sh dynbinary
   popd >/dev/null
+
+  # tini (docker-init)
+  msg2 'building docker-init'
+  pushd tini >/dev/null
+    cmake .
+    make tini-static
+  popd >/dev/null    
 }
 
 # TODO: complete tests for all
@@ -164,6 +176,9 @@ package() {
 
   msg2 'docker cli binary'
   install -Dm755 "$GOPATH/src/github.com/docker/cli/build/docker" "$pkgdir/usr/bin/docker"
+
+  msg2 'docker-init binary'
+  install -Dm755 "$srcdir/tini/tini-static" "$pkgdir/usr/bin/docker-init"
 
   msg2 'additional softlinks'
   # symlink containerd/run (nice integration...)
