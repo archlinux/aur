@@ -1,0 +1,14 @@
+pkgbase = plymouth-theme-aperture-git
+	pkgdesc = Plymouth theme resembling the Portal loading screen.
+	pkgver = r1.edab46c
+	pkgrel = 1
+	url = https://github.com/irth/plymouth-theme-aperture/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = plymouth
+	source = https://github.com/irth/plymouth-theme-aperture/archive/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-aperture-git
+
