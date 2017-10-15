@@ -1,7 +1,7 @@
 pkgbase = tranches
 	pkgdesc = MIDI controllable beat slicer
 	pkgver = 0.1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://hitmuri.net/index.php/software/tranches
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tranches
 	source = http://www.hitmuri.net/uploads/Software/tranches-0.1.1.tar.gz
 	source = sconstruct_tranches.diff
 	md5sums = 16e50166309caee1ea94ea944812dbb9
-	md5sums = 8ad5ef73d1925dfa17733cfa647dd9cb
+	md5sums = 8a3799b3e332126999081ce2f6c7fcac
 
 pkgname = tranches
 
