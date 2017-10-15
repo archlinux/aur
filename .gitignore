@@ -1,0 +1,7 @@
+pkg/
+src/
+*.pkg.tar.xz
+*.pkg.tar
+*.src.tar.gz
+*.src.tar.xz
+Renner.zip
