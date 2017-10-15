@@ -1,0 +1,12 @@
+diff --git a/configure.ac b/configure.ac
+index 7fd5b70..a95260f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -116,7 +116,6 @@ AC_SUBST([PATH])
+ AC_USE_SYSTEM_EXTENSIONS
+ 
+ AC_PROG_CC
+-AC_SYS_LARGEFILE
+ AC_CHECK_SIZEOF([off_t])
+ 
+ AC_CHECK_HEADERS([machine/endian.h endian.h features.h])
