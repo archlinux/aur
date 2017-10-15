@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 pkgname=bcunit-cunit-compat
-pkgver=3.0
-pkgrel=3
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="Headers and libraries which allow building with BCUnit Cunit-based projects"
 arch=('any')
 url='https://github.com/BelledonneCommunications/bcunit'
