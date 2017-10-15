@@ -3,7 +3,8 @@ pkgbase = ddgtk
 	pkgver = 0.1.r3.g5b25b7c
 	pkgrel = 1
 	url = https://github.com/gort818/ddgtk
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = meson
@@ -13,6 +14,7 @@ pkgbase = ddgtk
 	depends = vte
 	provides = ddgtk
 	conflicts = ddgtk
+	options = !emptydirs
 	source = ddgtk::git+https://github.com/gort818/ddgtk#branch=master
 	sha1sums = SKIP
 
