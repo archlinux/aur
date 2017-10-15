@@ -16,7 +16,7 @@ source=('riot-desktop-git::git://github.com/vector-im/riot-web.git'
         "riot-desktop.sh")
 sha256sums=('SKIP'
 	    'ae0654027f0646178961f6397322aefdc817d052625772dd297d636fe9726aff'
-            'ab641a40b485f98c8f2ae58d353857b05533625e22220357e0c4d624fcdd5396')
+            '45b5f26c39d2490bd03b52a38bdbe15cbaa5d661a511622eb831f98c63679306')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
