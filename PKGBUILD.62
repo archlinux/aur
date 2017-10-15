@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=62.0.3202.45
+pkgver=62.0.3202.52
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -28,7 +28,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         crc32c-string-view-check.patch
         chromium-gn-bootstrap-r17.patch
         chromium-widevine.patch)
-sha256sums=('975a2fd6dff93067860016959de8e9fbad21778c67c16f4d29e1faee19635c13'
+sha256sums=('f9d7b6c2222d8b335bdebe616650ea76a0db9993879698d8d336f24df9f0eda1'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -71,7 +71,7 @@ prepare() {
 
   # https://crbug.com/710701
   local _chrome_build_hash=$(curl -s https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT |
-    base64 -d | grep -Po '^parent \K[a-z0-9]{40}$')
+    base64 -d | grep -Po '^parent \K[0-9a-f]{40}$')
   if [[ -z $_chrome_build_hash ]]; then
     error "Unable to fetch Chrome build hash."
     return 1
