@@ -9,11 +9,11 @@
 
 _srcver=2.0.5
 _srcrel=3
-_cudaver=8.0
+_cudaver=9.0
 
 pkgname=nccl
 pkgver="${_srcver}.${_srcrel}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for NVIDIA Multi-GPU and multi-node collective communication primitives (needs registration at upstream URL and manual download)'
 arch=('x86_64')
 url='https://developer.nvidia.com/nccl/'
@@ -22,7 +22,7 @@ depends=('cuda')
 conflicts=('nccl-git')
 options=('!strip')
 source=("file://${pkgname}_${_srcver}-${_srcrel}+cuda${_cudaver}_amd64.txz")
-sha256sums=('c32125ac945da865f7b688e15643fa970d2e245694344ec9e60a5fbe3d34ec1a')
+sha256sums=('20b7313dd791010fe29f5f56957c08a13c978ebfb91b4f7460edc1c441e677b2')
 
 package() {
     cd "${pkgname}_${_srcver}-${_srcrel}+cuda${_cudaver}_amd64"
