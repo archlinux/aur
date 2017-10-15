@@ -1,14 +1,15 @@
 pkgbase = kshare-git
 	pkgdesc = The free and open source and cross platform screen sharing software.
-	pkgver = v4.1.139.gfe86bfe
+	pkgver = v4.1.191.ge36f6de
 	pkgrel = 1
 	url = https://github.com/ArsenArsen/KShare
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	depends = qt5-base
-	depends = qt5-svg
 	depends = qt5-x11extras
+	depends = qt5-svg
 	depends = xcb-util-cursor
 	depends = ffmpeg
 	depends = libxfixes
