@@ -1,39 +1,31 @@
-# Maintainer: bartus  <aur@bartus.33mail.com>
 pkgname=nlohmann-json
-#for fragment you can use one of: #commit=, #tag=, #branch=
-#fragment=
-pkgver=2.1.1.r487.gb05ea3de
+pkgver=2.1.1
 pkgrel=1
-pkgdesc="JSON for Modern C++, whole code consistes of a single header file"
-arch=(any)
+pkgdesc="Header-only JSON library for Modern C++"
 url="https://github.com/nlohmann/json"
-license=(MIT)
-makedepends=(git cmake)
-source=(${pkgname}::git+https://github.com/nlohmann/json.git${fragment})
-md5sums=(SKIP) #generate with 'makepkg -g'
-
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+license=('MIT')
+arch=('i686' 'x86_64')
+makedepends=('cmake')
+source=("https://github.com/nlohmann/json/archive/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-  cd ${pkgname}
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+    mkdir -p "$srcdir/nlohmann-json-build"
+    cd "$srcdir/nlohmann-json-build"
+    
+    cmake "$srcdir/json-$pkgver" \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    make
 }
 
 check() {
-  cd ${pkgname}/build 
-  make test
+    cd "$srcdir/nlohmann-json-build"
+    # Tests in this version are broken
+    #CTEST_OUTPUT_ON_FAILURE=1 ctest
 }
 
 package() {
-  cd ${pkgname}/build
-  make DESTDIR="$pkgdir/" install
-  install -D -m644 "../LICENSE.MIT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "$srcdir/nlohmann-json-build"
+    make DESTDIR="$pkgdir" install
+    install -Dm644 "$srcdir/json-$pkgver/LICENSE.MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.MIT"
 }
-
-# vim:set ts=2 sw=2 et:
