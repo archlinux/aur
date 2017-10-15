@@ -22,8 +22,8 @@ provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
 
-source=("pamac-$pkgver-$pkgrel.tar.gz::$url/archive/V$_pkgver.tar.gz")
-sha256sums=('8ca5bb0542f2dc26b637421072eae795d0dbcec3b30f2bdc362af117eea4c679')
+source=("pamac-$pkgver-$pkgrel.tar.gz::$url/archive/v$_pkgver.tar.gz")
+sha256sums=('2d63d33517c288f899eedab08c46dbae859d72b7c3f3a455a3e6622ce9b7851d')
 
 prepare() {
   cd "$srcdir/pamac-$_pkgver"
