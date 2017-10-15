@@ -5,7 +5,7 @@
 # and add '--enable-libndi_newtek' to the configure options.
 
 pkgname=ffmpeg-full-git
-pkgver=3.4.r87797.ge4d5310a50
+pkgver=3.4.r87867.g0655810072
 pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
