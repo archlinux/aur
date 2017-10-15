@@ -1,0 +1,21 @@
+pkgbase = lame-altivec
+	pkgdesc = AltiVec/SSE optimized LAME encoder
+	pkgver = 3.100
+	pkgrel = 1
+	url = http://tmkk.undo.jp/lame/index_e.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = nasm
+	depends = glibc
+	depends = ncurses
+	provides = lame
+	conflicts = lame
+	options = staticlibs
+	source = https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz
+	source = http://tmkk.undo.jp/lame/lame-3.100-sse-20171014.diff
+	sha256sums = ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
+	sha256sums = 8c32c706f7fce0da8150a5fa0a4e7efadc77cc39e0375c05dc2737331a584662
+
+pkgname = lame-altivec
+
