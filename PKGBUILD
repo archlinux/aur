@@ -16,6 +16,21 @@ md5sums=('dbaec016f923da3f5361072df6364a58')
 sha512sums=('d0c57223853477e87b08ccf5d0f4d42563c56cf171598fcebf4a99acbd0c30312740b8028019e78f79f8dd3ebd419c8a92369f2d18fce8e5cd13287051696de1')
 _distdir="DBIx-Class-Schema-PopulateMore-$pkgver"
 
+prepare() {
+  cd "$srcdir/$_distdir"
+
+  # Patch Makefile.PL
+  # by adding "use lib '.';" after "use warnings;".
+  # Maybe a real patch-file would be better.
+  #
+  # This fixes the "Can't locate inc/Module/Install.pm in @INC"-error,
+  # which isn't upstream yet, when doing "make".
+  # See https://rt.cpan.org/Public/Bug/Display.html?id=120825
+  # for details on this problem (but for a different Perl/CPAN-module).
+  #
+  sed -i "s/use warnings FATAL => 'all';/use warnings FATAL => 'all';\nuse lib '.';/" Makefile.PL
+}
+
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
