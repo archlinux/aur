@@ -2,7 +2,7 @@
 # Contributor: blainester <theblainestory@gmail.com>
 # Contributor: nycko <email address unknown>
 pkgname=micro
-pkgver=1.3.1
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
@@ -14,8 +14,8 @@ conflicts=("micro-git")
 source_x86_64=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux64.tar.gz")
 source_i686=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux32.tar.gz")
 
-sha256sums_x86_64=('4c55d43eb6f0277a07d075d29cdd468c7bc932b4864eacc673e141eba578b53c')
-sha256sums_i686=('8e3cb24715fecf35a4e3e51fa0b083576d10e1483b3e651bde4d37831984e576')
+sha256sums_x86_64=('329f746e4ee9edf244618dda4208b638fda34c593d5cd96d8f71dc3b53e3d994')
+sha256sums_i686=('7600666ae08a878c40efa2448fce03a042a18132a2a7f27e134502d36065193d')
 
 package(){
  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/micro" "${pkgdir}/usr/bin/micro"
