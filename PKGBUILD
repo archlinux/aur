@@ -4,6 +4,7 @@ pkgname=kubernetes-built
 pkgnameorg=kubernetes
 pkgver=1.8.0
 pkgrel=2
+pkgrelorg=1
 _contribver=0.7.0
 _contribdate="2017-10-01"
 pkgdesc="Production-Grade Container Scheduling and Management - binary version of aur-kubernetes"
@@ -19,7 +20,7 @@ backup=('etc/kubernetes/apiserver'
 provides=('kubernetes')
 conflicts=('kubernetes' 'kubernetes-bin' 'minikube-bin' 'minikube' 'kubernetes-kubectl' 'kubernetes-cni-bin' 'kubelet-bin' 'kubectl-bin' 'kubeadm-git' 'kubeadm-bin')
 depends=('glibc' 'bash' 'go' 'go-bindata' 'rsync' 'docker' 'ebtables' 'ethtool')
-source=("https://versaweb.dl.sourceforge.net/project/aur-kubernetes-built/kubernetes-$pkgver-$pkgrel-x86_64.pkg.tar.xz"
+source=("https://versaweb.dl.sourceforge.net/project/aur-kubernetes-built/kubernetes-$pkgver-$pkgrelorg-x86_64.pkg.tar.xz"
 #	"https://github.com/kubernetes/contrib/archive/$_contribver.tar.gz"
 		)
 # noextract=("kubernetes-built-$pkgver-$pkgrel-x86_64.pkg.tar.xz")
