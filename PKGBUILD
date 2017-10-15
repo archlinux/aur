@@ -5,8 +5,8 @@
 
 pkgname=ffmpeg-decklink
 _srcname=ffmpeg
-pkgver=3.3.4
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libx265.so' 'libxvidcore.so')
 makedepends=(
     # binary repositories:
-       'ladspa' 'yasm'
+       'ladspa' 'nasm'
     # AUR:
         'blackmagic-decklink-sdk'
 )
@@ -32,19 +32,9 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so' 'ffmpeg')
 conflicts=('ffmpeg' 'ffmpeg-git')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
-        'ffmpeg-openjpeg2.2.patch'
-        'ffmpeg-openjpeg2.3.patch'
         'LICENSE')
-sha256sums=('98b97e1b908dfeb6aeb6d407e5a5eacdfc253a40c2d195f5867ed2d1d46ea957'
-            '490598f78d7879af8ef5b8d7f92ada83d0ee64f9609f6c7b989eb331c2539f68'
-            'b69a99b11de840f3a5d8e1ded7d4cc8c22cee7aef0b04df82046c8652ec2d40d'
+sha256sums=('aeee06e4d8b18d852c61ebbfe5e1bb7014b1e118e8728c1c2115f91e51bffbef'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
-
-prepare() {
-    cd "${_srcname}-${pkgver}"
-    patch -Np1 -i "${srcdir}/ffmpeg-openjpeg2.2.patch"
-    patch -Np1 -i "${srcdir}/ffmpeg-openjpeg2.3.patch"
-}
 
 build() {
   cd "${_srcname}-${pkgver}"
@@ -76,7 +66,6 @@ build() {
     --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
-    --enable-libschroedinger \
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libssh \
