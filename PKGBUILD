@@ -28,5 +28,5 @@ build() {
 }
 package() {
     cd "$srcdir/${pkgname%-git}/build"
-    ninja install
+    sudo ninja install
 }
