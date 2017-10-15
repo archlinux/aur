@@ -24,7 +24,7 @@ _protobuf_version='3.1.0' # commit 'a428e42072765993ff674fda72863c9f1aa2d268' is
 _srcname=caffe2
 pkgname=caffe2-cpu
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe2.ai/'
@@ -48,7 +48,7 @@ depends=(
 )
 makedepends=(
     # official repositories:
-        'git' 'cmake' 'gcc5' 'ninja'
+        'git' 'cmake' 'gcc6' 'ninja'
     # AUR:
         'confu-git' 'python-peachpy-git'
 )
@@ -131,6 +131,7 @@ prepare() {
 
 build() {
     cd "${_srcname}-${pkgver}"
+    
     mkdir -p build
     cd build
     
@@ -146,10 +147,8 @@ build() {
         -DCAFFE2_CPU_FLAGS:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
-        -DCMAKE_CXX_COMPILER='/usr/bin/g++-5' \
-        -DCMAKE_CXX_FLAGS:STRING="$(printf '%s' "$CXXFLAGS" | sed 's/-fno-plt//')" \
-        -DCMAKE_C_COMPILER='/usr/bin/gcc-5' \
-        -DCMAKE_C_FLAGS:STRING="$(printf '%s' "$CFLAGS" | sed 's/-fno-plt//')" \
+        -DCMAKE_CXX_COMPILER='/usr/bin/g++-6' \
+        -DCMAKE_C_COMPILER='/usr/bin/gcc-6' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='NO' \
         -DCMAKE_SKIP_RPATH:BOOL='NO' \
