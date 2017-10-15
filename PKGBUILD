@@ -1,20 +1,22 @@
+# Maintainer : int <int [ate] arcor [dot] de>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-datetime-format-flexible'
-pkgver='0.25'
+pkgver='0.28'
 pkgrel='1'
-pkgdesc="DateTime::Format::Flexible - Flexibly parse strings and turn them into DateTime objects."
+pkgdesc="Perl/CPAN Module DateTime::Format::Flexible: Flexibly parse strings and turn them into DateTime objects."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-datetime' 'perl-datetime-format-builder>=0.74' 'perl-datetime-timezone' 'perl-list-moreutils')
-makedepends=('perl-test-mocktime')
-url='http://search.cpan.org/dist/DateTime-Format-Flexible'
-source=('http://search.cpan.org/CPAN/authors/id/T/TH/THINC/DateTime-Format-Flexible-0.25.tar.gz')
-md5sums=('e0da700eeab8639382be0f7cca763c85')
-sha512sums=('c2cdd0dc682a7ef87f006c27c3822f92db658d187748852c2079b58a08fa527f83ed810e4b737dcc3d3de26eae7b89fb173ab2ffbc25935b868d01510fab8ca6')
-_distdir="DateTime-Format-Flexible-0.25"
+depends=('perl-datetime' 'perl-datetime-format-builder>=0.74' 'perl-datetime-timezone' 'perl-list-moreutils' 'perl-module-pluggable')
+makedepends=()
+checkdepends=('perl-test-mocktime')
+url='https://metacpan.org/release/DateTime-Format-Flexible'
+source=("http://search.cpan.org/CPAN/authors/id/T/TH/THINC/DateTime-Format-Flexible-$pkgver.tar.gz")
+md5sums=('07a20c1a93f4e019424a4504577a46a9')
+sha512sums=('e74de1cf104a37cf832d5976fd450476a42b945a8fd03ab1ddea504e4041009534cef9e72a75a120ab3ed9a1af63fb05bd5876632b594db9e7f21f419678d2d8')
+_distdir="DateTime-Format-Flexible-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +42,7 @@ package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
