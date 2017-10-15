@@ -7,6 +7,7 @@ pkgdesc="Themes for uniform look and feel throughout Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
+depends=('liri-shell-git')
 makedepends=('git' 'liri-qbs-shared-git')
 conflicts=('liri-themes')
 replaces=('liri-themes')
