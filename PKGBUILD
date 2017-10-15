@@ -1,26 +1,29 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=sha3sum
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Keccak-family checksum calculator, including SHA-3"
 arch=(i686 x86_64)
 url="https://github.com/maandree/sha3sum"
-license=('AGPL3')
-depends=(libkeccak argparser glibc)
-makedepends=(libkeccak argparser glibc auto-auto-complete texman sed texinfo)
-install=sha3sum.install
+license=('ISC')
+depends=(libkeccak)
+makedepends=(libkeccak sed)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(d4f4729f6065c489d6ed95e1c997e1bda4308ba37ebb3eb8a666fef17d4fc22f)
+sha256sums=(71ecdd34b947f8060e43b78431cab4c9066549a2193499c5e12e7d2ec4af92be)
 
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr command shell info man
+  make PREFIX=/usr
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make check
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr DESTDIR="$pkgdir" install-base install-shell install-info install-man
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-
