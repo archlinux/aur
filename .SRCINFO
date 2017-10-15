@@ -1,7 +1,7 @@
 pkgbase = perl-dbix-class-schema-populatemore
 	pkgdesc = Perl/CPAN Module DBIx::Class::Schema::PopulateMore: An enhanced populate method
 	pkgver = 0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/DBIx-Class-Schema-PopulateMore
 	arch = any
 	license = PerlArtistic

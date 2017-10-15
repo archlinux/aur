@@ -3,7 +3,7 @@
 
 pkgname='perl-dbix-class-schema-populatemore'
 pkgver='0.19'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module DBIx::Class::Schema::PopulateMore: An enhanced populate method"
 arch=('any')
 license=('PerlArtistic' 'GPL')
