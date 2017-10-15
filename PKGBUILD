@@ -1,5 +1,5 @@
 pkgname=openturns
-pkgver=1.9
+pkgver=1.10rc1
 pkgrel=1
 pkgdesc="Uncertainty treatment library"
 license=('LGPL')
@@ -9,7 +9,7 @@ depends=('libxml2' 'muparser' 'intel-tbb' 'hmat-oss' 'python-matplotlib' 'nlopt'
 makedepends=('cmake' 'swig' 'boost')
 backup=('etc/openturns/openturns.conf')
 source=("https://github.com/openturns/openturns/archive/v$pkgver.tar.gz")
-sha256sums=('2cdb6c6e6afc3966890c2d82012bda61d040318f0c0a4f2776ac18bef2e9733c')
+sha256sums=('cb2b75f5a43a7c1984797d31e3c34ebe9a0fd80a675b06a18a2657606e6c1ce3')
 
 build() {
   cd openturns-$pkgver
@@ -19,6 +19,7 @@ build() {
         -DCMAKE_SKIP_INSTALL_RPATH=ON \
         -DOPENTURNS_SYSCONFIG_PATH=/etc \
         -DUSE_SPHINX=OFF \
+        -DUSE_COTIRE=ON -DCOTIRE_MAXIMUM_NUMBER_OF_UNITY_INCLUDES="-j8" \
         .
   make
 }
