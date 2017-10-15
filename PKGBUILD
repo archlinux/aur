@@ -2,7 +2,7 @@
 
 pkgname=adapta-kde
 pkgver=20171014
-pkgrel=1
+pkgrel=2
 pkgdesc="Adapta KDE customization"
 arch=('any')
 url="https://github.com/PapirusDevelopmentTeam/adapta-kde"
