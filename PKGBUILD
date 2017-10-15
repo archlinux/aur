@@ -9,7 +9,7 @@ url="https://github.com/maandree/sha3sum"
 license=('custom:ISC')
 depends=(libkeccak)
 makedepends=(libkeccak sed)
-source=($pkgname-$pkgver::$url/archive/$pkgver.tar.gz)
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 sha256sums=(71ecdd34b947f8060e43b78431cab4c9066549a2193499c5e12e7d2ec4af92be)
 
 
