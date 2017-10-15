@@ -1,0 +1,16 @@
+pkgbase = volumectl
+	pkgdesc = A command line utility to control the volume
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/vially/volumectl
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = pulseaudio
+	depends = notify-osd
+	options = !strip
+
+pkgname = volumectl
+
