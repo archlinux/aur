@@ -1,0 +1,32 @@
+pkgbase = perl-test-dbix-class
+	pkgdesc = Perl/CPAN Module Test::DBIx::Class: Easier test cases for your DBIx::Class applications
+	pkgver = 0.52
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-DBIx-Class
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-config-any>=0.19
+	depends = perl-dbix-class>=0.08123
+	depends = perl-dbix-class-schema-populatemore>=0.16
+	depends = perl-dbix-class-timestamp>=0.13
+	depends = perl-dbix-class-uuidcolumns>=0.02005
+	depends = perl-data-uuid>=1.215
+	depends = perl-data-visitor>=0.27
+	depends = perl-hash-merge>=0.11
+	depends = perl-list-moreutils>=0.22
+	depends = perl-module-runtime>=0.013
+	depends = perl-moose>=1.10
+	depends = perl-moosex-attribute-env>=0.01
+	depends = perl-moosex-types>=0.23
+	depends = perl-path-class>=0.21
+	depends = perl-sql-translator>=0.11006
+	depends = perl-sub-exporter>=0.982
+	depends = perl-test-deep>=0.106
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEWELLC/Test-DBIx-Class-0.52.tar.gz
+	md5sums = ed5e0748198b89c947817fd67bb78193
+	sha512sums = a1c62bb85c6373c70fdcba68a65fdebb12a95f54572dc5ad4c1c6d4607229a475bfa2f28603f24744ebc72b6d0192c23b42e323d578f4d865320aee6aaf0b2fb
+
+pkgname = perl-test-dbix-class
+
