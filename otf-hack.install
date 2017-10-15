@@ -1,9 +1,32 @@
+msg() {
+    # check if messages are to be printed using color
+    unset ALL_OFF BOLD RED 
+    # prefer terminal safe colored and bold text when tput is supported
+    if tput setaf 0 &>/dev/null; then
+        ALL_OFF="$(tput sgr0)"
+        BOLD="$(tput bold)"
+        RED="${BOLD}$(tput setaf 1)"
+    else
+        ALL_OFF="\e[0m"
+        BOLD="\e[1m"
+        GREEN="${BOLD}\e[32m"
+    fi
+
+    local mesg=$1; shift
+    printf "${RED} !!${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
+}
+
 post_install() {
   echo -n "Updating font cache... "
   fc-cache -f > /dev/null
   mkfontscale /usr/share/fonts/OTF
   mkfontdir /usr/share/fonts/OTF
   echo "done."
+  echo ""
+  msg "Please note that HACK v3 will no longer provide OTF builds."
+  msg "See https://github.com/source-foundry/Hack/issues/267"
+  msg "Please switch to ttf-hack"
+  echo ""
 }
 
 post_upgrade() {
@@ -13,4 +36,3 @@ post_upgrade() {
 post_remove() {
   post_install $1
 }
-
