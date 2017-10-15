@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.8.1.r218.gf2a14f34
+pkgver=0.8.1.r509.g27747b79
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ depends=(
 )
 makedepends=(
     # official repositories:
-        'git' 'cmake' 'gcc5' 'ninja'
+        'git' 'cmake' 'gcc6' 'ninja'
     # AUR:
         'confu-git' 'python-peachpy-git'
 )
@@ -98,6 +98,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
+    
     mkdir -p build
     cd build
     
@@ -110,13 +111,10 @@ build() {
         \
         -DBUILD_TEST:BOOL='OFF' \
         \
-        -DCAFFE2_CPU_FLAGS:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
-        -DCMAKE_CXX_COMPILER='/usr/bin/g++-5' \
-        -DCMAKE_CXX_FLAGS:STRING="$(printf '%s' "$CXXFLAGS" | sed 's/-fno-plt//')" \
-        -DCMAKE_C_COMPILER='/usr/bin/gcc-5' \
-        -DCMAKE_C_FLAGS:STRING="$(printf '%s' "$CFLAGS" | sed 's/-fno-plt//')" \
+        -DCMAKE_CXX_COMPILER='/usr/bin/g++-6' \
+        -DCMAKE_C_COMPILER='/usr/bin/gcc-6' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='NO' \
         -DCMAKE_SKIP_RPATH:BOOL='NO' \
@@ -172,5 +170,4 @@ package() {
     # license
     cd "${srcdir}/${pkgname}"
     install -D -m644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 'PATENTS' "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
 }
