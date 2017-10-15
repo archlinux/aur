@@ -1,7 +1,7 @@
 pkgbase = bbcp-git
 	pkgdesc = A high-performance network file copy application.
 	pkgver = 15.02.03.00.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.slac.stanford.edu/~abh/bbcp/
 	arch = x86_64
 	license = LGPL3
@@ -9,6 +9,7 @@ pkgbase = bbcp-git
 	makedepends = git
 	depends = openssl
 	depends = zlib
+	depends = openssh
 	source = git+http://www.slac.stanford.edu/%7Eabh/bbcp/bbcp.git/
 	md5sums = SKIP
 

@@ -4,12 +4,12 @@
 _pkgname=bbcp
 pkgname=bbcp-git
 pkgver=15.02.03.00.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance network file copy application."
 arch=('x86_64')
 url="http://www.slac.stanford.edu/~abh/bbcp/"
 license=('LGPL3')
-depends=('openssl' 'zlib')
+depends=('openssl' 'zlib' 'openssh')
 makedepends=('sed' 'git')
 source=('git+http://www.slac.stanford.edu/%7Eabh/bbcp/bbcp.git/')
 md5sums=('SKIP')
