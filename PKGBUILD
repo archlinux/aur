@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
@@ -14,9 +14,12 @@ url="https://github.com/aperezdc/ngx-fancyindex"
 license=('BSD')
 
 source=(
-	https://nginx.org/download/nginx-$_nginxver.tar.gz
+	https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
 	https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz
 )
+sha256sums=('SKIP' 'SKIP'
+            '8327150864ca267b735d550d3304030efbbd863fdddfe0a94e970f249a8827ee')
+validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 
 prepare() {
 	cd ngx-$_modname-$pkgver
@@ -40,5 +43,3 @@ package() {
 		install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
 	done
 }
-sha256sums=('de21f3c49ba65c611329d8759a63d72e5fcf719bc6f2a3270e2541348ef1fbba'
-            '8327150864ca267b735d550d3304030efbbd863fdddfe0a94e970f249a8827ee')
