@@ -3,7 +3,7 @@
 pkgname=rpw
 
 pkgver=4.5.1
-pkgrel=1
+pkgrel=2
 
 # jar filename on dropbox
 FNAME="ResourcePackWorkbench.jar"
@@ -22,7 +22,7 @@ _comment="$pkgdesc"
 _exec=("rpw")
 _categories="Application;Development"
 
-source=("https://github.com/mcRPW/rpw/releases/download/v4.5.0/$FNAME"
+source=("https://github.com/mcRPW/rpw/releases/download/v4.5.1/$FNAME"
         "https://raw.githubusercontent.com/mcRPW/rpw/master/LICENSE.txt")
 
 depends=('java-runtime')
@@ -36,7 +36,7 @@ makedepends=("unzip"
 
 provides=("rpw")
 
-md5sums=('49c7864029decd66c92a6d8998ce157f'
+md5sums=('58b42783dced1c27b595f4cc8d47623a'
          '6cddb8a804751e3bb58d427a8e20fcdb')
 
 prepare() {
