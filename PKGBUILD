@@ -9,7 +9,7 @@ url="https://github.com/MrKepzie/Natron"
 license=('GPL')
 depends=('fontconfig' 'qt4' 'python2-pyside' 'python2-shiboken' 'boost-libs' 'pixman' 'glfw-x11' 'cairo')
 optdepends=('openfx-io' 'openfx-misc' 'openfx-arena: Extra OpenFX plugins for Natron includes text node' 'openfx-gmic-bin' 'natron-plugins' 'firejail-extras: Run Natron with an isolated enviorment')
-source_x86_64=("https://downloads.natron.fr/Linux/releases/64bit/files/natron_${pkgver}_amd64.deb")
+source_x86_64=("https://github.com/liberodark/natron/releases/download/2.3.2/natron_2.3.2_amd64.deb")
 source=($pkgname.desktop
         $pkgname.png)
 sha512sums=('4670e936aaa48997d774ec4b13972f067a1bf5b0502cc4cdceef2cbbf308f7a670b09af4e7c80ccbfa398cf00c98d7446ee33a79af0d107750b2a13519539e46'
