@@ -1,0 +1,17 @@
+pkgbase = perl-moosex-attribute-env
+	pkgdesc = Perl/CPAN Module MooseX::Attribute::ENV: Set default of an attribute to a value from %ENV
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/MooseX-Attribute-ENV
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-moose>=0.48
+	depends = perl>=5.8.6
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/MooseX-Attribute-ENV-0.02.tar.gz
+	md5sums = e26364e1276f24b8df6cbf49b83fd1f6
+	sha512sums = 11c6227736732a9962039ebbcbaa11bf8f17571b0a4c8d390913b4df680d06bd96c4db5243c9a0be3aaea1f646ace745d85929ae957aa523d732ec85293db5de
+
+pkgname = perl-moosex-attribute-env
+
