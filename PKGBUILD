@@ -16,7 +16,9 @@ optdepends=('libssh: for ssh protocol support'
 'freerdp: for rdp protocol support'
 'libpulse: for pulseaudio support'
 'libtelnet: for telnet protocol support'
+'monospace: any monospace font such as terminus-font, ttf-inconsolata or ttf-fira-mono. Without it, SSH will not work'
 )
+install=$pkgname.install
 
 source=("http://downloads.sourceforge.net/project/guacamole/current/source/$pkgname-$pkgver-incubating.tar.gz" 'guacd.service')
  
