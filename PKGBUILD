@@ -3,7 +3,7 @@
 pkgname=python2-progress
 _pkgname=progress
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy to use progress bars"
 url="http://github.com/verigak/progress/"
 arch=('any')
@@ -18,4 +18,4 @@ package() {
   python2 setup.py install --root="$pkgdir" -O1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('f65ccfcc2339d522b2dd5801aaa40dc7')
+sha256sums=('c88d89ee3bd06716a0b8b5504d9c3bcb3c1c0ab98f96dc7f1dc5f56812a4f60a')
