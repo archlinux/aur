@@ -1,40 +1,44 @@
-pkgname="linphone-git"
-_basename="linphone"
-pkgver=3.7.0.r1376.gbe7413c
+# $Id$
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Darwin Bautista <djclue917@gmail.com>
+# Contributor: Mark Lee <mark@markelee.com>
+
+pkgname=linphone-git
+_pkgname=linphone
+pkgver=3.12.0.r226.g8d4d87548
 pkgrel=1
-pkgdesc="Linphone is an internet phone or Voice Over IP phone (VoIP)."
-arch=(i686 x86_64)
-url="http://www.linphone.org/"
-license=('GPL2')
-depends=('gtk2' 'mediastreamer-git' 'libexosip2' 'belle-sip-git')
-makedepends=('git')
-options=(!libtool)
-provides=("${_basename}")
-conflicts=("${_basename}")
-source=("git://git.${_basename}.org/${_basename}.git")
+pkgdesc="A Voice-over-IP phone"
+arch=('i686' 'x86_64')
+url="http://www.linphone.org"
+license=('GPL')
+depends=('alsa-lib' 'ffmpeg' 'speex' 'libv4l' 'v4l-utils'
+	 'libpulse' 'libxv' 'mediastreamer-git' 'ortp-git' 'bzrtp-git'
+     'bcg729' 'libsoup' 'belle-sip-git' 'libnotify')
+makedepends=('cmake' 'pkg-config' 'python-pystache' 'perl-xml-parser' 'intltool')
+optdepends=('pulseaudio')
+options=('!emptydirs')
+provides=('linphone')
+conflicts=('linphone')
+install=linphone.install
+source=("git+https://github.com/BelledonneCommunications/linphone.git#commit=8d4d875486e7263354c12dedb3a3b589c52a9bda")
 sha256sums=('SKIP')
 
-prepare() {
-  cd "$_basename"
-  mkdir -p oRTP mediastreamer2
-  touch oRTP/autogen.sh mediastreamer2/autogen.sh
-  chmod +x oRTP/autogen.sh mediastreamer2/autogen.sh
-
-  ./autogen.sh
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {
-  cd "$_basename"
-  ./configure --prefix=/usr --enable-external-ortp --enable-external-mediastreamer
+  cd $_pkgname
+  CXXFLAGS="$CXXFLAGS -Wno-deprecated -Wimplicit-fallthrough=0 -Wno-unused-function"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=lib \
+      -DENABLE_STATIC=NO \
+      -DENABLE_CXX_WRAPPER=YES .
   make
 }
 
 package() {
-  cd "$_basename"
-  make DESTDIR=$pkgdir install
-}
-
-pkgver() {
- cd "$_basename"
- git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$_pkgname"
+  make DESTDIR="$pkgdir" install
 }
