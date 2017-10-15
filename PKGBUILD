@@ -2,7 +2,7 @@
 
 _pkgname=fernflower
 pkgname=$_pkgname-git
-pkgver=r282.7bdec4f
+pkgver=r357.d594bab
 pkgrel=1
 pkgdesc='An analytical decompiler for Java'
 arch=('any')
@@ -20,12 +20,12 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  ant
+  ./gradlew jar
 }
 
 package() {
   cd $_pkgname
-  install -Dm644 "$_pkgname.jar" "$pkgdir/usr/share/java/$_pkgname/$pkgname.jar"
+  install -Dm644 "build/libs/$_pkgname.jar" "$pkgdir/usr/share/java/$_pkgname/$pkgname.jar"
   install -d "$pkgdir/usr/bin"
   printf '#!/bin/sh\nexec java -jar /usr/share/java/%s/%s.jar "$@"\n' $_pkgname $pkgname > "$pkgdir/usr/bin/$_pkgname"
   chmod 755 "$pkgdir/usr/bin/$_pkgname"
