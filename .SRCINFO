@@ -1,7 +1,7 @@
 pkgbase = perl-class-returnvalue
 	pkgdesc = Perl/CPAN Module Class::ReturnValue: A smart return value object
 	pkgver = 0.55
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/release/Class-ReturnValue
 	arch = any
 	license = PerlArtistic
