@@ -1,7 +1,7 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
 pkgname="tilix"
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ provides=('terminix')
 conflicts=('terminix')
 replaces=('terminix')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('427a3819134be9977b01540a4eed0c107c848e23462f124b8cd0ffb42b73649b')
+sha256sums=('1b807ba47d90c849e1712da7213daf46b63bb36c0b9bd6eaec9bc4c5f84465de')
 
 prepare() {
     cd "$pkgname-$pkgver"
