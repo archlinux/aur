@@ -23,10 +23,12 @@ install="${pkgname}.install"
 source=("git+https://github.com/rstudio/rstudio.git"
         "https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
         "https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
-        socketproxy-openssl.patch)
+        openssl-crypto.patch
+        openssl-socketproxy.patch)
 md5sums=('SKIP'
          '2409168cc18bf5f341e107e6887fe359'
          'ddd572887957fd5cdfde3469bd8c1102'
+         'e5a5b48fdddd7273d3b4a41123e9c419'
          'd571313f511ad4a17014c4aef6d01bbc')
 
 pkgver() {
@@ -37,7 +39,8 @@ pkgver() {
 prepare() {
     msg "Apply socketproxy-openssl.patch..."
     cd "${srcdir}/${_gitname}"
-    patch -p1 < ${srcdir}/socketproxy-openssl.patch
+    patch -p1 < ${srcdir}/openssl-crypto.patch
+    patch -p1 < ${srcdir}/openssl-socketproxy.patch
 
     msg "Extracting dependencies..."
     cd "${srcdir}/${_gitname}/src/gwt"
