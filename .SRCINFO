@@ -1,24 +1,19 @@
 pkgbase = cernbox
 	pkgdesc = Synchronization client for CERN's CERNBox cloud service (based on ownCloud). Note: CERN IT does not provide official support for Arch Linux. Use at your own risk.
-	pkgver = 2.1.1_1.1
-	pkgrel = 2
+	pkgver = 2.3.3_1119.1
+	pkgrel = 1
 	url = http://cernbox.web.cern.ch/
 	arch = x86_64
 	license = GPL
 	depends = neon
 	depends = qt5-webkit
+	depends = qtkeychain
 	provides = ocsync
 	provides = cernboxsync
-	source = http://cernbox.cern.ch/cernbox/doc/Linux/repo/openSUSE_13.2/x86_64/cernbox-client-2.1.1-1.1.x86_64.rpm
-	source = http://cernbox.cern.ch/cernbox/doc/Linux/repo/openSUSE_13.2/x86_64/libcernboxsync0-2.1.1-1.1.x86_64.rpm
-	source = http://cernbox.cern.ch/cernbox/doc/Linux/repo/openSUSE_13.2/x86_64/libqt5keychain0-0.5-3.1.x86_64.rpm
-	source = cernbox
-	source = cernboxcmd
-	md5sums = dc1ec5cf677831dcadd019ce5e88516c
-	md5sums = 743d03f22dcf357112590adbfc120306
-	md5sums = 54e5726b228dde3b1593d357607861c3
-	md5sums = 911d014c0670d3bf7cbc622f00206339
-	md5sums = 83a60fef4c5f69b2ed91605db490a955
+	source = http://cernbox.cern.ch/cernbox/doc/Linux/repo/openSUSE_Leap_42.3/x86_64/cernbox-client-2.3.3-1119.1.x86_64.rpm
+	source = http://cernbox.cern.ch/cernbox/doc/Linux/repo/openSUSE_Leap_42.3/x86_64/libcernboxsync0-2.3.3-1119.1.x86_64.rpm
+	md5sums = 7ab398b3684c7f353b90325da7d67fa9
+	md5sums = 6e2c98c67893c370aeb94572b5094a2a
 
 pkgname = cernbox
 
