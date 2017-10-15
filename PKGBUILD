@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=(glibc)
 checkdepends=(glibc valgrind make coreutils)
 makedepends=(glibc gcc make coreutils binutils texinfo)
-source=($url/archive/$pkgver.tar.gz)
+source=(libkeccak-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 sha256sums=(7d6d7aef8e5cbb189a59ecbd096c253e616fba5f15f2af7212f49fbbc9d910f3)
 
 
