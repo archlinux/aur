@@ -3,18 +3,17 @@
 
 pkgbase=qt-installer-framework
 pkgname=(qt-installer-framework qt-installer-framework-docs)
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.0.5
+pkgrel=1
 pkgdesc='The Qt Installer Framework used for the Qt SDK installer'
 arch=('i686' 'x86_64')
 url='http://qt-project.org/wiki/Qt-Installer-Framework'
 license=('FDL' 'LGPL')
 makedepends=('qt5-tools' 'qt5-declarative')
 source=("https://download.qt.io/official_releases/${pkgbase}/${pkgver}/${pkgbase}-opensource-${pkgver}-src.tar.gz")
-sha256sums=('4e780830c6afed0d8972dd5042a2773a52a8c23b67a8e925465c47019ee46f00')
+sha256sums=('c7f5f20cf8ffbb0f8392c9ef954a10ac1dee78ee5b94fb9ea0550061bd57db22')
 
 build() {
-  cd "${pkgbase}-opensource-${pkgver}-src"
   # Build tools and libraries
   qmake-qt5 ./installerfw.pro
   make
@@ -27,7 +26,7 @@ package_qt-installer-framework() {
   optdepends=('python: needed to run some sample tests'
               'qt-installer-framework-docs: examples and documentation files')
 
-  cd "${srcdir}/${pkgbase}-opensource-${pkgver}-src"
+  cd "${srcdir}"
   # Install executables
   install -m 755 -d "${pkgdir}/usr/bin"
   install -m 755 -t "${pkgdir}/usr/bin" "bin/archivegen" \
@@ -47,26 +46,23 @@ package_qt-installer-framework() {
   # Install licenses
   install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "3RDPARTY" \
-                                                              "LGPL_EXCEPTION.txt" \
-                                                              "LICENSE.FDL" \
-                                                              "LICENSE.LGPLv3" \
-                                                              "LICENSE.LGPLv21"
+                                                              "LICENSE.GPL3-EXCEPT" \
+                                                              "LICENSE.FDL"
 }
 
 package_qt-installer-framework-docs() {
   pkgdesc='The Qt Installer Framework used for the Qt SDK installer (examples and documentation)'
   arch=('any')
 
-  cd "${srcdir}/${pkgbase}-opensource-${pkgver}-src"
+  cd "${srcdir}"
   # Install examples
   install -m 755 -d "${pkgdir}/usr/share/${pkgbase}"
   cp -a -t "${pkgdir}/usr/share/${pkgbase}/" "examples"
   # Install licenses
   install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LGPL_EXCEPTION.txt" \
-                                                              "LICENSE.FDL" \
-                                                              "LICENSE.LGPLv3" \
-                                                              "LICENSE.LGPLv21"
+  install -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "3RDPARTY" \
+                                                              "LICENSE.GPL3-EXCEPT" \
+                                                              "LICENSE.FDL"
   # Install documentation
   install -m 755 -d "${pkgdir}/usr/share/doc/${pkgbase}"
   cp -a "doc/html" "${pkgdir}/usr/share/doc/${pkgbase}"
