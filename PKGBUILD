@@ -7,10 +7,10 @@
 
 pkgname=caffe
 pkgver=1.0
-pkgrel=7
-pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (gpu enabled)"
+pkgrel=8
+pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (gpu enabled)'
 arch=('x86_64')
-url="http://caffe.berkeleyvision.org/"
+url='http://caffe.berkeleyvision.org/'
 license=('BSD')
 depends=(
     # official repositories:
@@ -28,9 +28,9 @@ depends=(
             'python-leveldb' 'python-scikit-image' 'python-pydotplus'
     # NOTE:
     # python-pydotplus (or python-pydot) is required by python executable draw_net.py
-    # https://github.com/BVLC/caffe/blob/eeebdab16155d34ff8f5f42137da7df4d1c7eab0/python/caffe/draw.py#L7-L22
+    # ttps://github.com/BVLC/caffe/blob/691febcb83d6a3147be8e9583c77aefaac9945f8/python/caffe/draw.py#L7-L22
 )
-makedepends=('gcc5' 'doxygen' 'texlive-core')
+makedepends=('gcc6' 'doxygen' 'texlive-core')
 conflicts=('caffe-git' 'caffe-cpu' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git'
            'caffe2' 'caffe2-git' 'caffe2-cpu' 'caffe2-cpu-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/BVLC/${pkgname}/archive/${pkgver}.tar.gz")
@@ -54,11 +54,15 @@ prepare() {
     sed -i '/USE_LMDB/s/^#[[:space:]]//;/USE_LMDB/s/0/1/'       Makefile.config
     sed -i '/OPENCV_VERSION/s/^#[[:space:]]//g'                 Makefile.config
     
-    # use gcc5 (CUDA code requires gcc5)
-    sed -i '/CUSTOM_CXX/s/^#[[:space:]]//;/CUSTOM_CXX/s/$/-5/' Makefile.config
+    # use gcc6 (CUDA 9.0 code requires gcc6)
+    sed -i '/CUSTOM_CXX/s/^#[[:space:]]//;/CUSTOM_CXX/s/$/-6/' Makefile.config
     
     # set CUDA directory
     sed -i '/CUDA_DIR/s/\/usr\/local\/cuda/\/opt\/cuda/' Makefile.config
+    
+    # remove gpu architectures not supported by CUDA 9.0
+    sed -i 's/-gencode[[:space:]]arch=compute_20,code=sm_20//' Makefile.config
+    sed -i 's/-gencode[[:space:]]arch=compute_20,code=sm_21//' Makefile.config
     
     # set OpenBLAS as the BLAS provider and adjust its directories
     sed -i '/BLAS[[:space:]]\:=[[:space:]]atlas/s/atlas/open/'                                 Makefile.config
@@ -95,21 +99,19 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    _gcc5_cxxflags="$(printf '%s' "$CXXFLAGS" | sed 's/-fno-plt//')"
-    _gcc5_cflags="$(  printf '%s' "$CFLAGS"   | sed 's/-fno-plt//')"
     
     msg2 "Building target 'all'..."
-    CXXFLAGS="$_gcc5_cxxflags" CFLAGS="$_gcc5_cflags" make all
+    make all
     
     msg2 "Building target 'pycaffe'..."
-    CXXFLAGS="$_gcc5_cxxflags" CFLAGS="$_gcc5_cflags" make pycaffe
+    make pycaffe
     
     msg2 "Building target 'docs'..."
     rm -rf doxygen
-    CXXFLAGS="$_gcc5_cxxflags" CFLAGS="$_gcc5_cflags" make docs
+    make docs
     
     msg2 "Building target 'distribute'..."
-    CXXFLAGS="$_gcc5_cxxflags" CFLAGS="$_gcc5_cflags" make distribute
+    make distribute
 }
 
 # uncomment this block if you want to run the checks/tests
@@ -129,7 +131,7 @@ package() {
     mkdir -p "${pkgdir}/usr/share/"{caffe,doc/"${pkgname}"/search,licenses/"${pkgname}"}
     
     # binaries
-    cd "${srcdir}/${pkgname}-${pkgver}/distribute/bin"
+    cd "${pkgname}-${pkgver}/distribute/bin"
     install -D -m755 * "${pkgdir}/usr/bin"
     
     # libraries
