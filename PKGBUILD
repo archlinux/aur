@@ -4,31 +4,36 @@
 
 pkgname=sparkleshare
 _pkgname=SparkleShare
-pkgver=1.5
-_gitrev=325bc848afe460911d596eff1e09a4d39cd0b638
-pkgrel=4
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Collaboration and sharing tool based on git written in C Sharp"
 arch=('any')
 url="http://sparkleshare.org/"
 license=('GPL3')
 depends=('webkit2-sharp' 'notify-sharp-3' 'curl' 'git' 'openssh' 'gvfs')
-source=("$pkgname-$_gitrev.tar.gz::https://codeload.github.com/hbons/$pkgname/tar.gz/$_gitrev"
-        fix-build.patch)
-sha256sums=('SKIP'
-            'a88575667a5e8ffcce8ed2437033df23202fb0ec76db9b1fd43d27b0e9205057')
+makedepends=(git)
+_commit=b4b741b1d06f0eabc80d1927588328b928ee3d11  # tags/2.0.0
+source=("git+https://github.com/hbons/SparkleShare.git#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd SparkleShare
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
-  cd $_pkgname-$_gitrev
-  patch -Np1 -i ../fix-build.patch
+  cd SparkleShare
+  # Fix build
+  sed -i 's/"org.sparkleshare.SparkleShare", new string \[0\]/0, null/' SparkleShare/Linux/UserInterface.cs
 }
 
 build() {
-  cd $_pkgname-$_gitrev
+  cd SparkleShare
   ./autogen.sh --prefix=/usr
   make
 }
 
 package() {
-  cd $_pkgname-$_gitrev
+  cd SparkleShare
   make DESTDIR="$pkgdir" install
 }
