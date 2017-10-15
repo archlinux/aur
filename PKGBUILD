@@ -10,9 +10,9 @@ pkgdesc="a tool for reengineering Android apk files"
 arch=(any)
 url="https://ibotpeaches.github.io/Apktool/"
 license=(Apache)
-depends=(bash java-runtime android-sdk-build-tools)
+depends=(bash 'java-runtime>=8' android-sdk-build-tools)
 conflicts=(android-apktool)
-makedepends=(git java-environment) # openjdk has had issues in the past, be warned!
+makedepends=(git 'java-environment>=8') # openjdk has had issues in the past, be warned!
 source=("git+https://github.com/iBotPeaches/$_gitname.git")
 sha512sums=('SKIP')
 

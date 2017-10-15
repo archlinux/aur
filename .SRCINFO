@@ -6,9 +6,9 @@ pkgbase = android-apktool-git
 	arch = any
 	license = Apache
 	makedepends = git
-	makedepends = java-environment
+	makedepends = java-environment>=8
 	depends = bash
-	depends = java-runtime
+	depends = java-runtime>=8
 	depends = android-sdk-build-tools
 	conflicts = android-apktool
 	source = git+https://github.com/iBotPeaches/Apktool.git
