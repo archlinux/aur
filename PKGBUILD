@@ -2,7 +2,7 @@
 _pipname=pylint-odoo
 pkgname=python-${_pipname}
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pylint Odoo plugin"
 arch=("any")
 url="https://github.com/OCA/pylint-odoo"
@@ -11,7 +11,7 @@ depends=("eslint" "python-astroid" "python-pylint" "python-pylint-plugin-utils" 
 makedepends=("python" "python-pip")
 
 build() {
-  pip install --no-deps --target="${_pipname}" ${_pipname}
+  pip install --no-deps --target="${_pipname}" ${_pipname}==${pkgver}
 }
 
 package() {
