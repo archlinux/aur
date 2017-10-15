@@ -20,9 +20,10 @@ dcraw
 opencv
 hdf5
 )
-source=(http://www.oqapy.eu/releases/$pkgname-$pkgver.tar.gz oqapy.sh)
-sha256sums=('39ed959552bbb5323241d6dbffbd4177ebdeb13eacc574f2e573e42431d8a0eb'
-            'e5bd611647c50b21fb2b1f61801ee45172ee0aa052c3cf15e5e15cf8a0646a27')
+source=(http://www.oqapy.eu/releases/$pkgname-$pkgver.tar.gz
+# oqapy.sh
+)
+sha256sums=('39ed959552bbb5323241d6dbffbd4177ebdeb13eacc574f2e573e42431d8a0eb')
 package() {
   cd "$srcdir"/$pkgname-$pkgver
 
