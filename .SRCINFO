@@ -1,0 +1,19 @@
+pkgbase = perl-dbix-class-uuidcolumns
+	pkgdesc = Perl/CPAN Module DBIx::Class::UUIDColumns: Implicit uuid columns
+	pkgver = 0.02006
+	pkgrel = 1
+	url = https://metacpan.org/release/DBIx-Class-UUIDColumns
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-dbd-sqlite>=1.11
+	depends = perl-class-accessor-grouped>=0
+	depends = perl-dbix-class>=0.07005
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AB/ABRAXXA/DBIx-Class-UUIDColumns-0.02006.tar.gz
+	md5sums = 801038335872df4e20f96a549dc361f0
+	sha512sums = 9a4b74f2cadd345c0e7b1563099e8c0444d43c89b8f0dfb63f9e9d818df4b2cdddd57b23451edd5b8f145dd0c67f430da1d14cf10ff9ce95fc6a4128bf43c008
+
+pkgname = perl-dbix-class-uuidcolumns
+
