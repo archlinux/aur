@@ -6,14 +6,14 @@ pkgbase = ddgtk
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
+	makedepends = meson
 	depends = python3
 	depends = python-gobject
 	depends = gtk3
 	depends = vte
-	depends = meson
 	provides = ddgtk
 	conflicts = ddgtk
-	options = !emptydirs
 	source = ddgtk::git+https://github.com/gort818/ddgtk#branch=master
 	sha1sums = SKIP
 

@@ -6,9 +6,9 @@ pkgrel=1
 pkgdesc='A fronted Gui to dd for making bootable usb disks'
 arch=('i686' 'x86_64')
 license=('GPL3')
-url="https://github.com/gort818/${pkgname%-git}"
-depends=('python3' 'python-gobject' 'gtk3' 'vte' 'meson')
-options=('!emptydirs')
+url="https://github.com/gort818/ddgtk"
+depends=('python3' 'python-gobject' 'gtk3' 'vte')
+makedepends=('git' 'meson')
 source=('ddgtk::git+https://github.com/gort818/ddgtk#branch=master')
 sha1sums=('SKIP')
 provides=("${pkgname%-git}")
@@ -21,11 +21,14 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	meson build
-	cd "$srcdir/${pkgname%-git}/build"
-	ninja
+	rm -rf build
+    mkdir build
+    cd build
+    meson --prefix /usr --buildtype release ..
+    ninja
 }
 package() {
-    cd "$srcdir/${pkgname%-git}/build"
-    sudo ninja install
+    cd "$srcdir/${pkgname%-git}"
+    cd build
+    DESTDIR="$pkgdir" ninja install
 }
