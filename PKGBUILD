@@ -1,9 +1,9 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=iscan-plugin-gt-s650
-pkgver=1.1.0
+pkgver=1.3.22
 pkgrel=1
-pkgdesc="EPSON Image Scan! plugin for Epson Perfection V19 scanner"
+pkgdesc="EPSON Image Scan! plugin for Epson scanners (DS, EP, ES, ET, EW, L, LX, PX, WF, XP Series, FF-640, GT-S650, Perfection V19, Perfection V39)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:AVASYSPL')
@@ -11,6 +11,7 @@ depends=('iscan')
 _plugin=${pkgname/iscan-plugin-/}
 _iscan_ver=1.0.0
 _plugin_rel=2
+_file_ver=1.1.0
 source_i686=("https://download2.ebz.epson.net/iscan/plugin/${_plugin}/deb/x86/iscan-${_plugin}-bundle-${_iscan_ver}.x86.deb.tar.gz")
 source_x86_64=("https://download2.ebz.epson.net/iscan/plugin/${_plugin}/deb/x64/iscan-${_plugin}-bundle-${_iscan_ver}.x64.deb.tar.gz")
 sha256sums_i686=('6f12a5d7b3c1a08a6c5f8762e1cff7ee89063eb73ec723f1822d3fa10c5b50f9')
@@ -28,7 +29,7 @@ fi
 
 build() {
   cd "iscan-${_plugin}-bundle-${_iscan_ver}.${_filearch}.deb/plugins"
-  bsdtar -xf ${pkgname}_${pkgver}-${_plugin_rel}_${_debarch}.deb
+  bsdtar -xf ${pkgname}_${_file_ver}-${_plugin_rel}_${_debarch}.deb
   bsdtar -xf data.tar.gz
   gzip -fkd "usr/share/doc/${pkgname}/NEWS.gz"
 }
