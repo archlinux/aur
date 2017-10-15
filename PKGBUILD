@@ -2,7 +2,7 @@
 pkgname=cliqz
 _pkgname=browser-f
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 _cqzbuildid=20170908115024
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
@@ -19,14 +19,16 @@ source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
         clip-ft-glyph.diff
         harmony-fix.diff
         no-crmf.diff
-        glibc-2.26-fix.diff)
+        glibc-2.26-fix.diff
+        make_SystemResourceMonitor.stop_more_resilient_to_errors.patch)
 sha256sums=('5f0ffe83a7db3608840895dc0fda57ebcc42a6581e3564ffc730f7daa3162803'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
             'd5e5580a96ecc4a66ce12dde0737c1ed5cb31017a6ec488ffe372192ed893e1b'
             '16bb776e9f3039321db747b2eaece0cda1320f3711fb853a68d67247b0aa065d'
             'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
-            'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8')
+            'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8'
+            '7760ebe71f4057cbd2f52b715abaf0d944c14c39e2bb2a5322114ad8451e12d9')
 options=(!emptydirs !makeflags !strip)
 
 prepare() {
@@ -63,6 +65,9 @@ END
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1400721
   patch -Np1 -i $srcdir/harmony-fix.diff
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1384062
+  patch -Np1 -i $srcdir/make_SystemResourceMonitor.stop_more_resilient_to_errors.patch
 
   # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
   # Note: These are for Arch Linux use ONLY. For your own distribution, please
