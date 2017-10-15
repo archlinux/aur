@@ -11,7 +11,7 @@ depends=('ncurses5-compat-libs')
 optdepends=('fxload: Firmware loader for some programmer dongles'
             'digilent.adept.utilities: Digilent programmer support')
 options=('!strip')
-source=('file:///Xilinx_ISE_DS_Lin_14.7_1015_1.tar')
+source=('file://Xilinx_ISE_DS_Lin_14.7_1015_1.tar')
 md5sums=('e8065b2ffb411bb74ae32efa475f9817')
 
 PKGEXT=".pkg.tar"
