@@ -4,7 +4,7 @@
 pkgname=xsd
 pkgver=4.0.0
 _pkgver=4.0.0+dep
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source, cross-platform W3C XML Schema to C++ data binding compiler"
 arch=('i686' 'x86_64')
 url="http://www.codesynthesis.com/products/xsd"
@@ -12,8 +12,8 @@ license=('GPL2')
 depends=('xerces-c')
 source=("http://www.codesynthesis.com/download/${pkgname}/4.0/${pkgname}-${_pkgver}.tar.bz2"
         "xsdcxx.patch")
-sha1sums=('ad3de699eb140e747a0a214462d95fc81a21b494'
-          'afeb30904eb36efe6751f46cf1dd1ef4cfe45e9f')
+sha256sums=('eca52a9c8f52cdbe2ae4e364e4a909503493a0d51ea388fc6c9734565a859817'
+            '93f2e6a9dc942cf1fcab7edbe9c38fc102cbaf86f8b667b70aad4e8e2d1e2fd3')
 
 prepare() {
   cd ${pkgname}-${_pkgver}
