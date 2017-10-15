@@ -1,7 +1,7 @@
 # Maintainer: Marcos Ferreira <merkkp at gmail dot com>
 
 pkgname="python-gogs-client"
-pkgver=1.0.4
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Python client for Gogs server"
 arch=("any")
@@ -12,7 +12,7 @@ makedepends=("python-setuptools")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/unfoldingWord-dev/python-gogs-client/archive/v${pkgver}.tar.gz")
-sha512sums=("19d0ff2a77fe8fd12b5f87765ca7ae87102a9f8478e76eb938c9a75aa89ab42ab05ff95d2420d3737b13fae776564834ae84f41360d978f1f9fbbfca2e889192")
+sha512sums=("3ecdb78017ad7ceb769d548cd94383c20ddc59ba3d14cf78cf3bbf451d64177af1233593782e787499d7267ca0d4ab5ceefee5a0ccdd248843b3a631ec282855")
 
 build() {
   cd "${pkgname}-${pkgver}"
