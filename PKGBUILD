@@ -1,7 +1,7 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 _pkgname=desktop
-pkgver=1.2.7
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('npm')
 source=("https://github.com/standardnotes/desktop/archive/v$pkgver.tar.gz"
         'standardnotes-desktop.desktop'
         'standardnotes-desktop.js')
-sha256sums=('6b6604a7124793f8e19844970ed77544fe1ad87d42da5640d160fcd8d8add5e5'
+sha256sums=('3c9850c6d35a50a269dd0fbed40867daf53aba2ab834ad97171a2fdd44986191'
             'eadf8fe7d871557d733db53fdaefd57fd7c06f21dcaa99a72b3dd6b768d7d969'
             '16934b1dc1d88d668dd657e991cc58c7292a398fec3aab193478e9988882673d')
 
@@ -21,7 +21,7 @@ package() {
   cp -r $srcdir/$_pkgname-$pkgver/* $pkgdir/opt/$pkgname/
 
   install -D -m644 $pkgname.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -D -m644 $srcdir/$_pkgname-$pkgver/_icon/icon.png "${pkgdir}/usr/share/icons/standard-notes.png"
+  install -D -m644 $srcdir/$_pkgname-$pkgver/build/icon/Icon-512x512.png "${pkgdir}/usr/share/icons/standard-notes.png"
   install -D -m655 $pkgname.js "${pkgdir}/usr/bin/${pkgname}"
 
   cd $pkgdir/opt/$pkgname/app/
