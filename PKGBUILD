@@ -2,7 +2,7 @@
 
 pkgname=rpw
 
-pkgver=4.5.0
+pkgver=4.5.1
 pkgrel=1
 
 # jar filename on dropbox
@@ -37,7 +37,7 @@ makedepends=("unzip"
 provides=("rpw")
 
 md5sums=('49c7864029decd66c92a6d8998ce157f'
-         '604f46ee27f8c28ba680499f436b80b6')
+         '6cddb8a804751e3bb58d427a8e20fcdb')
 
 prepare() {
 	# extract icon as rpw.png
