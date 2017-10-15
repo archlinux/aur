@@ -1,0 +1,19 @@
+pkgbase = quince-git
+	pkgdesc = A music player for Linux with low CPU usage
+	pkgver = r12.ffd5db7
+	pkgrel = 1
+	url = https://github.com/f35f22fan/Quince
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = git
+	depends = gst-plugins-base-libs
+	depends = kglobalaccel
+	provides = quince
+	conflicts = quince
+	source = git+https://github.com/f35f22fan/Quince.git
+	sha256sums = SKIP
+
+pkgname = quince-git
+
