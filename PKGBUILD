@@ -1,7 +1,7 @@
-# Maintainer: David Adler <david dot jo dot adler at gmail dot com>
+# Maintainer: David Adler <d dot adler at posteo dot de>
 pkgname=tapeutape
 pkgver=0.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="MIDI controllable sampler"
 arch=('i686' 'x86_64')
 url="http://hitmuri.net/index.php/software/tapeutape"
@@ -10,16 +10,13 @@ depends=('fltk' 'lash')
 makedepends=('scons')
 source=(http://www.hitmuri.net/uploads/Software/$pkgname-$pkgver.tar.gz sconstruct_tapeutape.diff)
 md5sums=('ac1168e2b93a2ae1a18d583f904c9dd1'
-         '6fa7653d512dc4074dd15615eeccbc25')
+         '5f3d5f95cf666c5d1144da1887fd4362')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # patch SConstruct to allow for DESTDIR & PREFIX
+  # patch SConstruct
   patch -i "$srcdir/sconstruct_tapeutape.diff" SConstruct
-
-  # don't use non-existent static fltk libs
-  sed -i 's/fltk-config --libs --cxxflags --ldflags/fltk-config --cxxflags --ldflags/' SConstruct
 
   # fix bug exposed by gcc 4.7 (undeclared getcwd)
   sed -i 's/#include "sample.h"/&\n#include <unistd.h>/' src/audio/sample.cpp
