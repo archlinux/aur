@@ -7,6 +7,7 @@ pkgbase = doitlive
 	license = MIT
 	makedepends = python3
 	depends = python
+	depends = python-click
 	source = https://pypi.python.org/packages/75/68/44b16599a252364964bebf1f1f59f03e9d3a1fcd9049dc877b3b9682bafa/doitlive-3.0.0.tar.gz
 	md5sums = 6d08a427f2d967fb3fc3b6e4110d80d8
 
