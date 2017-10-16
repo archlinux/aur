@@ -8,7 +8,7 @@
 
 _qt_module=qtcanvas3d
 pkgname="mingw-w64-qt5-canvas3d"
-pkgver=5.9.1
+pkgver=5.9.2
 pkgrel=1
 arch=('any')
 pkgdesc="A JavaScript 3D rendering API for Qt Quick (mingw-w64)"
@@ -20,7 +20,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('4b8bf09330f03d2b3998f5447991546704715478c54f4f8d82d00bee3047de81')
+sha256sums=('84a8d66c2c35b67af84376037cac71fe77a105df09ffef7906a9cb1aeafb3eea')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
