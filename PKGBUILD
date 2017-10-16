@@ -68,7 +68,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.13.7
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -111,21 +111,14 @@ source=(# mainline kernel patches
         #"${_mlpath_1}/ML1-0012-block-introduce-.last_merge-and-.hash-to-blk_mq_ctx.patch"
         #"${_mlpath_1}/ML1-0013-blk-mq-sched-refactor-blk_mq_sched_try_merge.patch"
         #"${_mlpath_1}/ML1-0014-blk-mq-improve-bio-merge-from-blk-mq-sw-queue.patch"
-        "${_lucjanpath}/blk-mq-v5/0050-blk-mq-issue-rq-directly-in-blk_mq_request_bypass_insert().patch"
-        "${_lucjanpath}/blk-mq-v5/0051-blk-mq-sched-fix-scheduler-bad-performance.patch"
-        "${_lucjanpath}/blk-mq-v5/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch"
-        "${_lucjanpath}/blk-mq-v5/0053-blk-mq-introduc-blk_mq_dequeue_from_ctx().patch"
-        "${_lucjanpath}/blk-mq-v5/0054-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
-        "${_lucjanpath}/blk-mq-v5/0055-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
-        "${_lucjanpath}/blk-mq-v5/0056-blk-mq-sched-don't-dequeue-request-until-all-in->dispatch-are-flushed.patch"
-        "${_lucjanpath}/blk-mq-v5/0057-blk-mq-sched-introduce-blk_mq_sched_queue_depth().patch"
-        "${_lucjanpath}/blk-mq-v5/0058-blk-mq-sched-use-q->queue_depth-as-hint-for-q->nr_requests.patch"
-        "${_lucjanpath}/blk-mq-v5/0059-blk-mq-block-introduce-rqhash-helpers.patch"
-        "${_lucjanpath}/blk-mq-v5/0060-blk-mq-block-move-actual-bio-merge-code-into__elv_merge.patch"
-        "${_lucjanpath}/blk-mq-v5/0061-blk-mq-block-add-check-on-elevator-for-supporting-bio-merge-via-hashtable-from-blk-mq-sw-qu.patch"
-        "${_lucjanpath}/blk-mq-v5/0062-blk-mq-block-introduce-last_merge-and-hash-to-blk_mq_ctx.patch"
-        "${_lucjanpath}/blk-mq-v5/0063-blk-mq-sched-refactor-blk_mq_sched_try_merge().patch"
-        "${_lucjanpath}/blk-mq-v5/0064-blk-mq-improve-bio-merge-from-blk-mq-sw-queue.patch"
+        "${_lucjanpath}/blk-mq-v10/0050-blk-mq-sched-dispatch-from-scheduler-only-after-progress-is-made-on->dispatch.patch"
+        "${_lucjanpath}/blk-mq-v10/0051-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
+        "${_lucjanpath}/blk-mq-v10/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch"
+        "${_lucjanpath}/blk-mq-v10/0053-blk-mq-block-kyber-check-if-there-is-request-in-ctx-in-kyber_has_work().patch"
+        "${_lucjanpath}/blk-mq-v10/0054-blk-mq-introduce-get_budget-and-put_budget-in-blk_mq_ops.patch"
+        "${_lucjanpath}/blk-mq-v10/0055-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
+        "${_lucjanpath}/blk-mq-v10/0056-blk-mq-SCSI-allow-to-pass-null-rq-to-scsi_prep_state_check().patch"
+        "${_lucjanpath}/blk-mq-v10/0057-blk-mq-SCSI-implement-get-budget-and-put_budget-for-blk-mq.patch"
         # mailing-list (ML2) patches
         "${_mlpath_2}/ML2-0001-block-bfq-Disable-writeback-throttling.patch"
         # the main kernel config files
@@ -142,21 +135,14 @@ sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
             '29c0a79f88bde17d8e8af6a433dd1fedff1e7430dda8090ab29324cbd0b0bb33'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            '91d3a2d15ccc84de43f19a9538b4378fe7702e9e90e63207a1a519bdcc7614e4'
-            '0f5e66a42e4985495937e6407f00b4747a35e73c31d59d0c3be61c14fb629e0e'
-            'd0f1d2478965b2a8ae7f7d65e0ed4b74315b264b87608406e6f6332f0866581c'
-            'e4454eba9f744872c67286a6b102da552191d7ac187dc50764fe85127fa5d59d'
-            '2477a46621301f0a2b4bfdf51bcf6480bce9f86915f89b4867b92ee8d8680d62'
-            'f48be244c917c2f6f5bbc5fb335c441e3152d83cb21d80e6d2d2d14850685bb0'
-            'cdf3bdf4f90a97f1814dee15cc5c21ee455ea702f7ada44ea6b18f1eb4db022b'
-            '1011d65e7bd36667fb82a3729a62a1e237ed9d14f92702cd30bb0ddf9d13bd63'
-            'e0060c551bd084c4a1c56d2755973c4fa0936eff74edf6226e6464d382aa894a'
-            '89d85dcfa0253ef3a27a363987cbfd086d09f1888baaf8d537533f231422047d'
-            '160975f33c3083e8cf9524e34d8c0dd0dd50258ce0810c065742fd7eb6cdb7a4'
-            '89ab286aa6e0e8ccf233e2db563d78142f108467e1b6c94d4ea9a379c9ccd41b'
-            '78c1030dfb650d92cefaeea0516f945cc5c57849d993328f97a2e358f26fe1e5'
-            '8114b75c12cb816c68c69a7b37c87560daf8c4d1afd8eea7947e0c74c77fc342'
-            'd235d19767373cd1ddc70e1002b975f7f4df87409af560ef86d802ee61215e66'
+            '388b210b15913d6e46d85d3c997d21f796957d2e3eb082ba8ffda1371eaa1f3b'
+            'ed4dec610bb99928c761dee5891b9f79770f0265678c232b0d4c1879beb73e94'
+            '40c2bbd7abd390e0674a797d08f7624051750d38a09d4c42ddba1f8341bb362a'
+            'f41ffe7388b9728061fe76c303afeb074237c4016b9e802f11e99e14d42f3a97'
+            '2ddcc73b67f3c9ba441298650a86738efbc50fb0f79be6bc5a78e5de5cda9a0b'
+            'cfe7d6be0c243bcf6e30f1145991424ad3fa90d43bda214e0df613de007699b6'
+            '19dd49fd6c50ac74074b354898d6aaf0c1da30e85c4f5770fdb54195b49277b0'
+            '7c51d0053053a3a0f6ed8759a5464ed5a3275a9dd832513a5678c3bcead9e5d5'
             '5e57c8d1d87a63e1c5947aba02346862992f39be2b2761ea142b3897995495aa'
             '86018270c7dbdc3dd798562e5cb4299390ee7a0119ff3b08e30e4dd81e47d05b'
             'b1c82fa9693114dc0a4beffcb733dbe5c44f90fa226c6cc1f8f1ab2b1d455e27'
