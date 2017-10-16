@@ -1,6 +1,6 @@
 pkgbase = waylandpp-git
 	pkgdesc = Wayland C++ bindings
-	pkgver = 176
+	pkgver = 189
 	pkgrel = 1
 	url = https://github.com/NilsBrause/waylandpp
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = waylandpp-git
 	arch = armv8
 	makedepends = scons
 	depends = wayland
+	provides = waylandpp
 	conflicts = waylandpp
 	source = waylandpp-git::git+https://github.com/NilsBrause/waylandpp.git
 	md5sums = SKIP
