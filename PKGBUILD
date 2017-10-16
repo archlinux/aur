@@ -4,7 +4,7 @@ pkgname=lmms-beta
 _basever=1.2.0
 _rc=rc4
 pkgver=${_basever}_${_rc}
-pkgrel=2
+pkgrel=3
 pkgdesc='Beta version of the Linux MultiMedia Studio.'
 arch=('x86_64')
 url='https://lmms.io/'
@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd "${srcdir}/lmms-${_basever}-${_rc}"
 
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -USE=vst
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DWANT_QT5=ON -DWANT_VST=ON -USE=vst
   make -j4
 }
 
