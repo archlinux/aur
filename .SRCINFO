@@ -1,6 +1,6 @@
 pkgbase = linphone-git
 	pkgdesc = A Voice-over-IP phone
-	pkgver = 3.12.0.r226.g8d4d87548
+	pkgver = 3.12.0.r232.g868c54118
 	pkgrel = 1
 	url = http://www.linphone.org
 	install = linphone.install
@@ -19,10 +19,13 @@ pkgbase = linphone-git
 	depends = v4l-utils
 	depends = libpulse
 	depends = libxv
+	depends = bctoolbox-git
+	depends = belle-sip-git
+	depends = belcard-git
+	depends = belr-git
+	depends = bzrtp-git
 	depends = mediastreamer-git
 	depends = ortp-git
-	depends = bzrtp-git
-	depends = bcg729
 	depends = libsoup
 	depends = belle-sip-git
 	depends = libnotify
@@ -30,7 +33,7 @@ pkgbase = linphone-git
 	provides = linphone
 	conflicts = linphone
 	options = !emptydirs
-	source = git+https://github.com/BelledonneCommunications/linphone.git#commit=8d4d875486e7263354c12dedb3a3b589c52a9bda
+	source = git+https://github.com/BelledonneCommunications/linphone.git
 	sha256sums = SKIP
 
 pkgname = linphone-git

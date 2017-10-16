@@ -5,22 +5,22 @@
 
 pkgname=linphone-git
 _pkgname=linphone
-pkgver=3.12.0.r226.g8d4d87548
+pkgver=3.12.0.r232.g868c54118
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
 arch=('i686' 'x86_64')
 url="http://www.linphone.org"
 license=('GPL')
 depends=('alsa-lib' 'ffmpeg' 'speex' 'libv4l' 'v4l-utils'
-	 'libpulse' 'libxv' 'mediastreamer-git' 'ortp-git' 'bzrtp-git'
-     'bcg729' 'libsoup' 'belle-sip-git' 'libnotify')
+	 'libpulse' 'libxv' 'bctoolbox-git' 'belle-sip-git' 'belcard-git' 'belr-git' 'bzrtp-git'
+     'mediastreamer-git' 'ortp-git' 'libsoup' 'belle-sip-git' 'libnotify')
 makedepends=('cmake' 'pkg-config' 'python-pystache' 'perl-xml-parser' 'intltool')
 optdepends=('pulseaudio')
 options=('!emptydirs')
 provides=('linphone')
 conflicts=('linphone')
 install=linphone.install
-source=("git+https://github.com/BelledonneCommunications/linphone.git#commit=8d4d875486e7263354c12dedb3a3b589c52a9bda")
+source=("git+https://github.com/BelledonneCommunications/linphone.git")
 sha256sums=('SKIP')
 
 pkgver() {
