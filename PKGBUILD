@@ -1,17 +1,18 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=dmtx-utils
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Utilities to libdmtx"
 url="http://www.libdmtx.org/"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('libdmtx' 'imagemagick')
-source=("http://downloads.sourceforge.net/libdmtx/${pkgname}-${pkgver}.tar.bz2")
+source=("https://github.com/dmtx/dmtx-utils/archive/v${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
+  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
@@ -21,4 +22,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('9f510f6c26a2a73e44da28eae78308973cc274043873cc7f90606624066ec7d0')
+sha256sums=('6fa365cd321609db40800f6b34a2387c0ac56ef4643f6101ac83cb762f5ce9ef')
