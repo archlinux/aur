@@ -11,20 +11,20 @@
 # Contributor: gentoo (part of 4.3 kernel patches)
 # Contributor: Philip Muller @ Manjaro (4.4 kernel patch)
 # Contributor: sling00 (4.10 kernel patch)
-# Contributor: npfeiler (4.11 kernel patch)
+# Contributor: npfeiler (4.11, 4.12 and 4.13 kernel patch)
 
 
 _kernver=`uname -r`
 
 pkgname=catalyst
 pkgver=15.9
-pkgrel=16
+pkgrel=17
 _amdver=15.201.1151
 pkgdesc="AMD/ATI Catalyst drivers for linux. fglrx kernel module only. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
-depends=('linux>=3.0' 'linux<4.12' 'catalyst-utils')
+depends=('linux>=3.0' 'linux<4.14' 'catalyst-utils')
 makedepends=('gcc-libs' 'gcc>4.0.0' 'make' 'linux-headers')
 conflicts=('catalyst-test')
 install=catalyst.install
@@ -49,7 +49,11 @@ source=(
     4.7-arch-cpu_has_pge-v2.patch
     4.9_over_4.6-arch-get_user_pages_remote.patch
     4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
-    4.11-npfeiler-signal_vmf.patch)
+    4.11-npfeiler-signal_vmf.patch
+    4.12-npfeiler-PUD_OFFSET.patch
+    4.12-arch-remove_clts.patch
+    4.12-npfeiler-movsl_mask.patch
+    4.13-npfeiler-wait_queue_t.patch)
 
 md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 'fd98b7e486d7fd4cad8de7b95b5b031e'
@@ -67,7 +71,11 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '37eef5103a11d8136979463e7bc31091'
 	 '194cb44e9e2ab0e65b6267aca66d0400'
 	 '05f6364db877d9c4bdf1592deda905b7'
-	 '8e53ba65a0aad42eb2ff771c1ace6609')
+	 '8e53ba65a0aad42eb2ff771c1ace6609'
+	 'f090e47160403e4ba65d1e0de69973c9'
+	 '782769206ed12ded10c347be3e476729'
+	 'cb25bc7fbb7d5cb1c07d2f3fa5fda826'
+	 '0a725f40bc980d578cbed3e57a05b765')
 
 
 build() {
@@ -105,6 +113,10 @@ build() {
       patch -Np1 -i ../4.9_over_4.6-arch-get_user_pages_remote.patch
       patch -Np1 -i ../4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
       patch -Np1 -i ../4.11-npfeiler-signal_vmf.patch
+      patch -Np1 -i ../4.12-npfeiler-PUD_OFFSET.patch
+      patch -Np1 -i ../4.12-arch-remove_clts.patch
+      patch -Np1 -i ../4.12-npfeiler-movsl_mask.patch
+      patch -Np1 -i ../4.13-npfeiler-wait_queue_t.patch
 
       cd ${srcdir}/archive_files/common/lib/modules/fglrx/build_mod
       cp ${srcdir}/archive_files/arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a .
