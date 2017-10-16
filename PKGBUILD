@@ -1,26 +1,21 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=mongoclock
-pkgver=2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc='Just a humongous clock for the terminal'
 arch=(any)
 url='https://github.com/maandree/mongoclock'
-license=('GPL3')
-depends=(glibc linux)
-makedepends=(linux-api-headers general-preprocessor texinfo)
-install=mongoclock.install
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(ae2298905a2f729679fddaeb732183b95607438af62dca02bdf5ae0a1b29e950)
-
+license=('ISC')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=(38a438cb3441681621c38eca2047e7504724fbb12da8ac6c60316aaeebc0f95f)
 
 build() {
     cd "$srcdir/mongoclock-$pkgver"
-    make
+    make PREFIX=/usr
 }
 
 package() {
     cd "$srcdir/mongoclock-$pkgver"
-    make DESTDIR="${pkgdir}" install
+    make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-
