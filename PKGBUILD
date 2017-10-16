@@ -14,7 +14,7 @@ license=('GPL')
 depends=('alsa-lib' 'ffmpeg' 'speex' 'libv4l' 'v4l-utils'
 	 'libpulse' 'libxv' 'bctoolbox-git' 'belle-sip-git' 'belcard-git' 'belr-git' 'bzrtp-git'
      'mediastreamer-git' 'ortp-git' 'libsoup' 'belle-sip-git' 'libnotify')
-makedepends=('cmake' 'pkg-config' 'python-pystache' 'perl-xml-parser' 'intltool')
+makedepends=('cmake' 'doxygen' 'pkg-config' 'python-pystache' 'perl-xml-parser' 'intltool')
 optdepends=('pulseaudio')
 options=('!emptydirs')
 provides=('linphone')
@@ -34,7 +34,10 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INSTALL_LIBDIR=lib \
       -DENABLE_STATIC=NO \
-      -DENABLE_CXX_WRAPPER=YES .
+      -DENABLE_CXX_WRAPPER=YES \
+      -DENABLE_ROOTCA_DOWNLOAD=NO \
+      -DENABLE_LIME=YES \
+      -DENABLE_UNIT_TESTS=NO .
   make
 }
 

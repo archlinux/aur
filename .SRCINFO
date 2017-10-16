@@ -8,6 +8,7 @@ pkgbase = linphone-git
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
+	makedepends = doxygen
 	makedepends = pkg-config
 	makedepends = python-pystache
 	makedepends = perl-xml-parser
