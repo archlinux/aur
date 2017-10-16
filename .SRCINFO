@@ -1,7 +1,7 @@
 pkgbase = macports-base-git
 	pkgdesc = The MacPorts command-line client
 	pkgver = 2.4.0.beta1.r151.gf5e9264d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.macports.org/
 	arch = i686
 	arch = x86_64
@@ -9,13 +9,14 @@ pkgbase = macports-base-git
 	makedepends = git
 	makedepends = tcl
 	depends = curl
+	depends = man
 	depends = mtree
 	depends = openssl
 	depends = sqlite
 	provides = macports-base=2.4.0.beta1.r151.gf5e9264d
 	conflicts = macports-base
 	source = git+https://github.com/macports/macports-base
-	source = fix-install.sh
+	source = fix-install.patch
 	sha256sums = SKIP
 	sha256sums = 59657974ca800933c0a1d997a90d171c10462e41dc313afd7a800984ddecd2f7
 
