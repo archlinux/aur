@@ -1,12 +1,13 @@
-# Maintainer:
+# Maintainer: Solomon Choina <shlomochoina at gmail.com>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Thomas Dziedzic <gostrc@gmail.com>
 # Contributor: J. W. Birdsong <jwbirdsong@gmail.com>
 
+_disable_tests=1 #disable tests
 pkgname=luakit-git
 _gitname=luakit
-pkgver=2017.08.10.r92.g603dd178
+pkgver=2017.08.10.r176.g766d846d
 pkgrel=1
 pkgdesc='Luakit: now updated for WebKit 2'
 arch=('x86_64' 'i686' 'armv7h')
@@ -33,10 +34,14 @@ build() {
   make  DEVELOPMENT_PATHS=0 USE_LUAJIT=1 PREFIX=/usr all
 }
 
-#check(){
-# cd "${srcdir}/${_gitname}"
-# make run-tests
-#}
+check(){
+ cd "${srcdir}/${_gitname}"
+ if (("${_disable_tests}" ==1 )); then
+   msg "tests are disabled"
+ else
+  make run-tests
+fi
+}
 
 package() {
   cd "${srcdir}/${_gitname}"
