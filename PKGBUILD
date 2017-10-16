@@ -1,12 +1,13 @@
 # Maintainer: Nils Christopher Brause <nilschrbrause@googlemail.com>
 pkgname=waylandpp-git
-pkgver=176
+pkgver=189
 pkgrel=1
 pkgdesc='Wayland C++ bindings'
 arch=('i686' 'x86_64' 'armv5' 'armv6' 'armv7' 'armv8')
 url='https://github.com/NilsBrause/waylandpp'
 licanse=('MIT' 'GPL3')
 depends=(wayland)
+provides=(waylandpp)
 conflicts=(waylandpp)
 makedepends=(scons)
 source=("${pkgname}::git+https://github.com/NilsBrause/waylandpp.git")
