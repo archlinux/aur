@@ -2,16 +2,16 @@
 # Maintainer: nblock <nblock [/at\] archlinux DOT us>
 
 pkgname=jasperstarter
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Running JasperReports from command line'
 arch=('any')
-url='http://jasperstarter.sourceforge.net'
+url='http://jasperstarter.cenote.de/'
 license=('apache')
 depends=('java-runtime')
 source=(http://downloads.sourceforge.net/project/$pkgname/JasperStarter-${pkgver:0:-2}/${pkgname}-${pkgver}-bin.tar.bz2)
-sha1sums=('b96a1d4b20f92936823b3cea463de72352d4fbd2')
-sha256sums=('1b9d08a0a0af88b9f2550e5f329d0a123c561adb7843738f9e6ad66db8618a67')
+sha1sums=('3ecb96d07383775151e4dfe09a93b3e0791a19eb')
+sha256sums=('4bb2775100f0bc719f8b79ab5e1cafc107a926eae7f9807d8d692e80d70596c0')
 
 package() {
 	cd "$srcdir/$pkgname"
