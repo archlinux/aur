@@ -1,12 +1,12 @@
 #!/usr/bin/bash
 # script courtesy of @papajoke
 # modifed by @fhdk
-# get last ffver
-ffpkgver=$(curl -s "https://ftp.mozilla.org/pub/devedition/releases/" | awk -F'/' '/href.*releases\// {print $5}' | sort -Vr | head -n1)
-echo "Latest release  : ${ffpkgver}"
 # current pkgver
 curpkgver=$(cat PKGBUILD | awk -F'=' '$1=="pkgver"{print $2}')
 echo "Current package : ${curpkgver}"
+# get latest ffver
+ffpkgver=$(curl -s "https://ftp.mozilla.org/pub/devedition/releases/" | awk -F'/' '/href.*releases\// {print $5}' | sort -Vr | head -n1)
+echo "Latest release  : ${ffpkgver}"
 [ "${ffpkgver}" == "${curpkgver}" ] && exit 0
 [ -e "PKGBUILD" ] || exit 1
 # update PGKBUILD
