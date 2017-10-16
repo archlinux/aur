@@ -3,14 +3,14 @@
 pkgbase=python-ggplot
 pkgname=(python-ggplot python2-ggplot)
 _libname=${pkgbase/python-/}
-pkgver=0.11.2
+pkgver=0.11.5
 pkgrel=1
 pkgdesc='ggplot for python'
 arch=('any')
 url='https://github.com/yhat/ggplot/'
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/8b/c1/9b0ed2526effdbd7b2da5a74671592f936d1ebc9a97e11a566c3fcb2eb1c/${_libname}-${pkgver}.tar.gz")
+source=(https://pypi.python.org/packages/3f/a1/090033eb6be0f62350a2fa209e4813a194431997de6f5486366f5b55b992/ggplot-${pkgver}.tar.gz)
 
 
 prepare() {
@@ -42,4 +42,4 @@ package_python2-ggplot() {
     python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('b01df3498865281730d137455df53fbd7b8c313dbdcc2a7275598f1f9df8dd08')
+sha256sums=('48bbc9ea5987f815ad25856d76573506dbfe153ff696f026ce324582af56469f')
