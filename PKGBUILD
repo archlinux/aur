@@ -8,7 +8,7 @@ pkgdesc="MariaDB Connector/ODBC is a standardized, LGPL licensed database driver
 arch=('x86_64' 'i686')
 url="https://mariadb.com/kb/en/mariadb/mariadb-connector-odbc/"
 license=('LGPL')
-depends=('unixodbc' 'openssl')
+depends=('unixodbc>=2.3' 'openssl')
 makedepends=('mariadb-connector-c>=3')
 options=('staticlibs')
 source=("https://downloads.mariadb.org/interstitial/connector-odbc-${pkgver}/${pkgname}-${pkgver}-ga-src.tar.gz"
@@ -28,12 +28,12 @@ prepare() {
     mkdir build
     cd build
     cmake ../$pkgname-$pkgver-ga-src \
-      -DCMAKE_BUILD_TYPE=RELEASE \
-      -DWITH_EXTERNAL_ZLIB=ON \
-      -DWITH_SQLITE=OFF \
-      -DWITH_OPENSSL=ON \
-      -DWITH_MYSQLCOMPAT=ON \
-      -DCMAKE_INSTALL_PREFIX=/usr
+        -G"Unix Makefiles" \
+        -DWITH_OPENSSL=ON \
+        -DCMAKE_BUILD_TYPE=release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DMARIADB_INCLUDE_DIR=/usr/include/mariadb \
+        -DMARIADB_LIBRARY_DIR=/usr/lib/mariadb
 }
 
 build() {

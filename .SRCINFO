@@ -8,7 +8,7 @@ pkgbase = mariadb-connector-odbc
 	arch = i686
 	license = LGPL
 	makedepends = mariadb-connector-c>=3
-	depends = unixodbc
+	depends = unixodbc>=2.3
 	depends = openssl
 	conflicts = mariadb-connector-odbc-bin
 	options = staticlibs
