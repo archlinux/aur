@@ -5,7 +5,7 @@
 
 pkgname=nvidia-173xx-dkms
 pkgver=173.14.39
-pkgrel=10
+pkgrel=11
 pkgdesc="NVIDIA kernel module sources (DKMS), 173xx branch"
 arch=('i686' 'x86_64')
 [ "$CARCH" = "i686"   ] && _arch=x86
@@ -26,6 +26,7 @@ source=(linux-3.14.patch
         linux-4.3.patch
         linux-4.6.patch
         linux-4.10.patch
+        linux-4.12.patch
         dkms.conf)
 source_i686=("http://download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver-pkg0.run")
 source_x86_64=("http://download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-pkg0.run")
@@ -36,6 +37,7 @@ md5sums=('6dfb34d8fdf35c1637932f95d2216c46'
          '20bde657bb715e16295d7e82fe799fca'
          'a5b751e62ee8caba525c059035568422'
          '8a46a9e33749ae1d4d14b1117a36d95c'
+         'a776f5aa70d3c35d0d5a84a71936a37e'
          'd784fa643442852babc56f60705387a4')
 md5sums_i686=('5b423543428554ef33a200fbbe3cb9fc')
 md5sums_x86_64=('0799f194869e40141c7bac8a71762db6')
@@ -51,6 +53,7 @@ prepare() {
   patch -p1 --no-backup-if-mismatch -i "$srcdir/linux-4.3.patch"
   patch -p1 --no-backup-if-mismatch -i "$srcdir/linux-4.6.patch"
   patch -p1 --no-backup-if-mismatch -i "$srcdir/linux-4.10.patch"
+  patch -p1 --no-backup-if-mismatch -i "$srcdir/linux-4.12.patch"
 }
 
 package() {
