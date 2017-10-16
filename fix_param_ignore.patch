@@ -6,7 +6,7 @@ diff -ruN mariadb-connector-odbc-3.0.2-ga-src/ma_bulk.c b/ma_bulk.c
    case SQL_COLUMN_IGNORE: return STMT_INDICATOR_IGNORE;
    case SQL_NULL_DATA:     return STMT_INDICATOR_NULL;
 -  case SQL_PARAM_IGNORE:  return STMT_INDICATOR_IGNORE_ROW;
-+//  case SQL_PARAM_IGNORE:  return STMT_INDICATOR_IGNORE_ROW;
++  case SQL_PARAM_IGNORE:  return 4 /*STMT_INDICATOR_IGNORE_ROW*/;
      /*STMT_INDICATOR_DEFAULT*/
    }
    return '\0';

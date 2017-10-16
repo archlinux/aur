@@ -15,7 +15,7 @@ source=("https://downloads.mariadb.org/interstitial/connector-odbc-${pkgver}/${p
         "fix_param_ignore.patch")
 
 sha1sums=('b3df774d5ffc9ebed0bed0a0502595e7435ac7d6'
-          '61c09e0493964cda1ede3fc9785c308ef90231e0')
+          'a0cec385d6686ee741e23bfd458bbde5ef5c0964')
 
 install=mariadb-connector-odbc.install
 
