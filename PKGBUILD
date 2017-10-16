@@ -7,9 +7,9 @@ PKGEXT='.pkg.tar'
 
 pkgname=unity-editor-bin
 _version=5.6.2
-_build=f1
+_build=f3
 _buildtag=2017.2.0
-_nonce=ad31c9083c46
+_nonce=ee86734cf592
 pkgver="${_version}x${_buildtag}+${_build}"
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -28,7 +28,7 @@ provides=("unity-editor=${pkgver}")
 conflicts=('unity-editor')
 options=(!strip)
 source=("https://beta.unity3d.com/download/${_nonce}/unity-editor_amd64-${_buildtag}${_build}.deb")
-sha512sums=('cfc88d448ce19d7f3b847d5fa1e1304a57d0abafa2662cfbfb311213b169186487a1535d9bd344804ffce4676f3a2569e606d316b057d351ab524555409bc243')
+sha512sums=('3d64fdc4f124d52738d6c74f22f20bab448289573f74b771bf007b7675a3ce8b0d4338d77626ff1d367365537eba404fa27d07e44de0632faf7488c931c1fb8c')
 
 prepare() {
 	if [[ "$(df . -BG --output=avail | awk -F'[^0-9]*' 'FNR==2 {print $2;}')" -le "10" ]]; then
