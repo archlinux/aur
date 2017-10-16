@@ -10,8 +10,17 @@ arch=('x86_64' 'i686' 'armv7h')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
 
-depends=('boost-libs>=1.45'  'unbound>=1.4.16'  'miniupnpc>=1.6' 'libunwind'
-         'readline' 'openssl' 'zeromq')
+depends=('boost-libs>=1.45'  'miniupnpc>=1.6' 'libunwind'
+         'readline' 'zeromq'
+
+	 # For OpenSSL v1.1
+	 'unbound>=1.4.16'  # depends on OpenSSL v1.1
+	 'openssl'
+
+	 # For OpenSSL v1.0
+	 # use unbound vendored inside upstream source repo
+	 #'openssl-1.0'
+	 )
 makedepends=('git' 'cmake' 'boost' 'gtest')
 
 
@@ -46,6 +55,10 @@ build() {
 	CMAKE_FLAGS+=" -DCMAKE_INSTALL_PREFIX=/usr "
 	CMAKE_FLAGS+=" -DBUILD_TESTS=OFF "
 	CMAKE_FLAGS+=" -DBUILD_GUI_DEPS=ON "
+
+	# For OpenSSL v1.0
+	#CMAKE_FLAGS+=" -DOPENSSL_ROOT_DIR='/usr/include/openssl-1.0;/usr/lib/openssl-1.0 "
+
 	CMAKE_FLAGS+=" -Wno-dev " # silence warnings for devs
 
 	mkdir -p $_builddir && cd $_builddir
