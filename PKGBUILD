@@ -40,7 +40,7 @@ _use_current=
 pkgbase=linux-ck
 _srcname=linux-4.13
 pkgver=4.13.7
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -54,6 +54,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "http://ck.kolivas.org/patches/4.0/4.13/4.13-ck${_ckpatchversion}/${_ckpatchname}.xz"
+        "http://ck.kolivas.org/patches/4.0/4.13/4.13-ck1/patches/0015-Enable-and-make-BFQ-default-IO-scheduler-overriding-.patch"
         "$_gcc_patch::https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v4.9%2B_kernel_v4.13%2B.patch"
         # the main kernel config files
         'config.i686' 'config.x86_64'
@@ -66,9 +67,10 @@ sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             '0fe89c96e956efbded576214eef0c8e43cabe41dfca245e3ebb79fff9bc8715d'
             'SKIP'
             'a44bf7af8cec88aeb1159ecb4a0395bc214eb98fe6c0c398d38475e63b280fe8'
+            'e25c4b7be8568534e7ae9cfc6986fab262f4b8943a3f13155c2a2a17386a52fb'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
-            '4c6d0a0f852783efa6e0ed7cf41a77c2698b2e42dcca866622f5f3059fa5863c'
-            'f8e42126b041ad5eb80407d7d16d18fd9c3b95deb8d30b41a3dadbc63bea6461'
+            '7dbdf4c4c0c56a5e4cf1d08b9e15a1b016337c1e4f46d7424a6c30a8967a177e'
+            'a5628995dfa6c94ff3ea19cd72ffb141b67bd4d8a962e8e79d0641cdf77dce51'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -89,6 +91,7 @@ prepare() {
 
   # Patch source with ck patchset
   patch -Np1 -i "../${_ckpatchname}"
+  patch -Np1 -R -i "../0015-Enable-and-make-BFQ-default-IO-scheduler-overriding-.patch"
 
   # Patch source to unlock additional gcc CPU optimizatons
   # https://github.com/graysky2/kernel_gcc_patch
