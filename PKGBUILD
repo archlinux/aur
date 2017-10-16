@@ -1,20 +1,17 @@
-# Maintainer: Thomas Weißschuh <thomas_weissschuh lavabit com>
+# Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=ttf-averia
 pkgver=20120214
 _dlhash="dc61396d0f8e3b0130933b1227022c20"
-pkgrel=1
+pkgrel=2
 pkgdesc='The Average Font'
 url="http://iotic.com/averia/"
 license=('GPL' 'custom:OFL')
 arch=('any')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-source=(${pkgname}-${pkgver}::"http://openfontlibrary.org/assets/downloads/averia/${_dlhash}/averia.zip"
-        'install')
+source=(${pkgname}-${pkgver}::"http://openfontlibrary.org/assets/downloads/averia/${_dlhash}/averia.zip")
 
-install=install
-
-build() {
+package() {
 	cd "${srcdir}"
 	install -dm755 "${pkgdir}"/usr/share/fonts/TTF
 	install -m644 *.ttf "${pkgdir}"/usr/share/fonts/TTF
