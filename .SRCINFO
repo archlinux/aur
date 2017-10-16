@@ -1,0 +1,25 @@
+pkgbase = hyper-git
+	pkgdesc = A terminal built on web technologies
+	pkgver = r958.3015855
+	pkgrel = 1
+	url = https://hyper.is/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = yarn
+	makedepends = python2
+	depends = nodejs
+	depends = electron
+	depends = gconf
+	conflicts = hyperterm
+	replaces = hyperterm
+	source = hyper-git::git+https://github.com/zeit/hyper.git#branch=canary
+	source = https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120@3x.png
+	source = Hyper.desktop
+	md5sums = SKIP
+	md5sums = f3481e14cba331160339b3b5ab78872b
+	md5sums = 74cb7ba38e37332aa8300e4b6ba9c61c
+
+pkgname = hyper-git
+
