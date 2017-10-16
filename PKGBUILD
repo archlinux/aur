@@ -4,10 +4,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20170713
+pkgver=3.0.0v20171016
 _pkgver=3.0.0
-_snapshot_=20170713
-_snapver_=0242
+_snapshot_=20171016
+_snapver_=0238
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
@@ -58,7 +58,7 @@ optdepends=('aalib: for ASCII art plugin'
 conflicts=("${_appname_}-plugin" "${_appname_}")
 provides=("${_appname_}")
 replaces=("${_appname_}-plugin")
-options=("!libtool" "!emptydirs" "!debug")
+options=("!emptydirs")
 source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-git.tar.xz" 
 "update-vlc-plugin-cache.hook"
 "https://git.archlinux.org/svntogit/packages.git/plain/trunk/lua53_compat.patch?h=packages/vlc"
@@ -76,8 +76,14 @@ build() {
 	sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
     sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
 	# Config
-	[ ${CARCH} = 'x86_64' ] && CXXFLAGS="$CXXFLAGS -fPIC"
-  CFLAGS+=" -I/usr/include/samba-4.0" CPPFLAGS+=" -I/usr/include/samba-4.0" CXXFLAGS+=" -std=gnu++11" \
+  export CFLAGS+=" -I/usr/include/samba-4.0"
+  export CPPFLAGS+=" -I/usr/include/samba-4.0" 
+  export CXXFLAGS+=" -std=gnu++11"
+  export LUAC=/usr/bin/luac
+  export LUA_LIBS="`pkg-config --libs lua`"
+  export RCC=/usr/bin/rcc-qt5
+  export PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig"
+
 	./configure --prefix=/usr \
 				--sysconfdir=/etc \
 				--disable-rpath \
@@ -93,9 +99,7 @@ build() {
         --enable-fdkaac \
         --enable-archive \
         --enable-bluray \
-        --enable-daala 
-                LUAC=/usr/bin/luac  LUA_LIBS="`pkg-config --libs lua`" \
-              RCC=/usr/bin/rcc-qt5    
+        --enable-daala   
 	./compile
 }
 
@@ -119,7 +123,7 @@ package() {
 #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('f5310f5c2afe7651480517a3a1c288f6cb440ba2ddafdd7faefa71201332d7b0'
+sha256sums=('82abfbd64cd6606afaf1c938f5b7cb8e29484d258719ee674d1a769bfce94431'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
