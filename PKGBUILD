@@ -1,7 +1,7 @@
 # Maintainer: Adam Isaac <aci747@engineer.com>
 pkgname=tldr-bash-git
-pkgver=0.33
-pkgrel=2
+pkgver=r74.fa141b6
+pkgrel=1
 pkgdesc="Bash client for tldr: community driven man-by-example."
 arch=('any')
 url="https://github.com/pepa65/tldr-bash-client"
@@ -11,9 +11,13 @@ sha256sums=('SKIP')
 depends=('bash' 'unzip' 'curl')
 makedepends=('git')
 
+pkgver() {
+  cd tldr-bash-client
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
   cd tldr-bash-client
-  mkdir -p "$pkgdir/usr/local/bin"
-  install -m755 tldr "$pkgdir/usr/local/bin/"
+  install -Dm755 tldr "$pkgdir/usr/bin/tldr"
 
 } 
