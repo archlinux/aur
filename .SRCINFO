@@ -1,0 +1,17 @@
+pkgbase = xmonad-log
+	pkgdesc = DBus monitor for xmonad log events
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xintron/xmonad-log
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = dbus-go
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/xintron/xmonad-log/archive/0.1.0.tar.gz
+	sha256sums = b08ca8db87c0418819f6f0c546fe18da336adbc9d0b3e95205bb2690095d6dd4
+
+pkgname = xmonad-log
+
