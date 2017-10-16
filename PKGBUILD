@@ -10,8 +10,11 @@ url="http://gist.github.com/ahodesuka/49c1d0eea4b64f24c4c7"
 arch=(i686 x86_64)
 provides=("glib2=$pkgver")
 conflicts=('glib2')
-makedepends=('gettext' 'gtk-doc' 'libffi' 'pcre' 'zlib' 'shared-mime-info' 'python' 'libelf' 'git' 'util-linux')
+depends=(pcre libffi libutil-linux)
+makedepends=(gettext gtk-doc zlib shared-mime-info python libelf git util-linux meson)
 checkdepends=(desktop-file-utils dbus)
+optdepends=('python: for gdbus-codegen and gtester-report'
+            'libelf: gresource inspection tool')
 options=('!docs' '!emptydirs')
 license=(LGPL)
 _commit=5fc5a3eaa6fc2ab23a3585cf22799adae642afa7  # tags/2.54.1^0
