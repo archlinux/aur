@@ -4,7 +4,7 @@
 _user=shirkdog
 pkgname=pulledpork
 pkgver=0.7.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Tool to automatically update rules for snort"
 arch=('any')
 url="https://github.com/${_user}/${pkgname}"
@@ -22,7 +22,7 @@ source=("pulledpork-${pkgver}.tar.gz::https://github.com/${_user}/${pkgname}/arc
         "pulledpork_update.sh"
         "pulledpork.cron")
 sha256sums=('50046477d5d1a18aec131a56bd3f21170057d8a31fd6f30af706e31d5b14bd0a'
-            'db6f4bf8a44f2d8c35c7bfc75fec53619ceb0fd737ce8be004755692a63a33a8'
+            '6bb80fa140ae5ec164ee6cdf6cf559d63f48c2b5a8c5934eb11296fbdc1ac240'
             '60ae10e636568a216e5629a1e73450d086fd77cd3328f5ba2c90d2483a1e9c08'
             '584326ce79c1694849f60f25e4306ae3f2df6228c34c2e6f3ba30993f53e6a3f'
             'c9213d3076424dc391d09a6c19f769631f668f27206585dd98dcbf9390a1b9ee')
