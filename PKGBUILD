@@ -10,7 +10,7 @@ arch=('any')
 url='https://github.com/yhat/ggplot/'
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=(https://pypi.python.org/packages/3f/a1/090033eb6be0f62350a2fa209e4813a194431997de6f5486366f5b55b992/ggplot-${pkgver}.tar.gz)
+source=("https://pypi.python.org/packages/source/g/ggplot/ggplot-$pkgver.tar.gz")
 
 
 prepare() {
