@@ -1,6 +1,6 @@
 pkgbase = curr
 	pkgdesc = simple cli currency converter
-	pkgver = 1.11
+	pkgver = 1.12
 	pkgrel = 1
 	url = https://github.com/Granitosaurus/curr
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = curr
 	depends = python-setuptools
 	depends = python-click
 	depends = python-toml
-	source = https://github.com/Granitosaurus/curr/archive/v1.11.tar.gz
-	md5sums = d91788f066921bf84122659b14b3168f
+	source = https://github.com/Granitosaurus/curr/archive/v1.12.tar.gz
+	md5sums = d4c098e9df3efe68b59b3b7c045ef735
 
 pkgname = curr
 
