@@ -1,0 +1,104 @@
+From 16c437fd68119c645c615032c40415bdedccd1f9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ji=C5=99=C3=AD=20Klime=C5=A1?= <blueowl@centrum.cz>
+Date: Thu, 31 Aug 2017 15:28:50 +0200
+Subject: [PATCH] Makefile: fix Makefile installation (re-introduce DESTDIR)
+
+make install should not hardcode installation locations, but rather allow
+alternative locations. Not only it allows users to install to their
+preferred place, but also makes the installation process work for distribution
+packaging.
+
+This has been originally implemented in f2ff8bbe58509a69291aff7c7ee05fe1e12905d7,
+but broken recently by 3cdf26a0ff1ee289e09c9bc36538c68d46eb8ee5.
+---
+ Makefile | 43 +++++++++++++++++++++++--------------------
+ 1 file changed, 23 insertions(+), 20 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 2faa4b8..f4a5d7a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -27,6 +27,18 @@
+ VERSION=$(shell git describe --abbrev=4 --dirty --always --long)
+ 
+ #
++# Install locations
++#
++DESTDIR?=
++PREFIX?=/usr
++SYSCONFDIR?=/etc
++LUMAIL_ETC?=$(DESTDIR)$(SYSCONFDIR)/lumail
++LUMAIL_HOME?=$(DESTDIR)$(PREFIX)/share/lumail
++LUMAIL_LIBS?=$(DESTDIR)$(PREFIX)/lib/lumail
++LUMAIL_HOME_OLD?=$(DESTDIR)$(SYSCONFDIR)/lumail2
++LUMAIL_LIBS_OLD?=${LUMAIL_HOME_OLD}/lib
++
++#
+ # Load the flags if they're not already set - first look at the version
+ #
+ LUA_VERSION?=5.2
+@@ -106,7 +118,6 @@ LINKER=$(CC) -o
+ #
+ # Compilation flags and setup for packages we use.
+ #
+-LUMAIL_LIBS=/usr/lib/lumail/
+ CPPFLAGS+=-std=c++0x -Wall -Werror
+ CPPFLAGS+=-DLUMAIL_VERSION="\"${VERSION}\"" -DLUMAIL_LUAPATH="\"${LUMAIL_LIBS}\""
+ CPPFLAGS+=${LUA_FLAGS} $(shell pcre-config --cflags) $(shell pkg-config --cflags ncursesw) $(shell pkg-config --cflags gmime-2.6)
+@@ -224,23 +235,16 @@ test-lua: lumail2
+ #  Cleanup obsolete versions of our IMAP code
+ #
+ clean_imap:
+-	rm /etc/lumail2/perl.d/delete-message || true
+-	rm /etc/lumail2/perl.d/get-folders    || true
+-	rm /etc/lumail2/perl.d/get-messages   || true
+-	rm /etc/lumail2/perl.d/save-message   || true
+-	rm /etc/lumail2/perl.d/set-flags      || true
+-	rm /etc/lumail2/perl.d/imap-proxy     || true
+-	rm /etc/lumail2/perl.d/Lumail.pm      || true
+-	rmdir /etc/lumail2/perl.d             || true
++	rm -rf $(LUMAIL_HOME_OLD)/perl.d/
+ 
+ 
+ #
+ #  Install the IMAP proxy beneath /usr/share/lumail
+ #
+ install_imap: clean_imap
+-	mkdir -p /usr/share/lumail || true
+-	install -m755 perl.d/imap-proxy /usr/share/lumail/
+-	install -m644 perl.d/Lumail.pm  /usr/share/lumail/
++	mkdir -p $(LUMAIL_HOME) || true
++	install -m755 perl.d/imap-proxy $(LUMAIL_HOME)
++	install -m644 perl.d/Lumail.pm  $(LUMAIL_HOME)
+ 
+ 
+ #
+@@ -248,11 +252,11 @@ install_imap: clean_imap
+ # configuration-file, in case the user has editted it.
+ #
+ install_lua:
+-	mkdir -p /usr/lib/lumail || true
+-	install -m644 lib/*.lua /usr/lib/lumail
+-	mkdir -p /etc/lumail/ || true
+-	mv /etc/lumail/lumail.lua /etc/lumail/lumail.lua.$$(date +%d-%m-%Y.%s) || true
+-	install -m644 ./global.config.lua /etc/lumail/lumail.lua
++	mkdir -p $(LUMAIL_LIBS) || true
++	install -m644 lib/*.lua $(LUMAIL_LIBS)
++	mkdir -p $(LUMAIL_ETC) || true
++	mv $(LUMAIL_ETC)/lumail.lua $(LUMAIL_ETC)/lumail.lua.$$(date +%d-%m-%Y.%s) || true
++	install -m644 ./global.config.lua $(LUMAIL_ETC)/lumail.lua
+ 
+ 
+ #
+@@ -260,9 +264,8 @@ install_lua:
+ # the Lua libraries and perl proxy.
+ #
+ install: lumail2 install_imap install_lua
+-	mkdir -p /usr/bin || true
+-	install -m755 lumail2 /usr/bin/
+-
++	mkdir -p $(DESTDIR)$(PREFIX)/bin || true
++	install -m755 lumail2 $(DESTDIR)$(PREFIX)/bin/
+ 
+ 
+ #
