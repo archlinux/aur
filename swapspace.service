@@ -8,4 +8,4 @@ ExecStart=/usr/bin/swapspace -d -p /run/swapspace.pid
 ExecStop=/usr/bin/swapspace -e
 
 [Install]
-WantedBy=swap.target
+WantedBy=multi-user.target
