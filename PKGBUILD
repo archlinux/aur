@@ -4,7 +4,7 @@
 
 pkgname=cppo
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The C preprocessor written in OCaml"
 arch=('i686' 'x86_64' 'armv7h')
 license=('BSD')
@@ -25,5 +25,7 @@ package() {
   opam init -n
   mkdir -p "${pkgdir}/usr/bin" "$pkgdir$(ocamlfind printconf destdir)"
   export OCAMLFIND_DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
-  make install BINDIR="${pkgdir}/usr/bin"
+  make install
+  cd _build/install/default/bin
+  install -m755 -t ${pkgdir}/usr/bin cppo
 }
