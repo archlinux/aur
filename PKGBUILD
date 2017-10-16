@@ -3,7 +3,7 @@ pkgname=terminus-terminal
 _pkgname=terminus
 _pkgver=1.0.0
 pkgver=1.0.0.27
-pkgrel=2
+pkgrel=1
 alpha=27
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -17,6 +17,9 @@ replaces=('terminus-terminal')
 source=("$url/releases/download/v${_pkgver}-alpha.$alpha/${_pkgname}_${_pkgver}-alpha.${alpha}_amd64.deb")
 sha256sums=('8df8dcbe7d83a82cfb318768dfc943862f2d977edf5a20bb31120e45dc33dc6c')
 
+pkgver(){
+  echo ${_pkgver}.${alpha}
+}
 package() {
   cd "$srcdir/"
   tar -xf data.tar.xz
