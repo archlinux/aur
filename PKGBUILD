@@ -2,14 +2,14 @@
 
 pkgname=lilypond-docs
 pkgver=2.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline documentation for lilypond"
 arch=(any)
 url="http://lilypond.org"
 depends=("lilypond=${pkgver}")
 license=("GPL")
 options=("!strip")
-source=("http://lilypond.org/download/binaries/documentation/lilypond-${pkgver}-1.documentation.tar.bz2")
+source=("http://download.linuxaudio.org/lilypond/binaries/documentation/lilypond-${pkgver}-1.documentation.tar.bz2")
 
 package(){
   mkdir -p "${pkgdir}/usr/share"
