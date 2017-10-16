@@ -1,7 +1,7 @@
-From 519d5f635192522a5dd273a19446071fd4c6970a Mon Sep 17 00:00:00 2001
+From 76b918b0c930c9c4c704f4ce947822e30c1bf1ec Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
-Subject: [PATCH 01/31] Add profile for cross compilation with mingw-w64
+Subject: [PATCH 01/33] Add profile for cross compilation with mingw-w64
 
 ---
  mkspecs/mingw-w64-g++/qmake.conf      | 126 +++++++++++++++++++++++++++
@@ -304,5 +304,5 @@ index 0000000000..c5a70b1445
 +
 +#endif // QPLATFORMDEFS_H
 -- 
-2.13.2
+2.14.2
 

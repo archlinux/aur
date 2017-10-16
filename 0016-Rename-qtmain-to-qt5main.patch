@@ -1,7 +1,7 @@
-From c887523c4b788a35d5d90b1de46c3e3acf4ef03c Mon Sep 17 00:00:00 2001
+From eed57ae8b6b9a2a8a6183751f08f16c9921bf32b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:25:40 +0200
-Subject: [PATCH 16/31] Rename qtmain to qt5main
+Subject: [PATCH 16/33] Rename qtmain to qt5main
 
 Prevents conflict with mingw-w64-qt4 package
 ---
@@ -52,5 +52,5 @@ index 4140ae48de..9ae73db74b 100644
  
  CONFIG += static
 -- 
-2.13.2
+2.14.2
 

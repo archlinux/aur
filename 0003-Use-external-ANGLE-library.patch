@@ -1,7 +1,7 @@
-From 76a624154113a86a11459b3c331e23a14ec5b255 Mon Sep 17 00:00:00 2001
+From 00b0e801caf246047f3ea18bead0ffc7c7631dad Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:41:38 +0200
-Subject: [PATCH 03/31] Use external ANGLE library
+Subject: [PATCH 03/33] Use external ANGLE library
 
 ---
  src/gui/Qt5GuiConfigExtras.cmake.in       | 4 ++--
@@ -28,7 +28,7 @@ index 07869efd7d..2e32911a64 100644
  
  _qt5_Gui_check_file_exists(${Qt5Gui_EGL_INCLUDE_DIRS})
 diff --git a/src/gui/gui.pro b/src/gui/gui.pro
-index cfdb5e889b..4afb45e592 100644
+index f7d077e656..b7fc6fadaf 100644
 --- a/src/gui/gui.pro
 +++ b/src/gui/gui.pro
 @@ -18,12 +18,6 @@ MODULE_PLUGIN_TYPES = \
@@ -44,9 +44,9 @@ index cfdb5e889b..4afb45e592 100644
  # Code coverage with TestCocoon
  # The following is required as extra compilers use $$QMAKE_CXX instead of $(CXX).
  # Without this, testcocoon.prf is read only after $$QMAKE_CXX is used by the
-@@ -34,6 +28,8 @@ testcocoon {
- 
+@@ -35,6 +29,8 @@ testcocoon {
  osx: LIBS_PRIVATE += -framework AppKit
+ darwin: LIBS_PRIVATE += -framework CoreGraphics
  
 +win32:qtConfig(angle): LIBS_PRIVATE += -lGLESv2
 +
@@ -54,7 +54,7 @@ index cfdb5e889b..4afb45e592 100644
  
  include(accessible/accessible.pri)
 diff --git a/src/opengl/opengl.pro b/src/opengl/opengl.pro
-index 718a886809..89965709ed 100644
+index 016db46405..02f1204f0f 100644
 --- a/src/opengl/opengl.pro
 +++ b/src/opengl/opengl.pro
 @@ -11,6 +11,7 @@ QMAKE_DOCS = $$PWD/doc/qtopengl.qdocconf
@@ -93,5 +93,5 @@ index 43fc06f2e5..4188d4ea6b 100644
          SUBDIRS += src_3rdparty_libpng
          src_3rdparty_freetype.depends += src_3rdparty_libpng
 -- 
-2.13.2
+2.14.2
 

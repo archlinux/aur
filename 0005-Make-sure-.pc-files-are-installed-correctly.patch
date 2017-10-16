@@ -1,7 +1,7 @@
-From 6c77b092c06551fbbed5df56e674f7ce0370a02a Mon Sep 17 00:00:00 2001
+From 198b5f7e944f21a7f9caaeb686afddfc9e87c768 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:54:12 +0200
-Subject: [PATCH 05/31] Make sure *.pc files are installed correctly
+Subject: [PATCH 05/33] Make sure *.pc files are installed correctly
 
 ---
  qmake/generators/makefile.cpp          | 8 ++++++--
@@ -62,5 +62,5 @@ index 75bb5d236d..737f3abc3a 100644
                      uninst.append("\n\t");
                  uninst.append("-$(DEL_FILE) " + escapeFilePath(dst_pc));
 -- 
-2.13.2
+2.14.2
 

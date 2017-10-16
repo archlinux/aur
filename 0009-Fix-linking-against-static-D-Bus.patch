@@ -1,41 +1,33 @@
-From dbbf044c7f0b3b521f90376f87fe94f45d74b795 Mon Sep 17 00:00:00 2001
+From 3e04b4a701a7dde06f5ea046198ac5646b644e86 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 19:36:25 +0100
-Subject: [PATCH 09/31] Fix linking against static D-Bus
+Subject: [PATCH 09/33] Fix linking against static D-Bus
 
 ---
- config.tests/unix/dbus/dbus.cpp | 4 ++++
- configure.json                  | 6 +++++-
- src/dbus/qdbus_symbols_p.h      | 4 ++++
- 3 files changed, 13 insertions(+), 1 deletion(-)
+ configure.json             | 9 +++++++--
+ src/dbus/qdbus_symbols_p.h | 4 ++++
+ 2 files changed, 11 insertions(+), 2 deletions(-)
 
-diff --git a/config.tests/unix/dbus/dbus.cpp b/config.tests/unix/dbus/dbus.cpp
-index 295c904400..80d3e9c044 100644
---- a/config.tests/unix/dbus/dbus.cpp
-+++ b/config.tests/unix/dbus/dbus.cpp
-@@ -37,6 +37,10 @@
- **
- ****************************************************************************/
- 
-+#ifdef QT_STATIC
-+#  define DBUS_STATIC_BUILD
-+#endif
-+
- #define DBUS_API_SUBJECT_TO_CHANGE
- #include <dbus/dbus.h>
- 
 diff --git a/configure.json b/configure.json
-index b572a3d1f5..cd918abc98 100644
+index a91456aaf3..55c56369ba 100644
 --- a/configure.json
 +++ b/configure.json
-@@ -159,12 +159,16 @@
+@@ -171,18 +171,23 @@
+                     "CONFIG(debug, debug|release): \\",
+                     "    LIBS += $$LIBS_DEBUG",
+                     "else: \\",
+-                    "    LIBS += $$LIBS_RELEASE"
++                    "    LIBS += $$LIBS_RELEASE",
++                    "static: DEFINES += DBUS_STATIC_BUILD"
+                 ]
+             },
              "sources": [
                  { "type": "pkgConfig", "args": "dbus-1 >= 1.2" },
-                 {
++                {
 +                    "libs": "-ldbus-1 -lws2_32 -liphlpapi",
 +                    "condition": "config.win32 && !features.shared"
 +                },
-+                {
+                 {
                      "libs": "",
                      "builds": {
                          "debug": "-ldbus-1d",
@@ -62,5 +54,5 @@ index cfc0e12046..65f1397cd6 100644
  #  include <dbus/dbus.h>
  #else
 -- 
-2.13.2
+2.14.2
 

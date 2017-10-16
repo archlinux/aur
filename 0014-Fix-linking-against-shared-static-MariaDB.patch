@@ -1,7 +1,7 @@
-From b4f40814cb08f20a6af9437627afa5f87596072a Mon Sep 17 00:00:00 2001
+From a1d177d63fb62d1bb77225fd90c5eb2883322a26 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:56:55 +0200
-Subject: [PATCH 14/31] Fix linking against shared/static MariaDB
+Subject: [PATCH 14/33] Fix linking against shared/static MariaDB
 
 Change-Id: I9722c154d845f288a2d4d1ab14a014066b28819b
 ---
@@ -9,12 +9,12 @@ Change-Id: I9722c154d845f288a2d4d1ab14a014066b28819b
  1 file changed, 3 insertions(+)
 
 diff --git a/src/plugins/sqldrivers/configure.json b/src/plugins/sqldrivers/configure.json
-index 5603ceb37b..ba74280e8c 100644
+index 234f880579..4619db4a54 100644
 --- a/src/plugins/sqldrivers/configure.json
 +++ b/src/plugins/sqldrivers/configure.json
-@@ -57,6 +57,9 @@
-             "label": "MySQL",
-             "test": "unix/mysql",
+@@ -69,6 +69,9 @@
+                 "main": "mysql_get_client_version();"
+             },
              "sources": [
 +                { "libs": "-lmariadbclient -lssl -lcrypto -lgdi32 -lws2_32 -lpthread -lz -lm", "condition": "config.win32 && !features.shared" },
 +                { "libs": "-Wl,-Bdynamic -lmariadb -Wl,-Bstatic", "condition": "config.win32 && !features.shared" },
@@ -23,5 +23,5 @@ index 5603ceb37b..ba74280e8c 100644
                  { "type": "mysqlConfig", "query": "--libs", "cleanlibs": true },
                  { "type": "mysqlConfig", "query": "--libs_r", "cleanlibs": false },
 -- 
-2.13.2
+2.14.2
 

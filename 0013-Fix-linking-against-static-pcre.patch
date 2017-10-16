@@ -1,7 +1,7 @@
-From d7112cd9c3e2979881cd97b54a75342ec7569a0f Mon Sep 17 00:00:00 2001
+From f5a1650b08d90f854b1b8eb12c0e6b9a5c3f5cc4 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:24:01 +0200
-Subject: [PATCH 13/31] Fix linking against static pcre
+Subject: [PATCH 13/33] Fix linking against static pcre
 
 Change-Id: I3225c6e82dc4d17aef37d4289c16eb7a5ea3c5a1
 ---
@@ -24,5 +24,5 @@ index 88b696f53a..afe444027e 100644
  #include <pcre2.h>
  
 -- 
-2.13.2
+2.14.2
 
