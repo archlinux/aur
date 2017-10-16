@@ -1,0 +1,43 @@
+diff -Naur nv.orig/conftest.sh nv/conftest.sh
+--- nv.orig/conftest.sh	2017-10-16 16:39:06.853784000 +0200
++++ nv/conftest.sh	2017-10-16 16:40:14.022586963 +0200
+@@ -238,7 +238,11 @@
+             # Determine if the set_pages_uc() function is present.
+             #
+             echo "$CONFTEST_PREAMBLE
+-            #include <asm/cacheflush.h>
++            #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
++                #include <asm/set_memory.h>
++            #else
++                #include <asm/cacheflush.h>
++            #endif
+             void conftest_set_pages_uc(void) {
+                 set_pages_uc();
+             }" > conftest$$.c
+@@ -268,8 +272,10 @@
+             #include <linux/version.h>
+             #include <linux/utsname.h>
+             #include <linux/mm.h>
+-            #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0)
+-              #include <asm/cacheflush.h>
++            #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
++                #include <asm/set_memory.h>
++            #elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0)
++                #include <asm/cacheflush.h>
+             #endif
+             void conftest_change_page_attr(void) {
+                 change_page_attr();
+diff -Naur nv.orig/nv-vm.c nv/nv-vm.c
+--- nv.orig/nv-vm.c	2012-09-01 12:48:26.000000000 +0200
++++ nv/nv-vm.c	2017-10-16 16:40:14.035920720 +0200
+@@ -14,6 +14,10 @@
+ #include "nv-linux.h"
+ #include "nv-vm.h"
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
++    #include <asm/set_memory.h>
++#endif
++
+ #if defined(NV_DBG_MEM)
+ #define NV_DEFAULT_LIST_PAGE_COUNT 10
+ 
