@@ -16,7 +16,7 @@ source=(BCM43430A1.hcd
 md5sums=('b95ee9032a723daa25ab9608a515e984'
          '89d9171e5693d7d3b0a3ee1710dcbe0c'
          '3160c14df7228891b868060e1951dfbc'
-         'd236124f0a979685154e4e57dfebafd5')
+         '53bcbedd38f7a83920677228e45323b6')
 
 package() {
   cd "${srcdir}"
