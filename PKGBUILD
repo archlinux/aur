@@ -1,7 +1,7 @@
 # Maintainer: Craig Barnes <cr@igbarn.es>
 
 pkgname='dte'
-pkgver='1.3'
+pkgver='1.4'
 pkgrel='1'
 pkgdesc='A small and easy to use text editor'
 url='https://github.com/craigbarnes/dte'
@@ -16,8 +16,8 @@ source=(
 )
 
 sha256sums=(
-    '5656bb1cf45c0d14109ec82d55456a79f4fd30da6d78bc792ca253e6a6baaa5b'
-    '1c1386afad2e95d7dfef46f580ad82c09ad210344184ad68b71b74e671152d07'
+    '18e4af8ddcd1c84d623c367d04b265e5df7fb485391992d02d871b6c505bb0de'
+    '86a0975d30a89d8146d9bb4763908294347a109c1096ddedcc7392bf4965718b'
 )
 
 build() {
