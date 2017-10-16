@@ -1,0 +1,21 @@
+pkgbase = hunspell-fr
+	pkgdesc = French hunspell dictionary
+	pkgver = 6.1
+	pkgrel = 1
+	url = http://www.dicollecte.org/
+	arch = any
+	license = MPL2
+	optdepends = hunspell: the spell checking libraries and apps
+	provides = hunspell-fr
+	conflicts = hunspell-fr
+	source = http://www.dicollecte.org/download/fr/hunspell-french-dictionaries-v6.1.zip
+	sha256sums = 0c6acc29d3ec88feed4e4772af4521af1d52ce3fb092e685d474486e06fc5070
+
+pkgname = hunspell-fr-classical
+
+pkgname = hunspell-fr-comprehensive
+
+pkgname = hunspell-fr-modern
+
+pkgname = hunspell-fr-revised
+
