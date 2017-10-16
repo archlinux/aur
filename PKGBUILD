@@ -9,7 +9,7 @@
 
 _qt_module=qtwinextras
 pkgname="mingw-w64-qt5-winextras"
-pkgver=5.9.1
+pkgver=5.9.2
 pkgrel=1
 arch=('any')
 pkgdesc="Classes and functions that enable you to use Windows-specific functions (mingw-w64)"
@@ -20,10 +20,8 @@ groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Fix-condition-for-_WIN32_IE-SHCreateItemFromParsingN.patch')
-sha256sums=('1acc9ebd85146c75ae8dde20dcf5ffadd04da5d998a452eba055bce10849eef4'
-            '5617949df83ce9f378d1043bb8823b0003e8e31ec65b4948b305d59424e42285')
+source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('b4f6689871403c3abb8d2b8fe9bebedc95d69694bae3c301181442437b4e181f')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -32,15 +30,6 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   _configurations+=('CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
-
-prepare() {
-  cd "${srcdir}/${_pkgfqn}"
-
-  # Apply patches; further descriptions can be found in patch files itself
-  for patch in "$srcdir/"*.patch; do
-    patch -p1 -i "$patch"
-  done
-}
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
