@@ -6,7 +6,7 @@
 
 pkgbase=linux-pae
 _srcname=linux-4.13
-pkgver=4.13.6
+pkgver=4.13.7
 pkgrel=1
 arch=('i686')
 url="https://www.kernel.org/"
@@ -26,9 +26,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '12d897b7f547c7d03a81be690b3dc0e0e5b9becfbd63e3dbf9f7258db861ddfb'
+            '0fe89c96e956efbded576214eef0c8e43cabe41dfca245e3ebb79fff9bc8715d'
             'SKIP'
-            '4cdaf04025e21c9028b54a000253ec99bbf94fe72010a3d66c8532e6e0d9c0e9'
+            'cb3e9d207d37325d8d87db4b15881b02dcc33accbb38137633b8d7dd357591ce'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -84,7 +84,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The Linux kernel and modules with PAE (physical address extension) support"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
