@@ -16,27 +16,31 @@
 
 _qt_module=qttools
 pkgname="mingw-w64-qt5-tools"
-pkgver=5.9.1
+pkgver=5.9.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
 depends=('mingw-w64-qt5-declarative')
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Fix-linguist-macro.patch')
-sha256sums=('c4eb56cf24a75661b8317b566be37396c90357b4f6730ef12b8c97a7079ca0e8'
-            'de1f0114b723d07f1c7a2c11c15e8c5b05852c690e3a36d3f65f3a411fd81127')
+        '0001-Fix-linguist-macro.patch'
+        '0002-Prevent-linking-qhelpconverter-against-static-bearer.patch')
+sha256sums=('2bb996118b68e9939c185a593837e5a41bb3667bf5d4d5134fac02598bd2d81a'
+            '76cc91d9b26bc89365ab84bffa20a1ab1f92eb1771c3250914997ffa30628ba0'
+            'c04718ab919840800149d927d0741c27d8e0703a103f592806935323b75b775c')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+# can not use static MySQL plugin because mariadb-connector-c uses already OpenSSL 1.1 -> Qt 5.10 will fix this
+# for now, disable linking against that plugin (by adding other SQL plugins explicitely)
 [[ $NO_STATIC_LIBS ]] || \
   makedepends+=('mingw-w64-qt5-base-static') \
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
-  _configurations+=('CONFIG+=static')
+  _configurations+=('CONFIG+=no_smart_library_merge QTPLUGIN.sqldrivers=qsqlite  QTPLUGIN.sqldrivers+=qsqlpsql QTPLUGIN.sqldrivers+=qsqlodbc CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
@@ -64,6 +68,7 @@ build() {
       find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5QmlDevTools -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5QmlDevTools.so /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
       find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5QmlDevTools|-L/usr/lib /usr/$_arch/lib/libQt5QmlDevTools.so|g" {} \;
       find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
+      find . -type f -iname 'Makefile' -exec sed -i "s|-lQt5Bootstrap ||g" {} \;
 
       make
       popd
