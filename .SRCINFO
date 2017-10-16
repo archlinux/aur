@@ -1,18 +1,15 @@
-pkgbase = zsh-history-substring-search-git
+pkgbase = zsh-history-substring-search
 	pkgdesc = A ZSH plugin to search history, a clean-room implementation of the Fish shell feature
-	pkgver = 92.2f8a5f8
+	pkgver = 1.0.1
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/zsh-users/zsh-history-substring-search
-	install = zsh-history-substring-search-git.install
+	install = zsh-history-substring-search.install
 	arch = any
 	license = BSD
-	makedepends = git
 	depends = zsh
-	provides = zsh-history-substring-search
-	conflicts = zsh-history-substring-search
-	source = git://github.com/zsh-users/zsh-history-substring-search
-	md5sums = SKIP
+	conflicts = zsh-history-substring-search-git
+	source = https://github.com/zsh-users/zsh-history-substring-search/archive/v1.0.1.tar.gz
+	sha1sums = 2fd008a0b6b83ba5a75ce1886555f577d3dfbac0
 
-pkgname = zsh-history-substring-search-git
+pkgname = zsh-history-substring-search
 
