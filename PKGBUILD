@@ -1,10 +1,10 @@
-# Maintainer: dudemanguy <random342@openmailbox.org>
+# Maintainer: dudemanguy <random342@airmail.cc>
 # Contributor: Vaporeon <vaporeon@vaporeon.io>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.52.3
-pkgrel=1
+pkgver=2.54.1
+pkgrel=2
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="http://gist.github.com/ahodesuka/49c1d0eea4b64f24c4c7"
 arch=(i686 x86_64)
@@ -14,17 +14,23 @@ makedepends=('gettext' 'gtk-doc' 'libffi' 'pcre' 'zlib' 'shared-mime-info' 'pyth
 checkdepends=(desktop-file-utils dbus)
 options=('!docs' '!emptydirs')
 license=(LGPL)
-_commit=90bb8778f2eabf00bee5bff1259c48f1e7b791b8  # tags/2.52.3^0
+_commit=5fc5a3eaa6fc2ab23a3585cf22799adae642afa7  # tags/2.54.1^0
 _patchver=d0edf118e1c27700300038c1d82b3ff775c0216b
 source=("git://git.gnome.org/glib#commit=$_commit"
+        0001-docs-Fix-building-with-meson.patch
+        0001-meson-Fix-permissions-of-installed-scripts.patch
+        libs.diff
+        noisy-glib-compile-schemas.diff
         glib-compile-schemas.hook
         gio-querymodules.hook
-        skip-broken-timer-test.patch
         https://gist.githubusercontent.com/ahodesuka/49c1d0eea4b64f24c4c7/raw/$_patchver/glib-thumbnailer.patch)
 sha256sums=('SKIP'
+            '8b289f3e1a5a3b29d310d45610468199acfe6f2b38a0d1be38c9224437a0e40c'
+            '12b1a2f4e304e4c03e48ae9564d73ae38619bbb7711a013138939ff8e5cc2327'
+            '54c43d5d4d4b5fa591eb639e63050ce5eac30aff6691fa9cf56631782b2aad33'
+            '81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531'
             'e1123a5d85d2445faac33f6dae1085fdd620d83279a4e130a83fe38db52b62b3'
             '5ba204a2686304b1454d401a39a9d27d09dd25e4529664e3fd565be3d439f8b6'
-            'a39dc8c1c1707053d565d5b198b1f03f7c55b31e11335a1bfdc3f9803b114d5d'
             '1a4673380fbdf8e8e5de3367089de6c97025633e54010575de63c5ab6c8a044d')
 
 pkgver() {
@@ -33,44 +39,44 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build glib2-docs/usr/share
   cd glib
-  git revert -n 6560b37450cd  # Noisy glib-compile-schemas
 
-  # Rounding error in timer tests?
-  # GLib:ERROR:timer.c:38:test_timer_basic: assertion failed (micros == ((guint64)(elapsed * 1e6)) % 1000000): (1 == 0)
-  [[ $CARCH == i686 ]] && patch -Np1 -i ../skip-broken-timer-test.patch
+  # https://bugzilla.gnome.org/show_bug.cgi?id=786796
+  patch -Np1 -i ../0001-docs-Fix-building-with-meson.patch
 
+  # https://bugzilla.gnome.org/show_bug.cgi?id=787671
+  patch -Np1 -i ../0001-meson-Fix-permissions-of-installed-scripts.patch
+
+  # Unbreak .pc files when built with meson
+  # Fix gdb scripts install
+  patch -Np1 -i ../libs.diff
+
+  # Suppress noise from glib-compile-schemas.hook
+  patch -Np1 -i ../noisy-glib-compile-schemas.diff
+
+  # Apply patch to generate thumbnails
   patch -Np1 -i ../glib-thumbnailer.patch
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd glib
-  ./configure --prefix=/usr --libdir=/usr/lib \
-      --sysconfdir=/etc \
-      --with-pcre=system \
-      --disable-fam \
-      --enable-gtk-doc \
-      $(check_option debug y && echo --enable-debug=yes)
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  cd build
+  arch-meson ../glib
+  ninja
 }
 
-#seems to get stuck after live-g-file 2 /live-g-file/create_structure for some reason; skip this
-#check() {
-#  cd glib
-#  make check
-#}
+# skip this; test fails
+# check() {
+#   cd build
+#   meson test -t 2
+# }
 
 package() {
-
-  cd glib
-  make DESTDIR="$pkgdir" install
-  rm -r "$pkgdir/usr/share/gtk-doc"
+  cd build
+  DESTDIR="$pkgdir" ninja install
+  mv "$pkgdir/usr/share/gtk-doc" "$srcdir/glib2-docs/usr/share"
 
   # install hooks
-  install -d "$pkgdir/usr/share/libalpm/hooks/"
-  install -m644 "$srcdir"/{glib-compile-schemas,gio-querymodules}.hook \
-    "$pkgdir/usr/share/libalpm/hooks/"
+  install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 ../*.hook
 }
 
