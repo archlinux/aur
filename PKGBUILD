@@ -3,14 +3,14 @@
 pkgname=fetlang-git
 
 pkgver=r216.73a78ad
-pkgrel=1
+pkgrel=2
 pkgdesc="fetish-themed programming language"
 arch=('i686' 'x86_64')
 url="https://github.com/Property404/fetlang"
 license=('custom')
 
-depends=('boost-libs')
-makedepends=('boost' 'meson')
+depends=('gcc-libs')
+makedepends=('meson')
 
 conflicts=('fetlang')
 provides=('fetlang')
