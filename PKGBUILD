@@ -4,7 +4,7 @@
 
 pkgname=npapi-vlc-gtk3
 _pkgname=npapi-vlc
-pkgver=2.2.5
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="The modern VLC Epiphany (NPAPI) plugin (GTK3 version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,6 @@ depends=('gtk3' 'vlc')
 makedepends=('git' 'npapi-sdk')
 conflicts=($_pkgname)
 provides=($_pkgname)
-# This package uses version tags from Git, because there are no official releases
 source=("git+https://code.videolan.org/videolan/$_pkgname.git#tag=$pkgver"
         "git+https://code.videolan.org/videolan/libvlcpp.git"
         'gtk3-port.patch')
@@ -24,24 +23,21 @@ md5sums=('SKIP'
 
 prepare() {
   cd "$_pkgname"
-  git submodule init
   git config submodule.vlcpp.url "$srcdir/libvlcpp"
-  git submodule update
+  git submodule update --init
 
   # GTK3 port
   patch -Np1 -i ../gtk3-port.patch
 }
 
 build() {
-  cd "$_pkgname"
-
+  cd $_pkgname
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$_pkgname"
-
+  cd $_pkgname
   make DESTDIR="$pkgdir" install
 }
