@@ -1,0 +1,16 @@
+pkgbase = vit-git
+	pkgdesc = A terminal interface for Taskwarrior with Vim key bindings and colorization support. GIT version.
+	pkgver = r175.d72d6e0
+	pkgrel = 1
+	url = https://github.com/scottkosty/vit
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl-curses
+	depends = perl-text-charwidth
+	depends = task
+	source = git+https://github.com/scottkosty/vit.git
+	sha512sums = SKIP
+
+pkgname = vit-git
+
