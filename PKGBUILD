@@ -4,11 +4,12 @@
 # Contributor: Surefire <surefire at cryptomile.net>
 
 pkgname=gnome-shell-extension-appindicator-git
-pkgver=20+0+g159fc2d
+pkgver=17.10.1+0+g7479da8
 pkgrel=1
+epoch=1
 pkgdesc="Integrates AppIndicators into GNOME Shell."
 arch=('any')
-url="https://github.com/rgcjonas/gnome-shell-extension-appindicator"
+url="https://github.com/ubuntu/gnome-shell-extension-appindicator"
 license=('GPL')
 makedepends=('git')
 depends=('gnome-shell')
@@ -17,7 +18,7 @@ optdepends=(
   'libappindicator-gtk3: support GTK+3 applications'
   'libappindicator-sharp: support .net applications'
 )
-source=("${pkgname}::git+https://github.com/rgcjonas/gnome-shell-extension-appindicator.git")
+source=("${pkgname}::git+https://github.com/ubuntu/gnome-shell-extension-appindicator.git#branch=ubuntu")
 sha512sums=('SKIP')
 
 pkgver() {
