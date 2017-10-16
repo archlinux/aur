@@ -2,7 +2,7 @@
 
 _pkgname=prusacontrol
 pkgname=$_pkgname-git
-pkgver=r566.b62f94f
+pkgver=r567.7f55be5
 pkgrel=1
 pkgdesc="Alternative user interface for Slic3r Prusa Edition"
 arch=('any')
@@ -37,6 +37,10 @@ package() {
     cp -r "README.md" "${pkgdir}/opt/prusacontrol"
     cp -r "version.txt" "${pkgdir}/opt/prusacontrol"
     cp -r *.py "${pkgdir}/opt/prusacontrol"
+
+    # Fix for missing slic3r (runtime error)
+    mkdir -p "${pkgdir}/opt/prusacontrol/tools/Slic3r-Lite/bin"
+    ln -s /bin/slic3r-prusa3d "${pkgdir}/opt/prusacontrol/tools/Slic3r-Lite/bin/slic3r"
 }
 
 # vim:set ts=2 sw=2 et:
