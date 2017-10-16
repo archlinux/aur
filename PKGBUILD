@@ -1,6 +1,6 @@
 # Maintainer: Bernardas Ališauskas bernardas.ališauskas@protonmail.com
 pkgname=curr
-pkgver=1.0
+pkgver=1.11
 pkgrel=1
 pkgdesc="simple cli currency converter"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/Granitosaurus/curr"
 depends=('python' 'python-setuptools' 'python-click' 'python-toml')
 makedepends=('python-setuptools')
 source=("https://github.com/Granitosaurus/curr/archive/v${pkgver}.tar.gz")
-md5sums=('a2d275119b4ea5831748a59dbce12010')
+md5sums=('d91788f066921bf84122659b14b3168f')
 package() {
   cd "${srcdir}/curr-${pkgver}"
   python setup.py install --root="${pkgdir}"
