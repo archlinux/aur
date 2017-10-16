@@ -4,21 +4,29 @@
 # Contributor: Christoph Drexler <chrdr at gmx dot at>
 # Contributor: Jelle van der Waa <jellevdwaa@gmail.com>
 
+# GTK_VERSION 2/3
+GTK_VERSION=3
+# JAVA_VERSION 8/9
+JAVA_VERSION=8
+
 pkgname=xmind
 pkgver=3.7.5
 _filename=$pkgname-8-update5-linux
-pkgrel=1
+pkgrel=2
 pkgdesc="Brainstorming and Mind Mapping Software"
 arch=('i686' 'x86_64')
 url="http://www.xmind.net"
 license=('EPL' 'LGPL')
-depends=('gtk3' 'java-runtime=8')
-optdepends=('lame: needed for the feature audio notes')
+depends=('java-runtime>=8')
+optdepends=('gtk2: gtk2 or gtk3 must install one'
+            'gtk3: gtk2 or gtk3 must install one'
+            'lame: needed for the feature audio notes')
+install='xmind.install'
 source=("http://www.xmind.net/xmind/downloads/${_filename}.zip"
-"XMind.ini"
-"XMind"
-"XMind.desktop"
-"XMind.png")
+'XMind'
+'XMind.ini'
+'XMind.desktop'
+'XMind.png')
 sha512sums=('0f532ea9486fad35a04d9c0caa747130b92d4413e0dc55053b5216b4bdb9928899b289018e27a2b08be9ae813b22946e7676d11fa23485487f265399dc48e14b'
 'SKIP'
 'SKIP'
@@ -50,6 +58,16 @@ package() {
         sed -i "s/CARCH/x86/g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
     else
         sed -i "s/CARCH/x86_64/g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
+    fi
+    if [[ "$GTK_VERSION" == "2" ]]; then
+        sed -i "s/GTK_VERSION/2/g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
+    else
+        sed -i "s/GTK_VERSION/3/g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
+    fi
+    if [[ "$JAVA_VERSION" == "8" ]]; then
+        sed -i "s/JAVA_VERSION//g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
+    else
+        sed -i "s/JAVA_VERSION/--add-modules=java.se.ee/g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
     fi
     mkdir -p ${pkgdir}/usr/bin
     cp ${srcdir}/XMind ${pkgdir}/usr/bin/
