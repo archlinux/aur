@@ -9,7 +9,7 @@
 
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
-pkgver=5.9.1
+pkgver=5.9.2
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
@@ -24,9 +24,9 @@ _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch'
         '0002-Enforce-use-of-ANGLE-in-Mapbox-GL-plugin.patch')
-sha256sums=('4bc43c1df69c5322f982588711d4a65f8408b71a36e43ba19b39d1aae87e1515'
-            'a25cb16e76921eb7f5a6d36f420d797716516036338bc3df8773fdd8525e0baa'
-            'ee4c4d8ede233cfe470dad61523b4474baafb234fe498e5e5a92d4fee7c4247b')
+sha256sums=('c81a42e44ebd4e9c33f7195e86af3deab9fde72ef0ad8dcb04acee250d356b0c'
+            '888b3f9c8f6765abf66f67fa0f4931ef9713462a33cd9c4b583bf6dcdc431097'
+            '6dcd0992504153a7f720ff46c4998717d4db74e69f88295d2de8fc1cb981d4d1')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
