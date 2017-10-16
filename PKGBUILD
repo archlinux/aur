@@ -2,7 +2,7 @@
 
 pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 pkgname=mkinitcpio-systemd-tool
-pkgver=10
+pkgver=11
 pkgrel=1
 url="https://github.com/random-archer/$pkgname"
 source=("git+${url}.git")
