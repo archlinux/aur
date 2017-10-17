@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A command that lets you start another command with any argv[0]"
 arch=(i686 x86_64)
 url="https://github.com/maandree/exec-as"
-license=('ISC')
+license=('custom:ISC')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=(8e88fb15fe64a5807e2e814f9c9d2608cb7873997b59279983c724ff2c3c66b8)
 
