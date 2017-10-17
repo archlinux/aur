@@ -1,0 +1,42 @@
+pkgbase = python-oslo-db
+	pkgdesc = Oslo Database library
+	pkgver = 4.28.0
+	pkgrel = 1
+	url = http://git.openstack.org/cgit/openstack/oslo.db
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/7a/61/e8b50150a9fd9412f05d36f764c4a7dc38599b583fb8b274458ced73d133/oslo.db-4.28.0.tar.gz
+	md5sums = c8d7ff50e84168bc7054522f867bdfe8
+
+pkgname = python-oslo-db
+	depends = python
+	depends = python-alembic>=0.8.10
+	depends = python-oslo-utils>=3.28.0
+	depends = python-oslo-config>=4.6.0
+	depends = python-six>=1.9.0
+	depends = python-pbr
+	depends = python-stevedore>=1.20.0
+	depends = python-migrate
+	depends = python-sqlalchemy
+	depends = python-oslo-i18n>=3.15.3
+	depends = python-debtcollector>=1.2.0
+	depends = python-alembic>0.8.10
+
+pkgname = python2-oslo-db
+	depends = python2
+	depends = python2-alembic>=0.8.10
+	depends = python2-oslo-utils>=3.28.0
+	depends = python2-oslo-config>=4.6.0
+	depends = python2-six>=1.9.0
+	depends = python2-pbr
+	depends = python2-stevedore>=1.20.0
+	depends = python2-migrate
+	depends = python2-sqlalchemy
+	depends = python2-oslo-i18n>=3.15.3
+	depends = python2-debtcollector>=1.2.0
+	depends = python2-alembic>0.8.10
+
