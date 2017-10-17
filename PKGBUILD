@@ -5,17 +5,17 @@
 
 pkgname=liblo-git
 _basename=liblo
-pkgver=0.28.r86.ge0ec177
+pkgver=0.29.r7.g5e0bda0
 pkgrel=1
 pkgdesc="A lightweight OSC (Open Sound Control) implementation"
 arch=('i686' 'x86_64')
 url="http://liblo.sourceforge.net/"
 license=('GPL')
-provides=('liblo=0.28')
+provides=('liblo=0.29')
 conflicts=('liblo' 'liblo-ipv6')
 makedepends=('doxygen')
 source=("$_basename::git://liblo.git.sourceforge.net/gitroot/${_basename}/${_basename}")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${_basename}"
@@ -36,15 +36,10 @@ package() {
 
   # delete broken man pages
   rm $srcdir/${_basename}/doc/man/man3/_*.3
-  # compress man pages
-  for i in $srcdir/${_basename}/doc/man/man3/*
-  do
-    gzip -c $i > $i.gz
-  done
   # move all doc
   install -Dm 644 $srcdir/${_basename}/doc/html/* ${pkgdir}/usr/share/doc/${_basename}/html
   install -Dm 644 $srcdir/${_basename}/doc/latex/* ${pkgdir}/usr/share/doc/${_basename}/latex
-  install -Dm 644 $srcdir/${_basename}/doc/man/man3/*.3.gz ${pkgdir}/usr/share/man/man3
+  install -Dm 644 $srcdir/${_basename}/doc/man/man3/*.3 ${pkgdir}/usr/share/man/man3
   install -Dm 644 $srcdir/${_basename}/examples/*.{cpp,c} ${pkgdir}/usr/share/${_basename}/examples
 
 }
