@@ -1,0 +1,18 @@
+pkgbase = perl-html-tidy
+	pkgdesc = Perl/CPAN Module HTML:Tidy: (X)HTML validation in a Perl object
+	pkgver = 1.60
+	pkgrel = 1
+	url = https://metacpan.org/release/HTML-Tidy
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.008
+	depends = tidyp
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/HTML-Tidy-1.60.tar.gz
+	md5sums = 03bafb9a0a2a23629cf9649abb2b72ab
+	sha512sums = 0ddad3d7a13054148ad32b9337c8f17d6112140747b8d3a6e632cdc5d90fbebe0ce9d94ea7ba1eacd353d7e6c60d93875e950ed9c2ed52b16677dd33eed7288f
+
+pkgname = perl-html-tidy
+
