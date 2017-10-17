@@ -4,7 +4,7 @@
 
 pkgname="nautilus-megasync"
 pkgver="3.1.4"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Upload your files to your Mega account from nautilus."
 arch=('i686' 'x86_64')
 url="https://mega.co.nz/#sync"
@@ -13,7 +13,7 @@ depends=('libnautilus-extension' 'megasync>=2.9.8' 'qt4')
 provides=("${pkgname}")
 
 source=("https://mega.nz/linux/MEGAsync/Debian_9.0/${pkgname}_${pkgver}.orig.tar.gz")
-sha256sums=('98a72baa42fcc3ad5611daeef345c2e8a68cadf02b708a597ba5ef4293ab4c22')
+sha256sums=('23c6d743e49d0eac950f780f9eb24991c4a1f2e1adcfb3fa77bba1561b77bd80')
 
 install="${pkgname}.install"
 
