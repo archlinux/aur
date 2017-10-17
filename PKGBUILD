@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('libpcap' 'openssl' 'zlib')
 makedepends=('cmake')
 source=("https://github.com/warmcat/libwebsockets/archive/v$pkgver.tar.gz")
-sha512sums=('8c69c8a1e0cd00e8db5dcd552d1304b4f1936b349a72bf5be5862bf3b0d32ed136a06d1e6d1180abf7e3564eb99272aa83e116c5698faed54d148ebdee926768')
+sha512sums=('89ccc24b44e4f38f3b3918634dc5f2be78be1ea9fc1748064c8a54adae026c410bfc743caf9bbd304c312e34e624f5f8fb101d7b36052af9b94dbf309625ec0a')
 
 build() {
   cd $_pkgname-$pkgver
