@@ -2,7 +2,7 @@
 pkgbase=python-stestr
 pkgname=('python-stestr' 'python2-stestr')
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A parallel Python test runner built around subunit"
 arch=('any')
 url=https://github.com/mtreinish/stestr
@@ -40,4 +40,5 @@ package_python2-stestr() {
   gzip doc/build/man/stestr.1
   mkdir -p "${pkgdir}/usr/share/man/man1"
   install -m 755 doc/build/man/stestr.1.gz "${pkgdir}/usr/share/man/man1/stestr.1.gz"
+  mv "$pkgdir"/usr/bin/stestr{,2}
 }
