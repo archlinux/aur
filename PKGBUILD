@@ -2,8 +2,8 @@
 
 _module='munch'
 pkgname=('python-munch' 'python2-munch')
-pkgver='2.1.1'
-pkgrel='2'
+pkgver='2.2.0'
+pkgrel='1'
 pkgdesc='A dot-accessible dictionary (a la JavaScript objects).'
 arch=('any')
 url='https://github.com/Infinidat/munch'
