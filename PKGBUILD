@@ -8,7 +8,7 @@
 
 pkgname=mutter-781835-workaround
 _pkgname=mutter
-pkgver=3.26.1+12+gd6e3193c2
+pkgver=3.26.1+15+gb48c34979
 pkgrel=1
 pkgdesc="A window manager for GNOME"
 url="https://git.gnome.org/browse/mutter"
@@ -22,7 +22,8 @@ provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
 options=(!emptydirs)
-_commit=d6e3193c2a22024e213025523d2abba36f4b7bb3  # gnome-3-26
+
+_commit=b48c3497940883816416735f992aaae61396fbda  # gnome-3-26
 source=("git+https://git.gnome.org/browse/mutter#commit=$_commit"
         startup-notification.patch)
 sha256sums=('SKIP'

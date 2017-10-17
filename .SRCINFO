@@ -1,6 +1,6 @@
 pkgbase = mutter-781835-workaround
 	pkgdesc = A window manager for GNOME
-	pkgver = 3.26.1+12+gd6e3193c2
+	pkgver = 3.26.1+15+gb48c34979
 	pkgrel = 1
 	url = https://git.gnome.org/browse/mutter
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = mutter-781835-workaround
 	provides = mutter
 	conflicts = mutter
 	options = !emptydirs
-	source = git+https://git.gnome.org/browse/mutter#commit=d6e3193c2a22024e213025523d2abba36f4b7bb3
+	source = git+https://git.gnome.org/browse/mutter#commit=b48c3497940883816416735f992aaae61396fbda
 	source = startup-notification.patch
 	sha256sums = SKIP
 	sha256sums = 5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366
