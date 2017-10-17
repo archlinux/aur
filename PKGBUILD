@@ -2,8 +2,8 @@
 
 _module='reno'
 pkgname='python-reno'
-pkgver='2.2.0'
-pkgrel='2'
+pkgver='2.5.1'
+pkgrel='1'
 pkgdesc='OpenStack RElease NOtes manager'
 arch=('any')
 url="https://docs.openstack.org/developer/${_module}/"
