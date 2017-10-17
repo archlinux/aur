@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-magnumclient' 'python2-magnumclient')
-pkgver='2.5.0'
-pkgrel='2'
+pkgver='2.7.0'
+pkgrel='1'
 pkgdesc='Python client library for Magnum'
 arch=('any')
 url="http://docs.openstack.org/developer/${pkgname}/"
