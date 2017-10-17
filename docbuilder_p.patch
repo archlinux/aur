@@ -1,0 +1,20 @@
+--- core/DesktopEditor/doctrenderer/docbuilder_p.h_orig	2017-10-17 14:29:42.233333333 +0000
++++ core/DesktopEditor/doctrenderer/docbuilder_p.h	2017-10-17 14:29:49.743333333 +0000
+@@ -195,7 +195,7 @@
+             _LOGGING_ERROR_(L"execute_compile_code", strCode);
+             _LOGGING_ERROR_(L"execute_compile", strException);
+ 
+-            return false;
++            return "";
+         }
+         else
+         {
+@@ -209,7 +209,7 @@
+                 _LOGGING_ERROR_(L"execute_run_code", strCode);
+                 _LOGGING_ERROR_(L"execute_run", strException);
+ 
+-                return false;
++                return "";
+             }
+ 
+             if (_value->IsString())
