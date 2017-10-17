@@ -12,7 +12,7 @@ sha256sums=(5916c0bb0b90bcf4bd99f273c9a5abd33714e870aeff0be793635d26f1089886)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr LIBEXEC=/lib/orphan-reaper
+  make PREFIX=/usr
 }
 
 
@@ -24,5 +24,5 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr LIBEXEC=/lib/orphan-reaper install DESTDIR="$pkgdir"
+  make PREFIX=/usr install DESTDIR="$pkgdir"
 }
