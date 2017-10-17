@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-mistralclient' 'python2-mistralclient')
-pkgver='3.0.0'
-pkgrel='2'
+pkgver='3.1.3'
+pkgrel='1'
 pkgdesc='Mistral Client Library'
 arch=('any')
 url='https://docs.openstack.org/developer/mistral/'
