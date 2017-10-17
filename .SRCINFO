@@ -1,6 +1,6 @@
 pkgbase = jre
 	pkgdesc = Oracle Java Runtime Environment
-	pkgver = 9u0
+	pkgver = 9.0.1
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jre.install
@@ -32,9 +32,9 @@ pkgbase = jre
 	backup = etc/java-jre9/psfont.properties.ja
 	backup = etc/java-jre9/psfontj2d.properties
 	backup = etc/java-jre9/sound.properties
-	source = http://download.oracle.com/otn-pub/java/jdk/9+181/jre-9_linux-x64_bin.tar.gz
+	source = http://download.oracle.com/otn-pub/java/jdk/9.0.1+11/jre-9.0.1_linux-x64_bin.tar.gz
 	source = policytool-jre9.desktop
-	sha256sums = abf54b9905850851ae5de10db1d664ca0625c79ccd505c5e3fc62f6d969424a2
+	sha256sums = 3c64953465e98dbab0e449954a918fada703cd0341aa98cff68854852663ee86
 	sha256sums = de76dfab62f38b061fe3c99053451ed0d1b9971e892c44e7b893c604607e5694
 
 pkgname = jre

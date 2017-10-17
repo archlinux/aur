@@ -1,10 +1,9 @@
 # Maintainer: Det <nimetonmaili g-mail>
 
 pkgname=jre
-_major=9
-_minor=0
-_build=181
-pkgver=${_major}u${_minor}
+pkgver=9.0.1
+_major=${pkgver/.*}
+_build=11
 pkgrel=1
 pkgdesc="Oracle Java Runtime Environment"
 arch=('x86_64')
@@ -35,13 +34,13 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jdk/${_major}+${_build}/${pkgname}-${_major}_linux-x64_bin.tar.gz"
+source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${pkgname}-${pkgver}_linux-x64_bin.tar.gz"
         "policytool-$_jname.desktop")
-sha256sums=('abf54b9905850851ae5de10db1d664ca0625c79ccd505c5e3fc62f6d969424a2'
+sha256sums=('3c64953465e98dbab0e449954a918fada703cd0341aa98cff68854852663ee86'
             'de76dfab62f38b061fe3c99053451ed0d1b9971e892c44e7b893c604607e5694')
 
 package() {
-    cd $pkgname-$_major
+    cd $pkgname-$pkgver
 
     msg2 "Creating directory structure..."
     install -d "$pkgdir"/etc/.java/.systemPrefs
