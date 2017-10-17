@@ -7,7 +7,7 @@ pkgname=hdfview
 _pkgname=HDFView
 pkgver=2.14.0
 _pkgver=${pkgver%.0}
-pkgrel=2
+pkgrel=3
 pkgdesc="a GUI browser for hdf5 files"
 arch=('i686' 'x86_64')
 url="https://support.hdfgroup.org/products/java/"
@@ -18,11 +18,13 @@ options=(!strip)
 source=("https://support.hdfgroup.org/ftp/HDF5/hdf-java/current/src/${pkgname}-${_pkgver}.tar.gz"
         "${_pkgname}.desktop"
         "${_pkgname}.ico"
-        license)
+        license
+        HDFView)
 md5sums=('3dafb38490718d46e359d250c7bb2377'
-         '78b1eb484df4520d83bf9a20f39a65e3'
+         '4d40ab135641713c9b4ab0a41f1e1bf7'
          'b86542f80203ea9f93f447fa7c20d25a'
-         'db0de6079dd881781768d05de29c50e0')
+         'db0de6079dd881781768d05de29c50e0'
+         '5e498af8f85e275ab0bb583b0ab0a1b3')
 
 prepare() {
   cd "${pkgname}-${_pkgver}"
@@ -54,6 +56,7 @@ package() {
   cp -a "${_pkgname}/${pkgver}/${pkgname}.sh" "${pkgdir}/usr/bin"
 
   # Desktop files, icons, wrappers and license
+  install -D -m 755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/HDFView"
   install -D -m 644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -D -m 644 "${srcdir}/${_pkgname}.ico" "${pkgdir}/usr/share/pixmaps/${_pkgname}.ico"
   install -D -m 644 "${srcdir}/license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
