@@ -123,7 +123,8 @@ package() {
     # When MIT license, the one bundled with the package must always be copied
     # on the system.
     # src.: https://wiki.archlinux.org/index.php/PKGBUILD#license
-    mv NOTICE.txt README.md MIT-COMPILED-LICENSE.md "${pkgdir}"/usr/share/doc/${pkgname}
+    mv NOTICE.txt README.md "${pkgdir}"/usr/share/doc/${pkgname}
+    mv MIT-COMPILED-LICENSE.md "${pkgdir}"/usr/share/license/${pkgname}/LICENSE
 
     cd "${srcdir}"
     install -Dm755 bin/platform -t "${pkgdir}"/usr/share/webapps/${pkgname}/bin/
