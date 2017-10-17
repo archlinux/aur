@@ -1,6 +1,6 @@
 pkgbase = python-os-testr
 	pkgdesc = A testr wrapper to provide additional functionality
-	pkgver = 0.8.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/os-testr
 	arch = any
@@ -9,20 +9,20 @@ pkgbase = python-os-testr
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/26/93/fc660b2170c9f49a6d1855d14233596d6000be16c270f3b9ad9550923ed1/os-testr-0.8.0.tar.gz
-	md5sums = 4d5a04d8c9a4ae8972eb0d653323f1ed
+	source = https://pypi.python.org/packages/47/ac/767db04504bd21b2fbcf11dd404c6b8bcc0cf954410c3c05f0d65877de2e/os-testr-1.0.0.tar.gz
+	md5sums = 915dc11818c13c1726d57def7c372154
 
 pkgname = python-os-testr
 	depends = python
 	depends = python-subunit
 	depends = python-testtools
-	depends = python-testrepository
+	depends = python-stestr>=1.0.0
 	depends = python-pbr
 
 pkgname = python2-os-testr
 	depends = python2
 	depends = python2-subunit
 	depends = python2-testtools
-	depends = python2-testrepository
+	depends = python2-stestr>=1.0.0
 	depends = python2-pbr
 
