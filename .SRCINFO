@@ -1,0 +1,39 @@
+pkgbase = python-subunit2sql
+	pkgdesc = Command to Read a subunit file or stream and put the data in a SQL DB
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://git.openstack.org/cgit/openstack-infra/subunit2sql
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-sphinx
+	source = https://pypi.python.org/packages/5c/6d/57740d5b7d2b4eac7b2593379efd1d138d4d498c645259ead68a4a130729/subunit2sql-1.8.0.tar.gz
+	md5sums = 4b265806b49a795a855056cfafe37ca0
+
+pkgname = python-subunit2sql
+	depends = python
+	depends = python-alembic
+	depends = python-subunit
+	depends = python-oslo-config
+	depends = python-six
+	depends = python-pbr
+	depends = python-oslo-db
+	depends = python-stevedore
+	depends = python-dateutil
+	depends = python-sqlalchemy
+
+pkgname = python2-subunit2sql
+	depends = python2
+	depends = python2-alembic
+	depends = python2-subunit
+	depends = python2-oslo.config
+	depends = python2-six
+	depends = python2-pbr
+	depends = python2-oslo-db
+	depends = python2-stevedore
+	depends = python2-dateutil
+	depends = python2-sqlalchemy
+
