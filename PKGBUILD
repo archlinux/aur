@@ -5,7 +5,7 @@
 
 pkgbase=linux-wave       # Build kernel with a different name
 _srcname=linux-4.13
-pkgver=4.13.5
+pkgver=4.13.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -25,15 +25,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # wave patch
         'tcp_wave.patch')
 
-sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
-            'SKIP'
-            'ba0cf285525e24850917c2f5cc7c2283b6509e2185bb70108f140f7ec695d57d'
-            'SKIP'
-            '3c033bc86d5af67debfbba8434bd68726e638d353ee1b6cb9a963c4adedfd543'
-            '6092877bc80b78c03df3a5ead48d33a41efd440d7f8277a058b9154a84c4db7a'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '0058d696519b292631769a997b40dd4807634db3de52cda084566f20ada92d54')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
