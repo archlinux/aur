@@ -1,6 +1,6 @@
 # Maintainer: Oleg Pervushin <alec.ext@gmail.com>
 pkgname=minetime
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="MineTime is a modern, intuitive and smart calendar application."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 
 # Package
 source_x86_64=("${url}/releases/download/v${pkgver}/MineTime_${pkgver}_amd64.deb")
-md5sums_x86_64=('2a87b708c5affc025325fc14158c107c')
+md5sums_x86_64=('b0b5621eac7b007bb2da6a47b5f54a1a')
 
 # Icon and desktop file
 source=( minetime )
