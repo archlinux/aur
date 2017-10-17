@@ -1,7 +1,7 @@
 # Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=libretro-picodrive-git
-pkgver=r962.8289697
+pkgver=r1029.9ae88ef
 pkgrel=1
 pkgdesc="libretro implementation of PicoDrive. (Sega Megadrive/Genesis/Sega Master System/Sega GameGear/Sega CD/32X)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -43,6 +43,6 @@ package()
 {
 
   install -Dm644 "$srcdir/$_gitname/picodrive_libretro.so" "$pkgdir/usr/lib/libretro/picodrive_libretro.so"
-  install -Dm644 "picodrive_libretro.info" "${pkgdir}/usr/lib/libretro/picodrive_libretro.info"
+  install -Dm644 "picodrive_libretro.info" "${pkgdir}/usr/share/libretro/info/picodrive_libretro.info"
 
 }
