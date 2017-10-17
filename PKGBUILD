@@ -3,18 +3,17 @@
 
 pkgname='perl-cgi-session-driver-memcached'
 pkgver='0.04'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module CGI::Session::Driver::memcached: Persistent session data in CGI applications"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-cgi-session>=4', 'perl-cache-memcached')
-# Cache::Memcached::Fast seems to be broken right now.
-#optdepends=(
-#  'perl-cache-memcached-fast: perl-cache-memcached alternative'
-#)
+optdepends=(
+  'perl-cache-memcached-fast: perl-cache-memcached alternative'
+)
 makedepends=()
-#checkdepends=('memcached')
+checkdepends=('memcached')
 url='https://metacpan.org/release/CGI-Session-Driver-memcached'
 source=("http://search.cpan.org/CPAN/authors/id/O/OI/OINUME/CGI-Session-Driver-memcached-$pkgver.tar.gz")
 md5sums=('9e2e241282c5f7e9bc5b263fc0368698')
@@ -36,11 +35,21 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
-  # TODO: Start memcached if it is not already running
-  # and when started, stop it after testing.
+
+  # Enable tests by starting memcached.
+  # If it is already running, nothing happens. (No pidfile is created.)
+  /usr/bin/memcached -l 127.0.0.1 -p 11211 -o modern --pidfile=$srcdir/$_distdir/memcached.pid -d
+
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
+
+  # If the pidfile was created, we started it, then we stop it, too.
+  # Otherwise do nothing.
+  if [ -e $srcdir/$_distdir/memcached.pid ]; then
+    kill `cat $srcdir/$_distdir/memcached.pid`
+    rm $srcdir/$_distdir/memcached.pid
+  fi
 }
 
 package() {
