@@ -2,8 +2,8 @@
 
 _module='shade'
 pkgname=('python-shade' 'python2-shade')
-pkgver='1.19.0'
-pkgrel='2'
+pkgver='1.24.0'
+pkgrel='1'
 pkgdesc='Simple client library for interacting with OpenStack clouds'
 arch=('any')
 url="http://docs.openstack.org/infra/${_module}"
@@ -27,11 +27,13 @@ checkdepends=('python-pbr' 'python2-pbr'
               'python-ironicclient' 'python2-ironicclient'
               'python-designateclient' 'python2-designateclient'
               'python-dogpile.cache' 'python2-dogpile.cache'
+              'python-future' 'python2-future'
               'python-fixtures' 'python2-fixtures'
               'python-mock' 'python2-mock'
               'python-subunit' 'python2-subunit'
               'python-requests-mock' 'python2-requests-mock'
               'python-testtools' 'python2-testtools'
+              'python-stestr' 'python2-stestr'
               'python-oslotest' 'python2-oslotest')
 source=("git+https://git.openstack.org/openstack-infra/${_module}#tag=${pkgver}")
 sha256sums=('SKIP')
@@ -44,6 +46,8 @@ build() {
   cd "${srcdir}/${_module}"
   # Fix test function name for Python 3
   sed -i 's/assertItemsEqual/assertCountEqual/g' shade/tests/unit/*.py
+  # Fix TypeError: a bytes-like object is required, not 'str' for Python 3
+  sed -i 's/base64.b64encode(user_data)/base64.b64encode(user_data.encode())/g' shade/tests/unit/test_create_server.py
   python setup.py build
 
   cd "${srcdir}/${_module}-py2"
@@ -52,10 +56,10 @@ build() {
 
 check() {
   cd "${srcdir}/${_module}"
-  python setup.py testr
+  stestr run
 
   cd "${srcdir}/${_module}-py2"
-  PYTHON=python2 python2 setup.py testr
+  stestr2 run
 }
 
 package_python-shade(){

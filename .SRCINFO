@@ -1,7 +1,7 @@
 pkgbase = python-shade
 	pkgdesc = Simple client library for interacting with OpenStack clouds
-	pkgver = 1.19.0
-	pkgrel = 2
+	pkgver = 1.24.0
+	pkgrel = 1
 	url = http://docs.openstack.org/infra/shade
 	arch = any
 	license = Apache
@@ -41,6 +41,8 @@ pkgbase = python-shade
 	checkdepends = python2-designateclient
 	checkdepends = python-dogpile.cache
 	checkdepends = python2-dogpile.cache
+	checkdepends = python-future
+	checkdepends = python2-future
 	checkdepends = python-fixtures
 	checkdepends = python2-fixtures
 	checkdepends = python-mock
@@ -51,12 +53,14 @@ pkgbase = python-shade
 	checkdepends = python2-requests-mock
 	checkdepends = python-testtools
 	checkdepends = python2-testtools
+	checkdepends = python-stestr
+	checkdepends = python2-stestr
 	checkdepends = python-oslotest
 	checkdepends = python2-oslotest
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack-infra/shade#tag=1.19.0
+	source = git+https://git.openstack.org/openstack-infra/shade#tag=1.24.0
 	sha256sums = SKIP
 
 pkgname = python-shade
