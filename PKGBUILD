@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatcc-git
-pkgver=r310.e2682e7
+pkgver=r340.3b04b7f
 pkgrel=1
 epoch=
 pkgdesc="A simple ARM/x86(_64) C compiler."
@@ -37,7 +37,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 ncc $pkgdir/usr/bin/ncc
+  install -Dm755 ncc $pkgdir/usr/bin/neatcc
   install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
 }
 
