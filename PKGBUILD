@@ -7,7 +7,7 @@
 pkgname=firefox-wayland-git
 _pkgname=firefox
 pkgver=57.1.1.r11724.g1dc9dd536faa
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -15,7 +15,7 @@ url="https://www.mozilla.org/firefox/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss hunspell sqlite ttf-font libpulse icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
-             autoconf2.13 cargo mercurial)
+             autoconf2.13 cargo mercurial git)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -31,7 +31,7 @@ sha256sums=('SKIP'
             'ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            'b18c918f9663056ef6ea3ed0dd805c36b261b3e06437b587baa75bd55e93c207'
+            'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 
 
@@ -60,7 +60,7 @@ prepare() {
   patch -Np1 -i ../firefox-install-dir.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
-  #patch -Np1 -i ../no-crmf.diff
+  patch -Np1 -i ../no-crmf.diff
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   #patch -Np1 -i ../fix-wifi-scanner.diff
@@ -107,6 +107,10 @@ ac_add_options --enable-crashreporter
 ac_add_options --disable-updater
 
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+
+# fix bug https://bugzilla.mozilla.org/show_bug.cgi?id=1341234
+ac_add_options BINDGEN_CFLAGS="$(pkg-config nspr pixman-1 --cflags)"
+
 END
 }
 
@@ -181,8 +185,8 @@ END
 
   # Use system-provided dictionaries
   # rm -r "$pkgdir"/usr/lib/$_pkgname/dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/$_pkgname/dictionaries"
-  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/$_pkgname/hyphenation"
+  #ln -fTs /usr/share/hunspell "$pkgdir/usr/lib/$_pkgname/dictionaries"
+  #ln -fTs /usr/share/hyphen "$pkgdir/usr/lib/$_pkgname/hyphenation"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
