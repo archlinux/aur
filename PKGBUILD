@@ -4,14 +4,14 @@ _pkgname=radiotray-ng
 pkgname=${_pkgname}-git
 _pkgver=0.2.0
 _branch=v${_pkgver}-dev
-pkgver=0.2.0.r20.d5d7f9c
+pkgver=0.2.0.r22.40aa78b
 pkgrel=1
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/ebruck/radiotray-ng"
 license=('GPL')
 depends=('boost-libs' 'curl' 'gstreamer' 'jsoncpp' 'libappindicator-gtk3'
-         'libbsd' 'libnotify' 'libxdg-basedir' 'glibmm')
+         'libbsd' 'libnotify' 'libxdg-basedir' 'glibmm' 'wxgtk3')
 makedepends=('cmake' 'boost' 'lsb-release' 'git')
 optdepends=('python2-lxml: Convert radiotray bookmarks to radiotray-ng format')
 options=('!libtool')
@@ -37,7 +37,8 @@ build() {
   mkdir build
   cd build
 
-  cmake .. -DCMAKE_BUILD_TYPE=Release
+  cmake .. -DCMAKE_BUILD_TYPE=Release \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
   make
 }
 
