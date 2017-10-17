@@ -7,16 +7,15 @@ pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=${pkgbase}
 _kernel_rel=4.13
-_branch=drm-next-4.15-dc
+_branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=4.13.rc5.d8c893b4
+pkgver=4.13.695427.120db6fb3411
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
-
 source=(
         "${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
         # The main kernel config files
@@ -25,12 +24,10 @@ source=(
         '90-linux.hook'
         # Standard config files for mkinitcpio ramdisk
         'linux.preset')
-sha256sums=(
-            'SKIP'
-            '6d7a52b0ae947fe0984e11f1d88c701ceaa535eb176b3e905a78aa3ead656197'
+sha256sums=('SKIP'
+            '82b7a063cec1c96f6badeaf1ded9ad5eb0748612b57d7c35271e535d45bffc5e'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
-
 pkgver() {
   cd "${_srcname}" || exit
 
