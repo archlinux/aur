@@ -1,6 +1,6 @@
---- Makefile.libretro.org	2017-07-12 11:57:28.037188401 +0200
-+++ Makefile.libretro	2017-07-12 12:01:08.095944312 +0200
-@@ -121,6 +121,9 @@
+--- Makefile.libretro.orig	2017-10-17 11:05:22.815934770 +0200
++++ Makefile.libretro	2017-10-17 11:04:24.706293653 +0200
+@@ -138,6 +138,9 @@
  
  include Makefile.common
  
@@ -10,10 +10,10 @@
  OBJECTS := $(SOURCES_C:.c=.o)
  
  all: $(TARGET)
-@@ -128,7 +131,7 @@
+@@ -146,7 +149,7 @@
+ ifeq ($(STATIC_LINKING_LINK),1)
  	$(AR) rcs $@ $(OBJECTS) 
  else
- $(TARGET): $(OBJECTS)
 -	$(CC) $(fpic) $(INCLUDES) -o $@ $(OBJECTS)  -lm -lz $(SHARED)
 +	$(CC) $(fpic) $(INCLUDES) -o $@ $(OBJECTS)  -lm -lz $(SHARED) -lpthread -L/usr/lib64 -lcapsimage
  endif
