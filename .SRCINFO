@@ -1,6 +1,6 @@
 pkgbase = jre8
 	pkgdesc = Oracle Java 8 Runtime Environment
-	pkgver = 8u144
+	pkgver = 8u152
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jre8.install
@@ -40,10 +40,10 @@ pkgbase = jre8
 	source = policytool-jre8.desktop
 	md5sums = b3c7031bc65c28c2340302065e7d00d3
 	md5sums = ef3ff483db5d38ed106e0b819006bdae
-	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jre-8u144-linux-i586.tar.gz
-	md5sums_i686 = 794e74d0395124337809dcc225c80411
-	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jre-8u144-linux-x64.tar.gz
-	md5sums_x86_64 = e3808f24d0f588b0c313fa18b50683c6
+	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/jre-8u152-linux-i586.tar.gz
+	md5sums_i686 = 1ea9344c8d223694e05865e32edc3656
+	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/jre-8u152-linux-x64.tar.gz
+	md5sums_x86_64 = 32c9a36d3869b13db18e8bd5bfc14dcb
 
 pkgname = jre8
 
