@@ -7,11 +7,7 @@ pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64')
 url="https://mattermost.com"
-# The official releases are under MIT, while the ones compiled from the source
-# code in /platform must be under AGPL v3.
-# src.: https://pre-release.mattermost.com/core/pl/cj61agrh5jgmukxxahgdwfx5ww
-# src.: https://www.mattermost.org/licensing
-license=('MIT')
+license=('AGPL' 'Apache')
 
 makedepends=('git' 'go' 'libpng12' 'npm' 'yarn')
 optdepends=(
@@ -103,7 +99,7 @@ package() {
         "${pkgdir}"/usr/share/webapps \
         "${pkgdir}"/var/log/${pkgname} \
         "${pkgdir}"/etc/webapps \
-        "${pkgdir}"/usr/share/{licenses,doc}/${pkgname}
+        "${pkgdir}"/usr/share/doc/${pkgname}
 
     cp -a dist/${pkgname} "${pkgdir}"/usr/share/webapps/
 
@@ -120,11 +116,7 @@ package() {
         -e 's@tcp(dockerhost:3306)@unix(/run/mysqld/mysqld.sock)@g' \
         -i "${pkgdir}"/etc/webapps/${pkgname}/config.json
 
-    # When MIT license, the one bundled with the package must always be copied
-    # on the system.
-    # src.: https://wiki.archlinux.org/index.php/PKGBUILD#license
     mv NOTICE.txt README.md "${pkgdir}"/usr/share/doc/${pkgname}
-    mv MIT-COMPILED-LICENSE.md "${pkgdir}"/usr/share/license/${pkgname}/LICENSE
 
     cd "${srcdir}"
     install -Dm755 bin/platform -t "${pkgdir}"/usr/share/webapps/${pkgname}/bin/
