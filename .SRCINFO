@@ -1,0 +1,16 @@
+pkgbase = perl-test-mockrandom
+	pkgdesc = Perl/CPAN Module Test::MockRandom: Replaces random number generation with non-random number generation
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-MockRandom
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Test-MockRandom-1.01.tar.gz
+	md5sums = 5ea7e2ec70776129993721f7632d04da
+	sha512sums = e222bd0d3d7673b403e80d1633ddaca0ee35f96f2245e8df859d661edc7efc09b9a96d3718f25b6614395d1f24d66c9498e842cec476cf8c5b12464d585f85e7
+
+pkgname = perl-test-mockrandom
+
