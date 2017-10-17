@@ -1,4 +1,4 @@
-From 4d4034067f6446b42ab7db34d72ea13223582467 Mon Sep 17 00:00:00 2001
+From 8f7f0789e20308d9089d9fd6adb0b9c38f9fda95 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
 Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
@@ -74,10 +74,10 @@ index 78d24bb5..d482ceb5 100644
          g_timer_stop (timer);
  
 diff --git a/glib/poppler-page.cc b/glib/poppler-page.cc
-index 3d63bfdd..3dc55858 100644
+index a44edac6..9cb85271 100644
 --- a/glib/poppler-page.cc
 +++ b/glib/poppler-page.cc
-@@ -2424,3 +2424,13 @@ poppler_page_get_text_attributes_for_area (PopplerPage      *page,
+@@ -2419,3 +2419,13 @@ poppler_page_get_text_attributes_for_area (PopplerPage      *page,
  
    return g_list_reverse(attributes);
  }
@@ -104,7 +104,7 @@ index fdbfd38e..0f02a3af 100644
  /* A rectangle on a page, with coordinates in PDF points. */
  #define POPPLER_TYPE_RECTANGLE             (poppler_rectangle_get_type ())
 diff --git a/poppler/CairoFontEngine.cc b/poppler/CairoFontEngine.cc
-index 6676f898..3c8fe815 100644
+index b56d100c..44ab2bef 100644
 --- a/poppler/CairoFontEngine.cc
 +++ b/poppler/CairoFontEngine.cc
 @@ -132,7 +132,7 @@ CairoFont::getSubstitutionCorrection(GfxFont *gfxFont)
@@ -135,10 +135,10 @@ index 6676f898..3c8fe815 100644
    if (cairo_font_face_set_user_data (l->font_face,
  				     &_ft_cairo_key,
 diff --git a/poppler/CairoOutputDev.cc b/poppler/CairoOutputDev.cc
-index 2946c924..78f85c0b 100644
+index ffd39ef7..12f198e2 100644
 --- a/poppler/CairoOutputDev.cc
 +++ b/poppler/CairoOutputDev.cc
-@@ -204,6 +204,13 @@ void CairoOutputDev::setCairo(cairo_t *cairo)
+@@ -208,6 +208,13 @@ void CairoOutputDev::setCairo(cairo_t *cairo)
    }
    if (cairo != NULL) {
      this->cairo = cairo_reference (cairo);
@@ -152,7 +152,7 @@ index 2946c924..78f85c0b 100644
  	/* save the initial matrix so that we can use it for type3 fonts. */
  	//XXX: is this sufficient? could we miss changes to the matrix somehow?
  	cairo_get_matrix(cairo, &orig_matrix);
-@@ -1431,6 +1438,7 @@ void CairoOutputDev::drawChar(GfxState *state, double x, double y,
+@@ -1435,6 +1442,7 @@ void CairoOutputDev::drawChar(GfxState *state, double x, double y,
  void CairoOutputDev::endString(GfxState *state)
  {
    int render;
@@ -160,7 +160,7 @@ index 2946c924..78f85c0b 100644
  
    if (!currentFont)
      return;
-@@ -1448,6 +1456,18 @@ void CairoOutputDev::endString(GfxState *state)
+@@ -1452,6 +1460,18 @@ void CairoOutputDev::endString(GfxState *state)
      goto finish;
    }
  
@@ -179,7 +179,7 @@ index 2946c924..78f85c0b 100644
    if (!(render & 1)) {
      LOG (printf ("fill string\n"));
      cairo_set_source (cairo, fill_pattern);
-@@ -1498,6 +1518,10 @@ void CairoOutputDev::endString(GfxState *state)
+@@ -1502,6 +1522,10 @@ void CairoOutputDev::endString(GfxState *state)
    }
  
  finish:
@@ -191,10 +191,10 @@ index 2946c924..78f85c0b 100644
    glyphs = NULL;
    if (use_show_text_glyphs) {
 diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
-index 37220280..1ae46f40 100644
+index eaef798f..cced8572 100644
 --- a/poppler/Gfx.cc
 +++ b/poppler/Gfx.cc
-@@ -4730,6 +4730,62 @@ void Gfx::doImage(Object *ref, Stream *str, GBool inlineImg) {
+@@ -4616,6 +4616,62 @@ void Gfx::doImage(Object *ref, Stream *str, GBool inlineImg) {
    error(errSyntaxError, getPos(), "Bad image parameters");
  }
  
@@ -258,7 +258,7 @@ index 37220280..1ae46f40 100644
    // check the effect of compositing objects as a group:
    // look for ExtGState entries with ca != 1 or CA != 1 or BM != normal
 diff --git a/poppler/Gfx.h b/poppler/Gfx.h
-index a82f9f4a..6a7e2c78 100644
+index 293f4551..5dff6fd3 100644
 --- a/poppler/Gfx.h
 +++ b/poppler/Gfx.h
 @@ -186,6 +186,9 @@ public:
@@ -272,10 +272,10 @@ index a82f9f4a..6a7e2c78 100644
  
    void drawForm(Object *str, Dict *resDict, double *matrix, double *bbox,
 diff --git a/poppler/Page.cc b/poppler/Page.cc
-index dca52e4f..3f633423 100644
+index 197e2bef..a76ec219 100644
 --- a/poppler/Page.cc
 +++ b/poppler/Page.cc
-@@ -372,6 +372,20 @@ Dict *Page::getResourceDictCopy(XRef *xrefA) {
+@@ -348,6 +348,20 @@ Dict *Page::getResourceDictCopy(XRef *xrefA) {
    return dict ? dict->copy(xrefA) : NULL;
  }
  
@@ -297,19 +297,19 @@ index dca52e4f..3f633423 100644
    Object obj1;
    Dict *pageDict = pageObj.getDict()->copy(xrefA);
 diff --git a/poppler/Page.h b/poppler/Page.h
-index 2aaabae9..a49d34f1 100644
+index 2a597131..3d44a7ae 100644
 --- a/poppler/Page.h
 +++ b/poppler/Page.h
-@@ -179,6 +179,9 @@ public:
-   Dict *getResourceDict();
+@@ -182,6 +182,9 @@ public:
+   Object *getResourceDictObject();
    Dict *getResourceDictCopy(XRef *xrefA);
  
 +  // Whether the content in this page supports subpixel rendering (lcdfilter)
 +  GBool supportSubpixelRendering(OutputDev *out);
 +
    // Get annotations array.
-   Object *getAnnots(Object *obj, XRef *xrefA = NULL) { return annotsObj.fetch((xrefA == NULL) ? xref : xrefA, obj); }
+   Object getAnnotsObject(XRef *xrefA = nullptr) { return annotsObj.fetch(xrefA ? xrefA : xref); }
    // Add a new annotation to the page
 -- 
-2.13.2
+2.14.2
 
