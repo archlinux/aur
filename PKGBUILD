@@ -7,14 +7,19 @@ pkgdesc="Proxy auto-config and auto-discovery for Python"
 arch=('any')
 url="https://pypi.python.org/pypi/pypac/"
 license=('Apache 2.0')
-depends=('python2')
+depends=(
+  'python2'
+  'python2-requests>=2.13.0'
+  'python2-js2py>=0.44'
+  'python2-tld>=0.7.8'
+  )
 makedepends=('python2-setuptools')
 source=("https://github.com/carsonyl/pypac/archive/v$pkgver.tar.gz")
 md5sums=('3221632b0b434c10162f281a849ba861')
 
 build() {
   cd "${srcdir}/pypac-${pkgver}"
-  python setup.py bdist_wheel
+  python2 setup.py bdist_wheel
 }
 
 package() {
