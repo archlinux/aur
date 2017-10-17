@@ -2,8 +2,8 @@
 
 _module='tempest'
 pkgname='python-tempest'
-pkgver='15.0.0'
-pkgrel='2'
+pkgver='17.0.0'
+pkgrel='1'
 pkgdesc='OpenStack Integration Testing'
 arch=('any')
 url="http://docs.openstack.org/developer/${_module}/"
