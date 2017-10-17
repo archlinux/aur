@@ -93,7 +93,7 @@ EVICEHEIGHTPOINTS=0"
 
 *FoomaticIDs: Generic-PCL_6_PCL_XL_Printer pxlcolor
 *FoomaticRIPCommandLine: "gs -q -dBATCH -dPARANOIDSAFER -dNOPAUSE -dNO&&
-INTERPOLATE%B%A%Z -sOutputFile=- -"
+MEDIAATTRS -dNOINTERPOLATE%B%A%Z -sOutputFile=- -"
 *End
 
 *OpenGroup: General/General

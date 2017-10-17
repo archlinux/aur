@@ -1,7 +1,7 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 pkgname=openprinting-ppds-pxlcolor-generic
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic PPD for PCL colour printers"
 arch=('any')
 url='http://www.openprinting.org/printer/Generic/Generic-PCL_6_PCL_XL_Printer'
@@ -9,7 +9,7 @@ license=('MIT')
 depends=(cups ghostscript)
 install=driver.install
 source=('Generic-PCL_6_PCL_XL_Printer-pxlcolor.ppd')
-sha256sums=('0650fbe63ef324022d9304866fe2505f1a5909faea2a7357762903d8569e3f61')
+sha256sums=('0f3a27ddec734165396b04e794335c45d30d5a8297078cf4f6d9d933244a6033')
 
 package() {
   install -d $pkgdir/usr/share/cups/model
