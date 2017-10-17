@@ -1,7 +1,7 @@
 pkgbase = python-oslo-concurrency
 	pkgdesc = Oslo concurrency library
-	pkgver = 3.20.0
-	pkgrel = 2
+	pkgver = 3.23.0
+	pkgrel = 1
 	url = https://docs.openstack.org/developer/oslo.concurrency/
 	arch = any
 	license = Apache
@@ -27,7 +27,7 @@ pkgbase = python-oslo-concurrency
 	makedepends = python2-setuptools
 	makedepends = python-pbr
 	makedepends = python2-pbr
-	source = git+https://git.openstack.org/openstack/oslo.concurrency#tag=3.20.0
+	source = git+https://git.openstack.org/openstack/oslo.concurrency#tag=3.23.0
 	md5sums = SKIP
 
 pkgname = python-oslo-concurrency

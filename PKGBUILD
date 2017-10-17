@@ -2,8 +2,8 @@
 
 _module='oslo.concurrency'
 pkgname=('python-oslo-concurrency' 'python2-oslo-concurrency')
-pkgver='3.20.0'
-pkgrel='2'
+pkgver='3.23.0'
+pkgrel='1'
 pkgdesc='Oslo concurrency library'
 arch=('any')
 url="https://docs.openstack.org/developer/${_module}/"
