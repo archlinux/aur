@@ -2,16 +2,11 @@
 
 _pkgname=jdk
 pkgname=jdk-devel
-_major=9
-#_minor=1
-_build=181
-_pkgver=$_major
-pkgver=${_major}b${_build}
-#_pkgver=${_major}u${_minor}
-#pkgver=${_major}u${_minor}.b${_build}
+pkgver=9.0.1
+_major=${pkgver/.*}
+_build=11
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot"
-#arch=('i686' 'x86_64')
 arch=('x86_64')
 url="http://jdk.java.net/$_major/"
 license=('custom:Oracle')
@@ -25,6 +20,7 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start
 conflicts=("java-runtime-jre=$_major" "java-environment-jdk=$_major")
 
 # Variables
+DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname
 
@@ -41,25 +37,19 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.java.net/java/GA/jdk${_major}/${_major}/binaries/${_pkgname}-${_major}+${_build}_linux-x64_bin.tar.gz"
+source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
-        "policytool-$_jname.desktop"
-        'LICENSE-Early-Adopter-Terms.txt')
-#source_i686=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}+${_build}_linux-x86_bin.tar.gz")
-#source_x86_64=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}+${_build}_linux-x64_bin.tar.gz")
-sha256sums=('0afa4ff751925e039489b4690667aad746412567ffc71393d6a253001874e592'
+        "policytool-$_jname.desktop")
+sha256sums=('2cdaf0ff92d0829b510edd883a4ac8322c02f2fc1beae95d048b6716076bc014'
             '76a1e9a15e13bd62d953c1a4806be7821b2b09d974b6ed622b6d85c8d6dfc8b2'
             '9e557bacfc3b78272c71ccef8d3d45a2772e0f942eba0e16bfe86f6f59f4a5ab'
             'f5bf5f941a118d2db45a7e451e762e0f04ff38cea0f6674a09268daed09c4052'
-            'e9735a8bb202e64a9e9a949d202932e7e92587b4354f768cd29ba8f322dbd013'
-            'a8b0ecff3221f39c53092d910dfd903ff243a185835ad6d121abbbe82225d335')
-#sha256sums_i686=('ba0c77644ece024cdb933571d79f0f035e91a9c9ab70de9c82446c9fbd000c97')
-#sha256sums_x86_64=('2ef49c97ddcd5e0de20226eea4cca7b0d7de63ddec80eff8291513f6474ca0dc')
+            'e9735a8bb202e64a9e9a949d202932e7e92587b4354f768cd29ba8f322dbd013')
 
 package() {
-    cd ${_pkgname}-${_major}
+    cd $_pkgname-$pkgver
 
     msg2 "Creating directory structure..."
     install -d "$pkgdir"/etc/.java/.systemPrefs
@@ -84,9 +74,15 @@ package() {
     ln -s . jre
 
     msg2 "Fixing directory structure..."
-    # Suffix .desktops + icons (sun-java.png -> sun-java-$_jname.png)
+    # Suffix .desktops + icon (sun-jcontrol.png -> sun-jcontrol-$_jname.png)
     for i in $(find lib/desktop/ -type f); do
         rename -- "." "-$_jname." $i
+    done
+
+    # Link missing icons
+    for i in $(find lib/desktop/icons/ -name "sun-jcontrol-$_jname.png" -type f); do
+        ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/java}"
+        ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/javaws}"
     done
 
     # Fix .desktop's
@@ -124,25 +120,22 @@ package() {
     done
 
     # Link NPAPI plugin
-    case "$CARCH" in
-        i686)   ln -sf $_jvmdir/lib/i386/libnpjp2.so  "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-        x86_64) ln -sf $_jvmdir/lib/amd64/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-    esac
+    ln -sf $_jvmdir/lib/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so
 
     # Replace JKS keystore with 'ca-certificates-java'
     ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
 
     # Move/link licenses
     mv legal/ "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
-    install -m644 "$srcdir"/LICENSE-Early-Adopter-Terms.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
+    # install -m644 "$srcdir"/LICENSE-Early-Adopter-Terms.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
     ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
 
-    msg2 "Enabling Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy..."
-    # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
-    # things like 256-bit AES. Enabled by default in OpenJDK:
-    # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
-    # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-    sed -i "s/crypto.policy=limited/crypto.policy=unlimited/" "$pkgdir"/etc/java-$_jname/security/java.security
+    # msg2 "Enabling Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy..."
+    # # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
+    # # things like 256-bit AES. Enabled by default in OpenJDK:
+    # # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
+    # # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
+    # sed -i "s/crypto.policy=limited/crypto.policy=unlimited/" "$pkgdir"/etc/java-$_jname/security/java.security
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:

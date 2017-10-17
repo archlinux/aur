@@ -1,6 +1,6 @@
 pkgbase = jdk-devel
 	pkgdesc = Oracle Java 9 Development Kit Snapshot
-	pkgver = 9b181
+	pkgver = 9.0.1
 	pkgrel = 1
 	url = http://jdk.java.net/9/
 	install = jdk-devel.install
@@ -38,18 +38,16 @@ pkgbase = jdk-devel
 	backup = etc/java-jdk9/psfont.properties.ja
 	backup = etc/java-jdk9/psfontj2d.properties
 	backup = etc/java-jdk9/sound.properties
-	source = http://download.java.net/java/GA/jdk9/9/binaries/jdk-9+181_linux-x64_bin.tar.gz
+	source = http://download.oracle.com/otn-pub/java/jdk/9.0.1+11/jdk-9.0.1_linux-x64_bin.tar.gz
 	source = jconsole-jdk9.desktop
 	source = jmc-jdk9.desktop
 	source = jvisualvm-jdk9.desktop
 	source = policytool-jdk9.desktop
-	source = LICENSE-Early-Adopter-Terms.txt
-	sha256sums = 0afa4ff751925e039489b4690667aad746412567ffc71393d6a253001874e592
+	sha256sums = 2cdaf0ff92d0829b510edd883a4ac8322c02f2fc1beae95d048b6716076bc014
 	sha256sums = 76a1e9a15e13bd62d953c1a4806be7821b2b09d974b6ed622b6d85c8d6dfc8b2
 	sha256sums = 9e557bacfc3b78272c71ccef8d3d45a2772e0f942eba0e16bfe86f6f59f4a5ab
 	sha256sums = f5bf5f941a118d2db45a7e451e762e0f04ff38cea0f6674a09268daed09c4052
 	sha256sums = e9735a8bb202e64a9e9a949d202932e7e92587b4354f768cd29ba8f322dbd013
-	sha256sums = a8b0ecff3221f39c53092d910dfd903ff243a185835ad6d121abbbe82225d335
 
 pkgname = jdk-devel
 
