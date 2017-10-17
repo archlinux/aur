@@ -7,7 +7,7 @@ pkgname=hdfview
 _pkgname=HDFView
 pkgver=2.14.0
 _pkgver=${pkgver%.0}
-pkgrel=1
+pkgrel=2
 pkgdesc="a GUI browser for hdf5 files"
 arch=('i686' 'x86_64')
 url="https://support.hdfgroup.org/products/java/"
@@ -15,7 +15,7 @@ license=('custom')
 depends=('hdf-java' 'java-environment')
 makedepends=('apache-ant')
 options=(!strip)
-source=("https://www.support.hdfgroup.org/ftp/HDF5/hdf-java/current/src/hdf-view/${pkgname}-${_pkgver}.tar.gz"
+source=("https://support.hdfgroup.org/ftp/HDF5/hdf-java/current/src/${pkgname}-${_pkgver}.tar.gz"
         "${_pkgname}.desktop"
         "${_pkgname}.ico"
         license)
