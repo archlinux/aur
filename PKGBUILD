@@ -8,7 +8,7 @@ arch=('any')
 url="https://bytecoin.org/downloads/"
 license=('GPL')
 depends=()
-source=("https://bytecoin.org/static/files/bytecoinwallet-1.1.9.3.amd64.deb")
+source=("https://bytecoin.org/storage/wallets/bytecoin_wallet/bytecoinwallet-1.1.9.3.amd64.deb")
 md5sums=("e94f6248e25c08847d352f12339d03ba")
 
 
