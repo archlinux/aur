@@ -4,7 +4,7 @@
 pkgname=ats2-postiats
 _pkgname=ATS2-Postiats
 pkgver=0.3.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Statically typed programming language"
 arch=('i686' 'x86_64')
 url="http://www.ats-lang.org/"
@@ -13,15 +13,9 @@ depends=('bash' 'gmp')
 optdepends=()
 options=('staticlibs' '!emptydirs' '!makeflags')
 install="${pkgname}.install"
-source=("https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-${pkgver}/${_pkgname}-${pkgver}.tgz"
-        'https://raw.githubusercontent.com/githwxi/ATS-Postiats/bcc2ece436fdad3b64a1aa15f032d65d807d6076/bin/myatscc_env.sh.in')
+source=("https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-${pkgver}/${_pkgname}-${pkgver}.tgz")
 
-sha256sums=('909c72b6a9db7434122815e391a4ac0ed421e6c668412b2344d55086cf7e29e4'
-            '6b52eed360826b8dd768c9660c902b7506e3e61175d4a2179c40f3b829a581de')
-
-prepare() {
-	cp myatscc_env.sh.in "${_pkgname}-${pkgver}"/bin/
-}
+sha256sums=('05820af2390bd7f33fe8bc00e251e609f7b5af5124d089c6d582589746f4dda6')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
