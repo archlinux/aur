@@ -1,5 +1,5 @@
 pkgname=pgindent
-pkgver=9.4.4
+pkgver=9.6.5
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc="Postgresql code indenter"
@@ -9,9 +9,7 @@ license=('custom:PostgreSQL')
 depends=('pg-bsd-indent')
 source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
        )
-md5sums=('1fe952c44ed26d7e6a335cf991a9c1c6'
-        )
-sha256sums=('538ed99688d6fdbec6fd166d1779cf4588bf2f16c52304e5ef29f904c43b0013'
+sha256sums=(06da12a7e3dddeb803962af8309fa06da9d6989f49e22865335f0a14bad0744c
            )
 
 build() {
