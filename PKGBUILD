@@ -1,9 +1,10 @@
 # Maintainer: Gennadiy Chernyshyk <genaloner@gmail.com>
 # PKGBUILD source: https://github.com/TES3MP/openmw-tes3mp
+# Special thanks to Grim Kriegor who provide tarball and make special script for easy build TES3MP: https://github.com/GrimKriegor/TES3MP-deploy/tree/development   
 
 pkgname=openmw-tes3mp
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="TES3MP is a project aiming to add multiplayer functionality to OpenMW, a free and open source recreation of the popular Bethesda Softworks game \"The Elder Scrolls III: Morrowind\"."
 arch=('x86_64')
 url="https://github.com/TES3MP/openmw-tes3mp"
@@ -13,16 +14,16 @@ optdepends=('openmw: make engine configuration files')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
-source=('https://github.com/TES3MP/openmw-tes3mp/releases/download/tes3mp-0.6.1/tes3mp-GNU.Linux-x86_64-release-0.6.1-f5e23d5fc6-p5.tar.gz'
+source=('https://github.com/TES3MP/openmw-tes3mp/releases/download/tes3mp-0.6.1/tes3mp-GNU.Linux-x86_64-release-0.6.1-f532ab241d-p7.tar.gz'
         'https://raw.githubusercontent.com/TES3MP/openmw-tes3mp/master/files/tes3mp/tes3mp_logo.png'
         'tes3mp-client.desktop'
         'tes3mp-server.desktop'
         'tes3mp-browser.desktop')
-sha1sums=('0ec83b563aea0118bb5a82c1e3295627046bd6b4'
-          '7a3f41f2c37fa5f5c0daf0e91619b5a461aa8f5a'
-          '026c98a9bd6a572eae5ed61df202fc509455f444'
-          'db512f6f54ec5a0c2a0a268438dca70e0c781fac'
-          'd4e21b709658361889ce75b954bb4743564629f2')
+sha256sums=('6f921660d75a56751987e97b55d1abc510a87338a55e37bbafa72d81cda1522b'
+          '861e5e8cc7ddec2dbfb842d68cdd45e7cc564079b9cb37ad113ff140bf424fd9'
+          '0e855bcaf8986059cc722cafbc3b0b08f270862f28e09201a3564886404407ed'
+          '2bd9e9dddda956c7cbdc8bdf2448d42500aa88ffb7fb01d2cbffc58c22fdf57d'
+          'ddccf2f35e41c2cbb35816f3bbfc53a9dd5809cd2830e8e324f45550852f6408')
 
 prepare() {
   cd ${srcdir}/TES3MP
@@ -42,6 +43,10 @@ prepare() {
   rm bsatool*
   rm esmtool*
   rm openmw*
+
+  # Rename config files to .example for launcher script
+  mv tes3mp-server-default.cfg tes3mp-server-default.cfg.example
+  mv tes3mp-client-default.cfg tes3mp-client-default.cfg.example
 }
 
 package() {
@@ -58,9 +63,6 @@ package() {
   cd ${srcdir}
   install -d $pkgdir/opt
   mv TES3MP $pkgdir/opt/$pkgname
-
-  # Package folder needs to be writable, otherwise there TES3MP don't work
-  chmod -R a+rwX $pkgdir/opt/$pkgname
 }
 
 # vim:set ts=2 sw=2 et:
