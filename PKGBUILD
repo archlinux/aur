@@ -1,16 +1,16 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 
 pkgname=python-osc
-pkgver=1.6
+pkgver=1.6.3
 pkgrel=3
 pkgdesc='Open Sound Control server and client implementations in pure Python'
 arch=('any')
-url='https://github.com/attwad/python-osc'
+url="https://github.com/attwad/python-osc"
 license=('custom')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/attwad/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('391e1adfe42b89154694406821ad5f451484db4d64f07dbab8fe80e6dc0baab98bec1525c6fc3a9c163cd9bb4847b7bc5b1022ba304a647dc033042cbfc29857')
+sha512sums=('9c03f90a70c976e1b39f71f032de1fc3e9e6372f0605179f1cddf703baee00989ac3fa6a74de8009d26c1ba1dffbf66586e93c090cd44ebaa6c2badfc84905e1')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
