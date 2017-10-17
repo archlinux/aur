@@ -232,3 +232,12 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
+            'SKIP'
+            '0fe89c96e956efbded576214eef0c8e43cabe41dfca245e3ebb79fff9bc8715d'
+            'SKIP'
+            '818b6db9e824f3157c56f0cbe60230a4c6969f0a6e50ecab013385978d8763b1'
+            '96d6080a9445c4158f8b590168f9aaa3b29f6346682f4a97978dce1db76d6e3a'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
+            '9611e00bccaae47ad901bebba92f42ab3941da94c874d92e1027b3b1fbc53f79')

@@ -16,7 +16,7 @@ index 1c3feffb1c1c..34fe18d467cd 100644
  M:	Antti Palosaari <crope@iki.fi>
  L:	linux-media@vger.kernel.org
 diff --git a/include/net/tcp.h b/include/net/tcp.h
-index f642a39f9eee..bb43dc943b10 100644
+index 48978125947b..d9904fed3555 100644
 --- a/include/net/tcp.h
 +++ b/include/net/tcp.h
 @@ -988,6 +988,14 @@ struct tcp_congestion_ops {
@@ -131,7 +131,7 @@ index afcb435adfbe..e82ba69b19a9 100644
  obj-$(CONFIG_XFRM) += xfrm4_policy.o xfrm4_state.o xfrm4_input.o \
  		      xfrm4_output.o xfrm4_protocol.o
 diff --git a/net/ipv4/tcp_output.c b/net/ipv4/tcp_output.c
-index b7661a68d498..8cc1fd25d234 100644
+index 40f7c8ee9ba6..74ecb6f37658 100644
 --- a/net/ipv4/tcp_output.c
 +++ b/net/ipv4/tcp_output.c
 @@ -42,6 +42,24 @@
@@ -217,7 +217,7 @@ index b7661a68d498..8cc1fd25d234 100644
  	hrtimer_start(&tcp_sk(sk)->pacing_timer,
  		      ktime_add_ns(ktime_get(), len_ns),
  		      HRTIMER_MODE_ABS_PINNED);
-@@ -994,6 +1030,7 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
+@@ -995,6 +1031,7 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
  	struct tcp_md5sig_key *md5;
  	struct tcphdr *th;
  	int err;
@@ -234,18 +234,18 @@ index b7661a68d498..8cc1fd25d234 100644
  	/* The urg_mode check is necessary during a below snd_una win probe */
  	if (unlikely(tcp_urg_mode(tp) && before(tcb->seq, tp->snd_up))) {
  		if (before(tp->snd_up, tcb->seq + 0x10000)) {
-@@ -1125,6 +1164,10 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
- 	if (likely(err <= 0))
- 		return err;
+@@ -1122,6 +1161,10 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
+ 
+ 	err = icsk->icsk_af_ops->queue_xmit(sk, skb, &inet->cork.fl);
  
 +	pr_debug("%llu [tcp_transmit_skb] seq=%u, ack=%u, window=%u, len=%u flags=%s err=%i \n",
 +		 NOW, ntohl(th->seq), ntohl(th->ack_seq),
 +		 ntohs(th->window), skb->len, print_tcp_header_flags(flags), err);
 +
- 	tcp_enter_cwr(sk);
- 
- 	return net_xmit_eval(err);
-@@ -2135,6 +2178,7 @@ static int tcp_mtu_probe(struct sock *sk)
+ 	if (unlikely(err > 0)) {
+ 		tcp_enter_cwr(sk);
+ 		err = net_xmit_eval(err);
+@@ -2138,6 +2181,7 @@ static int tcp_mtu_probe(struct sock *sk)
  	/* We're ready to send.  If this fails, the probe will
  	 * be resegmented into mss-sized pieces by tcp_write_xmit().
  	 */
@@ -253,7 +253,7 @@ index b7661a68d498..8cc1fd25d234 100644
  	if (!tcp_transmit_skb(sk, nskb, 1, GFP_ATOMIC)) {
  		/* Decrement cwnd here because we are sending
  		 * effectively two packets. */
-@@ -2154,7 +2198,7 @@ static int tcp_mtu_probe(struct sock *sk)
+@@ -2157,7 +2201,7 @@ static int tcp_mtu_probe(struct sock *sk)
  static bool tcp_pacing_check(const struct sock *sk)
  {
  	return tcp_needs_internal_pacing(sk) &&
@@ -262,7 +262,7 @@ index b7661a68d498..8cc1fd25d234 100644
  }
  
  /* TCP Small Queues :
-@@ -2258,6 +2302,7 @@ void tcp_chrono_stop(struct sock *sk, const enum tcp_chrono type)
+@@ -2261,6 +2305,7 @@ void tcp_chrono_stop(struct sock *sk, const enum tcp_chrono type)
  static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  			   int push_one, gfp_t gfp)
  {
@@ -270,7 +270,7 @@ index b7661a68d498..8cc1fd25d234 100644
  	struct tcp_sock *tp = tcp_sk(sk);
  	struct sk_buff *skb;
  	unsigned int tso_segs, sent_pkts;
-@@ -2265,6 +2310,8 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2268,6 +2313,8 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  	int result;
  	bool is_cwnd_limited = false, is_rwnd_limited = false;
  	u32 max_segs;
@@ -279,7 +279,7 @@ index b7661a68d498..8cc1fd25d234 100644
  
  	sent_pkts = 0;
  
-@@ -2280,11 +2327,32 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2283,11 +2330,31 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  
  	max_segs = tcp_tso_segs(sk, mss_now);
  	tcp_mstamp_refresh(tp);
@@ -290,7 +290,6 @@ index b7661a68d498..8cc1fd25d234 100644
 +			ca_ops->pacing_timer_expired(sk);
 +			notify = true;
 +		}
-+
 +		if (ca_ops->get_segs_per_round)
 +			pacing_allowed_segs = ca_ops->get_segs_per_round(sk);
 +	} else
@@ -313,7 +312,7 @@ index b7661a68d498..8cc1fd25d234 100644
  
  		tso_segs = tcp_init_tso_segs(skb, mss_now);
  		BUG_ON(!tso_segs);
-@@ -2292,33 +2360,42 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2295,33 +2362,42 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  		if (unlikely(tp->repair) && tp->repair_queue == TCP_SEND_QUEUE) {
  			/* "skb_mstamp" is used as a start point for the retransmit timer */
  			skb->skb_mstamp = tp->tcp_mstamp;
@@ -360,7 +359,7 @@ index b7661a68d498..8cc1fd25d234 100644
  		}
  
  		limit = mss_now;
-@@ -2330,16 +2407,22 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2333,16 +2409,22 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  						    nonagle);
  
  		if (skb->len > limit &&
@@ -386,7 +385,7 @@ index b7661a68d498..8cc1fd25d234 100644
  
  repair:
  		/* Advance the send_head.  This one is sent out.
-@@ -2350,10 +2433,19 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2353,10 +2435,19 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  		tcp_minshall_update(tp, mss_now, skb);
  		sent_pkts += tcp_skb_pcount(skb);
  
@@ -407,7 +406,7 @@ index b7661a68d498..8cc1fd25d234 100644
  	if (is_rwnd_limited)
  		tcp_chrono_start(sk, TCP_CHRONO_RWND_LIMITED);
  	else
-@@ -2447,6 +2539,7 @@ void tcp_send_loss_probe(struct sock *sk)
+@@ -2450,6 +2541,7 @@ void tcp_send_loss_probe(struct sock *sk)
  	if (skb) {
  		if (tcp_snd_wnd_test(tp, skb, mss)) {
  			pcount = tp->packets_out;
@@ -415,7 +414,7 @@ index b7661a68d498..8cc1fd25d234 100644
  			tcp_write_xmit(sk, mss, TCP_NAGLE_OFF, 2, GFP_ATOMIC);
  			if (tp->packets_out > pcount)
  				goto probe_sent;
-@@ -2522,9 +2615,13 @@ void tcp_push_one(struct sock *sk, unsigned int mss_now)
+@@ -2525,9 +2617,13 @@ void tcp_push_one(struct sock *sk, unsigned int mss_now)
  {
  	struct sk_buff *skb = tcp_send_head(sk);
  
@@ -430,19 +429,16 @@ index b7661a68d498..8cc1fd25d234 100644
  }
  
  /* This function returns the amount that we can raise the
-@@ -2868,9 +2965,11 @@ int __tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs)
- 
- 		skb->skb_mstamp = tp->tcp_mstamp;
- 		nskb = __pskb_copy(skb, MAX_TCP_HEADER, GFP_ATOMIC);
-+		pr_debug("%llu [tcp_retransmit_skb] retransmit\n", NOW);
- 		err = nskb ? tcp_transmit_skb(sk, nskb, 0, GFP_ATOMIC) :
- 			     -ENOBUFS;
- 	} else {
-+		pr_debug("%llu [tcp_retransmit_skb] retransmit\n", NOW);
+@@ -2878,6 +2974,8 @@ int __tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs)
  		err = tcp_transmit_skb(sk, skb, 1, GFP_ATOMIC);
  	}
  
-@@ -3084,6 +3183,7 @@ void tcp_send_active_reset(struct sock *sk, gfp_t priority)
++	pr_debug("%llu [tcp_retransmit_skb] retransmit\n", NOW);
++
+ 	if (likely(!err)) {
+ 		TCP_SKB_CB(skb)->sacked |= TCPCB_EVER_RETRANS;
+ 	} else if (err != -EBUSY) {
+@@ -3088,6 +3186,7 @@ void tcp_send_active_reset(struct sock *sk, gfp_t priority)
  			     TCPHDR_ACK | TCPHDR_RST);
  	tcp_mstamp_refresh(tcp_sk(sk));
  	/* Send it off. */
@@ -450,7 +446,7 @@ index b7661a68d498..8cc1fd25d234 100644
  	if (tcp_transmit_skb(sk, skb, 0, priority))
  		NET_INC_STATS(sock_net(sk), LINUX_MIB_TCPABORTFAILED);
  }
-@@ -3120,6 +3220,7 @@ int tcp_send_synack(struct sock *sk)
+@@ -3124,6 +3223,7 @@ int tcp_send_synack(struct sock *sk)
  		TCP_SKB_CB(skb)->tcp_flags |= TCPHDR_ACK;
  		tcp_ecn_send_synack(sk, skb);
  	}
@@ -458,7 +454,7 @@ index b7661a68d498..8cc1fd25d234 100644
  	return tcp_transmit_skb(sk, skb, 1, GFP_ATOMIC);
  }
  
-@@ -3399,6 +3500,7 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
+@@ -3403,6 +3503,7 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
  	if (syn_data->len)
  		tcp_chrono_start(sk, TCP_CHRONO_BUSY);
  
@@ -466,7 +462,7 @@ index b7661a68d498..8cc1fd25d234 100644
  	err = tcp_transmit_skb(sk, syn_data, 1, sk->sk_allocation);
  
  	syn->skb_mstamp = syn_data->skb_mstamp;
-@@ -3420,6 +3522,7 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
+@@ -3428,6 +3529,7 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
  	/* Send a regular SYN with Fast Open cookie request option */
  	if (fo->cookie.len > 0)
  		fo->cookie.len = 0;
@@ -474,7 +470,7 @@ index b7661a68d498..8cc1fd25d234 100644
  	err = tcp_transmit_skb(sk, syn, 1, sk->sk_allocation);
  	if (err)
  		tp->syn_fastopen = 0;
-@@ -3458,6 +3561,7 @@ int tcp_connect(struct sock *sk)
+@@ -3466,6 +3568,7 @@ int tcp_connect(struct sock *sk)
  	tcp_ecn_send_syn(sk, buff);
  
  	/* Send off SYN; include data in Fast Open. */
@@ -482,7 +478,7 @@ index b7661a68d498..8cc1fd25d234 100644
  	err = tp->fastopen_req ? tcp_send_syn_data(sk, buff) :
  	      tcp_transmit_skb(sk, buff, 1, sk->sk_allocation);
  	if (err == -ECONNREFUSED)
-@@ -3572,6 +3676,7 @@ void tcp_send_ack(struct sock *sk)
+@@ -3585,6 +3688,7 @@ void tcp_send_ack(struct sock *sk)
  	skb_set_tcp_pure_ack(buff);
  
  	/* Send it off, this clears delayed acks for us. */
@@ -490,7 +486,7 @@ index b7661a68d498..8cc1fd25d234 100644
  	tcp_transmit_skb(sk, buff, 0, (__force gfp_t)0);
  }
  EXPORT_SYMBOL_GPL(tcp_send_ack);
-@@ -3606,6 +3711,8 @@ static int tcp_xmit_probe_skb(struct sock *sk, int urgent, int mib)
+@@ -3619,6 +3723,8 @@ static int tcp_xmit_probe_skb(struct sock *sk, int urgent, int mib)
  	 */
  	tcp_init_nondata_skb(skb, tp->snd_una - !urgent, TCPHDR_ACK);
  	NET_INC_STATS(sock_net(sk), mib);
@@ -499,7 +495,7 @@ index b7661a68d498..8cc1fd25d234 100644
  	return tcp_transmit_skb(sk, skb, 0, (__force gfp_t)0);
  }
  
-@@ -3651,6 +3758,7 @@ int tcp_write_wakeup(struct sock *sk, int mib)
+@@ -3664,6 +3770,7 @@ int tcp_write_wakeup(struct sock *sk, int mib)
  			tcp_set_skb_tso_segs(skb, mss);
  
  		TCP_SKB_CB(skb)->tcp_flags |= TCPHDR_PSH;
