@@ -1,0 +1,21 @@
+pkgbase = perl-crypt-gcrypt
+	pkgdesc = Perl/CPAN Module Crypt::GCyrpt: Perl interface to the GNU Cryptographic library
+	pkgver = 1.26
+	pkgrel = 1
+	url = https://metacpan.org/release/Crypt-GCrypt
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = libgcrypt>=1.8.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AA/AAR/Crypt-GCrypt-1.26.tar.gz
+	source = http://http.debian.net/debian/pool/main/libc/libcrypt-gcrypt-perl/libcrypt-gcrypt-perl_1.26-5.debian.tar.xz
+	md5sums = d23084ed878e5d12d4956c39e6f2b813
+	md5sums = feadad19cee085c510e0d4e3030c5a90
+	sha512sums = 26a55539297ab0ba12d8732a15e3797aa5ee74fad01edc11ef55f25f0b26d8d03381696e65ec057e191866a6a5221f34af97572680c48e1336b08ab50cad3e89
+	sha512sums = cd7bad47b7b09f2fb98c4cac351f712450051fa7481dcf44ba58370440597d0e115f03108b5fee7b7d19ac8dab6e0a7a5be9c170448fe2ab60258d4c5662b3ee
+
+pkgname = perl-crypt-gcrypt
+
