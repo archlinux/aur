@@ -3,6 +3,7 @@
 # Contributor: Skippy the Kangoo <Skippythekangoo CHEZ yahoo POINT fr>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
+pkgbase='sat-xmpp-hg'
 pkgname=('sat-xmpp-hg' 'sat-jp-hg' 'sat-primitivus-hg')
 _realname=sat
 pkgver=0.6.1.r2385.39d30cf722cb
