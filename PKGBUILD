@@ -5,8 +5,8 @@
 
 pkgname=pd-git
 _name=pd
-pkgver=0.47.1.r6.gbd939d1
-pkgrel=2
+pkgver=0.48.0.r0.geafd434
+pkgrel=1
 pkgdesc="The Pure Data real-time music and multimedia environment"
 arch=('i686' 'x86_64')
 url="http://msp.ucsd.edu/software.html"
@@ -17,8 +17,8 @@ conflicts=('pd')
 options=('!strip' '!buildflags')
 source=("${_name}::git://git.code.sf.net/p/pure-data/pure-data"
         "${_name}.desktop")
-md5sums=('SKIP'
-         'c12f07e8c18f8bde9c094ced3485c936')
+sha512sums=('SKIP'
+            '4d3596b337456117ecdf0f1709358b4298198e0b347cb13b884e35ad2f2f667561a10b44683cf916c1da123daebee7141e9ab8bd89405a579b69d30b0e718f37')
 
 pkgver() {
   cd ${_name}
