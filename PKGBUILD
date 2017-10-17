@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-ironicclient' 'python2-ironicclient')
-pkgver='1.12.0'
-pkgrel='2'
+pkgver='1.17.1'
+pkgrel='1'
 pkgdesc='Python client library for Ironic'
 arch=('any')
 url="https://docs.openstack.org/developer/${pkgname}/"

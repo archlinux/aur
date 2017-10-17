@@ -1,14 +1,14 @@
 pkgbase = python-ironicclient
 	pkgdesc = Python client library for Ironic
-	pkgver = 1.12.0
-	pkgrel = 2
+	pkgver = 1.17.1
+	pkgrel = 1
 	url = https://docs.openstack.org/developer/python-ironicclient/
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack/python-ironicclient#tag=1.12.0
+	source = git+https://git.openstack.org/openstack/python-ironicclient#tag=1.17.1
 	md5sums = SKIP
 
 pkgname = python-ironicclient
