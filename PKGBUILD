@@ -6,12 +6,16 @@ pkgver=0.0.1
 pkgrel=1
 pkgdesc="Epitech Intra for Linux"
 arch=("i686" "x86_64")
-license=("None")
 url="https://github.com/Quent42340/EIFL"
 depends=("qt5-base" "qtkeychain" "curl")
 makedepends=("cmake" "cpr-git")
 source=("${_pkgname}::git+${url}.git")
 md5sums=("SKIP")
+
+pkgver() {
+	cd "${_pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd "${_pkgname}"

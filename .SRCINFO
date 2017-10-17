@@ -5,7 +5,6 @@ pkgbase = eifl-git
 	url = https://github.com/Quent42340/EIFL
 	arch = i686
 	arch = x86_64
-	license = None
 	makedepends = cmake
 	makedepends = cpr-git
 	depends = qt5-base
