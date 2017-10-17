@@ -1,7 +1,7 @@
 # Maintainer: Constantin Lorenz <Cons27773964@aol.com>
 
 pkgname=sandboxed-tor-browser
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 torbrowserver=7.5a5	# for easier source access
 epoch=
@@ -27,7 +27,7 @@ source+=("${pkgname}.desktop"
 noextract=()
 md5sums=('49042133dbfad9f06df48c934dc123e6'
          '494afbfa60fb4ce21840244cc3f7208c')
-md5sums_x86_64=('e4c03cb0a1733aec6c100d8c8442c887'
+md5sums_x86_64=('669da8a29b10461117ab59324ae0cb72'
                 'SKIP')
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 
