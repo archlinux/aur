@@ -2,7 +2,7 @@
 
 pkgname=wdt
 pkgver=1.27.1612021
-pkgrel=4
+pkgrel=5
 pkgdesc="Tool to transfer data between 2 systems as fast as possible over multiple TCP paths"
 arch=('i686' 'x86_64')
 url="https://github.com/facebook/wdt"
