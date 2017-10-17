@@ -4,8 +4,8 @@
 
 pkgname=uim-debian
 pkgver=1.8.6+gh20161003.0.d63dadd
-_debrel=5
-pkgrel=5
+_debrel=6
+pkgrel=6
 pkgdesc='Multilingual input method library with Debian patches (supports gtk3 and qt5)'
 url='https://packages.debian.org/sid/uim'
 license=('custom:BSD')
@@ -23,7 +23,7 @@ source=("http://http.debian.net/debian/pool/main/u/uim/uim_${pkgver}.orig.tar.gz
         "http://http.debian.net/debian/pool/main/u/uim/uim_${pkgver}-${_debrel}.debian.tar.xz"
        qt5-qt4-coexist.patch)
 sha256sums=('7a2d1667553afc0bca4cc33f9bc8fb01a6867177d2a3e13b1b85c7add16110e9'
-            '724b62430f789e5ed0d6dfaaedd8611798c7ff1ad4609717dd1c8bc61d9ba771'
+            '40072a54e6de30d5616f6f72063ce450087d9a5350423aefba609cce5a01f674'
             'a3511837b8fc827e3ff79defff6480fc6b3a4ac031bde478bfd5d6c1b77acfdd')
 
 prepare() {
@@ -62,5 +62,7 @@ build() {
 package() {
     cd "${srcdir}/uim-${pkgver}"
     make DESTDIR="${pkgdir}" install -j1 # FS#41112
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+    install -Dm644 "${srcdir}/debian/copyright" \
+            "${pkgdir}/usr/share/licenses/${pkgname}/debian/copyright"
 }
