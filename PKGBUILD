@@ -1,27 +1,25 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
-
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 pkgname=exec-as
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A command that lets you start another command with any argv[0]"
 arch=(i686 x86_64)
 url="https://github.com/maandree/exec-as"
-license=('GPL3')
-depends=(glibc)
-makedepends=(make coreutils gcc glibc texinfo)
-install=exec-as.install
-source=($url/archive/$pkgver.tar.gz)
-sha256sums=(7dd73559c42cdb047dd74d735642f0a4f39790b16d44f23841935e69da926f4d)
-
+license=('ISC')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=(8e88fb15fe64a5807e2e814f9c9d2608cb7873997b59279983c724ff2c3c66b8)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   make PREFIX=/usr
 }
 
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make check
+}
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr install DESTDIR="$pkgdir"
+  make install PREFIX=/usr DESTDIR="$pkgdir"
 }
-
