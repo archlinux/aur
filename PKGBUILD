@@ -28,7 +28,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/astroid"
-  meson build --prefix=/usr --buildtype release
+  LC_ALL=C meson build --prefix=/usr --buildtype release
   cd build
   ninja
 }
