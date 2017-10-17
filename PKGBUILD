@@ -1,10 +1,9 @@
 # Maintainer: Det <nimetonmaili g-mail>
 
 pkgname=jdk
-_major=9
-_minor=0
-_build=181
-pkgver=${_major}u${_minor}
+pkgver=9.0.1
+_major=${pkgver/.*}
+_build=11
 pkgrel=1
 pkgdesc="Oracle Java Development Kit"
 arch=('x86_64')
@@ -37,19 +36,19 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jdk/${_major}+${_build}/${pkgname}-${_major}_linux-x64_bin.tar.gz"
+source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${pkgname}-${pkgver}_linux-x64_bin.tar.gz"
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop")
-sha256sums=('1c6d783a54fcc0673ed1f8c5e8650b1d8977ca3e856a03fba0090198e0f16f6d'
+sha256sums=('2cdaf0ff92d0829b510edd883a4ac8322c02f2fc1beae95d048b6716076bc014'
             '100fd0162a4be04371d9d53121bd511aeb0a230475497a8c19ed0cff20915efc'
             'e4059de8ec0dee1a5eabd1d67a053509aa0009ba6e08739b11140c26f2fcc55a'
             '1f74cc627bd6a934681fe2d453058c21794d1435205c501f7fecdaf2c94f5485'
             'ff6684d7d5c26cc805e6f3918284a95b48223db4f37956f35a344373a2931aa4')
 
 package() {
-    cd $pkgname-$_major
+    cd $pkgname-$pkgver
 
     msg2 "Creating directory structure..."
     install -d "$pkgdir"/etc/.java/.systemPrefs
