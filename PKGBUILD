@@ -4,7 +4,7 @@
 
 _pkgname=libwebsockets
 pkgname=libwebsockets-static
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='C library for lightweight websocket clients and servers (static library)'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('libpcap' 'openssl' 'zlib')
 makedepends=('cmake')
 source=("https://github.com/warmcat/libwebsockets/archive/v$pkgver.tar.gz")
-sha512sums=('28e11c49283fcfc0673e1f59e5fc523784fa953d71fbfc8afb40fe4a7041dc5fbc689a97c95eff5a1397a67d28b698245e49444413c83e637893767372c06e61')
+sha512sums=('8c69c8a1e0cd00e8db5dcd552d1304b4f1936b349a72bf5be5862bf3b0d32ed136a06d1e6d1180abf7e3564eb99272aa83e116c5698faed54d148ebdee926768')
 
 build() {
   cd $_pkgname-$pkgver
