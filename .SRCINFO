@@ -1,17 +1,17 @@
 pkgbase = tcl-nothreading
 	pkgdesc = The Tcl scripting language with threading disabled
-	pkgver = 8.6.6
+	pkgver = 8.6.7
 	pkgrel = 1
 	url = http://tcl.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = zlib
-	provides = tcl=8.6.6
+	provides = tcl=8.6.7
 	conflicts = tcl
 	options = staticlibs
-	source = http://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.6-src.tar.gz
-	sha1sums = 169dd1589cad62c9fac4257c113db245da502cd0
+	source = http://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.7-src.tar.gz
+	sha1sums = 68934c6ecf827348085e0f06c7396b31fb539d83
 
 pkgname = tcl-nothreading
 
