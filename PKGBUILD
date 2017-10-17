@@ -3,7 +3,7 @@
 
 _basename=fontconfig
 pkgname=lib32-$_basename-infinality-ultimate
-pkgver=2.12.5
+pkgver=2.12.6
 pkgrel=1
 _master_name=fontconfig-ultimate-master
 pkgdesc="A library for configuring and customizing font access (32-bit, infinality-bundle)"
@@ -20,7 +20,7 @@ install="lib32-fontconfig.install"
 
 source=(http://www.fontconfig.org/release/${_basename}-${pkgver}.tar.bz2
         lib32-fontconfig.hook)
-sha1sums=('edacb706ac3ef51034cc3f335faeb76e0c15f532'
+sha1sums=('cae963814ba4bc41f3c96876604d33fc3abfc572'
           '765f355f84c200b9ca4e0ea3c69c41474167fc84')
 
 build() {
