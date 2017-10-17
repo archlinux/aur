@@ -1,0 +1,22 @@
+pkgbase = perl-pdf-fromhtml
+	pkgdesc = Perl/CPAN Module PDF::FromHTML: Convert HTML documents to PDF
+	pkgver = 0.31
+	pkgrel = 1
+	url = https://metacpan.org/release/PDF-FromHTML
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-html-tidy
+	depends = perl-graphics-colornames
+	depends = perl-image-size
+	depends = perl-pdf-writer>=0.05
+	depends = perl-xml-twig
+	depends = perl-libwww
+	depends = perl>=5.6.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/PDF-FromHTML-0.31.tar.gz
+	md5sums = 8bdc40824ca74007308f28503f52b36c
+	sha512sums = 3023813d3ef332431be0fe2b5eb6a4a5d05b5907981db36c05f5e63a2012c1a7ee96bf30ca69d33492bbf9b2db17419429491ca500a915c8512a2148f05afbde
+
+pkgname = perl-pdf-fromhtml
+
