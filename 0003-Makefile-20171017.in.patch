@@ -1,0 +1,245 @@
+From db6f2915ea4b759d4c7a7515b7336ab5c83b0d89 Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Tue, 17 Oct 2017 13:05:00 -0400
+Subject: [PATCH] makefile-20171017.in
+
+---
+ Makefile.in              | 1 +
+ conf.d/Makefile.in       | 1 +
+ doc/Makefile.in          | 1 +
+ fc-blanks/Makefile.in    | 1 +
+ fc-cache/Makefile.in     | 1 +
+ fc-case/Makefile.in      | 1 +
+ fc-cat/Makefile.in       | 1 +
+ fc-glyphname/Makefile.in | 1 +
+ fc-lang/Makefile.in      | 1 +
+ fc-list/Makefile.in      | 1 +
+ fc-match/Makefile.in     | 1 +
+ fc-pattern/Makefile.in   | 1 +
+ fc-query/Makefile.in     | 1 +
+ fc-scan/Makefile.in      | 1 +
+ fc-validate/Makefile.in  | 1 +
+ fontconfig/Makefile.in   | 1 +
+ src/Makefile.in          | 1 +
+ test/Makefile.in         | 1 +
+ 18 files changed, 18 insertions(+)
+
+diff --git a/Makefile.in b/Makefile.in
+index ad85d64..7ac4ecf 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -373,6 +373,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/conf.d/Makefile.in b/conf.d/Makefile.in
+index a75b3ec..017b626 100644
+--- a/conf.d/Makefile.in
++++ b/conf.d/Makefile.in
+@@ -285,6 +285,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/doc/Makefile.in b/doc/Makefile.in
+index f23f90d..84535c3 100644
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -530,6 +530,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/fc-blanks/Makefile.in b/fc-blanks/Makefile.in
+index 51e1dff..26cb169 100644
+--- a/fc-blanks/Makefile.in
++++ b/fc-blanks/Makefile.in
+@@ -277,6 +277,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/fc-cache/Makefile.in b/fc-cache/Makefile.in
+index fe9d57b..e522315 100644
+--- a/fc-cache/Makefile.in
++++ b/fc-cache/Makefile.in
+@@ -334,6 +334,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/fc-case/Makefile.in b/fc-case/Makefile.in
+index 483354e..b005101 100644
+--- a/fc-case/Makefile.in
++++ b/fc-case/Makefile.in
+@@ -303,6 +303,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/fc-cat/Makefile.in b/fc-cat/Makefile.in
+index 83ab9cc..8648e6b 100644
+--- a/fc-cat/Makefile.in
++++ b/fc-cat/Makefile.in
+@@ -334,6 +334,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/fc-glyphname/Makefile.in b/fc-glyphname/Makefile.in
+index cc902c9..17eb876 100644
+--- a/fc-glyphname/Makefile.in
++++ b/fc-glyphname/Makefile.in
+@@ -303,6 +303,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/fc-lang/Makefile.in b/fc-lang/Makefile.in
+index 54a2539..149ccd6 100644
+--- a/fc-lang/Makefile.in
++++ b/fc-lang/Makefile.in
+@@ -303,6 +303,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/fc-list/Makefile.in b/fc-list/Makefile.in
+index a239616..edab1e0 100644
+--- a/fc-list/Makefile.in
++++ b/fc-list/Makefile.in
+@@ -334,6 +334,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/fc-match/Makefile.in b/fc-match/Makefile.in
+index 4b5af2c..5f5fa50 100644
+--- a/fc-match/Makefile.in
++++ b/fc-match/Makefile.in
+@@ -334,6 +334,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/fc-pattern/Makefile.in b/fc-pattern/Makefile.in
+index 54d99d3..1f13272 100644
+--- a/fc-pattern/Makefile.in
++++ b/fc-pattern/Makefile.in
+@@ -334,6 +334,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/fc-query/Makefile.in b/fc-query/Makefile.in
+index 2e8d3d2..362ee25 100644
+--- a/fc-query/Makefile.in
++++ b/fc-query/Makefile.in
+@@ -336,6 +336,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/fc-scan/Makefile.in b/fc-scan/Makefile.in
+index 17af97f..6ebbd95 100644
+--- a/fc-scan/Makefile.in
++++ b/fc-scan/Makefile.in
+@@ -334,6 +334,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/fc-validate/Makefile.in b/fc-validate/Makefile.in
+index 0a7e19a..98f09e0 100644
+--- a/fc-validate/Makefile.in
++++ b/fc-validate/Makefile.in
+@@ -336,6 +336,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/fontconfig/Makefile.in b/fontconfig/Makefile.in
+index 29ce210..9e3c7e6 100644
+--- a/fontconfig/Makefile.in
++++ b/fontconfig/Makefile.in
+@@ -281,6 +281,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/src/Makefile.in b/src/Makefile.in
+index b500a70..0e5ca95 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -349,6 +349,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+diff --git a/test/Makefile.in b/test/Makefile.in
+index 6be47e9..2cb45e1 100644
+--- a/test/Makefile.in
++++ b/test/Makefile.in
+@@ -513,6 +513,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ VERSION = @VERSION@
+ WARN_CFLAGS = @WARN_CFLAGS@
+ XMLDIR = @XMLDIR@
+-- 
+2.14.2
+

@@ -4,11 +4,11 @@
 pkgname=fontconfig-infinality-ultimate
 _basename=fontconfig
 pkgdesc="A library for configuring and customizing font access, optimized for freetype2-infinality-ultimate."
-date=20170913
+date=20171017
 url='http://www.fontconfig.org/release/'
 license=('custom' 'MIT')
-pkgver=2.12.5
-pkgrel=4
+pkgver=2.12.6
+pkgrel=1
 arch=('i686' 'x86_64')
 groups=('infinality-bundle')
 depends=('expat' 'freetype2-infinality-ultimate')
@@ -30,22 +30,23 @@ install=fontconfig-ultimate.install
 source=("git+https://anongit.freedesktop.org/git/fontconfig#tag=${pkgver}"
         https://raw.githubusercontent.com/archfan/infinality_bundle/820e74be8345a0da2cdcff0a05bf5fa10fd85740/02_fontconfig-iu/fontconfig-ultimate-git.tar.bz2
         fc-cache-ib.hook
-        01-configure-${date}.patch
-        02-configure-${date}.ac.patch
-        03-Makefile-${date}.in.patch
-        04-Makefile-${date}.conf.d.patch
-        05-Makefile-${date}.am.in.patch)
+        0001-configure-${date}.patch
+        0002-configure-${date}.ac.patch
+        0003-Makefile-${date}.in.patch
+        0004-Makefile-${date}.conf.d.patch
+        0005-Makefile-${date}.am.in.patch
+        )
 
 # a nice page to test font matching:
 # http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
 
 prepare() {
 
-  patches=(01-configure-${date}.patch
-           02-configure-${date}.ac.patch
-           03-Makefile-${date}.in.patch
-           04-Makefile-${date}.conf.d.patch
-           05-Makefile-${date}.am.in.patch)
+  patches=(0001-configure-${date}.patch
+           0002-configure-${date}.ac.patch
+           0003-Makefile-${date}.in.patch
+           0004-Makefile-${date}.conf.d.patch
+           0005-Makefile-${date}.am.in.patch)
 
   # copy fontconfig-ib patches & stuff
   cd "${_basename}-ultimate-git" 
@@ -116,6 +117,6 @@ sha256sums=('SKIP'
             '026971a9fac1ee4fb0ef74d5833ce5e12b4645de8ebdf1cadb3cb943cf46abd3'
             '7cb8401c2acbc4ac7a9e4a948a4b04d3b5446cb1153fab351c8d92d1306719ac'
             'ba8815b38d5d6e307d2107966c8b2ce0d2d48212ab99b55a56c6d66621b705ce'
-            '0676efe16ffe6a032fe2e8be1405974d633220ddcf7ea38cf686e521b3d83735'
-            '70c6a4fedccc49e2075232c67b4c4d95dc59119fc8efa3c0a6c5f8adb5276a4a'
-            'a623af1853e6d233620b7908372db568c5a3802862a95ef6964af361df5424a0')
+            '253392c84479aa2b539a0cac4311a28a30663fd806bfe40bd9e8284a9e194431'
+            '8ee8dd7ee5b85ab410dc59127db8fc09ba2a1070949fa2e03b9ddeb43c8466a8'
+            '82dfce9f9e3c340ff075b6a4957004fdcaa765b94c1a0aca74f0159fa5e18db1')

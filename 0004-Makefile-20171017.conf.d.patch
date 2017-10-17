@@ -1,18 +1,18 @@
-From 50ca24b59585e2d90e0517041824d62b5b9a3807 Mon Sep 17 00:00:00 2001
+From 8021f934890cb3c9c3f6dd626c73f8f33f010586 Mon Sep 17 00:00:00 2001
 From: Solomon Choina <shlomochoina@gmail.com>
-Date: Wed, 13 Sep 2017 11:58:59 -0400
-Subject: [PATCH] change conf.d slightly to fit infinality
+Date: Tue, 17 Oct 2017 13:25:52 -0400
+Subject: [PATCH] Makefile-20171017.conf.d
 
 ---
- conf.d/Makefile.am | 43 +------------------------------------------
- conf.d/Makefile.in | 31 +++----------------------------
- 2 files changed, 4 insertions(+), 70 deletions(-)
+ conf.d/Makefile.am | 42 +-----------------------------------------
+ conf.d/Makefile.in | 30 +++---------------------------
+ 2 files changed, 4 insertions(+), 68 deletions(-)
 
 diff --git a/conf.d/Makefile.am b/conf.d/Makefile.am
-index fd50a5d..a85ad74 100644
+index ff03fb2..d37ecb9 100644
 --- a/conf.d/Makefile.am
 +++ b/conf.d/Makefile.am
-@@ -21,30 +21,9 @@
+@@ -21,29 +21,9 @@
  #  TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  #  PERFORMANCE OF THIS SOFTWARE.
  
@@ -24,7 +24,6 @@ index fd50a5d..a85ad74 100644
 -	10-hinting-$(PREFERRED_HINTING).conf	\
 -	10-scale-bitmap-fonts.conf \
 -	20-unhint-small-vera.conf \
--	30-urw-aliases.conf \
 -	30-metric-aliases.conf \
 -	40-nonlatin.conf \
 -	45-generic.conf \
@@ -40,11 +39,11 @@ index fd50a5d..a85ad74 100644
 -	80-delicious.conf \
 -	90-synthetic.conf
 -
-+CONF_LINKS = 
++CONF_LINKS =
  EXTRA_DIST = $(template_DATA) $(DOC_SOURCES)
  CLEANFILES = $(DOC_FILES)
  
-@@ -89,24 +68,4 @@ template_DATA =				\
+@@ -87,24 +67,4 @@ template_DATA =				\
  	80-delicious.conf		\
  	90-synthetic.conf
  
@@ -70,10 +69,10 @@ index fd50a5d..a85ad74 100644
 -
  -include $(top_srcdir)/git.mk
 diff --git a/conf.d/Makefile.in b/conf.d/Makefile.in
-index d626007..40c0a57 100644
+index 017b626..aee1797 100644
 --- a/conf.d/Makefile.in
 +++ b/conf.d/Makefile.in
-@@ -173,7 +173,7 @@ am__uninstall_files_from_dir = { \
+@@ -175,7 +175,7 @@ am__uninstall_files_from_dir = { \
      || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
           $(am__cd) "$$dir" && rm -f $$files; }; \
    }
@@ -82,7 +81,7 @@ index d626007..40c0a57 100644
  DATA = $(config_DATA) $(template_DATA)
  am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
  am__DIST_COMMON = $(srcdir)/Makefile.in README
-@@ -346,29 +346,8 @@ target_alias = @target_alias@
+@@ -349,28 +349,8 @@ target_alias = @target_alias@
  top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
@@ -93,7 +92,6 @@ index d626007..40c0a57 100644
 -	10-hinting-$(PREFERRED_HINTING).conf	\
 -	10-scale-bitmap-fonts.conf \
 -	20-unhint-small-vera.conf \
--	30-urw-aliases.conf \
 -	30-metric-aliases.conf \
 -	40-nonlatin.conf \
 -	45-generic.conf \
@@ -113,7 +111,7 @@ index d626007..40c0a57 100644
  EXTRA_DIST = $(template_DATA) $(DOC_SOURCES)
  CLEANFILES = $(DOC_FILES)
  configdir = $(CONFIGDIR)
-@@ -534,7 +513,7 @@ check: $(BUILT_SOURCES)
+@@ -535,7 +515,7 @@ check: $(BUILT_SOURCES)
  	$(MAKE) $(AM_MAKEFLAGS) check-am
  all-am: Makefile $(DATA)
  installdirs:
@@ -122,7 +120,7 @@ index d626007..40c0a57 100644
  	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
  	done
  install: $(BUILT_SOURCES)
-@@ -656,10 +635,6 @@ uninstall-am: uninstall-configDATA uninstall-local \
+@@ -657,10 +637,6 @@ uninstall-am: uninstall-configDATA uninstall-local \
  
  .PRECIOUS: Makefile
  
@@ -134,5 +132,5 @@ index d626007..40c0a57 100644
  	mkdir -p $(DESTDIR)$(configdir)
  	@(echo cd $(DESTDIR)$(configdir);			\
 -- 
-2.14.1
+2.14.2
 
