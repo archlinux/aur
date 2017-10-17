@@ -3,7 +3,7 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=1.850
+pkgver=1.860
 pkgrel=1
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(i686 x86_64)
@@ -121,7 +121,6 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/logrotate.d/webmin' \
 'etc/pam.d/webmin' )
 source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.tar.gz
-        perl526.patch
         setup-pre.sh
         setup-post.sh
         webmin-config.tar.bz2
@@ -132,7 +131,7 @@ options=(!strip !zipman)
 
 prepare() {
     cd "$srcdir"/$pkgname-$pkgver
-    patch -p1 -i ../perl526.patch
+#    patch -p1 -i ../perl526.patch
 
     # remove modules that we do not support and stuff that is not needed
     rm -r {bsdexports,bsdfdisk,cpan,dfsadmin,format,grub,hpuxexports,inetd,ipfilter,ipfw,package-updates,rbac,sgiexports,smf,software,syslog-ng,zones}
@@ -171,8 +170,7 @@ package() {
 }
 
 
-sha256sums=('c66caa9e4cb50d5447bc8aceb7989d2284dde060278f404b13e171c7ce1690e1'
-            'ffec978163a4cfa9ae2fc57ba380ea77b72bf943315796d895b54a21c7f4b29c'
+sha256sums=('5668e9543b38941fe843efa9add6594621530eb386a97af01c980f67a7601af0'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             '21b24cbbf88593f9da727e8f36dea283c8765002a378b3d4e55e6332387c43c6'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
