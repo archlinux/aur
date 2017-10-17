@@ -1,0 +1,16 @@
+pkgbase = perl-pdf-writer
+	pkgdesc = Perl/CPAN Module PDF::Writer: PDF writer abstraction layer
+	pkgver = 0.06
+	pkgrel = 1
+	url = https://metacpan.org/release/PDF-Writer
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RK/RKINYON/PDF-Writer-0.06.tar.gz
+	md5sums = 06fc558ac8654c71517f2a210462ba0a
+	sha512sums = 262d6caf8aba83bac7fa13014722b7cc190bf2af2f33a927d501e7c687a5db08d419e61c66c88a37e9056c5d012f1f2191ebdb5157bc9ad4970c67e1ef933a3f
+
+pkgname = perl-pdf-writer
+
