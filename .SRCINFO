@@ -30,7 +30,7 @@ pkgbase = firefox-esr-bin
 	optdepends = upower: Battery API
 	optdepends = speech-dispatcher: Text-to-Speech
 	provides = firefox=52
-	source = http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/52.3.0esr/linux-x86_64/en-US/firefox-52.3.0esr.tar.bz2
+	source = http://ftp.mozilla.org/pub/firefox/releases/52.4.1esr/linux-x86_64/en-US/firefox-52.4.1esr.tar.bz2
 	source = firefox-esr.desktop
 	source = firefox-esr-safe.desktop
 	sha512sums = f59a6ccc97e7e30b84b546fee7e704973f84d57fcf12e458ae99764aaddc4b5b6561f63a7d29b5d67e0e9deea50fc8cee51aafda14ea3ba9a7efa15d6f271cb6
