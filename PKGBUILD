@@ -1,13 +1,9 @@
 # Maintainer: Det <nimetonmaili g-mail>
 
 pkgname=jdk-devel-docs
-_major=9
-#_minor=1
-_build=181
-_pkgver=$_major
-pkgver=${_major}b${_build}
-#_pkgver=${_major}u${_minor}
-#pkgver=${_major}u${_minor}.b${_build}
+pkgver=9.0.1
+_major=${pkgver/.*}
+_build=11
 pkgrel=1
 pkgdesc="Documentation for Oracle Java $_major Development Kit Snapshot"
 arch=('any')
@@ -15,10 +11,12 @@ url="http://jdk.java.net/$_major/"
 license=('custom:Oracle')
 optdepends=("java-environment>=$_major: Compile and run examples")
 options=('!strip')
-source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/jdk-${_pkgver}_doc-api-spec.tar.gz"
-        'LICENSE-Early-Adopter-Terms.txt')
-sha256sums=('1d83f4ede5da2472651ae8c2b9e61d55c9ac2e89e3e27a0c3c9826e0f8a10ebd'
-            'a8b0ecff3221f39c53092d910dfd903ff243a185835ad6d121abbbe82225d335')
+source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/jdk-${pkgver}_doc-all.zip"
+        'LICENSE-Oracle-Legal-Notices.txt')
+sha256sums=('79c375220326cfcd38c6ae15bce6e99ae866c7e477fb48fdf9221fe5742b786c'
+            '01ce75a25c01b3984ff8ad08b0ad8bb24b071316d2ebf5113661ceda76f51a81')
+
+DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
 package() {
   # Install
@@ -26,5 +24,5 @@ package() {
   mv docs/* "$pkgdir"/usr/share/doc/java$_major/
 
   # License
-  install -Dm644 LICENSE-Early-Adopter-Terms.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE-Oracle-Legal-Notices.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
