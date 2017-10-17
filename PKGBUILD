@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=prosody-mod-admin-message-hg
-pkgver=r2463.e2d955f6167f
+pkgver=r2799.db0f654b9b3f
 pkgrel=1
 pkgdesc="A console over XMPP. All the commands of the mod_admin_telnet module are available from an XMPP client."
 arch=('any')
