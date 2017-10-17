@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 _module='oslo.log'
 pkgname=('python-oslo-log' 'python2-oslo-log')
-pkgver='3.24.0'
-pkgrel='2'
+pkgver='3.31.0'
+pkgrel='1'
 pkgdesc='Oslo Log library'
 arch=('any')
 url="https://docs.openstack.org/developer/${_module}/"
