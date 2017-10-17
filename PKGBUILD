@@ -1,13 +1,13 @@
 pkgname=pg-bsd-indent
 pkgver=1.3
 _majorver=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="BSD indent (patched for postgresql)"
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
 license=('custom:PostgreSQL')
 conflicts=('indent')
-source=(ftp://ftp.postgresql.org/pub/dev/pg_bsd_indent-${pkgver}.tar.gz
+source=(https://ftp.postgresql.org/pub/dev/pg_bsd_indent-${pkgver}.tar.gz
        )
 md5sums=('eab7754395c491a8205bfc21765b9709'
         )
