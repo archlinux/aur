@@ -2,20 +2,20 @@
 pkgname=veejay-utils-git
 _name=veejay-utils
 _pkgroot=veejay
-pkgver=1.5.57.r0.g6a72022
+pkgver=1.5.57.r984.g560172d7
 pkgrel=1
 pkgdesc="Veejay is a visual instrument and realtime video sampler for GNU/Linux"
 arch=('i686' 'x86_64')
-url="http://www.veejayhq.net"
+url="https://github.com/c0ntrol/${_pkgroot}"
 groups=('veejay')
 conflicts=('veejay-utils')
 replaces=('veejay-utils')
 provides=('veejay-utils')
-license="LGPL"
-depends=('veejay-server')
+license=('LGPL')
+depends=('veejay-server' 'veejay-client')
 makedepends=('git')
-source=("${_name}::git+git://code.dyne.org/veejay.git")
-md5sums=('SKIP')
+source=("${_name}::git+https://github.com/c0ntrol/${_pkgroot}")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${_name}/${_pkgroot}-current"
