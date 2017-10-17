@@ -1,6 +1,6 @@
 pkgbase = jdk8
 	pkgdesc = Oracle Java 8 Development Kit
-	pkgver = 8u144
+	pkgver = 8u152
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jdk8.install
@@ -51,10 +51,10 @@ pkgbase = jdk8
 	md5sums = 1cbde70639abd98db4bace284dbf2bc4
 	md5sums = f0b39865361437f3778ecbe6ffbc0a06
 	md5sums = 89704501aff8efe859c31968d8d168e6
-	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-i586.tar.gz
-	md5sums_i686 = 13d771707f326b02e2497c99e0a2ca37
-	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz
-	md5sums_x86_64 = 2d59a3add1f213cd249a67684d4aeb83
+	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/jdk-8u152-linux-i586.tar.gz
+	md5sums_i686 = 0c70ea43ad5baf0349a16c734bc2fb41
+	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/jdk-8u152-linux-x64.tar.gz
+	md5sums_x86_64 = 20dddd28ced3179685a5f58d3fcbecd8
 
 pkgname = jdk8
 
