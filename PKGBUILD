@@ -2,8 +2,10 @@
 pkgname=rts-git
 pkgver=0.2.0.r0.g326a178
 _basename=rts
-pkgrel=1
-pkgdesc="Collection of scripts and systemd services to be used exclusively on linux-rt.\ Enables setting CPU scheduling policies and priorities (amongst others) (during boot) using tuna."
+pkgrel=2
+pkgdesc="Collection of scripts and systemd services to be used exclusively on
+linux-rt. Enables setting CPU scheduling policies and priorities (amongst
+others) (during boot) using tuna."
 arch=('any')
 url="https://sleepmap.de/software/rts"
 license=('GPL3')
@@ -18,7 +20,7 @@ options=()
 install=
 source=("${_basename}::git://sleepmap.de/software/rts.git")
 noextract=()
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_basename"
