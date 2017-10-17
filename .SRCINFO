@@ -1,0 +1,20 @@
+pkgbase = perl-gravatar-url
+	pkgdesc = Perl/CPAN Module Gravatar::URL: Make URLs for Gravatars from an email address
+	pkgver = 1.07
+	pkgrel = 1
+	url = https://metacpan.org/release/Gravatar-URL
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-mockrandom>=1.01
+	checkdepends = perl-test-warn>=0.11
+	depends = perl-net-dns>=1.01
+	depends = perl-uri
+	depends = perl>=5.6.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/Gravatar-URL-1.07.tar.gz
+	md5sums = 379af6d5281e1a6d9d33db539060a126
+	sha512sums = 2c72841e62f48f6a1684845ec8a3c1d7306ef98b6f8191ccbae28fc07d2238989acc52c3238828c9458fd9154e102596e20a6ec33bd8f77eaa4934fd65750bd5
+
+pkgname = perl-gravatar-url
+
