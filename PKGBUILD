@@ -5,7 +5,7 @@
 pkgbase=linux-bld       # Build kernel with a different name
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.13.5
+pkgver=4.13.7
 _srcname=linux-4.13
 _pkgver2=${_srcname#*-}.0
 pkgrel=1
@@ -35,7 +35,7 @@ source_i686=("config.i686::https://git.archlinux.org/svntogit/packages.git/plain
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            'ba0cf285525e24850917c2f5cc7c2283b6509e2185bb70108f140f7ec695d57d'
+            '0fe89c96e956efbded576214eef0c8e43cabe41dfca245e3ebb79fff9bc8715d'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
