@@ -3,18 +3,17 @@
 pkgname=khard-git
 _gitname=khard
 pkgver=0.11.4.r0.g03f5891
-pkgrel=1
+pkgrel=2
 pkgdesc="Console CardDAV client"
 license=("GPL3")
 url="https://github.com/scheibler/khard/"
 depends=('python-configobj' 'python-vobject' 'python-yaml' 'python-atomicwrites')
 makedepends=('git' 'python-setuptools')
-optdepends=('vdirsyncer: Synchronization of address books with a DAV server.'
-  'python2-caldavclientlibrary-svn: Create and remove address books on the DAV server using davcontroller utility.')
+optdepends=('vdirsyncer: Synchronization of address books with a DAV server.')
 source=("${_gitname}::git+https://github.com/scheibler/khard.git")
 md5sums=('SKIP')
 install="${pkgname}.install"
-provides=('khard' 'davcontroller')
+provides=('khard')
 conflicts=('khard')
 arch=('any')
 options=(!emptydirs)
@@ -32,7 +31,6 @@ package() {
   cd "$srcdir/${_gitname}/"
   python setup.py install --root=$pkgdir
   install -Dm 644 misc/khard/khard.conf.example "${pkgdir}/usr/share/doc/khard/khard.conf.example"
-  install -Dm 755 misc/davcontroller/davcontroller.py "${pkgdir}/usr/bin/davcontroller.py"
   install -Dm 644 misc/khard/template_for_contact_creation.yaml "${pkgdir}/usr/share/doc/khard/template_for_contact_creation.yaml"
   install -Dm 755 misc/sdiff/sdiff_khard_wrapper.sh "${pkgdir}/usr/bin/sdiff_khard_wrapper.sh"
   install -Dm 644 misc/twinkle/scripts/config.py "${pkgdir}/usr/share/khard/twinkle/scripts/config.py"
