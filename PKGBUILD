@@ -1,6 +1,6 @@
 # Maintainer: Sébastien Luttringer
 pkgname=virtualbox-ext-oracle
-pkgver=5.1.28
+pkgver=5.1.30
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Extension Pack'
 arch=('any')
@@ -10,7 +10,7 @@ options=('!strip')
 install=virtualbox-ext-oracle.install
 source=("http://download.virtualbox.org/virtualbox/$pkgver/Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
 noextract=("Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
-sha256sums=('1a2551b204bd53a252a75a4653b983427bb15d473bc77b14149c7870ce049871')
+sha256sums=('2da095e32f85fe5a1fe943158e079bd5aecb2724691c4038bd619ddee967b288')
 
 prepare() {
   # shrink uneeded cpuarch
