@@ -1,7 +1,7 @@
 pkgbase = lib32-allegro
 	pkgdesc = Portable library mainly aimed at video game and multimedia programming (32 bit)
-	pkgver = 5.2.2
-	pkgrel = 2
+	pkgver = 5.2.3
+	pkgrel = 1
 	url = http://liballeg.org
 	arch = x86_64
 	license = custom
@@ -19,9 +19,10 @@ pkgbase = lib32-allegro
 	depends = lib32-alsa-lib
 	depends = lib32-libtheora
 	depends = lib32-opusfile
+	depends = lib32-libwebp
 	depends = allegro
-	source = https://github.com/liballeg/allegro5/releases/download/5.2.2.0/allegro-5.2.2.0.tar.gz
-	sha256sums = e285b9e12a7b33488c0e7e139326903b9df10e8fa9adbfcfe2e1105b69ce94fc
+	source = https://github.com/liballeg/allegro5/releases/download/5.2.3.0/allegro-5.2.3.0.tar.gz
+	sha256sums = 5a4d40601899492b697ad5cfdf11d8265fe554036a2c912c86a6e6d23001f905
 
 pkgname = lib32-allegro
 
