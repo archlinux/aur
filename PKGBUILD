@@ -31,9 +31,7 @@ package() {
   install -m755 ${srcdir}/firefox-beta.sh ${pkgdir}/usr/bin/firefox-beta
 
   # Use system-provided dictionaries
-  if [[ -d ${pkgdir}/usr/lib/${_mypkgn}/dictionaries ]]; then
-    rm -r "${pkgdir}/usr/lib/${_mypkgn}/dictionaries"
-  fi
+  rm -rf "${pkgdir}/usr/lib/${_mypkgn}/dictionaries"
   ln -Ts /usr/share/hunspell "${pkgdir}/usr/lib/${_mypkgn}/dictionaries"
 
   install -m644 firefox-beta-bin.desktop ${pkgdir}/usr/share/applications/
