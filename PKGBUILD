@@ -1,48 +1,48 @@
-# Maintainer: carstene1ns <arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: josephbr <rafael.f.f1@gmail.com>
 
-_pkgbase=physfs
-pkgname=lib32-$_pkgbase
-pkgver=2.0.3
-pkgrel=3
+pkgname=lib32-physfs
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="A library to provide abstract access to various archives (32 bit)"
 arch=('x86_64')
-url="http://icculus.org/physfs/"
-license=('custom')
-depends=('lib32-zlib' "$_pkgbase=$pkgver")
+url="https://icculus.org/physfs/"
+license=('custom: zlib')
+depends=('physfs' 'lib32-glibc')
 makedepends=('cmake' 'gcc-multilib')
-source=("${url}downloads/$_pkgbase-$pkgver.tar.bz2")
-sha256sums=('ca862097c0fb451f2cacd286194d071289342c107b6fe69079c079883ff66b69')
+source=("${url}downloads/physfs-$pkgver.tar.bz2")
+sha256sums=('f2617d6855ea97ea42e4a8ebcad404354be99dfd8a274eacea92091b27fd7324')
+
+prepare() {
+  rm -rf build
+  mkdir build
+}
 
 build() {
-  cd $_pkgbase-$pkgver
+  cd build
 
-  rm -rf build
-  mkdir build && cd build
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
 
-  export CFLAGS="$CFLAGS -m32 -fno-strict-aliasing"
-  export CXXFLAGS="$CXXFLAGS -m32 -fno-strict-aliasing"
-
-  cmake .. \
+  cmake ../physfs-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_LIBRARY_PATH=/usr/lib32 \
     -DPHYSFS_BUILD_TEST=OFF \
-    -DPHYSFS_BUILD_WX_TEST=OFF \
     -DPHYSFS_BUILD_STATIC=OFF \
     -DLIB_SUFFIX=32
   make
 }
 
 package() {
-  cd $_pkgbase-$pkgver
-
   make -C build DESTDIR="$pkgdir/" install
+
+  # fixup pkg-config file
+  sed 's|^libdir.*lib$|&32|' -i "$pkgdir"/usr/lib32/pkgconfig/physfs.pc
 
   # remove header file
   rm -rf "$pkgdir"/usr/include
 
   # link license
   install -d "$pkgdir"/usr/share/licenses
-  ln -s $_pkgbase "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s physfs "$pkgdir"/usr/share/licenses/$pkgname
 }
