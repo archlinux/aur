@@ -1,27 +1,27 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 
 pkgname=vrpn-git
-_gitname=vrpn
-pkgver=07.30.1284.g4941bde8
+_pkg=vrpn
+pkgver=07.30.1311.gafe0eae8
 pkgrel=1
 pkgdesc='The Virtual Reality Peripheral Network lib and tools'
 arch=('i686' 'x86_64')
 url="http://www.cs.unc.edu/Research/vrpn"
-license=('GPL')
+license=('Boost')
 depends=('gpm' 'libusbx' 'hidapi')
 conflicts=("vrpn")
 provides=("vrpn")
 makedepends=('cmake' 'git')
-source=("$_gitname::git+https://github.com/vrpn/vrpn.git")
+source=("$_pkg::git+https://github.com/vrpn/vrpn.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${_gitname}
+  cd ${_pkg}
   git describe --always | sed -e 's|^v||g' -e 's|-|.|g'
 }
 
 prepare() {
-  cd ${_gitname}
+  cd ${_pkg}
   msg "Retrieving local version of external libs"
   git submodule update --init
 
@@ -41,7 +41,7 @@ prepare() {
 }
 
 build(){
-  cd ${_gitname}
+  cd ${_pkg}
 
   # vrpn requires an out-of-source build
   rm -rf build-dir
@@ -92,16 +92,20 @@ build(){
     -DVRPN_USE_USDIGITAL=OFF \
     -DVRPN_USE_VIEWPOINT=OFF \
     -DVRPN_USE_WIIUSE=OFF \
-    -DOVR_ROOT_DIR=/usr/include/ovr-$(pkg-config --modversion libovr)/ -DVRPN_USE_OVR=ON \
+    -DOVR_ROOT_DIR=/usr/include/ovr-$(pkg-config --modversion libovr)/ \
+    -DVRPN_USE_OVR=ON \
     ..
   make
 }
 
 package() {
-  cd "${_gitname}/build-dir"
-
+  cd "${_pkg}/build-dir"
   make DESTDIR="${pkgdir}" install
 
+  # configuration
   mv "${pkgdir}/usr/etc" "${pkgdir}"
-  install -Dm644 "${pkgdir}/usr/share/${_gitname}-07.34/${_gitname}.cfg.sample" "${pkgdir}/usr/share/doc/${pkgname}/${gitname}.cfg.sample"
+
+  # configuration example
+  install -Dm644 "${pkgdir}/usr/share/${_pkg}-07.34/${_pkg}.cfg.sample" \
+  "${pkgdir}/usr/share/doc/${pkgname}/${_pkg}.cfg.sample"
 }
