@@ -1,10 +1,9 @@
 pkgbase = jre-devel
 	pkgdesc = Oracle Java 9 Runtime Environment Snapshot
-	pkgver = 9b181
+	pkgver = 9.0.1
 	pkgrel = 1
 	url = http://jdk.java.net/9/
 	install = jre-devel.install
-	arch = i686
 	arch = x86_64
 	license = custom:Oracle
 	depends = ca-certificates-java
@@ -33,14 +32,10 @@ pkgbase = jre-devel
 	backup = etc/java-jre9/psfont.properties.ja
 	backup = etc/java-jre9/psfontj2d.properties
 	backup = etc/java-jre9/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jdk/9.0.1+11/jre-9.0.1_linux-x64_bin.tar.gz
 	source = policytool-jre9.desktop
-	source = LICENSE-Early-Adopter-Terms.txt
+	sha256sums = 3c64953465e98dbab0e449954a918fada703cd0341aa98cff68854852663ee86
 	sha256sums = 82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e
-	sha256sums = a8b0ecff3221f39c53092d910dfd903ff243a185835ad6d121abbbe82225d335
-	source_i686 = http://download.java.net/java/jdk9/archive/181/binaries/jre-9+181_linux-x86_bin.tar.gz
-	sha256sums_i686 = 5eab48ae34b1b2bb6ae3050fd12fdc31f9f5ed736aa406a03ac932ae6e24025c
-	source_x86_64 = http://download.java.net/java/jdk9/archive/181/binaries/jre-9+181_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = 69a4e792953127c0827255e64a925cf1fb2e75e7ad1fe0dc07004fd46ed3d890
 
 pkgname = jre-devel
 

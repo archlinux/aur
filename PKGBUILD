@@ -2,16 +2,12 @@
 
 _pkgname=jre
 pkgname=jre-devel
-_major=9
-#_minor=1
-_build=181
-_pkgver=$_major
-pkgver=${_major}b${_build}
-#_pkgver=${_major}u${_minor}
-#pkgver=${_major}u${_minor}.b${_build}
+pkgver=9.0.1
+_major=${pkgver/.*}
+_build=11
 pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Environment Snapshot"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://jdk.java.net/$_major/"
 license=('custom:Oracle')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-runtime-common' 'nss' 'xdg-utils')
@@ -23,6 +19,7 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start
 conflicts=("java-runtime-jre=$_major")
 
 # Variables
+DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname/jre
 
@@ -37,19 +34,14 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/psfont.properties.ja"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
-[[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 install=$pkgname.install
-source=("policytool-$_jname.desktop"
-        'LICENSE-Early-Adopter-Terms.txt')
-source_i686=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}+${_build}_linux-x86_bin.tar.gz")
-source_x86_64=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}+${_build}_linux-x64_bin.tar.gz")
-sha256sums=('82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e'
-            'a8b0ecff3221f39c53092d910dfd903ff243a185835ad6d121abbbe82225d335')
-sha256sums_i686=('5eab48ae34b1b2bb6ae3050fd12fdc31f9f5ed736aa406a03ac932ae6e24025c')
-sha256sums_x86_64=('69a4e792953127c0827255e64a925cf1fb2e75e7ad1fe0dc07004fd46ed3d890')
+source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
+        "policytool-$_jname.desktop")
+sha256sums=('3c64953465e98dbab0e449954a918fada703cd0341aa98cff68854852663ee86'
+            '82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e')
 
 package() {
-    cd ${_pkgname}-${_major}
+    cd $_pkgname-$pkgver
 
     msg2 "Creating directory structure..."
     install -d "$pkgdir"/etc/.java/.systemPrefs
@@ -71,9 +63,15 @@ package() {
     cd "$pkgdir"/$_jvmdir
 
     msg2 "Fixing directory structure..."
-    # Suffix .desktops + icons (sun-java.png -> sun-java-$_jname.png)
+    # Suffix .desktops + icon (sun-jcontrol.png -> sun-jcontrol-$_jname.png)
     for i in $(find lib/desktop/ -type f); do
         rename -- "." "-$_jname." $i
+    done
+
+    # Link missing icons
+    for i in $(find lib/desktop/icons/ -name "sun-jcontrol-$_jname.png" -type f); do
+        ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/java}"
+        ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/javaws}"
     done
 
     # Fix .desktop's
@@ -111,25 +109,22 @@ package() {
     done
 
     # Link NPAPI plugin
-    case "$CARCH" in
-        i686)   ln -sf $_jvmdir/lib/i386/libnpjp2.so  "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-        x86_64) ln -sf $_jvmdir/lib/amd64/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so ;;
-    esac
+    ln -sf $_jvmdir/lib/libnpjp2.so "$pkgdir"/usr/lib/mozilla/plugins/libnpjp2-$_jname.so
 
     # Replace JKS keystore with 'ca-certificates-java'
     ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
 
     # Move/link licenses
     mv legal/ "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
-    install -m644 "$srcdir"/LICENSE-Early-Adopter-Terms.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
+    # install -m644 "$srcdir"/LICENSE-Early-Adopter-Terms.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
     ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
 
-    msg2 "Enabling Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy..."
-    # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
-    # things like 256-bit AES. Enabled by default in OpenJDK:
-    # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
-    # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-    sed -i "s/crypto.policy=limited/crypto.policy=unlimited/" "$pkgdir"/etc/java-$_jname/security/java.security
+    # msg2 "Enabling Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy..."
+    # # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
+    # # things like 256-bit AES. Enabled by default in OpenJDK:
+    # # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
+    # # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
+    # sed -i "s/crypto.policy=limited/crypto.policy=unlimited/" "$pkgdir"/etc/java-$_jname/security/java.security
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
