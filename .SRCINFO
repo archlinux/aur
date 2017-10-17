@@ -1,11 +1,11 @@
 pkgbase = cl-alexandria
 	pkgdesc = A set of common-lisp help functions
-	pkgver = 20161123
-	pkgrel = 3
+	pkgver = 20170814
+	pkgrel = 1
 	url = https://common-lisp.net/project/alexandria/
 	arch = any
 	license = custom
-	source = git+https://gitlab.common-lisp.net/alexandria/alexandria.git#commit=85f82ed88d5fa6e63026038dbb1dad0d6cd5dafe
+	source = git+https://gitlab.common-lisp.net/alexandria/alexandria.git#commit=e5c54bc30b0887c237bde2827036d17315f88737
 	md5sums = SKIP
 
 pkgname = cl-alexandria
