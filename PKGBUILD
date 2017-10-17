@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 _module='oslo.context'
 pkgname=('python-oslo-context' 'python2-oslo-context')
-pkgver='2.13.0'
-pkgrel='2'
+pkgver='2.19.1'
+pkgrel='1'
 pkgdesc='Oslo context library'
 arch=('any')
 url="https://docs.openstack.org/developer/${_module}/"
