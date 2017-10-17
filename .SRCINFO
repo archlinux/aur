@@ -1,6 +1,6 @@
 pkgbase = shaderc-git
 	pkgdesc = A collection of tools, libraries and tests for shader compilation
-	pkgver = r427.5c4fd69.glslang_r2319
+	pkgver = r432.259ca18.glslang_r2345
 	pkgrel = 1
 	url = https://github.com/google/shaderc
 	arch = x86_64
