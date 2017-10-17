@@ -1,0 +1,17 @@
+pkgbase = perl-cgi-session-driver-memcached
+	pkgdesc = Perl/CPAN Module CGI::Session::Driver::memcached: Persistent session data in CGI applications
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://metacpan.org/release/CGI-Session-Driver-memcached
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-cgi-session>=4,
+	depends = perl-cache-memcached
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/O/OI/OINUME/CGI-Session-Driver-memcached-0.04.tar.gz
+	md5sums = 9e2e241282c5f7e9bc5b263fc0368698
+	sha512sums = 22ddf091e5dca8367bf0c336c5f8178762b62ee061fe72dc02725726bab04232765337de65019ec9986c735d9a6a48cab77161e3ddc93832acf9cd9d4d929378
+
+pkgname = perl-cgi-session-driver-memcached
+
