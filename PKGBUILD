@@ -3,7 +3,7 @@
 # Contributor: Sergej Pupykin <arch+pub@sergej.pp.ru>
 
 pkgname=psi-plus-git
-pkgver=1.2.81.0.g79c7f8a
+pkgver=1.2.100.0.gbe2588f
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (built with Qt 5.x)"
 url="http://psi-plus.com"
