@@ -27,7 +27,7 @@ sha256sums=('ff2941786b0aad221fe428f7d2b961056ec15437ad2070860cd6f1d4d3cd653a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  meson build --prefix=/usr --buildtype release
+  LC_ALL=C meson build --prefix=/usr --buildtype release
   cd build
   ninja
 }
