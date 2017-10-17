@@ -85,8 +85,8 @@ if $_testing; then
   _pkgvermajmin="5.10"
   _pkgverpatch=".0"
   # {alpha/beta/beta2/rc}
-  _dev_suffix="alpha"
-  pkgrel=1
+  _dev_suffix="beta"
+  pkgrel=2
 else
   _pkgvermajmin="5.9"
   _pkgverpatch=".1"
@@ -308,7 +308,7 @@ if ! $_testing; then
 fi
 
 if $_testing; then
-  _tar_xz_sha256="10d49510bb693eac88861f239d6b9ebfb69e1b73493a60953ef85e5d709a5036"
+  _tar_xz_sha256="6fdf611b41e65356c14cba26d7e8a109f9d6a91a2a765f38636ee79ec9d21766"
 else
   _tar_xz_sha256="7b41a37d4fe5e120cdb7114862c0153f86c07abbec8db71500443d2ce0c89795"
 fi
@@ -444,7 +444,6 @@ fi
 if $_target_host; then
   local _configure_line="${_srcdir}/configure \
                  -opengl desktop \
-                 -glx \
                  ${_core_configure_options} \
                  ${_additional_configure_flags}"
 # ${_arch_specific_configure_options} \
