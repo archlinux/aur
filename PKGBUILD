@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-designateclient' 'python2-designateclient')
-pkgver='2.6.0'
-pkgrel='2'
+pkgver='2.7.0'
+pkgrel='1'
 pkgdesc='Python client library for Designate'
 arch=('any')
 url="https://docs.openstack.org/developer/${pkgname}"
