@@ -2,28 +2,30 @@
 
 pkgname='openface-git'
 _pkgname='openface'
-pkgver="ac4ded4"
+pkgver='ac4ded4'
 pkgrel=1
-pkgdesc="Face recognition with deep neural networks."
+pkgdesc='Face recognition with deep neural networks.'
 arch=('x86_64')
-url="http://cmusatyalab.github.io/openface/"
-license=("Apache")
-depends=("graphicsmagick"
-         "openssl"
-         "libffi"
-         "python"
-         "python-pip"
-         "python-numpy"
-         "python-nose"
-         "python-scipy"
-         "python-pandas"
-         "python-protobuf"
-         "python-sslib"
-         "wget"
-         "zip")
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($_pkgname::"git+https://github.com/cmusatyalab/openface")
+url='http://cmusatyalab.github.io/openface/'
+license=('Apache')
+depends=('graphicsmagick'
+         'openssl'
+         'libffi'
+         'python'
+         'python-pip'
+         'python-numpy'
+         'python-nose'
+         'python-scipy'
+         'python-pandas'
+         'python-protobuf'
+         'python-sslib'
+         'wget'
+         'zip'
+         'python-dlib'
+         'opencv')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=($_pkgname::'git+https://github.com/cmusatyalab/openface')
 md5sums=('SKIP')
 
 pkgver() {
@@ -36,7 +38,7 @@ build() {
   ./models/get-models.sh
 
   mkdir -p build
-  python2 setup.py install --root="$srcdir/$_pkgname/build/"
+  python setup.py install --root="$srcdir/$_pkgname/build/"
 }
 
 package() {
