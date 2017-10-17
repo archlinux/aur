@@ -1,0 +1,27 @@
+pkgbase = openface-git
+	pkgdesc = Face recognition with deep neural networks.
+	pkgver = ac4ded4
+	pkgrel = 1
+	url = http://cmusatyalab.github.io/openface/
+	arch = x86_64
+	license = Apache
+	depends = graphicsmagick
+	depends = openssl
+	depends = libffi
+	depends = python
+	depends = python-pip
+	depends = python-numpy
+	depends = python-nose
+	depends = python-scipy
+	depends = python-pandas
+	depends = python-protobuf
+	depends = python-sslib
+	depends = wget
+	depends = zip
+	provides = openface
+	conflicts = openface
+	source = openface::git+https://github.com/cmusatyalab/openface
+	md5sums = SKIP
+
+pkgname = openface-git
+
