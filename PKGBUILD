@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=prosody-mod-admin-web-hg
-pkgver=r2463.e2d955f6167f
+pkgver=r2799.db0f654b9b3f
 pkgrel=1
 pkgdesc="A basic web administration interface for prosody."
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('prosody')
 makedepends=('mercurial' 'wget')
 source=("hg+https://hg.prosody.im/prosody-modules/")
-sha1sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/prosody-modules/"
