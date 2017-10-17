@@ -1,19 +1,29 @@
+DISCORDDIR=""
+
+if [[ -d "/opt/discord" ]]; then
+  DISCORDDIR="/opt/discord/"
+elif [[ -d "/opt/discord-canary" ]]; then
+  DISCORDDIR="/opt/discord-canary/"
+elif [[ -d "/opt/discord-ptb" ]]; then
+  DISCORDDIR="/opt/discord-ptb/"
+fi
+
 pre_install() {
   pre_remove
 }
 
 post_install() {
   echo ">>> Unpacking Discord asar..."
-  sudo asar e "/opt/discord/resources/app.asar" "/opt/discord/resources/app"
+  sudo asar e "${DISCORDDIR}resources/app.asar" "${DISCORDDIR}resources/app"
 
   echo ">>> Preparing Discord files..."
-  sed "/_fs2/ a var _betterDiscord = require('betterdiscord'); var _betterDiscord2;" "/opt/discord/resources/app/index.js" > "/usr/lib/betterdiscord/index.js"
-  sudo mv "/usr/lib/betterdiscord/index.js" "/opt/discord/resources/app/index.js"
-  sed "/mainWindow = new/ a _betterDiscord2 = new _betterDiscord.BetterDiscord(mainWindow);" "/opt/discord/resources/app/index.js" > "/usr/lib/betterdiscord/index.js"
-  sudo mv "/usr/lib/betterdiscord/index.js" "/opt/discord/resources/app/index.js"
+  sed "/_fs2/ a var _betterDiscord = require('betterdiscord'); var _betterDiscord2;" "${DISCORDDIR}resources/app/index.js" > "/usr/lib/betterdiscord/index.js"
+  sudo mv "/usr/lib/betterdiscord/index.js" "${DISCORDDIR}resources/app/index.js"
+  sed "/mainWindow = new/ a _betterDiscord2 = new _betterDiscord.BetterDiscord(mainWindow);" "${DISCORDDIR}resources/app/index.js" > "/usr/lib/betterdiscord/index.js"
+  sudo mv "/usr/lib/betterdiscord/index.js" "${DISCORDDIR}resources/app/index.js"
 
   echo ">>> Finishing up..."
-  sudo ln -s "/usr/lib/betterdiscord/" "/opt/discord/resources/app/node_modules/betterdiscord"
+  sudo ln -s "/usr/lib/betterdiscord/" "${DISCORDDIR}resources/app/node_modules/betterdiscord"
 }
 
 pre_upgrade() {
@@ -29,5 +39,5 @@ pre_remove() {
   killall -SIGKILL Discord
 
   echo ">>> Removing app folder from Discord directory..."
-  sudo rm -rf "/opt/discord/resources/app"
+  sudo rm -rf "${DISCORDDIR}resources/app"
 }
