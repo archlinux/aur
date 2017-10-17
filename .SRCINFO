@@ -1,0 +1,16 @@
+pkgbase = perl-convert-basen
+	pkgdesc = Perl/CPAN Module Convert::BaseN: encoding and decoding of base{2,4,8,16,32,64} strings
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://metacpan.org/release/Convert-BaseN
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DANKOGAI/Convert-BaseN-0.01.tar.gz
+	md5sums = 4744bcb7692d81d3bbe777f96727f4c4
+	sha512sums = e0a69f928772c4868e0cb310e9b4d6a5dac5919cea3cbf68bef46601fe2f1f0ce31d5974ab60d2eb6043888af61912119e3ae630b0428d51c212e1f12a834a0d
+
+pkgname = perl-convert-basen
+
