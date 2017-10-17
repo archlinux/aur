@@ -27,7 +27,7 @@ source './PKGBUILD'
 makepkg --printsrcinfo > '.SRCINFO'
 
 # shellcheck disable=SC2154
-for _locale in "${!_languages[@]}"; do
+for _locale in "${_locales[@]}"; do
   pkgname_pattern="^pkgname = $pkgbase-$(tr '[:upper:]' '[:lower:]' <<< "$_locale")$"
 
   # Information parameters are in reverse order.
