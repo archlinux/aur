@@ -2,8 +2,8 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=2.2.4
-pkgrel=2
+pkgver=2.2.5
+pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -34,22 +34,18 @@ source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver
         cups cups.logrotate cups.pam
         # improve build and linking
         cups-no-export-ssllibs.patch
-        cups-no-gcrypt.patch
         cups-no-gzip-man.patch
 	cups-fix-install-perms.patch
         cups-1.6.2-statedir.patch
-        cupsGetDests.diff
         )
-sha256sums=('596d4db72651c335469ae5f37b0da72ac9f97d73e30838d787065f559dea98cc'
+sha256sums=('a8795e2aa54dcfbdc9ff254a770f0d7154e35c981bca5b3369050c5193ab5a21'
             '87cd833e7c07a36298341e35d5ce0534ce68fdf76ce3e9eda697e5455b963d1b'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             'ff3eb0782af0405f5dafe89e04b1b4ea7a49afc5496860d724343bd04f375832'
-            '1423673e16e374ed372c5b69aebc785b6674bf40601c74a5c08454f672ffa7f1'
             'b8fc2e3bc603495f0278410350ea8f0161d9d83719feb64f573b63430cb4800b'
-            '2496b683920417c922d58c1f70807f7a0f0c818db9ce75fe182104bd4484027b'
-            '23349c96f2f7aeb7d48e3bcd35a969f5d5ac8f55a032b0cfaa0a03d7e37ea9af'
-            '25c1f212d0055848c9d46195d74ade64514675c83b2098e41ba1144bd6b8a05d')
+            'aa999532830b7f9f6e9f47e6fb15a4dccee5ac021abbcd2fff103dcf579cb4f7'
+            '23349c96f2f7aeb7d48e3bcd35a969f5d5ac8f55a032b0cfaa0a03d7e37ea9af')
 
 prepare() {
   cd cups-${pkgver}
@@ -57,8 +53,6 @@ prepare() {
   # improve build and linking
   # Do not export SSL libs in cups-config
   patch -Np1 -i "$srcdir"/cups-no-export-ssllibs.patch
-  # https://www.cups.org/str.php?L4399
-  patch -Np1 -i "$srcdir"/cups-no-gcrypt.patch
 
   # don't zip man pages in make install, let makepkg do that / Fedora
   patch -Np1 -i "$srcdir"/cups-no-gzip-man.patch
@@ -73,9 +67,6 @@ prepare() {
   sed -i -e '5i\ ' conf/cupsd.conf.in
   sed -i -e '6i# Disable cups internal logging - use logrotate instead' conf/cupsd.conf.in
   sed -i -e '7iMaxLogSize 0' conf/cupsd.conf.in
-
-  # upstream fix for https://bugs.archlinux.org/task/54695
-  patch -Np1 -i ../cupsGetDests.diff
 
   # Rebuild configure script for not zipping man-pages.
   aclocal -I config-scripts
