@@ -1,7 +1,7 @@
 # Maintainer: Pierre Chapuis <catwell at archlinux dot us>
 
 pkgname=lima
-pkgver=1.2beta
+pkgver=1.3
 pkgrel=1
 pkgdesc="Personal Cloud software"
 depends=(python2 fuse libyaml ffmpeg libjpeg-turbo)
@@ -19,7 +19,7 @@ source=(
     "lima.service"
 )
 sha256sums=(
-    "ae49613d766dd1526cb09260db5d496b82d792ac83c12430a8e3bef7556aa914"
+    "10aafdcfc34462e82184084faf2625ebcc2aab184f4ca77bc010e134a886e0b2"
     "68662c1437f88403f38b0e80da3b2b546512fe524b791cba27791cd2d5033e7c"
 )
 
