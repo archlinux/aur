@@ -10,7 +10,7 @@ url="http://gist.github.com/ahodesuka/49c1d0eea4b64f24c4c7"
 arch=(i686 x86_64)
 provides=("glib2=$pkgver")
 conflicts=('glib2')
-depends=(pcre libffi libutil-linux)
+depends=(pcre libffi libutil-linux tumbler)
 makedepends=(gettext gtk-doc zlib shared-mime-info python libelf git util-linux meson)
 checkdepends=(desktop-file-utils dbus)
 optdepends=('python: for gdbus-codegen and gtester-report'
