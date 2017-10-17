@@ -1,7 +1,7 @@
 pkgbase=python-os-testr
 pkgname=('python-os-testr' 'python2-os-testr')
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A testr wrapper to provide additional functionality"
 arch=('any')
 url='https://pypi.python.org/pypi/os-testr'
@@ -22,4 +22,8 @@ package_python2-os-testr() {
 
   cd $srcdir/os-testr-$pkgver
   python2 setup.py install --root=$pkgdir
+  mv "${pkgdir}/usr/bin/ostestr"{,2}
+  mv "${pkgdir}/usr/bin/subunit-trace"{,2}
+  mv "${pkgdir}/usr/bin/subunit2html"{,2}
+  mv "${pkgdir}/usr/bin/generate-subunit"{,2}
 }
