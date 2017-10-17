@@ -2,7 +2,7 @@
 pkgbase=alienfx
 pkgname=alienfx
 pkgver=2.0.5
-pkgrel=3
+pkgrel=5
 pkgdesc="AlienFX Configuration Utility"
 arch=('any')
 url="https://github.com/trackmastersteve/alienfx"
