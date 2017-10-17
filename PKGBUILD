@@ -6,14 +6,15 @@ pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git')
 _pkgname=pamac
 pkgver=v6.1.1.r1.g7ae235f
 _pkgver=6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('any')
 url="https://github.com/manjaro/pamac"
 license=('GPL3')
 depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' 'gtk3>=3.22' 'libnotify' 'desktop-file-utils' 'pacman>=5.0' 'pacman<5.1' 'gnutls>=3.4' 'appstream-glib' 'archlinux-appstream-data' 'libappindicator-gtk3')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
-            'lxsession: needed for authentification in Xfce, LXDE etc.')
+            'lxsession: needed for authentification in Xfce, LXDE etc.'
+            'pamac-aur-tray-appindicator-git: tray icon for KDE')
 makedepends=('gettext' 'itstool' 'vala>=0.36' 'meson' 'ninja')
 options=(!emptydirs)
 
@@ -43,7 +44,6 @@ build() {
 }
 
 package_pamac-aur-git() {
-  optdepends=('pamac-tray-appindicator-git: tray icon for KDE')
   backup=('etc/pamac.conf')
   replaces=('pamac-aur')
   install=pamac.install
@@ -53,7 +53,7 @@ package_pamac-aur-git() {
   # enable systemd timer
   mkdir -p "$pkgdir/etc/systemd/system/multi-user.target.wants"
   ln -sf "/usr/lib/systemd/system/pamac-cleancache.timer" "$pkgdir/etc/systemd/system/multi-user.target.wants"
-  ln -sf "/usr/lib/systemd/system/pamac-mirrorlist.timer" "$pkgdir/etc/systemd/system/multi-user.target.wants"
+  # removed pamac-mirrorlist-timer, useless for Archlinux
   # remove pamac-tray-appindicator
   rm "$pkgdir/usr/bin/pamac-tray-appindicator"
   rm "$pkgdir/etc/xdg/autostart/pamac-tray-appindicator.desktop"
