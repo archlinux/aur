@@ -1,20 +1,18 @@
 pkgbase = asciidocfx
 	pkgdesc = Asciidoc Editor and Toolchain written with JavaFX 8
-	pkgver = 1.5.5
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = http://asciidocfx.com/
 	arch = any
 	license = Apache
 	makedepends = maven>=3.3.9
-	makedepends = java-environment-openjdk=8
+	makedepends = java-environment=8
 	makedepends = gendesk
 	depends = java-environment=8
 	depends = java-openjfx>=8.u76
-	source = https://github.com/asciidocfx/AsciidocFX/archive/v1.5.5.tar.gz
-	source = https://cdn.rawgit.com/asciidocfx/AsciidocFX/ea3c14d4b2d03ce94b93b7dce0985c5c5bbc4206/src/main/resources/logo.png
+	source = https://github.com/asciidocfx/AsciidocFX/archive/18927ddfde5ac008e5f14320340138786fcdfb0f.tar.gz
 	source = asciidocfx
-	sha512sums = 26d6e0255d47327fa6323f09abddfd0e237d75a1339672ec907c36bb2c2305a8a963d218da10a4b38e1aaf740188ad97c5142c7dcf6524c0e9aae90692c46717
-	sha512sums = 71e7a0598000a0574b9edbfddf70d9c4ab2c6930aadc8e6256fc4d18ded0757e0ab9f2411da8b26a5ecff1505c6e0ece0ee9b80a73a4c130ccba45331a112fac
+	sha512sums = e817c96fa3213d27ecd77c48db25bc67ab611aef36bcd480dbecd98f343211eb10ddc33840433366bc9a82cdf751c3060a42beef87350963ef5b338706053512
 	sha512sums = 338ee0d004724d5eef8cd44fe7f6d89bb4d48b37143240d4d65258ab4c571f9e931821d9bf52a64c87b6e83165bb9c571541bc4142c73485bcdcc105de0f1ea7
 
 pkgname = asciidocfx

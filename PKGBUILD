@@ -2,25 +2,29 @@
 # Maintainer: Corey Richardson <corey at octayn dot net>
 
 pkgname=asciidocfx
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Asciidoc Editor and Toolchain written with JavaFX 8"
 arch=('any')
 
-url="http://asciidocfx.com/"
+url='http://asciidocfx.com/'
 license=('Apache')
 
-makedepends=('maven>=3.3.9' 'java-environment-openjdk=8' 'gendesk')
+makedepends=('maven>=3.3.9' 'java-environment=8' 'gendesk')
 depends=('java-environment=8' 'java-openjfx>=8.u76')
 
+_commitId='18927ddfde5ac008e5f14320340138786fcdfb0f'
+
 source=(
-    "https://github.com/asciidocfx/AsciidocFX/archive/v$pkgver.tar.gz"
-    'https://cdn.rawgit.com/asciidocfx/AsciidocFX/ea3c14d4b2d03ce94b93b7dce0985c5c5bbc4206/src/main/resources/logo.png'
-    'asciidocfx')
+    # Release 1.5.6 is buggy. This commit provides a hotfix. Using patch
+    # manually was not working, it's better to use the tar.gz code directly
+    # rather than trying to patch manually, for now.
+    "https://github.com/asciidocfx/AsciidocFX/archive/${_commitId}.tar.gz"
+    'asciidocfx'
+)
 sha512sums=(
-'26d6e0255d47327fa6323f09abddfd0e237d75a1339672ec907c36bb2c2305a8a963d218da10a4b38e1aaf740188ad97c5142c7dcf6524c0e9aae90692c46717'
-'71e7a0598000a0574b9edbfddf70d9c4ab2c6930aadc8e6256fc4d18ded0757e0ab9f2411da8b26a5ecff1505c6e0ece0ee9b80a73a4c130ccba45331a112fac'
-'338ee0d004724d5eef8cd44fe7f6d89bb4d48b37143240d4d65258ab4c571f9e931821d9bf52a64c87b6e83165bb9c571541bc4142c73485bcdcc105de0f1ea7'
+    'e817c96fa3213d27ecd77c48db25bc67ab611aef36bcd480dbecd98f343211eb10ddc33840433366bc9a82cdf751c3060a42beef87350963ef5b338706053512'
+    'e37a5331244d2784dabfffe3e360998e69ec0cc84dbd716e98d80de72c80c34e0791772d8277897b2fc479498860ef70293072956f2a991fcb59beec448d689f'
 )
 
 prepare() {
@@ -39,20 +43,20 @@ prepare() {
 }
 
 build() {
-    cd "AsciidocFX-$pkgver"
+    cd "AsciidocFX-${_commitId}"
 
     # "install" seemingly means "build and ready for installation"
     mvn clean install
 }
 
 package() {
-    cd "AsciidocFX-$pkgver"
+    cd "AsciidocFX-${_commitId}"
 
-    install -dm755 "$pkgdir/usr/share/java/asciidocfx"
-    install -dm755 "$pkgdir/usr/bin"
-    mv -t "$pkgdir/usr/share/java/asciidocfx" target/appassembler/{conf,lib}
-    install -m755 ../asciidocfx "$pkgdir/usr/bin/asciidocfx"
+    install -dm755 "${pkgdir}/usr/share/java/asciidocfx"
+    install -dm755 "${pkgdir}/usr/bin"
+    mv -t "${pkgdir}/usr/share/java/asciidocfx" target/appassembler/{conf,lib}
+    install -m755 '../asciidocfx' "${pkgdir}/usr/bin/asciidocfx"
 
-    install -Dm644 ../$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "../logo.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm644 "../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 './src/main/resources/logo.png' "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }

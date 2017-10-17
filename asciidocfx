@@ -10,5 +10,5 @@ exec /usr/bin/java -cp $CP -Duser.language=en -Duser.country=US -XX:+UseG1GC \
   -Dapp.repo="$BASEDIR/lib" \
   -Dapp.home="$BASEDIR" \
   -Dbasedir="$BASEDIR" \
-  com.kodcu.boot.AppStarter \
+  com.kodedu.boot.AppStarter \
   "$@"
