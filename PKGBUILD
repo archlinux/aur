@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Gildas MILLON <pgmillon@gmail.com> 
 
 pkgname=python2-esky
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="keep frozen apps fresh"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/e/esky/esky-$pkgver.tar.gz")
-md5sums=('8e09b27df237927b09e59af396c6098c')
+md5sums=('9769f0c8417fdfa62a59896f9e2133b9')
 
 build() {
   cd "${srcdir}/esky-${pkgver}"
