@@ -3,7 +3,7 @@
 pkgname=patchbook-git
 _pkg=patchbook
 pkgver=r24.574b100
-pkgrel=1
+pkgrel=2
 pkgdesc="Markup language and parser for writing and distributing patches for modular synthesizers."
 arch=('any')
 url="https://github.com/SpektroAudio/Patchbook"
@@ -36,6 +36,10 @@ package() {
   install -d "${pkgdir}/usr/share/doc/${_pkg}"
   install -Dm644 Examples/* \
     "$pkgdir/usr/share/doc/${_pkg}/"
+
+  # license
+  install -d "${pkgdir}/usr/share/licenses/${_pkg}"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkg}/LICENSE"
 
   # README
   install -Dm644 README.md \
