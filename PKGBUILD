@@ -1,6 +1,6 @@
 # Maintainer: Philippe Proulx <eeppeliteloop@gmail.com>
 pkgname=barectf
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Generator of ANSI C tracers which output CTF'
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 provides=('barectf')
 conflicts=('barectf')
 source=("https://github.com/efficios/barectf/archive/v$pkgver.tar.gz")
-md5sums=('aaded50522939a700f62024fba92bd6a')
+md5sums=('996fd8a3b93e814bcb4956ccd62e54fd')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
