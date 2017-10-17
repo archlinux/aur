@@ -1,0 +1,48 @@
+pkgbase = sat-xmpp
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://salut-a-toi.org/
+	arch = any
+	license = AGPL3
+	makedepends = python2-setuptools
+	depends = python2
+	options = !strip
+	source = hg+http://repos.goffi.org/sat
+	md5sums = SKIP
+
+pkgname = sat-xmpp
+	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (core)
+	depends = dbus
+	depends = python2-lxml>=3.1.0
+	depends = python2-pillow
+	depends = python2-pycryptodomex>=2.6.1
+	depends = python2-pyopenssl
+	depends = python2-dbus
+	depends = pure-python2-otr
+	depends = python2-twisted
+	depends = python2-wokkel>=0.7.1
+	depends = python-xdg
+	depends = python2-zope-interface
+	depends = mutagen
+	depends = python2-markdown
+	depends = python2-html2text
+	depends = python2-netifaces
+	depends = python2-miniupnpc
+	depends = python2-service-identity
+
+pkgname = sat-jp
+	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (CLI frontend)
+	depends = sat-xmpp
+	depends = python2-gobject
+	depends = python2-progressbar
+	depends = python2-pyinotify
+	depends = python2-babel
+
+pkgname = sat-primitivus
+	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (ncurses frontend)
+	depends = sat-xmpp
+	depends = python2-gobject
+	depends = python2-urwid>=1.2.0
+	depends = python2-urwid-satext>=0.6.1
+	depends = python2-xlib
+
