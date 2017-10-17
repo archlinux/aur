@@ -1,11 +1,12 @@
-# Maintainer: Afri 5chdn <aur@5chdn.co>
+# Maintainer: Peter Petrov <onestone@gmail.com>
+# Contributor: Afri 5chdn <aur@5chdn.co>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
 pkgver=0.9.2
 _strver=0-9-2
-pkgrel=1
-pkgdesc="Mist dapp browser and Ethereum wallet."
+pkgrel=2
+pkgdesc="Ethereum wallet and Dapp browser."
 arch=('i686' 'x86_64')
 depends=(
   'gmp'
@@ -30,12 +31,6 @@ optdepends=(
 )
 url="https://github.com/ethereum/mist"
 license=('GPL')
-source=(
-  "mist.desktop"
-  "icon.png"
-)
-sha256sums=('bad4d3dc4e44d3beb643e1ecc9b46559c7c3f209204ade2bc2a63d87642b3245'
-            'f9dfeddf9730ab693e3dc69d6dd0ad48525de1e40e1c8fb46ed081a3e7bd5f93')
 sha256sums_i686=('bde4de47acbe4bda74e68b2b6925726ac9fba2bc4cde2559603df7c25d23425c')
 sha256sums_x86_64=('087f44b06b82bfe97fac85466ada458796d21316a5d6c2ebe5543110a5ea9037')
 source_i686=(
@@ -69,6 +64,7 @@ package() {
   install -Dm644 "${pkgdir}/usr/share/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   rm "${pkgdir}/usr/share/${pkgname}/LICENSE"
   sed -i 's/Exec="\/opt\/Mist\/mist"/Exec="\/usr\/bin\/mist"/' "${pkgdir}/usr/share/applications/mist.desktop";
+  sed -i 's/Categories=WebBrowser/Categories=Network;WebBrowser;/' "${pkgdir}/usr/share/applications/mist.desktop";
 
   msg2 'Installing Libnode...'
   install -d "${pkgdir}/usr/lib"
