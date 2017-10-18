@@ -1,10 +1,9 @@
-
-# HG changeset patch
-# User Mike Hommey <mh+mozilla@glandium.org>
-# Date 1502856976 -32400
-# Node ID 8d9ae8c45dd07496f164364f24c5f43edcf2eb6e
-# Parent  fa02d334033f0039ef82b3d7dc194312ba250279
-Bug 1384062 - Make SystemResourceMonitor.stop more resilient to errors. r=ahal,gps
+From 2874ecd82e9671f774bdfda41fe0857fcb916c13 Mon Sep 17 00:00:00 2001
+Message-Id: <2874ecd82e9671f774bdfda41fe0857fcb916c13.1506634385.git.jan.steffens@gmail.com>
+From: Mike Hommey <mh+mozilla@glandium.org>
+Date: Wed, 16 Aug 2017 13:16:16 +0900
+Subject: [PATCH] Bug 1384062 - Make SystemResourceMonitor.stop more resilient
+ to errors. r=ahal,gps
 
 The poll() call in SystemResourceMonitor.stop might fail even though
 there is something to read from the pipe, in some corner cases, and
@@ -29,15 +28,17 @@ With all these changes, it feels like the reason to backout bug 1239939
 in bug 1272782 should have been dealt with, and we can drop the timeout
 again.
 
+--HG--
+extra : rebase_source : ac72dd5b2602cf3ffddfb429f95e02380f939893
+---
+ .../mozsystemmonitor/resourcemonitor.py            | 38 +++++++++++++++-------
+ 1 file changed, 26 insertions(+), 12 deletions(-)
+
 diff --git a/testing/mozbase/mozsystemmonitor/mozsystemmonitor/resourcemonitor.py b/testing/mozbase/mozsystemmonitor/mozsystemmonitor/resourcemonitor.py
+index 8f2ac95cbe505540..38f9bc986ac2a120 100644
 --- a/testing/mozbase/mozsystemmonitor/mozsystemmonitor/resourcemonitor.py
 +++ b/testing/mozbase/mozsystemmonitor/mozsystemmonitor/resourcemonitor.py
-@@ -284,57 +284,71 @@ class SystemResourceMonitor(object):
-         """
-         if not self._process:
-             self._stopped = True
-             return
- 
+@@ -289,47 +289,61 @@ class SystemResourceMonitor(object):
          assert self._running
          assert not self._stopped
  
@@ -111,9 +112,6 @@ diff --git a/testing/mozbase/mozsystemmonitor/mozsystemmonitor/resourcemonitor.p
  
          if len(self.measurements):
              self.start_time = self.measurements[0].start
-             self.end_time = self.measurements[-1].end
- 
-     # Methods to record events alongside the monitored data.
- 
-     def record_event(self, name):
+-- 
+2.14.2
 
