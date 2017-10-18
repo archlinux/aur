@@ -1,7 +1,7 @@
 # Maintainer: Max Liebkies <mail at maxliebkies dot de>
 
 pkgname=dotnet-sdk-2.0
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 epoch=1
 pkgdesc="A command line utility for building, testing, packaging and running .NET Core applications and libraries"
@@ -14,9 +14,9 @@ install=dotnet-sdk-2.0.install
 
 conflicts=('dotnet-sdk')
 
-source=("https://download.microsoft.com/download/1/B/4/1B4DE605-8378-47A5-B01B-2C79D6C55519/dotnet-sdk-2.0.0-linux-x64.tar.gz")
+source=("https://download.microsoft.com/download/7/3/A/73A3E4DC-F019-47D1-9951-0453676E059B/dotnet-sdk-2.0.2-linux-x64.tar.gz")
 
-sha256sums=('6059a6f72fb7aa6205ef4b52583e9c041fd128e768870a0fc4a33ed84c98ca6b')
+sha256sums=('2a9e0ed251a7f98a46473f694532acdc5a0960d32204e82315c38c1b29fdd317')
 
 package() {
   mkdir -p "${pkgdir}/opt/dotnet/sdk/"
