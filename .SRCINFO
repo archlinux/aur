@@ -1,0 +1,19 @@
+pkgbase = perl-sms-send
+	pkgdesc = Perl/CPAN Module SMS::Send: Driver-based API for sending SMS messages
+	pkgver = 1.06
+	pkgrel = 1
+	url = https://metacpan.org/release/SMS-Send
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-adapter>=1.05
+	depends = perl-module-pluggable>=3.7
+	depends = perl-params-util>=1.00
+	depends = perl>=5.6.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/SMS-Send-1.06.tar.gz
+	md5sums = bf8c79fb145883c3cd475e5687201151
+	sha512sums = 7e4fd12d9a8fd1f9a2b77ea441c146becd03b4cacd84d167ded3d569889c797ef8def3293b8996786a6d577274c12c4c8d8a2724a2365012c0f35966d85b313d
+
+pkgname = perl-sms-send
+
