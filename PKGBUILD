@@ -2,10 +2,10 @@
 pkgname=crypted-backups-git
 pkgver=0.1.r11.gf07a4a2
 _pkg=crypted-backups
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup scripts using systemd timer/service units and gpg encryption"
 arch=('any')
-url="https://sleepmap.de/projects/crypted-backups"
+url="https://sleepmap.de/software/crypted-backups"
 license=('GPL3')
 groups=()
 depends=('xz')
