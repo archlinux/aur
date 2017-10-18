@@ -2,7 +2,7 @@
 
 pkgname=remco
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="remco is a lightweight configuration management tool"
 arch=('x86_64' 'i686')
 url="http://heavyhorst.github.io/$pkgname/"
