@@ -101,7 +101,6 @@ if [[ -n ${_dev_suffix} ]]; then
   _pkgver=${pkgver}-${_dev_suffix}
 fi
 _release_type="development_releases"
-_mkspec="linux-rpi${_piver}-g++"
 _additional_configure_flags="-skip qt3d"
 _profiled_gpu_fn=qpi-proprietary.sh
 
@@ -112,15 +111,28 @@ __glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
 case ${_piver} in
 1)
   _toolchain_name=armv6-rpi-linux-gnueabihf
+  _toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
+  _mkspec="linux-rpi${_piver}-g++"
   # too problematic for me to care about
   #_float=true
 ;;
 2)
   _toolchain_name=armv7-rpi2-linux-gnueabihf
+  _toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
+  _mkspec="linux-rpi${_piver}-g++"
 ;;
 3)
   _toolchain_name=aarch64-rpi3-linux-gnueabi
+  _toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
   _use_mesa=true
+  _mkspec="linux-rpi${_piver}-g++"
+;;
+4)
+  # yuck; here lies tinkerboard until I find a better way of generalizing this
+  _toolchain_name=armv7-rpi2-linux-gnueabihf
+  _toolchain="/opt/gcc-linaro-7.1.1-2017.08-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
+  _use_mesa=true
+  _mkspec="linux-tinker-g++"
 ;;
 esac
 
@@ -259,10 +271,10 @@ if $_static_build; then
         -skip qtwebengine \
         -no-sql-mysql \
         -no-sql-psql \
-        -no-qml-debug \
         -no-tslib \
         -no-feature-bearermanagement \
     "
+    #-no-qml-debug \
 
     _additional_configure_flags="$_additional_configure_flags $_exhaustive_static_specific_configure_options"
     _additional_configure_flags="$_additional_configure_flags
@@ -453,7 +465,7 @@ else
                  -qtlibinfix "Pi${_piver}" \
                  -sysroot ${_sysroot} \
                  -device ${_mkspec} \
-                 -device-option CROSS_COMPILE=/opt/${_toolchain_name}/bin/${_toolchain_name}- \
+                 -device-option CROSS_COMPILE=${_toolchain} \
                  -no-xcb \
                  -qpa eglfs \
                  -opengl es2 \
