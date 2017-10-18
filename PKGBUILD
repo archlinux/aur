@@ -3,7 +3,7 @@
 
 pkgname=python-internetarchive
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Wrapper for the various Internet Archive APIs (IA-S3, Metadata API, etc)'
 arch=('any')
 url='https://github.com/jjjake/ia-wrapper'
@@ -19,6 +19,8 @@ depends=('python'
          'python-docopt'
          'python-jsonpointer'
          'python-args'
+         'python-backports.csv'
+         'python-schema'
         )
 optdepends=('python-ujson: faster json parsing'
             'python-gevent: concurrent downloads'
@@ -27,6 +29,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jjjake/internetarchive/
 sha256sums=('f62790747385f04a04de78f71219d68e9aeb2fd88b41132a4087be722b9aa13e')
 provides=('python-internetarchive')
 conflicts=('python-internetarchive-git' 'python2-internetarchive-git')
+
+prepare() {
+    cd internetarchive-${pkgver}
+    patch -p1 -i "../../00-setup.py.patch"
+}
 
 build() {
   cd internetarchive-${pkgver}
