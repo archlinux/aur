@@ -1,6 +1,7 @@
 TEMPLATE = lib
 CONFIG += plugin
 QT += xml
+QT += widgets
 
 MOC_DIR = .moc/
 OBJECTS_DIR = .obj/
@@ -13,3 +14,5 @@ target.path = /usr/lib/psi-plus/plugins
 INSTALLS += target
 
 INCLUDEPATH += /usr/include/psi-plus/plugins
+
+DEFINES += HAVE_QT5
