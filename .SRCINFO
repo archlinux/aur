@@ -1,6 +1,6 @@
 pkgbase = pbuilder-ubuntu
 	pkgdesc = personal package builder for Debian packages
-	pkgver = 0.228.8
+	pkgver = 0.228.9
 	pkgrel = 1
 	url = https://launchpad.net/ubuntu/+source/pbuilder
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = pbuilder-ubuntu
 	provides = pbuilder
 	conflicts = pbuilder
 	backup = etc/pbuilderrc
-	source = http://archive.ubuntu.com/ubuntu/pool/main/p/pbuilder/pbuilder_0.228.8_all.deb
-	md5sums = 3fc8d1bd0d67cbc27829ad2e63b4011c
+	source = http://archive.ubuntu.com/ubuntu/pool/main/p/pbuilder/pbuilder_0.228.9_all.deb
+	md5sums = 19babd259b6c835cba8c43b8b8cc216b
 
 pkgname = pbuilder-ubuntu
 
