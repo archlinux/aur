@@ -9,7 +9,7 @@ url='http://quvi.sourceforge.net/'
 license=('AGPL3')
 depends=('libquvi-scripts' 'curl' 'lua52' 'libproxy' 'libgcrypt' 'glib2')
 conflicts=('quvi<0.9.0')
-source=("http://downloads.sourceforge.net/sourceforge/quvi/${pkgname}-${pkgver}.tar.xz"{,.sig})
+source=("https://downloads.sourceforge.net/sourceforge/quvi/${pkgname}-${pkgver}.tar.xz"{,.sig})
 md5sums=('8e3f2134a6b3376934bd884b07dcdac5'
          'SKIP')
 validpgpkeys=('E220FCFF9EADBA326FD6B23BBF1D59CCAD00BE50')
