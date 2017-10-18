@@ -2,7 +2,7 @@
 # Contributor: masutu Subric <masutu dot arch at gmail dot com>
 pkgname=python2-powerlaw
 _module_name=powerlaw
-pkgver=1.3.4
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Toolbox for testing if a probability distribution fits a power law"
 arch=(any)
@@ -10,8 +10,8 @@ url="https://github.com/jeffalstott/powerlaw"
 license=('GPL')
 depends=('python2-scipy')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/p/${_module_name}/${_module_name}-${pkgver}.tar.gz")
-md5sums=('a5de54dafdb1e7b314a6bd260a1d56a7')
+source=("https://pypi.python.org/packages/83/7e/12756bfd0a98fda04e35b25353a6870dbcd53680faca3b77ff044cc65fec/${_module_name}-${pkgver}.tar.gz")
+md5sums=('2ea92f975361594767b652d863909d2e')
 
 package() {
   cd "$srcdir/${_module_name}-$pkgver"
