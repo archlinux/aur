@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Lepton
+Comment=A lean snippet manager
+Exec=/usr/bin/lepton-snippet-manager
+Icon=lepton-snippet-manager
+Categories=Development;
+Terminal=false
+StartupNotify=true
+Name[en_US]=lepton-snippet-manager.desktop
