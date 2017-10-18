@@ -7,6 +7,8 @@ pkgbase = fontopia
 	arch = x86_64
 	arch = i686
 	license = GPL
+	makedepends = gnudos
+	makedepends = texinfo
 	source = ftp://ftp.gnu.org/gnu/fontopia/fontopia-1.7.tar.gz
 	md5sums = 4afff2ab0330679e018fa08deea1b2d4
 
