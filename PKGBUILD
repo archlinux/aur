@@ -18,7 +18,7 @@ pkgver() {
 
 package() {
     cd "$srcdir/$pkgname"
-    sed -i 's/\.\/gdb_pince\/gdb-7\.11\.1\/bin\/gdb/\/usr\/bin\/gdb/g' libPINCE/type_defs.py
+    sed -i 's/\.\/gdb_pince\/gdb.*\/bin\/gdb/\/usr\/bin\/gdb/g' libPINCE/type_defs.py
     sed -i 's/\ssudo python3 PINCE.py/cd \/usr\/share\/PINCE \&\& sudo python3 PINCE.py/' PINCE.sh
     sed -i 's/OS=.*/OS="Arch"/' PINCE.sh
     install -d "$pkgdir/usr/bin"
