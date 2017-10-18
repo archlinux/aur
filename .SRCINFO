@@ -1,0 +1,18 @@
+pkgbase = python-roca-detect
+	pkgdesc = ROCA detection tool
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/crocs-muni/roca
+	arch = any
+	license = MIT
+	depends = python-cryptography
+	depends = python-six
+	depends = python-future
+	depends = python-coloredlogs
+	depends = python-pgpdump
+	depends = python-dateutil
+	source = https://pypi.python.org/packages/48/37/da3db919e79844180e175d2608c5ab195753c4c92405d4a650ba42a1231b/roca-detect-1.0.7.tar.gz
+	md5sums = 1c85571a20cd606328a5beaa95c5fc25
+
+pkgname = python-roca-detect
+
