@@ -1,0 +1,9 @@
+[Unit]
+Description=Prometheus exporter for PostgreSQL
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/prometheus_postgresql_exporter
+
+[Install]
+WantedBy=multi-user.target
