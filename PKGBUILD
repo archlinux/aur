@@ -2,7 +2,7 @@
 # Previous maintainer: psycepa <psycepa [at] mail.ru>
 
 pkgname=totalvalidatorbasic
-pkgver=11.6.0
+pkgver=11.7.0
 pkgrel=1
 pkgdesc="(X)HTML validator, an accessibility validator, a spell checker, and a broken links checker"
 arch=('any')
