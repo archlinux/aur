@@ -2,7 +2,7 @@
 pkgbase=python-stestr
 pkgname=('python-stestr' 'python2-stestr')
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A parallel Python test runner built around subunit"
 arch=('any')
 url=https://github.com/mtreinish/stestr
@@ -20,9 +20,8 @@ package_python-stestr() {
   python setup.py install --root=$pkgdir
   sed -i "s/'trunk'/'${pkgver}'/g" doc/source/conf.py
   echo "sys.path.insert(0, os.path.abspath('$srcdir/stestr-$pkgver'))" >> doc/source/conf.py
-  rm doc/build/man/stestr.1.gz
   sphinx-build -b man doc/source doc/build/man
-  gzip doc/build/man/stestr.1
+  gzip -f doc/build/man/stestr.1
   mkdir -p "${pkgdir}/usr/share/man/man1"
   install -m 755 doc/build/man/stestr.1.gz "${pkgdir}/usr/share/man/man1/stestr.1.gz"
 }
@@ -35,9 +34,8 @@ package_python2-stestr() {
   python2 setup.py install --root=$pkgdir
   sed -i "s/'trunk'/'${pkgver}'/g" doc/source/conf.py
   echo "sys.path.insert(0, os.path.abspath('$srcdir/stestr-$pkgver'))" >> doc/source/conf.py
-  rm doc/build/man/stestr.1.gz
   sphinx-build -b man doc/source doc/build/man
-  gzip doc/build/man/stestr.1
+  gzip -f doc/build/man/stestr.1
   mkdir -p "${pkgdir}/usr/share/man/man1"
   install -m 755 doc/build/man/stestr.1.gz "${pkgdir}/usr/share/man/man1/stestr.1.gz"
   mv "$pkgdir"/usr/bin/stestr{,2}

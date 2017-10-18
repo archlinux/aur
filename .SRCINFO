@@ -1,7 +1,7 @@
 pkgbase = python-stestr
 	pkgdesc = A parallel Python test runner built around subunit
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mtreinish/stestr
 	arch = any
 	license = Apache
