@@ -1,7 +1,7 @@
 # Contributor: Tatsuyuki Ishi <ishitatsuyuki at gmail dot com>
 
 pkgrel=1
-pkgver=r317.95f1e3c
+pkgver=r343.01e2766
 pkgname=zsh-zim-git
 pkgdesc="ZIM - Zsh IMproved"
 url="https://github.com/Eriner/zim"
@@ -10,11 +10,12 @@ license=('MIT')
 depends=('zsh')
 makedepends=('git' 'rsync')
 optdepends=('otf-powerline-symbols-git: for eriner prompt')
-source=('git://github.com/Eriner/zim.git' 'zim.install')
+source=('git://github.com/Eriner/zim.git' 'zim.install' 'zshrc')
 options=('!strip')
 install='zim.install'
-sha256sums=('SKIP'
-            '9029f2f61ad96e0556a5b82f0b5b75863b495db0e00afb3ed37d81b4ba7ee1b5')
+sha384sums=('SKIP'
+            'f83543b7749334a6085701135eb330f099ed2e6236f9b694defaf519193109866e20de55d78bc25aa31a69924a1be7fb'
+            '9f85ac47436359f437202d561c2b8bcf5d8e13c544380130729a6e3340d01bdd2d63d44d676b4e48125341076c17e891')
 _gitname='zim'
 backup=('etc/zsh/zlogin' 'etc/zsh/zimrc' 'etc/zsh/zshrc')
 
@@ -31,18 +32,14 @@ build() {
 
 	rm -f $srcdir/etc/zsh/*
 
-	echo "source /etc/zsh/zimrc" > "$srcdir/etc/zsh/zshrc"
-	echo "source /usr/lib/zim/init.zsh" >> "$srcdir/etc/zsh/zshrc"
-
-	sed -i 's#\${ZDOTDIR:-\${HOME}}/\.zim\(\>\)#/usr/lib/zim\1#g' $(find $srcdir/$_gitname -name init.zsh) $srcdir/$_gitname/templates/zlogin
-	sed -i 's#\${ZDOTDIR:-\${HOME}}/\.zim#/usr/lib/zim#g' $srcdir/$_gitname/modules/debug/functions/trace-zim
-
 	for entry in ${backup[@]}; do
 		rcfile=$(basename $entry)
 		if [ -f $srcdir/$_gitname/templates/$rcfile ]; then
 			echo "source /usr/lib/zim/templates/$rcfile" >> "$srcdir/etc/zsh/$rcfile"
 		fi
-	done	
+	done
+	
+	cp $srcdir/zshrc $srcdir/etc/zsh/zshrc
 }
 
 package() {
