@@ -13,11 +13,12 @@
 #
 # Add "--enable-decklink \" to configure flags
 # if you have decklink-sdk installed
-#
+# Add "--enable-libndi_newtek \" to configure flags
+# if you have ndi-sdk installed
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
-pkgver=3.3.4
+pkgver=3.4
 pkgrel=1
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
@@ -28,16 +29,16 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugi
          'fribidi' 'glibc' 'gnutls' 'gsm' 'jack' 'kvazaar' 'ladspa' 'lame' 'libass' 
          'libavc1394' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libdc1394'
          'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmodplug' 'libomxil-bellagio'
-         'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'libxv' 'mesa' 'netcdf' 'nut-multimedia-git' 'openal' 'opencore-amr'
+         'libmysofa' 'libpulse' 'librsvg' 'libsoxr' 'libssh' 'libtheora' 'libva' 
+         'libvdpau' 'libwebp' 'libxml2' 'libxv' 'mesa' 'openal' 'opencore-amr'
          'opencv' 'opencl-driver' 'opencl-icd-loader' 'openh264' 
-         'openjpeg2' 'libopenmpt-svn' 'opus' 'rubberband' 'rtmpdump' 'schroedinger'
+         'openjpeg2' 'libopenmpt-svn' 'opus' 'rubberband' 'rtmpdump'
          'sdl2' 'smbclient' 'speex' 'shine' 'tesseract' 'twolame' 'v4l-utils'
          'vid.stab' 'vo-amrwbenc' 'libxcb' 'xvidcore' 'xz' 'wavpack' 'zeromq' 'zimg'
          'zlib' 'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so'
          'libx265.so' 'snappy' 'sndio' 'xavs')
-depends_x86_64=('cuda')
-makedepends=('flite' 'libmfx' 'libvdpau' 'yasm' 'opencl-headers')
+depends_x86_64=('cuda' 'nvidia-utils')
+makedepends=('flite' 'libmfx' 'libvdpau' 'nasm' 'opencl-headers' 'libvmaf')
 optdepends=('avxsynth-git: for Avisynth support'
             'blackmagic-decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
@@ -46,18 +47,11 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg' 'qt-faststart')
 source=(https://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.xz{,.asc}
-        'UNREDISTRIBUTABLE.txt'
-        'ffmpeg-openjpeg2.2.patch')
+        'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('98b97e1b908dfeb6aeb6d407e5a5eacdfc253a40c2d195f5867ed2d1d46ea957'
+sha256sums=('aeee06e4d8b18d852c61ebbfe5e1bb7014b1e118e8728c1c2115f91e51bffbef'
             'SKIP'
-            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
-            '490598f78d7879af8ef5b8d7f92ada83d0ee64f9609f6c7b989eb331c2539f68')
-
-prepare() {
-  cd $_pkgbasename-$pkgver
-  patch -Np1 -i ../ffmpeg-openjpeg2.2.patch
-}
+            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
 build() {
   cd $_pkgbasename-$pkgver
@@ -65,11 +59,25 @@ build() {
   # Add x86_64 (opt)depends to the build
   if [ "$CARCH" = "x86_64" ]
   then
-      _cuda="--enable-cuda"
-      _cuvid="--enable-cuvid"
-      _libnpp="--enable-libnpp"
-      _cflags="--extra-cflags=-I/opt/cuda/include"
-      _ldflags="--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins"
+      local _cuda='--enable-cuda'
+      local _cudasdk='--enable-cuda-sdk'
+      local _cuvid='--enable-cuvid'
+      local _libnpp='--enable-libnpp'
+      local _cflags='--extra-cflags=-I/opt/cuda/include'
+      
+      # '-L/usr/lib/nvidia' (for cuda_sdk) needs to be enabled only on
+      # systems with nvidia-340xx-utils or nvidia-304xx-utils
+      if pacman -Qqs '^nvidia-340xx-utils$' | grep -q '^nvidia-340xx-utils$' ||
+         pacman -Qqs '^nvidia-304xx-utils$' | grep -q '^nvidia-304xx-utils$'
+      then
+          local _nvidia_340xx_ldflags='-L/usr/lib/nvidia'
+      fi
+      local _ldflags="--extra-ldflags=-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
+      local _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins"
+      
+      # strictly specifying nvcc path is needed if package is installing
+      # cuda for the first time (nvcc path will be in $PATH only after relogin)
+      sed -i "s@^nvcc_default=.*@nvcc_default='/opt/cuda/bin/nvcc'@" configure
   fi
 
   msg "Starting configure..."
@@ -93,15 +101,18 @@ build() {
     \
     \
     $_cuda \
+    $_cudasdk \
     $_cuvid \
     $_libnpp \
     \
+    --enable-libdrm \
     --enable-libmfx \
     --enable-nvenc \
     --enable-omx \
     --enable-omx-rpi \
     \
     \
+    --enable-alsa \
     --enable-avisynth \
     --enable-chromaprint \
     --enable-decoder=atrac3 \
@@ -113,6 +124,7 @@ build() {
     --enable-gpl \
     --enable-gray \
     --enable-iconv \
+    --enable-jack \
     --enable-ladspa \
     --enable-libass \
     --enable-libbluray \
@@ -131,7 +143,7 @@ build() {
     --enable-libkvazaar \
     --enable-libmodplug \
     --enable-libmp3lame \
-    --enable-libnut \
+    --enable-libmysofa \
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
     --enable-libopencv \
@@ -140,9 +152,9 @@ build() {
     --enable-libopenmpt \
     --enable-libopus \
     --enable-libpulse \
+    --enable-librsvg \
     --enable-librubberband \
     --enable-librtmp  \
-    --enable-libschroedinger \
     --enable-libshine \
     --enable-libsmbclient \
     --enable-libsnappy \
@@ -154,6 +166,7 @@ build() {
     --enable-libtwolame \
     --enable-libv4l2 \
     --enable-libvidstab \
+    --enable-libvmaf \
     --enable-libvo-amrwbenc \
     --enable-libvorbis \
     --enable-libvpx \
@@ -167,19 +180,19 @@ build() {
     --enable-libxcb-xfixes \
     --enable-libxcb-shape \
     --enable-libxvid \
+    --enable-libxml2 \
     --enable-libzimg \
     --enable-libzmq \
     --enable-libzvbi \
     --enable-lzma \
-    --enable-netcdf \
     --enable-openal \
     --enable-opencl \
     --enable-opengl \
     --enable-openssl \
+    --enable-sndio \
     --enable-sdl2 \
     --enable-vaapi \
     --enable-vdpau \
-    --enable-videotoolbox \
     --enable-xlib \
     --enable-zlib
 
