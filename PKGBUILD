@@ -2,7 +2,7 @@
 pkgbase=python-stestr
 pkgname=('python-stestr' 'python2-stestr')
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A parallel Python test runner built around subunit"
 arch=('any')
 url=https://github.com/mtreinish/stestr
@@ -37,6 +37,6 @@ package_python2-stestr() {
   sphinx-build -b man doc/source doc/build/man
   gzip -f doc/build/man/stestr.1
   mkdir -p "${pkgdir}/usr/share/man/man1"
-  install -m 755 doc/build/man/stestr.1.gz "${pkgdir}/usr/share/man/man1/stestr.1.gz"
+  install -m 755 doc/build/man/stestr.1.gz "${pkgdir}/usr/share/man/man1/stestr2.1.gz"
   mv "$pkgdir"/usr/bin/stestr{,2}
 }
