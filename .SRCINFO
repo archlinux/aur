@@ -1,7 +1,7 @@
 pkgbase = remco
 	pkgdesc = remco is a lightweight configuration management tool
 	pkgver = 0.10.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://heavyhorst.github.io/remco/
 	arch = x86_64
 	arch = i686
