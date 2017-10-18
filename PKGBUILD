@@ -2,7 +2,7 @@
 pkgname=cvc4-git
 _pkgname=CVC4
 
-pkgver=v1.4
+pkgver=1.5.r189.g382813c77
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
@@ -14,7 +14,7 @@ url="http://cvc4.cs.nyu.edu/web/"
 arch=('x86_64' 'i686')
 license=('BSD')
 depends=('gmp' 'boost' 'libantlr3c')
-makedepends=('git' 'gcc' 'make' 'bash')
+makedepends=('automake' 'git' 'gcc' 'make' 'bash')
 optdepends=()
 conflicts=()
 replaces=()
