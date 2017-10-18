@@ -3,6 +3,7 @@
 pkgname=gtk-theme-ant
 pkgver=1.0.1
 pkgrel=1
+epoch=1
 pkgdesc="A flat and light theme with a modern look."
 arch=(any)
 url="https://github.com/EliverLara/Ant"
