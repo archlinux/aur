@@ -1,5 +1,5 @@
 --- server/Makefile_orig	2017-10-18 18:45:17.300000003 +0000
-+++ server/Makefile	2017-10-18 19:06:51.913333336 +0000
++++ server/Makefile	2017-10-18 20:43:34.090000003 +0000
 @@ -127,36 +127,38 @@
  	rm -rf $(OUTPUT) $(GRUNT_FILES)
  
@@ -13,14 +13,14 @@
 +	mkdir -p ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver
 +	mkdir -p ${DESTDIR}/var/log/onlyoffice/documentserver
 +	mkdir -p ${DESTDIR}/var/lib/onlyoffice/documentserver/App_Data
-+	mkdir -p ${DESTDIR}/lib
++	mkdir -p ${DESTDIR}/usr/lib
  	
 -	sudo cp -fr -t /var/www/onlyoffice/documentserver build/* ../web-apps/deploy/*
 -	sudo mkdir -p /etc/onlyoffice/documentserver
 -	sudo mv /var/www/onlyoffice/documentserver/server/Common/config/* /etc/onlyoffice/documentserver
 +	cp -fr -t ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver build/* ../web-apps/deploy/*
-+	mkdir -p ${DESTDIR}/etc/onlyoffice/documentserver
-+	mv ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/Common/config/* ${DESTDIR}/etc/onlyoffice/documentserver
++	mkdir -p ${DESTDIR}/etc/webapps/onlyoffice/documentserver
++	mv ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/Common/config/* ${DESTDIR}/etc/webapps/onlyoffice/documentserver
  	
 -	sudo chown onlyoffice:onlyoffice -R /var/www/onlyoffice
 -	sudo chown onlyoffice:onlyoffice -R /var/log/onlyoffice
@@ -39,16 +39,16 @@
 -	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libUnicodeConverter.so /lib/libUnicodeConverter.so
 -	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libicudata.so.55 /lib/libicudata.so.55
 -	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libicuuc.so.55 /lib/libicuuc.so.55
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libDjVuFile.so ${DESTDIR}/lib/libDjVuFile.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libdoctrenderer.so ${DESTDIR}/lib/libdoctrenderer.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libHtmlFile.so ${DESTDIR}/lib/libHtmlFile.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libHtmlRenderer.so ${DESTDIR}/lib/libHtmlRenderer.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libPdfReader.so ${DESTDIR}/lib/libPdfReader.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libPdfWriter.so ${DESTDIR}/lib/libPdfWriter.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libXpsFile.so ${DESTDIR}/lib/libXpsFile.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libUnicodeConverter.so ${DESTDIR}/lib/libUnicodeConverter.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicudata.so.55 ${DESTDIR}/lib/libicudata.so.55
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicuuc.so.55 ${DESTDIR}/lib/libicuuc.so.55
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libDjVuFile.so ${DESTDIR}/usr/lib/libDjVuFile.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libdoctrenderer.so ${DESTDIR}/usr/lib/libdoctrenderer.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libHtmlFile.so ${DESTDIR}/usr/lib/libHtmlFile.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libHtmlRenderer.so ${DESTDIR}/usr/lib/libHtmlRenderer.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libPdfReader.so ${DESTDIR}/usr/lib/libPdfReader.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libPdfWriter.so ${DESTDIR}/usr/lib/libPdfWriter.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libXpsFile.so ${DESTDIR}/usr/lib/libXpsFile.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libUnicodeConverter.so ${DESTDIR}/usr/lib/libUnicodeConverter.so
++	#ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicudata.so.55 ${DESTDIR}/usr/lib/libicudata.so.55
++	#ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicuuc.so.55 ${DESTDIR}/usr/lib/libicuuc.so.55
 +
 +	# sudo -u onlyoffice "/usr/share/webapps/onlyoffice/documentserver/server/tools/AllFontsGen"\
 +	# 	"/usr/share/fonts"\
