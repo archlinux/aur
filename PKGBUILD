@@ -1,7 +1,7 @@
 # Maintainer: Marcel Campello Ferreira <marcel.campello.ferreira@gmail.com>
 pkgname=neo4j-community
 pkgver=3.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A fully transactional graph database implemented in Java'
 arch=(any)
 url=http://neo4j.org/
@@ -13,15 +13,23 @@ backup=(etc/neo4j/neo4j.conf)
 options=(!strip)
 install=neo4j.install
 source=(http://dist.neo4j.org/neo4j-community-$pkgver-unix.tar.gz
+        bin.patch
         neo4j.conf
         neo4j.install
         neo4j.service
         neo4j-tmpfile.conf)
 sha256sums=('6d68363595c9288dc734301de6d8f935b7a0febcb59b88ff77676b95cd0a8950'
-            'f3ad973ba00f14980bb6ece9a619cb4775c0084a5eaf19f76f74675eea4803e8'
+            '163a1fad08a26c1367ea24a09e3231dab9aa0ed6b86b6421663cad622e2b680b'
+            '8b58f52fc827a02eda8aa58fd40c3a19aab9f5ea0687f5eebc421ba49828713b'
             'f95936abc4a519b01d2cd987cd38a253003cf4cd39bfab29948708e82d98de66'
             'cf3148bd65ddc06f5ca8cf2ad37013d2e1aa561c5759e4b295f361465e603928'
             'e1311352e05b1e698599b91883141b938ceb418abd7e6bc11cc964854f0a21e1')
+            
+prepare() {
+
+  cd $srcdir/neo4j-community-$pkgver
+  patch -Np1 -i ../bin.patch
+}
 
 package() {
   cd $srcdir/neo4j-community-$pkgver
@@ -46,7 +54,7 @@ package() {
   [[ $(ls -A logs/* 2>/dev/null) ]] && cp -r logs/* $pkgdir/$LOG_DIR
 
   # Copy JARs in lib and plugins
-  LIB_DIR=usr/share/java/neo4j
+  LIB_DIR=usr/share/java/neo4j/lib
   install -dm755 $pkgdir/$LIB_DIR
   [[ $(ls -A lib/* 2>/dev/null) ]] && cp -r lib/* $pkgdir/$LIB_DIR
 
