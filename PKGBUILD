@@ -2,8 +2,8 @@
 pkgbase=alienfx
 pkgname=alienfx
 pkgver=2.0.5
-pkgrel=5
-pkgdesc="AlienFX Configuration Utility"
+pkgrel=6
+pkgdesc="CLI and GUI utility to control the lighting effects of your Alienware computer written in Python."
 arch=('any')
 url="https://github.com/trackmastersteve/alienfx"
 license=('GPLv3')
