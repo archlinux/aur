@@ -4,7 +4,7 @@
 _pkgname=pbt
 
 pkgname="$_pkgname-git"
-pkgver=r33.5e001c1
+pkgver=r40.8927dcd
 pkgrel=1
 pkgdesc='Bullettrain prompt builder written in Python'
 url='https://github.com/jtyr/pbt'
