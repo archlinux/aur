@@ -1,5 +1,5 @@
 pkgname=paper-icon-theme-git
-pkgver=545.e456a0d
+pkgver=749.c153195c
 pkgrel=1
 pkgdesc="Paper is an icon theme for GTK based desktops and fits perfectly the paper-gtk-theme"
 arch=(any)
