@@ -1,5 +1,5 @@
 # Maintainer: Simon Weald <simon[at]simonweald[dot]com>
-pkgname=python-ansigenome
+pkgname=python2-ansigenome
 _srcname=ansigenome
 pkgver=0.6.0
 pkgrel=1
