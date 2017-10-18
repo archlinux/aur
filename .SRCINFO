@@ -1,0 +1,16 @@
+pkgbase = perl-time-fake
+	pkgdesc = Perl/CPAN Module Time::Fake: Simulate different times without changing your system clock
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://metacpan.org/release/Time-Fake
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RO/ROSULEK/Time-Fake-0.11.tar.gz
+	md5sums = bb453d8fd6df42eb31cbd585af407d2a
+	sha512sums = b9f2c6a1327837bd665bee0cde9c94ae86abc6f92d181e8364015c10d834acf80704a688c4666d03c0a871d98a8bde684f83f52f3817765894bb90319dc037b4
+
+pkgname = perl-time-fake
+
