@@ -1,3 +1,14 @@
+# [v1.4.6 - 2017-10-17](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.5)
+
+## Added
+
+- Added advanced option to specify a custom URL for hosting providers.
+
+## Fixed
+
+- Fixed failure to execute pre-push hook (including LFS) in some cases.
+- Fixed error messages on console.
+
 # [v1.4.5 - 2017-10-10](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.4)
 
 ## Added
