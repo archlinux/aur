@@ -1,7 +1,7 @@
 # Maintainer: ninian <mcfadzean.org.uk ta linux>
 
 pkgname=runa
-pkgver=5.3.1
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="Fast and light desktop application launcher"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:MPL2')
 depends=('bash' 'dmenu' 'libnotify')
 optdepends=('gxmessage: to view .desktop files' 'perl-file-mimeinfo: to better determine mimetypes')
 source=("http://appstogo.mcfadzean.org.uk/dl/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('6bb00c82dc27219b958a94c077a3039f')
+md5sums=('1191ccfd8ecb5b821eb5713e18fe2208')
 
 package() {
   cd "$srcdir/${pkgname}-$pkgver"
@@ -27,5 +27,5 @@ package() {
   install -Dm755 xdg-open                    "$pkgdir/usr/share/doc/${pkgname}/xdg-open"
   msg "Configuration and favourites files will be created the first time Runa is executed"
   msg "See 'man ${pkgname}' and /usr/share/doc/${pkgname}/README for more information"
-  msg "IMPORTANT: Configuration file format changed with version 5: recreate and merge with old configuration as required"
+  msg "IMPORTANT: This version changes the configuration file format; recreate and merge with old configuration as required"
 }
