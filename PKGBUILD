@@ -2,7 +2,7 @@
 pkgname=iease-music
 pkgver=1.0.1
 pkgrel=0
-pkgdesc="Elegant NeteaseMusic desktop app, Rock with NeteaseMusic."
+pkgdesc='Elegant neteaseMusic desktop app, Rock with NeteaseMusic.'
 arch=('x86_64')
 url='https://github.com/trazyn/ieaseMusic'
 license=('MIT')
