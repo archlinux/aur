@@ -1,4 +1,4 @@
-# Maintainer: Storey Redshaw <sredshaw@gmail.com>
+# Maintainer: Sagacious Zu <sredshaw@gmail.com>
 
 pkgname=victory-gtk-theme-git
 _gitname=victory-gtk-theme
