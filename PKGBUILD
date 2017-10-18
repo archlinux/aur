@@ -1,8 +1,8 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 _pkgname=neovim-gtk
 pkgname=neovim-gtk-git
-pkgver=319
-pkgrel=2
+pkgver=331
+pkgrel=1
 pkgdesc='GTK UI for Neovim written in Rust'
 arch=('i686' 'x86_64')
 url="https://github.com/daa84/neovim-gtk"
@@ -16,12 +16,12 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git rev-list --count HEAD
+    /usr/bin/git rev-list --count HEAD
 }
 
 build() {
     cd "$srcdir/$_pkgname"
-    cargo build --release
+    /usr/bin/cargo build --release
 }
 
 package() {
