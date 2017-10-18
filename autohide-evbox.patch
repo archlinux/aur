@@ -57,7 +57,8 @@
 +        animate_panel ();
  
          return true;
-     }@@ -85,7 +110,27 @@
+     }
+@@ -85,7 +110,27 @@
  
          //Services.BackgroundManager.get_default ().initialize (this.monitor_number, panel_height);
  
