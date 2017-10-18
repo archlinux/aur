@@ -1,4 +1,5 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Contributor: Iahwaacz
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
@@ -6,7 +7,7 @@
 
 pkgname=chromium-gtk2
 _pkgname=chromium
-pkgver=61.0.3163.100
+pkgver=62.0.3202.62
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security (GTK2 version)"
@@ -28,22 +29,18 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         breakpad-use-ucontext_t.patch
-        chromium-gcc-r1.patch
-        chromium-gn-bootstrap-r14.patch
-        chromium-atk-r1.patch
-        chromium-blink-gcc7.patch
+        crc32c-string-view-check.patch
+        chromium-gn-bootstrap-r17.patch
         chromium-widevine.patch
-        ca40720.diff)
-sha256sums=('4135968cac6623c1d2b224494600cd274098cce41c298f8c3908b354a34c281b'
+        fix-nav-button-layout.patch)
+sha256sums=('e8df3150386729ddcb4971636627e54815ad447be5f122201e310f5bb0bcc362'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
-            '11cffe305dd49027c91638261463871e9ecb0ecc6ecc02bfa37b203c5960ab58'
-            '98784c4a0a793ecf34987bc8f91ae360d78596a4a59dd47651411381f752a080'
-            'fc0e9abb77b6f8e21a7601ff53f267a854736d711b530be5bbd80d976678e98d'
-            'f94310a7ba9b8b777adfb4442bcc0a8f0a3d549b2cf4a156066f8e2e28e2f323'
+            '35435e8dae76737baafecdc76d74a1c97281c4179e416556e033a06a31468e6d'
+            'd81319f168dad0e411c8e810f73daa2f56ff579578771bd9c9bb1aa2d7c09a8b'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
-            'e4dd9b77d789b879dba122097361d67c6bd64dba8e54dbadf2600ec390163cc4')
+            '377cb60201a9bf6a095499273a1d96f43543a4f1dae62e591748eec5c652cf52')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -52,7 +49,7 @@ declare -rgA _system_libs=(
   [flac]=flac
   #[freetype]=freetype2      # https://crbug.com/pdfium/733
   [harfbuzz-ng]=harfbuzz-icu
-  #[icu]=icu                 # Enable again when upstream supports ICU 59
+  [icu]=icu
   [libdrm]=
   [libjpeg]=libjpeg
   #[libpng]=libpng           # https://crbug.com/752403#c10
@@ -78,25 +75,32 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
 
+  # https://crbug.com/710701
+  local _chrome_build_hash=$(curl -s https://chromium.googlesource.com/chromium/src.git/+/$pkgver?format=TEXT |
+    base64 -d | grep -Po '^parent \K[0-9a-f]{40}$')
+  if [[ -z $_chrome_build_hash ]]; then
+    error "Unable to fetch Chrome build hash."
+    return 1
+  fi
+  echo "LASTCHANGE=$_chrome_build_hash-" >build/util/LASTCHANGE
+
   # Enable support for the Widevine CDM plugin
   # libwidevinecdm.so is not included, but can be copied over from Chrome
   # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
-  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=853347
-  patch -Np1 -i ../chromium-blink-gcc7.patch
-
   # Fix build with glibc 2.26
   patch -Np1 -i ../breakpad-use-ucontext_t.patch
 
-  # Fixes from Gentoo
-  patch -Np1 -i ../chromium-gcc-r1.patch
-  patch -Np1 -i ../chromium-gn-bootstrap-r14.patch
-  patch -Np1 -i ../chromium-atk-r1.patch
+  # Fix incorrect inclusion of <string_view> in modes other than >= C++17
+  patch -Np1 -d third_party/crc32c/src <../crc32c-string-view-check.patch
 
-  # Fix GTK2 build
-  patch -Np1 -i ../ca40720.diff
+  # Fixes from Gentoo
+  patch -Np1 -i ../chromium-gn-bootstrap-r17.patch
+
+  # fix NavButtonLayoutManager
+  patch -Np1 -i ../fix-nav-button-layout.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -138,6 +142,7 @@ build() {
     'is_clang=false'
     'clang_use_chrome_plugins=false'
     'is_debug=false'
+    'exclude_unwind_tables=true'
     'fatal_linker_warnings=false'
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'

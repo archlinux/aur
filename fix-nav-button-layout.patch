@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/ui/libgtkui/gtk_ui.h.orig b/chrome/browser/ui/libgtkui/gtk_ui.h
+index 3048cf8..767f07e 100644
+--- a/chrome/browser/ui/libgtkui/gtk_ui.h.orig
++++ b/chrome/browser/ui/libgtkui/gtk_ui.h
+@@ -17,6 +17,7 @@
+ #include "ui/gfx/color_utils.h"
+ #include "ui/views/linux_ui/linux_ui.h"
+ #include "ui/views/window/frame_buttons.h"
++#include "nav_button_layout_manager.h"
+ 
+ typedef struct _GParamSpec GParamSpec;
+ typedef struct _GtkStyle GtkStyle;
+@@ -25,7 +26,6 @@ typedef struct _GtkWidget GtkWidget;
+ namespace libgtkui {
+ class Gtk2KeyBindingsHandler;
+ class DeviceScaleFactorObserver;
+-class NavButtonLayoutManager;
+ 
+ // Interface to GTK2 desktop features.
+ //
