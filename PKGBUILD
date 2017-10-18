@@ -8,7 +8,7 @@ url="https://github.com/PyCQA/pydocstyle"
 license=('MIT')
 depends=('python' 'python-snowballstemmer')
 makedepends=('python-setuptools')
-source=("https://github.com/PyCQA/pydocstyle/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/PyCQA/pydocstyle/archive/${pkgver}.tar.gz")
 sha1sums=('7b493316733068f6b662d272627f7927f1c0cbeb')
 
 package() {
