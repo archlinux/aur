@@ -148,7 +148,9 @@ fi
 if $_target_host; then
   _use_mesa=true
 else
-  depends=("qpi${_piver}-toolchain")
+  if ! $_testing; then
+    depends=("qpi${_piver}-toolchain")
+  fi
 fi
 
 if [[ -z "${_dev_suffix}" ]]; then _release_type="official_releases"; fi
