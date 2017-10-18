@@ -131,10 +131,10 @@ index afcb435adfbe..e82ba69b19a9 100644
  obj-$(CONFIG_XFRM) += xfrm4_policy.o xfrm4_state.o xfrm4_input.o \
  		      xfrm4_output.o xfrm4_protocol.o
 diff --git a/net/ipv4/tcp_output.c b/net/ipv4/tcp_output.c
-index 40f7c8ee9ba6..2c36b3e85da8 100644
+index 40f7c8ee9ba6..97e2d2a55c81 100644
 --- a/net/ipv4/tcp_output.c
 +++ b/net/ipv4/tcp_output.c
-@@ -42,6 +42,24 @@
+@@ -42,6 +42,26 @@
  #include <linux/gfp.h>
  #include <linux/module.h>
  
@@ -155,19 +155,22 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
 +}
 +
 +#define NOW ktime_to_us(ktime_get())
++#define SPORT(sk) inet_sk(sk)->inet_sport
++#define DPORT(sk) inet_sk(sk)->inet_dport
 +
  /* People can turn this off for buggy TCP's found in printers etc. */
  int sysctl_tcp_retrans_collapse __read_mostly = 1;
  
-@@ -742,6 +760,7 @@ static void tcp_tsq_handler(struct sock *sk)
+@@ -742,6 +762,8 @@ static void tcp_tsq_handler(struct sock *sk)
  		    tp->snd_cwnd > tcp_packets_in_flight(tp))
  			tcp_xmit_retransmit_queue(sk);
  
-+		pr_debug("%llu [tcp_tsq_handler]\n", NOW);
++		pr_debug("%llu sport: %hu [%s]\n",
++			 NOW, SPORT(sk), __func__);
  		tcp_write_xmit(sk, tcp_current_mss(sk), tp->nonagle,
  			       0, GFP_ATOMIC);
  	}
-@@ -950,22 +969,47 @@ static bool tcp_needs_internal_pacing(const struct sock *sk)
+@@ -950,22 +972,47 @@ static bool tcp_needs_internal_pacing(const struct sock *sk)
  	return smp_load_acquire(&sk->sk_pacing_status) == SK_PACING_NEEDED;
  }
  
@@ -187,21 +190,21 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
 -	rate = sk->sk_pacing_rate;
 -	if (!rate || rate == ~0U)
 +	if (!tcp_needs_internal_pacing(sk)) {
-+		pr_debug("%llu [%s] tcp does not need pacing\n",
-+			 NOW, __func__);
++		pr_debug("%llu sport: %hu [%s] tcp does not need pacing\n",
++			 NOW, SPORT(sk), __func__);
  		return;
 +	}
 +
 +	if (ca_ops->get_pacing_time) {
 +		if (tcp_pacing_timer_check(sk)) {
-+			pr_debug("%llu [%s] tcp timer active, do not ask for pacing_time\n",
-+				 NOW, __func__);
++			pr_debug("%llu sport: %hu [%s] tcp timer active, do not ask for pacing_time\n",
++				 NOW, SPORT(sk), __func__);
 +			return;
 +		}
 +
 +		len_ns = ca_ops->get_pacing_time(sk);
-+		pr_debug("%llu [%s] asked for pacing_time, len_ns=%llu\n",
-+			 NOW, __func__, len_ns);
++		pr_debug("%llu sport: %hu [%s] asked for pacing_time, len_ns=%llu\n",
++			 NOW, SPORT(sk), __func__, len_ns);
 +	} else {
 +		u32 rate = sk->sk_pacing_rate;
 +
@@ -213,8 +216,8 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
 +		 */
 +		len_ns = (u64)skb->len * NSEC_PER_SEC;
 +		do_div(len_ns, rate);
-+		pr_debug("%llu [%s] default pacing_time, len_ns=%llu\n",
-+			 NOW, __func__, len_ns);
++		pr_debug("%llu sport: %hu [%s] default pacing_time, len_ns=%llu\n",
++			 NOW, SPORT(sk), __func__, len_ns);
 +	}
  
 -	/* Should account for header sizes as sch_fq does,
@@ -225,7 +228,7 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
  	hrtimer_start(&tcp_sk(sk)->pacing_timer,
  		      ktime_add_ns(ktime_get(), len_ns),
  		      HRTIMER_MODE_ABS_PINNED);
-@@ -995,6 +1039,7 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
+@@ -995,6 +1042,7 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
  	struct tcp_md5sig_key *md5;
  	struct tcphdr *th;
  	int err;
@@ -233,7 +236,7 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
  
  	BUG_ON(!skb || !tcp_skb_pcount(skb));
  	tp = tcp_sk(sk);
-@@ -1062,6 +1107,8 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
+@@ -1062,6 +1110,8 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
  	th->check		= 0;
  	th->urg_ptr		= 0;
  
@@ -242,36 +245,37 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
  	/* The urg_mode check is necessary during a below snd_una win probe */
  	if (unlikely(tcp_urg_mode(tp) && before(tcb->seq, tp->snd_up))) {
  		if (before(tp->snd_up, tcb->seq + 0x10000)) {
-@@ -1102,6 +1149,9 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
+@@ -1102,6 +1152,9 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
  		tcp_event_data_sent(tp, sk);
  		tp->data_segs_out += tcp_skb_pcount(skb);
  		tcp_internal_pacing(sk, skb);
 +	} else {
-+		pr_debug ("%llu [%s] skb->len == tcp_header_size, an ACK probably\n",
-+			  NOW, __func__);
++		pr_debug ("%llu sport: %hu [%s] skb->len == tcp_header_size, an ACK probably\n",
++			  NOW, SPORT(sk), __func__);
  	}
  
  	if (after(tcb->end_seq, tp->snd_nxt) || tcb->seq == tcb->end_seq)
-@@ -1122,6 +1172,10 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
+@@ -1122,6 +1175,10 @@ static int tcp_transmit_skb(struct sock *sk, struct sk_buff *skb, int clone_it,
  
  	err = icsk->icsk_af_ops->queue_xmit(sk, skb, &inet->cork.fl);
  
-+	pr_debug("%llu [tcp_transmit_skb] seq=%u, ack=%u, window=%u, len=%u flags=%s err=%i \n",
-+		 NOW, ntohl(th->seq), ntohl(th->ack_seq),
++	pr_debug("%llu sport: %hu %hu [%s] seq=%u, ack=%u, window=%u, len=%u flags=%s err=%i \n",
++		 NOW, SPORT(sk), ntohs(SPORT(sk)), __func__, ntohl(th->seq), ntohl(th->ack_seq),
 +		 ntohs(th->window), skb->len, print_tcp_header_flags(flags), err);
 +
  	if (unlikely(err > 0)) {
  		tcp_enter_cwr(sk);
  		err = net_xmit_eval(err);
-@@ -2138,6 +2192,7 @@ static int tcp_mtu_probe(struct sock *sk)
+@@ -2138,6 +2195,8 @@ static int tcp_mtu_probe(struct sock *sk)
  	/* We're ready to send.  If this fails, the probe will
  	 * be resegmented into mss-sized pieces by tcp_write_xmit().
  	 */
-+	pr_debug("%llu [tcp_mtu_probe] sending a probe\n", NOW);
++	pr_debug("%llu sport: %hu [%s] sending a probe\n",
++		 NOW, SPORT(sk), __func__);
  	if (!tcp_transmit_skb(sk, nskb, 1, GFP_ATOMIC)) {
  		/* Decrement cwnd here because we are sending
  		 * effectively two packets. */
-@@ -2154,12 +2209,6 @@ static int tcp_mtu_probe(struct sock *sk)
+@@ -2154,12 +2213,6 @@ static int tcp_mtu_probe(struct sock *sk)
  	return -1;
  }
  
@@ -284,7 +288,7 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
  /* TCP Small Queues :
   * Control number of packets in qdisc/devices to two packets / or ~1 ms.
   * (These limits are doubled for retransmits)
-@@ -2261,6 +2310,7 @@ void tcp_chrono_stop(struct sock *sk, const enum tcp_chrono type)
+@@ -2261,6 +2314,7 @@ void tcp_chrono_stop(struct sock *sk, const enum tcp_chrono type)
  static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  			   int push_one, gfp_t gfp)
  {
@@ -292,7 +296,7 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
  	struct tcp_sock *tp = tcp_sk(sk);
  	struct sk_buff *skb;
  	unsigned int tso_segs, sent_pkts;
-@@ -2268,6 +2318,8 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2268,6 +2322,8 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  	int result;
  	bool is_cwnd_limited = false, is_rwnd_limited = false;
  	u32 max_segs;
@@ -301,7 +305,7 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
  
  	sent_pkts = 0;
  
-@@ -2283,11 +2335,31 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2283,11 +2339,32 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  
  	max_segs = tcp_tso_segs(sk, mss_now);
  	tcp_mstamp_refresh(tp);
@@ -315,30 +319,31 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
 +		if (ca_ops->get_segs_per_round)
 +			pacing_allowed_segs = ca_ops->get_segs_per_round(sk);
 +	} else
-+		pr_debug("%llu [%s] timer running\n", NOW, __func__);
++		pr_debug("%llu sport: %hu [%s] timer running\n", NOW, SPORT(sk), __func__);
 +
  	while ((skb = tcp_send_head(sk))) {
  		unsigned int limit;
  
 -		if (tcp_pacing_check(sk))
-+		pr_debug("%llu [%s] allowed=%u sent=%u, inflight=%u, cwnd=%u\n", NOW, __func__,
++		pr_debug("%llu sport: %hu [%s] allowed=%u sent=%u, inflight=%u, cwnd=%u\n",
++			 NOW, SPORT(sk), __func__,
 +		    pacing_allowed_segs, sent_pkts, tcp_packets_in_flight(tp),
 +		    tp->snd_cwnd);
 +
 +		if (tcp_needs_internal_pacing(sk) &&
 +		    sent_pkts >= pacing_allowed_segs) {
-+			pr_debug("%llu [%s] BREAK for sent\n", NOW,
-+			    __func__);
++			pr_debug("%llu sport: %hu [%s] BREAK for sent\n",
++				 NOW, SPORT(sk), __func__);
  			break;
 +		}
  
  		tso_segs = tcp_init_tso_segs(skb, mss_now);
  		BUG_ON(!tso_segs);
-@@ -2295,33 +2367,42 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2295,33 +2372,42 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  		if (unlikely(tp->repair) && tp->repair_queue == TCP_SEND_QUEUE) {
  			/* "skb_mstamp" is used as a start point for the retransmit timer */
  			skb->skb_mstamp = tp->tcp_mstamp;
-+			pr_debug("%llu [%s] 1", NOW, __func__);
++			pr_debug("%llu sport: %hu [%s] 1", NOW, SPORT(sk), __func__);
  			goto repair; /* Skip network transmission */
  		}
  
@@ -347,18 +352,18 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
 -			if (push_one == 2)
 +			if (push_one == 2) {
  				/* Force out a loss probe pkt. */
-+				pr_debug("%llu [%s] 2", NOW, __func__);
++				pr_debug("%llu sport: %hu [%s] 2", NOW, SPORT(sk), __func__);
  				cwnd_quota = 1;
 -			else
 +			} else {
-+				pr_debug("%llu [%s] 3", NOW, __func__);
++				pr_debug("%llu sport: %hu [%s] 3", NOW, SPORT(sk), __func__);
  				break;
 +			}
  		}
  
  		if (unlikely(!tcp_snd_wnd_test(tp, skb, mss_now))) {
  			is_rwnd_limited = true;
-+			pr_debug("%llu [%s] 4", NOW, __func__);
++			pr_debug("%llu sport: %hu [%s] 4", NOW, SPORT(sk), __func__);
  			break;
  		}
  
@@ -367,7 +372,7 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
  						     (tcp_skb_is_last(sk, skb) ?
 -						      nonagle : TCP_NAGLE_PUSH))))
 +						      nonagle : TCP_NAGLE_PUSH)))) {
-+				pr_debug("%llu [%s] 5", NOW, __func__);
++				pr_debug("%llu sport: %hu [%s] 5", NOW, SPORT(sk), __func__);
  				break;
 +			}
  		} else {
@@ -375,19 +380,19 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
  			    tcp_tso_should_defer(sk, skb, &is_cwnd_limited,
 -						 max_segs))
 +						 max_segs)) {
-+				pr_debug("%llu [%s] 6", NOW, __func__);
++				pr_debug("%llu sport: %hu [%s] 6", NOW, SPORT(sk), __func__);
  				break;
 +			}
  		}
  
  		limit = mss_now;
-@@ -2333,16 +2414,22 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2333,16 +2419,22 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  						    nonagle);
  
  		if (skb->len > limit &&
 -		    unlikely(tso_fragment(sk, skb, limit, mss_now, gfp)))
 +		    unlikely(tso_fragment(sk, skb, limit, mss_now, gfp))) {
-+			pr_debug("%llu [%s] 7", NOW, __func__);
++			pr_debug("%llu sport: %hu [%s] 7", NOW, SPORT(sk), __func__);
  			break;
 +		}
  
@@ -395,32 +400,32 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
  			clear_bit(TCP_TSQ_DEFERRED, &sk->sk_tsq_flags);
 -		if (tcp_small_queue_check(sk, skb, 0))
 +		if (tcp_small_queue_check(sk, skb, 0)) {
-+			pr_debug("%llu [%s] 8", NOW, __func__);
++			pr_debug("%llu sport: %hu [%s] 8", NOW, SPORT(sk), __func__);
  			break;
 +		}
  
 -		if (unlikely(tcp_transmit_skb(sk, skb, 1, gfp)))
 +		if (unlikely(tcp_transmit_skb(sk, skb, 1, gfp))) {
-+			pr_debug("%llu [%s] 9", NOW, __func__);
++			pr_debug("%llu sport: %hu [%s] 9", NOW, SPORT(sk), __func__);
  			break;
 +		}
  
  repair:
  		/* Advance the send_head.  This one is sent out.
-@@ -2353,10 +2440,20 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2353,10 +2445,20 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  		tcp_minshall_update(tp, mss_now, skb);
  		sent_pkts += tcp_skb_pcount(skb);
  
 -		if (push_one)
 +		if (push_one) {
-+			pr_debug("%llu [%s] 10", NOW, __func__);
++			pr_debug("%llu sport: %hu [%s] 10", NOW, SPORT(sk), __func__);
  			break;
 +		}
  	}
  
 +	if (!tcp_send_head(sk)) {
-+		pr_debug("%llu [%s] no skb in queue, sent %u\n",
-+			 NOW, __func__, sent_pkts);
++		pr_debug("%llu sport: %hu [%s] no skb in queue, sent %u\n",
++			 NOW, SPORT(sk), __func__, sent_pkts);
 +	}
 +
 +	if (ca_ops->segments_sent && notify)
@@ -429,15 +434,16 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
  	if (is_rwnd_limited)
  		tcp_chrono_start(sk, TCP_CHRONO_RWND_LIMITED);
  	else
-@@ -2450,6 +2547,7 @@ void tcp_send_loss_probe(struct sock *sk)
+@@ -2450,6 +2552,8 @@ void tcp_send_loss_probe(struct sock *sk)
  	if (skb) {
  		if (tcp_snd_wnd_test(tp, skb, mss)) {
  			pcount = tp->packets_out;
-+			pr_debug("%llu [tcp_send_loss_probe]\n", NOW);
++			pr_debug("%llu sport: %hu [%s]\n",
++				 NOW, SPORT(sk), __func__);
  			tcp_write_xmit(sk, mss, TCP_NAGLE_OFF, 2, GFP_ATOMIC);
  			if (tp->packets_out > pcount)
  				goto probe_sent;
-@@ -2525,9 +2623,13 @@ void tcp_push_one(struct sock *sk, unsigned int mss_now)
+@@ -2525,9 +2629,15 @@ void tcp_push_one(struct sock *sk, unsigned int mss_now)
  {
  	struct sk_buff *skb = tcp_send_head(sk);
  
@@ -446,22 +452,25 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
 +	if (!skb || skb->len < mss_now)
 +		return;
  
-+	pr_debug("%llu [tcp_push_one] Pushing directly\n", NOW);
++	pr_debug("%llu sport: %hu [%s] Pushing directly\n",
++		 NOW, SPORT(sk), __func__);
  	tcp_write_xmit(sk, mss_now, TCP_NAGLE_PUSH, 1, sk->sk_allocation);
-+	pr_debug("%llu [tcp_push_one] End of untimed push\n", NOW);
++	pr_debug("%llu sport: %hu [%s] End of untimed push\n",
++		 NOW, SPORT(sk), __func__);
  }
  
  /* This function returns the amount that we can raise the
-@@ -2878,6 +2980,8 @@ int __tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs)
+@@ -2878,6 +2988,9 @@ int __tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs)
  		err = tcp_transmit_skb(sk, skb, 1, GFP_ATOMIC);
  	}
  
-+	pr_debug("%llu [tcp_retransmit_skb] retransmit\n", NOW);
++	pr_debug("%llu sport: %hu [%s] retransmit\n",
++		 NOW, SPORT(sk), __func__);
 +
  	if (likely(!err)) {
  		TCP_SKB_CB(skb)->sacked |= TCPCB_EVER_RETRANS;
  	} else if (err != -EBUSY) {
-@@ -2922,8 +3026,12 @@ int tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs)
+@@ -2922,8 +3035,12 @@ int tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs)
   */
  void tcp_xmit_retransmit_queue(struct sock *sk)
  {
@@ -474,7 +483,7 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
  	struct sk_buff *skb;
  	struct sk_buff *hole = NULL;
  	u32 max_segs;
-@@ -2938,16 +3046,34 @@ void tcp_xmit_retransmit_queue(struct sock *sk)
+@@ -2938,16 +3055,34 @@ void tcp_xmit_retransmit_queue(struct sock *sk)
  		skb = tcp_write_queue_head(sk);
  	}
  
@@ -487,15 +496,15 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
 +		if (ca_ops->get_segs_per_round)
 +			pacing_allowed_segs = ca_ops->get_segs_per_round(sk);
 +	} else
-+		pr_debug("%llu [%s] timer running\n", NOW, __func__);
++		pr_debug("%llu sport: %hu [%s] timer running\n", NOW, SPORT(sk), __func__);
 +
  	max_segs = tcp_tso_segs(sk, tcp_current_mss(sk));
  	tcp_for_write_queue_from(skb, sk) {
  		__u8 sacked;
  		int segs;
  
-+		pr_debug("%llu [%s] allowed=%u sent=%u, inflight=%u, cwnd=%u\n",
-+			 NOW, __func__, pacing_allowed_segs, sent_pkts,
++		pr_debug("%llu sport: %hu [%s] allowed=%u sent=%u, inflight=%u, cwnd=%u\n",
++			 NOW, SPORT(sk), __func__, pacing_allowed_segs, sent_pkts,
 +			 tcp_packets_in_flight(tp), tp->snd_cwnd);
 +
  		if (skb == tcp_send_head(sk))
@@ -504,13 +513,13 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
 -		if (tcp_pacing_check(sk))
 +		if (tcp_needs_internal_pacing(sk) &&
 +		    sent_pkts >= pacing_allowed_segs) {
-+			pr_debug("%llu [%s] BREAK for sent\n", NOW, __func__);
++			pr_debug("%llu sport: %hu [%s] BREAK for sent\n", NOW, SPORT(sk), __func__);
  			break;
 +		}
  
  		/* we could do better than to assign each time */
  		if (!hole)
-@@ -2995,7 +3121,11 @@ void tcp_xmit_retransmit_queue(struct sock *sk)
+@@ -2995,7 +3130,11 @@ void tcp_xmit_retransmit_queue(struct sock *sk)
  			inet_csk_reset_xmit_timer(sk, ICSK_TIME_RETRANS,
  						  inet_csk(sk)->icsk_rto,
  						  TCP_RTO_MAX);
@@ -522,31 +531,34 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
  }
  
  /* We allow to exceed memory limits for FIN packets to expedite
-@@ -3088,6 +3218,7 @@ void tcp_send_active_reset(struct sock *sk, gfp_t priority)
+@@ -3088,6 +3227,8 @@ void tcp_send_active_reset(struct sock *sk, gfp_t priority)
  			     TCPHDR_ACK | TCPHDR_RST);
  	tcp_mstamp_refresh(tcp_sk(sk));
  	/* Send it off. */
-+	pr_debug("%llu [tcp_send_active_reset]\n", NOW);
++	pr_debug("%llu sport: %hu [%s]\n",
++		 NOW, SPORT(sk), __func__);
  	if (tcp_transmit_skb(sk, skb, 0, priority))
  		NET_INC_STATS(sock_net(sk), LINUX_MIB_TCPABORTFAILED);
  }
-@@ -3124,6 +3255,7 @@ int tcp_send_synack(struct sock *sk)
+@@ -3124,6 +3265,8 @@ int tcp_send_synack(struct sock *sk)
  		TCP_SKB_CB(skb)->tcp_flags |= TCPHDR_ACK;
  		tcp_ecn_send_synack(sk, skb);
  	}
-+	pr_debug("%llu [tcp_send_synack]\n", NOW);
++	pr_debug("%llu sport: %hu [%s]\n",
++		 NOW, SPORT(sk), __func__);
  	return tcp_transmit_skb(sk, skb, 1, GFP_ATOMIC);
  }
  
-@@ -3403,6 +3535,7 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
+@@ -3403,6 +3546,8 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
  	if (syn_data->len)
  		tcp_chrono_start(sk, TCP_CHRONO_BUSY);
  
-+	pr_debug("%llu [tcp_send_syn_data]\n", NOW);
++	pr_debug("%llu sport: %hu [%s]\n",
++		 NOW, SPORT(sk), __func__);
  	err = tcp_transmit_skb(sk, syn_data, 1, sk->sk_allocation);
  
  	syn->skb_mstamp = syn_data->skb_mstamp;
-@@ -3428,6 +3561,7 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
+@@ -3428,6 +3573,7 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
  	/* Send a regular SYN with Fast Open cookie request option */
  	if (fo->cookie.len > 0)
  		fo->cookie.len = 0;
@@ -554,36 +566,40 @@ index 40f7c8ee9ba6..2c36b3e85da8 100644
  	err = tcp_transmit_skb(sk, syn, 1, sk->sk_allocation);
  	if (err)
  		tp->syn_fastopen = 0;
-@@ -3466,6 +3600,7 @@ int tcp_connect(struct sock *sk)
+@@ -3466,6 +3612,8 @@ int tcp_connect(struct sock *sk)
  	tcp_ecn_send_syn(sk, buff);
  
  	/* Send off SYN; include data in Fast Open. */
-+	pr_debug("%llu [tcp_connect]\n", NOW);
++	pr_debug("%llu sport: %hu [%s]\n",
++		 NOW, SPORT(sk), __func__);
  	err = tp->fastopen_req ? tcp_send_syn_data(sk, buff) :
  	      tcp_transmit_skb(sk, buff, 1, sk->sk_allocation);
  	if (err == -ECONNREFUSED)
-@@ -3585,6 +3720,7 @@ void tcp_send_ack(struct sock *sk)
+@@ -3585,6 +3733,8 @@ void tcp_send_ack(struct sock *sk)
  	skb_set_tcp_pure_ack(buff);
  
  	/* Send it off, this clears delayed acks for us. */
-+	pr_debug("%llu [tcp_send_ack]\n", NOW);
++	pr_debug("%llu sport: %hu [%s]\n",
++		 NOW, SPORT(sk), __func__);
  	tcp_transmit_skb(sk, buff, 0, (__force gfp_t)0);
  }
  EXPORT_SYMBOL_GPL(tcp_send_ack);
-@@ -3619,6 +3755,8 @@ static int tcp_xmit_probe_skb(struct sock *sk, int urgent, int mib)
+@@ -3619,6 +3769,9 @@ static int tcp_xmit_probe_skb(struct sock *sk, int urgent, int mib)
  	 */
  	tcp_init_nondata_skb(skb, tp->snd_una - !urgent, TCPHDR_ACK);
  	NET_INC_STATS(sock_net(sk), mib);
 +
-+	pr_debug("%llu [tcp_xmit_probe_skb]\n", NOW);
++	pr_debug("%llu sport: %hu [%s]\n",
++		 NOW, SPORT(sk), __func__);
  	return tcp_transmit_skb(sk, skb, 0, (__force gfp_t)0);
  }
  
-@@ -3664,6 +3802,7 @@ int tcp_write_wakeup(struct sock *sk, int mib)
+@@ -3664,6 +3817,8 @@ int tcp_write_wakeup(struct sock *sk, int mib)
  			tcp_set_skb_tso_segs(skb, mss);
  
  		TCP_SKB_CB(skb)->tcp_flags |= TCPHDR_PSH;
-+		pr_debug("%llu [tcp_write_wakeup]\n", NOW);
++		pr_debug("%llu sport: %hu [%s]\n", 
++			 NOW, SPORT(sk), __func__);
  		err = tcp_transmit_skb(sk, skb, 1, GFP_ATOMIC);
  		if (!err)
  			tcp_event_new_data_sent(sk, skb);
