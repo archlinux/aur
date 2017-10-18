@@ -1,3 +1,5 @@
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=newmat  
 pkgver=10
 pkgrel=1
