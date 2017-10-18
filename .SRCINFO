@@ -1,0 +1,36 @@
+pkgbase = python2-requests-2.13.0
+	pkgdesc = Python HTTP for Humans
+	pkgver = 2.13.0
+	pkgrel = 1
+	url = https://github.com/cprussin/python2-requests-2.13.0
+	arch = any
+	license = Apache
+	checkdepends = python-pytest-httpbin
+	checkdepends = python2-pytest-httpbin
+	checkdepends = python-pytest-mock
+	checkdepends = python2-pytest-mock
+	checkdepends = python-pysocks
+	checkdepends = python2-pysocks
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-chardet
+	makedepends = python2-chardet
+	makedepends = python-urllib3
+	makedepends = python2-urllib3
+	makedepends = python-idna
+	makedepends = python2-idna
+	provides = python2-requests
+	conflicts = python2-requests
+	source = python2-requests-2.13.0-2.13.0.tar.gz::https://github.com/kennethreitz/requests/archive/v2.13.0.tar.gz
+	source = certs.patch
+	sha512sums = d39d0a50b05940175f0a6b7383d98c6882e28ccb23f84f25b3adc7527fa162f767dde02a67a11e82dc90e8482bd0d60c0efd8f27a73231e39d9b01b9e1d191b1
+	sha512sums = 2918908b0595e409bc6c568c797c32a1f479bdd32eddcbe428e21b10f38291574f22ea7fcac17abb69622ea14cb1b22106fd7441e5ca33fe808bc25975c91b56
+
+pkgname = python2-requests-2.13.0
+	depends = python2-urllib3
+	depends = python2-chardet
+	depends = python2-idna
+	optdepends = python2-ndg-httpsclient: HTTPS requests with SNI support
+	optdepends = python2-grequests: asynchronous requests with gevent
+	optdepends = python2-pysocks: SOCKS proxy support
+
