@@ -1,7 +1,7 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 
-_gamepkg=RimWorldAlpha17Linux.zip
-_pkg_subver=1546  # see ${srcdir}/Version.txt
+_gamepkg=RimWorldAlpha17bLinux.zip
+_pkg_subver=1557  # see ${srcdir}/Version.txt
 
 pkgname=rimworld
 pkgver=0.17.${_pkg_subver}
