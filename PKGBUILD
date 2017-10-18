@@ -2,11 +2,12 @@
 _pkgname=dontpanic
 pkgname=${_pkgname}-latest
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 #epoch=1
 pkgdesc="Dontpanic is a python app to look for any movie or serie and watch them in 'streaming'. It looks like popcorntime, but doesn't depend of a centralized api."
 arch=(any)
-url=http://3hg.toile-libre.org/dontpanic/index.html
+#url=http://3hg.toile-libre.org/dontpanic/index.html
+url=https://3hg.fr/dontpanic/index.html
 license=(GPL3)
 
 depends=('python-bottle' 'python-requests' 'python-beautifulsoup4' 'sqlite' 'libtorrent-rasterbar')
@@ -16,13 +17,15 @@ makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("${_pkgname}::http://3hg.toile-libre.org/dontpanic/downloads/dontpanic-latest.tgz")
-	
+#source=("${_pkgname}::http://3hg.toile-libre.org/dontpanic/downloads/dontpanic-latest.tgz")
+source=("${_pkgname}::https://3hg.fr/dontpanic/downloads/dontpanic-latest.tgz")
+
 sha256sums=('a79fc5d008cfc1f46da430ea56c19c39ab4128a8c93d95554b77b395dede54c3')
 
 pkgver() {
 	 #wget -qO- http://3hg.toile-libre.org/dontpanic/version
-	 curl -s http://3hg.toile-libre.org/dontpanic/version
+	 #curl -s http://3hg.toile-libre.org/dontpanic/version
+         curl -s https://3hg.fr/dontpanic/version
 }
 
 package() {

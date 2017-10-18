@@ -1,8 +1,8 @@
 pkgbase = dontpanic-latest
 	pkgdesc = Dontpanic is a python app to look for any movie or serie and watch them in 'streaming'. It looks like popcorntime, but doesn't depend of a centralized api.
 	pkgver = 2.0
-	pkgrel = 1
-	url = http://3hg.toile-libre.org/dontpanic/index.html
+	pkgrel = 2
+	url = https://3hg.fr/dontpanic/index.html
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -14,7 +14,7 @@ pkgbase = dontpanic-latest
 	optdepends = python-cherrypy: for server mode
 	provides = dontpanic
 	conflicts = dontpanic
-	source = dontpanic::http://3hg.toile-libre.org/dontpanic/downloads/dontpanic-latest.tgz
+	source = dontpanic::https://3hg.fr/dontpanic/downloads/dontpanic-latest.tgz
 	sha256sums = a79fc5d008cfc1f46da430ea56c19c39ab4128a8c93d95554b77b395dede54c3
 
 pkgname = dontpanic-latest
