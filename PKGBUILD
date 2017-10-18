@@ -1,6 +1,6 @@
 # Maintainer: Sagacious Zu <sredshaw@gmail.com>
 
-pkgname=victory-gtk-theme-git
+pkgname=victory-gtk-theme
 _gitname=victory-gtk-theme
 pkgver=r30.b52e1a2
 pkgrel=1
