@@ -1,4 +1,4 @@
-pkgbase = victory-gtk-theme-git
+pkgbase = victory-gtk-theme
 	pkgdesc = A flat, minimalistic, and bright gtk theme.
 	pkgver = r30.b52e1a2
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = victory-gtk-theme-git
 	source = git+https://github.com/newhoa/victory-gtk-theme.git
 	md5sums = SKIP
 
-pkgname = victory-gtk-theme-git
+pkgname = victory-gtk-theme
 
