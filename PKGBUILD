@@ -3,7 +3,7 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=4.4.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -27,7 +27,6 @@ sha512sums=("11bb99fd287ef961e6f57e97224d46b5d4d80f21b13f0a0f61c095f4fcf3df9f45a
 	    "4875f25a76731e43c4a08f7c2b557d337224c34ddf2a9b0348c4bf325bfcfc11c6b4f834d5c7da486957ec0380cfaaf45b83dd920e6e660fb6f4d1f3857fd787")
 
 prepare() {
-
   # Unfortunately, v8 depot_tools still requires python2
   mkdir -p path
   ln -sf /usr/bin/python2 path/python
@@ -52,6 +51,8 @@ prepare() {
 
   # patching v8 compile error
   sed -i 's/-fPIC/-Wno-unused-function -Wno-unused-variable -fPIC/g' core/Common/3dParty/v8/build.sh
+  # force system binutils, see: https://bbs.archlinux.org/viewtopic.php?id=209871
+  sed -i 's/-Dclang=0/"-Dclang=0 -Dlinux_use_bundled_gold=0"/g' core/Common/3dParty/v8/build.sh
 
   # python2 dependency for gclient
   sed -i '13iexport PATH="'${srcdir}'/path:$PATH"' core/Common/3dParty/v8/fetch.sh
@@ -59,12 +60,11 @@ prepare() {
   sed -i '3iexport PATH="'${srcdir}'/path:$PATH"' core/Common/3dParty/v8/build.sh
 
   # patching core/desktopeditor/docbuilder file
-  # patch -p0 -i ../docbuilder_p.patch
+  patch -p0 -i ../docbuilder_p.patch
 }
 
 build() {
   cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}"
-
 
   # Download & build third party modules 
   cd core/Common/3dParty
@@ -84,7 +84,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/DocumentServer"
+  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}"
   cd server
   make install
 }
