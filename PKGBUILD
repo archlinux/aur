@@ -5,8 +5,8 @@
 
 _pkgname=qtox
 pkgname=qtox-git
-pkgver=1.11.0.r162.gce0c1020
-pkgrel=2
+pkgver=1.12.0.r46.g6479b2c0
+pkgrel=1
 pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guidelines.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/qTox/qTox'
