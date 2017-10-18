@@ -2,7 +2,7 @@
 # Contributor: Ricardo Band <email@ricardo.band>
 pkgname=storageexplorer
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Azure Storage Explorer (Preview) is a standalone app from Microsoft that allows you to easily work with Azure Storage data on Windows, macOS and Linux."
 arch=(x86_64)
 url="http://storageexplorer.com/"
@@ -18,18 +18,22 @@ sha256sums=('c28ec06dc0bd08b6d8acc8677c12a99249340ec720de832a3f658f9cf7f52c0d'
 package() {
     install -dm 755 "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "Azure Storage Explorer EULA.rtf" "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "Credits_43.0.2357.65.html" "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "README" "${pkgdir}/opt/StorageExplorer/"
-    install -m 755 "StorageExplorer" "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "ThirdPartyNotices.txt" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "blink_image_resources_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "content_resources_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "content_shell.pak" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "icudtl.dat" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "libffmpeg.so" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "libnode.so" "${pkgdir}/opt/StorageExplorer/"
     cp -r "locales" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "natives_blob.bin" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "pdf_viewer_resources.pak" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "README" "${pkgdir}/opt/StorageExplorer/"
     cp -r "resources" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "snapshot_blob.bin" "${pkgdir}/opt/StorageExplorer/"
+    install -m 755 "StorageExplorer" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "ThirdPartyNotices.txt" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "ui_resources_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "views_resources_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
 
     install -dm 755 "${pkgdir}/usr/bin"
     ln -s "/opt/StorageExplorer/StorageExplorer" "${pkgdir}/usr/bin/StorageExplorer"
