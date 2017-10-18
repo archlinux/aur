@@ -3,7 +3,7 @@
 
 pkgname=vkquake-git
 _gitname=vkquake
-pkgver=0.95.r2.g182167f
+pkgver=0.96.2.r93.gd575d18
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support (git-latest)."
 arch=('i686' 'x86_64')
@@ -19,10 +19,12 @@ depends=(
 install=$pkgname.install
 source=('git+https://github.com/Novum/vkquake.git'
 	'vkquake.desktop'
-	'vkquake.png')
+	'vkquake.png'
+	'vkquake.svg')
 md5sums=('SKIP'
-	 'c0180462ed8dcced29e7878e1d940824'
-	 'ffc3103326b0378af770b1318cf4e7e6')
+	 '202e1efb0491aafcc9de6f44295dc272'
+	 'ffc3103326b0378af770b1318cf4e7e6'
+	 'd6b9553906db3cbadfbc40aafafa2b5d')
 
 pkgver() {
 
@@ -69,6 +71,7 @@ package() {
   # supplemental files
   install -Dm644 "$srcdir/$_gitname.desktop" "$pkgdir/usr/share/applications/vkquake.desktop"
   install -Dm644 "$srcdir/$_gitname.png" "$pkgdir/usr/share/pixmaps/vkquake.png"
+  install -Dm644 "$srcdir/$_gitname.svg" "$pkgdir/usr/share/icons/vkquake.svg"
   install -Dm644 readme.md "$pkgdir"/usr/share/doc/vkquake/readme.md
 
 }

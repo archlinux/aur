@@ -2,7 +2,7 @@
 Name=vkquake
 Comment=Port of Quake I to the Vulkan API
 Exec=/usr/bin/vkquake
-Icon=/usr/share/pixmaps/vkquake.png
+Icon=vkquake
 Terminal=false
 Type=Application
 Categories=Game;
