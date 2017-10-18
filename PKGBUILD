@@ -1,6 +1,6 @@
 # Maintainer: Moritz Schoenherr <moritz.schoenherr[at]gmail[dot]com>
 pkgname=crawl
-pkgver=0.18.1
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="Craw stonesoup, curses version"
 url="http://crawl.develz.org/"
@@ -27,7 +27,7 @@ build() {
 
   cd "${srcdir}/${pkgname}/crawl-ref/source"
 
-  make prefix="${pkgdir}/usr"
+  make CFLAGS="-fPIC" prefix="${pkgdir}/usr"
 }
 
 package() {
