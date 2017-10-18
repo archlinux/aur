@@ -5,7 +5,7 @@
 
 pkgname=betterdiscord
 pkgver=0.2.82.r450.1a6648eb
-pkgrel=2
+pkgrel=0
 pkgdesc='Discord extension that introduces new features like BTTV emotes and plugin support.'
 arch=('any')
 url='https://betterdiscord.net/home/'
