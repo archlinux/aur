@@ -2,7 +2,7 @@
 
 pkgname=remco
 pkgver=0.10.0
-pkgrel=4
+pkgrel=5
 pkgdesc="remco is a lightweight configuration management tool"
 arch=('x86_64' 'i686')
 url="http://heavyhorst.github.io/$pkgname/"
@@ -35,9 +35,9 @@ build() {
 package() {
   msg2 'Installing...'
 
-  install -Dm644 config.toml "$pkgdir/etc/$pkgname/config.toml"
+  install -Dm644 ${srcdir}/config.toml "$pkgdir/etc/$pkgname/config.toml"
   mkdir -p "$pkgdir/etc/$pkgname/resource.d"
-  install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -Dm644 ${srcdir}/${pkgname}.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 
   cd "$pkgname-$pkgver"
 
