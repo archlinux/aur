@@ -1,0 +1,12 @@
+pkgbase = fontopia
+	pkgdesc = Text-based vt font editor
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://www.gnu.org/software/fontopia/
+	changelog = ChangeLog
+	license = GPL
+	source = ftp://ftp.gnu.org/gnu/fontopia/fontopia-1.7.tar.gz
+	md5sums = 4afff2ab0330679e018fa08deea1b2d4
+
+pkgname = fontopia
+
