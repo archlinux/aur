@@ -1,0 +1,23 @@
+pkgbase = perl-webservice-ils
+	pkgdesc = Perl/CPAN Module WebService::ILS: Standardised library discovery/circulation services
+	pkgver = 0.16
+	pkgrel = 1
+	url = https://metacpan.org/release/WebService-ILS
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-tiny
+	depends = perl-http-message
+	depends = perl-hash-merge
+	depends = perl-json
+	depends = perl-modern-perl
+	depends = perl-uri
+	depends = perl-libwww
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SR/SRDJAN/WebService-ILS-0.16.tar.gz
+	md5sums = 4892e70cfa21a80d2edc210dd677bee6
+	sha512sums = 459f3078e0b502377605f1f4f9886f7cc2ca26fc4edaa02dcb54c8d458d0a57ad28678c0ad4be84b13c768efb68be40a8d8bead88106affc4929b20cba8df928
+
+pkgname = perl-webservice-ils
+
