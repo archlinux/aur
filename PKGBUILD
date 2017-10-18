@@ -2,14 +2,18 @@
 
 pkgname=remco
 pkgver=0.10.0
-pkgrel=5
+pkgrel=6
 pkgdesc="remco is a lightweight configuration management tool"
 arch=('x86_64' 'i686')
 url="http://heavyhorst.github.io/$pkgname/"
 license=('MIT')
 makedepends=('go')
 options=('!strip' '!emptydirs')
-source=("https://github.com/HeavyHorst/$pkgname/archive/v$pkgver.tar.gz")
+backup=("etc/${pkgname}/config.toml")
+source=("https://github.com/HeavyHorst/$pkgname/archive/v$pkgver.tar.gz"
+"config.toml"
+"$pkgname.service"
+)
 sha256sums=('86031786a2e274e4ea7c06b156fbd674cf89423e6558644eb943364e39240ba0')
 
 build() {
@@ -36,7 +40,7 @@ package() {
   msg2 'Installing...'
 
   install -Dm644 ${srcdir}/config.toml "$pkgdir/etc/$pkgname/config.toml"
-  mkdir -p "$pkgdir/etc/$pkgname/resource.d"
+  install -dm755 "$pkgdir/etc/$pkgname/resource.d"
   install -Dm644 ${srcdir}/${pkgname}.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 
   cd "$pkgname-$pkgver"
@@ -44,7 +48,7 @@ package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  mkdir -p "$pkgdir/var/run/$pkgname"
+  install -dm755 "$pkgdir/var/run/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:

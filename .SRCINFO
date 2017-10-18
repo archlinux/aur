@@ -1,7 +1,7 @@
 pkgbase = remco
 	pkgdesc = remco is a lightweight configuration management tool
 	pkgver = 0.10.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://heavyhorst.github.io/remco/
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,10 @@ pkgbase = remco
 	makedepends = go
 	options = !strip
 	options = !emptydirs
+	backup = etc/remco/config.toml
 	source = https://github.com/HeavyHorst/remco/archive/v0.10.0.tar.gz
+	source = config.toml
+	source = remco.service
 	sha256sums = 86031786a2e274e4ea7c06b156fbd674cf89423e6558644eb943364e39240ba0
 
 pkgname = remco
