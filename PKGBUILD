@@ -2,13 +2,14 @@
 # Contributor: Ondrej Kucera <ondrej.kucera@centrum.cz>
 # Contributor: Andrea Scarpino <bash.lnx@gmail.com>
 
-pkgname=('jdk8-docs' 'javafx8-docs')
+pkgname=jdk8-docs
 _major=8
 _minor=152
 _build=b16
 _hash=aa0333dd3019491ca4f6ddbe78cdb6d0
 pkgver=${_major}u${_minor}
 pkgrel=1
+pkgdesc="Documentation for Oracle Java $_major Development Kit"
 arch=('any')
 url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
 license=('custom:Oracle')
@@ -25,23 +26,13 @@ md5sums=('f76e105b7fc62b0ae143308e05e1a92a'
 
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
-package_jdk8-docs() {
-  pkgdesc="Documentation for Oracle Java $_major Development Kit"
-  
+package() {  
+  # Create Dirs
+  install -d "$pkgdir"/usr/share/doc/java$_major/javafx/
+
   # Install
-  install -d "$pkgdir"/usr/share/doc/java$_major/
   mv docs/* "$pkgdir"/usr/share/doc/java$_major/
-
-  # License
-  install -Dm644 LICENSE-Documentation.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-}
-
-package_javafx8-docs() {
-  pkgdesc="Documentation for Oracle JavaFX $_major Development Kit"
-  
-  # Install
-  install -d "$pkgdir"/usr/share/doc/java/javafx$_major/
-  mv api "$pkgdir"/usr/share/doc/java/javafx$_major/
+  mv api "$pkgdir"/usr/share/doc/java$_major/javafx/
 
   # License
   install -Dm644 LICENSE-Oracle-Legal-Notices.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE

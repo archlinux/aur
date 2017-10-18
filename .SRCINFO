@@ -1,4 +1,5 @@
 pkgbase = jdk8-docs
+	pkgdesc = Documentation for Oracle Java 8 Development Kit
 	pkgver = 8u152
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -16,8 +17,4 @@ pkgbase = jdk8-docs
 	md5sums = 3137397f4dba13f4a79157819af583a3
 
 pkgname = jdk8-docs
-	pkgdesc = Documentation for Oracle Java 8 Development Kit
-
-pkgname = javafx8-docs
-	pkgdesc = Documentation for Oracle JavaFX 8 Development Kit
 
