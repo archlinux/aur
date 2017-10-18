@@ -7,7 +7,7 @@
 android_arch=mips
 _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
-pkgver=5.9.1
+pkgver=5.9.2
 pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
@@ -52,7 +52,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:3}/${pkgver}/single/${_pkgfqn}.tar.xz"
         "JavaScriptCore.pri.patch"
         "geoservices.pro.patch")
-sha256sums=('7b41a37d4fe5e120cdb7114862c0153f86c07abbec8db71500443d2ce0c89795'
+sha256sums=('6c6171a4d1ea3fbd4212d6a04899650218583df3ec583a8a6a4a589fe18620ff'
             '133dad6c8d0bedaa5d561be26b2f7185e671900c50d11476ecb2e2ef6792d455'
             'f0770923c55725417b7f334b7558371fc9833ae914b81a456d9beee7a3eeab8b')
 
