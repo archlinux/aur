@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Twine
+Comment=An open-source tool for telling interactive, nonlinear stories
+Exec=Twine
+Icon=twinejs
+Terminal=false
