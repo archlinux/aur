@@ -1,0 +1,11 @@
+#remco.toml
+
+################################################################
+# Global configuration
+################################################################
+log_level   = "debug"
+log_format  = "json"
+include_dir = "/etc/remco/resource.d/"
+pid_file    = "/var/run/remco/remco.pid"
+log_file    = "/var/log/remco.log"
+

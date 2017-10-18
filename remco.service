@@ -1,0 +1,10 @@
+[Unit]
+Description=remco is a lightweight configuration management tool
+
+[Service]
+ExecStart=/usr/bin/remco -config /etc/remco/config.toml
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

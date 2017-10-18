@@ -35,10 +35,16 @@ build() {
 package() {
   msg2 'Installing...'
 
+  install -Dm644 "$pkgname.toml" "$pkgdir/etc/$pkgname/$pkgname.toml"
+  mkdir -p "$pkgdir/etc/$pkgname/resource.d"
+  install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+
   cd "$pkgname-$pkgver"
 
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  mkdir -p "$pkgdir/var/run/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
