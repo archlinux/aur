@@ -1,6 +1,6 @@
 pkgbase = kwin-presentwindows-close
 	pkgdesc = An easy to use, but flexible, composited Window Manager
-	pkgver = 5.11.0
+	pkgver = 5.11.1
 	pkgrel = 1
 	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = i686
@@ -21,13 +21,13 @@ pkgbase = kwin-presentwindows-close
 	optdepends = qt5-virtualkeyboard: virtual keyboard support for kwin-wayland
 	provides = kwin
 	conflicts = kwin
-	source = https://download.kde.org/stable/plasma/5.11.0/kwin-5.11.0.tar.xz
-	source = https://download.kde.org/stable/plasma/5.11.0/kwin-5.11.0.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/5.11.1/kwin-5.11.1.tar.xz
+	source = https://download.kde.org/stable/plasma/5.11.1/kwin-5.11.1.tar.xz.sig
 	source = presentwindows-close.patch
 	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
 	validpgpkeys = 348C8651206633FD983A8FC4DEACEA00075E1D76
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
-	sha256sums = fa1b12470f639858ce3d07b820c8336c643f52bcea71fca06f9191d97e1def05
+	sha256sums = 154387df916451236e9c6fb0ebabd59ddfe74c948360bbe97968e94bd745ccaa
 	sha256sums = SKIP
 	sha256sums = a42e050f873632240595026b0f0f98ce4e109dd36a7768ba6b361d1b4854aefb
 
