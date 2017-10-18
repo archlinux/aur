@@ -1,7 +1,7 @@
 # Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname=vim-devicons
-pkgver=0.8.5
-pkgrel=3
+pkgver=0.9.3
+pkgrel=1
 pkgdesc='Adds file type glyphs/icons to many popular Vim plugins such as: NERDTree, vim-airline, unite, vim-startify and many more'
 arch=('any')
 url='https://github.com/ryanoasis/vim-devicons'
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('vim')
 groups=('vim-plugins')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ryanoasis/vim-devicons/archive/v${pkgver}.tar.gz")
-sha512sums=('5212116d59d438ade193a4c82255e51c5be04e662765c9ddda372480c46680c3ddee726fa8fa8b8d1b3047e9c1435144e9c0847c63ee6ebd3c4eee943780ed37')
+sha512sums=('a078a084dbcc5325da2468ebbe9a50d55eeade8a469e02929811d005e93c50b1fc2eb3df6a319b09c683540bd8ffaede1014b1bab98b25cedf1999530b89734e')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
