@@ -1,13 +1,16 @@
-# Maintainer: Alexey D. <lq07829icatm@rambler.ru>
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-resources-git
-pkgver=v17.05.29
+pkgver=17.06.02.0.gb261bbc
 pkgrel=1
-pkgdesc="Additional iconsets, themes and sounds for Psi+"
+pkgdesc="Additional iconsets, themes and sounds for Psi+ (Qt5 build)"
 arch=('any')
 url="http://psi-plus.com"
 license=('GPL2')
 depends=('psi-plus-git')
+provides=("psi-plus-resources-git")
+conflicts=("psi-plus-resources-git")
 options=('!strip' '!zipman')
 source=('psi-plus-resources::git://github.com/psi-plus/resources.git')
 md5sums=('SKIP')
@@ -15,12 +18,14 @@ md5sums=('SKIP')
 pkgver() {
 	cd psi-plus-resources
 
-	git describe --tags | cut -d - -f 1-2 --output-delimiter=.
+	git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
 package() {
 	cd psi-plus-resources
-
 	install -v -dm755 "$pkgdir/usr/share/psi-plus/"
 	cp -rv * "$pkgdir/usr/share/psi-plus/"
+	# Next files are alreay present in psi base package
+	rm -rf "$pkgdir"/usr/share/psi-plus/sound
+	rm -rf "$pkgdir"/usr/share/psi-plus/themes/chatview
 }
