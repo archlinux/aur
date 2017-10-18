@@ -1,0 +1,44 @@
+# Maintainer: Stas Alekseev <stas.alekseev@gmail.com>
+
+pkgname=remco
+pkgver=0.10.0
+pkgrel=1
+pkgdesc="remco is a lightweight configuration management tool"
+arch=('x86_64' 'i686')
+url="http://heavyhorst.github.io/$pkgname/"
+license=('MIT')
+makedepends=('go')
+options=('!strip' '!emptydirs')
+source=("https://github.com/HeavyHorst/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('86031786a2e274e4ea7c06b156fbd674cf89423e6558644eb943364e39240ba0')
+
+build() {
+  msg2 'Setting GOPATH'
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  mkdir -p "${srcdir}/gopath"
+  export GOPATH="${srcdir}/gopath"
+
+  msg2 'Getting go dep tool'
+  go get github.com/golang/dep/cmd/dep
+
+  mkdir -p "${GOPATH}/src/github.com/HeavyHorst"
+  ln -sf "$(pwd)" "${GOPATH}/src/github.com/HeavyHorst/${pkgname}"
+  cd "${GOPATH}/src/github.com/HeavyHorst/${pkgname}"
+
+  msg2 'Fetching dependencies...'
+  "$GOPATH/bin/dep" ensure
+
+  msg2 'Compiling...'
+  CGO_ENABLED=0 go build -o remco -a -tags netgo -ldflags "-w -X 'main.version=$pkgver'" "github.com/HeavyHorst/${pkgname}/cmd/remco"
+}
+
+package() {
+  msg2 'Installing...'
+
+  cd "$pkgname-$pkgver"
+
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+# vim:set ts=2 sw=2 et:
