@@ -1,0 +1,14 @@
+pkgbase = albert-copyq
+	pkgdesc = Albert extension to access copyq clipboard history
+	pkgver = 1.5.r0.55a0e1b
+	pkgrel = 1
+	url = https://github.com/BarbUk/external
+	arch = any
+	license = GPL
+	depends = albert
+	depends = copyq
+	source = git+https://github.com/BarbUk/external
+	md5sums = SKIP
+
+pkgname = albert-copyq
+
