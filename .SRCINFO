@@ -29,7 +29,7 @@ pkgbase = syscoin-git
 	depends = zeromq
 	optdepends = miniupnpc: Firewall-jumping support
 	optdepends = zeromq: Allows generating ZMQ notifications
-	source = git+https://github.com/syscoin/syscoin2.git#tag=2.1.4
+	source = git+https://github.com/syscoin/syscoin2.git#tag=2.1.5
 	sha256sums = SKIP
 
 pkgname = syscoin-git
