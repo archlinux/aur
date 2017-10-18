@@ -1,0 +1,26 @@
+diff --git a/src/groupchatdlg.cpp b/src/groupchatdlg.cpp
+index 294bee2..6473998 100644
+--- a/src/groupchatdlg.cpp
++++ b/src/groupchatdlg.cpp
+@@ -1508,7 +1508,7 @@ void GCMainDlg::goConn()
+ 		QString nick = d->self;
+ 
+ 		if(!account()->groupChatJoin(host, room, nick, d->password)) {
+-			appendSysMsg(tr("Error: You are in or joining this room already!"), true);
++//			appendSysMsg(tr("Error: You are in or joining this room already!"), true);
+ 			d->state = Private::Idle;
+ 		}
+ 	}
+diff --git a/src/mucjoindlg.cpp b/src/mucjoindlg.cpp
+index 244c3e8..1a1d4e8 100644
+--- a/src/mucjoindlg.cpp
++++ b/src/mucjoindlg.cpp
+@@ -221,7 +221,7 @@ void MUCJoinDlg::doJoin(MucJoinReason r)
+ 
+ 
+ 	if (!account_->groupChatJoin(host, room, nick, pass, !ui_.ck_history->isChecked())) {
+-		QMessageBox::information(this, tr("Error"), tr("You are in or joining this room already!"));
++//		QMessageBox::information(this, tr("Error"), tr("You are in or joining this room already!"));
+ 		return;
+ 	}
+ 
