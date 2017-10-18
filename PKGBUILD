@@ -8,7 +8,7 @@ arch=('any')
 url='http://quvi.sourceforge.net/'
 license=('AGPL3')
 depends=('lua52-socket' 'lua52-bitop' 'lua52-expat' 'lua52-luajson')
-source=("http://downloads.sourceforge.net/sourceforge/quvi/${pkgname}-${pkgver}.tar.xz"{,.sig})
+source=("https://downloads.sourceforge.net/sourceforge/quvi/${pkgname}-${pkgver}.tar.xz"{,.sig})
 md5sums=('46ddfd887260a515199c2e1ba8c46d8a'
          'SKIP')
 validpgpkeys=('E220FCFF9EADBA326FD6B23BBF1D59CCAD00BE50')
