@@ -3,7 +3,7 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=4.4.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -16,7 +16,8 @@ source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-Documen
 	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/5408aee50a101bce6910af64136f5affaf858e9d.tar.gz"
 	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/a9b6455d7dbd61b0e756adc519d0e507e5a72429.tar.gz"
 	"web-apps-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps/archive/2fea60996d7a924f3ef6859f07c768133d590427.tar.gz"
-	"docbuilder_p.patch")
+	"docbuilder_p.patch"
+	"server_makefile.patch")
 sha512sums=("11bb99fd287ef961e6f57e97224d46b5d4d80f21b13f0a0f61c095f4fcf3df9f45a13fc41646e04c4cbb3b83ff985a9e9dd820754a7c6cf4a8e5661ecb8a5c42"
 	    "554bd86590a850cda0b0725e3864265d3d5ce408e8e84e48937ee7fd752aee68926fc9fbe8bbc647fc3f3396d2849ab8e361629b5407f5e88b63c9b14c6d7a24"
 	    "15c3581d517ff3b4bd80b008b661fd9cfe1d46da5935d6544f691188a8dab193c1b93712f29f351ca26ff22dc44166019b7d09b262a7072feb673844cf7969c1"
@@ -24,7 +25,9 @@ sha512sums=("11bb99fd287ef961e6f57e97224d46b5d4d80f21b13f0a0f61c095f4fcf3df9f45a
 	    "10af74017ac5e19aa6162f5d34cb3d3fb0b23cfb9c863cb2007efed5869041b496ec8cd1e5886880f125e91c63f496791fa1fec3b4b54672cb015824bdc37549"
 	    "21a71b80ecb597c1e50df7b79d05383c26ab3b6c98a7d582e9f1cde78a5724856f3312b690184e7191918004d2a7d2524d16f28694dc1cac4f22b9a258a6be8c"
 	    "c39af73262ff36b688d31f12d7ab26a64f3d1dd677a9e142d994a01d931bbfb575e0f6dc47651a3e68d3728c74a65958979c904675868e2953f34b971afbec4b"
-	    "4875f25a76731e43c4a08f7c2b557d337224c34ddf2a9b0348c4bf325bfcfc11c6b4f834d5c7da486957ec0380cfaaf45b83dd920e6e660fb6f4d1f3857fd787")
+	    "4875f25a76731e43c4a08f7c2b557d337224c34ddf2a9b0348c4bf325bfcfc11c6b4f834d5c7da486957ec0380cfaaf45b83dd920e6e660fb6f4d1f3857fd787"
+	    "38c56f32449ffda1c9ca9beba9d562a5361592e7d56eda48ee40d4d6dd4307ce6e821cbeda51cf660e44cfaae1c02255611d013d3f143a0a984a1c09973e7ad7")
+install="onlyoffice-documentserver.install"
 
 prepare() {
   # Unfortunately, v8 depot_tools still requires python2
@@ -61,6 +64,9 @@ prepare() {
 
   # patching core/desktopeditor/docbuilder file
   patch -p0 -i ../docbuilder_p.patch
+
+  # Patching Makefile to include DESTDIR variable
+  patch -p0 -i ../server_makefile.patch
 }
 
 build() {
@@ -86,5 +92,5 @@ build() {
 package() {
   cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}"
   cd server
-  make install
+  make DESTDIR=${pkgdir} install
 }

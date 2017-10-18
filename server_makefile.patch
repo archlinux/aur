@@ -1,0 +1,66 @@
+--- server/Makefile_orig	2017-10-18 18:45:17.300000003 +0000
++++ server/Makefile	2017-10-18 19:06:51.913333336 +0000
+@@ -127,36 +127,38 @@
+ 	rm -rf $(OUTPUT) $(GRUNT_FILES)
+ 
+ install:
+-	sudo adduser --quiet --home /var/www/onlyoffice --system --group onlyoffice
++	# adduser --quiet --home /usr/share/webapps/onlyoffice --system --group onlyoffice
+ 
+-	sudo mkdir -p /var/www/onlyoffice/documentserver
+-	sudo mkdir -p /var/log/onlyoffice/documentserver
+-	sudo mkdir -p /var/lib/onlyoffice/documentserver/App_Data
++	mkdir -p ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver
++	mkdir -p ${DESTDIR}/var/log/onlyoffice/documentserver
++	mkdir -p ${DESTDIR}/var/lib/onlyoffice/documentserver/App_Data
++	mkdir -p ${DESTDIR}/lib
+ 	
+-	sudo cp -fr -t /var/www/onlyoffice/documentserver build/* ../web-apps/deploy/*
+-	sudo mkdir -p /etc/onlyoffice/documentserver
+-	sudo mv /var/www/onlyoffice/documentserver/server/Common/config/* /etc/onlyoffice/documentserver
++	cp -fr -t ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver build/* ../web-apps/deploy/*
++	mkdir -p ${DESTDIR}/etc/onlyoffice/documentserver
++	mv ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/Common/config/* ${DESTDIR}/etc/onlyoffice/documentserver
+ 	
+-	sudo chown onlyoffice:onlyoffice -R /var/www/onlyoffice
+-	sudo chown onlyoffice:onlyoffice -R /var/log/onlyoffice
+-	sudo chown onlyoffice:onlyoffice -R /var/lib/onlyoffice
++	# sudo chown onlyoffice:onlyoffice -R /usr/share/webapps/onlyoffice
++	# sudo chown onlyoffice:onlyoffice -R /var/log/onlyoffice
++	# sudo chown onlyoffice:onlyoffice -R /var/lib/onlyoffice
+ 
+-	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libDjVuFile.so /lib/libDjVuFile.so
+-	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libdoctrenderer.so /lib/libdoctrenderer.so
+-	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libHtmlFile.so /lib/libHtmlFile.so
+-	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libHtmlRenderer.so /lib/libHtmlRenderer.so
+-	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libPdfReader.so /lib/libPdfReader.so
+-	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libPdfWriter.so /lib/libPdfWriter.so
+-	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libXpsFile.so /lib/libXpsFile.so
+-	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libUnicodeConverter.so /lib/libUnicodeConverter.so
+-	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libicudata.so.55 /lib/libicudata.so.55
+-	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libicuuc.so.55 /lib/libicuuc.so.55
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libDjVuFile.so ${DESTDIR}/lib/libDjVuFile.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libdoctrenderer.so ${DESTDIR}/lib/libdoctrenderer.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libHtmlFile.so ${DESTDIR}/lib/libHtmlFile.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libHtmlRenderer.so ${DESTDIR}/lib/libHtmlRenderer.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libPdfReader.so ${DESTDIR}/lib/libPdfReader.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libPdfWriter.so ${DESTDIR}/lib/libPdfWriter.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libXpsFile.so ${DESTDIR}/lib/libXpsFile.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libUnicodeConverter.so ${DESTDIR}/lib/libUnicodeConverter.so
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicudata.so.55 ${DESTDIR}/lib/libicudata.so.55
++	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicuuc.so.55 ${DESTDIR}/lib/libicuuc.so.55
++
++	# sudo -u onlyoffice "/usr/share/webapps/onlyoffice/documentserver/server/tools/AllFontsGen"\
++	# 	"/usr/share/fonts"\
++	# 	"/usr/share/webapps/onlyoffice/documentserver/sdkjs/common/AllFonts.js"\
++	# 	"/usr/share/webapps/onlyoffice/documentserver/sdkjs/common/Images"\
++	# 	"/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/font_selection.bin"
+ 
+-	sudo -u onlyoffice "/var/www/onlyoffice/documentserver/server/tools/AllFontsGen"\
+-		"/usr/share/fonts"\
+-		"/var/www/onlyoffice/documentserver/sdkjs/common/AllFonts.js"\
+-		"/var/www/onlyoffice/documentserver/sdkjs/common/Images"\
+-		"/var/www/onlyoffice/documentserver/server/FileConverter/bin/font_selection.bin"
+ uninstall:
+ 	sudo userdel onlyoffice
+ 	

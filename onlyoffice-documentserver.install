@@ -1,0 +1,16 @@
+post_install() {
+   getent passwd onlyoffice > /dev/null || adduser --quiet --home /usr/share/webapps/onlyoffice --system --group onlyoffice
+   chown onlyoffice:onlyoffice -R /usr/share/webapps/onlyoffice
+   chown onlyoffice:onlyoffice -R /var/log/onlyoffice
+   chown onlyoffice:onlyoffice -R /var/lib/onlyoffice
+   sudo -u onlyoffice "/usr/share/webapps/onlyoffice/documentserver/server/tools/AllFontsGen"\
+ 	"/usr/share/fonts"\
+ 	"/usr/share/webapps/onlyoffice/documentserver/sdkjs/common/AllFonts.js"\
+ 	"/usr/share/webapps/onlyoffice/documentserver/sdkjs/common/Images"\
+ 	"/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/font_selection.bin"
+}
+ 
+post_remove() {
+   userdel -rf onlyoffice
+   groupdel onlyoffice
+}
