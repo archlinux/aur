@@ -3,9 +3,9 @@
 
 pkgname=tor-git
 _branch=master
-#_branch=maint-0.2.6
-pkgver=0.3.2.1.alpha.26280
-pkgrel=2
+#_branch=maint-0.3.2
+pkgver=0.3.3.0.alpha.26402
+pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.torproject.org"
