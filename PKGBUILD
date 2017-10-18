@@ -7,7 +7,7 @@ pkgname=hdfview
 _pkgname=HDFView
 pkgver=2.14.0
 _pkgver=${pkgver%.0}
-pkgrel=3
+pkgrel=4
 pkgdesc="a GUI browser for hdf5 files"
 arch=('i686' 'x86_64')
 url="https://support.hdfgroup.org/products/java/"
@@ -28,13 +28,12 @@ md5sums=('3dafb38490718d46e359d250c7bb2377'
 
 prepare() {
   cd "${pkgname}-${_pkgver}"
-  sed -i "s;hdf\.lib\.dir = \${env\.HDFLIBS}/lib;hdf\.lib\.dir = /opt/hdfjava-3\.3\.2/lib;" build.properties
   sed -i '731s;<chmod perm="ugo+rx">;<chmod perm="ugo+rx" maxparallel="10">;' build.xml
 }
 
 build() {
   cd "${pkgname}-${_pkgver}"
-  ant package
+  HDFLIBS=/opt/hdfjava-3.3.2 ant package
 }
 
 package() {

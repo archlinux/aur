@@ -1,7 +1,7 @@
 pkgbase = hdfview
 	pkgdesc = a GUI browser for hdf5 files
 	pkgver = 2.14.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://support.hdfgroup.org/products/java/
 	arch = i686
 	arch = x86_64
