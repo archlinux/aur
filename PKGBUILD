@@ -39,8 +39,6 @@ package() {
    cd "$srcdir/$_gitname"
 
    mkdir -p "$pkgdir/opt/zeronet"
-   mkdir -p "$pkgdir/var/lib/zeronet"
-   mkdir -p "$pkgdir/var/log/zeronet"
 
    # There is no setup.py shipped, so brute-force copy
    cp -a "$srcdir/$_gitname/." "$pkgdir/opt/zeronet/"

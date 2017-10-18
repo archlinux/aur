@@ -1,7 +1,7 @@
 post_install() {
     getent passwd zeronet &>/dev/null || {
         echo -n ">>> Creating zeronet user... "
-        useradd --system --user-group --home /var/lib/zeronet zeronet
+        useradd --system --user-group -m --home /var/lib/zeronet zeronet
         echo "done"
     } # NOTE: we do not autoremove user due to security concerns (Arch policy)
     post_upgrade
@@ -31,6 +31,4 @@ post_install() {
 
 post_upgrade() {
     chown -R zeronet:zeronet /opt/zeronet
-    chown zeronet:zeronet /var/lib/zeronet
-    chown zeronet:zeronet /var/log/zeronet
 }
