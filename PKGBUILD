@@ -4,7 +4,7 @@
 
 pkgname=openmw-tes3mp
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="TES3MP is a project aiming to add multiplayer functionality to OpenMW, a free and open source recreation of the popular Bethesda Softworks game \"The Elder Scrolls III: Morrowind\"."
 arch=('x86_64')
 url="https://github.com/TES3MP/openmw-tes3mp"
@@ -43,13 +43,19 @@ prepare() {
   rm bsatool*
   rm esmtool*
   rm openmw*
+}
+
+package() {
+  
+  # Copy files into /usr/local/etc/openmw to make TES3MP works
+  install -d $pkgdir/usr/local/etc/openmw
+  cp tes3mp-server-default.cfg $pkgdir/usr/local/etc/openmw/tes3mp-server-default.cfg
+  cp tes3mp-client-default.cfg $pkgdir/usr/local/etc/openmw/tes3mp-client-default.cfg
 
   # Rename config files to .example for launcher script
   mv tes3mp-server-default.cfg tes3mp-server-default.cfg.example
   mv tes3mp-client-default.cfg tes3mp-client-default.cfg.example
-}
-
-package() {
+  
   # Install .desktop files
   install -Dm644 tes3mp-client.desktop $pkgdir/usr/share/applications/tes3mp-client.desktop
   install -Dm644 tes3mp-server.desktop $pkgdir/usr/share/applications/tes3mp-server.desktop
