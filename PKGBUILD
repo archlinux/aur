@@ -7,8 +7,8 @@ arch=('any')
 url="https://zeronet.io/"
 depends=('python2>=2.7.10'
          'python2-gevent'
-         'python2-msgpack'
-		)
+         'python2-msgpack')
+optdepends=('tor>=0.3.0.0: anonymity')
 license=('GPL2')
 pkgdesc="Decentralized websites using Bitcoin crypto and the BitTorrent network."
 source=("https://github.com/HelloZeroNet/ZeroNet/archive/v$pkgver.tar.gz"
