@@ -1,7 +1,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gnome-system-log
-pkgver=3.9.90+156+g6e29f03
+pkgver=3.9.90+160+g4b07190
 pkgrel=1
 pkgdesc="View your system logs"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url="https://git.gnome.org/browse/gnome-system-log"
 license=(GPL2)
 depends=(dconf gtk3)
 makedepends=(intltool itstool docbook-xsl git gnome-common)
-_commit=6e29f0383b0743b319a5109e4415c71ceb85cc62  # master
+_commit=4b071909a0ca38a73a9cc5b287ffc2b0a744566b  # master
 source=("git+https://git.gnome.org/browse/gnome-system-log#commit=$_commit")
 sha256sums=('SKIP')
 
