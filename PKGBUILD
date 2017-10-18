@@ -2,7 +2,7 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-plugins-git
-pkgver=1.1.20.g4f8eaf4-
+pkgver=1.1.20.g4f8eaf4
 pkgrel=1
 pkgdesc="Additional plugins for Psi+ (built with Qt 5.x)"
 arch=('i686' 'x86_64')
