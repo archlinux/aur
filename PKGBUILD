@@ -1,7 +1,7 @@
 pkgname=fastd
 arch=(i686 x86_64)
 pkgver=18
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and secure tunneling daemon"
 
 # Enabled for fast AES implementations
@@ -24,7 +24,7 @@ build() {
   opts=''
   [ $ENABLE_OPENSSL -eq 0 ] || opts="${opts} -D ENABLE_OPENSSL=ON"
 
-  cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr -D ENABLE_SYSTEMD=ON -D ENABLE_LTO=ON ${opts} "../${pkgname}-${pkgver}"
+  cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr -D ENABLE_SYSTEMD=ON -D ENABLE_LTO=ON -D WITH_CIPHER_AES128_CTR_NACL=OFF ${opts} "../${pkgname}-${pkgver}"
   make
 }
 
