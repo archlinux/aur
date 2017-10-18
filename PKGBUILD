@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 # NB: this package will install additional python packages in /var/lib/hass/lib depending on components present in the configuration files.
 depends=('python' 'python-pip' 'python-requests>=2.14.2' 'python-yaml' 'python-pytz>=2017.2'
          'python-vincenty' 'python-voluptuous>=0.9.3' 'python-netifaces'
-         'python-webcolors' 'python-async-timeout>=1.3.0' 'python-aiohttp>=2.2.5'
+         'python-webcolors' 'python-async-timeout>=1.3.0' 'python-aiohttp>=2.2.5' 'python-aiohttp-cors>=0.5.3'
          'python-jinja>=2.9.5' 'python-yarl>=0.11.0' 'python-chardet>=3.0.4' 'python-astral')
 optdepends=('git: install component requirements from github'
             'net-tools: necessary for nmap discovery')
