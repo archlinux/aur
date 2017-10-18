@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=SigViewer
+GenericName=Biosignal Viewer
+Comment=A viewing application for biosignals
+Exec=sigviewer %f
+Icon=sigviewer
+Terminal=false
+Categories=Science

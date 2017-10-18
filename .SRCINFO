@@ -1,7 +1,7 @@
 pkgbase = sigviewer
 	pkgdesc = A viewing application for biosignals
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cbrnr/sigviewer
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,10 @@ pkgbase = sigviewer
 	depends = libxdf
 	source = https://github.com/cbrnr/sigviewer/archive/v0.6.1.zip
 	source = sigviewer.patch
+	source = sigviewer.desktop
 	sha1sums = 264f3d01da215c7493a566509f05eb7f25e56ee0
 	sha1sums = 5d61d2fd18876c4ad8c6b0840a31da01d3f517d6
+	sha1sums = 72fc9741a985ef783c2c3e7ea5b51655ebc94d84
 
 pkgname = sigviewer
 
