@@ -1,12 +1,13 @@
 pkgbase = psi-plus-l10n-git
-	pkgdesc = Language packs for Psi+
-	pkgver = 0.16.457
+	pkgdesc = Language packs for Psi+ (Qt 5.x build)
+	pkgver = 1.2.98.1.g4ad4c94
 	pkgrel = 1
 	url = http://psi-plus.com
 	arch = any
 	license = GPL2
-	makedepends = qt4
+	makedepends = qt5-tools
 	depends = psi-plus-git
+	conflicts = psi-plus-l10n
 	options = !strip
 	options = !zipman
 	source = git://github.com/psi-plus/psi-plus-l10n.git
