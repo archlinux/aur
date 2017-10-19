@@ -1,7 +1,7 @@
 [Desktop Entry]
-Exec=/usr/lib/jvm/java-10-jdk/bin/jmc
-Icon=sun-java-jdk10
-Name=Java 10 Mission Control
+Exec=/usr/lib/jvm/java-9-jdk/bin/jmc
+Icon=sun-java-jdk9
+Name=Java 9 Mission Control
 StartupNotify=true
 Terminal=false
 Type=Application
