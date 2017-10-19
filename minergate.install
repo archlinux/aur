@@ -1,6 +1,5 @@
 post_install () {
-    echo "-> Be sure to read this wiki page in order to"
-    echo "-> setup ocl-icd"
+    echo "-> Be sure to read this wiki page in order to setup ocl-icd"
     echo "-> https://wiki.archlinux.org/index.php/GPGPU"
 }
 
