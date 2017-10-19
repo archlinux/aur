@@ -2,7 +2,7 @@
 
 pkgname=acme.sh-git
 pkgver=0.1734.8aff2bd
-pkgrel=3
+pkgrel=4
 pkgdesc='An ACME Shell script, an acme client alternative to certbot'
 arch=('any')
 url='https://github.com/Neilpang/acme.sh'
@@ -17,5 +17,5 @@ pkgver() {
 }
 
 package() {
-  install -Dm 755 "${srcdir}/${pkgname}/acme.sh" "${pkgdir}/usr/bin/acme.sh"
+  install -Dm755 "${srcdir}/${pkgname}/acme.sh" "${pkgdir}/usr/bin/acme.sh"
 }
