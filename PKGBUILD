@@ -1,23 +1,22 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
-_pkgname=androidscreencast
-pkgname=${_pkgname}-bin
+pkgname=androidscreencast-bin
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktop app to control an android device remotely using mouse and keyboard'
+arch=('any')
 url='https://code.google.com/archive/p/androidscreencast'
 license=('Apache')
-arch=('any')
-depends=('icedtea-web')
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${_pkgname}/${_pkgname}-${pkgver//./_}.jnlp"
-        'androidscreencast'
-)
-sha256sums=('bf5a26b0341fc9890c2d4dcc37d9e68249889631301e671e80643a472de0cb37'
-            '563d9196f7758ac2099c8863d53f5c0566b558a8934ae9d98cecfe5b71b33a2d')
+depends=('java-runtime')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/androidscreencast/androidscreencast-${pkgver//./_}.jar"
+        "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/androidscreencast/ddmlib-${pkgver//./_}.jar"
+        'androidscreencast')
+sha256sums=('1d6d048cb8c75ebd11ae8d35fb7f2ba44401be62c004ff099d410d8e4862970c'
+            '73054595a00c52ec761d5f5cd4b81c66e561b841488bc4e892aab6624ac2f252'
+            '8f59c99dc2ab926a1fa0464b4a1ea01480cd0d5311ef9816bc99a9c00b542e74')
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/local/lib/java"
-
-  install -m 644 "${srcdir}/${_pkgname}-${pkgver//./_}.jnlp" "${pkgdir}/usr/local/lib/java/${_pkgname}.jnlp"
-  install -m 755 "${srcdir}/androidscreencast" "${pkgdir}/usr/bin"
+  install -Dm644 "${srcdir}/androidscreencast-${pkgver//./_}.jar" "${pkgdir}/usr/share/java/androidscreencast/androidscreencast-${pkgver//./_}.jar"
+  install -Dm644 "${srcdir}/ddmlib-${pkgver//./_}.jar" "${pkgdir}/usr/share/java/androidscreencast/ddmlib-${pkgver//./_}.jar"
+  install -Dm755 "${srcdir}/androidscreencast" "${pkgdir}/usr/bin/androidscreencast"
 }
