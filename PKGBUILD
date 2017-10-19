@@ -2,7 +2,7 @@
 pkgname=cryptol-git
 _pkgname=cryptol
 
-pkgver=2.4.0.r122.g5b502ec
+pkgver=2.5.0.r165.g942173b
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
@@ -31,6 +31,7 @@ build() {
     cd $srcdir/${_pkgname}
     cabal update
     make
+    cabal install
 }
 
 package() {
@@ -38,7 +39,7 @@ package() {
     mkdir -p $pkgdir/usr/bin
     mkdir -p $pkgdir/usr/share/cryptol
     mkdir -p $pkgdir/usr/share/licenses/$_pkgname/
-    cp dist/build/cryptol/cryptol $pkgdir/usr/bin
+    cp .cabal-sandbox/bin/cryptol $pkgdir/usr/bin
     cp -r lib/* $pkgdir/usr/share/cryptol
     cp LICENSE $pkgdir/usr/share/licenses/$_pkgname/
 }
