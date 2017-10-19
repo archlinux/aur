@@ -6,8 +6,8 @@ arch=('x86_64')
 url='https://github.com/NVIDIA/libnvidia-container'
 license=('custom')
 depends=(libcap libseccomp)
-source_x86_64=("https://packages.nvidia.com/compute/container/packages/el/7/libnvidia-container1-1.0.0-0.1.alpha.1.x86_64.rpm/download")
-sha256sums_x86_64=('53dc4503944242b3534aadf0cbd8c09a3f3385d9da7e49633407f0b22d081c95')
+source_x86_64=("https://nvidia.github.io/libnvidia-container/centos7/x86_64/libnvidia-container1-1.0.0-0.1.alpha.1.x86_64.rpm")
+sha256sums_x86_64=('a0cbc06b0918d8f0e84195efd1990cb69b99f0cb421c320689618b189d3d334a')
 
 package() {
   cd "$srcdir"
