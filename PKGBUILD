@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=libxlsxwriter-git
-pkgver=0.7.2.r490.cc960e7
+pkgver=0.7.5.r519.c9585ed
 pkgrel=1
 pkgdesc="A C library for creating Excel XLSX files"
 arch=('i686' 'x86_64')
@@ -33,5 +33,5 @@ build() {
 
 package() {
   make -C build DESTDIR=${pkgdir} install
-  install -Dm644 libxlsxwriter/LICENSE.txt ${pkgdir}/usr/share/licenses/libxlsxwriter-git/LICENSE.txt
+  install -Dm644 libxlsxwriter/License.txt ${pkgdir}/usr/share/licenses/libxlsxwriter-git/LICENSE.txt
 }
