@@ -1,6 +1,6 @@
 # Maintainer: Jguer <joaogg3@gmail.com>
 pkgname=yay
-pkgver=2.152
+pkgver=2.201
 pkgrel=1
 pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ makedepends=(
 )
 conflicts=('yay-bin')
 source=("https://github.com/Jguer/yay/archive/v${pkgver}.tar.gz")
-md5sums=('e95e870ddd2232953967eb56ee4097d1')
+sha1sums=('33fe89ad86aa1b024077fc059a6e363bcbc49d88')
 
 build() {
   export GOPATH="${srcdir}/.go"
