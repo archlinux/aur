@@ -2,11 +2,11 @@
 
 pkgname=caffe2-cpu-git
 pkgver=0.8.1.r509.g27747b79
-pkgrel=1
+pkgrel=2
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe2.ai/'
-license=('BSD')
+license=('APACHE')
 depends=(
     # official repositories:
         # required:
