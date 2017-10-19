@@ -8,7 +8,7 @@ url="http://katze.tfiu.de/projects/phyghtmap/"
 license=('GPL2')
 depends=(
   'python'
-  'python-beautifulsoup3'
+  'python-beautifulsoup4'
   'python-matplotlib'
   'python-numpy'
 )
