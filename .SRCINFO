@@ -1,6 +1,6 @@
 pkgbase = bomi-git
 	pkgdesc = Powerful and easy-to-use GUI multimedia player based on mpv (git version)
-	pkgver = 0.9.11.r25.g90f18ff
+	pkgver = 0.9.11.r33.g2f3d7e4a
 	pkgrel = 1
 	url = http://bomi-player.github.io
 	arch = i686
@@ -41,10 +41,8 @@ pkgbase = bomi-git
 	provides = bomi
 	conflicts = cmplayer
 	conflicts = bomi
-	source = git+https://github.com/xylosper/bomi.git
-	source = compilation_fix.patch
+	source = git+https://github.com/d-s-x/bomi.git
 	md5sums = SKIP
-	md5sums = 787abc07aa2de7403657a060e2971dec
 
 pkgname = bomi-git
 

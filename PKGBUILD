@@ -6,7 +6,7 @@
 _pkgbase=bomi
 
 pkgname=$_pkgbase-git
-pkgver=0.9.11.r25.g90f18ff
+pkgver=0.9.11.r33.g2f3d7e4a
 pkgrel=1
 pkgdesc="Powerful and easy-to-use GUI multimedia player based on mpv (git version)"
 arch=('i686' 'x86_64')
@@ -25,10 +25,8 @@ optdepends=('libva-intel-driver: hardware acceleration support for Intel GPU'
             'libbdplus: BD+ decryption for Blu-ray support')
 provides=('bomi')
 conflicts=('cmplayer' 'bomi')
-source=(git+https://github.com/xylosper/${_pkgbase}.git
-        compilation_fix.patch)
-md5sums=('SKIP'
-         '787abc07aa2de7403657a060e2971dec')
+source=(git+https://github.com/d-s-x/${_pkgbase}.git)
+md5sums=('SKIP')
 #options=(debug !strip)
 
 pkgver() {
@@ -38,7 +36,6 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgbase"
-    patch -p1 -i ${srcdir}/compilation_fix.patch
 
     ./configure --prefix=/usr
 }
