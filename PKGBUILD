@@ -1,4 +1,4 @@
-# Maintainer: NOGISAKA Sadata <ngsksdt@gmail.com>
+# Maintainer: David Birks <david@tellus.space>
 
 _pkgname=doctl
 pkgname=doctl-bin
