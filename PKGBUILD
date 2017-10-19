@@ -10,7 +10,7 @@ pkgdesc="rofi/fzf driven mpd client"
 arch=('any')
 url='https://github.com/carnager/clerk'
 license=('GPL')
-depends=('perl' 'rofi' 'tmux' 'perl-net-mpd' 'perl-data-messagepack' 'perl-file-slurper' 'perl-config-simple' 'perl-try-tiny' 'perl-ipc-run' 'perl-http-date' 'perl-local-lib')
+depends=('perl' 'rofi' 'tmux' 'perl-net-mpd' 'perl-data-messagepack' 'perl-file-slurper' 'perl-config-simple' 'perl-try-tiny' 'perl-ipc-run' 'perl-http-date')
 install=clerk-git.install
 makedepends=('git')
 source=('git+https://github.com/carnager/clerk#branch=next')
