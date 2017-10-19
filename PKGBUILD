@@ -1,7 +1,7 @@
-# Maintainer: Tom X. Tobin <tomxtobin@tomxtobin.com>
+# Maintainer: Tom Tobin <tomxtobin@tomxtobin.com>
 
 pkgname=dep
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Go dependency management tool"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('BSD')
 makedepends=('go')
 options=('!emptydirs' '!strip')
 source=("https://${_vendor}/archive/v${pkgver}.tar.gz")
-sha256sums=('386e2d163c5a95166fa3b89da4f8166361c7c5210fb172f64c116cccd19d1d44')
 _git_commit='83789e236d7ff64c82ee8392005455fc1ec1983b'
+sha256sums=('327124953d76293eaba6001e17bb8a31371313ab39eed1fa9eac01f8b5c1de21')
 _ldflags="\
 -s \
 -w \
