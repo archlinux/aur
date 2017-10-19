@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/KiCad/kicad-library"
 license=('GPL')
 makedepends=('cmake' 'git')
-conflicts=('kicad-library-bzr')
+conflicts=('kicad-library-bzr' 'kicad-library-3d' 'kicad-library')
 source=("git://github.com/KiCad/kicad-library.git")
 md5sums=('SKIP')
 
