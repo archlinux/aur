@@ -78,7 +78,7 @@ package() {
 
 	make DESTDIR="${pkgdir}" install
 
-	# slurm configs and license
+	# Install slurm's configs and license
 	install -D -m644 etc/slurm.conf.example    "${pkgdir}/etc/slurm-llnl/slurm.conf.example"
 	install -D -m644 etc/slurmdbd.conf.example "${pkgdir}/etc/slurm-llnl/slurmdbd.conf.example"
 	install -D -m644 LICENSE.OpenSSL           "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.OpenSSL"
@@ -86,17 +86,17 @@ package() {
 
 	install -D -m644 ../slurm-llnl-default-conf "${pkgdir}/etc/default/slurm-llnl"
 
-	# init related install
+	# Install init related files
 	install -D -m755 etc/init.d.slurm    "${pkgdir}/etc/rc.d/slurm"
 	install -D -m755 etc/init.d.slurmdbd "${pkgdir}/etc/rc.d/slurmdbd"
 
-	# SystemD related install
+	# Install SystemD related files
 	install -D -m644 ../slurmctld.service   "${pkgdir}/usr/lib/systemd/system/slurmctld.service"
 	install -D -m644 ../slurmd.service      "${pkgdir}/usr/lib/systemd/system/slurmd.service"
 	install -D -m644 ../slurmdbd.service    "${pkgdir}/usr/lib/systemd/system/slurmdbd.service"
 	install -D -m644 ../slurm-tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/slurm-tmpfiles.conf"
 
-	# creating a log and a lib dir
+	# Create a log and a lib dir
 	install -d -m755 "${pkgdir}/var/log/slurm-llnl"
 	install -d -m755 "${pkgdir}/var/lib/slurm-llnl"
 }
