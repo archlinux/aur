@@ -4,7 +4,7 @@
 _name=firefox
 _lang=pl
 _channel=developer
-pkgname="firefox-devedition-pl"
+pkgname=firefox-developer-pl
 pkgdesc='Standalone web browser from mozilla.org, Developer Edition - Polish'
 url='https://www.mozilla.org/firefox/developer/'
 pkgver=57.0b9
