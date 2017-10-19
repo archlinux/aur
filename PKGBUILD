@@ -2,16 +2,16 @@
 
 pkgname=bit-babbler
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='BitBabbler hardware TRNG and kernel entropy source support'
 arch=('i686' 'x86_64')
-license=('GPL2')
 url='http://www.bitbabbler.org'
+license=('GPL2')
 depends=('libusb>=1.0')
 optdepends=('munin: monitoring support')
 source=("${url}/downloads/${pkgname}_${pkgver}.tar.gz"
         "${url}/downloads/${pkgname}_${pkgver}.tar.gz.asc"
-        "seedd.service")
+        'seedd.service')
 install="${pkgname}.install"
 sha256sums=('9541547f0efb8954a3544ca1495b603e920f9b9509c9ee64840a389a0f665e4e'
             'SKIP'
@@ -29,7 +29,6 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   make install DESTDIR="${pkgdir}"
-
   install -Dm644 debian/bit-babbler-sysctl.conf "${pkgdir}/etc/sysctl.d/bit-babbler-sysctl.conf"
   install -Dm644 debian/bit-babbler.udev "${pkgdir}/etc/udev/rules.d/bit-babbler.rules"
   install -Dm644 "${srcdir}/seedd.service" "${pkgdir}/usr/lib/systemd/system/seedd.service"

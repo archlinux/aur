@@ -1,7 +1,6 @@
 post_install() {
   post_upgrade
   echo 'To use device as a normal user, add user to bit-babbler group'
-
 }
 
 post_upgrade() {
