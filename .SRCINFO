@@ -1,6 +1,6 @@
 pkgbase = complx-git
 	pkgdesc = Complx: LC-3 Simulator used in GT:CS2110, created by Brandon.
-	pkgver = 4.15.6.10.9c9c36b
+	pkgver = 4.15.7.45abcf0
 	pkgrel = 1
 	url = https://www.github.com/TricksterGuy/complx
 	arch = i686
