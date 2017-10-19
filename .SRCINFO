@@ -1,14 +1,14 @@
 pkgbase = i3-workspace-switch-git
 	pkgdesc = Utility to allow switching workspaces by their position on the output
 	pkgver = 0.2.dev0.gcb7f6de
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/languitar/i3-workspace-switch
 	arch = any
 	license = LGPL3
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python2
-	depends = python-i3-git
+	depends = python-i3-py
 	provides = i3-workspace-switch
 	conflicts = i3-workspace-switch
 	source = i3-workspace-switch-git::git://github.com/languitar/i3-workspace-switch.git
