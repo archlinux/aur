@@ -7,7 +7,8 @@ pkgdesc="A simple argument parser for Python"
 arch=('any')
 url="https://github.com/maandree/python-arg"
 license=('custom:ISC')
-depends=('linux')
+depends=()
+makedepends=(python python2)
 source=($pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 sha256sums=(82798506f939e3109e33e92186865b88800d78c28a42fc2fb6038ec7a4b79a25)
 
