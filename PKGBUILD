@@ -2,7 +2,7 @@
 
 pkgname=perl-linux-fd
 pkgver=0.011
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides you Linux specific special file handles"
 arch=('any')
 url="http://search.cpan.org/dist/Linux-FD"
@@ -23,8 +23,9 @@ check() {
 }
 
 package() {
+  perl_version=5.26
   cd Linux-FD-$pkgver
   ./Build install --install_base="."
-  mkdir -p "$pkgdir/usr/lib/perl5/vendor_perl"
-  cp -r ./lib/perl5/*/* "$pkgdir/usr/lib/perl5/vendor_perl"
+  mkdir -p "$pkgdir/usr/lib/perl5/$perl_version/vendor_perl"
+  cp -r ./lib/perl5/*/* "$pkgdir/usr/lib/perl5/$perl_version/vendor_perl"
 }
