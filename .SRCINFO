@@ -1,0 +1,17 @@
+pkgbase = camimporter
+	pkgdesc = A useful tool to organize your multimedia files importing them from a generic CAMERA
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/fmount/camimporter.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2-pillow
+	makedepends = python2-prettytable
+	makedepends = python2-six
+	makedepends = python2-setuptools
+	source = git://github.com/fmount/camimporter.git
+	md5sums = SKIP
+
+pkgname = camimporter
+
