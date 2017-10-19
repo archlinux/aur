@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=tufao
-pkgver=1.2.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="An asynchronous web framework for C++ built on top of Qt"
 arch=('i686' 'x86_64')
@@ -8,19 +8,27 @@ url="https://github.com/vinipsmaker/tufao"
 license=('LGPL2')
 depends=('qt5-base')
 makedepends=('cmake')
-source=("https://github.com/vinipsmaker/tufao/archive/${pkgver}.tar.gz")
-md5sums=('a47d6a37cd1e858e7270eb2d692e7323')
+source=("${pkgname}::git+file:///home/vinipsmaker/Projetos/archive/tufao/.git#tag=${pkgver}"
+        "boost.http::git+file:///home/vinipsmaker/Projetos/boost.http/.git#commit=0a02eab2aedb743ad96f0aa9aa0d570e58dc7e41")
+md5sums=('SKIP' 'SKIP')
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  git submodule init
+  git config submodule.boost.http.url "${srcdir}/boost.http"
+  git submodule update
+}
 
 build() {
-  mkdir -p "${srcdir}/tufao-${pkgver}/build"
-  cd "${srcdir}/tufao-${pkgver}/build"
+  mkdir -p "${srcdir}/${pkgname}/build"
+  cd "${srcdir}/${pkgname}/build"
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
     -DENABLE_TESTS=ON ..
   make
 }
 
 check() {
-  cd "${srcdir}/tufao-${pkgver}/build"
+  cd "${srcdir}/${pkgname}/build"
   make tests
 
   # Uncomment the following line to help Tufão development by sending info
@@ -29,6 +37,6 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/tufao-${pkgver}/build"
+  cd "${srcdir}/${pkgname}/build"
   make DESTDIR="$pkgdir" install
 }
