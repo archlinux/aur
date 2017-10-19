@@ -17,7 +17,7 @@ _debug_mode=0    # Build in debug mode.
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=63.0.3230.0
+pkgver=63.0.3239.9
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ depends=(
          'xdg-utils'
          'libcups'
          'libxml2'
-         'harfbuzz-icu'
+#          'harfbuzz-icu'
 #          'protobuf'
 #          'libevent'
          'ffmpeg'
@@ -79,13 +79,12 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc5-r4.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-clang-r1.patch'
         # Misc Patches
-        'chromium-intel-vaapi_r14.patch.base64::https://chromium-review.googlesource.com/changes/532294/revisions/d60511c973e432b97d9929dcfbd77c9af25dbd51/patch?download'
+        'chromium-intel-vaapi_r15.diff.base64::https://chromium-review.googlesource.com/changes/532294/revisions/15/patch?download'
         'https://raw.githubusercontent.com/sjnewbury/gentoo-playground/master/www-client/chromium/files/chromium-intel-vaapi-fix.patch'
+        'chromium-webrtc-math-r1.diff.base64::https://webrtc-review.googlesource.com/changes/9384/revisions/3/patch?download' # https://webrtc-review.googlesource.com/c/src/+/9384
         # Patch from crbug (chromium bugtracker) or Arch chromium package
-        'chromium-gcc-r1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-gcc-r1.patch?h=packages/chromium'
-        'chromium-blink-gcc7-r2.patch' # https://bugs.chromium.org/p/chromium/issues/detail?id=614289
         'chromium-widevine-r1.patch'
-        'chromium-gn-bootstrap-r21.patch.base64::https://chromium-review.googlesource.com/changes/700435/revisions/bf8877ba9a564c69358807a9b4e2d83e1a97b42a/patch?download'
+        'chromium-exclude_unwind_tables.patch.base64::https://chromium-review.googlesource.com/changes/712575/revisions/1/patch?download' # https://bugs.archlinux.org/task/55914
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -96,13 +95,12 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             '6f525ea6b22a432b1c2cdc2bff8482a30b76c7ada606d9f333fc7f3caf2841a3'
             'ab5368a3e3a67fa63b33fefc6788ad5b4a79089ef4db1011a14c3bee9fdf70c6'
             # Misc Patches
-            '1974fb5891b6a620113e9527026faa5af771042841ef7b8016ef74e0eaabc926'
+            'cb4933db92b669696201b2866ec9b4942466a849b94b13463d8331284d09a2d1'
             'a688de2b3a7183ebf9eb25108b0d28a8c6228cc71c8e3519062a51224f5b3488'
+            'c9d97359fe35224093e57a773e2b01cafd7564f82e0f783a12063e23927673da'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
-            '11cffe305dd49027c91638261463871e9ecb0ecc6ecc02bfa37b203c5960ab58'
-            'fab4c65e2802e709a32d059784182be5a89bc3ca862a7e27810714ea7b86f868'
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
-            'f4eec8ef6168c9a2a832eaaa711100b5a73781184e4950962ad0e8f6dd7fdde1'
+            'd4a99239701256edb37ef3a5504fa87ca2219349834cbf59b9fe42bf7ac496d8'
             )
 options=('!strip')
 install=chromium-dev.install
@@ -110,14 +108,6 @@ install=chromium-dev.install
 ################################################
 ## -- Don't touch anything below this line -- ##
 ################################################
-
-# Build Debug mode?.
-if [ "${_debug_mode}" = "1" ]; then
-  _debug_flag="symbol_level=1"
-  _strip=false
-elif [ "${_debug_mode}" = "0" ]; then
-  _strip=true
-fi
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # NOTE: These are for Arch Linux use ONLY. For your own distribution, please
@@ -172,7 +162,7 @@ _keeplibs=(
            'third_party/analytics'
            'third_party/angle'
            'third_party/angle/src/common/third_party/base'
-           'third_party/angle/src/common/third_party/murmurhash'
+           'third_party/angle/src/common/third_party/smhasher'
            'third_party/angle/src/third_party/compiler'
            'third_party/angle/src/third_party/libXNVCtrl'
            'third_party/angle/src/third_party/trace_event'
@@ -184,14 +174,14 @@ _keeplibs=(
            'third_party/cacheinvalidation'
            'third_party/catapult'
            'third_party/catapult/third_party/polymer'
-           'third_party/catapult/third_party/py_vulcanize'
-           'third_party/catapult/third_party/py_vulcanize/third_party/rcssmin'
-           'third_party/catapult/third_party/py_vulcanize/third_party/rjsmin'
+           'third_party/catapult/common/py_vulcanize/third_party/rcssmin'
+           'third_party/catapult/common/py_vulcanize/third_party/rjsmin'
            'third_party/catapult/tracing/third_party/d3'
            'third_party/catapult/tracing/third_party/gl-matrix'
            'third_party/catapult/tracing/third_party/jszip'
            'third_party/catapult/tracing/third_party/mannwhitneyu'
            'third_party/catapult/tracing/third_party/oboe'
+           'third_party/catapult/tracing/third_party/pako'
            'third_party/ced'
            'third_party/cld_2'
            'third_party/cld_3'
@@ -208,6 +198,7 @@ _keeplibs=(
            'third_party/google_input_tools/third_party/closure_library'
            'third_party/google_input_tools/third_party/closure_library/third_party/closure'
            'third_party/googletest'
+           'third_party/harfbuzz-ng'
            'third_party/hunspell'
            'third_party/iccjpeg'
            'third_party/inspector_protocol'
@@ -297,7 +288,6 @@ _flags=(
         "google_default_client_id=\"${_google_default_client_id}\""
         "google_default_client_secret=\"${_google_default_client_secret}\""
         'fieldtrial_testing_like_official_build=false'
-        "remove_webcore_debug_symbols=${_strip}"
         'use_gtk3=true'
         'use_gconf=false'
         "use_gio=false"
@@ -335,15 +325,14 @@ optdepends+=(
 _use_system=(
              'ffmpeg'
              'flac'
-#             'freetype'   # https://bugs.chromium.org/p/pdfium/issues/detail?id=733
-             'harfbuzz-ng'
-#             'icu'        # https://crbug.com/678661
+#             'freetype'    # https://bugs.chromium.org/p/pdfium/issues/detail?id=733
+#             'harfbuzz-ng' # freetype and harfbuzz needs update at same time, or both or none. disable due freetype bug. link avobe
+#             'icu'         # https://crbug.com/678661
              'libdrm'
-#             'libevent'   # Get segfaults and other problems https://bugs.gentoo.org/593458
+#             'libevent'    # Get segfaults and other problems https://bugs.gentoo.org/593458
              'libjpeg'
              'libpng'
-#             'libsrtp'    # https://bugs.gentoo.org/459932
-#             'libvpx'     # Needs update
+#             'libvpx'      # Needs update
              'libwebp'
              'libxml'
              'libxslt'
@@ -356,8 +345,18 @@ _use_system=(
              )
 
 # Conditionals.
+# Build Debug mode?.
 if [ "${_debug_mode}" = "1" ]; then
   _keeplibs+=('native_client/src/third_party/valgrind')
+  _flags+=(
+           'symbol_level=1'
+           'remove_webcore_debug_symbols=false'
+           )
+elif [ "${_debug_mode}" = "0" ]; then
+  _flags+=(
+           'remove_webcore_debug_symbols=true'
+           'exclude_unwind_tables=true'
+           )
 fi
 
 # https://crbug.com/678661
@@ -404,9 +403,19 @@ prepare() {
   # Better support for clang
   patch -p1 -i "${srcdir}/chromium-clang-r1.patch"
   # Pats to chromium dev's about why always they forget add/remove missing build rules
-  base64 -d "${srcdir}/chromium-gn-bootstrap-r21.patch.base64" | patch -p1 -i -
+  # Done this time :D
 
   # Misc Patches:
+  # Fail build: https://webrtc-review.googlesource.com/c/src/+/9384
+  base64 -d "${srcdir}/chromium-webrtc-math-r1.diff.base64" | patch -d third_party/webrtc -p1 -i -
+
+  # https://crbug.com/710701
+  _chrome_build_hash=$(curl -s https://chromium.googlesource.com/chromium/src.git/+/${pkgver}?format=TEXT | base64 -d | grep -Po '^parent \K[0-9a-f]{40}$')
+  if [[ -z $_chrome_build_hash ]]; then
+    error "Unable to fetch Chrome build hash."
+    return 1
+  fi
+  echo "LASTCHANGE=$_chrome_build_hash-" > build/util/LASTCHANGE
 
   if [ "${_vulkan}" = "1" ]; then
     export VULKAN_SDK="/usr"
@@ -415,20 +424,16 @@ prepare() {
   fi
 
   # Apply VAAPI patch
-  base64 -d "${srcdir}/chromium-intel-vaapi_r14.patch.base64" > chromium-intel-vaapi_r14.patch
-  sed '39,50d' -i chromium-intel-vaapi_r14.patch
-  patch -Np1 -i chromium-intel-vaapi_r14.patch
-  patch -p1 -i "${srcdir}/chromium-intel-vaapi-fix.patch"
+  base64 -d "${srcdir}/chromium-intel-vaapi_r15.diff.base64" | patch -p1 -i -
 
   # Patch from crbug (chromium bugtracker) or Arch chromium package
-
-  # Fix build with gcc 7(?)
-  patch -p1 -i "${srcdir}/chromium-gcc-r1.patch"
-  patch -p1 -i "${srcdir}/chromium-blink-gcc7-r2.patch"
 
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
+
+  # https://bugs.archlinux.org/task/55914
+  base64 -d "${srcdir}/chromium-exclude_unwind_tables.patch.base64" | patch -p1 -i -
 
   # Setup nodejs dependency
   mkdir -p third_party/node/linux/node-linux-x64/bin/
@@ -527,7 +532,7 @@ build() {
   msg2 "Starting building Chromium..."
   # Configure the builder.
   python2 tools/gn/bootstrap/bootstrap.py -v -s --no-clean
-  out/Release/gn gen out/Release -v --args="${_flags[*]} ${_debug_flag}" --script-executable=/usr/bin/python2
+  out/Release/gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python2
 
   # Build all with ninja.
   LC_ALL=C ninja -C out/Release -v pdf chrome chrome_sandbox chromedriver widevinecdmadapter clearkeycdm
