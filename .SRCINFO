@@ -1,0 +1,29 @@
+pkgbase = perl-app-cope
+	pkgdesc = A wrapper around programs that output to a terminal, to give them colour for utility and aesthetics while still keeping them the same at the text level.
+	pkgver = 1.00
+	pkgrel = 2
+	url = http://stuff.cytzol.org/cope/
+	install = perl-app-cope.install
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = git
+	depends = perl>=5.10
+	depends = perl-class-inspector
+	depends = perl-env-path
+	depends = perl-file-sharedir
+	depends = perl-io-stty
+	depends = perl-io-tty
+	depends = perl-list-moreutils
+	depends = perl-params-util
+	depends = perl-regexp-common
+	depends = perl-regexp-ipv6
+	depends = perl-number-format
+	depends = perl-module-install
+	provides = cope
+	conflicts = cope
+	source = App-Cope-1.00.tar.gz::https://github.com/nichivo/cope/releases/download/v1.00/App-Cope-1.00.tar.gz
+	sha256sums = 2c26109f01dd76e58523e0e9c96665df955119033fefe8e34f13a79a6a6d1eb2
+
+pkgname = perl-app-cope
+

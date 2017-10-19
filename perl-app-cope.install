@@ -1,0 +1,8 @@
+post_install() {
+  echo 'Prepend the output of cope_path to your PATH, e.g.'
+  echo '  PATH=$(cope_path):$PATH'
+}
+
+post_upgrade() {
+  post_install
+}
