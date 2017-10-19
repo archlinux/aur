@@ -10,8 +10,8 @@
 #       -DNCCL_ROOT_DIR:PATH='/opt/cuda'
 
 pkgname=caffe2-git
-pkgver=0.8.1.r509.g27747b79
-pkgrel=2
+pkgver=0.8.1.r525.g20edf4eb
+pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -66,8 +66,10 @@ source=(
         'submodule-NNPACK_deps-FXdiv'::'git+https://github.com/Maratyszcza/FXdiv.git'
         'submodule-NNPACK_deps-FP16'::'git+https://github.com/Maratyszcza/FP16.git'
         'submodule-NNPACK_deps-psimd'::'git+https://github.com/Maratyszcza/psimd.git'
+        'submodule-aten'::'git+https://github.com/zdevito/ATen.git'
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -90,11 +92,11 @@ prepare() {
     local _submodule_list="pybind11 nccl cub eigen googletest nervanagpu benchmark \
                            protobuf android-cmake ios-cmake NNPACK gloo \
                            NNPACK_deps/pthreadpool NNPACK_deps/FXdiv NNPACK_deps/FP16 \
-                           NNPACK_deps/psimd"
+                           NNPACK_deps/psimd aten"
     git submodule init
     for _submodule in $_submodule_list
     do
-        local _submodule_dir="submodule-$(printf "%s" "${_submodule}" | tr '/' '-')"
+        local _submodule_dir="submodule-$(printf '%s' "${_submodule}" | tr '/' '-')"
         git config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule_dir}"
     done
     unset _submodule
