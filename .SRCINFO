@@ -1,13 +1,14 @@
 pkgbase = slack-desktop
 	pkgdesc = Slack Desktop (Beta) for Linux
 	pkgver = 2.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://slack.com/downloads
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
 	depends = gconf
 	depends = gtk2
+	depends = libcurl-compat
 	depends = libsecret
 	depends = libxss
 	depends = libxtst
