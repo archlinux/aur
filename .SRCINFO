@@ -1,0 +1,15 @@
+pkgbase = digimend-dkms-git
+	pkgdesc = DIGImend graphics tablet drivers for the Linux kernel
+	pkgver = v6.24.g81f8c71
+	pkgrel = 1
+	url = https://digimend.github.io/
+	arch = any
+	license = GPL2
+	depends = dkms
+	source = digimend::git+https://github.com/DIGImend/digimend-kernel-drivers.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 6e15b683ec7d3bf109df77db693c2327e06f8501b6c0a47a50ad31999da2ddfd
+
+pkgname = digimend-dkms-git
+
