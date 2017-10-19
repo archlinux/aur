@@ -2,7 +2,7 @@
 # Contributor: ianux <ianux@free.fr>
 
 pkgname=weboob-git
-pkgver=1.3_30_gb7a36aff7
+pkgver=1.3_74_g1017f1e37
 pkgrel=1
 pkgdesc="Weboob (Web Out Of Browsers) provides several applications to interact with a lot of websites."
 url="http://weboob.org"
@@ -24,6 +24,7 @@ depends=(
     python2-pysqlite
     python2-requests
     python2-simplejson
+    python2-unidecode
     python2-yaml
     which
 )
