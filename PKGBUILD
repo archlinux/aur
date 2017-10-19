@@ -1,16 +1,16 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=mongodb-compass
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="The MongoDB GUI"
 arch=('x86_64')
 url="https://www.mongodb.com/products/compass"
 license=('custom')
-depends=('alsa-lib' 'expat' 'gconf' 'gtk2' 'gvfs' 'hunspell' 'hunspell-en' 'libcurl-compat' 'libgcrypt' 'libgnome-keyring' 'libnotify' 'libxss' 'libxtst' 'xdg-utils')
+depends=('alsa-lib' 'gconf' 'gtk2' 'libsecret' 'libxss' 'libxtst' 'nss')
 optdepends=('gnome-keyring')
 source=("https://downloads.mongodb.com/compass/${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('7dd08b64081c426bcb05d4f3683ad9d6cbf51898fb456f0410564b7874144bcb')
+sha256sums=('6feae50b78b73259abf43f7aa329746af1934b36e0e397955fd231c7397af81a')
 
 package() {
     bsdtar -O -xf "${pkgname}_${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
