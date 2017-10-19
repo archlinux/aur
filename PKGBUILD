@@ -2,7 +2,7 @@
 
 pkgname=archisomod
 pkgver=latest
-pkgrel=1
+pkgrel=3
 _reponame='archiso-tools'
 pkgdesc='Another tool to remaster Arch Linux live ISOs'
 arch=('any')
