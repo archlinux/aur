@@ -9,7 +9,7 @@ license=('ISC')
 depends=()
 makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(ae8aa9346bd0fa2078620355f0866e5fa2671bf3da89642c48b705644eca0c08)
+sha256sums=(fb7cb42fc796eea4c86bb53d7257503cd73b033bf76962b420609c5b8351a37f)
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
