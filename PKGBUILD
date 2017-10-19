@@ -5,20 +5,33 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-# Tweak kernel options prior to a build via nconfig
+### Use tentative patches from https://groups.google.com/forum/#!forum/bfq-iosched
+### Thx to Tom 'monotykamary' Nguyen
+_use_tentative_patches=
+
+### Use patches from https://github.com/pfactum/pf-kernel/
+_use_pfkernel_patches=
+
+### Use patches from https://marc.info/?l=linux-block&m=150797307912556&w=1
+_use_blk_mq_patches=
+
+### Use disable writeback throttling: https://marc.info/?l=linux-block&m=150486424501778&w=2
+_use_lucamiccio_patch=
+
+### Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-# Tweak kernel options prior to a build via menuconfig
+### Tweak kernel options prior to a build via menuconfig
 _makemenuconfig=
 
-# Tweak kernel options prior to a build via xconfig
+### Tweak kernel options prior to a build via xconfig
 _makexconfig=
 
-# Tweak kernel options prior to a build via gconfig
+### Tweak kernel options prior to a build via gconfig
 _makegconfig=
 
-# Running with a 1000 HZ tick rate 
-_1k_HZ_ticks=
+### Running with a 1000 HZ tick rate 
+_1k_HZ_ticks=y
 
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
@@ -50,102 +63,124 @@ _use_current=
 
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
-_srcname=linux-4.9
-_pkgver=4.9.47
-_rtver=37
+_srcname=linux-4.13
+_pkgver=4.13.7
+_rtver=1
 _rtpatchver=rt${_rtver}
 pkgver=${_pkgver}.${_rtver}
 pkgrel=1
-arch=('i686' 'x86_64')
-url="http://algo.ing.unimo.it"
+arch=('x86_64')
+url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
 options=('!strip')
-makedepends=('kmod' 'inetutils' 'bc')
-_bfqrel=v7r11
-_bfqver=v8r7
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.9.0-${_bfqver}"
-#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.9.0-${_bfqver}/"
-#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.9"
-_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.9"
-_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
+makedepends=('kmod' 'inetutils' 'bc' 'libelf')
+_bfq_sq_mq_ver='20171009'
+_bfq_sq_mq_patch="4.13-bfq-sq-mq-git-${_bfq_sq_mq_ver}.patch"
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.13"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.13"
+_gcc_path="https://raw.githubusercontent.com/sirlucjan/kernel_gcc_patch/master"
+_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch"
 
-source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.9/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.9/patch-${_pkgver}-${_rtpatchver}.patch.sign"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.5.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.5.0.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
-        "${_bfqpath}/0004-Turn-into-BFQ-${_bfqver}-for-4.9.0.patch"
-        "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
-        'change-default-console-loglevel.patch'
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.13/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.13/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+        "${_lucjanpath}/${_bfq_sq_mq_patch}"
+        "${_lucjanpath}/blk-mq-v10/0050-blk-mq-sched-dispatch-from-scheduler-only-after-progress-is-made-on->dispatch.patch"
+        "${_lucjanpath}/blk-mq-v10/0051-blk-mq-sched-move-actual-dispatching-into-one-helper.patch"
+        "${_lucjanpath}/blk-mq-v10/0052-blk-mq-sbitmap-introduce__sbitmap_for_each_set().patch"
+        "${_lucjanpath}/blk-mq-v10/0053-blk-mq-block-kyber-check-if-there-is-request-in-ctx-in-kyber_has_work().patch"
+        "${_lucjanpath}/blk-mq-v10/0054-blk-mq-introduce-get_budget-and-put_budget-in-blk_mq_ops.patch"
+        "${_lucjanpath}/blk-mq-v10/0055-blk-mq-sched-improve-dispatching-from-sw-queue.patch"
+        "${_lucjanpath}/blk-mq-v10/0056-blk-mq-SCSI-allow-to-pass-null-rq-to-scsi_prep_state_check().patch"
+        "${_lucjanpath}/blk-mq-v10/0057-blk-mq-SCSI-implement-get-budget-and-put_budget-for-blk-mq.patch"
+        "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
+        "${_lucjanpath}/0200-BFQ-MQ-bugfix-from-pfkernel-2.patch"
+        "${_lucjanpath}/0200-BFQ-MQ-bugfix-from-pfkernel-3.patch"
+        "${_lucjanpath}/0200-BFQ-MQ-bugfix-from-pfkernel-4.patch"
+        "${_lucjanpath}/0300-Disable-writeback-throttling.patch"
+        "${_gcc_path}/${_gcc_patch}"
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
          # the main kernel config files
-        'config' 'config.x86_64'
+        'config.i686' 'config.x86_64'
          # pacman hook for initramfs regeneration
         '90-linux.hook'
          # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        "${_lucjanpath}/0005-BFQ-update-to-v8r12.patch")
+        'linux.preset')
         
-_kernelname=${pkgbase#linux}
+_kernelname=${pkgbase#linux} 
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
+    cd ${_srcname}
 
     ### Add upstream patch
         msg "Add upstream patch"
-        patch -Np1 -i "${srcdir}/patch-${_pkgver}"
+        patch -p1 -i ../patch-${_pkgver}
     
     ### Add rt patch
         msg "Add rt patch"
-        patch -Np1 -i "${srcdir}/patch-${_pkgver}-${_rtpatchver}.patch"
-        
+        patch -Np1 -i ../patch-${_pkgver}-${_rtpatchver}.patch
+    
     ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
     # Stops X from hanging on certain NVIDIA cards
         msg "Fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
-        patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"          
-    
-    ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-    # remove this when a Kconfig knob is made available by upstream
-    # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-        msg "Patching set DEFAULT_CONSOLE_LOGLEVEL to 4"
-        patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-    ### Patch source with BFQ
-        msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4,5}-*BFQ*.patch; do
+        patch -p1 -i ../fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
+            
+    ### Patch source with BFQ-SQ-MQ
+        msg "Fix naming schema in BFQ-SQ-MQ patch"
+        sed -i -e "s|PATCHLEVEL = 14|PATCHLEVEL = 13|g" \
+            -i -e "s|SUBLEVEL = 0|SUBLEVEL = 7|g" \
+            -i -e "s|EXTRAVERSION = -rc3|EXTRAVERSION =|g" \
+            -i -e "s|EXTRAVERSION =-bfq|EXTRAVERSION =|g" \
+            -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" ../${_bfq_sq_mq_patch}
+        msg "Patching source with BFQ-SQ-MQ patches"
+        patch -Np1 -i ../${_bfq_sq_mq_patch}
+        
+    ### Patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
+        if [ -n "$_use_tentative_patches" ]; then
+        msg "Apply tentative patches"
+        for p in "${srcdir}"/0100*.patch*; do 
         msg " $p"
-        patch -Np1 -i "$p"
-        done
-
+        patch -Np1 -i "$p"; done
+        fi
+        
+    ### Patches from https://github.com/pfactum/pf-kernel/
+        if [ -n "$_use_pfkernel_patches" ]; then
+        msg "Apply pfkernel patches"
+        for p in "${srcdir}"/0200*.patch*; do 
+        msg " $p" 
+        patch -Np1 -i "$p"; done
+        fi
+        
+    ### Use patches from https://marc.info/?l=linux-block&m=150797307912556&w=1
+        if [ -n "$_use_blk_mq_patches" ]; then
+        msg "Apply blk-mq patches"
+        for p in "${srcdir}"/*-blk-mq*.patch*; do 
+        msg " $p" 
+        patch -Np1 -i "$p"; done
+        fi     
+    
+    ### Patch from https://marc.info/?l=linux-block&m=150486424501778&w=2
+        if [ -n "$_use_lucamiccio_patch" ]; then
+        msg "Apply Luca Miccio patch"
+        for p in "${srcdir}"/0300*.patch*; do 
+        msg " $p" 
+        patch -Np1 -i "$p"; done
+        fi
+    
     ### Patch source to enable more gcc CPU optimizatons via the make nconfig
         msg "Patching source with gcc patch to enable more cpus types"
-	patch -Np1 -i "${srcdir}/${_gcc_patch}"
-
+	patch -Np1 -i ../${_gcc_patch}
 	
     ### Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
 	make mrproper
 
-	if [ "${CARCH}" = "x86_64" ]; then
-		cat "${srcdir}/config.x86_64" > ./.config
-	else
-		cat "${srcdir}/config" > ./.config
-	fi
-
-   ### Optionally set tickrate to 1000 
-       if [ -n "$_1k_HZ_ticks" ]; then
-		msg "Setting tick rate to 1k..."
-		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
-			-i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
-			-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
-       fi
-	
-	### Optionally use running kernel's config
+	cp -Tf ../config.${CARCH} .config
+        
+    ### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
 	if [ -n "$_use_current" ]; then
 		if [[ -s /proc/config.gz ]]; then
@@ -158,14 +193,22 @@ prepare() {
 			warning "Aborting!"
 			exit
 		fi
+	fi    
+        
+    ### Optionally set tickrate to 1000 
+	if [ -n "$_1k_HZ_ticks" ]; then
+		msg "Setting tick rate to 1k..."
+		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
+			-i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
+			-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
 	fi
-
+   
 	if [ "${_kernelname}" != "" ]; then
 		sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
 		sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
 	fi
 
-	### Optionally disable NUMA since >99% of users have mono-socket systems.
+    ### Optionally disable NUMA since >99% of users have mono-socket systems.
 	# For more, see: https://bugs.archlinux.org/task/31187
 	if [ -n "$_NUMAdisable" ]; then
 		if [ "${CARCH}" = "x86_64" ]; then
@@ -183,13 +226,13 @@ prepare() {
 		fi
 	fi
 
-	# set extraversion to pkgrel
+	### Set extraversion to pkgrel
 	sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
-	# don't run depmod on 'make install'. We'll do this ourselves in packaging
+	### Don't run depmod on 'make install'. We'll do this ourselves in packaging
 	sed -i '2iexit 0' scripts/depmod.sh
 
-	# get kernel version
+	### Get kernel version
 	msg "Running make prepare for you to enable patched options of your choosing"
 	make prepare
 
@@ -207,39 +250,31 @@ prepare() {
 		make localmodconfig
 	fi
 
-	if [ -n "$_makenconfig" ]; then
-		msg "Running make nconfig"
-		make nconfig
-	fi
+	### Running make nconfig
 	
-	if [ -n "$_makemenuconfig" ]; then
-		msg "Running make menuconfig"
-		make menuconfig
-	fi
+	[[ -z "$_makenconfig" ]] ||  make nconfig
 	
-	if [ -n "$_makexconfig" ]; then
-		msg "Running make xconfig"
-		make xconfig
-	fi
+	### Running make menuconfig
 	
-	if [ -n "$_makegconfig" ]; then
-		msg "Running make gconfig"
-		make gconfig
-	fi
-
-	# rewrite configuration
+	[[ -z "$_makemenuconfig" ]] || make menuconfig
+	
+	### Running make xconfig
+	
+	[[ -z "$_makexconfig" ]] || make xconfig
+	
+	### Running make gconfig
+	
+	[[ -z "$_makegconfig" ]] || make gconfig
+	
+	### Rewrite configuration
 	yes "" | make config >/dev/null
 
-	# save configuration for later reuse
-	if [ "${CARCH}" = "x86_64" ]; then
-		cat .config > "${startdir}/config.x86_64.last"
-	else
-		cat .config > "${startdir}/config.last"
-	fi
+	### Save configuration for later reuse
+	cat .config > "${startdir}/config.${CARCH}.last"
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
@@ -251,51 +286,53 @@ _package() {
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
     install=linux.install
 
-    cd "${srcdir}/${_srcname}"
-    
+    cd ${_srcname}
+
     KARCH=x86
 
    # get kernel version
-    _kernver="$(make LOCALVERSION= kernelrelease)"
-    _basekernel=${_kernver%%-*}
-    _basekernel=${_basekernel%.*}
+   _kernver="$(make LOCALVERSION= kernelrelease)"
+   _basekernel=${_kernver%%-*}
+   _basekernel=${_basekernel%.*}
 
-    mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-    make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-    cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
+   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
+   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
-    # set correct depmod command for install
-    sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+   # set correct depmod command for install
+   sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
     "${startdir}/${install}" > "${startdir}/${install}.pkg"
-    true && install=${install}.pkg
+   true && install=${install}.pkg
 
-    # install mkinitcpio preset file for kernel
-    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
-    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+   # install mkinitcpio preset file for kernel
+   sed "s|%PKGBASE%|${pkgbase}|g" ../linux.preset |
+    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
-    # install pacman hook for initramfs regeneration
-    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+   # install pacman hook for initramfs regeneration
+   sed "s|%PKGBASE%|${pkgbase}|g" ../90-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
-    # remove build and source links
-    rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-    # remove the firmware
-    rm -rf "${pkgdir}/lib/firmware"
-    # make room for external modules
-    ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-    # add real version for building modules and running depmod from post_install/upgrade
-    mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
-    echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+   # remove build and source links
+   rm "${pkgdir}"/lib/modules/${_kernver}/{source,build}
 
-    # Now we call depmod...
-    depmod -b "${pkgdir}" -F System.map "${_kernver}"
+   # remove the firmware
+   rm -r "${pkgdir}/lib/firmware"
 
-    # move module tree /lib -> /usr/lib
-    mkdir -p "${pkgdir}/usr"
-    mv "${pkgdir}/lib" "${pkgdir}/usr/"
+   # make room for external modules
+   ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
 
-    # add vmlinux
-    install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+   # add real version for building modules and running depmod from post_install/upgrade
+   echo "${_kernver}" |
+    install -Dm644 /dev/stdin "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+
+   # Now we call depmod...
+   depmod -b "${pkgdir}" -F System.map "${_kernver}"
+
+   # move module tree /lib -> /usr/lib
+   mv -t "${pkgdir}/usr" "${pkgdir}/lib"
+
+  # add vmlinux
+  install -Dm644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
 _package-headers() {
@@ -304,151 +341,90 @@ _package-headers() {
 
     install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-    cd "${srcdir}/${_srcname}"
+    cd ${_srcname}
+    local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
-    
-        install -D -m644 Makefile \
-		"${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
-	install -D -m644 kernel/Makefile \
-		"${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
-	install -D -m644 .config \
-		"${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
+    install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
+    install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
 
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
+    mkdir "${_builddir}/.tmp_versions"
 
-	for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-		media net pcmcia scsi soc sound trace uapi video xen; do
-	cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
-	done
+    cp -t "${_builddir}" -a include scripts
 
-	# copy arch includes for external modules
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86"
-	cp -a arch/x86/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86/"
+    install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
+    install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
 
-	# copy files necessary for later builds, like nvidia and vmware
-	cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
-	cp -a scripts "${pkgdir}/usr/lib/modules/${_kernver}/build"
+    if [[ ${CARCH} = i686 ]]; then
+    install -t "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile_32.cpu
+    fi
 
-	# fix permissions on scripts dir
-	chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
+    cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
 
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
+    install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
+    install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
 
-	cp arch/${KARCH}/Makefile "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
+    # http://bugs.archlinux.org/task/9912
+    install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
-	if [ "${CARCH}" = "i686" ]; then
-		cp arch/${KARCH}/Makefile_32.cpu "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
-	fi
+    # http://bugs.archlinux.org/task/13146
+    install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/lgdt330x.h
+    install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-	cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
+    # http://bugs.archlinux.org/task/20402
+    install -Dt "${_builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+    install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+    install -Dt "${_builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-	# add docbook makefile
-	install -D -m644 Documentation/DocBook/Makefile \
-	"${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+    # add xfs and shmem for aufs building
+    mkdir -p "${_builddir}"/{fs/xfs,mm}
 
-	# add dm headers
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
-	cp drivers/md/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
+    # copy in Kconfig files
+    find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
 
-	# add inotify.h
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux"
-	cp include/linux/inotify.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux/"
-
-	# add wireless headers
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
-	cp net/mac80211/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
-
-	# add dvb headers for external modules
-	# in reference to:
-	# http://bugs.archlinux.org/task/9912
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core"
-	cp drivers/media/dvb-core/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core/"
-	# and...
-	# http://bugs.archlinux.org/task/11194
-	###
-	### DO NOT MERGE OUT THIS IF STATEMENT
-	### IT AFFECTS USERS WHO STRIP OUT THE DVB STUFF SO THE OFFICIAL ARCH CODE HAS A CP
-	### LINE THAT CAUSES MAKEPKG TO END IN AN ERROR
-	###
-	if [ -d include/config/dvb/ ]; then
-		mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
-		cp include/config/dvb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
-	fi
-
-	# add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
-	# in reference to:
-	# http://bugs.archlinux.org/task/13146
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-	cp drivers/media/dvb-frontends/lgdt330x.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
-	cp drivers/media/i2c/msp3400-driver.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
-
-	# add dvb headers
-	# in reference to:
-	# http://bugs.archlinux.org/task/20402
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb"
-	cp drivers/media/usb/dvb-usb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb/"
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends"
-	cp drivers/media/dvb-frontends/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners"
-	cp drivers/media/tuners/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners/"
-
-	# add xfs and shmem for aufs building
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs"
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/mm"
-	# removed in 3.17 series
-	#cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
-
-	# copy in Kconfig files
-	for i in $(find . -name "Kconfig*"); do
-		mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
-		cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
-	done
-	
-	# add objtool for external module building and enabled VALIDATION_STACK option
-        if [ -f tools/objtool/objtool ];  then
-        mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-        cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
-        fi
-
-	chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
-	find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
-
-	# strip scripts directory
-	find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
-	case "$(file -bi "${binary}")" in
-	*application/x-sharedlib*) # Libraries (.so)
-		/usr/bin/strip ${STRIP_SHARED} "${binary}";;
-	*application/x-archive*) # Libraries (.a)
-		/usr/bin/strip ${STRIP_STATIC} "${binary}";;
-	*application/x-executable*) # Binaries
-		/usr/bin/strip ${STRIP_BINARIES} "${binary}";;
-	esac
-	done
-	
-        # remove a files already in linux-bfq-docs package
-        rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
-        rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
-        rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
+    # add objtool for external module building and enabled VALIDATION_STACK option
+    if [[ -e tools/objtool/objtool ]]; then
+    install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
+    fi
 
     # remove unneeded architectures
-    rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+    local _arch
+    for _arch in "${_builddir}"/arch/*/; do
+    if [[ ${_arch} != */${KARCH}/ ]]; then
+      rm -r "${_arch}"
+    fi
+    done
+
+    # remove files already in linux-rt-bfq-docs package
+    rm -r "${_builddir}/Documentation"
+
+    # Fix permissions
+    chmod -R u=rwX,go=rX "${_builddir}"
+
+    # strip scripts directory
+    local _binary _strip
+    while read -rd '' _binary; do
+    case "$(file -bi "${_binary}")" in
+      *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
+      *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
+      *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
+      *) continue ;;
+    esac
+    /usr/bin/strip ${_strip} "${_binary}"
+   done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
 }
 
 _package-docs() {
     pkgdesc="Kernel hackers manual - HTML documentation that comes with the linux-rt-bfq kernel"
     depends=('linux-rt-bfq')
   
-    cd "${srcdir}/${_srcname}"
+    cd ${_srcname}
+    local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
-    cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
-    find "${pkgdir}" -type f -exec chmod 444 {} \;
-    find "${pkgdir}" -type d -exec chmod 755 {} \;
+    mkdir -p "${_builddir}"
+    cp -t "${_builddir}" -a Documentation
 
-    # remove a file already in linux package
-    rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+    # Fix permissions
+    chmod -R u=rwX,go=rX "${_builddir}"
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
@@ -459,25 +435,33 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3a571225f92a33ef0b6d65f35595bc32d773356646df2627da55e9bc7f1f1a'
+sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f3119aea6cbd7b61df30ca6ef3ec57044d524b7babbaabddf8b08b8bafa7d2'
             'SKIP'
-            '1444676c9bdff6133191db4885fb6ddfb989e355c7f16ddc42ff1ed9415917f06c8147cd69346525624da8547204a68303d5002417b40e11c0174341f55cfc09'
+            '4d96c655ca4c720b872e1a88ba9989a419880cb5fec2a4a9190077588066f205c5dce2591a76f26375f6f50001334ceb7631d489d3b24ca443d10e1e6879ed54'
             'SKIP'
-            'b41e77788f29f825d7de923b9601668a27298ed21c6ca44576f67c0db48795b8b22f32bcdb713eb79792e4d1b286dce1387faa3418a306034516023943047609'
+            'efffccb597b53d096bcfde6d32688e175c975ef194093ccf165a03d2ca985165589dbc10b62e81f816f1264ab932563b23d20eab41c1a20214a11a940c02499d'
             'SKIP'
-            '5709ec16030f372309c06020ab0cc23940cad320204ce12426b8b10b3bdbd9be25c8a7bae247ce341429e8a33d0097700a88149d54b29ff44a61d1d4aff66763'
-            '953566f2b74415cd5113882352c8518234c399e0e0a6cc118ddfa259c65d6fc30de00f25b605489d53e0b1f948bc7b3ebf8f20b970538f5bf7de5a7f33a0f641'
-            '8fed8499a52d685e81a1cffac7e6764a3720a923c3a3e4ccec33a4b0145dc84c24172363ff5574608d80c10462a4e824ef1b5ad3e5e5187f816e16adab774700'
-            '93338e0ae23d2832e4dc75b1b4dc6d2ba34d621a71c7951f1e70ddd483d091211b2aa429683b21a7f9cf2152e2d974b6a1a8cc7b0d6549a7f639870b07f5295e'
-            '77d80d50d8c4323ed36fd2097ba9f6b49bb8d7cae59d32ffa76b309758a7e9f972d26fedd77046d88ce2691bb01a07909f8bdc34ba214414be3bc030ee31994d'
-            'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
+            'bc9b8699447c9c88bc93f9d2672663e50fa6773ec44f44a6afc93439f4c414a1cd2a35d94fe5205b8a066f1531b40b072d439152ec7d39d1282515c282f4bb63'
+            '11dd363137d680d1bde1e332c3829246773e49d5fd0d2ef4ab77723ca0d2ecb3ad80a77a08dca8c4ce817ff0f966709673453e754f15e3e1527f943725d547ff'
+            'ca6a40800668c0fcf478bd1bc555e5a496f5259739594bf83cc4963756b7a9a0a5b406e91f760d35f1bce1268c01d779fe2a7e749eccf9412e826152a5f013ef'
+            '1434cc3957ef77fb83c9385a348f36ca43a73459b8995d3061143d1d15b307f944c39abc0eb109d20869c1749348d608c58cf5b92fd81ad65cad2d362e346549'
+            '49c8619a96d7145e8fe77fad4394db7b24a73d94c1e01866e4a3bc5b044dbbb59c8aa2db62d72ef8460ec777d88959b545ad6373073fe3fd21016e5fc08c9f3c'
+            '8d81793da14847ee521d230a3065b0c1dfd0138c28ea350754de21e2908132866e4851119f98182cf8725a92a803c31999f457a495c5079afe7d82470f5fcb63'
+            '27b68107c4920baf85a5b1e1636d523399bcc1c7bce5e238ee321c666bb79f0124890577b3cba16a99d7da406015401324e8d04b91a1f73e4093473033ae237a'
+            '82e624f91c6609bec6ebbc284c8413e638802d3306d6e3826524631fd3a4fdaaed9a85a366e9d3deab2d1b1638f2225a64942e754145ea30da896fc3155574eb'
+            '75403516c0e64e13c66602ade9ac12fd553ec811628b4bba79686e183e12a798281566dfdbbe0ba1217ebe8ee1d294a7ca904c36d7b760bcb558ddca0cb7f260'
+            '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
+            '862918504ae7f05af830582492f387918d6be0be4036fa0b65765c97cbacfe637edf44a3e510fd042e077a226e447169cc28129f59c7175eacd82019eab45aa4'
+            'e607eb2a937f6055ff1216377091f6e23858f94fbfe532089849f1558d8539700220500262f501bb9a4d4d61cfe32372aa2a4745a5cb630a49b23482eab36d4c'
+            'c1f1584feabd894551d8ca083f233b1c3d850ae295b2034360635986bc7850a654f8dc2af16e342b98c10c8927d5d3fd99d5d0f48cccc1f363dd377f0dd6f85b'
+            'a1ccc22354a420467fb912f822585ed4573e68f4694f02ab83d7c8e352da88be495acb3cb4c451c27ca0cf0befe5925b8734d37205bb3dfdaf86d2dedef0798f'
+            '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            'e7c8fd3dd50272518323ac5f27e7e911e8138dbe1268865b5cc343e1c84d531e91d3581cd11df9513952d02e213e916d0c28ecd19acf2660519fc040dfaabb94'
-            '7a0a6eb4a2f0c4a981104ff4d09ff1a4ad75c9dc47d27276e0971b9fa16aeb208cb2c4158c491e8d067bf5f7f6c33ebd6826e18ad0d6203cac5711be453da93a'
+            '922a57fbc39d20fbd054bddf953168e38fffa4a6b86d70665252c3d3f15a07f525a4c238e1d0eb413e0bbf66260abdc1c80da8f87f34a33d69c3d3d650f64b43'
+            '63c2eaba9191e40108f7cefc17ea6794023fd9ac9ddbd0ea3da174d0e1813914958d60294cad2b4f8c0ba87b05814bf04d8e8c028092e38a28a66b9428dab720'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '29dc0d150717b1d1ba2c249ee7e1bc91a3f7089d4db349b3473a242ab39c3596b8799db98b1ae3f64c3a090656661cf6656dca35ec5b212c0f39b7850df2cdd4')
-
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
+            
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
