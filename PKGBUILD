@@ -10,7 +10,7 @@ pkgdesc='Simple calendar (CalDAV) and contact (CardDAV) server'
 arch=('any')
 url='http://www.radicale.org/'
 license=('GPL3')
-depends=('python>=3.3' 'python-vobject')
+depends=('python>=3.3' 'python-vobject' 'python-setuptools')
 makedepends=('python-setuptools')
 backup=('etc/radicale/config')
 install='radicale.install'
@@ -21,23 +21,21 @@ source=(
 )
 optdepends=(
 	'python-passlib: bcrypt support for htpasswd access'
-	'python-requests: HTTP authentication support'
-	'python-dulwich: Git support'
 #	'python-pam: PAM authentication support'
 #	'python-ldap: LDAP authentication support'
 )
 
 package() {
-  pushd ${_pkgname}-${pkgver}
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+    pushd ${_pkgname}-${pkgver}
+    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 
-  install -m644 -D 'config' "${pkgdir}/etc/radicale/config"
+    install -m644 -D 'config' "${pkgdir}/etc/radicale/config"
 
-  install -m644 -D 'radicale.fcgi' "${pkgdir}/usr/share/${pkgname}/radicale.fcgi"
-  install -m644 -D 'radicale.wsgi' "${pkgdir}/usr/share/${pkgname}/radicale.wsgi"
-  popd
+    install -m644 -D 'radicale.fcgi' "${pkgdir}/usr/share/${pkgname}/radicale.fcgi"
+    install -m644 -D 'radicale.wsgi' "${pkgdir}/usr/share/${pkgname}/radicale.wsgi"
+    popd
 
-  install -m644 -D 'radicale.service' "${pkgdir}/usr/lib/systemd/system/radicale.service"
+    install -m644 -D 'radicale.service' "${pkgdir}/usr/lib/systemd/system/radicale.service"
 }
 
 sha256sums=('fdf3942973e6778430cf1abbb8c8cb113ff104dd12b47a894642a2ebf6cf5e88'

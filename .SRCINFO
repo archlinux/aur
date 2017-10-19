@@ -9,9 +9,8 @@ pkgbase = radicale
 	makedepends = python-setuptools
 	depends = python>=3.3
 	depends = python-vobject
+	depends = python-setuptools
 	optdepends = python-passlib: bcrypt support for htpasswd access
-	optdepends = python-requests: HTTP authentication support
-	optdepends = python-dulwich: Git support
 	backup = etc/radicale/config
 	source = radicale-2.1.8.tar.gz::https://github.com/Kozea/Radicale/archive/2.1.8.tar.gz
 	source = radicale.service
