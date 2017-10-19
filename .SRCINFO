@@ -1,0 +1,27 @@
+pkgbase = sniffglue-git
+	pkgdesc = Secure multithreaded packet sniffer
+	pkgver = 0.3.0
+	pkgrel = 2
+	url = https://github.com/kpcyrd/sniffglue
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL3
+	makedepends = cargo
+	depends = libpcap
+	depends = libseccomp
+	provides = sniffglue
+	conflicts = sniffglue
+	backup = etc/sniffglue.conf
+	source = git+https://github.com/kpcyrd/sniffglue.git
+	source = sniffglue-sysuser.conf
+	source = sniffglue.conf
+	sha256sums = SKIP
+	sha256sums = 531e051488e57ed2f5bf5d8289fa5562aa0ca73783838c11ec13c043dc268d02
+	sha256sums = a2e6cfa918a4e354b5c4c4c84867f3bb142833fde4acab545e13c8e89864004c
+	sha512sums = SKIP
+	sha512sums = 2595eb4856bc7a59c078255bf2aeeaa44a4f6a69b37cc8982e5d70a8ef14cb29b83b4d191ab3baabfbcf209f3effd232c10ec5baabc6ce52990969526d6fda98
+	sha512sums = 66e6b87e832ba8424334d24e3457a214e60e67c731471098329d0ca54c574518f7856ba780bb6bffde53bdefe2c8f789a242138ae67e2fef3e562fa083b362b1
+
+pkgname = sniffglue-git
+
