@@ -14,6 +14,9 @@ ExecStart=/usr/bin/jetty start
 ExecStop=/usr/bin/jetty stop
 ExecReload=/usr/bin/jetty restart
 PIDFile=/run/jetty/jetty.pid
+RuntimeDirectory=jetty
+User=jetty
+Group=jetty
 
 [Install]
 WantedBy=multi-user.target
