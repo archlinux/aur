@@ -1,7 +1,7 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
-pkgver=0.13.1
-pkgrel=5
+pkgver=0.14.1
+pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/albertlauncher"
@@ -12,34 +12,43 @@ depends=(
   'libx11'
 )
 makedepends=(
-  'git'
   'cmake'
   'gcc'
-  'qt5-svg'
+  'git'
+  'muparser'
+  'python'
   'qt5-declarative'
+  'qt5-svg'
   'virtualbox'
   'virtualbox-sdk'
-  'muparser'
 )
 optdepends=(
-  'virtualbox: VirtualBox plugin'
   'muparser: Calculator plugin'
-  'qt5-quickcontrols: QML frontend'
+  'python: Python extension'
   'qt5-graphicaleffects: QML frontend'
+  'qt5-quickcontrols: QML frontend'
+  'virtualbox: VirtualBox plugin'
 )
 provides=('albert')
 conflicts=('albert-git')
-source=('git+https://github.com/albertlauncher/albert.git'
-        'git+https://github.com/albertlauncher/plugins.git')
-md5sums=('SKIP' 'SKIP')
+source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v${pkgver}"
+        "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
+        "mirrors/pybind11::git+https://github.com/pybind/pybind11.git")
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 
 prepare() {
-  cd "${srcdir}/albert"
-  git checkout "v${pkgver}" > /dev/null 2>&1
+
+  cd "$srcdir/albert"
   git submodule init
-  git config submodule.plugins.url $srcdir/plugins
+  git config submodule.plugins.url "$srcdir/plugins"
   git submodule update plugins
+
+  cd "$srcdir/albert/plugins"
+  git submodule init
+  git config submodule.python/pybind11.url $srcdir/pybind11
+  git submodule update python/pybind11
+
 }
 
 
@@ -63,7 +72,7 @@ build() {
   cmake \
     "../${pkgname}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE="Release" \
+    -DCMAKE_BUILD_TYPE="MinSizeRel" \
     -Wno-dev
 
     # Maybe you want to add some of those
@@ -82,19 +91,20 @@ build() {
     #-DBUILD_HASHGENERATOR=ON
     #-DBUILD_KVSTORE=ON
     #-DBUILD_MPRIS=ON
+    #-DBUILD_PYTHON=ON
     #-DBUILD_SSH=ON
     #-DBUILD_SYSTEM=ON
     #-DBUILD_TEMPLATE=OFF
     #-DBUILD_TERMINAL=ON
     #-DBUILD_VIRTUALBOX=ON
 
-  make
+  make -j $((`nproc`+1))
 }
 
 
 package() {
   cd "${srcdir}/build"
-  make DESTDIR="$pkgdir/" install | grep -v '^-- '
+  make DESTDIR="$pkgdir/" install
 }
 
 # vim:set ts=2 sw=2 et:
