@@ -1,6 +1,6 @@
 pkgbase = crate
 	pkgdesc = Shared nothing, fully searchable, document oriented cluster datastore.
-	pkgver = 2.1.7
+	pkgver = 2.1.8
 	pkgrel = 1
 	url = http://crate.io
 	install = crate.install
@@ -11,10 +11,10 @@ pkgbase = crate
 	depends = python
 	backup = etc/crate/crate.yml
 	backup = etc/crate/logging.yml
-	source = https://cdn.crate.io/downloads/releases/crate-2.1.7.tar.gz
+	source = https://cdn.crate.io/downloads/releases/crate-2.1.8.tar.gz
 	source = crate.service
 	source = crate.env
-	sha256sums = f07ed3230da52f3f67d00e24aca915070e1996de20cfb5702e44f6328eb2f693
+	sha256sums = 4a5094b5a3e88a440b93da8883acb3796f3f5d034dc172f359660890e02242a3
 	sha256sums = 04b36b561498332b1b569e49b42d0bedf04141de07b7b16ff1b06072673cfd21
 	sha256sums = 6182b8d527d52de4fc80023827518b2e8d873afdda873ef6bd2ed92b91982f75
 
