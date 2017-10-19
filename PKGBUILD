@@ -1,18 +1,18 @@
 # Maintainer: Willem Mulder <14mRh4X0r@gmail.com>
 _pkgname=passff
 pkgname=firefox-passff-git
-pkgver=1.0.0.r0.c18c198
+pkgver=1.0.3linux.r0.3e382fd
 pkgrel=1
 pkgdesc="zx2c4 pass manager addon for firefox"
 arch=(any)
-url="https://github.com/nwallace/passff"
+url="https://github.com/passff/passff"
 license=('GPL2')
 groups=(firefox-addons)
-depends=(firefox)
-makedepends=(git make zip sed jq)
+depends=('firefox>=50' 'python')
+makedepends=(git make zip jq)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${_pkgname}::git+https://github.com/nwallace/${_pkgname}.git")
+source=("${_pkgname}::git+https://github.com/passff/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -35,7 +35,9 @@ package() {
 		"${pkgdir}/usr/lib/firefox/browser/extensions/${ext_id}.xpi"
 
         # Install host application
-        install -Dm644 -t "${pkgdir}/usr/lib/mozilla/native-messaging-hosts" \
-            ./host/passff.py \
-            ./host/passff.json
+        install -Dm755 host/passff.py \
+            "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/passff.py"
+
+        jq '.path = "/usr/lib/mozilla/native-messaging-hosts"' host/passff.json \
+            > "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/passff.json"
 }
