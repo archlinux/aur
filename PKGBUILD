@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=pcem-wx-sdl2-git
-pkgver=r279.cd75b26
+pkgver=r284.c5517fa
 pkgrel=1
 pkgdesc="Unofficial version of PCem that uses wxWidgets/SDL2"
 url="https://github.com/mborjesson/PCem-wx-SDL2"
@@ -18,6 +18,11 @@ md5sums=('SKIP')
 pkgver() {
   cd PCem-wx-SDL2
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/PCem-wx-SDL2"
+  sed -i 's@#include "slirp_config.h"@#include "slirp_config.h"\n#include <stdint.h>@' src/slirp/slirp.h
 }
 
 build() {
