@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="Secure multithreaded packet sniffer"
 url="https://github.com/kpcyrd/sniffglue"
 depends=('libpcap' 'libseccomp')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 provides=('sniffglue')
 conflicts=('sniffglue')
 arch=('i686' 'x86_64' 'armv6h')
@@ -22,6 +22,10 @@ sha256sums=('SKIP'
 sha512sums=('SKIP'
             '2595eb4856bc7a59c078255bf2aeeaa44a4f6a69b37cc8982e5d70a8ef14cb29b83b4d191ab3baabfbcf209f3effd232c10ec5baabc6ce52990969526d6fda98'
             '66e6b87e832ba8424334d24e3457a214e60e67c731471098329d0ca54c574518f7856ba780bb6bffde53bdefe2c8f789a242138ae67e2fef3e562fa083b362b1')
+
+pkgver() {
+    git describe --tags --always | sed 's/^v//;s/-/./g'
+}
 
 build() {
   cd "$_gitname"
