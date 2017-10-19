@@ -5,7 +5,7 @@
 
 pkgname=virt-backup
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic backups for Libvirt"
 arch=(any)
 url="https://github.com/Anthony25/virt-backup"
@@ -14,7 +14,7 @@ makedepends=(
   python-setuptools
 )
 depends=(
-  libvirt-python3
+  libvirt-python
   python-appdirs
   python-argparse
   python-arrow

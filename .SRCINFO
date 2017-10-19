@@ -1,12 +1,12 @@
 pkgbase = virt-backup
 	pkgdesc = Automatic backups for Libvirt
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Anthony25/virt-backup
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = libvirt-python3
+	depends = libvirt-python
 	depends = python-appdirs
 	depends = python-argparse
 	depends = python-arrow
