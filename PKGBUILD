@@ -2,12 +2,19 @@
 # Disclaimer: I have no idea if this works, I only packaged it.
 pkgname=rasdaemon
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog"
 arch=(i686 x86_64)
 url="http://www.infradead.org/~mchehab/rasdaemon/"
 license=(GPL2)
-depends=(dmidecode sqlite)
+depends=(
+  # For rasdaemon:
+  sqlite
+  # For ras-mc-ctl:
+  dmidecode
+  perl
+  perl-dbd-sqlite
+)
 source=("https://www.infradead.org/~mchehab/rasdaemon/rasdaemon-$pkgver.tar.bz2")
 sha256sums=('b435ae16be8e1c50b2e57d4d9917f3ea92041ac6ffb5f8c015a8989303e78ca9')
 # Git tree: http://git.infradead.org/users/mchehab/rasdaemon.git
