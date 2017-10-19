@@ -1,0 +1,24 @@
+pkgbase = hdfview-beta
+	pkgdesc = a GUI browser for reading hdf5 files (created with versions up to 1.10)
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://support.hdfgroup.org/products/java/release/hdfview3.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = apache-ant
+	makedepends = java-environment
+	depends = hdf5-openmpi-java
+	depends = hdf4-java
+	options = !strip
+	source = https://support.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfview-3.0.0/src/hdfview-3.0.0.tar.gz
+	source = license
+	source = HDFView-beta.desktop
+	source = HDFView-beta.ico
+	md5sums = 0a05625e78c01f4603d03b1fbf0a84cd
+	md5sums = db0de6079dd881781768d05de29c50e0
+	md5sums = 0d10b620f2debd0d73be53873d4bf347
+	md5sums = b86542f80203ea9f93f447fa7c20d25a
+
+pkgname = hdfview-beta
+
