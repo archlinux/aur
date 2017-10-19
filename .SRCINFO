@@ -1,14 +1,14 @@
 pkgbase = hdfview
-	pkgdesc = a GUI browser for hdf5 files
+	pkgdesc = a GUI browser for reading hdf5 files (created with versions up to 1.8)
 	pkgver = 2.14.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://support.hdfgroup.org/products/java/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = apache-ant
+	makedepends = java-environment
 	depends = hdf-java
-	depends = java-environment
 	options = !strip
 	source = https://support.hdfgroup.org/ftp/HDF5/hdf-java/current/src/hdfview-2.14.tar.gz
 	source = HDFView.desktop
