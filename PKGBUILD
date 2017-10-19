@@ -3,7 +3,7 @@
 pkgname=tidb-git
 pkgver=1.0.0.17.gb45890ab6
 pkgrel=1
-pkgdesc="Distributed SQL database inspired by the desing of Google F1"
+pkgdesc="Distributed NewSQL database compatible with MySQL protocol"
 arch=('i686' 'x86_64')
 url="https://pingcap.com/"
 license=('APACHE')
