@@ -8,6 +8,7 @@ pkgbase = sniffglue-git
 	arch = armv6h
 	license = GPL3
 	makedepends = cargo
+	makedepends = git
 	depends = libpcap
 	depends = libseccomp
 	provides = sniffglue
