@@ -1,7 +1,7 @@
 # Maintainer: Lettier <gifcurry_aur a@@at@t lettier dd.ot..t ccommm>
 
 _hkgname=Gifcurry
-_ver=2.2.0.0
+_ver=2.3.0.0
 _xrev=0
 
 pkgname=gifcurry
@@ -15,7 +15,7 @@ makedepends=("make" "gobject-introspection" "git" "gmp" "zlib")
 depends=("gtk3" "ffmpeg" "imagemagick")
 options=("strip" "staticlibs")
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${_ver}/${_hkgname}-${_ver}.tar.gz")
-sha256sums=('3a8fa6002f81d189e7bd9c15b5e331161d6a0b0e3a3455907a830d676fbec5a5')
+sha256sums=('906119e22e7a358ddd48fe7350757502bce9b274e24ed46bacb59e8e4c9e95f7')
 
 build() {
   cd "${srcdir}"
