@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann <r dot neumann at homeinfo period de>
 
 pkgname=archisomod
-pkgver=r39.d669598
+pkgver=latest
 pkgrel=2
 _reponame='archiso-tools'
 pkgdesc='Another tool to remaster Arch Linux live ISOs'
