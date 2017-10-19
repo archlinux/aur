@@ -1,20 +1,21 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Author: CSSlayer <wengxt@gmail.com>
-# Contributor: Yangtse <yangtsesu@gmail.com> 
+# Contributor: Yangtse <yangtsesu@gmail.com>
 
 pkgname=fcitx-ui-light
 pkgver=0.1.3
 pkgrel=3
 pkgdesc="Light weight xlib and xft based ui for fcitx."
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/fcitx"
+url="https://github.com/fcitx/fcitx-ui-light"
 license=('GPL2')
-depends=('fcitx>=4.1.0' 'libxpm')
+depends=('fcitx' 'libxpm')
 makedepends=('cmake' 'intltool')
-source=("http://fcitx.googlecode.com/files/${pkgname}-${pkgver}.tar.bz2")
+source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.bz2")
+md5sums=('633e8b018da9c8f09f99567b5479cf18')
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/$pkgname-$pkgver"
 
   rm -rf build
   mkdir build
@@ -25,8 +26,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}/build"
-  make DESTDIR="${pkgdir}" install
+  cd "$srcdir/$pkgname-$pkgver/build"
+  make DESTDIR="$pkgdir" install
 }
-
-md5sums=('633e8b018da9c8f09f99567b5479cf18')
