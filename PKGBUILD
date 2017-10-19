@@ -1,39 +1,38 @@
-# Maintainer: Carlos E. Garcia <carlos@cgarcia.org>
-_hspkgname=fixed
+# $Id$
+# Maintainer: Emanuel Couto <unit73e at gmail dot com>
+# Contributor: Carlos E. Garcia <carlos at cgarcia dot org>
+_hkgname=fixed
 pkgname=haskell-fixed
 pkgver=0.2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Signed 15.16 precision fixed point arithmetic"
-arch=('any')
 url="http://github.com/ekmett/fixed"
 license=('custom:BSD3')
-depends=('haskell-base-compat')
+arch=('i686' 'x86_64')
+depends=('ghc-libs')
 makedepends=('ghc')
-install=${pkgname}.install
-source=(http://hackage.haskell.org/packages/archive/${_hspkgname}/${pkgver}/${_hspkgname}-${pkgver}.tar.gz)
-md5sums=('352e57267013d5c6962311ae266f4715')
+source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
+sha512sums=('99f0410deffbecaf4ffb15543e3fd060cc679b238644490cbb0a608dda9957fc4c0020bce667f6ca25fc02c52fced7e9ca40dabe899ec8649b522fdec75eb9c0')
 
 build() {
-  cd $_hspkgname-$pkgver
-  runhaskell Setup configure -O2 \
-    --enable-shared \
-    --prefix=/usr \
-    --docdir=/usr/share/doc/$pkgname
-  runhaskell Setup build
-  runhaskell Setup haddock --hyperlink-source
-  runhaskell Setup register --gen-script
-  runhaskell Setup unregister --gen-script
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+    
+    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+        --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
+    runhaskell Setup build
+    runhaskell Setup register --gen-script
+    runhaskell Setup unregister --gen-script
+    sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
+    sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 
 package() {
-  cd $srcdir/$_hspkgname-$pkgver
-
-  install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -D -m744 CHANGELOG.markdown $pkgdir/usr/share/$pkgname/CHANGELOG.markdown
-
-  install -D -m744 register.sh $pkgdir/usr/share/$pkgname/register.sh
-  install -D -m744 unregister.sh $pkgdir/usr/share/$pkgname/unregister.sh
-
-  runhaskell Setup copy --destdir=$pkgdir
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+    
+    install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
+    install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
+    runhaskell Setup copy --destdir="${pkgdir}"
+    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
-
