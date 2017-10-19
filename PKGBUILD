@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.10.83.r12681.be710f266
+pkgver=2.10.102.r12772.92eaef8d9
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -92,10 +92,14 @@ prepare() {
 }
 
 build() {
-  cd "${_pkgname}"/flexget/ui
+  cd "${_pkgname}"/flexget/ui/v1
   yarn
   XDG_CONFIG_HOME="${_srcdir}" bower --config.analytics=false install
   XDG_CONFIG_HOME="${_srcdir}" gulp
+
+  cd "../v2"
+  yarn install
+  yarn run build
 
 
 }
