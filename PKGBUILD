@@ -1,12 +1,11 @@
 # Maintainer: Marcel Campello <tucho@prafrentex.com.br>
 pkgname=leiningen-completions
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Completion scripts for leiningen"
 arch=('any')
 url="http://github.com/technomancy/leiningen"
 license=("EPL")
-conflicts=('zsh-completions' 'zsh-completions-git')
 
 source=("https://raw.github.com/technomancy/leiningen/${pkgver}/zsh_completion.zsh"
         "https://raw.github.com/technomancy/leiningen/${pkgver}/bash_completion.bash")

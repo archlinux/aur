@@ -1,12 +1,10 @@
 pkgbase = leiningen-completions
 	pkgdesc = Completion scripts for leiningen
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/technomancy/leiningen
 	arch = any
 	license = EPL
-	conflicts = zsh-completions
-	conflicts = zsh-completions-git
 	source = https://raw.github.com/technomancy/leiningen/2.8.0/zsh_completion.zsh
 	source = https://raw.github.com/technomancy/leiningen/2.8.0/bash_completion.bash
 	sha256sums = e2913558ec78bf97dc087087a95bd5c9d9a6254496d8b70c1d982baa6d808b5e
