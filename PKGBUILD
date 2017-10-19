@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=jupyterlab
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="JupyterLab computational environment"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/jupyterlab/jupyterlab"
 license=(custom)
 depends=(jupyterlab_launcher)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/jupyterlab/jupyterlab/archive/v$pkgver.tar.gz")
-sha256sums=('7ca10592567eb5a54b3a823b21696ba07ac7184a3365a8291a8782cf7e566fa3')
+sha256sums=('89c3a656438b743d1bfd5731091fd3e916fc711ab55178797ff9aba468a087b2')
 
 build() {
   cd $pkgname-$pkgver
