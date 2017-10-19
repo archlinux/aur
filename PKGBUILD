@@ -3,7 +3,7 @@
 
 _gemname=jwt
 pkgname=ruby-$_gemname
-pkgver=1.5.6
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='JSON Web Token implementation in Ruby'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('52e20a6e9d6f49aba69a9c7cf3fb9713550d5d27')
+sha1sums=('85efcdeb24418ca3f4d82ad8d2a2f267c92d73d8')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
