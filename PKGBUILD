@@ -1,4 +1,5 @@
-# Maintainer: dllud <dllud riseup net>
+# Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
+# Contributor: dllud <dllud riseup net>
 # Contributor: David McInnis <dave@dave3.xyz>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
