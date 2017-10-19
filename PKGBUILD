@@ -1,6 +1,6 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('i686' 'x86_64' 'armv7h')
@@ -33,8 +33,9 @@ provides=('albert')
 conflicts=('albert-git')
 source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v${pkgver}"
         "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
+        "mirrors/python::git+https://github.com/albertlauncher/python.git"
         "mirrors/pybind11::git+https://github.com/pybind/pybind11.git")
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 
 prepare() {
@@ -47,7 +48,8 @@ prepare() {
   cd "$srcdir/albert/plugins"
   git submodule init
   git config submodule.python/pybind11.url $srcdir/pybind11
-  git submodule update python/pybind11
+  git config submodule.python/share/modules.url $srcdir/python
+  git submodule update python/pybind11 python/share/modules
 
 }
 
