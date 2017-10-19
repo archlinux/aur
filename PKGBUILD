@@ -2,7 +2,7 @@
 # Maintainer: barchl <benschau at users.noreply.github.com>
 
 pkgname=complx-git
-pkgver=4.15.6.10.9c9c36b
+pkgver=4.15.7.45abcf0
 pkgrel=1
 pkgdesc="Complx: LC-3 Simulator used in GT:CS2110, created by Brandon."
 arch=('i686' 'x86_64')
