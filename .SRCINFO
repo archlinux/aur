@@ -1,6 +1,6 @@
 pkgbase = fabaria
 	pkgdesc = Gestionale aziendale.
-	pkgver = 1.2
+	pkgver = 2.0
 	pkgrel = 3
 	url = https://www.codelinsoft.it/sito/2013-11-17-17-56-34/fabariagest.html
 	arch = i686
@@ -20,15 +20,11 @@ pkgbase = fabaria
 	depends = qt5-xmlpatterns
 	depends = mysql
 	depends = cmake
-	depends = curl
-	depends = jansson
-	depends = liboauth
 	depends = zlib
 	depends = nspr
 	depends = lsb-release
-	depends = nss
-	source = https://www.codelinsoft.it/sito/download/categoria-linux/categoria-linux-fabariagest/fabariagest-1-1targz.gz
-	md5sums = 90a0eebb4455b56d20e063852a1026b3
+	source = https://www.codelinsoft.it/sito/download/categoria-linux/categoria-linux-fabariagest/fabariagest-2-0targz
+	md5sums = SKIP
 
 pkgname = fabaria
 
