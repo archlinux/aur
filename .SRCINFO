@@ -1,0 +1,25 @@
+pkgbase = gnome-remote-desktop-git
+	pkgdesc = Remote desktop daemon for GNOME using pipewire
+	pkgver = 0.1.2.0.g0065a1f
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/Mutter/RemoteDesktop
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	makedepends = meson
+	depends = libvncserver
+	depends = dconf
+	depends = gst-plugins-base-libs
+	depends = pipewire
+	provides = gnome-remote-desktop
+	conflicts = gnome-remote-desktop
+	source = git+https://gitlab.gnome.org/jadahl/gnome-remote-desktop.git
+	source = 0001-fix-meson-0-43-option.patch
+	sha256sums = SKIP
+	sha256sums = 3566d83083fec116a51db6457d2ee3e98eef57f9537993304b7577c0227126b4
+
+pkgname = gnome-remote-desktop-git
+
