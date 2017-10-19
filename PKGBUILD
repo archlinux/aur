@@ -2,13 +2,13 @@
 
 pkgname=hdf-java
 pkgver=3.3.2
-pkgrel=1
-pkgdesc="The hdf5 java native interfaces (JNI)"
+pkgrel=2
+pkgdesc="The hdf5 Java Native Interfaces (JNI) for 32-bit object ids (files created with versions up to 1.8)"
 arch=('i686' 'x86_64')
 url="https://support.hdfgroup.org/products/java/"
 license=('custom')
-makedepends=('cmake' 'apache-ant')
-depends=('java-environment')
+makedepends=('java-environment' 'cmake' 'apache-ant')
+depends=()
 source=("http://www.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfjni-${pkgver}/src/CMake-${pkgname/-/}-${pkgver}.tar.gz")
 md5sums=('9fdbb55f2292092f0e6b46078109d54a')
 
