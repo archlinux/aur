@@ -3,7 +3,7 @@
 
 pkgname=google-webdesigner
 pkgver=1.9.0.0619
-pkgrel=1
+pkgrel=2
 pkgdesc="Create engaging, interactive HTML5-based designs and motion graphics that can run on any device."
 arch=('x86_64')
 url="https://www.google.com/webdesigner"
@@ -18,6 +18,7 @@ _source_arch="i386"
 md5sums=('7ba2d54aa4c509d866f972bb7541ab3d')
 #[ "${CARCH}" = 'i686' ] && md5sums[0]='04ab693e6baa641ebcbdcc9512d4f57e' # i686 not tested by me
 source=("google-webdesigner_current_${_source_arch}.deb::https://dl.google.com/linux/direct/google-webdesigner_current_${_source_arch}.deb")
+sha256sums=('ce740c944f46ba025bd9abf52c75f239680b5b6c137b0fc9b1bbea59cb17b1a0')
 
 package() {
   msg2 "Extracting the data.tar.xz"
