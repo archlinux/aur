@@ -1,23 +1,18 @@
 pkgbase = borgmatic
-	pkgdesc = A simple Python wrapper script for the borg (and attic) backup software.
-	pkgver = 1.0.3
+	pkgdesc = A wrapper script for Borg backup software that creates and prunes backups
+	pkgver = 1.1.7
 	pkgrel = 1
-	url = http://torsion.org/borgmatic/
+	url = https://torsion.org/borgmatic/
 	arch = any
 	license = GPL3
-	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	makedepends = python-tox
 	depends = borg
+	depends = python-pykwalify
+	depends = python-ruamel-yaml
 	provides = borgmatic
-	source = https://torsion.org/hg/borgmatic/archive/1.0.3.tar.gz
-	source = borgmatic.service
-	source = borgmatic.timer
-	source = send-status-mail@.service
-	source = systemd-email
-	sha256sums = 81d29ba3159193b02f4c9be0d476e2342a1aa56b72cce6331474c0634c1883a3
-	sha256sums = 2292d7d3cfeb6e85fdc966da6882a3c3ae4b800e1561df7dd894b23f6acb87af
-	sha256sums = eb6991bd4a668b56552ef7c0c16e300f1eea085ae3eabdc83c85135d724c6e58
-	sha256sums = 2a5070fdbc1f7fee9de71290c77dc6a875e91fd6f4894e17305e49e24b221930
-	sha256sums = 8cb36012017f900673370129f18a0555483b727c3c939b2270a5813559455845
+	source = borgmatic-1.1.7.tar.gz::https://torsion.org/hg/borgmatic/archive/1.1.7.tar.gz
+	sha256sums = 939ae88c8f9d2caf77b29a1bb9a53df52fc274ed6f004793616da0c6dab73eae
 
 pkgname = borgmatic
 

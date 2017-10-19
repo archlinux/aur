@@ -1,8 +1,0 @@
-[Unit]
-Description=borgmatic backup
-OnFailure=send-status-mail@%n.service
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/borgmatic
-
