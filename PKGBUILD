@@ -2,19 +2,18 @@
 
 pkgname=archisomod
 pkgver=r39.d669598
-pkgrel=1
+pkgrel=2
+_reponame='archiso-tools'
 pkgdesc='Another tool to remaster Arch Linux live ISOs'
 arch=('any')
-url='https://github.com/HOMEINFO/archiso-tools'
+url="https://github.com/HOMEINFO/${_reponame}"
 license=('GPLv3')
-depends=('python')
-optdepends=('python-docopt: command line interface')
-makedepends=('python' 'git')
+depends=('python' 'python-docopt')
+makedepends=('git')
 source=("git+${url}")
 sha512sums=('SKIP')
 srcdir='src'
 pkgdir='pkg'
-_reponame='archiso-tools'
 
 
 pkgver() {
