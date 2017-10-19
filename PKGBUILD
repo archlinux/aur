@@ -13,7 +13,7 @@ license=('GPL')
 depends=('perl' 'rofi' 'tmux' 'perl-inc-latest' 'perl-net-mpd' 'perl-data-messagepack' 'perl-file-slurper' 'perl-config-simple' 'perl-try-tiny' 'perl-ipc-run' 'perl-http-date' 'perl-local-lib')
 makedeps=('perl-module-scandeps' 'perl-cpanplus-dist-build')
 install=clerk-git.install
-makedepends=('git' 'perl-module-install')
+makedepends=('git')
 source=('git+https://github.com/carnager/clerk#branch=next')
 
 pkgver() {
