@@ -1,38 +1,40 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# $Id$
+# Maintainer: Emanuel Couto <unit73e at gmail dot com>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 
 _hkgname=OpenGL
 pkgname=haskell-opengl
-pkgver=2.11.1.0
+pkgver=3.0.2.0
 pkgrel=1
 pkgdesc="A binding for the OpenGL graphics system"
-url="http://hackage.haskell.org/package/${_hkgname}"
+url="http://www.haskell.org/haskellwiki/Opengl"
 license=('custom:BSD3')
 arch=('i686' 'x86_64')
-makedepends=()
-depends=('ghc' 'haskell-gluraw>=1.3.0.0' 'haskell-openglraw>=2.1' 'haskell-text' )
-options=('strip')
-source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-install=${pkgname}.install
-md5sums=('2ec2bd4abed1d6e2cbf3d3521b865f6a')
+depends=('ghc-libs' 'haskell-gluraw' 'haskell-objectname' 'haskell-openglraw'
+         'haskell-statevar' 'haskell-text' 'haskell-transformers')
+makedepends=('ghc')
+source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
+sha512sums=('f562d0ca75321a443aec46d457741a52a6adbfd9a9710d4444f7f1c3e71f774f62f46129f7b30418382172beba60aab41c93ad4c7d3938474999e4512cc0fa5f')
 
 build() {
-    cd ${srcdir}/${_hkgname}-${pkgver}
-    runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared \
-       --prefix=/usr --docdir=/usr/share/doc/${pkgname} --libsubdir=\$compiler/site-local/\$pkgid
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+    
+    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+        --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
     runhaskell Setup build
-    runhaskell Setup haddock
-    runhaskell Setup register   --gen-script
+    runhaskell Setup register --gen-script
     runhaskell Setup unregister --gen-script
+    sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
     sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 
 package() {
-    cd ${srcdir}/${_hkgname}-${pkgver}
-    install -D -m744 register.sh   ${pkgdir}/usr/share/haskell/${pkgname}/register.sh
-    install    -m744 unregister.sh ${pkgdir}/usr/share/haskell/${pkgname}/unregister.sh
-    install -d -m755 ${pkgdir}/usr/share/doc/ghc/html/libraries
-    ln -s /usr/share/doc/${pkgname}/html ${pkgdir}/usr/share/doc/ghc/html/libraries/${_hkgname}
-    runhaskell Setup copy --destdir=${pkgdir}
-    install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    rm -f ${pkgdir}/usr/share/doc/${pkgname}/LICENSE
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+    
+    install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
+    install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
+    runhaskell Setup copy --destdir="${pkgdir}"
+    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
