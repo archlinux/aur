@@ -1,0 +1,15 @@
+pkgbase = vim-neomutt-git
+	pkgdesc = Vim syntax for neomutt.
+	pkgver = r9.b224ff5
+	pkgrel = 1
+	url = https://github.com/neomutt/neomutt.vim
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = neomutt
+	depends = vim
+	source = vim-neomutt-git::git+https://github.com/neomutt/neomutt.vim
+	md5sums = SKIP
+
+pkgname = vim-neomutt-git
+
