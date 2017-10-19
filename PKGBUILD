@@ -5,7 +5,7 @@
 
 pkgname=mosh
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=('x86_64' 'i686')
 url='https://mosh.org/'
@@ -14,7 +14,7 @@ depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl-io-tty' 'libutempter')
 makedepends=('git')
 options=('!emptydirs')
 source=("git+https://github.com/mobile-shell/mosh#tag=$pkgname-$pkgver")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 build() {
   cd "$pkgname"
