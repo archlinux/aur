@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer : Ysblokje <ysblokje at gmail dot com>
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Ysblokje <ysblokje at gmail dot com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
@@ -8,7 +9,7 @@
 # This PKGBUILD is based on the official Arch cmake package.
 
 pkgname=cmake-git
-pkgver=3.9.0.rc5.197.ga9ab7d5f1b
+pkgver=3.10.0.rc2.91.g6dec363028
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('i686' 'x86_64')
@@ -16,16 +17,17 @@ url="http://www.cmake.org/"
 license=('custom')
 conflicts=('cmake')
 provides=('cmake')
-depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp' 'rhash' 'libuv' 'python-requests')
-makedepends=('qt5-base' 'python-sphinx' 'emacs' 'git' 'ncurses')
+depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp' 'rhash')
+makedepends=('qt5-base' 'python-sphinx' 'git' 'ncurses' 'emacs')
 optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
 source=('git+https://cmake.org/cmake.git')
 md5sums=('SKIP')
+shortver=$(printf "${pkgver}" | sed 's/\([0-9]\+\.[0-9]\+\)\..*/\1/')
 
 pkgver() {
     cd "$srcdir/cmake"
-    git describe --always --tags | sed -e 's|^v||' -e 's|-|.|g'
+    git describe --always --tags --long | sed -e 's|^v||' -e 's|-|.|g'
 }
 
 prepare() {
@@ -51,17 +53,15 @@ package() {
 
   vimpath="${pkgdir}/usr/share/vim/vimfiles"
   install -d "${vimpath}"/{help,indent,syntax}
-  ln -s /usr/share/cmake-${pkgver%.*.*.*}/editors/vim/cmake-help.vim \
-    "${vimpath}"/help/
-  ln -s /usr/share/cmake-${pkgver%.*.*.*}/editors/vim/cmake-indent.vim \
+  ln -s /usr/share/cmake-${shortver}/editors/vim/indent/cmake.vim \
     "${vimpath}"/indent/
-  ln -s /usr/share/cmake-${pkgver%.*.*.*}/editors/vim/cmake-syntax.vim \
+  ln -s /usr/share/cmake-${shortver}/editors/vim/syntax/cmake.vim \
     "${vimpath}"/syntax/
 
   install -d "${pkgdir}"/usr/share/emacs/site-lisp/
   emacs -batch -f batch-byte-compile \
-    "${pkgdir}"/usr/share/cmake-${pkgver%.*.*.*}/editors/emacs/cmake-mode.el
-  ln -s /usr/share/cmake-${pkgver%.*.*.*}/editors/emacs/cmake-mode.el \
+    "${pkgdir}"/usr/share/cmake-${shortver}/editors/emacs/cmake-mode.el
+  ln -s /usr/share/cmake-${shortver}/editors/emacs/cmake-mode.el \
     "${pkgdir}"/usr/share/emacs/site-lisp/
 
   install -Dm644 Copyright.txt \
