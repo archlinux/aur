@@ -1,28 +1,22 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
-
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 pkgname=vtchs
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Listen for VT switches"
 arch=(i686 x86_64)
 url="https://github.com/maandree/vtchs"
-license=('MIT' 'custom:GFDL1.3')
-depends=(linux glibc)
-makedepends=(linux-api-headers glibc make coreutils gcc 'texinfo>=4.11')
-install=$pkgname.install
-source=($url/archive/$pkgver.tar.gz)
-sha256sums=(f526cbe834e6144f2591c2e9cfedc53dd9a52d6a738c5c190739c9b8aad47006)
-
+license=('ISC')
+depends=()
+makedepends=()
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+sha256sums=(ae8aa9346bd0fa2078620355f0866e5fa2671bf3da89642c48b705644eca0c08)
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make OPTIMISE=-Os
+    cd "$srcdir/$pkgname-$pkgver"
+    make PREFIX=/usr
 }
-
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make install DESTDIR="$pkgdir"
+    cd "$srcdir/$pkgname-$pkgver"
+    make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-
