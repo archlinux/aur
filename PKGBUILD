@@ -2,7 +2,7 @@
 
 pkgname=vault-ui-bin
 _pkgname=vault-ui
-pkgver=2.1.0
+pkgver=2.4.0-rc3
 pkgrel=1
 pkgdesc="A beautiful UI to manage your Vault, written in React"
 arch=('x86_64')
