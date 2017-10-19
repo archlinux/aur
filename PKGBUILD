@@ -2,9 +2,9 @@
 
 _pkgname=jdk
 pkgname=jdk-devel
-pkgver=9.0.1
-_major=${pkgver/.*}
-_build=11
+_major=10
+_build=27
+pkgver=${_major}b${_build}
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot"
 arch=('x86_64')
@@ -20,7 +20,6 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start
 conflicts=("java-runtime-jre=$_major" "java-environment-jdk=$_major")
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname
 
@@ -37,19 +36,19 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
+source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_major}-ea+${_build}_linux-x64_bin.tar.gz"
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop")
-sha256sums=('2cdaf0ff92d0829b510edd883a4ac8322c02f2fc1beae95d048b6716076bc014'
-            '76a1e9a15e13bd62d953c1a4806be7821b2b09d974b6ed622b6d85c8d6dfc8b2'
-            '9e557bacfc3b78272c71ccef8d3d45a2772e0f942eba0e16bfe86f6f59f4a5ab'
-            'f5bf5f941a118d2db45a7e451e762e0f04ff38cea0f6674a09268daed09c4052'
-            'e9735a8bb202e64a9e9a949d202932e7e92587b4354f768cd29ba8f322dbd013')
+sha256sums=('e6fb311112066c61c1669a7f612052e49cec45654a87190d61cc4088957b14ea'
+            '2e429abf6f14f506f8caa643eeed10921ef3c9b6820850778822f6e95a5fc956'
+            'c163f149154d8a3f76ba916d49215673f3056595d857b2f2b7074e88496bbd32'
+            'fd519f3ffb9ff649ae1c39674d247d9d26af2befb4ac557e885e84c3c4669950'
+            '2dfc037e6ffc5a2bba31afe44a6a0e1e6e4eb7bb105256793372a21083b1e3be')
 
 package() {
-    cd $_pkgname-$pkgver
+    cd $_pkgname-$_major
 
     msg2 "Creating directory structure..."
     install -d "$pkgdir"/etc/.java/.systemPrefs
@@ -127,15 +126,8 @@ package() {
 
     # Move/link licenses
     mv legal/ "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
-    # install -m644 "$srcdir"/LICENSE-Early-Adopter-Terms.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
+    install -m644 "$srcdir"/LICENSE-Early-Adopter-Development-Agreement.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
     ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
-
-    # msg2 "Enabling Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy..."
-    # # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
-    # # things like 256-bit AES. Enabled by default in OpenJDK:
-    # # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
-    # # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-    # sed -i "s/crypto.policy=limited/crypto.policy=unlimited/" "$pkgdir"/etc/java-$_jname/security/java.security
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
