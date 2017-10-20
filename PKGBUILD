@@ -2,7 +2,7 @@
 
 _pkgname=qtermwidget
 pkgname=$_pkgname-git
-pkgver=0.6.0.48.g10e1796
+pkgver=0.7.1.44.g407da14
 pkgrel=1
 pkgdesc="A terminal widget for Qt"
 arch=("i686" "x86_64")
@@ -11,9 +11,9 @@ license=("GPL2")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=("qt5-base")
-makedepends=("git" "cmake")
+makedepends=("git" "cmake" "lxqt-build-tools-git" "qt5-tools")
 source=("git+https://github.com/lxde/$_pkgname.git")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 
 pkgver() {

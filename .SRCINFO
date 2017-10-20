@@ -1,6 +1,6 @@
 pkgbase = qtermwidget-git
 	pkgdesc = A terminal widget for Qt
-	pkgver = 0.6.0.48.g10e1796
+	pkgver = 0.7.1.44.g407da14
 	pkgrel = 1
 	url = https://github.com/lxde/qtermwidget
 	arch = i686
@@ -8,6 +8,8 @@ pkgbase = qtermwidget-git
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
+	makedepends = lxqt-build-tools-git
+	makedepends = qt5-tools
 	depends = qt5-base
 	provides = qtermwidget
 	conflicts = qtermwidget
