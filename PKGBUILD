@@ -17,18 +17,18 @@
 pkgbase="spl-linux-zen"
 pkgname=("spl-linux-zen" "spl-linux-zen-headers")
 
-pkgver=0.7.2.4.13.7.1
+pkgver=0.7.3.4.13.7.1
 pkgrel=1
 makedepends=("linux-zen-headers=4.13.7-1")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.2/spl-0.7.2.tar.gz")
-sha256sums=("c22e410c661a29acfa16caee21b82f8bb166f5b6611ec56431cd9c172ab4729e")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.3/spl-0.7.3.tar.gz")
+sha256sums=("cd8b8624163577bdec1d1d214c942c5771f183432a04d35c00fc6e7f12fa836b")
 license=("GPL")
-depends=("spl-utils-common>=0.7.2" "kmod" "linux-zen=4.13.7-1")
+depends=("spl-utils-common>=0.7.3" "kmod" "linux-zen=4.13.7-1")
 
 build() {
-    cd "${srcdir}/spl-0.7.2"
+    cd "${srcdir}/spl-0.7.3"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
                 --with-linux=/usr/lib/modules/4.13.7-1-zen/build \
@@ -43,7 +43,7 @@ package_spl-linux-zen() {
     provides=("spl")
     groups=("archzfs-linux-zen")
     conflicts=('spl-linux-zen-git')
-    cd "${srcdir}/spl-0.7.2"
+    cd "${srcdir}/spl-0.7.3"
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     # Remove src dir
@@ -53,7 +53,7 @@ package_spl-linux-zen() {
 package_spl-linux-zen-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
     conflicts=('spl-archiso-linux-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers'  'spl-linux-zen-git-headers' )
-    cd "${srcdir}/spl-0.7.2"
+    cd "${srcdir}/spl-0.7.3"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
