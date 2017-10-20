@@ -1,7 +1,7 @@
 pkgbase = wavebox-bin-beta
 	pkgdesc = The next generation of web-desktop communication
 	pkgver = 3.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wavebox.io/
 	arch = x86_64
 	arch = i686
