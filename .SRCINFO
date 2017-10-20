@@ -1,12 +1,13 @@
 pkgbase = gutenberg
 	pkgdesc = An opinionated static site generator
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Keats/gutenberg
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = cmake
 	source = https://github.com/Keats/gutenberg/archive/v0.2.1.tar.gz
 	sha256sums = 407097164b1d6807e7dca94d68fba7538b0a85f8cf08448c4a5ca3357cfd00ca
 
