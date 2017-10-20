@@ -1,7 +1,7 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
 pkgname=moolticute
-pkgver=0.9.8
+pkgver=0.9.10
 pkgrel=1
 pkgdesc="Easy companion for Mooltipass device"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ makedepends=('make'
              'qt5-tools')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}-beta.tar.gz")
-sha256sums=('6d1524d104579c03901e1727c7eed3511fe74ce4dc538d846e69d28652129ddb')
+sha256sums=('ef195a1fce08156ce7bcf46beed55fecdcb4199d671c93554c9186d0ee395de4')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}-beta"
