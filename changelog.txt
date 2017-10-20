@@ -1,3 +1,29 @@
+Version 2.18.0 - 16 Oct 2017
+- Remove AO3 login from get_urls_from_page--login is failing and it isn't
+  required anymore for 'adult'. 'Restricted' (user-only) won't work.
+- Plugin: Save 'Show Download Options' check in gprefs like dialog geometries.
+- Fixes for QQ and AH changes.
+- base_xenforo: Fix for extended chars in threadmark chapter names.
+- base_xenforo: Couple small fixes for corner cases. -- Except one of them
+  isn't, I think it would be pretty common; namely a notice being using as first
+  chapter.
+- adapter_literotica: Build the chapter a little better especially if there is
+  mutiple pages (#225) - Thanks, davidfor
+- base_xenforo: Use '/posts/' not 'post' to find thread vs post URLs.
+- Add sectionUrl metadata and mechanism for internally normalizing story URLs
+  *and* [story URL] sections. For base_xenforo when including thread titles in
+  storyUrl. Doesn't effect base_xenforo *post* URLs.
+- base_xenforo: Move skip_threadmarks_categories to save a fetch if skipping
+  anyway. Will also effect minimum_threadmarks.
+- base_xenforo: Don't include thread title in *chapter* url, perfomance impact
+  is smaller and keeps from marking a bunch of stuff (new).
+- Add delays for base_xenforoforum_adapter.
+- Use thread-title URL for storyUrl with base_xenforo to save redirect
+  fetches.
+- Comment out some debug output.
+- Remove webnovel.com manual escaping of HTML entities, the website now seems
+  to take care of it (#224)--thanks cryzed
+
  Version 2.17.1 - 14 Sep 2017
 - Update Translations.
 - Remove AO3 login from get_urls_from_page--login is failing and it isn't
@@ -23,25 +49,3 @@
 - Comment out some debug output.
 - Remove webnovel.com manual escaping of HTML entities, the website now seems
   to take care of it (#224)--thanks cryzed
-
-Version 2.16.0 - 18 Aug 2017
-- Restore sycophanthex.com sites.
-- Fix for gravitytales.com--thanks cryzed!
-- AO3 - drop out of use_view_full_work when missing chapters.
-- Escape webnovel.com chapter texts for HTML, thanks cryzed
-- Add AO3 inspiredlinks after last chapter.
-- Fix AO3 always_login and bookmarktags/bookmarksummary site metadata.
-- Save AO3 'associations' link 'inspired by' links -- included with
-  authorheadnotes.
-- Limit adapter_wuxiaworldcom removed links to prev/next chapter.
-- Don't cache metadata list while building from include_in_ -- Calibre version
-  causes problems with removeallentities=True vs False cache.
-- Calibre image processing chokes on SVG images. Rejects svg images--use
-  no_image_processing to include svg images.
-- Make default for fanfic.hu https, thanks botmtl.
-- Fixes for webnovel.com site changes (PR #206), thanks cryzed.
-- Fix xenforo threadmarks change for SB/SV.
-- Calibre removed sanitize_html function.
-- Explicitly (instead of implicitly) set is_adult:false in defaults.ini.
-- Comment out bookmarks for AO3 temporarily.
-- Fix for adapter_asianfanficscom caching vs login issue.
