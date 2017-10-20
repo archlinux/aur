@@ -8,20 +8,20 @@ arch=('any')
 url="https://github.com/Cabbagec/gnome-screenshot-heavy-shadow"
 license=('GPL2')
 groups=('gnome')
-depends=('dconf', 'gtk3', 'libcanberra')
-makedepends=('meson', 'appstream-glib', 'git')
+depends=('dconf' 'gtk3' 'libcanberra')
+makedepends=('meson' 'appstream-glib' 'git')
 provides=('gnome-screenshot')
-conflicts=('gnome-screenshot', 'gnome-screenshot-git')
+conflicts=('gnome-screenshot' 'gnome-screenshot-git')
 source=("git+https://github.com/Cabbagec/gnome-screenshot-heavy-shadow#branch=master")
 sha256sums=('SKIP')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
 }
