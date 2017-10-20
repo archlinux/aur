@@ -1,6 +1,6 @@
 pkgbase = yalpam-git
 	pkgdesc = Yet another Arch Linux PAckage Manager
-	pkgver = 51.73c1111
+	pkgver = 52.dc674de
 	pkgrel = 1
 	url = https://github.com/drxspace/yalpam
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = yalpam-git
 	depends = yad
 	depends = yaourt
 	optdepends = lostfiles: Find orphaned files not owned by any Arch packages
+	optdepends = os-prober: Utility to detect other OSes on a set of drives
 	optdepends = reflector: A Python 3 module and script to retrieve and filter the latest Pacman mirror list
 	provides = yalpam
 	options = strip

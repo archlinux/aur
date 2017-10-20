@@ -2,7 +2,7 @@
 
 pkgname=yalpam-git
 _pkgname=yalpam
-pkgver=51.73c1111
+pkgver=52.dc674de
 pkgrel=1
 pkgdesc="Yet another Arch Linux PAckage Manager"
 arch=('i686' 'x86_64')
@@ -16,6 +16,7 @@ depends=(
 )
 optdepends=(
 	'lostfiles: Find orphaned files not owned by any Arch packages'
+	'os-prober: Utility to detect other OSes on a set of drives'
 	'reflector: A Python 3 module and script to retrieve and filter the latest Pacman mirror list'
 )
 source=("git+${url}.git")
