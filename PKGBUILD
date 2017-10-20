@@ -3,10 +3,10 @@
 pkgbase=reprotest
 pkgname=('reprotest')
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Run a process twice and check the output for reproducibility"
 arch=('any')
-license=('GPLv2' 'GPLv3')
+license=('GPL2' 'GPL3')
 url="https://anonscm.debian.org/cgit/reproducible/reprotest.git/"
 provides=("reprotest=$pkgver")
 depends=('diffoscope' 'fakeroot')

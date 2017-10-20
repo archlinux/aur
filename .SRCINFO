@@ -1,11 +1,11 @@
 pkgbase = reprotest
 	pkgdesc = Run a process twice and check the output for reproducibility
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://anonscm.debian.org/cgit/reproducible/reprotest.git/
 	arch = any
-	license = GPLv2
-	license = GPLv3
+	license = GPL2
+	license = GPL3
 	makedepends = python
 	makedepends = python-setuptools
 	depends = diffoscope
