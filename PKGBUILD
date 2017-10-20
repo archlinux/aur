@@ -2,7 +2,7 @@
 
 pkgname=lastpass
 pkgver=4.2.0a
-pkgrel=1
+pkgrel=2
 _universalver=4.1.44
 _chromever=4.1.52
 _amo_file=742770
@@ -16,6 +16,7 @@ optdepends=('firefox'
             'chromium'
             'google-chrome'
             'opera')
+options=('!strip')
 # Apparently, API endpoints are all the rage -- so this isn't actually a file...
 source=("${pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_amo_file}/"
         "lpchrome-${_chromever}.crx::${url}/lpchrome_linux.crx"

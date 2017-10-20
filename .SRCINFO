@@ -1,7 +1,7 @@
 pkgbase = lastpass
 	pkgdesc = The Universal LastPass installer for Firefox, Chrome, and Opera
 	pkgver = 4.2.0a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lastpass.com
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = lastpass
 	optdepends = opera
 	noextract = lastpass-4.2.0a.xpi
 	noextract = lpchrome-4.1.52.crx
+	options = !strip
 	source = lastpass-4.2.0a.xpi::https://addons.mozilla.org/firefox/downloads/file/742770/
 	source = lpchrome-4.1.52.crx::https://lastpass.com/lpchrome_linux.crx
 	source = lplinux-4.1.44.tar.bz2::https://lastpass.com/lplinux.tar.bz2
