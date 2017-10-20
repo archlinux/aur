@@ -28,6 +28,11 @@ md5sums=('SKIP')
 
 _srcdir=monero-core
 
+pkgver() {
+    cd "$srcdir/$_srcdir"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
     cd "$srcdir/$_srcdir"
 
