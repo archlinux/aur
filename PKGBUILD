@@ -7,11 +7,11 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 # latest commit on stable branch
-_commit='d52e2bb9c20216972754c054e8534bca28baab66'
+_commit='7ba74d5f939d0322d6ea730dd0b5ceefd7d7f527'
 # Bump this to latest major release for signed tag verification,
 # the commit count is handled by pkgver() function.
-pkgver=234.11
-pkgrel=9
+pkgver=235.8
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.github.com/systemd/systemd"
 groups=('selinux')
@@ -21,10 +21,11 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' '
              'python-lxml' 'quota-tools' 'shadow-selinux' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'libselinux')
 options=('strip')
+validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4')  # Lennart Poettering <lennart@poettering.net>
 # Retrieve the splash-arch.bmp image from systemd package sources, as this
 # file is too big to fit in the AUR.
-source=("git+https://github.com/systemd/systemd-stable.git#commit=${_commit}"
-        'git+https://github.com/systemd/systemd.git' # pull in for tags
+source=('git+https://github.com/systemd/systemd-stable.git'
+        'git+https://github.com/systemd/systemd.git' # pull in for tags, backports & reverts
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev'
@@ -39,7 +40,7 @@ source=("git+https://github.com/systemd/systemd-stable.git#commit=${_commit}"
 sha512sums=('SKIP'
             'SKIP'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            'a70a779828e03c91275df1e046f78bdface08e2a8df0245a3f6e8d5904e3dbbe5d498cbf7f32d5ce61f2fb0d0a3d440d47ce9e41352a5547d80fa1bc29687159'
+            '86d7cacd7536b1069c82bbbb08de7ec81e7f0f18a19fc2b06fabe90db4700623eb3540b75121080d325672d92e26912632ae4f93fd3c0bb48eb3e5eedd88352c'
             'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
@@ -49,21 +50,8 @@ sha512sums=('SKIP'
             '7d49a948f5d58f662a7d81544254528257ef8c0a08ca560834f09a7cdf566161d2df4d419ebbc2983196cd45c9eeefcd0c4c2c554376916dce42e895262afc30'
             'e521d92674597f82d589b83c378c50c92c881fdb84c436c8b26f7a3436a4c91a20585824a5563933f6868a3023b9ee2fdc7bd58e04bb47c25a0a36e296308fd3'
             '10190fba9f39a8f4b620a0829e0ba8ed63bb4dbeca712966011ee7807880d01ab2abff1a80baafeb6674db70526a473fe585db8190e864f318fc4d6068552618')
-validpgpkeys=(
-  '63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering
-)
 
 _backports=(
-  # cryptsetup: fix infinite timeout (#6486)
-  '0864d311766498563331f486909a0d950ba7de87'
-
-  # process-util: add getpid_cached() as a caching wrapper for getpid()
-  '5c30a6d2b805ae9b5dd0ad003b9ee86b8965bc47'
-  # tree-wide: make use of getpid_cached() wherever we can
-  'df0ff127758809a45105893772de76082d12a26d'
-
-  # call chase_symlinks without the /sysroot prefix (#6411) (FS#54958)
-  '98eda38aed6a10c4f6d6ad0cac6e5361e87de52b'
 )
 
 _reverts=(
@@ -112,6 +100,8 @@ prepare() {
   git remote add upstream ../systemd/
   git fetch --all
 
+  git checkout "${_commit}"
+
   _validate_tag || return
 
   local _commit
@@ -121,21 +111,12 @@ prepare() {
   for _commit in "${_reverts[@]}"; do
     git revert -n "$_commit"
   done
-
-  # core: store the invocation ID in the per-service keyring
-  # core: run each system service with a fresh session keyring
-  git show 'b3415f5daef49642be3d5f417b8880c078420ff7' \
-    '74dd6b515fa968c5710b396a7664cac335e25ca8' \
-    -- . ':!src/test/test-id128.c' | git apply --reverse --index
 }
 
 build() {
   local timeservers=({0..3}.arch.pool.ntp.org)
 
   local meson_options=(
-    --buildtype=release
-    -Db_lto=true
-
     -Daudit=true
     -Dgnuefi=true
     -Dima=false
@@ -154,7 +135,7 @@ build() {
     -Dsysvrcnd-path=
   )
 
-  meson "${pkgbase/-selinux}-stable" build "${meson_options[@]}"
+  arch-meson "${pkgbase/-selinux}-stable" build "${meson_options[@]}"
 
   ninja -C build
 }
