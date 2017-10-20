@@ -5,10 +5,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20171018
+pkgver=3.0.0v20171020
 _pkgver=3.0.0
 _snapshot_=20171018
-_snapver_=0238
+_snapver_=0239
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
@@ -90,7 +90,6 @@ build() {
   export LUAC=/usr/bin/luac
   export LUA_LIBS="`pkg-config --libs lua`"
   export RCC=/usr/bin/rcc-qt5
-  export PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig"
 
   ./configure \
     --prefix=/usr \
