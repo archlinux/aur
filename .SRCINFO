@@ -1,15 +1,15 @@
 pkgbase = wunderline
 	pkgdesc = Wunderlist for your command line!
-	pkgver = 4.4.3
+	pkgver = 4.7.2
 	pkgrel = 1
 	url = http://wayneashleyberry.github.io/wunderline/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = wunderline-4.4.3.tgz
-	source = http://registry.npmjs.org/wunderline/-/wunderline-4.4.3.tgz
-	sha256sums = 20a76389050f54ddc02188b21879ffe4681322528fcb159137f585378d06bef6
+	noextract = wunderline-4.7.2.tgz
+	source = http://registry.npmjs.org/wunderline/-/wunderline-4.7.2.tgz
+	sha256sums = cbbced8bc1b260a27acb70f18621b9384a5711aca602f2a0fd5df6c3e950c358
 
 pkgname = wunderline
 
