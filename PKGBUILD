@@ -3,7 +3,7 @@
 
 pkgname=emby-server-dev-unlocked
 pkgver=3.2.33.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
 url='https://github.com/nicolahinssen/emby-dev-unlocked'
