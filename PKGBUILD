@@ -4,7 +4,7 @@
 
 pkgname=p4v
 pkgver=2017.2.1573260
-pkgrel=1
+pkgrel=2
 pkgdesc="Perforce Visual Client"
 arch=('x86_64')
 url="http://www.perforce.com"
@@ -12,7 +12,7 @@ license=('custom:p4v')
 depends=(libxcb)
 options=('!strip')
 source=(p4v.desktop p4admin.desktop p4merge.desktop LICENSE
-http://cdist2.perforce.com/perforce/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}.tgz)
+p4v-${pkgver}.tgz::http://cdist2.perforce.com/perforce/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}.tgz)
 
 sha256sums=('1fc7ea925fdcb38915f191b6a9c85fb46db9ef501dbaa077e8f38876c5e8fda0'
             '10e470c6099459a072565494c4fd21cc1f4198f1024fe6fdeb6c77ea7e594827'
