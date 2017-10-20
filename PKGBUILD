@@ -1,7 +1,7 @@
 # Maintainer: youngunix
 
 pkgname=flycheck
-pkgver=30
+pkgver=31
 pkgrel=1
 pkgdesc='Modern on-the-fly syntax checking extension for GNU Emacs'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('emacs' 'emacs-dash')
 makedepends=('emacs' 'texinfo')
 source=("https://github.com/flycheck/flycheck/archive/$pkgver.tar.gz")
-sha256sums=('12327f1e832b9e1a65de1cd6be7c2033739401f634642cf8111396f2f5716bb0')
+sha256sums=('6c2447f6740afd394880f233641113d06f67f40fd696ee6f5034a84b2fcb9b3e')
 
 build() {
   cd "$pkgname-$pkgver"
