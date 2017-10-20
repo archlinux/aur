@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2164
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=php-libsodium
-pkgver=2.0.7
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="Simple, low-level PHP extension for libsodium"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('php>=7.0' 'php<7.2' 'libsodium>=1.0.9')
 backup=('etc/php/conf.d/libsodium.ini')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jedisct1/libsodium-php/archive/$pkgver.tar.gz")
-md5sums=('c5112f26d82ec0b7d5e7500dfca3d844')
+md5sums=('13df85028e4615b12af3b391d296063c')
 
 build() {
 	cd "libsodium-php-$pkgver"
