@@ -13,8 +13,8 @@ _lang=da
 pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc="Standalone web browser from mozilla.org, developer build - Danish"
 url="http://www.mozilla.org/firefox/developer"
-pkgver=57.0b9
-pkgrel=2
+pkgver=57.0b10
+pkgrel=1
 arch=('x86_64')
 license=("MPL" "GPL" "LGPL")
 _file="${_name}-${pkgver}"
@@ -25,8 +25,8 @@ source=("${_url}/${_loc}/${_file}.tar.bz2"
         "${_url}/SHA512SUMS.asc"
         "${_name}-${_channel}.desktop"
         "vendor.js")
-sha512sums=('ab8316451916817fee1c81956e4d8a28e77f3db893d898f4ee352758b5577f88f71dc8fb3cfe5d5613ba14b2ee8e36196d1db489ad0e1a629c95dfe065b74ad4'
-            'ad83ddeb691a248740d8a416cad15bdd499046b47e66ad2dad624f9d9b91114b3ad0b9c04e910ab82091418e99aedfedffcf04789689c8791df7d3893cb5df76'
+sha512sums=('24a5190a3cac3a9a777c36c5d4ce615c8fea9fab6c47f7315b393cb79760a2698ebf47ec25d5eb9fc36fa9109ea70dcdd84299cc66baa685f362775bb8d4cdf6'
+            'ca259285503cf3208e06f1cf6ece01bb620e26475321c3e93db0e13c9c90bc67141d437af08d42d9e0428ae90034a5b9b1ce26cbca7b423843312b18ab3d769a'
             'SKIP'
             'b109b884ed79e9e214541750a0fcac8d7d8891cc7f0e0d472b717a5b71e569ab5852534bceaab045a5b13a9290a7905604d08fe97e28c675a2266c30fe719cb6'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
