@@ -1,6 +1,6 @@
 pkgbase = lantern-bin
 	pkgdesc = Free desktop application that delivers fast, reliable and secure access to the open Internet. (Stable Channel, binary)
-	pkgver = 4.1.2
+	pkgver = 4.2.5
 	pkgrel = 1
 	url = https://getlantern.org
 	arch = i686
@@ -17,10 +17,10 @@ pkgbase = lantern-bin
 	options = !docs
 	source = lantern.service
 	sha256sums = fdece37945be10c00210bbde7b4058c356ef1df0554bd963fcddd12990ff930b
-	source_i686 = lantern-bin-4.1.2-i686.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-32-bit.deb
-	sha256sums_i686 = a8c26d603d1f98548c6c71b1431f5ea702250c84be8d63f8eddfc34a006ac3a4
-	source_x86_64 = lantern-bin-4.1.2-x86_64.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb
-	sha256sums_x86_64 = 4cab6a373f5e1704048bdef94052f8c990c8a1a877a60db9caa685a2d1d2ae26
+	source_i686 = lantern-bin-4.2.5-i686.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-32-bit.deb
+	sha256sums_i686 = 7aabfe1460b85ef6a3105bfdadffbe1fae72b882dc7ea3f29a9fec5c9fa61952
+	source_x86_64 = lantern-bin-4.2.5-x86_64.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb
+	sha256sums_x86_64 = 4c8aea699e3da636b7fd524fee24acaec38d85a6be4b713baa15fa3fdf6ccd97
 
 pkgname = lantern-bin
 
