@@ -1,14 +1,14 @@
 # Maintainer: Stephen Argent <steve [at] tuxcon [dot] com>
 
 pkgname=('byteball')
-pkgver=1.11.0
-pkgrel=4
+pkgver=1.11.1
+pkgrel=1
 pkgdesc="Byteball cryptocurrency wallet client."
 arch=('x86_64')
 url='byteball.org'
 license=('MIT')
 source=(https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/byteball-linux64.zip)
-sha256sums=('fac08411b117f89f5b3e33cc0186bac2f67e59fbf1b49acec70ec95f4a8fbb87')
+sha256sums=('2d76d03e870e55e1e3faa15e6a3ef4c265d3667834bf3141726b6075f4d29d4f')
 install="$pkgname.install"
 package() {
 	unzip -o "${srcdir}/byteball-linux64.zip"
