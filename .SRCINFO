@@ -1,25 +1,44 @@
 pkgbase = haskell-bytes
 	pkgdesc = Sharing code for serialization between binary and cereal
-	pkgver = 0.15
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/bytes
-	install = haskell-bytes.install
-	arch = any
-	license = BSD3
-	depends = ghc
-	depends = haskell-cereal>=0.4.1.1
-	depends = haskell-cereal<0.5
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-base>=4.5
+	depends = haskell-base<5
+	depends = haskell-binary>=0.5.1
+	depends = haskell-binary<0.9
+	depends = haskell-bytestring>=0.9
+	depends = haskell-bytestring<0.11
+	depends = haskell-cereal>=0.3.5
+	depends = haskell-cereal<0.6
+	depends = haskell-containers>=0.3
+	depends = haskell-containers<1
+	depends = haskell-ghc-prim
+	depends = haskell-hashable>=1.0.1.1
+	depends = haskell-hashable<1.4
 	depends = haskell-mtl>=2.0
 	depends = haskell-mtl<2.3
+	depends = haskell-scientific>=0.0
+	depends = haskell-scientific<1
 	depends = haskell-text>=0.2
 	depends = haskell-text<1.3
+	depends = haskell-time>=1.2
+	depends = haskell-time<1.9
+	depends = haskell-transformers>=0.2
+	depends = haskell-transformers<0.6
 	depends = haskell-transformers-compat>=0.3
 	depends = haskell-transformers-compat<1
+	depends = haskell-unordered-containers>=0.2
+	depends = haskell-unordered-containers<0.3
 	depends = haskell-void>=0.6
 	depends = haskell-void<1
-	options = strip
-	source = http://hackage.haskell.org/packages/archive/bytes/0.15/bytes-0.15.tar.gz
-	sha512sums = 8f53855392a2a682d1a28b6ba42b7d701303a150832a5e51c2ed541b2fb8ec3555f47201e717a1a9d781b176a0608e802e67207e77a4125a84ae0338f0148d0d
+	source = bytes::git+https://github.com/ekmett/bytes.git#commit=90fa9d874044e4ff36cfe4df71ee0dfc00ab742f
+	md5sums = SKIP
 
 pkgname = haskell-bytes
 
