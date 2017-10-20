@@ -82,6 +82,7 @@ prepare() {
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
   cat >.mozconfig <<END
+CC=gcc-6
 ac_add_options --enable-application=browser
 
 ac_add_options --prefix=/usr
@@ -140,7 +141,7 @@ build() {
   # Do PGO
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
   #  MOZ_PGO=1 ./mach build
-  ./mach build CC=gcc-6.3
+  ./mach build
   #  ./mach buildsymbols
 }
 
