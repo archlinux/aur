@@ -56,18 +56,18 @@ package() {
   # Configuration file
   install -m750 -d "$pkgdir/etc/webapps/$_pkgbase"
   install -Dm750 config/db.example.inc.php "$pkgdir/etc/webapps/$_pkgbase/db.inc.php"
-  chown -R http:root "$pkgdir/etc/webapps/$_pkgbase"
+  chown -R root:http "$pkgdir/etc/webapps/$_pkgbase"
   chmod -R u+rwX,g+rwX,o-rwx "$pkgdir/etc/webapps/$_pkgbase"
   ln -s "/etc/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/config"
 
   # Log files
   install -m770 -d "$pkgdir/var/log/webapps/$_pkgbase"
-  chown -R http:root "$pkgdir/var/log/webapps/$_pkgbase"
+  chown -R root:http "$pkgdir/var/log/webapps/$_pkgbase"
   ln -s "/var/log/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/log"
 
   # Systemd unit file
   install -m755 -d "$pkgdir/etc/default"
-  install -o http -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
+  install -g http -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
   install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
 
   # Easy access to mud.php
