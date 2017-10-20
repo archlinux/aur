@@ -1,0 +1,22 @@
+pkgbase = gnome-screenshot-heavy-shadow
+	pkgdesc = Take pictures of your screen, with modified shadow effect
+	pkgver = 3.25.0
+	pkgrel = 1
+	url = https://github.com/Cabbagec/gnome-screenshot-heavy-shadow
+	arch = any
+	groups = gnome
+	license = GPL2
+	makedepends = meson,
+	makedepends = appstream-glib,
+	makedepends = git
+	depends = dconf,
+	depends = gtk3,
+	depends = libcanberra
+	provides = gnome-screenshot
+	conflicts = gnome-screenshot,
+	conflicts = gnome-screenshot-git
+	source = git+https://github.com/Cabbagec/gnome-screenshot-heavy-shadow#branch=master
+	sha256sums = SKIP
+
+pkgname = gnome-screenshot-heavy-shadow
+
