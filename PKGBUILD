@@ -2,14 +2,14 @@
 # Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=edbrowse-git
-pkgver=3.6.3.r3.g64d54f6
+pkgver=3.7.1.r37.gb1f4961
 pkgrel=1
 pkgdesc="A line-oriented editor, browser and mail client."
 arch=('i686' 'x86_64')
 url="http://edbrowse.org/"
 license=('GPL' 'openssl')
 groups=()
-depends=('js>=2.4' 'openssl' 'pcre' 'curl>=7.17.0' 'readline' 'tidy-html5-git')
+depends=('js>=2.4' 'openssl' 'pcre' 'curl>=7.17.0' 'readline' 'tidy')
 makedepends=('git')
 provides=('edbrowse')
 conflicts=('edbrowse')
