@@ -1,0 +1,23 @@
+--- gnome-settings-daemon-3.26.1/data/gsd-enums.h   2015-11-10 09:07:12.000000000 -0500
++++ gnome-settings-daemon-3.26.1/data/gsd-enums.h   2015-11-11 18:43:43.240794875 -0500
+@@ -105,6 +105,7 @@
+ typedef enum
+ {
+   GSD_POWER_BUTTON_ACTION_NOTHING,
++  GSD_POWER_BUTTON_ACTION_SHUTDOWN,
+   GSD_POWER_BUTTON_ACTION_SUSPEND,
+   GSD_POWER_BUTTON_ACTION_HIBERNATE,
+   GSD_POWER_BUTTON_ACTION_INTERACTIVE
+
+--- gnome-settings-daemon-3.26.1/plugins/media-keys/gsd-media-keys-manager.c    2015-11-10 09:07:12.000000000 -0500
++++ gnome-settings-daemon-3.26.1/plugins/media-keys/gsd-media-keys-manager.c    2015-11-11 18:47:52.388602012 -0500
+@@ -1954,6 +1849,9 @@
+
+         action_type = g_settings_get_enum (manager->priv->power_settings, "power-button-action");
+         switch (action_type) {
++        case GSD_POWER_BUTTON_ACTION_SHUTDOWN:
++                do_config_power_action (manager, GSD_POWER_ACTION_SHUTDOWN, in_lock_screen);
++                break;
+         case GSD_POWER_BUTTON_ACTION_SUSPEND:
+                 do_config_power_action (manager, GSD_POWER_ACTION_SUSPEND, in_lock_screen);
+                 break;
