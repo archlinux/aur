@@ -2,7 +2,7 @@
 
 pkgname=combust-git
 pkgver=0.68.b866d9b
-pkgrel=1
+pkgrel=2
 pkgdesc='nftables firewall script with profiles'
 arch=('any')
 url='https://github.com/gavinhungry/combust'
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  echo "0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo 0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
