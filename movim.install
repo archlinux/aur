@@ -1,3 +1,15 @@
+pre_remove() {
+  if [ -d /usr/share/webapps/movim ] && [ ! -L /usr/share/webapps/movim/cache ]; then
+    echo 'The "cache" and "users" folders in /usr/share/webapps/movim are'
+    echo 'being moved to /var/cache/webapps/movim.'
+
+    install -m755 -d /var/cache/webapps/movim
+    mv /usr/share/webapps/movim/{cache,users} /var/cache/webapps/movim/
+    chmod -R u+rwX,g+rwX,o-rwx /var/cache/webapps/movim
+    chown -R root:http /var/cache/webapps/movim
+  fi
+}
+
 post_install() {
   echo 'Post-installation tutorial'
   echo 'https://github.com/movim/movim/wiki/Install-Movim#2-database-configuration'
