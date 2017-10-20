@@ -2,7 +2,7 @@
 
 pkgname=acme.sh-git
 pkgver=0.1734.8aff2bd
-pkgrel=5
+pkgrel=6
 pkgdesc='An ACME Shell script, an acme client alternative to certbot'
 arch=('any')
 url='https://github.com/Neilpang/acme.sh'
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  echo "0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo 0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
