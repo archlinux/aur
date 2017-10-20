@@ -5,7 +5,7 @@ _pkgbase='movim'
 _tagname=v0.12
 pkgname=movim
 pkgver=v0.12.2308629f
-pkgrel=3
+pkgrel=4
 pkgdesc="Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol."
 arch=('any')
 url='https://movim.eu'
@@ -50,8 +50,8 @@ package() {
     "$pkgdir/var/cache/webapps/$_pkgbase/users"
   chown -R root:http "$pkgdir/var/cache/webapps/$_pkgbase"
   chmod -R u+rwX,g+rwX,o-rwx "$pkgdir/var/cache/webapps/$_pkgbase"
-  ln -s "/var/cache/webapps/$_pkgbase/cache" "$pkgdir/usr/share/webapps/$_pkgbase/cache"
-  ln -s "/var/cache/webapps/$_pkgbase/users" "$pkgdir/usr/share/webapps/$_pkgbase/users"
+  # XXX: Symlinks created post_upgrade. Waiting for upstream to fix
+  # https://github.com/movim/movim/issues/509.
 
   cp -r app lib locales src themes vendor "$pkgdir/usr/share/webapps/$_pkgbase"
   install -Dm644 VERSION CHANGELOG.md INSTALL.md README.md index.php \
