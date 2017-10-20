@@ -4,7 +4,7 @@
 _pkgname=pbt
 
 pkgname="$_pkgname-git"
-pkgver=r40.8927dcd
+pkgver=r43.544b04b
 pkgrel=1
 pkgdesc='Bullettrain prompt builder written in Python'
 url='https://github.com/jtyr/pbt'
@@ -13,6 +13,7 @@ license=('MIT')
 makedepends=("python-setuptools")
 depends=("python")
 optdepends=('nerd-fonts-complete')
+conflicts=('pbt')
 source=("git+https://github.com/jtyr/$_pkgname.git")
 sha256sums=('SKIP')
 
