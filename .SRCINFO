@@ -1,0 +1,16 @@
+pkgbase = opendoas
+	pkgdesc = Run commands as super user or another user, alternative to sudo
+	pkgver = 6.0
+	pkgrel = 1
+	url = https://github.com/Duncaen/OpenDoas
+	install = opendoas.install
+	arch = x86_64
+	arch = i686
+	license = custom:ISC
+	depends = pam
+	conflicts = opendoas-git
+	source = https://github.com/Duncaen/OpenDoas/archive/v6.0.tar.gz
+	sha512sums = 2bf5e00895a45d87785e7a494a1506844afd843ef5375e0b0e3795ebc24712bb941c6feeb87e426e41a240d40aca9b4c099f77220745bb7142a7a4b303441f60
+
+pkgname = opendoas
+
