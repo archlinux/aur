@@ -19,8 +19,8 @@ source=("emby-server-${pkgver}.tar.gz::https://github.com/MediaBrowser/Emby/arch
         'emby-server.conf'
         'emby-server.service')
 backup=('etc/conf.d/emby-server')
-sha256sums=('cbd68da1d71eff631cfa94cd107b6247d553f02d44b8c069c80d5d52dc7eb2d9'
-            '68b3a9897be28044c48f1e0992cf4601c4735759ba341d54340f8fed54ebdfdf'
+sha256sums=('71613aecb867fe4bc85cdadde1ff33af0d534f49b8bdda89935f437d6539f0b2'
+            '5717d7de17dcb97187d86327d279bd12e5aca42a6d48a897d241623c035d436d'
             '7b1974f7bba8ac4b76e51ef7fe1257d165c7c4abbd0915e192391336048a3d74'
             'b25bf83a0ab371aff3b13b82f7af71b51bfe6d7e51eb8a8a3dd8f0774ffce6a5'
             'c9ad78f3e2f0ffcb4ee66bb3e99249fcd283dc9fee17895b9265dc733288b953'
