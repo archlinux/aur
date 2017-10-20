@@ -2,7 +2,7 @@
 
 pkgname=usbguard-git
 _pkgname=usbguard
-pkgver=0.7.0.r25.g14ab2af
+pkgver=0.7.0.r40.gcc98c63
 pkgrel=1
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies'
