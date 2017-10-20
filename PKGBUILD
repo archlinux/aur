@@ -1,7 +1,7 @@
 # Maintainer: Jake <ja.ke@posteo.de>
 pkgname=flatcam-git
 _pkgname=FlatCAM
-pkgver=r336.3280427
+pkgver=r501.a9a4ec7
 pkgrel=1
 pkgdesc="Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG)"
 arch=('any')
@@ -12,10 +12,8 @@ makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://bitbucket.org/jpcgt/flatcam.git"
-		"$pkgname"
 		"$pkgname.desktop")
 md5sums=('SKIP'
-         '80700f0bb07c959dc3019d9664472387'
          '75964eb8fb5d9fbb3da848edbf52af7a')
 
 pkgver() {
@@ -31,13 +29,14 @@ build() {
 
 
 package() {
-	install -D -m755 "$pkgname" "$pkgdir/usr/bin/${pkgname%-git}"
+        mkdir -p "$pkgdir/usr/bin/"
+	ln -s "${pkgdir}/opt/${pkgname%-git}/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -D -m644 "$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 	cd "$srcdir/${pkgname%-git}"
 	install -D -m644 "share/flatcam_icon256.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	
-	rm -r *.sh doc FlatCAM_GTK
+	rm -r *.sh doc tests sandbox bugs
 	mkdir -p "${pkgdir}/opt/${pkgname%-git}"
 	cp -r * "${pkgdir}/opt/${pkgname%-git}"
 }
