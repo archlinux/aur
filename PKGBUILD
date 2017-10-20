@@ -2,7 +2,7 @@
 # Maintainer: Abuzer Rafey <arafey@vyvygen.org>
 # Contributor: Jacqueline Outka <joutka@vyvygen.org>
 pkgname="mkdocs-material"
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Material design theme for MkDocs"
 arch=("any")
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("mkdocs" "python-pygments" "pymdown-extensions")
 makedepends=("python-setuptools")
 source=("https://github.com/squidfunk/mkdocs-material/archive/${pkgver}.tar.gz")
-sha256sums=('c10623c37868c1a68c989e4ca8de0038c9f1d881d391351f69067139fdd30392')
+sha256sums=('fb4634d2fffbdc841c1f5687726a2777d8955b84e644ab0482d894c06a4f3c88')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
