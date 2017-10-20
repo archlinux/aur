@@ -2,7 +2,7 @@
 
 pkgname=private-internet-access-vpn
 pkgver=3.3.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -67,7 +67,7 @@ prepare() {
 package() {
   cd "${srcdir}"
 
-  install -D -m 644 restart.conf "${pkgdir}/usr/lib/system/openvpn-client@.service.d/restart.conf"
+  install -D -m 644 restart.conf "${pkgdir}/usr/lib/systemd/openvpn-client@.service.d/restart.conf"
   install -D -m 755 vpn.sh "${pkgdir}/usr/lib/systemd/system/system-sleep/vpn.sh"
   install -D -m 644 pia.8.gz "${pkgdir}/usr/share/man/man8/pia.8.gz"
 
