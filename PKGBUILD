@@ -1,7 +1,7 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=oclint
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="A static source code analysis tool to improve quality and reduce
 defects for C, C++ and Objective-C"
@@ -13,7 +13,7 @@ makedepends=('clang' 'cmake' 'subversion' 'python' 'llvm' 'libxml2'
 'countly-cpp')
 source=("https://github.com/oclint/oclint/archive/v${pkgver}.tar.gz"
         "openssl.patch")
-sha1sums=('5b5adc001fff5733e55a90a498c3fe57f9fdda8e'
+sha1sums=('54b8c074469d8758cf90752c14f94695acb558c9'
           '234485f8cd210794cfb393e8b550079c33d21192')
 
 prepare() {
