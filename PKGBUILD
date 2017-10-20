@@ -6,7 +6,7 @@
 
 pkgbase=linux-pae
 _srcname=linux-4.13
-pkgver=4.13.7
+pkgver=4.13.8
 pkgrel=1
 arch=('i686')
 url="https://www.kernel.org/"
@@ -26,7 +26,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '0fe89c96e956efbded576214eef0c8e43cabe41dfca245e3ebb79fff9bc8715d'
+            '3b2bcceb16acd75322e98d3e93967e82bd0e7499c748bf12bd46c7519dacc315'
             'SKIP'
             'cb3e9d207d37325d8d87db4b15881b02dcc33accbb38137633b8d7dd357591ce'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
