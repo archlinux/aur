@@ -2,7 +2,7 @@
 
 pkgname=peerflix-git
 _gitname=peerflix
-pkgver=0.36.1.r0.g72b28e6
+pkgver=0.37.0.r0.gf48f7a0
 pkgrel=1
 pkgdesc="Streaming torrent client for node.js"
 arch=('any')
@@ -21,11 +21,18 @@ pkgver() {
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${srcdir}"
+
+  # Fix error with npm5 issue
+  tar -czf peerflix.tar.gz peerflix
+}
+
 package() {
   cd "${srcdir}/${_gitname}"
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_gitname}"
-  npm install --cache ../cache --user root -g --prefix "${pkgdir}/usr"
+  npm install --cache ../cache --user root -g --prefix "${pkgdir}/usr" ../*.tar.gz
 }
 
 # vim:set ts=2 sw=2 et:
