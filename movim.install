@@ -1,4 +1,4 @@
-pre_remove() {
+pre_upgrade() {
   if [ -d /usr/share/webapps/movim ] && [ ! -L /usr/share/webapps/movim/cache ]; then
     echo 'The "cache" and "users" folders in /usr/share/webapps/movim are'
     echo 'being moved to /var/cache/webapps/movim.'
@@ -24,5 +24,9 @@ post_install() {
 }
 
 post_upgrade() {
+  # XXX: Waiting for upstream to fix https://github.com/movim/movim/issues/509
+  ln -s /var/cache/webapps/movim/cache /usr/share/webapps/movim
+  ln -s /var/cache/webapps/movim/users /usr/share/webapps/movim
+
   post_install $1
 }
