@@ -2,7 +2,7 @@
 
 pkgname=seadrive-daemon
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon part of seadrive"
 arch=('i686' 'x86_64')
 url="https://bintray.com/seafile-org/deb-unstable/seadrive-daemon"

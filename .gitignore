@@ -3,3 +3,4 @@
 *.deb
 /pkg
 /src
+*.log*
