@@ -1,7 +1,7 @@
-# pkgver=$(curl -s "$url" | gzip -cd | sed -n '/^[0-9]/{s,/,,gp;q}')-"$pkgver"
+# pkgver=$(curl -s "$url" | gzip -cd | sed -n '/^[0-9]/{s,/,,gp;q}')
 pkgname=conflict
 pkgver=20150705
-pkgrel=1
+pkgrel=2
 
 pkgdesc='filename conflict listing'
 url='http://invisible-island.net/conflict/conflict.html'
@@ -10,9 +10,13 @@ license=('MIT')
 
 depends=('glibc')
 
-source=('http://invisible-island.net/datafiles/release/conflict.tar.gz')
+validpgpkeys=('C52048C0C0748FEE227D47A2702353E0F7E48EDB') # Thomas Dickey
 
-sha256sums=('30e14808768a938df139a1b76f8f7397e1b3bf46a18ceabcc8b1b1a70d5ea8a9')
+source=("https://invisible-mirror.net/archives/conflict/conflict-$pkgver.tgz"
+        "https://invisible-mirror.net/archives/conflict/conflict-$pkgver.tgz.asc")
+
+sha256sums=('30e14808768a938df139a1b76f8f7397e1b3bf46a18ceabcc8b1b1a70d5ea8a9'
+            'SKIP')
 
 build() {
     cd conflict-"$pkgver"
