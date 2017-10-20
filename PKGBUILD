@@ -1,12 +1,13 @@
 # $Id$
 # Maintainer: Sebastian Weiland <sebastianweiland97@gmail.com>
+# Contributor: Martchus <martchus@gmx.net>
 # Original package: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20171016
+pkgver=3.0.0v20171018
 _pkgver=3.0.0
-_snapshot_=20171016
+_snapshot_=20171018
 _snapver_=0238
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
@@ -19,7 +20,7 @@ depends=('libmatroska' 'a52dec' 'sidplay2-libs' 'libfdk-aac' 'faad2' 'ffmpeg' 'l
          'libdvdnav' 'libmad' 'libmpcdec' 'libmpeg2'
          'libproxy' 'libshout' 'libtar' 'libtiger' 'libupnp'
          'libxinerama' 'libxpm' 'lua' 'sdl_image' 'mesa' 'sndio' 'wayland' 'wayland-protocols'
-         'taglib' 'xcb-util-keysyms' 'zvbi' 'libsecret' 'libarchive' 'qt5-base' 'libglvnd'
+         'taglib' 'xcb-util-keysyms' 'zvbi' 'libsecret' 'libarchive' 'qt5-base' 'qt5-svg' 'libglvnd'
          'hicolor-icon-theme' 'qt5-x11extras' "${_detected_depends[@]}")
 makedepends=('aalib' 'flac' 'git'
              'libavc1394' 'libbluray' 'libcaca' 'libdc1394' 'libdvdcss'
@@ -60,22 +61,29 @@ provides=("${_appname_}")
 replaces=("${_appname_}-plugin")
 options=("!emptydirs")
 source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-git.tar.xz" 
-"update-vlc-plugin-cache.hook"
-"https://git.archlinux.org/svntogit/packages.git/plain/trunk/lua53_compat.patch?h=packages/vlc"
-'find-deps.py')
+        'update-vlc-plugin-cache.hook'
+        'https://git.archlinux.org/svntogit/packages.git/plain/trunk/lua53_compat.patch?h=packages/vlc'
+        '0001-Prevent-including-missing-SVGs.patch'
+        'find-deps.py')
 
 pkgver() {
  printf 3.0.0v$_snapshot_
 } 
 
-build() {
-	cd "${_appname_}-3.0.0-git"
-   ./bootstrap
+prepare() {
+  cd "${_appname_}-3.0.0-git"
+
+  ./bootstrap
+
   patch -Np1 -i "${srcdir}/vlc"
-	# Patch
-	sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
-    sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
-	# Config
+  sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
+  sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
+  patch -p1 -i "$srcdir/0001-Prevent-including-missing-SVGs.patch"
+}
+
+build() {
+  cd "${_appname_}-3.0.0-git"
+
   export CFLAGS+=" -I/usr/include/samba-4.0"
   export CPPFLAGS+=" -I/usr/include/samba-4.0" 
   export CXXFLAGS+=" -std=gnu++11"
@@ -84,46 +92,49 @@ build() {
   export RCC=/usr/bin/rcc-qt5
   export PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig"
 
-	./configure --prefix=/usr \
-				--sysconfdir=/etc \
-				--disable-rpath \
-				--enable-faad \
-				--enable-nls \
-				--enable-lirc \
-				--enable-ncurses \
-				--enable-realrtsp \
-				--enable-aa \
-				--enable-upnp \
-				--enable-opus \
-				--enable-sftp \
-        --enable-fdkaac \
-        --enable-archive \
-        --enable-bluray \
-        --enable-daala   
-	./compile
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --disable-rpath \
+    --enable-faad \
+    --enable-nls \
+    --enable-lirc \
+    --enable-ncurses \
+    --enable-realrtsp \
+    --enable-aa \
+    --enable-upnp \
+    --enable-opus \
+    --enable-sftp \
+    --enable-fdkaac \
+    --enable-archive \
+    --enable-bluray \
+    --enable-daala
+
+  ./compile
 }
 
 package() {
-	cd "${_appname_}-3.0.0-git"
+  cd "${_appname_}-3.0.0-git"
 
-	make -i DESTDIR="${pkgdir}" install
+  make -i DESTDIR="${pkgdir}" install
 
-	for res in 16 32 48 128; do
-	install -D -m644 "${srcdir}/${_appname_}-3.0.0-git/share/icons/${res}x${res}/${_appname_}.png" \
-		"${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_appname_}.png"
-	done
+  for res in 16 32 48 128; do
+    install -D -m644 "${srcdir}/${_appname_}-3.0.0-git/share/icons/${res}x${res}/${_appname_}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_appname_}.png"
+  done
 
   install -Dm644 "$srcdir"/update-vlc-plugin-cache.hook "$pkgdir"/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
 
   # Update dependencies automatically based on dynamic libraries
- # _detected_depends=($(find "$pkgdir"/usr -name "*.so" | xargs python "$srcdir"/find-deps.py))
+  # _detected_depends=($(find "$pkgdir"/usr -name "*.so" | xargs python "$srcdir"/find-deps.py))
 
-#  msg 'Auto-detected dependencies:'
-#  echo "${_detected_depends[@]}" | fold -s -w 79 | sed 's/^/ /'
-#  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
+  #  msg 'Auto-detected dependencies:'
+  #  echo "${_detected_depends[@]}" | fold -s -w 79 | sed 's/^/ /'
+  #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
 sha256sums=('82abfbd64cd6606afaf1c938f5b7cb8e29484d258719ee674d1a769bfce94431'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
+            '599ce4bf0db5fc74f54bc03136b662606c22b8435b81440b02fc73f52d09bd7f'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
