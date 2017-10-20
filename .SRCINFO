@@ -1,0 +1,20 @@
+pkgbase = wayhouse-git
+	pkgdesc = Small Wayland tiling compositor based on libweston
+	pkgver = r16.d549eb0
+	pkgrel = 1
+	url = https://github.com/sardemff7/wayhouse
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = weston
+	depends = wayland-wall
+	source = wayhouse-git::git+https://github.com/sardemff7/wayhouse
+	source = git+https://github.com/sardemff7/libgwater
+	source = git+https://github.com/sardemff7/libnkutils
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = wayhouse-git
+
