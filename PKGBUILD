@@ -18,18 +18,18 @@
 pkgbase="spl-linux-lts"
 pkgname=("spl-linux-lts" "spl-linux-lts-headers")
 
-pkgver=0.7.2.4.9.56.1
+pkgver=0.7.3.4.9.56.1
 pkgrel=1
 makedepends=("linux-lts-headers=4.9.56" "libelf")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.2/spl-0.7.2.tar.gz")
-sha256sums=("c22e410c661a29acfa16caee21b82f8bb166f5b6611ec56431cd9c172ab4729e")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.3/spl-0.7.3.tar.gz")
+sha256sums=("cd8b8624163577bdec1d1d214c942c5771f183432a04d35c00fc6e7f12fa836b")
 license=("GPL")
-depends=("spl-utils-common>=0.7.2" "kmod" "linux-lts=4.9.56")
+depends=("spl-utils-common>=0.7.3" "kmod" "linux-lts=4.9.56")
 
 build() {
-    cd "${srcdir}/spl-0.7.2"
+    cd "${srcdir}/spl-0.7.3"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
                 --with-linux=/usr/lib/modules/4.9.56-1-lts/build \
@@ -44,7 +44,7 @@ package_spl-linux-lts() {
     provides=("spl")
     groups=("archzfs-linux-lts")
     conflicts=('spl-linux-lts-git')
-    cd "${srcdir}/spl-0.7.2"
+    cd "${srcdir}/spl-0.7.3"
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     # Remove src dir
@@ -54,7 +54,7 @@ package_spl-linux-lts() {
 package_spl-linux-lts-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
     conflicts=('spl-archiso-linux-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers'  'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
-    cd "${srcdir}/spl-0.7.2"
+    cd "${srcdir}/spl-0.7.3"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
