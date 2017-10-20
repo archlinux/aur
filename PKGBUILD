@@ -8,7 +8,7 @@
 
 pkgname=mutter-781835-workaround
 _pkgname=mutter
-pkgver=3.26.1+15+gb48c34979
+pkgver=3.26.1+19+g193216c2a
 pkgrel=1
 pkgdesc="A window manager for GNOME"
 url="https://git.gnome.org/browse/mutter"
@@ -22,8 +22,7 @@ provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
 options=(!emptydirs)
-
-_commit=b48c3497940883816416735f992aaae61396fbda  # gnome-3-26
+_commit=193216c2a7b9196fe3ce69192d94bf2995814113  # gnome-3-26
 source=("git+https://git.gnome.org/browse/mutter#commit=$_commit"
         startup-notification.patch)
 sha256sums=('SKIP'
@@ -48,10 +47,6 @@ prepare() {
 
 build() {
   cd $_pkgname
-
-  # Try to get a bit more performance out of this fps-critical component
-  CFLAGS+=" -O3 -flto=jobserver"
-  LDFLAGS+=" $CFLAGS"
 
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
       --libexecdir=/usr/lib/$_pkgname --disable-static \
