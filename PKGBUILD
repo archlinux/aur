@@ -1,16 +1,17 @@
 # Maintainer: nycko123 <nycko123 at gmail com>
+# Contributor: haawda <stefan-husmann at t-online de>
 # Previous Maintainer: Youngbin Han <sukso96100 at gmail com>
 # Previous Contributor: blainester <theblainestory at gmail com>
 pkgname=micro-bin
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
 license=('MIT')
 optdepends=('xclip: Required for copying/pasting text')
-conflicts=("micro-git micro micro-nightly-bin")
-provides=("micro")
+conflicts=('micro-git' 'micro' 'micro-nightly-bin')
+provides=('micro')
 
 source_x86_64=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux64.tar.gz")
 source_i686=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux32.tar.gz")
