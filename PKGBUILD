@@ -13,7 +13,7 @@ license=('MIT')
 depends=('perl' 'rofi' 'tmux' 'perl-net-mpd' 'perl-data-messagepack' 'perl-file-slurper' 'perl-config-simple' 'perl-try-tiny' 'perl-ipc-run' 'perl-http-date')
 install=clerk-git.install
 makedepends=('git')
-source=('git+https://github.com/carnager/clerk#branch=next')
+source=('git+https://github.com/carnager/clerk')
 
 pkgver() {
     cd ${_pkgname}
