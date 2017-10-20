@@ -5,13 +5,13 @@ _extension_id='ffemldjbbfhimggdkkckolidemlllklk'
 _store_base_url='https://clients2.google.com/service/update2/crx?response=redirect&prodversion=49.0&x=id%3D'
 pkgname="chromium-extension-${_extension_name}"
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Retrieve and store Mooltipass credentials easily from websites.'
 license=('custom:MIT')
 arch=('any')
 url='https://www.themooltipass.com/setup'
 depends=('chromium')
-source=("${_extension_name}.crx::${_store_base_url}${_extension_id}%26installsource%3Dondemand%26uc"
+source=("${_extension_name}-${pkgver}-${pkgrel}.crx::${_store_base_url}${_extension_id}%26installsource%3Dondemand%26uc"
         "${_extension_id}.json"
         'LICENSE')
 sha256sums=('14f1b742b61d414c451554e13e25516e03c51d2ab09e09352d9cff5e5e2c604f'
@@ -26,7 +26,7 @@ prepare() {
 package() {
     cd "${srcdir}"
 
-    install -Dm 644 "${_extension_name}.crx"    \
+    install -Dm 644 "${_extension_name}-${pkgver}-${pkgrel}.crx"    \
             "${pkgdir}/usr/lib/${CARCH}-linux-gnu/${_extension_name}-chromium/${_extension_name}.crx"
 
     install -Dm 644 "${_extension_id}.json"     \
