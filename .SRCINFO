@@ -1,7 +1,7 @@
 pkgbase = iwscanner
 	pkgdesc = Wireless scanner with an easy to use graphic interface and using the iwlist tool
 	pkgver = 0.2.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://kuthulu.com/iwscanner
 	arch = any
 	license = LGPL
@@ -12,7 +12,7 @@ pkgbase = iwscanner
 	optdepends = kdesu: privilege escalation to use wireless tools
 	optdepends = gksudo: privilege escalation to use wireless tools
 	options = !emptydirs
-	source = http://kuthulu.com/iwscanner/iwscanner-0.2.4.tgz
+	source = https://answers.launchpad.net/~unit193/+archive/ubuntu/test/+files/iwscanner_0.2.4.orig.tar.gz
 	source = iwscanner
 	source = iwscanner.desktop
 	source = setup.py
