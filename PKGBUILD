@@ -45,8 +45,13 @@ package() {
 
   install -m755 -d "$pkgdir/usr/share/webapps/$_pkgbase"
 
-  # Movim-editable directories
-  install -o http -m755 -d "$pkgdir/usr/share/webapps/$_pkgbase"/{cache,users}
+  # Cache
+  install -m750 -d "$pkgdir/var/cache/webapps/$_pkgbase/cache"\
+    "$pkgdir/var/cache/webapps/$_pkgbase/users"
+  chown -R root:http "$pkgdir/var/cache/webapps/$_pkgbase"
+  chmod -R u+rwX,g+rwX,o-rwx "$pkgdir/var/cache/webapps/$_pkgbase"
+  ln -s "/var/cache/webapps/$_pkgbase/cache" "$pkgdir/usr/share/webapps/$_pkgbase/cache"
+  ln -s "/var/cache/webapps/$_pkgbase/users" "$pkgdir/usr/share/webapps/$_pkgbase/users"
 
   cp -r app lib locales src themes vendor "$pkgdir/usr/share/webapps/$_pkgbase"
   install -Dm644 VERSION CHANGELOG.md INSTALL.md README.md index.php \
