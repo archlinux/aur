@@ -8,7 +8,7 @@
 
 _pack=gsl
 pkgname=octave-$_pack
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Octave bindings to the GNU Scientific Library"
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('d1f09f0b60a4a66c9ef462a6b2645429')
+md5sums=('b4bceff52d8cdbbfb201d67f443e3fa3')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
