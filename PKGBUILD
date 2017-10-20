@@ -10,8 +10,8 @@ url="https://github.com/trizen/youtube-viewer"
 license=('Artistic2.0')
 makedepends=('git' 'perl-module-build')
 
-provides=('youtube-viewer' 'gtk-youtube-viewer')
-conflicts=('youtube-viewer' 'youtube-viewer-git' 'gtk-youtube-viewer')
+provides=('youtube-viewer' 'youtube-viewer-git')
+conflicts=('youtube-viewer' 'youtube-viewer-git')
 
 depends=('perl>=5.16.0' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-libwww' 'gtk2-perl' 'perl-file-sharedir')
 
