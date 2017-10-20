@@ -1,7 +1,8 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Vlad M. <vlad@archlinux.net>
 
 pkgname=watchexec
-pkgver=1.8.4
+pkgver=1.8.6
 pkgrel=1
 pkgdesc="Executes commands in response to file modifications"
 url='https://github.com/mattgreen/watchexec'
@@ -9,7 +10,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('Apache')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ac5f4baae80de5ae99e44be328b2d9e75672250ba38a8961c90120063fbb3fed')
+sha256sums=('4caa882a17d3e826dca92af157382145c599ac204e9b9ea810dc309402a200e8')
 
 build() {
   cd "$pkgname-$pkgver"
