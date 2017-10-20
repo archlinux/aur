@@ -4,7 +4,7 @@
 pkgname=wayland-wall-git
 _gitname=wayland-wall
 pkgver=r49.39400ea
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of protocols, called bricks, to create a complete desktop experience for Wayland."
 arch=('i686' 'x86_64')
 url="https://github.com/wayland-wall/wayland-wall"
@@ -29,7 +29,7 @@ prepare() {
   mkdir -p build
   meson build \
     --buildtype=release \
-    -Dprefix=/usr \
+    --prefix=/usr \
     -Denable-clients=true \
     -Denable-images=true \
     -Denable-text=true
