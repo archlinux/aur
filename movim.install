@@ -25,8 +25,8 @@ post_install() {
 
 post_upgrade() {
   # XXX: Waiting for upstream to fix https://github.com/movim/movim/issues/509
-  ln -s /var/cache/webapps/movim/cache /usr/share/webapps/movim
-  ln -s /var/cache/webapps/movim/users /usr/share/webapps/movim
+  ln -sf /var/cache/webapps/movim/cache /usr/share/webapps/movim
+  ln -sf /var/cache/webapps/movim/users /usr/share/webapps/movim
 
   post_install $1
 }
