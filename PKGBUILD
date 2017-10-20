@@ -1,6 +1,7 @@
 # Maintainer: Francisco Giordano <frangio.1@gmail.com>
 # Contributor: Tobias Frilling <tobias@frilling-online.de>
 # Contributor: Martino Visintin <vise890@gmail.com>
+# Contributor: Marcel Campello <tucho@prafrentex.com.br>
 
 # NOTE: This package only installs the boot executable found in
 # https://github.com/boot-clj/boot-bin. The installation and updating of the
@@ -8,9 +9,8 @@
 # the package version number corresponds to the executable.
 
 pkgname=boot
-pkgver=2.5.2
+pkgver=2.7.2
 pkgrel=1
-epoch=1
 pkgdesc='A Clojure build framework and ad-hoc Clojure script evaluator'
 arch=('any')
 url='http://boot-clj.com'
@@ -18,8 +18,8 @@ license=('EPL')
 depends=('java-environment' 'bash')
 install='boot.install'
 source=("https://github.com/boot-clj/boot-bin/releases/download/${pkgver}/boot.sh")
+sha1sums=('f717ef381f2863a4cad47bf0dcc61e923b3d2afb')
 noextract=('boot.sh')
-sha1sums=('d9cbefc6cbf043361a58b416e6d62fc80e5ead32')
 
 package() {
   cd ${srcdir}
