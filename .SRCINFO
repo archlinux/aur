@@ -1,6 +1,6 @@
 pkgbase = pysingular
 	pkgdesc = A Python interface to Singular
-	pkgver = 0.9.1
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/sebasguts/SingularPython
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = pysingular
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	makedepends = singular
-	source = https://pypi.io/packages/source/P/PySingular/PySingular-0.9.1.tar.gz
-	md5sums = be1913a73d6c5aaea7872202e55a4346
+	source = https://pypi.io/packages/source/P/PySingular/PySingular-0.9.5.tar.gz
+	md5sums = f2698b633915199fc27c9772e4688754
 
 pkgname = python2-pysingular
 	depends = python2
