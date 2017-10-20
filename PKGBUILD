@@ -5,7 +5,7 @@
 
 pkgbase=virtualbox-modules-lqx
 pkgname=('virtualbox-host-modules-lqx' 'virtualbox-guest-modules-lqx')
-pkgver=5.1.30
+pkgver=5.2.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
@@ -36,8 +36,15 @@ package_virtualbox-host-modules-lqx() {
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
 	cd "dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
 	install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
-	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/host.install"
+	
+	# compress each module individually
+	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
+
+	# systemd module loading
+	install -Dm644 /dev/null "$pkgdir/usr/lib/modules-load.d/virtualbox-host-modules-lqx.conf"
+	printf "vboxdrv\nvboxpci\nvboxnetadp\nvboxnetflt\n" >  \
+		"$pkgdir/usr/lib/modules-load.d/virtualbox-host-modules-lqx.conf"
 }
 
 package_virtualbox-guest-modules-lqx() {
@@ -49,8 +56,13 @@ package_virtualbox-guest-modules-lqx() {
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
 	cd "dkms/vboxguest/${pkgver}_OSE/$_kernver/$CARCH/module"
 	install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
-	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/guest.install"
+	
+	# compress each module individually
+	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
+
+	# systemd module loading
+        install -Dm644 /dev/null "$pkgdir/usr/lib/modules-load.d/virtualbox-guest-modules-lqx.conf"
+        printf "vboxguest\nvboxsf\nvboxvideo\n" >  \
+		"$pkgdir/usr/lib/modules-load.d/virtualbox-guest-modules-lqx.conf"
 }
-
-
