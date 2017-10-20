@@ -1,22 +1,25 @@
 pkgbase = haskell-linear
 	pkgdesc = Linear Algebra
-	pkgver = 1.19.1.2
+	pkgver = 1.20.7
 	pkgrel = 1
-	url = http://hackage.haskell.org/package/linear
-	install = haskell-linear.install
-	arch = any
-	license = BSD3
-	depends = ghc
+	url = http://github.com/ekmett/linear
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = ghc-libs
 	depends = haskell-adjunctions>=4.0
 	depends = haskell-adjunctions<5
 	depends = haskell-base>=4.5
 	depends = haskell-base<5
+	depends = haskell-base-orphans>=0.5
+	depends = haskell-base-orphans<1
 	depends = haskell-binary>=0.5
-	depends = haskell-binary<0.8
+	depends = haskell-binary<0.9
 	depends = haskell-bytes>=0.15
 	depends = haskell-bytes<1
 	depends = haskell-cereal>=0.4.1.1
-	depends = haskell-cereal<0.5
+	depends = haskell-cereal<0.6
 	depends = haskell-containers>=0.4
 	depends = haskell-containers<0.6
 	depends = haskell-deepseq>=1.1
@@ -30,8 +33,8 @@ pkgbase = haskell-linear
 	depends = haskell-lens<5
 	depends = haskell-reflection>=1.3.2
 	depends = haskell-reflection<3
-	depends = haskell-semigroupoids>=3.0
-	depends = haskell-semigroupoids<6
+	depends = haskell-semigroupoids>=5.2.1
+	depends = haskell-semigroupoids<5.3
 	depends = haskell-semigroups>=0.9
 	depends = haskell-semigroups<1
 	depends = haskell-tagged>=0.4.4
@@ -39,18 +42,17 @@ pkgbase = haskell-linear
 	depends = haskell-template-haskell>=2.7
 	depends = haskell-template-haskell<3.0
 	depends = haskell-transformers>=0.2
-	depends = haskell-transformers<0.5
+	depends = haskell-transformers<0.6
 	depends = haskell-transformers-compat>=0.4
 	depends = haskell-transformers-compat<1
 	depends = haskell-unordered-containers>=0.2.3
 	depends = haskell-unordered-containers<0.3
 	depends = haskell-vector>=0.10.0
-	depends = haskell-vector<0.11
+	depends = haskell-vector<0.13
 	depends = haskell-void>=0.6
 	depends = haskell-void<1
-	options = strip
-	source = http://hackage.haskell.org/packages/archive/linear/1.19.1.2/linear-1.19.1.2.tar.gz
-	sha512sums = e6c180ccaad8a4e8d55516e0bb535792cdac2744fa46fde00dace6f51c4d4045ae620b8c6c7e9dafc4e26ce727073858a8d75e47684d7beb48ce930cdc17068b
+	source = https://hackage.haskell.org/packages/archive/linear/1.20.7/linear-1.20.7.tar.gz
+	sha512sums = d60e2f5bb3bee1ad71e7756090b91a1268b5f40065300f511bf190629aaa1c6cfc424feb576641517a5ff63d4afaa655bc01326eacf4b304220911486ff9745c
 
 pkgname = haskell-linear
 
