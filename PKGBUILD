@@ -8,7 +8,7 @@
 
 pkgname=thunderbird-gtk2
 _pkgname=thunderbird
-pkgver=52.3.0
+pkgver=52.4.0
 pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org"
 arch=(i686 x86_64)
@@ -16,21 +16,24 @@ license=(MPL GPL LGPL)
 url="https://www.mozilla.org/thunderbird/"
 depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
          nss hunspell sqlite ttf-font icu libvpx)
-makedepends=(gcc63 unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
-             autoconf2.13 cargo)
+makedepends=(gcc6 unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
+             autoconf2.13 rust clang llvm)
 optdepends=('libcanberra: sound support')
 provides=("thunderbird=$pkgver")
 conflicts=(thunderbird)
 options=(!emptydirs !makeflags)
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
-        thunderbird.desktop
-        thunderbird-install-dir.patch no-crmf.diff rust-i686.patch fix-wifi-scanner.diff)
-sha256sums=('050acc320a9c50365a53e4faa6538a0ad7f9a302d5f2cfb6edf0c6fe1b573b18'
-            'e44c55501f650a4e80b9c353b81f33e07ca65808db831eff6ca616aded233827'
-            '24599eab8862476744fe1619a9a53a5b8cdcab30b3fc5767512f31d3529bd05d'
+        0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
+        no-crmf.diff rust-i686.patch glibc-2.26-fix.diff fix-wifi-scanner.diff
+        $_pkgname.desktop thunderbird-install-dir.patch)
+sha256sums=('7f57b5b4d4ec42b04afcff8327abc2d3c6185c0bcc1ad138825d021a2d3f578c'
+            '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
             'a7317caba56e89932bd9e3b9352d94701dd9a419685057f238b1ded8dc0adcd7'
             'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
-            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
+            'cd7ff441da66a287f8712e60cdc9e216c30355d521051e2eaae28a66d81915e8'
+            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
+            'e44c55501f650a4e80b9c353b81f33e07ca65808db831eff6ca616aded233827'
+            '24599eab8862476744fe1619a9a53a5b8cdcab30b3fc5767512f31d3529bd05d')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -51,14 +54,21 @@ prepare() {
   cd $_pkgname-$pkgver
   patch -Np1 -i ../thunderbird-install-dir.patch
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
-  patch -Np1 -i ../no-crmf.diff
-
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -d mozilla -Np1 < ../fix-wifi-scanner.diff
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
+  patch -Np1 -i ../no-crmf.diff
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1385667
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1394149
+  patch -d mozilla/toolkit/crashreporter/google-breakpad/src/client -Np4 < ../glibc-2.26-fix.diff
+
   # Build with the rust targets we actually ship
   patch -d mozilla -Np1 < ../rust-i686.patch
+
+  # https://bugs.archlinux.org/task/53890
+  patch -d mozilla -Np1 < ../0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -99,12 +109,11 @@ ac_add_options --enable-system-ffi
 ac_add_options --enable-system-pixman
 
 # Features
+ac_add_options --enable-alsa
+ac_add_options --disable-jack
 ac_add_options --enable-startup-notification
 ac_add_options --disable-crashreporter
-ac_add_options --enable-alsa
 ac_add_options --disable-updater
-
-STRIP_FLAGS="--strip-debug"
 END
 }
 
@@ -114,15 +123,12 @@ build() {
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
 
-  # Hardening
-  LDFLAGS+=" -Wl,-z,now"
-
   export PATH="$srcdir/path:$PATH"
 
   # Do PGO
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
   #  make -f client.mk build MOZ_PGO=1
-  make -f client.mk build CC=gcc-6.3
+  make -f client.mk build CC=gcc-6
 }
 
 package() {
