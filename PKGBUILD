@@ -2,7 +2,7 @@
 
 pkgname=bit-babbler
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='BitBabbler hardware TRNG and kernel entropy source support'
 arch=('i686' 'x86_64')
 url='http://www.bitbabbler.org'
@@ -29,7 +29,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   make install DESTDIR="${pkgdir}"
-  install -Dm644 debian/bit-babbler-sysctl.conf "${pkgdir}/etc/sysctl.d/bit-babbler-sysctl.conf"
-  install -Dm644 debian/bit-babbler.udev "${pkgdir}/etc/udev/rules.d/bit-babbler.rules"
-  install -Dm644 "${srcdir}/seedd.service" "${pkgdir}/usr/lib/systemd/system/seedd.service"
+  install -Dm644 debian/bit-babbler-sysctl.conf "${pkgdir}"/etc/sysctl.d/bit-babbler-sysctl.conf
+  install -Dm644 debian/bit-babbler.udev "${pkgdir}"/etc/udev/rules.d/bit-babbler.rules
+  install -Dm644 "${srcdir}"/seedd.service "${pkgdir}"/usr/lib/systemd/system/seedd.service
 }
