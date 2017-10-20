@@ -1,14 +1,14 @@
 pkgbase = qterminal-git
 	pkgdesc = Lightweight Qt-based terminal emulator
 	pkgver = 0.7.1.41.g9d92b3c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lxde/qterminal
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
-	makedepends = lxqt-build-tools
+	makedepends = lxqt-build-tools-git
 	makedepends = qt5-tools
 	depends = qtermwidget-git
 	depends = qt5-x11extras
