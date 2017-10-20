@@ -2,7 +2,7 @@
 
 pkgname=android-sdk-ant
 pkgver=25.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Apache Ant build scripts and libraries for the Android SDK'
 arch=('any')
 url='https://developer.android.com/studio/releases/sdk-tools.html'
@@ -29,12 +29,12 @@ package() {
     'sdklib.jar')
 
   for FILE in "tools/ant"/*; do
-    install -Dm644 "$FILE" "${pkgdir}/opt/android-sdk/tools/ant/$(basename $FILE)"
+    install -Dm644 "$FILE" "${pkgdir}"/opt/android-sdk/tools/ant/$(basename $FILE)
   done
 
   for LIB in ${LIBS[@]}; do
-    install -Dm644 "tools/lib/${LIB}" "${pkgdir}/opt/android-sdk/tools/lib/${LIB}"
+    install -Dm644 tools/lib/${LIB} "${pkgdir}"/opt/android-sdk/tools/lib/${LIB}
   done
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
