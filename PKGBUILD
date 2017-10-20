@@ -2,7 +2,7 @@
 # Contributor: Wyatt J. Brown <sushidudeteam@gmail.com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20170921
+pkgver=20171020
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -59,6 +59,7 @@ depends=('adobe-source-code-pro-fonts'
          'ttf-fira-sans'
          'ttf-freebanglafont'
          'ttf-freefont'
+         'ttf-font-awesome'
          'ttf-gentium'
          'ttf-hack'
          'ttf-hanazono'
