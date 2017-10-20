@@ -4,12 +4,13 @@
 _pkgbase='movim'
 pkgname=movim-git
 pkgver=r5307.5705ffc9
-pkgrel=2
+pkgrel=3
 pkgdesc="Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol."
 arch=('any')
 url='https://movim.eu'
 license=('AGPL3')
 provides=('movim')
+conflicts=('movim')
 depends=('php-gd' 'php-imagick')
 optdepends=('postgresql: to use the postgresql database backend'
             'php-pgsql: php bindings for postgresql'
