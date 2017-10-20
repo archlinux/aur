@@ -8,8 +8,8 @@
 
 _pack=dataframe
 pkgname=octave-$_pack
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Data manipulation toolbox similar to R data.frame"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('7357ec2162d1dd47a0d0fbc0e90d3f97')
+md5sums=('e9b5eba82d2637a97bc4243e821f80e4')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
