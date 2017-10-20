@@ -1,7 +1,7 @@
 pkgbase = python-saharaclient
 	pkgdesc = Python client library for Sahara
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://docs.openstack.org/developer/python-saharaclient/
 	arch = any
 	license = Apache
@@ -27,6 +27,8 @@ pkgbase = python-saharaclient
 	checkdepends = python2-six
 	checkdepends = python-mock
 	checkdepends = python2-mock
+	checkdepends = python-hacking
+	checkdepends = python2-hacking
 	checkdepends = python-pycodestyle
 	checkdepends = python2-pycodestyle
 	checkdepends = python-oslotest

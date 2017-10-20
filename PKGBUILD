@@ -2,7 +2,7 @@
 
 pkgname=('python-saharaclient' 'python2-saharaclient')
 pkgver='1.3.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Python client library for Sahara'
 arch=('any')
 url="http://docs.openstack.org/developer/${pkgname}/"
@@ -19,6 +19,7 @@ checkdepends=('python-pbr' 'python2-pbr'
               'python-requests' 'python2-requests'
               'python-six' 'python2-six'
               'python-mock' 'python2-mock'
+              'python-hacking' 'python2-hacking'
               'python-pycodestyle' 'python2-pycodestyle'
               'python-oslotest' 'python2-oslotest'
               'python-os-testr'
