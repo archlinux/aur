@@ -3,7 +3,7 @@
 
 pkgname=emby-server-dev-unlocked
 pkgver=3.2.33.14
-pkgrel=3
+pkgrel=4
 pkgdesc='Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
 url='https://github.com/nicolahinssen/emby-dev-unlocked'
@@ -20,7 +20,7 @@ source=("emby-server-${pkgver}.tar.gz::https://github.com/MediaBrowser/Emby/arch
         'emby-server.service')
 backup=('etc/conf.d/emby-server')
 sha256sums=('71613aecb867fe4bc85cdadde1ff33af0d534f49b8bdda89935f437d6539f0b2'
-            '5717d7de17dcb97187d86327d279bd12e5aca42a6d48a897d241623c035d436d'
+            'a3bfc89ee02880949a42320d1087767b38f0207bd7c5007963a721abbbc386d8'
             '7b1974f7bba8ac4b76e51ef7fe1257d165c7c4abbd0915e192391336048a3d74'
             'b25bf83a0ab371aff3b13b82f7af71b51bfe6d7e51eb8a8a3dd8f0774ffce6a5'
             'c9ad78f3e2f0ffcb4ee66bb3e99249fcd283dc9fee17895b9265dc733288b953'
