@@ -1,0 +1,20 @@
+pkgbase = gnome-shell-extension-no-title-bar
+	pkgdesc = No Title Bar removes the title bar, moves the window title and buttons to the top panel.
+	pkgver = 6.r6.gb2724e9
+	pkgrel = 0
+	url = https://github.com/franglais125/no-title-bar
+	install = gnome-shell-extension-no-title-bar.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gnome-shell
+	depends = xorg-xprop
+	provides = gnome-shell-extension-no-title-bar
+	conflicts = gnome-shell-extension-no-title-bar
+	conflicts = gnome-shell-extension-pixel-saver
+	conflicts = gnome-shell-extension-pixel-saver-git
+	source = git://github.com/franglais125/no-title-bar.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-no-title-bar
+

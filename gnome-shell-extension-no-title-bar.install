@@ -1,0 +1,7 @@
+post_install() {
+  echo ''
+  echo '==> To enable no-title-bar:'
+  echo '==> Reload Gnome Shell with Alt-F2 r'
+  echo '==> Enable it with gnome-tweak-tool or "gnome-shell-extension-tool -e no-title-bar@franglais125.gmail.com"'
+  echo ''
+}
