@@ -1,11 +1,12 @@
-# Maintainer: Auguste Pop <auguste [at] gmail [dot] com>
+# Contributor: Auguste Pop <auguste [at] gmail [dot] com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=pachi-go
 _pkgalias=pachi
 pkgver=11.00
 _pkgcodename=retsugen
 pkgrel=1
-pkgdesc="A reasonably strong engine built within a simple modular framework"
+pkgdesc="A reasonably strong engine for the board game go" 
 arch=('i686' 'x86_64')
 url="http://pachi.or.cz/"
 license=('GPL')
