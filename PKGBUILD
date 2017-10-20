@@ -9,8 +9,7 @@ url="http://kuthulu.com/iwscanner"
 license=('LGPL')
 depends=('pygtk' 'python2' 'wireless_tools')
 optdepends=('gksu: privilege escalation to use wireless tools'
-            'kdesu: privilege escalation to use wireless tools'
-            'gksudo: privilege escalation to use wireless tools')
+            'kdesu: privilege escalation to use wireless tools')
 options=(!emptydirs)
 # Additional source files are based on the opensuse 'iwscanner' rpm
 #source=(http://kuthulu.com/iwscanner/iwscanner-$pkgver.tgz
