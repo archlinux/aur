@@ -2,14 +2,14 @@
 
 pkgname=oclint
 pkgver=0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A static source code analysis tool to improve quality and reduce
 defects for C, C++ and Objective-C"
 arch=('i686' 'x86_64')
 url="http://oclint.org/"
 license=('BSD')
 dependencies=('clang' 'clang-analyzer' 'llvm' 'llvm-libs' 'openssl')
-makedepends=('clang' 'cmake' 'subversion' 'python' 'llvm' 'libxml2'
+makedepends=('clang' 'cmake' 'ninja' 'subversion' 'python' 'llvm' 'libxml2'
 'countly-cpp')
 source=("https://github.com/oclint/oclint/archive/v${pkgver}.tar.gz"
         "openssl.patch")
