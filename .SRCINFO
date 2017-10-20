@@ -1,0 +1,16 @@
+pkgbase = haskell-elerea
+	pkgdesc = A tiny discrete time FRP implementation
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/elerea
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-transformers-base
+	source = https://hackage.haskell.org/packages/archive/elerea/2.9.0/elerea-2.9.0.tar.gz
+	sha512sums = 5b1bed99a868d70c4e45f21910a8e2a4ea7ce4ea5b09398958b7c7e2b9cf1ae517da2f5cb9e2e7a470938419a54d956a614e379a3bb3decd5c5bc8f5cff32089
+
+pkgname = haskell-elerea
+
