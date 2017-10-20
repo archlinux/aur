@@ -30,7 +30,7 @@ build() {
 
 package() {
         mkdir -p "$pkgdir/usr/bin/"
-	ln -s "${pkgdir}/opt/${pkgname%-git}/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+	ln -s "/opt/${pkgname%-git}/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -D -m644 "$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 	cd "$srcdir/${pkgname%-git}"
 	install -D -m644 "share/flatcam_icon256.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
