@@ -1,30 +1,27 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=combust-git
-_gitname=combust
-pkgver=0.66.6779dd2
-pkgrel=2
+pkgver=0.68.b866d9b
+pkgrel=1
 pkgdesc='nftables firewall script with profiles'
 arch=('any')
-license=('MIT')
 url='https://github.com/gavinhungry/combust'
+license=('MIT')
 depends=('nftables')
-source=("${_gitname}::git+https://github.com/gavinhungry/${_gitname}.git#branch=master")
-sha256sums=('SKIP')
 backup=('etc/combust.conf')
+source=("${pkgname}::git+https://github.com/gavinhungry/combust.git#branch=master")
+sha256sums=('SKIP')
 
-pkgver () {
-  cd "${srcdir}/${_gitname}"
-  echo "0.$(git rev-list --count HEAD).$(git describe --always | sed 's|-|.|g')"
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  echo "0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
+  cd "${srcdir}/${pkgname}"
 
-  install -d $pkgdir/etc/
-  install -d $pkgdir/usr/bin/
-  install -d $pkgdir/usr/lib/systemd/system/
-  install -m600 combust.conf "${pkgdir}"/etc/
-  install -m755 combust.sh "${pkgdir}"/usr/bin/combust
-  install -m644 combust.service "${pkgdir}"/usr/lib/systemd/system/
+  install -Dm600 combust.conf "${pkgdir}"/etc/combust.conf
+  install -Dm755 combust.sh "${pkgdir}"/usr/bin/combust
+  install -Dm644 combust.service "${pkgdir}"/usr/lib/systemd/system/combust.service
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
