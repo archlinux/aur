@@ -7,7 +7,7 @@
 #
 pkgname="zfs-utils-common-git"
 
-pkgver=0.7.0.r135.g6044cf59c
+pkgver=0.7.0.r136.g1cfdb0e6e
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("")
@@ -39,7 +39,7 @@ build() {
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --with-mounthelperdir=/usr/bin \
                 --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
-                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.7.2 \
+                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.7.3 \
                 --with-config=user
     make
 }
