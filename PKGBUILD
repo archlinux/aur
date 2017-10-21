@@ -9,7 +9,7 @@ arch=('any')
 url="http://www.enlightenment.org"
 license=('GPL3' 'LGPL: Icons')
 depends=('python-efl' 'polkit')
-makedepends=('git mesa')
+makedepends=('git' 'mesa')
 optdepends=('python-psutil: For process details')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
