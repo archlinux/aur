@@ -13,6 +13,9 @@ license=('MIT')
 depends=('perl' 'rofi' 'tmux' 'perl-net-mpd' 'perl-data-messagepack' 'perl-file-slurper' 'perl-config-simple' 'perl-try-tiny' 'perl-ipc-run' 'perl-http-date')
 install=clerk-git.install
 makedepends=('git')
+optdepends=('flac: tagging support'
+			'vorbis-tools: tagging support'
+			'mutagen: tagging support')
 source=('git+https://github.com/carnager/clerk')
 
 pkgver() {
