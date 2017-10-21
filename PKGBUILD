@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 # Contributor: Carl George < arch at cgtx dot us >
 pkgname=gnome-shell-extension-dash-to-panel-git
-pkgver=r231.25a80f1
+pkgver=r249.cbda4b3
 pkgrel=1
 pkgdesc='Extension for GNOME shell to combine the dash and main panel'
 arch=(any)
