@@ -1,7 +1,6 @@
 # Maintainer: Moritz Lipp <mail@mlq.me>
 pkgname=fmbt
-_pkgname=fMBT
-pkgver=0.31
+pkgver=0.39
 pkgrel=1
 epoch=
 pkgdesc="Free Model Based tool"
@@ -31,22 +30,21 @@ depends=(
   'tesseract'
   'tesseract-data-eng'
   )
-  source=(https://github.com/01org/$_pkgname/archive/v$pkgver.tar.gz)
-md5sums=('14f11badf6e0c5062ba37685034c1709')
+  source=(https://01.org/sites/default/files/downloads/${pkgname}/${pkgname}-${pkgver}-1.tar.gz)
+md5sums=('14afd3688bf2c8376743904ab0430f76')
 
 prepare() {
-	cd "$_pkgname-$pkgver"
+	cd "$pkgname-$pkgver-1"
 }
 
 build() {
-	cd "$_pkgname-$pkgver"
-  ./autogen.sh
+	cd "$pkgname-$pkgver-1"
 	./configure --prefix=/usr PYTHON=python2
 	make
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
+	cd "$pkgname-$pkgver-1"
   export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
 	make DESTDIR="$pkgdir/" install
 }
