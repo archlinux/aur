@@ -209,7 +209,7 @@ package_avidemux-core-git() {
               'wine: AVSload (Load Avisynth scripts on Avidemux)'
               'vapoursynth: vsProxy (Load Vapoursynth scripts on Avidemux'
               )
-  provides=("avidemux-core-git=${pkgver}" 'avidemux-core')
+  provides=('avidemux-core')
   conflicts=('avidemux-core')
 
   make -C build_core DESTDIR="${pkgdir}" install
@@ -222,7 +222,7 @@ package_avidemux-core-git() {
 
 package_avidemux-qt-git() {
   pkgdesc="Qt GUI for Avidemux. (GIT version)"
-  depends=("avidemux-core-git=${pkgver}"
+  depends=("avidemux-core-git>=${pkgver}"
            'qt5-script'
            'libxv'
            'glu'
@@ -246,7 +246,7 @@ package_avidemux-qt-git() {
 
 package_avidemux-cli-git() {
   pkgdesc="CLI frontend for Avidemux. (GIT version)"
-  depends=("avidemux-core-git=${pkgver}")
+  depends=("avidemux-core-git>=${pkgver}")
   provides=('avidemux-cli')
   conflicts=('avidemux-cli')
 
