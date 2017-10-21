@@ -4,7 +4,7 @@
 _gitname='fenrir'
 pkgname="${_gitname}-git"
 pkgver=v0.2.690.g8878a2a
-pkgrel=3
+pkgrel=4
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url="https://linux-a11y.org/index.php?page=fenrir-screenreader"
@@ -37,7 +37,7 @@ pkgver()
 package()
 {
   cd "$srcdir/$_gitname"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python setup.py install --force-settings --root="${pkgdir}/" --optimize=1
 }
 
 # vim: set ts=2 sw=2 et:
