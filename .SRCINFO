@@ -1,16 +1,12 @@
 pkgbase = obs-service-download_files
-	pkgdesc = An OBS source service: downloads all remote sources listed in a spec file
-	pkgver = 0.5
-	pkgrel = 2
+	pkgdesc = An OBS source service: download files
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/openSUSE/obs-service-download_files
 	arch = any
 	license = GPL2
-	depends = obs-build
-	depends = diffutils
-	depends = wget
-	depends = perl-uri
-	source = http://download.opensuse.org/source/distribution/13.1/repo/oss/suse/src/obs-service-download_files-0.5-3.1.2.src.rpm
-	sha256sums = ce2f8ba0746a0cea6a7db3633f3584f14753ff739ea33c38c357112de10f9dd6
+	source = https://github.com/openSUSE/obs-service-download_files/archive/0.5.1.tar.gz
+	sha512sums = 895f3cb9beae469e8b39bfaa76a6e5c93d4ea394731f5a1930d0e4a88c40682094b0305da33368cbbf556cc224ba4386e095d7cdad130c0cda1ea03444a2bd15
 
 pkgname = obs-service-download_files
 
