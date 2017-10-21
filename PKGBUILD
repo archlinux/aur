@@ -20,7 +20,7 @@ package() {
 
     # Launcher and Data
     cp -Ral "${srcdir}/data/noarch/game/"* "${pkgdir}/opt/firewatch"
-    mv "${pkgdir}/opt/firewatch/fw{.x86_64,}"
+    mv "${pkgdir}"/opt/firewatch/fw{.x86_64,}
 
     # Install Binaries/Launchers
     mkdir -p "${pkgdir}/usr/bin"
