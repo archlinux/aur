@@ -2,7 +2,7 @@
 repo=heitzmann
 modname=gdspy
 pkgname=python2-${modname}
-pkgver=1.1.2
+pkgver=1.2
 pkgrel=1
 pkgdesc="Gdspy is a Python module for creating GDSII stream files, usually CAD layouts."
 url="https://github.com/${repo}/${modname}"
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 install=
 source=("https://github.com/${repo}/${modname}/archive/v${pkgver}.tar.gz")
-md5sums=('16aee25eaf74726c0e899f48aad03ba0')
+md5sums=('5dc96a45abf31e125c96c244510e83db')
 
 build() {
   cd "${srcdir}/${modname}-${pkgver}"
