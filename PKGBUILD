@@ -11,7 +11,7 @@ options=('!strip')
 provides=('teamviewer')
 conflicts=('teamviewer-beta')
 depends_x86_64=(
-	'lib32-fontconfig'
+	'lib32-fontconfig<2.8.1'
 	'lib32-libpng12'
 	'lib32-libsm'
 	'lib32-libxinerama'
@@ -20,7 +20,7 @@ depends_x86_64=(
   'lib32-libxtst'
   'libxtst')
 depends_i686=(
-	'fontconfig'
+	'fontconfig<2.8.1'
 	'libpng12'
 	'libsm'
 	'libxinerama'
