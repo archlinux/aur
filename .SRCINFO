@@ -10,7 +10,7 @@ pkgbase = nerd-fonts-source-code-pro
 	depends = xorg-font-utils
 	depends = wget
 	source = nerd-fonts-source-code-pro.links
-	source = https://github.com/ryanoasis/nerd-fonts/raw/v1.1.0/LICENSE
+	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v1.1.0/LICENSE
 	sha256sums = 01de63a72f9bbf931b02c3cf5229e2a4b6742c178d7eb09572572fbff2534647
 	sha256sums = d2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5
 
