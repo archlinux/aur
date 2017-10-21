@@ -1,7 +1,7 @@
 pkgbase = xmrig-bin
 	pkgdesc = Monero cryptocurrency CPU miner, HTTP API disabled
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xmrig/xmrig
 	install = xmrig.install
 	changelog = CHANGELOG.md
