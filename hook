@@ -3,7 +3,7 @@
 run_hook() {
     rootkey=$(mktemp)
     chmod 0000 "$rootkey"
-    gpg -o "$rootkey" --yes /rootkey.gpg
+    gpg --decrypt -o "$rootkey" --yes /rootkey.gpg
 
     # send the now decrypted key location to cryptsetup's encrypt hook
     cryptkey="rootfs:$rootkey"
