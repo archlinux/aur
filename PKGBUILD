@@ -3,9 +3,10 @@
 # Contributor: Splex
 
 pkgname=kokua-opensim
-pkgver=4.2.1.39007
-_pkgver=4_2_1_39007
-_pkgprever=4.2.1
+pkgver=4.2.2.417777
+_pkgver=4_2_2_41777
+_pkgprever=4.2.2
+_pkgver64=4_2_2_41721
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Open Simulator (opensim) grids, only."
 url="http://www.kokuaviewer.org"
@@ -15,17 +16,16 @@ depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' '
 optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support' 'nvidia-utils: for NVIDIA support' 'pepper-flash: for inworld Flash support' 'gstreamer0.10: for video support, may need good, bad and ugly plugins' 'lib32-freealut: for OpenAL support')
 conflicts=('kokua-secondlife')
 
-source_i686=("http://downloads.sourceforge.net/project/kokua.team-purple.p/KokuaOS-${_pkgprever}/KokuaOS_${_pkgver}_i686.tar.txz"
+source_i686=("https://downloads.sourceforge.net/project/kokua.team-purple.p/Kokua-OS/Linux32Bit/KokuaOS_Test_RLV_${_pkgver}_i686.tar.txz"
              'kokua-opensim.desktop'
              'kokua-opensim.launcher')
-source_x86_64=("http://downloads.sourceforge.net/project/kokua.team-purple.p/KokuaOS-${_pkgprever}/KokuaOS_64_${_pkgver}_x86_64.tar.txz"
+source_x86_64=("https://downloads.sourceforge.net/project/kokua.team-purple.p/Kokua-OS/Linux64Bit/KokuaOS_Test_RLV_64_${_pkgver64}_x86_64.tar.txz"
 		'kokua-opensim.desktop'
 		'kokua-opensim.launcher')
-
-md5sums_i686=('8cf03998b63ac85d5cd0d49686abf16f'
+md5sums_i686=('680ab9a635c7a202489d07a9ecc78d90'
               'a5b15ff4dd93dbfc01ee6d7c799728d0'
               'dd2d31fddb0b67846c1dfd3bfed88859')
-md5sums_x86_64=('7ecff15fc1fc0f8166e1fbc795b8ab10'
+md5sums_x86_64=('c730fcf0a661b58018ade316dc6da91c'
                 'a5b15ff4dd93dbfc01ee6d7c799728d0'
                 'dd2d31fddb0b67846c1dfd3bfed88859')
 
@@ -34,9 +34,9 @@ cd $srcdir
   
 # Rename Data Directory
 if [ "$CARCH" = "i686" ]; then
-mv KokuaOS_Kokua_Release_${_pkgver}_$CARCH kokua-opensim
+mv KokuaOS_Test_RLV_${_pkgver}_$CARCH kokua-opensim
 elif [ "$CARCH" = "x86_64" ]; then
-mv KokuaOS_64_${_pkgver}_$CARCH kokua-opensim
+mv KokuaOS_Test_RLV_64_${_pkgver64}_$CARCH kokua-opensim
 fi
 
 # Install Desktop File
