@@ -1,15 +1,15 @@
 # Maintainer: tildearrow <acc12345acc at gmail dot com>
 pkgname=taebron-git
-pkgver=aur.r24.ge06738d
+pkgver=aur.r176.g80ae0fd
 pkgrel=1
 pkgdesc="Razer device daemon and configuration tool, from git"
 arch=('any')
 url="https://github.com/tildearrow/taebron"
 license=('GPL')
-depends=('razer-driver-dkms')
+depends=('openrazer-driver-dkms')
 makedepends=('git' 'cmake')
 provides=('taebron')
-conflicts=('razer-daemon')
+conflicts=('openrazer-daemon')
 source=("$pkgname::git+https://github.com/tildearrow/taebron.git")
 sha1sums=('SKIP')
 install=taebron.install
@@ -17,6 +17,12 @@ install=taebron.install
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$pkgname"
+  git submodule init
+  git submodule update
 }
 
 build() {
