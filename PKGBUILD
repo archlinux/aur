@@ -1,6 +1,6 @@
 pkgname=keyencrypt
-pkgver=1
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 pkgdesc="mkinitpio hook to decrypt /rootkey.gpg, which is then fowarded to cryptsetup's hook
 encrypt for root decryption, usefull to boot from a non-encrypted usb key."
 arch=(any)
