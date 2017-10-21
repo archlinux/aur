@@ -3,7 +3,7 @@
 
 _pkgbasename=gnome-themes-standard
 pkgname=lib32-$_pkgbasename
-pkgver=3.22.3
+pkgver=3.22.3+13+ga993fdc0
 pkgrel=1
 pkgdesc="Default themes for the GNOME desktop (32-bit)"
 url="https://git.gnome.org/browse/gnome-themes-standard"
@@ -16,7 +16,7 @@ groups=(gnome)
 replaces=(lib32-gnome-themes)
 conflicts=(gnome-themes lib32-gnome-themes)
 options=(!emptydirs)
-_commit=015785c53c37912bc6266c9cf107a0d1c8816d51  # tags/3.22.3^0
+_commit=a993fdc050a001fe7880b29155908772f874efb4  # master
 source=("git+https://git.gnome.org/browse/gnome-themes-standard#commit=$_commit")
 sha256sums=('SKIP')
 
