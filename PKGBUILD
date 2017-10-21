@@ -1,7 +1,7 @@
 # Maintainer: Matthias Lamers <aussieevil@hotmail.com>
 pkgname=ohrrpgce
 pkgver=callipygous.r8062
-pkgrel=1
+pkgrel=2
 pkgdesc="A role playing game creation engine"
 arch=(i686 x86_64)
 license=(GPL)
@@ -9,7 +9,7 @@ url="http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page"
 depends=('sdl_mixer' 'openeuphoria' 'libxpm' 'libxrandr' 'ncurses' 'xterm')
 makedepends=('subversion' 'freebasic' 'scons' 'openeuphoria' 'dos2unix')
 optdepends=('timidity-freepats: midi music support')
-source=(svn://gilgamesh.hamsterrepublic.com/ohrrpgce/rel/dwimmercrafty)
+source=(svn+https://rpg.hamsterrepublic.com/source/rel/dwimmercrafty)
 
 pkgver(){
 	cd "${srcdir}/callipygous"
