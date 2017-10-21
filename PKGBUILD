@@ -2,7 +2,7 @@
 _pkgname=xmrig
 pkgname=${_pkgname}-bin
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Monero cryptocurrency CPU miner, HTTP API disabled"
 arch=('x86_64')
 url="https://github.com/xmrig/xmrig"
@@ -23,6 +23,6 @@ package() {
 
     install -Dm755 xmrig "${pkgdir}/usr/bin/xmrig"
     install -Dm644 config.json "${pkgdir}/usr/share/doc/xmrig/config.json.example"
-    install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/docs/xmrig/README.md"
-    install -Dm644 "${srcdir}/CHANGELOG.md" "${pkgdir}/usr/share/docs/xmrig/CHANGELOG.md"
+    install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/xmrig/README.md"
+    install -Dm644 "${srcdir}/CHANGELOG.md" "${pkgdir}/usr/share/doc/xmrig/CHANGELOG.md"
 }
