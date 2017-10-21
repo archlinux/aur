@@ -2,7 +2,7 @@
 
 pkgname=obs-service-download_url
 pkgver=20151031
-pkgrel=1
+pkgrel=2
 pkgdesc='An OBS source service: curl download tool'
 arch=('any')
 url='https://github.com/openSUSE/obs-service-download_files'
