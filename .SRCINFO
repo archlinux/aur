@@ -1,14 +1,14 @@
 pkgbase = polychromatic
 	pkgdesc = A graphical front end for managing Razer peripherals under GNU/Linux.
 	pkgver = 0.3.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lah7/polychromatic
 	arch = any
 	license = GPL2
 	makedepends = nodejs-less
 	depends = python
 	depends = hicolor-icon-theme
-	depends = python-razer
+	depends = python-openrazer
 	depends = webkit2gtk
 	depends = libappindicator-gtk3
 	depends = imagemagick
