@@ -37,8 +37,8 @@
 # please use the official OpenSSH distribution instead.
 
 pkgname=openssh-hpn-git
-pkgver=7.5.P1.r71.gecb50afb
-pkgrel=2
+pkgver=7.5.P1.r74.ga0c37a72
+pkgrel=1
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='http://www.psc.edu/networking/projects/hpn-ssh/'
 license=('custom:BSD')
