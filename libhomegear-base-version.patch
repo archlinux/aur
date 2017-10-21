@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index aab60c2..db03156 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2,7 +2,7 @@
+ # Process this file with autoconf to produce a configure script.
+ 
+ AC_PREREQ([2.69])
+-AC_INIT(libhomegear-base, m4_esyscmd_s([./getVersion.sh]), sathya@laufers.net)
++AC_INIT(libhomegear-base, 0.7.10, sathya@laufers.net)
+ AC_CONFIG_AUX_DIR(cfg)
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_SRCDIR([src/BaseLib.h])
