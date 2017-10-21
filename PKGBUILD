@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.27.0.121.gcdef69103a
+pkgver=v0.27.0.262.g044af63d98
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -43,15 +43,16 @@ license=('GPL2' 'GPL3' 'LGPL3' 'LGPL2.1' 'BSD')
 url='http://mpv.io'
 makedepends=('git'
              'python-docutils'
-             'yasm'
              'nasm'
              'ladspa'
              'fontconfig'
              'vulkan-headers'
+             'wayland-protocols'
              )
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
             'mpv-bash-completion-git: Additional completion definitions for Bash users'
+            'nvidia-utils: for hardware accelerated video decoding with CUDA'
             )
 provides=('mpv')
 conflicts=('mpv')
