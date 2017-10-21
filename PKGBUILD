@@ -4,27 +4,27 @@
 # Advance features cannot be registered or activated under KVM/QEMU/OVMF
 _wacomEnabled=yes
 pkgname=hgsreceiver-bin
-pkgver=7.3.2
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="HP remote RGS receiver"
 arch=('x86_64')
 url="https://h30670.www3.hp.com/portal/swdepot/displayProductInfo.do?productNumber=RGS-LR"
 license=('custom:"HP"')
-depends=('lib32-libudev.so.0' 'lib32-glu' 'dmidecode')
+depends=('lib32-glu' 'dmidecode')
 makedepends=('')
 options=('emptydirs')
-source=("file://RGS_Linux_64_Receiver_v7.3.2_Z7550-01910.tar.gz")
-md5sums=('a84037489d2339dbd48fd6178a8a9619')
+source=("file://RGS_Linux_64_Receiver_v7.4_L01911-001.tar.gz")
+md5sums=('8932836d4c1b91ad2b7637b979848610')
 
 prepare() {
-bsdtar xf lin64/receiver/*.rpm
+bsdtar xf rhel6/receiver/*.rpm
 }
 
 package() {
 cd "${srcdir}"
 
 # install licence
-install -m644 -D lin64/receiver/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+install -m644 -D rhel6/receiver/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 # hack needed to register advance features 
 # N.B. rgsmbiosreader does not work under KVM/QEMU/OVMF bios, nor kernel greater than 4.4.44
