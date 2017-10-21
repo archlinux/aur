@@ -1,0 +1,17 @@
+pkgbase = vim-html5-git
+	pkgdesc = Vim HTML5 omnicomplete and syntax
+	pkgver = 0.27.r176.g916085d
+	pkgrel = 1
+	url = https://github.com/othree/html5.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-html5
+	conflicts = vim-html5
+	source = git+https://github.com/othree/html5.vim.git
+	md5sums = SKIP
+
+pkgname = vim-html5-git
+
