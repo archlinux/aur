@@ -3,7 +3,7 @@
 
 _gemname="micromachine"
 pkgname="ruby-micromachine"
-pkgver="1.1.0"
+pkgver="3.0.0"
 pkgrel=1
 pkgdesc="Minimal Finite State Machine."
 arch=("any")
@@ -13,7 +13,7 @@ makedepends=("ruby"
              "binutils")
 depends=("ruby")
 source=("http://rubygems.org/gems/$_gemname-$pkgver.gem")
-sha256sums=("d107fae66874cd5ea22b8e5f68affd62db45559240d1565c5492f15bc1a4d3da")
+sha256sums=('3ef6fad8a07882b5586923f85d453c438c055b3de2778467a7c04827c03ad02b')
 noextract=("$_gemname-$pkgver.gem")
 options=("!emptydirs")
 
