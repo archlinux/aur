@@ -1,0 +1,12 @@
+[Unit]
+Description=Onlyoffice documentserver
+After=network.target
+
+[Service]
+User=onlyoffice
+Type=simple
+Environment="NODE_ENV=production-linux" "NODE_CONFIG_DIR=/etc/webapps/onlyoffice/documentserver"
+ExecStart=/usr/bin/node /usr/share/webapps/onlyoffice/documentserver/server/DocService/sources/server.js
+
+[Install]
+WantedBy=multi-user.target

@@ -3,12 +3,13 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=4.4.3
-pkgrel=9
+pkgrel=10
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
 makedepends=('npm' 'nodejs' 'grunt-cli' 'qt5-base' 'git' 'wget' 'p7zip' 'gcc6')
-depends=('rabbitmq')
+depends=('nodejs')
+optdepends=('rabbitmq' 'redis' 'postgresql')
 license=('AGPL')
 source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-DocumentServer-${pkgver}.tar.gz"
 	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/89ce79dafc29b17fb0155076b23dcf794bf20377.tar.gz"
@@ -19,7 +20,9 @@ source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-Documen
 	"web-apps-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps/archive/2fea60996d7a924f3ef6859f07c768133d590427.tar.gz"
 	"docbuilder_p.patch"
 	"server_makefile.patch"
-	"onlyoffice-documentserver.service")
+	"onlyoffice-fileconverter.service"
+	"onlyoffice-spellchecker.service"
+	"onlyoffice-docservice.service")
 sha512sums=("11bb99fd287ef961e6f57e97224d46b5d4d80f21b13f0a0f61c095f4fcf3df9f45a13fc41646e04c4cbb3b83ff985a9e9dd820754a7c6cf4a8e5661ecb8a5c42"
 	    "554bd86590a850cda0b0725e3864265d3d5ce408e8e84e48937ee7fd752aee68926fc9fbe8bbc647fc3f3396d2849ab8e361629b5407f5e88b63c9b14c6d7a24"
 	    "15c3581d517ff3b4bd80b008b661fd9cfe1d46da5935d6544f691188a8dab193c1b93712f29f351ca26ff22dc44166019b7d09b262a7072feb673844cf7969c1"
@@ -29,7 +32,9 @@ sha512sums=("11bb99fd287ef961e6f57e97224d46b5d4d80f21b13f0a0f61c095f4fcf3df9f45a
 	    "c39af73262ff36b688d31f12d7ab26a64f3d1dd677a9e142d994a01d931bbfb575e0f6dc47651a3e68d3728c74a65958979c904675868e2953f34b971afbec4b"
 	    "4875f25a76731e43c4a08f7c2b557d337224c34ddf2a9b0348c4bf325bfcfc11c6b4f834d5c7da486957ec0380cfaaf45b83dd920e6e660fb6f4d1f3857fd787"
 	    "9e1e74926df0671826363d38df5178f40769cfb8e83f34846b3f8379ee3a8f33ef7a5303cce911f368c575228ea9bacbd077a11f89b4658979e3a80129d87d1e"
-	    "c206c0d93f62b7f45afc0f4e36bd8707c605e8125b36a800734508e0851af8bb1387791ae6ff80f85121e76a1b21d5fdfc0bd903c096536885b061585182f0b5")
+	    "5c691e07eccd51f543de92cc7f7fd5a5aac77fa2a6cf786f439a4ea43abc7606180aa5a9dd3762200091a4b3a479860881f94aefd0297d8e7ed955bf25c37417"
+	    "428e5c3326da53ee993871ab56c3b35c40fea5d5513950bee2a87b158f25cc0ebe76d690e4fa17bceb8583dde2f164fcf0a71a60652da1c67171d215f2528e6a"
+	    "6f53f9eec783dc00497e2ce495ce92dc1d78824e108ecdd914806fca4948e1748383125e0322a444bf9f8e158eacee06247b4966beb172522e3d176a8bc093a9")
 install="onlyoffice-documentserver.install"
 
 prepare() {
@@ -96,5 +101,7 @@ package() {
   cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}"
   cd server
   make DESTDIR=${pkgdir} install
-  install -Dm644 "${srcdir}/onlyoffice-documentserver.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-documentserver.service"
+  install -Dm644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
+  install -Dm644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"
+  install -Dm644 "${srcdir}/onlyoffice-spellchecker.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-spellchecker.service"
 }
