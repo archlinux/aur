@@ -4,7 +4,7 @@
 
 pkgname=dunst-git
 _gitname=dunst
-pkgver=1.2.0.92.942.g7da60b9
+pkgver=1.2.0.97.947.g3691b7e
 pkgrel=1
 pkgdesc="a lightweight notification-daemon - git version"
 arch=('i686' 'x86_64' 'armv7h')
@@ -28,7 +28,6 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/${_gitname}
-  [ -f $srcdir/${_gitname}/config.h ] && rm $srcdir/${_gitname}/config.h
   if [ -e ${srcdir}/config.h ]; then
     msg "Using custom config.h"
     cp ${srcdir}/config.h .
