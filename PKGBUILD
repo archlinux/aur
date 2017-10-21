@@ -20,7 +20,7 @@ source=("${pkgname}.desktop"
         "${pkgname}.sh")
 md5sums=('c734328d12709b1d6fc7a39a2e5a5325'
          '79abdec2257bec523800f070287df91e'
-         'f00693e0dcf73ced11aa793ffa27924a')
+         'a9e95aaf29e83ccf1c72639aa00144ae')
 noextract=("${_gamepkg}")
 # You can download the Humble Indie Bundle file manually, or you can configure
 # DLAGENTS in makepkg.conf to auto-download.
