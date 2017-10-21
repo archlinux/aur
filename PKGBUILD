@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
 
 pkgname=python-vulkan
-pkgver=1.0.49
+pkgver=1.0.61
 pkgrel=1
 pkgdesc="The ultimate Python binding for Vulkan API"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-cffi' 'vulkan-icd-loader')
 makedepends=('python-pycparser')
 options=(!emptydirs)
 source=("https://github.com/realitix/vulkan/archive/${pkgver}.tar.gz")
-sha384sums=('4239fbf5e72d901a44093b48bbaa355069db61a585ed71d283c27a017e1c14703954e91cf968987143dd747930d7ade2')
+sha384sums=('eb8f663b40123c6de076d80b1e016ed885fddd18b09f08482667d832a7dbc49a8430761fc02905c286bb0b5147c5f107')
 
 package() {
     cd "$srcdir/vulkan-${pkgver}"
