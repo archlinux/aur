@@ -11,14 +11,13 @@ pkgdesc="It's breath icon theme revisited by MBC"
 license=('LGPL')
 groups=('MBC')
 replaces=('breath-icon-theme')
-validpgpkeys=('CCA838293E0445BEB825D428B5A1B707E9FCFB7E')   # Mattéo Rossillol-Laruelle
-source=("https://github.com/CompFile/My_AUR_PKG/raw/master/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz"{,.sig})
-sha256sums=('d04bb5fbd81ff17d5c70a415b8150f35573aaf49d30383e1b46587124c953996'
-            'SKIP')
+source=("git://github.com/CompFile/Breath-MBC#tag=v$pkgver-$pkgrel")
+sha256sums=('SKIP')
 
 package()
 {
     install -d $pkgdir/usr/share/icons
     cd "$srcdir"
-    cp -r $pkgname $pkgdir/usr/share/icons/
+    rm -r Breath-MBC/.git
+    cp -r Breath-MBC $pkgdir/usr/share/icons/
 }
