@@ -1,23 +1,22 @@
 pkgbase = polychromatic-git
 	pkgdesc = A graphical front end for managing Razer peripherals under GNU/Linux.
-	pkgver = 0.3.11.r5.g657ae7a
+	pkgver = 0.3.11.2.r1.gd572183
 	pkgrel = 1
 	url = https://github.com/lah7/polychromatic
 	arch = any
 	license = GPL2
 	makedepends = git
-	makedepends = rsync
 	makedepends = nodejs-less
 	depends = python
 	depends = hicolor-icon-theme
-	depends = python-razer
+	depends = python-openrazer
 	depends = webkit2gtk
 	depends = libappindicator-gtk3
 	depends = imagemagick
 	provides = polychromatic
 	conflicts = polychromatic
 	source = git+https://github.com/lah7/polychromatic.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = polychromatic-git
 
