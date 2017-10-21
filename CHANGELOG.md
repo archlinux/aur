@@ -1,3 +1,14 @@
+# [v1.4.7 - 2017-10-20](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.6)
+
+## Added
+
+- Added context menu actions to apply, pop, and drop stashes.
+
+## Fixed
+
+- Fixed issues related to revert and cherry-pick that result in a conflict.
+- Fixed merge abort menu item to update more consistently.
+
 # [v1.4.6 - 2017-10-17](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.5)
 
 ## Added
