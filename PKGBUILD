@@ -38,6 +38,7 @@ depends=('desktop-file-utils'
          'mujs'
          'vulkan-icd-loader'
          'shaderc-git'
+         'xdg-utils'
          )
 license=('GPL2' 'GPL3' 'LGPL3' 'LGPL2.1' 'BSD')
 url='http://mpv.io'
