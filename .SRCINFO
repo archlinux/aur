@@ -1,6 +1,6 @@
 pkgbase = castnow-git
 	pkgdesc = A commandline chromecast player
-	pkgver = r122.3face9f
+	pkgver = r180.05ddc3b
 	pkgrel = 1
 	url = https://github.com/xat/castnow
 	arch = any
@@ -8,9 +8,7 @@ pkgbase = castnow-git
 	makedepends = git
 	depends = nodejs
 	depends = npm
-	conflicts = castnow
 	source = castnow-git::git://github.com/xat/castnow.git
 	md5sums = SKIP
 
 pkgname = castnow-git
-
