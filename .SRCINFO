@@ -1,5 +1,5 @@
 pkgbase = linux-lts41-ck
-	pkgver = 4.1.44
+	pkgver = 4.1.45
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = linux-lts41-ck
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.44.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.44.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.45.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.45.sign
 	source = config.x86_64
 	source = config
 	source = linux-lts41-ck.preset
@@ -51,7 +51,7 @@ pkgname = linux-lts41-ck
 	optdepends = nvidia-dkms: nVidia drivers for linux-lts41-ck
 	optdepends = nvidia-340xx-dkms: nVidia drivers for linux-lts41-ck
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-lts41-ck=4.1.44
+	provides = linux-lts41-ck=4.1.45
 	replaces = kernel26-lts41-ck
 	backup = etc/mkinitcpio.d/linux-lts41-ck.preset
 
@@ -59,7 +59,7 @@ pkgname = linux-lts41-ck-headers
 	pkgdesc = Header files and scripts to build modules for linux-lts41-ck.
 	groups = lts41-ck-generic
 	depends = linux-lts41-ck
-	provides = linux-lts41-ck-headers=4.1.44
-	provides = linux-headers=4.1.44
+	provides = linux-lts41-ck-headers=4.1.45
+	provides = linux-headers=4.1.45
 	replaces = kernel26-ck-lts-headers
 
