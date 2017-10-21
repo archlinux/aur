@@ -20,7 +20,7 @@ source=(https://answers.launchpad.net/~unit193/+archive/ubuntu/test/+files/iwsca
 md5sums=('f26ce8196f992ad3e60b1af758be1546'
          '7dcbc65395faba817a3653db7d07224a'
          'd0613547024a89444c34ef2b34d8427c'
-         'dc0f19ef1682331df54eaec0ad8d6dc0')
+         '470cb6fb4539e7d580086178304c95a9')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -31,6 +31,6 @@ package() {
   install -Dm644 iwscanner.desktop "$pkgdir/usr/share/applications/iwscanner.desktop"
 
   cd $pkgname-$pkgver
-  python2 ../../setup.py install --root="$pkgdir/" --optimize=1
+  python2 ../setup.py install --root="$pkgdir/" --optimize=1
 }
 

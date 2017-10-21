@@ -20,7 +20,7 @@ setup(
 	url              = 'http://www.kuthulu.com/iwscanner',
 	platforms        = 'linux',
 	license          = 'LGPL-2.1+',
-	scripts          = ['../../iwscanner'],
+	scripts          = ['../iwscanner'],
 	data_files       = [
 	                   ('/usr/share/iwscanner/', [ 'iwscanner.glade' ] ),
 			   ('/usr/share/iwscanner/', [ 'iwscanner.py' ] ),

@@ -18,7 +18,7 @@ pkgbase = iwscanner
 	md5sums = f26ce8196f992ad3e60b1af758be1546
 	md5sums = 7dcbc65395faba817a3653db7d07224a
 	md5sums = d0613547024a89444c34ef2b34d8427c
-	md5sums = dc0f19ef1682331df54eaec0ad8d6dc0
+	md5sums = 470cb6fb4539e7d580086178304c95a9
 
 pkgname = iwscanner
 
