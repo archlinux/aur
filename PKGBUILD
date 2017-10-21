@@ -5,8 +5,9 @@
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 
-pkgbase=rxvt-unicode
-pkgname=$pkgbase-no-pearl
+_pkgbase=rxvt-unicode
+pkgname=$_pkgbase-no-pearl
+pkgbase=$pkgname
 pkgver=9.22
 pkgrel=5
 arch=('i686' 'x86_64')

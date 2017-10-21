@@ -1,4 +1,4 @@
-pkgbase = rxvt-unicode
+pkgbase = rxvt-unicode-no-pearl
 	pkgver = 9.22
 	pkgrel = 5
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
@@ -9,7 +9,7 @@ pkgbase = rxvt-unicode
 	makedepends = startup-notification
 	provides = rxvt-unicode
 	conflicts = rxvt-unicode
-	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.22.tar.bz2
+	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-no-pearl-9.22.tar.bz2
 	source = urxvt.desktop
 	source = urxvtc.desktop
 	md5sums = SKIP
