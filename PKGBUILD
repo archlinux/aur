@@ -11,21 +11,23 @@ options=('!strip')
 provides=('teamviewer')
 conflicts=('teamviewer-beta')
 depends_x86_64=(
-	'lib32-fontconfig<2.8.1'
+	'lib32-fontconfig'
 	'lib32-libpng12'
 	'lib32-libsm'
 	'lib32-libxinerama'
 	'lib32-libxrender'
 	'lib32-libjpeg6-turbo'
   'lib32-libxtst'
+  'lib32-freetype2<2.8.1'
   'libxtst')
 depends_i686=(
-	'fontconfig<2.8.1'
+	'fontconfig'
 	'libpng12'
 	'libsm'
 	'libxinerama'
 	'libxrender'
 	'libjpeg6-turbo'
+  'freetype2<2.8.1'
   'libxtst')
 install=teamviewer.install
 source_x86_64=("https://download.teamviewer.com/download/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb")
