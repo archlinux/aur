@@ -33,7 +33,7 @@ pkgver() {
 
 package_python-openrazer-git() {
   pkgdesc="Python library for accessing the Razer daemon from Python. (Git version)"
-  depends=('razer-daemon' 'python' 'python-dbus' 'python-numpy')
+  depends=('openrazer-daemon' 'python' 'python-dbus' 'python-numpy')
   provides=('python-openrazer' 'python-razer')
   conflicts=('python-openrazer' 'python-razer')
   replaces=('python-razer-git')
@@ -68,7 +68,7 @@ package_openrazer-driver-dkms-git() {
 
 package_openrazer-meta-git() {
   pkgdesc="Meta package for installing all required openrazer packages. (Git version)"
-  depends=('openrazer-driver-dkms' 'razer-daemon' 'python-razer')
+  depends=('openrazer-driver-dkms' 'openrazer-daemon' 'python-openrazer')
   optdepends=('polychromatic: frontend'
               'razergenie: qt frontend'
               'razercommander: gtk frontend')
