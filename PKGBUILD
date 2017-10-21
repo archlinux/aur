@@ -1,14 +1,16 @@
-# Maintainer: Xyne
+# Contributor: Xyne
 # Contributor: Scott Garrett <Wintervenom@archlinux.us>
 # Contributor: Thomas Dziedzic
+
+# This tries to follow the official LMMS PKGBUILD.
 
 _pkgname=lmms
 pkgname=lmms-git
 pkgver=0.9.92.r79.g6c920df
-pkgrel=3
+pkgrel=4
 pkgdesc='The Linux MultiMedia Studio.'
-url='http://lmms.sourceforge.net'
 arch=('i686' 'x86_64')
+url='http://lmms.sourceforge.net/'
 license=('GPL')
 depends=('sdl' 'glib2' 'fluidsynth' 'libpng' 'libvorbis' 'libxft' 'libxinerama' 'qt4' 'sdl_sound'
          'libsamplerate' 'shared-mime-info' 'fltk')
@@ -16,10 +18,11 @@ optdepends=('wine: VST support (experimental)'
             'fftw: SpectrumAnalyzer plugin'
             'stk: STK instruments plugins'
             'pulseaudio: PulseAudio output')
-makedepends=('git' 'cmake' 'ladspa' 'raptor' 'rasqal' 'libxft' 'freetype2' 'redland' 'gcc-multilib')
-provides=('lmms')
-conflicts=('lmms')
-
+makedepends=('git' 'cmake' 'ladspa' 'libxft' 'freetype2' 'fftw' 'stk' 'wine')
+makedepends_x86_64=('gcc-multilib')
+provides=('lmms', 'lmms-extras')
+conflicts=('lmms', 'lmms-extras')
+options=('!makeflags')
 source=('git://github.com/LMMS/lmms.git')
 sha512sums=('SKIP')
 
@@ -30,9 +33,14 @@ pkgver() {
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd -- "$srcdir/$_pkgname"
+  sed -i 's|lib64|lib|g' cmake/modules/DetectMachine.cmake
+}
+
 build() {
   cd -- "$srcdir/$_pkgname"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -USE=vst
   make #-j1
 }
 
