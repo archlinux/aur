@@ -17,7 +17,7 @@ makedepends=('libxft' 'startup-notification')
 provides=(rxvt-unicode)
 conflicts=(rxvt-unicode)
 source=(
-  "http://dist.schmorp.de/rxvt-unicode/$pkgbase-$pkgver.tar.bz2"
+  "http://dist.schmorp.de/rxvt-unicode/$_pkgbase-$pkgver.tar.bz2"
   'urxvt.desktop'
   'urxvtc.desktop'
 )
@@ -26,7 +26,7 @@ md5sums=( 'SKIP'
           'SKIP')
 
 build() {
-  cd $pkgbase-$pkgver
+  cd $_pkgbase-$pkgver
   # we disable smart-resize (FS#34807)
   # do not specify --with-terminfo (FS#46424)
   ./configure \
@@ -67,7 +67,7 @@ package() {
   for _f in urxvt urxvtc; do
     install -Dm644 $_f.desktop "$pkgdir/usr/share/applications/$_f.desktop"
   done
-  cd $pkgbase-$pkgver
+  cd $_pkgbase-$pkgver
   # workaround terminfo installation
   export TERMINFO="$srcdir/terminfo"
   install -d "$TERMINFO"
