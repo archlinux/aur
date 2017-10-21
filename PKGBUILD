@@ -2,7 +2,7 @@
 
 pkgname=aerospike-tools-bin
 pkgrealname=aerospike-tools
-pkgver=3.13.0.1
+pkgver=3.15.0.3
 pkgrel=1
 pkgdesc="Tools for Aerospike"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 	'python2-ply'
 )
 makedepends=('binutils')
-sha256sums=('b08b9e9fc5fea95f7e851559790cae8a4e5c025847c83b2e4729e7cb08a327dd')
+sha256sums=('e582f5390e8853eb0faa9996e028ab7a46251626d629447bf6c8f11b95c290a7')
 source=("http://www.aerospike.com/download/tools/${pkgver}/artifact/ubuntu16"
        )
 
@@ -47,7 +47,7 @@ package() {
 	install -m 0755 lib/python/citrusleaf.py "${pkgdir}/opt/aerospike/lib/python/citrusleaf.py"
 
 
-	for path in $(find doc/ examples/ | sort); do
+	for path in $(find doc/ | sort); do
 		if [ -d ${path} ]; then
 			mkdir -p -m 755 "${pkgdir}/opt/aerospike/${path}"
 		else
