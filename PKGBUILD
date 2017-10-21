@@ -2,14 +2,14 @@
 
 _gitname=terminology-themes
 pkgname=${_gitname}-git
-pkgver=r34.7ab04c5
+pkgver=r48.3d11806
 pkgrel=1
 pkgdesc="Color schemes for the Terminology terminal emulator "
 arch=('any')
-url="https://github.com/charlesmilette/${_gitname}"
+url="https://github.com/sylveon/${_gitname}"
 license=('GPL3')
 makedepends=('efl')
-source=("git://github.com/charlesmilette/${_gitname}.git")
+source=("git://github.com/sylveon/${_gitname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,5 +24,5 @@ build() {
 
 package() {
 	cd "${srcdir}/${_gitname}"
-	make PREFIX="$pkgdir" install
+	make DESTDIR="$pkgdir" install
 }
