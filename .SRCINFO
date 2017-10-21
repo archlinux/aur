@@ -1,7 +1,7 @@
 pkgbase = razergenie
 	pkgdesc = Standalone Qt application for configuring your Razer devices under GNU/Linux.
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/z3ntu/RazerGenie
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = razergenie
 	makedepends = extra-cmake-modules
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	depends = razer-daemon
+	depends = openrazer-daemon
 	source = https://github.com/z3ntu/RazerGenie/releases/download/v0.4/RazerGenie-0.4.tar.xz
 	source = https://github.com/z3ntu/RazerGenie/releases/download/v0.4/RazerGenie-0.4.tar.xz.asc
 	validpgpkeys = BD04DA24C971B8D587B2B8D7FAF69CF6CD2D02CD
