@@ -1,15 +1,16 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=coolvlviewer-experimental-bin
-pkgver=1.26.19.37
+pkgver=1.26.21.0
 pkgrel=1
 pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer', binary)"
 url="http://sldev.free.fr"
 license=('custom')
-depends=('apr-util' 'glib2>=2.32' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' 'glu' 'pangox-compat')
+depends=('apr-util' 'glib2>=2.32' 'libgl' 'libidn' 'mesa' 'sdl' 'glu' 'pangox-compat' 'gconf' 'libxss' 'libxrandr' 'libxcomposite' 'libgl' 'lib32-zlib' 'libcups' 'atk' 'lib32-util-linux' 'lib32-libidn' 'libxcursor' 'libxtst')
 optdepends=(
 	'libpulse: for PulseAudio support'
 	'alsa-lib: for ALSA support'
+	'lib32-alsa-lib: for ALSA support'
 	'nvidia-utils: for NVIDIA support'
 	'pepper-flash: for inworld Flash support'
 	'gst-plugins-good: for video support'
@@ -17,21 +18,22 @@ optdepends=(
 	'gst-plugins-ugly: for video support'
 	'lib32-freealut: for OpenAL support')
 arch=('x86_64')
-conflicts=('coolvlviewer' 'coolvlviewer-bin' 'coolvlviewer-experimental')
+conflicts=('coolvlviewer-bin' 'coolvlviewer-experimental' 'coolvlviewer')
 install=coolvlviewer.install
 source=("http://sldev.free.fr/binaries/CoolVLViewer-${pkgver}-Linux-x86_64-Setup"
+
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-md5sums=('8ed97963dd41cf26cdfdbe3f002e85df'
-         '073b86481c3ec30da0325c495f39df85'
+md5sums=('e8fe1f0e6132ce0bd99b468f45b6faf7'
+         'bbe454334eb001f0322e3d5f8ac90ef4'
          'fd78de1f6c1333a5120ece89873515e0')
-
 
 build() {
 cd $srcdir
 # Run the installer
 chmod +x CoolVLViewer-${pkgver}-Linux-x86_64-Setup
 ./CoolVLViewer-${pkgver}-Linux-x86_64-Setup --mode silent --destination $srcdir/coolvlviewer/
+
 }
 
 package(){
