@@ -1,7 +1,7 @@
 # Maintainer: Daniel Lima <danielm@nanohub.tk>
 
 pkgname=luas
-pkgver=0.7
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='Lua environment manager'
 arch=('i686' 'x86_64')
