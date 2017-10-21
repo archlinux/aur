@@ -1,7 +1,7 @@
 pkgbase = ohrrpgce
 	pkgdesc = A role playing game creation engine
 	pkgver = dwimmercrafty.r9545
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page
 	arch = i686
