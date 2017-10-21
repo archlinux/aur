@@ -13,6 +13,7 @@ pkgbase = pgloader
 	depends = freetds
 	depends = zlib
 	options = !strip
+	options = !makeflags
 	source = https://github.com/dimitri/pgloader/archive/v3.4.1.tar.gz
 	source = LICENSE
 	sha256sums = 3ac4d03706057a35e1d4d0e63571b84be7d0d07ea09e015d90e242200488fe82
