@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Maintainer: Gabriele Musco <emaildigabry@gmail.com>
 
-# This PKGBUILD is configured to only build razer-driver-dkms, razer-daemon & python-razer by default.
+# This PKGBUILD is configured to only build openrazer-driver-dkms, openrazer-daemon & python-openrazer by default.
 # Kernel modules for the stock kernel (package "linux") can be built into a package by setting the variable "build_kernel_modules" to "true".
 build_kernel_modules=false
 
@@ -9,12 +9,12 @@ build_kernel_modules=false
 
 _newname=openrazer
 pkgbase=razer-drivers
-pkgname=('python-razer' 'razer-daemon' 'razer-driver-dkms' 'openrazer-meta')
+pkgname=('python-openrazer' 'openrazer-daemon' 'openrazer-driver-dkms' 'openrazer-meta')
 if $build_kernel_modules; then
     # For kernel update: Update the two variables and the .install file!
     _linux_current=4.12
     _linux_next=4.13
-    pkgname+=('razer-driver-arch')
+    pkgname+=('openrazer-driver-arch')
 fi
 pkgver=2.0.0
 #_commit=6ae1f7d55bf10cc6b5cb62a5ce99ff22c43e0701
@@ -34,9 +34,12 @@ else
 fi
 sha256sums=('34a8bef78086d8fb10e59c8e719aca94500c95a9048dd9ef0cfce01e0ae6e89e')
 
-package_python-razer() {
+package_python-openrazer() {
   pkgdesc="Python library for accessing the Razer daemon from Python."
-  depends=('razer-daemon' 'python' 'python-dbus' 'python-numpy')
+  depends=('openrazer-daemon' 'python' 'python-dbus' 'python-numpy')
+  provides=('python-razer')
+  conflicts=('python-razer')
+  replaces=('python-razer')
   if [ -z $_commit ]; then
     cd $srcdir/$_newname-$pkgver
   else
@@ -45,11 +48,14 @@ package_python-razer() {
   make DESTDIR=$pkgdir python_library_install
 }
 
-package_razer-daemon() {
+package_openrazer-daemon() {
   pkgdesc="Userspace daemon that abstracts access to the kernel driver. Provides a DBus service for applications to use."
-  depends=('razer-driver-dkms' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev' 'gtk3' 'dbus-glib')
+  depends=('openrazer-driver-dkms' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev' 'gtk3' 'dbus-glib')
+  provides=('razer-daemon')
+  conflicts=('razer-daemon')
+  replaces=('razer-daemon')
   # gtk3 for "gi.require_version('Gdk', '3.0')"
-  install=razer-daemon.install
+  install=openrazer-daemon.install
 
   if [ -z $_commit ]; then
     cd $srcdir/$_newname-$pkgver
@@ -59,12 +65,13 @@ package_razer-daemon() {
   make DESTDIR=$pkgdir daemon_install
 }
 
-package_razer-driver-dkms() {
+package_openrazer-driver-dkms() {
   pkgdesc="Kernel driver for Razer devices (DKMS-variant)"
   depends=('dkms' 'udev')
-  provides=('OPENRAZER-MODULES')
-  conflicts=('OPENRAZER-MODULES')
-  install=razer-driver-dkms.install
+  provides=('OPENRAZER-MODULES' 'razer-driver-dkms')
+  conflicts=('OPENRAZER-MODULES' 'razer-driver-dkms')
+  replaces=('razer-driver-dkms')
+  install=openrazer-driver-dkms.install
   
   if [ -z $_commit ]; then
     cd $srcdir/$_newname-$pkgver
@@ -76,7 +83,7 @@ package_razer-driver-dkms() {
 
 package_openrazer-meta() {
   pkgdesc="Meta package for installing all required openrazer packages."
-  depends=('razer-driver-dkms' 'razer-daemon' 'python-razer')
+  depends=('openrazer-driver-dkms' 'openrazer-daemon' 'python-openrazer')
   optdepends=('polychromatic: frontend'
               'razergenie: qt frontend'
               'razercommander: gtk frontend')
@@ -97,13 +104,13 @@ build() {
   make DESTDIR=$pkgdir KERNELDIR=/usr/lib/modules/$_kernver/build driver
 }
 
-package_razer-driver-arch() {
+package_openrazer-driver-arch() {
   pkgdesc="Kernel driver for Razer devices (for stock 'linux' kernel)"
   depends=('udev')
   depends=("linux>=$_linux_current" "linux<$_linux_next")
-  provides=('OPENRAZER-MODULES' 'razer-driver-dkms')
-  conflicts=('OPENRAZER-MODULES' 'razer-driver-dkms')
-  install=razer-driver-arch.install
+  provides=('OPENRAZER-MODULES' 'openrazer-driver-dkms')
+  conflicts=('OPENRAZER-MODULES' 'openrazer-driver-dkms')
+  install=openrazer-driver-arch.install
 
   if [ -z $_commit ]; then
     cd $srcdir/$_newname-$pkgver
