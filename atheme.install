@@ -1,0 +1,20 @@
+create_user() {
+    getent group atheme &>/dev/null \
+        || groupadd -g 142 atheme
+
+    getent passwd atheme &>/dev/null \
+        || useradd  atheme -u 142 -g 142 \
+            -d /var/lib/atheme -s /bin/false
+}
+
+post_install() {
+    create_user
+}
+
+post_upgrade() {
+    create_user
+}
+
+post_remove() {
+    getent passwd atheme &>/dev/null && userdel atheme
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=Atheme IRC services
+
+[Service]
+Type=simple
+User=atheme
+Group=atheme
+ExecStart=/usr/bin/atheme-services -n -p /var/lib/atheme/pid
+Restart=always
+
+[Install]
+WantedBy=network.target

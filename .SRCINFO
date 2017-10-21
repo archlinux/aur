@@ -1,0 +1,26 @@
+pkgbase = atheme
+	pkgdesc = IRC services
+	pkgver = 7.2.9
+	pkgrel = 1
+	url = http://www.atheme.org/atheme/
+	install = atheme.install
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	depends = qrencode
+	optdepends = pcre: for pcre support
+	optdepends = perl: for Perl support
+	optdepends = cracklib: cracklib support in NickServ
+	optdepends = libldap: LDAP support
+	conflicts = libmowgli
+	conflicts = xtheme
+	conflicts = atheme-git
+	backup = etc/atheme/atheme.conf
+	backup = etc/atheme/atheme.motd
+	source = https://github.com/atheme/atheme/releases/download/v7.2.9/atheme-7.2.9.tar.bz2
+	source = atheme.service
+	sha256sums = a87a046aa73fc4a97a11d41cc08c60b835135ba20bb173ca888b40e0d6b54b27
+	sha256sums = ee9ad7658434451184872c21c7fd38196d22d1dfb6b1f37bcfaf8c363d50296f
+
+pkgname = atheme
+
