@@ -1,15 +1,17 @@
-# Maintainer: Lara Maia <lara@craft.net.br>
+# Maintainer: Lara Maia <dev@lara.click>
+# Co-Mainteiner: Acidhub <contact@acidhub.click>
 
 pkgname=firefox-vacuum
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Script for optimize firefox database"
 arch=('any')
-url="http://lara.craft.net.br"
+url="http://acidhub.click"
 license=('GPL')
 depends=('sqlite')
 
-source=("http://lara.craft.net.br/$pkgname.sh"
+
+source=("$url/downloads/$pkgname.sh"
         "$pkgname.service"
         "$pkgname.install")
         
