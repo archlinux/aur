@@ -1,34 +1,37 @@
-# Maintainer: Ivy Foster <joyfulgirl@archlinux.us>
+# Contributor: Ivy Foster <joyfulgirl@archlinux.us>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Heeru Kiyura <M8R-p9i5nh@mailinator.com>
-
+# Maintainer: aksr <aksr at t-com dot me>
 pkgname=conkeror-git
-pkgver=1.0.3.r0.g11121be
+pkgver=1.0.3.r20.g02cb4db
 pkgrel=1
-pkgdesc='A highly programmable web browser based on Mozilla XULRunner'
+pkgdesc='A keyboard-oriented, highly-customizable, highly-extensible web browser based on Mozilla XULRunner.'
 arch=('i686' 'x86_64')
 url='http://conkeror.mozdev.org/'
 license=('MPL' 'GPL' 'LGPL')
 depends=('firefox')
 makedepends=('git')
-provides=('conkeror')
-conflicts=('conkeror')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
 changelog='Changelog'
-source=('git+http://repo.or.cz/conkeror.git')
+source=("$pkgname::git+http://repo.or.cz/conkeror.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd conkeror
-	git describe --long | sed 's:-\(.*\)-:.r\1.:'
+  cd "$srcdir/$pkgname"
+  git describe --long | sed 's:-\(.*\)-:.r\1.:'
 }
 
 build() {
-	cd conkeror
-	make PREFIX=/usr
+  cd "$srcdir/$pkgname"
+  make PREFIX=/usr
 }
 
 package() {
-	cd conkeror
-	make DESTDIR="$pkgdir" PREFIX=/usr install
-	rm -f "$pkgdir/usr/share/doc/conkeror/COPYING"
+  cd "$srcdir/$pkgname"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
+  mkdir -p "$pkgdir/usr/share/licenses/${pkgname%-*}"
+  mv "$pkgdir/usr/share/doc/conkeror/COPYING" \
+     "$pkgdir/usr/share/licenses/${pkgname%-*}/COPYING"
 }
+
