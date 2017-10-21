@@ -1,0 +1,24 @@
+pkgbase = rxvt-unicode
+	pkgver = 9.22
+	pkgrel = 5
+	url = http://software.schmorp.de/pkg/rxvt-unicode.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libxft
+	makedepends = startup-notification
+	provides = rxvt-unicode
+	conflicts = rxvt-unicode
+	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.22.tar.bz2
+	source = urxvt.desktop
+	source = urxvtc.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = rxvt-unicode-no-pearl
+	pkgdesc = A unicode enabled rxvt-clone terminal emulator (urxvt). Perl disabled.
+	depends = rxvt-unicode-terminfo
+	depends = libxft
+	depends = startup-notification
+
