@@ -73,7 +73,7 @@ pkgname=(linux-lts41-ck linux-lts41-ck-headers)
 _kernelname=-lts41-ck
 _srcname=linux-4.1
 pkgver=4.1.45
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -103,7 +103,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            '8ab36ac700eaf4e54ed5aad56038c67de7127c72c107f7d3f86ba992ef770eb7869eddb581f0ff2e0435a9a4273144505256b0cf1ddf80ce3fff9d845bc560c4'
+            'a676621313ad990ae27e01602eb6b9369427882f7404fc51ad964bb976d566e205620f054aab97163b60ecae58707767063ba994e4557ce39c7edc7890679f5d'
             'SKIP'
             '3048d5a5e54bdf2f97d512ec12f21a296a5d54527525fafb8f2609151cd88fa4b0b69e1161ed6126c0fae4930884bf564f1218f767e897dcafa0d6ebf952ecc9'
             '7a9112366bd3659216855e33b48bb9a7af8722ed3f6ead3a705235aa632a75e85db8f4cd6e82fb04ab9b532d60a9470e6d355581af1fc5e421cc7be52b7144f0'
