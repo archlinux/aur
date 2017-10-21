@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
 license=('GPL')
 depends=('libpng' 'sdl' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-file-utils' 'tar')
-source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-0.22.0.tar.gz")
+source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-${pkgver}.tar.gz")
 sha256sums=('7936cc5613647647119129bc03ee30196ee36f7980235b2cb0c417347ef25547')
 
 _dirname=OpenTTD-patches-jgrpp
