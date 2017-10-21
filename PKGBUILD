@@ -3,13 +3,13 @@
 _upstream=RazerGenie
 _pkgname=razergenie
 pkgname=razergenie-git
-pkgver=0.2.r13.g209d132
+pkgver=0.4.r1.g5462132
 pkgrel=1
 pkgdesc="Standalone Qt application for configuring your Razer devices under GNU/Linux."
 arch=("x86_64" "i686")
 url="https://github.com/z3ntu/RazerGenie"
 license=('GPL3')
-depends=('qt5-base' 'hicolor-icon-theme' 'razer-daemon')
+depends=('qt5-base' 'hicolor-icon-theme' 'openrazer-daemon')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
