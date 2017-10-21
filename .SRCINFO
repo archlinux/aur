@@ -7,7 +7,7 @@ pkgbase = razercommander-git
 	license = GPL3
 	makedepends = git
 	makedepends = meson
-	depends = python-razer
+	depends = python-openrazer
 	depends = gtk3>=3.14
 	depends = python
 	provides = razercommander

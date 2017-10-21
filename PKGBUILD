@@ -8,7 +8,7 @@ pkgdesc='Razer device manager for Linux'
 arch=('any')
 url='https://github.com/gabmus/razercommander'
 license=('GPL3')
-depends=('python-razer' 'gtk3>=3.14' 'python')
+depends=('python-openrazer' 'gtk3>=3.14' 'python')
 makedepends=('git' 'meson')
 #install=razercommander-git.install
 provides=('razercommander')
