@@ -1,19 +1,19 @@
 # $Id$
 # Maintainer: Jiri Tyr <jiri.tyr@gmail.com>
 
-pkgname="pbt"
-pkgver="1.0.10"
-pkgrel=2
+pkgname='pbt'
+pkgver='1.0.11'
+pkgrel=1
 pkgdesc='Bullettrain prompt builder written in Python'
 url='https://github.com/jtyr/pbt'
 arch=('i686' 'x86_64')
 license=('MIT')
-makedepends=("python-setuptools")
+makedepends=('python-setuptools')
 depends=("python")
 optdepends=('nerd-fonts-complete')
 conflicts=('pbt-git')
 source=("https://github.com/jtyr/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('bd1e312b295acdf38fda083a31ee62fc7ba3bcf5e924d0a7fd9d732f48eb688e')
+sha256sums=('10a3c3f9f43634897aaae04fee28cc7644a7ce82c48385461884973b60592bfd')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
