@@ -1,6 +1,6 @@
 pkgbase = pgroonga
 	pkgdesc = Fast fulltext search on PostgreSQL.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/pgroonga/pgroonga
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = pgroonga
 	depends = postgresql
 	depends = mecab
 	depends = mecab-ipadic
-	source = http://packages.groonga.org/source/pgroonga/pgroonga-2.0.1.tar.gz
-	sha1sums = 6f3231e2276f27f1a8c9f8808405ad642203c5bb
+	source = http://packages.groonga.org/source/pgroonga/pgroonga-2.0.2.tar.gz
+	sha1sums = f357ac374a4a8a827e0a490c16dc0c97c9529ba6
 
 pkgname = pgroonga
 
