@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('meson' 'ninja')
 depends=(
   'appstream-glib' 'desktop-file-utils' 'gobject-introspection' 'gst-python'
-  'gstreamer' 'gtk3' 'python-dbus' 'python-gobject' 'python-mutagen'
+  'gstreamer' 'gtk3' 'python-dbus' 'python-gobject' 'python-mutagen' 'python3-peewee'
 )
 conflicts=("${_gitname}")
 provides=("${_gitname}")

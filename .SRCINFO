@@ -17,6 +17,7 @@ pkgbase = cozy-audiobooks
 	depends = python-dbus
 	depends = python-gobject
 	depends = python-mutagen
+	depends = python3-peewee
 	provides = cozy
 	conflicts = cozy
 	source = https://github.com/geigi/cozy/archive/0.2.2.zip
