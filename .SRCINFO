@@ -13,8 +13,8 @@ pkgbase = libsde-utils-jansson-git
 	depends = gtk2
 	depends = sde-reverse-meta-git
 	depends = libsde-utils-gtk2
-	provides = libsde-utils-gtk2
-	conflicts = libsde-utils-gtk2
+	provides = libsde-utils-jansson
+	conflicts = libsde-utils-jansson
 	source = git+git://github.com/sde-gui/libsde-utils-jansson.git
 	md5sums = SKIP
 
