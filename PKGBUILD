@@ -22,11 +22,11 @@ package() {
     # Launcher and Data
     cp -Ral "${srcdir}/data/noarch/game/"{Binaries,Engine,OLGame} "${pkgdir}/opt/outlast"
     if [[ $CARCH = 'i686' ]]; then
-        rm "${pkgdir}/opt/outlast/Binaries/Linux/OLGame.x86_64
-        rm -r "${pkgdir}/opt/outlast/Binaries/Linux/lib/x86_64-pc-linux-gnu
+        rm "${pkgdir}"/opt/outlast/Binaries/Linux/OLGame.x86_64
+        rm -r "${pkgdir}"/opt/outlast/Binaries/Linux/lib/x86_64-pc-linux-gnu
     else
-        rm "${pkgdir}/opt/outlast/Binaries/Linux/OLGame.i686
-        rm -r "${pkgdir}/opt/outlast/Binaries/Linux/lib/i686-pc-linux-gnu
+        rm "${pkgdir}"/opt/outlast/Binaries/Linux/OLGame.i686
+        rm -r "${pkgdir}"/opt/outlast/Binaries/Linux/lib/i686-pc-linux-gnu
     fi
     mv "${pkgdir}"/opt/outlast/Binaries/Linux/OLGame{.${CARCH},}
 
