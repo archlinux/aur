@@ -19,6 +19,7 @@ source=(
   git+https://fuchsia.googlesource.com/third_party/zlib#commit=871bb1c83c0a4cc180c66ac89b14cb08675bef0d
 
   fix_libgit2_build.patch
+  fix_libssh2_build.patch
 )
 sha1sums=('SKIP'
           'SKIP'
@@ -27,7 +28,8 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          '798fbefdda5144f30e9fe6bde7ef0df01c0e9caf')
+          '798fbefdda5144f30e9fe6bde7ef0df01c0e9caf'
+          '011af8785b96372b73e95d3c04012ad0bb34344a')
 
 pkgver() {
   cd jiri
@@ -66,6 +68,9 @@ prepare() {
 
   cd $srcdir/libgit2
   patch -p1 < ../fix_libgit2_build.patch
+
+  cd $srcdir/libssh2
+  patch -p1 < ../fix_libssh2_build.patch
 }
 
 build() {
@@ -76,6 +81,6 @@ build() {
 
 package() {
   cd jiri
-  install -D -m755 build/jiri "$pkgdir"/usr/bin/jiri
+  install -D -m755 jiri "$pkgdir"/usr/bin/jiri
   install -D -m644 scripts/jiri-bash-completion.sh "$pkgdir"/usr/share/bash-completion/completions/jiri
 }
