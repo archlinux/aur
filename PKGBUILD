@@ -4,7 +4,7 @@
 
 pkgname=autocutsel
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="synchronizes the two copy/paste buffers mainly used by X applications"
 arch=('i686' 'x86_64')
 depends=('libxaw')
