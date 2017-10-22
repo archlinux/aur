@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.3.0+24160.d0cee5e09879
+pkgver=4.3.0+24164.44f0ad0e3af5
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -39,9 +39,10 @@ pkgver() {
 
 build() {
   [[ -d "$srcdir"/${_hgrepo}-local ]] && rm -rf $srcdir/${_hgrepo}-local
-  cp -rf "$srcdir"/${_hgrepo} $srcdir/${_hgrepo}-local
+  cp -r "$srcdir"/${_hgrepo} "$srcdir"/${_hgrepo}-local
   cd "$srcdir"/${_hgrepo}-local
-  ./bootstrap --gnulib-srcdir=$srcdir/gnulib
+  sed -i '317,319d' bootstrap
+  ./bootstrap --gnulib-srcdir="$srcdir"/gnulib 
   mkdir build
   cd build
   [[ $CARCH == "x86_64" ]] && _arch=amd64
