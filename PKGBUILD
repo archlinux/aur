@@ -1,13 +1,13 @@
 # Maintainer: Alex O'Brien <alex@emobrien.com>
-pkgname=virt-bootstrap-git # '-bzr', '-git', '-hg' or '-svn'
+pkgname=virt-bootstrap-git
 pkgver="r110.9e6a003"
 pkgrel=1
 pkgdesc="A tool for creating the root filesystem of libvirt-based containers."
 arch=('any')
 url="https://github.com/virt-manager/virt-bootstrap"
 license=('GPL')
-depends=('python2' 'libguestfs' 'skopeo' 'libvirt-sandbox' 'python')
-makedepends=('git' 'python2') # 'bzr', 'git', 'mercurial' or 'subversion'
+depends=('python2' 'libguestfs' 'skopeo' 'libvirt-sandbox' 'python' 'python2-passlib')
+makedepends=('git' 'python2')
 provides=("virt-bootstrap")
 conflicts=("virt-bootstrap")
 source=('virt-bootstrap-git::git+https://github.com/virt-manager/virt-bootstrap#branch=master')
