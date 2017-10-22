@@ -16,8 +16,8 @@
 
 pkgbase=linux-up       # Build kernel with a different name
 _srcname=linux-4.13
-pkgver=4.13.4
-pkgrel=3
+pkgver=4.13.8
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -42,14 +42,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '1e34c35dfbd3b7451a7b3eb93c5e342acc006b5d1906b5e542a8f203723bb8d6'
+            '3b2bcceb16acd75322e98d3e93967e82bd0e7499c748bf12bd46c7519dacc315'
             'SKIP'
             'c0fe8898c99dab71993cad8fdb9297c7d6f35a72e5244ea241f29086b6b66c02'
             'f55ef038646e2a935fff79dca757652ef349a67c3f2f107c4e78f93e30d6bb89'
             'ffb9f2741a96ef3d1bc163ef6cece8521f414cd6fd88aeed760edc20f95e9ad2'
             '7ba544b9c077f28b5b7c5ff98208d79fce4d4976bdf0f27ec1aa50fef3cd8478'
             '7f9b18da6b5f96c5e44b44d636e77e2dc3a30979008face821bc7564bed0cc74'
-            'db63a7eb1eb2b643455e2910303c28c2f02d956c626c2f35475ddb17948a40c5'
+            '333a0054efffea62113236cbbf37bb13e38590e162c19d77918ae91ffb1630ab'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
