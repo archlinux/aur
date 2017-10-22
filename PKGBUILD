@@ -8,7 +8,7 @@ pkgname="python-numpy-mkl"
 true && pkgname=('python-numpy-mkl' 'python2-numpy-mkl')
 #pkgname=('python-numpy')
 pkgver=1.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python compiled with intel mkl"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -30,6 +30,22 @@ build() {
 
 cd "${srcdir}"
 
+# set by hand this flag if you want to compile with gcc
+force_gcc=false
+
+if hash icc; then
+    use_intel_cc=true
+    use_gcc=false
+else
+    use_intel_cc=false
+    use_gcc=true
+fi
+
+if [ "$force_gcc" = true ] ; then
+    use_intel_cc=false
+    use_gcc=true
+fi
+
 if [ "$CARCH" = "i686" ]; then
     cp ${srcdir}/site32.cfg ${srcdir}/site.cfg
     _compiler=intel
@@ -39,12 +55,22 @@ else
 fi
 
 
+
 cp -a numpy-${pkgver} numpy-py2-${pkgver}
 
 export Atlas=None
 export LDFLAGS="$LDFLAGS -shared"
 
-export __INTEL_PRE_CFLAGS="$__INTEL_PRE_CFLAGS -D_Float128=__float128"
+if [ "$use_gcc" = true ]; then
+    export CFLAGS="-fopenmp -m64 -mtune=native -O3 -Wl,--no-as-needed"
+    export CXXFLAGS="-fopenmp -m64 -mtune=native -O3 -Wl,--no-as-needed"
+    export LDFLAGS="-ldl -lm"
+    export FFLAGS="-fopenmp -m64 -mtune=native -O3"
+fi
+
+if [ "$use_intel_cc" = true ]; then 
+    export __INTEL_PRE_CFLAGS="$__INTEL_PRE_CFLAGS -D_Float128=__float128"
+fi 
 
 
 echo "Building Python2"
@@ -52,16 +78,27 @@ cd "${srcdir}"
 cp ${srcdir}/site.cfg "${srcdir}/numpy-py2-${pkgver}"
 cd "${srcdir}/numpy-py2-${pkgver}"
 
+if [ "$use_intel_cc" = true ]; then 
+    python2 setup.py config --compiler=${_compiler} build_clib --compiler=${_compiler} build_ext --compiler=${_compiler}
+fi
 
-python2 setup.py config --compiler=${_compiler} build_clib --compiler=${_compiler} build_ext --compiler=${_compiler}
+if [ "$use_gcc" = true ]; then
+    python2 setup.py config  build_clib  build_ext
+fi
 
 echo "Building Python3"
 cd "${srcdir}"
 cp ${srcdir}/site.cfg "${srcdir}/numpy-${pkgver}"
 cd "${srcdir}/numpy-${pkgver}"
 
+if [ "$use_intel_cc" = true ]; then 
+    python setup.py config --compiler=${_compiler} build_clib --compiler=${_compiler} build_ext --compiler=${_compiler}
+fi 
 
-python setup.py config --compiler=${_compiler} build_clib --compiler=${_compiler} build_ext --compiler=${_compiler}
+if [ "$use_gcc" = true ]; then
+    python setup.py config  build_clib  build_ext
+fi
+
 }
 
 package_python2-numpy-mkl() {
