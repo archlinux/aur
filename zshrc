@@ -7,8 +7,9 @@
 # Change default zim location 
 export ZIM_HOME=/usr/lib/zim
 
+# Source global config
+source /etc/zsh/zimrc
+
 # Source zim
-if [[ -s ${ZIM_HOME}/init.zsh ]]; then
-  source ${ZIM_HOME}/init.zsh
-fi
+source ${ZIM_HOME}/init.zsh
 
