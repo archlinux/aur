@@ -3,7 +3,7 @@
 
 pkgname='fenrir'
 pkgver=1.5.post5
-pkgrel=1
+pkgrel=2
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url="https://linux-a11y.org/index.php?page=fenrir-screenreader"
@@ -28,7 +28,7 @@ md5sums=('2ad1a65261ceace09423c06f012c7652'
 
 package() {
   cd "${srcdir}/${pkgname}-screenreader-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python setup.py install --force-settings --root="${pkgdir}/" --optimize=1
 }
 
 # vim: set ts=2 sw=2 et:
