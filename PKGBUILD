@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url='https://fuchsia.googlesource.com/jiri'
 license=(MIT)
 depends=(libgit2)
-makedepends=(git go)
+makedepends=(git go-pie cmake ninja python2)
 source=(
   git+https://fuchsia.googlesource.com/jiri
   git+https://fuchsia.googlesource.com/third_party/git2go
