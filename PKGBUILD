@@ -3,7 +3,7 @@
 pkgname=firewatch-gog
 _gogver=2.4.0.6
 pkgver=1.06_${_gogver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Firewatch is a single-player first-person mystery set in the Wyoming wilderness."
 arch=('x86_64')
 url="http://www.firewatchgame.com/"
@@ -20,12 +20,13 @@ package() {
 
     # Launcher and Data
     cp -Ral "${srcdir}/data/noarch/game/"* "${pkgdir}/opt/firewatch"
-    mv "${pkgdir}"/opt/firewatch/fw{.x86_64,}
 
     # Install Binaries/Launchers
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/opt/firewatch/fw" "${pkgdir}/usr/bin/firewatch"
-
+    cat > "${pkgdir}/usr/bin/firewatch" <<END
+#!/bin/bash
+/opt/firewatch/fw.x86_64
+END
     # Desktop Integration
     mkdir -p "${pkgdir}/usr/share/pixmaps/"
     ln -s "/opt/firewatch/fw_Data/Resources/UnityPlayer.png" \
@@ -35,5 +36,5 @@ package() {
     # Permissions
     find "${pkgdir}/opt/firewatch" -type d -exec chmod 755 {} \;
     find "${pkgdir}/opt/firewatch" -type f -exec chmod 644 {} \;
-    chmod 755 "${pkgdir}/opt/firewatch/fw"
+    chmod 755 "${pkgdir}/opt/firewatch/fw.x86_64"
 }
