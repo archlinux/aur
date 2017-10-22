@@ -9,8 +9,9 @@
 pkgbase=enigmail-git
 pkgname=(icedove-${pkgbase} thunderbird-${pkgbase})
 pkgver=1.9.r432.gfa5c103b
-pkgrel=1
-pkgdesc="Icedove extension that enables sending and receiving signed and encrypted e-mail messages (development version)"
+pkgrel=2
+_pkgdesc="extension that enables sending and receiving signed and encrypted e-mail messages (development version)"
+pkgdesc="Icedove / Thunderbird ${_pkgdesc}"
 arch=('any')
 url="https://www.enigmail.net/"
 license=('MPL' 'GPL')
@@ -41,6 +42,7 @@ _package_for()
 	bsdtar -xf build/enigmail-*.xpi \
 		-C "${pkgdir}/usr/lib/${1}/extensions/${emid}"
 
+	pkgdesc="${1^} ${_pkgdesc}"
 	depends+=("${1}>=38")
 	provides+=(${1}-enigmail)
 	conflicts+=(${1}-enigmail)

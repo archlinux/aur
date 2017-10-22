@@ -1,7 +1,7 @@
 pkgbase = enigmail-git
-	pkgdesc = Icedove extension that enables sending and receiving signed and encrypted e-mail messages (development version)
+	pkgdesc = Icedove / Thunderbird extension that enables sending and receiving signed and encrypted e-mail messages (development version)
 	pkgver = 1.9.r432.gfa5c103b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.enigmail.net/
 	arch = any
 	license = MPL
