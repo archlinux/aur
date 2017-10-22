@@ -17,6 +17,8 @@ source=(
   git+https://fuchsia.googlesource.com/third_party/libssh2#commit=615210a03ecf36e1c55ffb7101d53e5c231c2f43
   git+https://fuchsia.googlesource.com/third_party/libgit2#commit=25a4b97b1bd0b5316deb77866756a3db772e08a2
   git+https://fuchsia.googlesource.com/third_party/zlib#commit=871bb1c83c0a4cc180c66ac89b14cb08675bef0d
+
+  fix_libgit2_build.patch
 )
 sha1sums=('SKIP'
           'SKIP'
@@ -24,7 +26,8 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          'SKIP')
+          'SKIP'
+          '798fbefdda5144f30e9fe6bde7ef0df01c0e9caf')
 
 pkgver() {
   cd jiri
@@ -60,6 +63,9 @@ prepare() {
   mkdir -p go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor
   rm -rf go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor/zlib
   ln -sfT $srcdir/zlib go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor/zlib
+
+  cd $srcdir/libgit2
+  patch -p1 < ../fix_libgit2_build.patch
 }
 
 build() {
