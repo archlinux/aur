@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=libpdfium-nojs
-pkgver=3112.r2.46e8ecf84
+pkgver=3202.r4.effa1b15a
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -41,13 +41,13 @@ prepare() {
   ln -sf $srcdir/build build
 
   # Pdfium is developed alongside Chromium and does not provide releases
-	# Upstream recommends using Chromium's dev channels instead
+  # Upstream recommends using Chromium's dev channels instead
 
-	# Extract pdfium branch name used in stable channel from omahaproxy and do
-	# a checkout
+  # Extract pdfium branch name used in stable channel from omahaproxy and do
+  # a checkout
   git checkout "chromium/$(curl https://omahaproxy.appspot.com/linux?channel=stable | cut -d'.' -f 3)"
 
-	# git checkout "chromium/$(curl https://omahaproxy.appspot.com/linux?channel=beta | cut -d'.' -f 3)"
+  # git checkout "chromium/$(curl https://omahaproxy.appspot.com/linux?channel=beta | cut -d'.' -f 3)"
   # git checkout "chromium/$(curl https://omahaproxy.appspot.com/linux?channel=dev | cut -d'.' -f 3)"
 
   # Extract build repo revision needed from DEPS file and do a checkout
@@ -63,11 +63,11 @@ prepare() {
   sed -i 's/static_library/source_set/g' third_party/BUILD.gn
 
   # Patch pdfium headers to enable symbol export
-  sed -i 's/\#define DLLEXPORT/\#define DLLEXPORT __attribute__ ((visibility ("default")))/g'\
+  sed -i 's/\#define FPDF_EXPORT/\#define FPDF_EXPORT __attribute__ ((visibility ("default")))/g'\
 	 public/fpdfview.h
   sed -i '/"PNG_PREFIX",/a     "FPDFSDK_EXPORTS",' BUILD.gn
 
-	# https://bugs.chromium.org/p/pdfium/issues/detail?id=733
+  # workaround for https://bugs.chromium.org/p/pdfium/issues/detail?id=733
   mkdir -p $srcdir/pdfium/third_party/freetype/src/src/psnames/
   python2 $srcdir/glnames.py $srcdir/pdfium/third_party/freetype/src/src/psnames/pstables.h
 
@@ -108,6 +108,7 @@ package() {
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D public/*.h --target-directory="${pkgdir}/usr/include/pdfium"
+  install -D public/cpp/* --target-directory="${pkgdir}/usr/include/pdfium/cpp"
   install -D docs/* --target-directory="${pkgdir}/usr/share/doc/pdfium"
   install -Dm755 out/Release/libpdfium.so --target-directory="${pkgdir}/usr/lib/pdfium"
   install -Dm644 ${srcdir}/libpdfium.pc --target-directory=${pkgdir}/usr/lib/pkgconfig
