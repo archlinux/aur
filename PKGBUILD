@@ -2,7 +2,7 @@
 
 pkgname=cryspmds
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='CrySP Multidevice Study'
 arch=('any')
 url='https://cryspmds.erinn.io/'
@@ -23,11 +23,14 @@ build() {
     sed -i "
 /^Icon=/ s|usr/local/bin/logo48.png|usr/share/icons/$pkgname.png|
 /^Exec=/ s|usr/local/bin/run|usr/bin/java -jar /usr/share/java/$pkgname/$pkgname.jar|
+/^Exec=/ a Path=/usr/share/$pkgname/
 " "data/usr/local/bin/$pkgname.desktop"
 }
 
 package() {
     install -Dm644 "data/usr/local/bin/$pkgname.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
     install -Dm644 "data/usr/local/bin/logo48.png" "$pkgdir/usr/share/icons/$pkgname.png"
+    install -Dm644 "data/usr/local/bin/logo.png" "$pkgdir/usr/share/$pkgname/logo.png"
+    install -Dm644 "data/usr/local/bin/logo.png" "$pkgdir/usr/share/$pkgname/logo-medium.png"
     install -Dm644 "data/usr/local/bin/$pkgname.desktop" "$pkgdir/etc/xdg/autostart/$pkgname.desktop"
 }
