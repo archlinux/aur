@@ -4,7 +4,7 @@ pkgbase=python-nclib
 pkgname=(python-nclib python2-nclib)
 _name=nclib
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Netcat as a library: convienent socket interfaces"
 license=("MIT")
 arch=('any')
@@ -43,5 +43,8 @@ package_python2-nclib() {
     depends=('python2')
     cd nclib-$pkgver-py2
     python2 setup.py install -O1 --root="$pkgdir"
+    for file in "$pkgdir"/usr/bin/*; do
+        mv "$file" "$file"2
+    done
     # install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

@@ -1,7 +1,7 @@
 pkgbase = python-nclib
 	pkgdesc = Netcat as a library: convienent socket interfaces
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/nclib/0.8.0
 	arch = any
 	license = MIT
