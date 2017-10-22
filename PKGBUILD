@@ -11,7 +11,7 @@
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=3.3.4
+pkgver=3.4
 pkgrel=1
 epoch=1
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
@@ -21,30 +21,21 @@ license=('GPL3')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
          'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau'
-         'libwebp' 'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus'
-         'schroedinger' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
+         'libwebp' 'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus' 'sdl2'
+         'speex' 'v4l-utils' 'xz' 'zlib'
          'libass.so' 'libbluray.so' 'libfreetype.so' 'libvidstab.so'
-         'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
-         'libx264.so' 'libx265.so' 'libxvidcore.so'
-         'raspberrypi-firmware')
+         'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so'
+         'libxvidcore.so' 'raspberrypi-firmware')
 makedepends=('ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg')
 conflicts=('ffmpeg')
-source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
-        'ffmpeg-openjpeg2.2.patch')
+source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('98b97e1b908dfeb6aeb6d407e5a5eacdfc253a40c2d195f5867ed2d1d46ea957'
-            'SKIP'
-            '490598f78d7879af8ef5b8d7f92ada83d0ee64f9609f6c7b989eb331c2539f68')
-
-prepare() {
-  cd ffmpeg-${pkgver}
-
-  patch -Np1 -i ../ffmpeg-openjpeg2.2.patch
-}
+sha256sums=('aeee06e4d8b18d852c61ebbfe5e1bb7014b1e118e8728c1c2115f91e51bffbef'
+            'SKIP')
 
 build() {
   cd ffmpeg-${pkgver}
@@ -76,7 +67,6 @@ build() {
     --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
-    --enable-libschroedinger \
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libssh \
