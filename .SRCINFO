@@ -1,7 +1,7 @@
 pkgbase = coulr
 	pkgdesc = Coulr is a color box to help developers and designers.
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Huluti/coulr
 	arch = any
 	license = MIT

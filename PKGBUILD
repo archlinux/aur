@@ -3,7 +3,7 @@
 
 pkgname=coulr
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Coulr is a color box to help developers and designers."
 arch=("any")
 url="https://github.com/Huluti/${pkgname}"
@@ -19,5 +19,7 @@ package() {
     cp -a po/* "${pkgdir}/usr/share/${pkgname}"
     install -D -m644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
     install -Dm755 src/main.py ${pkgdir}/usr/bin/${pkgname}
-    msgfmt po/fr/LC_MESSAGES/$pkgname.po -o ${pkgdir}/usr/share/${pkgname}/po/LC_MESSAGES/$pkgname.mo
+    # Translations
+    install -dm755 ${pkgdir}/usr/share/${pkgname}/po/fr/LC_MESSAGES/
+    msgfmt po/fr/LC_MESSAGES/$pkgname.po -o ${pkgdir}/usr/share/${pkgname}/po/fr/LC_MESSAGES/$pkgname.mo
 }
