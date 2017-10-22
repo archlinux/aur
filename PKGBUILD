@@ -1,12 +1,12 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-# Warning: If you are downgrading from the development branch (Wine >= 2.1,
+# Warning: If you are downgrading from the development branch (Wine ≥ 2.1,
 # for example), your WINEPREFIX may break and experience unusual bugs.
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
 pkgname=wine-stable
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 
 source=(https://dl.winehq.org/wine/source/2.0/wine-$pkgver.tar.xz{,.sign}
         30-win32-aliases.conf)
@@ -30,25 +30,27 @@ depends_x86_64=(lib32-fontconfig lib32-freetype2 lib32-gcc-libs
   lib32-libxcursor lib32-libxdamage lib32-libxi lib32-libxml2
   lib32-libxrandr)
 
-makedepends=(alsa-lib fontforge giflib gnutls libgl libldap libpng
-  libpulse libxcomposite libxinerama libxmu libxslt libxxf86vm mesa
-  mpg123 ncurses ocl-icd openal opencl-headers samba v4l-utils)
+makedepends=(alsa-lib fontforge giflib gnutls gst-plugins-base-libs
+  libgl libldap libpng libpulse libxcomposite libxinerama libxmu
+  libxslt libxxf86vm mesa mpg123 ncurses ocl-icd openal opencl-headers
+  samba v4l-utils)
 
 makedepends_x86_64=(gcc-multilib lib32-alsa-lib lib32-giflib
-  lib32-gnutls lib32-libgl lib32-libldap lib32-libpng lib32-libpulse
-  lib32-libxcomposite lib32-libxinerama lib32-libxmu lib32-libxslt
-  lib32-libxxf86vm lib32-mesa lib32-mpg123 lib32-ocl-icd lib32-openal
-  lib32-v4l-utils)
+  lib32-gnutls lib32-gst-plugins-base-libs lib32-libgl lib32-libldap
+  lib32-libpng lib32-libpulse lib32-libxcomposite lib32-libxinerama
+  lib32-libxmu lib32-libxslt lib32-libxxf86vm lib32-mesa lib32-mpg123
+  lib32-ocl-icd lib32-openal lib32-v4l-utils)
 
 optdepends=(alsa-lib alsa-plugins cups dosbox giflib gnutls
-  libjpeg-turbo libldap libpng libpulse libxcomposite libxinerama
-  libxslt mpg123 ncurses ocl-icd openal samba v4l-utils)
+  gst-plugins-base-libs libjpeg-turbo libldap libpng libpulse
+  libxcomposite libxinerama libxslt mpg123 ncurses ocl-icd openal
+  samba v4l-utils)
 
 optdepends_x86_64=(lib32-alsa-lib lib32-alsa-plugins lib32-giflib
-  lib32-gnutls lib32-libjpeg-turbo lib32-libldap lib32-libpng
-  lib32-libpulse lib32-libxcomposite lib32-libxinerama lib32-libxslt
-  lib32-mpg123 lib32-ncurses lib32-ocl-icd lib32-openal
-  lib32-v4l-utils)
+  lib32-gnutls lib32-gst-plugins-base-libs lib32-libjpeg-turbo
+  lib32-libldap lib32-libpng lib32-libpulse lib32-libxcomposite
+  lib32-libxinerama lib32-libxslt lib32-mpg123 lib32-ncurses
+  lib32-ocl-icd lib32-openal lib32-v4l-utils)
 
 provides=("wine=$pkgver")
 conflicts=("wine")
