@@ -1,0 +1,24 @@
+pkgbase = brother-dcpj785dw
+	pkgdesc = Driver for the Brother DCP-J785DW wifi/usb multifunctional printer
+	pkgver = 1.0.0_0
+	pkgrel = 1
+	url = http://support.brother.com/g/s/id/linux/en/index.html
+	install = brother-dcpj785dw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	depends = a2ps
+	depends = cups
+	depends = psutils
+	optdepends = sane: scanning support
+	optdepends = brscan4: making dcpj785dw available to sane
+	optdepends = brscan-skey: scankey support if connected via usb
+	source = fix_lp.patch
+	source = http://download.brother.com/welcome/dlf102772/dcpj785dwlpr-1.0.0-0.i386.rpm
+	source = http://download.brother.com/welcome/dlf102773/dcpj785dwcupswrapper-1.0.0-0.i386.rpm
+	md5sums = c6f0ef15fcec11b5572b930498efcb8b
+	md5sums = cbebb71277c5ce5f47ad4645cdcaf429
+	md5sums = c9483470f70d7926850883f9c1b6e5a7
+
+pkgname = brother-dcpj785dw
+
