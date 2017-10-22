@@ -7,7 +7,7 @@ pkgdesc='A tool for multi-repo development similar to Android repo'
 arch=(i686 x86_64)
 url='https://fuchsia.googlesource.com/jiri'
 license=(MIT)
-depends=(libgit2)
+depends=()
 makedepends=(git go-pie cmake ninja python2)
 source=(
   git+https://fuchsia.googlesource.com/jiri
