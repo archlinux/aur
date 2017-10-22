@@ -1,13 +1,13 @@
 # Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libcxml-git
-pkgver=0.r121.494afbc
+pkgver=0.r124.25e945f
 pkgrel=1
 pkgdesc="A small C++ library which makes it marginally neater to parse XML using libxml++"
 arch=('i686' 'x86_64')
 url="http://carlh.net/libcxml"
 license=('GPL')
-depends=('libxml++>=2.6' 'boost-libs')
+depends=('liblocked-sstream' 'libxml++>=2.6' 'boost-libs')
 makedepends=('python2' 'pkg-config' 'boost')
 provides=('libcxml=0.15.4devel')
 conflicts=('libcxml')
