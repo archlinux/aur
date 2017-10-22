@@ -4,7 +4,7 @@
 
 pkgname=bluecurve-icon-theme
 pkgver=8.0.2
-pkgrel=19
+pkgrel=20
 _rhfedver=26
 _rhpkgrel=15
 _rhpkgver=26
@@ -14,7 +14,6 @@ url="https://fedorahosted.org/bluecurve/"
 license=('GPL')
 groups=('redhat-artwork')
 optdepends=('gnome-icon-theme: for inheriting missing icons')
-makedepends=('imagemagick')
 options=(!emptydirs)
 
 source=("ftp://rpmfind.net/linux/fedora/linux/releases/${_rhfedver}/Everything/x86_64/os/Packages/b/bluecurve-icon-theme-${pkgver}-${_rhpkgrel}.fc${_rhpkgver}.noarch.rpm")
