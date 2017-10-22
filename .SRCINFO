@@ -1,6 +1,6 @@
 pkgbase = hyperstart
 	pkgdesc = Hypervisor-agnostic Docker Runtime (boot files)
-	pkgver = 0.7.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://www.hypercontainer.io/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = hyperstart
 	optdepends = hyperd: Hypervisor-agnostic Docker Runtime
 	options = !strip
 	options = !emptydirs
-	source = hyperstart-0.7.0.tar.gz::https://github.com/hyperhq/hyperstart/archive/v0.7.0.tar.gz
-	sha256sums = e85efb735e3cd14cc10d6a910bfd1393614a5e197415ac227777141a48d5591e
+	source = hyperstart-1.0.0.tar.gz::https://github.com/hyperhq/hyperstart/archive/v1.0.0.tar.gz
+	sha256sums = d3d773bd707d0c9594352068f132381d54f49556897f6909d3c52f1d44ff7b4e
 
 pkgname = hyperstart
 
