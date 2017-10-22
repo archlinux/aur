@@ -1,6 +1,6 @@
 pkgbase = xubuntu-artwork
 	pkgdesc = Xubuntu themes and artwork
-	pkgver = 17.10
+	pkgver = 17.10.1
 	pkgrel = 1
 	url = https://launchpad.net/xubuntu-artwork
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = xubuntu-artwork
 	optdepends = xfce-theme-bluebird: Official theming, git or stable version
 	optdepends = xfce-theme-greybird: Official theming, git or stable version
 	optdepends = elementary-xfce-icons: For matching icon theme, or the git version
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/xubuntu-artwork_17.10.tar.xz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/xubuntu-artwork_17.10.1.tar.xz
 	source = CC-BY-SA-3.0.txt
-	md5sums = e51230e74b2ae667d75dfbd794a285b0
+	md5sums = 222ecdc9dfd3c69e3ca63aeb2424f98d
 	md5sums = d55fbe17f8a79a738b1337f0b96aa064
 
 pkgname = xubuntu-artwork
