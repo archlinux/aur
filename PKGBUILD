@@ -4,12 +4,12 @@
 pkgname=igv
 pkgver=2.4.3
 _pkgver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance visualization tool for interactive exploration of large, integrated genomic datasets."
 arch=('any')
 url="http://www.broadinstitute.org/software/igv/home"
 license=('LGPL')
-depends=('java-environment' 'sh')
+depends=('java-environment>=8' 'sh')
 source=("http://www.broadinstitute.org/igv/projects/downloads/2.4/IGV_${_pkgver}.zip" \
 	"http://www.broadinstitute.org/software/igv/sites/cancerinformatics.org.igv/files/images/tools.png" \
   "$pkgname.sh" "$pkgname.desktop")

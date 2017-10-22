@@ -1,11 +1,11 @@
 pkgbase = igv
 	pkgdesc = High-performance visualization tool for interactive exploration of large, integrated genomic datasets.
 	pkgver = 2.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.broadinstitute.org/software/igv/home
 	arch = any
 	license = LGPL
-	depends = java-environment
+	depends = java-environment>=8
 	depends = sh
 	source = http://www.broadinstitute.org/igv/projects/downloads/2.4/IGV_2.4.3.zip
 	source = http://www.broadinstitute.org/software/igv/sites/cancerinformatics.org.igv/files/images/tools.png
