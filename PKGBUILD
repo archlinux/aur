@@ -14,7 +14,7 @@ pkgdesc="Icedove extension that enables sending and receiving signed and encrypt
 arch=('any')
 url="https://www.enigmail.net/"
 license=('MPL' 'GPL')
-depends=('icedove>=38' 'gnupg>=2.0.7')
+depends=('gnupg>=2.0.7')
 makedepends=('git' 'zip' 'python2' 'perl>=5.8')
 source=("${pkgbase}::git+https://git.code.sf.net/p/enigmail/source")
 sha512sums=('SKIP')
@@ -41,8 +41,9 @@ _package_for()
 	bsdtar -xf build/enigmail-*.xpi \
 		-C "${pkgdir}/usr/lib/${1}/extensions/${emid}"
 
-	provides=(${1}-enigmail)
-	conflicts=(${1}-enigmail)
+	depends+=("${1}>=38")
+	provides+=(${1}-enigmail)
+	conflicts+=(${1}-enigmail)
 }
 
 package_icedove-enigmail-git()
