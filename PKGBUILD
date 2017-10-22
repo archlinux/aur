@@ -6,7 +6,7 @@ pkgdesc="A comic reader for cross-platform reading and managing your digital com
 arch=('i686' 'x86_64')
 url="http://www.yacreader.com"
 license=('GPL3')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-script' 'poppler-qt5' 'qt5-declarative' 'glu' 'libunarr'  'qt5-quickcontrols')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-script' 'poppler-qt5' 'qt5-declarative' 'glu' 'libunarr'  'qt5-quickcontrols' 'desktop-file-utils')
 optdepends=(
     'qt5-imageformats: Support for extra image formats'
     'qrencode: YACReaderLibrary server info qr codes'
