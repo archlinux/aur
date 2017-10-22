@@ -2,11 +2,14 @@
 
 pkgname=cryspmds
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='CrySP Multidevice Study'
 arch=('any')
 url='https://cryspmds.erinn.io/'
-depends=('java-runtime')
+depends=(
+    'java-runtime'
+    'wireless_tools'
+)
 optdepends=(
     'gnome-shell-extension-topicons-plus: restore system tray on GNOME (application requires a system tray to run)'
 )
