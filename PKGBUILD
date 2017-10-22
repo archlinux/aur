@@ -1,17 +1,16 @@
 # Maintainer: Wolfgang Popp <mail@wolfgang-popp.de>
 
 pkgname=studip-sync-git
-pkgver=r22.970e0a2
+pkgver=r29.c792953
 pkgrel=1
 pkgdesc="Sync your files from Stud.IP"
 arch=('any')
-url="https://github.com/popeye123/studip-sync"
+url="https://github.com/woefe/studip-sync"
 license=('UNLICENSE')
-depends=('p7zip' 'rsync' 'curl' 'recode')
+depends=('rsync' 'python-requests' 'phantomjs' 'python-selenium')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/popeye123/studip-sync.git")
+source=("$pkgname::git+https://github.com/woefe/studip-sync.git")
 md5sums=('SKIP')
-backup=('etc/studip-sync.conf.d/user.conf' 'etc/studip-sync.conf.d/courses.conf')
 
 pkgver(){
   cd "$srcdir/$pkgname"
@@ -20,9 +19,8 @@ pkgver(){
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm 755 studip-sync $pkgdir/usr/bin/studip-sync
-  install -Dm 644 user.conf $pkgdir/etc/studip-sync.conf.d/user.conf
-  install -Dm 644 courses.conf $pkgdir/etc/studip-sync.conf.d/courses.conf
+  python3 setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 UNLICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
