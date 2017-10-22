@@ -1,16 +1,16 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 pkgname=maxcso
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A fast ISO to CSO compression program for use with PSP and PS2 emulators, which uses multiple algorithms for best compression ratio."
 arch=('any')
 license=('custom:ISCL')
 url="https://github.com/unknownbrackets/maxcso"
-depends=('libuv' 'lz4' 'zlib')
+depends=('libuv' 'lz4' 'zlib' 'gcc-libs')
 makedepends=('gcc')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/unknownbrackets/maxcso/archive/v${pkgver}.tar.gz")
-sha512sums=('362a2a2a770ec67aefbda5b1fa1e0470a138731e96cc003c15ce8b13be2895504d456ea9a3353c87b3a020ff101239a2ea9ef7c87d9e185eb03c4dd58892c519')
+sha512sums=('03a508d5b9dc556534162ca04d91e0fc4bc864b08e47894d5ef5b43db6a6901cc983f097a12e8d7c1b0446c967763bd89c859e64abf8ba2ef68f1cb35e4d81a5')
 
 build() {
   make -C "$pkgname-$pkgver"
