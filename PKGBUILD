@@ -4,7 +4,7 @@
 
 pkgname="home-assistant"
 pkgdesc='Open-source home automation platform running on Python 3'
-pkgver=0.55.2
+pkgver=0.56
 pkgrel=1
 url="https://home-assistant.io/"
 license=('APACHE')
@@ -14,8 +14,8 @@ makedepends=('python-setuptools')
 # NB: this package will install additional python packages in /var/lib/hass/lib depending on components present in the configuration files.
 depends=('python' 'python-pip' 'python-requests>=2.14.2' 'python-yaml' 'python-pytz>=2017.2'
          'python-vincenty' 'python-voluptuous>=0.9.3' 'python-netifaces'
-         'python-webcolors' 'python-async-timeout>=1.3.0' 'python-aiohttp>=2.2.5' 'python-aiohttp-cors>=0.5.3'
-         'python-jinja>=2.9.5' 'python-yarl>=0.11.0' 'python-chardet>=3.0.4' 'python-astral')
+         'python-webcolors' 'python-async-timeout>=2.0.0' 'python-aiohttp>=2.2.5' 'python-aiohttp-cors>=0.5.3'
+         'python-jinja>=2.9.5' 'python-yarl>=0.11.0' 'python-chardet>=3.0.4' 'python-astral' 'python-certifi')
 optdepends=('git: install component requirements from github'
             'net-tools: necessary for nmap discovery')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
@@ -23,7 +23,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
         "home-assistant.sysusers"
         "home-assistant-tmpfile.conf"
         "hass.install")
-sha512sums=('b4d14a23b190ad75fe4db512de01ea4cfc7d4f70527b4a0f61b277881a75626c65544f1920f9bc8f3215de88179053568612abda53e99f2749e877908bb53257'
+sha512sums=('4de3903dabd12b91f6d0b6965dfebb35303757d847fa58034c944d3041a278b4987ca5264af5d2db8a7ee7a3af431524dd5226b830808c6411221cdbd069033b'
             'fe96bd3df3ba666fd9f127c466d1dd1dd7314db2e57826a2b319c8a0bfad7aedeac398e748f93c6ecd9c2247ebbae196b8b0e7263b8681e2b7aeab6a8bfeab80'
             '100665ac35370c3ccec65d73521568de21cebf9e46af364124778861c94e338e32ad9abb675d3917f97d351dd7867e3ab2e80c26616330ae7cf0d9dc3f13369b'
             '8babcf544c97ec5ad785014f0b0d5dca556a2f5157dadcbe83d49d4669b74f6349e274810ec9a028fcec208c6c8fbbe6b3899d2933b56163b9e506570879a3ad'
@@ -39,7 +39,6 @@ prepare() {
   replace 'typing>=3,<4' '' setup.py
   replace 'aiohttp==2.2.5' 'aiohttp>=2.2.5' setup.py
   replace 'chardet==3.0.4' 'chardet>=3.0.4' setup.py
-  replace 'async_timeout==1.4.0' 'async_timeout>=1.4.0' setup.py
   replace 'voluptuous==0.10.5' 'voluptuous>=0.9.3' setup.py
   replace 'requests==2.14.2' 'requests>=2.14.2' setup.py
   replace 'astral==1.4' 'astral>=1.4' setup.py
