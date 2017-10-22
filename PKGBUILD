@@ -1,8 +1,8 @@
 # Maintainer: Nickolay Mardanov <soniczerops@gmail.com>
 
 pkgname=xkblayout-state
-pkgver=20150804
-pkgrel=1
+pkgver=20171010
+pkgrel=2
 pkgdesc="A small command-line program to get/set the current keyboard layout."
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  make
+  make all
 }
 
 package() {
