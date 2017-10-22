@@ -1,8 +1,8 @@
 
 # Maintainer: Filippo Ranza <filipporanza@gmail.com>
 pkgname=bfi
-pkgver=0.1_2_g87c4e80
-pkgrel=1
+pkgver=0.2
+pkgrel=2
 pkgdesc="Brainfuck interpreter with interactive shell"
 arch=('i686' 'x86_64')
 url="git@github.com:FilippoRanza/bfi.git"

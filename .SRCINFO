@@ -1,7 +1,7 @@
 pkgbase = bfi
 	pkgdesc = Brainfuck interpreter with interactive shell
-	pkgver = 0.1_2_g87c4e80
-	pkgrel = 1
+	pkgver = 0.2
+	pkgrel = 2
 	url = git@github.com:FilippoRanza/bfi.git
 	arch = i686
 	arch = x86_64
