@@ -3,4 +3,24 @@ pkg
 src
 
 #files
+*._*
+.DS_Store
+*.pkg.tar.gz
 *.pkg.tar.xz
+*.zip
+*.rar
+*.sig
+*.asc
+*.tar
+*.tar.*
+*.zip
+*.tgz
+*.log
+*.log.*
+*.log.[0-9]*
+*.sig
+
+# atom deb package
+*.deb
+
+beaker/

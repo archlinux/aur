@@ -1,80 +1,108 @@
 # Maintainer: Paul Frazee pfrazee@gmail.com
 # Contributor: flaketill <armandoibarra1 at gmail dot com>
 # Upstream URL: https://github.com/beakerbrowser/beaker
+# Web site="https://beakerbrowser.com/"
 
+_pkgname=beaker
 pkgname=beakerbrowser
 pkgver=0.7.5
 pkgrel=1
 pkgdesc="Beaker is an experimental peer-to-peer Web browser. It adds new APIs for \ building hostless applications, while remaining compatible with the rest of the Web"
 arch=('x86_64')
-url="https://beakerbrowser.com/"
-license=('Modified MIT License (MIT)')
 
-depends=('electron' 'nodejs' 'p7zip')
+url="https://github.com/beakerbrowser/beaker"
+license=('Modified MIT License (MIT)')
+depends=('electron' 'nodejs' 'p7zip' 'xdg-utils')
 checkdepends=('npm')
 makedepends=('libtool' 'm4' 'automake' 'make' 'git')
 optdepends=('gksu: sudo-save support')
 
 install=${pkgname}.install
 
-#source=('git+https://github.com/beakerbrowser/beaker/archive/${pkgver}.tar.gz' \
+source=("$pkgname"
+	"LICENSE"
+	"${pkgname}.desktop")
 
-source=('git+https://github.com/beakerbrowser/beaker.git' \
-"$pkgname" \
-"LICENSE" \
-"${pkgname}.desktop"
-)
-
-sha256sums=('SKIP'
+sha256sums=(
 c81c515820bc7f402732861140905eb1ddf99cc8ac0fc6ea1f0249750ff36a21
 7a0ab6f0bfde635de0dea1a5e57e641de973544ba9a5fb8498c098563ad35783
 2a47f24244ad653dd52728c952c78bc39d343c9c7c697279205eab6711d9e070
 )
 
-prepare() {
+msg_blue()
+{
+    printf "${BLUE}==>${ALL_OFF}${BOLD}·$1${ALL_OFF}\n"
+}
 
-	cd "${srcdir}"
-	cd beaker
+prepare() {
+	
+	msg_blue "Connecting to git server..."
+	msg_blue "Please wait ..."	
+	
+	if [[ -d "$srcdir/$_pkgname" ]]; then
+        	(cd "$_pkgname" && git pull origin master) || return 1
+        	msg_blue "Repository updated"
+	else
+		git clone "$url.git" || return 1
+		msg "Repository cloned"
+		ls
+		sleep 2
+		pwd
+		sleep 2
+		
+	fi
+
 }
 
 build() {
-
-	cd "${srcdir}/beaker"
-	npm install
-	npm run rebuild #see https://github.com/electron/electron/issues/5851
+	
+	if [[ -d "$srcdir/$_pkgname" ]]; then
+		cd "${srcdir}/$_pkgname"
+		msg_blue "Checkout to version $pkgver"
+		git checkout $pkgver 2>/dev/null || return 1
+		msg_blue "Git status .."
+		git status
+		msg_blue "Using version $pkgver..."
+		npm install
+		npm run rebuild || return 1 #see https://github.com/electron/electron/issues/5851
+	fi
 }
 
 check() {
+	if [[ -d "$srcdir/$_pkgname" ]]; then
 
-	cd "${srcdir}/beaker"
+		cd "${srcdir}/$_pkgname"
 
-	if [ -d "node_modules" ]; then
-		echo "OK node modules"
-	fi
+		if [ -d "node_modules" ]; then
+			echo "OK node modules"
+		fi
 
-	cd "${srcdir}"
+		cd "${srcdir}"
 
-	if [ -f "${pkgname}" ]; then
-		echo "OK bin file"
-	fi
+		if [ -f "${pkgname}" ]; then
+			echo "OK bin file"
+		fi
 
-	if [ -f "${pkgname}.desktop" ]; then
-		echo "OK launcher"
-	fi
+		if [ -f "${pkgname}.desktop" ]; then
+			echo "OK launcher"
+		fi
 
-	if [ -f "LICENSE" ]; then
-		echo "OK launcher"
+		if [ -f "LICENSE" ]; then
+			echo "OK launcher"
+		fi
+
+		#return 1
 	fi
 
 }
 
 package() {
 
-	cd "${srcdir}/beaker"
+	cd "${srcdir}/$_pkgname"
 
 	#Copy icons for Desktop Integration
 	#install -Dm644 build/icons/48x48.png \
-    #"$pkgdir/usr/share/icons/hicolor/48x48/apps/beaker.png"
+    	#"$pkgdir/usr/share/icons/hicolor/48x48/apps/beaker.png"
 	
 	cd "${srcdir}"
 
