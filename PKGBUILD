@@ -4,7 +4,7 @@
 
 pkgname=csound
 pkgver=6.09.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A programming language for sound rendering and signal processing."
 arch=('i686' 'x86_64')
 url="http://csound.github.io"
@@ -20,7 +20,7 @@ conflicts=('libextractor')
 source=("https://github.com/csound/csound/archive/${pkgver}.tar.gz"
         "python_install_dir.patch"
         "csound.sh")
-sha256sums=('d49735b4ed50f2818b577abcface45fe7f9b7fb49ccd898db030893cbcdfc738'
+sha256sums=('e4d2e9870d3b29305c9bc404dc93806e61420a57fc4bc69577676b4934c71777'
             '9c13a6d416294f073e481db934c6a816170af012d3b5b8707d8699deb29bee89'
             '23db5bda78f13d5f16eceea085bba660d7b7012a89518e477d12dfef82dbadeb')
 
