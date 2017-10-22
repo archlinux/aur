@@ -1,14 +1,16 @@
 pkgbase = meteorite
 	pkgdesc = A Matroska/MKV repair engine
 	pkgver = 0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mkvrepair.com/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = wxgtk
 	source = https://downloads.sourceforge.net/meteorite/Meteorite-v0.11-src.tar.bz2
+	source = meteorite.patch
 	md5sums = 9f608eee5a8f355beb8b59fb7e0a8718
+	md5sums = 30b254657da6a01abbab91a7e8ce99d9
 
 pkgname = meteorite
 

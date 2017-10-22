@@ -1,0 +1,12 @@
+diff -ura src/Meteorite/src/meteorite.cpp src.new/Meteorite/src/meteorite.cpp
+--- src/Meteorite/src/meteorite.cpp	2011-05-13 16:43:21.000000000 -0500
++++ src.new/Meteorite/src/meteorite.cpp	2017-10-15 19:42:18.587128336 -0500
+@@ -1178,7 +1178,7 @@
+ 			cout << "Buffer not starting with _Cluster_ token" << endl;
+ 			return NULL;
+ 		}
+-	return false;
++	return NULL;
+ 	}
+ inline bool Meteorite::IsKeyFrame( char *data, unsigned size, char *four_cc ){ //Finds KeyFrames for indexing
+ 	uint32_t flag;
