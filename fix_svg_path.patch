@@ -1,0 +1,13 @@
+diff -ura emoji-keyboard-2.2.0/setup.py emoji-keyboard-2.2.0+patched/setup.py
+--- emoji-keyboard-2.2.0/setup.py	2017-10-17 23:30:03.000000000 +0200
++++ emoji-keyboard-2.2.0+patched/setup.py	2017-10-22 11:18:01.805710441 +0200
+@@ -38,8 +38,7 @@
+ 	packages=['emoji_keyboard'],
+ 	package_data={'emoji_keyboard': [
+ 		'data/*.json',
+-		'data/svg/*.svg',
+-		'data/category_icons/*.svg',
++		'data/*/*.svg',
+ 		'data/emoji-keyboard.desktop']},
+ 	data_files=data_files,
+ 	scripts=['emoji-keyboard'],
