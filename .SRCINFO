@@ -15,7 +15,7 @@ pkgbase = libsde-utils-jansson-git
 	depends = libsde-utils-gtk2
 	provides = libsde-utils-gtk2
 	conflicts = libsde-utils-gtk2
-	source = git+git://github.com/sde-gui/libsde-utils-gtk.git
+	source = git+git://github.com/sde-gui/libsde-utils-jansson.git
 	md5sums = SKIP
 
 pkgname = libsde-utils-jansson-git
