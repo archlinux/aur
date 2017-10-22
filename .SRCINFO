@@ -1,0 +1,19 @@
+pkgbase = pacmon-git
+	pkgdesc = An automated LAN mirror for pacman
+	pkgver = 20171021
+	pkgrel = 1
+	url = https://github.com/veecue/pacmon
+	install = pacmon.install
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = pacmon.service
+	source = pacmon-mirrorlist.hook
+	sha256sums = fb0cdc6bf8a79c518ded1a5c9cc44e2b26f3ea3adee8947c4746d5996c3b75a2
+	sha256sums = 82f0a263cc0ebc08e43043d8dec5118afb56f5bbaef64a2021dc0b43f6671c5a
+
+pkgname = pacmon-git
+
