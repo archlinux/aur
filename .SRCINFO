@@ -1,16 +1,11 @@
-pkgbase = thunderbird-enigmail-bin
-	pkgdesc = The Mozilla Thunderbird GnuPG encryption plugin. Binary version.
+pkgbase = enigmail-bin
+	pkgdesc = The Icedove / Thunderbird GnuPG encryption plugin. Binary version.
 	pkgver = 1.9.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.enigmail.net/
 	arch = any
 	license = MPL
-	depends = thunderbird
-	provides = thunderbird-enigmail
-	conflicts = enigmail
-	conflicts = thunderbird-enigmail
-	replaces = enigmail-64-bin
-	replaces = enigmail-bin
+	depends = gnupg>=2.0.7
 	noextract = enigmail-1.9.8.3-sm+tb.xpi
 	source = https://www.enigmail.net/download/release/1.9/enigmail-1.9.8.3-sm+tb.xpi
 	source = https://www.enigmail.net/download/release/1.9/enigmail-1.9.8.3-sm+tb.xpi.asc
@@ -19,5 +14,5 @@ pkgbase = thunderbird-enigmail-bin
 	sha512sums = b351727a9ed2daf32f033b52fb4761b0c82d3f713fba6ae0a0092e76a1177837b55b5fe690c3edfc596f51cd4faa55d106d55026621c49db6240625e0a863bec
 	sha512sums = SKIP
 
-pkgname = thunderbird-enigmail-bin
+pkgname = icedove-enigmail-bin
 
