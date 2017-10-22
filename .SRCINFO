@@ -1,6 +1,6 @@
 pkgbase = joliebulle-git
 	pkgdesc = Brewing assistant and beer recipe design
-	pkgver = 20160809
+	pkgver = 20171022
 	pkgrel = 1
 	url = https://github.com/314r/joliebulle
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = joliebulle-git
 	makedepends = git
 	depends = python
 	depends = python-pyqt5
+	depends = qt5-webkit
 	provides = joliebulle
 	conflicts = joliebulle
 

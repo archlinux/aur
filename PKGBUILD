@@ -1,13 +1,13 @@
 # Maintainer: Thomas Gerbet <thomas at gerbet dot me>
 
 pkgname=joliebulle-git
-pkgver=20160809
+pkgver=20171022
 pkgrel=1
 pkgdesc='Brewing assistant and beer recipe design'
 arch=('any')
 url='https://github.com/314r/joliebulle'
 license=('GPL3')
-depends=('python' 'python-pyqt5')
+depends=('python' 'python-pyqt5' 'qt5-webkit')
 makedepends=('git')
 provides=('joliebulle')
 conflicts=('joliebulle')
