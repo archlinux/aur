@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Deuchnord Hermes
+Name[fr]=Deuchnord Hermès
+Icon=/usr/share/icons/deuchnord-hermes.png
+Exec=deuchnord-hermes
+Terminal=false
+Type=Application
+Categories=Utility;
