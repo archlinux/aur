@@ -1,12 +1,12 @@
 # Maintainer: Cobra <najahannah [at] archlinux [dot] info>
 pkgname=portfolio
-pkgver=0.27.8
+pkgver=0.27.9
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
 url="http://buchen.github.io/portfolio/"
 license=('EPL')
-depends=('jre8-openjdk' 'webkitgtk2')
+depends=('java-runtime=8' 'webkitgtk2')
 makedepends=('maven')
 
 _DEST="/usr/share/portfolio"
@@ -15,11 +15,13 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=("3f3bd341875bb358ed7feb14c593ebb5ff0c944f")
+sha1sums=("44bc94cc4bb7b4d8cfc0ab6d0ac765ea52580f8b")
+
+JRE_VERSION=$(archlinux-java status | grep default | awk '{print $1}')
 
 build() {
     export MAVEN_OPTS="-Xmx1g"
-    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre
+    export JAVA_HOME=/usr/lib/jvm/$JRE_VERSION/jre
     cd $pkgname-$pkgver
     cd portfolio-app
     mvn clean install -Dgenerate-target-platform=true
