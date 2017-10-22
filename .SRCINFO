@@ -1,0 +1,22 @@
+pkgbase = vdr-sxfe-git
+	pkgdesc = VDR xineliboutput sxfe frontend. This package does not contain the vdr plugin.
+	pkgver = r2821.c9e9835
+	pkgrel = 1
+	url = https://sourceforge.net/projects/xineliboutput
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	depends = libcec
+	depends = dbus-glib
+	depends = libxrandr
+	depends = mesa
+	depends = xine-lib
+	conflicts = xineliboutput-frontends
+	source = vdr-sxfe-git::git://git.code.sf.net/p/xineliboutput/git
+	md5sums = SKIP
+
+pkgname = vdr-sxfe-git
+
