@@ -5,38 +5,70 @@
 
 _pkgname=uim
 pkgname=${_pkgname}-git
-pkgver=1.8.0.alpha.r264.gfe60773
+pkgver=1.8.0.alpha.r331.g34cc229d
 pkgrel=1
 epoch=1
 pkgdesc='Multilingual input method library'
 url='https://github.com/uim/uim/wiki'
 license=('custom:BSD')
 arch=('i686' 'x86_64')
-depends=('libxft' 'libedit' 'm17n-lib')
-makedepends=('intltool' 'gettext' 'gtk2' 'gtk3' 'qt4' 'anthy')
+depends=('libxft' 'libedit')
+makedepends=('intltool' 'gettext' # core dependencies
+			 'gtk2' 'gtk3' 'qt4' 'qt5-tools' # frontend plugins
+			 'anthy' 'm17n-lib') # input method plugins
 optdepends=('qt4: immodule and helper applications'
+			'qt5-base: immodule and helper applications'
+			'qt5-x11extras: platform input context plugin'
             'gtk2: immodule and helper applications'
-            'gtk3: immodule and helper applications')
+            'gtk3: immodule and helper applications'
+            'emacs: uim.el bridge software'
+			'm17n-lib: m17n support'
+			'anthy: Japanese input method')
 provides=('uim')
 conflicts=('uim' 'uim-svn')
-source=("git+https://github.com/uim/uim.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/uim/uim.git"
+		"git+https://github.com/uim/sigscheme.git"
+		"git+https://github.com/uim/libgcroots.git")
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
+  cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed -r 's/^uim-//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-build() {
-  cd ${srcdir}/${_pkgname}
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  git submodule init
+  git config submodule.sigscheme.url "${srcdir}/sigscheme"
+  git submodule update
 
-  ./configure \
-	  --prefix=/usr \
-	  --libexecdir=/usr/lib/uim \
-	  --with-anthy-utf8 \
-	  --with-qt4-immodule \
-	  --with-qt4 \
-	  --with-qt5 \
+  cd "${srcdir}/${_pkgname}/sigscheme"
+  git submodule init
+  git config submodule.libgcroots.url "${srcdir}/libgcroots"
+  git submodule update
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}/sigscheme"
+  ./autogen.sh
+
+  cd "${srcdir}/${_pkgname}/sigscheme/libgcroots"
+  ./autogen.sh
+
+  cd "${srcdir}/${_pkgname}"
+  ./autogen.sh
+
+  cmd=(./configure
+	   --enable-maintainer-mode # necessary for building from Git
+	   --prefix=/usr
+	   --libexecdir=/usr/lib/uim
+	   --with-anthy-utf8
+	   --with-qt4-immodule
+	   --with-qt4
+	   --with-qt5-immodule
+	   --with-qt5
+	  )
+  "${cmd[@]}"
 
   make
 }

@@ -1,0 +1,6 @@
+/pkg/
+/src/
+/uim/
+/sigscheme/
+/libgcroots/
+*.tar.xz
