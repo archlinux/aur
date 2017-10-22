@@ -1,16 +1,20 @@
 pkgbase = maxcso
 	pkgdesc = A fast ISO to CSO compression program for use with PSP and PS2 emulators, which uses multiple algorithms for best compression ratio.
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unknownbrackets/maxcso
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
 	license = custom:ISCL
 	makedepends = gcc
 	depends = libuv
 	depends = lz4
 	depends = zlib
+	depends = gcc-libs
 	source = maxcso-1.9.0.tar.gz::https://github.com/unknownbrackets/maxcso/archive/v1.9.0.tar.gz
-	sha512sums = 86194c1200d4dcfd833c6fa60124356471b1b6a0c6f17d8b092dcfccef7f652fa73ca34476070443ac9a9f21a960e15c7866109208e9eb6d11b90d1909f848f3
+	sha512sums = 03a508d5b9dc556534162ca04d91e0fc4bc864b08e47894d5ef5b43db6a6901cc983f097a12e8d7c1b0446c967763bd89c859e64abf8ba2ef68f1cb35e4d81a5
 
 pkgname = maxcso
 

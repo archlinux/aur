@@ -2,9 +2,9 @@
 
 pkgname=maxcso
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast ISO to CSO compression program for use with PSP and PS2 emulators, which uses multiple algorithms for best compression ratio."
-arch=('any')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('custom:ISCL')
 url="https://github.com/unknownbrackets/maxcso"
 depends=('libuv' 'lz4' 'zlib' 'gcc-libs')
