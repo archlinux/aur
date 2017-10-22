@@ -1,22 +1,20 @@
 # Maintainer: Yen Chi Hsuan
 
 pkgname=pulse-secure
-pkgver=5.3r1
-pkgrel=2
+pkgver=5.3r3.0
+pkgrel=1
 pkgdesc='Pulse Connect Secure (PCS) Client'
-arch=(i686 x86_64)
+arch=(x86_64)
 license=(custom)
 url='https://www.pulsesecure.net/'
-depends_i686=(gcc-libs libgnome-keyring)
-depends_x86_64=(lib32-gcc-libs lib32-libgnome-keyring)
-source=(https://trial.pulsesecure.net/clients/ps-pulse-linux-$pkgver.0-b587-centos-rhel-installer.rpm
+depends=(gcc-libs libgnome-keyring)
+source=("https://trial.pulsesecure.net/clients/ps-pulse-linux-$pkgver-b1021-centos-rhel-64-bit-installer.rpm"
         pulseUi.sh
         EULA.txt)
-md5sums=('652f6e8f54ea5bdd05a123ba6fd475ba'
+md5sums=('4cbe64953952d9ffdeaa4ffe2fc92a20'
          'b00064e15969e230e979e26a491aaa96'
          '261848a28201e5386ec4bf587473a48b')
-optdepends_i686=('webkitgtk: for pulseUi frontend')
-optdepends_x86_64=('lib32-webkitgtk: for pulseUi frontend')
+optdepends=('webkitgtk: for pulseUi frontend')
 conflicts=(pulse-connect-secure)
 
 prepare() {
@@ -26,7 +24,7 @@ prepare() {
 
     # HACK: patch binary
     # Idea from https://lists.archlinux.org/pipermail/aur-general/2017-August/033452.html
-    for f in pulse/pulseUi_centos_7 pulse/pulseUi.desktop ; do
+    for f in pulse/pulseUi_centos_7_x86_64 pulse/pulseUi.desktop ; do
         sed -i 's#/usr/local/pulse#/opt/pulsesecure#g' $f
     done
 }
@@ -40,8 +38,8 @@ package() {
   # Skip PulseClient.sh - seems it's not useful here
   install -Dm755 pulse/{pulsediag,pulseutil} "${pkgdir}"/opt/pulsesecure/
   install -Dm4755 pulse/pulsesvc "${pkgdir}"/opt/pulsesecure/
-  install -Dm755 pulse/pulseUi_centos_7 "${pkgdir}"/opt/pulsesecure/pulseUi
-  install -Dm755 pulse/libpulseui.so_centos_7 "${pkgdir}"/opt/pulsesecure/libpulseui.so
+  install -Dm755 pulse/pulseUi_centos_7_x86_64 "${pkgdir}"/opt/pulsesecure/pulseUi
+  install -Dm755 pulse/libpulseui.so_centos_7_x86_64 "${pkgdir}"/opt/pulsesecure/libpulseui.so
   install -Dm644 pulse/pulseUi.desktop "${pkgdir}"/usr/share/applications/
 
   # Wrappers & symlinks
