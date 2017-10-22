@@ -1,0 +1,7 @@
+#!/bin/sh
+
+post_install() {
+    if ! java -cp /usr/share/java/cryspmds/ SystemTrayIsSupported; then
+        printf >&2 'java.awt.SystemTray is not supported, application WILL crash on startup!\n'
+    fi
+}
