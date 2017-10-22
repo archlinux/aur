@@ -1,7 +1,7 @@
 # Maintainer: Andrei Alexeyev <akari@alienslab.net>
 
 pkgname=rexuiz-git
-pkgver=r83.3a38192
+pkgver=r112.7fe0e31
 pkgrel=1
 arch=('any')
 pkgdesc="An updated fork of Nexuiz, a fast-paced multiplayer first-person shooter."
@@ -33,7 +33,7 @@ conflicts=('rexuiz')
 provides=('rexuiz')
 source=(
     "git+https://github.com/kasymovga/rexuiz"
-    "https://raw.githubusercontent.com/kasymovga/RexuizLauncher/master/src/resources/icon.png"
+    "https://raw.githubusercontent.com/kasymovga/RexuizLauncher/master/src/main/resources/icon.png"
     "rexuiz.sh"
 )
 sha256sums=(

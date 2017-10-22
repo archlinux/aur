@@ -1,6 +1,6 @@
 pkgbase = rexuiz-git
 	pkgdesc = An updated fork of Nexuiz, a fast-paced multiplayer first-person shooter.
-	pkgver = r83.3a38192
+	pkgver = r112.7fe0e31
 	pkgrel = 1
 	url = http://rexuiz.top/
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = rexuiz-git
 	provides = rexuiz
 	conflicts = rexuiz
 	source = git+https://github.com/kasymovga/rexuiz
-	source = https://raw.githubusercontent.com/kasymovga/RexuizLauncher/master/src/resources/icon.png
+	source = https://raw.githubusercontent.com/kasymovga/RexuizLauncher/master/src/main/resources/icon.png
 	source = rexuiz.sh
 	sha256sums = SKIP
 	sha256sums = a5ebbae57d6375693bdeae8b71047c8b6a3b6b2b4038614c31c97092c6d0a508
