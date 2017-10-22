@@ -13,6 +13,15 @@ depends=('go' 'docker')
 makedepends=('git')
 install=$pkgname.install
 source=("https://github.com/hyperledger/fabric/archive/v$pkgver.tar.gz")
+export GOOS=linux
+case "$CARCH" in
+  x86_64) export GOARCH=amd64 ;;
+  i686) export GOARCH=386 GO386=387 ;;
+  arm) export GOARCH=arm GOARM=5 ;;
+  armv6h) export GOARCH=arm GOARM=6 ;;
+  armv7h) export GOARCH=arm GOARM=7 ;;
+  aarch64) export GOARCH=arm64 ;;
+esac
 
 prepare() {
   export GOPATH="$PWD"/.gopath
