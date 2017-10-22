@@ -13,7 +13,7 @@ depends=("python")
 optdepends=('nerd-fonts-complete')
 conflicts=('pbt-git')
 source=("https://github.com/jtyr/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('19d63202c315b383b04a145613ea40759f887221c4e8f4b8fcdbd7536a502368')
+sha256sums=('b6f5b7120f42041f25486448fdca74c38a37e71344b1ec088ba4550b1534369b')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
