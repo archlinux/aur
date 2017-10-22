@@ -1,6 +1,6 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 pkgname=libunarr-git
-pkgver=r214.65e7b2c
+pkgver=1.0.0.r1.g62e744b
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/selmf/unarr"
@@ -9,12 +9,13 @@ pkgdesc="A lightweight decompression library with support for rar, tar and zip a
 source=('git+https://github.com/selmf/unarr')
 makedepends=('cmake' 'git')
 depends=('zlib' 'bzip2' 'xz')
+provides=('libunarr')
 
 md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/unarr"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
