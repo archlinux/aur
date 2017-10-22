@@ -10,8 +10,8 @@
 # -Harmony Fix (from https://git.archlinux.org/svntogit/community.git/tree/trunk?h=packages/wine-staging-nine )
 
 pkgname=wine-gaming-nine
-pkgver=2.18
-pkgrel=4
+pkgver=2.19
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 _d3d9ver=$_pkgbasever
@@ -28,8 +28,8 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
 	wine-list.h-linked-list-cache-line-prefetching.patch
 	wined3d-Cache-shader-compile-arguments-and-precompil.patch
         )
-sha1sums=('089a7ca0d83b9dbbad42ce127bf66ba60d5669d7'
-          '21a6e2bcd7ef6d261feca036cc4e0d43a633494f'
+sha1sums=('dae084c946c7aa79a517bf95a00791e01f5d88a1'
+          'e49d6afc9491da159d24c9e3627de5bd44c8d2ca'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
 	  'b5a4faccf9109d2da5017779113ea270bf189957'
 	  'f3febb8836f38320742a546c667106608d4c4395'
