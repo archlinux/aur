@@ -8,8 +8,6 @@ arch=('i686' 'x86_64')
 url="https://packages.debian.org/wheezy/siggen"
 license=('GPL2')
 depends=('ncurses')
-conflicts=('siggen')
-provides=('siggen')
 install="${pkgname}.install"
 
 source=("http://http.debian.net/debian/pool/main/s/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
