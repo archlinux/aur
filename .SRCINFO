@@ -1,6 +1,6 @@
 pkgbase = sakia
 	pkgdesc = A Python/Qt client for Duniter network
-	pkgver = 0.32.2
+	pkgver = 0.32.4
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = sakia
 	depends = zlib
 	depends = sqlite
 	optdepends = gtk3
-	source = https://github.com/duniter/sakia/archive/0.32.2.tar.gz
-	sha256sums = 0fc8fdb2d13aa5d1af384b79aa58d47ae18b1e545218069e13ba3d5087cf10cb
+	source = https://github.com/duniter/sakia/archive/0.32.4.tar.gz
+	sha256sums = f21650de954bd7a497b88b934166383fed1e9f76dbf1502685afc44fd3e37be4
 
 pkgname = sakia
 
