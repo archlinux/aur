@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=jiri-git
-pkgver=r1252
+pkgver=r1331
 pkgrel=1
 pkgdesc='A tool for multi-repo development similar to Android repo'
 arch=(i686 x86_64)
@@ -9,8 +9,22 @@ url='https://fuchsia.googlesource.com/jiri'
 license=(MIT)
 depends=(libgit2)
 makedepends=(git go)
-source=(git+https://fuchsia.googlesource.com/jiri)
-sha1sums=('SKIP')
+source=(
+  git+https://fuchsia.googlesource.com/jiri
+  git+https://fuchsia.googlesource.com/third_party/git2go
+  git+https://fuchsia.googlesource.com/third_party/boringssl#commit=438229a8d724058cb4de1af6814204f03ce734ed
+  git+https://fuchsia.googlesource.com/third_party/curl#commit=280e8c6e371ebd0f2e0a907e016ab44d6c9549af
+  git+https://fuchsia.googlesource.com/third_party/libssh2#commit=615210a03ecf36e1c55ffb7101d53e5c231c2f43
+  git+https://fuchsia.googlesource.com/third_party/libgit2#commit=25a4b97b1bd0b5316deb77866756a3db772e08a2
+  git+https://fuchsia.googlesource.com/third_party/zlib#commit=871bb1c83c0a4cc180c66ac89b14cb08675bef0d
+)
+sha1sums=('SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP')
 
 pkgver() {
   cd jiri
@@ -20,17 +34,38 @@ pkgver() {
 prepare() {
   cd jiri
 
-  mkdir -p build
-  mkdir -p .gopath/src/fuchsia.googlesource.com/
-  ln -sf "$PWD" .gopath/src/fuchsia.googlesource.com/jiri
-  export GOPATH="$PWD/.gopath"
+  sed -i 's/\bpython\b/python2/' scripts/build.sh
+  # script sets GOPATH to fuchsia wide location, we do not have it
+  sed -i 's/export GOPATH=.*//' scripts/build.sh
+  mkdir -p go
 
-  go get -d github.com/libgit2/git2go
+  mkdir -p go/src/fuchsia.googlesource.com
+  rm -rf go/src/fuchsia.googlesource.com/jiri
+  ln -sfT $srcdir/jiri go/src/fuchsia.googlesource.com/jiri
+  mkdir -p go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2
+  rm -rf go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go
+  ln -sfT $srcdir/git2go go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go
+  mkdir -p go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor
+  rm -rf go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor/boringssl
+  ln -sfT $srcdir/boringssl go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor/boringssl
+  mkdir -p go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor
+  rm -rf go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor/curl
+  ln -sfT $srcdir/curl go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor/curl
+  mkdir -p go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor
+  rm -rf go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor/libssh2
+  ln -sfT $srcdir/libssh2 go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor/libssh2
+  mkdir -p go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor
+  rm -rf go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor/libgit2
+  ln -sfT $srcdir/libgit2 go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor/libgit2
+  mkdir -p go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor
+  rm -rf go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor/zlib
+  ln -sfT $srcdir/zlib go/src/fuchsia.googlesource.com/jiri/vendor/github.com/libgit2/git2go/vendor/zlib
 }
 
 build() {
   cd jiri
-  go build -o build/jiri fuchsia.googlesource.com/jiri/cmd/jiri # -gccgoflags "$CFLAGS $LDFLAGS"
+
+  GOPATH=`pwd`/go ./scripts/build.sh
 }
 
 package() {
