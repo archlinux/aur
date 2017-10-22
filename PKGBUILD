@@ -4,7 +4,7 @@
 # Contributor:  The Vertcoin Developers  <$(echo "Y29udGFjdEB2ZXJ0Y29pbi5vcmcK" | base64 -d)>
 
 pkgname=electrum-vtc
-pkgver=2.9.3.1
+pkgver=2.9.3.3
 pkgrel=1
 pkgdesc='A simple, powerful, and secure Vertcoin wallet which has no sync time or long waits for the blockchain to download.'
 
@@ -30,12 +30,12 @@ depends=('python2-setuptools'
 provides=('electrum-vtc')
 conflicts=('electrum-vtc')
 
-source=('Electrum-VTC-2.9.3.1.tar.gz::https://github.com/vertcoin/electrum-vtc/releases/download/2.9.3.1/Electrum-VTC-2.9.3.1.tar.gz')
+source=('Electrum-VTC-2.9.3.3.tar.gz::https://github.com/vertcoin/electrum-vtc/releases/download/2.9.3.3/Electrum-VTC-2.9.3.3.tar.gz')
 
-sha256sums=('c83560c30af4a60058a372bb6097d2f1532975e785d73fe23f13403b666e9446')
+sha256sums=('b3a957f92f06b46c88bb3509cea53cbc2fa1bb49184d4cc259dc127f3b82edb4')
 
 prepare() {
-    cd "$srcdir/Electrum-VTC-2.9.3.1/"
+    cd "$srcdir/Electrum-VTC-2.9.3.3/"
     find ./ -type f -exec sed -i '/#!/s/python$/&2/' {} +
     for i in icons/{electrum_{dark,light}_icon,unpaid}.png
     do convert $i $i
@@ -44,12 +44,12 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/Electrum-VTC-2.9.3.1/"
+    cd "$srcdir/Electrum-VTC-2.9.3.3/"
     python2 setup.py build
 }
 
 package() {
-    cd "$srcdir/Electrum-VTC-2.9.3.1/"
+    cd "$srcdir/Electrum-VTC-2.9.3.3/"
     python2 setup.py install --root="$pkgdir/" --optimize=1 --prefix=/usr
     mkdir -p "$pkgdir/usr/share/doc/electrum-vtc/"
     mkdir -p "$pkgdir/usr/share/licenses/electrum-vtc/"
