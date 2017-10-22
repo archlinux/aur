@@ -1,13 +1,13 @@
 pkgbase = python-plotpot
 	pkgdesc = A python module for plotting potentiostat data
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ahpohl/plotpot
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	depends = convpot
+	depends = convpot >= 1.2.0
 	depends = python-numpy
 	depends = python-matplotlib
 	source = python-plotpot-1.1.0::git+https://github.com/ahpohl/plotpot.git#tag=v1.1.0
