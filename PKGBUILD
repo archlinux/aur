@@ -2,7 +2,7 @@
 # Author: Hugo Posnic <hugo.posnic@gmail.com>
 
 pkgname=coulr
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Coulr is a color box to help developers and designers."
 arch=("any")
@@ -10,7 +10,7 @@ url="https://github.com/Huluti/${pkgname}"
 license=('MIT')
 depends=('python' 'libnotify' 'python-gobject' 'gtk3')
 source=("${url}/archive/${pkgver}.tar.gz")
-md5sums=("461cecd85d6c409e0a6aeaaf3e68257e")
+md5sums=("fb41081f33335fd7b54c2388db592923")
 
 package() {
     cd "${srcdir}/Coulr-${pkgver}"
