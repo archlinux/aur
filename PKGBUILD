@@ -1,6 +1,6 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=convpot
-pkgver=1.1.7
+pkgver=1.2.0
 pkgrel=1
 epoch=
 pkgdesc="Convert potentiostat data to a SQLite database"
