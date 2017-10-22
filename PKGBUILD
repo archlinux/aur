@@ -6,7 +6,7 @@
 pkgbase='sat-xmpp-hg'
 pkgname=('sat-xmpp-hg' 'sat-jp-hg' 'sat-primitivus-hg')
 _realname=sat
-pkgver=0.6.1.r2385.39d30cf722cb
+pkgver=0.6.1.r2391.07e1543d6992
 VERSION=0.6.1
 pkgrel=1
 url="http://salut-a-toi.org/"
@@ -55,7 +55,7 @@ package_sat-xmpp-hg(){
 
 package_sat-jp-hg(){
     pkgdesc="Salut à Toi, multi-frontends multi-purposes XMPP client (CLI frontend)"
-    depends=('sat-xmpp' 'python2-gobject' 'python2-progressbar' 'python2-pyinotify' 'python2-babel')
+    depends=('sat-xmpp-hg' 'python2-gobject' 'python2-progressbar' 'python2-pyinotify' 'python2-babel')
 
     cd "$pkgdir"
     install -dm755 usr/bin/
@@ -68,7 +68,7 @@ package_sat-jp-hg(){
 
 package_sat-primitivus-hg(){
     pkgdesc="Salut à Toi, multi-frontends multi-purposes XMPP client (ncurses frontend)"
-    depends=('sat-xmpp' 'python2-gobject' 'python2-urwid>=1.2.0' 'python2-urwid-satext>=0.6.1' 'python2-xlib')
+    depends=('sat-xmpp-hg' 'python2-gobject' 'python2-urwid>=1.2.0' 'python2-urwid-satext>=0.6.1' 'python2-xlib')
 
     cd "$pkgdir"
     install -dm755 usr/bin/
