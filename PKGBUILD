@@ -8,7 +8,7 @@
 
 pkgname=swi-prolog-devel
 pkgver=7.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Prolog environment (development version)'
 arch=('x86_64' 'i686')
 url='http://www.swi-prolog.org/'
@@ -33,7 +33,7 @@ build() {
 
   ./configure --prefix=/usr --with-world
   cd src
-  ./configure --enable-shared --enable-readline --prefix=/usr
+  ./configure --enable-shared --prefix=/usr
 
   make -C ..
 }
