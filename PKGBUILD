@@ -1,4 +1,5 @@
-# Maintainer: Marek Kubica <marek@xivilization.net>
+# Maintainer:  Catalin Hritcu <catalin.hritcu@gmail.com>
+# Contributor: Marek Kubica <marek@xivilization.net>
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
 # Contributor: Nicolas Pouillard <nicolas(dot)pouillard(at)gmail(dot)com>
