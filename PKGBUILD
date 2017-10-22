@@ -2,24 +2,19 @@
 # Contributor: Pierre DOUCET <pierre at equinoxefr.org>
 
 pkgname=pcb2gcode
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="Gerber to gcode file converter" 
 arch=('i686' 'x86_64')
 url="https://github.com/pcb2gcode/pcb2gcode/wiki"
 license=('GPL')
-depends=('gerbv-git')
-source=("https://github.com/pcb2gcode/pcb2gcode/releases/download/v${pkgver}/pcb2gcode-${pkgver}.tar.gz"
-        '0001-Fixed-GCC5-build-errors.patch'
-        'glibmm.patch')
-md5sums=('cacb0d0b7ab58ff1b6b45353bb2ebd55'
-         'ef0e42b4a9173e290845aa6e91a61f34'
-         '8d1ea64839d36b359dfb4ad8131b7e73')
+depends=('boost-libs' 'gtkmm' 'gerbv-git')
+source=("https://github.com/pcb2gcode/pcb2gcode/releases/download/v${pkgver}/pcb2gcode-${pkgver}.tar.gz")
+md5sums=('60fb7e9878f082992a95359356d609b6')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 -i ../0001-Fixed-GCC5-build-errors.patch
-  patch -p1 -i ../glibmm.patch
+
   autoreconf -i
 }
 
