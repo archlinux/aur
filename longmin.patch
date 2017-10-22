@@ -1,0 +1,16 @@
+diff -r 17c7a73cf40a src/femlib/MeshPoint.hpp
+--- a/src/femlib/MeshPoint.hpp	Thu Oct 19 14:08:15 2017 +0100
++++ b/src/femlib/MeshPoint.hpp	Sun Oct 22 22:41:35 2017 +0200
+@@ -2,11 +2,7 @@
+ #define MeshPoint_hpp_
+ //typedef double R;
+ #ifndef LONG_MIN
+-#if sizeof(LONG) == 4
+-# define LONG_MIN -2147483647
+-#elif sizeof(LONG) == 8
+-# define LONG_MIN -9223372036854775807
+-#endif
++#define LONG_MIN -9223372036854775807
+ #endif
+ namespace  Fem2D {
+ const long notaregion=LONG_MIN;    
