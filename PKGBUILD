@@ -2,7 +2,7 @@
 # Contributor: Andrew Rabert <draje@nullsum.net>
 
 pkgname=emby-server-dev-unlocked
-pkgver=3.2.33.12
+pkgver=3.2.33.17
 pkgrel=1
 pkgdesc='Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ source=("emby-server-${pkgver}.tar.gz::https://github.com/MediaBrowser/Emby/arch
         'emby-server.conf'
         'emby-server.service')
 backup=('etc/conf.d/emby-server')
-sha256sums=('f90b92f5248a31907e9e5e0e0e9519770ad391ce4ec4cda32111971a248834df'
-            'a37316c15fd1ede805f75b3c1f27a0f151b4ebd2d40bd6ad167463b13957b9df'
+sha256sums=('9610486a9ed347fcc37fc089ac32f1d7ac93c8c705ff5099131982db4b04746d'
+            '9ba68c0239070d5bd1611083e835cfd52f1f1812397ef66d4f865e7216d824b6'
             '7b1974f7bba8ac4b76e51ef7fe1257d165c7c4abbd0915e192391336048a3d74'
             'b25bf83a0ab371aff3b13b82f7af71b51bfe6d7e51eb8a8a3dd8f0774ffce6a5'
             'c9ad78f3e2f0ffcb4ee66bb3e99249fcd283dc9fee17895b9265dc733288b953'
