@@ -1,6 +1,6 @@
 pkgbase = pbt
 	pkgdesc = Bullettrain prompt builder written in Python
-	pkgver = 1.0.11
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/jtyr/pbt
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = pbt
 	depends = python
 	optdepends = nerd-fonts-complete
 	conflicts = pbt-git
-	source = https://github.com/jtyr/pbt/archive/v1.0.11.tar.gz
-	sha256sums = 10a3c3f9f43634897aaae04fee28cc7644a7ce82c48385461884973b60592bfd
+	source = https://github.com/jtyr/pbt/archive/v1.1.0.tar.gz
+	sha256sums = 19d63202c315b383b04a145613ea40759f887221c4e8f4b8fcdbd7536a502368
 
 pkgname = pbt
 
