@@ -1,6 +1,6 @@
 pkgbase = nginxbeautifier
 	pkgdesc = Nginx config formatter and beautifier.
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://nginxbeautifier.com
 	arch = any
