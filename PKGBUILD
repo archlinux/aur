@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=xmedcon  
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="open source toolkit for medical image conversion"
 url="http://xmedcon.sourceforge.net/"
 arch=('i686' 'x86_64')
@@ -11,14 +11,21 @@ source=(http://downloads.sourceforge.net/project/$pkgname/XMedCon-Source/$pkgver
 md5sums=('59c9211857790c2453ce5d13f8743a90')
 options=('!libtool')
 
+prepare() {
+  cd $pkgname-$pkgver
+  sed -i 's+/usr/etc+/etc+' Makefile
+}
+
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc \
-    --localstatedir=/var --libdir=/usr/lib
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr --libdir=/usr/lib
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "$pkgdir"/usr/etc/xmedconrc "$pkgdir"/etc/xmedconrc
+  rm "$pkgdir"/usr/etc/xmedconrc
+  rmdir "$pkgdir"/usr/etc
 }
