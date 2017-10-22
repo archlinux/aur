@@ -1,4 +1,5 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: David Birks <david@tellus.space>
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Alexander Bachler Jansson <alexander.bachler.jansson@gmail.com>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 # Contributor: Simon Morgan <simon@16hz.net>
