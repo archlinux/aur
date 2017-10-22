@@ -1,6 +1,6 @@
 pkgbase = hyperd
 	pkgdesc = Hypervisor-agnostic Docker Runtime
-	pkgver = 0.7.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://www.hypercontainer.io/
 	arch = i686
@@ -14,8 +14,10 @@ pkgbase = hyperd
 	optdepends = hyperstart: boot files for hyperd instances
 	options = !strip
 	options = !emptydirs
-	source = hyperd-0.7.0.tar.gz::https://github.com/hyperhq/hyperd/archive/v0.7.0.tar.gz
-	sha256sums = e79d4e6aebe01d2117e981050ecb88dd24f8a9e45e2fbe1a558bcd1ee5d90b88
+	source = hyperd-0.8.1.tar.gz::https://github.com/hyperhq/hyperd/archive/v0.8.1.tar.gz
+	source = btrfs-progs-4.5.diff
+	sha256sums = 4b82884cbc75115006000f755e1ad5833309911c6d020977d874dffb0882628f
+	sha256sums = 12fe84f2711fdcb35811765d5efb117e947a893c11fdc2e6f1e060e63917ee9d
 
 pkgname = hyperd
 
