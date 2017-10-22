@@ -10,7 +10,7 @@ url=https://github.com/tiliado/nuvolaruntime/
 license=('custom:BSD')
 provides=('nuvolaplayer' 'nuvolarutime')
 conflicts=('nuvolaplayer' 'nuvolaruntime')
-depends=('python' 'vala' 'diorite>=4.7.0' 'glib2' 'ruby-gio2' 'python-gobject2' 'gtk3' 'json-glib' 'webkit2gtk' 'libnotify' 'gstreamer' 'libdri2-git' 'libdrm' 'webkit2gtk-mse')
+depends=('python' 'vala' 'diorite>=4.7.0' 'glib2' 'ruby-gio2' 'python-gobject2' 'gtk3' 'json-glib' 'libnotify' 'gstreamer' 'libdri2-git' 'libdrm' 'webkit2gtk-mse')
 makedepends=('scour' 'dri2proto')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
 md5sums=('d251e4928690bf46dedc8c02a072c836')

@@ -15,7 +15,6 @@ pkgbase = nuvolaruntime-mse
 	depends = python-gobject2
 	depends = gtk3
 	depends = json-glib
-	depends = webkit2gtk
 	depends = libnotify
 	depends = gstreamer
 	depends = libdri2-git
