@@ -1,8 +1,8 @@
-# Maintainer: crvv <crvv.pku@gmail.com>
+# Maintainer: Wèi Cōngruì <crvv.pku@gmail.com>
 
 pkgbase=postgresql-beta
 pkgname=('postgresql-beta-libs' 'postgresql-beta-docs' 'postgresql-beta')
-pkgver=10rc1
+pkgver=10.0
 _majorver=10
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
@@ -16,7 +16,7 @@ source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar
         postgresql.logrotate
         postgresql.service
         postgresql-check-db-dir)
-sha256sums=('ebdb44dccb64a31c9c524f996121e7d58c21045826d6c36e3a5ea46afbb2445b'
+sha256sums=('712f5592e27b81c5b454df96b258c14d94b6b03836831e015c65d6deeae57fd1'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
