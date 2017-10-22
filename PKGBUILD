@@ -2,8 +2,8 @@
 # Contributor: Thomas Nordenmark <t.nordenmark@gmail.com>
 
 pkgname=compton-conf
-pkgver=0.2.1
-pkgrel=3
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='A graphical configuration tool for Compton X composite manager'
 arch=('i686' 'x86_64')
 url='https://github.com/lxde/compton-conf'
@@ -15,9 +15,8 @@ provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
 
 source=(
-	# Mirror
-	#"https://github.com/lxde/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
-	"https://downloads.lxqt.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
+	#"https://downloads.lxqt.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
+	"https://github.com/lxde/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
 	'desktop_entry.patch'
 )
 validpgpkeys=(
@@ -25,7 +24,7 @@ validpgpkeys=(
 	'7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3'
 )
 sha256sums=(
-	'f97a6d992adff317614785229d14eefa5dff350ecd5d608d6a30ee993adfa1dd'
+	'7cd239d7542816ee002e6ab2b7e1211102e5ddc6588cc8eaf3d7c0462ff1e6f7'
 	'SKIP' # GPG signature
 	'c5ba13d98faae4efe2ec4a5aff8def3a35fae4f2762a6395847ae8734964d5e3'
 )
