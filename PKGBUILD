@@ -2,13 +2,13 @@
 # Contributor: Alad <alad@archlinux.info>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=wmutils-git
-pkgver=1.1.r6.g23253bf
+pkgver=1.4.r0.gdd268ec
 pkgrel=1
 pkgdesc="A set of tools for X windows manipulation."
 url="https://github.com/wmutils/core"
 arch=('i686' 'x86_64')
 license=('ISC')
-depends=('libxcb' 'xcb-util-wm' 'libwm-git')
+depends=('libxcb' 'xcb-util' 'xcb-util-wm' 'libwm-git')
 makedepends=('git')
 conflicts=('wmutils')
 source=("$pkgname::git+https://github.com/wmutils/core.git"
