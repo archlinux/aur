@@ -3,7 +3,7 @@
 
 pkgname=octave-hg
 pkgver=4.3.0+24165.ef59a196c155
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ build() {
   [[ -d "$srcdir"/${_hgrepo}-local ]] && rm -rf $srcdir/${_hgrepo}-local
   cp -r "$srcdir"/${_hgrepo} "$srcdir"/${_hgrepo}-local
   cd "$srcdir"/${_hgrepo}-local
-  sed -i '317,319d' bootstrap
+
   ./bootstrap --gnulib-srcdir="$srcdir"/gnulib 
   mkdir build
   cd build
