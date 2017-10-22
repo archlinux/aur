@@ -2,8 +2,7 @@
 # Contributor: Michael Duell <michael.duell@rub.de> PGP-Fingerprint: FF8C D50E 66E9 5491 F30C  B75E F32C 939C 5566 FF77
 
 pkgbase=enigmail-bin
-#pkgname=(icedove-${pkgbase} thunderbird-${pkgbase})
-pkgname=(icedove-${pkgbase})
+pkgname=(icedove-${pkgbase} thunderbird-${pkgbase})
 _pkg_main_ver=1.9
 pkgver=${_pkg_main_ver}.8.3
 pkgrel=2

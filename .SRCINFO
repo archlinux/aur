@@ -16,3 +16,5 @@ pkgbase = enigmail-bin
 
 pkgname = icedove-enigmail-bin
 
+pkgname = thunderbird-enigmail-bin
+
