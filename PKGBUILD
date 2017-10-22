@@ -1,7 +1,7 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=ghc-pristine
 pkgver=8.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Symlinks to GHC with only boot libs, useful for building static binaries"
 arch=(any)
 url=https://www.haskell.org/ghc/
@@ -59,5 +59,5 @@ package() {
     done
     ghc-pkg -f "$pkgdir$prefix/lib/package.conf.d" recache
     mkdir -p "$pkgdir/usr/share/licenses/ghc-pristine"
-    ln -s ../ghc/LICENSE "$pkgdir/usr/share/licenses/ghc-pristine"
+    ln -fs ../ghc-libs/LICENSE "$pkgdir/usr/share/licenses/ghc-pristine"
 }
