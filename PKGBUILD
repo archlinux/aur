@@ -8,7 +8,7 @@ _lang=en-US
 
 pkgname=openoffice
 _vmaj=4
-_vmin=1.3
+_vmin=1.4
 pkgver=$_vmaj.$_vmin
 pkgrel=1
 _path=opt/$pkgname$_vmaj
@@ -41,8 +41,8 @@ options=(!strip docs)
 _durl="http://apache.org/dist/$pkgname/$pkgver/binaries/$_lang/Apache_OpenOffice_${pkgver}_Linux_x86"
 source_i686=("v$pkgver-i686::${_durl}_install-rpm_en-US.tar.gz")
 source_x86_64=("v$pkgver-x86_64::${_durl}-64_install-rpm_en-US.tar.gz")
-md5sums_i686=('af75e671fce11bd0b8d3e91fef5fae13')
-md5sums_x86_64=('d3f71313aaa04cf2b826ea0d9083c3ac')
+md5sums_i686=('abadda38c04b9f171fb5fbfd096eda71')
+md5sums_x86_64=('a94cd16ed2698ae40942870a9c262287')
 
 _source_dirs=$_lang/RPMS
 
