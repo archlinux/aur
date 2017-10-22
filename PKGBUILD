@@ -2,13 +2,13 @@
 
 pkgname=nuvolaruntime
 pkgver=4.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Nuvola Apps Runtime - Tight integration of web apps with your desktop"
 arch=("any")
 url="https://github.com/tiliado/nuvola-app-google-play-music"
 license=('custom:BSD')
 provides=('nuvolaplayer')
-conflicts=('nuvolaplayer')
+conflicts=('nuvolaplayer' 'nuvolaruntime-mse')
 depends=('python' 'vala' 'diorite>=4.7.0' 'glib2' 'ruby-gio2' 'python-gobject2' 'gtk3' 'json-glib' 'webkit2gtk' 'libnotify' 'gstreamer' 'libdri2-git' 'libdrm')
 makedepends=('scour' 'dri2proto')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
@@ -44,9 +44,14 @@ optdepends=(
 'engine.io-client:			Cross-browser/cross-device bi-directional communication layer for Socket.IO.'
 'unit.js:				Unit testing framework for javascript / Node.js.'
 )
+prepare() {
+cd "$srcdir/${pkgname}-${pkgver}"
+sed 's|usr/share/vala-0\.36|usr/share/vala-0.38|g' -i vapi/webkit2gtk-web-extension-4.0.patch vapi/glib-2.0.patch wscript
+}
+
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    ./waf configure --prefix=/usr --nounity --libdir=/usr/lib --noappindicator --webkitgtk-supports-mse
+    ./waf configure --prefix=/usr --nounity --libdir=/usr/lib --noappindicator
     ./waf build
 }
 
