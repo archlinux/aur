@@ -1,21 +1,25 @@
+# Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 # Contributor: noonov <noonov@gmail.com>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: damir <damir@archlinux.org>
 
 _pkgname=uim
 pkgname=${_pkgname}-git
 pkgver=1.8.0.alpha.r264.gfe60773
 pkgrel=1
 epoch=1
-pkgdesc="A multilingual input method framework"
+pkgdesc='Multilingual input method library'
+url='https://github.com/uim/uim/wiki'
+license=('custom:BSD')
 arch=('i686' 'x86_64')
-url="https://github.com/uim/uim"
-license=('BSD')
-depends=('gtk2')
-makedepends=('git' 'intltool' 'perl' 'ruby' 'librsvg' 'asciidoc' 'ed')
+depends=('libxft' 'libedit' 'm17n-lib')
+makedepends=('intltool' 'gettext' 'gtk2' 'gtk3' 'qt4' 'anthy')
+optdepends=('qt4: immodule and helper applications'
+            'gtk2: immodule and helper applications'
+            'gtk3: immodule and helper applications')
 provides=('uim')
 conflicts=('uim' 'uim-svn')
-install=uim-git.install
 source=("git+https://github.com/uim/uim.git")
-md5sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,21 +27,22 @@ pkgver() {
   git describe --long --tags | sed -r 's/^uim-//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
-  touch -c ${srcdir}/${_pkgname}/scm/json-parser-expanded.scm
-}
-
 build() {
   cd ${srcdir}/${_pkgname}
 
-  ./make-wc.sh --prefix=/usr --libexecdir=/usr/lib/uim
+  ./configure \
+	  --prefix=/usr \
+	  --libexecdir=/usr/lib/uim \
+	  --with-anthy-utf8 \
+	  --with-qt4-immodule \
+	  --with-qt4 \
+	  --with-qt5 \
+
   make
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
-
-  make -j1 DESTDIR=${pkgdir} install
-
-  install -D -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
+  cd "${srcdir}/${_pkgname}"
+  make DESTDIR="${pkgdir}" install -j1 # FS#41112
+  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
