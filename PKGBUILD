@@ -2,12 +2,13 @@
 
 pkgname=cryspmds
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc='CrySP Multidevice Study'
 arch=('any')
 url='https://cryspmds.erinn.io/'
 depends=(
     'java-runtime'
+    'java-openjfx'
     'wireless_tools'
 )
 makedepends=(
