@@ -12,6 +12,7 @@ pkgbase = virt-bootstrap-git
 	depends = skopeo
 	depends = libvirt-sandbox
 	depends = python
+    depends = python2-passlib
 	provides = virt-bootstrap
 	conflicts = virt-bootstrap
 	source = virt-bootstrap-git::git+https://github.com/virt-manager/virt-bootstrap#branch=master
