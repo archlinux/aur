@@ -1,6 +1,6 @@
 pkgbase = pbt-git
 	pkgdesc = Bullettrain prompt builder written in Python
-	pkgver = r43.544b04b
+	pkgver = r46.e837f8f
 	pkgrel = 1
 	url = https://github.com/jtyr/pbt
 	arch = i686
