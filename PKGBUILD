@@ -1,6 +1,8 @@
-# Maintainer: Mark Vainomaa <mikroskeem@mikroskeem.eu>
-pkgname=python-semver
-pkgver=2.6.0
+# Maintainer: Oliver Sherouse <oliver@oliversherouse.com>
+
+_pkgname=semver
+pkgname=python-$_pkgname
+pkgver=2.7.9
 pkgrel=1
 pkgdesc="Python helper for Semantic Versioning (http://semver.org/)"
 arch=("any")
@@ -8,17 +10,11 @@ url="https://pypi.python.org/pypi/semver"
 license=('BSD')
 depends=("python")
 makedepends=("python-setuptools")
-source=("python-semver.tar.gz::https://pypi.python.org/packages/c6/47/54611c019d3fb1b31aee502c4893f56c4a329fb614f785c2af7f5846939a/semver-2.6.0.tar.gz")
-md5sums=("a41da8cb8e8cdd56b281cec901c75a7b")
-
-
-build() {
-    cd "$srcdir/semver-$pkgver"
-    python setup.py build
-}
+source=("https://pypi.python.org/packages/40/56/d1f930872436300b474a447a8042091bd335119f0c58bd8647546d6c3dc0/$_pkgname-$pkgver.tar.gz")
+md5sums=("ef585f84629fd6fd5452bb30b35349c7")
 
 package() {
-    cd "$srcdir/semver-$pkgver"
+    cd "$srcdir/$_pkgname-$pkgver"
     python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
