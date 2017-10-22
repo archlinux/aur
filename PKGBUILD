@@ -3,7 +3,7 @@
 pkgname=firewatch-gog
 _gogver=2.4.0.6
 pkgver=1.06_${_gogver}
-pkgrel=3
+pkgrel=4
 pkgdesc="Firewatch is a single-player first-person mystery set in the Wyoming wilderness."
 arch=('x86_64')
 url="http://www.firewatchgame.com/"
@@ -36,5 +36,6 @@ END
     # Permissions
     find "${pkgdir}/opt/firewatch" -type d -exec chmod 755 {} \;
     find "${pkgdir}/opt/firewatch" -type f -exec chmod 644 {} \;
+    chmod 755 "${pkgdir}/usr/bin/firewatch"
     chmod 755 "${pkgdir}/opt/firewatch/fw.x86_64"
 }
