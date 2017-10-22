@@ -1,9 +1,9 @@
 # Maintainer:  Quentin Retornaz <quentin dot retornaz at yahoo dot fr>
 
 pkgname=outlast-gog
-pkgver=1.01_2.0.0.2
 _gogver=2.0.0.2
-pkgrel=4
+pkgver=1.01_${_gogver}
+pkgrel=5
 pkgdesc="Hell is an experiment you can't survive in Outlast."
 arch=('i686' 'x86_64')
 url="http://www.redbarrelsgames.com/"
@@ -28,11 +28,10 @@ package() {
         rm "${pkgdir}"/opt/outlast/Binaries/Linux/OLGame.i686
         rm -r "${pkgdir}"/opt/outlast/Binaries/Linux/lib/i686-pc-linux-gnu
     fi
-    mv "${pkgdir}"/opt/outlast/Binaries/Linux/OLGame{.${CARCH},}
 
     # Install Binaries/Launchers
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/opt/outlast/Binaries/Linux/OLGame" \
+    ln -s "/opt/outlast/Binaries/Linux/OLGame.${CARCH}" \
           "${pkgdir}/usr/bin/outlast"
 
     # Desktop Integration
@@ -44,5 +43,5 @@ package() {
     # Permissions
     find "${pkgdir}/opt/outlast" -type d -exec chmod 755 {} \;
     find "${pkgdir}/opt/outlast" -type f -exec chmod 644 {} \;
-    chmod 755 "${pkgdir}/opt/outlast/Binaries/Linux/OLGame"
+    chmod 755 "${pkgdir}/opt/outlast/Binaries/Linux/OLGame.${CARCH}"
 }
