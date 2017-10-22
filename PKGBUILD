@@ -13,10 +13,10 @@ makedepends=('git' 'intltool' 'pkgconfig' 'cmake')
 provides=('libsde-utils-gtk2' )
 conflicts=('libsde-utils-gtk2')
 
-source=('git+git://github.com/sde-gui/libsde-utils-gtk.git')
+source=('git+git://github.com/sde-gui/libsde-utils-jansson.git')
 md5sums=('SKIP')
 
-_gitname="libsde-utils-gtk"
+_gitname="libsde-utils-jansson"
 
 pkgver() {
   date +%Y%m%d%H%M
