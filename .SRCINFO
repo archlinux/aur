@@ -1,0 +1,14 @@
+pkgbase = ruby-ruby_dep
+	pkgdesc = Automatically helps determine supported Rubies based on .travis.yml file.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/e2/ruby_dep
+	arch = any
+	license = MIT
+	makedepends = ruby-bundler>=1.11
+	depends = ruby
+	options = !emptydirs
+	source = ruby-ruby_dep-1.5.0.tar.gz::https://github.com/e2/ruby_dep/archive/v1.5.0.tar.gz
+	sha512sums = 75baa2bcccdde98ba9440bfc4c578c7efca0287e2a08d850070ab26089fc9256aaf553e9e20281294370c197ddc180a69271f96533680fb2bbbca436583b7d5e
+
+pkgname = ruby-ruby_dep
