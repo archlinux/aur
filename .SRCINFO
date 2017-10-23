@@ -1,0 +1,29 @@
+pkgbase = chkit
+	pkgdesc = The Containerum CLI
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://containerum.com/documentation
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	source = https://github.com/containerum/chkit/raw/2.1.5/LICENSE
+	md5sums = bfa4ddd8612478bdf362161209972c9b
+	source_i686 = https://github.com/containerum/chkit/releases/download/2.1.5/chkit_linux_x86_v2.1.5.tar.gz
+	md5sums_i686 = 43c014f6ea407491831418c482fe58d7
+	source_x86_64 = https://github.com/containerum/chkit/releases/download/2.1.5/chkit_linux_x64_v2.1.5.tar.gz
+	md5sums_x86_64 = 6c91816a28252f8ac2d7854906eb27af
+	source_arm = https://github.com/containerum/chkit/releases/download/2.1.5/chkit_linux_arm_v2.1.5.tar.gz
+	md5sums_arm = 78aa5c144494568f0afb421598d4b823
+	source_armv6h = https://github.com/containerum/chkit/releases/download/2.1.5/chkit_linux_arm_v2.1.5.tar.gz
+	md5sums_armv6h = 78aa5c144494568f0afb421598d4b823
+	source_armv7h = https://github.com/containerum/chkit/releases/download/2.1.5/chkit_linux_arm_v2.1.5.tar.gz
+	md5sums_armv7h = 78aa5c144494568f0afb421598d4b823
+	source_aarch64 = https://github.com/containerum/chkit/releases/download/2.1.5/chkit_linux_arm_v2.1.5.tar.gz
+	md5sums_aarch64 = 78aa5c144494568f0afb421598d4b823
+
+pkgname = chkit
+
