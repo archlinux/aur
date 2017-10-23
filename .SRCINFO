@@ -31,7 +31,9 @@ pkgbase = ros-indigo-roscpp
 	depends = ros-indigo-rosgraph-msgs
 	depends = ros-indigo-xmlrpcpp
 	source = ros-indigo-roscpp-1.11.19-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/roscpp/1.11.19-0.tar.gz
+	source = readv.patch
 	sha256sums = b234e626e2013307ac8a456cbfa41a55e5d8e0e2c812431755828b29fee81255
+	sha256sums = 06c2e8446233a55d8be74ea24f977af923038053cd02ed05118e89644358d845
 
 pkgname = ros-indigo-roscpp
 

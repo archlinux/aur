@@ -44,17 +44,27 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-roscpp-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/roscpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b234e626e2013307ac8a456cbfa41a55e5d8e0e2c812431755828b29fee81255')
+source=(
+  "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/roscpp/${pkgver}-${_pkgver_patch}.tar.gz"
+  "readv.patch"
+)
+sha256sums=(
+  'b234e626e2013307ac8a456cbfa41a55e5d8e0e2c812431755828b29fee81255'
+  '06c2e8446233a55d8be74ea24f977af923038053cd02ed05118e89644358d845'
+)
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/indigo/setup.bash ] && source /opt/ros/indigo/setup.bash
 
+  # Apply patch
+  cd "${srcdir}/${_dir}"
+  patch -p1 -i "${srcdir}"/readv.patch
+
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}

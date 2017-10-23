@@ -1,0 +1,13 @@
+diff --git a/src/libros/transport/transport_udp.cpp b/src/libros/transport/transport_udp.cpp
+index 848893b..2cc3d7f 100644
+--- a/src/libros/transport/transport_udp.cpp
++++ b/src/libros/transport/transport_udp.cpp
+@@ -40,7 +40,7 @@
+ #include <boost/bind.hpp>
+
+ #include <fcntl.h>
+-#if defined(__APPLE__)
++#if defined(__APPLE__) || defined(__linux__)
+   // For readv() and writev()
+   #include <sys/types.h>
+   #include <sys/uio.h>
