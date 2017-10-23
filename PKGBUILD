@@ -1,15 +1,15 @@
 # Maintainer: Jon Eyolfson <jon@eyolfson.com>
 pkgname=emacs-evil
 _emacs_pkgname=evil
-pkgver=1.2.12
-pkgrel=2
+pkgver=1.2.13
+pkgrel=1
 pkgdesc="An extensible vi layer for Emacs"
 url="https://www.emacswiki.org/emacs/Evil"
 arch=('any')
 license=('GPLv2')
 depends=('emacs' 'emacs-undo-tree')
 source=("https://github.com/emacs-evil/evil/archive/${pkgver}.tar.gz")
-sha256sums=('035d2257e39819dc769ee069ef163dc22edfa40eb81842967539c2111475f7b8')
+sha256sums=('1045be9cd46f77113421a07c7ad6d1af629e152b0698cdc981d5305dbbfec3fc')
 
 build() {
   cd "${srcdir}/evil-${pkgver}"
