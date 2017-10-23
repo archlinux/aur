@@ -1,37 +1,32 @@
-# $Id: PKGBUILD 105614 2014-02-11 18:34:38Z ttoepper $
-# Maintainer: Thorsten Töpper <atsutane-tu@freethoughts.de>
+# Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
+# Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 # Contributor: Philipp Robbel <robbel@gmail.com>
 
 pkgname=fswebcam
 pkgver=20140113
-pkgrel=1
-pkgdesc="Tiny and flexible webcam app."
+pkgrel=2
+pkgdesc='Neat and simple webcam app'
 arch=('i686' 'x86_64')
-url="http://www.firestorm.cx/fswebcam"
-license=('GPL')
+url="https://www.sanslogic.co.uk/fswebcam/"
+license=('GPL2')
 depends=('gd')
-backup=("etc/$pkgname.conf")
-source=("$url/files/$pkgname-$pkgver.tar.xz")
-md5sums=('1bfdb21904e816f100370ec8f4df986b')
-sha1sums=('6c1f3e3c8cf3189f0e2a5d4f8c9534c855c02e0a')
+backup=("etc/${pkgname}.conf")
+source=("${url}/files/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('3ee389f72a7737700d22e0c954720b1e3bbadc8a0daad6426c25489ba9dc3199')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="${pkgdir}" install
 
-  # Install configuration file
-  # Commented to avoid problems with many devices, thank you SpepS
-  sed "s_^_#_g" -i example.conf
-  install -Dm644 example.conf "$pkgdir/etc/fswebcam.conf"
+  sed -ri 's/^([^#])/#\1/g' example.conf
+  install -Dm644 example.conf "${pkgdir}"/etc/fswebcam.conf
 }
-
-# vim:ts=2:sw=2:expandtab
