@@ -15,9 +15,11 @@ depends=('openafs')
 makedepends=('linux-headers')
 conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
-source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2)
+source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
+        0001-Correct-m4-conditionals-in-curses.m4.patch)
 install=openafs-modules.install
-sha256sums=('aed896b0f598e3033e9ceb2a1eae24addff9ec0bb2d713ab63945a449ded3a5a')
+sha256sums=('aed896b0f598e3033e9ceb2a1eae24addff9ec0bb2d713ab63945a449ded3a5a'
+            '588cc4b220b7bd4783ffb44d9bfd490a67d1d4a58da20b952151fd842ca8f18d')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -27,8 +29,11 @@ _kernelver=$(cat ${_extramodules}/version)
 prepare() {
   cd ${srcdir}/${_srcname}-${pkgver}
 
+  # Fix curses checks during configure (https://gerrit.openafs.org/12740/)
+  patch -p1 < ${srcdir}/0001-Correct-m4-conditionals-in-curses.m4.patch
+
   # Only needed when changes to configure were made
-  # ./regen.sh -q
+  ./regen.sh -q
 }
 
 build() {
