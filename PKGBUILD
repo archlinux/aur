@@ -4,13 +4,13 @@
 pkgname=bin32-epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Enhanced PSX emulator (32-bit)"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
-depends_i686+=(gtk3 sdl_ttf lib32-libtinfo libcurl-compat)
-#depends=(gtk3 sdl_ttf libtinfo libcurl-compat)
-depends_x86_64=(lib32-gtk3 lib32-libxt lib32-sdl_ttf lib32-ncurses5-compat-libs lib32-libtinfo lib32-libcurl-compat lib32-libcanberra-gtk3)
+depends_i686+=(gtk3 sdl_ttf bash libcurl-compat ncurses)
+depends=(bash)
+depends_x86_64=(lib32-gtk3 lib32-libxt lib32-sdl_ttf lib32-ncurses5-compat-libs lib32-ncurses lib32-libcurl-compat lib32-libcanberra-gtk3)
 license=('unknown')
 install=${pkgname}.install
 options=(!strip)
@@ -42,6 +42,6 @@ package()
   ln -sf "$HOME/.${pkgname}rc" -T "${pkgdir}/opt/${pkgname}/.${pkgname}rc"
 
   # libtinfo and ncurses crap
-  ln -s /usr/lib32/libncursesw.so.6 "$pkgdir"/opt/"$pkgname"/libncurses.so.5
-  ln -s /usr/lib32/libtinfo.so.6 "$pkgdir"/opt/"$pkgname"/libtinfo.so.5
+  #ln -s /usr/lib32/libncursesw.so.6 "$pkgdir"/opt/"$pkgname"/libncurses.so.5
+  #ln -s /usr/lib32/libtinfo.so.6 "$pkgdir"/opt/"$pkgname"/libtinfo.so.5
 }
