@@ -4,7 +4,7 @@ pre_install(){
 
 post_install(){
     docker pull qzwlecr/netease-cloud-music-docker-version
-    echo "[WARNING!!]Please use \"usermod -a -G docker YOURNAME\" to make sure you have access to docker"
+    echo "[WARNING!]Please use \"usermod -a -G docker USERNAME\" to make sure you can access docker-daemon"
 }
 
 pre_upgrade(){
