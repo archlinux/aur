@@ -1,8 +1,8 @@
 # Maintainer:  Michael Stergianis <michaelstergianis at gmail dot com>
 pkgname=google-java-format-git
 pkgdesc="Reformats Java source code to comply with Google Java Style"
-pkgrel=2
-pkgver=r361.b391a04
+pkgrel=1
+pkgver=r400.830daee
 arch=('any')
 url="https://github.com/google/google-java-format"
 license=('Apache')
