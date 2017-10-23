@@ -1,0 +1,35 @@
+pkgbase = sciter-notes-bin
+	pkgdesc = Evernote-like app based on Sciter SDK
+	pkgver = 20171023
+	pkgrel = 1
+	url = https://notes.sciter.com
+	arch = x86_64
+	license = custom
+	depends = at-spi2-core
+	depends = expat
+	depends = graphite
+	depends = gtk3
+	depends = harfbuzz
+	depends = libffi
+	depends = libgcrypt
+	depends = libpng
+	depends = libsystemd
+	depends = libthai
+	depends = libxau
+	depends = libxcb
+	depends = libxdmcp
+	depends = libxext
+	depends = libxfixes
+	depends = libxrender
+	depends = lz4
+	depends = pcre
+	depends = pixman
+	depends = xz
+	noextract = license.htm
+	source = https://notes.sciter.com/distributions/sciter-notes.tar.gz
+	source = https://raw.githubusercontent.com/c-smile/sciter-sdk/master/license.htm
+	md5sums = 9ad614ffe871b773622f62ff0c62fddd
+	md5sums = 7b76bd57afb126e7d2d89ecbcc4c2717
+
+pkgname = sciter-notes-bin
+
