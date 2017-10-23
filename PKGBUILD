@@ -1,14 +1,14 @@
 # Maintainer: M0Rf30
 
 pkgname=simonpi-git
-pkgver=58.199261f
+pkgver=59.e978a2b
 pkgrel=1
 epoch=
 pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your laptop"
 arch=(any)
 url="https://github.com/M0Rf30/simonpi"
 license=('GPL')
-depends=('bridge-utils' 'coreutils' 'dosfstools' 'libarchive' 'dnsmasq' 'e2fsprogs' 'util-linux' 'iproute2' 'iptables' 'qemu-arch-extra' 'wget')
+depends=('bridge-utils' 'coreutils' 'dnsmasq' 'dosfstools' 'e2fsprogs' 'iproute2' 'iptables' 'libarchive' 'qemu-arch-extra' 'sudo' 'util-linux' 'wget')
 makedepends=('git')
 install=
 source=("simonpi::git+https://github.com/M0Rf30/simonpi.git")
@@ -21,9 +21,9 @@ pkgver() {
 package() {
 	cd $srcdir/simonpi
 	install -Dm755 simonpi $pkgdir/usr/bin/simonpi
-	install -Dm755 simonpiemu/runemu $pkgdir/opt/simonpi/runemu
-        install -Dm755 simonpiemu/qemu-kernel-simonpi $pkgdir/opt/simonpi/qemu-kernel-simonpi 
-	sed -i "s/OPT=/OPT=opt/g" $pkgdir/usr/bin/simonpi
+	install -Dm755 simonpiemu/runemu $pkgdir/opt/simonpiemu/runemu
+        install -Dm755 simonpiemu/qemu-kernel-simonpi $pkgdir/opt/simonpiemu/qemu-kernel-simonpi 
+	sed -i "s/OPT=./OPT=\/opt/g" $pkgdir/usr/bin/simonpi
 }
 
 md5sums=('SKIP')
