@@ -1,0 +1,17 @@
+pkgbase = web-hosting-manager
+	pkgdesc = A tutorial app showcasing how to create and manage web services for Public ID on SAFE Network.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/maidsafe/safe_examples
+	arch = i686
+	arch = x86_64
+	groups = maidsafe
+	license = GPL3
+	makedepends = nvm
+	makedepends = yarn
+	depends = safe-browser
+	source = https://github.com/maidsafe/safe_examples/archive/alpha-2.tar.gz
+	md5sums = 9f2fd11606650443355a3641e8ba8cd6
+
+pkgname = web-hosting-manager
+
