@@ -27,13 +27,15 @@ source=(http://openafs.org/dl/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
         0002-Add-configure-option-to-not-install-kauth.patch
         0003-Do-not-install-kauth-manpages-when-kauth-is-disabled.patch
         0004-vol-add-missing-include-of-stdint.h-to-volinodes.h.patch
+        0005-Correct-m4-conditionals-in-curses.m4.patch
         tmpfiles.d-openafs.conf)
 sha256sums=('aed896b0f598e3033e9ceb2a1eae24addff9ec0bb2d713ab63945a449ded3a5a'
             'a8b2482eaa3bd5a3521b8dfde69337e5e01b1b1626c0a2e0a489049834a2983a'
-            '40c0ff1adf212dec31976ff61d7ce17bae13aeb4d5cb7d1a2b64e4a7e790bf1e'
-            'e8dd642aafd9c51e5e57e4d2d5a090582053ce8f8e1f79be2d1451ae4de32945'
-            '3de1fac0451d74ba3b6b716ec6009cb72f518e9b09b51968c7a792bef1ef298f'
-            'e0afbd602267b36d893610d37900446f5b42bd780720d1ed339c7c2de8a47953'
+            'fd1405e9f439c3b38d66cfc3eb824eaccada749bfe1255c2d867dbc29db3cd16'
+            '178c63aa0e92a96a4522c0349e4afe4426b0b5f566254c22a1ac774850148593'
+            '01671cee2ca3e9c42e1b5860c8373e55dd7794b8291486f8659c51e4bd4ceddc'
+            '88303daac553f2a3d24969a8dbea87bd70807b2267d4437092cba60968ddf2a5'
+            '7020a99bbb620ca53b24c793413a0579edb61f749f487c4b9325e7ed76aee14c'
             '5ef549180d1ac4e9530b65df7ddbdc1eceac6d6d6398fb2f32b06e96c1d9b5f0')
 
 # If you need the kauth tools set this to 1. But be aware that these tools
@@ -52,6 +54,9 @@ prepare() {
 
   # Fix missing include of stdint.h (under review: https://gerrit.openafs.org/12724/)
   patch -p1 < ${srcdir}/0004-vol-add-missing-include-of-stdint.h-to-volinodes.h.patch
+
+  # Fix curses checks during configure (https://gerrit.openafs.org/12740/)
+  patch -p1 < ${srcdir}/0005-Correct-m4-conditionals-in-curses.m4.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q

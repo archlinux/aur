@@ -1,7 +1,7 @@
 From 0de03c2765139142e156550cabd4757da9958500 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <lass@mail.uni-paderborn.de>
 Date: Tue, 12 Sep 2017 19:33:15 +0200
-Subject: [PATCH 4/4] vol: add missing include of stdint.h to volinodes.h
+Subject: [PATCH 4/5] vol: add missing include of stdint.h to volinodes.h
 
 volinodes.h requires stdint.h for use of uintptr_t:
 
@@ -37,5 +37,5 @@ index 181b441d9..2dec0ceeb 100644
  /* Used by vutil.c and salvager.c */
  
 -- 
-2.14.1
+2.14.2
 
