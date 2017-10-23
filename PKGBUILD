@@ -2,12 +2,12 @@
 
 pkgname=udpspeeder-git
 _gitname=UDPspeeder
-pkgver=v2@20171021.0.r16.g9714332
+pkgver=v2@20171021.0.r18.g7cf14a3
 pkgrel=1
 pkgdesc="Improve your Network Quality on a High-latency Lossy Link by using Forward Error Correction"
 arch=('i686' 'x86_64')
 url="https://github.com/wangyu-/UDPspeeder"
-license=('GPL3')
+license=('MIT')
 depends=()
 makedepends=('git')
 optdepends=('openvpn: tunnel TCP/ICMP')
@@ -35,4 +35,5 @@ build() {
 package() {
   cd "$srcdir/$_gitname"
   install -Dm755 speederv2 "$pkgdir/usr/bin/speederv2"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/udpspeeder-git/LICENSE.md"
 }
