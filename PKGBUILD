@@ -2,7 +2,7 @@
 
 pkgname=cryspmds
 pkgver=1
-pkgrel=5
+pkgrel=6
 pkgdesc='CrySP Multidevice Study'
 arch=('any')
 url='https://cryspmds.erinn.io/'
@@ -18,7 +18,7 @@ optdepends=(
     'gnome-shell-extension-topicons-plus: restore system tray on GNOME (application requires a system tray to run)'
 )
 source=('https://cryspmds.erinn.io/dl/cryspmds.deb' 'SystemTrayIsSupported.java')
-sha256sums=('e49985b80ee05d026bdd7afaeead2c86ebb673b2ca00fb4bd7a1843dbcd4f788' 'eea3b1e190509832d3a80f7cff3fd648c2f0d2625b1ed41e7046424a79a5b8ee')
+sha256sums=('8b84d3bb273daaa8398a823d767c242c7b2b546ea33c41613978cf48890b57ad' 'eea3b1e190509832d3a80f7cff3fd648c2f0d2625b1ed41e7046424a79a5b8ee')
 install=$pkgname.install
 
 prepare() {
