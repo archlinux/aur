@@ -2,19 +2,19 @@
 # Co-Maintainer : bl4ckb0x <navkamal90[at]gmail[dot]com>
 
 pkgname=systemc
-pkgver=2.3.1a
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Set of C++ classes and macros which provide an event-driven simulation interface for modeling and describing complex hardware systems."
 url="http://www.accellera.org/downloads/standards/systemc"
 arch=('x86_64' 'i686')
-license=('custom:SystemC Open Source License')
+license=('Apache License Version 2.0, January 2004')
 depends=()
 optdepends=()
 makedepends=()
 conflicts=('systemc')
 provides=('systemc')
 source=("http://accellera.org/images/downloads/standards/systemc/${pkgname}-${pkgver}.tar.gz")
-md5sums=('5cbfcb4fda0009a5015093733bd4f833')
+md5sums=('3e9c8a8b0fb33198d04b45b642db557c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
