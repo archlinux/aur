@@ -1,5 +1,5 @@
 diff --git a/setup.py b/setup.py
-index c6eabbd0..24ed0f8b 100644
+index 25f9d54d..501bfeaa 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -14,34 +14,34 @@ import octoprint_setuptools
@@ -18,7 +18,7 @@ index c6eabbd0..24ed0f8b 100644
  	                  # to some voodoo needed to get large streamed uploads and downloads
  	                  # to work that is probably not completely straightforward and therefore
  	                  # something for post-1.3.0-stable release
- 	"sockjs-tornado>=1.0.2,<1.1",
+ 	"sockjs-tornado>=1.0.3,<1.1",
 -	"PyYAML>=3.10,<3.11",
 -	"Flask-Login>=0.2.2,<0.3",
 -	"Flask-Principal>=0.3.5,<0.4",
@@ -53,10 +53,10 @@ index c6eabbd0..24ed0f8b 100644
  	"feedparser>=5.2.1,<5.3",
  	"chainmap>=1.0.2,<1.1",
 diff --git a/src/octoprint/plugin/types.py b/src/octoprint/plugin/types.py
-index 098688f6..be69dbc6 100644
+index 196a2376..48028a21 100644
 --- a/src/octoprint/plugin/types.py
 +++ b/src/octoprint/plugin/types.py
-@@ -1417,7 +1417,7 @@ class SettingsPlugin(OctoPrintPlugin):
+@@ -1418,7 +1418,7 @@ class SettingsPlugin(OctoPrintPlugin):
  
  		:return: the current settings of the plugin, as a dictionary
  		"""
@@ -65,7 +65,7 @@ index 098688f6..be69dbc6 100644
  		import copy
  
  		data = copy.deepcopy(self._settings.get_all_data(merged=True))
-@@ -1462,8 +1462,8 @@ class SettingsPlugin(OctoPrintPlugin):
+@@ -1463,8 +1463,8 @@ class SettingsPlugin(OctoPrintPlugin):
  					else:
  						node[key] = None
  
@@ -76,13 +76,13 @@ index 098688f6..be69dbc6 100644
  		                  never=lambda: False)
  
  		for level, condition in conditions.items():
-@@ -1937,4 +1937,3 @@ class AppPlugin(OctoPrintPlugin):
+@@ -1938,4 +1938,3 @@ class AppPlugin(OctoPrintPlugin):
  
  	def get_additional_apps(self):
  		return []
 -
 diff --git a/src/octoprint/plugins/announcements/__init__.py b/src/octoprint/plugins/announcements/__init__.py
-index 74bc192a..7f73efb2 100644
+index c064d860..ce776d72 100644
 --- a/src/octoprint/plugins/announcements/__init__.py
 +++ b/src/octoprint/plugins/announcements/__init__.py
 @@ -22,7 +22,7 @@ from collections import OrderedDict
@@ -95,7 +95,7 @@ index 74bc192a..7f73efb2 100644
  class AnnouncementPlugin(octoprint.plugin.AssetPlugin,
                           octoprint.plugin.SettingsPlugin,
 diff --git a/src/octoprint/plugins/corewizard/__init__.py b/src/octoprint/plugins/corewizard/__init__.py
-index d9c61f67..77c89a05 100644
+index bfeb93e7..800a1f7b 100644
 --- a/src/octoprint/plugins/corewizard/__init__.py
 +++ b/src/octoprint/plugins/corewizard/__init__.py
 @@ -9,7 +9,7 @@ __copyright__ = "Copyright (C) 2015 The OctoPrint Project - Released under terms
@@ -121,10 +121,10 @@ index 988d4840..7d5b5f44 100644
  
  import octoprint.plugin
 diff --git a/src/octoprint/plugins/pluginmanager/__init__.py b/src/octoprint/plugins/pluginmanager/__init__.py
-index 47365b2e..03b81a40 100644
+index 64199e9a..8ec6ce90 100644
 --- a/src/octoprint/plugins/pluginmanager/__init__.py
 +++ b/src/octoprint/plugins/pluginmanager/__init__.py
-@@ -15,7 +15,7 @@ from octoprint.server import admin_permission, VERSION
+@@ -16,7 +16,7 @@ from octoprint.server import admin_permission, VERSION
  from octoprint.util.pip import LocalPipCaller, UnknownPip
  
  from flask import jsonify, make_response
@@ -134,10 +134,10 @@ index 47365b2e..03b81a40 100644
  
  import logging
 diff --git a/src/octoprint/plugins/softwareupdate/__init__.py b/src/octoprint/plugins/softwareupdate/__init__.py
-index 507c5593..bd46a054 100644
+index 256db832..520a96b1 100644
 --- a/src/octoprint/plugins/softwareupdate/__init__.py
 +++ b/src/octoprint/plugins/softwareupdate/__init__.py
-@@ -18,7 +18,7 @@ import hashlib
+@@ -21,7 +21,7 @@ from concurrent import futures
  
  from . import version_checks, updaters, exceptions, util, cli
  
@@ -146,7 +146,7 @@ index 507c5593..bd46a054 100644
  
  from octoprint.server.util.flask import restricted_access, with_revalidation_checking, check_etag
  from octoprint.server import admin_permission, VERSION, REVISION, BRANCH
-@@ -549,7 +549,7 @@ class SoftwareUpdatePlugin(octoprint.plugin.BlueprintPlugin,
+@@ -552,7 +552,7 @@ class SoftwareUpdatePlugin(octoprint.plugin.BlueprintPlugin,
  	##~~ TemplatePlugin API
  
  	def get_template_configs(self):
@@ -155,7 +155,7 @@ index 507c5593..bd46a054 100644
  		return [
  			dict(type="settings", name=gettext("Software Update"))
  		]
-@@ -882,7 +882,7 @@ class SoftwareUpdatePlugin(octoprint.plugin.BlueprintPlugin,
+@@ -956,7 +956,7 @@ class SoftwareUpdatePlugin(octoprint.plugin.BlueprintPlugin,
  		result = dict(check)
  
  		if target == "octoprint":
@@ -164,32 +164,32 @@ index 507c5593..bd46a054 100644
  
  			result["displayName"] = to_unicode(check.get("displayName"), errors="replace")
  			if result["displayName"] is None:
-@@ -1074,5 +1074,3 @@ def __plugin_load__():
+@@ -1146,5 +1146,3 @@ def __plugin_load__():
  	__plugin_hooks__ = {
  		"octoprint.cli.commands": cli.commands
  	}
 -
 -
 diff --git a/src/octoprint/server/__init__.py b/src/octoprint/server/__init__.py
-index 94b9bab5..e418d594 100644
+index dbc87c19..fd4a6698 100644
 --- a/src/octoprint/server/__init__.py
 +++ b/src/octoprint/server/__init__.py
 @@ -8,10 +8,10 @@ __copyright__ = "Copyright (C) 2014 The OctoPrint Project - Released under terms
  import uuid
  from sockjs.tornado import SockJSRouter
- from flask import Flask, g, request, session, Blueprint, Request, Response
--from flask.ext.login import LoginManager, current_user
--from flask.ext.principal import Principal, Permission, RoleNeed, identity_loaded, UserNeed
+ from flask import Flask, g, request, session, Blueprint, Request, Response, current_app
+-from flask.ext.login import LoginManager, current_user, session_protected, user_logged_out
+-from flask.ext.principal import Principal, Permission, RoleNeed, identity_loaded, identity_changed, UserNeed, AnonymousIdentity
 -from flask.ext.babel import Babel, gettext, ngettext
 -from flask.ext.assets import Environment, Bundle
-+from flask_login import LoginManager, current_user
-+from flask_principal import Principal, Permission, RoleNeed, identity_loaded, UserNeed
++from flask_login import LoginManager, current_user, session_protected, user_logged_out
++from flask_principal import Principal, Permission, RoleNeed, identity_loaded, identity_changed, UserNeed, AnonymousIdentity
 +from flask_babel import Babel, gettext, ngettext
 +from flask_assets import Environment, Bundle
  from babel import Locale
  from watchdog.observers import Observer
  from watchdog.observers.polling import PollingObserver
-@@ -89,9 +89,9 @@ def on_identity_loaded(sender, identity):
+@@ -97,9 +97,9 @@ def on_identity_loaded(sender, identity):
  		return
  
  	identity.provides.add(UserNeed(user.get_id()))
@@ -200,8 +200,8 @@ index 94b9bab5..e418d594 100644
 +	if user.is_admin:
  		identity.provides.add(RoleNeed("admin"))
  
- def load_user(id):
-@@ -170,8 +170,7 @@ class Server(object):
+ 
+@@ -202,8 +202,7 @@ class Server(object):
  		self._logger = logging.getLogger(__name__)
  		pluginManager = self._plugin_manager
  
@@ -212,7 +212,7 @@ index 94b9bab5..e418d594 100644
  
  		# setup app
 diff --git a/src/octoprint/server/api/__init__.py b/src/octoprint/server/api/__init__.py
-index 35401e45..6d056fe0 100644
+index b74ff63b..3a7e951a 100644
 --- a/src/octoprint/server/api/__init__.py
 +++ b/src/octoprint/server/api/__init__.py
 @@ -10,8 +10,8 @@ import netaddr
@@ -258,7 +258,7 @@ index e0749658..3d5f1f2c 100644
  @api.route("/languages", methods=["GET"])
  @restricted_access
 diff --git a/src/octoprint/server/api/settings.py b/src/octoprint/server/api/settings.py
-index 02880093..b53e889f 100644
+index 5112eca3..eb7ee933 100644
 --- a/src/octoprint/server/api/settings.py
 +++ b/src/octoprint/server/api/settings.py
 @@ -8,7 +8,7 @@ __copyright__ = "Copyright (C) 2014 The OctoPrint Project - Released under terms
@@ -280,11 +280,11 @@ index 02880093..b53e889f 100644
  	else:
  		roles = []
 diff --git a/src/octoprint/server/api/system.py b/src/octoprint/server/api/system.py
-index 058476d3..14a0e084 100644
+index e17bdb78..2a7bbaec 100644
 --- a/src/octoprint/server/api/system.py
 +++ b/src/octoprint/server/api/system.py
-@@ -9,7 +9,7 @@ import logging
- import sarge
+@@ -10,7 +10,7 @@ import sarge
+ import threading
  
  from flask import request, make_response, jsonify, url_for
 -from flask.ext.babel import gettext
@@ -360,28 +360,33 @@ index 73233f5e..fbee5c16 100644
  			apikey = userManager.generateApiKey(username)
  		except users.UnknownUser:
 diff --git a/src/octoprint/server/util/__init__.py b/src/octoprint/server/util/__init__.py
-index 5d202d16..0a084325 100644
+index 5d202d16..cbfde8b4 100644
 --- a/src/octoprint/server/util/__init__.py
 +++ b/src/octoprint/server/util/__init__.py
-@@ -13,6 +13,7 @@ from octoprint.users import ApiUser
+@@ -13,6 +13,8 @@ from octoprint.users import ApiUser
  from octoprint.util import deprecated
  
  import flask as _flask
 +import flask_login
++import flask_principal
  
  from . import flask
  from . import sockjs
-@@ -58,7 +59,7 @@ def loginFromApiKeyRequestHandler():
+@@ -58,9 +60,9 @@ def loginFromApiKeyRequestHandler():
  
  	if apikey and apikey != octoprint.server.UI_API_KEY and not octoprint.server.appSessionManager.validate(apikey):
  		user = get_user_for_apikey(apikey)
 -		if user is not None and _flask.ext.login.login_user(user, remember=False):
+-			_flask.ext.principal.identity_changed.send(_flask.current_app._get_current_object(),
+-			                                           identity=_flask.ext.principal.Identity(user.get_id()))
 +		if user is not None and flask_login.login_user(user, remember=False):
- 			_flask.ext.principal.identity_changed.send(_flask.current_app._get_current_object(),
- 			                                           identity=_flask.ext.principal.Identity(user.get_id()))
++			flask_principal.identity_changed.send(_flask.current_app._get_current_object(),
++			                                           identity=flask_principal.Identity(user.get_id()))
  		else:
+ 			return _flask.make_response("Invalid API key", 401)
+ 
 diff --git a/src/octoprint/server/util/flask.py b/src/octoprint/server/util/flask.py
-index 5f41d661..9fc0defd 100644
+index 87bf9944..7b0aeaa1 100644
 --- a/src/octoprint/server/util/flask.py
 +++ b/src/octoprint/server/util/flask.py
 @@ -8,9 +8,9 @@ __copyright__ = "Copyright (C) 2014 The OctoPrint Project - Released under terms
@@ -397,7 +402,7 @@ index 5f41d661..9fc0defd 100644
  import webassets.updater
  import webassets.utils
  import functools
-@@ -40,7 +40,7 @@ def enable_additional_translations(default_locale="en", additional_folders=None)
+@@ -42,7 +42,7 @@ def enable_additional_translations(default_locale="en", additional_folders=None)
  	import os
  	from flask import _request_ctx_stack
  	from babel import support, Locale
@@ -406,7 +411,7 @@ index 5f41d661..9fc0defd 100644
  
  	if additional_folders is None:
  		additional_folders = []
-@@ -91,7 +91,7 @@ def enable_additional_translations(default_locale="en", additional_folders=None)
+@@ -93,7 +93,7 @@ def enable_additional_translations(default_locale="en", additional_folders=None)
  			return None
  		translations = getattr(ctx, 'babel_translations', None)
  		if translations is None:
@@ -415,7 +420,7 @@ index 5f41d661..9fc0defd 100644
  			translations = support.Translations()
  
  			if str(locale) != default_locale:
-@@ -129,8 +129,8 @@ def enable_additional_translations(default_locale="en", additional_folders=None)
+@@ -131,8 +131,8 @@ def enable_additional_translations(default_locale="en", additional_folders=None)
  			ctx.babel_translations = translations
  		return translations
  
@@ -426,7 +431,7 @@ index 5f41d661..9fc0defd 100644
  
  def fix_webassets_cache():
  	from webassets import cache
-@@ -478,12 +478,12 @@ class OctoPrintFlaskResponse(flask.Response):
+@@ -483,12 +483,12 @@ class OctoPrintFlaskResponse(flask.Response):
  
  def passive_login():
  	if octoprint.server.userManager.enabled:
@@ -440,12 +445,12 @@ index 5f41d661..9fc0defd 100644
 -		flask.ext.principal.identity_changed.send(flask.current_app._get_current_object(), identity=flask.ext.principal.Identity(user.get_id()))
 +	if user is not None and not user.is_anonymous:
 +		flask_principal.identity_changed.send(flask.current_app._get_current_object(), identity=flask_principal.Identity(user.get_id()))
- 		if hasattr(user, "get_session"):
- 			flask.session["usersession.id"] = user.get_session()
+ 		if hasattr(user, "session"):
+ 			flask.session["usersession.id"] = user.session
  		flask.g.user = user
-@@ -505,8 +505,8 @@ def passive_login():
+@@ -510,8 +510,8 @@ def passive_login():
  					user = octoprint.server.userManager.login_user(user)
- 					flask.session["usersession.id"] = user.get_session()
+ 					flask.session["usersession.id"] = user.session
  					flask.g.user = user
 -					flask.ext.login.login_user(user)
 -					flask.ext.principal.identity_changed.send(flask.current_app._get_current_object(), identity=flask.ext.principal.Identity(user.get_id()))
@@ -454,7 +459,7 @@ index 5f41d661..9fc0defd 100644
  					return flask.jsonify(user.asDict())
  		except:
  			logger = logging.getLogger(__name__)
-@@ -1023,7 +1023,7 @@ def admin_validator(request):
+@@ -1028,7 +1028,7 @@ def admin_validator(request):
  	"""
  
  	user = _get_flask_user_from_request(request)
@@ -463,7 +468,7 @@ index 5f41d661..9fc0defd 100644
  		raise tornado.web.HTTPError(403)
  
  
-@@ -1038,7 +1038,7 @@ def user_validator(request):
+@@ -1043,7 +1043,7 @@ def user_validator(request):
  	"""
  
  	user = _get_flask_user_from_request(request)
@@ -472,7 +477,7 @@ index 5f41d661..9fc0defd 100644
  		raise tornado.web.HTTPError(403)
  
  
-@@ -1051,14 +1051,14 @@ def _get_flask_user_from_request(request):
+@@ -1056,14 +1056,14 @@ def _get_flask_user_from_request(request):
  	:return: the user or None if no user could be determined
  	"""
  	import octoprint.server.util
@@ -489,7 +494,7 @@ index 5f41d661..9fc0defd 100644
  
  	return user
  
-@@ -1103,7 +1103,7 @@ def restricted_access(func):
+@@ -1108,7 +1108,7 @@ def restricted_access(func):
  		if settings().getBoolean(["server", "firstRun"]) and settings().getBoolean(["accessControl", "enabled"]) and (octoprint.server.userManager is None or not octoprint.server.userManager.hasBeenCustomized()):
  			return flask.make_response("OctoPrint isn't setup yet", 403)
  
@@ -498,7 +503,7 @@ index 5f41d661..9fc0defd 100644
  
  	return decorated_view
  
-@@ -1201,7 +1201,7 @@ def get_json_command_from_request(request, valid_commands):
+@@ -1206,7 +1206,7 @@ def get_json_command_from_request(request, valid_commands):
  
  ##~~ Flask-Assets resolver with plugin asset support
  
@@ -507,7 +512,7 @@ index 5f41d661..9fc0defd 100644
  
  	def split_prefix(self, ctx, item):
  		app = ctx.environment._app
-@@ -1210,14 +1210,14 @@ class PluginAssetResolver(flask.ext.assets.FlaskResolver):
+@@ -1215,14 +1215,14 @@ class PluginAssetResolver(flask.ext.assets.FlaskResolver):
  				prefix, plugin, name = item.split("/", 2)
  				blueprint = prefix + "." + plugin
  
@@ -525,7 +530,7 @@ index 5f41d661..9fc0defd 100644
  	def resolve_output_to_path(self, ctx, target, bundle):
  		import os
 diff --git a/src/octoprint/server/util/tornado.py b/src/octoprint/server/util/tornado.py
-index 12ba3b9b..8325bcaf 100644
+index 6373733e..3a7c149c 100644
 --- a/src/octoprint/server/util/tornado.py
 +++ b/src/octoprint/server/util/tornado.py
 @@ -29,36 +29,6 @@ import tornado.util
@@ -565,7 +570,7 @@ index 12ba3b9b..8325bcaf 100644
  #~~ WSGI middleware
  
  
-@@ -672,8 +642,10 @@ class CustomHTTPServer(tornado.httpserver.HTTPServer):
+@@ -689,8 +659,10 @@ class CustomHTTPServer(tornado.httpserver.HTTPServer):
  
  	``default_max_body_size`` is the default maximum body size to apply if no specific one from ``max_body_sizes`` matches.
  	"""
@@ -578,7 +583,7 @@ index 12ba3b9b..8325bcaf 100644
  				 decompress_request=False,
  				 chunk_size=None, max_header_size=None,
 diff --git a/src/octoprint/users.py b/src/octoprint/users.py
-index cec5a48f..a99e0582 100644
+index 37bd73f1..741980d5 100644
 --- a/src/octoprint/users.py
 +++ b/src/octoprint/users.py
 @@ -5,8 +5,8 @@ __author__ = "Gina Häußge <osd@foosel.net>"
@@ -592,7 +597,7 @@ index cec5a48f..a99e0582 100644
  from werkzeug.local import LocalProxy
  import hashlib
  import os
-@@ -431,9 +431,9 @@ class User(UserMixin):
+@@ -433,9 +433,9 @@ class User(UserMixin):
  	def asDict(self):
  		return {
  			"name": self._username,
@@ -605,7 +610,7 @@ index cec5a48f..a99e0582 100644
  			"apikey": self._apikey,
  			"settings": self._settings
  		}
-@@ -447,12 +447,15 @@ class User(UserMixin):
+@@ -449,12 +449,15 @@ class User(UserMixin):
  	def get_name(self):
  		return self._username
  
@@ -621,21 +626,12 @@ index cec5a48f..a99e0582 100644
  	def is_admin(self):
  		return "admin" in self._roles
  
-@@ -503,7 +506,7 @@ class User(UserMixin):
+@@ -505,7 +508,7 @@ class User(UserMixin):
  		return True
  
  	def __repr__(self):
 -		return "User(id=%s,name=%s,active=%r,user=%r,admin=%r)" % (self.get_id(), self.get_name(), self.is_active(), self.is_user(), self.is_admin())
 +		return "User(id=%s,name=%s,active=%r,user=%r,admin=%r)" % (self.get_id(), self.get_name(), self.is_active, self.is_user, self.is_admin)
  
- class SessionUser(User):
+ class SessionUser(wrapt.ObjectProxy):
  	def __init__(self, user):
-@@ -535,7 +538,7 @@ class SessionUser(User):
- 		self._user = user
- 
- 	def __repr__(self):
--		return "SessionUser(id=%s,name=%s,active=%r,user=%r,admin=%r,session=%s,created=%s)" % (self.get_id(), self.get_name(), self.is_active(), self.is_user(), self.is_admin(), self._session, self._created)
-+		return "SessionUser(id=%s,name=%s,active=%r,user=%r,admin=%r,session=%s,created=%s)" % (self.get_id(), self.get_name(), self.is_active, self.is_user, self.is_admin, self._session, self._created)
- 
- ##~~ DummyUser object to use when accessControl is disabled
- 
