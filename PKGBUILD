@@ -2,7 +2,7 @@
 
 pkgbase='frotz-git'
 pkgname=('frotz-ncurses-git' 'frotz-dumb-git')
-pkgver=2.44.r33.ga98137e
+pkgver=2.44.r188.g869c99e
 pkgrel=1
 pkgdesc='Z-machine interpreter for interactive fiction games'
 
