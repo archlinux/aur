@@ -1,6 +1,6 @@
 pkgbase = phpbrew
 	pkgdesc = Brew & manage PHP versions in pure PHP at HOME
-	pkgver = 1.22.8
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = http://phpbrew.github.io/phpbrew/
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = phpbrew
 	depends = readline
 	provides = phpbrew
 	conflicts = phpbrew
-	source = https://github.com/phpbrew/phpbrew/raw/1.22.8/phpbrew
-	md5sums = 152b25c1ab39548c968a8b78e8defcf0
+	source = https://github.com/phpbrew/phpbrew/raw/1.23.0/phpbrew
+	md5sums = 72d1d34763729cbf1e2a40ccb0c774c4
 
 pkgname = phpbrew
 
