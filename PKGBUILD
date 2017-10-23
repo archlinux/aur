@@ -3,7 +3,7 @@
 pkgname=cozy-audiobooks
 _gitname=cozy
 pkgdesc=' A modern audio book player for Linux using GTK+ 3.'
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 url='https://github.com/geigi/cozy'
 arch=('i686' 'x86_64')
