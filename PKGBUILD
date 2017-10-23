@@ -8,7 +8,7 @@
 
 _pkgname=jabref
 pkgname=${_pkgname}-mirror
-pkgver=3.8.2
+pkgver=4.0
 pkgrel=2
 pkgdesc="GUI frontend for BibTeX, written in Java, Using aliyun OSS to accelerate the source downloading process"
 arch=('any')
@@ -19,11 +19,11 @@ conflicts=('jabref')
 optdepends=(
    'gsettings-desktop-schemas: For web search support'
 )
-source=(http://jabref.oss-cn-shanghai.aliyuncs.com/JabRef-${pkgver}.jar
+source=(http://jabref.oss-cn-shenzhen.aliyuncs.com/JabRef-${pkgver}.jar
         jabref.sh
         jabref.desktop)
 noextract=(JabRef-${pkgver}.jar)
-sha256sums=('f7226e9eb64f96ef2d179c4b1f9e9bcd7a630d247f2feb0ecaa243408379720a'
+sha256sums=('5555fd7691600a47e6ced54873738b4bd04dc2ad7f749c66887d343d2ff1dc06'
             'd5d31399586f0d76f0e408620a2d868e5c830708d350385a2281bc2138ecd607'
             'f958793f6e408bab7db84973169b30ed61077112d3f552dbcc9f068847317602')
 
