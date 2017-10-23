@@ -2,7 +2,7 @@
 
 _pkgname=beautysh
 pkgname=(python-beautysh python2-beautysh)
-pkgver=3.3
+pkgver=3.6
 pkgrel=1
 pkgdesc="A Bash beautifier for the masses"
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/bemeurer/beautysh'
 license=('GPL3')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/bemeurer/beautysh/archive/${pkgver}.tar.gz")
-sha256sums=('e6f2d3e7a77a1c47096870451e2dcc9b09e450c335a19b31959c8f92e0b49e7a')
+sha256sums=('8bc1feca179bd8a4b0f7dd2094fa95bc86b7c09407f8286156617eda4cea1a8c')
 
 package_python-beautysh() {
     depends=('python')
