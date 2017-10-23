@@ -1,7 +1,7 @@
 # Maintainer: Bartłomiej Kamiński <bartlomiej.kaminski@maidsafe.net>
 pkgname=safe-browser
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A browser designed to open safe:// websites on the SAFE Network."
 arch=('i686' 'x86_64')
 url="https://github.com/maidsafe/safe_browser"
@@ -12,8 +12,10 @@ makedepends=('nvm' 'yarn' 'unzip')
 optdepends=()
 install=
 changelog=
-source=('https://github.com/maidsafe/safe_browser/archive/alpha-2.tar.gz')
-md5sums=('ae9b06d2548a9ec30429b95195e993cf')
+source=('https://github.com/maidsafe/safe_browser/archive/alpha-2.tar.gz'
+        'safe-browser.crust.config')
+md5sums=('ae9b06d2548a9ec30429b95195e993cf'
+         '2556e44d1434ce8613db578d878306dc')
 
 build() {
   # use nvm
@@ -47,4 +49,6 @@ package() {
   mv safe-browser "$pkgdir/opt/maidsafe/$pkgname-$pkgver"
   mkdir -p "$pkgdir/opt/maidsafe/$pkgname-$pkgver/resources/app/node_modules/locales"
   ln -s "/opt/maidsafe/$pkgname-$pkgver/safe-browser" "$pkgdir/usr/bin/safe-browser"
+  cd "$srcdir"
+  cp safe-browser.crust.config "$pkgdir/opt/maidsafe/$pkgname-$pkgver/"
 }
