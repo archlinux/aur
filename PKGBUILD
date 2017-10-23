@@ -23,11 +23,11 @@ package() {
   install -D -m755 "${_pkgname}.sh" "$pkgdir/usr/bin/${_pkgname}"
   install -D "iconopened.ico" "$pkgdir/usr/share/${_pkgname}/yf.ico"
   install -D "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
-  install -D "freedom.jar" "$pkgdir/usr/share/java/$pkgname/freedom.jar"
+  install -D "freedom.jar" "$pkgdir/usr/share/java/${_pkgname}/freedom.jar"
   install -D "ACCEPTABLE_USE_POLICY" "$pkgdir/usr/share/licenses/${_pkgname}/ACCEPTABLE USE POLICY"
 }
 
 md5sums=('d3afe6b99ff78ea56ca8ecb383c8207c'
-         '878a4512da24d1c083d9f2e7df052cb3'
+         'b32b06860316c2d08b819a8ce84d04e7'
          '1b42f99852bea048e55ef0fc8f29e511'
          'e71ac5216e24c68db28abc1d92fba5d5')

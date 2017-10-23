@@ -1,5 +1,5 @@
 #!/bin/bash
 
 JAVA=$(which java)
-
-$JAVA -jar /usr/share/java/your-freedom-network/freedom.jar
+cd /usr/share/java/your-freedom
+$JAVA -jar freedom.jar
