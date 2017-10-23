@@ -84,10 +84,16 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="rviz-release-release-indigo-rviz-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/indigo/rviz/${pkgver}-${_pkgver_patch}.tar.gz"
-  "gcc.patch")
-sha256sums=('17f125bd19e7ef1ccfd6674006346bcd626fbbc8c02b16703db03352ff6cc1bd'
-  'b761541381e14c1d85633b866aebe6dc3f56bdc85db777a99bdfaaaadebee2d9')
+source=(
+  "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/indigo/rviz/${pkgver}-${_pkgver_patch}.tar.gz"
+  "gcc.patch"
+  "headers.patch"
+)
+sha256sums=(
+  '17f125bd19e7ef1ccfd6674006346bcd626fbbc8c02b16703db03352ff6cc1bd'
+  'b761541381e14c1d85633b866aebe6dc3f56bdc85db777a99bdfaaaadebee2d9'
+  'afdc65a0fdd76c6daaca53e172d9b0735621df07e9a8d7cf9f663ba1d54c03ab'
+)
 
 build() {
   # Use ROS environment variables
@@ -97,6 +103,7 @@ build() {
   # Apply patch
   cd "${srcdir}/${_dir}"
   patch -p1 -i "${srcdir}"/gcc.patch
+  patch -p1 -i "${srcdir}"/headers.patch
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
@@ -108,6 +115,7 @@ build() {
   # Build project
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
+        -DUseQt5=ON \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
