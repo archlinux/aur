@@ -1,7 +1,7 @@
 # Maintainer: Marcos Ferreira <merkkp at gmail dot com>
 
 pkgname="iqoption-bin"
-pkgver=849.11.4097
+pkgver=857.6.0776
 pkgrel=1
 pkgdesc="Ultimate trading experience"
 arch=("x86_64")

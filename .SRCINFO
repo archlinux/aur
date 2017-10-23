@@ -1,6 +1,6 @@
 pkgbase = iqoption-bin
 	pkgdesc = Ultimate trading experience
-	pkgver = 849.11.4097
+	pkgver = 857.6.0776
 	pkgrel = 1
 	url = https://iqoption.com
 	arch = x86_64
