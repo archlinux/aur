@@ -1,6 +1,6 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert-lite
-pkgver=0.13.1
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher. Without QML and VirtualBox dependencies"
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,23 +18,29 @@ makedepends=(
   'qt5-svg'
   'muparser'
 )
-optdepends=(
-  'muparser: Calculator plugin'
-)
+optdepends=('muparser: Calculator plugin')
 provides=('albert')
-conflicts=('albert-git'
-           'albert')
-source=('git+https://github.com/albertlauncher/albert.git'
-        'git+https://github.com/albertlauncher/plugins.git')
-md5sums=('SKIP' 'SKIP')
+conflicts=('albert-git' 'albert')
+source=(
+  "mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v${pkgver}"
+  "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
+  "mirrors/python::git+https://github.com/albertlauncher/python.git"
+  "mirrors/pybind11::git+https://github.com/pybind/pybind11.git"
+)
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 
 prepare() {
   cd "${srcdir}/albert"
-  git checkout "v${pkgver}" > /dev/null 2>&1
   git submodule init
-  git config submodule.plugins.url $srcdir/plugins
+  git config submodule.plugins.url "$srcdir/plugins"
   git submodule update plugins
+
+  cd "$srcdir/albert/plugins"
+  git submodule init
+  git config submodule.python/pybind11.url "$srcdir/pybind11"
+  git config submodule.python/share/modules.url "$srcdir/python"
+  git submodule update python/pybind11 python/share/modules
 }
 
 
@@ -58,7 +64,7 @@ build() {
   cmake \
     "../albert" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE="Release" \
+    -DCMAKE_BUILD_TYPE="MinSizeRel" \
     -DBUILD_WIDGETBOXMODEL=ON \
     -DBUILD_QMLBOXMODEL=OFF \
     -DBUILD_APPLICATIONS=ON \
@@ -71,19 +77,20 @@ build() {
     -DBUILD_HASHGENERATOR=ON \
     -DBUILD_KVSTORE=ON \
     -DBUILD_MPRIS=ON \
+    -DBUILD_PYTHON=OFF \
     -DBUILD_SSH=ON \
     -DBUILD_SYSTEM=ON \
     -DBUILD_TEMPLATE=OFF \
     -DBUILD_TERMINAL=ON \
     -DBUILD_VIRTUALBOX=OFF \
     -Wno-dev
-  make
+  make -j $((`nproc`+1))
 }
 
 
 package() {
   cd "${srcdir}/build"
-  make DESTDIR="$pkgdir/" install | grep -v '^-- '
+  make DESTDIR="$pkgdir/" install
 }
 
 # vim:set ts=2 sw=2 et:
