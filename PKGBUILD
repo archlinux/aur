@@ -1,6 +1,6 @@
 pkgdesc="systemd-nspawn tool"
 pkgname=nspawn.sh
-pkgver=3
+pkgver=master
 pkgrel=0
 arch=('i686' 'x86_64')
 url="https://github.com/random-archer/nspawn.sh"
