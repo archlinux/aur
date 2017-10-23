@@ -28,6 +28,6 @@ package() {
 }
 
 md5sums=('d3afe6b99ff78ea56ca8ecb383c8207c'
-         'a36bb8fcfcc17a143274c734a2fd4f9e'
+         '878a4512da24d1c083d9f2e7df052cb3'
          '1b42f99852bea048e55ef0fc8f29e511'
          'e71ac5216e24c68db28abc1d92fba5d5')
