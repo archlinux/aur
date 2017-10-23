@@ -9,7 +9,9 @@ pkgdesc="Starts i3 inside a cinnamon session."
 arch=('any')
 url="https://github.com/jbbr/i3-cinnamon/"
 license=('MIT')
-depends=('i3-wm')
+depends=('i3-wm' 'cinnamon-session' 'cinnamon-settings-daemon')
+provides=('i3-cinnamon')
+optdepends=('gdm: Recommended display manager')
 source=('git+https://github.com/jbbr/i3-cinnamon')
 sha256sums=('SKIP')
 

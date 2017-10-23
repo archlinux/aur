@@ -7,6 +7,10 @@ pkgbase = i3-cinnamon-git
 	arch = any
 	license = MIT
 	depends = i3-wm
+	depends = cinnamon-session
+	depends = cinnamon-settings-daemon
+	optdepends = gdm: Recommended display manager
+	provides = i3-cinnamon
 	source = git+https://github.com/jbbr/i3-cinnamon
 	sha256sums = SKIP
 
