@@ -1,5 +1,5 @@
 pkgbase = nspawn.sh
-	pkgdesc = Bash interface for systemd-nspawn container management
+	pkgdesc = Bash container engine for systemd-nspawn
 	pkgver = master
 	pkgrel = 0
 	url = https://github.com/random-archer/nspawn.sh
