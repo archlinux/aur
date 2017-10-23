@@ -13,7 +13,7 @@
        [PKG_CHECK_MODULES(GUILE, [guile-2.0 >= 2.0.0],
            [GUILE_EFFECTIVE_VERSION=2.0
 -           AC_PATH_PROG([GUILD], guild)],
-+           AC_PATH_PROG([GUILD], guild2.0 guild)],
++           AC_PATH_PROGS([GUILD], guild2.0 guild)],
            [PKG_CHECK_MODULES(GUILE, [guile-1.8 >= 1.8.5],
                               [GUILE_EFFECTIVE_VERSION=1.8],
                               [GUILE_EFFECTIVE_VERSION=0])

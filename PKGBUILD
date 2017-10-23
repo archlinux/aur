@@ -4,7 +4,7 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash-gtk3-git
-pkgver=2.7.0.r13.g4d59be7f4
+pkgver=2.7.0a.r1.ge8e43b33d
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application (GTK3 development version)"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ options=('!emptydirs')
 source=("git+https://github.com/Gnucash/gnucash"
 	"guild-2.0.patch")
 sha1sums=('SKIP'
-          '965124ae07f3048c0232139c71f2da4b2eabf253')
+          '5c67cac57f2bbbe9775496dd6eaa32b2d4b4f23c')
 
 pkgver() {
   cd "${srcdir}/gnucash"
