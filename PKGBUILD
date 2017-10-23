@@ -2,7 +2,7 @@
 
 _gitname="bpkg"
 pkgname="${_gitname}-git"
-pkgver=0.2.9.0.g18a66db
+pkgver=0.2.9.1.g72c9a90
 pkgrel=1
 pkgdesc="Lightweight bash package manager"
 arch=("any")
