@@ -6,30 +6,35 @@
 pkgname=mpv-vapoursynth
 _pkgname=mpv
 epoch=1
-pkgver=0.26.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://mpv.io'
 depends=(
-  'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'enca' 'libxss'
+  'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
   'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
   'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-  'libguess' 'libxrandr' 'jack' 'smbclient' 'rubberband'
+  'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
   'vapoursynth'
 )
-makedepends=('mesa' 'python-docutils' 'ladspa' 'hardening-wrapper')
+makedepends=('mesa' 'python-docutils' 'ladspa')
 optdepends=('youtube-dl: for video-sharing websites playback')
 conflicts=($_pkgname)
 provides=($_pkgname)
-options=('!emptydirs' '!buildflags')
+options=('!emptydirs')
 install=mpv.install
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('daf3ef358d5f260f2269f7caabce27f446c291457ec330077152127133b71b46')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz"
+        '0001-opengl-backend-support-multiple-backends.patch')
+sha256sums=('341d8bf18b75c1f78d5b681480b5b7f5c8b87d97a0d4f53a5648ede9c219a49c'
+            '609e0530f1b0cdb910dcffb5f62bf55936540e24105ce1b2daf1bd6291a7d58a')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
+
+  # --opengl-backend: support multiple backends (#4384) (FS#53962)
+  patch -Np1 < "${srcdir}"/0001-opengl-backend-support-multiple-backends.patch
 
   ./bootstrap.py
 }
@@ -39,9 +44,13 @@ build() {
 
   ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
-    --enable-zsh-comp \
+    --enable-cdda \
+    --enable-dvb \
+    --enable-dvdnav \
+    --enable-encoding \
+    --enable-libarchive \
     --enable-libmpv-shared \
-    --enable-cdda
+    --enable-zsh-comp
 
   ./waf build
 }
