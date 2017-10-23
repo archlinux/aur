@@ -1,7 +1,7 @@
 # Maintainer: Michel Blanc <mb@mbnet.fr>
 
 pkgname=clac
-pkgver=0.3.0.r0.ge92bd5c
+pkgver=0.3.1.r0.g99be7a4
 pkgrel=1
 pkgdesc='A command line, stack-based calculator with postfix notation'
 url='https://github.com/soveran/clac'
