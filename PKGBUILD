@@ -3,27 +3,26 @@
 
 pkgname=polo
 pkgrel=1
-pkgver=17.9
-_channel=beta.10
+pkgver=17.10
+_channel=beta
 pkgdesc="A modern, light-weight GTK file manager for Linux,  currently in beta"
 arch=('i686' 'x86_64')
 url="http://www.teejeetech.in/"
 license=('GPL2')
-depends=('gtk3' 'libgee' 'libsoup' 'vte3' 'rsync' 'gvfs' 'rclone')
+depends=('gtk3' 'libgee' 'libsoup' 'vte3' 'rsync' 'gvfs' 'rclone' 'p7zip')
 makedepends=('vala' 'chrpath')
 optdepends=('mediainfo: read media properties from audio and video files'
             'fish: terminal shell'
             'perl-image-exiftool: read EXIF properties from JPG/TIFF/PNG/PDF files'
             'pv: get progress info for compression and extraction'
             'ffmpeg: generate thumbnails for video'
-            'p7zip: read and extract multiple archive formats'
             'gnome-disk-utility'
             'lzop'
             'polo-donation-plugins')
 provides=('polo')
 conflicts=('polo' 'polo-bin')
 source=(https://github.com/teejee2008/polo/archive/v${pkgver}-${_channel}.tar.gz)
-md5sums=('c433342831bebf6f98ae7250e23d894e')
+md5sums=('5259ae7fac8d21a72992e283d22a0341')
 
 package() {
   cd $srcdir/${pkgname}-${pkgver}-${_channel}

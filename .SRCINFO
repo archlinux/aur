@@ -1,6 +1,6 @@
 pkgbase = polo
 	pkgdesc = A modern, light-weight GTK file manager for Linux, currently in beta
-	pkgver = 17.9
+	pkgver = 17.10
 	pkgrel = 1
 	url = http://www.teejeetech.in/
 	arch = i686
@@ -15,20 +15,20 @@ pkgbase = polo
 	depends = rsync
 	depends = gvfs
 	depends = rclone
+	depends = p7zip
 	optdepends = mediainfo: read media properties from audio and video files
 	optdepends = fish: terminal shell
 	optdepends = perl-image-exiftool: read EXIF properties from JPG/TIFF/PNG/PDF files
 	optdepends = pv: get progress info for compression and extraction
 	optdepends = ffmpeg: generate thumbnails for video
-	optdepends = p7zip: read and extract multiple archive formats
 	optdepends = gnome-disk-utility
 	optdepends = lzop
 	optdepends = polo-donation-plugins
 	provides = polo
 	conflicts = polo
 	conflicts = polo-bin
-	source = https://github.com/teejee2008/polo/archive/v17.9-beta.10.tar.gz
-	md5sums = c433342831bebf6f98ae7250e23d894e
+	source = https://github.com/teejee2008/polo/archive/v17.10-beta.tar.gz
+	md5sums = 5259ae7fac8d21a72992e283d22a0341
 
 pkgname = polo
 
