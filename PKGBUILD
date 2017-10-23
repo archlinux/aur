@@ -1,7 +1,7 @@
 # Maintainer: Bartłomiej Kamiński <bartlomiej.kaminski@maidsafe.net>
 pkgname=safe-browser
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A browser designed to open safe:// websites on the SAFE Network."
 arch=('i686' 'x86_64')
 url="https://github.com/maidsafe/safe_browser"
@@ -45,5 +45,5 @@ package() {
   mkdir -p "$pkgdir/opt/maidsafe"
   mkdir -p "$pkgdir/usr/bin"
   mv safe-browser "$pkgdir/opt/maidsafe/$pkgname-$pkgver"
-  ln -s "$pkgdir/opt/maidsafe/$pkgname-$pkgver/safe-browser" "$pkgdir/usr/bin/safe-browser"
+  ln -s "/opt/maidsafe/$pkgname-$pkgver/safe-browser" "$pkgdir/usr/bin/safe-browser"
 }
