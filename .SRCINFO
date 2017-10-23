@@ -18,7 +18,7 @@ pkgbase = ros-indigo-catkin
 	depends = python2-empy
 	depends = python2
 	source = ros-indigo-catkin-0.6.18-0.tar.gz::https://github.com/ros-gbp/catkin-release/archive/release/indigo/catkin/0.6.18-0.tar.gz
-	sha256sums = f81e0b7a905040088c5742d07a294eccf5c328265ce838cd94204f09d2087d15
+	sha256sums = 16c86a2959973c78980d95a7e797562e92d8d29c0615c7b6114333217693426b
 
 pkgname = ros-indigo-catkin
 

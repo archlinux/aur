@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="catkin-release-release-indigo-catkin-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/catkin-release/archive/release/indigo/catkin/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f81e0b7a905040088c5742d07a294eccf5c328265ce838cd94204f09d2087d15')
+sha256sums=('16c86a2959973c78980d95a7e797562e92d8d29c0615c7b6114333217693426b')
 
 build() {
   # Use ROS environment variables
