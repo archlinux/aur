@@ -1,0 +1,26 @@
+# Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Please report issues at https://github.com/sanduhrs/arch-aur-cmsscanner
+
+_pkgname=cmsscanner
+pkgname="${_pkgname}"
+pkgver=0.1
+pkgrel=1
+pkgdesc='Detects FOSS CMS in the local filesystem'
+arch=('any')
+url='https://github.com/CMS-Garden/cmsscanner'
+license=('GPL')
+depends=('php')
+makedepends=('php-box' 'php-composer' 'git')
+source=("${_pkgname}::git+https://github.com/CMS-Garden/cmsscanner.git#tag=${pkgver}")
+sha512sums=('SKIP')
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  php /usr/bin/composer install --no-dev
+  php -d phar.readonly=Off /usr/bin/php-box build
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  install -D -m755 "${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
+}
