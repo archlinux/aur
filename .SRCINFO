@@ -1,7 +1,7 @@
 pkgbase = safe-browser
 	pkgdesc = A browser designed to open safe:// websites on the SAFE Network.
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/maidsafe/safe_browser
 	arch = i686
 	arch = x86_64
