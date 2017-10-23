@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Detects FOSS CMS in the local filesystem'
 arch=('any')
 url='https://github.com/CMS-Garden/cmsscanner'
-license=('GPL')
+license=('MIT')
 depends=('php')
 makedepends=('php-box' 'php-composer' 'git')
 source=("${_pkgname}::git+https://github.com/CMS-Garden/cmsscanner.git#tag=${pkgver}")
