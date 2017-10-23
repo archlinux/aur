@@ -1,7 +1,7 @@
 pkgbase = hdf-java
 	pkgdesc = The hdf5 Java Native Interfaces (JNI) for 32-bit object ids (files created with versions up to 1.8)
 	pkgver = 3.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://support.hdfgroup.org/products/java/
 	arch = i686
 	arch = x86_64
