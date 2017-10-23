@@ -1,6 +1,6 @@
 pkgname=systemc-ams
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="SystemC-AMS is an Analog and Mixed-Signal extension library for SystemC"
 url="http://www.accellera.org/activities/working-groups/systemc-ams"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ md5sums=('ae88cb42dc5216e3c8e3e36dd1fc2f7c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=${pkgdir}/usr --with-layout=unix
+  ./configure --prefix=${pkgdir}/usr --with-layout=unix CXXFLAGS="-DSC_INCLUDE_EXTRA_STD_HEADERS"
   make
 }
 
