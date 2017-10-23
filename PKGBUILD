@@ -2,13 +2,13 @@
 
 pkgname=udpspeeder-git
 _gitname=UDPspeeder
-pkgver=v2@20171021.0.r18.g7cf14a3
+pkgver=v2@20171021.0.r20.g20a5547
 pkgrel=1
 pkgdesc="Improve your Network Quality on a High-latency Lossy Link by using Forward Error Correction"
 arch=('i686' 'x86_64')
 url="https://github.com/wangyu-/UDPspeeder"
 license=('MIT')
-depends=()
+depends=('gcc-libs')
 makedepends=('git')
 optdepends=('openvpn: tunnel TCP/ICMP')
 source=("git://github.com/wangyu-/UDPspeeder.git")
@@ -24,6 +24,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"
   sed -i 's/-ggdb//' makefile
+  sed -i 's/-static//' makefile
 }
 
 build() {
