@@ -1,0 +1,22 @@
+pkgbase = doublecmd-qt5-svn
+	pkgdesc = twin-panel (commander-style) file manager (QT5)
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://doublecmd.sourceforge.io/
+	arch = x86_64
+	license = LGPL3
+	makedepends = subversion
+	makedepends = fpc
+	makedepends = lazarus-svn
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = qt5-webkit
+	depends = qt5pas-lazarus
+	conflicts = doublecmd
+	conflicts = doublecmd-qt
+	conflicts = doublecmd-qt5
+	source = doublecmd-qt5-svn::svn+https://svn.code.sf.net/p/doublecmd/code/trunk
+	sha256sums = SKIP
+
+pkgname = doublecmd-qt5-svn
+
