@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Package Tool."
 url='http://wiki.ros.org/rospack'
 
 pkgname='ros-indigo-rospack'
-pkgver='2.2.6'
+pkgver='2.4.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,14 +36,22 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="rospack-release-release-indigo-rospack-${pkgver}-${_pkgver_patch}"
+_dir="rospack-release-release-indigo-rospack"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/indigo/rospack/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('502e69d105750724732bad915d1d7242707b45e722c8b20685e81e80998fdf5b')
+sha256sums=('e353c62946f3c26f8e30edbb44c5858018cf399509a4c4c26937c323c6384336')
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/indigo/setup.bash ] && source /opt/ros/indigo/setup.bash
+
+  find "${srcdir}/${_dir}" -name '*.cpp' -exec sed -i 's#<boost/tr1/unordered_map.hpp>#<unordered_map>#g' '{}' ';'
+  find "${srcdir}/${_dir}" -name '*.cpp' -exec sed -i 's#<boost/tr1/unordered_set.hpp>#<unordered_set>#g' '{}' ';'
+  find "${srcdir}/${_dir}" -name '*.cpp' -exec sed -i 's#tr1::##g' '{}' ';'
+
+  find "${srcdir}/${_dir}" -name '*.h' -exec sed -i 's#<boost/tr1/unordered_map.hpp>#<unordered_map>#g' '{}' ';'
+  find "${srcdir}/${_dir}" -name '*.h' -exec sed -i 's#<boost/tr1/unordered_set.hpp>#<unordered_set>#g' '{}' ';'
+  find "${srcdir}/${_dir}" -name '*.h' -exec sed -i 's#tr1::##g' '{}' ';'
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
