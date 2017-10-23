@@ -5,7 +5,7 @@
 
 pkgname=qt5-fsarchiver
 pkgver=0.8.1_1
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for fsarchiver'
 arch=('i686' 'x86_64')
 url='http://qt4-fsarchiver.sourceforge.net/'
@@ -30,4 +30,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     make INSTALL_ROOT="${pkgdir}" install
+    install -Dpm755 ${srcdir}/${pkgname}/src/sbin/qt5-fsarchiver_polkit ${pkgdir}/usr/bin/
 }
