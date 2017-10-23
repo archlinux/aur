@@ -3,7 +3,7 @@
 
 pkgname=guayadeque-git
 _pkgname=guayadeque
-pkgver=0.4.5.r2050.9fec4f7b
+pkgver=0.4.5.r2082.55efd993
 pkgrel=1
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
@@ -33,7 +33,10 @@ build() {
   cmake . \
     -DCMAKE_CXX_STANDARD='11' \
     -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc-3.0' \
+    -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config-gtk3' \
+    -DwxWidgets_INCLUDE_DIRS='/usr/include/wx-3.0/'
   make
 }
 

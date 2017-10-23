@@ -1,6 +1,6 @@
 pkgbase = guayadeque-git
 	pkgdesc = Lightweight music player
-	pkgver = 0.4.5.r2049.3c94f185
+	pkgver = 0.4.5.r2082.55efd993
 	pkgrel = 1
 	url = http://guayadeque.org/
 	arch = i686
