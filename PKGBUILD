@@ -3,7 +3,7 @@
 
 _pkgname=vdirsyncer
 pkgname=${_pkgname}-git
-pkgver=0.16.2.r0.g1da0bd1
+pkgver=0.16.3.r17.g28fdf42
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('any')
@@ -13,7 +13,8 @@ depends=("python-click>=5.0" "python-click-log>=0.2.0" "python-click-threading>=
          "python-requests>2.9.0" "python-requests-toolbelt>=0.4.0"
          "python-atomicwrites>=0.1.7"
          "python-requests-oauthlib"
-         "python-keyring")
+         "python-keyring"
+         "rust")
 makedepends=("git" "python-setuptools-scm"
              "python-sphinx" 'python-sphinx_rtd_theme')
 checkdepends=("python-hypothesis>=3.1"
