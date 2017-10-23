@@ -1,6 +1,6 @@
 # Maintainer: Radu Birzu <radu@webative.net>
 pkgname=andrei-desktop
-pkgver=r234.ca07b65
+pkgver=r235.4bcd5ba
 pkgrel=1
 pkgdesc="An openbox based desktop environment focused on productivity and speed"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=('acetoneiso2: An all in one ISO tool'
 	          'synergy: Share a single mouse and keyboard between multiple computers'
 	          'vlc: Multi-platform MPEG, VCD/DVD, and DivX player'
 	          'zim: A WYSIWYG text editor for a desktop wiki')
-makedepends=('tar')
+makedepends=('tar' 'rsync')
 install="${pkgname}.install"
 source=('git+https://gitlab.com/webative-open-source/andrei-linux.git')
 md5sums=('SKIP')
@@ -30,5 +30,5 @@ package() {
 	tar xf files.tar
 
 	# copy files preserving timestamps
-	cp -a ./files/* "$pkgdir/"
+	rsync -a ./files/ "$pkgdir/"
 }
