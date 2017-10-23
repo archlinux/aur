@@ -29,5 +29,4 @@ package() {
   make DESTDIR="${pkgdir}" install
   cd ..
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
- # install -Dm644 docs/SystemC_Open_Source_License.pdf "$pkgdir/usr/share/licenses/$pkgname/SystemC_Open_Source_License.pdf"
 }
