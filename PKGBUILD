@@ -22,5 +22,6 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -D -m755 "${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
