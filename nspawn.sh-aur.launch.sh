@@ -2,15 +2,15 @@
 
 # build package automation
 
-readonly location=$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
-source $location/PKGBUILD
+readonly base=$(cd "${BASH_SOURCE%/*}" && pwd)
+source $base/PKGBUILD
 
 is_root() {
     [[ $(id -u) == 0 ]]
 }
 
 has_makepkg() {
-    which makepkg >/dev/null 2>&1
+    &>/dev/null which makepkg
 }
 
 
@@ -26,7 +26,7 @@ do_provision_proper() {
     echo "// do_provision_proper"
     local suno=""
     if is_root ; then
-        chown -R nobody $location
+        #chown -R nobody $base
         suno="sudo -u nobody"
     fi
     $suno makepkg --force
@@ -70,7 +70,7 @@ do_version_proper() {
     local suno=""
     local user="nobody"
     if is_root ; then
-        chown -R $user $location
+        chown -R $user $base
         suno="sudo -u $user"
     fi
   
@@ -93,14 +93,14 @@ do_commit() {
 
 do_clean() {
     echo "// clean"
-    rm -rf "$location/$pkgname"
-    rm -rf "$location/src"
-    rm -rf "$location/pkg"
+    rm -rf "$base/$pkgname"
+    rm -rf "$base/src"
+    rm -rf "$base/pkg"
 }
 
 ###
 
-#set -e
+set -e -u
 
 do_provision
 
