@@ -1,6 +1,6 @@
 # Maintainer: wolftankk <wolftankk@gmail.com>
 pkgname=zephir
-pkgver=0.10.1
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="Zephir is a compiled high level language aimed to the creation of C-extensions for PHP http://zephir-lang.com/"
 url="https://github.com/phalcon/zephir"
@@ -18,7 +18,7 @@ source=(
 	"https://github.com/phalcon/zephir/archive/$pkgver.tar.gz"
 )
 
-sha256sums=('83f2a792b04355dc95d79cfb1bd49afaa68a4febf9dc4a18dd50545c73704bd4')
+sha256sums=('32edf290659a228e1953ccdc3443dcbbe77678f7476c8b45b95a64e1f7d26182')
 
 package() {
   ZEPHIRDIR=/opt/$pkgname
@@ -31,9 +31,8 @@ package() {
   install -Dm777 bin/zephir-cmd "$pkgdir"/opt/zephir/bin/zephir
   install -Dm777 compiler.php "$pkgdir"/opt/zephir/compiler.php
   install -Dm777 bootstrap.php "$pkgdir"/opt/zephir/bootstrap.php
-  cp -a Library "$pkgdir"/opt/zephir/Library
-  cp -a ext "$pkgdir"/opt/zephir/ext
   cp -a kernels "$pkgdir"/opt/zephir/kernels
+  cp -a Library "$pkgdir"/opt/zephir/Library
   cp -a prototypes "$pkgdir"/opt/zephir/prototypes
   cp -a runtime "$pkgdir"/opt/zephir/runtime
   cp -a templates "$pkgdir"/opt/zephir/templates
