@@ -2,7 +2,7 @@
 
 pkgname=fatelf-utils
 pkgver=111.5e7e594b70fa
-pkgrel=3
+pkgrel=4
 pkgdesc='Utils for FatELF universal binaries for Linux'
 arch=('i686' 'x86_64')
 url='https://www.icculus.org/fatelf'
@@ -19,14 +19,13 @@ pkgver() {
 build() {
   cd "${srcdir}"/fatelf
   CFLAGS+=" -O0"
-  cmake .
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
   make
 }
 
 package() {
   cd "${srcdir}"/fatelf
 
-  sed -i 's|/usr/local|/usr|g' cmake_install.cmake
   make DESTDIR="${pkgdir}" install
 
   for FILE in docs/*.txt; do
