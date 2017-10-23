@@ -3,7 +3,7 @@
 
 _pkgname=cmsscanner
 pkgname="${_pkgname}"
-pkgver=0.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Detects FOSS CMS in the local filesystem'
 arch=('any')
