@@ -6,7 +6,6 @@ pkgbase = netease-cloud-music-docker-version
 	install = netease-cloud-music-docker-version.install
 	arch = i686
 	arch = x86_64
-	groups = base-devel
 	depends = docker
 	depends = bash
 	depends = xorg-xhost
