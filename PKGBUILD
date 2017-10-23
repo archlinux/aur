@@ -3,7 +3,7 @@
 pkgname=netease-cloud-music-docker-version
 pkgver=1.0.0_2
 pkgrel=1
-pkgdesc="Use docker to avoid netease-music bugs"
+pkgdesc="Better Netease Cloud Music with Bugs Fixed By docker."
 arch=('i686' 'x86_64')
 url="https://github.com/qzwlecr/netease-cloud-music-docker-version"
 groups=('base-devel')
