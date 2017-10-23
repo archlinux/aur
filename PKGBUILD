@@ -2,7 +2,7 @@
 
 pkgname=chkit
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The Containerum CLI"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://containerum.com/documentation"
@@ -22,7 +22,12 @@ md5sums_armv6h=('78aa5c144494568f0afb421598d4b823')
 md5sums_armv7h=('78aa5c144494568f0afb421598d4b823')
 md5sums_aarch64=('78aa5c144494568f0afb421598d4b823')
 
+build() {
+  ./chkit genautocomplete > completions
+}
+
 package() {
   install -D -m755 chkit "$pkgdir/usr/bin/chkit"
+  install -D -m644 completions "$pkgdir/usr/share/bash-completion/completions/chkit"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

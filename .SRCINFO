@@ -1,7 +1,7 @@
 pkgbase = chkit
 	pkgdesc = The Containerum CLI
 	pkgver = 2.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://containerum.com/documentation
 	arch = i686
 	arch = x86_64
