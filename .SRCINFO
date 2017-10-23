@@ -1,7 +1,7 @@
 pkgbase = bed-latex-git
 	pkgdesc = BEd: Beamer Editor, GUI for LaTeX Beamer presentations.
-	pkgver = 1.2.r1.g9ccca69
-	pkgrel = 2
+	pkgver = 1.2.r2.g5048a9a
+	pkgrel = 1
 	url = https://framagit.org/delisle/bed
 	install = bed.install
 	arch = any
