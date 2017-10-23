@@ -1,0 +1,17 @@
+pkgbase = qt5pas-lazarus
+	pkgdesc = Free Pascal Qt5 binding library modified for Lazarus IDE
+	pkgver = 2.6
+	pkgrel = 1
+	url = http://users.telenet.be/Jan.Van.hijfte/qtforfpc/fpcqt4.html
+	arch = x86_64
+	license = LGPL3
+	makedepends = subversion
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = qt5-webkit
+	conflicts = qt5pas
+	source = qt5pas-lazarus::svn+https://svn.freepascal.org/svn/lazarus/trunk/lcl/interfaces/qt5/cbindings
+	sha256sums = SKIP
+
+pkgname = qt5pas-lazarus
+
