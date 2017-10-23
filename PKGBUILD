@@ -1,10 +1,10 @@
-# Maintainer: Jon Gjengset <jon@thesquareplanet.com>
+# Maintainer: Jon Gjengset <jon@thesquareplanet.com>, Saren Arterius <saren@wtako.net>
 pkgname=cpuset
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Cpuset is a Python application to make using the cpusets facilities in the Linux kernel easier."
 arch=('any')
-url="https://code.google.com/p/cpuset/"
+url="https://github.com/lpechacek/cpuset/"
 license=('GPL2')
 depends=('python2')
 options=('!emptydirs')
