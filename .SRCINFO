@@ -1,5 +1,5 @@
 pkgbase = nspawn.sh
-	pkgdesc = systemd-nspawn tool
+	pkgdesc = systemd-nspawn bash interface
 	pkgver = master
 	pkgrel = 0
 	url = https://github.com/random-archer/nspawn.sh

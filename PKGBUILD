@@ -1,4 +1,4 @@
-pkgdesc="systemd-nspawn tool"
+pkgdesc="systemd-nspawn bash interface"
 pkgname=nspawn.sh
 pkgver=master
 pkgrel=0
