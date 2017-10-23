@@ -1,13 +1,13 @@
-# Maintainer: cornholio <vigo.the.unholy.carpathian@gmail.com>
+# Maintainer: Frank Fishburn <frankthefishburn@gmail.com>
 # Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=mailpile-git
-pkgver=r4977.2438e49
-pkgrel=3
+pkgver=r5570.37d96ac6
+pkgrel=1
 pkgdesc="A modern, fast web-mail client with user-friendly encryption and privacy features."
 arch=('any')
 license=('AGPL3')
-depends=('python2-pillow' 'python2-lxml' 'python2-jinja' 'spambayes' 'python2-pgpdump')
+depends=('python2-pillow' 'python2-lxml' 'python2-jinja' 'spambayes' 'python2-pgpdump' 'python2-crypto')
 url="http://www.mailpile.is"
 provides=("mailpile")
 conflicts=("mailpile")
