@@ -21,7 +21,7 @@ optdepends=('iputils: run ping and rank functions'
             'bash-completion: auto-complete commands')
 makedepends=('coreutils' 'asciidoc')
 provides=('nordvpn')
-source=("git+https://github.com/nstinus/nordvpn.git#commit=${NORDVPN_COMMIT:-v0.1-32-g595937f}")
+source=("git+https://github.com/nstinus/nordvpn.git#commit=${NORDVPN_COMMIT:-v0.1-32-g3654c4f}")
 sha1sums=('SKIP')
 install=${pkgname}.install
 

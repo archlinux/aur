@@ -21,7 +21,7 @@ pkgbase = openvpn-nordvpn
 	optdepends = python-pandas: run nordvpn infos command
 	optdepends = bash-completion: auto-complete commands
 	provides = nordvpn
-	source = git+https://github.com/nstinus/nordvpn.git#commit=v0.1-32-g595937f
+	source = git+https://github.com/nstinus/nordvpn.git#commit=v0.1-32-g3654c4f
 	sha1sums = SKIP
 
 pkgname = openvpn-nordvpn
