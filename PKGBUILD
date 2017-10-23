@@ -1,16 +1,15 @@
-# Maintainer: Marco Kundt <mrckndt@gmail.com>
+# Maintainer: Kazutoshi Noguchi <noguchi.kazutosi+lGlcOenS [at] gmail [dot] com>
+# Contributor: Marco Kundt <mrckndt [at] gmail [dot] com>
 
 pkgname=gtk3-nocsd-git
 pkgver=r55.82ff5a0
-pkgrel=2
+pkgrel=3
 pkgdesc='A hack to disable gtk+ 3 client side decoration'
 arch=('i686' 'x86_64')
 url='https://github.com/PCMan/gtk3-nocsd'
-license=('GPL')
+license=('LGPL')
 depends=('gtk3')
-makedepends=('git' 'pkgconfig' 'gobject-introspection' 'gtk3')
-optdepends=('lib32-libgtk3-nocsd-git: 32-Bit library')
-conflicts=('gtk3-nocsd')
+makedepends=('git' 'gobject-introspection')
 source=(git+https://github.com/PCMan/gtk3-nocsd
         30-gtk3-nocsd.sh)
 
