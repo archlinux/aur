@@ -1,0 +1,22 @@
+pkgbase = safe-browser
+	pkgdesc = A browser designed to open safe:// websites on the SAFE Network.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/maidsafe/safe_browser
+	arch = i686
+	arch = x86_64
+	groups = maidsafe
+	license = custom:BeakerLicense
+	makedepends = nvm
+	makedepends = yarn
+	makedepends = unzip
+	depends = gtk2
+	depends = gconf
+	depends = alsa-lib
+	depends = libxtst
+	depends = libxss
+	source = https://github.com/maidsafe/safe_browser/archive/alpha-2.tar.gz
+	md5sums = ae9b06d2548a9ec30429b95195e993cf
+
+pkgname = safe-browser
+
