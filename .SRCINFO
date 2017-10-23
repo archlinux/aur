@@ -1,0 +1,15 @@
+pkgbase = matrix-recorder
+	pkgdesc = Chat logger for Matrix
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://gitlab.com/argit/matrix-recorder
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = git+https://gitlab.com/argit/matrix-recorder.git#commit=c877ac287e28cdf2f36b614ccc4adbe4f40ae0f9
+	sha256sums = SKIP
+
+pkgname = matrix-recorder
+
