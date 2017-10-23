@@ -2,8 +2,8 @@
 
 pkgname='macos-icon-theme'
 pkgver=4.1
-pkgrel=2
-pkgdesc='macOS iCons Theme'
+pkgrel=3
+pkgdesc='macOS Icon Theme'
 arch=('any')
 url='https://www.gnome-look.org/p/1102582/'
 depends=('gtk-update-icon-cache')
