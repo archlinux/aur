@@ -17,11 +17,12 @@ _DEST="/usr/share/portfolio"
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
 sha1sums=("44bc94cc4bb7b4d8cfc0ab6d0ac765ea52580f8b")
 
-JRE_VERSION=$(archlinux-java status | grep default | awk '{print $1}')
+#JRE_VERSION=$(archlinux-java status | grep default | awk '{print $1}')
 
 build() {
     export MAVEN_OPTS="-Xmx1g"
-    export JAVA_HOME=/usr/lib/jvm/$JRE_VERSION/jre
+    #export JAVA_HOME=/usr/lib/jvm/$JRE_VERSION/jre
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre
     cd $pkgname-$pkgver
     cd portfolio-app
     mvn clean install -Dgenerate-target-platform=true
