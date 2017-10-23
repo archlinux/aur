@@ -1,7 +1,7 @@
 pkgdesc="Bash container engine for systemd-nspawn"
 pkgname=nspawn.sh
 pkgver=master
-pkgrel=0
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/random-archer/nspawn.sh"
 #source=("git+${url}.git#tag=v$pkgver")
