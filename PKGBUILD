@@ -1,14 +1,15 @@
-# Maintainer: Marco Kundt <mrckndt@gmail.com>
+# Maintainer: Kazutoshi Noguchi <noguchi.kazutosi+lGlcOenS [at] gmail [dot] com>
+# Contributor: Marco Kundt <mrckndt [at] gmail [dot] com>
 
 pkgname=lib32-libgtk3-nocsd-git
 pkgver=r55.82ff5a0
-pkgrel=3
+pkgrel=4
 pkgdesc='A hack to disable gtk+ 3 client side decoration (32-bit library)'
 arch=('x86_64')
 url='https://github.com/PCMan/gtk3-nocsd'
-license=('GPL')
-depends=('gtk3')
-makedepends=('git' 'pkgconfig' 'gobject-introspection' 'gtk3' 'gcc-multilib' 'lib32-glib2')
+license=('LGPL')
+depends=('gtk3-nocsd-git')
+makedepends=('git' 'gobject-introspection' 'gcc-multilib' 'lib32-glib2')
 conflicts=('gtk3-nocsd')
 source=(git+https://github.com/PCMan/gtk3-nocsd)
 
@@ -24,9 +25,9 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
 
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export LDFLAGS+=' -m32'
+  export CFLAGS="-m32 ${CFLAGS}"
+  export CXXFLAGS="-m32 ${CXXFLAGS}"
+  export LDFLAGS="-m32 ${LDFLAGS}"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   make
 }
