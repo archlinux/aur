@@ -1,6 +1,6 @@
 pkgbase = cmsscanner
 	pkgdesc = Detects FOSS CMS in the local filesystem
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/CMS-Garden/cmsscanner
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = cmsscanner
 	makedepends = php-composer
 	makedepends = git
 	depends = php
-	source = cmsscanner::git+https://github.com/CMS-Garden/cmsscanner.git#tag=0.2.0
+	source = cmsscanner::git+https://github.com/CMS-Garden/cmsscanner.git#tag=0.2.1
 	sha512sums = SKIP
 
 pkgname = cmsscanner
