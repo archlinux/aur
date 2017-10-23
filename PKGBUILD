@@ -4,7 +4,7 @@
 
 pkgname=apache-tools
 pkgver=2.4.29
-pkgrel=2
+pkgrel=1
 pkgdesc="Useful Apache tools - htdigest, htpasswd, ab, htdbm"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url="http://httpd.apache.org/"

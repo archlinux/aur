@@ -1,7 +1,7 @@
 pkgbase = apache-tools
 	pkgdesc = Useful Apache tools - htdigest, htpasswd, ab, htdbm
 	pkgver = 2.4.29
-	pkgrel = 2
+	pkgrel = 1
 	url = http://httpd.apache.org/
 	arch = i686
 	arch = x86_64
