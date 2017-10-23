@@ -1,0 +1,22 @@
+pkgbase = netease-cloud-music-docker-version
+	pkgdesc = Use docker to avoid netease-music bugs
+	pkgver = 1.0.0_2
+	pkgrel = 1
+	url = https://github.com/qzwlecr/netease-cloud-music-docker-version
+	install = netease-cloud-music-docker-version.install
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	depends = docker
+	depends = bash
+	depends = xorg-xhost
+	conflicts = netease-cloud-music
+	source = http://s1.music.126.net/download/pc/netease-cloud-music_1.0.0-2_amd64_ubuntu16.04.deb
+	source = http://music.163.com/html/web2/service.html
+	source = https://raw.githubusercontent.com/qzwlecr/netease-cloud-music-docker-version/master/netease-cloud-music
+	md5sums = d9a6fa79ffcb654254a1d8b7ba5901a3
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = netease-cloud-music-docker-version
+
