@@ -1,5 +1,5 @@
 pkgname=libsolv
-pkgver=0.6.29
+pkgver=0.6.30
 pkgrel=1
 pkgdesc="Library for solving packages and reading repositories"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ optdepends=('perl: for perl bindings'
             'python: for python bindings'
             'ruby: for ruby bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('a6df21922936fad7938930de909488fb')
+md5sums=('76fad6d855817f6fbe70fdec384885ae')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -62,9 +62,9 @@ package() {
 	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
 
-	install -D -m644 ../LICENSE.BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE.BSD"
-	install -D -m644 ../README      "$pkgdir/usr/share/doc/$pkgname/README"
-	install -D -m644 ../BUGS        "$pkgdir/usr/share/doc/$pkgname/BUGS"
+	install -Dp -m644 ../LICENSE.BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE.BSD"
+	install -Dp -m644 ../README      "$pkgdir/usr/share/doc/$pkgname/README"
+	install -Dp -m644 ../BUGS        "$pkgdir/usr/share/doc/$pkgname/BUGS"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
