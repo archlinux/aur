@@ -5,8 +5,8 @@
 
 pkgbase=linux-covolunablu-gaming
 _srcname=linux-4.13
-pkgver=4.13.4
-pkgrel=2
+pkgver=4.13.8
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -34,10 +34,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '1e34c35dfbd3b7451a7b3eb93c5e342acc006b5d1906b5e542a8f203723bb8d6'
+            '3b2bcceb16acd75322e98d3e93967e82bd0e7499c748bf12bd46c7519dacc315'
             'SKIP'
-            '1f6e13239345a46bec763c490757fd8d5695a3312d892d153fe0b21c6195a8eb'
-            'fa0348d3849b4f4a41ac73056d4c3603798a80d1beb0d6b7012f16cf22de4bcb'
+            'bc5510d5bf58af25cb120a5ae3cd19da59065434b94d3e86e3180829c5abce37'
+            '249588b49dcaa0ebc6862f051867462b6080a85032a50072a006ce3f52be9390'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             # -- patches
@@ -70,7 +70,7 @@ prepare() {
   cp "${srcdir}/xpad.c" ./drivers/input/joystick/xpad.c
 
 
-  cat "${srcdir}/config.${CARCH}" > ./.config
+  cp -Tf ../config.${CARCH} .config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
