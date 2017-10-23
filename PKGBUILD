@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.1.beta7.r0.gcc613b1e98
+pkgver=8.1.beta9.r0.gbc45dab36e
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -23,7 +23,7 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'sagemath-doc: Documentation and inline help' 'python2-igraph: igraph backend for graph theory'
   'coin-or-cbc: COIN backend for numerical computations' 'coin-or-csdp: for computing Lovász theta-function of graphs'
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
-  'modular_decomposition: modular decomposition of graphs' 'ffmpeg: to export animations to video' 'imagemagick: to show animations'
+  'ffmpeg: to export animations to video' 'imagemagick: to show animations'
   'coxeter3: Coxeter groups implementation' 'cryptominisat5: SAT solver' 'gap-data: for computing Galois groups'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
   'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups'
@@ -33,11 +33,11 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'sirocco: for computing the fundamental group of the complement of a plane curve'
   'three.js: alternative 3D plots engine' 'tachyon: alternative 3D plots engine')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
-  mcqd coxeter3 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
+  mcqd coxeter3 bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
 source=(git://git.sagemath.org/sage.git#branch=develop
         env.patch package.patch latte-count.patch jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch
         r-no-readline.patch fes02.patch sagemath-ecl-no-sigfpe.patch sagemath-threejs.patch
-        sagemath-pynac-0.7.12.patch sagemath-detect-igraph.patch sagemath-networkx2.patch)
+        sagemath-detect-igraph.patch sagemath-networkx2.patch)
 sha256sums=('SKIP'
             'e0b5b8673300857fde823209a7e90faecf9e754ab812cc5e54297eddc0c79571'
             '4a2297e4d9d28f0b3a1f58e1b463e332affcb109eafde44837b1657e309c8212'
@@ -49,7 +49,6 @@ sha256sums=('SKIP'
             'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea'
             'c31809f887bf9acc45c5bd9dd30bb93e73601d3efbf3016594c3c1d241731c8a'
             '514135b920a43f999571a15e97b41e14f5bed59f65b19643864dc23555a7b830'
-            'bf3368478bb2e1217d70698a7ea9dfd355ee8ad663aa70bd57fc342ac03cc02a'
             '90be1d1a90120bd5bd3620769480106ba809dd23e896bc4a3f8931e5340f3cda'
             'a1a0ab5b794136b518f5f66fe9f1689411fabb3b81560b159eae81f6f69000e3')
 
@@ -91,8 +90,6 @@ prepare(){
   patch -p1 -i ../fes02.patch
 # disable SIGFPE for ecl https://trac.sagemath.org/ticket/22191
 # patch -p1 -i ../sagemath-ecl-no-sigfpe.patch
-# fix build with pynac 0.7.12 https://trac.sagemath.org/ticket/23950
-  patch -p1 -i ../sagemath-pynac-0.7.12.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*
@@ -133,7 +130,7 @@ package_sagemath-git() {
   mkdir -p "$pkgdir"/usr/bin
   cp bin/sage "$pkgdir"/usr/bin
   for _i in arch-env banner cachegrind callgrind cleaner coverage coverageall cython env env-config eval grep grepdoc inline-fortran \
-    ipython massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2ipynb rst2sws rst2txt run \
+    ipython massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2sws rst2txt run \
     run-cython runtests startuptime.py sws2rst valgrind version.sh
   do
     cp bin/sage-$_i "$pkgdir"/usr/bin
