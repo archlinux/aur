@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Spotify Web
+Comment=Open open.spotify.com in app-mode chromium
+Exec=chromium --app="https://open.spotify.com/"
+Icon=spotify-web
+Type=Application
+Terminal=False
+Categories=Audio;Player;Music;Network;
