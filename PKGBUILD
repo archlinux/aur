@@ -1,4 +1,4 @@
-pkgdesc="systemd-nspawn bash interface"
+pkgdesc="Bash interface for systemd-nspawn container management"
 pkgname=nspawn.sh
 pkgver=master
 pkgrel=0
