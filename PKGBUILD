@@ -14,8 +14,8 @@ source=("https://github.com/andrewannex/spiceypy/archive/v${pkgver}.tar.gz")
 md5sums=('7115d8c054e46b21c85863bd42de0a3d')
 
 prepare() {
-  cp -a SpiceyPy-${pkgver} SpiceyPy-py2-${pkgver}
-  cd SpiceyPy-py2-$pkgver
+  cp -a SpiceyPy-$pkgver SpiceyPy-$pkgver-py2
+  cd SpiceyPy-$pkgver-py2
 
   sed -e "s|#![ ]*/usr/bin/python[0-9]*$|#!/usr/bin/python2|" \
       -e "s|#![ ]*/usr/bin/env python[0-9]*$|#!/usr/bin/env python2|" \
@@ -23,19 +23,13 @@ prepare() {
       -i $(find . -name '*.py')
 }
 
-build_python2-spiceypy() {
-  cd "$srcdir"
-
+build() {
   echo "Building Python2"
-  cd "$srcdir"/SpiceyPy-py2-${pkgver}
+  cd SpiceyPy-$pkgver-py2
   python2 setup.py build
-}
-
-build_python-spiceypy() {
-  cd "$srcdir"
 
   echo "Building Python3"
-  cd "$srcdir"/SpiceyPy-${pkgver}
+  cd ../SpiceyPy-$pkgver
   python setup.py build
 }
 
@@ -43,7 +37,7 @@ package_python2-spiceypy() {
   depends=('python2-six>=1.9.0' 'python2-numpy>=1.8.0')
   optdepends=('python2-pytest>=2.9.0: testing')
 
-  cd "$srcdir"/SpiceyPy-py2-${pkgver}
+  cd SpiceyPy-$pkgver-py2
 
   python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
 
@@ -54,7 +48,7 @@ package_python-spiceypy() {
   depends=('python-six>=1.9.0' 'python-numpy>=1.8.0')
   optdepends=('python-pytest>=2.9.0: testing')
 
-  cd "$srcdir"/SpiceyPy-${pkgver}
+  cd SpiceyPy-$pkgver
 
   python setup.py install --skip-build --root="$pkgdir" --optimize=1
 
