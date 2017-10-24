@@ -1,6 +1,6 @@
 pkgbase = fluidsynth-git
 	pkgdesc = A real-time software synthesizer based on the SoundFont 2 specifications (development version)
-	pkgver = 1.1.6.r423.048c51c
+	pkgver = 1.1.8.r868.e485129
 	pkgrel = 1
 	url = http://www.fluidsynth.org/
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = fluidsynth-git
 	depends = alsa-lib
 	depends = ladspa
 	optdepends = pulseaudio: PulseAudio sound support
-	provides = fluidsynth=1.1.6
+	provides = fluidsynth=1.1.8
 	conflicts = fluidsynth
-	source = fluidsynth::git+http://git.code.sf.net/p/fluidsynth/code-git
+	source = fluidsynth::git+https://github.com/FluidSynth/fluidsynth.git
 	md5sums = SKIP
 
 pkgname = fluidsynth-git
