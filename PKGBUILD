@@ -5,7 +5,7 @@ pkgname=roundcube-rcmcarddav
 _plugin_name=rcmcarddav
 _internal_name=carddav
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="CardDAV plugin for RoundCube Webmailer"
 arch=('any')
 url="https://github.com/blind-coder/rcmcarddav"
@@ -17,14 +17,14 @@ sha512sums=('a9eeb5ef324872d02988abc89297e2d545baa8ad6734eb342b40418322489b8e625
 
 package() {
   # create directories for plugin and config
-  mkdir -p ${pkgdir}/{usr/share,etc}/webapps/roundcubemail/plugins/${_internal_name}
+  mkdir -p "${pkgdir}"/{usr/share,etc}/webapps/roundcubemail/plugins/"${_internal_name}"
 
   # copy all files to plugin directory
-  cp -ra ${_internal_name}/* ${pkgdir}/usr/share/webapps/roundcubemail/plugins/${_internal_name}
+  cp -ra "${_internal_name}/"* ${pkgdir}/usr/share/webapps/roundcubemail/plugins/"${_internal_name}"
 
   # copy config and symlink it
-  cp ${pkgdir}/usr/share/webapps/roundcubemail/plugins/${_internal_name}/config.inc.php.dist \
-    ${pkgdir}/etc/webapps/roundcubemail/plugins/carddav/config.inc.php
+  cp "${pkgdir}/usr/share/webapps/roundcubemail/plugins/${_internal_name}/config.inc.php.dist" \
+    "${pkgdir}/etc/webapps/roundcubemail/plugins/carddav/config.inc.php"
   ln -s "/etc/webapps/roundcubemail/plugins/${_internal_name}/config.inc.php" \
-    ${pkgdir}/usr/share/webapps/roundcubemail/plugins/${_internal_name}/config.inc.php
+    "${pkgdir}/usr/share/webapps/roundcubemail/plugins/${_internal_name}/config.inc.php"
 }
