@@ -4,7 +4,7 @@
 pkgname=lepton-snippet-manager-git
 _pkgname=lepton-snippet-manager
 pkgver=338.dd9551d
-pkgrel=1
+pkgrel=2
 pkgdesc="A lean snippet manager based on GitHub Gist"
 arch=('x86_64')
 url="https://github.com/hackjutsu/Lepton"
@@ -36,7 +36,7 @@ package() {
     install -Dm644 lepton-snippet-manager.desktop -t "$pkgdir/usr/share/applications/"
 
     cd "$srcdir/$_pkgname"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     convert build/icon.ico $srcdir/lepton-snippet-manager.png
     	
@@ -59,12 +59,12 @@ package() {
     install -Dm644 "$srcdir/lepton-snippet-manager-5.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/$_pkgname.png"
 
     cd "$srcdir/$_pkgname/"
-    mkdir -p "$pkgdir/usr/lib/$_pkgname/"
-    cp -r --no-preserve='ownership' -- * "$pkgdir/usr/lib/$_pkgname/"
+    mkdir -p "$pkgdir/opt/$_pkgname/"
+    cp -r --no-preserve='ownership' -- * "$pkgdir/opt/$_pkgname/"
     install -Dm755 "$srcdir/lepton-snippet-manager.sh" "$pkgdir/usr/bin/lepton-snippet-manager"
 }
 
 sha256sums=('SKIP'
             '1da47def3ec6780a77635671e28aac263e47841da3825511d42de813f5b9c639'
-            '8242404e0831c7b8c614c3dfa0b398fe16aa3ace9fa4462b8dc7fd2c5cd35aa7')
+            'dc9d3488c1730c1c6f2b729a64e75236844ee119bf64bf6c1eb03a0e78bccc4b')
 
