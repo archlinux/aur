@@ -3,12 +3,12 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=4.4.3
-pkgrel=11
+pkgrel=12
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
 makedepends=('npm' 'nodejs' 'grunt-cli' 'qt5-base' 'git' 'wget' 'p7zip' 'gcc6' 'python2' 'java-runtime')
-depends=('nodejs')
+depends=('nodejs' 'icu55')
 optdepends=('rabbitmq' 'redis' 'postgresql')
 license=('AGPL')
 source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-DocumentServer-${pkgver}.tar.gz"
@@ -31,7 +31,7 @@ sha512sums=("11bb99fd287ef961e6f57e97224d46b5d4d80f21b13f0a0f61c095f4fcf3df9f45a
 	    "21a71b80ecb597c1e50df7b79d05383c26ab3b6c98a7d582e9f1cde78a5724856f3312b690184e7191918004d2a7d2524d16f28694dc1cac4f22b9a258a6be8c"
 	    "c39af73262ff36b688d31f12d7ab26a64f3d1dd677a9e142d994a01d931bbfb575e0f6dc47651a3e68d3728c74a65958979c904675868e2953f34b971afbec4b"
 	    "4875f25a76731e43c4a08f7c2b557d337224c34ddf2a9b0348c4bf325bfcfc11c6b4f834d5c7da486957ec0380cfaaf45b83dd920e6e660fb6f4d1f3857fd787"
-	    "ba093977b6924cc34ac077721dda28d61dff141ee6843f21f2d431f041df4d9d1ef623303becdf4b8e57fba29b596a43a9b9b559049f4ec3b7794325f724ba60"
+	    "b3e399258eeabb870c8735d28ab92095d7b5f3b58b45ee001efcce013027d29ba4cf18b06256453dd9f2c73ea0c156efb011a381865647c2573e825cefc039ea"
 	    "5c691e07eccd51f543de92cc7f7fd5a5aac77fa2a6cf786f439a4ea43abc7606180aa5a9dd3762200091a4b3a479860881f94aefd0297d8e7ed955bf25c37417"
 	    "428e5c3326da53ee993871ab56c3b35c40fea5d5513950bee2a87b158f25cc0ebe76d690e4fa17bceb8583dde2f164fcf0a71a60652da1c67171d215f2528e6a"
 	    "6f53f9eec783dc00497e2ce495ce92dc1d78824e108ecdd914806fca4948e1748383125e0322a444bf9f8e158eacee06247b4966beb172522e3d176a8bc093a9")

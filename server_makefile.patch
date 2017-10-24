@@ -47,8 +47,8 @@
 +	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libPdfWriter.so ${DESTDIR}/usr/lib/libPdfWriter.so
 +	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libXpsFile.so ${DESTDIR}/usr/lib/libXpsFile.so
 +	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libUnicodeConverter.so ${DESTDIR}/usr/lib/libUnicodeConverter.so
-+	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicudata.so.55 ${DESTDIR}/usr/lib/libicudata.so.55
-+	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicuuc.so.55 ${DESTDIR}/usr/lib/libicuuc.so.55
++	#ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicudata.so.55 ${DESTDIR}/usr/lib/libicudata.so.55
++	#ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicuuc.so.55 ${DESTDIR}/usr/lib/libicuuc.so.55
 +
 +	# sudo -u onlyoffice "/usr/share/webapps/onlyoffice/documentserver/server/tools/AllFontsGen"\
 +	# 	"/usr/share/fonts"\

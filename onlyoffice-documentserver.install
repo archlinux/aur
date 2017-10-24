@@ -13,5 +13,4 @@ post_install() {
  
 post_remove() {
    userdel -rf onlyoffice
-   groupdel onlyoffice
 }
