@@ -2,7 +2,7 @@
 pkgname=lalapps
 _pkgname=${pkgname}
 pkgver=6.21.0
-pkgrel=4
+pkgrel=7
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
@@ -18,17 +18,20 @@ options=(!emptydirs)
 install=
 source=("http://software.ligo.org/lscsoft/source/lalsuite/${_pkgname}-${pkgver}.tar.xz")
 sha256sums=('2b997406b7bca358295e6d060919346fd5281ec0217a357c91849012bc2c9973')
-build() {
+prepare() {
     cd "$srcdir/${_pkgname}-${pkgver}"
     sed -i 's/\-Werror//g' configure
+}
+build() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
     ./configure --prefix=$pkgdir/usr CFLAGS=-O3
     make -j
+}
+check() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
+    make -j check
 }
 package() {
     cd "$srcdir/${_pkgname}-${pkgver}"
     make install
 }
-#check() {
-#    cd "$srcdir/${_pkgname}-${pkgver}"
-#    make -j check
-#}
