@@ -6,7 +6,11 @@ pkgdesc="tools to manipulate video and audio time codes"
 arch=('any')
 url="https://github.com/dffischer/medianumbers/"
 license=('GPL')
-depends=('bash' 'ffmpeg' 'grep' 'bc')
+depends=('bash')
+optdepends=('ffmpeg: for duration and stretch'
+            'grep: for duration'
+            'bc: for stretch'
+            'sed: for sum-time')
 makedepends=('ruby-ronn')
 
 makedepends+=('git')

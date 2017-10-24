@@ -8,9 +8,10 @@ pkgbase = medianumbers-git
 	makedepends = ruby-ronn
 	makedepends = git
 	depends = bash
-	depends = ffmpeg
-	depends = grep
-	depends = bc
+	optdepends = ffmpeg: for duration and stretch
+	optdepends = grep: for duration
+	optdepends = bc: for stretch
+	optdepends = sed: for sum-time
 	provides = medianumbers=r0
 	conflicts = medianumbers
 	source = medianumbers::git+file:///tmp/medianumbers
