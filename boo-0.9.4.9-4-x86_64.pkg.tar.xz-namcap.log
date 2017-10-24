@@ -1,0 +1,3 @@
+boo W: No ELF files and not an "any" package
+boo W: Dependency included and not needed ('mono')
+boo W: Dependency included and not needed ('shared-mime-info')
