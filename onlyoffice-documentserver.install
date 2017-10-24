@@ -1,5 +1,6 @@
 post_install() {
-   getent passwd onlyoffice > /dev/null || adduser --quiet --home /usr/share/webapps/onlyoffice --system --group onlyoffice
+   getent passwd onlyoffice > /dev/null || useradd -d /usr/share/webapps/onlyoffice onlyoffice > /dev/null
+   getent group onlyoffice > /dev/null || groupadd -r onlyoffice > /dev/null
    chown onlyoffice:onlyoffice -R /usr/share/webapps/onlyoffice
    chown onlyoffice:onlyoffice -R /var/log/onlyoffice
    chown onlyoffice:onlyoffice -R /var/lib/onlyoffice

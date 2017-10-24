@@ -39,16 +39,16 @@
 -	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libUnicodeConverter.so /lib/libUnicodeConverter.so
 -	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libicudata.so.55 /lib/libicudata.so.55
 -	sudo ln -s /var/www/onlyoffice/documentserver/server/FileConverter/bin/libicuuc.so.55 /lib/libicuuc.so.55
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libDjVuFile.so ${DESTDIR}/usr/lib/libDjVuFile.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libdoctrenderer.so ${DESTDIR}/usr/lib/libdoctrenderer.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libHtmlFile.so ${DESTDIR}/usr/lib/libHtmlFile.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libHtmlRenderer.so ${DESTDIR}/usr/lib/libHtmlRenderer.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libPdfReader.so ${DESTDIR}/usr/lib/libPdfReader.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libPdfWriter.so ${DESTDIR}/usr/lib/libPdfWriter.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libXpsFile.so ${DESTDIR}/usr/lib/libXpsFile.so
-+	ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libUnicodeConverter.so ${DESTDIR}/usr/lib/libUnicodeConverter.so
-+	#ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicudata.so.55 ${DESTDIR}/usr/lib/libicudata.so.55
-+	#ln -s ${DESTDIR}/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicuuc.so.55 ${DESTDIR}/usr/lib/libicuuc.so.55
++	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libDjVuFile.so ${DESTDIR}/usr/lib/libDjVuFile.so
++	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libdoctrenderer.so ${DESTDIR}/usr/lib/libdoctrenderer.so
++	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libHtmlFile.so ${DESTDIR}/usr/lib/libHtmlFile.so
++	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libHtmlRenderer.so ${DESTDIR}/usr/lib/libHtmlRenderer.so
++	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libPdfReader.so ${DESTDIR}/usr/lib/libPdfReader.so
++	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libPdfWriter.so ${DESTDIR}/usr/lib/libPdfWriter.so
++	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libXpsFile.so ${DESTDIR}/usr/lib/libXpsFile.so
++	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libUnicodeConverter.so ${DESTDIR}/usr/lib/libUnicodeConverter.so
++	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicudata.so.55 ${DESTDIR}/usr/lib/libicudata.so.55
++	ln -s /usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/libicuuc.so.55 ${DESTDIR}/usr/lib/libicuuc.so.55
 +
 +	# sudo -u onlyoffice "/usr/share/webapps/onlyoffice/documentserver/server/tools/AllFontsGen"\
 +	# 	"/usr/share/fonts"\
