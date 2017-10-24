@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2-git
-pkgver=17.10.04
+pkgver=17.10.25
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -32,7 +32,7 @@ build()
 	cd $srcdir
 	mkdir -p QMPlay2-build
 	cd QMPlay2-build
-	cmake ../QMPlay2 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_QT5=ON -DUSE_LINK_TIME_OPTIMIZATION=OFF -DCMAKE_CXX_COMPILER_LAUNCHER=ccache $USE_JEMALLOC $USE_SIDPLAYFP
+	cmake ../QMPlay2 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_LINK_TIME_OPTIMIZATION=OFF -DCMAKE_CXX_COMPILER_LAUNCHER=ccache $USE_JEMALLOC $USE_SIDPLAYFP
 	time make
 }
 
