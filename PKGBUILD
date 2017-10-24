@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=jiri-git
-pkgver=r1331
+pkgver=r1334
 pkgrel=1
 pkgdesc='A tool for multi-repo development similar to Android repo'
 arch=(i686 x86_64)
@@ -39,7 +39,6 @@ pkgver() {
 prepare() {
   cd jiri
 
-  sed -i 's/\bpython\b/python2/' scripts/build.sh
   # script sets GOPATH to fuchsia wide location, we do not have it
   sed -i 's/export GOPATH=.*//' scripts/build.sh
   mkdir -p go
