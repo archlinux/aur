@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tramp
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="emacs extension that provides transparent remote file editing"
 arch=('any')
@@ -14,8 +14,7 @@ makedepends=('emacs' 'texinfo')
 # add texlive-core to the makedepends and comment in the last two lines
 # of this PKGBUILD if you want the documentation in dvi-format
 source=("ftp://ftp.gnu.org/gnu/tramp/$pkgname-$pkgver.tar.gz")
-md5sums=('37f9591bc8031254dd45a99b1ad20dd4')
-install=tramp.install
+sha256sums=('7fb54fc8d27e01a50b8e3bf1817d77ef8aa91bb465e97446d5d603713927fcea')
 
 prepare() {
   cd "$pkgname-$pkgver/texi"
