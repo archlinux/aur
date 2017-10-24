@@ -2,7 +2,7 @@
 
 pkgname=imv-git
 pkgver=v2.1.3.r61.gc51dff6
-pkgrel=1
+pkgrel=2
 pkgdesc='Image viewer for Wayland and X11'
 url="https://github.com/eXeC64/imv"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('freeimage' 'sdl2_ttf' 'fontconfig')
 makedepends=('git')
 optdepends=('cmocka: for running unit tests')
-conflicts=('renameutils')
+conflicts=('renameutils' 'imv')
 source=("git+https://github.com/eXeC64/imv.git")
 sha1sums=('SKIP')
 
