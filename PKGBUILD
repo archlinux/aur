@@ -4,18 +4,18 @@
 
 pkgname=seahub
 pkgver=6.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The web end of seafile server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
 license=('Apache')
-depends=("seafile-server" "python2-virtualenv")
+depends=("seafile-server" "python2-virtualenv" "python2-django-pylibmc")
 makedepends=('python2-pip')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
         "seahub-preupgrade")
 sha256sums=('04398c57bd4fa17050530ab47d4f1410196f3cd925d7c1067af00e0c848a3799'
-            'd3b0d33848ab9e0dbb9ea6e6e385fc4ffa82a77193af447edef7646d68e396b1')
+            '9c1f68c2e7af52f51a77733c869552c7c2d809f78758ca5dedc13f79d46f0324')
 # Strip is not happy on precompiled libs in virtualenv, temporary disable
 options=("!strip")
 
