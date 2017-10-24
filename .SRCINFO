@@ -1,0 +1,15 @@
+pkgbase = python-lfm
+	pkgdesc = A Last.fm API interface.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://gitlab.com/hauzer/lfm/
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python3
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/l/lfmh/lfmh-1.1.1.zip
+	sha512sums = 7d9eac7e8c3569b57bb653dbd528793d55e401dff226caa2685305946b2c365614658ea75254bde4e584344cb6beaf4dd1d72d6abaff811da8a6a6c4d623af96
+
+pkgname = python-lfm
+
