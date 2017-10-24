@@ -1,4 +1,5 @@
-# Maintainer: Aner Andros <code@anerandros.info>
+# Maintainer: David Birks <david@tellus.space>
+# Contributor: Aner Andros <code@anerandros.info>
 
 pkgname=freeter
 pkgver=1.2.1
