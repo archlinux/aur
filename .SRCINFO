@@ -1,16 +1,16 @@
 pkgbase = execline-no-conflicts
 	pkgdesc = A (non-interactive) scripting language, like sh; without import or define
-	pkgver = 2.3.0.0
+	pkgver = 2.3.0.3
 	pkgrel = 1
 	url = http://skarnet.org/software/execline/
 	arch = i686
 	arch = x86_64
 	license = ISC
 	depends = skalibs
-	provides = execline
+	provides = execline-2.3.0.3
 	conflicts = execline
-	source = http://skarnet.org/software/execline/execline-2.3.0.0.tar.gz
-	sha256sums = a0ec43b8feba299cc1e5c65b1978ed76571afa595bc53165373e29a57468f425
+	source = http://skarnet.org/software/execline/execline-2.3.0.3.tar.gz
+	sha256sums = 1a698425740a410a38be770f98b8faf94c633e29a74ba1d25adddbb294e979f5
 
 pkgname = execline-no-conflicts
 
