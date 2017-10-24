@@ -2,11 +2,12 @@
 
 pkgname=ocaml-stdint-git
 pkgver=20171013
-pkgrel=1
+pkgrel=2
 pkgdesc="Various signed and unsigned integers for OCaml"
 arch=('i686' 'x86_64')
 url='https://github.com/andrenth/ocaml-stdint'
 license=('MIT')
+provides=('ocaml-stdint')
 makedepends=('ocamlbuild' 'ocaml-findlib')
 source=("${pkgname}::git://github.com/andrenth/ocaml-stdint.git")
 md5sums=('SKIP')
