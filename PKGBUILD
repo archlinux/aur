@@ -1,12 +1,17 @@
 # Contributor: Johannes Dewender  arch at JonyJD dot net
 # Contributor: C. Dominik Bódi  dominik.bodi at gmx dot de
+
 pkgname=debhelper-python
-pkgver=3.5.3
-pkgrel=2
-_pkgname=python3-defaults
-_pkgrel=1
-_pkgname2=dh-python
-_pkgver2=2.20170125
+pkgver=3.6.3
+pkgrel=1
+
+_debpy_name=python3-defaults
+_debpy_ver=$pkgver
+_debpy_rel=1
+
+_py3def_name=dh-python
+_py3def_ver=2.20170125
+
 pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
 url="http://packages.debian.org/sid/python3"
@@ -15,25 +20,28 @@ depends=('python-docutils')
 makedepends=('debhelper' 'python')
 optdepends=('sgmltools-lite')
 provides=('debhelper-python' 'dh-python')
-options=()
-source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver-$_pkgrel.tar.gz
-http://ftp.debian.org/debian/pool/main/d/$_pkgname2/${_pkgname2}_$_pkgver2.tar.xz)
-sha256sums=('aa58a9fceb9975f71be344e594393cf3384dd6b55d9541abf0bee7c5dce8ec15'
-            '2e09c162ee2442a03511b7ebe83896e1e3c1df79ce97a22d2f8a8b4cfec9f1e3')
+source=(http://ftp.debian.org/debian/pool/main/p/${_debpy_name}/${_debpy_name}_${_debpy_ver}-${_debpy_rel}.tar.gz
+        http://ftp.debian.org/debian/pool/main/d/${_py3def_name}/${_py3def_name}_${_py3def_ver}.tar.xz
+        py3versions.patch)
+sha512sums=('a5611566fc49a6364a09f86bfd3ee43dad775ef5ca85c0b6338872f2e98852ea5d90d717e67d8a3b631aee8260a313926c32e98fcf4441b72c00a1df90bff563'
+            'e7b48d6678fbc36f0628ad5e077e756f5ea56889be936763a4346ce080cf631f74c932cd463d3cfce24cdc9e7b377642857563b8be5c01347a46827cf695f2cc'
+            '772332cecd85331b6deda25c0d48eed2490e7e7f26d90c7936f46188c706f590771af6edcbb4740a23bff0434ed061bc2b49f8183561cbf4bbb845ed3bebc42a')
+
+prepare() {
+  cd "$srcdir/$_debpy_name-debian"
+  patch -Np1 < "$srcdir"/py3versions.patch
+}
 
 build() {
-  #cd "$srcdir/$_pkgname-$pkgver"
-  cd "$srcdir/$_pkgname-debian"
+  cd "$srcdir/$_debpy_name-debian"
   make
 
-  cd "$srcdir/$_pkgname2-$_pkgver2"
-  #cd "$srcdir/$_pkgname2"
+  cd "$srcdir/$_py3def_name-$_py3def_ver"
   make
 }
 
 check() {
-  #cd "$srcdir/$_pkgname-$pkgver"
-  cd "$srcdir/$_pkgname-debian"
+  cd "$srcdir/$_debpy_name-debian"
   sed -i -e 's|/usr/share/python3/debian_defaults|debian/debian_defaults|' \
     debpython/version.py
   make -k check_versions
@@ -42,7 +50,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-debian"
+  cd "$srcdir/$_debpy_name-debian"
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 
   mkdir -p $pkgdir/usr/share/python3
@@ -56,7 +64,7 @@ package() {
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
   install -D -m 644 debian/copyright $pkgdir/usr/share/licenses/$pkgname/
 
-  cd "$srcdir/$_pkgname2-$_pkgver2"
+  cd "$srcdir/$_py3def_name-$_py3def_ver"
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 
   # create symlinks to executables in order to make this look like in

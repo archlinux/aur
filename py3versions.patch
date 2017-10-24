@@ -1,0 +1,17 @@
+--- a/debian/py3versions.py	2017-10-24 11:05:21.988325727 +0200
++++ b/debian/py3versions.py	2017-10-24 11:05:38.918445568 +0200
+@@ -145,10 +145,10 @@
+         _default_version = os.readlink('/usr/bin/python3')
+     # consistency check
+     debian_default = read_default('default-version')
+-    if not _default_version in (debian_default, os.path.join('/usr/bin', debian_default)):
+-        raise ValueError("the symlink /usr/bin/python3 does not point to the "
+-                         "python3 default version. It must be reset "
+-                         "to point to %s" % debian_default)
++#    if not _default_version in (debian_default, os.path.join('/usr/bin', debian_default)):
++#        raise ValueError("the symlink /usr/bin/python3 does not point to the "
++#                         "python3 default version. It must be reset "
++#                         "to point to %s" % debian_default)
+     _default_version = debian_default
+     if version_only:
+         return _default_version[6:]
