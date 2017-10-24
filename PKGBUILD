@@ -17,22 +17,22 @@
 pkgbase="spl-linux"
 pkgname=("spl-linux" "spl-linux-headers")
 
-pkgver=0.7.3.4.13.7.1
+pkgver=0.7.3.4.13.8.1
 pkgrel=1
-makedepends=("linux-headers=4.13.7-1")
+makedepends=("linux-headers=4.13.8-1")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.3/spl-0.7.3.tar.gz")
 sha256sums=("cd8b8624163577bdec1d1d214c942c5771f183432a04d35c00fc6e7f12fa836b")
 license=("GPL")
-depends=("spl-utils-common>=0.7.3" "kmod" "linux=4.13.7-1")
+depends=("spl-utils-common>=0.7.3" "kmod" "linux=4.13.8-1")
 
 build() {
     cd "${srcdir}/spl-0.7.3"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.13.7-1-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.13.7-1-ARCH/build \
+                --with-linux=/usr/lib/modules/4.13.8-1-ARCH/build \
+                --with-linux-obj=/usr/lib/modules/4.13.8-1-ARCH/build \
                 --with-config=kernel
     make
 }
@@ -58,5 +58,5 @@ package_spl-linux-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.13.7-1-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.13.8-1-ARCH/Module.symvers
 }
