@@ -1,3 +1,4 @@
+# Maintainer: Franck Lucien Duriez <franck.lucien.duriez@gmail.com>
 pkgname="python2-alexandra"
 _srcname="python-alexandra"
 pkgver="0.3.0"
