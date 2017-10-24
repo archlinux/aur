@@ -1,5 +1,5 @@
 pkgbase = python-sphinx
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = http://sphinx.pocoo.org/
 	arch = any
@@ -47,8 +47,8 @@ pkgbase = python-sphinx
 	makedepends = python2-sqlalchemy
 	makedepends = python2-whoosh
 	makedepends = python2-typing
-	source = https://pypi.org/packages/source/S/Sphinx/Sphinx-1.6.4.tar.gz
-	md5sums = 8dc0e34eed16df1b7cb6c406b590c763
+	source = https://pypi.org/packages/source/S/Sphinx/Sphinx-1.6.5.tar.gz
+	md5sums = cd73118c21ec610432e63e6421ec54f1
 
 pkgname = python-sphinx
 	pkgdesc = Python3 documentation generator
