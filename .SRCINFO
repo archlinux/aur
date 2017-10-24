@@ -1,0 +1,18 @@
+pkgbase = swagger-codegen-2
+	pkgdesc = Swagger Code Generator (2.x series)
+	pkgver = 2.4.7
+	pkgrel = 1
+	url = https://github.com/swagger-api/swagger-codegen
+	arch = any
+	license = Apache
+	depends = java-runtime
+	conflicts = swagger-codegen
+	replaces = swagger-codegen
+	noextract = swagger-codegen-cli-2.4.7.jar
+	source = https://oss.sonatype.org/content/repositories/releases/io/swagger/swagger-codegen-cli/2.4.7/swagger-codegen-cli-2.4.7.jar
+	source = swagger-codegen
+	sha256sums = eadc0af727822cb3c55df3d81e77852ab8e711ac18c658c527265bc3da8946b4
+	sha256sums = b1c49877eaf8905f0d6d297a7a68692b5137e24df44ddf585f45033962c4e3ab
+
+pkgname = swagger-codegen-2
+
