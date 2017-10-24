@@ -3,7 +3,7 @@
 
 pkgname=emby-server-dev-unlocked
 pkgver=3.2.34.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
 url='https://github.com/nicolahinssen/emby-dev-unlocked'
@@ -45,8 +45,7 @@ build() {
     /t:build MediaBrowser.sln
   mono --aot='full' -O='all' ../build/MediaBrowser.Server.Mono.exe
 
-  cp ../emby-dev-unlocked-2.0/replacements/connectionmanager.js 
-../build/dashboard-ui/bower_components/emby-apiclient
+  cp ../emby-dev-unlocked-2.0/replacements/connectionmanager.js ../build/dashboard-ui/bower_components/emby-apiclient
 }
 
 package() {
