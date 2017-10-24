@@ -1,3 +1,18 @@
+2017-10-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.0.4.1-1:
+    Removed CardDropsRestricted and added HoursUntilCardDrops bot config property with default value of 3 in its place.
+    ASF is now available as official Docker container, check wiki for more info (ref: #661, #670).
+    Added Changelog.html and ConfigGenerator.html helper links to the ASF folder.
+    Added !ib, !ibadd and !ibrm commands.
+    Heavily improved redeeming function that now will take in account RateLimited bots and won't attempt to forward/distribute keys to them anymore, saving time and failing requests.
+    Slightly improved code responsible for ensuring that SteamLogin and SteamPassword fields are valid.
+    Slightly improved code responsible for accepting trades sent from SendOnFarmingFinished + ShutdownOnFarmingFinished bots.
+    !update command will now properly state success and failure.
+    Fixed quite important regression introduced in V3.0.2.4 that could make ASF trying to redeem given key infinitely when there are no more bots to try.
+    Fixed !resume not working for users with Operator SteamUserPermissions.
+    Fixed priority idling queue not always working properly.
+    Fixed ASF auto-update feature not working when custom --path was specified.
+    Usual amount of code improvements, optimizations and bugfixes.
 2017-10-11 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.0.3.0-1:
     [!] Fixed wrong SteamTradeMatcher dupes logic (ref: #657).
