@@ -6,7 +6,7 @@
 
 pkgname=numix-themes-darkblue
 pkgver=2.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A flat and light theme with a modern look (GNOME, Openbox, Unity, Xfce) (Dark Blue Variant)'
 arch=('any')
 url='http://numixproject.org/'
@@ -15,7 +15,7 @@ makedepends=('git' 'glib2' 'ruby-sass')
 optdepends=('gtk-engine-murrine: GTK2 theme engine')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/numixproject/numix-gtk-theme/archive/${pkgver}.tar.gz"
 		'dark_colors.patch')
-md5sums=('622d373ca3d755bb612519388020b45a'
+md5sums=('ac4aa9cb32dcd65fd34f28b74b6c5020'
          'ff8c5ceda5fc260a9693d46c5bfff58b')
 
 prepare() {
