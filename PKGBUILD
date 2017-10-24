@@ -1,8 +1,9 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Sherlock Holo <sherlockya@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-cachetools
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible memoizing collections and decorators"
 arch=('any')
 depends=('python')
@@ -25,5 +26,5 @@ package() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
 
   msg2 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --skip-build --root="$pkgdir" --optimize=1
 }
