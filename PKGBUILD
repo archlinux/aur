@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=mingw-w64-libxlsxwriter-git
-pkgver=0.7.2.r490.cc960e7
+pkgver=0.7.5.r523.6e57695
 pkgrel=1
 pkgdesc="A C library for creating Excel XLSX files (mingw-w64)"
 arch=('any')
@@ -23,15 +23,15 @@ pkgver() {
 
 build() {
   unset LDFLAGS
-#  for _arch in ${_architectures}; do
-#    mkdir -p build-${_arch} && pushd build-${_arch}
-#    ${_arch}-cmake \
-#      -DBUILD_STATIC=OFF \
-#      -DCMAKE_BUILD_TYPE=Release \
-#      ../libxlsxwriter
-#    make
-#    popd
-#  done
+  for _arch in ${_architectures}; do
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-cmake \
+      -DBUILD_STATIC=OFF \
+      -DCMAKE_BUILD_TYPE=Release \
+      ../libxlsxwriter
+    make
+    popd
+  done
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-cmake \
@@ -43,11 +43,11 @@ build() {
 }
 
 package() {
-#  for _arch in ${_architectures}; do
-#    cd "${srcdir}/build-${_arch}"
-#    make DESTDIR="${pkgdir}" install
-#    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-#  done
+  for _arch in ${_architectures}; do
+    cd "${srcdir}/build-${_arch}"
+    make DESTDIR="${pkgdir}" VERBOSE=1 install
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+  done
   for _arch in ${_architectures}; do
     cd "${srcdir}/build-${_arch}-static"
     make DESTDIR="${pkgdir}" install
