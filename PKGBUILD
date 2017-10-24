@@ -5,8 +5,8 @@
 # and add '--enable-libndi_newtek' to the configure options.
 
 pkgname=ffmpeg-full-git
-pkgver=3.4.r87867.g0655810072
-pkgrel=3
+pkgver=3.4.r88116.gacf70639fb
+pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -25,7 +25,7 @@ depends=(
         'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'libbs2b' 'libilbc' 'kvazaar' 'openh264'
-        'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'libmysofa'
+        'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'libmysofa' 'rockchip-mpp'
 )
 depends_x86_64=('cuda' 'nvidia-utils')
 optdepends_x86_64=(
@@ -195,6 +195,7 @@ build() {
         --enable-nvenc \
         --enable-omx \
         --enable-omx-rpi \
+        --enable-rkmpp \
         --enable-vaapi \
         --enable-vdpau
     make
