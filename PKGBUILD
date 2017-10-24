@@ -2,7 +2,7 @@
 
 _pkgname=lxqt-session
 pkgname=$_pkgname-git
-pkgver=0.10.0.23.g1e7f82c
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="LXQt session"
 arch=("i686" "x86_64")
@@ -10,11 +10,11 @@ url="http://lxqt.org"
 license=("GPL2")
 depends=("liblxqt-git" "xdg-user-dirs")
 optdepends=("sddm: The recommended LXQt display manager")
-makedepends=("git" "cmake" "qt5-tools")
+makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxde/$_pkgname.git")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 
 pkgver() {
