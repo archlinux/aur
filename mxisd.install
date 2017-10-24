@@ -1,7 +1,7 @@
 post_install() {
     getent group mxisd > /dev/null 2>&1 || groupadd -r mxisd
     getent passwd mxisd > /dev/null 2>&1 || useradd -r -c 'Federated Matrix Identity Server Daemon' -g mxisd -s /usr/bin/nologin mxisd
-    passwd -l lightdm > /dev/null
+    passwd -l mxisd > /dev/null
 }
 
 post_upgrade() {
