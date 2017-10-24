@@ -1,6 +1,6 @@
 pkgbase = studio-3t
 	pkgdesc = The world's favorite IDE for working with MongoDB, formerly known as MongoChef.
-	pkgver = 5.5.1
+	pkgver = 5.6.1
 	pkgrel = 1
 	url = https://studio3t.com
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = studio-3t
 	source = studio-3t
 	sha256sums = b51ed1a6897541f52d60aa2b6e5add005cba31dabf7992e2177cfea6ab8fc070
 	sha256sums = c84a8462407ac2d300c34477c05c9545b7359cd1842879c2c321c88343b754f5
-	source_i686 = studio-3t-5.5.1-x86.tar.gz::https://download.studio3t.com/studio-3t/linux/5.5.1/studio-3t-linux-x86.tar.gz
-	sha256sums_i686 = 6b0732710234c5b3bfd8c5032645a2325abf92182a5fa73456f8fef0870239bd
-	source_x86_64 = studio-3t-5.5.1-x64.tar.gz::https://download.studio3t.com/studio-3t/linux/5.5.1/studio-3t-linux-x64.tar.gz
-	sha256sums_x86_64 = 244868e013870a586a9a896e081d23e948dbadcd9a4e7fc190195443c565b78a
+	source_i686 = studio-3t-5.6.1-x86.tar.gz::https://download.studio3t.com/studio-3t/linux/5.6.1/studio-3t-linux-x86.tar.gz
+	sha256sums_i686 = 3eb938b97ee1fd950dc2c7584a248ae3c32017963526c376b68cf89d888b43e8
+	source_x86_64 = studio-3t-5.6.1-x64.tar.gz::https://download.studio3t.com/studio-3t/linux/5.6.1/studio-3t-linux-x64.tar.gz
+	sha256sums_x86_64 = 704f70633b4ddf8883bd4c998bd6bf37d8c4eda6209de5469f2393ddd479d36c
 
 pkgname = studio-3t
 
