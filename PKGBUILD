@@ -12,11 +12,11 @@ source=("https://github.com/kamax-io/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('8c9368c5f1ab8e2e3a9788cf4e4ad0bcd197cc68b278efd360edb516e674658d')
 
 package() {
-	cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
 
     PYTHON_LOCATION=$(python2 -c "import site; print(site.getsitepackages()[0])")
 
-	# File
-	install -dm 755 "${pkgdir}"/${PYTHON_LOCATION}/synapse
-	install -m 644 rest_auth_provider.py "${pkgdir}"/${PYTHON_LOCATION}/synapse/rest_auth_provider.py
+    # File
+    install -dm 755 "${pkgdir}"/${PYTHON_LOCATION}/synapse
+    install -m 644 rest_auth_provider.py "${pkgdir}"/${PYTHON_LOCATION}/synapse/rest_auth_provider.py
 }
