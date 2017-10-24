@@ -7,7 +7,7 @@ pkgname=hdfview
 _pkgname=HDFView
 pkgver=2.14.0
 _pkgver=${pkgver%.0}
-pkgrel=5
+pkgrel=6
 pkgdesc="a GUI browser for reading hdf5 files (created with versions up to 1.8)"
 arch=('i686' 'x86_64')
 url="https://support.hdfgroup.org/products/java/"
@@ -16,15 +16,15 @@ depends=('hdf-java')
 makedepends=('apache-ant' 'java-environment')
 options=(!strip)
 source=("https://support.hdfgroup.org/ftp/HDF5/hdf-java/current/src/${pkgname}-${_pkgver}.tar.gz"
-        "${_pkgname}.desktop"
+        "${_pkgname}"
+	"${_pkgname}.desktop"
         "${_pkgname}.ico"
-        license
-        HDFView)
-md5sums=('3dafb38490718d46e359d250c7bb2377'
-         '4d40ab135641713c9b4ab0a41f1e1bf7'
-         'b86542f80203ea9f93f447fa7c20d25a'
-         'db0de6079dd881781768d05de29c50e0'
-         '5e498af8f85e275ab0bb583b0ab0a1b3')
+        license)
+sha256sums=('97a08300bba3f8b799a16d1d08ff9a1b2dd94757717dcf2a09d7c2539d6c6953'
+         'ffcd06e84214ebdb67ff46140708c6282558134e4f33146d53f10d67ea0b42bd'
+         'ceb3c33a6bf7462722328153903124eb743338e3bedc9255ac1b1251907ced9c'
+         '8d3e8e2c070e538f0a8de0d309afa2e11afb49c0889841044294cb2b72cda25b'
+         '78aac8e0c7fb92f8ea188dfa101e02c0df5ccaaaace6a52ff411be29c9b2d905')
 
 prepare() {
   cd "${pkgname}-${_pkgver}"

@@ -30,7 +30,7 @@ JAVA_OPTIONS=${JAVA_OPTIONS:1}
 export _JAVA_OPTIONS=${JAVA_OPTIONS}
 
 # Launch the viewer:
-exec ${HDFVIEW_APPLICATION}
+exec ${HDFVIEW_APPLICATION} "${@}"
 
 ##############################################################################
 # vim:et:ft=sh:nowrap:sts=4:sw=4:ts=4
