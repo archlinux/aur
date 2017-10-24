@@ -3,7 +3,7 @@
 
 pkgname=latte-dock-git
 gitname=latte-dock
-pkgver=0.7.1.r20.g040f314
+pkgver=0.7.1.r55.gf2b1ff4
 pkgrel=1
 pkgdesc='Replacement dock for Plasma desktops, providing an elegant and intuitive experience for your tasks and plasmoids- git version'
 arch=('i686' 'x86_64')
@@ -29,10 +29,12 @@ build() {
   cd ${gitname}
   mkdir build && cd build
 
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release ..
+#        -DKDE_L10N_BRANCH=trunk \
+#        -DKDE_L10N_AUTO_TRANSLATIONS=ON \
+#  make fetch-translations
   
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DKDE_L10N_BRANCH=trunk -DKDE_L10N_AUTO_TRANSLATIONS=ON -DCMAKE_BUILD_TYPE=Release ..
-  make fetch-translations
-
 }
 
 package() {
