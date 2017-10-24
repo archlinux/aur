@@ -1,71 +1,52 @@
-# $Id: ff2dae5d6715bf31a3852a3b84a0fac2112e2d45 $
 # Maintainer: Ido Rosen <ido@kernel.org>
+# Co-Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 #
-# NOTE: To request changes to this package, please submit a pull request
+# NOTE: To request changes to this package, you can submit a pull request
 #       to the GitHub repository at https://github.com/ido/packages-archlinux
 #       Otherwise, open a GitHub issue.  Thank you! -Ido
-# 
-# From the MOSEK website, http://mosek.com/introduction/ :
-#   ``MOSEK is a tool for solving mathematical optimization problems.  Some
-#   examples of problems MOSEK can solve are linear programs, quadratic
-#   programs, conic problems, and mixed integer problems [...]''
 
 pkgname='mosek'
-pkgdesc="A tool for solving mathematical optimization problems."
+pkgdesc="A commercial solver for mathematical optimization problems."
+epoch=1
 _majver=8
 pkgver=${_majver}.1.0.31
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
+_mosekarch=linux64x86
 url='http://mosek.com/'
 license=('custom')
-epoch=1
-# XXX: Matlab is a dependency (libmex, libmat, etc.)
-depends=('gcc-libs' 'java-environment' 'bash')
-options=('!libtool' '!strip')
-
-_mosekarch=linux64x86
-sha512sums=('329a04b6be83b537dc7e0d4c2ebf3e1aebc4b368d6a89a64de33037ef71a2b6c54bb9dc9a1a08cc5ed0337e45297dde7a155ed897fbe334423b5f2d334f45ddb')
+depends=('gcc-libs' 'openmp')
+options=('!strip')
 
 source=("http://download.mosek.com/stable/${pkgver}/mosektools${_mosekarch}.tar.bz2")
 
-check() {
-  cd "${srcdir}/"
-
-  "mosek/${_majver}/tools/platform/${_mosekarch}/bin/mosek" -f
-}
+sha512sums=('329a04b6be83b537dc7e0d4c2ebf3e1aebc4b368d6a89a64de33037ef71a2b6c54bb9dc9a1a08cc5ed0337e45297dde7a155ed897fbe334423b5f2d334f45ddb')
 
 package() {
-  cd "${srcdir}/"
- 
-  # Install binaries into /opt/mosek/7: 
-  install -dm755                  "${pkgdir}/opt/mosek/${_majver}"
-  cp -r mosek/${_majver}/.                 "${pkgdir}/opt/mosek/${_majver}/."
+	# Install command line utilities.
+	cd "${srcdir}/mosek/${_majver}/tools/platform/${_mosekarch}/bin"
+	install -dm755 "${pkgdir}/usr/"{bin,lib}
+	install -m755 mosek "${pkgdir}/usr/bin/"
+	install -m755 libmosek64.so.* "${pkgdir}/usr/lib/"
+	ln -rs "${pkgdir}/usr/lib/"libmosek64.so.* "${pkgdir}/usr/lib/libmosek64.so"
 
-  # Symlink mosek:
-  install -dm755                  "${pkgdir}/usr/bin"
-  ln -s /opt/mosek/${_majver}/tools/platform/${_mosekarch}/bin/mosek \
-                                  "${pkgdir}/usr/bin/mosek"
+	# Install C bindings.
+	cd "${srcdir}/mosek/${_majver}/tools/platform/${_mosekarch}/h"
+	install -dm755 "${pkgdir}/usr/include"
+	install -m755 mosek.h "${pkgdir}/usr/include/"
 
-  # Symlink header file:
-  install -dm755                  "${pkgdir}/usr/include"
-  ln -s /opt/mosek/${_majver}/tools/platform/${_mosekarch}/h/mosek.h \
-                                  "${pkgdir}/usr/include/mosek.h"
+	# Install Python bindings.
+	cd "${srcdir}/mosek/${_majver}/tools/platform/${_mosekarch}/python"
+	python2 2/setup.py install --root="${pkgdir}" --optimize=1
+	python3 3/setup.py install --root="${pkgdir}" --optimize=1
 
-  # Symlink documentation, examples, and licenses:
-  install -dm755                  "${pkgdir}/usr/share/doc/mosek"
-  ln -s /opt/mosek/${_majver}/tools/examples \
-                                  "${pkgdir}/usr/share/doc/mosek/examples"
-  ln -s /opt/mosek/${_majver}/doc/html     "${pkgdir}/usr/share/doc/mosek/html"
-  ln -s /opt/mosek/${_majver}/doc/pdf      "${pkgdir}/usr/share/doc/mosek/pdf"
-
-  install -dm755                  "${pkgdir}/usr/share/licenses/mosek"
-  ln -s /opt/mosek/${_majver}/license.pdf  "${pkgdir}/usr/share/licenses/mosek/license.pdf"
-
-  # Symlink MATLAB toolbox:
-  ln -s /opt/mosek/${_majver}/toolbox      "${pkgdir}/usr/share/doc/mosek/matlab"
-
-  # Symlink Python modules:
-  ln -s /opt/mosek/${_majver}/tools/platform/${_mosekarch}/python \
-                                  "${pkgdir}/usr/share/doc/mosek/python"
-
+	# Install documentation.
+	cd "${srcdir}/mosek/${_majver}"
+	install -Dm644 mosek-eula.pdf "${pkgdir}/usr/share/licenses/mosek/eula.pdf"
+	install -dm755 "${pkgdir}/usr/share/doc/mosek"
+	cp -r intro.pdf doc/*.pdf tools/examples "${pkgdir}/usr/share/doc/mosek/"
+	rm "${pkgdir}/usr/share/doc/mosek/examples/"{fusion/,}python/run.sh
+	rm "${pkgdir}/usr/share/doc/mosek/examples/ampl/test.sh"
+	rm "${pkgdir}/usr/share/doc/mosek/examples/"{c,dotnet,java}/Makefile
+	rm "${pkgdir}/usr/share/doc/mosek/examples/fusion/"{cxx,dotnet,java}/Makefile
 }
