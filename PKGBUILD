@@ -3,40 +3,45 @@
 
 pkgname=emby-server-dev-unlocked
 pkgver=3.2.34.0
-pkgrel=3
+pkgrel=1
 pkgdesc='Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
 url='https://github.com/nicolahinssen/emby-dev-unlocked'
 license=('GPL2')
+makedepends=('git')
 depends=('ffmpeg' 'imagemagick' 'mono' 'referenceassemblies-pcl' 'sqlite')
 install='emby-server.install'
 provides=('emby-server')
 conflicts=('emby-server')
 source=("emby-server-${pkgver}.tar.gz::https://github.com/MediaBrowser/Emby/archive/${pkgver}.tar.gz"
-	"emby-dev-unlocked-2.0.tar.gz::https://github.com/nicolahinssen/emby-dev-unlocked/archive/2.0.tar.gz"
+	'git+https://github.com/nicolahinssen/emby-dev-unlocked.git'
         'emby-server'
         'emby-migrate-database'
         'emby-server.conf'
         'emby-server.service')
 backup=('etc/conf.d/emby-server')
 sha256sums=('40df46e0e55682d3049c6724cd7b132237f9b55b6421d5d4a462de6e7ce8b525'
-            '696cca901bc381b7d2f43202d416946d8192cbf1ddf51d3f9c13ed57934d2bf1'
+            'SKIP'
             '7b1974f7bba8ac4b76e51ef7fe1257d165c7c4abbd0915e192391336048a3d74'
             'b25bf83a0ab371aff3b13b82f7af71b51bfe6d7e51eb8a8a3dd8f0774ffce6a5'
             'c9ad78f3e2f0ffcb4ee66bb3e99249fcd283dc9fee17895b9265dc733288b953'
             '8a91ea49a1699c820c4a180710072cba1d6d5c10e45df97477ff6a898f4e1d70')
 
+pkgver() {
+  git ls-remote --tags --refs https://github.com/MediaBrowser/Emby.git | awk '{print $2}' | grep -v '{}' | awk -F"/" '{print $3}' | sort -V | tail -n 1
+}
+
 prepare() {
-  cd Emby-${pkgver}
+  cd Emby-$(pkgver)
 
   sed 's/libMagickWand-6.Q8.so/libMagickWand-6.Q16HDRI.so/' -i MediaBrowser.Server.Mono/ImageMagickSharp.dll.config
 }
 
 build() {
-  cd Emby-${pkgver}
+  cd Emby-$(pkgver)
 
   patch -N -p1 -r - Emby.Server.Implementations/Security/PluginSecurityManager.cs < \
-      ../emby-dev-unlocked-2.0/patches/PluginSecurityManager.cs.patch
+      ../emby-dev-unlocked/patches/PluginSecurityManager.cs.patch
 
   xbuild \
     /p:Configuration='Release Mono' \
@@ -45,7 +50,7 @@ build() {
     /t:build MediaBrowser.sln
   mono --aot='full' -O='all' ../build/MediaBrowser.Server.Mono.exe
 
-  cp ../emby-dev-unlocked-2.0/replacements/connectionmanager.js ../build/dashboard-ui/bower_components/emby-apiclient
+  cp ../emby-dev-unlocked/replacements/connectionmanager.js ../build/dashboard-ui/bower_components/emby-apiclient
 }
 
 package() {
