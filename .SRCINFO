@@ -1,0 +1,20 @@
+pkgbase = python-hmms
+	pkgdesc = Discrete-time and continuous-time hidden Markov model library
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/hmms
+	arch = any
+	license = Public Domain
+	depends = python
+	depends = cython
+	depends = ipython
+	depends = python-matplotlib
+	depends = jupyter-notebook
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-scipy
+	source = https://files.pythonhosted.org/packages/source/h/hmms/hmms-0.1.tar.gz
+	md5sums = 0d586c8d120355328e5a96ba4da9c950
+
+pkgname = python-hmms
+
