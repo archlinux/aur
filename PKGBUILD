@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_robot_monitor displays diagnostics_agg topics messages that a
 url='http://wiki.ros.org/rqt_robot_monitor'
 
 pkgname='ros-lunar-rqt-robot-monitor'
-pkgver='0.5.7'
+pkgver='0.5.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,6 +26,9 @@ ros_depends=(ros-lunar-qt-gui-py-common
 depends=(${ros_depends[@]}
   python2-rospkg)
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rqt_robot_monitor/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -35,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rqt_robot_monitor-release-release-lunar-rqt_robot_monitor-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_monitor-release/archive/release/lunar/rqt_robot_monitor/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('cd2275e762a0d3040912039e66dbd41768834be184e8939d741f80a33ca9f07a')
+sha256sums=('1402d4cf18ed241c03650310a7f4d081f615bfd7aff5ddda33281820cbd34cc6')
 
 build() {
   # Use ROS environment variables
@@ -43,14 +46,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -58,8 +61,26 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
+}
+
+check() {
+  cmake "${srcdir}/${_dir}" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
+        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=ON
+
+  make tests
+  . /opt/ros/lunar/setup.bash
+  make run_tests
 }
 
 package() {
