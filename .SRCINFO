@@ -1,19 +1,20 @@
 pkgbase = tag-ag
 	pkgdesc = tag: Instantly jump to your ag matches (Precompiled binary from official repository)
-	pkgver = 1.2.1
-	pkgrel = 3
+	pkgver = v1.4.0
+	pkgrel = 1
 	url = https://github.com/aykamko/tag
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = the_silver_searcher>=0.25
+	optdepends = the_silver_searcher>=0.25
+	optdepends = ripgrep
 	provides = tag
 	options = !strip
 	options = !emptydirs
-	source_i686 = https://github.com/aykamko/tag/releases/download/1.2.1/tag_linux_386.tar.gz
-	md5sums_i686 = 1c987fda22316cc93a8f6a697ac1e694
-	source_x86_64 = https://github.com/aykamko/tag/releases/download/1.2.1/tag_linux_amd64.tar.gz
-	md5sums_x86_64 = b931c6f7d751ea0c76cee8bd226122cd
+	source_i686 = https://github.com/aykamko/tag/releases/download/v1.4.0/tag_linux_386.tar.gz
+	md5sums_i686 = 9c05463a7939db7f13be36e02951aa49
+	source_x86_64 = https://github.com/aykamko/tag/releases/download/v1.4.0/tag_linux_amd64.tar.gz
+	md5sums_x86_64 = 665dbe367a39303c9140252163bbc148
 
 pkgname = tag-ag
 
