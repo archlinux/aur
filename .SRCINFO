@@ -13,7 +13,8 @@ pkgbase = mxisd
 	source = mxisd
 	source = mxisd.tmpfiles
 	sha256sums = 436f0ea7d2ff6deac5846c72de21c04f71eab9d05c71f3716c2b33195601666b
-	sha256sums = 8d24a31f14dcdf85b4841e9412254e3cab357391b7e01886e54c04a6fb3cbc2e
+	sha256sums = d8293f3f6ab2b53840a875cd8af035b7d15b3e2fcc643c3faa9000e6dd1fa449
+	sha256sums = daee6519e67f65e8ec836f80b5853f669ba46e3378b6e29e34550bd136baf718
 
 pkgname = mxisd
 
