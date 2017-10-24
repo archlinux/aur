@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ksysguard
-pkgver=5.11.1
+pkgver=5.11.2
 pkgrel=1
 pkgdesc='Track and control the processes running in your system'
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ depends=(knewstuff libksysguard lm_sensors hicolor-icon-theme kinit)
 makedepends=(extra-cmake-modules kdoctools python)
 groups=(plasma)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('e11b75b4ccfe325cb988eca0e6c8070438c457b240bfa7f82b014559124fe287'
+sha256sums=('3408c928921268e6e44f8204f66c076540ee0a1a42f1ce8205e73160f58ec26f'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
               '348C8651206633FD983A8FC4DEACEA00075E1D76'  # KDE Neon
