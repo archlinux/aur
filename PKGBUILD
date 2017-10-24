@@ -2,8 +2,8 @@
 pkg=cdi
 flavour=
 pkgname=${pkg}${flavour}
-pkgver=1.8.1
-fileID=14290
+pkgver=1.9.1
+fileID=15646
 pkgrel=0
 pkgdesc="CDI is a general purpose C-library for file IO in the geoscience area. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG. CDI is the IO part of CDO"
 url="https://code.zmaw.de/projects/cdi"
@@ -17,7 +17,7 @@ arch=(i686 x86_64)
 backup=()
 install=
 source=(https://code.zmaw.de/attachments/download/${fileID}/${pkg}-${pkgver}.tar.gz)
-md5sums=('e06c6643f9c042c2b1f1ea8ed7ce8d7d')
+md5sums=('17edfb700ca9180cdb273465d0016910')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
