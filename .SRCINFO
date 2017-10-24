@@ -1,9 +1,8 @@
 pkgbase = tor-messenger-bin
-	pkgdesc = Tor Messenger is +1 for privacy and -1 for mass surveillance
-	pkgdesc = "Chat program that sends all traffic over Tor"
+	pkgdesc = Chat program that sends all traffic over Tor
 	pkgver = 0.5.0b1
-	pkgrel = 1
-	url = "https://trac.torproject.org/projects/tor/wiki/doc/TorMessenger"
+	pkgrel = 2
+	url = https://trac.torproject.org/projects/tor/wiki/doc/TorMessenger
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -13,9 +12,9 @@ pkgbase = tor-messenger-bin
 	sha256sums = f0df8e7237c295d81a991ba72e59cbbc7e3ade6d49f5178ed4aa226f8b7d5da0
 	sha256sums = 967353473d53da791bfb16eaf55e9a95b1d059502e40b0aaae7a1ab297f7d259
 	sha256sums = dd817794af9633ef635e24f9994854728914c47814e3dcc1785649529cb87968
-	source_i686 = https://dist.torproject.org/tormessenger/0.3.0b2/tor-messenger-linux32-0.3.0b2_en-US.tar.xz
+	source_i686 = https://dist.torproject.org/tormessenger/0.5.0b1/tor-messenger-linux32-0.5.0b1_en-US.tar.xz
 	sha256sums_i686 = f7c1a7b0d4f26193ca2635412c426846c801f2445890381c4c8d3f0e87c83345
-	source_x86_64 = https://dist.torproject.org/tormessenger/0.3.0b2/tor-messenger-linux64-0.3.0b2_en-US.tar.xz
+	source_x86_64 = https://dist.torproject.org/tormessenger/0.5.0b1/tor-messenger-linux64-0.5.0b1_en-US.tar.xz
 	sha256sums_x86_64 = 2fc64e0ebd80b307ede57733028b90f62d8d7c6b9e4bafbe80955cf235ad3fb1
 
 pkgname = tor-messenger-bin

@@ -3,15 +3,15 @@
 # Contributor: Jonas Heinrich <onny at project-insanity dot org>
 
 pkgname=tor-messenger-bin
-pkgver=0.5.0
-pkgrel=1
+pkgver=0.5.0b1
+pkgrel=2
 _language="en-US"
 pkgdesc="Chat program that sends all traffic over Tor"
 arch=("i686" "x86_64")
 url="https://trac.torproject.org/projects/tor/wiki/doc/TorMessenger"
 license=("MIT")
-source_i686=("https://dist.torproject.org/tormessenger/${pkgver}b${pkgrel}/tor-messenger-linux32-${pkgver}b${pkgrel}_${_language}.tar.xz")
-source_x86_64=("https://dist.torproject.org/tormessenger/${pkgver}b${pkgrel}/tor-messenger-linux64-${pkgver}b${pkgrel}_${_language}.tar.xz")
+source_i686=("https://dist.torproject.org/tormessenger/${pkgver}/tor-messenger-linux32-${pkgver}_${_language}.tar.xz")
+source_x86_64=("https://dist.torproject.org/tormessenger/${pkgver}/tor-messenger-linux64-${pkgver}_${_language}.tar.xz")
 source+=(tor-messenger.desktop
          tor-messenger.png
          tor-messenger.sh)
@@ -25,7 +25,7 @@ package() {
     cd ${srcdir}
 
     sed -i \
-        -e "s|REPL_VERSION|${pkgver}b${pkgrel}|g" \
+        -e "s|REPL_VERSION|${pkgver}|g" \
         -e "s|REPL_LANGUAGE|${_language}|g" \
         tor-messenger.sh
     
@@ -34,8 +34,8 @@ package() {
     install -Dm 0755 tor-messenger.sh       ${pkgdir}/usr/bin/tor-messenger
 
     if [ "$CARCH" == "i686" ]; then
-      install -Dm 0644 tor-messenger-linux32-${pkgver}b${pkgrel}_${_language}.tar.xz ${pkgdir}/opt/tor-messenger/tor-messenger-linux32-${pkgver}b${pkgrel}_${_language}.tar.xz
+      install -Dm 0644 tor-messenger-linux32-${pkgver}_${_language}.tar.xz ${pkgdir}/opt/tor-messenger/tor-messenger-linux32-${pkgver}_${_language}.tar.xz
     else
-      install -Dm 0644 tor-messenger-linux64-${pkgver}b${pkgrel}_${_language}.tar.xz ${pkgdir}/opt/tor-messenger/tor-messenger-linux64-${pkgver}b${pkgrel}_${_language}.tar.xz
+      install -Dm 0644 tor-messenger-linux64-${pkgver}_${_language}.tar.xz ${pkgdir}/opt/tor-messenger/tor-messenger-linux64-${pkgver}_${_language}.tar.xz
     fi
 }
