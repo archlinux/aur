@@ -2,47 +2,32 @@
 pkgname=crypted-backups-git
 pkgver=0.1.r11.gf07a4a2
 _pkg=crypted-backups
-pkgrel=2
+pkgrel=3
 pkgdesc="Backup scripts using systemd timer/service units and gpg encryption"
 arch=('any')
 url="https://sleepmap.de/software/crypted-backups"
 license=('GPL3')
-groups=()
 depends=('xz')
 makedepends=('git')
 provides=('crypted-backups')
 conflicts=('crypted-backups')
-replaces=()
 backup=('etc/crypted-backups')
-options=()
-install=
-source=("${_pkg}::git://sleepmap.de/software/${_pkg}.git")
-noextract=()
+source=("git+https://git.sleepmap.de/software/${_pkg}.git")
 sha512sums=('SKIP')
-
-build() {
-  cd "$srcdir"
-}
 
 pkgver() {
   cd "$srcdir/$_pkg"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
   cd "$srcdir/$_pkg"
-  install -d ${pkgdir}/usr/lib/systemd/scripts/
-  install -Dm 755 scripts/* ${pkgdir}/usr/lib/systemd/scripts/
-  install -Dm 644 README.rst ${pkgdir}/usr/share/doc/${_pkg}/README.rst
-  install -d ${pkgdir}/usr/lib/systemd/system/
-  install -Dm 644 system/* ${pkgdir}/usr/lib/systemd/system/
-  install -d ${pkgdir}/usr/lib/systemd/user/
-  install -Dm 644 user/* ${pkgdir}/usr/lib/systemd/user/
-  install -Dm 644 config/system/${_pkg} ${pkgdir}/etc/${_pkg}
-  install -Dm 644 config/user/${_pkg} ${pkgdir}/etc/skel/".${_pkg}"
+  install -t "${pkgdir}/usr/lib/systemd/scripts/" -Dm 755 scripts/*
+  install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${_pkg}/README.rst"
+  install -t "${pkgdir}/usr/lib/systemd/system/" -Dm 644 system/*
+  install -t "${pkgdir}/usr/lib/systemd/user/" -Dm 644 user/* 
+  install -Dm 644 "config/system/${_pkg}" "${pkgdir}/etc/${_pkg}"
+  install -Dm 644 "config/user/${_pkg}" "${pkgdir}/etc/skel/.${_pkg}"
 }
 
 # vim:set ts=2 sw=2 et:
