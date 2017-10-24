@@ -4,15 +4,15 @@
 #
 pkgname=bbkeys-git
 _pkgname=bbkeys
-pkgver=0.9.1.11
+pkgver=0.9.1.21
 pkgrel=1
 pkgdesc="Blackbox tool for setting keyboard shortcuts for manipulating windows and virtual desktop"
 arch=('i686' 'x86_64')
 url="http://bbkeys.sourceforge.net/"
 license=('custom')
 groups=('blackbox')
-depends=('libxext' 'libxft')
-makedepends=('git' 'blackbox-git')
+depends=('libxext' 'libxft' 'blackbox-git')
+makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$pkgname::git+https://github.com/bbidulock/$_pkgname.git"
