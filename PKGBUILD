@@ -4,15 +4,15 @@
 # Contributor: Frederic Bezies <fredbezies@gmail.com>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 
-pkgbase=qemu-saren-git
-_gitname=qemu
-pkgname=('qemu-saren-git'
-         'qemu-arch-extra-saren-git'
-         'qemu-block-iscsi-saren-git'
-         'qemu-block-rbd-saren-git'
-         'qemu-block-gluster-saren-git'
-         'qemu-guest-agent-saren-git')
-pkgver=2.8.0.r52013.56b51708e9
+pkgbase=qemu-pinning-git
+_gitname=qemu-pinning
+pkgname=('qemu-pinning-git'
+         'qemu-arch-extra-pinning-git'
+         'qemu-block-iscsi-pinning-git'
+         'qemu-block-rbd-pinning-git'
+         'qemu-block-gluster-pinning-git'
+         'qemu-guest-agent-pinning-git')
+pkgver=2.10..r56539.8547592a74
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -24,7 +24,7 @@ makedepends=('spice' 'spice-protocol' 'pixman' 'libjpeg' 'libpng' 'sdl' 'alsa-li
              'libiscsi' 'python2' 'virglrenderer'
              'usbredir' 'ceph' 'glusterfs' 'libssh2' 'lzo' 'snappy'
              'dtc' 'libepoxy' 'git' 'texi2html' 'perl' 'numactl')
-source=(git://git.qemu.org/qemu.git
+source=(git+https://github.com/saveriomiroddi/qemu-pinning.git
         qemu.sysusers
         qemu-ga.service
         65-kvm.rules
@@ -67,18 +67,18 @@ build() {
   make V=99
 }
 
-package_qemu-saren-git() {
-  pkgdesc='A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. Git version. GTK support, Spice support and Pulseaudio microphone input delay workaround patch included.'
+package_qemu-pinning-git() {
+  pkgdesc='A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. Git version. GTK support, Spice support and Pulseaudio microphone input delay workaround patch, CPU pinning support included.'
   depends=('spice' 'spice-protocol' 'pixman' 'libjpeg' 'libpng' 'sdl' 'libgl'
            'gnutls' 'bluez-libs'
            'usbredir' 'lzo' 'snappy' 'libpulse'
            'dtc' 'numactl' 'libnfs' 'libepoxy')
   optdepends=('ovmf: Tianocore UEFI firmware for qemu'
               'samba: SMB/CIFS server support'
-              'qemu-arch-extra-saren-git: extra architectures support'
-              'qemu-block-iscsi-saren-git: iSCSI block support'
-              'qemu-block-rbd-saren-git: RBD block support'
-              'qemu-block-gluster-saren-git: glusterfs block support')
+              'qemu-arch-extra-pinning-git: extra architectures support'
+              'qemu-block-iscsi-pinning-git: iSCSI block support'
+              'qemu-block-rbd-pinning-git: RBD block support'
+              'qemu-block-gluster-pinning-git: glusterfs block support')
   conflicts=('qemu' 'kvm' 'kvm-git' 'qemu-spice' 'seabios' 'seabios-git' 'qemu-git')
   provides=('qemu' 'qemu-kvm' 'qemu-spice' 'seabios' 'seabios-git')
 
@@ -114,9 +114,9 @@ package_qemu-saren-git() {
   done
 }
 
-package_qemu-arch-extra-saren-git() {
+package_qemu-arch-extra-pinning-git() {
   pkgdesc='QEMU with full support for non x86 architectures. Git version'
-  depends=('glib2' 'qemu-saren-git')
+  depends=('glib2' 'qemu-pinning-git')
   conflicts=('qemu-arch-extra' 'qemu-arch-extra-git')
   provides=(qemu-arch-extra)
   options=(!strip)
@@ -136,7 +136,7 @@ package_qemu-arch-extra-saren-git() {
   find "${pkgdir}"/usr/bin -type f -exec strip {} \;
 }
 
-package_qemu-block-iscsi-saren-git() {
+package_qemu-block-iscsi-pinning-git() {
   pkgdesc='QEMU iSCSI block module. Git version.'
   depends=('glib2' 'libiscsi')
   conflicts=('qemu-block-iscsi' 'qemu-block-iscsi-git')
@@ -145,7 +145,7 @@ package_qemu-block-iscsi-saren-git() {
   install -D $_gitname/block-iscsi.so "${pkgdir}"/usr/lib/qemu/block-iscsi.so
 }
 
-package_qemu-block-rbd-saren-git() {
+package_qemu-block-rbd-pinning-git() {
   pkgdesc='QEMU RBD block module. Git version.'
   depends=('glib2' 'ceph')
   conflicts=('qemu-block-rbd' 'qemu-block-rbd-git')
@@ -154,7 +154,7 @@ package_qemu-block-rbd-saren-git() {
   install -D $_gitname/block-rbd.so "${pkgdir}"/usr/lib/qemu/block-rbd.so
 }
 
-package_qemu-block-gluster-saren-git() {
+package_qemu-block-gluster-pinning-git() {
   pkgdesc='QEMU GlusterFS block module. Git version.'
   depends=('glib2' 'glusterfs')
   conflicts=('qemu-block-gluster' 'qemu-block-gluster-git')
@@ -163,7 +163,7 @@ package_qemu-block-gluster-saren-git() {
   install -D $_gitname/block-gluster.so "${pkgdir}"/usr/lib/qemu/block-gluster.so
 }
 
-package_qemu-guest-agent-saren-git() {
+package_qemu-guest-agent-pinning-git() {
   pkgdesc='QEMU Guest Agent. Git version'
   depends=('glib2')
   conflicts=('qemu-guest-agent' 'qemu-guest-agent-git')
