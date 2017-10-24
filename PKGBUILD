@@ -4,7 +4,7 @@
 pkgname=iease-music-git
 _pkgname=iease-music
 pkgver=171.026f721
-pkgrel=1
+pkgrel=2
 pkgdesc="A lean snippet manager based on GitHub Gist"
 arch=('x86_64')
 url="https://github.com/trazyn/ieaseMusic"
