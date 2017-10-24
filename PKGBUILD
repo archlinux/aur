@@ -3,7 +3,7 @@
 
 pkgname=brisk-menu-git
 _gitname=brisk
-pkgver=v0.4.5.r22.gf001f39
+pkgver=v0.4.5.r24.gc2c3e58
 pkgrel=1
 pkgdesc='Modern, efficient menu for the MATE Desktop Environment - git version'
 arch=('i686' 'x86_64')
@@ -21,12 +21,12 @@ source=(git+https://github.com/solus-project/brisk-menu.git)
 sha1sums=('SKIP')
 
 pkgver() {
-	cd $srcdir/brisk-menu
+	cd "$srcdir/brisk-menu"
         git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd $srcdir/brisk-menu
+	cd "$srcdir/brisk-menu"
 
 	autoreconf -i
     intltoolize
@@ -43,7 +43,7 @@ build() {
 
 
 package() {
-	cd $srcdir/brisk-menu
+	cd "$srcdir/brisk-menu"
 
 	make DESTDIR="${pkgdir}" install
 }
