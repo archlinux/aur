@@ -4,8 +4,8 @@
 
 pkgname=nextcloud-news-updater
 pkgver=10.0.0
-pkgrel=1
-pkgdesc="This Python library is a parllel feed updater for the nextCloud News app"
+pkgrel=2
+pkgdesc="This Python library is a parallel feed updater for the nextCloud News app"
 arch=('any')
 url="https://github.com/nextcloud/news-updater"
 license=('GPL3')
@@ -13,8 +13,7 @@ depends=('python-setuptools')
 optdepends=('nextcloud-app-news: Updating a local instance of the nextCloud News app')
 backup=("etc/webapps/nextcloud/news/${pkgname}.ini")
 options=('!strip')
-conflicts=('owncloud-news-updater')
-source=("https://github.com/nextcloud/news-updater/archive/${pkgver}.tar.gz"
+source=("${pkgname}.tar.gz::https://github.com/nextcloud/news-updater/archive/${pkgver}.tar.gz"
   "${pkgname}.ini"
   "${pkgname}.service"
   "${pkgname}.timer")
@@ -24,11 +23,16 @@ sha512sums=('de67edebe05606f044f73d93a48b67251182f80175c7ce1e40d62d9835ba05928d5
             'dd06c06249bc9537555517d97a66dbaefcfcc27547a03abb3cf8bcb15edbda1f49cb03191dbebb8ad6737bdf46c1f25567636fa1c206b60a39d22ce41c506aaa')
 install=${pkgname}.install
 
+build() {
+  cd "news-updater-${pkgver}"
+  python setup.py build
+}
+
 package() {
-  cd $srcdir/news-updater-$pkgver/
-  install -d $pkgdir/etc/webapps/nextcloud/news
-  install -Dm0644 ${srcdir}/${pkgname}.ini $pkgdir/etc/webapps/nextcloud/news/${pkgname}.ini
-  install -Dm0644 ${srcdir}/${pkgname}.service $pkgdir/usr/lib/systemd/system/${pkgname}.service
-  install -Dm0644 ${srcdir}/${pkgname}.timer $pkgdir/usr/lib/systemd/system/${pkgname}.timer
-  python3 setup.py install --root=$pkgdir
+  cd "news-updater-${pkgver}"
+  python setup.py install --skip-build --optimize=1 --root="${pkgdir}"
+  install -d "${pkgdir}"/etc/webapps/nextcloud/news
+  install -Dm0644 "${srcdir}/${pkgname}.ini" "${pkgdir}/etc/webapps/nextcloud/news/${pkgname}.ini"
+  install -Dm0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm0644 "${srcdir}/${pkgname}.timer" "${pkgdir}/usr/lib/systemd/system/${pkgname}.timer"
 }
