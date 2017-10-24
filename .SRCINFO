@@ -5,6 +5,7 @@ pkgbase = seahub
 	pkgver = 6.2.2
 	pkgrel = 1
 	url = https://github.com/haiwen/seahub
+	install = seahub.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h

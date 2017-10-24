@@ -11,6 +11,7 @@ url="https://github.com/haiwen/${pkgname}"
 license=('Apache')
 depends=("seafile-server" "python2-virtualenv")
 makedepends=('python2-pip')
+install="${pkgname}.install"
 source=("${pkgname}-${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
         "seahub-preupgrade")
 sha256sums=('04398c57bd4fa17050530ab47d4f1410196f3cd925d7c1067af00e0c848a3799'
