@@ -1,4 +1,5 @@
-# Maintainer: Carl George < arch at cgtx dot us >
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com>
+# Contributor: Carl George < arch at cgtx dot us >
 # Contributor: Zohar Malamant <dotfloat gmail com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Martin Erik Werner ("arand") <martinerikwerner@gmail.com>
@@ -42,7 +43,7 @@ _submodules=("acerspyro"
 
 pkgname="redeclipse"
 pkgver=1.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="free, casual arena shooter"
 arch=("i686" "x86_64")
 url="http://redeclipse.net"
@@ -54,7 +55,7 @@ source=("base-$pkgver.tar.gz::https://github.com/red-eclipse/base/archive/v$pkgv
 for _submodule in "${_submodules[@]}"; do
     source+=("$_submodule-$pkgver.tar.gz::https://github.com/red-eclipse/$_submodule/archive/v$pkgver.tar.gz")
 done
-sha256sums=('6c8ddfa140c7c0669d8b1e47043de7b1b9dd9b586edf531f74202ac6bb1209aa'
+sha256sums=('aebabe02050933ae57b3bb6c989be00ce4e12ac65039b060eef0b4ddb1cec664'
             '394cfa3f64385f05935467c88243432425304ef73dabd96fc35dcd66742f7bf9'
             'bd2369c4804ee6b155cc428255da795c6246fddff8eb7de018bbb9cc343aaf7e'
             '8a54802516963c72bb155e7ddabfcef1f928d19017973aa3beede37bb7ce0050'
@@ -112,3 +113,4 @@ package() {
     install -Dm 0644 "doc/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
     install -Dm 0644 "doc/all-licenses.txt" "$pkgdir/usr/share/licenses/$pkgname/all-licenses.txt"
 }
+
