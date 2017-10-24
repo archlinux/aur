@@ -18,7 +18,7 @@ _plugin_voip=true
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.3.r2.g27ee9ca4a
+pkgver=v0.6.3.r421.g1c2d17b5c
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
