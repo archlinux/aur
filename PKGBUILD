@@ -28,7 +28,7 @@ package() {
     cd "$srcdir/${_pkgname}-${pkgver}"
     make install
 }
-#check() {
-#    cd "$srcdir/${_pkgname}-${pkgver}"
-#    make -j check
-#}
+check() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
+    make -j check
+}
