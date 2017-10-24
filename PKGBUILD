@@ -4,7 +4,7 @@
 pkgname=iease-music-git
 _pkgname=iease-music
 pkgver=171.026f721
-pkgrel=2
+pkgrel=3
 pkgdesc="A lean snippet manager based on GitHub Gist"
 arch=('x86_64')
 url="https://github.com/trazyn/ieaseMusic"
@@ -51,6 +51,7 @@ package() {
 }
 
 sha256sums=('SKIP'
-            'aab1d991e8231ef751ccdc073c32be70ba13721008ff147b6fd2f6dee97d6645'
+            'bd7a9e09f8adcb6091a32fbd29cebbe13f10390cac951a2b12997a42b7be1dba'
             '903d9fc1e891b09ef7a6e2d997ff597e00587c70f3cdaf2ee0508dfe9385692c')
+
 
