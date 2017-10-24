@@ -2,7 +2,7 @@
 pkgname=lalinference
 _pkgname=${pkgname}
 pkgver=1.9.4
-pkgrel=4
+pkgrel=5
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
@@ -24,11 +24,11 @@ build() {
     ./configure --prefix=$pkgdir/usr CFLAGS=-O3
     make -j
 }
-package() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
-    make install
-}
 check() {
     cd "$srcdir/${_pkgname}-${pkgver}"
     make -j check
+}
+package() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
+    make install
 }
