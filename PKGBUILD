@@ -3,45 +3,40 @@
 pkgname=patchbook-git
 _pkg=patchbook
 pkgver=r24.574b100
-pkgrel=2
+pkgrel=3
 pkgdesc="Markup language and parser for writing and distributing patches for modular synthesizers."
 arch=('any')
 url="https://github.com/SpektroAudio/Patchbook"
 license=('MIT')
 depends=('python')
-source=("$pkgname-$pkgver::git+https://github.com/spektroaudio/${_pkg}")
+source=("${pkgname}::git+https://github.com/spektroaudio/${_pkg}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
-build() {
-  cd "$pkgname-$pkgver"
+prepare(){
+  cd "${pkgname}"
   echo "#!/usr/bin/python3" > patchbook
   cat patchbook.py >> patchbook
-
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${pkgname}"
   # script
-  install -Dm755 patchbook "$pkgdir/usr/bin/patchbook"
+  install -Dm0755 "${_pkg}" "${pkgdir}/usr/bin/${_pkg}"
 
   # examples
-  install -d "${pkgdir}/usr/share/doc/${_pkg}"
-  install -Dm644 Examples/* \
-    "$pkgdir/usr/share/doc/${_pkg}/"
+  install -t "${pkgdir}/usr/share/doc/${_pkg}/" -Dm0644 Examples/*
 
   # license
-  install -d "${pkgdir}/usr/share/licenses/${_pkg}"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkg}/LICENSE"
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${_pkg}/LICENSE"
 
   # README
-  install -Dm644 README.md \
-    "$pkgdir/usr/share/doc/${_pkg}/README.md"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkg}/README.md"
 }
