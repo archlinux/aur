@@ -4,7 +4,7 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=('gcc5')
-pkgver=5.4.0
+pkgver=5.5.0
 _pkgver=5
 _islver=0.15
 pkgrel=1
@@ -14,9 +14,9 @@ license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
 makedepends=('binutils>=2.26' 'libmpc')
 options=('!emptydirs')
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
+source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
-md5sums=('4c626ac2a83ef30dfb9260e6f59c2b30'
+md5sums=('0f70424213b4a1113c04ba66ddda0c1f'
          '8428efbbc6f6e2810ce5c1ba73ecf98c')
 
 _basedir=gcc-${pkgver}
@@ -48,6 +48,10 @@ build() {
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
+
+  # This option exist in default makepkg.conf while it's not supported by gcc5
+  CFLAGS=${CFLAGS/-fno-plt/}
+  CXXFLAGS=${CXXFLAGS/-fno-plt/}
 
   ${srcdir}/${_basedir}/configure --prefix=/usr \
       --build=${CHOST} \
