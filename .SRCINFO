@@ -11,9 +11,7 @@ pkgbase = libhomegear-node
 	license = LGPL3
 	depends = gcc-libs
 	source = https://github.com/Homegear/libhomegear-node/archive/0.7.10.tar.gz
-	source = libhomegear-node-version.patch
-	md5sums = eb87d1f9a512e9d764ade099d0a17949
-	md5sums = 38f90c81f338aab87d044e1f6a27b8a8
+	sha512sums = b9f8597412a525e6e0f8c385ed9ec127fc01c9798cde50ea1393126276cf8f2189108159d701b80df98c9d637c9b39c898b5f4e9291d4962ee38be3c320badb5
 
 pkgname = libhomegear-node
 
