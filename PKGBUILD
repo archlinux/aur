@@ -21,6 +21,7 @@ sha256sums=('2b997406b7bca358295e6d060919346fd5281ec0217a357c91849012bc2c9973')
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     sed -i 's/\-Werror//g' configure
+    2to3 -wn src/pulsar/HeterodyneSearch/make_frame_cache
 }
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
