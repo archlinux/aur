@@ -1,7 +1,7 @@
 pkgbase = global
 	pkgdesc = A source code tag system
 	pkgver = 6.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/global/
 	arch = i686
 	arch = x86_64
@@ -22,5 +22,4 @@ pkgbase = global
 	sha256sums = d9c08fa524f9499b54241cb2d72f8a7df01453b6d5e012a63784ded08e3acd32
 
 pkgname = global
-
 
