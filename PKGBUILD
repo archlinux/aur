@@ -69,5 +69,5 @@ package() {
 
     install -DT \
         "${srcdir}/${pkgname}/systemd/i3-battery-nagbar.service" \
-        "${pkgdir}/usr/lib/systemd/system/i3-battery-nagbar.service"
+        "${pkgdir}/usr/lib/systemd/user/i3-battery-nagbar.service"
 }
