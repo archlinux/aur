@@ -1,0 +1,17 @@
+pkgbase = scrobbler
+	pkgdesc = A command-line Last.fm scrobbler and a now-playing status updater.
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://gitlab.com/hauzer/scrobbler
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python3
+	depends = python-appdirs
+	depends = python-docopt
+	depends = python-lfm
+	source = https://files.pythonhosted.org/packages/source/s/scrobblerh/scrobblerh-1.1.4.tar.gz
+	md5sums = d516529c3f4a3940663d273980b15bff
+
+pkgname = scrobbler
+
