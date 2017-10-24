@@ -1,9 +1,12 @@
 # Maintainer : Marcos Heredia <chelqo@gmail.com>
 # Contributor: yury <polek_yury@ukr.net>
+# Contributor: Carlos Maddela <e7appew@gmail.com> (Ubuntu)
+# Contributor: Carlo Bertelli <carlo.bertelli@gmail.com>
+# Contributor: Albert Gräf <aggraef@gmail.com>
 
 pkgname=pdfchain
 pkgver=0.4.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF Chain is a Graphical User Interface for the PDF Tool Kit"
 url="http://pdfchain.sourceforge.net/"
 screenshot="http://pdfchain.sourceforge.net/images/screenshots/${pkgver}/pdfchain_-_title.png"
@@ -13,9 +16,16 @@ arch=('i686' 'x86_64')
 depends=('pdftk' 'gtkmm3' 'fontconfig' 'libpng')
 makedepends=('intltool' 'atkmm' 'glibmm')
 source=("http://sourceforge.net/projects/pdfchain/files/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "POTFILES.skip")
+        "POTFILES.skip"
+	"fix_crash_on_startup.patch")
 md5sums=('8b20a3d46ea4caa174dbe12ca6bc39be'
-         'b16ca527af3a13ec163c86927555f125')
+         'b16ca527af3a13ec163c86927555f125'
+         'fc4b04d450b89c06e60e03c573857098')
+
+prepare() {
+  cd $srcdir/$pkgname-$pkgver
+  patch -p1 < ../fix_crash_on_startup.patch
+}
 
 build() {
   cd $srcdir/$pkgname-$pkgver

@@ -1,0 +1,130 @@
+From: =?utf-8?q?Hubert_Figui=C3=A8re?= <hub@figuiere.net>
+Date: Wed, 9 Mar 2016 14:49:58 -0500
+Subject: Fix crash because the RadioButtonGroup was contructed AFTER the
+ RadioButton.
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Description: Fix crash
+ because the RadioButtonGroup was contructed AFTER the RadioButton.
+Author: Hubert Figuière <hub@figuiere.net>
+Bug-Debian: https://bugs.debian.org/725859
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/pdfchain/+bug/1685778
+Bug-openSUSE: https://bugzilla.suse.com/show_bug.cgi?id=970530
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+---
+ src/window_main_bgst.cc  | 1 -
+ src/window_main_bgst.h   | 8 ++++----
+ src/window_main_burst.cc | 1 -
+ src/window_main_burst.h  | 8 ++++----
+ src/window_main_tool.cc  | 2 --
+ src/window_main_tool.h   | 6 +++---
+ 6 files changed, 11 insertions(+), 15 deletions(-)
+
+diff --git a/src/window_main_bgst.cc b/src/window_main_bgst.cc
+index a2c1270..cfe9025 100644
+--- a/src/window_main_bgst.cc
++++ b/src/window_main_bgst.cc
+@@ -37,7 +37,6 @@ cSection_BgSt::cSection_BgSt( Gtk::Window& ref_window )
+ 	mLabel_SourceFile( _("Document:")    , Gtk::ALIGN_END , Gtk::ALIGN_CENTER , false ) ,	// label , xalign , yalign , mnemonic
+ 	mLabel_BgStFile(   _("Layer (PDF):") , Gtk::ALIGN_END , Gtk::ALIGN_CENTER , false ) ,
+ 
+-	mRBGroup_BgSt( mRButton_Background.get_group() ) ,
+ 	mRButton_Background(	mRBGroup_BgSt , _("Background")	, false ) ,	// group , label , mnemonic
+ 	mRButton_Stamp(			mRBGroup_BgSt , _("Stamp")		, false ) ,
+ 
+diff --git a/src/window_main_bgst.h b/src/window_main_bgst.h
+index a965291..c49082b 100644
+--- a/src/window_main_bgst.h
++++ b/src/window_main_bgst.h
+@@ -64,13 +64,13 @@ cSection_BgSt : public Gtk::VBox
+ 		Gtk::CheckButton
+ 			mCButton_Multiple;
+ 
+-		Gtk::RadioButton			// Declaration of Gtk::RadioButton before Gtk::RadioButtonGroup!!!
++		Gtk::RadioButtonGroup
++			mRBGroup_BgSt;
++
++		Gtk::RadioButton
+ 			mRButton_Background ,
+ 			mRButton_Stamp;
+ 
+-		Gtk::RadioButtonGroup		// Declaration of Gtk::RadioButtonGroup behind Gtk::RadioButton!!!
+-			mRBGroup_BgSt;
+-
+ 		// Derived Widgets
+ 		cFCButton_Pdf
+ 			mFCButton_SourceFile ,
+diff --git a/src/window_main_burst.cc b/src/window_main_burst.cc
+index dd3ded3..88a6484 100644
+--- a/src/window_main_burst.cc
++++ b/src/window_main_burst.cc
+@@ -62,7 +62,6 @@ cSection_Burst::cSection_Burst( Gtk::Window& ref_window )
+ 	mLabel_Digits(     _("Digits:")   , Gtk::ALIGN_END , Gtk::ALIGN_CENTER , false ),
+ 	mLabel_Suffix(     _("Suffix:")   , Gtk::ALIGN_END , Gtk::ALIGN_CENTER , false ),
+ 
+-	mRBGroup_CounterDigits( mRButton_Auto.get_group() ),
+ 	mRButton_Auto(   mRBGroup_CounterDigits , _("Auto")	   , false ),	// group , label , mnemonic
+ 	mRButton_Manual( mRBGroup_CounterDigits , _("Manual:") , false ),
+ 
+diff --git a/src/window_main_burst.h b/src/window_main_burst.h
+index e6dabd7..eae679d 100644
+--- a/src/window_main_burst.h
++++ b/src/window_main_burst.h
+@@ -118,13 +118,13 @@ cSection_Burst : public Gtk::VBox
+ 		Gtk::SpinButton					// Declaration of Gtk::SpinButton behind Glib::RefPtr<Gtk::Adjustment>!!!
+ 			mSButton_Digits;
+ 
+-		Gtk::RadioButton				// Declaration of Gtk::RadioButton before Gtk::RadioButtonGroup!!!
++		Gtk::RadioButtonGroup
++			mRBGroup_CounterDigits;
++
++		Gtk::RadioButton
+ 			mRButton_Auto ,
+ 		    mRButton_Manual;
+ 
+-		Gtk::RadioButtonGroup			// Declaration of Gtk::RadioButtonGroup behind Gtk::RadioButton!!!
+-			mRBGroup_CounterDigits;
+-
+ 		Gtk::CheckButton
+ 			mCButton_Extension;
+ 
+diff --git a/src/window_main_tool.cc b/src/window_main_tool.cc
+index 3b14df0..c253cda 100644
+--- a/src/window_main_tool.cc
++++ b/src/window_main_tool.cc
+@@ -50,8 +50,6 @@ mCButton_FillForm_DropXfa(    _("Drop XFA")         , false ),
+ mCButton_FillForm_Flatten(    _("Flatten")          , false ),
+ mCButton_FillForm_Appearance( _("Need appearances") , false ),
+ 
+-mRBGroup_Tool( mRButton_UnpackFiles.get_group() ),
+-
+ mRButton_Repair(         mRBGroup_Tool , _("Repair docu_ment")                     , true ),	// group , label , mnemonic
+ mRButton_UnpackFiles(    mRBGroup_Tool , _("Un_pack attached files from document") , true ),
+ mRButton_Uncompress(     mRBGroup_Tool , _("_Uncompress document")                 , true ),
+diff --git a/src/window_main_tool.h b/src/window_main_tool.h
+index fd96eac..c6535ec 100644
+--- a/src/window_main_tool.h
++++ b/src/window_main_tool.h
+@@ -57,6 +57,9 @@ cSection_Tool : public Gtk::VBox
+ 			mLabel_DumpDataFile ,
+ 			mLabel_FdfFile;
+ 
++		Gtk::RadioButtonGroup
++			mRBGroup_Tool;
++
+ 		Gtk::RadioButton
+ 			mRButton_Repair ,
+ 			mRButton_UnpackFiles ,
+@@ -71,9 +74,6 @@ cSection_Tool : public Gtk::VBox
+ 			mRButton_Flatten ,
+ 			mRButton_DropXfa;
+ 
+-		Gtk::RadioButtonGroup
+-			mRBGroup_Tool;
+-
+ 		Gtk::CheckButton
+ 			mCButton_DumpDataFields_Utf8 ,
+ 			mCButton_DumpData_Utf8 ,
