@@ -2,7 +2,7 @@
 
 pkgname=matrix-synapse-rest-auth
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='REST endpoint Authentication module for synapse'
 arch=('any')
 url='https://github.com/kamax-io/matrix-synapse-rest-auth'
@@ -17,6 +17,6 @@ package() {
     PYTHON_LOCATION=$(python2 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 
     # File
-    install -dm 755 "${pkgdir}"/${PYTHON_LOCATION}/synapse
-    install -m 644 rest_auth_provider.py "${pkgdir}"/${PYTHON_LOCATION}/synapse/rest_auth_provider.py
+    install -dm 755 "${pkgdir}"/${PYTHON_LOCATION}
+    install -m 644 rest_auth_provider.py "${pkgdir}"/${PYTHON_LOCATION}/rest_auth_provider.py
 }
