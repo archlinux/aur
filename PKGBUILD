@@ -8,7 +8,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -27,7 +27,7 @@ depends=(
         'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'libbs2b' 'flite1' 'libilbc' 'kvazaar' 'openh264'
-        'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'libmysofa'
+        'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'libmysofa' 'rockchip-mpp'
 )
 depends_x86_64=('cuda' 'nvidia-utils')
 optdepends_x86_64=(
@@ -189,6 +189,7 @@ build() {
         --enable-nvenc \
         --enable-omx \
         --enable-omx-rpi \
+        --enable-rkmpp \
         --enable-vaapi \
         --enable-vdpau
     make
