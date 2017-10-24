@@ -1,7 +1,7 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 17.3.0_devel.96241.2d4b57fc3e
-	pkgrel = 2
+	pkgver = 17.4.0_devel.96968.7a6c6e73a8
+	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
 	license = custom
@@ -58,10 +58,12 @@ pkgbase = mesa-git
 	source = LICENSE
 	source = 0001-Fix-linkage-against-shared-glapi.patch
 	source = glvnd-fix-gl-dot-pc.patch
+	source = clover-Fix-compiling-with-LLVM-r315871.patch
 	sha512sums = SKIP
 	sha512sums = 25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2
 	sha512sums = fdf973f0387997cee16936bc978f52d60719a1a8610fa96768e2cec42ad790da31f72c00783246f047fc496de01f9e22aec0d46577ded9c2353dd6e6193b4294
 	sha512sums = 75849eca72ca9d01c648d5ea4f6371f1b8737ca35b14be179e14c73cc51dca0739c333343cdc228a6d464135f4791bcdc21734e2debecd29d57023c8c088b028
+	sha512sums = 6867fa2bafded7ffb00e97452b1044960c5b4c55dc306db8c4af8995cd5fe4a4fb26e7dada71d17bddf9d490659fbc83cf56a280cd5adbe02b9c45287033c62a
 
 pkgname = mesa-git
 

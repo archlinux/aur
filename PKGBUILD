@@ -12,8 +12,8 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.3.0_devel.96241.2d4b57fc3e
-pkgrel=2
+pkgver=17.4.0_devel.96968.7a6c6e73a8
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'glproto'
              'dri2proto' 'dri3proto' 'presentproto' 'libxml2' 'libx11' 
@@ -30,11 +30,13 @@ source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
         '0001-Fix-linkage-against-shared-glapi.patch'
         'glvnd-fix-gl-dot-pc.patch'
+        'clover-Fix-compiling-with-LLVM-r315871.patch'
 )
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
             'fdf973f0387997cee16936bc978f52d60719a1a8610fa96768e2cec42ad790da31f72c00783246f047fc496de01f9e22aec0d46577ded9c2353dd6e6193b4294'
-            '75849eca72ca9d01c648d5ea4f6371f1b8737ca35b14be179e14c73cc51dca0739c333343cdc228a6d464135f4791bcdc21734e2debecd29d57023c8c088b028')
+            '75849eca72ca9d01c648d5ea4f6371f1b8737ca35b14be179e14c73cc51dca0739c333343cdc228a6d464135f4791bcdc21734e2debecd29d57023c8c088b028'
+            '6867fa2bafded7ffb00e97452b1044960c5b4c55dc306db8c4af8995cd5fe4a4fb26e7dada71d17bddf9d490659fbc83cf56a280cd5adbe02b9c45287033c62a')
 
 prepare() {
   cd ${srcdir}/mesa
@@ -43,6 +45,8 @@ prepare() {
   # non-upstreamed ones
   patch -Np1 -i ../0001-Fix-linkage-against-shared-glapi.patch
   patch -Np1 -i ../glvnd-fix-gl-dot-pc.patch
+  # see https://bugs.freedesktop.org/show_bug.cgi?id=103388 , patch downloaded from https://patchwork.freedesktop.org/patch/182916/
+  patch -Np1 -i ../clover-Fix-compiling-with-LLVM-r315871.patch
 
 }
 
