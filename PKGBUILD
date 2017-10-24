@@ -5,14 +5,14 @@
 _pkgname=execline
 pkgname=${_pkgname}-no-conflicts
 pkgver=2.3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A (non-interactive) scripting language, like sh; without import or define"
 arch=('i686' 'x86_64')
 url="http://skarnet.org/software/${_pkgname}/"
 license=('ISC')
 depends=('skalibs')
 conflicts=('execline')
-provides=("execline-$pkgver")
+provides=("execline=$pkgver")
 source=("http://skarnet.org/software/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('1a698425740a410a38be770f98b8faf94c633e29a74ba1d25adddbb294e979f5')
 
