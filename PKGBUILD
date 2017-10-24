@@ -3,13 +3,13 @@ _pkgname=passff
 _file_id=721365
 pkgname=firefox-passff
 pkgver=1.0.3linux
-pkgrel=2
+pkgrel=3
 pkgdesc="zx2c4 pass manager addon for firefox"
 arch=(any)
 url="https://github.com/passff/passff"
 license=('GPL2')
 groups=(firefox-addons)
-depends=('firefox>=50' 'python')
+depends=('firefox>=50' 'python' 'pass')
 makedepends=(jq)
 source=("https://github.com/passff/passff/archive/${pkgver}.tar.gz"
         "https://addons.mozilla.org/firefox/downloads/file/${_file_id}/${_pkgname}-${pkgver}-an+fx-linux.xpi")
