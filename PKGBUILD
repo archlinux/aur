@@ -9,7 +9,7 @@ license=("GPL2")
 depends=("obs-studio" "libgphoto2" "imagemagick")
 makedepends=("cmake")
 source=("https://github.com/Atterratio/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=("f666a4318131e2df157fff125478357ed6cde1b7b2ab38cef002e843b509e8fa")
+sha256sums=("33aa5c82caeaec7e6212019613a3d92e73f51431589ac1d6b3f851fa0b51295b")
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
