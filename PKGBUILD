@@ -2,9 +2,9 @@
 
 pkgname=nginx-mainline-mod-nchan
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 
-_nginxver=1.13.4
+_nginxver=1.13.5
 
 pkgdesc='nchan nginx module'
 arch=('i686' 'x86_64')
@@ -32,5 +32,5 @@ package() {
     done
 }
 
-sha256sums=('de21f3c49ba65c611329d8759a63d72e5fcf719bc6f2a3270e2541348ef1fbba'
+sha256sums=('0e75b94429b3f745377aeba3aff97da77bf2b03fcb9ff15b3bad9b038db29f2e'
             'c8ae7791560ef19a0fec459f424366a09e3baf52ab0fc4938ffce8d962b6abd6')
