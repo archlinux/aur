@@ -1,7 +1,7 @@
 # Contributer: SolarAquarion (Shlomo Choina  at gmail dot com)
 
 pkgname=rkward-frameworks-git
-pkgver=v0.6.5.r185.g72af88de
+pkgver=v0.6.5.r264.gf74df5d6
 pkgrel=1
 pkgdesc="An Easy to use, transparent frontend to the R-language (kf5 frameworks-edition)"
 arch=('i686' 'x86_64')
