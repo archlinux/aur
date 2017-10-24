@@ -1,6 +1,6 @@
 pkgbase = graphwar
 	pkgdesc = Hit your enemies using mathematical functions
-	pkgver = 1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/catabriga/graphwar
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = graphwar
 	license = GPLv3
 	makedepends = git
 	depends = java-runtime
-	source = git+https://github.com/catabriga/graphwar.git#tag=4c73cf71073acf64c26bc303e3896c7b250d82ba
+	source = git+https://github.com/catabriga/graphwar.git#tag=1.0.0
 	sha1sums = SKIP
 
 pkgname = graphwar
