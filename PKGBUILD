@@ -2,7 +2,7 @@
 pkgname=lalmetaio
 _pkgname=${pkgname}
 pkgver=1.3.1
-pkgrel=4
+pkgrel=6
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
@@ -18,17 +18,20 @@ options=(!emptydirs)
 install=
 source=("http://software.ligo.org/lscsoft/source/lalsuite/${_pkgname}-${pkgver}.tar.xz")
 sha256sums=('f88e4baed92fd064e055ec7975d3098dfd6978b1a3209b220d1e87fdd4da2991')
-build() {
+prepare() {
     cd "$srcdir/${_pkgname}-${pkgver}"
     sed -i 's/\-Werror//g' configure
+}
+build() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
     ./configure --prefix=$pkgdir/usr CFLAGS=-O3
     make -j
+}
+check() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
+    make -j check
 }
 package() {
     cd "$srcdir/${_pkgname}-${pkgver}"
     make install
 }
-#check() {
-#    cd "$srcdir/${_pkgname}-${pkgver}"
-#    make -j check
-#}
