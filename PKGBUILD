@@ -3,7 +3,7 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=4.4.3
-pkgrel=12
+pkgrel=13
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -75,6 +75,10 @@ prepare() {
 
   # Patching Makefile to include DESTDIR variable
   patch -p0 -i ../server_makefile.patch
+
+  # Patching configuration file
+  sed -i 's/\/var\/www\/onlyoffice/\/usr\/share\/webapps\/onlyoffice/g' server/Common/config/production-linux.json
+  sed -i 's/\/etc\/onlyoffice/\/etc\/webapps\/onlyoffice/g' server/Common/config/production-linux.json
 }
 
 build() {
@@ -104,7 +108,4 @@ package() {
   install -Dm644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
   install -Dm644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"
   install -Dm644 "${srcdir}/onlyoffice-spellchecker.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-spellchecker.service"
-
-  # bug: spellchecker script ignores custom config path specified via environement
-  ln -s /etc/webapps/onlyoffice "${pkgdir}/etc/onlyoffice"
 }
