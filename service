@@ -1,0 +1,11 @@
+[Unit]
+Description=Aviatrix VPN Client. Helps connect to VPN Networks. Supports SAML and password based authentication
+After=network.target network-online.target nss-lookup.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/avpnc_rp
+WorkingDirectory=/var/log/avpnc
+
+[Install]
+WantedBy=multi-user.target

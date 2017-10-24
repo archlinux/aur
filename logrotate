@@ -1,0 +1,6 @@
+/var/log/avpnc/*log {
+    missingok
+    notifempty
+    compress
+    endscript
+}
