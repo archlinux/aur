@@ -1,0 +1,16 @@
+pkgbase = mono-upnp
+	pkgdesc = UPNP binding for Mono/.NET
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = https://github.com/mono/mono-upnp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gtk-sharp-2
+	depends = mono-addins
+	depends = taglib-sharp
+	source = https://github.com/downloads/mono/mono-upnp/mono-upnp-0.1.2.tar.gz
+	md5sums = 9fd681bc1fee67db8a54f5da1a3805dc
+
+pkgname = mono-upnp
+
