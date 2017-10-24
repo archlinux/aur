@@ -2,19 +2,18 @@
 
 _pkgname=pcmanfm-qt
 pkgname=$_pkgname-git
-pkgver=0.10.1.40.gc23f78e
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="The LXQt file manager, Qt port of PCManFM"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
 license=("GPL2")
 depends=("liblxqt-git" "libfm-qt-git" "lxmenu-data" "qt5-x11extras")
-makedepends=("git" "cmake" "qt5-tools")
+makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-install="$_pkgname.install"
 source=("git+https://github.com/lxde/$_pkgname.git")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
