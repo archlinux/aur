@@ -2,10 +2,10 @@
 pkgname=ripme-git
 _pkgname=ripme
 pkgver=1.5.14.r0.g8064772
-pkgrel=1
+pkgrel=2
 pkgdesc="Automated picture album downloader for various websites"
 arch=('i686' 'x86_64')
-url="https://github.com/4pr0n/ripme.git"
+url="https://github.com/RipMeApp/ripme.git"
 license=('MIT')
 depends=('java-runtime-headless')
 makedepends=('git' 'maven')
