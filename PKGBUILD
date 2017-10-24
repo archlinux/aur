@@ -27,8 +27,8 @@ prepare() {
   sed 's/USE_STATIC = Yes/USE_STATIC =/' -i "$srcdir"/iup/srcview/config.mak
 
   # We want to use dynamic liblua
-  sed '/NO_LUALINK = Yes/{ N; s/.*/LIBS += lua$(LUA_SFX)/; }' -i "$srcdir"/iup/srcluaconsole/config.mak
-  sed '/NO_LUALINK = Yes/{ N; s/.*/LIBS += lua$(LUA_SFX)/; }' -i "$srcdir"/iup/srcluascripter/config.mak
+  sed '/NO_LUALINK = Yes/{ n; s/.*/LIBS += lua$(LUA_SFX)/; }' -i "$srcdir"/iup/srcluaconsole/config.mak
+  sed '/NO_LUALINK = Yes/{ n; s/.*/LIBS += lua$(LUA_SFX)/; }' -i "$srcdir"/iup/srcluascripter/config.mak
 
   # Add RUN_PATH variable to be able to set DT_RUNPATH
   sed 's/$(ECHO)$(LINKER)/& $(RUN_PATH)/' -i "$srcdir"/iup/tecmake.mak
