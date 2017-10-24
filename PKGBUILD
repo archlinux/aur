@@ -2,7 +2,7 @@
 
 pkgname=mxisd
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Federated Matrix Identity Server Daemon"
 arch=('any')
 url="https://github.com/kamax-io/mxisd"
@@ -38,7 +38,7 @@ package() {
 
     # Configuration
     install -dm 755 "${pkgdir}"/etc/mxisd
-    install -m 644 application.example.yaml "${pkgdir}"/etc/mxisd/application.example.yaml
+    install -m 644 application.example.yaml "${pkgdir}"/etc/mxisd/mxisd.yaml.example
 
     # Systemd
     install -dm 755 "${pkgdir}"/usr/lib/systemd/system

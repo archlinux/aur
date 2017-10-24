@@ -1,3 +1,3 @@
 #!/bin/sh
 
-java -jar /usr/lib/mxisd/mxisd.jar
+java -jar /usr/lib/mxisd/mxisd.jar $@
