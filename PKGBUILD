@@ -45,6 +45,6 @@ package() {
     # Systemd
     install -dm 755 "${pkgdir}"/usr/lib/{systemd/system,tmpfiles.d}
     install -m 644 src/systemd/mxisd.service "${pkgdir}"/usr/lib/systemd/system/mxisd.service
-	install -m 644 mxisd.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/mxisd.conf
+	install -m 644 "${srcdir}"/mxisd.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/mxisd.conf
 }
 
