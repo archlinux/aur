@@ -19,19 +19,19 @@ install=
 source=("http://software.ligo.org/lscsoft/source/lalsuite/${_pkgname}-${pkgver}.tar.xz")
 sha256sums=('f88e4baed92fd064e055ec7975d3098dfd6978b1a3209b220d1e87fdd4da2991')
 prepare() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     sed -i 's/\-Werror//g' configure
 }
 build() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
-    ./configure --prefix=$pkgdir/usr CFLAGS=-O3
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    ./configure --prefix=${pkgdir}/usr CFLAGS=-O3
     make -j
 }
 check() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     make -j check
 }
 package() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     make install
 }
