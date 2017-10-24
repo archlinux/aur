@@ -1,15 +1,19 @@
 # Maintainer: Soukyuu <chrno-sphered at hotmail dot com>
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=deadbeef-git
-pkgver=r6511.88b9879
+pkgver=r7453.446177f6
 pkgrel=1
-pkgdesc="Music player based on GTK2 (devel branch)"
+pkgdesc="A GTK+ audio player for GNU/Linux (devel branch)"
 url="http://deadbeef.sourceforge.net"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('alsa-lib' 'desktop-file-utils' 'gtk2' 'hicolor-icon-theme' 'gtkglext' 'jansson')
-makedepends=('curl' 'faad2' 'flac' 'git' 'intltool' 'imlib2' 'libcddb' 'libcdio' 'libmad' 'libpulse' 'libsamplerate' 'libvorbis' 'libx11' 'libzip' 'wavpack' 'yasm')
-optdepends=('libsamplerate: for dsp_libsrc plugin (resampler)'
+depends=('alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme' 'jansson')
+makedepends=('curl' 'faad2' 'flac' 'git' 'intltool' 'imlib2' 'libcddb' 'libcdio' 'libmad' 'libpulse' 
+             'libsamplerate' 'libvorbis' 'libx11' 'libzip' 'wavpack' 'yasm'
+             'ffmpeg' 'gtk2' 'gtk3')
+optdepends=('gtk2: for the GTK2 interface'
+	    'gtk3: for the GTK3 interface'
+            'libsamplerate: for dsp_libsrc plugin (resampler)'
             'libsm: optional dependency for gtkui session client support'
             'libice: optional dependency for gtkui session client support'
             'alsa-lib: ALSA support'
@@ -31,7 +35,8 @@ optdepends=('libsamplerate: for dsp_libsrc plugin (resampler)'
             'zlib: for Audio Overload plugin (psf, psf2, etc), GME (for vgz)'
             'libsidplay: for SID player plugin'
             'yasm: required to build assembly portions of ffap plugin'
-            'libzip: for vfs_zip plugin')
+            'libzip: for vfs_zip plugin'
+	    'ffmpeg: for ffmpeg plugin')
 install='deadbeef.install'
 options=('!libtool')
 conflicts=('deadbeef')
@@ -43,7 +48,7 @@ prepare() {
   cd "$srcdir/deadbeef"
  
   ./autogen.sh
-  ./configure --prefix=/usr --enable-ffmpeg --enable-gtk2 --disable-gtk3
+  ./configure --prefix=/usr
 }
 
 build() {
