@@ -1,0 +1,14 @@
+pkgbase = lowdown
+	pkgdesc = Markdown translator producing HTML5 and roff documents in the ms and man formats
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://kristaps.bsd.lv/lowdown/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	depends = glibc
+	source = https://github.com/kristapsdz/lowdown/archive/VERSION_0_3_0.tar.gz
+	sha512sums = 87469406fdfd37a2af56363e6e5697770cee785a3d905432470bec5bb68b76e921c5f36a92a4b23ee95029eb08f88c35d6681fff004828387aef6281c4da0cf0
+
+pkgname = lowdown
+
