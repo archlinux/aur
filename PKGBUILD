@@ -2,13 +2,13 @@
 
 pkgname=fstar
 pkgver=0.9.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Higher-Order Effectful Language Designed for Program Verification'
 url='https://fstar-lang.org/'
 license=('Apache')
 arch=('i686' 'x86_64')
-depends=('z3' 'zarith' 'ocaml-yojson' 'ocaml-pprint')
-makedepends=('fsharp' 'ocaml>=4.02' 'ocaml-batteries' 'ocaml-findlib')
+depends=('z3-git')
+makedepends=('ocaml>=4.03' 'ocaml-findlib' 'ocaml-batteries' 'ocaml-stdint' 'zarith' 'ocaml-yojson' 'ocaml-fileutils' 'ocaml-pprint' 'ocaml-menhir')
 provides=('fstar')
 conflicts=('fstar-bin' 'fstar-git')
 source=("https://github.com/FStarLang/FStar/archive/v$pkgver.zip")
@@ -17,12 +17,8 @@ md5sums=('07e8de1d8dcfe3c62774c3e141fd9382')
 build() {
   cd "FStar-$pkgver"
 
-  # Step 1. Building F* from sources using the F# compiler
-  make -C src
-  # Step 2. Extracting the sources of F* itself to OCaml
-  make ocaml -C src
   # Step 3. Building F* from the OCaml snapshot
-  make -C src/ocaml-output
+  make -C src/ocaml-output -j 3
 }
 
 package() {
