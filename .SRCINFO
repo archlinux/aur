@@ -1,6 +1,6 @@
 pkgbase = iri
 	pkgdesc = IOTA Reference Implementation
-	pkgver = 1.4.1
+	pkgver = 1.4.1.1
 	pkgrel = 1
 	url = https://www.iotatoken.com/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = iri
 	makedepends = java-environment>=8
 	makedepends = maven
 	depends = java-runtime
-	source = iri-1.4.1.tar.gz::https://github.com/iotaledger/iri/archive/v1.4.1.tar.gz
-	md5sums = 8c53c897e24ec5451e0f642b11b8f77c
+	source = iri-1.4.1.1.tar.gz::https://github.com/iotaledger/iri/archive/v1.4.1.1.tar.gz
+	md5sums = 380c095c392ba23554caafb0660f31b7
 
 pkgname = iri
 
