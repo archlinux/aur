@@ -11,6 +11,7 @@ pkgbase = mxisd
 	depends = java-runtime>=8
 	source = https://github.com/kamax-io/mxisd/archive/v0.5.0.tar.gz
 	source = mxisd
+	source = mxisd.tmpfiles
 	sha256sums = 436f0ea7d2ff6deac5846c72de21c04f71eab9d05c71f3716c2b33195601666b
 	sha256sums = 8d24a31f14dcdf85b4841e9412254e3cab357391b7e01886e54c04a6fb3cbc2e
 
