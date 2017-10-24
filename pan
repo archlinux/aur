@@ -1,3 +1,3 @@
 #!/bin/sh
 cd /opt/pdi
-exec ./spoon.sh "$@"
+exec ./pan.sh "$@"
