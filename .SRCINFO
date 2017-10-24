@@ -1,0 +1,15 @@
+pkgbase = mono-debugger
+	pkgdesc = The Mono Debugger
+	pkgver = 2.10
+	pkgrel = 3
+	url = http://www.mono-project.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mono>=2.10.1
+	options = !makeflags
+	source = http://download.mono-project.com/sources/mono-debugger/mono-debugger-2.10.tar.bz2
+	md5sums = 02ee485f2aae279f2fa3a7051c7d580e
+
+pkgname = mono-debugger
+
