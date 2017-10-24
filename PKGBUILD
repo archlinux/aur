@@ -6,7 +6,7 @@
 
 pkgname=openafs
 pkgver=1.6.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -28,6 +28,7 @@ source=(http://openafs.org/dl/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
         0003-Do-not-install-kauth-manpages-when-kauth-is-disabled.patch
         0004-vol-add-missing-include-of-stdint.h-to-volinodes.h.patch
         0005-Correct-m4-conditionals-in-curses.m4.patch
+        tinfo.patch
         tmpfiles.d-openafs.conf)
 sha256sums=('aed896b0f598e3033e9ceb2a1eae24addff9ec0bb2d713ab63945a449ded3a5a'
             'a8b2482eaa3bd5a3521b8dfde69337e5e01b1b1626c0a2e0a489049834a2983a'
@@ -36,6 +37,7 @@ sha256sums=('aed896b0f598e3033e9ceb2a1eae24addff9ec0bb2d713ab63945a449ded3a5a'
             '01671cee2ca3e9c42e1b5860c8373e55dd7794b8291486f8659c51e4bd4ceddc'
             '88303daac553f2a3d24969a8dbea87bd70807b2267d4437092cba60968ddf2a5'
             '7020a99bbb620ca53b24c793413a0579edb61f749f487c4b9325e7ed76aee14c'
+            'f147ba626028e70ed151100e951bc0f19f3ac941153d6acf03cf0e0416aea925'
             '5ef549180d1ac4e9530b65df7ddbdc1eceac6d6d6398fb2f32b06e96c1d9b5f0')
 
 # If you need the kauth tools set this to 1. But be aware that these tools
@@ -57,6 +59,9 @@ prepare() {
 
   # Fix curses checks during configure (https://gerrit.openafs.org/12740/)
   patch -p1 < ${srcdir}/0005-Correct-m4-conditionals-in-curses.m4.patch
+
+  # Fix build when ncurses was compiled with --with-termlib=tinfo (https://rt.central.org/rt/Ticket/Display.html?id=134420)
+  patch -p1 < ${srcdir}/tinfo.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q
