@@ -1,13 +1,13 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.0.0r1594.dcc5f24
+pkgver=0.0.0r1795.d7e28f99
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64')
 url='http://ziglang.org'
 license=('MIT')
-depends=('llvm' 'clang')
+depends=('llvm' 'clang' 'ncurses')
 makedepends=('cmake')
 provides=(zig)
 conflicts=(zig)
@@ -23,8 +23,10 @@ build() {
     cd "$srcdir/$provides"
     mkdir -p build
     cd build
+    # llvm-config not passing appropriate linker flags so we pass explicitly
     cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_EXE_LINKER_FLAGS="-lcurses -ltinfo" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DZIG_LIBC_LIB_DIR=$(dirname $(cc -print-file-name=crt1.o)) \
         -DZIG_LIBC_INCLUDE_DIR=$(echo -n | cc -E -x c - -v 2>&1 | grep -B1 "End of search list." | head -n1 | cut -c 2- | sed "s/ .*//") \
@@ -41,6 +43,7 @@ check() {
     cd build_test
     cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_EXE_LINKER_FLAGS="-lcurses -ltinfo" \
         -DCMAKE_INSTALL_PREFIX=$(pwd) \
         -DZIG_LIBC_LIB_DIR=$(dirname $(cc -print-file-name=crt1.o)) \
         -DZIG_LIBC_INCLUDE_DIR=$(echo -n | cc -E -x c - -v 2>&1 | grep -B1 "End of search list." | head -n1 | cut -c 2- | sed "s/ .*//") \
