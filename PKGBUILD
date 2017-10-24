@@ -4,16 +4,18 @@
 # Contributor: Drew DeVault
 # Contributor: Florent Thiéry <fthiery@gmail.com>
 # Contributor: moparisthebest <admin dot archlinux AT moparisthebest dot com>
+# Contributer: Phillip Schichtel <phillip@schich.tel>
 
+_nginx_version=1.13.6
+_rtmp_version=1.2.0
 pkgname=nginx-mainline-rtmp
-pkgver=1.11.8
+pkgver="${_nginx_version}.${_rtmp_version}"
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline-rtmp release'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='https://nginx.org'
 license=('custom')
 depends=('pcre' 'zlib' 'openssl' 'geoip')
-makedepends=('hardening-wrapper')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -28,18 +30,18 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 provides=('nginx')
 conflicts=('nginx')
-source=($url/download/nginx-$pkgver.tar.gz{,.asc}
-        https://github.com/arut/nginx-rtmp-module/archive/v1.1.10.tar.gz
+source=($url/download/nginx-${_nginx_version}.tar.gz{,.asc}
+        https://github.com/arut/nginx-rtmp-module/archive/v${_rtmp_version}.tar.gz
         service
         logrotate
         crossdomain.xml
         nginx.conf)
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-md5sums=('8f68f49b6db510e567bba9e0c271a3ac'
+md5sums=('f84d3f782c168bfdfb734700e51a929f'
          'SKIP'
-         '2e82501ed423a901ab64bfe2228a0666'
-         'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
-         'd6a6d4d819f03a675bacdfabd25aa37e'
+         '1a47951b64f3f726a9d4620774643759'
+         'ef491e760e7c1ffec9ca25441a150c83'
+         '6a01fb17af86f03707c8ae60f98a2dc2'
          '4d2e9c834fa2e60cd8b23185b93d2e2e'
          '35a9c62e780ab952fb89b613f0af97cd')
 
@@ -64,10 +66,14 @@ _common_flags=(
   --with-http_v2_module
   --with-mail
   --with-mail_ssl_module
+  --with-pcre-jit
   --with-stream
+  --with-stream_geoip_module
+  --with-stream_realip_module
   --with-stream_ssl_module
+  --with-stream_ssl_preread_module
   --with-threads
-  --add-module=../nginx-rtmp-module-1.1.10
+  "--add-module=../nginx-rtmp-module-${_rtmp_version}"
 )
 
 _mainline_flags=(
@@ -77,7 +83,7 @@ _mainline_flags=(
 )
 
 build() {
-  cd $provides-$pkgver
+  cd "$provides-${_nginx_version}"
   ./configure \
     --prefix=/etc/nginx \
     --conf-path=/etc/nginx/nginx.conf \
@@ -93,6 +99,8 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
+    --with-cc-opt="$CFLAGS $CPPFLAGS" \
+    --with-ld-opt="$LDFLAGS" \
     ${_common_flags[@]} \
     ${_mainline_flags[@]}
 
@@ -100,7 +108,7 @@ build() {
 }
 
 package() {
-  cd $provides-$pkgver
+  cd "$provides-${_nginx_version}"
   make DESTDIR="$pkgdir" install
 
   sed -e 's|\<user\s\+\w\+;|user html;|g' \
@@ -113,8 +121,8 @@ package() {
   install -d "$pkgdir"/var/lib/nginx
   install -dm700 "$pkgdir"/var/lib/nginx/proxy
 
-  chmod 750 "$pkgdir"/var/log/nginx
-  chown http:log "$pkgdir"/var/log/nginx
+  chmod 755 "$pkgdir"/var/log/nginx
+  chown root:root "$pkgdir"/var/log/nginx
 
   install -d "$pkgdir"/usr/share/nginx
   mv "$pkgdir"/etc/nginx/html/ "$pkgdir"/usr/share/nginx
@@ -131,8 +139,8 @@ package() {
   gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
 
   for i in ftdetect indent syntax; do
-    install -Dm644 contrib/vim/${i}/nginx.vim \
-      "${pkgdir}/usr/share/vim/vimfiles/${i}/nginx.vim"
+    install -Dm644 contrib/vim/$i/nginx.vim \
+      "$pkgdir/usr/share/vim/vimfiles/$i/nginx.vim"
   done
 }
 
