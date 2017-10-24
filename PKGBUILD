@@ -2,7 +2,7 @@
 
 pkgname=pulse-secure
 pkgver=5.3r3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(x86_64)
 license=(custom)
@@ -14,7 +14,8 @@ source=("https://trial.pulsesecure.net/clients/ps-pulse-linux-$pkgver-b1021-cent
 md5sums=('4cbe64953952d9ffdeaa4ffe2fc92a20'
          'b00064e15969e230e979e26a491aaa96'
          '261848a28201e5386ec4bf587473a48b')
-optdepends=('webkitgtk: for pulseUi frontend')
+optdepends=('webkitgtk: for pulseUi frontend'
+            'psmisc: for pulsesvc -K')
 conflicts=(pulse-connect-secure)
 
 prepare() {

@@ -1,13 +1,14 @@
 pkgbase = pulse-secure
 	pkgdesc = Pulse Connect Secure (PCS) Client
 	pkgver = 5.3r3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pulsesecure.net/
 	arch = x86_64
 	license = custom
 	depends = gcc-libs
 	depends = libgnome-keyring
 	optdepends = webkitgtk: for pulseUi frontend
+	optdepends = psmisc: for pulsesvc -K
 	conflicts = pulse-connect-secure
 	source = https://trial.pulsesecure.net/clients/ps-pulse-linux-5.3r3.0-b1021-centos-rhel-64-bit-installer.rpm
 	source = pulseUi.sh
