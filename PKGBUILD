@@ -6,8 +6,8 @@
 
 pkgbase=iup
 pkgname=('iup' 'lua-iup' 'lua51-iup' 'lua52-iup')
-pkgver=3.22
-pkgrel=2
+pkgver=3.23
+pkgrel=1
 pkgdesc="C cross platform GUI toolkit"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/iup/"
@@ -19,8 +19,8 @@ source=(
   "http://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Docs.pdf"
 )
 
-md5sums=('26058d6ce10ba57a2494bd66640d74a3'
-         'fa83211e0e9a510e21602c86dbf02ff1')
+md5sums=('7cac2a0b6da0cbecf183142d4a0fcf9d'
+         '7abb85d6fb814ef1c42d90cd82bd4a9b')
 
 prepare() {
   # Link iupview statically

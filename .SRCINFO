@@ -1,7 +1,7 @@
 pkgbase = iup
 	pkgdesc = C cross platform GUI toolkit
-	pkgver = 3.22
-	pkgrel = 2
+	pkgver = 3.23
+	pkgrel = 1
 	url = http://www.tecgraf.puc-rio.br/iup/
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = iup
 	makedepends = lua-cd
 	makedepends = lua51-cd
 	makedepends = lua52-cd
-	source = http://downloads.sourceforge.net/project/iup/3.22/Docs%20and%20Sources/iup-3.22_Sources.tar.gz
-	source = http://downloads.sourceforge.net/project/iup/3.22/Docs%20and%20Sources/iup-3.22_Docs.pdf
-	md5sums = 26058d6ce10ba57a2494bd66640d74a3
-	md5sums = fa83211e0e9a510e21602c86dbf02ff1
+	source = http://downloads.sourceforge.net/project/iup/3.23/Docs%20and%20Sources/iup-3.23_Sources.tar.gz
+	source = http://downloads.sourceforge.net/project/iup/3.23/Docs%20and%20Sources/iup-3.23_Docs.pdf
+	md5sums = 7cac2a0b6da0cbecf183142d4a0fcf9d
+	md5sums = 7abb85d6fb814ef1c42d90cd82bd4a9b
 
 pkgname = iup
 	pkgdesc = C cross platform GUI toolkit
