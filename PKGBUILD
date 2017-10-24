@@ -6,8 +6,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=3.3.3
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -35,7 +35,6 @@ depends=("$_pkgbasename"
       'lib32-openjpeg'
       'lib32-openjpeg2'
       'lib32-opus'
-      'lib32-schroedinger'
       'lib32-sdl2'
       'lib32-speex'
       'lib32-v4l-utils'
@@ -58,7 +57,7 @@ source=(
 )
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=(
-      '1069ac8fc7f52e566bea28b41b9c437246aeb5096f82fb26fa96dc7d5a10a473'
+      '5d8911fe6017d00c98a359d7c8e7818e48f2c0cc2c9086a986ea8cb4d478c85e'
       'SKIP'
 )
 
@@ -94,7 +93,6 @@ build() {
     --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
-    --enable-libschroedinger \
     --enable-libspeex \
     --enable-libtheora \
     --enable-libv4l2 \
