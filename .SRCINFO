@@ -1,0 +1,19 @@
+pkgbase = ektoplayer
+	pkgdesc = play and download techno music from ektoplazm.com
+	pkgver = 0.1.19
+	pkgrel = 1
+	url = http://github.com/braph/ektoplayer
+	arch = any
+	license = GPL
+	depends = ruby
+	depends = ruby-sqlite3
+	depends = ruby-nokogiri
+	depends = ruby-ncursesw
+	depends = mpg123
+	noextract = ektoplayer-0.1.19.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ektoplayer-0.1.19.gem
+	sha1sums = 2983063c88f74051ea052f9780c3381bd808b5d7
+
+pkgname = ektoplayer
+
