@@ -1,6 +1,6 @@
 pkgbase = lxqt-notificationd-git
 	pkgdesc = LXQt notification daemon and library.
-	pkgver = 0.11.1.19.g84cfff0
+	pkgver = 0.12.0.1.g3ed7511
 	pkgrel = 1
 	url = http://lxqt.org
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = lxqt-notificationd-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = lxqt-build-tools-git
 	depends = qt5-base
 	depends = liblxqt-git
 	depends = kwindowsystem
