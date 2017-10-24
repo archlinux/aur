@@ -1,7 +1,7 @@
 # Maintainer: nontlikeuname
 
 pkgname=meson-git
-pkgver=0.41.1.r97.138a8b22
+pkgver=0.42.0.r116.6fd2fab0
 pkgrel=1
 pkgdesc="SCons-like build system that use python as a front-end language and Ninja as a building backend"
 arch=(any)
