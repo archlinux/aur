@@ -1,35 +1,35 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 
+_basename=khard
 pkgname=khard-git
-_gitname=khard
 pkgver=0.11.4.r0.g03f5891
-pkgrel=2
+pkgrel=3
 pkgdesc="Console CardDAV client"
-license=("GPL3")
 url="https://github.com/scheibler/khard/"
+arch=('any')
+license=('GPL3')
 depends=('python-configobj' 'python-vobject' 'python-yaml' 'python-atomicwrites')
 makedepends=('git' 'python-setuptools')
 optdepends=('vdirsyncer: Synchronization of address books with a DAV server.')
-source=("${_gitname}::git+https://github.com/scheibler/khard.git")
-md5sums=('SKIP')
-install="${pkgname}.install"
 provides=('khard')
 conflicts=('khard')
-arch=('any')
-options=(!emptydirs)
+source=("git+https://github.com/scheibler/khard.git")
+install="${pkgname}.install"
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
+  cd "${_basename}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
-  cd "$srcdir/${_gitname}"
+  cd "${_basename}"
+  python setup.py build
 }
 
 package() {
-  cd "$srcdir/${_gitname}/"
-  python setup.py install --root=$pkgdir
+  cd "${_basename}"
+  python setup.py install --skip-build --optimize=1 --root="${pkgdir}"
   install -Dm 644 misc/khard/khard.conf.example "${pkgdir}/usr/share/doc/khard/khard.conf.example"
   install -Dm 644 misc/khard/template_for_contact_creation.yaml "${pkgdir}/usr/share/doc/khard/template_for_contact_creation.yaml"
   install -Dm 755 misc/sdiff/sdiff_khard_wrapper.sh "${pkgdir}/usr/bin/sdiff_khard_wrapper.sh"
