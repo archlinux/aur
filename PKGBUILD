@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.27.0.r262.g044af63d98
+pkgver=0.27.0.r282.ga5b51f75dc
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -105,6 +105,7 @@ build() {
         \
         --disable-cocoa \
         --enable-drm \
+        --enable-drmprime \
         --enable-gbm \
         --enable-wayland-scanner \
         --enable-wayland-protocols \
