@@ -1,6 +1,6 @@
 # Maintainer: Atterratio
 pkgname=obs-gphoto
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Allows connect DSLR cameras with obs-studio through gPhoto on Linux"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=("GPL2")
 depends=("obs-studio" "libgphoto2" "imagemagick")
 makedepends=("cmake")
 source=("https://github.com/Atterratio/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=("a7dc2ea88b066e2c39f3e3f09af43864c96d057f047de7de3c917ec77209e0e0")
+sha256sums=("f666a4318131e2df157fff125478357ed6cde1b7b2ab38cef002e843b509e8fa")
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}

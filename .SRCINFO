@@ -1,6 +1,6 @@
 pkgbase = obs-gphoto
 	pkgdesc = Allows connect DSLR cameras with obs-studio through gPhoto on Linux
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Atterratio/obs-gphoto
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = obs-gphoto
 	depends = obs-studio
 	depends = libgphoto2
 	depends = imagemagick
-	source = https://github.com/Atterratio/obs-gphoto/archive/v0.2.0.tar.gz
-	sha256sums = a7dc2ea88b066e2c39f3e3f09af43864c96d057f047de7de3c917ec77209e0e0
+	source = https://github.com/Atterratio/obs-gphoto/archive/v0.3.0.tar.gz
+	sha256sums = f666a4318131e2df157fff125478357ed6cde1b7b2ab38cef002e843b509e8fa
 
 pkgname = obs-gphoto
 
