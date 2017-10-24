@@ -1,0 +1,21 @@
+pkgbase = marker-git
+	pkgdesc = A gtk3 markdown editor
+	pkgver = 2017.10.05.r2.g0fe645a
+	pkgrel = 1
+	url = https://github.com/fabiocolacio/Marker
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = gtksourceview3
+	depends = webkit2gtk
+	optdepends = pandoc
+	optdepends = wkhtmltopdf
+	provides = marker
+	conflicts = marker
+	source = git+https://github.com/fabiocolacio/Marker.git
+	sha256sums = SKIP
+
+pkgname = marker-git
+
