@@ -3,8 +3,8 @@
 
 pkgname=lxd-lts
 _gitpkgname=lxd
-pkgver=2.0.10
-pkgrel=2
+pkgver=2.0.11
+pkgrel=1
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC. (LTS version)"
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
@@ -32,7 +32,7 @@ source=(
     "networkmanager-dnsmasq-lxd.conf"
 )
 
-md5sums=('3f05115ce446689bb43226c89d32cc1f'
+md5sums=('662cbf7d1339db04ff0f92769d2087fc'
          'b1780c0e01e404895e35ac277aa597c4'
          'b1fd16933c1b24aaa9ccc8f5a0e6478c'
          '15ae1bc51684d611bded2839ca55a37b'
@@ -44,54 +44,53 @@ _gourl=github.com/lxc/lxd
 
 
 build() {
-  mkdir -p $srcdir/src/${_gourl}
-  cp -r --preserve=timestamps $srcdir/$_gitpkgname-$_gitpkgname-$pkgver/* $srcdir/src/${_gourl}/
-  cd $srcdir/src/${_gourl}
-  GOPATH="$srcdir" go get
-  GOPATH="$srcdir" go build
-  GOPATH="$srcdir" make
+  export GOPATH="${srcdir}/go"
+  go_base=github.com/lxc/lxd
+  mkdir -p "${GOPATH}"
+  GOPATH="${GOPATH}" go get "${go_base}" || echo "(ignoring go error)"
+  cd "${GOPATH}/src/${go_base}"
+  make
 }
 
 package() {
+  go_bin_dir="${GOPATH}/bin"
   install=lxd.install
-
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/lib/lxd/"
-  mkdir -p "$pkgdir/usr/share/bash-completion/completions"
-
-  install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
-  mv "$pkgdir/usr/bin/lxd-bridge-proxy" "$pkgdir/usr/lib/lxd/"
-
-  install -p -m755 "$srcdir/src/$_gourl/lxd-bridge/lxd-bridge" "$pkgdir/usr/lib/lxd/"
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/lib/lxd"
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
+  install -p -m755 "${go_bin_dir}/"* "${pkgdir}/usr/bin"
 
   # Package license (if available)
   for f in LICENSE COPYING LICENSE.* COPYING.*; do
-    if [ -e "$srcdir/src/$_gourl/$f" ]; then
-      install -Dm644 "$srcdir/src/$_gourl/$f" \
-        "$pkgdir/usr/share/licenses/$pkgname/$f"
+    if [ -e "${go_bin_dir}/$f" ]; then
+      install -Dm644 "${go_bin_dir}/$f" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/$f"
     fi
   done
-
   install -D -m644 "${srcdir}/lxd.service" \
-      "${pkgdir}/usr/lib/systemd/system/lxd.service"
-
+    "${pkgdir}/usr/lib/systemd/system/lxd.service"
 
   # Bash completions
-  install -p -m755 "$srcdir/$pkgname-$pkgname-$pkgver/config/bash/lxd-client" "$pkgdir/usr/share/bash-completion/completions/lxc"
+  install -p -m755 "${srcdir}/${_gitpkgname}-${_gitpkgname}-${pkgver}/config/bash/lxd-client" \
+    "${pkgdir}/usr/share/bash-completion/completions/lxd"
 
-  # Example configuration files.
-  mkdir -p "$pkgdir/usr/share/lxd/"
-  mkdir -p "$pkgdir/usr/share/lxd/systemd/system/"
-  mkdir -p "$pkgdir/usr/share/lxd/netctl/"
-  mkdir -p "$pkgdir/usr/share/lxd/dbus-1/system.d/"
-  mkdir -p "$pkgdir/usr/share/lxd/NetworkManager/dnsmasq.d/"
+  # Example configuration files
+  mkdir -p "${pkgdir}/usr/share/lxd/"
+  mkdir -p "${pkgdir}/usr/share/lxd/systemd/system/"
+  mkdir -p "${pkgdir}/usr/share/lxd/netctl/"
+  mkdir -p "${pkgdir}/usr/share/lxd/dbus-1/system.d/"
+  mkdir -p "${pkgdir}/usr/share/lxd/NetworkManager/dnsmasq.d/"
 
-  install -Dm644 "${srcdir}/dnsmasq-lxd.conf" "${pkgdir}/usr/share/lxd/dnsmasq-lxd.conf"
-  install -Dm644 "${srcdir}/dnsmasq@lxd.service" "${pkgdir}/usr/share/lxd/systemd/system/dnsmasq@lxd.service"
-  install -Dm644 "${srcdir}/lxd.netctl" "${pkgdir}/usr/share/lxd/netctl/lxd"
-  install -Dm644 "${srcdir}/dbus-dnsmasq-lxd.conf" "${pkgdir}/usr/share/lxd/dbus-1/system.d/dnsmasq-lxd.conf"
-  install -Dm644 "${srcdir}/networkmanager-dnsmasq-lxd.conf" "${pkgdir}/usr/share/lxd/NetworkManager/dnsmasq.d/lxd.conf"
-
+  install -Dm644 "${srcdir}/dnsmasq-lxd.conf" \
+    "${pkgdir}/usr/share/lxd/dnsmasq-lxd.conf"
+  install -Dm644 "${srcdir}/dnsmasq@lxd.service" \
+    "${pkgdir}/usr/share/lxd/systemd/system/dnsmasq@lxd.service"
+  install -Dm644 "${srcdir}/lxd.netctl" \
+    "${pkgdir}/usr/share/lxd/netctl/lxd"
+  install -Dm644 "${srcdir}/dbus-dnsmasq-lxd.conf" \
+    "${pkgdir}/usr/share/lxd/dbus-1/system.d/dnsmasq-lxd.conf"
+  install -Dm644 "${srcdir}/networkmanager-dnsmasq-lxd.conf" \
+    "${pkgdir}/usr/share/lxd/NetworkManager/dnsmasq.d/lxd.conf"
 }
 
 # vim:set ts=2 sw=2 et:
