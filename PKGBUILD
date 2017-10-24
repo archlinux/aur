@@ -2,7 +2,7 @@
 pkgname=lalinference
 _pkgname=${pkgname}
 pkgver=1.9.4
-pkgrel=5
+pkgrel=7
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
@@ -18,9 +18,12 @@ options=(!emptydirs)
 install=
 source=("http://software.ligo.org/lscsoft/source/lalsuite/${_pkgname}-${pkgver}.tar.xz")
 sha256sums=('73e9ee32507da91f176db790dc12b9a3d16a769ca3047af7c4fa279eaf915e31')
-build() {
+prepare() {
     cd "$srcdir/${_pkgname}-${pkgver}"
     sed -i 's/\-Werror//g' configure
+}
+build() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
     ./configure --prefix=$pkgdir/usr CFLAGS=-O3
     make -j
 }
