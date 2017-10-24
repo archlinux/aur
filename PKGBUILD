@@ -1,6 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
+_pkg=prosody-mod-admin-message
 pkgname=prosody-mod-admin-message-hg
-pkgver=r2799.db0f654b9b3f
+pkgver=r2808.2cc02ee82e8c
 pkgrel=1
 pkgdesc="A console over XMPP. All the commands of the mod_admin_telnet module are available from an XMPP client."
 arch=('any')
@@ -9,7 +10,7 @@ license=('MIT')
 depends=('prosody')
 makedepends=('mercurial')
 source=("hg+https://hg.prosody.im/prosody-modules/")
-sha1sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/prosody-modules/"
@@ -17,7 +18,9 @@ pkgver() {
 }
 
 package() {
+  cd "prosody-modules"
+  install -Dm 0644 COPYING "${pkgdir}/usr/share/licenses/${_pkg}/LICENSE"
   cd "${srcdir}/prosody-modules/mod_admin_message/"
-  install -Dm 644 mod_admin_message.lua "${pkgdir}/usr/lib/prosody/modules/mod_admin_message.lua"
-  install -Dm 644 README.markdown "${pkgdir}/usr/share/doc/prosody-mod-admin-message/README.markdown"
+  install -Dm 0644 mod_admin_message.lua "${pkgdir}/usr/lib/prosody/modules/mod_admin_message.lua"
+  install -Dm 0644 README.markdown "${pkgdir}/usr/share/doc/${_pkg}/README.md"
 }
