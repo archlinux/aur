@@ -29,7 +29,7 @@ if [[ $_build = ? ]]; then
   source_x86_64=("firefox-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2")
 fi
 sha256sums=('367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842'
-            'd4b0197c9ce2251d5e3037f485c68f48da103628ba8f79e4fc48a7cf3a6e0dc8')
+            '8e7772b7b6a6056f3d74ab5b225948af011d68ae3f6d6255a4309bbb47356ba1')
 sha256sums_i686=('ab57c2dcad09a781becbf48e9e2585e9c15a12c0a4f1defd9789b579d7928173')
 sha256sums_x86_64=('a23f26783c68041aaf6b0a52040d8ff76ca7b0d08805c190c6a8c9e694a58501')
 
