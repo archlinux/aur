@@ -6,7 +6,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=3.4.r87867.g0655810072
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -24,7 +24,7 @@ depends=(
         'zimg' 'zeromq' 'zvbi' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'openssl'
         'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'libbs2b' 'flite1' 'libilbc' 'kvazaar' 'openh264'
+        'chromaprint-fftw' 'libbs2b' 'libilbc' 'kvazaar' 'openh264'
         'libopenmpt-svn' 'sndio' 'shine' 'vo-amrwbenc' 'xavs' 'libmysofa'
 )
 depends_x86_64=('cuda' 'nvidia-utils')
@@ -123,7 +123,7 @@ build() {
         --enable-libcdio \
         --enable-libdc1394 \
         --enable-libfdk-aac \
-        --enable-libflite \
+        --disable-libflite \
         --enable-fontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
