@@ -14,7 +14,7 @@ sha256sums=('8c9368c5f1ab8e2e3a9788cf4e4ad0bcd197cc68b278efd360edb516e674658d')
 package() {
     cd "${pkgname}-${pkgver}"
 
-    PYTHON_LOCATION=$(python2 -c "import site; print(site.getsitepackages()[0])")
+    PYTHON_LOCATION=$(python2 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 
     # File
     install -dm 755 "${pkgdir}"/${PYTHON_LOCATION}/synapse
