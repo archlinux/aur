@@ -6,7 +6,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=3.4.r87867.g0655810072
-pkgrel=2
+pkgrel=3
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -113,7 +113,6 @@ build() {
         --enable-gmp \
         --enable-gnutls \
         --enable-iconv \
-        --enable-jack \
         --enable-ladspa \
         --enable-libass \
         --enable-libbluray \
@@ -131,6 +130,7 @@ build() {
         --enable-libgsm \
         --enable-libiec61883 \
         --enable-libilbc \
+        --enable-libjack \
         --enable-libkvazaar \
         --enable-libmodplug \
         --enable-libmp3lame \
