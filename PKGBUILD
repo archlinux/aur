@@ -2,20 +2,19 @@
 
 pkgname=freeter
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The smartest way to work on your projects"
-arch=('x86_64' 'i686')
+arch=("x86_64" "i686")
 url="https://freeter.io"
-license=('custom')
-depends=('glib2' 'fuse2')
+license=("custom")
+depends=("glib2" "fuse2")
 optdepends=()
-provides=('freeter')
-conflicts=('freeter')
+provides=("freeter")
 options=(!strip)
 
 source=("https://freeter.io/download/Freeter.AppImage")
 
-md5sums=('d27fbaa5011edb5022b23104b4b942c5')
+sha256sums=("7e10416460abdeb55f81d6ae0650476ae19c76f10a20ca895ea53c8d81d4ddb9")
 
 noextract=("Freeter.AppImage")
 

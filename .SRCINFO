@@ -1,7 +1,7 @@
 pkgbase = freeter
 	pkgdesc = The smartest way to work on your projects
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freeter.io
 	arch = x86_64
 	arch = i686
@@ -9,11 +9,10 @@ pkgbase = freeter
 	depends = glib2
 	depends = fuse2
 	provides = freeter
-	conflicts = freeter
 	noextract = Freeter.AppImage
 	options = !strip
 	source = https://freeter.io/download/Freeter.AppImage
-	md5sums = d27fbaa5011edb5022b23104b4b942c5
+	sha256sums = 7e10416460abdeb55f81d6ae0650476ae19c76f10a20ca895ea53c8d81d4ddb9
 
 pkgname = freeter
 
