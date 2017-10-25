@@ -1,19 +1,19 @@
-# Maintainer: Zhuoyun Wei <wzyboy@wzyboy.org>
+# Maintainer: DATSD <DAStudio *dot* 71e6fd52 *at* gmail *dot* com>
+# Contributor: Zhuoyun Wei <wzyboy@wzyboy.org>
 # Based-on: aur/graphite-api-git by Justin Dray <justin@dray.be>
 
 pkgname=graphite-api
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphite-web, without the interface. Just the rendering HTTP API."
 url="https://github.com/brutasse/graphite-api"
 license=('Apache')
 depends=('python' 'python-pytz' 'python-six' 'python-flask' 'python-structlog'
          'python-yaml' 'python-tzlocal' 'python-cairocffi' 'python-pyparsing'
-         'python-xcffib' 'gunicorn')
+         'gunicorn')
 makedepends=('python-setuptools' 'python-mock')
 optdepends=('python-flask-cache: For caching'
-            'python-raven: For sentry support'
-            'python-statsd: For statsd support')
+            'python-raven: For sentry support')
 backup=('etc/graphite-api.yaml')
 arch=('any')
 source=("https://github.com/brutasse/${pkgname}/archive/${pkgver}.tar.gz"
