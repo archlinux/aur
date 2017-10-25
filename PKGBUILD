@@ -1,13 +1,11 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=uenv
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Useful scripts, systemd timer/service units and their configuration"
 arch=('any')
 url="https://sleepmap.de/software/uenv"
 license=('GPL3')
-groups=()
-depends=()
 makedepends=('git')
 optdepends=(
   'arch-audit: For updating MOTD with security info'\
@@ -27,7 +25,7 @@ optdepends=(
   'tmux: For monitoring, rtorrent and tmux user services'\
   'weechat: For weechat in a separate tmux environment'
 )
-provides=('uenv')
+conflicts=('uenv-git')
 backup=(
   'etc/jack/fw1'\
   'etc/conf.d/postpone-screensaver'\
@@ -35,28 +33,22 @@ backup=(
   'etc/default/rtorrent@.conf'
 )
 source=("https://git.sleepmap.de/software/${pkgname}.git/snapshot/${pkgname}-${pkgver}.tar.gz")
-md5sums=('10ded84d6ae5c296cebc52ee1a6c151c')
+sha512sums=('478db96dec5887bc427c7ca2f072a9026c70b04cfca12d85e65d431c1386a79e6468a9cc66cda46ea4532b7dc5ecc0d0d4a56a7a824ef67e732910df25e14b07')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -d ${pkgdir}/usr/bin/
-  install -Dm 744 bin/* ${pkgdir}/usr/bin/
-  install -d ${pkgdir}/usr/lib/systemd/scripts/
-  install -Dm 755 scripts/* ${pkgdir}/usr/lib/systemd/scripts/
-  install -d ${pkgdir}/usr/lib/systemd/system/
-  install -Dm 644 system/* ${pkgdir}/usr/lib/systemd/system/
-  install -d ${pkgdir}/usr/lib/systemd/user/
-  install -Dm 644 user/* ${pkgdir}/usr/lib/systemd/user/
-  install -Dm 644 config/cpupower-rt ${pkgdir}/etc/default/cpupower-rt
-  install -d ${pkgdir}/etc/jack/
-  install -Dm 644 config/jack/* ${pkgdir}/etc/jack/
-  install -d ${pkgdir}/etc/systemd-analyze-plot/
-  install -Dm 644 config/plot.conf ${pkgdir}/etc/systemd-analyze-plot/plot.conf
-  install -Dm 644 config/postpone-screensaver ${pkgdir}/etc/conf.d/postpone-screensaver
-  install -Dm 644 config/rtorrent@.conf ${pkgdir}/etc/default/rtorrent@.conf
-  install -Dm 644 config/autotunnel/example.conf ${pkgdir}/etc/autotunnel/example.conf
-  install -Dm 644 README.rst ${pkgdir}/usr/share/doc/${pkgname}/README.rst
-  install -Dm 644 NEWS ${pkgdir}/usr/share/doc/${pkgname}/NEWS
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -t "${pkgdir}/usr/bin/" -Dm0744 bin/*
+  install -t "${pkgdir}/usr/lib/systemd/scripts/" -Dm0755 scripts/*
+  install -t "${pkgdir}/usr/lib/systemd/system/" -Dm0644 system/*
+  install -t "${pkgdir}/usr/lib/systemd/user/" -Dm0644 user/*
+  install -t "${pkgdir}/etc/jack/" -Dm0644 config/jack/*
+  install -t "${pkgdir}/etc/systemd-analyze-plot/plot.conf" -Dm0644 config/plot.conf
+  install -Dm0644 config/cpupower-rt "${pkgdir}/etc/default/cpupower-rt"
+  install -Dm0644 config/postpone-screensaver "${pkgdir}/etc/conf.d/postpone-screensaver"
+  install -Dm0644 config/rtorrent@.conf "${pkgdir}/etc/default/rtorrent@.conf"
+  install -Dm0644 config/autotunnel/example.conf "${pkgdir}/etc/autotunnel/example.conf"
+  install -Dm0644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+  install -Dm0644 NEWS "${pkgdir}/usr/share/doc/${pkgname}/NEWS"
 }
 
 # vim:set ts=2 sw=2 et:
