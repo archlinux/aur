@@ -1,0 +1,79 @@
+--- viruskiller-1.03.orig/src/pak.cpp	2010-02-12 17:59:50.000000000 +0500
++++ viruskiller-1.03/src/pak.cpp	2012-05-01 03:13:48.931575394 +0600
+@@ -124,7 +124,7 @@
+ 			{
+ 				printf("Couldn't open %s for reading!\n", filename);
+ 				closedir(dirp);
+-				gzclose(pak);
++				gzclose((gzFile) pak);
+ 				exit(1);
+ 			}
+ 			
+@@ -156,7 +156,7 @@
+ 			{
+ 				printf("Couldn't open %s for reading!\n", filename);
+ 				closedir(dirp);
+-				gzclose(pak);
++				gzclose((gzFile) pak);
+ 				exit(1);
+ 			}
+ 			else
+--- viruskiller-1.03.orig/makefile	2010-02-15 20:33:06.000000000 +0500
++++ viruskiller-1.03/makefile	2012-05-01 06:05:59.765318889 +0600
+@@ -8,8 +8,8 @@
+ USEPAK = 1
+ 
+ PREFIX=$(DESTDIR)/usr
+-BINDIR = $(PREFIX)/games/
+-DATADIR = $(PREFIX)/share/games/$(PROG)/
++BINDIR = $(PREFIX)/bin/
++DATADIR = $(PREFIX)/share/$(PROG)/
+ DOCDIR = $(PREFIX)/share/doc/$(PROG)/
+ ICONDIR = $(PREFIX)/share/icons/hicolor/
+ DESKTOPDIR = $(PREFIX)/share/applications/
+@@ -22,7 +22,7 @@
+ CFLAGS += `sdl-config --cflags` -DVERSION=$(VERSION) -DRELEASE=$(RELEASE) -DUSEPAK=$(USEPAK)
+ CFLAGS += -DPAKNAME=\"$(PAKNAME)\" -DPAKLOCATION=\"$(DATADIR)\" -DSAFEDIR=\"$(SAFEDIR)\" -DUNIX -DGAMEPLAYMANUAL=\"$(DOCDIR)manual.html\" -Wall
+ CFLAGS += -DMEDAL_SERVER_HOST=\"$(MEDAL_SERVER_HOST)\" -DMEDAL_SERVER_PORT=$(MEDAL_SERVER_PORT)
+-LIBS = `sdl-config --libs` -lSDL_mixer -lSDL_image -lSDL_ttf -lSDL_net
++LIBS = `sdl-config --libs` -lSDL_mixer -lSDL_image -lSDL_ttf -lSDL_net -lz -lz
+ 
+ OBJS += CAudio.o 
+ OBJS += CBase.o
+@@ -87,13 +87,13 @@
+ 	mkdir -p $(ICONDIR)64x64/apps
+ 	mkdir -p $(DESKTOPDIR)
+ 
+-	install -o root -g games -m 755 $(PROG) $(BINDIR)$(PROG)
+-	install -o root -g games -m 644 $(PAKNAME) $(DATADIR)$(PAKNAME)
+-	install -o root -g games -m 644 $(DOCS) $(DOCDIR)
+-	cp $(ICONS)$(PROG).png $(ICONDIR)32x32/apps/
+-	cp $(ICONS)$(PROG)-mini.png $(ICONDIR)16x16/apps/$(PROG).png
+-	cp $(ICONS)$(PROG)-large.png $(ICONDIR)64x64/apps/$(PROG).png
+-	cp $(ICONS)$(PROG).desktop $(DESKTOPDIR)
++	install -o root -g root -m 755 $(PROG) $(BINDIR)$(PROG)
++	install -o root -g root -m 644 $(PAKNAME) $(DATADIR)$(PAKNAME)
++	install -o root -g root -m 644 $(DOCS) $(DOCDIR)
++	install -o root -g root -m 644 $(ICONS)$(PROG).png $(ICONDIR)32x32/apps/
++	install -o root -g root -m 644 $(ICONS)$(PROG)-mini.png $(ICONDIR)16x16/apps/$(PROG).png
++	install -o root -g root -m 644 $(ICONS)$(PROG)-large.png $(ICONDIR)64x64/apps/$(PROG).png
++	install -o root -g root -m 644 $(ICONS)$(PROG).desktop $(DESKTOPDIR)
+ 
+ uninstall:
+ 	$(RM) $(BINDIR)$(PROG)
+--- viruskiller-1.03.orig/icons/viruskiller.desktop	2010-02-12 17:59:38.000000000 +0500
++++ viruskiller-1.03/icons/viruskiller.desktop	2012-05-01 03:17:39.551576697 +0600
+@@ -1,9 +1,8 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+-Categories=Application;Game;ArcadeGame;
++Categories=Game;ArcadeGame;
+ X-Desktop-File-Install-Version=1.0
+ Name=Virus Killer
+-Icon=viruskiller.png
+-Exec=/usr/games/viruskiller
+-Terminal=0
++Icon=viruskiller
++Exec=/usr/bin/viruskiller
++Terminal=false
+ Type=Application
