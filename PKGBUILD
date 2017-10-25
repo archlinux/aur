@@ -2,7 +2,7 @@
 # Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
 pkgname=substance-designer
 pkgver=2017.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Node-based, non-destructive PBR material authoring tool."
 arch=('x86_64')
 url='https://www.allegorithmic.com/products/substance-designer'

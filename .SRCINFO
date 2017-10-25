@@ -1,7 +1,7 @@
 pkgbase = substance-designer
 	pkgdesc = Node-based, non-destructive PBR material authoring tool.
 	pkgver = 2017.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.allegorithmic.com/products/substance-designer
 	arch = x86_64
 	license = custom
