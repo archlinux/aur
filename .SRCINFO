@@ -1,0 +1,12 @@
+pkgbase = gbt-git
+	pkgdesc = Bullettrain prompt builder written in Go
+	pkgver = r6.2d36a5a
+	pkgrel = 1
+	url = https://github.com/jtyr/gbt
+	arch = any
+	license = MIT
+	makedepends = go
+	optdepends = nerd-fonts-complete
+
+pkgname = gbt-git
+
