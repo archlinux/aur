@@ -39,7 +39,7 @@ pkgver() {
 }
 
 prepare() {
-    # Fix zlib library lookup
+	# Fix zlib library lookup
 	sed -i '11s|zlib|ZLIB|' "${srcdir}/xu4/u4/CMakeLists.txt"
 
 	# Use sourced archives, don't download every build
@@ -57,8 +57,8 @@ prepare() {
 -${CMAKE_CURRENT_BINARY_DIR}/u4upgrad.zip
 -)
 EOT
-    # Ensure libraries can be found
-    patch -Np0 << "EOT"
+	# Ensure libraries can be found
+	patch -Np0 << "EOT"
 +++ xu4/u4/src/CMakeLists.txt
 --- xu4/u4/src/CMakeLists.txt
 @@ -189,0 +189,5 @@
