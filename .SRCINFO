@@ -1,7 +1,7 @@
 pkgbase = coffee-git
 	pkgdesc = Keep up with current news and weather with Coffee
-	pkgver = 1.0.7.r7.gdb3ac9e
-	pkgrel = 2
+	pkgver = 1.1.0.r0.g5b43105
+	pkgrel = 1
 	url = https://nick92.github.io/coffee/
 	arch = i686
 	arch = x86_64

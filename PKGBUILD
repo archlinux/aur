@@ -2,8 +2,8 @@
 # Contributor:
 
 pkgname=coffee-git
-pkgver=1.0.7.r7.gdb3ac9e
-pkgrel=2
+pkgver=1.1.0.r0.g5b43105
+pkgrel=1
 pkgdesc="Keep up with current news and weather with Coffee"
 arch=('i686' 'x86_64')
 url="https://nick92.github.io/coffee/"
