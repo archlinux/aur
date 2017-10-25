@@ -1,6 +1,6 @@
 # Maintainer: Nathan Ringo <remexre@gmail.com>
 pkgname=oftb-git
-pkgver=20171006
+pkgver=git20171024
 pkgrel=1
 pkgdesc="The OftLisp bootstrapper."
 arch=(x86_64)
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/oftlisp-rs/${pkgname%-git}"
-	cargo build --release
+	cargo build --release --features rustyline
 }
 
 check() {
