@@ -17,7 +17,7 @@ pkgbase = substance-designer
 	source = substance-designer
 	sha256sums = b29051896512b8e334b6eccd0fa578119cd6314c8fbc77b6ad5bbb87a2fa7e8d
 	sha256sums = 8f7f090d96dbb3535747d2c09c32970343c8887df610bc7ef92b59871a9bfb35
-	sha256sums = 30e4467dd10879a8fd8b96e1054abd6ec873eef9d01447bc4abcd6e13e19fdd9
+	sha256sums = c1f601250bbcd87f3e1016cdc73206842fc98802257286fba7f68df85570db41
 	sha256sums = 714d4484f5ca6d1ac0de77729ab60fc6aee53a7dc217fda5a6401fb6f8eee156
 
 pkgname = substance-designer

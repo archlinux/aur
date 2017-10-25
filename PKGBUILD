@@ -16,7 +16,7 @@ source=('https://download.allegorithmic.com/substance-designer/2017.x/Substance_
 noextract=()
 sha256sums=('b29051896512b8e334b6eccd0fa578119cd6314c8fbc77b6ad5bbb87a2fa7e8d'
             '8f7f090d96dbb3535747d2c09c32970343c8887df610bc7ef92b59871a9bfb35'
-            '30e4467dd10879a8fd8b96e1054abd6ec873eef9d01447bc4abcd6e13e19fdd9'
+            'c1f601250bbcd87f3e1016cdc73206842fc98802257286fba7f68df85570db41'
             '714d4484f5ca6d1ac0de77729ab60fc6aee53a7dc217fda5a6401fb6f8eee156')
 validpgpkeys=()
 
