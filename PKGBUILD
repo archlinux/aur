@@ -42,6 +42,9 @@ prepare() {
 	# Fix zlib library lookup
 	sed -i '11s|zlib|ZLIB|' "${srcdir}/xu4/u4/CMakeLists.txt"
 
+	# Let's set a better version
+	sed -i "223s|svn1.1.1.1|svn${pkgver#$_pkgver}|" "${srcdir}/xu4/u4/src/CMakeLists.txt"
+
 	# Use sourced archives, don't download every build
 	patch -Np0 << "EOT"
 +++ xu4/u4/src/CMakeLists.txt
@@ -72,7 +75,7 @@ EOT
 
 build() {
 	rm -fr build && mkdir build && cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr "${srcdir}/xu4/u4"
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DVERSION="svn.$pkgver" "${srcdir}/xu4/u4"
 	make
 }
 
