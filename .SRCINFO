@@ -1,0 +1,21 @@
+pkgbase = python-powerline-shell
+	pkgdesc = A pretty prompt for your shell
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/banga/powerline-shell
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+	makedepends = python2
+	makedepends = python2-pip
+	depends = ttf-font-awesome
+
+pkgname = python-powerline-shell
+	depends = python
+	depends = python-pip
+
+pkgname = python2-powerline-shell
+	depends = python2
+	depends = python2-pip
+
