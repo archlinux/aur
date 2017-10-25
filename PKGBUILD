@@ -5,7 +5,7 @@
 pkgbase="python-scikit-fuzzy"
 pkgname=("python-scikit-fuzzy" "python2-scikit-fuzzy")
 _pkgname="scikit-fuzzy"
-pkgver="0.3"
+pkgver="0.3.1"
 pkgrel="1"
 pkgdesc="A fuzzy logic toolkit for SciPy"
 arch=('any')
@@ -13,7 +13,7 @@ url="https://github.com/scikit-fuzzy/scikit-fuzzy"
 license=('custom')
 makedepends=('python' 'python-setuptools' 'python-numpy' 'python-scipy' 'python-networkx' 'python2' 'python2-setuptools' 'python2-numpy' 'python2-scipy' 'python2-networkx')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('411fe39402628e1294620b9ebf731e9c8682a024d7a754a1a8cc23372b9820fd')
+sha256sums=('0c5f89f2c5602cb6ebd4f88217b3159ff3171819fb3c83f5e36cc675b71f174a')
 
 prepare() {
   cd "$srcdir"
