@@ -1,0 +1,37 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 5342ae3..5dcbdd6 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -4,7 +4,7 @@ AM_CPPFLAGS = -Wall -std=c++11 -DFORTIFY_SOURCE=2 -DGCRYPT_NO_DEPRECATED
+ AM_LDFLAGS = -Wl,-rpath=/lib/homegear -Wl,-rpath=/usr/lib/homegear -Wl,-rpath=/usr/local/lib/homegear
+ if HAVE_PHP_HEADERS
+ # {{{ PHP libraries
+-LIBS += -Wl,-Bstatic -lphp7-homegear -Wl,-Bdynamic -lz -lexslt -lresolv -ledit -lrt -lmcrypt -lltdl -lgmp -lenchant -lrt -lm -lnsl -lxml2 -lxslt -lcrypt -lcrypto -lssl -lgnutls
++LIBS += -Wl,-Bstatic -lphp-homegear -Wl,-Bdynamic -lz -lexslt -lresolv -ledit -lrt -lmcrypt -lltdl -lgmp -lenchant -lrt -lm -lnsl -lxml2 -lxslt -lcrypt -lcrypto -lssl -lgnutls
+ # }}}
+ endif
+ 
+@@ -34,8 +34,8 @@ libscriptengine_a_SOURCES = ScriptEngine/php_homegear_globals.cpp ScriptEngine/p
+ homegear_LDADD += libscriptengine.a
+ libscriptengine_a_CPPFLAGS = -Wall -std=c++11 -DFORTIFY_SOURCE=2 -DGCRYPT_NO_DEPRECATED
+ if BSDSYSTEM
+-libscriptengine_a_CPPFLAGS += -I/usr/include/php7-homegear -I/usr/include/php7-homegear/main -I/usr/include/php7-homegear/sapi -I/usr/include/php7-homegear/TSRM -I/usr/include/php7-homegear/Zend -I/usr/include/php7-homegear/php -I/usr/include/php7-homegear/php/main -I/usr/include/php7-homegear/php/sapi -I/usr/include/php7-homegear/php/TSRM -I/usr/include/php7-homegear/php/Zend
++libscriptengine_a_CPPFLAGS += -I/usr/include/php-homegear -I/usr/include/php-homegear/main -I/usr/include/php-homegear/sapi -I/usr/include/php-homegear/TSRM -I/usr/include/php-homegear/Zend -I/usr/include/php-homegear/php -I/usr/include/php-homegear/php/main -I/usr/include/php-homegear/php/sapi -I/usr/include/php-homegear/php/TSRM -I/usr/include/php-homegear/php/Zend
+ else
+-libscriptengine_a_CPPFLAGS += -I/usr/include/php7-homegear -I/usr/include/php7-homegear/main -I/usr/include/php7-homegear/sapi -I/usr/include/php7-homegear/TSRM -I/usr/include/php7-homegear/Zend -I/usr/include/php7-homegear/php -I/usr/include/php7-homegear/php/main -I/usr/include/php7-homegear/php/sapi -I/usr/include/php7-homegear/php/TSRM -I/usr/include/php7-homegear/php/Zend
++libscriptengine_a_CPPFLAGS += -I/usr/include/php-homegear -I/usr/include/php-homegear/main -I/usr/include/php-homegear/sapi -I/usr/include/php-homegear/TSRM -I/usr/include/php-homegear/Zend -I/usr/include/php-homegear/php -I/usr/include/php-homegear/php/main -I/usr/include/php-homegear/php/sapi -I/usr/include/php-homegear/php/TSRM -I/usr/include/php-homegear/php/Zend
+ endif
+ #endif
+diff --git a/configure.ac b/configure.ac
+index 399a410..296d433 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -70,7 +70,7 @@ esac
+ AC_CHECK_LIB([mysqlclient], [mysql_init], [AM_CONDITIONAL(HAVE_MYSQLCLIENT, true)], [AM_CONDITIONAL(HAVE_MYSQLCLIENT, false)])
+ AC_CHECK_HEADERS([curl/curl.h], [AM_CONDITIONAL(HAVE_CURL_HEADERS, true)], [AM_CONDITIONAL(HAVE_CURL_HEADERS, false)])
+ AC_CHECK_LIB([curl], [curl_easy_send], [AM_CONDITIONAL(HAVE_CURL, true)], [AM_CONDITIONAL(HAVE_CURL, false)])
+-AC_CHECK_HEADERS([php7-homegear/main/php_config.h], [AM_CONDITIONAL(HAVE_PHP_HEADERS, true)], [AM_CONDITIONAL(HAVE_PHP_HEADERS, false)])
++AC_CHECK_HEADERS([php-homegear/main/php_config.h], [AM_CONDITIONAL(HAVE_PHP_HEADERS, true)], [AM_CONDITIONAL(HAVE_PHP_HEADERS, false)])
+ 
+ AC_DEFINE_UNQUOTED([GITCOMMITSHABASE], [`./getGitCommitBase.sh`], [Define git commit SHA of libhomegear-base])
+ AC_DEFINE_UNQUOTED([GITCOMMITSHAHOMEGEAR], [`./getGitCommitHomegear.sh`], [Define git commit SHA of Homegear])

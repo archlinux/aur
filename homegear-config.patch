@@ -1,0 +1,58 @@
+diff --git a/misc/Config Directory/main.conf b/misc/Config Directory/main.conf
+index 9f6716e..bd3eceb 100644
+--- a/misc/Config Directory/main.conf	
++++ b/misc/Config Directory/main.conf	
+@@ -2,10 +2,10 @@
+ # See for more details: https://doc.homegear.eu/data/homegear/configuration.html#main-configuration-main-conf
+ 
+ # Default: runAsUser = root
+-# runAsUser = homegear
++runAsUser = homegear
+ 
+ # Default: runAsGroup = root
+-# runAsGroup = homegear
++runAsGroup = homegear
+ 
+ # Set the debug log level
+ # 0=none, 1=critical, 2=error, 3=warning, 4=info, 5=debug, >5=more debug information
+@@ -36,7 +36,7 @@ workingDirectory = /var/lib/homegear
+ 
+ # The socket files are placed into this directory. If socketPath is empty, the executable path is used.
+ # Default: socketPath =
+-socketPath = /var/run/homegear
++socketPath = /run/homegear
+ 
+ # If dataPath is empty, the executable path is used.
+ # Default: dataPath =
+@@ -189,7 +189,7 @@ enableFlows = true
+ 
+ # Path where Node-BLUE is located.
+ # Default: flowsPath = /var/lib/homegear/flows
+-flowsPath = /var/lib/homegear/flows
++flowsPath = /usr/lib/homegear/flows
+ 
+ # Default: flowsPathPermissions = 770
+ # flowsPathPermissions = 770
+@@ -219,11 +219,11 @@ nodeBlueDebugOutput = true
+ 
+ # Path to the family modules.
+ # Default: modulePath = /var/lib/homegear/modules
+-modulePath = /var/lib/homegear/modules
++modulePath = /usr/lib/homegear/modules
+ 
+ # Path to the directory with firmware updates
+ # Default: firmwarePath = /usr/share/homegear/firmware
+-firmwarePath = /usr/share/homegear/firmware
++firmwarePath = /var/lib/homegear/firmware
+ 
+ # Path to a directory where Homegear can store temporary data
+ # Default: tempPath = /var/lib/homegear/tmp
+@@ -233,7 +233,7 @@ tempPath = /var/lib/homegear/tmp
+ # Default: lockFilePath = /var/lock
+ # /var/run/ is not the correct path for lock files. But as /var/lock is not user-writeable
+ # on some systems, we decided to move the lock files to /var/run/homegear.
+-lockFilePath = /var/run/homegear
++lockFilePath = /run/homegear
+ 
+ # If unset permissions are not set on start of Homegear.
+ # Default: lockFilePathPermissions = 770

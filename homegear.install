@@ -1,0 +1,37 @@
+fix_owner_perms() {
+    chown -R homegear:homegear /var/lib/homegear
+    chown homegear:homegear /var/log/homegear
+}
+
+post_install() {
+	result=`id -u homegear 2>/dev/null`
+	if [ "0$result" -eq "0" ]; then
+	    useradd --system --shell /bin/false homegear >/dev/null 2>&1
+        [ $? -ne 0 ] && exit 1
+        usermod -a -G dialout homegear 2>/dev/null
+        usermod -a -G gpio homegear 2>/dev/null
+        usermod -a -G spi homegear 2>/dev/null
+	fi
+
+    echo '>>> SSL on ports 2002 and 2003 is disabled by default.'
+    echo '>>> Run the following commands and then enable SSL in /etc/homegear/rpcservers.conf:'
+    echo '>>> # openssl genrsa -out /etc/homegear/homegear.key 2048'
+    echo '>>> # openssl req -new -key /etc/homegear/homegear.key -out /etc/homegear/homegear.csr'
+    echo '>>> # openssl x509 -req -in /etc/homegear/homegear.csr -signkey /etc/homegear/homegear.key -out /etc/homegear/homegear.crt'
+
+	fix_owner_perms
+}
+
+post_upgrade() {
+	fix_owner_perms
+}
+
+post_remove() {
+	if test -e /etc/homegear; then
+	    chown -R root:root /etc/homegear
+	fi
+	if test -e /var/lib/homegear; then
+    	chown -R root:root /var/lib/homegear
+	fi
+	userdel homegear > /dev/null 2>&1
+}

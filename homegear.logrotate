@@ -8,6 +8,6 @@
         create 640 homegear homegear
         sharedscripts
         postrotate
-                systemctl restart homegear
+                systemctl reload homegear
         endscript
 }

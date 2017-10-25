@@ -1,0 +1,22 @@
+diff --git a/misc/Config Directory/rpcservers.conf b/misc/Config Directory/rpcservers.conf
+index eedea67..5db64d0 100644
+--- a/misc/Config Directory/rpcservers.conf	
++++ b/misc/Config Directory/rpcservers.conf	
+@@ -105,7 +105,7 @@ contentPath = /var/lib/homegear/www/rpc
+ webSocket = true
+ 
+ # Set ssl to "true" to enable SSL support
+-ssl = true
++ssl = false
+ 
+ # You can specify the authentication type your server uses here.
+ # Can be one of the following:
+@@ -172,7 +172,7 @@ contentPath = /var/lib/homegear/www/rpc
+ webSocket = true
+ 
+ # Set ssl to "true" to enable SSL support
+-ssl = true
++ssl = false
+ 
+ # You can specify the authentication type your server uses here.
+ # Can be one of the following:

@@ -1,134 +1,88 @@
-# Package build for homegear (https://www.homegear.eu/index.php/Main_Page)
-# Maintainer: Michael Lipp <mnl at mnl dot de>
+# Maintainer: Niklas <dev@n1klas.net>
+# Contributor: Michael Lipp <mnl at mnl dot de>
 
-pkgdesc=('Interface HomeMatic BidCoS and others with home automation software')
-pkgbase=('homegear')
-pkgname=('homegear')
-pkgver=0.5.25
-pkgrel=2
-arch=('armv7h' 'x86_64' 'i686')
-license=('GPL')
-url="https://github.com/Homegear/Homegear"
-makedepends=('gcc-libs' 'gnutls>=3.3.0' 'libgpg-error>=1.14' 'readline>=6.2' 'sqlite>=3.7.13' 'libxml2>=2.8.0' 'lzo>=2.0.6')
-source=("https://github.com/Homegear/Homegear/archive/${pkgver}.tar.gz"
-	'cast-to-bool.patch'
-	'GetDeviceFiles.sh.patch'
-	'GetFirmwareUpdates.sh.patch'
-	'homegear.service'
-	'homegear.logrotate')
-md5sums=('cd8335a45f8c9fb3e1fe2fd6328f8373'
-         '3f84c8c96fc6b7d197762e61af97a086'
-         'b1a820bb631c45f3b0f266f552e24891'
-         'ba39981e2b7a1f3cb1428fb839a1786a'
-         'e208eff7459ed6ac965c9f3ed64a4619'
-         '57e41d66f3f80d9e8e3caa665dd5e788')
+pkgname='homegear'
+_gitname='Homegear'
+pkgdesc='Interface your HomeMatic BidCoS, HomeMatic Wired, MAX!, INSTEON or Philips hue devices with your home automation software or your own control scripts'
+pkgver=0.7.10
+pkgrel=1
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
+license=('LGPL3')
+url="https://homegear.eu"
+depends=('sqlite3' 'libxslt' 'gnutls' 'homegear-nodes-core' 'php7-homegear')
+optdepends=('homegear-homematicbidcos: Support for eQ-3 HomeMatic BidCoS (wireless) devices'
+            'homegear-homematicwired: Support for eQ-3 HomeMatic Wired devices'
+            'homegear-insteon: Support for Insteon devices'
+            'homegear-intertechno: Support for Intertechno devices'
+            'homegear-max: Support for eQ-3 MAX! devices'
+            'homegear-philipshue: Support for Philips Hue')
+source=("https://github.com/Homegear/${_gitname}/archive/${pkgver}.tar.gz"
+	    'homegear.service'
+	    'homegear.logrotate'
+        'homegear-gnutls.patch'
+        'homegear-config.patch'
+        'homegear-ssl-optional.patch')
+sha512sums=('f494396d58580c8059a8eea5e7b196372b507380af3c48a5036e45bb720b2c2259340bc4853600218ba0722460801fe54edc7e7cebfd6c03e19335153658dc9d'
+            '52b7b1b37c1d6b958081c97a733a0b17207a66c5b3c2a51f8abd1659aa1220ee6805f9ee47d241fa63b9124534b3958f04fc41b8b2e8132487d904550af5a26c'
+            'c58a093cc923551e8482503962bfb9f043ee651b2d9954df6a8bf478715848bdac226dc0f3eb4e4f4aa44cdc9c7ca041560db735e27d6cc89122d02e2ffecc2a'
+            'b55c2e38e3aae22ecd1b3af65aebb7767400cf134f317ffad6f139c4f8681c587fbf7268b098c44796439dc51d9e4c05aadb1fe1d864b8ea1d8902f0409c5127'
+            '8bc3908e78f77a496d3c13bee0fa02cad2307b13bc3dc06b05cb5e08c774bc046e58d6c0967ed4216dddf49aac4288b641dc5d5b8006b7c47b9b95abe4fd0cd0'
+            '5b25817cbbf5a5fb1d7c8414d36441de18cef3c43693329facb84b4312fd83c92bfcf6100937f3e5c9a7329e4ba80de1418cc0b9374c46d14255a612e8617498')
+install='homegear.install'
+backup=('etc/homegear/main.conf'
+        'etc/homegear/mqtt.conf'
+        'etc/homegear/rpcclients.conf'
+        'etc/homegear/rpcservers.conf'
+        'etc/homegear/php.ini'
+        'etc/homegear/families/miscellaneous.conf'
+        'etc/homegear/devices/254/template.xml'
+        'etc/logrotate.d/homegear')
 
 prepare() {
-	cd "${srcdir}/Homegear-${pkgver}"
+    cd "${srcdir}/${_gitname}-${pkgver}"
 
-	patch -Np1 -i "${srcdir}/cast-to-bool.patch"
-	patch -Np1 -i "${srcdir}/GetDeviceFiles.sh.patch"
-	patch -Np1 -i "${srcdir}/GetFirmwareUpdates.sh.patch"
+    # Use the our version number instead of the script which would have fetched it from Github
+    sed -i -e "s#m4_esyscmd_s(\[./getVersion.sh\])#${pkgver}#" configure.ac
+    # Put the modules in /usr/lib instead of /var/lib because that is where they belong
+    sed -i -e 's#libdir = $(localstatedir)/lib/homegear/modules#libdir = $(prefix)/lib/homegear/modules#' homegear-miscellaneous/src/Makefile.am
+
+    patch -p1 -i "${srcdir}"/homegear-gnutls.patch
+    patch -p1 -i "${srcdir}"/homegear-config.patch
+    patch -p1 -i "${srcdir}"/homegear-ssl-optional.patch
 }
 
 build() {
-	cd "${srcdir}/Homegear-${pkgver}"
+	cd "${srcdir}/${_gitname}-${pkgver}"
 
-	make config=release verbose=true
+    ./bootstrap
+    ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --libdir=/usr/lib
+	make
 }
 
-package_homegear() {
-	pkgdesc='Interface your HomeMatic BidCoS, HomeMatic Wired, MAX!, INSTEON or Philips hue devices with your home automation software or your own control scripts.'
-	depends=('gcc-libs' 'gnutls>=3.3.0' 'libgpg-error>=1.14' 'readline>=6.2' 'sqlite>=3.7.13' 'libxml2>=2.8.0' 'lzo>=2.0.6' 'unzip' 'wget' 'libxml2' 'python2' 'python2-pip' 'openssl')
-	install='.install'
-	backup=('etc/homegear/main.conf'
-		'etc/homegear/physicalinterfaces.conf'
-		'etc/homegear/rpcclients.conf'
-		'etc/homegear/rpcservers.conf')
+package() {
+	cd "${srcdir}/${_gitname}-${pkgver}"
 
-	cd "${srcdir}/Homegear-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 
-	mkdir -p "${pkgdir}/usr/bin"
-	cp bin/Release/homegear "${pkgdir}/usr/bin"
-	chown root:root "${pkgdir}/usr/bin"
-	chmod 755 "${pkgdir}/usr/bin/homegear"
-	
-	mkdir -p "${pkgdir}/etc/homegear"
-	for f in main.conf rpcclients.conf rpcservers.conf physicalinterfaces.conf; do
-	  cp Miscellaneous/$f "${pkgdir}/etc/homegear"
-	done
-	chmod 755 "${pkgdir}/etc/homegear"
-	chmod 644 "${pkgdir}"/etc/homegear/*
+    install -dm755 "${pkgdir}"/etc/homegear
+    cp -r misc/Config\ Directory/* "${pkgdir}"/etc/homegear
+	rm "${pkgdir}"/etc/homegear/homegear-{start,stop}.sh
+    chmod 644 "${pkgdir}"/etc/homegear/*.conf
 
-	mkdir -p "${pkgdir}/etc/homegear/devices/0"
-	chmod 755 "${pkgdir}/etc/homegear/devices"
-	chmod 755 "${pkgdir}/etc/homegear/devices/0"
+    install -dm750 "${pkgdir}"/var/lib/homegear
+    install -dm755 "${pkgdir}"/var/log/homegear
 
-	mkdir -p "${pkgdir}/etc/homegear/devices/1"
-	chmod 755 "${pkgdir}/etc/homegear/devices/0"
+    cp -r misc/State\ Directory/* "${pkgdir}"/var/lib/homegear
+    rm -r "${pkgdir}"/var/lib/homegear/www/rpc/.idea
+    find "${pkgdir}"/var/lib/homegear/www -type d -exec chmod 550 {} \;
+	find "${pkgdir}"/var/lib/homegear/www -type f -exec chmod 440 {} \;
+    install -dm750 "${pkgdir}"/var/lib/homegear/flows/data
+    install -dm750 "${pkgdir}"/var/lib/homegear/phpinclude
+    install -dm550 "${pkgdir}"/var/lib/homegear/scripts
+    install -dm750 "${pkgdir}"/var/lib/homegear/firmware
 
-	mkdir -p "${pkgdir}/etc/homegear/devices/2"
-	cp Miscellaneous/Device\ Description\ Files/INSTEON/* "${pkgdir}/etc/homegear/devices/2"
-	chmod 755 "${pkgdir}/etc/homegear/devices/2"
-	chmod 644 "${pkgdir}"/etc/homegear/devices/2/*
+    install -Dm755 homegear-miscellaneous/misc/Device\ Description\ Files/Template.xml "${pkgdir}"/etc/homegear/devices/254/template.xml
 
-	mkdir -p "${pkgdir}/etc/homegear/devices/4"
-	cp Miscellaneous/Device\ Description\ Files/MAX/* "${pkgdir}/etc/homegear/devices/4"
-	chmod 755 "${pkgdir}/etc/homegear/devices/4"
-	chmod 644 "${pkgdir}"/etc/homegear/devices/4/*
-
-	mkdir -p "${pkgdir}/etc/homegear/devices/5"
-	cp Miscellaneous/Device\ Description\ Files/Philips\ hue/* "${pkgdir}/etc/homegear/devices/5"
-	chmod 755 "${pkgdir}/etc/homegear/devices/5"
-	chmod 644 "${pkgdir}"/etc/homegear/devices/5/*
-
-	mkdir -p "${pkgdir}/etc/homegear/devices/254"
-	cp Miscellaneous/Device\ Description\ Files/Miscellaneous/* "${pkgdir}/etc/homegear/devices/254"
-	chmod 755 "${pkgdir}/etc/homegear/devices/254"
-	chmod 644 "${pkgdir}"/etc/homegear/devices/254/*
-
-	chown root:root "${pkgdir}/etc/homegear"
-
-	mkdir -p "${pkgdir}/etc/logrotate.d"
-	cp Miscellaneous/logrotate "${pkgdir}/etc/logrotate.d/homegear"
-	chown root:root "${pkgdir}/etc/logrotate.d/homegear"
-	chmod 644 "${pkgdir}/etc/logrotate.d/homegear"
-
-	mkdir -p "${pkgdir}/etc/security/limits.d"
-	chown root:root "${pkgdir}/etc/security/limits.d"
-	echo "homegear        soft    rtprio          100" > "${pkgdir}/etc/security/limits.d/homegear"
-	echo "homegear        hard    rtprio          100" >> "${pkgdir}/etc/security/limits.d/homegear"
-	chown root:root "${pkgdir}/etc/security/limits.d/homegear"
-	chmod 644 "${pkgdir}/etc/security/limits.d/homegear"
-
-	mkdir -p "${pkgdir}/var/lib/homegear/firmware"
-	cp Miscellaneous/firmwareDir/GetFirmwareUpdates.sh "${pkgdir}/var/lib/homegear/firmware"
-	chown -R root:root "${pkgdir}/var/lib/homegear/firmware"
-	chmod -R 550 "${pkgdir}/var/lib/homegear/firmware"
-
-	mkdir -p "${pkgdir}/var/lib/homegear/modules"
-	cp lib/Modules/Release/*.so "${pkgdir}/var/lib/homegear/modules"
-	FILES="${pkgdir}"/var/lib/homegear/modules/*
-	for f in $FILES; do
-		f2=`echo $f | sed 's#.*/##' | sed 's/^lib/mod_/'`
-		mv $f "${pkgdir}"/var/lib/homegear/modules/$f2
-	done
-	chown -R root:root "${pkgdir}/var/lib/homegear/modules"
-	chmod -R 550 "${pkgdir}/var/lib/homegear/modules"
-
-	mkdir -p "${pkgdir}/var/lib/homegear/www"
-	cp -R Miscellaneous/www/* "${pkgdir}/var/lib/homegear/www"
-	chown -R root:root "${pkgdir}/var/lib/homegear/www"
-	chmod -R 550 "${pkgdir}/var/lib/homegear/www"
-
-	cp Miscellaneous/GetDeviceFiles.sh "${pkgdir}/var/lib/homegear"
-	chown root:root "${pkgdir}/var/lib/homegear/GetDeviceFiles.sh"
-	chmod 755 "${pkgdir}/var/lib/homegear/GetDeviceFiles.sh"
-	cp Miscellaneous/DeviceTypePatch.patch "${pkgdir}/var/lib/homegear"
-	chown root:root "${pkgdir}/var/lib/homegear/DeviceTypePatch.patch"
-	chmod 644 "${pkgdir}/var/lib/homegear/DeviceTypePatch.patch"
-
-	mkdir -p "${pkgdir}/usr/lib/systemd/system"
-	cp "${srcdir}/homegear.service" "${pkgdir}/usr/lib/systemd/system"
-	chmod 644 "${pkgdir}/usr/lib/systemd/system/homegear.service"
+    install -Dm755 "${srcdir}"/homegear.service "${pkgdir}"/usr/lib/systemd/system/homegear.service
+    install -Dm755 "${srcdir}"/homegear.logrotate "${pkgdir}"/etc/logrotate.d/homegear
 }
