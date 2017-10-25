@@ -1,7 +1,7 @@
 # Maintainer:  jyantis <yantis@yantis.net>
 
 pkgname=autoenv-git
-pkgver=0.2.1.r34.g5f437f3
+pkgver=0.2.1.r45.g1389885
 pkgrel=1
 pkgdesc='Directory based enviroments'
 arch=('any')
