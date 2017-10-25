@@ -1,6 +1,6 @@
 pkgbase = oftb-git
 	pkgdesc = The OftLisp bootstrapper.
-	pkgver = 20171006
+	pkgver = git20171024
 	pkgrel = 1
 	url = https://github.com/oftlisp/oftlisp-rs.git
 	arch = x86_64
