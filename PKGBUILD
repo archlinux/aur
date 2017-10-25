@@ -2,20 +2,20 @@
 # forked from cewe-fotobuch, originally by Jozef Riha, updated by Manuel Conzelmann
 
 _keyaccount=6822
-_productUrname='OnlineFotoservice'
+_productUrname='CEWE FOTOSERVICE'
 _productRename='CEWE Fotoservice'
 
 pkgname=cewe-fotoservice
 conflicts=(cewe-fotobuch)
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners'
-md5sums=('cbfd154aa3a5c26ccda51281fbd41b1c'
+md5sums=('e570bddc840fe677e1cfb0ea74b73b1f'
          '422a405d520e18ef9afade2e7c24440b')
 
-pkgver=6.2.4
+pkgver=6.3.0
 pkgrel=1
 url="http://www.cewe.de/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget' 'gstreamer0.10-base')
+depends=('libx11' 'libjpeg' 'curl' 'wget')
 makedepends=('unzip')
 arch=('i686' 'x86_64')
 source=("https://dls.photoprintit.com/download/Data/$_keyaccount-de_DE/hps/setup_${_productUrname// /_}.tgz"
@@ -55,7 +55,9 @@ package() {
 	cat > $pkgdir/usr/bin/$pkgname <<-EOF
 		#!/usr/bin/bash
 		cd ${_installDir#$pkgdir}
-		KDEHOME=\$HOME/.kde4 exec ./"$_productUrname" "\$@"
+		# nouveau bug with QT web engine: https://bugreports.qt.io/browse/QTBUG-41242
+		lsmod | grep nouveau && export QT_XCB_FORCE_SOFTWARE_OPENGL=1
+		exec ./"$_productUrname" "\$@"
 	EOF
 	cat > $pkgdir/usr/share/applications/$pkgname.desktop <<-EOF
 		[Desktop Entry]
