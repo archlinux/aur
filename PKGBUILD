@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=chrome-token-signing
-pkgver=1.0.5.468
+pkgver=1.0.6.485
 pkgrel=1
 epoch=1
 pkgdesc="Estonian ID Card signing for Chrome. Chrome extension and native messaging client."
@@ -10,7 +10,7 @@ license=('LGPL2.1')
 depends=('qt5-base' 'pcsclite' 'ccid')
 makedepends=('lsb-release')
 source=("https://installer.id.ee/media/ubuntu/pool/main/c/$pkgname/${pkgname}_$pkgver.orig.tar.xz")
-sha256sums=('2bdca471480ce8a4556580a8e90adc9ce93ca6edf396d4deeaab4ad255f6ea66')
+sha256sums=('cdbaf49fe7e6076318a2770513542453ea04859168b5b03b11a43acb263ad39b')
 validpgpkeys=('43650273CE9516880D7EB581B339B36D592073D4')
 
 build() {
