@@ -3,10 +3,10 @@
 # Contributor: Matej Horváth <matej.horvath@gmail.com>
 
 pkgname=gscreenshot
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 epoch=
-pkgdesc="A GUI front-end for scrot"
+pkgdesc="A simple screenshot tool supporting multiple backends"
 arch=('any')
 url="https://github.com/thenaterhood/gscreenshot"
 license=('GPL')
@@ -31,7 +31,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/thenaterhood/gscreenshot/archive/v$pkgver.tar.gz")
-sha256sums=('bcc04efc88ee900f55941886b7e79546f74cd4e3169d4ded24005b54eb6e2488')
+sha256sums=('bd011abf6cfa607bd7cef06fe56c1b4043c286e252371407e4c546acf1bd4b8a')
 validpgpkeys=()
 
 prepare() {

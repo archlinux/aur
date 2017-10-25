@@ -1,6 +1,6 @@
 pkgbase = gscreenshot
-	pkgdesc = A GUI front-end for scrot
-	pkgver = 2.9.2
+	pkgdesc = A simple screenshot tool supporting multiple backends
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = https://github.com/thenaterhood/gscreenshot
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = gscreenshot
 	optdepends = slop: improved region and window selection
 	optdepends = xclip: command line clipboard support
 	optdepends = xdg-utils: for opening screenshot files from gscreenshot
-	source = https://github.com/thenaterhood/gscreenshot/archive/v2.9.2.tar.gz
-	sha256sums = bcc04efc88ee900f55941886b7e79546f74cd4e3169d4ded24005b54eb6e2488
+	source = https://github.com/thenaterhood/gscreenshot/archive/v2.9.3.tar.gz
+	sha256sums = bd011abf6cfa607bd7cef06fe56c1b4043c286e252371407e4c546acf1bd4b8a
 
 pkgname = gscreenshot
 
