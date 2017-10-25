@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-srcache
 pkgver=0.31
-pkgrel=7
+pkgrel=8
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.13.4
+_nginxver=1.13.5
 
 pkgdesc='Transparent subrequest-based caching layout for arbitrary nginx locations (module for mainline nginx)'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 	https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
 )
 
-sha256sums=('de21f3c49ba65c611329d8759a63d72e5fcf719bc6f2a3270e2541348ef1fbba'
+sha256sums=('0e75b94429b3f745377aeba3aff97da77bf2b03fcb9ff15b3bad9b038db29f2e'
             '3f9729e73a8340926fa9d9fc15707c2f287cd27b6a9fe42e83f660ca48a5972d')
 
 build() {
