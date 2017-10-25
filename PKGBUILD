@@ -1,25 +1,25 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-cache_purge
-pkgver=2.3.1
-pkgrel=7
+pkgver=2.4.2
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.13.4
+_nginxver=1.13.5
 
 pkgdesc='Nginx mainline module with ability to purge content from FastCGI, proxy, SCGI and uWSGI caches'
 arch=('i686' 'x86_64')
 depends=('nginx-mainline')
-url="https://github.com/mtorromeo/ngx_cache_purge"
+url="https://github.com/nginx-modules/ngx_cache_purge"
 license=('CUSTOM')
 
 source=(
 	https://nginx.org/download/nginx-$_nginxver.tar.gz
-	https://github.com/mtorromeo/ngx_cache_purge/archive/$pkgver/ngx_cache_purge-$pkgver.tar.gz
+	https://github.com/nginx-modules/ngx_cache_purge/archive/$pkgver/ngx_cache_purge-$pkgver.tar.gz
 )
 
-sha256sums=('de21f3c49ba65c611329d8759a63d72e5fcf719bc6f2a3270e2541348ef1fbba'
-            '1ca6347c7c817254594cd6be47d5890dd089f880482cce08971b8a137073de43')
+sha256sums=('0e75b94429b3f745377aeba3aff97da77bf2b03fcb9ff15b3bad9b038db29f2e'
+            '067a10ae2a6d623deed5614d9fc55ec9b380d3b6060fd1e32e71c6f955d11cfc')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
