@@ -2,11 +2,12 @@
 pkgname='woff2'
 pgkdesc='Web fonts compression reference code'
 pkgver='1.0.1'
-pkgrel='2'
+pkgrel='3'
 url='https://github.com/google/woff2'
 license=('Apache')
 arch=('i686' 'x86_64')
 depends=('brotli>=1.0.1')
+makedepends=('cmake')
 conflicts=('woff2-git')
 source=("https://github.com/google/${pkgname}/archive/v${pkgver}.tar.gz"
         'cmake-install-tools.patch')
