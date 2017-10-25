@@ -1,19 +1,19 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 
 pkgname=pokemon-revolution-online-bin
-pkgver=0.98.1.sonnoh.when
+pkgver=0.98.2.spooky.haunter
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
 url="https://pokemon-revolution-online.net"
 license=('custom')
-depends=('gcc-libs-multilib' 'desktop-file-utils')
-makedepends=('unzip' 'xdg-utils' 'optipng' 'upx')
+depends=('gcc-libs' 'desktop-file-utils')
+makedepends=('unzip' 'xdg-utils')
 optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
 install="INSTALL"
 source=('net.pokemon-revolution-online.desktop' 'pokemonrevolution' 'copyright' 'pokemonrevolution.svg')
-sha256sums=('8cd4510ef3c788984b5c6ce97c64d850a57ab2bf4a5133c212a77a84c1913e7e'
+sha256sums=('64b5c6c47cd0705ff743fe3a14a0c71899db29f70f699d94cdf6f54e3fa13d00'
             '4f3964f11bf6379df123eae488948c0d93f8432a6e546318b6c609085226c4e2'
             'df736901de54dce3b191bd9744732f7b9970ab3cbdece8d7fbd7122e69ce32d5'
             '54b5f40a5385eba58385c49b7ba6a4485d531acdb6289c3cb97dcf6825750956')
@@ -28,8 +28,8 @@ package() {
 
     __DLDIR=$(xdg-user-dir DOWNLOAD) ##downloaddirectory
     __DDLA="https://tiny.cc/PROLinux" ##download link
-    __DDLFN="PRO64LinuxSin.zip" ##filename
-    __DDLFSHA256="633f1488d7bb57c00b3047db5c3e112fa96a85430d236809d61af8c3076dbc3e" #sha256sum
+    __DDLFN="PROSpookyLinux.zip" ##filename
+    __DDLFSHA256="8a18c2136e59f9604b8b0b6c9f5aa4211779ce159eeb0a36eaeeb40b29ff0b4e" #sha256sum
 
     ## "Something's missing"? -> No One Cares - Atreyu c;
     if [ ! -f ${__DLDIR}/${__DDLFN} ]; then

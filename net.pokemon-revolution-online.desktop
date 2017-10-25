@@ -1,6 +1,7 @@
 [Desktop Entry]
 Comment[de_DE]=Das freie, Community getriebenes MMO, aus der Welt der offiziellen Pokémon-Spiele
 Comment=A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games
+TryExec=GAMEEXECPATHSETBYPKGBUILD
 Exec=GAMEEXECPATHSETBYPKGBUILD
 GenericName=Pokémon MMORPG
 Icon=pokemonrevolution
@@ -10,6 +11,7 @@ Terminal=false
 Type=Application
 Categories=Game;
 Actions=Support;Rules;Forums;Register;AUR;
+
 
 [Desktop Action Support]
 Name=Support
