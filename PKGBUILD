@@ -1,6 +1,6 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert-lite
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher. Without QML and VirtualBox dependencies"
 arch=('i686' 'x86_64' 'armv7h')
@@ -64,7 +64,9 @@ build() {
   cmake \
     "../albert" \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE="MinSizeRel" \
+    -Wno-dev \
     -DBUILD_WIDGETBOXMODEL=ON \
     -DBUILD_QMLBOXMODEL=OFF \
     -DBUILD_APPLICATIONS=ON \
@@ -77,14 +79,13 @@ build() {
     -DBUILD_HASHGENERATOR=ON \
     -DBUILD_KVSTORE=ON \
     -DBUILD_MPRIS=ON \
-    -DBUILD_PYTHON=OFF \
+    -DBUILD_PYTHON=ON \
     -DBUILD_SSH=ON \
     -DBUILD_SYSTEM=ON \
     -DBUILD_TEMPLATE=OFF \
     -DBUILD_TERMINAL=ON \
-    -DBUILD_VIRTUALBOX=OFF \
-    -Wno-dev
-  make -j $((`nproc`+1))
+    -DBUILD_VIRTUALBOX=OFF
+  VERBOSE=1 make -j $((`nproc`+1))
 }
 
 
