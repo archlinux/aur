@@ -2,7 +2,7 @@
 
 pkgname=libopenblas
 _pkgname=OpenBLAS
-pkgver=0.2.19
+pkgver=0.2.20
 pkgrel=1
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('perl'
              )
 options=(!emptydirs)
 source=("${_pkgname}-v${pkgver}.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v${pkgver}.tar.gz")
-sha256sums=('9c40b5e4970f27c5f6911cb0a28aa26b6c83f17418b69f8e5a116bb983ca8557')
+sha256sums=('5ef38b15d9c652985774869efd548b8e3e972e1e99475c673b25537ed7bcf394')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -40,5 +40,8 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 
-  sed -i -e "s%${pkgdir}%%" "${pkgdir}/usr/lib/cmake/openblas/OpenBLASConfig.cmake"
+  sed -e "s|${pkgdir}||" \
+      -i "${pkgdir}/usr/lib/cmake/openblas/OpenBLASConfig.cmake" \
+      -i "${pkgdir}/usr/lib/pkgconfig/openblas.pc"
+
 }
