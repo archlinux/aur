@@ -1,0 +1,14 @@
+#!/bin/sh
+
+BASEURL="https://github.com/magarena/magarena/releases"
+
+wget --help | grep -q '\--show-progress' && \
+  _PROGRESS_OPT="-q --show-progress" || _PROGRESS_OPT=""
+
+echo "Getting latest version ..."
+VERSION="$(wget -q "$BASEURL" -O - | grep '<a href.*releases/download/.*[^p].zip' | head -1 | perl -pe 's|.*href=".*-(.*).zip".*|\1|g')"
+
+wget $_PROGRESS_OPT -nc "$BASEURL/download/$VERSION/Magarena-$VERSION.zip" -O magarena-$VERSION.zip
+unzip -q magarena-$VERSION.zip
+rm -rf magarena-latest
+mv -f Magarena-$VERSION magarena-latest
