@@ -1,0 +1,23 @@
+pkgbase = haskell-typed-process
+	pkgdesc = Run external processes, with strong typing of streams.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/fpco/typed-process
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = haskell-base
+	depends = haskell-async
+	depends = haskell-bytestring
+	depends = haskell-conduit
+	depends = haskell-conduit-extra
+	depends = haskell-exceptions
+	depends = haskell-process
+	depends = haskell-stm
+	depends = haskell-transformers
+	source = https://hackage.haskell.org/packages/archive/typed-process/0.1.1/typed-process-0.1.1.tar.gz
+	sha512sums = f270e0f2213bdc2c61a0a781880cba9c869e29dabc8727fcfc252a2bc9646ec348d07bc5e570a6eb28fb72b4c92063cf631c8fd0987149e44a9678850018062a
+
+pkgname = haskell-typed-process
+
