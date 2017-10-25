@@ -1,0 +1,15 @@
+pkgbase = python2-txjsonrpc-git
+	pkgdesc = txJSON-RPC allows you to create async Python JSON-RPC servers and clients either over HTTP or directly on TCP with the Netstring protocol. txJSON-RPC is written in Twisted.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/oubiwann/txjsonrpc
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	options = !emptydirs
+	source = git+https://github.com/oubiwann/txjsonrpc.git
+	md5sums = SKIP
+
+pkgname = python2-txjsonrpc-git
+
