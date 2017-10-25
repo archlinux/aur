@@ -59,7 +59,8 @@ prepare() {
   # cd $srcdir/UnrealEngine/Engine/Plugins/Developer && git clone https://github.com/fire/SensibleEditorSourceCodeAccess
   # cd $srcdir/UnrealEngine/Engine/Config/Linux && sed -i '10c\PreferredAccessor=SensibleEditorSourceCodeAccessor' LinuxEngine.ini
 
-  pkgbuild_dir=$(pwd)
+  pkgbuild_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )"  && pwd )"
+  echo "$pkgbuild_dir"
   # shellcheck disable=SC2164
   cd "$srcdir/UnrealEngine"
 
