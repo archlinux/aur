@@ -1,6 +1,59 @@
 Version history
 ===============
 
+0.9.2
+-----
+
+2017-10-22
+
+Rubix reordered his singleplayer levels and added the Community Collab
+Project: 4 levels in single/rubix/Extras.
+
+lemforum: Path to Mahiman, removed indirect jump backroute. Runaround up to
+Cunning, Raindow Road down to Quirky.
+
+Fix #252: Level search queries won't match the prefix 'levels/' in the
+filenames because all levels would match.
+
+Fix #256: When you export levels to images or save replays manually, the button replacement will not say "done", but instead tell you the filename.
+
+Fix #254: When you run out of VRAM during a level, the game won't crash, but
+instead stop making internal savestates. This won't display a warning, it will
+merely log. Recalculation due to incoming network packets will take longer,
+but that's better than crashing. The game remains VRAM-hungry and this
+solution is not ideal.
+
+0.9.1
+-----
+
+2017-10-05
+
+Fix #243: Sounds play in the lobby or browser when somebody joins or when
+somebody picks a map. When observers browse for maps and others start a game,
+the observer's browser closes, and the observer will see the game.
+
+Fix #244: Malformed UTF-8 in files within the level tree (e.g., zip archive)
+won't crash the Lix level search anymore. The offending file still will not
+appear as a searchable level; instead, the offending filename is logged. I
+validate all keyboard input for UTF-8.
+
+Fix #246: Tiles with coordinates far out-of-bounds crashed the editor once
+torus wrapping became enabled. Will now torus-wrap these tiles properly.
+
+Fix #247: The lix under the mouse is lighlighted far brighter and gets a dark
+outline to its left, right, and above it.
+
+Fix #248: Multiplayer colors: Purple is lighter. Black is darker. Yellow is
+darker and has less green hue.
+
+Removed a backroute in lemforum's Duality from abusing decoration.
+
+Added about 40 remakes by Proxima of maps from 2009. I've
+inserted the maps in their original authors' directories.
+
+Removed hidden water in Sharing the Water Supply 4p. Removed duplicate map
+files for Going Up 7p/8p.
+
 0.9.0
 -----
 
@@ -36,8 +89,6 @@ Fix #240: Observers don't have to cancel the end-of-game dialog anymore. I
 print the game result to the console. This is not beautiful, but it's an
 acceptable medium-term solution.
 
-
-
 0.8.8
 -----
 
@@ -64,8 +115,6 @@ Linux packaging: You can override the XDG install path with a custom path, see
 doc/build/package.txt. In the git repository, data/images/lix_logo.svg has a
 large logo as SVG. I don't ship that in the download because it's over 3 MB.
 
-
-
 0.8.7
 -----
 
@@ -74,8 +123,6 @@ large logo as SVG. I don't ship that in the download because it's over 3 MB.
 The out-of-skills beep was too trigger-happy: When we clicked a mining lix
 and had miners left in the skill panel, the game beeped as if we were out of
 skills. Fixed.
-
-
 
 0.8.6
 -----
@@ -93,8 +140,6 @@ of keeping the previous selection.
 Included Rubix's variants on Marble Run, Eater Island, Diagonal 8p, and removed dead space on Across the Gap. Everybody else: Post your multiplayer maps, then I can include them in the next version.
 
 Optionally print during play the number of physics updates, frames per second, and a ballpark guess of allocated VRAM.
-
-
 
 0.8.5
 -----
@@ -127,7 +172,6 @@ once is still slow. Organ Symphony will still kill the framerate.)
 Fix #211: On Linux, you can pass a compiler switch to make Lix system-wide
 installable, follwing the XDG base directory structure. For arbitrary
 installation paths, open an issue on github.
-
 
 0.8.4
 -----
