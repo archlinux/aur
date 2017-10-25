@@ -17,7 +17,7 @@ prepare() {
   cd packages
 
   make devel PKG=base RCP=${_base_ver}
-  sed -i 's,\$,#\$,g' "../stage/R3.15.4/base/configure/os/CONFIG_SITE.linux-x86_64.UnixCommon"
+  sed -i 's,\\$,#\\$,g' "../stage/R3.15.4/base/configure/os/CONFIG_SITE.linux-x86_64.UnixCommon"
   sed -i '/Exception/d' "../stage/R3.15.4/base/src/libCom/test/Makefile"
   #make devel PKG=base RCP=R3.15.5
   make devel PKG=base RCP=${_base_ver}
