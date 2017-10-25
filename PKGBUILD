@@ -1,7 +1,7 @@
 # Maintainer: P Sherbet <psherbet at psherbet dot com>
 pkgname=nerd-fonts-source-code-pro
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched font SourceCodePro from nerd-fonts library"
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
@@ -10,9 +10,8 @@ depends=('fontconfig' 'xorg-font-utils' 'wget')
 install=$pkgname.install
 source=("$pkgname.links"
     "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v1.1.0/LICENSE")
-sha256sums=(
-    '01de63a72f9bbf931b02c3cf5229e2a4b6742c178d7eb09572572fbff2534647'
-    'd2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5')
+sha256sums=('01de63a72f9bbf931b02c3cf5229e2a4b6742c178d7eb09572572fbff2534647'
+            'd2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5')
 
 prepare() {
     # Just download font file (complete version) from github repo because the whole repo is too big

@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-source-code-pro
 	pkgdesc = Patched font SourceCodePro from nerd-fonts library
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	install = nerd-fonts-source-code-pro.install
 	arch = any
