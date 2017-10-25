@@ -14,8 +14,8 @@ provides=('tippecanoe')
 backup=()
 options=()
 install=''
-source=("https://github.com/mapbox/tippecanoe/archive/1.19.2.tar.gz")
-md5sums=('2df62793d486b692de622f5e0aba6c47')
+source=("https://github.com/mapbox/tippecanoe/archive/1.26.0.tar.gz")
+md5sums=('2684f79885724c197f889440ad9ecfae')
 
 build() {
   cd "$pkgname-$pkgver"
