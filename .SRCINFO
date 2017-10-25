@@ -1,6 +1,6 @@
 pkgbase = oftlisp-std-git
 	pkgdesc = The OftLisp standard library.
-	pkgver = 20171006
+	pkgver = git20171024
 	pkgrel = 1
 	url = https://github.com/oftlisp/std.git
 	arch = arm

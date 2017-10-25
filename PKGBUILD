@@ -1,6 +1,6 @@
 # Maintainer: Nathan Ringo <remexre@gmail.com>
 pkgname=oftlisp-std-git
-pkgver=20171006
+pkgver=git20171024
 pkgrel=1
 pkgdesc="The OftLisp standard library."
 arch=(arm arm64 i686 x86_64)
