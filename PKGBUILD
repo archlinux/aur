@@ -11,8 +11,7 @@ url="https://github.com/martinrotter/rssguard/"
 license=('GPL3')
 depends=('qt5-base' 'qt5-webengine')
 makedepends=('qt5-tools')
-optdepends=('mariadb: MySQL/MariaDB storage backend support'
-            'qt5-webengine: more feature and support of browsing' )
+optdepends=('mariadb: MySQL/MariaDB storage backend support')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/martinrotter/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('03828047151ad4f47a7242651cc38e33d37608b95edd7acaf929b79ec55e82f2')
 
