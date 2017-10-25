@@ -1,6 +1,6 @@
 pkgbase = spinach
 	pkgdesc = Another AUR helper written in Bash
-	pkgver = 0.5.14
+	pkgver = 0.5.15
 	pkgrel = 1
 	url = https://github.com/floft/spinach
 	arch = any

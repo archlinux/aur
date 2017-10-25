@@ -1,6 +1,6 @@
 # Maintainer: Garrett <floft.net/contact>
 pkgname=spinach
-pkgver=0.5.14
+pkgver=0.5.15
 pkgrel=1
 pkgdesc="Another AUR helper written in Bash"
 arch=('any')
