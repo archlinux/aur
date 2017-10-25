@@ -3,7 +3,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-pkgtools-cvs
 pkgver=111210
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 pkgdesc="The Heirloom Packaging Tools is a port of SVR4 application packaging utilities from OpenSolaris."
 url="http://heirloom.sourceforge.net/pkgtools.html"
@@ -26,6 +26,8 @@ prepare() {
   cp -r $srcdir/heirloom-pkgtools $srcdir/build
   cd $srcdir/build
   patch -p1 < ../000-config.diff
+  sed -i '/^CFLAGS=/ s,$, -I/usr/include/openssl-1.0,' mk.config
+  sed -i '/^LDFLAGS=/ s,$, -L/usr/lib/openssl-1.0,' mk.config
 }
 
 build() {
