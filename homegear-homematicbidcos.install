@@ -1,0 +1,14 @@
+post_install() {
+    echo '>>> Please run the following command as root to download'
+    echo '>>> the required firmware for HomeMatic BidCoS devices:'
+    echo '>>> # homegear-homematicbidcos-update-firmware'
+
+    if [ "`systemctl is-active homegear`" == "active" ]
+    then
+        homegear -e mld mod_homematicbidcos.so
+    fi
+}
+
+post_upgrade() {
+    post_install
+}

@@ -1,0 +1,21 @@
+pkgbase = homegear-homematicbidcos
+	pkgdesc = HomeMatic BidCoS module for Homegear
+	pkgver = 0.7.10
+	pkgrel = 1
+	url = https://homegear.eu
+	install = homegear-homematicbidcos.install
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	depends = homegear
+	backup = etc/homegear/families/homematicbidcos.conf
+	source = https://github.com/Homegear/Homegear-HomeMaticBidCoS/archive/0.7.10.tar.gz
+	sha512sums = f67eac103a5fa70476de97cf45c9c2316afb8fcad29fe0da14cac217b61a70fd18161a09dc584eef7f92fc1c6da85dca761d23717d74e3a047c6405e4880cab5
+
+pkgname = homegear-homematicbidcos
+	backup = etc/homegear/families/homematicbidcos.conf
+	backup = etc/homegear/devices/0/
+
