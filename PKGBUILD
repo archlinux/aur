@@ -12,11 +12,11 @@
 _clang_completer=y
 
 pkgname=neovim-youcompleteme-core-git
-pkgver=r2036.01570aac
+pkgver=r2199.b4ab6da8
 pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
-url='http://valloric.github.com/YouCompleteMe/'
+url='https://valloric.github.io/YouCompleteMe/'
 license=('GPL3')
 depends=('neovim' 'boost-libs' 'python>=3.2' 'python-bottle' 'python-waitress' 'python-frozendict' 'python-requests-futures' 'python-future' 'python-neovim')
 makedepends=('git' 'cmake' 'boost')
@@ -83,7 +83,7 @@ package() {
         install -Ddm755 "${pkg_ycmd_dir}/third_party/tern_runtime/node_modules/"
         install -Ddm755 "${pkg_ycmd_dir}/third_party/gocode/"
         install -Ddm755 "${pkg_ycmd_dir}/third_party/godef/"
-        ln -s /usr/bin/jedihttp-main.py "${pkg_ycmd_dir}/third_party/JediHTTP/jedihttp.py"
+        ln -s /usr/bin/jedihttp "${pkg_ycmd_dir}/third_party/JediHTTP/jedihttp.py"
         ln -s /usr/lib/node_modules/tern "${pkg_ycmd_dir}/third_party/tern_runtime/node_modules/"
         ln -s /usr/bin/gocode "${pkg_ycmd_dir}/third_party/gocode/"
         ln -s /usr/bin/godef "${pkg_ycmd_dir}/third_party/godef/"
