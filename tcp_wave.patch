@@ -163,7 +163,7 @@ index 421ea1b918da..ca9caa4bc996 100644
  		icsk->icsk_ca_ops->init(sk);
  	if (tcp_ca_needs_ecn(sk))
 diff --git a/net/ipv4/tcp_output.c b/net/ipv4/tcp_output.c
-index 40f7c8ee9ba6..120c56c7a8a1 100644
+index 40f7c8ee9ba6..c201c53409ea 100644
 --- a/net/ipv4/tcp_output.c
 +++ b/net/ipv4/tcp_output.c
 @@ -42,6 +42,26 @@
@@ -357,13 +357,14 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  
  	sent_pkts = 0;
  
-@@ -2283,11 +2348,34 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2283,11 +2348,35 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  
  	max_segs = tcp_tso_segs(sk, mss_now);
  	tcp_mstamp_refresh(tp);
 +
 +	if (tcp_needs_internal_pacing(sk) &&
-+	    !tcp_pacing_timer_check(sk)) {
++	    !tcp_pacing_timer_check(sk) &&
++	    tcp_send_head(sk)) {
 +		pacing_allowed_segs = 1;
 +		if (ca_ops->pacing_timer_expired) {
 +			ca_ops->pacing_timer_expired(sk);
@@ -372,7 +373,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
 +		if (ca_ops->get_segs_per_round)
 +			pacing_allowed_segs = ca_ops->get_segs_per_round(sk);
 +	} else
-+		pr_debug("%llu sport: %hu [%s] timer running or pacing not needed, pacing_status %u\n",
++		pr_debug("%llu sport: %hu [%s] timer running, pacing_status %u, or no data to send\n",
 +			 NOW, SPORT(sk), __func__, sk->sk_pacing_status);
 +
  	while ((skb = tcp_send_head(sk))) {
@@ -393,7 +394,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  
  		tso_segs = tcp_init_tso_segs(skb, mss_now);
  		BUG_ON(!tso_segs);
-@@ -2295,33 +2383,42 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2295,33 +2384,42 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  		if (unlikely(tp->repair) && tp->repair_queue == TCP_SEND_QUEUE) {
  			/* "skb_mstamp" is used as a start point for the retransmit timer */
  			skb->skb_mstamp = tp->tcp_mstamp;
@@ -440,7 +441,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  		}
  
  		limit = mss_now;
-@@ -2333,16 +2430,22 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2333,16 +2431,22 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  						    nonagle);
  
  		if (skb->len > limit &&
@@ -466,7 +467,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  
  repair:
  		/* Advance the send_head.  This one is sent out.
-@@ -2353,10 +2456,20 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
+@@ -2353,10 +2457,20 @@ static bool tcp_write_xmit(struct sock *sk, unsigned int mss_now, int nonagle,
  		tcp_minshall_update(tp, mss_now, skb);
  		sent_pkts += tcp_skb_pcount(skb);
  
@@ -488,7 +489,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  	if (is_rwnd_limited)
  		tcp_chrono_start(sk, TCP_CHRONO_RWND_LIMITED);
  	else
-@@ -2450,6 +2563,8 @@ void tcp_send_loss_probe(struct sock *sk)
+@@ -2450,6 +2564,8 @@ void tcp_send_loss_probe(struct sock *sk)
  	if (skb) {
  		if (tcp_snd_wnd_test(tp, skb, mss)) {
  			pcount = tp->packets_out;
@@ -497,7 +498,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  			tcp_write_xmit(sk, mss, TCP_NAGLE_OFF, 2, GFP_ATOMIC);
  			if (tp->packets_out > pcount)
  				goto probe_sent;
-@@ -2525,9 +2640,15 @@ void tcp_push_one(struct sock *sk, unsigned int mss_now)
+@@ -2525,9 +2641,15 @@ void tcp_push_one(struct sock *sk, unsigned int mss_now)
  {
  	struct sk_buff *skb = tcp_send_head(sk);
  
@@ -514,7 +515,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  }
  
  /* This function returns the amount that we can raise the
-@@ -2878,6 +2999,9 @@ int __tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs)
+@@ -2878,6 +3000,9 @@ int __tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs)
  		err = tcp_transmit_skb(sk, skb, 1, GFP_ATOMIC);
  	}
  
@@ -524,7 +525,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  	if (likely(!err)) {
  		TCP_SKB_CB(skb)->sacked |= TCPCB_EVER_RETRANS;
  	} else if (err != -EBUSY) {
-@@ -2922,8 +3046,12 @@ int tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs)
+@@ -2922,8 +3047,12 @@ int tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs)
   */
  void tcp_xmit_retransmit_queue(struct sock *sk)
  {
@@ -537,7 +538,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  	struct sk_buff *skb;
  	struct sk_buff *hole = NULL;
  	u32 max_segs;
-@@ -2938,16 +3066,34 @@ void tcp_xmit_retransmit_queue(struct sock *sk)
+@@ -2938,16 +3067,34 @@ void tcp_xmit_retransmit_queue(struct sock *sk)
  		skb = tcp_write_queue_head(sk);
  	}
  
@@ -573,7 +574,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  
  		/* we could do better than to assign each time */
  		if (!hole)
-@@ -2995,7 +3141,11 @@ void tcp_xmit_retransmit_queue(struct sock *sk)
+@@ -2995,7 +3142,11 @@ void tcp_xmit_retransmit_queue(struct sock *sk)
  			inet_csk_reset_xmit_timer(sk, ICSK_TIME_RETRANS,
  						  inet_csk(sk)->icsk_rto,
  						  TCP_RTO_MAX);
@@ -585,7 +586,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  }
  
  /* We allow to exceed memory limits for FIN packets to expedite
-@@ -3088,6 +3238,8 @@ void tcp_send_active_reset(struct sock *sk, gfp_t priority)
+@@ -3088,6 +3239,8 @@ void tcp_send_active_reset(struct sock *sk, gfp_t priority)
  			     TCPHDR_ACK | TCPHDR_RST);
  	tcp_mstamp_refresh(tcp_sk(sk));
  	/* Send it off. */
@@ -594,7 +595,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  	if (tcp_transmit_skb(sk, skb, 0, priority))
  		NET_INC_STATS(sock_net(sk), LINUX_MIB_TCPABORTFAILED);
  }
-@@ -3124,6 +3276,8 @@ int tcp_send_synack(struct sock *sk)
+@@ -3124,6 +3277,8 @@ int tcp_send_synack(struct sock *sk)
  		TCP_SKB_CB(skb)->tcp_flags |= TCPHDR_ACK;
  		tcp_ecn_send_synack(sk, skb);
  	}
@@ -603,7 +604,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  	return tcp_transmit_skb(sk, skb, 1, GFP_ATOMIC);
  }
  
-@@ -3403,6 +3557,8 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
+@@ -3403,6 +3558,8 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
  	if (syn_data->len)
  		tcp_chrono_start(sk, TCP_CHRONO_BUSY);
  
@@ -612,7 +613,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  	err = tcp_transmit_skb(sk, syn_data, 1, sk->sk_allocation);
  
  	syn->skb_mstamp = syn_data->skb_mstamp;
-@@ -3428,6 +3584,7 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
+@@ -3428,6 +3585,7 @@ static int tcp_send_syn_data(struct sock *sk, struct sk_buff *syn)
  	/* Send a regular SYN with Fast Open cookie request option */
  	if (fo->cookie.len > 0)
  		fo->cookie.len = 0;
@@ -620,7 +621,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  	err = tcp_transmit_skb(sk, syn, 1, sk->sk_allocation);
  	if (err)
  		tp->syn_fastopen = 0;
-@@ -3466,6 +3623,8 @@ int tcp_connect(struct sock *sk)
+@@ -3466,6 +3624,8 @@ int tcp_connect(struct sock *sk)
  	tcp_ecn_send_syn(sk, buff);
  
  	/* Send off SYN; include data in Fast Open. */
@@ -629,7 +630,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  	err = tp->fastopen_req ? tcp_send_syn_data(sk, buff) :
  	      tcp_transmit_skb(sk, buff, 1, sk->sk_allocation);
  	if (err == -ECONNREFUSED)
-@@ -3585,6 +3744,8 @@ void tcp_send_ack(struct sock *sk)
+@@ -3585,6 +3745,8 @@ void tcp_send_ack(struct sock *sk)
  	skb_set_tcp_pure_ack(buff);
  
  	/* Send it off, this clears delayed acks for us. */
@@ -638,7 +639,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  	tcp_transmit_skb(sk, buff, 0, (__force gfp_t)0);
  }
  EXPORT_SYMBOL_GPL(tcp_send_ack);
-@@ -3619,6 +3780,9 @@ static int tcp_xmit_probe_skb(struct sock *sk, int urgent, int mib)
+@@ -3619,6 +3781,9 @@ static int tcp_xmit_probe_skb(struct sock *sk, int urgent, int mib)
  	 */
  	tcp_init_nondata_skb(skb, tp->snd_una - !urgent, TCPHDR_ACK);
  	NET_INC_STATS(sock_net(sk), mib);
@@ -648,7 +649,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  	return tcp_transmit_skb(sk, skb, 0, (__force gfp_t)0);
  }
  
-@@ -3664,6 +3828,8 @@ int tcp_write_wakeup(struct sock *sk, int mib)
+@@ -3664,6 +3829,8 @@ int tcp_write_wakeup(struct sock *sk, int mib)
  			tcp_set_skb_tso_segs(skb, mss);
  
  		TCP_SKB_CB(skb)->tcp_flags |= TCPHDR_PSH;
@@ -659,7 +660,7 @@ index 40f7c8ee9ba6..120c56c7a8a1 100644
  			tcp_event_new_data_sent(sk, skb);
 diff --git a/net/ipv4/tcp_wave.c b/net/ipv4/tcp_wave.c
 new file mode 100644
-index 000000000000..75ab0b0b106e
+index 000000000000..0f761d3e92cb
 --- /dev/null
 +++ b/net/ipv4/tcp_wave.c
 @@ -0,0 +1,1052 @@
@@ -973,7 +974,7 @@ index 000000000000..75ab0b0b106e
 +
 +	diff = diff * AVG_UNIT;
 +
-+	return diff / first_rtt;
++	return div64_u64(diff, first_rtt);
 +}
 +
 +static ktime_t heuristic_ack_train_disp(struct sock *sk,
@@ -1072,7 +1073,7 @@ index 000000000000..75ab0b0b106e
 +	} else {
 +		right = current_burst;
 +		left *= AVG_UNIT;
-+		left = left / round_burst;
++		do_div(left, round_burst);
 +		pr_debug("%llu [%s] last %lli us, first %lli us, small_round_burst %u\n",
 +			 NOW, __func__, ktime_to_us(*last_ack_time),
 +			 ktime_to_us(*first_ack_time), round_burst);

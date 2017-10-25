@@ -1,6 +1,6 @@
 pkgbase = linux-wave
 	pkgver = 4.13.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = linux-wave
 	sha256sums = 96d6080a9445c4158f8b590168f9aaa3b29f6346682f4a97978dce1db76d6e3a
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = b33c87536eef257eb3b2279669eb179953e5db31d0ada213defc75e1b0277927
+	sha256sums = ec9220a1236565f174d45b17ce97d15ebfe906abb106016222f2c4511b85d480
 
 pkgname = linux-wave
 	pkgdesc = The Linux-wave kernel and modules
