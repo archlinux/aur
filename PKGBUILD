@@ -10,7 +10,7 @@ url="http://www.aps.anl.gov/epics/"
 license=('EPICS Open License')
 depends=('aravis')
 source=("https://github.com/greyltc/ng3e/archive/v${pkgver}.tar.gz")
-md5sums=('7e52df86c928d8f8d559159c5cd206f8')
+md5sums=('7923c6c1f51f7c32dc002df365a21fde')
 
 prepare() {
   cd "$srcdir/ng3e-${pkgver}"
