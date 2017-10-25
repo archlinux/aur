@@ -1,0 +1,20 @@
+pkgbase = haskell-rsa
+	pkgdesc = Implementation of RSA, using the padding schemes of PKCS#1 v2.1.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/GaloisInc/RSA
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	depends = haskell-base
+	depends = haskell-binary
+	depends = haskell-bytestring
+	depends = haskell-crypto-api
+	depends = haskell-crypto-pubkey-types
+	depends = haskell-sha
+	source = https://hackage.haskell.org/packages/archive/RSA/2.3.0/RSA-2.3.0.tar.gz
+	sha512sums = 134e86897ce345de00c660e3a34fb2395bbd82419a7e708b5741ba38113e46092db6c236c55e3e57b4e2c777eaf22850f3e95fc46d2cf70c50c4383519a8319e
+
+pkgname = haskell-rsa
+
