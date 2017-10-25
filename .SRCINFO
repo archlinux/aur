@@ -1,0 +1,14 @@
+pkgbase = syzygytb-git
+	pkgdesc = 5 man Syzygy tablebase.
+	pkgver = r2.e7ea7b0
+	pkgrel = 1
+	arch = any
+	license = GPL2
+	license = GPL
+	makedepends = git
+	optdepends = stockfish
+	source = syzygytb::git+https://bitbucket.org/ghotrix/syzygy5.git
+	md5sums = SKIP
+
+pkgname = syzygytb-git
+
