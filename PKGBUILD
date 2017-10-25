@@ -7,7 +7,7 @@ pkgname=xu4-svn
 _pkgname=xu4
 pkgver=0.9.r3092
 _pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Remake of the computer game Ultima IV'
 arch=('any')
 url='http://xu4.sourceforge.net/'
@@ -19,6 +19,7 @@ makedepends=('cmake'
              'sdl'
              'sdl_mixer'
              'subversion'
+             'unzip'
              'zlib')
 provides=("${pkgname%-svn}")
 conflicts=("${pkgname%-svn}")
