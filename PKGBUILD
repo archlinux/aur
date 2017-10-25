@@ -1,4 +1,5 @@
-# Maintainer: quomoow <quomoow@gmail.com>
+# Maintainer: DATSD <DAStudio *dot* 71e6fd52 *at* gmail *dot* com>
+# Contributor: quomoow <quomoow@gmail.com>
 
 pkgname=python-structlog
 pkgver=16.1.0
