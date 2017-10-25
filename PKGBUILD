@@ -1,7 +1,7 @@
 pkgname=shellcheck-static
 pkgver=0.4.6
 pkgrel=2
-pkgdesc="shellcheck, without the 400MB haskell dependencies"
+pkgdesc="shellcheck, without the 130MB haskell dependencies"
 license=("AGPL3")
 arch=("i686" "x86_64")
 depends=('gmp')
