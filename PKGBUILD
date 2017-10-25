@@ -1,13 +1,13 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 
 pkgname=supercollider-git
-_name="supercollider"
+_pkg="supercollider"
 _latest_tag="3.8.0"
-pkgver=3.8.0.r1392.gcd76d209f
+pkgver=3.8.0.r2149.gcca12ff02
 pkgrel=1
 pkgdesc="An environment and programming language for real time audio synthesis and algorithmic composition."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://supercollider.github.io/"
+url="https://supercollider.github.io/"
 license=('GPL3')
 depends=('jack' 'fftw' 'cwiid' 'qt5-webkit')
 makedepends=('avahi' 'boost' 'cmake' 'emacs' 'libsndfile' 'qt5-tools' 'ruby' 'vim')
@@ -15,26 +15,43 @@ optdepends=('emacs: emacs interface'
             'gedit: gedit interface')
 conflicts=('supercollider')
 provides=('supercollider')
-install="${_name}.install"
-source=("${_name}::git+https://github.com/supercollider/supercollider.git")
-md5sums=('SKIP')
-
-#prepare() {
-#  cd "$_name"
-#  git checkout origin/${_pkgbranch}
-#  # Fix CXXFLAGS
-#  patch -p1 -i ../supercollider-cxxflags.patch
-#}
+source=("git+https://github.com/supercollider/supercollider.git"
+        "git+https://github.com/timblechmann/nova-simd.git"
+        "git+https://github.com/timblechmann/nova-tt.git"
+        "git+https://github.com/supercollider/hidapi.git"
+        "git+https://github.com/supercollider/scvim.git"
+        "git+https://github.com/supercollider/portaudio.git"
+        "git+https://github.com/supercollider/yaml-cpp.git")
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-  cd "$_name"
+  cd "${_pkg}"
 #  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/Version.//g'
   git describe HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/Version.3.7.2/'"$_latest_tag"'/g'
 }
 
+prepare() {
+  cd "${_pkg}"
+  git submodule init
+  git config submodule.external_libraries/nova-simd.url "${srcdir}/nova-simd"
+  git config submodule.external_libraries/nova-tt.url "${srcdir}/nova-tt"
+  git config submodule.external_libraries/hidapi.url "${srcdir}/hidapi"
+  git config submodule.editors/scvim.url "${srcdir}/scvim"
+  git config submodule.external_libraries/portaudio_sc_org.url "${srcdir}/portaudio"
+  git config submodule.external_libraries/portaudio_sc_org.branch "${_pkg}"
+  git config submodule.external_libraries/yaml-cpp.url "${srcdir}/yaml-cpp"
+  git submodule update
+}
+
 build() {
-  cd $srcdir/$_name
-  git submodule update --init --recursive .
+  cd ${srcdir}/${_pkg}
+#  git submodule update --init --recursive .
   _carch=$(uname -m)
   Qt5LinguistTools_DIR="/usr/lib/cmake/Qt5LinguistTools"
   [ -d bld ] || mkdir bld && cd bld
@@ -59,8 +76,8 @@ build() {
         -DSC_IDE=OFF \
         -DSC_EL=ON \
         -DCMAKE_C_FLAGS="-march=armv6 -mfpu=vfp -mfloat-abi=hard" \
-        -DCMAKE_CXX_FLAGS="-march=armv6 -mfpu=vfp -mfloat-abi=hard" 2>&1 | tee cmake-output.txt
-      make -j4 2>&1 | tee make-output.txt
+        -DCMAKE_CXX_FLAGS="-march=armv6 -mfpu=vfp -mfloat-abi=hard"
+      make
     ;;
     "armv7l")
       export CC="gcc"
@@ -80,20 +97,20 @@ build() {
         -DSC_IDE=OFF \
         -DSC_EL=ON \
         -DCMAKE_C_FLAGS="-march=armv7-a -mtune=cortex-a8 -mfloat-abi=hard -mfpu=neon" \
-        -DCMAKE_CXX_FLAGS="-march=armv7-a -mtune=cortex-a8 -mfloat-abi=hard -mfpu=neon" 2>&1 | tee cmake-output.txt
-      make -j4 2>&1 | tee build-output.txt
+        -DCMAKE_CXX_FLAGS="-march=armv7-a -mtune=cortex-a8 -mfloat-abi=hard -mfpu=neon"
+      make
     ;;
     *)
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
       -DSC_VIM=OFF \
-      -DCMAKE_BUILD_TYPE=Release 2>&1 | tee cmake-output.txt
-    make 2>&1 | tee make-output.txt
+      -DCMAKE_BUILD_TYPE=Release
+    make
     ;;
   esac
 }
 
 package() {
-  cd "$srcdir/$_name/bld"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${_pkg}/bld"
+  make DESTDIR="${pkgdir}/" install
 }
 
