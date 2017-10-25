@@ -1,6 +1,6 @@
 pkgbase = woff2
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/woff2
 	arch = i686
 	arch = x86_64
