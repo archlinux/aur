@@ -9,8 +9,9 @@ pkgname='mosek'
 pkgdesc="A commercial solver for mathematical optimization problems."
 epoch=1
 _majver=8
-pkgver=${_majver}.1.0.31
-pkgrel=2
+_minver=1
+pkgver=${_majver}.${_minver}.0.31
+pkgrel=3
 arch=('x86_64')
 _mosekarch=linux64x86
 url='http://mosek.com/'
@@ -23,12 +24,18 @@ source=("http://download.mosek.com/stable/${pkgver}/mosektools${_mosekarch}.tar.
 sha512sums=('329a04b6be83b537dc7e0d4c2ebf3e1aebc4b368d6a89a64de33037ef71a2b6c54bb9dc9a1a08cc5ed0337e45297dde7a155ed897fbe334423b5f2d334f45ddb')
 
 package() {
+	# Install shared libraries.
+	cd "${srcdir}/mosek/${_majver}/tools/platform/${_mosekarch}/bin"
+	install -dm755 "${pkgdir}/usr/lib"
+	install -m755 "libmosek64.so.${_majver}.${_minver}" "${pkgdir}/usr/lib/"
+	install -m755 "libmosekxx${_majver}_${_minver}.so" "${pkgdir}/usr/lib/"
+	install -m755 "libmosekscopt${_majver}_${_minver}.so" "${pkgdir}/usr/lib/"
+	ln -rs "${pkgdir}/usr/lib/libmosek64.so.${_majver}.${_minver}" "${pkgdir}/usr/lib/libmosek64.so"
+
 	# Install command line utilities.
 	cd "${srcdir}/mosek/${_majver}/tools/platform/${_mosekarch}/bin"
-	install -dm755 "${pkgdir}/usr/"{bin,lib}
+	install -dm755 "${pkgdir}/usr/bin"
 	install -m755 mosek "${pkgdir}/usr/bin/"
-	install -m755 libmosek64.so.* "${pkgdir}/usr/lib/"
-	ln -rs "${pkgdir}/usr/lib/"libmosek64.so.* "${pkgdir}/usr/lib/libmosek64.so"
 
 	# Install C bindings.
 	cd "${srcdir}/mosek/${_majver}/tools/platform/${_mosekarch}/h"
