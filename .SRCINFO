@@ -1,0 +1,15 @@
+pkgbase = mpwc
+	pkgdesc = A simple and flexible Master Password CLI client
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gilbertw1/mpwc
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	depends = libsodium
+	source = https://github.com/gilbertw1/mpwc/archive/0.1.0.tar.gz
+	sha256sums = 2eb3a0a95c598bc01246c24e439477d82b3d77e40a272e8a1706e8dc46d269c7
+
+pkgname = mpwc
+
