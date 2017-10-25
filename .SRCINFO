@@ -1,7 +1,7 @@
 pkgbase = pulse-secure
 	pkgdesc = Pulse Connect Secure (PCS) Client
 	pkgver = 5.3r3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.pulsesecure.net/
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = pulse-secure
 	source = pulseUi.sh
 	source = EULA.txt
 	md5sums = 4cbe64953952d9ffdeaa4ffe2fc92a20
-	md5sums = b00064e15969e230e979e26a491aaa96
+	md5sums = d81155461e2666c2b9d669c1b76f85fe
 	md5sums = 261848a28201e5386ec4bf587473a48b
 
 pkgname = pulse-secure
