@@ -3,7 +3,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-cvs
 pkgver=2014.07.15
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 pkgdesc="The Heirloom Toolchest of standard UNIX utilities, derived from original UNIX tools."
 url="http://heirloom.sourceforge.net/tools.html"
@@ -33,6 +33,7 @@ prepare() {
   patch -N -p1 < ../001-staticdep.diff
   patch -N -p1 < ../002-nowhat.diff
   patch -N makefile -i ../makefile.patch
+  sed -i '/^LCURS/ s/$/ -ltinfo/' build/mk.config
 }
 
 build() {
