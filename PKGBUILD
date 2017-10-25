@@ -75,7 +75,7 @@ EOT
 
 build() {
 	rm -fr build && mkdir build && cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DVERSION="svn.$pkgver" "${srcdir}/xu4/u4"
+	cmake -DCMAKE_INSTALL_PREFIX=/usr "${srcdir}/xu4/u4"
 	make
 }
 
