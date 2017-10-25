@@ -2,7 +2,7 @@
 # Contributor: Philipp Schmitt <philipp@schmitt.co>
 
 pkgname=advanced-ssh-config
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc='ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config'
 arch=('x86_64' 'i686')
@@ -30,4 +30,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+
 
