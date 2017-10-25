@@ -1,0 +1,30 @@
+pkgbase = haskell-authenticate-oauth
+	pkgdesc = Library to authenticate with OAuth for Haskell web applications.
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://github.com/yesodweb/authenticate
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	depends = haskell-base
+	depends = haskell-base64-bytestring
+	depends = haskell-bytestring
+	depends = haskell-blaze-builder
+	depends = haskell-crypto-pubkey-types
+	depends = haskell-data-default
+	depends = haskell-http-client
+	depends = haskell-http-types
+	depends = haskell-random
+	depends = haskell-rsa
+	depends = haskell-sha
+	depends = haskell-time
+	depends = haskell-transformers
+	depends = haskell-transformers-compat
+	source = https://hackage.haskell.org/packages/archive/authenticate-oauth/1.6/authenticate-oauth-1.6.tar.gz
+	source = oauth.patch
+	sha512sums = 1cd4db3874b05a8856dcd07ee1e63fdafb92e8997b9caf81436d882f36c1bda3fce4b32cdbfa28ffa5f5374566ffa981537f527d8814131e7d61f2d1b8999931
+	sha512sums = a02dc495235f973582b325394d9a1f7f0ad1e64b99fb87d35ab0d8755a11fcc8149bf4b0bf36acdb78bff753bbd07aa9e2a62cecdd0dad69ac3b83fa5de61ffb
+
+pkgname = haskell-authenticate-oauth
+
