@@ -1,7 +1,7 @@
 # Maintainer: William Hahn <bill@hahn3.com>
 
 pkgname=nextcloud-app-rainloop
-pkgver=4.28.1
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="RainLoop Webmail for nextcloud"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("$pkgname-$pkgver.zip::https://github.com/pierre-alain-b/rainloop-nextcloud/releases/download/$pkgver/rainloop-$pkgver.tar.gz")
-sha256sums=('805ae6292f04f786fa4c39f385f1880b94b1ed5b7de88f38079bdd66246df365')
+sha256sums=('23180f5eca132bb3023d40f404fe3cdce22fc0cd6ba0afe246590ae9ed5bf0b1')
 
 package() {
   install -d ${pkgdir}/usr/share/webapps/nextcloud/apps
