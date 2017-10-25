@@ -1,6 +1,6 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('i686' 'x86_64' 'armv7h')
@@ -31,6 +31,7 @@ optdepends=(
 )
 provides=('albert')
 conflicts=('albert-git')
+#source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git#branch=dev"
 source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v${pkgver}"
         "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
         "mirrors/python::git+https://github.com/albertlauncher/python.git"
@@ -71,10 +72,12 @@ build() {
   [[ -d "build" ]] || mkdir -p "build"
   cd "build"
 
+  # https://ptpb.pw/_dFp
   cmake \
     "../${pkgname}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE="MinSizeRel" \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_BUILD_TYPE="RelWithDebInfo  " \
     -Wno-dev
 
     # Maybe you want to add some of those
@@ -100,7 +103,7 @@ build() {
     #-DBUILD_TERMINAL=ON
     #-DBUILD_VIRTUALBOX=ON
 
-  make -j $((`nproc`+1))
+  VERBOSE=1 make -j $((`nproc`+1))
 }
 
 
