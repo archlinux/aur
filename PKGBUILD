@@ -3,7 +3,7 @@
 pkgname=vrpn-git
 _pkg=vrpn
 pkgver=07.30.1311.gafe0eae8
-pkgrel=1
+pkgrel=2
 pkgdesc='The Virtual Reality Peripheral Network lib and tools'
 arch=('i686' 'x86_64')
 url="http://www.cs.unc.edu/Research/vrpn"
@@ -12,8 +12,12 @@ depends=('gpm' 'libusbx' 'hidapi')
 conflicts=("vrpn")
 provides=("vrpn")
 makedepends=('cmake' 'git')
-source=("$_pkg::git+https://github.com/vrpn/vrpn.git")
-md5sums=('SKIP')
+source=("git+https://github.com/vrpn/vrpn.git"
+        "git+https://github.com/vrpn/hidapi.git"
+        "git+https://github.com/vrpn/jsoncpp.git")
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd ${_pkg}
@@ -21,13 +25,15 @@ pkgver() {
 }
 
 prepare() {
-  cd ${_pkg}
-  msg "Retrieving local version of external libs"
-  git submodule update --init
+  cd "${_pkg}"
+  git submodule init
+  git config submodule.submodules/hidapi.url "${srcdir}/hidapi"
+  git config submodule.submodules/hidapi.branch "${_pkg}-utilized-head"
+  git config submodule.submodules/jsoncpp.url "${srcdir}/jsoncpp"
+  git submodule update
 
   cd server_src
-
-  msg "Fixing vrpn.cfg path finding"
+  # Fixing vrpn.cfg path finding"
   sed -i 's|"vrpn.cfg"|"/etc/vrpn.cfg"|' \
     aureal_sound_server/vrpn_Sound_A3D.cpp \
     ausim_sound_server/vrpn_Sound_ASM.cpp \
@@ -36,7 +42,7 @@ prepare() {
     miles_sound_server/v6.0/sound_server.cpp \
     vrpn.C \
     vrpn_Generic_server_object.h
-  msg "Fixing -f option help text"
+  # Fixing -f option help text
   sed -i 's|default vrpn.cfg|default /etc/vrpn.cfg|' vrpn.C
 }
 
@@ -44,7 +50,6 @@ build(){
   cd ${_pkg}
 
   # vrpn requires an out-of-source build
-  rm -rf build-dir
   mkdir build-dir
   cd build-dir
 
@@ -106,6 +111,6 @@ package() {
   mv "${pkgdir}/usr/etc" "${pkgdir}"
 
   # configuration example
-  install -Dm644 "${pkgdir}/usr/share/${_pkg}-07.34/${_pkg}.cfg.sample" \
+  install -Dm0644 "${pkgdir}/usr/share/${_pkg}-07.34/${_pkg}.cfg.sample" \
   "${pkgdir}/usr/share/doc/${pkgname}/${_pkg}.cfg.sample"
 }
