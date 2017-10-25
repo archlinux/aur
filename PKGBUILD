@@ -2,19 +2,24 @@
 _pkgname=pkhex
 pkgname=${_pkgname}-git
 pkgver=r3745.69cf1eaa
-pkgrel=1
+pkgrel=2
 pkgdesc="Pokémon core series save editor, programmed in C#."
 arch=(any)
 url="https://github.com/kwsch/PKHeX"
 license=('GPL')
-depends=(mono)
+depends=(mono-alpha)
 makedepends=(monodevelop-stable msbuild-15-bin)
+provides=(pkhex)
+conflicts=(pkhex)
 options=('!strip')
 source=("${pkgname}::git+https://github.com/kwsch/PKHeX#branch=master"
-		"PKHeX.sh")
+		"PKHeX.sh"
+		"pkhex.desktop"
+		"pkhex.png")
 md5sums=('SKIP'
-         'SKIP')
-
+         '8bd71d319e130750a39f15d56b5636e1'
+         '18966e43b894687954ee19df24532b54'
+         'ceb97fc5efcf4548ca4572b5116f5875')
 
 
 pkgver() {
@@ -31,6 +36,8 @@ build() {
 
 package() {
 
+  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
   install -Dm755 -- PKHeX.sh "$pkgdir/usr/bin/PKHeX"
   cd "$pkgname"
 
@@ -40,8 +47,8 @@ package() {
   install -Dm644 -- PKHeX.WinForms/bin/Mono-Release/PKHeX.Core.dll.config "$pkgdir/opt/${_pkgname}/PKHeX.Core.dll.config"
   mkdir -p -- "$pkgdir/opt/${_pkgname}/bak"
   mkdir -p -- "$pkgdir/opt/${_pkgname}/pkmdb"
-  chmod 757 -- "$pkgdir/opt/${_pkgname}/bak"
-  chmod 757 -- "$pkgdir/opt/${_pkgname}/pkmdb"
+  chmod 777 -- "$pkgdir/opt/${_pkgname}/bak"
+  chmod 777 -- "$pkgdir/opt/${_pkgname}/pkmdb"
   
 }
 
