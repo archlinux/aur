@@ -1,5 +1,5 @@
---- ./src/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs.orig	2017-04-23 13:59:57.476068918 -0400
-+++ ./src/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs	2017-04-23 14:42:48.021739418 -0400
+--- ./src/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs.orig	2017-04-23 13:59:57.476068918 -0400
++++ ./src/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs	2017-04-23 14:42:48.021739418 -0400
 @@ -387,6 +387,8 @@
  			Result += " -Wno-unused-variable";
  			// this will hide the warnings about static functions in headers that aren't used in every single .cpp file
