@@ -1,11 +1,11 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-echo
-pkgver=0.60
-pkgrel=7
+pkgver=0.61
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.13.4
+_nginxver=1.13.5
 
 pkgdesc='Directives "echo", "sleep", "time" and more (module for mainline nginx)'
 arch=('i686' 'x86_64')
@@ -16,17 +16,10 @@ license=('BSD')
 source=(
 	https://nginx.org/download/nginx-$_nginxver.tar.gz
 	https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
-	$pkgname-nginx-1.12.patch::https://patch-diff.githubusercontent.com/raw/openresty/echo-nginx-module/pull/65.patch
 )
 
-sha256sums=('de21f3c49ba65c611329d8759a63d72e5fcf719bc6f2a3270e2541348ef1fbba'
-            '1077da2229ac7d0a0215e9e6817e297c10697e095010d88f1adbd1add1ce9f4e'
-            '1d2cb5f3977cd6ee0a5ae5958ac4cca79cf5ecc097e68b72cf03a2e9f48e51ed')
-
-prepare() {
-	cd $_modname-nginx-module-$pkgver
-	patch -p1 -i "$srcdir"/$pkgname-nginx-1.12.patch
-}
+sha256sums=('0e75b94429b3f745377aeba3aff97da77bf2b03fcb9ff15b3bad9b038db29f2e'
+            '2e6a03032555f5da1bdff2ae96c96486f447da3da37c117e0f964ae0753d22aa')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
