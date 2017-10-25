@@ -2,7 +2,7 @@
 
 _pkgname='xdot.py'
 pkgname=xdot-git
-pkgver=0.7.r26.g9a4e897
+pkgver=0.8.r6.gbd1306d
 pkgrel=1
 pkgdesc="Interactive viewer for Graphviz dot files (git version)"
 arch=('any')
