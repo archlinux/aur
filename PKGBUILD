@@ -9,15 +9,14 @@ pkgver=0.9.r3092
 _pkgver=0.9
 pkgrel=2
 pkgdesc='Remake of the computer game Ultima IV'
-arch=('any')
+arch=('i686' 'x86_64')
 url='http://xu4.sourceforge.net/'
 license=('gpl2')
+depends=('libpng'
+         'libxml2'
+         'sdl_mixer')
 makedepends=('cmake'
-             'glibc'
-             'libpng'
-             'libxml2'
              'sdl'
-             'sdl_mixer'
              'subversion'
              'unzip'
              'zlib')
@@ -83,6 +82,7 @@ package() {
 	unzip u4upgrad.zip -d "$pkgdir/usr/lib/u4/ultima4/"
 	mv "$pkgdir/usr/lib/u4/ultima4/Readme.txt" "$pkgdir/usr/lib/u4/ultima4/Readme-u4upgrad.txt"
 	unzip ultima4.zip  -d "$pkgdir/usr/lib/u4/ultima4/"
+	chmod -R go-w "$pkgdir/usr/lib/u4/ultima4/"
 
 	# Executable
 	install -D build/src/u4 "$pkgdir/usr/bin/u4"
