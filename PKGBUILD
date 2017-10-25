@@ -7,39 +7,44 @@
 
 pkgname='unreal-engine'
 pkgver=4.18.0
-pkgrel=1
-pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
-arch=('x86_64')
-url='https://www.unrealengine.com/'
-makedepends=('clang' 'mono' 'dos2unix' 'cmake' 'git')
-depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python')
-license=('custom:UnrealEngine')
+# shellcheck disable=SC2034
+{
+  pkgrel=1
+  pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
+  arch=('x86_64')
+  url='https://www.unrealengine.com/'
+  makedepends=('clang' 'mono' 'dos2unix' 'cmake' 'git')
+  depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python')
+  license=('custom:UnrealEngine')
 
-source=(
-  "git+ssh://git@github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
-  'UE4Editor.desktop'
-  'ignore-return-value-error.patch'
-  'disable-pie.patch'
-  'only-generate-makefile.patch'
-  'xlocale-crash.patch'
-)
+  source=(
+    "git+ssh://git@github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
+    'UE4Editor.desktop'
+    'ignore-return-value-error.patch'
+    'disable-pie.patch'
+    'only-generate-makefile.patch'
+    'xlocale-crash.patch'
+  )
 
-sha256sums=(
-  'SKIP'
-  '46871ed662a3c97698be609d27da280d9000ec97183f1fa6592986f9910a2118'
-  '918dff809a7e815343a8d233f704f52a910b8f01a9cb3d29de541a0334fecc7c'
-  '32ab20e37f5595eff73fb7ee7916ecae19a47f72875f448663941621d166c13b'
-  'dba4b1910dd6424d50a8d95a461c5cf3a96f3e7df0b015624d9bf1c97dc317d3'
-  'd0fa5f1dd53846e84ce4a698cbdbedf647137c230b20fe1cabe3a3ffe0cf85c4'
-)
+  sha256sums=(
+    'SKIP'
+    '46871ed662a3c97698be609d27da280d9000ec97183f1fa6592986f9910a2118'
+    '918dff809a7e815343a8d233f704f52a910b8f01a9cb3d29de541a0334fecc7c'
+    '32ab20e37f5595eff73fb7ee7916ecae19a47f72875f448663941621d166c13b'
+    'dba4b1910dd6424d50a8d95a461c5cf3a96f3e7df0b015624d9bf1c97dc317d3'
+    'd0fa5f1dd53846e84ce4a698cbdbedf647137c230b20fe1cabe3a3ffe0cf85c4'
+  )
 
-# Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
-options=(!strip)
+  # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
+  options=(!strip)
+}
 
 prepare() {
-  patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs" ignore-return-value-error.patch
-  patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs" disable-pie.patch
-  
+  # shellcheck disable=SC2154
+  ue4src="$srcdir/UnrealEngine/Engine/Source"
+  patch "$ue4src/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs" ignore-return-value-error.patch
+  patch "$ue4src/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs" disable-pie.patch
+
   patch -p0 -i only-generate-makefile.patch
   # Source Code Accessors
 
@@ -55,18 +60,20 @@ prepare() {
   # cd $srcdir/UnrealEngine/Engine/Config/Linux && sed -i '10c\PreferredAccessor=SensibleEditorSourceCodeAccessor' LinuxEngine.ini
 
   pkgbuild_dir=$(pwd)
-  cd $srcdir/UnrealEngine
+  # shellcheck disable=SC2164
+  cd "$srcdir/UnrealEngine"
 
   # clean up old builds before building a new version
   #git clean -xdf
 
   ./Setup.sh
-  patch "$srcdir/UnrealEngine/Engine/Source/ThirdParty/Linux/LibCxx/include/c++/v1/__locale" "$pkgbuild_dir/xlocale-crash.patch"
+  patch "$ue4src/ThirdParty/Linux/LibCxx/include/c++/v1/__locale" "$pkgbuild_dir/xlocale-crash.patch"
   ./GenerateProjectFiles.sh
 }
 
 build() {
-  cd $srcdir/UnrealEngine
+  # shellcheck disable=SC2164
+  cd "$srcdir/UnrealEngine"
 
   # this should work instead of "git clean", but something leftover causes crashes
   #make ARGS=-clean
@@ -85,9 +92,11 @@ package() {
     sed -i "5c\Path=/$dir/Engine/Binaries/Linux/" UE4Editor.desktop
     sed -i "6c\Exec=\'/$dir/Engine/Binaries/Linux/UE4Editor\' %F" UE4Editor.desktop
   fi
+  # shellcheck disable=SC2154
   install -Dm644 UE4Editor.desktop "$pkgdir/usr/share/applications/UE4Editor.desktop"
 
-  cd $srcdir/UnrealEngine
+  # shellcheck disable=SC2164
+  cd "$srcdir/UnrealEngine"
 
   # license
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/UnrealEngine/LICENSE.md"
