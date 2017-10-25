@@ -1,3 +1,4 @@
-alpine/
-alpine-git-*.log
-alpine-git-*.pkg.tar.xz
+/alpine/
+/alpine-git-*.log
+/alpine-git-*.pkg.tar.xz
+/PKGBUILD-namcap.log
