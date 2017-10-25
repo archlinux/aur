@@ -32,7 +32,7 @@ pkgver=4.18.0
     '918dff809a7e815343a8d233f704f52a910b8f01a9cb3d29de541a0334fecc7c'
     '32ab20e37f5595eff73fb7ee7916ecae19a47f72875f448663941621d166c13b'
     'dba4b1910dd6424d50a8d95a461c5cf3a96f3e7df0b015624d9bf1c97dc317d3'
-    'd0fa5f1dd53846e84ce4a698cbdbedf647137c230b20fe1cabe3a3ffe0cf85c4'
+    '6495cfd1b03aef86d0aca15d5389b4d8ee2d745e900a1956391afcbb4a14dafe'
   )
 
   # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
