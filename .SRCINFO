@@ -1,15 +1,15 @@
 pkgbase = fdr
 	pkgdesc = Refinement checker for CSP
-	pkgver = 4.2.0
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://www.cs.ox.ac.uk/projects/fdr/
 	arch = x86_64
 	license = custom
 	depends = libtinfo5
-	source = https://www.cs.ox.ac.uk/projects/fdr/downloads/fdr-3754-linux-x86_64.tar.gz
-	md5sums = c09a05a5d9b54fc65ed12de8b7cdfc11
-	sha1sums = 946eb00282fb1513d21d8aa2c8ab17ce3e37a997
-	sha256sums = d24492485db9b8b95c62c53a6396094f836ee079cfc743688a397503c3ec9bf8
+	source = https://www.cs.ox.ac.uk/projects/fdr/downloads/fdr-3776-linux-x86_64.tar.gz
+	md5sums = 70c7e156380338e84d472e35a7018c09
+	sha1sums = 95818af0c131f1ee252518883629212e58afe541
+	sha256sums = af5949d02f36b4fdb8df328dd0c3beb1d333793636ae5d1520dd2e9b794cee76
 
 pkgname = fdr
 
