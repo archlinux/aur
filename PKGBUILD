@@ -5,7 +5,7 @@
 
 pkgbase=linux-wave       # Build kernel with a different name
 _srcname=linux-4.13
-pkgver=4.13.7
+pkgver=4.13.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -234,10 +234,10 @@ done
 # vim:set ts=8 sts=2 sw=2 et:
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '0fe89c96e956efbded576214eef0c8e43cabe41dfca245e3ebb79fff9bc8715d'
+            '22156e82467c7911d226a0a887eba19103434efc104439a3b426a3fa551fb8f2'
             'SKIP'
             '818b6db9e824f3157c56f0cbe60230a4c6969f0a6e50ecab013385978d8763b1'
             '96d6080a9445c4158f8b590168f9aaa3b29f6346682f4a97978dce1db76d6e3a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '918bdbafcf8b34ebda06042791b4c532ad298b5482e9a342f90728a423860b7e')
+            'b33c87536eef257eb3b2279669eb179953e5db31d0ada213defc75e1b0277927')
