@@ -11,7 +11,8 @@
 
 pkgname=('llvm40' 'llvm40-libs' 'clang40')
 pkgver=4.0.1
-pkgrel=3
+pkgrel=4
+_prefix="/usr/lib/llvm-4.0"
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
@@ -61,7 +62,7 @@ build() {
 
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX="${_prefix}" \
     -DLLVM_BUILD_LLVM_DYLIB=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \
     -DLLVM_INSTALL_UTILS=ON \
@@ -90,31 +91,37 @@ check() {
 package_llvm40() {
   pkgdesc="Low Level Virtual Machine"
   depends=('llvm40-libs' 'perl')
-  conflicts=('llvm' 'llvm33' 'llvm35' 'llvm38' 'llvm39')
 
   cd "$srcdir/llvm-$pkgver.src"
 
   make -C build DESTDIR="$pkgdir" install
 
   # The runtime libraries go into llvm-libs
-  mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO}*.so* "$srcdir"
-  mv -f "$pkgdir"/usr/lib/LLVMgold.so "$srcdir"
+  mv -f "${pkgdir}${_prefix}"/lib/lib{LLVM,LTO}*.so* "$srcdir"
+  mv -f "${pkgdir}${_prefix}"/lib/LLVMgold.so "$srcdir"
 
-  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.TXT "${pkgdir}${_prefix}/share/licenses/llvm/LICENSE"
+
+  # add symbolic links in /usr/bin
+  mkdir -p "$pkgdir/usr/bin"
+  cd "${pkgdir}${_prefix}"/bin
+  for f in *; do
+    ln -s "${_prefix}/bin/$f" "$pkgdir/usr/bin/${f%-4.0}-4.0"
+  done
 }
 
 package_llvm40-libs() {
   pkgdesc="Low Level Virtual Machine (runtime libraries)"
   depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses')
 
-  install -d "$pkgdir/usr/lib"
+  install -d "${pkgdir}${_prefix}/lib"
   cp -P \
     "$srcdir"/lib{LLVM,LTO}*.so* \
     "$srcdir"/LLVMgold.so \
-    "$pkgdir/usr/lib/"
+    "${pkgdir}${_prefix}/lib/"
 
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    "${pkgdir}${_prefix}/share/licenses/llvm-libs/LICENSE"
 }
 
 package_clang40() {
@@ -123,7 +130,6 @@ package_clang40() {
   depends=('llvm40-libs' 'gcc' 'libxml2')
   optdepends=('openmp: OpenMP support in clang with -fopenmp'
               'python2: for scan-view and git-clang-format')
-  conflicts=('clang' 'clang35' 'clang38' 'clang39')
 
   cd "$srcdir/llvm-$pkgver.src"
 
@@ -131,7 +137,14 @@ package_clang40() {
   make -C build/projects/compiler-rt DESTDIR="$pkgdir" install
 
   install -Dm644 tools/clang/LICENSE.TXT \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    "${pkgdir}${_prefix}/share/licenses/clang/LICENSE"
+
+  # add symbolic links in /usr/bin
+  mkdir -p "$pkgdir/usr/bin"
+  cd "${pkgdir}${_prefix}"/bin
+  for f in *; do
+    ln -f -s "${_prefix}/bin/$f" "$pkgdir/usr/bin/${f%-4.0}-4.0"
+  done
 }
 
 # vim:set ts=2 sw=2 et:
