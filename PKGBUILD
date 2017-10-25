@@ -5,7 +5,7 @@
 
 _pkgname=https-everywhere
 pkgname=firefox-extension-${_pkgname}
-pkgver=2017.9.12
+pkgver=2017.10.24
 pkgrel=1
 pkgdesc="Plugin for firefox which ensures you are using https whenever it's possible."
 license=('GPL2')
@@ -16,7 +16,7 @@ makedepends=("unzip")
 source=("${_pkgname}-${pkgver}.xpi::https://www.eff.org/files/https-everywhere-${pkgver}-eff.xpi"
         "${_pkgname}-${pkgver}.xpi.sig::https://www.eff.org/files/https-everywhere-${pkgver}-eff.xpi.sig")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('511f44695c5fd83592f11a4c320b9e5dfc7b7bdff6835efe5946832290c318d7'
+sha256sums=('42e1739f884bf3ccefe06cb02ac278e52ee2f5c572fe53b770026c21fd225308'
             'SKIP')
 validpgpkeys=('1073E74EB38BD6D19476CBF8EA9DBF9FB761A677') # William Budington
 
