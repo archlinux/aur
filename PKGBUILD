@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=chrome-token-signing
 pkgver=1.0.6.485
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Estonian ID Card signing for Chrome. Chrome extension and native messaging client."
 arch=('x86_64' 'i686')
@@ -15,7 +15,8 @@ validpgpkeys=('43650273CE9516880D7EB581B339B36D592073D4')
 
 build() {
 	cd "$srcdir/"
-        make
+	export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+    make
 }
 
 package() {
