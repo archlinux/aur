@@ -26,7 +26,6 @@ pkgver() {
 
 prepare() {
     msg2 'Fetching Go package'
-    mkdir -p "$srcdir"
     GOPATH="$srcdir" go get -u "$_gopkg"
 }
 
