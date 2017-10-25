@@ -4,9 +4,9 @@ _model="j820dn"
 pkgname="brother-mfc-$_model"
 pkgver="3.0.0"
 _revision=1
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother MFC-J820DN"
-url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
+url="http://support.brother.co.jp/j/b/downloadlist.aspx?c=jp&lang=ja&prod=mfcj820dn&os=128"
 arch=('i686' 'x86_64')
 license=('unknown')
 install="brother-mfc-${_model}.install"
