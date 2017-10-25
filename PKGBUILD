@@ -3,8 +3,8 @@
 
 _gitname='fenrir'
 pkgname="${_gitname}-git"
-pkgver=v0.2.690.g8878a2a
-pkgrel=4
+pkgver=1.5.0.3.gbcfc25a
+pkgrel=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url="https://linux-a11y.org/index.php?page=fenrir-screenreader"
@@ -14,6 +14,7 @@ optdepends=('brltty: For Braille support'
 'gstreamer: for soundicons via gstreamer'
   'sox: The default sound driver'
   'python-espeak: TTS support'
+  'python-pyttsx: TTS support'
   'python-pyenchant: for spell check functionality'
   'xclip: for copy to X session clipboard'
   'speech-dispatcher: TTS support')
