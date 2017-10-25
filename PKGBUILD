@@ -1,14 +1,15 @@
-# Maintainer: youngunix <zagazaw2004 () gmail ()>
+# Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# {former}Maintainer: youngunix <zagazaw2004 () gmail ()>
 # {former}Maintainer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: eht16 <enrico.troeger@uvena.de>
 # Contributor: Addict7 <nicolasfloquet@gmail.com>
 
 pkgname=geany-plugins-git
-pkgver=1.31.0.r17.g59118d86
+pkgver=1.31.0.r83.g1aa5c353
 pkgrel=1
 pkgdesc='Various plugins for Geany'
 arch=('x86_64' 'i686')
-url='http://plugins.geany.org/'
+url='https://plugins.geany.org/'
 license=('GPL')
 depends=('geany-git' 'vte' 'lua' 'ctpl' 'gpgme' 'gtkspell' 'hicolor-icon-theme')
 makedepends=('git' 'libtool' 'python' 'gpgme' 'ctpl' 'lua' 'intltool')
