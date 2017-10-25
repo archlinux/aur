@@ -1,5 +1,5 @@
 pkgname=switcheroo-control
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="D-Bus service to check the availability of dual-GPU"
 arch=(i686 x86_64)
@@ -7,7 +7,8 @@ url="https://github.com/hadess/switcheroo-control"
 license=(GPL3)
 depends=(glib2)
 makedepends=(gnome-common)
-source=("git+https://github.com/hadess/switcheroo-control#tag=1.1")
+_commit=2c6e3abeddb606ddd3a98e8924c251b3fb074e3c
+source=("git+https://github.com/hadess/switcheroo-control#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
