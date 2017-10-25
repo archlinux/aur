@@ -1,0 +1,17 @@
+pkgbase = parpd-git
+	pkgdesc = A RFC 1027 compliant proxy ARP daemon
+	pkgver = 1.7.r1.gbfc5f6d
+	pkgrel = 1
+	url = https://roy.marples.name/projects/parpd
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	provides = parpd
+	conflicts = parpd
+	source = git+https://roy.marples.name/git/parpd.git
+	sha256sums = SKIP
+
+pkgname = parpd-git
+
