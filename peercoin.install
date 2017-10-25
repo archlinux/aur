@@ -4,7 +4,7 @@ post_install() {
     ln -s /usr/bin/peercoind /usr/bin/ppcoind
 
     echo ""
-    echo "If you are having troubles with blockchain download, just backup wallet.dat, remove .ppcoin directory and start over. This is caused by incompatibility of libdb++ versions."
+    echo "If you are having troubles with blockchain download, just backup wallet.dat, remove .ppcoin directory and start over."
 }
 
 post_upgrade() {
@@ -13,5 +13,5 @@ post_upgrade() {
 
 post_remove() {
     post_install $1
-    rm /usr/bin/ppcoind
+    rm /usr/bin/peercoind
 }

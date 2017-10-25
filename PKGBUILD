@@ -2,47 +2,39 @@
 
 pkgname=('peercoin-qt' 'peercoind')
 pkgbase=peercoin
-_gitname=ppcoin
-pkgver=0.5.4
-pkgrel=5
-pkgdesc="Peercoin wallet client."
-makedepends=('boost' 'miniupnpc' 'openssl' 'qt4')
-depends=('boost-libs' 'openssl' 'miniupnpc' 'qt4')
+_gitname=peercoin
+pkgver=0.6.0
+pkgrel=1
+pkgdesc="Official Peercoin wallet."
+makedepends=('gcc' 'make' 'boost' 'miniupnpc' 'openssl' 'qt5-base' 'qt5-tools')
+depends=('boost-libs' 'openssl' 'miniupnpc' 'qt5-base')
 replaces=("ppcoin-daemon" "ppcoin-qt" "ppcoind")
 arch=('x86_64' 'i686')
 url='peercoin.net'
 license=('MIT')
-source=(https://github.com/ppcoin/ppcoin/archive/v${pkgver}ppc.tar.gz
+source=(https://github.com/peercoin/peercoin/archive/v${pkgver}ppc.tar.gz
         peercoin-qt.desktop
         peercoin-qt@.service
         peercoin-qt-tor@.service
         peercoind@.service
-        peercoind-tor@.service
-	net.patch)
-sha256sums=('bff33d7103583e1ae436319b7cd14f1c10255e88504358c8743441c5a86d32c2'
+        peercoind-tor@.service)
+sha256sums=('97879dab8220ae0e9d0c4053669835f5038d48793d72e5210f2c7faeff3423c3'
             '6cb18e19847bbf4066920dbbf4371ddf07409392408fc6d079487e8759ea322e'
             'bc898697baab589b87b0b78edd5aed35a3b800fe039afc03637b4895cfd28f32'
             '3f71859675561dd35c4527d96651b07996968e318dfbf26e8ce959f61a0d682f'
             '80dcdf2bf3540a3ddd3c2cd1299aa97db06bf1efdadee4ad847e3371658dd62f'
-            'fb91690d271faa28919ce11e902f1d2ec926d8eb8ddebff28bef5d2cee78be1e'
-            '27e4cfd3f189a80693befeeefe2655edcbd1ce31aed743846e3ced6ba42b591d')
-
-prepare() {
-	cd "$srcdir/${_gitname}-${pkgver}ppc/src"
-	## patch to solve incompatibility with current boost
-	patch -Np1 < ../../net.patch
-}
+            'fb91690d271faa28919ce11e902f1d2ec926d8eb8ddebff28bef5d2cee78be1e')
 
 build() {
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
 	
 	## make qt gui
-	qmake-qt4 USE_QRCODE=1 USE_UPNP=1 USE_SSL=1 \
+	qmake-qt5 USE_QRCODE=1 USE_UPNP=1 USE_SSL=0 \
 	    QMAKE_CFLAGS="${CFLAGS}"\
     	QMAKE_CXXFLAGS="${CXXFLAGS} -pie"
 	make
 
-	## make ppcoind
+	## make peercoind
   	make -f makefile.unix USE_UPNP=1 -e PIE=1 -C src
 }
 
@@ -55,8 +47,8 @@ check() {
 package_peercoin-qt() {
 	
 	pkgdesc="Official implementation of Peercoin, the sustainable and secure cryptocurrency alternative to Bitcoin - QT wallet."
-	makedepends=('qt4' 'boost' 'gcc' 'make' 'qrencode' 'openssl' 'miniupnpc')
-	depends=('qt4' 'miniupnpc' 'boost-libs' 'qrencode' 'miniupnpc')
+	makedepends=('gcc' 'make' 'qt5-base' 'boost' 'gcc' 'make' 'qrencode' 'openssl' 'miniupnpc' 'qt5-tools')
+	depends=('qt5-base' 'miniupnpc' 'boost-libs' 'qrencode' 'miniupnpc')
 	optdepeds=('systemd' 'tor')
 	install=peercoin.install
 
@@ -65,16 +57,16 @@ package_peercoin-qt() {
 	install -Dm644 $pkgname-tor@.service "${pkgdir}/usr/lib/systemd/system/$pkgname-tor@.service"
 
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
-	install -Dm755 ppcoin-qt "${pkgdir}/usr/bin/$pkgname"
+	install -Dm755 peercoin-qt "${pkgdir}/usr/bin/$pkgname"
 	#install -Dm644 COPYING "${pkgdir}/usr/share/licenses/peercoin/COPYING"
-	install -Dm644 "src/qt/res/icons/ppcoin.png" "${pkgdir}/usr/share/pixmaps/peercoin.png"
+	install -Dm644 "src/qt/res/icons/peercoin.png" "${pkgdir}/usr/share/pixmaps/peercoin.png"
 	
 }
 
 package_peercoind() {
 	
 	makedepends=('boost' 'gcc' 'make' 'openssl' 'miniupnpc')
-	depends=('boost-libs' 'miniupnpc')
+	depends=('gcc' 'make' 'boost-libs' 'miniupnpc')
 	optdepeneds=('systemd' 'tor')
 	pkgdesc="Official implementation of Peercoin, the sustainable and secure cryptocurrency alternative to Bitcoin - daemon."
 	install=peercoin.install
@@ -84,5 +76,5 @@ package_peercoind() {
 	install -Dm644 "$srcdir/${_gitname}-${pkgver}ppc/COPYING" "$pkgdir/usr/share/licenses/peercoin/COPYING"
 
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
-	install -Dm755 "src/ppcoind" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "src/peercoind" "$pkgdir/usr/bin/$pkgname"
 }
