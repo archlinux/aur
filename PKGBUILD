@@ -2,8 +2,8 @@
 # Contributor: Zanny <lordzanny@gmail.com>
 
 pkgname=clinfo-git
-pkgver=2.1.16.01.12.r11.g2bd2c79
-pkgrel=2
+pkgver=2.2.17.08.25.r1.gf98c9ed
+pkgrel=1
 pkgdesc="Print all known information about all available OpenCL platforms and devices in the system"
 arch=(i686 x86_64)
 url="https://github.com/Oblomov/clinfo"
@@ -28,7 +28,6 @@ build() {
 
 package() {
 	cd clinfo
-	install -D -m755 clinfo "${pkgdir}/usr/bin/clinfo"
+	make PREFIX="${pkgdir}/usr" install
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 man/clinfo.1 "${pkgdir}/usr/share/man/man1/clinfo.1"
 }
