@@ -9,8 +9,8 @@
 # Contributor: N30N <archlinux [at] alunamation [dot] com>
 
 pkgname=lwks-beta
-lwksver=14.0.0.0
-lwksbuild=93046
+lwksver=14.1.0.0
+lwksbuild=101109
 pkgver=$lwksver.$lwksbuild
 pkgrel=1
 pkgdesc="Lightworks is a professional video editing suite"
@@ -23,21 +23,15 @@ provides=('lightworks')
 conflicts=('lightworks', 'lwks')
 source=(
     "http://downloads.lwks.com/Lightworks-Beta-$lwksbuild-$lwksver.deb"
-    "http://ala.seblu.net/packages/p/portaudio/portaudio-19_20140130-3-x86_64.pkg.tar.xz"
     )
 
 sha256sums=(
-    'b312f7511a3ae9473ffb6e16c8db7751a302916ba3f0c62b0eeb43ac325dc8ba'
-    '1c6722888cf4ab5cbf4bdfd6272b7d524f0ee547f443a98cf554d6fa8ae5c1ca'
+    'e92fe5dea12b22c471193713e709318adf2491cd03d9e3472f06cf1734cdf2f3'
     )
 
 package() {
     msg2 "Extracting data.tar.xz"
     bsdtar -zxf data.tar.xz -C "$pkgdir"
-
-    msg2 "Extracting compatible PortAudio 19_20140130"
-    mkdir "$pkgdir/portaudio"
-    tar -xf portaudio-19_20140130-3-x86_64.pkg.tar.xz -C "$pkgdir/portaudio"
 
     msg2 "Moving udev folder from /lib to /usr/lib"
     mv "$pkgdir"/lib/udev "$pkgdir"/usr/lib
@@ -51,10 +45,4 @@ package() {
     msg2 "Changing some needed permissions"
     chmod a+rw "$pkgdir"/usr/share/lightworks/Preferences
     chmod a+rw "$pkgdir"/usr/share/lightworks/"Audio Mixes"
-
-    msg2 "Copying portaudio files"
-    install -Dm644 "$pkgdir"/portaudio/usr/lib/libportaudio*.so* "$pkgdir"/usr/lib/lightworks/
-
-    msg2 "Cleaning up portaudio files"
-    rm -rf "$pkgdir/portaudio"
 }
