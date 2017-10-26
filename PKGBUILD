@@ -1,9 +1,10 @@
 # $Id$
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Contributor: Sergej Pupykin <arch+pub@sergej.pp.ru>
+# Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-git
-pkgver=1.2.100.0.gbe2588f
+pkgver=1.2.105.1.g6e2bdef
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (built with Qt 5.x)"
 url="http://psi-plus.com"
@@ -12,8 +13,8 @@ arch=('i686' 'x86_64')
 depends=('qt5-base' 'qt5-webkit' 'qt5-multimedia' 'qt5-x11extras' 'qca-qt5'
 	 'libidn' 'aspell' 'libxss' 'qt5-svg')
 makedepends=('git' 'patch' 'qconf-git')
-provides=('psi-plus')
-conflicts=('psi-plus-qt5-git' 'psi-plus-webkit-qt5-git' 'psi-plus-webkit-git' 'psi-plus')
+provides=("psi-plus=$pkgver" "psi-plus-qt5-git=$pkgver")
+conflicts=('psi-plus' 'psi-plus-qt5-git' 'psi-plus-webkit-qt5-git' 'psi-plus-webkit-git')
 source=("git://github.com/psi-plus/psi-plus-snapshots"
 	"git://github.com/psi-plus/main.git"
 	'conf.diff'
