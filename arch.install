@@ -40,13 +40,7 @@ ln -sf ../run/systemd/resolve/resolv.conf etc/resolv.conf
 install -d home/user/.ssh
 cat ~/.ssh/id_*.pub > home/user/.ssh/authorized_keys
 
-setarch ${arch} arch-chroot . <<EOF
-useradd -p 00as1wm0AZG56 user
-chown -R user:users /home/user
-mkinitcpio -p linux
-syslinux-install_update -i -m
-sfdisk --activate ${loop} 1 || true
-EOF
+install -d boot/syslinux
 
 cat > boot/syslinux/syslinux.cfg <<EOF
 DEFAULT arch
@@ -62,19 +56,31 @@ LABEL=boot  /boot  ext2   defaults      0  1
 LABEL=root  /      ext4   defaults      0  1
 EOF
 
+cat > etc/systemd/network/any.network <<EOF
+[Match]
+
+[Network]
+DHCP=yes
+EOF
+
 cat > etc/hostname <<EOF
 guest
+EOF
+
+cat > etc/locale.gen <<EOF
+en_US.UTF-8 UTF-8
 EOF
 
 cat > etc/sudoers.d/user <<EOF
 user ALL=(ALL) NOPASSWD: ALL
 EOF
 
-cat > etc/systemd/network/any.network <<EOF
-[Match]
-
-[Network]
-DHCP=yes
+setarch ${arch} arch-chroot . <<EOF
+mkinitcpio -p linux
+syslinux-install_update -i -a -m
+useradd -p 00as1wm0AZG56 user
+chown -R user:users /home/user
+locale-gen
 EOF
 
 # To use the pacman cache from the host system, arrange for
