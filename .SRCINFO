@@ -1,0 +1,14 @@
+pkgbase = xdrawchem
+	pkgdesc = XDrawChem is a two-dimensional molecule drawing program for Unix operating systems. It is similar in functionality to other molecule drawing programs such as ChemDraw (TM, CambridgeSoft).
+	pkgver = 1.10.2
+	pkgrel = 1
+	url = http://www.woodsidelabs.com/chemistry/xdrawchem.php
+	arch = x86_64
+	license = GPL
+	depends = openbabel
+	options = !libtool
+	source = https://github.com/bryanherger/xdrawchem/archive/1.10.2-1.tar.gz
+	sha1sums = 4ff8dbaa71b875470d8ca40a0f1af57746fcc644
+
+pkgname = xdrawchem
+
