@@ -3,7 +3,7 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=4.4.3
-pkgrel=15
+pkgrel=16
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -85,6 +85,9 @@ prepare() {
 
 build() {
   cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}"
+
+  # workaround bug https://github.com/ONLYOFFICE/onlyoffice-owncloud/issues/42
+  export PRODUCT_VERSION=${pkgver}
 
   # Download & build third party modules 
   cd core/Common/3dParty
