@@ -2,12 +2,12 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-_binaryname="pwsh"
-pkgver=6.0.0.beta.8.79.ge0af4d96d
+binaryname='pwsh'
+pkgver=6.0.0.beta.9.6.g282deb7ee
 pkgrel=1
-pkgdesc="A cross-platform automation and configuration tool/framework (git version)"
+pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
-url="https://github.com/PowerShell/PowerShell"
+url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
 makedepends=('git' 'cmake' 'dotnet-sdk-2.0')
 depends=('icu')
@@ -54,11 +54,11 @@ package() {
 
   mkdir -p "$pkgdir"/usr/lib/$_pkgname
   cp -a bin/Linux/netcoreapp*/linux-x64 "$pkgdir"/usr/lib/$_pkgname
-  chmod 755 "$pkgdir"/usr/lib/$_pkgname/linux-x64/$_binaryname
+  chmod 755 "$pkgdir"/usr/lib/$_pkgname/linux-x64/$binaryname
 
   mkdir -p "$pkgdir"/usr/share/licenses/$_pkgname
   cp ../../LICENSE.txt "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 
   mkdir -p "$pkgdir"/usr/bin
-  ln -s /usr/lib/$_pkgname/linux-x64/$_binaryname "$pkgdir"/usr/bin/$_binaryname
+  ln -s /usr/lib/$_pkgname/linux-x64/$binaryname "$pkgdir"/usr/bin/$binaryname
 }
