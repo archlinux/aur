@@ -6,5 +6,8 @@ post_install() {
 ==> 
 ==> [Theme]"
 ==> Current=archlinux"
+==> 
+==> To use default configuration copy (as root):"
+==> cp /usr/share/sddm/themes/aerial/theme.conf /usr/share/sddm/themes/aerial/theme.conf.user"
 _EOF
 }
