@@ -5,7 +5,7 @@
 pkgname=nvidia-304xx-ck
 pkgver=304.137
 _extramodules=extramodules-4.13-ck
-pkgrel=2
+pkgrel=3
 _pkgdesc="NVIDIA drivers for linux-ck, 304xx legacy branch."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
@@ -27,6 +27,7 @@ sha256sums_x86_64=('cd774539c322fca8328d382389a40f5aaece4c4bc562fac400f45af6ba7b
 
 build() {
 	_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+  sh "${_pkg}.run" --extract-only
 	cd ${_pkg}/kernel
 	make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 }
