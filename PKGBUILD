@@ -1,7 +1,7 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra-winswitch
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Modified version of xpra by Winswitch"
 arch=('i686' 'x86_64')
@@ -14,7 +14,8 @@ depends=('python2' 'pygtk' 'libxtst' 'python2-pillow' 'python2-lz4'
 optdepends=('x264: Codec' 'python2-dbus: dbus features'
             'python2-pycups: Printing support' 'python2-netifaces: mdns'
             'python2-cryptography: Cryptography'
-            'python-cryptography: Cryptography')
+            'python-cryptography: Cryptography'
+            'pam-liunx: Proxy Server Support')
 conflicts=('parti-all')
 provides=('parti-all')
 makedepends=('python2-setuptools' 'cython2' 'uglify-js')
@@ -36,7 +37,7 @@ backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
         'etc/xpra/conf.d/65_proxy.conf'
         'etc/pam.d/xpra')
 source=("https://xpra.org/src/xpra-$pkgver.tar.xz")
-sha256sums=('16462cd3ee7e982eabdc411dad524db563f49395d5c1d5f0df479efa8c76ae28')
+sha256sums=('359fded90cb63f2c725ae64d0cfd0e156de16ddd68cb71e7aeae009cca1d1464')
 
 build() {
   cd ${srcdir}/xpra-$pkgver
