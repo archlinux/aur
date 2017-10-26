@@ -1,7 +1,7 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra-winswitch-svn
-pkgver=15453
+pkgver=17256
 pkgrel=1
 pkgdesc="Modified version of xpra by Winswitch"
 arch=('i686' 'x86_64')
@@ -15,11 +15,10 @@ optdepends=('x264: Codec' 'python2-dbus: dbus features'
             'python2-pycups: Printing support' 'python2-netifaces: mdns'
             'python2-cryptography: Cryptography'
             'python-cryptography: Cryptography'
-            'python2-crypto: Cryptography'
-            'python-crypto: Cryptography')
+            'pam-selinux: Proxy Server Support')
+conflicts=('xpra')
+provides=('xpra')
 makedepends=('subversion' 'python2-setuptools' 'cython2' 'uglify-js')
-provides=('parti-all' 'xpra-winswitch')
-conflicts=('parti-all')
 backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
 #        'etc/xpra/cuda.conf' 'etc/xpra/nvenc.keys'
         'etc/xpra/conf.d/05_features.conf'
@@ -55,12 +54,13 @@ build() {
   #
   #python2 setup.py build
   export pkgdir
-  CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build
+  #python2 setup.py build
+  CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build --without-enc_x265
 }
 
 package() {
   cd "$srcdir/$_svnmod-build"
-  python2 setup.py install --root=${pkgdir}
+  python2 setup.py install --root=${pkgdir} --without-enc_x265
 }
 
 # vim:set ts=2 sw=2 et:
