@@ -1,7 +1,7 @@
 pkgbase = gdal-hdf4
 	pkgdesc = A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)
-	pkgver = 2.2.1
-	pkgrel = 7
+	pkgver = 2.2.2
+	pkgrel = 1
 	url = http://www.gdal.org/
 	changelog = gdal.changelog
 	arch = i686
@@ -36,12 +36,10 @@ pkgbase = gdal-hdf4
 	provides = gdal
 	conflicts = gdal
 	options = !emptydirs
-	source = http://download.osgeo.org/gdal/2.2.1/gdal-2.2.1.tar.xz
+	source = http://download.osgeo.org/gdal/2.2.2/gdal-2.2.2.tar.xz
 	source = gdal-perl-vendor.patch
-	source = gdal-2.2-poppler-0.58.patch
-	sha256sums = 927098d54083ac919a497f787b835b099e9a194f2e5444dbff901f7426b86066
+	sha256sums = eb25d6ee85f4f5ac1d5581958f8c6eed9b1d50746f82866fe92e507541def35b
 	sha256sums = 20989e5fa499206b42c92280ce084fdf7b2f661a4233fc349611cc57102fe114
-	sha256sums = 17bbcfed72cdc346f1b5bb83247eb51e93ddcf0b00c8bf5e246338a2fb8a567d
 
 pkgname = gdal-hdf4
 
