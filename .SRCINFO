@@ -1,0 +1,16 @@
+pkgbase = brother-dcpl2560dw-cups
+	pkgdesc = Brother DCP-L2560DW CUPS drivers.
+	pkgver = 3.2.0_1
+	pkgrel = 1
+	url = http://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=dcpl2540dw_us_as&os=127&dlid=dlf101716_000&flang=4&type3=560
+	arch = any
+	license = GPL2
+	license = custom:brother
+	depends = brother-dcpl2560dw-lpr
+	depends = cups
+	optdepends = brscan4: scanner support.
+	source = http://download.brother.com/welcome/dlf101766/dcpl2560dwcupswrapper-3.2.0-1.i386.rpm
+	md5sums = 15fa66efa16fb3a5b67554385dfe8d4d
+
+pkgname = brother-dcpl2560dw-cups
+
