@@ -41,7 +41,6 @@ popd
 pushd src/libpsl-native
 cmake -DCMAKE_BUILD_TYPE=Debug .
 make -j
-make test
 popd
 
 ## Build powershell core

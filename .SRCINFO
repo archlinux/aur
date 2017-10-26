@@ -1,6 +1,6 @@
 pkgbase = powershell
 	pkgdesc = A cross-platform automation and configuration tool/framework (latest release)
-	pkgver = 6.0.0.beta.8
+	pkgver = 6.0.0.beta.9
 	pkgrel = 1
 	url = https://github.com/PowerShell/PowerShell
 	install = powershell.install
@@ -10,7 +10,7 @@ pkgbase = powershell
 	makedepends = cmake
 	makedepends = dotnet-sdk-2.0
 	depends = icu
-	source = powershell::git+https://github.com/PowerShell/PowerShell.git#tag=v6.0.0-beta.8
+	source = powershell::git+https://github.com/PowerShell/PowerShell.git#tag=v6.0.0-beta.9
 	source = pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
 	source = googletest::git+https://github.com/google/googletest.git
 	source = build.sh

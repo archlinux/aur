@@ -2,12 +2,13 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
-_pkgver=6.0.0-beta.8
+binaryname=pwsh
+_pkgver=6.0.0-beta.9
 pkgver=${_pkgver/-/.}
 pkgrel=1
-pkgdesc="A cross-platform automation and configuration tool/framework (latest release)"
+pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
 arch=('x86_64')
-url="https://github.com/PowerShell/PowerShell"
+url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
 makedepends=('git' 'cmake' 'dotnet-sdk-2.0')
 depends=('icu')
@@ -18,14 +19,14 @@ source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '4c096f1ce88fd387c9ec81f7ac0581ea')
+         '8f3cdd1186321e277b53bb8596746d03')
 install=powershell.install
 
 prepare() {
   cd $pkgname
   git submodule init
-  git config submodule.src/Modules/Pester.url "$srcdir"/pester
-  git config submodule.src/libpsl-native/test/googletest.url "$srcdir"/googletest
+  git config submodule.src/Modules/Pester.url $srcdir/pester
+  git config submodule.src/libpsl-native/test/googletest.url $srcdir/googletest
   git submodule update
   git clean -dfx
 
@@ -34,7 +35,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  "$srcdir"/build.sh
+  $srcdir/build.sh
 }
 
 check() {
@@ -45,13 +46,13 @@ check() {
 package() {
   cd $pkgname/src/powershell-unix
 
-  mkdir -p "$pkgdir"/usr/lib/$pkgname
-  cp -a bin/Linux/netcoreapp*/linux-x64 "$pkgdir"/usr/lib/$pkgname
-  chmod 755 "$pkgdir"/usr/lib/$pkgname/linux-x64/$pkgname
+  mkdir -p $pkgdir/usr/lib/$pkgname
+  cp -a bin/Linux/netcoreapp*/linux-x64 $pkgdir/usr/lib/$pkgname
+  chmod 755 $pkgdir/usr/lib/$pkgname/linux-x64/$binaryname
 
-  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
-  cp ../../LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  mkdir -p $pkgdir/usr/share/licenses/$pkgname
+  cp ../../LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
-  mkdir -p "$pkgdir"/usr/bin
-  ln -s /usr/lib/$pkgname/linux-x64/$pkgname "$pkgdir"/usr/bin/powershell
+  mkdir -p $pkgdir/usr/bin
+  ln -s /usr/lib/$pkgname/linux-x64/$binaryname $pkgdir/usr/bin/$binaryname
 }
