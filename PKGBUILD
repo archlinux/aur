@@ -1,7 +1,7 @@
 # Maintainer: Monika Schrenk <moni@random-access.org>
 
 pkgname=studio-3t
-pkgver=5.6.1
+pkgver=5.6.2
 pkgrel=1
 pkgdesc="The world's favorite IDE for working with MongoDB, formerly known as MongoChef."
 arch=('i686' 'x86_64')
@@ -16,10 +16,10 @@ source=("${pkgname}.desktop" "${pkgname}")
 source_i686=("$pkgname-$pkgver-x86.tar.gz::https://download.studio3t.com/studio-3t/linux/${pkgver}/${pkgname}-linux-x86.tar.gz")
 source_x86_64=("$pkgname-$pkgver-x64.tar.gz::https://download.studio3t.com/studio-3t/linux/${pkgver}/${pkgname}-linux-x64.tar.gz")
 
-sha256sums=('b51ed1a6897541f52d60aa2b6e5add005cba31dabf7992e2177cfea6ab8fc070' 
-'c84a8462407ac2d300c34477c05c9545b7359cd1842879c2c321c88343b754f5')
-sha256sums_i686=('3eb938b97ee1fd950dc2c7584a248ae3c32017963526c376b68cf89d888b43e8')
-sha256sums_x86_64=('704f70633b4ddf8883bd4c998bd6bf37d8c4eda6209de5469f2393ddd479d36c')
+sha256sums=('b51ed1a6897541f52d60aa2b6e5add005cba31dabf7992e2177cfea6ab8fc070'
+            'c84a8462407ac2d300c34477c05c9545b7359cd1842879c2c321c88343b754f5')
+sha256sums_i686=('bea3fe72b49d74200133e4d067e96e6b912ca6bfbd5f8e18463f76b77c9933c0')
+sha256sums_x86_64=('bef0725d705c5ba2d13bceacdf9e6eb7ec95cb64e7f50e0c8d6c28f7e32e2f77')
 
 prepare() {
   unzip -j ${srcdir}/${pkgname}-${pkgver}-linux-*/lib/data-man-mongodb-ent-${pkgver}.jar "t3/dataman/icons/mac/512.png" -d "./"
