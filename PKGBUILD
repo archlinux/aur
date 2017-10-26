@@ -1,4 +1,4 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: Det <nimetonmaili g-mail> 
 # Contributors: t3ddy, Lex Rivera aka x-demon, ruario
 
 # Check for new Linux releases in: http://googlechromereleases.blogspot.com/search/label/Stable%20updates
