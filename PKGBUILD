@@ -31,7 +31,7 @@ sha256sums=('SKIP'
             '918dff809a7e815343a8d233f704f52a910b8f01a9cb3d29de541a0334fecc7c'
             '32ab20e37f5595eff73fb7ee7916ecae19a47f72875f448663941621d166c13b'
             'dba4b1910dd6424d50a8d95a461c5cf3a96f3e7df0b015624d9bf1c97dc317d3'
-            'c40dece3a3d5cdf29ae2a2dd6ed442e151856b9ca6c88e7f8ac09d652bfba1f2')
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
   # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
   options=(!strip)
