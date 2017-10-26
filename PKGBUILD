@@ -1,38 +1,38 @@
 # Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: HUANG Wei <grubbyfans at gmail dot com>
 
 pkgname=influxdb-bin
-pkgver=0.9.4.2
+pkgver=1.3.6
 pkgrel=1
-pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
-arch=('x86_64')
-url='https://influxdb.com/'
-license=('GPL')
-depends=('glibc')
-install=$pkgname.install
-source=(https://s3.amazonaws.com/influxdb/influxdb_${pkgver}_x86_64.tar.gz
-        influxdb.service.d)
-md5sums=('6abb3d5df9b69aeb9bae37d0889bf67a'
-         '62f0771efc4007cc9577e9f198e21535')
+pkgdesc="An open source agent for collecting metrics and data on the system; Binary release"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://github.com/influxdata/influxdb"
+license=('MIT')
+depends=("glibc")
+conflicts=('influxdb')
+backup=('etc/influxdb/influxdb.conf')
+install=influxdb.install
 
-prepare() {
-  cd influxdb_${pkgver}_x86_64
-
-  sed -i 's|/var/opt/influxdb|/var/lib/influxdb|g' \
-    etc/opt/influxdb/influxdb.conf
-}
+source_i686=(influxdb.tar.gz::"https://dl.influxdata.com/influxdb/releases/influxdb-${pkgver}_linux_i386.tar.gz")
+sha256sums_i686=('5afa542f14aa7c10e530414f73a52347a755cb3575123ebd3831724dc11cb14d')
+source_x86_64=(influxdb.tar.gz::"https://dl.influxdata.com/influxdb/releases/influxdb-${pkgver}_linux_amd64.tar.gz")
+sha256sums_x86_64=('f76d0e29a986af78c0610f885235dd8de19304df6fbc9b1033d1f40d5983b6e8')
+source_armv6h=(influxdb.tar.gz::"https://dl.influxdata.com/influxdb/releases/influxdb-${pkgver}_linux_armhf.tar.gz")
+sha256sums_armv6h=('41053d9865a108cade8bd869170d827ade0e356a82f24992a30d37b7c8052aad')
+source_armv7h=(influxdb.tar.gz::"https://dl.influxdata.com/influxdb/releases/influxdb-${pkgver}_linux_armhf.tar.gz")
+sha256sums_armv7h=('41053d9865a108cade8bd869170d827ade0e356a82f24992a30d37b7c8052aad')
+source=('influxdb.sysusers' 'influxdb.tmpfiles' 'LICENSE')
+sha256sums=('a5ffcdb6db92ed33eccd14a93f1243c18d0d64724de641730af451c99642d6d6' 'e2aa59413a6204737383b86cedefd866d7073f56ace5b89aad38c530cc86e60c' 'bece49bfc61abbb9d0b69bebb47955a44617ada83186c95db5651cd40c0a867a')
 
 package() {
-  cd influxdb_${pkgver}_x86_64
+  cd $srcdir
+  install -Dm644 influxdb.sysusers "$pkgdir/usr/lib/sysusers.d/influxdb.conf"
+  install -Dm644 influxdb.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/influxdb.conf"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/influxdb-bin/LICENSE"
 
-  install -Dm755 opt/influxdb/versions/$pkgver/influxd "$pkgdir"/usr/bin/influxd
-  install -Dm755 opt/influxdb/versions/$pkgver/influx "$pkgdir"/usr/bin/influx
-
-  install -Dm644 etc/opt/influxdb/influxdb.conf \
-    "$pkgdir"/etc/influxdb/influxdb.conf
-  install -Dm644 etc/logrotate.d/influxd "$pkgdir"/etc/logrotate.d/influxd
-
-  install -Dm644 opt/influxdb/versions/$pkgver/scripts/influxdb.service \
-    "$pkgdir"/usr/lib/systemd/system/influxdb.service
-  install -Dm644 "$srcdir"/influxdb.service.d \
-    "$pkgdir"/usr/lib/systemd/system/influxdb.service.d/arch.conf
+  install -Dm755 usr/bin/influxd "$pkgdir/usr/bin/influxd"
+  install -Dm755 usr/bin/influx "$pkgdir/usr/bin/influx"
+  install -Dm644 usr/lib/influxdb/scripts/influxdb.service "$pkgdir/usr/lib/systemd/system/influxdb.service"
+  install -Dm644 etc/influxdb/influxdb.conf "$pkgdir/etc/influxdb/influxdb.conf"
+  install -Dm644 etc/logrotate.d/influxdb "$pkgdir/etc/logrotate.d/influxdb"
 }
