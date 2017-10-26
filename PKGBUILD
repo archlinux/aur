@@ -21,7 +21,7 @@ source=("http://www.geocities.jp/aoyoume/aotuv/source_code/${_srcname}_${pkgver}
         "http://freac.org/patches/arch/libvorbis-aotuv_b6.03_2015-lancer.patch"
         "http://freac.org/patches/arch/libvorbis-aotuv_b6.03_2015-lancer-x64.patch")
 sha256sums=('fba6724d2bc2b6a911a25e60f21a45749d507f181a9e150415ce41e4d03bc08f'
-            'd2296d4f06ef1bc4744425446a04b2403b47bc75c22d3328df820968e4128d58'
+            '38a3ad12937c1748a0cfe0779102d6f02824f897a729ce07cc9f658482a6826b'
             'e54eb271f539ce7ae3bc90bc85643c79c22925fcd1963920b969d7035eeae653')
 
 prepare() {
@@ -43,7 +43,7 @@ prepare() {
 
 build() {
 	cd "aotuv-${pkgver}_${_releasedate}"
-	./configure --prefix=/usr --disable-static
+	./configure --prefix=/usr --enable-shared --disable-static
 	make
 }
 
