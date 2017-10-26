@@ -17,7 +17,7 @@ license=('GPL')
 depends=('rxvt-unicode-terminfo' 'gcc-libs' 'libxft' 'gdk-pixbuf2')
 optdepends=('perl: lots of utilities') # 'gtk2-perl: to use the urxvt-tabbed')
 provides=($_pkgname)
-conflicts=($_pkgname)
+conflicts=($_pkgname ${_pkgname}-better-wheel-scrolling)
 source=(http://dist.schmorp.de/rxvt-unicode/${_pkgname}-${pkgver}.tar.bz2 \
         ${_pkgname}.desktop
         clear.patch secondaryWheel.patch)
