@@ -1,16 +1,16 @@
 pkgbase = isign-chrome-signing
 	pkgdesc = Google Chrome & Mozilla extension for using smartcards with isign.io
-	pkgver = 1.2.2.0
+	pkgver = 1.2.4.0
 	pkgrel = 1
 	url = https://www.isign.io/downloads
 	arch = i686
 	arch = x86_64
 	depends = openssl-1.0
 	depends = qt5-base
-	source_i686 = https://www.isign.io/repo/1.2.2/isign-chrome-signing-en-32_1.2.2.0.deb
-	sha256sums_i686 = 052573ff27120ad1492d9827b5d0467d3d0fb87b1d80967b1d446d9267a911ff
-	source_x86_64 = https://www.isign.io/repo/1.2.2/isign-chrome-signing-en_1.2.2.0.deb
-	sha256sums_x86_64 = 2b27a88296e712f7d6a011daefd6ce8c0b99ac081bd80f40fafd361bef9c29f6
+	source_i686 = https://www.isign.io/repo/1.2.4/isign-chrome-signing-en-32_1.2.4.0.deb
+	sha256sums_i686 = 7fe42cbfb7da6a65a67b82f1a1bb8dcf0af40dda753e2602555fbe143553b5c3
+	source_x86_64 = https://www.isign.io/repo/1.2.4/isign-chrome-signing-en_1.2.4.0.deb
+	sha256sums_x86_64 = 58d2bd963188bbd499e7046fc5c2271d2c083bd791a3f8bc2c37216b73853b95
 
 pkgname = isign-chrome-signing
 
