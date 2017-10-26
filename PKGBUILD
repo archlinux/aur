@@ -2,7 +2,7 @@
 
 _pkgname=('tambi')
 pkgname=('tambi-git')
-pkgver=581
+pkgver=583
 pkgrel=1
 pkgdesc='eine eierlegende wollmilchsau'
 arch=('any')
@@ -23,7 +23,7 @@ package() {
     cd "$srcdir"/"$_pkgname"
     
     mkdir -p "$pkgdir"/usr/share/$pkgname
-    cp -r * "$pkgdir"/usr/share/$pkgname
+    mv * "$pkgdir"/usr/share/$pkgname
     #install -dm577 "$pkgdir"/usr/share/$pkgname/
     
     install -Dm755 "$srcdir"/$_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
