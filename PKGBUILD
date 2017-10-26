@@ -1,23 +1,24 @@
 # Maintainer: Stefan Heinemann <stefan.heinemann@codedump.ch>
 
 pkgname=pockyt
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="automate and manage your pocket collection"
 url="https://github.com/arvindch/pockyt"
 depends=('python' 'python-parse')
-makedepends=('python3' )
+makedepends=('python' )
 license=('GPLv3+')
 arch=('any')
-source=('https://pypi.python.org/packages/1a/e0/a47f82100e5035bb9b22b952cd699706101e815cae01788ea6d533849641/pockyt-1.0.zip')
-md5sums=('b714f28e3a4fa5a536a45586ee73b11d')
+source=("https://github.com/arvindch/pockyt/archive/$pkgver.tar.gz")
+md5sums=('5912297bf6fff62f3ebf8b2ce3546052')
+
 
 build() {
-    cd $srcdir/pockyt-1.0
+    cd $srcdir/pockyt-$pkgver
     python setup.py build
 }
 
 package() {
-    cd $srcdir/pockyt-1.0
+    cd $srcdir/pockyt-$pkgver
     python setup.py install --root="$pkgdir" --optimize=1 
 }

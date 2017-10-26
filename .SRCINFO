@@ -1,14 +1,15 @@
 pkgbase = pockyt
 	pkgdesc = automate and manage your pocket collection
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/arvindch/pockyt
 	arch = any
 	license = GPLv3+
-	makedepends = python3
+	makedepends = python
 	depends = python
-	source = https://pypi.python.org/packages/1a/e0/a47f82100e5035bb9b22b952cd699706101e815cae01788ea6d533849641/pockyt-1.0.zip
-	md5sums = b714f28e3a4fa5a536a45586ee73b11d
+	depends = python-parse
+	source = https://github.com/arvindch/pockyt/archive/1.1.tar.gz
+	md5sums = 5912297bf6fff62f3ebf8b2ce3546052
 
 pkgname = pockyt
 
