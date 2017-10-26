@@ -12,6 +12,7 @@ license=('GPL')
 depends=('sddm' 'gst-libav' 'gst-plugins-good' 'phonon-qt5-gstreamer')
 makedepends=('git')
 install="$_pkgname.install"
+backup=('usr/share/sddm/themes/aerial/theme.conf.user')
 source=("git+https://github.com/3ximus/$_repo.git")
 sha256sums=('SKIP')
 
