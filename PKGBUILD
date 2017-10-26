@@ -8,7 +8,7 @@ pkgdesc="Experimental Physics and Industrial Control System"
 arch=('any')
 url="http://www.aps.anl.gov/epics/"
 license=('EPICS Open License')
-depends=('aravis')
+depends=('aravis' 'glibmm')
 source=("https://github.com/greyltc/ng3e/archive/v${pkgver}.tar.gz")
 md5sums=('ba76ff41e6e2b2bf2352c7ae80201160')
 
