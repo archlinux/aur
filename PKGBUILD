@@ -1,8 +1,6 @@
-# Maintainer: Nickolay Mardanov <soniczerops@gmail.com>
-
 pkgname=xkblayout-state
 pkgver=20171010
-pkgrel=2
+pkgrel=3
 pkgdesc="A small command-line program to get/set the current keyboard layout."
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -24,6 +22,8 @@ pkgver() {
 
 build() {
   cd "$_gitname"
+  # Does not build with --as-needed flag
+  LDFLAGS=$(echo "$LDFLAGS" | sed "s/--as-needed,//")
   make all
 }
 
