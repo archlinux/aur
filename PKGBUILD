@@ -1,7 +1,7 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=ffhevc
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc='a small yet quite capable shell script for encoding video files to the H.265/HEVC video format using ffmpeg and libx265.'
 arch=(any)
@@ -9,7 +9,7 @@ url='https://ffhevc.teambelgium.net/'
 license=(GPL2)
 depends=(ffmpeg)
 source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('c275ef1e6771ff4abbdcdb133b18d826d5f0c045b453a7dceff99d21d0f3c155')
+sha256sums=('299181b1e7a04926fff5bb506461179959e96ebbb716491c1212c1790ddc31d8')
 
 package()
 {
