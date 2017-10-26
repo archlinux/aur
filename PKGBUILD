@@ -12,8 +12,8 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.3.0_devel.96241.2d4b57fc3e
-pkgrel=2
+pkgver=17.4.0_devel.97043.06a12f250f
+pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'glproto' 'dri2proto' 'dri3proto' 'presentproto' 
              'gcc-multilib' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
@@ -28,22 +28,18 @@ license=('custom')
 # 'mesa::git://anongit.freedesktop.org/mesa/mesa#commit=04a40f7d2ad8fc9556c4c3a8742bbf2c948d28a0'
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
-        '0001-Fix-linkage-against-shared-glapi.patch'
         'glvnd-fix-gl-dot-pc.patch'
 )
 
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'fdf973f0387997cee16936bc978f52d60719a1a8610fa96768e2cec42ad790da31f72c00783246f047fc496de01f9e22aec0d46577ded9c2353dd6e6193b4294'
-            '75849eca72ca9d01c648d5ea4f6371f1b8737ca35b14be179e14c73cc51dca0739c333343cdc228a6d464135f4791bcdc21734e2debecd29d57023c8c088b028'
-)
+            '75849eca72ca9d01c648d5ea4f6371f1b8737ca35b14be179e14c73cc51dca0739c333343cdc228a6d464135f4791bcdc21734e2debecd29d57023c8c088b028')
 
 prepare() {
   cd ${srcdir}/mesa
 
   # non-upstreamed ones
   patch -Np1 -i ../glvnd-fix-gl-dot-pc.patch
-  patch -Np1 -i ../0001-Fix-linkage-against-shared-glapi.patch
 
 }
 
