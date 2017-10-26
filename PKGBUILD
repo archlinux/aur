@@ -2,7 +2,7 @@
 
 pkgbase="numix-icon-theme-pack"
 pkgname="numix-icon-theme-pack-git"
-pkgver="r4477.1ed32a50"
+pkgver="r5813.39689c7bb"
 pkgrel=1
 pkgdesc='Numix project Icon Themes - Updated with Numix Core'
 arch=('any')
