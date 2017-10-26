@@ -3,12 +3,12 @@
 _pkgname=qtc-markview
 pkgname=qtcreator-markview-plugin-git
 pkgver=911587a
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt Creator markup plugin"
 groups=('qt' 'qt5')
 arch=('i686' 'x86_64')
 url='https://github.com/OneMoreGres/qtc-markview'
-license=('LGPL')
+license=('MIT')
 depends=('qtcreator')
 makedepends=('git' 'qtcreator-src')
 provides=('qtcreator-markview-plugin')
