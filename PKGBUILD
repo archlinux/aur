@@ -2,7 +2,7 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.7.91.r4007.7b79075f
+pkgver=0.7.91.r4096.17698b1a
 pkgrel=1
 pkgdesc="Map drawing program from OpenOrienteering"
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ url="http://www.openorienteering.org/apps/mapper/"
 license=('GPL3')
 depends=('qt5-base>=5.3' 'polyclipping>=6.1.3a' 'proj>=4.9.2' 'gdal')
 makedepends=('cmake>=3.1' 'qt5-tools>=5.3' 'doxygen' 'libcups')
+optdepends=('qt5-imageformats: Support for TIFF etc.')
 provides=("${pkgname//-git}=${pkgver}")
 conflicts=(${pkgname//-git})
 install=${pkgname//-git}.install
