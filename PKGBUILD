@@ -4,7 +4,7 @@ pkgver=3.13
 pkgrel=2
 pkgdesc="Tool for running commands on remote hosts using Kerberos authentication"
 arch=(i686 x86_64)
-url="http://www.eyrie.org/~eagle/software/remctl/"
+url="https://www.eyrie.org/~eagle/software/remctl/"
 license=(custom)
 depends=("krb5")
 makedepends=(
@@ -14,8 +14,8 @@ makedepends=(
   #"ruby" Build broken, I'm not using the ruby bindings, too lazy to fix.
 )
 backup=("etc/remctl/remctl.conf")
-source=("http://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz"
-        "http://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz.asc"
+source=("https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz"
+        "https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz.asc"
         "remctl.service"
         "remctl@.service"
         "remctl.socket")
