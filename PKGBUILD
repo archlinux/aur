@@ -1,19 +1,19 @@
-# Maintainer: Matt Harrison <matt@mistbyte.com>
+# Maintainer: Matt Harrison <matt@harrison.us.com>
 
 pkgname=screamingfrogseospider
-pkgver=8.1
+pkgver=8.2
 pkgrel=1
 pkgdesc="A small desktop program you can install on your PC or Mac which spiders websites’ links, images, CSS, script and apps from an SEO perspective."
 arch=('any')
 url="http://www.screamingfrog.co.uk/seo-spider/"
 license=('custom')
-depends=('java-environment' 'java-openjfx')
+depends=('jre8-openjdk' 'java-openjfx')
 makedepends=()
 source=(
-  "https://www.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_all.deb"
+  "https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_all.deb"
   "LICENSE"
 )
-sha256sums=('a4f7e80dac2a9365e8c174903925f5cabdde78039a687250537a0e878f0d604d'
+sha256sums=('1ebfe3f73a81da10c5827ee6ca6e3dee4eb984921ba0922d2f6d1796d7bf8f82'
             '5f32a7baef326d88754c6581883800a8d68a753bec846a1d0c190460ab7a2424')
 
 build() {
@@ -22,7 +22,7 @@ build() {
   tar xf data.tar.xz
   msg2 "Done extracting!"
   # Fix java path
-  sed -i "s%usr/share/screamingfrogseospider/jre/bin%usr/bin%g" "$srcdir/usr/bin/screamingfrogseospider"
+  sed -i "s%usr/share/screamingfrogseospider/jre/bin%usr/lib/jvm/java-8-openjdk/jre/bin%g" "$srcdir/usr/bin/screamingfrogseospider"
 }
 
 package() {
