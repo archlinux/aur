@@ -2,7 +2,7 @@
 
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-wpilib-git
-pkgver=1827.57ba5891
+pkgver=1860.ce4c9edd
 pkgrel=1
 pkgdesc="The WPI FIRST Robotics Competition C/C++ library for the arm-frc-linux-gnueabi toolchain"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ license=('custom=FRC-BSD')
 depends=("${_target}-gcc")
 makedepends=('git' 'java-environment=8' 'doxygen' 'unzip')
 options=('!strip' 'libtool' 'staticlibs' '!emptydirs')
-source=("git+git://github.com/wpilibsuite/allwpilib")
+source=("git+git://github.com/calcmogul/allwpilib")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -55,8 +55,9 @@ package() {
   unzip -u -q -j zipcppwpilibc-classifier-linuxathena.zip -d $pkgdir/usr/${_target}/lib
   unzip -u -q -j zipcppwpilibc-classifier-linuxx86-64.zip -d $pkgdir/usr/lib
   popd > /dev/null
+  cp wpilibc/build/libwpi.so $pkgdir/usr/${_target}/lib
 
-  find $pkgdir -type f -name license.txt -exec rm {} \;
+  find $pkgdir -type f -name LICENSE.txt -exec rm {} \;
 
-  install -Dm644 license.txt $pkgdir/usr/share/licenses/${_target}-wpilib/LICENSE
+  install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/${_target}-wpilib/LICENSE
 }
