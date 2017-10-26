@@ -9,7 +9,7 @@ arch=('any')
 licence=('undecided')
 url='https://github.com/nano13/tambi.git'
 makedepends=('git' 'python-setuptools')
-depends=('python3' 'python-pyqt5' 'qt5-charts' 'python-pyqtchart' 'python-pysword' 'python-markdown' 'python-gpsd' 'python-geopy' 'python-srtm-git' 'python-pillow')
+depends=('python3' 'python-pyqt5' 'qt5-charts' 'python-pyqtchart' 'python-pysword' 'python-markdown' 'python-gpsd-git' 'python-geopy' 'python-srtm-git' 'python-pillow')
 source=(${_pkgname}::git+https://github.com/nano13/tambi.git
     $_pkgname.sh)
 sha256sums=('SKIP' 'SKIP')
