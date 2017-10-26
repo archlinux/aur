@@ -1,0 +1,21 @@
+pkgbase = qtcreator-terminal-plugin-git
+	pkgdesc = A konsole-like terminal plugin for Qt Creator
+	pkgver = 2119fe7
+	pkgrel = 1
+	url = https://github.com/manyoso/qt-creator-terminalplugin
+	arch = i686
+	arch = x86_64
+	groups = qt
+	groups = qt5
+	license = LGPL2.1
+	makedepends = git
+	makedepends = qtcreator-src
+	depends = qtcreator
+	depends = qtermwidget
+	provides = qtcreator-terminal-plugin
+	conflicts = qtcreator-terminal-plugin
+	source = qtcreator-terminal-plugin-git::git://github.com/manyoso/qt-creator-terminalplugin.git
+	md5sums = SKIP
+
+pkgname = qtcreator-terminal-plugin-git
+
