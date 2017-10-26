@@ -18,9 +18,13 @@ prepare() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/share/cups/model/Brother
+  mkdir -p ${pkgdir}/usr/share/cups/model
   mkdir -p ${pkgdir}/usr/lib/cups/filter
-  cp ${srcdir}/opt/brother/Printers/DCPL2560DW/cupswrapper/brother-DCPL2560DW-cups-en.ppd ${pkgdir}/usr/share/cups/model/Brother
+  mkdir -p ${pkgdir}/usr/lib32/cups/filter
+  mkdir -p ${pkgdir}/usr/libexec/cups/filter
+  cp ${srcdir}/opt/brother/Printers/DCPL2560DW/cupswrapper/brother-DCPL2560DW-cups-en.ppd ${pkgdir}/usr/share/cups/model
   cp ${srcdir}/opt/brother/Printers/DCPL2560DW/cupswrapper/brother_lpdwrapper_DCPL2560DW ${pkgdir}/usr/lib/cups/filter
+  cp ${srcdir}/opt/brother/Printers/DCPL2560DW/cupswrapper/brother_lpdwrapper_DCPL2560DW ${pkgdir}/usr/lib32/cups/filter
+  cp ${srcdir}/opt/brother/Printers/DCPL2560DW/cupswrapper/brother_lpdwrapper_DCPL2560DW ${pkgdir}/usr/libexec/cups/filter
 }
 
