@@ -1,6 +1,6 @@
 # Maintainer: levinit <levinit@outlook.com>
 pkgname=ocsstore
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="OCS-Store frontend.Downloading and Managing Linux softwares,fonts,artworks,desktop-themes and so on."
 arch=('x86_64')
