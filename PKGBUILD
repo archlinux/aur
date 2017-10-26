@@ -2,7 +2,7 @@
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="multi-platform screen and application forwarding system screen for X11"
 arch=('i686' 'x86_64')
 url='http://xpra.org/'
