@@ -6,16 +6,16 @@
 
 pkgname=firefox-wayland-git
 _pkgname=firefox
-pkgver=57.1.1.r11724.g1dc9dd536faa
-pkgrel=3
+pkgver=57.1.1.r14042.g4d4f4966936a
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
-         nss hunspell sqlite ttf-font libpulse icu)
+         nss-hg hunspell sqlite ttf-font libpulse icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
-             autoconf2.13 cargo mercurial git)
+             autoconf2.13 cargo mercurial git llvm clang)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
