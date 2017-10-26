@@ -1,7 +1,7 @@
 # Maintainer: boosterdev@linuxmail.org
 
 pkgname=flashplayer-standalone
-pkgver="26.0.0.151"
+pkgver="27.0.0.183"
 pkgrel=1
 pkgdesc="Adobe Flash Player (Standalone)"
 arch=("$CARCH")
