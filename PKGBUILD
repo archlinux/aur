@@ -7,7 +7,7 @@
 pkgname=ttf-oxygen
 epoch=1
 pkgver=5.4.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A desktop/gui font family for integrated use with the KDE desktop'
 url='https://projects.kde.org/projects/kde/workspace/oxygen-fonts'
 arch=('any')
