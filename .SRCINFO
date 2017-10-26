@@ -1,5 +1,5 @@
 pkgbase = qtcreator-markview-plugin-git
-	pkgdesc = QtCreator Tabbed Editor Plugin
+	pkgdesc = Qt Creator markup plugin
 	pkgver = 911587a
 	pkgrel = 1
 	url = https://github.com/OneMoreGres/qtc-markview
