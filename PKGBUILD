@@ -3,7 +3,7 @@
 
 pkgname='xml-security-c'
 pkgver='1.7.3'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='C++ Implementation of W3C security standards for XML'
 arch=('i686' 'x86_64')
 url='http://santuario.apache.org/'

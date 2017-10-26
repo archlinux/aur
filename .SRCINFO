@@ -1,7 +1,7 @@
 pkgbase = xml-security-c
 	pkgdesc = C++ Implementation of W3C security standards for XML
 	pkgver = 1.7.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://santuario.apache.org/
 	arch = i686
 	arch = x86_64
