@@ -1,0 +1,15 @@
+pkgbase = cannelloni-git
+	pkgdesc = SocketCAN over ethernet tunnel
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/mguentner/cannelloni
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = gpl2
+	makedepends = cmake
+	source = git+https://github.com/mguentner/cannelloni.git
+	sha512sums = SKIP
+
+pkgname = cannelloni-git
+
