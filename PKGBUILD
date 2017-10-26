@@ -18,6 +18,7 @@ optdepends=('x264: Codec' 'python2-dbus: dbus features'
             'pam-selinux: Proxy Server Support')
 conflicts=('xpra-winswitch')
 provides=('xpra-winswitch')
+replaces=('xpra-winswitch')
 makedepends=('python2-setuptools' 'cython2' 'uglify-js')
 backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
 #        'etc/xpra/cuda.conf' 'etc/xpra/nvenc.keys'
