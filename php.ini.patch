@@ -27,7 +27,7 @@
  ; On windows:
  ; extension_dir = "ext"
 
-@@ -851,50 +851,45 @@
+@@ -851,50 +851,48 @@
  ; If you only provide the name of the extension, PHP will look for it in its
  ; default extension directory.
  ;
@@ -75,6 +75,9 @@
 -;extension=php_tidy.dll
 -;extension=php_xmlrpc.dll
 -;extension=php_xsl.dll
++;extension=bcmath.so
++;extension=bz2.so
++;extension=calendar.so
 +extension=curl.so
 +;extension=dba.so
 +;extension=enchant.so
