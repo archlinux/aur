@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname='pop-gtk-theme-bin'
-pkgver='2.2.0'
+pkgver='2.2.3'
 _pkgdir="${pkgver}-0"
 _pkgver="${pkgver}.0"
 pkgrel=1
@@ -13,7 +13,7 @@ license=('GPL2' 'CCPL:by-sa')
 conflicts=('pop-gtk-theme')
 provides=('pop-gtk-theme')
 source=("https://github.com/system76/pop-gtk-theme/releases/download/${_pkgdir}/pop-gtk-theme_${_pkgver}_all.deb")
-sha256sums=('5e7a7f1f006a561d9fec68a3577e9f73dee39b86b7b92a99951b9eb369dc577c')
+sha256sums=('1015f94785700c537e42058779489e4f3a8ef8b1a649398e09bfcf04b8505f93')
 
 package() {
   cd "${srcdir}"
