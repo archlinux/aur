@@ -1,0 +1,25 @@
+pkgbase = tambi-git
+	pkgdesc = eine eierlegende wollmilchsau
+	pkgver = 581
+	pkgrel = 1
+	url = https://github.com/nano13/tambi.git
+	arch = any
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python3
+	depends = python-pyqt5
+	depends = qt5-charts
+	depends = python-pyqtchart
+	depends = python-pysword
+	depends = python-markdown
+	depends = python-gpsd
+	depends = python-geopy
+	depends = python-srtm-git
+	depends = python-pillow
+	source = tambi::git+https://github.com/nano13/tambi.git
+	source = tambi.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tambi-git
+
