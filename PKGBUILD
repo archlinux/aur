@@ -15,7 +15,7 @@ optdepends=('x264: Codec' 'python2-dbus: dbus features'
             'python2-pycups: Printing support' 'python2-netifaces: mdns'
             'python2-cryptography: Cryptography'
             'python-cryptography: Cryptography'
-            'pam-liunx: Proxy Server Support')
+            'pam-seliunx: Proxy Server Support')
 conflicts=('parti-all')
 provides=('parti-all')
 makedepends=('python2-setuptools' 'cython2' 'uglify-js')
