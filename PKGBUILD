@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-data-zsr-sk
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2017_09_27
+pkgver=2017_10_24
 pkgrel=1
 pkgdesc="Timetable data for the offline railway and other public transport timetable search engines by CHAPS: Slovak train data, provided by ŽSR."
 arch=(any)
@@ -65,9 +65,9 @@ sha256sums=(
 )
 
 pkgver() {
-  _day="$(basename "${_source0}" .exe | cut -d_ -f2)"
-  _month="$(basename "${_source0}" .exe | cut -d_ -f3)"
-  _year="$(basename "${_source0}" .exe | cut -d_ -f4)"
+  _day="$(basename "${_source0}" .exe | cut -d- -f4)"
+  _month="$(basename "${_source0}" .exe | cut -d- -f3)"
+  _year="$(basename "${_source0}" .exe | cut -d- -f2)"
   
   echo "${_year}_${_month}_${_day}"
 }
