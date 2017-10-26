@@ -3,17 +3,16 @@
 pkgname=twitchy-git
 _pkgname=twitchy
 pkgdesc="CLI livestreamer / streamlink wrapper for twitch.tv"
-pkgver=r134.5f514d2
+pkgver=r31.38f8c54
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/BasioMeusPuga/twitchy"
 license=('GPL3')
 provides=('twitchy')
 conflicts=('twitchy')
-depends=('python' 'streamlink' 'python-requests')
+depends=('python' 'streamlink' 'python-requests' 'python-setuptools')
 makedepends=('git')
-optdepends=('livestreamer: alternate backend')
-source=("git://github.com/basiomeuspuga/${_pkgname}.git")
+source=("git://github.com/basiomeuspuga/${_pkgname}.git#branch=v3")
 md5sums=(SKIP)
 
 pkgver() {
@@ -21,10 +20,12 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+    cd "$srcdir/$_pkgname"
+    python setup.py build
+}
 
 package() {
- 	mkdir -p ${pkgdir}/usr/share/twitchy/
-
-	install -Dm 755 twitchy/alarm.mp3 $pkgdir/usr/share/twitchy/alarm.mp3
-	install -Dm 755 twitchy/twitchy.py $pkgdir/usr/bin/twitchy
+  cd "$srcdir/$_pkgname"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
