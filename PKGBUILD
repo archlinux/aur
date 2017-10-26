@@ -3,7 +3,7 @@
 pkgname=python2-odict
 provides=('odict')
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Ordered dictionary."
 arch=('any')
 url="https://github.com/bluedynamics/odict"
@@ -20,5 +20,6 @@ build() {
 
 package() {
    cd "${srcdir}/odict-${pkgver}"
+   chmod -R a+rX .
    python2 setup.py install --root="${pkgdir}" --optimize=1 || exit 1
 }
