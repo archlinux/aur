@@ -1,19 +1,21 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Sergej Pupykin <arch+pub@sergej.pp.ru>
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-plugins-git
-pkgver=1.1.20.g4f8eaf4
+pkgver=1.1.21.g8161e5c
 pkgrel=1
 pkgdesc="Additional plugins for Psi+ (built with Qt 5.x)"
 arch=('i686' 'x86_64')
 url="http://psi-plus.com"
 license=('GPL2')
 depends=('qt5-base' 'qt5-webkit' 'qt5-multimedia' 'psi-plus-git' 'qt5-webengine')
-conflicts=('psi-plus-plugins')
+conflicts=('psi-plus-plugins' 'psi-plus-plugins-qt5-git')
+provides=("psi-plus-plugins=$pkgver" "psi-plus-plugins-qt5-git=$pkgver")
 makedepends=('libotr' 'tidyhtml')
 optdepends=('libotr: for OTR plugin'
             'tidyhtml: for OTR plugin')
-source=('psi-plus-plugins::git://github.com/psi-plus/plugins.git'
+source=('psi-plus-plugins::git://github.com/psi-im/plugins.git'
         'psiplugin.pri')
 md5sums=('SKIP'
          'bbe29ce7c37a0511212798f17993c7dd')
