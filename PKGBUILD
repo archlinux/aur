@@ -6,7 +6,7 @@
 pkgbase=linux-wave       # Build kernel with a different name
 _srcname=linux-4.13
 pkgver=4.13.9
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -240,4 +240,4 @@ sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             '96d6080a9445c4158f8b590168f9aaa3b29f6346682f4a97978dce1db76d6e3a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'ec9220a1236565f174d45b17ce97d15ebfe906abb106016222f2c4511b85d480')
+            'fb7606a013877fc404c7e79125532f65aa63d523ed75f61b4ce3092ee64bfa19')

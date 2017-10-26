@@ -130,7 +130,7 @@ index 91a2557942fa..de23b3a04b98 100644
  	default "hybla" if DEFAULT_HYBLA
  	default "vegas" if DEFAULT_VEGAS
 diff --git a/net/ipv4/Makefile b/net/ipv4/Makefile
-index afcb435adfbe..e82ba69b19a9 100644
+index afcb435adfbe..bdc8cd1a804a 100644
 --- a/net/ipv4/Makefile
 +++ b/net/ipv4/Makefile
 @@ -47,6 +47,7 @@ obj-$(CONFIG_TCP_CONG_BBR) += tcp_bbr.o
@@ -141,15 +141,6 @@ index afcb435adfbe..e82ba69b19a9 100644
  obj-$(CONFIG_TCP_CONG_DCTCP) += tcp_dctcp.o
  obj-$(CONFIG_TCP_CONG_WESTWOOD) += tcp_westwood.o
  obj-$(CONFIG_TCP_CONG_HSTCP) += tcp_highspeed.o
-@@ -61,5 +62,8 @@ obj-$(CONFIG_TCP_CONG_YEAH) += tcp_yeah.o
- obj-$(CONFIG_TCP_CONG_ILLINOIS) += tcp_illinois.o
- obj-$(CONFIG_NETLABEL) += cipso_ipv4.o
- 
-+CFLAGS_tcp_wave.o := -DDEBUG
-+CFLAGS_tcp_output.o := -DDEBUG
-+
- obj-$(CONFIG_XFRM) += xfrm4_policy.o xfrm4_state.o xfrm4_input.o \
- 		      xfrm4_output.o xfrm4_protocol.o
 diff --git a/net/ipv4/tcp_cong.c b/net/ipv4/tcp_cong.c
 index 421ea1b918da..ca9caa4bc996 100644
 --- a/net/ipv4/tcp_cong.c
@@ -660,10 +651,10 @@ index 40f7c8ee9ba6..c201c53409ea 100644
  			tcp_event_new_data_sent(sk, skb);
 diff --git a/net/ipv4/tcp_wave.c b/net/ipv4/tcp_wave.c
 new file mode 100644
-index 000000000000..0f761d3e92cb
+index 000000000000..2a5b2e14b07c
 --- /dev/null
 +++ b/net/ipv4/tcp_wave.c
-@@ -0,0 +1,1052 @@
+@@ -0,0 +1,1041 @@
 +/*
 + * TCP Wave
 + *
@@ -1302,21 +1293,11 @@ index 000000000000..0f761d3e92cb
 +}
 +
 +static void wavetcp_end_round(struct sock *sk, const struct rate_sample *rs,
-+			      const ktime_t *now)
++			      const ktime_t *now, u32 burst_size)
 +{
 +	struct wavetcp *ca = inet_csk_ca(sk);
-+	struct wavetcp_burst_hist *tmp;
-+	struct list_head *pos;
 +
 +	pr_debug("%llu [%s]", NOW, __func__);
-+	pos = ca->history->list.next;
-+	tmp = list_entry(pos, struct wavetcp_burst_hist, list);
-+
-+	if (!tmp || ca->pkts_acked < tmp->size) {
-+		pr_debug("%llu sport: %hu [%s] WARNING: Something wrong\n",
-+			 NOW, SPORT(sk), __func__);
-+		return;
-+	}
 +
 +	/* The position we are is end_round, but if the following is false,
 +	 * in reality we are at the beginning of the next round,
@@ -1336,27 +1317,12 @@ index 000000000000..0f761d3e92cb
 +		    NOW, SPORT(sk), __func__, ca->first_rtt);
 +	}
 +
-+	if (tmp->size > min_burst) {
-+		wavetcp_round_terminated(sk, rs, tmp->size);
++	if (burst_size > min_burst) {
++		wavetcp_round_terminated(sk, rs, burst_size);
 +		sk->sk_pacing_rate = wavetcp_get_rate(sk);
 +	} else {
 +		pr_debug("%llu sport: %hu [%s] skipping burst of %u segments\n",
-+			 NOW, SPORT(sk), __func__, tmp->size);
-+	}
-+
-+	/* Consume the burst history if it's a cumulative ACK for many bursts */
-+	while (tmp && ca->pkts_acked >= tmp->size) {
-+		ca->pkts_acked -= tmp->size;
-+
-+		/* Delete the burst from the history */
-+		pr_debug("%llu sport: %hu [%s] deleting burst of %u segments\n",
-+			 NOW, SPORT(sk), __func__, tmp->size);
-+		list_del(pos);
-+		kmem_cache_free(ca->cache, tmp);
-+
-+		/* Take next burst */
-+		pos = ca->history->list.next;
-+		tmp = list_entry(pos, struct wavetcp_burst_hist, list);
++			 NOW, SPORT(sk), __func__, burst_size);
 +	}
 +
 +	wavetcp_reset_round(ca);
@@ -1468,7 +1434,21 @@ index 000000000000..0f761d3e92cb
 +		 */
 +		wavetcp_rtt_measurements(sk, rs->rtt_us, rs->interval_us);
 +	} else {
-+		wavetcp_end_round(sk, rs, &now);
++		wavetcp_end_round(sk, rs, &now, tmp->size);
++		/* Consume the burst history if it's a cumulative ACK for many bursts */
++		while (tmp && ca->pkts_acked >= tmp->size) {
++			ca->pkts_acked -= tmp->size;
++
++			/* Delete the burst from the history */
++			pr_debug("%llu sport: %hu [%s] deleting burst of %u segments\n",
++				 NOW, SPORT(sk), __func__, tmp->size);
++			list_del(pos);
++			kmem_cache_free(ca->cache, tmp);
++
++			/* Take next burst */
++			pos = ca->history->list.next;
++			tmp = list_entry(pos, struct wavetcp_burst_hist, list);
++		}
 +	}
 +}
 +
