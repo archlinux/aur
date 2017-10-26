@@ -1,4 +1,5 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer: David Phillips <david@sighup.nz>
+# Contributor: Michael Straube <straubem@gmx.de>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
@@ -15,8 +16,8 @@ depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=('extra-cmake-modules' 'fontforge')
 provides=('ttf-font')
 options=('!emptydirs')
-source=("https://download.kde.org/stable/plasma/$pkgver/oxygen-fonts-$pkgver.tar.xz")
-sha256sums=('a02f6580e9a53cb16694a99adbb6dbf76f17584f3e97f469a22286299507838c')
+source=("https://cgit.kde.org/oxygen-fonts.git/snapshot/oxygen-fonts-${pkgver}.tar.xz")
+sha256sums=('c240a0ecf5c0acbc638f0ae16a87b1733a8f1f0512374923c1ee1be694ac72fe')
 
 prepare() {
   mkdir -p build
