@@ -4,7 +4,7 @@
 _hkgname=typed-process
 pkgname=haskell-typed-process
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Run external processes, with strong typing of streams."
 url="https://github.com/fpco/typed-process"
 license=("MIT")
