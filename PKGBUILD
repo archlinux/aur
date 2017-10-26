@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=libdigidocpp
 pkgver=3.13.2.1355
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for creating DigiDoc signature files"
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
