@@ -1,6 +1,6 @@
 pkgname=xabber-websocket
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 _commit=d4d1c01d116ef84081ef21c33b456b5e59ef0930
 pkgdesc="WebSocket XMPP client interface"
 arch=(i686 x86_64)
@@ -11,17 +11,22 @@ makedepends=('git')
 source=("git://github.com/redsolution/xabber-websocket/#commit=${_commit}"
 	"xabber_ws.service")
 sha256sums=('SKIP'
-            'a3ca5be42008bd67e3af8e094732fd6f58b70222998679e3de7b0a9abce07d75')
+            'f6fab136e5daa9bad3631e5c2f24f99892d9ad331a14d2ce9e5734e0457e2c52')
 
 build() {
 	cd "$pkgname"
-	make rel
+	make -j1 fetch-deps
+	make -j1
 }
 
 package() {
 	cd "$pkgname"
 	install -dm0755 "$pkgdir"/usr/{bin,lib/xabber_ws}
+	install -dm0755 "$pkgdir"/etc
 	tar -C "$pkgdir"/usr/lib/xabber_ws -xzf _rel/xabber_ws/xabber_ws-$pkgver.tar.gz
+
+	mv "$pkgdir"/usr/lib/xabber_ws/config "$pkgdir"/etc/xabber_ws
+	ln -s /etc/xabber_ws "$pkgdir"/usr/lib/xabber_ws/config
 
 	install -dm0755 -o nobody -g nobody "$pkgdir"/var/log/xabber_ws
 	ln -s /var/log/xabber_ws "$pkgdir"/usr/lib/xabber_ws/log
