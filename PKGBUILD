@@ -2,7 +2,7 @@
 pkgname='fmsx'
 pkgdesc='Portable MSX/MSX2/MSX2+ emulator'
 pkgver='5.1'
-pkgrel='1'
+pkgrel='2'
 _dlname="fMSX${pkgver//./}"
 url='http://fms.komkon.org/fMSX'
 license=('custom')
@@ -11,6 +11,7 @@ depends=('libxext' 'bash' 'zlib' 'pulseaudio')
 makedepends=('sed')
 source=(fmsx.sh
         "${url}/${_dlname}.zip"
+        "${url}/src/CMOS.ROM"
         "${url}/src/MSX.ROM"
         "${url}/src/MSX2.ROM"
         "${url}/src/MSX2EXT.ROM"
@@ -21,9 +22,10 @@ source=(fmsx.sh
         "${url}/src/MSXDOS2.ROM"
         "${url}/src/PAINTER.ROM"
         "${url}/src/KANJI.ROM"
-        http://www.msxarchive.nl/pub/msx/emulator/system_roms/Extensions/Rs232/rs232.rom.zip)
+        "https://github.com/libretro/fmsx-libretro/raw/master/fMSX/ROMs/RS232.ROM")
 sha512sums=('1c7b7485525e5798cde0fa4e82153f294ce88c358d4c0366a6266f837b2b3e5ce8540b0f5daf1d67b11e1afcf82912df8379e3a0cbe93854f0d86cb7d54d7d36'
             'e9f3f6ca6df58502cfa30e3223346be0d531a3b09e558589ea23b45aa38b03c7af1b1071fdb12dcf1eabb8eee81e3ae310ed5ff668c04b236bb931cbcfd382b0'
+            '617bee88a0088c25928e4b906bf7acc8ffa1847e3f7dc006117f579ad3c760e33a43d30f5b9b41ada20689c8f2f65ce5bd95a3de9662153d3deb615bff13163b'
             'f8a447906272f69cd545ed439623845cacee4ee98b8ed3fae264a26e35ef006b125b51a2c4e54e8371d53cffe730dac720b2a8d0eccdad0c3c7befdc31864f6c'
             'dc95ef9c17a28319d815780cae359b8a88b3edd5c5d582a16a916e256eb90d79b02f3240b91d2048e9d750239051473f924b807ae2583a65695fb1e18e317a54'
             'c270ee701b19a92c769c9334ff4e843492e7596ee09818b39062f3fcf96da547afe0fc83866493080113fbda20dde08589e3f7aa2ad73bae451b911c773f6850'
@@ -34,7 +36,7 @@ sha512sums=('1c7b7485525e5798cde0fa4e82153f294ce88c358d4c0366a6266f837b2b3e5ce85
             'a4bbde8dc0e7d99d93a4fbbeca7dee933fdcb0b355909a593e2b41c7715991464382e76685ed542f8a5725d7ab59e491e3e73c0c5ee6b09f892c1131c73d039f'
             'c0aff91898b0f825e7e499bdb4fa58d5a34acfb96d81a2789b86b77f2acbdadcf9dd9427fd35edef85c2efdfd3d572c10eb3674495b288b315386e8d819f3a9e'
             '5eefeacefbee2a55de5a2c2b020d52f2fe389a3b18a07bc399faa0a2aab6c07959d365e08b67945a3ae29c46b1f69566a91b392a7bde1db18298de259688a373'
-            '75bde6584b97a88a3ec02ac342289aa94b9bbe4d76e58ff24354ea85315a104d384baac162db582e7149ec7b62565c2b94b610f4d13da887d59c58cd6f610b2a')
+            '502c64f0dd0ab7f6213281eeeb222be1471f6aebc6da558d28d06a831064cab4e810175e19796e26e8f1da1e84c93593cc4ffdb8eaae75708408aadb54940744')
 
 prepare () {
     cd "${srcdir}"
@@ -59,7 +61,6 @@ package () {
 	mkdir -p "${pkgdir}/usr/lib/fmsx"
 	install -m 755 fMSX/Unix/fmsx "${pkgdir}/usr/lib/fmsx"
 	install -m 644 "${srcdir}"/*.ROM fMSX/Unix/CARTS.SHA "${pkgdir}/usr/lib/fmsx"
-	install -Dm644 "${srcdir}/rs232.rom" "${pkgdir}/usr/lib/fmsx/RS232.ROM"
 	mkdir -p "${pkgdir}/usr/bin"
 	install -m 755 "${startdir}/fmsx.sh" "${pkgdir}/usr/bin/fmsx"
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
