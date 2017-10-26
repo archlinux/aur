@@ -1,8 +1,8 @@
 # Maintainer: Robert Booster <boosterdev at linuxmail dot org>
 
 pkgname="zuki-themes"
-_pkgver="v3.24-2"
-pkgver="3.24.2"
+_pkgver="v3.24-3"
+pkgver="3.24.3"
 pkgrel=1
 pkgdesc="A selection of themes for GNOME, Xfce and more (includes Zukitwo and Zukitre)."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/lassekongo83/zuki-themes"
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines' 'ttf-roboto')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/lassekongo83/zuki-themes/archive/$_pkgver.tar.gz")
-sha256sums=('fade44b7ebee6ccfcc474b71e88b110f07b95a147c961146cc7d901f5de0aeb1')
+sha256sums=('a54e12a49550904ea292de9f1447299d2b86163c649a4dfb92e4f1a7f6b9461d')
 
 pkgver(){
   echo \"$(echo "$_pkgver" | sed 's/v//g;s/-/./g')\"
