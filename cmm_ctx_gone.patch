@@ -1,6 +1,6 @@
-diff -ur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
---- old/source/fitz/color-lcms.c	2017-07-21 13:15:33.210544762 -1000
-+++ new/source/fitz/color-lcms.c	2017-07-21 13:18:23.943567031 -1000
+diff -Naur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
+--- old/source/fitz/color-lcms.c	2017-10-25 22:19:28.890575079 -1000
++++ new/source/fitz/color-lcms.c	2017-10-25 22:21:22.919919617 -1000
 @@ -66,7 +66,7 @@
  static int
  fz_lcms_num_devcomps(cmsContext cmm_ctx, fz_iccprofile *profile)
@@ -60,7 +60,7 @@ diff -ur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
  		lcms_src_cs = 0;
 -	src_num_chan = cmsChannelsOf(cmm_ctx, src_cs);
 +	src_num_chan = cmsChannelsOf(src_cs);
- 	src_data_type = (COLORSPACE_SH(lcms_src_cs) | CHANNELS_SH(src_num_chan) | DOSWAP_SH(src->bgr) | BYTES_SH(num_bytes) | EXTRA_SH(src_extras));
+ 	src_data_type = (COLORSPACE_SH(lcms_src_cs) | CHANNELS_SH(src_num_chan) | DOSWAP_SH(src->bgr) | SWAPFIRST_SH(src->bgr && (src_extras != 0)) | BYTES_SH(num_bytes) | EXTRA_SH(src_extras));
  
  	/* dst */
 -	des_cs = cmsGetColorSpace(cmm_ctx, dst->cmm_handle);
@@ -71,7 +71,7 @@ diff -ur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
  		lcms_des_cs = 0;
 -	des_num_chan = cmsChannelsOf(cmm_ctx, des_cs);
 +	des_num_chan = cmsChannelsOf(des_cs);
- 	des_data_type = (COLORSPACE_SH(lcms_des_cs) | CHANNELS_SH(des_num_chan) | DOSWAP_SH(dst->bgr) | BYTES_SH(num_bytes) | EXTRA_SH(dst_extras));
+ 	des_data_type = (COLORSPACE_SH(lcms_des_cs) | CHANNELS_SH(des_num_chan) | DOSWAP_SH(dst->bgr) | SWAPFIRST_SH(dst->bgr && (dst_extras != 0)) | BYTES_SH(num_bytes) | EXTRA_SH(dst_extras));
  
  	/* flags */
 @@ -254,17 +254,17 @@

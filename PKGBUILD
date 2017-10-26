@@ -4,21 +4,21 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20170912.b69387ac
+pkgver=20171025.ec07e537
 pkgrel=1
-pkgdesc='Lightweight PDF, XPS and CBZ viewer'
+pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://mupdf.com/'
 license=('AGPL3')
 makedepends=('git')
-depends=('curl' 'freetype2' 'jbig2dec' 'libjpeg-turbo' 'libxext' 'openjpeg2' 'lcms2')
+depends=('glfw' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2')
 source=('git://git.ghostscript.com/mupdf.git'
         'git://git.ghostscript.com/mujs.git'
         'cmm_ctx_gone.patch'
         'desktop')
 sha256sums=('SKIP'
             'SKIP'
-            'b24af44a9f88bcbe1fb649a8055817cfc6908e523b95417779726526a88041f9'
+            'df0d070fe988c5b1f610d21a90d3028f03c73829c026510b2789d7c1f285fbf5'
             '3240d4ebda002cb2c4f42cd42793c6160f1701d349d0acb797819dfd10d4fedd')
 
 conflicts=("${_pkgname}")
@@ -49,6 +49,10 @@ prepare() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 
+	export HAVE_GLFW='yes'
+	export SYS_GLFW_CFLAGS="$(pkg-config --cflags glfw3)"
+	export SYS_GLFW_LIBS="$(pkg-config --libs glfw3) -lGL"
+
 	make release XCFLAGS="$CFLAGS -fPIC" XLIBS="$LDFLAGS"
 }
 
@@ -56,8 +60,8 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 
 	make install DESTDIR="${pkgdir}" prefix=/usr
-	mv "${pkgdir}"/usr/bin/mupdf-x11-curl "${pkgdir}"/usr/bin/mupdf
-	rm "${pkgdir}"/usr/bin/mupdf-x11
+	mv "${pkgdir}"/usr/bin/mupdf{-gl,}
+	rm "${pkgdir}"/usr/bin/mupdf-x11*
 
 	install -Dm644 ../desktop "${pkgdir}"/usr/share/applications/mupdf.desktop
 	find "${pkgdir}"/usr/share -type f -exec chmod 0644 {} +
