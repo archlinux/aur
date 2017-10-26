@@ -1,0 +1,12 @@
+[Unit]
+Description=Xabber Websockets
+After=network.target
+
+[Service]
+User=nobody
+Type=simple
+ExecStart=/usr/bin/xabber_ws foreground
+Environment=HOME=/tmp
+
+[Install]
+WantedBy=multi-user.target
