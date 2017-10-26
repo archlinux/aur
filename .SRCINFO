@@ -1,7 +1,7 @@
 pkgbase = theterminal
 	pkgdesc = Simple Terminal Emulator
 	pkgver = 2.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/vicr123/theterminal
 	arch = x86_64
 	license = GPL2
