@@ -2,7 +2,7 @@
 
 pkgname=twitchy-git
 _pkgname=twitchy
-pkgdesc="CLI livestreamer / streamlink wrapper for twitch.tv"
+pkgdesc="CLI streamlink wrapper for twitch.tv"
 pkgver=r31.38f8c54
 pkgrel=1
 arch=('any')
@@ -12,7 +12,7 @@ provides=('twitchy')
 conflicts=('twitchy')
 depends=('python' 'streamlink' 'python-requests' 'python-setuptools')
 makedepends=('git')
-source=("git://github.com/basiomeuspuga/${_pkgname}.git#branch=v3")
+source=("git://github.com/basiomeuspuga/${_pkgname}.git")
 md5sums=(SKIP)
 
 pkgver() {
