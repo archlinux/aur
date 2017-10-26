@@ -1,6 +1,6 @@
 # Maintainer: TuxnVape Elrondo46 <elrond94athotmail.com>
 pkgname=virtualbox-ext-oracle-mjr
-pkgver=5.1.28
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Extension Pack for Manjaro'
 arch=('any')
@@ -10,7 +10,7 @@ options=('!strip')
 install=virtualbox-ext-oracle.install
 source=("http://download.virtualbox.org/virtualbox/$pkgver/Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
 noextract=("Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
-sha256sums=('1a2551b204bd53a252a75a4653b983427bb15d473bc77b14149c7870ce049871')
+sha256sums=('005ba9211862643e2516d549e98b80942918047f1f6c55fcfe08c490dd1947bc')
 
 prepare() {
   # shrink uneeded cpuarch
