@@ -1,0 +1,19 @@
+pkgbase = lcms2-git
+	pkgdesc = Small-footprint color management engine
+	pkgver = 2.9rc1.r12.g66aeefe
+	pkgrel = 1
+	url = http://www.littlecms.com/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = libtiff
+	provides = lcms2
+	conflicts = lcms2
+	options = staticlibs
+	source = git+https://github.com/mm2/Little-CMS.git
+	sha256sums = SKIP
+
+pkgname = lcms2-git
+
