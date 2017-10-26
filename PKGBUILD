@@ -9,7 +9,7 @@ arch=('any')
 url="http://psi-plus.com"
 license=('GPL2')
 depends=('psi-plus-git')
-provides=("psi-plus-resources=$pkgver")
+provides=("psi-plus-resources=$pkgver" "psi-plus-resources-qt5=$pkgver")
 conflicts=("psi-plus-resources" "psi-plus-resources-qt5-git")
 options=('!strip' '!zipman')
 source=('psi-plus-resources::git://github.com/psi-plus/resources.git')
