@@ -1,8 +1,8 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=epics
 pkgver=3.15.4.1
-_base_ver=R3.15.4
-#_base_ver=R3.15.5
+_base_recipe=R3.15.4-arch1
+#_base_recipe=R3.15.5
 pkgrel=1
 pkgdesc="Experimental Physics and Industrial Control System"
 arch=('any')
@@ -20,7 +20,7 @@ prepare() {
 build() {
   cd "$srcdir/ng3e-${pkgver}"
   cd packages
-  make release PKG=base RCP=${_base_ver}-arch1
+  make release PKG=base RCP=${_base_recipe}
   make release PKG=asyn RCP=ESS-R4-32+1
   make release PKG=autosave RCP=R5-8
   make release PKG=busy RCP=R1-6-1
@@ -36,5 +36,5 @@ build() {
 
 package() {
   mkdir -p "${pkgdir}/opt/"
-  cp -a "${srcdir}/ng3e-${pkgver}/root/${_base_ver}" "${pkgdir}/opt/epics"
+  cp -a "${srcdir}/ng3e-${pkgver}/root/${_base_recipe}" "${pkgdir}/opt/epics"
 }
