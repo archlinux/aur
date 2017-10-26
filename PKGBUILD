@@ -1,0 +1,37 @@
+# Maintainer: jtmb <packaging at technologicalwizardry dot com>
+_pkgname=pkhex
+pkgname=${_pkgname}-bin
+pkgver=r3749.8a84f63f
+pkgrel=1
+pkgdesc="Pokémon core series save editor, programmed in C#."
+arch=(any)
+url="https://github.com/kwsch/PKHeX"
+license=('GPL')
+depends=(mono)
+provides=(pkhex)
+conflicts=(pkhex)
+source=("https://teamcity.projectpokemon.org/guestAuth/repository/download/PKHeX_BuildLinuxMono/14776:id/PKHeX%20Mono%20Build%202480.zip"
+		"PKHeX.sh"
+        "pkhex.desktop"
+		"pkhex.png")
+md5sums=('SKIP'
+         '8bd71d319e130750a39f15d56b5636e1'
+         '18966e43b894687954ee19df24532b54'
+         'ceb97fc5efcf4548ca4572b5116f5875')
+
+package() {
+
+  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm755 -- PKHeX.sh "$pkgdir/usr/bin/PKHeX"
+  install -Dm755 -- PKHeX.exe "$pkgdir/opt/${_pkgname}/PKHeX.exe"
+  install -Dm644 -- PKHeX.exe.config "$pkgdir/opt/${_pkgname}/PKHeX.exe.config"
+  install -Dm755 -- PKHeX.Core.dll "$pkgdir/opt/${_pkgname}/PKHeX.Core.dll"
+  install -Dm644 -- PKHeX.Core.dll.config "$pkgdir/opt/${_pkgname}/PKHeX.Core.dll.config"
+  mkdir -p -- "$pkgdir/opt/${_pkgname}/bak"
+  mkdir -p -- "$pkgdir/opt/${_pkgname}/pkmdb"
+  chmod 777 -- "$pkgdir/opt/${_pkgname}/bak"
+  chmod 777 -- "$pkgdir/opt/${_pkgname}/pkmdb"
+  
+}
+
