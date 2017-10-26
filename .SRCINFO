@@ -1,0 +1,15 @@
+pkgbase = osh
+	pkgdesc = A new bash-compatible Unix shell written in Python.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://www.oilshell.org/
+	arch = x86
+	arch = x86_64
+	groups = oil
+	license = Apache-2.0
+	options = !strip
+	source = https://www.oilshell.org/download/oil-0.1.0.tar.gz
+	md5sums = 93410c0ed6f0170713b49c038de68383
+
+pkgname = osh
+
