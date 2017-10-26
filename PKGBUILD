@@ -66,9 +66,9 @@ sha256sums=(
 )
 
 pkgver() {
-  _day="$(basename "${_source0}" .exe | cut -d_ -f3)"
-  _month="$(basename "${_source0}" .exe | cut -d_ -f4)"
-  _year="$(basename "${_source0}" .exe | cut -d_ -f5)"
+  _day="$(basename "${_source0}" .exe | cut -d- -f4)"
+  _month="$(basename "${_source0}" .exe | cut -d- -f3)"
+  _year="$(basename "${_source0}" .exe | cut -d- -f2)"
   
   echo "${_year}_${_month}_${_day}"
 }
