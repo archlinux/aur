@@ -1,5 +1,5 @@
 pkgbase = rxvt-unicode-better-wheel-scrolling-unicode3
-	pkgdesc = An unicode enabled rxvt-clone terminal emulator (urxvt) w/ better wheel scrolling (VTE-like) (& no utmp/wtmp support)
+	pkgdesc = Same like rxvt-unicode-better-wheel-scrolling + enabled frills+unicode3 to support (vim) powerline/airline (http://powerline.readthedocs.io/en/master/troubleshooting.html#urxvt-unicode3-and-frills)
 	pkgver = 9.22
 	pkgrel = 4
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
@@ -13,6 +13,7 @@ pkgbase = rxvt-unicode-better-wheel-scrolling-unicode3
 	optdepends = perl: lots of utilities
 	provides = rxvt-unicode
 	conflicts = rxvt-unicode
+	conflicts = rxvt-unicode-better-wheel-scrolling
 	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.22.tar.bz2
 	source = rxvt-unicode.desktop
 	source = clear.patch
