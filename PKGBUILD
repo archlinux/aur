@@ -26,14 +26,12 @@ pkgver=4.18.0
     'xlocale-crash.patch'
   )
 
-  sha256sums=(
-    'SKIP'
-    '46871ed662a3c97698be609d27da280d9000ec97183f1fa6592986f9910a2118'
-    '918dff809a7e815343a8d233f704f52a910b8f01a9cb3d29de541a0334fecc7c'
-    '32ab20e37f5595eff73fb7ee7916ecae19a47f72875f448663941621d166c13b'
-    'dba4b1910dd6424d50a8d95a461c5cf3a96f3e7df0b015624d9bf1c97dc317d3'
-    '6495cfd1b03aef86d0aca15d5389b4d8ee2d745e900a1956391afcbb4a14dafe'
-  )
+sha256sums=('SKIP'
+            '46871ed662a3c97698be609d27da280d9000ec97183f1fa6592986f9910a2118'
+            '918dff809a7e815343a8d233f704f52a910b8f01a9cb3d29de541a0334fecc7c'
+            '32ab20e37f5595eff73fb7ee7916ecae19a47f72875f448663941621d166c13b'
+            'dba4b1910dd6424d50a8d95a461c5cf3a96f3e7df0b015624d9bf1c97dc317d3'
+            'c40dece3a3d5cdf29ae2a2dd6ed442e151856b9ca6c88e7f8ac09d652bfba1f2')
 
   # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
   options=(!strip)
@@ -59,8 +57,8 @@ prepare() {
   # cd $srcdir/UnrealEngine/Engine/Plugins/Developer && git clone https://github.com/fire/SensibleEditorSourceCodeAccess
   # cd $srcdir/UnrealEngine/Engine/Config/Linux && sed -i '10c\PreferredAccessor=SensibleEditorSourceCodeAccessor' LinuxEngine.ini
 
-  pkgbuild_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )"  && pwd )"
-  echo "$pkgbuild_dir"
+  #pkgbuild_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )"  && pwd )"
+  #echo "$pkgbuild_dir"
   # shellcheck disable=SC2164
   cd "$srcdir/UnrealEngine"
 
@@ -68,7 +66,7 @@ prepare() {
   #git clean -xdf
 
   ./Setup.sh
-  patch "$ue4src/ThirdParty/Linux/LibCxx/include/c++/v1/__locale" "$pkgbuild_dir/xlocale-crash.patch"
+  patch "$ue4src/ThirdParty/Linux/LibCxx/include/c++/v1/__locale" "$srcdir/xlocale-crash.patch"
   ./GenerateProjectFiles.sh
 }
 
