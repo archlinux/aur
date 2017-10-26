@@ -22,8 +22,4 @@ package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-
-	install -D -m644 "/usr/lib/stride/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 "/usr/share/doc/stride/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
-
 }
