@@ -3,10 +3,10 @@
 # Contributor: Simon Perry <aur [at] sanxion [dot] net>
 
 pkgname=pyfa
-pkgver=1.32.0
+pkgver=1.33.0
 pkgrel=1
-everelname="yc119.9"
-everelver=1.3
+everelname="lifeblood"
+everelver=1.0
 pkgdesc="EVE Online Fitting Assistant"
 arch=('any')
 url="https://github.com/pyfa-org/Pyfa"
@@ -30,6 +30,6 @@ package() {
   install "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa || return 1
 }
 
-md5sums=('d6499ff067bc743cf4edb2a817eba7d3'
-         'a71eac8d19d50e9f605a8778db6611d6'
+md5sums=('873dbb0659671d1f9c26938556794f63'
+         'fc4c276c076ef52e3c7a3f74b891f7a3'
          '9937192cfce7f5e16e9cf26086f1899c')
