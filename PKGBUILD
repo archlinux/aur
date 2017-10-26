@@ -1,7 +1,7 @@
 # Maintainer: Bryan Gilbert <gilbertw1 at gmail dot com>
 pkgname=drop
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple screenshot, screencast, and file upload tool with S3 support"
 arch=('i686' 'x86_64')
 url="https://github.com/gilbertw1/drop"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('s3cmd' 'xsel' 'slop' 'imagemagick' 'ffmpeg' 'libkeybinder3')
 makedepends=('cargo')
 source=("https://github.com/gilbertw1/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('3576e1877347ad5301d4aa96285f80783b57358fc2a63fb18b1395f1c9c466e5')
+sha256sums=('4878639592a97b774d8596daacaad7ae3a113fb6f2a8baa559ebf2c96823b49e')
 
 build() {
   cd "$pkgname-$pkgver"
