@@ -34,7 +34,7 @@ package() {
   _reloc usr/lib64  usr/lib
 
   mkdir -p "$pkgdir/usr/bin"
-  ln -s "/opt/dell/srvadmin/bin/idracadm7" "$pkgdir/usr/bin/racadm"
+  ln -s "/opt/dell/srvadmin/bin/idracadm" "$pkgdir/usr/bin/racadm"
 
   msg2 "Removing crud"
   rm -vf "$pkgdir/usr/lib/udev/rules.d/95-dataeng-udev.rules"
