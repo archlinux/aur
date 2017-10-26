@@ -1,0 +1,20 @@
+pkgbase = qtcreator-markview-plugin-git
+	pkgdesc = QtCreator Tabbed Editor Plugin
+	pkgver = 911587a
+	pkgrel = 1
+	url = https://github.com/OneMoreGres/qtc-markview
+	arch = i686
+	arch = x86_64
+	groups = qt
+	groups = qt5
+	license = LGPL
+	makedepends = git
+	makedepends = qtcreator-src
+	depends = qtcreator
+	provides = qtcreator-markview-plugin
+	conflicts = qtcreator-markview-plugin
+	source = qtcreator-markview-plugin-git::git://github.com/OneMoreGres/qtc-markview.git
+	md5sums = SKIP
+
+pkgname = qtcreator-markview-plugin-git
+
