@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=yubikey-manager-qt
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Cross-platform application for configuring any YubiKey over all USB transports'
 arch=('i686' 'x86_64')
