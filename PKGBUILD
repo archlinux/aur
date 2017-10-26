@@ -5,6 +5,8 @@ pkgdesc="Dell OpenManage iDRAC Linux Remote Access Utilities (RACADM)"
 arch=(x86_64)
 url='http://en.community.dell.com/techcenter/systems-management/w/wiki/1760.openmanage-server-administrator-omsa'
 depends=(openssl libsmbios sblim-sfcc)
+optdepends=('openssl-1.0: for some old junk, like idracadm7'
+            'openssl098: for even older junk, like racadm5')
 conflicts=(dell-srvadmin)
 source=("https://downloads.dell.com/FOLDER04161783M/1/OM-MgmtStat-Dell-Web-LX-8.5.0-2372_A00.tar.gz"
         "https://downloads.dell.com/FOLDER04161790M/1/OM-MgmtStat-Dell-Web-LX-8.5.0-2372_A00.tar.gz.sign")
