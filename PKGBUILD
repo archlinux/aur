@@ -9,7 +9,7 @@ _srcname=${pkgbase}
 _kernel_rel=4.13
 _branch=drm-next-amd-dc-staging
 _kernelname=${pkgbase#linux}
-pkgver=4.13.708346.bd21a37d41c3
+pkgver=4.13.708502.af9111336071
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~airlied/linux/'
@@ -25,7 +25,7 @@ source=(
         # Standard config files for mkinitcpio ramdisk
         'linux.preset')
 sha256sums=('SKIP'
-            '0bf9c869033c6ff7f440ae9cbb226538f9d9c25ce0d47ce2dc60b2ba6b73f95a'
+            '28da7d06a07f83d11120fa5e146a6148ec10c7a4f0bed62c4fed61b67d0f3d78'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
