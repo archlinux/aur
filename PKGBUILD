@@ -8,19 +8,19 @@
 
 pkgbase=apparmor
 pkgname=("${pkgbase}" 'apparmor-parser' 'apparmor-libapparmor' 'apparmor-utils' 'apparmor-profiles' 'apparmor-pam' 'apparmor-vim')
-pkgver=2.11.0
+pkgver=2.11.1
 _majorver="$(expr "${pkgver}" : '\([0-9]*\.[0-9]*\)\.')"
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux application security framework - mandatory access control for programs'
 arch=('i686' 'x86_64')
 url='http://wiki.apparmor.net/index.php/Main_Page'
 license=('GPL')
 makedepends=('flex' 'swig' 'perl' 'python' 'perl-locale-gettext' 'perl-rpc-xml' 'audit')
-source=("https://launchpad.net/${pkgbase}/${_majorver}/${_majorver}/+download/${pkgbase}-${pkgver}.tar.gz"{,.asc}
+source=("https://launchpad.net/${pkgbase}/${_majorver}/${pkgver}/+download/${pkgbase}-${pkgver}.tar.gz"{,.asc}
 	"apparmor_load.sh"
 	"apparmor_unload.sh"
 	"apparmor.service")
-sha512sums=('86b33c1cbbd256028dd5fdfaddc764c225845acd19c833223fce5cdd6164f997fe010d7b642791f834a3417b4ea847d77175fdfd89ea99ab2111933790d42b55'
+sha512sums=('f088157cc116987e56c0e02127497b1ec6241f3d761ec3b53211fa188f5f02c9408d6b903f2d275328ede88ebfd1393e00aad9f68cbe78fa9ab3711ba0f9c00c'
             'SKIP'
             'ae9598c2f7c7e04697ef542ef09b816eff0cdb32182a133769760d0669cdceb7ebf896f7c0523d6499394d2ac20d2d3ddec2189ead7ea3d98534c7b9fccdae25'
             '9f729a2d838cc48065ba3758b4c021e9ab57210a351724cc1a96819169d3f08efba13469483227f5bb482e5f4ea6a48f8cb682996716137e0c1fd0876b2b9a2d'
@@ -50,10 +50,6 @@ prepare() {
 	# Skip building and installing vim related files within the utils package
 	# becuase of false references to $srcdir and non-default file locations
 	sed -i '/vim/d' Makefile
-
-	# Regression in python 3.6; Fixed in apparmor version 2.11.1, see https://bugs.launchpad.net/apparmor/+bug/1661766
-	cd "${srcdir}/${pkgbase}-${pkgver}/utils/apparmor"
-	sed -i -e 's/\(re.search([^,]\+,\s[^,]\+\),\sre\.LOCALE/\1/g' ui.py
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/profiles/apparmor.d"
 	# Adapt profile names to Arch linux defaults
