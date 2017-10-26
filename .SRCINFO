@@ -1,0 +1,15 @@
+pkgbase = brother-dcpl2560dw-lpr
+	pkgdesc = Brother DCP-L2560DW lpr drivers.
+	pkgver = 3.2.0_1
+	pkgrel = 1
+	url = http://support.brother.com/g/b/downloadend.aspx?c=gb&lang=en&prod=dcpl2560dw_eu&os=127&dlid=dlf101765_000&flang=4&type3=558
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:brother
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlf101765/dcpl2560dwlpr-3.2.0-1.i386.rpm
+	md5sums = 673e79e2b59a45e12c60e6ab4406c486
+
+pkgname = brother-dcpl2560dw-lpr
+
