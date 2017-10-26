@@ -1,9 +1,9 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
-pkgname=xpra-winswitch
+pkgname=xpra
 pkgver=2.1.3
 pkgrel=1
-pkgdesc="Modified version of xpra by Winswitch"
+pkgdesc="multi-platform screen and application forwarding system screen for X11"
 arch=('i686' 'x86_64')
 url='http://xpra.org/'
 license=('GPL2')
@@ -16,8 +16,8 @@ optdepends=('x264: Codec' 'python2-dbus: dbus features'
             'python2-cryptography: Cryptography'
             'python-cryptography: Cryptography'
             'pam-selinux: Proxy Server Support')
-conflicts=('parti-all')
-provides=('parti-all')
+conflicts=('xpra-winswitch')
+provides=('xpra-winswitch')
 makedepends=('python2-setuptools' 'cython2' 'uglify-js')
 backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
 #        'etc/xpra/cuda.conf' 'etc/xpra/nvenc.keys'
