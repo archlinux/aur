@@ -5,9 +5,9 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.13.9
-xanmod=16
-pkgrel=2
+pkgver=4.13.10
+xanmod=17
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -20,14 +20,14 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=a12b2132b905e1d16939ebdca5b0d6393552f8f1
+arch_config_trunk=65b12e4c878bd9da2849289974d0e3a3137c0284
 source_x86_64=("config.x86_64::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.x86_64?h=packages/linux&id=${arch_config_trunk}")
 source_i686=("config.i686::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.i686?h=packages/linux&id=${arch_config_trunk}")
-sha256sums=('a3c535cc4b045bd242904d984495aa9a2b7554133cfdf168c18ef36261e6ce9a'
+sha256sums=('3a006e863ba48dd538c3c6c1a63c4c4eb576051a4944a243b9f9df8e0f64d7cb'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
-sha256sums_i686=('f68bb8bccbbd6b86dc9f182ee25b2953638aec2729387c70d2787318ad4ea16c')
-sha256sums_x86_64=('9be58e0adea94ccd51aabdd568fa65ba84097f31589de57c5fcc7c71c257a6e0')
+sha256sums_i686=('9b1d9fcb55782e6149aca4dc2d3b250dd4cedf1bf4bd8c6f0968acab0e2e0ee4')
+sha256sums_x86_64=('9c6c4d27d59638d0569ea09a97138bfcfb219f17cdf1138be141380e6654f302')
 
 _kernelname=${pkgbase#linux}
 
