@@ -1,0 +1,21 @@
+pkgbase = openalpr-git
+	pkgdesc = Automatic License Plate Recognition library.
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/openalpr/openalpr/archive/master.tar.gz
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = beanstalkd
+	depends = tesseract
+	depends = leptonica
+	depends = opencv-git
+	depends = curl
+	depends = log4cplus
+	provides = openalpr
+	source = https://github.com/openalpr/openalpr/archive/master.tar.gz
+	md5sums = SKIP
+
+pkgname = openalpr-git
+
