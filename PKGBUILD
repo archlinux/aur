@@ -9,7 +9,7 @@ _nginxver=1.13.5
 
 pkgdesc='Nginx mainline module to use PAM for simple http authentication'
 arch=('i686' 'x86_64')
-depends=('nginx-mainline')
+depends=('nginx-mainline' 'pam')
 url="https://github.com/sto/ngx_http_auth_pam_module"
 license=('BSD')
 
