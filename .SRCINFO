@@ -1,15 +1,15 @@
 pkgbase = pacget
 	pkgdesc = A wrapper around pacaur to mimic yaourt's search feature
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/neurobin/pacget
 	arch = any
 	license = BSD
 	depends = bash
 	depends = pacaur
-	source = https://github.com/neurobin/pacget/archive/1.1.0.tar.gz
+	source = https://github.com/neurobin/pacget/archive/1.1.1.tar.gz
 	validpgpkeys = 3331 6137 5B22 27AC F7AA 6351 A4A2 CA5B 6BDA A871
-	md5sums = 5845a71e41398e1f12913fb6a0acbe14
+	md5sums = 43c47c9369a86feac0d7d0987a0cc83d
 
 pkgname = pacget
 
