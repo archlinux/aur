@@ -2,12 +2,12 @@
 
 pkgname=exact-image
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast image manipulation programs"
 arch=('i686' 'x86_64')
 url="http://exactcode.com/opensource/exactimage/"
 license=('GPL2')
-depends=('agg')
+depends=('agg' 'jasper' 'expat' 'giflib' 'libtiff' 'openexr')
 source=("http://dl.exactcode.de/oss/exact-image/$pkgname-$pkgver.tar.bz2"
         "$pkgname-c-98.patch"
         "$pkgname-syntax.patch"
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --without-python --without-perl
 	make
 }
 
