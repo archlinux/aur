@@ -1,0 +1,23 @@
+pkgbase = welle.io-git
+	pkgdesc = Open source DAB and DAB+ software defined radio
+	pkgver = V20170826.r134.gfea3a21
+	pkgrel = 1
+	url = https://github.com/AlbrechtL/welle.io
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	depends = qt5-multimedia
+	depends = qt5-declarative
+	depends = qt5-charts
+	depends = fftw
+	depends = faad2
+	depends = rtl-sdr
+	depends = airspy
+	provides = welle.io
+	conflicts = welle.io
+	source = git://github.com/AlbrechtL/welle.io
+	md5sums = SKIP
+
+pkgname = welle.io-git
+
