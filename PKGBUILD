@@ -3,7 +3,7 @@
 
 pkgbase=python-jedihttp-git
 pkgname=(python-jedihttp-git python2-jedihttp-git)
-pkgver=r170.a9ae0be
+pkgver=r172.3d3dcf4
 pkgrel=1
 pkgdesc="Simple http wrapper around jedi (with yan12125's packaging patch)"
 license=('Apache')
@@ -16,12 +16,10 @@ checkdepends=(
     'python-bottle' 'python-jedi' 'python-waitress')
 source=('git+https://github.com/vheon/JediHTTP'
         'setup.py'
-        'allow-missing-vendor.patch'
-        'ignore-setup.py-in-tox.patch')
+        'allow-missing-vendor.patch')
 sha256sums=('SKIP'
             '1008eeddf02def5a41d3200124f407e96a2f5085da5676080d33334b352130ac'
-            'dc8be481565b3276b6c30449ea9f31dc4fb3d8d1f760cf10728fe1910bf622b5'
-            '230e234d199acbc9935f98d9840c00332bcf0f7ccc79a161cc1aa87d77d59040')
+            'dc8be481565b3276b6c30449ea9f31dc4fb3d8d1f760cf10728fe1910bf622b5')
 
 pkgver() {
   cd "$srcdir/JediHTTP"
@@ -34,8 +32,6 @@ pkgver() {
 prepare() {
     cd "${srcdir}/JediHTTP"
     patch -Np1 -F0 -i ../allow-missing-vendor.patch
-    # See https://github.com/nose-devs/nose/issues/872#issuecomment-70628127
-    patch -Np1 -F0 -i ../ignore-setup.py-in-tox.patch
     ln -sf ../setup.py
 }
 

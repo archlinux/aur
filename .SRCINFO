@@ -1,6 +1,6 @@
 pkgbase = python-jedihttp-git
 	pkgdesc = Simple http wrapper around jedi (with yan12125's packaging patch)
-	pkgver = r170.a9ae0be
+	pkgver = r172.3d3dcf4
 	pkgrel = 1
 	url = https://github.com/vheon/JediHTTP
 	arch = any
@@ -18,11 +18,9 @@ pkgbase = python-jedihttp-git
 	source = git+https://github.com/vheon/JediHTTP
 	source = setup.py
 	source = allow-missing-vendor.patch
-	source = ignore-setup.py-in-tox.patch
 	sha256sums = SKIP
 	sha256sums = 1008eeddf02def5a41d3200124f407e96a2f5085da5676080d33334b352130ac
 	sha256sums = dc8be481565b3276b6c30449ea9f31dc4fb3d8d1f760cf10728fe1910bf622b5
-	sha256sums = 230e234d199acbc9935f98d9840c00332bcf0f7ccc79a161cc1aa87d77d59040
 
 pkgname = python-jedihttp-git
 	depends = python-bottle
