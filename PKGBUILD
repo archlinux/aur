@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 
 pkgname=webcam-access-monitor
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=2
 pkgdesc="D-Bus service and Gnome Shell extension to monitor webcam access."
 arch=('any')
