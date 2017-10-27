@@ -2,7 +2,7 @@
 
 pkgname=wxpython-phoenix-git
 pkgver=r3413.f04d103b
-pkgrel=1
+pkgrel=2
 pkgdesc="Python 3 implementation of the WxPython UI library"
 arch=('x86_64' 'i686')
 url="https://github.com/wxWidgets/Phoenix"
@@ -29,6 +29,7 @@ prepare(){
 
 build(){
 	cd "$srcdir/$pkgname"
+	python build.py clean
 	python build.py dox etg --nodoc sip build --gtk3
 }
 
