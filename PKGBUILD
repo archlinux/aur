@@ -1,13 +1,13 @@
 # Maintainer: Zdenek Janecek <ycdmdj@gmail.com>
 pkgname=airdcpp-webclient-git
 pkgver=r2993.b58859d0
-pkgrel=1
+pkgrel=3
 _gitname=airdcpp-webclient
 pkgdesc="A peer-to-peer file sharing client with web user interface."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://airdcpp-web.github.io"
 license=('GPL')
-depends=('miniupnpc' 'boost' 'openssl-1.0' 'geoip' 'leveldb' 'websocketpp' 'libnatpmp' 'intel-tbb')
+depends=('miniupnpc' 'boost' 'openssl-1.0' 'geoip' 'leveldb' 'websocketpp' 'libnatpmp' 'intel-tbb' 'npm')
 makedepends=('cmake' 'git')
 source=('git+https://github.com/airdcpp-web/airdcpp-webclient.git'
         'airdcpp.service'
