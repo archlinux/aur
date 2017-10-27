@@ -1,8 +1,8 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=inkscape-multipage-export
 pkgver=1.0
-pkgrel=1
-pkgdesc="Inkscape extension to generate color palettes"
+pkgrel=2
+pkgdesc="Inkscape extension to export selected objects to various file formats"
 arch=("any")
 url="https://github.com/olibia/inkscape-multipage-export"
 license=("GPL")
