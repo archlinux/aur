@@ -1,20 +1,21 @@
 pkgbase = canabalt
-	pkgdesc = It's going to be quite some time before you find something so simple so thrilling again.
-	pkgver = 1.0
-	pkgrel = 2
-	url = http://canabalt.com/
-	arch = any
-	license = custom
-	depends = adobe-air
-	noextract = Canabalt2P_AIR-1331587946.air
-	source = hib://Canabalt2P_AIR-1331587946.air
-	source = launcher.sh
-	source = Canabalt.png
+	pkgdesc = Side-scrolling endless runner flash game.
+	pkgver = 0
+	pkgrel = 1
+	url = http://adamatomic.com/canabalt
+	arch = i686
+	arch = x86_64
+	depends = flashplayer-standalone
+	depends = bash
+	optdepends = xdotool: automatically make game full screen, use alt+f4 to exit
+	source = canabalt.swf::http://adamatomic.com/sw/f/Canabalt.swf
+	source = canabalt.sh
+	source = canabalt.png
 	source = canabalt.desktop
-	md5sums = 715cc145adef541ba1587665fee4ed62
-	md5sums = 4f86401733018352edfc40991e3b5b93
-	md5sums = dd560da377827bf764cce40e141198db
-	md5sums = a9ebbb589499fd1565a6a1b2cc659ff0
+	sha256sums = 9ac99afbc2bbe7915845d330477078149f8b7df72f97d35c9807c617ff4b0d63
+	sha256sums = effa9438539587b03974d1f7e812bbb9fefdf562039159fcd6214fc3157d0952
+	sha256sums = 24822372e99cf6dd51045993fd92cf4e31cc59dddf3b12b5359467de3232a4c2
+	sha256sums = 807b46ef0a7c934c874923754068edb6a2189ec41443548fdb9937594da3ddf4
 
 pkgname = canabalt
 

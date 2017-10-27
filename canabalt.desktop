@@ -1,10 +1,7 @@
 [Desktop Entry]
-Version=1.0
 Type=Application
+Name=Canabalt
+Comment=Side-scrolling endless runner flash game.
+Exec=/opt/canabalt/canabalt.sh
+Icon=/opt/canabalt/canabalt.png
 Categories=Game;
-Name=Canabalt (Adobe Air Version)
-Comment=Semi Secret Software
-GenericName=2D Action Platformer
-Icon=canabalt
-Exec=/usr/bin/canabalt
-Terminal=false
