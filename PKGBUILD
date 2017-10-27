@@ -4,12 +4,12 @@
 pkgname=openecardapp
 pkgver=1.2.4
 _jarver="${pkgver}-20161024-1455"
-pkgrel=1
+pkgrel=2
 pkgdesc="Open eCard-App (opencard) is an open source alternative of the AusweisApp"
 arch=('any')
 url="https://www.openecard.org"
 license=("GPL3")
-depends=('jre8-openjdk' 'pcsclite')
+depends=('java-runtime' 'pcsclite')
 noextract=("richclient-${_jarver}.jar" "cifs-${_jarver}.jar")
 source=("https://jnlp.openecard.org/richclient-${_jarver}.jar" "https://jnlp.openecard.org/cifs-${_jarver}.jar")
 sha256sums=('2768fd0a0fdc1eab5531f72e72221c30301b6978dd599cb1dd278df4edd98684'
