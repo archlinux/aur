@@ -1,10 +1,10 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=cartaodecidadao
-pkgver=2.4.4.5176
+pkgver=2.4.0.4973
 _rev=${pkgver##*.}
 _ver=${pkgver%.*}
-pkgrel=1
+pkgrel=3
 pkgdesc="Portuguese Citizen Card Application"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -41,9 +41,6 @@ prepare() {
 	sed -i -e "s|local/||g" ${srcdir}/eidmw/pteid-poppler/poppler/Makefile
 
 	sed -i -e "/^INSTALLS/d" ${srcdir}/eidmw/eidmw.pro
-
-	sed -i -e "s|4323|${_rev}|g" ${srcdir}/eidmw/svn_revision.h
-	sed -i -e "s|2.4.0|${_ver}|g" ${srcdir}/eidmw/_Builds/pteidversions.h
 
 	cd ${srcdir}/eidmw
 	patch -p0 < ${srcdir}/00-fix_certs_path.patch
