@@ -3,7 +3,7 @@
 pkgname=php-ui
 pkgver=2.0.0
 pkgrel=1
-pkgdesc='Cross platform UI development in PHP (contains PHP module and example app)'
+pkgdesc='Cross platform UI development in PHP (contains example app).'
 arch=('i686' 'x86_64')
 url='https://github.com/krakjoe/ui'
 license=('PHP')

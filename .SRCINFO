@@ -1,5 +1,5 @@
 pkgbase = php-ui
-	pkgdesc = Cross platform UI development in PHP (contains PHP module and example app)
+	pkgdesc = Cross platform UI development in PHP (contains example app).
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/krakjoe/ui
