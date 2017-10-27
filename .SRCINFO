@@ -1,0 +1,31 @@
+pkgbase = cef-standard
+	pkgdesc = Chromium Embedded Framework standard release
+	pkgver = 3.3202
+	pkgrel = 1
+	url = https://bitbucket.org/chromiumembedded/cef
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = make
+	depends = nss
+	depends = alsa-lib
+	depends = atk
+	depends = gconf
+	depends = pango
+	depends = libxrandr
+	depends = libxcursor
+	depends = libxss
+	depends = libxtst
+	depends = libxcomposite
+	depends = gtk2
+	provides = cef
+	provides = cef-minimal
+	conflicts = cef-minimal
+	source_i686 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3202.1674.g2a991c4_linux32.tar.bz2
+	sha1sums_i686 = 08d109c2bc88a2cbce0a62ebde46c9bf263c4455
+	source_x86_64 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3202.1674.g2a991c4_linux64.tar.bz2
+	sha1sums_x86_64 = 29b0149c218a08c28645faccf404a5507311a21d
+
+pkgname = cef-standard
+
