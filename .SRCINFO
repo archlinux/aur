@@ -3,7 +3,6 @@ pkgbase = ttf-font-linux
 	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/lukas-w/font-linux
-	install = ttf-font-linux.install
 	arch = any
 	license = Unilicense
 	depends = fontconfig
