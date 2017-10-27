@@ -1,39 +1,40 @@
-# Maintainer: Carlos E. Garcia <carlos@cgarcia.org>
-_hspkgname=half
+# $Id$
+# Maintainer: Emanuel Couto <unit73e at gmail dot com>
+# Contributor: Carlos E. Garcia <carlos at cgarcia dot org>
+
+_hkgname=half
 pkgname=haskell-half
 pkgver=0.2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Half-precision floating-point "
-arch=('any')
-url="http://github.com/ekmett/half"
+url="https://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
-depends=('haskell-base-compat')
+arch=('i686' 'x86_64')
+license=('custom:BSD3')
+depends=('ghc-libs')
 makedepends=('ghc')
-install=${pkgname}.install
-source=(http://hackage.haskell.org/packages/archive/${_hspkgname}/${pkgver}/${_hspkgname}-${pkgver}.tar.gz)
-md5sums=('855ea2931dd4d3bd5f93e222d1391369')
+source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
+sha512sums=('1b341670d0aa8513bef63a9522884d7c4b71cf9af6420bc67f8aab34c906a96c0288d900106878f5de9902b259f35501d09ba0b9ad82e5a759405e615572d17e')
 
 build() {
-  cd $_hspkgname-$pkgver
-  runhaskell Setup configure -O2 \
-    --enable-shared \
-    --prefix=/usr \
-    --docdir=/usr/share/doc/$pkgname
-  runhaskell Setup build
-  runhaskell Setup haddock --hyperlink-source
-  runhaskell Setup register --gen-script
-  runhaskell Setup unregister --gen-script
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+    
+    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+        --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
+    runhaskell Setup build
+    runhaskell Setup register --gen-script
+    runhaskell Setup unregister --gen-script
+    sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
+    sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 
 package() {
-  cd $srcdir/$_hspkgname-$pkgver
-
-  install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -D -m744 CHANGELOG.markdown $pkgdir/usr/share/$pkgname/CHANGELOG.markdown
-
-  install -D -m744 register.sh $pkgdir/usr/share/$pkgname/register.sh
-  install -D -m744 unregister.sh $pkgdir/usr/share/$pkgname/unregister.sh
-
-  runhaskell Setup copy --destdir=$pkgdir
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+    
+    install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
+    install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
+    runhaskell Setup copy --destdir="${pkgdir}"
+    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
-
