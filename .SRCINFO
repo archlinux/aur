@@ -1,10 +1,10 @@
 pkgbase = python-qutip
 	pkgdesc = QuTiP is open-source software for simulating the dynamics of open quantum systems
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qutip.org/index.html
-	arch = any
-	license = GPL3
+	arch = x86_64
+	license = BSD
 	makedepends = gcc-fortran
 	depends = python-numpy
 	depends = python-scipy
