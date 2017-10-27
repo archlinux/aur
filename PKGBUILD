@@ -1,14 +1,14 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=pkg2zip
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc='Decrypts PlayStation Vita pkg file and packages to zip archive'
 url='https://github.com/mmozeiko/pkg2zip'
 arch=('i686' 'x86_64')
 license=('custom:unlicense')
 source=("https://github.com/mmozeiko/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('bb3125f7cc45966d272da2597fb016f14012d63c78c76c12bda7da58999970a0')
+sha256sums=('1f625d2c28503b922fd12882d78e531855005bcc9ec353a16a0c49f8d38e6a6b')
 
 package() {
 
