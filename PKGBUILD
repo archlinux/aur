@@ -8,7 +8,7 @@
 _pkgname=scribus
 pkgname=${_pkgname}-devel
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop publishing software"
 arch=('i686' 'x86_64')
 url="https://www.scribus.net/"
@@ -21,9 +21,11 @@ optdepends=('tk: scripts based on tkinter'
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("https://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.asc}
-        'findOpenSSL.patch')
+        'findOpenSSL.patch'
+        'fix-poppler-issue.patch')
 sha256sums=('73a30b4727e19f5d301a936d23a84275cc4f5613a92416cbd843f5167721d74f' 'SKIP'
-            'd6d798a370442026e04d56769848761111d63af2ca69a6c2591233da3703dfb4')
+            'd6d798a370442026e04d56769848761111d63af2ca69a6c2591233da3703dfb4'
+            '9e9e954cb30fe606196cb8fc1864983fa571f3a729aec0c3ef01fc577be238a1')
 validpgpkeys=('5086B8D68E70FDDF4C40045AEF7B95E7F60166DA'  # Peter Linnell <plinnell@scribus.net>
               '757F5E9B13DD648887AD50092D47C099E782504E') # The Scribus Team (www.scribus.net) <the_scribus_team@scribus.net>
 
@@ -31,6 +33,7 @@ prepare() {
     cd ${_pkgname}-${pkgver}
 
     patch -p1 -i ../findOpenSSL.patch
+    patch -p1 -i ../fix-poppler-issue.patch
 
     sed \
         -e 's|#!/usr/bin/python|#!/usr/bin/python2|' \
