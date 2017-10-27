@@ -3,7 +3,7 @@
 # Contributor: Lukas Weber <laochailan@web.de>
 
 pkgname=taisei
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Open source Touhou clone"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('sdl2_mixer' 'sdl2_ttf' 'libzip' 'hicolor-icon-theme')
 makedepends=('cmake')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/taisei-project/taisei/archive/v$pkgver.tar.gz")
-sha256sums=('b9eb3150af79942e6a5dda8b833045dd69b8148c9ba0f451a7a911db7dfd2a3f')
+sha256sums=('36f645449f44781f59342b48b611668ac3d59b0025df02b866201ee723209dd7')
 
 build() {
   cd $pkgname-$pkgver
