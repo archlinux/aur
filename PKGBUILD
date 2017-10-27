@@ -1,13 +1,14 @@
-# Maintainer: Matthew Gamble
+# Maintainer: Nanoseb
+# Contributor: Matthew Gamble
 
 pkgname=pytg
 pkgver=0.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Connect to the Telegram CLI, receive and send Telegram messages."
 arch=("any")
 url="https://pypi.python.org/pypi/pytg/${pkgver}"
 license=("GPL")
-depends=("python" "telegram-cli" "python-dictobject" "python-luckydonald-utils>=0.17")
+depends=("python" "telegram-cli-git" "python-dictobject" "python-luckydonald-utils>=0.17")
 makedepends=("python-setuptools")
 source=(
     "https://pypi.python.org/packages/source/p/pytg/pytg-${pkgver}.tar.gz"
