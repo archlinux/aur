@@ -1,11 +1,12 @@
 pkgbase = autosuspend
 	pkgdesc = A daemon to suspend your server in case of inactivity
-	pkgver = 0.5
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/languitar/autosuspend
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
+	makedepends = python-pytest-runner
 	depends = python
 	depends = python-psutil
 	optdepends = python-mpd2: MPD playing status checks
@@ -13,8 +14,8 @@ pkgbase = autosuspend
 	optdepends = xprintidle: X server idle time cheks
 	backup = etc/autosuspend.conf
 	backup = etc/autosuspend-logging.conf
-	source = https://github.com/languitar/autosuspend/archive/release-0.5.tar.gz
-	sha256sums = 0abc3f20f2c90fc7ff3afff035825f15ee2dfbd329e9766a66d3dc3a2aa0361f
+	source = https://github.com/languitar/autosuspend/archive/release-0.5.1.tar.gz
+	sha256sums = 9d4354f2f245f30cff5bdd644cc8d1174fa0a7aecb02474130f2a2faaa00e95a
 
 pkgname = autosuspend
 
