@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Opera Mobile Emulator
+Exec=/opt/opera-mobile-emulator/opera-mobile-emulator-launcher
+Icon=/opt/opera-mobile-emulator/icon.png
+Categories=Development;

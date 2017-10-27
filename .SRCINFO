@@ -1,0 +1,16 @@
+pkgbase = opera-mobile-emulator
+	pkgdesc = Emulator of Opera Mobile browser. Discontinued.
+	pkgver = 12.1
+	pkgrel = 1
+	url = https://www.opera.com/pl/developer/mobile-emulator
+	arch = i686
+	arch = x86_64
+	depends = lib32-glibc
+	depends = lib32-qt4
+	source = package.tar.gz::https://www.opera.com/download/get.pl?sub=++++&id=35129&location=360&nothanks=yes
+	source = opera-mobile-emulator.desktop
+	sha256sums = af7a6ec8c8ae3fdf84ea14b9cbfe032fa7af36ead510ae7ca5f295791a96889b
+	sha256sums = 5fa546d72ffc70508fcd289ba0ebc17c0dd3868c12c707ede8764c908881b8a7
+
+pkgname = opera-mobile-emulator
+
