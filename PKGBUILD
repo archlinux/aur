@@ -1,3 +1,4 @@
+# Maintainer: Lucas Saliés Brum <lucas at archlinux dot com dot br>
 # Maintainer: ThePilot <afuturepilotis at gmail dot com>
 # Contributor: Valerio Pizzi <pival81@yahoo.com>
 
@@ -11,7 +12,7 @@ license=('GPL2')
 options=('!strip' '!zipman')
 depends=('gtk-engine-murrine')
 optdepends=('vivacious-colors' 'gtk3>=3.16' 'gtk3<3.20')
-source=("$pkgname-$pkgver.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAMkhfOWh4TUh1RUE")
+source=("$pkgname-$pkgver.tar.gz::https://drive.google.com/uc?export=download&confirm=TVT4&id=0B7iDWdwgu9QAMkhfOWh4TUh1RUE")
 md5sums=('bebf501111f2394f619d8ce504f49758')
 
 package() {
