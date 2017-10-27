@@ -2,7 +2,7 @@
 # Contributor: Martin Kostolný <clearmartin at zoho dot com>
 
 pkgname=plasma5-applets-thermal-monitor
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Plasma applet for monitoring temperatures of existing sensors including CPU, GPU and HDD."
 arch=('any')
@@ -10,15 +10,11 @@ url="https://github.com/kotelnik/plasma-applet-thermal-monitor"
 license=('GPL')
 depends=('plasma-workspace' 'qt5-graphicaleffects')
 makedepends=('extra-cmake-modules')
-source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz"
-        "remove-spammer.patch")
-sha256sums=('09a66d02ddd658eee0b8aeea02fb8e305da3f057b436cfb6b8ad8454ebbd1ca2'
-            'aa411a4b53fa81815cc2bc17c6818e5ebcd7646eda87b51cc829f4e5fef37385')
+source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('a7ab7d4eb7aed93b5892027513a4a6f99b8b5a983ebbeeeac00e02d43b55dba8')
 
 prepare() {
     mkdir -p build
-    cd plasma-applet-thermal-monitor-${pkgver}
-    patch -p1 -i ../remove-spammer.patch
 }
 
 build() {
