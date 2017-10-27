@@ -1,8 +1,8 @@
 # Maintainer: Gabriel Morrison Lima Dantas <gabrielmldantas@gmail.com>
 # Contributor: Aleksey Kamenskikh <aleksey.kamenskikh@gmail.com>
 pkgname=mssql-server
-pkgver=14.0.1000.169
-_prodver=${pkgver}-2
+pkgver=14.0.3006.16
+_prodver=${pkgver}-3
 pkgrel=1
 _libcpp='libc++1_3.7.0-1ubuntu0.1_amd64.deb'
 _libcppabi='libc++abi1_3.7.0-1ubuntu0.1_amd64.deb'
@@ -17,7 +17,7 @@ source=("https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017/pool/main
         "http://mirrors.kernel.org/ubuntu/pool/universe/libc/libc++/${_libcpp}"
         "http://mirrors.kernel.org/ubuntu/pool/universe/libc/libc++/${_libcppabi}")
 
-sha256sums=('879cbbe692f7296565e15856d4eac95d4df2afc54a3dd76f5f94cb40433430f0'
+sha256sums=('453525ae93d4d3991f2d11bcb8458cdb2f654fa40960453f7ce5e66d295665ab'
             '50fd3720d129ad7d659b311bb8436169b851f3671112ef53bf5d03580d4947f1'
             'e929f077b6cce54a09593c328f230d96fc8b4983be671db73ee6cdaeaab8f138'
             '9ad2bfaa8fecd5bf6a1138f059fe5fbc28a87b8dcfcefe53f51819a60c919f54')
