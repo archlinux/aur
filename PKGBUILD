@@ -5,7 +5,7 @@ pkgname=powershell-bin
 binaryname=pwsh
 _pkgver=6.0.0-beta.9
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform automation and configuration tool/framework (binary package)'
 arch=('x86_64')
 url='https://github.com/Powershell/Powershell'
@@ -27,5 +27,5 @@ package() {
     cp -r usr/local/share usr
     rm -rf usr/local
 
-    chmod 755 usr/bin/$binaryname
+    chmod 755 opt/microsoft/powershell/$_pkgver/pwsh
 }
