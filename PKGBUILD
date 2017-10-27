@@ -7,13 +7,13 @@
 
 pkgname=gitkraken
 pkgrel=1
-pkgver=3.1.2
+pkgver=3.2.0
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="https://www.gitkraken.com/"
 provides=('gitkraken')
 arch=('x86_64')
 license=('custom')
-depends=('gtk2' 'nss' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libcurl-gnutls' 'libxss' 'rtmpdump')
+depends=('gtk2' 'nss' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libcurl-openssl-1.0' 'libxss' 'rtmpdump')
 optdepends=('git-lfs: git-lfs support')
 makedepends=()
 backup=()
@@ -25,11 +25,11 @@ source=(
     "eula.html"
     "gitkraken.sh"
 )
-sha256sums=('9c5c4ac9d33978c9203b197c3829e564e13ec946a3eed3bf547cf9056363e1d2'
+sha256sums=('3466326d1359b9e8fb482ae9e4ce126cc56e65c8f1a02282946625eea7d8dbb8'
             'c001122608370bc43d6cfefd8e217f337a07f544c351179e816983635f8ff45d'
             'a2b3551f83bcbe56da961615f066bb736cd15d98e41c93b3b4add0d56606d902'
             '9566342308bf35b56e626fa1b0d716eb16991712cc43b617c4f0d95e005311d1'
-            '1532caf9be612eddc57d0dcab94a71dcd6c5976f18b4555ba9740dcdc7f8b1d5')
+            '28c1e28104c23937404448c38ee26dac75c01fb4398e1fad057599da24135b9e')
 
 package() {
     install -d "$pkgdir"/opt
