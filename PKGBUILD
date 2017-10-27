@@ -6,7 +6,7 @@ _gitname=evopop-gtk-theme
 
 pkgname=evopop-gtk-theme
 pkgbase=${pkgname}
-pkgver=2.9.98
+pkgver=2.9.99
 pkgrel=1
 pkgdesc='GTK theme from Solus OS and Budgie Desktop'
 arch=('any')
@@ -16,7 +16,7 @@ conflicts=('evopop-gtk-theme-git')
 depends=('gtk3' 'gtk-engine-murrine')
 provides=('evopop-gtk-theme' 'evopop-azure-gtk-theme')
 source=("https://github.com/$_gituser/$_gitname/archive/$pkgver.tar.gz")
-sha256sums=('da8551f881bebcae46ad9dc77d19b07e3342b8a1f60d7c5c9bb1f9f38a7e14c9')
+sha256sums=('4f59ca6a9e80006082294d1dc43e2d5727b7c28b94d7077c77a0762f2f95f262')
 
 build() {
   cd "$srcdir/$_gitname-$pkgver"
