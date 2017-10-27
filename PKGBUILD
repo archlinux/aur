@@ -1,6 +1,6 @@
 # Maintainer: jynn <uaggz@student.kit.edu>
 pkgname=dnsblock-git
-pkgver=r107.0e84a9a
+pkgver=r108.4bb5c82
 pkgrel=1
 pkgdesc="get a list of servers to block ads using your dns"
 arch=('any')
