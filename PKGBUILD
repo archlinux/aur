@@ -43,7 +43,7 @@ prepare() {
   # shellcheck disable=SC2154
   ue4src="$srcdir/UnrealEngine/Engine/Source"
   patch "$ue4src/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs" ignore-return-value-error.patch
-  patch "$ue4src/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs" disable-pie.patch
+  patch "$ue4src/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs" disable-pie.patch
 
   patch -p0 -i only-generate-makefile.patch
   # Source Code Accessors
