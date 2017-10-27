@@ -3,7 +3,7 @@
 
 pkgname=sardi-icons
 pkgver=9.3
-pkgrel=6
+pkgrel=7
 _destname="/usr/share/icons/"
 pkgdesc="Sardi is an icon collection for any linux distro with 6 different circular icons and 10 different kind of folders. "
 arch=('any')
@@ -22,6 +22,8 @@ package() {
   	find ${srcdir} -type f -name "*.sh" -exec chmod 644 '{}' \;
 	install -dm 755 ${pkgdir}${_destname}
   	cp -r ${srcdir}/* ${pkgdir}${_destname}
+  	rm -r ${pkgdir}${_destname}/Sardi-Ghost-Flexible
+  	rm -r ${pkgdir}${_destname}/Sardi-Ghost-Flexible-Colora
 }
 
 
