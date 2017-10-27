@@ -1,7 +1,7 @@
 pkgbase = magicfountain
 	pkgdesc = A Fountain syntax editor and viewer.
 	pkgver = 1.0.0alpha6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aztorius/magicfountain
 	arch = i686
 	arch = x86_64
