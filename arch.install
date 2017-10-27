@@ -76,12 +76,14 @@ user ALL=(ALL) NOPASSWD: ALL
 EOF
 
 setarch ${arch} arch-chroot . <<EOF
+syslinux-install_update -i -m
 mkinitcpio -p linux
-syslinux-install_update -i -a -m
+locale-gen
 useradd -p 00as1wm0AZG56 user
 chown -R user:users /home/user
-locale-gen
 EOF
+
+sfdisk --activate ${loop} 1
 
 # To use the pacman cache from the host system, arrange for
 # /usr/share/buildstuff/proxy.cgi to be run as CGI when called as
