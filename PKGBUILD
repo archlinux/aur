@@ -1,10 +1,10 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=xx-net
-pkgver=3.7.2
+pkgver=3.7.7
 pkgrel=1
 
 pkgdesc="XX-Net, a web proxy tool."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/XX-net/XX-Net"
 license=('unknown')
 depends=('python2' 'supervisor')
@@ -26,7 +26,7 @@ source=(
 		)
 noextract=()
 md5sums=(
-	'd15c51da10dee4875d968f71d8fa3cdb'
+	'6caf6d0d75282b669c4275421def6094'
 	'd439251c0022e4537231bbde87d36bac'
 		)
 validpgpkeys=()
