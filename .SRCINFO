@@ -1,0 +1,26 @@
+pkgbase = geogebra-classic
+	pkgdesc = Dynamic mathematics software with interactive graphics, algebra and spreadsheet
+	pkgver = 6.0.392.0
+	pkgrel = 1
+	url = http://www.geogebra.org
+	arch = x86_64
+	license = CCPL:by-nc
+	license = CCPL:by-sa
+	license = GPL3
+	makedepends = rpmextract
+	depends = alsa-lib
+	depends = mpfr
+	depends = gtk2
+	depends = libxtst
+	depends = gconf
+	depends = nss
+	depends = nodejs
+	depends = xdg-utils
+	depends = libxss
+	noextract = geogebra-classic-6.0.392.0-201710132322.x86_64.rpm
+	options = emptydirs
+	source = http://www.geogebra.net/linux/rpm/x86_64/geogebra-classic-6.0.392.0-201710132322.x86_64.rpm
+	sha512sums = 0627e7a2ae80a655f1e670c8046491142dc8f8a0eca319cc0d4fd8ee969515eb22f482ec3c22f152545a0e056a517efef0bac328436afb896b85d526f60d9944
+
+pkgname = geogebra-classic
+
