@@ -5,8 +5,8 @@
 
 set -u
 pkgname='pmacct'
-pkgver='1.6.2'
-pkgrel='2'
+pkgver='1.7.0'
+pkgrel='1'
 pkgdesc='Accounting and aggregation toolsuite for IPv4 and IPv6 able to collect data through libpcap, Netlink/ULOG, Netflow and sFlow'
 arch=('i686' 'x86_64')
 url='http://www.pmacct.net/'
@@ -18,7 +18,7 @@ source=("${url}${pkgname}-${pkgver}.tar.gz"
         'nfacctd.rc.d' \
         'sfacctd.rc.d' \
         'uacctd.rc.d')
-sha256sums=('e6ede7f500fb1771b5cdfb63dfa016e34c19b8aa2d2f672bd4c63016a5d6bbe2'
+sha256sums=('19c3795db452191c2b1b9533fecaf69c6767c9fb7b4ae60ae3f28e24eb2ee9c8'
             '504b31e1a3ccc6ab9fd56960800e6146cae69c479d1a87a5f491042c382e4384'
             '143e7b83d15df723e2668383efb108e458818b47fdd62a6201b159a5430379e7'
             '990915185774ccb6f167433f1f4a4c415dc60fcaaee2af9d9239dfafefcb8166'
@@ -65,18 +65,6 @@ package() {
   cp -p 'AUTHORS' 'ChangeLog' 'CONFIG-KEYS' 'COPYING' 'QUICKSTART' 'FAQS' 'TOOLS' 'UPGRADE' -t "${pkgdir}/usr/share/doc/pmacct/"
   cp -p 'KNOWN-BUGS' 'README' 'TODO' -t "${pkgdir}/usr/share/doc/pmacct/" || :
   # EXAMPLES changed to QUICKSTART
-
-  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
-  ! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
-  ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! test -d "${pkgdir}/lib" || { echo "Line ${LINENO} Forbidden: /lib"; false; }
-  ! test -d "${pkgdir}/share" || { echo "Line ${LINENO} Forbidden: /share"; false; }
-  ! test -d "${pkgdir}/usr/sbin" || { echo "Line ${LINENO} Forbidden: /usr/sbin"; false; }
-  ! test -d "${pkgdir}/usr/local" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  ! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
-  #! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  #! pcre2grep -Ilr "(?<!usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
   set +u
 }
 
