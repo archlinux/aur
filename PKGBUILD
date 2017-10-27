@@ -2,7 +2,7 @@
 
 _pkgname=cyber
 pkgname=${_pkgname}-dkms
-pkgver=42.1729
+pkgver=42.1729.1634
 pkgrel=1
 pkgdesc="CYBER for your system (DKMS)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('dkms')
 source=("https://github.com/fmorgner/dev-cyber/archive/v${pkgver}.tar.gz"
         "dkms.conf")
-sha256sums=('4f0a1bf71273536ea4441c9c67d2a5765b1b0a49a3de6b839b8e4b5a3fd22545'
+sha256sums=('c9980e730cf760bcb96826333d194d6a78f610d1e267bc244c477e341b5f5595'
             'ffb6ceffebde8148c2a094e8375d3ee1f98798a7202368df668e77317db31f33')
 
 package() {
