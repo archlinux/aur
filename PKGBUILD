@@ -3,15 +3,15 @@
 
 pkgname=kubeadm-bin
 pkgdesc="Kubernetes.io kubeadm binary"
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 arch=('x86_64')
 url="http://kubernetes.io"
 license=('apache')
 depends=('kubelet-bin')
 conflicts=('kubernetes')
-source_x86_64=(https://packages.cloud.google.com/apt/pool/kubeadm_1.8.1-01_amd64_5863420bee513756daf8cd08af801c5420397409191df19535d8c618a100989c.deb)
-sha256sums_x86_64=('5863420bee513756daf8cd08af801c5420397409191df19535d8c618a100989c')
+source_x86_64=(https://packages.cloud.google.com/apt/pool/kubeadm_1.8.2-00_amd64_e743a9538b855d08ddaa68e7910af2dfc2bb9c1a0938d79089b0a9d3f1c19dde.deb)
+sha256sums_x86_64=('e743a9538b855d08ddaa68e7910af2dfc2bb9c1a0938d79089b0a9d3f1c19dde')
 
 package() {
   tar -vxf data.tar.xz
