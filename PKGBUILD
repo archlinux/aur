@@ -1,12 +1,12 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=inkscape-multipage-export
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Inkscape extension to export selected objects to various file formats"
 arch=("any")
 url="https://github.com/olibia/inkscape-multipage-export"
 license=("GPL")
-depends=("inkscape" "python2-lxml")
+depends=("inkscape" "python2-lxml" "librsvg")
 provides=("inkscape-multipage-export")
 conflicts=("inkscape-multipage-export-git")
 source=("$pkgname::https://github.com/olibia/inkscape-multipage-export/archive/v$pkgver.tar.gz")
