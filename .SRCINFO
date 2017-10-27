@@ -1,10 +1,11 @@
 pkgbase = compton-conf
 	pkgdesc = A graphical configuration tool for Compton X composite manager
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lxde/compton-conf
 	arch = i686
 	arch = x86_64
+	groups = lxqt
 	license = LGPL2.1
 	makedepends = cmake
 	makedepends = qt5-tools
