@@ -1,6 +1,6 @@
 pkgbase = lua-cosmo-git
 	pkgdesc = Safe templates for Lua
-	pkgver = 16.06.04
+	pkgver = 9.02.22.r35.ge774f08
 	pkgrel = 1
 	url = http://cosmo.luaforge.net/
 	arch = i686
