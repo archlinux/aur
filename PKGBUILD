@@ -13,7 +13,7 @@ depends=("hplip>=$pkgver")
 backup=(var/lib/hp/hplip.state)
 #source=("http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-$pkgver-plugin.run")
 source=("http://hplipopensource.com/hplip-web/plugin/hplip-$pkgver-plugin.run")
-md5sums=('0303472e83ab68ab08cc770b766c8697')
+md5sums=('b1d06e583b95cf57bf2c9a902be2435e')
 
 prepare() {
     sh "hplip-$pkgver-plugin.run" --target "$srcdir/hplip-$pkgver-plugin" --noexec
