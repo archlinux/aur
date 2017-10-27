@@ -1,0 +1,17 @@
+pkgbase = m68k-elf-gdb
+	pkgdesc = The GNU Project Debugger (m68k-elf)
+	pkgver = 8.0.1
+	pkgrel = 1
+	url = https://www.gnu.org/software/gdb/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = m68k-elf-binutils>=2.29-1
+	depends = m68k-elf-gcc
+	depends = zlib
+	depends = guile2.0
+	source = http://ftp.gnu.org/gnu/gdb/gdb-8.0.1.tar.xz
+	sha256sums = 3dbd5f93e36ba2815ad0efab030dcd0c7b211d7b353a40a53f4c02d7d56295e3
+
+pkgname = m68k-elf-gdb
+
