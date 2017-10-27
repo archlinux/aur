@@ -40,5 +40,5 @@ package() {
            "${pkgdir}/usr/share/doc/${_basename}/README"
 
   install  -D -m644 "${srcdir}/${_basename}/LICENSE" \
-           "${pkgdir}/usr/share/licenses/${_basename}/README"
+           "${pkgdir}/usr/share/licenses/${_basename}/LICENSE"
 }
