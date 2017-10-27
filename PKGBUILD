@@ -1,7 +1,7 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=kapow
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc='Punch clock to track time spent on projects'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
 source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha256sums=('73953d980e248ccf74c8b94c62ee1dbeaa9843481ca87a8e6af7fe1c2eb8c712')
+sha256sums=('c2dc66cf90c6397d6fd23f16e51c4bbdea3bbfe9d4ecbde6605f651f2853060b')
 
 build() {
   cd "$pkgname-$pkgver"
