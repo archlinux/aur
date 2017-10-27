@@ -1,0 +1,69 @@
+From a9fdf6354267d92b57bfb96fbcccbe5d5c163d8e Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Mon, 16 Oct 2017 16:21:19 +0200
+Subject: USB: devio: Revert "USB: devio: Don't corrupt user memory"
+
+commit 845d584f41eac3475c21e4a7d5e88d0f6e410cf7 upstream.
+
+Taking the uurb->buffer_length userspace passes in as a maximum for the
+actual urbs transfer_buffer_length causes 2 serious issues:
+
+1) It breaks isochronous support for all userspace apps using libusb,
+   as existing libusb versions pass in 0 for uurb->buffer_length,
+   relying on the kernel using the lenghts of the usbdevfs_iso_packet_desc
+   descriptors passed in added together as buffer length.
+
+   This for example causes redirection of USB audio and Webcam's into
+   virtual machines using qemu-kvm to no longer work. This is a userspace
+   ABI break and as such must be reverted.
+
+   Note that the original commit does not protect other users / the
+   kernels memory, it only stops the userspace process making the call
+   from shooting itself in the foot.
+
+2) It may cause the kernel to program host controllers to DMA over random
+   memory. Just as the devio code used to only look at the iso_packet_desc
+   lenghts, the host drivers do the same, relying on the submitter of the
+   urbs to make sure the entire buffer is large enough and not checking
+   transfer_buffer_length.
+
+   But the "USB: devio: Don't corrupt user memory" commit now takes the
+   userspace provided uurb->buffer_length for the buffer-size while copying
+   over the user-provided iso_packet_desc lengths 1:1, allowing the user
+   to specify a small buffer size while programming the host controller to
+   dma a lot more data.
+
+   (Atleast the ohci, uhci, xhci and fhci drivers do not check
+    transfer_buffer_length for isoc transfers.)
+
+This reverts commit fa1ed74eb1c2 ("USB: devio: Don't corrupt user memory")
+fixing both these issues.
+
+Cc: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Acked-by: Alan Stern <stern@rowland.harvard.edu>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/usb/core/devio.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/drivers/usb/core/devio.c b/drivers/usb/core/devio.c
+index 1d4dfde..066b58c 100644
+--- a/drivers/usb/core/devio.c
++++ b/drivers/usb/core/devio.c
+@@ -1576,11 +1576,7 @@ static int proc_do_submiturb(struct usb_dev_state *ps, struct usbdevfs_urb *uurb
+ 			totlen += isopkt[u].length;
+ 		}
+ 		u *= sizeof(struct usb_iso_packet_descriptor);
+-		if (totlen <= uurb->buffer_length)
+-			uurb->buffer_length = totlen;
+-		else
+-			WARN_ONCE(1, "uurb->buffer_length is too short %d vs %d",
+-				  totlen, uurb->buffer_length);
++		uurb->buffer_length = totlen;
+ 		break;
+ 
+ 	default:
+-- 
+cgit v1.1
+
