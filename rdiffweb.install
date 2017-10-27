@@ -1,0 +1,7 @@
+post_upgrade() {
+    echo "WARNING: Database format change on this version."
+    echo "You will have to remove /etc/rdiffweb/rdw.db and let rdiffweb re-create it, and recreate your accounts."
+    echo "Or you will have to migrate the database manually."
+    echo "The same goes with the configuration file that has to be carefully merged."
+}
+

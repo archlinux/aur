@@ -1,12 +1,10 @@
 [Unit]
-Description=Web interface for rdiff-backup
+Description=Rdiffweb Server
+Documentation=http://www.patrikdufresne.com/en/rdiffweb/
 After=network.target
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/rdiffweb --pid-file=/run/rdiffweb.pid -d --background 
-ExecStartPre=/bin/rm -f /run/rdiffweb.pid
-PIDFile=/run/rdiffweb.pid
+ExecStart=/usr/bin/rdiffweb
 
 [Install]
 WantedBy=multi-user.target
