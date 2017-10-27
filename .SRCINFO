@@ -1,6 +1,6 @@
 pkgbase = airdcpp-webclient-git
 	pkgdesc = A peer-to-peer file sharing client with web user interface.
-	pkgver = r2725.1a932a46
+	pkgver = r2993.b58859d0
 	pkgrel = 2
 	url = https://airdcpp-web.github.io
 	install = airdcpp.install
@@ -12,7 +12,7 @@ pkgbase = airdcpp-webclient-git
 	makedepends = git
 	depends = miniupnpc
 	depends = boost
-	depends = openssl
+	depends = openssl-1.0
 	depends = geoip
 	depends = leveldb
 	depends = websocketpp
