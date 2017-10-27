@@ -1,7 +1,7 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
 pkgname=madonctl-git
 _pkgname=madonctl
-pkgver=r161.ae83b1c
+pkgver=r165.6fe231e
 pkgrel=1
 pkgdesc="Golang command line interface for the Mastodon API"
 arch=('any')
