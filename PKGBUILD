@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.27.0.r282.ga5b51f75dc
+pkgver=0.27.0.r308.g3413fe4dfd
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -25,8 +25,15 @@ makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
 provides=('mpv')
 conflicts=('mpv' 'mpv-git')
 options=('!emptydirs')
-source=("$pkgname"::'git+https://github.com/mpv-player/mpv.git')
-sha256sums=('SKIP')
+source=("$pkgname"::'git+https://github.com/mpv-player/mpv.git'
+        'mpv-allow-upstream-ffmpeg.patch')
+sha256sums=('SKIP'
+            '3bb1a954d58c914682a2a8564434de61e52fe9467c85ee38123ea7d61b7a40fd')
+
+prepare() {
+    cd "$pkgname"
+    patch -Np1 -i "${srcdir}/mpv-allow-upstream-ffmpeg.patch"
+}
 
 pkgver() {
     cd "$pkgname"
