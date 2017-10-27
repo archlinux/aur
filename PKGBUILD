@@ -3,7 +3,7 @@
 pkgbase=linux-baytrail49 
 _srcname=linux-baytrail49
 pkgver=4.9.59
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -16,7 +16,7 @@ source=("git+https://github.com/muhviehstah/linux-baytrail49.git#tag=${pkgver}"
 
 sha256sums=('SKIP'
             'b77f767226dbd73e2fd9d2b78a12d0224e09aafee1e2cf3e5252934117aebb27'
-            '3f71cb9f7fe0d3ca6bd39e7ee282d4899d64d36a6183f306ab985977338a81d2'
+            '045a375adde9bef6844e37b0a04413abf608cd74a71568d590889c9dfc5c5cfc'
             'd872b4454a0f7e49bece2c1719dc48aaaff3b6caf55e0fe661681951330f858a')
 
 _kernelname=${pkgbase#linux}

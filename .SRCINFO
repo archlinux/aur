@@ -1,6 +1,6 @@
 pkgbase = linux-baytrail49
 	pkgver = 4.9.59
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -17,7 +17,7 @@ pkgbase = linux-baytrail49
 	source = linux-baytrail49.preset
 	sha256sums = SKIP
 	sha256sums = b77f767226dbd73e2fd9d2b78a12d0224e09aafee1e2cf3e5252934117aebb27
-	sha256sums = 3f71cb9f7fe0d3ca6bd39e7ee282d4899d64d36a6183f306ab985977338a81d2
+	sha256sums = 045a375adde9bef6844e37b0a04413abf608cd74a71568d590889c9dfc5c5cfc
 	sha256sums = d872b4454a0f7e49bece2c1719dc48aaaff3b6caf55e0fe661681951330f858a
 
 pkgname = linux-baytrail49
