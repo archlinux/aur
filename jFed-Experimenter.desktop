@@ -1,0 +1,8 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=jFed Experimenter Toolkit
+Exec=/opt/jFed/jFed-Experimenter %u
+Icon=/opt/jFed/.install4j/jFed-Experimenter.png
+Categories=Development
+MimeType=x-scheme-handler/jfed
