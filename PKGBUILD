@@ -2,7 +2,7 @@
 
 pkgname=mattercontrol
 _pkgname=MatterControl
-pkgver=1.7.0
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="Software solution for 3D printers"
 arch=("i386" "x86_64")
@@ -13,9 +13,9 @@ optdepends=('mattercontrol-plugins: Closed source plugins for cloud functionalit
 makedepends=('git' 'nuget')
 provides=('mattercontrol')
 install="mattercontrol.install"
-_buildver=1.7.0.8527
+_buildver=1.7.5.9487
 _projecttoken=ag9zfm1hdHRlcmNvbnRyb2xyFAsSB1Byb2plY3QYgICAiOCSzAsM
-_buildtoken=ag9zfm1hdHRlcmNvbnRyb2xyQQsSB1Byb2plY3QYgICAiOCSzAsMCxINUHVibGljUmVsZWFzZRiAgICgsdyLCgwLEgZVcGxvYWQYgICAoK3hngoM
+_buildtoken=ag9zfm1hdHRlcmNvbnRyb2xyQQsSB1Byb2plY3QYgICAiOCSzAsMCxINUHVibGljUmVsZWFzZRiAgIDg8dSdCgwLEgZVcGxvYWQYgICA4NfmjQoM
 source=(git://github.com/MatterHackers/MatterControl.git
 	'mattercontrol'
 	'mattercontrol.desktop'
