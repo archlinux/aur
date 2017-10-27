@@ -5,11 +5,11 @@ _name=qutip
 _pkgname=qutip
 pkgname=python-qutip
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="QuTiP is open-source software for simulating the dynamics of open quantum systems"
 arch=("x86_64")
 url="http://qutip.org/index.html"
-license=('GPL3')
+license=('BSD')
 depends=("python-numpy" "python-scipy" "python-matplotlib" "cython")
 makedepends=("gcc-fortran")
 optdepends=(
@@ -37,4 +37,5 @@ build() {
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
     python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+    install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
