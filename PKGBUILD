@@ -2,7 +2,7 @@
 
 pkgbase=python-pytest-flake8
 pkgname=('python-pytest-flake8' 'python2-pytest-flake8')
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='pytest plugin to check FLAKE8 requirements'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 url='https://github.com/tholo/pytest-flake8'
 makedepends=('python-pytest' 'python2-pytest' 'flake8' 'python2-flake8')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/tholo/pytest-flake8/archive/$pkgver.tar.gz")
-sha512sums=('07d35cf636824178065ace6113afa6a37cb5d451f43da2683a694e6104bf72f27e7c89da59573b817031522f5827d06ef3136ee91db0162d9dcb25e63454592d')
+sha512sums=('27e1703407ec0fe1b301cfb51ee7e810a1ac35649561245cfd77b20ccd05a07e99246e2df489d77a3c3eedc050d18f00201b63b9e83f1a141f8f84f147809f35')
 
 prepare() {
   # https://github.com/tholo/pytest-flake8/pull/14
