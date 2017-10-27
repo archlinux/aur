@@ -1,0 +1,27 @@
+pkgbase = m68k-elf-gcc-bootstrap
+	pkgdesc = The GNU Compiler Collection. Bootstrap for toolchain building (m68k-elf)
+	pkgver = 7.2.0
+	pkgrel = 1
+	url = http://gcc.gnu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	depends = m68k-elf-binutils>=2.29-1
+	depends = zlib
+	options = !emptydirs
+	options = !distcc
+	options = !strip
+	source = http://fr.mirror.babylon.network/gcc/releases/gcc-7.2.0/gcc-7.2.0.tar.xz
+	source = http://www.mpfr.org/mpfr-current/mpfr-3.1.6.tar.xz
+	source = ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz
+	source = https://gmplib.org/download/gmp/gmp-6.1.2.tar.xz
+	sha256sums = 1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a
+	sha256sums = 7a62ac1a04408614fccdc506e4844b10cf0ad2c2b1677097f8f35d3a1344a950
+	sha256sums = 617decc6ea09889fb08ede330917a00b16809b8db88c29c31bfbb49cbf88ecc3
+	sha256sums = 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
+
+pkgname = m68k-elf-gcc-bootstrap
+
