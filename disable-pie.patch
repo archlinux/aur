@@ -4,4 +4,4 @@
 594a597,599
 > 
 > 			// disable PIE which is on by default in Arch since July 2017
-> 			Result += " -nopie";
+> 			Result += " -nopie"; Result += " -Wno-unused-command-line-argument";
