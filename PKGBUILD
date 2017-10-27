@@ -2,14 +2,14 @@
 
 _pkgname=libui
 pkgname=${_pkgname}-git
-pkgver=alpha3.1.r281.g5fa7ba4
+pkgver=alpha3.1.r281.g5fa7ba48
 pkgrel=1
 pkgdesc='A portable GUI library for C'
 arch=('i686' 'x86_64')
 url='https://github.com/andlabs/libui'
 license=('MIT')
 depends=('gtk3' 'libx11' 'libxcb' 'libffi')
-makedepends=('make' 'gcc')
+makedepends=('make' 'gcc' 'cmake')
 provides=('libui')
 conflicts=('libui')
 source=("$pkgname::git://github.com/andlabs/libui.git")
