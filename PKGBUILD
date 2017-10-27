@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-platformtheme-git
-pkgver=20170915.f16335b
+pkgver=20171012.8ea7246
 pkgrel=1
 pkgdesc="Qt platform theme plugin for apps integration with Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
