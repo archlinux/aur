@@ -8,7 +8,7 @@
 _clang=1  # Use Clang instead of GCC for compilation
 
 pkgname=inox
-pkgver=62.0.3202.62
+pkgver=62.0.3202.75
 pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -64,7 +64,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/9000-disable-metrics.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/9001-disable-profiler.patch)
 
-sha256sums=('e8df3150386729ddcb4971636627e54815ad447be5f122201e310f5bb0bcc362'
+sha256sums=('49cdfe457bcb941b56c13a75bbe2ff394fcb5baa8a49c9b470835fad60dd904c'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '71471fa4690894420f9e04a2e9a622af620d92ac2714a35f9a4c4e90fa3968dd'
