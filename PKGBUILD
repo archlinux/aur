@@ -1,5 +1,5 @@
 pkgname=snacc-basin-git
-pkgver=1.3.1_16_g23ba7a6
+pkgver=1.3.1_18_g0536f7b
 pkgrel=1
 pkgdesc="Sample Neufeld ASN.1 to C Compiler"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm')
@@ -26,7 +26,7 @@ package() {
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  ./version.sh
+  ./version-gen
 }
 
 # vim:set ts=2 sw=2 et:
