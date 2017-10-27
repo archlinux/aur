@@ -18,6 +18,7 @@ pkgbase = wxpython-phoenix-git
 	makedepends = freeglut
 	makedepends = gtk3
 	makedepends = webkit2gtk
+	makedepends = python-requests
 	depends = python
 	provides = wxpython-phoenix
 	conflicts = wxpython-phoenix-bin
