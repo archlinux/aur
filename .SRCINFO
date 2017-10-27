@@ -1,0 +1,19 @@
+pkgbase = m68k-elf-newlib
+	pkgdesc = C library for bare metal systems (m68k-elf).
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://sourceware.org/newlib/
+	arch = any
+	groups = devel
+	license = BSD
+	depends = m68k-elf-gcc-bootstrap
+	depends = m68k-elf-binutils
+	options = !makeflags
+	options = !strip
+	options = staticlibs
+	options = !libtool
+	source = ftp://mirrors.kernel.org/sourceware/newlib/newlib-2.5.0.tar.gz
+	sha256sums = 5b76a9b97c9464209772ed25ce55181a7bb144a66e5669aaec945aa64da3189b
+
+pkgname = m68k-elf-newlib
+
