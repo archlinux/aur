@@ -1,5 +1,6 @@
+# Maintainer: Ray Ganardi <rayganardi [at] gmail [dot] com>
 # Contributor: Andres F. Urquijo <alfagalileox@gmail.com>
-# Maintainer: Sebastian Krämer <basti.kr@gmail.com>
+# Contributor: Sebastian Krämer <basti.kr@gmail.com>
 _name=qutip
 _pkgname=qutip
 pkgname=python-qutip
