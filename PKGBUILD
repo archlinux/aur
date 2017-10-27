@@ -5,8 +5,8 @@
 # Contributor: Özgür Sarıer <ozgursarier1011601115[at]gmail[dot]com>
 
 pkgname=viber
-pkgver=6.5.5.1481
-pkgrel=2
+pkgver=7.0.0.1035
+pkgrel=1
 pkgdesc="Proprietary cross-platform IM and VoIP software"
 arch=('x86_64')
 url="http://viber.com"
@@ -18,7 +18,7 @@ options=('!strip')
 source=("http://download.cdn.viber.com/cdn/desktop/Linux/${pkgname}.deb"
         "eula.html"
         "viber")
-md5sums=('b952d0c15184e665e8603b498159e48f'
+md5sums=('4e6f4759fbaef187765190c8d6adaa72'
          'd128190efcd7312829583e682cf46b98'
          '51943e698680b19eb85e66f4c3c22adf')
 
