@@ -26,12 +26,12 @@ build() {
 
 package() {
 	cd welle.io
-	mkdir $pkgdir/usr
-	mkdir $pkgdir/usr/bin
-	mkdir $pkgdir/usr/share
-	mkdir $pkgdir/usr/share/applications
-	mkdir $pkgdir/usr/share/pixmaps
-	cp welle-io $pkgdir/usr/bin
-	cp welle-io.desktop $pkgdir/usr/share/applications
-	cp icon.png $pkgdir/usr/share/pixmaps/welle-io.png
+	mkdir "$pkgdir/usr"
+	mkdir "$pkgdir/usr/bin"
+	mkdir "$pkgdir/usr/share"
+	mkdir "$pkgdir/usr/share/applications"
+	mkdir "$pkgdir/usr/share/pixmaps"
+	cp welle-io "$pkgdir/usr/bin"
+	cp welle-io.desktop "$pkgdir/usr/share/applications"
+	cp icon.png "$pkgdir/usr/share/pixmaps/welle-io.png"
 }
