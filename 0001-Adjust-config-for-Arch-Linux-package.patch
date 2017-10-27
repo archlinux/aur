@@ -1,5 +1,5 @@
 --- app.ini
-+++ app.ini	2017-10-15 11:38:35.000000000 +0300
++++ app.ini	2017-10-27 22:25:40.000000000 +0300
 @@ -1,12 +1,12 @@
  ; App name that shows on every page title
  APP_NAME = Gitea: Git with a cup of tea
@@ -38,10 +38,10 @@
  ; Root path of SSH directory, default is '~/.ssh', but you have to use '/home/git/.ssh'.
 -SSH_ROOT_PATH =
 +SSH_ROOT_PATH = /var/lib/gitea/.ssh
- ; Directory to create temporary files when test public key using ssh-keygen,
- ; default is system temporary directory.
- SSH_KEY_TEST_PATH =
-@@ -146,13 +146,13 @@
+ ; For built-in SSH server only, choose the ciphers to support for SSH connections,
+ ; for system SSH this setting has no effect
+ SSH_SERVER_CIPHERS = aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, arcfour256, arcfour128
+@@ -149,13 +149,13 @@
  ; not forget to export the private key):
  ; $ openssl pkcs12 -in cert.pfx -out cert.pem -nokeys
  ; $ openssl pkcs12 -in cert.pfx -out key.pem -nocerts -nodes
@@ -59,7 +59,7 @@
  ; Application level GZIP support
  ENABLE_GZIP = false
  ; Landing page for non-logged users, can be "home" or "explore"
-@@ -160,7 +160,7 @@
+@@ -163,7 +163,7 @@
  ; Enables git-lfs support. true or false, default is false.
  LFS_START_SERVER = false
  ; Where your lfs files put on, default is data/lfs.
@@ -68,7 +68,7 @@
  ; LFS authentication secret, changed this to yourself.
  LFS_JWT_SECRET   =
  
-@@ -176,17 +176,17 @@
+@@ -179,22 +179,22 @@
  DB_TYPE = mysql
  HOST = 127.0.0.1:3306
  NAME = gitea
@@ -82,14 +82,20 @@
 +PATH = /var/lib/gitea/gitea.db
  ; For "sqlite3" only. Query timeout
  SQLITE_TIMEOUT = 500
+ ; For iterate buffer, default is 50
+ ITERATE_BUFFER_SIZE = 50
  
  [indexer]
 -ISSUE_INDEXER_PATH = indexers/issues.bleve
 +ISSUE_INDEXER_PATH = /var/lib/gitea/indexers/issues.bleve
+ ; repo indexer by default disabled, since it uses a lot of disk space
+ REPO_INDEXER_ENABLED = false
+-REPO_INDEXER_PATH = indexers/repos.bleve
++REPO_INDEXER_PATH = /var/lib/gitea/indexers/repos.bleve
  UPDATE_BUFFER_LEN = 20
+ MAX_FILE_SIZE = 1048576
  
- [admin]
-@@ -309,8 +309,8 @@
+@@ -318,8 +318,8 @@
  SKIP_VERIFY =
  ; Use client certificate
  USE_CERTIFICATE = false
@@ -100,7 +106,7 @@
  ; Mail from address, RFC 5322. This can be just an email address, or the `"Name" <email@example.com>` format
  FROM =
  ; Mailer user name and password
-@@ -341,7 +341,7 @@
+@@ -355,7 +355,7 @@
  ; file: session file path, e.g. `data/sessions`
  ; redis: network=tcp,addr=:6379,password=macaron,db=0,pool_size=100,idle_timeout=180
  ; mysql: go-sql-driver/mysql dsn config string, e.g. `root:password@/session_table`
@@ -109,7 +115,7 @@
  ; Session cookie name
  COOKIE_NAME = i_like_gitea
  ; If you use session in https only, default is false
-@@ -354,7 +354,7 @@
+@@ -368,7 +368,7 @@
  SESSION_LIFE_TIME = 86400
  
  [picture]
@@ -118,7 +124,7 @@
  ; Chinese users can choose "duoshuo"
  ; or a custom avatar source, like: http://cn.gravatar.com/avatar/
  GRAVATAR_SOURCE = gravatar
-@@ -369,7 +369,7 @@
+@@ -383,7 +383,7 @@
  ; Whether attachments are enabled. Defaults to `true`
  ENABLE = true
  ; Path for attachments. Defaults to `data/attachments`
@@ -127,7 +133,7 @@
  ; One or more allowed types, e.g. image/jpeg|image/png
  ALLOWED_TYPES = image/jpeg|image/png|application/zip|application/gzip
  ; Max size of each file. Defaults to 32MB
-@@ -384,7 +384,7 @@
+@@ -398,7 +398,7 @@
  FORMAT =
  
  [log]
