@@ -1,6 +1,6 @@
 # Maintainer: Salvador Pardiñas <darkfm@vera.com.uy>
 pkgname=higan-git
-pkgver=104.14
+pkgver=105_tr1
 pkgrel=1
 pkgdesc="Multisystem emulator by Byuu"
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ source=(
 noextract=()
 md5sums=('SKIP'
          '5aaffc97c4c58e95b3f1db33e8184518'
-         '0b32b7421da621785ee29070782cfb77')
+         '9fdbe0c87e2e89c0f53b96bf313cd090')
 
 prepare() {
 	cd $srcdir/higan
