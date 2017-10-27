@@ -1,8 +1,8 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=webtorrent-desktop
-pkgver=0.18.0
-pkgrel=4
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Streaming torrent client."
 arch=('i686' 'x86_64')
 url="https://webtorrent.io/desktop"
@@ -14,7 +14,7 @@ options=(!strip)
 source=("https://github.com/feross/${pkgname}/archive/v${pkgver}.tar.gz"
         "webtorrent-desktop"
         "${pkgname}.desktop")
-sha256sums=('25b92aab9cc6d076715a12bdaeae950f6885da19d87948a6acf007ba246b9494'
+sha256sums=('1d8e7d6213058430f5c6e2574abee993ab417c89a10defb4eb42333a0aa8906e'
             '4ebe403535a6552333f56e6087355c85fbb1904b06908d62127337c7c593135c'
             '6af365f47ca47b33cca65f62c3a662218ba38af7d3d52bb891ce3e73bbb60539')
 
