@@ -1,0 +1,18 @@
+pkgbase = lua-cosmo-git
+	pkgdesc = Safe templates for Lua
+	pkgver = 16.06.04
+	pkgrel = 1
+	url = http://cosmo.luaforge.net/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	depends = lua-lpeg
+	provides = lua-cosmo
+	conflicts = lua-cosmo
+	source = git+https://github.com/mascarenhas/cosmo.git
+	md5sums = SKIP
+
+pkgname = lua-cosmo-git
+
