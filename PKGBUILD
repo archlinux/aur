@@ -1,13 +1,13 @@
       # Maintainer: lemust83 <lemust83420@gmail.com>
         pkgname=readesm-fr
         pkgver=2.4
-        pkgrel=1
+        pkgrel=2
         pkgdesc="lire les fichiers Tachographs issus de Cardpeek ou autres  dans un format humainement compréhensible"
         arch=(i686 x86_64)
         url="http://readesm.sourceforge.net/help.html"
         license=('GPL')
         groups=()
-        depends=('boost' 'gmp' 'libgcrypt' 'qt4' 'qtwebkit' 'python2')
+        depends=('boost' 'gmp' 'libgcrypt' 'qt4' 'qtwebkit-bin' 'python2')
         makedepends=('cmake')
         replaces=('readesm' 'readesm-fr' )
         source=("http://netcologne.dl.sourceforge.net/project/readesmfr/readesm-fr/readesm-fr.2.4.tar.gz")		
