@@ -1,22 +1,20 @@
 pkgbase = haskell-openglraw
 	pkgdesc = A raw binding for the OpenGL graphics system
-	pkgver = 3.2.4.0
+	pkgver = 3.2.5.0
 	pkgrel = 1
-	url = http://hackage.haskell.org/package/OpenGLRaw
-	install = haskell-openglraw.install
+	url = http://hackage.haskell.org/package/
 	arch = i686
 	arch = x86_64
 	license = custom:BSD3
-	depends = ghc
+	makedepends = ghc
+	depends = ghc-libs
 	depends = libgl
-	depends = haskell-text
-	depends = haskell-half
 	depends = haskell-fixed
-	depends = haskell-base-compat
+	depends = haskell-half
+	depends = haskell-text
 	depends = haskell-transformers-base
-	options = strip
-	source = http://hackage.haskell.org/packages/archive/OpenGLRaw/3.2.4.0/OpenGLRaw-3.2.4.0.tar.gz
-	md5sums = 54553e989777d336c9ae97a45d273701
+	source = https://hackage.haskell.org/packages/archive/OpenGLRaw/3.2.5.0/OpenGLRaw-3.2.5.0.tar.gz
+	sha512sums = c8247692f626d552147d20f8f29e2659afeca32df4341fbac831d0fc178521d8228f2d3dd613cfaafa046c74a7f8344a955a3cedc1e191c97b22efafe8140713
 
 pkgname = haskell-openglraw
 

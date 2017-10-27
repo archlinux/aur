@@ -1,43 +1,39 @@
-# Maintainer: Carlos E. Garcia <carlos@cgarcia.org>
+# $Id$
+# Maintainer: Emanuel Couto <unit73e at gmail dot com>
+# Maintainer: Carlos E. Garcia <carlos at cgarcia dot org>
 
-_hspkgname=OpenGLRaw
+_hkgname=OpenGLRaw
 pkgname=haskell-openglraw
-pkgver=3.2.4.0
+pkgver=3.2.5.0
 pkgrel=1
 pkgdesc="A raw binding for the OpenGL graphics system"
 url="http://hackage.haskell.org/package/${_hspkgname}"
 license=('custom:BSD3')
 arch=('i686' 'x86_64')
-makedepends=()
-depends=('ghc'
-         'libgl'
-         'haskell-text'
-         'haskell-half'
-         'haskell-fixed'
-         'haskell-base-compat'
-         'haskell-transformers-base')
-options=('strip')
-source=(http://hackage.haskell.org/packages/archive/${_hspkgname}/${pkgver}/${_hspkgname}-${pkgver}.tar.gz)
-install=${pkgname}.install
-md5sums=('54553e989777d336c9ae97a45d273701')
+depends=('ghc-libs' 'libgl' 'haskell-fixed' 'haskell-half' 'haskell-text' 'haskell-transformers-base')
+makedepends=('ghc')
+source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
+sha512sums=('c8247692f626d552147d20f8f29e2659afeca32df4341fbac831d0fc178521d8228f2d3dd613cfaafa046c74a7f8344a955a3cedc1e191c97b22efafe8140713')
 
 build() {
-    cd "${srcdir}"/${_hspkgname}-${pkgver}
-    runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared \
-       --prefix=/usr --docdir=/usr/share/doc/${pkgname} --libsubdir=\$compiler/site-local/\$pkgid
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+    
+    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+        --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
     runhaskell Setup build
-    runhaskell Setup haddock
-    runhaskell Setup register   --gen-script
+    runhaskell Setup register --gen-script
     runhaskell Setup unregister --gen-script
+    sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
     sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
+
 package() {
-    cd "${srcdir}"/${_hspkgname}-${pkgver}
-    install -D -m744 register.sh   "${pkgdir}"/usr/share/haskell/${pkgname}/register.sh
-    install    -m744 unregister.sh "${pkgdir}"/usr/share/haskell/${pkgname}/unregister.sh
-    install -d -m755 "${pkgdir}"/usr/share/doc/ghc/html/libraries
-    ln -s /usr/share/doc/${pkgname}/html ${pkgdir}/usr/share/doc/ghc/html/libraries/${_hspkgname}
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+    
+    install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
+    install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
     runhaskell Setup copy --destdir="${pkgdir}"
-    install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-    rm -f "${pkgdir}"/usr/share/doc/${pkgname}/LICENSE
+    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
