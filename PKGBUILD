@@ -5,7 +5,7 @@
 
 pkgname=android-ndk-beta
 _pkgname=${pkgname/-beta*/}
-pkgver=r16_beta1
+pkgver=r16_beta2
 pkgrel=1
 pkgdesc='Android C/C++ developer kit (beta)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 )
 source=('android-ndk-beta.sh' "https://dl.google.com/android/repository/${_pkgname}-${pkgver/_/-}-linux-x86_64.zip")
 sha256sums=('cadefdccf5da51dc56156fbc41945a2c27d913d12a043b32f47e15f253b0943d'
-            'cf340c2c6db5ce400cf96afc3b2728264947d6d67a65cfbe6f73a3dad2b4d631')
+            'c9866c4c9670aeb238a8063360f916ed5317359aa87c3bbca06464b682084060')
 
 package() {
   install -d "$pkgdir/opt"
