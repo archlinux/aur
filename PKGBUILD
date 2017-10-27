@@ -5,8 +5,8 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.13
-_zenpatch=zen-4.13.9-db74c362426d1d03ff8c7940757a502b0ea0cc80.diff
-pkgver=4.13.9
+_zenpatch=zen-4.13.10-b4f3e79c6104f7c1f2644ccc8f5148522cfc3787.diff
+pkgver=4.13.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -28,12 +28,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '22156e82467c7911d226a0a887eba19103434efc104439a3b426a3fa551fb8f2'
+            'b9efa9c6375f79f6a041a5f0666d4ced1a49bfe8c4662d26517a6b4cfd9bf2f6'
             'SKIP'
-            '62e2293906a055baae72776651d4712f3f5caf60eadd913079250a8b26f2cd02'
+            '807a5998542e108776a62ee9c96806abef8ac06012497e428dd2fbaff9cbaccc'
             'SKIP'
-            'ea2502f2aa2e251eac6111553447a84affd18c832d4181d31f802dc5ddd14a8e'
-            '5e3f601c162e302a2351a9e36a52b5c49c0172734be10ea6adc9c659faa6f027'
+            'db2bc39dfe968ff9c8766768012c46d388c8d8dcfefedeaee53dced74e67a449'
+            '2ba9287767bd3c05cfda57674be0ad3d4e13db83d6f19b180bef90e80fa0bb6f'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
