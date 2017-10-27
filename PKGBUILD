@@ -1,8 +1,8 @@
-# Maintainer: Kelie Bailey
+# Maintainer: Kelie Bailey <then3rd1@gmail.com>
 pkgname=openalpr-git
 pkgver=master
 pkgrel=1
-pkgdesc="Automatic License Plate Recognition library."
+pkgdesc="Automatic License Plate Recognition library, current git master"
 arch=('i686' 'x86_64')
 url="https://github.com/openalpr/openalpr/archive/master.tar.gz"
 license=('GPL3')

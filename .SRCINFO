@@ -1,5 +1,5 @@
 pkgbase = openalpr-git
-	pkgdesc = Automatic License Plate Recognition library.
+	pkgdesc = Automatic License Plate Recognition library, current git master
 	pkgver = master
 	pkgrel = 1
 	url = https://github.com/openalpr/openalpr/archive/master.tar.gz
