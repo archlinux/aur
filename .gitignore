@@ -1,0 +1,4 @@
+*.sw*
+*.log
+*.pkg*
+*.tar.gz
