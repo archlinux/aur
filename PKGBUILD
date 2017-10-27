@@ -1,14 +1,14 @@
 # Maintainer: HER0_01 <aconrad103 at gmail.com>
 
 pkgname=asma-git
-pkgver=7.8f07b9a
+pkgver=48.081fd20
 pkgrel=1
 pkgdesc="Simple Arma 3 launcher for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/busquetsaguilopau/asma"
 license=('GPL3')
 depends=('gtk3' 'steam')
-makedepends=('cmake' 'git')
+makedepends=('meson' 'git')
 provides=('asma')
 conflicts=('asma')
 install=asma-git.install
@@ -21,12 +21,16 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgname/src"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
-  make
+  cd "$srcdir/$pkgname"
+  mkdir build
+  cd build
+  meson --prefix=/usr ..
+  ninja
 }
 
 package() {
-  cd "$srcdir/$pkgname/src"
-  make DESTDIR="$pkgdir" install
+  cd "$srcdir/$pkgname/build"
+  DESTDIR="$pkgdir" ninja install
+  cd "$srcdir/$pkgname"
+  rm -rf build
 }

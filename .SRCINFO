@@ -1,13 +1,13 @@
 pkgbase = asma-git
 	pkgdesc = Simple Arma 3 launcher for Linux
-	pkgver = 7.8f07b9a
+	pkgver = 48.081fd20
 	pkgrel = 1
 	url = https://github.com/busquetsaguilopau/asma
 	install = asma-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = cmake
+	makedepends = meson
 	makedepends = git
 	depends = gtk3
 	depends = steam
