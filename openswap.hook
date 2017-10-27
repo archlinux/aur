@@ -1,7 +1,15 @@
 run_hook ()
 {
     ## read openswap configurations
-    source openswap.conf
+    source /openswap.conf
+
+    ## Optional: To avoid race conditions
+    x=0;
+    while [ ! -b "$keyfile_device" ] && [ $x -le 10 ]; do
+          x=$((x+1))
+          sleep .2
+    done
+    ## End of optional
 
     if [ -z "$keyfile_device" ] || [ -z "$keyfile_filename" ]
     then
