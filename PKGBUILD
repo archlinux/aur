@@ -64,8 +64,8 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _srcname=linux-4.13
-_pkgver=4.13.7
-_rtver=1
+_pkgver=4.13.10
+_rtver=2
 _rtpatchver=rt${_rtver}
 pkgver=${_pkgver}.${_rtver}
 pkgrel=1
@@ -131,7 +131,7 @@ prepare() {
     ### Patch source with BFQ-SQ-MQ
         msg "Fix naming schema in BFQ-SQ-MQ patch"
         sed -i -e "s|PATCHLEVEL = 14|PATCHLEVEL = 13|g" \
-            -i -e "s|SUBLEVEL = 0|SUBLEVEL = 7|g" \
+            -i -e "s|SUBLEVEL = 0|SUBLEVEL = 10|g" \
             -i -e "s|EXTRAVERSION = -rc3|EXTRAVERSION =|g" \
             -i -e "s|EXTRAVERSION =-bfq|EXTRAVERSION =|g" \
             -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" ../${_bfq_sq_mq_patch}
@@ -437,9 +437,9 @@ done
 
 sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f3119aea6cbd7b61df30ca6ef3ec57044d524b7babbaabddf8b08b8bafa7d2'
             'SKIP'
-            '4d96c655ca4c720b872e1a88ba9989a419880cb5fec2a4a9190077588066f205c5dce2591a76f26375f6f50001334ceb7631d489d3b24ca443d10e1e6879ed54'
+            '634d81ea509aac5555d8d11631babe9bb04ea771c873f084cea7067313a566d5cad291b0c311002ae8d1d6dd498a93a9a43517923aa449eebb405fb4c1e34753'
             'SKIP'
-            'efffccb597b53d096bcfde6d32688e175c975ef194093ccf165a03d2ca985165589dbc10b62e81f816f1264ab932563b23d20eab41c1a20214a11a940c02499d'
+            'b1f349cc8acdc895244a2fc3869816fb21ae0f1ef9d9470f90d5f8763ba221b6545b138bd4253589c962c0595ef5bdca288f8fe9adc3607ba9e42d3b4471831c'
             'SKIP'
             'bc9b8699447c9c88bc93f9d2672663e50fa6773ec44f44a6afc93439f4c414a1cd2a35d94fe5205b8a066f1531b40b072d439152ec7d39d1282515c282f4bb63'
             '11dd363137d680d1bde1e332c3829246773e49d5fd0d2ef4ab77723ca0d2ecb3ad80a77a08dca8c4ce817ff0f966709673453e754f15e3e1527f943725d547ff'
@@ -457,8 +457,8 @@ sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f
             'a1ccc22354a420467fb912f822585ed4573e68f4694f02ab83d7c8e352da88be495acb3cb4c451c27ca0cf0befe5925b8734d37205bb3dfdaf86d2dedef0798f'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            '922a57fbc39d20fbd054bddf953168e38fffa4a6b86d70665252c3d3f15a07f525a4c238e1d0eb413e0bbf66260abdc1c80da8f87f34a33d69c3d3d650f64b43'
-            '63c2eaba9191e40108f7cefc17ea6794023fd9ac9ddbd0ea3da174d0e1813914958d60294cad2b4f8c0ba87b05814bf04d8e8c028092e38a28a66b9428dab720'
+            '4f3647d5652fafa9cf592a7909459a44d88b2ad87cd03637a0db615255384692891cc5823f98ac15f649777c5f09f2f1b5bd1a03aa720263a72da9f4eaaf0127'
+            'f035251c89fcc4d0221ae5a82ed24be53aff6ea77220c348051d3dcccd82240ee77965a04bc8437ca02938ca064100162ca402aae001f48e9237992664cde4a1'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
             
