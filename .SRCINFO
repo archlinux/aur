@@ -1,12 +1,12 @@
 pkgbase = freeplane
 	pkgdesc = A Java mindmapping tool
 	pkgver = 1.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freeplane.sourceforge.net
 	arch = any
 	license = GPL
 	makedepends = unzip
-	depends = java-environment
+	depends = java-runtime>7
 	depends = desktop-file-utils
 	source = http://downloads.sourceforge.net/sourceforge/freeplane/freeplane_bin-1.6.7.zip
 	source = freeplane.desktop

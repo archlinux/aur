@@ -3,13 +3,13 @@
 
 pkgname=freeplane
 pkgver=1.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java mindmapping tool"
 arch=('any')
 url="http://freeplane.sourceforge.net"
 license=('GPL')
 makedepends=('unzip')
-depends=('java-environment' 'desktop-file-utils')
+depends=('java-runtime>7' 'desktop-file-utils')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_bin-${pkgver}.zip
         freeplane.desktop freeplane.run)
 sha256sums=('591e4d0f0d2828839f52e79ba7e37d0878f2e824d1872f4d541a4eee440e7a9b'
