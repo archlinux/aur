@@ -1,6 +1,6 @@
 pkgbase = snapback
 	pkgdesc = Set of scripts to glue together snapshot capabilities from btrfs and backup solutions from borg in a reliable and automated way.
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 1
 	url = https://github.com/kbabioch/snapback/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = snapback
 	depends = btrfs-progs
 	depends = borg
 	backup = etc/conf.d/snapback
-	source = git+https://github.com/kbabioch/snapback.git#tag=v2
+	source = git+https://github.com/kbabioch/snapback.git#tag=v3
 	sha256sums = SKIP
 
 pkgname = snapback

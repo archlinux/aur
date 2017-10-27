@@ -1,7 +1,7 @@
 # Maintainer: Karol Babioch <karol@babioch.de
 
 pkgname=snapback
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Set of scripts to glue together snapshot capabilities from btrfs and backup solutions from borg in a reliable and automated way."
 arch=('any')
