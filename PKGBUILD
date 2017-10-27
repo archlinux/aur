@@ -9,7 +9,7 @@ pkgname='unreal-engine'
 pkgver=4.18.0
 # shellcheck disable=SC2034
 {
-  pkgrel=1
+  pkgrel=2
   pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
   arch=('x86_64')
   url='https://www.unrealengine.com/'
@@ -24,6 +24,7 @@ pkgver=4.18.0
     'disable-pie.patch'
     'only-generate-makefile.patch'
     'xlocale-crash.patch'
+    'html5-build.patch'
   )
 
 sha256sums=('SKIP'
@@ -31,7 +32,8 @@ sha256sums=('SKIP'
             '918dff809a7e815343a8d233f704f52a910b8f01a9cb3d29de541a0334fecc7c'
             '32ab20e37f5595eff73fb7ee7916ecae19a47f72875f448663941621d166c13b'
             'dba4b1910dd6424d50a8d95a461c5cf3a96f3e7df0b015624d9bf1c97dc317d3'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+            '66c575805e21ba1dec6da7374f3f8fe62195fd6d271dd6751b600538f1dae9b6'
+            '9fd6d16d56fbe0489a2580b86359df84b83a6987b5760a9e57ae0898f51943ac')
 
   # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
   options=(!strip)
@@ -64,7 +66,9 @@ prepare() {
   #git clean -xdf
 
   ./Setup.sh
+
   patch "$ue4src/ThirdParty/Linux/LibCxx/include/c++/v1/__locale" "$srcdir/xlocale-crash.patch"
+  patch "$ue4src/Programs/UnrealBuildTool/Platform/HTML5/HTML5SDKInfo.cs" "$srcdir/html5-build.patch"
   ./GenerateProjectFiles.sh
 }
 

@@ -1,0 +1,11 @@
+--- HTML5SDKInfo.cs	2017-10-27 01:48:21.310579458 -0500
++++ HTML5SDKInfo_new.cs	2017-10-27 02:10:28.642228303 -0500
+@@ -176,7 +176,7 @@
+ 
+ 					case UnrealTargetPlatform.Mac:
+ 					case UnrealTargetPlatform.Linux:
+-						return "/usr/bin/python";
++						return "/usr/bin/python2";
+ 
+ 					default:
+ 						return "error_unknown_platform";
