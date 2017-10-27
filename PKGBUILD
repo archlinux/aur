@@ -5,7 +5,7 @@ pkgname=linux-linode
 _basekernel=4.13
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.8
+pkgver=${_basekernel}.10
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -21,7 +21,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         'menu.lst'
         'preset')
 sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f3119aea6cbd7b61df30ca6ef3ec57044d524b7babbaabddf8b08b8bafa7d2' 'SKIP'
-            'b70b1a081155fa9a7082ad2771aa0a43a9f6458aa5f7f312729aaa3a71db71d28bcd1d1cac6ffaee134797359f37ee86de70537c1190ca60c016a8779268e880' 'SKIP'
+            '634d81ea509aac5555d8d11631babe9bb04ea771c873f084cea7067313a566d5cad291b0c311002ae8d1d6dd498a93a9a43517923aa449eebb405fb4c1e34753' 'SKIP'
             'b647c88c0b291494289078df25ade23ab9fb4ac61e0400cdd7d4642318cc95acb5c67aec2594c2c91ade4c78648fc2637112bf5c6923f1222a31949db5c196f5'
             '7a80f858c32a9dd62f43aba0b7119a1196869216117164bcde24ab46022e8a1bbe27821faa26ca690a1633a5a9fe324e98e5cdf14f37591d569cbc71f542482d'
             'c57a6c8d9978cb6a1034bed33ba5e06bef9b134f22113761798d4fa46e8091e7b0bd26f3a14d79122ba780b2f7a93ca26850f4da6a654f81b34cc79c242f683f'
@@ -29,7 +29,7 @@ sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f
             '73cb4c064d8942fddaac48158b7e77d19afc1cb61f83936f21832ba7d7266ccfd3021114252edd5cec5542096204f48cf30544fd6bffff79bc94d96fabe74f52'
             '62870a08f000abfe8eb1f50271afdf04686af108554f7629dc5e1d7610ad14bdc9cd14d2609270b83f9edb745a520b81fa7bfb92ebcc28a146df040c895b549b')
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c' 'SKIP'
-            '3b2bcceb16acd75322e98d3e93967e82bd0e7499c748bf12bd46c7519dacc315' 'SKIP'
+            'b9efa9c6375f79f6a041a5f0666d4ced1a49bfe8c4662d26517a6b4cfd9bf2f6' 'SKIP'
             '7f59b560ff9b1b29c1ca1b0aed7cd485ecd325f2782bab59cc58d22e38dc28b1'
             '7d56a81083d1468d90ebec97a44ec44f80f8cb87bd506ed1918d6664d6309ad5'
             '3efa91fcb4698bde0598678bbf9a4a747c011823af82704eed2c146ed7cd9734'
@@ -37,7 +37,7 @@ sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c' '
             'a055b6005a324240b35c416d9d08fba21c5f614eefb46f244035d04bf085224f'
             '29fa2c1ea75f55a61276496507b788b1a8bde1d7c16bee4f525651db34076e46')
 md5sums=('ab1a2abc6f37b752dd2595338bec4e78' 'SKIP'
-         '036393612e7318fdc3d74fae8e35ed33' 'SKIP'
+         'b33aef7e0d3ba997fd439a6158fc6210' 'SKIP'
          '07b056a49e572f90fcc2c022f28e1dbd'
          'bc30565cf444b710c252675cf65fb46e'
          'c52c29a8502f6c75e309208f0afab11f'
