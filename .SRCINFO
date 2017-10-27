@@ -1,0 +1,17 @@
+pkgbase = trojan
+	pkgdesc = An unidentifiable mechanism that helps you bypass GFW.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/GreaterFire/trojan
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = openssl
+	depends = boost-libs
+	depends = openssl
+	source = https://github.com/GreaterFire/trojan/archive/v0.2.1.tar.gz
+	md5sums = 7aeb37c78788e21265cbb7a106b01bc5
+
+pkgname = trojan
+
