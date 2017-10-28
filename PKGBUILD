@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('openbox' 'perl>=5.14.0' 'gtk2-perl' 'perl-data-dump' 'perl-linux-desktopfiles>=0.25')
 optdepends=('perl-file-desktopentry: locale support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('d24974ebf66ac1b22f95b7ef775ba800ca79daa14dbdf05599a215422c36ec80')
+sha256sums=('c9e200e469dc87f39f9132e7957fe0dca76d7bdc1d3891d6e15f73ca7b4312e0')
 install='readme.install'
 
 package() {
