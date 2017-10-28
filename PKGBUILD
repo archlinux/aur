@@ -5,7 +5,8 @@ pkgbase=${_pkgbase}-seccomp
 pkgname=(libmupdf-seccomp mupdf-seccomp)
 pkgver=1.11
 _pkgver=1.11
-pkgrel=3
+pkgrel=4
+_openjpeg_version=2.3
 pkgdesc='Mupdf with seccomp filter'
 arch=('i686' 'x86_64')
 url='http://mupdf.com'
@@ -17,10 +18,10 @@ source=("https://mupdf.com/downloads/mupdf-${pkgver/_/}-source.tar.gz"
         '0001-mupdf-openjpeg.patch'
         'mupdf.desktop'
         'mupdf.xpm'
-	'seccomp.patch')
+        'seccomp.patch')
 
 sha256sums=('209474a80c56a035ce3f4958a63373a96fad75c927c7b1acdc553fc85855f00a'
-            '01ad0365bc7be670a7a11603cb48ef89d85d804029dcf5420aa70846fe5dce4a'
+            'e87b0911121753ab24758a8c2bd533abe347b425f0681e84c945a225c62c63be'
             '70f632e22902ad4224b1d88696702b3ba4eb3c28eb7acf735f06d16e6884a078'
             'a435f44425f5432c074dee745d8fbaeb879038ec1f1ec64f037c74662f09aca8'
             '7b2936c31fea61b9623eb9a40d81818d1d1dd12f029222d2722b9002e723e5b4')
@@ -32,8 +33,9 @@ prepare() {
   # remove bundled packages, we want our system libraries
   rm -rf thirdparty/{curl,freetype,glfw,harfbuzz,jbig2dec,libjpeg,openjpeg,mujs,zlib}
 
-  # fix function for openjpeg 2.2.x
+  # fix function for openjpeg 
   patch -Np1 < "${srcdir}/0001-mupdf-openjpeg.patch"
+  sed -i "s/__OPENJPEG__VERSION__/${_openjpeg_version}/" source/fitz/load-jpx.c
 
   # fix includes for jbig2dec
   sed '/^JBIG2DEC_CFLAGS :=/s|$| -I./include/mupdf|' -i Makethird

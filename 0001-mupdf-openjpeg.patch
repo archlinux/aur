@@ -18,7 +18,7 @@ index d01de58..6ca3838 100644
  #define USE_JPIP
  
 -#include <openjpeg.h>
-+#include <openjpeg-2.2/openjpeg.h>
++#include <openjpeg-__OPENJPEG__VERSION__/openjpeg.h>
  
  struct fz_jpxd_s
  {
