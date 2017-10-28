@@ -12,6 +12,7 @@ groups=($_pkgname)
 options=(!strip)
 source=("https://www.oilshell.org/download/$_pkgname-$pkgver.tar.gz")
 md5sums=("93410c0ed6f0170713b49c038de68383")
+depends=("readline")
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
