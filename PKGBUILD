@@ -3,7 +3,7 @@
 # Contributor: Frank Thieme <frank at fthieme dot net>
 pkgname=lprng
 pkgver=3.8.C
-pkgrel=9
+pkgrel=10
 pkgdesc="An Enhanced Printer Spooler"
 arch=('i686' 'x86_64')
 url="http://www.lprng.com"
@@ -38,7 +38,7 @@ build() {
 	./configure --prefix=/usr --sysconfdir=/etc/lprng --localstatedir=/var\
 	--mandir=/usr/share/man --libexecdir=/usr/lib/lprng\
 	--with-userid=daemon --with-groupid=lp\
-	--enable-ssl --sbindir=/usr/bin
+	--sbindir=/usr/bin
 	make
 }
 
