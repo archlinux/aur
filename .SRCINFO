@@ -1,0 +1,19 @@
+pkgbase = python-yeelight
+	pkgdesc = Yeelight python library
+	pkgver = r118.de91518
+	pkgrel = 1
+	url = https://gitlab.com/stavros/python-yeelight
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-future
+	depends = python-enum-compat
+	provides = python-yeelight
+	source = git+https://gitlab.com/stavros/python-yeelight.git
+	md5sums = SKIP
+
+pkgname = python-yeelight
+
