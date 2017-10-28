@@ -2,25 +2,25 @@
 
 pkgname=boot-digest
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Digest boot partition for disk encryption integrity"
 arch=('any')
 url="https://github.com/alonbl/boot-digest"
 license=('MIT')
-depends=('bash')
+depends=('bash' 'libnotify')
 makedepends=('git')
-source=('git+https://github.com/alonbl/boot-digest.git' 'boot-digest-check.service' 'boot-digest-mkinitcpio' 'boot-digest.mkinitcpio-hook' 'boot-digest-alert'  'boot-digest-alert.desktop' )
-sha1sums=('SKIP'
+source=("https://github.com/alonbl/boot-digest/archive/${pkgname}-${pkgver}.tar.gz" 'boot-digest-check.service' 'boot-digest-mkinitcpio' 'boot-digest.mkinitcpio-hook' 'boot-digest-alert'  'boot-digest-alert.desktop' )
+sha1sums=('0286607d007cbc5a4219d201c980d28a59521c79'
           '948c773af5ac6963163179538bf6446fa821c3ed'
           '29e0e6005b319ed0d404a13f94e605f0c48895e1'
           '45b20e72bdc59d96bc07e8b339a560fef3af7e05'
-          'f4c99af8914e8dd842a4a84b2945c5c2af2f5ba1'
+          'ae3e5c67f981b842f95ac0e5c41bc5d76b0b5a7d'
           'f6c3dc2b5cd8fbd8b1f38936ebe167e2556aaef6')
 
 install=boot-digest.install
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname-$pkgname-$pkgver"
     sed -i '2,3d' boot-digest-mark
     install -Dm755 -t ${pkgdir}/usr/bin boot-digest-calc boot-digest-check boot-digest-mark
     install -Dm644 -t ${pkgdir}/usr/share/licenses/${pkgname} LICENSE
