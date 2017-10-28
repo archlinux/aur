@@ -1,0 +1,13 @@
+pkgbase = prince-pl
+	pkgdesc = Książę i tchórz
+	pkgver = 1
+	pkgrel = 1
+	url = http://wiki.scummvm.org/index.php/The_Prince_and_the_Coward
+	arch = any
+	license = abandonware
+	depends = scummvm
+	source = https://www.dropbox.com/s/wa863jc78m4qzde/Ksiaze_i_tchorz.zip
+	sha256sums = 27b9bb372a207406053646969454d6e08df18184ef587e96af030336f665eb44
+
+pkgname = prince-pl
+
