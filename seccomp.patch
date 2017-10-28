@@ -1,6 +1,6 @@
-diff -Naur mupdf-1.11-source/Makefile mupdf-1.11/Makefile
+diff -Naur mupdf-1.11-source/Makefile mupdf/Makefile
 --- mupdf-1.11-source/Makefile	2017-04-05 13:02:21.000000000 +0200
-+++ mupdf-1.11/Makefile	2017-08-20 13:59:29.260759197 +0200
++++ mupdf/Makefile	2017-08-20 13:59:29.260759115 +0200
 @@ -16,6 +16,12 @@
  # set a variable that was set on the command line.
  CFLAGS += $(XCFLAGS) -Iinclude -Igenerated
@@ -39,9 +39,9 @@ diff -Naur mupdf-1.11-source/Makefile mupdf-1.11/Makefile
  $(MUVIEW_X11_CURL_OBJ) : $(FITZ_HDR) $(PDF_HDR)
  $(MUVIEW_X11_CURL_EXE) : $(MUVIEW_X11_CURL_OBJ) $(MUPDF_LIB) $(THIRD_LIB) $(CURL_LIB)
  	$(LINK_CMD) $(X11_LIBS) $(CURL_LIBS) $(SYS_CURL_DEPS)
-diff -Naur mupdf-1.11-source/Makerules mupdf-1.11/Makerules
+diff -Naur mupdf-1.11-source/Makerules mupdf/Makerules
 --- mupdf-1.11-source/Makerules	2017-04-05 13:02:21.000000000 +0200
-+++ mupdf-1.11/Makerules	2017-08-20 13:57:17.007431598 +0200
++++ mupdf/Makerules	2017-08-20 13:57:17.007431507 +0200
 @@ -155,6 +155,12 @@
  SYS_OPENJPEG_LIBS := $(shell pkg-config --libs libopenjp2)
  endif
@@ -64,9 +64,9 @@ diff -Naur mupdf-1.11-source/Makerules mupdf-1.11/Makerules
 +CFLAGS += -DHAVE_PTHREADS
 +LIBS += -lpthread
 +endif
-diff -Naur mupdf-1.11-source/Makethird mupdf-1.11/Makethird
+diff -Naur mupdf-1.11-source/Makethird mupdf/Makethird
 --- mupdf-1.11-source/Makethird	2017-04-05 13:02:21.000000000 +0200
-+++ mupdf-1.11/Makethird	2017-08-20 14:00:35.777422980 +0200
++++ mupdf/Makethird	2017-08-20 14:00:35.777422904 +0200
 @@ -721,3 +721,10 @@
  PTHREAD_CFLAGS := $(SYS_PTHREAD_CFLAGS)
  PTHREAD_LIBS := $(SYS_PTHREAD_LIBS)
@@ -78,51 +78,10 @@ diff -Naur mupdf-1.11-source/Makethird mupdf-1.11/Makethird
 +LIBSECCOMP_CFLAGS := $(SYS_LIBSECCOMP_CFLAGS)
 +LIBSECCOMP_LIBS := $(SYS_LIBSECCOMP_LIBS)
 +endif
-diff -Naur mupdf-1.11-source/README.md mupdf-1.11/README.md
---- mupdf-1.11-source/README.md	1970-01-01 01:00:00.000000000 +0100
-+++ mupdf-1.11/README.md	2017-03-12 20:37:31.149547576 +0100
-@@ -0,0 +1,37 @@
-+# mupdf
-+Sandboxed Mupdf Document Viewer
-+
-+This modified version of Mupdf includes support for seccomp to implement sandbox support on linux systems using libseccomp
-+
-+The original application can be found here: https://mupdf.com
-+
-+
-+Sandbox modes:
-+--------------
-+
-+There are two different sandbox modes available at the moment:
-+
-+- Invisible sandbox mode: this mode does not affect the normal functionality at all and will not be noticed by the user. It only blacklists some dangerous and rare syscalls and uses the no_new_privs flag to prevent the process to gain more privileges (e.g. by using suid)
-+
-+- Read only mode: this mode does not allow writing files or access to the network. It is designed to only allow reading local files. By using a whitelist of allowed systemcalls, 90 % of the kernel interface is unavailable for the process, reducing the attack surface of the kernel significantly and limiting the movement of exploit code.
-+
-+
-+
-+Future Work
-+-----------
-+
-+It is possible to further restrict the list of allowed syscalls right before a document file is interpreted. This also includes blocking the use of syscalls needed for unix domain socket communication as used to communicate to IPC services like Dbus, which presents a weakpoint in sandboxing for modern Linux desktop systems.
-+
-+
-+
-+Weak Points
-+-----------
-+
-+One of the remaining weak points is the X11 Server. Without switching to wayland and blocking X11 access, keylogging is trivial.
-+
-+
-+
-+Additional Sandbox support
-+--------------------------
-+
-+Using linux namespaces container features, it is possible to further isolate the application from the rest of the system. With the bubblewrap project there is already some nice code that can be used for the purpose as demonstrated here: https://github.com/valoq/bwscripts/tree/master/profiles 
-diff -Naur mupdf-1.11-source/platform/x11/libsec.c mupdf-1.11/platform/x11/libsec.c
+diff -Naur mupdf-1.11-source/platform/x11/libsec.c mupdf/platform/x11/libsec.c
 --- mupdf-1.11-source/platform/x11/libsec.c	1970-01-01 01:00:00.000000000 +0100
-+++ mupdf-1.11/platform/x11/libsec.c	2017-03-15 23:17:31.421689510 +0100
-@@ -0,0 +1,472 @@
++++ mupdf/platform/x11/libsec.c	2017-10-28 17:17:23.053794622 +0200
+@@ -0,0 +1,501 @@
 +#include "libsec.h"
 +#include <stdio.h>
 +
@@ -280,6 +239,7 @@ diff -Naur mupdf-1.11-source/platform/x11/libsec.c mupdf-1.11/platform/x11/libse
 +    ALLOW_RULE (mremap);
 +    ALLOW_RULE (munmap);
 +    //ALLOW_RULE (open);  /* specified below */
++    //ALLOW_RULE (openat);  /* specified below */
 +    ALLOW_RULE (prctl);
 +    ALLOW_RULE (poll);
 +    ALLOW_RULE (read);
@@ -325,6 +285,19 @@ diff -Naur mupdf-1.11-source/platform/x11/libsec.c mupdf-1.11/platform/x11/libse
 +	                      SCMP_CMP(1, SCMP_CMP_MASKED_EQ, O_RDWR, O_RDWR)) < 0)
 +		goto out;
 +
++
++	/* special restrictions for openat, prevent opening files for writing */
++	if (seccomp_rule_add (ctx, SCMP_ACT_ALLOW, SCMP_SYS(openat), 1,
++	                      SCMP_CMP(1, SCMP_CMP_MASKED_EQ, O_WRONLY | O_RDWR, 0)) < 0)
++		goto out;
++
++	if (seccomp_rule_add (ctx, SCMP_ACT_ERRNO (EACCES), SCMP_SYS(openat), 1,
++	                      SCMP_CMP(1, SCMP_CMP_MASKED_EQ, O_WRONLY, O_WRONLY)) < 0)
++		goto out;
++
++	if (seccomp_rule_add (ctx, SCMP_ACT_ERRNO (EACCES), SCMP_SYS(openat), 1,
++	                      SCMP_CMP(1, SCMP_CMP_MASKED_EQ, O_RDWR, O_RDWR)) < 0)
++		goto out;
 +
 +
 +
@@ -450,6 +423,7 @@ diff -Naur mupdf-1.11-source/platform/x11/libsec.c mupdf-1.11/platform/x11/libse
 +    ALLOW_RULE (mremap);
 +    ALLOW_RULE (munmap);
 +    //ALLOW_RULE (open);  /* specified below */
++    //ALLOW_RULE (openat);  /* specified below */
 +    ALLOW_RULE (poll);
 +    ALLOW_RULE (read);
 +    ALLOW_RULE (recvfrom);
@@ -494,6 +468,20 @@ diff -Naur mupdf-1.11-source/platform/x11/libsec.c mupdf-1.11/platform/x11/libse
 +		goto out;
 +
 +
++	/* special restrictions for openat, prevent opening files for writing */
++	if (seccomp_rule_add (ctx, SCMP_ACT_ALLOW, SCMP_SYS(openat), 1,
++	                      SCMP_CMP(1, SCMP_CMP_MASKED_EQ, O_WRONLY | O_RDWR, 0)) < 0)
++		goto out;
++
++	if (seccomp_rule_add (ctx, SCMP_ACT_ERRNO (EACCES), SCMP_SYS(openat), 1,
++	                      SCMP_CMP(1, SCMP_CMP_MASKED_EQ, O_WRONLY, O_WRONLY)) < 0)
++		goto out;
++
++	if (seccomp_rule_add (ctx, SCMP_ACT_ERRNO (EACCES), SCMP_SYS(openat), 1,
++	                      SCMP_CMP(1, SCMP_CMP_MASKED_EQ, O_RDWR, O_RDWR)) < 0)
++		goto out;
++
++	
 +
 +
 +
@@ -595,9 +583,9 @@ diff -Naur mupdf-1.11-source/platform/x11/libsec.c mupdf-1.11/platform/x11/libse
 +}
 +
 +#endif /* HAVE_LIBSECCOMP */
-diff -Naur mupdf-1.11-source/platform/x11/libsec.h mupdf-1.11/platform/x11/libsec.h
+diff -Naur mupdf-1.11-source/platform/x11/libsec.h mupdf/platform/x11/libsec.h
 --- mupdf-1.11-source/platform/x11/libsec.h	1970-01-01 01:00:00.000000000 +0100
-+++ mupdf-1.11/platform/x11/libsec.h	2017-03-15 23:01:14.285040855 +0100
++++ mupdf/platform/x11/libsec.h	2017-03-15 23:01:14.285040855 +0100
 @@ -0,0 +1,19 @@
 +#ifndef SECCOMP_H
 +#define SECCOMP_H
@@ -618,9 +606,9 @@ diff -Naur mupdf-1.11-source/platform/x11/libsec.h mupdf-1.11/platform/x11/libse
 +int renderFilter(void);
 +
 +#endif
-diff -Naur mupdf-1.11-source/platform/x11/x11_main.c mupdf-1.11/platform/x11/x11_main.c
+diff -Naur mupdf-1.11-source/platform/x11/x11_main.c mupdf/platform/x11/x11_main.c
 --- mupdf-1.11-source/platform/x11/x11_main.c	2017-04-05 13:02:21.000000000 +0200
-+++ mupdf-1.11/platform/x11/x11_main.c	2017-08-20 13:54:43.330771594 +0200
++++ mupdf/platform/x11/x11_main.c	2017-08-20 13:54:43.330771684 +0200
 @@ -1,5 +1,18 @@
  #include "pdfapp.h"
  

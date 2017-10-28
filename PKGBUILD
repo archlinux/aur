@@ -5,7 +5,7 @@ pkgbase=${_pkgbase}-seccomp
 pkgname=(libmupdf-seccomp mupdf-seccomp)
 pkgver=1.11
 _pkgver=1.11
-pkgrel=4
+pkgrel=5
 _openjpeg_version=2.3
 pkgdesc='Mupdf with seccomp filter'
 arch=('i686' 'x86_64')
@@ -18,13 +18,15 @@ source=("https://mupdf.com/downloads/mupdf-${pkgver/_/}-source.tar.gz"
         '0001-mupdf-openjpeg.patch'
         'mupdf.desktop'
         'mupdf.xpm'
-        'seccomp.patch')
+        'seccomp.patch'
+        'CVE-2017-15587.patch')
 
 sha256sums=('209474a80c56a035ce3f4958a63373a96fad75c927c7b1acdc553fc85855f00a'
             'e87b0911121753ab24758a8c2bd533abe347b425f0681e84c945a225c62c63be'
             '70f632e22902ad4224b1d88696702b3ba4eb3c28eb7acf735f06d16e6884a078'
             'a435f44425f5432c074dee745d8fbaeb879038ec1f1ec64f037c74662f09aca8'
-            '7b2936c31fea61b9623eb9a40d81818d1d1dd12f029222d2722b9002e723e5b4')
+            '53b0b5c745869b86e9a27dcba86d1492573df0ac78626ad5ce67d0433fe5ac40'
+            '5a51384bc6eddfff6295d235662024876eb486588266c040f5579c5958a32a97')
 
 
 prepare() {
@@ -42,6 +44,10 @@ prepare() {
 
   # apply seccomp patch
   patch -Np1 < "${srcdir}/seccomp.patch"
+
+  # apply CVE-2017-15587 patch
+  patch -Np1 < "${srcdir}/CVE-2017-15587.patch"
+
 
   # embedding CJK fonts into binaries is madness...
   sed '/* #define TOFU_CJK /c #define TOFU_CJK 1' -i include/mupdf/fitz/config.h

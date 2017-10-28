@@ -1,7 +1,7 @@
 pkgbase = mupdf-seccomp
 	pkgdesc = Mupdf with seccomp filter
 	pkgver = 1.11
-	pkgrel = 4
+	pkgrel = 5
 	url = http://mupdf.com
 	arch = i686
 	arch = x86_64
@@ -24,11 +24,13 @@ pkgbase = mupdf-seccomp
 	source = mupdf.desktop
 	source = mupdf.xpm
 	source = seccomp.patch
+	source = CVE-2017-15587.patch
 	sha256sums = 209474a80c56a035ce3f4958a63373a96fad75c927c7b1acdc553fc85855f00a
 	sha256sums = e87b0911121753ab24758a8c2bd533abe347b425f0681e84c945a225c62c63be
 	sha256sums = 70f632e22902ad4224b1d88696702b3ba4eb3c28eb7acf735f06d16e6884a078
 	sha256sums = a435f44425f5432c074dee745d8fbaeb879038ec1f1ec64f037c74662f09aca8
-	sha256sums = 7b2936c31fea61b9623eb9a40d81818d1d1dd12f029222d2722b9002e723e5b4
+	sha256sums = 53b0b5c745869b86e9a27dcba86d1492573df0ac78626ad5ce67d0433fe5ac40
+	sha256sums = 5a51384bc6eddfff6295d235662024876eb486588266c040f5579c5958a32a97
 
 pkgname = libmupdf-seccomp
 	pkgdesc = Library for Lightweight PDF viewer
