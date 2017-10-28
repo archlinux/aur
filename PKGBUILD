@@ -3,7 +3,7 @@
 pkgname=twitchy-git
 _pkgname=twitchy
 pkgdesc="CLI streamlink wrapper for twitch.tv"
-pkgver=r31.38f8c54
+pkgver=r186.f791609
 pkgrel=1
 arch=('any')
 url="https://github.com/BasioMeusPuga/twitchy"
