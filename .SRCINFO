@@ -1,19 +1,18 @@
 pkgbase = pia-manager
 	pkgdesc = A VPN configuration tool for PIA
-	pkgver = 1.0.2
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/linuxmint/pia-manager
 	arch = any
 	license = GPL
-	depends = gksu
 	depends = networkmanager-openvpn
 	depends = networkmanager
 	depends = openvpn
 	depends = python
 	depends = python-setproctitle
 	optdepends = easy-rsa: easy CA and certificate handling
-	source = https://github.com/linuxmint/pia-manager/archive/1.0.2.tar.gz
-	sha256sums = 167068c832d6cf998c8e3f9d6c938442b8bb0ff6df192076aef70eceba02ef85
+	source = https://github.com/linuxmint/pia-manager/archive/1.0.5.tar.gz
+	sha256sums = 3ca020ced645ad1982c62dbe59a5a977be48214448b58a23ff90d4cbdde86612
 
 pkgname = pia-manager
 
