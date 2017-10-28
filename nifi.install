@@ -1,0 +1,10 @@
+post_install() {
+	if ! getent passwd nifi > /dev/null; then
+		useradd -M -c 'nifi user' -s /usr/bin/nologin nifi
+		passwd -l nifi > /dev/null
+	fi
+
+	chown -R nifi:nifi /opt/nifi
+
+	echo "==> Installed nifi user"
+}
