@@ -1,7 +1,7 @@
 # Maintainer: Karol Babioch <karol@babioch.de>
 
 pkgname=('python-pytzdata' 'python2-pytzdata')
-pkgver=2017.2.2
+pkgver=2017.3
 pkgrel=1
 pkgdesc="Official timezone database for Python."
 arch=('any')

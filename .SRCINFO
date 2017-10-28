@@ -1,6 +1,6 @@
 pkgbase = python-pytzdata
 	pkgdesc = Official timezone database for Python.
-	pkgver = 2017.2.2
+	pkgver = 2017.3
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/pytzdata
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-pytzdata
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = git+https://github.com/sdispater/pytzdata#tag=2017.2.2
+	source = git+https://github.com/sdispater/pytzdata#tag=2017.3
 	sha256sums = SKIP
 
 pkgname = python-pytzdata
