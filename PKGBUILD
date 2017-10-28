@@ -2,7 +2,7 @@
 
 pkgname=raiseorlaunch
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Run-or-raise-application-launcher for i3 window manager."
 arch=(any)
 url="https://github.com/open-dynaMIX/raiseorlaunch"
