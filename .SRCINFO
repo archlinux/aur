@@ -1,0 +1,15 @@
+pkgbase = stubby-git
+	pkgdesc = DNS Privacy Daemon
+	pkgver = 2519.e2b26609
+	pkgrel = 1
+	url = https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby
+	install = install
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = openssl
+	source = stubby::git+https://github.com/getdnsapi/getdns.git
+	sha256sums = SKIP
+
+pkgname = stubby-git
+
