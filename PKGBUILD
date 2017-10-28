@@ -3,8 +3,8 @@
 
 _gemname=xcpretty-travis-formatter
 pkgname=ruby-$_gemname
-pkgver=0.0.4
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='xcpretty custom formatter for TravisCI'
 arch=(any)
 url='https://github.com/kattrali/xcpretty-travis-formatter'
@@ -16,7 +16,7 @@ depends=(
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('09f4c460dc60e98207c480b90be50408ee69c96c')
+sha1sums=('33e9e49312ba15d6172dde7795d8629223c723c5')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
