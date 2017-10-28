@@ -1,0 +1,15 @@
+pkgbase = deepin-picker
+	pkgdesc = Color picker tool for deepin.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/manateelazycat/deepin-picker
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = qt5-base
+	depends = qt5-base
+	source = https://github.com/manateelazycat/deepin-picker/archive/1.1.tar.gz
+	md5sums = 58baab5b48b51dd326d3cdc85f9fa452
+
+pkgname = deepin-picker
+
