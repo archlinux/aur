@@ -1,0 +1,15 @@
+pkgbase = mkinitcpio-archivetmpfs
+	pkgdesc = Download, uncompress file or copy directory contents into tmpfs and boot from it.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Kamilcuk/mkinitcpio-archivetmpfs
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mkinitcpio
+	depends = tar
+	source = mkinitcpio-archivetmpfs::git://github.com/Kamilcuk/mkinitcpio-archivetmpfs.git
+	md5sums = SKIP
+
+pkgname = mkinitcpio-archivetmpfs
+
