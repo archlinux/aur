@@ -8,6 +8,7 @@ arch=('i686' 'x86_64' 'armv7h')
 url="http://esniper.sourceforge.net"
 license=('BSD')
 provides=('esniper')
+depends=('curl' 'openssl')
 makedepends=('cvs')
 conflicts=('esniper')
 

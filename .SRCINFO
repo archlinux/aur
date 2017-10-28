@@ -8,6 +8,8 @@ pkgbase = esniper-cvs
 	arch = armv7h
 	license = BSD
 	makedepends = cvs
+	depends = curl
+	depends = openssl
 	provides = esniper
 	conflicts = esniper
 
