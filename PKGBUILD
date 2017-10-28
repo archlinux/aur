@@ -28,7 +28,9 @@ pkgver() {
 
 prepare() {
   cd pcsxr/pcsxr
-
+  
+  sed -i 's/iso9660/cdio/' cmake/FindCdio.cmake
+  
   if [[ -d build ]]; then
     rm -rf build
   fi
