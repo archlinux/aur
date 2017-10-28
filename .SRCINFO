@@ -1,7 +1,7 @@
 pkgbase = uif2iso
-	pkgdesc = Tool for converting single/multi part UIF image files to ISO
+	pkgdesc = A command-line tool for converting single and multipart UIF images to the ISO format.
 	pkgver = 0.1.7c
-	pkgrel = 2
+	pkgrel = 3
 	url = http://aluigi.org/mytoolz.htm#uif2iso
 	arch = x86_64
 	arch = i686
