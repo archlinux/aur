@@ -5,9 +5,13 @@ pkgbase = sat-templates-hg
 	arch = any
 	license = AGPL3
 	depends = python2
+	provides = sat-templates
+	conflicts = sat-templates
 	options = !strip
 	source = hg+https://repos.goffi.org/sat_templates
 	md5sums = SKIP
 
 pkgname = sat-templates-hg
+	pkgdesc = sat-templates is a collection of templates for Salut à Toi, the multi-frontends multi-purposes XMPP client (core). For now, it needs to be accessible in the PYTHONPATH
+	depends = python2-jinja
 

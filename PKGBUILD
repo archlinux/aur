@@ -9,6 +9,8 @@ url="https://salut-a-toi.org/"
 arch=('any')
 depends=('python2')
 makedepends=('')
+conflicts=('sat-templates')
+provides=('sat-templates')
 license=('AGPL3')
 source=("hg+https://repos.goffi.org/sat_templates")
 md5sums=('SKIP')
@@ -21,7 +23,7 @@ pkgver() {
 
 
                  
-package_sat-templates(){
+package(){
     pkgdesc="sat-templates is a collection of templates for Salut à Toi, the multi-frontends multi-purposes XMPP client (core). For now, it needs to be accessible in the PYTHONPATH"
     depends=('python2-jinja')
 
