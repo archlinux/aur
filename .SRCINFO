@@ -1,0 +1,17 @@
+pkgbase = yeecli
+	pkgdesc = Yeelight CLI tool
+	pkgver = r49.6e391b5
+	pkgrel = 1
+	url = https://gitlab.com/stavros/yeecli
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-yeelight
+	provides = yeecli
+	source = git+https://gitlab.com/stavros/yeecli.git
+	md5sums = SKIP
+
+pkgname = yeecli
+
