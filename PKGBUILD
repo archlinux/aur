@@ -1,6 +1,7 @@
 # Maintainer Sky <sky at gfw dot party>
 
-pkgname=deepin-picker
+pkgname=deepin-picker-git
+subname=deepin-picker
 pkgver=1.1
 pkgrel=1
 pkgdesc="Color picker tool for deepin."
@@ -13,14 +14,14 @@ source=("https://github.com/manateelazycat/deepin-picker/archive/$pkgver.tar.gz"
 md5sums=('58baab5b48b51dd326d3cdc85f9fa452')
 
 build() {
-    mkdir -p "$srcdir"/"$pkgname"-"$pkgver"/build
-    cd "$srcdir"/"$pkgname"-"$pkgver"/build
+    mkdir -p "$srcdir"/"$subname"-"$pkgver"/build
+    cd "$srcdir"/"$subname"-"$pkgver"/build
     qmake ..
     make
 }
 
 package(){
-    cd "$srcdir"/"$pkgname"-"$pkgver"
+    cd "$srcdir"/"$subname"-"$pkgver"
     mkdir -p "$pkgdir"/usr/share/deepin-picker/translations
     mkdir -p "$pkgdir"/usr/share/applications
     mkdir -p "$pkgdir"/usr/share/icons/hicolor/scalable/apps/

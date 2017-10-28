@@ -1,4 +1,4 @@
-pkgbase = deepin-picker
+pkgbase = deepin-picker-git
 	pkgdesc = Color picker tool for deepin.
 	pkgver = 1.1
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = deepin-picker
 	source = https://github.com/manateelazycat/deepin-picker/archive/1.1.tar.gz
 	md5sums = 58baab5b48b51dd326d3cdc85f9fa452
 
-pkgname = deepin-picker
+pkgname = deepin-picker-git
 
