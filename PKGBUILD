@@ -13,7 +13,7 @@ depends=('openssl')
 source=("$_pkgbase::git+https://github.com/getdnsapi/getdns.git")
 sha256sums=('SKIP')
 
-backup=('etc/stubby/stubby.yml')
+backup=('usr/etc/stubby/stubby.yml')
 install=install
 
 pkgver() {
@@ -42,5 +42,7 @@ package() {
 
   install -D -m644 stubby/systemd/stubby.service "${pkgdir}/usr/lib/systemd/system/stubby.service"
   install -D -m644 stubby/systemd/stubby.conf "${pkgdir}/usr/lib/tmpfiles.d/stubby.conf"
-  install -D -m644 stubby/stubby.yml.example "${pkgdir}/etc/stubby/stubby.yml"
+
+  mkdir -p "${pkgdir}/etc/stubby"
+  ln -s /usr/etc/stubby/stubby.yml "${pkgdir}/etc/stubby/stubby.yml"
 }
