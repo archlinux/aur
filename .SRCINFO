@@ -6,6 +6,7 @@ pkgbase = cockroachdb-bin
 	arch = x86_64
 	license = Apache
 	depends = gcc-libs
+	depends = libtinfo5
 	provides = cockroachdb
 	conflicts = cockroachdb
 	source = https://binaries.cockroachdb.com/cockroach-v1.2-alpha.20171026.linux-amd64.tgz
