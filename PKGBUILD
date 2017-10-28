@@ -4,7 +4,7 @@
 pkgname=scilab-bin
 _pkgname=${pkgname%-bin}
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A software package for numerical computation, providing a powerful computing environment for engineering and scientific applications."
 arch=("x86_64" "i686")
 license=("BSD" "custom:CeCILL")
@@ -13,8 +13,8 @@ url="https://www.scilab.org"
 depends=()
 conflicts=('scilab')
 options=(!strip)
-source_x86_64=("http://www.scilab.org/download/${pkgver}/scilab-${pkgver}.bin.linux-${CARCH}.tar.gz")
-source_i686=("http://www.scilab.org/download/${pkgver}/scilab-${pkgver}.bin.linux-${CARCH}.tar.gz")
+source_x86_64=("http://www.scilab.org/download/${pkgver}/scilab-${pkgver}.bin.linux-x86_64.tar.gz")
+source_i686=("http://www.scilab.org/download/${pkgver}/scilab-${pkgver}.bin.linux-i686.tar.gz")
 sha256sums_x86_64=("2d09e7ae7b7e01ef4e56fa138ebeaac78f225c3e657c569a09bfff67117de7d6")
 sha256sums_i686=("c61bd5dd8f02675649e198dccb32ba7b114a254e984b48f73e7aaf8ddb8f1b52")
 
