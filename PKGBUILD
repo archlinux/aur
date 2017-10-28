@@ -2,7 +2,7 @@
 # TU Dresden corporate design classes tudscr by Falk Hanisch
 
 pkgname=texlive-tudscr
-pkgver=2.05c
+pkgver=2.05m
 pkgrel=1
 pkgdesc="TeX Live - TU Dresden corporate design classes tudscr by Falk Hanisch"
 license=('LPPL')
@@ -11,7 +11,7 @@ depends=('texlive-core' 'texlive-tudscr-fonts')
 url="http://wwwpub.zih.tu-dresden.de/~fahan/tudscr/"
 install=texlive.install
 source=("https://github.com/tud-cd/tudscr/releases/download/v${pkgver}/tudscr_v${pkgver}.zip")
-sha256sums=('4fbd87b4c7767a69f304426a9a939a7280c52d81755534bbd23dbab4f1601c73')
+sha256sums=('0855672c30ffccf1444e77194d6c6cbce268522ddeda4dd5037df11ea6ecbe1f')
 TEXPATH=/usr/share/texmf/
 
 package() {
