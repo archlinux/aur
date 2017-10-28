@@ -1,7 +1,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=pmsg
-pkgver=0.3
+pkgver=0.5
 pkgrel=1
 pkgdesc='Prompt notifications at certain intervals'
 arch=('any')
