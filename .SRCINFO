@@ -1,7 +1,7 @@
 pkgbase = polo-bin
 	pkgdesc = A modern, light-weight GTK file manager for Linux, currently in beta (.deb binary version)
-	pkgver = 17.9
-	pkgrel = 2
+	pkgver = 17.10
+	pkgrel = 1
 	url = http://www.teejeetech.in/
 	arch = i686
 	arch = x86_64
@@ -14,22 +14,22 @@ pkgbase = polo-bin
 	depends = rsync
 	depends = rclone
 	depends = gvfs
+	depends = p7zip
 	optdepends = mediainfo: read media properties from audio and video files
 	optdepends = fish: terminal shell
 	optdepends = perl-image-exiftool: read EXIF properties from JPG/TIFF/PNG/PDF files
 	optdepends = pv: get progress info for compression and extraction
 	optdepends = ffmpeg: generate thumbnails for video
-	optdepends = p7zip: read and extract multiple archive formats
 	optdepends = gnome-disk-utility
 	optdepends = lzop
 	optdepends = polo-donation-plugins
 	provides = polo
 	conflicts = polo
 	conflicts = polo-bin
-	source_i686 = https://github.com/teejee2008/polo/releases/download/v17.9-beta.10/polo-file-manager-v17.9.1-beta.10-i386.deb
-	sha256sums_i686 = 775bd8af3d0ecc03f2d9faca95fc48d56dda00828fcb680f4a1e46f201307717
-	source_x86_64 = https://github.com/teejee2008/polo/releases/download/v17.9-beta.10/polo-file-manager-v17.9.1-beta.10-amd64.deb
-	sha256sums_x86_64 = 303553ad851adc5d2cb75014ccc2b62ace2a787588261a8e3b2d266a75a252d4
+	source_i686 = https://github.com/teejee2008/polo/releases/download/v17.10-beta/polo-file-manager-v17.10-beta-i386.deb
+	sha256sums_i686 = fb4b38c3b6728e1f67666de73125b6ece9fdd663d5ce12bf91df25ee73b08deb
+	source_x86_64 = https://github.com/teejee2008/polo/releases/download/v17.10-beta/polo-file-manager-v17.10-beta-amd64.deb
+	sha256sums_x86_64 = 6a81bbf2461ac45646d7661e6a0bb775824bffdc77d1e45b0aa17541ab25b6a4
 
 pkgname = polo-bin
 
