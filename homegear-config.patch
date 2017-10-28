@@ -1,5 +1,5 @@
 diff --git a/misc/Config Directory/main.conf b/misc/Config Directory/main.conf
-index 9f6716e..bd3eceb 100644
+index 9f6716e..5e3aa16 100644
 --- a/misc/Config Directory/main.conf	
 +++ b/misc/Config Directory/main.conf	
 @@ -2,10 +2,10 @@
@@ -33,7 +33,7 @@ index 9f6716e..bd3eceb 100644
  
  # Default: flowsPathPermissions = 770
  # flowsPathPermissions = 770
-@@ -219,11 +219,11 @@ nodeBlueDebugOutput = true
+@@ -219,21 +219,21 @@ nodeBlueDebugOutput = true
  
  # Path to the family modules.
  # Default: modulePath = /var/lib/homegear/modules
@@ -47,7 +47,10 @@ index 9f6716e..bd3eceb 100644
  
  # Path to a directory where Homegear can store temporary data
  # Default: tempPath = /var/lib/homegear/tmp
-@@ -233,7 +233,7 @@ tempPath = /var/lib/homegear/tmp
+-tempPath = /var/lib/homegear/tmp
++tempPath = /tmp/homegear
+ 
+ # If lockFilePath is empty, the executable path is used. If unset, "/var/lock" is used.
  # Default: lockFilePath = /var/lock
  # /var/run/ is not the correct path for lock files. But as /var/lock is not user-writeable
  # on some systems, we decided to move the lock files to /var/run/homegear.

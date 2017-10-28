@@ -1,0 +1,5 @@
+d /var/lib/homegear 0750 homegear homegear -
+Z /var/lib/homegear -    homegear homegear -
+d /var/log/homegear 0755 homegear homegear -
+d /run/homegear 0755 homegear homegear -
+D /tmp/homegear 0750 homegear homegear 10d

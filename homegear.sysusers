@@ -1,0 +1,4 @@
+u homegear -  "Homegear daemon user" /var/lib/homegear
+m homegear dialout
+m homegear gpio
+m homegear spi
