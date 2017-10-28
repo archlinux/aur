@@ -3,7 +3,7 @@
 # Contributor: Serede Sixty Six <serede.dev@gmail.com>
 
 pkgname='nemo-audio-tab'
-pkgver=3.4.0
+pkgver=3.6.0
 _mintrel='betsy'
 pkgrel=1
 pkgdesc="View audio tag information in Nemo's properties tab"
@@ -15,7 +15,7 @@ makedepends=('python2-distutils-extra')
 options=('!emptydirs')
 #source=("${pkgname}-${pkgver}.tar.gz::http://packages.linuxmint.com/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}+${_mintrel}.tar.gz")
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('68dadce98c17321c3c22e596452a1b7aa0842c5faa05688734430857e037b3f2')
+sha256sums=('593aaf206ef50a8185e1f71c9018ce6a8b4bcb82b4684494e069f9045ba11fd1')
 
 prepare() {
   #cd ${pkgname}-${pkgver}+${_mintrel}
