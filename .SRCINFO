@@ -1,0 +1,15 @@
+pkgbase = esniper-cvs
+	pkgdesc = esniper: a lightweight eBay sniping tool
+	pkgver = 2.33.0
+	pkgrel = 1
+	url = http://esniper.sourceforge.net
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = cvs
+	provides = esniper
+	conflicts = esniper
+
+pkgname = esniper-cvs
+
