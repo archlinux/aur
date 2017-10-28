@@ -6,7 +6,6 @@ pkgbase = nanoflann
 	arch = any
 	license = BSD
 	makedepends = cmake
-	depends = gcc
 	depends = eigen
 	depends = python
 	source = https://github.com/jlblancoc/nanoflann/archive/v1.2.3.tar.gz
