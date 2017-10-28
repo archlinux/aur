@@ -8,6 +8,7 @@ pkgbase = stubby-git
 	arch = i686
 	license = BSD
 	depends = openssl
+	backup = etc/stubby/stubby.yml
 	source = stubby::git+https://github.com/getdnsapi/getdns.git
 	sha256sums = SKIP
 
