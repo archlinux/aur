@@ -3,7 +3,7 @@
 
 pkgname=qtwebflix-git
 _gitname=qtwebflix
-pkgver=r22.bee781b
+pkgver=r31.833ef83
 pkgrel=1
 pkgdesc='Standalone Netflix Browser using qtwebengine'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('git')
 source=("git+${url}.git"
         "netflix.desktop")
 sha256sums=('SKIP'
-            '2cf2a44a42f1e8275521e30e42a0f56f6e3c82a94d247555f68ed4fbfeec6ab0')
+            '1ac5c897828fb047709081dc96b1edbbcbfb644e8ea4ece04cef7c99f1887fd0')
 
 pkgver() {
   cd ${srcdir}/${_gitname}
@@ -30,6 +30,6 @@ build() {
 
 package() {
   install -Dm755 ${srcdir}/${_gitname}/netflix ${pkgdir}/usr/bin/netflix
-  install -Dm644 ${srcdir}/${_gitname}/data/netflix.svg ${pkgdir}/usr/share/pixmaps/netflix.svg
+  install -Dm644 ${srcdir}/${_gitname}/data/netflix-desktop.svg ${pkgdir}/usr/share/pixmaps/netflix-desktop.svg
   install -Dm755 ${srcdir}/netflix.desktop ${pkgdir}/usr/share/applications/netflix.desktop
 }
