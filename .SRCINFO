@@ -1,6 +1,6 @@
 pkgbase = sdl2_mixer-hg
 	pkgdesc = A simple multi-channel audio mixer (Version 2, development version)
-	pkgver = 2.0.1.r8.d9b3684ca715
+	pkgver = 2.0.2.r5.131286a6b7b8+
 	pkgrel = 1
 	url = http://libsdl.org/projects/SDL_mixer
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = sdl2_mixer-hg
 	depends = sdl2-hg
 	depends = libvorbis
 	depends = libmodplug
-	depends = libmad
+	depends = mpg123
 	depends = flac
 	optdepends = fluidsynth: MIDI software synth, replaces built-in timidity
 	provides = sdl2_mixer

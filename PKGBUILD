@@ -1,13 +1,13 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=sdl2_mixer-hg
-pkgver=2.0.1.r8.d9b3684ca715
+pkgver=2.0.2.r5.131286a6b7b8+
 pkgrel=1
 pkgdesc="A simple multi-channel audio mixer (Version 2, development version)"
 arch=('i686' 'x86_64')
 url="http://libsdl.org/projects/SDL_mixer"
 license=('MIT')
-depends=('sdl2-hg' 'libvorbis' 'libmodplug' 'libmad' 'flac')
+depends=('sdl2-hg' 'libvorbis' 'libmodplug' 'mpg123' 'flac')
 makedepends=('mercurial' 'fluidsynth')
 optdepends=('fluidsynth: MIDI software synth, replaces built-in timidity')
 provides=('sdl2_mixer')
@@ -24,20 +24,17 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
-
   # fix timidity path
   sed -e "s|/etc/timidity|/etc/timidity++|g" \
       -e "s|/etc/timidity++.cfg|/etc/timidity++/timidity.cfg|g" \
-      -i timidity/config.h
+      -i $pkgname/timidity/options.h
 }
 
 build() {
   cd $pkgname
 
   ./autogen.sh
-  ./configure --disable-static --prefix=/usr \
-    --enable-music-mp3-mad-gpl --disable-music-mp3-smpeg # use libmad instead of smpeg2
+  ./configure --disable-static --prefix=/usr
   make
 }
 
