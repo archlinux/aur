@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/*.tar
+/*.tar.*
+/flatpak-games-git/

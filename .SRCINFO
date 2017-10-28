@@ -1,11 +1,11 @@
 pkgbase = flatpak-games-git
 	pkgdesc = Converts various Linux game installers to Flatpak bundles
-	pkgver = r46.c0577b2
+	pkgver = r51.1adcd13
 	pkgrel = 1
 	url = https://github.com/hadess/flatpak-games
 	arch = any
 	license = GPL
-	depends = luaposix>=33.4
+	depends = lua-posix>=33.4
 	depends = lua-socket>=20160311
 	depends = flatpak
 	depends = unzip
