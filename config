@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.9.13-1 Kernel Configuration
+# Linux/x86 4.9.53-1 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -7877,6 +7877,7 @@ CONFIG_DEFAULT_IO_DELAY_TYPE=0
 #
 CONFIG_KEYS=y
 CONFIG_PERSISTENT_KEYRINGS=y
+# CONFIG_BIG_KEYS is not set
 CONFIG_TRUSTED_KEYS=m
 CONFIG_ENCRYPTED_KEYS=m
 CONFIG_KEY_DH_OPERATIONS=y
