@@ -12,13 +12,10 @@ depends=()
 makedepends=()
 optdepends=()
 install=
-if [ "$CARCH" = "x86_64" ]; then
-    source=(http://download.gluonhq.com/scenebuilder/$pkgver/install/linux/$_debpkg"-"$pkgver".deb")
-    sha1sums=('b3fe3e52946844d439a6c89009ed422d9ce8423f')
-else
-    source=(http://download.gluonhq.com/scenebuilder/$pkgver/install/linux-x86/$_debpkg"-"$pkgver".deb")
-    sha1sums=('6dc6f844338d72f2adeebc1aa45bce1ba24acb78')
-fi    
+source_x86_64=($_debpkg-$pkgver-x86_64.deb::http://download.gluonhq.com/scenebuilder/$pkgver/install/linux/$_debpkg-$pkgver.deb)
+source_i686=($_debpkg-$pkgver-i686.deb::http://download.gluonhq.com/scenebuilder/$pkgver/install/linux-x86/$_debpkg-$pkgver.deb)
+sha1sums_x86_64=('b3fe3e52946844d439a6c89009ed422d9ce8423f')
+sha1sums_i686=('6dc6f844338d72f2adeebc1aa45bce1ba24acb78')
 
 
 build() {
