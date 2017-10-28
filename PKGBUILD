@@ -1,15 +1,15 @@
 # Maintainer: Chanathip Srithanrat <axesd9@gmail.com>
 
 pkgname='gnome-osx-iv-gtk-theme'
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='Gnome-OSX IV GTK Theme'
 arch=('any')
 url='https://www.gnome-look.org/p/1171688/'
 depends=('gnome-themes-standard'
          'gtk-engine-murrine')
-source=('https://dl.opendesktop.org/api/files/download/id/1508508945/Gnome OSX-IV-1.1.tar.gz')
-md5sums=('5544c0bcd35f8f730bb04cdcb58a17fc')
+source=('https://dl.opendesktop.org/api/files/download/id/1509011922/Gnome OSX-IV-1.2.tar.gz')
+md5sums=('1063974a756965c47c1175836f900b73')
 
 _name='Gnome-OSX-IV'
 
