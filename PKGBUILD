@@ -13,6 +13,7 @@ depends=('openssl')
 source=("$_pkgbase::git+https://github.com/getdnsapi/getdns.git")
 sha256sums=('SKIP')
 
+backup=('etc/stubby/stubby.yml')
 install=install
 
 pkgver() {
@@ -36,7 +37,10 @@ build() {
 package() {
   cd "$srcdir/$_pkgbase"
   make DESTDIR="${pkgdir}" install
+
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$_pkgbase/LICENSE"
+
   install -D -m644 stubby/systemd/stubby.service "${pkgdir}/usr/lib/systemd/system/stubby.service"
   install -D -m644 stubby/systemd/stubby.conf "${pkgdir}/usr/lib/tmpfiles.d/stubby.conf"
+  install -D -m644 stubby/stubby.yml.example "${pkgdir}/etc/stubby/stubby.yml"
 }
