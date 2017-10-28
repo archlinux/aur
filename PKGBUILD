@@ -2,16 +2,14 @@
 
 pkgname=dfhack
 pkgver=0.43.05
-_pkgver=$pkgver-beta1
-pkgrel=3
+_pkgver=$pkgver-r2
+pkgrel=5
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="http://dfhack.readthedocs.io/en/v$pkgver/"
 license=('custom')
-depends=("dwarffortress=$pkgver" 'perl-xml-libxslt')
-depends_x86_64=('lib32-glu' 'lib32-gtk2' 'lib32-libjpeg6-turbo' 'lib32-libpng12' 'lib32-libsm')
+depends=(dwarffortress=$pkgver lua protobuf libpng12 libxrandr libjpeg6 freetype2 libglvnd libxcursor libxinerama)
 makedepends=('cmake' 'git' 'python-sphinx')
-makedepends_x86_64=('gcc-multilib')
 conflicts=('dfhack-bin' 'dfhack-git')
 
 source=($pkgname::git+https://github.com/DFHack/dfhack#tag=$_pkgver
@@ -36,6 +34,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_DOCS=ON \
     -DBUILD_STONESENSE=ON \
+    -DDFHACK_BUILD_ARCH=64 \
     ..
 
   make
