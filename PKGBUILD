@@ -1,8 +1,8 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=editorconfig-qtcreator
-_pkgver=0.2.0
-_qtcreatorver=4.3.0
+_pkgver=0.3.0
+_qtcreatorver=4.4.1
 pkgver=${_pkgver}+${_qtcreatorver}
 pkgrel=1
 pkgdesc="EditorConfig Plugin for QtCreator"
@@ -12,8 +12,8 @@ license=('LGPL')
 depends=('qtcreator' 'editorconfig-core-c')
 source=("https://github.com/editorconfig/${pkgname}/archive/${_pkgver}.tar.gz"
         "http://download.qt.io/official_releases/qtcreator/${_qtcreatorver%.*}/${_qtcreatorver}/qt-creator-opensource-src-${_qtcreatorver}.tar.xz")
-md5sums=('05a580e334efe9ef21dd33379533a863'
-         'b8059b45c8b02a8d52d2d2e46b7b740b')
+md5sums=('cb40d30d0e2b703296c2a4fb29796033'
+         '2c35e9b327bab5627e6bc8db39f48870')
 
 build() {
     cd "${srcdir}/${pkgname}-${_pkgver}"
