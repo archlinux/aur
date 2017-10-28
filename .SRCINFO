@@ -1,7 +1,7 @@
 pkgbase = easyrpg-player
 	pkgdesc = FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://easyrpg.org
 	install = easyrpg-player.install
 	arch = i686
@@ -18,7 +18,9 @@ pkgbase = easyrpg-player
 	optdepends = wine: for installing the run time packages (RTP)
 	optdepends = libxmp: decoder for tracker music, used by few games
 	source = https://easyrpg.org/downloads/player/easyrpg-player-0.5.3.tar.gz
+	source = https://github.com/carstene1ns/easyrpg-player/commit/4206ae21a07a9263df74e217c67b6928a4ef775d.patch
 	sha256sums = abd26ed487618780a3675869517fc52d63ad8019c3a87c5aaeefce64c464f83d
+	sha256sums = ec75509adeb0a15a1af159ff2684c1480389525565259adfa297bcbfb53448cd
 
 pkgname = easyrpg-player
 
