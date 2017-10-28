@@ -3,7 +3,7 @@
 
 pkgname=bombsquad
 pkgver=1.4.125
-pkgrel=0
+pkgrel=1
 pkgdesc='An explosive arcade-style party game'
 arch=('x86_64' 'i686')
 url='http://www.froemling.net/apps/bombsquad'
