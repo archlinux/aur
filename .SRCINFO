@@ -1,0 +1,23 @@
+pkgbase = python-spotify-ripper-git
+	pkgdesc = Command-line ripper for Spotify (python3)
+	pkgver = r451.d046419
+	pkgrel = 1
+	url = https://github.com/hbashton/spotify-ripper
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-spotify
+	depends = python-colorama
+	depends = python-mutagen
+	depends = python-requests
+	depends = python-schedule
+	depends = flac
+	depends = lame
+	provides = python-spotify-ripper
+	source = python-spotify-ripper::git+https://github.com/hbashton/spotify-ripper.git
+	sha256sums = SKIP
+
+pkgname = python-spotify-ripper-git
+
