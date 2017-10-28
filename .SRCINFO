@@ -1,0 +1,16 @@
+pkgbase = pam_e4crypt
+	pkgdesc = This is a PAM module for unlocking transparently encrypted directories on ext4
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/neithernut/pam_e4crypt/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = linux>=4.1
+	depends = pam
+	source = https://github.com/neithernut/pam_e4crypt/archive/master.tar.gz
+	sha1sums = SKIP
+
+pkgname = pam_e4crypt
+
