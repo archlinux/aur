@@ -2,7 +2,7 @@
 
 pkgname=inox-bin
 pkgver=62.0.3202.75
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google. (binary version)"
 arch=('x86_64')
 url="http://www.chromium.org/"
@@ -22,11 +22,11 @@ optdepends=('pepper-flash: support for Flash content'
             'libva-mesa-driver: for hardware video acceleration with AMD/ATI GPUs'
             'libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs')
 options=('!strip')
-source=(https://github.com/gcarq/inox-patchset/releases/download/$pkgver/inox-$pkgver-1-$arch.pkg.tar.xz)
-sha256sums=('c6b0195d5a4e4cdb474eb99fd7db5815413c95ed5acbaf1919c0f4142132fef7')
+source=(https://github.com/gcarq/inox-patchset/releases/download/$pkgver-$pkgrel/inox-$pkgver-$pkgrel-$arch.pkg.tar.xz)
+sha256sums=('65b7209dd1f413f6a598c5f6a3a51c7b4679d6f8833450241c9c656ad2a5e309')
 
 package() {
-  tar xJvf ${srcdir}/inox-${pkgver}-1-${arch}.pkg.tar.xz -C ${pkgdir}/
+  tar xJvf ${srcdir}/inox-${pkgver}-${$pkgrel}-${arch}.pkg.tar.xz -C ${pkgdir}/
 }
 
 # vim:set ts=2 sw=2 et:
