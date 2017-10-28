@@ -6,8 +6,8 @@
 # https://github.com/stylemistake/bitwig-studio-aur
 
 pkgname='bitwig-studio'
-pkgver='2.2.1'
-_pkgver='2.2.1'
+pkgver='2.2.2'
+_pkgver='2.2.2'
 pkgrel='1'
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
@@ -20,7 +20,7 @@ replaces=()
 conflicts=('bitwig-studio-legacy' 'bitwig-8-track')
 options=(!strip)
 source=("https://downloads.bitwig.com/stable/${_pkgver}/bitwig-studio-${_pkgver}.deb")
-md5sums=('63f78c9467161c9f844990c253d81e86')
+md5sums=('de899f679fcd54652b924f3f121d2342')
 
 package() {
   # Unpack package contents
