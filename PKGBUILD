@@ -3,16 +3,16 @@
 pkgbase=python-nclib
 pkgname=(python-nclib python2-nclib)
 _name=nclib
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=2
 pkgdesc="Netcat as a library: convienent socket interfaces"
 license=("MIT")
 arch=('any')
-url="https://pypi.python.org/pypi/nclib/0.8.0"
+url="https://pypi.python.org/pypi/nclib/0.8.1"
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('d3f3f622eefe4c7cdd793661a47b4668')
-sha512sums=('8d303d68ecee82b1a015d80edff87707b48d6b75483a527c8557994a8d795d581f9aef617d3ea6e17452d8495341f1b22f2228bc73a80da459d9c820aff3418c')
+md5sums=('4b664281fcb6ba8dff77f3e5d8962f13')
+sha512sums=('a3cc23733773ef25856de79a008758547590b0084d27ce2a6a04b846a4bf769be51363deb8e4a75d4ad30dfb2667dd09c6ead19e1cd1bc3c7becee62d1109782')
 
 prepare() {
     cp -a nclib-$pkgver{,-py2}
