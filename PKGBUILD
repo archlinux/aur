@@ -1,6 +1,6 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 pkgname=mve-git
-pkgver=r1197.435b733
+pkgver=r1210.7ce368d
 pkgrel=1
 pkgdesc="Image-based geometry reconstruction pipeline, structure-from-motion, (shading-aware) multi-view-stereo, surface-reconstruction, texturing,"
 arch=('i686' 'x86_64')
@@ -77,6 +77,7 @@ build() {
   cd ${srcdir}/smvs
   sed -i "s:msse4.1:msse4.2:" lib/Makefile tools/Makefile app/Makefile
   sed -i "s:mve:mve-git:" Makefile.inc
+  sed -i "s:util/string.h:string.h:" app/smvsrecon.cc
   make  
 
   msg "build man pages form markdown wiki pages"
