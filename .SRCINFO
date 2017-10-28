@@ -1,14 +1,14 @@
 pkgbase = python-nbdime
 	pkgdesc = Diff and merge of Jupyter Notebooks. Includes git integration for notebook diffing
-	pkgver = 0.2.0
-	pkgrel = 1
+	pkgver = 0.3.0
+	pkgrel = 2
 	url = http://jupyter.org
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/n/nbdime/nbdime-0.2.0.tar.gz
-	md5sums = f4cc549a4409ff907aa399bc3f6702fb
+	source = https://github.com/jupyter/nbdime/archive/0.3.0.zip
+	md5sums = 2a66e803c84f997522d0209caec0c666
 
 pkgname = python-nbdime
 	depends = python

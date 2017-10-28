@@ -3,16 +3,16 @@
 pkgbase=('python-nbdime')
 pkgname=('python-nbdime')
 _pkgname="nbdime"
-pkgver='0.2.0'
-pkgrel=1
+pkgver='0.3.0'
+pkgrel=2
 pkgdesc="Diff and merge of Jupyter Notebooks. Includes git integration for notebook diffing"
 url="http://jupyter.org"
 makedepends=('python-setuptools')
 depends=('python') 
 license=('BSD')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/n/nbdime/nbdime-${pkgver}.tar.gz")
-md5sums=('f4cc549a4409ff907aa399bc3f6702fb')
+source=("https://github.com/jupyter/nbdime/archive/${pkgver}.zip")
+md5sums=('2a66e803c84f997522d0209caec0c666')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
