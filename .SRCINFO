@@ -1,7 +1,7 @@
 pkgbase = raiseorlaunch
 	pkgdesc = Run-or-raise-application-launcher for i3 window manager.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-dynaMIX/raiseorlaunch
 	arch = any
 	license = MIT
