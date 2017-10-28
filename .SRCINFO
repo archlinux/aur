@@ -1,0 +1,13 @@
+pkgbase = sat-templates-hg
+	pkgver = 0.7.r54.a5dc14675d5e
+	pkgrel = 1
+	url = https://salut-a-toi.org/
+	arch = any
+	license = AGPL3
+	depends = python2
+	options = !strip
+	source = hg+https://repos.goffi.org/sat_templates
+	md5sums = SKIP
+
+pkgname = sat-templates-hg
+
