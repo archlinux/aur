@@ -9,7 +9,7 @@
 # Maintainer: Nino van der Linden (dev at ninov.de)
 _pkgname=go-fonts
 pkgname=$_pkgname-git
-pkgver=r205.83686c5
+pkgver=r250.f7e31b4
 pkgrel=1
 pkgdesc="The Go font family"
 arch=(any)

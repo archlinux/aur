@@ -1,6 +1,6 @@
 pkgbase = go-fonts-git
 	pkgdesc = The Go font family
-	pkgver = r205.83686c5
+	pkgver = r250.f7e31b4
 	pkgrel = 1
 	url = https://blog.golang.org/go-fonts
 	install = go-fonts-git.install
