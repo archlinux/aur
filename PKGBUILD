@@ -1,6 +1,6 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com> 
 pkgname=svp
-pkgver=4.1.0.118
+pkgver=4.2.0.122
 pkgrel=1
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
@@ -29,12 +29,12 @@ source=("https://gist.githubusercontent.com/phiresky/1e2cbd30bed4e5978771af232d1
 # at https://gist.github.com/phiresky/1e2cbd30bed4e5978771af232d11afd1
 # so they are correctly versioned and old versions still exist
 noextract=()
-sha1sums=('158a422f02ffacad3a26536dc5716c4dd4b49954')
+sha1sums=('76351a29b105b6888cf5c7206542a62c9c6d98f6')
 validpgpkeys=()
 
 prepare() {
 	rm -rf "$srcdir/installer"
-	devtool --dump "$srcdir/installer" "$srcdir/svp4-linux-64.run"
+	devtool dump "$srcdir/svp4-linux-64.run" "$srcdir/installer"
 	for f in "$srcdir/installer/metadata/"*/*.7z; do
 		7z -y x -o"$srcdir/extracted/" "$f"
 	done
