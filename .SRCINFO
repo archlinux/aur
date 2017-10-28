@@ -1,6 +1,6 @@
 pkgbase = geany-gtk3-git
 	pkgdesc = Fast and lightweight IDE (git version)
-	pkgver = 1.24.1.r849.g935c389
+	pkgver = 1.31.0.r52.gfca450e10
 	pkgrel = 1
 	url = https://github.com/geany/geany
 	install = geany-gtk3-git.install
@@ -10,10 +10,14 @@ pkgbase = geany-gtk3-git
 	makedepends = git
 	makedepends = intltool
 	makedepends = lua
+	makedepends = perl-xml-parser
 	depends = desktop-file-utils
+	depends = hicolor-icon-theme
 	depends = gtk3
-	optdepends = vte290: For native terminal
-	provides = geany=1.24.1.r849.g935c389
+	optdepends = geany-plugins: additional functionality
+	optdepends = vte: terminal support
+	optdepends = python2: Python 2 support
+	provides = geany=1.31.0.r52.gfca450e10
 	conflicts = geany
 	source = geany::git://github.com/geany/geany.git
 	md5sums = SKIP
