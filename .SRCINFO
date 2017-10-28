@@ -1,5 +1,5 @@
 pkgbase = xmr-stak-nvidia-git
-	pkgdesc = Monero nvidia miner
+	pkgdesc = Monero Miner (NVIDIA)
 	pkgver = r38.915ed85
 	pkgrel = 1
 	url = https://github.com/nicehash/xmr-stak-nvidia
