@@ -1,0 +1,20 @@
+pkgbase = haxima-git
+	pkgdesc = Haxima is an Ultima-like game engine (2D tile graphics) with combat, magic, NPC AI, an embedded scripting language, and in-game editing.
+	pkgver = r1.0cc63e9
+	pkgrel = 1
+	url = https://sourceforge.net/projects/nazghul/
+	arch = i686
+	arch = x86_64
+	license = gpl3
+	makedepends = git
+	makedepends = sdl
+	makedepends = zlib
+	depends = sdl_image
+	depends = sdl_mixer
+	provides = haxima
+	conflicts = haxima
+	source = haxima::git+https://git.code.sf.net/p/nazghul/git
+	sha256sums = SKIP
+
+pkgname = haxima-git
+
