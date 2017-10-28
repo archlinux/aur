@@ -1,6 +1,6 @@
 pkgbase = rofi-pass
 	pkgdesc = bash script to handle pass storages in a convenient way
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/carnager/rofi-pass
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = rofi-pass
 	depends = xclip
 	optdepends = passed-git: change fieldnames in password files
 	conflicts = rofi-pass-git
-	source = rofi-pass-1.5.2.tar.gz::https://github.com/carnager/rofi-pass/archive/1.5.2.tar.gz
-	md5sums = 8d93a0f5e6209ac8a5a2663ef9956485
+	source = rofi-pass-1.5.3.tar.gz::https://github.com/carnager/rofi-pass/archive/1.5.3.tar.gz
+	md5sums = 915bdcaed20deb50de87dda845c23121
 
 pkgname = rofi-pass
 
