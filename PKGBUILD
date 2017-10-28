@@ -8,7 +8,7 @@
 
 pkgname=texlive-tudscr-fonts
 pkgver=2.04
-pkgrel=1
+pkgrel=3
 pkgdesc="TeX Live - TU Dresden corporate design fonts for tudscr"
 license=('custom:tud-cd-fonts')
 arch=('any')
@@ -16,13 +16,13 @@ depends=('texlive-core' 'texlive-fontsextra')
 url="http://latex.wcms-file3.tu-dresden.de/phpBB3/index.php"
 install=texlive.install
 source=("font_archives.md5"
-        "https://github.com/tud-cd/tudscr/releases/download/fonts/TUD-KOMA-Script_fonts_Unix.zip"
+        "https://github.com/tud-cd/tudscr/releases/download/fonts/TUD-Script_fonts_Unix.zip"
         "texlive-tudscr-fonts.maps"
         "LICENSE"
         "DIN_Bd_PS.zip"
-        "Univers_ps.zip")
-md5sums=('23ecd5b966b5ca1e422c26b68db02021'
-         '12726ea55b40bd533c2525da5316db80'
+        "Univers_PS.zip")
+md5sums=('b3dbf18f356e308f714967d744dbd5cb'
+         '03a9d50dde8a8a82e65f813e2288fba0'
          '5d7289d1280ea193c1bd76a188f28a17'
          '6cfb9405ed5429fb03883fad19153fdc'
          'SKIP'
@@ -41,17 +41,18 @@ prepare() {
         echo "==========================================================================================================="
         echo "The build process was aborted. The created package is empty."
         echo ""
-        echo "You need to exchange the placeholder files ${source[4]} and ${source[3]} before starting the build process."
+        echo "You need to exchange the placeholder files ${source[4]} and ${source[5]} before starting the build process."
         echo "If you did so, your font archives might be corrupted. If you can rule that out, a \"new\" version of font"
         echo "archives might be out. Please contact the maintainer in that case."
         echo "==========================================================================================================="
         FONTSPRESENT=0
     else
-        bsdtar -xf DIN_Bd_PS.zip -C $srcdir
-        bsdtar -xf Univers_ps.zip -C $srcdir
+        bsdtar -xf ${source[4]} -C $srcdir
+        bsdtar -xf ${source[5]} -C $srcdir
+        echo fonts extracted
 
         cd $srcdir
-        bsdtar -xf TUD-KOMA-Script_fonts_Unix.zip -C $srcdir tudscr_fonts_install.zip
+        bsdtar -xf TUD-Script_fonts_Unix.zip -C $srcdir tudscr_fonts_install.zip
         bsdtar -xf $srcdir/tudscr_fonts_install.zip
     fi
 }
