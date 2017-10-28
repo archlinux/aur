@@ -4,7 +4,7 @@
 pkgname=spotifyd-git
 pkgver=0.1.1.1.g60f111f
 pkgrel=1
-arch=('x86_64' 'armv7h')
+arch=('x86_64' 'armv7h' 'aarch64')
 depends=('pulseaudio' 'flac' 'libogg' 'libpulse' 'libsndfile' 'libvorbis')
 makedepends=('git' 'cargo')
 conflicts=('spotifyd-bin')
