@@ -48,7 +48,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.27.0_236_g6d534138ed
+pkgver=0.27.0_310_ga00a2266a0
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -63,10 +63,13 @@ conflicts=('mpv')
 options=('!emptydirs')
 install=mpv.install
 source=('git+https://github.com/mpv-player/mpv'
+        '5033.patch'
         'find-deps.py')
 md5sums=('SKIP'
+         '2292f053f7e2e5a32fcf778746c25265'
          'ffb774b13decbefc62908dda0332046b')
 sha256sums=('SKIP'
+            '8d46d9ba280a48248f28feeb3d2ff28a16dbd0a5eea8d9178756590de9e3e421'
             'ce974e160347202e0dc63f6a7a5a89e52d2cc1db2d000c661fddb9dc1d007c02')
 
 _opt_extra_flags=()
@@ -131,6 +134,10 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"
   ./bootstrap.py
+
+  # Temporary workaround (see AUR comments)
+  git revert --no-edit 83d44aca7dc7f46b8d3b64d441f5a8317a40e080
+  git am "$srcdir/5033.patch"
 }
 
 build() {

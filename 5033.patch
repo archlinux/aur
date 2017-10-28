@@ -1,0 +1,26 @@
+From 2b330cc60e1841f18512a99b52e25732725b886f Mon Sep 17 00:00:00 2001
+From: Daniel Kucera <daniel.kucera@gmail.com>
+Date: Mon, 23 Oct 2017 15:29:17 +0200
+Subject: [PATCH] demux_lavf: return AVERROR_EOF on file end
+
+Signed-off-by: Daniel Kucera <daniel.kucera@gmail.com>
+---
+ demux/demux_lavf.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/demux/demux_lavf.c b/demux/demux_lavf.c
+index 53bf62016a..214e0c297f 100644
+--- a/demux/demux_lavf.c
++++ b/demux/demux_lavf.c
+@@ -242,7 +242,10 @@ static int mp_read(void *opaque, uint8_t *buf, int size)
+ 
+     MP_TRACE(demuxer, "%d=mp_read(%p, %p, %d), pos: %"PRId64", eof:%d\n",
+              ret, stream, buf, size, stream_tell(stream), stream->eof);
+-    return ret;
++    if (stream->eof)
++        return AVERROR_EOF;
++    else
++        return ret;
+ }
+ 
+ static int64_t mp_seek(void *opaque, int64_t pos, int whence)
