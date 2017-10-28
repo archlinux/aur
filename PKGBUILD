@@ -2,20 +2,28 @@
 # Contributor: Your Name <youremail@domain.com>
 
 pkgname=ocp-build
-pkgver=1.99.18_beta
+pkgver=1.99.19_beta
 pkgrel=1
 pkgdesc="A build system for OCaml applications"
 arch=('i686' 'x86_64')
 url="http://www.typerex.org/ocp-build.html"
 license=('GPL3')
-depends=('ocaml')
-source=("https://github.com/OCamlPro/ocp-build/archive/${pkgver/_/-}.tar.gz")
-md5sums=('65cd6c06187f5cb197da61976d8c16ad')
+depends=('ocaml' 'ocaml-findlib')
+source=("https://github.com/OCamlPro/ocp-build/archive/${pkgver/_/-}.tar.gz"
+        "link-terminfo.patch")
+md5sums=('e4d5e3bc256091b5907a43613c33411c'
+         '5e13a6bc6dd42eba07214284fc8d7051')
+
+prepare() {
+  cd "${srcdir}/ocp-build-${pkgver/_/-}"
+
+  patch -Np1 < "${srcdir}/link-terminfo.patch"
+}
 
 build() {
   cd "${srcdir}/ocp-build-${pkgver/_/-}"
 
-  ./configure
+  ./configure "--with-metadir=${pkgdir}$(ocamlfind printconf destdir)"
   make
 }
 
