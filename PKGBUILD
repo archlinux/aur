@@ -1,12 +1,12 @@
 # Maintainer: Alexandre Petitjean <alpetitjean at gmail dot com>
 
 pkgname=python2-ws4py
-_pypiname=ws4py
-pkgver=0.3.4
+_ghname=WebSocket-for-Python
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="WebSocket library for Python"
 arch=('any')
-url="https://github.com/Lawouach/WebSocket-for-Python"
+url="https://github.com/Lawouach/${_ghname}"
 license=('BSD')
 depends=('python2')
 makedepends=('python2')
@@ -15,11 +15,11 @@ optdepends=('python2-cherrypy: CherryPy server'
             'python2-tornado: Tornado client')
 conflicts=('python2-ws4py-git')
 provides=('python2-ws4py')
-source=("https://pypi.python.org/packages/source/w/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-md5sums=('6b47e33cbd13f5c134b04f2a44a480ad')
+source=("https://github.com/Lawouach/${_ghname}/archive/${pkgver}.tar.gz")
+md5sums=('620019d917d1b6adcf0cff017b19b119')
 
 package() {
-  cd "$srcdir/$_pypiname-$pkgver"
+  cd "$srcdir/${_ghname}-${pkgver}"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
