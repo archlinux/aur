@@ -1,0 +1,23 @@
+pkgbase = xfce4-volumed-pulse-git
+	pkgdesc = A volume keys control daemon for Xfce using pulseaudio
+	pkgver = r83.faec2e8
+	pkgrel = 1
+	url = https://git.xfce.org/apps/xfce4-volumed-pulse
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = xfce4-dev-tools
+	depends = libnotify
+	depends = pulseaudio
+	depends = libkeybinder3
+	depends = xfconf
+	optdepends = xfce4-notifyd: for OSD notifications
+	conflicts = xfce4-volumed
+	conflicts = xfce4-volumed-pulse
+	replaces = xfce4-volumed
+	replaces = xfce4-volumed-pulse
+	source = xfce4-volumed-pulse::git://git.xfce.org/apps/xfce4-volumed-pulse
+	sha256sums = SKIP
+
+pkgname = xfce4-volumed-pulse-git
+
