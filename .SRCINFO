@@ -1,7 +1,7 @@
 pkgbase = python-pyu2f
 	pkgdesc = U2F host library for interacting with a U2F device over USB.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/pyu2f/
 	arch = any
 	license = Apache
@@ -11,6 +11,8 @@ pkgbase = python-pyu2f
 	sha256sums = SKIP
 
 pkgname = python-pyu2f
+	depends = python
 
 pkgname = python2-pyu2f
+	depends = python2
 
