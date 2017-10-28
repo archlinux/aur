@@ -5,12 +5,13 @@
 
 pkgname=goocanvas1
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A cairo canvas widget for GTK+"
 arch=(i686 x86_64)
 url="http://live.gnome.org/GooCanvas"
 options=('docs')
 license=("LGPL")
+makedepends=('python')
 depends=('gtk2')
 source=(http://ftp.gnome.org/pub/GNOME/sources/goocanvas/1.0/goocanvas-$pkgver.tar.bz2)
 sha256sums=('1c072ef88567cad241fb4addee26e9bd96741b1503ff736d1c152fa6d865711e')
