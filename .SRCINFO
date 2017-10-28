@@ -1,0 +1,16 @@
+pkgbase = sat-media-hg
+	pkgver = 0.7.r41.f8ece5fe01ec
+	pkgrel = 1
+	url = https://salut-a-toi.org/
+	arch = any
+	license = AGPL3
+	depends = python2
+	provides = sat-media
+	conflicts = sat-media
+	options = !strip
+	source = hg+https://repos.goffi.org/sat_media
+	md5sums = SKIP
+
+pkgname = sat-media-hg
+	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (media files)
+
