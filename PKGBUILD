@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.27.0.262.g044af63d98
+pkgver=v0.27.0.308.g3413fe4dfd
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -60,7 +60,7 @@ conflicts=('mpv')
 options=('!emptydirs')
 source=('git+https://github.com/mpv-player/mpv-build.git'
         'git+https://github.com/mpv-player/mpv.git'
-        'ffmpeg::git+https://github.com/FFmpeg/FFmpeg.git'
+        'git+https://github.com/mpv-player/ffmpeg-mpv.git'
         'git+https://github.com/libass/libass.git'
         'https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/4933.patch'
         )
@@ -90,7 +90,7 @@ pkgver() {
 prepare() {
   cd mpv-build
   git clone "${srcdir}/mpv"
-  git clone "${srcdir}/ffmpeg"
+  git clone "${srcdir}/ffmpeg-mpv" ffmpeg
   git clone "${srcdir}/libass"
 
   # Set ffmpeg/libass/mpv flags
@@ -126,12 +126,10 @@ prepare() {
     )
 
 if [ ${_enable_cuda} = "1" ]; then
-  _ffmpeg_cuda=(
-    '--extra-cflags="-I/opt/cuda/include"'
-    )
+  _ffmpeg_options+=('--extra-cflags="-I/opt/cuda/include"')
 fi
 
-  echo ${_ffmpeg_options[@]} ${_ffmpeg_cuda[@]} > ffmpeg_options
+  echo ${_ffmpeg_options[@]} > ffmpeg_options
   echo ${_mpv_options[@]} > mpv_options
 
   cd mpv
