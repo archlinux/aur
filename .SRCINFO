@@ -1,13 +1,13 @@
 pkgbase = python-pendulum
 	pkgdesc = Python datetimes made easy
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://pendulum.eustace.io
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://github.com/sdispater/pendulum.git#tag=1.3.0
+	source = git+https://github.com/sdispater/pendulum.git#tag=1.3.1
 	sha256sums = SKIP
 
 pkgname = python-pendulum
