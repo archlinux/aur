@@ -1,7 +1,7 @@
 # Maintainer: ninian <mcfadzean.org.uk ta linux>
 
 pkgname=runa
-pkgver=5.5.0
+pkgver=5.6.0
 pkgrel=1
 pkgdesc="Fast and light desktop application launcher"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:MPL2')
 depends=('bash' 'dmenu' 'libnotify')
 optdepends=('gxmessage: to view .desktop files' 'perl-file-mimeinfo: to better determine mimetypes')
 source=("http://appstogo.mcfadzean.org.uk/dl/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('abf48b649846b81fbe098b4871510ada')
+md5sums=('7262c701c722f62ee878fa94e289ac68')
 
 package() {
   cd "$srcdir/${pkgname}-$pkgver"
@@ -27,7 +27,8 @@ package() {
   install -Dm755 xdg-open                    "$pkgdir/usr/share/doc/${pkgname}/xdg-open"
   msg "Configuration and favourites files will be created the first time Runa is executed"
   msg "See 'man ${pkgname}' and /usr/share/doc/${pkgname}/README for more information"
-  msg "IMPORTANT:"
-  msg "This version changes the configuration file format; recreate and merge with old configuration as required"
-  msg "Refresh the applications cache using -C option after installing this version"
+  msg "IMPORTANT: This version has changed the -M and -P commandline options"
+#  msg "IMPORTANT:"
+#  msg "This version changes the configuration file format; recreate and merge with old configuration as required"
+#  msg "Refresh the applications cache using -C option after installing this version"
 }
