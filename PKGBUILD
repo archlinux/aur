@@ -2,7 +2,7 @@
 # Contributor: pandan <predrg@gmail.com>
 
 pkgname=webdis
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='REST server for Redis data'
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('redis' 'libevent' 'jansson')
 makedepends=('git')
 install='webdis.install'
-source=('webdis::git://github.com/nicolasff/webdis.git#tag=0.1.1'
+source=("webdis::git://github.com/nicolasff/webdis.git#tag=$pkgver"
         'webdis.service'
         'webdis.logrotate')
 sha256sums=('SKIP'
