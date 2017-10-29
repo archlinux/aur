@@ -10,10 +10,11 @@ pkgbase = velocidrone
 	depends = gcc-libs
 	depends = gtk2
 	optdepends = steam
-	source = file://velocidrone-1.11.0.299.zip.sha256
-	source = file://velocidrone.desktop
+	noextract = velocidrone-1.11.0.299.zip
+	source = velocidrone-1.11.0.299.zip::gdrive://0B5ZmVufmkjnwQU5jTVZ4TFJIZGs
+	source = velocidrone.desktop
 	source = https://www.velocidrone.com/img/logo.png
-	sha256sums = ab5b2b30717ecd35219eac63cf9140bfe1e56b1da04cf7785ccb0f7dff4e6483
+	sha256sums = ce7ed4266599bdd0cef1fa8165ef75eebdba8e1a78214db489caf352a5dee140
 	sha256sums = 66ab24798d6b40f2c69f42368b79205f1e39ace4d8880785bfeb47f7f20d98cb
 	sha256sums = dca386606781e552fc310bf414a911b335bb8d48114091f337d02db46befdee1
 
