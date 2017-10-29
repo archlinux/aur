@@ -2,7 +2,7 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 pkgname=seaview
-pkgver=4.6.1.1
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="GUI for multiple sequence alignment and molecular phylogeny"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('clustal-omega: alignment'
 source=("ftp://pbil.univ-lyon1.fr/pub/mol_phylogeny/$pkgname/archive/${pkgname}_${pkgver}.tar.gz"
         'seaview.desktop'
         'seaview.sharedmimeinfo')
-md5sums=('95273cbde9b8d9450addc9c56df4491d'
+md5sums=('d09ca72e79f4e225604c261618ae0f52'
          '94f13509470dd69f053ffc178884e292'
          '9592a71ee55fa6edfbaddbce2d5469b9')
 
