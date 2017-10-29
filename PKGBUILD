@@ -30,15 +30,15 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 replaces=('ffmpeg')
 source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz"
-        "ffmpeg-openjpeg2.2.patch")
+        "openjpeg223.patch")
 #validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=('a893490c3a8a7caaa9c47373b789c0335d0ac3572f2ba61059de842b9e45d802'
-            '490598f78d7879af8ef5b8d7f92ada83d0ee64f9609f6c7b989eb331c2539f68')
+            '0320d866ed10b19b14ebed45ececf2d65845187ff9d98deb74d5c0b2e1b70c0a')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
 
-  patch -Np1 -i ../ffmpeg-openjpeg2.2.patch
+  patch -Np1 -i ../openjpeg223.patch
 }
 
 build() {
