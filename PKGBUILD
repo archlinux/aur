@@ -28,7 +28,7 @@ optdepends=("hwloc: enables the task/cgroup plugin"
 	"numactl: NUMA support in the task/affinity plugin"
 	"ncurses: adds the smap command "
 	"gtk2: enables the sview command, a simple graphical frontend")
-makedepends=('python')
+makedepends=('python' 'gtk2')
 backup=('etc/default/slurm-llnl')
 install="${pkgname}.install"
 source=("slurm-tmpfiles.conf"

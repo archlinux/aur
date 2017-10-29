@@ -8,6 +8,7 @@ pkgbase = slurm-llnl
 	arch = x86_64
 	license = GPL
 	makedepends = python
+	makedepends = gtk2
 	depends = munge
 	optdepends = hwloc: enables the task/cgroup plugin
 	optdepends = lua: the lua API will be available in various plugins
