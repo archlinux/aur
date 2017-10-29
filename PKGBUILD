@@ -18,22 +18,22 @@
 pkgbase="spl-linux-hardened"
 pkgname=("spl-linux-hardened" "spl-linux-hardened-headers")
 
-pkgver=0.7.3_4.13.9.a.1
+pkgver=0.7.3_4.13.10.a.1
 pkgrel=1
-makedepends=("linux-hardened-headers=4.13.9.a-1")
+makedepends=("linux-hardened-headers=4.13.10.a-1")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.3/spl-0.7.3.tar.gz")
 sha256sums=("cd8b8624163577bdec1d1d214c942c5771f183432a04d35c00fc6e7f12fa836b")
 license=("GPL")
-depends=("spl-utils-common>=0.7.3" "kmod" "linux-hardened=4.13.9.a-1")
+depends=("spl-utils-common>=0.7.3" "kmod" "linux-hardened=4.13.10.a-1")
 
 build() {
     cd "${srcdir}/spl-0.7.3"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.13.9-1-hardened/build \
-                --with-linux-obj=/usr/lib/modules/4.13.9-1-hardened/build \
+                --with-linux=/usr/lib/modules/4.13.10-1-hardened/build \
+                --with-linux-obj=/usr/lib/modules/4.13.10-1-hardened/build \
                 --with-config=kernel
     make
 }
@@ -58,5 +58,5 @@ package_spl-linux-hardened-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.13.9-1-hardened/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.13.10-1-hardened/Module.symvers
 }
