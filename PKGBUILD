@@ -34,6 +34,7 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 prepare() {
   cd "$_gitname"
+  git tag -d 3,4
   sed -i "
     /^if/s/not//
     /DATA_DIR =/s/$/[1:]/
