@@ -1,6 +1,6 @@
 # Maintainer: Maciej Sieczka <msieczka at sieczka dot org>
 
-pkgname='python-liblas'
+pkgname='liblas-python'
 pkgver='1.8.1'
 pkgrel='1'
 pkgdesc='Python bindings for libLAS - a C/C++ library for reading and writing LAS LiDAR format.'
