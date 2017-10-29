@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-atari800-git
-pkgver=64.c804c96
+pkgver=66.f892b44
 pkgrel=1
 pkgdesc="libretro implementation of Atari800 v3.1.0 (Atari 5200/400/800/XL/XE) (WIP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -18,7 +18,7 @@ source=("git+https://github.com/libretro/${_gitname}.git"
 	"cfg.patch"
 	"joycfg.patch")
 sha256sums=('SKIP'
-	'f482663fa58468d889e615909ba9e09d2e616300a9575338b86ce1b93d751bdb'
+	'2ff0e3a58e19b9532d92d1d93e55890a2de42475c144d8d4e58480a986c18ede'
 	'41e0c608d07cdc3228d37a7a29fd40b6629e964c13d14ba413fa84e956ef3777'
 	'd30794556b622c757dbafb5ce988547967004bd2d779c74e28802f9dd78a167f')
 
