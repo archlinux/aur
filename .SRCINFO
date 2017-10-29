@@ -17,6 +17,9 @@ pkgbase = fontconfig-ubuntu
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.12.6.orig.tar.bz2
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.12.6-0ubuntu1.debian.tar.xz
 	source = 53-monospace-lcd-filter.patch
+	sha256sums = cf0c30807d08f6a28ab46c61b8dbd55c97d2f292cf88f3a07d3384687f31f017
+	sha256sums = 6e44e884856924986ec3637cc38d0a759934d4d065ffd65fa25dd8c9d36bc844
+	sha256sums = c759702ba66fe88768aa93035637401085bb5c02d898c960b68291aea10daa8d
 
 pkgname = fontconfig-ubuntu
 

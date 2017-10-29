@@ -19,9 +19,9 @@ install=$pkgname.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_$pkgver.orig.tar.bz2"
         "https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_$pkgver-$_ubver.debian.tar.xz"
         '53-monospace-lcd-filter.patch')
-sha256=('cf0c30807d08f6a28ab46c61b8dbd55c97d2f292cf88f3a07d3384687f31f017'
-        '6e44e884856924986ec3637cc38d0a759934d4d065ffd65fa25dd8c9d36bc844'
-        'c759702ba66fe88768aa93035637401085bb5c02d898c960b68291aea10daa8d')
+sha256sums=('cf0c30807d08f6a28ab46c61b8dbd55c97d2f292cf88f3a07d3384687f31f017'
+            '6e44e884856924986ec3637cc38d0a759934d4d065ffd65fa25dd8c9d36bc844'
+            'c759702ba66fe88768aa93035637401085bb5c02d898c960b68291aea10daa8d')
 
 # nice pages to test font matching:
 # http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
