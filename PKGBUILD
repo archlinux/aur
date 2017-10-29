@@ -24,7 +24,10 @@ pkgver()
 
 prepare()
 {
-  cd "${srcdir}/${_gitname}/build" && cmake -DCMAKE_BUILD_TYPE=Release ..
+  cd "${srcdir}/${_gitname}/build"
+  git submodule update --init
+  cmake -DCMAKE_BUILD_TYPE=Release ..
+
 }
 
 build()
@@ -35,6 +38,6 @@ build()
 
 package()
 {
-  cd "${srcdir}/${_gitname}/src"
+  cd "${srcdir}/${_gitname}/build/rc"
   install -Dm 755 neopg "${pkgdir}/usr/bin/neopg"
 }
