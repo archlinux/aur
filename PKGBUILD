@@ -1,10 +1,10 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=cartaodecidadao
-pkgver=2.4.0.4973
+pkgver=2.4.4.5176
 _rev=${pkgver##*.}
 _ver=${pkgver%.*}
-pkgrel=3
+pkgrel=1
 pkgdesc="Portuguese Citizen Card Application"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -23,7 +23,7 @@ optdepends=('autenticacao-gov-pt: Necessário para autenticações online'
             'cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC'
             'ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)')
 
-source=("svn+https://svn.gov.pt/projects/ccidadao/repository/middleware-offline/tags/version${_ver}-${_rev}/source/_src/eidmw"
+source=("svn+https://svn.gov.pt/projects/ccidadao/repository/middleware-offline/tags/version${_ver}-${_rev}/source/trunk/_src/eidmw"
         "00-fix_certs_path.patch"
         "01-fix_pteiddialogsQTsrv_path.patch")
 
