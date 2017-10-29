@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=simonpi-git
-pkgver=12.32275a4
+pkgver=25.19facf1
 pkgrel=1
 epoch=
 pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your laptop"
@@ -17,12 +17,12 @@ pkgver() {
   cd $srcdir/simonpi
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
-
+KERNELVER=4.4.50
 package() {
 	cd $srcdir/simonpi
 	install -Dm755 simonpi $pkgdir/usr/bin/simonpi
 	install -Dm755 simonpiemu/runemu $pkgdir/opt/simonpiemu/runemu
-        install -Dm755 simonpiemu/qemu-kernel-simonpi $pkgdir/opt/simonpiemu/qemu-kernel-simonpi 
+        install -Dm755 simonpiemu/qemu-kernel-$KERNELVER $pkgdir/opt/simonpiemu/qemu-kernel-$KERNELVER 
 	sed -i "s/OPT=./OPT=\/opt/g" $pkgdir/usr/bin/simonpi
 }
 
