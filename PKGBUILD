@@ -5,7 +5,7 @@
 
 pkgname=stone-soup-tiles-git
 _pkgname=crawl
-pkgver=0.21.a0.r346.g330ab2c361
+pkgver=0.21.a0.r404.g291f19a919
 pkgrel=1
 pkgdesc="Community maintained variant of Linley's Dungeon Crawl (tiles) - git version"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ conflicts=('crawl' 'stone-soup-tiles')
 source=(git://github.com/crawl/crawl.git
 stone-soup-tiles-git.desktop)
 sha1sums=('SKIP'
-          'e0f7ff16e55f7f038d2d3c7641d8c90195b2ce20')
+          'c490c266b12552e5c9fe9d95707361d36e1ba8e7')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
@@ -37,11 +37,8 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}/crawl-ref/source"
   make install prefix="${pkgdir}/usr" TILES=y SAVEDIR='~/.crawl'
-  mkdir -p $pkgdir/usr/share/applications
-  mkdir -p $pkgdir/usr/share/pixmaps
+  mkdir -p $pkgdir/usr/share/{applications,pixmaps}
   cp ${srcdir}/${_pkgname}/crawl-ref/source/dat/tiles/stone_soup_icon-32x32.png $pkgdir/usr/share/pixmaps/$pkgname.png
   cp $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/
- 
 }
-
 
