@@ -4,13 +4,13 @@
 
 pkgname=banshee
 pkgver=2.6.2
-pkgrel=12
+pkgrel=13
 pkgdesc="Music management and playback for GNOME"
 arch=('i686' 'x86_64')
 url="http://banshee.fm/"
 license=('MIT')
 depends=(libxxf86vm gst-plugins-base-libs mono-addins dbus-sharp-glib libsoup \
-taglib-sharp-git gconf-sharp libmtp mono-zeroconf hicolor-icon-theme \
+taglib-sharp-git gconf-sharp libmtp mono-zeroconf-git hicolor-icon-theme \
 media-player-info gst-plugins-bad mono-upnp gst-plugins-good gvfs libgpod)
 makedepends=('intltool' 'gnome-doc-utils' 'gnome-common')
 optdepends=('gst-plugins-ugly: Extra media codecs'
