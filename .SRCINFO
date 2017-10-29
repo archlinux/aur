@@ -1,0 +1,18 @@
+pkgbase = pixmappy-git
+	pkgdesc = Python interface to gbdes pixel map (astrometry) solutions
+	pkgver = r40.5c82c73
+	pkgrel = 1
+	url = https://github.com/gbernstein/pixmappy
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = python2-numpy
+	depends = python2-future
+	depends = python2-astropy
+	depends = python2-scipy
+	depends = python-aspy-yaml
+	source = pixmappy-git-r40.5c82c73::git+https://github.com/gbernstein/pixmappy
+	md5sums = SKIP
+
+pkgname = pixmappy-git
+
