@@ -1,13 +1,13 @@
 # Maintainer: Johan Rehnberg <cleanrock@gmail.com>
 pkgname=flobby-git
-pkgver=0.2.97.geab89b4
+pkgver=0.2.123.gf207595
 pkgrel=1
 pkgdesc="spring lobby client"
 arch=('i686' 'x86_64')
 url="https://github.com/cleanrock/flobby"
 license=('GPL2')
 groups=()
-depends=('fltk' 'jsoncpp' 'graphicsmagick' 'libxpm' 'libxss' 'boost-libs' 'curl')
+depends=('jsoncpp' 'graphicsmagick' 'libxpm' 'libxss' 'boost-libs' 'curl')
 makedepends=('git' 'cmake' 'boost')
 optdepends=()
 provides=()
