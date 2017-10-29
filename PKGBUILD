@@ -3,12 +3,12 @@
 # Contributor: Dany Martineau <dany.luc.martineau gmail.com>
 
 pkgname=trackballs
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.2.4
+pkgrel=1
 pkgdesc="Simple game similar to the classical game Marble Madness on the Amiga in the 80's"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://trackballs.sourceforge.net/"
+url="https://trackballs.github.io/"
 install=trackballs.install
 depends=('guile' 'sdl2_ttf' 'sdl2_image' 'sdl2_mixer' 'hicolor-icon-theme')
 source=(https://github.com/trackballs/trackballs/archive/v${pkgver}.tar.gz)
@@ -30,4 +30,4 @@ package() {
   install -m644 ../share/icons/trackballs.desktop ${pkgdir}/usr/share/applications
   install -m644 ../share/icons/*.png ${pkgdir}/usr/share/pixmaps
 }
-md5sums=('cbd983214fd22605aad1b382e28db215')
+md5sums=('e95cb7aa9d344daa4e136dcd67b31b5f')
