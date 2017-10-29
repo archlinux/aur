@@ -1,7 +1,7 @@
 # Maintainer: Jordan Rudess <jrudess@gmail.com>
 pkgname=levd-git
 pkgver=r2.fc66618
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon to control NZXT Kraken x61"
 arch=('i686' 'x86_64')
 url="https://github.com/RBlafford/levd"
@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
 	mkdir -p "$srcdir/${pkgname%-git}/build"
-	patch -Np1 -i "$srcdir/${pkgname%-git}.patch"
+	patch -Np1 -i "$srcdir/../${pkgname%-git}.patch"
 }
 
 build() {
