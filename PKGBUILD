@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.3.r101.e9b020bea
+pkgver=0.0.3.r510.c1f08ce58
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
@@ -11,18 +11,18 @@ depends=('alsa-lib' 'gcc-libs' 'glew' 'glibc' 'glu' 'libevdev' 'libgl' 'libpng'
          'libx11' 'openal' 'qt5-base' 'vulkan-icd-loader' 'yaml-cpp' 'zlib'
          'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libncursesw.so'
          'libswresample.so' 'libswscale.so' 'libudev.so')
-makedepends=('boost' 'cereal' 'cmake' 'git' 'llvm')
+makedepends=('boost' 'cereal' 'cmake' 'git')
 provides=('rpcs3')
 conflicts=('rpcs3')
 source=('git+https://github.com/RPCS3/rpcs3.git'
         'rpcs3-common::git+https://github.com/RPCS3/common.git'
-        'rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git#commit=c095a22'
+        'rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git#commit=ca39ce8'
         'rpcs3-pugixml::git+https://github.com/RPCS3/pugixml.git#commit=f205aaf'
-        'git+https://github.com/RPCS3/rsx-debugger.git#commit=3b11b96'
-        'git+https://github.com/kobalicek/asmjit.git#commit=b0dad1a'
+        'git+https://github.com/kobalicek/asmjit.git#commit=1370fe6'
         'git+https://github.com/Microsoft/GSL.git#commit=fc5fce4'
-        'git+https://github.com/KhronosGroup/glslang.git#commit=2921e0c'
-        'git+https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers.git#commit=64d375f')
+        'git+https://github.com/KhronosGroup/glslang.git#commit=cf571f7'
+        'git+https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers.git#commit=85926a3'
+        'git+https://github.com/akrzemi1/Optional.git#commit=f27e790')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -42,15 +42,15 @@ pkgver() {
 prepare() {
   pushd rpcs3
 
-  git submodule init 3rdparty/{GSL,hidapi,pugixml} asmjit rsx-debugger Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
+  git submodule init 3rdparty/{GSL,hidapi,Optional,pugixml} asmjit Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
   git config submodule.asmjit.url ../asmjit
-  git config submodule.hidapi.url ../rpcs3-hidapi
-  git config submodule.GSL.url ../GSL
-  git config submodule.pugixml.url ../rpcs3-pugixml
-  git config submodule.rsx-debugger.url ../rsx-debugger
   git config submodule.glslang.url ../glslang
+  git config submodule.GSL.url ../GSL
+  git config submodule.hidapi.url ../rpcs3-hidapi
+  git config submodule.Optional.url ../Optional
+  git config submodule.pugixml.url ../rpcs3-pugixml
   git config submodule.Vulkan-LoaderAndValidationLayers ../Vulkan-LoaderAndValidationLayers
-  git submodule update 3rdparty/{GSL,hidapi,pugixml} asmjit rsx-debugger Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
+  git submodule update 3rdparty/{GSL,hidapi,Optional,pugixml} asmjit Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
 
   popd
 
