@@ -5,15 +5,15 @@
 pkgname=python-pbkdf2
 _pkgname=pbkdf2
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A module that implements the password-based key derivation function PBKDF2."
 arch=('any')
 url="https://www.dlitz.net/software/python-pbkdf2/"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-optdepends=('python-crypto: to make use of PyCrypto`s HMAC and SHA')
-source=("http://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz"
+optdepends=("python-crypto: to make use of PyCrypto's HMAC and SHA")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         LICENSE)
 md5sums=('40cda566f61420490206597243dd869f'
          '180c44cc3999239185d0523570c61fa8')
