@@ -1,0 +1,17 @@
+pkgbase = itstool-legacy
+	pkgdesc = XML to PO and back again
+	pkgver = 2.0.2+5+g676f3f7
+	pkgrel = 1
+	url = http://itstool.org/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = libxml2
+	provides = itstool
+	conflicts = itstool
+	source = git+https://github.com/itstool/itstool#commit=676f3f738b21ec4d77f300f83d31d2d0eceaddcc
+	sha256sums = SKIP
+
+pkgname = itstool-legacy
+
