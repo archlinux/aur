@@ -1,0 +1,12 @@
+pkgbase = ob-xd
+	pkgdesc = Virtual Analog Synthesizer VST based on the Oberheim OB-X
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/2DaT/Obxd
+	arch = x86_64
+	license = GPL
+	source = http://static.kvraudio.com/files/231/obxd14linux.zip
+	md5sums = 49c189ab77fd998dd99b2467fb46b73f
+
+pkgname = ob-xd
+
