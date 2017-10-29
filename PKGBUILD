@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=xmedcon  
 pkgver=0.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="open source toolkit for medical image conversion"
 url="http://xmedcon.sourceforge.net/"
 arch=('i686' 'x86_64')
@@ -13,6 +13,7 @@ options=('!libtool')
 
 prepare() {
   cd $pkgname-$pkgver
+  autoreconf -i
   sed -i 's+/usr/etc+/etc+' Makefile
 }
 
