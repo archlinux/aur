@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-hg
-pkgver=3.56.1r4209.0ffcfd64cb7e
+pkgver=3.57r4215.bdd53541358f
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
 arch=('x86_64')
@@ -23,10 +23,10 @@ pkgver() {
   printf "%sr%s.%s" $(echo $_pkgver) $(hg identify -n|sed 's/+//') $(hg identify -i|sed 's/+//')
 }
 
-prepare() {
-  cd ff++
-  patch -Np1 < "$srcdir"/longmin.patch
-}
+#prepare() {
+#  cd ff++
+#  patch -Np1 < "$srcdir"/longmin.patch
+#}
 
 build() {
   cd ff++
