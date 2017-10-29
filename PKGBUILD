@@ -7,6 +7,7 @@ url="https://spoofer.caida.org"
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=("libpcap" "protobuf" "qt5-base")
+optdepends=("scamper: advanced traceroute tool")
 install=spoofer.install
 source=("https://www.caida.org/projects/spoofer/downloads/spoofer-${pkgver}.tar.gz"
         "spoofer-gui.desktop"
