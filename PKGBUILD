@@ -7,24 +7,20 @@
 
 pkgname=gnome-commander
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Graphical two-pane filemanager for Gnome'
 arch=('i686' 'x86_64')
 url='http://gcmd.github.io/'
 license=('GPL')
-depends=('python2' 'libgsf' 'exiv2' 'taglib' 'poppler-glib' 'libgnomeui')
-makedepends=('perl-xml-parser' 'gnome-doc-utils' 'intltool')
+depends=('python2' 'libgsf' 'exiv2' 'taglib' 'poppler-glib' 'libgnomeui' 'libunique')
+makedepends=('perl-xml-parser' 'itstool-legacy' 'yelp-tools')
 source=(https://download.gnome.org/sources/gnome-commander/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('d0e73077fe22ae1e00d93f0112e0e019cf40b15419dfa82e51c9d5f30849946b')
 
 build() {
   cd "$pkgname-$pkgver"
-  PYTHON=python2 ./configure \
-	--prefix=/usr \
-	--libdir=/usr/lib \
-	--sysconfdir=/etc \
-	--localstatedir=/var \
-	--enable-python
+  export PYTHON=python2
+  ./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc --localstatedir=/var --enable-python
   make
 }
 
