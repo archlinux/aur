@@ -15,7 +15,7 @@ sha256sums=('4a7a5c2aebe0716417047854267397e24a44d0cce096127411e9ce9ccfeb2c17')
 install=$pkgname.install
 
 pkgver() {
-  echo $(awk '/qlqs-info/ {print $3}' $pkgname.lisp |tr -d - |tr -d \) | tr -d \")
+  echo $(awk '/qlqs-info/ {print $3}' $pkgname.lisp |tr -d - |tr -d \))
 }
 
 package()
