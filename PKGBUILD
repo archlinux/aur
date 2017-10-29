@@ -1,7 +1,7 @@
 # Maintainer: Raimar Buehmann (raimar)
 
 pkgname=lxtask-git
-pkgver=0.1.8.r411.20170815
+pkgver=0.1.8.r411.20171029
 pkgrel=1
 pkgdesc="Lightweight X11 task manager and system monitor for LXDE"
 arch=('i686' 'x86_64')
