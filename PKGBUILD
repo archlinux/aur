@@ -4,13 +4,13 @@
 
 pkgname=godot
 pkgver=2.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('scons' 'clang')
-depends=('libxcursor' 'glu' 'libxinerama' 'freetype2' 'alsa-lib' 'zlib')
+makedepends=('scons' 'clang' 'glu')
+depends=('libxcursor' 'libxinerama' 'freetype2' 'alsa-lib' 'zlib' 'libxrandr')
 conflicts=("godot-git" "godot-pulse")
 _arch=''
 if test "$CARCH" == x86_64; then
@@ -23,10 +23,17 @@ source=(
   "https://github.com/godotengine/godot/archive/${pkgver}-stable.tar.gz"
   godot.desktop
   icon.png
+  py2to3.patch
 )
 sha256sums=('07cf3b01367d5ea53805f144bc60711bd79efb53f1f88d57d6a706e6944de8d7'
             'd2f5ae30b8c0c3fd8a20a451d34e9e9d0ba1b60a39b1f68484a9a74227c83822'
-            'b6bb8e42625414303cf7608f08fe63bd3267486bf7a96586ebab05ade5189785')
+            'b6bb8e42625414303cf7608f08fe63bd3267486bf7a96586ebab05ade5189785'
+            '713a953892b85597bc9dd3385fbeb2b3d4338fb3fc9738bb1901de6129ee909e')
+
+prepare() {
+  cd "${srcdir}"/${pkgname}-${pkgver}-stable
+  patch -Np1 -i "${srcdir}/py2to3.patch"
+}
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}-stable
