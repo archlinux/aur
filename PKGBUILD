@@ -16,10 +16,4 @@ package() {
 
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
   cp readme.txt $pkgdir/usr/share/licenses/$pkgname/
-
-  install -D /dev/stdin $pkgdir/usr/bin/bass-flac <<EOF
-#!/bin/sh
-
-scummvm "\$@" -p /usr/share/bass-flac -e null --output-rate=44100 sky
-EOF
 }
