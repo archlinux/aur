@@ -3,7 +3,7 @@
 pkgname=whatsapp-desktop
 _pkgbase=Whatsapp-Desktop
 pkgrel=1
-pkgver=0.3.12
+pkgver=0.3.13
 _pkgver="v$pkgver"
 pkgdesc="Unofficial whatsapp web desktop client. Build with Electron."
 url="https://github.com/Enrico204/Whatsapp-Desktop"
@@ -17,7 +17,7 @@ source=(
   "whatsapp-desktop.png"
 )
 sha256sums=(
-  'a86a3d240b48c8260a9bb04d6286179622a7b93507e630270aa66cf7444ed257'
+  '9fcfe5728c867fb5605d3e08b248dcd86725236baabccaa3f8fb12e188a4ed68'
   '8153a94ecaff2f7466f1621571505a1f55135299cdcf4604fdfd2e7805cb94dc'
   'c128bdf1366f26b203c2a97b1284d66bd28d63c45812a7456385e1bf4afa27e4'
 )
