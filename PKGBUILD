@@ -1,54 +1,81 @@
-# Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
+# Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-ceilometerclient'
          'python2-ceilometerclient')
-pkgver='2.3.0'
+pkgver='2.9.0'
 pkgrel='1'
 pkgdesc='Python client library for Ceilometer'
 arch=('any')
-url='https://launchpad.net/python-ceilometerclient'
+url="http://docs.openstack.org/developer/${pkgname}/"
 license=('Apache')
-source=("https://pypi.python.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a2a599619dee58bfc7715c8253ae9642053689d43f4f334ffc85285d56ef7596')
-
-makedepends=('python-setuptools'
+makedepends=('git'
+             'python-setuptools'
              'python2-setuptools')
+checkdepends=('python-pbr' 'python2-pbr'
+              'python-iso8601' 'python-iso8601'
+              'python-keystoneauth1' 'python2-keystoneauth1'
+              'python-oslo-i18n' 'python2-oslo-i18n'
+              'python-oslo-serialization' 'python2-oslo-serialization'
+              'python-oslo-utils' 'python2-oslo-utils'
+              'python-prettytable' 'python2-prettytable'
+              'python-requests' 'python2-requests'
+              'python-six' 'python2-six'
+              'python-stevedore' 'python2-stevedore'
+              'python-mock' 'python2-mock'
+              'python-subunit' 'python2-subunit'
+              'python-tempest'
+              'python-testrepository' 'python2-testrepository')
+source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
+md5sums=('SKIP')
+
+prepare() {
+  cp -a "${srcdir}/${pkgname}"{,-py2}
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  python setup.py build
+
+  cd "${srcdir}/${pkgname}-py2"
+  python2 setup.py build
+}
+
+check() {
+  cd "${srcdir}/${pkgname}"
+  python setup.py testr
+
+  cd "${srcdir}/${pkgname}-py2"
+  PYTHON=python2 python2 setup.py testr
+}
 
 package_python-ceilometerclient() {
-    depends=('python-pbr'
-             'python-iso8601'
-             'python-oslo-i18n'
-             'python-oslo-serialization'
-             'python-oslo-utils'
-             'python-prettytable'
-             'python-keystoneauth1'
-             'python-keystoneclient'
-             'python-requests'
-             'python-six'
-             'python-stevedore')
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py \
-        install \
-        --root="${pkgdir}" \
-        --optimize=1
+  depends=('python-pbr'
+           'python-iso8601'
+           'python-keystoneauth1'
+           'python-oslo-i18n'
+           'python-oslo-serialization'
+           'python-oslo-utils'
+           'python-prettytable'
+           'python-requests'
+           'python-six'
+           'python-stevedore')
+  cd "${srcdir}/${pkgname}"
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-ceilometerclient() {
-    depends=('python2-pbr'
-             'python2-iso8601'
-             'python2-oslo-i18n'
-             'python2-oslo-serialization'
-             'python2-oslo-utils'
-             'python2-prettytable'
-             'python2-keystoneauth1'
-             'python2-keystoneclient'
-             'python2-requests'
-             'python2-six'
-             'python2-stevedore')
-    cd "${srcdir}/python-ceilometerclient-${pkgver}"
-    python2 setup.py \
-        install \
-        --root="${pkgdir}" \
-        --optimize=1
-    mv "${pkgdir}"/usr/bin/ceilometer{,2}
+  depends=('python2-pbr'
+           'python2-iso8601'
+           'python2-keystoneauth1'
+           'python2-oslo-i18n'
+           'python2-oslo-serialization'
+           'python2-oslo-utils'
+           'python2-prettytable'
+           'python2-requests'
+           'python2-six'
+           'python2-stevedore')
+  cd "${srcdir}/python-ceilometerclient-py2"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
+
+# vim:set ts=2 sw=2 et:
