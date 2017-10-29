@@ -1,7 +1,7 @@
 # Maintainer: Omar Pakker <archlinux@opakker.nl>
 
 pkgname=ccminer-git
-pkgver=r876.5aa50a4
+pkgver=r901.54d14b1
 pkgrel=1
 pkgdesc="Coin miner using CUDA for nVidia GPUs."
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('ccminer')
 conflicts=('ccminer')
 options=('!emptydirs')
 changelog=
-source=("git://github.com/tpruvot/ccminer.git#branch=linux")
+source=("git://github.com/tpruvot/ccminer.git#branch=cuda-9")
 sha256sums=('SKIP')
 
 pkgver() {
