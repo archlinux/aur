@@ -8,6 +8,7 @@ pkgbase = slurm-llnl-git
 	arch = x86_64
 	license = GPL
 	makedepends = python
+	makedepends = gtk2
 	makedepends = git
 	depends = munge
 	optdepends = hwloc: enables the task/cgroup plugin
