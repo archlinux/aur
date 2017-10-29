@@ -3,7 +3,7 @@
 
 pkgbase=linux-max98090
 _srcname=linux-4.13
-pkgver=4.13.9
+pkgver=4.13.10
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,9 +23,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '22156e82467c7911d226a0a887eba19103434efc104439a3b426a3fa551fb8f2'
+            'b9efa9c6375f79f6a041a5f0666d4ced1a49bfe8c4662d26517a6b4cfd9bf2f6'
             'SKIP'
-            '081ac9b3650b67bace1ac00782448c4bcce8286718ed76b8ec781e6b794b0c52'
+            '9b2aba8f69dd3da381fb6c55a18048f30adb5f1d32b6391b2fe669c56198a2c6'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -65,7 +65,7 @@ prepare() {
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
-  make nconfig # new CLI menu for configuration
+  #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
