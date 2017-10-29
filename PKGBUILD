@@ -11,7 +11,7 @@ arch=('arm' 'armv6h' 'armv7h')
 url="http://www.libretro.com"
 license=('GPL')
 groups=('libretro')
-depends=('mesa' 'mesa-libgl' 'libusb' 'openal' 'sdl2')
+depends=('raspberrypi-firmware' 'libusb' 'openal' 'sdl2')
 makedepends=('git')
 provides=('retroarch' 'retroarch-git')
 optdepends=('libretro-desmume: Nintendo DS core'
@@ -44,6 +44,8 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
+
+  export PKG_CONFIG_PATH="/opt/vc/lib/pkgconfig:$PKG_CONFIG_PATH"
 
   ./configure --prefix=/usr --enable-neon --enable-dispmanx --enable-floathard --enable-udev --disable-ffmpeg \
     --disable-cg \
