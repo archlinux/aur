@@ -1,13 +1,14 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=freeserf-git
-pkgver=0.2_rc1_318_g6f61d1e
+pkgver=0.2_rc1_340_g8e1eb94
 pkgrel=1
 pkgdesc="Opensource Settlers 1 clone (requires original game file)"
 arch=('i686' 'x86_64')
 url="http://jonls.dk/freeserf/"
 license=('GPL3')
-depends=('sdl2' 'sdl2_mixer') # Add libxmp to array for amiga audio playback
-makedepends=('git' 'cmake')
+depends=('sdl2' 'sdl2_mixer' 'sdl2_image')
+makedepends=('git' 'cmake' 'libxmp')
+optdepends=('libxmp: Amiga audio playback')
 install=freeserf.install
 source=(git+"https://github.com/freeserf/freeserf.git")
 md5sums=('SKIP')
