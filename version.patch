@@ -1,28 +1,28 @@
-diff -Naur guile.orig/GUILE-VERSION guile.new/GUILE-VERSION
---- guile.orig/GUILE-VERSION	2017-04-29 03:34:57.303108817 +0200
-+++ guile.new/GUILE-VERSION	2017-04-29 03:35:18.832977611 +0200
-@@ -2,10 +2,10 @@
+diff --git a/GUILE-VERSION b/GUILE-VERSION
+index a44c254fb..0db8a3b45 100644
+--- a/GUILE-VERSION
++++ b/GUILE-VERSION
+@@ -1,8 +1,8 @@
+ # -*-shell-script-*-
  
  # Note: `GUILE_VERSION' is defined in `configure.ac' using `git-version-gen'.
- GUILE_MAJOR_VERSION=2
--GUILE_MINOR_VERSION=2
-+GUILE_MINOR_VERSION=3
- GUILE_MICRO_VERSION=2
+-GUILE_MAJOR_VERSION=2
+-GUILE_MINOR_VERSION=3
++GUILE_MAJOR_VERSION=3
++GUILE_MINOR_VERSION=0
+ GUILE_MICRO_VERSION=0
  
--GUILE_EFFECTIVE_VERSION=2.2
-+GUILE_EFFECTIVE_VERSION=2.3
- 
- 
- # All of the shared lib versioning info.  Right now, for this to work
-diff -Naur guile.orig/meta/guile-config.in guile.new/meta/guile-config.in
---- guile.orig/meta/guile-config.in	2017-04-29 03:34:57.413108146 +0200
-+++ guile.new/meta/guile-config.in	2017-04-29 03:51:46.313688531 +0200
-@@ -77,7 +77,7 @@
+ GUILE_EFFECTIVE_VERSION=3.0
+diff --git a/meta/guile-config.in b/meta/guile-config.in
+index b3e4c3d94..5236476c4 100755
+--- a/meta/guile-config.in
++++ b/meta/guile-config.in
+@@ -77,7 +77,7 @@ exec "@installed_guile@" -e main -s $0 "$@"
      (dle "  " p " --help      - show usage info (this message)")
      (dle "  " p " --help SUBCOMMAND - show help for SUBCOMMAND")))
  
 -(define guile-module "guile-2.2")
-+(define guile-module "guile-2.3")
++(define guile-module "guile-3.0")
  
  (define (pkg-config . args)
    (let* ((real-args (cons %pkg-config-program args))
