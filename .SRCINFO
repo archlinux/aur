@@ -1,0 +1,58 @@
+pkgbase = linux-hardened-apparmor
+	pkgdesc = linux-hardened with apparmor and audit enabled
+	pkgver = 4.13.10.a
+	pkgrel = 1
+	url = https://github.com/copperhead/linux-hardened
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	replaces = linux-grsec
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.13.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.13.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.13.10.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.13.10.sign
+	source = https://github.com/thestinger/linux-hardened/releases/download/4.13.10.a/linux-hardened-4.13.10.a.patch
+	source = https://github.com/thestinger/linux-hardened/releases/download/4.13.10.a/linux-hardened-4.13.10.a.patch.sig
+	source = config.x86_64
+	source = 90-linux.hook
+	source = linux.preset
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = 65EEFE022108E2B708CBFCF7F9E712E59AF5F22A
+	sha256sums = 2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c
+	sha256sums = SKIP
+	sha256sums = b9efa9c6375f79f6a041a5f0666d4ced1a49bfe8c4662d26517a6b4cfd9bf2f6
+	sha256sums = SKIP
+	sha256sums = dd230cdc25a5ebaf45a91b57e03696b6af8fb2c02ccb826a12a7fc0f28c58857
+	sha256sums = SKIP
+	sha256sums = 3d9bb7014b9e6f3a1647769954bc9f2ee3f5389ecb06ddb0269ba40f251fe5e8
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+
+pkgname = linux-hardened-apparmor
+	pkgdesc = The Linux-hardened-apparmor kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-hardened-apparmor.preset
+
+pkgname = linux-hardened-apparmor-headers
+	pkgdesc = Header files and scripts for building modules for Linux-hardened-apparmor kernel
+
+pkgname = linux-hardened-apparmor-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-hardened-apparmor kernel
+
