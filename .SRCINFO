@@ -1,0 +1,23 @@
+pkgbase = sparforte-git
+	pkgdesc = scripting language
+	pkgver = 2.1.r31.ga05bf87
+	pkgrel = 1
+	url = http://www.sparforte.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc-ada
+	depends = sdl_image
+	depends = glu
+	depends = readline
+	depends = postgresql-libs
+	provides = sparforte
+	conflicts = sparforte
+	source = git+https://github.com/kburtch/SparForte
+	source = config.linux
+	sha256sums = SKIP
+	sha256sums = 2a9b64a0fdba35f414821ff3a5db7bd4ec4b54bff76714d41eb5928093e4bd69
+
+pkgname = sparforte-git
+

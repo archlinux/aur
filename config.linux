@@ -1,0 +1,141 @@
+#!/bin/sh --
+# config.linux - linux specific configuration for sparforte
+
+# enables opengl sdl1 postgresql readline
+
+# NOTE
+#   Essentially by creating this I can limit the amount of dependencies needed
+#   and other damage sparforte's configure script can do such as calling sudo.
+
+readonly startdir=$PWD
+
+CC=gcc
+CPU_FLAG=-march
+PREFIX=/usr
+MANPREFIX=/usr
+GMAKETYPE=make
+
+case $(uname -m) in
+    i686)   CPU=i686 ;;
+    x86_64) CPU=x86-64
+esac
+
+prepare() {
+    local ext=${1##*.}
+    printf -- '%s: updating...\n' "$1"
+    cp -- "$1".orig temp."$ext"
+    if gnatprep -DPOSTGRES=true -DMYSQL=false -DOPENGL=true -DREADLINE=true -DSOUND=false \
+                -DGCGI=false -DBDB=false -DAPQ=true temp."$ext" "$1" 2> /dev/null; then
+        rm -- temp."$ext" 2> /dev/null
+    fi
+}
+
+cd "$startdir"
+
+cp -v src/os_bindings/spar_linux.ads src/spar_os.ads
+cp -v src/scanner-calendar-latest.ads src/scanner-calendar.ads
+cp -v src/scanner-calendar-latest.adb src/scanner-calendar.adb
+
+# sdl1
+SDLLIBS=$(pkg-config --libs sdl)
+SDLINCL=$(pkg-config --cflags sdl)
+
+SDLLIBSTYPE="$SDLLIBS -lSDL_image"
+SDLINCLTYPE=$SDLINCL
+
+case $CPU in
+    i686)   cp -v src/spar_os-sdl-32bit.ads src/spar_os-sdl.ads ;;
+    x86-64) cp -v src/spar_os-sdl-64bit.ads src/spar_os-sdl.ads
+esac
+
+# opengl
+MESALIBSTYPE=$(pkg-config --libs gl glu)
+MESAINCLTYPE=$(pkg-config --cflags gl glu)
+
+# gstreamer
+# Disabling gstreamer for now:
+#   ./parser_sound.o: In function `parser_sound__parseplay':
+#   parser_sound.adb:(.text+0xe08): undefined reference to `play_uri'
+#   parser_sound.adb:(.text+0xf27): undefined reference to `gst_error'
+#   ./parser_sound.o: In function `parser_sound__startupsound':
+#   parser_sound.adb:(.text+0x2528): undefined reference to `startup_gstreamer'
+#   collect2: error: ld returned 1 exit status
+#   gnatlink: error when calling /usr/bin/gcc
+# GSTREAMERFLAG=-DGSTREAMER
+# GSTREAMERLIBS=$(pkg-config --cflags --libs gstreamer-1.0)
+GSTREAMERFLAG=
+GSTREAMERLIBS=
+
+# postgresql
+PGLIBSSUB=$(pkg-config --cflags --libs libpq)
+
+APQMAKESUB='$(MAKE) -C apq-2.1'
+APQLIBSSUB='-L./apq-2.1'
+APQINCLSSUB='-I./apq-2.1'
+
+# readline
+RLINCL='-I./areadline'
+RLLIBS='-lreadline'
+
+cd "$startdir"/src/apq-2.1
+HAVE_PG=1 ./configure
+
+touch c_gstreamer.c
+
+cd "$startdir"/src
+prepare world.ads
+prepare user_io-getline.adb
+prepare scanner_res.adb
+prepare scanner_res.ads
+prepare parser.adb
+prepare builtins.adb
+prepare parser_db.adb
+prepare parser_dbm.adb
+prepare parser_mysql.adb
+prepare parser_mysqlm.adb
+prepare parser_sound.adb
+prepare parser_pen.adb
+prepare parser_gnat_cgi.adb
+prepare parser_bdb.adb
+prepare parser_btree_io.adb
+prepare parser_hash_io.adb
+
+sed "s!CPUFLAG!$CPU_FLAG!g
+     s!CCTYPE!$CC!g
+     s!^CPU=!&$CPU!g
+     s!CPUTYPE!$ARCH!g
+     s!MANPREFIXSUB!$MANPREFIX!g
+     s!PREFIXSUB!$PREFIX!g
+     s!GMAKETYPE!$GMAKETYPE!g
+     s!SDLLIBSTYPE!$SDLLIBSTYPE!g
+     s!SDLINCLTYPE!$SDLINCLTYPE!g
+     s!CFLAGSTYPE!$CFLAGSTYPE!g
+     s!PGLIBSSUB!$PGLIBSSUB!g
+     s!MYSQLLIBSSUB!$MYSQLLIBSSUB!g
+     s!APQLIBSSUB!$APQLIBSSUB!g
+     s!APQINCLSSUB!$APQINCLSSUB!g
+     s!SDLINCLSSUB!$SDLINCLSSUB!g
+     s!APQMAKESUB!$APQMAKESUB!g
+     s!FASTCGISUB!$FASTCGISUB!g
+     s!GSTREAMERLIBSSUB!$GSTREAMERLIBS!g
+     s!GSTREAMERFLAGSUB!$GSTREAMERFLAG!g
+     s!GSTREAMEROUTSUB!$GSTREAMEROUT!g
+     s!MESAINCLSUB!$MESAINCLTYPE!g
+     s!MESALIBSSUB!$MESALIBSTYPE!g
+     s!BDBSUB!$BDBLIBS!g
+     s!BDBINCLSUB!$BDBINCL!g
+     s!RLINCLSUB!$RLINCL!g
+     s!RLLIBSSUB!$RLLIBS!g" < GNUmakefile.orig > GNUmakefile
+
+cd "$startdir"/src/areadline
+sed "s!RLINCLSUB!$RLINCL!g
+     s!RLLIBSSUB!$RLLIBS!g" < GNUmakefile.orig > GNUmakefile
+
+cd "$startdir"
+sed "s!CPUFLAG!$CPU_FLAG!g
+     s!CCTYPE!$CC!g
+     s!CPUTYPE!$ARCH!g
+     s!GMAKETYPE!$GMAKETYPE!g
+     s!CFLAGSTYPE!$CFLAGSTYPE!g
+     s!MANPREFIXSUB!$MANPREFIX!g
+     s!PREFIXSUB!$PREFIX!g" < GNUmakefile.orig > GNUmakefile
