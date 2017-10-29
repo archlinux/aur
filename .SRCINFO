@@ -1,0 +1,39 @@
+pkgbase = linux-rock-kernel-driver
+	pkgver = roc.1.6.2.r1.gbd5536a8fd36
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	options = !strip
+	source = git+https://github.com/RadeonOpenCompute/ROCK-Kernel-Driver.git
+	source = linux-rock-kernel-driver.preset
+	sha256sums = SKIP
+	sha256sums = ffc0e1612e0121b2818f31be0f801ed7c529dcfef88d59205f548bad54ae471a
+
+pkgname = linux-rock-kernel-driver
+	pkgdesc = The Linux kernel and modules (AMD Radeon Open Compute)
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-rock-kernel-driver.preset
+
+pkgname = linux-rock-kernel-driver-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
+	provides = linux-headers
+
+pkgname = linux-rock-kernel-driver-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
+	provides = linux-docs
+
