@@ -12,12 +12,13 @@
 _use_clang=1     # Use clang compiler (downloaded binaries from google). Results in faster build and smaller chromium.
 _use_ccache=0    # Use ccache when build.
 _debug_mode=0    # Build in debug mode.
+_use_wayland=0   # Build Wayland NOTE: extremely experimental and don't work at this moment
 
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=63.0.3239.18
+pkgver=64.0.3251.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
@@ -76,15 +77,16 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-dev.svg'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc5-r4.patch'
+        'chromium-gcc5-r5.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-clang-r1.patch'
         # Misc Patches
-        'chromium-intel-vaapi_r15.diff.base64::https://chromium-review.googlesource.com/changes/532294/revisions/15/patch?download'
+#         'chromium-intel-vaapi_r15.diff.base64::https://chromium-review.googlesource.com/changes/532294/revisions/15/patch?download'
+        'chromium-intel-vaapi_r16.diff.patch'
         'https://raw.githubusercontent.com/sjnewbury/gentoo-playground/master/www-client/chromium/files/chromium-intel-vaapi-fix.patch'
-        'chromium-webrtc-math-r1.diff.base64::https://webrtc-review.googlesource.com/changes/9384/revisions/3/patch?download' # https://webrtc-review.googlesource.com/c/src/+/9384
         # Patch from crbug (chromium bugtracker) or Arch chromium package
         'chromium-widevine-r1.patch'
-        'chromium-exclude_unwind_tables.patch.base64::https://chromium-review.googlesource.com/changes/712575/revisions/1/patch?download' # https://bugs.archlinux.org/task/55914
+#         'chromium-exclude_unwind_tables.patch.base64::https://chromium-review.googlesource.com/changes/712575/revisions/1/patch?download' # https://bugs.archlinux.org/task/55914
+        'chromium-exclude_unwind_tables_r2.patch.patch'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -92,15 +94,16 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             # Patch form Gentoo
             'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
-            '6f525ea6b22a432b1c2cdc2bff8482a30b76c7ada606d9f333fc7f3caf2841a3'
+            'SKIP'
             'ab5368a3e3a67fa63b33fefc6788ad5b4a79089ef4db1011a14c3bee9fdf70c6'
             # Misc Patches
-            'cb4933db92b669696201b2866ec9b4942466a849b94b13463d8331284d09a2d1'
+#             'cb4933db92b669696201b2866ec9b4942466a849b94b13463d8331284d09a2d1'
+            'SKIP'
             'a688de2b3a7183ebf9eb25108b0d28a8c6228cc71c8e3519062a51224f5b3488'
-            'c9d97359fe35224093e57a773e2b01cafd7564f82e0f783a12063e23927673da'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
-            'd4a99239701256edb37ef3a5504fa87ca2219349834cbf59b9fe42bf7ac496d8'
+#             'd4a99239701256edb37ef3a5504fa87ca2219349834cbf59b9fe42bf7ac496d8'
+            'SKIP'
             )
 options=('!strip')
 install=chromium-dev.install
@@ -121,11 +124,11 @@ _google_default_client_secret="0ZChLK6AxeA3Isu96MkwqDR4"
 # VULKAN!! (seems only build with 64 bits) # https://crbug.com/582558 NOTE: disabled by default
 if [ "${CARCH}" = "i686" ]; then
   _build_nacl=0
-  _nacl="false"
+  _nacl=false
 elif [ "${CARCH}" = "x86_64" ]; then
   _build_nacl=1
-  _nacl="true"
-  #_vulkan=1
+  _nacl=true
+  _vulkan=0
   makedepends+=('ncurses5-compat-libs')
 fi
 
@@ -193,6 +196,7 @@ _keeplibs=(
            'third_party/flatbuffers'
            'third_party/flot'
            'third_party/freetype'
+           'third_party/glslang'
            'third_party/glslang-angle'
            'third_party/google_input_tools'
            'third_party/google_input_tools/third_party/closure_library'
@@ -222,6 +226,7 @@ _keeplibs=(
            'third_party/lzma_sdk'
            'third_party/markupsafe'
            'third_party/mesa'
+           'third_party/metrics_proto'
            'third_party/modp_b64'
            'third_party/mt19937ar'
            'third_party/node'
@@ -244,11 +249,13 @@ _keeplibs=(
            'third_party/protobuf/third_party/six'
            'third_party/qcms'
            'third_party/sfntly'
+           'third_party/shaderc'
            'third_party/skia'
            'third_party/skia/third_party/gif'
            'third_party/skia/third_party/vulkan'
            'third_party/smhasher'
            'third_party/spirv-headers'
+           'third_party/SPIRV-Tools'
            'third_party/spirv-tools-angle'
            'third_party/sqlite'
            'third_party/swiftshader'
@@ -303,13 +310,16 @@ _flags=(
         'use_custom_libcxx=false'
         )
 
+if [ "$_wayland" = "1" ]; then
+  _flags+=(
+           'use_ozone=true'
+           'use_xkbcommon=true'
+           'enable_package_mash_services=true'
+           'enable_vulkan_wayland_client=true'
+           )
+fi
 if [ "$_vulkan" = "1" ]; then
   _flags+=('enable_vulkan=true')
-  _keeplibs+=(
-              'third_party/SPIRV-Tools'
-              'third_party/glslang'
-              'third_party/shaderc'
-              )
 fi
 
 # Enable VAAPI, see https://chromium-review.googlesource.com/532294
@@ -325,14 +335,14 @@ optdepends+=(
 _use_system=(
              'ffmpeg'
              'flac'
-#             'freetype'    # https://bugs.chromium.org/p/pdfium/issues/detail?id=733
-#             'harfbuzz-ng' # freetype and harfbuzz needs update at same time, or both or none. disable due freetype bug. link avobe
-#             'icu'         # https://crbug.com/678661
+#              'freetype'    # https://bugs.chromium.org/p/pdfium/issues/detail?id=733
+#              'harfbuzz-ng' # freetype and harfbuzz needs update at same time, or both or none. disable due freetype bug. link avobe
+#              'icu'         # https://crbug.com/678661
              'libdrm'
-#             'libevent'    # Get segfaults and other problems https://bugs.gentoo.org/593458
+#              'libevent'    # Get segfaults and other problems https://bugs.gentoo.org/593458
              'libjpeg'
              'libpng'
-#             'libvpx'      # Needs update
+#              'libvpx'      # Needs update
              'libwebp'
              'libxml'
              'libxslt'
@@ -398,19 +408,17 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r2.patch"
+
   # Fix build with gcc 7(?)
-  patch -p1 -i "${srcdir}/chromium-gcc5-r4.patch"
-  # Better support for clang
-  patch -p1 -i "${srcdir}/chromium-clang-r1.patch"
+  patch -p1 -i "${srcdir}/chromium-gcc5-r5.patch"
+
   # Pats to chromium dev's about why always they forget add/remove missing build rules
   # Done this time :D
 
   # Misc Patches:
-  # Fail build: https://webrtc-review.googlesource.com/c/src/+/9384
-  base64 -d "${srcdir}/chromium-webrtc-math-r1.diff.base64" | patch -d third_party/webrtc -p1 -i -
 
   # https://crbug.com/710701
-  _chrome_build_hash=$(curl -s https://chromium.googlesource.com/chromium/src.git/+/${pkgver}?format=TEXT | base64 -d | grep -Po '^parent \K[0-9a-f]{40}$')
+  _chrome_build_hash=$(curl -s "https://chromium.googlesource.com/chromium/src.git/+/${pkgver}?format=TEXT" | base64 -d | grep -Po '^parent \K[0-9a-f]{40}$')
   if [[ -z $_chrome_build_hash ]]; then
     error "Unable to fetch Chrome build hash."
     return 1
@@ -424,16 +432,23 @@ prepare() {
   fi
 
   # Apply VAAPI patch
-  base64 -d "${srcdir}/chromium-intel-vaapi_r15.diff.base64" | patch -p1 -i -
+  #base64 -d "${srcdir}/chromium-intel-vaapi_r15.diff.base64" | patch -p1 -i -
+  patch -p1 -i "${srcdir}/chromium-intel-vaapi_r16.diff.patch"
+  # needs generate gpu_lists_version.h by hand (?) # taked from DEPS files
+  python2 build/util/lastchange.py -m GPU_LISTS_VERSION --revision-id-only --header gpu/config/gpu_lists_version.h
 
   # Patch from crbug (chromium bugtracker) or Arch chromium package
 
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
-  sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
+  sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i third_party/widevine/cdm/stub/widevine_cdm_version.h
 
   # https://bugs.archlinux.org/task/55914
-  base64 -d "${srcdir}/chromium-exclude_unwind_tables.patch.base64" | patch -p1 -i -
+  #base64 -d "${srcdir}/chromium-exclude_unwind_tables.patch.base64" | patch -p1 -i -
+  patch -p1 -i "${srcdir}/chromium-exclude_unwind_tables_r2.patch.patch"
+
+  #Attemp to fix build https://chromium-review.googlesource.com/c/chromium/src/+/724122
+  sed '6a#include <cmath>' -i components/machine_intelligence/generic_logistic_regression_inference.cc
 
   # Setup nodejs dependency
   mkdir -p third_party/node/linux/node-linux-x64/bin/
@@ -475,7 +490,7 @@ prepare() {
   if [ "${_use_ccache}" = "1" ]; then
     export CCACHE_CPP2=yes
     export CCACHE_SLOPPINESS=time_macros
-    _ccache='ccache'
+    _ccache=ccache
     _ccache_flags='-Qunused-arguments'
   fi
 
@@ -485,10 +500,10 @@ prepare() {
              'is_clang=false'
              'clang_use_chrome_plugins=false'
              )
-    _c_compiler="gcc"
-    _cpp_compiler="g++"
-    CFLAGS+=" -fno-delete-null-pointer-checks"
-    CXXFLAGS+=" -fno-delete-null-pointer-checks"
+    _c_compiler=gcc
+    _cpp_compiler=g++
+    CFLAGS+=' -fno-delete-null-pointer-checks'
+    CXXFLAGS+=' -fno-delete-null-pointer-checks'
   }
 
   if [ "${_use_clang}" = "0" ]; then
