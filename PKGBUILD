@@ -35,6 +35,4 @@ package() {
 
   # install license
   install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # symlink binary to /usr/bin
 }
