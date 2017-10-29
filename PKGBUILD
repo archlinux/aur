@@ -1,7 +1,7 @@
 # Maintainer: koneu <koneu93 AT googlemail DOT com>
 
 pkgname=skype-secure
-pkgver=3
+pkgver=3.01
 pkgrel=1
 arch=(any)
 pkgdesc="Restricting Skype for Linux access"
@@ -24,7 +24,7 @@ package() {
   install -dm 750 "$pkgdir/etc/sudoers.d"
   install -m 440 "$startdir/05sskype" "$pkgdir/etc/sudoers.d/05sskype"
   
-  install -Dm 644 "$startdir/client.conf" "$pkgdir/etc/default/sskype/.pulse/client.conf"
+  install -Dm 644 "$startdir/client.conf" "$pkgdir/etc/default/sskype/.config/pulse/client.conf"
 
   install -Dm 644 "$startdir/sskype.desktop" "$pkgdir/usr/share/applications/sskype.desktop"
 }
