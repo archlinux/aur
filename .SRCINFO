@@ -1,4 +1,4 @@
-pkgbase = mono-zeroconf
+pkgbase = mono-zeroconf-git
 	pkgdesc = A cross platform Zero Configuration Networking library for Mono and .NET.
 	pkgver = Mono.Zeroconf.0.9.0.r9.g6132666
 	pkgrel = 1
@@ -7,9 +7,10 @@ pkgbase = mono-zeroconf
 	license = GPL
 	depends = mono
 	depends = avahi
+	replaces = mono-zeroconf
 	options = !makeflags
 	source = git+https://github.com/arfbtwn/Mono.Zeroconf#branch=feature/dbus-sharp
 	md5sums = SKIP
 
-pkgname = mono-zeroconf
+pkgname = mono-zeroconf-git
 
