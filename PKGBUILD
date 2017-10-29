@@ -21,8 +21,8 @@ depends=('gtk3>=3.20'
      'gst-plugins-bad'
      'gst-libav'
      'gspell>=1.0'
-     'noto-fonts-emoji'
      'librsvg')
+optdepends=('noto-fonts-emoji: Emoji support')
 makedepends=('vala>=0.28' 'meson')
 source=(https://github.com/baedert/corebird/archive/${pkgver}.tar.gz)
 sha256sums=('3fa248b4e00b3975f92995031d7c2659954cf8ef212c2c699b5ff409f4100edd')
