@@ -1,7 +1,7 @@
 pkgname=szsol-git
-pkgver=r36.a14b067
-pkgrel=2
-pkgdesc="ncurses clone of Shenzhen Solitaire"
+pkgver=r37.5b4c757
+pkgrel=1
+pkgdesc="ncurses clone of Shenzhen Solitaire card game"
 arch=('any')
 url="https://github.com/usrshare/szsol"
 license=('MIT')
