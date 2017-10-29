@@ -14,6 +14,11 @@ optdepends=('python' 'ruby' 'jdk8-openjdk')
 source=(https://sigrok.org/download/source/libsigrok/libsigrok-$pkgver.tar.gz)
 sha1sums=('51dbf0728804f1df9fd76c6136ee48a157298833')
 
+prepare() {
+  cd libsigrok-$pkgver
+  sed -i 's|, MODE="660", GROUP="plugdev"||' contrib/z60_libsigrok.rules
+}
+
 build() {
   cd libsigrok-$pkgver
  ./configure --prefix=/usr
