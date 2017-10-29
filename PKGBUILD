@@ -18,7 +18,7 @@ depends=('alsa-lib' 'cairo' 'ffmpeg' 'freetype2' 'glib2' 'icu' 'jack'
          'libxcursor' 'libxrandr' 'libxrender' 'openssl' 'pango'
          'v4l-utils' 'pepper-flash')
 makedepends=('libdrm' 'cmake' 'ragel')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=($pkgname-$pkgver.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
 sha1sums=('e7f9bf791a3d70e386eb98f3e7c6478a891bff29')
 
 build() {
