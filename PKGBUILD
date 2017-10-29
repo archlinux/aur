@@ -3,7 +3,7 @@
 pkgname=gnome-encfs-manager-bin
 _pkgname=gnome-encfs-manager
 pkgver=1.8.19
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use manager and mounter for encfs stashes"
 arch=('x86_64')
 replaces=('gnome-encfs-manager')
@@ -12,8 +12,8 @@ depends=('encfs' 'libgee06' 'gtk3' 'libsm' 'libgnome-keyring' 'libappindicator-g
 makedepends=('binutils' 'tar')
 url="https://launchpad.net/gencfsm"
 
-source=("http://download.opensuse.org/repositories/home:/moritzmolch:/gencfsm/Debian_8.0/amd64/gnome-encfs-manager_${pkgver}_amd64.deb")
-sha256sums=('bca97453b42d9a2f78cdba95f38bcd040c0f94f66d535d0387a04c5a757b651f')
+source=("http://download.opensuse.org/repositories/home:/moritzmolch:/gencfsm/Debian_9.0/amd64/gnome-encfs-manager_${pkgver}_amd64.deb")
+sha256sums=('3a7fbd896d7e01b95a2619c4f5012dd43c3d21783abd3082e85a937da628d9a2')
 
 prepare() {
     cd ${srcdir}
