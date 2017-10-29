@@ -1,7 +1,7 @@
 # Maintainer: Zdeněk Janeček <jan.zdenek@gmail.com>
 pkgname=entangle
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Entangle is an application which uses GTK and libgphoto2 to provide a graphical interface for tethered photography with digital cameras."
 arch=('i686' 'x86_64')
 url="http://entangle-photo.org/"
@@ -14,7 +14,7 @@ md5sums=('d9fb32a9bbaff3ef76d524c26d06fda1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
+  sed -i "s/'libraw_r'/'raw_r'/g" meson.build
   meson -Denable-gtk-doc=true build-dir --prefix=/usr
   ninja -C build-dir all
 }
