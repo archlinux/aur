@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-hu
-pkgver=2.46
+pkgver=2.48
 pkgrel=1
 _lang=hu
 pkgdesc="Hungarian language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha256sums=('7366d80af72e1e5c46275b0f3f4efa36290b59ac2c24dc4b2debf06dbdc469fe')
+sha256sums=('2f1138ca9a9d1321dbe38d24cc0b6994a4a1569eb2bd4baebbcec00ed0e5355e')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
