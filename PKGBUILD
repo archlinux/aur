@@ -3,12 +3,12 @@
 
 pkgname=python-imapnotify
 pkgver=0.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Execute scripts on new messages using IDLE imap command (Python version)'
 arch=('any')
 url='https://github.com/a-sk/python-imapnotify'
 license=('custom')
-depends=('python>=3.5' 'python-pytest-runner>=2.0' 'python-pytest-runner<3' 'python-aioimaplib>=0.5.14' 'python-aioimaplib<1.0.0' 'python-boltons<17.0.0' 'python-boltons>=16.5.0')
+depends=('python>=3.5' 'python-pytest-runner>=2.0' 'python-pytest-runner<3.0' 'python-aioimaplib>=0.5.14' 'python-aioimaplib<1.0.0' 'python-boltons<17.0.0' 'python-boltons>=16.5.0')
 makedepends=('python-setuptools')
 install=$pkgname.install
 source=("https://github.com/a-sk/${pkgname}/archive/${pkgver}.tar.gz"
