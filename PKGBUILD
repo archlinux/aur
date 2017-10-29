@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/das-labor/neopg"
 license=('BSD-2')
 depends=('botan' 'zlib' 'sqlite')
-makedepends=('git' 'cmake' 'lcov' 'gcovr')
+makedepends=('git' 'cmake')
 optdepends=('gnutls'
             'bzip2'
             'readline'
