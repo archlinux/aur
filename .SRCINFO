@@ -1,0 +1,17 @@
+pkgbase = meteocons
+	pkgdesc = A set of over 40 weather icons
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.alessioatzeni.com/meteocons/
+	arch = any
+	license = custom
+	depends = fontconfig
+	source = http://www.alessioatzeni.com/meteocons/res/download/meteocons-font.zip
+	source = License.txt
+	sha256sums = a9550332979f36a572ee0693ab1c07e44e47d5ac72c424f6db1e81cca2a1c74b
+	sha256sums = 7aa921e93c2849ddb4e1a383063bf23c81a9f1dd1aebd3674caceb061b51d104
+
+pkgname = ttf-meteocons
+
+pkgname = otf-meteocons
+
