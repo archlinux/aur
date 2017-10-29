@@ -12,9 +12,8 @@ makedepends=('mercurial' 'flex-git' 'texlive-core')
 provides=("freefem++=$_pkgver")
 conflicts=('freefem++')
 backup=('etc/freefem++.pref')
-source=('hg+http://www.freefem.org/ff++/ff++/' longmin.patch)
-sha256sums=('SKIP'
-            'b8099ce2a2e2a72d117ff0582abb200ee34278b44b450f87169690a3f970f3e5')
+source=('hg+http://www.freefem.org/ff++/ff++/')
+sha256sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
@@ -22,11 +21,6 @@ pkgver() {
   _pkgver=$(awk -F, '/AC_INIT/ {print $2}' configure.ac | tr - .) 
   printf "%sr%s.%s" $(echo $_pkgver) $(hg identify -n|sed 's/+//') $(hg identify -i|sed 's/+//')
 }
-
-#prepare() {
-#  cd ff++
-#  patch -Np1 < "$srcdir"/longmin.patch
-#}
 
 build() {
   cd ff++
