@@ -1,0 +1,16 @@
+--- cmake-modules/FindNIFTI.cmake.bak	2017-10-28 08:50:48.314047843 +0200
++++ cmake-modules/FindNIFTI.cmake	2017-10-28 08:51:53.744047118 +0200
+@@ -1,11 +1,11 @@
+ # FindNIFTI.cmake module
+ 
+ 
+-FIND_PATH(NIFTI_INCLUDE_DIR nifti1_io.h /usr/include /usr/local/include /usr/local/bic/include)
++FIND_PATH(NIFTI_INCLUDE_DIR nifti1_io.h /usr/include/nifti /usr/include /usr/local/include /usr/local/bic/include)
+ 
+ FIND_LIBRARY(NIFTI_LIBRARY NAMES niftiio PATHS /usr/lib /usr/local/lib /usr/local/bic/lib)
+ 
+-FIND_PATH(ZNZ_INCLUDE_DIR znzlib.h /usr/include /usr/local/include /usr/local/bic/include)
++FIND_PATH(ZNZ_INCLUDE_DIR znzlib.h /usr/include/nifti /usr/include /usr/local/include /usr/local/bic/include)
+ 
+ FIND_LIBRARY(ZNZ_LIBRARY NAMES znz PATHS /usr/lib /usr/local/lib /usr/local/bic/lib)
+ 
