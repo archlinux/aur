@@ -1,6 +1,6 @@
 # Maintainer: Marco Cameriero <aur@marcocameriero.net>
 pkgname=simplylock-git
-pkgver=0.3.r0.gbc10921
+pkgver=0.3.r2.gff51550
 pkgrel=1
 pkgdesc="A simple and lightweight Linux console locking tool."
 arch=('i686' 'x86_64')
