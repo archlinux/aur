@@ -33,11 +33,12 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
+  cd "$_gitname"
   sed -i "
     /^if/s/not//
     /DATA_DIR =/s/$/[1:]/
     /^EXTENSION_DIR =/s/path\\.join(/&DEST_DIR,/
-  " "$_gitname"/meson_post_install.py
+  " meson_post_install.py
 }
 
 build() {
