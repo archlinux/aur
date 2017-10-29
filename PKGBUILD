@@ -1,7 +1,7 @@
 # Maintainer: Thomas Gatzweiler <thomas.gatzweiler@gmail.com>
 
 pkgname=wsjtx
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3')
 makedepends=(cmake asciidoc asciidoctor)
 depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat gcc-fortran libpulse libpng fftw)
 source=(http://physics.princeton.edu/pulsar/K1JT/$pkgname-$pkgver.tgz)
-md5sums=('e4db733da2e61ac72b39840f143db0ac')
+md5sums=('13b863d113b864238cf1b07743af39e9')
 
 build() {
     mkdir -p $srcdir/build
