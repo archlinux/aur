@@ -38,6 +38,6 @@ build()
 
 package()
 {
-  cd "${srcdir}/${_gitname}/build/rc"
+  cd "${srcdir}/${_gitname}/build/src"
   install -Dm 755 neopg "${pkgdir}/usr/bin/neopg"
 }
