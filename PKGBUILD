@@ -9,7 +9,7 @@ pkgver=17.02.8.1
 # this will substitute any full stops (.) with hyphens
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://www.schedmd.com"
 license=('GPL')
 depends=('munge')
