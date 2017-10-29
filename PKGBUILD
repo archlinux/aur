@@ -1,12 +1,12 @@
 # Maintainer: Jordan Rudess <jrudess@gmail.com>
 pkgname=levd-git
 pkgver=r2.fc66618
-pkgrel=2
+pkgrel=3
 pkgdesc="Daemon to control NZXT Kraken x61"
 arch=('i686' 'x86_64')
 url="https://github.com/RBlafford/levd"
 license=('MIT')
-makedepends=('git' 'google-glog' 'yaml-cpp' 'boost')
+makedepends=('git' 'cmake' 'google-glog' 'yaml-cpp' 'boost')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=
