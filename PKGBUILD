@@ -1,33 +1,37 @@
-# Maintainer: zlowly <zlowly AT  gmail DOT com>
-pkgname=ipad_charge
-pkgver=1.1
-pkgrel=4
+# Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
+# Contributor zlowly <zlowly AT  gmail DOT com>
+
+_pkgname=ipad_charge
+pkgname=${_pkgname}-git
+pkgver=r53.aef5d59
+pkgrel=1
 pkgdesc="iPad USB charging control utility"
 arch=("i686" "x86_64")
 url="http://www.rainbow-software.org/linux/"
 license=('GPL2')
-source=("http://www.rainbow-software.org/linux_files/${pkgname}_${pkgver}.tar.gz"
-"95-ipad_charge.rules.patch"
-"ipad_charge.c.patch"
-)
+provides=('ipad_charge')
+conflicts=('ipad_charge')
+source=("git+https://github.com/mkorenkov/ipad_charge")
+md5sums=('SKIP')
 depends=('udev' 'libusb')
 makedepends=('gcc')
-md5sums=('09b8c600efd747a36c9cc320516326cf'
-         'bfc9325716cc8fcedc04f13fcf7c8693'
-         '45d28ae05281b4fa0739d858fc01d324')
-build() {
-  cd $srcdir/${pkgname}-${pkgver}
-  patch -p1 -i ${srcdir}/95-ipad_charge.rules.patch
-  sed -i -e "s/SYSFS/ATTRS/g" -e "s/BUS/SUBSYSTEMS/g" 95-ipad_charge.rules
-  patch -p1 -i ${srcdir}/ipad_charge.c.patch
-  gcc -Wall -Wextra ipad_charge.c -lusb-1.0 -o ipad_charge
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  make
+}
+
 package() {
-  mkdir -p $pkgdir/usr/bin
-  mkdir -p $pkgdir/etc/udev/rules.d
-  cd $srcdir/${pkgname}-${pkgver}
-  install -m755 -s ipad_charge $pkgdir/usr/bin/
-  install -m644 95-ipad_charge.rules $pkgdir/etc/udev/rules.d/
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/etc/udev/rules.d"
+  cd "${srcdir}/${_pkgname}"
+  install -m755 -s ipad_charge "${pkgdir}/usr/bin/"
+  install -m644 95-ipad_charge.rules "${pkgdir}/etc/udev/rules.d/"
 }
 
 # vim:set ts=2 sw=2 et:
