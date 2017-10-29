@@ -1,6 +1,6 @@
 pkgbase = compton-git
 	pkgdesc = X Compositor (a fork of xcompmgr-dana) (git-version)
-	pkgver = 0.1_beta2.83.g2343e4b
+	pkgver = 0.1_beta2.87.g316eac0
 	pkgrel = 1
 	url = https://github.com/chjj/compton
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = compton-git
 	optdepends = xorg-xprop: For compton-trans
 	provides = compton
 	conflicts = compton
-	source = git://github.com/chjj/compton.git
+	source = git+https://github.com/chjj/compton.git
 	md5sums = SKIP
 
 pkgname = compton-git

@@ -4,7 +4,7 @@
 
 pkgname=compton-git
 _gitname=compton
-pkgver=0.1_beta2.83.g2343e4b
+pkgver=0.1_beta2.87.g316eac0
 pkgrel=1
 pkgdesc="X Compositor (a fork of xcompmgr-dana) (git-version)"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ optdepends=('dbus:          To control compton via D-Bus'
             'xorg-xprop:    For compton-trans')
 provides=('compton')
 conflicts=('compton')
-source=("git://github.com/chjj/compton.git")
+source=(git+"https://github.com/chjj/compton.git")
 md5sums=("SKIP")
 
 pkgver() {
