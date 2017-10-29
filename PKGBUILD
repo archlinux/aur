@@ -1,7 +1,7 @@
 # Maintainer: Marcel Robitaille mail@marcelrobitaille.me
 pkgname=lead-git
 pkgver=r23.958fdca
-pkgrel=2
+pkgrel=3
 pkgdesc="lead provides hot-corners for your desktop, notably for openbox, awesome, i3 and other window managers."
 arch=("i686" "x86_64")
 url="https://github.com/mlde/lead"
@@ -23,6 +23,6 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname}"
-  cp -r data/* "$pkgdir"
+	cp -r data/* "$pkgdir"
 }
 
