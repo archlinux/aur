@@ -1,0 +1,24 @@
+pkgbase = neopg-git
+	pkgdesc = The multiversal cryptoengine!
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/das-labor/neopg
+	arch = i686
+	arch = x86_64
+	license = BSD-2
+	makedepends = git
+	makedepends = cmake
+	makedepends = lcov
+	makedepends = gcovr
+	depends = botan
+	depends = zlib
+	depends = sqlite
+	optdepends = gnutls
+	optdepends = bzip2
+	optdepends = readline
+	optdepends = libusb: For smartcard support
+	source = git://github.com/das-labor/neopg.git
+	sha256sums = SKIP
+
+pkgname = neopg-git
+
