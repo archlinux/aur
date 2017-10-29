@@ -1,13 +1,13 @@
 ### mkinitcpio options ###
 
-MODULES=""
-BINARIES=""
-FILES=""
-HOOKS="base udev autodetect block keymap keyboard linuxpba"
+MODULES=()
+BINARIES=()
+FILES=()
+HOOKS=(base udev autodetect block keymap keyboard linuxpba)
 
 #COMPRESSION=<gzip|bzip2|lzma|xz|lzop|lz4>
 COMPRESSION="xz"
-#COMPRESSION_OPTIONS=""
+#COMPRESSION_OPTIONS=()
 
 
 ### linuxpba options ###
