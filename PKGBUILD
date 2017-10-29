@@ -8,8 +8,8 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
-_pkgmajor=2.30
-pkgver=${_pkgmajor}.2
+_pkgmajor=2.31
+pkgver=${_pkgmajor}
 pkgrel=1
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
@@ -27,7 +27,7 @@ validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgbase/-selinux}-$pkgver.tar."{xz,sign}
         pam-{login,common,su}
         'util-linux.sysusers')
-md5sums=('23a5dce0030144a42676b92310026bac'
+md5sums=('5b6821c403c3cc6e7775f74df1882a20'
          'SKIP'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
@@ -55,9 +55,9 @@ build() {
 }
 
 package_util-linux-selinux() {
-  conflicts=('eject' 'zramctl'
+  conflicts=('eject' 'zramctl' 'rfkill'
              "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
-  provides=('eject' 'zramctl'
+  provides=('eject' 'zramctl' 'rfkill'
             "${pkgname/-selinux}=${pkgver}-${pkgrel}"
             "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
   depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux'

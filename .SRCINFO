@@ -1,6 +1,6 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
-	pkgver = 2.30.2
+	pkgver = 2.31
 	pkgrel = 1
 	url = https://www.kernel.org/pub/linux/utils/util-linux/
 	arch = i686
@@ -13,14 +13,14 @@ pkgbase = util-linux-selinux
 	makedepends = libselinux
 	options = strip
 	options = debug
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.30/util-linux-2.30.2.tar.xz
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.30/util-linux-2.30.2.tar.sign
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.31/util-linux-2.31.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.31/util-linux-2.31.tar.sign
 	source = pam-login
 	source = pam-common
 	source = pam-su
 	source = util-linux.sysusers
 	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
-	md5sums = 23a5dce0030144a42676b92310026bac
+	md5sums = 5b6821c403c3cc6e7775f74df1882a20
 	md5sums = SKIP
 	md5sums = 4368b3f98abd8a32662e094c54e7f9b1
 	md5sums = a31374fef2cba0ca34dfc7078e2969e4
@@ -37,10 +37,12 @@ pkgname = util-linux-selinux
 	optdepends = python: python bindings to libmount
 	provides = eject
 	provides = zramctl
-	provides = util-linux=2.30.2-1
-	provides = selinux-util-linux=2.30.2-1
+	provides = rfkill
+	provides = util-linux=2.31-1
+	provides = selinux-util-linux=2.31-1
 	conflicts = eject
 	conflicts = zramctl
+	conflicts = rfkill
 	conflicts = util-linux
 	conflicts = selinux-util-linux
 	backup = etc/pam.d/chfn
@@ -57,6 +59,6 @@ pkgname = libutil-linux-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = libutil-linux=2.30.2-1
+	provides = libutil-linux=2.31-1
 	conflicts = libutil-linux
 
