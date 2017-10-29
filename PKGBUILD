@@ -2,7 +2,7 @@
 # Contributor : speps <speps at aur dot archlinux dot org>
 
 pkgname=distrho-vst-git
-pkgver=r397.7f21bd3
+pkgver=r398.e11e2b2
 pkgrel=1
 pkgdesc="DISTRHO VST audio plugins ports."
 arch=('i686' 'x86_64')
