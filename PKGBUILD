@@ -3,7 +3,7 @@
 
 pkgname=github-desktop
 pkgver=1.0.4_beta0
-pkgrel=4
+pkgrel=5
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
@@ -18,7 +18,7 @@ source=(
 )
 md5sums=(
 e5285a06a6ab201f36b49f877f87abbc
-b94003a96fb27b8c6da6bf5f68469f9f
+f705336933a0a69d03695629726dfa5f
 )
 
 prepare()   {

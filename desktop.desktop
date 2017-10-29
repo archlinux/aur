@@ -7,3 +7,4 @@ Exec=/usr/bin/github-desktop %U
 Terminal=false
 Type=Application
 Icon=github
+Categories=Development;

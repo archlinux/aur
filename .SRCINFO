@@ -1,7 +1,7 @@
 pkgbase = github-desktop
 	pkgdesc = GUI for managing Git and GitHub.
 	pkgver = 1.0.4_beta0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://desktop.github.com
 	install = github-desktop.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = github-desktop
 	source = https://github.com/gengjiawen/desktop/releases/download/v1.0.4-beta0/desktop_1.0.4-beta0_amd64.deb
 	source = desktop.desktop
 	md5sums = e5285a06a6ab201f36b49f877f87abbc
-	md5sums = b94003a96fb27b8c6da6bf5f68469f9f
+	md5sums = f705336933a0a69d03695629726dfa5f
 
 pkgname = github-desktop
 
