@@ -6,7 +6,7 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}-unstable
-pkgver=3442_4.10_rc1_r120_gd6c70457
+pkgver=3886_4.13.3_r72_g7141063a
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
@@ -75,8 +75,10 @@ check() {
   rm -rf tests/fsck-tests/013-extent-tree-rebuild
   # And #24...
   rm -rf tests/fsck-tests/024-clear-space-cache
-  # And #25..
+  # And #25...
   rm -rf tests/fsck-tests/025-file-extents
+  # And #28...
+  rm -rf tests/fsck-tests/028-unaligned-super-dev-sizes
 
   make test-fsck
 

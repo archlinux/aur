@@ -1,6 +1,6 @@
 pkgbase = btrfs-progs-git
 	pkgdesc = Btrfs filesystem utilities
-	pkgver = 3442_4.10_rc1_r120_gd6c70457
+	pkgver = 3886_4.13.3_r72_g7141063a
 	pkgrel = 1
 	url = http://btrfs.wiki.kernel.org/index.php/Main_Page
 	install = btrfs-progs-git.install
