@@ -16,7 +16,7 @@ makedepends=('git')
 optdepends=('flac: tagging support'
 			'vorbis-tools: tagging support'
 			'mutagen: tagging support')
-source=('git+https://github.com/carnager/clerk#branch=index')
+source=('git+https://github.com/carnager/clerk')
 
 pkgver() {
     cd ${_pkgname}
