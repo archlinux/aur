@@ -2,9 +2,9 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=orfeo-toolbox
-pkgver=6.0.0
-_pkgver=6.0
-minorver=1
+pkgver=6.2.0
+_pkgver=6.2
+minorver=0
 pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
@@ -12,7 +12,7 @@ url="http://www.orfeo-toolbox.org/otb/"
 license=('CeCILL')
 groups=()
 depends=('cmake' 'gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python2' 'openthreads' 
-		'hdf5'  'insight-toolkit' 'libkml' 'ossim' 'libsvm' 'mapnik' 'qwt5')
+		'hdf5'  'insight-toolkit' 'libkml' 'ossim' 'libsvm' 'mapnik' 'qwt' 'opencv' 'mapnik')
 makedepends=('boost' 'swig')
 optdepends=()
 provides=()
@@ -27,7 +27,7 @@ source=(https://www.orfeo-toolbox.org/packages/OTB-$pkgver.tar.gz
 		git://github.com/jmichel-otb/GKSVM.git)
 noextract=()
 
-md5sums=('a327179e973eb21462d7db24f98f24fd'
+md5sums=('39a28866b924edcb7d7a900cc5df31f3'
          'SKIP')
 
 
@@ -47,11 +47,12 @@ build() {
   if  [ -d "$srcdir/build/" ]; then
     rm -rf $srcdir/build/
   fi
+  
   mkdir $srcdir/build/
 
-cd $srcdir/build
+ cd $srcdir/build
 
-cmake ../OTB-release-$_pkgver \
+ cmake ../OTB-release-$_pkgver \
 -DCMAKE_BUILD_TYPE=Release \
 -DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC" \
 -DCMAKE_C_FLAGS="$CFLAGS -fPIC" \
@@ -64,11 +65,10 @@ cmake ../OTB-release-$_pkgver \
 -DPYTHON_LIBRARIES=/usr/lib/libpython2.7.so \
 -DPYTHON_INCLUDE_PATH=/usr/include/python2.7/ \
 -DOTB_INSTALL_PYTHON_DIR=/usr/lib/python2.7/site-packages/ \
--DITK_DIR=/usr/lib64/cmake/ITK-4.10 \
 -DBUILD_SHARED_LIBS=ON \
 -DOTB_USE_QT4=ON \
--DOTB_USE_MAPNIK=OFF \
--DOTB_USE_OPENCV=OFF \
+-DOTB_USE_MAPNIK=ON \
+-DOTB_USE_OPENCV=ON \
 -DOTB_USE_MUPARSER=ON \
 -DOTB_USE_LIBKML=ON \
 -DOTB_USE_LIBSVM=ON \
@@ -78,12 +78,8 @@ cmake ../OTB-release-$_pkgver \
 -DOTB_BUILD_ALL_MODULES_FOR_TESTS=ON \
 -DOTB_USE_GLEW=ON \
 -DOTB_USE_QWT=ON \
--DQWT_INCLUDE_DIR=/usr/include/qwt5 \
--DQWT_LIBRARY=/usr/lib64/libqwt5.so 
 
-make 
-
-  
+make   
 }
 
 package() {
