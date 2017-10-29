@@ -3,7 +3,7 @@
 
 pkgname=libsigrok
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Client software that supports various hardware logic analyzers, core library'
 arch=(i686 x86_64)
 url='https://www.sigrok.org/wiki/Libsigrok'
@@ -16,7 +16,7 @@ sha1sums=('51dbf0728804f1df9fd76c6136ee48a157298833')
 
 prepare() {
   cd libsigrok-$pkgver
-  sed -i 's|, MODE="660", GROUP="plugdev"||' contrib/z60_libsigrok.rules
+  sed -i 's|, MODE="660", GROUP="plugdev"||' contrib/z60_libsigrok.rules # FS#56059
 }
 
 build() {
