@@ -16,7 +16,7 @@ depends=("readline")
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
-  ./configure --prefix="$pkgdir/usr/local"
+  ./configure --prefix="$pkgdir/usr"
   make
 }
 
@@ -27,6 +27,6 @@ die() {
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  mkdir -p "$pkgdir/usr/local/bin"
+  mkdir -p "$pkgdir/usr/bin"
   ./install
 }
