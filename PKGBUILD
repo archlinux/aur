@@ -1,9 +1,9 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-fbalpha-git
-pkgver=353.928a4d6
+pkgver=383.8864891
 pkgrel=1
-pkgdesc="libretro implementation of Final Burn Alpha (Arcade)"
+pkgdesc="libretro implementation of Final Burn Alpha (v0.2.97.42) (Arcade)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/fbalpha"
 license=('custom:Non-commercial')
