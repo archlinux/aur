@@ -1,0 +1,34 @@
+pkgbase = banshee
+	pkgdesc = Music management and playback for GNOME
+	pkgver = 2.9.1.r326.gfbe0dde0a
+	pkgrel = 1
+	url = http://banshee.fm/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = intltool
+	makedepends = gnome-doc-utils
+	makedepends = gnome-common
+	depends = libxxf86vm
+	depends = gst-plugins-base-libs
+	depends = mono-addins
+	depends = dbus-sharp-glib
+	depends = libsoup
+	depends = taglib-sharp-git
+	depends = gconf-sharp
+	depends = libmtp
+	depends = hicolor-icon-theme
+	depends = media-player-info
+	depends = gst-plugins-bad
+	depends = mono-upnp
+	depends = gst-plugins-good
+	depends = gvfs
+	depends = libgpod
+	optdepends = gst-plugins-ugly: Extra media codecs
+	optdepends = gst-libav: Extra media codecs
+	optdepends = brasero: CD burning
+	source = git+https://github.com/arfbtwn/banshee.git#branch=feature/lite
+	md5sums = SKIP
+
+pkgname = banshee
+
