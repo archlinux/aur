@@ -1,22 +1,27 @@
 # Maintainer: KNOSSOS-Team <knossos-team ät mpimf-heidelberg.mpg.de>
 #
-# KNOSSOS saves its user preferences in $HOME/.config/MPIMF/
+# KNOSSOS saves its user preferences in $HOME/.config/MPIN/
 
 pkgname=knossos-git
-pkgver=5.0.1
+pkgver=5.1+9.g3373709f
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity."
 url="https://www.knossostool.org/"
 license=("GPL2")
 depends=("glu"
+	"qt5-base"
     "qt5-python27-git" # qt5-python27
+    "qt5-tools" # Qt5Help
     "quazip-qt5"
     "snappy"
 )
 makedepends=("boost"
 	"cmake"
+	"git"
 	"ninja"
+)
+optdepends=("qt5-imageformats" # Jp2
 )
 source=("git+https://github.com/knossos-project/knossos.git"
 	"knossos-git.desktop"
