@@ -1,4 +1,5 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: minus <aur@mnus.de>
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: pandan <predrg@gmail.com>
 
 pkgname=webdis
