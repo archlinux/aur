@@ -37,9 +37,9 @@ package() {
   install -dm755 "$pkgdir/usr/share/dwarftherapist/memory_layouts"
   cp -a share/memory_layouts/* "$pkgdir/usr/share/dwarftherapist/memory_layouts"
   install -Dm644 "dist/dwarftherapist.desktop" \
-    "$pkgdir"/usr/share/applications/dwarftherapist.desktop
+    "$pkgdir/usr/share/applications/dwarftherapist.desktop"
   install -Dm644 resources/img/hammer.png \
-    "$pkgdir"/usr/share/icons/hicolor/128x128/apps/dwarftherapist.png
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/dwarftherapist.png"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
