@@ -11,7 +11,7 @@ pkgbase = brewstillery
 	provides = brewstillery
 	conflicts = brewstillery
 	source = https://github.com/MonkeyLog/BrewStillery/archive/3.0.0.tar.gz
-	md5sums = SKIP
+	md5sums = 7050dfdbe6f43fe25455dc63b9472af7
 
 pkgname = brewstillery
 
