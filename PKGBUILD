@@ -68,13 +68,13 @@ _pkgver=4.13.10
 _rtver=3
 _rtpatchver=rt${_rtver}
 pkgver=${_pkgver}.${_rtver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
-_bfq_sq_mq_ver='20171009'
+_bfq_sq_mq_ver='20171030'
 _bfq_sq_mq_patch="4.13-bfq-sq-mq-git-${_bfq_sq_mq_ver}.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.13"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.13"
@@ -132,7 +132,7 @@ prepare() {
         msg "Fix naming schema in BFQ-SQ-MQ patch"
         sed -i -e "s|PATCHLEVEL = 14|PATCHLEVEL = 13|g" \
             -i -e "s|SUBLEVEL = 0|SUBLEVEL = 10|g" \
-            -i -e "s|EXTRAVERSION = -rc3|EXTRAVERSION =|g" \
+            -i -e "s|EXTRAVERSION = -rc7|EXTRAVERSION =|g" \
             -i -e "s|EXTRAVERSION =-bfq|EXTRAVERSION =|g" \
             -i -e "s|EXTRAVERSION =-mq|EXTRAVERSION =|g" ../${_bfq_sq_mq_patch}
         msg "Patching source with BFQ-SQ-MQ patches"
@@ -441,7 +441,7 @@ sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f
             'SKIP'
             '560e1c7575db3dac623fd196dcf2d35a2ad936c732426a07c6c4bfe795e8a922d0cc820dfa7ba6ad08e5d245831faa1e2dbea3344a76d596ee243de458018335'
             'SKIP'
-            'bc9b8699447c9c88bc93f9d2672663e50fa6773ec44f44a6afc93439f4c414a1cd2a35d94fe5205b8a066f1531b40b072d439152ec7d39d1282515c282f4bb63'
+            '89fd03de4e0e250d70d20524f7d94a6605b1c8a2898170249986c9a926063d832240defdb8af11226799c4e0344c681ebab0ecef63f75e4fc41557d69eaec3fd'
             '11dd363137d680d1bde1e332c3829246773e49d5fd0d2ef4ab77723ca0d2ecb3ad80a77a08dca8c4ce817ff0f966709673453e754f15e3e1527f943725d547ff'
             'ca6a40800668c0fcf478bd1bc555e5a496f5259739594bf83cc4963756b7a9a0a5b406e91f760d35f1bce1268c01d779fe2a7e749eccf9412e826152a5f013ef'
             '1434cc3957ef77fb83c9385a348f36ca43a73459b8995d3061143d1d15b307f944c39abc0eb109d20869c1749348d608c58cf5b92fd81ad65cad2d362e346549'
