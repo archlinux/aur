@@ -1,6 +1,6 @@
 pkgbase = clipmenu
 	pkgdesc = Clipboard management using dmenu
-	pkgver = 3.2.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = http://github.com/cdown/clipmenu
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = clipmenu
 	depends = dmenu
 	depends = xsel
 	conflicts = clipmenu-git
-	source = https://github.com/cdown/clipmenu/archive/3.2.0.zip
-	md5sums = 8fae27bba0f18a0fa215505210487412
+	source = https://github.com/cdown/clipmenu/archive/4.0.1.zip
+	md5sums = b56b7306afb01de0d04eb04241006fa5
 
 pkgname = clipmenu
 
