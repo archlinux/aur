@@ -4,7 +4,7 @@ pkgname=supercollider-git
 _pkg="supercollider"
 _latest_tag="3.8.0"
 pkgver=3.8.0.r2149.gcca12ff02
-pkgrel=1
+pkgrel=2
 pkgdesc="An environment and programming language for real time audio synthesis and algorithmic composition."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://supercollider.github.io/"
@@ -32,8 +32,9 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "${_pkg}"
-#  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/Version.//g'
-  git describe HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/Version.3.7.2/'"$_latest_tag"'/g'
+  # Version according to chaotic tagging:
+  # https://github.com/supercollider/supercollider/issues/2857
+  git describe | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/Version.3.7.2/'"$_latest_tag"'/g'
 }
 
 prepare() {
@@ -51,7 +52,6 @@ prepare() {
 
 build() {
   cd ${srcdir}/${_pkg}
-#  git submodule update --init --recursive .
   _carch=$(uname -m)
   Qt5LinguistTools_DIR="/usr/lib/cmake/Qt5LinguistTools"
   [ -d bld ] || mkdir bld && cd bld
