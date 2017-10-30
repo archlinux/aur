@@ -1,7 +1,7 @@
 # Maintainer: Balazs Mezei <mezei92@gmail.com>
 pkgname=zmninja
 pkgver=1.2.504
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance, cross platform ionic app for Home/Commerical Security Surveillance using ZoneMinder or other NVRs"
 arch=(x86_64)
 url="https://github.com/pliablepixels/zmNinja"
