@@ -12,7 +12,7 @@ readonly startdir=$PWD
 CC=gcc
 CPU_FLAG=-march
 PREFIX=/usr
-MANPREFIX=/usr
+MANPREFIX=/usr/share/man
 GMAKETYPE=make
 
 case $(uname -m) in
