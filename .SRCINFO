@@ -1,9 +1,8 @@
 pkgbase = pantum-p2000-driver
-	pkgdesc = Pantum 2000 Series Linux Driver (Ubutun12.04) V1.00
+	pkgdesc = Pantum 2000 Series Linux Driver
 	pkgver = 1.00_1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://global.pantum.com/global/
-	arch = x86_64
 	license = proprietary
 	makedepends = rpmextract
 	makedepends = unzip

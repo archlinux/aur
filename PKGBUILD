@@ -1,7 +1,7 @@
 # Maintainer: Jack Kamm <jackkamm@gmail.com>
 pkgname=pantum-p2000-driver
 pkgver="1.00_1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Pantum 2000 Series Linux Driver"
 arrch=('x86_64')
 url="http://global.pantum.com/global/"
