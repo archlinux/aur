@@ -2,8 +2,8 @@
 
 pkgname=netease-cloud-music-docker-version
 pkgver=1.0.0_2
-pkgrel=1
-pkgdesc="Better Netease Cloud Music with Bugs Fixed By docker."
+pkgrel=2
+pkgdesc="Use docker to avoid netease music bugs."
 arch=('i686' 'x86_64')
 url="https://github.com/qzwlecr/netease-cloud-music-docker-version"
 install="netease-cloud-music-docker-version.install"
