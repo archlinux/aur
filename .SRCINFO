@@ -1,0 +1,14 @@
+pkgbase = amidimap
+	pkgdesc = Read in MIDI events, process them, and output them again.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://cowlark.com/amidimap/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = alsa-lib
+	source = http://cowlark.com/amidimap/amidimap-0.1.1.tar.bz2
+	sha256sums = 2940fa73eeb63ee12863cbd697bd500c07524b27b555188ea960260c1cdc8ce1
+
+pkgname = amidimap
+
