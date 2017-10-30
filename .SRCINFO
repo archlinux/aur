@@ -1,7 +1,7 @@
 pkgbase = tewisay-git
 	pkgdesc = Cowsay replacement with unicode and partial ansi escape support.
-	pkgver = 0.59.cd6e1b9
-	pkgrel = 3
+	pkgver = 0.65.e3fc387
+	pkgrel = 1
 	url = https://github.com/lucy/tewisay
 	arch = i686
 	arch = x86_64
@@ -14,10 +14,6 @@ pkgbase = tewisay-git
 	optdepends = cowsay: default cowfiles
 	options = !strip
 	source = git://github.com/lucy/tewisay.git
-	source = git://github.com/lucy/pflag.git
-	source = git://github.com/lucy/rwidth.git
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = tewisay-git
