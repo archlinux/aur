@@ -12,7 +12,8 @@ groups=('hyperledger')
 depends=('go' 'docker')
 makedepends=('git')
 install=$pkgname.install
-source=("https://github.com/hyperledger/fabric/archive/v$pkgver.tar.gz")
+source=("https://github.com/hyperledger/fabric/archive/v$pkgver.tar.gz"
+	arm-support.patch)
 export GOOS=linux
 case "$CARCH" in
   x86_64) export GOARCH=amd64 ;;
@@ -24,6 +25,9 @@ case "$CARCH" in
 esac
 
 prepare() {
+  cd $srcdir/${_pkgname}-$pkgver
+  patch -Np1 -i ../arm-support.patch
+  cd ..
   export GOPATH="$PWD"/.gopath
   mkdir -p "$GOPATH"/src/github.com/hyperledger
   ln -sf "$PWD"/fabric-$pkgver "$GOPATH"/src/github.com/hyperledger/fabric
@@ -32,7 +36,7 @@ prepare() {
 build() {
   export GOPATH="$PWD"/.gopath
   cd "$GOPATH"/src/github.com/hyperledger/fabric
-  make release/linux-amd64
+  make release/linux-$GOARCH 
 }
 
 package() {
@@ -48,4 +52,5 @@ package() {
 
 }
 
-md5sums=('f2bb35c77b4a4070f017b723884a2761')
+md5sums=('f2bb35c77b4a4070f017b723884a2761'
+         '6828396533a5cf1522465872a83a50de')
