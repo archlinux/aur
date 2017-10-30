@@ -3,7 +3,7 @@
 pkgname=terragrunt-bin
 _pkgname=terragrunt
 pkgver=0.13.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules"
 url="https://github.com/gruntwork-io/terragrunt"
 depends=('terraform')
@@ -12,7 +12,7 @@ provides=('terragrunt')
 license=('MIT')
 arch=('x86_64')
 source=(
-  "https://github.com/gruntwork-io/terragrunt/releases/download/v${pkgver}/terragrunt_linux_amd64"
+  "terragrunt_linux_amd64-${pkgver}::https://github.com/gruntwork-io/terragrunt/releases/download/v${pkgver}/terragrunt_linux_amd64"
   "https://raw.githubusercontent.com/gruntwork-io/terragrunt/v${pkgver}/LICENSE.txt"
 )
 sha256sums=(
@@ -21,7 +21,7 @@ sha256sums=(
 )
 
 package() {
-  install -D -m 755 "${srcdir}/terragrunt_linux_amd64" "${pkgdir}/usr/bin/${_pkgname}"
+  install -D -m 755 "${srcdir}/terragrunt_linux_amd64-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
   install -D -m 644 "${srcdir}/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
