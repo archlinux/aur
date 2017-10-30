@@ -68,7 +68,7 @@ pkgbase=linux-bfq-mq
 pkgver=4.13.10
 _srcpatch="${pkgver##*\.*\.}"
 _srcname="linux-${pkgver%%\.${_srcpatch}}"
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -82,7 +82,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.13"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.13"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch'
-_bfq_mq_ver='20171009'
+_bfq_mq_ver='20171030'
 _bfq_mq_patch="4.13-bfq-sq-mq-git-${_bfq_mq_ver}.patch"
 source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -133,7 +133,7 @@ sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'b9efa9c6375f79f6a041a5f0666d4ced1a49bfe8c4662d26517a6b4cfd9bf2f6'
             'SKIP'
             '8b00041911e67654b0bd9602125853a1a94f6155c5cac4f886507554c8324ee8'
-            '29c0a79f88bde17d8e8af6a433dd1fedff1e7430dda8090ab29324cbd0b0bb33'
+            '3673a3571bcd14bae3137783d2c0b1b3a903fbfb2cf5bc0a1123ab3f9f46e8dd'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             '388b210b15913d6e46d85d3c997d21f796957d2e3eb082ba8ffda1371eaa1f3b'
             'ed4dec610bb99928c761dee5891b9f79770f0265678c232b0d4c1879beb73e94'
@@ -166,8 +166,8 @@ prepare() {
   msg "Fix naming schema in BFQ-MQ patch"
   sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" \
       -i -e "s|PATCHLEVEL = 14|PATCHLEVEL = 13|g" \
-      -i -e "s|EXTRAVERSION = -rc3|EXTRAVERSION =|g" \
-      -i -e "s|EXTRAVERSION = -rc3-bfq-mq|EXTRAVERSION =|g" ../${_bfq_mq_patch}
+      -i -e "s|EXTRAVERSION = -rc7|EXTRAVERSION =|g" \
+      -i -e "s|EXTRAVERSION = -rc7-bfq-mq|EXTRAVERSION =|g" ../${_bfq_mq_patch}
 
   msg "-> Apply BFQ-MQ patch"
   patch -Np1 -i ../${_bfq_mq_patch}
