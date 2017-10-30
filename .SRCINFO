@@ -1,0 +1,24 @@
+pkgbase = goss-bin
+	pkgdesc = Quick and Easy server testing/validation
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://goss.rocks
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = Apache
+	provides = goss
+	provides = dgoss
+	source = https://github.com/aelsabbahy/goss/releases/download/v0.3.5/dgoss
+	source = https://raw.githubusercontent.com/aelsabbahy/goss/v0.3.5/LICENSE
+	sha1sums = 75ea0daa81f364e4aa7cce1387214ad2d0ded0fe
+	sha1sums = 669a1e53b9dd9df3474300d3d959bb85bad75945
+	source_i686 = https://github.com/aelsabbahy/goss/releases/download/v0.3.5/goss-linux-386
+	sha1sums_i686 = de49dc91ba5a228f5ed8c84e5c08b945b76fde7c
+	source_x86_64 = https://github.com/aelsabbahy/goss/releases/download/v0.3.5/goss-linux-amd64
+	sha1sums_x86_64 = 171bdfcea883a58726e649162e5a99e0cd6cb7bc
+	source_arm = https://github.com/aelsabbahy/goss/releases/download/v0.3.5/goss-linux-arm
+	sha1sums_arm = 4da30446f164f8ec76d09e96a2d74c7ee6c5ca89
+
+pkgname = goss-bin
+
