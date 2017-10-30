@@ -7,7 +7,7 @@ pkgver=$_pkgver
 pkgrel=1
 pkgdesc="Tray icon using appindicator which feets better in KDE"
 depends=('pamac' 'libappindicator-gtk3')
-arch=('any')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/manjaro/pamac"
 license=('GPL3')
 makedepends=('gettext' 'itstool' 'vala>=0.36' 'libappindicator-gtk3' 'meson' 'ninja')
