@@ -8,22 +8,14 @@ arch=('x86_64')
 url="http://www.geogebra.org"
 license=('CCPL:by-nc' 'CCPL:by-sa' 'GPL3')
 depends=('alsa-lib' 'mpfr' 'gtk2' 'libxtst' 'gconf' 'nss' 'nodejs' 'xdg-utils' 'libxss')
-makedepends=('rpmextract')
-conflicts=()
-replaces=()
-backup=()
-options=('emptydirs')
 source=("http://www.geogebra.net/linux/rpm/$CARCH/$_pkgfile")
-noextract=("$_pkgfile")
-sha512sums=('0627e7a2ae80a655f1e670c8046491142dc8f8a0eca319cc0d4fd8ee969515eb22f482ec3c22f152545a0e056a517efef0bac328436afb896b85d526f60d9944')
+sha256sums=('d824b1a379c85305e5ce1243b493da80489035f9260a49c8c224fd49c2de6e6e')
 
-build() {
-	true
+prepare() {
+echo "StartupWMClass=GeoGebra" >> ./usr/share/applications/geogebra-classic.desktop
 }
 
 package() {
-	cd "../pkg/$pkgname"
-	cp "../../$_pkgfile" "$_pkgfile"
-	rpmextract.sh "$_pkgfile"
-	rm "$_pkgfile"
+install -d $pkgdir/usr
+cp -a ./usr/* $pkgdir/usr/
 }
