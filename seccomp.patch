@@ -1,0 +1,584 @@
+diff -Naru zathura-0.3.7/config.mk zathura-0.3.7-libsec/config.mk
+--- zathura-0.3.7/config.mk	2017-01-11 22:05:07.000000000 +0100
++++ zathura-0.3.7-libsec/config.mk	2017-10-30 17:00:09.180047035 +0100
+@@ -97,7 +97,7 @@
+ endif
+ 
+ INCS = ${GIRARA_INC} ${GTK_INC} ${GTHREAD_INC} ${GMODULE_INC} ${GLIB_INC}
+-LIBS = ${GIRARA_LIB} ${GTK_LIB} ${GTHREAD_LIB} ${GMODULE_LIB} ${GLIB_LIB} -lpthread -lm
++LIBS = ${GIRARA_LIB} ${GTK_LIB} ${GTHREAD_LIB} ${GMODULE_LIB} ${GLIB_LIB} -lseccomp -lpthread -lm
+ 
+ # pre-processor flags
+ CPPFLAGS += -D_FILE_OFFSET_BITS=64
+diff -Naru zathura-0.3.7/zathura/libsec.c zathura-0.3.7-libsec/zathura/libsec.c
+--- zathura-0.3.7/zathura/libsec.c	1970-01-01 01:00:00.000000000 +0100
++++ zathura-0.3.7-libsec/zathura/libsec.c	2017-10-30 17:00:09.130047082 +0100
+@@ -0,0 +1,465 @@
++#include "libsec.h"
++#include <stdio.h>
++
++//put this define in makefile
++#define HAVE_LIBSECCOMP
++#ifdef HAVE_LIBSECCOMP
++
++#include <seccomp.h> /* libseccomp */
++#include <sys/prctl.h> /* prctl */
++#include <sys/socket.h>
++#include <fcntl.h>
++#include <stdlib.h>
++#include <errno.h>
++
++#define DENY_RULE(call) { if (seccomp_rule_add (ctx, SCMP_ACT_KILL, SCMP_SYS(call), 0) < 0) goto out; }
++#define ALLOW_RULE(call) { if (seccomp_rule_add (ctx, SCMP_ACT_ALLOW, SCMP_SYS(call), 0) < 0) goto out; }
++
++
++scmp_filter_ctx ctx;
++
++
++void releaseFilter(void){
++
++    seccomp_release(ctx);
++}
++
++
++int protectedMode(void){
++
++    // prevent child processes from getting more priv e.g. via setuid, capabilities, ...
++    //prctl(PR_SET_NO_NEW_PRIVS, 1);
++
++    if (prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0)) {
++        perror("prctl SET_NO_NEW_PRIVS");
++        exit(EXIT_FAILURE);
++    }
++
++
++    // prevent escape via ptrace
++    //prctl(PR_SET_DUMPABLE, 0);
++
++    if(prctl (PR_SET_DUMPABLE, 0, 0, 0, 0)){
++        perror("prctl PR_SET_DUMPABLE");
++        exit(EXIT_FAILURE);
++    }
++
++
++    // initialize the filter
++    ctx = seccomp_init(SCMP_ACT_ALLOW);
++    if (ctx == NULL)
++        return 1;
++
++    DENY_RULE (_sysctl);
++    DENY_RULE (acct);
++    DENY_RULE (add_key);
++    DENY_RULE (adjtimex);
++    DENY_RULE (chroot);
++    DENY_RULE (clock_adjtime);
++    DENY_RULE (create_module);
++    DENY_RULE (delete_module);
++    DENY_RULE (fanotify_init);
++    DENY_RULE (finit_module);
++    DENY_RULE (get_kernel_syms);
++    DENY_RULE (get_mempolicy);
++    DENY_RULE (init_module);
++    DENY_RULE (io_cancel);
++    DENY_RULE (io_destroy);
++    DENY_RULE (io_getevents);
++    DENY_RULE (io_setup);
++    DENY_RULE (io_submit);
++    DENY_RULE (ioperm);
++    DENY_RULE (iopl);
++    DENY_RULE (ioprio_set);
++    DENY_RULE (kcmp);
++    DENY_RULE (kexec_file_load);
++    DENY_RULE (kexec_load);
++    DENY_RULE (keyctl);
++    DENY_RULE (lookup_dcookie);
++    DENY_RULE (mbind);
++    DENY_RULE (nfsservctl);
++    DENY_RULE (migrate_pages);
++    DENY_RULE (modify_ldt);
++    DENY_RULE (mount);
++    DENY_RULE (move_pages);
++    DENY_RULE (name_to_handle_at);
++    DENY_RULE (open_by_handle_at);
++    DENY_RULE (perf_event_open);
++    DENY_RULE (pivot_root);
++    DENY_RULE (process_vm_readv);
++    DENY_RULE (process_vm_writev);
++    DENY_RULE (ptrace);
++    DENY_RULE (reboot);
++    DENY_RULE (remap_file_pages);
++    DENY_RULE (request_key);
++    DENY_RULE (set_mempolicy);
++    DENY_RULE (swapoff);
++    DENY_RULE (swapon);
++    DENY_RULE (sysfs);
++    DENY_RULE (syslog);
++    DENY_RULE (tuxcall);
++    DENY_RULE (umount2);
++    DENY_RULE (uselib);
++    DENY_RULE (vmsplice);
++
++
++    //applying filter...
++    if (seccomp_load (ctx) >= 0){
++	// free ctx after the filter has been loaded into the kernel
++	seccomp_release(ctx);
++        return 0;
++    }
++    
++  out:
++    //something went wrong
++    //printf("something went wrong\n");
++    seccomp_release(ctx);
++    return 1;
++
++}
++
++
++int protectedView(void){
++
++    // prevent child processes from getting more priv e.g. via setuid, capabilities, ...
++    //prctl(PR_SET_NO_NEW_PRIVS, 1);
++
++    if (prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0)) {
++        perror("prctl SET_NO_NEW_PRIVS");
++        exit(EXIT_FAILURE);
++    }
++
++
++    // prevent escape via ptrace
++    //prctl(PR_SET_DUMPABLE, 0);
++
++    if(prctl (PR_SET_DUMPABLE, 0, 0, 0, 0)){
++        perror("prctl PR_SET_DUMPABLE");
++        exit(EXIT_FAILURE);
++    }
++
++    // initialize the filter
++    ctx = seccomp_init(SCMP_ACT_KILL);
++    if (ctx == NULL)
++        return 1;
++
++
++    ALLOW_RULE (access);
++    //ALLOW_RULE (arch_prctl);
++    ALLOW_RULE (bind);
++    ALLOW_RULE (brk);
++    ALLOW_RULE (clock_getres);
++    ALLOW_RULE (clone);
++    ALLOW_RULE (close);
++    ALLOW_RULE (connect);
++    ALLOW_RULE (eventfd2);
++    //ALLOW_RULE (execve);
++    ALLOW_RULE (exit);
++    ALLOW_RULE (exit_group);
++    ALLOW_RULE (fadvise64);
++    ALLOW_RULE (fallocate);
++    ALLOW_RULE (fcntl);
++    ALLOW_RULE (fstat);
++    ALLOW_RULE (fstatfs);
++    ALLOW_RULE (ftruncate);
++    ALLOW_RULE (futex);
++    ALLOW_RULE (getdents);
++    ALLOW_RULE (getegid);
++    ALLOW_RULE (geteuid);
++    ALLOW_RULE (getgid);
++    ALLOW_RULE (getuid);
++    ALLOW_RULE (getpid);
++    ALLOW_RULE (getppid);
++    ALLOW_RULE (getpgrp);
++    ALLOW_RULE (getpeername);
++    ALLOW_RULE (getrandom);
++    ALLOW_RULE (getresgid);
++    ALLOW_RULE (getresuid);
++    ALLOW_RULE (getrlimit);
++    ALLOW_RULE (getsockname);
++    ALLOW_RULE (getsockopt);  /* needed for access to x11 socket in network namespace (without abstract sockets) */
++    ALLOW_RULE (inotify_add_watch);
++    ALLOW_RULE (inotify_init1);
++    ALLOW_RULE (inotify_rm_watch);
++    // ALLOW_RULE (ioctl);  /* specified below */
++    ALLOW_RULE (lseek);
++    ALLOW_RULE (lstat);
++    ALLOW_RULE (madvise);
++    ALLOW_RULE (memfd_create);
++    ALLOW_RULE (mkdir);         /* needed for first run only */
++    ALLOW_RULE (mmap);
++    ALLOW_RULE (mprotect);
++    ALLOW_RULE (mremap);
++    ALLOW_RULE (munmap);
++    ALLOW_RULE (open);  /* zathura needs to open for writing activity logs */
++    ALLOW_RULE (openat);
++    ALLOW_RULE (pipe);
++    ALLOW_RULE (poll);
++    ALLOW_RULE (pwrite64);
++    ALLOW_RULE (pread64);
++    ALLOW_RULE (prlimit64);
++    ALLOW_RULE (prctl);
++    ALLOW_RULE (read);
++    ALLOW_RULE (readlink);
++    ALLOW_RULE (recvfrom);
++    ALLOW_RULE (recvmsg);
++    ALLOW_RULE (restart_syscall);
++    ALLOW_RULE (rt_sigaction);
++    ALLOW_RULE (rt_sigprocmask);
++    ALLOW_RULE (seccomp);
++    ALLOW_RULE (sendmsg);
++    ALLOW_RULE (sendto);
++    ALLOW_RULE (select);
++    ALLOW_RULE (set_robust_list);
++    ALLOW_RULE (setsockopt);
++    ALLOW_RULE (shmat);
++    ALLOW_RULE (shmctl);
++    ALLOW_RULE (shmdt);
++    ALLOW_RULE (shmget);
++    ALLOW_RULE (shutdown);
++    ALLOW_RULE (stat);
++    ALLOW_RULE (statfs);
++    // ALLOW_RULE (socket);  /* specified below */
++    ALLOW_RULE (sysinfo);
++    ALLOW_RULE (uname);
++    ALLOW_RULE (unlink);
++    ALLOW_RULE (write);  /* specified below (zathura needs to write files)*/
++    ALLOW_RULE (writev); 
++    ALLOW_RULE (wait4);  /* trying to open links should not crash the app */
++
++
++    // allowed for use with bubblewrap/container
++
++    ALLOW_RULE (chmod);
++    ALLOW_RULE (link);
++    ALLOW_RULE (rename);
++
++    
++
++    //allowed for debugging:
++
++    //ALLOW_RULE (prctl);
++    //ALLOW_RULE (ioctl);
++
++
++    //when zathura is run on wayland, with X11 server available but blocked, unset the DISPLAY variable
++    //otherwise it will try to connect to X11 using inet socket protocol
++    
++    
++    /* Special requirements for ioctl, allowed on stdout/stderr */
++    if (seccomp_rule_add (ctx, SCMP_ACT_ALLOW, SCMP_SYS(ioctl), 1,
++    			  SCMP_CMP(0, SCMP_CMP_EQ, 1)) < 0)
++    	goto out;
++    if (seccomp_rule_add (ctx, SCMP_ACT_ALLOW, SCMP_SYS(ioctl), 1,
++    			  SCMP_CMP(0, SCMP_CMP_EQ, 2)) < 0)
++    	goto out;
++
++
++    // required changes in links.c (at girara_xdg_open)  
++
++    /* special restrictions for socket, only allow AF_UNIX/AF_LOCAL */
++    if (seccomp_rule_add (ctx, SCMP_ACT_ALLOW, SCMP_SYS(socket), 1,
++    			  SCMP_CMP(0, SCMP_CMP_EQ, AF_UNIX)) < 0)
++    	goto out;
++
++    if (seccomp_rule_add (ctx, SCMP_ACT_ALLOW, SCMP_SYS(socket), 1,
++    			  SCMP_CMP(0, SCMP_CMP_EQ, AF_LOCAL)) < 0)
++    	goto out;
++
++
++    
++
++    //applying filter...
++    if (seccomp_load (ctx) >= 0){
++	// free ctx after the filter has been loaded into the kernel
++	seccomp_release(ctx);
++        return 0;
++    }
++
++ out:
++    //something went wrong
++    seccomp_release(ctx);
++    return 1;
++
++
++}
++
++
++int strictFilter(void){
++
++    // prevent child processes from getting more priv e.g. via setuid, capabilities, ...
++    //prctl(PR_SET_NO_NEW_PRIVS, 1);
++
++    if (prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0)) {
++        perror("prctl SET_NO_NEW_PRIVS");
++        exit(EXIT_FAILURE);
++    }
++
++
++    // prevent escape via ptrace
++    //prctl(PR_SET_DUMPABLE, 0);
++
++    if(prctl (PR_SET_DUMPABLE, 0, 0, 0, 0)){
++        perror("prctl PR_SET_DUMPABLE");
++        exit(EXIT_FAILURE);
++    }
++
++
++    // initialize the filter
++    ctx = seccomp_init(SCMP_ACT_KILL);
++    if (ctx == NULL)
++        return 1;
++
++
++    ALLOW_RULE (access);
++    //ALLOW_RULE (arch_prctl);
++    ALLOW_RULE (bind);
++    ALLOW_RULE (brk);
++    ALLOW_RULE (clock_getres);
++    ALLOW_RULE (clone);
++    ALLOW_RULE (close);
++    //ALLOW_RULE (connect);
++    ALLOW_RULE (eventfd2);
++    //ALLOW_RULE (execve);
++    ALLOW_RULE (exit);
++    ALLOW_RULE (exit_group);
++    ALLOW_RULE (fadvise64);
++    ALLOW_RULE (fallocate);
++    ALLOW_RULE (fcntl);
++    ALLOW_RULE (fstat);
++    ALLOW_RULE (fstatfs);
++    ALLOW_RULE (ftruncate);
++    ALLOW_RULE (futex);
++    ALLOW_RULE (getdents);
++    ALLOW_RULE (getegid);
++    ALLOW_RULE (geteuid);
++    ALLOW_RULE (getgid);
++    ALLOW_RULE (getuid);
++    ALLOW_RULE (getpid);
++    //ALLOW_RULE (getpeername);
++    ALLOW_RULE (getresgid);
++    ALLOW_RULE (getresuid);
++    ALLOW_RULE (getrlimit);
++    //ALLOW_RULE (getsockname);
++    //ALLOW_RULE (getsockopt);  /* needed for access to x11 socket in network namespace (without abstract sockets) */
++    ALLOW_RULE (inotify_add_watch);
++    ALLOW_RULE (inotify_init1);
++    ALLOW_RULE (inotify_rm_watch);
++    //ALLOW_RULE (ioctl);  /* specified below */
++    ALLOW_RULE (lseek);
++    ALLOW_RULE (lstat);
++    ALLOW_RULE (madvise);
++    ALLOW_RULE (memfd_create);
++    ALLOW_RULE (mkdir);         /* needed for first run only */
++    ALLOW_RULE (mmap);
++    ALLOW_RULE (mprotect);
++    ALLOW_RULE (mremap);
++    ALLOW_RULE (munmap);
++    ALLOW_RULE (open);  /* specified below (zathura needs to open for writing) */
++    ALLOW_RULE (openat);
++    ALLOW_RULE (pipe);
++    ALLOW_RULE (poll);
++    ALLOW_RULE (pwrite64); /* todo */
++    ALLOW_RULE (pread64);
++    //ALLOW_RULE (prlimit64);
++    //ALLOW_RULE (prctl);  /* specified below */
++    ALLOW_RULE (read);
++    ALLOW_RULE (readlink);
++    ALLOW_RULE (recvfrom);
++    ALLOW_RULE (recvmsg);
++    ALLOW_RULE (restart_syscall);
++    ALLOW_RULE (rt_sigaction);
++    ALLOW_RULE (rt_sigprocmask);
++    ALLOW_RULE (sendmsg);
++    ALLOW_RULE (sendto);
++    ALLOW_RULE (select);
++    ALLOW_RULE (set_robust_list);
++    //ALLOW_RULE (set_tid_address);
++    //ALLOW_RULE (setsockopt);
++    ALLOW_RULE (shmat);
++    ALLOW_RULE (shmctl);
++    ALLOW_RULE (shmdt);
++    ALLOW_RULE (shmget);
++    ALLOW_RULE (shutdown);
++    ALLOW_RULE (stat);
++    ALLOW_RULE (statfs);
++    //ALLOW_RULE (socket);  /* specified below */
++    ALLOW_RULE (sysinfo);
++    ALLOW_RULE (uname);
++    ALLOW_RULE (unlink);
++    ALLOW_RULE (write);  /* specified below (zathura needs to write files)*/
++    ALLOW_RULE (writev);  /* not specified below */
++    ALLOW_RULE (wait4);  /* trying to open links should not crash the app */
++
++
++
++    //allowed for debugging:
++
++    //ALLOW_RULE (prctl);
++    //ALLOW_RULE (ioctl);
++
++
++    //when zathura is run on wayland, with X11 server available but blocked, unset the DISPLAY variable
++    //otherwise it will try to connect to X11 using inet socket protocol
++    
++    
++    /* Special requirements for ioctl, allowed on stdout/stderr */
++    if (seccomp_rule_add (ctx, SCMP_ACT_ALLOW, SCMP_SYS(ioctl), 1,
++    			  SCMP_CMP(0, SCMP_CMP_EQ, 1)) < 0)
++    	goto out;
++    if (seccomp_rule_add (ctx, SCMP_ACT_ALLOW, SCMP_SYS(ioctl), 1,
++    			  SCMP_CMP(0, SCMP_CMP_EQ, 2)) < 0)
++    	goto out;
++
++
++    
++    // needed by gtk??? (does not load content without)
++
++    /* special restrictions for prctl, only allow PR_SET_NAME/PR_SET_PDEATHSIG */
++    if (seccomp_rule_add (ctx, SCMP_ACT_ALLOW, SCMP_SYS(prctl), 1,
++    			  SCMP_CMP(0, SCMP_CMP_EQ, PR_SET_NAME)) < 0)
++    	goto out;
++
++    if (seccomp_rule_add (ctx, SCMP_ACT_ALLOW, SCMP_SYS(prctl), 1,
++    			  SCMP_CMP(0, SCMP_CMP_EQ, PR_SET_PDEATHSIG)) < 0)
++    	goto out;
++
++
++
++    //applying filter...
++    if (seccomp_load (ctx) >= 0){
++	// free ctx after the filter has been loaded into the kernel
++	seccomp_release(ctx);
++        return 0;
++    }
++
++ out:
++    //something went wrong
++    seccomp_release(ctx);
++    return 1;
++}
++
++
++
++#else /* HAVE_LIBSECCOMP */
++
++int protectedMode(void){
++
++    perror("No seccomp support compiled-in\n");
++    return 1;
++}
++
++int protectedView(void){
++
++    perror("No seccomp support compiled-in\n");
++    return 1;
++}
++
++int strictFilter(void){
++
++    perror("No seccomp support compiled-in\n");
++    return 1;
++}
++
++
++#endif /* HAVE_LIBSECCOMP */
+diff -Naru zathura-0.3.7/zathura/libsec.h zathura-0.3.7-libsec/zathura/libsec.h
+--- zathura-0.3.7/zathura/libsec.h	1970-01-01 01:00:00.000000000 +0100
++++ zathura-0.3.7-libsec/zathura/libsec.h	2017-10-30 17:00:09.090047121 +0100
+@@ -0,0 +1,20 @@
++#ifndef SECCOMP_H
++#define SECCOMP_H
++
++//int applyFilter();
++
++/* basic filter */
++// this mode allows normal use
++// only dangerous syscalls are blacklisted
++int protectedMode(void);
++
++/* secure whitelist filter */
++// whitelist minimal syscalls only
++// this mode does not allow to open external links or to start applications
++// network connections are prohibited as well
++int protectedView(void);
++
++// strict filter set right before rendering
++int strictFilter(void);
++
++#endif
+diff -Naru zathura-0.3.7/zathura/links.c zathura-0.3.7-libsec/zathura/links.c
+--- zathura-0.3.7/zathura/links.c	2016-03-08 21:48:07.000000000 +0100
++++ zathura-0.3.7-libsec/zathura/links.c	2017-10-30 17:00:09.090047121 +0100
+@@ -14,6 +14,11 @@
+ #include "page.h"
+ #include "render.h"
+ 
++#define HAVE_LIBSECCOMP
++#ifdef HAVE_LIBSECCOMP
++#include "libsec.h"
++#endif
++
+ struct zathura_link_s {
+   zathura_rectangle_t position; /**< Position of the link */
+   zathura_link_type_t type; /**< Link type */
+@@ -199,9 +204,14 @@
+       link_remote(zathura, link->target.value);
+       break;
+     case ZATHURA_LINK_URI:
++	#ifndef HAVE_LIBSECCOMP
+       if (girara_xdg_open(link->target.value) == false) {
+         girara_notify(zathura->ui.session, GIRARA_ERROR, _("Failed to run xdg-open."));
+       }
++      #endif
++      #ifdef HAVE_LIBSECCOMP
++        girara_notify(zathura->ui.session, GIRARA_ERROR, _("Opening external apps in protectedView Sandbox mode is not permitted"));
++      #endif
+       break;
+     case ZATHURA_LINK_LAUNCH:
+       link_launch(zathura, link);
+diff -Naru zathura-0.3.7/zathura/main.c zathura-0.3.7-libsec/zathura/main.c
+--- zathura-0.3.7/zathura/main.c	2017-01-11 22:05:00.000000000 +0100
++++ zathura-0.3.7-libsec/zathura/main.c	2017-10-30 17:39:33.506671156 +0100
+@@ -2,6 +2,7 @@
+ 
+ #include <girara/settings.h>
+ #include <girara/log.h>
++#include <unistd.h>
+ 
+ #include <glib/gi18n.h>
+ #include <glib/gstdio.h>
+@@ -19,6 +20,11 @@
+ #include "synctex.h"
+ #endif
+ 
++#define HAVE_LIBSECCOMP
++#ifdef HAVE_LIBSECCOMP
++#include "libsec.h"
++#endif
++
+ /* Init locale */
+ static void
+ init_locale(void)
+@@ -122,6 +128,12 @@
+ int
+ main(int argc, char* argv[])
+ {
++
++#ifdef HAVE_LIBSECCOMP
++  protectedMode();
++  protectedView();
++#endif
++
+   init_locale();
+ 
+   /* parse command line arguments */
+@@ -288,6 +300,12 @@
+     goto free_and_ret;
+   }
+ 
++#ifdef HAVE_LIBSECCOMP
++
++  strictFilter();
++
++#endif
++
+   /* open document if passed */
+   if (file_idx != 0) {
+     if (page_number > 0) {
