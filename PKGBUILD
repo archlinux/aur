@@ -1,15 +1,15 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=tufao
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An asynchronous web framework for C++ built on top of Qt"
 arch=('i686' 'x86_64')
 url="https://github.com/vinipsmaker/tufao"
 license=('LGPL2')
 depends=('qt5-base')
 makedepends=('cmake')
-source=("${pkgname}::git+file:///home/vinipsmaker/Projetos/archive/tufao/.git#tag=${pkgver}"
-        "boost.http::git+file:///home/vinipsmaker/Projetos/boost.http/.git#commit=0a02eab2aedb743ad96f0aa9aa0d570e58dc7e41")
+source=("${pkgname}::git+https://github.com/vinipsmaker/tufao.git#tag=${pkgver}"
+        "boost.http::git+https://github.com/BoostGSoC14/boost.http.git#commit=0a02eab2aedb743ad96f0aa9aa0d570e58dc7e41")
 md5sums=('SKIP' 'SKIP')
 
 prepare() {
