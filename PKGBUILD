@@ -60,7 +60,7 @@ md5sums=('66660cd3d9e1a6fed36e88adcb72e9fe'
          '8762d933ea50b0147c8b10e241a24330'
          '2c04883620761476fa4e2985988e11a4'
          'f6c74b0196a698cc1c5a34c695b22715'
-         '8604dec4cc46c1d2139edb640f8e13bb')
+         '3092d9d96c23b5827970efa431d73aeb')
 
 prepare() {
   # Fix gcc bug: https://bugreports.qt.io/browse/QTBUG-53375
