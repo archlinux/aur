@@ -1,0 +1,18 @@
+pkgbase = python-galsim
+	pkgdesc = The modular galaxy image simulation toolkit
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/GalSim-developers/GalSim/releases/tag/v1.5.0-alpha
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = scons
+	depends = fftw
+	depends = boost
+	depends = tmv
+	source = https://github.com/GalSim-developers/GalSim/archive/v1.5.0-alpha.tar.gz
+	md5sums = f74fd061510a1e507d6b9bc9f010e84c
+
+pkgname = python-galsim
+
