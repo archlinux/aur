@@ -1,0 +1,14 @@
+#TODO the addition of other implementation support should be added here. We
+# can/should generate catalogs for mzscheme, drscheme, whatever else we can
+
+post_upgrade () {
+  guile1.8 -c "((use-modules (ice-9 slib))(require 'new-catalog)(quit))"
+}
+
+post_install() {
+  post_upgrade
+}
+
+pre_remove() {
+  rm usr/share/guile/site/slibcat
+}
