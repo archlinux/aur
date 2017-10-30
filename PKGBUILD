@@ -3,11 +3,11 @@
 pkgname=fluid-git
 pkgver=20171012.a77ab56
 pkgrel=1
-pkgdesc="Components for Qt Quick applications with Material Design and Universal"
+pkgdesc="Components for Qt Quick applications with Material Design"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('MPL2')
-depends=('qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg' 'qt5-doc' 'ttf-roboto')
+depends=('qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg' 'ttf-roboto')
 makedepends=('git' 'qbs' 'qt5-tools')
 options=(debug !strip)
 conflicts=('fluid')
@@ -36,7 +36,7 @@ build() {
 	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
 	qbs setup-qt /usr/bin/qmake-qt5 qt5
 	qbs config profiles.qt5.baseProfile gcc
-	qbs build --no-install -d build profile:qt5 qbs.installRoot:/ qbs.installPrefix:usr modules.lirideployment.qmlDir:lib/qt/qml
+	qbs build --no-install -d build profile:qt5 qbs.installRoot:/ qbs.installPrefix:usr modules.lirideployment.qmlDir:lib/qt/qml projects.Fluid.withDocumentation:false
 }
 
 package() {
