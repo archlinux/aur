@@ -1,0 +1,13 @@
+diff --git a/wscript b/wscript
+index 5a389f16f2..7c30b9fe6e 100644
+--- a/wscript
++++ b/wscript
+@@ -484,7 +484,7 @@ libav_dependencies = [
+     }, {
+         'name': 'libav-any',
+         'desc': 'Libav/FFmpeg library versions',
+-        'deps': 'ffmpeg_mpv || libav',
++        'deps': 'ffmpeg_mpv || libav || ffmpeg_garbage',
+         'func': check_ffmpeg_or_libav_versions(),
+         'req': True,
+         'fmsg': "Unable to find development files for some of the required \
