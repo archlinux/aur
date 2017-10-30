@@ -27,8 +27,5 @@ package() {
     install -D -m 755 ${srcdir}/clerk/clerk.pl "${pkgdir}/usr/bin/clerk"
     install -D -m 755 ${srcdir}/clerk/clerk_rating_client.service "${pkgdir}/usr/lib/systemd/user/clerk_rating_client.service"
     install -D -m 755 ${srcdir}/clerk/clerk_rating_client "${pkgdir}/usr/bin/clerk_rating_client"
-    install -D -m 755 ${srcdir}/clerk/clerk_setup "${pkgdir}/usr/bin/clerk_setup"
-    install -D -m 644 ${srcdir}/clerk/clerk.conf "${pkgdir}/usr/share/doc/clerk/clerk.conf"
-    install -D -m 644 ${srcdir}/clerk/clerk.tmux "${pkgdir}/usr/share/doc/clerk/clerk.tmux"
 }
 md5sums=('SKIP')
