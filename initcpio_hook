@@ -1,0 +1,5 @@
+#!/usr/bin/ash
+
+run_hook() {
+  ply-image /usr/share/plymouth/splash.png &> /dev/null
+}

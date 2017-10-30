@@ -1,0 +1,14 @@
+#!/bin/bash
+
+build() {
+  add_binary "ply-image"
+  add_file "/usr/share/plymouth/splash.png"
+  add_runscript
+}
+
+help() {
+  cat <<HELPEOF
+This hook shows plymouth-lite image
+HELPEOF
+}
+
