@@ -8,7 +8,7 @@ url="http://github.com/dmerejkowsky/pycp"
 arch=('any')
 license=('MIT')
 depends=('python')
-makedepends=('python' 'python-setuptools' 'help2man')
+makedepends=('python' 'python-setuptools')
 source=("https://pypi.python.org/packages/7e/03/f4c255bf337469b3140c4dd3d7fdce2b4c2cb0a005d93b5dfd748b7f9fb2/pycp-7.3.0.tar.gz#md5=df9755749ad3d0283950ff00f3a0c273")
 md5sums=('df9755749ad3d0283950ff00f3a0c273')
 
@@ -20,13 +20,6 @@ build() {
 package() {
   cd ${srcdir}/pycp-${pkgver}
   python setup.py install --root=$pkgdir/ --optimize=1
-
-  # man pages
-  PYTHONPATH=. help2man --no-info --output pycp.1 ${pkgdir}/usr/bin/pycp
-  PYTHONPATH=. help2man --no-info --output pymv.1 ${pkgdir}/usr/bin/pymv
-  mkdir -p $pkgdir/usr/share/man/man1
-  install pycp.1 $pkgdir/usr/share/man/man1/pycp.1
-  install pymv.1 $pkgdir/usr/share/man/man1/pymv.1
 
   # license
   mkdir -p $pkgdir/usr/share/licenses/pycp
