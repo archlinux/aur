@@ -1,0 +1,21 @@
+pkgbase = aarch64-linux-gnu-gcc49-linaro-bin
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target.
+	pkgver = 4.9_2017.01
+	pkgrel = 1
+	url = http://www.linaro.org/downloads/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	provides = aarch64-linux-gnu-gcc
+	conflicts = aarch64-linux-gnu-gcc
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	source_i686 = http://releases.linaro.org/components/toolchain/binaries/4.9-2017.01/aarch64-linux-gnu/gcc-linaro-4.9.4-2017.01-i686_aarch64-linux-gnu.tar.xz
+	sha256sums_i686 = af32d7b71fd69f33c216a00f6c9e51c9d10b99b24194d0215f3951635dc49910
+	source_x86_64 = http://releases.linaro.org/components/toolchain/binaries/4.9-2017.01/aarch64-linux-gnu/gcc-linaro-4.9.4-2017.01-x86_64_aarch64-linux-gnu.tar.xz
+	sha256sums_x86_64 = d1f2761b697e6b49f5db1ec0cd48d2fd98224be8cb5ef182093f691e99c923eb
+
+pkgname = aarch64-linux-gnu-gcc49-linaro-bin
+
