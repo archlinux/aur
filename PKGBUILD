@@ -3,16 +3,15 @@
 
 pkgname=libident
 pkgver=0.32
-pkgrel=6
+pkgrel=7
 pkgdesc='Library for querying IDENT servers'
 arch=('x86_64' 'i686')
-url='http://www.remlab.net/libident/'
+url='https://www.remlab.net/libident/'
 license=('custom')
-depends=('glibc')
 options=('!emptydirs')
-source=("http://www.remlab.net/files/libident/libident-$pkgver.tar.gz"
+source=("https://www.remlab.net/files/libident/libident-$pkgver.tar.bz2"
         'libident.pc')
-sha256sums=('8cc8fb69f1c888be7cffde7f4caeb3dc6cd0abbc475337683a720aa7638a174b'
+sha256sums=('a88a24adc377322008aaf7bf7078e6d409f5327e9515ce0d755345dd249dce22'
             '81907cda4fe9c925e78bf58bc9c61d1af439784e4f01da4bd6fc7e4d87750f5c')
 
 build() {
@@ -29,8 +28,9 @@ package() {
   cd "$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
+
   install -Dm755 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 "$srcdir/libident.pc" "$pkgdir/usr/lib/pkgconfig/libident.pc"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
