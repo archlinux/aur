@@ -1,17 +1,19 @@
 pkgbase = ttf-monoid
 	pkgdesc = A customisable coding font
 	pkgver = 0.61
-	pkgrel = 3
+	pkgrel = 4
 	url = http://larsenwork.com/monoid/
 	arch = any
 	license = MIT
 	license = custom:OFL
+	makedepends = fontforge
+	makedepends = python
 	depends = xorg-font-utils
 	depends = fontconfig
-	source = ttf-monoid-0.61.zip::https://cdn.rawgit.com/larsenwork/monoid/f16ff9058bb97eafd78d61d415dedefe2d092562/Monoid.zip
-	source = ttf-monoid-0.61-readme.md::https://raw.githubusercontent.com/larsenwork/monoid/0abc451aaaa650198c065cd97aea4e7895931227/Readme.md
-	sha512sums = 05e782aa609ddbe66ec6fac1222bc19ffd6dd255cd4ba004260c47da09c303a3752c58dbb21a0269dd0c2af19d3ebd58aeeba388f8020222eceef27ecb3f89ca
-	sha512sums = fe8afea5e51eb6139bd3db98aa1ffa39be7e529d76937ea7c129ea0db1a349ad12a9173a802c24a392f106fa7386dde80ba375b06a14fddb4d5b927f847538f2
+	source = ttf-monoid-0.61.tar.gz::https://github.com/larsenwork/monoid/archive/0.61.tar.gz
+	source = fontbuilder-python3.patch
+	sha512sums = 2acae11b3d0a86ac1d0588de986fbcf13a83bdcb857b0eb1deaeae55615fdccbfd8f19b5618ee61abd1261c3f203cadcaa7b37f44f535a3fe462240602ab51dc
+	sha512sums = 7f06b8827ed12b3070512ae58424b92a05635eefe0dee0d6314f1b92230f431e2fde5a2d70adbff324bbcb4ce70b135ccda2a6dfaaeb7b6e4219a447034f00c0
 
 pkgname = ttf-monoid
 

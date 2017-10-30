@@ -1,38 +1,45 @@
-# Maintainer: Severen Redwood <severen@shrike.me>
-# Report all package issues to `https://github.com/SShrike/pkgbuilds`
+# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Contributor: Severen Redwood <severen@shrike.me>
 
 pkgname='ttf-monoid'
-pkgver='0.61'
-pkgrel=3
+pkgver=0.61
+pkgrel=4
 pkgdesc='A customisable coding font'
 arch=('any')
 license=('MIT' 'custom:OFL')
 depends=('xorg-font-utils' 'fontconfig')
+makedepends=('fontforge' 'python')
 url='http://larsenwork.com/monoid/'
-source=(
-  "${pkgname}-${pkgver}.zip::https://cdn.rawgit.com/larsenwork/monoid/f16ff9058bb97eafd78d61d415dedefe2d092562/Monoid.zip"
-  "${pkgname}-${pkgver}-readme.md::https://raw.githubusercontent.com/larsenwork/monoid/0abc451aaaa650198c065cd97aea4e7895931227/Readme.md"
-)
-sha512sums=('05e782aa609ddbe66ec6fac1222bc19ffd6dd255cd4ba004260c47da09c303a3752c58dbb21a0269dd0c2af19d3ebd58aeeba388f8020222eceef27ecb3f89ca'
-            'fe8afea5e51eb6139bd3db98aa1ffa39be7e529d76937ea7c129ea0db1a349ad12a9173a802c24a392f106fa7386dde80ba375b06a14fddb4d5b927f847538f2')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/larsenwork/monoid/archive/${pkgver}.tar.gz"
+'fontbuilder-python3.patch')
+sha512sums=('2acae11b3d0a86ac1d0588de986fbcf13a83bdcb857b0eb1deaeae55615fdccbfd8f19b5618ee61abd1261c3f203cadcaa7b37f44f535a3fe462240602ab51dc'
+            '7f06b8827ed12b3070512ae58424b92a05635eefe0dee0d6314f1b92230f431e2fde5a2d70adbff324bbcb4ce70b135ccda2a6dfaaeb7b6e4219a447034f00c0')
 
-package() {
-  install -D -m644 \
-    'Monoid-Regular.ttf' "${pkgdir}/usr/share/fonts/TTF/Monoid-Regular.ttf"
-  install -D -m644 \
-    'Monoid-Bold.ttf' "${pkgdir}/usr/share/fonts/TTF/Monoid-Bold.ttf"
-  install -D -m644 \
-    'Monoid-Italic.ttf' "${pkgdir}/usr/share/fonts/TTF/Monoid-Italic.ttf"
-  install -D -m644 \
-    'Monoid-Retina.ttf' "${pkgdir}/usr/share/fonts/TTF/Monoid-Retina.ttf"
-
-  # Extract the license from the README.
+prepare () {
+  # Create LICENSE file
+  cd "monoid-${pkgver}"
   sed -n '/Monoid is dual licensed/,/OTHER DEALINGS IN THE FONT SOFTWARE./p' \
-    "${pkgname}-${pkgver}-readme.md" > \
+    'Readme.md' > \
     'LICENSE'
-  install -D -m644 \
-    'LICENSE' \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Patch fontbuilder script
+  cd "Scripts"
+  patch -sp1 < "${srcdir}/fontbuilder-python3.patch"
 }
 
-# vim:set ts=2 sw=2 et:
+build () {
+  cd "monoid-${pkgver}"
+  export PYTHONPATH="$(pwd)/Scripts"
+  python3 -c 'import fontbuilder; fontbuilder.build("_build", "Source/Monoid.sfdir");'
+  python3 -c 'import fontbuilder; fontbuilder.build("_build", "Source/Monoid-Bold.sfdir");'
+  python3 -c 'import fontbuilder; fontbuilder.build("_build", "Source/Monoid-Italic.sfdir");'
+  python3 -c 'import fontbuilder; fontbuilder.build("_build", "Source/Monoid-Retina.sfdir");'
+}
+
+package () {
+  cd "monoid-${pkgver}"
+  install -dm755 "${pkgdir}/usr/share/fonts/TTF"
+  install -m644 _build/*.ttf "${pkgdir}/usr/share/fonts/TTF"
+  install -Dm644 LICENSE \
+  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
