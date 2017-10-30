@@ -9,7 +9,7 @@
 pkgname=lxc-selinux
 epoch=1
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Containers"
 arch=('i686' 'x86_64')
 url="http://linuxcontainers.org"
@@ -43,17 +43,17 @@ prepare() {
     -e 's|"\\"-//Davenport//DTD DocBook V3.0//EN\\""|"\\"-//OASIS//DTD DocBook XML\\" \\"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd\\""|' \
     configure.ac
   sed -i \
-    -e 's|$(sysconfdir)/bash_completion.d/|/usr/share/bash-completion/completions/|g' \
-    config/bash/Makefile.am
-  sed -i \
     -e 's|\${prefix}/||g' \
     lxc.pc.in
+  sed -i \
+    -e 's|dirlen,|dirlen=0,|' \
+    src/lxc/storage/overlay.c
 }
 
 build() {
   cd "$srcdir/${pkgname/-selinux}-${pkgver/_/-}"
   ./autogen.sh
-  ./configure \
+  bashcompdir=/usr/share/bash-completion/completions ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --localstatedir=/var \

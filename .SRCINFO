@@ -1,7 +1,7 @@
 pkgbase = lxc-selinux
 	pkgdesc = Linux Containers
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://linuxcontainers.org
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = lxc-selinux
 	optdepends = lua
 	optdepends = lua-filesystem: lxc-top
 	optdepends = lua-alt-getopt: lxc-top
-	provides = lxc=2.1.0-1
+	provides = lxc=2.1.0-2
 	conflicts = lxc
 	options = emptydirs
 	backup = etc/lxc/default.conf
