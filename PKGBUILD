@@ -2,7 +2,7 @@
 # vim: set ts=2 sw=2 et ft=sh:
 
 pkgname=qutebrowser-git
-pkgver=1.0.2.r96.g9dc9bcaf3
+pkgver=1.0.2.r167.g43aa7423a
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5"
 arch=(any)
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python' 'python-setuptools' 'python-pyqt5' 'qt5-base'
          'qt5-webengine' 'qt5-declarative' 'python-pypeg2' 'python-jinja'
          'python-pygments' 'python-yaml' 'python-attrs')
-makedepends=('asciidoc' 'source-highlight' 'git')
+makedepends=('asciidoc' 'pygmentize' 'git')
 optdepends=(
   'qt5-webkit: To use the QtWebKit backend'
   'gst-libav: media playback with QtWebKit'
