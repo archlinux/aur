@@ -9,8 +9,4 @@ post_upgrade() {
   echo "rm /usr/share/webapps/mantisbt/mantis_offline.php"
 }
 
-post_remove() {
-  rm -rf /usr/share/webapps/mantisbt
-}
-
 # vim: ts=2 sw=2 et:

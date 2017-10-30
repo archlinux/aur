@@ -6,8 +6,8 @@
 # Contributor: Angel 'angvp' Velasquez <angvp@archlinux.com.ve>
 
 pkgname=mantisbt
-pkgver=2.7.0
-pkgrel=2
+pkgver=2.8.0
+pkgrel=1
 pkgdesc='Web-based issue tracking system'
 arch=('any')
 url='https://www.mantisbt.org/'
@@ -22,7 +22,8 @@ optdepends=('apache: Web server to run MantisBT'
             'php-pgsql: PostgreSQL database')
 backup=('etc/webapps/mantisbt/config_inc.php')
 source=("https://downloads.sourceforge.net/project/${pkgname}/mantis-stable/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('8be61bd8aa94bafe7af081de7d8411d89f69baa7cdda06ae8bdb2df5f44735d2d91cd44a7510dc8d8abb08fb6c182553018eeb88a44655681f3e5aed2f116873')
+sha512sums=('a01b1f5c18a2196c914078ee6948369836a3d3386af5b4c281266244f5efaae382331fb9b68bf640261c23f88ca3217037c32d13e8eaa1ee5c1553fd53a589bf')
+install="${pkgname}.install"
 
 prepare() {
   cd "${pkgname}-${pkgver}"
