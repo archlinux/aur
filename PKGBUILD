@@ -1,6 +1,6 @@
 # Maintainer: Arctic Ice Studio <development@arcticicestudio.com>
 pkgname=nord-emacs
-pkgver=0.1.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="An arctic, north-bluish clean and elegant Emacs theme"
 arch=("any")
