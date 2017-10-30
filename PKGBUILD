@@ -1,7 +1,7 @@
 # Maintainer: goll <adrian.goll+aur[at]gmail>
 
 pkgname='sslyze'
-pkgver=1.1.1
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Fast and full-featured SSL scanner."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('python2' 'python2-pip')
 options=('!strip')
 source=("https://github.com/nabla-c0d3/sslyze/archive/${pkgver}.tar.gz")
-sha1sums=('c484e876bf032cedf881bdb7a45c7168be6bff04')
+sha1sums=('6bbbd908929cf1f20247969309e54cf3a33d2434')
 
 package() {
 	# Install files in /opt
