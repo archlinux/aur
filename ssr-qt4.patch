@@ -1,11 +1,11 @@
---- configure	2014-07-24 13:06:30.000000000 +0200
-+++ configure.new	2016-12-28 14:09:35.995052402 +0100
-@@ -17678,7 +17678,7 @@
+--- configure.ac	2017-10-30 22:42:05.906053864 +0100
++++ configure.ac.new	2017-10-30 22:45:47.730518131 +0100
+@@ -489,7 +489,7 @@
+   LIBS="$LIBS $QT_LIBS"
+   PKG_FLAGS="$PKG_FLAGS $QT_CFLAGS"
    MOCFLAGS="$QT_CFLAGS"
-   if which moc 2>&1 >/dev/null; then :
- 
--    QTMOC="moc"
-+    QTMOC="moc-qt4"
- 
- else
- 
+-  AS_IF([which moc 2>&1 >/dev/null],
++  AS_IF([which moc-qt4 2>&1 >/dev/null],
+   [
+     QTMOC="moc"
+   ],

@@ -2,7 +2,7 @@
 pkgname=ssr-git
 _pkg=ssr
 pkgver=0.4.2.r78.g989568c
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for real-time spatial audio reproduction providing a variety of
 rendering algorithms, e.g. Wave Field Synthesis, Higher-Order Ambisonics and
 binaural techniques."
@@ -18,7 +18,7 @@ source=("git+https://github.com/SoundScapeRenderer/${_pkg}"
         "ssr-qt4.patch"
         "ssr-ip-interface-gcc7.patch")
 sha512sums=('SKIP'
-            'ac99cfc8fd939bfe41fa6ad9e2cfd4dd603c94a9d0d376389bd372f7082622dd229d709ce55bfb0fb3ae068b7d87cec9817b318efc7038b34dbe8eb70545204b'
+            'b59927ddf69074ecab1bb63814299c580dafad587ed0bbc0903e5080c7f2da90be339778867b104e1b35b10405530386b480cab07839c4046b7ef87f6876a56b'
             'a3dea2ed58729b181e2f6a7fdece3ed5dd80eba06fcafadc78778cd11842079792b2bbf7e695c135d605ac31bb98634dd24a818d861011820c0d74ecf49112ae')
 
 pkgver() {
