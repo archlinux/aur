@@ -1,6 +1,6 @@
 pkgbase = telegramircd-git
 	pkgdesc = IRC server capable of controlling web.telegram.org
-	pkgver = r32.eeb556d
+	pkgver = r48.b49b67e
 	pkgrel = 1
 	url = https://github.com/MaskRay/telegramircd
 	install = install
@@ -16,7 +16,7 @@ pkgbase = telegramircd-git
 	source = git+https://github.com/MaskRay/telegramircd.git
 	source = install
 	md5sums = SKIP
-	md5sums = 427a4bf3698821e6c465c9b8049ecd00
+	md5sums = fe216c5d62a9d3ef09a952d6aac73c91
 
 pkgname = telegramircd-git
 

@@ -2,7 +2,7 @@
 
 pkgname=telegramircd-git
 _pkgname=telegramircd
-pkgver=r32.eeb556d
+pkgver=r48.b49b67e
 pkgrel=1
 pkgdesc="IRC server capable of controlling web.telegram.org"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=('git+https://github.com/MaskRay/telegramircd.git' install)
 backup=(etc/telegramircd/config)
 install=install
 md5sums=('SKIP'
-         '427a4bf3698821e6c465c9b8049ecd00')
+         'fe216c5d62a9d3ef09a952d6aac73c91')
 
 pkgver() {
   cd "$_pkgname"
@@ -27,5 +27,5 @@ pkgver() {
 package() {
   install -D "$_pkgname/telegramircd.py" "$pkgdir/usr/bin/telegramircd"
   install -Dm644 "$_pkgname/config" -t "$pkgdir/etc/telegramircd/"
-  install -Dm644 "$_pkgname/telegramircd.service" -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "$_pkgname/example_services/telegramircd.service" -t "$pkgdir/usr/lib/systemd/system/"
 }

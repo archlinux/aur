@@ -1,7 +1,8 @@
 post_install() {
   cat <<NOTE
-1. Install aur/telegram-cli-git
-2. Login `telegram-cli` to get credential before using telegramircd
+1. pip install --user telethon
+2. Create /etc/systemd/system/telegramircd.service from the template /lib/systemd/system/telegramircd.service
+3. Please change tg-phone tg-api-id tg-api-hash tg-session-dir in /etc/telegramircd/config
 
 Refer to https://github.com/MaskRay/telegramircd for details.
 NOTE
