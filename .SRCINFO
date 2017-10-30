@@ -1,0 +1,32 @@
+pkgbase = electrum-cash
+	pkgdesc = Lightweight Bitcoin Cash wallet
+	pkgver = 2.9.3
+	pkgrel = 1
+	url = https://electroncash.org
+	arch = any
+	license = MIT
+	makedepends = gettext
+	makedepends = python2-setuptools
+	makedepends = desktop-file-utils
+	depends = python2-pyaes
+	depends = python2-ecdsa
+	depends = python2-pbkdf2
+	depends = python2-requests
+	depends = python2-qrcode
+	depends = python2-protobuf
+	depends = python2-dnspython
+	depends = python2-jsonrpclib
+	depends = python2-pysocks
+	depends = python2-pyqt4
+	depends = python2-pycryptodomex
+	optdepends = python2-btchip: BTChip hardware wallet support
+	optdepends = python2-matplotlib: plot transaction history in graphical mode
+	optdepends = zbar: QR code reading support
+	source = https://electroncash.org/downloads/2.9.3/win-linux/Electron-Cash-2.9.3.tar.gz
+	source = https://github.com/fyookball/keys-n-hashes/raw/master/sigs-and-sums/2.9.3/win-linux/Electron-Cash-2.9.3.tar.gz.sig
+	validpgpkeys = C885059AAD1EEB999C73AFCF9F9DCF0B14FE144D
+	sha1sums = 14c5ace99c1ffd5f9e33b27fc1735ce9a6875796
+	sha1sums = SKIP
+
+pkgname = electrum-cash
+
