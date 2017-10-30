@@ -44,7 +44,7 @@ package() {
   install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
   install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 
-  cp -r release/linux-amd64/bin "$pkgdir/usr"
+  cp -r release/linux-$GOARCH/bin "$pkgdir/usr"
   mkdir -p $pkgdir/etc/hyperledger/fabric
   cp -r sampleconfig/* $pkgdir/etc/hyperledger/fabric
 
