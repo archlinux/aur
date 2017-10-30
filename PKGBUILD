@@ -8,8 +8,8 @@
 _lib32=0
 
 pkgname=('nvidia-full-beta-all' 'nvidia-utils-full-beta-all' 'nvidia-egl-wayland-full-beta-all' 'nvidia-libgl-full-beta-all' 'opencl-nvidia-full-beta-all')
-pkgver=387.12
-pkgrel=2
+pkgver=387.22
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -34,9 +34,9 @@ source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg
 md5sums=('4f5562ee8f3171769e4638b35396c55d'
          '2640eac092c220073f0668a7aaff61f7')
 #         'cc8941b6898d9daa0fb67371f57a56b6')
-md5sums_i686=('1113b7efb570a7604d9e31d93351c5ff')
-md5sums_x86_64=('0dce5a6685500d9ab6443c82a2210ee9')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('a11bd0d1bad9c4b462c2bbd17b0c969c')
+md5sums_i686=('abdbb3c813e52148f7435308121e6a37')
+md5sums_x86_64=('b21f9bafb20409b337505c9b1d362c34')
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('5989b02e94ce3f171e473e0837f52e24')
 
 # Auto-detect patches (e.g. linux-4.1.patch)
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
