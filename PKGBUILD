@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/pliablepixels/zmNinja/releases/download/v$pkgver/zmNinja-linux64bit.zip" "zmninja.desktop" "cc-by-nc-sa-4.0.txt" "zmninja.png")
 noextract=()
-sha256sums=("325d5ddcd7caf09365915b9a10983a033d10dca11e50b731c069156dc61f888d" "SKIP" "SKIP" "SKIP")
+sha256sums=("2e6f690d5867dba670bcdfda3b0224095821cb1ded57d65585b1f088deaea74a" "SKIP" "SKIP" "SKIP")
 validpgpkeys=()
 
 build() {
