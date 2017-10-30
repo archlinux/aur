@@ -1,0 +1,22 @@
+pkgbase = crrcsim-hg
+	pkgdesc = Model airplane flight simulation program. Mercurial version.
+	pkgver = 0.9.13.r3.1fc598ff00b1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/crrcsim/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	makedepends = gawk
+	makedepends = plib>=1.8.4
+	depends = sdl>=1.2.5
+	depends = portaudio
+	depends = libjpeg
+	depends = cgal
+	provides = crrcsim
+	conflicts = crrcsim
+	source = hg+https://hg.code.sf.net/p/crrcsim/code
+	sha256sums = SKIP
+
+pkgname = crrcsim-hg
+
