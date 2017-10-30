@@ -1,0 +1,18 @@
+post_install() {
+    update-desktop-database -q
+    systemctl daemon-reload
+    # ln to keep compatibility
+    ln -s /usr/bin/peercoin-qt /usr/bin/ppcoin-qt
+
+    echo ""
+    echo "If you are having troubles with blockchain download, just backup wallet.dat, remove .ppcoin directory and start over."
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+post_remove() {
+    post_install $1
+    rm /usr/bin/ppcoin-qt
+}

@@ -4,7 +4,7 @@ pkgname=('peercoin-qt' 'peercoind')
 pkgbase=peercoin
 _gitname=peercoin
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Official Peercoin wallet."
 makedepends=('gcc' 'make' 'boost' 'miniupnpc' 'openssl' 'qt5-base' 'qt5-tools')
 depends=('boost-libs' 'openssl' 'miniupnpc' 'qt5-base')
@@ -29,7 +29,7 @@ build() {
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
 	
 	## make qt gui
-	qmake-qt5 USE_QRCODE=1 USE_UPNP=1 \
+	qmake-qt5 USE_QRCODE=1 USE_UPNP=1 USE_DBUS=1 \
 	    QMAKE_CFLAGS="${CFLAGS}"\
     	QMAKE_CXXFLAGS="${CXXFLAGS} -pie"
 	make
@@ -50,7 +50,7 @@ package_peercoin-qt() {
 	makedepends=('gcc' 'make' 'qt5-base' 'boost' 'gcc' 'make' 'qrencode' 'openssl' 'miniupnpc' 'qt5-tools')
 	depends=('qt5-base' 'miniupnpc' 'boost-libs' 'qrencode' 'miniupnpc')
 	optdepeds=('systemd' 'tor')
-	install=peercoin.install
+	install=peercoin-qt.install
 
 	install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm644 $pkgname@.service "${pkgdir}/usr/lib/systemd/system/$pkgname@.service"
@@ -69,7 +69,7 @@ package_peercoind() {
 	depends=('gcc' 'make' 'boost-libs' 'miniupnpc')
 	optdepeneds=('systemd' 'tor')
 	pkgdesc="Official implementation of Peercoin, the sustainable and secure cryptocurrency alternative to Bitcoin - daemon."
-	install=peercoin.install
+	install=peercoind.install
 
 	install -Dm644 $pkgname@.service "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
 	install -Dm644 $pkgname-tor@.service "$pkgdir/usr/lib/systemd/system/$pkgname-tor@.service"
