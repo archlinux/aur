@@ -1,5 +1,5 @@
 pkgbase = ys-git
-	pkgdesc = A stack-based scripting language/interpreter
+	pkgdesc = An interpreter for the YodaScirpt Language
 	pkgver = v0.0.9.alpha.r128.g0f794f9
 	pkgrel = 1
 	url = https://github.com/dvtate/yoda
