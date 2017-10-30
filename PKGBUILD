@@ -2,8 +2,8 @@
 pkgname=pantum-p2000-driver
 pkgver="1.00_1"
 pkgrel=1
-pkgdesc="Pantum 2000 Series Linux Driver (Ubutun12.04) V1.00"
-arch=('x86_64')
+pkgdesc="Pantum 2000 Series Linux Driver"
+arrch=('x86_64')
 url="http://global.pantum.com/global/"
 license=('proprietary')
 depends=('cups')
