@@ -1,0 +1,15 @@
+--- a/advanced/index.php	2017-10-30 16:27:08.583096709 -0400
++++ b/advanced/index.php	2017-10-30 16:28:06.884263996 -0400
+@@ -10,7 +10,10 @@ function validIP($address){
+ }
+ 
+ $uri = escapeshellcmd($_SERVER['REQUEST_URI']);
+-$serverName = escapeshellcmd($_SERVER['SERVER_NAME']);
++// To retain the functionality of the block page when directly accessing blacklisted domains
++// See: https://github.com/pi-hole/pi-hole/wiki/Nginx-Configuration
++// $serverName = escapeshellcmd($_SERVER['SERVER_NAME']);
++$serverName = escapeshellcmd($_SERVER['HTTP_HOST']);
+ 
+ // If the server name is 'pi.hole', it's likely a user trying to get to the admin panel.
+ // Let's be nice and redirect them.
+
