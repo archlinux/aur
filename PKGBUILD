@@ -1,18 +1,18 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Riccardo Berto <riccardobrt at gmail>
+# previous: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-tinydb
-pkgver=3.2.1
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Lightweight document oriented database optimized for your happiness"
 arch=('any')
 depends=('python')
-makedepends=('python-setuptools' 'unzip')
+makedepends=('python-setuptools')
 url="https://github.com/msiemens/tinydb"
 license=('MIT')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/6c/2e/0df79439cf5cb3c6acfc9fb87e12d9a0ff45d3c573558079b09c72b64ced/tinydb-3.2.1.zip)
-md5sums=('af85819eb2589bbca9b04b8fed196e36')
-sha256sums=('7fc5bfc2439a0b379bd60638b517b52bcbf70220195b3f3245663cb8ad9dbcf0')
+source=($url/archive/v$pkgver.tar.gz)
+sha256sums=('56e0c4e0cc40f4c1cc4358d2b4927c487df5724b478296cecbb2cbc5f7e55286')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
@@ -27,6 +27,4 @@ package() {
   msg2 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1
 
-  msg2 'Cleaning up pkgdir...'
-  rm -rf "$pkgdir/usr/lib/python3.5/site-packages/tests"
 }
