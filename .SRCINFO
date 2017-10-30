@@ -1,5 +1,5 @@
 pkgbase = netease-cloud-music-docker-version
-	pkgdesc = Use docker to avoid netease music bugs.
+	pkgdesc = An online music player by netease. Run on docker to avoid bugs.
 	pkgver = 1.0.0_2
 	pkgrel = 2
 	url = https://github.com/qzwlecr/netease-cloud-music-docker-version
