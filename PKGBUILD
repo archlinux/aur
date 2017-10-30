@@ -1,6 +1,6 @@
 # Maintainer: Arctic Ice Studio <development@arcticicestudio.com>
 pkgname=nord-vim-airline
-pkgver=0.4.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="An arctic, north-bluish clean and elegant Vim airline theme"
 arch=("any")
