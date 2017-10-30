@@ -1,6 +1,6 @@
 pkgbase = libevhtp-git
 	pkgdesc = A replacement API for Libevent's current HTTP API.
-	pkgver = 1.2.12.1.r0.gf5e6baa
+	pkgver = 1.2.12.1.r31.g960a788
 	pkgrel = 1
 	url = https://github.com/criticalstack/libevhtp
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = libevhtp-git
 	makedepends = libevent
 	makedepends = openssl-1.0
 	depends = git
-	source = libevhtp-git::git+https://github.com/criticalstack/libevhtp.git#branch=master
+	source = libevhtp-git::git+https://github.com/criticalstack/libevhtp.git#branch=develop
 	sha256sums = SKIP
 
 pkgname = libevhtp-git

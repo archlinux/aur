@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=libevhtp-git
-pkgver=1.2.12.1.r0.gf5e6baa
+pkgver=1.2.12.1.r31.g960a788
 pkgrel=1
 pkgdesc="A replacement API for Libevent's current HTTP API."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/criticalstack/libevhtp"
 license=('BSD')
 depends=('git')
 makedepends=('gcc' 'libevent' 'openssl-1.0')
-source=("${pkgname}::git+https://github.com/criticalstack/libevhtp.git#branch=master")
+source=("${pkgname}::git+https://github.com/criticalstack/libevhtp.git#branch=develop")
 sha256sums=('SKIP')
 
 pkgver() {
