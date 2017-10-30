@@ -3,7 +3,7 @@
 
 pkgname=pd-lua-git
 pkgver=24.be30ba0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua bindings for Pd"
 arch=("i686" "x86_64")
 license=('GPL')
