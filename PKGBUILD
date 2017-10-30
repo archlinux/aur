@@ -3,7 +3,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-macbook        # Build kernel with a different name
 _srcname=linux-4.13
-pkgver=4.13.7
+pkgver=4.13.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -32,7 +32,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '0fe89c96e956efbded576214eef0c8e43cabe41dfca245e3ebb79fff9bc8715d'
+            'b9efa9c6375f79f6a041a5f0666d4ced1a49bfe8c4662d26517a6b4cfd9bf2f6'
             'SKIP'
             'f68bb8bccbbd6b86dc9f182ee25b2953638aec2729387c70d2787318ad4ea16c'
             '9be58e0adea94ccd51aabdd568fa65ba84097f31589de57c5fcc7c71c257a6e0'
