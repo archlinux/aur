@@ -1,4 +1,4 @@
-# Maintainer: Markus Hovorka <m.hovorka@live.de>
+# Contributor: Markus Hovorka <m.hovorka@live.de>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: lilydjwg <lilydjwg@gmail.com>
 # Contributor: Matthias Maennich <arch@maennich.net>
@@ -18,7 +18,7 @@ makedepends=('python' 'python2' "python"{,2}"-shiboken2-git" 'cmake'
              'qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia' 'qt5-declarative'
              'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-webchannel'
              'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
-source=("$pkgbase::git+https://code.qt.io/pyside/pyside.git#branch=5.9"
+source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.9"
         "fix-module-name.patch"
         "sphinx-build2.patch")
 md5sums=('SKIP'
