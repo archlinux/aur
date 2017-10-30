@@ -1,7 +1,7 @@
 #Maintainer: "Yannick LM <yannicklm1337 AT gmail DOT com>"
 
 pkgname=pycp
-pkgver="7.3.0"
+pkgver="8.0.1"
 pkgrel=1
 pkgdesc="cp and mv with a progressbar"
 url="http://github.com/dmerejkowsky/pycp"
@@ -9,8 +9,8 @@ arch=('any')
 license=('MIT')
 depends=('python')
 makedepends=('python' 'python-setuptools')
-source=("https://pypi.python.org/packages/7e/03/f4c255bf337469b3140c4dd3d7fdce2b4c2cb0a005d93b5dfd748b7f9fb2/pycp-7.3.0.tar.gz#md5=df9755749ad3d0283950ff00f3a0c273")
-md5sums=('df9755749ad3d0283950ff00f3a0c273')
+source=('https://files.pythonhosted.org/packages/dc/8f/a0e9dc4535fa99a5f750470de9b57a02725840855c04a68d83fee7aa7dec/pycp-8.0.1.tar.gz')
+md5sums=('8b4a6b8f0ce26dfca2c9e8de914a1506')
 
 build() {
   cd ${srcdir}/pycp-${pkgver}
