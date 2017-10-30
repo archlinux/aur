@@ -1,0 +1,5 @@
+#!/bin/bash
+trap "exit" INT TERM
+trap "kill 0" EXIT
+play -q /opt/benny-hill/benny-hill.mp3 repeat - &
+"$@"

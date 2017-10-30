@@ -1,0 +1,17 @@
+pkgbase = benny-hill
+	pkgdesc = Play the Benny Hill theme while running another command
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Tyilo/albert-extensions
+	arch = any
+	license = GPL
+	depends = bash
+	depends = sox
+	depends = twolame
+	source = benny-hill
+	source = https://github.com/mafintosh/benny-hill/blob/master/theme.mp3?raw=true
+	sha256sums = 99c5aa30f43a75dbd81fda811606dd75ea8f081f4d52a794d10b0038ec00dcff
+	sha256sums = b8e9774023ebe20e27bfb7ae139cbe994f05690f7c8ec9835ff5f0d94ec45fc7
+
+pkgname = benny-hill
+
