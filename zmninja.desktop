@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=zmNinja
+GenericName=zmNinja
+Exec=zmninja
+Icon=zmninja
+Terminal=false
+Type=Application
+Categories=Utility;
+MimeType=application;

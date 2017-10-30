@@ -1,0 +1,19 @@
+pkgbase = zmninja
+	pkgver = 1.2.504
+	pkgrel = 1
+	url = https://github.com/pliablepixels/zmNinja
+	arch = x86_64
+	license = custom:cc-by-nc-sa-4.0
+	license = custom
+	depends = gconf
+	source = https://github.com/pliablepixels/zmNinja/releases/download/v1.2.504/zmNinja-linux64bit.zip
+	source = zmninja.desktop
+	source = cc-by-nc-sa-4.0.txt
+	source = zmninja.png
+	sha256sums = 325d5ddcd7caf09365915b9a10983a033d10dca11e50b731c069156dc61f888d
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = zmninja
+
