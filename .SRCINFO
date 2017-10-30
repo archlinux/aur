@@ -15,7 +15,6 @@ pkgbase = zulucrypt
 	depends = libxkbcommon-x11
 	optdepends = kwalletmanager: retrieve volume keys from kde kwallet
 	conflicts = zulucrypt-git
-	options = !buildflags
 	source = https://github.com/mhogomchungu/zuluCrypt/releases/download/5.2.0/zuluCrypt-5.2.0.tar.bz2
 	md5sums = 2637b64af5368c7d40a622f8e828a666
 	sha256sums = 9092b6cd386f000505bc23f9785d2fbb945e59bb93de3eddf0b09953d0dfbcd1

@@ -13,7 +13,6 @@ depends=('cryptsetup' 'qt5-base' 'libpwquality' 'libsecret' 'libxkbcommon-x11' )
 optdepends=('kwalletmanager: retrieve volume keys from kde kwallet')
 conflicts=('zulucrypt-git')
 makedepends=('cmake')
-options=('!buildflags')
 source=("https://github.com/mhogomchungu/zuluCrypt/releases/download/${pkgver}/${_altpkgname}-${pkgver}.tar.bz2")
 md5sums=('2637b64af5368c7d40a622f8e828a666'
          ) 
