@@ -5,7 +5,7 @@
 pkgbase=('monero')
 pkgname=('monero' 'libmonero-wallet')
 pkgver=0.11.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
 license=('custom:Cryptonote')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -15,8 +15,11 @@ makedepends=('git' 'cmake' 'boost' 'gtest')
 provides=('monero' 'libmonero-wallet')
 conflicts=('bitmonero-git' 'libmonero-wallet-git')
 
-source=("https://github.com/monero-project/monero/archive/v${pkgver}.tar.gz")
-sha256sums+=('b5b48d3e5317c599e1499278580e9a6ba3afc3536f4064fcf7b20840066a509b')
+source=("https://github.com/monero-project/monero/archive/v${pkgver}.tar.gz"
+        "monerod.service")
+
+sha256sums+=('b5b48d3e5317c599e1499278580e9a6ba3afc3536f4064fcf7b20840066a509b'
+             '59fc670cf92960832d03038968270f81beacea7d6819c71ec5bcf15c6030e3c9')
 
 _monero="${pkgbase}-${pkgver}"
 _build=build
@@ -69,7 +72,9 @@ package_monero() {
   install -Dm644 "${srcdir}/${_monero}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm644 "${srcdir}/${_monero}/utils/conf/monerod.conf" "${pkgdir}/etc/monerod.conf"
-  install -Dm644 "${srcdir}/${_monero}/utils/systemd/monerod.service" "${pkgdir}/usr/lib/systemd/system/monerod.service"
+  # TODO(anonimal): new, working, systemd service file was not merged into monero branch v0.11.1.0 - so we've git-add'd it ourselves
+  #install -Dm644 "${srcdir}/${_monero}/utils/systemd/monerod.service" "${pkgdir}/usr/lib/systemd/system/monerod.service"
+  install -Dm644 "${srcdir}/monerod.service" "${pkgdir}/usr/lib/systemd/system/monerod.service"
 
 }
 
