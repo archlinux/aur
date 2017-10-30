@@ -6,7 +6,7 @@
 pkgname=openblas-lapack-for-flexiblas
 _PkgName=OpenBLAS
 _pkgname=openblas
-pkgver=0.2.19
+pkgver=0.2.20
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.6.0
 pkgrel=1
@@ -18,7 +18,7 @@ depends=('gcc-libs')
 makedepends=('perl' 'gcc-fortran')
 options=(!emptydirs)
 source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
-sha256sums=('9c40b5e4970f27c5f6911cb0a28aa26b6c83f17418b69f8e5a116bb983ca8557')
+sha256sums=('5ef38b15d9c652985774869efd548b8e3e972e1e99475c673b25537ed7bcf394')
 
 # Add the following line to the _config variable if you want to set the number of make jobs
 #  MAKE_NB_JOBS=2 \
