@@ -1,0 +1,18 @@
+# Directories
+**/pkg/
+**/src/
+
+# Archives
+*.tar
+*.tar.*
+*.zip
+*.tgz
+*.sig
+*.deb
+
+# Logs
+*.log
+*.log.*
+
+# Package specific files
+*readme.md
