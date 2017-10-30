@@ -1,6 +1,7 @@
-# Maintainer: Liqueur Librazy <im@librazy.org>
+# Collaborator: Liqueur Librazy <im@librazy.org>
+# Maintainer: Jian Zeng <anonymousknight96@gmail.com>
 pkgname=tidb-bin
-pkgver=0.0.1.rc1
+pkgver=1.0.0
 pkgrel=1
 
 pkgdesc="A distributed NewSQL database compatible with MySQL protocol"
@@ -9,18 +10,13 @@ url="https://github.com/pingcap/tidb"
 license=('APACHE')
 depends=('gcc-libs')
 conflict=('tidb-bin-nightly')
-backup=()
 options=()
-source=("http://download.pingcap.org/tidb-rc1-linux-amd64.tar.gz")
+source=("https://download.pingcap.org/tidb-latest-linux-amd64.tar.gz")
 
-sha256sums=(
-	'5c665b9ca5e75a5baae744518fe20e586860dbdc8eca9d78104ba0c682fcc17c')
+sha256sums=('f09a794104b546fc9a6de5dd323c23f5871e98edcb1dcd7a909c518dc2f19835')
 
 package() {
-	install -dm755 "$pkgdir"/{opt/tidb/conf,usr/bin}
-	cd "tidb-rc1-linux-amd64/bin"
-	install -D -m755 *-server "${pkgdir}/usr/bin"
-	cd ..
-	cp -R conf "$pkgdir/opt/tidb/"
-	cd ..
+	install -dm755 "$pkgdir"/usr/bin
+	cd "tidb-latest-linux-amd64/bin"
+	install -D -m755 ti* pd-* "${pkgdir}/usr/bin"
 }
