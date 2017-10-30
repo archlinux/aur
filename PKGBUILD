@@ -2,14 +2,14 @@
 
 pkgname=enlighten-git
 pkgver=0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A small tool to modify LCD backlight brightness'
 url='https://github.com/HalosGhost/enlighten'
 arch=('i686' 'x86_64')
 license=('GPL3')
 
-makedepends=('git' 'tup' 'clang')
+makedepends=('git' 'clang')
 
 source=('git+https://github.com/HalosGhost/enlighten.git')
 sha256sums=('SKIP')
