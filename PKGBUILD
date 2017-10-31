@@ -1,8 +1,8 @@
 # Maintainer: jakob <grandchild@gmx.net>
 
 pkgname=autohidewibox
-pkgver=0.4
-pkgrel=3
+pkgver=0.5
+pkgrel=1
 pkgdesc="Show awesome WM wibox only on ModKey press"
 url=https://github.com/grandchild/${pkgname}
 #install=${pkgname}.install
@@ -11,14 +11,14 @@ license=('CC0')
 arch=('i686' 'x86_64')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('python' 'xorg-xinput')
+depends=('awesome' 'python' 'xorg-xinput')
 source=(
 	"https://raw.githubusercontent.com/grandchild/${pkgname}/${pkgver}/${pkgname}.py"
 	"https://raw.githubusercontent.com/grandchild/${pkgname}/${pkgver}/${pkgname}.conf"
 )
 sha1sums=(
-	'4ff91f6be6afa28fd725dca47742e4d835e65744'
-	'3e62c3fcae9f84e2170928b1f22cc5f104bf61c8'
+	'012d7636f2659e60d24cbd49980e96ef4c74ebf6'
+	'55a4fc3d53aa456e979b411384dcaf9a0535f4bb'
 )
 
 package() {
