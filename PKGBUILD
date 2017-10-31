@@ -9,13 +9,13 @@ pkgver=3.3.0
 pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="It's a module for calculate a aircraft's Z.F.W." 
-url="https://github.com/MBasicComputing/$pkgname"
+url="https://github.com/MBasicComputing/$_GitName"
 license=('GPL3')
 groups=('MBC')
 depends=('qt5-base')
 makedepends=('gcc' 'qt5-base')
 install=script.install
-source=("git://github.com/MBasicComputing/$pkgname#tag=v$pkgver-$pkgrel")
+source=("git://github.com/MBasicComputing/$_GitName#tag=v$pkgver-$pkgrel")
 sha256sums=('SKIP')
             
 
