@@ -2,5 +2,5 @@
 
 # ensure ramroot is disabled before removing:
 pre_remove() {
-    /usr/bin/ramroot -D
+    /usr/bin/ramroot -R
 }
