@@ -11,8 +11,9 @@ depends=('python' 'wmctrl' 'hicolor-icon-theme' 'python-dbus' 'python-pyinotify'
   'gtk-update-icon-cache')
 makedepends=('python-setuptools')
 optdepends=('python-atspi'
-            'python-qscintilla: for QT GUI (deprecated)'
-            'kdebindings-python: for QT GUI (deprecated)')
+            'qt-at-spi: to work with KDE/Qt applications'
+            'python-qscintilla: for Qt GUI (deprecated)'
+            'kdebindings-python: for Qt GUI (deprecated)')
 conflicts=('autokey' 'autokey-gtk' 'autokey-data')
 license=('GPL3')
 arch=('any')
