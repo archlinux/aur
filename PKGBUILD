@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=papirus-claws-mail-theme-git
-pkgver=20170629
+pkgver=20170922
 pkgrel=1
 pkgdesc="Papirus theme for Claws Mail  (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
