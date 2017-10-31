@@ -9,7 +9,7 @@ license=('GPL2')
 arch=('x86_64')
 depends=('dkms')
 url='https://www.aquantia.com'
-source=("https://www.aquantia.com/wp-content/uploads/2017/05/linux.zip"
+source=("https://s3-us-west-1.amazonaws.com/aquantia-staging/wp-content/uploads/2017/10/linux.zip"
 	'max_mtu.patch'
         'dkms.conf.in')
 sha256sums=('0965a4a5b1d805e8c626921529e1f817b501dc012b941cd972b737849f8df579'
