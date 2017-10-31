@@ -1,8 +1,9 @@
 # Maintainer: Rhys Kenwell <redrield+aur@gmail.com>
+
 pkgname=heroku-cli
-pkgver=6.14.30
-pkgrel=1
-_dirname="${pkgname}-v${pkgver}-304197d-linux"
+pkgver=6.14.36
+pkgrel=2
+_dirname="${pkgname}-v${pkgver}-15f8a25-linux"
 pkgdesc="a tool for creating and managing Heroku apps from the command line"
 arch=('i686' 'x86_64')
 url="https://devcenter.heroku.com/articles/heroku-cli"
@@ -34,5 +35,5 @@ package() {
     cp -R "${_dirname}-${_arch}" "${pkgdir}"/opt/heroku-cli
     ln -s /opt/heroku-cli/bin/heroku "${pkgdir}"/usr/bin/heroku
 }
-md5sums_i686=('e4bc62dfefe00fc69617ad441beb6a1e')
-md5sums_x86_64=('3d350a3bcd374c34263f9561995fb703')
+md5sums_i686=('e6920e06c7d8f182a909e27cfa8693ed')
+md5sums_x86_64=('a58020843ea5d217a3cbc76e64c4514c')
