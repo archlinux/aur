@@ -1,8 +1,8 @@
 # Maintainer: Hugues Chabot <at google mail>
 _npmname=choo-cli
-_npmver=2.0.1
+_npmver=2.1.0
 pkgname=nodejs-choo-cli # All lowercase
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="create choo apps from the command line"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(8b7835f2bec6c980c3e22eca9864675f2be024f1)
+sha1sums=(c1d43e8a870ad4cc696b9eb9676dbff81e83a2ea)
 
 package() {
   cd $srcdir
