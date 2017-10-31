@@ -1,0 +1,11 @@
+--- 3rdparty/stout/include/stout/jsonify.hpp.old	2017-10-30 15:20:40.570209658 -0600
++++ 3rdparty/stout/include/stout/jsonify.hpp	2017-10-30 15:19:27.566873078 -0600
+@@ -14,7 +14,7 @@
+ #define __STOUT_JSONIFY__
+ 
+ #ifndef __WINDOWS__
+-#include <xlocale.h>
++#include <locale.h>
+ #endif // __WINDOWS__
+ 
+ #include <clocale>

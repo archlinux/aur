@@ -1,6 +1,6 @@
 pkgbase = mesos
 	pkgdesc = A cluster manager that simplifies the complexity of running applications on a shared pool of servers
-	pkgver = 1.2.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = http://mesos.apache.org/
 	arch = i686
@@ -17,12 +17,32 @@ pkgbase = mesos
 	depends = subversion
 	depends = cyrus-sasl
 	depends = libnl>=3.2.28
-	source = http://www.apache.org/dist/mesos/1.2.0/mesos-1.2.0.tar.gz
+	source = ftp://apache.cs.utah.edu/apache.org/mesos/1.4.0/mesos-1.4.0.tar.gz
+	source = https://apache.org/dist/mesos/1.4.0/mesos-1.4.0.tar.gz.asc
 	source = mesos-master.service
 	source = mesos-slave.service
-	md5sums = 3585de784da66bb4c6df04a1e6bcb439
+	source = locale.patch
+	validpgpkeys = 4BF2061E73003185CA06E30FF99D6AD0F6FB762C
+	validpgpkeys = CE2C077CF6F6F7002DB0DB6AB5DA0D371B207A4D
+	validpgpkeys = 90A7F1E40A9BE920A82F4302CD56EF3924E79653
+	validpgpkeys = 3C0F564C3072733A83DC4511D1F466FDEDBC014B
+	validpgpkeys = 77F89AEEAD21B78B7C2DA9DB1A4EF22FD495B11E
+	validpgpkeys = 81BF3C55090CBE9684680A0348AF30DC5E47E0EA
+	validpgpkeys = D8FF2F25C752BA1354CB3F29CD910E8DFA23D685
+	validpgpkeys = 2A145F425F2299357E20004CC5BCD6DC398DF4F4
+	validpgpkeys = D6A0C1307D16A1F5DCD1E5C8CAFE789EAA31D1F2
+	validpgpkeys = FCD2F95760240B4D6ECAEA1BBAE9E5C50C4D1C63
+	validpgpkeys = E2454C1707E80C55B76B768C82F0CB466AACBD2B
+	validpgpkeys = 7FDF9F586C1BE20B192DB40DA479BB4EED50F391
+	validpgpkeys = 291ACACD6BD9A90C1ABFFE7517F6D528A2C2C74A
+	validpgpkeys = 7144142BE6DD206231B170DD174FB9FAC5FF85C1
+	validpgpkeys = D64C61111ED9909C9071524FBDC218FB9AF7DC86
+	validpgpkeys = 070745B0AB67A2D3314D335623B0ADA4EF26082C
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = 42e6bb21d7682b8a8f036c23532e4fe9
 	md5sums = 55cc5e556bb0622f5f913a1999f17766
+	md5sums = a7581a776e41616d5870b56b840cc416
 
 pkgname = mesos
 
