@@ -1,19 +1,19 @@
 # Maintainer: Ainola
 
 pkgname=gtk-theme-ant
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 epoch=1
 pkgdesc="A flat and light theme with a modern look."
 arch=(any)
 url="https://github.com/EliverLara/Ant"
 license=('GPL3')
-source=("ant-$pkgver.tar.xz"::'https://dl.opendesktop.org/api/files/download/id/1508040109/Ant.tar.xz'
-        "ant-bloody-$pkgver.tar.xz"::'https://dl.opendesktop.org/api/files/download/id/1508040101/Ant-Bloody.tar.xz'
-        "ant-dracula-$pkgver.tar.xz"::'https://dl.opendesktop.org/api/files/download/id/1508040115/Ant-Dracula.tar.xz')
-sha256sums=('3bfd54f62418a3042170cba71031c6d80bb48a1a8212ca391d8151f9d7cd14e7'
-            '1e7264d5d821199a8a8fa1334048bac99425d7bbd57702eeae27130c927eaf87'
-            '8d1efa037fd3131bd9e93719bcbe705354982ff943c9d40ec19dcf0ce55539bf')
+source=("ant-$pkgver.tar.xz"::'https://dl.opendesktop.org/api/files/download/id/1509163136/Ant.tar.xz'
+        "ant-bloody-$pkgver.tar.xz"::'https://dl.opendesktop.org/api/files/download/id/1509163129/Ant-Bloody.tar.xz'
+        "ant-dracula-$pkgver.tar.xz"::'https://dl.opendesktop.org/api/files/download/id/1509163141/Ant-Dracula.tar.xz')
+sha256sums=('14b8d96d3520c9fe5a5dade35a193dca456e8a3af6dd42396d5e08f734bb48ee'
+            '090f37a033228eedc447fe2ad12557b9075fd2b694f6e5e372c7743c8c5fa950'
+            'f031df415bf68364a670c6f202f659c906e8da1d95875f07cd63b2b39dfed768')
 
 package() {
   install -dm755 "$pkgdir/usr/share/themes/Ant"
