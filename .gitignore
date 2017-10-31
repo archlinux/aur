@@ -13,4 +13,4 @@ pkg/
 */
 *.log
 *.sw*
-kaldi
+*.zip
