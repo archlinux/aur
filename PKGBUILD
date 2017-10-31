@@ -1,5 +1,5 @@
 # Maintainer: Jingbei Li <i@jingbei.lli>
-pkgname='kaldi'
+pkgname='kaldi-openfst'
 _pkgname='kaldi-master'
 pkgdesc='Speech recognition research toolkit'
 pkgver=1.6.2
