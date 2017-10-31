@@ -1,31 +1,31 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=imapsync
-pkgver=1.727
+pkgver=1.836
 pkgrel=1
-pkgdesc="IMAP synchronisation, sync, copy or migration tool"
+pkgdesc='IMAP synchronisation, sync, copy or migration tool'
 arch=('any')
-url="http://www.linux-france.org/prj/"
+url='http://www.linux-france.org/prj/'
 license=('GPL')
-depends=('perl-date-manip' 'perl-mail-imapclient' 'perl-term-readkey' 'perl-io-socket-ssl' 
-         'perl-file-copy-recursive' 'perl-io-tee' 'perl-unicode-string' 'perl-data-uniqid' 
-         'perl-io-socket-inet6' 'perl-json-webtoken' 'perl-readonly' 'perl-ntlm' 
+depends=('perl-date-manip' 'perl-mail-imapclient' 'perl-term-readkey' 'perl-io-socket-ssl'
+         'perl-file-copy-recursive' 'perl-io-tee' 'perl-unicode-string' 'perl-data-uniqid'
+         'perl-io-socket-inet6' 'perl-json-webtoken' 'perl-readonly' 'perl-ntlm'
          'perl-test-mockobject' 'perl-test-pod')
 makedepends=('time')
-source=("https://github.com/$pkgname/$pkgname/archive/$pkgname-$pkgver.tar.gz")
-sha512sums=('b5ab0f3b4ae12d9d65d5c65e65fa5778ade5ac68432523fcb6839e84af742abf5a3ca0a04d3308936c7b99f16415b9d8076f96ec37d84e82dcdf53413f625e75')
+source=(https://github.com/imapsync/imapsync/archive/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('f1ea1ef887ebcfa62c90254b3738602dc78275400a7d8dd5af33bc399c82c28d8567ee42d9ebf85735e7df857bf548608e09f01a06bd146f317faa3b4702cbeb')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   make
 }
 
 check() {
-  cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   make test
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
