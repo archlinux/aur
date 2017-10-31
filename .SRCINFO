@@ -15,6 +15,7 @@ pkgbase = eolie
 	depends = python-gobject
 	depends = webkit2gtk
 	depends = python-pyfxa
+	depends = python-dateutil
 	source = https://github.com/gnumdk/eolie/releases/download/0.9.9/eolie-0.9.9.tar.xz
 	sha256sums = 28c9422563d673ac226edbb7e99c5be4db914a19f33884858069c23fdeec4ca4
 
