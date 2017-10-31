@@ -4,7 +4,7 @@
 
 pkgname='borgmatic'
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A wrapper script for Borg backup software that creates and prunes backups'
 arch=('any')
 url='https://torsion.org/borgmatic/'
@@ -27,6 +27,7 @@ prepare() {
   # We will welcome patches to maintain compatibility with Arch's
   # python-ruamel-yaml version if upstream is slow to adopt it.
   sed -i 's/ruamel.yaml<=0.15/ruamel.yaml<0.16/' setup.py
+  sed -i 's#/usr/local/bin/borgmatic#/usr/bin/borgmatic#' sample/systemd/borgmatic.service
 }
 
 check() {
