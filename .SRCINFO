@@ -1,7 +1,7 @@
 pkgbase = python-yarl-gns3
 	pkgdesc = Yet another URL library (GNS3)
 	pkgver = 0.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aio-libs/yarl/
 	arch = any
 	groups = gns3
