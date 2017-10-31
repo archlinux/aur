@@ -2,7 +2,7 @@
 pkgname=ssr-git
 _pkg=ssr
 pkgver=0.4.2.r78.g989568c
-pkgrel=4
+pkgrel=5
 pkgdesc="A tool for real-time spatial audio reproduction providing a variety of
 rendering algorithms, e.g. Wave Field Synthesis, Higher-Order Ambisonics and
 binaural techniques."
@@ -18,7 +18,7 @@ source=("git+https://github.com/SoundScapeRenderer/${_pkg}"
         "ssr-qt4.patch"
         "ssr-ip-interface-gcc7.patch")
 sha512sums=('SKIP'
-            'b59927ddf69074ecab1bb63814299c580dafad587ed0bbc0903e5080c7f2da90be339778867b104e1b35b10405530386b480cab07839c4046b7ef87f6876a56b'
+            '030dd250e16e05872e7f97d893d81bfdd95ff8a90a8bc35ed1e69a644a92679602f17375e73529f260debfc5d3ae31e3b1d4976985c5e76bd9fd762a8af07551'
             'a3dea2ed58729b181e2f6a7fdece3ed5dd80eba06fcafadc78778cd11842079792b2bbf7e695c135d605ac31bb98634dd24a818d861011820c0d74ecf49112ae')
 
 pkgver() {
@@ -28,9 +28,9 @@ pkgver() {
 
 prepare(){
   cd "${srcdir}/${_pkg}"
-  autoreconf -fi
   patch -i "${srcdir}/${_pkg}-qt4.patch"
   patch -p1 -i "${srcdir}/${_pkg}-ip-interface-gcc7.patch"
+  autoreconf -fi
 }
 
 build() {
