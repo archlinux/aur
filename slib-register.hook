@@ -1,0 +1,12 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = usr/share/slib/register/*.sh
+
+[Action]
+Description = Registering slib for all available scheme compilers...
+When = PostTransaction
+Exec = /bin/sh -c 'while read -r f; do /bin/sh "/$f" 2>&1 > /dev/null; done'
+Depends = slib
+NeedsTargets
