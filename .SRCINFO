@@ -1,0 +1,31 @@
+pkgbase = openclonk-git
+	pkgdesc = Multiplayer-action-tactic-skill game
+	pkgver = r10778.5c45d7a08
+	pkgrel = 1
+	url = http://openclonk.org
+	install = openclonk.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = boost
+	makedepends = mesa
+	depends = glew
+	depends = freealut
+	depends = miniupnpc
+	depends = libxrandr
+	depends = sdl2
+	depends = sdl_mixer>=1.2
+	depends = desktop-file-utils
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	optdepends = openclonk-music: proprietary music package
+	provides = openclonk
+	conflicts = clonk_rage
+	conflicts = openclonk
+	conflicts = clonk_rage-git
+	source = openclonk-git::git+https://git.openclonk.org/openclonk.git#branch=master
+	md5sums = SKIP
+
+pkgname = openclonk-git
+

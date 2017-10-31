@@ -1,0 +1,30 @@
+diff -aur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2017-09-23 17:22:40.047181813 +0200
++++ b/CMakeLists.txt	2017-09-24 15:22:28.744305985 +0200
+@@ -167,7 +167,7 @@
+ endif()
+ 
+ if(UNIX)
+-	add_definitions("-DOC_SYSTEM_DATA_DIR=\"${CMAKE_INSTALL_PREFIX}/share/games/openclonk\"")
++	add_definitions("-DOC_SYSTEM_DATA_DIR=\"${CMAKE_INSTALL_PREFIX}/share/openclonk\"")
+ endif()
+ 
+ if(APPLE)
+@@ -1515,7 +1515,7 @@
+ 			DEPENDS "${native_c4group}"
+ 			VERBATIM
+ 		)
+-		install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${group} DESTINATION share/games/openclonk)
++		install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${group} DESTINATION share/openclonk)
+ 	endif()
+ endforeach()
+ 
+@@ -1538,7 +1538,7 @@
+ 		install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/openclonk.appdata.xml DESTINATION share/appdata)
+ 
+ 		# Install binaries
+-		install(TARGETS openclonk DESTINATION games)
++		install(TARGETS openclonk DESTINATION bin)
+ 	else()
+ 		install(TARGETS openclonk
+ 			BUNDLE DESTINATION .
