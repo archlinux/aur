@@ -1,8 +1,8 @@
 # Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
 
 pkgname=ttf-oswald
-_commit='6b469e99d63da66d088ff07328a65296e6c2c9cf'
-pkgver=4.003
+_commit='1e5d467208dd1306173960dc7b176686d630f307'
+pkgver=4.100
 pkgrel=1
 pkgdesc='Sans-serif typeface from Google by Vernon Adams'
 arch=('any')
@@ -17,13 +17,13 @@ source=("Oswald-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commi
         "Oswald-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/oswald/Oswald-Regular.ttf"
         "Oswald-SemiBold-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/oswald/Oswald-SemiBold.ttf"
         "${pkgname}-${pkgver}-OFL.txt::https://github.com/google/fonts/raw/${_commit}/ofl/oswald/OFL.txt")
-sha256sums=('480ee0cdcdb560f7658302917e0502fe4b839a44b628479d43ef4add9cc122ba'
-            'ad06e723ab316566f8090f497b9ef13c2ba5b284898515c7264086057b1d1338'
-            '848d0eab4698f1f5f2c2b2660473cfb36c4af526e183e1fa99e168a29c65d697'
-            '90bd9075a2b702b9baec7d2eea4a861f4d119ce129d2773469d452e1c1b4abbb'
-            'dcf58b556d15ad21c30ad4db7a2d7b8a5c1b0c89b038ee38d07b061f27f68497'
-            'a3b556cc15a73aa3bc332e53708eb5004efe11c2788489c4ee8c5c3dce53265e'
-            'fac1ddc0a0264245b37fe869ffcd92befc93129633525c545dab06ae8e22aa99')
+sha256sums=('0cde70ba3b3398ab0bc19be74c7517442ef711846d33f286d7932fef9784e2d8'
+            'f7e415a9685e50df9b4821a4c676089ed3cfea4037232f2ad4a994932bc9a24a'
+            '292165793dab020fbe32fc3741d912b7fdc23e13c19c45451ea591f7ddfc7732'
+            '8be76fb078487d3abe20d8d068d8ad8fc47bd25b504ac7b1e6642321feab149f'
+            '43b55a174fb3f5a1e6218a5385f647d2eace04776ab58673f4a439381930006e'
+            '4d6421e9e384ebca3db447336fc5e0e9f85e083ad4ca5e865c5f58a880808537'
+            'ae05f8781a5ef38380ef3efe8cad86783610b6a780c6c278d7472f95310fccee')
 
 package() {
   install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
