@@ -13,7 +13,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _pkgbasever=4.13-gnu
-_pkgver=4.13.2-gnu
+_pkgver=4.13.10-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -27,7 +27,7 @@ rcnrel=armv7-x0
 arch=('i686' 'x86_64' 'armv7h')
 url="https://linux-libre.fsfla.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 makedepends_armv7h=('git')
 options=('!strip')
 source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
@@ -63,7 +63,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0010-ARM-dove-enable-ethernet-on-D3Plug.patch')
 sha512sums=('9ad6866c68f29f7e4f8b53d0b857f9b3c7f6abd0054460675c76f3100db34a77c2777d7f4191831008b532cb2ab6f686d8c4f457a4d005226c73f90937963518'
             'SKIP'
-            '54b54b2f73d3a5dae7d7f6d429c6140880419a9a1c2bf80b62d9ef29c15416fd12624dd0508f768b789f78020ebdac4c2e6d783f97eba2769a0fffcefa29a386'
+            '2cb1afa8755071d8cb386403bf0f8cb81b0c6e1b77da08e6af379cd289f95c70953f25390766fe66de13ba4e4af41aebe3e4ce8277ca1fc1de512242272cb4e6'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -71,15 +71,13 @@ sha512sums=('9ad6866c68f29f7e4f8b53d0b857f9b3c7f6abd0054460675c76f3100db34a77c27
             'SKIP'
             '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            '9fa5903fc5b9cd892925d4789be5ece7529be161b5373b075239bb40583cb4485e635426c59a0cbfabc1d9ddade5824c40901ea2bb905feb27c3d0f7b6d9f0b7'
-            '49c4065e2f9fe191cfe43c6e3ed825c05e2313b6d7e8ba3015b74d0ac4405e32395a25514fa1627849a733db4d3abfec685d20d71390bb0788e9804206292d3c'
+            'f4fd3bae8b74db65c47e622ffaa7b1a03ef990ace5d5bd268eb3df2d93003f881573826b6c1b31351b3213d14e782bf74db624e6cb2f17456080b6859e16fb6d'
+            'f9bbce89bedce5e5f38c8be3be7114cb21bee5e8ff3a05cd6a3f9f794e8306c819feff119caf7aa8b4ab02d9a988f25406d575f6b0383f7ec6ad562cbae4c025'
             'a5202f6f467227ad4fe092c62b9289bc637c726cf2bd8c788546393c90416ecf5cd405608771faba1f1437b9f96699abd6a793b958e61ac829b39981ae18f8b6'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-         #   'f5ac0362e6c79ef007be088b8138a1795937e392db7b05fa4d1cca6644d08b77b88ff7cfcc7c768c067fc7301f462fa7bdb6120e60f992486f56dd88c47c3fd9'
-         #   'SKIP'
             'b3c214cc9adf22858f21ea8b0b919bd167257c2f624e98718d486b7fb82f1cfd17f578f799c13c26948bc2cb23e9eb6de0ef9299cbe49afb63929778eda24026'
             'db14593a4a0c0371e2cc2bcdcb0a4ac2abec96945dbb455393c5ef5140eca8ffb857dfee818087e4dfe261e9725a9e40a5d7e4c9774bca96560e3628743d7955'
             '5ed2d772ff47517b21ba5f848ee2792a85e5e2a3d80a2aa4f0eef2acc445c20c630e6033bb180754d5cfcf11b19dbfa939b14e00bbe2acaacde02f90e3ddbb48'
@@ -306,8 +304,8 @@ _package-headers() {
   cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
 
   # add docbook makefile
-  install -D -m644 Documentation/DocBook/Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+  # install -D -m644 Documentation/DocBook/Makefile \
+  #  "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 
   # add dm headers
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
@@ -403,9 +401,6 @@ _package-docs() {
   cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}" -type f -exec chmod 444 {} \;
   find "${pkgdir}" -type d -exec chmod 755 {} \;
-
-  # remove a file already in kernel package
-  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
@@ -417,3 +412,4 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+
