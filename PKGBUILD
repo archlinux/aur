@@ -3,7 +3,7 @@
 pkgname=tpm2-pk11
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="PKCS#11 Module for TPM 2.0"
+pkgdesc="PKCS#11 Module for TPM 2.0 by irtimmer"
 arch=('i686' 'x86_64')
 url="https://github.com/kclark-jenkins/tpm2-pk11.git"
 license=('GNU Lesser General Public License v2.1')
