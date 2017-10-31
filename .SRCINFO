@@ -1,4 +1,4 @@
-pkgbase = moose-git
+pkgbase = moose
 	pkgdesc = Multiscale Object Oriented Simulation Environment
 	pkgver = 3.1.2
 	pkgrel = 1
@@ -20,5 +20,5 @@ pkgbase = moose-git
 	source = moose::git+https://github.com/BhallaLab/moose.git#branch=master
 	md5sums = SKIP
 
-pkgname = moose-git
+pkgname = moose
 
