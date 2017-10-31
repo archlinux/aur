@@ -1,0 +1,22 @@
+pkgbase = synce-kde
+	pkgdesc = Provide a means of communication with a Windows CE device - KDE tools and integration
+	pkgver = 0.16
+	pkgrel = 5
+	url = http://synce.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = synce-rra
+	makedepends = python2-setuptools
+	depends = synce-core
+	depends = synce-rra
+	depends = pygobject
+	depends = synce-sync-engine
+	depends = python2-pyqt4
+	optdepends = unshield
+	optdepends = orange
+	optdepends = dynamite
+	source = http://downloads.sourceforge.net/synce/synce-kpm-0.16.tar.gz
+	md5sums = 5e4b79e13488010e89c9c523a44945ea
+
+pkgname = synce-kde
+
