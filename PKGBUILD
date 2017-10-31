@@ -5,7 +5,7 @@
 _pkgname=atom
 _version=beta
 _pkgver=1.22.0
-_pkgrel=1
+_pkgrel=2
 
 pkgname="${_pkgname}-editor-${_version}"
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.'
