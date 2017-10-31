@@ -9,6 +9,7 @@ pkgbase = fontconfig-ubuntu
 	license = custom
 	makedepends = python2
 	makedepends = docbook2x
+	makedepends = gperf
 	depends = expat
 	depends = freetype2
 	provides = fontconfig=2.12.6

@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="https://launchpad.net/ubuntu/+source/fontconfig"
 license=('custom')
 depends=('expat' 'freetype2')
-makedepends=('python2' 'docbook2x')
+makedepends=('python2' 'docbook2x' 'gperf')
 conflicts=('fontconfig')
 provides=("fontconfig=$pkgver")
 options=('!libtool')
