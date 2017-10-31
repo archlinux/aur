@@ -9,11 +9,11 @@ url='https://www.dulwich.io/'
 license=('GPL2')
 depends=()
 options=(!emptydirs)
-source=("https://github.com/jelmer/dulwich/archive/upstream/${pkgver}.tar.gz")
+source=("https://github.com/jelmer/dulwich/archive/dulwich-${pkgver}.tar.gz")
 
 
 build() {
-  cd "dulwich-upstream-${pkgver}"
+  cd "dulwich-dulwich-${pkgver}"
   python2 setup.py build
   python setup.py build
 }
@@ -21,17 +21,17 @@ build() {
 package_python-dulwich() {
   depends=('python')
   conflicts=('python2-dulwich')
-  cd "dulwich-upstream-${pkgver}"
+  cd "dulwich-dulwich-${pkgver}"
   python setup.py install --root="$pkgdir/" --skip-build --optimize=1
 }
 
 package_python2-dulwich() {
   depends=('python2')
   conflicts=('python-dulwich')
-  cd "dulwich-upstream-${pkgver}"
+  cd "dulwich-dulwich-${pkgver}"
   python2 setup.py install --root="$pkgdir/" --skip-build --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
 
-md5sums=('96e7a12f745c1f00c2923cac8e1efa0d')
+md5sums=('d20dbdb2ec7a1ae6570bb446cce70f7b')
