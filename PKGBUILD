@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=guile-git
-pkgver=3.0.0.93.g4267a8b6d
+pkgver=3.0.0.94.g2d8c75f9f
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64' 'aarch64')
