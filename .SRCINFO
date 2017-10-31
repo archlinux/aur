@@ -1,0 +1,17 @@
+pkgbase = tpm2-pk11
+	pkgdesc = PKCS#11 Module for TPM 2.0
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kclark-jenkins/tpm2-pk11.git
+	arch = i686
+	arch = x86_64
+	license = GNU Lesser General Public License v2.1
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	source = tpm2-pk11::git+https://github.com/kclark-jenkins/tpm2-pk11.git
+	md5sums = SKIP
+
+pkgname = tpm2-pk11
+
