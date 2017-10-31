@@ -9,27 +9,27 @@ _extra=pm-quirks
 
 pkgname=pm-utils
 pkgver=1.4.1
-pkgrel=7
+pkgrel=7.aur2
 pkgdesc="Utilities and scripts for suspend and hibernate power management"
 arch=('any')
-url="http://pm-utils.freedesktop.org"
+url="https://pm-utils.freedesktop.org"
 license=('GPL')
 depends=('bash' 'procps')
 conflicts=('pm-quirks')
 replaces=('pm-quirks')
 makedepends=('xmlto' 'docbook-xml' 'docbook-xsl')
-source=("http://pm-utils.freedesktop.org/releases/${pkgname}-${pkgver}.tar.gz"
+source=("https://pm-utils.freedesktop.org/releases/${pkgname}-${pkgver}.tar.gz"
         '02-logging-append.patch'
         '12-fix-intel-audio-powersave-hook.patch'
         '13-49bluetooth-sync.patch'
         '14-disable-sata-alpm.patch'
-        "http://pm-utils.freedesktop.org/releases/${_extra}-${_date}.tar.gz")
-sha256sums=('8ed899032866d88b2933a1d34cc75e8ae42dcde20e1cc21836baaae3d4370c0b'
-            '5622a42167a5f6b725ecbe473d8f0994c4b3ac32e5c6607ce1fab0888894f139'
-            '16d5355d1c5cff6316fef11768673434394582c67039c79e8b86aafe2d2f7797'
-            '2af763812d609f384c818635028791c875e3e56a1fa387e80b7f1ca5afc3c4e3'
-            'c995912f25fd1f0c30c90136c36ac49e2d3a5fdb94ef1710a7e0426dd10dad8a'
-            '14a50518928c27417cdc8bcbabb32b3d986931de105149aa248d8883e56c61ec')
+        "https://pm-utils.freedesktop.org/releases/${_extra}-${_date}.tar.gz")
+sha512sums=('5bc9479fe75f120aee136befeb24c8d7d85f61410b551177ed61fd1b4ea9cce7989796b067e357ea93b44b4ae9f66311687066f188236c5efdfd3750695a8017'
+            '608a98f8603748c97d05593f4a107d15656dffed46d3ecd9d1d8bd03c94309ad4419f4335c91dbdab15074d6b9120195a4d21903d5233116bc1d9f61158b2e57'
+            '5c5cc0e810c9a189de5d3b603cac1c5adb69058f2033daad3558463d1a0f65c039e19132da54da373929fe8e652ae06e28edad2ea9ce17a2f73527e494eecaff'
+            '35e02607280b4cd166fbbb1dfc44ef33d20debe1e564db9d532af74a773cc4f8cc3ee3be149318cbbc0f9cc451b5001a499609dd962ff42c0a7c3305215ef831'
+            '9359943f3909985995dd68197ab25cf2560bcc458ba17b3b60f5503fe805e40c31856ac909604fbf419d69e833f2cd722e89e7ef029523e87e17c8fe25586f54'
+            'e20244fb72475945e08010d7ec19db2c017c1a04fa01d3d08c03d704d7f07f9c087bac6a5a44242cc8ed6cec5db47bc06a8862dd0f74088a565d37b6d7b95afc')
 
 prepare(){
     cd "${srcdir}/${pkgname}-${pkgver}"
