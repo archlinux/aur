@@ -1,3 +1,7 @@
+2017-10-31
+	upstream update: 3.26.1 -> 3.26.2
+	modify patch for catalan/valencia translation to stay compatible
+
 2017-10-08
 	upstream upgrade: 3.24.2 -> 3.26.1
 

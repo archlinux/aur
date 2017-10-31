@@ -966,11 +966,10 @@ diff --git a/po/ca@valencia.po b/po/ca@valencia.po
 index 2dafab8ca90d..1d6e809234d0 100644
 --- a/po/ca@valencia.po
 +++ b/po/ca@valencia.po
-@@ -2092,3 +2092,18 @@ msgstr ""
- #: ../src/terminal-window.c:3645
+@@ -2325,6 +2325,21 @@ msgstr ""
  msgid "C_lose Window"
  msgstr "Tanca la _finestra"
-+
+
 +msgid "Transparent background"
 +msgstr "Fons transparent"
 +
@@ -985,6 +984,10 @@ index 2dafab8ca90d..1d6e809234d0 100644
 +
 +msgid "_Set Title…"
 +msgstr "_Estableix el títol…"
++
+ #~ msgid "_Same as text color"
+ #~ msgstr "El matei_x que el color del text"
+
 diff --git a/po/cs.po b/po/cs.po
 index e910e1dadaa2..0cd66931b6c6 100644
 --- a/po/cs.po
