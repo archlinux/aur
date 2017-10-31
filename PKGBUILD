@@ -1,5 +1,5 @@
  # Maintainer: Dilawar Singh <dilawar.s.rajput@gmail.com
-pkgname=moose-git
+pkgname=moose
 _pkgname=moose
 pkgver=3.1.2
 pkgrel=1
