@@ -2,7 +2,7 @@
 
 _pkgname=weboob
 pkgname=weboob-headless
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Web Out Of Browsers provides several applications to interact with a lot of websites. Headless version, for use in e.g. Cozy/Kresus."
 arch=('any')
@@ -24,9 +24,9 @@ depends=('python2-dateutil'
 makedepends=('python2-setuptools')
 conflicts=('weboob')
 provides=('weboob')
-source=("https://symlink.me/attachments/download/342/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('a77675b2443e4570d30f569951512b11')
-sha256sums=('1e3b7e35bd1e5d203e5d716be4a25e898aba6887b3c3b8341e3a0ce2ad8e87b0')
+source=("https://symlink.me/attachments/download/356/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('becbb39232ca9b8f425d81c04b90b9ed')
+sha256sums=('c991785c889877c76f18d19e372ed4ae0c3f8b819fd1e8da296bd34b1381be54')
 
 build() {
     cd ${_pkgname}-${pkgver}
