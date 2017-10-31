@@ -14,7 +14,6 @@ license=('GPL3')
 groups=('MBC')
 depends=('qt5-base')
 makedepends=('gcc' 'qt5-base')
-install=script.install
 source=("git://github.com/MBasicComputing/$_GitName#tag=v$pkgver-$pkgrel")
 sha256sums=('SKIP')
             
