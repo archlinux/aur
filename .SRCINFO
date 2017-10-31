@@ -1,0 +1,15 @@
+pkgbase = python-aiocoap-git
+	pkgdesc = Python implementation of CoAP
+	pkgver = 0.3.r320.g3286f48
+	pkgrel = 1
+	url = https://github.com/chrysn/aiocoap
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.4.4
+	provides = python-aiocoap
+	source = git+https://github.com/chrysn/aiocoap.git
+	sha512sums = SKIP
+
+pkgname = python-aiocoap-git
+
