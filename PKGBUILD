@@ -1,5 +1,6 @@
  # Maintainer: Dilawar Singh <dilawar.s.rajput@gmail.com
-pkgname=moose
+pkgname=moose-git
+_pkgname=moose
 pkgver=3.1.2
 pkgrel=1
 epoch=
@@ -8,36 +9,37 @@ arch=('i686' 'x86_64')
 url="https://moose.ncbs.res.in"
 license=('GPL')
 groups=()
-depends=( 'hdf5' 'gsl' 'libsbml', 'python-numpy', 'python-matplotlib', 'python-network')
+depends=( 'hdf5' 'gsl' 'python-numpy' 'python-matplotlib' )
 makedepends=( 'cmake' 'gsl' 'python-numpy' 'python' 'hdf5' )
 checkdepends=()
 optdepends=()
-provides=("$pkgname")
-conflicts=("$pkgname")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("$pkgname::git+https://github.com/BhallaLab/moose.git")
+source=("$_pkgname::git+https://github.com/BhallaLab/moose.git#branch=master")
 md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-	cd "$srcdir/$pkgname"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+	cd "$srcdir/$_pkgname"
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DWITH_GUI=OFF .
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$_pkgname"
 	make
 }
 
 check() {
-    echo "Nothing to do here"
+    cd "$srcdir/$_pkgname"
+    ctest --output-on-failure
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$_pkgname"
 	make DESTDIR="$pkgdir/" install
 }
