@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ipt_ndpi'
-pkgver=1.2_1.7.0.netfilter.231.f87fffb
+pkgver=1.2_1.7.0.netfilter.233.64bc701
 pkgrel=1
 pkgdesc='nDPI as netfilter extension.'
 arch=('any')
@@ -10,10 +10,8 @@ url='https://github.com/vel21ripn/nDPI'
 license=('GPL')
 depends=('linux' 'iptables' 'conntrack-tools')
 makedepends=('git' 'libtool' 'gcc' 'gzip' 'gawk' 'sed')
-source=("${pkgname}::git+${url}"
-	"nDPI_netfilter_Linux_4.13.patch")
-sha256sums=('SKIP'
-            'bb19cc451a7ab99507e41d65c4a5ba5d258e64d4a009afbab2d56bbfe16fd344')
+source=("${pkgname}::git+${url}")
+sha256sums=('SKIP')
 install="${pkgname}.install"
 _kernver="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-ARCH\/$/ {print $2}'`"
 
@@ -29,8 +27,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  patch -p1 -i "${srcdir}/nDPI_netfilter_Linux_4.13.patch"
-
   ./autogen.sh
 }
 
