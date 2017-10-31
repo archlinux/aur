@@ -1,5 +1,5 @@
-# Maintainer: jeckhack <jeckhack/gmail/com>
-# Contributor:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Maintainer:  jeckhack <jeckhack/gmail/com>
+# Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: frames <markkuehn at outlook dot com>
 # Contributor: Estevao Valadao <estevao@archlinux-br.org>
 # Contributor: Tetsumaki <http://goo.gl/YMBdA>
@@ -19,7 +19,7 @@ url="https://www.freetype.org/"
 depends=('zlib' 'bzip2' 'sh' 'libpng' 'harfbuzz')
 makedepends=('libx11')
 conflicts=('freetype2')
-provides=('freetype2=$pkgver' 'libfreetype.so')
+provides=('freetype2' 'libfreetype.so')
 source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
         	0001-Enable-table-validation-modules.patch
         	0003-Enable-infinality-subpixel-hinting.patch

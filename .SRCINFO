@@ -12,7 +12,7 @@ pkgbase = freetype2-cleartype
 	depends = sh
 	depends = libpng
 	depends = harfbuzz
-	provides = freetype2=$pkgver
+	provides = freetype2
 	provides = libfreetype.so
 	conflicts = freetype2
 	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.8.1.tar.bz2
