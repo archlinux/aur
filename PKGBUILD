@@ -1,8 +1,8 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=sigar-git
 _pkgname=sigar
-pkgver=sigar.1.6.4.r600.ga6c61edf
-pkgrel=2
+pkgver=1.6.4.r600.ga6c61edf
+pkgrel=3
 pkgdesc="System Information Gatherer And Reporter"
 arch=('x86_64')
 url="https://github.com/hyperic/sigar"
