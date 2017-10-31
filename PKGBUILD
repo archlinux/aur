@@ -2,8 +2,8 @@
 
 pkgname=mrboom-git
 _basename=mrboom
-pkgver=3.6.r4.g2f986e0
-pkgrel=2
+pkgver=3.8.r0.g44daf18
+pkgrel=1
 pkgdesc="Mr.Boom is a 8 players Bomberman clone"
 arch=('i686' 'x86_64')
 conflicts=('mrboom')
@@ -17,7 +17,7 @@ makedepends=(
 			 'sdl2'
 			 'sdl2_mixer'
 			)
-source=('mrboom-git::git+https://github.com/libretro/mrboom-libretro'
+source=('mrboom-git::git+https://github.com/Javanaise/mrboom-libretro'
 		'mrboom.desktop'
 		'mrboom.svg')
 md5sums=(
