@@ -1,0 +1,18 @@
+pkgbase = qtemu
+	pkgdesc = Graphical user interface for QEMU written in Qt4
+	pkgver = 1.0.5
+	pkgrel = 11
+	url = http://qtemu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qemu
+	depends = qt4
+	source = https://downloads.sourceforge.net/sourceforge/qtemu/qtemu-1.0.5.tar.bz2
+	source = qtemu.desktop::https://sourceforge.net/p/qtemu/code/HEAD/tree/trunk/qtemu/misc/qtemu.desktop?format=raw
+	sha256sums = 752942fae239996c826580fd0b32986cf96a92a0982710f726947ddf791dc921
+	sha256sums = 63d62b5971266d468dfdfce3f8bea796d8040e4afd6f61a35799a984922e1073
+
+pkgname = qtemu
+
