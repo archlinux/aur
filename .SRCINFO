@@ -1,5 +1,5 @@
 pkgbase = tpm2-pk11
-	pkgdesc = PKCS#11 Module for TPM 2.0
+	pkgdesc = PKCS#11 Module for TPM 2.0 by irtimmer
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/kclark-jenkins/tpm2-pk11.git
