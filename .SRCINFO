@@ -1,0 +1,15 @@
+pkgbase = python-ngmix
+	pkgdesc = Python interface to gbdes pixel map (astrometry) solutions
+	pkgver = r1087.3a0e7ce
+	pkgrel = 1
+	url = https://github.com/esheldon/ngmix
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-numpy
+	source = python-ngmix-r1087.3a0e7ce::git+https://github.com/esheldon/ngmix
+	md5sums = SKIP
+
+pkgname = python-ngmix
+
