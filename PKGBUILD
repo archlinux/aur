@@ -1,10 +1,10 @@
 # Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
-pkgbase='python2-ethtool'
+pkgbase='pyethtool'
 pkgname=('python-ethtool' 'python2-ethtool')
 pkgver='0.13'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Python bindings for the ethtool kernel interface.'
 arch=('any')
 url="https://github.com/fedora-python/python-ethtool"
