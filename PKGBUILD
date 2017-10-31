@@ -7,7 +7,7 @@
 # the binding from the language specific managers python2-thrift, perl-thrift, ruby-thrift, ...
 
 pkgname=thrift-git
-pkgver=0.9.3.r4528.9335167
+pkgver=0.10.0.r5124.a533ea161
 pkgrel=1
 pkgdesc='Scalable cross-language services framework for IPC/RPC'
 arch=(i686 x86_64)
@@ -23,7 +23,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd thrift
-  echo 0.9.3.r$(git rev-list --count master).$(git rev-parse --short master)
+  echo 0.10.0.r$(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
