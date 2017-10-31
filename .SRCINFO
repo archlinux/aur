@@ -1,0 +1,16 @@
+pkgbase = yass
+	pkgdesc = Yet Another Scrolling Scope
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = http://www.kokkinizita.net/linuxaudio/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = clthreads
+	depends = clxclient
+	depends = jack
+	source = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/yass-0.0.2.tar.bz2
+	md5sums = b41db22c93d9510c396b99e3301df394
+
+pkgname = yass
+
