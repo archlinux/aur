@@ -10,7 +10,7 @@ _vgg_commit='fccf7cd6a4b12079f73bbfb21745f9babcd4eb1d'
 
 pkgname=opencv-gstreamer
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Open Source Computer Vision Library (no Xine/FFmpeg dependency, uses GStreamer)'
 arch=('i686' 'x86_64')
 url='https://opencv.org/'
@@ -77,19 +77,19 @@ prepare() {
     local _boostdesc_dir="${_cmake_cache}/xfeatures2d/boostdesc"
     local _vgg_dir="${_cmake_cache}/xfeatures2d/vgg"
     
-    local _ippicv_md5="$(                openssl dgst -md5 "${_ippicv_file}"          | cut -d' ' -f2)"
-    local _tinydnn_md5="$(               openssl dgst -md5 "${_tinydnn_file}"         | cut -d' ' -f2)"
-    local _boostdesc_bgm_md5="$(         openssl dgst -md5 'boostdesc_bgm.i'          | cut -d' ' -f2)"
-    local _boostdesc_bgm_bi_md5="$(      openssl dgst -md5 'boostdesc_bgm_bi.i'       | cut -d' ' -f2)"
-    local _boostdesc_bgm_hd_md5="$(      openssl dgst -md5 'boostdesc_bgm_hd.i'       | cut -d' ' -f2)"
-    local _boostdesc_binboost_064_md5="$(openssl dgst -md5 'boostdesc_binboost_064.i' | cut -d' ' -f2)"
-    local _boostdesc_binboost_128_md5="$(openssl dgst -md5 'boostdesc_binboost_128.i' | cut -d' ' -f2)"
-    local _boostdesc_binboost_256_md5="$(openssl dgst -md5 'boostdesc_binboost_256.i' | cut -d' ' -f2)"
-    local _boostdesc_lbgm_md5="$(        openssl dgst -md5 'boostdesc_lbgm.i'         | cut -d' ' -f2)"
-    local _vgg_generated_48_md5="$(      openssl dgst -md5 'vgg_generated_48.i'       | cut -d' ' -f2)"
-    local _vgg_generated_64_md5="$(      openssl dgst -md5 'vgg_generated_64.i'       | cut -d' ' -f2)"
-    local _vgg_generated_80_md5="$(      openssl dgst -md5 'vgg_generated_80.i'       | cut -d' ' -f2)"
-    local _vgg_generated_120_md5="$(     openssl dgst -md5 'vgg_generated_120.i'      | cut -d' ' -f2)"
+    local _ippicv_md5="$(                openssl dgst -md5 "${_ippicv_file}"          | awk '{ print $2 }')"
+    local _tinydnn_md5="$(               openssl dgst -md5 "${_tinydnn_file}"         | awk '{ print $2 }')"
+    local _boostdesc_bgm_md5="$(         openssl dgst -md5 'boostdesc_bgm.i'          | awk '{ print $2 }')"
+    local _boostdesc_bgm_bi_md5="$(      openssl dgst -md5 'boostdesc_bgm_bi.i'       | awk '{ print $2 }')"
+    local _boostdesc_bgm_hd_md5="$(      openssl dgst -md5 'boostdesc_bgm_hd.i'       | awk '{ print $2 }')"
+    local _boostdesc_binboost_064_md5="$(openssl dgst -md5 'boostdesc_binboost_064.i' | awk '{ print $2 }')"
+    local _boostdesc_binboost_128_md5="$(openssl dgst -md5 'boostdesc_binboost_128.i' | awk '{ print $2 }')"
+    local _boostdesc_binboost_256_md5="$(openssl dgst -md5 'boostdesc_binboost_256.i' | awk '{ print $2 }')"
+    local _boostdesc_lbgm_md5="$(        openssl dgst -md5 'boostdesc_lbgm.i'         | awk '{ print $2 }')"
+    local _vgg_generated_48_md5="$(      openssl dgst -md5 'vgg_generated_48.i'       | awk '{ print $2 }')"
+    local _vgg_generated_64_md5="$(      openssl dgst -md5 'vgg_generated_64.i'       | awk '{ print $2 }')"
+    local _vgg_generated_80_md5="$(      openssl dgst -md5 'vgg_generated_80.i'       | awk '{ print $2 }')"
+    local _vgg_generated_120_md5="$(     openssl dgst -md5 'vgg_generated_120.i'      | awk '{ print $2 }')"
     
     mkdir -p "${_cmake_cache}/"{ippicv,tiny_dnn,xfeatures2d/{boostdesc,vgg}}
     
