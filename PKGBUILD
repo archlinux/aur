@@ -9,8 +9,9 @@ arch=('i686' 'x86_64')
 url=http://mesos.apache.org/
 license=('Apache')
 groups=('science')
-depends=('python2' 'zlib' 'curl' 'java-environment' 'apr' 'subversion' 'cyrus-sasl' 'libnl>=3.2.28')
-makedepends=('maven' 'python2-setuptools')
+depends=('python2' 'zlib' 'curl' 'java-environment' 'apr' 'subversion' 'cyrus-sasl' 'libnl>=3.2.28' 'libevent>=2')
+optdepends=('openssl: ssl support')
+makedepends=('maven' 'python2-setuptools' 'openssl')
 #conflicts=('python2-shutilwhich')
 source=("ftp://apache.cs.utah.edu/apache.org/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz"
   "https://apache.org/dist/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz.asc"
@@ -53,6 +54,8 @@ build() {
   --libexecdir=/usr/lib \
   --exec-prefix=/usr \
   --sbindir=/usr/bin \
+  --enable-ssl \
+  --enable-libevent \
   --with-network-isolator
  make
 }
