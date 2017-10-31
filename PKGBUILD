@@ -4,31 +4,34 @@
 
 pkgname=incron
 pkgver=0.5.12
-pkgrel=1
+pkgrel=2
+_commit=f45c2f5ac4baea99b48e99a713d1f4ec1854aa76
 pkgdesc="Like the regular cron but is driven by filesystem events instead of time periods"
 arch=('i686' 'x86_64')
 url="https://github.com/ar-/incron"
 license=('GPL')
 depends=('gcc-libs' 'bash')
+makedepends=('git')
 install=incron.install
 options=('emptydirs')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ar-/incron/archive/$pkgver.tar.gz"
+#source=("$pkgname-$pkgver.tar.gz::https://github.com/ar-/incron/archive/$pkgver.tar.gz"
+source=("git://github.com/ar-/incron.git#commit=${_commit}"
 	'incrond.service')
-md5sums=('f7456b73875f44f36eaa818e3f105f76'
-         '4be206ba6ecacd9d2006cdc72b4604db')
+sha256sums=('SKIP'
+            '5ff72411c704dd38823892d7fd13992509c3d906bfe0b4a5cafbe382e4e01c24')
 
 prepare() {
-  cd "${srcdir}"/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname
   sed -i 's|$(DESTDIR)$(PREFIX)/sbin/|$(DESTDIR)$(PREFIX)/bin/|g' Makefile
 }
 
 build() {
-  cd "${srcdir}"/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname
   make
 }
 
 package() {
-  cd "${srcdir}"/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname
 
   install -d "${pkgdir}"/usr/share/man "${pkgdir}"/usr/{s,}bin
 
