@@ -1,7 +1,7 @@
 # Maintainer: Oleksandr Natalenko aka post-factum <oleksandr@natalenko.name>
 # Original author: xduugu
 pkgname=netctl-vpnc
-pkgver=20130521
+pkgver=20171031
 pkgrel=1
 pkgdesc="VPNC support for netctl"
 arch=(any)
@@ -16,5 +16,5 @@ sha256sums=('c463f7db0928be90b97988d992ace61b476a8c4c3e8eedc5be33a2393c81ed46'
 
 package() {
   install -Dm644 "$srcdir/vpnc.profile" "$pkgdir/etc/netctl/examples/vpnc"
-  install -Dm755 "$srcdir/vpnc" "$pkgdir/usr/lib/network/connections/vpnc"
+  install -Dm755 "$srcdir/vpnc" "$pkgdir/usr/lib/netctl/connections/vpnc"
 }
