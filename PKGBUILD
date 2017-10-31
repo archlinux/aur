@@ -1,16 +1,16 @@
 pkgname=c9.core
 _pkgname=core
-pkgver=3.0.4edb9102
+pkgver=3.1.3943
 pkgrel=1
 pkgdesc="Cloud9 Core - Part of the Cloud9 SDK for Plugin Development https://c9.io"
 url="http://c9.io/"
 license=('GPL2')
-depends=('nodejs')
-makedepends=('git' 'npm')
+depends=('nodejs' 'python2')
+makedepends=('git' 'npm' 'python2')
 provides=('cloud9')
 conflicts=('cloud9')
 options=('!libtool')
-arch=('i686' 'x86_64')
+arch=('any')
 install=cloud9.install
 source=(${pkgname}::git+https://github.com/c9/${_pkgname}.git
         cloud9.sh
@@ -31,12 +31,14 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  echo 3.0.$(git rev-parse --short HEAD)
+  echo $(git log |& grep auto-bump | head -n1 | awk '{print $2}')
 }
 
 build() {
   cd "$pkgname"
   scripts/install-sdk.sh
+  git reset HEAD --hard
+  git clean -df
 }
 
 package() {
