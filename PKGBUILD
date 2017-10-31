@@ -16,16 +16,13 @@ ros_makedepends=(ros-kinetic-roscpp
   ros-kinetic-zeroconf-msgs)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  libavahi-core-dev
-  libavahi-client-dev)
+  avahi)
 
 ros_depends=(ros-kinetic-roscpp
   ros-kinetic-rosconsole
   ros-kinetic-zeroconf-msgs)
 depends=(${ros_depends[@]}
-  avahi-daemon
-  libavahi-core-dev
-  libavahi-client-dev)
+  avahi)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/zeroconf_avahi/${pkgver}-${_pkgver_patch}
