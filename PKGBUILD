@@ -12,7 +12,7 @@ arch=('any')
 depends=('gtk-engine-murrine')
 conflicts=('gtk-theme-numix-solarized')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_snapshot.tar.gz")
-md5sums=('ff5de064fcfe8f894afe4bc71f77523a')
+md5sums=('3a99e1121e390303aa730dd7a694337b')
 
 package() {
   cd $_repo-$_snapshot/xfce-theme
