@@ -1,0 +1,23 @@
+pkgbase = padthv1
+	pkgdesc = an old-school polyphonic additive synthesizer
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = https://padthv1.sourceforge.io/
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL
+	makedepends = qt5-tools
+	depends = jack
+	depends = liblo
+	depends = lv2
+	depends = qt5-base
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = shared-mime-info
+	depends = fftw
+	source = https://download.sourceforge.net/padthv1/padthv1-0.8.5.tar.gz
+	md5sums = cb27d4e1133d6912b4fb0c18c05a4bdf
+
+pkgname = padthv1
+
