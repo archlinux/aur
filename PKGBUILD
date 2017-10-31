@@ -2,7 +2,7 @@
 
 _pkgname=weboob
 pkgname=weboob-headless-git
-pkgver=1.2.r855.g5185d341d
+pkgver=1.3.r86.gf7592d1e4
 pkgrel=1
 pkgdesc="Web Out Of Browsers provides several applications to interact with a lot of websites. Headless version, for use in e.g. Cozy/Kresus."
 arch=('any')
@@ -14,7 +14,8 @@ depends=('python2-dateutil'
          'python2-prettytable'
          'python2-requests'
 #         'python2-cssselect'
-#         'python2-html2text'
+         'python2-html2text'
+         'python2-unidecode'
          'python2-pillow'
          'python2-simplejson'
          'python2-yaml'
