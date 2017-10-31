@@ -4,7 +4,7 @@
 
 pkgname='borgmatic'
 pkgver=1.1.7
-pkgrel=3
+pkgrel=4
 pkgdesc='A wrapper script for Borg backup software that creates and prunes backups'
 arch=('any')
 url='https://torsion.org/borgmatic/'
@@ -13,8 +13,10 @@ depends=('borg' 'python-pykwalify' 'python-ruamel-yaml')
 makedepends=('python-setuptools' 'python-tox')
 provides=('borgmatic')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://torsion.org/hg/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('939ae88c8f9d2caf77b29a1bb9a53df52fc274ed6f004793616da0c6dab73eae')
+source=("${pkgname}-${pkgver}.tar.gz::https://torsion.org/hg/${pkgname}/archive/${pkgver}.tar.gz"
+        "${pkgname}.install")
+sha256sums=('939ae88c8f9d2caf77b29a1bb9a53df52fc274ed6f004793616da0c6dab73eae'
+            'ca30f277f9ea3663e61a94e898fcbc3bd34073fdbb37da3f18ebb42a04ec0381')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
