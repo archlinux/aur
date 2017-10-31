@@ -1,8 +1,8 @@
 # Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
 
 pkgname=ttf-merriweather
-_commit='f397fbd6b930944cc6255d4771142b07110357f4'
-pkgver=1.585
+_commit='b848f42f0bc0a8bc53588c3688ca37890e1db0bd'
+pkgver=2.002
 pkgrel=1
 epoch=1
 pkgdesc='A typeface that is pleasant to read on screens by Sorkin Type Co'
@@ -20,15 +20,15 @@ source=("Merriweather-Black-${pkgver}.ttf::https://github.com/google/fonts/raw/$
         "Merriweather-LightItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweather/Merriweather-LightItalic.ttf"
         "Merriweather-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweather/Merriweather-Regular.ttf"
         "${pkgname}-${pkgver}-OFL.txt::https://github.com/google/fonts/raw/${_commit}/ofl/merriweather/OFL.txt")
-sha256sums=('e27c601a95672f2c1c2ca4456d42a4f3b4b3df851f1cd37762de269734c3668a'
-            '99bb8d599887d14c86cb362945879f430dd901464239320088ccf65c5dbecf98'
-            '42a20efeb90321fcb1f52eece95252fab023ab68d919123783399ec55dac82d6'
-            '0f67952dfc62aed80e3507edde05a70ea1123225a4828dc4377323c25d349dd6'
-            '18ce2e027971190b2ed22b515b3005f326aa8f740cb015d1339bcd4ccc09af2b'
-            '290405c44ab2136698ec369d7b8f08de679add62f6e93afd7c7b0db15b0f778e'
-            'ef67327f6bc3bd87237c8f1e2fedc42b3f417718c7b0d4e6500f90314eae12d8'
-            'b96cf372e58cf65f0d2b71f63c13d4612bdd92bd69a2528c2df139a702387163'
-            'a66f32f6cb05795b28fea487250d7616274178dcbb946ec198e9f8ef5b30cbc2')
+sha256sums=('dff1048499a2c245713dfa41e3683cfecfd15df757cc4cb20f85bceba7bfd58b'
+            '42b5cdd80b293acb1d7a15958a2c2f8b6b95213709110777486763c75bc83ebf'
+            '55139769a87085bff777f68e3ecf92450c21a04c5ddd1e9e9528960ba4088c9f'
+            '403b1bece3d70420e65c670315693e9bca255e9c95884d9cb2b334838e67b509'
+            'fc80dbac0ca9da894ae1801df9abe58f6dcca179ec4f8f6f7ea80fd13a1d387d'
+            'd3ecc46bab128ed073ad9189bd7efdd2df455d8942ec056f14129bf35bcea7e5'
+            '8521c8eb542adf178b19c7ab7a0210fb4715fe68bb6ea578be129277b642c1f0'
+            'bc38fe756b3e259248183fc0b75ad81b02774f3ca68e5e544e925827b0186d40'
+            'a7ba785ad99b6eae0444ab89910e512d4af9865937fddbcb5c72c4f59f55d6ad')
 
 package() {
   install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
