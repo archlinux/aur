@@ -1,4 +1,4 @@
-pkgbase = moose
+pkgbase = moose-git
 	pkgdesc = Multiscale Object Oriented Simulation Environment
 	pkgver = 3.1.2
 	pkgrel = 1
@@ -13,14 +13,12 @@ pkgbase = moose
 	makedepends = hdf5
 	depends = hdf5
 	depends = gsl
-	depends = libsbml,
-	depends = python-numpy,
-	depends = python-matplotlib,
-	depends = python-network
+	depends = python-numpy
+	depends = python-matplotlib
 	provides = moose
 	conflicts = moose
-	source = moose::git+https://github.com/BhallaLab/moose.git
+	source = moose::git+https://github.com/BhallaLab/moose.git#branch=master
 	md5sums = SKIP
 
-pkgname = moose
+pkgname = moose-git
 
