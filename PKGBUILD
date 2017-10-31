@@ -27,11 +27,9 @@ source=(
 	"${_pkgname}-${_version}.desktop"
 	"atom.install"
 )
-sha256sums=(
-	'SKIP'
-	'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6'
-	'9fe12f1bc573f5d431fcc8f9ca3ed17fc1e1d30248ae3b58209fc53084ae0a4e'
-)
+sha256sums=('21d65a028da755f263bd6567ad4bc6df806b87b098cf51ce59eba6d91c742248'
+            'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6'
+            '9fe12f1bc573f5d431fcc8f9ca3ed17fc1e1d30248ae3b58209fc53084ae0a4e')
 
 prepare() {
 	cd "${srcdir}/${_archive}"
