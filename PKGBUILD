@@ -5,8 +5,7 @@ buildarch=200
 
 pkgname=mutator
 pkgver=0.2.2
-pkgrel=3
-groups=('archstrike' 'archstrike-wordlists')
+pkgrel=1
 pkgdesc="This project aims to be a wordlist mutation with hormones"
 url="https://bitbucket.org/alone/mutator"
 arch=('x86_64' 'i686' 'arm6vh' 'arm7vh' 'aarch64')
