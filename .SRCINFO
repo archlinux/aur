@@ -1,0 +1,26 @@
+pkgbase = moose
+	pkgdesc = Multiscale Object Oriented Simulation Environment
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://moose.ncbs.res.in
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = gsl
+	makedepends = python-numpy
+	makedepends = python
+	makedepends = hdf5
+	depends = hdf5
+	depends = gsl
+	depends = libsbml,
+	depends = python-numpy,
+	depends = python-matplotlib,
+	depends = python-network
+	provides = moose
+	conflicts = moose
+	source = moose::git+https://github.com/BhallaLab/moose.git
+	md5sums = SKIP
+
+pkgname = moose
+
