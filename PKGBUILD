@@ -4,9 +4,7 @@ _pkgname='kaldi'
 pkgdesc='Speech recognition research toolkit'
 pkgver=5.2.r7627.323100178
 pkgrel=1
-makedepends=('gcc5' 'git' 'wget' 'subversion')
-depends=('python2' 'openblas-lapack')
-optdepends=('cuda: For GPU support')
+makedepends=('git' 'wget')
 arch=('x86_64' 'i686')
 url='https://github.com/kaldi-asr/kaldi'
 license=('APACHE')
@@ -23,19 +21,7 @@ pkgver () {
 	)
 }
 
-prepare(){
-	cd $srcdir/$_pkgname
-	find . -name '*.py' -exec sed '1s/python/python2/' -i {} \;
-
-	if (pacman -Q cuda &> /dev/null); then
-		msg2 "Compiling with CUDA support"
-		_cuda_config_opts="--cudatk-dir=/opt/cuda"
-	else
-		msg2 "Compiling _without_ CUDA support"
-	fi
-}
-
-build () {
+build() {
 	cd $srcdir/$_pkgname/tools
 	make sph2pipe
 }
