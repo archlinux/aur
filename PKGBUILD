@@ -1,7 +1,7 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 # Contributor: Eugene Yudin aka Infy <Eugene dot Yudin at gmail dot com>
 pkgname=goldendict-git
-pkgver=1.5.0.RC2.76.gadb1bf5
+pkgver=1.5.0.RC2.197.g8dd4d9f0
 pkgrel=1
 pkgdesc="Feature-rich dictionary lookup program."
 arch=('i686' 'x86_64')
