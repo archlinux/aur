@@ -1,0 +1,22 @@
+pkgbase = color-picker-git
+	pkgdesc = One Color Picker to rule them all! No overhelming menus or settings. An easy tool with the features you need.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/RonnyDo/ColorPicker
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	makedepends = granite
+	makedepends = git
+	depends = gtk3
+	depends = granite
+	provides = ColorPicker
+	conflicts = ColorPicker
+	source = git://github.com/RonnyDo/ColorPicker.git
+	sha256sums = SKIP
+
+pkgname = color-picker-git
+
