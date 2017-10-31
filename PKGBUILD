@@ -3,17 +3,17 @@
 
 pkgbase='ovirt-guest-agent'
 pkgname=("${pkgbase}" "${pkgbase}-common")
-_mainver='1.0.13'
+_mainver='1.0.14'
 _subrel=''
 pkgver="${_mainver}${_subrel}"
-pkgrel='4'
+pkgrel='1'
 pkgdesc='The oVirt Guest Agent'
 arch=('x86_64')
-url="http://ovirt.org/develop/developer-guide/vdsm/guest-agent"
+url="https://ovirt.org/develop/developer-guide/vdsm/guest-agent"
 makedepends=('pam' 'libtool' 'python2' 'python2-pycodestyle' 'patch' 'autoconf')
 license=('ASL 2.0')
 install="${pkgbase}.install"
-source=("https://evilissimo.fedorapeople.org/releases/${pkgbase}/${_mainver}/${pkgbase}-${pkgver}.tar.bz2"
+source=("http://resources.ovirt.org/pub/src/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"
 	"python2-arch.patch"
 	"${pkgbase}-1.0.13_arch_pycodestyle.patch"
 	"39-ovirt-memory-hotplug.rules"
@@ -22,7 +22,7 @@ source=("https://evilissimo.fedorapeople.org/releases/${pkgbase}/${_mainver}/${p
 	"${pkgbase}.tmpfiles"
 	"${pkgbase}.sysusers"
 	"${pkgbase}.service")
-sha256sums=('3b4d429d3e5ca1a369cc0868217910eadc70178156bb62e9d68cb1a9fde8afcc'
+sha256sums=('7ecd4c06c6be59b4266996c0f6d9bd76921e3a9997d3f4ded67db76cceb24e29'
             '95c162b584dd137296bcec70d14079d4b93d10d8542a87bd8f1cd6ad01e4b140'
             'ebe724b39b78a3bc21a998884b188e0efdaa2fc3ea3416fb4e4e273629394e24'
             '78994d3cfe8f293aab84692c9d181b2c20caeb47e9854bb9377f2199b45984fb'
