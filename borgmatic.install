@@ -1,0 +1,13 @@
+post_install() {
+    echo ">>> WARNING: If you are updateing from a 1.0.x release you should run:"
+    echo ">>>          sudo upgrade-borgmatic-config"
+    echo ">>>          to convert your config from ini to yaml format."
+    echo ">>>          For more information read at: https://torsion.org/borgmatic/"
+}
+
+post_upgrade() {
+    echo ">>> WARNING: If you are updateing from a 1.0.x release you should run:"
+    echo ">>>          sudo upgrade-borgmatic-config"
+    echo ">>>          to convert your config from ini to yaml format."
+    echo ">>>          For more information read at: https://torsion.org/borgmatic/"
+}
