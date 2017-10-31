@@ -3,39 +3,38 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-_pkgbase=kate
 pkgbase=kate-root
 pkgname=('kwrite-root'
          'kate-root')
-pkgver=17.04.2
+pkgver=17.08.2
 pkgrel=1
 arch=('armv7h' 'i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL')
 makedepends=('extra-cmake-modules' 'kdoctools' 'python' 'plasma-framework' 'knewstuff' 'ktexteditor'
              'threadweaver' 'kitemmodels' 'kactivities')
-source=("https://download.kde.org/stable/applications/${pkgver}/src/${_pkgbase}-${pkgver}.tar.xz"{,.sig}
+source=("https://download.kde.org/stable/applications/${pkgver}/src/${pkgbase/-*/}-${pkgver}.tar.xz"{,.sig}
         "https://gitlab.com/Megver83/kdebase-root-patches/raw/master/0001-Defuse-root-block.patch"{,.sig})
-sha256sums=('1045c5bee48ade8c229096eeaa8696eba4dac118bccc2a535f9ac553602fcaaf'
+sha512sums=('9fa3fa7cb2c7b8b542dc2c03073fec83daea4c33c1868b8353519c97db3e63b094ea8f5cff945d7531bf571cdff9108428431afe87468813c370a19355c20dad'
             'SKIP'
-            '97926a28409205bff73df7788afcbce5229a60734db26704ffb10535c74bb96c'
+            'a6d1a2bf6664ac72dc9c9434c64a228eb91320d405e6cd4b4dd6b24d8ff8d0675407c0e0f76e76d3e2758238f22fe00e0cd96caa9d24bd9fa39950cafdc03fa8'
             'SKIP')
 validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7' # Albert Astals Cid <aacid@kde.org>
+              'F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87' # Christoph Feck <cfeck@kde.org>
               '6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78' # David P.
 )
-options=(!emptydirs)
 
 prepare() {
   mkdir -p build
-  cd $srcdir/${_pkgbase}-${pkgver}
+  cd $srcdir/${pkgbase/-*/}-${pkgver}
   patch -p1 -i $srcdir/0001-Defuse-root-block.patch
 }
 
 build() {
   cd build
-  cmake ../${_pkgbase}-${pkgver} \
+  cmake ../${pkgbase/-*/}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DSYSCONF_INSTALL_DIR=/etc \
     -DBUILD_TESTING=OFF
   make
