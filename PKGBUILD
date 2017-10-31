@@ -4,10 +4,10 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=camlidl
 pkgver=1.05
-pkgrel=6
+pkgrel=7
 pkgdesc="A stub code generator and COM binding for Objective Caml (OCaml)"
 arch=('i686' 'x86_64')
-url="http://caml.inria.fr/pub/old_caml_site/camlidl/"
+url="https://github.com/xavierleroy/camlidl"
 license=('custom')
 depends=('ocaml')
 options=(staticlibs)
@@ -40,11 +40,11 @@ package() {
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-md5sums=('4cfb863bc3cbdc1af2502042c45cc675'
-         '9b7f92ec77b50d260b6487e4577bd5f0'
-         '937930d2b49a6df80567464350cb3fd9'
-         'c8239780b7303f02b86ca6efc644640c')
 sha1sums=('2a0d5ba70fea8c1de1c5387f8b2058357b2177df'
           'b5cf6873bda3fe48f9946f09ccea39cd60fda59c'
           '19e42c60e2e7448951fc87bb70a3e8fb26244e08'
-          'cdabd68036a1f52c8ba8cfb22bde5a034ff8b620')
+          '2e26acb071e62574ced84ff7aa3a7164e27daef0')
+sha256sums=('857ed5bd3b2f99c62813070e1a5b4b6375e837c6815f4ad956baeb6f8c660311'
+            '4b5a3495db307970fef1e408e1e5caa92c3d3fde5c5fafe81b6d679662ab688c'
+            '78646a2022617e484b48aa7a5f7aa322696639b8b1eb195f07e88eb143dd735d'
+            '1a060499f884670ad3ad5f9dbd8421ea3754947b0ee955424490848acb39ce42')

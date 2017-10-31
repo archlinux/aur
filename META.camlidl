@@ -1,4 +1,5 @@
 description = "Stub generator"
 version = "1.05"
+directory = "^"
 archive(byte) = "com.cma"
 archive(native) = "com.cmxa"
