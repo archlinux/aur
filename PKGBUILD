@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("$_pkgname::git+https://github.com/BhallaLab/moose.git#branch=master")
+source=("$_pkgname::git+https://github.com/BhallaLab/moose.git#branch=chamcham")
 md5sums=('SKIP')
 validpgpkeys=()
 

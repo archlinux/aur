@@ -17,7 +17,7 @@ pkgbase = moose
 	depends = python-matplotlib
 	provides = moose
 	conflicts = moose
-	source = moose::git+https://github.com/BhallaLab/moose.git#branch=master
+	source = moose::git+https://github.com/BhallaLab/moose.git#branch=chamcham
 	md5sums = SKIP
 
 pkgname = moose
