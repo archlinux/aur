@@ -3,7 +3,7 @@
 # Contributor: csslayer <wengxt AT gmail com>
 
 pkgname=fcitx5-gtk-git
-pkgver=r5.be0cdae
+pkgver=r19.c62252b
 pkgrel=1
 pkgdesc="Gtk im module for fcitx5 and glib based dbus client library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,6 @@ url="https://github.com/fcitx/fcitx5"
 license=('GPL')
 depends=('fcitx5-git' 'gtk2' 'gtk3')
 makedepends=('extra-cmake-modules' 'gobject-introspection' 'git')
-conflicts=('fcitx')
 source=("git+https://github.com/fcitx/fcitx5-gtk.git")
 sha512sums=('SKIP')
 
