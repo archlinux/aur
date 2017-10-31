@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostic_aggregator."
 url='http://www.ros.org/wiki/diagnostic_aggregator'
 
 pkgname='ros-kinetic-diagnostic-aggregator'
-pkgver='1.8.10'
+pkgver='1.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -40,7 +40,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="diagnostics-release-release-kinetic-diagnostic_aggregator-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/kinetic/diagnostic_aggregator/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3574a0af7ce40e98532c47017ba27d8dfd64b426f2f9b6aeeebe50631b498930')
+sha256sums=('f0a2eaff1ae4390786a06d578be30180fb3b42ff661b8b26f8b7871889522ca6')
 
 build() {
   # Use ROS environment variables
