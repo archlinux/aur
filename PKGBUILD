@@ -2,12 +2,13 @@
 
 pkgname=signal-desktop-bin
 pkgver=1.0.34
-pkgrel=1
+pkgrel=2
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
 url='https://github.com/WhisperSystems/Signal-Desktop'
 license=('GPL3')
 provides=('signal-desktop')
+conflicts=('signal')
 options=(!strip)
 depends=('gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'desktop-file-utils' 'libxss')
 
