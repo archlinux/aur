@@ -8,7 +8,7 @@ pkgname=keybase-bin
 pkgdesc='the Keybase Go client, filesystem, and GUI'
 license=('BSD')
 url='https://keybase.io'
-pkgver=1.0.34_20171027161021+a0eab0ba7
+pkgver=1.0.35_20171031022630+34306b2e6
 deb_pkgver="${pkgver/_/-}"
 deb_pkgver="${deb_pkgver/+/.}"
 pkgrel=1
@@ -43,5 +43,5 @@ package() {
   rm -rf "$pkgdir/etc/cron.daily"
 }
 
-sha256sums_i686=(4639a9d2309187708d2c7fa7a32fc000a71a6a722f0d70b2e94d9525c3a7dfaf)
-sha256sums_x86_64=(6751f3f0ee71952c02178ffa2de8ce03815c634a605c3b4d257a570e26a82980)
+sha256sums_i686=(d014443a172e5708cb514e91110d7f40c29709fc6cf407a23c334196187932c7)
+sha256sums_x86_64=(75c99d037f17319af59d352c8128538d8b6d2c7714a642e126a1002410c5f09c)
