@@ -3,7 +3,7 @@
 # Contributor: csslayer <wengxt AT gmail com>
 
 pkgname=fcitx5-qt-git
-pkgver=r79.fde1417
+pkgver=r97.050fe6e
 pkgrel=1
 pkgdesc="Fcitx Qt Library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,6 @@ url="https://github.com/fcitx/fcitx5"
 license=('GPL')
 depends=('fcitx5-git' 'qt4' 'qt5-x11extras')
 makedepends=('extra-cmake-modules' 'git')
-conflicts=('fcitx-qt5')
 source=("git+https://github.com/fcitx/fcitx5-qt.git")
 sha512sums=('SKIP')
 
