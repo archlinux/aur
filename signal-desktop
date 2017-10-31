@@ -1,0 +1,2 @@
+#!/bin/sh
+exec "/opt/Signal/signal-desktop" %U
