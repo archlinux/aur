@@ -1,0 +1,12 @@
+diff -ura include/freetype/config/ftoption.h include/freetype/config/ftoption.h
+--- include/freetype/config/ftoption.h	2017-10-29 03:33:51.835759368 +0300
++++ include/freetype/config/ftoption.h	2017-10-29 03:36:59.231676456 +0300
+@@ -119,7 +119,7 @@
+   /* rendering technology that produces excellent output without LCD       */
+   /* filtering.                                                            */
+   /*                                                                       */
+-/* #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
++#define FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+ 
+ 
+   /*************************************************************************/
