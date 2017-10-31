@@ -1,6 +1,6 @@
 # Maintainer: Jingbei Li <i@jingbei.lli>
 pkgname='kaldi-sctk'
-_pkgname='kaldi-master'
+_pkgname='kaldi'
 pkgdesc='Speech recognition research toolkit'
 pkgver=2.4.10
 pkgrel=1
@@ -13,7 +13,7 @@ source=("https://github.com/kaldi-asr/kaldi/archive/master.zip")
 sha256sums=('SKIP')
 
 build () {
-	cd $srcdir/$_pkgname/tools
+	cd $srcdir/$_pkgname-master/tools
 	sed \
 		-e '/^sclite_compiled/s/ sctk_configured//' \
 		-i Makefile
@@ -24,8 +24,8 @@ build () {
 }
 
 package () {
-	mkdir -p $pkgdir/opt/$pkgname/tools/sctk-$pkgver
-	cd $pkgdir/opt/$pkgname/tools
+	mkdir -p $pkgdir/opt/$_pkgname/tools/sctk-$pkgver
+	cd $pkgdir/opt/$_pkgname/tools
 	ln -s sctk-$pkgver sctk
-	cp -r $srcdir/$_pkgname/tools/sctk-$pkgver/bin sctk-$pkgver
+	cp -r $srcdir/$_pkgname-master/tools/sctk-$pkgver/bin sctk-$pkgver
 }
