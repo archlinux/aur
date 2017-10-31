@@ -1,3 +1,23 @@
+# [v1.4.8 - 2017-10-30](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.7)
+
+## Added
+
+- Added prompt before staging directories.
+- Substitute emoji for emoji short codes in commit messages.
+- Added missing extension mapping for CoffeeScript.
+
+## Fixed
+
+- Sort conflicts to the top unconditionally.
+- Automatically select the status row when the HEAD changes.
+- Fixed commit list scroll performance on repositories with many refs.
+- (Win) Search for git bash in default install location.
+- (Win) Added warning dialog when an external tool fails because bash can't be found.
+
+## Changed
+
+- Changed the behavior of double-click in the file list to open the external diff/merge tool if one is enabled.
+
 # [v1.4.7 - 2017-10-20](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.6)
 
 ## Added
