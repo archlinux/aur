@@ -1,22 +1,24 @@
-pkgbase = color-picker-git
-	pkgdesc = One Color Picker to rule them all! No overhelming menus or settings. An easy tool with the features you need.
-	pkgver = 1.0.1
+pkgbase = tranqil
+	pkgdesc = Relax to the soothing sounds of nature
+	pkgver = 1.1.6
 	pkgrel = 1
-	url = https://github.com/RonnyDo/ColorPicker
+	url = https://github.com/nick92/tranqil
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = meson
-	makedepends = ninja
+	makedepends = cmake
 	makedepends = vala
 	makedepends = granite
 	makedepends = git
+	makedepends = libnotify
 	depends = gtk3
 	depends = granite
-	provides = ColorPicker
-	conflicts = ColorPicker
-	source = git://github.com/RonnyDo/ColorPicker.git
+	depends = gstreamer
+	depends = libnotify
+	provides = tranqil
+	conflicts = tranqil
+	source = https://github.com/nick92/tranqil/archive/1.1.6.zip
 	sha256sums = SKIP
 
-pkgname = color-picker-git
+pkgname = tranqil
 
