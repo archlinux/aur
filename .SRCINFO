@@ -1,0 +1,13 @@
+pkgbase = sigar-git
+	pkgdesc = System Information Gatherer And Reporter
+	pkgver = sigar.1.6.4.r600.ga6c61edf
+	pkgrel = 1
+	url = https://github.com/hyperic/sigar
+	arch = x86_64
+	license = apache
+	makedepends = cmake
+	source = git+https://github.com/boundary/sigar.git
+	sha512sums = SKIP
+
+pkgname = sigar-git
+
