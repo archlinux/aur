@@ -1,0 +1,10 @@
+diff -ruN ledger-mode-3.1.1.orig/CMakeLists.txt ledger-mode-3.1.1/CMakeLists.txt
+--- ledger-mode-3.1.1.orig/CMakeLists.txt	2017-10-31 09:47:57.159845345 +0100
++++ ledger-mode-3.1.1/CMakeLists.txt	2017-10-31 09:48:07.526511954 +0100
+@@ -1,4 +1,5 @@
+ set(EMACS_LISP_SOURCES
++  ledger-check.el
+   ledger-commodities.el
+   ledger-complete.el
+   ledger-exec.el
+Binary files ledger-mode-3.1.1.orig/.CMakeLists.txt.un~ and ledger-mode-3.1.1/.CMakeLists.txt.un~ differ
