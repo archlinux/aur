@@ -29,8 +29,9 @@ package() {
 	mkdir $pkgdir/usr/
 	mkdir $pkgdir/usr/bin/
 
-	g++ *.cpp -Wall -Wextra -g -o ys
-	install -D -m644 ys $pkgdir/usr/bin/ys
+	make
+	install -Dm755 yoda $pkgdir/usr/bin/ys
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 }
 
