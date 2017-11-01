@@ -1,0 +1,15 @@
+pkgbase = python-aiotg
+	pkgdesc = Asynchronous Python API for building Telegram bots
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/szastupov/aiotg
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-aiohttp
+	depends = python-watchdog
+	source = https://pypi.python.org/packages/55/21/7acdfaf7670925e2808e998629c83c63cd55f7a7eea85d45c4306fb92700/aiotg-0.9.4.tar.gz
+	md5sums = bb61da2f05840e2ed705e38e15e11f7a
+
+pkgname = python-aiotg
+
