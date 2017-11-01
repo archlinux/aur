@@ -1,9 +1,9 @@
 # Maintainer: GreaterFire <GreaterFire at protonmail dot com>
 pkgname=trojan
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An unidentifiable mechanism that helps you bypass GFW."
-arch=('x86_64')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'arm' 'aarch64')
 url="https://github.com/GreaterFire/trojan"
 license=('GPL')
 depends=('boost-libs' 'openssl')

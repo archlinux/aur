@@ -1,9 +1,14 @@
 pkgbase = trojan
 	pkgdesc = An unidentifiable mechanism that helps you bypass GFW.
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GreaterFire/trojan
 	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = arm
+	arch = aarch64
 	license = GPL
 	makedepends = cmake
 	makedepends = boost
