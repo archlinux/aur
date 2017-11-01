@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-postgresql-git'
-pkgver=0.7.1.0.r41.g42a812901
+pkgver=0.7.1.1.r45.g21980681b
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head) (PostgreSQL)"
 arch=('i686' 'x86_64')
@@ -67,7 +67,12 @@ build() {
   msg "Bundle dependencies"
   echo "gem: --no-rdoc --no-ri --no-user-install" > $_builddir/.gemrc
   HOME=$_builddir $_bundle config --local build.sigar '--with-cppflags="-fgnu89-inline"'
-  HOME=$_builddir $_bundle install --without development test --with postgresql --deployment
+  HOME=$_builddir $_bundle config --local path vendor/bundle
+  HOME=$_builddir $_bundle config --local frozen 1
+  HOME=$_builddir $_bundle config --local disable_shared_gems true
+  HOME=$_builddir $_bundle config --local with postgresql
+  HOME=$_builddir $_bundle config --local without development:test
+  HOME=$_builddir $_bundle install
 
   msg "Patch configuration examples"
   sed -i -e "s|#certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|" \

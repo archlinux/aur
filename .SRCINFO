@@ -1,6 +1,6 @@
 pkgbase = diaspora-postgresql-git
 	pkgdesc = A distributed privacy aware social network (development head) (PostgreSQL)
-	pkgver = 0.7.1.0.r41.g42a812901
+	pkgver = 0.7.1.1.r45.g21980681b
 	pkgrel = 1
 	url = https://diasporafoundation.org
 	install = diaspora.install
