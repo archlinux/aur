@@ -13,7 +13,7 @@ makedepends=('unzip')
 install="jameica.install"
 # See https://willuhn.de/products/jameica/download.php for checksums
 source_i686=("${pkgname}-${pkgver}.zip::https://www.willuhn.de/projects/jameica/releases/$_pkgver/jameica/$pkgname-linux.zip")
-sha1sums=('9aa6aed3ffc50c8f01497d0332ff24d21f7189bf'
+sha1sums=('57c7077ddbcf1bc9c970eb0c00da56a46c246e20'
           '79be8955392bf3dfade9c0118ee4d72f081e07b8'
           '39c008050c7f90f3fde05b849cba80559207bdb5')
 sha1sums_i686=('199906592010216ed49d681b0e821d24371415f1')
