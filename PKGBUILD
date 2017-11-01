@@ -22,7 +22,7 @@ build() {
 
 check() {
   cd ${srcdir}/pycp-${pkgver}
-  pytest
+  PYTHONPATH=. pytest
 }
 
 package() {
