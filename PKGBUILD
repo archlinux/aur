@@ -1,6 +1,6 @@
 # Maintainer: L.G. Sarmiento (Pico) <Luis.Sarmientop-ala-nuclear.lu.se>
 pkgname=geant4-radioactivedata
-pkgver=5.1
+pkgver=5.1.1
 pkgrel=1
 _dataname="G4RadioactiveDecay"
 _foldername="RadioactiveDecay${pkgver}"
@@ -14,7 +14,7 @@ depends=('geant4>=10.3')
 install="${pkgname}.install"
 source=("http://geant4.cern.ch/support/source/${_dataname}.${pkgver}.tar.gz"
   "${pkgname}.install")
-md5sums=('994853b153c6f805e60e2b83b9ac10e0'
+md5sums=('d298454d2217359b7b3d1050c9ac34fc'
          'b1766e7951ab345606df76e2eb8c3f37')
 
 ## Remove this if you want to keep an even smaller package
