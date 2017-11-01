@@ -1,0 +1,12 @@
+[Unit]
+Description=Hyperledger Fabric Peer Node
+After=network.target
+
+[Service]
+Type=forking
+User=hyperledger
+WorkingDirectory=/var/hyperledger
+ExecStart=/usr/bin/peer node start
+EnvironmentFile=/etc/conf.d/fabric-peer.conf
+
+
