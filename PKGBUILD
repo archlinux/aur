@@ -4,6 +4,7 @@
 _keyaccount=16523
 _productUrname='Mein CEWE FOTOBUCH'
 _productRename='CEWE Fotobuch'
+_lang='de_DE'
 
 pkgname=cewe-fotobuch
 conflicts=(cewe-fotoservice)
@@ -12,13 +13,13 @@ md5sums=('19b8ff60e5973fb816b86b94af9a0835'
          '422a405d520e18ef9afade2e7c24440b')
 
 pkgver=6.2.4
-pkgrel=2
+pkgrel=3
 url="http://www.cewe.de/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget' 'gstreamer0.10-base')
+depends=('libx11' 'libjpeg' 'curl' 'wget')
 makedepends=('unzip')
 arch=('i686' 'x86_64')
-source=("https://dls.photoprintit.com/download/Data/$_keyaccount-de_DE/hps/setup_${_productUrname// /_}.tgz"
+source=("https://dls.photoprintit.com/download/Data/$_keyaccount-$_lang/hps/setup_${_productUrname// /_}.tgz"
 	'updater.pl')
 install=$pkgname.install
 
