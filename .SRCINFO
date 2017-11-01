@@ -1,6 +1,6 @@
-pkgbase = concurrentqueue-git
-	pkgdesc = concurrentqueue trunk (git version)
-	pkgver = 1094.8e808d19
+pkgbase = concurrent-queue-git
+	pkgdesc = concurrent-queue trunk (git version)
+	pkgver = 127.7b69a8f
 	pkgrel = 1
 	url = https://github.com/cameron314/concurrentqueue
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = concurrentqueue-git
 	source = concurrentqueue-git::git+https://github.com/cameron314/concurrentqueue.git
 	md5sums = SKIP
 
-pkgname = concurrentqueue-git
+pkgname = concurrent-queue-git
 	pkgdesc = An industrial-strength lock-free queue for C++. (git version)
 	depends = libevent
 	depends = google-glog
@@ -25,5 +25,5 @@ pkgname = concurrentqueue-git
 	optdepends = boost
 	optdepends = boost-libs
 	optdepends = thrift
-	provides = concurrentqueue-git
+	provides = concurrent-queue-git
 
