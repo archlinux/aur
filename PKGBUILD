@@ -3,7 +3,7 @@
 
 
 pkgname=iridium-bin
-pkgver=58.0
+pkgver=2017.10
 pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Stable Channel)"
 arch=('x86_64')
@@ -18,9 +18,9 @@ options=('!emptydirs' '!strip')
 
 source=("https://downloads.iridiumbrowser.de/ubuntu/iridium-browser_current_amd64.deb"
 )
-sha256sums=('b40fb9b599234fe2c7ff555f534621043591d06140cd71b5bbe1b5b17194a7f3')
-sha384sums=('68a17ec5b0f8e99cfa04b9a5d97f960db3e92c211781563ce9e058b33be5842795a5da53d092f71eeea2cab1b617fe7d')
-sha512sums=('796a7f4bd37a2f5508920935381d1b8d53b53b3564cc01076716af1cf3798dc906431da32c733aa37822d8fe62dca81222f4678976fe4841f7bdb817499e2567')
+sha256sums=('a5c00da23c4fd86e3a85dcfbc158338c056aca1a0e0da722bd4dc3544d4387fe')
+sha384sums=('9a9c49a0a1ea38351310cb10ce68eccbfff12ded5cbf9a947bdc9ca9803b0368266f43967dd48d83f2efb88ace252542')
+sha512sums=('51933bd4d6ef0054246358c36554dcf98711ec3e770560d76b847ee081eef478e416118278a1e818d66839eaf0a5f71405c2dfc7f250ee85677eae14b20421d7')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
