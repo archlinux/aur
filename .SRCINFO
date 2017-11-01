@@ -1,15 +1,19 @@
 pkgbase = pycp
 	pkgdesc = cp and mv with a progressbar
-	pkgver = 8.0.1
+	pkgver = 8.0.2
 	pkgrel = 1
 	url = http://github.com/dmerejkowsky/pycp
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
 	makedepends = python
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/dc/8f/a0e9dc4535fa99a5f750470de9b57a02725840855c04a68d83fee7aa7dec/pycp-8.0.1.tar.gz
-	md5sums = 8b4a6b8f0ce26dfca2c9e8de914a1506
+	depends = python-cli-ui
+	depends = python-attrs
+	source = https://files.pythonhosted.org/packages/fe/76/9e01498f4fc80a990393be649d7e312cdf70384d0bdf83b3b4c2a8f7af5e/pycp-8.0.2.tar.gz
+	md5sums = 42f7632634daac104cee242fa2f06bf5
 
 pkgname = pycp
 
