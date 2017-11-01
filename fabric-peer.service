@@ -3,10 +3,10 @@ Description=Hyperledger Fabric Peer Node
 After=network.target
 
 [Service]
-Type=forking
+Type=simple
 User=hyperledger
 WorkingDirectory=/var/hyperledger
 ExecStart=/usr/bin/peer node start
 EnvironmentFile=/etc/conf.d/fabric-peer.conf
-
+PIDFile=/var/run/fabric-peer.pid
 

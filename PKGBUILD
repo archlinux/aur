@@ -49,7 +49,7 @@ package() {
   install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 
   cp -r release/linux-$GOARCH/bin "$pkgdir/usr"
-  mkdir -p $pkgdir/etc/hyperledger/fabric/tls
+  install -dm 644 $pkgdir/etc/hyperledger/fabric/tls
   cp -r sampleconfig/* $pkgdir/etc/hyperledger/fabric
 
 msg2 "Install systemd service"
@@ -64,5 +64,5 @@ msg2 "Install conf file"
 md5sums=('00175d84c2365f6989a6b489efeda994'
          'ac4694c8c49e21c816df94535a60ddfe'
          'a0bafaaeb3be191ed2893662fe9a6fc7'
-         'a34ec316d08b4cb6a3056e0df504d1af'
+         'e3c871420b7b5af4ab6d6f7b4091d2da'
          '6828396533a5cf1522465872a83a50de')

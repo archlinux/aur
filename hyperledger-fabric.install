@@ -6,6 +6,7 @@ post_install() {
   _chown
   cryptogen generate > /dev/null
   mv /crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/* /etc/hyperledger/fabric/tls
+  chmod 644 /etc/hyperledger/fabric/tls/*
   rm -rf /crypto-config
 }
 
