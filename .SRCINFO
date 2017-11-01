@@ -10,7 +10,7 @@ pkgbase = python-pixmappy
 	depends = python-future
 	depends = python-astropy
 	depends = python-scipy
-	depends = python-aspy-yaml
+	depends = python-yaml
 	source = python-pixmappy-r40.5c82c73::git+https://github.com/gbernstein/pixmappy
 	md5sums = SKIP
 
