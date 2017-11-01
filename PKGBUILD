@@ -21,7 +21,7 @@ build () {
 package () {
 	cd $srcdir/$_pkgname-master/tools/liblbfgs-$pkgver
 	find . -maxdepth 1 -type f -exec rm {} \;
-	rm -r share sample lib/{.libs,*.a,*.la,*.o,*.lo,*.c,Makefile*,lib.vcxproj}
+	rm -r share sample lib/{.libs,.deps,*.a,*.la,*.o,*.lo,*.c,Makefile*,lib.vcxproj}
 	mkdir -p $pkgdir/opt/$_pkgname/tools/liblbfgs-$pkgver
 	cp -r include lib $pkgdir/opt/$_pkgname/tools/liblbfgs-$pkgver
 }
