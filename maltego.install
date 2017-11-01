@@ -1,6 +1,6 @@
 post_install() {
   echo ""
-  echo "[+] run '/usr/sbin/maltego-community' to run the application (if nothing works, check 'java' is in your \$PATH)"
+  echo "[+] run '/sbin/maltego' to run the application (if nothing works, check 'java' is in your \$PATH)"
   echo ">>> documentation resides @ 'https://www.paterva.com/web7/docs.php'"
   echo ""
   echo ">>> this application isn't functional until you obtain a Maltego Community Edition activation code and account"
@@ -12,7 +12,7 @@ post_install() {
 
 post_upgrade() {
   echo ""
-  echo "[+] run '/usr/sbin/maltego-community' to run the application (if nothing works, check 'java' is in your \$PATH)"
+  echo "[+] run '/sbin/maltego' to run the application (if nothing works, check 'java' is in your \$PATH)"
   echo ">>> documentation resides @ 'https://www.paterva.com/web7/docs.php'"
   echo ""
   echo ">>> this application isn't functional until you obtain a Maltego Community Edition activation code and account"
