@@ -1,14 +1,14 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=python-plotpot
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 epoch=
 pkgdesc="A python module for plotting potentiostat data"
 arch=('any')
 url="https://github.com/ahpohl/plotpot"
 license=('MIT')
 groups=()
-depends=('python' 'convpot>=1.2.0' 'python-numpy' 'python-matplotlib')
+depends=('python' 'convpot>=1.2.1' 'python-numpy' 'python-matplotlib')
 makedepends=('python-setuptools')
 checkdepends=()
 optdepends=()
