@@ -4,6 +4,7 @@ pkgname=git-lfs
 pkgver=2.3.4
 pkgrel=1
 pkgdesc="An open source Git extension for versioning large files"
+url="https://git-lfs.github.com/"
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 makedepends=('go' 'ruby-ronn')
