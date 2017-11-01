@@ -1,23 +1,23 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=fipolate
-pkgver=2013.3
-pkgrel=2
+pkgver=2017
+pkgrel=1
 pkgdesc='Interpolate text files with variables through a fifo via user prompts.'
 arch=(any)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/fipolate"
-depends=(python3 python-pyinotify)
+url="https://xyne.archlinux.ca/projects/fipolate"
+depends=(python-pyinotify python3)
 source=(
-  http://xyne.archlinux.ca/projects/fipolate/src/fipolate-2013.3.tar.xz
-  http://xyne.archlinux.ca/projects/fipolate/src/fipolate-2013.3.tar.xz.sig
+  https://xyne.archlinux.ca/projects/fipolate/src/fipolate-2017.tar.xz
+  https://xyne.archlinux.ca/projects/fipolate/src/fipolate-2017.tar.xz.sig
 )
 sha512sums=(
-  168c579cc11ec0920e26908dfb1bc6d722d92adcb323ea7ea1f9afd787d9186b93f170035b25aaf8e8eee8e2280f68350ed8ef1c5f103e91ff9d65ac7540b164
-  0a90a5dd438a675fd5bb1a974fe55b06266e6482abb003af1ab4631dcb8c1113e860a871923d480d8bb35fcb21a362705ee3686dd0f53ac57c3f65fad83ddf57
+  3df325656a2cd23c085ef39845190b117f9f290f074d26dfd7404b7c393f5cfe9c9d7517a975ce461febed40417b3e14545fb9a6038c8aea247778011879af22
+  d40ac81deaa519267a15cddea16d650f3d6e31106faff0d3042d7ce246544d8bc8e254de5f09666b3b963f9303ed9d17bbb79ae5c088af58063ce83abf4d38ca
 )
 md5sums=(
-  f7709c6bf2cc11291de4b98c256e9a46
-  68a46399ca699b44fa0eb2dfa9e84924
+  0857996a546241a426143f50956401ec
+  3974569afc7d621a536211564a807308
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
