@@ -4,7 +4,7 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash-gtk3-git
-pkgver=2.7.1.r2.gf05761e63
+pkgver=2.7.1.r23.g4f9716362
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application (GTK3 development version)"
 arch=('i686' 'x86_64')
@@ -20,11 +20,9 @@ optdepends=('evince: for print preview'
             'perl-date-manip: for stock information lookups')
 options=('!emptydirs')
 source=("git+https://github.com/Gnucash/gnucash"
-	"guild-2.0.patch"
-	"gwenhywfar-418.patch")
+	"guild-2.0.patch")
 sha1sums=('SKIP'
-          '5c67cac57f2bbbe9775496dd6eaa32b2d4b4f23c'
-          '3f7dc97f8aab51ed81404402efc3b7f0d9b142c3')
+          '5c67cac57f2bbbe9775496dd6eaa32b2d4b4f23c')
 
 pkgver() {
   cd "${srcdir}/gnucash"
@@ -34,7 +32,6 @@ pkgver() {
 prepare() {
   cd "${srcdir}/gnucash"
   patch -N < ../guild-2.0.patch
-  patch -Np1 < ../gwenhywfar-418.patch
 }
 
 build() {
