@@ -1,0 +1,16 @@
+pkgbase = pmonitor
+	pkgdesc = Progress monitor: monitor a job's progress
+	pkgver = r15.97604f3
+	pkgrel = 1
+	url = https://github.com/dspinellis/pmonitor
+	arch = i686
+	arch = x86_64
+	license = Apache2.0
+	depends = lsof
+	provides = pmonitor
+	conflicts = pmonitor
+	source = git+https://github.com/dspinellis/pmonitor.git
+	md5sums = SKIP
+
+pkgname = pmonitor
+
