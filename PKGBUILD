@@ -12,8 +12,7 @@ license=('CDDL')
 depends=('tomcat8' 'sh' 'java-runtime>=8' 'ctags' 'unzip')
 makedepends=('apache-ant' 'jdk8-openjdk')
 source=(${pkgname}-${pkgver}::"https://github.com/OpenGrok/OpenGrok/archive/1.0.tar.gz")
-sha1sums=('2d3bf60215500cf8fb6f63a45ba3582d16ce85d2'
-          '118514d7474006c9b98151403d3d7952b8a9cea6')
+sha1sums=('2d3bf60215500cf8fb6f63a45ba3582d16ce85d2')
 
 prepare() {
   cd ${_pkgname}-${pkgver}

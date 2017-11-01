@@ -14,7 +14,6 @@ pkgbase = opengrok
 	depends = unzip
 	source = opengrok-1.0::https://github.com/OpenGrok/OpenGrok/archive/1.0.tar.gz
 	sha1sums = 2d3bf60215500cf8fb6f63a45ba3582d16ce85d2
-	sha1sums = 118514d7474006c9b98151403d3d7952b8a9cea6
 
 pkgname = opengrok
 
