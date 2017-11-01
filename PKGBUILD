@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-mysql'
-pkgver=0.7.1.0
+pkgver=0.7.1.1
 pkgrel=4
 pkgdesc="A distributed privacy aware social network (MySQL)"
 arch=('i686' 'x86_64')
@@ -55,14 +55,19 @@ build() {
   msg "Setup build directory"
   rm -rf $_builddir
   mkdir -p $_builddir
-  cp -Rf $srcdir/diaspora-0.7.1.0/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
+  cp -Rf $srcdir/diaspora-0.7.1.1/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
 
   cd $_builddir
 
   msg "Bundle dependencies"
   echo "gem: --no-rdoc --no-ri --no-user-install" > $_builddir/.gemrc
   HOME=$_builddir $_bundle config --local build.sigar '--with-cppflags="-fgnu89-inline"'
-  HOME=$_builddir $_bundle install --without development test --with mysql --deployment
+  HOME=$_builddir $_bundle config --local path vendor/bundle
+  HOME=$_builddir $_bundle config --local frozen 1
+  HOME=$_builddir $_bundle config --local disable_shared_gems true
+  HOME=$_builddir $_bundle config --local with mysql
+  HOME=$_builddir $_bundle config --local without development:test
+  HOME=$_builddir $_bundle install
 
   msg "Patch configuration examples"
   sed -i -e "s|#certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|" \
@@ -129,7 +134,7 @@ package() {
   ln -sf /var/log/diaspora                     $pkgdir/usr/share/webapps/diaspora/log
 }
 
-sha256sums=('6f0388a472be5c733a3c5345b404771dff14c05681ba96bfa0b166b2e082efef'
+sha256sums=('7cc1c8d5177b90e59b094c6d7fbccb40f6b9f3013f5db19badcd9faae54dd7ed'
             'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
             '2ac3ef6c4f0396b7738b18d07c56f57e0db5e5e194bf8b07ffd6ad790dd92e17'
             '7128024976c95d511d8995c472907fe0b8c36fe5b45fef57fc053e3fadcae408'
