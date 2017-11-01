@@ -1,7 +1,7 @@
 # Maintainer: Slashbunny <demodevil5[at]yahoo>
 
 pkgname=alertmanager-bin
-pkgver=0.4.2
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Alertmanager handles alerts sent by client applications such as the Prometheus server. It takes care of deduplicating, grouping, and routing them to the correct receiver integration (binary, not built from source)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ backup=('etc/alertmanager/alertmanager.yml')
 source=( 'alertmanager.service'
 "https://github.com/prometheus/alertmanager/releases/download/v${pkgver}/alertmanager-${pkgver}.linux-amd64.tar.gz")
 sha256sums=('1814c0af761906ef037971cafe32a3109b29df1c191583b77d0e6d0f63ec2ed7'
-            '8d04e3dc9955a0a3897d126c996b921cfd1dc80ff6ff982936ce8f703baa2eb8')
+            '407e0311689207b385fb1252f36d3c3119ae9a315e3eba205aaa69d576434ed7')
 
 package() {
     cd "${srcdir}/alertmanager-${pkgver}.linux-amd64/"
