@@ -1,6 +1,6 @@
 pkgname=mingw-w64-gtk2
 pkgver=2.24.31
-pkgrel=2
+pkgrel=3
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (mingw-w64)"
 arch=(any)
 url="http://www.gtk.org"
@@ -9,7 +9,8 @@ makedepends=(
   'mingw-w64-gcc'
   'mingw-w64-pkg-config'
   'mingw-w64-configure'
-  'gtk-update-icon-cache')
+  'gtk-update-icon-cache'
+  'python') # python is required to run glib-mkenums
 depends=(
   'mingw-w64-crt'
   'mingw-w64-atk>=1.29.2'
