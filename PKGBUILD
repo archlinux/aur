@@ -5,24 +5,18 @@
 # Contributor: Karsten Hinz <k.hinz at tu-bs dot de>
 
 pkgname=pycam
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Toolpath generator for 3-axis CNC machining, written in Python."
 arch=('i686' 'x86_64')
 url="http://pycam.sourceforge.net/"
 license=('GPL3')
 depends=('python2' 'pygtk' 'python2-opengl' 'python2-rsvg' 'python2-gtkglext')
-source=("https://github.com/SebKuzminsky/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz" 
-        "GLUTfix.patch"
+source=("https://github.com/SebKuzminsky/pycam/archive/v${pkgver}.tar.gz" 
         "${pkgname}")
-sha512sums=('962d6ba5b5790d244ac47684c2d67b791b91725a30c014a821925706e322b0cb43ce29b5b90b5e917e04151fdd5806916132ef8d9bfb3bd7fb854b558066827a'
-            '8d3a4610acad8a8f0dfcbcb62273f420f44b0db4c5e2c236eacbf49d5abd73394de3e302dfec1a6109160869513304274c74f784dc7f3c0fae505348868e90d5'
+sha512sums=('ff96a40aacf92ffd20e729912fc81177ffc01d688cfca300d31dd71399d91754dfbf5b864d95a88f938286e38c759c372968e53c29041653c85f446c6c9eca42'
             'fbb1b026dfa821caea352f44aa5eddb34fcb8ec87e27bf1390fb791b58733c011f5476203a5195bb1e737cd6194000c8ec30ac7444f638c2b70965071757c092')
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -R -p1 -i "${srcdir}/GLUTfix.patch"
-}
 
 package() {
   # Application
