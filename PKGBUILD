@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-mpv-git
-pkgver=3.5.r88195.g4a98362b2b
+pkgver=3.5.r88464.gd89410402a
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (modified for mpv, git version)'
 arch=('i686' 'x86_64')
@@ -17,12 +17,9 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libx264.so' 'libx265.so' 'libxvidcore.so')
 makedepends=('git' 'ladspa' 'nasm')
 optdepends=('ladspa: LADSPA filters')
-provides=('ffmpeg' 'qt-faststart' 'libavcodec.so' 'libavdevice.so' 'libavfilter.so'
-          'libavformat.so' 'libavresample.so' 'libavutil.so' 'libpostproc.so'
-          'libswresample.so' 'libswscale.so')
-conflicts=('ffmpeg' 'ffmpeg-git' 'ffmpeg-decklink' 'ffmpeg-libfdk_aac' 'ffmpeg-nvenc'
-           'ffmpeg-qsv-git' 'ffmpeg-full' 'ffmpeg-full-git' 'ffmpeg-full-nvenc'
-           'ffmpeg-semifull-git')
+provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+          'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
+          'libswscale.so')
 source=("$pkgname"::'git+https://github.com/mpv-player/ffmpeg-mpv.git')
 sha256sums=('SKIP')
 
@@ -41,6 +38,10 @@ build() {
     
     ./configure \
         --prefix='/usr' \
+        --incdir='/usr/include/ffmpeg-mpv-git' \
+        --libdir='/usr/lib/ffmpeg-mpv-git' \
+        --shlibdir='/usr/lib/ffmpeg-mpv-git' \
+        --enable-rpath \
         --disable-debug \
         --disable-static \
         --disable-stripping \
@@ -86,5 +87,10 @@ build() {
 package() {
     cd "$pkgname"
     make DESTDIR="$pkgdir" install
-    install -D -m755 tools/qt-faststart "${pkgdir}/usr/bin/qt-faststart"
+    rm -rf "${pkgdir}/usr/share"
+    
+    find "${pkgdir}/usr/bin" -type f -exec mv {} {}-mpv-git \;
+    
+    install -d -m755 "${pkgdir}/etc/ld.so.conf.d"
+    printf '%s\n%s\n' '/usr/lib/' '/usr/lib/ffmpeg-mpv-git/' > "${pkgdir}/etc/ld.so.conf.d/51-ffmpeg-mpv-git.conf"
 } 
