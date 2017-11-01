@@ -3,7 +3,7 @@
 
 pkgname=kompose-bin
 _srcname=kompose
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Takes a Docker Compose file and translates it into Kubernetes resources"
 url="http://kompose.io/"
