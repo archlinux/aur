@@ -1,26 +1,22 @@
-# Maintainer: Alistair Grant <akgrant0710 at gmail dot com>
-# Copied from iscan-plugin-gt-f720:
-# _Maintainer Muflone http://www.muflone.com/contacts/english/
-# _Contributor Ian Heafer <archlinux at studio oneword turnip dot net>
-# _Contributor Gianni Vialetto <g dot vialetto at gmail dot com>
-# _Contributor Brian Miller :
-# _Contributor Tom Kuther <gimpel@sonnenkinder.org>
-# _Contributor Andrew Kotsyuba <avallach2000@gmail.com>
-#
-# Note: This will probably also work for the V37, but is untested.
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Contributor: Alistair Grant <akgrant0710 at gmail dot com>
 
 pkgname=iscan-plugin-perfection-v370
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="EPSON Image Scan! plugin for Epson Perfection V370 scanner"
+pkgdesc="EPSON Image Scan! plugin for Epson scanners (GT-F740, GT-S640, Perfection V37, Perfection V370)"
 arch=('i686' 'x86_64')
-url="http://support.epson.net/linux/en/iscan.php?model=perfection-v370&version=1.0.0"
+url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:AVASYSPL')
 depends=('iscan' 'iscan-data')
-source_i686=("https://download2.ebz.epson.net/iscan/plugin/perfection-v370/deb/x86/iscan-perfection-v370-bundle-${pkgver}.x86.deb.tar.gz")
-source_x86_64=("https://download2.ebz.epson.net/iscan/plugin/perfection-v370/deb/x64/iscan-perfection-v370-bundle-${pkgver}.x64.deb.tar.gz")
-sha256sums_i686=('502b03830c28e13c2a653250c61c522b4bef236a460d2ada354537aa97abaa24')
-sha256sums_x86_64=('72e76642798abab25b935413b105f36c88474041e486d3216c861f584ced6f76')
+_plugin=${pkgname/iscan-plugin-/}
+_iscan_ver=${pkgver}
+_plugin_rel=2
+_file_ver=1.0.0
+source_i686=("https://download2.ebz.epson.net/iscan/plugin/${_plugin}/deb/x86/iscan-${_plugin}-bundle-${_iscan_ver}.x86.deb.tar.gz")
+source_x86_64=("https://download2.ebz.epson.net/iscan/plugin/${_plugin}/deb/x64/iscan-${_plugin}-bundle-${_iscan_ver}.x64.deb.tar.gz")
+sha256sums_i686=('f63d65d7d180bc445617ecd5579d55fd9f614291cac5f13548d3cec86384a064')
+sha256sums_x86_64=('3ecead560f50d991f3987a9a845393e9690c03d268ef87ea47a4f2a12cb23891')
 install="${pkgname}.install"
 
 if [ "$CARCH" = 'x86_64' ]
@@ -32,40 +28,31 @@ else
   _debarch=i386
 fi
 
-_bundle_name=iscan-perfection-v370-bundle-${pkgver}.${_filearch}.deb
-
 build() {
-  cd "${srcdir}/${_bundle_name}/core"
-  ar xf iscan_2.30.1-1~usb0.1.ltdl7_amd64.deb
+  cd "iscan-${_plugin}-bundle-${_iscan_ver}.${_filearch}.deb/plugins"
+  bsdtar -xf "iscan-plugin-${_plugin}_${_file_ver}-${_plugin_rel}_${_debarch}.deb"
   bsdtar -xf data.tar.gz
-
-  cd "${srcdir}/${_bundle_name}/plugins"
-  bsdtar -xf iscan-plugin-perfection-v370_1.0.0-2_${_debarch}.deb
-  bsdtar -xf data.tar.gz
-  gzip -fkd "usr/share/doc/iscan-plugin-perfection-v370/NEWS.gz"
+  gzip -fkd "usr/share/doc/${pkgname}/NEWS.gz"
 }
 
 package() {
-  cd "${srcdir}/${_bundle_name}/core"
-#  install -m 755 -d "${pkgdir}/etc/sane.d"
-#  install -m 644 -t "${pkgdir}/etc/sane.d" "etc/sane.d/epkowa.conf"
-
-  cd "${srcdir}/${_bundle_name}/plugins"
-  install -m 755 -d "${pkgdir}/usr/share/iscan"
-  install -m 644 -t "${pkgdir}/usr/share/iscan" "usr/share/iscan/esfwdd.bin"
-  install -m 755 -d "${pkgdir}/usr/share/iscan-data/device"
-  install -m 644 -t "${pkgdir}/usr/share/iscan-data/device" "usr/share/iscan-data/device/47542d46373430.xml"
-  install -m 644 -t "${pkgdir}/usr/share/iscan-data/device" "usr/share/iscan-data/device/47542d53363430.xml"
-
-  install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m 644 "usr/share/doc/${pkgname}/AVASYSPL.en.txt" "${pkgdir}/usr/share/licenses/${pkgname}/AVASYSPL"
-
-  install -m 755 -d "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "usr/share/doc/${pkgname}"/{NEWS,README}
-
+  cd "iscan-${_plugin}-bundle-${_iscan_ver}.${_filearch}.deb/plugins/usr"
+  # Install plugins
   install -m 755 -d "${pkgdir}/usr/lib/iscan"
-  install -m 644 -t "${pkgdir}/usr/lib/iscan" "usr/lib/iscan/libiscan-plugin-perfection-v370.so.0.0.0"
-  cd "${pkgdir}/usr/lib/iscan"
-  ln -s libiscan-plugin-perfection-v370.so.0.0.0 libiscan-plugin-perfection-v370.so
-  ln -s libiscan-plugin-perfection-v370.so.0.0.0 libiscan-plugin-perfection-v370.so.0
+  install -m 644 -t "${pkgdir}/usr/lib/iscan" "lib/iscan/lib${pkgname}.so.0.0.0"
+  ln -s "lib${pkgname}.so.0.0.0" "${pkgdir}/usr/lib/iscan/lib${pkgname}.so"
+  ln -s "lib${pkgname}.so.0.0.0" "${pkgdir}/usr/lib/iscan/lib${pkgname}.so.0"
+  # Install firmwares
+  install -m 755 -d "${pkgdir}/usr/share/iscan"
+  install -m 644 -t "${pkgdir}/usr/share/iscan" "share/iscan/esfwdd.bin"
+  # Install shared data
+  install -m 755 -d "${pkgdir}/usr/share/iscan-data/device"
+  install -m 644 -t "${pkgdir}/usr/share/iscan-data/device" "share/iscan-data/device/47542d46373430.xml"
+  install -m 644 -t "${pkgdir}/usr/share/iscan-data/device" "share/iscan-data/device/47542d53363430.xml"
+  # Install documentation
+  install -m 755 -d "${pkgdir}/usr/share/doc/${pkgname}"
+  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "share/doc/${pkgname}/NEWS"
+  # Install licenses
+  install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m 644 "share/doc/${pkgname}/AVASYSPL.en.txt" "${pkgdir}/usr/share/licenses/${pkgname}/AVASYSPL"
 }
