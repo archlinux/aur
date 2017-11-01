@@ -20,8 +20,6 @@ pkgver() {
 
 package_concurrent-queue-git() {
   pkgdesc="An industrial-strength lock-free queue for C++. (git version)"
-  depends=('libevent' 'google-glog' 'gtest' 'gflags' 'boost' 'boost-libs' 'thrift')
-  optdepends=('gtest' 'gflags' 'boost' 'boost-libs' 'thrift')
   provides=('concurrent-queue-git')
 
   install -m755 -d ${pkgdir}/usr/include/concurrentqueue/

@@ -13,17 +13,5 @@ pkgbase = concurrent-queue-git
 
 pkgname = concurrent-queue-git
 	pkgdesc = An industrial-strength lock-free queue for C++. (git version)
-	depends = libevent
-	depends = google-glog
-	depends = gtest
-	depends = gflags
-	depends = boost
-	depends = boost-libs
-	depends = thrift
-	optdepends = gtest
-	optdepends = gflags
-	optdepends = boost
-	optdepends = boost-libs
-	optdepends = thrift
 	provides = concurrent-queue-git
 
