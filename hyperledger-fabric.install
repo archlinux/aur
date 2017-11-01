@@ -1,18 +1,36 @@
+usr=hyperledger
+home=/var/hyperledger
+
 post_install() {
-   echo "Add this line to /etc/environment"
-   echo "	FABRIC_CFG_PATH=/etc/hyperledger/fabric"
-   echo "	CORE_PEER_MSPCONFIGPATH:=$FABRIC_CFG_PATH/msp"
-   echo "	CORE_LOGGING_LEVEL=DEBUG"
+  _mkuser
+  _chown
+  cryptogen generate > /dev/null
+  mv /crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/* /etc/hyperledger/fabric/tls
+  rm -rf /crypto-config
 }
 
-
 post_upgrade() {
-  post_install $1
+  _mkuser
+  _chown
 }
 
 post_remove() {
-   echo "Remove this line to /etc/environment"
-   echo "       export FABRIC_CFG_PATH=/etc/hyperledger/fabric/"
-   echo "       export CORE_PEER_MSPCONFIGPATH=$FABRIC_CFG_PATH/msp" 
-   echo "       export CORE_LOGGING_LEVEL=DEBUG"
+  echo "Please remove $home and user $usr manually doing"
+  echo "userdel -rf $usr"
+  echo "WARNING!!!"
+  echo "Be sure to save your backup data"
+  echo "/etc/hyperledger/fabric/tls should be deleted manually"
+}
+
+_chown() {
+  chown -R $usr:$usr $home
+}
+
+_mkuser() {
+  getent passwd $usr &>/dev/null || {
+    echo -n "Creating hyperledger user... "
+    grep -E "^hyperledger:" /etc/group >/dev/null || groupadd $usr
+    useradd -m -d $home -g $usr -s /usr/bin/nologin $usr 2>/dev/null
+    echo "done"
+  }
 }
