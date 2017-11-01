@@ -2,7 +2,7 @@
 
 
 pkgname=ys-git
-pkgver=v0.0.9.alpha.r128.g0f794f9 # calls `pkgver()` to replace this number (ver from git)
+pkgver=v0.0.9.alpha.r131.gca1b1de # calls `pkgver()` to replace this number (ver from git)
 pkgrel=1
 license=('GPL')
 pkgdesc="An interpreter for the YodaScirpt Language"
@@ -28,11 +28,9 @@ package() {
 
 	mkdir $pkgdir/usr/
 	mkdir $pkgdir/usr/bin/
-#	mkdir $pkgdir/usr/lib/
 
-	g++ *.cpp -Wall -Wextra -g -o $pkgdir/usr/bin/ys
-
-#	install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
+	g++ *.cpp -Wall -Wextra -g -o ys
+	install -D -m644 ys $pkgdir/usr/bin/ys
 
 }
 
