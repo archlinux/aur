@@ -7,13 +7,12 @@
 
 pkgname=iscan-plugin-gt-f720
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="EPSON Image Scan! plugin for Epson scanners (GT-F720, GT-S620, Perfection V30, Perfection V300 Photo)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:AVASYSPL')
 depends=('iscan')
-conflicts=('iscan-plugin-gt-x720')
 _plugin=${pkgname/iscan-plugin-/}
 _iscan_ver=1.0.0
 _plugin_rel=2
@@ -35,24 +34,25 @@ fi
 
 build() {
   cd "iscan-${_plugin}-bundle-${_iscan_ver}.${_filearch}.deb/plugins"
-  bsdtar -xf esci-interpreter-${_plugin}_${_file_ver}-${_plugin_rel}_${_debarch}.deb
+  bsdtar -xf "esci-interpreter-${_plugin}_${_file_ver}-${_plugin_rel}_${_debarch}.deb"
   bsdtar -xf data.tar.gz
   gzip -fkd "usr/share/doc/esci-interpreter-${_plugin}/NEWS.gz"
 }
 
 package() {
   cd "iscan-${_plugin}-bundle-${_iscan_ver}.${_filearch}.deb/plugins/usr"
+  # Install plugins
   install -m 755 -d "${pkgdir}/usr/lib/iscan"
-  install -m 644 -t "${pkgdir}/usr/lib/iscan" "lib/esci/libesci-interpreter-gt-f720.so.0.0.0"
-  ln -s libesci-interpreter-gt-f720.so.0.0.0 "${pkgdir}/usr/lib/iscan/libesci-interpreter-gt-f720.so"
-  ln -s libesci-interpreter-gt-f720.so.0.0.0 "${pkgdir}/usr/lib/iscan/libesci-interpreter-gt-f720.so.0"
-
+  install -m 644 -t "${pkgdir}/usr/lib/iscan" "lib/esci/libesci-interpreter-${_plugin}.so.0.0.0"
+  ln -s "libesci-interpreter-${_plugin}.so.0.0.0" "${pkgdir}/usr/lib/iscan/libesci-interpreter-${_plugin}.so"
+  ln -s "libesci-interpreter-${_plugin}.so.0.0.0" "${pkgdir}/usr/lib/iscan/libesci-interpreter-${_plugin}.so.0"
+  # Install firmwares
   install -m 755 -d "${pkgdir}/usr/share/esci"
   install -m 644 -t "${pkgdir}/usr/share/esci" "share/esci/esfw8b.bin"
-
+  # Install documentation
   install -m 755 -d "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "share/doc/esci-interpreter-gt-f720"/{NEWS,README}
-
+  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "share/doc/esci-interpreter-${_plugin}/NEWS"
+  # Install licenses
   install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m 644 "share/doc/esci-interpreter-gt-f720/AVASYSPL.en.txt" "${pkgdir}/usr/share/licenses/${pkgname}/AVASYSPL"
 }

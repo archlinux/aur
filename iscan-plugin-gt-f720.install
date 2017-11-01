@@ -1,12 +1,12 @@
 post_install() {
-  echo "Running iscan-registry to register plugins and firmware with iscan"
+  echo "Registering iscan plugins and firmwares"
   iscan-registry --add interpreter usb 0x04b8 0x0131 \
     /usr/lib/iscan/libesci-interpreter-gt-f720 \
     /usr/share/esci/esfw8b.bin 
 }
 
 pre_remove() {
-  echo "Unregistering gt-x700 plugins/firmware"
+  echo "Unregistering iscan plugins and firmwares"
   iscan-registry --remove interpreter usb 0x04b8 0x0131 \
     /usr/lib/iscan/libesci-interpreter-gt-f720 \
     /usr/share/esci/esfw8b.bin 
