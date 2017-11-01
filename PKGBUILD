@@ -1,7 +1,7 @@
 # Maintainer: Tomas Kral <tomas.kral@gmail.com>
 
 pkgname=minishift-bin
-minishift_version=1.7.0
+minishift_version=1.8.0
 pkgver=${minishift_version//-/_}
 pkgrel=2
 pkgdesc="Tool that makes it easy to run OpenShift locally."
