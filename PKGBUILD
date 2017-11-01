@@ -8,9 +8,9 @@
 # http://bitcoin-otc.com/viewgpg.php?nick=ThomasV
 #
 
-pkgname='electron-cash-git'
-pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=2.9.3.r29.gcd7042fc
+pkgname=electron-cash-git
+pkgdesc="Lightweight Bitcoin Cash wallet"
+pkgver=2.9.3.r49.gf0de53e9
 pkgrel=1
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
@@ -31,12 +31,12 @@ depends=(
   'python2-pbkdf2'
   'python2-protobuf'
   'python2-pyaes'
-  'python2-pyqt4'
+  'python2-qtpy'
   'python2-pysocks'
   'python2-qrcode'
   'python2-requests'
   'python2-six'
-  'qt4')
+  'qt5-base')
 optdepends=(
   'desktop-file-utils: update desktop icon'
   'gtk-update-icon-cache: update desktop icon'
@@ -66,7 +66,7 @@ build() {
   cd ${pkgname/-git/}
 
   msg2 'Compiling icons...'
-  pyrcc4 icons.qrc -o gui/qt/icons_rc.py
+  python2-pyrcc5 icons.qrc -o gui/qt/icons_rc.py
 
   msg2 'Compiling protobuf description file...'
   protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
