@@ -1,0 +1,12 @@
+diff -Naur usr.orig/share/html2pdf/html2pdf.py usr/share/html2pdf/html2pdf.py
+--- usr.orig/share/html2pdf/html2pdf.py	2010-01-19 18:26:38.000000000 +0100
++++ usr/share/html2pdf/html2pdf.py	2017-11-01 22:00:38.850860399 +0100
+@@ -27,7 +27,7 @@
+ import urllib
+ import commands
+ 
+-
++APP = "HTML to PDF Converter"
+ DISTRO = commands.getoutput("lsb_release -is")
+ 
+ from subprocess import Popen, PIPE

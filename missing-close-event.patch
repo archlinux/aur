@@ -1,0 +1,23 @@
+diff -Naur usr.orig/share/html2pdf/html2pdf.py usr/share/html2pdf/html2pdf.py
+--- usr.orig/share/html2pdf/html2pdf.py	2010-01-19 18:26:38.000000000 +0100
++++ usr/share/html2pdf/html2pdf.py	2017-11-01 22:00:38.850860399 +0100
+@@ -72,7 +72,7 @@
+ 		self.glade.get_widget("combobox2").set_active(1)
+ 		self.window.show()
+ 
+-    def on_close(self, widget):
++    def on_close(self, widget, event=None):
+ 		gtk.main_quit()
+ 		sys.exit(0)
+ 
+diff -Naur usr.orig/share/html2pdf/ui.glade usr/share/html2pdf/ui.glade
+--- usr.orig/share/html2pdf/ui.glade	2010-01-19 17:49:16.000000000 +0100
++++ usr/share/html2pdf/ui.glade	2017-11-01 22:01:05.460789677 +0100
+@@ -8,6 +8,7 @@
+     <property name="resizable">False</property>
+     <property name="window_position">center</property>
+     <property name="icon">html2pdf.png</property>
++    <signal name="delete_event" handler="on_close"/>
+     <child>
+       <widget class="GtkVBox" id="vbox12">
+         <property name="visible">True</property>
