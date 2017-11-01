@@ -1,0 +1,20 @@
+pkgbase = dhcpcanon
+	pkgdesc = DHCP client disclosing less identifying information
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://dhcpcanon.readthedocs.io
+	arch = any
+	license = MIT
+	depends = python-setuptools
+	depends = python-attrs
+	depends = python-dbus
+	depends = python-netaddr
+	depends = python-lockfile
+	depends = python-pyroute2
+	depends = scapy
+	depends = scapy3k
+	source = dhcpcanon-0.8.0.tar.gz::https://github.com/juga0/dhcpcanon/archive/v0.8.0.tar.gz
+	sha512sums = 44b08c861e7195da6ac04fb2fbfc0bca47aef1462bc46ddfb857048289817af0a09d1fe5171528d050dd3d3d78e7b7c8d63b9743051e7da7fa14859d9b632673
+
+pkgname = dhcpcanon
+
