@@ -257,3 +257,28 @@ version 5.0.1
 version 5.0.2
 -- add support for unlocking ecryptfs volumes in zuluMount-gui(ecryptfs-simple tool must already be installed)
 -- fix permission related problems in configuration files when running in mixed mode.
+
+version 5.1.0
+-- make it possible to unlock folder based encrypted volumes when running in mixed mode.
+-- add ability in zuluCrypt-gui to unlock VeraCrypt volumes that use PIM value.
+-- add ability in zuluCrypt-gui to unlock plain dm-crypt volumes that uses an offset.
+-- add ability in zuluCrypt-gui to create plain dm-crypt volumes using user configurable crypto options.
+-- add ability in zuluCrypt-gui to unlock plain dm-crypt volumes using user configurable crypto options.
+-- add ability in zuluCrypt-gui to backup and restore VeraCrypt headers.
+-- add ability in zuluCrypt-gui to change VeraCrypt volume key.
+-- add ability in zuluCrypt-gui to create a VeraCrypt volume that uses a PIM value.
+-- add ability in zuluMount-gui to unlock folder based encrypted volumes when running in mixed mode.
+
+version 5.2.0
+-- add ability to select a file manager to use to open mount points. A file manager can be set through
+   zuluCrypt-gui->menu->options->set file manager.
+-- dont run zuluCrypt-gui and zuluMount-gui from root's account when running in mixed mode.
+-- add arabic translation.
+
+version 5.3.0
+-- fix a build time error when build with certain new compilers and a runtime crush when build with other newer compilers.
+-- add more support for wayland sessions by not requiring GUI to run from root's account to perform some operations.
+-- add support for creating LUKS2 volumes(libcryptsetup >=2.0.0 is required)
+-- add support for unlocking of TrueCrypt and VeraCrypt volumes without mounting their file system.
+   -- unlocking of a TrueCrypt volume is done by command: zuluCrypt-cli -O -d /dev/sdXX -t tcrypt
+   -- unlocking of a VeraCrypt volume is done by command: zuluCrypt-cli -O -d /dev/sdXX -t vcrypt
