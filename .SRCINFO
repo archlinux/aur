@@ -6,6 +6,10 @@ pkgbase = aws-lanes
 	arch = x86_64
 	license = BSD
 	options = !strip
+	source = https://github.com/codekoala/go-aws-lanes/releases/download/v0.3.0/lanes_linux_amd64
+	source = https://github.com/codekoala/go-aws-lanes/raw/v0.3.0/LICENSE
+	sha256sums = 48577fa3038e16595cd2945c7bc7ef9d56edc0e6da96c038e5dc294fadda12a0
+	sha256sums = cf03ea3ea781a1e6291c16bebe5424b122dc0a996b4807f9f9c5909838909613
 
 pkgname = aws-lanes
 
