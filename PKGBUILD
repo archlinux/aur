@@ -9,7 +9,7 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=20171011
+pkgver=r1193.4930cafe
 pkgrel=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=('any')
@@ -134,7 +134,8 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd fonts
-    git log -1 --format="%cd" --date=short | sed 's|-||g'
+
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
