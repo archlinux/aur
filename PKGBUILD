@@ -9,7 +9,7 @@ url="https://github.com/01org/tpm2.0-tools"
 license=('BSD')
 makedepends=('git' 'autoconf-archive')
 depends=('tpm2-abrmd')
-source=("$pkgname::git+https://github.com/01org/tpm2.0-tools.git#tag=$pkgver")
+source=("$pkgname::git+https://github.com/01org/tpm2-tools.git#tag=$pkgver")
 md5sums=('SKIP')
 
 build() {
