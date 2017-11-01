@@ -6,8 +6,8 @@ pkgbase = fastq_screen
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	provides = fastq-screen
-	conflicts = fastq-screen
+	provides = fastq_screen
+	conflicts = fastq_screen
 	source = http://www.bioinformatics.babraham.ac.uk/projects/fastq_screen/fastq_screen_v0.11.1.tar.gz
 	md5sums = 814d13dc44208e98d2053a691556e245
 
