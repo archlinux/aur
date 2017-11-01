@@ -17,7 +17,7 @@ arch=('any')
 url="https://pypi.python.org/packages/5a/59/466fca95804e60a4ad0cf34de70e92fd57e6a711d09fbf1f0f8d00f833de/TreeCorr-3.3.7.tar.gz#md5=54bdf201d7e8a52b5fa9ea5e1ff1d101"
 license=('BSD')
 groups=()
-depends=('python' 'python-numpy' 'python-future' 'python-aspy-yaml' 'python-fitsio' 'python-cffi')
+depends=('python' 'python-numpy' 'python-future' 'python-yaml' 'python-fitsio-git' 'python-cffi')
 makedepends=('git')
 checkdepends=()
 optdepends=()

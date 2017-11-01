@@ -9,8 +9,8 @@ pkgbase = python-treecorr
 	depends = python
 	depends = python-numpy
 	depends = python-future
-	depends = python-aspy-yaml
-	depends = python-fitsio
+	depends = python-yaml
+	depends = python-fitsio-git
 	depends = python-cffi
 	source = https://pypi.python.org/packages/5a/59/466fca95804e60a4ad0cf34de70e92fd57e6a711d09fbf1f0f8d00f833de/TreeCorr-3.3.7.tar.gz#md5=54bdf201d7e8a52b5fa9ea5e1ff1d101
 	md5sums = 54bdf201d7e8a52b5fa9ea5e1ff1d101
