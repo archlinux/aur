@@ -17,7 +17,7 @@ optdepends=(
 )
 
 source=(https://github.com/minishift/minishift/releases/download/v${minishift_version}/minishift-${minishift_version}-linux-amd64.tgz)
-sha256sums=('db3505732a16bd3415c305120f874e3097db2f1ce111e5cd1259d44bd5c5aefa')
+sha256sums=('292f9ea199a2cb589e0c6923b913e4471a3b2732bdaefe552e8b16ab75631842')
 
 prepare() {
     tar -xf minishift-${minishift_version}-linux-amd64.tgz
