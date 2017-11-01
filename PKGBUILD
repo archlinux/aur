@@ -2,7 +2,7 @@
 
 pkgname=signal-desktop-bin
 pkgver=1.0.34
-pkgrel=2
+pkgrel=3
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
 url='https://github.com/WhisperSystems/Signal-Desktop'
@@ -31,5 +31,5 @@ package() {
   mv usr "${pkgdir}"
     
   mkdir "${pkgdir}/usr/bin"
-  mv signal-desktop "${pkgdir}/usr/bin/"
+  install -D -m755 signal-desktop "${pkgdir}/usr/bin/signal-desktop"
 }
