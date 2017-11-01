@@ -1,7 +1,7 @@
 # Maintainer: Hexchain Tong <i at hexchain dot org>
 
 pkgname=tpm2-tools
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="TPM (Trusted Platform Module) 2.0 tools based on TPM2.0-TSS"
 arch=('i686' 'x86_64')
