@@ -1,18 +1,17 @@
 
 post_install() {
-    echo ""
-    echo "ZSH: For the use of module-cmd in a none-login Z-shell enviroment"
-    echo "the following entry should be added to the zshrc "
-    echo "(or zshenv if the module-cmd should be available in shell-scripts)"
-    echo ""
-    echo "  (( \${+functions[module]} )) || source /etc/modules-tcl/init/zsh"
-    echo ""
-    echo "Adapt /etc/modules-tcl/init/modulerc and add your modulefiles to the specified directories."
-    echo ""
+    echo "    "
+	echo "    ZSH: For the use of module-cmd in a none-login Z-shell enviroment"
+	echo "    the following entry should be added to the zshrc "
+	echo "    (or zshenv if the module-cmd should be available in shell-scripts)"
+	echo "    "
+	echo "      (( \${+functions[module]} )) || source /etc/modules/init/zsh"
+	echo "    "
+	echo "    Adapt /etc/modules/init/modulerc and add your modulefiles to the specified directories."
+	echo "    "
 }
 
 post_upgrade() {
     post_install
 }
-
 

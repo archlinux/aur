@@ -1,54 +1,94 @@
---- modules-tcl-1.832/init/zsh.in	2017-04-29 08:23:22.000000000 +0200
-+++ modules-tcl-1.832-patched/init/zsh.in	2017-05-07 18:41:21.812267826 +0200
-@@ -83,3 +83,51 @@
- if [ -r @initdir@/modulerc -a "$MODULEPATH" = '' -a "$LOADEDMODULES" = '' ]; then
-    source @initdir@/modulerc
- fi
-+
-+# zsh-completion function, improves the standard zsh-completion (_module):
-+#  - support for symlinks
+diff -aur modules-4.0.0/init/zsh-functions/_module modules-4.0.0-patched/init/zsh-functions/_module
+--- modules-4.0.0/init/zsh-functions/_module	2017-10-16 06:49:58.000000000 +0200
++++ modules-4.0.0-patched/init/zsh-functions/_module	2017-11-01 17:58:13.771039301 +0100
+@@ -4,17 +4,35 @@
+ # Zsh command-line completion for module
+ # Copyright (C) 2017 Xavier Delaruelle <xavier.delaruelle@cea.fr>
+ #
++# patched version:
 +#  - directory-wise completion
++#
+ 
+-_module_avail() {
+-   module avail -t 2>&1 | sed '
+-      /^-\+/d; /^\s*$/d;
+-      /->.*$/d;
+-      /:$/d;
+-      /:ERROR:/d;
+-      s#^\(.*\)/\(.\+\)(.*default.*)#\1\n\1\/\2#;
+-      s#(.*)$##g;
+-      s#\s*$##g;
+-      s#/*$##g;'
 +function _module_completion () {
-+    emulate -L zsh
-+    local _module_path_prefix
-+    local -a _module_search_path _module_type_d _module_type_f
-+    _module_path_prefix=$(echo ${(q)words[$CURRENT]} | sed -ne 's#\(.*/\).*#\1#p')
-+    _module_search_paths=(${^${(@s/:/)MODULEPATH}}/$_module_path_prefix)
++   emulate -L zsh
++   local _module_path_prefix
++   local -a _module_search_path _module_type_d _module_type_f
++   _module_path_prefix=$(echo ${(q)words[$CURRENT]} | sed -ne 's#\(.*/\).*#\1#p')
++   _module_search_paths=(${^${(@s/:/)MODULEPATH}}/$_module_path_prefix)
 +
-+    _module_type_d=()
-+    _module_type_f=()
-+    eval $(find $_module_search_paths -mindepth 1 -maxdepth 1 -not -name '.modulerc' -not -name '.version' -printf "_module_type_%Y+=${(q)_module_path_prefix}%P\n" 2> /dev/null)
++   _module_type_d=()
++   _module_type_f=()
++   eval $(find $_module_search_paths -mindepth 1 -maxdepth 1 -not -name '.modulerc' -not -name '.version' -printf "_module_type_%Y+=${(q)_module_path_prefix}%P\n" 2> /dev/null)
 +
-+    if [[ "$@" != "dir" ]]; then
-+        compadd -q -S / ${_module_type_d}
-+        compadd ${_module_type_f}
-+    else
-+        compadd ${_module_type_d}
-+    fi
-+}
-+
-+# module avail should only complete directories
-+function _module_avail {
++   case "$@" in
++      dir)
++         compadd ${_module_type_d}
++         ;;
++      notloaded)
++         local -a _modules_loaded=(${=LOADEDMODULES//:/})
++         compadd -q -S / ${_module_type_d}
++         compadd ${_module_type_f:|_modules_loaded}
++         ;;
++      *)
++         compadd -q -S / ${_module_type_d}
++         compadd ${_module_type_f}
++         ;;
++   esac
+ }
+ 
+ _module_savelist() {
+@@ -24,18 +42,15 @@
+       /:ERROR:/d;'
+ }
+ 
+-_module_not_yet_loaded() {
+-   _module_avail | sort | sed -r "\%^(${LOADEDMODULES//:/|})$%d"
+-}
+-
+-
+ _module_avail_mods() {
+-   local -a avail_mods;
+-   avail_mods=(${$(_module_avail)})
 +    _module_completion dir
 +}
+ 
+-   _describe -t avail-mods 'available modulefiles' avail_mods && ret=0
++_module_all_mods() {
++    _module_completion
+ }
+ 
 +
-+# all the other use the full completion:
-+local -a _module_complete_functions=( \
-+        _module_help \
-+        _module_load \
-+        _module_switch \
-+        _module_display \
-+        _module_whatis \
-+        _module_initadd \
-+        _module_initprepend \
-+        _module_initrm \
-+        _module_initswitch \
-+)
-+
-+for _module_complete_function in $_module_complete_functions ; do
-+    $_module_complete_function () {
-+        _module_completion
-+    }
-+done
-+
-+# vim: syntax=zsh
+ _module_saved_colls() {
+    local -a saved_colls;
+    saved_colls=(${$(_module_savelist)})
+@@ -44,10 +59,8 @@
+ }
+ 
+ _module_notloaded_mods() {
+-   local -a not_yet_loaded_mods;
+-   not_yet_loaded_mods=(${$(_module_not_yet_loaded)})
++   _module_completion notloaded
+ 
+-   _describe -t avail-mods 'available modulefiles' not_yet_loaded_mods && ret=0
+ }
+ 
+ _module_loaded_mods() {
+@@ -169,7 +182,7 @@
+                   '*:modulepath:_files -/' && ret=0
+                ;;
+             (display|help|show|test|whatis)
+-               _alternative 'avail-mods:modulefiles:{_module_avail_mods}' \
++               _alternative 'avail-mods:modulefiles:{_module_all_mods}' \
+                   && ret=0
+                ;;
+          esac

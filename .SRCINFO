@@ -1,7 +1,7 @@
 pkgbase = env-modules-tcl
-	pkgdesc = Provides for an easy dynamic modification of a user's environment via modulefile (tcl-only-version).
-	pkgver = 1.832
-	pkgrel = 5
+	pkgdesc = Provides for an easy dynamic modification of a user's environment via modulefile.
+	pkgver = 4.0.0
+	pkgrel = 0
 	url = https://sourceforge.net/projects/modules/
 	install = env-modules-tcl.install
 	arch = i686
@@ -9,11 +9,13 @@ pkgbase = env-modules-tcl
 	license = GPLv2
 	checkdepends = dejagnu
 	depends = tcl>=7.4
-	backup = etc/modules-tcl/init/modulerc
-	source = https://sourceforge.net/projects/modules/files/Modules-Tcl/modules-tcl-1.832.tar.gz
+	conflicts = env-modules
+	replaces = env-modules
+	backup = etc/modules/init/modulerc
+	source = https://sourceforge.net/projects/modules/files/Modules/modules-4.0.0/modules-4.0.0.tar.gz
 	source = zshcomp.patch
-	md5sums = 3a40bf6177cc438481672ce028544828
-	md5sums = 2e1bee23178b74872fd1c78c1cac8053
+	md5sums = 454dba418b1556d2fd5de753fbbabe0b
+	md5sums = 2c6c0e8095d624da825e9a2938de0582
 
 pkgname = env-modules-tcl
 
