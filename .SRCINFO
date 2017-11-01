@@ -1,0 +1,13 @@
+pkgbase = python2-treecorr
+	pkgdesc = A package for efficiently computing 2-point and 3-point correlation functions
+	pkgver = 3.3.7
+	pkgrel = 1
+	url = https://pypi.python.org/packages/5a/59/466fca95804e60a4ad0cf34de70e92fd57e6a711d09fbf1f0f8d00f833de/TreeCorr-3.3.7.tar.gz#md5=54bdf201d7e8a52b5fa9ea5e1ff1d101
+	arch = x86_64
+	makedepends = git
+	depends = python2
+	source = https://pypi.python.org/packages/5a/59/466fca95804e60a4ad0cf34de70e92fd57e6a711d09fbf1f0f8d00f833de/TreeCorr-3.3.7.tar.gz#md5=54bdf201d7e8a52b5fa9ea5e1ff1d101
+	md5sums = 54bdf201d7e8a52b5fa9ea5e1ff1d101
+
+pkgname = python2-treecorr
+
