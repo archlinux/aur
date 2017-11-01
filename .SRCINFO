@@ -1,14 +1,16 @@
 pkgbase = bcpkix
 	pkgdesc = Java cryptography APIs (Bouncy Castle) package for PKIX/CMS/EAC/DVCS/PKCS/TSP/OPENSSL
 	pkgver = 1.56
-	pkgrel = 1
-	url = http://www.bouncycastle.org/java.html
+	pkgrel = 2
+	url = https://www.bouncycastle.org/java.html
 	arch = any
 	license = custom
-	makedepends = java-environment
 	depends = bcprov
-	source = http://www.bouncycastle.org/download/bcpkix-jdk15on-156.tar.gz
-	sha256sums = e08efc60e34d58ecdefedfd66b1a4981ff1407ada86d36bbbf8b9cc2b27fed09
+	noextract = bcpkix-jdk15on-156.jar
+	source = https://www.bouncycastle.org/download/bcpkix-jdk15on-156.jar
+	source = LICENSE.html
+	sha256sums = 7043dee4e9e7175e93e0b36f45b1ec1ecb893c5f755667e8b916eb8dd201c6ca
+	sha256sums = e9bb81d9c9486a5de0d1facd674e761b46cc421ddd31bbd2b100871a8bea2ed6
 
 pkgname = bcpkix
 
