@@ -1,6 +1,6 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=python-plotpot
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 epoch=
 pkgdesc="A python module for plotting potentiostat data"
