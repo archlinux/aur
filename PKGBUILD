@@ -4,8 +4,13 @@ pkgdesc='Speech recognition research toolkit'
 pkgver=5.2.r7627.323100178
 pkgrel=1
 makedepends=('git' 'wget' 'python' 'python2' 'subversion' 'gcc6')
-depends=('kaldi-openfst' 'openblas-lapack')
-optdepends=('cuda: For GPU support')
+depends=('python2' 'kaldi-openfst' 'openblas-lapack' 'sed')
+optdepends=('cuda: For GPU support'
+	'kaldi-irstlm'
+	'kaldi-kaldi_lm'
+	'kaldi-sctk'
+	'kaldi-sph2pipe'
+	)
 arch=('x86_64' 'i686')
 url='https://github.com/kaldi-asr/kaldi'
 license=('APACHE')
