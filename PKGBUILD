@@ -1,11 +1,11 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=pmsg
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc='Prompt notifications at certain intervals'
 arch=('any')
-url='http://github.com/xyproto/pmsg'
+url='https://github.com/xyproto/pmsg'
 license=('GPL2')
 optdepends=('zsh: for zsh support'
             'bash: for bash support'
