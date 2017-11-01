@@ -3,18 +3,18 @@
 
 _projname=ArchMap
 pkgname=archmap-git
-pkgver=0.3.r39.g09c5587
-pkgrel=1
+pkgver=0.4.r2.g819a0c4
+pkgrel=2
 
 provides=('archmap')
 conflicts=('archmap')
 
 pkgdesc="Generates a map of Arch Linux users"
 arch=('any')
-url="https://github.com/maelstrom59/ArchMap"
+url="https://github.com/guyfawcus/ArchMap/"
 license=('custom:UNLICENSE')
 
-depends=('python-geojson' 'python-simplekml')
+depends=('python-geojson' 'python-simplekml' 'python-beautifulsoup4')
 makedepends=('git' 'python-sphinx')
 
 install=archmap-git.install
