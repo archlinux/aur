@@ -7,7 +7,7 @@
 
 pkgbase=pyside2-git
 pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
-pkgver=2.0.0.r2151.4ec9cfa3
+pkgver=2.0.0.r5308.25f899e2
 _upver=2.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -32,13 +32,13 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$pkgbase"
-    patch -Np1 -i "$srcdir/sphinx-build2.patch"
-    patch -Np1 -i "$srcdir/fix-module-name.patch"
+    #patch -Np1 -i "$srcdir/sphinx-build2.patch"
+    #patch -Np1 -i "$srcdir/fix-module-name.patch"
 }
 
 build(){
     # Build for python2.
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir"/$pkgbase/sources/pyside2
     mkdir -p build-py2 && cd build-py2
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
              -DCMAKE_BUILD_TYPE=Release \
@@ -48,7 +48,7 @@ build(){
     make
 
     # Build for python3.
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir"/$pkgbase/sources/pyside2
     mkdir -p build-py3 && cd build-py3
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
              -DCMAKE_BUILD_TYPE=Release \
