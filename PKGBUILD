@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://www.linux-apps.com/p/1175480/"
 license=('GPL')
 
-source=("https://dl.opendesktop.org/api/files/download/id/1502985503/ocsstore-2.2.0-1-x86_64.pkg.tar.xz")
+source=("https://dl.opendesktop.org/api/files/download/id/1506729906/ocsstore-$pkgver-$pkgrel-x86_64.pkg.tar.xz")
 md5sums=('SKIP')
 
 package() {
