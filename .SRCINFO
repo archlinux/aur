@@ -1,5 +1,5 @@
 pkgbase = python-fitsio-git
-	pkgdesc = Python interface to gbdes pixel map (astrometry) solutions
+	pkgdesc = A python library to read from and write to FITS files.
 	pkgver = r639.844055b
 	pkgrel = 1
 	url = https://github.com/esheldon/fitsio

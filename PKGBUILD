@@ -10,7 +10,7 @@ pkgver=r639.844055b
 pkgrel=1
 #epoch=
 
-pkgdesc=" Python interface to gbdes pixel map (astrometry) solutions "
+pkgdesc=" A python library to read from and write to FITS files. "
 
 
 arch=('any')
