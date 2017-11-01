@@ -2,32 +2,25 @@
 # Debian Upstream Maintainer: IOhannes m zmölnig <umlaeute at debian.org>
 
 pkgname=pd-lua-git
-pkgver=24.be30ba0
-pkgrel=3
+pkgver=29.f5703f5
+pkgrel=1
 pkgdesc="Lua bindings for Pd"
 arch=("i686" "x86_64")
 license=('GPL')
 url="http://download.puredata.info/pdlua"
-# pd-lua currently needs Lua 5.2, 5.3 will *not* work at all
-depends=('pd' 'lua52')
+depends=('pd' 'lua')
 makedepends=('pkg-config')
-source=("git+https://anonscm.debian.org/git/pkg-multimedia/pd-lua.git" "nwjs-support.diff" "lexpr-lua52-fix.diff")
-md5sums=('SKIP' 'a8c9cfbf97479101f517b1856c7b0541' '0bf0b8c32a51cb419153dae67f2e0fbc')
+source=("git+https://github.com/agraef/pd-lua.git")
+md5sums=('SKIP')
 
 pkgver() {
     cd $srcdir/pd-lua
     echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare() {
-    cd $srcdir/pd-lua
-    patch -p1 < ../nwjs-support.diff
-    patch -p1 < ../lexpr-lua52-fix.diff
-}
-
 build() {
      cd $srcdir/pd-lua
-     make LUA_CFLAGS="$(pkg-config --cflags lua52 pd)" LUA_LIBS="$(pkg-config --libs lua52 pd)"
+     make LUA_CFLAGS="$(pkg-config --cflags lua pd)" LUA_LIBS="$(pkg-config --libs lua pd)"
 }
 
 package() {
