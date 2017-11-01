@@ -1,5 +1,5 @@
 post_install() {
-  echo "Running iscan-registry to register plugins and firmware with iscan"
+  echo "Registering iscan plugins and firmwares"
   for id in 0x013c 0x013d; do
     iscan-registry --add interpreter usb 0x04b8 $id \
       /usr/lib/iscan/libiscan-plugin-gt-s650 \
@@ -8,7 +8,7 @@ post_install() {
 }
 
 pre_remove() {
-  echo "Unregistering gt-x700 plugins/firmware"
+  echo "Unregistering iscan plugins and firmwares"
   for id in 0x013c 0x013d; do
     iscan-registry --remove interpreter usb 0x04b8 $id \
       /usr/lib/iscan/libiscan-plugin-gt-s650
