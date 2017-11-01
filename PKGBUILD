@@ -2,7 +2,7 @@
 # Contributor: Daniel Mensinger daniel@mensinger-ka.de
 
 pkgname=libopenglrecorder-git
-pkgver=r15.b64bd45
+pkgver=r22.c398376
 pkgrel=1
 pkgdesc="A library allowing optional async readback OpenGL frame buffer with optional audio recording"
 arch=('i686' 'x86_64')
@@ -13,8 +13,9 @@ depends=('libjpeg-turbo' 'libvpx' 'openh264' 'libpulse')
 makedepends=('git' 'cmake' 'make')
 optdepends=()
 provides=('libopenglrecorder')
+conflicts=('libopenglrecorder')
 install=
-source=("${pkgname}::git+https://github.com/Benau/libopenglrecorder.git")
+source=("git+https://github.com/Benau/libopenglrecorder.git")
 sha256sums=('SKIP')
 
 pkgver() {

@@ -1,6 +1,6 @@
 pkgbase = libopenglrecorder-git
 	pkgdesc = A library allowing optional async readback OpenGL frame buffer with optional audio recording
-	pkgver = r15.b64bd45
+	pkgver = r22.c398376
 	pkgrel = 1
 	url = https://github.com/Benau/libopenglrecorder
 	arch = i686
@@ -14,7 +14,8 @@ pkgbase = libopenglrecorder-git
 	depends = openh264
 	depends = libpulse
 	provides = libopenglrecorder
-	source = libopenglrecorder-git::git+https://github.com/Benau/libopenglrecorder.git
+	conflicts = libopenglrecorder
+	source = git+https://github.com/Benau/libopenglrecorder.git
 	sha256sums = SKIP
 
 pkgname = libopenglrecorder-git
