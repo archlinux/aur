@@ -1,6 +1,6 @@
 pkgbase = szsol-git
 	pkgdesc = ncurses clone of Shenzhen Solitaire card game
-	pkgver = r37.5b4c757
+	pkgver = r39.1c5872a
 	pkgrel = 1
 	url = https://github.com/usrshare/szsol
 	arch = any
