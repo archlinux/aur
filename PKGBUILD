@@ -13,7 +13,7 @@ conflicts=('cwallpaper-fltk')
 makedepends=('autoconf' 'automake')
 install=$pkgname.install
 #source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
-source=(http://crux.ster.zone/distfiles/cwallpaper-$pkgver.tar.gz
+source=(http://crux.ster.zone/distfiles/$pkgname-$pkgver.tar.gz
         bsetrootconfig feh_config hsetconfig)
 md5sums=('85ca1399e8960097cbb6580dceb47163'
          '707ddfe918170b2e9ac05c7be8d35cd2'
