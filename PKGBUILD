@@ -4,12 +4,12 @@
 
 pkgname=python-pyfits
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A python language interface to FITS formatted data files"
 url="http://www.stsci.edu/resources/software_hardware/pyfits"
 license=('BSD')
 arch=('i686' 'x86_64')
-source=("http://pypi.python.org/packages/source/p/pyfits/pyfits-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/p/pyfits/pyfits-${pkgver}.tar.gz")
 md5sums=('ae38c61ed5574f29cfd202bfe3091fd9')
 
 depends=('python>=3.1' 'python-numpy')
