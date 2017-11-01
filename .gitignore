@@ -12,3 +12,5 @@ src/
 pkg/
 */
 *.log
+*.sw*
+*.zip
