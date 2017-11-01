@@ -1,0 +1,32 @@
+# Maintainer: Jose Rafael Castillo Huggins <jrch2k10@gmail.com>
+# Contributor: Jose Rafael Castillo Huggins <jrch2k10@gmail.com>
+
+pkgbase=concurrentqueue-git
+pkgname=('concurrentqueue-git')
+pkgdesc="concurrentqueue trunk (git version)"
+pkgver=127.7b69a8f
+pkgrel=1
+arch=('i686' 'x86_64')
+url="https://github.com/cameron314/concurrentqueue"
+license=('BSD')
+source=('concurrentqueue-git::git+https://github.com/cameron314/concurrentqueue.git')
+options=('!libtool' '!debug')
+md5sums=('SKIP')
+
+pkgver() {
+  cd ${srcdir}/concurrentqueue-git
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package_concurrentqueue-git() {
+  pkgdesc="An industrial-strength lock-free queue for C++. (git version)"
+  depends=('libevent' 'google-glog' 'gtest' 'gflags' 'boost' 'boost-libs' 'thrift')
+  optdepends=('gtest' 'gflags' 'boost' 'boost-libs' 'thrift')
+  provides=('concurrentqueue-git')
+
+  install -m755 -d ${pkgdir}/usr/include/concurrentqueue/
+  mv -v ${srcdir}/concurrentqueue-git/*.h ${pkgdir}/usr/include/concurrentqueue/
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/concurrentqueue-git"
+  install -m644 "${srcdir}/concurrentqueue-git/LICENSE.md" "${pkgdir}/usr/share/licenses/concurrentqueue-git/"
+}
