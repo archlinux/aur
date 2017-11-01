@@ -1,7 +1,7 @@
 #Maintainer: "Yannick LM <yannicklm1337 AT gmail DOT com>"
 
 pkgname=pycp
-pkgver="8.0.3"
+pkgver="8.0.4"
 pkgrel=1
 pkgdesc="cp and mv with a progressbar"
 url="http://github.com/dmerejkowsky/pycp"
@@ -9,10 +9,10 @@ arch=('any')
 license=('MIT')
 depends=('python' 'python-cli-ui' 'python-attrs')
 makedepends=('python' 'python-setuptools')
-source=('https://files.pythonhosted.org/packages/c6/99/b4cd428dbfb278e5bad2418aeba105926653da713556eac6044214ca0384/pycp-8.0.3.tar.gz')
+source=('https://files.pythonhosted.org/packages/44/12/f1ac9c9386307f3f24b6dbb184e99c5333416d34f28f5633c59061c8dd2e/pycp-8.0.4.tar.gz')
 checkdepends=('python-pytest' 'python-pytest-mock')
 
-md5sums=('1d7f312049f5e97ea53f223e07e99175')
+md5sums=('bd7872adaccb712aae39cba77451c594')
 
 
 build() {
