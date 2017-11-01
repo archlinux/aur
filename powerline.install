@@ -1,8 +1,5 @@
 post_install() {
-	echo "Updating font cache..."
-	fc-cache -f
-
-	echo "
+	cat <<EOF
 IMPORTANT
 =========
 
@@ -34,10 +31,12 @@ Tmux installation
 Add the following line to your ~/.tmux.conf:
 
     source '/usr/share/tmux/powerline.conf'
-"
-}
 
-post_remove() {
-	echo "Updating font cache..."
-	fc-cache -f
+Systemd service
+---------------
+
+An user service has been installed, enable with:
+
+    systemctl --user --now enable powerline-daemon
+EOF
 }

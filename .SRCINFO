@@ -1,7 +1,7 @@
 pkgbase = python-powerline-git
 	pkgdesc = The ultimate statusline/prompt utility
-	pkgver = r2391.090cd13
-	pkgrel = 2
+	pkgver = 2.6+64+g5198b504
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/powerline/powerline
 	install = powerline.install
@@ -12,31 +12,30 @@ pkgbase = python-powerline-git
 	makedepends = python2-setuptools
 	makedepends = python-setuptools
 	makedepends = python2-sphinx
-	source = powerline::git://github.com/powerline/powerline.git#branch=develop
-	source = powerline.install
+	source = powerline::git+https://github.com/powerline/powerline.git#branch=develop
 	sha256sums = SKIP
-	sha256sums = af07852748ddba1544feee53fdf747d3dd163597f026719f8a6f80045d0c5425
 
 pkgname = python2-powerline-git
 	depends = python2>=2.6
 	optdepends = python2-psutil: improved system information
 	optdepends = python2-pygit2: improved git support
-	optdepends = mercurial: improved mercurial support
+	optdepends = python2-hglib: improved mercurial support
 	optdepends = zsh: better shell prompt
-	optdepends = gvim: vim compiled with Python support
-	conflicts = python2-powerline
+	optdepends = vim: vim compiled with Python support
+	conflicts = powerline2
+	conflicts = powerline
 	conflicts = python-powerline-git
-	conflicts = python-powerline
 	conflicts = otf-powerline-symbols-git
 
 pkgname = python-powerline-git
 	depends = python>=3.2
 	optdepends = python-psutil: improved system information
 	optdepends = python-pygit2: improved git support
+	optdepends = python-hglib: improved mercurial support
 	optdepends = zsh: better shell prompt
-	optdepends = gvim: vim compiled with Python support
-	conflicts = python2-powerline
+	optdepends = vim: vim compiled with Python support
+	conflicts = powerline2
+	conflicts = powerline
 	conflicts = python2-powerline-git
-	conflicts = python-powerline
 	conflicts = otf-powerline-symbols-git
 
