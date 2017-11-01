@@ -11,7 +11,7 @@ license=('Apache')
 arch=('x86_64')
 
 source_x86_64=("$_srcname-$pkgver.tar.gz::https://github.com/kubernetes-incubator/kompose/releases/download/v$pkgver/kompose-linux-amd64.tar.gz")
-sha256sums_x86_64=('ee6b64e3bae4ea39c218e0c111a8f5c54214f5024340ac925c2f4d7a42b3728c')
+sha256sums_x86_64=('0647a04230a1ff1bdaec9e9cb42eaf822626b38eee5d33455971dbc6b0a3e048')
 
 
 package() {
