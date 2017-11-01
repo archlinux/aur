@@ -1,5 +1,16 @@
 # Maintainer: nutcase84 <nutcase84@protonmail.com>
 
+# Contributor: Lone_Wolf <lonewolf at xs4all dot nl>
+# Contributor: Armin K. <krejzi at email dot com>
+# Contributor: Kristian Klausen <klausenbusk@hotmail.com>
+# Contributor: Egon Ashrafinia <e.ashrafinia@gmail.com>
+# Contributor: Tavian Barnes <tavianator@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Thomas Dziedzic < gostrc at gmail >
+# Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
+# Contributor: Diego Jose <diegoxter1006@gmail.com>
+
 pkgbase=mesa_mild_compatibility-git
 pkgname=('mesa_mild_compatibility-git')
 pkgdesc="Mesa with modifications for GALLIUM3D drivers and i965"
@@ -11,10 +22,10 @@ makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'glproto'
              'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'wayland-protocols')
 depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'libtxc_dxtn' 'llvm-libs-svn' 'libunwind' 'libglvnd')
+         'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'mesa-libgl' 'vulkan-driver' 'opencl-driver' 'opengl-driver')
-conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'mesa-libgl')
+provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'mesa-libgl' 'vulkan-driver' 'opencl-driver' 'opengl-driver' 'libtxc_dxtn')
+conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'mesa-libgl' 'libtxc_dxtn')
 url="https://github.com/mikakev1/mesa_mild_compatibility/tree/master"
 license=('custom')
 source=('mesa::git://github.com/mikakev1/mesa_mild_compatibility.git'
