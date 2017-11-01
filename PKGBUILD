@@ -2,7 +2,7 @@
 
 pkgbase=gtk4-git
 pkgname=(gtk4-git)
-pkgver=3.91.2.r297.gaf5d3e3299
+pkgver=3.93.0.r237.gedffa8d6ed
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('LGPL')
 depends=('at-spi2-atk'
          'atk-git>=2.15.1'
          'dconf'
-         'glib2-git>=2.53.4'
-         'libepoxy>=1.0'
+         'glib2-git>=2.53.7'
+         'libepoxy>=1.4'
          'libxcomposite'
          'libxcursor'
          'libxinerama'

@@ -1,6 +1,6 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.91.2.r297.gaf5d3e3299
+	pkgver = 3.93.0.r237.gedffa8d6ed
 	pkgrel = 1
 	url = http://www.gtk.org/
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = gtk4-git
 	depends = at-spi2-atk
 	depends = atk-git>=2.15.1
 	depends = dconf
-	depends = glib2-git>=2.53.4
-	depends = libepoxy>=1.0
+	depends = glib2-git>=2.53.7
+	depends = libepoxy>=1.4
 	depends = libxcomposite
 	depends = libxcursor
 	depends = libxinerama
