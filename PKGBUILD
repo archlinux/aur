@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=mpc-qt-git
-pkgver=17.10.r0.g122e5c7
+pkgver=17.11.r1.g1f72862
 pkgrel=1
 pkgdesc='A clone of Media Player Classic reimplimented in Qt.'
 url='https://github.com/cmdrkotori/mpc-qt'
