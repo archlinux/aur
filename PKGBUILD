@@ -1,7 +1,7 @@
 # Maintainer: Bertrand Bonnefoy-Claudet <bertrandbc@gmail.com>
 
 pkgname=bcpkix
-pkgver=1.50
+pkgver=1.56
 pkgrel=1
 pkgdesc='Java cryptography APIs (Bouncy Castle) package for PKIX/CMS/EAC/DVCS/PKCS/TSP/OPENSSL'
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('bcprov')
 makedepends=('java-environment')
 source=("http://www.bouncycastle.org/download/bcpkix-jdk15on-${pkgver/./}.tar.gz")
-sha256sums=('0be5bb948ec481b3d1f30ee80ef593b298b3782697f9eeee5c74cf270689b520')
+sha256sums=('e08efc60e34d58ecdefedfd66b1a4981ff1407ada86d36bbbf8b9cc2b27fed09')
 
 build() {
   cd "${srcdir}/bcpkix-jdk15on-${pkgver/./}"
