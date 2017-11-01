@@ -1,4 +1,4 @@
-# Maintainer: Jingbei Li <i@jingbei.lli>
+# Maintainer: Jingbei Li <i@jingbei.li>
 pkgname='kaldi-sctk'
 _pkgname='kaldi'
 pkgdesc='Speech recognition research toolkit'
