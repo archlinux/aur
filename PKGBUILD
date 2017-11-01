@@ -1,49 +1,79 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: snafu
 pkgname=env-modules
-pkgver=3.2.10
-pkgrel=4
+pkgver=4.0.0
+pkgrel=0
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/modules/"
 license=('GPLv2')
 groups=()
-depends=('tcl>=7.4' 'procps-ng')
+depends=('tcl>=7.4')
 makedepends=()
 checkdepends=('dejagnu')
 optdepends=()
 provides=()
-conflicts=()
-replaces=()
-backup=("usr/Modules/init/.modulespath")
+conflicts=(env-modules-tcl)
+replaces=(env-modules-tcl)
 options=()
-install=
+install=env-modules.install
 changelog=
-source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz" env-modules.sh zshcomp.patch)
+source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz" zshcomp.patch)
 noextract=()
 validpgpkeys=()
-md5sums=('8b097fdcb90c514d7540bb55a3cb90fb'
-         '04115aa1410483724a8d11ebac8598b1'
-         '38eb89089803a0464a6e9e23ff23a2f2')
+md5sums=('454dba418b1556d2fd5de753fbbabe0b'
+         '2c6c0e8095d624da825e9a2938de0582')
+
+
+# Install locations:
+install_prefix=/usr
+config_path=/etc
+profiled="/etc/profile.d"
+moduledir=modules
+
+backup=("${config_path:1}/${moduledir}/init/modulerc")
+
+
+prepare() {
+    cd "modules-$pkgver"
+
+    # uncomment if you don't won't the zsh-completion patch or if it doesn't work for you
+    patch -p1 < ../zshcomp.patch
+}
 
 build() {
 	cd "modules-$pkgver"
-    patch -p1 < ../zshcomp.patch
-	CPPFLAGS="-DUSE_INTERP_ERRORLINE" ./configure --prefix=/usr --disable-versioning
+
+
+    # heavy-weight default -- remove examples/docs
+	./configure \
+        --prefix=/usr \
+        --docdir=$install_prefix/share/doc/$moduledir \
+        --initdir=$config_path/$moduledir/init \
+		--modulefilesdir=$config_path/$moduledir/modulefiles \
+		--disable-set-binpath \
+		--disable-set-manpath \
+		--enable-compat-version \
+		--enable-example-modulefiles \
+		--enable-doc-install
+
 	make
 }
 
 check() {
 	cd "modules-$pkgver"
-#	make -k check
+
+    # uncomment if you run into problems... takes quite a while
+	#make -j1 -k test
 }
 
 package() {
   cd "modules-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  make -j1 DESTDIR="$pkgdir/" install
 
-  _profiled="$pkgdir/etc/profile.d/"
+  _profiled="${pkgdir}${profiled}"
   mkdir -p "$_profiled"
-  ln -sf /usr/Modules/default/init/csh $_profiled/env-modules.csh
-  cp $srcdir/env-modules.sh $_profiled/env-modules.sh
+  ln -s ${config_path}/${moduledir}/init/profile-compat.csh $_profiled/env-modules.csh
+  ln -s ${config_path}/${moduledir}/init/profile-compat.sh $_profiled/env-modules.sh
 }
+
