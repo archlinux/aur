@@ -1,0 +1,12 @@
+diff -Narup a/wscript b/wscript
+--- a/wscript	2017-11-01 14:39:24.000000000 -0200
++++ b/wscript	2017-11-01 15:11:49.308363399 -0200
+@@ -852,7 +852,7 @@ hwaccel_features = [
+         'desc': 'CUDA hwaccel',
+         'deps': 'gl',
+         'func': check_cc(fragment=load_fragment('cuda.c'),
+-                         use='libav'),
++                         use=['libav', 'libavcodec']),
+     }
+ ]
+ 

@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.27.0.r308.g3413fe4dfd
+pkgver=0.27.0.r331.g27ab99dc3e
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 url='http://mpv.io/'
 depends=(
     # official repositories:
-        'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'ffmpeg-mpv-git' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
@@ -26,13 +26,13 @@ provides=('mpv')
 conflicts=('mpv' 'mpv-git')
 options=('!emptydirs')
 source=("$pkgname"::'git+https://github.com/mpv-player/mpv.git'
-        'mpv-allow-upstream-ffmpeg.patch')
+        'mpv-fix-cuda-detection.patch')
 sha256sums=('SKIP'
-            '3bb1a954d58c914682a2a8564434de61e52fe9467c85ee38123ea7d61b7a40fd')
+            'd73dc3ee054d2552cc9c091106f60e3fba779d3708f21ceee7fad18805a890e6')
 
 prepare() {
     cd "$pkgname"
-    patch -Np1 -i "${srcdir}/mpv-allow-upstream-ffmpeg.patch"
+    patch -Np1 -i "${srcdir}/mpv-fix-cuda-detection.patch"
 }
 
 pkgver() {
@@ -50,6 +50,10 @@ build() {
     msg2 'Running bootstrap. Please wait...'
     ./bootstrap.py
     
+    CFLAGS='-I/usr/include/ffmpeg-mpv-git' \
+    LDFLAGS='-L/usr/lib/ffmpeg-mpv-git' \
+    PKG_CONFIG_PATH='/usr/lib/ffmpeg-mpv-git/pkgconfig' \
+    \
     ./waf configure \
         --color='yes' \
         --prefix='/usr' \
@@ -93,6 +97,7 @@ build() {
         --enable-vapoursynth \
         --enable-vapoursynth-lazy \
         --enable-libarchive \
+        --disable-ffmpeg-upstream \
         --enable-libavdevice \
         --lua='52arch' \
         \
@@ -148,9 +153,7 @@ build() {
         --enable-vulkan \
         --enable-shaderc \
         \
-        --enable-vaapi-hwaccel \
         --disable-videotoolbox-gl \
-        --enable-vdpau-hwaccel \
         --disable-d3d-hwaccel \
         --disable-d3d9-hwaccel \
         --disable-gl-dxinterop-d3d9 \
