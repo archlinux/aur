@@ -1,6 +1,6 @@
 pkgbase = green-recorder
 	pkgdesc = A simple yet functional desktop recorder for Linux systems.
-	pkgver = 3.0.4
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://github.com/foss-project/green-recorder
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = green-recorder
 	depends = ffmpeg
 	optdepends = gnome-shell: Gnome on Wayland desktop recording.
 	options = !emptydirs
-	source = green-recorder-3.0.4.tar.gz::https://github.com/green-project/green-recorder/archive/3.0.4.tar.gz
-	sha256sums = 2364b7d149c65e24b18b530068d46db7a9d5062bfa4caf35689fb2d85d3e80c0
+	source = green-recorder-3.1.tar.gz::https://github.com/green-project/green-recorder/archive/3.1.tar.gz
+	sha256sums = f157f3992cce04e8fe0e3646cacd6e818d06090d28f09585aa77a0ed64e321b6
 
 pkgname = green-recorder
 
