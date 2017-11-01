@@ -1,0 +1,16 @@
+pkgbase = artemis
+	pkgdesc = Artemis is a free genome viewer and annotation tool that allows visualization of sequence features and the results of analyses within the context of the sequence, and its six-frame translation.
+	pkgver = 16.0.0
+	pkgrel = 1
+	url = http://www.sanger.ac.uk/resources/software/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = java-runtime>=1.6
+	provides = artemis
+	conflicts = artemis
+	source = ftp://ftp.sanger.ac.uk/pub/resources/software/artemis/artemis.tar.gz
+	md5sums = bf6d9d9df113b8676857e3eb3dedd990
+
+pkgname = artemis
+
