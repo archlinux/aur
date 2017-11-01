@@ -2,7 +2,7 @@
 # Contributor: Daniel Reuter <daniel.robin.reuter@googlemail.com>
 
 pkgname=qtodotxt
-pkgver=1.7.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A cross-platform UI client for todo.txt files (see todotxt.com)."
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python-pyside' 'python-pyqt5' 'python-dateutil')
 provides=('qtodotxt')
 conflicts=('qtodotxt-hg' 'qtodotxt-git')
 install=$pkgname.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mNantern/QTodoTxt/archive/v$pkgver.tar.gz")
-md5sums=('912441b78988294c9df7717d5854f238')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mNantern/QTodoTxt/archive/$pkgver.tar.gz")
+md5sums=('420c663f416729e09fad6b0f76be25e3')
 
 package() {
   cd "$srcdir/QTodoTxt-$pkgver"
