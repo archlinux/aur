@@ -1,6 +1,6 @@
 # Maintainer: GreaterFire <GreaterFire at protonmail dot com>
 pkgname=trojan
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="An unidentifiable mechanism that helps you bypass GFW."
 arch=('any')
@@ -9,7 +9,8 @@ license=('GPL')
 depends=('boost-libs' 'openssl')
 makedepends=('cmake' 'boost' 'openssl')
 source=("https://github.com/GreaterFire/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('7aeb37c78788e21265cbb7a106b01bc5')
+backup=('etc/trojan.json' 'etc/systemd/system/trojan.service')
+md5sums=('29693e17f6ab4bbc0ef23b63f682dfde')
 build() {
 	cd "$pkgname-$pkgver"
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
