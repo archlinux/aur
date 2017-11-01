@@ -1,7 +1,7 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 pkgname=openprinting-ppds-pxlmono-ricoh
 pkgver=20161206
-pkgrel=1
+pkgrel=2
 pkgdesc="PPD files for Ricoh's PCL monochrome printers, supplied by Ricoh"
 arch=('any')
 url='https://www.openprinting.org/driver/pxlmono-Ricoh'
