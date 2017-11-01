@@ -1,12 +1,13 @@
-# Maintainer: Tyler Veness <calcmogul at gmail dot com>
+# Maintainer: Klemens Schölhorn <klemens@schoelhorn.eu>
+# Contributor: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=xilinx-usb-drivers
 pkgver=14.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Platform Cable USB and Digilent USB-JTAG support for Xilinx (iMPACT)"
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('xilinx-ise=14.7' 'fxload')
+depends=('xilinx-ise=14.7' 'fxload' 'libusb-compat')
 optdepends=('digilent.adept.utilities: Digilent programmer support')
 
 _ise=/opt/Xilinx/14.7/ISE_DS/ISE
