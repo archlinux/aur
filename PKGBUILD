@@ -12,7 +12,7 @@ pkgname=('qemu-pinning-git'
          'qemu-block-rbd-pinning-git'
          'qemu-block-gluster-pinning-git'
          'qemu-guest-agent-pinning-git')
-pkgver=2.10..r56539.8547592a74
+pkgver=2.10..r57156.cf955781c7
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -24,7 +24,7 @@ makedepends=('spice' 'spice-protocol' 'pixman' 'libjpeg' 'libpng' 'sdl' 'alsa-li
              'libiscsi' 'python2' 'virglrenderer'
              'usbredir' 'ceph' 'glusterfs' 'libssh2' 'lzo' 'snappy'
              'dtc' 'libepoxy' 'git' 'texi2html' 'perl' 'numactl')
-source=(git+https://github.com/saveriomiroddi/qemu-pinning.git
+source=(git+https://github.com/saveriomiroddi/qemu-pinning.git#branch=v2.10.1-pinning
         qemu.sysusers
         qemu-ga.service
         65-kvm.rules
@@ -68,7 +68,7 @@ build() {
 }
 
 package_qemu-pinning-git() {
-  pkgdesc='A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. Git version. GTK support, Spice support and Pulseaudio microphone input delay workaround patch, CPU pinning support included.'
+  pkgdesc='A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. Built on top of qemu-saren-git. CPU pinning support included (#branch=v2.10.1-pinning).'
   depends=('spice' 'spice-protocol' 'pixman' 'libjpeg' 'libpng' 'sdl' 'libgl'
            'gnutls' 'bluez-libs'
            'usbredir' 'lzo' 'snappy' 'libpulse'
