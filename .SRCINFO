@@ -1,15 +1,15 @@
 pkgbase = minisphere
 	pkgdesc = A fast, lightweight implementation of the Sphere game engine
-	pkgver = 5.0rc
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/fatcerberus/minisphere
 	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = allegro5-git
+	depends = allegro
 	depends = libmng
-	source = https://github.com/fatcerberus/minisphere/archive/v5.0rc.tar.gz
-	sha256sums = 08c86342e57832fe3309ebb4bd4a46cbdc61146e3c792ea7d8b225f599c0e0f1
+	source = https://github.com/fatcerberus/minisphere/archive/v5.0.0.tar.gz
+	sha256sums = ab1eaea6b6c42c969eedb1254bb0f9dd4381360c8550b17439b6cb7f0ed0f31a
 
 pkgname = minisphere
 
