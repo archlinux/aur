@@ -1,0 +1,58 @@
+pkgbase = evpp-git
+	pkgdesc = EVPP trunk (git version)
+	pkgver = 1094.8e808d19
+	pkgrel = 1
+	url = https://github.com/Qihoo360/evpp
+	arch = i686
+	arch = x86_64
+	license = BSD-3
+	makedepends = cmake
+	makedepends = libevent
+	makedepends = google-glog
+	makedepends = gtest
+	makedepends = gflags
+	makedepends = boost
+	makedepends = boost-libs
+	makedepends = thrift
+	options = !libtool
+	options = !debug
+	source = evpp-git::git+https://github.com/Qihoo360/evpp.git
+	md5sums = SKIP
+
+pkgname = evpp-git
+	pkgdesc = modern C++ network library for developing high performance network services (git version)
+	depends = libevent
+	depends = google-glog
+	depends = gtest
+	depends = gflags
+	depends = boost
+	depends = boost-libs
+	depends = thrift
+	optdepends = gtest
+	optdepends = gflags
+	optdepends = boost
+	optdepends = boost-libs
+	optdepends = thrift
+	provides = evpp-git
+
+pkgname = evpp-benchmark-git
+	pkgdesc = nonblocking async C++ client library for memcached and membase (git version)(benchmark suite)
+	depends = evpp-git=1094.8e808d19
+	depends = libevent
+	depends = google-glog
+	provides = evmc-git
+
+pkgname = evmc-git
+	pkgdesc = nonblocking async C++ client library for memcached and membase (git version)
+	depends = evpp-git=1094.8e808d19
+	depends = libevent
+	depends = google-glog
+	provides = evmc-git
+
+pkgname = evnsq-git
+	pkgdesc = nonblocking async C++ client library for NSQ (git version)
+	depends = evpp-git=1094.8e808d19
+	depends = libevent
+	depends = google-glog
+	provides = evnsq-git
+
