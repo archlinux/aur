@@ -11,7 +11,7 @@
 #
 
 # To port this PKGBUILD to another language of tor-browser you have to
-# change ONLY the variable ${_language} in PKGBUILD and tor-browser.install
+# change ONLY the variable ${_language} below
 
 _language='tr'
 
