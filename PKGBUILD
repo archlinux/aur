@@ -5,7 +5,7 @@ pkgver=0.7.0
 pkgrel=3
 pkgdesc="Daemon part of seadrive"
 arch=('i686' 'x86_64')
-url="https://bintray.com/seafile-org/deb-unstable/seadrive-daemon"
+url="https://www.seafile.com/en/help/drive_client_linux"
 license=('Apache')
 depends=('libsearpc' 'libcurl-compat' 'libevent-compat'
          'openssl-1.0' 'fuse2')
