@@ -7,6 +7,8 @@ pkgbase = nordnm
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
+	depends = iputils
+	depends = sudo
 	depends = networkmanager
 	depends = openvpn
 	depends = networkmanager-openvpn
@@ -15,6 +17,8 @@ pkgbase = nordnm
 
 pkgname = nordnm
 	depends = python
+	depends = iputils
+	depends = sudo
 	depends = networkmanager
 	depends = openvpn
 	depends = networkmanager-openvpn
