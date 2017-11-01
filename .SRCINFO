@@ -1,7 +1,7 @@
 pkgbase = convpot
 	pkgdesc = Convert potentiostat data to a SQLite database
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ahpohl/convpot
 	install = convpot.install
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = convpot
 	depends = unixodbc
 	depends = mdbtools
 	depends = sqlite3
-	optdepends = plotpot: for plotting potentiostat data
+	optdepends = python-plotpot: for plotting potentiostat data
 	source = convpot-1.2.1::git+https://github.com/ahpohl/convpot.git#tag=v1.2.1
 	sha256sums = SKIP
 

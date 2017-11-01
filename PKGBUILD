@@ -1,7 +1,7 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=convpot
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Convert potentiostat data to a SQLite database"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ groups=()
 depends=('unixodbc' 'mdbtools' 'sqlite3')
 makedepends=('cmake' 'git')
 checkdepends=()
-optdepends=('plotpot: for plotting potentiostat data')
+optdepends=('python-plotpot: for plotting potentiostat data')
 provides=()
 conflicts=()
 replaces=()
