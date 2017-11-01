@@ -25,22 +25,9 @@ post_install ()
 
 post_upgrade ()
 {
-  new_version_="$1"
-  old_version_="$2"
-  if [[ $(vercmp "$old_version_" 2013.7-2) -lt 0 ]]
-  then
-    if grep -q "$_old_regex_general" etc/locale.gen
-    then
-      echo
-      # Remove the old locale from the archive.
-      usr/bin/localedef --delete-from-archive "$_old_locale_name"
-
-      # Remove the old locale from locale.gen.
-      sed -i '/'"$_old_regex_general"'/d' etc/locale.gen
-    fi
-  fi
-
-  post_install
+  # Update locales if the locale is uncommented.
+  grep -q "$_regex_commented" etc/locale.gen || \
+    usr/bin/locale-gen
 }
 
 

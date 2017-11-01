@@ -1,25 +1,25 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=locale-en_xx
-pkgver=2015
+pkgver=2017
 pkgrel=1
 pkgdesc='A mixed international English locale with ISO and POSIX formats for cosmopolitan coders.'
 arch=(any)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/locale-en_xx"
+url="https://xyne.archlinux.ca/projects/locale-en_xx"
 replaces=(locale-en_XX)
 conflicts=(locale-en_XX)
 provides=(locale-en_XX)
 source=(
-  http://xyne.archlinux.ca/projects/locale-en_xx/src/locale-en_xx-2015.tar.xz
-  http://xyne.archlinux.ca/projects/locale-en_xx/src/locale-en_xx-2015.tar.xz.sig
+  https://xyne.archlinux.ca/projects/locale-en_xx/src/locale-en_xx-2017.tar.xz
+  https://xyne.archlinux.ca/projects/locale-en_xx/src/locale-en_xx-2017.tar.xz.sig
 )
 sha512sums=(
-  0d5d1eb09b608b17c89a0cbfd3a210fb43f0aa237392ad9e434fada470475169c6400968a32910086e992e505b313c03fec6af3b9c77490175042c8ff2b5a428
-  27e6174afce0d5ca8a375325de575eed50297122fbe5227fa929a5d888aa6c205d1eb532f6628bb81f6dd2e4f0282238a34ed27ee2eba19b1a889e1601dc1297
+  51d75f351a1be278f457883306de8d18781827a82ad000d0ad0e324fc88c9eaaf0f7d395ee33bdc43a61d47b2318077b0385cf5fbeda3c467b4055d6adb2fd6d
+  f14d74ac62d213ff2f442b6cd5bf6b49fc3a535d586b3559fb6a4c95517eba7cd63e7646940b485b33b65f3a60098cb89cf354b919105ed57cdc42686934df0e
 )
 md5sums=(
-  9a2dc35020c9d33362e9ee74510f4fd3
-  5b33ce8648ef4bf785ce937de84a1d05
+  5ee464acb80d129e6fd9a430ee5e92eb
+  79c908377ff343e0f0fa83bba3ab50d5
 )
 install=locale-en_xx.install
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
