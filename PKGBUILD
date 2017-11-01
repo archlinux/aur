@@ -3,16 +3,17 @@
 
 pkgname=cwallpaper
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Front-end for fbsetbg, esetroot, feh and other wallpaper changers"
 arch=('i686' 'x86_64')
 url="http://cwallpaper.sourceforge.net/index.php"
 license=('GPL')
 depends=('gtk2')
 conflicts=('cwallpaper-fltk')
-makedepends=('automake' 'autoconf')
+makedepends=('autoconf' 'automake')
 install=$pkgname.install
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
+#source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
+source=(http://crux.ster.zone/distfiles/cwallpaper-$pkgver.tar.gz
         bsetrootconfig feh_config hsetconfig)
 md5sums=('85ca1399e8960097cbb6580dceb47163'
          '707ddfe918170b2e9ac05c7be8d35cd2'
