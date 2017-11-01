@@ -1,4 +1,4 @@
-pkgbase = pmonitor
+pkgbase = pmonitor-git
 	pkgdesc = Progress monitor: monitor a job's progress
 	pkgver = r15.97604f3
 	pkgrel = 1
@@ -7,10 +7,10 @@ pkgbase = pmonitor
 	arch = x86_64
 	license = Apache2.0
 	depends = lsof
-	provides = pmonitor
-	conflicts = pmonitor
+	provides = pmonitor-git
+	conflicts = pmonitor-git
 	source = git+https://github.com/dspinellis/pmonitor.git
 	md5sums = SKIP
 
-pkgname = pmonitor
+pkgname = pmonitor-git
 
