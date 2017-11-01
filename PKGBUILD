@@ -3,14 +3,14 @@
 
 pkgname=iscan-plugin-perfection-v370
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="EPSON Image Scan! plugin for Epson scanners (GT-F740, GT-S640, Perfection V37, Perfection V370)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:AVASYSPL')
 depends=('iscan' 'iscan-data')
 _plugin=${pkgname/iscan-plugin-/}
-_iscan_ver=${pkgver}
+_iscan_ver=1.0.1
 _plugin_rel=2
 _file_ver=1.0.0
 source_i686=("https://download2.ebz.epson.net/iscan/plugin/${_plugin}/deb/x86/iscan-${_plugin}-bundle-${_iscan_ver}.x86.deb.tar.gz")
@@ -30,7 +30,7 @@ fi
 
 build() {
   cd "iscan-${_plugin}-bundle-${_iscan_ver}.${_filearch}.deb/plugins"
-  bsdtar -xf "iscan-plugin-${_plugin}_${_file_ver}-${_plugin_rel}_${_debarch}.deb"
+  bsdtar -xf "${pkgname}_${_file_ver}-${_plugin_rel}_${_debarch}.deb"
   bsdtar -xf data.tar.gz
   gzip -fkd "usr/share/doc/${pkgname}/NEWS.gz"
 }
