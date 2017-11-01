@@ -3,13 +3,13 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-cvs
-pkgver=5.3r20171013
+pkgver=5.3r20171101
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others -- cvs version"
 arch=('i686' 'x86_64') 
 url="http://www.gnuplot.info"
 license=('custom')
-depends=('gd' 'lua' 'qt4' 'pango') 
+depends=('gd' 'lua' 'qt4' 'pango' 'termcap')
 makedepends=('cvs' 'emacs' 'texlive-core' 'texlive-latexextra')
 options=('!makeflags')
 conflicts=('gnuplot')
