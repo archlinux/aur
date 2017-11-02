@@ -11,124 +11,32 @@
 pkgname=ttf-google-fonts-git
 pkgver=r1193.4930cafe
 pkgrel=1
+epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
-arch=('any')
+arch=(any)
 url="https://github.com/google/fonts"
-license=('various')
+license=(various)
+
 # About why "cantarell-fonts" and "noto-fonts" is a dependency see comment in package() function.
-depends=('cantarell-fonts'
-         'fontconfig'
-         'noto-fonts'
-         'xorg-fonts-encodings'
-         'xorg-mkfontdir'
-         'xorg-mkfontscale')
-makedepends=('git')
-conflicts=('adobe-source-code-pro-fonts'
-           'adobe-source-sans-pro-fonts'
-           'googlefontdirectory'
-           'jsmath-fonts'
-           'lohit-fonts'
-           'oldstand-font'
-           'openarch_fonts'
-           'otf-bitter'
-           'otf-goudy'
-           'ttf-andika'
-           'ttf-anonymous-pro'
-           'ttf-cantarell'
-           'ttf-cardo'
-           'ttf-chromeos-fonts'
-           'ttf-comfortaa'
-           'ttf-croscore'
-           'ttf-droid'
-           'ttf-fira-mono'
-           'ttf-fira-sans'
-           'ttf-google-fonts-hg'
-           'ttf-google-webfonts'
-           'ttf-google-webfonts-git'
-           'ttf-google-webfonts-hg'
-           'ttf-inconsolata'
-           'ttf-kimberly_geswein_print'
-           'ttf-lato'
-           'ttf-lora-cyrillic'
-           'ttf-lekton'
-           'ttf-medievalsharp'
-           'ttf-merriweather'
-           'ttf-merriweather-sans'
-           'ttf-noto'
-           'ttf-nova'
-           'ttf-oldstandard'
-           'ttf-opensans'
-           'ttf-oswald'
-           'ttf-overpass'
-           'ttf-oxygen'
-           'ttf-oxygen-git'
-           'ttf-pt-mono'
-           'ttf-pt-sans'
-           'ttf-ptsans'
-           'ttf-quintessential'
-           'ttf-roboto'
-           'ttf-roboto-mono'
-           'ttf-signika'
-           'ttf-sil-fonts'
-           'ttf-sortsmillgoudy'
-           'ttf-source-code-pro'
-           'ttf-source-sans-pro'
-           'ttf-ubuntu-font-family'
-           'ttf-vollkorn'
-           'ttf-arabeyes-fonts')
-provides=('adobe-source-code-pro-fonts'
-          'adobe-source-sans-pro-fonts'
-          'googlefontdirectory'
-          'jsmath-fonts'
-          'lohit-fonts'
-          'oldstand-font'
-          'openarch_fonts'
-          'otf-bitter'
-          'otf-goudy'
-          'ttf-andika'
-          'ttf-anonymous-pro'
-          'ttf-cantarell'
-          'ttf-cardo'
-          'ttf-chromeos-fonts'
-          'ttf-comfortaa'
-          'ttf-croscore'
-          'ttf-droid'
-          'ttf-fira-mono'
-          'ttf-fira-sans'
-          'ttf-google-fonts-hg'
-          'ttf-google-webfonts'
-          'ttf-google-webfonts-git'
-          'ttf-google-webfonts-hg'
-          'ttf-inconsolata'
-          'ttf-kimberly_geswein_print'
-          'ttf-lato'
-          'ttf-lora-cyrillic'
-          'ttf-lekton'
-          'ttf-medievalsharp'
-          'ttf-merriweather'
-          'ttf-merriweather-sans'
-          'ttf-noto'
-          'ttf-nova'
-          'ttf-oldstandard'
-          'ttf-opensans'
-          'ttf-oswald'
-          'ttf-overpass'
-          'ttf-oxygen'
-          'ttf-oxygen-git'
-          'ttf-pt-mono'
-          'ttf-pt-sans'
-          'ttf-ptsans'
-          'ttf-quintessential'
-          'ttf-roboto'
-          'ttf-roboto-mono'
-          'ttf-signika'
-          'ttf-sil-fonts'
-          'ttf-sortsmillgoudy'
-          'ttf-source-code-pro'
-          'ttf-source-sans-pro'
-          'ttf-ubuntu-font-family'
-          'ttf-vollkorn'
-          'ttf-font')
+depends=(cantarell-fonts fontconfig noto-fonts xorg-fonts-encodings xorg-mkfontdir
+         xorg-mkfontscale)
+makedepends=(git)
+conflicts=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
+           lohit-fonts ttf-andika ttf-anonymous-pro ttf-cardo ttf-comfortaa
+           ttf-croscore ttf-droid ttf-fira-mono ttf-fira-sans ttf-inconsolata
+           ttf-lato ttf-lora-cyrillic ttf-lekton ttf-medievalsharp ttf-merriweather
+           ttf-merriweather-sans ttf-nova ttf-opensans ttf-oswald ttf-oxygen
+           ttf-oxygen-git ttf-pt-fonts ttf-quintessential ttf-roboto ttf-roboto-mono
+           ttf-signika ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx
+           ttf-ubuntu-font-family-ib ttf-vollkorn-ibx ttf-arabeyes-fonts)
+provides=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
+          lohit-fonts ttf-andika ttf-anonymous-pro ttf-cardo ttf-comfortaa
+          ttf-croscore ttf-droid ttf-fira-mono ttf-fira-sans ttf-inconsolata ttf-lato
+          ttf-lora-cyrillic ttf-lekton ttf-medievalsharp ttf-merriweather
+          ttf-merriweather-sans ttf-nova ttf-opensans ttf-oswald ttf-oxygen
+          ttf-oxygen-git ttf-pt-fonts ttf-quintessential ttf-roboto ttf-roboto-mono
+          ttf-signika ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx
+          ttf-ubuntu-font-family-ib ttf-vollkorn-ibx)
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
@@ -139,7 +47,7 @@ pkgver() {
 }
 
 package() {
-    install -dm755 ${pkgdir}/usr/share/fonts/TTF
+    install -dm755 "$pkgdir/usr/share/fonts/TTF"
     find . -type f -name \*.[Tt][Tt][Ff] -exec install -Dm644 '{}' ${pkgdir}/usr/share/fonts/TTF \;
 
     # remove Cantarell fonts because Google ships the original Cantarell
@@ -149,7 +57,8 @@ package() {
     # cantarell-fonts package installs its fonts into /usr/share/fonts/cantarell/
     # and because cantarell-fonts installs .otf files instead of .ttf files
     find ${pkgdir}/usr/share/fonts/TTF -type f -name "Cantarell-*.ttf" -delete
+
     # remove Noto fonts because noto-fonts package have more fonts than this package
     # and also noto-fonts install it's fonts in /usr/share/fonts/noto.
     find ${pkgdir}/usr/share/fonts/TTF -type f -name "Noto*.ttf" -delete
-    }
+}
