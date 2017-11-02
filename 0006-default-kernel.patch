@@ -1,0 +1,25 @@
+diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+index de9044c7f..a9087da35 100644
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -178,8 +178,20 @@ title_correction_code=
+ submenu_indentation=""
+ 
+ is_top_level=true
++default_kernel_grabbed=false
++default_kernel_name="/boot/vmlinuz-linux"
+ while [ "x$list" != "x" ] ; do
+   linux=`version_find_latest $list`
++  if ! $default_kernel_grabbed; then
++    for i in $list; do
++      if [ $i == $default_kernel_name ]
++      then
++        linux=$default_kernel_name
++        break
++      fi
++    done
++    default_kernel_grabbed=true
++  fi
+   gettext_printf "Found linux image: %s\n" "$linux" >&2
+   basename=`basename $linux`
+   dirname=`dirname $linux`
