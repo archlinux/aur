@@ -1,29 +1,29 @@
 # Maintainer: M0Rf30
 
 pkgname=openbazaar
-pkgver=1.1.13
+pkgver=2.0.17
 pkgrel=1
-pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
-arch=(any)
+pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon" 
+arch=(i686 x86_64)
 url="http://openbazaar.org"
 license=('MIT')
 depends=(electron)
 makedepends=(npm asar)
-source=(
-	"https://github.com/OpenBazaar/OpenBazaar-Client/archive/v$pkgver.tar.gz"
-	"$pkgname.sh"
-        "$pkgname.desktop"
+source=("https://github.com/OpenBazaar/openbazaar-desktop/archive/v$pkgver.tar.gz"
+		"$pkgname.sh"
+		"$pkgname.desktop"
 )
 install=$pkgname.install
 options=('!strip')
-provides=('openbazaar')
-_srcfolder=OpenBazaar-Client-$pkgver
 
 build(){
-  cd $srcdir/${_srcfolder}
-  npm install --production
-  rm -rf {.git*,.eslint*,.travis*}
-  asar pack ../${_srcfolder} ../${pkgname}.asar
+  cd $srcdir/$pkgname-desktop-$pkgver
+  npm install 
+  npm run sass:build process-index --parallel sass:watch browsersync index:watch
+  rm -rf {.eslint*,.travis*}
+  cp -rf prod/* js/
+  npm prune --production
+  asar pack ../$pkgname-desktop-$pkgver ../$pkgname.asar
 }
 
 package(){
@@ -35,13 +35,11 @@ msg2 "Installing Openbazaar data"
 msg2 "Installing execution script"
   install -Dm755 $pkgname.sh $pkgdir/usr/bin/$pkgname
 
-  rm -rf $pkgdir/opt/$pkgname/{.git*,.eslint*,.travis*}
-
 msg2 "Installing icons and desktop menu entry"
-  install -Dm644 ${_srcfolder}/imgs/icon.png "$pkgdir"/usr/share/pixmaps/openbazaar.png
-  install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/openbazaar.desktop
+  install -Dm644 $pkgname-desktop-$pkgver/imgs/icon.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+  install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
 
-md5sums=('45dd28814fd20a618ff891915d18cacb'
-         '978f2bc37d379c6ccd8c5942ef44612c'
+md5sums=('3bea757fb365f59794a751598bfb2024'
+         'a4eb003ad61dc2536ff5a3241b3aa19e'
          'dbca9273e9fc18a7aa5d1c395508fe60')
