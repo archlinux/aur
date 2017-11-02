@@ -1,0 +1,21 @@
+pkgbase = jellyfish-pythonbound
+	pkgdesc = A tool for fast, memory-efficient counting of k-mers in DNA
+	pkgver = 2.2.4
+	pkgrel = 1
+	url = http://www.genome.umd.edu/jellyfish.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	checkdepends = time
+	depends = gcc-libs
+	depends = swig
+	depends = ruby
+	depends = perl
+	depends = python3
+	provides = jellyfish
+	conflicts = jellyfish
+	source = https://github.com/gmarcais/Jellyfish/releases/download/v2.2.4/jellyfish-2.2.4.tar.gz
+	md5sums = 9d9f34aaa01f6793bc37f76878ecf5ed
+
+pkgname = jellyfish-pythonbound
+
