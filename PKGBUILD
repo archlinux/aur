@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=simonpi-git
-pkgver=37.5951fb1
+pkgver=43.1290883
 pkgrel=1
 epoch=
 pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your laptop"
@@ -27,6 +27,7 @@ package() {
 	install -Dm755 simonpiemu/runemu $pkgdir/opt/simonpiemu/runemu
         install -Dm755 simonpiemu/qemu-kernel-$KERNELRPI $pkgdir/opt/simonpiemu/qemu-kernel-$KERNELRPI
         install -Dm755 simonpiemu/qemu-kernel-$KERNELRPI2 $pkgdir/opt/simonpiemu/qemu-kernel-$KERNELRPI2
+        install -Dm755 simonpiemu/qemu-kernel-$KERNELRPI2-aarch64 $pkgdir/opt/simonpiemu/qemu-kernel-$KERNELRPI2-aarch64
 	install -Dm755 simonpiemu/vexpress-v2p-ca15-tc1.dtb $pkgdir/opt/simonpiemu/vexpress-v2p-ca15-tc1.dtb
 	sed -i "s/OPT=./OPT=\/opt/g" $pkgdir/usr/bin/simonpi
 }
