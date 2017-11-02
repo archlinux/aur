@@ -1,4 +1,4 @@
-From 7778fb9077b2cf00507dac367d60dd9d2c856396 Mon Sep 17 00:00:00 2001
+From 19ff16a0c06c73ba99f4e12bdfec7034697cf9cd Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 01/14] Restore transparency
@@ -200,10 +200,10 @@ index f6cc4a52f573..b5d156dbb16a 100644
  
  static void
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index 2719708e20d4..fbc813dd9d7d 100644
+index 11dd78bbabab..400d6076d0dc 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -2700,6 +2700,8 @@ terminal_window_init (TerminalWindow *window)
+@@ -2713,6 +2713,8 @@ terminal_window_init (TerminalWindow *window)
    TerminalWindowPrivate *priv;
    TerminalApp *app;
    TerminalSettingsList *profiles_list;
@@ -212,7 +212,7 @@ index 2719708e20d4..fbc813dd9d7d 100644
    GSettings *gtk_debug_settings;
    GtkActionGroup *action_group;
    GtkAction *action;
-@@ -2716,6 +2718,11 @@ terminal_window_init (TerminalWindow *window)
+@@ -2729,6 +2731,11 @@ terminal_window_init (TerminalWindow *window)
  
    gtk_widget_init_template (GTK_WIDGET (window));
  
@@ -225,10 +225,10 @@ index 2719708e20d4..fbc813dd9d7d 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.14.1
+2.14.2
 
 
-From 86ff684b5e06553127011b7adb7d949c1c2476f9 Mon Sep 17 00:00:00 2001
+From d659fdefbc7e86bdd4a4ea9b3cb6f80f828554f7 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 02/14] window: Make the drawing robust across all themes
@@ -248,10 +248,10 @@ https://bugzilla.gnome.org/show_bug.cgi?id=730016
  1 file changed, 21 insertions(+)
 
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index fbc813dd9d7d..287fc95588ca 100644
+index 400d6076d0dc..aaa34bf4da2e 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -2361,6 +2361,26 @@ terminal_window_realize (GtkWidget *widget)
+@@ -2374,6 +2374,26 @@ terminal_window_realize (GtkWidget *widget)
    terminal_window_update_size (window);
  }
  
@@ -278,7 +278,7 @@ index fbc813dd9d7d..287fc95588ca 100644
  static gboolean
  terminal_window_state_event (GtkWidget            *widget,
                               GdkEventWindowState  *event)
-@@ -2911,6 +2931,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
+@@ -2924,6 +2944,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
  
    widget_class->show = terminal_window_show;
    widget_class->realize = terminal_window_realize;
@@ -287,10 +287,10 @@ index fbc813dd9d7d..287fc95588ca 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.14.1
+2.14.2
 
 
-From 592615a2f58d95adc1e22eb769825e1450fec4ab Mon Sep 17 00:00:00 2001
+From caf64b5d9c7642b1dbc14156ed9663f43f1735fd Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 03/14] screen, window: Extra padding around transparent
@@ -382,10 +382,10 @@ index b5d156dbb16a..c502bd1e6a67 100644
  terminal_screen_button_press (GtkWidget      *widget,
                                GdkEventButton *event)
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index 287fc95588ca..e5425d5b0aa7 100644
+index aaa34bf4da2e..ee15026644a4 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -2367,15 +2367,21 @@ terminal_window_draw (GtkWidget *widget,
+@@ -2380,15 +2380,21 @@ terminal_window_draw (GtkWidget *widget,
  {
    if (gtk_widget_get_app_paintable (widget))
      {
@@ -414,10 +414,10 @@ index 287fc95588ca..e5425d5b0aa7 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.14.1
+2.14.2
 
 
-From 4586a362138529a63ddbf466e1cc87da5232b6d3 Mon Sep 17 00:00:00 2001
+From 30bd4b5f05de5c484a2fbb5cdf505f222df5ddbe Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 11/14] Restore translations for setting a title and
@@ -963,13 +963,14 @@ index ad74fe9c0919..2541b0004651 100644
 +msgid "_Set Title…"
 +msgstr "_Estableix el títol…"
 diff --git a/po/ca@valencia.po b/po/ca@valencia.po
-index 2dafab8ca90d..1d6e809234d0 100644
+index a6e8fb4250dc..b34cbfd89fad 100644
 --- a/po/ca@valencia.po
 +++ b/po/ca@valencia.po
-@@ -2325,6 +2325,21 @@ msgstr ""
- msgid "C_lose Window"
- msgstr "Tanca la _finestra"
-
+@@ -2357,3 +2357,18 @@ msgstr "Tanca la _finestra"
+ 
+ #~ msgid "Whether to use a dark theme variant"
+ #~ msgstr "Si s'ha d'utilitzar la variant de tema fosc"
++
 +msgid "Transparent background"
 +msgstr "Fons transparent"
 +
@@ -984,10 +985,6 @@ index 2dafab8ca90d..1d6e809234d0 100644
 +
 +msgid "_Set Title…"
 +msgstr "_Estableix el títol…"
-+
- #~ msgid "_Same as text color"
- #~ msgstr "El matei_x que el color del text"
-
 diff --git a/po/cs.po b/po/cs.po
 index e910e1dadaa2..0cd66931b6c6 100644
 --- a/po/cs.po
@@ -1109,10 +1106,10 @@ index d97e6102b850..a768fe4adc54 100644
  #: ../src/profile-preferences.glade.h:78
  #, fuzzy
 diff --git a/po/el.po b/po/el.po
-index 93e6d889d828..88b4a2c3d003 100644
+index d4d2e487df32..0f901ad6cbae 100644
 --- a/po/el.po
 +++ b/po/el.po
-@@ -2447,23 +2447,23 @@ msgstr "Κ_λείσιμο παραθύρου"
+@@ -2484,23 +2484,23 @@ msgstr "Κ_λείσιμο παραθύρου"
  #~ msgid "Default size:"
  #~ msgstr "Προεπιλεγμένο μέγεθος:"
  
@@ -1144,7 +1141,7 @@ index 93e6d889d828..88b4a2c3d003 100644
  
  #~ msgid "_Next Tab"
  #~ msgstr "_Επόμενη καρτέλα"
-@@ -2522,3 +2522,6 @@ msgstr "Κ_λείσιμο παραθύρου"
+@@ -2559,3 +2559,6 @@ msgstr "Κ_λείσιμο παραθύρου"
  
  #~ msgid "_Input Methods"
  #~ msgstr "_Μέθοδοι εισαγωγής"
@@ -1419,10 +1416,10 @@ index f3aab7879a6f..315bb804e46e 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/fa.po b/po/fa.po
-index cb551a1ecd07..bcc820444edd 100644
+index 8b0ca26eebe5..8a48e03f28cb 100644
 --- a/po/fa.po
 +++ b/po/fa.po
-@@ -2363,8 +2363,8 @@ msgstr "_بستن پنجره"
+@@ -2402,8 +2402,8 @@ msgstr "_بستن پنجره"
  #~ msgid "Use custom default terminal si_ze"
  #~ msgstr "استفاده از اندازه‌ی _سفارشی پایانه‌ی پیش‌فرض"
  
@@ -1433,7 +1430,7 @@ index cb551a1ecd07..bcc820444edd 100644
  
  #~ msgid "When terminal commands set their o_wn titles:"
  #~ msgstr "وقتی که فرمان‌های پایانه عنوان‌های _خودشان را تنظیم می‌کنند:"
-@@ -2387,8 +2387,8 @@ msgstr "_بستن پنجره"
+@@ -2426,8 +2426,8 @@ msgstr "_بستن پنجره"
  #~ msgid "Close Window"
  #~ msgstr "بستن پنجره"
  
@@ -1444,7 +1441,7 @@ index cb551a1ecd07..bcc820444edd 100644
  
  #~ msgid "Switch to Tab 2"
  #~ msgstr "تعویض به زبانه‌ی ۲"
-@@ -2435,8 +2435,8 @@ msgstr "_بستن پنجره"
+@@ -2474,8 +2474,8 @@ msgstr "_بستن پنجره"
  #~ msgid "_Close Window"
  #~ msgstr "بس_تن پنجره"
  
@@ -1455,7 +1452,7 @@ index cb551a1ecd07..bcc820444edd 100644
  
  #~ msgid "_Next Tab"
  #~ msgstr "زبانه‌ی _بعدی"
-@@ -2447,5 +2447,8 @@ msgstr "_بستن پنجره"
+@@ -2486,5 +2486,8 @@ msgstr "_بستن پنجره"
  #~ msgid "_Input Methods"
  #~ msgstr "روش‌های _ورودی"
  
@@ -1911,10 +1908,10 @@ index 28a794245edc..da8becc775e5 100644
 +msgid "_Set Title…"
 +msgstr "_Atur Judul…"
 diff --git a/po/it.po b/po/it.po
-index 9b8b23c72d0c..1761b0901aab 100644
+index d0c44222b261..57cdb749b990 100644
 --- a/po/it.po
 +++ b/po/it.po
-@@ -2337,3 +2337,18 @@ msgstr ""
+@@ -2332,3 +2332,18 @@ msgstr ""
  #: ../src/terminal-window.c:3953
  msgid "C_lose Window"
  msgstr "Chiudi _finestra"
@@ -2816,11 +2813,11 @@ index 23d40cf63e30..9386940431dd 100644
  #~ msgid "_Unlimited"
  #~ msgstr "_Neliminat"
 diff --git a/po/ru.po b/po/ru.po
-index 84c4e76ed0bf..e8e53a7c88af 100644
+index 5cb6bfdebe44..438e9b8dbe7b 100644
 --- a/po/ru.po
 +++ b/po/ru.po
-@@ -2274,3 +2274,22 @@ msgstr ""
- #: ../src/terminal-window.c:3852
+@@ -2304,3 +2304,22 @@ msgstr ""
+ #: ../src/terminal-window.c:3953
  msgid "C_lose Window"
  msgstr "_Закрыть окно"
 +
@@ -3563,10 +3560,10 @@ index 44a8e21c7842..12aa6d190d99 100644
  #: ../src/terminal-window.c:986
  msgid "Set _Character Encoding"
 diff --git a/po/zh_CN.po b/po/zh_CN.po
-index f6ea45e6110a..d7bb3ed95ebc 100644
+index 00e80da04cfc..79d0d111608e 100644
 --- a/po/zh_CN.po
 +++ b/po/zh_CN.po
-@@ -2314,23 +2314,23 @@ msgstr "关闭窗口(_L)"
+@@ -2355,23 +2355,23 @@ msgstr "关闭窗口(_L)"
  #~ msgid "Default size:"
  #~ msgstr "默认大小："
  
@@ -3598,7 +3595,7 @@ index f6ea45e6110a..d7bb3ed95ebc 100644
  
  #~ msgid "_Next Tab"
  #~ msgstr "后一标签页(_N)"
-@@ -2470,3 +2470,6 @@ msgstr "关闭窗口(_L)"
+@@ -2511,3 +2511,6 @@ msgstr "关闭窗口(_L)"
  
  #~ msgid "_Find..."
  #~ msgstr "查找(_F)..."
@@ -3692,5 +3689,5 @@ index f5e3110135c3..f9d7c6449a3e 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.14.1
+2.14.2
 

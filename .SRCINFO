@@ -1,7 +1,7 @@
 pkgbase = gnome-terminal-transparency
 	pkgdesc = The GNOME Terminal Emulator, with background transparency
 	pkgver = 3.26.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Terminal
 	changelog = gnome-terminal-transparency.changelog
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = gnome-terminal-transparency
 	source = https://download.gnome.org/sources/gnome-terminal/3.26/gnome-terminal-3.26.2.tar.xz
 	source = gnome-terminal-transparency.patch
 	sha256sums = 3a9ba414a814569476515275ad303d8056f296b2669234447712559aa97005b0
-	sha256sums = 1e1c53042e48c334e5f0fde1d39b057faa0593b31e5cf1abd588ee754233ea8e
+	sha256sums = d33d721dfd8c4424ef2f673336ce5db3c54dd42f1a87d2e18d1b795992ff41da
 
 pkgname = gnome-terminal-transparency
 
