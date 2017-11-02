@@ -1,7 +1,7 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-mysql'
 pkgver=0.7.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A distributed privacy aware social network (MySQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
@@ -61,7 +61,7 @@ build() {
 
   msg "Bundle dependencies"
   echo "gem: --no-rdoc --no-ri --no-user-install" > $_builddir/.gemrc
-  HOME=$_builddir $_bundle config --local build.sigar '--with-cppflags="-fgnu89-inline"'
+  HOME=$_builddir $_bundle config --local build.sigar --with-cppflags=-fgnu89-inline
   HOME=$_builddir $_bundle config --local path vendor/bundle
   HOME=$_builddir $_bundle config --local frozen 1
   HOME=$_builddir $_bundle config --local disable_shared_gems true
