@@ -1,8 +1,7 @@
-# Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
+# Maintainer: Lucas Saliés Brum <lucas at archlinux dot com dot br>
 
 pkgname=php7-ioncube_loader
-pkgver=beta8
-_pkgver=b8
+pkgver=7.1
 pkgrel=1
 pkgdesc="Loader for PHP files encoded with ionCube PHP Encoder"
 arch=(i686 x86_64)
@@ -11,16 +10,15 @@ license=('CUSTOM')
 depends=(php)
 conflicts=('php-ioncube_loader')
 backup=(etc/php/conf.d/00-ioncube_loader.ini)
-
-source_i686=(php7-linux-x86-$pkgver.tgz::https://www.ioncube.com/php7-linux-x86-${pkgver}.tgz)
-source_x86_64=(php7-linux-x86-64-$pkgver.tgz::https://www.ioncube.com/php7-linux-x86-64-${pkgver}.tgz)
-
-md5sums_i686=('28b2207833a96d47304f2ec0341ccf86')
-md5sums_x86_64=('d8f5106db833943e0b544f34cab72713')
+source_i686=(ioncube_loaders_lin_x86.tar.gz::https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86.tar.gz)
+source_x86_64=(ioncube_loaders_lin_x86-64.tar.gz::https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz)
+md5sums_i686=('0a6508505c7bfe06355a2a0d0f1f4ca5')
+md5sums_x86_64=('093e4adb4a1e1a5208fbaa40625f3d98')
 
 package() {
 	install -dm0755 "$pkgdir"/etc/php/conf.d
-	install -Dm0755 ioncube_loader_lin_x86-64_7.0${_pkgver}.so "$pkgdir"/usr/lib/php/modules/ioncube_loader_lin_7.0.so
-	echo "zend_extension = /usr/lib/php/modules/ioncube_loader_lin_7.0.so" > "$pkgdir"/etc/php/conf.d/00-ioncube_loader.ini
-	install -Dm0644 README_PHP7_X86_64_BETA "$pkgdir"/usr/share/doc/$pkgname/README.txt
+	install -Dm0755 ioncube_loader_lin_${pkgver}.so "$pkgdir"/usr/lib/php/modules/ioncube_loader_lin_${pkgver}.so
+	echo "zend_extension = /usr/lib/php/modules/ioncube_loader_lin_${pkgver}.so" > "$pkgdir"/etc/php/conf.d/00-ioncube_loader.ini
+	install -Dm0644 README.txt "$pkgdir"/usr/share/doc/$pkgname/README.txt
+	install -Dm0644 loader-wizard.php "$pkgdir"/usr/share/doc/$pkgname/loader-wizard.php
 }
