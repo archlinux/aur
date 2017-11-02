@@ -4,26 +4,18 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=lib32-sdl2_mixer
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='A simple multi-channel audio mixer'
 arch=('x86_64')
 url='https://www.libsdl.org/projects/SDL_mixer/'
 license=('MIT')
-depends=('lib32-flac' 'lib32-glibc' 'lib32-libmodplug' 'lib32-libvorbis'
-         'lib32-smpeg2' 'lib32-sdl2' 'sdl2_mixer')
+depends=('lib32-flac' 'lib32-glibc' 'lib32-libmodplug' 'lib32-mpg123'
+         'lib32-libvorbis' 'lib32-sdl2' 'sdl2_mixer')
 makedepends=('gcc-multilib' 'lib32-fluidsynth')
 optdepends=('lib32-fluidsynth: MIDI software synth, replaces built-in timidity')
 source=("https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-${pkgver}.tar.gz")
-sha256sums=('5a24f62a610249d744cbd8d28ee399d8905db7222bf3bdbc8a8b4a76e597695f')
-
-prepare() {
-  cd SDL2_mixer-${pkgver}
-
-  sed -e 's|/etc/timidity|/etc/timidity++|g;
-          s|/etc/timidity++.cfg|/etc/timidity++/timidity.cfg|g' \
-      -i timidity/config.h
-}
+sha256sums=('4e615e27efca4f439df9af6aa2c6de84150d17cbfd12174b54868c12f19c83bb')
 
 build() {
   cd SDL2_mixer-$pkgver
