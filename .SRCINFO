@@ -14,7 +14,7 @@ pkgbase = vuze
 	optdepends = xulrunner192: Needed for the channels GUI
 	options = !strip
 	source = http://downloads.sourceforge.net/azureus/vuze/Vuze_5760/Vuze_5760_linux.tar.bz2
-	md5sums = 61781672fa1e0c9290515d6038e55ff5
+	md5sums = 0c6cba3f2ef401df5c09e020ce9b1ff3
 
 pkgname = vuze
 

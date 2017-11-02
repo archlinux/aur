@@ -18,7 +18,7 @@ optdepends=('vuze-plugin-countrylocator: Country flags for the "Peers" tab'
 options=('!strip')
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/azureus/vuze/Vuze_${_ver}/Vuze_${_ver}_linux.tar.bz2")
-md5sums=('61781672fa1e0c9290515d6038e55ff5')
+md5sums=('0c6cba3f2ef401df5c09e020ce9b1ff3')
 
 package() {
   cd vuze
