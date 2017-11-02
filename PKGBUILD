@@ -36,7 +36,6 @@ package() {
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"_v"${pkgver}"/LICENSE
   install -D -m644 README.md "${pkgdir}"/usr/share/doc/"${pkgname}"_v"${pkgver}"/README.md
   install -D -m644 CHANGELOG "${pkgdir}"/usr/share/doc/"${pkgname}"_v"${pkgver}"/CHANGELOG
-  install -D -m644 CHANGELOG "${pkgdir}"/usr/share/doc/"${pkgname}"_v"${pkgver}"/CHANGELOG
 
   for doc in docs/*; do
     install -D -m644 "${doc}" "${pkgdir}"/usr/share/doc/"${pkgname}"_v"${pkgver}"/"${doc}"
