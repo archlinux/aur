@@ -1,6 +1,6 @@
 pkgbase = eist-returns
 	pkgdesc = Arcade-puzzle game
-	pkgver = 0.0.8
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/EistReturns
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = eist-returns
 	source = https://github.com/nwg-piotr/EistReturns/raw/master/arch/eist-returns-editor
 	source = https://github.com/nwg-piotr/EistReturns/raw/master/arch/eist-returns.desktop
 	source = https://github.com/nwg-piotr/EistReturns/raw/master/arch/eist-editor.desktop
-	md5sums = f8459b613e057976b27a4d7c129e91f4
+	md5sums = 4d75a75b3434b630d65296b85f077514
 	md5sums = 5ce6928eb681ed62b1028b17f7f372b6
 	md5sums = edd0e85ff15b8c02c69c766d59443b74
 	md5sums = bd051e745cca93a3b94e345c5b2b91bc
