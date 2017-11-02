@@ -6,7 +6,7 @@
 
 pkgname=mplayer2
 pkgver=20131009
-pkgrel=12
+pkgrel=13
 pkgdesc='Advanced general-purpose media player. A fork of the original MPlayer project'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -23,11 +23,11 @@ backup=('etc/mplayer/codecs.conf' 'etc/mplayer/input.conf')
 provides=('mplayer')
 conflicts=('mplayer')
 options=(!emptydirs)
-source=(https://github.com/nezumisama/mplayer2/archive/stable.tar.gz)
-sha256sums=('4ed56a90eabdddbe6b16f4bebb03aff4ac06ee74a6ac02bbca380f321aab79de')
+source=(https://github.com/nezumisama/mplayer2/archive/master.tar.gz)
+sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-stable"
+  cd "$pkgname-master"
 
   LDFLAGS+=" -ltheoradec" \
   ./configure --prefix=/usr --confdir=/etc/mplayer \
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-stable"
+  cd "$pkgname-master"
   make DESTDIR="$pkgdir" install
 
   install -Dm644 etc/{codecs.conf,input.conf,example.conf} "$pkgdir"/etc/mplayer/
