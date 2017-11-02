@@ -11,54 +11,45 @@ set -u
 #_ubver='1.7.3~177~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 #_ubver='1.7.5~180~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 #_ubver='1.7.6~184~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
-_ubver='17.2'; _ubrel='429'; _libgee='libgee>=0.18.0'
+#_ubver='17.2'; _ubrel='429'; _libgee='libgee>=0.18.0'
+_ubver='17.10'; _libgee='libgee>=0.18.0'
 pkgname='timeshift'
 pkgver="${_ubver}"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='A system restore utility for Linux'
 arch=('i686' 'x86_64')
 #url='https://launchpad.net/~teejee2008/+archive/ubuntu/ppa'
-url='https://code.launchpad.net/~teejee2008/timeshift'
+#url='https://code.launchpad.net/~teejee2008/timeshift'
+#url='https://launchpad.net/timeshift'
+url='https://github.com/teejee2008/timeshift'
 license=('GPL')
 _arch_depends=('rsync' 'libgee06' 'json-glib') # from installer/install.sh
 _arch_depends[1]="${_libgee}"
 depends=('gtk3' 'libsoup' 'desktop-file-utils' "${_arch_depends[@]}" 'cron')
 unset _arch_depends
 optdepends=('gksu: run timeshift from a menu')
-makedepends=('vala0.26' 'diffutils' 'coreutils' 'vte3')
+makedepends=('vala' 'diffutils' 'coreutils' 'vte3')
 options=('!emptydirs')
-_verwatch=("${url//code/bazaar}/trunk/changes" 'v\([0-9\.]\+\)' 't')
+#_verwatch=("${url//code/bazaar}/trunk/changes" 'v\([0-9\.]\+\)' 't')
 #source=("${url}/+files/${_srcdir}.tar.gz")
-_srcdir='~teejee2008/timeshift/trunk'
-source=("timeshift_v${_ubver}_r${_ubrel}.tgz::${url//code/bazaar}/trunk/tarball/${_ubrel}")
-sha256sums=('2d7513c581757f60e051ed3bfe053f98f6be3c162692b577d60c93e3dc5ff048')
-sha256sums[0]='SKIP'
-
-prepare_disable() {
-  set -u
-  cd "${_srcdir}"
-  shopt -s globstar
-  sha256sum ** > "${srcdir}/sha256sums.test" 2>/dev/null || :
-  shopt -u globstar
-  cd "${srcdir}"
-  set +u
-  diff -q sha256sums.{txt,test}
-  rm 'sha256sums.test'
-}
+#_srcdir='~teejee2008/timeshift/trunk'
+#source=("timeshift_v${_ubver}_r${_ubrel}.tgz::${url//code/bazaar}/trunk/tarball/${_ubrel}")
+_github='teejee2008'
+_verwatch=("https://github.com/${_github}/${pkgname}/releases.atom" '\s\+<title>Timeshift v\([0-9\.]\+\)</title>.*' 'f')
+_srcdir="${pkgname}-${pkgver}"
+source=("${pkgname}_v${pkgver}.tgz::https://github.com/${_github}/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('854788f5e8163db1c9c663a21d02dc35188f9ccf7d83a8b3735eec39b2207e57')
+#sha256sums[0]='SKIP'
 
 build() {
   set -u
-  cd "${_srcdir}"
-
-  make -s -j1
+  make -C "${_srcdir}" -s -j1
   set +u
 }
 
 package() {
   set -u
-  cd "${_srcdir}"
-
-  make DESTDIR="${pkgdir}" install
+  make -C "${_srcdir}" DESTDIR="${pkgdir}" install
   set +u
 }
 set +u
