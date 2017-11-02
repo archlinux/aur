@@ -13,7 +13,8 @@ pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://qt-project.org/wiki/PySide"
-makedepends=('python' 'python2' "python"{,2}"-shiboken2-git" 'cmake'
+# "python"{,2}"-shiboken2-git"
+makedepends=('python' 'python2' 'cmake'
              'phonon-qt5' 'git' 'python2-sphinx' 'graphviz' 'qt5-base'
              'qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia' 'qt5-declarative'
              'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-webchannel'
@@ -37,14 +38,24 @@ prepare() {
 }
 
 build(){
+    # Build shiboken here waiting for AUR package shiboken2-git to be orphaned
+    cd "$srcdir"/$pkgbase/sources/shiboken2
+    mkdir -p build-py2 && cd build-py2
+    cmake -DCMAKE_INSTALL_PREFIX=$PWD/install \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DUSE_PYTHON_VERSION=2 \
+          -DBUILD_TESTS=OFF ..
+    make install
+
     # Build for python2.
     cd "$srcdir"/$pkgbase/sources/pyside2
     mkdir -p build-py2 && cd build-py2
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-             -DCMAKE_BUILD_TYPE=Release \
-             -DPYTHON_EXTENSION_SUFFIX=-python2.7 \
-             -DUSE_PYTHON_VERSION=2 \
-             -DBUILD_TESTS=OFF
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DUSE_PYTHON_VERSION=2 \
+          -DBUILD_TESTS=OFF \
+          -DShiboken2_DIR="$srcdir"/$pkgbase/sources/shiboken2/build-py2/install/lib/cmake/Shiboken2-2.0.0 \
+          ..
     make
 
     # Build for python3.
