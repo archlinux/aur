@@ -3,6 +3,13 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Eivind Uggedal <eivind@uggedal.com>
 
+# Upstream recommends their forked ffmpeg, which can be installed alongside a
+# different system ffmpeg. You can build mpv against the system ffmpeg instead
+# by uncommenting the second line below, but this may sometimes fail to build
+# when mpv depends on a feature that hasn't been merged into upstream ffmpeg.
+_ffmpeg_depend=ffmpeg-mpv-git
+#_ffmpeg_depend=ffmpeg
+
 _opt_features=(
 
   # Disabled by default, need to be enabled every build:
@@ -48,14 +55,14 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.27.0_322_g0b8b64fba3_dirty
+pkgver=0.27.0_332_g09c61347a8
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')
 url='https://mpv.io'
 _undetected_depends=('hicolor-icon-theme')
-depends=('ffmpeg' "${_undetected_depends[@]}")
+depends=("$_ffmpeg_depend" "${_undetected_depends[@]}")
 optdepends=('youtube-dl: for --ytdl')
 makedepends=('git' 'python-docutils')
 provides=('mpv')
@@ -63,13 +70,10 @@ conflicts=('mpv')
 options=('!emptydirs')
 install=mpv.install
 source=('git+https://github.com/mpv-player/mpv'
-        'allow-upstream-ffmpeg.patch'
         'find-deps.py')
 md5sums=('SKIP'
-         'dcc4e3bd6722b120d13d0dc9b6e6a791'
          'ffb774b13decbefc62908dda0332046b')
 sha256sums=('SKIP'
-            '93f92ac06e815d2eaedacb161b57e2d68086566bf2c9942dd6fc0ad16dc71272'
             'ce974e160347202e0dc63f6a7a5a89e52d2cc1db2d000c661fddb9dc1d007c02')
 
 _opt_extra_flags=()
@@ -134,14 +138,18 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"
   ./bootstrap.py
-
-  git apply "$srcdir/allow-upstream-ffmpeg.patch"
 }
 
 build() {
   cd "$srcdir/$_gitname"
 
-  CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
+  if [[ "$_ffmpeg_depend" = *-mpv* ]]; then
+    export CFLAGS="$CFLAGS -I/usr/include/ffmpeg-mpv-git" \
+           LDFLAGS="$LDFLAGS -L/usr/lib/ffmpeg-mpv-git" \
+           PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}/usr/lib/ffmpeg-mpv-git/pkgconfig"
+  else
+    _opt_extra_flags+=("--enable-ffmpeg-upstream")
+  fi
 
   ./waf configure --prefix=/usr \
         --confdir=/etc/mpv \
