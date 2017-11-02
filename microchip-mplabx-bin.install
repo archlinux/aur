@@ -11,7 +11,7 @@ To run MPLAB X, type 'mplab_ide' in console or just use the 'microchip-mplabx.de
 To run (IPE) Integrated Programmer Environment, type 'mplab_ipe' in console or just use the 'microchip-mplab_ipe.desktop' desktop file.
 ---------------------------------------------------------"
 
-if [[ ! -f "/usr/lib/jvm/default-runtime/lib/ext/jfxrt.jar" ]]; then
+if [[ ! -f "/usr/lib/jvm/default-runtime/jre/lib/ext/jfxrt.jar" ]]; then
   echo
   echo "WARNING: JavaFX is not installed in your default Java installation. MPLAB X will not work."
   echo "Perhaps you should install java-openjfx ?"

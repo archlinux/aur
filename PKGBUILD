@@ -4,7 +4,7 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=4.01
+pkgver=4.05
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
@@ -33,7 +33,7 @@ source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.ta
         "LICENSE")
 source_x86_64=("fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/")
 
-md5sums=('99b563b3555d364ebf902320b6d3d4e0'
+md5sums=('1f5d6bb6daa432026869858c36595c8e'
          'a34a85b2600a26f1c558bcd14c2444bd')
 md5sums_x86_64=('a12f5c06479f3cd0678e705e08b95233')
 
@@ -125,9 +125,6 @@ EOF
     local soname=${bname%.so.*}
     ln -sf ${bname} "${pkgdir}/usr/lib/${soname}.so"
   done
-
-  # Fix hardcoded /usr/local/lib reference in libjlinkpic32.so
-  sed -i 's#/usr/local/lib/libjlinkpic32.so#/usr/lib/libjlinkpic32.so\x00\x00\x00\x00\x00\x00#' "${pkgdir}/usr/lib/libSEGGERAccessLink.so"
 
   # Tweak .desktop files for better desktop integration
   echo "StartupWMClass=MPLAB X IDE v${pkgver}" >> "${pkgdir}/usr/share/applications/mplab.desktop"
