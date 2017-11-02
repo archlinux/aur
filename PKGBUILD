@@ -3,7 +3,7 @@
 
 _pkgname=godot
 pkgname=${_pkgname}-git
-pkgver=3.0.r10380.552ed07cf
+pkgver=3.0.r10546.93a3d1714
 pkgrel=1
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
@@ -45,7 +45,7 @@ pkgver() {
 build() {
     cd "${srcdir}"/${_pkgname}
     sed -n '/\/* Copyright/,/IN THE SOFTWARE./p' main/main.cpp | sed 's/\/\*//' | sed 's/\*\///' > LICENSE
-    scons platform=x11 target=release_debug CXX=clang++ -j$(nproc) builtin_openssl=yes 
+    scons platform=x11 target=release_debug CXX=clang++ -j$(nproc)
 }
 
 package() {
@@ -57,7 +57,7 @@ package() {
     
     cd "${srcdir}"/${_pkgname}
 
-    install -D -m755 bin/godot.x11.opt.tools.${_arch} "${pkgdir}"/usr/bin/godot
+    install -D -m755 bin/godot.x11.opt.tools.${_arch}.llvm "${pkgdir}"/usr/bin/godot
     install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/godot-git/LICENSE
 }
 
