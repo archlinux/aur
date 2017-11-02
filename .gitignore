@@ -1,0 +1,5 @@
+*.log
+.*.swp
+.*.swo
+*.tar.xz
+*.bin
