@@ -66,7 +66,7 @@ build() {
 
   msg "Bundle dependencies"
   echo "gem: --no-rdoc --no-ri --no-user-install" > $_builddir/.gemrc
-  HOME=$_builddir $_bundle config --local build.sigar '--with-cppflags="-fgnu89-inline"'
+  HOME=$_builddir $_bundle config --local build.sigar --with-cppflags=-fgnu89-inline
   HOME=$_builddir $_bundle config --local path vendor/bundle
   HOME=$_builddir $_bundle config --local frozen 1
   HOME=$_builddir $_bundle config --local disable_shared_gems true
