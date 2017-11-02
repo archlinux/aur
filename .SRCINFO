@@ -1,14 +1,14 @@
 pkgbase = matiec-hg
 	pkgdesc = An open source compiler for the programming languages defined in the IEC 61131-3 standard
-	pkgver = 0.1.r1879.e5ddbaf756cb
-	pkgrel = 1
+	pkgver = 0.1.r1063.1ac77681946f
+	pkgrel = 2
 	url = https://bitbucket.org/mjsousa/matiec
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	provides = matiec
 	conflicts = matiec
-	source = hg+https://bitbucket.org/mjsousa/matiec
+	source = matiec-hg::hg+https://bitbucket.org/mjsousa/matiec
 	sha256sums = SKIP
 
 pkgname = matiec-hg
