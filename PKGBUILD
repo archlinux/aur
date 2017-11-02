@@ -12,10 +12,20 @@ source=("https://github.com/vain/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=("b2ab81a39292159accbc8d49f5afb4de8a670bb36e278e2162e2eb44ce57275e")
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  if [[ -f "${SRCDEST}/${pkgname}/config.h" ]]; then
-      msg "Using custom config.h"
-      cp -f "${SRCDEST}/${pkgname}/config.h" src/core/config.h
+  cd "${srcdir}/${pkgname}-${pkgver}/src"
+
+  # Read custom config headers from $XDG_CONFIG_HOME/katria{wm,bi}-config.h
+
+  config=${XDG_CONFIG_HOME:-~/.config/}
+
+  if [[ -f "${config}/katriawm-config.h" ]]; then
+      msg "Using custom config.h for katriawm(1)"
+      cp -f "${config}/katriawm-config.h" core/config.h
+  fi
+
+  if [[ -f "${config}/katriabi-config.h" ]]; then
+      msg "Using custom config.h for katriabi(1)"
+      cp -f "${config}/katriabi-config.h" barinfo/config.h
   fi
 }
 
