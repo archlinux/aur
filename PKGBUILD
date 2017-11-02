@@ -20,13 +20,11 @@ options=('!strip')
 
 build(){
   cd $srcdir/${_pkgname}
-#  npm install --production
   npm install
-  npm rebuild node-sass
   npm run build
-  npm run sass:build process-index --parallel sass:watch index:watch browsersync
   rm -rf {.eslint*,.travis*}
-# npm prune --production
+  cp -rf prod/* js/
+  npm prune --production
   asar pack ../${_pkgname} ../${_pkgname}-next.asar
 }
 
