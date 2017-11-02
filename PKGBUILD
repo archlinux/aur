@@ -19,7 +19,7 @@ options=('!strip')
 build(){
   cd $srcdir/$pkgname-desktop-$pkgver
   npm install 
-  npm run sass:build process-index --parallel sass:watch browsersync index:watch
+  npm run build
   rm -rf {.eslint*,.travis*}
   cp -rf prod/* js/
   npm prune --production
