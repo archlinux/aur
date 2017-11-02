@@ -1,7 +1,7 @@
 pkgbase = php7-ioncube_loader
 	pkgdesc = Loader for PHP files encoded with ionCube PHP Encoder
 	pkgver = 7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ioncube.com/
 	arch = i686
 	arch = x86_64
