@@ -1,28 +1,25 @@
 # Maintainer: Christoph Reiter <reiter.christoph@gmail.com>
 
 pkgname=quodlibet-git
-pkgver=r9120.37e477f1e
+pkgver=r9458.b2a0a2c44
 pkgrel=1
 pkgdesc="An audio library tagger, manager and player"
 arch=('any')
 license=('GPL2')
 url="https://quodlibet.readthedocs.io"
-depends=('gtk3' 'python2-gobject' 'python2-dbus' 'python2-cairo' 'mutagen' 
-         'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 
-         'desktop-file-utils' 'python2-futures' 'python2-feedparser'
-         'python2-faulthandler')
+depends=('gtk3' 'python-gobject' 'python-dbus' 'python-cairo' 'python-mutagen'
+         'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly'
+         'desktop-file-utils' 'python-feedparser')
 makedepends=('intltool')
 optdepends=('gst-libav: for ffmpeg (ASF/WMA) support'
             'gst-plugins-bad: for Musepack support'
             'libkeybinder3: for the multimedia keys support'
-            'media-player-info: for media devices support'
-            'python2-musicbrainzngs: for "MusicBrainz Lookup" plugin'
-            'python2-pyinotify: for "Automatic library update" plugin'
+            'python-musicbrainzngs: for "MusicBrainz Lookup" plugin'
+            'python-pyinotify: for "Automatic library update" plugin'
             'kakasi: for "Kana/Kanji Simple Inverter" plugin'
             'gst-plugins-bad: for "Audio Pitch/Speed" plugin')
-provides=('quodlibet-plugins' 'quodlibet') 
-conflicts=('quodlibet-plugins' 'quodlibet')
-replaces=('quodlibet-plugins')
+provides=('quodlibet')
+conflicts=('quodlibet')
 options=('!makeflags')
 source=(${pkgname}::git+https://github.com/quodlibet/quodlibet.git)
 sha1sums=('SKIP')
@@ -34,10 +31,10 @@ pkgver() {
 
 build() {
   cd ${pkgname}/quodlibet
-  python2 setup.py build
+  python3 setup.py build
 }
 
 package() {
   cd ${pkgname}/quodlibet
-  python2 setup.py install --root="${pkgdir}" --skip-build --optimize=1
+  python3 setup.py install --root="${pkgdir}" --skip-build --optimize=1
 }
