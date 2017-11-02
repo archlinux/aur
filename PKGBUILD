@@ -2,7 +2,8 @@
 # Contributor: Sebastian Jug <seb AT stianj DOT ug>
 
 pkgname=openbazaar-bin
-pkgver=1.1.13
+_name=${pkgname%-bin}
+pkgver=2.0.17
 pkgrel=1
 pkgdesc="OpenBazaar Client, Decentralized Peer to Peer Marketplace for Bitcoin -- Static binaries"
 arch=('i686' 'x86_64')
@@ -12,8 +13,8 @@ depends=('gconf' 'glibc' 'libcap' 'gtk2' 'libgcrypt' 'libnotify' 'nss' 'libxtst'
 optdepends=('gvfs' 'lsb-release' 'gnome-keyring' 'libgnome-keyring')
 conflicts=('openbazaar')
 install="$pkgname.install"
-source_i686=("https://github.com/OpenBazaar/OpenBazaar-Installer/releases/download/v${pkgver}/openbazaar_${pkgver}_i386.deb")
-source_x86_64=("https://github.com/OpenBazaar/OpenBazaar-Installer/releases/download/v${pkgver}/openbazaar_${pkgver}_amd64.deb")
+source_i686=("https://github.com/OpenBazaar/openbazaar-desktop/releases/download/v${pkgver}/openbazaar2_${pkgver}_i386.deb")
+source_x86_64=("https://github.com/OpenBazaar/openbazaar-desktop/releases/download/v${pkgver}/openbazaar2_${pkgver}_amd64.deb")
 
 package() {
     msg2 "Extracting the data.tar.xz..."
@@ -26,9 +27,8 @@ package() {
     chmod -R 755 "$pkgdir"/usr/
 
     msg2 "Installing licenses..."
-    install -Dm644 "$pkgdir/usr/share/openbazaar/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$pkgdir/usr/share/openbazaar/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
+    install -Dm644 "$pkgdir/usr/lib/openbazaar2/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/${_name}/LICENSES.chromium.html"
 }
 
-sha256sums_i686=('87c73589aebdb78455e69fe1ccc058440d0ae662404e9ef7d4988e6c574e2add')
-sha256sums_x86_64=('34118eecedd15d89052b8cc6d08fb789adba5788d43019ea5c89e52f1f07064a')
+md5sums_i686=('ab5b16b64ebc704009a6da93b56cb8fb')
+md5sums_x86_64=('98c282b376d2c1c008dd1e59939ff9c2')
