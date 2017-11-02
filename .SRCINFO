@@ -1,0 +1,25 @@
+pkgbase = python-caiman-git
+	pkgdesc = A Computational toolbox for large scale Calcium Imaging data Analysis and behavioral analysis.
+	pkgver = r1421.dd9c889
+	pkgrel = 1
+	url = https://github.com/simonsfoundation/CaImAn.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cython
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-scikit-image
+	depends = python-scikit-learn
+	depends = ipython-ipyparallel
+	depends = opencv
+	depends = python-tifffile
+	depends = python-peakutils
+	optdepends = python-cvxpy
+	optdepends = python-spams-svn
+	source = python-caiman-git-r1421.dd9c889::git+https://github.com/simonsfoundation/CaImAn.git
+	md5sums = SKIP
+
+pkgname = python-caiman-git
+
