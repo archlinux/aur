@@ -1,0 +1,14 @@
+pkgbase = python2-pyro3
+	pkgdesc = Distributed object middleware for Python (RPC) Version 3
+	pkgver = 3.16
+	pkgrel = 1
+	url = https://github.com/irmen/Pyro4
+	arch = any
+	license = MIT
+	depends = python2
+	source = https://github.com/irmen/Pyro3/archive/3.16.tar.gz
+	sha256sums = 858e592091f6e64d2ad988f0cdefd4836fa4eb3ef1080bf02039eb944c01033a
+
+pkgname = python2-pyro3
+	depends = python2
+
