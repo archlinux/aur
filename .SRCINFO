@@ -1,5 +1,5 @@
 pkgbase = thinlinc-server
-	pkgdesc = Cendio ThinLinc Linux Remote Desktop Server
+	pkgdesc = Cendio ThinLinc Linux remote desktop server
 	pkgver = 4.8.0
 	pkgrel = 1
 	url = http://www.cendio.com/
