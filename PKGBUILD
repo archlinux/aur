@@ -1,12 +1,14 @@
-# Maintainer: Lukas Fleischer <archlinux at cryptocrack dot de>
-# Contributor: SmackleFunky <smacklefunky@optusnet.com.au>
-# Contributor: Slash <demodevil5[at]yahoo[dot]com>
+# Maintainer: Lucas Saliés Brum <lucas at archlinux dot com dot br>
+# Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
+# Contributor: SmackleFunky <smacklefunky at optusnet dot com dot au>
+# Contributor: Slash <demodevil5 at yahoo dot com>
 
 pkgname=hsetroot
 pkgver=1.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A tool which allows you to compose wallpapers for X.'
-url='http://www.thegraveyard.org/hsetroot.php'
+# url='http://www.thegraveyard.org/hsetroot.php'
+url='https://directory.fsf.org/wiki/Hsetroot'
 license=('GPL')
 depends=('imlib2' 'xorg-server')
 arch=('i686' 'x86_64')

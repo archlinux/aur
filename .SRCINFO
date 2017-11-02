@@ -1,8 +1,8 @@
 pkgbase = hsetroot
 	pkgdesc = A tool which allows you to compose wallpapers for X.
 	pkgver = 1.0.2
-	pkgrel = 4
-	url = http://www.thegraveyard.org/hsetroot.php
+	pkgrel = 5
+	url = https://directory.fsf.org/wiki/Hsetroot
 	arch = i686
 	arch = x86_64
 	license = GPL
