@@ -42,9 +42,7 @@ package() {
   done
 
   # Soft link primary scripts to /usr/bin.
-  for file in "${installation_dir}"/kraken-*; do
+  for file in "${installation_dir}"/kraken*; do
     cp "${file}" "${pkgdir}"/usr/bin/$(basename "${file}")
   done
-
-  cp "${installation_dir}"/kraken "${pkgdir}"/usr/bin/kraken
 }
