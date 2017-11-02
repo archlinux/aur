@@ -19,5 +19,5 @@ pkgbase = pianoteq-stage5
 	source = https://www.pianoteq.com/images/logo/pianoteq_icon_128.png
 	sha256sums = 94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3
 
-pkgname = pianoteq-stage
+pkgname = pianoteq-stage5
 
