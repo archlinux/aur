@@ -1,0 +1,28 @@
+pkgbase = beremiz-hg
+	pkgdesc = An integrated development environment for machine automation
+	pkgver = 1.2.r1879.e5ddbaf756cb
+	pkgrel = 1
+	url = https://bitbucket.org/skvorl/beremiz
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2
+	depends = matiec
+	depends = python2
+	depends = wxgtk3
+	depends = python2-numpy
+	depends = nevow
+	depends = python2-matplotlib
+	depends = python2-lxml
+	depends = python2-pyro3
+	depends = python2-zeroconf
+	depends = matiec
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	provides = beremiz
+	conflicts = beremiz
+	source = beremiz-hg::hg+https://bitbucket.org/skvorl/beremiz
+	sha256sums = SKIP
+
+pkgname = beremiz-hg
+
