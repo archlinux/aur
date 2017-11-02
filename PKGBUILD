@@ -1,7 +1,7 @@
 # Maintainer: j605
 _gitname=CasterSoundboard
 pkgname=castersoundboard-git
-pkgver=r97.851eccd
+pkgver=r108.c41a4f2
 pkgrel=1
 pkgdesc='A soundboard for hot-keying and playing back sounds. (For podcasting)'
 arch=('x86_64' 'i686')
