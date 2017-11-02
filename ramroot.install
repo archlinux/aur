@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ensure ramroot is disabled before removing:
+# ensure ramroot is fully removed before uninstalling:
 pre_remove() {
     /usr/bin/ramroot -R
 }
