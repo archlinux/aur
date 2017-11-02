@@ -4,7 +4,7 @@ pkgbase=goland-eap
 _pkgbase=goland
 pkgname=(goland-eap goland-eap-jre)
 pkgver=173.3531.21
-pkgrel=2
+pkgrel=3
 pkgdesc='Capable and Ergonomic Go IDE'
 arch=('x86_64' 'i686')
 url='https://www.jetbrains.com/go/'
@@ -19,6 +19,7 @@ sha512sums=('db2deb4e52fb4135e3fb27c63a181c34acddf61dd2bedf81e50144a85b3e9bcb1a7
 package_goland-eap() {
   optdepends=('goland-eap-jre: JetBrains custom Java Runtime (Recommended)'
               'java-runtime>=8: JRE - Required if goland-jre is not installed')
+  conflicts=('gogland-eap')
   replaces=('gogland-eap')
 
   install -d -m 755 "${pkgdir}/opt/"
@@ -35,6 +36,7 @@ package_goland-eap() {
 }
 
 package_goland-eap-jre() {
+  conflicts=('gogland-eap-jre')
   replaces=('gogland-eap-jre')
 
   install -d -m 755 "${pkgdir}/opt/${pkgbase}"
