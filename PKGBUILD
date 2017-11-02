@@ -8,62 +8,20 @@
 # Contributor: Arkham <arkham at archlinux dot us>
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
-_name=vlc
 pkgname=vlc-git
-pkgver=3.0.0.r14404.ge15a5753fd
+pkgver=3.0.0.r15027.gbfa3cafdec
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="http://www.videolan.org/vlc/"
-license=('LGPL2.1' 'GPL3')
-depends=('a52dec'
-         'faad2'
-         'ffmpeg'
-         'libdca'
-         'libdvbpsi'
-         'libdvdnav'
-         'libmad'
-         'libmatroska'
-         'libmpcdec'
-         'libmpeg2'
-         'libproxy'
-         'libshout'
-         'libtar'
-         'libtiger'
-         'libupnp'
-         'libxinerama'
-         'libxpm'
-         'lua'
-         'sdl_image'
-         'wayland-protocols'
-         'taglib'
-         'zvbi'
-         'libsecret'
-         'libarchive'
-         'qt5-x11extras')
-makedepends=('aalib'
-             'flac'
-             'git'
-             'libavc1394'
-             'libbluray'
-             'libcaca'
-             'libdc1394'
-             'libdvdcss'
-             'libgme'
-             'libgoom2'
-             'libmtp'
-             'libnotify'
-             'librsvg'
-             'libssh2'
-             'lirc'
-             'live-media'
-             'opus'
-             'portaudio'
-             'projectm'
-             'twolame'
-             'vcdimager'
-             'xosd'
-             'smbclient')
+license=(LGPL2.1 GPL3)
+depends=(a52dec faad2 ffmpeg libdca libdvbpsi libdvdnav libmad libmatroska
+         libmpcdec libmpeg2 libproxy libshout libtar libtiger libupnp
+         libxinerama libxpm lua sdl_image wayland-protocols taglib zvbi
+         libsecret libarchive qt5-x11extras)
+makedepends=(aalib flac git libavc1394 libbluray libcaca libdc1394 libdvdcss
+             libgme libgoom2 libmtp libnotify librsvg libssh2 lirc live-media
+             opus portaudio projectm twolame vcdimager xosd smbclient)
 optdepends=('aalib: for ASCII art plugin'
             'atk-git: for libnotify plugin'
             'avahi: for service discovery using bonjour protocol'
@@ -98,33 +56,46 @@ optdepends=('aalib: for ASCII art plugin'
             'ttf-freefont: for subtitle font'
             'twolame: for TwoLAME mpeg2 encoder plugin'
             'vcdimager: navigate VCD with libvcdinfo')
-conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
-provides=("${_name}=${pkgver}")
-options=('!emptydirs')
-install="${_name}.install"
+_name=vlc
+conflicts=("$_name" vlc-dev vlc-plugin vlc-stable-git)
+provides=("$_name=$pkgver")
+options=(!emptydirs)
+install="$_name.install"
 source=('git+https://github.com/videolan/vlc.git'
-        'lua53_compat.patch')
+        lua53_compat.patch
+        update-vlc-plugin-cache.hook)
 sha512sums=('SKIP'
-            '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f')
+            '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f'
+            '1635f590bb8c2a9774a4eb5f8a56d83995449d9935c51e024422daa1ef204f940235dfda9fe087b58b724d6c018920c1b2f0ff446bb2e1d5d81f2ba06e97ef1c')
+
 pkgver() {
-  cd "${srcdir}/${_name}"
-  printf "%s.r%s.g%s\n" "$(grep 'AC_INIT' configure.ac | sed 's/[^0-9\.]*//g')" "$(git describe --tags --long | cut -d '-' -f 3)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_name"
+  printf "%s.r%s.g%s" "$(grep 'AC_INIT' configure.ac | sed 's/[^0-9\.]*//g')" "$(git describe --tags --long | cut -d '-' -f 3)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/${_name}"
+  cd "$srcdir/$_name"
 
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
-  patch -p1 -i "${srcdir}/lua53_compat.patch"
+  patch -p1 -i "$srcdir/lua53_compat.patch"
 }
 
 build() {
-  cd "${srcdir}/${_name}"
+  cd "$srcdir/$_name"
 
   ./bootstrap
 
-  CFLAGS+=" -I/usr/include/samba-4.0" CPPFLAGS+=" -I/usr/include/samba-4.0" \
-  ./configure --disable-rpath \
+  export CFLAGS+=" -I/usr/include/samba-4.0"
+  export CPPFLAGS+=" -I/usr/include/samba-4.0"
+  export CXXFLAGS+=" -std=gnu++98"
+  export LUAC=/usr/bin/luac
+  export LUA_LIBS="`pkg-config --libs lua`"
+  export RCC=/usr/bin/rcc-qt5
+
+
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --disable-rpath \
               --enable-aa \
               --enable-faad \
               --enable-lirc \
@@ -135,22 +106,19 @@ build() {
               --enable-sftp \
               --enable-upnp \
               --enable-vcdx \
-              --enable-wayland \
-              --prefix=/usr \
-              --sysconfdir=/etc \
-              LUAC=/usr/bin/luac  LUA_LIBS="`pkg-config --libs lua`" \
-              RCC=/usr/bin/rcc-qt5
-
+              --enable-wayland
   make
 }
 
 package() {
-  cd "${srcdir}/${_name}"
+  cd "$srcdir/$_name"
 
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 
   for res in 16 32 48 128; do
-    install -D -m644 "${srcdir}/${_name}/share/icons/${res}x${res}/vlc.png" \
-                     "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/vlc.png"
+    install -D -m644 "$srcdir/$_name/share/icons/${res}x${res}/vlc.png" \
+                     "$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/vlc.png"
   done
+
+  install -Dm 644 "$srcdir/update-vlc-plugin-cache.hook" -t "$pkgdir/usr/share/libalpm/hooks"
 }
