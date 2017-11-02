@@ -3,7 +3,7 @@
 
 pkgname="forticlientsslvpn"
 pkgver="4.4.2333"
-pkgrel="2"
+pkgrel="1"
 pkgdesc="Fortinet's SSLVPN Client for linux"
 arch=("i686" "x86_64")
 install="${pkgname}.install"
