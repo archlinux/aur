@@ -3,13 +3,13 @@
 
 pkgname=codec2
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='an open source codec designed for communications quality speech below 5000 bit/s'
 arch=('i686' 'x86_64')
 license=('LGPL')
 url='http://rowetel.com/codec2.html'
 depends=('glibc')
-makedepends=('cmake')
+makedepends=('cmake' 'subversion')
 source=("$pkgname-$pkgver"'::svn+https://svn.code.sf.net/p/freetel/code/codec2/branches/'"$pkgver")
 sha1sums=('SKIP')
 

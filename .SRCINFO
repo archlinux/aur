@@ -1,12 +1,13 @@
 pkgbase = codec2
 	pkgdesc = an open source codec designed for communications quality speech below 5000 bit/s
 	pkgver = 0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://rowetel.com/codec2.html
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
+	makedepends = subversion
 	depends = glibc
 	source = codec2-0.6::svn+https://svn.code.sf.net/p/freetel/code/codec2/branches/0.6
 	sha1sums = SKIP
