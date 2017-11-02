@@ -1,5 +1,5 @@
 pkgbase = sat-xmpp-hg
-	pkgver = 0.7.0.r2391.07e1543d6992
+	pkgver = 0.7.0.r2412.7641bef56dcd
 	pkgrel = 1
 	url = http://salut-a-toi.org/
 	arch = any
@@ -18,7 +18,7 @@ pkgname = sat-xmpp-hg
 	depends = python2-pycryptodomex>=2.6.1
 	depends = python2-pyopenssl
 	depends = python2-dbus
-	depends = pure-python2-otr
+	depends = python2-potr
 	depends = python2-twisted
 	depends = python2-wokkel>=0.7.1
 	depends = python-xdg

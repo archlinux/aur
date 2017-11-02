@@ -6,7 +6,7 @@
 pkgbase='sat-xmpp-hg'
 pkgname=('sat-xmpp-hg' 'sat-jp-hg' 'sat-primitivus-hg')
 _realname=sat
-pkgver=0.7.0.r2391.07e1543d6992
+pkgver=0.7.0.r2412.7641bef56dcd
 VERSION=0.7.0
 pkgrel=1
 url="http://salut-a-toi.org/"
@@ -33,7 +33,7 @@ build() {
 
 package_sat-xmpp-hg(){
     pkgdesc="Salut à Toi, multi-frontends multi-purposes XMPP client (core)"
-    depends=('dbus' 'python2-lxml>=3.1.0' 'python2-pillow' 'python2-pycryptodomex>=2.6.1' 'python2-pyopenssl' 'python2-dbus' 'pure-python2-otr' 'python2-twisted' 
+    depends=('dbus' 'python2-lxml>=3.1.0' 'python2-pillow' 'python2-pycryptodomex>=2.6.1' 'python2-pyopenssl' 'python2-dbus' 'python2-potr' 'python2-twisted' 
 'python2-wokkel>=0.7.1' 'python-xdg' 'python2-zope-interface' 'mutagen' 'python2-markdown' 'python2-html2text' 'python2-netifaces' 'python2-miniupnpc' 
 'python2-service-identity')
 
