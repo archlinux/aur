@@ -56,7 +56,7 @@ package() {
 	cat > $pkgdir/usr/bin/$pkgname <<-EOF
 		#!/usr/bin/bash
 		cd ${_installDir#$pkgdir}
-		KDEHOME=\$HOME/.kde4 exec ./"$_productUrname" "\$@"
+		exec ./"$_productUrname" "\$@"
 	EOF
 	cat > $pkgdir/usr/share/applications/$pkgname.desktop <<-EOF
 		[Desktop Entry]
