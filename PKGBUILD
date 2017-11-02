@@ -1,4 +1,6 @@
 # Maintainer: j605
+# Maintainer: Albert Westra (odysseywestra@gmail.com)
+
 _gitname=CasterSoundboard
 pkgname=castersoundboard-git
 pkgver=r108.c41a4f2
