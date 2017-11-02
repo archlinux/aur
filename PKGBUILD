@@ -10,7 +10,7 @@ _gourl="code.gitea.io"
 
 pkgname=gitea-git
 pkgrel=1
-pkgver=v1.1.0.r674.g5866eb23
+pkgver=v1.1.0.r702.gf70758de
 pkgdesc="A painless self-hosted Git service."
 url="https://gitea.io/"
 license=("MIT")
@@ -34,7 +34,7 @@ source=("git://github.com/go-gitea/gitea.git"
         "0001-Adjust-config-for-Arch-Linux-package.patch"
         "0002-Adjust-service-file-for-Arch-Linux-package.patch")
 sha256sums=("SKIP"
-            "460cf59928a0ca4bc2d8593e38a6c45274dfe5161facf716e2ca4c45f69dc4e2"
+            "5ddc6959ea29def1273a29ef561e14c13b6978dd65583058313afaed4e152e7f"
             "6cd1daa666659a68c98376f8bfae55402b5ffc39c1bf42b5ae0ee700249a3b73")
 
 pkgver() {

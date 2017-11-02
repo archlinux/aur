@@ -1,6 +1,6 @@
 pkgbase = gitea-git
 	pkgdesc = A painless self-hosted Git service.
-	pkgver = v1.1.0.r674.g5866eb23
+	pkgver = v1.1.0.r702.gf70758de
 	pkgrel = 1
 	url = https://gitea.io/
 	install = gitea.install
@@ -28,7 +28,7 @@ pkgbase = gitea-git
 	source = 0001-Adjust-config-for-Arch-Linux-package.patch
 	source = 0002-Adjust-service-file-for-Arch-Linux-package.patch
 	sha256sums = SKIP
-	sha256sums = 460cf59928a0ca4bc2d8593e38a6c45274dfe5161facf716e2ca4c45f69dc4e2
+	sha256sums = 5ddc6959ea29def1273a29ef561e14c13b6978dd65583058313afaed4e152e7f
 	sha256sums = 6cd1daa666659a68c98376f8bfae55402b5ffc39c1bf42b5ae0ee700249a3b73
 
 pkgname = gitea-git
