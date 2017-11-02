@@ -1,17 +1,18 @@
-# Maintainer: David McInnis <davidm@eagles.ewu.edu>
+# Maintainer: Kevin Azzam <aur@azz.am>
+# Contributor: David McInnis <davidm@eagles.ewu.edu>
 
 pkgname='python-django-storages'
 _module='django-storages'
-pkgver='1.5.2'
-pkgrel=2
-pkgdesc="Support for many storages (S3, Libcloud, etc) in Django."
+pkgver='1.6.5'
+pkgrel=1
+pkgdesc="Support for many storage backends (S3, Libcloud, etc) in Django."
 url="https://github.com/jschneier/django-storages"
 depends=('python' 'python-django')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/d/django-storages/django-storages-${pkgver}.tar.gz")
-sha256sums=('60fe20cbf31eeda4e6065039646b6abecc45d6cc41246dd198c477031d848ffa')
+sha256sums=('bc8e4c1f483608c5dd1212072fd41042f3ef2d2a2896ec4fb12dbc62c82996a0')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
@@ -20,7 +21,10 @@ build() {
 
 package() {
     depends+=()
+
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+    python setup.py install --root="${pkgdir}/" --optimize=1
+
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm 644 CHANGELOG.rst  -t "${pkgdir}/usr/share/doc/${pkgname}/CHANGES"
 }
