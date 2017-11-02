@@ -8,13 +8,13 @@
 pkgname=gnucash-python
 _realname=gnucash
 pkgver=2.6.18
-pkgrel=1
+pkgrel=2
 _sourcerel=1
 pkgdesc="A personal and small-business financial-accounting application with enabled python bindings."
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
-depends=('guile' 'slib' 'goffice0.8' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'desktop-file-utils' 'webkitgtk2' 'libgnome-keyring' 'libgnomecanvas' 'dconf' 'python2')
+depends=('guile2.0' 'slib' 'goffice0.8' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'desktop-file-utils' 'webkitgtk2' 'libgnome-keyring' 'libgnomecanvas' 'dconf' 'python2')
 makedepends=('intltool')
 optdepends=('evince: for print preview'
 	    'yelp: help browser'
@@ -31,7 +31,7 @@ build() {
   export PYTHON=$(which python2)
   ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
     --libexecdir=/usr/lib --disable-schemas-compile --enable-ofx --enable-aqbanking --enable-python
-  make
+  make GUILD=/usr/bin/guild2.0
 }
 
 package() {
