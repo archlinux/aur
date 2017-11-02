@@ -1,0 +1,343 @@
+                 CENDIO END USER LICENSE AGREEMENT 3.2
+
+
+IMPORTANT: PLEASE READ THIS END USER LICENSE AGREEMENT
+CAREFULLY. INSTALLING OR USING CENDIO SOFTWARE CONSTITUTES
+ACCEPTANCE OF THIS AGREEMENT.
+
+This License Agreement ("License") is entered into by you, the Licensed
+User or representative of the Licensed User ("Licensee") and Cendio AB.
+
+
+                   THIS IS A LICENSE AND NOT A SALE
+
+
+1.      License
+
+1.1     Subject to the terms and conditions of this License, Cendio
+grants solely for use by Licensee a non-exclusive, non-transferable
+license to use the software programs ("Program(s)") and related user
+guides ("Documentation") solely for its own internal business purposes,
+including for the provision of offering hosting solutions where you
+remain the Licensee, at the site specified in the applicable Cendio
+business records and solely in accordance with the accompanying
+Documentation.
+
+1.2     All proprietary rights and trade secrets in the Program(s) and
+the Documentation, and all copies (in whole or part) shall be the
+exclusive property of Cendio (and its licensors), and are protected by
+copyright laws and international treaty provisions. Licensee shall have
+no right, title, or interest therein except for the rights expressly
+granted under this License.
+
+1.3     Licensee may not use, copy, alter, merge, adapt, modify, rent,
+or lease the Program(s) or the Documentation, or any copy thereof, in
+whole or in part, except as expressly provided in this License or under
+applicable statutes.
+
+1.4     Licensee acknowledges that the Program(s) contains certain
+third party software for which Cendio has obtained the right to
+sub-license to Licensee under all the terms hereof save as set out
+expressly in the license agreements accompanying such products.
+
+1.5     The Program(s) may consists of software that provide services
+on a computer ("Server Program(s)") and software that allows a computer
+to access or utilize the services provided by the Server Program(s)
+("Client Program(s)"). The Licensee must have user licenses provided by
+Cendio ("User License(s)") corresponding to the number of physical
+persons that have Server Program(s) or that have other software that is
+being monitored by the Server Program(s), running on behalf of said
+person ("Concurrent User(s)"). A non-human operated device shall be
+counted as a Concurrent User in addition to all individuals whenever
+such a device accesses the Server Program(s).
+
+1.6     User License(s) may be perpetual or limited to an expiration
+date ("Expiration Date"). After the Expiration Date, if any, the
+Licensee is no longer entitled to use any of the User License(s).
+
+1.7     A User License(s) is valid for the version of the Server
+Program(s) specified in the User License(s) and any older versions of
+the same Server Program(s). The User License(s) is also only valid for
+one specific installation of the Server Program(s). Two separate
+installations, even by the same legal entity, require separate User
+Licenses.
+
+1.8     The Licensee may reassign one or more User License(s) to a
+different installation any number of times. A User License may
+only be used on a single installation of the Server Program(s) at a
+time.
+
+1.9     If the Licensee has no valid User Licenses, then the Licensee
+may utilize the Server Program(s) for up to five (5) Concurrent Users.
+Where the Licensee uses the Program(s) without a valid User License,
+the warranty referenced in Section 4.1 and the indemnity in Section 6
+is no longer applicable.
+
+1.10    The Client Program(s) may be redistributed, free of charge,
+provided all copyright notices and the terms of this License are not
+altered in any way or removed.
+
+1.11    Cendio provides no maintenance or support of the Program(s)
+under this License.
+
+
+2.      Open Source Software
+
+2.1     The Program(s) may include certain third party open source and
+free software components ("Open Source Components"), each of which has
+its own copyright and its own license conditions ("Open Source
+License"). A list of included Open Source Components and their
+respective licenses can be found in the open_source_licenses.txt file.
+
+2.2     Upon request Cendio will deliver all the corresponding source
+code for the Open Source Components at the cost of postage charges
+incurred. This offer to obtain the source code is valid for three years
+from the date you acquired these Program(s).
+
+2.3     To the extent any Open Source License grants the Licensee
+rights to use, copy or modify the Open Source Component that are
+broader than the rights granted in Section 1, then such rights shall
+take precedence over the rights and restrictions granted in this
+License solely for such Open Source Components.
+
+2.4     The Open Source Components are provided "as is" by the third
+party licensors who disclaim all liabilities, damages, (even if they
+have been advised of the possibility of such damages), warranties,
+indemnities and other obligations of any kind, express or implied, with
+regard to the Open Source Components. The Open Source Components are
+excluded from any indemnity provided by Cendio in this License. Nothing
+in the foregoing affects any performance warranty provided by Cendio
+with regard to the Program(s) as a whole.
+
+
+3.      Confidentiality
+
+3.1     Confidential Information. "Confidential Information" shall mean
+printed or electronically recorded matter, business information,
+pricing and terms, the Programs, Documentation, technical information,
+algorithms, source code, of the Programs, future plans, product road
+maps, know-how, trade secrets, and other information of a non-public
+nature that is known or used by a party. Confidential Information
+includes information generated as a result of the activities of the
+parties hereunder, as well as background information owned by a party
+prior to the date hereof and made available to the other party
+hereunder, whether disclosed in writing or orally, that is marked
+"confidential" or should be deemed by its nature to be confidential.
+Confidential Information shall at all times for Programs, and during
+the 5 (five) year period from the date of disclosure for other
+Confidential Information, be held confidential. Neither party shall
+disclose, directly or indirectly, any Confidential Information of the
+other party to any third person, firm or corporation without the prior
+written consent of the other party. Each party shall use protective
+measures no less stringent than that party uses to protect its own
+similar proprietary information, which protective measures shall under
+all circumstances be at least reasonable measures designed to ensure
+the continued confidentiality of the Confidential Information. The
+restrictions on disclosure of Confidential Information do not extend to
+any item of information which (i) is or becomes publicly known without
+breach of this License, (ii) is lawfully received by the receiving
+party from a third party not bound to keep such information
+confidential, whether by contract or law, (iii) is published or
+otherwise made known to the public by the disclosing party, or (iv) is
+generated independently by the receiving party. Either party may
+disclose Confidential Information required to be disclosed pursuant to
+a subpoena or as otherwise required by law or regulation, provided that
+prior written notice of such disclosure is furnished to the disclosing
+party as soon as practicable in order to afford the disclosing party an
+opportunity to seek a protective order.
+
+
+4.      Limited Warranty and Disclaimer
+
+4.1     Cendio warrants that the Program(s) will operate substantially
+as set forth in the accompanying Documentation for a period of
+90 (ninety) days following delivery of the Program(s) to Licensee.
+
+4.2     Cendio warrants that prior to delivery of the Program(s) to
+Licensee, Cendio has used commercially reasonable efforts to prevent
+the Program(s) and any modified or enhanced versions of the Program(s)
+prepared by, or at the direction of, Cendio from being infected with,
+any "worms", "viruses", "Trojan Horses", "protect codes", "data
+destruct keys" or other programs or programming devices that might be
+used to access, modify, delete or damage the Program(s), or other
+software, computer hardware or data of Licensee.
+
+4.3     Licensee's sole and exclusive remedy for breach of any of the
+above warranties shall be, at Cendio's option, the repair or
+replacement of the Program(s) or the media, or the refund of the
+license fee paid by the Licensee, reduced by a reasonable depreciation
+based on the time the Program(s) have been in use.
+
+4.4     EXCEPT AS EXPRESSLY SET FORTH IN THIS SECTION 4 AND
+NOTWITHSTANDING ANY OTHER TERMS IN THIS LICENSE, CENDIO MAKES NO
+EXPRESS OR IMPLIED WARRANTY WITH RESPECT TO THE PROGRAM(S) OR
+DOCUMENTATION, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTY OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT
+OF THIRD PARTY RIGHTS. CENDIO DOES NOT WARRANT THAT ANY PROGRAM(S) WILL
+BE ERROR-FREE, OR THAT ANY DEFECTS THAT MAY EXIST IN ANY PROGRAM(S) CAN
+BE CORRECTED.
+
+
+5.      Limitation on Liability
+
+5.1     IN NO EVENT SHALL CENDIO BE LIABLE FOR ANY LOSS OF PROFITS,
+USE, BUSINESS, DATA OR INFORMATION, OR FOR ANY INCIDENTAL, INDIRECT,
+SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES WHATSOEVER, INCLUDING BUT
+NOT LIMITED TO DAMAGES RESULTING FROM LOSS OF ANTICIPATED SAVINGS OR
+LOST DATA, EVEN IF CENDIO HAS BEEN ADVISED, KNEW OR SHOULD HAVE KNOWN
+OF THE POSSIBILITY THEREOF, OR FOR ANY INCIDENTAL, INDIRECT, SPECIAL,
+CONSEQUENTIAL OR EXEMPLARY DAMAGES RESULTING FROM ANY AND ALL CLAIMS BY
+ANY THIRD PARTIES. THE AGGREGATE LIABILITY OF CENDIO HEREUNDER WHETHER
+IN CONTRACT OR IN TORT SHALL IN NO EVENT EXCEED THE LESSER OF THE FEES
+PAID BY LICENSEE OVER THE PRECEDING 12 (TWELVE) MONTHS OR $100,000
+(ONE HUNDRED THOUSAND DOLLARS).
+
+
+6.      Indemnity
+
+6.1     Cendio shall indemnify Licensee for any claim, demand or cause
+of action by a third party ("Demand") to the extent that it is based
+upon a claim that the Program(s) infringe any patent, trademark, or
+Berne Convention copyright, or that the Program(s) misappropriate any
+trade secret of any third party within the country in which the site is
+located. The foregoing indemnification is conditioned on Licensee
+notifying Cendio promptly in writing of such Demand, Licensee giving
+Cendio sole control of the defense thereof (and any negotiations for
+settlement or compromise thereof), and Licensee cooperating in the
+defense thereof at Cendio request and expense, provided that Licensee
+may, at its own expense, assist in such defense if it so chooses.
+Cendio, at its sole option and expense may: (a) procure for Licensee
+the right to continue using the Program(s); or (b) substitute a
+non-infringing version of the Program(s) so that the Program(s)
+become non-infringing and still conform to the applicable
+specifications; or (c) return the license fee paid by Licensee
+hereunder for the Program(s), less an amount equal to straight line
+depreciation of the Program(s) over four years, and Licensee shall
+immediately return the Program(s) to Cendio. Licensee shall not incur
+any costs or expenses on behalf of Cendio under or pursuant to this
+Section without Cendio's prior written consent.
+
+6.2     Cendio shall have no liability to Licensee for any Demand by a
+third party alleging infringement or misappropriation based upon
+(a) any use of the Program(s) in a manner other than as permitted in
+this License; or (b) any use of the Program(s) in combination with any
+product not provided by Cendio, to the extent that such Demand is
+directed against the combination. Notwithstanding the foregoing, no
+indemnification is given in relation to Open Source Components. The
+licensors of any third party software may extend indemnities which are
+to be found in the third party licenses referred to in 1.4 above.
+THE FOREGOING STATES THE ENTIRE LIABILITY OF THE PARTIES AND LICENSEE'S
+SOLE AND EXCLUSIVE REMEDY FOR SUCH DEMANDS.
+
+
+7.      Termination
+
+7.1     Cendio may terminate this License immediately upon written
+notice to Licensee if Licensee breaches the provisions of Section 1
+(License). Either party may at its option terminate this License
+immediately upon written notice in the event that the other party:
+(a) breaches any term of this License, which breach remains uncured for
+a period of 30 (thirty) days after written notice of such breach to the
+other party; or (b) becomes insolvent or asserts that it is insolvent,
+fails to pay its general obligations as they become due, institutes or
+has instituted against it any proceeding, arrangement, receivership or
+assignment for the benefit of creditors, or files or has filed against
+it any petition under applicable bankruptcy laws.
+
+7.2     ON TERMINATION OF THIS LICENSE FOR ANY REASON LICENSEE SHALL
+CEASE USING THE PROGRAM(S) AND THE DOCUMENTATION AND ALL COPIES OF THE
+SAME SHALL BE IMMEDIATELY RETURNED TO CENDIO UPON WRITTEN REQUEST.
+
+7.3     The operation of Clauses 3, 4, 5, 7 and 8 shall survive the
+termination of this License.
+
+
+8.      General
+
+8.1     The Program(s) is subject to laws and regulations of the United
+States and European Union that restrict its export. Licensee agrees not
+to export or "re-export" (transfer) the Program(s) unless all
+applicable United States, European Union and other relevant government
+export controls and approvals have been complied with.
+
+8.2     Cendio licenses products for ultimate end use by federal
+government agencies and other federal government customers ("federal
+government customers") only under the following conditions. Rights
+granted herein include only those rights customarily provided to end
+use customers of Program(s) and Documentation as defined in this
+License. This customary commercial license in software is provided in
+accordance with FAR 12.211 (Technical Data) and 12.212 (Computer
+Software) and, for Department of Defense purchases, DFAR 252.227-7015
+(Technical Data - Commercial Items) and DFAR 227.7202-3 (Rights in
+Commercial Computer Software or Computer Software Documentation). If a
+federal government or other public sector customer has a need for
+rights not conveyed under these terms, it must negotiate with Cendio to
+determine if there are acceptable terms for transferring such rights,
+and a mutually acceptable written agreement specifically conveying such
+rights must be executed by both parties. To the extent that Licensee
+sublicenses Program(s) pursuant to the terms and conditions of the
+License to any sub-licensee that is a federal government agency or
+other federal government customer, Cendio will accept only the
+following subcontract or flow-down provisions: FAR 52.222-26, "Equal
+Opportunity"; FAR 52.222-35, "Affirmative Action for Disabled Veterans
+and Veterans of the Vietnam Era"; and FAR 52.222-36, "Affirmative
+Action for Workers with Disabilities." Any additional subcontract or
+flow-down provisions, including any provisions imposed by federal,
+state, local or other governmental or quasi-governmental entities, must
+be negotiated between the parties and reflected in a mutually
+acceptable written agreement executed by both parties.
+
+8.3     Cendio and its licensors shall have the right to conduct an
+audit of (and to copy) Licensee's records on reasonable notice and not
+more than once in each twelve month period to verify that Licensee is
+complying with the terms hereof. In the event that an underpayment is
+revealed as the result of such audit Licensee shall immediately upon
+being so requested by Cendio pay such underpayment together with the
+costs of any such audit.
+
+8.4     If one or more provisions of this License are held to be
+illegal or unenforceable under applicable law, such illegal or
+unenforceable provision(s) shall be limited or excluded from this
+License to the minimum extent required so that this License shall
+otherwise remain in full force and effect and enforceable in accordance
+with its terms.
+
+8.5     This License shall be governed by and construed in accordance
+with Swedish law. Any dispute, controversy or claim arising out of or
+in connection with this License, or the breach, termination or
+invalidity thereof shall be finally settled by arbitration in
+accordance with the Rules of the Arbitration Institute of the Stockholm
+Chamber of Commerce. The arbitral tribunal shall be composed of a sole
+arbitrator. The place of arbitration shall be Linköping. The language
+to be used in the arbitral proceedings shall be English. If the
+dispute, inclusive of any counterclaims, claims for set-off and
+interest should comprise of an amount less than $200,000 (two hundred
+thousand dollars), exclusive of VAT, the Rules for Expedited
+Arbitrations of the Arbitration Institute of the Stockholm Chamber of
+Commerce shall be applied.
+
+8.6     Licensee agrees that this License is the complete and exclusive
+statement of the mutual understanding between the parties and
+supersedes all previous written and oral agreements and communications
+relating to the subject matter of this License. It may not be modified
+or waived except in writing signed by authorized representatives of
+both parties.
+
+8.7     All notices under this License shall be in writing, and shall
+be deemed delivered 5 (five) days after sending in the case of notices
+sent by post or 24 (twenty-four) hours after sending in the case of
+notices by email.
+
+8.8     Licensee shall not assign, transfer, or sublicense any
+obligations or benefit under this License without the prior written
+consent, which shall not be unreasonably withheld, of Cendio (and any
+such attempt shall be void). Cendio may assign this License in whole or
+in part.
+
+8.9     The Program(s) are not specifically developed or licensed for
+use in any nuclear, aviation, mass transit or medical application or in
+any other inherently dangerous applications. Neither Cendio nor its
+suppliers shall be liable for any claims or damages arising from such
+use and Licensee agrees to indemnify and hold harmless Cendio and its
+suppliers from any claims for losses, costs, damages, or liability
+arising out of or in connection with such use of the Program(s).
