@@ -1,6 +1,6 @@
 pkgbase = apart-gtk
 	pkgdesc = Linux GUI for cloning & restoring disk partitions to & from compressed image files.
-	pkgver = 0.17
+	pkgver = 0.18
 	pkgrel = 1
 	url = https://github.com/alexheretic/apart-gtk
 	arch = any
@@ -13,14 +13,14 @@ pkgbase = apart-gtk
 	depends = python-pyzmq
 	depends = python-humanize
 	depends = gtk3
-	depends = pigz
 	depends = partclone
 	depends = zeromq
 	optdepends = polkit: to run as non-root user
+	optdepends = pigz: adds compression option
 	optdepends = zstd: adds compression option
 	optdepends = lz4: adds compression option
-	source = https://github.com/alexheretic/apart-gtk/archive/v0.17.tar.gz
-	sha256sums = 34d84129633fd69dd95d12f56633e2b0a7932a0d00e99ab32a82bc1daf252d49
+	source = https://github.com/alexheretic/apart-gtk/archive/v0.18.tar.gz
+	sha256sums = be4ea15b3575c71dc6710835a03f15d4060c0325b2123fe77aad7908fea66af1
 
 pkgname = apart-gtk
 
