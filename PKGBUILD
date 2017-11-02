@@ -1,15 +1,15 @@
 # Maintainer: Angelo Haller <aur.archlinux@szanni.org>
 
 pkgname=slideextract
-pkgver=0.0.2
-pkgrel=2
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="Extract slides from videos."
 arch=('any')
 url="http://szanni.org/slideextract"
 license=('BSD')
 depends=('opencv>=2.0')
 source=($url/download/$pkgname-$pkgver.tar.xz)
-sha256sums=('1546996a687a476f81e65f5bbedda2ef4c0325b0e32caf4f89757fd15957d1c2')
+sha256sums=('808358e3b37cf4a57a39ced8a716d9b537673a43f4e45e36a94655a00bf15916')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
