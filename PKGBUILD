@@ -1,10 +1,9 @@
-# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
+# Maintainer: Fabio Loli <loli_fabio@protonmail.com> -> https://github.com/FabioLolix
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
-# https://github.com/FabioLolix
 
 pkgname=phoronix-test-suite-milestone
-pkgver=7.6.0m1
+pkgver=7.6.0m2
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux, milestone version"
 arch=('any')
@@ -13,12 +12,19 @@ url="http://www.phoronix-test-suite.com/"
 depends=('php')
 optdepends=('php-gtk'
             'php-gd'
-            'gcc-fortran')
+            'sqlite3: required when running a Phoromatic server.'
+            'gcc-fortran: required for universe-cli test suite'
+            'blas: required for universe-cli test suite'
+            'lapack: required for universe-cli test suite'
+            'portaudio: required for universe-cli test suite'
+            'unzip: required for universe-cli test suite'
+            'mesa-demos: required for universe-cli test suite'
+            'openmpi: required for universe-cli test suite')
 provides=('phoronix-test-suite')
 conflicts=('phoronix-test-suite' 'phoronix-test-suite-milestone')
 install=${pkgname}.install
 source=(http://www.phoronix-test-suite.com/releases/development/phoronix-test-suite-$pkgver.tar.gz)
-sha256sums=('113956045d0d9816db87fe2a479e0717806241491e4bbc7971a31de103e5842e')
+sha256sums=('b22b3f4026d877ef87c4089275626b0c2fcc1df7538e9aa6184bdb2e546adae1')
 
 package() {
   cd "$srcdir"/phoronix-test-suite

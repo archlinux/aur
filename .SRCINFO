@@ -1,6 +1,6 @@
 pkgbase = phoronix-test-suite-milestone
 	pkgdesc = The most comprehensive testing and benchmarking platform available for Linux, milestone version
-	pkgver = 7.6.0m1
+	pkgver = 7.6.0m2
 	pkgrel = 1
 	url = http://www.phoronix-test-suite.com/
 	install = phoronix-test-suite-milestone.install
@@ -9,12 +9,19 @@ pkgbase = phoronix-test-suite-milestone
 	depends = php
 	optdepends = php-gtk
 	optdepends = php-gd
-	optdepends = gcc-fortran
+	optdepends = sqlite3: required when running a Phoromatic server.
+	optdepends = gcc-fortran: required for universe-cli test suite
+	optdepends = blas: required for universe-cli test suite
+	optdepends = lapack: required for universe-cli test suite
+	optdepends = portaudio: required for universe-cli test suite
+	optdepends = unzip: required for universe-cli test suite
+	optdepends = mesa-demos: required for universe-cli test suite
+	optdepends = openmpi: required for universe-cli test suite
 	provides = phoronix-test-suite
 	conflicts = phoronix-test-suite
 	conflicts = phoronix-test-suite-milestone
-	source = http://www.phoronix-test-suite.com/releases/development/phoronix-test-suite-7.6.0m1.tar.gz
-	sha256sums = 113956045d0d9816db87fe2a479e0717806241491e4bbc7971a31de103e5842e
+	source = http://www.phoronix-test-suite.com/releases/development/phoronix-test-suite-7.6.0m2.tar.gz
+	sha256sums = b22b3f4026d877ef87c4089275626b0c2fcc1df7538e9aa6184bdb2e546adae1
 
 pkgname = phoronix-test-suite-milestone
 
