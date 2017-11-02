@@ -2,15 +2,15 @@
 
 pkgname=monkeyjump
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalistic GUI for playing Go with GnuGo and other GTP applications'
 arch=('any')
-url='http://github.com/xyproto/monkeyjump'
+url='https://github.com/xyproto/monkeyjump'
 license=('GPL2')
 depends=('python2-pygame' 'gnugo')
 makedepends=('setconf' 'python2-setuptools')
 backup=('etc/monkeyjump/gnugocmd.conf' 'etc/monkeyjump/theme.conf' 'etc/monkeyjump/keybindings.conf')
-source=('monkeyjump::git://github.com/xyproto/monkeyjump.git#commit=a6fcea4e0f03c09a47b0117567893d0fe882b2a8')
+source=('git+https://github.com/xyproto/monkeyjump.git#commit=a6fcea4e0f03c09a47b0117567893d0fe882b2a8')
 md5sums=('SKIP')
 
 prepare() {
@@ -23,8 +23,8 @@ prepare() {
     --categories="Game;BoardGame;" \
     --terminal=true
 
-  setconf monkeyjump CONFDIR \"/etc/monkeyjump\"
-  setconf monkeyjump THEMEDIR \"/usr/share/monkeyjump/themes\"
+  setconf monkeyjump CONFDIR=\"/etc/monkeyjump\"
+  setconf monkeyjump THEMEDIR=\"/usr/share/monkeyjump/themes\"
 }
 
 package() {
@@ -50,4 +50,4 @@ package() {
     "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
