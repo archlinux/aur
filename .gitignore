@@ -1,0 +1,4 @@
+pkg
+src
+ghc8.0-8.0.*-*-*.pkg.tar.xz
+ghc-8.0.*-src.tar.xz
