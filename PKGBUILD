@@ -3,7 +3,7 @@
 _pkgname=cyber
 pkgname=${_pkgname}-dkms
 pkgver=42.1729.1634
-pkgrel=2
+pkgrel=3
 pkgdesc="CYBER for your system (DKMS)"
 arch=('i686' 'x86_64')
 url="https://github.com/fmorgner/dev-cyber"
@@ -21,7 +21,7 @@ package() {
 
   local install_dir="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 
-  install -Dm644 10-cyber.conf "${pkgdir}/etc/modprobe.d/10-cyber.conf"
+  install -Dm644 10-cyber.conf "${pkgdir}/etc/modules-load.d/10-cyber.conf"
 
   install -Dm644 dkms.conf "${install_dir}/dkms.conf"
 

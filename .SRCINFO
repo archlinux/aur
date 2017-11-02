@@ -1,7 +1,7 @@
 pkgbase = cyber-dkms
 	pkgdesc = CYBER for your system (DKMS)
 	pkgver = 42.1729.1634
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fmorgner/dev-cyber
 	arch = i686
 	arch = x86_64
