@@ -17,8 +17,8 @@ md5sums_x86_64=('093e4adb4a1e1a5208fbaa40625f3d98')
 
 package() {
 	install -dm0755 "$pkgdir"/etc/php/conf.d
-	install -Dm0755 ioncube_loader_lin_${pkgver}.so "$pkgdir"/usr/lib/php/modules/ioncube_loader_lin_${pkgver}.so
+	install -Dm0755 ioncube/ioncube_loader_lin_${pkgver}.so "$pkgdir"/usr/lib/php/modules/ioncube_loader_lin_${pkgver}.so
 	echo "zend_extension = /usr/lib/php/modules/ioncube_loader_lin_${pkgver}.so" > "$pkgdir"/etc/php/conf.d/00-ioncube_loader.ini
-	install -Dm0644 README.txt "$pkgdir"/usr/share/doc/$pkgname/README.txt
-	install -Dm0644 loader-wizard.php "$pkgdir"/usr/share/doc/$pkgname/loader-wizard.php
+	install -Dm0644 ioncube/README.txt "$pkgdir"/usr/share/doc/$pkgname/README.txt
+	install -Dm0644 ioncube/loader-wizard.php "$pkgdir"/usr/share/doc/$pkgname/loader-wizard.php
 }
