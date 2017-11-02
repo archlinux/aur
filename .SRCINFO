@@ -1,7 +1,7 @@
 pkgbase = katriawm
 	pkgdesc = A non-reparenting, dynamic window manager for X11 with decorations
 	pkgver = 17.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vain/katriawm
 	arch = i686
 	arch = x86_64
