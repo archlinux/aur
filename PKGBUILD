@@ -35,7 +35,7 @@ package() {
 
   scripts=('vcf_validator' 'vcf_debugulator' 'test_validator')
   for script in "${scripts[@]}"; do
-    cp bin/"${script}" "${pkgdir}"/usr/bin/"${script//_/-}"
+    cp bin/"${script}" "${pkgdir}"/usr/bin/"${script}"
   done
 
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"_v"${pkgver}"/LICENSE
