@@ -2,18 +2,23 @@
 
 _pkgname=vagrant
 pkgname=vagrant-git
-pkgver=1.8.5.95.g7ceac14
+pkgver=2.0.0.101.g52824f20b
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
-url="http://vagrantup.com"
+url="https://vagrantup.com"
 license=('MIT')
-conflicts=('vagrant')
 options=('!emptydirs')
-makedepends=('git')
-depends=('vagrant-substrate')
-source=(git://github.com/mitchellh/$_pkgname.git)
-md5sums=('SKIP')
+depends=('curl' 'libarchive' 'libssh2' 'libxml2' 'libxslt' 'rsync'
+         'ruby' 'xz')
+makedepends=('git' 'go-pie')
+provides=('vagrant')
+conflicts=('vagrant' 'vagrant-substrate' 'vagrant-substrate-git')
+replaces=('vagrant-substrate' 'vagrant-substrate-git')
+source=(git://github.com/mitchellh/$_pkgname.git
+        git://github.com/mitchellh/vagrant-installers.git)
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -24,28 +29,36 @@ pkgver() {
 build() {
   cd $_pkgname
 
-  EMBEDDED_DIR=/opt/vagrant/embedded
+  INSTALLERS_DIR="$srcdir"/vagrant-installers/substrate/modules
 
-  "$EMBEDDED_DIR"/bin/gem build $_pkgname.gemspec
+  gem build $_pkgname.gemspec
+
   cp vagrant-*.gem vagrant.gem
 
-  GEM_PATH="$srcdir"/$_pkgname/gems-$pkgver-$pkgrel GEM_HOME="$GEM_PATH" \
-  GEMRC="$EMBEDDED_DIR"/etc/gemrc \
-  CPPFLAGS="-I$EMBEDDED_DIR/include -I${EMBEDDED_DIR}/include/libxml2" \
-  CFLAGS="${CPPFLAGS}" \
-  LDFLAGS="-L$EMBEDDED_DIR"/lib PATH="$EMBEDDED_DIR/bin:$PATH" \
-  SSL_CERT_FILE="$EMBEDDED_DIR"/cacert.pem \
-  NOKOGIRI_USE_SYSTEM_LIBRARIES=1 \
-    "$EMBEDDED_DIR"/bin/gem install $_pkgname.gem --no-ri --no-rdoc
+  cd "$INSTALLERS_DIR"/vagrant_substrate/files/launcher
+  go get github.com/mitchellh/osext
+  go build -o vagrant
 }
 
 package() {
   cd $_pkgname
 
-  install -d "$pkgdir"/usr/{bin,share/bash-completion/completions}
-  install -d "$pkgdir"/opt/vagrant/embedded
+  INSTALLERS_DIR="$srcdir"/vagrant-installers/substrate/modules
+  EMBEDDED_DIR="$pkgdir"/opt/vagrant/embedded
 
-  cp -r gems-$pkgver-$pkgrel "$pkgdir"/opt/vagrant/embedded/gems
+  install -d "$pkgdir"/usr/{bin,share/bash-completion/completions}
+
+  install -Dm644 "$INSTALLERS_DIR"/vagrant_substrate/templates/gemrc.erb \
+    "$EMBEDDED_DIR"/etc/gemrc
+
+  cp -r "$INSTALLERS_DIR"/rubyencoder/files/rgloader "$EMBEDDED_DIR"
+
+  GEM_PATH="$EMBEDDED_DIR"/gems GEM_HOME="$GEM_PATH" \
+  GEMRC="$EMBEDDED_DIR"/etc/gemrc \
+    gem install $_pkgname.gem --no-ri --no-rdoc
+
+  install -Dm755 "$INSTALLERS_DIR"/vagrant_substrate/files/launcher/vagrant \
+    "$pkgdir"/opt/$_pkgname/bin/$_pkgname
 
   ln -s /opt/$_pkgname/bin/$_pkgname "$pkgdir"/usr/bin/$_pkgname
 
