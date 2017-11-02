@@ -3,17 +3,17 @@
 pkgname=perl-file-moreutil
 _lastauthor=P/PE/PERLANCAR
 _pkgname=File-MoreUtil
-pkgver=0.60
+pkgver=0.61
 pkgrel=1
 pkgdesc='File-related utilities'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-rinci')
-checkdepends=('perl-file-slurp-tiny' 'perl-file-chdir')
+checkdepends=('perl-file-slurper' 'perl-file-chdir')
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('eaa8757a738739b2f5f44986f3ec3576163cfb35406aeb7d2a761c98bbbf280b5c5630ee17500bf4848d9d66808f17549f9b94f1399ab2104e3f2f4b031194f4')
+sha512sums=('168f13d807acd3df5ba71ffb02d1c04e58977a56e8d76ac002511717ed6cc085d8fe017aa356abfdd0562816e7aa44eb224b9f415770321f166ec2cea81ad58c')
 
 conflicts=("perl-sharyanto-file-util")
 provides=("perl-sharyanto-file-util")
