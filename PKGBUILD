@@ -5,7 +5,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-clojure-mode-git
-pkgver=5.6.1.32.g061431d
+pkgver=5.6.1.33.g3741ee3
 pkgrel=1
 arch=('any')
 pkgdesc="Emacs major mode for the clojure language"
