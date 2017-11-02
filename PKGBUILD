@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname="termtrack-git"
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Track orbiting objects (such as the International Space Station) in your terminal"
 arch=(any)
 url="https://github.com/trehn/termtrack"
@@ -20,5 +20,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/termtrack"
+	sed -i 's/pyephem/ephem/' setup.py
 	python setup.py install --optimize=1 --root="$pkgdir/" --prefix="/usr"
 }
