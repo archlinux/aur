@@ -1,0 +1,9 @@
+[Unit]
+Description=ThinLinc Web Access
+
+[Service]
+Type=simple
+PIDFile=/var/run/tlwebaccess.pid
+ExecStart=/opt/thinlinc/sbin/tlwebaccess
+
+
