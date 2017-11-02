@@ -5,7 +5,7 @@
 pkgbase=linux-bld       # Build kernel with a different name
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.13.10
+pkgver=4.13.11
 _srcname=linux-4.13
 _pkgver2=${_srcname#*-}.0
 pkgrel=1
@@ -14,13 +14,11 @@ url="https://github.com/rmullick/linux"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 _BLDpatch="BLD-${_srcname#*-}.patch"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # pacman hook for initramfs regeneration
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
@@ -29,20 +27,20 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
 # Arch stock configuration files are directly pulled from specefic trunk
-arch_config_trunk=a12b2132b905e1d16939ebdca5b0d6393552f8f1
+arch_config_trunk=65b12e4c878bd9da2849289974d0e3a3137c0284
 source_x86_64=("config.x86_64::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.x86_64?h=packages/linux&id=${arch_config_trunk}")
 source_i686=("config.i686::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config.i686?h=packages/linux&id=${arch_config_trunk}")
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            'b9efa9c6375f79f6a041a5f0666d4ced1a49bfe8c4662d26517a6b4cfd9bf2f6'
+            'f5fb017ee531dc35e3462ccb2d244d4fdc8ac6df9cd3337aa6df2ffc280b1bd6'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
             '58939b88d928bbb7844d80ab6952d61d97fe671b2a182fe62ad3885ada80fd76')
-sha256sums_i686=('f68bb8bccbbd6b86dc9f182ee25b2953638aec2729387c70d2787318ad4ea16c')
-sha256sums_x86_64=('9be58e0adea94ccd51aabdd568fa65ba84097f31589de57c5fcc7c71c257a6e0')
+sha256sums_i686=('9b1d9fcb55782e6149aca4dc2d3b250dd4cedf1bf4bd8c6f0968acab0e2e0ee4')
+sha256sums_x86_64=('9c6c4d27d59638d0569ea09a97138bfcfb219f17cdf1138be141380e6654f302')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -76,10 +74,6 @@ prepare() {
 
   msg2 "BLD patches"
   patch -Np1 -i "${srcdir}/${_BLDpatch}"
-
-  msg2 "Patch source to unlock additional gcc CPU optimizatons"
-  # https://github.com/graysky2/kernel_gcc_patch
-#  patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
 #  msg2 "Patches from Archlinux standard package"
 
