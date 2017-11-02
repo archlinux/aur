@@ -1,69 +1,58 @@
 #Maintainer: M0Rf30
 
 pkgname=openbazaard
-pkgver=0.2.6
+pkgver=0.9.4
 pkgrel=1
-pkgdesc="Server daemon for communication between client and OpenBazaar network"
-arch=(any)
+pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest devel version)"
+arch=(arm armv6h armv7h aarch64 i686 x86_64)
 url="http://openbazaar.org"
 license=('MIT')
-depends=(
-	gnupg
-	python2-bitcointools
-	python2-bleach
-	python2-certifi
-	python2-gnupg-isis
-	python2-libbitcoinclient
-	python2-miniupnpc
-	python2-protobuf
-	python2-pynacl
-	python2-pystun
-	python2-python-bitcoinlib
-	python2-service-identity
-	python2-twisted
-	python2-txrestapi
-	python2-txrudp
-	python2-txws
-)
-
-source=("https://github.com/OpenBazaar/OpenBazaar-Server/archive/v$pkgver.tar.gz"
-	"${pkgname}.service"
-	"${pkgname}.conf"
-	"${pkgname}.sh"
-)
+depends=()
 install=${pkgname}.install
-options=('!strip')
-provides=('openbazaard')
-replaces=('openbazaard-git' 'openbazaard-standalone' 'openbazaard-standalone-git')
-backup=("var/lib/${pkgname}/ob.cfg"
-	"etc/conf.d/${pkgname}.conf")
+makedepends=(go upx)
+_user=github.com/OpenBazaar
+_repo=openbazaar-go
+source=("https://github.com/OpenBazaar/openbazaar-go/archive/v$pkgver.tar.gz"
+		"${pkgname}.service"
+)
+options=('strip' 'upx')
 
-_srcfolder=OpenBazaar-Server-$pkgver
+export GOOS=linux
+case "$CARCH" in
+  x86_64) export GOARCH=amd64 ;;
+  i686) export GOARCH=386 GO386=387 ;;
+  arm) export GOARCH=arm GOARM=5 ;;
+  armv6h) export GOARCH=arm GOARM=6 ;;
+  armv7h) export GOARCH=arm GOARM=7 ;;
+  aarch64) export GOARCH=arm64 ;;
+esac
 
-package(){
+build(){
   cd $srcdir
+  export GOPATH="$PWD"/.gopath
+  mkdir -p "$GOPATH"/src/${_user}
+  ln -sf "$PWD"/${_repo}-${pkgver} "$GOPATH"/src/${_user}/${_repo}
 
-msg2 "Install systemd service"
-  install -Dm644 $srcdir/${pkgname}.service $pkgdir/usr/lib/systemd/system/${pkgname}.service
-
-msg2 "Install conf file"
-  install -Dm644 $srcdir/${pkgname}.conf $pkgdir/etc/conf.d/${pkgname}.conf
-  install -dm755 $pkgdir/var/lib/
-  cp -r ${_srcfolder} $pkgdir/var/lib/${pkgname}
-
-msg2 "Symlinking to allow gui to automatically call daemon"
-  install -dm755 $pkgdir/opt
-  ln -sr /var/lib/${pkgname} $pkgdir/opt/OpenBazaar-Server
-  install -m777 ${pkgname}.sh $pkgdir/var/lib/${pkgname}/${pkgname}
-
-msg2 "Python2 bytecode generation"
-  cd $pkgdir/var/lib/${pkgname}/ && python2 -m compileall .
-
-msg2 "Remove git folder"
-  rm -rf $pkgdir/var/lib/${pkgname}/{.git*,.eslint*,.travis*}
+  cd "$GOPATH"/src/${_user}/${_repo}
+  go get -v
 }
 
-md5sums=('ebf7299e9d83069f9d6037df98047c56'
-         'df247302f02ad1af79e009fa75ced4bc'
-         '7949d40abcd8bdaee27ff670d5b6c1c7'
-         '3dccb27e5df2324880fde3f1b0972a2c')
+package() {
+  export PATH="$PATH":"$PWD"/.gopath/bin
+  cd "$GOPATH"/src/${_user}/${_repo}
+
+  go build
+  
+  msg2 "Installing binary file"
+  install -Dm755 "$GOPATH"/bin/${_repo} $pkgdir/usr/bin/${pkgname}
+
+  msg2 "Installing systemd service"
+  install -Dm644 $srcdir/${pkgname}.service $pkgdir/usr/lib/systemd/system/${pkgname}.service
+  
+  msg2 "Symlinking for gui launch"
+  install -dm755 $pkgdir/opt/openbazaar-go/
+  ln -sr /usr/bin/${pkgname} $pkgdir/opt/openbazaar-go/${pkgname}
+}
+
+md5sums=('eeabc3ce4908fc26bbfcbc6b3e914c57'
+         '9737f9240006f5b215b128c25f68f6f4')
