@@ -2,7 +2,7 @@
 
 pkgname=gnu-apl
 pkgver=1.7
-pkgrel=2
+pkgrel=3
 url="http://www.gnu.org/software/apl/"
 pkgdesc="An (almost) complete implementation of ISO standard 13751"
 arch=('i686' 'x86_64')
@@ -16,6 +16,9 @@ prepare() {
     # The default color scheme is black-on-black in some terminals
     sed -i 's/^  Color.*ANSI/#&/' gnu-apl.d/preferences
     sed -i '0,/^# Color.*CURSES/{s/^# Color.*CURSES/Color\tCURSES/}' gnu-apl.d/preferences
+
+    # SVN 908 (remove in 1.8)
+    sed -i '888 s/ || / || nc == /g' src/Symbol.cc
 }
 
 build() {
