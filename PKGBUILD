@@ -27,9 +27,17 @@ optdepends=('nfs-utils: Local drive redirection'
 _archive_name=tl-${pkgver}-server
 
 source=("${_archive_name}.zip"
-        'LICENSE')
+        'LICENSE'
+        'tlwebaccess.service'
+        'tlwebadm.service'
+        'vsmagent.service'
+        'vsmserver.service')
 sha256sums=('73437ea15b12f26fb29a6788c8232675ad161cf5e49af4cb8043b8b8c60947d7'
-            '179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e')
+            '179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e'
+            '430bcbc959ab363a270fd830c9db8caa057dfbfde69beb6193958c282bd03f7d'
+            'cbbf364b9303ff55a7fef434bddab7533f95b8228f045e232fd1c83b78a9a842'
+            'b64dcb2ecfb38120a3314b14c114fbf79ecdf699984db7addadd3aec644165da'
+            '3e0fdaeca38f4750c9b369a65b7b3c84dff996e9997dbb02dbfe16dc78a09849')
 
 _extract_dir="extract"
 
