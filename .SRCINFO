@@ -27,4 +27,3 @@ pkgbase = thinlinc-server
 	sha256sums = 635a76ce5f501608ac77b3a396faee57c4bfba82ade2d38d37e657d147a745fd
 
 pkgname = thinlinc-server
-

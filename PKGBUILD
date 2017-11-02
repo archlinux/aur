@@ -1,9 +1,9 @@
-# Maintainer: adytzu2007 <adybac "at" gmail {dot} com>
+# Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 
 pkgname=thinlinc-server
 pkgver=4.5.0
 pkgrel=1
-pkgdesc="Cendio ThinLinc Linux Remote Desktop Server"
+pkgdesc="Cendio ThinLinc Linux remote desktop server"
 arch=('i686' 'x86_64')
 url="http://www.cendio.com/"
 license=('custom')
@@ -33,9 +33,7 @@ _extract_dir="extract"
 
 build()
 {
-    cd "${srcdir}/${_archive_name}"
-
-    cd packages
+    cd "${srcdir}/${_archive_name}/packages"
     mkdir -p "${_extract_dir}"
 
     for rpm in *${CARCH}*rpm *noarch*rpm; do
@@ -49,9 +47,7 @@ build()
     patch -p1 < ${srcdir}/service.patch
     popd
 
-    mkdir -p "usr"
-    [[ "$CARCH" == "x86_64" ]] && mv "lib64" "usr/lib"
-
+    [[ "$CARCH" == "x86_64" ]] && mkdir "usr" && mv "lib64" "usr/lib"
     rm -Rf "etc/init.d"
 }
 
