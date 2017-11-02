@@ -42,4 +42,4 @@ msg2 "Installing icons and desktop menu entry"
 
 md5sums=('3bea757fb365f59794a751598bfb2024'
          'a4eb003ad61dc2536ff5a3241b3aa19e'
-         'dbca9273e9fc18a7aa5d1c395508fe60')
+         'f48876b52eee00c24abb7bbbb53d8e6c')
