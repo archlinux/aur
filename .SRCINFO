@@ -1,6 +1,6 @@
 pkgbase = git-git
 	pkgdesc = A fast distributed version control system
-	pkgver = 2.14.2.r746.g8fb8a945bc
+	pkgver = 2.15.0.r0.gcb5918aa0d
 	pkgrel = 1
 	url = http://git-scm.com/
 	install = git-git.install
