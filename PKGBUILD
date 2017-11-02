@@ -2,7 +2,7 @@
 
 pkgname=asmttpd
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Web server written in Assembly'
 arch=('x86_64')
 url='https://github.com/nemasu/asmttpd'
@@ -16,11 +16,10 @@ build() {
   cd $pkgname
 
   # The port number is only hard-coded in the assembly code, unfortunately.
-  # Build for port 80, 4000 and 7000:
+  # Build for port 80 and the additional port numbers.
   for p in 80 ${_additional_ports[@]}; do
-    msg2 "Building $pkgname for port $p"
     export PORT="$p"
-    HEXPORT=$(python -c 'import os; print("0x" + hex(int(os.getenv("PORT")))[2:][-2:].zfill(2) + hex(int(os.getenv("PORT")))[2:-len(hex(int(os.getenv("PORT")))[2:][-2:].zfill(2))].zfill(2))')
+    HEXPORT=$(python -c 'import os;x=hex(int(os.getenv("PORT")));print("0x"+x[2:][-2:].zfill(2)+x[2:-len(x[2:][-2:].zfill(2))].zfill(2))')
     sed -i "s/LISTEN_PORT/LISTEN_PORT $HEXPORT ; PORT $PORT, network byte order\n;/" main.asm
     grep LISTEN_PORT main.asm
     make -s
@@ -30,7 +29,6 @@ build() {
 }
 
 package() {
-  msg2 "Packaging $pkgname"
   install -Dm755 "${pkgname}80" "$pkgdir/usr/bin/$pkgname"
   for p in ${_additional_ports[@]}; do
     msg2 "Packaging $pkgname$p"
