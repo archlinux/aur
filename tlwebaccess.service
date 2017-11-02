@@ -6,4 +6,5 @@ Type=simple
 PIDFile=/var/run/tlwebaccess.pid
 ExecStart=/opt/thinlinc/sbin/tlwebaccess
 
-
+[Install]
+WantedBy=multi-user.target

@@ -6,3 +6,5 @@ Type=simple
 PIDFile=/var/run/vsmserver.pid
 ExecStart=/opt/thinlinc/sbin/vsmserver
 
+[Install]
+WantedBy=multi-user.target

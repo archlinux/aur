@@ -34,10 +34,10 @@ source=("${_archive_name}.zip"
         'vsmserver.service')
 sha256sums=('73437ea15b12f26fb29a6788c8232675ad161cf5e49af4cb8043b8b8c60947d7'
             '179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e'
-            '430bcbc959ab363a270fd830c9db8caa057dfbfde69beb6193958c282bd03f7d'
-            'cbbf364b9303ff55a7fef434bddab7533f95b8228f045e232fd1c83b78a9a842'
-            'b64dcb2ecfb38120a3314b14c114fbf79ecdf699984db7addadd3aec644165da'
-            '3e0fdaeca38f4750c9b369a65b7b3c84dff996e9997dbb02dbfe16dc78a09849')
+            '8e70ef23f9716dcb100eba660932e7f5d05351d63074fb262cf925812dbdbb63'
+            '5a92c5beac6c64487debd92a4d94b56074b9f9b0cd38d154a14a320105f3bccd'
+            '292e6ef1295f329ab95d1d16c5bf7286f5c5c288d6637d0d736b9a144e85449d'
+            'a1fe20c565e7e468407d73a0f59c8c352318a7e4c8e85fe068d89cbb0afd5e71')
 
 _extract_dir="extract"
 
