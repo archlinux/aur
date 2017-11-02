@@ -18,7 +18,7 @@ source=(
   'chromium-last-commit-position-r1.patch'
   'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
   'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r17.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc5-r2.patch'
+  'chromium-gcc5-r2.patch'
 )
 sha512sums=('26296ac1cddfe087e8984b12b4916b9a87b08fc75875900441c9e4abd8b562bb622ac1a34bc9fb2aecf22d5a424ef1247dc694b9e6bdd0ea8b32397f53794723'
             '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
