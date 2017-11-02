@@ -3,7 +3,7 @@
 pkgname=yarn-nightly
 _pkgver=$(curl -s -L https://nightly.yarnpkg.com/latest.json | jq -r '.tar.version')
 _pkgname="yarn-v$_pkgver"
-pkgver=1.2.1.20171031.2107
+pkgver=1.3.0.20171102.1040
 pkgrel=1
 pkgdesc='Fast, reliable, and secure dependency management'
 arch=(any)
