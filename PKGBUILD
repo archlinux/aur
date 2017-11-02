@@ -10,15 +10,16 @@ _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 
 pkgname=unity-editor-beta-android
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows building your Unity projects for the Android platform"
 arch=('x86_64')
 url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-beta'
          'android-platform'
+         'android-sdk-build-tools'
          'android-udev')
-optdepends=('android-ndk: needed for IL2CPP builds')
+optdepends=('android-ndk-13b: needed for IL2CPP builds')
 makedepends=('gtk2' 'libsoup' 'libarchive')
 source=("${_unitydownloads}/UnitySetup-${_version}${_build}")
 sha1sums=('2c7e3358f4833070ac5266b0abc90aea8f4875c8')
