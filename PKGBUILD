@@ -2,7 +2,7 @@
 # Maintainer: Haruki Ota <ootaharuki99[at]gmail.com>
 pkgname=recdvb
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple command-line utility to record DVB streams.'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://github.com/k-pi/recdvb'
