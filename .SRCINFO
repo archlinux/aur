@@ -1,5 +1,5 @@
 pkgbase = ramroot
-	pkgdesc = load root and /boot partitions to RAM during boot
+	pkgdesc = Load root and /boot partitions to RAM during boot
 	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/arcmags/ramroot
