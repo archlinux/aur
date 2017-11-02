@@ -1,6 +1,6 @@
 pkgname=psp-newlib
 pkgver=1.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Newlib is a C library intended for use on embedded systems (psp)"
 arch=(any)
 url="http://sourceware.org/newlib/"
@@ -10,12 +10,13 @@ makedepends=('psp-gcc-base' 'psp-binutils' 'psp-sdk-base')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("ftp://sourceware.org/pub/newlib/newlib-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/pspdev/psptoolchain/master/patches/newlib-$pkgver-PSP.patch")
-md5sums=('e5488f545c46287d360e68a801d470e8'
-         'a4c92e3212937ced1f6aa9130331c1b1')
+sha256sums=('c644b2847244278c57bec2ddda69d8fab5a7c767f3b9af69aa7aa3da823ff692'
+            '43630dd12c0148d035a00daa0665b67122cf40bdf2fc587a9db40cb7deeb7dbf')
 
 prepare ()
 {
   cd "$srcdir/newlib-$pkgver"
+  rm -f newlib/libc/include/memory.h
   rm -rf newlib/libc/sys/psp/
   patch -p1 -i "$srcdir"/newlib-$pkgver-PSP.patch
 }
