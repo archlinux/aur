@@ -31,7 +31,7 @@ depends=(
   'python2-pbkdf2'
   'python2-protobuf'
   'python2-pyaes'
-  'python2-qtpy'
+  'python2-pyqt5'
   'python2-pysocks'
   'python2-qrcode'
   'python2-requests'
