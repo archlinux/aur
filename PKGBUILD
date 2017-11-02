@@ -3,7 +3,7 @@
 
 pkgname=codec2
 pkgver=0.6
-pkgrel=3
+pkgrel=4
 pkgdesc='an open source codec designed for communications quality speech below 5000 bit/s'
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -18,7 +18,7 @@ build() {
   cd "$pkgname-$pkgver"
   mkdir -p build_dir
   cd build_dir
-  cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=lib
+  cmake ../  -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=lib
   make 
 }
 
