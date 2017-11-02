@@ -1,7 +1,7 @@
 # Maintainer: Vlad M. <vlad@archlinux.net>
 
 pkgname=cargo-outdated
-pkgver=0.5.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A cargo subcommand for displaying when Rust dependencies are out of date"
 url="https://github.com/kbknapp/cargo-outdated"
@@ -9,7 +9,7 @@ depends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT')
 source=("https://github.com/kbknapp/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('8c4c45cf02bef27a22cf385c9de19f9ddfa5648a6350169597b2e9ed020dafd4')
+sha256sums=('a8a574fc1906d5e08d52579e664421812f711dcfa5370b6d5adaaac5ed59a62c')
 
 build() {
   cd "$pkgname-$pkgver"
