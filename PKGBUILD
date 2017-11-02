@@ -50,7 +50,7 @@ pkgver() {
 package() {
 	cd "$src"
 	cd "$pkgname-$pkgver"
-	python setup.py install --root=${pkgdir} 
+	python setup.py install --root=${pkgdir} --prefix=/usr
 	install -Dm644 gpl.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
 }
