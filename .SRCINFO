@@ -1,6 +1,6 @@
 pkgbase = rapid-photo-downloader-bzr
 	pkgdesc = Photo and video downloader
-	pkgver = 0.9.4.r1030
+	pkgver = 0.9.5b1.r1033
 	pkgrel = 1
 	url = http://www.damonlynch.net/rapid/
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = rapid-photo-downloader-bzr
 	depends = udisks2
 	provides = rapid-photo-downloader
 	conflicts = rapid-photo-downloader
-	source = bzr+lp:rapid
+	source = rapid::bzr+https://code.launchpad.net/~dlynch3/rapid/zeromq_pyqt
 	sha256sums = SKIP
 
 pkgname = rapid-photo-downloader-bzr
