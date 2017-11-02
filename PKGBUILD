@@ -1,8 +1,8 @@
-# Maintainer: gavin lyons <glyons66@hotmail.com>
+# Maintainer: Gavin Lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=4.3.1
-pkgrel=5
+pkgver=5.0
+pkgrel=1
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven TUI written in Bash"
 depends=('dialog' 'expac')
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   'ccrypt: used for encrypting'
   'rsync: used for backup'
   'inxi: system information viewer'
-  'htop: interactive process viewer'
+  'libnotify: desktop notifications'
   'wavemon: wireless network monitor'
   'speedtest-cli: internet bandwidth'
   'lynis: system audit tool'
@@ -30,10 +30,10 @@ optdepends=(
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
 
-md5sums=('86a0bf63ef0bc690ad4b37bb016c0af4')
+md5sums=('f6df49b9faac7b210669326ff486b7dc')
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    install -D -m755 Cylon.sh "$pkgdir"/usr/bin/"${pkgname}" 
+    install -D -m755 main/Cylon.sh "$pkgdir"/usr/bin/"${pkgname}" 
     install -D -m644 README.md "$pkgdir/usr/share/doc/${pkgname}/Readme.md"
 
     install -D -m644 documentation/cylon.7   "$pkgdir/usr/share/man/man7/cylon.7"
