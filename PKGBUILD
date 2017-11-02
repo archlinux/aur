@@ -13,8 +13,8 @@ pkgrel=1
 pkgdesc=" A python library to read from and write to FITS files. "
 
 
-arch=('any')
-url="https://github.com/esheldon/fitsio"
+arch=('x86_64')
+url="https://github.com/esheldon/fitsio.git"
 license=('BSD')
 groups=()
 depends=('python2' 'python2-numpy')
@@ -50,6 +50,7 @@ pkgver() {
 package() {
 	cd "$src"
 	cd "$pkgname-$pkgver"
-	python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+	python2 setup.py install --root=${pkgdir} --prefix=/usr
+	install -Dm644 gpl.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE	
 
 }
