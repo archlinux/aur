@@ -3,7 +3,7 @@
 pkgname=docfetcher
 _name=DocFetcher
 pkgver=1.1.19
-pkgrel=2
+pkgrel=3
 _gtkver=gtk3 # variable that controls whether GTK2 or 3(default) is to be used.
 pkgdesc="A java open source desktop search application"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgve
 sha256sums=('4471c48619ea319f45b431c98028b407e6e25de4040f84bd060fc9e6651076dc'
          'd49d1c1327b72345040c76ae510a3eaa520c82dd5c43f2a6e597f1c984b55c50'
          'edc2d63e3644eafe69229df44986c310a17eeecb06ce62818c24f55c9409ab54'
-         '125dc909d4b59aaa7e044d7f544c8a38359d950fdb698095f70c32b099127731')
+         '878ea6e2188733f13a7580606fef290ae5b547b814b33efcd61f8cef79b76b61')
 
 prepare() {
   cd "${srcdir}"

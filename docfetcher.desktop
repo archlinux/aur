@@ -3,7 +3,8 @@ Version=1.0
 Name=Docfetcher
 GenericName=Document Index and Search
 X-GNOME-FullName=Docfetcher Document Index and Search
-Comment=Index and Search your computerType=Application
+Comment=Index and Search your computer
+Type=Application
 Categories=System;Utility;FileTools;Java;
 Exec=docfetcher
 TryExec=docfetcher
