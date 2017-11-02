@@ -6,7 +6,11 @@ pkgbase = vcf-validator
 	arch = i686
 	arch = x86_64
 	license = Apache2.0
-	depends = libpthread-stubs libodb libodb-sqlite odb sqlite>=3
+	depends = libpthread-stubs
+	depends = libodb
+	depends = libodb-sqlite
+	depends = odb
+	depends = sqlite>=3
 	provides = vcf-validator
 	conflicts = vcf-validator
 	source = https://github.com/EBIvariation/vcf-validator/archive/v0.6.tar.gz

@@ -7,7 +7,7 @@ pkgdesc="Validation suite for Variant Call Format (VCF) files, implemented using
 arch=('i686' 'x86_64')
 url=https://github.com/EBIvariation/"${pkgname}"
 license=('Apache2.0')
-depends=('libpthread-stubs libodb libodb-sqlite odb sqlite>=3')
+depends=('libpthread-stubs' 'libodb' 'libodb-sqlite' 'odb' 'sqlite>=3')
 provides=('vcf-validator')
 conflicts=('vcf-validator')
 source=(https://github.com/EBIvariation/"${pkgname}"/archive/v"${pkgver}".tar.gz)
