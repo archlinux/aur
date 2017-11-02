@@ -1,0 +1,16 @@
+pkgbase = apertium-separable-svn
+	pkgdesc = Language-independent machine translation engine and tools to manage language data.
+	pkgver = 0.1.1.r83053
+	pkgrel = 1
+	url = http://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = svn
+	depends = apertium>=3.4.2
+	options = !libtool
+	source = svn://svn.code.sf.net/p/apertium/svn/branches/apertium-separable
+	md5sums = SKIP
+
+pkgname = apertium-separable-svn
+
