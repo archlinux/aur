@@ -4,10 +4,9 @@
 pkgname='python-django-storages'
 _module='django-storages'
 pkgver='1.6.5'
-pkgrel=1
+pkgrel=2
 pkgdesc="Support for many storage backends (S3, Libcloud, etc) in Django."
 url="https://github.com/jschneier/django-storages"
-depends=('python' 'python-django')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
@@ -20,7 +19,8 @@ build() {
 }
 
 package() {
-    depends+=()
+    depends=('python-django')
+    optdepends=('python-boto3')
 
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}/" --optimize=1
