@@ -1,5 +1,5 @@
-# Maintainer: Ian D. Scott <ian@perebruin.com>
-# Contributor: Lari Tikkanen <lartza@wippies.com>
+# Maintainer: Lari Tikkanen <lartza@wippies.com>
+# Contributor: Ian D. Scott <ian@perebruin.com>
 
 # Use an alternative Qt backend to the SDL default. Fails to build with debugging enabled and may not fully work.
 _use_qt_backend="0"
