@@ -15,6 +15,7 @@ pkgbase = openhantek-git
 	depends = double-conversion
 	depends = fftw
 	depends = freetype2
+	depends = fxload
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
