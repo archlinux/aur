@@ -1,7 +1,7 @@
 pkgbase = nuvolaruntime-mse
 	pkgdesc = Nuvola Apps Runtime - Tight integration of web apps with your desktop
 	pkgver = 4.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tiliado/nuvolaruntime/
 	arch = any
 	license = custom:BSD
