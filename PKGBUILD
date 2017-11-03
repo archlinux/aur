@@ -1,11 +1,11 @@
 # Maintainer: Brainfuck
-# http://github.com/brainfucksec
+# https://github.com/brainfucksec
 
 _gitname=archtorify
 pkgname=archtorify-git
-pkgver=1.9.0
-pkgrel=3
-pkgdesc="Program for simplify the configuration of transparent proxy through Tor Network"
+pkgver=1.10.0
+pkgrel=1
+pkgdesc="Transparent proxy through Tor for Arch Linux"
 arch=('any')
 url="https://github.com/brainfucksec/archtorify/"
 license=('GPL3')
@@ -25,6 +25,7 @@ package() {
 	install -Dm644 README.md $pkgdir/usr/share/doc/$_gitname/README.md
 	install -Dm755 archtorify.sh $pkgdir/usr/bin/archtorify
 	mkdir -p $pkgdir/opt/$_gitname/backups
+    cp -R cfg $pkgdir/opt/$_gitname/cfg
 }
 
 # vim:set ts=2 sw=2
