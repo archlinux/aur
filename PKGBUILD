@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=lalsuite-git
 pkgver=r56231.42fcf346d4
-pkgrel=1
+pkgrel=2
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite."
 arch=('any')
 url=""
@@ -25,23 +25,9 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    sed -i '/^#!.*python/ s/python/python2/' $(grep -ri '^#!.*python' -l $srcdir/${pkgname%-git})
-}
-#* CFITSIO library support is DISABLED
-#* PSS library support is DISABLED
-#* BAMBI library support is DISABLED
-#* Condor support is DISABLED
-#* BOINC support is DISABLED
-#* MPI support is DISABLED
-#* GDS support is DISABLED
-#* CUDA support is DISABLED
-#* OpenMP acceleration is DISABLED
-#* Doxygen documentation is DISABLED
-#* help2man documentation is DISABLED
-
 build() {
 	cd "$srcdir/${pkgname%-git}"
+    sed -i '/^#!.*python/ s/python/python2/' $(grep -ri '^#!.*python' .)
     export PYTHON=/usr/bin/python2
     export CHEALPIX=/usr/lib/libchealpix.so
     #export CFITSIO=/usr/lib/libcfitsio.so
