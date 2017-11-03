@@ -1,0 +1,85 @@
+diff --color -Naur CEGUI-0.7.9.old/cegui/include/CEGUISystem.h CEGUI-0.7.9/cegui/include/CEGUISystem.h
+--- CEGUI-0.7.9.old/cegui/include/CEGUISystem.h	2013-01-12 18:07:24.000000000 +0100
++++ CEGUI-0.7.9/cegui/include/CEGUISystem.h	2017-11-03 00:10:40.105586714 +0100
+@@ -1123,12 +1123,6 @@
+            ScriptModule* scriptModule, const String& configFile,
+            const String& logFile);
+ 
+-    /*!
+-    \brief
+-        Destructor for System objects.
+-    */
+-    ~System(void);
+-
+ 	/*!
+ 	\brief
+ 		Given Point \a pt, return a pointer to the Window that should receive a mouse input if \a pt is the mouse location.
+@@ -1364,6 +1358,13 @@
+     RenderedStringParser* d_customRenderedStringParser;
+     //! true if mouse click events will be automatically generated.
+     bool d_generateMouseClickEvents;
++
++protected:
++    /*!
++    \brief
++        Destructor for System objects.
++    */
++    ~System(void);
+ };
+ 
+ } // End of  CEGUI namespace section
+diff --color -Naur CEGUI-0.7.9.old/cegui/include/RendererModules/OpenGL/CEGUIOpenGLRenderer.h CEGUI-0.7.9/cegui/include/RendererModules/OpenGL/CEGUIOpenGLRenderer.h
+--- CEGUI-0.7.9.old/cegui/include/RendererModules/OpenGL/CEGUIOpenGLRenderer.h	2013-01-12 18:07:24.000000000 +0100
++++ CEGUI-0.7.9/cegui/include/RendererModules/OpenGL/CEGUIOpenGLRenderer.h	2017-11-03 00:10:56.968556323 +0100
+@@ -291,12 +291,6 @@
+     */
+     OpenGLRenderer(const Size& display_size, const TextureTargetType tt_type);
+ 
+-    /*!
+-    \brief
+-        Destructor for OpenGLRenderer objects
+-    */
+-    virtual ~OpenGLRenderer();
+-
+     //! init the extra GL states enabled via enableExtraStateSettings
+     void setupExtraStates();
+ 
+@@ -336,6 +330,13 @@
+     OGLTextureTargetFactory* d_textureTargetFactory;
+     //! What blend mode we think is active.
+     BlendMode d_activeBlendMode;
++
++protected:
++    /*!
++    \brief
++        Destructor for OpenGLRenderer objects
++    */
++    virtual ~OpenGLRenderer();
+   };
+ 
+ } // End of  CEGUI namespace section
+diff --color -Naur CEGUI-0.7.9.old/cegui/src/XMLParserModules/TinyXMLParser/CEGUITinyXMLParser.cpp CEGUI-0.7.9/cegui/src/XMLParserModules/TinyXMLParser/CEGUITinyXMLParser.cpp
+--- CEGUI-0.7.9.old/cegui/src/XMLParserModules/TinyXMLParser/CEGUITinyXMLParser.cpp	2013-01-12 18:07:24.000000000 +0100
++++ CEGUI-0.7.9/cegui/src/XMLParserModules/TinyXMLParser/CEGUITinyXMLParser.cpp	2017-11-03 00:37:06.384155617 +0100
+@@ -145,7 +145,7 @@
+                 processElement(childNode->ToElement());
+                 break;
+             case CEGUI_TINYXML_NAMESPACE::TiXmlNode::CEGUI_TINYXML_TEXT:
+-                if (childNode->ToText()->Value() != '\0')
++                if (childNode->ToText()->Value() != NULL)
+                     d_handler->text((utf8*)childNode->ToText()->Value());
+                 break;
+ 
+diff --color -Naur CEGUI-0.7.9.old/configure.ac CEGUI-0.7.9/configure.ac
+--- CEGUI-0.7.9.old/configure.ac	2013-01-12 18:07:24.000000000 +0100
++++ CEGUI-0.7.9/configure.ac	2017-11-03 00:53:07.011026565 +0100
+@@ -14,7 +14,8 @@
+ 
+ AC_INIT([CEGUI], [CEGUI_RELEASE_VERSION], [http://mantis.cegui.org.uk/], [CEGUI])
+ AC_CONFIG_SRCDIR([cegui/src/CEGUIBase.cpp])
+-AM_INIT_AUTOMAKE([dist-zip tar-ustar])
++AM_INIT_AUTOMAKE([dist-zip tar-ustar subdir-objects])
++AM_SILENT_RULES([yes])
+ AC_CONFIG_HEADER([cegui/include/config.h])
+ AC_CANONICAL_HOST
+ 

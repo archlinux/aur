@@ -1,8 +1,8 @@
 pkgbase = cegui-0.7
 	pkgdesc = A free library providing windowing and widgets for graphics APIs/engines (legacy version)
 	pkgver = 0.7.9
-	pkgrel = 4
-	url = http://crayzedsgui.sourceforge.net
+	pkgrel = 5
+	url = http://cegui.org.uk
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -21,14 +21,15 @@ pkgbase = cegui-0.7
 	depends = mesa
 	depends = glm
 	depends = glfw
+	depends = freeimage
 	optdepends = python2: python bindings
-	optdepends = boost-libs: null renderer with python2
+	optdepends = boost-libs: renderer with python2
 	optdepends = gtk2: gtk2 module
-	provides = cegui
 	conflicts = cegui
-	options = !libtool
 	source = http://downloads.sourceforge.net/crayzedsgui/CEGUI-0.7.9.tar.gz
+	source = cegui-0.7-compilation-fix.diff
 	sha256sums = 7c3b264def08b46de749c2acaba363e907479d924612436f3bd09da2e474bb8c
+	sha256sums = 95b747470a2419bc9d0df7ade7d45ef0acb694609172d3b4110c1836b256ca39
 
 pkgname = cegui-0.7
 
