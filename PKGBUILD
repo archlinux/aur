@@ -3,21 +3,18 @@
 # Contributor: Dan McGee <dpmcgee AT gmail.com>
 
 pkgname=sparse
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Semantic parser for C'
 arch=('i686' 'x86_64')
 url='http://sparse.wiki.kernel.org/'
 license=('custom:OSL')
 depends=('perl' 'libxml2')
-source=(https://kernel.org/pub/software/devel/sparse/dist/sparse-$pkgver.tar.xz
-        llvm-system-libs.patch)
-sha256sums=('921fcf918c6778d1359f3886ac8cb4cf632faa6242627bc2ae2db75e983488d5'
-            '7a924373612b1ee81472e831667e6997df9befd9f88791c916a9d1ca18c725b0')
+source=(https://git.kernel.org/pub/scm/devel/sparse/sparse.git/snapshot/sparse-$pkgver.tar.gz)
+sha256sums=('97781e5fdb95b65ab4d0e906a4cfa3f99fdb8b57c22a5c658523b69dbe95b7fb')
 
 prepare() {
   cd $pkgbase-$pkgver
-  patch -Np1 -i ../llvm-system-libs.patch
 }
 
 build() {
