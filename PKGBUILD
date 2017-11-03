@@ -51,6 +51,7 @@ build() {
   cd build
   cmake .. "${_opts[@]}"
   make
+  make compile-less
 }
 
 package() {
