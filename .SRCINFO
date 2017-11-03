@@ -1,0 +1,18 @@
+pkgbase = startup-notification-git
+	pkgdesc = Monitor and display application startup
+	pkgver = 0.12.r9.g5c1a52c
+	pkgrel = 1
+	url = https://www.freedesktop.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = libx11
+	depends = xcb-util
+	provides = startup-notification=0.12
+	conflicts = startup-notification
+	source = startup-notification-git::git+https://github.com/bbidulock/startup-notification.git
+	sha256sums = SKIP
+
+pkgname = startup-notification-git
+
