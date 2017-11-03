@@ -43,14 +43,12 @@ pkgbase = rstudio-desktop-git
 	conflicts = rstudio-desktop-bin
 	conflicts = rstudio-desktop-preview
 	source = git+https://github.com/rstudio/rstudio.git
-	source = https://s3.amazonaws.com/rstudio-buildtools/gin-1.5.zip
+	source = https://s3.amazonaws.com/rstudio-buildtools/gin-2.1.2.zip
 	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.8.1.zip
-	source = openssl-crypto.patch
 	source = openssl-socketproxy.patch
 	md5sums = SKIP
-	md5sums = 2409168cc18bf5f341e107e6887fe359
+	md5sums = e2617189fe5c138945b8cc95f26bd476
 	md5sums = ddd572887957fd5cdfde3469bd8c1102
-	md5sums = e5a5b48fdddd7273d3b4a41123e9c419
 	md5sums = d571313f511ad4a17014c4aef6d01bbc
 
 pkgname = rstudio-desktop-git
