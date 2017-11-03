@@ -1,0 +1,24 @@
+pkgbase = apertium-svn
+	pkgdesc = Language-independent machine translation engine and tools to manage language data.
+	pkgver = 3.4.2.r83055
+	pkgrel = 1
+	url = https://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = svn
+	makedepends = pkgconfig
+	makedepends = flex
+	depends = lttoolbox-svn
+	depends = pcre
+	depends = gawk
+	depends = expat
+	depends = libxslt
+	provides = apertium=3.4.2.r83055
+	conflicts = apertium
+	options = !libtool
+	source = svn://svn.code.sf.net/p/apertium/svn/trunk/apertium
+	md5sums = SKIP
+
+pkgname = apertium-svn
+
