@@ -1,16 +1,16 @@
 pkgbase = jdk-devel-docs
-	pkgdesc = Documentation for Oracle Java 9 Development Kit Snapshot
-	pkgver = 9.0.1
+	pkgdesc = Documentation for Oracle Java 10 Development Kit Snapshot
+	pkgver = 10b29
 	pkgrel = 1
-	url = http://jdk.java.net/9/
+	url = http://jdk.java.net/10/
 	arch = any
 	license = custom:Oracle
-	optdepends = java-environment>=9: Compile and run examples
+	optdepends = java-environment>=10: Compile and run examples
 	options = !strip
-	source = http://download.oracle.com/otn-pub/java/jdk/9.0.1+11/jdk-9.0.1_doc-all.zip
-	source = LICENSE-Oracle-Legal-Notices.txt
-	sha256sums = 79c375220326cfcd38c6ae15bce6e99ae866c7e477fb48fdf9221fe5742b786c
-	sha256sums = 01ce75a25c01b3984ff8ad08b0ad8bb24b071316d2ebf5113661ceda76f51a81
+	source = http://download.oracle.com/otn-pub/java/jdk/10b29+29/jdk-10b29_doc-all.zip
+	source = LICENSE-Early-Adopter-Development-Agreement.txt
+	sha256sums = 273f8c6890e08541414a0bbf6a3bd614fa829b31988daba2a166cb99e844d963
+	sha256sums = 36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89
 
 pkgname = jdk-devel-docs
 

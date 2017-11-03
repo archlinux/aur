@@ -1,9 +1,9 @@
 # Maintainer: Det <nimetonmaili g-mail>
 
 pkgname=jdk-devel-docs
-pkgver=9.0.1
-_major=${pkgver/.*}
-_build=11
+_major=10
+_build=29
+pkgver=${_major}b${_build}
 pkgrel=1
 pkgdesc="Documentation for Oracle Java $_major Development Kit Snapshot"
 arch=('any')
@@ -12,11 +12,9 @@ license=('custom:Oracle')
 optdepends=("java-environment>=$_major: Compile and run examples")
 options=('!strip')
 source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/jdk-${pkgver}_doc-all.zip"
-        'LICENSE-Oracle-Legal-Notices.txt')
-sha256sums=('79c375220326cfcd38c6ae15bce6e99ae866c7e477fb48fdf9221fe5742b786c'
-            '01ce75a25c01b3984ff8ad08b0ad8bb24b071316d2ebf5113661ceda76f51a81')
-
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
+        'LICENSE-Early-Adopter-Development-Agreement.txt')
+sha256sums=('273f8c6890e08541414a0bbf6a3bd614fa829b31988daba2a166cb99e844d963'
+            '36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89')
 
 package() {
   # Install
@@ -24,5 +22,5 @@ package() {
   mv docs/* "$pkgdir"/usr/share/doc/java$_major/
 
   # License
-  install -Dm644 LICENSE-Oracle-Legal-Notices.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE-Early-Adopter-Development-Agreement.txt "$pkgdir"/usr/share/licenses/$pkgname/
 }
