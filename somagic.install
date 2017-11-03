@@ -1,0 +1,11 @@
+post_install() {
+    groupadd somagic
+    post_remove
+    echo "Don't forget to add yourself to the somagic group"
+}
+
+post_remove() {
+    echo "Reloading udev rules"
+    udevadm control --reload
+    udevadm trigger
+}

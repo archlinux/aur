@@ -1,0 +1,4 @@
+easycap-somagic-linux/
+*.pkg.tar*
+src/
+pkg/
