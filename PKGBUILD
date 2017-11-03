@@ -1,10 +1,10 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=gifski
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GIF encoder based on libimagequant (pngquant, gifquant?). Squeezes maximum possible quality from the awful GIF format"
 arch=('i686' 'x86_64')
-url="https://github.com/phw/peek"
+url="https://gif.ski/"
 license=('AGPL3')
 makedepends=(rust)
 source=(${pkgname}-${pkgver}::https://github.com/ImageOptim/${pkgname}/archive/${pkgver}.tar.gz)
