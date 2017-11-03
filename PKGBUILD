@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    sed -i '/^#!.*python/ s/python/python2/' $(grep -ri '^#!.*python' $PWD)
+    sed -i '/^#!.*python/ s/python/python2/' $(grep -ril '^#!.*python' $PWD)
     export PYTHON=/usr/bin/python2
     export CHEALPIX=/usr/lib/libchealpix.so
     #export CFITSIO=/usr/lib/libcfitsio.so
