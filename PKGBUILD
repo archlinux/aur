@@ -35,7 +35,6 @@ sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
             'f5fb017ee531dc35e3462ccb2d244d4fdc8ac6df9cd3337aa6df2ffc280b1bd6'
             'SKIP'
-            '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
             '58939b88d928bbb7844d80ab6952d61d97fe671b2a182fe62ad3885ada80fd76')
