@@ -1,0 +1,18 @@
+pkgbase = lttoolbox-svn
+	pkgdesc = Language-independent machine translation engine and tools to manage language data.
+	pkgver = 3.3.3.r83054
+	pkgrel = 1
+	url = https://apertium.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = svn
+	depends = libxml2
+	provides = lttoolbox=3.3.3.r83054
+	conflicts = lttoolbox
+	options = !libtool
+	source = svn://svn.code.sf.net/p/apertium/svn/trunk/lttoolbox
+	md5sums = SKIP
+
+pkgname = lttoolbox-svn
+
