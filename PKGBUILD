@@ -3,7 +3,7 @@
 _pkgname=nemo-fileroller
 pkgname=nemo-engrampa
 _mintrel='betsy'
-pkgver=3.4.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Archive management plugin for Nemo using engrampa"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('nemo>=3.2' 'engrampa')
 options=('!libtool' '!emptydirs')
 #source=("${_pkgname}-${pkgver}.tar.gz::http://packages.linuxmint.com/pool/main/${_pkgname:0:1}/${_pkgname}/${_pkgname}_${pkgver}+${_mintrel}.tar.gz")
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('68dadce98c17321c3c22e596452a1b7aa0842c5faa05688734430857e037b3f2')
+sha256sums=('593aaf206ef50a8185e1f71c9018ce6a8b4bcb82b4684494e069f9045ba11fd1')
 
 build() {
   #cd ${_pkgname}-${pkgver}+${_mintrel}
