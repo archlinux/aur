@@ -2,7 +2,7 @@
 pkgname=libframe
 _pkgname=${pkgname}
 pkgver=8.30
-pkgrel=5
+pkgrel=6
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
@@ -24,7 +24,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    ./configure --prefix=${pkgdir}/usr CFLAGS=-O3
+    ./configure --prefix=${pkgdir}/usr CFLAGS='-O3 -Wno-error'
     make -j
 }
 check() {
