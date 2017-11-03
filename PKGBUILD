@@ -3,8 +3,8 @@
 # Original script by: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=5.1.28
-_build=117968
+pkgver=5.2.0
+_build=118431
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
@@ -44,16 +44,20 @@ source=(
   'vboxweb.conf'
   'do_dkms'
   'dkms.conf'
+  '009-include-path.patch'
 )
 
+#35ef4877738ebf6de7eb578eb855cd4a'
 
-md5sums=('35ef4877738ebf6de7eb578eb855cd4a'
+
+md5sums=('4c1cf7f3ca99b3a2f820b2a55b3eee72'
          '2d04c2e2d8c71558c910a51ec773731a'
          'fe60f9510502bea67383d9198ae8c13c'
          'c159d683ba1947290fc2ad2c64194150'
          '3ac185709bfe688bb753c46e170d0546'
          '31144fa409c0d7c6b464d44b2140b521'
-         '05175249e1206c491b2b36670e8db9ec')
+         '05175249e1206c491b2b36670e8db9ec'
+         'c32a61f3a1611e184098cc9b0d6765bb')
 
 _installdir='/opt/VirtualBox'
 
@@ -66,6 +70,11 @@ package() {
   install -d "$pkgdir/$_installdir"
   tar -jxf "$srcdir/VirtualBox.tar.bz2" -C "$pkgdir/$_installdir"
 
+	# Patch 009-includepath Thanks Christian Hesse
+	cp 009-include-path.patch "${pkgdir}/${_installdir}/src/vboxhost/"
+	cd "${pkgdir}/${_installdir}/src/vboxhost/"
+	patch -p5 < 009-include-path.patch
+	rm 009-include-path.patch
   # Hardened build: Mark binaries suid root, create symlinks for working around
   #                 unsupported $ORIGIN/.. in VBoxC.so and make sure the
   #                 directory is only writable by the user (paranoid).
