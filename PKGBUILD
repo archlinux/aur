@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.27.0.r339.ge6a68e2330
+pkgver=0.27.0.r347.g5261d1b099
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -43,9 +43,9 @@ build() {
     msg2 'Running bootstrap. Please wait...'
     ./bootstrap.py
     
-    CFLAGS='-I/usr/include/ffmpeg-mpv-git' \
-    LDFLAGS='-L/usr/lib/ffmpeg-mpv-git' \
-    PKG_CONFIG_PATH='/usr/lib/ffmpeg-mpv-git/pkgconfig' \
+    CFLAGS="${CFLAGS} -I/usr/include/ffmpeg-mpv-git" \
+    LDFLAGS="${LDFLAGS} -L/usr/lib/ffmpeg-mpv-git" \
+    PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/usr/lib/ffmpeg-mpv-git/pkgconfig" \
     \
     ./waf configure \
         --color='yes' \
