@@ -1,6 +1,6 @@
 pkgbase = telegramircd-git
 	pkgdesc = IRC server capable of controlling web.telegram.org
-	pkgver = r48.b49b67e
+	pkgver = r56.28b1428
 	pkgrel = 1
 	url = https://github.com/MaskRay/telegramircd
 	install = install
@@ -9,6 +9,7 @@ pkgbase = telegramircd-git
 	license = MIT
 	makedepends = git
 	depends = python-aiohttp
+	depends = python-telethon
 	optdepends = python-ipython: pretty error messages with the '-d' option
 	provides = telegramircd
 	conflicts = telegramircd
