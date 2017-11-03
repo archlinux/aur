@@ -1,8 +1,8 @@
 # Maintainer: Janek Thomaschewski <janek@jbbr.net>
 
 pkgname=signal-desktop-bin
-pkgver=1.0.34
-pkgrel=3
+pkgver=1.0.35
+pkgrel=1
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
 url='https://github.com/WhisperSystems/Signal-Desktop'
@@ -12,7 +12,7 @@ conflicts=('signal')
 options=(!strip)
 depends=('gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'desktop-file-utils' 'libxss')
 
-sha512sums=('f038c1461abd4e97b49560f05d82145d2c905830e48e48bcd5ebb83a0c988368a66dee65487a0e08c497d399b626a93b77e15845d409c9c5b5cc8cd5e33fdfac'
+sha512sums=('f3a16443137323c486267f8b927156a974c8068e7c1d5a59386e2c43c5ae4f72a66d8023c59123c82663cf5f191f7a8b8117b727151a14a770584a43dc4d8eae'
             'f04626ca425f79129616ba25732b07b0fc50aab1dbe9bd3e79514e8a0ba3b382ee37f99ad9f32ca9359fbe1db3efe67d0d207610836634d28c2401b5729f07af')
 source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_${pkgver}_amd64.deb"
         'signal-desktop')
