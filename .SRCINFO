@@ -1,0 +1,16 @@
+pkgbase = php-protobuf
+	pkgdesc = Protobuf for PHP
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/google/protobuf
+	arch = x86_64
+	arch = i686
+	license = PHP
+	makedepends = gcc
+	depends = php
+	backup = etc/php/conf.d/protobuf.ini
+	source = https://github.com/google/protobuf/archive/v3.4.0.tar.gz
+	sha256sums = f6600abeee3babfa18591961a0ff21e7db6a6d9ef82418a261ec4fee44ee6d44
+
+pkgname = php-protobuf
+
