@@ -2,7 +2,7 @@
 _pkgname=getdist
 pkgname=python-$_pkgname-git
 pkgver=r112.de5e238
-pkgrel=1
+pkgrel=2
 pkgdesc="MCMC sample analysis, kernel densities, plotting, and GUI"
 arch=('any')
 url="https://github.com/cmbant/getdist"
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname%-git}::git+$url.git")
+source=("git+$url.git")
 noextract=()
 md5sums=('SKIP')
 
