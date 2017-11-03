@@ -3,7 +3,7 @@
 
 pkgname=ceton_infinitv
 pkgver=2013.0326.2226
-pkgrel=4
+pkgrel=5
 pkgdesc="Driver for Ceton InfiniTV"
 arch=('i686' 'x86_64')
 url="http://cetoncorp.com/infinitv_support/linux_drivers"
@@ -39,9 +39,10 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname}_linux_driver"
-  KERNEL_VERSION=`pacman -Qi linux | grep "Version" | sed 's/^Version\s*:\s//'`
-  install -d ${pkgdir}/usr/lib/modules/extramodules-${KERNEL_VERSION}-ARCH
-  install -D -m644 ctn91xx.ko ${pkgdir}/usr/lib/modules/extramodules-${KERNEL_VERSION}-ARCH/
-  gzip -9 ${pkgdir}/usr/lib/modules/extramodules-${KERNEL_VERSION}-ARCH/ctn91xx.ko
+  _major=$(pacman -Q linux | grep -Po "\d+\.\d+")
+  _moddir=usr/lib/modules/extramodules-$_major-ARCH
+  install -d ${pkgdir}/${_moddir}/
+  install -D -m644 ctn91xx.ko ${pkgdir}/${_moddir}/
+  gzip -9 ${pkgdir}/${_moddir}/ctn91xx.ko
   install -D -m644 98-ctn91xx.rules ${pkgdir}/etc/udev/rules.d/98-ctn91xx.rules
 }
