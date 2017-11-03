@@ -2,7 +2,7 @@
 # Maintainer: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 pkgname=apertium-separable-svn
 _pkgname=apertium-separable
-pkgver=0.1.1.r83054
+pkgver=0.1.1.r83056
 pkgrel=1
 pkgdesc="Language-independent machine translation engine and tools to manage language data."
 url="https://apertium.org"
