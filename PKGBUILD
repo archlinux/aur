@@ -4,7 +4,7 @@
 _pkgname=skypeforlinux
 pkgname=$_pkgname-bin
 pkgver=8.10.76.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Skype for Linux - Insider/Preview Version"
 arch=("x86_64")
 url="http://www.skype.com"
@@ -22,6 +22,9 @@ package() {
   mv "$pkgdir/usr/share/$_pkgname/LICENSES.chromium.html" \
     "${pkgdir}/usr/share/licenses/$pkgname/"
   rm -rf "$pkgdir/opt"
+  # Patch wrong WM class until this is fixed.
+  sed -i "/^StartupWMClass=/s/ Preview//" \
+    "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
