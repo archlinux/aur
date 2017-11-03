@@ -1,6 +1,6 @@
 pkgbase = qesteidutil
 	pkgdesc = UI application for managing smart card PIN/PUK codes and certificates
-	pkgver = 3.12.9.1260
+	pkgver = 3.12.9.1261
 	pkgrel = 1
 	url = http://www.id.ee/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = qesteidutil
 	depends = opensc
 	depends = ccid
 	depends = hicolor-icon-theme
-	source = https://installer.id.ee/media/ubuntu/pool/main/q/qesteidutil/qesteidutil_3.12.9.1260.orig.tar.xz
+	source = https://installer.id.ee/media/ubuntu/pool/main/q/qesteidutil/qesteidutil_3.12.9.1261.orig.tar.xz
 	validpgpkeys = 43650273CE9516880D7EB581B339B36D592073D4
-	sha256sums = d7256f49f74c847e82de8ba565726fff9f04a3423fafbcb63f5ec6f294f944f9
+	sha256sums = f69a8113f0e4ace91d98ea9d95cc69efaae4297cd9e7cdd2006695401afc6321
 
 pkgname = qesteidutil
 
