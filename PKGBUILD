@@ -1,7 +1,7 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname='nemo-media-columns'
-pkgver=3.4.0
+pkgver=3.6.0
 _mintrel='betsy'
 pkgrel=1
 pkgdesc="Media properties columns in Nemo"
@@ -13,8 +13,8 @@ options=('!emptydirs')
 #source=("${_pkgname}-${pkgver}.tar.gz::http://packages.linuxmint.com/pool/main/${_pkgname:0:1}/${_pkgname}/${_pkgname}_${pkgver}+${_mintrel}.tar.xz"
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz"
         'pillow.patch')
-sha256sums=('68dadce98c17321c3c22e596452a1b7aa0842c5faa05688734430857e037b3f2'
-            '52e9f55e4f05671607a458f33021e8d04f04e58149965e4ca3165288ac724e94')
+sha256sums=('593aaf206ef50a8185e1f71c9018ce6a8b4bcb82b4684494e069f9045ba11fd1'
+            '0d5e4e950bf7034704c0fc8b477ea916f20bac019951bad254fc74d35ca56467')
 
 prepare() {
   #cd ${pkgname}-${pkgver}+${_mintrel}
