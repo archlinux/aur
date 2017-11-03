@@ -13,9 +13,9 @@ depends=(gtk3 libkeybinder3 ffmpeg)
 makedepends=(cmake vala gettext txt2man)
 optdepends=(
   'gst-plugins-good: WebM output under Gnome Shell'
-  'gst-plugins-ugly: MP4 output under Gnome Shell',
-  'gifski: High quality GIF animations with thousands of colors',
-  'imagemagick: Use ImageMagick instead of Ffmpeg for GIF creation'
+  'gst-plugins-ugly: MP4 output under Gnome Shell'
+  'gifski: High quality GIF animations with thousands of colors'
+  'imagemagick: Use ImageMagick instead of FFmpeg for GIF creation'
 )
 source=(git+https://github.com/phw/${_pkgname}.git)
 sha1sums=('SKIP')
