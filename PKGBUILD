@@ -1,15 +1,15 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=lalsuite-git
 pkgver=r56231.42fcf346d4
-pkgrel=3
+pkgrel=4
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite."
 arch=('any')
 url=""
 license=('unknown')
 groups=()
-depends=('python2' 'python2-numpy' 'gsl' 'fftw' 'hdf5' 'libxml2' 'swig' 'libframe' 'metaio' 'python2-lscsoft-glue')
+depends=('python2' 'python2-numpy' 'gsl' 'fftw' 'hdf5' 'libxml2' 'swig' 'libframe' 'metaio')
 makedepends=('git')
-checkdepends=('python2-h5py' 'python2-healpy-git' 'healpix' 'python2-shapely')
+checkdepends=('python2-h5py' 'python2-healpy-git' 'healpix' 'python2-shapely' 'python2-lscsoft-glue-git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
