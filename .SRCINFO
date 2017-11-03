@@ -1,6 +1,6 @@
 pkgbase = fantasque-sans-mono
 	pkgver = 1.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/belluzj/fantasque-sans
 	arch = any
 	license = custom:OFL
@@ -14,5 +14,6 @@ pkgname = otf-fantasque-sans-mono
 
 pkgname = ttf-fantasque-sans-mono
 	pkgdesc = A TTF font family with a great monospaced variant for programmers.
+	conflicts = ttf-fantasque-sans-git
 	replaces = ttf-fantasque-sans
 

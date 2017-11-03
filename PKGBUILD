@@ -3,7 +3,7 @@
 pkgbase=fantasque-sans-mono
 pkgname=('otf-fantasque-sans-mono' 'ttf-fantasque-sans-mono')
 pkgver=1.7.1
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://github.com/belluzj/fantasque-sans"
 license=('custom:OFL')
@@ -20,6 +20,7 @@ package_otf-fantasque-sans-mono() {
 
 package_ttf-fantasque-sans-mono() {
     pkgdesc="A TTF font family with a great monospaced variant for programmers."
+    conflicts=('ttf-fantasque-sans-git')
     replaces=('ttf-fantasque-sans')
     install -dm755 "${pkgdir}/usr/share/fonts/TTF"
     install -m644 "${srcdir}/"*.ttf "${pkgdir}/usr/share/fonts/TTF"
