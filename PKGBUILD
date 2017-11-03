@@ -3,7 +3,7 @@
 pkgname=('python-heatclient'
          'python2-heatclient')
 pkgver='1.12.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Python client library for Heat'
 arch=('any')
 url="http://docs.openstack.org/developer/${pkgname}/"
@@ -92,6 +92,7 @@ package_python2-heatclient() {
            'python2-six')
   cd "${srcdir}/python-heatclient-py2"
   python2 setup.py install --root="${pkgdir}" --optimize=1
+  mv "${pkgdir}"/usr/bin/heat{,2}
 }
 
 # vim:set ts=2 sw=2 et:
