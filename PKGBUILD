@@ -16,7 +16,7 @@ optdepends=('gir1.2-gnomekeyring-1.0'
 options=('!strip' '!emptydirs')
 install=.install
 source_x86_64=("https://stride-desktop-downloads.s3.amazonaws.com/releases/linux/deb/64/prod/stride_amd64.deb")
-sha512sums_x86_64=('aea0ceeae3a14259bd151f88c902ee4a892fbf606f30512ef1ec0a450fdef933280d2002df7a00157edd478f40e57ccf1aa09523d8e9d734d8761b1a2ea09416')
+sha512sums_x86_64=('618058e4ca6f90c8c2b96ee0c8a893664157cc912f0d45b5b122936c9784b5bb32befd42d79d1ab64da092e7fbc04d8099d1a92f4d57861609649b9e173f0b2c')
 
 package(){
 
