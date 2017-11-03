@@ -1,0 +1,18 @@
+pkgbase = nuitka-git
+	pkgdesc = A Python compiler
+	pkgver = 0.5.28.1.r1.g4d1a1741
+	pkgrel = 1
+	url = https://nuitka.net/
+	arch = any
+	license = apache
+	makedepends = git
+	depends = python
+	optdepends = chrpath: for building standalone executables
+	provides = nuitka
+	conflicts = nuitka
+	options = !emptydirs
+	source = git+https://git.nuitka.net/Nuitka.git
+	sha256sums = SKIP
+
+pkgname = nuitka-git
+
