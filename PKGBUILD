@@ -21,7 +21,7 @@ else
 fi
 
 pkgver=0.8.0
-pkgrel=0
+pkgrel=1
 pkgdesc="wxWidgets frontend for Jupyter Notebook, fork of project abandoned by original author (https://nwhitehead.github.io/pineapple/)"
 url="https://github.com/darthoctopus/pineapple/tree/thin-client"
 arch=('i686' 'x86_64')
