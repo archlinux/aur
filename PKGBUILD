@@ -7,8 +7,8 @@ pkgdesc="Liri workspace, programs and plugins"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://liri.io"
 license=('GPL3')
-depends=('qt5-tools' 'qt5-gstreamer' 'qt5-quickcontrols2' 'liri-wayland-git' 'glib2' 'dconf'
-         'paper-icon-theme-git' 'liri-wallpapers-git'
+depends=('qt5-tools' 'qt5-gstreamer' 'qt5-quickcontrols2' 'qt5-gsettings-git' 'libliri-git' 'liri-wayland-git'
+         'solid' 'glib2' 'dconf' 'paper-icon-theme-git' 'liri-wallpapers-git'
          'ttf-dejavu' 'ttf-droid' 'ttf-roboto' 'noto-fonts')
 makedepends=('git' 'liri-qbs-shared-git' 'boost')
 conflicts=('hawaii-workspace-git' 'liri-workspace')
