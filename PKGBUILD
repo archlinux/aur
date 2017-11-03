@@ -2,7 +2,7 @@
 _pkgname=fgivenx
 pkgname=python-$_pkgname-git
 pkgver=r121.406203d
-pkgrel=1
+pkgrel=2
 pkgdesc="Functional Posterior Plotter"
 arch=('any')
 url="https://github.com/williamjameshandley/fgivenx"
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname%-git}::git+$url.git")
+source=("git+$url.git")
 noextract=()
 md5sums=('SKIP')
 
