@@ -18,7 +18,7 @@ _use_wayland=0   # Build Wayland NOTE: extremely experimental and don't work at 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=64.0.3251.0
+pkgver=64.0.3253.3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
@@ -87,6 +87,7 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-widevine-r1.patch'
 #         'chromium-exclude_unwind_tables.patch.base64::https://chromium-review.googlesource.com/changes/712575/revisions/1/patch?download' # https://bugs.archlinux.org/task/55914
         'chromium-exclude_unwind_tables_r2.patch.patch'
+        'chromium-Fix_GenericLogisticRegressionInference_includes.patch.base64::https://chromium-review.googlesource.com/changes/743690/revisions/3/patch?download'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -94,16 +95,17 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             # Patch form Gentoo
             'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
-            'SKIP'
+            '3d0d306e24b5b0c91358127a578c8a7ade8cef3eb15a769739b07a282f068de4'
             'ab5368a3e3a67fa63b33fefc6788ad5b4a79089ef4db1011a14c3bee9fdf70c6'
             # Misc Patches
 #             'cb4933db92b669696201b2866ec9b4942466a849b94b13463d8331284d09a2d1'
-            'SKIP'
+            'c32d71237cf9dca71c35ec54431749c837eb3a7b7dae2fb3fc88beafefa1ca97'
             'a688de2b3a7183ebf9eb25108b0d28a8c6228cc71c8e3519062a51224f5b3488'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
 #             'd4a99239701256edb37ef3a5504fa87ca2219349834cbf59b9fe42bf7ac496d8'
-            'SKIP'
+            '9478f1ec1a3c53425306cf41c2d0555c215a4f106955d9d6adfff38044530ce8'
+            '6a7c1e909f569897fed1837f7d96ccb577756883a5d40da5c968f82a9ab43211'
             )
 options=('!strip')
 install=chromium-dev.install
@@ -448,7 +450,7 @@ prepare() {
   patch -p1 -i "${srcdir}/chromium-exclude_unwind_tables_r2.patch.patch"
 
   #Attemp to fix build https://chromium-review.googlesource.com/c/chromium/src/+/724122
-  sed '6a#include <cmath>' -i components/machine_intelligence/generic_logistic_regression_inference.cc
+  base64 -d "${srcdir}/chromium-Fix_GenericLogisticRegressionInference_includes.patch.base64" | patch -p1 -i -
 
   # Setup nodejs dependency
   mkdir -p third_party/node/linux/node-linux-x64/bin/
