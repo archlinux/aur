@@ -1,0 +1,23 @@
+diff -urpN ceton_infinitv_linux_driver/ctn91xx_net.c ceton_infinitv_linux_driver-fixed/ctn91xx_net.c
+--- ceton_infinitv_linux_driver/ctn91xx_net.c	2017-11-03 01:31:21.766659920 -0400
++++ ceton_infinitv_linux_driver-fixed/ctn91xx_net.c	2017-11-03 01:34:20.161911675 -0400
+@@ -317,7 +317,9 @@ void ctn91xx_net_rx_skb( ctn91xx_dev_t*
+     skb->protocol = eth_type_trans( skb, netdev );
+     netif_rx( skb );
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,11,0)
+     netdev->last_rx = jiffies;
++#endif
+     priv->stats.rx_bytes += rx_len;
+     priv->stats.rx_packets++;
+ 
+@@ -367,7 +369,9 @@ irqreturn_t ctn91xx_net_isr_ex(int irq,
+                 skb->protocol = eth_type_trans( skb, netdev );
+                 netif_rx( skb );
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,11,0)
+                 netdev->last_rx = jiffies;
++#endif
+                 priv->stats.rx_bytes += rx_len;
+                 priv->stats.rx_packets++;
+             } else {

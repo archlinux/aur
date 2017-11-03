@@ -1,0 +1,9 @@
+KERNEL_VER=`pacman -Qi linux | grep "Version" | sed 's/^Version\s*:\s//'`
+
+post_install() {
+  depmod -ae ${KERNEL_VER}-ARCH
+}
+
+post_upgrade() {
+  depmod -ae ${KERNEL_VER}-ARCH
+}

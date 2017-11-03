@@ -1,0 +1,11 @@
+diff -aur ceton_infinitv_linux_driver-orig/Makefile ceton_infinitv_linux_driver/Makefile
+--- ceton_infinitv_linux_driver-orig/Makefile	2013-03-27 01:26:59.000000000 -0400
++++ ceton_infinitv_linux_driver/Makefile	2014-11-11 21:54:10.425414319 -0500
+@@ -1,5 +1,5 @@
+-KERNEL_VERSION := $(shell uname -r)
+-KERNEL_DIR	:= /lib/modules/$(KERNEL_VERSION)/build
++KERNEL_VERSION := $(shell pacman -Qi linux | grep "Version" | sed 's/^Version\s*:\s//')
++KERNEL_DIR	:= /lib/modules/$(KERNEL_VERSION)-ARCH/build
+ 
+ PWD		:= $(shell pwd)
+ 

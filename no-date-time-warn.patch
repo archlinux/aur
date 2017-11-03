@@ -1,0 +1,11 @@
+diff -aur ceton_infinitv_linux_driver-orig/Makefile ceton_infinitv_linux_driver/Makefile
+--- ceton_infinitv_linux_driver-orig/Makefile	2014-11-11 21:38:27.990742939 -0500
++++ ceton_infinitv_linux_driver/Makefile	2014-11-11 21:41:41.181569523 -0500
+@@ -23,6 +23,7 @@
+ EXTRA_CFLAGS := -DLINUX -DUSE_PCI=1 -DUSE_LEON=0 -DHAS_MPEG_DMA=1 -DUSE_INTERNAL=0
+ SOURCES += ctn91xx_pci.o ctn91xx_rtp.o
+ endif
++EXTRA_CFLAGS += -Wno-date-time
+ 
+ ctn91xx_builtin-objs := $(SOURCES)
+ 

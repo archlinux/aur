@@ -1,0 +1,23 @@
+diff -urpN ceton_infinitv_linux_driver/ctn91xx_net.c ceton_infinitv_linux_driver-fixed/ctn91xx_net.c
+--- ceton_infinitv_linux_driver/ctn91xx_net.c	2013-03-27 01:26:59.000000000 -0400
++++ ceton_infinitv_linux_driver-fixed/ctn91xx_net.c	2017-11-03 01:20:41.041441464 -0400
+@@ -1,6 +1,7 @@
+ #include "ctn91xx_net.h"
+ #include "ctn91xx_kal.h"
+ #include "ctn91xx_util.h"
++#include <linux/version.h>
+ 
+ #define INCLUDE_NET_DBG 0
+ #define PRINT_TRAFFIC 0
+@@ -228,7 +229,11 @@ static int ctn91xx_net_start_xmit( struc
+         sdump_buffer( skb->data, skb->len, "tx");
+ #endif
+ 
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(2,6,31)
+         ndev->trans_start = jiffies;
++#else
++	dev_trans_start(ndev);
++#endif
+         ctn91xx_write8( 1, msg_base, MSG_BUFFER_MSG_AVAIL );
+ 
+     } else {

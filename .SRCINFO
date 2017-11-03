@@ -1,0 +1,25 @@
+pkgbase = ceton_infinitv
+	pkgdesc = Driver for Ceton InfiniTV
+	pkgver = 2013.0326.2226
+	pkgrel = 4
+	url = http://cetoncorp.com/infinitv_support/linux_drivers
+	install = ceton_infinitv.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = linux-headers
+	source = http://www.cetoncorp.com/downloads/ceton_infinitv_linux_driver_2013_0326_2226.tar.gz
+	source = kernel.patch
+	source = no-date-time-warn.patch
+	source = 0003_dev_trans_start.patch
+	source = 0004_last_rx-4.11.patch
+	source = 0005_signal_pending-4.11.patch
+	sha256sums = 36f7cf010a705b283f165e9dd611dac6ef4729c55466752c3b70f3ffcc6d47d2
+	sha256sums = dd642a60ba15bdada535beb000d8bddd87d0f97c70b1d37f7fa0e0af9e6b464c
+	sha256sums = 929a93e8fc35746de1a515e23a3dfe30e39573ea40d0c2e492be59f630f87918
+	sha256sums = b2f56dfdb49fa59545beb8c61e4e021864c8187d604cbbeec2179dcc15a00fbf
+	sha256sums = 95b44af29a6ea642c5c54652d32b275202c83b28ec9f5bf82df6a294d8858097
+	sha256sums = 25217e4af33e1c1348a07891a1ef692ec628df7a51bd901d54ffc4fbf08d3fe6
+
+pkgname = ceton_infinitv
+
