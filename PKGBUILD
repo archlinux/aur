@@ -2,7 +2,7 @@
 # Maintainer: stride
 # Contributor: stride
 pkgname=stride
-pkgver=1.4.12
+pkgver=1.5.18
 pkgrel=1
 pkgdesc="Stride Desktop"
 arch=('i686' 'x86_64')
