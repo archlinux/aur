@@ -1,7 +1,7 @@
 # Maintainer: bzt <unmacaque at gmail.com>
 
 pkgname=dbgl
-pkgver=0.81
+pkgver=0.82
 pkgrel=1
 pkgdesc="An open-source, free, multi-platform frontend for DOSBox (DOSBox binaries not included)"
 arch=('any')
@@ -9,12 +9,12 @@ url="http://members.quicknet.nl/blankendaalr/dbgl/"
 license=('GPL')
 depends=('java-runtime>=7' 'gtk2')
 optdepends=('dosbox: necessary to run DOS games')
-source=("http://members.quicknet.nl/blankendaalr/dbgl/download/${pkgname}081_generic.tar.gz"
+source=("http://members.quicknet.nl/blankendaalr/dbgl/download/${pkgname}082_generic.tar.gz"
         dbgl.desktop
         dbgl.sh)
-md5sums=('9eade29c459caf2fa02901a684750070'
-         'aaf6ffc4a18ab0e5444cb37422a4e3ee'
-         '897eb9e309e2b30820a2be439292b799')
+sha256sums=('a3aad160c3baec6e1bb96a34e9570c94eaaba70bc34dfa92c90e918608377ca9'
+            '7da06d297b5cbdbc1029c58ffe1c6643ae0fa3fe597e839b26d03ff3900de00d'
+            '2d2a4e74d5cec80b11953b3a7eec6cff15faccc8726c8ba99b8088718259dc7a')
 
 package() {
   cd "$srcdir"
