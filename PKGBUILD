@@ -11,7 +11,7 @@ _lang=fr
 pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc="Standalone (${_lang}) web browser from mozilla.org, developer build - French Francais"
 url='https://www.mozilla.org/fr/firefox/developer/'
-pkgver=57.0b13
+pkgver=57.0b14
 pkgrel=1
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -61,8 +61,8 @@ package() {
     install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
 
-sha512sums=('a1b252852b88523945962152a93cd0367ff5110642681bfddaf7d1659a232eed751f86378f29d4c01d08462e1d2369e23ce18f38b2580e39316741216b440f31'
-            'af800e0ecc636a98d5228ad1bccdfc471a69755a40cf0c5d68e192a60d52c3885b1cad305bbb8187bb208d0b2d1637a7c73cb24a66e0e476e66965b9ead3e71c'
+sha512sums=('c0c24c28e2061b226c9adc1b6c90737e4d9c14489ec92c3908588dcf1ec1f3f849f8e0a17172731c64ba1f56050112768661abb4fde21bd7b0e30e9bdbe83e58'
+            '2277450f9c4bd68350f8ceed932c35c276573af43630a70398f74f85e39f80d04adf458a8ef87e2eec8bf313da3db7a55eaeaf052b43b509c576a79db3a32a02'
             'SKIP'
             '59eb730388f7d2601f40bc3c42ae203e3b65820435adfdfb18cef5d530119304762779b2e493acfdf7bcadb60e2eac3d23304dcf379a1d583d677399ba654456'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
