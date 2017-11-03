@@ -1,13 +1,15 @@
 pkgbase = gnome-mud
 	pkgdesc = GnomeMud is an advanced MUD client for GNOME
 	pkgver = 0.11.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Apps/GnomeMud
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
 	depends = gnet
+	depends = libglade
+	depends = vte
 	provides = gnome-mud
 	source = https://download.gnome.org/sources/gnome-mud/0.11/gnome-mud-0.11.2.tar.gz
 	md5sums = aa41b2afb55158e7a9d2e14831223949
