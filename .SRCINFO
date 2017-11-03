@@ -1,0 +1,29 @@
+pkgbase = openfx-misc-git
+	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
+	pkgver = 2.3.3
+	pkgrel = 3
+	url = https://github.com/MrKepzie/openfx-io
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = expat
+	makedepends = boost
+	depends = seexpr1
+	depends = openimageio
+	depends = ffmpeg
+	optdepends = openfx-gmic-bin
+	optdepends = natron-plugins
+	source = openfx-misc-git::git+https://github.com/MrKepzie/openfx-misc.git#commit=5b01ce1fff57fb0af801031ff9c0d3d3f2b85beb
+	source = git+https://github.com/devernay/openfx.git
+	source = git+https://github.com/MrKepzie/SequenceParsing
+	source = git+https://github.com/devernay/openfx-supportext.git
+	source = git+https://github.com/MrKepzie/tinydir
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = openfx-misc-git
+
