@@ -1,6 +1,6 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _pkgname=lscsoft-glue
-pkgname=python-$_pkgname-git
+pkgname=python2-$_pkgname-git
 pkgver=r56231.42fcf346d4
 pkgrel=1
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
