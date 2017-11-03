@@ -3,18 +3,26 @@
 # Contributor: DonVla <donvla@users.sourceforge.net>
 
 pkgname=kaa-base
-pkgver=0.6.0
-pkgrel=5
+pkgver=0.99.2+481+c9a28525
+pkgrel=1
 pkgdesc="KAA base package"
 url="http://freevo.sourceforge.net/"
 license=('GPL2')
 depends=('python2' 'glib2')
+makedepends=('git')
+conflicts=("${pkgname}")
 arch=('i686' 'x86_64')
-source=(http://downloads.sourceforge.net/freevo/$pkgname-$pkgver.tar.gz)
-sha256sums=('04fb0f610ec19a1aad1698d20829fb8caa34a97fe9cd4d9acf9f4f9f918d79b0')
+_commit='c9a28525f0ca39546c72f1fd232812d514c631eb'
+source=("${pkgname}::git+https://github.com/freevo/kaa-base#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd ${srcdir}/${pkgname}
+  echo "$( grep -m1 VERSION setup.py  | sed "s:.*'\([^']*\)'.*:\1:" )+$(( $( git rev-list --all | grep -B9999  `git rev-list --tags --max-count=1` | wc -l ) - 1))+$( git rev-list --all | head -1 | cut -c1-8 )"
+}
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}
 
   # python2 fix
   find . -name '*.py' -exec \
