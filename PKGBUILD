@@ -2,7 +2,7 @@
 _pkgname=class
 pkgname=python-$_pkgname-git
 pkgver=r1294.de7d9d7
-pkgrel=1
+pkgrel=2
 pkgdesc="CLASS: Cosmic Linear Anisotropy Solving System"
 arch=('any')
 url="https://github.com/lesgourg/class_public"
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname%-git}::git+$url.git")
+source=("git+$url.git")
 noextract=()
 md5sums=('SKIP')
 
