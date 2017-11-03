@@ -11,8 +11,8 @@ url="http://www.skype.com"
 license=("custom")
 depends=("gtk2" "libxss" "gconf" "alsa-lib" "libxtst" "libsecret" "nss")
 optdepends=("gnome-keyring")
-conflicts=("$_pkgname-beta-bin")
-provides=("$_pkgname-beta-bin")
+conflicts=("$_pkgname" "$_pkgname-beta-bin")
+provides=("$_pkgname")
 source=("https://repo.skype.com/deb/pool/main/s/$_pkgname/${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('d88fd5c91865f1c6a4006c91f6be2ebd74e289c5ddfd44bd9d9d86895ae623c5')
 
