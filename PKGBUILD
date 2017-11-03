@@ -11,7 +11,8 @@ license=('GPL2')
 depends=('libdvdread' 'python2' 'kaa-base')
 makedepends=('git')
 arch=('i686' 'x86_64')
-source=("${pkgname}::git+https://github.com/freevo/kaa-metadata")
+_commit='03137959beef1dd7a87501072bf758dde627b221'
+source=("${pkgname}::git+https://github.com/freevo/kaa-metadata#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
