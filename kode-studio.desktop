@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=/usr/bin/kodestudio %f
+Icon=visual-studio-code
+Terminal=false
+Type=Application
+Name=Kode Studio
+Comment=Kode Studio is an IDE specifically tailored for Kha.
+Categories=Development;IDE;Utility;TextEditor;
+StartupNotify=true
+StartupWMClass=code
