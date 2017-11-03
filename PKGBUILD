@@ -1,95 +1,30 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mydumper
-pkgver=0.9.1
-_myver=5.6.28
-pkgrel=2
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="A high performance MySQL backup tool."
 arch=("i686" "x86_64")
-url="https://launchpad.net/mydumper"
+url="https://github.com/maxbube/mydumper"
 license=('GPL')
-depends=("glib2" "pcre" "libmysqlclient")
-makedepends=("cmake" "python2-sphinx")
+depends=("glib2" "libmariadbclient")
+makedepends=("cmake")
 
-source=("http://launchpad.net/mydumper/${pkgver%.*}/$pkgver/+download/$pkgname-$pkgver.tar.gz"
-        "http://ftp.gwdg.de/pub/misc/mysql/Downloads/MySQL-5.6/mysql-$_myver.tar.gz"
-        "mysql-cmake.patch"
-        "mysql-compat.patch")
+source=("https://github.com/maxbube/mydumper/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 
-prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/mysql-cmake.patch"
-	patch -p1 -i "$srcdir/mysql-compat.patch"
-	sed -r 's/sphinx-build$/sphinx-build2/' -i cmake/modules/FindSphinx.cmake
-}
+sha256sums=('2cd6a074bac7072905bd044ec20955c53c81b10e877ac9c644509940a8d201fb')
 
 build() {
-	cd "${srcdir}"
-	rm -rf build-mysql
-	mkdir build-mysql
-	cd build-mysql
-
-	cmake "$srcdir/mysql-$_myver" \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DSYSCONFDIR=/etc/mysql \
-		-DMYSQL_DATADIR=/var/lib/mysql \
-		-DMYSQL_UNIX_ADDR=/run/mysqld/mysqld.sock \
-		-DDEFAULT_CHARSET=utf8 \
-		-DDEFAULT_COLLATION=utf8_general_ci \
-		-DENABLED_LOCAL_INFILE=ON \
-		-DINSTALL_INFODIR=share/mysql/docs \
-		-DINSTALL_MANDIR=share/man \
-		-DINSTALL_PLUGINDIR=lib/mysql/plugin \
-		-DINSTALL_SCRIPTDIR=bin \
-		-DINSTALL_INCLUDEDIR=include/mysql \
-		-DINSTALL_DOCREADMEDIR=share/mysql \
-		-DINSTALL_SUPPORTFILESDIR=share/mysql \
-		-DINSTALL_MYSQLSHAREDIR=share/mysql \
-		-DINSTALL_DOCDIR=share/mysql/docs \
-		-DINSTALL_SHAREDIR=share/mysql \
-		-DWITH_READLINE=ON \
-		-DWITH_ZLIB=system \
-		-DWITH_SSL=system \
-		-DWITH_LIBWRAP=OFF \
-		-DWITH_LIBEDIT=OFF \
-		-DWITH_UNIT_TESTS=OFF \
-		-DWITH_EXTRA_CHARSETS=complex \
-		-DWITH_EMBEDDED_SERVER=ON \
-		-DWITH_INNODB_MEMCACHED=ON \
-		-DWITH_INNOBASE_STORAGE_ENGINE=ON \
-		-DWITH_PARTITION_STORAGE_ENGINE=ON \
-		-DWITH_PERFSCHEMA_STORAGE_ENGINE=ON \
-		-DWITH_ARCHIVE_STORAGE_ENGINE=ON \
-		-DWITH_BLACKHOLE_STORAGE_ENGINE=ON \
-		-DWITH_FEDERATED_STORAGE_ENGINE=OFF \
-		-DWITH_EXAMPLE_STORAGE_ENGINE=OFF \
-		-DCMAKE_C_FLAGS="-fPIC $CFLAGS -fno-strict-aliasing -DBIG_JOINS=1 -fomit-frame-pointer" \
-		-DCMAKE_CXX_FLAGS="-fPIC $CXXFLAGS -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-rtti" \
-		-DWITH_MYSQLD_LDFLAGS="$LDFLAGS"
-	make
-
-	cd "${srcdir}"
-	rm -rf build-mydumper
-	mkdir build-mydumper
-	cd build-mydumper
+	mkdir -p build
+	cd build
 
 	cmake "$srcdir/$pkgname-$pkgver" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DMYSQL_INCLUDE_DIR="$srcdir/mysql-$_myver/include" \
-		-DEXTRA_INCLUDE_DIR="/usr/include/mysql" \
-		-DEXTRA_CFLAGS="-L../build-mysql/libmysql" \
-		-DMYSQL_CFLAGS="-lm"
+		-DCMAKE_BUILD_TYPE=Release
 	make VERBOSE=1
 }
 
 package() {
-	cd "$srcdir/build-mydumper"
+	cd "$srcdir"/build
 	make DESTDIR="$pkgdir" install
 }
-
-sha256sums=('aefab5dc4192acb043d685b6bb952c87557fbea5e083b8547c68ccfec878171f'
-            '217cd96921abdd709b9b4ff3ce2af4cbd237de43679cf19385d19df03a037b21'
-            'e6b7d938cc5882cad564103f6e367c1babaccb624587c96e9e6c349e58e7ede4'
-            '9b35858057d82948579f43d8b95605a88d80580412bf5ed1daf992c092ca4edf')
