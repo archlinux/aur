@@ -1,6 +1,6 @@
 pkgbase = toggldesktop-bin
 	pkgdesc = Time Tracking Software.
-	pkgver = 7.4.52
+	pkgver = 7.4.71
 	pkgrel = 1
 	url = https://toggl.com/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = toggldesktop-bin
 	source = toggldesktop.deb::https://toggl.com/api/v8/installer?app=td&platform=deb64&channel=stable
 	source = toggldesktop.bin
 	sha512sums = 5c8fc6fcc8d9905455cc54a61412dc772667599c5abab056d308223c54c85ef47afc3078acbb44ac84f8e1b31ccd838d245e3ce0a3037ddec9201549125f6847
-	sha512sums = 47da4864c25082c6eccb83a460b5826bda3102cd0eafc3398ac61d84ef4c2785c563b3a39a9456520b2a112dc3131966eaa0b89abefb73d71ea0fc18190173e7
+	sha512sums = 28e79d7f4334bb112f673ba445acc80576a708c2f05f85775e9301011e59b8318352412d0aaa3f709881b61f38a4a4577b108643260219cae54ea408e6aafe3c
 	sha512sums = b8669361b7c0cdbaec8a2225085aac9e26c2e99122b0840543685d06bf2fa7410722276ce1fa26374a313e5af6de47f70d84fac8261a35745953b85adb1ce0bb
 
 pkgname = toggldesktop-bin
