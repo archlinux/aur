@@ -40,7 +40,8 @@ build() {
 package() {
   cd "$srcdir/${pkgname}_linux_driver"
   KERNEL_VERSION=`pacman -Qi linux | grep "Version" | sed 's/^Version\s*:\s//'`
-  install -D -m644 ctn91xx.ko ${pkgdir}/usr/lib/modules/${KERNEL_VERSION}-ARCH/extramodules/ctn91xx.ko
-  gzip -9 ${pkgdir}/usr/lib/modules/${KERNEL_VERSION}-ARCH/extramodules/ctn91xx.ko
+  install -d ${pkgdir}/usr/lib/modules/extramodules-${KERNEL_VERSION}-ARCH
+  install -D -m644 ctn91xx.ko ${pkgdir}/usr/lib/modules/extramodules-${KERNEL_VERSION}-ARCH/
+  gzip -9 ${pkgdir}/usr/lib/modules/extramodules-${KERNEL_VERSION}-ARCH/ctn91xx.ko
   install -D -m644 98-ctn91xx.rules ${pkgdir}/etc/udev/rules.d/98-ctn91xx.rules
 }
