@@ -1,0 +1,15 @@
+pkgbase = corels
+	pkgdesc = Certifiably Optimal Rule Lists. C-library to build a certifiably optimal rule list from input data and labels.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/nlarusstone/corels
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gsl
+	depends = gmp
+	source = https://github.com/margoseltzer/corels-homebrew/files/1441466/corels-1.0.tar.gz
+	sha256sums = 013fd81472759a4e8f7ae8dec9ce4a9769286d41cd3ff33c5fc9bfb668a70b7d
+
+pkgname = corels
+
