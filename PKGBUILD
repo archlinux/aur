@@ -2,7 +2,7 @@
 
 pkgname=chez-scheme
 pkgver=9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Chez Scheme is a compiler and run-time system for the language of the Revised^6 Report on Scheme (R6RS), with numerous extensions."
 arch=(i686 x86_64)
 url="https://github.com/cisco/ChezScheme"
@@ -24,7 +24,7 @@ prepare() {
 build() {
   cd "$srcdir/${_archivename}" || exit
   unset CHEZSCHEMELIBDIRS
-  ./configure --installprefix=/usr --temproot=$pkgdir
+  LDFLAGS="-ltinfo" ./configure --installprefix=/usr --temproot=$pkgdir
   make
 }
 
