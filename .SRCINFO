@@ -1,0 +1,17 @@
+pkgbase = chrpath-svn
+	pkgdesc = Tool to adjust the RPATH or RUNPATH of ELF binaries
+	pkgver = r175
+	pkgrel = 1
+	url = https://chrpath.alioth.debian.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = glibc
+	provides = chrpath
+	conflicts = chrpath
+	source = svn://scm.alioth.debian.org/svn/chrpath/trunk
+	sha256sums = SKIP
+
+pkgname = chrpath-svn
+
