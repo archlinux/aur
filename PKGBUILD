@@ -1,36 +1,43 @@
-# Maintainer: Carl George < arch at cgtx dot us >
+# Maintainer: Davi da Silva Böger <dsboger at gmail dot com>
 
-pkgname="tilix"
+pkgname=tilix
 pkgver=1.7.1
-pkgrel=1
-pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
+pkgrel=2
+pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64' 'i686')
-url="https://github.com/gnunn1/tilix"
+url="http://github.com/gnunn1/tilix"
 license=('MPL')
 depends=('libx11' 'gtkd' 'vte3' 'dconf' 'gsettings-desktop-schemas')
-makedepends=('ldc' 'po4a')
 optdepends=('python2-nautilus: for "Open Tilix Here" support in nautilus'\
             'vte3-notification: for desktop notifications support'\
-            'vte3-tilix: for notifications, triggers and badges support'
-            'libsecret: for the password manager')
-provides=('terminix')
-conflicts=('terminix')
-replaces=('terminix')
-source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('1b807ba47d90c849e1712da7213daf46b63bb36c0b9bd6eaec9bc4c5f84465de')
+			'vte3-tilix: for notifications, triggers and badges support'
+			'libsecret: for the password manager')
+makedepends=('git' 'ldc' 'po4a')
+provides=('terminix' 'tilix')
+conflicts=('terminix' 'tilix')
+source=('git+https://github.com/gnunn1/tilix')
+sha512sums=('SKIP')
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    ./autogen.sh
+  cd ${pkgname}
+
+  # Merge commit that fixes building with GtkD 3.7.1
+  git checkout ${pkgver}
+  git cherry-pick --no-commit 3a9efb7209a6df73117b1756b1f394f1143949a6
+
+  chmod u+x autogen.sh
+  ./autogen.sh
 }
 
 build() {
-    cd "$pkgname-$pkgver"
-    ./configure --prefix=/usr PO4A_TRANS=/usr/bin/vendor_perl/po4a-translate
-    make DC='ldmd' DCFLAGS='-O -inline -release -version=StdLoggerDisableTrace'
+  cd ${pkgname}
+  # in many cases po4a-translate is not in the PATH
+  ./configure --prefix=/usr PO4A_TRANS=/usr/bin/vendor_perl/po4a-translate
+  make DC='ldmd' DCFLAGS='-O -inline -release -version=StdLoggerDisableTrace'
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
+  cd ${pkgname}
+  make DESTDIR=${pkgdir} install
 }
+
