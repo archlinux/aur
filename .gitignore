@@ -1,0 +1,8 @@
+/check[-_]nwc[-_]health-*.tar.*
+/check-nwc-health-*.log
+/PKGBUILD-namcap.log
+/src/
+/pkg/
+*~
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
