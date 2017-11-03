@@ -4,7 +4,7 @@
 
 pkgname=startup-notification-git
 _pkgname=startup-notification
-pkgver=0.12.r13.g0f4c3a4
+pkgver=0.12.r14.gb610115
 pkgrel=1
 pkgdesc="Monitor and display application startup"
 arch=(i686 x86_64)
