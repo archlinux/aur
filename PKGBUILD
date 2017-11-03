@@ -1,11 +1,11 @@
 # Maintainer: Michael Healy <horsemanoffaith@gmail.com>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname}, repo=zesty
+# vercheck-ubuntu: name=${pkgname}, repo=artful
 
 pkgname=ubuntu-themes
 _actual_ver=16.10
-_extra_ver=+17.04.20170406
+_extra_ver=+17.10.20171012.1
 _ubuntu_rel=0ubuntu1
 pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=1
@@ -14,14 +14,14 @@ arch=(any)
 url="https://launchpad.net/ubuntu-themes"
 license=(CCPL)
 groups=(unity-extra)
-depends=(human-icon-theme adwaita-icon-theme hicolor-icon-theme
+depends=(humanity-icon-theme adwaita-icon-theme hicolor-icon-theme
          gtk-engine-murrine)
 makedepends=(python2 imagemagick icon-naming-utils)
 provides=(light-themes ubuntu-mono)
 conflicts=(light-themes ubuntu-mono)
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${_actual_ver}${_extra_ver}.orig.tar.gz")
 
-sha512sums=('50d65dbe232237e1757b0d7a85ba7c2cafac18861211ca1b33a57de6a4961c325014851d1ee661adec57fac7472b7ae4f78439f30fa6f425eb751e94940d9f91')
+sha512sums=('12e185c4d9321a59009ba920b5c89d562066757160d4ae4ea17094bcb471ed3884eae225904e309844ed696bc0fa49394caaddf5d1769f0666f45edbab0129b5')
 
 build() {
    # Python 2 fix
