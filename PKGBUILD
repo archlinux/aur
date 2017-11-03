@@ -7,14 +7,14 @@
 
 pkgbase=pyside2-git
 pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
-pkgver=2.0.0.r5308.25f899e2
+pkgver=2.0.0.r5311.0de4dffa
 _upver=2.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://qt-project.org/wiki/PySide"
 # "python"{,2}"-shiboken2-git"
-makedepends=('python' 'python2' 'cmake'
+makedepends=('python' 'python2' 'cmake' 'clang'
              'phonon-qt5' 'git' 'python2-sphinx' 'graphviz' 'qt5-base'
              'qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia' 'qt5-declarative'
              'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-webchannel'
