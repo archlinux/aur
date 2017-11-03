@@ -1,0 +1,11 @@
+--- bsdmainutils/usr.bin/ncal/Makefile.orig	2017-11-03 01:22:31.847827133 -0600
++++ arch/usr.bin/ncal/Makefile	2017-11-03 01:22:43.254087104 -0600
+@@ -1,7 +1,7 @@
+ PROG   = ncal
+ SRC    = ncal.c calendar.c easter.c
+ 
+-LIBS+=-lncurses
++LIBS+=-lncurses -ltinfo
+ 
+ topdir=../..
+ include $(topdir)/config.mk

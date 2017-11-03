@@ -3,24 +3,26 @@
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=bsdmainutils
-pkgver=9.0.6
-pkgrel=2
+pkgver=9.0.12
+pkgrel=1
 pkgdesc="Some BSD-style programs including ncal and lorder."
 arch=('any')
 url="https://launchpad.net/ubuntu/+source/bsdmainutils"
 license=(GPL)
 source=(
-    "https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}ubuntu1.tar.gz"
-    archlinux-ncal.diff
+    "https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}+nmu1ubuntu1.tar.gz"
+    'archlinux-ncal.patch'
+    'archlinux-libtinfo.patch'
 )
 depends=(bash)
-makedepends=(gcc make patch)
-md5sums=(
-    72e37357a2ba75ab3418d2f9d5dbe75c
-    b2934a2c01150397738e4f9a62b1786c
+makedepends=(gcc make ncurses patch quilt)
+sha256sums=(
+    '8e97b383aac8821dafd5f2992a33d8a713cfced31ae782db743976575f05d40d'
+    '42cb05d09b0cde67d3e1cfc9bd77885107d517b55969fc252671994ebaca1d8b'
+    '60c90f1be3660551a6cb32244d31fd53f8b6d6fbfa92ce85d033f74ffb7c3078'
 )
 
-_pkgname="${pkgname}-${pkgver}ubuntu1"
+_pkgname="${pkgname}-${pkgver}+nmu1ubuntu1"
 
 build() {
 
@@ -36,10 +38,12 @@ build() {
 
     cd "${srcdir}/${pkgname}-work"
 
-    for i in debian/patches/* ; do patch -Np1 < "$i" ; done || return 1
-    patch -Np1 < ../archlinux-ncal.diff
+    #for i in debian/patches/* ; do patch -Np1 < "$i" ; done || return 1
+    QUILT_PATCHES='debian/patches' quilt push -a
+    patch -Np1 -i ../archlinux-ncal.patch
+    patch -Np1 -i ../archlinux-libtinfo.patch
 
-    for i in col colcrt colrm column hexdump look ul ; do rm -rf usr.bin/"$i" ; done
+    for i in col colcrt colrm column hexdump look ul ; do rm -rf "usr.bin/$i" ; done
 
     # Remove the above line and uncomment this one if you wish to install the hd binary but
     # read the warning below first.
