@@ -1,15 +1,13 @@
 #!/bin/sh
 
 post_install() {
-  if ! getent group git >/dev/null; then
-    groupadd --system git
-  fi
-  if ! getent passwd git >/dev/null; then
-    useradd --system -c 'git daemon user' -g git -d / -s /usr/bin/git-shell git
-  fi
+  systemd-sysusers git.conf
+
   if ! grep -qe '^/usr/bin/git-shell$' etc/shells; then
     echo '/usr/bin/git-shell' >> etc/shells
   fi
+
+  chsh -s /usr/bin/git-shell git
 }
 
 post_upgrade() {

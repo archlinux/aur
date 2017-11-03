@@ -25,15 +25,17 @@ optdepends=('tk: gitk and git gui'
             'subversion: git svn'
             'cvsps2: git cvsimport'
             'gnome-keyring: GNOME keyring credential helper')
-conflicts=(git-core)
-provides=(git-core git)
+conflicts=(git)
+provides=(git)
 install=git-git.install
 source=('git+https://github.com/git/git.git'
         git-daemon@.service
-        git-daemon.socket)
+        git-daemon.socket
+        git.sysusers)
 sha512sums=('SKIP'
             'ad7f81859d5a3b9b93b48ab1fe317919940d666439e583984bf5287b6c62f570c192b990f4a004a5d0a2d983ed5e63aba2ccc95a42e05e1b93242fdbce2d07f5'
-            'bd4aff421e547044a2a91b8a77c86ce14f05321008aa2e28aab35154b297803ca716ccba3e0fca3805033d4adb455adb41086ceeca98200b8006582c13f2c7d3')
+            'bd4aff421e547044a2a91b8a77c86ce14f05321008aa2e28aab35154b297803ca716ccba3e0fca3805033d4adb455adb41086ceeca98200b8006582c13f2c7d3'
+            '17c6a884904d7336ea9975d28a15298fdc6d3ba8d00c3fc8a0f739b8e2e31e9fe4c558228f5a8509ec3c4481211e83575cf4b0d57dfc8f648c7c1b0729ee4bee')
 
 pkgver() {
   cd "$srcdir/$_name"
@@ -140,4 +142,7 @@ package() {
   # git-daemon via systemd socket activation
   install -D -m 644 "$srcdir/git-daemon@.service" "$pkgdir/usr/lib/systemd/system/git-daemon@.service"
   install -D -m 644 "$srcdir/git-daemon.socket" "$pkgdir/usr/lib/systemd/system/git-daemon.socket"
+
+  # Add git-daemon sysuser
+  install -D -m 644 "$srcdir/git.sysusers" "$pkgdir/usr/lib/sysusers.d/git.conf"
 }
