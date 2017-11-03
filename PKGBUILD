@@ -40,12 +40,14 @@ source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/$
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
-        "policytool-$_jname.desktop")
+        "policytool-$_jname.desktop"
+        'LICENSE-Early-Adopter-Development-Agreement.txt')
 sha256sums=('fe5f1716f95d6db9568f53e1cbc2dcc6b37ee9393c24687d054c6236fd25c8b3'
             '2e429abf6f14f506f8caa643eeed10921ef3c9b6820850778822f6e95a5fc956'
             'c163f149154d8a3f76ba916d49215673f3056595d857b2f2b7074e88496bbd32'
             'fd519f3ffb9ff649ae1c39674d247d9d26af2befb4ac557e885e84c3c4669950'
-            '2dfc037e6ffc5a2bba31afe44a6a0e1e6e4eb7bb105256793372a21083b1e3be')
+            '2dfc037e6ffc5a2bba31afe44a6a0e1e6e4eb7bb105256793372a21083b1e3be'
+            '36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89')
 
 package() {
     cd $_pkgname-$_major
