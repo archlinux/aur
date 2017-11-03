@@ -1,26 +1,17 @@
 # Maintainer:  Yigit Dallilar <yigit.dallilar@gmail.com>
 
 pkgname=heasoft
-pkgver=6.21
-pkgrel=3
+pkgver=6.22.1
+pkgrel=1
 pkgdesc="NASA high energy astrophysics library"
 makedepends=("gcc" "glibc" "gcc-fortran" "perl")
-depends=("ncurses" "libtinfo" "readline" "libxpm" )
-optdepends=("lynx")
+depends=("ncurses" "readline" "libxpm" )
 url="https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/"
 arch=('x86_64')
 license=('NASA' 'GPL')
-source=(http://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/release/${pkgname}-${pkgver}src_no_xspec_modeldata.tar.gz ${pkgname}-${pkgver}_nolynx.patch)
-sha1sums=('3c55645feae3ddffc86d6c1b3c1b989e8a7d5d1b'
-	'c1d4940d1aa599bf3b8b61b3471ebf057869b517')
-
-prepare() {
-  # lynx conflict with ncurses and openssl. For now left it out.
-  # lynx can be installed from official repo.
-  cd $srcdir/${pkgname}-${pkgver}
-  patch -Np1 -i ../${pkgname}-${pkgver}_nolynx.patch
-  echo
-}
+source=(http://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/release/${pkgname}-${pkgver}src_no_xspec_modeldata.tar.gz)
+#source=(heasoft-6.22.1src_no_xspec_modeldata.tar.gz)
+sha256sums=('86d5b0be442f4eb80cf60f2160a87527e615bb019d1dabdc102d9864b6ec8b96')
 
 
 build() {
@@ -50,18 +41,7 @@ package(){
   echo "***********************************************************************"
   echo
 
-  if [ -e /usr/bin/lynx ]
-  then
-     echo "Checking if lynx is installed... yes"
-     echo "Linking lynx to heasoft"
-     ln -s /usr/bin/lynx $pkgdir/opt/${pkgname}-${pkgver}/x86_64-unknown-linux-gnu-libc${_glibcver}/bin/lynx 
-     
-  else
-     echo "Checking if lynx is installed... no"
-  fi
-
-
-  printf "\n\nAdd following lines to your ~/.bashrc to initialize the software\n\n   export HEADAS=/opt/%s-%s/x86_64-unknown-linux-gnu-libc%s\n   alias heainit='source \$HEADAS/headas-init.sh\n\nThen load heasoft by the command:\n\n   >heainit\n\n" ${pkgname} ${pkgver} ${_glibcver}
+   printf "\n\nAdd following lines to your ~/.bashrc to initialize the software\n\n   export HEADAS=/opt/%s-%s/x86_64-unknown-linux-gnu-libc%s\n   alias heainit='source \$HEADAS/headas-init.sh\n\nThen load heasoft by the command:\n\n   >heainit\n\n" ${pkgname} ${pkgver} ${_glibcver}
 
   echo "Install complete..."
   echo
