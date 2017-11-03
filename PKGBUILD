@@ -35,9 +35,11 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/sound.properties")
 install=$pkgname.install
 source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_major}-ea+${_build}_linux-x64_bin.tar.gz"
-        "policytool-$_jname.desktop")
+        "policytool-$_jname.desktop"
+        'LICENSE-Early-Adopter-Development-Agreement.txt')
 sha256sums=('6b1e3a796d4ef3e088af3bdec8ac42f558b42fa8ee74f774f83f50236e5362eb'
-            '011f461fa94df5684f90779a0335e87aab91de23e0e64bd45ee9f19c5804c390')
+            '011f461fa94df5684f90779a0335e87aab91de23e0e64bd45ee9f19c5804c390'
+            '36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89')
 
 package() {
     cd $_pkgname-$_major

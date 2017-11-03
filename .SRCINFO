@@ -34,8 +34,10 @@ pkgbase = jre-devel
 	backup = etc/java-jre10/sound.properties
 	source = http://download.java.net/java/jdk10/archive/29/binaries/jre-10-ea+29_linux-x64_bin.tar.gz
 	source = policytool-jre10.desktop
+	source = LICENSE-Early-Adopter-Development-Agreement.txt
 	sha256sums = 6b1e3a796d4ef3e088af3bdec8ac42f558b42fa8ee74f774f83f50236e5362eb
 	sha256sums = 011f461fa94df5684f90779a0335e87aab91de23e0e64bd45ee9f19c5804c390
+	sha256sums = 36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89
 
 pkgname = jre-devel
 
