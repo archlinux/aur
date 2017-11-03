@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Wright <jon@than.io>
 pkgname=journey-bin
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Ghost-compatible blogging platform written in golang'
 url='https://kabukky.github.io/journey/'
@@ -19,9 +19,9 @@ source=('journey.service'
 sha256sums=('71ff0fd4afd25bcc9e91fe2f9d9f9b8dd89884081e05c93bbd5f3c4c84b71428'
             '20b809dbe7553acbd940c6bd0a83b6b529d3ebc8fa5c4ac20ae74c1bb7c6b22c')
 source_i686=("https://github.com/kabukky/${pkgname/-bin/}/releases/download/v${pkgver}/${pkgname/-bin/}-linux-386.zip")
-sha256sums_i686=('09f903f28f7a3ac15c5df00342c7754d72da537af13f4fd2b656dbe5efe603c6')
+sha256sums_i686=('a0b1a73cafe024260ba46202a1542eea47428763bdb41fb677e609aee329fe1b')
 source_x86_64=("https://github.com/kabukky/${pkgname/-bin/}/releases/download/v${pkgver}/${pkgname/-bin/}-linux-amd64.zip")
-sha256sums_x86_64=('67d6280716a0e74d2daa03039d8544e6643b241d03f0e56da3cc23d21ab09b36')
+sha256sums_x86_64=('ba25e0658a9ae9b959c690a797318c8c8991f25544c868cfd3e332f1a57ae372')
 
 package() {
   if [[ "${CARCH}" == "i686" ]]; then
