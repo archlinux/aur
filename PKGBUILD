@@ -22,9 +22,6 @@ package() {
   mv "$pkgdir/usr/share/$_pkgname/LICENSES.chromium.html" \
     "${pkgdir}/usr/share/licenses/$pkgname/"
   rm -rf "$pkgdir/opt"
-  # Patch wrong WM class until this is fixed.
-  sed -i "/^StartupWMClass=/s/ Preview//" \
-    "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
