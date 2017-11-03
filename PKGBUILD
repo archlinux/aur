@@ -2,9 +2,9 @@
 
 pkgname=bitcoin-core-git
 pkgver=20170914
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Core headless P2P node"
-arch=('i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/bitcoin/bitcoin"
 depends=('boost'
          'boost-libs'
