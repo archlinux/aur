@@ -2,7 +2,7 @@
 _pkgname=taskwiki
 pkgname=vim-$_pkgname-git
 pkgver=r687.0c964460e
-pkgrel=1
+pkgrel=2
 pkgdesc="Proper project management in vim. Standing on the shoulders of vimwiki and Taskwarrior"
 arch=('any')
 url="https://github.com/tbabej/taskwiki"
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname%-git}::git+$url.git")
+source=("git+$url.git")
 noextract=()
 md5sums=('SKIP')
 
