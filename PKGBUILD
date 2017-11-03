@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Wright <jon@than.io>
 pkgname=journey
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Ghost-compatible blogging platform written in golang'
 url='https://kabukky.github.io/journey/'
@@ -21,7 +21,7 @@ source=("https://github.com/kabukky/journey/archive/v${pkgver}.tar.gz"
         "promenade.zip::https://github.com/kabukky/promenade/archive/${_promenade_sha}.zip"
         'journey.service'
         'journey.install')
-sha256sums=('9ab101514864bf3ed764ba2e51fc74b17de8b787187fd3aa72cf4df7453529e5'
+sha256sums=('534964f9b1019dde2498d5d402c5263171f0db91eca2b123dc500a9a80a3d455'
             '2597207a112f69ec0de94bef063681a6d2f3920fff02c2117e5ccf392a4a1ca4'
             '71ff0fd4afd25bcc9e91fe2f9d9f9b8dd89884081e05c93bbd5f3c4c84b71428'
             '20b809dbe7553acbd940c6bd0a83b6b529d3ebc8fa5c4ac20ae74c1bb7c6b22c')
