@@ -1,6 +1,6 @@
 pkgbase = subsonic-beta
 	pkgdesc = A free, web-based media streamer and jukebox.
-	pkgver = 6.1.1
+	pkgver = 6.1.2
 	pkgrel = 1
 	epoch = 4
 	url = http://subsonic.org/
@@ -13,11 +13,11 @@ pkgbase = subsonic-beta
 	backup = var/lib/subsonic/db
 	backup = var/lib/subsonic/subsonic.properties
 	backup = var/lib/subsonic/subsonic.sh
-	source = https://s3-eu-west-1.amazonaws.com/subsonic-public/download/subsonic-6.1.1-standalone.tar.gz
+	source = https://s3-eu-west-1.amazonaws.com/subsonic-public/download/subsonic-6.1.2-standalone.tar.gz
 	source = subsonic.service
-	sha256sums = ed33a5b7c0543d1cd0463c22e69fcb954b7862dc95c59efbe5456a373239ee2a
+	sha256sums = 8d91b6d4c330ae7df9cd9724a00697d8fdc31c3663f949ff58bd213c3e727f69
 	sha256sums = f5404721615b6e1ce7b5212b41f8799bc8ed09c8a1a9c5de71e439da41d2c6aa
-	sha512sums = cdd4dd7ec1583fc0342e071b03ec37f1737eb73c53724f6fa1b243b8f3e36b1e4063cc944f997f1f412dcdff03dcea9d37f2ed7f9afc1165526867c0b1238472
+	sha512sums = 14a85db5f7006264e03e718a0e56f1a062d85927ea46edad5bb9698b85ceb9493f80e9eb81e88b521b941e38f804045e8123997259b77d38772107687629bfc8
 	sha512sums = 9026ea4e216f359146cf325083ddbf051d1d141bf6342ec750723ab891e5a212f55411ce8d0dd9697b8636541618220498fc8aa9b4c680a8d2c34ab7ee4db02e
 
 pkgname = subsonic-beta
