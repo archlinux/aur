@@ -2,7 +2,7 @@
 pkgname=cliqz
 _pkgname=browser-f
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 _cqzbuildid=20171017104524
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
