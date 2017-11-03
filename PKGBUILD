@@ -20,7 +20,7 @@ source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
         plugin-crash.diff
         glibc-2.26-fix.diff
         0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch)
-sha256sums=('720bb3d2e681cfad36e02f4f70980ce8e8d677e0ce4fd8c48af6b60068807716'
+sha256sums=('17145b8d64f5777a536fd9264add052997f08d2a02856b678298049ddc3a0797'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
