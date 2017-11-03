@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=lalsuite-git
 pkgver=r56231.42fcf346d4
-pkgrel=2
+pkgrel=3
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite."
 arch=('any')
 url=""
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    sed -i '/^#!.*python/ s/python/python2/' $(grep -ri '^#!.*python' .)
+    sed -i '/^#!.*python/ s/python/python2/' $(grep -ri '^#!.*python' $PWD)
     export PYTHON=/usr/bin/python2
     export CHEALPIX=/usr/lib/libchealpix.so
     #export CFITSIO=/usr/lib/libcfitsio.so
