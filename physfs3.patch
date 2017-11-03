@@ -1,0 +1,1891 @@
+diff --git a/lib/framework/frame.cpp b/lib/framework/frame.cpp
+index cd8912b86..295e7ed0c 100644
+--- a/lib/framework/frame.cpp
++++ b/lib/framework/frame.cpp
+@@ -145,11 +145,11 @@ PHYSFS_file *openLoadFile(const char *fileName, bool hard_fail)
+ 	{
+ 		if (hard_fail)
+ 		{
+-			ASSERT(!"unable to open file", "file %s could not be opened: %s", fileName, PHYSFS_getLastError());
++			ASSERT(!"unable to open file", "file %s could not be opened: %i", fileName, PHYSFS_getLastErrorCode());
+ 		}
+ 		else
+ 		{
+-			debug(LOG_WZ, "optional file %s could not be opened: %s", fileName, PHYSFS_getLastError());
++			debug(LOG_WZ, "optional file %s could not be opened: %i", fileName, PHYSFS_getLastErrorCode());
+ 		}
+ 	}
+ 
+@@ -166,7 +166,7 @@ PHYSFS_file *openLoadFile(const char *fileName, bool hard_fail)
+ ***************************************************************************/
+ static bool loadFile2(const char *pFileName, char **ppFileData, UDWORD *pFileSize, bool AllocateMem, bool hard_fail)
+ {
+-	if (PHYSFS_isDirectory(pFileName))
++	if (PHYSFS_stat(pFileName, NULL))
+ 	{
+ 		return false;
+ 	}
+@@ -200,7 +200,7 @@ static bool loadFile2(const char *pFileName, char **ppFileData, UDWORD *pFileSiz
+ 	}
+ 
+ 	/* Load the file data */
+-	PHYSFS_sint64 length_read = PHYSFS_read(pfile, *ppFileData, 1, filesize);
++	PHYSFS_sint64 length_read = PHYSFS_readBytes(pfile, *ppFileData, filesize);
+ 	if (length_read != filesize)
+ 	{
+ 		if (AllocateMem)
+@@ -209,7 +209,7 @@ static bool loadFile2(const char *pFileName, char **ppFileData, UDWORD *pFileSiz
+ 			*ppFileData = nullptr;
+ 		}
+ 
+-		debug(LOG_ERROR, "Reading %s short: %s", pFileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "Reading %s short: %i", pFileName, PHYSFS_getLastErrorCode());
+ 		assert(false);
+ 		return false;
+ 	}
+@@ -222,7 +222,7 @@ static bool loadFile2(const char *pFileName, char **ppFileData, UDWORD *pFileSiz
+ 			*ppFileData = nullptr;
+ 		}
+ 
+-		debug(LOG_ERROR, "Error closing %s: %s", pFileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "Error closing %s: %i", pFileName, PHYSFS_getLastErrorCode());
+ 		assert(false);
+ 		return false;
+ 	}
+@@ -243,7 +243,7 @@ PHYSFS_file *openSaveFile(const char *fileName)
+ 	{
+ 		const char *found = PHYSFS_getRealDir(fileName);
+ 
+-		debug(LOG_ERROR, "%s could not be opened: %s", fileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "%s could not be opened: %i", fileName, PHYSFS_getLastErrorCode());
+ 		if (found)
+ 		{
+ 			debug(LOG_ERROR, "%s found as %s", fileName, found);
+@@ -262,25 +262,25 @@ PHYSFS_file *openSaveFile(const char *fileName)
+ bool saveFile(const char *pFileName, const char *pFileData, UDWORD fileSize)
+ {
+ 	PHYSFS_file *pfile;
+-	PHYSFS_uint32 size = fileSize;
++	PHYSFS_uint64 size = fileSize;
+ 
+ 	debug(LOG_WZ, "We are to write (%s) of size %d", pFileName, fileSize);
+ 	pfile = openSaveFile(pFileName);
+ 	if (!pfile)
+ 	{
+-		ASSERT(false, "Couldn't save file %s (%s)?", pFileName, PHYSFS_getLastError());
++		ASSERT(false, "Couldn't save file %s (%i)?", pFileName, PHYSFS_getLastErrorCode());
+ 		return false;
+ 	}
+ 
+-	if (PHYSFS_write(pfile, pFileData, 1, size) != size)
++	if (PHYSFS_writeBytes(pfile, pFileData, size) != size)
+ 	{
+-		debug(LOG_ERROR, "%s could not write: %s", pFileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "%s could not write: %i", pFileName, PHYSFS_getLastErrorCode());
+ 		assert(false);
+ 		return false;
+ 	}
+ 	if (!PHYSFS_close(pfile))
+ 	{
+-		debug(LOG_ERROR, "Error closing %s: %s", pFileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "Error closing %s: %i", pFileName, PHYSFS_getLastErrorCode());
+ 		assert(false);
+ 		return false;
+ 	}
+@@ -288,11 +288,11 @@ bool saveFile(const char *pFileName, const char *pFileData, UDWORD fileSize)
+ 	if (PHYSFS_getRealDir(pFileName) == nullptr)
+ 	{
+ 		// weird
+-		debug(LOG_ERROR, "PHYSFS_getRealDir(%s) returns NULL (%s)?!", pFileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "PHYSFS_getRealDir(%s) returns NULL (%i)?!", pFileName, PHYSFS_getLastErrorCode());
+ 	}
+ 	else
+ 	{
+-		debug(LOG_WZ, "Successfully wrote to %s%s with %d bytes", PHYSFS_getRealDir(pFileName), pFileName, size);
++		debug(LOG_WZ, "Successfully wrote to %s%s with %llu bytes", PHYSFS_getRealDir(pFileName), pFileName, size);
+ 	}
+ 	return true;
+ }
+@@ -340,5 +340,5 @@ bool PHYSFS_printf(PHYSFS_file *file, const char *format, ...)
+ 	vssprintf(vaBuffer, format, ap);
+ 	va_end(ap);
+ 
+-	return PHYSFS_write(file, vaBuffer, strlen(vaBuffer), 1);
++	return PHYSFS_writeBytes(file, vaBuffer, strlen(vaBuffer));
+ }
+diff --git a/lib/framework/lexer_input.cpp b/lib/framework/lexer_input.cpp
+index 393be0acb..b7c349617 100644
+--- a/lib/framework/lexer_input.cpp
++++ b/lib/framework/lexer_input.cpp
+@@ -44,7 +44,7 @@ int lexer_input(lexerinput_t *input, char *buf, size_t max_size, int nullvalue)
+ 		}
+ 		else
+ 		{
+-			int result = PHYSFS_read(input->input.physfsfile, buf, 1, max_size);
++			int result = PHYSFS_readBytes(input->input.physfsfile, buf, max_size);
+ 			if (result == -1)
+ 			{
+ 				buf[0] = EOF;
+diff --git a/lib/framework/physfs_ext.h b/lib/framework/physfs_ext.h
+index 17e563dc7..57c8b657e 100644
+--- a/lib/framework/physfs_ext.h
++++ b/lib/framework/physfs_ext.h
+@@ -36,42 +36,42 @@ static inline bool PHYSFS_exists(const QString &filename)
+ 
+ static inline bool PHYSFS_writeSLE8(PHYSFS_file *file, int8_t val)
+ {
+-	return (PHYSFS_write(file, &val, sizeof(int8_t), 1) == 1);
++	return (PHYSFS_writeBytes(file, &val, sizeof(int8_t)) == sizeof(int8_t));
+ }
+ 
+ static inline bool PHYSFS_writeULE8(PHYSFS_file *file, uint8_t val)
+ {
+-	return (PHYSFS_write(file, &val, sizeof(uint8_t), 1) == 1);
++	return (PHYSFS_writeBytes(file, &val, sizeof(uint8_t)) == sizeof(uint8_t));
+ }
+ 
+ static inline bool PHYSFS_readSLE8(PHYSFS_file *file, int8_t *val)
+ {
+-	return (PHYSFS_read(file, val, sizeof(int8_t), 1) == 1);
++	return (PHYSFS_readBytes(file, val, sizeof(int8_t)) == sizeof(int8_t));
+ }
+ 
+ static inline bool PHYSFS_readULE8(PHYSFS_file *file, uint8_t *val)
+ {
+-	return (PHYSFS_read(file, val, sizeof(uint8_t), 1) == 1);
++	return (PHYSFS_readBytes(file, val, sizeof(uint8_t)) == sizeof(uint8_t));
+ }
+ 
+ static inline bool PHYSFS_writeSBE8(PHYSFS_file *file, int8_t val)
+ {
+-	return (PHYSFS_write(file, &val, sizeof(int8_t), 1) == 1);
++	return (PHYSFS_writeBytes(file, &val, sizeof(int8_t)) == sizeof(int8_t));
+ }
+ 
+ static inline bool PHYSFS_writeUBE8(PHYSFS_file *file, uint8_t val)
+ {
+-	return (PHYSFS_write(file, &val, sizeof(uint8_t), 1) == 1);
++	return (PHYSFS_writeBytes(file, &val, sizeof(uint8_t)) == sizeof(uint8_t));
+ }
+ 
+ static inline bool PHYSFS_readSBE8(PHYSFS_file *file, int8_t *val)
+ {
+-	return (PHYSFS_read(file, val, sizeof(int8_t), 1) == 1);
++	return (PHYSFS_readBytes(file, val, sizeof(int8_t)) == sizeof(int8_t));
+ }
+ 
+ static inline bool PHYSFS_readUBE8(PHYSFS_file *file, uint8_t *val)
+ {
+-	return (PHYSFS_read(file, val, sizeof(uint8_t), 1) == 1);
++	return (PHYSFS_readBytes(file, val, sizeof(uint8_t)) == sizeof(uint8_t));
+ }
+ 
+ static inline bool PHYSFS_writeBEFloat(PHYSFS_file *file, float val)
+@@ -104,7 +104,7 @@ bool PHYSFS_printf(PHYSFS_file *file, const char *format, ...) WZ_DECL_FORMAT(pr
+  * @param      size Maximum number of chars to read (includes terminating null character).
+  * @param      stream PHYSFS file handle.
+  * @return     s on success, NULL on error or if no characters were read.
+- * @note       PHYSFS_getLastError() or PHYSFS_eof() can help find the source
++ * @note       PHYSFS_getLastErrorCode() or PHYSFS_eof() can help find the source
+  *                     of the error.
+  * @note       If a EOF is encountered before any chars are read, the chars
+  *                     pointed by s are not changed.
+@@ -126,7 +126,7 @@ static inline char *PHYSFS_fgets(char *s, int size, PHYSFS_file *stream)
+ 	}
+ 	do
+ 	{
+-		retval = PHYSFS_read(stream, &c, 1, 1);
++		retval = PHYSFS_readBytes(stream, &c, 1);
+ 
+ 		if (retval < 1)
+ 		{
+diff --git a/lib/framework/resource_parser.cpp b/lib/framework/resource_parser.cpp
+index c30eebc0c..4732ecf6f 100644
+--- a/lib/framework/resource_parser.cpp
++++ b/lib/framework/resource_parser.cpp
+@@ -1421,7 +1421,7 @@ yyreduce:
+ 					}
+ 					if (strlen((yyvsp[(2) - (2)].sval)) > 0)
+ 					{
+-						ASSERT(PHYSFS_isDirectory(aCurrResDir), "%s is not a directory!", aCurrResDir);
++						ASSERT(PHYSFS_stat(aCurrResDir, NULL), "%s is not a directory!", aCurrResDir);
+ 						// Add a trailing '/'
+ 						len = strlen(aCurrResDir);
+ 						aCurrResDir[len] = '/';
+diff --git a/lib/framework/resource_parser.ypp b/lib/framework/resource_parser.ypp
+index 3989af5eb..1a062b7e7 100644
+--- a/lib/framework/resource_parser.ypp
++++ b/lib/framework/resource_parser.ypp
+@@ -99,7 +99,7 @@ dir_line:			DIRECTORY QTEXT_T
+ 					}
+ 					if (strlen($2) > 0)
+ 					{
+-						ASSERT(PHYSFS_isDirectory(aCurrResDir), "%s is not a directory!", aCurrResDir);
++						ASSERT(PHYSFS_stat(aCurrResDir, NULL), "%s is not a directory!", aCurrResDir);
+ 						// Add a trailing '/'
+ 						len = strlen(aCurrResDir);
+ 						aCurrResDir[len] = '/';
+diff --git a/lib/framework/strres.cpp b/lib/framework/strres.cpp
+index d1d3abbea..5331ba4dd 100644
+--- a/lib/framework/strres.cpp
++++ b/lib/framework/strres.cpp
+@@ -104,7 +104,7 @@ bool strresLoad(STR_RES *psRes, const char *fileName)
+ 	debug(LOG_WZ, "Reading...[directory %s] %s", PHYSFS_getRealDir(fileName), fileName);
+ 	if (!input.input.physfsfile)
+ 	{
+-		debug(LOG_ERROR, "strresLoadFile: PHYSFS_openRead(\"%s\") failed with error: %s\n", fileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "strresLoadFile: PHYSFS_openRead(\"%s\") failed with error: %i\n", fileName, PHYSFS_getLastErrorCode());
+ 		return false;
+ 	}
+ 
+diff --git a/lib/ivis_opengl/piestate.cpp b/lib/ivis_opengl/piestate.cpp
+index e04ede707..eafae082c 100644
+--- a/lib/ivis_opengl/piestate.cpp
++++ b/lib/ivis_opengl/piestate.cpp
+@@ -140,7 +140,7 @@ static char *readShaderBuf(const char *name)
+ 	buffer = (char *)malloc(filesize + 1);
+ 	if (buffer)
+ 	{
+-		PHYSFS_read(fp, buffer, 1, filesize);
++		PHYSFS_readBytes(fp, buffer, filesize);
+ 		buffer[filesize] = '\0';
+ 	}
+ 	PHYSFS_close(fp);
+diff --git a/lib/ivis_opengl/png_util.cpp b/lib/ivis_opengl/png_util.cpp
+index 68b8c5b30..43279b5be 100644
+--- a/lib/ivis_opengl/png_util.cpp
++++ b/lib/ivis_opengl/png_util.cpp
+@@ -32,14 +32,14 @@ static void wzpng_read_data(png_structp ctx, png_bytep area, png_size_t size)
+ {
+ 	PHYSFS_file *fileHandle = (PHYSFS_file *)png_get_io_ptr(ctx);
+ 
+-	PHYSFS_read(fileHandle, area, 1, size);
++	PHYSFS_readBytes(fileHandle, area, size);
+ }
+ 
+ static void wzpng_write_data(png_structp png_ptr, png_bytep data, png_size_t length)
+ {
+ 	PHYSFS_file *fileHandle = (PHYSFS_file *)png_get_io_ptr(png_ptr);
+ 
+-	PHYSFS_write(fileHandle, data, length, 1);
++	PHYSFS_writeBytes(fileHandle, data, length);
+ }
+ 
+ static void wzpng_flush_data(png_structp png_ptr)
+@@ -92,13 +92,13 @@ bool iV_loadImage_PNG(const char *fileName, iV_Image *image)
+ 
+ 	// Open file
+ 	PHYSFS_file *fileHandle = PHYSFS_openRead(fileName);
+-	ASSERT_OR_RETURN(false, fileHandle != nullptr, "Could not open %s: %s", fileName, PHYSFS_getLastError());
++	ASSERT_OR_RETURN(false, fileHandle != nullptr, "Could not open %s: %i", fileName, PHYSFS_getLastErrorCode());
+ 
+ 	// Read PNG header from file
+-	readSize = PHYSFS_read(fileHandle, PNGheader, 1, PNG_BYTES_TO_CHECK);
++	readSize = PHYSFS_readBytes(fileHandle, PNGheader, PNG_BYTES_TO_CHECK);
+ 	if (readSize < PNG_BYTES_TO_CHECK)
+ 	{
+-		debug(LOG_FATAL, "pie_PNGLoadFile: PHYSFS_read(%s) failed with error: %s\n", fileName, PHYSFS_getLastError());
++		debug(LOG_FATAL, "pie_PNGLoadFile: PHYSFS_readBytes(%s) failed with error: %i\n", fileName, PHYSFS_getLastErrorCode());
+ 		PNGReadCleanup(&info_ptr, &png_ptr, fileHandle);
+ 		return false;
+ 	}
+@@ -196,7 +196,7 @@ static void internal_saveImage_PNG(const char *fileName, const iV_Image *image,
+ 	fileHandle = PHYSFS_openWrite(fileName);
+ 	if (fileHandle == nullptr)
+ 	{
+-		debug(LOG_ERROR, "pie_PNGSaveFile: PHYSFS_openWrite failed (while opening file %s) with error: %s\n", fileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "pie_PNGSaveFile: PHYSFS_openWrite failed (while opening file %s) with error: %i\n", fileName, PHYSFS_getLastErrorCode());
+ 		return;
+ 	}
+ 
+@@ -313,7 +313,7 @@ void iV_saveImage_JPEG(const char *fileName, const iV_Image *image)
+ 	fileHandle = PHYSFS_openWrite(newfilename);
+ 	if (fileHandle == nullptr)
+ 	{
+-		debug(LOG_ERROR, "pie_JPEGSaveFile: PHYSFS_openWrite failed (while opening file %s) with error: %s\n", fileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "pie_JPEGSaveFile: PHYSFS_openWrite failed (while opening file %s) with error: %i\n", fileName, PHYSFS_getLastErrorCode());
+ 		return;
+ 	}
+ 
+@@ -341,7 +341,7 @@ void iV_saveImage_JPEG(const char *fileName, const iV_Image *image)
+ 	}
+ 
+ 	jpeg_end = jpeg_encode_image(buffer, jpeg, 1, JPEG_FORMAT_RGB, image->width, image->height);
+-	PHYSFS_write(fileHandle, jpeg, jpeg_end - jpeg, 1);
++	PHYSFS_writeBytes(fileHandle, jpeg, jpeg_end - jpeg);
+ 
+ 	free(buffer);
+ 	free(jpeg);
+diff --git a/lib/netplay/netlog.cpp b/lib/netplay/netlog.cpp
+index 594e45a1e..d55723f1e 100644
+--- a/lib/netplay/netlog.cpp
++++ b/lib/netplay/netlog.cpp
+@@ -60,12 +60,12 @@ bool NETstartLogging(void)
+ 	pFileHandle = PHYSFS_openWrite(filename);   // open the file
+ 	if (!pFileHandle)
+ 	{
+-		debug(LOG_ERROR, "Could not create net log %s: %s", filename,
+-		      PHYSFS_getLastError());
++		debug(LOG_ERROR, "Could not create net log %s: %i", filename,
++		      PHYSFS_getLastErrorCode());
+ 		return false;
+ 	}
+ 	snprintf(buf, sizeof(buf), "NETPLAY log: %s\n", asctime(newtime));
+-	PHYSFS_write(pFileHandle, buf, strlen(buf), 1);
++	PHYSFS_writeBytes(pFileHandle, buf, strlen(buf));
+ 	return true;
+ }
+ 
+@@ -93,43 +93,43 @@ bool NETstopLogging(void)
+ 			snprintf(buf, sizeof(buf), "%-24s:\t received %u times, %u bytes; sent %u times, %u bytes\n", messageTypeToString(i),
+ 			         packetcount[1][i], packetsize[1][i], packetcount[0][i], packetsize[0][i]);
+ 		}
+-		PHYSFS_write(pFileHandle, buf, strlen(buf), 1);
++		PHYSFS_writeBytes(pFileHandle, buf, strlen(buf));
+ 		totalBytessent += packetsize[0][i];
+ 		totalBytesrecv += packetsize[1][i];
+ 		totalPacketsent += packetcount[0][i];
+ 		totalPacketrecv += packetcount[1][i];
+ 	}
+ 	snprintf(buf, sizeof(buf), "== Total bytes sent %u, Total bytes received %u ==\n", totalBytessent, totalBytesrecv);
+-	PHYSFS_write(pFileHandle, buf, strlen(buf), 1);
++	PHYSFS_writeBytes(pFileHandle, buf, strlen(buf));
+ 	snprintf(buf, sizeof(buf), "== Total packets sent %u, recv %u ==\n", totalPacketsent, totalPacketrecv);
+-	PHYSFS_write(pFileHandle, buf, strlen(buf), 1);
++	PHYSFS_writeBytes(pFileHandle, buf, strlen(buf));
+ 	snprintf(buf, sizeof(buf), "\n-Sync statistics -\n");
+-	PHYSFS_write(pFileHandle, buf, strlen(buf), 1);
+-	PHYSFS_write(pFileHandle, dash_line, strlen(dash_line), 1);
++	PHYSFS_writeBytes(pFileHandle, buf, strlen(buf));
++	PHYSFS_writeBytes(pFileHandle, dash_line, strlen(dash_line));
+ 	snprintf(buf, sizeof(buf), "joins: %u, kicks: %u, drops: %u, left %u\n", sync_counter.joins, sync_counter.kicks, sync_counter.drops, sync_counter.left);
+-	PHYSFS_write(pFileHandle, buf, strlen(buf), 1);
++	PHYSFS_writeBytes(pFileHandle, buf, strlen(buf));
+ 	snprintf(buf, sizeof(buf), "banned: %u, cantjoin: %u, rejected: %u\n", sync_counter.banned, sync_counter.cantjoin, sync_counter.rejected);
+-	PHYSFS_write(pFileHandle, buf, strlen(buf), 1);
++	PHYSFS_writeBytes(pFileHandle, buf, strlen(buf));
+ 	if (sync_counter.banned && IPlist)
+ 	{
+ 		snprintf(buf, sizeof(buf), "Banned list:\n");
+-		PHYSFS_write(pFileHandle, buf, strlen(buf), 1);
++		PHYSFS_writeBytes(pFileHandle, buf, strlen(buf));
+ 		for (i = 0; i < MAX_BANS; i++)
+ 		{
+ 			if (IPlist[i].IPAddress[0] != '\0')
+ 			{
+ 				snprintf(buf, sizeof(buf), "player %s, IP: %s\n", IPlist[i].pname, IPlist[i].IPAddress);
+-				PHYSFS_write(pFileHandle, buf, strlen(buf), 1);
++				PHYSFS_writeBytes(pFileHandle, buf, strlen(buf));
+ 			}
+ 		}
+ 
+ 	}
+-	PHYSFS_write(pFileHandle, dash_line, strlen(dash_line), 1);
+-	PHYSFS_write(pFileHandle, dash_line, strlen(dash_line), 1);
++	PHYSFS_writeBytes(pFileHandle, dash_line, strlen(dash_line));
++	PHYSFS_writeBytes(pFileHandle, dash_line, strlen(dash_line));
+ 
+ 	if (!PHYSFS_close(pFileHandle))
+ 	{
+-		debug(LOG_ERROR, "Could not close net log: %s", PHYSFS_getLastError());
++		debug(LOG_ERROR, "Could not close net log: %i", PHYSFS_getLastErrorCode());
+ 		return false;
+ 	}
+ 	pFileHandle = nullptr;
+@@ -178,7 +178,7 @@ bool NETlogEntry(const char *str, UDWORD a, UDWORD b)
+ 		static const char dash_line[] = "-----------------------------------------------------------\n";
+ 
+ 		lastframe = frame;
+-		PHYSFS_write(pFileHandle, dash_line, strlen(dash_line), 1);
++		PHYSFS_writeBytes(pFileHandle, dash_line, strlen(dash_line));
+ 	}
+ 
+ 	if (a < NUM_GAME_PACKETS)
+@@ -198,13 +198,13 @@ bool NETlogEntry(const char *str, UDWORD a, UDWORD b)
+ 	if (a == NET_PLAYER_LEAVING || a == NET_PLAYER_DROPPED)
+ 	{
+ 		// Write a starry line above NET_LEAVING messages
+-		PHYSFS_write(pFileHandle, star_line, strlen(star_line), 1);
+-		PHYSFS_write(pFileHandle, buf, strlen(buf), 1);
+-		PHYSFS_write(pFileHandle, star_line, strlen(star_line), 1);
++		PHYSFS_writeBytes(pFileHandle, star_line, strlen(star_line));
++		PHYSFS_writeBytes(pFileHandle, buf, strlen(buf));
++		PHYSFS_writeBytes(pFileHandle, star_line, strlen(star_line));
+ 	}
+ 	else
+ 	{
+-		PHYSFS_write(pFileHandle, buf, strlen(buf), 1);
++		PHYSFS_writeBytes(pFileHandle, buf, strlen(buf));
+ 	}
+ 
+ 	PHYSFS_flush(pFileHandle);
+diff --git a/lib/netplay/netplay.cpp b/lib/netplay/netplay.cpp
+index fa47698d9..d4677df91 100644
+--- a/lib/netplay/netplay.cpp
++++ b/lib/netplay/netplay.cpp
+@@ -1937,7 +1937,7 @@ int NETsendFile(WZFile &file, unsigned player)
+ 	memset(inBuff, 0x0, sizeof(inBuff));
+ 
+ 	// read some bytes.
+-	uint32_t bytesToRead = PHYSFS_read(file.handle, inBuff, 1, MAX_FILE_TRANSFER_PACKET);
++	uint32_t bytesToRead = PHYSFS_readBytes(file.handle, inBuff, MAX_FILE_TRANSFER_PACKET);
+ 	ASSERT_OR_RETURN(100, (int32_t)bytesToRead >= 0, "Error reading file.");
+ 
+ 	NETbeginEncode(NETnetQueue(player), NET_FILE_PAYLOAD);
+@@ -1993,7 +1993,7 @@ int NETrecvFile(NETQUEUE queue)
+ 	}
+ 
+ 	// Write packet to the file.
+-	PHYSFS_write(file->handle, buf, bytesToRead, 1);
++	PHYSFS_writeBytes(file->handle, buf, bytesToRead);
+ 
+ 	uint32_t newPos = pos + bytesToRead;
+ 	file->pos = newPos;
+@@ -2006,7 +2006,7 @@ int NETrecvFile(NETQUEUE queue)
+ 		int noError = PHYSFS_close(file->handle);
+ 		if (noError == 0)
+ 		{
+-			debug(LOG_ERROR, "Could not close file handle after trying to save map: %s", PHYSFS_getLastError());
++			debug(LOG_ERROR, "Could not close file handle after trying to save map: %i", PHYSFS_getLastErrorCode());
+ 		}
+ 		file->handle = nullptr;
+ 		NetPlay.wzFiles.erase(file);
+@@ -3518,7 +3518,7 @@ static void dumpDebugSync(uint8_t *buf, size_t bufLen, uint32_t time, unsigned p
+ 
+ 	ssprintf(fname, "logs/desync%u_p%u.txt", time, player);
+ 	fp = openSaveFile(fname);
+-	PHYSFS_write(fp, buf, bufLen, 1);
++	PHYSFS_writeBytes(fp, buf, bufLen);
+ 	PHYSFS_close(fp);
+ 
+ 	debug(LOG_ERROR, "Dumped player %u's sync error at gameTime %u to file: %s%s", player, time, PHYSFS_getRealDir(fname), fname);
+diff --git a/lib/qtgame/wzapp_qt.cpp b/lib/qtgame/wzapp_qt.cpp
+index a1974f400..fa6f2fedc 100644
+--- a/lib/qtgame/wzapp_qt.cpp
++++ b/lib/qtgame/wzapp_qt.cpp
+@@ -124,7 +124,7 @@ static QImage loadQImage(char const *fileName, char const *format = nullptr)
+ 	std::vector<unsigned char> data(fileSizeGuess != -1? fileSizeGuess : 16384);
+ 	while (true)
+ 	{
+-		int64_t moreRead = PHYSFS_read(fileHandle, &data[lengthRead], 1, data.size() - lengthRead);
++		int64_t moreRead = PHYSFS_readBytes(fileHandle, &data[lengthRead], data.size() - lengthRead);
+ 		lengthRead += std::max<int64_t>(moreRead, 0);
+ 		if (lengthRead < data.size())
+ 		{
+diff --git a/lib/script/script_lexer.cpp b/lib/script/script_lexer.cpp
+index db5276a1d..f8bb5e065 100644
+--- a/lib/script/script_lexer.cpp
++++ b/lib/script/script_lexer.cpp
+@@ -789,7 +789,7 @@ static char *pScrMacroBuffer[MAX_SCR_MACRO_DEPTH];
+ 		} \
+ 		else \
+ 		{ \
+-			result = PHYSFS_read(pScrInputFiles[scr_include_stack_ptr], buf, 1, max_size); \
++			result = PHYSFS_readBytes(pScrInputFiles[scr_include_stack_ptr], buf, max_size); \
+ 			if (result == -1) \
+ 			{ \
+ 				buf[0] = EOF; \
+@@ -1134,8 +1134,8 @@ static void pushInclude(const char *pIncludePath)
+ 	newInput = PHYSFS_openRead(pIncludePath);
+ 
+ 	if(!newInput){
+-		scr_error("FLEX: Couldn't open include: '%s'\n%s",
+-			pIncludePath, PHYSFS_getLastError() );
++		scr_error("FLEX: Couldn't open include: '%s'\n%i",
++			pIncludePath, PHYSFS_getLastErrorCode() );
+ 	}
+ 
+ 	/* Push current flex buffer */
+diff --git a/lib/script/script_lexer.lpp b/lib/script/script_lexer.lpp
+index 77de493c9..56dc986bf 100644
+--- a/lib/script/script_lexer.lpp
++++ b/lib/script/script_lexer.lpp
+@@ -95,7 +95,7 @@ static char *pScrMacroBuffer[MAX_SCR_MACRO_DEPTH];
+ 		} \
+ 		else \
+ 		{ \
+-			result = PHYSFS_read(pScrInputFiles[scr_include_stack_ptr], buf, 1, max_size); \
++			result = PHYSFS_readBytes(pScrInputFiles[scr_include_stack_ptr], buf, max_size); \
+ 			if (result == -1) \
+ 			{ \
+ 				buf[0] = EOF; \
+@@ -440,8 +440,8 @@ static void pushInclude(const char *pIncludePath)
+ 	newInput = PHYSFS_openRead(pIncludePath);
+ 
+ 	if(!newInput){
+-		scr_error("FLEX: Couldn't open include: '%s'\n%s",
+-			pIncludePath, PHYSFS_getLastError() );
++		scr_error("FLEX: Couldn't open include: '%s'\n%i",
++			pIncludePath, PHYSFS_getLastErrorCode() );
+ 	}
+ 
+ 	/* Push current flex buffer */
+diff --git a/lib/sequence/sequence.cpp b/lib/sequence/sequence.cpp
+index 79fa30e77..149303c2f 100644
+--- a/lib/sequence/sequence.cpp
++++ b/lib/sequence/sequence.cpp
+@@ -164,7 +164,7 @@ static int buffer_data(PHYSFS_file *in, ogg_sync_state *oy)
+ 	// read in 256K chunks
+ 	const int size = 262144;
+ 	char *buffer = ogg_sync_buffer(oy, size);
+-	int bytes = PHYSFS_read(in, buffer, 1, size);
++	int bytes = PHYSFS_readBytes(in, buffer, size);
+ 
+ 	ogg_sync_wrote(oy, bytes);
+ 	return (bytes);
+diff --git a/lib/sound/audio.cpp b/lib/sound/audio.cpp
+index ecde7c7cb..9841a4fa8 100644
+--- a/lib/sound/audio.cpp
++++ b/lib/sound/audio.cpp
+@@ -880,7 +880,7 @@ AUDIO_STREAM *audio_PlayStream(const char *fileName, float volume, void (*onFini
+ 	debug(LOG_WZ, "Reading...[directory: %s] %s", PHYSFS_getRealDir(fileName), fileName);
+ 	if (fileHandle == nullptr)
+ 	{
+-		debug(LOG_ERROR, "sound_LoadTrackFromFile: PHYSFS_openRead(\"%s\") failed with error: %s\n", fileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "sound_LoadTrackFromFile: PHYSFS_openRead(\"%s\") failed with error: %i\n", fileName, PHYSFS_getLastErrorCode());
+ 		return nullptr;
+ 	}
+ 
+diff --git a/lib/sound/cdaudio.cpp b/lib/sound/cdaudio.cpp
+index ba8c2e880..3d12d467b 100644
+--- a/lib/sound/cdaudio.cpp
++++ b/lib/sound/cdaudio.cpp
+@@ -86,7 +86,7 @@ static bool cdAudio_OpenTrack(const char *filename)
+ 		debug(LOG_WZ, "Reading...[directory: %s] %s", PHYSFS_getRealDir(filename), filename);
+ 		if (music_file == nullptr)
+ 		{
+-			debug(LOG_ERROR, "Failed opening file [directory: %s] %s, with error %s", PHYSFS_getRealDir(filename), filename, PHYSFS_getLastError());
++			debug(LOG_ERROR, "Failed opening file [directory: %s] %s, with error %i", PHYSFS_getRealDir(filename), filename, PHYSFS_getLastErrorCode());
+ 			return false;
+ 		}
+ 
+diff --git a/lib/sound/oggvorbis.cpp b/lib/sound/oggvorbis.cpp
+index 9ee612c91..98a15eabb 100644
+--- a/lib/sound/oggvorbis.cpp
++++ b/lib/sound/oggvorbis.cpp
+@@ -86,7 +86,7 @@ static size_t wz_oggVorbis_read(void *ptr, size_t size, size_t nmemb, void *data
+ 	fileHandle = ((struct OggVorbisDecoderState *)datasource)->fileHandle;
+ 	ASSERT(fileHandle != nullptr, "Bad PhysicsFS file handle passed in");
+ 
+-	return PHYSFS_read(fileHandle, ptr, 1, size * nmemb);
++	return PHYSFS_readBytes(fileHandle, ptr, size * nmemb);
+ }
+ 
+ static int wz_oggVorbis_seek(void *datasource, ogg_int64_t offset, int whence)
+diff --git a/lib/sound/openal_track.cpp b/lib/sound/openal_track.cpp
+index 322659d53..bddc6abc0 100644
+--- a/lib/sound/openal_track.cpp
++++ b/lib/sound/openal_track.cpp
+@@ -520,7 +520,7 @@ TRACK *sound_LoadTrackFromFile(const char *fileName)
+ 	debug(LOG_NEVER, "Reading...[directory: %s] %s", PHYSFS_getRealDir(fileName), fileName);
+ 	if (fileHandle == nullptr)
+ 	{
+-		debug(LOG_ERROR, "sound_LoadTrackFromFile: PHYSFS_openRead(\"%s\") failed with error: %s\n", fileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "sound_LoadTrackFromFile: PHYSFS_openRead(\"%s\") failed with error: %i\n", fileName, PHYSFS_getLastErrorCode());
+ 		return nullptr;
+ 	}
+ 
+diff --git a/lib/sound/playlist.cpp b/lib/sound/playlist.cpp
+index dac992a45..25787702e 100644
+--- a/lib/sound/playlist.cpp
++++ b/lib/sound/playlist.cpp
+@@ -73,7 +73,7 @@ bool PlayList_Read(const char *path)
+ 	debug(LOG_WZ, "Reading...[directory: %s] %s", PHYSFS_getRealDir(listName), listName);
+ 	if (fileHandle == nullptr)
+ 	{
+-		debug(LOG_INFO, "PHYSFS_openRead(\"%s\") failed with error: %s\n", listName, PHYSFS_getLastError());
++		debug(LOG_INFO, "PHYSFS_openRead(\"%s\") failed with error: %i\n", listName, PHYSFS_getLastErrorCode());
+ 		return false;
+ 	}
+ 
+@@ -88,7 +88,7 @@ bool PlayList_Read(const char *path)
+ 
+ 		// Read a single line
+ 		while (buf_pos < sizeof(filename) - 1
+-		       && PHYSFS_read(fileHandle, &filename[buf_pos], 1, 1)
++		       && PHYSFS_readBytes(fileHandle, &filename[buf_pos], 1)
+ 		       && filename[buf_pos] != '\n'
+ 		       && filename[buf_pos] != '\r')
+ 		{
+diff --git a/src/data.cpp b/src/data.cpp
+index 9008a4db1..64bb8add6 100644
+--- a/src/data.cpp
++++ b/src/data.cpp
+@@ -617,7 +617,7 @@ static bool dataScriptLoad(const char *fileName, void **ppData)
+ 	pBuffer = (uint8_t *)malloc(fileSize * sizeof(uint8_t));
+ 	ASSERT_OR_RETURN(false, pBuffer, "Out of memory");
+ 
+-	PHYSFS_read(fileHandle, pBuffer, 1, fileSize);
++	PHYSFS_readBytes(fileHandle, pBuffer, fileSize);
+ 
+ 	calcDataHash(pBuffer, fileSize, DATA_SCRIPT);
+ 
+@@ -687,7 +687,7 @@ static bool dataScriptLoadVals(const char *fileName, void **ppData)
+ 	pBuffer = (uint8_t *)malloc(fileSize * sizeof(uint8_t));
+ 	ASSERT_OR_RETURN(false, pBuffer, "Out of memory");
+ 
+-	PHYSFS_read(fileHandle, pBuffer, 1, fileSize);
++	PHYSFS_readBytes(fileHandle, pBuffer, fileSize);
+ 
+ 	calcDataHash(pBuffer, fileSize, DATA_SCRIPTVAL);
+ 
+diff --git a/src/frontend.cpp b/src/frontend.cpp
+index 82cf60e26..388641a8d 100644
+--- a/src/frontend.cpp
++++ b/src/frontend.cpp
+@@ -418,8 +418,8 @@ static void frontEndNewGame(int which)
+ 		path += list[which].package;
+ 		if (!PHYSFS_mount(path.toUtf8().constData(), nullptr, PHYSFS_APPEND))
+ 		{
+-			debug(LOG_ERROR, "Failed to load campaign mod \"%s\": %s",
+-			      path.toUtf8().constData(), PHYSFS_getLastError());
++			debug(LOG_ERROR, "Failed to load campaign mod \"%s\": %i",
++			      path.toUtf8().constData(), PHYSFS_getLastErrorCode());
+ 		}
+ 	}
+ 	if (!list[which].loading.isEmpty())
+diff --git a/src/game.cpp b/src/game.cpp
+index 4e102dc79..6d0927f04 100644
+--- a/src/game.cpp
++++ b/src/game.cpp
+@@ -111,7 +111,7 @@ struct GAME_SAVEHEADER
+ 
+ static bool serializeSaveGameHeader(PHYSFS_file *fileHandle, const GAME_SAVEHEADER *serializeHeader)
+ {
+-	if (PHYSFS_write(fileHandle, serializeHeader->aFileType, 4, 1) != 1)
++	if (PHYSFS_writeBytes(fileHandle, serializeHeader->aFileType, 4) != 4)
+ 	{
+ 		return false;
+ 	}
+@@ -130,8 +130,8 @@ static bool serializeSaveGameHeader(PHYSFS_file *fileHandle, const GAME_SAVEHEAD
+ static bool deserializeSaveGameHeader(PHYSFS_file *fileHandle, GAME_SAVEHEADER *serializeHeader)
+ {
+ 	// Read in the header from the file
+-	if (PHYSFS_read(fileHandle, serializeHeader->aFileType, 4, 1) != 1
+-	    || PHYSFS_read(fileHandle, &serializeHeader->version, sizeof(uint32_t), 1) != 1)
++	if (PHYSFS_readBytes(fileHandle, serializeHeader->aFileType, 4) != 4
++	    || PHYSFS_readBytes(fileHandle, &serializeHeader->version, sizeof(uint32_t)) != sizeof(uint32_t))
+ 	{
+ 		return false;
+ 	}
+@@ -330,16 +330,16 @@ static bool serializeMultiplayerGame(PHYSFS_file *fileHandle, const MULTIPLAYERG
+ 	unsigned int i;
+ 
+ 	if (!PHYSFS_writeUBE8(fileHandle, serializeMulti->type)
+-	    || PHYSFS_write(fileHandle, serializeMulti->map, 1, 128) != 128
+-	    || PHYSFS_write(fileHandle, dummy8c, 1, 8) != 8
++	    || PHYSFS_writeBytes(fileHandle, serializeMulti->map, 128) != 128
++	    || PHYSFS_writeBytes(fileHandle, dummy8c, 8) != 8
+ 	    || !PHYSFS_writeUBE8(fileHandle, serializeMulti->maxPlayers)
+-	    || PHYSFS_write(fileHandle, serializeMulti->name, 1, 128) != 128
++	    || PHYSFS_writeBytes(fileHandle, serializeMulti->name, 128) != 128
+ 	    || !PHYSFS_writeSBE32(fileHandle, 0)
+ 	    || !PHYSFS_writeUBE32(fileHandle, serializeMulti->power)
+ 	    || !PHYSFS_writeUBE8(fileHandle, serializeMulti->base)
+ 	    || !PHYSFS_writeUBE8(fileHandle, serializeMulti->alliance)
+ 	    || !PHYSFS_writeUBE8(fileHandle, serializeMulti->hash.Bytes)
+-	    || !PHYSFS_write(fileHandle, serializeMulti->hash.bytes, serializeMulti->hash.Bytes, 1)
++	    || !PHYSFS_writeBytes(fileHandle, serializeMulti->hash.bytes, serializeMulti->hash.Bytes)
+ 	    || !PHYSFS_writeUBE16(fileHandle, 0)	// dummy, was bytesPerSec
+ 	    || !PHYSFS_writeUBE8(fileHandle, 0)	// dummy, was packetsPerSec
+ 	    || !PHYSFS_writeUBE8(fileHandle, challengeActive))	// reuse available field, was encryptKey
+@@ -370,16 +370,16 @@ static bool deserializeMultiplayerGame(PHYSFS_file *fileHandle, MULTIPLAYERGAME
+ 	serializeMulti->hash.setZero();
+ 
+ 	if (!PHYSFS_readUBE8(fileHandle, &serializeMulti->type)
+-	    || PHYSFS_read(fileHandle, serializeMulti->map, 1, 128) != 128
+-	    || PHYSFS_read(fileHandle, dummy8c, 1, 8) != 8
++	    || PHYSFS_readBytes(fileHandle, serializeMulti->map, 128) != 128
++	    || PHYSFS_readBytes(fileHandle, dummy8c, 8) != 8
+ 	    || !PHYSFS_readUBE8(fileHandle, &serializeMulti->maxPlayers)
+-	    || PHYSFS_read(fileHandle, serializeMulti->name, 1, 128) != 128
++	    || PHYSFS_readBytes(fileHandle, serializeMulti->name, 128) != 128
+ 	    || !PHYSFS_readSBE32(fileHandle, &boolFog)
+ 	    || !PHYSFS_readUBE32(fileHandle, &serializeMulti->power)
+ 	    || !PHYSFS_readUBE8(fileHandle, &serializeMulti->base)
+ 	    || !PHYSFS_readUBE8(fileHandle, &serializeMulti->alliance)
+ 	    || !PHYSFS_readUBE8(fileHandle, &hashSize)
+-	    || (hashSize == serializeMulti->hash.Bytes && !PHYSFS_read(fileHandle, serializeMulti->hash.bytes, serializeMulti->hash.Bytes, 1))
++	    || (hashSize == serializeMulti->hash.Bytes && !PHYSFS_readBytes(fileHandle, serializeMulti->hash.bytes, serializeMulti->hash.Bytes))
+ 	    || !PHYSFS_readUBE16(fileHandle, &dummy16)	// dummy, was bytesPerSec
+ 	    || !PHYSFS_readUBE8(fileHandle, &dummy8)	// dummy, was packetsPerSec
+ 	    || !PHYSFS_readUBE8(fileHandle, &dummy8))	// reused for challenge, was encryptKey
+@@ -402,8 +402,8 @@ static bool deserializeMultiplayerGame(PHYSFS_file *fileHandle, MULTIPLAYERGAME
+ static bool serializePlayer(PHYSFS_file *fileHandle, const PLAYER *serializePlayer, int player)
+ {
+ 	return (PHYSFS_writeUBE32(fileHandle, serializePlayer->position)
+-	        && PHYSFS_write(fileHandle, serializePlayer->name, StringSize, 1) == 1
+-	        && PHYSFS_write(fileHandle, getAIName(player), MAX_LEN_AI_NAME, 1) == 1
++	        && PHYSFS_writeBytes(fileHandle, serializePlayer->name, StringSize) == StringSize
++	        && PHYSFS_writeBytes(fileHandle, getAIName(player), MAX_LEN_AI_NAME) == MAX_LEN_AI_NAME
+ 	        && PHYSFS_writeSBE8(fileHandle, serializePlayer->difficulty)
+ 	        && PHYSFS_writeUBE8(fileHandle, (uint8_t)serializePlayer->allocated)
+ 	        && PHYSFS_writeUBE32(fileHandle, serializePlayer->colour)
+@@ -418,8 +418,8 @@ static bool deserializePlayer(PHYSFS_file *fileHandle, PLAYER *serializePlayer,
+ 	uint8_t allocated = 0;
+ 
+ 	retval = (PHYSFS_readUBE32(fileHandle, &position)
+-	          && PHYSFS_read(fileHandle, serializePlayer->name, StringSize, 1) == 1
+-	          && PHYSFS_read(fileHandle, aiName, MAX_LEN_AI_NAME, 1) == 1
++	          && PHYSFS_readBytes(fileHandle, serializePlayer->name, StringSize) == StringSize
++	          && PHYSFS_readBytes(fileHandle, aiName, MAX_LEN_AI_NAME) == MAX_LEN_AI_NAME
+ 	          && PHYSFS_readSBE8(fileHandle, &serializePlayer->difficulty)
+ 	          && PHYSFS_readUBE8(fileHandle, &allocated)
+ 	          && PHYSFS_readUBE32(fileHandle, &colour)
+@@ -504,7 +504,7 @@ static bool serializeSaveGameV7Data(PHYSFS_file *fileHandle, const SAVE_GAME_V7
+ 	        && PHYSFS_writeSBE32(fileHandle, serializeGame->ScrollMinY)
+ 	        && PHYSFS_writeUBE32(fileHandle, serializeGame->ScrollMaxX)
+ 	        && PHYSFS_writeUBE32(fileHandle, serializeGame->ScrollMaxY)
+-	        && PHYSFS_write(fileHandle, serializeGame->levelName, MAX_LEVEL_SIZE, 1) == 1);
++	        && PHYSFS_writeBytes(fileHandle, serializeGame->levelName, MAX_LEVEL_SIZE) == MAX_LEVEL_SIZE);
+ }
+ 
+ static bool deserializeSaveGameV7Data(PHYSFS_file *fileHandle, SAVE_GAME_V7 *serializeGame)
+@@ -515,7 +515,7 @@ static bool deserializeSaveGameV7Data(PHYSFS_file *fileHandle, SAVE_GAME_V7 *ser
+ 	        && PHYSFS_readSBE32(fileHandle, &serializeGame->ScrollMinY)
+ 	        && PHYSFS_readUBE32(fileHandle, &serializeGame->ScrollMaxX)
+ 	        && PHYSFS_readUBE32(fileHandle, &serializeGame->ScrollMaxY)
+-	        && PHYSFS_read(fileHandle, serializeGame->levelName, MAX_LEVEL_SIZE, 1) == 1);
++	        && PHYSFS_readBytes(fileHandle, serializeGame->levelName, MAX_LEVEL_SIZE) == MAX_LEVEL_SIZE);
+ }
+ 
+ struct SAVE_GAME_V10 : public SAVE_GAME_V7
+@@ -909,7 +909,7 @@ struct SAVE_GAME_V18 : public SAVE_GAME_V17
+ static bool serializeSaveGameV18Data(PHYSFS_file *fileHandle, const SAVE_GAME_V18 *serializeGame)
+ {
+ 	return (serializeSaveGameV17Data(fileHandle, (const SAVE_GAME_V17 *) serializeGame)
+-	        && PHYSFS_write(fileHandle, serializeGame->buildDate, MAX_STR_LENGTH, 1) == 1
++	        && PHYSFS_writeBytes(fileHandle, serializeGame->buildDate, MAX_STR_LENGTH) == MAX_STR_LENGTH
+ 	        && PHYSFS_writeUBE32(fileHandle, serializeGame->oldestVersion)
+ 	        && PHYSFS_writeUBE32(fileHandle, serializeGame->validityKey));
+ }
+@@ -917,7 +917,7 @@ static bool serializeSaveGameV18Data(PHYSFS_file *fileHandle, const SAVE_GAME_V1
+ static bool deserializeSaveGameV18Data(PHYSFS_file *fileHandle, SAVE_GAME_V18 *serializeGame)
+ {
+ 	return (deserializeSaveGameV17Data(fileHandle, (SAVE_GAME_V17 *) serializeGame)
+-	        && PHYSFS_read(fileHandle, serializeGame->buildDate, MAX_STR_LENGTH, 1) == 1
++	        && PHYSFS_readBytes(fileHandle, serializeGame->buildDate, MAX_STR_LENGTH) == MAX_STR_LENGTH
+ 	        && PHYSFS_readUBE32(fileHandle, &serializeGame->oldestVersion)
+ 	        && PHYSFS_readUBE32(fileHandle, &serializeGame->validityKey));
+ }
+@@ -1259,7 +1259,7 @@ static bool serializeSaveGameV33Data(PHYSFS_file *fileHandle, const SAVE_GAME_V3
+ 	    || !serializeMultiplayerGame(fileHandle, &serializeGame->sGame)
+ 	    || !serializeNetPlay(fileHandle, &serializeGame->sNetPlay)
+ 	    || !PHYSFS_writeUBE32(fileHandle, serializeGame->savePlayer)
+-	    || PHYSFS_write(fileHandle, serializeGame->sPName, 1, 32) != 32
++	    || PHYSFS_writeBytes(fileHandle, serializeGame->sPName, 32) != 32
+ 	    || !PHYSFS_writeSBE32(fileHandle, serializeGame->multiPlayer))
+ 	{
+ 		return false;
+@@ -1285,7 +1285,7 @@ static bool deserializeSaveGameV33Data(PHYSFS_file *fileHandle, SAVE_GAME_V33 *s
+ 	    || !deserializeMultiplayerGame(fileHandle, &serializeGame->sGame)
+ 	    || !deserializeNetPlay(fileHandle, &serializeGame->sNetPlay)
+ 	    || !PHYSFS_readUBE32(fileHandle, &serializeGame->savePlayer)
+-	    || PHYSFS_read(fileHandle, serializeGame->sPName, 1, 32) != 32
++	    || PHYSFS_readBytes(fileHandle, serializeGame->sPName, 32) != 32
+ 	    || !PHYSFS_readSBE32(fileHandle, &boolMultiPlayer))
+ 	{
+ 		return false;
+@@ -1321,7 +1321,7 @@ static bool serializeSaveGameV34Data(PHYSFS_file *fileHandle, const SAVE_GAME_V3
+ 
+ 	for (i = 0; i < MAX_PLAYERS; ++i)
+ 	{
+-		if (PHYSFS_write(fileHandle, serializeGame->sPlayerName[i], StringSize, 1) != 1)
++		if (PHYSFS_writeBytes(fileHandle, serializeGame->sPlayerName[i], StringSize) != StringSize)
+ 		{
+ 			return false;
+ 		}
+@@ -1340,7 +1340,7 @@ static bool deserializeSaveGameV34Data(PHYSFS_file *fileHandle, SAVE_GAME_V34 *s
+ 
+ 	for (i = 0; i < MAX_PLAYERS; ++i)
+ 	{
+-		if (PHYSFS_read(fileHandle, serializeGame->sPlayerName[i], StringSize, 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, serializeGame->sPlayerName[i], StringSize) != StringSize)
+ 		{
+ 			return false;
+ 		}
+@@ -1377,7 +1377,7 @@ static bool serializeSaveGameV38Data(PHYSFS_file *fileHandle, const SAVE_GAME_V3
+ 		return false;
+ 	}
+ 
+-	if (PHYSFS_write(fileHandle, serializeGame->modList, modlist_string_size, 1) != 1)
++	if (PHYSFS_writeBytes(fileHandle, serializeGame->modList, modlist_string_size) != modlist_string_size)
+ 	{
+ 		return false;
+ 	}
+@@ -1392,7 +1392,7 @@ static bool deserializeSaveGameV38Data(PHYSFS_file *fileHandle, SAVE_GAME_V38 *s
+ 		return false;
+ 	}
+ 
+-	if (PHYSFS_read(fileHandle, serializeGame->modList, modlist_string_size, 1) != 1)
++	if (PHYSFS_readBytes(fileHandle, serializeGame->modList, modlist_string_size) != modlist_string_size)
+ 	{
+ 		return false;
+ 	}
+@@ -2954,7 +2954,7 @@ static bool gameLoad(const char *fileName)
+ 	// Read the header from the file
+ 	if (!deserializeSaveGameHeader(fileHandle, &fileHeader))
+ 	{
+-		debug(LOG_ERROR, "gameLoad: error while reading header from file (%s): %s", fileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "gameLoad: error while reading header from file (%s): %i", fileName, PHYSFS_getLastErrorCode());
+ 		PHYSFS_close(fileHandle);
+ 		return false;
+ 	}
+@@ -3197,9 +3197,9 @@ static UDWORD getCampaignV(PHYSFS_file *fileHandle, unsigned int version)
+ 	// We only need VERSION 12 data (saveGame.saveKey)
+ 	else if (version <= VERSION_34)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGame, sizeof(SAVE_GAME_V14), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGame, sizeof(SAVE_GAME_V14)) != sizeof(SAVE_GAME_V14))
+ 		{
+-			debug(LOG_ERROR, "getCampaignV: error while reading file: %s", PHYSFS_getLastError());
++			debug(LOG_ERROR, "getCampaignV: error while reading file: %i", PHYSFS_getLastErrorCode());
+ 
+ 			return 0;
+ 		}
+@@ -3211,7 +3211,7 @@ static UDWORD getCampaignV(PHYSFS_file *fileHandle, unsigned int version)
+ 	{
+ 		if (!deserializeSaveGameV14Data(fileHandle, &saveGame))
+ 		{
+-			debug(LOG_ERROR, "getCampaignV: error while reading file: %s", PHYSFS_getLastError());
++			debug(LOG_ERROR, "getCampaignV: error while reading file: %i", PHYSFS_getLastErrorCode());
+ 
+ 			return 0;
+ 		}
+@@ -3244,7 +3244,7 @@ UDWORD getCampaign(const char *fileName)
+ 	// Read the header from the file
+ 	if (!deserializeSaveGameHeader(fileHandle, &fileHeader))
+ 	{
+-		debug(LOG_ERROR, "getCampaign: error while reading header from file (%s): %s", fileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "getCampaign: error while reading header from file (%s): %i", fileName, PHYSFS_getLastErrorCode());
+ 		PHYSFS_close(fileHandle);
+ 		return false;
+ 	}
+@@ -3306,9 +3306,9 @@ bool gameLoadV7(PHYSFS_file *fileHandle)
+ {
+ 	SAVE_GAME_V7 saveGame;
+ 
+-	if (PHYSFS_read(fileHandle, &saveGame, sizeof(saveGame), 1) != 1)
++	if (PHYSFS_readBytes(fileHandle, &saveGame, sizeof(saveGame)) != sizeof(saveGame))
+ 	{
+-		debug(LOG_ERROR, "gameLoadV7: error while reading file: %s", PHYSFS_getLastError());
++		debug(LOG_ERROR, "gameLoadV7: error while reading file: %i", PHYSFS_getLastErrorCode());
+ 
+ 		return false;
+ 	}
+@@ -3384,162 +3384,162 @@ bool gameLoadV(PHYSFS_file *fileHandle, unsigned int version)
+ 	//size is now variable so only check old save games
+ 	if (version <= VERSION_10)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V10), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V10)) != sizeof(SAVE_GAME_V10))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version == VERSION_11)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V11), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V11)) != sizeof(SAVE_GAME_V11))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_12)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V12), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V12)) != sizeof(SAVE_GAME_V12))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_14)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V14), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V14)) != sizeof(SAVE_GAME_V14))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_15)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V15), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V15)) != sizeof(SAVE_GAME_V15))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_16)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V16), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V16)) != sizeof(SAVE_GAME_V16))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_17)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V17), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V17)) != sizeof(SAVE_GAME_V17))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_18)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V18), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V18)) != sizeof(SAVE_GAME_V18))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_19)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V19), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V19)) != sizeof(SAVE_GAME_V19))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_21)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V20), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V20)) != sizeof(SAVE_GAME_V20))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_23)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V22), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V22)) != sizeof(SAVE_GAME_V22))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_26)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V24), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V24)) != sizeof(SAVE_GAME_V24))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_28)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V27), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V27)) != sizeof(SAVE_GAME_V27))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_29)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V29), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V29)) != sizeof(SAVE_GAME_V29))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_30)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V30), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V30)) != sizeof(SAVE_GAME_V30))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_32)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V31), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V31)) != sizeof(SAVE_GAME_V31))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_33)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V33), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V33)) != sizeof(SAVE_GAME_V33))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+ 	}
+ 	else if (version <= VERSION_34)
+ 	{
+-		if (PHYSFS_read(fileHandle, &saveGameData, sizeof(SAVE_GAME_V34), 1) != 1)
++		if (PHYSFS_readBytes(fileHandle, &saveGameData, sizeof(SAVE_GAME_V34)) != sizeof(SAVE_GAME_V34))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading file (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+@@ -3553,7 +3553,7 @@ bool gameLoadV(PHYSFS_file *fileHandle, unsigned int version)
+ 	{
+ 		if (!deserializeSaveGameData(fileHandle, &saveGameData))
+ 		{
+-			debug(LOG_ERROR, "gameLoadV: error while reading data from file for deserialization (with version number %u): %s", version, PHYSFS_getLastError());
++			debug(LOG_ERROR, "gameLoadV: error while reading data from file for deserialization (with version number %u): %i", version, PHYSFS_getLastErrorCode());
+ 
+ 			return false;
+ 		}
+@@ -3978,7 +3978,7 @@ static bool writeGameFile(const char *fileName, SDWORD saveType)
+ 
+ 	if (!serializeSaveGameHeader(fileHandle, &fileHeader))
+ 	{
+-		debug(LOG_ERROR, "could not write header to %s; PHYSFS error: %s", fileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "could not write header to %s; PHYSFS error: %i", fileName, PHYSFS_getLastErrorCode());
+ 		PHYSFS_close(fileHandle);
+ 		return false;
+ 	}
+diff --git a/src/init.cpp b/src/init.cpp
+index c8c16402a..e9305bdc4 100644
+--- a/src/init.cpp
++++ b/src/init.cpp
+@@ -291,26 +291,26 @@ bool rebuildSearchPath(searchPathMode mode, bool force, const char *current_map)
+ 				// Remove multiplay patches
+ 				sstrcpy(tmpstr, curSearchPath->path);
+ 				sstrcat(tmpstr, "mp");
+-				PHYSFS_removeFromSearchPath(tmpstr);
++				PHYSFS_unmount(tmpstr);
+ 				sstrcpy(tmpstr, curSearchPath->path);
+ 				sstrcat(tmpstr, "mp.wz");
+-				PHYSFS_removeFromSearchPath(tmpstr);
++				PHYSFS_unmount(tmpstr);
+ 
+ 				// Remove plain dir
+-				PHYSFS_removeFromSearchPath(curSearchPath->path);
++				PHYSFS_unmount(curSearchPath->path);
+ 
+ 				// Remove base files
+ 				sstrcpy(tmpstr, curSearchPath->path);
+ 				sstrcat(tmpstr, "base");
+-				PHYSFS_removeFromSearchPath(tmpstr);
++				PHYSFS_unmount(tmpstr);
+ 				sstrcpy(tmpstr, curSearchPath->path);
+ 				sstrcat(tmpstr, "base.wz");
+-				PHYSFS_removeFromSearchPath(tmpstr);
++				PHYSFS_unmount(tmpstr);
+ 
+ 				// remove video search path as well
+ 				sstrcpy(tmpstr, curSearchPath->path);
+ 				sstrcat(tmpstr, "sequences.wz");
+-				PHYSFS_removeFromSearchPath(tmpstr);
++				PHYSFS_unmount(tmpstr);
+ 				curSearchPath = curSearchPath->higherPriority;
+ 			}
+ 			break;
+@@ -323,7 +323,7 @@ bool rebuildSearchPath(searchPathMode mode, bool force, const char *current_map)
+ 				// make sure videos override included files
+ 				sstrcpy(tmpstr, curSearchPath->path);
+ 				sstrcat(tmpstr, "sequences.wz");
+-				PHYSFS_addToSearchPath(tmpstr, PHYSFS_APPEND);
++				PHYSFS_mount(tmpstr, NULL, PHYSFS_APPEND);
+ 				curSearchPath = curSearchPath->higherPriority;
+ 			}
+ 			curSearchPath = searchPathRegistry;
+@@ -337,28 +337,28 @@ bool rebuildSearchPath(searchPathMode mode, bool force, const char *current_map)
+ 				debug(LOG_WZ, "Adding [%s] to search path", curSearchPath->path);
+ #endif // DEBUG
+ 				// Add global and campaign mods
+-				PHYSFS_addToSearchPath(curSearchPath->path, PHYSFS_APPEND);
++				PHYSFS_mount(curSearchPath->path, NULL, PHYSFS_APPEND);
+ 
+ 				addSubdirs(curSearchPath->path, "mods/music", PHYSFS_APPEND, nullptr, false);
+ 				addSubdirs(curSearchPath->path, "mods/global", PHYSFS_APPEND, use_override_mods ? &override_mods : &global_mods, true);
+ 				addSubdirs(curSearchPath->path, "mods", PHYSFS_APPEND, use_override_mods ? &override_mods : &global_mods, true);
+ 				addSubdirs(curSearchPath->path, "mods/autoload", PHYSFS_APPEND, use_override_mods ? &override_mods : nullptr, true);
+ 				addSubdirs(curSearchPath->path, "mods/campaign", PHYSFS_APPEND, use_override_mods ? &override_mods : &campaign_mods, true);
+-				if (!PHYSFS_removeFromSearchPath(curSearchPath->path))
++				if (!PHYSFS_unmount(curSearchPath->path))
+ 				{
+ 					debug(LOG_WZ, "* Failed to remove path %s again", curSearchPath->path);
+ 				}
+ 
+ 				// Add plain dir
+-				PHYSFS_addToSearchPath(curSearchPath->path, PHYSFS_APPEND);
++				PHYSFS_mount(curSearchPath->path, NULL, PHYSFS_APPEND);
+ 
+ 				// Add base files
+ 				sstrcpy(tmpstr, curSearchPath->path);
+ 				sstrcat(tmpstr, "base");
+-				PHYSFS_addToSearchPath(tmpstr, PHYSFS_APPEND);
++				PHYSFS_mount(tmpstr, NULL, PHYSFS_APPEND);
+ 				sstrcpy(tmpstr, curSearchPath->path);
+ 				sstrcat(tmpstr, "base.wz");
+-				PHYSFS_addToSearchPath(tmpstr, PHYSFS_APPEND);
++				PHYSFS_mount(tmpstr, NULL, PHYSFS_APPEND);
+ 
+ 				curSearchPath = curSearchPath->higherPriority;
+ 			}
+@@ -372,7 +372,7 @@ bool rebuildSearchPath(searchPathMode mode, bool force, const char *current_map)
+ 				// make sure videos override included files
+ 				sstrcpy(tmpstr, curSearchPath->path);
+ 				sstrcat(tmpstr, "sequences.wz");
+-				PHYSFS_addToSearchPath(tmpstr, PHYSFS_APPEND);
++				PHYSFS_mount(tmpstr, NULL, PHYSFS_APPEND);
+ 				curSearchPath = curSearchPath->higherPriority;
+ 			}
+ 			// Add the selected map first, for mapmod support
+@@ -380,7 +380,7 @@ bool rebuildSearchPath(searchPathMode mode, bool force, const char *current_map)
+ 			{
+ 				QString realPathAndDir = QString::fromUtf8(PHYSFS_getRealDir(current_map)) + current_map;
+ 				realPathAndDir.replace('/', PHYSFS_getDirSeparator()); // Windows fix
+-				PHYSFS_addToSearchPath(realPathAndDir.toUtf8().constData(), PHYSFS_APPEND);
++				PHYSFS_mount(realPathAndDir.toUtf8().constData(), NULL, PHYSFS_APPEND);
+ 			}
+ 			curSearchPath = searchPathRegistry;
+ 			while (curSearchPath->lowerPriority)
+@@ -393,7 +393,7 @@ bool rebuildSearchPath(searchPathMode mode, bool force, const char *current_map)
+ 				debug(LOG_WZ, "Adding [%s] to search path", curSearchPath->path);
+ #endif // DEBUG
+ 				// Add global and multiplay mods
+-				PHYSFS_addToSearchPath(curSearchPath->path, PHYSFS_APPEND);
++				PHYSFS_mount(curSearchPath->path, NULL, PHYSFS_APPEND);
+ 				addSubdirs(curSearchPath->path, "mods/music", PHYSFS_APPEND, nullptr, false);
+ 				if (NetPlay.isHost || !NetPlay.bComms)
+ 				{
+@@ -411,26 +411,26 @@ bool rebuildSearchPath(searchPathMode mode, bool force, const char *current_map)
+ 						addSubdirs(curSearchPath->path, "mods/downloads", PHYSFS_APPEND, &hashList, true);
+ 					}
+ 				}
+-				PHYSFS_removeFromSearchPath(curSearchPath->path);
++				PHYSFS_unmount(curSearchPath->path);
+ 
+ 				// Add multiplay patches
+ 				sstrcpy(tmpstr, curSearchPath->path);
+ 				sstrcat(tmpstr, "mp");
+-				PHYSFS_addToSearchPath(tmpstr, PHYSFS_APPEND);
++				PHYSFS_mount(tmpstr, NULL, PHYSFS_APPEND);
+ 				sstrcpy(tmpstr, curSearchPath->path);
+ 				sstrcat(tmpstr, "mp.wz");
+-				PHYSFS_addToSearchPath(tmpstr, PHYSFS_APPEND);
++				PHYSFS_mount(tmpstr, NULL, PHYSFS_APPEND);
+ 
+ 				// Add plain dir
+-				PHYSFS_addToSearchPath(curSearchPath->path, PHYSFS_APPEND);
++				PHYSFS_mount(curSearchPath->path, NULL, PHYSFS_APPEND);
+ 
+ 				// Add base files
+ 				sstrcpy(tmpstr, curSearchPath->path);
+ 				sstrcat(tmpstr, "base");
+-				PHYSFS_addToSearchPath(tmpstr, PHYSFS_APPEND);
++				PHYSFS_mount(tmpstr, NULL, PHYSFS_APPEND);
+ 				sstrcpy(tmpstr, curSearchPath->path);
+ 				sstrcat(tmpstr, "base.wz");
+-				PHYSFS_addToSearchPath(tmpstr, PHYSFS_APPEND);
++				PHYSFS_mount(tmpstr, NULL, PHYSFS_APPEND);
+ 
+ 				curSearchPath = curSearchPath->higherPriority;
+ 			}
+@@ -450,8 +450,8 @@ bool rebuildSearchPath(searchPathMode mode, bool force, const char *current_map)
+ 		}
+ 
+ 		// User's home dir must be first so we always see what we write
+-		PHYSFS_removeFromSearchPath(PHYSFS_getWriteDir());
+-		PHYSFS_addToSearchPath(PHYSFS_getWriteDir(), PHYSFS_PREPEND);
++		PHYSFS_unmount(PHYSFS_getWriteDir());
++		PHYSFS_mount(PHYSFS_getWriteDir(), NULL, PHYSFS_PREPEND);
+ 
+ #ifdef DEBUG
+ 		printSearchPath();
+@@ -491,14 +491,14 @@ static MapFileList listMapFiles()
+ 	{
+ 		debug(LOG_WZ, "    [%s]", *i);
+ 		oldSearchPath.push_back(*i);
+-		PHYSFS_removeFromSearchPath(*i);
++		PHYSFS_unmount(*i);
+ 	}
+ 	PHYSFS_freeList(searchPath);
+ 
+ 	for (const auto &realFileName : ret)
+ 	{
+ 		std::string realFilePathAndName = PHYSFS_getWriteDir() + realFileName;
+-		if (PHYSFS_addToSearchPath(realFilePathAndName.c_str(), PHYSFS_APPEND))
++		if (PHYSFS_mount(realFilePathAndName.c_str(), NULL, PHYSFS_APPEND))
+ 		{
+ 			int unsafe = 0;
+ 			char **filelist = PHYSFS_enumerateFiles("multiplay/maps");
+@@ -506,7 +506,7 @@ static MapFileList listMapFiles()
+ 			for (char **file = filelist; *file != nullptr; ++file)
+ 			{
+ 				std::string isDir = std::string("multiplay/maps/") + *file;
+-				if (PHYSFS_isDirectory(isDir.c_str()))
++				if (PHYSFS_stat(isDir.c_str(), NULL))
+ 				{
+ 					continue;
+ 				}
+@@ -526,18 +526,18 @@ static MapFileList listMapFiles()
+ 			{
+ 				filtered.push_back(realFileName);
+ 			}
+-			PHYSFS_removeFromSearchPath(realFilePathAndName.c_str());
++			PHYSFS_unmount(realFilePathAndName.c_str());
+ 		}
+ 		else
+ 		{
+-			debug(LOG_POPUP, "Could not mount %s, because: %s.\nPlease delete or move the file specified.", realFilePathAndName.c_str(), PHYSFS_getLastError());
++			debug(LOG_POPUP, "Could not mount %s, because: %i.\nPlease delete or move the file specified.", realFilePathAndName.c_str(), PHYSFS_getLastErrorCode());
+ 		}
+ 	}
+ 
+ 	// restore our search path(s) again
+ 	for (const auto &restorePaths : oldSearchPath)
+ 	{
+-		PHYSFS_addToSearchPath(restorePaths.c_str(), PHYSFS_APPEND);
++		PHYSFS_mount(restorePaths.c_str(), NULL, PHYSFS_APPEND);
+ 	}
+ 	debug(LOG_WZ, "Search paths restored");
+ 	printSearchPath();
+@@ -589,7 +589,7 @@ static bool CheckInMap(const char *archive, const char *mountpoint, const char *
+ 	if (!PHYSFS_mount(archive, mountpoint, PHYSFS_APPEND))
+ 	{
+ 		// We already checked to see if this was valid before, and now, something went seriously wrong.
+-		debug(LOG_FATAL, "Could not mount %s, because: %s. Please delete the file, and run the game again. Game will now exit.", archive, PHYSFS_getLastError());
++		debug(LOG_FATAL, "Could not mount %s, because: %i. Please delete the file, and run the game again. Game will now exit.", archive, PHYSFS_getLastErrorCode());
+ 		exit(-1);
+ 	}
+ 
+@@ -599,7 +599,7 @@ static bool CheckInMap(const char *archive, const char *mountpoint, const char *
+ 	for (char **file = filelist; *file != nullptr; ++file)
+ 	{
+ 		std::string checkfile = *file;
+-		if (PHYSFS_isDirectory((checkpath + checkfile).c_str()))
++		if (PHYSFS_stat((checkpath + checkfile).c_str(), NULL))
+ 		{
+ 			if (checkfile.compare("wrf") == 0 || checkfile.compare("stats") == 0 || checkfile.compare("components") == 0
+ 			    || checkfile.compare("effects") == 0 || checkfile.compare("messages") == 0
+@@ -616,9 +616,9 @@ static bool CheckInMap(const char *archive, const char *mountpoint, const char *
+ 	}
+ 	PHYSFS_freeList(filelist);
+ 
+-	if (!PHYSFS_removeFromSearchPath(archive))
++	if (!PHYSFS_unmount(archive))
+ 	{
+-		debug(LOG_ERROR, "Could not unmount %s, %s", archive, PHYSFS_getLastError());
++		debug(LOG_ERROR, "Could not unmount %s, %i", archive, PHYSFS_getLastErrorCode());
+ 	}
+ 	return mapmod;
+ }
+@@ -638,7 +638,7 @@ bool buildMapList()
+ 		struct WZmaps CurrentMap;
+ 		std::string realFilePathAndName = PHYSFS_getRealDir(realFileName.c_str()) + realFileName;
+ 
+-		PHYSFS_addToSearchPath(realFilePathAndName.c_str(), PHYSFS_APPEND);
++		PHYSFS_mount(realFilePathAndName.c_str(), NULL, PHYSFS_APPEND);
+ 
+ 		char **filelist = PHYSFS_enumerateFiles("");
+ 		for (char **file = filelist; *file != nullptr; ++file)
+@@ -657,9 +657,9 @@ bool buildMapList()
+ 		}
+ 		PHYSFS_freeList(filelist);
+ 
+-		if (PHYSFS_removeFromSearchPath(realFilePathAndName.c_str()) == 0)
++		if (PHYSFS_unmount(realFilePathAndName.c_str()) == 0)
+ 		{
+-			debug(LOG_ERROR, "Could not unmount %s, %s", realFilePathAndName.c_str(), PHYSFS_getLastError());
++			debug(LOG_ERROR, "Could not unmount %s, %i", realFilePathAndName.c_str(), PHYSFS_getLastErrorCode());
+ 		}
+ 
+ 		mapmod = CheckInMap(realFilePathAndName.c_str(), "WZMap", "WZMap");
+diff --git a/src/loadsave.cpp b/src/loadsave.cpp
+index b34cf4182..05b0786ac 100644
+--- a/src/loadsave.cpp
++++ b/src/loadsave.cpp
+@@ -295,7 +295,9 @@ bool addLoadSave(LOADSAVE_MODE savemode, const char *title)
+ 
+ 		/* Figure save-time */
+ 		snprintf(savefile, sizeof(savefile), "%s/%s", NewSaveGamePath, *i);
+-		savetime = PHYSFS_getLastModTime(savefile);
++		PHYSFS_Stat statbuf;
++		PHYSFS_stat(savefile, &statbuf);
++		savetime = statbuf.modtime;
+ 		timeinfo = localtime(&savetime);
+ 		strftime(sSlotTips[slotCount], sizeof(sSlotTips[slotCount]), "%x %X", timeinfo);
+ 
+@@ -381,14 +383,14 @@ void deleteSaveGame(char *saveGameName)
+ 		// Delete the file
+ 		if (!PHYSFS_delete(del_file))
+ 		{
+-			debug(LOG_ERROR, "Warning [%s] could not be deleted due to PhysicsFS error: %s", del_file, PHYSFS_getLastError());
++			debug(LOG_ERROR, "Warning [%s] could not be deleted due to PhysicsFS error: %i", del_file, PHYSFS_getLastErrorCode());
+ 		}
+ 	}
+ 	PHYSFS_freeList(files);
+ 
+ 	if (!PHYSFS_delete(saveGameName))		// now (should be)empty directory
+ 	{
+-		debug(LOG_ERROR, "Warning directory[%s] could not be deleted because %s", saveGameName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "Warning directory[%s] could not be deleted because %i", saveGameName, PHYSFS_getLastErrorCode());
+ 	}
+ 
+ 	return;
+diff --git a/src/main.cpp b/src/main.cpp
+index 6d62b3fb0..7b684b010 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -121,150 +121,39 @@ static GAMECODE gameLoopStatus = GAMECODE_CONTINUE;
+ static FOCUS_STATE focusState = FOCUS_IN;
+ 
+ 
+-/*!
+- * Retrieves the current working directory and copies it into the provided output buffer
+- * \param[out] dest the output buffer to put the current working directory in
+- * \param size the size (in bytes) of \c dest
+- * \return true on success, false if an error occurred (and dest doesn't contain a valid directory)
+- */
+-static bool getCurrentDir(char *const dest, size_t const size)
+-{
+-#if defined(WZ_OS_UNIX)
+-	if (getcwd(dest, size) == nullptr)
+-	{
+-		if (errno == ERANGE)
+-		{
+-			debug(LOG_ERROR, "The buffer to contain our current directory is too small (%u bytes and more needed)", (unsigned int)size);
+-		}
+-		else
+-		{
+-			debug(LOG_ERROR, "getcwd failed: %s", strerror(errno));
+-		}
+-
+-		return false;
+-	}
+-#elif defined(WZ_OS_WIN)
+-	wchar_t tmpWStr[PATH_MAX];
+-	const int len = GetCurrentDirectoryW(PATH_MAX, tmpWStr);
+-
+-	if (len == 0)
+-	{
+-		// Retrieve Windows' error number
+-		const int err = GetLastError();
+-		char *err_string = NULL;
+-
+-		// Retrieve a string describing the error number (uses LocalAlloc() to allocate memory for err_string)
+-		FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM, NULL, err, 0, (char *)&err_string, 0, NULL);
+-
+-		// Print an error message with the above description
+-		debug(LOG_ERROR, "GetCurrentDirectory failed (error code: %d): %s", err, err_string);
+-
+-		// Free our chunk of memory FormatMessageA gave us
+-		LocalFree(err_string);
+-
+-		return false;
+-	}
+-	else if (len > size)
+-	{
+-		debug(LOG_ERROR, "The buffer to contain our current directory is too small (%u bytes and %d needed)", (unsigned int)size, len);
+-
+-		return false;
+-	}
+-	if (WideCharToMultiByte(CP_UTF8, 0, tmpWStr, -1, dest, size, NULL, NULL) == 0)
+-	{
+-		dest[0] = '\0';
+-		debug(LOG_ERROR, "Encoding conversion error.");
+-		return false;
+-	}
+-#else
+-# error "Provide an implementation here to copy the current working directory in 'dest', which is 'size' bytes large."
+-#endif
+-
+-	// If we got here everything went well
+-	return true;
+-}
+-
+-
+-static void getPlatformUserDir(char *const tmpstr, size_t const size)
+-{
+-#if defined(WZ_OS_WIN)
+-//  When WZ_PORTABLE is passed, that means we want the config directory at the same location as the program file
+-	DWORD dwRet;
+-	wchar_t tmpWStr[MAX_PATH];
+-#ifndef WZ_PORTABLE
+-	if (SUCCEEDED(SHGetFolderPathW(NULL, CSIDL_PERSONAL | CSIDL_FLAG_CREATE, NULL, SHGFP_TYPE_CURRENT, tmpWStr)))
+-	{
+-#else
+-	if (dwRet = GetCurrentDirectoryW(MAX_PATH, tmpWStr))
+-	{
+-		if (dwRet > MAX_PATH)
+-		{
+-			debug(LOG_FATAL, "Buffer exceeds maximum path to create directory. Exiting.");
+-			exit(1);
+-		}
+-#endif
+-		if (WideCharToMultiByte(CP_UTF8, 0, tmpWStr, -1, tmpstr, size, NULL, NULL) == 0)
+-		{
+-			debug(LOG_FATAL, "Config directory encoding conversion error.");
+-			exit(1);
+-		}
+-		strlcat(tmpstr, PHYSFS_getDirSeparator(), size);
+-	}
+-	else
+-#elif defined(WZ_OS_MAC)
+-	if (cocoaGetApplicationSupportDir(tmpstr, size))
+-	{
+-		strlcat(tmpstr, PHYSFS_getDirSeparator(), size);
+-	}
+-	else
+-#endif
+-		if (PHYSFS_getUserDir())
+-		{
+-			strlcpy(tmpstr, PHYSFS_getUserDir(), size); // Use PhysFS supplied UserDir (As fallback on Windows / Mac, default on Linux)
+-		}
+-	// If PhysicsFS fails (might happen if environment variable HOME is unset or wrong) then use the current working directory
+-		else if (getCurrentDir(tmpstr, size))
+-		{
+-			strlcat(tmpstr, PHYSFS_getDirSeparator(), size);
+-		}
+-		else
+-		{
+-			debug(LOG_FATAL, "Can't get UserDir?");
+-			abort();
+-		}
+-}
+-
+-
+ static void initialize_ConfigDir()
+ {
+ 	char tmpstr[PATH_MAX] = { '\0' };
+ 
+ 	if (strlen(configdir) == 0)
+ 	{
+-		getPlatformUserDir(tmpstr, sizeof(tmpstr));
++		#if defined(WZ_PORTABLE)
++			DWORD dwRet;
++			wchar_t tmpWStr[MAX_PATH];
+ 
+-		if (!PHYSFS_setWriteDir(tmpstr)) // Workaround for PhysFS not creating the writedir as expected.
+-		{
+-			debug(LOG_FATAL, "Error setting write directory to \"%s\": %s",
+-			      tmpstr, PHYSFS_getLastError());
+-			exit(1);
+-		}
++			if (dwRet = GetCurrentDirectoryW(MAX_PATH, tmpWStr))
++			{
++				if (dwRet > MAX_PATH)
++				{
++					debug(LOG_FATAL, "Buffer exceeds maximum path to create directory. Exiting.");
++					exit(1);
++				}
+ 
+-		if (!PHYSFS_mkdir(WZ_WRITEDIR)) // s.a.
+-		{
+-			debug(LOG_FATAL, "Error creating directory \"%s\": %s",
+-			      WZ_WRITEDIR, PHYSFS_getLastError());
+-			exit(1);
+-		}
++			if (WideCharToMultiByte(CP_UTF8, 0, tmpWStr, -1, tmpstr, size, NULL, NULL) == 0)
++			{
++				debug(LOG_FATAL, "Config directory encoding conversion error.");
++				exit(1);
++			}
+ 
+-		// Append the Warzone subdir
+-		sstrcat(tmpstr, WZ_WRITEDIR);
+-		sstrcat(tmpstr, PHYSFS_getDirSeparator());
++			strlcat(tmpstr, PHYSFS_getDirSeparator(), size);
++		#else
++			strlcpy(tmpstr, PHYSFS_getPrefDir("Warzone2100", WZ_WRITEDIR), sizeof(tmpstr));
++		#endif
+ 
+ 		if (!PHYSFS_setWriteDir(tmpstr))
+ 		{
+-			debug(LOG_FATAL, "Error setting write directory to \"%s\": %s",
+-			      tmpstr, PHYSFS_getLastError());
++			debug(LOG_FATAL, "Error setting write directory to \"%s\": %i",
++			      tmpstr, PHYSFS_getLastErrorCode());
+ 			exit(1);
+ 		}
+ 	}
+@@ -282,8 +171,8 @@ static void initialize_ConfigDir()
+ 
+ 		if (!PHYSFS_setWriteDir(tmpstr)) // Workaround for PhysFS not creating the writedir as expected.
+ 		{
+-			debug(LOG_FATAL, "Error setting write directory to \"%s\": %s",
+-			      tmpstr, PHYSFS_getLastError());
++			debug(LOG_FATAL, "Error setting write directory to \"%s\": %i",
++			      tmpstr, PHYSFS_getLastErrorCode());
+ 			exit(1);
+ 		}
+ 	}
+@@ -296,7 +185,7 @@ static void initialize_ConfigDir()
+ 
+ 
+ 	// User's home dir first so we always see what we write
+-	PHYSFS_addToSearchPath(PHYSFS_getWriteDir(), PHYSFS_PREPEND);
++	PHYSFS_mount(PHYSFS_getWriteDir(), NULL, PHYSFS_PREPEND);
+ 
+ 	PHYSFS_permitSymbolicLinks(1);
+ 
+@@ -314,7 +203,7 @@ static void initialize_PhysicsFS(const char *argv_0)
+ 
+ 	if (!result)
+ 	{
+-		debug(LOG_FATAL, "There was a problem trying to init Physfs.  Error was %s", PHYSFS_getLastError());
++		debug(LOG_FATAL, "There was a problem trying to init Physfs.  Error was %i", PHYSFS_getLastErrorCode());
+ 		exit(-1);
+ 	}
+ }
+@@ -948,7 +837,7 @@ int realmain(int argc, char *argv[])
+ 		{
+ 			ssprintf(modtocheck, "mods/global/%s", modname.c_str());
+ 			result = PHYSFS_exists(modtocheck);
+-			result |= PHYSFS_isDirectory(modtocheck);
++			result |= PHYSFS_stat(modtocheck, NULL);
+ 			if (!result)
+ 			{
+ 				debug(LOG_ERROR, "The (global) mod (%s) you have specified doesn't exist!", modtocheck);
+@@ -963,7 +852,7 @@ int realmain(int argc, char *argv[])
+ 		{
+ 			ssprintf(modtocheck, "mods/campaign/%s", modname.c_str());
+ 			result = PHYSFS_exists(modtocheck);
+-			result |= PHYSFS_isDirectory(modtocheck);
++			result |= PHYSFS_stat(modtocheck, NULL);
+ 			if (!result)
+ 			{
+ 				debug(LOG_ERROR, "The mod_ca (%s) you have specified doesn't exist!", modtocheck);
+@@ -978,7 +867,7 @@ int realmain(int argc, char *argv[])
+ 		{
+ 			ssprintf(modtocheck, "mods/multiplay/%s", modname.c_str());
+ 			result = PHYSFS_exists(modtocheck);
+-			result |= PHYSFS_isDirectory(modtocheck);
++			result |= PHYSFS_stat(modtocheck, NULL);
+ 			if (!result)
+ 			{
+ 				debug(LOG_ERROR, "The mod_mp (%s) you have specified doesn't exist!", modtocheck);
+diff --git a/src/map.cpp b/src/map.cpp
+index 74e1f6d0e..f1102961a 100644
+--- a/src/map.cpp
++++ b/src/map.cpp
+@@ -747,7 +747,7 @@ bool mapLoad(char *filename, bool preview)
+ 		debug(LOG_ERROR, "%s not found", filename);
+ 		return false;
+ 	}
+-	else if (PHYSFS_read(fp, aFileType, 4, 1) != 1
++	else if (PHYSFS_readBytes(fp, aFileType, 4) != 4
+ 	         || !PHYSFS_readULE32(fp, &version)
+ 	         || !PHYSFS_readULE32(fp, &width)
+ 	         || !PHYSFS_readULE32(fp, &height)
+@@ -1541,10 +1541,10 @@ bool writeVisibilityData(const char *fileName)
+ 	fileHeader.version = CURRENT_VERSION_NUM;
+ 
+ 	// Write out the current file header
+-	if (PHYSFS_write(fileHandle, fileHeader.aFileType, sizeof(fileHeader.aFileType), 1) != 1
++	if (PHYSFS_writeBytes(fileHandle, fileHeader.aFileType, sizeof(fileHeader.aFileType)) != sizeof(fileHeader.aFileType)
+ 	    || !PHYSFS_writeUBE32(fileHandle, fileHeader.version))
+ 	{
+-		debug(LOG_ERROR, "writeVisibilityData: could not write header to %s; PHYSFS error: %s", fileName, PHYSFS_getLastError());
++		debug(LOG_ERROR, "writeVisibilityData: could not write header to %s; PHYSFS error: %i", fileName, PHYSFS_getLastErrorCode());
+ 		PHYSFS_close(fileHandle);
+ 		return false;
+ 	}
+@@ -1557,7 +1557,7 @@ bool writeVisibilityData(const char *fileName)
+ 		{
+ 			if (!PHYSFS_writeUBE8(fileHandle, psMapTiles[i].tileExploredBits >> (plane * 8)))
+ 			{
+-				debug(LOG_ERROR, "writeVisibilityData: could not write to %s; PHYSFS error: %s", fileName, PHYSFS_getLastError());
++				debug(LOG_ERROR, "writeVisibilityData: could not write to %s; PHYSFS error: %i", fileName, PHYSFS_getLastErrorCode());
+ 				PHYSFS_close(fileHandle);
+ 				return false;
+ 			}
+@@ -1585,10 +1585,10 @@ bool readVisibilityData(const char *fileName)
+ 	}
+ 
+ 	// Read the header from the file
+-	if (PHYSFS_read(fileHandle, fileHeader.aFileType, sizeof(fileHeader.aFileType), 1) != 1
++	if (PHYSFS_readBytes(fileHandle, fileHeader.aFileType, sizeof(fileHeader.aFileType)) != sizeof(fileHeader.aFileType)
+ 	    || !PHYSFS_readUBE32(fileHandle, &fileHeader.version))
+ 	{
+-		debug(LOG_ERROR, "readVisibilityData: error while reading header from file: %s", PHYSFS_getLastError());
++		debug(LOG_ERROR, "readVisibilityData: error while reading header from file: %i", PHYSFS_getLastErrorCode());
+ 		PHYSFS_close(fileHandle);
+ 		return false;
+ 	}
+@@ -1635,7 +1635,7 @@ bool readVisibilityData(const char *fileName)
+ 			uint8_t val = 0;
+ 			if (!PHYSFS_readUBE8(fileHandle, &val))
+ 			{
+-				debug(LOG_ERROR, "readVisibilityData: could not read from %s; PHYSFS error: %s", fileName, PHYSFS_getLastError());
++				debug(LOG_ERROR, "readVisibilityData: could not read from %s; PHYSFS error: %i", fileName, PHYSFS_getLastErrorCode());
+ 				PHYSFS_close(fileHandle);
+ 				return false;
+ 			}
+diff --git a/src/modding.cpp b/src/modding.cpp
+index 2db12197f..b53c3b945 100644
+--- a/src/modding.cpp
++++ b/src/modding.cpp
+@@ -120,7 +120,7 @@ void addSubdirs(const char *basedir, const char *subdir, const bool appendToPath
+ 				snprintf(buf, sizeof(buf), "mod: %s", *i);
+ 				addDumpInfo(buf);
+ 			}
+-			PHYSFS_addToSearchPath(tmpstr, appendToPath);
++			PHYSFS_mount(tmpstr, NULL, appendToPath);
+ 		}
+ 		i++;
+ 	}
+@@ -141,10 +141,10 @@ void removeSubdirs(const char *basedir, const char *subdir)
+ #ifdef DEBUG
+ 		debug(LOG_NEVER, "Removing [%s] from search path", tmpstr);
+ #endif // DEBUG
+-		if (!PHYSFS_removeFromSearchPath(tmpstr))
++		if (!PHYSFS_unmount(tmpstr))
+ 		{
+ #ifdef DEBUG	// spams a ton!
+-			debug(LOG_NEVER, "Couldn't remove %s from search path because %s", tmpstr, PHYSFS_getLastError());
++			debug(LOG_NEVER, "Couldn't remove %s from search path because %i", tmpstr, PHYSFS_getLastErrorCode());
+ #endif // DEBUG
+ 		}
+ 		i++;
+diff --git a/src/multiplay.cpp b/src/multiplay.cpp
+index 166b7e729..a3cfca508 100644
+--- a/src/multiplay.cpp
++++ b/src/multiplay.cpp
+@@ -1634,7 +1634,7 @@ bool recvMapFileRequested(NETQUEUE queue)
+ 	PHYSFS_file *pFileHandle = PHYSFS_openRead(filename.c_str());
+ 	if (pFileHandle == nullptr)
+ 	{
+-		debug(LOG_ERROR, "Failed to open %s for reading: %s", filename.c_str(), PHYSFS_getLastError());
++		debug(LOG_ERROR, "Failed to open %s for reading: %i", filename.c_str(), PHYSFS_getLastErrorCode());
+ 		debug(LOG_FATAL, "You have a map (%s) that can't be located.\n\nMake sure it is in the correct directory and or format! (No map packs!)", filename.c_str());
+ 		// NOTE: if we get here, then the game is basically over, The host can't send the file for whatever reason...
+ 		// Which also means, that we can't continue.
+diff --git a/tests/maptest.cpp b/tests/maptest.cpp
+index 7427494a7..757174b31 100644
+--- a/tests/maptest.cpp
++++ b/tests/maptest.cpp
+@@ -17,7 +17,7 @@ int main(int argc, char **argv)
+ 	PHYSFS_init(argv[0]);
+ 	strcpy(datapath, getenv("srcdir"));
+ 	strcat(datapath, "/../data");
+-	PHYSFS_addToSearchPath(datapath, 1);
++	PHYSFS_mount(datapath, NULL, 1);
+ 
+ 	while (!feof(fp))
+ 	{
+diff --git a/tools/map/map2lnd.cpp b/tools/map/map2lnd.cpp
+index bd6b01f11..25750f376 100644
+--- a/tools/map/map2lnd.cpp
++++ b/tools/map/map2lnd.cpp
+@@ -54,7 +54,7 @@ int main(int argc, char **argv)
+ 		strcpy(filename, argv[1]);
+ 	}
+ 	PHYSFS_init(argv[0]);
+-	PHYSFS_addToSearchPath(path, 1);
++	PHYSFS_mount(path, NULL, 1);
+ 
+ 	map = mapLoad(filename);
+ 	if (!map)
+diff --git a/tools/map/mapinfo.cpp b/tools/map/mapinfo.cpp
+index 8a64164aa..269b11225 100644
+--- a/tools/map/mapinfo.cpp
++++ b/tools/map/mapinfo.cpp
+@@ -33,7 +33,7 @@ int main(int argc, char **argv)
+ 		strcpy(filename, argv[1]);
+ 	}
+ 	PHYSFS_init(argv[0]);
+-	PHYSFS_addToSearchPath(path, 1);
++	PHYSFS_mount(path, NULL, 1);
+ 
+ 	map = mapLoad(filename);
+ 	if (map)
+diff --git a/tools/map/maplib.cpp b/tools/map/maplib.cpp
+index c94b038d4..58c0261de 100644
+--- a/tools/map/maplib.cpp
++++ b/tools/map/maplib.cpp
+@@ -6,7 +6,7 @@ void physfs_init(const char* binpath)
+ 
+     // Add cwd
+     PHYSFS_setWriteDir(".");
+-    PHYSFS_addToSearchPath(".", 1);
++    PHYSFS_mount(".", NULL, 1);
+ }
+ 
+ void physfs_shutdown()
+@@ -27,7 +27,7 @@ char* physfs_addmappath(char *path)
+     length = strlen(path);
+     if (length >= 3 && strcmp(&path[length-3], ".wz")==0)
+     {
+-        PHYSFS_addToSearchPath(path, 1);
++        PHYSFS_mount(path, NULL, 1);
+             
+         strcat(p_result, "multiplay/maps/");
+         p_result += strlen("multiplay/maps/");        
+@@ -40,7 +40,7 @@ char* physfs_addmappath(char *path)
+             strcpy(p_result, p_path);
+ 
+ 			path[strlen(path) - strlen(result) - 1] = '\0';
+-			PHYSFS_addToSearchPath(path, 1);
++			PHYSFS_mount(path, NULL, 1);
+         }
+         else
+         {
+diff --git a/tools/map/mapload.cpp b/tools/map/mapload.cpp
+index c52602787..9d3340381 100644
+--- a/tools/map/mapload.cpp
++++ b/tools/map/mapload.cpp
+@@ -61,7 +61,7 @@ GAMEMAP *mapLoad(char *filename)
+ 		map->mMapTiles = NULL;
+ 		goto mapfailure;
+ 	}
+-	else if (PHYSFS_read(fp, aFileType, 4, 1) != 1
++	else if (PHYSFS_readBytes(fp, aFileType, 4) != 4
+ 		|| !readU32(&map->mapVersion)
+ 		|| !readU32(&map->width)
+ 		|| !readU32(&map->height)
+@@ -145,7 +145,7 @@ mapfailure:
+ 		debug(LOG_ERROR, "Game file %s not found", path);
+ 		goto failure;
+ 	}
+-	else if (PHYSFS_read(fp, aFileType, 4, 1) != 1
++	else if (PHYSFS_readBytes(fp, aFileType, 4) != 4
+ 		|| aFileType[0] != 'g'
+ 		|| aFileType[1] != 'a'
+ 		|| aFileType[2] != 'm'
+@@ -165,7 +165,7 @@ mapfailure:
+ 		|| !readS32(&map->scrollMinY)
+ 		|| !readU32(&map->scrollMaxX)
+ 		|| !readU32(&map->scrollMaxY)
+-		|| PHYSFS_read(fp, map->levelName, 20, 1) != 1)
++		|| PHYSFS_readBytes(fp, map->levelName, 20) != 20)
+ 	{
+ 		debug(LOG_ERROR, "Bad data in %s", filename);
+ 		goto failure;
+@@ -204,7 +204,7 @@ mapfailure:
+ 		map->mLndObjects[IMD_FEATURE] = NULL;
+ 		goto featfailure;
+ 	}
+-	else if (PHYSFS_read(fp, aFileType, 4, 1) != 1
++	else if (PHYSFS_readBytes(fp, aFileType, 4) != 4
+ 		|| aFileType[0] != 'f'
+ 		|| aFileType[1] != 'e'
+ 		|| aFileType[2] != 'a'
+@@ -227,7 +227,7 @@ mapfailure:
+ 		{
+ 			nameLength = 40;
+ 		}
+-		if (PHYSFS_read(fp, psObj->name, nameLength, 1) != 1
++		if (PHYSFS_readBytes(fp, psObj->name, nameLength) != nameLength
+ 			|| !readU32(&psObj->id)
+ 			|| !readU32(&psObj->x) || !readU32(&psObj->y) || !readU32(&psObj->z)
+ 			|| !readU32(&psObj->direction)
+@@ -240,7 +240,7 @@ mapfailure:
+ 			goto failure;
+ 		}
+ 		psObj->player = 0;	// work around invalid feature owner
+-		if (map->featVersion >= 14 && PHYSFS_read(fp, &visibility, 1, 8) != 8)
++		if (map->featVersion >= 14 && PHYSFS_readBytes(fp, &visibility, 8) != 8)
+ 		{
+ 			debug(LOG_ERROR, "Failed to read feature visibility from %s", path);
+ 			goto failure;
+@@ -268,7 +268,7 @@ featfailure:
+ 		map->terrainVersion = 0;
+ 		goto terrainfailure;
+ 	}
+-	else if (PHYSFS_read(fp, aFileType, 4, 1) != 1
++	else if (PHYSFS_readBytes(fp, aFileType, 4) != 4
+ 		|| aFileType[0] != 't'
+ 		|| aFileType[1] != 't'
+ 		|| aFileType[2] != 'y'
+@@ -335,7 +335,7 @@ terrainfailure:
+ 	fp = PHYSFS_openRead(path);
+ 	if (fp)
+ 	{
+-		if (PHYSFS_read(fp, aFileType, 4, 1) != 1
++		if (PHYSFS_readBytes(fp, aFileType, 4) != 4
+ 			|| aFileType[0] != 's'
+ 			|| aFileType[1] != 't'
+ 			|| aFileType[2] != 'r'
+@@ -361,7 +361,7 @@ terrainfailure:
+ 			{
+ 				nameLength = 40;
+ 			}
+-			if (PHYSFS_read(fp, psObj->name, nameLength, 1) != 1
++			if (PHYSFS_readBytes(fp, psObj->name, nameLength) != nameLength
+ 				|| !readU32(&psObj->id)
+ 				|| !readU32(&psObj->x) || !readU32(&psObj->y) || !readU32(&psObj->z)
+ 				|| !readU32(&psObj->direction)
+@@ -402,12 +402,12 @@ terrainfailure:
+ 				debug(LOG_ERROR, "Failed to read structure v12 part from %s", path);
+ 				goto failure;
+ 			}
+-			if (map->structVersion >= 14 && PHYSFS_read(fp, &visibility, 1, 8) != 8)
++			if (map->structVersion >= 14 && PHYSFS_readBytes(fp, &visibility, 8) != 8)
+ 			{
+ 				debug(LOG_ERROR, "Failed to read structure visibility from %s", path);
+ 				goto failure;
+ 			}
+-			if (map->structVersion >= 15 && PHYSFS_read(fp, researchName, nameLength, 1) != 1)
++			if (map->structVersion >= 15 && PHYSFS_readBytes(fp, researchName, nameLength) != nameLength)
+ 			{
+ 				// If version < 20, then this causes no padding, but the short below
+ 				// will still cause two bytes padding; however, if version >= 20, we
+@@ -459,7 +459,7 @@ terrainfailure:
+ 	fp = PHYSFS_openRead(path);
+ 	if (fp)
+ 	{
+-		if (PHYSFS_read(fp, aFileType, 4, 1) != 1
++		if (PHYSFS_readBytes(fp, aFileType, 4) != 4
+ 			|| aFileType[0] != 'd'
+ 			|| aFileType[1] != 'i'
+ 			|| aFileType[2] != 'n'
+@@ -481,7 +481,7 @@ terrainfailure:
+ 			{
+ 				nameLength = 40;
+ 			}
+-			if (PHYSFS_read(fp, psObj->name, nameLength, 1) != 1
++			if (PHYSFS_readBytes(fp, psObj->name, nameLength) != nameLength
+ 				|| !readU32(&psObj->id)
+ 				|| !readU32(&psObj->x) || !readU32(&psObj->y) || !readU32(&psObj->z)
+ 				|| !readU32(&psObj->direction)
+
