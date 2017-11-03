@@ -2,7 +2,7 @@
 _pkgname=vim-ipython
 pkgname=vim-$_pkgname-git
 pkgver=r165.42499f0
-pkgrel=1
+pkgrel=2
 pkgdesc="A two-way integration between Vim and IPython 0.11+"
 arch=('any')
 url="https://github.com/ivanov/vim-ipython"
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname%-git}::git+$url.git")
+source=("git+$url.git")
 noextract=()
 md5sums=('SKIP')
 
