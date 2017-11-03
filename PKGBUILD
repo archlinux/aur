@@ -8,7 +8,7 @@ pkgname=pstate-frequency-git
 # shellcheck disable=SC2034
 pkgdesc="Easily control Intel p-state driver (git version)"
 # shellcheck disable=SC2034
-pkgver="3.8.0".r840.28d3c3f
+pkgver="3.9.0".r845.a874770
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -46,7 +46,7 @@ pkgver() {
         return 1
   }
 
-  printf "%s.r%s.%s" "$(awk -F '=' '{if (/^readonly VERSION=/) {print $2}}' "${_gitname}")" \
+  printf "%s.r%s.%s" "$(awk -F '=' '{if (/^readonly __VERSION=/) {print $2}}' "${_gitname}")" \
                 "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
