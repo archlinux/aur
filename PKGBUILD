@@ -4,7 +4,7 @@ _srcurl='https://download-installer.cdn.mozilla.net/pub/devedition/releases'
 pkgname="${_basename}-${_locale,,}"
 pkgdesc='Standalone web browser from mozilla.org, developer build - Albanian'
 url="https://www.mozilla.org/${_locale}/firefox/developer/"
-pkgver='57.0b13'
+pkgver='57.0b14'
 pkgrel='1'
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -13,8 +13,8 @@ source_i686=("${pkgname}_${pkgver}_i686.tar.bz2::${_srcurl}/${pkgver}/linux-i686
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.bz2::${_srcurl}/${pkgver}/linux-x86_64/${_locale}/firefox-${pkgver}.tar.bz2")
 sha512sums=('9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
-sha512sums_i686=('713dd79c91fc01940c9b102ebbf83d5a9ffb62e77c42d971eeeddc9dcff1b2947268bab5c99285de5826fe3a5ffd55d9ccbd62c809bcbf2a266f019e35451cb3')
-sha512sums_x86_64=('7dfb54a4760e58880b2c0acef221c6822deb795f2dbf8e7d9e4d4949c750d1caea87ddbdf7ddce4d39388b318d470aa56d6bdfcbcb2a4f85f21ad0d2a6e76f82')
+sha512sums_i686=('2d1c654f171eff966456ce404a4d3676fc8fdd22ce0d0b7771607feaf0457200e371d0a370bbfb0e7d924ab377fd350053781a19130f991a890fe4d7bcc69b35')
+sha512sums_x86_64=('2a11541465885eef748a455bb5d14e9523b1a6daf63f7aa3bd1abba4819c2180347f04d73bc60b24d6cc4742817046a93de9374f21026fbdcda8c6d0aace7e2c')
 
 provides=("${_basename}")
 conflicts=("${_basename}")
