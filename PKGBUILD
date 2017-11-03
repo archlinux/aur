@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.27.0.r331.g27ab99dc3e
+pkgver=0.27.0.r339.ge6a68e2330
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -9,14 +9,14 @@ license=('GPL3')
 url='http://mpv.io/'
 depends=(
     # official repositories:
-        'ffmpeg-mpv-git' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
         'openal' 'smbclient' 'vapoursynth' 'vulkan-icd-loader' 'zlib'
         
     # AUR:
-        'mujs' 'rsound' 'sndio' 'shaderc-git'
+        'ffmpeg-mpv-git' 'mujs' 'rsound' 'sndio' 'shaderc-git'
 )
 optdepends=('youtube-dl: for video-sharing websites playback'
             'nvidia-utils: for hardware accelerated video decoding with CUDA')
@@ -25,15 +25,8 @@ makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
 provides=('mpv')
 conflicts=('mpv' 'mpv-git')
 options=('!emptydirs')
-source=("$pkgname"::'git+https://github.com/mpv-player/mpv.git'
-        'mpv-fix-cuda-detection.patch')
-sha256sums=('SKIP'
-            'd73dc3ee054d2552cc9c091106f60e3fba779d3708f21ceee7fad18805a890e6')
-
-prepare() {
-    cd "$pkgname"
-    patch -Np1 -i "${srcdir}/mpv-fix-cuda-detection.patch"
-}
+source=("$pkgname"::'git+https://github.com/mpv-player/mpv.git')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
