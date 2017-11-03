@@ -2,15 +2,12 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.13
-_pkgver=4.13.10
+_pkgver=4.13.11
 pkgver=$_pkgver.a
 pkgrel=1
-pkgdesc="linux-hardened with apparmor and audit enabled"
 arch=('x86_64')
 url="https://github.com/copperhead/linux-hardened"
 license=('GPL2')
-depends=('coreutils'  'linux-firmware' 'kmod'  'mkinitcpio>=0.7')
-optdepends=('crda: to set the correct wireless channels of your country')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -29,7 +26,7 @@ replaces=('linux-grsec')
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            'b9efa9c6375f79f6a041a5f0666d4ced1a49bfe8c4662d26517a6b4cfd9bf2f6'
+            'f5fb017ee531dc35e3462ccb2d244d4fdc8ac6df9cd3337aa6df2ffc280b1bd6'
             'SKIP'
             'dd230cdc25a5ebaf45a91b57e03696b6af8fb2c02ccb826a12a7fc0f28c58857'
             'SKIP'
