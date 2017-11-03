@@ -10,7 +10,6 @@ url="http://freevo.sourceforge.net/"
 license=('GPL2')
 depends=('python2' 'glib2')
 makedepends=('git')
-conflicts=("${pkgname}")
 arch=('i686' 'x86_64')
 _commit='c9a28525f0ca39546c72f1fd232812d514c631eb'
 source=("${pkgname}::git+https://github.com/freevo/kaa-base#commit=${_commit}")
