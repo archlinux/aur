@@ -7,7 +7,7 @@ pkgdesc="Qt5 UI for Hantek DSO2xxx/DSO52xx/6022BE/BL oscilloscopes. Including fi
 arch=('i686' 'x86_64')
 url="http://www.openhantek.org/"
 license=('GPL-3.0')
-depends=('bzip2' 'double-conversion' 'fftw' 'freetype2'
+depends=('bzip2' 'double-conversion' 'fftw' 'freetype2' 'fxload'
          'gcc-libs' 'glib2' 'glibc' 'graphite' 'harfbuzz'
          'icu' 'libgcrypt' 'libglvnd' 'libgpg-error' 
          'libpng' 'libsystemd' 'libusb' 'libx11' 'libxau'
