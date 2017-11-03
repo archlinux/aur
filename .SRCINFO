@@ -1,6 +1,6 @@
 pkgbase = startup-notification-git
 	pkgdesc = Monitor and display application startup
-	pkgver = 0.12.r9.g5c1a52c
+	pkgver = 0.12.r13.g0f4c3a4
 	pkgrel = 1
 	url = https://www.freedesktop.org
 	arch = i686
