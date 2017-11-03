@@ -2,9 +2,9 @@
 
 _pkgname=jre
 pkgname=jre-devel
-pkgver=9.0.1
-_major=${pkgver/.*}
-_build=11
+_major=10
+_build=29
+pkgver=${_major}b${_build}
 pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Environment Snapshot"
 arch=('x86_64')
@@ -19,7 +19,6 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start
 conflicts=("java-runtime-jre=$_major")
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname/jre
 
@@ -35,13 +34,13 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
+source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_major}-ea+${_build}_linux-x64_bin.tar.gz"
         "policytool-$_jname.desktop")
-sha256sums=('3c64953465e98dbab0e449954a918fada703cd0341aa98cff68854852663ee86'
-            '82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e')
+sha256sums=('6b1e3a796d4ef3e088af3bdec8ac42f558b42fa8ee74f774f83f50236e5362eb'
+            '011f461fa94df5684f90779a0335e87aab91de23e0e64bd45ee9f19c5804c390')
 
 package() {
-    cd $_pkgname-$pkgver
+    cd $_pkgname-$_major
 
     msg2 "Creating directory structure..."
     install -d "$pkgdir"/etc/.java/.systemPrefs
@@ -116,15 +115,8 @@ package() {
 
     # Move/link licenses
     mv legal/ "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
-    # install -m644 "$srcdir"/LICENSE-Early-Adopter-Terms.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
+    install -m644 "$srcdir"/LICENSE-Early-Adopter-Development-Agreement.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
     ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
-
-    # msg2 "Enabling Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy..."
-    # # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
-    # # things like 256-bit AES. Enabled by default in OpenJDK:
-    # # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
-    # # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-    # sed -i "s/crypto.policy=limited/crypto.policy=unlimited/" "$pkgdir"/etc/java-$_jname/security/java.security
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:

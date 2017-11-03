@@ -1,8 +1,8 @@
 pkgbase = jre-devel
-	pkgdesc = Oracle Java 9 Runtime Environment Snapshot
-	pkgver = 9.0.1
+	pkgdesc = Oracle Java 10 Runtime Environment Snapshot
+	pkgver = 10b29
 	pkgrel = 1
-	url = http://jdk.java.net/9/
+	url = http://jdk.java.net/10/
 	install = jre-devel.install
 	arch = x86_64
 	license = custom:Oracle
@@ -13,29 +13,29 @@ pkgbase = jre-devel
 	depends = xdg-utils
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for Gtk+ look and feel (desktop)
-	provides = java-runtime=9
-	provides = java-runtime-headless=9
-	provides = java-web-start=9
-	provides = java-runtime-jre=9
-	provides = java-runtime-headless-jre=9
-	provides = java-web-start-jre=9
-	provides = java-openjfx=9
-	conflicts = java-runtime-jre=9
-	backup = etc/java-jre9/management/jmxremote.access
-	backup = etc/java-jre9/management/management.properties
-	backup = etc/java-jre9/security/java.policy
-	backup = etc/java-jre9/security/java.security
-	backup = etc/java-jre9/security/javaws.policy
-	backup = etc/java-jre9/fontconfig.properties.src
-	backup = etc/java-jre9/logging.properties
-	backup = etc/java-jre9/net.properties
-	backup = etc/java-jre9/psfont.properties.ja
-	backup = etc/java-jre9/psfontj2d.properties
-	backup = etc/java-jre9/sound.properties
-	source = http://download.oracle.com/otn-pub/java/jdk/9.0.1+11/jre-9.0.1_linux-x64_bin.tar.gz
-	source = policytool-jre9.desktop
-	sha256sums = 3c64953465e98dbab0e449954a918fada703cd0341aa98cff68854852663ee86
-	sha256sums = 82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e
+	provides = java-runtime=10
+	provides = java-runtime-headless=10
+	provides = java-web-start=10
+	provides = java-runtime-jre=10
+	provides = java-runtime-headless-jre=10
+	provides = java-web-start-jre=10
+	provides = java-openjfx=10
+	conflicts = java-runtime-jre=10
+	backup = etc/java-jre10/management/jmxremote.access
+	backup = etc/java-jre10/management/management.properties
+	backup = etc/java-jre10/security/java.policy
+	backup = etc/java-jre10/security/java.security
+	backup = etc/java-jre10/security/javaws.policy
+	backup = etc/java-jre10/fontconfig.properties.src
+	backup = etc/java-jre10/logging.properties
+	backup = etc/java-jre10/net.properties
+	backup = etc/java-jre10/psfont.properties.ja
+	backup = etc/java-jre10/psfontj2d.properties
+	backup = etc/java-jre10/sound.properties
+	source = http://download.java.net/java/jdk10/archive/29/binaries/jre-10-ea+29_linux-x64_bin.tar.gz
+	source = policytool-jre10.desktop
+	sha256sums = 6b1e3a796d4ef3e088af3bdec8ac42f558b42fa8ee74f774f83f50236e5362eb
+	sha256sums = 011f461fa94df5684f90779a0335e87aab91de23e0e64bd45ee9f19c5804c390
 
 pkgname = jre-devel
 

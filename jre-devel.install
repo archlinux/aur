@@ -1,4 +1,4 @@
-THIS_JAVA='java-9-jre/jre'
+THIS_JAVA='java-10-jre/jre'
 NAME='JRE Devel'
 
 all_off="$(tput sgr0)"
