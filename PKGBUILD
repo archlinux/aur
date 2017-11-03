@@ -1,44 +1,49 @@
-# Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
+# Maintainer: Hugo Courtial <hugo [at] courtial [not colon] me>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-pkgname=openfx-io-git
-pkgver=0
+pkgname=openfx-io
+pkgver=2.3.3
 pkgrel=1
-arch=('i386' 'x86_64')
-pkgdesc='A set of Readers/Writers plugins written using the OpenFX standard.'
-url='https://github.com/MrKepzie/openfx-io'
-license=BSD
-depends=('opencolorio' 'openexr' 'openimageio' 'ffmpeg' 'boost-libs')
-makedepends=('boost')
-provides=('openfx-io')
-conflicts=('openfx-io')
-source=(
-  "openfx-io::git://github.com/MrKepzie/openfx-io.git"
-  "devernay-openfx::git://github.com/devernay/openfx.git"  # A fork by devernay
-  "SequenceParsing::git://github.com/MrKepzie/SequenceParsing.git"
-  "tinydir::git://github.com/MrKepzie/tinydir.git"  # Required by SequenceParsing
-)
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
-_bits=64
-[ "$CARCH" = 'i686' ] && _bits=32
+arch=("i686" "x86_64")
+pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
+url="https://github.com/MrKepzie/openfx-io"
+license=("GPL2")
+depends=("seexpr1" "openimageio" "ffmpeg") 
+#depends=("opencolorio" "openexr" "openimageio" "ffmpeg" "boost-libs")
+makedepends=("git" "expat" "boost")
+optdepends=("openfx-gmic-bin" "natron-plugins")
+source=("$pkgname::git+https://github.com/MrKepzie/openfx-io.git#commit=5d7502e9f81e326d5386f79e16d5e1697969a5b7"
+        'git+https://github.com/devernay/openfx.git'
+        'git+https://github.com/MrKepzie/SequenceParsing'
+        'git+https://github.com/devernay/openfx-supportext.git'
+        'git+https://github.com/MrKepzie/tinydir')
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
-pkgver() {
-  cd "$srcdir/openfx-io"
-  git log -1 --format="%cd" --date=short | tr -d -
-}
+_bits=32 ; [[ "$CARCH" = 'x86_64' ]] && _bits=64
 
 prepare() {
-  rm -Rf "${srcdir}/openfx-io/openfx" "${srcdir}/openfx-io/IOSupport/SequenceParsing" "${srcdir}/SequenceParsing/tinydir"
-  ln -sf "${srcdir}/devernay-openfx" "${srcdir}/openfx-io/openfx"
-  ln -sf "${srcdir}/tinydir" "${srcdir}/SequenceParsing/tinydir"
-  ln -sf "${srcdir}/SequenceParsing" "${srcdir}/openfx-io/IOSupport/SequenceParsing"
+  cd "$srcdir/$pkgname"
+  git config submodule.openfx.url $srcdir/openfx
+  git config submodule.IOSupport/SequenceParsing.url $srcdir/SequenceParsing
+  git config submodule.SupportExt.url $srcdir/openfx-supportext
+  git submodule update
+
+  cd IOSupport/SequenceParsing
+  git config submodule.tinydir.url $srcdir/tinydir
+  git submodule update
 }
 
 build() {
-  cd "${srcdir}/openfx-io"
-  make BITS=$_bits DEBUGFLAG=-O3
+  cd "$srcdir/$pkgname"
+  make CONFIG=release BITS=$_bits
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/OFX/Plugins/io"
-  cp -r -v "${srcdir}/openfx-io/IO/Linux-$_bits-release/IO.ofx.bundle" "${pkgdir}/usr/OFX/Plugins/io/"
+  cd "$srcdir/$pkgname"
+  mkdir -p "$pkgdir/usr/OFX/Plugins"
+  make install PLUGINPATH=$pkgdir/usr/OFX/Plugins CONFIG=release BITS=$_bits
 }
