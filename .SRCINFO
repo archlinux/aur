@@ -1,6 +1,6 @@
 pkgbase = gambit-c-git
 	pkgdesc = Scheme R5RS interpreter and compiler (via C) - git version
-	pkgver = 4.8.8.r406.gfb63ffa0
+	pkgver = 4.8.8.r409.g54709a31
 	pkgrel = 1
 	url = http://gambitscheme.org
 	arch = i686
