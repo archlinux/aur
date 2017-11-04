@@ -14,6 +14,9 @@ fs.closeSync(fd);
 // Remove first command line argument (/usr/bin/electron).
 process.argv.splice(0, 1);
 
+// Set development mode
+process.env.NODE_ENV = 'development';
+
 // Set application paths.
 const appPath = path.join(path.dirname(__dirname), 'lib', name);
 const packageJson = require(path.join(appPath, 'package.json'));
