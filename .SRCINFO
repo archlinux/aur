@@ -1,7 +1,7 @@
 pkgbase = passiflora
 	pkgdesc = Spagyrik Datenbank Passiflora
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joshirio/passiflora
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = passiflora
 	depends = qt5-imageformats
 	depends = sqlite
 	source = http://passiflora.enmed.de/files/passiflora-2.2-src.tar.gz
-	md5sums = 23581947b47ad6f64e713439d577ccf7
+	md5sums = c47e74d79e6408f9a53ceab283bd502b
 
 pkgname = passiflora
 
