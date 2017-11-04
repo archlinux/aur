@@ -10,7 +10,7 @@ url="https://github.com/hyperledger/fabric"
 license=('APACHE')
 groups=('hyperledger')
 depends=('go')
-makedepends=('git')
+makedepends=('git' 'docker')
 install=$pkgname.install
 source=("https://github.com/hyperledger/fabric/archive/v$pkgver.tar.gz"
 		${_pkgname}-peer.sh
