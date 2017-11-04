@@ -3,7 +3,7 @@
 pkgname=('rdma-core')
 _srcname='rdma-core'
 pkgdesc='RDMA core userspace libraries and daemons'
-pkgver='14'
+pkgver='15'
 _tag="v${pkgver}"
 pkgrel='1'
 arch=('x86_64')
@@ -89,21 +89,15 @@ package() {
 
     cd "${srcdir}/${_srcname}/redhat"
     install -D --mode=0644 rdma.conf "${pkgdir}/etc/rdma/rdma.conf"
-    install -D --mode=0644 rdma.sriov-vfs "${pkgdir}/etc/rdma/sriov-vfs"
-    install -D --mode=0644 rdma.mlx4.conf "${pkgdir}/etc/rdma/mlx4.conf"
-    install -D --mode=0644 rdma.service "${pkgdir}/usr/lib/systemd/system/rdma.service"
-    install -D --mode=0644 rdma.udev-ipoib-naming.rules "${pkgdir}/etc/udev/rules.d/70-persistent-ipoib.rules"
-    install -D --mode=0644 rdma.mlx4.user.modprobe "${pkgdir}/etc/modprobe.d/mlx4.conf"
-    install -D --mode=0755 rdma.modules-setup.sh "${pkgdir}/usr/lib/dracut/modules.d/05rdma/module-setup.sh"
-    install -D --mode=0644 rdma.udev-rules "${pkgdir}/usr/lib/udev/rules.d/98-rdma.rules"
-    install -D --mode=0644 rdma.mlx4.sys.modprobe "${pkgdir}/usr/lib/modprobe.d/libmlx4.conf"
-    install -D --mode=0644 rdma.cxgb3.sys.modprobe "${pkgdir}/usr/lib/modprobe.d/cxgb3.conf"
-    install -D --mode=0644 rdma.cxgb4.sys.modprobe "${pkgdir}/usr/lib/modprobe.d/cxgb4.conf"
     install -D --mode=0755 rdma.kernel-init "${pkgdir}/usr/lib/rdma/rdma-init-kernel"
-    install -D --mode=0755 rdma.sriov-init "${pkgdir}/usr/lib/rdma/rdma-set-sriov-vf"
-    install -D --mode=0644 rdma.fixup-mtrr.awk "${pkgdir}/usr/lib/rdma/rdma-fixup-mtrr.awk"
     install -D --mode=0755 rdma.mlx4-setup.sh "${pkgdir}/usr/lib/rdma/mlx4-setup.sh"
-    install -D --mode=0644 ibacm.service "${pkgdir}/usr/lib/systemd/system/ibacm.service"
+    install -D --mode=0644 rdma.mlx4.conf "${pkgdir}/etc/rdma/mlx4.conf"
+    install -D --mode=0644 rdma.mlx4.sys.modprobe "${pkgdir}/usr/lib/modprobe.d/libmlx4.conf"
+    install -D --mode=0755 rdma.modules-setup.sh "${pkgdir}/usr/lib/dracut/modules.d/05rdma/module-setup.sh"
+    install -D --mode=0644 rdma.service "${pkgdir}/usr/lib/systemd/system/rdma.service"
+    install -D --mode=0755 rdma.sriov-init "${pkgdir}/usr/lib/rdma/rdma-set-sriov-vf"
+    install -D --mode=0644 rdma.sriov-vfs "${pkgdir}/etc/rdma/sriov-vfs"
+    install -D --mode=0644 rdma.udev-rules "${pkgdir}/usr/lib/udev/rules.d/98-rdma.rules"
 
     cd "${srcdir}/${_srcname}"
     install -D --mode=0644 COPYING.BSD_MIT "${pkgdir}/usr/share/licenses/${pkgname[0]%-git}/COPYING.BSD_MIT"
