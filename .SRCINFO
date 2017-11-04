@@ -1,7 +1,7 @@
 pkgbase = iaca
 	pkgdesc = Intel® Architecture Code Analyzer AUR install package.
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.intel.com/en-us/articles/intel-architecture-code-analyzer
 	arch = x86_64
 	license = custom
