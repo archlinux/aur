@@ -9,13 +9,13 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=r1193.4930cafe
+pkgver=r1206.2e2caa23
 pkgrel=1
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=(any)
 url="https://github.com/google/fonts"
-license=(various)
+license=('custom:SIL Open Font License' 'custom:Ubuntu Font License v1.0')
 
 # About why "cantarell-fonts" and "noto-fonts" is a dependency see comment in package() function.
 depends=(cantarell-fonts fontconfig noto-fonts xorg-fonts-encodings xorg-mkfontdir
@@ -23,15 +23,15 @@ depends=(cantarell-fonts fontconfig noto-fonts xorg-fonts-encodings xorg-mkfontd
 makedepends=(git)
 conflicts=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
            lohit-fonts ttf-andika ttf-anonymous-pro ttf-cardo ttf-comfortaa
-           ttf-croscore ttf-droid ttf-fira-mono ttf-fira-sans ttf-inconsolata
-           ttf-lato ttf-lora-cyrillic ttf-lekton ttf-medievalsharp ttf-merriweather
+           ttf-croscore ttf-fira-mono ttf-fira-sans ttf-inconsolata ttf-lato
+           ttf-lora-cyrillic ttf-lekton ttf-medievalsharp ttf-merriweather
            ttf-merriweather-sans ttf-nova ttf-opensans ttf-oswald ttf-oxygen
            ttf-oxygen-git ttf-pt-fonts ttf-quintessential ttf-roboto ttf-roboto-mono
            ttf-signika ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx
            ttf-ubuntu-font-family-ib ttf-vollkorn-ibx ttf-arabeyes-fonts)
 provides=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
           lohit-fonts ttf-andika ttf-anonymous-pro ttf-cardo ttf-comfortaa
-          ttf-croscore ttf-droid ttf-fira-mono ttf-fira-sans ttf-inconsolata ttf-lato
+          ttf-croscore ttf-fira-mono ttf-fira-sans ttf-inconsolata ttf-lato
           ttf-lora-cyrillic ttf-lekton ttf-medievalsharp ttf-merriweather
           ttf-merriweather-sans ttf-nova ttf-opensans ttf-oswald ttf-oxygen
           ttf-oxygen-git ttf-pt-fonts ttf-quintessential ttf-roboto ttf-roboto-mono
