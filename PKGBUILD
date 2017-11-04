@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=xplayer
-pkgver=1.4.3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Simple media player. X-Apps Project."
 arch=('i686' 'x86_64')
@@ -13,13 +13,13 @@ depends=('clutter-gtk' 'clutter-gst' 'xplayer-plparser'
     'xapps')
 makedepends=('gnome-common' 'gtk-doc' 'gobject-introspection' 'vala')
 optdepends=('gst-libav: Extra media codec support')
-provides=($_pkgname)
+provides=($pkgname)
 conflicts=('xplayer-git')
 url='https://github.com/linuxmint/xplayer'
 install=xplayer.install
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('61c4c815bfdc2be359e71614c55218c6')
+md5sums=('41029ace6f67b4af91e8d48c70e6d0ca')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
