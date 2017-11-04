@@ -14,9 +14,11 @@ pkgbase = firefox-beta-bin
 	depends = libxt
 	depends = nss
 	optdepends = ffmpeg: H264/AAC/MP3 decoding
+	optdepends = hunspell: Spell checking
+	optdepends = hyphen: Hyphenation
 	optdepends = libnotify: Notification integration
 	optdepends = networkmanager: Location detection via available WiFi networks
-	optdepends = pulseaudio
+	optdepends = pulseaudio: Sound
 	optdepends = upower: Battery API
 	provides = firefox=57.0b14
 	source = firefox-beta.sh

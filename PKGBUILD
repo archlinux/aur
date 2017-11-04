@@ -13,9 +13,11 @@ url="https://www.mozilla.org/en-US/firefox/channel/#beta"
 license=('MPL' 'GPL' 'LGPL')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss')
 optdepends=('ffmpeg: H264/AAC/MP3 decoding'
+            'hunspell: Spell checking'
+            'hyphen: Hyphenation'
             'libnotify: Notification integration'
             'networkmanager: Location detection via available WiFi networks'
-            'pulseaudio'
+            'pulseaudio: Sound'
             'upower: Battery API')
 provides=("firefox=$pkgver")
 install=$pkgname.install
@@ -38,7 +40,6 @@ package() {
   msg2 "Creating directory structure..."
   mkdir -p "$pkgdir"/usr/bin
   mkdir -p "$pkgdir"/usr/share/applications
-  mkdir -p "$pkgdir"/usr/share/icons/hicolor/128x128/apps
   mkdir -p "$pkgdir"/opt
 
   msg2 "Moving stuff in place..."
@@ -48,6 +49,7 @@ package() {
   # Launchers
   install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
   ln -s $_pkgname "$pkgdir"/usr/bin/$pkgname  # compatibility
+  ln -sf firefox "$pkgdir"/opt/$_pkgname/firefox-bin
 
   # Desktops
   install -m644 *.desktop "$pkgdir"/usr/share/applications/
@@ -60,6 +62,16 @@ package() {
   done
 
   # 128x128
+  install -d "$pkgdir"/usr/share/icons/hicolor/128x128/apps/
   ln -s /opt/$_pkgname/browser/icons/mozicon128.png \
         "$pkgdir"/usr/share/icons/hicolor/128x128/apps/$_pkgname.png
+
+  # Use system-provided dictionaries
+  rm -r "$pkgdir"/opt/$_pkgname/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir"/opt/$_pkgname/dictionaries
+  ln -Ts /usr/share/hyphen "$pkgdir"/opt/$_pkgname/hyphenation
+
+  # Use system certificates
+  ln -srf "$pkgdir"/usr/lib/libnssckbi.so \
+    "$pkgdir"/opt/$_pkgname/libnssckbi.so
 }
