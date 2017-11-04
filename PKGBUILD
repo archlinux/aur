@@ -1,17 +1,17 @@
 # Maintainer: Philip 'Chais' Abernethy <chais.z3r0@gmail.com>
 pkgname=hammerwatch
-pkgver=1.3
+pkgver=1.32
 pkgrel=1
-epoch=1411423200
+epoch=1462312800
 pkgdesc="A hack and slash action adventure, set in a fantasy pixel art environment"
 arch=('i686' 'x86_64')
 url="http://www.hammerwatch.com/"
 license=('custom:commercial')
 depends=('proot')
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
-source=("hib://${pkgname}_linux_v${pkgver}.zip"
+source=("hib://${pkgname}_linux${pkgver}.zip"
         "${pkgname}.png")
-sha512sums=('a6f1c1432a24e933326d74910a05468b7f5261d445602604ad0015b53edd38cdd132fd8d44947da8e33196e27e82fdc3d8733c50ad85dcca9b264b088ce6bd94'
+sha512sums=('9650f8ae7f2aded0dca01c9de571a356e7b771e0d88d41d1bf77335c0a3759659bd996be14bc79b31f68ac44184f59cf6549129192f0250455389f5af20fdf35'
             'da116253e3a828ee365da992be96a88acbe64f6cf32fdf77cb935fe74ed14f49e0bc33fe2fe8edf7dead7bc72d6a97b9a46e7220e92cf474e295298b017b1540')
 
 package() {
