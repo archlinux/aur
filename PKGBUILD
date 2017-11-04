@@ -3,8 +3,8 @@ pkgname=openshift-source-to-image
 _release=v1.1.7
 _commit=226afa1
 pkgver=1.1.7
-pkgrel=6
-pkgdesc="A tool for building/building artifacts from source and injecting into docker images"
+pkgrel=7
+pkgdesc="A tool for building artifacts from source and injecting into docker images"
 arch=('i686' 'x86_64')
 url="https://github.com/openshift/source-to-image"
 license=('Apache')
@@ -15,9 +15,6 @@ build() {
     echo "Installing source-to-image"
     $srcdir/s2i completion bash > $srcdir/s2i.bash
     $srcdir/s2i completion zsh  > $srcdir/s2i.zsh
-}
-
-prepare() {
     # Fix zsh completion
     sed -i '1i#compdef s2i' $srcdir/s2i.zsh
 }

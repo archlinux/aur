@@ -1,7 +1,7 @@
 pkgbase = openshift-source-to-image
-	pkgdesc = A tool for building/building artifacts from source and injecting into docker images
+	pkgdesc = A tool for building artifacts from source and injecting into docker images
 	pkgver = 1.1.7
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/openshift/source-to-image
 	arch = i686
 	arch = x86_64
