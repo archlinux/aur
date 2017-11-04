@@ -1,11 +1,11 @@
 [Desktop Entry]
-Name=OpenBazaar Next
-GenericName=Decentralized marketplace for trading with anyone using Bitcoin.
-Comment=OpenBazaar is an open source project to create a decentralized network for commerce online—using Bitcoin—that has no fees and cannot be censored.
-Exec=/usr/bin/openbazaar-next %U
-Icon=openbazaar-next
-Terminal=false
+Name=OpenBazaar
+Comment=Decentralized Peer to Peer Marketplace for Bitcoin
+GenericName=OpenBazaar Desktop Client
+Exec=openbazaar %U
+Icon=openbazaar
 Type=Application
+StartupNotify=true
+Categories=Utility;
 Categories=Application;Network;
 MimeType=application/x-openbazaar;x-scheme-handler/ob;
-
