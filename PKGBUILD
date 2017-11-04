@@ -2,7 +2,7 @@
 
 pkgname=curecoin-qt-git
 pkgver=r115.442977b
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"
@@ -14,7 +14,6 @@ makedepends=('boost' 'openssl-1.0' 'db')
 source=("git+https://github.com/cygnusxi/CurecoinSource.git"
         "0001-miniupnpc.patch"
         "curecoin.desktop")
-install=curecoin-qt-git.install
 
 sha256sums=('SKIP'
             'ef598aee46b5ad12b43db8942c08ef2cbece002efa731394066ebff654bea5e1'
