@@ -1,3 +1,4 @@
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=('ulogd-git')
 _srcname='ulogd'
 pkgdesc='Userspace logging daemon for netfilter/iptables related logging'
@@ -15,6 +16,7 @@ depends=(
     'libnfnetlink'
 )
 makedepends=(
+    'git'
     'libmariadbclient'
     'libpcap'
     'libdbi'
@@ -45,6 +47,8 @@ sha512sums=(
     'SKIP'
     'SKIP'
 )
+
+backup=('etc/ulogd.conf')
 
 pkgver() {
     cd "${srcdir}/${_srcname}"
