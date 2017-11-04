@@ -7,7 +7,7 @@
 
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
-pkgver=1.10.24
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -15,12 +15,12 @@ arch=(i686 x86_64)
 license=(GPL custom)
 groups=('selinux')
 depends=(libsystemd-selinux expat)
-makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git audit libselinux)
-_commit=430643da9da488a0b089868b9aada324f24a1710  # tags/dbus-1.10.24^0
+makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive graphviz audit libselinux)
+_commit=98294ab81a4d7ef00b6de5149344d92278c38593  # tags/dbus-1.12.0^0
 source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit"
         'dbus.sysusers')
 sha256sums=('SKIP'
-            '1ce179ba3a92ad34941d8ac7f53d01d42cbc91d43ada1136492b78c10b5d693d')
+            'ee7a7a4b2f944cb2e64b9e760efb82589d81872b5b70268356fb73c83c394845')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
@@ -31,7 +31,11 @@ pkgver() {
 
 prepare() {
   cd ${pkgbase/-selinux}
-  git cherry-pick -n 09cb6d7b467f6d1c6685ee9ccc171f4dddbe1f42
+
+  # Reduce docs size
+  printf '%s\n' >>Doxyfile.in \
+    HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -68,8 +72,8 @@ package_dbus-selinux() {
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgbase/COPYING"
 
-  # systemd-sysusers
-  install -Dm644 "$srcdir/dbus.sysusers" "$pkgdir/usr/lib/sysusers.d/dbus.conf"
+  # We have a pre-assigned uid (81)
+  install -m644 "$srcdir/dbus.sysusers" "$pkgdir/usr/lib/sysusers.d/dbus.conf"
 
   # Split docs
   mv "$pkgdir/usr/share/doc" "$srcdir"
