@@ -3,7 +3,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-nightly-bin"
 pkgname=("$_pkgbase-nightly-bin" "$_pkgbase-qt-nightly-bin")
-pkgrel=2
+pkgrel=3
 pkgver="385_20171031_ed17c54"
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 provides=('citra' 'citra-qt')
@@ -17,8 +17,10 @@ source=(
     "https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.desktop"
     "https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.svg"
     "print-version.py"
+    "citra.bash"
+    "citra-qt.bash"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd $srcdir
@@ -26,20 +28,24 @@ pkgver() {
     python3 print-version.py
 }
 package_citra-nightly-bin() {
-	depends=('sdl2' 'libpng' 'libpng12')
+	depends=('sdl2' 'libpng' 'libpng12' 'libcurl-compat' 'bash')
 
-    cd $srcdir/citra-linux-$id
     mkdir -p "${pkgdir}/usr/bin"
-    mv citra "${pkgdir}/usr/bin"
+    cp $srcdir/citra.bash "${pkgdir}/usr/bin/citra"
+    cd $srcdir/citra-linux-$id
+    mkdir -p "${pkgdir}/opt/citra"
+    cp citra "${pkgdir}/opt/citra"
 }
 package_citra-qt-nightly-bin() {
-	depends=('qt5-base' 'shared-mime-info' 'desktop-file-utils')
+	depends=('qt5-base' 'shared-mime-info' 'desktop-file-utils' 'libcurl-compat' 'bash')
 	optdepends=('libxkbcommon-x11: for X11 support'
 	            'qt5-wayland: for Wayland support')
 
-    cd $srcdir/citra-linux-$id
     mkdir -p $pkgdir/usr/bin
-    mv citra-qt $pkgdir/usr/bin
+    cp $srcdir/citra-qt.bash "${pkgdir}/usr/bin/citra-qt"
+    cd $srcdir/citra-linux-$id
+    mkdir -p $pkgdir/opt/citra
+    mv citra-qt $pkgdir/opt/citra
     mkdir -p $pkgdir/usr/share/applications
     cp $srcdir/citra.desktop $pkgdir/usr/share/applications
     mkdir -p $pkgdir/usr/share/pixmaps
