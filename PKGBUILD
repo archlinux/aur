@@ -5,7 +5,7 @@ _gitname=zuluCrypt
 _build=build
 pkgname=zulucrypt-git
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a cli and gui frontend to cryptsetup."
 arch=('x86_64' 'i686')
 url="https://github.com/mhogomchungu/zuluCrypt/"
@@ -15,7 +15,6 @@ makedepends=('cmake' 'git')
 provides=(${_gitname})
 conflicts=(${_gitname})
 optdepends=('kwalletmanager: retrieve volume keys from kde kwallet')
-options=('!buildflags')
 
 # The git repo is detected by the 'git:' or 'git+' beginning. The branch
 # 'pacman41' is then checked out upon cloning, expediating versioning:
@@ -30,9 +29,6 @@ pkgver() {
   # Use the tag of the last commit
   git describe --always | sed 's|-|.|g'
 }
-
-changelog=${pkgname}.changelog
-install=${pkgname}.install
 
 build() {
     cd "${_gitname}"
