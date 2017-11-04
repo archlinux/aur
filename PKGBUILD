@@ -3,13 +3,20 @@
 pkgname=kode-studio-bin
 _pkgname=kode-studio
 pkgver=17.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kode Studio is an IDE specifically tailored for Kha."
 arch=('x86_64')
 url="http://kha.tech/download"
 license=('MIT')
-provides=('vscode','visualstudiocode')
 depends=(fontconfig libxtst gtk2 python cairo alsa-lib gconf nss gcc-libs libnotify libxss gvfs)
+optdepends=('haxe: third-party Haxe library support'
+            'g++: Linux target'
+            'libxinerama: Linux target'
+            'mesa: Linux target'
+            'unity-editor: Unity target IDE'
+            'android-studio: Android target IDE'
+            'codeblocks: Linux target IDE'
+            'eclipse-java: Java target IDE')
 source_x86_64=(https://github.com/Kode/KodeStudio/releases/download/v${pkgver}/KodeStudio-linux64.tar.gz
                ${_pkgname}.desktop
                )
