@@ -3,7 +3,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-nightly-bin"
 pkgname=("$_pkgbase-nightly-bin" "$_pkgbase-qt-nightly-bin")
-pkgrel=3
+pkgrel=4
 pkgver="385_20171031_ed17c54"
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 provides=('citra' 'citra-qt')
@@ -20,7 +20,12 @@ source=(
     "citra.bash"
     "citra-qt.bash"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'c6a5826c2ec4133ebd1af3d2613a6b1882af1b97038c271b79dd0cd52ec3c6ac'
+            '068409ef70c25e8da3f0430c5ff62609d122f2f857525940da8cd792a228a822'
+            '61bcee69be306b58fd0bdf6327cdfc88260ba9f9d0694cf54e2d720965bc918b')
 
 pkgver() {
     cd $srcdir
