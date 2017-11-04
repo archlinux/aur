@@ -3,7 +3,7 @@
 
 pkgname=rtl8812au-dkms-git
 _pkgbase=rtl8812au
-pkgver=5.2.9.r30.g607c6e4
+pkgver=5.2.9.3.r39.g95c7dc8
 pkgrel=1
 pkgdesc="rtl8812AU chipset driver with firmware v5.2.9"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd ${srcdir}/rtl8812au-driver-5.2.9
-    printf '%s.r%s.g%s' '5.2.9' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf '%s.r%s.g%s' '5.2.9.3' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
