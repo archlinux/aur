@@ -2,7 +2,7 @@
 # Contributer: Stefan Seemayer <stefan@seemayer.de>
 pkgbase=tsmclient
 pkgname=(tsmclient-service tsmclient-dkms)
-pkgver=7.1.6.2
+pkgver=7.1.8.0
 pkgrel=1
 pkgdesc="IBM Tivoli Storage Manager Client"
 arch=('x86_64')
@@ -31,7 +31,7 @@ _ver_minor="${_ver_2#*.}"
 source=(ftp://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v${_ver_major}r${_ver_minor}/Linux/LinuxX86/BA/v${_ver_3_nd}/${pkgver}-TIV-TSMBAC-LinuxX86.tar
 	dkms.conf)
 
-sha1sums=('db47fa69b96a20da08d29e55738e71158277adc7'
+sha1sums=('78d1f6ce0827c13337603ea9369589f0828b7d7b'
           'ad89fff3d6096ba25d973e7e27ee3ce10e2fe57f')
 
 prepare() {
@@ -67,7 +67,11 @@ package_tsmclient-service() {
 
 	# GSK stuff is in wierd places, tweak rpath to allow it
 	# TODO: consider relocating these somewhere else
-	for bin in "$pkgdir"/opt/tivoli/tsm/client/ba/bin/{dsmadmc,dsmagent,dsmc,dsmcad,dsmenc,dsmswitch,dsmtca,dsmtrace,tsmjbbd}; do
+	for bin in "$pkgdir"/opt/tivoli/tsm/client/ba/bin/{dsmadmc,dsmagent,dsmc,dsmcad,dsmcert,dsmswitch,dsmtrace,tsmjbbd}; do
+		if ! [ -x "$bin" ]; then
+			>&2 echo "Error: could not find $bin"
+			exit 1
+		fi
 		echo "Patch rpath of $bin"
 		patchelf --set-rpath '/usr/local/ibm/gsk8_64/lib64:/opt/tivoli/tsm/client/api/bin64'  "$bin"
 	done
