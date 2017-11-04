@@ -13,7 +13,9 @@ pkgbase = thunderbird-beta-bin
 	depends = gtk3
 	depends = libxt
 	depends = nss
-	optdepends = libcanberra: for sound support
+	optdepends = hunspell: Spell checking
+	optdepends = hyphen: Hyphenation
+	optdepends = libcanberra: Sound support
 	provides = thunderbird=56.0b4
 	conflicts = thunderbird-beta
 	source = thunderbird-beta-bin.desktop

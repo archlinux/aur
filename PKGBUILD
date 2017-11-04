@@ -11,7 +11,9 @@ arch=('i686' 'x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('GPL' 'LGPL' 'MPL')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss')
-optdepends=('libcanberra: for sound support')
+optdepends=('hunspell: Spell checking'
+            'hyphen: Hyphenation'
+            'libcanberra: Sound support')
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta')
 install=$pkgname.install
@@ -40,6 +42,10 @@ package() {
   # Install
   cp -r thunderbird/ "$pkgdir"/opt/thunderbird-beta
 
+  # Launchers
+  ln -s   /opt/thunderbird-beta/thunderbird "$pkgdir"/usr/bin/thunderbird-beta
+  ln -srf /opt/thunderbird-beta/thunderbird "$pkgdir"/opt/thunderbird-beta/thunderbird-bin
+
   # vendor.js
   _vendorjs="$pkgdir/opt/thunderbird-beta/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
@@ -54,16 +60,22 @@ pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
 END
 
+  # Desktop
+  install -m644 $pkgname.desktop "$pkgdir"/usr/share/applications/
+
   # Icons
   for i in 16 22 24 32 48 256; do
     install -d "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/
     ln -s /opt/thunderbird-beta/chrome/icons/default/default$i.png \
           "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/thunderbird-beta.png
   done
-  
-  # Desktop
-  install -m644 $pkgname.desktop "$pkgdir"/usr/share/applications/
 
-  # /usr/bin symlink
-  ln -s /opt/thunderbird-beta/thunderbird "$pkgdir"/usr/bin/thunderbird-beta
+  # Use system-provided dictionaries
+  rm -r "$pkgdir"/opt/thunderbird-beta/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir"/opt/thunderbird-beta/dictionaries
+  ln -Ts /usr/share/hyphen "$pkgdir"/opt/thunderbird-beta/hyphenation
+
+  # Use system certificates
+  ln -srf "$pkgdir"/usr/lib/libnssckbi.so \
+    "$pkgdir"/opt/thunderbird-beta/libnssckbi.so
 }
