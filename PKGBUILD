@@ -1,36 +1,39 @@
-# Maintainer: Sebastien Chassot (sinux) <seba.ptl@sinux.net>
+# Maintainer: Eduardo Sánchez Muñoz (eduardosm)
+# Contributor: Sebastien Chassot (sinux) <seba.ptl@sinux.net>
 
 pkgname=pothos-git
-pkgver=r324.3587629
+pkgver=r2917.9ce41ef9
 pkgrel=1
-pkgdesc="Pothos SDR development environment"
-arch=('any')
-url="https://github.com/pothosware/Pothos"
+pkgdesc="The Pothos data-flow framework"
+arch=('i686' 'x86_64')
+url="https://github.com/pothosware/PothosCore/wiki"
 license=('Boost Software License')
 depends=('python' 'poco' 'soapysdr-git' 'portaudio')
-makedepends=('git')
-provides=('pothos-git')
-source=(${pkgname}::"git+https://github.com/pothosware/Pothos.git")
+makedepends=('git' 'nlohmann-json')
+source=("git+https://github.com/pothosware/PothosCore.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/PothosCore"
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd $srcdir/$pkgname
+    cd "$srcdir/PothosCore"
     git submodule update --init --recursive
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
-    mkdir -p build
-    cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    make -j4
+    mkdir -p "$srcdir/pothos-build"
+    cd "$srcdir/pothos-build"
+    cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        "$srcdir/PothosCore"
+    make
 }
 
 package() {
-    make -C "${srcdir}/${pkgname}/build" DESTDIR="${pkgdir}" install
+    cd "$srcdir/pothos-build"
+    make DESTDIR="$pkgdir" install
 }
