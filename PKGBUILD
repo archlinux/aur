@@ -1,59 +1,52 @@
-# Maintainer: Andrew Crerar <andrew at crerar dot io>
+# Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 _name=firefox
 _channel=developer
-_srcurl="https://download-installer.cdn.mozilla.net/pub/devedition/releases"
 _locale="en-US"
 pkgname="${_name}-${_channel}"
-pkgdesc='Standalone web browser from mozilla.org, developer build'
-url='http://www.mozilla.org/firefox/developer'
 pkgver=58.0b1
-pkgrel=1
-arch=('i686' 'x86_64')
-license=('MPL' 'GPL' 'LGPL')
+pkgrel=2
+pkgdesc='Standalone web browser from mozilla.org, developer build'
+arch=(i686 x86_64)
+license=(MPL GPL LGPL)
+url='http://www.mozilla.org/firefox/developer'
+depends=(dbus-glib gtk2 gtk3 libxt nss)
+optdepends=('pulseaudio: audio/video playback'
+            'ffmpeg: h.264 video'
+            'hunspell: spell checking'
+            'hyphen: hyphenation')
+provides=("firefox=$pkgver")
+_srcurl="https://download-installer.cdn.mozilla.net/pub/devedition/releases"
 source=("${_name}-${_channel}.desktop" "vendor.js")
 source_i686=("${_srcurl}/${pkgver}/linux-${CARCH}/${_locale}/${_name}-${pkgver}.tar.bz2")
 source_x86_64=("${_srcurl}/${pkgver}/linux-${CARCH}/${_locale}/${_name}-${pkgver}.tar.bz2")
-sha512sums=(
-	'9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631'
-	'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
-)
+sha512sums=('9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631'
+            'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 sha512sums_i686=('f1aacb89284c8627c55c186fc50a5fbb2db42577e0c8db86889599332f711f484cbdf3f53c0ecafe4431da35fe51c3a8b7cb831710c19eeb7eab2ad475061684')
 sha512sums_x86_64=('5afe0a59430e9241a58af0926d5d73151355e9d64a8c8f562ca0369199824d10a1a4bc2de84102e96a8aa5921d83d9b630f49d9ed998ac4506dd481dc06264d2')
 
-depends=('dbus-glib'
-         'gtk2'
-         'gtk3'
-         'libxt'
-         'nss')
-
-optdepends=(
-	'pulseaudio: audio/video playback'
-	'ffmpeg: h.264 video'
-	'hunspell: spell checking'
-	'hyphen: hyphenation'
-)
-
 package() {
-	OPT_PATH="opt/${pkgname}"
-	install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
-	cp -r firefox $pkgdir/${OPT_PATH}
+  OPT_PATH="opt/${pkgname}"
 
-	ln -s /${OPT_PATH}/firefox $pkgdir/usr/bin/${_name}-${_channel}
-	# Icon Stuff
-	SRC_LOC="${srcdir}"/${_name}/browser
-	DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
-	for i in 16 32 48
-	do
-		install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${pkgname}.png
-	done
-	install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$pkgname-icon.png
+  install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
+  cp -r firefox $pkgdir/${OPT_PATH}
 
-	install -m644 $srcdir/${_name}-${_channel}.desktop $pkgdir/usr/share/applications/
-	install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
-	# Use system-provided dictionaries
-	rm -rf "${pkgdir}"/${OPT_PATH}/{dictionaries,hyphenation}
-	ln -sf /usr/share/hunspell "${pkgdir}"/${OPT_PATH}/dictionaries
-	ln -sf /usr/share/hyphen "${pkgdir}"/${OPT_PATH}/hyphenation
+  ln -s /${OPT_PATH}/firefox $pkgdir/usr/bin/${_name}-${_channel}
+
+  SRC_LOC="${srcdir}"/${_name}/browser
+  DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
+  for i in 16 32 48; do
+    install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${pkgname}.png
+  done
+
+  install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$pkgname-icon.png
+
+  install -m644 $srcdir/${_name}-${_channel}.desktop $pkgdir/usr/share/applications/
+  install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
+
+  # Use system-provided dictionaries
+  rm -rf "${pkgdir}"/${OPT_PATH}/{dictionaries,hyphenation}
+  ln -sf /usr/share/hunspell "${pkgdir}"/${OPT_PATH}/dictionaries
+  ln -sf /usr/share/hyphen "${pkgdir}"/${OPT_PATH}/hyphenation
 }
