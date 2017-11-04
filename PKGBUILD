@@ -2,16 +2,18 @@
 # Contributor: Neil Santos <nsantos16+aur@gmail.com>
 
 pkgname=python-wsgi-intercept
-pkgver=0.8.1
+_pkgname=wsgi_intercept
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Installs a WSGI application in place of a real URI for testing.'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('any')
 url='http://code.google.com/p/wsgi-intercept/'
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("http://pypi.python.org/packages/source/w/wsgi_intercept/wsgi_intercept-$pkgver.tar.gz")
-md5sums=('791abe4c1c7200dc5e205163acc9d110')
+source=("https://pypi.io/packages/source/w/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+
+md5sums=('6ce3e56a93313ae88e7e0a98b35044ba')
 
 package() {
   cd "$srcdir/wsgi_intercept-$pkgver"
