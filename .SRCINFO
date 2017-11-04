@@ -6,9 +6,9 @@ pkgbase = raylib
 	arch = i686
 	arch = x86_64
 	license = ZLIB
-	depends = libxrandr,
-	depends = glfw,
-	depends = openal,
+	depends = libxrandr
+	depends = glfw
+	depends = openal
 	source = https://github.com/raysan5/raylib/archive/1.8.0.tar.gz
 	md5sums = 663d11c68682a089b6015d918bedf7e7
 

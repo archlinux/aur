@@ -6,7 +6,7 @@ pkgdesc="raylib is a simple and easy-to-use library to learn videogames programm
 arch=('i686' 'x86_64')
 url="http://raylib.com"
 license=('ZLIB')
-depends=('libxrandr', 'glfw', 'openal',)
+depends=('libxrandr' 'glfw' 'openal')
 source=("https://github.com/raysan5/raylib/archive/$pkgver.tar.gz")
 md5sums=('663d11c68682a089b6015d918bedf7e7')
 
