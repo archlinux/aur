@@ -22,7 +22,7 @@ index 69b9bd8c2..545bbe7e1 100644
      title: 'OpenBazaar',
      frame: false,
 -    icon: 'imgs/openbazaar-icon.png',
-+    icon: process.platform === 'linux' && `${__dirname}/imgs/icon.png`,
++    icon: `${__dirname}/imgs/icon.png`,
    });
  
    // and load the index.html of the app.
@@ -47,7 +47,7 @@ index 69b9bd8c2..545bbe7e1 100644
      title: 'OpenBazaar',
      frame: false,
 -    icon: 'imgs/openbazaar-icon.png'
-+    icon: process.platform === 'linux' && __dirname + '/imgs/icon.png'
++    icon: __dirname + '/imgs/icon.png'
    });
  
    // and load the index.html of the app.

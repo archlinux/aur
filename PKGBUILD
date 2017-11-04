@@ -44,6 +44,6 @@ package() {
     find . -type f ! -name "${_name}-go-linux-$GOARCH" -exec rm -f {} \;
 }
 
-md5sums=('008a9a6a82801d2a61c8463585e90f5d')
+md5sums=('02853da14a649da6ee5632eb38d7e02f')
 md5sums_i686=('ab5b16b64ebc704009a6da93b56cb8fb')
 md5sums_x86_64=('98c282b376d2c1c008dd1e59939ff9c2')
