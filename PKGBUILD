@@ -9,7 +9,7 @@
 
 pkgname=pure-ftpd
 pkgver=1.0.47
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure, production-quality and standard-conformant FTP server, focused on efficiency and ease of use."
 arch=('i686' 'x86_64')
 url="http://www.pureftpd.org/"
@@ -28,7 +28,7 @@ md5sums=('a41fa531c0d21bd3416dd524d75495ae'
          '0d0845e17607ffb212eae0112c58e9ff'
          '37a45c88a0f038de37b4a87c6c447534'
          '7e91835f7e7975bd0536648fc99e5a22'
-         'ff95d5cb24ee8a4e26e9f56699dc4457')
+         'c80cbd3ae1f9915f686f84149f6293e5')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
@@ -45,6 +45,7 @@ build() {
 	--with-peruserlimits \
 	--with-tls \
 	--with-rfc2640
+	sed -i 's/define MAX_DATA_SIZE (40/define MAX_DATA_SIZE (70/' src/ftpd.h
 	make
 }
 
@@ -52,6 +53,7 @@ package() {
 	cd ${srcdir}/${pkgname}-${pkgver}
 	make DESTDIR=${pkgdir} install
 	install -Dm644 -t ${pkgdir}/etc/pure-ftpd/ pure-ftpd.conf ${srcdir}/welcome.msg
+	rm -f ${pkgdir}/etc/pure-ftpd.conf
 	install -Dm644 -t ${pkgdir}/usr/lib/systemd/system/ ${srcdir}/pure-ftpd.service
 	install -Dm644 ${srcdir}/pure-ftpd.logrotate ${pkgdir}/etc/logrotate.d/pure-ftpd
 	install -Dm644 -t ${pkgdir}/usr/share/doc/${pkgname}/ README* pureftpd-*sql.conf ChangeLog
