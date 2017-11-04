@@ -1,7 +1,7 @@
 pkgbase = deepin.com.qq.im
 	pkgdesc = Deepin Wine QQ 8.9.
 	pkgver = 8.9.19983deepin18
-	pkgrel = 2
+	pkgrel = 3
 	url = http://im.qq.com/
 	arch = i686
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
 pkgname=deepin.com.qq.im
 pkgver=8.9.19983deepin18
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Deepin Wine QQ 8.9."
 arch=('i686' 'x86_64')
