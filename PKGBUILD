@@ -12,8 +12,9 @@ groups=('')
 depends=('gcc>=5.2' 'bash-completion>=1.18.' 'gcc-libs>=3.0' 'hicolor-icon-theme' 'openssl-1.0' 'libx11>=1.2.99.901' 'libxext' 'libxi>=1.2.99.4' 'libxtst' 'openssl-1.0>=1.0.0' 'qt5-base>=5.5.0' 'qt5-declarative>=5.5.0' 'qt5-quickcontrols>=5.5.0')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://www.dropbox.com/s/80nrm31mau9kftp/synergy2Beta4.deb?dl=1")
-sha512sums_x86_64=('570e1b8e03b5e21678da635e0c4fac0db93c8ea6b1e5a35e429c5be66d043996c460a084202e1eab12ef7d6f873e6a256096465fbd00da87cd0318ccc4335bc6')
+
+source_x86_64=("https://www.dropbox.com/s/djyybwd1f5t9pjf/synergy_2.0.0.rc1-b1009%2Bc5bbd376_amd64.deb?dl=1")
+sha512sums_x86_64=('b5a48a5dcbbe1f5af7c2403a566c7f38857cab449c35ccc852804dcd7987774884a2a3ab9c27dd82e93715f83c45417958f88a822c37a58ab3f13ef23db2c378')
 
 package(){
 
