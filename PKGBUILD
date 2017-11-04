@@ -4,7 +4,7 @@ pkgname=transmission-csd
 _gitname=transmission
 _gitbranch="wip/gtk-3.14"
 pkgver=r1000
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI), CSD port"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -30,7 +30,7 @@ build() {
 	git submodule update --init
 	mkdir build
 	cd build
-	cmake ..
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
 	make
 }
 
