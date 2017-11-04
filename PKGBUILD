@@ -2,10 +2,10 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=v0.9.4.r7.gec5267d3
+pkgver=v0.9.4.r9.ge7d85335
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest devel version)"
-arch=(any)
+arch=(arm armv6h armv7h aarch64 i686 x86_64)
 url="http://openbazaar.org"
 license=('MIT')
 depends=()
@@ -17,6 +17,17 @@ source=("${_repo}::git+https://${_user}/${_repo}.git"
 		"${_pkgname}.service"
 )
 options=('strip' 'upx')
+
+export GOOS=linux
+case "$CARCH" in
+  x86_64) export GOARCH=amd64 ;;
+  i686) export GOARCH=386 GO386=387 ;;
+  arm) export GOARCH=arm GOARM=5 ;;
+  armv6h) export GOARCH=arm GOARM=6 ;;
+  armv7h) export GOARCH=arm GOARM=7 ;;
+  aarch64) export GOARCH=arm64 ;;
+esac
+
 
 pkgver() {
   cd ${_repo}
