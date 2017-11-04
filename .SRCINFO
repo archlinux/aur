@@ -1,0 +1,17 @@
+pkgbase = pandoc-include-code-bin
+	pkgdesc = A Pandoc filter for including code from source files - executable only, without 750MB Haskell depends/makedepends
+	pkgver = 1.2.0.1
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/pandoc-include-code
+	arch = x86_64
+	license = GPL2
+	depends = pandoc
+	provides = pandoc-include-code
+	conflicts = pandoc-include-code
+	replaces = pandoc-include-code-static
+	replaces = pandoc-include-code-lite
+	source = https://github.com/owickstrom/pandoc-include-code/releases/download/v1.2.0.1/pandoc-include-code-linux-ghc8-pandoc-1-19.tar.gz
+	sha256sums = 9e1c80271c3db2081dc790de3df8bd4c313ce094a1e9e8adc1ae02633e9161e3
+
+pkgname = pandoc-include-code-bin
+
