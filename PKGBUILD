@@ -15,7 +15,7 @@ optdepends=()
 provides=('libopenglrecorder')
 conflicts=('libopenglrecorder')
 install=
-source=("git+https://github.com/Benau/libopenglrecorder.git")
+source=("${pkgname}::git+https://github.com/Benau/libopenglrecorder.git")
 sha256sums=('SKIP')
 
 pkgver() {

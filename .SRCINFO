@@ -15,7 +15,7 @@ pkgbase = libopenglrecorder-git
 	depends = libpulse
 	provides = libopenglrecorder
 	conflicts = libopenglrecorder
-	source = git+https://github.com/Benau/libopenglrecorder.git
+	source = libopenglrecorder-git::git+https://github.com/Benau/libopenglrecorder.git
 	sha256sums = SKIP
 
 pkgname = libopenglrecorder-git
