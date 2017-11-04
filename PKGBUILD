@@ -1,6 +1,6 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 pkgname=libunarr-git
-pkgver=1.0.0.r1.g62e744b
+pkgver=1.0.1.r0.gb57ee2a
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/selmf/unarr"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/unarr"
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:STRING=/usr/lib
+  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
 
