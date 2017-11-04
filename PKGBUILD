@@ -1,17 +1,17 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=mingw-w64-libxlsxwriter-git
-pkgver=0.7.5.r523.6e57695
+pkgver=0.7.5.r528.18c8cb6
 pkgrel=1
-pkgdesc="A C library for creating Excel XLSX files (mingw-w64)"
+pkgdesc='A C library for creating Excel XLSX files (mingw-w64)'
 arch=('any')
 url='https://libxlsxwriter.github.io'
 license=('BSD')
-makedepends=('git' 'mingw-w64-cmake' 'mingw-w64-zlib>=1.2.8')
+makedepends=('git' 'mingw-w64-cmake' 'mingw-w64-minizip')
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-libxlsxwriter')
 provides=('mingw-w64-libxlsxwriter')
-source=("git://github.com/jmcnamara/libxlsxwriter.git")
+source=('git://github.com/jmcnamara/libxlsxwriter.git')
 sha512sums=('SKIP')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -26,7 +26,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
-      -DBUILD_STATIC=OFF \
+      -DUSE_SYSTEM_MINIZIP=ON \
       -DCMAKE_BUILD_TYPE=Release \
       ../libxlsxwriter
     make
@@ -35,6 +35,8 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-cmake \
+      -DUSE_SYSTEM_MINIZIP=ON \
+      -DBUILD_SHARED_LIBS=OFF \
       -DCMAKE_BUILD_TYPE=Release \
       ../libxlsxwriter
     make
