@@ -6,12 +6,12 @@
 pkgname=pan-git
 _gitname=pan2
 pkgver=142.r28.g02834e6
-pkgrel=1
+pkgrel=2
 pkgdesc="Pan is a Usenet newsreader that's good at both text and binaries. Development version."
 url="http://pan.rebelbase.com/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gmime' 'gnutls' 'enchant' 'gtk3' 'gtkspell3')
+depends=('gmime3' 'gtkspell3')
 makedepends=('git' 'intltool' 'gnome-common')
 conflicts=('pan')
 provides=('pan')
