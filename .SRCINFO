@@ -1,0 +1,24 @@
+pkgbase = bahn-regio-entfernungsrechner
+	pkgdesc = Calculates tariff-kilometres for subscription tickets for DB regio. Upstream name: Entfernungsrechner für Fahrvergünstigungen.
+	pkgver = 17_04_11
+	pkgrel = 2
+	epoch = 0
+	url = http://www.evg-online.org/deine-vorteile/services/service-meldungen/entfernungsrechner-fuer-fahrverguenstigungen/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rename
+	depends = wine
+	provides = bahn-regio-entfernungsrechner-doc=17_04_11
+	options = emptydirs
+	source = entfernungsrechner.zip::http://www.evg-online.org/fileadmin/Service/Entfernungsrechner/17-04-11-entfernungsrechner_neu.zip
+	source = entfernungsrechner.sh
+	source = http://www.evg-online.org/fileadmin/user_upload/Entfernungsrechner_Benutzerhandbuch.pdf
+	source = license-dummy.txt
+	sha256sums = f9735ceffdf7cdabd6d38e2c40cac6beccabd1c2a27f1f673bfdf99c47a14a09
+	sha256sums = 8347288b3a402c8075e5ccc24d23f3ae123ebebedd4116ed5e2352cf1a7b24ac
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bahn-regio-entfernungsrechner
+
