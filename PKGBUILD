@@ -1,16 +1,17 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=libxlsxwriter-git
-pkgver=0.7.5.r519.c9585ed
+pkgver=0.7.5.r528.18c8cb6
 pkgrel=1
-pkgdesc="A C library for creating Excel XLSX files"
+pkgdesc='A C library for creating Excel XLSX files'
 arch=('i686' 'x86_64')
-url="https://libxlsxwriter.github.io"
+url='https://libxlsxwriter.github.io'
 license=('BSD')
-makedepends=('git' 'cmake>=2.8.0')
+depends=('minizip')
+makedepends=('git' 'cmake>=2.8.7')
 conflicts=('libxlsxwriter')
 provides=('libxlsxwriter')
-source=("git://github.com/jmcnamara/libxlsxwriter.git")
+source=('git://github.com/jmcnamara/libxlsxwriter.git')
 sha512sums=('SKIP')
 
 pkgver() {
@@ -25,7 +26,8 @@ prepare() {
 build() {
   cd build
   cmake ../libxlsxwriter \
-    -DBUILD_STATIC=OFF \
+    -DUSE_SYSTEM_MINIZIP=ON \
+    -DBUILD_SHARED_LIBS=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
@@ -33,5 +35,5 @@ build() {
 
 package() {
   make -C build DESTDIR=${pkgdir} install
-  install -Dm644 libxlsxwriter/License.txt ${pkgdir}/usr/share/licenses/libxlsxwriter-git/LICENSE.txt
+  install -Dm644 libxlsxwriter/License.txt ${pkgdir}/usr/share/licenses/libxlsxwriter-git/License.txt
 }
