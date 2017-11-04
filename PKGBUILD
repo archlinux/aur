@@ -3,7 +3,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=openrc
-pkgver=0.27.2
+pkgver=0.34.5
 pkgrel=1
 pkgdesc='Dependency based init system that works with sysvinit.'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ backup=(etc/openrc/inittab
 source=($pkgname-$pkgver::https://github.com/OpenRC/$pkgname/archive/$pkgver.tar.gz
         $pkgname.logrotate)
 # oldsourcelocation : http://dev.gentoo.org/~williamh/dist/$pkgname-$pkgver.tar.bz2
-sha512sums=('a3f3ed8f6dbd188065fc4ed0af1e4ca0d203dbad092bc67405bea182be359bf37c9c94cb97d898c0d34befef92e9d8a2f6a8b4bafe7e95fcaa291b5d0aabed22'
+sha512sums=('2e743b7d8f287bab8c74e9cac46935a7895483fd181d969a8e3a6709ccd6d222255b509730b9165f191626774fc372e426049678796d72e4d43541b8232674c7'
             '690612fddfb2c4cf8f6b5ba7239b9faf29eb3d9b152ab4dcf62694aa2852780440d08cee56d98a9597607f446b3697c911269562821a8402bb5747cbbae34bd9')
 
 _makeargs=(BRANDING='Arch Linux')
@@ -35,7 +35,7 @@ _makeargs+=(SHLIBDIR=/usr/lib)
 _makeargs+=(LIBEXECDIR=/usr/lib/openrc)
 _makeargs+=(BINDIR=/usr/bin)
 _makeargs+=(SBINDIR=/usr/bin)
-_makeargs+=(SYSCONFDIR=/etc/openrc) # avoid conflict with initscripts
+_makeargs+=(SYSCONFDIR=/etc/openrc) # avoid conflicts with other init systems
 
 build() {
 
