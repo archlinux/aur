@@ -1,7 +1,7 @@
 pkgbase = kode-studio-bin
 	pkgdesc = Kode Studio is an IDE specifically tailored for Kha.
 	pkgver = 17.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kha.tech/download
 	arch = x86_64
 	license = MIT
@@ -25,10 +25,13 @@ pkgbase = kode-studio-bin
 	optdepends = android-studio: Android target IDE
 	optdepends = codeblocks: Linux target IDE
 	optdepends = eclipse-java: Java target IDE
-	source_x86_64 = https://github.com/Kode/KodeStudio/releases/download/v17.9.1/KodeStudio-linux64.tar.gz
+	options = !strip
+	source_x86_64 = https://github.com/Kode/KodeStudio/releases/download/v${pkgver}/KodeStudio-linux64.tar.gz
 	source_x86_64 = kode-studio.desktop
-	sha256sums_x86_64 = a1ac4a5b9b74a8f5529ed616d6e4401599d1a33a4729eb1bdd7e5062a1b59cb0
+	source_x86_64 = print-version.py
+	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = 085056b38a51192641b9c7daac35515491c1202374369a9b1e19cdf764273c11
+	sha256sums_x86_64 = 516503d1aa701c51cc9a89c31c97f1a01f8007641b667ab326ab5ba7c3e5e46f
 
 pkgname = kode-studio-bin
 
