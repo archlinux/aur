@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=flex-git
-pkgver=2.6.4.53.g0db9f89
+pkgver=2.6.4.57.g11b7512
 pkgrel=1
 pkgdesc="A tool for generating text-scanning programs - from git"
 arch=('i686' 'x86_64')
