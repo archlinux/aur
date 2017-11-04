@@ -1,6 +1,6 @@
 pkgbase = mit-scheme-git
 	pkgdesc = MIT/GNU Scheme from git
-	pkgver = 9.2.0.1166.g26d5e46c0
+	pkgver = 9.2.0.1181.g34ecd0262
 	pkgrel = 1
 	url = http://www.gnu.org/software/mit-scheme/
 	arch = i686

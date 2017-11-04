@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mit-scheme-git
-pkgver=9.2.0.1166.g26d5e46c0
+pkgver=9.2.0.1181.g34ecd0262
 pkgrel=1
 pkgdesc="MIT/GNU Scheme from git"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ options=('!makeflags')
 
 pkgver() {
   cd $_gitname
-  git describe --always | sed 's|-|.|g' | cut -c9-
+  git describe --tags | sed 's|-|.|g' | cut -c9-
 }
 
 build() {
