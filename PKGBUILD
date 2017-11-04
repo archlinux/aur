@@ -4,7 +4,7 @@
 _pkgname=openssl
 _branch=master
 pkgname=${_pkgname}-tls1.3-git
-pkgver=1.1.1.pre6.r2635.gedcdf38bd0 # updated by pkgver() below
+pkgver=1.1.1.pre6.r3453.g976b0388d0 # updated by pkgver() below
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with TLS 1.3 support'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=("${pkgname}::git+https://github.com/openssl/openssl.git#branch=${_branch
 	'openssl_tls1.3_chacha20_poly1305.patch')
 sha256sums=('SKIP'
 	'90c7411fed0157116f2df8f4be755aaf5a26e8484351b4e6a79492805d5f2790'
-	'af2856a3b7d1b1bc22df5d1d846e967d48c8bf7b12acfce36a015b9cef584185')
+	'62670772c2fe2afa2f1455cae74e1f55fd4126920ab4bd96f0d8b4ddb096127d')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
 prepare() {
