@@ -1,7 +1,7 @@
 pkgbase = python-root_numpy
 	pkgdesc = The interface between ROOT and NumPy
 	pkgver = 4.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://arogozhnikov.github.io/hep_ml/
 	arch = i686
 	arch = x86_64
