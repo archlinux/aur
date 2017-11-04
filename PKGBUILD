@@ -1,17 +1,19 @@
 # Maintainer: Flakebi <flakebi@t-online.de>
-_author=exodist
-_perlmod=Test-Simple
+_perlmod=test-more
+#_perlmod=Test-Simple
 pkgname=perl-test-simple
-pkgver=1.302101
+pkgver=1.302106
 pkgrel=1
 pkgdesc="Test::Simple - Basic utilities for writing tests"
 arch=('any')
-url="http://search.cpan.org/~$_author/$_perlmod/"
+url="https://github.com/Test-More/test-more"
+#url="http://search.cpan.org/~exodist/$_perlmod/"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
-source=("http://search.cpan.org/CPAN/authors/id/E/EX/EXODIST/$_perlmod-$pkgver.tar.gz")
-md5sums=('846cc9ecd73fe911fee1b986d9fc8236')
-sha256sums=('7da0b2ab4abd633b06a5a9a502b5a0306db6a1ae30b2777ff65873e60d3285ff')
+source=("https://github.com/Test-More/test-more/archive/v$pkgver.tar.gz")
+#source=("http://search.cpan.org/CPAN/authors/id/E/EX/EXODIST/$_perlmod-$pkgver.tar.gz")
+md5sums=('ccd36f49bb1f154ee6bff06374bf175d')
+sha256sums=('44f44c698acaf29107c33adea564f3f4921db79aebe51a188b895f8895097214')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
