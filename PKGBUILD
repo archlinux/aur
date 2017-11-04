@@ -7,7 +7,7 @@
 
 pkgbase=linux-tomoyo
 _srcname=linux-4.13
-pkgver=4.13.8
+pkgver=4.13.11
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -28,10 +28,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '3b2bcceb16acd75322e98d3e93967e82bd0e7499c748bf12bd46c7519dacc315'
+            'f5fb017ee531dc35e3462ccb2d244d4fdc8ac6df9cd3337aa6df2ffc280b1bd6'
             'SKIP'
-            'f68bb8bccbbd6b86dc9f182ee25b2953638aec2729387c70d2787318ad4ea16c'
-            '9be58e0adea94ccd51aabdd568fa65ba84097f31589de57c5fcc7c71c257a6e0'
+            '9b1d9fcb55782e6149aca4dc2d3b250dd4cedf1bf4bd8c6f0968acab0e2e0ee4'
+            '9c6c4d27d59638d0569ea09a97138bfcfb219f17cdf1138be141380e6654f302'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
