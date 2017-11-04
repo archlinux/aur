@@ -8,8 +8,8 @@ pkgbase = teamdrive
 	options = !strip
 	source = teamdrive.desktop
 	sha256sums = f3b06b1d5f285e6a7c5db19fc441da3f82062a1c529b17137d19e5450b6b314f
-	source_x86_64 = https://s3-eu-west-1.amazonaws.com/s3download.teamdrive.net/4.5.1774/TMDR/linux-x86_64/Install-TeamDrive-4.5.2.1774_TMDR.run
-	sha256sums_x86_64 = 5376d2b4fdfbfbe062dfedc201d9561674fce126d1c3190f3ba59a9e1dd47127
+	source_x86_64 = https://s3-eu-west-1.amazonaws.com/s3download.teamdrive.net/4.5.1774/TMDR/linux-x86_64/teamdrive-4.5.2_amd64.deb
+	sha256sums_x86_64 = 94d83fded1c70ae38b9517ceed16e8c166631502c1a99e078275a4ed8a5178b1
 
 pkgname = teamdrive
 
