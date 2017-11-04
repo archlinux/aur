@@ -2,13 +2,13 @@
 pkgname=rocketchat-desktop
 pkgver=2.9.0
 _srcname="Rocket.Chat.Electron-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url="https://github.com/RocketChat/Rocket.Chat.Electron"
 license=('MIT')
 depends=('libxss' 'gconf' 'nss' 'alsa-lib' 'gtk2' 'libxtst')
-makedepends=('sed' 'yarn' 'gulp')
+makedepends=('sed' 'yarn' 'gulp' 'python2')
 conflicts=('rocketchat-client-bin')
 source=("https://github.com/RocketChat/Rocket.Chat.Electron/archive/$pkgver.tar.gz")
 sha512sums=('b36d20319fc1cad96318e90b7a3696bfafb36e84a76556c568bf42f22a7389c083a352b63a5c5963f6799005a2f99f73f5bb0252bb4bdb52141e2560203f5b17')
@@ -31,7 +31,7 @@ package() {
   install -Dm644 "$srcdir/$_srcname/snap/gui/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
   install -Dm644 "$srcdir/$_srcname/snap/gui/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
   install -Dm644 "$srcdir/$_srcname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  if [[ $CARCH = "i686" ]]; then
+  if [[ "$CARCH" == "i686" ]]; then
     _distname="linux-ia32-unpacked"
   else
     _distname="linux-unpacked"
