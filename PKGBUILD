@@ -1,21 +1,29 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
-pkgname=gifski
-pkgver=0.3.0
+_pkgname=gifski
+pkgname=${_pkgname}-git
+pkgver=0.3.0.r5.gf4d5924
 pkgrel=1
 pkgdesc="GIF encoder based on libimagequant (pngquant, gifquant?). Squeezes maximum possible quality from the awful GIF format"
 arch=('i686' 'x86_64')
 url="https://gif.ski/"
 license=('AGPL3')
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 makedepends=(rust)
-source=(${pkgname}-${pkgver}::https://github.com/ImageOptim/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('6db5100366aafb927bfb7102e8b6d6a0bee71ba6c40185ef63aa3193a450de74')
+source=(${_pkgname}::git+https://github.com/ImageOptim/${_pkgname}.git)
+sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   cargo build --release
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   install -Dm755 target/release/gifski "$pkgdir/usr/bin/gifski"
+}
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
