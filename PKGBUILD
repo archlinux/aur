@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-bitcoin-markets-git
 pkgdesc="Displays Bitcoin and Altcoin market information in the Gnome Shell."
 pkgver=176.6a12763
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://github.com/OttoAllmendinger/gnome-shell-bitcoin-markets/'
 license=(MIT)
