@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url="http://openbazaar.org"
 license=('MIT')
 depends=(electron)
-makedepends=(npm asar)
+makedepends=(npm)
 source=("https://github.com/OpenBazaar/openbazaar-desktop/archive/v$pkgver.tar.gz"
 	"$pkgname.js"
 	"$pkgname.desktop"
