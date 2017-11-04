@@ -1,6 +1,6 @@
---- a/Makefile	2017-10-03 11:04:28.000000000 +0200
-+++ b/Makefile	2017-10-30 19:22:00.629920529 +0100
-@@ -323,6 +323,11 @@
+--- a/Makefile	2017-10-31 14:41:23.000000000 +0100
++++ b/Makefile	2017-11-04 19:37:46.879018082 +0100
+@@ -323,6 +323,16 @@
  release/%-amd64: GOARCH=amd64
  release/linux-%: GOOS=linux
  
@@ -9,24 +9,33 @@
 +release/linux-arm: GO_TAGS+= nopkcs11
 +release/linux-arm: $(patsubst %,release/linux-arm/bin/%, $(RELEASE_PKGS)) release/linux-arm/install
 +
++release/linux-arm64: GOARCH=arm64
++release/linux-arm64: DOCKER_ARCH=arm64
++release/linux-arm64: GO_TAGS+= nopkcs11
++release/linux-arm64: $(patsubst %,release/linux-arm64/bin/%, $(RELEASE_PKGS)) release/linux-arm/install
++
  release/linux-ppc64le: GOARCH=ppc64le
  release/linux-ppc64le: DOCKER_ARCH=ppc64le
  release/linux-ppc64le: GO_TAGS+= nopkcs11
-@@ -392,6 +397,9 @@
+@@ -391,6 +401,12 @@
+ dist/linux-amd64:
  	cd release/linux-amd64 && tar -czvf hyperledger-fabric-linux-amd64.$(PROJECT_VERSION).tar.gz *
  
- dist/linux-ppc64le:
++dist/linux-arm:
 +	cd release/linux-arm && tar -czvf hyperledger-fabric-linux-arm.$(PROJECT_VERSION).tar.gz *
-+	
-+dist/linux-ppc64le:
++
++dist/linux-arm64:
++	cd release/linux-arm64 && tar -czvf hyperledger-fabric-linux-arm64.$(PROJECT_VERSION).tar.gz *
++
+ dist/linux-ppc64le:
  	cd release/linux-ppc64le && tar -czvf hyperledger-fabric-linux-ppc64le.$(PROJECT_VERSION).tar.gz *
  
- dist/linux-s390x:
-@@ -421,6 +429,7 @@
+@@ -421,6 +437,8 @@
  	-@rm -rf release/windows-amd64/hyperledger-fabric-windows-amd64.$(PROJECT_VERSION).tar.gz ||:
  	-@rm -rf release/darwin-amd64/hyperledger-fabric-darwin-amd64.$(PROJECT_VERSION).tar.gz ||:
  	-@rm -rf release/linux-amd64/hyperledger-fabric-linux-amd64.$(PROJECT_VERSION).tar.gz ||:
-+	-@rm -rf release/linux-arm/hyperledger-fabric-linux-arm.$(PROJECT_VERSION).tar.gz ||:
++	-@rm -rf release/linux-ppc64le/hyperledger-fabric-linux-arm.$(PROJECT_VERSION).tar.gz ||:
++	-@rm -rf release/linux-ppc64le/hyperledger-fabric-linux-arm64.$(PROJECT_VERSION).tar.gz ||:
  	-@rm -rf release/linux-ppc64le/hyperledger-fabric-linux-ppc64le.$(PROJECT_VERSION).tar.gz ||:
  	-@rm -rf release/linux-s390x/hyperledger-fabric-linux-s390x.$(PROJECT_VERSION).tar.gz ||:
  

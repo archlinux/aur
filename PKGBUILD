@@ -3,7 +3,7 @@
 _pkgname=fabric
 pkgname=hyperledger-${_pkgname}
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability"
 arch=(armv6h armv7h arm aarch64 i686 x86_64)
 url="https://github.com/hyperledger/fabric"
@@ -65,4 +65,4 @@ md5sums=('00175d84c2365f6989a6b489efeda994'
          'ac4694c8c49e21c816df94535a60ddfe'
          'a0bafaaeb3be191ed2893662fe9a6fc7'
          'e3c871420b7b5af4ab6d6f7b4091d2da'
-         '6828396533a5cf1522465872a83a50de')
+         '2e0e11a95f75e66b08206b685d21eb36')
