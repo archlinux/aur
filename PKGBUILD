@@ -2,15 +2,15 @@
 
 pkgname=curecoin-qt-git
 pkgver=r115.442977b
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"
 license=('MIT')
 provides=('curecoin-qt')
 conflicts=('curecoin-qt')
-depends=('qt5-base' 'miniupnpc' 'boost-libs')
-makedepends=('boost' 'openssl-1.0' 'db')
+depends=('qt5-base' 'miniupnpc' 'boost-libs' 'openssl-1.0')
+makedepends=('boost' 'db')
 source=("git+https://github.com/cygnusxi/CurecoinSource.git"
         "0001-miniupnpc.patch"
         "curecoin.desktop")
@@ -52,6 +52,4 @@ package() {
   install -Dm755 curecoin-qt "${pkgdir}/usr/bin/curecoin-qt"
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 src/qt/res/icons/curecoin.png "${pkgdir}/usr/share/pixmaps/curecoin.png"
-
-  #make DESTDIR=${pkgdir} install
 }
