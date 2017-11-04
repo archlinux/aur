@@ -3,12 +3,12 @@
 
 pkgname='perl-mojo-pg'
 pkgver='4.03'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Mojolicious ♥ PostgreSQL"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-dbd-pg' 'perl-mojolicious>=7.15' 'perl-sql-abstract>=1.81' 'perl>=5.10.1')
+depends=('perl-dbd-pg' 'perl-mojolicious>=7.53' 'perl-sql-abstract>=1.81' 'perl>=5.10.1')
 makedepends=()
 url='https://metacpan.org/release/Mojo-Pg'
 source=("https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojo-Pg-${pkgver}.tar.gz")
