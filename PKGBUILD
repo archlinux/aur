@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=xreader
-pkgver=1.4.4
+pkgver=1.6.0
 pkgrel=2
 pkgdesc="Document viewer for files like PDF and Postscript. X-Apps Project."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ url='https://github.com/linuxmint/xreader'
 install=xreader.install
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('f528263d7d491e976d819e65cf3930f9')
+md5sums=('aab4c7244010199a4b35918780d1e000')
 
 build() {
     if [ -d /usr/include/nemo/libnemo-extension ]; then NEMO_EXT_FLAG=""; else NEMO_EXT_FLAG="--disable-nemo"; fi
@@ -27,10 +27,10 @@ build() {
 
     cd ${srcdir}/${pkgname}-${pkgver}
     ./autogen.sh --prefix="/usr" \
-         --localstatedir="/var" \
-         --libexecdir="/usr/lib/${pkgname}" \
-         --enable-introspection \
-         "$NEMO_EXT_FLAG" "$CAJA_EXT_FLAG"
+        --localstatedir="/var" \
+        --libexecdir="/usr/lib/${pkgname}" \
+        --enable-introspection \
+        "$NEMO_EXT_FLAG" "$CAJA_EXT_FLAG"
     make
 }
 
