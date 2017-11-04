@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.27.0.r339.ge6a68e2330
+pkgver=0.27.0.r349.gd46c9c2e62
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
