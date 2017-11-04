@@ -2,20 +2,26 @@
 
 pkgname=boomaga
 name=Boomaga
-pkgver=0.8.0
+_name=boomaga
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Is a virtual printer for viewing a document before printing it out using the physical printer"
 arch=('i686' 'x86_64')
 url="https://www.linux-apps.com/p/1152844/"
 license=('LGPL')
-depends=('kdebase-runtime' 'ghostscript' 'snappy' 'poppler>=0.26.5')
+depends=('kdebase-runtime' 'ghostscript' 'snappy' 'poppler>=0.58')
 makedepends=('cmake' 'gcc')
 options=(!emptydirs)
 
-source=(https://github.com/Boomaga/${pkgname}/archive/v${pkgver}.tar.gz)
+source=(https://github.com/Boomaga/${pkgname}/archive/v${pkgver}.tar.gz poppler0.58.patch)
 #source="${pkgname}-${pkgver}.tar.gz::https://github.com/Boomaga/${pkgname}/archive/v${pkgver}.tar.gz" 
 
 md5sums=('9055f2dbd3fa5eb058f6b33784140672')
+
+prepare() {
+   cd $_name-$pkgver
+   patch -Np1 -i ../poppler0.58.patch
+}
 
 build() {
    cd $srcdir/$pkgname-$pkgver
@@ -38,3 +44,5 @@ package() {
   #    ln -s "/usr/lib/libpoppler.so" "${pkgdir}/usr/liblibpoppler.so.46.0.0" || return 1
   #fi 
 }
+md5sums=('412769d55f72afc6a646a00725274b1a'
+         '781dd4766689c5fb765ecf76845facc4')
