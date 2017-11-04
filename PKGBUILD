@@ -1,6 +1,6 @@
 # Maintainer: Philipp Überbacher <murks at lavabit dot com>
 pkgname=a2jmidid-git
-pkgver=20171022.dfc866b
+pkgver=20171104.7656afa
 pkgrel=1
 pkgdesc="Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system."
 arch=('i686' 'x86_64')
