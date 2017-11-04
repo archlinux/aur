@@ -9,7 +9,7 @@
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
 pkgname=vlc-git
-pkgver=3.0.0.r15027.gbfa3cafdec
+pkgver=3.0.0.r15074.g2c611eda7a
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=(i686 x86_64)
@@ -60,7 +60,6 @@ _name=vlc
 conflicts=("$_name" vlc-dev vlc-plugin vlc-stable-git)
 provides=("$_name=$pkgver")
 options=(!emptydirs)
-install="$_name.install"
 source=('git+https://github.com/videolan/vlc.git'
         lua53_compat.patch
         update-vlc-plugin-cache.hook)
