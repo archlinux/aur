@@ -1,10 +1,8 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
-# Moritz Bunkus <moritz@bunkus.org>
-
 pkgname='perl-context-preserve'
-pkgver='0.02'
-pkgrel='2'
+pkgver='0.03'
+pkgrel='1'
 pkgdesc="run code after a subroutine call, preserving the context the subroutine would have seen if it were the last statement in the caller"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,7 +10,7 @@ options=('!emptydirs')
 makedepends=('perl-test-exception')
 url='http://search.cpan.org/dist/Context-Preserve'
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/Context-Preserve-${pkgver}.tar.gz")
-sha512sums=('e5c230e38430c6ea9b7ed75e075a12454262adf1883e5ab6ada4696099e2f246d0f9b613934b4197b0529e126ea083d12d9bbe4ece5cfb82a93f913b7d70b068')
+sha512sums=('a5f412d553ba2ded7302f594b920bd9c04021c5ec60e94939da097a0fa2de61a0b49dd864e3212eb9b3a7d5236295e1923452e81d56789ae6852c73ec3086cea')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
