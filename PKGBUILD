@@ -5,7 +5,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-4.13
-pkgver=4.13.9
+pkgver=4.13.11
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -26,10 +26,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            '22156e82467c7911d226a0a887eba19103434efc104439a3b426a3fa551fb8f2'
+            'f5fb017ee531dc35e3462ccb2d244d4fdc8ac6df9cd3337aa6df2ffc280b1bd6'
             'SKIP'
-            '6b79a38e44b3da918df3f2623fa4230c21583e3e588329c5671b3e210d4447c5'
-            '414422d290d5ec62eff7c1f9f5c0db422630e924cdb3f8ae33862e31639d6806'
+            '10b36cc86193a7cd923f9eaca2c44739ea9a55b7fc4fd2584fa29023e1c22838'
+            '7fff0269cedcb3175ec432317d5068f3012a456f608d7d77a46a38aab4cae1a1'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
