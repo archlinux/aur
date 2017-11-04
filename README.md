@@ -2,7 +2,8 @@
 
 It downloads source code from official [OpenShift Origin](https://docs.openshift.org/latest) [GitHub repository](https://github.com/openshift/origin).
 
-Install script compiles source code, installs two binaries (oc, openshift) and six symlinks (kubectl, kube-apiserver, kube-controller-manager, kubelet, kube-proxy, kube-scheduler, oadm) into /usr/bin/ .
+Install script compiles source code, installs three binaries (oc, openshift, kubefed) and seven symlinks (kubectl, kube-apiserver, kube-controller-manager, kubelet, kube-proxy, kube-scheduler, 
+oadm) into /usr/bin/ .
 
 I will release this package upon each upstream release.
 You can reinstall this package at any time to build binaries based on the latest commit (yaourt --sync openshift-origin-git).
@@ -29,45 +30,12 @@ install.sh
 - Package metadata.
 
 
-#### Optional scripts
+#### Optional script
 
-These files are optional scripts. They let you run a cluster once you have installed the package.
-You should probably copy them to your path (/usr/local/bin).
+https://github.com/openshift-evangelists/oc-cluster-wrapper
 
-- config.sh
-- 0.read.config.sh
-- 1.install.cluster.sh
-- 2.install.certificate.sh
-- 3.start.cluster.sh
-- 4.stop.cluster.sh
-- 5.delete.cluster.sh
-
-config.sh
-- Sample configuration file. You can copy or edit it to your liking.
-- All commands that require a configuration file (config.sh), can specify . instead.
-
-0.read.config.sh
-- Shared dependency used by many scripts.
-
-1.install.cluster.sh
-- Create and start a new cluster configured by configuration file.
-- Usage: 1.install.cluster.sh config.sh
-
-2.install.certificate.sh
-- Install your server's certificate and private key into cluster.
-- Usage: 2.install.certificate.sh config.sh
-
-3.start.cluster.sh
-- Start an existing cluster that has been stopped.
-- Usage: 3.start.cluster.sh config.sh
-
-4.stop.cluster.sh
-- Stop a running cluster. Docker containers will be destroyed, but they will be recreated upon restart.
-- Usage: 4.stop.cluster.sh
-
-5.delete.cluster.sh
-- Delete a cluster and all its data.
-- Usage: 5.delete.cluster.sh config.sh
+This wrapper script is optional. It makes it easier to run an Openshift cluster once you have installed the package.
+You should probably install it to your path (/usr/local/bin).
 
 
 #### Dependencies
