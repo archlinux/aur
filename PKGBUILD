@@ -16,8 +16,15 @@ optdepends=('raspberrypi-firmware-tools: Raspberry Pi support'
             'aml-libs-c1: ODROID-C1 support'
             'libcec: CEC support')
 makedepends=('cmake')
-source=("https://github.com/irtimmer/moonlight-embedded/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('548b7d1427e9d8e762f7614f67e9068ffebf2ae5962dc3fd5323500f3570f816')
+source=("https://github.com/irtimmer/moonlight-embedded/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"
+	"vdpau.patch")
+sha256sums=('548b7d1427e9d8e762f7614f67e9068ffebf2ae5962dc3fd5323500f3570f816'
+            '7520ab2c764cb2c7f4ba1e1212cbe3ed7309d2d7a32536f9975e58adda6b5e15')
+
+prepare() {
+  cd moonlight-embedded-$pkgver
+  patch -Np1 -i $srcdir/vdpau.patch
+}
 
 build() {
   mkdir -p build
