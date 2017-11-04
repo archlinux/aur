@@ -8,7 +8,7 @@ arch=(any)
 url='https://github.com/OttoAllmendinger/gnome-shell-bitcoin-markets/'
 license=(MIT)
 depends=('gnome-shell')
-makedepends=('git zip unzip gjs')
+makedepends=('git' 'zip' 'unzip' 'gjs')
 source=("$pkgname::git://github.com/OttoAllmendinger/gnome-shell-bitcoin-markets.git")
 md5sums=('SKIP')
 
