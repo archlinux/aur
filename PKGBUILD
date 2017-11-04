@@ -1,12 +1,12 @@
 pkgname=dpluzz
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Software to retrieve videos from French website pluzz"
 arch=('any')
 url="http://forum.ubuntu-fr.org/viewtopic.php?id=1559861&p=1"
 license=('GPL')
 groups=()
-depends=('python2' 'pygtk' 'vte' 'mplayer' 'python2-beautifulsoup4' 'uni2ascii' 'ffmpeg' 'python2-lxml' 'python2-unidecode' 'python2-requests' 'perl-html-parser' 'wmctrl')
+depends=('python2' 'pygtk' 'vte' 'mplayer' 'python2-beautifulsoup4' 'uni2ascii' 'ffmpeg' 'python2-lxml' 'python2-unidecode' 'python2-requests' 'perl-html-parser' 'wmctrl' 'perl-text-unidecode')
 optdepends=()
 conflicts=()
 source=("https://launchpad.net/~yoggic/+archive/dpluzz/+files/dpluzz_$pkgver%7Eubuntu16.04_amd64.deb")
