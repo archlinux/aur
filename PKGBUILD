@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-bitcoin-markets-git
 pkgdesc="Displays Bitcoin and Altcoin market information in the Gnome Shell."
 pkgver=176.6a12763
-pkgrel=3
+pkgrel=4
 arch=(any)
 url='https://github.com/OttoAllmendinger/gnome-shell-bitcoin-markets/'
 license=(MIT)
@@ -13,7 +13,7 @@ source=('git+https://github.com/OttoAllmendinger/gnome-shell-bitcoin-markets.git
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"/"$pkgname"
+  cd "$srcdir"/gnome-shell-bitcoin-markets
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
