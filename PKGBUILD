@@ -6,7 +6,7 @@ _channel=developer
 _locale="en-US"
 pkgname="${_name}-${_channel}"
 pkgver=58.0b1
-pkgrel=2
+pkgrel=3
 pkgdesc='Standalone web browser from mozilla.org, developer build'
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -16,7 +16,6 @@ optdepends=('pulseaudio: audio/video playback'
             'ffmpeg: h.264 video'
             'hunspell: spell checking'
             'hyphen: hyphenation')
-provides=("firefox=$pkgver")
 _srcurl="https://download-installer.cdn.mozilla.net/pub/devedition/releases"
 source=("${_name}-${_channel}.desktop" "vendor.js")
 source_i686=("${_srcurl}/${pkgver}/linux-${CARCH}/${_locale}/${_name}-${pkgver}.tar.bz2")
