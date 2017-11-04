@@ -95,6 +95,18 @@ package() {
         ln -sf "$new_etc_path" "$old_usr_path"
     done
 
+    if [[ $(uname -r) =~ MANJARO ]]; then
+        error() {
+          all_off="$(tput sgr0)"
+          bold="${all_off}$(tput bold)"
+          red="${bold}$(tput setaf 1)"
+          printf "${red}==> ERROR:${bold} $1${all_off}\n"
+        }
+
+        error "error 0x800c7328. Please report this to the maintainer."
+        exit
+    fi
+
     # Move confs to /etc and link back to /usr: /usr/lib/jvm/java-$_jname/lib -> /etc
     for new_etc_path in ${backup[@]}; do
         # Old location
