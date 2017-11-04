@@ -1,3 +1,4 @@
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=('i3ipc-glib-git')
 _srcname='i3ipc-glib'
 pkgver='r1'
@@ -13,7 +14,7 @@ optdepends=(
     'i3ipc-python: Python language bindings'
     'i3ipc-gjs: JavaScript language bindings'
 )
-makedepends=('libxcb' 'xcb-proto' 'gobject-introspection' 'gtk-doc')
+makedepends=('git' 'libxcb' 'xcb-proto' 'gobject-introspection' 'gtk-doc')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 

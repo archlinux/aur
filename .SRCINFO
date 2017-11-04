@@ -6,6 +6,7 @@ pkgbase = i3ipc-glib-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = libxcb
 	makedepends = xcb-proto
 	makedepends = gobject-introspection
