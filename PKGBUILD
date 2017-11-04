@@ -4,12 +4,12 @@ pkgname=oracle-datamodeler
 _pkgver=17.3.0.261
 _pkgrel=1529
 pkgver=${_pkgver}.${_pkgrel}
-pkgrel=1
+pkgrel=2
 pkgdesc="A data modeling and database design tool that provides an environment for capturing, modeling, managing, and exploiting metadata"
 arch=('any')
 url="http://www.oracle.com/technetwork/developer-tools/datamodeler/overview/index.html"
 license=('custom:OTN')
-depends=('java-environment' 'bash')
+depends=('java-environment>=8' 'bash')
 install=$pkgname.install
 source=(manual://datamodeler-${_pkgver}.${_pkgrel}-no-jre.zip
         $pkgname.desktop
