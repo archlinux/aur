@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=2.2.5
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
@@ -35,16 +35,14 @@ source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver
         # improve build and linking
         cups-no-export-ssllibs.patch
         cups-no-gzip-man.patch
-	cups-fix-install-perms.patch
         cups-1.6.2-statedir.patch
         )
-sha256sums=('a8795e2aa54dcfbdc9ff254a770f0d7154e35c981bca5b3369050c5193ab5a21'
+sha256sums=('40385778c2b3bdf55030d1c999734e22774c79e3425d91339ce677825620169b'
             '87cd833e7c07a36298341e35d5ce0534ce68fdf76ce3e9eda697e5455b963d1b'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             'ff3eb0782af0405f5dafe89e04b1b4ea7a49afc5496860d724343bd04f375832'
             'b8fc2e3bc603495f0278410350ea8f0161d9d83719feb64f573b63430cb4800b'
-            'aa999532830b7f9f6e9f47e6fb15a4dccee5ac021abbcd2fff103dcf579cb4f7'
             '23349c96f2f7aeb7d48e3bcd35a969f5d5ac8f55a032b0cfaa0a03d7e37ea9af')
 
 prepare() {
@@ -59,9 +57,6 @@ prepare() {
 
   # move /var/run -> /run for pid file
   patch -Np1 -i "$srcdir"/cups-1.6.2-statedir.patch
-
-  # fix permissions on some files (by Gentoo)
-  patch -Np0 -i "$srcdir"/cups-fix-install-perms.patch
 
   # set MaxLogSize to 0 to prevent using cups internal log rotation
   sed -i -e '5i\ ' conf/cupsd.conf.in
@@ -83,6 +78,7 @@ build() {
      --libdir=/usr/lib \
      --with-logdir=/var/log/cups \
      --with-docdir=/usr/share/cups/doc \
+     --with-exe-file-perm=0755 \
      --with-cups-user=daemon \
      --with-cups-group=lp \
      --enable-pam=yes \
