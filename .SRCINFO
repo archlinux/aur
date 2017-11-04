@@ -1,16 +1,16 @@
 pkgbase = pdfbox
 	pkgdesc = An open source Java tool for working with PDF documents. (pdfbox, fontbox, jempbox)
-	pkgver = 2.0.7
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://pdfbox.apache.org
 	arch = any
 	license = Apache 2
 	depends = java-runtime
-	noextract = pdfbox-app-2.0.7.jar
+	noextract = pdfbox-app-2.0.8.jar
 	source = pdfbox
-	source = http://www.us.apache.org/dist/pdfbox/2.0.7/pdfbox-app-2.0.7.jar
+	source = http://www.us.apache.org/dist/pdfbox/2.0.8/pdfbox-app-2.0.8.jar
 	sha1sums = be3bd038b51d983c5f3ccb58f60b905cb5baab92
-	sha1sums = ad372811d2c96ece94c0a56bcb091ada180442bc
+	sha1sums = 2754fd5d15aeb4b0dd55aef3328e7e3f0eacbd3b
 
 pkgname = pdfbox
 
