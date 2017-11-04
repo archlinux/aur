@@ -5,12 +5,12 @@
 
 pkgname=deutex-git
 pkgver=5.1.0.r3.g0c68487
-pkgrel=1
+pkgrel=2
 pkgdesc="A WAD file composer for Doom, Heretic, Hexen and Strife"
 arch=('i686' 'x86_64')
 url="https://github.com/Doom-Utils/deutex"
 license=('GPL2')
-depends=('glibc' 'libpng')
+depends=('libpng')
 makedepends=('git' 'asciidoc')
 provides=('deutex' 'deutex-devel')
 conflicts=('deutex' 'deutex-devel')
