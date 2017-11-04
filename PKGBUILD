@@ -3,8 +3,8 @@
 # Contributor: Splex
 
 pkgname=kokua-secondlife
-pkgver=5.0.6.41208
-_pkgver=5_0_6_41208
+pkgver=5.0.9.41480
+_pkgver=5_0_9_41480
 _pkgprever=5.0.6
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Second Life® (secondlife), only."
@@ -18,28 +18,27 @@ optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support'
 	'lib32-freealut: for OpenAL support')
 conflicts=('kokua-opensim')
 
-source_i686=("http://downloads.sourceforge.net/project/kokua.team-purple.p/KokuaSL-${_pkgprever}/Kokua_${_pkgver}_i686.tar.txz"
+source_i686=("http://downloads.sourceforge.net/project/kokua.team-purple.p/Kokua-SL/Linux32Bit/Kokua_RLV_${_pkgver}_i686.tar.txz"
              'kokua-secondlife.desktop'
              'kokua-secondlife.launcher')
-source_x86_64=("http://downloads.sourceforge.net/project/kokua.team-purple.p/KokuaSL-${_pkgprever}/Kokua_64_${_pkgver}_x86_64.tar.txz"
+source_x86_64=("http://downloads.sourceforge.net/project/kokua.team-purple.p/Kokua-SL/Linux64Bit/Kokua_RLV_${_pkgver}_x86_64.tar.txz"
 		'kokua-secondlife.desktop'
 		'kokua-secondlife.launcher')
-md5sums_i686=('7e4a2a9468a1133d8ad7b4fbba00f0d4'
+md5sums_i686=('c71656a9a05126b32d05e99c47101785'
               '3893a2c8ae9cb8e2adb4d7c47750029b'
               'e12fd7bd333f4f810dec66f1be17c71c')
-md5sums_x86_64=('00b83f4e0d788adeb92228fbee3efde2'
+md5sums_x86_64=('9563782391d977f54f9df7ebcaa32284'
                 '3893a2c8ae9cb8e2adb4d7c47750029b'
                 'e12fd7bd333f4f810dec66f1be17c71c')
-
 
 package() {
 cd $srcdir
   
 # Rename Data Directory
 if [ "$CARCH" = "i686" ]; then
-mv Kokua_${_pkgver}_$CARCH kokua-secondlife
+mv Kokua_RLV_${_pkgver}_$CARCH kokua-secondlife
 elif [ "$CARCH" = "x86_64" ]; then
-mv Kokua_64_${_pkgver}_$CARCH kokua-secondlife
+mv Kokua_RLV_${_pkgver}_$CARCH kokua-secondlife
 fi
 
 # Install Desktop File
