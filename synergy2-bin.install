@@ -1,4 +1,7 @@
 post_install() {
+	chmod 777 /var/log/synergy
+	chmod 777 /var/lib/synergy
+	chmod 777 /etc/synergy
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 	
 	systemctl enable synergy.service >/dev/null || true
