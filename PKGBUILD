@@ -49,7 +49,7 @@ package() {
   install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 
   cp -r release/linux-$GOARCH/bin "$pkgdir/usr"
-  install -dm 644 $pkgdir/etc/hyperledger/fabric/tls
+  install -dm 755 $pkgdir/etc/hyperledger/fabric/tls
   cp -r sampleconfig/* $pkgdir/etc/hyperledger/fabric
 
 msg2 "Install systemd service"
