@@ -3,7 +3,7 @@
 pkgname=kode-studio-bin
 _pkgname=kode-studio
 pkgver=17.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Kode Studio is an IDE specifically tailored for Kha."
 arch=('x86_64')
 url="http://kha.tech/download"
@@ -12,7 +12,7 @@ builddepends=('curl' 'python')
 options=('!strip')
 depends=(fontconfig libxtst gtk2 python cairo alsa-lib gconf nss gcc-libs libnotify libxss gvfs)
 optdepends=('haxe: third-party Haxe library support'
-            'g++: Linux target'
+            'gcc: Linux target'
             'libxinerama: Linux target'
             'mesa: Linux target'
             'unity-editor: Unity target IDE'
