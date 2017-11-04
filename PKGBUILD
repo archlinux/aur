@@ -1,7 +1,7 @@
 # Maintainer: Monika Schrenk <moni@random-access.org>
 
 pkgname=studio-3t
-pkgver=5.6.2
+pkgver=5.6.3
 pkgrel=1
 pkgdesc="The world's favorite IDE for working with MongoDB, formerly known as MongoChef."
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ source_x86_64=("$pkgname-$pkgver-x64.tar.gz::https://download.studio3t.com/studi
 
 sha256sums=('b51ed1a6897541f52d60aa2b6e5add005cba31dabf7992e2177cfea6ab8fc070'
             'c84a8462407ac2d300c34477c05c9545b7359cd1842879c2c321c88343b754f5')
-sha256sums_i686=('bea3fe72b49d74200133e4d067e96e6b912ca6bfbd5f8e18463f76b77c9933c0')
-sha256sums_x86_64=('bef0725d705c5ba2d13bceacdf9e6eb7ec95cb64e7f50e0c8d6c28f7e32e2f77')
+sha256sums_i686=('bc3db0385d67cbe906c9c1c61d328589d165e9b8f4b37f6940021b1776ee9f1a')
+sha256sums_x86_64=('efff641d6b2856acbf172c2b29de62e27b5d18a14edf09a2f5151040aa66651e')
 
 prepare() {
   unzip -j ${srcdir}/${pkgname}-${pkgver}-linux-*/lib/data-man-mongodb-ent-${pkgver}.jar "t3/dataman/icons/mac/512.png" -d "./"
