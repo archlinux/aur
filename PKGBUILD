@@ -1,6 +1,6 @@
 pkgname=mingw-w64-fftw
-pkgver=3.3.6
-pkgrel=2
+pkgver=3.3.7
+pkgrel=1
 pkgdesc="A library for computing the discrete Fourier transform (DFT) (mingw-w64)"
 arch=('any')
 url="http://www.fftw.org"
@@ -9,15 +9,14 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 checkdepends=('wine')
 options=(staticlibs !strip !buildflags)
-source=("$url/fftw-${pkgver}-pl2.tar.gz")
-sha1sums=('66384d4bf5da3efbcbb9d6ea92f0df264b1620b1')
+source=("$url/fftw-${pkgver}.tar.gz")
+sha256sums=('3b609b7feba5230e8f6dd8d245ddbefac324c5a6ae4186947670d9ac2cd25573')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd "${srcdir}/fftw-${pkgver}-pl2"
+  cd "${srcdir}/fftw-${pkgver}"
   for _arch in ${_architectures}; do
-    unset LDFLAGS
     mkdir -p build-${_arch}-d && pushd build-${_arch}-d
     ${_arch}-configure \
       --disable-dependency-tracking \
@@ -52,26 +51,26 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/fftw-${pkgver}-pl2"
+  cd "${srcdir}/fftw-${pkgver}"
 
   # run tests through wine
   sed -i "s|\$program=\$arglist\[0\]|\$program=\"wine \$arglist[0]\"|g" tests/check.pl
 
   for _arch in ${_architectures}; do
-    cd "${srcdir}/fftw-${pkgver}-pl2/build-${_arch}-d"
+    cd "${srcdir}/fftw-${pkgver}/build-${_arch}-d"
     make check
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/fftw-${pkgver}-pl2/build-${_arch}-d"
+    cd "${srcdir}/fftw-${pkgver}/build-${_arch}-d"
     make DESTDIR="$pkgdir" install
-    cd "${srcdir}/fftw-${pkgver}-pl2/build-${_arch}-ld"
+    cd "${srcdir}/fftw-${pkgver}/build-${_arch}-ld"
     make DESTDIR="$pkgdir" install
-    cd "${srcdir}/fftw-${pkgver}-pl2/build-${_arch}-f"
+    cd "${srcdir}/fftw-${pkgver}/build-${_arch}-f"
     make DESTDIR="$pkgdir" install
-    cd "${srcdir}/fftw-${pkgver}-pl2/build-${_arch}-q"
+    cd "${srcdir}/fftw-${pkgver}/build-${_arch}-q"
     make DESTDIR="$pkgdir" install
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
