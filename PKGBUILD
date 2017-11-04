@@ -1,14 +1,14 @@
-# New maintainer: alicewww <aliceweigt@gmail.com>
-# Many, many thanks to former maintainer and author of original PKGBUILD, ronnie
-#and many thanks to the previous maintainer mxtm
+# Maintainer: alicewww <aliceweigt@gmail.com>
+# Co-Maintainer: None
+# This package is maintained using the assistance of PKGBUILD-Updater (available on github)
 pkgname=mullvad
 pkgver=65
-pkgrel=1
+pkgrel=2
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
 arch=('any')
 license=('GPLv2')
-depends=('openvpn' 'resolvconf' 'python2' 'python2-appdirs' 'gksu' 'wxpython' 'obfsproxy' 'python2-ipaddr' 'python2-netifaces' 'python2-psutil' 'net-tools')
+depends=('openvpn' 'resolvconf' 'python2' 'python2-appdirs' 'gksu' 'wxpython' 'python2-ipaddr' 'python2-netifaces' 'python2-psutil' 'net-tools')
 makedepends=()
 conflicts=()
 replaces=(mullvad-new)
