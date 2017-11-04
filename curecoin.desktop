@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=CureCoin
+Comment=CureCoin P2P Cryptocurrency
+Exec=/usr/bin/curecoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/curecoin.png
+MimeType=x-scheme-handler/curecoin;
+Categories=Network;
