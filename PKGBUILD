@@ -1,4 +1,3 @@
-
 # Maintainer: Det <nimetonmaili g-mail>
 # Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
 
@@ -12,10 +11,12 @@ arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/thunderbird/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
-         nss hunspell sqlite ttf-font icu libvpx)
+         nss sqlite ttf-font icu libvpx)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
              autoconf2.13 cargo clang llvm)
-optdepends=('libcanberra: sound support')
+optdepends=('hunspell: Spell checking'
+            'hyphen: Hyphenation'
+            'libcanberra: Sound support')
 options=(!emptydirs !makeflags)
 install=$pkgname.install
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
@@ -191,5 +192,8 @@ END
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -srf "$pkgdir/usr/bin/$pkgname" \
     "$pkgdir/opt/$pkgname/thunderbird-bin"
-}
 
+  # Use system certificates
+  ln -srf "$pkgdir/usr/lib/libnssckbi.so" \
+    "$pkgdir/opt/$pkgname/libnssckbi.so"
+}
