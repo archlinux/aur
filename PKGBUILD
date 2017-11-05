@@ -10,7 +10,7 @@
 
 pkgname=ttf-google-fonts-git
 pkgver=r1206.2e2caa23
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=(any)
@@ -28,7 +28,8 @@ conflicts=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
            ttf-merriweather-sans ttf-nova ttf-opensans ttf-oswald ttf-oxygen
            ttf-oxygen-git ttf-pt-fonts ttf-quintessential ttf-roboto ttf-roboto-mono
            ttf-signika ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx
-           ttf-ubuntu-font-family-ib ttf-vollkorn-ibx ttf-arabeyes-fonts)
+           ttf-ubuntu-font-family-ib ttf-vollkorn-ibx ttf-arabeyes-fonts
+           ttf-ubuntu-font-family)
 provides=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
           lohit-fonts ttf-andika ttf-anonymous-pro ttf-cardo ttf-comfortaa
           ttf-croscore ttf-fira-mono ttf-fira-sans ttf-inconsolata ttf-lato
@@ -36,7 +37,7 @@ provides=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
           ttf-merriweather-sans ttf-nova ttf-opensans ttf-oswald ttf-oxygen
           ttf-oxygen-git ttf-pt-fonts ttf-quintessential ttf-roboto ttf-roboto-mono
           ttf-signika ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx
-          ttf-ubuntu-font-family-ib ttf-vollkorn-ibx)
+          ttf-ubuntu-font-family-ib ttf-vollkorn-ibx ttf-ubuntu-font-family)
 source=("git+${url}.git")
 sha512sums=('SKIP')
 

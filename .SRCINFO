@@ -1,7 +1,7 @@
 pkgbase = ttf-google-fonts-git
 	pkgdesc = TrueType fonts from the Google Fonts project (git version)
 	pkgver = r1206.2e2caa23
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/google/fonts
 	arch = any
@@ -47,6 +47,7 @@ pkgbase = ttf-google-fonts-git
 	provides = ttf-source-sans-pro-ibx
 	provides = ttf-ubuntu-font-family-ib
 	provides = ttf-vollkorn-ibx
+	provides = ttf-ubuntu-font-family
 	conflicts = adobe-source-code-pro-fonts
 	conflicts = adobe-source-sans-pro-fonts
 	conflicts = jsmath-fonts
@@ -81,6 +82,7 @@ pkgbase = ttf-google-fonts-git
 	conflicts = ttf-ubuntu-font-family-ib
 	conflicts = ttf-vollkorn-ibx
 	conflicts = ttf-arabeyes-fonts
+	conflicts = ttf-ubuntu-font-family
 	source = git+https://github.com/google/fonts.git
 	sha512sums = SKIP
 
