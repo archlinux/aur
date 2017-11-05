@@ -1,6 +1,6 @@
 pkgbase = tldr-go-client-git
 	pkgdesc = fast TLDR client written in Golang
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/mstruebing/tldr
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = tldr-go-client-git
 	makedepends = git
 	makedepends = make
 	makedepends = go
+	optdepends = bash-completion: bash completion out of the box
 	provides = tldr
 	source = git+https://github.com/mstruebing/tldr
 	md5sums = SKIP
