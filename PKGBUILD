@@ -1,11 +1,10 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: youngunix <>
 
-
-_version=4.0
+_version=4.0.2
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Official binary builds of the Swift programming language."
 arch=('x86_64')
 url="https://swift.org"
@@ -20,8 +19,8 @@ source=(
 "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz"
 "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz.sig"
 )
-sha256sums=('2c4dd2067411efb46e33c4dd999b651a34263a16dfa6d23df420fd301268cf1f'
-           '3039dc572d876f1dcda7dd8ea57684002274d3987fc592636dad8344e3314d92')
+sha256sums=('9cac7622946defaad336e1722e94ce898c25de36a1e26729bc5ae88b4d15ba40'
+            'SKIP')
 
 package() {
     tar -C "$pkgdir" -xf "swift-${_version}-RELEASE"*.tar.gz --strip 1
@@ -49,5 +48,4 @@ package() {
     install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
     mv ${pkgdir}/usr/share/swift/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}
 }
-
 
