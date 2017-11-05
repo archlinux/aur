@@ -1,7 +1,7 @@
 pkgbase = autohidewibox
 	pkgdesc = Show awesome WM wibox only on ModKey press
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grandchild/autohidewibox
 	changelog = .Changelog
 	arch = i686
