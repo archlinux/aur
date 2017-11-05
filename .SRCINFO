@@ -6,7 +6,6 @@ pkgbase = sat-xmpp-hg
 	license = AGPL3
 	makedepends = python2-setuptools
 	depends = python2
-	depends = sat-tmp
 	options = !strip
 	source = hg+http://repos.goffi.org/sat
 	md5sums = SKIP
@@ -30,6 +29,7 @@ pkgname = sat-xmpp-hg
 	depends = python2-netifaces
 	depends = python2-miniupnpc
 	depends = python2-service-identity
+	depends = sat-tmp
 
 pkgname = sat-jp-hg
 	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (CLI frontend)
