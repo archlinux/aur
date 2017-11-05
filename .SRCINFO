@@ -1,6 +1,6 @@
 pkgbase = xmltreeedit-bin
 	pkgdesc = Basic cross-platform tree view XML editor
-	pkgver = 0.1.0.30
+	pkgver = 0.1.0.32
 	pkgrel = 1
 	url = https://sourceforge.net/projects/xmltreeeditor/
 	install = xmltreeedit-bin.install
