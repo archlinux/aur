@@ -1,10 +1,10 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=nginx-mainline-mod-nchan
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 
-_nginxver=1.13.5
+_nginxver=1.13.6
 
 pkgdesc='nchan nginx module'
 arch=('i686' 'x86_64')
@@ -16,9 +16,6 @@ source=(
     http://nginx.org/download/nginx-$_nginxver.tar.gz
     https://github.com/slact/nchan/archive/v${pkgver}.tar.gz
 )
-sha256sums=('0e75b94429b3f745377aeba3aff97da77bf2b03fcb9ff15b3bad9b038db29f2e'
-            '36359c0940dc1eb124a97c8229d660df38729005dce195f24f47b6658e43da94')
-
 
 build() {
     cd "$srcdir"/nginx-$_nginxver
@@ -34,3 +31,5 @@ package() {
     done
 }
 
+sha256sums=('8512fc6f986a20af293b61f33b0e72f64a72ea5b1acbcc790c4c4e2d6f63f8f8'
+            '3377fe7a1f1fa68d836ac505cbd5b60d88ae415d92231a0cd501fe075fdaddf5')
