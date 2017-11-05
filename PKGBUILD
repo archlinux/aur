@@ -1,3 +1,5 @@
+# Maintainer: dustball
+
 pkgname=soundfont-zeldamcsf2
 pkgver=20050118
 pkgrel=1
