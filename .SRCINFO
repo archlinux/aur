@@ -1,4 +1,4 @@
-pkgbase = peercoin
+pkgbase = peercoind-git
 	pkgdesc = Peercoin deamon - master branch.
 	pkgver = v0.6.1.rc1.r0.g162f0694
 	pkgrel = 1
