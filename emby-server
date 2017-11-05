@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export LD_LIBRARY_PATH='/usr/lib/skia-sharp58'
+
+exec dotnet /usr/lib/emby-server/EmbyServer.dll \
+  -programdata $PROGRAM_DATA \
+  -ffmpeg $FFMPEG \
+  -ffprobe $FFPROBE
