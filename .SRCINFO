@@ -1,0 +1,22 @@
+pkgbase = sonerezh
+	pkgdesc = A self-hosted, web-based application for stream your music, everywhere
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://www.sonerezh.bzh
+	arch = any
+	license = GPL3
+	depends = php
+	depends = php-gd
+	optdepends = mariadb: Database backend
+	optdepends = libav-no-libs: Music transcoding
+	provides = sonerezh
+	conflicts = sonerezh-git
+	conflicts = sonerezh-devel-git
+	options = !strip
+	source = https://github.com/Sonerezh/sonerezh/archive/1.1.3.tar.gz
+	source = example_nginx_vhost.conf
+	md5sums = d572cf39336bdfb02e4366c572ee8c82
+	md5sums = 955712ddb7884cc7343e67109155ed1e
+
+pkgname = sonerezh
+
