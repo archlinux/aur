@@ -1,10 +1,11 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Franz
-Comment=A free messaging app for WhatsApp, Facebook Messenger, Telegram, Slack and more.
+Comment=Franz is a free messaging app for services like WhatsApp, Slack, Messenger and many more. 
+Description=Franz is a free messaging app for services like WhatsApp, Slack, Messenger and many more. 
 Exec=franz-bin -- %u
 StartupWMClass=Franz
-Icon=franz
+Icon=/usr/share/icons/hicolor/1024x1024/apps/franz-bin.png
 Terminal=false
 Type=Application
 Categories=Network;
