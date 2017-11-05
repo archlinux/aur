@@ -5,7 +5,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.17.9
+pkgver=2.17.11
 pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
@@ -16,6 +16,7 @@ optdepends=('sensible-utils: for sensible alternative selection')
 makedepends=(
     'docbook-xsl'
     'bash-completion'
+    'help2man'
     'git'
     'perl-file-desktopentry'
     'perl-file-homedir'
