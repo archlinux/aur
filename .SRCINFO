@@ -1,7 +1,7 @@
 pkgbase = hdevtools
 	pkgdesc = A backend for text editor plugins for Haskell
 	pkgver = 0.1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hdevtools/hdevtools/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = hdevtools
 	depends = haskell-ghc-paths
 	depends = haskell-network
 	depends = haskell-syb
-	source = hdevtools::git+https://github.com/hdevtools/hdevtools.git#branch=fix-ghc-8.2.1
+	source = hdevtools::git+https://github.com/hdevtools/hdevtools.git#commit=bb167c2e09f0ae65968f9a2031de0ca6ea1eed95
 	md5sums = SKIP
 
 pkgname = hdevtools

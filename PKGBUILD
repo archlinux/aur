@@ -3,7 +3,7 @@
 
 pkgname=hdevtools
 pkgver=0.1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A backend for text editor plugins for Haskell"
 url="https://github.com/hdevtools/hdevtools/"
 license=('MIT')
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 depends=('ghc' 'haskell-cmdargs' 'haskell-system-filepath' 'haskell-ghc-paths'
          'haskell-network' 'haskell-syb')
 makedepends=('ghc')
-source=('hdevtools::git+https://github.com/hdevtools/hdevtools.git#branch=fix-ghc-8.2.1')
+source=('hdevtools::git+https://github.com/hdevtools/hdevtools.git#commit=bb167c2e09f0ae65968f9a2031de0ca6ea1eed95')
 md5sums=('SKIP')
 
 build() {
