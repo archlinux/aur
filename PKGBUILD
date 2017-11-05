@@ -1,8 +1,8 @@
 # Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
 
 pkgname=mons
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.8.1
+pkgrel=1
 pkgdesc='POSIX Shell script to quickly manage 2-monitors display.'
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
@@ -12,24 +12,17 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 makedepends=('help2man')
 source=("https://github.com/Ventto/${pkgname}/archive/v${pkgver}.tar.gz"
-        "https://github.com/Ventto/libshlist/archive/v1.0.tar.gz")
+        "https://github.com/Ventto/libshlist/archive/v1.1.tar.gz")
 
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   cd ${srcdir}
-  rm -r ${pkgname}-${pkgver}/posix-shell-list
-  mv 'libshlist-1.0' ${pkgname}-${pkgver}/posix-shell-list
-}
-
-build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  help2man -N -n "${pkgdesc}" -h -h -v -v ./${pkgname} | gzip - > ${pkgname}.1.gz
+  rm -r ${pkgname}-${pkgver}/libshlist
+  mv 'libshlist-1.1' ${pkgname}-${pkgver}/libshlist
 }
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm644 ${pkgname}.1.gz ${pkgdir}/usr/share/man/man1/${pkgname}.1.gz
   make DESTDIR="${pkgdir}" install
 }
