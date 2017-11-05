@@ -1,6 +1,6 @@
 pkgbase = autohidewibox
 	pkgdesc = Show awesome WM wibox only on ModKey press
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/grandchild/autohidewibox
 	changelog = .Changelog
@@ -12,10 +12,10 @@ pkgbase = autohidewibox
 	depends = xorg-xinput
 	provides = autohidewibox
 	conflicts = autohidewibox
-	source = https://raw.githubusercontent.com/grandchild/autohidewibox/0.5/autohidewibox.py
-	source = https://raw.githubusercontent.com/grandchild/autohidewibox/0.5/autohidewibox.conf
-	sha1sums = 012d7636f2659e60d24cbd49980e96ef4c74ebf6
-	sha1sums = 55a4fc3d53aa456e979b411384dcaf9a0535f4bb
+	source = https://raw.githubusercontent.com/grandchild/autohidewibox/0.6/autohidewibox.py
+	source = https://raw.githubusercontent.com/grandchild/autohidewibox/0.6/autohidewibox.conf
+	sha1sums = 50e72742868fc3d4d402e3fa5455c3f2924501c8
+	sha1sums = 5b01bbb3f243a24d679af794e051f7eb03aa7647
 
 pkgname = autohidewibox
 
