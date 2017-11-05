@@ -1,7 +1,7 @@
 # Maintainer: Spencer Harmon <spencer at rsitex dot com>
 
 pkgname="ulam-git"
-pkgver=2.0.13.r259.gdcf5ea4
+pkgver=3.0.11.r0.g3744fabc
 pkgrel=3
 epoch=
 pkgdesc="Github version of ulam compiler and MFM simulator"
@@ -11,6 +11,7 @@ license=('(L)GPL3')
 groups=()
 depends=('make'
 	'gcc'
+	'gcc6'
 	'binutils'
 	'perl'
 	'sdl'
@@ -28,8 +29,8 @@ backup=()
 options=('!buildflags' '!makeflags')
 install=
 changelog=
-source=("git://github.com/spencerharmon/MFM"
-        "git://github.com/spencerharmon/ULAM")
+source=("git://github.com/daveackley/MFM"
+        "git://github.com/daveackley/ULAM")
 noextract=()
 md5sums=('SKIP' 'SKIP')
 pkgver(){
@@ -38,6 +39,17 @@ pkgver(){
 }
 
 prepare() {
+#	use gcc6 for compilation; note that this does not affect compilation of ulam libraries (still uses gcc)
+	perl -0777 -i -pe 's/(NATIVE_GCC:=).+/$1gcc-6/' MFM/config/Makevars.mk
+	perl -0777 -i -pe 's/(NATIVE_GPP:=).+/$1g++-6/' MFM/config/Makevars.mk
+
+#	ensure build directory is correct
+	perl -0777 -i -pe 's/ifndef BUILDDIR\n\s(.+\n)endif\n/$1/' MFM/config/Makecommon.mk
+
+#	ensure path is correct in ulam.tmpl (note that latter ENV{PATH} uses bash expansion)
+#	this is effectively a workaround for perlsec, so proceed with caution
+	perl -0777 -i -pe 's/(delete.+\n)/$1\$ENV{PATH} = "$ENV{PATH}";\n/' ULAM/src/drivers/ulam/ulam.tmpl
+
 	make -C MFM
 	make -C ULAM
 	perl ULAM/share/perl/extractDistro.pl bin . "$srcdir/ulam" ulam
