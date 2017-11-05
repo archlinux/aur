@@ -1,14 +1,14 @@
 # Maintainer: Giorgio Wicklein <giowckln@gmail.com>
 pkgname=passiflora
-pkgver=2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc="Spagyrik Datenbank Passiflora"
 arch=('i686' 'x86_64')
 url="https://github.com/joshirio/passiflora"
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'qt5-imageformats' 'sqlite')
 source=("http://passiflora.enmed.de/files/$pkgname-$pkgver-src.tar.gz")
-md5sums=('c47e74d79e6408f9a53ceab283bd502b')
+md5sums=('b9063cf1f0fd878e1ffb758b9ecbd933')
 
 build() {
   qmake-qt5 -config release
