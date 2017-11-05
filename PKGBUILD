@@ -9,7 +9,7 @@ set -u
 pkgname='ploticus'
 _pkgver='2.42'
 pkgver="${_pkgver}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='produce plots and graphs in GIF, PNG, PostScript, SVG from CSV like data'
 arch=('i686' 'x86_64')
 url='http://ploticus.sourceforge.net/doc/welcome.html'
@@ -48,16 +48,16 @@ prepare() {
 build() {
   set -u
   cd pl*${_pkgver/./}*/src/
-  make -s -j "$(nproc)" CC='gcc -O'
+  make -s -j "$(nproc)" CC='gcc -O' EXE=$pkgname
   set +u
 }
 
 package() {
   set -u
   cd pl*${_pkgver/./}*/src/
-  install -Dpm755 'pl' -t "${pkgdir}/usr/bin/"
+  install -Dpm755 $pkgname -t "${pkgdir}/usr/bin/"
   cd "${srcdir}"/pl2*/src/
-  install -Dpm644 '../man/man1/pl.1' -t "${pkgdir}/usr/share/man/man1/"
+  install -Dpm644 '../man/man1/pl.1' -t "${pkgdir}"/usr/share/man/man1/pkgname.1
   install -Dpm644 '../prefabs'/* -t "${pkgdir}/usr/share/ploticus/"
   set +u
 }
