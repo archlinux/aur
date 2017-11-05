@@ -1,0 +1,7 @@
+post_install() {
+  ln -s /usr/share/webapps/hustoj /srv/http/
+}
+
+post_remove() {
+  rm -f /srv/http/hustoj
+}
