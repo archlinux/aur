@@ -2,8 +2,8 @@
 
 _gitname=Pokemon-Terminal
 pkgname=pokemon-terminal-git
-pkgver=r301.8085a41
-pkgrel=2
+pkgver=r327.c1c444e
+pkgrel=1
 pkgdesc="Pokemon terminal themes"
 arch=('any')
 url="https://github.com/LazoCoder/$_gitname"
@@ -12,7 +12,7 @@ depends=('python>=3.5' 'python-setuptools')
 optdepends=('gnome-shell: support changing GNOME wallpaper'
             'terminology: support changing Terminology background'
             'tilix: support changing Tilix background')
-makedepends=('git' 'jq' 'curl')
+makedepends=('git' 'jq' 'curl' 'python-setuptools')
 source=("https://github.com/LazoCoder/$_gitname/archive/master.zip" "get-commit-count.sh")
 sha256sums=('SKIP' '714f2e21a5b77d8b72d6f75da1f1c2fac93f15e2ddd3829a3fbd6dc7307779d0')
 
@@ -22,11 +22,7 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/$_gitname-master/pokemonterminal"
-
-  rm load_all_pokemon.py
-
-  cd ..
+  cd "$srcdir/$_gitname-master/"
 
   python setup.py install --root="$pkgdir/" --optimize=1
 }
