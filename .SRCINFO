@@ -1,6 +1,6 @@
 pkgbase = python-scipy-mkl
-	pkgdesc = SciPy is open-source software for mathematics, science, and engineering. Compiled with intel MKL
-	pkgver = 0.19.1
+	pkgdesc = SciPy is open-source software for mathematics, science, and engineering.
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://www.scipy.org/
 	arch = i686
@@ -8,21 +8,19 @@ pkgbase = python-scipy-mkl
 	license = BSD
 	checkdepends = python-nose
 	checkdepends = python2-nose
-	makedepends = intel-fortran-compiler
-	makedepends = intel-compiler-base
-	makedepends = intel-mkl
+	makedepends = gcc-fortran
 	makedepends = python-numpy
 	makedepends = python2-numpy
-	makedepends = swig
-	makedepends = cython
-	makedepends = cython2
-	source = https://github.com/scipy/scipy/archive/v0.19.1.tar.gz
-	sha256sums = ac268fe92edd149c6f52fa138d2a03877c080981d7944e96bab8ef68764f71cc
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/scipy/scipy/releases/download/v1.0.0/scipy-1.0.0.tar.xz
+	sha256sums = 06b23f2a5db5418957facc86ead86b7752147c0461f3156f88a3da87f3dc6739
 
 pkgname = python-scipy-mkl
 	depends = python-numpy-mkl
 	depends = qhull
 	depends = python-nose
+	optdepends = python-pillow: for image saving module
 	provides = python3-scipy=${pkgver}
 	provides = python-scipy=${pkgver}
 	provides = scipy=${pkgver}
@@ -33,6 +31,8 @@ pkgname = python2-scipy-mkl
 	depends = python2-numpy-mkl
 	depends = qhull
 	depends = python2-nose
+	optdepends = python2-pillow: for image saving module
+	provides = python2-scipy=${pkgver}
 	provides = python2-scipy=${pkgver}
 	provides = scipy=${pkgver}
 	conflicts = python2-scipy
