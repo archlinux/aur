@@ -7,7 +7,7 @@
 _pkgname=python-sipsimple
 pkgname=python2-sipsimple
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python SDK for development of SIP end-points"
 license=('custom:MIT' 'LGPL')
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ depends=('alsa-lib' 'util-linux' 'python2-dateutil' 'cython2' 'python2-cjson' 'o
 makedepends=('ffmpeg2.8')
 options=('!makeflags')
 source=("https://github.com/AGProjects/${_pkgname}/archive/release-${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('58db6306425cf829672c69ad7bc1ae209a68c1fba818b7d896ec3f170e902647')
+sha256sums=('b58936acc596761020d41a8b3e617a9240e74607d8f1d07d0e87cb28eebf206a')
 
 build() {
   cd "${srcdir}/${_pkgname}-release-${pkgver}"
