@@ -1,0 +1,19 @@
+pkgbase = z3-java
+	pkgdesc = A high-performance theorem prover (with java bindings)
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = https://github.com/Z3Prover/z3
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = java-environment
+	depends = gcc-libs
+	optdepends = java-runtime: bindings for java
+	provides = z3=4.5.0
+	conflicts = z3
+	source = https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
+	sha256sums = aeae1d239c5e06ac183be7dd853775b84698db1265cb2258e5918a28372d4a0c
+
+pkgname = z3-java
+
