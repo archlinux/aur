@@ -1,7 +1,7 @@
 pkgbase = peercoin
-	pkgdesc = Peercoin wallet client.
+	pkgdesc = Official Peercoin wallet.
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = peercoin.net
 	arch = x86_64
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = peercoin
 	source = peercoin-qt-tor@.service
 	source = peercoind@.service
 	source = peercoind-tor@.service
-	sha256sums = 97879dab8220ae0e9d0c4053669835f5038d48793d72e5210f2c7faeff3423c3
+	sha256sums = 6a290f779d0204fde988826bb0d6d8ba59cc9a478a07bc739be5d316be44e6ff
 	sha256sums = 6cb18e19847bbf4066920dbbf4371ddf07409392408fc6d079487e8759ea322e
 	sha256sums = bc898697baab589b87b0b78edd5aed35a3b800fe039afc03637b4895cfd28f32
 	sha256sums = 3f71859675561dd35c4527d96651b07996968e318dfbf26e8ce959f61a0d682f
@@ -35,7 +35,7 @@ pkgbase = peercoin
 
 pkgname = peercoin-qt
 	pkgdesc = Official implementation of Peercoin, the sustainable and secure cryptocurrency alternative to Bitcoin - QT wallet.
-	install = peercoin.install
+	install = peercoin-qt.install
 	depends = qt5-base
 	depends = miniupnpc
 	depends = boost-libs
@@ -44,7 +44,7 @@ pkgname = peercoin-qt
 
 pkgname = peercoind
 	pkgdesc = Official implementation of Peercoin, the sustainable and secure cryptocurrency alternative to Bitcoin - daemon.
-	install = peercoin.install
+	install = peercoind.install
 	depends = gcc
 	depends = make
 	depends = boost-libs
