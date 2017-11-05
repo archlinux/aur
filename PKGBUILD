@@ -14,11 +14,11 @@ md5sums=('SKIP')
 provides=('tldr')
 
 build() {
-    cd "$srcdir"
+    cd "$srcdir/$(basename $url)" 
     make build
 }
 
 package() {
-    cd "$srcdir"
-    install -Dm755 ./bin/tldr "$pkgdir/usr/bin/tldr"
+    cd "$srcdir/$(basename $url)/bin" 
+    install -Dm755 tldr "$pkgdir/usr/bin/tldr"
 }
