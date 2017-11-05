@@ -24,7 +24,6 @@ source=("jameica-start-script.patch"
         "jameica.install")
 
 prepare() {
-    false
     patch jameica/jameica.sh jameica-start-script.patch
     patch jameica/jameicaserver.sh jameicaserver-start-script.patch
 }
