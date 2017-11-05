@@ -1,11 +1,12 @@
 pkgbase = sat-xmpp-hg
-	pkgver = 0.7.0.r2412.7641bef56dcd
+	pkgver = 0.7.0.r2414.8b37a62336c3
 	pkgrel = 1
 	url = http://salut-a-toi.org/
 	arch = any
 	license = AGPL3
 	makedepends = python2-setuptools
 	depends = python2
+	depends = sat-tmp
 	options = !strip
 	source = hg+http://repos.goffi.org/sat
 	md5sums = SKIP

@@ -6,12 +6,12 @@
 pkgbase='sat-xmpp-hg'
 pkgname=('sat-xmpp-hg' 'sat-jp-hg' 'sat-primitivus-hg')
 _realname=sat
-pkgver=0.7.0.r2412.7641bef56dcd
+pkgver=0.7.0.r2414.8b37a62336c3
 VERSION=0.7.0
 pkgrel=1
 url="http://salut-a-toi.org/"
 arch=('any')
-depends=('python2' )
+depends=('python2' sat-tmp)
 makedepends=('python2-setuptools')
 license=('AGPL3')
 source=("hg+http://repos.goffi.org/sat")
