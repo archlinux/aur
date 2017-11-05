@@ -2,9 +2,9 @@
 
 pkgname=checksec-git
 pkgver=1.7.5.r33.g3de323e
-pkgrel=1
+pkgrel=2
 pkgdesc="A bash script to check the security properties of executables"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/slimm609/checksec.sh"
 license=('BSD')
 depends=('bash' 'binutils' 'procps-ng')
