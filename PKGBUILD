@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.17
+_ver=1.19
 _pkgbase=mate-terminal
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
@@ -13,12 +13,12 @@ arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
-depends=('dbus' 'dconf' 'glib2' 'libsm' 'mate-desktop-dev' 'vte3')
-makedepends=('docbook2x' 'intltool>=0.50.1' 'yelp-tools' 'vte3' 'mate-desktop-dev')
+depends=('dbus' 'dconf' 'glib2' 'libsm' 'mate-desktop>=1.19' 'vte3')
+makedepends=('docbook2x' 'intltool>=0.50.1' 'yelp-tools' 'vte3' 'mate-desktop>=1.19')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('f5aed77835b45c197c632525177aee18f480c33c')
+sha1sums=('bd0bebc8407cbd857b18d9283fa9bcc92feaf84c')
 
 prepare() {
     cd "${srcdir}"
