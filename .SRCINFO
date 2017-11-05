@@ -1,0 +1,18 @@
+pkgbase = icu-svn
+	pkgdesc = International Components for Unicode library
+	pkgver = r40666
+	pkgrel = 1
+	url = http://site.icu-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom:icu
+	makedepends = subversion
+	depends = glibc
+	depends = sh
+	provides = icu
+	conflicts = icu
+	source = svn+http://source.icu-project.org/repos/icu/trunk/icu4c
+	sha256sums = SKIP
+
+pkgname = icu-svn
+
