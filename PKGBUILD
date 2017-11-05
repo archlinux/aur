@@ -1,7 +1,7 @@
 # Maintainer: Toasty <toastyyogurttime@gmail.com>
 pkgname=caffeine
 pkgver=2.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Prevents the desktop becoming idle in full-screen mode."
 arch=(any)
 url="https://launchpad.net/caffeine"

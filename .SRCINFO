@@ -1,7 +1,7 @@
 pkgbase = caffeine
 	pkgdesc = Prevents the desktop becoming idle in full-screen mode.
 	pkgver = 2.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/caffeine
 	arch = any
 	license = GPL3
