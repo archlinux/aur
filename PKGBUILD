@@ -1,7 +1,7 @@
 ## Maintainer: peerchemist <peerchemist@protonmail.ch>
 
 pkgname=('peercoind-git')
-pkgbase=peercoin
+pkgbase=peercoind-git
 _gitname=peercoin
 pkgver=v0.6.1.rc1.r0.g162f0694
 pkgrel=1
