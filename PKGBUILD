@@ -12,9 +12,9 @@
 
 pkgname=('llvm38' 'llvm-libs38' 'llvm-ocaml38' 'lldb38' 'clang38' 'clang-tools-extra38')
 pkgver=3.8.1
-pkgrel=3
+pkgrel=4
 #_ocaml_ver=4.02.3
-_ocaml_ver=4.04.1
+_ocaml_ver=4.05.0-1
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
