@@ -14,7 +14,8 @@
 # as described in the Wiki and change the directory accordingly.
 
 _dejavu_font_dir='/usr/share/fonts/TTF'
-_gs_font_dir='/usr/share/fonts/Type1'
+_gs_font_dir='/usr/share/fonts/gsfonts'
+_urw_font_dir='/usr/share/fonts/gsfonts'
 _windows_font_dir='/usr/share/fonts/WindowsFonts'
 _1st_apple_font_dir='/usr/share/fonts/TTF'
 _2nd_apple_font_dir='/usr/share/fonts/Type1'
@@ -31,7 +32,7 @@ _qdepth='32'
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
 pkgver="$(printf '%s' "$_srcver"| tr '-' '.')" # ImageMagick does not provide a download archive of all previous versions
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://www.imagemagick.org/'
 license=('custom')
@@ -108,6 +109,7 @@ build() {
         --with-xml \
         --with-dejavu-font-dir="$_dejavu_font_dir" \
         --with-gs-font-dir="$_gs_font_dir" \
+        --with-urw-base35-font-dir="$_urw_font_dir" \
         --with-windows-font-dir="$_windows_font_dir" \
         --with-apple-font-dir="$_1st_apple_font_dir" \
         --with-fontpath="$_2nd_apple_font_dir"
