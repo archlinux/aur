@@ -1,7 +1,7 @@
 # Maintainer: Oliver Friedrich <olifriedrich@gmail.com>
 
 pkgname=noise-repellent
-pkgver=0.1.2
+pkgver=0.1.3f
 pkgrel=1
 pkgdesc="An lv2 plugin for broadband noise reduction."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('gcc')
 optdepends=('jack: standalone jack client'
             'ardour: intended use')
 source=("https://github.com/lucianodato/noise-repellent/archive/$pkgver.tar.gz")
-md5sums=('67fd693e80f86a09c2678f13ef1c2958')
+md5sums=('c09f63f04bcb2d74590cdcf332f87799')
 
 build() {
   cd "$pkgname-$pkgver"
