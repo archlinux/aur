@@ -4,7 +4,7 @@ pkgbase=hustoj-git
 pkgname=hustoj-git
 
 # Dirty hack as AUR dont support split-packages
-true && pkgname=('ojsvr-hust-judge-git' 'ojsvr-hust-web-git')
+true && pkgname=('hustoj-judge-git' 'hustoj-web-git')
 
 pkgver=r3120.58b04b80
 pkgrel=1
@@ -23,7 +23,7 @@ source=(
     )
 sha256sums=('SKIP'
             '4fdf2875aa03b98ecc0a6e732159653542930b5f26b1877388faa96ee83b0435'
-            '7fe99d33f33b7e9a431050898ed8333ac5a1377d8e8010531b6c7721902de642'
+            '6cfe333bc5fed6f9c8e64c72dffb852c54b5142d01278c00d1eda51927b1291f'
     )
 
 pkgver_git() {
@@ -65,10 +65,10 @@ build() {
     make exes
 }
 
-package_ojsvr-hust-judge-git() {
+package_hustoj-judge-git() {
   pkgdesc="HUST Online Judge binaries"
-  conflicts=('ojsvr-hust-judge')
-  provides=("ojsvr-hust-judge")
+  conflicts=('hustoj-judge')
+  provides=("hustoj-judge")
 
   msg 'Preparing package ...'
 
@@ -100,10 +100,10 @@ package_ojsvr-hust-judge-git() {
   cp ${srcdir}/sethustoj.sh "$pkgdir/usr/share/hustoj/"
 }
 
-package_ojsvr-hust-web-git() {
+package_hustoj-web-git() {
   pkgdesc="HUST Online Judge web UI"
-  conflicts=('ojsvr-hust-web')
-  provides=("ojsvr-hust-web")
+  conflicts=('hustoj-web')
+  provides=("hustoj-web")
   arch=('any')
 
   install=hustoj.install
