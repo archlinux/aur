@@ -3,7 +3,7 @@
 pkgname=juce
 pkgdesc='Cross-platform C++ framework, including the Projucer C++ editor'
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://www.juce.com/'
 license=('custom')
@@ -18,6 +18,10 @@ sha256sums=('26b6f42ced8101636e3ab5efea3f56d993d7f25cd8c8534dbf6343548d64b0d5'
             'f9ec15bbcb51b24a798f7d56680190e21829b9f6ff101f756beaccf95fbdad86')
 
 build() {
+    # Enable GPL mode, comment out if you'd like to keep
+    # the original behaviour
+    sed -i -e 's/JUCER_ENABLE_GPL_MODE 0/JUCER_ENABLE_GPL_MODE 1/' "${srcdir}/JUCE/extras/Projucer/JuceLibraryCode/AppConfig.h"
+
     cd "${srcdir}/JUCE/extras/Projucer/Builds/LinuxMakefile/"
     make
 }
