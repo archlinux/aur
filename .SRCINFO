@@ -1,0 +1,17 @@
+pkgbase = sat-tmp-hg
+	pkgver = 0.7.r46.725ca928fa2c
+	pkgrel = 1
+	url = https://salut-a-toi.org/
+	arch = any
+	license = AGPL3
+	depends = python2
+	provides = sat-tmp
+	conflicts = sat-tmp
+	options = !strip
+	source = hg+https://repos.goffi.org/sat_tmp
+	md5sums = SKIP
+
+pkgname = sat-tmp-hg
+	pkgdesc = Sat_tmp aims to temporary store files needed by Salut-a-toi (sat). These monkey patchs are not merged upstream yet. For now, only wokkel is inpacted.
+	depends = python2-jinja
+
