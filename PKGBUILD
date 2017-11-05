@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 _pkgname=gifski
 pkgname=${_pkgname}-git
-pkgver=0.3.0.r5.gf4d5924
+pkgver=0.4.0.r4.gd648773
 pkgrel=1
 pkgdesc="GIF encoder based on libimagequant (pngquant, gifquant?). Squeezes maximum possible quality from the awful GIF format"
 arch=('i686' 'x86_64')
@@ -9,13 +9,14 @@ url="https://gif.ski/"
 license=('AGPL3')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-makedepends=(rust)
+depends=(ffmpeg)
+makedepends=(git rust clang)
 source=(${_pkgname}::git+https://github.com/ImageOptim/${_pkgname}.git)
 sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  cargo build --release
+  cargo build --release --features=video
 }
 
 package() {
