@@ -2,7 +2,7 @@
 pkgname=cryptol-git
 _pkgname=cryptol
 
-pkgver=2.5.0.r165.g942173b
+pkgver=2.5.0.r254.g8c6af86
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
@@ -14,7 +14,7 @@ url="http://www.cryptol.net"
 arch=('x86_64' 'i686')
 license=('BSD')
 depends=('cvc4')
-makedepends=('git' 'ghc' 'cabal-install>=1.20.0.0' 'alex')
+makedepends=('git' 'ghc' 'cabal-install>=1.20.0.0' 'alex' 'z3')
 optdepends=('boolector: theorem proving'
             'mathsat-5: theorem proving'
             'yices-bin: theorem proving')
