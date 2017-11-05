@@ -1,0 +1,18 @@
+pkgbase = libupnp-git
+	pkgdesc = Portable open source UPnP development kit
+	pkgver = 1.8.2.r12.gf07f078
+	pkgrel = 1
+	url = http://pupnp.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	provides = libupnp
+	conflicts = libupnp
+	options = staticlibs
+	source = git+https://git.code.sf.net/p/pupnp/code
+	sha256sums = SKIP
+
+pkgname = libupnp-git
+
