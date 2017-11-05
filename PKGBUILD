@@ -1,7 +1,7 @@
 #Maintainer: Marc Jose <Hering2007@web.de>
 #Contributor: Lars Jose <larsjose77@gmail.com>
 pkgname=franz-bin
-pkgver=5.0.0_beta.11
+pkgver=5.0.0_beta.12
 pkgrel=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
 arch=('x86_64')
@@ -10,9 +10,9 @@ makedepends=('tar' 'yarn' 'npm' 'xorriso')
 conflicts=('franz')
 url='https://github.com/meetfranz/franz'
 license=('Apache')
-source=("${pkgname}.desktop" "https://github.com/meetfranz/franz/archive/v${pkgver//_/-}.tar.gz")
+source=("${pkgname}.desktop" "https://github.com/meetfranz/franz/archive/${pkgver//_/-}.tar.gz")
 sha256sums=('f72d9fcad1e1de482a35414f5a346c7e3d6c6140849861f7a5fbfbf32dcded36'
-            '3819abb6aa4af7615053aa3d48648d27790876b3bdb2029d06323ffcc0bb1bc9')
+            'b71cd923c5c17a65ddb085acb830f851c19787dac3a0beadea80cf52b836aeae')
 
 build() {
   cd "franz-${pkgver//_/-}"
