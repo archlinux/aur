@@ -3,12 +3,12 @@
 
 pkgname=gmusicbrowser-git
 pkgver=1.1.15.r42.g2d57cef
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source jukebox for large collections of mp3/ogg/flac files, written in perl."
 arch=('i686' 'x86_64')
 url="http://gmusicbrowser.org/"
 license=('GPL3')
-depends=('gtk2-perl')
+depends=('gtk2-perl' 'perl-net-dbus' 'perl-locale-gettext' 'perl-glib-object-introspection')
 makedepends=('git' 'markdown')
 optdepends=('alsa-utils: enables the ALSA backend'
             'flac123: flac support for the ALSA backend'
@@ -16,14 +16,11 @@ optdepends=('alsa-utils: enables the ALSA backend'
             'vorbis-tools: vorbis support for the ALSA backend'
             'mplayer: enables the mplayer backend'
             'mpv: enables the mpv backend'
-            'perl-glib-object-introspection: enables gstreamer-1.x backend'
             'gst-plugins-base: vorbis support'
             'gst-plugins-good: flac support'
             'gst-plugins-ugly: mp3 support'
             'perl-gtk2-trayicon: tray icon support'
             'perl-gtk2-webkit: alternative web-based plugin support'
-            'perl-locale-gettext: localization support'
-            'perl-net-dbus: control gmusicbrowser through dbus and gnome hotkeys'
             'perl-gnome2-wnck: titlebar plugin support'
             'perl-html-parser: support for accented characters in lyrics plugin'
             'perl-gtk2-notify: support for notify plugin')
