@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Toasty <toastyyogurttime@gmail.com>
 pkgname=caffeine
 pkgver=2.9.4
 pkgrel=1
