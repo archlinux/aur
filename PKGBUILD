@@ -1,7 +1,7 @@
 # Maintainer: Andrew Lin <andrewlin16@gmail.com>
 
 pkgname=vgmplay
-pkgver=0.40.7
+pkgver=0.40.8
 pkgrel=1
 pkgdesc="The offical and always up-to-date player for all VGM files"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://vgmrips.net/forum/viewtopic.php?t=112"
 license=('GPL' 'custom')
 source=("https://github.com/vgmrips/vgmplay/archive/$pkgver.tar.gz")
 depends=('libao' 'zlib')
-md5sums=('90445783677eef5068a8aca338368dc5')
+md5sums=('395a0b487798997695b4a3c9fdbc5001')
 
 build() {
   cd "$pkgname-$pkgver/VGMPlay"
@@ -20,7 +20,7 @@ package() {
   cd "$pkgname-$pkgver/VGMPlay"
   mkdir -m 755 -p "$pkgdir/usr/bin" "$pkgdir/usr/share/man/man1"
   make PREFIX=/usr DESTDIR="$pkgdir" install
-  make PREFIX=/usr DESTDIR="$pkgdir" play_inst
+  make PREFIX=/usr DESTDIR="$pkgdir" play_install
   mkdir -m 755 -p "$pkgdir/usr/share/licenses/vgmplay"
   cp licenses/* "$pkgdir/usr/share/licenses/vgmplay"
 }
