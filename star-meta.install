@@ -1,0 +1,11 @@
+# module list:  
+# https://github.com/rakudo/star/blob/master/modules/MODULES.txt
+
+post_install() {
+  /usr/share/perl6/vendor/bin/zef install --force-install uri json_fast JSON-Name JSON-Unmarshal JSON-Marshal JSON-Class META6 Test-META xml-writer 
+  /usr/share/perl6/vendor/bin/zef install --force-install svg svg-plot Terminal-ANSIColor oo-monitors test-moc Grammar-Profiler-Simple grammar debugger
+  /usr/share/perl6/vendor/bin/zef install --force-install Perl6-MIME-Base64 uri json perl6-encode perl6-lwp-simple pelr6-digest-md5 perl6-http-status
+  /usr/share/perl6/vendor/bin/zef install --force-install p6-Template-Mustache PSGI perl6-http-east Template-Mojo NativeHelpers-Blob DBIish perl6-Test-When 
+  /usr/share/perl6/vendor/bin/zef install --force-install jsonrpc Pod-To-HTML perl6-pod-to-bigpage p6-file-directory-treep6-File-Temp file-find doc debugger-ui-commandline
+  /usr/share/perl6/vendor/bin/zef install --force-install shell-command library-make Linenoise perl6-file-which tap-harness6 panda-stub p6-io-string perl6-datetime-format
+}
