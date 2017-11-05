@@ -1,14 +1,14 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=atelier-git
 confilicts=('atelier')
-pkgver=2696aaf
+pkgver=36b7dda
 pkgrel=1
 pkgdesc="KDE 3D Printer Host"
 arch=('i686' 'x86_64')
 url="https://www.kde.org/"
 license=('GPL3')
 buildDepends=('git' 'cmake' 'extra-cmake-modules')
-depends=('qt5-base' 'qt5-serialport' 'qt5-charts' 'solid' 'atcore-git' 'kxmlgui') #Qt5)
+depends=('qt5-base' 'qt5-serialport' 'qt5-charts' 'qt5-3d' 'solid' 'atcore' 'kxmlgui') #Qt5)
 source=('git://anongit.kde.org/atelier.git')
 md5sums=(SKIP)
 
