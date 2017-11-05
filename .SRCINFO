@@ -1,22 +1,22 @@
 pkgbase = mate-icon-theme-faenza-dev
 	pkgdesc = Faenza icon theme for MATE
-	pkgver = 1.15.1
-	pkgrel = 1
+	pkgver = 1.19.0
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = any
 	groups = mate-extra
 	license = LGPL
 	makedepends = git
 	makedepends = icon-naming-utils
-	makedepends = mate-common-dev
+	makedepends = mate-common>=1.19
 	depends = gtk-update-icon-cache
 	provides = mate-icon-theme-faenza
 	provides = mate-icon-theme-faenza-gtk3
 	conflicts = mate-icon-theme-faenza
 	conflicts = mate-icon-theme-faenza-gtk3
 	options = !strip
-	source = http://pub.mate-desktop.org/releases/1.15/mate-icon-theme-faenza-1.15.1.tar.xz
-	sha1sums = ceccc58647798b55c9a9d34a2ab91e3838617736
+	source = http://pub.mate-desktop.org/releases/1.19/mate-icon-theme-faenza-1.19.0.tar.xz
+	sha1sums = 209eadbf3425a4203a01a59ca284d0b954b81942
 
 pkgname = mate-icon-theme-faenza-dev
 
