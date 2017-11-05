@@ -1,0 +1,28 @@
+pkgbase = peercoin
+	pkgdesc = Peercoin deamon - master branch.
+	pkgver = v0.6.1.rc1.r0.g162f0694
+	pkgrel = 1
+	url = peercoin.net
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = boost
+	makedepends = miniupnpc
+	makedepends = openssl
+	depends = boost-libs
+	depends = openssl
+	depends = miniupnpc
+	replaces = peercoind
+	source = git+https://github.com/peercoin/peercoin.git#branch=master
+	sha256sums = SKIP
+
+pkgname = peercoind-git
+	pkgdesc = Official implementation of Peercoin, the sustainable and secure cryptocurrency alternative to Bitcoin - daemon.
+	install = peercoind-git.install
+	depends = gcc
+	depends = make
+	depends = boost-libs
+	depends = miniupnpc
+
