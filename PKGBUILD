@@ -31,7 +31,7 @@ _qdepth='32'
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
 pkgver="$(printf '%s' "$_srcver"| tr '-' '.')" # ImageMagick does not provide a download archive of all previous versions
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://www.imagemagick.org/'
 license=('custom')
@@ -55,7 +55,7 @@ sha256sums=("$(curl -s "$_digest" | grep -A5 "${_srcname}-${_srcver_regex}\.tar\
 build() {
     cd "${_srcname}-${_srcver}"
     
-    CPPFLAGS='-I/usr/include/FLIF' \
+    CFLAGS="${CFLAGS} -I/usr/include/FLIF" \
     ./configure \
         --prefix='/usr' \
         --sysconfdir='/etc' \
