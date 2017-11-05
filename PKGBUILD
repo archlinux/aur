@@ -32,7 +32,7 @@ _qdepth='32'
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
 pkgver="$(printf '%s' "$_srcver"| tr '-' '.')" # ImageMagick does not provide a download archive of all previous versions
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url='http://www.imagemagick.org/'
 license=('custom')
@@ -102,6 +102,7 @@ build() {
         --with-openexr \
         --with-pango \
         --with-png \
+        --with-raw \
         --with-rsvg \
         --with-tiff \
         --with-webp \
