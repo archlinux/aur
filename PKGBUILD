@@ -1,3 +1,5 @@
+# Maintainer: dustball
+
 pkgname=soundfont-zelda3sf2
 pkgver=20040819
 pkgrel=1
