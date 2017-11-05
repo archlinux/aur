@@ -3,19 +3,18 @@
 # Contributor: Benjamin Robinben <jarobin@gmail.com>
 # Contributor: Karsten Pufahl <contact@karstenpufahl.de>
 pkgname=eclipse-arm
-pkgver=2.12.1
-date=201604190915
+pkgver=4.1.1
+date=201707111115
 pkgrel=1
-pkgdesc="GNU ARM Eclipse Plug-in"
+pkgdesc="GNU MCU Eclipse Plug-in"
 arch=('any')
-url="http://gnuarmeclipse.github.io"
+url="http://gnu-mcu-eclipse.github.io"
 install="eclipse-arm.install"
 license=("GPL")
 options=('!strip')
 depends=('eclipse-cpp')
-source=(#"http://sourceforge.net/projects/gnuarmeclipse/files/Current%20Releases/2.x/ilg.gnuarmeclipse.repository-$pkgver-$date.zip"
-        "https://github.com/gnuarmeclipse/plug-ins/releases/download/v$pkgver-$date/ilg.gnuarmeclipse.repository-$pkgver-$date.zip")
-sha512sums=('0fa64c79e81ce8a9d23c6ecbdaf6cf50a205a5d69a7a4cd5ad08eeafdcdf71ec2888cb98a5a6453713b3c65333bc2f2ee4893f207b80772a06f5aca567c95126')
+source=("https://github.com/gnu-mcu-eclipse/eclipse-plugins/releases/download/v$pkgver-$date/ilg.gnumcueclipse.repository-$pkgver-$date.zip")
+sha512sums=('c94c2c254291ae719b03ed810f6d963f66e217b8512362167a70953c6ee8d8f0c6c5ee52bee0d5669b6b4c609c190791eaada4f16a10ce6ec1fee66739497f09')
 
 package() {
   _dest="${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse"

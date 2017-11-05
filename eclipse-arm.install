@@ -2,6 +2,6 @@
 post_install() {
   # Friendly message for new users
   echo
-  echo 'You may install arm gcc toolchain first'
-  echo 
+  echo 'You may need to install arm gcc toolchain first'
+  echo
 }
