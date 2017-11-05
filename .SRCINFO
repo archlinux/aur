@@ -1,7 +1,7 @@
 pkgbase = firefox-kde-opensuse-beta
 	pkgdesc = Standalone web browser from mozilla.org with openSUSE patches to integrate better with KDE Plasma 5
 	pkgver = 57.0b14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = firefox-kde-opensuse-beta
 	makedepends = clang
 	makedepends = llvm
 	makedepends = jack
+	makedepends = zip
 	depends = gtk3
 	depends = gtk2
 	depends = mozilla-common

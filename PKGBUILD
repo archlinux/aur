@@ -82,7 +82,7 @@ fi
 
 pkgname=("$_realname-kde-opensuse-beta")
 pkgver="$_pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with openSUSE patches to integrate better with KDE Plasma 5"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -94,7 +94,7 @@ depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt'
          'icu' 'libevent' 'kmozillahelper')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm'
              'mesa' 'imake' 'gconf' 'inetutils' 'autoconf2.13'
-             'rust' 'clang' 'llvm' 'jack')
+             'rust' 'clang' 'llvm' 'jack' 'zip')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
