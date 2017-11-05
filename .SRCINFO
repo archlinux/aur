@@ -1,6 +1,6 @@
 pkgbase = caja-dev
 	pkgdesc = File manager for the MATE desktop
-	pkgver = 1.19.1
+	pkgver = 1.19.2
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -28,8 +28,8 @@ pkgbase = caja-dev
 	provides = caja-gtk3
 	conflicts = caja
 	conflicts = caja-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/caja-1.19.1.tar.xz
-	sha1sums = 6326a57f2c1674056fc3695550aecb9a6fde2247
+	source = http://pub.mate-desktop.org/releases/1.19/caja-1.19.2.tar.xz
+	sha1sums = 5655ce7f73268b77ebfcbc76436c8d5dc72aba00
 
 pkgname = caja-dev
 	pkgdesc = File manager for the MATE desktop (GTK3 version)
