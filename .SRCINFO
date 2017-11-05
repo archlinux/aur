@@ -1,7 +1,7 @@
 pkgbase = pokemon-terminal-git
 	pkgdesc = Pokemon terminal themes
 	pkgver = r327.c1c444e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LazoCoder/Pokemon-Terminal
 	arch = any
 	license = GPL3
@@ -9,7 +9,8 @@ pkgbase = pokemon-terminal-git
 	makedepends = jq
 	makedepends = curl
 	makedepends = python-setuptools
-	depends = python>=3.5
+	makedepends = python
+	depends = python>=3.6
 	depends = python-setuptools
 	optdepends = gnome-shell: support changing GNOME wallpaper
 	optdepends = terminology: support changing Terminology background
