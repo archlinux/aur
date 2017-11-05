@@ -2,12 +2,12 @@
 _pkgname=ternimal
 pkgname="${_pkgname}-git"
 pkgver=r5.2eea4f4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simulate a lifeform in the terminal"
 arch=('x86_64' 'i686' 'armv7h')
 url="https://github.com/p-e-w/ternimal"
 license=('GPL3')
-makedepends=('rust')
+makedepends=('rust' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}")
