@@ -1,13 +1,13 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.4.1
+_oomox_ver=1.4.2
 _numix_ver=1.2.8.1
 _materia_ver=20171005
 
 pkgname=oomox
 pkgver=${_oomox_ver}_${_numix_ver}_${_materia_ver}
 pkgrel=1
-pkgdesc='Graphical application for generating different color variations of Numix theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
+pkgdesc='Graphical application for generating different color variations of Numix/Materia theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
 Have a hack for HiDPI in gtk2.'
 arch=('i686' 'x86_64')
 url='https://github.com/actionless/oomox'
@@ -48,7 +48,7 @@ source=(
     'oomoxify-cli'
     'oomox.desktop'
 )
-md5sums=('d07882ad2a4119c8f1b2a5f4acccc8ee'
+md5sums=('82ee7d59f42a31128839a925be668062'
          '983b4dfa91d0f0bc87afa82d28090c18'
          'a557047ab75824fae30f8c4d10bd30cf'
          'efc83d981e1fcfb41c6d439f1013efbd'
@@ -60,7 +60,7 @@ md5sums=('d07882ad2a4119c8f1b2a5f4acccc8ee'
 
 prepare() {
     cp -pr "${srcdir}/${pkgname}-gtk-theme-${_numix_ver}"/* "${srcdir}/${pkgname}-${_oomox_ver}/gtk-theme"
-    cp -pr "${srcdir}/materia-theme-${_materia_ver}"/* "${srcdir}/${pkgname}-${_oomox_ver}/flat-plat-theme"
+    cp -pr "${srcdir}/materia-theme-${_materia_ver}"/* "${srcdir}/${pkgname}-${_oomox_ver}/materia-theme"
 }
 
 package() {
