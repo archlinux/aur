@@ -1,0 +1,17 @@
+pkgbase = madrigal-git
+	pkgdesc = Qt5 OpenHome control point, still in development
+	pkgver = r192.8395a23
+	pkgrel = 3
+	url = https://github.com/CDrummond/madrigal
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-svg
+	depends = hicolor-icon-theme
+	provides = madrigal
+	source = madrigal-git::git+https://github.com/CDrummond/madrigal.git
+	md5sums = SKIP
+
+pkgname = madrigal-git
+
