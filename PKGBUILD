@@ -1,7 +1,7 @@
 # Maintainer: Jurica Bradaric <jbradaric@gmail.com>
 # Contributor: Randy Heydon <randy.heydon at clockworklab dot net>
 pkgname=python-objgraph
-pkgver=3.0.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Draws Python object reference graphs with graphviz"
 arch=(any)
@@ -11,8 +11,8 @@ optdepends=('graphviz: generate images of reference graphs'
             'xdot: interactively view object graphs')
 makedepends=('python' 'python-setuptools')
 
-source=("http://pypi.python.org/packages/source/o/objgraph/objgraph-$pkgver.tar.gz")
-sha256sums=('1f222e1f318e4a940693bdc194d2d512ba90d9e8ea5717097b38066b1d895d24')
+source=("https://pypi.python.org/packages/be/58/9ca81a20cc837054e94866df1475d899caaa94f3732b8a46006858b015f7/objgraph-${pkgver}.tar.gz")
+sha256sums=('8c2de13d7d68235eab95d115f5f95c230c5648874006d391dc3cdaa83823589d')
 
 build() {
     cd "$srcdir/objgraph-$pkgver"
