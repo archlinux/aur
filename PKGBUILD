@@ -24,7 +24,7 @@ pkgver() {
 
                  
 package(){
-    pkgdesc="Sat_tmp aims to temporary store files needed by Salut-a-toi (sat). These monkey patchs are not merged upstream yet. For now, only wokkel is inpacted."
+    pkgdesc="sat_tmp aims to temporary store files needed by Salut-a-toi (sat). These monkey patchs are not merged upstream yet. For now, only wokkel is impacted."
     depends=('python2-jinja')
 
     cd "$pkgdir"
