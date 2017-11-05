@@ -1,0 +1,16 @@
+pkgbase = tldr-go-client-git
+	pkgdesc = fast TLDR client written in Golang
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/mstruebing/tldr
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = go
+	provides = tldr
+	source = git+https://github.com/mstruebing/tldr
+	md5sums = SKIP
+
+pkgname = tldr-go-client-git
+
