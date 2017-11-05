@@ -1,37 +1,19 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
 # Edited from: firefox-extension-https-everywhere
 
-_pkgname=canvasblocker-0.3.8-Release-an+fx
-pkgname=firefox-extension-canvasblocker
-pkgver=0.3.8
+_pkgname='canvasblocker-0.4.0.2-an+fx'
+pkgname='firefox-extension-canvasblocker'
+pkgver=0.4.0.2
 pkgrel=1
 pkgdesc="Plugin for firefox that prevents canvas fingerprinting to prevent tracking."
 license=('MPL')
 arch=('any')
 url="https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/"
 depends=("firefox")
-makedepends=("unzip")
-source=("https://addons.cdn.mozilla.net/user-media/addons/534930/${_pkgname}.xpi")
-noextract=("${_pkgname}.xpi")
-sha256sums=('bb1855445b3b0292b924698a0300a1c5105b7d0ade481310de3180de44884da5')
-
-prepare() {
-	cd "$srcdir"
-
-	unzip -qqo "${_pkgname}.xpi" -d "${_pkgname}"
-}
+source=("https://addons.cdn.mozilla.net/user-media/addons/534930/$_pkgname.xpi")
+noextract=("$_pkgname.xpi")
+sha256sums=('21bc3d0d5754ea3c19384fe1a7af210990010ef935bab08f065886979a99fd06')
 
 package() {
-	cd "${srcdir}"
-
-	_extension_id="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' ${_pkgname}/install.rdf)"
-	_extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
-	# Should this extension be unpacked or not?
-	if grep '<em:unpack>true</em:unpack>' ${_pkgname}/install.rdf > /dev/null; then
-		install -dm755 "${_extension_dest}"
-		cp -R ${_pkgname}/* "${_extension_dest}"
-		chmod -R ugo+rX "${_extension_dest}"
-	else
-		install -Dm644 ${_pkgname}.xpi "${_extension_dest}.xpi"
-	fi
+	install -Dm644 "$_pkgname.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/CanvasBlocker@kkapsner.de.xpi"
 }
