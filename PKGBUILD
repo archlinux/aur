@@ -1,7 +1,7 @@
 # Maintainer: Max Struebing mxstrbng@gmail.com
 
 pkgname=tldr-go-client-git
-pkgver=1.1.7
+pkgver=1.1.0.r2.g5446a1a
 pkgrel=1
 pkgdesc="fast TLDR client written in Golang"
 arch=(any)
