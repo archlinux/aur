@@ -1,0 +1,22 @@
+pkgbase = ptxconf-git
+	pkgdesc = Pen tablet and Touch screen Xinput Configuration tool (PTXConf). Configures touch/pen devices to work with extended desktops and multiple screens on Linux
+	pkgver = r35.70d2e20
+	pkgrel = 2
+	url = https://github.com/wenhsinjen/ptxconf
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	depends = xorg-xinput
+	depends = python2-libappindicator
+	depends = python2
+	depends = pygtk
+	provides = ptxconf
+	conflicts = ptxconf
+	source = ptxconf-git::git+https://github.com/wenhsinjen/ptxconf.git
+	source = ptxconf.desktop
+	md5sums = SKIP
+	md5sums = ea437e99722a1ce37f0893ddac76afe4
+
+pkgname = ptxconf-git
+

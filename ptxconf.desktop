@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Ptxconf
+Comment=Pen tablet and Touch screen Xinput Configuration tool
+Exec=ptxconf %U
+Terminal=false
+Type=Application
+Icon=preferences-desktop
+Categories=Utility;
