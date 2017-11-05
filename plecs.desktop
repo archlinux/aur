@@ -2,6 +2,7 @@
 Type=Application
 Version=4.0.6                   
 Name=plecs                            
+Icon=plecs
 Comment=circuit simulator for power circuits   
 Path=/opt/plecs
 Exec=plecs %U

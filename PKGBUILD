@@ -3,7 +3,7 @@
 
 pkgname=plecs-standalone
 _pkgname="plecs"
-pkgver=v4.0.6
+pkgver=v4.1.2
 pkgrel=1
 pkgdesc="A Circuit simulation tool written by plexim (license needed, only demo mode available otherwise)"
 url='http://www.plexim.com/de/products/plecs_standalone'
@@ -11,20 +11,33 @@ url='http://www.plexim.com/de/products/plecs_standalone'
 arch=('x86_64')
 license=('custom')
 provides=('plecs-standalone')
-depends=('qt4' 'ncurses5-compat-libs')
+depends=('qt4' 'ncurses5-compat-libs' 'zlib')
 makedepends=('coreutils')
 
-source=("plecs.desktop" "plecs.sh" "$pkgname-$pkgver-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-standalone-4-0-6_linux64.tar.gz")
-md5sums=('1304e0fb305fbaa4f7725dde65b646f8' '9d22a86f620506b3e5768d54e338af5d' '26b6e7679c7253721b32101a3050cb0d')
-sha1sums=('21635d737fcb2ec287eb195e2f75b2f895fd032f' '5e708849ba6a5fbb55bcbf97debfca3168230c63' '2a99411ec2329483487362918f29b9a1d8682842')
+source=("plecs.desktop" "plecs.png" "plecs.sh" "$pkgname-$pkgver-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-standalone-4-1-2_linux64.tar.gz")
+
+md5sums=('0fc656b8eb78a265ae2d85e6a1c4d0f2'
+         '8ed62f1ce2de47c761c9244531dc154e'
+         '675ece23be004504ae71890909f8819c'
+         '44cf40d614b110b75801dedf4d43b98c')
+sha1sums=('e38b63e0737cedd00675d52bcb639f47607938d8'
+          'e1d9007695acbf40ce55b47f3724c4de8b5ac270'
+          '4150e3dcc41210b7a28b7042972f76e7f6f3ac71'
+          '6554d8818f977f9dd54942c75916fc814d76ca5e')
 
 package() {
+    # install icon
+    mkdir -p "$pkgdir/usr/share/pixmaps/"
+    echo "install icon"
+    install -m 644 "$srcdir/plecs.png" "$pkgdir/usr/share/pixmaps/"
+   
+    # make directory structure for main app
 	mkdir -p "$pkgdir/usr/share/applications/"
 	mkdir -p "$pkgdir/opt/plecs"
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/licenses/plecs"
 
-	# desktop file
+	# install desktop file
 	echo "install plecs.desktop"
 	install -m 664 "$srcdir/plecs.desktop" "$pkgdir/usr/share/applications/"
 
@@ -33,7 +46,8 @@ package() {
 
 	echo "install license.txt"
 	install -m 664 "$srcdir/plecs/license.txt" "$pkgdir/usr/share/licenses/plecs/"
-	
+	rm "$srcdir/plecs/license.txt"
+
 	echo "copying plecs dir"
 	rm "$srcdir/plecs/PLECS"
 	cp "$srcdir/plecs/." "$pkgdir/opt/plecs" -r 
