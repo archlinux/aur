@@ -1,0 +1,20 @@
+pkgbase = audiofile-git
+	pkgdesc = Library for reading and writing audio files in many common formats
+	pkgver = 0.3.6.r25.gb62c902
+	pkgrel = 1
+	url = https://audiofile.68k.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = glibc
+	depends = alsa-lib
+	depends = flac
+	provides = audiofile
+	conflicts = audiofile
+	options = staticlibs
+	source = git+https://github.com/mpruett/audiofile.git
+	sha256sums = SKIP
+
+pkgname = audiofile-git
+
