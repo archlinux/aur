@@ -3,7 +3,7 @@
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
 pkgname=asterisk
-pkgver=15.0.0
+pkgver=15.1.0
 pkgrel=1
 pkgdesc="A complete PBX solution"
 arch=('i686' 'x86_64' 'armv7h')
@@ -118,7 +118,7 @@ backup=('etc/asterisk/acl.conf'
 	'etc/asterisk/xmpp.conf')
 url="http://www.asterisk.org"
 license=('GPL')
-depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'pjproject' 'opus' 'termcap')
+depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'opus' 'termcap')
 makedepends=('sqlite3' 'gsm')
 optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'libpri' 'libss7' 'openr2' 'iksemel' 'radiusclient-ng' 'dahdi')
 source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${pkgver}.tar.gz \
@@ -126,14 +126,15 @@ source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-$
 	${pkgname}.logrotated \
 	${pkgname}.tmpfile)
 install=${pkgname}.install
-sha256sums=('a1bc713df0530ffdaa9cb197b9c31bcdb5650383638cd27993ce861389765f2a'
+sha256sums=('23a34342c410009ab35566bf85ca2a1a0573f1848dc0ac74f65f5e0bca51f898'
             '94acb6e68424195a12fd9d406b3fb586f264a550e75801f6e020a86e800dd42c'
             'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin 
+  #./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --with-libedit=internal
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
   make
 }
 
