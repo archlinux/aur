@@ -2,7 +2,7 @@
 
 pkgname=mons
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='POSIX Shell script to quickly manage 2-monitors display.'
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 makedepends=('help2man')
 source=("https://github.com/Ventto/${pkgname}/archive/v${pkgver}.tar.gz"
-        "https://github.com/Ventto/posix-shell-list/archive/v1.0.tar.gz")
+        "https://github.com/Ventto/libshlist/archive/v1.0.tar.gz")
 
 sha256sums=('SKIP' 'SKIP')
 
