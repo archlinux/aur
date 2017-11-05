@@ -1,0 +1,24 @@
+pkgbase = kitty
+	pkgdesc = A modern, hackable, featureful, OpenGL based terminal emulator
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/kovidgoyal/kitty
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = python-setuptools
+	depends = python3
+	depends = glew
+	depends = glfw-x11
+	depends = freetype2
+	depends = xorg-xdpyinfo
+	depends = xsel
+	depends = fontconfig
+	depends = libunistring
+	source = https://github.com/kovidgoyal/kitty/archive/v0.4.2.tar.gz
+	md5sums = a5c506d8cf13085fe589d459a8568657
+
+pkgname = kitty
+
