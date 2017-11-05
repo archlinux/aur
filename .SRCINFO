@@ -1,0 +1,15 @@
+pkgbase = chromium-ffmpeg-codecs-bin
+	pkgdesc = Prebuilt ffmpeg-codecs package extracted from Opera/Opera-beta from Herecura repository
+	pkgver = 62.0.3202.62
+	pkgrel = 1
+	url = https://ffmpeg.org/
+	arch = x86_64
+	license = LGPL
+	provides = chromium-ffmpeg-codecs
+	conflicts = chromium-ffmpeg-codecs
+	conflicts = vivaldi-codecs-ffmpeg-extra-bin
+	source = https://repo.herecura.eu/herecura/x86_64/opera-beta-ffmpeg-codecs-62.0.3202.62-1-x86_64.pkg.tar.xz
+	md5sums = fa9fe233f701e7c34413de8ef7abc892
+
+pkgname = chromium-ffmpeg-codecs-bin
+
