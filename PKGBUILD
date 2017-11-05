@@ -1,15 +1,12 @@
 # Maintainer: Lari Tikkanen <lartza@wippies.com>
 # Contributor: Ian D. Scott <ian@perebruin.com>
 
-# Use an alternative Qt backend to the SDL default. Fails to build with debugging enabled and may not fully work.
+# Use an alternative Qt backend to the SDL default. May not fully work, report issues upstream.
 _use_qt_backend="0"
-
-# Disable debugging even with SDL backend. Build errors should probably be reported upstream or to me instead.
-_disable_debug="0"
 
 pkgname=warzone2100-git
 _gitname=warzone2100
-pkgver=r13674.1cdd7bdb9
+pkgver=r13675.10b39fc53
 pkgrel=1
 pkgdesc="3D realtime strategy game on a future Earth (Git version)"
 arch=('i686' 'x86_64')
@@ -17,7 +14,7 @@ url="http://wz2100.net/"
 license=('GPL')
 depends=('qt5-script' 'sdl2' 'libtheora' 'openal' 'libvorbis' 'physfs' 'quesoglc' 'ttf-dejavu')
 if [[ ${_use_qt_backend} == "1" ]]; then
-    depends=( "${depends[@]}" qt5-x11extras )
+    depends+=('qt5-x11extras')
 fi
 makedepends=('zip' 'unzip' 'git')
 provides=('warzone' 'warzone2100' 'warzone-svn' 'warzone2100-beta')
@@ -45,10 +42,8 @@ build() {
 
   if [[ $_use_qt_backend == "1" ]]; then
     ./configure --prefix=/usr --with-backend=qt --disable-debug
-  elif [[ $_disable_debug == "1" ]]; then
-    ./configure --prefix=/usr --disable-debug
   else
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --disable-debug
   fi
 
   make
