@@ -3,12 +3,12 @@
 # This package is maintained using the assistance of PKGBUILD-Updater (available on github)
 pkgname=mullvad
 pkgver=65
-pkgrel=2
+pkgrel=3
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
 arch=('any')
 license=('GPLv2')
-depends=('openvpn' 'resolvconf' 'python2' 'python2-appdirs' 'gksu' 'wxpython' 'python2-ipaddr' 'python2-netifaces' 'python2-psutil' 'net-tools')
+depends=('openvpn' 'resolvconf' 'python2' 'python2-appdirs' 'gksu' 'wxpython' 'python2-setuptools' 'python2-ipaddr' 'python2-netifaces' 'python2-psutil' 'net-tools')
 makedepends=()
 conflicts=()
 replaces=(mullvad-new)
