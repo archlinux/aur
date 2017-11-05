@@ -1,7 +1,7 @@
 # Maintainer: Federico Giuliani <federico.giuliani86 at gmail dot com>
 
 pkgname=airsonic
-pkgver=10.0.1
+pkgver=10.1.0
 pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
@@ -9,11 +9,11 @@ url="https://github.com/Airsonic/airsonic/"
 license=('GPL3')
 depends=('java-runtime-headless')
 conflicts=('subsonic' 'subsonic-kang' 'subsonic-kang-git' 'subsonic-beta' 'libresonic')
-backup=('var/lib/airsonic/airsonic.sh')
+backup=('etc/sysconfig/airsonic')
 noextract=(airsonic.war)
 install=$pkgname.install
 source=(https://github.com/airsonic/airsonic/releases/download/v${pkgver}/airsonic.war
-        'airsonic.sh'
+        'airsonic-systemd-env'
         'airsonic.service')
 
 package() {
@@ -21,13 +21,12 @@ package() {
   mkdir -p $pkgdir/var/lib/airsonic
   mkdir -p $pkgdir/var/lib/airsonic/playlists
   mkdir -p $pkgdir/usr/lib/systemd/system
-  mkdir -p $pkgdir/etc/
-  cp * $pkgdir/var/lib/airsonic
-  ln -fs /var/lib/airsonic/airsonic.sh $pkgdir/etc/airsonic.conf
+  mkdir -p $pkgdir/etc/sysconfig
+  cp airsonic.war $pkgdir/var/lib/airsonic
   cp $srcdir/airsonic.service $pkgdir/usr/lib/systemd/system
-  chmod +x $pkgdir/var/lib/airsonic/airsonic.sh
+  cp airsonic-systemd-env $pkgdir/etc/sysconfig/airsonic
 }
 
-sha256sums=('8c2eaf42437a946f240359e0fbc69e1f82785eb173470082710088447e437ee2'
-            'c80475ea59cfb02fd667fafcfc5367513a5d31d98878e2317ef98d47689b7e25'
-            '5ba2274f536fb7d16f6c0266500419a0c3834f6acdeeca81ba9b83264e839a1a')
+sha256sums=('bf5f396f0aba49c022e4c3694c94b1a1edc16c4e1a9137062b0f2899368ff04e'
+            '0d4115c892b8e78f6443f5550d3c0a018650268fd05eba56fd9aa48b39cdd094'  
+            '4af3a549a40a7f1a65688d6f8d60c4b7667ef4f603550842fa7bc51fbdbf27a3')

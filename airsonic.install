@@ -14,9 +14,9 @@ post_install() {
     passwd --lock airsonic &> /dev/null
 
     fix_permissions
-    echo "*************************************************"
-    echo "* Edit /etc/airsonic.conf to configure airsonic *"
-    echo "*************************************************"
+    echo "******************************************************"
+    echo "* Edit /etc/sysconfig/airsonic to configure airsonic *"
+    echo "******************************************************"
 
     systemctl daemon-reload
 }
