@@ -1,7 +1,7 @@
 From 73ef207e99b977f830e8a0d5fc98b8f8d25bb3f6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 19 Mar 2017 18:03:36 +0100
-Subject: [PATCH 1/2] Adjust config for Arch Linux package
+Subject: [PATCH 1/4] Adjust config for Arch Linux package
 
 ---
  conf/app.ini | 31 +++++++++++++++++++------------
@@ -92,5 +92,5 @@ index fc43868e9..bc78b8d8c 100644
  ; Use comma to separate multiple modes, e.g. "console, file"
  MODE = console
 -- 
-2.14.2
+2.15.0
 

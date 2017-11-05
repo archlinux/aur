@@ -8,13 +8,13 @@ _gourl=github.com/gogits/$_pkgname
 
 pkgname=$_pkgname
 pkgver=0.11.29
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Self Hosted Git Service written in Go'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://$_pkgname.io"
 license=('MIT')
-depends=('git>=1.7.1')
+depends=('git>=1.7.1' 'pam')
 optdepends=('sqlite: SQLite support'
             'mariadb: MariaDB support'
             'postgresql: PostgreSQL support'
@@ -28,10 +28,14 @@ backup=("etc/$_pkgname/app.ini")
 install=$_pkgname.install
 source=("$_pkgname-$pkgver::https://github.com/$_orga/$_pkgname/archive/v${pkgver}.tar.gz"
         '0001-Adjust-config-for-Arch-Linux-package.patch'
-        '0002-Adjust-service-file-for-Arch-Linux-package.patch')
+        '0002-Adjust-service-file-for-Arch-Linux-package.patch'
+        '0003-SECURITY-HTML-injection-in-user-search-API.patch'
+        '0004-SECURITY-fix-branch-name-persistent-XSS.patch')
 sha512sums=('094dd6b5010128b8a68c3b4a2be389593380be527dd1f1c37882cbd7762ae31ff8da824d047acecb9ef31233ab3c576bc5030c90763adfa32d01b5830d12c04b'
-            '8aad23ec5b600a56aee4fd8db8e998d973865dd2e6432ca88e014c024a88ed5d7baa1a65b8ae752364d1e94a2d42795f5ced71b3f11dc2c57eb84ed110f2e3c1'
-            '01e19a45212a066589fbedbda9a0f2ac803269b855afed422fdcefb455f8e0da993ac11f0d36028858e4516d2d017e4c29f66dcc7b2260dd24022d1501e230a3')
+            '43a337ccc0932a8e6f538d24ec8e13a7b509d1e7c4da40d2e76339a67b043090ab648b323c08311f5a62f81db19911138b6ff2c74fb9a869a401571d9b3770c5'
+            '969a29c3d1a9667e285ebd3490a83c5a684fa037a540ba242dcd86fe8294eef0b1247fc996a4926832ba0d8c56b5d843a117c14c7696899cb813b847b861a5cc'
+            'dca31ee707586a2c055f549a36cdfd113def1436dfbb8eaf2358347d66c968fdb265e8832f1c8f8041d0fbddda708f5eac37719ab85040024cdf6eb82568a219'
+            'afafb48f86906db3c1385541eba3d02e028cda087067f4ec467b538cc215d5662ba0af8fe488f4ecbb1f6dff96520c47868c1584239540fb41db8781af6eb792')
 _goroot='/usr/lib/go'
 
 prepare() {
@@ -62,6 +66,8 @@ prepare() {
   cd "$GOPATH/src/${_gourl}"
   patch -Np1 -i "$srcdir/0001-Adjust-config-for-Arch-Linux-package.patch"
   patch -Np1 -i "$srcdir/0002-Adjust-service-file-for-Arch-Linux-package.patch"
+  patch -Np1 -i "$srcdir/0003-SECURITY-HTML-injection-in-user-search-API.patch"
+  patch -Np1 -i "$srcdir/0004-SECURITY-fix-branch-name-persistent-XSS.patch"
 }
 
 build() {

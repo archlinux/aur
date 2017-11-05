@@ -1,7 +1,7 @@
 From 6c229c932878e189e3a785c337a1c5d1cdbea2c3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 19 Mar 2017 18:04:48 +0100
-Subject: [PATCH 2/2] Adjust service file for Arch Linux package
+Subject: [PATCH 2/4] Adjust service file for Arch Linux package
 
 ---
  scripts/systemd/gogs.service | 10 +++++-----
@@ -30,5 +30,5 @@ index 9f105bf8e..07ffa1f66 100644
  [Install]
  WantedBy=multi-user.target
 -- 
-2.14.2
+2.15.0
 
