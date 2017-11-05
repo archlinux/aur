@@ -1,0 +1,27 @@
+post_install() {
+	# lpr
+	/opt/brother/Printers/dcpt700w/inf/setupPrintcapij dcpt700w -i
+	
+	# cupswrapper
+	/opt/brother/Printers/dcpt700w/cupswrapper/cupswrapperdcpt700w
+	
+	systemctl restart org.cups.cupsd.service
+}
+
+post_upgrade() {
+	/bin/true
+}
+
+pre_remove() {
+	# lpr
+	/opt/brother/Printers/dcpt700w/inf/setupPrintcapij dcpt700w -e
+	
+	# cupswrapper
+	/opt/brother/Printers/dcpt700w/cupswrapper/cupswrapperdcpt700w -e
+}
+
+op=$1
+shift
+
+$op "$@"
+

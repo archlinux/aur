@@ -1,0 +1,23 @@
+pkgbase = brother-dcpt700w
+	pkgdesc = Driver for the Brother DCP-T700W wifi multifuncional printer
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	install = brother-dcpt700w.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother EULA
+	depends = cups
+	optdepends = brscan4
+	source = fix_lp.patch
+	source = LICENSE
+	source = http://download.brother.com/welcome/dlf101950/dcpt700wlpr-3.0.2-0.i386.rpm
+	source = http://download.brother.com/welcome/dlf101951/dcpt700wcupswrapper-3.0.2-0.i386.rpm
+	md5sums = 9cd6cc312202017e2273a227d7dfc2ff
+	md5sums = 894d2fffe51badc93ebc0ac433317925
+	md5sums = bcd62b9be7bd1707cd243ac184f794b8
+	md5sums = dd4c03ea11be0b570cfe6be0b69c9625
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-dcpt700w
+
