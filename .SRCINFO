@@ -1,0 +1,15 @@
+pkgbase = wuzz-bin
+	pkgdesc = Interactive cli tool for HTTP inspection
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/asciimoo/wuzz
+	arch = x86_64
+	license = AGPL3
+	provides = wuzz
+	conflicts = wuzz
+	noextract = wuzz-bin
+	source = wuzz-bin::https://github.com/asciimoo/wuzz/releases/download/v0.4.0/wuzz_linux_amd64
+	sha256sums = 5a1443e07a5a9b9bb813804290e87fdd27b544f4fe00ef95fe3b64e7b56459ec
+
+pkgname = wuzz-bin
+
