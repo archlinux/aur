@@ -3,7 +3,7 @@
 # Contributor: almostalive   <almostalive2003 at gmail dot com>
 
 pkgname=libretro-snes9x2010-git
-pkgver=877.77e2c98
+pkgver=878.887d41d
 pkgrel=1
 pkgdesc="libretro implementation of Snes9x Next. (Super Nintendo Entertainment System)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -16,7 +16,7 @@ _gitname=snes9x2010
 source=("git+https://github.com/libretro/${_gitname}.git"
         "https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
 md5sums=('SKIP'
-         'e99af67182bf8c6c6a2d345e8dae0d6d')
+         'SKIP')
 
 pkgver() {
   cd "${_gitname}"
