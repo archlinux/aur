@@ -9,7 +9,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL2.1')
 depends=('linux>=4.8')
 makedepends=('git')
-source=($url)
+source=('git://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git')
 sha1sums=('SKIP')
 
 pkgver() {
