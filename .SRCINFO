@@ -1,6 +1,6 @@
 pkgbase = reaver-wps-fork-t6x
 	pkgdesc = Brute force attack against Wifi Protected Setup mod with Pixie Dust Attack
-	pkgver = 1.5.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/t6x/reaver-wps-fork-t6x
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = reaver-wps-fork-t6x
 	replaces = reaver-svn
 	replaces = reaver-git
 	backup = etc/reaver/reaver.db
-	source = https://github.com/t6x/reaver-wps-fork-t6x/archive/v1.5.2.tar.gz
-	sha256sums = b68d988ba7546949b74f3d89ebf9efbd745806906b717f3db7644ea4b12c63b6
+	source = https://github.com/t6x/reaver-wps-fork-t6x/archive/v1.6.3.tar.gz
+	sha256sums = 261d89494bc585df81ba68acd6b2e256122009f82c3e55d75740f958c25a73fa
 
 pkgname = reaver-wps-fork-t6x
 
