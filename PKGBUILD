@@ -10,6 +10,8 @@ license=('BSD')
 depends=('python2')
 makedepends=('git')
 options=(!emptydirs)
+provides=('python2-shortuuid')
+replaces=('python2-shortuuid')
 #optdepends=('')
 
 source=('git+https://github.com/skorokithakis/shortuuid.git')
