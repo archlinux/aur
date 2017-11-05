@@ -1,8 +1,4 @@
-# Maintainer: flying sheep <flying-sheep@web.de>
-# Contributor: N30N <archlinux@alunamation.com>
-# Contributor: swiftgeek <swiftgeek@gmail.com>
-# Contributor: Marvn <mistrmarvn@gmail.com>
-# Contributor: fzerorubigd <fzerorubigd@gmail.com>
+# Maintainer: dustball
 
 pkgname=shank2
 pkgver=update7
