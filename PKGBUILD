@@ -1,4 +1,4 @@
-# Maintainer: dustball <sebastiansonne at hush dot com>
+# Maintainer: dustball
 
 pkgname=pypy3-pip
 pkgver=9.0.1
