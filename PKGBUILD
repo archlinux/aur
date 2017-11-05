@@ -10,10 +10,10 @@ _minor=13
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=3
+_pfrel=9
 _kernelname=-pf
-_pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
-_pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
+_pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
+_pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
 _aufs3="https://github.com/sfjro/aufs4-standalone"
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
@@ -81,7 +81,7 @@ makedepends=('git' 'xmlto' 'docbook-xsl' 'xz' 'bc' 'kmod' 'elfutils')
 source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}.tar.xz"
 	'config.i686' 'config.x86_64'		# the main kernel config files
 	'linux.preset'			        # standard config files for mkinitcpio ramdisk
-	"${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
+	"${_pfpatchhome}/${_pfpatchname}"	# the -pf patchset
    #     "git+$_aufs3#branch=aufs4.$_minor"
         "90-linux-pf.hook"
        )
@@ -699,5 +699,5 @@ sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'b6057e1b5cd22dc287d7de9efc46e4e1a904c5c22c3913618a0cfd1d65cc9c87'
             '277edd02be3ed915b73722ac460f19c1bc79708dfce352f36e5127cc5abd523d'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '16b257d78f65ad397f01d5961aa4216a6bce7bdfae67d9ed98a24e975f9c82e8'
+            'd30aa697a8f6d8ee937418223ba4893211dbb1398cbe8bbdd97bf8252b0f622c'
             'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02')
