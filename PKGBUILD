@@ -1,5 +1,5 @@
-# Maintainer: Kirill Malyshev <keryascorpio at gmail.com>
-# Contributor: Robert Orzanna <orschiro@googlemail.com>
+# Maintainer: dustball
+
 pkgname=oblogout-fork-git
 pkgver=20130106
 pkgrel=3
