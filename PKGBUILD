@@ -7,27 +7,26 @@
 
 pkgname=ntfs-3g-ar
 _pkgname=ntfs-3g_ntfsprogs
-_stablever=2016.2.22
-pkgver=2016.2.22AR.2
+_stablever=2017.3.23
+pkgver=2017.3.23AR.1
 pkgrel=1
 pkgdesc='NTFS filesystem driver and utilities with experimental features'
-url='http://www.tuxera.com/community/ntfs-3g-advanced/'
+url='http://jp-andre.pagesperso-orange.fr/advanced-ntfs-3g.html'
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('util-linux' 'fuse')
-source=("http://tuxera.com/opensource/${_pkgname}-${_stablever}.tgz"
+depends=('util-linux' 'fuse2')
+source=("https://tuxera.com/opensource/${_pkgname}-${_stablever}.tgz"
         "http://pagesperso-orange.fr/jp-andre/${_pkgname}-${pkgver}.tgz")
-sha1sums=('382df40c366711003cf24d2342033c23e2580b42'
-          '66aba892ed3ad9bbf59bd2f685a3b091e661b6d6')
+sha256sums=('3e5a021d7b761261836dcb305370af299793eedbded731df3d6943802e1262d5'
+            'fe8cf2b0326000013f25dc2870305f9ae06b3c7df43ce460d450fa87764cde38')
 
 conflicts=('ntfsprogs' 'ntfs-3g')
 provides=('ntfsprogs' "ntfs-3g=$_stablever-$pkgrel")
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	sed 's|$(DESTDIR)/sbin|$(DESTDIR)/usr/bin|' -i {ntfsprogs,src}/Makefile.in
-	cd "${srcdir}/${_pkgname}-${_stablever}"
-	sed 's|$(DESTDIR)/sbin|$(DESTDIR)/usr/bin|' -i {ntfsprogs,src}/Makefile.in
+	sed 's|$(DESTDIR)/sbin|$(DESTDIR)/usr/bin|' -i {ntfsprogs,src}/Makefile.in \
+		../${_pkgname}-${_stablever}/{ntfsprogs,src}/Makefile.in
 }
 
 _configure() {
@@ -58,6 +57,6 @@ package_ntfs-3g-ar() {
 	make DESTDIR="${pkgdir}" rootbindir=/usr/bin rootsbindir=/usr/bin rootlibdir=/usr/lib install
 	ln -s /usr/bin/ntfs-3g "${pkgdir}/usr/bin/mount.ntfs"
 
-	cd "${srcdir}/${_pkgname}-${_stablever}"
+	cd ../${_pkgname}-${_stablever}
 	make -C libntfs-3g DESTDIR="${pkgdir}" rootlibdir=/usr/lib install-libLTLIBRARIES
 }
