@@ -1,3 +1,5 @@
+# Maintainer: dustball
+
 pkgname=quicktile-git
 pkgver=20170907
 pkgrel=1
