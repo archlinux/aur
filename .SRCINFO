@@ -1,6 +1,6 @@
 pkgbase = noise-repellent
 	pkgdesc = An lv2 plugin for broadband noise reduction.
-	pkgver = 0.1.2
+	pkgver = 0.1.3f
 	pkgrel = 1
 	url = https://github.com/lucianodato/noise-repellent
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = noise-repellent
 	depends = lv2
 	optdepends = jack: standalone jack client
 	optdepends = ardour: intended use
-	source = https://github.com/lucianodato/noise-repellent/archive/0.1.2.tar.gz
-	md5sums = 67fd693e80f86a09c2678f13ef1c2958
+	source = https://github.com/lucianodato/noise-repellent/archive/0.1.3f.tar.gz
+	md5sums = c09f63f04bcb2d74590cdcf332f87799
 
 pkgname = noise-repellent
 
