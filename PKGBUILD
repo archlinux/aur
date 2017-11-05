@@ -3,7 +3,7 @@
 
 pkgname=latte-dock-git
 gitname=latte-dock
-pkgver=0.7.1.r60.g9932ae8
+pkgver=0.7.1.r83.g1e09238
 pkgrel=1
 pkgdesc='Replacement dock for Plasma desktops, providing an elegant and intuitive experience for your tasks and plasmoids- git version'
 arch=('i686' 'x86_64')
@@ -38,6 +38,6 @@ build() {
 package() {
   cd ${gitname}/build
 
-#  make fetch-translations
+  make fetch-translations
   make DESTDIR=${pkgdir} install
 }
