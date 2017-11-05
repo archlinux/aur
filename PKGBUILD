@@ -1,14 +1,14 @@
-# Maintainer: Sebastian Sonne <sebastiansonne at hush dot com>
+# Maintainer: dustball
 
 # git clone https://github.com/ValveSoftware/steamos_kernel.git
 # cd steamos_kernel
 # echo "$(git rev-parse --abbrev-ref HEAD).$(git log -n 1 --pretty=format:%h -- drivers/input/joystick/xpad.c)" | sed 's/-/./g'
 
-_xpadsteamoscommit='brewmaster-4.1'
+_xpadsteamoscommit='brewmaster-4.11'
 
 _pkgbase='steamos-xpad'
 pkgname='steamos-xpad-dkms'
-pkgver='20161217'
+pkgver='20171105'
 pkgrel='1'
 pkgdesc="xpad kernel module included with Valve's SteamOS"
 arch=('any')
