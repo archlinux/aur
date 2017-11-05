@@ -1,7 +1,7 @@
 # Maintainer: Max Struebing mxstrbng@gmail.com
 
 pkgname=tldr-go-client-git
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="fast TLDR client written in Golang"
 arch=(any)
@@ -16,7 +16,7 @@ provides=('tldr')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g'
 }
 
 build() {
