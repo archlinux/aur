@@ -9,6 +9,7 @@ pkgbase = grml2usb
 	depends = bash
 	optdepends = cdrkit: creating multiboot ISOs with grml2iso
 	optdepends = syslinux: installing boot loader
+	optdepends = grub: installing boot loader
 	noextract = deb_package_0.16.0_1_amd64.deb
 	noextract = deb_package_0.16.0_1_amd64.deb
 	options = !strip
