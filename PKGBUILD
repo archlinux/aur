@@ -2,31 +2,29 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 
 pkgname=sundials
-pkgver=2.7.0
-pkgrel=3
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Suite of nonlinear differential/algebraic equation solvers"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://computation.llnl.gov/casc/sundials/main.html"
 license=('BSD')
 depends=('gcc-libs' 'lapack' 'gcc-fortran' 'openmpi')
 makedepends=('cmake')
-source=("http://computation.llnl.gov/projects/sundials/download/$pkgname-$pkgver.tar.gz"
-	"https://raw.githubusercontent.com/conda-forge/sundials-feedstock/9cc2f6aa344487b892dd3dd46793735c3ee41ece/recipe/sundials-link-libs.patch")
-sha256sums=('d39fcac7175d701398e4eb209f7e92a5b30a78358d4a0c0fcc23db23c11ba104'
-	'08febcacb706694f7461d6496047bc57048187aa3f77ee000cec2626c19e15c1')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p0 -i ../sundials-link-libs.patch
-}
+source=("http://computation.llnl.gov/projects/sundials/download/$pkgname-$pkgver.tar.gz")
+sha256sums=('28b8e07eecfdef66e2c0d0ea0cb1b91af6e4e94d71008abfe80c27bf39f63fde')
 
 build() {
 	rm -rf build
 	mkdir build  &&  cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr	\
 	      -DMPI_ENABLE=ON	\
-	      -DLAPACK_ENABLE=ON	\
-	      -DEXAMPLES_ENABLE=ON	\
+	      -DPTHREAD_ENABLE=ON	\
+	      -DOPENMP_ENABLE=ON	\
+	      -DFCMIX_ENABLE=ON	\
+	      -DEXAMPLES_ENABLE_C=ON	\
+	      -DEXAMPLES_ENABLE_CXX=ON	\
+	      -DEXAMPLES_ENABLE_F77=ON	\
+	      -DEXAMPLES_ENABLE_F90=ON	\
 	      -DEXAMPLES_INSTALL=ON	\
 	      -DEXAMPLES_INSTALL_PATH=/usr/share/"$pkgname-$pkgver"/examples	\
 	      ../"$pkgname-$pkgver"

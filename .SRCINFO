@@ -1,20 +1,19 @@
 pkgbase = sundials
 	pkgdesc = Suite of nonlinear differential/algebraic equation solvers
-	pkgver = 2.7.0
-	pkgrel = 3
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://computation.llnl.gov/casc/sundials/main.html
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = BSD
 	makedepends = cmake
 	depends = gcc-libs
 	depends = lapack
 	depends = gcc-fortran
 	depends = openmpi
-	source = http://computation.llnl.gov/projects/sundials/download/sundials-2.7.0.tar.gz
-	source = https://raw.githubusercontent.com/conda-forge/sundials-feedstock/9cc2f6aa344487b892dd3dd46793735c3ee41ece/recipe/sundials-link-libs.patch
-	sha256sums = d39fcac7175d701398e4eb209f7e92a5b30a78358d4a0c0fcc23db23c11ba104
-	sha256sums = 08febcacb706694f7461d6496047bc57048187aa3f77ee000cec2626c19e15c1
+	source = http://computation.llnl.gov/projects/sundials/download/sundials-3.0.0.tar.gz
+	sha256sums = 28b8e07eecfdef66e2c0d0ea0cb1b91af6e4e94d71008abfe80c27bf39f63fde
 
 pkgname = sundials
 
