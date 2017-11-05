@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.17
+_ver=1.19
 _pkgbase=mate-common
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
@@ -17,7 +17,7 @@ depends=('autoconf' 'automake' 'gettext' 'gtk-doc' 'intltool' 'libtool'
 groups=('mate')
 url="http://mate-desktop.org"
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('58bb5b556e2e3bee0c73979d297baeb448d9147f')
+sha1sums=('205a41981a3193ddd34e2e2a8562c939b64b8e51')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
