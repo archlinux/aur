@@ -2,7 +2,7 @@ pkgbase = libgpiod-git
 	pkgdesc = C library and tools for interacting with the linux GPIO character device
 	pkgver = r530.a029549
 	pkgrel = 1
-	url = https://github.com/brgl/libgpiod
+	url = https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -12,7 +12,7 @@ pkgbase = libgpiod-git
 	license = LGPL2.1
 	makedepends = git
 	depends = linux>=4.8
-	source = git://github.com/brgl/libgpiod
+	source = https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git
 	sha1sums = SKIP
 
 pkgname = libgpiod-git
