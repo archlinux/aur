@@ -1,7 +1,7 @@
 pkgbase = mons
 	pkgdesc = POSIX Shell script to quickly manage 2-monitors display.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ventto/mons.git
 	arch = any
 	license = MIT

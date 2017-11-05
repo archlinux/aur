@@ -2,7 +2,7 @@
 
 pkgname=mons
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='POSIX Shell script to quickly manage 2-monitors display.'
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
@@ -19,7 +19,7 @@ sha256sums=('SKIP' 'SKIP')
 prepare() {
   cd ${srcdir}
   rm -r ${pkgname}-${pkgver}/posix-shell-list
-  mv 'posix-shell-list-1.0' ${pkgname}-${pkgver}/posix-shell-list
+  mv 'libshlist-1.0' ${pkgname}-${pkgver}/posix-shell-list
 }
 
 build() {
