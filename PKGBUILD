@@ -5,7 +5,7 @@
 _ver=1.19
 _pkgbase=mate-session-manager
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc="The MATE Session Handler (GTK3 version)"
 url="http://mate-desktop.org"
@@ -23,7 +23,7 @@ optdepends=('lightdm-gtk-greeter: A lightweight display manager'
             'xdg-user-dirs-gtk: Add autostart that prompts to rename user directories when switching locales')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('17c4dd451b8841faa3341715f247595836f12d88')
+sha1sums=('6714a5d7a03b5f3ce0c104742ca406cedee3586e')
 
 prepare() {
     cd "${srcdir}"
