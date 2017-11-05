@@ -1,0 +1,12 @@
+pkgbase = ttf-zalgo
+	pkgdesc = He comes.
+	pkgver = 1
+	pkgrel = 1
+	url = https://fontstruct.com/fontstructions/show/262218/zalgo_2
+	arch = any
+	license = custom
+	source = https://github.com/zyxwvutsrqponmlkjihgfedcba/zalgo/archive/zalgo-1.tar.gz
+	sha256sums = 4e2287d5dee36f717ef10d70a38f3e52decc864ce1b35edb0410679118f03c01
+
+pkgname = ttf-zalgo
+
