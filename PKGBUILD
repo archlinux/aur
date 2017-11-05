@@ -1,4 +1,4 @@
-# Maintainer: Niluge_KiWi <kiwiiii@gmail.com>
+# Maintainer: dustball
 
 pkgname=runner2
 pkgver=1.0
