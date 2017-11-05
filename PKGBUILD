@@ -1,4 +1,4 @@
-# Maintainer: dustball <sebastiansonne at hush dot com>
+# Maintainer: dustball
 
 pkgname=gnaural
 pkgver=1.0.20110606
