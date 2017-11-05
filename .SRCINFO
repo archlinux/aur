@@ -1,0 +1,17 @@
+pkgbase = ternimal-git
+	pkgdesc = Simulate a lifeform in the terminal
+	pkgver = r5.2eea4f4
+	pkgrel = 1
+	url = https://github.com/p-e-w/ternimal
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	makedepends = rust
+	provides = ternimal
+	conflicts = ternimal
+	source = ternimal::git+https://github.com/p-e-w/ternimal
+	sha256sums = SKIP
+
+pkgname = ternimal-git
+
