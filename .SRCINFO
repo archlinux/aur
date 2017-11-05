@@ -13,5 +13,6 @@ pkgbase = sat-tmp-hg
 
 pkgname = sat-tmp-hg
 	pkgdesc = sat_tmp aims to temporary store files needed by Salut-a-toi (sat). These monkey patchs are not merged upstream yet. For now, only wokkel is impacted.
-	depends = python2-jinja
+	depends = python2-wokkel,
+	depends = sat-xmpp-hg
 
