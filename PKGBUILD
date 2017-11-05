@@ -9,7 +9,7 @@ license=('GPL, LGPL')
 depends=('psp-sdk')
 makedepends=('psp-gcc')
 options=('staticlibs' '!buildflags' '!strip')
-source=("http://sourceforge.net/projects/mikmod/files/libmikmod-${pkgver}.tar.gz"
+source=("http://downloads.sourceforge.net/project/mikmod/outdated_versions/libmikmod/3.2.0/libmikmod-3.2.0-DONTUSE.tar.gz"
         "libmikmod-${pkgver}-PSP.patch")
 md5sums=('96e9820d72a41fe27ff304071739696c'
          'ea462ae2c54448718648986150287476')
