@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = cleaning up removed package caches
+When = PostTransaction
+Exec = /usr/bin/paccache -ruk0

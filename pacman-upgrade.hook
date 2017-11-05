@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = cleaning up old packages
+When = PostTransaction
+Exec = /usr/bin/paccache -r
