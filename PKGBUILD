@@ -1,7 +1,4 @@
-# Contributor: Michael Manley <mmanley@nasutek.com>
-# Contributor: Patrick CRESSANT <pcressant@yahoo.fr>
-# Contributor: Konstantin Oblaukhov <obko@mail.ru>
-# Maintainer: Sebastian Sonne <sebastiansonne at hush dot com>
+# Maintainer: dustball
 
 # Rinse RPM Distro Bootstrapper
 
