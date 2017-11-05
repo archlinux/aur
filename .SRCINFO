@@ -1,6 +1,6 @@
 pkgbase = corebird
 	pkgdesc = Native Gtk+ Twitter Client
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://corebird.baedert.org/
 	arch = i686
@@ -26,8 +26,8 @@ pkgbase = corebird
 	optdepends = noto-fonts-emoji: Emoji support
 	optdepends = emojione-fonts: Emoji support
 	conflicts = corebird-git
-	source = https://github.com/baedert/corebird/archive/1.7.1.tar.gz
-	sha256sums = 3fa248b4e00b3975f92995031d7c2659954cf8ef212c2c699b5ff409f4100edd
+	source = https://github.com/baedert/corebird/archive/1.7.2.tar.gz
+	sha256sums = dabaafa812924e40c9046d99cd547727ed2b520afb4a0f10eb4cca8f90e145e3
 
 pkgname = corebird
 
