@@ -1,0 +1,36 @@
+pkgbase = alsaplayer-git
+	pkgdesc = A heavily multi-threaded PCM player that tries to excercise the ALSA library and driver quite a bit
+	pkgver = r1456.47670c7
+	pkgrel = 1
+	url = http://alsaplayer.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gtk2
+	makedepends = libid3tag
+	makedepends = libvorbis
+	makedepends = libmad
+	makedepends = libmikmod
+	makedepends = jack
+	makedepends = mesa
+	makedepends = audiofile
+	makedepends = doxygen
+	makedepends = git
+	depends = desktop-file-utils
+	optdepends = gtk2: for the gtk2 GUI interface
+	optdepends = libgl: for the OpenGL visual plugins
+	optdepends = jack: for JACK audio server output support
+	optdepends = audiofile: for support of various audio formats like AIFF, WAVE, .snd/.au
+	optdepends = libid3tag: for flac support
+	optdepends = flac: for flac support
+	optdepends = libmad: for MPEG support
+	optdepends = libsndfile: for sndfile support
+	optdepends = libvorbis: for ogg vorbis support
+	optdepends = libmikmod: for mod, s3m, it and xm formats supports
+	provides = alsaplayer
+	conflicts = alsaplayer
+	source = alsaplayer-git::git+https://github.com/alsaplayer/alsaplayer.git
+	md5sums = SKIP
+
+pkgname = alsaplayer-git
+
