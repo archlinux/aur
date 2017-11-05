@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 _pkgname=gifski
 pkgname=${_pkgname}-git
-pkgver=0.4.0.r4.gd648773
+pkgver=0.5.0.r7.g418de5a
 pkgrel=1
 pkgdesc="GIF encoder based on libimagequant (pngquant, gifquant?). Squeezes maximum possible quality from the awful GIF format"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  cargo build --release --features=video
+  cargo build --release --features=video,openmp
 }
 
 package() {
