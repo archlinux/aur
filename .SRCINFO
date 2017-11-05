@@ -1,0 +1,18 @@
+pkgbase = libmms-git
+	pkgdesc = A library for downloading (streaming) media files
+	pkgver = 0.6.4.r6.g03fa0e9
+	pkgrel = 1
+	url = https://sourceforge.net/projects/libmms/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = glibc
+	provides = libmms
+	conflicts = libmms
+	options = staticlibs
+	source = git+https://git.code.sf.net/p/libmms/code
+	sha256sums = SKIP
+
+pkgname = libmms-git
+
