@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.17
+_ver=1.19
 _pkgbase=mate-menus
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
@@ -14,10 +14,10 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('glib2' 'python2')
-makedepends=('gobject-introspection' 'mate-common-dev')
+makedepends=('gobject-introspection' 'mate-common>=1.19')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('8ba1a8b18b65b0746946531f25588b14e4794cd3')
+sha1sums=('0fe77b27dc58f3d4d872f89ba72691b5427b8062')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
