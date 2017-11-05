@@ -25,7 +25,7 @@ pkgver() {
                  
 package(){
     pkgdesc="sat_tmp aims to temporary store files needed by Salut-a-toi (sat). These monkey patchs are not merged upstream yet. For now, only wokkel is impacted."
-    depends=( "python2-wokkel" "sat-xmpp-hg" )
+    depends=( "python2-wokkel" )
     cd "$pkgdir"
     install -dm755 "usr/lib/python2.7/site-packages/$_realname"  
     cd "$srcdir/$_realname/$_realname/"
