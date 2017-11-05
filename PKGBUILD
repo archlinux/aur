@@ -1,28 +1,34 @@
 # Maintainer: Max Struebing mxstrbng@gmail.com
 
 pkgname=tldr-go-client-git
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="fast TLDR client written in Golang"
 arch=(any)
 url="https://github.com/mstruebing/tldr"
 license=('MIT')
 depends=()
-makedepends=('git' 'make' 'go')
+makedepends=('git' 'go')
 optdepends=('bash-completion: bash completion out of the box')
 source=("git+$url")
 md5sums=('SKIP')
 provides=('tldr')
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-    cd "$srcdir/$(basename $url)" 
+    cd "$srcdir/tldr" 
     make build
 }
 
 package() {
-    cd "$srcdir/$(basename $url)/bin" 
+    cd "$srcdir/tldr/bin" 
     install -Dm755 tldr "$pkgdir/usr/bin/tldr"
-    cd "$srcdir/$(basename $url)/autocompletion" 
-    install -Dm644 autocomplete.zsh "${pkgdir}/usr/share/zsh/site-functions/_tldr"
-    install -Dm644 autocomplete.bash "${pkgdir}/usr/share/bash-completion/completions/tldr"
+    cd "$srcdir/tldr" 
+    install -Dm644 autocompletion/autocomplete.zsh "${pkgdir}/usr/share/zsh/site-functions/_tldr"
+    install -Dm644 autocompletion/autocomplete.bash "${pkgdir}/usr/share/bash-completion/completions/tldr"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/tldr/LICENSE"
 }
