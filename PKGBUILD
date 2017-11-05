@@ -5,7 +5,7 @@
 _ver=1.19
 _pkgbase=engrampa
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc="Archive manipulator for MATE (GTK3 version)"
 url="http://mate-desktop.org"
@@ -25,7 +25,7 @@ optdepends=('caja: file archiver extension'
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz"
         fr-rpm-bsdtar.patch)
-sha1sums=('6dae0da60796dce3b7e0047728579ffb92643775'
+sha1sums=('ed7535380170de64b2a5e61b81806e252bc36792'
           '219b05a979bf6f249aaae27964f02345fd81168d')
 
 prepare() {
