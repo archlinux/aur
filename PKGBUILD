@@ -1,31 +1,33 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Xpdf-nodrm: Mark Pustjens <pustjens@dds.nl>
 
-pkgname=xpdf
+pkgname=xpdf-motif
 pkgver=3.04
-pkgrel=4
-pkgdesc='Viewer for Portable Document Format (PDF) files'
+pkgrel=1
+pkgdesc='Viewer for Portable Document Format (PDF) files, legacy version without qt'
 url='http://www.foolabs.com/xpdf/'
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('lesstif' 'gsfonts' 'libxt' 'libpaper')
-optdepends=('poppler: tools that used to be included in xpdf'
+depends=('openmotif' 'libpaper' 'libxpm')
+conflicts=('xpdf')
+provides=('xpdf')
+optdepends=('gsfonts: providing the 14 standard postscript fonts'
+	    'poppler: tools that used to be included in xpdf'
             'desktop-file-utils: for desktop environments')
-source=("ftp://ftp.foolabs.com/pub/${pkgname}/${pkgname}-${pkgver%_*}.tar.gz"
+source=("http://www.xpdfreader.com/dl/old/${pkgname%-motif}-${pkgver%_*}.tar.gz"
         '02-permissions.patch'
         'desktop')
 sha1sums=('b9b1dbb0335742a09d0442c60fd02f4f934618bd'
           'f192728680aaf575c178ce25c4aefa92e798a879'
           '17ebbfe457cb92e97b12b7362e8ce961526012d9')
-
-install=install
 backup=('etc/xpdfrc')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver%_*}"
+  cd "${srcdir}/${pkgname%-motif}-${pkgver%_*}"
 
   patch -p1 -i ../02-permissions.patch
 
@@ -47,7 +49,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver%_*}"
+  cd "${srcdir}/${pkgname%-motif}-${pkgver%_*}"
 
   make DESTDIR="${pkgdir}" install
 
