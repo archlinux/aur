@@ -1,12 +1,15 @@
 pkgbase = python-xnatpy
 	pkgdesc = A new XNAT client that exposes XNAT objects/functions as python objects/functions.
 	pkgver = 0.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/bigr_erasmusmc/xnatpy
 	arch = any
 	license = Apache
 	depends = python
 	depends = python-isodate
+	depends = python-progressbar
+	depends = python-six
+	depends = python-requests
 	replaces = xnatpy
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/x/xnat/xnat-0.2.3.tar.gz

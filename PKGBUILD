@@ -1,14 +1,14 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=python-xnatpy
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A new XNAT client that exposes XNAT objects/functions as python objects/functions."
 arch=('any')
 _name=xnat
 url="https://bitbucket.org/bigr_erasmusmc/xnatpy"
 license=('Apache')
 groups=()
-depends=('python' 'python-isodate')
+depends=('python' 'python-isodate' 'python-progressbar' 'python-six' 'python-requests')
 makedepends=()
 provides=()
 conflicts=()
