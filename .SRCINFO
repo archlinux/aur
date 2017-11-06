@@ -1,5 +1,5 @@
 pkgbase = appmenu-qt5-git
-	pkgdesc = Qt5-compatible approach of the existing appmenu-qt.
+	pkgdesc = Export Qt5 applications menus over D-Bus
 	pkgver = r4.ac0a789
 	pkgrel = 1
 	url = https://github.com/gustawho/appmenu-qt5
