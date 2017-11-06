@@ -1,6 +1,6 @@
 pkgbase = rapid-photo-downloader-bzr
 	pkgdesc = Photo and video downloader
-	pkgver = 0.9.5b1.r1033
+	pkgver = 0.9.5.r1037
 	pkgrel = 1
 	url = http://www.damonlynch.net/rapid/
 	arch = any
