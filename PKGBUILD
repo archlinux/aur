@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=gdl-git
-pkgver=3.26.0r
+pkgver=3.26.0
 pkgrel=1
 pkgdesc="GNOME Docking Libraries, git version"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ _gitname="gdl"
 
 pkgver() {
   cd $srcdir/$_gitname
-  printf "%sr%s" "$(git describe|cut -c5-|tr - .|tr _ .)"
+  printf "%s" "$(git describe|cut -c5-|tr - .|tr _ .)"
 }
 
 build() {
