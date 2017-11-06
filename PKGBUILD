@@ -1,7 +1,7 @@
 # Maintainer: Nils Christopher Brause <nilschrbrause@googlemail.com>
 pkgname=waylandpp
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Wayland C++ bindings'
 arch=('i686' 'x86_64' 'armv5' 'armv6' 'armv7' 'armv8')
 url='https://github.com/NilsBrause/waylandpp'
@@ -17,7 +17,7 @@ build()
     cd $pkgname-$pkgver
     mkdir build
     cd build
-    cmake CMAKE_INSTALL_PREFIX="/usr" ..
+    cmake -DCMAKE_INSTALL_PREFIX="/usr" ..
     make
 }
 
