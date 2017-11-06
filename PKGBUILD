@@ -1,8 +1,8 @@
-# Maintainer: Dustin Falgout <dustin@antergos.com>
+# Maintainer: Antergos Developers <dev@antergos.com>
 
 pkgname=ttf-google-fonts-typewolf
-_commit='35eb2d78a5006cb22c006452118f1d103ef0793b'
-pkgver=17.2.r35eb2d7
+_commit='2e2caa23045987a4dfd6f072d611e5da720b484c'
+pkgver=17.11.git+2e2caa2
 pkgrel=1
 pkgdesc="Typewolf's curated collection of the 40 best fonts from the Google Fonts project."
 arch=('any')
@@ -52,6 +52,7 @@ provides=(
 	'ttf-source-sans-pro'
 	'ttf-source-serif-pro'
 	'ttf-spacemono'
+	'ttf-spectral'
 	'ttf-worksans'
 )
 conflicts=(
@@ -61,7 +62,7 @@ conflicts=(
 	'ttf-google-fonts-opinionated-git'
 )
 source=("fonts-${_commit}.tar.gz::https://github.com/google/fonts/archive/${_commit}.tar.gz")
-md5sums=('30f8e5b48af8c5a7d7fac47c68a2c784')
+md5sums=('566f49255f1ce0bf4531907c6404d3b0')
 
 
 package() {
@@ -84,4 +85,3 @@ package() {
 
 }
 
-# -*- mode: bash;-*-
