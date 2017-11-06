@@ -1,7 +1,7 @@
 # Maintainer: Dustin Falgout <dustin@antergos.com>
 
 pkgname=brisk-menu
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Modern, efficient menu for the MATE Desktop Environment.'
 arch=('i686' 'x86_64')
@@ -9,28 +9,27 @@ url='https://github.com/solus-project/brisk-menu'
 license=('GPL2')
 groups=('mate')
 depends=('mate-panel')
-makedepends=('gnome-common')
-source=("https://github.com/solus-project/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('f420a9185e6b3dc930a42da36dc8b612')
+makedepends=('gnome-common' 'meson')
+source=("https://github.com/solus-project/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
+md5sums=('7230dba13a9ddb15cc5d6d7e16ac6e16')
 
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-v${pkgver}"
+	mkdir build
 
-	./configure \
+	meson build \
 		--prefix=/usr \
 		--bindir=/usr/bin \
-		--sbindir=/usr/bin \
-		--libdir=/usr/lib \
 		--libexecdir=/usr/lib/${pkgname}
 
-	make
+	ninja -C build
 }
 
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-v${pkgver}/build"
 
-	make DESTDIR="${pkgdir}" install
+	DESTDIR="${pkgdir}" ninja install
 }
 
