@@ -1,5 +1,4 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
-# Contributor: David Campbell <davekong@archlinux.us>
+# Maintainer: Brett M. Gilio <mail@brettgilio.com>
 
 pkgname=interviews
 pkgver=19
