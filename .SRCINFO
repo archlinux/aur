@@ -1,20 +1,22 @@
-pkgbase = neuron
-	pkgdesc = Empirically-based simulations of neurons and networks of neurons
-	pkgver = 7.4
+pkgbase = neuron-bin
+	pkgdesc = Neuron for empirically-based simulations of neurons and networks of neurons. A flexible and powerful simulator of neurons and networks NEURON is a simulation environment for developing and exercising models of neurons and networks of neurons.
+	pkgver = 7.5
 	pkgrel = 1
-	url = http://www.neuron.yale.edu
+	url = http://neuron.yale.edu/ftp/neuron/versions/v7.5/nrn-7.5.x86_64.deb
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = interviews
+	depends = aarch64-linux-gnu-gcc>=5.2
+	depends = libtinfo5>=6
+	depends = libx11
 	depends = openmpi
 	depends = python
-	optdepends = python-numpy
-	optdepends = python-scipy
-	optdepends = mpich2
-	options = libtool
-	source = http://www.neuron.yale.edu/ftp/neuron/versions/v7.4/nrn-7.4.tar.gz
-	md5sums = 2c0bbee8a9e55d60fa26336f4ab7acbf
+	depends = python-numpy
+	depends = python-scipy
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = http://neuron.yale.edu/ftp/neuron/versions/v7.5/nrn-7.5.x86_64.deb
+	sha512sums_x86_64 = a4ad3e5b8a3ad7e480476232b32155b03c9dd313c22480690a96da3bd039b8d106f41e1907cbe4acdf153af297b98a195204bb5e8df46b5f911dde7fda08f131
 
-pkgname = neuron
+pkgname = neuron-bin
 
