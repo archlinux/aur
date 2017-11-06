@@ -2,7 +2,7 @@
 
 pkgname=ubuntu-kylin-theme
 pkgver=1.7.4
-pkgrel=1
+pkgrel=1.1
 pkgdesc="The official theme for Ubuntu Kylin"
 arch=('any')
 url="https://launchpad.net/ubuntukylin-theme"
@@ -11,7 +11,6 @@ depends=('gnome-icon-theme' 'hicolor-icon-theme' 'ttf-droid') # 'ubuntu-mono')
 #makedepends=('')
 optdepends=('plymouth: Contrain a theme for this login splash screen'
 	'grub: Contain a theme for this bootloader manager'
-	'lightdm-unity-greeter: Contain a theme for this lightdm greeter'
 	'chinese-calendar: Official calendary for Ubuntu Kylin'
 	'fcitx: Contain 4 themes for the Qimpanel version')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/ubuntukylin-theme_$pkgver.tar.xz")

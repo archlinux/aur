@@ -1,7 +1,7 @@
 pkgbase = ubuntu-kylin-theme
 	pkgdesc = The official theme for Ubuntu Kylin
 	pkgver = 1.7.4
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://launchpad.net/ubuntukylin-theme
 	arch = any
 	license = custom:GPL3
@@ -10,7 +10,6 @@ pkgbase = ubuntu-kylin-theme
 	depends = ttf-droid
 	optdepends = plymouth: Contrain a theme for this login splash screen
 	optdepends = grub: Contain a theme for this bootloader manager
-	optdepends = lightdm-unity-greeter: Contain a theme for this lightdm greeter
 	optdepends = chinese-calendar: Official calendary for Ubuntu Kylin
 	optdepends = fcitx: Contain 4 themes for the Qimpanel version
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/ubuntukylin-theme_1.7.4.tar.xz
