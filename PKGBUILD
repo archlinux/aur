@@ -1,13 +1,13 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=wxnatpy
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="wxnatpy is a wxPython widget which allows users to browse the contents of a XNAT repository. It is built on top of wxPython and xnatpy."
 arch=('any')
 url="https://github.com/pauldmccarthy/wxnatpy"
 license=('Apache')
 groups=()
-depends=('python' 'wxpython' 'xnatpy')
+depends=('python' 'wxpython' 'python-xnatpy')
 makedepends=()
 provides=()
 conflicts=()
