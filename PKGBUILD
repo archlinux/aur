@@ -1,7 +1,7 @@
 # Maintainer: Ondrej Patrovic <ondrej@patrovic.com>
 
 pkgname=010editor
-pkgver=8.0
+pkgver=8.0.1
 
 pkgrel=1
 pkgdesc="Professional text and hex editing with Binary Templates technology"
@@ -18,8 +18,8 @@ sha256sums=('e3398b117934840828a96cd33534fc9b9242ec96089c2f283add137975499766')
 source_i686=(https://download.sweetscape.com/010EditorLinux32Installer$_urlver.tar.gz)
 source_x86_64=(https://download.sweetscape.com/010EditorLinux64Installer$_urlver.tar.gz)
 
-sha256sums_i686=('94d81558ff0c0d8375a68b5250d509d1dbcd5aa61544b0fbf2d644ab095390ad')
-sha256sums_x86_64=('741a0cdad18bbcbe3661f736fd7d3227162f9b50e315a39c7524965900dfb595')
+sha256sums_i686=('3a24d165a0cdd33d93cc68b052c898d0288b55af2f8a1e525ef98e4080610fd0')
+sha256sums_x86_64=('23152d80cf690e6913abd2d2857d077f12da9ddbb534d397d4c742194f7369d0')
 
 package() {
 	cd "${srcdir}"
