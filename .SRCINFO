@@ -2,7 +2,7 @@
 # Sat Jul 16 16:43:52 UTC 2016
 pkgbase = slackcat
 	pkgdesc = Commandline utility for posting snippets to Slack
-	pkgver = 1.1
+	pkgver = 1.3
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
