@@ -1,0 +1,97 @@
+diff -up epienbroek-mail-notification-eab5c13/src/mn-evolution-folder-tree-server.gob.evo3_11_2 epienbroek-mail-notification-eab5c13/src/mn-evolution-folder-tree-server.gob
+--- epienbroek-mail-notification-eab5c13/src/mn-evolution-folder-tree-server.gob.evo3_11_2	2012-11-21 19:57:35.000000000 +0100
++++ epienbroek-mail-notification-eab5c13/src/mn-evolution-folder-tree-server.gob	2013-11-20 09:26:27.159056391 +0100
+@@ -20,14 +20,18 @@
+ %privateheader{
+ #include <gtk/gtk.h>
+ #include <libedataserver/eds-version.h>
+-#if EDS_CHECK_VERSION(3,3,5)
+-  #include <libemail-engine/e-mail-session.h>
++#if EDS_CHECK_VERSION(3,11,2)
++  #include <libemail-engine/libemail-engine.h>
+ #else
+-  #if EDS_CHECK_VERSION(2,91,0)
+-    #include <mail/e-mail-session.h>
++  #if EDS_CHECK_VERSION(3,3,5)
++    #include <libemail-engine/e-mail-session.h>
+   #else
+-    /* GOB2 doesn't support private members guarded with an #if */
+-    typedef EMailSession void;
++    #if EDS_CHECK_VERSION(2,91,0)
++      #include <mail/e-mail-session.h>
++    #else
++      /* GOB2 doesn't support private members guarded with an #if */
++      typedef EMailSession void;
++    #endif
+   #endif
+ #endif
+ %}
+@@ -40,10 +44,14 @@
+   #include <mail/mail-component.h>
+ #endif
+ #if EDS_CHECK_VERSION(3,1,0)
+-  #if EDS_CHECK_VERSION(3,3,5)
+-    #include <libemail-engine/e-mail-folder-utils.h>
++  #if EDS_CHECK_VERSION(3,11,2)
++    #include <libemail-engine/libemail-engine.h>
+   #else
+-    #include <mail/e-mail-folder-utils.h>
++    #if EDS_CHECK_VERSION(3,3,5)
++      #include <libemail-engine/e-mail-folder-utils.h>
++    #else
++      #include <mail/e-mail-folder-utils.h>
++    #endif
+   #endif
+   #include <mail/e-mail-browser.h>
+   #include <mail/e-mail-reader.h>
+diff -up epienbroek-mail-notification-eab5c13/src/mn-evolution-plugin.c.evo3_11_2 epienbroek-mail-notification-eab5c13/src/mn-evolution-plugin.c
+--- epienbroek-mail-notification-eab5c13/src/mn-evolution-plugin.c.evo3_11_2	2012-11-21 19:57:35.000000000 +0100
++++ epienbroek-mail-notification-eab5c13/src/mn-evolution-plugin.c	2013-11-20 08:57:17.779176014 +0100
+@@ -27,6 +27,9 @@
+ #include <camel/camel.h>
+ #include <libedataserver/eds-version.h>
+ #include <mail/em-event.h>
++#if EDS_CHECK_VERSION(3,11,2)
++#include <libemail-engine/libemail-engine.h>
++#else
+ #if EDS_CHECK_VERSION(3,3,5)
+ #include <libemail-engine/e-mail-folder-utils.h>
+ #include <libemail-engine/mail-tools.h>
+@@ -34,6 +37,7 @@
+ #include <mail/mail-tools.h>
+ #include <mail/e-mail-folder-utils.h>
+ #endif
++#endif
+ #include "mn-evolution.h"
+ #include "mn-evolution-server.h"
+ #include "mn-evolution-plugin.h"
+diff -up epienbroek-mail-notification-eab5c13/src/mn-evolution-server.gob.evo3_11_2 epienbroek-mail-notification-eab5c13/src/mn-evolution-server.gob
+--- epienbroek-mail-notification-eab5c13/src/mn-evolution-server.gob.evo3_11_2	2012-11-21 19:57:35.000000000 +0100
++++ epienbroek-mail-notification-eab5c13/src/mn-evolution-server.gob	2013-11-20 09:26:47.055055030 +0100
+@@ -36,15 +36,19 @@
+   #include <mail/em-message-browser.h>
+ #endif
+ #include <mail/em-utils.h>
+-#if EDS_CHECK_VERSION(3,3,5)
+-  #include <libemail-engine/e-mail-session.h>
+-  #include <libemail-engine/mail-tools.h>
++#if EDS_CHECK_VERSION(3,11,2)
++  #include <libemail-engine/libemail-engine.h>
+ #else
+-  #include <mail/mail-tools.h>
+-  #if EDS_CHECK_VERSION(2,91,0)
+-    #include <mail/e-mail-session.h>
++  #if EDS_CHECK_VERSION(3,3,5)
++    #include <libemail-engine/e-mail-session.h>
++    #include <libemail-engine/mail-tools.h>
+   #else
+-    #include <mail/mail-session.h>
++    #include <mail/mail-tools.h>
++    #if EDS_CHECK_VERSION(2,91,0)
++      #include <mail/e-mail-session.h>
++    #else
++      #include <mail/mail-session.h>
++    #endif
+   #endif
+ #endif
+ #include "mn-evolution.h"
