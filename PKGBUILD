@@ -1,5 +1,5 @@
 # Maintainer: Brett Gilio <mail@brettgilio.com>
-pkgname=neuron-bin
+pkgname=neuron
 pkgver=7.5
 pkgrel=1
 pkgdesc="Neuron for empirically-based simulations of neurons and networks of neurons. A flexible and powerful simulator of neurons and networks NEURON is a simulation environment for developing and exercising models of neurons and networks of neurons."

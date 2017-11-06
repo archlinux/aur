@@ -1,4 +1,4 @@
-pkgbase = neuron-bin
+pkgbase = neuron
 	pkgdesc = Neuron for empirically-based simulations of neurons and networks of neurons. A flexible and powerful simulator of neurons and networks NEURON is a simulation environment for developing and exercising models of neurons and networks of neurons.
 	pkgver = 7.5
 	pkgrel = 1
@@ -18,5 +18,5 @@ pkgbase = neuron-bin
 	source_x86_64 = http://neuron.yale.edu/ftp/neuron/versions/v7.5/nrn-7.5.x86_64.deb
 	sha512sums_x86_64 = a4ad3e5b8a3ad7e480476232b32155b03c9dd313c22480690a96da3bd039b8d106f41e1907cbe4acdf153af297b98a195204bb5e8df46b5f911dde7fda08f131
 
-pkgname = neuron-bin
+pkgname = neuron
 
