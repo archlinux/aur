@@ -8,6 +8,7 @@ pkgdesc="Log battery charge, show gnuplot graphs."
 arch=('any')
 url="https://github.com/petterreinholdtsen/battery-stats.git"
 license=('GPLv2')
+makedepends=('git')
 provides=('battery-stats')
 conflicts=('battery-stats')
 source=("${_pkgname}::git+https://github.com/petterreinholdtsen/battery-stats.git"
