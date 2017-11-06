@@ -1,7 +1,7 @@
 # Maintainer: ebiadsu <ebiadsu@posteo.de>
 _pipname=ovh
 pkgname=python-${_pipname}
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="Official OVH.com API wrapper"
 arch=("x86_64")
@@ -11,13 +11,13 @@ makedepends=("python" "python-pip")
 
 prepare() {
   # manual download to get LICENSE file
-  pip download ${_pipname}
+  pip download ${_pipname}'=='${pkgver}
   cd $srcdir
   tar -xvzf ${_pipname}-$pkgver.tar.gz ${_pipname}-$pkgver/LICENSE
 }
 
 build() {
-  pip install --no-deps --target="${_pipname}" ${_pipname}
+  pip install --no-deps --target="${_pipname}" ${_pipname}'=='${pkgver}
 }
 
 package() {
