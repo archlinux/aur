@@ -1,7 +1,7 @@
 # Maintainer: jtmb <packaging at technologicalwizardry dot com>
 _pkgname=pkhex
 pkgname=${_pkgname}-bin
-pkgver=r3749.8a84f63f
+pkgver=r3793.854768bd
 pkgrel=1
 pkgdesc="Pokémon core series save editor, programmed in C#."
 arch=(any)
@@ -10,7 +10,7 @@ license=('GPL')
 depends=(mono)
 provides=(pkhex)
 conflicts=(pkhex)
-source=("https://teamcity.projectpokemon.org/guestAuth/repository/download/PKHeX_BuildLinuxMono/14776:id/PKHeX%20Mono%20Build%202480.zip"
+source=("https://teamcity.projectpokemon.org/guestAuth/repository/download/PKHeX_BuildLinuxMono/15228:id/PKHeX%20Mono%20Build%202533.zip"
 		"PKHeX.sh"
         "pkhex.desktop"
 		"pkhex.png")
