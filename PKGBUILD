@@ -6,7 +6,7 @@
 
 pkgname=nix-git
 pkgver=1.11.20160112
-pkgrel=1
+pkgrel=2
 pkgdesc="The Purely Functional Package Manager"
 arch=('i686' 'x86_64')
 depends=('bzip2'
@@ -17,6 +17,7 @@ depends=('bzip2'
          'libsodium'
          'libxml2'
          'libxslt'
+         'nlohmann-json'
          'openssl'
          'patch'
          'perl'
@@ -52,7 +53,8 @@ pkgver() {
 prepare() {
   cd ${pkgname%-git}
 
-  msg2 'Removing xml --nonet...' # https://github.com/NixOS/nix/issues/506
+  # https://github.com/NixOS/nix/issues/506
+  msg2 'Removing xml --nonet...'
   sed -i "s/--nonet\s//g" doc/manual/local.mk
 }
 
