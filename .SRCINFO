@@ -1,13 +1,16 @@
 pkgbase = castersoundboard-git
 	pkgdesc = A soundboard for hot-keying and playing back sounds. (For podcasting)
 	pkgver = r108.c41a4f2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JupiterBroadcasting/CasterSoundboard
 	arch = x86_64
 	arch = i686
 	license = LGPL3
 	makedepends = git
 	depends = qt5-multimedia
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
 	source = git+https://github.com/JupiterBroadcasting/CasterSoundboard.git
 	md5sums = SKIP
 
