@@ -2,7 +2,7 @@
 
 pkgname=multiplehogc
 pkgver=0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Launch many intances of hogc"
 arch=('any')
 url="https://github.com/Chipsterjulien/multiplehogc"
@@ -63,4 +63,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('b116fc7780c6334adfe1bd4a4c2fb48b5bfa3de46a79bc851c35aced1d8488942ab9cbd7021b75507490b0846108b948cddb0042b1cacbf194be8b4de8c43fba')
+sha512sums=('ad3438eb7369ed73e4dc3eaab530907c7aa14030fb231b2c1b5e2246df3d3113a8380485e1b2d1cd44adf79b402a81e9314631299516fa0ac777318e7de0de3f')
