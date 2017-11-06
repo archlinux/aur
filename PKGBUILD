@@ -3,7 +3,7 @@
 
 _gitname=telepathy-morse
 pkgname=telepathy-morse-git
-pkgver=r166.c061bdf
+pkgver=r196.bf8b134
 pkgrel=1
 pkgdesc="Telepathy Connection Manager for the Telegram network"
 arch=(i686 x86_64)
