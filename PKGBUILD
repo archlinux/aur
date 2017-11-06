@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=faf-ice-adapter
-pkgver=5.6.1
+pkgver=6.0.2
 pkgrel=1
 epoch=0
 pkgdesc="A P2P connection proxy for Supreme Commander: Forged Alliance using ICE"
@@ -8,7 +8,8 @@ url="http://www.faforever.com/"
 arch=('x86_64')
 license=('GPL3')
 groups=()
-depends=('nodejs')
+depends=('')
+makedepends=('git' 'ninja' 'cmake' 'gcc' 'libwebrtc-static')
 checkdepends=()
 optdepends=()
 provides=()
@@ -18,15 +19,22 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/FAForever/ice-adapter/releases/download/v$pkgver/faf-ice-adapter-linux64-v$pkgver.tar.xz")
-sha256sums=('04c81d7e658fdec0d55f7778fea2dd3ccd1bf11587db68e19f02196b699f9eb0')
+source=("git+https://github.com/FAForever/ice-adapter.git")
+sha256sums=('SKIP')
 noextract=()
 validpgpkeys=()
 
+pkgver() {
+  cd "ice-adapter"
+  git describe --tags --abbrev=0 | cut -d v -f 2
+}
+
+build() {
+  cd "ice-adapter"
+  cmake -G Ninja -DWEBRTC_LIBRARIES="/usr/lib/libwebrtc.a" -DCMAKE_BUILD_TYPE=Release .
+  ninja
+}
+
 package() {
-  mkdir -p "$pkgdir/usr/lib"
-  cp -r "./faf-ice-adapter" "$pkgdir/usr/lib/faf-ice-adapter"
-  mkdir -p "$pkgdir/usr/bin"
-  cd "$pkgdir/usr/bin" && ln -s "../lib/faf-ice-adapter/faf-ice-adapter.js" "./faf-ice-adapter"
-  chmod +x "./faf-ice-adapter"
+  install -D -s "./ice-adapter/faf-ice-adapter" "$pkgdir/usr/bin/faf-ice-adapter"
 }
