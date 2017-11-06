@@ -3,7 +3,7 @@
 # Contributor: Thomas Dziedzic
 
 pkgname=geoserver-bin
-pkgver=2.8.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="Server written in Java that allows users to share and edit geospatial data"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL2+')
 depends=('java-runtime')
 
 source=(http://downloads.sourceforge.net/project/geoserver/GeoServer/$pkgver/geoserver-$pkgver-bin.zip)
-sha256sums=('182957ae500dfc41775ca0448feb53da488c3aa90ddbc3e9f9ba4568fad6779e')
+sha256sums=('b282872f1371dec333dd660df74018b4cbe166640efda1655f7ddb8a4b920f8a')
 
 ####################################################
 # WARNING: GEOSERVER USES A VERY WEIRD CONFIGURATION
@@ -45,6 +45,6 @@ package() {
 
   # set necessary variables
   mkdir -p "$pkgdir/etc/profile.d"
-  echo "export GEOSERVER_HOME=/opt/geoserver-$pkgver" > "$pkgdir/etc/profile.d/geoserver.sh"
+  echo "export GEOSERVER_HOME=/opt/geoserver-$pkgver/" > "$pkgdir/etc/profile.d/geoserver.sh"
   chmod +x "$pkgdir/etc/profile.d/geoserver.sh"
 }
