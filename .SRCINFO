@@ -1,14 +1,14 @@
 pkgbase = aws-lanes
 	pkgdesc = Utility for interacting with different lanes of servers on AWS.
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/codekoala/go-aws-lanes
 	arch = x86_64
 	license = BSD
 	options = !strip
-	source = https://github.com/codekoala/go-aws-lanes/releases/download/v0.3.0/lanes_linux_amd64
-	source = https://github.com/codekoala/go-aws-lanes/raw/v0.3.0/LICENSE
-	sha256sums = e5e1cc6c7967776d1c41dfb3fc5997b199cabf8b94f5b25da2008ff4d498f19c
+	source = https://github.com/codekoala/go-aws-lanes/releases/download/v0.3.1/lanes_linux_amd64
+	source = https://github.com/codekoala/go-aws-lanes/raw/v0.3.1/LICENSE
+	sha256sums = e8e9659407ab327c1f87ab9ea0de0c0c9e34d0428489d9fa34b966195a5c6ac8
 	sha256sums = cf03ea3ea781a1e6291c16bebe5424b122dc0a996b4807f9f9c5909838909613
 
 pkgname = aws-lanes
