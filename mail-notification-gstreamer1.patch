@@ -1,0 +1,12 @@
+diff -Nrbu epienbroek-mail-notification-9ae8768/data/mail-notification.schemas.in.in epienbroek-mail-notification-9ae8768-OK/data/mail-notification.schemas.in.in
+--- epienbroek-mail-notification-9ae8768/data/mail-notification.schemas.in.in	2013-12-31 19:31:59.000000000 +0400
++++ epienbroek-mail-notification-9ae8768-OK/data/mail-notification.schemas.in.in	2017-08-03 07:04:57.348463286 +0300
+@@ -265,7 +265,7 @@
+       <applyto>/apps/mail-notification/sounds/play-command</applyto>
+       <owner>mail-notification</owner>
+       <type>string</type>
+-      <default>exec gst-launch-0.10 filesrc location=%file ! decodebin ! audioconvert ! gconfaudiosink &gt;/dev/null 2&gt;&amp;1</default>
++      <default>exec gst-launch-1.0 filesrc location=%file ! decodebin ! audioconvert ! autoaudiosink &gt;/dev/null 2&gt;&amp;1</default>
+       <locale name="C">
+         <short>Play sound command</short>
+ 	<long>The command to use to play a sound file. The string

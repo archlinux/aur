@@ -1,0 +1,144 @@
+diff -upr /data/develop/fedora/_other/mail-notification/f25/epienbroek-mail-notification-9ae8768/jbsrc/lib/src/extras/jb-evolution-plugin.c epienbroek-mail-notification-9ae8768/jbsrc/lib/src/extras/jb-evolution-plugin.c
+--- /data/develop/fedora/_other/mail-notification/f25/epienbroek-mail-notification-9ae8768/jbsrc/lib/src/extras/jb-evolution-plugin.c	2013-12-31 16:31:59.000000000 +0100
++++ epienbroek-mail-notification-9ae8768/jbsrc/lib/src/extras/jb-evolution-plugin.c	2016-11-01 12:58:00.258999581 +0100
+@@ -41,7 +41,7 @@ jb_evolution_plugin_check (const char *m
+   if (! minversion)
+     minversion = "2.12";
+ 
+-  packages = g_strdup_printf("evolution-plugin-3.0 >= %s evolution-shell-3.0 libemail-engine", minversion);
++  packages = g_strdup_printf("evolution-shell-3.0 >= %s libemail-engine", minversion);
+   result = jb_check_packages("Evolution", "evolution-plugin", packages);
+   g_free(packages);
+ 
+@@ -50,17 +50,20 @@ jb_evolution_plugin_check (const char *m
+ 
+   if (! strcmp(jb_variable_get_string("evolution-plugin-dir"), "autodetect"))
+     {
+-      char *plugindir;
++      char *privlibdir, *plugindir;
+ 
+       jb_message_checking("for the Evolution plugin directory");
+-      plugindir = jb_get_package_variable("evolution-plugin-3.0", "plugindir");
+-      jb_message_result_string(plugindir ? plugindir : "not found");
++      privlibdir = jb_get_package_variable("evolution-shell-3.0", "privlibdir");
++      jb_message_result_string(privlibdir ? privlibdir : "not found");
+ 
+-      if (! plugindir)
++      if (! privlibdir)
+ 	return FALSE;
+ 
++      plugindir = g_build_filename (privlibdir, "plugins", NULL);
++
+       jb_variable_set_string("evolution-plugin-dir", plugindir);
+       g_free(plugindir);
++      g_free(privlibdir);
+     }
+ 
+   return jb_check_packages("Evolution", "camel", "camel-1.2");
+diff -upr /data/develop/fedora/_other/mail-notification/f25/epienbroek-mail-notification-9ae8768/src/mn-evolution-folder-tree-server.gob epienbroek-mail-notification-9ae8768/src/mn-evolution-folder-tree-server.gob
+--- /data/develop/fedora/_other/mail-notification/f25/epienbroek-mail-notification-9ae8768/src/mn-evolution-folder-tree-server.gob	2016-10-31 19:48:55.750754574 +0100
++++ epienbroek-mail-notification-9ae8768/src/mn-evolution-folder-tree-server.gob	2016-11-01 13:03:20.864985555 +0100
+@@ -96,7 +96,9 @@ class MN:Evolution:Folder:Tree:Server fr
+ #if EDS_CHECK_VERSION(3,1,0)
+     EShell *shell = e_shell_get_default();
+     EShellBackend *shell_backend = e_shell_get_backend_by_name(shell, "mail");
+-#if EDS_CHECK_VERSION(3,5,1)
++#if EDS_CHECK_VERSION(3,13,2)
++    GtkWidget *browser = e_mail_browser_new (E_MAIL_BACKEND(shell_backend), E_MAIL_FORMATTER_MODE_NORMAL);
++#elif EDS_CHECK_VERSION(3,5,1)
+     GtkWidget *browser = e_mail_browser_new (E_MAIL_BACKEND(shell_backend), NULL, NULL, E_MAIL_FORMATTER_MODE_NORMAL);
+ #else
+     GtkWidget *browser = e_mail_browser_new (E_MAIL_BACKEND(shell_backend));
+diff -upr /data/develop/fedora/_other/mail-notification/f25/epienbroek-mail-notification-9ae8768/src/mn-evolution-server.gob epienbroek-mail-notification-9ae8768/src/mn-evolution-server.gob
+--- /data/develop/fedora/_other/mail-notification/f25/epienbroek-mail-notification-9ae8768/src/mn-evolution-server.gob	2016-10-31 19:48:55.750754574 +0100
++++ epienbroek-mail-notification-9ae8768/src/mn-evolution-server.gob	2016-11-01 13:56:04.172847166 +0100
+@@ -238,29 +238,58 @@ class MN:Evolution:Server from G:Object
+   private GValueArray *
+     camel_message_info_to_dbus_struct (CamelMessageInfo *info (check null))
+   {
++#if EDS_CHECK_VERSION(3,23,2)
++    CamelSummaryMessageID id;
++#else
+     const CamelSummaryMessageID *id;
++#endif
+     char hexhash[sizeof(CamelSummaryMessageID) * 2 + 1];
+     int i;
+ 
++#if EDS_CHECK_VERSION(3,23,2)
++    id.id.id = camel_message_info_get_message_id(info);
++    for (i = 0; i < sizeof(id.id.hash); i++)
++      sprintf(hexhash + i * 2, "%.2x", id.id.hash[i]);
++#else
+     id = camel_message_info_message_id(info);
+     for (i = 0; i < sizeof(id->id.hash); i++)
+       sprintf(hexhash + i * 2, "%.2x", id->id.hash[i]);
++#endif
+ 
++#if EDS_CHECK_VERSION(3,23,2)
++    g_assert(camel_message_info_get_uid(info) != NULL);
++#else
+     g_assert(camel_message_info_uid(info) != NULL);
++#endif
++
++#if !EDS_CHECK_VERSION(3,23,2)
++    #define camel_message_info_get_uid camel_message_info_uid
++    #define camel_message_info_get_date_sent camel_message_info_date_sent
++    #define camel_message_info_get_date_received camel_message_info_date_received
++    #define camel_message_info_get_from camel_message_info_from
++    #define camel_message_info_get_subject camel_message_info_subject
++#endif
+ 
+     return self_value_array_new(/* char *uid */
+-				G_TYPE_STRING, camel_message_info_uid(info),
++				G_TYPE_STRING, camel_message_info_get_uid(info),
+ 				/* unsigned int sent_time */
+-				G_TYPE_UINT, (unsigned int) camel_message_info_date_sent(info),
++				G_TYPE_UINT, (unsigned int) camel_message_info_get_date_sent(info),
+ 				/* unsigned int received_time */
+-				G_TYPE_UINT, (unsigned int) camel_message_info_date_received(info),
++				G_TYPE_UINT, (unsigned int) camel_message_info_get_date_received(info),
+ 				/* char *id */
+ 				G_TYPE_STRING, hexhash,
+ 				/* char *from */
+-				G_TYPE_STRING, camel_message_info_from(info),
++				G_TYPE_STRING, camel_message_info_get_from(info),
+ 				/* char *subject */
+-				G_TYPE_STRING, camel_message_info_subject(info),
++				G_TYPE_STRING, camel_message_info_get_subject(info),
+ 				(GType) 0);
++#if !EDS_CHECK_VERSION(3,23,2)
++    #undef camel_message_info_get_uid
++    #undef camel_message_info_get_date_sent
++    #undef camel_message_info_get_date_received
++    #undef camel_message_info_get_from
++    #undef camel_message_info_get_subject
++#endif
+   }
+ 
+   private gboolean
+@@ -307,7 +336,13 @@ class MN:Evolution:Server from G:Object
+ 	    CamelMessageInfo *info = summary->pdata[i];
+ #endif
+ 
+-	    if (info && (camel_message_info_flags(info) & CAMEL_MESSAGE_SEEN) == 0)
++	    if (info && (
++#if EDS_CHECK_VERSION(3,23,2)
++            camel_message_info_get_flags
++#else
++            camel_message_info_flags
++#endif
++	    (info) & CAMEL_MESSAGE_SEEN) == 0)
+ 	      g_ptr_array_add(*ret, self_camel_message_info_to_dbus_struct(info));
+ 	  }
+ 
+@@ -378,7 +413,9 @@ class MN:Evolution:Server from G:Object
+ 	shell = e_shell_get_default ();
+ 	shell_backend = e_shell_get_backend_by_name (shell, "mail");
+ 
+-#if EDS_CHECK_VERSION(3,5,1)
++#if EDS_CHECK_VERSION(3,13,2)
++	browser = e_mail_browser_new (E_MAIL_BACKEND(shell_backend), E_MAIL_FORMATTER_MODE_NORMAL);
++#elif EDS_CHECK_VERSION(3,5,1)
+ 	browser = e_mail_browser_new (E_MAIL_BACKEND(shell_backend), NULL, NULL, E_MAIL_FORMATTER_MODE_NORMAL);
+ #else
+ 	browser = e_mail_browser_new (E_MAIL_BACKEND(shell_backend));

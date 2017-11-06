@@ -17,11 +17,15 @@ source=(git+https://github.com/epienbroek/mail-notification.git
         http://pkgs.fedoraproject.org/cgit/rpms/mail-notification.git/plain/mail-notification-jb-gcc-format.patch
         http://pkgs.fedoraproject.org/cgit/rpms/mail-notification.git/plain/mail-notification-evo3_11_2.patch
         http://pkgs.fedoraproject.org/cgit/rpms/mail-notification.git/plain/mail-notification-dont-link-against-bsd-compat.patch
+        http://pkgs.fedoraproject.org/cgit/rpms/mail-notification.git/plain/mail-notification-eds3_23_2.patch
+        http://pkgs.fedoraproject.org/cgit/rpms/mail-notification.git/plain/mail-notification-gstreamer1.patch
         mail-notification.desktop)
 sha256sums=('SKIP'
             'a7646259ca72b58165e4e1c8cf12b197e32807459c4291867479ef3520d39732'
             '14a3fdb850bfed7d5940779240245c716c1afc7e847e7f8bc4422d8746c6d896'
             '2340c6001ad9dfd071f80cf0cd9b45d3fa7efada6880a530b16a3b4d36a27444'
+            'dfb9980292524a33f60c80a5abbeac8e6dad0888564105d221e3effee91fd791'
+            'bc1ccc9aba228a7446732e078775ca6972a549ee77a70d7bc89c464830ab178b'
             '6a1a683da2a83e596999b261d3830a10678b46d16317c5ac3615ab29fffe6a38')
 
 pkgver() {
@@ -37,6 +41,8 @@ prepare() {
   patch -Np1 < "$srcdir/mail-notification-jb-gcc-format.patch"
   patch -Np1 < "$srcdir/mail-notification-evo3_11_2.patch"
   patch -Np0 < "$srcdir/mail-notification-dont-link-against-bsd-compat.patch"
+  patch -Np1 < "$srcdir/mail-notification-eds3_23_2.patch"
+  patch -Np1 < "$srcdir/mail-notification-gstreamer1.patch"
 
   cp -p /usr/share/libtool/build-aux/config.{guess,sub} jbsrc/tools/
 }
