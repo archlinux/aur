@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
  
 pkgname=emacs-org-mode-git
-pkgver=9.1.2.175.gc04e357f3
+pkgver=9.1.2.180.g05034ec6e
 pkgrel=1
 pkgdesc="Emacs Org Mode from git"
 arch=('any')
