@@ -6,18 +6,20 @@
 # Contributors: robozman
 
 pkgname=subsonic
-pkgver=6.1.2
-pkgrel=2
+pkgver=6.1.3
+pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="http://subsonic.org/"
-license=('CUSTOM')
+license=('custom')
 depends=('java-runtime-headless')
 conflicts=('subsonic')
-source=(https://s3-eu-west-1.amazonaws.com/subsonic-public/download/subsonic-${pkgver}-standalone.tar.gz
-        'subsonic.service')
 backup=('var/lib/subsonic/db' 'var/lib/subsonic/subsonic.properties' 'var/lib/subsonic/subsonic.sh')
 install=$pkgname.install
+source=("https://sourceforge.net/projects/subsonic/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}-standalone.tar.gz"
+        'subsonic.service')
+md5sums=('c86c0d8f647baf166588fa274e0dd294'
+         '7cbbb9c8357992385c929e9f05be00be')
  
 package() {
   cd ${srcdir}
@@ -32,6 +34,3 @@ package() {
   cp $srcdir/subsonic.service $pkgdir/usr/lib/systemd/system
   chmod +x $pkgdir/var/lib/subsonic/subsonic.sh
 }
- 
-md5sums=('2786e85c173d26598df247c7834f00e0'
-         '7cbbb9c8357992385c929e9f05be00be')
