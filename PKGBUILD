@@ -6,7 +6,7 @@
 
 pkgname=ffmpeg-mpv-full-git
 pkgver=3.5.r88561.ga94f4f9a1c
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -38,15 +38,11 @@ makedepends=(
         'blackmagic-decklink-sdk' 'libmfx' 'libvmaf'
 )
 provides=(
-    'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-decklink' 'ffmpeg-libfdk_aac' 'ffmpeg-nvenc'
-    'ffmpeg-qsv-git' 'ffmpeg-full' 'ffmpeg-full-nvenc' 'ffmpeg-semifull-git' 'libavutil.so'
+    'ffmpeg-mpv-git' 'libavutil.so'
     'libavcodec.so' 'libavformat.so' 'libavdevice.so' 'libavfilter.so' 'libavresample.so'
     'libswscale.so' 'libswresample.so' 'libpostproc.so'
 )
-conflicts=(
-    'ffmpeg' 'ffmpeg-git' 'ffmpeg-decklink' 'ffmpeg-libfdk_aac' 'ffmpeg-nvenc'
-    'ffmpeg-qsv-git' 'ffmpeg-full' 'ffmpeg-full-nvenc' 'ffmpeg-semifull-git'
-)
+conflicts=('ffmpeg-mpv-git')
 source=("$pkgname"::'git+https://github.com/mpv-player/ffmpeg-mpv.git')
 sha256sums=('SKIP')
 
@@ -60,7 +56,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    
+
     # set x86_64 specific options
     if [ "$CARCH" = 'x86_64' ] 
     then
@@ -69,7 +65,7 @@ build() {
         local _cuvid='--enable-cuvid'
         local _libnpp='--enable-libnpp'
         local _cflags='--extra-cflags=-I/opt/cuda/include'
-        
+
         # '-L/usr/lib/nvidia' (for cuda_sdk) needs to be enabled only on
         # systems with nvidia-340xx-utils or nvidia-304xx-utils
         if pacman -Qqs '^nvidia-340xx-utils$' | grep -q '^nvidia-340xx-utils$' ||
@@ -89,6 +85,9 @@ build() {
     
     ./configure \
         --prefix='/usr' \
+        --incdir='/usr/include/ffmpeg-mpv-git' \
+        --libdir='/usr/lib/ffmpeg-mpv-git' \
+        --shlibdir='/usr/lib/ffmpeg-mpv-git' \
         $_cflags \
         "$_ldflags" \
         \
@@ -195,12 +194,14 @@ build() {
         --disable-vaapi \
         --enable-vdpau
     make
-    make tools/qt-faststart
 }
 
 package() {
     cd "$pkgname"
     make DESTDIR="$pkgdir" install
-    
-    install -D -m755 tools/qt-faststart  "${pkgdir}/usr/bin/qt-faststart"
-}
+     rm -rf "${pkgdir}/usr/share"
+    find "${pkgdir}/usr/bin" -type f -exec mv {} {}-mpv-git \;
+
+    install -d -m755 "${pkgdir}/etc/ld.so.conf.d"
+    printf '%s\n%s\n' '/usr/lib/' '/usr/lib/ffmpeg-mpv-git/' > "${pkgdir}/etc/ld.so.conf.d/51-ffmpeg-mpv-git.conf"
+  }
