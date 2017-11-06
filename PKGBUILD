@@ -1,9 +1,10 @@
-# Maintainer: Vojtech Kral <vojtech_kral^hk>
+# Maintainer: bkfox
+# Contributor: Vojtech Kral <vojtech_kral^hk>
 # Contributor: Félix Saparelli <aur@passcod.name>
 # Contributor: ask
 
 pkgname=rust-bindgen-git
-pkgver=0.28.0.23dbe48
+pkgver=0.31.3.eccc0bfa
 pkgrel=1
 pkgdesc="Binding generator for rust language"
 arch=('i686' 'x86_64')

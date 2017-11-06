@@ -1,6 +1,6 @@
 pkgbase = rust-bindgen-git
 	pkgdesc = Binding generator for rust language
-	pkgver = 0.28.0.23dbe48
+	pkgver = 0.31.3.eccc0bfa
 	pkgrel = 1
 	url = https://github.com/servo/rust-bindgen
 	arch = i686
