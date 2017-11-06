@@ -1,8 +1,8 @@
 pkgbase = lucaschess-git
 	pkgdesc = Play Train Compete
-	pkgver = 26
+	pkgver = 65
 	pkgrel = 1
-	url = http://www-lucaschess.rhcloud.com/
+	url = http://lucaschess.pythonanywhere.com/
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -30,7 +30,7 @@ pkgbase = lucaschess-git
 	optdepends = scid_vs_pc
 	provides = lucaschess
 	conflicts = lucaschess
-	source = lucaschess::git+https://github.com/lukasmonk/lucaschess_11.git
+	source = lucaschess::git+https://github.com/lukasmonk/lucaschess
 	md5sums = SKIP
 
 pkgname = lucaschess-git
