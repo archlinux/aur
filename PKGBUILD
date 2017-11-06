@@ -1,8 +1,8 @@
 # Maintainer: Pablo Lezaeta Reyes <prflr88 arro'a gmail puntocom>
 
 pkgname=ubuntu-kylin-theme
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.4
+pkgrel=1
 pkgdesc="The official theme for Ubuntu Kylin"
 arch=('any')
 url="https://launchpad.net/ubuntukylin-theme"
@@ -15,24 +15,21 @@ optdepends=('plymouth: Contrain a theme for this login splash screen'
 	'chinese-calendar: Official calendary for Ubuntu Kylin'
 	'fcitx: Contain 4 themes for the Qimpanel version')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/ubuntukylin-theme_$pkgver.tar.xz")
-sha256sums=('d1f9087e67b0c39c55b7a63f013472f05d3228eba99db295494d392b4540e876')
+sha256sums=('04d1a395fa9e1de9b7bc781f126d75206fd5cd710aff03161398885bf4133f2f')
 
 package() {
   cd "ubuntukylin-theme-${pkgver}"
 
   mkdir -p "${pkgdir}/usr/share/"  
-  cp -rv --no-preserve=ownership kylin-greeter	"${pkgdir}/usr/share/"
   cp -rv --no-preserve=ownership usr/share/plymouth "${pkgdir}/usr/share/"
 
   mkdir -p "${pkgdir}/usr/share/fcitx/"
   cp -rv --no-preserve=ownership usr/share/fcitx-qimpanel/* "${pkgdir}/usr/share/fcitx/"
 
   mkdir -p "${pkgdir}/usr/share/icons/"
-  cp -rv --no-preserve=ownership ubuntukylin-icon-theme "${pkgdir}/usr/share/icons/"
   cp -rv --no-preserve=ownership ukui-icon-theme "${pkgdir}/usr/share/icons/"
 
   mkdir -p "${pkgdir}/usr/share/themes/"
-  cp -rv --no-preserve=ownership ubuntukylin-theme "${pkgdir}/usr/share/themes/"
   cp -rv --no-preserve=ownership ukui-theme "${pkgdir}/usr/share/themes/"
 
   mkdir -p "${pkgdir}/usr/share/grub/themes/"
@@ -43,8 +40,5 @@ package() {
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   cp -rv --no-preserve=ownership debian/copyright "${pkgdir}/usr/share/licenses/${pkgname}/"
-
-  mkdir -p "${pkgdir}/usr/share/unity-greeter/"
-  cp -rv --no-preserve=ownership ubuntukylin-unity-greeter/ubuntukylin-logo.png "${pkgdir}/usr/share/unity-greeter/"
 }
 
