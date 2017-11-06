@@ -3,7 +3,7 @@
 
 _pkgname=nemo-seahorse
 pkgname="${_pkgname}-nonautilus"
-pkgver=3.4.1
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="An extension for Nemo which allows encryption and decryption of OpenPGP files using GnuPG. (without nautilus dependency)"
 arch=('i686' 'x86_64')
@@ -29,7 +29,6 @@ prepare() {
   # Python2 fix
   find -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
 
-  msg2 "Adding support for gpg newer than version 2.1"
   sed -i "s/1.2 1.4 2.0 2.1/1.2 1.4 2.0 2.1 2.2/" configure.ac
 }
 
