@@ -4,7 +4,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20171101.10881
+pkgver=20171103.10882
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
         "0001-Sage-plugin-fix-which-not-found.patch"
         )
 sha1sums=('SKIP'
-          '2c3bf8ba3c879ba20fc0afb8228a431ef4b21430')
+          '8a6e4f423a56a870136c1b2357b0e6cbd46e6d51')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')

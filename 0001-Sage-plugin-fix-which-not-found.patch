@@ -1,4 +1,4 @@
-From c63ee1b19b83306abff26d0871eac1446c041b72 Mon Sep 17 00:00:00 2001
+From 9fe7daa2c6f1ee21bcecb94eda583ada13686e97 Mon Sep 17 00:00:00 2001
 From: wangjiezhe <wangjiezhe@gmail.com>
 Date: Wed, 8 Jun 2016 11:20:42 +0800
 Subject: [PATCH] Sage plugin: fix `which` not found
@@ -30,5 +30,5 @@ index f3fb9224e..b18bf07c9 100644
    (:session "Sage")
    (:scripts "Sage"))
 -- 
-2.12.1
+2.15.0
 
