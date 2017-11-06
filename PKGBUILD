@@ -2,7 +2,7 @@
 
 pkgname=multiplehogc
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Launch many intances of hogc"
 arch=('any')
 url="https://github.com/Chipsterjulien/multiplehogc"
@@ -19,7 +19,6 @@ build() {
     if [ -z $GOPATH ]; then
         # path don't exit
         GOPATH_exist=0
-
         # create gopath directory
         mkdir -p .gopath/{bin,src}
         # export var
@@ -44,6 +43,7 @@ build() {
     fi
 }
 
+
 package() {
     cd "$_builddir"
 
@@ -63,4 +63,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('f947acc5e4cedb97529295d2c343ebaedc95886ad2fe52e8003ab306de9e4128d3faec11f8a9741871cd7759ab0d765fed710efa61856cd96acf68a2d7a7d872')
+sha512sums=('b116fc7780c6334adfe1bd4a4c2fb48b5bfa3de46a79bc851c35aced1d8488942ab9cbd7021b75507490b0846108b948cddb0042b1cacbf194be8b4de8c43fba')
