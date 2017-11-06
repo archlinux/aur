@@ -50,6 +50,9 @@ prepare() {
 #	this is effectively a workaround for perlsec, so proceed with caution
 	perl -0777 -i -pe 's/(delete.+\n)/$1\$ENV{PATH} = "$ENV{PATH}";\n/' ULAM/src/drivers/ulam/ulam.tmpl
 
+#	change non-portable uname flag from -i to -m
+	perl -0777 -i -pe 's/(uname -)i/$1m/' MFM/src/drivers/mfzrun/mfzrun.tmpl
+
 	make -C MFM
 	make -C ULAM
 	perl ULAM/share/perl/extractDistro.pl bin . "$srcdir/ulam" ulam
