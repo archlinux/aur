@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/GangZhuo/BaiduPCS"
 license=('MIT')
 depends=('curl' 'openssl')
+makedepends=('git')
 source=("${_pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
