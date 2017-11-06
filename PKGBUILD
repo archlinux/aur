@@ -1,6 +1,6 @@
 # Maintainer: Jean-Baptiste Delisle <jb dot delisle at aliceadsl dot fr>
 pkgname=bed-latex
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="BEd: Beamer Editor, GUI for LaTeX Beamer presentations."
 arch=(any)
@@ -12,8 +12,8 @@ makedepends=()
 conflicts=('bed')
 install="bed.install"
 source=("bed-$pkgver.tar.gz::https://framagit.org/delisle/bed/repository/archive.tar.gz?ref=v$pkgver")
-md5sums=('983502f965be8a950001e775270860a5')
-tag=cac10d48cf5a5b896280990d94e0af7ee44ada88
+md5sums=('d79a723e5a05d933725c358c7e9596bd')
+tag=eee8f8bc19a7932da969cbd8f4545d26b2a0f504
 
 prepare() {
   cd bed-v$pkgver-$tag
