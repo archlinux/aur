@@ -2,12 +2,12 @@
 
 pkgname=ansible-container
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ansible Container is a tool to build and orchestrate containers using only Ansible playbooks."
 arch=('any')
 url="https://github.com/ansible/ansible-container"
 license=('GPL')
-depends=('python-structlog' 'python-six' 'python-jinja' 'python-ruamel-yaml' 'python-pip' 'python-requests')
+depends=('python-structlog' 'python-six' 'python-jinja' 'python-ruamel-yaml' 'python-pip' 'python-requests' 'python-yaml' 'python-colorama' 'python-structlog')
 optdepends=(
     'python-docker: building docker containers'
     )
