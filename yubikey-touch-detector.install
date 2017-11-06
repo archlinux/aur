@@ -11,3 +11,20 @@ post_install() {
   echo ">> https://github.com/maximbaz/pam_u2f"
   echo ">>"
 }
+
+post_upgrade() {
+  echo ">>"
+  echo ">> Make sure to reload the systemd service if you use it:"
+  echo ">> $ systemctl --user daemon-reload"
+  echo ">> $ systemctl --user restart yubikey-touch-detector.service"
+  echo ">>"
+}
+
+post_remove() {
+  echo ">>"
+  echo ">> Make sure to remove the systemd service if you used it:"
+  echo ">> $ systemctl --user daemon-reload"
+  echo ">> $ systemctl --user disable yubikey-touch-detector.service"
+  echo ">> $ systemctl --user stop yubikey-touch-detector.service"
+  echo ">>"
+}
