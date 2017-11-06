@@ -1,0 +1,20 @@
+pkgbase = postgis-svn
+	pkgdesc = Postgres GIS extensions (from git)
+	pkgver = r16091
+	pkgrel = 1
+	url = http://postgis.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = postgresql
+	depends = gdal
+	depends = geos
+	depends = json-c
+	depends = libxml2
+	depends = libxslt
+	conflicts = postgis
+	source = postgis-svn::svn+http://svn.osgeo.org/postgis/trunk/
+	md5sums = SKIP
+
+pkgname = postgis-svn
+
