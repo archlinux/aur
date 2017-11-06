@@ -1,0 +1,18 @@
+pkgbase = swagger-codegen-git
+	pkgdesc = A template-driven engine to generate documentation, API clients and server stubs
+	pkgver = 2.2.3.r878.g39a9c5587f
+	pkgrel = 1
+	url = https://swagger.io/swagger-codegen/
+	arch = any
+	license = Apache
+	makedepends = maven
+	depends = java-environment
+	provides = swagger-codegen
+	conflicts = swagger-codegen
+	source = swagger-codegen-git::git+https://github.com/swagger-api/swagger-codegen.git
+	source = swagger-codegen
+	sha256sums = SKIP
+	sha256sums = b1c49877eaf8905f0d6d297a7a68692b5137e24df44ddf585f45033962c4e3ab
+
+pkgname = swagger-codegen-git
+
