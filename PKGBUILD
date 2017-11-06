@@ -1,7 +1,7 @@
 # Maintainer: Nils Christopher Brause <nilschrbrause@googlemail.com>
 pkgname=waylandpp
-pkgver=0.1.3
-pkgrel=3
+pkgver=0.1.4
+pkgrel=1
 pkgdesc='Wayland C++ bindings'
 arch=('i686' 'x86_64' 'armv5' 'armv6' 'armv7' 'armv8')
 url='https://github.com/NilsBrause/waylandpp'
@@ -10,14 +10,16 @@ depends=(wayland)
 conflicts=(waylandpp-git)
 makedepends=(cmake)
 source=("https://github.com/NilsBrause/waylandpp/archive/$pkgver.zip")
-md5sums=("d44b19ebe2233939ce2cebf9908e942a")
+md5sums=('082f95996b55bf7a1d60773590099cc2')
 
 build()
 {
     cd $pkgname-$pkgver
+    rm -rf build
     mkdir build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX="/usr" ..
+    # lib64 is a symlink to lib on archlinux.
+    cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="lib" .. 
     make
 }
 
