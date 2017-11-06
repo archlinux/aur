@@ -1,0 +1,27 @@
+pkgbase = plasma-git
+	pkgdesc = Interactive disassembler for x86/ARM/MIPS. Generates indented pseudo-code with colored syntax code.
+	pkgver = 20171015.361f
+	pkgrel = 1
+	url = https://github.com/plasma-disassembler/plasma
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	groups = archstrike
+	groups = archstrike-analysis
+	license = GPL3
+	makedepends = git
+	depends = python-keystone
+	depends = python-capstone
+	depends = python-pyelftools
+	depends = python-future
+	depends = python-msgpack
+	depends = binutils
+	depends = python-pefile
+	optdepends = python-pyqt4: For memory map
+	source = plasma-git::git+https://github.com/plasma-disassembler/plasma.git
+	sha512sums = SKIP
+
+pkgname = plasma-git
+
