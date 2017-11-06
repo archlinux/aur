@@ -1,0 +1,9 @@
+diff -ura --color usr/lib/cups/filter/kyofilter_pre_E usr.new/lib/cups/filter/kyofilter_pre_E
+--- usr/lib/cups/filter/kyofilter_pre_E	2017-06-16 00:08:17.000000000 +0200
++++ usr.new/lib/cups/filter/kyofilter_pre_E	2017-11-06 11:27:56.626675376 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ '''
+ Created on Mar 1, 2016
+ 
