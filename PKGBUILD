@@ -1,11 +1,11 @@
 # Maintainer: Valeriy Huz <ghotrix@gmail.com>
 pkgname='lucaschess-git'
 _pkgname=lucaschess
-pkgver=26
+pkgver=65
 pkgrel=1
 pkgdesc="Play Train Compete"
 arch=('i686' 'x86_64')
-url="http://www-lucaschess.rhcloud.com/"
+url="http://lucaschess.pythonanywhere.com/"
 license=('GPL2')
 depends=('python2-pyaudio' 'swig' 'python2-psutil' 'python2-chardet' 'python2-pygal' 
          'python2-pocketsphinx' 'python2-pyqt4' 'python2-pillow' 'python2-chess') 
@@ -14,7 +14,7 @@ optdepends=('crafty' 'cutechess' 'fairymax' 'fruit' 'gnuchess' 'hoichess' 'pyche
             'stockfish' 'toga2' 'xboard' 'scid_vs_pc')
 provides=('lucaschess')
 conflicts=('lucaschess')
-source=("${_pkgname}::git+https://github.com/lukasmonk/lucaschess_11.git")
+source=("${_pkgname}::git+https://github.com/lukasmonk/lucaschess")
 md5sums=('SKIP')
 
 pkgver() {
