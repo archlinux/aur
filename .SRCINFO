@@ -1,7 +1,7 @@
 pkgbase = kanatest
 	pkgdesc = A simple Hiragana and Katakana drill tool
-	pkgver = 0.4.10
-	pkgrel = 2
+	pkgver = 20150706.4f504fc
+	pkgrel = 1
 	url = http://www.clayo.org/kanatest/
 	install = kanatest.install
 	arch = i686
