@@ -13,6 +13,7 @@ arch=('x86_64' 'i686')
 license=('custom:BSD')
 url='https://github.com/tbeu/matio'
 depends=('zlib' 'hdf5')
+makedepends=('git')
 options=('!libtool' '!emptydirs')
 source=("${_pkgname}::git+${url}.git")
 md5sums=('SKIP')
