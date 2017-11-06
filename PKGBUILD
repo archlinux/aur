@@ -8,8 +8,8 @@ _relverdate=${_relver}-${_reldate}
 _gccver=4.9.4
 
 pkgbase=${_target}-gcc49-linaro-bin
-pkgver=${_relver}_${_reldate}
-pkgrel=3
+pkgver=${_reldate}
+pkgrel=4
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM64 target"
 arch=('i686' 'x86_64')
 url="http://www.linaro.org/downloads/"
@@ -51,6 +51,7 @@ package_aarch64-linux-gnu-gcc49-linaro-bin() {
 	conflicts=("${_target}-gcc")
 	depends=("${_target}-binutils-linaro-bin=2.24_${_reldate}"
 			 "${_target}-eglibc-linaro-bin=2.19_${_reldate}")
+	pkgver="${_gccver}_${_reldate}"
 
 	cd ${pkgdir}
 
@@ -88,7 +89,7 @@ package_aarch64-linux-gnu-eglibc-linaro-bin() {
 
 	provides=("${_target}-glibc")
 	conflicts=("${_target}-glibc")
-	depends=("${_target}-gcc49-linaro-bin=4.9_${_reldate}")
+	depends=("${_target}-gcc49-linaro-bin=${_gccver}_${_reldate}")
 	pkgver="2.19_${_reldate}"
 	pkgdesc="Embedded C Library ARM64 target"
 

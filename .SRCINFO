@@ -1,7 +1,7 @@
 pkgbase = aarch64-linux-gnu-gcc49-linaro-bin
 	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target
-	pkgver = 4.9_2017.01
-	pkgrel = 3
+	pkgver = 2017.01
+	pkgrel = 4
 	url = http://www.linaro.org/downloads/
 	arch = i686
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgname = aarch64-linux-gnu-binutils-linaro-bin
 
 pkgname = aarch64-linux-gnu-eglibc-linaro-bin
 	pkgdesc = Embedded C Library ARM64 target
-	depends = aarch64-linux-gnu-gcc49-linaro-bin=4.9_2017.01
+	depends = aarch64-linux-gnu-gcc49-linaro-bin=4.9.4_2017.01
 	provides = aarch64-linux-gnu-glibc
 	conflicts = aarch64-linux-gnu-glibc
 
