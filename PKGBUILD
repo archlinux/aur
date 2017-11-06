@@ -4,7 +4,7 @@
 pkgname=antimony-git
 pkgver=0.9.3b.r12.2618d096
 pkgrel=1
-pkgdesc="A computer-aided design (CAD) tool from a parallel universe in which CAD software evolved from Lisp machines rather than drafting tables."
+pkgdesc="Graph-based 3D CSG CAD modeller"
 arch=(x86_64)
 url="http://www.mattkeeter.com/projects/antimony/3/"
 license=('MIT')
