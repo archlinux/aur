@@ -5,27 +5,27 @@
 # linking against something you have installed, you'll have to disable
 # it in the configure below. The package() script will attempt to
 # update the dependencies based on dynamic libraries when packaging.
-
+# Upstream recommends their forked ffmpeg, which can be installed alongside a
+# different system ffmpeg. You can build mpv against the system ffmpeg instead
+# by uncommenting the second line below, but this may sometimes fail to build
+# when mpv depends on a feature that hasn't been merged into upstream ffmpeg.
+_ffmpeg_depend=ffmpeg-mpv-full-git
+#_ffmpeg_depend=ffmpeg-full-git
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.27.0.r349.gd46c9c2e62
+pkgver=0.27.0.r360.g921073bf86
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
-license=('GPL3')
+license=('GPL')
 url='http://mpv.io'
-screenshot='http://i.imgur.com/6TacA5I.png'
 _undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
-depends=('pulseaudio' 'lcms2' 'ffmpeg-mpv-full-git' 'mujs' 'libdvdread' 'libgl' 'libvdpau'
+depends=('pulseaudio' 'lcms2' "$_ffmpeg_depend" 'mujs' 'libdvdread' 'libgl' 'libvdpau'
          'libxinerama' 'libxv' 'libxkbcommon' 'libva'  'libass' 'uchardet' 
 	 'wayland' 'v4l-utils' 'lua52' 'rsound' 'sndio' 'libdvdnav' 'libcdio-paranoia' 'libbluray' 'libxss'
          'enca' 'libguess' 'harfbuzz' 'libxrandr' 'rubberband' 'smbclient' "${_undetected_depends[@]}")
 
-depends_i686=(
-  'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
-  'libbluray' 'sdl2' 'openal' 'ffmpeg-mpv-git'
-)
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
             'livestreamer: to watch live video streams (twitch.tv)'
@@ -88,7 +88,13 @@ msg2 "Running bootstrap. Please wait..."
 
 build() {
   cd "${srcdir}/$_gitname"
-CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
+if [[ "$_ffmpeg_depend" = *-mpv* ]]; then
+    export CFLAGS="$CFLAGS -I/usr/include/ffmpeg-mpv-git" \
+           LDFLAGS="$LDFLAGS -L/usr/lib/ffmpeg-mpv-git" \
+           PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}/usr/lib/ffmpeg-mpv-git/pkgconfig"
+  else
+    _opt_extra_flags+=("--enable-ffmpeg-upstream")
+  fi
  ./waf configure \
 	            --color=yes \
 	            --prefix=/usr \
@@ -177,7 +183,8 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --enable-libv4l2 \
 	            --enable-audio-input \
 	            --enable-dvbin \
-	            --disable-apple-remote
+	            --disable-apple-remote \
+              "${_opt_extra_flags[@]}"
 	
 	./waf build
 }
