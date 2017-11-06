@@ -22,7 +22,7 @@ source=("font_archives.md5"
         "DIN_Bd_PS.zip"
         "Univers_PS.zip")
 md5sums=('b3dbf18f356e308f714967d744dbd5cb'
-         '03a9d50dde8a8a82e65f813e2288fba0'
+         'f982bf955a3932ca649ae29f4ef0f788'
          '5d7289d1280ea193c1bd76a188f28a17'
          '6cfb9405ed5429fb03883fad19153fdc'
          'SKIP'

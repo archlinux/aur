@@ -14,5 +14,6 @@ src/
 texlive-tudscr-fonts-*.pkg.tar.xz
 texlive-tudscr-fonts/
 TUD-KOMA-Script*.zip
+TUD-Script_fonts_Unix.zip
 .AURINFO
 
