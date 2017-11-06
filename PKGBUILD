@@ -1,8 +1,8 @@
 # Contributor: grimi <grimi at poczta dot fm>
 
 pkgname=mime-archpkg
-pkgver=0.3.8
-pkgrel=2
+pkgver=0.3.9
+pkgrel=1
 pkgdesc="mime type for archlinux packages"
 arch=('any')
 url="http://www.archlinux.org"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('shared-mime-info' 'gtk-update-icon-cache' 'librsvg')
 install=${pkgname}.install
 source=(${pkgname}.{xml,sh} {install,update,remove}.hook hook-script.sh
-        {hicolor,gnome,Tango,oxygen,nuoveXT2,Faenza,Faience,NITRUX,Numix,breeze,FaenzaFlattr2-Zephyr,elementary,Paper}.svgz)
+        {hicolor,gnome,Tango,oxygen,nuoveXT2,Faenza,Faience,NITRUX,Numix,breeze,FaenzaFlattr2-Zephyr,elementary,Paper,Papirus}.svgz)
 sha256sums=('e3fc45b1121fa845a245c115704715ec0b6a17860a507202cc5e1b02d01c797b'
             'c9448f3702fc8a33245f6881d9699882bf8e52c47dc7006ddf847859d5bf54e2'
             'fa24289460397891c692d4a13c27b76065075b27153685ce9adf2890f41936db'
@@ -29,7 +29,8 @@ sha256sums=('e3fc45b1121fa845a245c115704715ec0b6a17860a507202cc5e1b02d01c797b'
             '44c2d8246890da621e17541560601a5db5425d41e4c3f0c9cb807e13833d8040'
             '47561c547893ea4630ecabb84d14a0fd8e7c3e6d8e0cd4bd5e041c47bca9e739'
             '191cfd7ee153d88fb0525bb60e40c2d02b3bd720f325f6bc3c27f2d0f8fbd9fb'
-            'cf123397456c7d2bc018f07797cd397701c9fd5c3dddc474b851ce442e260f4f')
+            'cf123397456c7d2bc018f07797cd397701c9fd5c3dddc474b851ce442e260f4f'
+            '06d80d0f7310b75f96d6b226e44e85e893175110c6fbf2908e9995a70a131d6b')
 
 
 
@@ -45,6 +46,11 @@ package() {
   # links
   cd "${pkgdir}"/usr/share/${pkgname}
   ln -sf elementary.svgz elementary-xfce.svgz
+  ln -sf Papirus.svgz Papirus-Adapta.svgz
+  ln -sf Papirus.svgz Papirus-Adapta-Nokto.svgz
+  ln -sf Papirus.svgz Papirus-Dark.svgz
+  ln -sf Papirus.svgz Papirus-Light.svgz
+  ln -sf Papirus.svgz ePapirus.svgz
 }
 
 
