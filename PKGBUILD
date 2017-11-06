@@ -1,7 +1,7 @@
 # Maintainer: Nils Christopher Brause <nilschrbrause@googlemail.com>
 pkgname=waylandpp-git
 pkgver=210
-pkgrel=1
+pkgrel=2
 pkgdesc='Wayland C++ bindings'
 arch=('i686' 'x86_64' 'armv5' 'armv6' 'armv7' 'armv8')
 url='https://github.com/NilsBrause/waylandpp'
@@ -22,7 +22,7 @@ pkgver()
 build()
 {
     cd $pkgname
-    rm -r build
+    rm -rf build
     mkdir build
     cd build
     # lib64 is a symlink to lib on archlinux.
