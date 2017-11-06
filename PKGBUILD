@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 
 pkgname=nemo-compare
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.6.0
+pkgrel=1
 pkgdesc="Context menu comparison extension for Nemo file manager"
 arch=("any")
 url="https://github.com/linuxmint/nemo-extensions"
@@ -14,7 +14,7 @@ optdepends=('diffuse: Additional comparison options (preferred diff, three-way, 
 	   'fldiff: Additional comparison options (preferred diff, three-way, multi-compare)')
 install=${pkgname}.install
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('68dadce98c17321c3c22e596452a1b7aa0842c5faa05688734430857e037b3f2')
+sha256sums=('593aaf206ef50a8185e1f71c9018ce6a8b4bcb82b4684494e069f9045ba11fd1')
 
 
 package() {
@@ -23,7 +23,6 @@ package() {
   # Python2 fix
   find -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
 
-  install -D data/nemo-compare-preferences.desktop -t "${pkgdir}/usr/share/applications"
   install -D data/nemo-compare-notification -t "${pkgdir}/usr/share/${pkgname}"
   install -D src/* -t "${pkgdir}/usr/share/${pkgname}/"
 
