@@ -1,7 +1,7 @@
 _npmname=nativefier
-_npmver=7.4.0
+_npmver=7.4.1
 pkgname=nodejs-nativefier # All lowercase
-pkgver=7.4.0
+pkgver=7.4.1
 pkgrel=1
 pkgdesc="Wrap web apps natively"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(09ba3f6a2a85d7287f0c23d526584c4fe6e00d50)
+sha1sums=('ecc66c49f72982811f01ff03b130f4fb32195306')
 
 package() {
   cd $srcdir
