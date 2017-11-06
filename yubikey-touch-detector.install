@@ -1,0 +1,13 @@
+post_install() {
+  echo ">>"
+  echo ">> The package contains a systemd service for the app."
+  echo ">> Make sure to start and enable it:"
+  echo ">> $ systemctl --user daemon-reload"
+  echo ">> $ systemctl --user start yubikey-touch-detector.service"
+  echo ">> $ systemctl --user enable yubikey-touch-detector.service"
+  echo ">>"
+  echo ">> If you use U2F, you must use a patched pam-u2f for the app to work."
+  echo ">> I suggest to use AUR/pam_u2f-git, but change the source to:"
+  echo ">> https://github.com/maximbaz/pam_u2f"
+  echo ">>"
+}
