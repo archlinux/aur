@@ -3,7 +3,8 @@
 
 pkgname=command-not-found
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
+_commit=102ea6e2797b6191a7357c94a162f08a3eef4e66
 pkgdesc="In case a command could not be found this utility searches for packages containing this or a similar command (bash,zsh)."
 arch=('i686' 'x86_64')
 url="http://github.com/metti/$pkgname"
@@ -15,12 +16,12 @@ depends=('boost-libs'
 makedepends=('boost'
              'cmake'
              'git')
-md5sums=('d828f5c974f2b3b6009de725ac4fdbc2')
 install=$pkgname.install
-source=("$url/archive/v$pkgver.zip")
+source=("$url/archive/$_commit.tar.gz")
+md5sums=('22405bf48c18547a1033107e38533e61')
 
 build() {
-    cd $pkgname-$pkgver
+    cd $pkgname-$_commit
     cmake \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX="" \
@@ -29,6 +30,6 @@ build() {
 }
 
 package(){
-    cd $pkgname-$pkgver
+    cd $pkgname-$_commit
     make DESTDIR="$pkgdir" install
 }
