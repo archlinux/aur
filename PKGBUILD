@@ -1,27 +1,32 @@
 # Maintainer: Nils Christopher Brause <nilschrbrause@googlemail.com>
 pkgname=waylandpp
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Wayland C++ bindings'
 arch=('i686' 'x86_64' 'armv5' 'armv6' 'armv7' 'armv8')
 url='https://github.com/NilsBrause/waylandpp'
 licanse=('MIT' 'GPL3')
 depends=(wayland)
 conflicts=(waylandpp-git)
-makedepends=(scons)
+makedepends=(cmake)
 source=("https://github.com/NilsBrause/waylandpp/archive/$pkgver.zip")
 md5sums=("d44b19ebe2233939ce2cebf9908e942a")
 
 build()
 {
     cd $pkgname-$pkgver
-    ROOT="$pkgdir" PREFIX="/usr" scons
+    mkdir build
+    cd build
+    cmake CMAKE_INSTALL_PREFIX="/usr" ..
+    make
 }
 
 package()
 {
-    cd $pkgname-$pkgver
-    ROOT="$pkgdir" PREFIX="/usr" scons install
+    cd $pkgname-$pkgver/build
+    DESTDIR="$pkgdir" make install
+    cd ..
+    rm -r build
 }
 
 # Local Variables:
