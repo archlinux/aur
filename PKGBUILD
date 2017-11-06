@@ -20,7 +20,7 @@ package(){
 	# Fix directories structure differencies
 	cd "${pkgdir}"
 
-	install -D -m644 "/usr/share/doc/nrn/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "/usr/share/doc/neuron/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	mkdir usr/bin 2> /dev/null; mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
 
 	mv usr/local/* usr; rm -rf usr/local
