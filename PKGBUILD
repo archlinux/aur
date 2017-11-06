@@ -1,10 +1,10 @@
 # Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=pgi-compilers
-_release='17.4'
+_release='17.10'
 _REL_VERSION='2017'
 pkgver=${_release}
-pkgrel=3
+pkgrel=1
 pkgdesc='PGI compilers and tools (Community Edition)'
 arch=('x86_64')
 url="https://www.pgroup.com/products/community.htm"
@@ -14,7 +14,7 @@ makedepends=('bash')
 source=("file://pgilinux-${_REL_VERSION}-${_release//./}-x86_64.tar.gz"
         "https://www.pgroup.com/doc/LICENSE.txt"
         "pgi-compilers.sh")
-sha256sums=('115c212d526695fc116fe44f1e722793e60b6f7d1b341cd7e77a95da8e7f6c34'
+sha256sums=('9da8f869fb9b70c0c4423c903d40a9e22d54b997af359a43573c0841165cd1b6'
             '78abb626ddb93482b9169e2b6da205067702c8da40a201f9b1a557c261c47270'
             '23d71aa379bed34f72eb47cc3e03ef189261b172d3a07bc9c7e472d34288a244')
 options=(!strip)
