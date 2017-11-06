@@ -10,7 +10,7 @@
 # -Harmony Fix (from https://git.archlinux.org/svntogit/community.git/tree/trunk?h=packages/wine-staging-nine )
 
 pkgname=wine-gaming-nine
-pkgver=2.19
+pkgver=2.20
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -28,15 +28,15 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
 	wine-list.h-linked-list-cache-line-prefetching.patch
 	wined3d-Cache-shader-compile-arguments-and-precompil.patch
         )
-sha1sums=('dae084c946c7aa79a517bf95a00791e01f5d88a1'
-          'e49d6afc9491da159d24c9e3627de5bd44c8d2ca'
+sha1sums=('5643b3a024ad79b8dd8e450d9b00765b8169c81f'
+          'e99bd3dda3b5c09ce37b8b9dd9ad1d5a3f17aa83'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
 	  'b5a4faccf9109d2da5017779113ea270bf189957'
 	  'f3febb8836f38320742a546c667106608d4c4395'
           '74aae040fde9ff3c9e8da9c840557e87afdbc3a0'
           '644e141125a9f2407e64d23c85ec84a691c7caae'
 	  '360b9725286690b34313590076538a402e03ecb5'
-	  '18fa2f600a477d01d5c7fe770b67bbdc52757061'
+	  '598ba591efd581ac762291eb0e61f5b4996ed723'
           )
 
 pkgdesc="Based off wine-staging, including the gallium-nine patches and some more hacks"
