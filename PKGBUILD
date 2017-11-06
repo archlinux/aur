@@ -35,7 +35,7 @@ _debianrev=2113
 _debianurl="https://bazaar.launchpad.net/~mozillateam/$_realname/$_realname-trunk.head/tarball/$_debianrev"
 
 # openSUSE Firefox source revision and URL (for openSUSE patches).
-_opensuserev=932b3ad009d5
+_opensuserev=65e317e42eff
 _opensusebaseurl="http://www.rosenauer.org/hg/mozilla/raw-file/$_opensuserev"
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -82,7 +82,7 @@ fi
 
 pkgname=("$_realname-kde-opensuse-beta")
 pkgver="$_pkgver"
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org with openSUSE patches to integrate better with KDE Plasma 5"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -112,8 +112,7 @@ source=("$_mozffurl"
         "firefox-kde_g$_opensuserev.patch"::"$_opensusebaseurl/firefox-kde.patch"
         "firefox-no-default-ualocale_g$_opensuserev.patch"::"$_opensusebaseurl/firefox-no-default-ualocale.patch"
         'native-menu-doc-listener.patch'
-        'firefox-kde-opensuse-patch.patch' 'firefox-no-default-ualocale-opensuse-patch.patch' 'mozilla-kde-opensuse-patch.patch'
-        'browser-kde-xul.patch'
+        'mozilla-kde-opensuse-patch.patch'
         'add-missing-pgo-rule.patch' 'pgo-fix-missing-kdejs.patch'
         'wifi-disentangle.patch' 'wifi-fix-interface.patch'
         'no-crmf.patch'
@@ -124,16 +123,13 @@ source=("$_mozffurl"
         'firefox.desktop')
 sha256sums=('1a94235f4e9783ea0528361d6fc601f8cb3a448eb69bcd0f521aed192e90dd10'
             'SKIP'  # Debian source tarball is generated each time it is requested.
-            'c4c0a726115eca89ab82a85b364cef6cc897f58317b2890f214510810a30cfa3'
+            'fc0358619be3a63683c680b7c59e024030d96e6dc461217fe451d8289b1236bf'
             'ef0f90c9134ef05b950f06a3ffbd699c2e5a5f99a4cdf9868e799534d68c204f'
-            'c85a37e71f2bd511fac88d41ca0618ee375c49fc86bc2beddf6dc17c3f17508d'
-            'f672e60e22869381e9c4cdd90353a053a0171778eca40d4664bc733822fd535f'
-            'b941790009bb9eda46c2d96fb0d1c83b0fe2d1acf74754ab08e6b18c1e0c6b16'
+            'f4f919ae5c0921218d7ef7d4502ac8de3212d66d86accc588de04ea24ceb2f36'
+            'd8cf3221222e97e08dbf704a8b0c9d38e29d7dd1033455404872f04a1df10ccf'
+            '175c61f549b1ea08704d1f051d801d3e566d6ec0b048ca6127eaa922e6ddd266'
             '70bdf9e58397e6483b7a4d925176be74defbde0221cc3d5f253ec4ede55e6f21'
-            'ecb7c3ae3f52ee9b430c1e8e69370b1dedb06674e1fcdc856d60942680bf7b62'
-            'f3c50e4ec8d58b23530d87a3162e0b33af58ea73b35dc51bd29b1fad0d26f43f'
-            'fd58b8fa5716c5724885af280b15ec3915fa3d48b0991a0c92af7a1b414fd665'
-            '8da046206e98649a371ce8e9b3dffc9532f78e963f764c866bc4e021b8b6fb5a'
+            '0468c2399880358b264c98a2b4f29bde1666aad1253735f6e3d6f2a48e9d1bd2'
             'f9067f62a25a7a77276e15f91cc9e7ba6576315345cfc6347b1b2e884becdb0c'
             '2797d1e61031d24ee24bf682c9447b3b9c1bca10f8e6cbd597b854af2de1ec54'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
@@ -206,7 +202,7 @@ prepare() {
   msg2 "Fixing openSUSE patches for Firefox $pkgver"
   mkdir -p "$srcdir/patched-patches"
   cd "$srcdir/patched-patches"
-  for patch in mozilla-kde firefox-kde firefox-no-default-ualocale; do
+  for patch in mozilla-kde; do
     cp "$srcdir/${patch}_g$_opensuserev.patch" "$patch.patch"
     patch -Ni "$srcdir/$patch-opensuse-patch.patch"
   done
@@ -220,13 +216,9 @@ prepare() {
   msg2 "Applying openSUSE patches"
   patch -Np1 -i "$srcdir/mozilla-nongnome-proxies_g$_opensuserev.patch"
   patch -Np1 -i "$srcdir/patched-patches/mozilla-kde.patch"
-  cp \
-     browser/base/content/browser.xul \
-     browser/base/content/browser-kde.xul
-  patch -Np1 -i "$srcdir/browser-kde-xul.patch"
   patch -Np1 -i "$srcdir/firefox-branded-icons_g$_opensuserev.patch"
-  patch -Np1 -i "$srcdir/patched-patches/firefox-kde.patch"
-  patch -Np1 -i "$srcdir/patched-patches/firefox-no-default-ualocale.patch"
+  patch -Np1 -i "$srcdir/firefox-kde_g$_opensuserev.patch"
+  patch -Np1 -i "$srcdir/firefox-no-default-ualocale_g$_opensuserev.patch"
 
   msg2 "Applying Arch Linux (vendor) specific patches"
   patch -Np1 -i "$srcdir/add-missing-pgo-rule.patch"
