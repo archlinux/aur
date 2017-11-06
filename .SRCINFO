@@ -1,14 +1,12 @@
 pkgbase = aarch64-linux-gnu-gcc49-linaro-bin
-	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target.
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target
 	pkgver = 4.9_2017.01
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.linaro.org/downloads/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
-	provides = aarch64-linux-gnu-gcc
-	conflicts = aarch64-linux-gnu-gcc
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
@@ -18,4 +16,24 @@ pkgbase = aarch64-linux-gnu-gcc49-linaro-bin
 	sha256sums_x86_64 = d1f2761b697e6b49f5db1ec0cd48d2fd98224be8cb5ef182093f691e99c923eb
 
 pkgname = aarch64-linux-gnu-gcc49-linaro-bin
+	depends = aarch64-linux-gnu-binutils-linaro-bin=2.24_2017.01
+	depends = aarch64-linux-gnu-eglibc-linaro-bin=2.19_2017.01
+	provides = aarch64-linux-gnu-gcc
+	conflicts = aarch64-linux-gnu-gcc
+
+pkgname = aarch64-linux-gnu-binutils-linaro-bin
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the ARM64 target
+	provides = aarch64-linux-gnu-binutils
+	conflicts = aarch64-linux-gnu-binutils
+
+pkgname = aarch64-linux-gnu-eglibc-linaro-bin
+	pkgdesc = Embedded C Library ARM64 target
+	depends = aarch64-linux-gnu-gcc49-linaro-bin=4.9_2017.01
+	provides = aarch64-linux-gnu-glibc
+	conflicts = aarch64-linux-gnu-glibc
+
+pkgname = aarch64-linux-gnu-gdb-linaro-bin
+	pkgdesc = The GNU Debugger for the ARM64 target
+	provides = aarch64-linux-gnu-gdb
+	conflicts = aarch64-linux-gnu-gdb
 

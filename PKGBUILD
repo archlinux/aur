@@ -9,7 +9,7 @@ _gccver=4.9.4
 
 pkgbase=${_target}-gcc49-linaro-bin
 pkgver=${_relver}_${_reldate}
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM64 target"
 arch=('i686' 'x86_64')
 url="http://www.linaro.org/downloads/"
