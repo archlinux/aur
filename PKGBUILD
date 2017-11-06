@@ -1,9 +1,9 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.16.0
-pkgrel=2
-_cqzbuildid=20171017104524
+pkgver=1.16.1
+pkgrel=1
+_cqzbuildid=20171026173547
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
@@ -20,7 +20,7 @@ source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
         plugin-crash.diff
         glibc-2.26-fix.diff
         0001-Bug-1384062-Make-SystemResourceMonitor.stop-more-res.patch)
-sha256sums=('17145b8d64f5777a536fd9264add052997f08d2a02856b678298049ddc3a0797'
+sha256sums=('bf2702e8712e43d43ff939dc2d102da5ed0f74bc692fab9884335a6fe52f3ef8'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
