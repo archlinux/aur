@@ -7,7 +7,7 @@ pkgbase = neuron
 	arch = x86_64
 	license = GPL
 	depends = aarch64-linux-gnu-gcc>=5.2
-	depends = libtinfo5>=6
+	depends = ncurses5-compat-libs
 	depends = libx11
 	depends = openmpi
 	depends = python

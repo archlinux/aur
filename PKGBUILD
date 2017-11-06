@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://neuron.yale.edu/"
 license=('GPL')
 groups=('')
-depends=('aarch64-linux-gnu-gcc>=5.2' 'libtinfo5>=6' 'libx11' 'openmpi' 'python' 'python-numpy' 'python-scipy')
+depends=('aarch64-linux-gnu-gcc>=5.2' 'ncurses5-compat-libs' 'libx11' 'openmpi' 'python' 'python-numpy' 'python-scipy')
 options=('!strip' '!emptydirs')
 source_x86_64=("http://neuron.yale.edu/ftp/neuron/versions/v7.5/nrn-7.5.x86_64.deb")
 sha512sums_x86_64=('a4ad3e5b8a3ad7e480476232b32155b03c9dd313c22480690a96da3bd039b8d106f41e1907cbe4acdf153af297b98a195204bb5e8df46b5f911dde7fda08f131')
