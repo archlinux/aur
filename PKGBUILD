@@ -11,16 +11,16 @@ makedepends=('git')
 source=('git+https://github.com/stairmast0r/refind-dreary.git')
 md5sums=('SKIP')
 
-ESP="${pkgdir}/boot"
-RESOLUTION="highres"
-
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    mkdir -p "${ESP}/EFI/refind/themes"
+    REFIND_HOME="${pkgdir}/boot/efi/EFI/refind"
+    RESOLUTION="highres"
+
+    mkdir -p "${REFIND_HOME}/themes"
     cp -r "${srcdir}/${pkgname%-git}/$RESOLUTION" "${REFIND_HOME}/themes"
     mv "${REFIND_HOME}/themes/$RESOLUTION" "${REFIND_HOME}/themes/${pkgname%-git}"
     chmod -R 644 "${REFIND_HOME}/themes/${pkgname%-git}"
