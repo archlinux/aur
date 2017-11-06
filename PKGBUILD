@@ -2,13 +2,13 @@
 
 pkgname=caudec
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A multiprocess audio converter that supports many formats (FLAC, MP3, Ogg Vorbis, Windows codecs and many more)'
 arch=(any)
-url='http://caudec.net'
+url='http://caudec.cocatre.net'
 license=('GPL3' 'custom:MPL2')
 
-source=("http://caudec.net/downloads/$pkgname-$pkgver.tar.gz")
+source=("$url/downloads/$pkgname-$pkgver.tar.gz")
 md5sums=('872de1b54cfbc539b4172718a806650b')
 depends=('bash' 'procps-ng' 'grep' 'bc' 'which' 'coreutils' 'sox' 'sed' 'findutils')
 optdepends=(
@@ -34,6 +34,7 @@ optdepends=(
   "gawk: required for SoundCheck support"
   "python2-eyed3: for MP3 artwork and Replaygain support"
 )
+backup=('etc/caudecrc')
 
 package() {
   cd $pkgname-$pkgver
