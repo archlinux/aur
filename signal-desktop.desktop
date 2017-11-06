@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Signal Private Messenger
+GenericName=Messenger
+Comment=Private messaging from your desktop
+Icon=signal-desktop
+Exec=signal-desktop
+Categories=Network;Messenger;
+StartupNotify=true
