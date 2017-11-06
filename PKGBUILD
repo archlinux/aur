@@ -2,12 +2,13 @@
 
 pkgname=hogc
 pkgver=0.0.1
-pkgrel=17
+pkgrel=18
 pkgdesc="human detection in C++ and opencv"
 arch=('any')
 url="https://github.com/Chipsterjulien/hogc"
 license=('WTFPL')
-makedepends=('opencv' 'cmake')
+depends=('opencv')
+makedepends=('cmake')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz")
 install=hogc.install
@@ -34,4 +35,4 @@ package() {
       "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('bf1b440db5816c0558b8595a4e612c423d3f24b78167f943c3b47f3c70705559355ef958bcd655bf216c148544e397ea408747788b5d681ba459456f7702127f')
+sha512sums=('c44821d87c84428dae1666cb6826162d9f5d7aa7242dd494c8cc1d9a30c0c5e633d9eca1788f25e1c0f8aa08432ba65b76999834f299fd18c4a3eefa6bcdf9af')
