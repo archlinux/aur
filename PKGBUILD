@@ -38,6 +38,6 @@ build() {
 package() {
   cd ${gitname}/build
 
-  make fetch-translations
+#  make fetch-translations
   make DESTDIR=${pkgdir} install
 }
