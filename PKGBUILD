@@ -1,4 +1,3 @@
-# Contributor: vsilv <vsilv@posteo.eu>
 # Maintainer : vsilv <vsilv@posteo.eu>
 pkgname=python-pydstool-git
 pkgver=v0.90.2
