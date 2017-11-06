@@ -1,7 +1,7 @@
 pkgbase = airsonic
 	pkgdesc = A free, web-based media streamer and jukebox.
 	pkgver = 10.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Airsonic/airsonic/
 	install = airsonic.install
 	arch = any
@@ -13,13 +13,13 @@ pkgbase = airsonic
 	conflicts = subsonic-beta
 	conflicts = libresonic
 	noextract = airsonic.war
-	backup = etc/sysconfig/airsonic
+	backup = etc/airsonic/airsonic.conf
 	source = https://github.com/airsonic/airsonic/releases/download/v10.1.0/airsonic.war
-	source = airsonic-systemd-env
-	source = airsonic.service
+	source = https://raw.githubusercontent.com/airsonic/airsonic/master/contrib/airsonic.service
+	source = https://raw.githubusercontent.com/airsonic/airsonic/master/contrib/airsonic-systemd-env
 	sha256sums = bf5f396f0aba49c022e4c3694c94b1a1edc16c4e1a9137062b0f2899368ff04e
-	sha256sums = 0d4115c892b8e78f6443f5550d3c0a018650268fd05eba56fd9aa48b39cdd094
-	sha256sums = 4af3a549a40a7f1a65688d6f8d60c4b7667ef4f603550842fa7bc51fbdbf27a3
+	sha256sums = d24c07f9f585fc00fd564290cc7b7035d7f27ff7183f13c3fa4e6e23490e9531
+	sha256sums = 059a43fe100d95aaaae8091d1c312f4d3a2a2b4edc1969358dd7be35f6525930
 
 pkgname = airsonic
 

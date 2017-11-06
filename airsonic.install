@@ -15,7 +15,7 @@ post_install() {
 
     fix_permissions
     echo "******************************************************"
-    echo "* Edit /etc/sysconfig/airsonic to configure airsonic *"
+    echo "* Edit /etc/airsonic/airsonic.conf to configure airsonic *"
     echo "******************************************************"
 
     systemctl daemon-reload
