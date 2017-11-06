@@ -1,8 +1,8 @@
 # Maintainer: Jeremy Asuncion <jeremyasuncion808@gmail.com>
 
-_hash='c4dd4cf'
+_hash='008f2d5'
 pkgname='openshift-origin-server-bin'
-pkgver='3.6.0'
+pkgver='3.6.1'
 pkgrel=1
 pkgdesc="OpenShift Origin is a platform for developing, building, and deploying containerized applications. See https://docs.openshift.org/latest for more on running OpenShift Origin."
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/openshift/origin"
 license=('Apache')
 depends=('docker')
 source=("https://github.com/openshift/origin/releases/download/v${pkgver}/openshift-origin-server-v${pkgver}-${_hash}-linux-64bit.tar.gz")
-sha512sums=('15ffb2d8df12b0abfdbcd5bf753614da0c48d925d7fc4ae4a67e09c88b3800b774a775cbfe431462b32fe7f7572e653f6954c46706fc852aa9b9b7460f069114')
+sha512sums=('b332f5437c7a006eac7730b1b90d501a4bb8bd9ebd4015624a2df6bee5763bc46935e3bf3dfaa9cb7814e8b4b8b4a709f5a35b37dac69b31291e0673f29e8b54')
 
 package() {
     cd "openshift-origin-server-v${pkgver}-${_hash}-linux-64bit"
