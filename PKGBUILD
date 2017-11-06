@@ -13,7 +13,7 @@ makedepends=('git')
 install=
 source=("simonpi::git+https://github.com/M0Rf30/simonpi.git")
 KERNELRPI=4.4.50
-KERNELRPI2=4.9.59
+KERNELRPI2=4.9.60
 
 pkgver() {
   cd $srcdir/simonpi
