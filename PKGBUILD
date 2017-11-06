@@ -1,7 +1,7 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=appleseed-git
 #_fragment=
-pkgver=1.7.0.beta.r719.g7ebe81fc2
+pkgver=1.7.0.beta.r898.ga0b650356
 pkgrel=1
 pkgdesc="physically-based global illumination rendering engine primarily designed for animation and visual effects. "
 arch=(i686 x86_64)
@@ -53,7 +53,7 @@ build() {
 package() {
   cd ${pkgname}/build
   make DESTDIR="$pkgdir/" install
-  install -D -m644 "../LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"h
+  install -D -m644 "../LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
