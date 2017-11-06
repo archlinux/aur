@@ -4,7 +4,7 @@
 
 pkgname=mail-notification
 pkgver=5.4.r69.g9ae8768
-pkgrel=4
+pkgrel=5
 pkgdesc="Tray icon application that informs you if you have new mail"
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/mailnotify/"
