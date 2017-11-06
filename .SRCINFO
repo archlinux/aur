@@ -1,0 +1,17 @@
+pkgbase = nautilus-search-by-image-git
+	pkgdesc = Nautilus extension to do a reverse image search in Google from a local file (beware that this uploads images to transfer.sh and Google so use only if no privacy concerns).
+	pkgver = r1.e60fa62
+	pkgrel = 1
+	url = https://github.com/jle64/nautilus-search-by-image
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2-nautilus
+	depends = python2-requests
+	provides = nautilus-search-by-image
+	conflicts = nautilus-search-by-image
+	source = nautilus-search-by-image::git://github.com/jle64/nautilus-search-by-image.git
+	md5sums = SKIP
+
+pkgname = nautilus-search-by-image-git
+
