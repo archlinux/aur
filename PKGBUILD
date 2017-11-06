@@ -20,7 +20,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.2.0beta3
+pkgver=7.2.0RC5
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -28,16 +28,16 @@ url='http://www.php.net'
 makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libxslt' 'libzip' 'net-snmp'
              'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre')
 checkdepends=('procps-ng')
-source=("https://downloads.php.net/~remi/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
+source=("https://downloads.php.net/~pollita/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
-sha256sums=('86ab60f96223768d2cb6b3669ce5d048ce904beccf532119aa02058e7cc9e498'
+sha256sums=('92a745048912beb3f6c2a3c188ce695a51852c67201fdf9a21dafe59f51aecc1'
             'SKIP'
-            'bd26c9be85e30334369d9d12e623842e1c0552f424d857641318883dfe1f83a3'
+            '07acff660e194197cfbcc955c0d362d6de063e6475668f3df03bfff023af11ed'
             'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
             'd62ffe6a693336752d4decb2acba09b67bdf7cad19807eccf8795f9386303923'
             '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5'
             '8ab87630a2e1e031a1f42ce6063a1d9646b0d4299a9260fe4ebeb5cfc38e6972')
-validpgpkeys=('B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F')
+validpgpkeys=('1729F83938DA44E27BA0F4D3DBDB397470D12172')
 
 prepare() {
 	cd ${srcdir}/${_pkgbase}-${pkgver}
