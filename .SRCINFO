@@ -1,0 +1,14 @@
+pkgbase = lightdm-webkit2-theme-tty-git
+	pkgdesc = A simple terminal style theme for lightdm-webkit2-greeter
+	pkgver = r5.0b8fc23
+	pkgrel = 1
+	url = https://github.com/eNzyOfficial/lightdm-tty
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = lightdm-webkit2-greeter
+	source = lightdm-tty::git+https://github.com/eNzyOfficial/lightdm-tty.git
+	md5sums = SKIP
+
+pkgname = lightdm-webkit2-theme-tty-git
+
