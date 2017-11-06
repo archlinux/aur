@@ -1,10 +1,10 @@
 # Maintainer: Brett Gilio <mail@brettgilio.com>
 pkgname=neuron
 pkgver=7.5
-pkgrel=1
-pkgdesc="Neuron for empirically-based simulations of neurons and networks of neurons. A flexible and powerful simulator of neurons and networks NEURON is a simulation environment for developing and exercising models of neurons and networks of neurons."
-arch=('i686' 'x86_64')
-url="http://neuron.yale.edu/"
+pkgrel=2
+pkgdesc="A flexible and powerful simulator of neurons and networks NEURON is a simulation environment for developing and exercising models of neurons and networks of neurons."
+arch=('x86_64')
+url="https://neuron.yale.edu/neuron/"
 license=('GPL')
 groups=('')
 depends=('aarch64-linux-gnu-gcc>=5.2' 'ncurses5-compat-libs' 'libx11' 'openmpi' 'python' 'python-numpy' 'python-scipy')
