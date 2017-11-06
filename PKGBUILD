@@ -1,6 +1,6 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 pkgname=telegram-desktop-dev
-pkgver=1.1.7
+pkgver=1.1.23
 pkgrel=1
 pkgdesc='Official desktop version of Telegram messaging app. Development release.'
 arch=('i686' 'x86_64')
@@ -70,6 +70,7 @@ source=(
 	"GSL::git+https://github.com/Microsoft/GSL.git"
 	"variant::git+https://github.com/mapbox/variant.git"
 	"libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
+	"Catch::git+https://github.com/philsquared/Catch.git"
 	"https://download.qt.io/official_releases/qt/${_qt_version%.*}/$_qt_version/submodules/qtbase-opensource-src-$_qt_version.tar.xz"
 	"https://download.qt.io/official_releases/qt/${_qt_version%.*}/$_qt_version/submodules/qtimageformats-opensource-src-$_qt_version.tar.xz"
 	"https://download.qt.io/official_releases/qt/${_qt_version%.*}/$_qt_version/submodules/qtwayland-opensource-src-$_qt_version.tar.xz"
@@ -78,8 +79,10 @@ source=(
 	"tg.protocol"
 	# Thanks eduardosm, got from his 'telegram-desktop' AUR package
 	"aur-fixes.diff::https://aur.archlinux.org/cgit/aur.git/plain/aur-fixes.diff?h=telegram-desktop"
+	"libtgvoip-fixes.diff::https://aur.archlinux.org/cgit/aur.git/plain/libtgvoip-fixes.diff?h=telegram-desktop"
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -89,7 +92,8 @@ sha256sums=('SKIP'
             'SKIP'
             '41c22fae6ae757936741e63aec3d0f17cafe86b2d6153cdd1d01a5581e871f17'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
-            'b8ced823bf98391e06a8ed5f3e1b4a16aa0e3f15a83c592b97babe6335df0558')
+            '5bd1272ba8221eeb1d26b1673093f726e8bf028b1c867b814cd3c552a8a59a36'
+            'df86ab21e5eddc3dac46781a2165452ce076e928c2b9d59f340883c13f5d5a02')
 
 prepare() {
 	cd "$srcdir/tdesktop"
@@ -123,16 +127,20 @@ prepare() {
 		ln -s "$srcdir/gyp" "$srcdir/Libraries/gyp"
 	fi
 
-	msg2 "Apply Arch-like fixes"
-	cd "$srcdir/tdesktop"
-	git apply "$srcdir/aur-fixes.diff"
-
 	msg2 "Fix submodules locations"
+	cd "$srcdir/tdesktop"
 	git submodule init
 	git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
 	git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
 	git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
+	git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
 	git submodule update
+
+	msg2 "Apply Arch-like fixes"
+	cd "$srcdir/tdesktop"
+	git apply "$srcdir/aur-fixes.diff"
+	cd "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip"
+	git apply "$srcdir/libtgvoip-fixes.diff"
 }
 
 build() {
