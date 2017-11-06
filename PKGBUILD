@@ -1,7 +1,7 @@
 # Maintainer:  Andrew Shelyakov <andrew.shelyakov@ya.ru>
 
 pkgname='php-pthreads-git'
-pkgver=r1363.caca8dc
+pkgver=r1387.1c9787e
 pkgrel=1
 pkgdesc='PHP extension for Threading API'
 arch=('i686' 'x86_64')
