@@ -11,6 +11,7 @@ license=("BSD")
 depends=("nss" "alsa-lib" "gconf" "libxss" "libxtst" "gtk2")
 makedepends=("cmake" "make")
 provides=("cef")
+conflicts=("cef-standard")
 source_i686=(
     "http://opensource.spotify.com/cefbuilds/cef_binary_${pkgver}.${_subver_i686}_linux32_minimal.tar.bz2"
 )

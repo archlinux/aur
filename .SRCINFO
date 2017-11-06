@@ -15,6 +15,7 @@ pkgbase = cef-minimal
 	depends = libxtst
 	depends = gtk2
 	provides = cef
+	conflicts = cef-standard
 	source_i686 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3202.1681.g9672a06_linux32_minimal.tar.bz2
 	sha1sums_i686 = 7f7fb1df2337b3a117dc186b740eac380680028c
 	source_x86_64 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3202.1681.g9672a06_linux64_minimal.tar.bz2
