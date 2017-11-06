@@ -1,58 +1,41 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Gustavo H. Montesião de Sousa <gustavo aat claroenigma dot com dot br>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Earnestly
-
 pkgname=antimony-git
-pkgver=0.9.0b.r72.ge1117fe
+pkgver=0.9.3b.r12.2618d096
 pkgrel=1
-pkgdesc="Graph-based 3D CSG CAD modeller"
+pkgdesc="A computer-aided design (CAD) tool from a parallel universe in which CAD software evolved from Lisp machines rather than drafting tables."
+arch=(x86_64)
 url="http://www.mattkeeter.com/projects/antimony/3/"
-provides=('antimony')
-conflicts=('antimony')
-arch=('i686' 'x86_64')
 license=('MIT')
-depends=('qt5-base' 'boost-libs' 'python' 'libpng' 'lemon')
-makedepends=('boost' 'git')
-source=("git+https://github.com/mkeeter/antimony.git")
-md5sums=('SKIP')
-
-# todo, replace bundled eigen with official
-
-_gitname="antimony"
-_gitbranch="master"
+depends=('qt5-base' 'python' 'boost-libs')
+makedepends=('git' 'ninja' 'lemon' 'flex' 'boost')
+provides=(${pkgname})
+source=("${pkgname}::git://github.com/mkeeter/antimony.git" "antimony.desktop")
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
-  cd "$_gitname"
-  #git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
-  git describe | sed 's/-/.r/; s/-/./'
+	cd "$srcdir/${pkgname}"
+
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-    cd "$_gitname"
-
-    sed -i 's|\(executable.path =\).*|\1 /usr/bin|' app/app.pro
-    sed -i 's|\(nodes_folder.path =\).*|\1  /usr/share/antimony/sb/nodes|' app/app.pro
-    sed -i 's|\(fab_folder.path =\).*|\1 /usr/lib/python3.5/site-packages/fab|' app/app.pro
-    sed -i 's|return path.join("/");|return "/usr/share/antimony/sb/nodes";|' app/src/app/app.cpp
-
-    mkdir -p build
-    cd build
-    qmake-qt5 PREFIX="/usr" ../sb.pro
-    sed -i 's|/local/bin|/bin|g' Makefile
-    make
-}
-
-check() {
-    cd "$_gitname"
-    return 0
-    mkdir -p tests
-    cd tests
-    qmake-qt5 PREFIX="/usr" ../lib/fab/fab-tests.pro
-    qmake-qt5 PREFIX="/usr" ../lib/graph/graph-tests.pro
-    make
+	cd "$srcdir/${pkgname}"
+	cmake \
+		-GNinja \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr
+	ninja
 }
 
 package() {
-    cd "$_gitname/build"
-    make INSTALL_ROOT="$pkgdir" install
-    install -Dm755 app/antimony "$pkgdir/usr/bin/antimony"
+	cd "$srcdir/${pkgname}"
+	DESTDIR=${pkgdir} ninja install
+
+	mkdir -p ${pkgdir}/usr/share/icons/hicolor/scalable
+	cp deploy/icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/antimony.svg
+
+	mkdir -p ${pkgdir}/usr/share/applications
+	cp ../antimony.desktop ${pkgdir}/usr/share/applications/antinomy.desktop
 }

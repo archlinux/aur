@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Antimony
+Comment=Tree-based Modeler
+GenericName=CAD Application
+Exec=/usr/bin/antimony %f
+Icon=/usr/share/icons/hicolor/scalable/antimony.svg
+Terminal=false
+Categories=Graphics;Science;Engineering;
+MimeType=application/x-extension-sb;application/x-antimony;
+StartupWMClass=antimony
