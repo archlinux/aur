@@ -1,11 +1,12 @@
 # Maintainer: tembleking <tembleking at gmail dot com>
 pkgname=whatsapp-web-desktop
-pkgver=2.16.225
+pkgver=2.17.407
 pkgrel=1
 pkgdesc="WhatsApp Web for desktop"
 arch=('i686' 'x86_64')
 url="https://web.whatsapp.com"
 license=('unknown')
+depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 makedepends=('nodejs-nativefier')
 provides=('whatsapp-desktop')
 source=('whatsapp-web-desktop.png'
