@@ -18,22 +18,22 @@
 pkgbase="spl-linux-lts"
 pkgname=("spl-linux-lts" "spl-linux-lts-headers")
 
-pkgver=0.7.3.4.9.59.1
+pkgver=0.7.3.4.9.60.1
 pkgrel=1
-makedepends=("linux-lts-headers=4.9.59" "libelf")
+makedepends=("linux-lts-headers=4.9.60" "libelf")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.3/spl-0.7.3.tar.gz")
 sha256sums=("cd8b8624163577bdec1d1d214c942c5771f183432a04d35c00fc6e7f12fa836b")
 license=("GPL")
-depends=("spl-utils-common>=0.7.3" "kmod" "linux-lts=4.9.59")
+depends=("spl-utils-common>=0.7.3" "kmod" "linux-lts=4.9.60")
 
 build() {
     cd "${srcdir}/spl-0.7.3"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.9.59-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.9.59-1-lts/build \
+                --with-linux=/usr/lib/modules/4.9.60-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.9.60-1-lts/build \
                 --with-config=kernel
     make
 }
@@ -58,5 +58,5 @@ package_spl-linux-lts-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.59-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.60-1-lts/Module.symvers
 }
