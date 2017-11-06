@@ -1,21 +1,20 @@
 pkgbase = obs-linuxbrowser
 	pkgdesc = Browser source plugin for obs-studio based on CEF. Alternative to obs-qtwebkit.
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bazukas/obs-linuxbrowser
+	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = obs-studio>=20.0.1
-	depends = gconf
-	depends = nss
-	depends = libxss
-	depends = pango
-	depends = atk
-	depends = libxrandr
-	depends = libxcomposite
+	makedepends = make
+	makedepends = cmake
+	depends = obs-studio>=18.0.1
+	depends = cef-minimal
 	optdepends = pepper-flash: Flash support
-	source = https://github.com/bazukas/obs-linuxbrowser/releases/download/0.3.0/linuxbrowser0.3.0-obs20.0.1-64bit.tgz
-	sha256sums = d455b4e36f8b4ec7c12ac255a0fc0bedf3572a5c74754a14f26150e5c95edff9
+	source = https://github.com/bazukas/obs-linuxbrowser/archive/0.3.0.tar.gz
+	source = transparentpainting.patch
+	sha256sums = 94ab4d2f83a6ad4bcea884240f770ca87cdea1b035228905ef0c10f7cc9f4e30
+	sha256sums = 76733b17029ab1e5873c02754751b666cc4e10d6ff771f6eb8ea3d321a6d2246
 
 pkgname = obs-linuxbrowser
 

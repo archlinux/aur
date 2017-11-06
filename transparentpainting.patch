@@ -1,0 +1,12 @@
+diff --git a/src/browser/browser-app.cpp b/src/browser/browser-app.cpp
+index 967b55b..6bedadb 100644
+--- a/src/browser/browser-app.cpp
++++ b/src/browser/browser-app.cpp
+@@ -246,7 +246,6 @@ void BrowserApp::OnContextInitialized()
+ 		return;
+ 
+ 	CefWindowInfo info;
+-	info.transparent_painting_enabled = true;
+ 	info.width = width;
+ 	info.height = height;
+ 	info.windowless_rendering_enabled = true;
