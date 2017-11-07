@@ -1,7 +1,7 @@
 #Maintainer: Marc Jose <Hering2007@web.de>
 #Contributor: Lars Jose <larsjose77@gmail.com>
 pkgname=franz-bin
-pkgver=5.0.0_beta.12
+pkgver=5.0.0_beta.13
 pkgrel=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
 arch=('x86_64')
@@ -10,18 +10,18 @@ makedepends=('tar' 'yarn' 'npm' 'xorriso')
 conflicts=('franz')
 url='https://github.com/meetfranz/franz'
 license=('Apache')
-source=("${pkgname}.desktop" "https://github.com/meetfranz/franz/archive/${pkgver//_/-}.tar.gz")
+source=("${pkgname}.desktop" "https://github.com/meetfranz/franz/archive/v${pkgver//_/-}.tar.gz")
 sha256sums=('f72d9fcad1e1de482a35414f5a346c7e3d6c6140849861f7a5fbfbf32dcded36'
-            'b71cd923c5c17a65ddb085acb830f851c19787dac3a0beadea80cf52b836aeae')
-
-build() {
+            '4627d75c7d146f0cb96b9cd72bc26cdbd99e426f08735ee230fe92795765393d')
+            
+build () {
   cd "franz-${pkgver//_/-}"
   yarn add gulp-cli@1.2.2 gulpjs/gulp#4.0 
   yarn rebuild --production --non-interactive
   USE_SYSTEM_XORRISO=true yarn build
 }
 
-package() {
+package () {
   cd "franz-${pkgver//_/-}"
   install -d "${pkgdir}/usr/bin" "${pkgdir}/usr/share"
   cp -r --preserve=mode out/linux-unpacked "${pkgdir}/usr/share/${pkgname}"
