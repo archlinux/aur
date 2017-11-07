@@ -1,6 +1,6 @@
 pkgbase = tambi-git
-	pkgdesc = eine eierlegende wollmilchsau
-	pkgver = 581
+	pkgdesc = A swiss army knife for studiing the bible and much more
+	pkgver = 598
 	pkgrel = 1
 	url = https://github.com/nano13/tambi.git
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = tambi-git
 	depends = python-pyqtchart
 	depends = python-pysword
 	depends = python-markdown
-	depends = python-gpsd
+	depends = python-gpsd-git
 	depends = python-geopy
 	depends = python-srtm-git
 	depends = python-pillow
