@@ -3,7 +3,7 @@
 # Contributor: György Balló <ballogy@freestart.hu>
 
 pkgname=banshee
-pkgver=2.9.1.r326.gfbe0dde0a
+pkgver=2.9.1.r327.gd6f7b6294
 pkgrel=1
 pkgdesc="Music management and playback for GNOME"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('intltool' 'gnome-doc-utils' 'gnome-common')
 optdepends=('gst-plugins-ugly: Extra media codecs'
             'gst-libav: Extra media codecs'
             'brasero: CD burning')
-source=(git+https://github.com/arfbtwn/banshee.git#branch=feature/lite)
+source=(git+https://github.com/arfbtwn/banshee.git)
 md5sums=(SKIP)
 
 pkgver() {
@@ -26,19 +26,22 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  autoreconf -fvi
+  git checkout feature/mediapanel
+#  autoreconf -fvi
+  NOCONFIGURE=1 ./autogen.sh
   export MONO_SHARED_DIR="$srcdir/.wabi"
   mkdir -p "$MONO_SHARED_DIR"
-  LIBGPODSHARP_LIBS='-r:/usr/lib/libgpod/libgpod-sharp.dll
+  hackyhack='-r:/usr/lib/libgpod/libgpod-sharp.dll
   -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/pango-sharp.dll
   -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/atk-sharp.dll
   -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/gdk-sharp.dll
   -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/gtk-sharp.dll
   -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/glib-sharp.dll' \
-  MCS=/usr/bin/mcs ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+  LIBGPODSHARP_LIBS=$(echo $hackyhack) MCS=/usr/bin/mcs ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
               --disable-gst_sharp \
               --enable-gst-native \
               --disable-docs \
+              --disable-webkit \
               --disable-static \
               --disable-scrollkeeper \
               --disable-schemas-install \
