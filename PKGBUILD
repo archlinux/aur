@@ -2,8 +2,9 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-arena-git
+name=openfx-arena
 pkgver=2.3.3
-pkgrel=3
+pkgrel=4
 arch=("i686" "x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/MrKepzie/openfx-io"
@@ -26,7 +27,7 @@ sha512sums=('SKIP'
 _bits=32 ; [[ "$CARCH" = 'x86_64' ]] && _bits=64
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$name"
   git config submodule.openfx.url $srcdir/openfx
   git config submodule.IOSupport/SequenceParsing.url $srcdir/SequenceParsing
   git config submodule.SupportExt.url $srcdir/openfx-supportext
@@ -38,12 +39,12 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$name"
   make CONFIG=release BITS=$_bits
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$name"
   mkdir -p "$pkgdir/usr/OFX/Plugins"
   make install PLUGINPATH=$pkgdir/usr/OFX/Plugins CONFIG=release BITS=$_bits
 }
