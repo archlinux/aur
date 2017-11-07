@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Popp <mail@wolfgang-popp.de>
 
 pkgname=studip-sync-git
-pkgver=r29.c792953
+pkgver=r36.5e85f82
 pkgrel=1
 pkgdesc="Sync your files from Stud.IP"
 arch=('any')
