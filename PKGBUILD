@@ -1,10 +1,10 @@
 # Maintainer: Hugo Courtial <hugo [at] courtial [not colon] me>
 pkgname=natron-plugins
-pkgver=437 
-pkgrel=1
+pkgver=437
+pkgrel=2
 arch=("i686" "x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
-url="https://github.com/triceratops1/NatronVFX"
+url="https://github.com/natronvfx/natron-plugins"
 license=("GPL2")
 makedepends=("git")
 depends=("natron" "python" "python2" "ffmpeg")
