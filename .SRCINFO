@@ -1,8 +1,8 @@
 pkgbase = banshee
-	pkgdesc = Music management and playback for GNOME
-	pkgver = 2.9.1.r326.gfbe0dde0a
+	pkgdesc = Music management and playback for GNOME (fork by arfbtwn)
+	pkgver = 2.9.1.r327.gd6f7b6294
 	pkgrel = 1
-	url = http://banshee.fm/
+	url = https://github.com/arfbtwn/banshee
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -27,7 +27,7 @@ pkgbase = banshee
 	optdepends = gst-plugins-ugly: Extra media codecs
 	optdepends = gst-libav: Extra media codecs
 	optdepends = brasero: CD burning
-	source = git+https://github.com/arfbtwn/banshee.git#branch=feature/lite
+	source = git+https://github.com/arfbtwn/banshee.git
 	md5sums = SKIP
 
 pkgname = banshee

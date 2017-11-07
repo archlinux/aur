@@ -1,13 +1,11 @@
 # Maintainer:  Νικόλαος Κυριάκος Φυτίλης <n-fit@live.com>
-# Contributor: Daniel Isenmann <daniel@archlinux.org>
-# Contributor: György Balló <ballogy@freestart.hu>
 
 pkgname=banshee
 pkgver=2.9.1.r327.gd6f7b6294
 pkgrel=1
-pkgdesc="Music management and playback for GNOME"
+pkgdesc="Music management and playback for GNOME (fork by arfbtwn)"
 arch=('i686' 'x86_64')
-url="http://banshee.fm/"
+url="https://github.com/arfbtwn/banshee"
 license=('MIT')
 depends=(libxxf86vm gst-plugins-base-libs mono-addins dbus-sharp-glib libsoup \
 taglib-sharp-git gconf-sharp libmtp hicolor-icon-theme \
