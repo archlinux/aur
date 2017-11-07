@@ -5,15 +5,15 @@ pkgname=orfeo-toolbox
 pkgver=6.2.0
 _pkgver=6.2
 minorver=0
-pkgrel=1
+pkgrel=3
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
 license=('CeCILL')
 groups=()
-depends=('cmake' 'gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python2' 'openthreads' 
+depends=('gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python2' 'openthreads' 
 		'hdf5'  'insight-toolkit' 'libkml' 'ossim' 'libsvm' 'mapnik' 'qwt' 'opencv' 'mapnik')
-makedepends=('boost' 'swig')
+makedepends=('boost' 'swig' 'cmake')
 optdepends=()
 provides=()
 conflicts=()
@@ -45,8 +45,8 @@ build() {
   msg "starting make..."
   
   if  [ -d "$srcdir/build/" ]; then
-    rm -rf $srcdir/build/
-  fi
+   rm -rf $srcdir/build/
+ fi
   
   mkdir $srcdir/build/
 
@@ -78,6 +78,9 @@ build() {
 -DOTB_BUILD_ALL_MODULES_FOR_TESTS=ON \
 -DOTB_USE_GLEW=ON \
 -DOTB_USE_QWT=ON \
+-DOTB_USE_GLFW=ON \
+-DOTB_USE_MPI=ON \
+-DOTB_USE_MUPARSERX=OFF
 
 make   
 }
@@ -87,6 +90,7 @@ package() {
   # system. Arch runs `ldconfig' after install automatically:
   echo "/usr/lib/otb  /usr/lib/otb/applications" > "${srcdir}/${pkgname}.conf"
   echo "export OTB_APPLICATION_PATH=/usr/lib/otb/applications/" > "${srcdir}/${pkgname}.sh"
+
   
   install -D -m644 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf"
   install -D -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"

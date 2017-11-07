@@ -1,14 +1,14 @@
 pkgbase = orfeo-toolbox
 	pkgdesc = ORFEO Toolbox (OTB) is an open source library of image processing algorithms
 	pkgver = 6.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.orfeo-toolbox.org/otb/
 	arch = x86_64
 	arch = i686
 	license = CeCILL
 	makedepends = boost
 	makedepends = swig
-	depends = cmake
+	makedepends = cmake
 	depends = gdal
 	depends = agg
 	depends = freeglut
