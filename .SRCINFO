@@ -1,7 +1,7 @@
 pkgbase = citra-nightly-bin
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
 	pkgver = 401_20171106_c6b2cc2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/citra-emu/citra-nightly/
 	arch = x86_64
 	license = GPL
@@ -12,9 +12,9 @@ pkgbase = citra-nightly-bin
 	source = https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.svg
 	source = citra.bash
 	source = citra-qt.bash
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 22ecd9f663c9c09ee2b4d0bbded6c0a29a7ed002c7ea05a759dbe4370e914aa0
+	sha256sums = 93bd8f799877eba7dd87ed7a4c29607d78c42b8769626c1d479f7e34fb7b39e2
+	sha256sums = eeab12f3f13f06db7984d361eebcd977ce500b1f73c9bd7ce726712d477e6e14
 	sha256sums = 068409ef70c25e8da3f0430c5ff62609d122f2f857525940da8cd792a228a822
 	sha256sums = 61bcee69be306b58fd0bdf6327cdfc88260ba9f9d0694cf54e2d720965bc918b
 
