@@ -1,7 +1,7 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy.nl>
 
 pkgname=ticcutils
-pkgver=0.16.1
+pkgver=0.17
 pkgrel=1
 pkgdesc="Common library with functions for tools developed at Tilburg Centre for Cognition and Communication (Tilburg University) and Centre for Language and Speech Technology (Radboud University Nijmegen)"
 arch=('i686' 'x86_64')
@@ -12,9 +12,9 @@ makedepends=('libtool' 'autoconf' 'autoconf-archive')
 options=(!libtool)
 _gituser="LanguageMachines"
 _gitname="ticcutils"
-source=(https://github.com/LanguageMachines/ticcutils/archive/v0.16.1.tar.gz)
+source=(https://github.com/LanguageMachines/ticcutils/archive/v0.17.tar.gz)
 noextract=()
-md5sums=(7bb732c2fb8d2f41f15358ace09b3ca6)
+md5sums=(f7c1f15f2cc8f6921b8f7d2b240ea2fe)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
