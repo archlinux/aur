@@ -3,7 +3,7 @@
 pkgname=xerox-workcentre-72xx
 pkgver=5.482.0.0
 pkgrel=1
-pkgdesc="Xerox WorkCentre 7830/7835/7845/7855 printer driver for CUPS"
+pkgdesc="Xerox WorkCentre 7220/7225 printer driver for CUPS"
 arch=('i686' 'x86_64')
 url="http://www.support.xerox.com/support/workcentre-7220-7225/file-download/enus.html?operatingSystem=winxp&fileLanguage=en&contentId=133852&from=downloads&viewArchived=false"
 license=('custom')
