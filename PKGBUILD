@@ -3,8 +3,9 @@
 # Maintainer: liberodark
  
 pkgname=natron-git
+name=natron
 pkgver=2.3.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
 url="https://github.com/mrkepzie/natron"
@@ -15,7 +16,7 @@ optdepends=('openfx-io-git' 'openfx-misc-git' 'openfx-arena-git: Extra
 OpenFX 
 plugins for Natron includes text node' 'openfx-gmic-bin' 'natron-plugins' 'firejail-extras: Run Natron with an isolated enviorment')
 
-source=("$pkgname::git+https://github.com/MrKepzie/Natron.git#commit=fe3b773a00a206e49ad0cc684a8f7e00a287afd7"
+source=("$name::git+https://github.com/MrKepzie/Natron.git#commit=fe3b773a00a206e49ad0cc684a8f7e00a287afd7"
         "https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
         "config.pri")
 
@@ -25,7 +26,7 @@ sha512sums=('SKIP'
             'fcad21ac9ea0c3186f5998b340a02816b45880b2c7566c6aa8e65f12a3c6feec171c8c9415c4f5be9f957e9c40a94f81ef5c2754ac337cad6904ab6afb42bbcf')
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$name"
   
   mv "$srcdir/OpenColorIO-Configs-Natron-v${pkgver%.*}" "$srcdir/$pkgname/OpenColorIO-Configs"
 
@@ -41,7 +42,7 @@ git submodule update --init --recursive
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$name"
 
   [[ -d build ]] && rm -r build; mkdir build; cd build
 
@@ -51,6 +52,6 @@ build() {
 }
 
  package() {
-  cd "$srcdir/$pkgname/build"
+  cd "$srcdir/$name/build"
   make INSTALL_ROOT="$pkgdir" install
  }
