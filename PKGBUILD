@@ -2,11 +2,11 @@
 
 pkgname=nginx-mainline-mod-pagespeed
 pkgver=1.12.34.3
-pkgrel=2
+pkgrel=3
 
 _modname="ngx_${pkgname#nginx-mainline-mod-}"
 
-_nginxver=1.13.5
+_nginxver=1.13.6
 _pagespeedver=$pkgver-stable
 _psolver=1.12.34.2
 
@@ -23,7 +23,7 @@ source=(
 source_i686=(pagespeed-$_psolver-i686.tar.gz::https://dl.google.com/dl/page-speed/psol/$_psolver-ia32.tar.gz)
 source_x86_64=(pagespeed-$_psolver-x86_64.tar.gz::https://dl.google.com/dl/page-speed/psol/$_psolver-x64.tar.gz)
 
-sha256sums=('0e75b94429b3f745377aeba3aff97da77bf2b03fcb9ff15b3bad9b038db29f2e'
+sha256sums=('8512fc6f986a20af293b61f33b0e72f64a72ea5b1acbcc790c4c4e2d6f63f8f8'
             '7bc56a2fd9c0ac435df6d0f1242b8e9311e0389dfb095e5fc901c122ca368aef')
 sha256sums_i686=('cf54611bf8713a0dcb13ff274b011cb2a00c738b53afacb39edc64df7687f7fc')
 sha256sums_x86_64=('f5e53a07dff6b38075aa811f8a973b10db9f7c1d61464fd76b55b398f478e2c5')
