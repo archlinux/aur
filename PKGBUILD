@@ -66,9 +66,10 @@ build() {
   mkdir -p build
   cd build
 
-  cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release \
+  cmake .. -GNinja \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    -DCMAKE_INSTALL_LIBDIR=lib
   ninja
 }
 
