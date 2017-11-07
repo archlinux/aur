@@ -1,10 +1,10 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=lalsuite-git
 pkgver=r56231.42fcf346d4
-pkgrel=4
+pkgrel=5
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite."
 arch=('any')
-url=""
+url="https://wiki.ligo.org/DASWG/LALSuite"
 license=('unknown')
 groups=()
 depends=('python2' 'python2-numpy' 'gsl' 'fftw' 'hdf5' 'libxml2' 'swig' 'libframe' 'metaio')
@@ -36,10 +36,10 @@ build() {
 	make -j
 }
 
-check() {
-	cd "$srcdir/${pkgname%-git}"
-	make -k check
-}
+#check() {
+#	cd "$srcdir/${pkgname%-git}"
+#	make -k check
+#}
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
