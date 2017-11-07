@@ -4,7 +4,7 @@
 # Contributor: Manolis Tzanidakis
 pkgname=e2guardian
 pkgver=4.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of dansguardian, an open source web content filter. It filters the actual content of pages based on many methods including phrase matching, request header and URL filtering, etc. It does not purely filter based on a banned list of sites."
 url="http://e2guardian.org"
 arch=('i686' 'x86_64' 'armv6h' 'arm' 'armv7h')
@@ -18,7 +18,7 @@ install=${pkgname}.install
 source=(https://github.com/e2guardian/${pkgname}/archive/v${pkgver}.tar.gz
          e2guardian
         e2guardian.service)
-sha1sums=('eae623c9604118c39cd293da3c5407b1d10c74ea'
+sha1sums=('8d3be4b7ff4cfce26a01fc3d1f4778669625d513'
           '4505b1e66cc1f64b06eacb277de24c453831f215'
           'a4179286aa0d0bf3bb71f5459075a02ceaf0d518')
 
