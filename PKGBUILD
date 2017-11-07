@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-amplify-agent
-pkgver=0.45_2
+pkgver=0.47_1
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="NGINX Amplify Agent"
@@ -17,7 +17,7 @@ source=("https://github.com/nginxinc/$pkgname/archive/v$_pkgver/$pkgname-$pkgver
         "amplify-agent.service"
         "tmpfile.conf")
 backup=('etc/amplify-agent/agent.conf')
-sha256sums=('9fe4db756efb325a0056b863415f045f68694976884498b302f1ac55aacb3fff'
+sha256sums=('3b6761ac5b5f5c83484239a09483cfa353a80b2fb9a531c8aeae1893249917ad'
             'b848ed0386666a3c03b7f720ee08a40d4e434362c14145d244ef4370bb92f038'
             '3024f05029e2ca4d2565a8f9201f8d72ee29d956fd0c75cdba912607f81e0e05')
 
