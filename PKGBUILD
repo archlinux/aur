@@ -1,7 +1,7 @@
 # Maintainer:  Νικόλαος Κυριάκος Φυτίλης <n-fit@live.com>
 
 pkgname=banshee-git
-pkgbase=banshee
+_pkgbase=banshee
 pkgver=2.9.1.r327.gd6f7b6294
 pkgrel=1
 pkgdesc="Music management and playback for GNOME (fork by arfbtwn)"
