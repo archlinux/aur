@@ -10,11 +10,12 @@ url="https://symless.com/synergy"
 license=('unknown')
 groups=('')
 depends=('gcc>=5.2' 'bash-completion>=1.18.' 'gcc-libs>=3.0' 'hicolor-icon-theme' 'openssl-1.0' 'libx11>=1.2.99.901' 'libxext' 'libxi>=1.2.99.4' 'libxtst' 'openssl-1.0>=1.0.0' 'qt5-base>=5.5.0' 'qt5-declarative>=5.5.0' 'qt5-quickcontrols>=5.5.0')
+conflicts=('synergy')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
-source_x86_64=("https://www.dropbox.com/s/djyybwd1f5t9pjf/synergy_2.0.0.rc1-b1009%2Bc5bbd376_amd64.deb?dl=1")
-sha512sums_x86_64=('b5a48a5dcbbe1f5af7c2403a566c7f38857cab449c35ccc852804dcd7987774884a2a3ab9c27dd82e93715f83c45417958f88a822c37a58ab3f13ef23db2c378')
+source_x86_64=("https://www.dropbox.com/s/8wd2394olwl33wl/synergy_2.0.0.rc2-b1020%2Be1224b9f_amd64.deb?dl=1")
+sha512sums_x86_64=('716f2e8bb3b971f22c4345471497bb889328bddd27631d25b5f1de48c8858a8fc136105de25a9cb559601b4a7f579ef7eaf61e88f0f9ef96397b8692a7a63cbd')
 
 package(){
 
