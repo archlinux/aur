@@ -2,7 +2,7 @@
 
 _pkgbasename=ncurses
 pkgname=lib32-${_pkgbasename}5-compat-libs
-_pkgver=6.0-20170527
+_pkgver=6.0-20170902
 pkgver=${_pkgver/-/+}
 pkgrel=1
 pkgdesc="System V Release 4.0 curses emulation library (32-bit), ABI 5"
@@ -11,10 +11,8 @@ url='http://invisible-island.net/ncurses/ncurses.html'
 license=('MIT')
 depends=('lib32-glibc' "lib32-${_pkgbasename}")
 makedepends=("gcc-multilib")
-# Temporary URL, the upstream invisible-island URL will be used again when the
-# core ncurses package is updated to a more recent version.
-source=(https://www.mirrorservice.org/sites/lynx.isc.org/ncurses/current/ncurses-${_pkgver}.tgz{,.asc})
-md5sums=('c0e32e50ed6fd81af7ecc4910de9fa3f'
+source=(http://invisible-mirror.net/archives/ncurses/current/ncurses-${_pkgver}.tgz{,.asc})
+md5sums=('b7b1cedc484172434855b00831183458'
          'SKIP')
 validpgpkeys=('C52048C0C0748FEE227D47A2702353E0F7E48EDB') # Thomas Dickey
 
