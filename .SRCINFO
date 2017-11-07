@@ -16,7 +16,7 @@ pkgbase = xboxdrv-sl6566bk
 	depends = libusb
 	depends = python2-dbus
 	depends = systemd
-	provides = xboxdrv=${pkgver}
+	provides = xboxdrv=0.8.8
 	conflicts = xboxdrv
 	backup = etc/default/xboxdrv
 	source = xboxdrv-0.8.8.tar.gz::https://github.com/xboxdrv/xboxdrv/archive/v0.8.8.tar.gz

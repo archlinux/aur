@@ -12,7 +12,7 @@ depends=('libx11' 'dbus-glib' 'libusb' 'python2-dbus' 'systemd')
 makedepends=('scons' 'boost' 'pkg-config' 'libx11' 'python')
 backup=("etc/default/xboxdrv")
 conflicts=('xboxdrv')
-provides=('xboxdrv=${pkgver}')
+provides=(xboxdrv=${pkgver})
 source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/xboxdrv/${_pkgname}/archive/v${pkgver}.tar.gz
         xboxdrv.service
         xboxdrv.default
