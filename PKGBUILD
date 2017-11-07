@@ -3,7 +3,7 @@
 
 pkgname=openfx-io
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 arch=("i686" "x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/MrKepzie/openfx-io"
