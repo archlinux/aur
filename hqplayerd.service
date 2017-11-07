@@ -1,6 +1,7 @@
 [Unit]
 Description=HQPlayer Embedded daemon
-After=network.target sound.target
+After=network-online.target sound.target
+Wants=network-online.target
 
 [Service]
 Type=simple
