@@ -5,6 +5,7 @@ pkgbase = kube-shell
 	url = https://github.com/cloudnativelabs/kube-shell
 	arch = any
 	license = Apache
+	makedepends = python-pip
 	depends = python
 	depends = python-prompt_toolkit
 	depends = python-pygments
