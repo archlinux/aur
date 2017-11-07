@@ -2,8 +2,7 @@
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=wireshark-git
-pkgver=2.3.0rc0+1510+gc274046
-pkgver=2.5.0rc0+667+gef24608db1
+pkgver=2.5.0rc0+1603+g0c1ea1cee1
 pkgrel=1
 pkgdesc="A free network protocol analyzer for Unix/Linux. GIT version"
 arch=('i686' 'x86_64')
@@ -30,7 +29,7 @@ depends=(
         'gnutls'                # for SSL decryption using RSA keys
         'krb5'
         #'libsmi'
-        'nghttp2'               # for HTTP/2 dissector
+        'libnghttp2'            # for HTTP/2 dissector
         'sbc'                   # Bluetooth audio codec in RTP player
         'snappy' 'lz4'          # for cql dissector
         'spandsp'               # for G.722/G.726 codec support in RTP player
@@ -67,7 +66,9 @@ build() {
   mkdir -p build
   cd build
 
-  cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib
   ninja
 }
 
@@ -80,4 +81,4 @@ package() {
   chmod 754 "${pkgdir}/usr/bin/dumpcap"
 }
 
-# vim:set ts=2 sw=2:
+# vim: ts=2 sw=2 et:
