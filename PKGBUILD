@@ -114,8 +114,8 @@ package() {
           printf "${red}==> ERROR:${bold} $1${all_off}\n"
         }
 
-        error "error 0x800c7328. Please report this to the maintainer."
-        exit
+        error "0x800c7328. Please report this to the maintainer."
+        exit 1
     fi
 
     # Move confs to /etc and link back to /usr: /usr/lib/jvm/java-$_jname/lib -> /etc
