@@ -1,7 +1,7 @@
 pkgbase = nxengine-evo
 	pkgdesc = A somewhat upgraded/refactored version of nxengine
-	pkgver = 2.4.1
-	pkgrel = 2
+	pkgver = 2.5
+	pkgrel = 1
 	url = https://github.com/isage/nxengine-evo
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,12 @@ pkgbase = nxengine-evo
 	makedepends = libpng
 	makedepends = cmake
 	depends = sdl2_ttf
-	source = https://github.com/isage/nxengine-evo/archive/v2.4.1.tar.gz
+	depends = sdl2
+	depends = sdl2_mixer
+	source = https://github.com/isage/nxengine-evo/archive/v2.5.tar.gz
 	source = http://www.cavestory.org/downloads/cavestoryen.zip
 	source = nx-evo
-	sha256sums = bd3be7e964e445da3e1821f027ecb192b4c62333702e65cc0bae505a85aa16ad
+	sha256sums = f5f9703fbfc6a342fb8892659d76207aed2a8ebee8260459d8c44a1e55153dbe
 	sha256sums = aa87fa30bee9b4980640c7e104791354e0f1f6411ee0d45a70af70046aa0685f
 	sha256sums = 36019935c4ff76546e52b47523a6af33a4055ceca806b4940e0574aa46b368e1
 
