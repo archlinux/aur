@@ -12,8 +12,7 @@ url="http://toolkit.translatehouse.org/"
 license=('GPL')
 depends=('bash' 'python-lxml' 'python-six' 'python-diff-match-patch')
 makedepends=('python-setuptools')
-optdepends=('python-iniparse: for ini2po'
-            'gaupol: for po2sub'
+optdepends=('gaupol: for po2sub'
             'python-chardet: encoding detector'
             'python-levenshtein: faster matching')
 source=(https://github.com/translate/translate/releases/download/$pkgver/${pkgname}-${pkgver}.tar.gz)
