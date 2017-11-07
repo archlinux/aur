@@ -1,0 +1,13 @@
+diff --git a/src/xbox360_controller.cpp b/src/xbox360_controller.cpp
+index a06c0a2..5af51cf 100644
+--- a/src/xbox360_controller.cpp
++++ b/src/xbox360_controller.cpp
+@@ -64,7 +64,7 @@ Xbox360Controller::Xbox360Controller(libusb_device* dev,
+     }
+     else
+     {
+-      m_chatpad.reset(new Chatpad(m_handle, desc.bcdDevice, chatpad_no_init, chatpad_debug));
++      m_chatpad.reset(new Chatpad(m_handle, 0x0110, chatpad_no_init, chatpad_debug));
+     }
+   }
+ 
