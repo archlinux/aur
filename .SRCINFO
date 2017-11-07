@@ -1,0 +1,16 @@
+pkgbase = youtube-dl-nightly-bin
+	pkgdesc = small youtube-dl binary
+	pkgver = 0000.00.00
+	pkgrel = 1
+	url = https://youtube-dl.org/
+	arch = x86_64
+	license = GPL
+	makedepends = curl
+	depends = python
+	provides = youtube-dl
+	conflicts = youtube-dl
+	source = https://youtube-dl.org/downloads/latest/youtube-dl
+	md5sums = SKIP
+
+pkgname = youtube-dl-nightly-bin
+
