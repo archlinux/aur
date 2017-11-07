@@ -7,15 +7,23 @@
 
 pkgname=('python-scipy-mkl' 'python2-scipy-mkl')
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
 arch=('i686' 'x86_64')
 url="http://www.scipy.org/"
 license=('BSD')
 makedepends=('gcc-fortran' 'python-numpy' 'python2-numpy' 'python-setuptools' 'python2-setuptools')
 checkdepends=('python-nose' 'python2-nose')
-source=("https://github.com/scipy/scipy/releases/download/v${pkgver}/scipy-${pkgver}.tar.xz")
-sha256sums=('06b23f2a5db5418957facc86ead86b7752147c0461f3156f88a3da87f3dc6739')
+source=(
+	"https://github.com/scipy/scipy/releases/download/v${pkgver}/scipy-${pkgver}.tar.xz"
+	"build_python2.sh"
+	"build_python3.sh"
+)
+sha256sums=(
+	'06b23f2a5db5418957facc86ead86b7752147c0461f3156f88a3da87f3dc6739'
+	'a9f18f9af8a2c9505cc3c03662200ceef2174dbf0c5f81849f596a0d7220575f'
+	'fa8599db2992a6ed9c8b71e41b043b1e41a84efac7aeeae3ac74b838c7d18c46'
+)
 
 build() {
 	export LDFLAGS="-Wall -shared"
@@ -36,22 +44,21 @@ build() {
 		export use_gcc=true
 	fi
 
-	if [ "$use_intel_cc" = true ]; then
-		export __INTEL_PRE_CFLAGS=" -D_Float128=__float128"
-	fi
+	# copy python3 build files
+	cp ../build_python3.sh scipy-${pkgver}
 
-	# 2 builds
+	# copy python2 build files
 	cp -r scipy-${pkgver} scipy-${pkgver}-py2
+	cp ../build_python2.sh scipy-${pkgver}-py2
 
 	# build for python3
 	cd scipy-${pkgver}
 	if [ "$use_gcc" = true ]; then
-		python3 setup.py config_fc --fcompiler=gnu95 build
+		python3 setup.py --fcompiler=gnu95 --compiler=gnu95 build
 	fi
 
 	if [ "$use_intel_cc" = true ]; then
-		export __INTEL_PRE_CFLAGS=" -D_Float128=__float128"
-		python3 setup.py config --compiler=intelem --fcompiler=intelem build_clib --compiler=intelem --fcompiler=intelem build_ext --compiler=intelem --fcompiler=intelem
+		sh build_python3.sh
 	fi
 
 	# build for python2
@@ -63,12 +70,11 @@ build() {
 	done
 
 	if [ "$use_gcc" = true ]; then
-		python2 setup.py config_fc --fcompiler=gnu95 build
+		python2 setup.py --fcompiler=gnu95 --compiler=gnu95 build
 	fi
 
 	if [ "$use_intel_cc" = true ]; then
-		export __INTEL_PRE_CFLAGS=" -D_Float128=__float128"
-		python2 setup.py config --compiler=intelem --fcompiler=intelem build_clib --compiler=intelem --fcompiler=intelem build_ext --compiler=intelem --fcompiler=intelem
+		sh build_python2.sh
 	fi
 
 }
@@ -105,12 +111,11 @@ package_python-scipy-mkl() {
 	export LDFLAGS="-Wall -shared"
 
 	if [ "$use_gcc" = true ]; then
-		python3 setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root=${pkgdir} --optimize=1
+		python3 setup.py config --fcompiler=gnu95 --compiler=gnu95 install --prefix=/usr --root="${pkgdir}/" --optimize=1
 	fi
 
 	if [ "$use_intel_cc" = true ]; then
-		export __INTEL_PRE_CFLAGS=" -D_Float128=__float128"
-		python3 setup.py config_fc --fcompiler=intel install --prefix=/usr --root=${pkgdir} --optimize=1
+		python3 setup.py config --fcompiler=intelem --compiler=intelem install --prefix=/usr --root="${pkgdir}/" --optimize=1
 	fi
 
 	install -Dm644 LICENSE.txt \
@@ -129,16 +134,13 @@ package_python2-scipy-mkl() {
 	export LDFLAGS="-Wall -shared"
 
 	if [ "$use_gcc" = true ]; then
-		python2 setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root=${pkgdir} --optimize=1
+		python2 setup.py config --fcompiler=gnu95 --compiler=gnu95 install --prefix=/usr --root="${pkgdir}/" --optimize=1
 	fi
 
 	if [ "$use_intel_cc" = true ]; then
-		export __INTEL_PRE_CFLAGS=" -D_Float128=__float128"
-		python2 setup.py config_fc --fcompiler=intel install --prefix=/usr --root=${pkgdir} --optimize=1
+		python2 setup.py config --fcompiler=intelem --compiler=intelem install --prefix=/usr --root="${pkgdir}/" --optimize=1
 	fi
 
 	install -Dm644 LICENSE.txt \
 		"${pkgdir}/usr/share/licenses/python2-scipy/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
