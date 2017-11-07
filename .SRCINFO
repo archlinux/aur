@@ -1,19 +1,17 @@
-pkgbase = mono-addins-git
-	pkgdesc = Generic framework for creating extensible applications, and for creating libraries which extend those applications.
-	pkgver = 1.3.1
-	pkgrel = 3
-	url = http://www.mono-project.com/Mono.Addins/
+pkgbase = mono-addins
+	pkgdesc = Generic framework for creating extensible applications, and for creating add-ins which extend those applications.
+	pkgver = 1.3.3
+	pkgrel = 0
+	url = https://github.com/mono/mono-addins
 	arch = i686
 	arch = x86_64
-	license = custom:MIT
-	makedepends = git
+	license = MIT
 	makedepends = pkgconfig
-	depends = mono
-	depends = gtk-sharp-2
-	provides = mono-addins=1.3.1
-	options = !makeflags
-	source = git://github.com/mono/mono-addins.git
-	md5sums = SKIP
+	makedepends = msbuild-bin
+	depends = bash
+	provides = mono-addins
+	source = https://github.com/mono/mono-addins/archive/mono-addins-1.3.3.tar.gz
+	md5sums = 7ac27ffa4616fd03dc299749f16bce2a
 
-pkgname = mono-addins-git
+pkgname = mono-addins
 
