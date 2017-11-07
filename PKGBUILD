@@ -133,7 +133,6 @@ build() {
     'is_clang=false'
     'clang_use_chrome_plugins=false'
     'is_debug=false'
-    'exclude_unwind_tables=true'
     'fatal_linker_warnings=false'
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
@@ -156,6 +155,10 @@ build() {
     "google_default_client_id=\"${_google_default_client_id}\""
     "google_default_client_secret=\"${_google_default_client_secret}\""
   )
+
+  if check_option strip y; then
+    _flags+=('exclude_unwind_tables=true')
+  fi
 
   python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
   out/Release/gn gen out/Release --args="${_flags[*]}" \
