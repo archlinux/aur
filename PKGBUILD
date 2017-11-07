@@ -1,34 +1,34 @@
 # Maintainer: Jan Max Meyer <codepilot@phorward.info>
 pkgname=unicc
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 epoch=
-pkgdesc="Universal, target-language independent LALR(1) parser generator"
+pkgdesc="Universal parser generator for C and Python"
 arch=('i686' 'x86_64' 'armv6h')
-url="http://www.phorward.info"
+url="https://phorward.info"
 license=('BSD')
 depends=('phorward')
 makedepends=()
 checkdepends=()
 #changelog=CHANGELOG
-source=("http://www.phorward.info/products/unicc/$pkgname-$pkgver-source.tar.gz"
-"http://www.phorward.info/products/unicc/unicc.pdf")
-md5sums=('5411db004a8bbde40670e72427e95d1a'
-'c0e4266f171e391d1af601882f7e80b3')
+source=("https://phorward.info/products/unicc/$pkgname-$pkgver.tar.gz"
+"https://phorward.info/products/unicc/unicc.pdf")
+md5sums=('fa8bc7f8cdead9fa381279d35b4a20fa'
+'c09eacd1b6cee1a48c67e80d04253191')
 
 build() {
-	cd "$pkgname-$pkgver-source"
+	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr
 	make
 }
 
 check() {
-	cd "$pkgname-$pkgver-source"
+	cd "$pkgname-$pkgver"
 	make -k check
 }
 
 package() {
-	cd "$pkgname-$pkgver-source"
+	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 	cd ..
 	cp unicc.pdf $pkgdir/usr/share/unicc
