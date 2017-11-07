@@ -1,0 +1,16 @@
+pkgbase = python-flask-navigation
+	pkgdesc = The navigation of Flask application.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitlab.salamek.cz/sadam/granad-rs232
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-blinker
+	depends = python-flask
+	source = python-flask-navigation::git+https://github.com/tonyseek/flask-navigation.git
+	md5sums = SKIP
+
+pkgname = python-flask-navigation
+
