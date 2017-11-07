@@ -28,7 +28,14 @@ _optimize="-O2"
 # Upstream name, version, and source URL
 _realname='firefox'
 _pkgver=57.0b14
-_mozffurl="http://archive.mozilla.org/pub/$_realname/releases/$_pkgver/source/$_realname-$_pkgver.source.tar.xz"
+if [[ "$_pkgver" == ?*.?*rc?* ]]; then
+  _mozreleasepath="candidates/${_pkgver%rc?*}-candidates/build${_pkgver#?*.?*rc}"
+  _mozreleasename="${_realname}-${_pkgver%rc?*}"
+elif [[ "$_pkgver" == ?*.?*b?* ]]; then
+  _mozreleasepath="releases/$_pkgver"
+  _mozreleasename="${_realname}-$_pkgver"
+fi
+_mozffurl="http://archive.mozilla.org/pub/$_realname/$_mozreleasepath/source/$_mozreleasename.source.tar.xz"
 
 # Debian Firefox trunk Debian source revision and URL (for Unity (global) menubar patch).
 _debianrev=2113
