@@ -3,14 +3,14 @@
 pkgname=mono-addins-git
 _pkgname=mono-addins
 pkgver=1.3.3
-pkgrel=0
+pkgrel=1
 pkgdesc="Generic framework for creating extensible applications, and for creating add-ins which extend those applications."
 arch=('i686' 'x86_64')
 url="https://github.com/mono/mono-addins"
 source=(https://github.com/mono/mono-addins/archive/mono-addins-1.3.3.tar.gz)
 license=('MIT')
 provides=("$_pkgname")
-depends=('bash')
+depends=('bash' 'gtk-sharp-2' 'gtk-sharp-3')
 makedepends=('pkgconfig' 'msbuild-bin')
 
 build() {
