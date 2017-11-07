@@ -5,7 +5,7 @@ pkgver=0.10.10
 pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.13.4
+_nginxver=1.13.6
 
 pkgdesc='Lua script engine module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=(
 	openssl-1.1.patch
 )
 
-sha256sums=('de21f3c49ba65c611329d8759a63d72e5fcf719bc6f2a3270e2541348ef1fbba'
+sha256sums=('8512fc6f986a20af293b61f33b0e72f64a72ea5b1acbcc790c4c4e2d6f63f8f8'
             'b4acb84e2d631035a516d61830c910ef6e6485aba86096221ec745e0dbb3fbc9'
             '60aed346397e06f870c7e17798f6e3ce11f078c5ae6e573098d53132c1afdb58')
 
