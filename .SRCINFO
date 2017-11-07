@@ -1,0 +1,16 @@
+pkgbase = mabe-git
+	pkgdesc = Modular Agent Based Evolution Framework
+	pkgver = r173.3ea8481
+	pkgrel = 1
+	url = https://github.com/Hintzelab/MABE
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python
+	makedepends = git
+	makedepends = gcc
+	source = git+https://github.com/Hintzelab/MABE.git
+	sha256sums = SKIP
+
+pkgname = mabe-git
+
