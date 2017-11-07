@@ -1,0 +1,6 @@
+4,5c4,5
+< 	<dllmap os="!windows,osx" dll="libeay32" target="libcrypto.so"/>
+< 	<dllmap os="!windows,osx" dll="ssleay32" target="libssl.so"/>
+---
+> 	<dllmap os="!windows,osx" dll="libeay32" target="/usr/lib/openssl-1.0/libcrypto.so"/>
+> 	<dllmap os="!windows,osx" dll="ssleay32" target="/usr/lib/openssl-1.0/libssl.so"/>
