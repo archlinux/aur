@@ -5,7 +5,7 @@
 
 pkgname=mpb
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A program for computing the band structures and electromagnetic modes"
 arch=('i686' 'x86_64')
 url="http://ab-initio.mit.edu/wiki/index.php/MIT_Photonic_Bands"
