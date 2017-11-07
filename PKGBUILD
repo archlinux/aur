@@ -1,6 +1,6 @@
 pkgname=openwsman
-pkgver=2.6.3
-pkgrel=2
+pkgver=2.6.4
+pkgrel=1
 pkgdesc="Opensource Implementation of WS-Management"
 arch=('i686' 'x86_64')
 url="https://$pkgname.github.io/"
@@ -18,7 +18,7 @@ backup=("etc/$pkgname/$pkgname.conf"
         "etc/$pkgname/ssleay.cnf"
         "etc/pam.d/$pkgname")
 source=("https://github.com/Openwsman/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('a14cec2a892a30e055edac36071d8972')
+md5sums=('99e3387715c1341f7b1a1a87e3cd6431')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -54,15 +54,16 @@ package() {
 	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
 
-	install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 	mv "$pkgdir/usr/sbin/"* "$pkgdir/usr/bin"
 	rmdir "$pkgdir/usr/sbin/"
-	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-	mv "bindings/ruby/html/" "$pkgdir/usr/share/doc/$pkgname/rdoc"
 
-	install -D -m644 ../AUTHORS   "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
-	install -D -m644 ../ChangeLog "$pkgdir/usr/share/doc/$pkgname/ChangeLog"
-	install -D -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dp -m644 ../AUTHORS   "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
+	install -Dp -m644 ../ChangeLog "$pkgdir/usr/share/doc/$pkgname/ChangeLog"
+	install -Dp -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+	cp -Rp "bindings/ruby/html/"   "$pkgdir/usr/share/doc/$pkgname/rdoc"
+
+	install -Dp -m644 ../COPYING   "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
