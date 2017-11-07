@@ -3,7 +3,7 @@
 # Contributor: Ner0
 
 pkgname=nemo-git
-pkgver=3.4.1.r35.gd8f6d611
+pkgver=3.6.2.r1.gae778dd9
 pkgrel=1
 pkgdesc="Cinnamon file manager, git-version"
 arch=('i686' 'x86_64')
@@ -19,7 +19,8 @@ depends=('cinnamon-desktop'
     'libexif'
     'libnotify'
     'libxml2'
-    'python')
+    'python'
+    'xapps')
 makedepends=('git'
     'gnome-common'
     'gobject-introspection'
