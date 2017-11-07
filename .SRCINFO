@@ -1,11 +1,11 @@
 pkgbase = lame-svn
 	pkgdesc = A high quality MPEG Audio Layer III (MP3) encoder
-	pkgver = r6410
-	pkgrel = 2
+	pkgver = r6425
+	pkgrel = 1
 	url = http://lame.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = LGPL
 	makedepends = subversion
 	makedepends = nasm
 	depends = glibc

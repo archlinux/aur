@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lame-svn
-pkgver=r6410
-pkgrel=2
+pkgver=r6425
+pkgrel=1
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder"
 arch=('i686' 'x86_64')
 url="http://lame.sourceforge.net/"
-license=('GPL')
+license=('LGPL')
 depends=('glibc' 'ncurses')
 makedepends=('subversion' 'nasm')
 provides=('lame')
