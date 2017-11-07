@@ -30,5 +30,5 @@ pkgbase = banshee
 	source = git+https://github.com/arfbtwn/banshee.git
 	md5sums = SKIP
 
-pkgname = banshee
+pkgname = banshee-git
 

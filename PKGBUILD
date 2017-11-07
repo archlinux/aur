@@ -1,6 +1,7 @@
 # Maintainer:  Νικόλαος Κυριάκος Φυτίλης <n-fit@live.com>
 
-pkgname=banshee
+pkgname=banshee-git
+pkgbase=banshee
 pkgver=2.9.1.r327.gd6f7b6294
 pkgrel=1
 pkgdesc="Music management and playback for GNOME (fork by arfbtwn)"
@@ -18,12 +19,12 @@ source=(git+https://github.com/arfbtwn/banshee.git)
 md5sums=(SKIP)
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgbase"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $pkgname
+  cd $_pkgbase
   git checkout feature/mediapanel
 #  autoreconf -fvi
   NOCONFIGURE=1 ./autogen.sh
@@ -54,7 +55,7 @@ build() {
   mkdir -p "$MONO_SHARED_DIR"
   export LIBGPODSHARP='-r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/pango-sharp.dll -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/atk-sharp.dll -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/gdk-sharp.dll -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/gtk-sharp.dll -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/glib-sharp.dll'
 
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgbase"
   sed 's/CollectionExtensions/Hyena.Collections.CollectionExtensions/g' -i src/Core/Banshee.Services/Banshee.Preferences/Collection.cs
 
   make
@@ -64,8 +65,8 @@ package() {
   export MONO_SHARED_DIR="$srcdir/.wabi"
   mkdir -p "$MONO_SHARED_DIR"
 
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgbase"
   make DESTDIR="$pkgdir" install
 
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$_pkgbase/COPYING"
 }
