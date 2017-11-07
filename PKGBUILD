@@ -1,7 +1,7 @@
 # Maintainer: Jesin <Jesin00@gmail.com>
 pkgname=libb2
-pkgver=0.0.15.g9a0d006
-pkgrel=2
+pkgver=0.0.17.g0d7015f
+pkgrel=1
 arch=(i686 x86_64)
 pkgdesc='C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp hash functions'
 url=https://blake2.net/
@@ -18,7 +18,7 @@ prepare() {
 	cd "$pkgname"
 	# If there are no tags, tag the initial commit so pkgver() can work.
 	[ -n "$(git tag)" ] || git tag 0.0 "$(git rev-list --max-parents=0 --reverse HEAD | head -n1)"
-	autoreconf -fiv
+	autoreconf -fisv
 }
 
 pkgver() {
@@ -33,6 +33,11 @@ build() {
 	# Uncomment the flags at the end of the previous line if you intend
 	# to distribute the binary package to other computers.
 	make
+}
+
+check() {
+	cd "$pkgname"
+	make check
 }
 
 package() {
