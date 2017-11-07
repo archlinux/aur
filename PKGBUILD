@@ -27,7 +27,7 @@ _optimize="-O2"
 
 # Upstream name, version, and source URL
 _realname='firefox'
-_pkgver=57.0b14
+_pkgver=57.0rc1
 if [[ "$_pkgver" == ?*.?*rc?* ]]; then
   _mozreleasepath="candidates/${_pkgver%rc?*}-candidates/build${_pkgver#?*.?*rc}"
   _realver="${_pkgver%rc?*}"
@@ -89,7 +89,7 @@ fi
 
 pkgname=("$_realname-kde-opensuse-beta")
 pkgver="$_pkgver"
-pkgrel=3
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with openSUSE patches to integrate better with KDE Plasma 5"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -128,7 +128,7 @@ source=("firefox-$pkgver.source.tar.xz"::"$_mozffurl"
         'vendor.js' 'kde.js'
         'firefox-fixed-loading-icon.png'
         'firefox.desktop')
-sha256sums=('1a94235f4e9783ea0528361d6fc601f8cb3a448eb69bcd0f521aed192e90dd10'
+sha256sums=('4dfa360a689410d18263f0e88227101d6052cacfd27f9a5780b343c759520d91'
             'SKIP'  # Debian source tarball is generated each time it is requested.
             'fc0358619be3a63683c680b7c59e024030d96e6dc461217fe451d8289b1236bf'
             'ef0f90c9134ef05b950f06a3ffbd699c2e5a5f99a4cdf9868e799534d68c204f'
