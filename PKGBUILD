@@ -51,25 +51,25 @@ prepare() {
 build() {
   cd $srcdir/nemo
 
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --disable-static \
-      --libexecdir=/usr/lib/nemo \
-      --disable-update-mimedb \
-      --disable-tracker \
-      --disable-gtk-doc-html \
-      --disable-schemas-compile \
-      --enable-selinux=no
+  ./autogen.sh \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-static \
+    --libexecdir=/usr/lib/nemo \
+    --disable-update-mimedb \
+    --disable-tracker \
+    --disable-gtk-doc-html \
+    --disable-schemas-compile \
+    --enable-selinux=no \
+    --disable-Werror
 
-  #https://bugzilla.gnome.org/show_bug.cgi?id=656231
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
 
-  make
+  make V=1
 }
 
 package() {
   cd $srcdir/nemo
   make DESTDIR="$pkgdir" install
-  
-  # Remove D-Bus activation file to avoid conflict with nautilus-desktop
-  rm "$pkgdir/usr/share/dbus-1/services/org.nemo.freedesktop.FileManager1.service"
 }
