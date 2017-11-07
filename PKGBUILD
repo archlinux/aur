@@ -12,7 +12,7 @@ set -u
 #_ubver='1.7.5~180~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 #_ubver='1.7.6~184~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 #_ubver='17.2'; _ubrel='429'; _libgee='libgee>=0.18.0'
-_ubver='17.10'; _libgee='libgee>=0.18.0'
+_ubver='17.11'; _libgee='libgee>=0.18.0'
 pkgname='timeshift'
 pkgver="${_ubver}"
 pkgrel='1'
@@ -38,7 +38,7 @@ _github='teejee2008'
 _verwatch=("https://github.com/${_github}/${pkgname}/releases.atom" '\s\+<title>Timeshift v\([0-9\.]\+\)</title>.*' 'f')
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}_v${pkgver}.tgz::https://github.com/${_github}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('854788f5e8163db1c9c663a21d02dc35188f9ccf7d83a8b3735eec39b2207e57')
+sha256sums=('2cdcd3a6c8c0a78240c944423ba49b488144924524d9e7a2e787e29aea5ab38b')
 #sha256sums[0]='SKIP'
 
 build() {
