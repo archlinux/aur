@@ -1,10 +1,11 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: David Birks <david@tellus.space>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: padfoot <padfoot@exemail.com.au>
 # Contributor: Morfeo <morfeo89@hotmail.it>
 
 pkgbase=lightdm-devel
 pkgname=('lightdm-devel' 'liblightdm-qt4-devel' 'liblightdm-qt5-devel')
-pkgver=1.19.4
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='A lightweight display manager'
 arch=('i686' 'x86_64')
@@ -21,7 +22,7 @@ source=("https://launchpad.net/lightdm/${pkgver%.*}/${pkgver}/+download/lightdm-
         'lightdm.rules'
         'lightdm-default-config.patch'
         'Xsession')
-sha256sums=('0eaf6d2725c2d8d15a067cf293a4f3f3526720467a41c9806c894e7e802f20d0'
+sha256sums=('cd509b74382bcf382c6e3e4b54ac30ba804022fec968d6993d134552ea1a43a2'
             '0d2adba25cdbe59e97ffd302083db9d5e23920780f41e04f64512cd6b633289a'
             'b29521fbd7a48a8f60b93ecca3b30c30bcb71560de8033c8d39b25c22c6f696f'
             'e8c4c5fd3b801a390d201166fd1fb9730e78a5c62928768103b870b6bd980ea0'
