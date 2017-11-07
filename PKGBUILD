@@ -7,7 +7,6 @@ pkgrel=4
 pkgver=401_20171106_c6b2cc2
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 provides=('citra' 'citra-qt')
-builddepends=('curl' 'python')
 license=('GPL')
 arch=('x86_64')
 url="https://github.com/citra-emu/citra-nightly/"
@@ -16,22 +15,15 @@ source=(
     "https://github.com/citra-emu/citra-nightly/releases/download/nightly-$(echo $pkgver | cut -d'_' -f1)/citra-linux-$id.tar.xz"
     "https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.desktop"
     "https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.svg"
-    "print-version.py"
     "citra.bash"
     "citra-qt.bash"
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'c6a5826c2ec4133ebd1af3d2613a6b1882af1b97038c271b79dd0cd52ec3c6ac'
             '068409ef70c25e8da3f0430c5ff62609d122f2f857525940da8cd792a228a822'
             '61bcee69be306b58fd0bdf6327cdfc88260ba9f9d0694cf54e2d720965bc918b')
 
-pkgver() {
-    cd $srcdir
-    curl "https://api.github.com/repos/citra-emu/citra-nightly/releases" -o releases.json
-    python3 print-version.py
-}
 package_citra-nightly-bin() {
 	depends=('sdl2' 'libpng' 'libpng12' 'libcurl-compat' 'bash')
 
