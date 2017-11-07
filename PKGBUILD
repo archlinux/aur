@@ -3,7 +3,7 @@
 
 pkgname=dbus-broker
 pkgver=7
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Linux D-Bus Message Broker'
 arch=('i686' 'x86_64')
@@ -12,34 +12,12 @@ license=('Apache')
 depends=('libsystemd' 'expat' 'glib2')
 makedepends=('git' 'meson' 'systemd' 'python-docutils')
 
-_commit=aedd79b5eb327cec615596eb485401b0965e1e90  # tags/v7^0
-source=("git+https://github.com/bus1/dbus-broker#commit=$_commit"
-        "git+https://github.com/c-util/c-rbtree"
-        "git+https://github.com/c-util/c-sundry"
-        "git+https://github.com/c-util/c-list"
-        "git+https://github.com/c-util/c-dvar")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+source=("https://github.com/bus1/dbus-broker/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('269239303ebfd3e9d1825d10fd6a7b2e68c219b762e61fcbcef5fc33dbdd7c75')
 
 prepare() {
   rm -Rf build
   mkdir build
-  cd $pkgname
-
-  git submodule init
-  git config --local submodule.subprojects/c-rbtree.url "$srcdir/c-rbtree"
-  git config --local submodule.subprojects/c-sundry.url "$srcdir/c-sundry"
-  git config --local submodule.subprojects/c-list.url   "$srcdir/c-list"
-  git config --local submodule.subprojects/c-dvar.url   "$srcdir/c-dvar"
-  git submodule update
 }
 
 build() {
