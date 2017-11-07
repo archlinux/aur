@@ -1,14 +1,14 @@
 pkgbase = awesome-gnome
 	pkgdesc = Setup awesome as window manager of GNOME 3
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = http://awesome.naquadah.org/wiki/Quickly_Setting_up_Awesome_with_Gnome
 	install = awesome-gnome.install
 	arch = any
 	license = CCPL
 	depends = awesome
-	depends = gnome-session>=3.24
-	depends = gnome-settings-daemon>=3.24
+	depends = gnome-session>=3.24.2
+	depends = gnome-settings-daemon>=3.24.2
 	depends = notification-daemon
 	source = awesome-gnome.desktop
 	source = awesome.desktop
