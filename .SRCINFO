@@ -1,6 +1,6 @@
 pkgbase = raiseorlaunch
 	pkgdesc = A run-or-raise-application-launcher for i3 window manager.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 0
 	url = https://github.com/open-dynaMIX/raiseorlaunch
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = raiseorlaunch
 	makedepends = python-wheel
 	depends = python
 	depends = python-i3-py
-	source = https://github.com/open-dynaMIX/raiseorlaunch/archive/v0.2.0.tar.gz
-	sha256sums = f819e411fdcf3815eac1a34798e93f6003d4ecc16608b820baf557eb8ddf1a0a
+	source = https://github.com/open-dynaMIX/raiseorlaunch/archive/v0.2.1.tar.gz
+	sha256sums = 19cabb49e0a383d9fb570ad183e105a2c6f794e4d21dc7add3b80b5631be4c03
 
 pkgname = raiseorlaunch
 
