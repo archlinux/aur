@@ -1,4 +1,4 @@
-# Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
+# Maintainer: Iván Ruvalcaba <mario.i.ruvalcaba[at]gmail[dot]com>
 # Contributor Antonio Rojas <arojas@archlinux.org>
 
 # Before you complain about unverifiable signature, please read Allan's post:
@@ -7,7 +7,7 @@
 
 _pkgname=kmarkdownwebview
 pkgname="${_pkgname}-qt5webkit"
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='KPart for rendering Markdown content'
 url='https://www.kde.org'
@@ -18,7 +18,7 @@ conflicts=('kmarkdownwebview')
 depends=('kparts' 'qt5-webkit')
 makedepends=('extra-cmake-modules')
 source=("$_pkgname-$pkgver.tar.xz"::"https://download.kde.org/stable/$_pkgname/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('c5a73c02bd2761d1786b080148e465ef69e4686d17e6adfc047350f36e7f6b16'
+sha256sums=('8b58c85c64641ba2194db1741ed5cc65504b18ced89728b09c6bfd090da847e4'
             'SKIP')
 validpgpkeys=('E191FD5BE6F46870F09E82B2024E7FB43D015474') # Friedrich W. H. Kossebau <kossebau@kde.org>
 
