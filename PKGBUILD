@@ -2,7 +2,7 @@
 pkgname=saw-script-git
 _pkgname=saw-script
 
-pkgver=cbeb831
+pkgver=6e417757
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
@@ -13,7 +13,7 @@ pkgdesc="The SAW scripting language."
 url="http://saw.galois.com/"
 arch=('x86_64')
 license=('noncommercial')
-depends=('cvc4' 'libtinfo' 'java-environment' 'ncurses' 'cryptol')
+depends=('cvc4' 'java-environment' 'ncurses' 'cryptol' 'z3')
 makedepends=('cabal-install')
 optdepends=()
 conflicts=()
@@ -30,7 +30,7 @@ build() {
     cabal update
     hash stack || cabal install stack
     ln -fs stack.ghc-8.0-unix.yaml stack.yaml
-    ./build-sandbox.sh -p
+    ./build.sh
 }
 
 package() {
