@@ -2,9 +2,9 @@
 
 _pkgname=('tambi')
 pkgname=('tambi-git')
-pkgver=583
+pkgver=598
 pkgrel=1
-pkgdesc='eine eierlegende wollmilchsau'
+pkgdesc='A swiss army knife for studiing the bible and much more'
 arch=('any')
 licence=('undecided')
 url='https://github.com/nano13/tambi.git'
@@ -21,6 +21,12 @@ pkgver() {
 
 package() {
     cd "$srcdir"/"$_pkgname"
+    
+    # putting the freedesktop .desktop file and the program icon to the right place
+    mkdir -p "$pkgdir"/usr/share/applications
+    mkdir -p "$pkgdir"/usr/share/pixmaps
+    install -Dm744 assets/tambi.desktop "$pkgdir"/usr/share/applications
+    install -Dm744 assets/icons/logo.ico "$pkgdir"/usr/share/pixmaps/tambi.ico
     
     mkdir -p "$pkgdir"/usr/share/$pkgname
     mv * "$pkgdir"/usr/share/$pkgname
