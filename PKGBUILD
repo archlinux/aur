@@ -2,11 +2,11 @@
 
 pkgname=lame-altivec
 pkgver=3.100
-pkgrel=1
+pkgrel=2
 pkgdesc="AltiVec/SSE optimized LAME encoder"
 arch=('i686' 'x86_64')
 url="http://tmkk.undo.jp/lame/index_e.html"
-license=('GPL')
+license=('LGPL')
 depends=('glibc' 'ncurses')
 makedepends=('nasm')
 provides=('lame')

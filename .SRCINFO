@@ -1,11 +1,11 @@
 pkgbase = lame-altivec
 	pkgdesc = AltiVec/SSE optimized LAME encoder
 	pkgver = 3.100
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tmkk.undo.jp/lame/index_e.html
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = LGPL
 	makedepends = nasm
 	depends = glibc
 	depends = ncurses
