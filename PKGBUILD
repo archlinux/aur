@@ -1,7 +1,7 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname=libstaroffice
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='filter for old StarOffice documents(.sdc, .sdw, ...) based on librevenge'
 url='https://github.com/fosnola/libstaroffice'
@@ -10,7 +10,7 @@ license=('MPL')
 depends=('librevenge')
 makedepends=('doxygen')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fosnola/libstaroffice/archive/${pkgver}.tar.gz")
-sha256sums=('d604f3e0c1c2dd96a058c7f94eddbf603dc4371f72b9aebeea7e5a8fa3c16b60')
+sha256sums=('26a148954f04f92ce648ab0a5e6faba53ded68b22f8d03afe8603d15b6b599d8')
 
 build() {
   cd "${pkgname}-${pkgver}"
