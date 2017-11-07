@@ -1,6 +1,6 @@
 pkgbase = fftw-quad
 	pkgdesc = FFTW Quad-precision (float128) version, a library for computing the discrete Fourier transform (DFT)
-	pkgver = 3.3.5
+	pkgver = 3.3.7
 	pkgrel = 1
 	url = http://www.fftw.org/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = fftw-quad
 	depends = bash
 	depends = gcc-libs
 	depends = fftw
-	source = http://www.fftw.org/fftw-3.3.5.tar.gz
-	sha1sums = 875831a7ab87d278f21ac0c3453f12d5ee807da4
+	source = http://www.fftw.org/fftw-3.3.7.tar.gz
+	sha1sums = 2ae980a8d44c161ce4a09c6e2d1c79243ecbabb2
 
 pkgname = fftw-quad
 

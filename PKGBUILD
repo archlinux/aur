@@ -6,7 +6,7 @@
 
 pkgname=fftw-quad
 _pkgname=fftw
-pkgver=3.3.5
+pkgver=3.3.7
 pkgrel=1
 pkgdesc="FFTW Quad-precision (float128) version, a library for computing the discrete Fourier transform (DFT)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('GPL2')
 url="http://www.fftw.org/"
 depends=('bash' 'gcc-libs' 'fftw')
 source=("http://www.fftw.org/${_pkgname}-${pkgver}.tar.gz")
-sha1sums=('875831a7ab87d278f21ac0c3453f12d5ee807da4')
+sha1sums=('2ae980a8d44c161ce4a09c6e2d1c79243ecbabb2')
 
 build() {
   cd ${srcdir}
