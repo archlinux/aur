@@ -3,8 +3,8 @@
 # Contributor: stef204 <https://aur.archlinux.org/account/stef204>
 
 pkgname='borgmatic'
-pkgver=1.1.7
-pkgrel=4
+pkgver=1.1.11
+pkgrel=1
 pkgdesc='A wrapper script for Borg backup software that creates and prunes backups'
 arch=('any')
 url='https://torsion.org/borgmatic/'
@@ -13,13 +13,15 @@ depends=('borg' 'python-pykwalify' 'python-ruamel-yaml')
 makedepends=('python-setuptools' 'python-tox')
 provides=('borgmatic')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://torsion.org/hg/${pkgname}/archive/${pkgver}.tar.gz"
+# Main repository moved over to gittea. Switch to using commits until tags are
+# fixed:
+source=('git+https://projects.torsion.org/witten/borgmatic.git#commit=425e27dee5443e3121d18340b990974a6de51071'
         "${pkgname}.install")
-sha256sums=('939ae88c8f9d2caf77b29a1bb9a53df52fc274ed6f004793616da0c6dab73eae'
-            'ca30f277f9ea3663e61a94e898fcbc3bd34073fdbb37da3f18ebb42a04ec0381')
+sha256sums=('SKIP'
+            '2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
 
   # Workaround for borgmatic requiring python-ruamel-yaml <= 15.0. This will
   # break when  Arch's python-ruamel-yaml version exceeds 15. Long-term a
@@ -34,7 +36,7 @@ prepare() {
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
 
   # Required because borgmatic uses python 3.4, but Arch's default python
   # version is 3.6. Once borgmatic moves to 3.6 upstream, this workaround
@@ -48,7 +50,7 @@ check() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   
   python setup.py -q install --root="${pkgdir}" --optimize=1
   
