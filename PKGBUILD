@@ -1,4 +1,4 @@
-# Maintainer: Anton Kudryavtsev <anton@anidetrix.ru>
+# Maintainer: Anton Kudryavtsev <anton@anibit.ru>
 # Contributor: Francois Menning <f.menning@protonmail.com>
 # Contributor: Frederik Schwan <frederik dot schwan at linux dot com>
 # Contributor: Thomas Fanninger <thomas@fanninger.at>
@@ -10,7 +10,7 @@ _gourl="code.gitea.io"
 
 pkgname=gitea-git
 pkgrel=1
-pkgver=v1.1.0.r702.gf70758de
+pkgver=v1.1.0.r731.g61f5c225
 pkgdesc="A painless self-hosted Git service."
 url="https://gitea.io/"
 license=("MIT")
@@ -33,9 +33,9 @@ install=gitea.install
 source=("git://github.com/go-gitea/gitea.git"
         "0001-Adjust-config-for-Arch-Linux-package.patch"
         "0002-Adjust-service-file-for-Arch-Linux-package.patch")
-sha256sums=("SKIP"
-            "5ddc6959ea29def1273a29ef561e14c13b6978dd65583058313afaed4e152e7f"
-            "6cd1daa666659a68c98376f8bfae55402b5ffc39c1bf42b5ae0ee700249a3b73")
+sha256sums=('SKIP'
+            '188f18acceb6342208502f808b07cf8b7e8f594f6b9d4f27bc5f02780a914840'
+            '6cd1daa666659a68c98376f8bfae55402b5ffc39c1bf42b5ae0ee700249a3b73')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"

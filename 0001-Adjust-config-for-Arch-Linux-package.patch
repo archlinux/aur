@@ -1,5 +1,5 @@
 --- app.ini
-+++ app.ini	2017-11-02 22:35:28.000000000 +0300
++++ app.ini	2017-11-07 14:03:21.236666669 +0300
 @@ -1,12 +1,12 @@
  ; App name that shows on every page title
  APP_NAME = Gitea: Git with a cup of tea
