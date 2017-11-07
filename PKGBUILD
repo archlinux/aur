@@ -37,41 +37,17 @@ prepare() {
   -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/gdk-sharp.dll
   -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/gtk-sharp.dll
   -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/glib-sharp.dll' \
-  LIBGPODSHARP_LIBS=$(echo $hackyhack) MCS=/usr/bin/mcs ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+  LIBGPODSHARP_LIBS=$(echo $hackyhack) MCS=/usr/bin/mcs ./configure \
+               --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
               --disable-gst_sharp \
               --enable-gst-native \
               --disable-docs \
-              --disable-webkit \
               --disable-static \
               --disable-scrollkeeper \
               --disable-schemas-install \
-              --disable-boo \
-              --enable-daap \
-              --enable-remoteaudio \
-              --disable-youtube \
-              --disable-gio \
-              --disable-gio_hardware \
               --disable-user-help \
-              --enable-bpm \
-              --enable-coverart \
-              --enable-filesystemqueue \
-              --enable-fixup \
-              --enable-internetarchive \
-              --enable-internetradio \
-              --enable-lastfm \
-              --enable-lastfmstreaming \
-              --enable-librarywatcher \
-              --enable-mediapanel \
-              --enable-minimode \
-              --enable-miroguide \
-              --enable-mpris \
-              --enable-multimediakeys \
-              --enable-playqueue \
-              --enable-nowplaying \
-              --enable-notificationarea \
-              --enable-opticaldisc \
-              --enable-podcasting \
-              --enable-playermigration \
+              --disable-youtube \
+              --disable-gio-hardware \
               --with-vendor-build-id=ArchLinux
 }
 
@@ -81,6 +57,8 @@ build() {
   export LIBGPODSHARP='-r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/pango-sharp.dll -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/atk-sharp.dll -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/gdk-sharp.dll -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/gtk-sharp.dll -r:/usr/lib/pkgconfig/../../lib/mono/gtk-sharp-3.0/glib-sharp.dll'
 
   cd "$srcdir/$pkgname"
+  sed 's/CollectionExtensions/Hyena.Collections.CollectionExtensions/g' -i src/Core/Banshee.Services/Banshee.Preferences/Collection.cs
+
   make
 }
 
