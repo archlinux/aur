@@ -9,6 +9,8 @@ arch=("i686" "x86_64")
 url="https://github.com/Quent42340/EIFL"
 depends=("qt5-base" "qtkeychain" "curl")
 makedepends=("cmake" "cpr-git")
+provides=("eifl")
+conflicts=("eifl-dev-git")
 source=("${_pkgname}::git+${url}.git")
 md5sums=("SKIP")
 

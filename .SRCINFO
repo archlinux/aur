@@ -10,6 +10,8 @@ pkgbase = eifl-git
 	depends = qt5-base
 	depends = qtkeychain
 	depends = curl
+	provides = eifl
+	conflicts = eifl-dev-git
 	source = eifl::git+https://github.com/Quent42340/EIFL.git
 	md5sums = SKIP
 
