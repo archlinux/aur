@@ -1,6 +1,6 @@
 pkgbase = gns3-gui-git
 	pkgdesc = GNS3 network simulator. Graphical user interface package.
-	pkgver = 2.1.0rc3
+	pkgver = 2.1.0rc4
 	pkgrel = 1
 	url = https://github.com/GNS3/gns3-gui
 	arch = any
@@ -19,9 +19,9 @@ pkgbase = gns3-gui-git
 	provides = gns3-gui
 	conflicts = gns3-gui
 	replaces = gns3-gui
-	source = gns3-gui-2.1.0rc3.tar.gz::https://github.com/GNS3/gns3-gui/archive/v2.1.0rc3.tar.gz
+	source = gns3-gui-2.1.0rc4.tar.gz::https://github.com/GNS3/gns3-gui/archive/v2.1.0rc4.tar.gz
 	source = gns3.desktop
-	md5sums = 880c49e15a32833c4ed740ee1b5a3f56
+	md5sums = 8d7aad2ab911de4ef8ab69d0edb8bb46
 	md5sums = ac6ba60be0a1cb7fc965d1a105e431d5
 
 pkgname = gns3-gui-git
