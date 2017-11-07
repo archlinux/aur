@@ -2,11 +2,12 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-misc-git
+name=openfx-misc
 pkgver=2.3.3
-pkgrel=6
+pkgrel=7
 arch=("i686" "x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
-url="https://github.com/MrKepzie/openfx-io"
+url="https://github.com/devernay/openfx-io"
 license=("GPL2")
 depends=("seexpr1" "openimageio" "ffmpeg") 
 #depends=("opencolorio" "openexr" "openimageio" "ffmpeg" "boost-libs")
