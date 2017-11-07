@@ -1,7 +1,7 @@
 pkgbase = kube-shell
 	pkgdesc = An integrated shell for working with the Kubernetes CLI
 	pkgver = 0.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloudnativelabs/kube-shell
 	arch = any
 	license = Apache

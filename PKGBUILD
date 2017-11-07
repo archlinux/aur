@@ -3,7 +3,7 @@
 pkgname=kube-shell
 _pkgname=kube_shell
 pkgver=0.0.21
-pkgrel=1
+pkgrel=2
 license=('Apache')
 pkgdesc='An integrated shell for working with the Kubernetes CLI'
 makedepends=('python-pip')
