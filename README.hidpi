@@ -1,0 +1,6 @@
+On HiDPI screens, the CLiG visualizations can be small, despite using scaling.
+The 'clig_fontsize' option can be used to increase the CLiG font and
+consequently the visualizations. For instance, to use fonts that are twice the
+regular size, start Alpino with:
+
+alpino -flag clig_fontsize 20
