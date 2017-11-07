@@ -4,10 +4,10 @@
  
 pkgname=natron-git
 pkgver=2.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
-url="https://github.com/nyancat18/natron-arch"
+url="https://github.com/mrkepzie/natron"
 license=("GPL")
 depends=('fontconfig' 'qt4' 'python2-pyside' 'python2-shiboken' 'boost-libs' 'pixman' 'glfw-x11' 'cairo')
 makedepends=('git' 'expat' 'boost')
@@ -23,14 +23,16 @@ source=("$pkgname::git+https://github.com/MrKepzie/Natron.git#commit=fe3b773a00a
         "git+https://github.com/MrKepzie/tinydir"
         "https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
         "config.pri")
+
+
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'f31f3f74315545cec23c266b0391c325143666333c876631f2cfc9030c50670194f18a2763ffe9733dfe4073ae6ac2c95ad14089622dc02d0fa1ddcfaf99ede7'
-            '48017b7b9cd1854064b9ddffecedef89a4d38070f9a7d2cd506aad481a8061c5cffe5e5c84fc9b0ac5216fc99e093481db367e91ce52cb2a8a66223c4209402a')
+            '42035f867188fcb7ec76f2f44a1d01b0c47bdc8aa94b22280e2691465ef135059e49ea5efa18d70c496b0319b8c888f3660ecbdb98bb5ba4a66d66dc77e21778'
+            'fcad21ac9ea0c3186f5998b340a02816b45880b2c7566c6aa8e65f12a3c6feec171c8c9415c4f5be9f957e9c40a94f81ef5c2754ac337cad6904ab6afb42bbcf')
 
 prepare() {
   cd "$srcdir/$pkgname"
