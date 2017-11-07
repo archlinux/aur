@@ -1,0 +1,12 @@
+pkgbase = unichrom
+	pkgdesc = fully automated Chromatographic Data System, dedicated to simplify hard, routine work of Chemist, dealing in a field of Gas and Liquid Chromatography.
+	pkgver = 5.1.7.249
+	pkgrel = 1
+	url = http://www.unichrom.com/chrom/ucdle.php
+	arch = x86_64
+	license = Commercial
+	source = http://www.unichrom.com/chrom/install/uc-5.1.7.249-x86_64-linux-r11657M.zip
+	md5sums = SKIP
+
+pkgname = unichrom
+
