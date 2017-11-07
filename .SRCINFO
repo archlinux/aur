@@ -1,0 +1,14 @@
+pkgbase = bitvalue-git
+	pkgdesc = Simple bash script to visualize the value of your bitcoin investment.
+	pkgver = r1.a9f0a83
+	pkgrel = 1
+	url = http://git.treefish.org/~alex/bitvalue.git
+	arch = any
+	license = GPL3
+	depends = gnuplot>=5.2
+	depends = wget>=1.19
+	source = bitvalue-git::git+https://git.treefish.org/~alex/bitvalue.git
+	md5sums = SKIP
+
+pkgname = bitvalue-git
+
