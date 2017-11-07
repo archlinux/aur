@@ -16,3 +16,19 @@ pkgbase = docker2aci
 
 pkgname = docker2aci
 
+pkgbase = docker2aci
+	pkgdesc = CLI tool to convert Docker images to ACI
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://github.com/appc/docker2aci
+	arch = x86_64
+	arch = i686
+	license = Apache2
+	makedepends = go
+	makedepends = bash
+	conflicts = docker2aci-git
+	source = https://github.com/appc/docker2aci/archive/v0.17.1.tar.gz
+	sha1sums = 3c661ae92adf0ed27f8ac5d634b407c2b5d6697b
+
+pkgname = docker2aci
+
