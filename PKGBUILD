@@ -4,7 +4,7 @@
 pkgname=openfx-io-git
 name=openfx-io
 pkgver=2.3.3
-pkgrel=3
+pkgrel=4
 arch=("i686" "x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/MrKepzie/openfx-io"
@@ -14,28 +14,15 @@ depends=("seexpr1" "openimageio" "ffmpeg")
 makedepends=("git" "expat" "boost")
 optdepends=("openfx-gmic-bin" "natron-plugins")
 source=("$pkgname::git+https://github.com/MrKepzie/openfx-io.git#commit=5d7502e9f81e326d5386f79e16d5e1697969a5b7"
-        'git+https://github.com/devernay/openfx.git'
-        'git+https://github.com/MrKepzie/SequenceParsing'
-        'git+https://github.com/devernay/openfx-supportext.git'
-        'git+https://github.com/MrKepzie/tinydir')
+)
 sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+)
 
 _bits=32 ; [[ "$CARCH" = 'x86_64' ]] && _bits=64
 
 prepare() {
   cd "$srcdir/$name"
-  git config submodule.openfx.url $srcdir/openfx
-  git config submodule.IOSupport/SequenceParsing.url $srcdir/SequenceParsing
-  git config submodule.SupportExt.url $srcdir/openfx-supportext
-  git submodule update
-
-  cd IOSupport/SequenceParsing
-  git config submodule.tinydir.url $srcdir/tinydir
-  git submodule update
+ git submodule update --init --recursive
 }
 
 build() {
