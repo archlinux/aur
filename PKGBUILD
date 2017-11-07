@@ -1,6 +1,6 @@
 # Maintainer: Parantapa Bhattacharya <pb at parantapa dot net>
 pkgname=ttf-fantasque-sans-git
-pkgver=1.6.5.r152.4d9b217
+pkgver=1.7.1.r174.127e66b
 pkgrel=1
 pkgdesc="A font family with a great monospaced variant for programmers."
 arch=('any')
@@ -8,6 +8,7 @@ url="https://github.com/belluzj/fantasque-sans"
 license=('SIL OPEN FONT LICENSE Version 1.1')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('git' 'fontforge' 'ttfautohint' 'sfnt2woff' 'ttf2eot' 'woff2-git')
+conflicts=('ttf-fantasque-sans-mono')
 install=$pkgname.install
 source=(repo::git+https://github.com/belluzj/fantasque-sans.git)
 md5sums=('SKIP')
@@ -24,10 +25,11 @@ pkgver() {
 
 build() {
     cd "$srcdir/repo"
+    2to3 -w Scripts/fontbuilder.py
     make
 }
 
 package() {
     install -d "${pkgdir}/usr/share/fonts/TTF"
-    cp -dpr --no-preserve=ownership "${srcdir}/repo/"*.ttf "${pkgdir}/usr/share/fonts/TTF"
+    cp -dpr --no-preserve=ownership "${srcdir}/repo/Variants/Normal/TTF/"*.ttf "${pkgdir}/usr/share/fonts/TTF"
 }
