@@ -4,7 +4,7 @@
  
 pkgname=natron-git
 pkgver=2.3.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
 url="https://github.com/mrkepzie/natron"
@@ -32,10 +32,6 @@ prepare() {
   # Git submodules
 git submodule update --init --recursive
 
-  cd libs/SequenceParsing
-  git config submodule.tinydir.url $srcdir/tinydir
-git submodule update --init --recursive
-  cd ../..
 
   mv "${srcdir}/config.pri" "${srcdir}/${pkgname%%-*}/config.pri"
   # Fix for gcc6 build issues
