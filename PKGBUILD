@@ -1,7 +1,7 @@
 # Maintainer: Ondrej Kucera <ondrej.kucera@centrum.cz>
 pkgname=swagger-codegen
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Swagger Code Generator"
 arch=("any")
 url="https://github.com/swagger-api/swagger-codegen"
@@ -24,7 +24,7 @@ noextract=(swagger-codegen-cli-$pkgver.jar)
 package() {
   install -d -m 755 "$pkgdir/usr/share/java/swagger-codegen"
   install -m 644 swagger-codegen-cli-$pkgver.jar "$pkgdir/usr/share/java/swagger-codegen"
-  ln -s "$pkgdir/usr/share/java/swagger-codegen/swagger-codegen-cli-$pkgver.jar" "$pkgdir/usr/share/java/swagger-codegen/swagger-codegen-cli.jar"
+  ln -s "swagger-codegen-cli-$pkgver.jar" "$pkgdir/usr/share/java/swagger-codegen/swagger-codegen-cli.jar"
   install -d -m 755 "$pkgdir/usr/bin"
   install -m 755 swagger-codegen "$pkgdir/usr/bin"
 }
