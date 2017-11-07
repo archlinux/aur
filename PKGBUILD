@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=1.0.10.r2.gf6e1c32
+pkgver=1.0.10.r2.gb37374f
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam."
 arch=('x86_64')
@@ -56,6 +56,14 @@ package() {
 
   #make install DESTDIR="$pkgdir" #There is no installer for the samples
   install -d "$pkgdir/usr/bin"
+  install -d "$pkgdir/usr/shaders"
+
+
+  install -m 755 "$srcdir/openvr/samples/bin/linux64/hellovr_vulkan" "$pkgdir/usr/bin"
+  for shader in "$srcdir/openvr/samples/bin/shaders/"*.spv
+  do
+    install -m 755 "$shader" "$pkgdir/usr/shaders"
+  done
 
   install -m 755 "$srcdir/openvr/samples/bin/linux64/hellovr_opengl" "$pkgdir/usr/bin"
   install -m 755 "$srcdir/openvr/samples/bin/cube_texture.png" "$pkgdir/usr/" #TODO: fix source code to look in proper place
