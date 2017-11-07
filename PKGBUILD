@@ -13,9 +13,8 @@ depends=('gcc>=5.2' 'bash-completion>=1.18.' 'gcc-libs>=3.0' 'hicolor-icon-theme
 conflicts=('synergy')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-
-source_x86_64=("https://www.dropbox.com/s/8wd2394olwl33wl/synergy_2.0.0.rc2-b1020%2Be1224b9f_amd64.deb?dl=1")
-sha512sums_x86_64=('716f2e8bb3b971f22c4345471497bb889328bddd27631d25b5f1de48c8858a8fc136105de25a9cb559601b4a7f579ef7eaf61e88f0f9ef96397b8692a7a63cbd')
+source_x86_64=("https://www.dropbox.com/s/a81ckhwa8e0rfot/synergy_2.0.0.stable-b1026%2B060bdcb0_amd64.deb?dl=1")
+sha512sums_x86_64=('738f00adf23361e2c22936fd3ab8f5238d312f8b4319d474e94117e2517d75f65264e01883337b2d1716a38723d9c4d6ccf8c7a60a9594cf80f8d29f30f1d671')
 
 package(){
 
