@@ -111,7 +111,7 @@ provides=("firefox=${pkgver}")
 conflicts=('firefox')
 options=('!emptydirs')
 # shellcheck disable=SC2140
-source=("$_mozffurl"
+source=("firefox-$pkgver.source.tar.xz"::"$_mozffurl"
         "firefox-trunk+r$_debianrev.debian.tar.gz"::"$_debianurl"
         "mozilla-kde_g$_opensuserev.patch"::"$_opensusebaseurl/mozilla-kde.patch"
         "mozilla-nongnome-proxies_g$_opensuserev.patch"::"$_opensusebaseurl/mozilla-nongnome-proxies.patch"
