@@ -1,9 +1,9 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-_nginxver=1.13.5
+_nginxver=1.13.6
 pkgname=nginx-mainline-mod-brotli
 pkgver=$_nginxver
-pkgrel=6
+pkgrel=7
 
 _modname="ngx_${pkgname#nginx-mainline-mod-}"
 
@@ -24,7 +24,7 @@ source=(
 	https://github.com/google/brotli/archive/$_brotliver/brotli-$_brotliver.tar.gz
 )
 
-sha256sums=('0e75b94429b3f745377aeba3aff97da77bf2b03fcb9ff15b3bad9b038db29f2e'
+sha256sums=('8512fc6f986a20af293b61f33b0e72f64a72ea5b1acbcc790c4c4e2d6f63f8f8'
             '3a5348d484554f3d1787d06961fc7886fda44d17264ab7e6cdf1f4a8fa04231e'
             '4299a2a86f0b931e80dd548be17fcaa5a6c158a0727f497f22cbb365668af0fe')
 
