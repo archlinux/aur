@@ -22,7 +22,6 @@ pkgbase = firefox-kde-opensuse-beta
 	makedepends = clang
 	makedepends = llvm
 	makedepends = jack
-	makedepends = zip
 	depends = gtk3
 	depends = gtk2
 	depends = mozilla-common

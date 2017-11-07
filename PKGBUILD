@@ -94,7 +94,7 @@ depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt'
          'icu' 'libevent' 'kmozillahelper')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm'
              'mesa' 'imake' 'gconf' 'inetutils' 'autoconf2.13'
-             'rust' 'clang' 'llvm' 'jack' 'zip')
+             'rust' 'clang' 'llvm' 'jack')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
