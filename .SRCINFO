@@ -1,4 +1,4 @@
-pkgbase = banshee
+pkgbase = banshee-git
 	pkgdesc = Music management and playback for GNOME (fork by arfbtwn)
 	pkgver = 2.9.1.r327.gd6f7b6294
 	pkgrel = 1
