@@ -1,7 +1,7 @@
 # Maintainer: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-pkgname=openfx-io
+pkgname=openfx-io-git
 pkgver=2.3.3
 pkgrel=2
 arch=("i686" "x86_64")
