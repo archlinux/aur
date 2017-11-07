@@ -1,9 +1,9 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: David Birks <david@tellus.space>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Alda <alda@leetchee.fr>
 
 pkgname=signal
-pkgver=1.0.33
+pkgver=1.0.35
 pkgrel=1
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
@@ -13,7 +13,7 @@ arch=("i686" "x86_64")
 url='https://whispersystems.org'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WhisperSystems/Signal-Desktop/archive/v${pkgver}.tar.gz"
 	"signal.desktop")
-sha512sums=('4fec0e70812c32a6a9f5ea4d697118cea1210e76cf74d8bbfeec3adaf004ac355bd8f7ec958be266d27e64d94456c8cc1d73cca2eeda8a65eede1dcfdd1d8e30'
+sha512sums=('942f1ffddd4b95d9593737f56bd514fd5d058e5c53cda0d33da495605e28ace1797b76ac54c80fcc4e623ba1aa43a51ce1b6e0e0601308199e7ae94587a07bf1'
 	    'a264bfc7a4a7aac747daa588a2acbf1eddfd201bc795f0fbc18460a9b25f4460f364124e227a527fec22631cd84bc9e190f9f4978069e9c119eb556b9ff2d327')
 
 prepare() {
