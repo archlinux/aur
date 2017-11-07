@@ -30,12 +30,12 @@ _realname='firefox'
 _pkgver=57.0b14
 if [[ "$_pkgver" == ?*.?*rc?* ]]; then
   _mozreleasepath="candidates/${_pkgver%rc?*}-candidates/build${_pkgver#?*.?*rc}"
-  _mozreleasename="${_realname}-${_pkgver%rc?*}"
+  _realver="${_pkgver%rc?*}"
 elif [[ "$_pkgver" == ?*.?*b?* ]]; then
   _mozreleasepath="releases/$_pkgver"
-  _mozreleasename="${_realname}-$_pkgver"
+  _realver="$_pkgver"
 fi
-_mozffurl="http://archive.mozilla.org/pub/$_realname/$_mozreleasepath/source/$_mozreleasename.source.tar.xz"
+_mozffurl="http://archive.mozilla.org/pub/$_realname/$_mozreleasepath/source/$_realname-$_realver.source.tar.xz"
 
 # Debian Firefox trunk Debian source revision and URL (for Unity (global) menubar patch).
 _debianrev=2113
@@ -177,7 +177,7 @@ prepare() {
   warning "You have 30 seconds to reconsider your build environment"
   sleep 30
 
-  cd "$srcdir/$_realname-$pkgver"
+  cd "$srcdir/$_realname-$_realver"
 
   msg2 "Creating API key files"
   echo -n "$_google_api_key" > google-api-key
@@ -214,7 +214,7 @@ prepare() {
     patch -Ni "$srcdir/$patch-opensuse-patch.patch"
   done
 
-  cd "$srcdir/$_realname-$pkgver"
+  cd "$srcdir/$_realname-$_realver"
 
   msg2 "Applying Unity (global) menubar patch"
   patch -Np1 -i "$srcdir/~mozillateam/firefox/firefox-trunk.head/debian/patches/unity-menubar.patch"
@@ -254,7 +254,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$_realname-$pkgver"
+  cd "$srcdir/$_realname-$_realver"
 
   export PATH="$srcdir/path:$PATH"
   export PYTHON="/usr/bin/python2"
@@ -290,7 +290,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_realname-$pkgver"
+  cd "$srcdir/$_realname-$_realver"
 
   msg2 "Installing Firefox"
   DESTDIR="$pkgdir" ./mach install
