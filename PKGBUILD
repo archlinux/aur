@@ -66,7 +66,7 @@ build() {
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
 
-  make V=1
+  make
 }
 
 package() {
