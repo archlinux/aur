@@ -1,7 +1,7 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
 
 pkgname=signal-desktop
-pkgver=1.0.35
+pkgver=1.0.36
 pkgrel=1
 pkgdesc='Private messaging from your desktop'
 _basename=Signal-Desktop
@@ -12,7 +12,7 @@ conflicts=('signal' 'signal-desktop-bin' 'signal-desktop-beta')
 depends=('electron' 'gconf' 'gtk2')
 makedepends=('grunt-cli' 'npm' 'phantomjs' 'python2' 'ruby-sass' 'yarn')
 source=("${url}/archive/v${pkgver}.tar.gz" 'signal-desktop.desktop' 'signal-desktop')
-sha256sums=('f25e254c503eed24eb8946170d930c0a86b52245da9d42527771eef3e4cbe333'
+sha256sums=('32311ce02032b07311706fa0b24f3c07bcf823fc7ffd398cacecf8fd25ea05fd'
             'e99f7af8a3dbb631485bc513b82d44bfe0826cf8a29868f601e285fd4bf48a42'
             '39509f44492374c830c9d9f305b2d528cde905bb7b2c9aeaa74d1c1b23bd371f')
 
