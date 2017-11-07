@@ -1,7 +1,7 @@
 pkgbase = openfx-io-git
 	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
 	pkgver = 2.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MrKepzie/openfx-io
 	arch = i686
 	arch = x86_64
