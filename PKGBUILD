@@ -3,16 +3,18 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-nightly-bin"
 pkgname=("$_pkgbase-nightly-bin" "$_pkgbase-qt-nightly-bin")
-pkgrel=4
+pkgrel=5
 pkgver=401_20171106_c6b2cc2
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 provides=('citra' 'citra-qt')
 license=('GPL')
 arch=('x86_64')
 url="https://github.com/citra-emu/citra-nightly/"
-id="$(echo $pkgver | cut -d'_' -f2)-$(echo $pkgver | cut -d'_' -f3)"
+_nightly_id=$(echo $pkgver | cut -d'_' -f1)
+_ref="$(echo $pkgver | cut -d'_' -f2)-$(echo $pkgver | cut -d'_' -f3)"
+
 source=(
-    "https://github.com/citra-emu/citra-nightly/releases/download/nightly-$(echo $pkgver | cut -d'_' -f1)/citra-linux-$id.tar.xz"
+    "https://github.com/citra-emu/citra-nightly/releases/download/nightly-$_nightly_id/citra-linux-$_ref.tar.xz"
     "https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.desktop"
     "https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.svg"
     "citra.bash"
@@ -29,7 +31,7 @@ package_citra-nightly-bin() {
 
     mkdir -p "${pkgdir}/usr/bin"
     cp $srcdir/citra.bash "${pkgdir}/usr/bin/citra"
-    cd $srcdir/citra-linux-$id
+    cd $srcdir/citra-linux-$_ref
     mkdir -p "${pkgdir}/opt/citra"
     cp citra "${pkgdir}/opt/citra"
 }
@@ -40,7 +42,7 @@ package_citra-qt-nightly-bin() {
 
     mkdir -p $pkgdir/usr/bin
     cp $srcdir/citra-qt.bash "${pkgdir}/usr/bin/citra-qt"
-    cd $srcdir/citra-linux-$id
+    cd $srcdir/citra-linux-$_ref
     mkdir -p $pkgdir/opt/citra
     mv citra-qt $pkgdir/opt/citra
     mkdir -p $pkgdir/usr/share/applications
