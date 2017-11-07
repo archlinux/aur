@@ -1,0 +1,19 @@
+pkgbase = eifl-dev-git
+	pkgdesc = Epitech Intra for Linux (development version)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Quent42340/EIFL
+	arch = i686
+	arch = x86_64
+	makedepends = cmake
+	makedepends = cpr-git
+	depends = qt5-base
+	depends = qtkeychain
+	depends = curl
+	provides = eifl
+	conflicts = eifl-git
+	source = eifl::git+https://github.com/Quent42340/EIFL.git#branch=sql
+	md5sums = SKIP
+
+pkgname = eifl-dev-git
+
