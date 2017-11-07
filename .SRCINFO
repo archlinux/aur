@@ -1,7 +1,7 @@
 pkgbase = python-scipy-mkl
 	pkgdesc = SciPy is open-source software for mathematics, science, and engineering.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.scipy.org/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,11 @@ pkgbase = python-scipy-mkl
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = https://github.com/scipy/scipy/releases/download/v1.0.0/scipy-1.0.0.tar.xz
+	source = build_python2.sh
+	source = build_python3.sh
 	sha256sums = 06b23f2a5db5418957facc86ead86b7752147c0461f3156f88a3da87f3dc6739
+	sha256sums = a9f18f9af8a2c9505cc3c03662200ceef2174dbf0c5f81849f596a0d7220575f
+	sha256sums = fa8599db2992a6ed9c8b71e41b043b1e41a84efac7aeeae3ac74b838c7d18c46
 
 pkgname = python-scipy-mkl
 	depends = python-numpy-mkl
