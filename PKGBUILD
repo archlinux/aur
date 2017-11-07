@@ -1,8 +1,8 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 
 pkgname=lean-git
-_pkgver=0.2.0
-pkgver=${_pkgver}.r8554.9fa30e3
+_pkgver=3.3.0
+pkgver=3.3.0.r54.g393008586
 pkgrel=1
 pkgdesc='Lean Theorem Prover'
 arch=('x86_64' 'i386')
@@ -17,7 +17,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git describe --always)"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
