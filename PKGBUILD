@@ -3,27 +3,23 @@
 pkgname=('peercoin-qt' 'peercoind')
 pkgbase=peercoin
 _gitname=peercoin
-pkgver=0.6.0
-pkgrel=3
+pkgver=0.6.1
+pkgrel=2
 pkgdesc="Official Peercoin wallet."
 makedepends=('gcc' 'make' 'boost' 'miniupnpc' 'openssl' 'qt5-base' 'qt5-tools')
 depends=('boost-libs' 'openssl' 'miniupnpc' 'qt5-base')
 replaces=("ppcoin-daemon" "ppcoin-qt" "ppcoind")
+conflicts=("peercoind-git" "peercoin-qt-git")
 arch=('x86_64' 'i686')
 url='peercoin.net'
 license=('MIT')
 source=(https://github.com/peercoin/peercoin/archive/v${pkgver}ppc.tar.gz
-        peercoin-qt.desktop
         peercoin-qt@.service
         peercoin-qt-tor@.service
-        peercoind@.service
-        peercoind-tor@.service)
-sha256sums=('6a290f779d0204fde988826bb0d6d8ba59cc9a478a07bc739be5d316be44e6ff'
-            '6cb18e19847bbf4066920dbbf4371ddf07409392408fc6d079487e8759ea322e'
+        )
+sha256sums=('f6ce0647c9f3b4b4c28c5b77955c9ae4808a8c7f5e55a99f1337317a29a0bc1b'
             'bc898697baab589b87b0b78edd5aed35a3b800fe039afc03637b4895cfd28f32'
-            '3f71859675561dd35c4527d96651b07996968e318dfbf26e8ce959f61a0d682f'
-            '80dcdf2bf3540a3ddd3c2cd1299aa97db06bf1efdadee4ad847e3371658dd62f'
-            'fb91690d271faa28919ce11e902f1d2ec926d8eb8ddebff28bef5d2cee78be1e')
+            '3f71859675561dd35c4527d96651b07996968e318dfbf26e8ce959f61a0d682f')
 
 build() {
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
@@ -52,11 +48,11 @@ package_peercoin-qt() {
 	optdepeds=('systemd' 'tor')
 	install=peercoin-qt.install
 
-	install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm644 $pkgname@.service "${pkgdir}/usr/lib/systemd/system/$pkgname@.service"
 	install -Dm644 $pkgname-tor@.service "${pkgdir}/usr/lib/systemd/system/$pkgname-tor@.service"
 
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
+	install -Dm644 "contrib/debian/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm755 peercoin-qt "${pkgdir}/usr/bin/$pkgname"
 	#install -Dm644 COPYING "${pkgdir}/usr/share/licenses/peercoin/COPYING"
 	install -Dm644 "src/qt/res/icons/peercoin.png" "${pkgdir}/usr/share/pixmaps/peercoin.png"
@@ -71,10 +67,11 @@ package_peercoind() {
 	pkgdesc="Official implementation of Peercoin, the sustainable and secure cryptocurrency alternative to Bitcoin - daemon."
 	install=peercoind.install
 
-	install -Dm644 $pkgname@.service "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
-	install -Dm644 $pkgname-tor@.service "$pkgdir/usr/lib/systemd/system/$pkgname-tor@.service"
 	install -Dm644 "$srcdir/${_gitname}-${pkgver}ppc/COPYING" "$pkgdir/usr/share/licenses/peercoin/COPYING"
 
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
 	install -Dm755 "src/peercoind" "$pkgdir/usr/bin/$pkgname"
+        install -Dm644 "contrib/systemd/${_gitname}d-tor@.service" "$pkgdir/usr/lib/systemd/system/${_gitname}d-tor@.service"
+        install -Dm644 "contrib/systemd/${_gitname}d@.service" "$pkgdir/usr/lib/systemd/system/${_gitname}d@.service"
+
 }
