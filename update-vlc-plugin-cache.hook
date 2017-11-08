@@ -9,7 +9,7 @@ Target = usr/lib/vlc/plugins/*
 Type = Package
 Operation = Install
 Operation = Remove
-Target = qt4
+Target = qt5
 
 [Action]
 Description = Updating the vlc plugin cache...

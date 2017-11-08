@@ -1,6 +1,6 @@
 pkgbase = vlc-git
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)
-	pkgver = 3.0.0.r15074.g2c611eda7a
+	pkgver = 3.0.0.r15145.g598064b98c
 	pkgrel = 1
 	url = http://www.videolan.org/vlc/
 	arch = i686
@@ -30,6 +30,7 @@ pkgbase = vlc-git
 	makedepends = vcdimager
 	makedepends = xosd
 	makedepends = smbclient
+	makedepends = qt5-svg
 	depends = a52dec
 	depends = faad2
 	depends = ffmpeg
@@ -89,7 +90,7 @@ pkgbase = vlc-git
 	optdepends = ttf-freefont: for subtitle font
 	optdepends = twolame: for TwoLAME mpeg2 encoder plugin
 	optdepends = vcdimager: navigate VCD with libvcdinfo
-	provides = vlc=3.0.0.r15074.g2c611eda7a
+	provides = vlc=3.0.0.r15145.g598064b98c
 	conflicts = vlc
 	conflicts = vlc-dev
 	conflicts = vlc-plugin
@@ -100,7 +101,7 @@ pkgbase = vlc-git
 	source = update-vlc-plugin-cache.hook
 	sha512sums = SKIP
 	sha512sums = 33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f
-	sha512sums = 1635f590bb8c2a9774a4eb5f8a56d83995449d9935c51e024422daa1ef204f940235dfda9fe087b58b724d6c018920c1b2f0ff446bb2e1d5d81f2ba06e97ef1c
+	sha512sums = 2f1015af384559bf4868bb989c06a7d281a8e32afb175ef397dbf1671bae3540a3a6b073a74ed77ed82e79a81f964a5a58a98c2a3f1b5e5cd5e9ea60d58c737f
 
 pkgname = vlc-git
 

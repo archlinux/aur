@@ -9,7 +9,7 @@
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
 pkgname=vlc-git
-pkgver=3.0.0.r15074.g2c611eda7a
+pkgver=3.0.0.r15145.g598064b98c
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=(i686 x86_64)
@@ -21,7 +21,7 @@ depends=(a52dec faad2 ffmpeg libdca libdvbpsi libdvdnav libmad libmatroska
          libsecret libarchive qt5-x11extras)
 makedepends=(aalib flac git libavc1394 libbluray libcaca libdc1394 libdvdcss
              libgme libgoom2 libmtp libnotify librsvg libssh2 lirc live-media
-             opus portaudio projectm twolame vcdimager xosd smbclient)
+             opus portaudio projectm twolame vcdimager xosd smbclient qt5-svg)
 optdepends=('aalib: for ASCII art plugin'
             'atk-git: for libnotify plugin'
             'avahi: for service discovery using bonjour protocol'
@@ -65,7 +65,7 @@ source=('git+https://github.com/videolan/vlc.git'
         update-vlc-plugin-cache.hook)
 sha512sums=('SKIP'
             '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f'
-            '1635f590bb8c2a9774a4eb5f8a56d83995449d9935c51e024422daa1ef204f940235dfda9fe087b58b724d6c018920c1b2f0ff446bb2e1d5d81f2ba06e97ef1c')
+            '2f1015af384559bf4868bb989c06a7d281a8e32afb175ef397dbf1671bae3540a3a6b073a74ed77ed82e79a81f964a5a58a98c2a3f1b5e5cd5e9ea60d58c737f')
 
 pkgver() {
   cd "$srcdir/$_name"
