@@ -1,16 +1,16 @@
 # Maintainer: Chris Magyar <c.magyar.ec@gmail.com>
 pkgname=ramroot
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
-pkgdesc="Load root and /boot partitions to RAM during boot"
+pkgdesc="Load root filesystem completely to RAM during boot"
 arch=('any')
 url="https://github.com/arcmags/$pkgname"
 license=('GPL')
 depends=('sudo')
 conflicts=('liveroot')
 install=ramroot.install
-source=("$pkgname-$pkgver.tar.gz.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('f71f0653947cd5f6f88ab4e82df6767a')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+md5sums=('c908873e558f31c5ea3e5afc07c1e997')
 
 package() {
 	cd "$pkgname-$pkgver"
@@ -18,5 +18,8 @@ package() {
         "$pkgdir/usr/lib/ramroot/hooks/ramroot"
     install -D -m644 ./lib/install/ramroot \
         "$pkgdir/usr/lib/ramroot/install/ramroot"
-    install -D -m755 ./ramroot "$pkgdir/usr/bin/ramroot"
+    install -D -m755 ./ramroot \
+        "$pkgdir/usr/bin/ramroot"
+    install -D -m644 ./lib/man/ramroot.8 \
+        "$pkgdir/usr/share/man/man8/ramroot.8"
 }
