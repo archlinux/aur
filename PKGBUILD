@@ -10,8 +10,8 @@
 
 pkgname=electron-cash-git
 pkgdesc="Lightweight Bitcoin Cash wallet"
-pkgver=2.9.3.r49.gf0de53e9
-pkgrel=1
+pkgver=2.9.3.r54.g1faa1f43
+pkgrel=2
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
 arch=('any')
@@ -21,13 +21,14 @@ makedepends=(
   'protobuf'
   'python2-pycurl'
   'python2-setuptools'
+  'python2-tox'
 )
 depends=(
   'hicolor-icon-theme'
   'python2'
   'python2-dnspython'
   'python2-ecdsa'
-  'python2-jsonrpclib'
+  'python2-jsonrpclib-pelix'
   'python2-pbkdf2'
   'python2-protobuf'
   'python2-pyaes'
@@ -63,30 +64,28 @@ pkgver() {
 }
 
 build() {
-  cd ${pkgname/-git/}
+  cd "${pkgname/-git/}"
 
-  msg2 'Compiling icons...'
+  # Compile the icons file for Qt:
   python2-pyrcc5 icons.qrc -o gui/qt/icons_rc.py
-
-  msg2 'Compiling protobuf description file...'
+  # Compile the protobuf description file:
   protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
-
-  msg2 'Creating translations...'
+  # Create translations (optional):
   python2 contrib/make_locale
-
-  msg2 'Building...'
+  # Build
   python2 setup.py build
 }
 
+check() {
+  cd "${pkgname/-git/}"
+
+  tox
+}
+
 package() {
-  cd ${pkgname/-git/}
+  cd "${pkgname/-git/}"
 
-  msg2 'Installing...'
-  python2 setup.py install --root="${pkgdir}"
-
-  msg2 'Cleaning up pkgdir...'
-  find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
-  find "${pkgdir}" -type f -name .gitignore -exec rm -r '{}' +
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
 # vim: ts=2 sw=2 et:
