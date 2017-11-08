@@ -5,15 +5,15 @@
 # Contributor: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
 
 pkgname=mintlocale
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc='Language and locale selection tool'
 arch=('any')
 url='https://github.com/linuxmint/mintlocale'
 license=('GPL2')
-depends=('python2-gobject' 'python-gobject' 'gksu' 'iso-flag-png')
+depends=('python2-gobject' 'python-gobject' 'gksu' 'iso-flag-png' 'xapps')
 source=("https://github.com/linuxmint/mintlocale/archive/${pkgver}.tar.gz")
-sha256sums=('136b2f985ffd5bca46ae47271365b266c0dabc58f055ba4f274b0147efbd74f4')
+sha256sums=('6c4988408b5b894ba0d07742e162da11bdd162ff0506a5363b35b67d2a838107')
 
 # Remove the im desktop file since input methods are handled differently on Arch
 # You can still use "mintlocale im" command
