@@ -9,10 +9,9 @@
 #
 
 pkgname='electron-cash'
-_tarname='electrum'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=2.9.3
-pkgrel=1
+pkgrel=2
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
 arch=('any')
@@ -22,22 +21,24 @@ makedepends=(
   'protobuf'
   'python2-pycurl'
   'python2-setuptools'
+  'python2-tox'
 )
 depends=(
   'hicolor-icon-theme'
   'python2'
   'python2-dnspython'
   'python2-ecdsa'
-  'python2-jsonrpclib'
+  'python2-jsonrpclib-pelix'
   'python2-pbkdf2'
   'python2-protobuf'
   'python2-pyaes'
-  'python2-pyqt4'
+  'python2-pyqt5'
   'python2-pysocks'
   'python2-qrcode'
   'python2-requests'
   'python2-six'
-  'qt4')
+  'qt5-base'
+)
 optdepends=(
   'desktop-file-utils: update desktop icon'
   'gtk-update-icon-cache: update desktop icon'
@@ -57,25 +58,29 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fyookball/electrum/arch
 sha256sums=('406bc77c9a6f8a1fb69cdbe2873ad6fb2956afbb6ec0f1da71b9d6ee9f8bf8bc')
 
 build() {
-  cd "${_tarname}-${pkgver}"
+  cd "${pkgname/on-cash/um}-${pkgver}"
 
-  msg2 'Compiling icons...'
-  pyrcc4 icons.qrc -o gui/qt/icons_rc.py
-
-  msg2 'Compiling protobuf description file...'
+  # Compile the icons file for Qt:
+  python2-pyrcc5 icons.qrc -o gui/qt/icons_rc.py
+  # Compile the protobuf description file:
   protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
-
-  msg2 'Creating translations...'
+  # Create translations (optional):
   python2 contrib/make_locale
-
-  msg2 'Building...'
+  # Build
   python2 setup.py build
 }
 
-package() {
-  cd "${_tarname}-${pkgver}"
+check() {
+  cd "${pkgname/on-cash/um}-${pkgver}"
 
-  python2 setup.py install --root="${pkgdir}"
+  tox
 }
+
+package() {
+  cd "${pkgname/on-cash/um}-${pkgver}"
+
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+}
+
 
 # vim: ts=2 sw=2 et:
