@@ -5,7 +5,7 @@
 pkgname=natron-git
 name=natron
 pkgver=2.3.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
 url="https://github.com/mrkepzie/natron"
@@ -23,7 +23,7 @@ source=("$name::git+https://github.com/MrKepzie/Natron.git#commit=fe3b773a00a206
 
 sha512sums=('SKIP'
             '42035f867188fcb7ec76f2f44a1d01b0c47bdc8aa94b22280e2691465ef135059e49ea5efa18d70c496b0319b8c888f3660ecbdb98bb5ba4a66d66dc77e21778'
-            'fcad21ac9ea0c3186f5998b340a02816b45880b2c7566c6aa8e65f12a3c6feec171c8c9415c4f5be9f957e9c40a94f81ef5c2754ac337cad6904ab6afb42bbcf')
+            'SKIP')
 
 prepare() {
   cd "$srcdir/$name"
