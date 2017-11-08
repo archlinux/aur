@@ -5,6 +5,7 @@
 *-build.log
 *-namcap.log
 *-package*.log
+*-prepare.log
 
 # packages
 *.pkg.tar.xz

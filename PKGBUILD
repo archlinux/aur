@@ -5,7 +5,7 @@ _module="$_name"
 #_check=1
 
 pkgname=("python-$_module" "python2-$_module")
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="An unladen web framework for building APIs and app backends."
 arch=("i686" "x86_64")
@@ -13,25 +13,23 @@ url="https://falconframework.org"
 license=("Apache")
 makedepends=("cython" "python-setuptools" "cython2" "python2-setuptools")
 if [[ -v _check ]]; then
-    checkdepends=("python-ddt"
-                  "python-mimeparse>=1.5.2"
-                  "python-pytest>=3.0.1"
-                  "python-pytest-xdist"
+    checkdepends=("python-pytest>=3.0.1"
+                  "python-jsonschema"
+                  "python-msgpack"
                   "python-requests"
                   "python-six>=1.4.0"
                   "python-testtools"
                   "python-yaml"
-                  "python2-ddt"
-                  "python2-mimeparse>=1.5.2"
                   "python2-pytest>=3.0.1"
-                  "python2-pytest-xdist"
+                  "python2-jsonschema"
+                  "python2-msgpack"
                   "python2-requests"
                   "python2-six>=1.4.0"
                   "python2-testtools"
                   "python2-yaml")
 fi
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('53bb5119d2513613eef6868c829ad47606615ff619590e05f7068a955867173d')
+sha256sums=('248da1b3da59a692094b63af7b758cfe222687e628fda94c8b516a59ce700737')
 
 build() {
     cd "$_name-$pkgver"
