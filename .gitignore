@@ -1,0 +1,4 @@
+org.eclipse.texlipse-site-*.zip
+*.tar.xz
+pkg/
+src/
