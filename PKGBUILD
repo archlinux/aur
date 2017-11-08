@@ -1,6 +1,6 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=nasc-git
-pkgver=0.4.5.r0.g5a22841
+pkgver=0.4.6.r0.gb501711
 pkgrel=1
 pkgdesc='Do maths like a normal person.'
 arch=('i686' 'x86_64')
@@ -35,5 +35,6 @@ build() {
 package() {
   cd ${pkgname%-*}/build
   make DESTDIR="${pkgdir}" install
+  mv ${pkgdir}/usr/lib{64,}
 }
 
