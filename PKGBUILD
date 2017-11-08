@@ -36,6 +36,8 @@ _themes=(
 )
 
 prepare() {
+  # The non-osx style button archives contain the same name as the regular
+  # ones. Conflictions and gnashing of teeth ensue.
   mkdir -p "$srcdir/Ant-no-osx-style-buttons"
   bsdtar -C "$srcdir/Ant-no-osx-style-buttons" \
       -xJf "ant-no-osx-style-buttons-$pkgver.tar.xz" --strip-components=1
