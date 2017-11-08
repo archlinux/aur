@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=cura-git
-pkgver=2.7.0.643.gf7d14c5b
+pkgver=3.0.3.302.g2be529668
 pkgrel=1
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker."
 arch=('any')
