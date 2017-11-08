@@ -12,7 +12,7 @@ makedepends=('meson' 'git')
 provides=('asma')
 conflicts=('asma')
 install=asma-git.install
-source=("$pkgname::git://github.com/busquetsaguilopau/asma.git")
+source=("$pkgname::git://github.com/her001/asma.git")
 md5sums=('SKIP')
 
 pkgver() {

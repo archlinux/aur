@@ -13,7 +13,7 @@ pkgbase = asma-git
 	depends = steam
 	provides = asma
 	conflicts = asma
-	source = asma-git::git://github.com/busquetsaguilopau/asma.git
+	source = asma-git::git://github.com/her001/asma.git
 	md5sums = SKIP
 
 pkgname = asma-git
