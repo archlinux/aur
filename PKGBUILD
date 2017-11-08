@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=nodejs-svgo
-pkgver=0.7.2
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Nodejs-based tool for optimizing SVG vector graphics files'
 arch=('any')
@@ -21,6 +21,7 @@ package() {
 
     # Clean up
     rm "${pkgdir}"${appdir}/{Makefile,.npmignore}
+    sed -e "s|${srcdir}|/usr/lib|" -i "${pkgdir}"${appdir}/package.json
     find "${pkgdir}"${appdir}/node_modules \
         -name 'package.json' \
             -exec sed -e "s|${pkgdir}||" \
