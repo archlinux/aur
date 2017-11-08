@@ -9,8 +9,10 @@ url='https://projects.kde.org/breeze-plymouth'
 license=(LGPL)
 depends=(plymouth)
 makedepends=(extra-cmake-modules)
-source=("http://download.kde.org/stable/plasma/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('4d934d4c11eb923d4cf69135a77cca3b4f84452c4578a078d6fc7fe053f983ec')
+source=("http://download.kde.org/stable/plasma/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.sig})
+sha256sums=('4d934d4c11eb923d4cf69135a77cca3b4f84452c4578a078d6fc7fe053f983ec'
+            'SKIP')
+validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E')
 
 prepare() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
