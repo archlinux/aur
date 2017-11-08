@@ -4,8 +4,8 @@
 
 pkgname=libpoco-basic
 pkgver=1.7.9
-_subrel=
-pkgrel=2
+_subrel=p2
+pkgrel=1
 pkgdesc="C++ class libraries for network-centric, portable applications, basic edition"
 arch=('i686' 'x86_64')
 url="http://www.pocoproject.org"
@@ -17,7 +17,7 @@ source=(
 	${url}/releases/poco-${pkgver}/poco-${pkgver}${_subrel}.tar.gz
 #	RegularExpression.h.patch
 )
-sha256sums=('1de0052723eef6264a39e68afe7eb622ea881d304acf334664c3f3ad84f93f07')
+sha256sums=('e51b8fb9f34d676fbbdece1d61cf1645aea831a87d7736f10cb5dc0efa2cacb8')
 prepare() {
 	# apply patch for static build
 	cd poco-${pkgver}${_subrel}
