@@ -5,7 +5,7 @@
 
 _pkgorigname=kwin
 pkgname=kwin-presentwindows-close
-pkgver=5.11.2
+pkgver=5.11.3
 pkgrel=1
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ provides=(kwin)
 groups=(plasma)
 source=("https://download.kde.org/stable/plasma/${pkgver}/${_pkgorigname}-${pkgver}.tar.xz"{,.sig}
         "presentwindows-close.patch")
-sha256sums=('2b215532519dcfda77dd1b40250e131d9e1b01d3f1348c9064b6a940e92578f3'
+sha256sums=('94c66b90f93534068c7cf054e1853c49edee2d734c17a2286ff8d3236c3ffdf5'
             'SKIP'
             'a42e050f873632240595026b0f0f98ce4e109dd36a7768ba6b361d1b4854aefb')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
