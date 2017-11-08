@@ -1,0 +1,14 @@
+pkgbase = python-justbases
+	pkgdesc = Conversion of a rational number to a representation in any base.
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://github.com/mulkieran/justbases
+	arch = any
+	license = GPLv2
+	makedepends = python-tox
+	depends = python-six
+	source = python-justbases-0.12.tar.gz::https://github.com/mulkieran/justbases/archive/v0.12.tar.gz
+	sha256sums = 22273facc37cc54bdcd15bc6632306539783520922c7bbdef6b4c1bc50d9b15b
+
+pkgname = python-justbases
+
