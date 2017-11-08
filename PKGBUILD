@@ -3,7 +3,7 @@
 pkgname=gdb-multiarch
 pkgver=8.0.1
 pkgrel=1
-pkgdesc='The GNU Debugger for all gdb supported architectures targets (i386/arm/mips...)'
+pkgdesc='The GNU Debugger for all gdb supported architectures (i386/arm/mips...)'
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
