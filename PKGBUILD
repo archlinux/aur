@@ -26,18 +26,11 @@ _build=build
 
 build() {
   cd "${srcdir}/${_monero}"
-  if check_option "debug" "y"
-  then
-    _build_type="Debug"
-  else
-    _build_type+="Release"
-  fi
-  CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=$_build_type "
+  CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=Release "
   CMAKE_FLAGS+=" -DCMAKE_INSTALL_PREFIX=/usr "
   CMAKE_FLAGS+=" -DBUILD_TESTS=ON "
   CMAKE_FLAGS+=" -DBUILD_GUI_DEPS=ON "
-  CMAKE_FLAGS+=" -Wno-dev " # silence warnings for devs
-  CMAKE_FLAGS+=" -DCMAKE_LINKER=/usr/bin/ld.gold " # #974 ld segfault on ARM
+  #CMAKE_FLAGS+=" -DCMAKE_LINKER=/usr/bin/ld.gold " # #974 ld segfault on ARM, re-implement if needed
   mkdir -p $_build && cd $_build
   cmake $CMAKE_FLAGS ../
   make
