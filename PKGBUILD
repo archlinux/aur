@@ -12,7 +12,7 @@ optdepends=('csuper-cli' 'csuper-gtk')
 makedepends=('cmake')
 install="INSTALL"
 source=(https://www.binaries.dalan.fr/Csuper/$pkgver/csuper-$pkgver-sources.tar.xz)
-sha512sums=('59a03fc63f6c1d778ce506f626c1ff9e5f7e6923db6ac8fb71ccada19523489411bd016f2819480bb3cc5dd49ab44b1a492206e2472720e3fe45557227870256')
+sha512sums=('51fc47154c31325b0a2066df7f70330d6bc6a678505e065e7ae9bc259a04796c4607c5a809e36c097cf549766f3e9efdce59f98f02fbe68a295323bfa06a8901')
  
 build()
 {
