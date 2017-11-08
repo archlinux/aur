@@ -2,13 +2,13 @@
 
 pkgname=dotnet-sdk-2.0
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A command line utility for building, testing, packaging and running .NET Core applications and libraries"
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
 license=('MIT')
-depends=('dotnet-runtime-2.0')
+depends=('dotnet-runtime>=2.0')
 options=('staticlibs')
 install=dotnet-sdk-2.0.install
 
