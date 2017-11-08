@@ -1,7 +1,7 @@
 pkgbase = alarm-clock-applet
 	pkgdesc = A fully-featured alarm clock for GNOME panel
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://alarm-clock.pseudoberries.com
 	install = alarm-clock-applet.INSTALL
 	arch = x86_64

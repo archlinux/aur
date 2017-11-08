@@ -1,10 +1,11 @@
-# Maintainer: Tobias Frilling <tobias@frilling-online.de>
+# Maintainer: Lucas Saliés Brum <lucas at archlinux dot com dot br>
+# Contributor: Tobias Frilling <tobias at frilling-online dot de>
 # Contributor: Ekenbrand <jesu dot critos at gmail>
 # Contributor: Alessandro Nakamuta <alessandro dot ufms at gmail dot com>
 
 pkgname=alarm-clock-applet
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully-featured alarm clock for GNOME panel"
 arch=('x86_64' 'i686')
 url="http://alarm-clock.pseudoberries.com"
@@ -18,7 +19,7 @@ sha1sums=('c7e70fd6367b16eaf8590fb74aa64844b72a27a2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --with-gconf-schema-file-dir=/usr/share/gconf/schemas
+  ./configure --prefix=/usr --with-gconf-schema-file-dir=/usr/share/gconf/schemas --enable-compile-warnings=no
   make
 }
 
