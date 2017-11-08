@@ -1,4 +1,4 @@
-# Maintainer: Aviel Warschawski <aviel.warschawski@gmail.com>
+# Maintainer: Aviel Warschawski <mail@aviel.org>
 
 pkgname=gdb-multiarch
 pkgver=8.0.1
