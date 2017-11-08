@@ -1,6 +1,6 @@
 pkgbase=hyperledger-composer
 pkgname=('hyperledger-composer-cli' 'hyperledger-composer-playground')
-pkgver=0.14.2
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="A framework for building Blockchain business networks"
 arch=(i686 x86_64)
@@ -18,6 +18,7 @@ package_hyperledger-composer-cli() {
   mkdir -p $_npmdir
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" composer-cli@$pkgver
+  npm prune --production
 
 msg2 "Renaming composer to composer-cli (it's not php composer)"
   chmod 755 -R $pkgdir/usr/bin/
