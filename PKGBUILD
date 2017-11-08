@@ -1,7 +1,7 @@
 # Maintainer: Tom Kuther <tom@kuther.net>
 pkgname=cryptonark
 _pkgname=cnark
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="SSL security checker"
 arch=('i686' 'x86_64')
@@ -10,10 +10,10 @@ license=('GPL')
 groups=()
 depends=('perl-io-socket-ssl'
          'perl-tie-hash-indexed'
-	 'perl-modern-perl'
+         'perl-modern-perl'
 	 'perl-mozilla-ca')
-source=("http://www.techstacks.com/files/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('b01039aa674f23e79600b6cca46ea9dd31d180d5547ef36d0f9c2d8e6c18e312')
+source=("http://www.techstacks.com/files/${_pkgname}-v${pkgver}.zip")
+sha256sums=('373c08b70d3f47362e61540196c6703ad11ef590ccaaa2679acfb7c687f1a008')
 
 package() {
 	cd "$srcdir"
