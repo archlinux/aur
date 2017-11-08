@@ -1,0 +1,15 @@
+pkgbase = python-justbytes
+	pkgdesc = A library for computing with specifications of sizes in bytes.
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/mulkieran/justbytes
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = python-six
+	depends = python-justbases
+	source = python-justbytes-0.10.tar.gz::https://github.com/mulkieran/justbytes/archive/v0.10.tar.gz
+	sha256sums = a7b7157959e4e3c4eb089e7da86906bbff907bbe41eeb84cbaf9431730c768c5
+
+pkgname = python-justbytes
+
