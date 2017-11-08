@@ -1,6 +1,6 @@
 _pkgbasename=apulse
 pkgname=lib32-$_pkgbasename-git
-pkgver=0.149_d7177c9
+pkgver=0.1.10_r36_gaca334f
 pkgrel=1
 pkgdesc="PulseAudio emulation for ALSA, x86_64 multilib version"
 arch=('x86_64')
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgbasename"
-  printf "0.%s_%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags | sed -e 's:^v::' -e 's:\([^-]*-g\):r\1:;s:-:_:g' 
 }
 
 build() {
