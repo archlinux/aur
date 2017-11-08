@@ -2,7 +2,7 @@
 pkgname=lastools-git
 pkgver=r653.20e9673
 pkgrel=1
-pkgdesc="Efficient tools for LiDAR processing"
+pkgdesc="Efficient tools for LiDAR processing. Contains LASlib, a C++ programming API for reading / writing LIDAR data stored in standard LAS format."
 arch=('i686' 'x86_64')
 url="http://lastools.org/"
 license=('LGPL')
