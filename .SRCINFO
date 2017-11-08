@@ -1,7 +1,7 @@
 pkgbase = xx-net
 	pkgdesc = XX-Net, a web proxy tool.
 	pkgver = 3.7.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XX-net/XX-Net
 	install = xx-net.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = xx-net
 	options = !strip
 	source = https://github.com/XX-net/xx-net/archive/3.7.12.tar.gz
 	source = XX-net.ini
-	md5sums = 5b6b07c23def2cd6a8bc6c0ca2cc35f3
+	md5sums = 3b98c1646c92d4f06efc2b21c2e8280a
 	md5sums = d439251c0022e4537231bbde87d36bac
 
 pkgname = xx-net
