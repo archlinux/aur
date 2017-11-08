@@ -1,10 +1,10 @@
 # Maintainer: Jason Gonzalez <jason at jasong-designs dot com>
 
 pkgname=jgd-black
-pkgver=02_22_17
+pkgver=11_08_17
 pkgrel=1
 pkgdesc="Black and gray GTK theme collection (GTK 3.20+)"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.jasong-designs.com/2017/02/04/jgd-black-gtk3/"
 license=('GPL3')
 depends=('gtk3' 'gtk2' 'gtk-engines')
@@ -14,8 +14,8 @@ source=("https://github.com/jgpws/jgd-black/raw/master/downloads/$pkgname-${pkgv
 
 package() {
 	cd "${srcdir}"
-	tar -xzvf jgd-black-02-22-17.tar.gz
+	tar -xzvf jgd-black-11-08-17.tar.gz
 	sudo cp -R JGD-Black /usr/share/themes
 }
 
-md5sums=('6cd0387921ebfc20572700a6b31030e4')
+md5sums=('9e726d0b10c41d142a4f8dda8d621d44')
