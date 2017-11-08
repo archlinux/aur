@@ -8,7 +8,7 @@
 pkgname=epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=22
+pkgrel=23
 pkgdesc="Enhanced PSX emulator (64-bit)"
 url="http://epsxe.com"
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(gtk3
          bash
          'ncurses>=6.0+20170902-2'
          openssl-1.0
+         ncurses5-compat-libs
         )
 license=('unknown')
 install=${pkgname}.install
