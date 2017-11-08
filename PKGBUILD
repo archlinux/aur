@@ -1,12 +1,12 @@
 # Maintainer: defkeh <defkeh@gmail.com>
 pkgname=rivalcfg-git
-pkgver=r94.4fef996
+pkgver=r172.cd60de1
 pkgrel=1
 pkgdesc="SteelSeries Rival gaming mouse configuration utility"
 arch=("any")
 url="https://github.com/flozz/rivalcfg"
 license=("custom:WTFPL")
-depends=("python" "python-pyudev")
+depends=("python" "hidapi" "python-hidapi")
 makedepends=('git' 'python-setuptools')
 conflicts=("rivalctl")
 provides=("${pkgname%-git}")
