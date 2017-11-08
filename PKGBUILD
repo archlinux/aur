@@ -29,6 +29,7 @@ build() {
     # Getting some lib
     go get github.com/op/go-logging
     go get github.com/spf13/viper
+    go get github.com/jordan-wright/email
 
     cd "$_builddir"
 
