@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Franz
+Comment=A free messaging app for WhatsApp, Facebook Messenger, Telegram, Slack and more.
+Exec=franz4-bin -- %u
+StartupWMClass=Franz
+Icon=franz
+Terminal=false
+Type=Application
+Categories=Network;
+X-Desktop-File-Install-Version=0.1
