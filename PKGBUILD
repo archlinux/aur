@@ -3,7 +3,7 @@
 
 pkgbase=linux-max98090
 _srcname=linux-4.13
-pkgver=4.13.11
+pkgver=4.13.12
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,9 +23,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            'f5fb017ee531dc35e3462ccb2d244d4fdc8ac6df9cd3337aa6df2ffc280b1bd6'
+            'd5830f31cf8522986fb530e69b3b9b023f0298c4f88d897541ff0776dc805828'
             'SKIP'
-            'cb46d5b8eff5839b8ed1d48b5ddd76817da2cad9cf6fc9be448cae0c8e32b816'
+            '1c316bbb6d6ef41855372c98588aa725f06958b763582543cb63edbca8dc81f8'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -163,16 +163,16 @@ _package-headers() {
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
 
   # http://bugs.archlinux.org/task/9912
-  #install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
+  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
-  #install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/lgdt330x.h
-  #install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/lgdt330x.h
+  install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
   # http://bugs.archlinux.org/task/20402
-  #install -Dt "${_builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-  #install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-  #install -Dt "${_builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+  install -Dt "${_builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "${_builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
   # add xfs and shmem for aufs building
   mkdir -p "${_builddir}"/{fs/xfs,mm}
