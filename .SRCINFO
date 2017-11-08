@@ -1,6 +1,6 @@
 pkgbase = inox-dev
 	pkgdesc = A web browser built for speed, simplicity, and security
-	pkgver = 64.0.3253.3
+	pkgver = 64.0.3260.2
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	install = inox-dev.install
@@ -42,7 +42,7 @@ pkgbase = inox-dev
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-64.0.3253.3.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-64.0.3260.2.tar.xz
 	source = chromium-launcher-5.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v5.tar.gz
 	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/dnox.desktop
 	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/breakpad-use-ucontext_t.patch
@@ -131,9 +131,10 @@ pkgbase = inox-dev
 	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/CP.patch
 	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/888.patch
 	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/narnia1.patch
-	sha256sums = 6abe5b8ea147953c9d8bae72e52b4984f1a0f718e97bc578f0250055815ec4cd
+	source = https://raw.githubusercontent.com/bn0785ac/in-dev/master/meme.patch
+	sha256sums = 1d54669f1ff0ea37d1095e8934d307f1dc5e93119f1ea621ee93ca8d032ff64e
 	sha256sums = 4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587
-	sha256sums = 1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883
+	sha256sums = f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af
 	sha256sums = 6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8
 	sha256sums = 35435e8dae76737baafecdc76d74a1c97281c4179e416556e033a06a31468e6d
 	sha256sums = d81319f168dad0e411c8e810f73daa2f56ff579578771bd9c9bb1aa2d7c09a8b
@@ -220,6 +221,7 @@ pkgbase = inox-dev
 	sha256sums = e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265
 	sha256sums = 84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230
 	sha256sums = 35266f58367b808d6edb3f8810f7bdadfa2ebf961504169f2557912741397a24
+	sha256sums = e3cbf8c407974cee82541f0c2395059e90d513e050c05f23975465595c23f0c5
 
 pkgname = inox-dev
 

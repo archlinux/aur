@@ -7,7 +7,7 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=64.0.3253.3
+pkgver=64.0.3260.2
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -105,12 +105,13 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/bp.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/CP.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/888.patch
 https://raw.githubusercontent.com/bn0785ac/in-dev/master/narnia1.patch
+https://raw.githubusercontent.com/bn0785ac/in-dev/master/meme.patch
 )
 
 
-sha256sums=('6abe5b8ea147953c9d8bae72e52b4984f1a0f718e97bc578f0250055815ec4cd'
+sha256sums=('1d54669f1ff0ea37d1095e8934d307f1dc5e93119f1ea621ee93ca8d032ff64e'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            '1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883'
+            'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
             '35435e8dae76737baafecdc76d74a1c97281c4179e416556e033a06a31468e6d'
             'd81319f168dad0e411c8e810f73daa2f56ff579578771bd9c9bb1aa2d7c09a8b'
@@ -196,8 +197,8 @@ sha256sums=('6abe5b8ea147953c9d8bae72e52b4984f1a0f718e97bc578f0250055815ec4cd'
             'a5327677d62f34da26e7aa714d49e71f7ebfcdbcb16b37dd8fe34fdf0d92c438'
             'e660590ebc900879d059ea0b8f9cfbf66f45d0d43f04f1b11ce2d0daf781f265'
             '84d61c7ccc1e99dd593970bfff1cbc030b586cc90531541d17323e6b92f15230'
-            '35266f58367b808d6edb3f8810f7bdadfa2ebf961504169f2557912741397a24')
-
+            '35266f58367b808d6edb3f8810f7bdadfa2ebf961504169f2557912741397a24'
+            'e3cbf8c407974cee82541f0c2395059e90d513e050c05f23975465595c23f0c5')
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -280,6 +281,7 @@ patch -Np1 -i ../034.patch
 #patch -Np1 -i ../035.patch
 patch -Np1 -i ../360.patch
 patch -Np1 -i ../888.patch
+patch -Np1 -i ../meme.patch
 
 patch -Np1 -i ../037.patch
 patch -Np1 -i ../038.patch
@@ -345,6 +347,7 @@ patch -Np1 -i ../k1.patch
   # Fixes from Gentoo
 
   # Use Python 2
+msg2 'py2'
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
 
   # There are still a lot of relative calls which need a workaround
@@ -444,21 +447,20 @@ package() {
 
   cd "$srcdir/$name-$pkgver"
 
-  install -D out/Release/chrome "$pkgdir/usr/lib/$pkg/$pk"
+  install -D out/Release/chrome "$pkgdir/usr/lib/$pk/$pk"
   install -Dm644 "$srcdir/dnox.desktop" \
     "$pkgdir/usr/share/applications/dnox.desktop"
 
-  install -Dm4755 out/Release/chrome_sandbox \
-    "$pkgdir/usr/lib/dnox/chrome-sandbox"
+  install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/$pk/chrome-sandbox"
 
   cp -a \
     out/Release/{chrome_{100,200}_percent,resources}.pak \
     out/Release/{*.bin,chromedriver} \
     out/Release/locales \
-    "$pkgdir/usr/lib/dnox/"
+    "$pkgdir/usr/lib/$pk/"
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
-    cp out/Release/icudtl.dat "$pkgdir/usr/lib/dnox/"
+    cp out/Release/icudtl.dat "$pkgdir/usr/lib/$pk/"
   fi
 
   ln -s /usr/lib/$pk/dnoxdriver "$pkgdir/usr/bin/dnoxdriver"
