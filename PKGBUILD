@@ -1,7 +1,7 @@
 # Maintainer: Dan Beste <Dan.Ray.Beste@gmail.com>
 
 pkgname='stratis-cli'
-pkgver=0.0.2
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='stratis-cli is a tool that provides a command-line interface (CLI) for interacting with the Stratis daemon, stratisd.'
 arch=('any')
@@ -15,8 +15,14 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratis-cli/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  'fadf5026b805b77f6067c133f6283e05f6e9288604ba094f2127171cfa52cd9e'
+  'afd78f7b7defdf403ef428858150f4e3f3acbca0fc4aaf9e93a73d4885b6d431'
 )
+
+check() {
+  cd "${pkgname}-${pkgver}"
+
+  tox
+}
 
 package() {
   cd "${pkgname}-${pkgver}"
@@ -24,7 +30,7 @@ package() {
   install -d "${pkgdir}/usr/share/licenses/"
 
   install -m 644 LICENSE "${pkgdir}/usr/share/licenses/"
-  python setup.py install --root="${pkgdir}"
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 # vim: ts=2 sw=2 et:
