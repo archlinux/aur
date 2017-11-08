@@ -1,15 +1,16 @@
 # Maintainer: Thomas Bork <tab.epic@gmail.com>
 
 pkgname=pamac-classic
-_pkgver=6.5.1
+_pkgver=6.5.2
 pkgver=$_pkgver
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - classic version"
 arch=('x86_64')
 url="https://github.com/cromnix/pamac-classic"
 license=('GPL3')
-depends=('gtk3' 'pango' 'atk' 'cairo' 'gdk-pixbuf2' 'glib2' 'json-glib' 'pacman' 'curl' 'libsoup' 'polkit' 'libnotify' 'vte3' 'zlib' 'pcre2' 'gnutls')
-makedepends=('vala' 'glibc' 'pacman' 'cmake' 'gettext')
+#old depends=('gtk3' 'pango' 'atk' 'cairo' 'gdk-pixbuf2' 'glib2' 'json-glib' 'pacman' 'curl' 'libsoup' 'polkit' 'libnotify' 'vte3' 'zlib' 'pcre2' 'gnutls')
+depends=('curl' 'libsoup' 'polkit' 'pacman' 'libnotify' 'vte3')
+makedepends=('vala' 'cmake' 'gettext')
 optdepends=('polkit-gnome: needed for authentication in Cinnamon, Gnome'
             'mate-polkit: needed for authentication in MATE'
             'lxsession: needed for authentication in Xfce, LXDE etc.')
@@ -19,7 +20,7 @@ provides=('pamac' 'pamac-aur')
 install=pamac-classic.install
 
 source=("pamac-classic-$pkgver-$pkgrel.tar.gz::$url/archive/v$_pkgver.tar.gz")
-sha256sums=('e61d6b925a3c3bd56bd461169c1eff6d4c8df8bfc851bb86b59f42cf13c05a44')
+sha256sums=('4c723a10818ed5003c0dd90cb13e9a8f084ca401a0c093e0e5ddf9ca12cd5e18')
 
 #prepare() {
 #  cd "${srcdir}/pamac-classic-$_pkgver"
