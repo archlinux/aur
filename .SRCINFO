@@ -8,6 +8,7 @@ pkgbase = python-pyfftw
 	license = BSD
 	depends = fftw
 	depends = python-numpy
+	depends = python-scipy
 	source = https://files.pythonhosted.org/packages/source/p/pyFFTW/pyFFTW-0.10.4.tar.gz
 	md5sums = 7fb59450308881bb48d9f178947d950e
 
