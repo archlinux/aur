@@ -51,7 +51,7 @@ _use_current=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _srcname=linux-4.13
-pkgver=4.13.11
+pkgver=4.13.12
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/dolohow/uksm"
@@ -356,7 +356,7 @@ done
 
 sha512sums=('a557c2f0303ae618910b7106ff63d9978afddf470f03cb72aa748213e099a0ecd5f3119aea6cbd7b61df30ca6ef3ec57044d524b7babbaabddf8b08b8bafa7d2'
             'SKIP'
-            'ad38845a4c05fcaace68563ffa005cf537d3564448b28750b2c872788cbc0c2495dbc9fdf98817d21aef41863614d8b707acdfb05d8f07845d921c909b5f1d22'
+            '6ae0b61bcd62b2e90b8ef3e1030fa874aba95317ec559d6e72cbd83a21b3894c05210d2da137f7b4db063d7de52193260b2364ceb43538ab8cd1db78070efb34'
             'SKIP'
             '5ca7ae20245a54caa71fb570d971d6872d4e888f35c6123b93fbca16baf9a0e2500d6ec931f3906e4faecaaca9cad0d593694d9cab617efd0cb7b5fc09c0fa48'
             '632c37449c088141dbed4e745c252849396a305a03a86349080a58fb14d7fcd3488f306b890a082a334dab878e179889dfaae0423dfe3d125f48804847abbb39'
