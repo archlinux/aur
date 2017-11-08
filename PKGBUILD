@@ -1,7 +1,7 @@
 # Maintainer: Michael Egger <michael.egger at tsn at>
 
 pkgname=python-freqtrade-git
-pkgver=0.13.0.r0.ge2eceaa
+pkgver=0.13.0.r2.g3d61095
 pkgrel=1
 pkgdesc="Simple High Frequency Trading Bot for crypto currencies"
 url="https://github.com/gcarq/freqtrade/"
@@ -15,6 +15,7 @@ depends=('python-sqlalchemy'
          'python-scipy' 'python-jsonschema' 'python-numpy' 'python-pytest'
          'python-pytest-mock' 'python-pytest-cov' 'python-networkx'
          'python-telegram-bot' 'python-bittrex' 'python-ta-lib'
+         'python-tabulate'
          # TODO: make proper package for hyperopt
 )
 _branch="master"
@@ -23,7 +24,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  version=$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+  sed -i "s/^__version__.*$/__version__ = '$version'/g" freqtrade/__init__.py
+  echo $version
 }
 
 package() {
