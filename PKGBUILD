@@ -5,11 +5,11 @@ pkgver=0.2.12
 pkgrel=1
 pkgdesc='An IDE built around Neovim'
 arch=(any)
-url="https://github.com/bryphe/oni"
+url="https://github.com/onivim/oni"
 license=('MIT')
-depends=('nodejs' 'neovim-git' 'gconf' 'libxss')
+depends=('nodejs' 'neovim' 'gconf' 'libxss')
 makedepends=('tar')
-source=("https://github.com/bryphe/${pkgname}/releases/download/v${pkgver}/Oni-${pkgver}-linux.tar.gz"
+source=("https://github.com/onivim/${pkgname}/releases/download/v${pkgver}/Oni-${pkgver}-linux.tar.gz"
         "oni.sh"
         "oni.desktop"
         "icons.tar.gz")
