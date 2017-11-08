@@ -24,7 +24,8 @@ build() {
   cat /proc/cpuinfo | grep sse4_2 > /dev/null && MAX_ISA="SSE4.2"
   cat /proc/cpuinfo | grep avx > /dev/null && MAX_ISA="AVX"
   cat /proc/cpuinfo | grep avx2 > /dev/null && MAX_ISA="AVX2"
-  # ICC required for avx512 ?
+  cat /proc/cpuinfo | grep avx512er > /dev/null && MAX_ISA="AVX512KNL"
+  cat /proc/cpuinfo | grep avx512bw > /dev/null && MAX_ISA="AVX512SKX"
 
   echo MAX_ISA:  $MAX_ISA
 
