@@ -33,7 +33,7 @@ sha256sums=('9b48a9e72d304046923667d2ab1f201778cc56242928a374ff9e074843a334ff'
 
 
 _install_dir=/opt/petsc/${_config}
-petsc_arch="arch-${_config}"
+_petsc_arch="arch-${_config}"
 
 # to avoid: "make[2]: *** No rule to make target `libptesmumps.a', needed by `main_esmumps'.  Stop."
 export MAKEFLAGS="-j1"
@@ -68,10 +68,10 @@ build() {
     echo ${CONFOPTS}
 	python2 ./configure \
 		--prefix=${_install_dir} \
-		--PETSC_ARCH=${petsc_arch} \
+		--PETSC_ARCH=${_petsc_arch} \
 		${CONFOPTS}
 
-	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${petsc_arch} all
+	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_petsc_arch} all
 }
 
 check() {
