@@ -3,7 +3,7 @@
 pkgname=check_email_delivery
 pkgver=0.7.1b
 pkgrel=1
-pkgdesc="The check_email_delivery plugin uses the included plugins to check on a complete email loop."
+pkgdesc="The check_email_delivery plugin uses the included Nagios plugins to check on a complete email loop."
 arch=('any')
 url="http://buhacoff.net/software/check_email_delivery/"
 license=('GPL3')
