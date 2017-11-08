@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=python-icalendar
-pkgver=3.12
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='A parser/generator of iCalendar files (RFC 2445)'
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python-dateutil' 'python-pytz')
 makedepends=('python-setuptools')
 source=("icalendar-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('c2d9ae207fc79b85cf20f0c7b3609ed6417d422f3c51028627fc8146909f9ca345fdca7ef87ba5181561494cc0e2a3a896876e2f1e62533b198ca5598e6e2207')
+sha512sums=('d3e5a65e1a18ec6cd0861757b8810b1d23821623f3378b409a5e621ec0975b47d935a84ea03f8bbd4cc305663c97fd59ab050093aec9d485eacafb705b15a6c4')
 
 build() {
   cd icalendar-$pkgver
