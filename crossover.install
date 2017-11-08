@@ -1,4 +1,16 @@
 post_install() {
+
+    echo updating wineserver link
+    
+    CX_ROOT="/opt/cxoffice"
+    rm "$CX_ROOT/bin/wineserver"
+    if "$CX_ROOT/bin/wineserver64" -v >/dev/null 2>/dev/null
+    then
+        ln -s wineserver64 "$CX_ROOT/bin/wineserver"
+    else
+        ln -s wineserver32 "$CX_ROOT/bin/wineserver"
+    fi
+    
     echo "Creating menus and file associations, please wait..."
     /opt/cxoffice/bin/cxmenu --crossover --install
     /opt/cxoffice/bin/cxassoc --crossover --install
