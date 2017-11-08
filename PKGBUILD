@@ -1,7 +1,7 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy dot nl>
 # Contributor: Bart Verhoeven <nepherte at archlinux dot us>
 pkgname=mbt
-pkgver=3.3
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Memory-based tagger-generator and tagger in one."
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ options=(!libtool)
 url="https://languagemachines.github.io/mbt"
 _gituser="LanguageMachines"
 _gitname="mbt"
-source=(https://github.com/LanguageMachines/mbt/archive/v3.3.tar.gz)
-md5sums=(5737898f3da70104df01a555cc3aca1c)
+source=(https://github.com/LanguageMachines/mbt/archive/v3.3.1.tar.gz)
+md5sums=(1cfc2fa6c978b51d653263c17c388553)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
