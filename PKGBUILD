@@ -1,6 +1,6 @@
 # Maintainer: Louis des Landes <aur@psykar.com>
 pkgname=deepgit
-pkgver=3
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A tool to investigate the history of source code."
 arch=('any')
@@ -18,7 +18,7 @@ source=(
     "deepgit.desktop"
 )
 sha1sums=(
-    2478c75bb3bfc8e089f7dd2758e338dafbc22d85
+    28e65d17221d3182d3abd583bc0917237227b065
     5e59abc4997dbdfc110df414129950164a01cab1
     8ab2e36b3cb2e6f7b5af70a4ddbe2e9d307d3988
 )
