@@ -1,6 +1,6 @@
 pkgbase = offlineimap-git
 	pkgdesc = A powerful IMAP/Maildir synchronization tool
-	pkgver = 7.1.1.24.g4b103d6
+	pkgver = 7.1.4.0.g681e271
 	pkgrel = 1
 	url = http://offlineimap.org/
 	arch = any
