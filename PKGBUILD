@@ -92,7 +92,7 @@ build() {
 	        --enable-frei0r \
 	        --enable-gcrypt \
 	        --enable-gmp \
-	        --enable-gnutls \
+	        \
 	        --enable-iconv \
 	        --enable-ladspa \
 	        --enable-libass \
