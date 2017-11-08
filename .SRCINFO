@@ -20,7 +20,6 @@ pkgbase = ffmpeg-semifull-git
 	depends = frei0r-plugins
 	depends = libgcrypt
 	depends = gmp
-	depends = gnutls
 	depends = glibc
 	depends = ladspa
 	depends = libass

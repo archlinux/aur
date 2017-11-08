@@ -18,7 +18,7 @@ url="http://www.ffmpeg.org/"
 license=('GPL3')
 depends=(
     'alsa-lib' 'zlib' 'bzip2' 'xz' 'libpng' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
-    'libgcrypt' 'gmp' 'gnutls' 'glibc' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
+    'libgcrypt' 'gmp' 'glibc' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
     'libcdio-paranoia' 'libdc1394' 'libfdk-aac' 'freetype2' 'fribidi' 'libgme' 'gsm'
     'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'nut-multimedia-git'
     'opencore-amr' 'opencv' 'openh264' 'openjpeg2' 'libopenmpt-svn' 'opus' 'pulseaudio'
