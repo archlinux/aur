@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.13
-pkgver=4.13.11
+pkgver=4.13.12
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -24,7 +24,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            'f5fb017ee531dc35e3462ccb2d244d4fdc8ac6df9cd3337aa6df2ffc280b1bd6'
+            'd5830f31cf8522986fb530e69b3b9b023f0298c4f88d897541ff0776dc805828'
             'SKIP'
             '9b1d9fcb55782e6149aca4dc2d3b250dd4cedf1bf4bd8c6f0968acab0e2e0ee4'
             '9c6c4d27d59638d0569ea09a97138bfcfb219f17cdf1138be141380e6654f302'
