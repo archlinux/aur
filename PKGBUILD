@@ -1,35 +1,34 @@
 # Maintainer: Musee "lae" Ullah <lae(at)lae(dot)is>
 pkgname=electrum-mona
-pkgver=2.9.3.3
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="A lightweight Monacoin wallet"
 arch=('any')
 url='https://github.com/wakiyamap/electrum-mona'
 license=('MIT')
-depends=('python2-pyaes'
-         'python2-ecdsa'
-         'python2-pbkdf2'
-         'python2-requests'
-         'python2-qrcode'
-         'python2-lyra2re_hash'
-         'python2-protobuf'
-         'python2-dnspython'
-         'python2-jsonrpclib'
-         'python2-pysocks'
-         'python2-pyqt4'
-         'python2-certifi'
+depends=('cython'
+         'python-pyaes'
+         'python-ecdsa'
+         'python-pbkdf2'
+         'python-requests'
+         'python-qrcode'
+         'python-lyra2re_hash'
+         'python-protobuf'
+         'python-dnspython'
+         'python-jsonrpclib-pelix'
+         'python-pysocks'
+         'python-pyqt4'
+         'python-certifi'
          'gettext'
 )
-optdepends=('python2-matplotlib: for plot history')
-makedepends=('python2-pycurl')
+optdepends=('python-matplotlib: for plot history')
+makedepends=('python-pycurl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wakiyamap/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('15fab04ed45e81b9441fcf33d5b28c062683a6e0a4eb2a69ef7c2a35b975001250859a69134cde016f35503096e8a002b101821b2d3bf481e60dadeeec657892')
+sha512sums=('5a2d1f5672402a41b0b40a45dc8f21b966d7b05e72e128fa9e914e1935ec8a19b767909acda50248530c8c2b9410be5d1cfc044e6fb6788de193d0ec9ffc5ce8')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}/
-  # Ensure everything uses Python 2
-  find ./ -type f -exec sed -i '/#!/s/python$/&2/' {} +
-  pyrcc4 icons.qrc -o gui/qt/icons_rc.py
+  pyrcc5 icons.qrc -o gui/qt/icons_rc.py
 }
 
 build() {
