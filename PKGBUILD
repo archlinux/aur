@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=gotty
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=1
 pkgdesc='Share your terminal as a web application'
@@ -21,4 +21,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+
 

@@ -1,6 +1,6 @@
 pkgbase = gotty
 	pkgdesc = Share your terminal as a web application
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/yudai/gotty
