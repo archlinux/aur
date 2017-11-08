@@ -22,9 +22,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  mkdir build
+  meson --prefix=/usr build
   cd build
-  meson --prefix=/usr ..
   ninja
 }
 
