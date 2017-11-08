@@ -7,7 +7,7 @@ url="http://git.treefish.org/~alex/bitvalue.git"
 license=('GPL3')
 source=('bitvalue-git::git+https://git.treefish.org/~alex/bitvalue.git')
 md5sums=('SKIP')
-depends=('gnuplot>=5.2' 'wget>=1.19')
+depends=('gnuplot>=5.2' 'wget>=1.19' 'bash>=4.4')
 
 pkgver() {
   cd "$srcdir/$pkgname"
