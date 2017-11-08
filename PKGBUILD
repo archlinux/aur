@@ -4,7 +4,7 @@
 # Thanks to the Linux Mint project http://linuxmint.com/
 
 pkgname='mint-x-icons'
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Icon theme for Linux Mint"
 arch=('any')
@@ -12,7 +12,7 @@ url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
 license=('GPL3')
 source=("${url}/${pkgname}_${pkgver}.tar.xz")
 depends=('gdk-pixbuf2' 'gtk-update-icon-cache')
-sha256sums=('e37016a1e0fb2523bd3411187ae14844dc2fe57c34ace07bd82d5a49caa222f0')
+sha256sums=('d0e46d2786e8818bd13b442fcf9e202755417d6c60237dbbc2a40c60b98ae5c4')
 
 prepare() {
 	find "${srcdir}" -type d ! -perm 755 -exec chmod 755 {} +
