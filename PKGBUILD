@@ -2,11 +2,12 @@
 
 pkgname=papirus-folders-git
 pkgver=0.0.2.1.ga58a5d0
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows to change the color of folders (git version)"
 url="https://github.com/PapirusDevelopmentTeam/papirus-folders"
 arch=('any')
 license=('LGPL3')
+depends=('papirus-icon-theme')
 makedepends=('git')
 provides=("papirus-folder")
 options=('!strip')
