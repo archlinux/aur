@@ -1,6 +1,6 @@
 # Maintainer: Dan Milon  <dan@platform.sh>
 pkgname=platformsh-cli
-pkgver='3.3.6'
+pkgver='3.22.0'
 pkgrel=1
 pkgdesc="Platform.sh CLI"
 arch=('any')
