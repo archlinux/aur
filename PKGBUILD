@@ -2,7 +2,7 @@
 
 pkgname=signal-desktop
 pkgver=1.0.36
-pkgrel=3
+pkgrel=4
 pkgdesc='Private messaging from your desktop'
 _basename=Signal-Desktop
 license=('GPL3')
@@ -21,8 +21,9 @@ build() {
   msg2 "Verifying developer signature..."
   cd ${_basename}
   _key_id=$(git verify-tag -v v${pkgver} 2>&1|grep 'gpg.*using.*key'|awk '{print $NF}')
-  grep -q "\"key_id\": \"$_key_id\"" $srcdir/gpg_keys
-  cd $srcdir/${_basename}
+  grep -q "\"key_id\": \"$_key_id\"" ${srcdir}/gpg_keys
+
+  cd ${srcdir}/${_basename}
   yarn install |grep -Ev 'bin-mac|bin-win'
   yarn pack-prod
 }
