@@ -4,7 +4,7 @@
 pkgbase=linux-max98090
 _srcname=linux-4.13
 pkgver=4.13.12
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -25,7 +25,7 @@ sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
             'd5830f31cf8522986fb530e69b3b9b023f0298c4f88d897541ff0776dc805828'
             'SKIP'
-            '1c316bbb6d6ef41855372c98588aa725f06958b763582543cb63edbca8dc81f8'
+            '4e5acf6a0657934ca9b534e0349b6459ab9ab838e4be2376d6221f47e8b6b601'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
