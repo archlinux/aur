@@ -6,8 +6,8 @@
 #  Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-zfs
-pkgver=3.8.0
-pkgrel=0
+pkgver=3.9.0
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc) with ZFS support enabled"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -15,7 +15,8 @@ license=('LGPL')
 depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
 	 'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap' 'libcap-ng'
 	 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
-	 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'ceph' 'libssh2' 'netcf' 'perl-xml-xpath')
+	 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'ceph' 'libssh2' 'netcf' 'perl-xml-xpath'
+	 'zfs-utils')
 makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq'
 	     'libiscsi'
 	     'perl-xml-xpath' 'libxslt'
