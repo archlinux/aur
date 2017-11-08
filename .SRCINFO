@@ -1,0 +1,18 @@
+pkgbase = plasmate-git
+	pkgdesc = Plasma Applet Development Environment
+	pkgver = r.
+	pkgrel = 1
+	url = https://community.kde.org/Plasma/PlasMate
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = plasma-sdk
+	provides = plasmate
+	conflicts = plasmate
+	source = git+git://anongit.kde.org/plasmate.git
+	md5sums = SKIP
+
+pkgname = plasmate-git
+
