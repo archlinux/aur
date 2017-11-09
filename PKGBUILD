@@ -4,7 +4,7 @@
 
 pkgname=firefox-extension-greasemonkey
 _file=402242
-pkgver=3.12
+pkgver=3.17
 pkgrel=1
 pkgdesc="Customize the way a web page displays or behaves, by using small bits of JavaScript."
 arch=('any')
