@@ -9,35 +9,41 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=r1206.2e2caa23
-pkgrel=2
+pkgver=r1210.787dfb1f
+pkgrel=1
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=(any)
 url="https://github.com/google/fonts"
 license=('custom:SIL Open Font License' 'custom:Ubuntu Font License v1.0')
 
-# About why "cantarell-fonts" and "noto-fonts" is a dependency see comment in package() function.
-depends=(cantarell-fonts fontconfig noto-fonts xorg-fonts-encodings xorg-mkfontdir
-         xorg-mkfontscale)
+depends=(fontconfig
+         xorg-mkfontdir
+         xorg-mkfontscale
+         xorg-fonts-encodings
+         noto-fonts
+         noto-fonts-extra
+         ttf-fira-sans
+         ttf-fira-mono
+         ttf-ubuntu-font-family
+         ttf-croscore
+         ttf-roboto
+         ttf-inconsolata)
 makedepends=(git)
 conflicts=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
            lohit-fonts ttf-andika ttf-anonymous-pro ttf-cardo ttf-comfortaa
-           ttf-croscore ttf-fira-mono ttf-fira-sans ttf-inconsolata ttf-lato
+           ttf-lato
            ttf-lora-cyrillic ttf-lekton ttf-medievalsharp ttf-merriweather
            ttf-merriweather-sans ttf-nova ttf-opensans ttf-oswald ttf-oxygen
-           ttf-oxygen-git ttf-pt-fonts ttf-quintessential ttf-roboto ttf-roboto-mono
-           ttf-signika ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx
-           ttf-ubuntu-font-family-ib ttf-vollkorn-ibx ttf-arabeyes-fonts
-           ttf-ubuntu-font-family)
+           ttf-oxygen-git ttf-pt-fonts ttf-quintessential ttf-roboto-mono
+           ttf-signika ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx ttf-vollkorn-ibx ttf-arabeyes-fonts)
 provides=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
           lohit-fonts ttf-andika ttf-anonymous-pro ttf-cardo ttf-comfortaa
-          ttf-croscore ttf-fira-mono ttf-fira-sans ttf-inconsolata ttf-lato
+          ttf-lato
           ttf-lora-cyrillic ttf-lekton ttf-medievalsharp ttf-merriweather
           ttf-merriweather-sans ttf-nova ttf-opensans ttf-oswald ttf-oxygen
-          ttf-oxygen-git ttf-pt-fonts ttf-quintessential ttf-roboto ttf-roboto-mono
-          ttf-signika ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx
-          ttf-ubuntu-font-family-ib ttf-vollkorn-ibx ttf-ubuntu-font-family)
+          ttf-oxygen-git ttf-pt-fonts ttf-quintessential ttf-roboto-mono
+          ttf-signika ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx ttf-vollkorn-ibx)
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
@@ -51,15 +57,33 @@ package() {
     install -dm755 "$pkgdir/usr/share/fonts/TTF"
     find . -type f -name \*.[Tt][Tt][Ff] -exec install -Dm644 '{}' ${pkgdir}/usr/share/fonts/TTF \;
 
-    # remove Cantarell fonts because Google ships the original Cantarell
-    # instead of the improved version of Cantarell shipped by the GNOME Project
-    #
-    # it is safe to remove "Cantarell-*.ttf" from this dir because the
-    # cantarell-fonts package installs its fonts into /usr/share/fonts/cantarell/
-    # and because cantarell-fonts installs .otf files instead of .ttf files
-    find ${pkgdir}/usr/share/fonts/TTF -type f -name "Cantarell-*.ttf" -delete
+    # [fonts/ofl/notosanstamil, fonts/ofl/notoserif] provided by extra/noto-fonts
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "NotoSansTamil-*.ttf" -delete
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "NotoSerif-*.ttf" -delete
 
-    # remove Noto fonts because noto-fonts package have more fonts than this package
-    # and also noto-fonts install it's fonts in /usr/share/fonts/noto.
-    find ${pkgdir}/usr/share/fonts/TTF -type f -name "Noto*.ttf" -delete
+    # [fonts/ofl/notosans] provided by extra/noto-fonts-extra
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "NotoSans-*.ttf" -delete
+
+    # [fonts/ofl/firasans] provided by community/ttf-fira-sans
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "FiraSans-*.ttf" -delete
+
+    # [fonts/ofl/firamono] provided by community/ttf-fira-mono
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "FiraMono-*.ttf" -delete
+
+    # [fonts/ufl/ubuntu, fonts/ufl/ubuntumono] provided by community/ttf-ubuntu-font-family
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "Ubuntu-*.ttf" -delete
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "UbuntuMono-*.ttf" -delete
+
+    # [fonts/apache/tinos, fonts/apache/arimo, fonts/apache/cousine] provided by extra/ttf-croscore
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "Tinos-*.ttf" -delete
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "Arimo-*.ttf" -delete
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "Cousine-*.ttf" -delete
+
+    # [fonts/apache/roboto, fonts/apache/robotocondensed] provided by community/ttf-roboto
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "Roboto-*.ttf" -delete
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "RobotoCondensed-*.ttf" -delete
+
+    # [fonts/ofl/inconsolata] provided by community/ttf-inconsolata
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "Inconsolata-*.ttf" -delete
+
 }
