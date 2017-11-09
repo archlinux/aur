@@ -3,28 +3,21 @@
 
 pkgname=('dash-daemon' 'dash-cli' 'dash-qt')
 pkgbase=dash
-pkgver=0.12.0.58
+pkgver=0.12.2.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.dashpay.io/"
 depends=('boost-libs' 'libevent')
-makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc' 'protobuf' 'gcc5' 'zeromq')
+makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq')
 optdepends=('zeromq: Optional, allows generating ZMQ notifications'
             'miniupnpc: Firewall-jumping support'
             'db4.8: Wallet storage')
 pkgdesc="Dash peer-to-peer network based digital currency "
 license=('MIT')
-source=("https://github.com/dashpay/dash/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dashpay/dash/archive/v${pkgver}.tar.gz"
         "dashd@.service")
-sha256sums=('5e149b1a531af401e66ba655e95e7d16cb8ee4ab2ed7f5338f5ba3a9124dd744'
+sha256sums=('2e0c20c64f5ccc392e51373761f16384642d224587f10c2fdcdbb4f17e185c04'
             '00b656fe05c5b58115d41c20ca7dfba6564eaa5335e3ff5c43c3eb8d9479cab9')
-
-prepare() {
-	mkdir -p "${srcdir}/gcc-bin-override"
-	ln -sf "/usr/bin/gcc-5" "${srcdir}/gcc-bin-override/gcc"
-	ln -sf "/usr/bin/g++-5" "${srcdir}/gcc-bin-override/g++"
-	export PATH="${srcdir}/gcc-bin-override:${PATH}"
-}
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -64,6 +57,6 @@ package_dash-qt() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
   install -Dm755 "src/qt/dash-qt" 				  "${pkgdir}/usr/bin/dash-qt"
   install -Dm644 "contrib/debian/dash-qt.desktop" "${pkgdir}/usr/share/applications/dash.desktop"
-  install -Dm644 "share/pixmaps/bitcoin128.png"   "${pkgdir}/usr/share/pixmaps/dash128.png"
+  install -Dm644 "share/pixmaps/dash128.png"   "${pkgdir}/usr/share/pixmaps/dash128.png"
   install -Dm644 "COPYING" 						  "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
