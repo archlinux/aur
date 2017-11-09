@@ -19,14 +19,14 @@ md5sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_repository"
+  cd "${_repository}"
   git describe --always | sed 's/-/./g'
 }
 
 package() {
   install -Dm 644 \
-    "$srcdir/$_repository/colors/hemisu.vim" \
-    "$pkgdir/usr/share/vim/vimfiles/colors/hemisu.vim"
+    "${srcdir}/${_repository}/colors/hemisu.vim" \
+    "${pkgdir}/usr/share/vim/vimfiles/colors/hemisu.vim"
 }
 
 # vim:set ts=2 sw=2 et:
