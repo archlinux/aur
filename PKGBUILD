@@ -5,8 +5,8 @@
 # and add '--enable-libndi_newtek' to the configure options.
 
 pkgname=ffmpeg-full-git
-pkgver=3.5.r88519.gcf5a6c754a
-pkgrel=2
+pkgver=3.5.r88673.gdfa859b85a
+pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -71,7 +71,7 @@ build() {
         local _cudasdk='--enable-cuda-sdk'
         local _cuvid='--enable-cuvid'
         local _libnpp='--enable-libnpp'
-        local _cflags='--extra-cflags=-I/opt/cuda/include'
+        local _cflags='-I/opt/cuda/include'
         
         # '-L/usr/lib/nvidia' (for cuda_sdk) needs to be enabled only on
         # systems with nvidia-340xx-utils or nvidia-304xx-utils
@@ -80,7 +80,8 @@ build() {
         then
             local _nvidia_340xx_ldflags='-L/usr/lib/nvidia'
         fi
-        local _ldflags="--extra-ldflags=-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
+        
+        local _ldflags="-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
         local _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins"
         
         # strictly specifying nvcc path is needed if package is installing
@@ -92,8 +93,8 @@ build() {
     
     ./configure \
         --prefix='/usr' \
-        $_cflags \
-        "$_ldflags" \
+        --extra-cflags="${_cflags}" \
+        --extra-ldflags="${_ldflags}" \
         \
         --disable-rpath \
         --enable-gpl \
