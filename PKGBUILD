@@ -4,16 +4,16 @@
 
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
-pkgver=4.2.9.4
+pkgver=4.2.9.5
 pkgrel=1
 groups=('fcitx-im')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://fcitx-im.org"
 license=('GPL' 'LGPL')
 makedepends=('extra-cmake-modules' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' 'opencc' \
              'iso-codes' 'gobject-introspection' 'libxkbfile' 'enchant' 'python2')
 source=("https://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz"{,.sig})
-sha512sums=('2e8ead59a154a857dfc011af83715dbe1225cbccf1e2c6ced1d9aaf92a7881f89fbe806da3c66ed1805cf27994c91a2d463c455be726b7d4b73c07bfde83972b'
+sha512sums=('5e2ec5405b01fe85b1659b1db3e15389b0d7e096808db598d0865381bcb8f6de960e8e16d4432c95c586cfc3359d17d4f7bad0cff2fe0146fe00b9fb80491168'
             'SKIP')
 validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9')  # Weng Xuetian
 
@@ -34,8 +34,7 @@ build() {
     -DENABLE_TEST=ON \
     -DENABLE_GTK2_IM_MODULE=ON \
     -DENABLE_GTK3_IM_MODULE=ON \
-    -DENABLE_QT_IM_MODULE=ON \
-    -DQT_QMAKE_EXECUTABLE=qmake-qt4
+    -DENABLE_QT_IM_MODULE=ON
   make
 }
 
@@ -55,14 +54,13 @@ package_fcitx() {
   install=fcitx.install
 
   cd build
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 
-  rm -r "${pkgdir}/usr/lib/"{gtk-2.0,gtk-3.0,qt4}
-  rm -r "${pkgdir}/usr/lib/fcitx/qt"
-  rm -r "${pkgdir}/usr/include/fcitx-qt"
-  rm "${pkgdir}/usr/lib/fcitx/libexec/fcitx-qt-gui-wrapper"
-  rm "${pkgdir}/usr/lib/"libfcitx-qt.so*
-  rm "${pkgdir}/usr/lib/pkgconfig/fcitx-qt.pc"
+  rm -r "$pkgdir"/usr/lib/{gtk-2.0,gtk-3.0,qt4}
+  rm -r "$pkgdir"/usr/include/fcitx-qt
+  rm "$pkgdir"/usr/lib/fcitx/libexec/fcitx-qt-gui-wrapper
+  rm "$pkgdir"/usr/lib/libfcitx-qt.so*
+  rm "$pkgdir"/usr/lib/pkgconfig/fcitx-qt.pc
 }
 
 package_fcitx-gtk2() {
@@ -70,8 +68,8 @@ package_fcitx-gtk2() {
   depends=('gtk2' "fcitx>=$pkgver")
   install=fcitx-gtk2.install
 
-  cd "${srcdir}/build/src/frontend/gtk2"
-  make DESTDIR="${pkgdir}" install
+  cd build/src/frontend/gtk2
+  make DESTDIR="$pkgdir" install
 }
 
 package_fcitx-gtk3() {
@@ -79,8 +77,8 @@ package_fcitx-gtk3() {
   depends=('gtk3' "fcitx>=$pkgver")
   install=fcitx-gtk3.install
 
-  cd "${srcdir}/build/src/frontend/gtk3"
-  make DESTDIR="${pkgdir}" install
+  cd build/src/frontend/gtk3
+  make DESTDIR="$pkgdir" install
 }
 
 package_fcitx-qt4() {
@@ -90,13 +88,12 @@ package_fcitx-qt4() {
   provides=('fcitx-qt')
   conflicts=('fcitx-qt')
 
-  cd "${srcdir}/build/src/frontend/qt"
-  make DESTDIR="${pkgdir}" install
+  cd "$srcdir"/build/src/frontend/qt
+  make DESTDIR="$pkgdir" install
 
-  cd "${srcdir}/build/tools/gui"
-  make DESTDIR="${pkgdir}" install
+  cd "$srcdir"/build/tools/gui
+  make DESTDIR="$pkgdir" install
 
-  cd "${srcdir}/build/src/lib/fcitx-qt"
-  make DESTDIR="${pkgdir}" install
+  cd "$srcdir"/build/src/lib/fcitx-qt
+  make DESTDIR="$pkgdir" install
 }
-
