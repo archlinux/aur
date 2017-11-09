@@ -1,4 +1,5 @@
 # Maintainer: Pascal Potvin <pascal.potvin AT gmail DOT com>
+# Contributor: A Frederick Christensen <aurlinux@nosocomia.com>
 pkgname="brother-hl5470dw"
 pkgver="3.0.0"
 pkgrel=1
@@ -59,10 +60,17 @@ prepare() {
 package() {
   cp -R $srcdir/usr $pkgdir
 
+  #We need the .ppd in the right place (expected by the filter)
+  cp $srcdir/opt/brother/Printers/HL5470DW/cupswrapper/brother-HL-5470DW-cups-en.ppd $pkgdir/usr/share/cups/model/HL5470DW.ppd
+
   #We need to install the filter file to the cups filter path, so the PPD can find it
   mkdir -p $pkgdir/usr/lib/cups/filter
   cp $srcdir/opt/brother/Printers/HL5470DW/cupswrapper/brother_lpdwrapper_HL5470DW \
      $pkgdir/usr/lib/cups/filter
+
+  #Keep /var/spool/lpd locking working correctly
+  mkdir -p $pkgdir/var/spool/lpd/HL5470DW
+  chmod 755 $pkgdir/var/spool/lpd/HL5470DW
 
   if [ -d $srcdir/opt ]; then
     cp -R $srcdir/opt $pkgdir;
