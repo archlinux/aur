@@ -19,7 +19,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.4
-pkgrel=3
+pkgrel=2
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -29,14 +29,14 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugi
          'fribidi' 'glibc' 'gnutls' 'gsm' 'jack' 'kvazaar' 'ladspa' 'lame' 'libass' 
          'libavc1394' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libdc1394'
          'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmodplug' 'libomxil-bellagio'
-         'libmysofa' 'libpulse' 'librsvg' 'libsoxr' 'libssh' 'libtheora' 
+         'libmysofa' 'libpulse' 'librsvg' 'libsoxr' 'libssh' 'libtheora' 'libva' 
          'libvdpau' 'libwebp' 'libxml2' 'libxv' 'mesa' 'openal' 'opencore-amr'
          'opencv' 'opencl-driver' 'opencl-icd-loader' 'openh264' 
-         'openjpeg2' 'libopenmpt-svn' 'opus' 'rockchip-mpp' 'rtmpdump' 'rubberband'
+         'openjpeg2' 'libopenmpt-svn' 'opus' 'rubberband' 'rtmpdump'
          'sdl2' 'smbclient' 'speex' 'shine' 'tesseract' 'twolame' 'v4l-utils'
          'vid.stab' 'vo-amrwbenc' 'libxcb' 'xvidcore' 'xz' 'wavpack' 'zeromq' 'zimg'
-         'zlib' 'zvbi' 'libva-drm.so' 'libva.so' 'libva-x11.so' 'libvorbisenc.so'  
-         'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so' 'snappy' 'sndio' 'xavs')
+         'zlib' 'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so'
+         'libx265.so' 'snappy' 'sndio' 'xavs')
 depends_x86_64=('cuda' 'nvidia-utils')
 makedepends=('flite' 'libmfx' 'libvdpau' 'nasm' 'opencl-headers' 'libvmaf')
 optdepends=('avxsynth-git: for Avisynth support'
@@ -189,7 +189,6 @@ build() {
     --enable-opencl \
     --enable-opengl \
     --enable-openssl \
-    --enable-rkmpp \
     --enable-sndio \
     --enable-sdl2 \
     --enable-vaapi \
