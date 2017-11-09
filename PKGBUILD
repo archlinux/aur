@@ -3,8 +3,8 @@
 # Revived from: Vincent Berset <msieurhappy@gmail.com>
 
 pkgname=mpd-sima
-pkgver=0.14.3
-pkgrel=4
+pkgver=0.14.4
+pkgrel=1
 pkgdesc="Automagically add title to mpd playlist based on last.fm recomendations"
 arch=('any')
 url="http://kaliko.me/code/mpd-sima/"
@@ -30,5 +30,5 @@ package() {
 	    "${pkgdir}"/usr/lib/systemd/user/mpdsima.service
 }
 
-sha256sums=('2e14fdbf9e5346eb5fd88c2db57f2634fca5efefbd9c01865ef842736e95caa8'
+sha256sums=('75165a833ed0dfa0e56f8cdfa4ec7864f4a06c3fffa4e1f26ca4bf977f24fa47'
             '864b997cbf53864120aba183f2642ad6a632a0bcde3c4701779cc9a25cc0f448')
