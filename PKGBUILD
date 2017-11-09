@@ -6,7 +6,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 #  This is basically the PKGBUILD he wrote, all credit goes to him. Buy him a beer.
 pkgname=nmtree
 pkgver=20171109
-pkgrel=2
+pkgrel=3
 pkgdesc="NetBSD's mtree (supports legacy mtree spec, newer specs, etc.)"
 arch=( 'i686' 'x86_64' )
 url="https://www.netbsd.org/"
@@ -19,8 +19,10 @@ install=
 changelog=
 noextract=()
 # We don't use a source since we use cvs
-source=()
-sha512sums=()
+source=('license'
+	'license.sig')
+sha512sums=('78f634baef190d4a52187e69344e50ae9544c95bd6243ebb22af727092edbb61c021ec38de1a85e38b08cb046b71bdbf6cc869af2d9a6365cb93c92e342dfe96'
+	    'SKIP')
 
 _cvsroot=":pserver:anoncvs@anoncvs.NetBSD.org:/cvsroot"
 _cvsmod="pkgsrc/pkgtools/${_pkgname}/files"
@@ -52,4 +54,5 @@ build() {
 package() {
   cd "${srcdir}/${_cvsmod}-build"
   bmake install DESTDIR="${pkgdir}/"
+  install -D -m 0644 ${srcdir}/license ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
