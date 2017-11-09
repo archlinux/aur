@@ -1,14 +1,13 @@
 pkgbase = obs-service-verify_file
-	pkgdesc = An OBS source service to verify file
-	pkgver = 20151031
+	pkgdesc = An OBS source service: verify files
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/openSUSE/
 	arch = any
-	license = GPL2
+	license = MIT
 	depends = obs-build
-	depends = git
-	source = http://download.opensuse.org/source/distribution/13.2/repo/oss/suse/src/obs-service-verify_file-0.1-12.1.2.src.rpm
-	sha256sums = SKIP
+	source = https://download.opensuse.org/source/distribution/openSUSE-current/repo/oss/suse/src/obs-service-verify_file-0.1.1-23.1.src.rpm
+	sha512sums = f4e466bab574ece06808b872cb2c270b22bd0809cbd14def90e6b9355e353cd31a95b1178f13a11ba26f0c92381ef5a71e28c14fa9853bac1e4f2928e6a694ae
 
 pkgname = obs-service-verify_file
 
