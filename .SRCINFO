@@ -1,0 +1,27 @@
+pkgbase = gst-libav-oleavr
+	pkgdesc = GStreamer Multimedia Framework ffmpeg Plugin
+	pkgver = 1.12.0.r30.gc97d498
+	pkgrel = 1
+	url = https://github.com/oleavr/gst-libav
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python
+	makedepends = gtk-doc
+	makedepends = autoconf-archive
+	makedepends = git
+	makedepends = valgrind
+	makedepends = yasm
+	depends = gst-plugins-base-libs
+	depends = bzip2
+	depends = ffmpeg
+	provides = gst-libav
+	provides = gst-ffmpeg=1.12.0.r30.gc97d498-1
+	conflicts = gst-libav
+	source = git+https://github.com/oleavr/gst-libav
+	source = gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gst-libav-oleavr
+
