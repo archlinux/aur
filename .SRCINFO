@@ -2,7 +2,7 @@ pkgbase = gst-plugins-base-oleavr
 	pkgdesc = GStreamer Multimedia Framework Base Plugins
 	pkgver = 1.12.0.r218.gb9aaa7f4f
 	pkgrel = 1
-	url = https://gstreamer.freedesktop.org/
+	url = https://github.com/oleavr/gst-plugins-base
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -24,8 +24,6 @@ pkgbase = gst-plugins-base-oleavr
 	makedepends = autoconf-archive
 	makedepends = git
 	makedepends = pkgconfig
-	provides = gst-plugins-base
-	conflicts = gst-plugins-base
 	options = !emptydirs
 	source = git+https://github.com/oleavr/gst-plugins-base
 	source = gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common
@@ -38,6 +36,8 @@ pkgname = gst-plugins-base-libs-oleavr
 	depends = orc
 	depends = libxv
 	depends = iso-codes
+	provides = gst-plugins-base-libs
+	conflicts = gst-plugins-base-libs
 
 pkgname = gst-plugins-base-oleavr
 	depends = gst-plugins-base-libs-oleavr=1.12.0.r218.gb9aaa7f4f
@@ -48,4 +48,6 @@ pkgname = gst-plugins-base-oleavr
 	depends = libtheora
 	depends = pango
 	depends = opus
+	provides = gst-plugins-base
+	conflicts = gst-plugins-base
 
