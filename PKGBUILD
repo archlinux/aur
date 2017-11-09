@@ -10,7 +10,7 @@ _minor=13
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=9
+_pfrel=12
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -696,8 +696,8 @@ pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS in
 
 # makepkg -g >>PKGBUILD
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
-            'b6057e1b5cd22dc287d7de9efc46e4e1a904c5c22c3913618a0cfd1d65cc9c87'
-            '277edd02be3ed915b73722ac460f19c1bc79708dfce352f36e5127cc5abd523d'
+            '065ecd7b7a034fd8417f934520dd1d92a4154c6c30a5272fd863eced95c3aca0'
+            '03bfdc7297fd0b9dab918448af9c13292f3a26d6c52363ccba6756cd4ae7c101'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'd30aa697a8f6d8ee937418223ba4893211dbb1398cbe8bbdd97bf8252b0f622c'
+            '3857a4c6437588b2cbc586c4af9b1a695b547b588e088dbb545ed635d7b3276e'
             'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02')
