@@ -1,8 +1,8 @@
-# Maintainer: Tom X. Tobin <tomxtobin@tomxtobin.com>
+# Maintainer: Tom Tobin <tomxtobin@tomxtobin.com>
 
 pkgname=govc
 _reponame=govmomi
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A vSphere CLI built on top of govmomi"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('Apache')
 makedepends=('go')
 options=('!emptydirs' '!strip')
 source=("https://${_vendor}/archive/v${pkgver}.tar.gz")
-sha256sums=('eb155615dd0437046cc3a3eb45a43aeecb2cde02d363dee5c4cce51e4249cd90')
+sha256sums=('47c430e5c8a7094e845af9f1cca3c1b149e85e815d35c2017db37a711e34fbe1')
 
 _vendorpath="gopath/src/$_vendor"
 
