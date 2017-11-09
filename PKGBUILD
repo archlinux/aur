@@ -20,14 +20,14 @@ source=('git+https://github.com/andrewrk/libgroove.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
   git describe --always | sed 's/-/./g'
 }
 
 prepare() {
   # The version inserted in to libgroove.pc includes no hash. It is something
   # like "4.2.1". This matches what libgroove itself reports.
-  version=$(cd "$_pkgname" && git describe --always --abbrev=0)
+  version=$(cd "${_pkgname}" && git describe --always --abbrev=0)
   sed \
     -e 's|^libdir=$|libdir=/usr/lib|' \
     -e 's|^includedir=$|includedir=/usr/include/groove|' \
