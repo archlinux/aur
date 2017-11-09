@@ -28,7 +28,7 @@ optdepends=(
 )
 
 depends_i686=(
-    'glibc>=2.11' 'libice' 'libsm' 'libx11' 'libxext' 'libxi' 'freetype2'
+    'glibc>=2.11' 'libice' 'libsm' 'libx11' 'libxext' 'libxi' 'freetype2<2.8.1'
     'libpng' 'zlib' 'lcms2' 'libgl' 'libxcursor' 'libxrandr' 'glu'
 )
 
@@ -63,7 +63,7 @@ optdepends_i686=(
 
 depends_x86_64=(
     'lib32-glibc>=2.11' 'lib32-libice' 'lib32-libsm' 'lib32-libx11'
-    'lib32-libxext' 'lib32-libxi' 'lib32-freetype2' 'lib32-libpng' 'lib32-zlib'
+    'lib32-libxext' 'lib32-libxi' 'lib32-freetype2<2.8.1' 'lib32-libpng' 'lib32-zlib'
     'lib32-lcms2' 'lib32-libgl' 'lib32-libxcursor' 'lib32-libxrandr'
     'lib32-glu'
 )
