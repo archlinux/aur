@@ -2,7 +2,7 @@
 
 pkgname=megasync-headless
 pkgver=v3.1.9.0.g4edf31a8
-pkgrel=2
+pkgrel=3
 pkgdesc="Sync with MEGA. Daemon, fuse and cli client. Original sdk (git)."
 arch=('x86_64')
 url='https://mega.co.nz/#sync'

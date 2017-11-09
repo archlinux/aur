@@ -8,6 +8,6 @@ usr/bin/echo "******************************************************************
 usr/bin/echo "   SET YOUR CREDENTIALS IN /etc/conf.d/megasync-headless.conf"
 usr/bin/echo " "
 usr/bin/echo "   If the user is non root, ensure that the selected user has"
-usr/bin/echo "   permissions on the working directory and the local directories.
+usr/bin/echo "   permissions on the working directory and the local directories."
 usr/bin/echo "******************************************************************"
 }
