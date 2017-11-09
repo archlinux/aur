@@ -1,6 +1,6 @@
 # Maintainer: Md. Jahidul Hamid <jahidulhamid@yahoo.com>
 pkgname=jpcre2
-pkgver=10.31.01
+pkgver=10.31.02
 pkgrel=1
 pkgdesc="C++ wrapper for PCRE2 library"
 arch=('any')
@@ -10,7 +10,7 @@ groups=(jpcre2)
 depends=('pcre2')
 provides=(libjpcre2)
 source=( "https://github.com/jpcre2/$pkgname/archive/$pkgver.tar.gz" )
-md5sums=('524ebe07559a8885879226ebeff225c9')
+md5sums=('2608954f06b853d49046e3f20de7ee2a')
 validpgpkeys=('3331 6137 5B22 27AC F7AA  6351 A4A2 CA5B 6BDA A871')
 
 build() {
