@@ -32,7 +32,7 @@ package() {
   local _license="$(mktemp)"
   sed -n '/LICENSE:/,$ p' \
     "${pkgdir}${_gemdir}/gems/${_gemname}-${pkgver}/README.txt" > "${_license}"
-  install -Dm 644 "$_license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 "${_license}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   rm "${_license}"
 }
 
