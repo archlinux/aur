@@ -10,7 +10,7 @@ pkgbase = amber
 	depends = shards
 	depends = sqlite
 	source = https://github.com/amberframework/amber/archive/v0.3.0.tar.gz
-	sha256sums = 16b602d2bc866c748c5ca151297e6b0201f6a939e251f92cd39861b76bd222d9
+	sha256sums = bc55eab6f7d1c9f7fbb3f439ddbb6e1239fdd0c1614e5ae5cd3b4477f801c957
 
 pkgname = amber
 
