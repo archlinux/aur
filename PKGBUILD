@@ -2,7 +2,7 @@
 # Maintainer: raininja <dandenkijin@gmail.com>
 
 pkgname=slimjet
-pkgver=16.1.3.0
+pkgver=16.0.3.0
 pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('i686' 'x86_64')
