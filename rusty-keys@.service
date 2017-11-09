@@ -3,6 +3,7 @@ Description=rusty-keys keymapper service
 After=systemd-udevd.service
 
 [Service]
+ExecStartPre=/bin/sleep 5
 ExecStart=/usr/bin/rusty-keys -c /etc/rusty-keys/keymap.toml -d /dev/input/%I
 
 [Install]
