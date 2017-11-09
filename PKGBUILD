@@ -24,12 +24,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "$srcdir/$_name"
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd $pkgname
+  cd "$srcdir/$_name"
 
   git submodule init
   git config --local submodule.common.url "$srcdir/gst-common"
@@ -39,7 +39,7 @@ prepare() {
 }
 
 build() {
-  cd $pkgname
+  cd "$srcdir/$_name"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib \
     --with-package-name="GStreamer (Arch Linux)" \
     --with-package-origin="https://www.archlinux.org/" \
@@ -52,11 +52,11 @@ build() {
 }
 
 check() {
-  cd $pkgname
+  cd "$srcdir/$_name"
   make check
 }
 
 package() {
-  cd $pkgname
+  cd "$srcdir/$_name"
   make DESTDIR="$pkgdir" install
 }
