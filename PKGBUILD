@@ -5,7 +5,7 @@
 
 _name=gstreamer
 pkgname=gstreamer-oleavr
-pkgver=master
+pkgver=1.12.0.r189.g938ad6b2d
 pkgrel=1
 pkgdesc="GStreamer open-source multimedia framework core library"
 url="https://gstreamer.freedesktop.org/"
