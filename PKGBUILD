@@ -33,10 +33,13 @@ build() {
     cd "$srcdir/$pkgname"
     ./configure
     make
+    gzip -f debian/telegram-cli.8
 }
 
 package() {
     cd "$srcdir/$pkgname"
     install -Dm644 tg-server.pub ${pkgdir}/etc/telegram-cli/server.pub
     install -Dm755 bin/telegram-cli ${pkgdir}/usr/bin/telegram-cli
+    install -Dm755 bin/telegram-cli ${pkgdir}/usr/bin/telegram-cli
+    install -Dm644 debian/telegram-cli.8.gz ${pkgdir}/usr/share/man/man8/telegram-cli.8.gz 
 }
