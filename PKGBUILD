@@ -1,8 +1,9 @@
-# Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Alex Peltzer ("alexpe87") <alexpe.aur@mailbox.org>
+# Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=bwa
-pkgver=0.7.16
-_pkgver=${pkgver}a
+pkgver=0.7.17
+_pkgver=${pkgver}
 pkgrel=1
 pkgdesc="Burrows-Wheeler Aligner maps low-divergent sequences against a large reference genome"
 arch=('i686' 'x86_64')
@@ -10,7 +11,7 @@ url="http://bio-bwa.sourceforge.net/"
 license=('GPL3')
 depends=('perl' 'zlib')
 source=(https://github.com/lh3/bwa/releases/download/v$pkgver/bwa-${_pkgver}.tar.bz2)
-md5sums=('c5115c9a5ea0406848500e4b23a7708c')
+md5sums=('82cba7ef695538e6a38b9d4156837381')
 
 build() {
   cd $srcdir/$pkgname-$_pkgver
