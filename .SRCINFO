@@ -1,6 +1,6 @@
 pkgbase = python-cloudpickle
 	pkgdesc = Extended pickling support for Python objects
-	pkgver = 0.4.2
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/cloudpipe/cloudpickle
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-cloudpickle
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://pypi.io/packages/source/c/cloudpickle/cloudpickle-0.4.2.tar.gz
-	md5sums = bea0024f67a60b8b2398afa64de67dc4
+	source = https://pypi.io/packages/source/c/cloudpickle/cloudpickle-0.5.1.tar.gz
+	md5sums = 80517aad8965c2e40957235d09b11e11
 
 pkgname = python-cloudpickle
 	depends = python
