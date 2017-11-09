@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 # Past major contributors: Christoph Vigano <mail@cvigano.de>
 pkgname=ikiwiki
-pkgver=3.20170111
+pkgver=3.20171001
 pkgrel=1
 pkgdesc="wiki/blog compiler"
 arch=(any)
@@ -10,7 +10,7 @@ url="http://ikiwiki.info"
 depends=(perl-yaml perl-text-markdown perl-cgi-session perl-cgi-formbuilder perl-timedate perl-html-parser perl-html-scrubber perl-mail-sendmail perl-time-duration perl-uri perl-html-template perl-locale-gettext perl-rpc-xml perl-yaml-libyaml)
 source=("http://deb.debian.org/debian/pool/main/i/${pkgname}/${pkgname}_${pkgver}.tar.xz")
 backup=("etc/ikiwiki/wikilist")
-sha256sums=('5f0f99a4f4a5f17046e4601d628424cb2877766b4ef9bfe1c2db1941f6f7a701')
+sha256sums=('a3bdeaf2f129d38ae6ee55c73deaed40623e05ccfb5f692bde8a6c7b4e021966')
 
 build() {
   cd "$pkgname-$pkgver"
