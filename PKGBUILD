@@ -25,7 +25,8 @@ prepare() {
 build() {
 	cd "$_srcname-$_srcver-$_srcrel"
 	./configure --prefix=/usr \
-	            --sbindir=/usr/bin
+	            --sbindir=/usr/bin \
+	            CXXFLAGS="${CXXFLAGS} -std=c++98"
 	make
 }
 
@@ -35,9 +36,9 @@ package() {
 
 	# Replace default sysvinit script with a systemd unit
 	rm -r "$pkgdir/etc"
-	install -D -m644 {"$srcdir","$pkgdir/"usr/lib/systemd/system}/$pkgname.service
+	install -Dp -m644 {"$srcdir","$pkgdir/"usr/lib/systemd/system}/$pkgname.service
 
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	install -Dp -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
