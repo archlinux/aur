@@ -1,0 +1,34 @@
+pkgbase = gstreamer-oleavr
+	pkgdesc = GStreamer open-source multimedia framework core library
+	pkgver = 1.12.0.r189.g938ad6b2d
+	pkgrel = 1
+	url = https://gstreamer.freedesktop.org/
+	install = gstreamer.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	checkdepends = gmp
+	checkdepends = gsl
+	checkdepends = gtk3
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = autoconf-archive
+	makedepends = git
+	makedepends = valgrind
+	makedepends = bash-completion
+	depends = libxml2
+	depends = glib2
+	depends = libunwind
+	depends = libcap
+	depends = libelf
+	provides = gstreamer
+	conflicts = gstreamer
+	source = git+https://github.com/oleavr/gstreamer#branch=master
+	source = gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gstreamer-oleavr
+
