@@ -1,0 +1,12 @@
+pkgbase = debhelper-sphinx
+	pkgdesc = debhelper scripts for sphinx docs: sphinxdoc.pm
+	pkgver = 1.6.5
+	pkgrel = 1
+	url = https://packages.debian.org/sid/all/sphinx-common
+	arch = any
+	license = BSD
+	source = http://ftp.de.debian.org/debian/pool/main/s/sphinx/sphinx-common_1.6.5-1_all.deb
+	sha512sums = 96b78e5ea8979afc3c14de1d4b739277019340b52d2f2f6e27b73df9bd5b0c2b3319887653e54c1a676a2235bee03cd60f46279b84b3775a865b570b98b6c7f2
+
+pkgname = debhelper-sphinx
+
