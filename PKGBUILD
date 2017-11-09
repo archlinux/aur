@@ -2,7 +2,7 @@
 
 pkgname=megasync-headless
 pkgver=v3.1.9.0.g4edf31a8
-pkgrel=3
+pkgrel=4
 pkgdesc="Sync with MEGA. Daemon, fuse and cli client. Original sdk (git)."
 arch=('x86_64')
 url='https://mega.co.nz/#sync'
@@ -62,7 +62,7 @@ package() {
    cd sdk
    make DESTDIR=${pkgdir} install
    # we do not need the include files
-   rm -rf ${pkgdir}/usr/local/include 
+   rm -rf "${pkgdir}/usr/local/include"
    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
    mkdir -p "${pkgdir}/srv/mega"
    mkdir -p "${pkgdir}/var/mega"
