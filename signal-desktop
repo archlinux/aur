@@ -1,2 +1,2 @@
 #!/bin/sh
-exec "/opt/Signal/signal-desktop" %U
+exec /opt/Signal/signal-desktop "$@"
