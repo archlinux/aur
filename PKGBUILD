@@ -1,8 +1,8 @@
 # Maintainer: Thomas Fanninger <thomas@fanninger.at>
 
 pkgname=openambit
-pkgver=0.3
-pkgrel=3
+pkgver=0.4
+pkgrel=1
 epoch=1
 pkgdesc="Open software for the Suunto Ambit(2)"
 arch=('i686' 'x86_64')
