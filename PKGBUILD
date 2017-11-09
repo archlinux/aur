@@ -4,7 +4,7 @@
 # MAintainer: Pablo Lezeta <prflr88@gmail.com>
 
 pkgname=iio-sensor-proxy
-pkgver=2.2
+pkgver=2.4
 pkgrel=3
 pkgdesc="IIO accelerometer sensor to input device proxy"
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ license=("GPLv2")
 depends=("systemd" "libgudev" "gtk3")
 makedepends=("git" "gtk-doc" "gnome-common")
 source=("${pkgname}::https://github.com/hadess/iio-sensor-proxy/releases/download/${pkgver}/iio-sensor-proxy-${pkgver}.tar.xz")
-sha512sums=('3d273f51b106302f4a194ebd5a6397b899b708dc197f4e9801b87c9f49732ff8bf4fe60cb8aad8eec9336987c7721de7a0cdb1bdf061b29fd057d6e737bd6fd8')
+sha512sums=('d56316f4a606c7e453d5ede44cc31590cb9998dac31460037663bb75570fb221187c8b48e55f09263f3a461cd1f62b9066e3ec716636d1aabd635ff8e58955cd')
 options=('!strip' '!emptydirs')
 
 build() {
