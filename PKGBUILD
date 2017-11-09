@@ -2,17 +2,17 @@
 # Maintainer: Florian Klink <flokli@flokli.de>
 
 pkgname=spotifyd-git
-pkgver=0.1.1.1.g60f111f
+pkgver=0.1.1.2.g7451cd6
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
-depends=('pulseaudio' 'flac' 'libogg' 'libpulse' 'libsndfile' 'libvorbis')
+depends=('flac' 'libogg' 'libsndfile' 'libvorbis')
 makedepends=('git' 'cargo')
-conflicts=('spotifyd-bin')
+conflicts=('spotifyd-bin' 'spotifyd-pulseaudio-git')
 pkgdesc="A spotify playing daemon"
 url="https://github.com/Spotifyd/spotifyd"
-source=("spotifyd::git+https://github.com/Spotifyd/spotifyd" "spotifyd.service")
-sha256sums=('SKIP'
-            '67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4')
+source=("spotifyd::git+https://github.com/Spotifyd/spotifyd")
+sha256sums=('SKIP')
+
 pkgver() {
   cd $srcdir/spotifyd;
   git describe --tags --match 'v*' | sed 's/^v//;s/-/./g'
@@ -20,10 +20,10 @@ pkgver() {
 
 build() {
   cd $srcdir/spotifyd;
-  cargo build --release --features "pulseaudio_backend"
+  cargo build --release
 }
 
 package() {
-  install -D -m 755 $srcdir/spotifyd/target/release/spotifyd "${pkgdir}/usr/bin/spotifyd"
-  install -D -m 644 "${srcdir}/spotifyd.service" "${pkgdir}/usr/lib/systemd/user/spotifyd.service"
+  install -D -m 755 "$srcdir/spotifyd/target/release/spotifyd" "${pkgdir}/usr/bin/spotifyd"
+  install -D -m 644 "$srcdir/spotifyd/contrib/spotifyd.service" "${pkgdir}/usr/lib/systemd/user/spotifyd.service"
 }
