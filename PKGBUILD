@@ -9,38 +9,44 @@ pkgrel=1
 pkgdesc='A first-person shooter by Epic Games based on Unreal Engine 4.'
 arch=('x86_64')
 url='https://www.epicgames.com/unrealtournament/'
-makedepends=('clang' 'mono' 'dos2unix' 'cmake')
+makedepends=('clang' 'mono' 'dos2unix' 'cmake' 'git')
 depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python')
 license=('custom:UnrealTournament')
 source=(
   "git+ssh://git@github.com/EpicGames/UnrealTournament.git#tag=$pkgver"
   'UnrealTournament.desktop'
 )
-md5sums=(
+sha256sums=(
   'SKIP'
-  '4ab9fb5f8c4b6c6c3fdb8d2e79399b9e'
+  'd0f041443a6c60ad9d1a7c1381b270df4b0576009f13328a4b024868b5387d7b'
 )
-options=(!strip staticlibs)
+options=(staticlibs)
 
-build() {
-  cd $srcdir/UnrealTournament
+pkgver() {
+  cd "$srcdir/UnrealTournament"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/UnrealTournament"
+
+  # clean up old builds before building a new version
+  #git clean -xdf
 
   ./Setup.sh
   ./GenerateProjectFiles.sh
+}
 
-  # Seems the Linux Setup.sh is missing from the main Setup.sh
-  # This is from UnrealEngine's but causes build() to fail for some reason, although it works when running manually
-  pushd Engine/Build/BatchFiles/Linux > /dev/null
-  #./Setup.sh "$@"
-  popd > /dev/null
+build() {
+  cd "$srcdir/UnrealTournament"
 
-  make
+  make -j1
 }
 
 package() {
   install -Dm644 UnrealTournament.desktop "$pkgdir/usr/share/applications/UnrealTournament.desktop"
 
-  cd $srcdir/UnrealTournament
+  cd "$srcdir/UnrealTournament"
 
   # license
   install -Dm644 LICENSE.pdf "$pkgdir/usr/share/licenses/UnrealTournament/LICENSE.pdf"
@@ -50,7 +56,7 @@ package() {
   cp -r * "$pkgdir/opt/$pkgname/"
 
   # make the whole thing world writable
-  # @todo find out what specifically needs to writable
+  # @todo find out what actually needs to writable
   chmod -R a+w "$pkgdir/opt/$pkgname/"
 
   # @todo refer to install info here: https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=ut4
