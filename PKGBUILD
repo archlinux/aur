@@ -4,7 +4,7 @@
 
 pkgname=godot-pulse
 pkgver=2.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine, with pulseaudio"
 url="http://www.godotengine.org"
 license=('MIT')
@@ -31,7 +31,7 @@ sha256sums=('07cf3b01367d5ea53805f144bc60711bd79efb53f1f88d57d6a706e6944de8d7'
             '713a953892b85597bc9dd3385fbeb2b3d4338fb3fc9738bb1901de6129ee909e')
 
 prepare() {
-  cd "${srcdir}"/${pkgname}-${pkgver}-stable
+  cd "${srcdir}"/${pkgname%-*}-${pkgver}-stable
   patch -Np1 -i "${srcdir}/py2to3.patch"
 }
 
