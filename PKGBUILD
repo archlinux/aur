@@ -1,6 +1,6 @@
 # Maintainer: Dan Milon  <dan@platform.sh>
 pkgname=platformsh-cli
-pkgver='3.22.0'
+pkgver='3.22.2'
 pkgrel=1
 pkgdesc="Platform.sh CLI"
 arch=('any')
@@ -19,7 +19,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/platformsh/platformsh-cli/releases/download/v$pkgver/platform.phar")
-sha1sums=('597dd04bbf8841b27d35e1f64e7eea7ba6dcbb31')
+sha256sums=('b3622edb90a035d0e28f1eddb807cc266f3941d2ef809e5b75dbc4e790981df2')
 noextract=('platform.phar')
 
 build() {
