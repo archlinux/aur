@@ -1,15 +1,15 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gdl
-pkgver=3.22.0
+pkgver=3.26.0
 pkgrel=1
 pkgdesc="GNOME Docking Library"
-arch=(i686 x86_64)
+arch=(x86_64)
 license=('GPL')
 url="http://www.gnome.org/"
 depends=('gtk3')
 makedepends=('gtk-doc' 'intltool' 'gobject-introspection' gnome-common git)
-_commit=4d878257865371dfbb1662f4d17b12b3ed334cb6  # tags/GDL_3_22_0^0
+_commit=5299ee410b000e5f1c955c46a4a0b6acd822b906  # tags/GDL_3_26_0^0
 source=("git://git.gnome.org/gdl#commit=$_commit")
 sha256sums=('SKIP')
 
