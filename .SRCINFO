@@ -1,0 +1,51 @@
+pkgbase = gst-plugins-base-oleavr
+	pkgdesc = GStreamer Multimedia Framework Base Plugins
+	pkgver = 1.12.0.r218.gb9aaa7f4f
+	pkgrel = 1
+	url = https://gstreamer.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	checkdepends = gtk3
+	checkdepends = qt5-base
+	makedepends = gstreamer
+	makedepends = orc
+	makedepends = libxv
+	makedepends = iso-codes
+	makedepends = alsa-lib
+	makedepends = cdparanoia
+	makedepends = libvisual
+	makedepends = libvorbis
+	makedepends = libtheora
+	makedepends = pango
+	makedepends = opus
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = autoconf-archive
+	makedepends = git
+	makedepends = pkgconfig
+	provides = gst-plugins-base
+	conflicts = gst-plugins-base
+	options = !emptydirs
+	source = git+https://github.com/oleavr/gst-plugins-base
+	source = gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gst-plugins-base-libs-oleavr
+	pkgdesc = GStreamer Multimedia Framework Base Plugin libraries
+	depends = gstreamer
+	depends = orc
+	depends = libxv
+	depends = iso-codes
+
+pkgname = gst-plugins-base-oleavr
+	depends = gst-plugins-base-libs-oleavr=1.12.0.r218.gb9aaa7f4f
+	depends = alsa-lib
+	depends = cdparanoia
+	depends = libvisual
+	depends = libvorbis
+	depends = libtheora
+	depends = pango
+	depends = opus
+
