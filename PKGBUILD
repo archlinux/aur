@@ -7,13 +7,13 @@
 ###########################################################
 
 pkgname=i2p-bin
-pkgver=0.9.31
+pkgver=0.9.32
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="http://www.i2p2.de"
 license=('GPL2')
 arch=('any')
-depends=('java-runtime' 'java-service-wrapper')
+depends=('java-runtime>=7' 'java-service-wrapper')
 #optdepends=('gtk2: for rrd graphs')
 conflicts=('i2p' 'i2p-dev')
 provides=('i2p')
@@ -21,7 +21,8 @@ backup=('opt/i2p/wrapper.config')
 install='i2p.install'
 noextract=("i2pinstall_${pkgver}.jar")
 
-_url="https://download.i2p2.de/releases/${pkgver}"
+#_url="https://download.i2p2.de/releases/${pkgver}"
+_url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
 source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
@@ -33,7 +34,7 @@ source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
             'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 }
 
-sha256sums=('dc26fb5c268dfe63b98bce66381c24c908f0b8265ddf731f4daf6fb82c4b7376'
+sha256sums=('2ff82498c5491a138e42991658d0d747f13579392d0d065c65fbe9a94ae18fdf'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
