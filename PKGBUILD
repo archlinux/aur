@@ -1,7 +1,7 @@
 # Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
 
 pkgname=quake3-edawn
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A Quake III Arena mod with numerous improvements"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://edawn-mod.org/"
 license=('custom')
 depends=('quake3')
 source=("http://edawn-mod.org/binaries/edawn-${pkgver}-1.zip")
-sha256sums=('228faf7ab297f0231c75443ad1ea5b532ef377465ab84e8409000abe7ab35b2b')
+sha256sums=('6b60917d83dfb98993691d537779b5269154d29d1e2683a7aa49ba17269be660')
 
 package() {
   # Non-modified Quake 3 engines may have problems loading
