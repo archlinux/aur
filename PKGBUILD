@@ -1,4 +1,5 @@
 # Maintainer: David Birks <david@tellus.space>
+# Contributor: Chrysostomus @forum.manjaro.org
 
 pkgname=pacli
 pkgver=0.9.1
