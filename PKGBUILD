@@ -2,14 +2,14 @@
 
 pkgname=signal-desktop
 pkgver=1.0.37
-pkgrel=1
+pkgrel=2
 pkgdesc='Private messaging from your desktop'
 _basename=Signal-Desktop
 license=('GPL3')
 arch=('any')
 url='https://github.com/WhisperSystems/Signal-Desktop'
 conflicts=('signal' 'signal-desktop-bin' 'signal-desktop-beta')
-depends=('electron' 'gconf' 'gtk2')
+depends=('gconf' 'gtk2')
 makedepends=('grunt-cli' 'npm' 'phantomjs' 'python2' 'ruby-sass' 'yarn')
 source=("git+${url}.git#tag=v${pkgver}" 'https://api.github.com/users/scottnonnenberg/gpg_keys' 'signal-desktop.desktop' 'signal-desktop')
 sha256sums=('SKIP'
