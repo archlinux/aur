@@ -2,7 +2,7 @@
 
 pkgname=ddnet-skins
 pkgver=20171109
-pkgrel=1
+pkgrel=2
 pkgdesc="DDraceNetwork skin database"
 arch=(any)
 url="https://ddnet.tw"
@@ -66,7 +66,6 @@ package() {
       "antiantey.png"          \
       "aqua.png"               \
       "bauer.png"              \
-      "beast.png"              \
       "blacktee.png"           \
       "bomb.png"               \
       "bunny.png"              \
@@ -143,7 +142,6 @@ package() {
       "ts2_contest_skin.png"   \
       "tweety.png"             \
       "veteran.png"            \
-      "voodoo_tee.png"         \
       "wartee.png"             \
       "whis.png"
 }
