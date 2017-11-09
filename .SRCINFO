@@ -1,0 +1,34 @@
+pkgbase = gst-plugins-ugly-oleavr
+	pkgdesc = GStreamer Multimedia Framework Ugly Plugins
+	pkgver = 1.12.0.r38.g83d7d2f6
+	pkgrel = 1
+	url = https://github.com/oleavr/gst-plugins-ugly
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python
+	makedepends = gtk-doc
+	makedepends = x264
+	makedepends = autoconf-archive
+	makedepends = git
+	makedepends = valgrind
+	depends = gst-plugins-base-libs
+	depends = libdvdread
+	depends = lame
+	depends = libmpeg2
+	depends = a52dec
+	depends = libsidplay
+	depends = libcdio
+	depends = libx264
+	depends = libx264-all
+	depends = opencore-amr
+	depends = mpg123
+	provides = gst-plugins-ugly
+	conflicts = gst-plugins-ugly
+	source = git+https://github.com/oleavr/gst-plugins-ugly
+	source = gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gst-plugins-ugly-oleavr
+
