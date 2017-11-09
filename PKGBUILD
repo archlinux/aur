@@ -18,7 +18,7 @@ checkdepends=(gmp gsl gtk3)
 provides=("$_name")
 conflicts=("$_name")
 install=gstreamer.install
-source=("git+https://github.com/oleavr/gstreamer#branch=master"
+source=("git+https://github.com/oleavr/gstreamer#commit=938ad6b2d84fcd9d7e4a47e2c0a035401b8b2c05"
         "gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common")
 sha256sums=('SKIP'
             'SKIP')
