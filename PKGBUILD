@@ -2,7 +2,7 @@
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
 pkgname=clickhouse
-pkgver=1.1.54292
+pkgver=1.1.54310
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
@@ -11,10 +11,20 @@ license=('Apache')
 depends=('ncurses' 'readline' 'unixodbc' 'termcap')
 makedepends=('poco' 'cmake')
 source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
+        https://github.com/google/cctz/archive/4f9776a.tar.gz
+        https://github.com/edenhill/librdkafka/archive/3401fa1.tar.gz
+        https://github.com/lz4/lz4/archive/c10863b.tar.gz
+        https://github.com/ClickHouse-Extras/zookeeper/archive/d2f05a6.tar.gz
+        https://github.com/facebook/zstd/archive/f4340f4.tar.gz
         clickhouse-server.service
         re2-length.patch
         libunwind.patch)
-md5sums=('68825ce6a1ef9842289d42c0f1015592'
+md5sums=('9d022df076ff8e6ad9a175f3c1b017a2'
+         '5323f7ba2565a84a80a93edde95eb4fe'
+         '6bc0f4f409d8ff24019afd9e15cd3d19'
+         '7b92f0554687e6a8949adc5c10aeff78'
+         '6636ab50e66d1c0a1e05d83ed6154bdc'
+         'e3212525a38d6cc38e26979a10c174ed'
          'f9f5663b0a9a58e99f481efe9d193e85'
          '143f0146c3ef3a6832191fba352b70c4'
          'f3f60b75abf8d6f21de74db6e88e1e7b')
@@ -26,6 +36,12 @@ prepare() {
   sed -e 's/mysqlxx common\(.*\) \(\${Z_LIB}\)/mysqlxx \2 common\1/' -i libs/libmysqlxx/CMakeLists.txt
   patch -p1 < ../re2-length.patch
   patch -p1 < ../libunwind.patch
+  mkdir -p contrib/cctz contrib/librdkafka contrib/lz4 contrib/zookeeper contrib/zstd
+  mv ../cctz-4f9776a*/* contrib/cctz/
+  mv ../librdkafka-3401fa1*/* contrib/librdkafka/
+  mv ../lz4-c10863b*/* contrib/lz4/
+  mv ../zookeeper-d2f05a6*/* contrib/zookeeper/
+  mv ../zstd-f4340f4*/* contrib/zstd/
 }
 
 build() {
