@@ -5,28 +5,9 @@ pkgbase = bitcoin-classic-daemon-git
 	pkgver = git
 	pkgrel = 1
 	url = https://bitcoinclassic.com/
-	install = bitcoin.install
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = boost
-	depends = boost-libs
-	depends = libevent
-	depends = openssl
-	depends = miniupnpc
-	depends = zeromq
-	provides = bitcoin-daemon
-	provides = bitcoin-cli
-	provides = bitcoin-tx
-	conflicts = bitcoin-daemon
-	conflicts = bitcoin-cli
-	conflicts = bitcoin-tx
-	source = git+https://github.com/bitcoinclassic/bitcoinclassic.git#branch=develop
-	source = bitcoin.logrotate
-	source = bitcoin.conf
-	sha256sums = SKIP
-	sha256sums = 7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73
-	sha256sums = c8787560c6423605796c8d3e080cb522ed849cea12b5c23293c22e405a015a53
 
 pkgname = bitcoin-classic-daemon-git
 
