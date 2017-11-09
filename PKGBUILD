@@ -4,10 +4,10 @@
 
 pkgname=signal
 pkgver=1.0.37
-pkgrel=1
+pkgrel=2
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
-depends=('electron' 'gconf' 'gtk2')
+depends=('gconf' 'gtk2')
 makedepends=('npm' 'ruby-sass' 'python2' 'phantomjs' 'yarn' 'grunt-cli')
 arch=("i686" "x86_64")
 url='https://whispersystems.org'

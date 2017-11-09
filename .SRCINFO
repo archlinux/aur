@@ -1,7 +1,7 @@
 pkgbase = signal
 	pkgdesc = Signal Private Messenger for the Desktop
 	pkgver = 1.0.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://whispersystems.org
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = signal
 	makedepends = phantomjs
 	makedepends = yarn
 	makedepends = grunt-cli
-	depends = electron
 	depends = gconf
 	depends = gtk2
 	source = signal-1.0.37.tar.gz::https://github.com/WhisperSystems/Signal-Desktop/archive/v1.0.37.tar.gz
