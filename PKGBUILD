@@ -5,7 +5,7 @@
 
 _name=gstreamer
 pkgname=gstreamer-oleavr
-pkgver=1.12.0.r189.g938ad6b2d
+pkgver=master
 pkgrel=1
 pkgdesc="GStreamer open-source multimedia framework core library"
 url="https://gstreamer.freedesktop.org/"
@@ -18,14 +18,14 @@ checkdepends=(gmp gsl gtk3)
 provides=("$_name")
 conflicts=("$_name")
 install=gstreamer.install
-source=("git+https://github.com/oleavr/gstreamer#commit=938ad6b2d84fcd9d7e4a47e2c0a035401b8b2c05"
+source=("git+https://github.com/oleavr/gstreamer"
         "gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common")
 sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
   cd "$srcdir/$_name"
-  git describe --tags | sed 's/-/+/g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

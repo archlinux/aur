@@ -1,6 +1,6 @@
 pkgbase = gstreamer-oleavr
 	pkgdesc = GStreamer open-source multimedia framework core library
-	pkgver = 1.12.0.r189.g938ad6b2d
+	pkgver = master
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	install = gstreamer.install
@@ -25,7 +25,7 @@ pkgbase = gstreamer-oleavr
 	depends = libelf
 	provides = gstreamer
 	conflicts = gstreamer
-	source = git+https://github.com/oleavr/gstreamer#branch=master
+	source = git+https://github.com/oleavr/gstreamer
 	source = gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common
 	sha256sums = SKIP
 	sha256sums = SKIP
