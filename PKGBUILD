@@ -2,7 +2,7 @@
  
 pkgname=pacman_sdl-ebuc99-git
 _pkgbase=pacman
-pkgver=v0.5.r201.g6ca0147
+pkgver=v0.5.r205.g7cf259d
 pkgdesc="Pacman clone using SDL. Guide Pacman through a maze and collect pac-dots while 
 avoiding ghosts. (ebuc99 fork)"
 pkgrel=1
@@ -12,7 +12,7 @@ license=('GPLv2')
 source=("git+https://github.com/ebuc99/pacman.git"
         'extra_life.patch')
 md5sums=('SKIP'
-         'a788d57a73cc7a82ac2a9161bc96ae3b')
+         '61ea5932ff3bd98a5102d91e7dece69b')
 depends=('sdl_ttf' 'sdl_gfx' 'sdl_mixer' 'sdl_image')
 makedepends=('boost' 'sed')
 
