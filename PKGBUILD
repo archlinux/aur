@@ -11,6 +11,7 @@ depends=('openssl-1.0' 'zlib' 'icu' 'libuv' 'http-parser' 'c-ares') # 'v8')
 makedepends=('python2' 'procps-ng')
 optdepends=('npm: nodejs package manager')
 conflicts=('nodejs')
+provides=('nodejs')
 source=("nodejs-$pkgver.tar.gz::https://github.com/nodejs/node/archive/v$pkgver.tar.gz")
 sha512sums=("f95c5edb62e1eba23dafa5455d80c00c4dd87b02563546822ebe3f61b55c3f9a27de4eede235655280baf6958e59744249c07e93012f082b0a4d6098f26d7e18")
 

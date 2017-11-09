@@ -15,6 +15,7 @@ pkgbase = nodejs-lts-carbon
 	depends = http-parser
 	depends = c-ares
 	optdepends = npm: nodejs package manager
+	provides = nodejs
 	conflicts = nodejs
 	source = nodejs-8.9.0.tar.gz::https://github.com/nodejs/node/archive/v8.9.0.tar.gz
 	sha512sums = f95c5edb62e1eba23dafa5455d80c00c4dd87b02563546822ebe3f61b55c3f9a27de4eede235655280baf6958e59744249c07e93012f082b0a4d6098f26d7e18
