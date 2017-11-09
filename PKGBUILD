@@ -18,23 +18,23 @@ source=("git+https://github.com/spolu/${_repository}.git")
 sha256sums=(SKIP)
 
 pkgver() {
-  cd "$_repository"
+  cd "${_repository}"
   git describe --always | sed 's/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_repository"
+  cd "${srcdir}/${_repository}"
   sed -n '/Copyright:/,/Name Of File:/p' plugin/dwm.vim > LICENSE
 }
 
 package() {
-  cd "$srcdir/$_repository"
+  cd "${srcdir}/${_repository}"
   install -Dm 644 doc/dwm.txt \
-    "$pkgdir/usr/share/vim/vimfiles/doc/dwm.txt"
+    "${pkgdir}/usr/share/vim/vimfiles/doc/dwm.txt"
   install -Dm 644 plugin/dwm.vim \
-    "$pkgdir/usr/share/vim/vimfiles/plugin/dwm.vim"
+    "${pkgdir}/usr/share/vim/vimfiles/plugin/dwm.vim"
   install -Dm 644 LICENSE \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
