@@ -1,3 +1,17 @@
+# [v1.4.9 - 2017-11-06](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.8)
+
+## Added
+
+- Added context menu action to remove multiple untracked files at once.
+- Show detached HEAD label at a specific tag if any tags point directly to the commit.
+
+## Fixed
+
+- Fixed cancel during resolve.
+- Fixed regression is showing the detached HEAD label in the commit list.
+- Fixed failure to immediately index some commits if the indexer is running while references are updated.
+- Fixed failure to get more than the first page of GitHub repositories.
+
 # [v1.4.8 - 2017-10-30](https://gitahead.com/cgi-bin/update.py?platform=linux&version=1.4.7)
 
 ## Added
