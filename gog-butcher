@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec /opt/gog-butcher/data/noarch/start.sh
