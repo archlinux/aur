@@ -23,21 +23,21 @@ md5sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
   git describe --always | sed 's/-/./g'
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_pkgname}"
   install -Dm 644 \
     "colors/${_pkgname}.vim" \
-    "$pkgdir/usr/share/vim/vimfiles/colors/${_pkgname}.vim"
+    "${pkgdir}/usr/share/vim/vimfiles/colors/${_pkgname}.vim"
   install -Dm 644 \
     LICENSE.markdown \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.markdown"
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.markdown"
   install -Dm 644 \
     "contrib/${_pkgname}.muttrc" \
-    "$pkgdir/usr/share/vim/vimfiles/contrib/${_pkgname}.muttrc"
+    "${pkgdir}/usr/share/vim/vimfiles/contrib/${_pkgname}.muttrc"
 }
 
 # vim:set ts=2 sw=2 et:
