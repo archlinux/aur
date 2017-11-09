@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Quiénot <niQo @ aur>
 pkgname=miio
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Control Mi Home devices, such as Mi Robot Vacuums, Mi Air Purifiers, Mi Smart Home Gateway (Aqara) and more"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('nodejs')
 makedepends=('npm')
 options=(!emptydirs)
 source=("https://github.com/aholstenson/miio/archive/$pkgver.tar.gz")
-sha256sums=('7cd96e57662bc001ea979381baa7fc25e26bca3bb363f6480186d5a12573a8ab')
+sha256sums=('d7c2cc22d54801e5852cd16e4e6e033d7d074c126e3d5e13ea1a2c9ce2e8ea85')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
