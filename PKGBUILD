@@ -6,7 +6,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=3.5.r88519.gcf5a6c754a
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -95,7 +95,7 @@ build() {
         $_cflags \
         "$_ldflags" \
         \
-        --enable-rpath \
+        --disable-rpath \
         --enable-gpl \
         --enable-version3 \
         --enable-nonfree \
