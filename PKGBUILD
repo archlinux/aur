@@ -1,8 +1,8 @@
-# $Id$
-# Maintainer: tobias <tobias@archlinux.org>
+# Maintainer: Que Quotion <quequotion@bugmenot.org>
+# Contributor: tobias <tobias@archlinux.org>
 
 pkgbase=gnome-sharp
-pkgname=('gnome-sharp' 'art-sharp' 'gconf-sharp' 'gconf-sharp-peditors' 'libgnome-sharp' 'gnome-vfs-sharp')
+pkgname=('gnome-sharp' 'art-sharp' 'gconf-sharp-peditors' 'libgnome-sharp' 'gnome-vfs-sharp')
 pkgvermajor=2
 pkgverminor=24
 pkgverpatch=4
@@ -41,14 +41,14 @@ package_art-sharp() {
   make -C art install DESTDIR="${pkgdir}"
 }
 
-package_gconf-sharp() {
-  pkgdesc="Mono bindings for GConf"
-  depends=('gtk-sharp-2' 'gconf')
-
-  cd "${srcdir}/${pkgbase}-${pkgver}"
-  make -C gconf/GConf install DESTDIR="${pkgdir}"
-  make -C gconf/tools install DESTDIR="${pkgdir}"
-}
+#package_gconf-sharp() {
+#  pkgdesc="Mono bindings for GConf"
+#  depends=('gtk-sharp-2' 'gconf')
+#
+#  cd "${srcdir}/${pkgbase}-${pkgver}"
+#  make -C gconf/GConf install DESTDIR="${pkgdir}"
+#  make -C gconf/tools install DESTDIR="${pkgdir}"
+#}
 
 package_gconf-sharp-peditors() {
   pkgdesc="Mono bindings for GConf - Property Editing classes"
