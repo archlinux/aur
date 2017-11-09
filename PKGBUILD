@@ -5,7 +5,7 @@
 
 pkgname=brasero-dvdcssfix
 pkgver=3.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc="CD/DVD mastering tool"
 arch=(i686 x86_64)
 url="https://wiki.gnome.org/Apps/Brasero"
@@ -14,7 +14,7 @@ options=(!emptydirs)
 conflicts=('brasero')
 provides=('brasero')
 depends=(gtk3 gst-plugins-good totem-plparser cdrkit cdrdao shared-mime-info libcanberra
-         dvd+rw-tools dconf libsm libtracker-sparql libnotify gvfs)
+         dvd+rw-tools dconf libsm tracker libnotify gvfs)
 makedepends=(gtk-doc yelp-tools gnome-common intltool libburn libisofs libnautilus-extension
              gobject-introspection gconf itstool docbook-xsl)
 optdepends=('libburn: alternative back-end'
