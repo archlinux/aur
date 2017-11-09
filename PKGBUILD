@@ -4,14 +4,14 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20171025.ec07e537
+pkgver=20171109.721180d2
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://mupdf.com/'
 license=('AGPL3')
 makedepends=('git')
-depends=('glfw' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2')
+depends=('freeglut' 'glu' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2')
 source=('git://git.ghostscript.com/mupdf.git'
         'git://git.ghostscript.com/mujs.git'
         'cmm_ctx_gone.patch'
@@ -48,10 +48,6 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-
-	export HAVE_GLFW='yes'
-	export SYS_GLFW_CFLAGS="$(pkg-config --cflags glfw3)"
-	export SYS_GLFW_LIBS="$(pkg-config --libs glfw3) -lGL"
 
 	make release XCFLAGS="$CFLAGS -fPIC" XLIBS="$LDFLAGS"
 }
