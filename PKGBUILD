@@ -10,8 +10,8 @@
 #   http://pages.newtek.com/NDI-Developers.html
 
 pkgname=ndi-sdk
-pkgver=3.20170821.r80510
-pkgrel=3
+pkgver=3.20171009.r82134
+pkgrel=1
 pkgdesc='NewTek NDI SDK (needs registration at upstream URL and manual download)'
 arch=('i686' 'x86_64')
 url='https://www.newtek.com/ndi/sdk/'
@@ -21,7 +21,7 @@ provides=('libndi' 'libndi.so')
 conflicts=('libndi')
 options=('!strip')
 source=("file://InstallNDISDK_v${pkgver%%.*}_Linux.sh")
-sha256sums=('d1876510fe5077a609179ef2acd2cb93a5bebef640202278ca98b3b5c408430a')
+sha256sums=('6fc5d3c3f2d10837187b0db8fb332a88ef7bca311214d7b05e87497789e97a16')
 
 prepare() {
     ! [ -d "${pkgname}-${pkgver}" ] && mkdir -p "${pkgname}-${pkgver}"
