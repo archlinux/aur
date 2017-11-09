@@ -1,3 +1,6 @@
+2017-11-09  Tinu Weber  <martin.weber@epfl.ch>
+	* gnupaste: Add option for fetching paste by its four-letter hash code
+
 2017-10-12  Tinu Weber  <martin.weber@epfl.ch>
 	* gnupaste: Upstream bugfix: Symlinks are correctly dereferenced for
 	determining their MIME type
