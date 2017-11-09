@@ -13,3 +13,18 @@ pkgbase = nativescript-cli
 
 pkgname = nativescript-cli
 
+pkgbase = nativescript-cli
+	pkgdesc = NativeScript CLI
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://www.npmjs.com/package/nativescript
+	arch = any
+	license = Apache 2.0
+	depends = nodejs
+	depends = npm
+	noextract = nativescript-3.3.0.tgz
+	source = http://registry.npmjs.org/nativescript/-/nativescript-3.3.0.tgz
+	sha256sums = 988bfcfd0008b0b581a8306e0190b89ec0165185654d35d4e05a531435f85219
+
+pkgname = nativescript-cli
+

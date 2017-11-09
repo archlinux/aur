@@ -1,7 +1,7 @@
 _npmname=nativescript
-_npmver=3.2.1
+_npmver=3.3.0
 pkgname=nativescript-cli # All lowercase
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="NativeScript CLI"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=(476e66c502869915a0f413b5fd8ea8b5b1520d2354d01b085920ae762ef228f4)
+sha256sums=(988bfcfd0008b0b581a8306e0190b89ec0165185654d35d4e05a531435f85219)
 
 package() {
   cd $srcdir
