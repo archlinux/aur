@@ -43,6 +43,7 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib \
     --with-package-name="GStreamer (Arch Linux)" \
     --with-package-origin="https://www.archlinux.org/" \
+    --disable-fatal-warnings \
     --enable-gtk-doc --disable-static
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
