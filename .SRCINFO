@@ -5,9 +5,10 @@ pkgbase = interviews
 	url = http://www.neuron.yale.edu
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = GPL
 	depends = libx11
-	source = http://www.neuron.yale.edu/ftp/neuron/versions/v7.4/iv-19.tar.gz
+	depends = neuron
+	source = https://neuron.yale.edu/ftp/neuron/versions/v7.5/iv-19.tar.gz
 	md5sums = 79fde976b2c89590fb78854aa2c04101
 
 pkgname = interviews

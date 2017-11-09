@@ -6,9 +6,9 @@ pkgrel=1
 pkgdesc="GUI for neuron"
 arch=('i686' 'x86_64')
 url="http://www.neuron.yale.edu"
-license=('custom')
-depends=('libx11')
-source=("http://www.neuron.yale.edu/ftp/neuron/versions/v7.4/iv-$pkgver.tar.gz")
+license=('GPL')
+depends=('libx11' 'neuron')
+source=("https://neuron.yale.edu/ftp/neuron/versions/v7.5/iv-19.tar.gz")
 md5sums=('79fde976b2c89590fb78854aa2c04101')
 
 build() {
@@ -22,3 +22,4 @@ package() {
   install -Dm644 Copyright "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   make DESTDIR="$pkgdir/" install
 }
+md5sums=('13b3c76dae57051d7764de18dbd46f6a')
