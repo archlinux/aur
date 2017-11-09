@@ -2,7 +2,7 @@
 
 pkgbase=linux-hardened-apparmor
 _srcname=linux-4.13
-_pkgver=4.13.11
+_pkgver=4.13.12
 pkgver=$_pkgver.a
 pkgrel=1
 arch=('x86_64')
@@ -26,9 +26,9 @@ replaces=('linux-grsec')
 
 sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
             'SKIP'
-            'f5fb017ee531dc35e3462ccb2d244d4fdc8ac6df9cd3337aa6df2ffc280b1bd6'
+            'd5830f31cf8522986fb530e69b3b9b023f0298c4f88d897541ff0776dc805828'
             'SKIP'
-            'dd230cdc25a5ebaf45a91b57e03696b6af8fb2c02ccb826a12a7fc0f28c58857'
+            '297c61f99436447ee60637a6d04e32bf8070323e3f00e3e12444e926275cafc4'
             'SKIP'
             '3d9bb7014b9e6f3a1647769954bc9f2ee3f5389ecb06ddb0269ba40f251fe5e8'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
