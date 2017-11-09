@@ -1,27 +1,33 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
-
 pkgname=ironpython-git
-pkgver=2.7.7.ac72964d7
+pkgver=r2315.ac72964d7
 pkgrel=1
 pkgdesc="Python implementation for the .NET framework"
 arch=("any")
 url="http://ironpython.net"
 license=("Apache")
-depends=('mono')
-makedepends=('git' 'msbuild-bin')
+depends=('mono' 'msbuild-bin')
+makedepends=('git')
 options=('!strip' 'emptydirs' 'libtool')
-source=($pkgname::git://github.com/IronLanguages/ironpython2.git)
+source=($pkgname::git+https://github.com/IronLanguages/ironpython2.git)
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --always | sed 's|-|.|g;s|^ipy\.||'
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  git checkout ac72964d7
+  git submodule update --init
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  git submodule update --init
-  msbuild.exe Build.proj /t:Build /p:Mono=true /p:BuildFlavour=Release /p:Platform="Any CPU" /verbosity:minimal /nologo
+  git checkout ac72964d7
+  msbuild.exe Build.proj /t:Build /p:Mono=true /p:BuildFlavour=Release \
+    /p:Platform="Any CPU" /verbosity:minimal /nologo
 }
 
 package() {
