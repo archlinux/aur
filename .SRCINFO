@@ -1,0 +1,18 @@
+pkgbase = emergent
+	pkgdesc = emergent is a comprehensive neural network simulator that enables the creation and analysis of complex, sophisticated models of the brain in the world
+	pkgver = 8.2.0
+	pkgrel = 1
+	url = https://grey.colorado.edu/emergent
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = cmake
+	depends = subversion
+	depends = libsndfile
+	depends = coin
+	source = http://brettgilio.com/emergent-8.2.0.zip
+	md5sums = 9b578caca83e375020c485d9a2e06af1
+
+pkgname = emergent
+
