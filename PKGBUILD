@@ -2,7 +2,7 @@
 pkgname=pacpush
 pkgver=2.0
 pkgrel=1
-pkgdesc="Utility to push an Arch host's package and AUR caches to other hosts"
+pkgdesc="Utility to push an Arch host's package and AUR caches to other hosts. Previously named pacsync."
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")
