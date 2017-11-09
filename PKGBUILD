@@ -19,7 +19,7 @@ arch=(any)
 url="https://www.sapphirepaw.org/projects/freshwall.html"
 license=('Apache')
 depends=('python2>=2.4')
-source=("http://pypi.python.org/packages/source/f/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://pypi.python.org/packages/source/f/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('bf8911f94ab37766f64bfd5c1f39cb30')
 
 package() {
