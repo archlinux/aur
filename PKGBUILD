@@ -15,7 +15,7 @@ license=(GPL2)
 arch=(any)
 depends=('java-runtime=8')
 conflicts=("${pkgname}-svn")
-source=("$pkgname" "http://www.mkgmap.org.uk/download/${pkgname}-${pkgver}.zip")
+source=("${pkgname}" "http://www.mkgmap.org.uk/download/${pkgname}-${pkgver}.zip")
 sha256sums=('135dfbca5146cea34ef48ed6908a817efdfbbcccbb8adfbbb6a100f58c2c7bb6'
             'd7be83ef64943431d8c3b3f598be6c34e346559cec430897a437362c85412d15')
 
@@ -23,7 +23,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Install the executable, jarfile, dependencies and man page.
-  install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 \
     "${pkgname}.jar" \
     "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
