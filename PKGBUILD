@@ -1,7 +1,7 @@
 _npmname=vue-cli
-_npmver=2.8.2
+_npmver=2.9.1
 pkgname=nodejs-vue-cli # All lowercase
-pkgver=2.8.2
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="A simple CLI for scaffolding Vue.js projects."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('27e81510c79f82ffd4af52c8ace4764a34fe1abd')
+sha1sums=('e171348e7ecf74a34895be5e15ae1b56eabf5ffe')
 
 package() {
   cd $srcdir
