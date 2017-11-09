@@ -9,7 +9,7 @@ license=('GPL')
 groups=('')
 depends=('aarch64-linux-gnu-gcc>=5.2' 'ncurses5-compat-libs' 'libx11' 'openmpi' 'python' 'python-numpy' 'python-scipy')
 options=('!strip' '!emptydirs')
-source_x86_64=("http://neuron.yale.edu/ftp/neuron/versions/v7.5/nrn-7.5.x86_64.deb")
+source_x86_64=("https://neuron.yale.edu/ftp/neuron/versions/v7.5/nrn-7.5.tar.gz")
 sha512sums_x86_64=('a4ad3e5b8a3ad7e480476232b32155b03c9dd313c22480690a96da3bd039b8d106f41e1907cbe4acdf153af297b98a195204bb5e8df46b5f911dde7fda08f131')
 
 build() {
@@ -18,12 +18,8 @@ build() {
   # We do this so the python libraries actually get installed in the package prefix
   sed -i "s_ac\_pysetup='--home=\$(prefix)'_ac\_pysetup='--home=$pkgdir/usr'_g" "$srcdir/nrn-$pkgver/configure"
   sed -i 's_exec\_prefix="${prefix}/${host\_cpu}"_exec\_prefix="${prefix}"_g' "$srcdir/nrn-$pkgver/configure"
-
-  # Python 3 complains about a prototype (see http://www.neuron.yale.edu/phpbb/viewtopic.php?f=2&t=3060). 
-  # This part patches some code according to http://www.neuron.yale.edu/hg/neuron/nrn/rev/dce1de58303d.
-  patch -p1 < $srcdir/patch.diff
 	
-  ./configure --prefix=/usr --libdir=/usr/lib --bindir=/usr/bin --with-paranrn --with-nrnpython=`which python`
+  ./configure --prefix=/usr --libdir=/usr/lib --bindir=/usr/bin --with-paranrn --with-nrnpython=`which python` --without-iv
   make 
 }
 
@@ -49,3 +45,5 @@ package() {
   cd "src/nrnpython/"
   python setup.py install --root="$pkgdir/"
 }
+sha512sums_x86_64=('08cef00a6d8edb379169344a88155393cc46c9d3c888c48aae336a5d2f413cd80a52d549eb794d10894e5357a4c2b16f973e1a7cfbaeee3b05599fb1d6ee33fe')
+sha512sums_x86_64=('08cef00a6d8edb379169344a88155393cc46c9d3c888c48aae336a5d2f413cd80a52d549eb794d10894e5357a4c2b16f973e1a7cfbaeee3b05599fb1d6ee33fe')
