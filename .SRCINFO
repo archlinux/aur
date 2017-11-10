@@ -1,7 +1,7 @@
 pkgbase = arch-install-scripts_custom
-	pkgdesc = Scripts to aid in installing Arch Linux. With modified pacstrap, to include additional options. Pacstrappier Edition.
+	pkgdesc = Scripts to aid in installing Arch Linux. With modified pacstrap, to include additional options. 11/9/17
 	pkgver = 17
-	pkgrel = 2
+	pkgrel = 1
 	url = https://projects.archlinux.org/arch-install-scripts.git
 	arch = any
 	license = GPL
