@@ -1,29 +1,23 @@
 # Maintainer: David Manouchehri <manouchehri@riseup.net>
 
 pkgname=bindiff
-pkgver=4.2
-pkgrel=2
+pkgver=4.3
+pkgrel=1
 pkgdesc="A comparison tool for binary files that assists vulnerability researchers and engineers to quickly find differences and similarities in disassembled code."
-arch=('i686' 'x86_64')
-url="http://www.zynamics.com/bindiff.html"
+arch=('x86_64')
+url="https://www.zynamics.com/bindiff.html"
 license=('custom')
 depends=('desktop-file-utils' 'java-runtime>=8')
 options=('!strip')
 install=${pkgname}.install
-backup=('etc/opt/zynamics/BinDiff/bindiff.xml' 'etc/opt/zynamics/BinDiff/config.xml')
-source=("https://dl.google.com/dl/zynamics/bindiff-license-key.zip")
-source_i686=("https://dl.google.com/dl/zynamics/bindiff420-debian8-i386.deb")
-source_x86_64=("https://dl.google.com/dl/zynamics/bindiff420-debian8-amd64.deb")
-sha1sums=("95715a8bd7469106fc60b03f94f3cc87604e354c")
-sha1sums_i686=('49cdd6ae7ebe5b1813a5fcafaae9fde19005c824')
-sha1sums_x86_64=('38fbea8070495fc8730d7c86eae03bc68fde291f')
+backup=('etc/opt/zynamics/BinDiff/bindiff_core.xml'
+'etc/opt/zynamics/BinDiff/bindiff_ui.xml')
+source=("https://dl.google.com/dl/zynamics/bindiff_4.3.0_amd64.deb")
+sha256sums=('98776bd9a61a29e4c8518b0ff0ae0a66518ab7c759aead5e3fcf2e6d3bcd1987')
 
 package() {
   # Extract
   tar -xJf data.tar.xz --exclude="usr/share/lintian" -C "${pkgdir}"/
-
-  # Install the license key
-  install -m 0644 "zynamics BinDiff License Key.txt" "${pkgdir}/opt/zynamics/BinDiff/bin/"
 
   # Install links to the binaries
   install -dm 755 "${pkgdir}/usr/bin"
