@@ -4,7 +4,6 @@ pkgbase = gaviewer
 	pkgrel = 3
 	url = http://www.geometricalgebra.net/downloads.html
 	arch = x86_64
-	groups = ypb
 	groups = math
 	license = GPL2
 	makedepends = antlr2
