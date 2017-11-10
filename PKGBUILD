@@ -1,13 +1,13 @@
 # Maintainer: Archimede Pitagorico <archimede.pitagorico@mail.com>
 
 pkgname=megasync-headless
-pkgver=v3.2.0.0.g3604ab78
+pkgver=v3.2.4.0.gde2915dc
 pkgrel=1
 pkgdesc="Sync with MEGA. Daemon, fuse and cli client. Original sdk (git)."
 arch=('x86_64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')
-source=('git+https://github.com/meganz/sdk.git#tag=v3.2.0'
+source=('git+https://github.com/meganz/sdk.git#tag=v3.2.4'
         'megasyncd@.service'
         'megasync.conf'
         )
@@ -51,8 +51,8 @@ prepare() {
 
 build() {
     cd sdk
-    make examples/megacli
-    make examples/megasimplesync
+    make examples/megacli CPPFLAGS=-Wno-deprecated-declarations
+    make examples/megasimplesync CPPFLAGS=-Wno-deprecated-declarations
 }
 
 package() {
@@ -60,7 +60,7 @@ package() {
    install -Dm600 megasync.conf "${pkgdir}/etc/conf.d/megasync.conf"
 
    cd sdk
-   make DESTDIR=${pkgdir} install
+   make CPPFLAGS=-Wno-deprecated-declarations DESTDIR=${pkgdir} install
    # we do not need the include files
    rm -rf "${pkgdir}/usr/local/include"
    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
