@@ -1,7 +1,7 @@
 pkgbase = electron-cash
 	pkgdesc = Lightweight Bitcoin Cash wallet
-	pkgver = 2.9.3
-	pkgrel = 2
+	pkgver = 2.9.4
+	pkgrel = 1
 	url = http://www.electroncash.org/
 	install = electron-cash.install
 	arch = any
@@ -38,8 +38,10 @@ pkgbase = electron-cash
 	optdepends = zbar: QR code reading support
 	provides = electron-cash
 	conflicts = electron-cash
-	source = electron-cash-2.9.3.tar.gz::https://github.com/fyookball/electrum/archive/2.9.3.tar.gz
-	sha256sums = 406bc77c9a6f8a1fb69cdbe2873ad6fb2956afbb6ec0f1da71b9d6ee9f8bf8bc
+	source = electron-cash-2.9.4.tar.gz::https://electroncash.org/downloads/2.9.4/win-linux/Electron-Cash-2.9.4.tar.gz
+	source = electron-cash-2.9.4.tar.gz.sig
+	sha256sums = 70939028e5cf9401ab2fdf7cb760e58264cba260a4729128911fad6514ff15f9
+	sha256sums = 39a43abed8b8d4d385d651dcf0b15086a77755a91821eb89d462827f75c66cac
 
 pkgname = electron-cash
 

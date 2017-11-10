@@ -10,8 +10,8 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=2.9.3
-pkgrel=2
+pkgver=2.9.4
+pkgrel=1
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
 arch=('any')
@@ -54,30 +54,42 @@ optdepends=(
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fyookball/electrum/archive/${pkgver}.tar.gz")
-sha256sums=('406bc77c9a6f8a1fb69cdbe2873ad6fb2956afbb6ec0f1da71b9d6ee9f8bf8bc')
+#source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fyookball/electrum/archive/${pkgver}.tar.gz")
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://electroncash.org/downloads/2.9.4/win-linux/Electron-Cash-2.9.4.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz.sig"
+)
+#https://raw.githubusercontent.com/fyookball/keys-n-hashes/master/pubkeys/jonaldkey2.txt
+validgpgkeys=('4FD06489EFF1DDE1')
+sha256sums=(
+  '70939028e5cf9401ab2fdf7cb760e58264cba260a4729128911fad6514ff15f9'
+  '39a43abed8b8d4d385d651dcf0b15086a77755a91821eb89d462827f75c66cac'
+)
 
 build() {
-  cd "${pkgname/on-cash/um}-${pkgver}"
+  #cd "${pkgname/on-cash/um}-${pkgver}"
+  cd "Electron Cash-${pkgver}"
 
   # Compile the icons file for Qt:
   python2-pyrcc5 icons.qrc -o gui/qt/icons_rc.py
-  # Compile the protobuf description file:
-  protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
-  # Create translations (optional):
-  python2 contrib/make_locale
+#  # Compile the protobuf description file:
+#  protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
+#  # Create translations (optional):
+#  python2 contrib/make_locale
   # Build
   python2 setup.py build
 }
 
-check() {
-  cd "${pkgname/on-cash/um}-${pkgver}"
-
-  tox
-}
+#check() {
+#  #cd "${pkgname/on-cash/um}-${pkgver}"
+#  cd "Electron Cash-${pkgver}"
+#
+#  tox2
+#}
 
 package() {
-  cd "${pkgname/on-cash/um}-${pkgver}"
+  #cd "${pkgname/on-cash/um}-${pkgver}"
+  cd "Electron Cash-${pkgver}"
 
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }
