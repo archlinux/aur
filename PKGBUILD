@@ -3,54 +3,35 @@
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.54
-pkgrel=3
+pkgrel=4
 pkgdesc='Native replacement for the Steam runtime'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
 license=('None')
 replaces=('steam-libs')
-depends=('alsa-lib' 'alsa-plugins' 'atk' 'cairo' 'curl' 'dbus-glib'
-         'fontconfig' 'freetype2' 'freeglut' 'gconf' 'gdk-pixbuf2' 'glew1.10'
-         'glib2' 'glu' 'gtk2' 'libappindicator-gtk2' 'libcaca' 'libcanberra'
-         'libcups' 'libcurl-compat' 'libcurl-gnutls' 'dbus' 'libdrm'
-         'libgcrypt15' 'libice' 'libjpeg6' 'libnm-glib' 'libpng12' 'libpulse'
-         'librtmp0' 'libsm' 'libtheora' 'libtiff4' 'libudev0-shim' 'libusb'
-         'libva' 'libvorbis' 'libvpx1.3' 'libwrap' 'libxcomposite' 'libxcursor'
-         'libxft' 'libxi' 'libxinerama' 'libxmu' 'libxrandr' 'libxrender'
-         'libxtst' 'libxxf86vm' 'nspr' 'nss' 'openal' 'openssl-1.0' 'pango'
-         'sdl' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'sdl_image'
-         'sdl_mixer' 'sdl_ttf' 'librsvg' 'vulkan-icd-loader')
-depends_x86_64=('lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-atk' 'lib32-cairo'
-                'lib32-curl' 'lib32-dbus-glib' 'lib32-fontconfig'
-                'lib32-freetype2' 'lib32-freeglut' 'lib32-gconf'
-                'lib32-gdk-pixbuf2' 'lib32-glew1.10' 'lib32-glib2' 'lib32-glu'
-                'lib32-gtk2' 'lib32-libappindicator-gtk2' 'lib32-libcaca'
-                'lib32-libcanberra' 'lib32-libcups' 'lib32-libcurl-compat'
-                'lib32-libcurl-gnutls' 'lib32-dbus' 'lib32-libdrm'
-                'lib32-libgcrypt15' 'lib32-libice' 'lib32-libjpeg6'
-                'lib32-libnm-glib' 'lib32-libpng12' 'lib32-libpulse'
-                'lib32-librtmp0' 'lib32-libsm' 'lib32-libtheora'
-                'lib32-libtiff4' 'lib32-libudev0-shim' 'lib32-libusb'
-                'lib32-libva' 'lib32-libvorbis' 'lib32-libvpx1.3'
-                'lib32-libwrap' 'lib32-libxcomposite' 'lib32-libxcursor'
-                'lib32-libxft' 'lib32-libxi' 'lib32-libxinerama' 'lib32-libxmu'
-                'lib32-libxrandr' 'lib32-libxrender' 'lib32-libxtst'
-                'lib32-libxxf86vm' 'lib32-nspr' 'lib32-nss' 'lib32-openal'
-                'lib32-openssl-1.0' 'lib32-pango' 'lib32-sdl' 'lib32-sdl2'
-                'lib32-sdl2_image' 'lib32-sdl2_mixer' 'lib32-sdl2_ttf'
-                'lib32-sdl_image' 'lib32-sdl_mixer' 'lib32-sdl_ttf')
+depends=('lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-atk' 'lib32-cairo'
+         'lib32-curl' 'lib32-dbus-glib' 'lib32-fontconfig' 'lib32-freetype2'
+         'lib32-freeglut' 'lib32-gconf' 'lib32-gdk-pixbuf2' 'lib32-glew1.10'
+         'lib32-glib2' 'lib32-glu' 'lib32-gtk2' 'lib32-libappindicator-gtk2'
+         'lib32-libcaca' 'lib32-libcanberra' 'lib32-libcups'
+         'lib32-libcurl-compat' 'lib32-libcurl-gnutls' 'lib32-dbus'
+         'lib32-libdrm' 'lib32-libgcrypt15' 'lib32-libice' 'lib32-libjpeg6'
+         'lib32-libnm-glib' 'lib32-libpng12' 'lib32-libpulse' 'lib32-librtmp0'
+         'lib32-libsm' 'lib32-libtheora' 'lib32-libtiff4' 'lib32-libudev0-shim'
+         'lib32-libusb' 'lib32-libva' 'lib32-libvdpau' 'lib32-libvorbis'
+         'lib32-libvpx1.3' 'lib32-libwrap' 'lib32-libxcomposite'
+         'lib32-libxcursor' 'lib32-libxft' 'lib32-libxi' 'lib32-libxinerama'
+         'lib32-libxmu' 'lib32-libxrandr' 'lib32-libxrender' 'lib32-libxtst'
+         'lib32-libxxf86vm' 'lib32-nspr' 'lib32-nss' 'lib32-openal'
+         'lib32-openssl-1.0' 'lib32-pango' 'lib32-sdl' 'lib32-sdl2'
+         'lib32-sdl2_image' 'lib32-sdl2_mixer' 'lib32-sdl2_ttf'
+         'lib32-sdl_image' 'lib32-sdl_mixer' 'lib32-sdl_ttf')
 
 package() {
-  install -d "${pkgdir}/usr/lib/steam"
-  ln -sf /usr/lib/libcurl.so.3 "${pkgdir}/usr/lib/steam/libcurl.so.3"
-  ln -sf /usr/lib/libcurl.so.4.2.0 "${pkgdir}/usr/lib/steam/libcurl.so.4"
-  ln -sf /usr/lib/libcurl.so.4.2.0 "${pkgdir}/usr/lib/steam/libcurl.so.4.2.0"
-  if [ "${CARCH}" == "x86_64" ]; then
-    install -d "${pkgdir}/usr/lib32/steam"
-    ln -sf /usr/lib32/libcurl.so.3 "${pkgdir}/usr/lib32/steam/libcurl.so.3"
-    ln -sf /usr/lib32/libcurl.so.4.2.0 "${pkgdir}/usr/lib32/steam/libcurl.so.4"
-    ln -sf /usr/lib32/libcurl.so.4.2.0 "${pkgdir}/usr/lib32/steam/libcurl.so.4.2.0"
-  fi
+  install -d "${pkgdir}"/usr/lib32/steam
+  ln -sf /usr/lib32/libcurl.so.3 "${pkgdir}"/usr/lib32/steam/libcurl.so.3
+  ln -sf /usr/lib32/libcurl.so.4.2.0 "${pkgdir}"/usr/lib32/steam/libcurl.so.4
+  ln -sf /usr/lib32/libcurl.so.4.2.0 "${pkgdir}"/usr/lib32/steam/libcurl.so.4.2.0
 }
 
 # vim: ts=2 sw=2 et:
