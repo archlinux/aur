@@ -22,7 +22,7 @@ backup=('etc/kubernetes/apiserver'
         'etc/kubernetes/scheduler')
 install=kubernetes.install
 sha256sums=('8ab7e41126dfc3bc1a23ff76efc20e5131320530dc1277e5c2ed8c9618041b95'
-            '1d4e651ea59ea0d2b440e290fda5e166a21847891abca2907b8a1683c2252b8d'
+            'f04c0a90c20af6c7f4e448f2405938ea5c821b33d0f977d58598adc1e189bcda'
             'fb6fce3ef4b793863286dafb5856ce28027427005d6c6fd44162844921ab714b')
 
 build() {
