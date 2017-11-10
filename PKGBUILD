@@ -85,8 +85,8 @@ if $_testing; then
   _pkgvermajmin="5.10"
   _pkgverpatch=".0"
   # {alpha/beta/beta2/rc}
-  _dev_suffix="beta"
-  pkgrel=2
+  _dev_suffix="beta3"
+  pkgrel=3
 else
   _pkgvermajmin="5.9"
   _pkgverpatch=".1"
@@ -97,9 +97,6 @@ fi
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
-if [[ -n ${_dev_suffix} ]]; then
-  _pkgver=${pkgver}-${_dev_suffix}
-fi
 _release_type="development_releases"
 _additional_configure_flags="-skip qt3d"
 _profiled_gpu_fn=qpi-proprietary.sh
@@ -189,10 +186,14 @@ _libsdebugpkgname="${pkgname}-target-libs-debug"
 _packaginguser=$(whoami)
 if $_testing; then
   _qt_package_name_prefix="qt-everywhere-src"
+  _source_package_name=${_qt_package_name_prefix}-${_pkgver}
 else
   _qt_package_name_prefix="qt-everywhere-opensource-src"
+  if [[ -n ${_dev_suffix} ]]; then
+    _pkgver=${pkgver}-${_dev_suffix}
+  fi
+  _source_package_name=${_qt_package_name_prefix}-${_pkgver}
 fi
-_source_package_name=${_qt_package_name_prefix}-${_pkgver}
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
 
@@ -275,8 +276,8 @@ if $_static_build; then
         -no-sql-psql \
         -no-tslib \
         -no-feature-bearermanagement \
+        -no-qml-debug \
     "
-    #-no-qml-debug \
 
     _additional_configure_flags="$_additional_configure_flags $_exhaustive_static_specific_configure_options"
     _additional_configure_flags="$_additional_configure_flags
@@ -322,13 +323,13 @@ if ! $_testing; then
 fi
 
 if $_testing; then
-  _tar_xz_sha256="6fdf611b41e65356c14cba26d7e8a109f9d6a91a2a765f38636ee79ec9d21766"
+  _tar_xz_sha256="7139adf57f703761fd4cac29bf6ee81a10b93c1fa11e5643d4c98e1367e20972"
 else
   _tar_xz_sha256="7b41a37d4fe5e120cdb7114862c0153f86c07abbec8db71500443d2ce0c89795"
 fi
 
 if ! $_build_from_head; then
-  source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
+  source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${pkgver}-${_dev_suffix}/single/${_source_package_name}.tar.xz")
   sha256sums=("SKIP" "$_tar_xz_sha256")
 fi
 
