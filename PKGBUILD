@@ -5,15 +5,15 @@
 
 pkgname=tikzit-git
 pkgver=r297
-pkgrel=1
+pkgrel=2
 pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/tikzit/"
+url="https://github.com/tikzit/tikzit.git"
 license=('GPL')
 depends=('gtk2>=2.18.0' 'poppler-glib' 'hicolor-icon-theme' 'gnustep-base' 'desktop-file-utils')
 makedepends=('git' 'gcc-objc')
 provides=('tikzit')
-conflicts=('tikzit' 'ploticus')
+conflicts=('tikzit')
 source=('git+https://github.com/tikzit/tikzit.git')
 md5sums=('SKIP')
 options=('!makeflags')
