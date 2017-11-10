@@ -1,13 +1,13 @@
 pkgname=pguri
 pkgver=1.20151224
-pkgrel=4
+pkgrel=5
 pkgdesc="uri data type for PostgreSQL"
 arch=('i686' 'x86_64')
 url="https://github.com/petere/pguri/"
 license=('MIT')
-depends=('postgresql>9.6' 'postgresql<9.7' 'uriparser')
+depends=('postgresql>10' 'postgresql<11' 'uriparser')
 source=(${url}archive/${pkgver}.tar.gz)
-sha256sums=('259dd485e901b2363342eacbc2b867783cc0da0f12d4bddc1040d0a46fe58c1b')
+sha512sums=('166676b5f375e3da6a25242d42c059f35888fb9fa3b72c3d11a0678c23dbcb4f75665c0bbe45a23b65c0cdd1ec2403b0473164b5954bc0dcca2bdc228927ff61')
 
 build() {
   cd $pkgname-$pkgver
