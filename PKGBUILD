@@ -3,13 +3,13 @@
 _npmname=web-ext
 pkgname=nodejs-$_npmname # All lowercase
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
 url='https://developer.mozilla.org/en-US/Add-ons/WebExtensions'
 license=('MPL2')
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('yarn')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 sha256sums=('802293cb2fce76ff8cd5acb831131efdd73210da062808818fc331a2a94359a1')
 
@@ -22,7 +22,7 @@ package() {
   cp -r --no-preserve=ownership package "$_npmdir/$_npmname"
 
   cd "$_npmdir/$_npmname"
-  npm install --production
+  yarn install --production
 
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/usr/lib/node_modules/$_npmname/bin/$_npmname" "$pkgdir/usr/bin/$_npmname"
