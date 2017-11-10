@@ -7,6 +7,8 @@ pkgdesc='An utility like pkg-audit based on Arch CVE Monitoring Team data'
 url='https://github.com/ilpianista/arch-audit'
 depends=('curl')
 makedepends=('cargo' 'pkg-config' 'git')
+provides=('arch-audit')
+conflicts=('arch-audit')
 arch=('i686' 'x86_64')
 license=('MIT')
 source=('git://github.com/ilpianista/arch-audit.git')
@@ -24,7 +26,7 @@ build() {
 
 package() {
   cd arch-audit
-  install -Dm755 "target/release/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
+  install -Dm755 target/release/arch-audit "$pkgdir/usr/bin/arch-audit"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
