@@ -1,12 +1,13 @@
 pkgbase = css-docs
-	pkgdesc = Set of HTML documentation for CSS2.1
-	pkgver = 2.1
+	pkgdesc = Set of CSS and HTML documentation.
+	pkgver = 2.5
 	pkgrel = 1
-	url = https://reotip.alwaysdata.net
+	url = https://reotip.alwaysdata.net/
 	arch = any
 	license = GPL
 	options = docs
 	source = https://reotip.alwaysdata.net/css2.tgz
+	md5sums = 54c0b613d825d8425476a6f7ee0821c5
 
 pkgname = css-docs
 

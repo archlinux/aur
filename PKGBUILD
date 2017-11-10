@@ -1,15 +1,15 @@
 # Maintainer: Reotip Fur <reotipfur@gmail.com>
 
 pkgname=css-docs
-pkgver=2.1
+pkgver=2.5
 pkgrel=1
-pkgdesc="Set of HTML documentation for CSS2.1"
+pkgdesc="Set of CSS and HTML documentation."
 arch=('any')
-url="https://reotip.alwaysdata.net"
+url="https://reotip.alwaysdata.net/"
 license=('GPL')
 options=('docs')
 source=('https://reotip.alwaysdata.net/css2.tgz')
-source_md5sum=('54c0b613d825d8425476a6f7ee0821c5')
+md5sums=('54c0b613d825d8425476a6f7ee0821c5')
 
 package(){
   rm ${srcdir}/css2.tgz
