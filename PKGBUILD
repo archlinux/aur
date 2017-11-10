@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=ananicy-git
-pkgver=1.13.1.r9.g99567fe
+pkgver=1.13.1.r10.g344a204
 pkgrel=1
 pkgdesc="Ananicy - is Another auto nice daemon, with community rules support"
 arch=('any')
@@ -12,6 +12,7 @@ makedepends=('rsync' 'git')
 source=("$pkgname"::'git://github.com/Nefelim4ag/Ananicy.git#branch=master')
 md5sums=('SKIP')
 install=$pkgname.install
+backup=( 'etc/ananicy.d/ananicy.conf' )
 
 pkgver() {
   cd "$pkgname"
