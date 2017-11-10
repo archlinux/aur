@@ -15,7 +15,6 @@ md5sums=('040f6080e15fe2dbeff574bb98e0da67')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    sudo python2 setup.py develop
     python2 setup.py build
 }
 
