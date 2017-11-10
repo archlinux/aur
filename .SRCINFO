@@ -1,0 +1,28 @@
+pkgbase = gaviewer
+	pkgdesc = Geometric Algebra scriptable 3D visualization tool
+	pkgver = 0.86
+	pkgrel = 3
+	url = http://www.geometricalgebra.net/downloads.html
+	arch = x86_64
+	groups = ypb
+	groups = math
+	license = GPL2
+	makedepends = antlr2
+	makedepends = zlib
+	depends = fltk
+	depends = libgl
+	depends = mesa
+	depends = libx11
+	depends = libpng
+	depends = gcc-libs
+	source = http://www.geometricalgebra.net/downloads/GAViewer-0.86.tar.gz
+	source = http://www.geometricalgebra.net/downloads/figures.zip
+	source = http://www.geometricalgebra.net/downloads/gaviewer.pdf
+	source = http://www.geometricalgebra.net/downloads/gaviewerexercises.pdf
+	md5sums = ce5285dfa74db56a4ba7577a1a5e6738
+	md5sums = 172fc88d38e3b29960e33788a1a4f045
+	md5sums = 43fd8ca7da3e0cac3fee2350d05c9d3e
+	md5sums = 60543f7f310292e9c70e9d98dd095c9e
+
+pkgname = gaviewer
+
