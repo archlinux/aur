@@ -3,7 +3,7 @@ pkgbase=('mongoaudit')
 pkgname=('mongoaudit')
 _module='mongoaudit'
 pkgver='0.0.3'
-pkgrel=1
+pkgrel=2
 pkgdesc="An automated pentesting tool that lets you know if your MongoDB instances are properly secured"
 url="https://github.com/stampery/mongoaudit"
 depends=('python2')
@@ -15,7 +15,6 @@ md5sums=('040f6080e15fe2dbeff574bb98e0da67')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    sudo python2 setup.py develop
     python2 setup.py build
 }
 
