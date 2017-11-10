@@ -2,13 +2,15 @@
 
 _pkgbase=stubby
 pkgname=stubby-git
-pkgver=2519.e2b26609
+pkgver=2543.81bfa684
 pkgrel=1
 pkgdesc="DNS Privacy Daemon"
 arch=('x86_64' 'i686')
 url="https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby"
 license=('BSD')
-depends=('openssl')
+
+makedepends=('libtool' 'git')
+depends=('libyaml' 'openssl')
 
 source=("$_pkgbase::git+https://github.com/getdnsapi/getdns.git")
 sha256sums=('SKIP')
