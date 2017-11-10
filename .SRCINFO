@@ -1,0 +1,17 @@
+pkgbase = draw.io
+	pkgdesc = Flowcharts, process diagrams, org charts, UML, ER and network diagrams
+	pkgver = 7.4.3
+	pkgrel = 1
+	url = https://www.draw.io
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = libxss
+	depends = libnotify
+	depends = libxtst
+	depends = nss
+	source = https://github.com/jgraph/drawio-desktop/releases/download/v7.4.3/draw.io-amd64-7.4.3.deb
+	md5sums = 6c433dc35149c97d8e1504ee29473410
+
+pkgname = draw.io
+
