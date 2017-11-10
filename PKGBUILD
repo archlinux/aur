@@ -25,12 +25,14 @@ changelog=
 source=(http://www.geometricalgebra.net/downloads/${_rpkgname}-$pkgver.tar.gz
         http://www.geometricalgebra.net/downloads/figures.zip
         http://www.geometricalgebra.net/downloads/gaviewer.pdf
-        http://www.geometricalgebra.net/downloads/gaviewerexercises.pdf)
+        http://www.geometricalgebra.net/downloads/gaviewerexercises.pdf
+        http://www.geometricalgebra.net/backgrounds/crossproduct.png)
 noextract=()
 md5sums=('ce5285dfa74db56a4ba7577a1a5e6738'
          '172fc88d38e3b29960e33788a1a4f045'
          '43fd8ca7da3e0cac3fee2350d05c9d3e'
-         '60543f7f310292e9c70e9d98dd095c9e')
+         '60543f7f310292e9c70e9d98dd095c9e'
+         '7877ec738b081ee4c1fc450be19242fe')
 
 build() {
   cd "$srcdir/${_rpkgname}-$pkgver"
@@ -46,6 +48,37 @@ package() {
     "$pkgdir/usr/share/doc/$pkgname/"
   chmod -x $srcdir/Figures/*
   cp -r $srcdir/Figures "$pkgdir/usr/share/doc/$pkgname/Figures"
-}
+  mkdir -p "$pkgdir/usr/share/pixmaps/$pkgname"
+  cp $srcdir/crossproduct.png "$pkgdir/usr/share/pixmaps/$pkgname/"
+  echo"[Desktop Entry]
 
-# vim:set ts=2 sw=2 et:
+  # The type as listed above
+  Type=Application
+  
+  # The version of the desktop entry specification to which this file complies
+  Version=0.86
+  
+  # The name of the application
+  Name=gaviewer
+  
+  # A comment which can/will be used as a tooltip
+  Comment=Geometric algebra viewer and experimenter
+  
+  # The path to the folder in which the executable is run
+  Path=/usr/bin/gaviewer
+  
+  # The executable of the application, possibly with arguments.
+  Exec=gaviewer
+  
+  # The name of the icon that will be used to display this entry
+  Icon=/home/bertabus/Desktop/gaviewerICO.ico
+  
+  # Describes whether this application needs to be run in a terminal or not
+  Terminal=false
+  
+  # Describes the categories in which this entry should be shown
+  Categories=Education;Math;
+  StartupNotify=false" > "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  }
+  
+  # vim:set ts=2 sw=2 et:
