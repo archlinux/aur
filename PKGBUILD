@@ -44,7 +44,4 @@ package() {
 
   install -D -m644 stubby/systemd/stubby.service "${pkgdir}/usr/lib/systemd/system/stubby.service"
   install -D -m644 stubby/systemd/stubby.conf "${pkgdir}/usr/lib/tmpfiles.d/stubby.conf"
-
-  mkdir -p "${pkgdir}/etc/stubby"
-  ln -s /usr/etc/stubby/stubby.yml "${pkgdir}/etc/stubby/stubby.yml"
 }
