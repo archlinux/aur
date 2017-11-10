@@ -36,6 +36,7 @@ prepare() {
 
 configure_tensorflow() {
   cd $srcdir/sonnet/tensorflow
+  export CC_OPT_FLAGS="-march=x86-64"
   export TF_NEED_CUDA=0
   
   ./configure
