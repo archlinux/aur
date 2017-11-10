@@ -1,32 +1,28 @@
-# Maintainer: Alex Merry <dev@randomguy3.me.uk>
+# Contributor: Alex Merry <dev@randomguy3.me.uk>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tikzit
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Allows the creation and modification of TeX diagrams written using the pgf/TikZ macro library"
 arch=('i686' 'x86_64')
-url="http://tikzit.github.io"
+url="https://github.com/tikzit/tikzit.git"
 license=('GPL2')
 depends=('gnustep-base>=1.18.0' 'gtk2>=2.18.0'
          'poppler-glib>=0.10' 'desktop-file-utils')
 makedepends=('gcc-objc>=4.6.0' 'automake' 'autoconf' 'flex' 'bison')
 optdepends=('texlive-core: previews')
-install="tikzit.install"
-source=(https://github.com/$pkgname/$pkgname/archive/v${pkgver}.tar.gz)
-md5sums=('ca71f1f862136f10965323400be4f34f')
+source=(tikzit-$pkgver.zip::https://github.com/$pkgname/$pkgname/archive/master.zip)
+sha256sums=('b0756500fae0029df41cbd6105c48c90a1f60231a9cb5558d73cd319464669ab')
 
 build() {
-  source /etc/profile.d/GNUstep.sh
-  cd "$srcdir/$pkgname-$pkgver/tikzit"
+  cd $pkgname-master/tikzit
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
-  make -j1 || return 1
+  make -j1
 }
 
 package() {
-  source /etc/profile.d/GNUstep.sh
-  cd "$srcdir/$pkgname-$pkgver/tikzit"
-  make -j1 "DESTDIR=$pkgdir" install || return 1
+  cd $pkgname-master/tikzit
+  make -j1 "DESTDIR=$pkgdir" install
 }
-
-# vim: set ts=2 sw=2 et:
