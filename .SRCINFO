@@ -11,6 +11,7 @@ pkgbase = liquidshell-git
 	depends = networkmanager-qt
 	depends = bluez-qt
 	depends = kcmutils
+	depends = knewstuff
 	source = liquidshell-git-r64.9cc1429::git+git://anongit.kde.org/liquidshell.git
 	sha256sums = SKIP
 
