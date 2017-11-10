@@ -12,7 +12,7 @@ license=('BSD')
 depends=(
   'python'
   'python-click' 
-  'python-libtmux>=0.7.6' 
+  'python-libtmux>=0.7.7' 
   'python-kaptan' 
   'python-colorama=0.3.9'
 )
