@@ -1,0 +1,16 @@
+pkgbase = railcar
+	pkgdesc = Rust implementation of the Open Containers Initiative oci-runtime
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/oracle/railcar
+	arch = x86_64
+	license = APACHE
+	makedepends = rustup
+	depends = gcc-libs
+	depends = libseccomp
+	provides = railcar
+	source = 1.0.4.tar.gz::https://github.com/oracle/railcar/archive/v1.0.4.tar.gz
+	sha512sums = 83cb2309bd333e98c9c6a7768df6fb389b0e4d6c07821db494ccf3882938334f4ab5221d5a695df8e4871619d14eeb2e52d7d21af83f86b389e33e428f1d6c3d
+
+pkgname = railcar
+
