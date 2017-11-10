@@ -11,7 +11,7 @@
 
 pkgname=chromium-vaapi
 pkgver=62.0.3202.89
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
 arch=('i686' 'x86_64')
@@ -36,7 +36,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         crc32c-string-view-check.patch
         chromium-gn-bootstrap-r17.patch
         chromium-widevine.patch
-        chromium-vaapi-r14.patch)
+        chromium-vaapi-r14.patch
+        libva-version.patch)
 
 sha256sums=('9f79760dc22f7183602a07af3d37d2226bd63ab0ca7163d88ac0d81982de9469'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
@@ -45,7 +46,8 @@ sha256sums=('9f79760dc22f7183602a07af3d37d2226bd63ab0ca7163d88ac0d81982de9469'
             '35435e8dae76737baafecdc76d74a1c97281c4179e416556e033a06a31468e6d'
             'd81319f168dad0e411c8e810f73daa2f56ff579578771bd9c9bb1aa2d7c09a8b'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
-            'dd4fa56c084083a550799217ff65d6216c835a8ef2b7aa22bab3fe3932e4a9d6')
+            'dd4fa56c084083a550799217ff65d6216c835a8ef2b7aa22bab3fe3932e4a9d6'
+            '4d0e95ab106eccc2e016c88a660712ee4393376e18a4793775fc9e22e8e7eb0b')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -116,6 +118,7 @@ prepare() {
 
   # VA-API patch
   patch -p1 -i "${srcdir}/chromium-vaapi-r14.patch"
+  patch -p1 -i "${srcdir}/libva-version.patch"
 
   # Fix paths.
   sed -e 's|i386-linux-gnu/||g' \

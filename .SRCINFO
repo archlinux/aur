@@ -1,7 +1,7 @@
 pkgbase = chromium-vaapi
 	pkgdesc = Chromium compiled with VA-API support for Intel Graphics
 	pkgver = 62.0.3202.89
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = chromium.install
 	arch = i686
@@ -56,6 +56,7 @@ pkgbase = chromium-vaapi
 	source = chromium-gn-bootstrap-r17.patch
 	source = chromium-widevine.patch
 	source = chromium-vaapi-r14.patch
+	source = libva-version.patch
 	sha256sums = 9f79760dc22f7183602a07af3d37d2226bd63ab0ca7163d88ac0d81982de9469
 	sha256sums = 4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587
 	sha256sums = 028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9
@@ -64,6 +65,7 @@ pkgbase = chromium-vaapi
 	sha256sums = d81319f168dad0e411c8e810f73daa2f56ff579578771bd9c9bb1aa2d7c09a8b
 	sha256sums = d6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808
 	sha256sums = dd4fa56c084083a550799217ff65d6216c835a8ef2b7aa22bab3fe3932e4a9d6
+	sha256sums = 4d0e95ab106eccc2e016c88a660712ee4393376e18a4793775fc9e22e8e7eb0b
 
 pkgname = chromium-vaapi
 
