@@ -1,7 +1,7 @@
 # Maintainer: Hal Gentz <zegentzy@protonmail.com>
 
 pkgname=blaze-git
-pkgver=3.1.r725.c67b7cf6e
+pkgver=3.2.r424.55424cc65
 pkgrel=1
 pkgdesc="An open-source, high-performance C++ math library for dense and sparse arithmetic."
 arch=('i686' 'x86_64')

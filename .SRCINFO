@@ -1,6 +1,6 @@
 pkgbase = blaze-git
 	pkgdesc = An open-source, high-performance C++ math library for dense and sparse arithmetic.
-	pkgver = 3.1.r725.c67b7cf6e
+	pkgver = 3.2.r424.55424cc65
 	pkgrel = 1
 	url = https://bitbucket.org/blaze-lib/blaze
 	arch = i686
