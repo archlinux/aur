@@ -1,8 +1,8 @@
 # Maintainer: Thomas Gläßle <t_glaessleATgmxDOTnet>
 
 pkgname=madx-dev
-pkgver=5.03.05
-pkgrel=2
+pkgver=5.03.07
+pkgrel=1
 pkgdesc="Accelerator Optics simulation code, latest development release"
 url="http://cern.ch/mad"
 license=("custom")
@@ -12,19 +12,11 @@ provides=('madx')
 makedepends=('cmake')
 arch=('x86_64')
 
-tarball=madx-src.tgz
-extract=madx-${pkgver}
+tarball=${pkgver}.tar.gz
+extract=MAD-X-${pkgver}
 
-source=("http://madx.web.cern.ch/madx/releases/${pkgver}/${tarball}"
-        cmake_fix_gc.patch)
-md5sums=('133cfbfbde3323f976e880dbc70c2755'
-         '9edea53d6653e16dc1dbf8853f3d8fe5')
-
-prepare() {
-    cd ${srcdir}/${extract}
-    find . -name '._*' -print0 | xargs -0 -r rm
-    patch -p1 < ${srcdir}/cmake_fix_gc.patch
-}
+source=("https://github.com/MethodicalAcceleratorDesign/MAD-X/archive/${tarball}")
+md5sums=('5b7ad71e5733f8881ba0a463fb188b78')
 
 build() {
     rm -rf ${srcdir}/build
