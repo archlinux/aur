@@ -1,10 +1,10 @@
-# Maintainer: Sean Baggaley <coffeescripter@gmail.com>
+# Maintainer: Reotip Sakuraga <reotipfur@gmail.com>
 pkgname=doomseeker
 pkgver=1.0
 pkgrel=8
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
-url="http://doomseeker.drdteam.org/"
+url="https://reotip.alwaysdata.net/"
 license=("GPL2")
 depends=('qt4' 'zlib' 'bzip2')
 makedepends=('gcc' 'cmake' 'make')
