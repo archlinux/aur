@@ -2,7 +2,7 @@
 # Contributor: Torsten Wagner <tottiwagner@yahoo.de>
 
 pkgname=openscad-git
-pkgver=20150518
+pkgver=20171107
 pkgrel=1
 pkgdesc="The programmers solid 3D CAD modeller"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://openscad.org/"
 provides=('openscad')
 conflicts=('openscad')
 depends=('qt5-base' 'qscintilla-qt5' 'cgal' 'opencsg' 'boost-libs')
-makedepends=('git' 'boost' 'eigen' 'imagemagick')
+makedepends=('git' 'boost' 'eigen' 'imagemagick' 'ccache')
 source=('git+https://github.com/openscad/openscad.git'
         'git+https://github.com/openscad/MCAD.git')
 md5sums=('SKIP' 'SKIP')
