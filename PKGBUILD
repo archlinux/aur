@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=gixy
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='Nginx configuration static analyzer'
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:MPLv2')
 depends=('python-argparse' 'python-cached-property' 'python-configargparse' 'python-jinja' 'python-pyparsing' 'python-six')
 checkdepends=('python-nose')
 source=("gixy-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('eb1707c18e32155f92dd81ce2952573625d72d029fb4e991ae3171f56399ee6c9e63b3d0079fc46c78573f139f06b2ed9bbded70653cca40f187408c88a3344e')
+sha512sums=('b55e60b5ae01481adc30e725dd7fd15bf66a27790756780a13001f2c3e684ee187c64ffca93f8d143ca172db10d6511bf7242d0c4feece74a7cbb3380e18e0c5')
 
 build() {
   cd gixy-$pkgver
