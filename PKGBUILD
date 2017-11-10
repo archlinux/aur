@@ -1,17 +1,15 @@
 # Maintainer: Janne Heß <jannehess@gmail.com>
 
 pkgname=mkinitcpio-sd-zfs
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Compatibility between systemd and ZFS roots'
 license=('GPL3')
 url='https://github.com/dasJ/sd-zfs'
 conflicts=('mkinitcpio-sd-zfs-git')
 depends=('mkinitcpio' 'systemd')
-source=("https://github.com/dasJ/sd-zfs/archive/v${pkgver}.tar.gz"
-        'preset')
-sha512sums=('66ad2f3f9a7235ece9887cd4ffd598aca5ca5a0f9889bcc1282104dcd3362aeb332780770b665ec84f49e8f4c0512e8e96bd622a3becba808123c5dc3eb46445'
-            '4c112c138b36cfd5c4b16d043da0410b06d2f1ac485a69bcde469701e6d52a0ca30f0071d51875b0de27e847aecc192c9485aabc20fcf53801b1ffe8c06c7d30')
+source=("https://github.com/dasJ/sd-zfs/archive/v${pkgver}.tar.gz")
+sha512sums=('04ceb91cf0c1d54a787ab3ac028c4b930eb948ee71d1b07b45b8faa8cbae08a3458f0d2f9e076ea8f19a344cc44a9e155ec59f4f5f4e45ef0d851b2ac12880b8')
 arch=('i686' 'x86_64')
 
 build() {
@@ -36,6 +34,5 @@ package() {
 	done
 
 	# systemd unit
-	install -Dm644 units/sd-zfs-generate-shutdown-ramfs.service "${pkgdir}/usr/lib/systemd/system/sd-zfs-generate-shutdown-ramfs.service"
-	install -Dm644 "${srcdir}/preset" "${pkgdir}/usr/lib/systemd/system-preset/51-sd-zfs.preset"
+	install -Dm644 units/mkinitcpio-override.conf "${pkgdir}/usr/lib/systemd/system/mkinitcpio-generate-shutdown-ramfs.service.d/sd-zfs.conf"
 }
