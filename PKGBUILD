@@ -2,7 +2,7 @@
 
 pkgname=ca-certificates-sap
 pkgver=20170307
-pkgrel=3
+pkgrel=4
 pkgdesc="SAP root certificates"
 arch=(any)
 url="http://www.pki.co.sap.com/"
