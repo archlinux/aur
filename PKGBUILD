@@ -9,7 +9,7 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=r1210.787dfb1f
+pkgver=r1211.414832ad
 pkgrel=1
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
@@ -28,7 +28,8 @@ depends=(fontconfig
          ttf-ubuntu-font-family
          ttf-croscore
          ttf-roboto
-         ttf-inconsolata)
+         ttf-inconsolata
+         cantarell-fonts)
 makedepends=(git)
 conflicts=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
            lohit-fonts ttf-andika ttf-anonymous-pro ttf-cardo ttf-comfortaa
@@ -56,6 +57,9 @@ pkgver() {
 package() {
     install -dm755 "$pkgdir/usr/share/fonts/TTF"
     find . -type f -name \*.[Tt][Tt][Ff] -exec install -Dm644 '{}' ${pkgdir}/usr/share/fonts/TTF \;
+
+    # [fonts/ofl/cantarell] provided by extra/cantarell-fonts
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "Cantarell-*.ttf" -delete
 
     # [fonts/ofl/notosanstamil, fonts/ofl/notoserif] provided by extra/noto-fonts
     find ${pkgdir}/usr/share/fonts/TTF -type f -name "NotoSansTamil-*.ttf" -delete

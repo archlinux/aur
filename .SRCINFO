@@ -1,6 +1,6 @@
 pkgbase = ttf-google-fonts-git
 	pkgdesc = TrueType fonts from the Google Fonts project (git version)
-	pkgver = r1210.787dfb1f
+	pkgver = r1211.414832ad
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/google/fonts
@@ -20,6 +20,7 @@ pkgbase = ttf-google-fonts-git
 	depends = ttf-croscore
 	depends = ttf-roboto
 	depends = ttf-inconsolata
+	depends = cantarell-fonts
 	provides = adobe-source-code-pro-fonts
 	provides = adobe-source-sans-pro-fonts
 	provides = jsmath-fonts
