@@ -4,8 +4,8 @@
 # Contributor(s): ECRC GmbH\
 # Contributor(s): IC-Parc, Imperial College London
 
-_major_version=6.1
-_minor_version=228
+_major_version=7.0
+_minor_version=33
 
 pkgname=eclipse-clp
 pkgver=${_major_version}.${_minor_version}
@@ -25,8 +25,8 @@ install=eclipse-clp.install
 source_i686=("http://eclipseclp.org/Distribution/${_major_version}_${_minor_version}/i386_linux/eclipse_basic.tgz")
 source_x86_64=("http://eclipseclp.org/Distribution/${_major_version}_${_minor_version}/x86_64_linux/eclipse_basic.tgz")
 
-md5sums_i686=('9e1670ee04e25ade623f25f48f1048c9')
-md5sums_x86_64=('4463889656ea510792c9d693a1fb9503')
+md5sums_i686=('dd4fe794697fab9f5e68b53a265848e3')
+md5sums_x86_64=('030ff958d06af9cc611a19b3dfae6dc7')
 
 package() {
   cd ${srcdir}
