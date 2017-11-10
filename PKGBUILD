@@ -2,7 +2,7 @@
 _author=tony
 _python_pkgname=libtmux
 pkgname=python-${_python_pkgname}
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="python api for tmux http://libtmux.readthedocs.io/"
 arch=(any)
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python')
 options=(!emptydirs)
 source=("https://github.com/${_author}/${_python_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('a2e410948d54c14064ca870dfa42f81f')
+md5sums=('b99db578f5f918f685b38a724b1d1ab4')
 
 package() {
   cd "$srcdir/${_python_pkgname}-$pkgver"
