@@ -1,7 +1,7 @@
 # Contributor: grimi <grimi at poczta dot fm>
 
 pkgname=mime-archpkg
-pkgver=0.3.9
+pkgver=0.3.9.1
 pkgrel=1
 pkgdesc="mime type for archlinux packages"
 arch=('any')
@@ -10,9 +10,9 @@ license=('GPL')
 depends=('shared-mime-info' 'gtk-update-icon-cache' 'librsvg')
 install=${pkgname}.install
 source=(${pkgname}.{xml,sh} {install,update,remove}.hook hook-script.sh
-        {hicolor,gnome,Tango,oxygen,nuoveXT2,Faenza,Faience,NITRUX,Numix,breeze,FaenzaFlattr2-Zephyr,elementary,Paper,Papirus}.svgz)
+        {hicolor,gnome,Tango,oxygen,nuoveXT2,Faenza,Faience,NITRUX,Numix,breeze,FaenzaFlattr2-Zephyr,elementary,Paper,Papirus,Emerald}.svgz)
 sha256sums=('e3fc45b1121fa845a245c115704715ec0b6a17860a507202cc5e1b02d01c797b'
-            'c9448f3702fc8a33245f6881d9699882bf8e52c47dc7006ddf847859d5bf54e2'
+            'd78f347395a71c76938acc94a1c28f0a356635e2c30379590c6118895ff5f83d'
             'fa24289460397891c692d4a13c27b76065075b27153685ce9adf2890f41936db'
             '6d2ee985ad7ae820d3b9d4d6016c56749ccbbe2aa2649f08794d5efeca32f05a'
             'd0c45afb226e1dd956972990c312ccffcda4f284c720d2463c0c09b06d23a509'
@@ -30,7 +30,8 @@ sha256sums=('e3fc45b1121fa845a245c115704715ec0b6a17860a507202cc5e1b02d01c797b'
             '47561c547893ea4630ecabb84d14a0fd8e7c3e6d8e0cd4bd5e041c47bca9e739'
             '191cfd7ee153d88fb0525bb60e40c2d02b3bd720f325f6bc3c27f2d0f8fbd9fb'
             'cf123397456c7d2bc018f07797cd397701c9fd5c3dddc474b851ce442e260f4f'
-            '06d80d0f7310b75f96d6b226e44e85e893175110c6fbf2908e9995a70a131d6b')
+            '06d80d0f7310b75f96d6b226e44e85e893175110c6fbf2908e9995a70a131d6b'
+            'd5a539ebed85da9a2c1d14e8ba6a90d0c8f5a61d87900f571547d3c0c6ccddf7')
 
 
 

@@ -52,10 +52,10 @@ add() {
                fi
                if [[ $size -ne 0 ]]; then
                   if [[ -d $theme/$elem ]]; then
-                     if [[ -f $theme/$elem/package.svg ]]; then
-                        suf=svg
-                     else
+                     if [[ -f $theme/$elem/package-x-generic.png ]]; then
                         suf=png
+                     else
+                        suf=svg
                      fi
                      # convert -resize ${size}x${size} -background none "$file" /tmp/$NAME.$suf
                      rsvg-convert -o /tmp/$NAME.$suf -f $suf -w $size -h $size "$file"
