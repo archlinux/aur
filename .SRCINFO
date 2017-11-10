@@ -1,7 +1,7 @@
 pkgbase = firefox-developer
 	pkgdesc = Standalone web browser from mozilla.org, developer build
-	pkgver = 58.0b1
-	pkgrel = 3
+	pkgver = 58.0b2
+	pkgrel = 1
 	url = http://www.mozilla.org/firefox/developer
 	arch = i686
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = firefox-developer
 	source = vendor.js
 	sha512sums = 9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631
 	sha512sums = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
-	source_i686 = https://download-installer.cdn.mozilla.net/pub/devedition/releases/58.0b1/linux-x86_64/en-US/firefox-58.0b1.tar.bz2
-	sha512sums_i686 = f1aacb89284c8627c55c186fc50a5fbb2db42577e0c8db86889599332f711f484cbdf3f53c0ecafe4431da35fe51c3a8b7cb831710c19eeb7eab2ad475061684
-	source_x86_64 = https://download-installer.cdn.mozilla.net/pub/devedition/releases/58.0b1/linux-x86_64/en-US/firefox-58.0b1.tar.bz2
-	sha512sums_x86_64 = 5afe0a59430e9241a58af0926d5d73151355e9d64a8c8f562ca0369199824d10a1a4bc2de84102e96a8aa5921d83d9b630f49d9ed998ac4506dd481dc06264d2
+	source_i686 = https://download-installer.cdn.mozilla.net/pub/devedition/releases/58.0b2/linux-x86_64/en-US/firefox-58.0b2.tar.bz2
+	sha512sums_i686 = d0b071d92c3a882f81b7ac3e295e4234b9912bdca1ab70cae0d79f17b3f5fe04d30c70e91f5639b8c8e0f6759988f0f7bca3a0d4771ba3b60c63b08bbc71c8b
+	source_x86_64 = https://download-installer.cdn.mozilla.net/pub/devedition/releases/58.0b2/linux-x86_64/en-US/firefox-58.0b2.tar.bz2
+	sha512sums_x86_64 = b40a42713892b760d659c4fe5ca002b8ccb5309319b57d89b5f9af37c84a021ad67601f5c7f5b02a445dec7a00d671a28df6ab701775f59b1a7be7dda93d673e
 
 pkgname = firefox-developer
 
