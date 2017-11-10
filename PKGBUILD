@@ -2,15 +2,16 @@
 
 pkgname=plymouth-zfs
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="initcpio hook to support native zfs encryption for plymouth"
-arch=(any)
-license=(MIT)
-depends=(plymouth zfs-utils-common-git)
+arch=('any')
+license=('MIT')
+depends=('plymouth')
 optdepends=('zfs-linux-git: support for the default linux kernel'
             'zfs-linux-lts-git: support for the lts kernel'
             'zfs-linux-hardened-git: support for the hardened kernel'
-            'zfs-linux-zen-git: support for the zen kernel')
+            'zfs-linux-zen-git: support for the zen kernel'
+            'zfs-dkms-git: support for all kernels using dkms')
 install=plymouth-zfs.install
 source=("plymouth-zfs.initcpio.hook"
         "plymouth-zfs.initcpio.install"
