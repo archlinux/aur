@@ -3,7 +3,7 @@
 
 _pkgname=spectacle
 pkgname=${_pkgname}-light
-pkgver=17.08.2
+pkgver=17.08.3
 pkgrel=1
 pkgdesc="KDE screenshot capture utility, without purpose"
 arch=('i686' 'x86_64')
@@ -36,4 +36,4 @@ package() {
     make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('1276f3f7af3130b44f489ec64184ef82966fd04e249b49f7036027a347a368f3')
+sha256sums=('a6fe666f8cfe5c064354fd7f025da88f03da25d49bd7390eb38604341ad6e0a3')
