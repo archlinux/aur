@@ -4,7 +4,7 @@
 
 pkgname=lib32-zeromq
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed messaging'
 arch=('x86_64')
 url='http://www.zeromq.org'
