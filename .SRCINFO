@@ -1,16 +1,18 @@
 pkgbase = apex-bin
 	pkgdesc = Build, deploy, and manage AWS Lambda functions with ease (with Go support!).
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://apex.run/
-	arch = 1686
+	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = binutils
 	provides = apex
 	provides = apex.run
-	source = https://github.com/apex/apex/releases/download/v0.16.0/apex_linux_amd64
-	sha256sums = ad1f4f8cb5577aeff84fd5edf7234fe45178811022e020cec1ae9c72ee46f79c
+	source_i686 = https://github.com/apex/apex/releases/download/v0.16.0/apex_linux_386
+	sha256sums_i686 = 82458e688d724349408d451ebfa25a7025284112264f2be6206091a9c0c1f58d
+	source_x86_64 = https://github.com/apex/apex/releases/download/v0.16.0/apex_linux_amd64
+	sha256sums_x86_64 = ad1f4f8cb5577aeff84fd5edf7234fe45178811022e020cec1ae9c72ee46f79c
 
 pkgname = apex-bin
 
