@@ -1,7 +1,7 @@
 # Maintainer: snafu
 pkgname=env-modules-tcl
 pkgver=4.0.0
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
@@ -74,5 +74,12 @@ package() {
   mkdir -p "$_profiled"
   ln -s ${config_path}/${moduledir}/init/profile.csh $_profiled/env-modules.csh
   ln -s ${config_path}/${moduledir}/init/profile.sh $_profiled/env-modules.sh
+
+  # Work around, since module needs <PREFIX>/init for autoinitialization
+  ln -s ${config_path}/${moduledir}/init ${pkgdir}/usr/init
+
+  # Keep up with old versions:
+  ln -s ${config_path}/${moduledir}/init/perl.pm ${pkgdir}${config_path}/${moduledir}/init/perl
+  ln -s ${config_path}/${moduledir}/init/python.py ${pkgdir}${config_path}/${moduledir}/init/phyon
 }
 
