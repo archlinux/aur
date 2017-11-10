@@ -1,0 +1,18 @@
+pkgbase = railcar-git
+	pkgdesc = Rust implementation of the Open Containers Initiative oci-runtime
+	pkgver = 1.0.4.47.bedd974597
+	pkgrel = 1
+	url = https://github.com/oracle/railcar
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = rustup
+	depends = gcc-libs
+	depends = libseccomp
+	provides = railcar
+	conflicts = railcar
+	source = git+https://github.com/oracle/railcar.git
+	sha512sums = SKIP
+
+pkgname = railcar-git
+
