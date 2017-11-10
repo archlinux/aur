@@ -9,7 +9,7 @@ url="https://reotip.alwaysdata.net"
 license=('GPL')
 options=('docs')
 source=('https://reotip.alwaysdata.net/css2.tgz')
-md5sum=('54c0b613d825d8425476a6f7ee0821c5')
+source_md5sum=('54c0b613d825d8425476a6f7ee0821c5')
 
 package(){
   rm ${srcdir}/css2.tgz
