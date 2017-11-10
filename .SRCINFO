@@ -1,6 +1,6 @@
 pkgbase = counter-strike-2d
 	pkgdesc = More than just a freeware clone of the well known game Counter-Strike
-	pkgver = 1.0.0.2
+	pkgver = 1.0.0.4
 	pkgrel = 1
 	url = http://www.cs2d.com/
 	install = cs2d.install
@@ -8,6 +8,13 @@ pkgbase = counter-strike-2d
 	arch = x86_64
 	license = custom
 	makedepends = curl
+	depends = lib32-freetype2
+	depends = lib32-libtxc_dxtn
+	depends = lib32-glu
+	optdepends = lib32-openal: audio output
+	optdepends = lib32-ati-dri: video acceleration
+	optdepends = lib32-intel-dri: video acceleration
+	optdepends = lib32-nouveau-dri: video acceleration
 	options = emptydirs
 	backup = opt/cs2d/sys/autobuy.cfg
 	backup = opt/cs2d/sys/autoexec.cfg
@@ -16,16 +23,19 @@ pkgbase = counter-strike-2d
 	backup = opt/cs2d/sys/editor.cfg
 	backup = opt/cs2d/sys/filters.cfg
 	backup = opt/cs2d/sys/mapcycle.cfg
+	backup = opt/cs2d/sys/mods.cfg
 	backup = opt/cs2d/sys/more.cfg
 	backup = opt/cs2d/sys/server.cfg
-	backup = opt/cs2d/sys/usgn.dat
-	backup = opt/cs2d/sys/usgn_pw.dat
-	source = cs2d_1002_linux.zip::http://www.unrealsoftware.de/get.php?get=cs2d_1002_linux.zip&p=1&cid=get.php?get=cs2d_1002_linux.zip&p=1&cid=12625
-	source = cs2d_1002_win.zip::http://www.unrealsoftware.de/get.php?get=cs2d_1002_win.zip&p=1&cid=get.php?get=cs2d_1002_linux.zip&p=1&cid=12625
+	backup = opt/cs2d/sys/weapons.cfg
+	backup = opt/cs2d/sys/weapons_recoil.cfg
+	backup = opt/cs2d/sys/favorites.lst
+	backup = opt/cs2d/sys/bans.lst
+	backup = opt/cs2d/sys/serverinfo.txt
+	backup = opt/cs2d/sys/servertransfer.lst
+	source = cs2d_1004_linux.zip::http://www.unrealsoftware.de/get.php?get=cs2d_1004_linux.zip&p=1&cid=get.php?get=cs2d_1004_linux.zip&p=1&cid=1622
 	source = cs2d.desktop
 	source = cs2d.png
-	sha512sums = f385a6558f40a01324884a8b765f0fcb8dddcfb59bf983be110234a16cf937ba8c0089dce269fd1cec6b51a380810c5e1676e14a95112364b59cbb07e290a8bc
-	sha512sums = b387cd7172fa35c6e66d7457cd4ca457d5bab795944fa9b53a0879301d72d6e5f2c76b760c119df32ae4e69f158e6c593bf921a83e54e25f79cb4e3d2650965c
+	sha512sums = 56932c0326c74d943a418793720286e38a8f0d70791f8e0fbf3308ffff4c68520ec0a5f35d5a65ec9a512b3d95bc452be3a87525a47737d76c75271da258ee0d
 	sha512sums = d7d452fa4a2310ec2ac68c2c500e2a66f3a6df2291ad6615f9a957cbc6cb4ccd7f00f9578ccebeb1367aa21205e3743b16463d841c63c73f9b0bfbbf37bd6992
 	sha512sums = dfe79598af30797195fad38461119f7d611021577a1e1e624567adeceade8f9bc4c97cd110515e492d612d09b740f78faf7dce55448f64a9a698e7748f121a80
 
