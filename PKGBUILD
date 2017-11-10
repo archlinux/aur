@@ -1,13 +1,13 @@
 pkgname=tsung
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Erlang-based open-source multi-protocol distributed load testing tool"
 arch=('i686' 'x86_64')
 url="http://tsung.erlang-projects.org"
 license=('GPL')
-depends=('erlang' 'gnuplot' 'perl')
+depends=('erlang' 'gnuplot' 'perl' 'perl-template-toolkit')
 source=("http://tsung.erlang-projects.org/dist/$pkgname-$pkgver.tar.gz")
-md5sums=('ecefc861c2e0c1f99da459261559055a')
+sha1sums=('934dfb684382583fa30fadc20638d9dd09fd1fe0')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
