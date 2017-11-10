@@ -1,6 +1,6 @@
 # Maintainer: billypilgrim <billypilgrim@gmx.co.uk>
 pkgname=git-hub
-pkgver=0.11.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Git command line interface to GitHub"
 arch=('any')
