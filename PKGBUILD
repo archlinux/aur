@@ -4,7 +4,7 @@
 # Contributor: system <system at tou dot de>
 
 pkgname=ebview-git
-pkgver=VERSION
+pkgver=r61.4dc3ae8
 pkgrel=1
 pkgdesc="A GTK2 based EPWING dictionary viewer"
 arch=('i686' 'x86_64')
