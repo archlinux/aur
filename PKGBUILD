@@ -1,5 +1,4 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
-# Contributor: Andrea Scarpino <bash.lnx@gmail.com>
+# Maintainer: Reotip Fur <reotipfur@gmail.com>
 
 pkgname=css-docs
 pkgver=2.1
