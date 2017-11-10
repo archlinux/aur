@@ -7,8 +7,7 @@ build_kernel_modules=false
 
 # Furthermore it is possible to build the package from a specific git commit by uncommenting the variable "_commit" and setting it to a valid commit. pkgrel should be bumped up too then.
 
-_newname=openrazer
-pkgbase=razer-drivers
+pkgbase=openrazer
 pkgname=('python-openrazer' 'openrazer-daemon' 'openrazer-driver-dkms' 'openrazer-meta')
 if $build_kernel_modules; then
     # For kernel update: Update the two variables and the .install file!
@@ -18,7 +17,7 @@ if $build_kernel_modules; then
 fi
 pkgver=2.0.0
 #_commit=6ae1f7d55bf10cc6b5cb62a5ce99ff22c43e0701
-pkgrel=1
+pkgrel=2
 pkgdesc="An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux."
 arch=('any')
 url="https://github.com/openrazer/openrazer"
@@ -41,9 +40,9 @@ package_python-openrazer() {
   conflicts=('python-razer')
   replaces=('python-razer')
   if [ -z $_commit ]; then
-    cd $srcdir/$_newname-$pkgver
+    cd $srcdir/$pkgbase-$pkgver
   else
-    cd $srcdir/$_newname-$_commit
+    cd $srcdir/$pkgbase-$_commit
   fi
   make DESTDIR=$pkgdir python_library_install
 }
@@ -58,9 +57,9 @@ package_openrazer-daemon() {
   install=openrazer-daemon.install
 
   if [ -z $_commit ]; then
-    cd $srcdir/$_newname-$pkgver
+    cd $srcdir/$pkgbase-$pkgver
   else
-    cd $srcdir/$_newname-$_commit
+    cd $srcdir/$pkgbase-$_commit
   fi
   make DESTDIR=$pkgdir daemon_install
 }
@@ -74,9 +73,9 @@ package_openrazer-driver-dkms() {
   install=openrazer-driver-dkms.install
   
   if [ -z $_commit ]; then
-    cd $srcdir/$_newname-$pkgver
+    cd $srcdir/$pkgbase-$pkgver
   else
-    cd $srcdir/$_newname-$_commit
+    cd $srcdir/$pkgbase-$_commit
   fi
   make DESTDIR=$pkgdir setup_dkms udev_install
 }
@@ -94,9 +93,9 @@ _extramodules=extramodules-$_linux_current-ARCH
 
 build() {
   if [ -z $_commit ]; then
-    cd $srcdir/$_newname-$pkgver
+    cd $srcdir/$pkgbase-$pkgver
   else
-    cd $srcdir/$_newname-$_commit
+    cd $srcdir/$pkgbase-$_commit
   fi
 
   _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
@@ -113,9 +112,9 @@ package_openrazer-driver-arch() {
   install=openrazer-driver-arch.install
 
   if [ -z $_commit ]; then
-    cd $srcdir/$_newname-$pkgver
+    cd $srcdir/$pkgbase-$pkgver
   else
-    cd $srcdir/$_newname-$_commit
+    cd $srcdir/$pkgbase-$_commit
   fi
   install -dm755 $pkgdir/usr/lib/modules/$_extramodules/
   make DESTDIR=$pkgdir MODULEDIR=/usr/lib/modules/$_extramodules/ driver_install_packaging udev_install
