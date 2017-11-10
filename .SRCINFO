@@ -1,6 +1,6 @@
 pkgbase = ebview-git
-	pkgdesc = A GTK2 based EPWING dictionary viewer
-	pkgver = VERSION
+	pkgdesc = A GTK2 based EPWING dictionary viewer.
+	pkgver = r61.4dc3ae8
 	pkgrel = 1
 	url = http://ebview.sourceforge.net
 	arch = i686
