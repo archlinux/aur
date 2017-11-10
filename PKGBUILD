@@ -77,10 +77,10 @@ package() {
   ln -s ${config_path}/${moduledir}/init/profile-compat.sh $_profiled/env-modules.sh
 
   # Work around, since module needs <PREFIX>/init for autoinitialization
-  ln -s ${config_path}/${moduledir}/init ${pkgdir}/usr/init
+  ln -s ..${config_path}/${moduledir}/init ${pkgdir}/usr/init
 
   # Keep up with old versions:
-  ln -s ${config_path}/${moduledir}/init/perl.pm ${pkgdir}${config_path}/${moduledir}/init/perl
-  ln -s ${config_path}/${moduledir}/init/python.py ${pkgdir}${config_path}/${moduledir}/init/phyon
+  ln -s ./perl.pm ${pkgdir}${config_path}/${moduledir}/init/perl
+  ln -s ./python.py ${pkgdir}${config_path}/${moduledir}/init/python
 }
 
