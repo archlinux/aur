@@ -8,7 +8,7 @@
 
 pkgbase=gradle4
 pkgname=('gradle4' 'gradle4-doc' 'gradle4-src')
-pkgver=4.3
+pkgver=4.3.1
 pkgrel=1
 pkgdesc='Powerful build system for the JVM'
 url='https://gradle.org/'
@@ -17,7 +17,7 @@ license=('Apache')
 depends=('java-environment' 'bash')
 source=(https://services.gradle.org/distributions/gradle-${pkgver}-all.zip
         gradle.sh)
-sha512sums=('b8989e0f05b53fef9acd5325caea2f9810c837031558c76bf8bba1f551c14c2d8aaeb8b638714f668afab560eca1578f19ed130fe983fdca581e01ad9a962c6a'
+sha512sums=('579e4516e53b0ed3ac51f115ba1aa46afec02b7f7839a572f67c464e11ee6ba892b6b1747b90288ce40869f1d7997468fb96c4e6c227ab51820a3d080fc70a06'
             'f38e9b26e22948366acf6580d6f38e2c88c3791c425b24922368fe1bc78c744fa516a03ffdbef02e3755859da620a6259997d4b4e5f97e3dc8cb49b74a694616')
 
 package_gradle4() {
