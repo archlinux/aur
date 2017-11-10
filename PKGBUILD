@@ -11,7 +11,7 @@ _lang=fr
 pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc="Standalone (${_lang}) web browser from mozilla.org, developer build - French Francais"
 url='https://www.mozilla.org/fr/firefox/developer/'
-pkgver=58.0b1
+pkgver=58.0b2
 pkgrel=1
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -53,16 +53,19 @@ package() {
     _verify_checksum
 
     install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
-    cp -r firefox $pkgdir/opt/firefox-$_channel
+    cp -r firefox "$pkgdir/opt/${_name}-${_channel}"
 
-    ln -s /opt/firefox-$_channel/firefox $pkgdir/usr/bin/firefox-$_channel
+    ln -s /opt/firefox-$_channel/firefox "$pkgdir/usr/bin/${_name}-${_channel}"
     install -m644 $srcdir/firefox-$_channel.desktop $pkgdir/usr/share/applications/
-    install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/firefox-${_channel}-icon.png
-    install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
+    for i in 16 32 48; do
+        install -Dm644 "${srcdir}/${_name}/browser/chrome/icons/default/default${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_name}-${_channel}.png"
+    done
+    install -m644 $srcdir/firefox/browser/icons/mozicon128.png "$pkgdir/usr/share/pixmaps/${_name}-${_channel}.png"
+    install -Dm644 $srcdir/vendor.js "$pkgdir/opt/${_name}-${_channel}/browser/defaults/preferences/vendor.js"
 }
 
-sha512sums=('6e4c02cecae55b7930521384482b9b5edc8480fcc103ac762960a8af4230e7eb52ca5d17d3fd71fa559b49c5b2d0eee2bdce150f486969f77f71a483d8cd04f6'
-            '03234b8dabea211e8a4d46ea5f1687ddbb6fbf39d53b93074c33779c067f48a14ad2e2b49d207951029c4ef1cc3222301fe67b7a34219c3b8bcffd081328ce51'
+sha512sums=('7fa98e4e5fd8174043d6d85ee63aa22130a9191dabd40ad8935f233559eeb2dc46bdf27047975251f4d843770f900eb1756161e2d5dfd91e95c4b03b0841af82'
+            'ad0d6d3cdbeb0fcbaedf02bcb552f7a11f119386418917e6d1b7a4d44ccb8942f3268804197f0120a4ad0a2ff11ea3f359de3bace58822e1812f997af7da3877'
             'SKIP'
-            '59eb730388f7d2601f40bc3c42ae203e3b65820435adfdfb18cef5d530119304762779b2e493acfdf7bcadb60e2eac3d23304dcf379a1d583d677399ba654456'
+            '5ec33767e4c1f1057ba33ebb5fb3497e18751fc63c7808c1c518dad1e6387484742f4dc22983b4334070a72cdb1e46614fbb574a0e7b7c522876961ead97755b'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
