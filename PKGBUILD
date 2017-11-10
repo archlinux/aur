@@ -25,8 +25,7 @@ md5sums=('2aa8cbe99ea94982f9bb6ab2489ffbd8'
          '56dff4526bc435bd5a4c74bf52cbd5e1'
          'e11da4ef04499030d1eff69b474f34f0'
          '9066486bcab807f7ddaaf2596348c1db'
-         '14ba0a830ddb10a309f0f1965f05cf84')
-
+         'SKIP')
 
 # todo:
 # fix 'imported as namespace package' warnings from stdlib
