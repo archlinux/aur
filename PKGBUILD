@@ -1,52 +1,50 @@
-# Maintainer: 2ion <dev@2ion.de>
-# Former maintainer:  TDY <tdy@archlinux.info>
+# Maintainer: Victor Schulz <schulz89 at gmail dot com>
+# Contributor: 2ion <dev at 2ion dot de>
+# Contributor: TDY <tdy at archlinux dot info>
 # Contributor: system <system at tou dot de>
+
 pkgname=ebview-git
-pkgver=20130218
+pkgver=VERSION
 pkgrel=1
-pkgdesc="A GTK-based EPWING dictionary viewer"
+pkgdesc="A GTK2 based EPWING dictionary viewer"
 arch=('i686' 'x86_64')
-url="http://epview.sourceforge.net"
+url="http://ebview.sourceforge.net"
 license=('GPL')
+groups=()
 depends=('gtk2' 'eb-library' 'pangox-compat')
 makedepends=('git')
-conflicts=('ebview')
-provides=('ebview')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+source=('git://github.com/fujii/ebview.git')
+noextract=()
+md5sums=('SKIP')
 
-_gitroot=git://github.com/fujii/ebview.git
-_gitname=ebview
+pkgver() {
+    cd "$srcdir/${pkgname%-git}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+    cd "$srcdir/${pkgname%-git}"
+    ./autogen.sh
+    ./configure \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	CFLAGS="-D_FILE_OFFSET_BITS=64" \
+	LIBS=-lX11
+    make
+}
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  msg "Starting make..."
-  ./autogen.sh
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    CFLAGS="-D_FILE_OFFSET_BITS=64" \
-    LIBS=-lX11
-  make
+check() {
+	cd "$srcdir/${pkgname%-git}"
+	make -k check
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  make DESTDIR="$pkgdir" install
+    cd "$srcdir/${pkgname%-git}"
+    make DESTDIR="$pkgdir/" install
 }
-
-#vim set:ts=2 sw=2 et:
