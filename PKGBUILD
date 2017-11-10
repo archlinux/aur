@@ -1,13 +1,12 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-adaptive-git
-pkgver=r164.a02656d
+pkgver=r232.9af2121
 pkgrel=1
 pkgdesc="InputStream client for adaptive streams for Kodi 17+"
 arch=('x86_64' 'i686')
 url="https://github.com/peak3d/inputstream.adaptive"
 license=('GPL2')
-depends=('kodi-platform')
-makedepends=('kodi-dev')
+makedepends=('kodi-dev' 'cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 # kodi 17 2.0
@@ -31,5 +30,4 @@ build() {
 package() {
         cd "$srcdir/$pkgname"
         make DESTDIR="$pkgdir/" install
-        install -Dm644 wvdecrypter/libssd_wv.so "$pkgdir/usr/lib/kodi/addons/inputstream.adaptive/lib/libssd_wv.so"
 }
