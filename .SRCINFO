@@ -1,14 +1,14 @@
 pkgbase = python-sonnet-git
 	pkgdesc = TensorFlow-based neural network library.
-	pkgver = 20170808.170829
-	pkgrel = 1
+	pkgver = 20171110.170829
+	pkgrel = 2
 	url = https://github.com/deepmind/sonnet
 	arch = x86_64
 	license = Apache2
 	makedepends = git
 	makedepends = bazel
 	makedepends = python-numpy
-	makedepends = gcc5
+	makedepends = gcc6
 	makedepends = cuda
 	makedepends = cudnn
 	makedepends = python-pip
@@ -18,8 +18,8 @@ pkgbase = python-sonnet-git
 	depends = python
 	source = git+https://github.com/deepmind/sonnet
 	source = https://github.com/tensorflow/tensorflow/archive/v1.4.0-rc0.tar.gz
-	md5sums = SKIP
-	md5sums = 71dafc5677905dce9ecee07adc373b00
+	sha512sums = SKIP
+	sha512sums = d4347fd42a372c1023fe874fe66b4806f13f116614ede0c92d279aea155489ecdd08bb33d9dfd4009059aa660941020b34e4c8105562f5eb8c79d8434e8a70a0
 
 pkgname = python-sonnet-git
 
