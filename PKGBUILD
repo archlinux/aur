@@ -1,11 +1,12 @@
 # Maintainer: Christian Wieden <wiedenchr at gmail dot com
-# Contributer: Anthony Vitacco <anthony at littlegno dot me>
-# Original PKGBUILD: Ricardo Band <me at xengi dot de>
+# Contributer: Ricardo Band <me at xengi dot de>
+# Contributor: Filip Szymański <fszymanski at, fedoraproject.org>
+
 pkgname=hstr-git
-pkgver=1.21.r8.ga2905c6
+pkgver=1.23.r3.g203cca6
 pkgrel=1
 pkgdesc="A command line utility that brings improved BASH command completion from the history. It aims to make completion easier and more efficient than Ctrl-r."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/dvorka/hstr"
 license=('Apache')
 makedepends=('git' 'readline' 'ncurses')
