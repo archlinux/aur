@@ -1,0 +1,28 @@
+pkgbase = nodejs-latest-bin
+	pkgdesc = JavaScript runtime
+	pkgver = 9.1.0
+	pkgrel = 1
+	url = https://nodejs.org/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	provides = nodejs=9.1.0
+	provides = npm
+	conflicts = nodejs
+	conflicts = npm
+	source_i686 = https://nodejs.org/dist/v9.1.0/node-v9.1.0-linux-x64.tar.xz
+	sha256sums_i686 = 3ba6004a276aee384ee6fbf5cb5c0465c00733299adbe477afdbb1d76767aa36
+	source_x86_64 = https://nodejs.org/dist/v9.1.0/node-v9.1.0-linux-x64.tar.xz
+	sha256sums_x86_64 = b796ed115c97acd23211c294129b0a834ff3a6a0f583111443b89d2b24e0d4d9
+	source_armv6h = https://nodejs.org/dist/v9.1.0/node-v9.1.0-linux-x64.tar.xz
+	sha256sums_armv6h = a182800ab92e21ed867c44b352b2f01ac7c629d842b0f42426e0a81681bc1078
+	source_armv7h = https://nodejs.org/dist/v9.1.0/node-v9.1.0-linux-x64.tar.xz
+	sha256sums_armv7h = 7f504a6057f13b71c9a73d6445dd3fe4a4282a4e86efedd1baf5e60a9d535d7d
+	source_aarch64 = https://nodejs.org/dist/v9.1.0/node-v9.1.0-linux-x64.tar.xz
+	sha256sums_aarch64 = 37d329fa06b22e30243c503b64d9666d56abb6c0ce903251d4b43e7ad0833fb3
+
+pkgname = nodejs-latest-bin
+
