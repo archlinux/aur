@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=go-kbdgrab
-pkgver=r9.6624d2a
+pkgver=r11.34cc0df
 pkgrel=1
 pkgdesc='Key grabber written in golang for cleaning your keyboard'
 arch=(i686 x86_64)
@@ -21,18 +21,18 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${pkgname}"
 
-	install -m755 -d "${srcdir}/go"
+	install -m755 -d "${srcdir}/go/src/github.com/tonylambiris/"
+	cp -a "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/tonylambiris/"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/go/src/github.com/tonylambiris/go-kbdgrab"
 
-	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make deps
 	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/go/src/github.com/tonylambiris/go-kbdgrab"
 
 	install -m755 -D kbdgrab "${pkgdir}"/usr/bin/kbdgrab
 }
