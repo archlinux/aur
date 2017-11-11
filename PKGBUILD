@@ -1,13 +1,15 @@
-# Maintainer: Michał Lisowski <lisu@riseup.net>
+# Contributor: Michał Lisowski <lisu@riseup.net>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=exact-image
 pkgver=0.9.2
-pkgrel=2
+pkgrel=4
 pkgdesc="Fast image manipulation programs"
 arch=('i686' 'x86_64')
 url="http://exactcode.com/opensource/exactimage/"
 license=('GPL2')
 depends=('agg' 'jasper' 'expat' 'giflib' 'libtiff' 'openexr')
+makedepends=('gcc6')
 source=("http://dl.exactcode.de/oss/exact-image/$pkgname-$pkgver.tar.bz2"
         "$pkgname-c-98.patch"
         "$pkgname-syntax.patch"
@@ -22,11 +24,12 @@ prepare() {
 	patch -p1 -i "$srcdir/$pkgname-c-98.patch"
 	patch -p1 -i "$srcdir/$pkgname-syntax.patch"
 	patch -p1 -i "$srcdir/$pkgname-types.patch"
+	sed -i 's+site_perl+5.26/vendor_perl+' api/perl/Makefile
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --without-python --without-perl
+	CXX=g++-6 ./configure --prefix=/usr --without-python --without-php
 	make
 }
 
