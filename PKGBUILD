@@ -7,7 +7,7 @@
 pkgname=libvorbis-aotuv-lancer
 _srcname=libvorbis-aotuv
 pkgver=b6.03
-pkgrel=7
+pkgrel=8
 _releasedate=20110424-20150808
 _srcrel=2015
 pkgdesc='A fork of libvorbis intended to provide better quality sound at low to medium bitrates, with lancer patches to improve performance'

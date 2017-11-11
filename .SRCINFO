@@ -1,7 +1,7 @@
 pkgbase = libvorbis-aotuv-lancer
 	pkgdesc = A fork of libvorbis intended to provide better quality sound at low to medium bitrates, with lancer patches to improve performance
 	pkgver = b6.03
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.hydrogenaud.io/forums/index.php?showtopic=109766
 	arch = i686
 	arch = x86_64
