@@ -2,7 +2,7 @@
 
 pkgname=libinput-gestures-git
 _pkgname=libinput-gestures
-pkgver=r112.a0df416
+pkgver=r129.65ede21
 pkgrel=1
 pkgdesc="Actions gestures on your touchpad using libinput"
 arch=('any')

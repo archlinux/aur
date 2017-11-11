@@ -1,6 +1,6 @@
 pkgbase = libinput-gestures-git
 	pkgdesc = Actions gestures on your touchpad using libinput
-	pkgver = r112.a0df416
+	pkgver = r129.65ede21
 	pkgrel = 1
 	url = https://github.com/bulletmark/libinput-gestures
 	install = libinput-gestures-git.install
@@ -12,7 +12,7 @@ pkgbase = libinput-gestures-git
 	depends = python
 	depends = wmctrl
 	depends = hicolor-icon-theme
-	provides = libinput-gestures=r112.a0df416
+	provides = libinput-gestures=r129.65ede21
 	conflicts = libinput-gestures
 	backup = etc/libinput-gestures.conf
 	source = libinput-gestures::git+https://github.com/bulletmark/libinput-gestures
