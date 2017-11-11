@@ -43,7 +43,7 @@ package() {
     DESTDIR="$pkgdir" \
     PREFIX='/usr' \
     instlibdir='/usr/lib' \
-    sysconfdir="/etc/openzwave" \
+    sysconfdir='/etc/openzwave' \
     install
 }
 
