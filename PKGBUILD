@@ -1,34 +1,34 @@
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=sealcrypto
 
-pkgver=2.2.1
-pkgrel=3
+pkgver=2.3.0
+pkgrel=1
 pkgdesc='Simple Encrypted Arithmetic Library'
 arch=('x86_64')
 url="https://sealcrypto.codeplex.com/"
 license=('MSR-LA')
 depends=()
-makedepends=('git' 'gcc' 'autoconf')
-source=("git+https://git01.codeplex.com/sealcrypto.git")
+makedepends=('unzip' 'gcc' 'autoconf')
+source=("https://download.microsoft.com/download/B/3/7/B3720F6B-4F4A-4B54-9C6C-751EF194CBE7/SEAL_v2.3.0-1.zip")
+md5sums=('dbbe3be7ae612dcc5ce390e722036a15')
 provides=('sealcrypto')
-md5sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
-  git checkout v2.2-1
-  cd SEAL
+  cd "${srcdir}"
+  unzip -o "SEAL_v${pkgver}-1.zip"
+  cd "SEAL/SEAL"
   autoreconf -i || true
   bash configure
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  mkdir -p $pkgdir/usr/lib
-  mkdir -p $pkgdir/usr/include/seal/util
-  cp "bin/libseal.a" $pkgdir/usr/lib
-  sed -i 's/#include "\(.*\)"/#include <seal\/\1>/g' SEAL/*.h
-  cp SEAL/*.h $pkgdir/usr/include/seal
-  sed -i 's/#include "\(.*\)"/#include <seal\/\1>/g' SEAL/util/*.h
-  cp SEAL/util/*.h $pkgdir/usr/include/seal/util
+  cd "${srcdir}/SEAL"
+  mkdir -p ${pkgdir}/usr/lib
+  mkdir -p ${pkgdir}/usr/include/seal/util
+  cp "bin/libseal.a" ${pkgdir}/usr/lib
+  sed -i 's/#include "\(.*\)"/#include <\1>/g' SEAL/seal/*.h
+  cp SEAL/seal/*.h ${pkgdir}/usr/include/seal
+  sed -i 's/#include "\(.*\)"/#include <\1>/g' SEAL/seal/util/*.h
+  cp SEAL/seal/util/*.h ${pkgdir}/usr/include/seal/util
 }
