@@ -1,0 +1,18 @@
+pkgbase = slangtng-git
+	pkgdesc = A toolkit for numerical analysis
+	pkgver = r157.cc4c140
+	pkgrel = 1
+	url = http://info.tuwien.ac.at/bucher/Private/slangTNG.html
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = gcc
+	makedepends = gcc-fortran
+	makedepends = qt5-base
+	provides = slangtng
+	conflicts = slangtng
+	source = slangtng-git::git+git://git.tuxfamily.org/gitroot/slangtng2/slangtng.git
+	md5sums = SKIP
+
+pkgname = slangtng-git
+
