@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com
 
 pkgname=double-conversion-git
-pkgver=2.0.1.r69.g4abe326
+pkgver=2.0.1.r88.gfe9b384
 pkgrel=1
 pkgdesc='Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.'
 arch=(i686 x86_64)
@@ -33,11 +33,10 @@ check() {
 	cd test
 	cmake .
 	# Currently tests fail
-	#  make all
+	#make all
 }
 
 package () {
 	cd "${srcdir}"/double-conversion
 	make DESTDIR="$pkgdir" install
-	mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
 }
