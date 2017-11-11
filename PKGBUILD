@@ -10,17 +10,11 @@ pkgdesc="A GTK2 based EPWING dictionary viewer."
 arch=('i686' 'x86_64')
 url="http://ebview.sourceforge.net"
 license=('GPL')
-groups=()
 depends=('gtk2' 'eb-library' 'pangox-compat')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
 source=('git://github.com/fujii/ebview.git')
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
@@ -40,8 +34,8 @@ build() {
 }
 
 check() {
-	cd "$srcdir/${pkgname%-git}"
-	make -k check
+    cd "$srcdir/${pkgname%-git}"
+    make -k check
 }
 
 package() {
