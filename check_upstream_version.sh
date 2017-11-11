@@ -6,7 +6,7 @@
 
 start="$PWD"
 mirror="$PWD/styleguide.mirror"
-working="$PWD/styleguide"
+working="$PWD/styleguide.workdir"
 
 # clone or update mirror styleguide repo
 if [ ! -d "$mirror" ]; then
@@ -50,6 +50,10 @@ done
 
 # print latest version
 printf "\nlatest version: %s" "$(git describe | sed 's/\([^-]*-\)g/r\1/;s/-/./g'|cut -f 1-2 -d.)"
+
+# print latest commit
+cd "$mirror"
+printf "\nlatest commit: %s" "$(git log --max-count=1 --format="%H" -- cpplint)"
 
 # clean up
 cd "$start" || exit
