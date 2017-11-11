@@ -1,8 +1,8 @@
 post_install() {
-	msg "Add 'apparmor=1 security=apparmor' to your kernel parameters."
-	msg "For full functionality use a kernel with apparmor patchset."
+	echo "Add 'apparmor=1 security=apparmor' to your kernel parameters."
+	echo "For full functionality use a kernel with apparmor patchset."
 }
 
 post_remove() {
-	msg "Remove 'apparmor=1 security=apparmor' from your kernel parameters."
+	echo "Remove 'apparmor=1 security=apparmor' from your kernel parameters."
 }
