@@ -1,39 +1,40 @@
-# Maintainer: Viktor Hundahl Strate <viktorstrate@gmail.com>
+# Maintainer:	Filippo Berto <berto.f at protonmail dot com>
+# Contributor: Viktor Hundahl Strate <viktorstrate@gmail.com>
 
-gitname=tinyMediaManager
+_gitname=tinyMediaManager
 
 pkgname=tiny-media-manager
-pkgver=2.9.3.1
-pkgrel=2
+pkgver=2.9.5
+pkgrel=1
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
 url="http://www.tinymediamanager.org"
 license=('Apache-2.0')
 depends=('libmediainfo' 'java-environment>=8')
 makedepends=('maven')
-source=("https://github.com/tinyMediaManager/tinyMediaManager/archive/$gitname-$pkgver.tar.gz"
+source=("https://github.com/tinyMediaManager/tinyMediaManager/archive/$_gitname-$pkgver.tar.gz"
 			  "tinyMediaManager.desktop"
 				"tinymediamanager"
 				"tinymediamanager-cli")
-md5sums=('209bf1437101d1e5df5af545628bbdb5'
+md5sums=('f7308e04c08cd9c2340cd00ecaeb3527'
          '4a8fd16c1295e18ec4fe9c0a8ad61d87'
          '8f4e0cc5eac31bf05bf273fd78d654cf'
          '9bead0995ae09ac68850a83159b1b70d')
 
 build() {
-	cd "$gitname-$gitname-$pkgver"
+	cd "$_gitname-$_gitname-$pkgver"
 	mvn package
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/share/$gitname"
-	cd "$srcdir/$gitname-$gitname-$pkgver/dist"
+	mkdir -p "$pkgdir/usr/share/$_gitname"
+	cd "$srcdir/$_gitname-$_gitname-$pkgver/dist"
 
 	tar -xvf tmm_"$pkgver"_*_linux.tar.gz
 	rm tmm_"$pkgver"_*_linux.tar.gz
 
-	cp -r * "$pkgdir/usr/share/$gitname"
-	chmod -R 777 "$pkgdir/usr/share/$gitname"
+	cp -r * "$pkgdir/usr/share/$_gitname"
+	chmod -R 777 "$pkgdir/usr/share/$_gitname"
 
 	# Install desktop entry
 	install -D "$srcdir/tinyMediaManager.desktop" "$pkgdir/usr/share/applications/tinyMediaManager.desktop"
