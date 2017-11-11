@@ -1,13 +1,43 @@
 pkgbase = eclipse-i18n-fr
 	pkgdesc = French language for eclipse IDE
-	pkgver = 4.4.0
+	pkgver = 4.7.0.v20170819060001
 	pkgrel = 1
 	url = http://babel.eclipse.org
 	arch = any
 	license = EPL
-	makedepends = unzip
-	depends = eclipse
-	source = http://download.eclipse.org/technology/babel/babel_language_packs/R0.12.0/luna/BabelLanguagePack-eclipse-fr_4.4.0.v20140623020002.zip
+	depends = eclipse>=4.7
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-datatools-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-eclipse-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-modeling.emf-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-modeling.graphiti-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-modeling.mdt.bpmn2-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-mylyn-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-soa.bpmn2-modeler-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-technology.egit-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-technology.jgit-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-technology.packaging-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-technology.packaging.mpc-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-technology.recommenders-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-tools.gef-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-tools.tm-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-tools.tracecompass-fr_4.7.0.v20170819060001.zip&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/technology/babel/babel_language_packs/R0.15.0/oxygen/BabelLanguagePack-webtools-fr_4.7.0.v20170819060001.zip&r=1
+	sha512sums = 5df01b039b88e350074b3e76bf73b88c85543bdb5556cd86b4904087f918dee56b1342f4df05b3a96696851dd328e712dec603de3dd93bfa0d86a056e9219908
+	sha512sums = cf7f55e6607c05d0e32e893aae75554ea5890102305fc23cc9f7f7c6722a1a83c943dd68324be20513bd76ed8fdd4a766dcfa698ed2d37698a897a92e4afaec5
+	sha512sums = 7470cfdcb76c2bddcac6549f30624683b22a20c3ae001fa4a941dbcc980b63a9ca5f3a15ef6809cec2fd8afc8e3cf77ddb52a0d83e4334e72ec46b9d39974b92
+	sha512sums = 25fb094d967cdecff3a8fb41f9ce112d0f044ccd92a0e52da685e540a7b23a034e61d8c375b106c91d6b0c0509abc2ca08ece6668ad70446aca6a870632e24b2
+	sha512sums = f63c24e2647706f01415cc83f00b4779b886645494e3d9631dce317eb50c97ded74739f659715ad9b140eea91854e202a51620e0c17fc001a4c293971c02b554
+	sha512sums = 4ffc7294f7deb3f63281555b4013d369105023df52c85914828fa2471e6b85aef1c0e084a3f08d36fd8e3f040597ab3bb3b3beed0191c677910799ed3c0033ce
+	sha512sums = dbea7412b64cc0a880620fd440254701fbbab2b8d0df227a104c2179b82ba31befba72da8ca0ccadc4eb817c887e4e4efb6afe9c2ba5b071b55e3b95dce49f59
+	sha512sums = d0c7ff00959faf61b43c76f8496ee814cae680c4c6d9608afa180206f48aade99d9132473ddd7f8466daca9a0ee1c8ac78699e699db34400b5b2102bd73c5bdb
+	sha512sums = 92c9113b46aaf59e218cb5f5866b05b3fa9119a936bb1fde53cce057db6dbe14757231956909e8b104092d4f2ab83808e9bb73c41e6fad5bd63aa1f5f7fec5ab
+	sha512sums = 0800e9a4012ec11d7c756188c40325deadcf52968e379e030514e7bbb16fc1a871d32c779ce56d917d69c889c3904d97052b2535210d4f06ef6087bb128bca87
+	sha512sums = 94768989a28aa750101ee37b4a0279600895168a51fcf5df54696895b8b4db41e96426319bf5b7d71ec41327a1d043d6bf7f3dadb7ba8682817dbca59edb4d81
+	sha512sums = 8e3e36ba3434ec70ea6350bfcbfbe3654bda76b762685a3660683113b575538c6717d6dd4653616b5f51be5356add30d55fda31e29043fbb944a1d392d361826
+	sha512sums = 6a85354d38f839b2a61c4ab55ea728b821fd5e1151a299933236a2ad3cfc085de7c2cacf89f309df3d06925af83c5ada7cd698032db80174c5883f05f3117fcc
+	sha512sums = 7b4ef0392ec68ac629b16f207224d2609f2dfbedfb4ab36501cab8d2e73787b8a6a3fcaf1cba7523ed3397c17cdd91c90d6c1fc131c01620f46451afb31f8d00
+	sha512sums = 8d28fe96f512046d29e20e65603ad2eafd27fba1a7d42ef583a23ecad3bda5cca4f044ff398eb8451fe152dd201f61c116004c567e46c7588718bd7f63640e41
+	sha512sums = 37ab28d091961250b64b51798b084d7be200f2b679f8986b3448616af64300d2016b5b2ee658f0cfc331b1098207c4ff306aa689ec15b5c044813b129536e629
 
 pkgname = eclipse-i18n-fr
 
