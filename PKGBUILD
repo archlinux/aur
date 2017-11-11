@@ -1,15 +1,17 @@
 # Maintainer: Andrew Lamarra <andrew DOT lamarra AT gmail DOT com>
 pkgname=timertab
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="An easy way to manage your Systemd Timers."
 arch=('any')
 url="https://github.com/amlamarra/timertab"
 license=('GPL3')
-depends=('systemd' 'bash')
+depends=('systemd')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amlamarra/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('5d50019d439dd63188286aba920aa39e1b2e4e7b6a5c1a257b1e0b97881c59c0')
+sha256sums=('bbd12cab218016f825a3eab50bca58facb5bff4f780c89e6545083eb6dd5037f')
 
 package () {
-	install -Dm755 "$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/"
+	install -Dm644 "$pkgname-$pkgver/completion/${pkgname}_completion" "$pkgdir/etc/bash_completion.d/"
+	install -Dm644 "$pkgname-$pkgver/completion/_${pkgname}" "$pkgdir/usr/share/zsh/functions/Completion/Zsh/"
 }
