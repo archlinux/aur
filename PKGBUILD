@@ -9,14 +9,14 @@
 # Upstream URL: https://github.com/atom/atom
 
 pkgname=atom-editor-beta-bin
-pkgver=1.22.0.beta1
+pkgver=1.29.0.beta2
 pkgver() {
   curl -sS https://github.com/atom/atom/releases.atom | grep -Eo 'v.*?beta([0-9]+)' | head -n 1 | sed -e 's/-/./' -e 's/v//'
 }
 get_version() {
    printf "%s" $(pkgver) | sed -e 's/\(.*\)\.beta/v\1-beta/'
 }
-pkgrel=1
+pkgrel=0
 pkgdesc="Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository - PKGBUILD downloads the latest dev release when built."
 arch=('x86_64')
 url="https://github.com/atom/atom"
