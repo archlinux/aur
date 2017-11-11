@@ -1,15 +1,17 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname='solvespace-git'
-pkgver=r945.fd54e5a
+pkgver=r1210.13695be
 pkgrel=1
 pkgdesc="SOLVESPACE is a parametric 3d CAD program."
 arch=('i686' 'x86_64')
 url='http://solvespace.com/'
 license=('GPL3')
-depends=('libpng' 'json-c' 'glew' 'gtkmm')
+depends=('libpng' 'json-c' 'glew' 'gtkmm3' 'libspnav')
 # awwm moved away from fltk
 makedepends=('git' 'cmake')
+provides=('solvespace')
+conflicts=('solvespace')
 source=('solvespace-git::git+https://github.com/solvespace/solvespace.git')
 sha256sums=('SKIP')
 
