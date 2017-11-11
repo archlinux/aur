@@ -2,7 +2,7 @@
 
 pkgbase=python-pyexecjs
 pkgname=('python-pyexecjs' 'python2-pyexecjs')
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Run JavaScript code from Python."
 arch=('any')
@@ -14,8 +14,8 @@ optdepends=('v8: Google JavaScript engine'
             'phantomjs: a headless WebKit'
             'spidermonkey: Mozilla JavaScript engine')
 changelog=changelog
-source=(https://github.com/doloopwhile/PyExecJS/archive/$pkgver.tar.gz)
-sha256sums=('04e68e4e4e03c1b2759afcd6273fcd977352ec20222edee1713d9410ed0d40b7')
+source=(https://pypi.python.org/packages/1c/a0/359e179605bbf3f6c6ed96c44e056eebed39732b67427f30d56e259934f2/PyExecJS-$pkgver.tar.gz)
+md5sums=('e8d262b4b6fbc4ba6084f1e1c6469d1f')
 
 prepare() {
   cp -a PyExecJS-$pkgver{,-python2}
