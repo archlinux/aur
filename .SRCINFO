@@ -1,6 +1,6 @@
 pkgbase = liquidshell-git
 	pkgdesc = liquidshell is an alternative to plasmashell
-	pkgver = r64.9cc1429
+	pkgver = r65.87b14e3
 	pkgrel = 1
 	url = https://cgit.kde.org/liquidshell.git/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = liquidshell-git
 	depends = bluez-qt
 	depends = kcmutils
 	depends = knewstuff
-	source = liquidshell-git-r64.9cc1429::git+git://anongit.kde.org/liquidshell.git
+	source = git+git://anongit.kde.org/liquidshell.git
 	sha256sums = SKIP
 
 pkgname = liquidshell-git
