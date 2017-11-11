@@ -3,7 +3,7 @@
 # Contributor: bjoern lindig bjoern dot lindig at googlemail dot com
 
 pkgname=gnumeric-pure-git
-pkgver=r5715.cb474657
+pkgver=r5738.4f9c548f
 pkgrel=1
 pkgdesc="Gnumeric plugin for the Pure programming language"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 provides=('gnumeric-pure')
 conflicts=('gnumeric-pure')
 replaces=('gnumeric-pure-hg')
-source=(git+https://bitbucket.org/purelang/pure-lang)
+source=(git+https://github.com/agraef/pure-lang.git)
 md5sums=(SKIP)
 
 pkgver() {
