@@ -2,7 +2,7 @@
 
 pkgname=('sat-templates-hg')
 _realname=sat_templates
-pkgver=0.7.r54.a5dc14675d5e
+pkgver=0.7.r62.e7b62f6980a1
 VERSION=0.7
 pkgrel=1
 url="https://salut-a-toi.org/"
