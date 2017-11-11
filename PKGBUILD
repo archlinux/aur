@@ -3,7 +3,7 @@
 # Maintainer: Albert Graef <aggraef@gmail.com>
 
 pkgname=pure-pcre-git
-pkgver=r5731.3abb99f6
+pkgver=r5738.4f9c548f
 pkgrel=1
 pkgdesc="Pure is a modern-style functional programming language based on term rewriting (variant with Perl regex support)."
 arch=("i686" "x86_64")
@@ -19,7 +19,7 @@ optdepends=("clang35: needed for inlining C/C++ code"
 provides=('pure' 'pure-git')
 conflicts=('pure' 'pure-git')
 replaces=('pure-pcre-hg')
-source=("git+https://bitbucket.org/purelang/pure-lang")
+source=("git+https://github.com/agraef/pure-lang.git")
 md5sums=(SKIP)
 
 pkgver() {
