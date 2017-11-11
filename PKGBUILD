@@ -15,6 +15,7 @@ license=('GPL')
 depends=('gnutls' 'curl' 'libgcrypt')
 makedepends=('git' 'cmake' 'perl' 'python3' 'lua' 'tcl' 'ruby' 'aspell' 'guile2.0' 'asciidoctor')
 optdepends=('perl' 'python3' 'lua' 'tcl' 'ruby' 'aspell' 'guile2.0')
+conflicts=("weechat")
 source=("git+$url")
 sha512sums=('SKIP')
 
