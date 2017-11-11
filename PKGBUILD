@@ -5,7 +5,7 @@ _gitname=macOS-Sierra
 
 pkgname=osx-el-capitan-theme-git
 pkgdesc="Theme mimics OS X 10.12 macOS Sierra, formaly osx-el-capitan-theme, for GTK3 and some DEs (GNOME Shell, Xfce, Cinnamon)"
-pkgver=10.9.r8.g3dff454
+pkgver=v0.9.r144.g6966a3a
 pkgrel=1
 arch=('any')
 url="https://github.com/Elbullazul/${_gitname}"
