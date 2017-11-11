@@ -1,4 +1,4 @@
-# Maintainer: AkiraYB <brunoyb!outlook,com>
+# Maintainer: Reotip Sakuraga <reotipfur@gmail.com>
 
 pkgname=nethack-nao
 _pkgname=nethack
