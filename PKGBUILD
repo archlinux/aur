@@ -1,4 +1,5 @@
-# Maintainer: ian kremlin <ian [AT] kremlin [DOT] cc>
+# Maintainer: bidet <b [AT] t>
+# Former Maintainer: ian kremlin <ian [AT] kremlin [DOT] cc>
 # Former Maintainer: Dennis Hamester <dennis.hamester [AT] gmail [DOT] com>
 
 pkgname=dwarffortress-phoebus
@@ -17,12 +18,12 @@ license=('custom:dwarffortress_phoebus')
 groups=('games')
 depends=('lib32-sdl_image' 'lib32-sdl_ttf' 'lib32-gtk2' 'lib32-glu' 'lib32-gcc-libs')
 
-source=('https://github.com/tjkhaled/Phoebus/archive/43.05d.zip'
+source=('https://github.com/washlet/Phoebus/releases/download/43.05d/Phoebus_0.43.05d.zip'
 		'http://bay12games.com/dwarves/df_43_05_linux.tar.bz2'
 		'dwarf-fortress'
 		'LICENSE')
 
-md5sums=('5ab97342449693e02e70573ea964e786'
+md5sums=('599f9fdd71a57048ead9fadb091d5061'
          '5b8ee45e906d021c053f816e443c2983'
          '5766ed7195876418b497d912d2f1512a'
          'eddfb4bd478f9c64e6801bda7c7791ba')
