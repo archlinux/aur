@@ -1,6 +1,6 @@
 # Maintainer: Oliver Giles <web ohwg net>
 pkgname=wemed
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="Multipart MIME (eml,mhtml,rf822) editor"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gmime>=2.6' 'webkit2gtk' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('cmake')
 options=('strip')
 source=("https://github.com/ohwgiles/wemed/archive/v$pkgver.tar.gz")
-md5sums=('b99092bd2669f8beae0642111e8f1f22')
+md5sums=('157f4c0d4d0c9f257821123e5324e5b5')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
