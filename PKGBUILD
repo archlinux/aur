@@ -72,6 +72,5 @@ package() {
   ln -Ts /usr/share/hyphen "$pkgdir"/opt/$_pkgname/hyphenation
 
   # Use system certificates
-  ln -srf "$pkgdir"/usr/lib/libnssckbi.so \
-    "$pkgdir"/opt/$_pkgname/libnssckbi.so
+  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$_pkgname/libnssckbi.so
 }
