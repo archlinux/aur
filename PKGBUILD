@@ -3,7 +3,7 @@
 
 pkgname=mattermost
 pkgver=4.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://mattermost.com"
@@ -69,7 +69,7 @@ prepare() {
     # Enforce build hash to Arch Linux (Enterprise hash is already set to
     # none), instead of the official git hash value.
     sed -r -i Makefile \
-        -e 's/^(\s*)BUILD_HASH(_ENTERPRISE)? =.*/\1BUILD_HASH\2 = Arch Linux/' \
+        -e "s/^(\s*)BUILD_HASH(_ENTERPRISE)? =.*/\1BUILD_HASH\2 = Arch Linux \(${CARCH}\)/" \
         -e 's/-X (.*)(\$\(BUILD_HASH(_ENTERPRISE)?\))(.*)/-X '\''\1\2'\''\4/'
 
     # The configuration isn't available at this time yet, modify the default.
