@@ -1,0 +1,35 @@
+pkgbase = weechat-python3
+	pkgdesc = Weechat compiled with Python3 instead of Python2, experimental
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://www.weechat.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = perl
+	makedepends = python3
+	makedepends = lua
+	makedepends = tcl
+	makedepends = ruby
+	makedepends = aspell
+	makedepends = guile2.0
+	makedepends = asciidoctor
+	depends = gnutls
+	depends = curl
+	depends = libgcrypt
+	optdepends = perl
+	optdepends = python3
+	optdepends = lua
+	optdepends = tcl
+	optdepends = ruby
+	optdepends = aspell
+	optdepends = guile2.0
+	source = weechat-1.9.1.tar.xz::https://www.weechat.org/files/src/weechat-1.9.1.tar.xz
+	source = weechat-1.9.1.tar.xz.asc::https://www.weechat.org/files/src/weechat-1.9.1.tar.xz.asc
+	validpgpkeys = A9AB5AB778FA5C3522FD0378F82F4B16DEC408F8
+	sha512sums = 552e9248e86db7fe53cd6539084e6c5e8548b8858b27c02326d04925d81ef09e123225af5c1f5550b262be5a1249fd8750fdda8d9877c3df918cc30b5e0953fa
+	sha512sums = SKIP
+
+pkgname = weechat-python3
+
