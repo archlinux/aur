@@ -84,7 +84,7 @@ prepare() {
 
   ## Patch from aur/firefox-esr-privacy ##
   # Disable Pocket integration
-  patch -Np1 -i "$srcdir"/firefox-${_basever}-disable-pocket-leftovers.patch
+  patch -Np1 -i "$srcdir"/firefox-52-disable-pocket-leftovers.patch
   # Remove pocket source directory
   rm -fr browser/extensions/pocket
 
