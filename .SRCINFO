@@ -1,0 +1,15 @@
+pkgbase = imeditor
+	pkgdesc = Simple & versatile image editor.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ImEditor/ImEditor
+	arch = any
+	license = GPL
+	depends = python,
+	depends = gtk3,
+	depends = python-pillow
+	source = git+https://github.com/ImEditor/ImEditor.git
+	md5sums = e1ccff9137139d8f347c9f544af9afe7
+
+pkgname = imeditor
+
