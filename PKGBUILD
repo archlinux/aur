@@ -1,6 +1,7 @@
 # Maintainer: Reotip Sakuraga <reotipfur@gmail.com>
+
 pkgname=doomseeker
-pkgver=1.0
+pkgver=1.1
 pkgrel=8
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
@@ -11,7 +12,7 @@ makedepends=('gcc' 'cmake' 'make')
 optdepends=('zandronum2: GZDoom fork supporting client/server multiplayer'
     	    'odamex: Classic client/server multiplayer fork'
     	    'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom')
-source=("https://bitbucket.org/Doomseeker/doomseeker/get/1.0.tar.gz"
+source=("https://reotip.alwaysdata.net/1.0.tar.gz"
         "doomseeker.desktop"
         "doomseeker-launch-script.sh")
 sha256sums=('9d24db4d7f788ea584e8c2ede088a3fb7db33408f01c4c9f80c8c009240e8d0d'
