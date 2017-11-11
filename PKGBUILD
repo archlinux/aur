@@ -2,6 +2,7 @@
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-beta-bin
+_pkgname=thunderbird-beta
 pkgver=57.0b1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
@@ -40,14 +41,14 @@ package() {
 
   msg2 "Moving stuff in place..."
   # Install
-  cp -r thunderbird/ "$pkgdir"/opt/thunderbird-beta
+  cp -r thunderbird/ "$pkgdir"/opt/$_pkgname
 
   # Launchers
-  ln -s   /opt/thunderbird-beta/thunderbird "$pkgdir"/usr/bin/thunderbird-beta
-  ln -srf /opt/thunderbird-beta/thunderbird "$pkgdir"/opt/thunderbird-beta/thunderbird-bin
+  ln -s /opt/$_pkgname/thunderbird "$pkgdir"/usr/bin/$_pkgname
+  ln -sf thunderbird "$pkgdir"/opt/$_pkgname/thunderbird-bin
 
   # vendor.js
-  _vendorjs="$pkgdir/opt/thunderbird-beta/defaults/preferences/vendor.js"
+  _vendorjs="$pkgdir/opt/$_pkgname/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.matchOS", true);
@@ -66,16 +67,15 @@ END
   # Icons
   for i in 16 22 24 32 48 256; do
     install -d "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/
-    ln -s /opt/thunderbird-beta/chrome/icons/default/default$i.png \
-          "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/thunderbird-beta.png
+    ln -s /opt/$_pkgname/chrome/icons/default/default$i.png \
+          "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
   done
 
   # Use system-provided dictionaries
-  rm -r "$pkgdir"/opt/thunderbird-beta/dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir"/opt/thunderbird-beta/dictionaries
-  ln -Ts /usr/share/hyphen "$pkgdir"/opt/thunderbird-beta/hyphenation
+  rm -r "$pkgdir"/opt/$_pkgname/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir"/opt/$_pkgname/dictionaries
+  ln -Ts /usr/share/hyphen "$pkgdir"/opt/$_pkgname/hyphenation
 
   # Use system certificates
-  ln -srf "$pkgdir"/usr/lib/libnssckbi.so \
-    "$pkgdir"/opt/thunderbird-beta/libnssckbi.so
+  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$_pkgname/libnssckbi.so
 }
