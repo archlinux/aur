@@ -2,8 +2,8 @@
 
 pkgname=libyaml-git
 pkgver=0.1.7.r44.g660242d
-pkgrel=1
-pkgdesc="Provides useful functions commonly found on BSD systems"
+pkgrel=2
+pkgdesc="C library for parsing and emitting YAML"
 arch=('i686' 'x86_64')
 url="https://pyyaml.org/wiki/LibYAML"
 license=('MIT')

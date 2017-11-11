@@ -1,7 +1,7 @@
 pkgbase = libyaml-git
-	pkgdesc = Provides useful functions commonly found on BSD systems
+	pkgdesc = C library for parsing and emitting YAML
 	pkgver = 0.1.7.r44.g660242d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyyaml.org/wiki/LibYAML
 	arch = i686
 	arch = x86_64
