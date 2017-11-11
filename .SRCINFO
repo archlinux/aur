@@ -1,7 +1,7 @@
 pkgbase = collabora-online-server-nodocker
 	pkgdesc = Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker
 	pkgver = 2.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.collaboraoffice.com/code/
 	install = install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = collabora-online-server-nodocker
 	depends = gcc-libs
 	depends = libcap
 	depends = libpng12
-	depends = poco
+	depends = poco178
 	depends = openssl-1.0
 	depends = fontconfig
 	depends = libsm
