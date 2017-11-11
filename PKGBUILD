@@ -1,7 +1,7 @@
 # Maintainer: ngld <ngld@tproxy.de>
 _name=knossos
 pkgname=fs2-knossos
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A simple mod manager for FreeSpace 2 Open"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/ngld/knossos"
 license=('Apache')
 groups=()
 depends=(
-  'python' 'python-six' 'python-requests' 'python-requests-toolbelt' 'python-ply' 'python-pyqt5' 'qt5-webengine'
+  'python' 'python-six' 'python-requests' 'python-requests-toolbelt' 'python-ply' 'python-token-bucket' 'python-pyqt5' 'qt5-webengine'
   'qt5-webchannel' 'python-semantic-version' 'python-raven' 'p7zip' 'openal' 'sdl2'
 )
 makedepends=('python-setuptools' 'ninja' 'npm')
@@ -18,7 +18,7 @@ source=(
     "https://github.com/ngld/knossos/archive/v${pkgver}.tar.gz"
     knossos
     knossos.desktop)
-md5sums=('d238a3a4f6190f0ed0710652a46c4941'
+md5sums=('15434d46835d330d741a65e3745a4c2b'
          '541dfc75f3aecbe08b843eeec252e4b4'
          'afd34e2bf9b8f74c1fc5785662e1f04a')
 
