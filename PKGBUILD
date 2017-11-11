@@ -3,13 +3,17 @@
 
 pkgname=mattermost
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source Slack-alternative in Golang and React'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://mattermost.com"
 license=('AGPL' 'Apache')
 
-makedepends=('git' 'go' 'libpng12' 'npm' 'yarn')
+makedepends=('git' 'go' 'libpng12' 'npm' 'yarn' 'mozjpeg')
+# mozjpeg isn't needed on amd64, but the version brought with node_modules does
+# not run on an architecture other than amd64. The one provided with Arch Linux
+# does. Including it even for amd64 prevents us to have a bunch of architecture
+# specific makedepends arrays.
 optdepends=(
     'mariadb: SQL server storage'
     'percona-server: SQL server storage'
@@ -71,6 +75,24 @@ prepare() {
     # The configuration isn't available at this time yet, modify the default.
     sed -r -i build/release.mk \
         -e 's/\$\(DIST_PATH\)\/config\/config.json/\$\(DIST_PATH\)\/config\/default.json/'
+
+    # The Go programming language only supports 8 instruction sets, therefore
+    # we cannot rely on ${CARCH} and need to cast manually.
+    # src.: https://golang.org/doc/install/source#introduction
+    case "${CARCH}" in
+        i686)
+            sed -r -i build/release.mk \
+                -e "5,6s/amd64/386/"
+            ;;
+        arm*64*)
+            sed -r -i build/release.mk \
+                -e "5,6s/amd64/arm64/"
+            ;;
+        arm*)
+            sed -r -i build/release.mk \
+                -e "5,6s/amd64/arm/"
+            ;;
+    esac
 
     # Remove platform specific lines from the Makefile from the line beginning
     # with that statement to the end of file (we do not care of the additional
