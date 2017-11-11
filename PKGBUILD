@@ -4,7 +4,7 @@
 _gitname='fenrir'
 pkgname="${_gitname}-git"
 pkgver=1.5.0.3.gbcfc25a
-pkgrel=1
+pkgrel=2
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url="https://linux-a11y.org/index.php?page=fenrir-screenreader"
