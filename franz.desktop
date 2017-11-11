@@ -6,6 +6,6 @@ GenericName=Internet Messenger
 Comment=A free messaging app for services like WhatsApp, Slack, Messenger and many more.
 Icon=franz
 TryExec=/usr/bin/franz
-Exec=/usr/bin/franz %u
+Exec=/usr/bin/franz %U
 Terminal=false
 Categories=Network;InstantMessaging;
