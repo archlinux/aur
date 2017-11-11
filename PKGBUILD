@@ -1,3 +1,5 @@
+# Maintainer: Reotip Sakuraga <reotipfur@gmail.com>
+
 pkgname=enemy-territory-etpro
 pkgver=3.2.6
 pkgrel=3
