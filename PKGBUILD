@@ -2,15 +2,15 @@
 # Author: Hugo Posnic <hugo.posnic@gmail.com>
 # Author: Nathan Seva <nathan.seva@outlook.fr>
 pkgname=imeditor
-pkgver=0.1
-pkgrel=3
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Simple & versatile image editor."
 arch=("any")
 url="https://github.com/ImEditor/ImEditor"
 license=('GPL')
 depends=('python' 'gtk3' 'python-pillow')
 source=("$url/archive/$pkgver.tar.gz")
-md5sums=("e1ccff9137139d8f347c9f544af9afe7")
+md5sums=("3090bb9a30b26bd9be6339a0d950b3df")
 
 package() {
     cd ${srcdir}/ImEditor-$pkgver
