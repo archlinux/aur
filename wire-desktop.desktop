@@ -2,7 +2,7 @@
 Type=Application
 Version=1.1
 Name=Wire
-GenericName=Privacy-Oriented Messenger
+GenericName=Secure messenger
 Comment=Secure messenger for everyone
 Exec=wire-desktop
 Icon=wire-desktop
