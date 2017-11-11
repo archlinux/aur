@@ -2,7 +2,7 @@
 
 _gemname=pleaserun
 pkgname=ruby-${_gemname}
-pkgver=0.0.28
+pkgver=0.0.30
 pkgrel=2
 pkgdesc="pleaserun"
 arch=('any')
@@ -16,9 +16,7 @@ license=('Apache 2.0')
 source=(
 	"https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
-sha256sums=(
-	'36294017b019078eab9c1d9f37d36f254cd51435d718b1b431c0958d83d409b7'
-)
+sha256sums=('1701322e278547a35191ebc289e0a9127322b962da2f3e5ded0acf7f0ccdf641')
 
 prepare() {
 	cd "${srcdir}"
