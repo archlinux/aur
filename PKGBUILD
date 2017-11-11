@@ -2,7 +2,7 @@
 # Maintainer: Chrys <chrys@linux-a11y.org>
 
 pkgname='fenrir'
-pkgver=1.5.post10
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
@@ -21,13 +21,13 @@ provides=('fenrir')
 conflicts=('fenrir')
 backup=('etc/fenrir/settings/settings.conf')
 install="$pkgname".install
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}-screenreader/${pkgname}-screenreader-${pkgver}.tar.gz"
+source=("https://github.com/chrys87/${pkgname}/archive/${pkgver}.tar.gz"
   'fenrir.install')
-md5sums=('408fd86c9f88d7e20fa2f2f0a807293a'
+md5sums=('793241e71d56fa97f6865ac73cc8fa31'
          'e3f7651a51d3562ab314b1da3afd1ee2')
 
 package() {
-  cd "${srcdir}/${pkgname}-screenreader-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --force-settings --root="${pkgdir}/" --optimize=1
 }
 
