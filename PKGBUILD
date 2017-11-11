@@ -7,7 +7,7 @@ pkgdesc="Plugin that checks import order against various Python Style Guides."
 arch=('any')
 url="https://github.com/PyCQA/${pkgname}"
 license=('Expat')
-depends=('flake8')
+depends=('flake8' 'python-asttokens')
 source=("https://github.com/PyCQA/flake8-import-order/archive/$pkgver.tar.gz")
 md5sums=('a10436be00b7111b1dae890d699b3329')
 
