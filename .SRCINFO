@@ -1,0 +1,19 @@
+pkgbase = check-git
+	pkgdesc = A unit testing framework for C
+	pkgver = 0.12.0.r5.gf9b5853
+	pkgrel = 1
+	url = https://libcheck.github.io/check/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = glibc
+	depends = gawk
+	provides = check
+	conflicts = check
+	options = staticlibs
+	source = git+https://github.com/libcheck/check.git
+	sha256sums = SKIP
+
+pkgname = check-git
+
