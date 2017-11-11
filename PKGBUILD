@@ -1,13 +1,13 @@
 # Maintainer: See AUR interface for current maintainer and contact information.
 
 pkgname=groff-git
-pkgver=1.22.3.r2837
+pkgver=1.22.3.r3051
 pkgrel=1
 pkgdesc="GNU Troff. Official git trunk."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/groff/"
 license=('GPL')
-depends=()
+depends=('uchardet')
 makedepends=('git' 'netpbm' 'psutils' 'ghostscript' 'libxaw')
 conflicts=('groff')
 provides=('groff')
@@ -15,10 +15,10 @@ install="$pkgname".install
 source=("$pkgname::git://git.savannah.gnu.org/groff.git" 
 #source=("$pkgname::git+http://git.savannah.gnu.org/r/groff.git" 
 	'site.tmac')
-optdepends=('netpbm:      grohtml image processing.'
-            'psutils:     postscript file transformation.'
-            'ghostscript: grohtml image and gropdf PDF file creation.'
-            'libxaw:      To enable gxditvew.')
+optdepends=('netpbm:      Enable grohtml image processing.'
+            'psutils:     Enable postscript file transformation.'
+            'ghostscript: Enable grohtml image and gropdf PDF file creation.'
+            'libxaw:      Enable gxditvew.')
 sha384sums=('SKIP'
             '393a4e1b807ab3f77e0ceb10c0c844b130720b65a46e561187e5a59268e1dce04c0d54ca5271f171dc2af62501197a19')
 
