@@ -4,8 +4,8 @@ _extension_name='mooltipass'
 _extension_id='ffemldjbbfhimggdkkckolidemlllklk'
 _store_base_url='https://clients2.google.com/service/update2/crx?response=redirect&prodversion=49.0&x=id%3D'
 pkgname="chromium-extension-${_extension_name}"
-pkgver=1.3.6
-pkgrel=2
+pkgver=1.3.8
+pkgrel=1
 pkgdesc='Retrieve and store Mooltipass credentials easily from websites.'
 license=('custom:MIT')
 arch=('any')
@@ -14,8 +14,8 @@ depends=('chromium')
 source=("${_extension_name}-${pkgver}-${pkgrel}.crx::${_store_base_url}${_extension_id}%26installsource%3Dondemand%26uc"
         "${_extension_id}.json"
         'LICENSE')
-sha256sums=('14f1b742b61d414c451554e13e25516e03c51d2ab09e09352d9cff5e5e2c604f'
-            'c247c66fbbfbed778ee20d0c7bc670e4cf6418122e154dde39928e45b752d4fd'
+sha256sums=('ff5e5cfeb1d0b6c704eecee44daaf221b58e1c72f6f11d5108f810dfc79daff7'
+            '9f7191ac559f1e6d9719747fade98fe23142cd4e2139e3a4589e502d7e3c35e3'
             '2af680c39ef493fb82830356d1d3df1acb5a06033cba2dec7a19e21caa77a866')
 noextract=("${_extension_name}.crx")
 
