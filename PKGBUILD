@@ -2,14 +2,14 @@
 
 pkgname=zork
 pkgver=0
-pkgrel=1
+pkgrel=2
 pkgdesc="MDL Zork!"
 arch=('any')
 license=('none')
 depends=('mdli' 'unzip')
-source=('http://simh.trailing-edge.com/games/zork-mdl.zip'
-        'http://ifarchive.giga.or.at/if-archive/programming/mdl/interpreters/confusion/confusion_mdlzork.tgz'
-	'http://eris.club/pit/madadv.diff')
+source=('https://web.archive.org/web/20060618164309/http://simh.trailing-edge.com/games/zork-mdl.zip'
+	'https://web.archive.org/web/20140926035425/https://www.ifarchive.org/if-archive/programming/mdl/interpreters/confusion/confusion_mdlzork.tgz'
+	'https://web.archive.org/web/20170801114137/http://eris.club/pit/madadv.diff')
 noextract=('zork-mdl.zip')
 md5sums=('7aa4b442c3e0a156b9517868a05231a4'
 	 'f159bc65e1d12463981af5bd934cbb2f'
@@ -25,6 +25,9 @@ package() {
   patch -d zrc/MDL < ../madadv.diff
   install -dm755 $pkgdir/usr/share/mdl-zork
   cp -r zrc/* $pkgdir/usr/share/mdl-zork
+
+# not sure if this is the best way to let the game save
+  chmod -R 777 $pkgdir/usr/share/mdl-zork/MTRZORK
 
   echo '#!/bin/sh' > $pkgname
   echo 'cd /usr/share/mdl-zork' >> $pkgname
