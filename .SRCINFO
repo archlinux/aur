@@ -1,0 +1,17 @@
+pkgbase = poco178
+	pkgdesc = C++ class libraries for network-centric, portable applications, complete edition with debug libraries
+	pkgver = 1.7.8_p3
+	pkgrel = 1
+	url = http://www.pocoproject.org/
+	arch = i686
+	arch = x86_64
+	license = custom:boost
+	makedepends = cmake
+	depends = libmariadbclient
+	depends = openssl
+	depends = unixodbc
+	source = http://pocoproject.org/releases/poco-1.7.8/poco-1.7.8p3-all.tar.bz2
+	sha256sums = 23f2ae2dd373cade48b393b6e440ebc75ecff50f4d37c0cfa80b7723904386b6
+
+pkgname = poco178
+
