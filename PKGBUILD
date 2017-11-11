@@ -6,12 +6,12 @@
 
 pkgname=libva-intel-driver-hybrid
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family with wrapper support for the hybrid codec driver'
 arch=('i686' 'x86_64')
 url='https://01.org/linuxmedia/vaapi'
 license=('MIT')
-depends=('glibc' 'libva' 'libdrm')
+depends=('glibc' 'libva>=2.0.0' 'libdrm')
 optdepends=('intel-hybrid-codec-driver: Provides codecs with partial HW acceleration')
 replaces=('libva-driver-intel')
 conflicts=('libva-intel-driver')
