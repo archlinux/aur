@@ -15,7 +15,7 @@ provides=('wire-desktop')
 source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz"
         "${_pkgname}.desktop")
 sha256sums=('7c9ec60dfbb1aedd60eeb23d248e3d539301c94ff1f44b58a66737324a0780c3'
-            '5f2fb2747bc57e3ad5ff62c2a409982560bd8a16be9f48ddc364e64b90046c8a')
+            'cc9056cecff2aa49a9ce9c8376d57ec8c7c2cb8174f7966b5cdccbeb2e3751ea')
 
 build() {
   cd "${srcdir}/${_pkgname}-release-${pkgver}"
