@@ -3,12 +3,12 @@
 # Author: Nathan Seva <nathan.seva@outlook.fr>
 pkgname=imeditor
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple & versatile image editor."
 arch=("any")
 url="https://github.com/ImEditor/ImEditor"
 license=('GPL')
-depends=('python', 'gtk3', 'python-pillow')
+depends=('python' 'gtk3' 'python-pillow')
 source=("git+https://github.com/ImEditor/ImEditor.git")
 md5sums=("e1ccff9137139d8f347c9f544af9afe7")
 
