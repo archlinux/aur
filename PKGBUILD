@@ -7,14 +7,18 @@ pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="https://reotip.alwaysdata.net/"
 license=("GPL2")
+
 depends=('qt4' 'zlib' 'bzip2')
 makedepends=('gcc' 'cmake' 'make')
+
 optdepends=('zandronum2: GZDoom fork supporting client/server multiplayer'
     	    'odamex: Classic client/server multiplayer fork'
     	    'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom')
+
 source=("https://reotip.alwaysdata.net/1.0.tar.gz"
         "doomseeker.desktop"
         "doomseeker-launch-script.sh")
+
 sha256sums=('9d24db4d7f788ea584e8c2ede088a3fb7db33408f01c4c9f80c8c009240e8d0d'
             'a66e2ecca5cd32a0480776f6adfd8420d18fa56de1ca574aae61bbea95bd3c2c'
             '96fca72228a50d80b019adf3c82b8800a9d7f03994252e544513537541d011a4')
