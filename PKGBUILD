@@ -20,7 +20,7 @@ source=("https://reotip.alwaysdata.net/1.0.tar.gz"
         "doomseeker-launch-script.sh")
 
 sha256sums=('9d24db4d7f788ea584e8c2ede088a3fb7db33408f01c4c9f80c8c009240e8d0d'
-            'a66e2ecca5cd32a0480776f6adfd8420d18fa56de1ca574aae61bbea95bd3c2c'
+            '64004248a2dd3771292e63717a05e1859f1ffe6d6fd5f16ebfa1427b9a43533f'
             '96fca72228a50d80b019adf3c82b8800a9d7f03994252e544513537541d011a4')
 
 _bbdir=Doomseeker-doomseeker-b1cb0d67f9b9
