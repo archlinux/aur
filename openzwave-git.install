@@ -1,0 +1,27 @@
+pre_upgrade()
+{
+  ozw_old='/etc/openzwave-git'
+  ozw_new='/etc/openzwave'
+
+  [[ -e $ozw_old ]] || return 0
+
+  printf '\tConfiguration folder has changed:\n'
+  printf '\t%s -> %s\n' "$ozw_old" "$ozw_new"
+
+  if [[ -e $ozw_new ]]
+  then
+    printf '\t%s already exists!\n' "$ozw_new"
+    printf '\tMigrate your config by hand!\n'
+    printf '\tRemove %s when you are done.' "$ozw_old"
+  else
+    printf '\texec mv: '
+    mv -vn "$ozw_old" "$ozw_new"
+    printf '\tConfiguration folder migrated automatically.\n'
+  fi
+
+  unset ozw_old ozw_new
+
+  return 0
+}
+
+# vim:set ts=2 sw=2 et:
