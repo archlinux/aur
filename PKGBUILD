@@ -2,7 +2,7 @@
 
 _gemname=fpm
 pkgname=$_gemname
-pkgver=1.8.1
+pkgver=1.9.3
 pkgrel=1
 pkgdesc='Effing package management! Build packages for multiple platforms (deb, rpm, etc) with great ease and sanity.'
 arch=(any)
@@ -14,11 +14,11 @@ depends=(ruby ruby-cabin ruby-backports ruby-arr-pm ruby-clamp
          ruby-rspec ruby-insist ruby-pry ruby-stud)
 options=(!emptydirs)
 source=("https://github.com/jordansissel/fpm/archive/v${pkgver}.tar.gz")
-sha256sums=('1f124bc9def791006b08be17fcaee7dc44288ad60b5ca95c4868226c1093a704')
+sha256sums=('4cafd5a6525833c1fa8af14ae78845ce8f07e27220b903bac8a8b2252ea6ceed')
 
 build() {
   cd $srcdir/$_gemname-$pkgver
-  sed -i 's/"clamp", "~> 0.6"/"clamp", ">= 0.6"/' fpm.gemspec
+  sed -i 's/"clamp", "~> 1.0.0"/"clamp", ">= 1.0.0"/' fpm.gemspec
   gem build fpm.gemspec 2> /dev/null $1
 }
 
