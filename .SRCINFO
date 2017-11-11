@@ -26,6 +26,7 @@ pkgbase = weechat-python3-git
 	optdepends = ruby
 	optdepends = aspell
 	optdepends = guile2.0
+	conflicts = weechat
 	source = git+https://github.com/weechat/weechat
 	sha512sums = SKIP
 
