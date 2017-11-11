@@ -1,6 +1,6 @@
 # Maintainer: Testudo Aquatilis <testudo.aquatilis@posteo.de>
 pkgname=irmpc
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 epoch=
 pkgdesc="Lets you control MPD via LIRC"
@@ -8,7 +8,7 @@ arch=('x86_64' 'i686' 'armv7h')
 url="https://github.com/TestudoAquatilis/irmpc"
 license=('GPL')
 depends=('libmpdclient' 'lirc' 'glib2')
-makedepends=(gcc make)
+makedepends=(gcc make pkg-config)
 noextract=()
 source=("git+https://github.com/TestudoAquatilis/irmpc.git")
 md5sums=('SKIP')
