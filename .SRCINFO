@@ -1,6 +1,6 @@
 pkgbase = sat-media-hg
 	pkgver = 0.7.r41.f8ece5fe01ec
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salut-a-toi.org/
 	arch = any
 	license = AGPL3
