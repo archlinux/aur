@@ -3,7 +3,7 @@
 
 pkgname=('icinga2-common' 'icinga2' 'icinga-studio')
 pkgbase=icinga2
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
@@ -12,7 +12,7 @@ url="http://www.icinga.org"
 depends=('boost-libs' 'libedit' 'openssl' 'yajl')
 makedepends=('boost' 'cmake' 'libmariadbclient' 'postgresql-libs' 'wxgtk')
 source=("https://github.com/Icinga/$pkgbase/archive/v$pkgver.tar.gz")
-sha256sums=('79f2cd2cba66b2d2a785d37cccd4a47611f7b0b7d52b9a625a22f0c7ff12f7f0')
+sha256sums=('7e9691ad3389f04a53042d88c1ac8a37e2c9aaf8287856cad3fa48825adaee84')
 
 build() {
   mkdir -p "$srcdir/$pkgbase-$pkgver/build"
