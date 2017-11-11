@@ -1,4 +1,4 @@
-# Maintainer: fusion809
+# Maintainer: Brenton Horne (fusion809) <brentonhorne77 at gmail dot com>
 
 _pkgname=vim
 pkgname=gvim-gtk2
@@ -42,7 +42,7 @@ build() {
     cd $SRC
     ./configure \
       --enable-fail-if-missing \
-      --with-compiledby='Arch Linux AUR' \
+      --with-compiledby='Brenton Horne <brentonhorne77 at gmail dot com>' \
       --prefix=/usr \
       --enable-gui=gtk2 \
       --with-features=huge \
