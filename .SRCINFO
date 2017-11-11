@@ -1,7 +1,7 @@
 pkgbase = slangtng-git
 	pkgdesc = A toolkit for numerical analysis
 	pkgver = r157.cc4c140
-	pkgrel = 1
+	pkgrel = 2
 	url = http://info.tuwien.ac.at/bucher/Private/slangTNG.html
 	arch = x86_64
 	license = BSD
@@ -12,7 +12,9 @@ pkgbase = slangtng-git
 	provides = slangtng
 	conflicts = slangtng
 	source = slangtng-git::git+git://git.tuxfamily.org/gitroot/slangtng2/slangtng.git
+	source = http://info.tuwien.ac.at/bucher/Private/slangTNG_files/samples.zip
 	md5sums = SKIP
+	md5sums = 0b43b36b0c10a791a9a9d233b3e94024
 
 pkgname = slangtng-git
 
