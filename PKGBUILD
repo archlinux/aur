@@ -29,8 +29,8 @@ package(){
     cd "$pkgdir"
     install -dm755 usr/share/sat/media/
 
-    cd "$srcdir/$_medianame"
-    cp -rv * "$pkgdir/usr/share/sat/media/"
+    cd "$srcdir/$_realname"
+    cp -rv * $pkgdir/usr/share/sat/media/
 
 }
 
