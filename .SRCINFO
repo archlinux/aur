@@ -1,0 +1,25 @@
+pkgbase = lepton-eda-git
+	pkgdesc = A full GPL'd suite and toolkit of Electronic Design Automation tools. Forked from gEDA in late 2016.
+	pkgver = 7748.d2550597b
+	pkgrel = 1
+	url = https://github.com/lepton-eda/lepton-eda
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	makedepends = flex
+	makedepends = gawk
+	depends = gtk2
+	depends = guile
+	depends = guile2.0
+	depends = libstroke
+	optdepends = python2: for two of the commands (garchive, tragesym)
+	optdepends = gawk: for sw2asc
+	provides = $_gitname
+	conflicts = $_gitname
+	conflicts = geda-gaf
+	source = git+https://github.com/lepton-eda/lepton-eda.git
+	md5sums = SKIP
+
+pkgname = lepton-eda-git
+
