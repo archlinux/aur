@@ -1,10 +1,10 @@
 #Maintainer: DetMittens
 pkgname=libcmrt
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel C for Media RunTime GPU kernel manager"
 arch=('i686' 'x86_64')
-depends=('libva')
+depends=('libva>=2.0.0')
 url='https://01.org/linuxmedia/vaapi'
 license=('MIT')
 source=("cmrt-${pkgver}.tar.gz::https://github.com/01org/cmrt/archive/${pkgver}.tar.gz")

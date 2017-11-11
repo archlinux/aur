@@ -1,12 +1,12 @@
 pkgbase = libcmrt
 	pkgdesc = Intel C for Media RunTime GPU kernel manager
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/linuxmedia/vaapi
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = libva
+	depends = libva>=2.0.0
 	source = cmrt-1.0.6.tar.gz::https://github.com/01org/cmrt/archive/1.0.6.tar.gz
 	sha256sums = ca22e905a2717fc740e703e65a0061a0e11f4ea513ba970bbc10b3bd6d28e6e0
 
