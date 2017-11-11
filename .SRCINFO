@@ -1,0 +1,25 @@
+pkgbase = dwarffortress-phoebus
+	pkgdesc = Dwarf Fortress preloaded with Phoebus tileset
+	pkgver = 0.40.19
+	pkgrel = 17
+	epoch = 1
+	url = http://www.bay12games.com/dwarves/
+	arch = x86_64
+	groups = games
+	license = custom:dwarffortress_phoebus
+	depends = lib32-sdl_image
+	depends = lib32-sdl_ttf
+	depends = lib32-gtk2
+	depends = lib32-glu
+	depends = lib32-gcc-libs
+	source = https://kremlin.cc/dfmirror/Phoebus_40_19v00.zip
+	source = https://kremlin.cc/dfmirror/df_40_19_linux.tar.bz2
+	source = dwarf-fortress
+	source = LICENSE
+	md5sums = df1a777f8defba96e14ac2baeb764bf4
+	md5sums = f0b2c798fb5e297ea3cce38a63e20443
+	md5sums = 5766ed7195876418b497d912d2f1512a
+	md5sums = eddfb4bd478f9c64e6801bda7c7791ba
+
+pkgname = dwarffortress-phoebus
+
