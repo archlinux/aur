@@ -1,4 +1,4 @@
-# Contributor: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-ntldd-git
 pkgver=r17.3a08ea2
