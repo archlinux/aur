@@ -1,8 +1,7 @@
-# Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
-# Package Repository: https://github.com/mij-aur-packages/android-google-apis-x86
+# Maintainer: Felix Barz <skycoder42.de@gmx.de>
 
-_rev=r10
-_apilevel=24
+_rev=r07 #r01
+_apilevel=26 #27
 pkgname=android-google-apis-x86
 pkgver=${_apilevel}_${_rev}
 pkgrel=1
@@ -10,15 +9,15 @@ pkgdesc="Android Google APIs x86 System Image, latest API"
 arch=('any')
 url="http://code.google.com/android/add-ons/google-apis"
 license=('custom')
-depends=("android-platform" "android-google-apis")
+depends=("android-platform")
 optdepends=('qemu' 'libvirt')
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/sys-img/google_apis/x86-24_r10.zip"
+source=("https://dl-ssl.google.com/android/repository/sys-img/google_apis/x86-${pkgver}.zip"
         "source.properties")
-sha1sums=('b3151c5ebf0273909294a0ed1d0000ac541b7108'
-          'f61181818e3125fc1bdf406e4c9300181aad5085')
+sha1sums=('10a544d7f6ec11df876bb2efb9e8de9f648f682e'
+          '8019b781eb59ef80941d1659e04bc155dfd697f2')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/google_apis/"
