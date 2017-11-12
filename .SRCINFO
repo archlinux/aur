@@ -1,7 +1,7 @@
 pkgbase = veles
 	pkgdesc = Visual reverse engineering tool.
 	pkgver = 2017.06.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codisec.com/veles/
 	arch = x86_64
 	license = Apache
@@ -10,6 +10,7 @@ pkgbase = veles
 	depends = python-six
 	depends = python-msgpack
 	depends = python-pyopenssl
+	depends = double-conversion
 	source = https://github.com/codilime/veles/releases/download/2017.06.0.1/Veles_2017.06.0.1_64bit_Ubuntu1604.deb
 	sha256sums = 9954a384e6ba733b50e07b9fd2a32f0dd181ef8aab11ebd5441744020949357e
 
