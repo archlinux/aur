@@ -1,8 +1,8 @@
-# maintainer: <atthis at eris dot club>
+# http://rec.arts.int-fiction.narkive.com/pM8Kgfbw/confusion-just-enough-mdl
 
 pkgname=zork
 pkgver=0
-pkgrel=2
+pkgrel=3
 pkgdesc="MDL Zork!"
 arch=('any')
 license=('none')
@@ -26,7 +26,7 @@ package() {
   install -dm755 $pkgdir/usr/share/mdl-zork
   cp -r zrc/* $pkgdir/usr/share/mdl-zork
 
-# not sure if this is the best way to let the game save
+# required for save & restore 
   chmod -R 777 $pkgdir/usr/share/mdl-zork/MTRZORK
 
   echo '#!/bin/sh' > $pkgname
