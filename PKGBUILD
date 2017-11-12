@@ -1,26 +1,26 @@
-# Maintainer: Konstantin Shalygin <k0ste@cn.ru>
+# Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
+# Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='pymilter'
-pkgver='1.0'
+pkgver='1.0.2'
 pkgrel='1'
 pkgdesc='Python interface to sendmail milter API'
 arch=('any')
-url='http://www.bmsi.com/python/milter.html'
+url="https://github.com/sdgathman/${pkgname}"
 license=('GPL')
 depends=('python2')
 makedepends=('libmilter')
-source=("https://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("93a8f31b06c4a7f04e6f9b69f8d7357ba750819e6348177536b23255616e8937")
+source=("${url}/archive/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('f513053f5fc9b0c31d886d8412a411bdc958786a673d7071b1bd521498b01153')
 
 build() {
-  pushd "${srcdir}/${pkgname}-${pkgver}"
+  pushd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   python2 setup.py build
   popd
 }
 
 package() {
-  pushd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   python2 setup.py install --optimize=1 --root="${pkgdir}"
   install -Dm644 "COPYING" "${pkgdir}/usr/share/doc/${pkgname}/COPYING"
-  popd
 }
