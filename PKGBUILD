@@ -4,21 +4,16 @@ pkgdesc="ROS - Tools for directing, throttling, selecting, and otherwise messing
 url='http://ros.org/wiki/topic_tools'
 
 pkgname='ros-lunar-topic-tools'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-xmlrpcpp
-  ros-lunar-roscpp
-  ros-lunar-rostime
-  ros-lunar-catkin
-  ros-lunar-rosconsole
+ros_makedepends=(ros-lunar-catkin
   ros-lunar-cpp-common
   ros-lunar-rosunit
   ros-lunar-rostest
-  ros-lunar-std-msgs
   ros-lunar-message-generation)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
@@ -31,6 +26,9 @@ ros_depends=(ros-lunar-xmlrpcpp
   ros-lunar-message-runtime)
 depends=(${ros_depends[@]})
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/topic_tools/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -40,7 +38,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-topic_tools-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/topic_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('96e2f6311932a30aaff3821e6285c3b985d33097f6e37a9d6d7bcf406b082dbd')
+sha256sums=('c313c9c31b593370457cb30220a47e1f6e15fe347dc9b80113a8e9dda071245b')
 
 build() {
   # Use ROS environment variables
@@ -63,7 +61,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
