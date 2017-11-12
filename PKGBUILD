@@ -2,7 +2,7 @@
 
 pkgname=go-bindata-git
 pkgver=3.0.7.r72.ga0ff256
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts any file into managable Go source code - git checkout"
 arch=(x86_64)
 url="https://github.com/jteeuwen/go-bindata/"
@@ -14,6 +14,7 @@ sha256sums=(SKIP)
 makedepends=(git go)
 provides=(go-bindata-git)
 conflicts=(go-bindata)
+options=('!strip')
 
 pkgver() {
   cd "go-bindata"
