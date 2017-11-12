@@ -1,0 +1,27 @@
+post_install() {
+	# lpr
+	/opt/brother/Printers/dcpj152w/inf/setupPrintcapij dcpj152w -i
+	
+	# cupswrapper
+	/opt/brother/Printers/dcpj152w/cupswrapper/cupswrapperdcpj152w
+	
+	systemctl restart org.cups.cupsd.service
+}
+
+post_upgrade() {
+	/bin/true
+}
+
+pre_remove() {
+	# lpr
+	/opt/brother/Printers/dcpj152w/inf/setupPrintcapij dcpj152w -e
+	
+	# cupswrapper
+	/opt/brother/Printers/dcpj152w/cupswrapper/cupswrapperdcpj152w -e
+}
+
+op=$1
+shift
+
+$op "$@"
+
