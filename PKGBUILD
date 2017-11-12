@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_gui_py_common provides common functionality for GUI plugins wr
 url='http://ros.org/wiki/qt_gui_py_common'
 
 pkgname='ros-lunar-qt-gui-py-common'
-pkgver='0.3.6'
+pkgver='0.3.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,6 +18,9 @@ ros_depends=(ros-lunar-python-qt-binding)
 depends=(${ros_depends[@]}
   python2-rospkg)
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/qt_gui_py_common/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -27,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="qt_gui_core-release-release-lunar-qt_gui_py_common-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/lunar/qt_gui_py_common/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4bc26d422f343c2b7e55475bff78e1da38e980c7ffdbf7f3266d7f277721a470')
+sha256sums=('7b7ffdda54e8ec3f7868ed19d190f7a54306a88660a034f5885d9bb35f3cb892')
 
 build() {
   # Use ROS environment variables
@@ -35,14 +38,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -50,7 +53,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
