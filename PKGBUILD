@@ -4,16 +4,13 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='http://ros.org/wiki/message_filters'
 
 pkgname='ros-lunar-message-filters'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin
-  ros-lunar-roscpp
-  ros-lunar-xmlrpcpp
-  ros-lunar-rosconsole
   ros-lunar-rosunit
   ros-lunar-rostest)
 makedepends=('cmake' 'ros-build-tools'
@@ -25,6 +22,9 @@ ros_depends=(ros-lunar-xmlrpcpp
   ros-lunar-rosconsole)
 depends=(${ros_depends[@]})
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/message_filters/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-message_filters-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/message_filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('aa2b54639fdba614b9b1de304a7b49a834fd7ac6d7d7fe051002ade5b6c4343a')
+sha256sums=('4f3a7e4cbfddf17d4a2cb15448ac9081a4fff6a9dd39f3d3f161bc3ecbf930ed')
 
 build() {
   # Use ROS environment variables
@@ -57,7 +57,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
