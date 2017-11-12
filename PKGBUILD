@@ -2,16 +2,16 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 
 pkgname=sundials
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Suite of nonlinear differential/algebraic equation solvers"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://computation.llnl.gov/casc/sundials/main.html"
 license=('BSD')
-depends=('gcc-libs' 'lapack' 'gcc-fortran' 'openmpi')
+depends=('gcc-libs' 'gcc-fortran' 'openmpi')
 makedepends=('cmake')
 source=("http://computation.llnl.gov/projects/sundials/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('28b8e07eecfdef66e2c0d0ea0cb1b91af6e4e94d71008abfe80c27bf39f63fde')
+sha256sums=('18d52f8f329626f77b99b8bf91e05b7d16b49fde2483d3a0ea55496ce4cdd43a')
 
 build() {
 	rm -rf build

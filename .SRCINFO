@@ -1,6 +1,6 @@
 pkgbase = sundials
 	pkgdesc = Suite of nonlinear differential/algebraic equation solvers
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://computation.llnl.gov/casc/sundials/main.html
 	arch = i686
@@ -9,11 +9,10 @@ pkgbase = sundials
 	license = BSD
 	makedepends = cmake
 	depends = gcc-libs
-	depends = lapack
 	depends = gcc-fortran
 	depends = openmpi
-	source = http://computation.llnl.gov/projects/sundials/download/sundials-3.0.0.tar.gz
-	sha256sums = 28b8e07eecfdef66e2c0d0ea0cb1b91af6e4e94d71008abfe80c27bf39f63fde
+	source = http://computation.llnl.gov/projects/sundials/download/sundials-3.1.0.tar.gz
+	sha256sums = 18d52f8f329626f77b99b8bf91e05b7d16b49fde2483d3a0ea55496ce4cdd43a
 
 pkgname = sundials
 
