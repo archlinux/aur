@@ -4,7 +4,7 @@ pkgdesc="ROS - A Python and C++ implementation of the LZ4 streaming format."
 url='http://www.ros.org/'
 
 pkgname='ros-lunar-roslz4'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,12 +12,14 @@ license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  lz4)
+  ${ros_makedepends[@]})
 
 ros_depends=()
 depends=(${ros_depends[@]}
   lz4)
+
+ros_checkdepends=(ros-lunar-rosunit)
+checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/roslz4/${pkgver}-${_pkgver_patch}
@@ -28,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-roslz4-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/roslz4/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3198a494ebcf739071d48255c40bb2af199438d351d5269e82f03317be78e1e1')
+sha256sums=('2466e0e89a5e2913f3362a77133f4dd3132cd8b5658405ebb9f0d308149ec90c')
 
 build() {
   # Use ROS environment variables
@@ -51,7 +53,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
