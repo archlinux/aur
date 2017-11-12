@@ -4,16 +4,14 @@ pkgdesc="ROS - Python implementation of bond, a mechanism for checking when anot
 url='http://www.ros.org/wiki/bondpy'
 
 pkgname='ros-lunar-bondpy'
-pkgver='1.8.0'
+pkgver='1.8.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin
-  ros-lunar-smclib
-  ros-lunar-bond
-  ros-lunar-rospy)
+  ros-lunar-bond)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
@@ -21,6 +19,9 @@ ros_depends=(ros-lunar-smclib
   ros-lunar-rospy)
 depends=(${ros_depends[@]}
   util-linux)
+
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/bondpy/${pkgver}-${_pkgver_patch}
@@ -31,7 +32,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="bond_core-release-release-lunar-bondpy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/lunar/bondpy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('24b01914d182eff1d619fd8f9de711290429e8970f1b419570fe66017a9cb918')
+sha256sums=('50446a435e49cc23d4c5104eb1d499247a89076883b58b4c91398d4dde284fcb')
 
 build() {
   # Use ROS environment variables
@@ -39,14 +40,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -54,7 +55,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
