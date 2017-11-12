@@ -1,7 +1,7 @@
 # Maintainer: vsilv vsilv@posteo.eu
 
 pkgname=python-bintrees-git
-pkgver=r451.d046419
+pkgver=r206.667002a
 pkgrel=1
 pkgdesc='Package provides Binary-, RedBlack- and AVL-Trees in Python and Cython.'
 arch=('x86_64')
@@ -27,7 +27,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_gitname}"
-  cp ./LICENSE.txt /usr/share/licenses/${pkgname}
+  sudo cp ./LICENSE.txt /usr/share/licenses/${pkgname}
   python setup.py install --prefix=/usr --root=${pkgdir} -O1 --skip-build
 }
 

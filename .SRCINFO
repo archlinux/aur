@@ -1,6 +1,6 @@
 pkgbase = python-bintrees-git
 	pkgdesc = Package provides Binary-, RedBlack- and AVL-Trees in Python and Cython.
-	pkgver = r451.d046419
+	pkgver = r206.667002a
 	pkgrel = 1
 	url = https://github.com/mozman/bintrees/
 	arch = x86_64
