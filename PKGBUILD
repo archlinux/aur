@@ -4,21 +4,22 @@ pkgdesc="ROS - Contains a set of tools that can be used from a hard realtime thr
 url='http://ros.org/wiki/realtime_tools'
 
 pkgname='ros-lunar-realtime-tools'
-pkgver='1.10.0'
+pkgver='1.11.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-catkin
-  ros-lunar-roscpp
-  ros-lunar-rospy)
+ros_makedepends=(ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-lunar-roscpp
   ros-lunar-rospy)
 depends=(${ros_depends[@]})
+
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/realtime_tools/${pkgver}-${_pkgver_patch}
@@ -29,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="realtime_tools-release-release-lunar-realtime_tools-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/realtime_tools-release/archive/release/lunar/realtime_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('08cf2961a536dd3f94057c1f632d035653103bddea05fbe445b4f514f0c14fd1')
+sha256sums=('006d73ce849843ddac35c6fa4f317ffe87214a0c74055863abd39c9a04719e2d')
 
 build() {
   # Use ROS environment variables
@@ -37,14 +38,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -52,7 +53,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
