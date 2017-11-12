@@ -1,0 +1,23 @@
+pkgbase = cross-mipsel-linux-gnu-gcc49
+	pkgdesc = The GNU Compiler Collection for the MIPS architecture
+	pkgver = 4.9.4
+	pkgrel = 1
+	url = http://www.gnu.org/software/gcc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mpfr
+	depends = gmp
+	depends = libmpc
+	depends = sh
+	depends = cross-mipsel-linux-gnu-binutils
+	options = !ccache
+	options = !distcc
+	options = !emptydirs
+	options = !libtool
+	options = !strip
+	source = ftp://ftp.gnu.org/gnu/gcc/gcc-4.9.4/gcc-4.9.4.tar.bz2
+	sha256sums = 6c11d292cd01b294f9f84c9a59c230d80e9e4a47e5c6355f046bb36d4f358092
+
+pkgname = cross-mipsel-linux-gnu-gcc49
+
