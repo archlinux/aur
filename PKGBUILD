@@ -4,21 +4,21 @@ pkgdesc="ROS - image_geometry contains C++ and Python libraries for interpreting
 url='http://www.ros.org/wiki/image_geometry'
 
 pkgname='ros-lunar-image-geometry'
-pkgver='1.12.4'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-sensor-msgs
-  ros-lunar-catkin
-  opencv)
+ros_makedepends=(ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-lunar-sensor-msgs
-  opencv)
-depends=(${ros_depends[@]})
+ros_depends=(ros-lunar-sensor-msgs)
+depends=(${ros_depends[@]} opencv)
+
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/image_geometry/${pkgver}-${_pkgver_patch}
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-lunar-image_geometry-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/lunar/image_geometry/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('59c39e8b50ea3f3b431d8f3778b293db33c71aeff2fab5edc35ce37051d75a66')
+sha256sums=('e23c4dde85205e9051d1f7fc55697d8b3ea28faadd457bbae47ced5a5983626d')
 
 build() {
   # Use ROS environment variables
@@ -37,14 +37,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -52,7 +52,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
