@@ -1,16 +1,18 @@
-# Maintainer: Luke R. <g4jc@openmailbox.org> GPG: rsa4096/3EAE8697
+# Maintainer: Luke R. <g4jc@bulletmail.org> GPG:  c25519/D85D2F527B0
 
 pkgname=uftp
-pkgver=4.9.3
-pkgrel=2
-pkgdesc="UFTP is an encrypted multicast file transfer program, designed to securely, reliably, and efficiently transfer files to multiple receivers simultaneously."
+pkgver=4.9.4
+pkgrel=1
+pkgdesc="UFTP is an encrypted multicast file transfer program, designed 
+to securely, reliably, and efficiently transfer files to multiple 
+receivers simultaneously."
 arch=(i686 x86_64)
-url="http://uftp-multicast.sourceforge.net/"
+url="https://uftp-multicast.sourceforge.net/"
 license=('GPL3')
 makedepends=('gcc' 'openssl')
-source=("http://downloads.sourceforge.net/project/$pkgname-multicast/source-tar/$pkgname-$pkgver.tar.gz")
-sha512sums=('7fae87b8d436a4bfa1a8e7b3217e5a981bf5cffabea6cb8781f8a034d6ddd537e7b8d6eafe4fbe97cbe0af9feeee438b78dd566b24caa1e18c6d4966e75a327c')
-whirlpoolsums=('ee33c969caa3643717f575c213f30790b9211d01a9c32599962a9da22f0bc0061c2c59e80845a326c2f305287647968dad1988b0532343477565aab207d111a0')
+source=("https://downloads.sourceforge.net/project/$pkgname-multicast/source-tar/$pkgname-$pkgver.tar.gz")
+sha512sums=('f3c799265a55e0cb536f17be3a0ebfad5f81284255083ebe9a12fda4b5ce8407f05a710cb32a41f3dccbc0ac90367c44d4b67058bdbeaa4f2f8efe732463ebf0')
+whirlpoolsums=('ae69a1a7b3ff7039e5f70f24d486b84d1f3fa9d39ebade82fca388bbe97f06d7aad78f22c662065f48f23f43aba5efa7aa87516c2b60df98ce5794d25c99730b')
 
 -prepare() {
   cd "$srcdir/${pkgname}-${pkgver}/"
