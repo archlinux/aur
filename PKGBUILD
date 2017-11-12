@@ -17,7 +17,8 @@ arch=('i686' 'x86_64' 'armv7h')
 url="http://christophe.varoqui.free.fr/"
 license=('GPL2')
 depends=('libaio' 'device-mapper' 'json-c' 'liburcu')
-optdepends=('ceph: support for RADOS Block Devices (needs to be installed at build time)')
+optdepends=('ceph: support for RADOS Block Devices (needs to be installed at build time)'
+            'systemd: systemd integration (needs to be installed at build time)')
 makedepends=('git')
 conflicts=('multipath-tools-git')
 install=multipath-tools.install
