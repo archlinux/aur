@@ -1,8 +1,8 @@
 # Maintainer: ibrokemypie <ibrokemypie@bastardi.net>
 pkgname=nylas-mail-lives-bin
-_pkgname=nylas
+_pkgname=nylas-mail
 pkgver=2.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source fork of Nylas Mail (N1)"
 arch=('x86_64')
 url="https://github.com/nylas-mail-lives/nylas-mail/"
