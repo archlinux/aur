@@ -4,7 +4,7 @@ pkgdesc="ROS - Common code for working with images in ROS."
 url='http://www.ros.org/wiki/image_common'
 
 pkgname='ros-lunar-image-common'
-pkgver='1.11.12'
+pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -20,6 +20,9 @@ ros_depends=(ros-lunar-polled-camera
   ros-lunar-camera-info-manager)
 depends=(${ros_depends[@]})
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/image_common/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -29,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="image_common-release-release-lunar-image_common-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_common-release/archive/release/lunar/image_common/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ebdbdc1f5aba95beaf4feeffddc62fbb326036764ece2aabf289cd365c1a3c78')
+sha256sums=('fb856178afb0fd3e3a3b83873b9761dde7b6d2c324d972c75bd587a661174abe')
 
 build() {
   # Use ROS environment variables
@@ -37,14 +40,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -52,7 +55,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
