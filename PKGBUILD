@@ -4,14 +4,13 @@ pkgdesc="ROS - A bond allows two processes, A and B, to know when the other has 
 url='http://www.ros.org/wiki/bond'
 
 pkgname='ros-lunar-bond'
-pkgver='1.8.0'
+pkgver='1.8.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-std-msgs
-  ros-lunar-catkin
+ros_makedepends=(ros-lunar-catkin
   ros-lunar-message-generation)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
@@ -19,6 +18,9 @@ makedepends=('cmake' 'ros-build-tools'
 ros_depends=(ros-lunar-message-runtime
   ros-lunar-std-msgs)
 depends=(${ros_depends[@]})
+
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/bond/${pkgver}-${_pkgver_patch}
@@ -29,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="bond_core-release-release-lunar-bond-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/lunar/bond/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('578bad454e6773214c60001d05068c05f9bb0943a547daf8d392c8ce15029a8d')
+sha256sums=('6f153ed168335c6837dcc0c92037ab457f89249ec4e6b93a2e635e70b607caa2')
 
 build() {
   # Use ROS environment variables
@@ -37,14 +39,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -52,7 +54,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
