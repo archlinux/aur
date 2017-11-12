@@ -1,0 +1,43 @@
+pkgbase = openresty-ldap
+	pkgdesc = A Fast and Scalable Web Platform by Extending NGINX with Lua (with LDAP auth support)
+	pkgver = 1.11.2.5
+	pkgrel = 1
+	url = http://openresty.org/
+	install = openresty.install
+	arch = x86_64
+	license = BSD
+	depends = perl>=5.6.1
+	depends = readline
+	depends = pcre
+	depends = openssl-1.0
+	conflicts = openresty
+	replaces = openresty
+	options = !purge
+	backup = opt/openresty/nginx/conf/fastcgi.conf
+	backup = opt/openresty/nginx/conf/fastcgi_params
+	backup = opt/openresty/nginx/conf/koi-win
+	backup = opt/openresty/nginx/conf/koi-utf
+	backup = opt/openresty/nginx/conf/mime.types
+	backup = opt/openresty/nginx/conf/nginx.conf
+	backup = opt/openresty/nginx/conf/scgi_params
+	backup = opt/openresty/nginx/conf/uwsgi_params
+	backup = opt/openresty/nginx/conf/win-utf
+	backup = etc/logrotate.d/openresty
+	source = https://openresty.org/download/openresty-1.11.2.5.tar.gz
+	source = https://openresty.org/download/openresty-1.11.2.5.tar.gz.asc
+	source = service
+	source = openresty.logrotate
+	source = openresty.install
+	source = openresty.sh
+	source = nginx-auth-ldap::git+https://github.com/kvspb/nginx-auth-ldap.git
+	validpgpkeys = 25451EB088460026195BD62CB550E09EA0E98066
+	sha256sums = f8cc203e8c0fcd69676f65506a3417097fc445f57820aa8e92d7888d8ad657b9
+	sha256sums = SKIP
+	sha256sums = ec55ac7da98f5f5ec54d096c5f79b656edec0ebca835b6b9f1d20fb7be7119c5
+	sha256sums = 613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23
+	sha256sums = f071e0fd8d0d588f03fcc7db6f3cb3f7ea1b870d3416a0bde142d9aeb839d0f6
+	sha256sums = bf628aa47fb85f036f250416f13900be61dccac89736434498a80989b16ae85a
+	sha256sums = SKIP
+
+pkgname = openresty-ldap
+
