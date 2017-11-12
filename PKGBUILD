@@ -25,5 +25,5 @@ package() {
     install -Dm644 ${srcdir}/lightning-app.png ${pkgdir}/usr/share/pixmaps/lightning-app.png
 
     cp -r ${srcdir}/Lightning-linux-x64/* ${pkgdir}/opt/${pkgname}
-    ln -s ${pkgdir}/opt/${pkgname}/Lightning ${pkgdir}/usr/bin/lightning-app
+    ln -s /usr/bin/lightning-app ${pkgdir}/opt/${pkgname}/Lightning 
 }
