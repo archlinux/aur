@@ -1,0 +1,15 @@
+pkgbase = stymulator
+	pkgdesc = STYMulator is an Open Source (GPL License) player which plays music files in the YM chiptune format.
+	pkgver = 0.21a
+	pkgrel = 1
+	url = http://atariarea.krap.pl/stymulator/
+	changelog = stymulator.changelog
+	arch = x86_64
+	license = GPL2
+	depends = alsa-lib
+	depends = ncurses
+	source = http://atariarea.krap.pl/stymulator/files/STYMulator-0.21a.tar.gz
+	md5sums = e6ab8164dfac0300bb91a82f6e704841
+
+pkgname = stymulator
+

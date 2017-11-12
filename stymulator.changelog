@@ -1,0 +1,23 @@
+v0.21a
+15-March-2007
+
+- Fixed directory structure and install path for correct RPM packaging
+
+v0.21
+06-March-2007
+
+- Added GNU/Linux 64bit compatibility (small changes in YmTypes.h, YmUserInterface.cpp files). Verified on RHEL v4 U4 x86_64
+- Removed not needed ;-) snd_pcm_hw_params_set_rate_resample function (added to alsa-lib since 1.0.9rc2) due to more portability (sound.cpp)
+- Added platform info in ym2wav & ymplayer
+
+v0.2
+11-Jul-2006
+
+- Updated ST-Sound GPL library to version 1.2
+- Removed unneeded file player.cpp
+
+v0.1
+December 2005
+
+- Initial release
+
