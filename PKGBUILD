@@ -2,7 +2,7 @@
 # Maintainer: Hector Martinez-Seara Monne <hseara ##[at]## gmail?com>
 
 pkgname=plumed
-pkgver=2.3.3
+pkgver=2.4b
 pkgrel=1
 pkgdesc="An open source plugin for free energy calculations in molecular systems which works together with some of the most popular molecular dynamics engines."
 url="http://www.plumed-code.org/"
@@ -12,19 +12,20 @@ depends=('lapack' 'zlib' 'gsl' 'libmatheval')
 makedepends=()
 provides=('plumed')
 #install=$pkgname.install
-source=( https://github.com/plumed/plumed2/archive/v${pkgver}.tar.gz)
-sha1sums=('cb0f55cc73a4c1537d4383d6060a12a4d8ea9ad4')
+source=( https://github.com/plumed/plumed2/releases/download/v2.4b/plumed-2.4b.tgz)
+sha1sums=('b29eea4b28185f9535b7da40793c266c7553d601')
 #options=(!buildflags)
 
 build() {
-cd ${srcdir}/${pkgname}2-${pkgver}
-
-./configure --prefix=/usr --disable-mpi
-make 
+  cd ${srcdir}/${pkgname}-${pkgver}
+  ./configure --prefix=/usr --disable-mpi
+  make
 }
+
+
 package() {
-cd ${srcdir}/${pkgname}2-${pkgver}
-make DESTDIR=${pkgdir} install
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make DESTDIR=${pkgdir} install
 }
 
 ### Please Remember to set the following environment variable ###
