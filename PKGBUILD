@@ -20,7 +20,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.2.0RC5
+pkgver=7.2.0RC6
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -30,7 +30,7 @@ makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libxs
 checkdepends=('procps-ng')
 source=("https://downloads.php.net/~pollita/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
-sha256sums=('92a745048912beb3f6c2a3c188ce695a51852c67201fdf9a21dafe59f51aecc1'
+sha256sums=('be4df00ff5b66e9f13c83e1d08d1d5384ae7ccc820e26f7e5f9e660011496a9e'
             'SKIP'
             '07acff660e194197cfbcc955c0d362d6de063e6475668f3df03bfff023af11ed'
             'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
