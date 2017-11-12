@@ -2,9 +2,9 @@
 # Maintainer: duffydack <duffydack73 {at] gmail>
 
 pkgbase=linux-max98090
-_srcname=linux-4.13
-pkgver=4.13.12
-pkgrel=2
+_srcname=linux-4.14
+pkgver=4.14
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -12,8 +12,8 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf' 'patch' 'make')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -21,11 +21,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset')
         
-sha256sums=('2db3d6066c3ad93eb25b973a3d2951e022a7e975ee2fa7cbe5bddf84d9a49a2c'
+sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'd5830f31cf8522986fb530e69b3b9b023f0298c4f88d897541ff0776dc805828'
-            'SKIP'
-            '4e5acf6a0657934ca9b534e0349b6459ab9ab838e4be2376d6221f47e8b6b601'
+            '2160488b99b5483f6bb7727808738d70d42cb8d256652fdc5db7f72b21ba162c'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -39,7 +37,7 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  patch -p1 -i ../patch-${pkgver}
+  #patch -p1 -i ../patch-${pkgver}
 
   # security patches
 
