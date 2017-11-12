@@ -4,19 +4,13 @@ pkgdesc="ROS - Controller to publish joint state."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-lunar-joint-state-controller'
-pkgver='0.13.0'
+pkgver='0.13.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-catkin
-  ros-lunar-roscpp
-  ros-lunar-pluginlib
-  ros-lunar-realtime-tools
-  ros-lunar-controller-interface
-  ros-lunar-hardware-interface
-  ros-lunar-sensor-msgs)
+ros_makedepends=(ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
@@ -28,6 +22,9 @@ ros_depends=(ros-lunar-roscpp
   ros-lunar-sensor-msgs)
 depends=(${ros_depends[@]})
 
+ros_checkdepends=(ros-lunar-rostest)
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/joint_state_controller/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -37,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-lunar-joint_state_controller-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/lunar/joint_state_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('8f7516e9b6a50a94acceb4dff02699cdaad13c9a1d1b671c4486e9373fd7aa84')
+sha256sums=('d6210a084bee08efa9173e5fce7d959bd66dba5e11a90bd7e93e711aecf4b7a1')
 
 build() {
   # Use ROS environment variables
@@ -45,14 +42,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
