@@ -1,0 +1,17 @@
+pkgbase = metashell
+	pkgdesc = A C++ metaprogramming shell.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/metashell/metashell
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = clang
+	depends = readline
+	depends = termcap
+	source = https://github.com/metashell/metashell/archive/v3.0.0.tar.gz
+	md5sums = 5b256847962492f366f1c71553533bb8
+
+pkgname = metashell
+
