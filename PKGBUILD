@@ -4,23 +4,15 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back ROS me
 url='http://www.ros.org/'
 
 pkgname='ros-lunar-rosbag-storage'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-catkin
-  ros-lunar-roscpp-serialization
-  ros-lunar-rostime
-  ros-lunar-cpp-common
-  ros-lunar-roslz4
-  ros-lunar-roscpp-traits)
+ros_makedepends=(ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  bzip2
-  boost
-  console-bridge)
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-lunar-rostime
   ros-lunar-cpp-common
@@ -32,6 +24,9 @@ depends=(${ros_depends[@]}
   boost
   console-bridge)
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rosbag_storage/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -41,7 +36,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosbag_storage-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosbag_storage/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('25108073fef50f1df29aed96edff777ad0d2774c64b3db9f5bff3d0180890e2b')
+sha256sums=('04d63df37ff1622b8237bb7c0ad625061e4cbd5b96c731322abcdf6d4f847ae5')
 
 build() {
   # Use ROS environment variables
@@ -64,7 +59,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
