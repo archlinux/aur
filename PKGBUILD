@@ -2,10 +2,10 @@
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-plumed
-pkgver=2016.3
-_gromacsver=2016.3
-_plumedver=2.3.3
-pkgrel=5
+pkgver=2016.4
+_gromacsver=2016.4
+_plumedver=2.4b
+pkgrel=1
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -17,18 +17,12 @@ optdepends=('cuda: Nvidia GPU support'
 makedepends=('cmake' 'libxml2' 'hwloc' 'gcc6')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha1sums=('1ae1ea922b94c74f43ee066e3ea64bafa1c6c3b6')
+sha1sums=('b142c9c77e793fa8def24aeacebaf8b8f1dd55fc')
 
-#With gcc5 currently there are less errors in the tests
-# also the compilation is possible in cuda capable machines
+# In order to use CUDA 9 we need to use gcc6
+# for machines requiring cuda 8 use gcc5 instead
 export CC=gcc-6
 export CXX=g++-6
-   ###### CMAKE OPTIONS DISABLE BY DEFAULT ###########
-  # If you are using a haswell CPU, you will have   #
-  # problems compiling with AVX2 support unless you #
-  # modify march=native in the /etc/makepkg.conf:   #
-  # https://wiki.archlinux.org/index.php/Makepkg#Architecture.2C_compile_flagsAdd #
-  ###################################################
 export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
 export CXXFLAGS="${CFLAGS}"
 
@@ -44,17 +38,13 @@ prepare() {
 
 build() {
   mkdir -p ${srcdir}/single
-
-
   msg2 "Building the gromacs with plumed support (single precision)"
   cd ${srcdir}/single
   cmake ../gromacs-${_gromacsver} \
         -DCMAKE_INSTALL_PREFIX=/usr/ \
         -DBUILD_SHARED_LIBS=OFF \
         -DGMX_BUILD_MDRUN_ONLY=ON
-
   make
-
 }
 
 check () {
