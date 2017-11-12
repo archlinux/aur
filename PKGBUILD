@@ -4,22 +4,13 @@ pkgdesc="ROS - Stereo and single image rectification and disparity processing."
 url='http://www.ros.org/wiki/stereo_image_proc'
 
 pkgname='ros-lunar-stereo-image-proc'
-pkgver='1.12.20'
+pkgver='1.12.21'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-message-filters
-  ros-lunar-image-geometry
-  ros-lunar-catkin
-  ros-lunar-stereo-msgs
-  ros-lunar-dynamic-reconfigure
-  ros-lunar-sensor-msgs
-  ros-lunar-cv-bridge
-  ros-lunar-nodelet
-  ros-lunar-image-proc
-  ros-lunar-image-transport)
+ros_makedepends=(ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
@@ -34,6 +25,9 @@ ros_depends=(ros-lunar-message-filters
   ros-lunar-image-transport)
 depends=(${ros_depends[@]})
 
+ros_checkdepends=(ros-lunar-rostest)
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/stereo_image_proc/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -43,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="image_pipeline-release-release-lunar-stereo_image_proc-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/lunar/stereo_image_proc/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1fdde9b5b6340cbd8db9d20a2af8740a760133043a8e1d59d6e253699589f1cb')
+sha256sums=('15fc9fbba35a0fd3548f867632ac545ba4359776884c9d853be04e7bb76f79f1')
 
 build() {
   # Use ROS environment variables
@@ -51,14 +45,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -66,7 +60,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
