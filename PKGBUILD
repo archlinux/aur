@@ -2,7 +2,7 @@
 
 pkgname=lightning-app
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightning Network Desktop Wallet"
 arch=('x86_64')
 url="https://github.com/lightninglabs/lightning-app"
@@ -25,5 +25,5 @@ package() {
     install -Dm644 ${srcdir}/lightning-app.png ${pkgdir}/usr/share/pixmaps/lightning-app.png
 
     cp -r ${srcdir}/Lightning-linux-x64/* ${pkgdir}/opt/${pkgname}
-    ln -s /usr/bin/lightning-app ${pkgdir}/opt/${pkgname}/Lightning 
+    ln -s /opt/${pkgname}/Lightning ${pkgdir}/usr/bin/lightning-app
 }
