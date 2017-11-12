@@ -4,13 +4,13 @@ pkgdesc="ROS - rosmsg contains two command-line tools: rosmsg and rossrv."
 url='http://ros.org/wiki/rosmsg'
 
 pkgname='ros-lunar-rosmsg'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-catkin)
+ros_makedepends=()
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
@@ -22,6 +22,9 @@ ros_depends=(ros-lunar-genpy
 depends=(${ros_depends[@]}
   python2-rospkg)
 
+ros_checkdepends=(ros-lunar-std-msgs)
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rosmsg/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -31,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosmsg-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosmsg/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('8e25e56a52448cbec2bd8882b9b0d240e553f4e3b9b7df23ef915f5d55ef5212')
+sha256sums=('d27c0da9872d1d147761991b89ec94dbc27c55298ea8789724bfafdc11276e9d')
 
 build() {
   # Use ROS environment variables
@@ -54,7 +57,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
