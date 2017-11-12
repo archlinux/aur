@@ -3,7 +3,7 @@
 
 pkgname=mattermost
 pkgver=4.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://mattermost.com"
@@ -84,7 +84,7 @@ prepare() {
             sed -r -i build/release.mk \
                 -e "5,6s/amd64/386/"
             ;;
-        arm*64*)
+        arm*64*|*arch*64*)
             sed -r -i build/release.mk \
                 -e "5,6s/amd64/arm64/"
             ;;
