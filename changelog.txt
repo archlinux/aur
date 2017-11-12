@@ -1,3 +1,11 @@
+v2.0.0 -- Fri, 17 Mar 2017 09:42:36 GMT
+
+Adds 6 new built in theme presets
+Adds the ability to customize theme colors (HSL / RGB / HEX color picker)
+Adds the ability to create / load theme presets using the current settings
+Adds DPI setting for High DPI (Retina) devices
+Theme will now auto-focus the password field on-load
+
 v1.3.1 -- Fri, 17 Mar 2017 09:42:36 GMT
 
 Fixes an error that would occur due to poor distro logo configuration handling.
