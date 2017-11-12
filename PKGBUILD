@@ -4,7 +4,7 @@ pkgdesc="ROS - Nodelet Core Metapackage."
 url='http://www.ros.org/wiki/nodelet_core'
 
 pkgname='ros-lunar-nodelet-core'
-pkgver='1.9.12'
+pkgver='1.9.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,6 +18,9 @@ ros_depends=(ros-lunar-nodelet
   ros-lunar-nodelet-topic-tools)
 depends=(${ros_depends[@]})
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/nodelet_core/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -27,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="nodelet_core-release-release-lunar-nodelet_core-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/lunar/nodelet_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1460ae4e2352c16cf41c8d4b1a1ae1b5864843236d4b0a8523a5e1581f20674f')
+sha256sums=('789a64f29c58e63dff54cb6add4f249310ef9c20d7156aab8cb1a796b23842f3')
 
 build() {
   # Use ROS environment variables
@@ -35,14 +38,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -50,7 +53,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
