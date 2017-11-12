@@ -1,0 +1,16 @@
+pkgbase = lighting-app
+	pkgdesc = Lightning Network Desktop Wallet
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/lightninglabs/lightning-app
+	arch = x86_64
+	license = GPL
+	source = https://github.com/lightninglabs/lightning-app/releases/download/v0.1.2alpha/Lightning-linux-x64v0.1.2.tar.gz
+	source = lightning-app.desktop
+	source = lightning-app.png
+	sha256sums = f9b1e0d5de8b1e09ca0c50805a704fa5ed87e6aa9beb96854da35708fd4a1645
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lighting-app
+
