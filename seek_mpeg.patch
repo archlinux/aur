@@ -1,0 +1,11 @@
+--- src/dvdread/dvdread.c	2017-11-12 13:24:21.346853656 +0900
++++ src/dvdread/dvdread.c~	2017-11-12 11:02:08.965103124 +0900
+@@ -203,7 +203,7 @@
+                     || file[curfile].type == vts_vob)
+                 && curfile != lastfile) {
+             st = "seek key";
+-            r = dvdcss_seek(dvdcss, s, DVDCSS_SEEK_KEY);
++            r = dvdcss_seek(dvdcss, s, DVDCSS_SEEK_MPEG);
+         } else {
+             st = "seek";
+             r = dvdcss_seek(dvdcss, s, DVDCSS_NOFLAGS);
