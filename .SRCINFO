@@ -1,14 +1,14 @@
 pkgbase = mint-x-icons
 	pkgdesc = Icon theme for Linux Mint
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mint-x-icons
 	arch = any
 	license = GPL3
 	depends = gdk-pixbuf2
 	depends = gtk-update-icon-cache
-	source = http://packages.linuxmint.com/pool/main/m/mint-x-icons/mint-x-icons_1.4.4.tar.xz
-	sha256sums = d0e46d2786e8818bd13b442fcf9e202755417d6c60237dbbc2a40c60b98ae5c4
+	source = http://packages.linuxmint.com/pool/main/m/mint-x-icons/mint-x-icons_1.4.5.tar.xz
+	sha256sums = 5b54595cdab307e7707a079b29b2c7e0fd66288ae0cf09be1d04d4768b0e7fd2
 
 pkgname = mint-x-icons
 
