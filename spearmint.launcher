@@ -1,4 +1,15 @@
 #!/bin/bash
 
+OLDDIR=${HOME}/.spearmint
+NEWDIR=${HOME}/.local/share/spearmint
+
+if [ -d "${OLDDIR}" ];
+then
+	if [ ! -f "${OLDDIR}/.nomove" ];
+	then
+		mv ${OLDDIR} ${NEWDIR}
+	fi
+fi
+
 cd /opt/spearmint
 /opt/spearmint/spearmint +set sv_pure 0 ${*}

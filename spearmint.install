@@ -12,6 +12,10 @@ post_install() {
     echo '!!! When you have the .pk3 file(s) installed, you can run the game via: spearmint'
     echo '!!! See https://github.com/zturtleman/spearmint/wiki for more documentation.'
     echo '!!!'
+    echo '!!! NEW IN VERSION 0.5+: The default user directory has changed from ~/.spearmint to'
+    echo '!!!  ~/.local/share/spearmint. The launcher ("spearmint") will automatically move this'
+    echo '!!!  directory to the new location, if it exists. If you wish to avoid this behaviour,'
+    echo '!!!  simply do "touch ~/.spearmint/.nomove"'
 }
 
 post_upgrade() {
