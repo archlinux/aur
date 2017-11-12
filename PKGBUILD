@@ -4,17 +4,15 @@ pkgdesc="ROS - Integration test suite based on roslaunch that is compatible with
 url='http://ros.org/wiki/rostest'
 
 pkgname='ros-lunar-rostest'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-catkin
-  ros-lunar-rosunit)
+ros_makedepends=(ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  boost)
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-lunar-rosmaster
   ros-lunar-roslaunch
@@ -23,6 +21,9 @@ ros_depends=(ros-lunar-rosmaster
   ros-lunar-rosgraph)
 depends=(${ros_depends[@]}
   boost)
+
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rostest/${pkgver}-${_pkgver_patch}
@@ -33,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rostest-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rostest/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('90893dd4184760eab7f79b0ada26cb1e5138232114e060415a225d8c7c5ea685')
+sha256sums=('eec6f01ffdce6a83e4aba6d6328723710bdec6d7b3a559de98c97c9e83cf08f4')
 
 build() {
   # Use ROS environment variables
@@ -56,7 +57,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
