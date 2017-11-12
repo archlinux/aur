@@ -15,7 +15,7 @@ buildarch=4
 
 pkgname=retroarch-rbp
 pkgver=1.6.7
-pkgrel=1.1
+pkgrel=2.1
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi)'
 arch=('armv7h')
 url='http://www.libretro.com/'
@@ -29,14 +29,18 @@ depends=('alsa-lib' 'gcc-libs' 'glibc' 'libdrm' 'libgl' 'libpulse' 'libusb'
          'libass.so' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
          'libfreetype.so' 'libswresample.so' 'libswscale.so' 'libudev.so')
 makedepends=('vulkan-icd-loader')
-optdepends=('libretro-desmume: Nintendo DS core'
+optdepends=('libretro-beetle-psx: Sony PlayStation core'
+            'libretro-beetle-psx-hw: Sony PlayStation core'
+            'libretro-blastem: Sega Mega Drive core'
+            'libretro-bsnes: Super Nintendo Entertainment System cores'
+            'libretro-desmume: Nintendo DS core'
             'libretro-gambatte: Nintendo Game Boy/Game Boy Color core'
-            'libretro-genesis-plus: Sega Master System/Genesis/Game Gear/CD/32X core'
+            'libretro-genesis-plus-gx: Sega MS/GG/MD/CD core'
             'libretro-mgba: Nintendo Game Boy Advance core'
             'libretro-mupen64plus: Nintendo 64 core'
             'libretro-nestopia: Nintendo Entertainment System core'
-            'libretro-pcsx-rearmed: Sony PlayStation core'
             'libretro-reicast: Sega Dreamcast core'
+            'libretro-scummvm: ScummVM core'
             'libretro-snes9x: Super Nintendo Entertainment System core'
             'libretro-yabause: Sega Saturn core'
             'libretro-overlays: Collection of overlays'
