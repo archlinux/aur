@@ -1,5 +1,5 @@
 pkgbase = kodi-git
-	pkgver = 18.0.r46814.32cc2b329d
+	pkgver = 18.0.r46817.203b86f32f
 	pkgrel = 1
 	url = http://kodi.tv
 	arch = i686
@@ -50,9 +50,7 @@ pkgbase = kodi-git
 	makedepends = tinyxml
 	makedepends = upower
 	source = xbmc::git+https://github.com/xbmc/xbmc.git#branch=master
-	source = 0001-include-fmt-printf.h-to-allow-the-use-of-fmt-sprintf.patch
 	sha256sums = SKIP
-	sha256sums = 867e0b91c9c4d3f69074b567d065f50bdfe9010b3601fef876069e41842bbaac
 
 pkgname = kodi-git
 	pkgdesc = A software media player and entertainment hub for digital media (master branch)

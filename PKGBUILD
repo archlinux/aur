@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git' 'kodi-tools-texturepacker-git' 'kodi-dev-git')
 _gitname='xbmc'
-pkgver=18.0.r46814.32cc2b329d
+pkgver=18.0.r46817.203b86f32f
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -29,10 +29,8 @@ makedepends=('afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'g
              'libmpeg2' 'libnfs' 'libplist' 'libxrandr' 'libxslt' 'lzo' 'mesa' 'nasm' 'nss-mdns'
              'python2-pillow' 'python2-pybluez' 'python2-simplejson' 'rapidjson-git' 'rtmpdump'
              'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'upower')
-source=("$_gitname::git+https://github.com/xbmc/xbmc.git#branch=master"
-        '0001-include-fmt-printf.h-to-allow-the-use-of-fmt-sprintf.patch')
-sha256sums=('SKIP'
-            '867e0b91c9c4d3f69074b567d065f50bdfe9010b3601fef876069e41842bbaac')
+source=("$_gitname::git+https://github.com/xbmc/xbmc.git#branch=master")
+sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_gitname"
   _major=$(grep 'VERSION_MAJOR' version.txt | sed 's/VERSION_MAJOR //')
@@ -44,8 +42,6 @@ pkgver() {
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir kodi-build
-  cd $_gitname
-  patch -p1 -i "$srcdir/0001-include-fmt-printf.h-to-allow-the-use-of-fmt-sprintf.patch"
 }
 
 build() {
