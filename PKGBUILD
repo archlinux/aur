@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc="GNOME Docking Library"
 arch=(x86_64)
 license=('GPL')
-url="http://www.gnome.org/"
+url="https://www.gnome.org/"
 depends=('gtk3')
 makedepends=('gtk-doc' 'intltool' 'gobject-introspection' gnome-common git)
 _commit=5299ee410b000e5f1c955c46a4a0b6acd822b906  # tags/GDL_3_26_0^0
-source=("git://git.gnome.org/gdl#commit=$_commit")
+source=("git+https://git.gnome.org/browse/gdl#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
