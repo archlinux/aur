@@ -1,13 +1,12 @@
 pkgbase = lockjaw
 	pkgdesc = Free and highly customizable implementation of Tetris
 	pkgver = 046
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.pineight.com/lj
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = allegro
-	depends = dumb
+	depends = allegro4
 	source = https://sites.google.com/site/xaelous/40l/lj046-src.zip
 	source = lj.dat
 	source = sound.dat
