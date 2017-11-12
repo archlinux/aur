@@ -1,3 +1,5 @@
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+
 pkgname=mingw-w64-libsystre
 pkgver=1.0.1
 pkgrel=1
