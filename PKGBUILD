@@ -4,7 +4,7 @@ pkgdesc="ROS - Contains scripts used by the rosboost-cfg tool for determining cf
 url='http://ros.org/wiki/rosboost_cfg'
 
 pkgname='ros-lunar-rosboost-cfg'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,6 +17,9 @@ makedepends=('cmake' 'ros-build-tools'
 ros_depends=()
 depends=(${ros_depends[@]})
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rosboost_cfg/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -26,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-lunar-rosboost_cfg-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/lunar/rosboost_cfg/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('cae8f5071d9f230da9b24b0db4a6348e090cacc5dff1ccd3909d11b999e1f310')
+sha256sums=('ae67d8eb121216aadb56269257909be8b0e995fb3ad700f16b4e18cf5f0bb59c')
 
 build() {
   # Use ROS environment variables
@@ -34,14 +37,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -49,7 +52,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
