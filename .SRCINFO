@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-ncurses
+	pkgdesc = System V Release 4.0 curses emulation library (mingw-w64)
+	pkgver = 6.0.20170916
+	pkgrel = 1
+	url = https://www.gnu.org/software/ncurses/
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-pkg-config
+	depends = mingw-w64-crt
+	depends = mingw-w64-libsystre
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = ncurses-6.0.20170916.tar.gz::https://invisible-mirror.net/archives/ncurses/current/ncurses-6.0-20170916.tgz
+	source = 001-use-libsystre.patch
+	md5sums = 20f410048cebb62f668b80333043da96
+	md5sums = b669861903d0699b6535b7c6e028880d
+
+pkgname = mingw-w64-ncurses
+
