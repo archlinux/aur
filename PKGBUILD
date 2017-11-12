@@ -2,13 +2,13 @@
 
 pkgname=python-language-server
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of the Language Server Protocol for Python"
 arch=("any")
 url="https://github.com/palantir/${pkgname}"
 license=("MIT")
 depends=("python" "python-json-rpc" "python-future" "python-jedi" "python-mccabe"
-    "python-pluggy" "python-pycodestyle" "python-pyflakes" "yapf" "pydocstyle")
+    "python-pluggy" "python-pycodestyle" "python-pyflakes" "python-rope" "yapf" "pydocstyle")
 # optdepends=("python-language-server-mypy: mypy type checking")
 makedepends=("python-setuptools")  
 conflicts=("${pkgname}" "${pkgname}-git")
