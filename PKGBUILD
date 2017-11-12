@@ -4,27 +4,19 @@ pkgdesc="ROS - Contains nodelets for processing depth images such as those produ
 url='http://ros.org/wiki/depth_image_proc'
 
 pkgname='ros-lunar-depth-image-proc'
-pkgver='1.12.20'
+pkgver='1.12.21'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-tf2
-  ros-lunar-message-filters
-  ros-lunar-image-geometry
+ros_makedepends=(ros-lunar-message-filters
   ros-lunar-stereo-msgs
   ros-lunar-cmake-modules
-  ros-lunar-cv-bridge
-  ros-lunar-tf2-ros
   ros-lunar-sensor-msgs
-  ros-lunar-nodelet
-  ros-lunar-catkin
-  ros-lunar-image-transport
-  ros-lunar-eigen-conversions)
+  ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  boost)
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-lunar-tf2
   ros-lunar-image-geometry
@@ -36,6 +28,9 @@ ros_depends=(ros-lunar-tf2
 depends=(${ros_depends[@]}
   boost)
 
+ros_checkdepends=(ros-lunar-rostest)
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/depth_image_proc/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -45,7 +40,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="image_pipeline-release-release-lunar-depth_image_proc-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/lunar/depth_image_proc/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ea2a8e946d3dae2dd7a9ef2bd1ef1f9d736790dd58f468317c3c1955cd7e4740')
+sha256sums=('f4d691bcb2b3dd5371909ea244d2658fcd6679729260a7f30a32ff5f9a3a5f94')
 
 build() {
   # Use ROS environment variables
@@ -53,14 +48,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -68,7 +63,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
