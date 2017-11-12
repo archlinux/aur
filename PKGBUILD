@@ -4,22 +4,17 @@ pkgdesc="ROS - ROS console output library."
 url='http://www.ros.org/wiki/rosconsole'
 
 pkgname='ros-lunar-rosconsole'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-rostime
-  ros-lunar-cpp-common
-  ros-lunar-rosunit
+ros_makedepends=(ros-lunar-rosunit
   ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  apr
-  apr-util
-  boost
-  log4cxx)
+  boost)
 
 ros_depends=(ros-lunar-rosbuild
   ros-lunar-cpp-common
@@ -28,6 +23,9 @@ depends=(${ros_depends[@]}
   apr
   apr-util
   log4cxx)
+
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rosconsole/${pkgver}-${_pkgver_patch}
@@ -38,7 +36,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosconsole-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosconsole/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f859b77ff02abd09799bd30b7e9d26e5b26feeaa9e95b771cf659347bab024c2')
+sha256sums=('b1e6def002bfd18c184885672282d183e5d227a2850d35d681852e4b34cfb11e')
 
 build() {
   # Use ROS environment variables
@@ -61,7 +59,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
