@@ -4,21 +4,16 @@ pkgdesc="ROS - C++ implementation of bond, a mechanism for checking when another
 url='http://www.ros.org/wiki/bondcpp'
 
 pkgname='ros-lunar-bondcpp'
-pkgver='1.8.0'
+pkgver='1.8.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin
-  ros-lunar-cmake-modules
-  ros-lunar-roscpp
-  ros-lunar-smclib
-  ros-lunar-bond)
+  ros-lunar-cmake-modules)
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  util-linux
-  boost)
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-lunar-roscpp
   ros-lunar-smclib
@@ -26,6 +21,9 @@ ros_depends=(ros-lunar-roscpp
 depends=(${ros_depends[@]}
   util-linux
   boost)
+
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/bondcpp/${pkgver}-${_pkgver_patch}
@@ -36,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="bond_core-release-release-lunar-bondcpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/lunar/bondcpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d30bc7ebd990b6d96d860b37482fe7a37943b69e8e9d912f881a6123829c8f60')
+sha256sums=('73d4b020be594afd91233dbffcb1b7934123fce3e648d37d348394cb2a148e74')
 
 build() {
   # Use ROS environment variables
@@ -44,14 +42,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -59,7 +57,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
