@@ -2,12 +2,12 @@
 
 pkgname=lockjaw
 pkgver=046
-pkgrel=6
+pkgrel=7
 pkgdesc="Free and highly customizable implementation of Tetris"
 arch=('i686' 'x86_64')
 url="http://www.pineight.com/lj"
 license=('GPL')
-depends=('allegro' 'dumb')
+depends=('allegro4')
 install=
 
 # WARNING!!! This is not the original URL of the Lockjaw source code!
@@ -52,6 +52,10 @@ build() {
     cd $srcdir
     # Allegro gives us jpgalleg now... but the name in the makefile is wrong!
     sed -i "s/jpgal/jpgalleg/" makefile
+    # It appears aldumb.h doesn't exist anymore, so we'll just not use it.
+    sed -i "s/-laldmb//" makefile
+    sed -i "s/-ldumb//" makefile
+    sed -i "s/LJMUSIC_USING_DUMB 1/LJMUSIC_USING_DUMB 0/" src/ljmusic.h
     # -mwindows most definitely not supported by gcc and not what we want.
     sed -i "s/-mwindows//" makefile
     # In addition, I need an -lm otherwise cos is undefined
