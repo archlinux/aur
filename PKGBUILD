@@ -3,7 +3,7 @@
 pkgname=lightdm-webkit-theme-aether
 pkgver=2.0.0
 pkgrel=1
-pkgdesc="A sleek, straightforward Archlinux theme for lightdm."
+pkgdesc="A sleek, customizable Archlinux theme for lightdm."
 arch=('any')
 url="https://github.com/NoiSek/Aether"
 license=('GPL3')
