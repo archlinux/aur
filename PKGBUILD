@@ -3,16 +3,17 @@
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
 pkgver=1.1a
-pkgrel=1
+pkgrel=2
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64')
-url="https://github.com/supertriodo/Arena-Tracker/"
+url="https://github.com/arunsivaramanneo/GPU-Viewer/"
 license=('GPL3')
 depends=('gtk3' 'python' 'python-gobject')
 optdepends=('nvidia: Vulkan nvidia driver'
             'mesa'
             'vulkan-utils: Vulkan utilities for vulkan support'
-            'vulkan-radeon: Vulkan AMD drivers')
+            'vulkan-radeon: Vulkan AMD drivers'
+            'vulkan-validation-layers: Vulkaninfo support')
 provides=(gpu-viewer)
 source=("https://github.com/arunsivaramanneo/$_pkgname/archive/$pkgver.tar.gz")
 
@@ -28,7 +29,7 @@ package() {
 	cp -rf $srcdir/$_pkgname-$pkgver/LICENSE $pkgdir/usr/share/$pkgname
 	cp -rf $srcdir/$_pkgname-$pkgver/README.md $pkgdir/usr/share/$pkgname
 	cp -rf $srcdir/$_pkgname-$pkgver/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-	ln -s "$pkgdir/usr/share/$pkgname/GPUViewer" "$pkgdir/usr/bin/$pkgname"
+	ln -s "/usr/share/$pkgname/GPUViewer" "$pkgdir/usr/bin/$pkgname"
 }
 
 md5sums=('041d063770334e16074dfaf27c2a5aa9')
