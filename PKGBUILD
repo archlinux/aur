@@ -4,7 +4,7 @@ pkgdesc="ROS - roslaunch is a tool for easily launching multiple ROS nodes local
 url='http://ros.org/wiki/roslaunch'
 
 pkgname='ros-lunar-roslaunch'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,6 +26,9 @@ depends=(${ros_depends[@]}
   python2-paramiko
   python2-yaml)
 
+ros_checkdepends=(ros-lunar-rosbuild)
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/roslaunch/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -35,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-roslaunch-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/roslaunch/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f2957c783008a0544402e03e34b2818f07ac428d14541ac20a235bee0c46478e')
+sha256sums=('9c67bf2fe56a3e5c20d864140be03e293b9375ef826c5c31049fc9832d3f6e67')
 
 build() {
   # Use ROS environment variables
@@ -58,7 +61,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
