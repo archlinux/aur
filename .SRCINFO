@@ -1,4 +1,4 @@
-pkgbase = lighting-app
+pkgbase = lightning-app
 	pkgdesc = Lightning Network Desktop Wallet
 	pkgver = 0.1.2
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = lighting-app
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = lighting-app
+pkgname = lightning-app
 

@@ -1,6 +1,6 @@
 # Maintainer: Michael Yeatts <mwyeatts at gmail dot com>
 
-pkgname=lighting-app
+pkgname=lightning-app
 pkgver=0.1.2
 pkgrel=1
 pkgdesc="Lightning Network Desktop Wallet"
