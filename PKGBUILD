@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp_traits contains the message traits code as described in Me
 url='http://ros.org/wiki/roscpp_traits'
 
 pkgname='ros-lunar-roscpp-traits'
-pkgver='0.6.5'
+pkgver='0.6.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,6 +18,9 @@ ros_depends=(ros-lunar-rostime
   ros-lunar-cpp-common)
 depends=(${ros_depends[@]})
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/roscpp_traits/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -27,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-lunar-roscpp_traits-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/lunar/roscpp_traits/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('663bb33b4b3d871baecc895d0cf6b9776444298810fab7c2f6686cf15ff6ee6f')
+sha256sums=('7a6969acdce39e4ce3282a577629f8a5fa00826f59570ee8c2bf1ce8009566dc')
 
 build() {
   # Use ROS environment variables
@@ -35,14 +38,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -50,7 +53,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
