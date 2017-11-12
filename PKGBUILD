@@ -4,7 +4,7 @@ pkgdesc="ROS - rosnode is a command-line tool for displaying debug information a
 url='http://ros.org/wiki/rosnode'
 
 pkgname='ros-lunar-rosnode'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -19,6 +19,9 @@ ros_depends=(ros-lunar-rosgraph
   ros-lunar-rostopic)
 depends=(${ros_depends[@]})
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rosnode/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -28,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosnode-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosnode/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6fabbff4071642d01a0e269d7b5bd6efd221f9d787aadbd639fa38717082f966')
+sha256sums=('9a964369181c612f6dcb7a3a234c7b6f5ddf28c23d91782e429e5b21669c994a')
 
 build() {
   # Use ROS environment variables
@@ -51,7 +54,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
