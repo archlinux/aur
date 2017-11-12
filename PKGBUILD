@@ -10,7 +10,7 @@
 
 pkgbase=linux-lts310
 _srcname=linux-3.10
-pkgver=3.10.107
+pkgver=3.10.108
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -35,7 +35,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '004_disable-pie-when-gcc-has-it-enabled-by-default.patch')
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'SKIP'
-            'cc71150009ec821a2bdb45acca6243961dd51f207744bd4358219680c7920eb5'
+            'bfe30979676ca1178d7b98461d9e38ee66d63ad44032a450a27cbdd4fcbc8dab'
             'SKIP'
             '9f3ac423acd111057786196413798e46d7f88435d34a28eb6af882b197f11597'
             'efc600449f588e8baff59f7595c885cedd5b83af8302aa9e87a4a8171e72bd50'
