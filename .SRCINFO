@@ -1,8 +1,8 @@
 pkgbase = medit-hg
 	pkgdesc = A GTK2 text editor
-	pkgver = 4830.162e414c908b
+	pkgver = 5001.0e5101474bc1
 	pkgrel = 1
-	url = http://medit.bitbucket.org
+	url = http://bitbucket.org/medit/medit
 	install = medit.install
 	arch = i686
 	arch = x86_64

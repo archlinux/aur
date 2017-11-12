@@ -3,11 +3,11 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=medit-hg
-pkgver=4830.162e414c908b
+pkgver=5109.e4e6a091440e
 pkgrel=1
 pkgdesc="A GTK2 text editor"
 arch=('i686' 'x86_64')
-url="http://medit.bitbucket.org"
+url="http://bitbucket.org/medit/medit"
 options=('!emptydirs')
 license=('GPL' 'LGPL')
 depends=('pygtk' 'libxml2' 'pcre' 'libsm' 'python2' 'gtk2' 'gcc-libs' 'hicolor-icon-theme' 'desktop-file-utils')
