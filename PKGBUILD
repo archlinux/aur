@@ -4,7 +4,7 @@ pkgdesc="ROS - cpp_common contains C++ code for doing things that are not necess
 url='http://www.ros.org/wiki/cpp_common'
 
 pkgname='ros-lunar-cpp-common'
-pkgver='0.6.5'
+pkgver='0.6.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,14 +12,15 @@ license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  boost
-  console-bridge)
+  ${ros_makedepends[@]})
 
 ros_depends=()
 depends=(${ros_depends[@]}
   boost
   console-bridge)
+
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/cpp_common/${pkgver}-${_pkgver_patch}
@@ -30,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-lunar-cpp_common-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/lunar/cpp_common/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d54bf1f9a455b9a1a8fb5aaf5cdb6931c301e715eaaff14ebb69d97ef6781e68')
+sha256sums=('32f8141cc8f76afae1630dc2dbc3f5e2946d987f44896824107e87b6231b70f9')
 
 build() {
   # Use ROS environment variables
@@ -38,14 +39,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -53,7 +54,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
