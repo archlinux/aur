@@ -10,8 +10,8 @@ url="http://computersystemsbook.com/4th-edition/pep8/"
 license=('GPL')
 depends=('qt5-base' 'qt5-webengine')
 source=("git+https://github.com/StanWarford/${_pkgname}")
-provides=('pep8')
-conflicts=('pep8')
+provides=('pep8-asm')
+conflicts=('pep8-asm')
 md5sums=('SKIP')
 
 build() {
