@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_dotgraph provides helpers to work with dot graphs."
 url='http://ros.org/wiki/qt_dotgraph'
 
 pkgname='ros-lunar-qt-dotgraph'
-pkgver='0.3.6'
+pkgver='0.3.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,6 +18,10 @@ ros_depends=(ros-lunar-python-qt-binding)
 depends=(${ros_depends[@]}
   python2-pydot)
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]}
+  python2-pygraphviz)
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/qt_dotgraph/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -27,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="qt_gui_core-release-release-lunar-qt_dotgraph-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/lunar/qt_dotgraph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('13e1686146ffbad1264fd9eed27a24dbdf52d2c3af9026e8ae50d8fb5a2cb3ae')
+sha256sums=('16960d1edbc307a4e825590528f164a539a4c3222b51541a9bdd1e14ff60aeb7')
 
 build() {
   # Use ROS environment variables
@@ -35,14 +39,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -50,7 +54,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
