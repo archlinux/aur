@@ -4,7 +4,7 @@ pkgdesc="ROS - rostopic contains the rostopic command-line tool for displaying d
 url='http://ros.org/wiki/rostopic'
 
 pkgname='ros-lunar-rostopic'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -20,6 +20,9 @@ ros_depends=(ros-lunar-genpy
   ros-lunar-rospy)
 depends=(${ros_depends[@]})
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rostopic/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -29,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rostopic-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rostopic/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b1f4e0551cad3d350713e478a7a59c6d4da106d6d2655a4e0f7f0fc1c98c2b5f')
+sha256sums=('60317b487cd3743a7aa5da80c04aeeb79a189f1919c546c8d524829de0bf0a41')
 
 build() {
   # Use ROS environment variables
@@ -52,7 +55,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
