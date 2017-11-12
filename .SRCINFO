@@ -1,16 +1,18 @@
 pkgbase = python-perf
 	pkgdesc = Python module to generate and modify perf
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/haypo/perf
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python2
-	makedepends = python-six
-	makedepends = python2-six
-	makedepends = python2-statistics
-	makedepends = irqbalance
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = python
+	depends = python2
+	depends = python-six
+	depends = python2-six
+	depends = python2-statistics
+	depends = irqbalance
 	source = https://pypi.python.org/packages/de/c1/7f8ef204eec8dd31ad4c1e618a820d8b5dd4a89426b1a2e705901bab79ef/perf-1.4.tar.gz
 	md5sums = fcf55a43d601522e1d5d8603af9af6f0
 
