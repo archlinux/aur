@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_gui_cpp provides the foundation for C++-bindings for qt_gui an
 url='http://ros.org/wiki/qt_gui_cpp'
 
 pkgname='ros-lunar-qt-gui-cpp'
-pkgver='0.3.6'
+pkgver='0.3.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,11 +12,9 @@ license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin
   ros-lunar-cmake-modules
-  ros-lunar-python-qt-binding
-  ros-lunar-pluginlib)
+  ros-lunar-python-qt-binding)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  tinyxml
   qt5-base
   pkg-config)
 
@@ -24,6 +22,9 @@ ros_depends=(ros-lunar-qt-gui
   ros-lunar-pluginlib)
 depends=(${ros_depends[@]}
   tinyxml)
+
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/qt_gui_cpp/${pkgver}-${_pkgver_patch}
@@ -34,7 +35,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="qt_gui_core-release-release-lunar-qt_gui_cpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/lunar/qt_gui_cpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a09a1c8a1e45e5c1c8afaf2baa68ba0f65f2d12daa32732c222a0e1ce8b0926c')
+sha256sums=('7df42ace865c6694eb6bb110a5316f268877edba201aa46c3d3372f61527298f')
 
 build() {
   # Use ROS environment variables
@@ -42,14 +43,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -57,7 +58,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
