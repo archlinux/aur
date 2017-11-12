@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-libsystre
+	pkgdesc = Wrapper library around TRE that provides POSIX API (mingw-w64)
+	pkgver = 1.0.1
+	pkgrel = 1
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-pkg-config
+	depends = mingw-w64-crt
+	depends = mingw-w64-libtre
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = systre-1.0.1.tar.xz
+	md5sums = ad09e6609213a1c4ebc83a1d071a46c6
+
+pkgname = mingw-w64-libsystre
+
