@@ -1,6 +1,6 @@
 pkgbase = pyfa
 	pkgdesc = EVE Online Fitting Assistant
-	pkgver = 1.33.1
+	pkgver = 1.33.2
 	pkgrel = 1
 	url = https://github.com/pyfa-org/Pyfa
 	arch = any
@@ -15,11 +15,11 @@ pkgbase = pyfa
 	depends = python2-logbook
 	optdepends = python2-matplotlib: for graph plotting
 	optdepends = python2-numpy: for graph plotting
-	source = https://github.com/pyfa-org/Pyfa/releases/download/v1.33.1/pyfa-1.33.1-lifeblood-1.0-linux.zip
+	source = https://github.com/pyfa-org/Pyfa/releases/download/v1.33.2/pyfa-1.33.2-lifeblood-1.7-linux.zip
 	source = pyfa.desktop
 	source = pyfa-start.sh
-	md5sums = 14a74be4cbd293eef46a5a0eb77e6fb8
-	md5sums = d8eb1816f80ccd821f7cd6c96186bd8b
+	md5sums = 917e4d7e3b7ed309f1891a0e8598ba80
+	md5sums = cfa7fa7f9be04674324c57be2cd7804a
 	md5sums = 9937192cfce7f5e16e9cf26086f1899c
 
 pkgname = pyfa
