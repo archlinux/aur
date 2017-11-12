@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git' 'kodi-tools-texturepacker-git' 'kodi-dev-git')
 _gitname='xbmc'
-pkgver=20171023.65aca5104d
+pkgver=18.0.r46814.32cc2b329d
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -35,7 +35,10 @@ sha256sums=('SKIP'
             '867e0b91c9c4d3f69074b567d065f50bdfe9010b3601fef876069e41842bbaac')
 pkgver() {
   cd "$srcdir/$_gitname"
-  git log -1 --date=short --format="%cd.%h" | tr -d '-'
+  _major=$(grep 'VERSION_MAJOR' version.txt | sed 's/VERSION_MAJOR //')
+  _minor=$(grep 'VERSION_MINOR' version.txt | sed 's/VERSION_MINOR //')
+  _revision=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
+  echo "$_major.$_minor.$_revision" 
 }
 
 prepare() {
