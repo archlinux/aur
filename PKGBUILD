@@ -4,22 +4,14 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='http://ros.org/wiki/roscpp'
 
 pkgname='ros-lunar-roscpp'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-xmlrpcpp
-  ros-lunar-roscpp-serialization
-  ros-lunar-message-generation
-  ros-lunar-rostime
+ros_makedepends=(ros-lunar-message-generation
   ros-lunar-catkin
-  ros-lunar-rosconsole
-  ros-lunar-rosgraph-msgs
-  ros-lunar-cpp-common
-  ros-lunar-std-msgs
-  ros-lunar-roscpp-traits
   ros-lunar-roslang)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
@@ -36,6 +28,9 @@ ros_depends=(ros-lunar-xmlrpcpp
   ros-lunar-roscpp-traits)
 depends=(${ros_depends[@]})
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/roscpp/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -45,7 +40,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-roscpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/roscpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0bce1f189d543c57997087d99b7042f5d591d3d2168654f49cac498b4fe4b704')
+sha256sums=('b28d6a1a1eef8e6fa4c7800f6e2623c39704b9097d036aba94992fbdbc7a414f')
 
 build() {
   # Use ROS environment variables
@@ -68,7 +63,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
