@@ -4,21 +4,22 @@ pkgdesc="ROS - System-wide logging mechanism for messages sent to the /rosout to
 url='http://ros.org/wiki/rosout'
 
 pkgname='ros-lunar-rosout'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-rosgraph-msgs
-  ros-lunar-catkin
-  ros-lunar-roscpp)
+ros_makedepends=(ros-lunar-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-lunar-rosgraph-msgs
   ros-lunar-roscpp)
 depends=(${ros_depends[@]})
+
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rosout/${pkgver}-${_pkgver_patch}
@@ -29,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosout-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosout/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('fc3aa45b0f56dc61260240ec3ee1e539364da99f497dda3c27f1275e7fb1cbca')
+sha256sums=('fe9994f6903a4824319c2ae095fee64b25a203fe5ad06243f4d703aa9ff8c682')
 
 build() {
   # Use ROS environment variables
@@ -52,7 +53,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
