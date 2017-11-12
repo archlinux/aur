@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-ntldd-git
+	pkgdesc = Tracks dependencides in Windows PE binaries (mingw-w64)
+	pkgver = r17.3a08ea2
+	pkgrel = 1
+	url = https://github.com/LRN/ntldd
+	arch = any
+	license = GPL3
+	makedepends = mingw-w64-gcc
+	makedepends = git
+	depends = mingw-w64-crt
+	depends = wine
+	provides = mingw-w64-ntldd
+	conflicts = mingw-w64-ntldd
+	source = git+https://github.com/LRN/ntldd.git
+	md5sums = SKIP
+
+pkgname = mingw-w64-ntldd-git
+
