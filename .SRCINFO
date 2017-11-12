@@ -1,0 +1,24 @@
+pkgbase = mingw-w64-libtre-git
+	pkgdesc = The approximate regex matching library and agrep command line tool (mingw-w64)
+	pkgver = r128.6fb7206
+	pkgrel = 1
+	url = https://github.com/laurikari/tre
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-pkg-config
+	makedepends = git
+	depends = mingw-w64-crt
+	depends = mingw-w64-gettext
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = libtre::git+https://github.com/laurikari/tre.git#commit=6fb7206
+	source = 001-autotools.patch
+	source = 002-pointer-cast.patch
+	md5sums = SKIP
+	md5sums = 02e5246a85cec643b651527ad934f8da
+	md5sums = eb7c4c23c61b59bdb9a2257e13244110
+
+pkgname = mingw-w64-libtre-git
+
