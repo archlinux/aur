@@ -13,5 +13,7 @@ sha256sums=('bbd12cab218016f825a3eab50bca58facb5bff4f780c89e6545083eb6dd5037f')
 package () {
 	install -Dm755 "$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 "$pkgname-$pkgver/completion/${pkgname}_completion" "$pkgdir/etc/bash_completion.d/${pkgname}_completion"
-	install -Dm644 "$pkgname-$pkgver/completion/_${pkgname}" "$pkgdir/usr/share/zsh/functions/Completion/Zsh/_${pkgname}"
+	if [ -d /usr/share/zsh/functions/Completion/Zsh ]; then
+		install -Dm644 "$pkgname-$pkgver/completion/_${pkgname}" "$pkgdir/usr/share/zsh/functions/Completion/Zsh/_${pkgname}"
+	fi
 }
