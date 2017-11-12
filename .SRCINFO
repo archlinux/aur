@@ -1,13 +1,13 @@
 pkgbase = gnucap-random-git
 	pkgdesc = GSL based random variable sampling for Gnucap
-	pkgver = r11.0325e76
+	pkgver = r12.96cdedf
 	pkgrel = 1
 	url = http://gnucap.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = gnucap-git
+	depends = gnucap
 	depends = gsl
 	provides = gnucap-random
 	conflicts = gnucap-random

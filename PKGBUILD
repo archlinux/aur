@@ -2,13 +2,13 @@
 
 _pkgname=gnucap-random
 pkgname=$_pkgname-git
-pkgver=r11.0325e76
+pkgver=r12.96cdedf
 pkgrel=1
 pkgdesc="GSL based random variable sampling for Gnucap"
 arch=('i686' 'x86_64')
 url="http://gnucap.org/"
 license=('GPL')
-depends=('gnucap-git' 'gsl')
+depends=('gnucap' 'gsl')
 makedepends=('git')
 provides=('gnucap-random')
 conflicts=('gnucap-random')
@@ -32,7 +32,7 @@ check() {
 
 package() {
   cd $_pkgname
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
