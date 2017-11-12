@@ -14,7 +14,7 @@ pkgdesc="GUI frontend for BibTeX, written in Java, Using aliyun OSS to accelerat
 arch=('any')
 url="http://www.jabref.org/"
 license=('MIT')
-depends=('java-runtime>=8')
+depends=('java-runtime>=8' 'java-openjfx')
 conflicts=('jabref')
 optdepends=(
    'gsettings-desktop-schemas: For web search support'
@@ -29,7 +29,7 @@ sha256sums=('5555fd7691600a47e6ced54873738b4bd04dc2ad7f749c66887d343d2ff1dc06'
 
 prepare() {
   cd ${srcdir}
-  bsdtar -xf JabRef-${pkgver}.jar images/icons/JabRef-icon-48.png
+  bsdtar -xf JabRef-${pkgver}.jar images/external/JabRef-icon-48.png
 }
 
 package() {
@@ -40,5 +40,5 @@ package() {
   sed -i "s/VERSION/${pkgver}/" ${pkgdir}/usr/bin/${_pkgname}
 
   install -Dm644 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
-  install -Dm644 images/icons/JabRef-icon-48.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
+  install -Dm644 images/external/JabRef-icon-48.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
 }
