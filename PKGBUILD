@@ -1,8 +1,10 @@
 # Contributor: Vojtech Horky <vojta . horky at-symbol seznam . cz>
+# Contributor: Daniel Hillenbrand < codeworkx at bbqlinux dot org >
+
 pkgname=cross-mipsel-linux-gnu-binutils
 _pkgname=binutils
 _target="mipsel-linux-gnu"
-pkgver=2.25
+pkgver=2.29
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the MIPS architecture"
 url="http://www.gnu.org/software/binutils/"
@@ -10,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('zlib')
 source=("ftp://ftp.gnu.org/gnu/binutils/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('d9f3303f802a5b6b0bb73a335ab89d66')
+sha256sums=('29a29549869039aad75fdf507ac30366da5ad0b974fbff4a8e7148dbf4f40ebf')
 _sysroot="/usr/lib/cross-${_target}"
 
 prepare() {
@@ -19,7 +21,6 @@ prepare() {
 	# Hack - see native package for details
 	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 }
-
 
 build() {
 
