@@ -4,18 +4,21 @@ pkgdesc="ROS - Assorted shell commands for using ros with bash."
 url='http://www.ros.org/wiki/rosbash'
 
 pkgname='ros-lunar-rosbash'
-pkgver='1.14.1'
+pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-catkin)
+ros_makedepends=()
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-lunar-catkin)
 depends=(${ros_depends[@]})
+
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rosbash/${pkgver}-${_pkgver_patch}
@@ -26,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-lunar-rosbash-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/lunar/rosbash/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('26c9f148df28f8b48ed2e8ad3cf8812f9eaab294b0ca4d801183d0b419c647e0')
+sha256sums=('50aefb8f3a885ceb0ccfb4f212d1ef21529840282fac6d84cf34a7ec5cd6cd05')
 
 build() {
   # Use ROS environment variables
@@ -34,14 +37,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -49,7 +52,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
