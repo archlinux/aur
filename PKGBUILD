@@ -13,7 +13,7 @@ source=("http://atariarea.krap.pl/stymulator/files/$_realpkgname-$pkgver.tar.gz"
 md5sums=("e6ab8164dfac0300bb91a82f6e704841")
 
 prepare() {
-	cd "$_realpkgname-$pkgver/src"
+    cd "$_realpkgname-$pkgver/src"
 
     # Patch Makefile to remove hardcoded /usr/bin installation directory
     sed -i "s/\/usr\/bin$/\$(DESTDIR)/g" Makefile
@@ -21,11 +21,12 @@ prepare() {
 }
 
 build() {
-	cd "$_realpkgname-$pkgver/src"
-	make
+    cd "$_realpkgname-$pkgver/src"
+    make
 }
 
 package() {
-	cd "$_realpkgname-$pkgver/src"
-	make DESTDIR="$pkgdir/" install
+    cd "$_realpkgname-$pkgver/src"
+    mkdir -p $pkgdir/usr/bin
+    make DESTDIR="$pkgdir/usr/bin" install
 }
