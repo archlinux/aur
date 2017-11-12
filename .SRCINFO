@@ -1,0 +1,16 @@
+pkgbase = python-datarediset
+	pkgdesc = Python's dict on top of Redis
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/RcrdBrt/datarediset
+	arch = any
+	license = GPLv3
+	options = !emptydirs
+	source = https://github.com/RcrdBrt/datarediset/archive/0.0.4.tar.gz
+	sha256sums = c200c67a6286b948c825274399d0c17af1af35ada6446e0f5285b740c8449ae0
+
+pkgname = python-datarediset
+	depends = python
+	depends = python-redis
+	depends = redis
+
