@@ -1,0 +1,15 @@
+post_install()
+{
+	if grep -q -i "pcspkr" /proc/modules
+		then
+			rmmod pcspkr
+	fi
+}
+
+pre_remove()
+{
+	if ! grep -q -i "pcspkr" /proc/modules
+		then
+			modprobe pcspkr
+	fi
+}

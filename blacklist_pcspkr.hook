@@ -1,0 +1,10 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modprobe.d/blacklist_pcspkr.conf
+
+[Action]
+Description = Updating all initcpios disable pcspkr
+When = PostTransaction
+Exec = /usr/bin/mkinitcpio -P
