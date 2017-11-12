@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS communications-related packages, including core client librar
 url='http://www.ros.org/wiki/ros_comm'
 
 pkgname='ros-lunar-ros-comm'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,6 +38,9 @@ ros_depends=(ros-lunar-rosgraph
   ros-lunar-rosnode)
 depends=(${ros_depends[@]})
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/ros_comm/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -47,7 +50,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-ros_comm-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/ros_comm/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('fb9ba8f516451059d1484d57af447d03539dfdef4583bfc8df36fd6d1bbc443a')
+sha256sums=('d5d14d675a97d3f2cbd2f8a956bacd34702861048e25271410a2ebc560f17a10')
 
 build() {
   # Use ROS environment variables
@@ -70,7 +73,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
