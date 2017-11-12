@@ -1,8 +1,9 @@
-# Maintainer: Juraj Fiala <doctorjellyface at riseup dot net>
+# Maintainer: Felix Höffken <fupduck at sacknagel dot com>
+# Contributor: Juraj Fiala <doctorjellyface at riseup dot net>
 
 _srcname=leap_pycommon
 pkgname=python2-$_srcname
-pkgver=0.5.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Common utilities for leap python modules.'
 arch=('any')
@@ -22,8 +23,7 @@ depends=(
 #  'python2-pep8'
 #)
 source=("https://github.com/leapcode/$_srcname/archive/$pkgver.tar.gz")
-validpgpkeys=('BE23FB4A0E9DB36ECB9AB8BE23638BF72C593BC1')
-sha256sums=('5cf2039f4a7a6e5a85ce4868a2c5397c90b454819dfef5993b4aff55e8d5b483')
+sha256sums=('ca236cacf1d08d023a72552c590988b36bec79f4f8588fa9c4f50192777ba194')
 
 build() {
   cd "$srcdir/$_srcname-$pkgver"
