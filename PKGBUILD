@@ -4,21 +4,16 @@ pkgdesc="ROS - camera_calibration_parsers contains routines for reading and writ
 url='http://ros.org/wiki/camera_calibration_parsers'
 
 pkgname='ros-lunar-camera-calibration-parsers'
-pkgver='1.11.12'
+pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-lunar-sensor-msgs
-  ros-lunar-catkin
-  ros-lunar-roscpp
-  ros-lunar-roscpp-serialization
+ros_makedepends=(ros-lunar-catkin
   ros-lunar-rosconsole)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  boost
-  yaml-cpp
   pkg-config)
 
 ros_depends=(ros-lunar-sensor-msgs
@@ -27,6 +22,10 @@ ros_depends=(ros-lunar-sensor-msgs
 depends=(${ros_depends[@]}
   boost
   yaml-cpp)
+
+ros_checkdepends=(ros-lunar-rosbash
+  ros-lunar-rosunit)
+checkdepends=(${ros_checkdepends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/camera_calibration_parsers/${pkgver}-${_pkgver_patch}
@@ -37,7 +36,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="image_common-release-release-lunar-camera_calibration_parsers-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_common-release/archive/release/lunar/camera_calibration_parsers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2621801d39e75ee57621695c441692c1c800f7e86e407f00679856531f042711')
+sha256sums=('137c2e361062bbbe543bd7f20c6a4044298ac04c6bb24c0cb3834e9be5bbf46d')
 
 build() {
   # Use ROS environment variables
@@ -45,14 +44,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -60,7 +59,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
