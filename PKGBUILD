@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_topic provides a GUI plugin for displaying debug information 
 url='http://wiki.ros.org/rqt_topic'
 
 pkgname='ros-lunar-rqt-topic'
-pkgver='0.4.8'
+pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,6 +22,9 @@ ros_depends=(ros-lunar-python-qt-binding
 depends=(${ros_depends[@]}
   python2-rospkg)
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rqt_topic/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -31,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rqt_topic-release-release-lunar-rqt_topic-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_topic-release/archive/release/lunar/rqt_topic/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0fd078e867e69ad608b3019a22abf2adf57e1f90b838380c593f63758fed4a15')
+sha256sums=('bdd9acfd488861ceb83f89309ecb3f84abf1c5979a8fc70f02d6a1d11f9b9283')
 
 build() {
   # Use ROS environment variables
@@ -39,14 +42,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -54,7 +57,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
