@@ -1,13 +1,13 @@
 pkgbase = gnucap-geda-git
 	pkgdesc = gEDA extensions for Gnucap
-	pkgver = r315.328a04c
+	pkgver = r380.4fe0c54
 	pkgrel = 1
 	url = http://gnucap.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = gnucap-git
+	depends = gnucap
 	depends = boost
 	depends = geda-gaf
 	provides = gnucap-geda

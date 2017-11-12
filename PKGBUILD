@@ -2,13 +2,13 @@
 
 _pkgname=gnucap-geda
 pkgname=$_pkgname-git
-pkgver=r315.328a04c
+pkgver=r380.4fe0c54
 pkgrel=1
 pkgdesc="gEDA extensions for Gnucap"
 arch=('i686' 'x86_64')
 url="http://gnucap.org/"
 license=('GPL')
-depends=('gnucap-git' 'boost' 'geda-gaf')
+depends=('gnucap' 'boost' 'geda-gaf')
 makedepends=('git')
 provides=('gnucap-geda')
 conflicts=('gnucap-geda')
