@@ -10,7 +10,7 @@
 
 pkgname=lwks-beta
 lwksver=14.1.0.0
-lwksbuild=101109
+lwksbuild=101421
 pkgver=$lwksver.$lwksbuild
 pkgrel=1
 pkgdesc="Lightworks is a professional video editing suite"
@@ -23,10 +23,12 @@ provides=('lightworks')
 conflicts=('lightworks', 'lwks')
 source=(
     "http://downloads.lwks.com/Lightworks-Beta-$lwksbuild-$lwksver.deb"
+    "wayland.patch"
     )
 
 sha256sums=(
-    'e92fe5dea12b22c471193713e709318adf2491cd03d9e3472f06cf1734cdf2f3'
+    '8d6232f6b29589ef9338b8be482b3145963422244637f7ab5620d4869153650b'
+    'e9429b3332f90ead771e7cc23d014b60be7311d50f809d353755fa0f50c9b242'
     )
 
 package() {
@@ -36,6 +38,9 @@ package() {
     msg2 "Moving udev folder from /lib to /usr/lib"
     mv "$pkgdir"/lib/udev "$pkgdir"/usr/lib
     rmdir "$pkgdir"/lib
+
+    msg2 "Applying Wayland patch"
+    patch -Np3 -d "$pkgdir" -i "$srcdir/wayland.patch"
 
     msg2 "Copying copyright file and creating a license dir"
     install -Dm644 "$pkgdir"/usr/share/doc/lightworks/copyright \
