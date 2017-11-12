@@ -1,7 +1,7 @@
 pkgbase = deuchnord-hermes
-	pkgdesc = A warranties manager
+	pkgdesc = A warranties manager (currently only in French)
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.deuchnord.fr/projets/hermes
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = deuchnord-hermes
 	depends = sane
 	depends = imagemagick
 	source = https://github.com/Deuchnord/Hermes/archive/v0.7.tar.gz
-	md5sums = 81e39733daa1419062dc7a4091a80b6b
+	sha256sums = ab695a70decb496c91ec51fec274388cda503aa7304e4bf7a80f5a2701f7862e
 
 pkgname = deuchnord-hermes
 

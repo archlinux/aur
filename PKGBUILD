@@ -1,7 +1,7 @@
 # Maintainer: Jérôme Deuchnord <contact@deuchnord.tk>
 pkgname=deuchnord-hermes
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A warranties manager (currently only in French)"
 arch=('i686' 'x86_64')
 url="https://www.deuchnord.fr/projets/hermes"
@@ -9,7 +9,7 @@ license=('custom:MIT')
 depends=('qt5-base' 'sane' 'imagemagick')
 makedepends=('qt5-base')
 source=("https://github.com/Deuchnord/Hermes/archive/v0.7.tar.gz")
-md5sums=('81e39733daa1419062dc7a4091a80b6b')
+sha256sums=('ab695a70decb496c91ec51fec274388cda503aa7304e4bf7a80f5a2701f7862e')
 
 build() {
 	cd Hermes-0.7
