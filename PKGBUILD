@@ -1,16 +1,17 @@
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: sudokode <sudokode@gmail.com>
 # Contributor: Christos Nouskas <nous at archlinux dot us>
 # Contributor: Jakub Luzny <limoto94@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=arora-git
-pkgrel=3
-pkgver=0.11.0.21.g7c7514d
+pkgrel=1
+pkgver=0.11.0.27.ga2d1975
 pkgdesc="A lightweight, cross-platform Qt4 WebKit browser"
 arch=('i686' 'x86_64')
 url="https://github.com/arora/arora"
 license=('GPL2')
-depends=('qt4' 'qtwebkit' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('qt4' 'qtwebkit')
 makedepends=('git')
 provides=('arora')
 conflicts=('arora')
