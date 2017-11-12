@@ -1,0 +1,3 @@
+post_remove() {
+	echo 'sccache is removed. You may want to remove $SCCACHE_DIR (~/.cache/sccache by default)'
+}
