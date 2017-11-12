@@ -9,7 +9,7 @@ pkgbase = gnucap-git
 	makedepends = git
 	provides = gnucap
 	conflicts = gnucap
-	source = gnucap::git+git://git.sv.gnu.org/gnucap.git#branch=autotools
+	source = gnucap::git+git://git.sv.gnu.org/gnucap.git#branch=unstable
 	md5sums = SKIP
 
 pkgname = gnucap-git

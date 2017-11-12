@@ -5,7 +5,7 @@ _pkgname=gnucap
 pkgname=$_pkgname-git
 pkgver=20160724.r129.g44bbdc7
 pkgrel=1
-pkgdesc="GNU Circuit Analysis Package (autotools branch)"
+pkgdesc="GNU Circuit Analysis Package (develop branch)"
 arch=('i686' 'x86_64')
 url="http://gnucap.org/"
 license=('GPL')
@@ -13,7 +13,7 @@ depends=()
 makedepends=('git')
 provides=('gnucap')
 conflicts=('gnucap')
-source=("$_pkgname::git+git://git.sv.gnu.org/$_pkgname.git#branch=autotools")
+source=("$_pkgname::git+git://git.sv.gnu.org/$_pkgname.git#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,14 +23,13 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  autotools/bootstrap
   ./configure --prefix=/usr
   make
 }
 
 package() {
   cd $_pkgname
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
