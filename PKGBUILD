@@ -25,7 +25,7 @@ source=('https://github.com/washlet/Phoebus/releases/download/43.05d/Phoebus_0.4
 
 md5sums=('599f9fdd71a57048ead9fadb091d5061'
          '5b8ee45e906d021c053f816e443c2983'
-         '5766ed7195876418b497d912d2f1512a'
+	 '915f9b8efc7e2ea9e233bc6a9606038e'
          'eddfb4bd478f9c64e6801bda7c7791ba')
 
 prepare() {
@@ -35,7 +35,7 @@ prepare() {
 	mv "$srcdir"/raw/objects/* "$srcdir"/df_linux/raw/objects/
 
 	cp -a --no-preserve=ownership "$srcdir"/data/art/* "$srcdir"/df_linux/data/art/
-	cp -a --no-preserve=ownership "$srcdir"/data/init/phoebus/* "$srcdir"/df_linux/data/init/
+	cp -a --no-preserve=ownership "$srcdir"/data/init/* "$srcdir"/df_linux/data/init/
 
 	chmod -R a+rx "$srcdir"/df_linux/libs/Dwarf_Fortress
 	chmod -R a+rx "$srcdir"/df_linux/data/*
@@ -45,7 +45,6 @@ prepare() {
 	chmod a+rx "$srcdir"/df_linux/*
 	chmod a+r "$srcdir"/df_linux/sdl/sdl\ license.txt
 }
-
 package() {
 
 	install -d "$pkgdir"/usr/lib32/"$pkgname"
@@ -60,4 +59,3 @@ package() {
 	chmod a+rw "$pkgdir"/usr/lib32/"$pkgname"/data/save/current # save dir is worldwrite
 	chmod a+w "$pkgdir"/usr/lib32/"$pkgname"/data/index # crashes otherwise
 }
-

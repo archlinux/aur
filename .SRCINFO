@@ -18,7 +18,7 @@ pkgbase = dwarffortress-phoebus
 	source = LICENSE
 	md5sums = 599f9fdd71a57048ead9fadb091d5061
 	md5sums = 5b8ee45e906d021c053f816e443c2983
-	md5sums = 5766ed7195876418b497d912d2f1512a
+	md5sums = 915f9b8efc7e2ea9e233bc6a9606038e
 	md5sums = eddfb4bd478f9c64e6801bda7c7791ba
 
 pkgname = dwarffortress-phoebus
