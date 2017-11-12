@@ -5,16 +5,16 @@ pkgname=gromacs-plumed
 pkgver=2016.3
 _gromacsver=2016.3
 _plumedver=2.3.3
-pkgrel=4
+pkgrel=5
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
 license=("LGPL")
 arch=('i686' 'x86_64')
-depends=('lapack' 'zlib')
+depends=('lapack' 'zlib' plumed=${_plumedver})
 optdepends=('cuda: Nvidia GPU support'
             'opencl-mesa: OpenCL support for AMD GPU'
 	    'opencl-nvidia: OpenCL support for Nvidia GPU')
-makedepends=('cmake' 'libxml2' 'hwloc' 'gcc5' 'plumed=${_plumedver}')
+makedepends=('cmake' 'libxml2' 'hwloc' 'gcc6')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
 sha1sums=('1ae1ea922b94c74f43ee066e3ea64bafa1c6c3b6')
