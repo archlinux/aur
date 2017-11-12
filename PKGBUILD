@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.65.1.94.gabef0f722f
+pkgver=2.19.80.27998
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -20,13 +20,13 @@ optdepends=('imagemagick: building HTML documentation'
 	    'extractpdfmark: for reducing the size of pdf output significantly')
 provides=('lilypond')
 conflicts=('lilypond' 'lilypond-devel')
-source=(git://git.sv.gnu.org/lilypond.git)
+source=(git://git.savannah.gnu.org/lilypond.git)
 md5sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
   cd lilypond/
-  git describe | sed -e 's|release/\(.*\)|\1|' -e 's|-|.|g'
+  printf %s.%s $(grep VERSION_DEVEL VERSION | cut -d= -f2) $(git rev-list --count HEAD)
 }
 
 prepare() {
