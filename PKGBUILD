@@ -43,12 +43,8 @@ build() {
     --mandir=/usr/share/man \
     --datadir=/usr/share/postgresql \
     --sysconfdir=/etc \
-    --with-gssapi \
     --with-libxml \
     --with-openssl \
-    --with-python PYTHON=/usr/bin/python \
-    --with-tcl \
-    --with-pam \
     --with-system-tzdata=/usr/share/zoneinfo \
     --with-uuid=e2fs \
     --enable-nls \
@@ -108,12 +104,12 @@ package_postgresql-src-docs() {
   # install license
   install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/postgresql-docs/LICENSE"
 
-  make -C doc/src/sgml DESTDIR="${pkgdir}" install-html
-  chown -R root:root "${pkgdir}/usr/share/doc/postgresql/html/"
+#  make -C doc/src/sgml DESTDIR="${pkgdir}" install-html
+#  chown -R root:root "${pkgdir}/usr/share/doc/postgresql/html/"
 
   # clean up
-  rmdir "${pkgdir}"/usr/share/man/man{1,3,7}
-  rmdir "${pkgdir}"/usr/share/man
+#  rmdir "${pkgdir}"/usr/share/man/man{1,3,7}
+#  rmdir "${pkgdir}"/usr/share/man
 }
 
 package_postgresql-src() {
