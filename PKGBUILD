@@ -4,7 +4,7 @@ pkgdesc="ROS - camera_calibration allows easy calibration of monocular or stereo
 url='http://www.ros.org/wiki/camera_calibration'
 
 pkgname='ros-lunar-camera-calibration'
-pkgver='1.12.20'
+pkgver='1.12.21'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,6 +22,9 @@ ros_depends=(ros-lunar-std-srvs
   ros-lunar-sensor-msgs)
 depends=(${ros_depends[@]})
 
+ros_checkdepends=(ros-lunar-rostest)
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/camera_calibration/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -31,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="image_pipeline-release-release-lunar-camera_calibration-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/lunar/camera_calibration/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('18cb79c212e3b0b2eeedabf8f8ba0596d76af1e5127e18bea9f38753700fdb88')
+sha256sums=('1f12a6d348ed10d8823c90dda7a7911af9c604847cc701d5dea7693e477b71e6')
 
 build() {
   # Use ROS environment variables
@@ -39,14 +42,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -54,7 +57,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
