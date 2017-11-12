@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Autopano Video (BETA)
+Comment=Stitch and create 360° videos automatically with Autopano Video
+Exec=autopanovideo-beta
+Icon=/opt/kolor/autopanovideo-beta/Resources/UI/AutopanoVideo.png
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;Video;
