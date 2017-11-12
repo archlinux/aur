@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_image_view provides a GUI plugin for displaying images using 
 url='http://wiki.ros.org/rqt_image_view'
 
 pkgname='ros-lunar-rqt-image-view'
-pkgver='0.4.10'
+pkgver='0.4.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ checkdepends=(${ros_checkdepends[@]})
 # Tarball version (faster download)
 _dir="rqt_image_view-release-release-lunar-rqt_image_view-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_image_view-release/archive/release/lunar/rqt_image_view/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9d69ccb15dd24b3e70ea1b71d18064722b80cce3b1ff5ee73432df088a9eb841')
+sha256sums=('28b373d639527ac03523fffc0fdd0f5152dd70bdb631000edbb816bedf4240da')
 
 build() {
   # Use ROS environment variables
@@ -60,23 +60,6 @@ build() {
         -DSETUPTOOLS_DEB_LAYOUT=OFF \
         -DCATKIN_ENABLE_TESTING=OFF
   make
-}
-
-check() {
-  cmake "${srcdir}/${_dir}" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-        -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCATKIN_ENABLE_TESTING=ON
-
-  make tests
-  . /opt/ros/lunar/setup.bash
-  make run_tests
 }
 
 package() {
