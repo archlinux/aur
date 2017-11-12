@@ -4,7 +4,7 @@ pkgdesc="ROS - rosparam contains the rosparam command-line tool for getting and 
 url='http://ros.org/wiki/rosparam'
 
 pkgname='ros-lunar-rosparam'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,6 +18,9 @@ ros_depends=(ros-lunar-rosgraph)
 depends=(${ros_depends[@]}
   python2-yaml)
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rosparam/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -27,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rosparam-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rosparam/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b0802a4a736bd12b11df9847e0c01c099e1253ab7b78d2488cc430cebd3c23b7')
+sha256sums=('dd0da3785f8918589ff947afe0e0b3253bb474bfce5a07b7c656991234b4b8b7')
 
 build() {
   # Use ROS environment variables
@@ -50,7 +53,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
