@@ -14,15 +14,15 @@ depends=('lapack' 'zlib')
 optdepends=('cuda: Nvidia GPU support'
             'opencl-mesa: OpenCL support for AMD GPU'
 	    'opencl-nvidia: OpenCL support for Nvidia GPU')
-makedepends=('cmake' 'libxml2' 'hwloc' 'gcc5' 'plumed=2.3.2')
+makedepends=('cmake' 'libxml2' 'hwloc' 'gcc5' 'plumed=${_plumedver}')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
 sha1sums=('1ae1ea922b94c74f43ee066e3ea64bafa1c6c3b6')
 
 #With gcc5 currently there are less errors in the tests
 # also the compilation is possible in cuda capable machines
-export CC=gcc-5
-export CXX=g++-5
+export CC=gcc-6
+export CXX=g++-6
    ###### CMAKE OPTIONS DISABLE BY DEFAULT ###########
   # If you are using a haswell CPU, you will have   #
   # problems compiling with AVX2 support unless you #

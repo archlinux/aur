@@ -1,7 +1,7 @@
 pkgbase = gromacs-plumed
 	pkgdesc = GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)
 	pkgver = 2016.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.gromacs.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gromacs-plumed
 	makedepends = libxml2
 	makedepends = hwloc
 	makedepends = gcc5
-	makedepends = plumed=2.3.2
+	makedepends = plumed=${_plumedver}
 	depends = lapack
 	depends = zlib
 	optdepends = cuda: Nvidia GPU support
