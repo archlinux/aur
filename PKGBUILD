@@ -4,24 +4,17 @@ pkgdesc="ROS - The nodelet package is designed to provide a way to run multiple 
 url='http://ros.org/wiki/nodelet'
 
 pkgname='ros-lunar-nodelet'
-pkgver='1.9.12'
+pkgver='1.9.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin
-  ros-lunar-bondcpp
-  ros-lunar-pluginlib
-  ros-lunar-rosconsole
   ros-lunar-cmake-modules
-  ros-lunar-roscpp
-  ros-lunar-std-msgs
   ros-lunar-message-generation)
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  util-linux
-  boost)
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-lunar-roscpp
   ros-lunar-pluginlib
@@ -34,6 +27,9 @@ depends=(${ros_depends[@]}
   util-linux
   boost)
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/nodelet/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -43,7 +39,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="nodelet_core-release-release-lunar-nodelet-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/lunar/nodelet/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c80c2a4486c96d58871891e6ed6436fee60b2caa2c681ba49ab991cd571c7896')
+sha256sums=('29473194f7328b98032bfdb75f69a75bc706f70636f286ebf17fd2235aee1e38')
 
 build() {
   # Use ROS environment variables
@@ -51,14 +47,14 @@ build() {
   [ -f /opt/ros/lunar/setup.bash ] && source /opt/ros/lunar/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}/build" ] || mkdir "${srcdir}/build"
+  cd "${srcdir}/build"
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 "${srcdir}/${_dir}"
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake "${srcdir}/${_dir}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/lunar \
@@ -66,7 +62,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
