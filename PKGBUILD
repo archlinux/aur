@@ -4,7 +4,7 @@ pkgdesc="ROS - rospy is a pure Python client library for ROS."
 url='http://ros.org/wiki/rospy'
 
 pkgname='ros-lunar-rospy'
-pkgver='1.13.2'
+pkgver='1.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -25,6 +25,9 @@ depends=(${ros_depends[@]}
   python2-numpy
   python2-yaml)
 
+ros_checkdepends=()
+checkdepends=(${ros_checkdepends[@]})
+
 # Git version (e.g. for debugging)
 # _tag=release/lunar/rospy/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
@@ -34,7 +37,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-lunar-rospy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/lunar/rospy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('055ec221f0b514ec7c14a656acf5c682310a563b4ef54d05b7fc82c7334a1527')
+sha256sums=('67429efdb2dfc902fd48a1d587f48e414adda0f9a6bf372a2ca8ad364a88b960')
 
 build() {
   # Use ROS environment variables
@@ -57,7 +60,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCATKIN_ENABLE_TESTING=OFF
   make
 }
 
