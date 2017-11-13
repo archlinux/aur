@@ -14,4 +14,7 @@ package(){
     mkdir -p "$pkgdir/usr/share/webapps/$pkgname"
     cp -R * "$pkgdir/usr/share/webapps/$pkgname"
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    mkdir -p "$pkgdir/etc/webapps/"
+    mv "$pkgdir/usr/share/webapps/$pkgname/cfg" "$pkgdir/etc/webapps/cfg"
+    ln -s /etc/webapps/$pkgname "$pkgdir/usr/share/webapps/$pkgname/cfg"
 }
