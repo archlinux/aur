@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Maintainer: Sibren Vasse <arch at sibrenvasse dot nl>
+# Contributor: Peter I. <>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Kurt J. Bosch <kjb-temp-2009 at alpenjodel.de>
 
@@ -15,7 +16,7 @@ _install_name='openoffice4'
 _install_path=${_install_prefix}/${_install_name}
 
 pkgname=openoffice-${_lang}-bin
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 pkgdesc="German language pack for OpenOffice.org - Repackaged from upstream"
 arch=('i686' 'x86_64')
@@ -36,12 +37,12 @@ sha256sums=('SKIP')
 case "$CARCH"
 in i686 )
 	source=(http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86_langpack-rpm_${_lang}.tar.gz)
-	md5sums[0]='f3435fc71c12c017f7b8031cdc2b199d'
-	sha256sums[0]='2e3c2de327cad2ee31cde314383f89bc9e21070778c3307adc7f339596e35de9'
+	md5sums[0]='8e1897ee79cfc843c093997cc4244836'
+	sha256sums[0]='63c06c37afe0c48e3e50d00c6c50b8f151288e6c6d8481628f5d41b6f8daa505'
 ;; x86_64 )
 	source=(http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86-64_langpack-rpm_${_lang}.tar.gz)
-	md5sums[0]='2a9d763a12ea449cba61eba97f126473'
-	sha256sums[0]='5a7b29cdb426b557629cdc979db4ab70551ce1366509f15b8b3d8c5b7ab5499c'
+	md5sums[0]='337ddcf20fb97e4acd215fd796add32b'
+	sha256sums[0]='5c7f2af6c3801ffd3f8b6fcbd6e013aa623f71b3d48649331dc670a3714c7cfe'
 esac
 
 _find_rpms() {
