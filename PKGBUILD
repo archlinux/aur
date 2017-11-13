@@ -4,8 +4,9 @@
 # Contributor: Feirlane
 
 pkgname=adom
-pkgver=60
-pkgrel=4
+epoch=1
+pkgver=2.3.8
+pkgrel=1
 pkgdesc="A roguelike game with a quest-centric, plot driven structure"
 arch=("i686" "x86_64" "armv6h")
 depends=("ncurses5-compat-libs")
@@ -14,18 +15,18 @@ license=('custom: "adom"')
 
 _source_url="http://www.ancardia.com/download"
 source=(LICENSE)
-source_i686=(${_source_url}/adom_linux_debian_32_r${pkgver}_pub.tar.gz)
-source_x86_64=(${_source_url}/adom_linux_debian_64_r${pkgver}_pub.tar.gz)
-source_armv6h=(${_source_url}/adom_linux_arm_r${pkgver}_pub.tar.gz)
+source_i686=(${_source_url}/adom_linux_debian_32_${pkgver}.tar.gz)
+source_x86_64=(${_source_url}/adom_linux_debian_64_${pkgver}.tar.gz)
+source_armv6h=(${_source_url}/adom_linux_arm_${pkgver}.tar.gz)
 
-sha1sums=("51d28fe3f0420cd354113fd7ceb2a1a7abf1b069")
-sha1sums_i686=("da7e253e4384dc5ae703cd80b0c84262add69209")
-sha1sums_x86_64=("3731dd0211d66f493d27b93e760ad3bf8ebfea0f")
-sha1sums_armv6h=("1f24ad48b9ba56e930417afefe08fb4f481bb8a1")
+sha1sums=('51d28fe3f0420cd354113fd7ceb2a1a7abf1b069')
+sha1sums_i686=('3ae506daed02d7b6c9ece1445a54bc08616f29d0')
+sha1sums_x86_64=('3d08916e94b7fe039eeeb741b5f8c1e9d98cc22a')
+sha1sums_armv6h=('0a161cb19375f8918484d04f99ab66d0936b0480')
 
 package() {
   cd ${srcdir}/adom
 
   install -m755 -D adom ${pkgdir}/usr/bin/adom
-  install -m644 -D ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/adom-restricted/LICENSE
+  install -m644 -D ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/adom/LICENSE
 }
