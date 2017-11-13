@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Maintainer: Sibren Vasse <arch at sibrenvasse dot nl>
-# Contributor: Peter I. <>
+# Maintainer: Peter Iwanowitsch <peter@iwanowitsch.net>
+# Contributor: Sibren Vasse <arch at sibrenvasse dot nl>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Kurt J. Bosch <kjb-temp-2009 at alpenjodel.de>
 
