@@ -14,7 +14,7 @@ md5sums=('10a9aa2467b2d112a4a83df58f6eca24')
 
 build()
 {
-  cd $pkgname-$pkgver
+  cd $srcdir
 
   make
 }
