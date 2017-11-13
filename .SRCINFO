@@ -1,6 +1,6 @@
 pkgbase = perl-pdl-nohdf4
 	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display
-	pkgver = 2.017
+	pkgver = 2.018
 	pkgrel = 5
 	url = http://search.cpan.org/dist/PDL
 	arch = i686
@@ -17,6 +17,10 @@ pkgbase = perl-pdl-nohdf4
 	depends = perl-inline>=0.43
 	depends = gsl
 	depends = perl-inline-c
+	depends = perl-astro-fits-header
+	depends = perl-convert-uu
+	depends = perl-file-map
+	depends = perl-module-compile
 	optdepends = fftw2: for PDL::FFTW support
 	optdepends = perl-astro-fits-header: improved FITS files support
 	optdepends = perl-convert-uu: for the case when something wrong with Unicode support
@@ -27,8 +31,8 @@ pkgbase = perl-pdl-nohdf4
 	provides = perl-pdl=${pkgver}
 	conflicts = perl-pdl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHM/PDL-2.017.tar.gz
-	md5sums = 9966447f0afd61625e3ea871f731adf1
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHM/PDL-2.018.tar.gz
+	md5sums = 4974da8767f635806c9c18d9849e61b8
 
 pkgname = perl-pdl-nohdf4
 

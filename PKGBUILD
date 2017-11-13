@@ -8,7 +8,7 @@
 # Contributor: Colin Pitrat <colin.pitrat@gmail.com>
 
 pkgname=perl-pdl-nohdf4
-pkgver=2.017
+pkgver=2.018
 pkgrel=5
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
 arch=('i686' 'x86_64')
@@ -19,6 +19,10 @@ depends=(
 	'perl-inline>=0.43'
 	'gsl'
 	'perl-inline-c'
+	'perl-astro-fits-header'
+	'perl-convert-uu'
+	'perl-file-map'
+	'perl-module-compile'
 )
 provides=('perl-pdl=${pkgver}')
 conflicts=('perl-pdl')
@@ -46,7 +50,7 @@ optdepends=(
 
 source=(http://search.cpan.org/CPAN/authors/id/C/CH/CHM/PDL-${pkgver}.tar.gz)
 options=(!emptydirs)
-md5sums=('9966447f0afd61625e3ea871f731adf1')
+md5sums=('4974da8767f635806c9c18d9849e61b8')
 
 build() {
 	cd PDL-${pkgver}
@@ -61,6 +65,7 @@ check() {
 
 package() {
 	cd PDL-${pkgver}
+	mkdir -p "${pkgdir}/usr/lib/perl5/$(perl -e 'print substr($^V,1,4)')/vendor_perl/PDL"
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
