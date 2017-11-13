@@ -2,19 +2,19 @@
 # Maintainer: András Wacha < awacha at gmail >
 
 pkgname='perl-math-derivative'
-pkgver='0.04'
+pkgver='1.01'
 pkgrel='1'
 pkgdesc=""
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0')
+depends=('perl>=0' 'perl-math-utils')
 makedepends=()
 url='https://metacpan.org/release/Math-Derivative'
-source=('http://search.cpan.org/CPAN/authors/id/J/JG/JGAMBLE/Math-Derivative-0.04.tar.gz')
-md5sums=('7e357abf9b3106cc511bfe0e2689df05')
-sha512sums=('36cc39024300063a34d8df5c896670625a30561bfcd29f13eab57a2ca3f6b9b3c6b8a14675aefcf41c1f17ec4e2e58d77664c28d621fb36f61006681dcd58f96')
-_distdir="Math-Derivative-0.04"
+source=("http://search.cpan.org/CPAN/authors/id/J/JG/JGAMBLE/Math-Derivative-${pkgver}.tar.gz")
+md5sums=('6672c09e229f74cd115c3f028b1522cb')
+sha512sums=('8fb13bb64b205892f39ba732f864010971cb08eef26987e9ef31e43c2b0eae2758992cbb719d38cbbb0858c0e55067a0d009322e65f31817d713a84d157e7805')
+_distdir="Math-Derivative-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
