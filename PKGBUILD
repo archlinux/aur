@@ -4,7 +4,7 @@
 _limit='ipt-ratelimit'
 pkgname='ipt_ratelimit'
 pkgver='0.2'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Rate Policer as netfilter extension.'
 arch=('any')
 url="https://github.com/aabc/${_limit}"
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_limit}-${pkgver}"
-  make KVER=${_kver} KDIR=${_kdir}/build
+  make KVER=${_kver} KDIR=${_kdir}build
 }
 
 check() {
