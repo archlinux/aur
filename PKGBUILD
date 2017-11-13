@@ -2,6 +2,8 @@
 
 # Tested: x86_64, i686, ts140, Linux 4.6.2-1
 
+# TODO: Stop rebooting automatically.
+
 # References
 # http://hargrave.info/articles/afulnx.html
 # https://github.com/romanhargrave/amifldrv
@@ -16,7 +18,7 @@
 
 set -u
 pkgname='bios-lenovo-thinkserver-ts140'
-pkgver='20161128.CBA'
+pkgver='20171107.CLA'
 pkgrel='1'
 pkgdesc='BIOS update for Lenovo ThinkServer ts140 ts440' # ts240 ts540 The website claims less models than the enclosed readme
 arch=('i686' 'x86_64')
@@ -35,12 +37,12 @@ license=('custom')
 
 depends=('gcc' 'make' 'sudo' 'binutils' 'glibc' 'linux' 'linux-headers')
 install="${pkgname}.install"
-source=('https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbktcba_linux_x86.txt')
-source_i686=('https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbktcba_linux_x86.tgz')
-source_x86_64=('https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbktcba_linux_x64.tgz')
-sha256sums=('6e637a109b0c8a64e080e0660861c564999f27a16f9a52cfea25509745de801e')
-sha256sums_i686=('de88dfeb44612daf9308be85ad160aa19c8bfaa7931ed257c680011499857d9f')
-sha256sums_x86_64=('67b52918e44a26b00108d3d5a5c48aad076bf8f6c06711f32c3ae2155ea46cee')
+source=('https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbktcla_bioslinux32.txt')
+source_i686=('https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbktcla_bioslinux32.tgz')
+source_x86_64=('https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbktcla_bioslinux64.tgz')
+sha256sums=('40e717245f4332d91bad86b4089fdce4a0bf07dbd3e9eb97714fd4f5f1c1d1e5')
+sha256sums_i686=('b485ac753a8523463e39f9ebf8deb73efbd9107b4fc64de0bac5653ea260ed33')
+sha256sums_x86_64=('5301b3bcf39802d4d8ec5794a24da0e365e2349e303b103eca2d14b4f7fcb58a')
 
 declare -gA _srcdir; _srcdir=(['i686']='BIOSLinux32' ['x86_64']='BIOSLinux64')
 declare -gA _exe; _exe=(['i686']='afulnx_26_32' ['x86_64']='afulnx_26_64')
@@ -52,12 +54,12 @@ prepare() {
   # Fix the compile by overwriting useless switches in the makefile. In this binary file the replace string must be exactly the same length
   local _f1='EXTRA_CFLAGS := -Wall -Wstrict-prototypes '
   local _f2='EXTRA_CFLAGS := -include linux/module.h   '
-  sed -i -e "s@${_f1}@${_f2}@g" "${_exe[${CARCH}]}"
+  sed -e "s@${_f1}@${_f2}@g" -i "${_exe[${CARCH}]}"
   # There are other ways to do this...
   set +u
 }
 
-build_disable() {
+_build_disable() {
   set -u
   cd "${_srcdir[${CARCH}]}"
   "./${_exe[${CARCH}]}" /MAKEDRV # amifldrv_mod.o
@@ -67,9 +69,9 @@ build_disable() {
 package() {
   set -u
   cd "${_srcdir[${CARCH}]}"
-  install -Dp "${srcdir}"/bios_*.txt *.txt *.ROM Linux*.sh afulnx_* -t "${pkgdir}/usr/lib/${pkgname}/"
+  install -Dp "${srcdir}"/bios_*.txt *.txt *.[Rr][Oo][Mm] Linux*.sh afulnx_* -t "${pkgdir}/usr/lib/${pkgname}/"
   cd "${pkgdir}/usr/lib/${pkgname}/"
-  chmod 644 *.txt *.ROM
+  chmod 644 *.txt *.[Rr][Oo][Mm]
   chmod 744 *.sh afulnx*
   ln -s "${_sh[${CARCH}]}" 'Linux.sh'
 
