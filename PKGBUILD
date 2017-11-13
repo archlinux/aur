@@ -41,8 +41,8 @@ in i686 )
 	sha256sums[0]='63c06c37afe0c48e3e50d00c6c50b8f151288e6c6d8481628f5d41b6f8daa505'
 ;; x86_64 )
 	source=(http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86-64_langpack-rpm_${_lang}.tar.gz)
-	md5sums[0]='337ddcf20fb97e4acd215fd796add32b'
-	sha256sums[0]='5c7f2af6c3801ffd3f8b6fcbd6e013aa623f71b3d48649331dc670a3714c7cfe'
+	md5sums[0]='7c3cb1e060247ee96108ba937c22e888'
+	sha256sums[0]='228ccd3e3ce9064c44020085a78c9f21bd482e174cf5d9130650119af96664e4'
 esac
 
 _find_rpms() {
