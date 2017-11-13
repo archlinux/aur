@@ -1,7 +1,7 @@
-# Maintainer: David Parrish <daveparrish@gmail.com>
+# Maintainer: Amy Wilson <awils_1@xsmail.com>
 
 pkgname=nxt-git
-pkgver=1.11.8+0+gd9f64fcec
+pkgver=r5.d6f635f
 pkgrel=1
 pkgdesc="The Nxt Reference Software Client for use with the Nxt Cryptocurrency"
 arch=('any')
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd nxt
-  git describe --long --tags | sed 's/-/+/g; s/^v//'
+   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

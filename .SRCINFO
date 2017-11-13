@@ -1,6 +1,6 @@
 pkgbase = nxt-git
 	pkgdesc = The Nxt Reference Software Client for use with the Nxt Cryptocurrency
-	pkgver = 1.11.8+0+gd9f64fcec
+	pkgver = r5.d6f635f
 	pkgrel = 1
 	url = http://nxt.org
 	arch = any
