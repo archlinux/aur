@@ -4,7 +4,7 @@
 _limit='ipt-ratelimit'
 pkgname='ipt_ratelimit'
 pkgver='0.2'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='Rate Policer as netfilter extension.'
 arch=('any')
 url="https://github.com/aabc/${_limit}"
@@ -21,8 +21,9 @@ sha256sums=('feb9a9bf002175b7fd73a3bbbd65e5e8bbc65a7fce217a7d36ec172c315a56c5'
             '06cd7a1b902b9f4dfd98a1aa2114bdea5cc2e589bb395a69028d5effcaf655d2'
             '85684f4e86d13ea5f4997c2666d513c722630a0067d1191f132438b8ff2f6876')
 install="${pkgname}.install"
-_kdir="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-ARCH\/$/ {print $2}'`"
-_kver="`pacman -Qe linux | awk '{print $2"-ARCH"}'`"
+_linux_custom="ARCH"
+_kdir="`pacman -Ql linux | awk '/(\/modules\/)([0-9.-])+-'${_linux_custom}'\/$/ {print $2}'`"
+_kver="`pacman -Qe linux | awk '{print $2"-'${_linux_custom}'"}'`"
 
 prepare() {
   cd "${srcdir}/${_limit}-${pkgver}"
