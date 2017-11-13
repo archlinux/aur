@@ -9,8 +9,8 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-opt-git
-pkgver=4.4.0.r292.ge44d16e3de
-_pkgcommit=e44d16e3debcf1295946a4675cb2543a3fa7daec
+pkgver=4.5.0.beta1.r428.gd9cb19b229
+_pkgcommit=d9cb19b229852af157ea092018a89ada27ffb3c3
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
