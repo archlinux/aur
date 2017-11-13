@@ -1,4 +1,5 @@
 # Maintainer: DetMittens
+# Contributer: uth 2.0.0 update
 #
 # Supported Platforms	Features
 # Haswell 	(HSW)	vp8enc
@@ -12,30 +13,37 @@
 # the libva-intel-driver-hybrid package from the AUR
 
 pkgname=intel-hybrid-codec-driver
+_gitroot="git+https://github.com/01org/intel-hybrid-driver.git"
 _gitname=intel-hybrid-driver
-pkgver=1.0.2
+_pkgver=2.0.0
+pkgver=$_pkgver.r169.edead0c
 pkgrel=1
-pkgdesc='Libva support for VP9 decode and VP8 encode on Skylake and Braswell'
+pkgdesc='Libva support for partially hardware accelerated encode and decode on Haswell and newer'
 arch=('i686' 'x86_64')
 url='https://01.org/linuxmedia/vaapi'
 license=('MIT')
 depends=('libva' 'libcmrt')
 optdepends=('libva-intel-driver-hybrid: To be able to use the full hw codecs with hybrid codecs')
-source=("${_gitname}-${pkgver}.tar.gz::https://github.com/01org/${_gitname}/archive/${pkgver}.tar.gz")
-sha256sums=('16cd66872e8043ce6c0e9a016a043c460e8a180fdc520f31c1f97ffef7828d7b')
+source=("$_gitname::$_gitroot")
+sha256sums=('SKIP')
+
+pkgver() {
+ cd ${srcdir}/$_gitname
+ printf $_pkgver".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-  cd ${srcdir}/${_gitname}-${pkgver}
+  cd ${srcdir}/${_gitname}
   autoreconf -v --install
 }
 
 build() {
-  cd ${srcdir}/${_gitname}-${pkgver}
+  cd ${srcdir}/${_gitname}
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${srcdir}/${_gitname}-${pkgver}
+  cd ${srcdir}/${_gitname}
   make install DESTDIR=${pkgdir}
 }
