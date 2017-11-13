@@ -1,16 +1,15 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=scute
-pkgver=1.3.0.r64.g94eeb2d
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="GnuPG PKCS#11 module for using OpenPGP smartcards with X.509"
 arch=(i686 x86_64)
 url="https://github.com/gpg/scute"
 license=(GPL2)
 depends=(gnupg)
-makedepends=(
-  # TODO: Figure out how to make doc work
-)
-source=("git://git.gnupg.org/scute.git#commit=94eeb2d580f67bd56ba711e055d9ea2ea089ec89")
+makedepends=(texinfo)
+_commit='0b49362dab49697bfdf8b0fdc1dcfe66afb3c7fd' # scute-1.5.0
+source=("git://git.gnupg.org/scute.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -20,14 +19,12 @@ pkgver() {
 
 prepare() {
   cd scute
-  # Can't find version.texi?
-  sed -i '/^SUBDIRS/{s/ doc//}' Makefile.am
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd scute
-  ./configure --prefix=/usr --sysconfdir=/etc
+  ./configure --prefix=/usr --sysconfdir=/etc --enable-maintainer-mode
   make
 }
 
