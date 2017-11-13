@@ -9,7 +9,7 @@ arch=('any')
 url='https://fonts.google.com/specimen/Signika'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'ttf-signika-family-ib')
+conflicts=('ttf-google-fonts-opinionated-git' 'ttf-signika-family-ib')
 source=("Signika-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/signika/Signika-Bold.ttf"
         "Signika-Light-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/signika/Signika-Light.ttf"
         "Signika-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/signika/Signika-Regular.ttf"
