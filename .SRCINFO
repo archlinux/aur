@@ -1,0 +1,16 @@
+pkgbase = perl-math-utils
+	pkgdesc = Useful mathematical functions not in Perl.
+	pkgver = 1.11
+	pkgrel = 1
+	url = https://metacpan.org/release/Math-Utils
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JG/JGAMBLE/Math-Utils-1.11.tar.gz
+	md5sums = c9210ba57bf6a4290c717cdd8f399948
+	sha512sums = 047cb1a1e4bc7794dba4bd2d50cc0092b6cd6f5bf4567a693a386009ab9b104c2b56e82cff98bd1e3567311e7e1438addb5e88a09157c075705a00ade349bf9f
+
+pkgname = perl-math-utils
+
