@@ -22,7 +22,9 @@ build()
 package()
 {
     cd $srcdir
-
+    if [ -d "/srv/http/$pkgname" ];then
+        sudo rm -rf "/srv/http/$pkgname"
+    fi
     sudo mv $pkgname-$pkgver "/srv/http/$pkgname"
     
 }
