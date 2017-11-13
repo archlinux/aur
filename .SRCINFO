@@ -1,15 +1,16 @@
 pkgbase = minify
-	pkgdesc = Minify CLI for HTML, CSS, JS, JSON, SVG and XML
-	pkgver = 2.1.5
+	pkgdesc = Minifier CLI for HTML, CSS, JS, JSON, SVG and XML
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/tdewolff/minify
 	arch = x86_64
 	arch = i686
-	license = custom
-	source_x86_64 = https://bin.equinox.io/c/dhgbqpS8Bvy/minify-stable-linux-amd64.tgz
-	md5sums_x86_64 = be4cf443c2778e2c81badfe94c5af46f
-	source_i686 = https://bin.equinox.io/c/dhgbqpS8Bvy/minify-stable-linux-386.tgz
-	md5sums_i686 = 08354a1fbc845a8c81c7886e2d6b3163
+	license = MIT
+	depends = glibc
+	source_x86_64 = https://github.com/tdewolff/minify/releases/download/v2.3.1/minify_2.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 79dacbac822de54cb25568abf5e79f6f97c6b0e82aba199144d3c8b49f04ea30
+	source_i686 = https://github.com/tdewolff/minify/releases/download/v2.3.1/minify_2.3.1_linux_386.tar.gz
+	sha256sums_i686 = eb62a7533d1a72ecbaf278e9a138ae6fbae901aa7c1c5918b04fbb604a142d45
 
 pkgname = minify
 
