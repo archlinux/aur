@@ -1,5 +1,4 @@
 # Maintainer: Deon Spengler <deon at spengler dot co dot za>
-# Contributor: FlyingWombat <alari128mm at gmail dot com>
 # Contributor: jorge_barroso <jorge.barroso.11 at gmail dot com>
 
 pkgname=akari
@@ -7,7 +6,7 @@ pkgver=1.0.36
 _timestamp=20170917
 _extramodules=extramodules-4.13-ARCH
 _ccstoolsver=1.8.5
-pkgrel=4
+pkgrel=5
 pkgdesc='TOMOYO Linux 1.8.x Module for the Linux kernel'
 arch=('i686' 'x86_64')
 url='http://akari.osdn.jp/'
