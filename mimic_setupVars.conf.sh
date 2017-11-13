@@ -5,9 +5,9 @@ setupVars=/etc/pihole/setupVars.conf
 # official pihole basic-install.sh code here
 getIPv4stuff()
 {
-	IPv4dev=$(ip route get 8.8.8.8 | awk '{for(i=1;i<=NF;i++)if($i~/dev/)print $(i+1)}')
+	IPV4DEV=$(ip route get 8.8.8.8 | awk '{for(i=1;i<=NF;i++)if($i~/dev/)print $(i+1)}')
 	# change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6
-	IPv4_address="0.0.0.0"
+	IPV4_ADDRESS="0.0.0.0"
 }
 
 # official pihole basic-install.sh code here
@@ -15,7 +15,7 @@ getIPv6stuff()
 {
 	if [ -e /proc/net/if_inet6 ]; then
 		# change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6
-		IPv6_address="::"
+		IPv6_ADDRESS="::"
 	fi
 }
 
@@ -26,9 +26,9 @@ finalExports() {
         rm ${setupVars}
     fi
     {
-    echo "PIHOLE_INTERFACE=${IPv4dev}"
-    echo "IPV4_ADDRESS=${IPv4_address}"
-    echo "IPV6_ADDRESS=${IPv6_address}"
+    echo "PIHOLE_INTERFACE=${IPV4DEV}"
+    echo "IPV4_ADDRESS=${IPV4_ADDRESS}"
+    echo "IPV6_ADDRESS=${IPv6_ADDRESS}"
     }>> "${setupVars}"
 }
 

@@ -3,7 +3,7 @@
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
 pkgver=3.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('EUPL-1.1')
@@ -26,7 +26,7 @@ md5sums=('e231722332116b7ffab316d5c66a828e'
          '0bab89977a2d4357ec8befb4ff85ee3d'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
-         'e3bb1980b565e4d504e0235353f2b2dc')
+         'd01db2332f2d1039dbecf91b69f93dc9')
 
 prepare() {
   _ssc="/tmp/sedcontrol"
