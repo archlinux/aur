@@ -1,7 +1,7 @@
 pkgbase = safeeyes
-	pkgdesc = A Linux alternative for EyeLeo
+	pkgdesc = A Free and Open Source tool for Linux users to reduce and prevent repetitive strain injury (RSI).
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slgobinath/SafeEyes
 	arch = any
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = safeeyes
 	depends = python-psutil
 	depends = python-babel
 	depends = python-dbus
+	depends = python-gobject
 	depends = alsa-utils
 	depends = xorg-xprop
 	depends = xprintidle

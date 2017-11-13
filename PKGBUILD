@@ -1,8 +1,8 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld_fr>
 pkgname=safeeyes
 pkgver=2.0.0
-pkgrel=1
-pkgdesc="A Linux alternative for EyeLeo"
+pkgrel=2
+pkgdesc="A Free and Open Source tool for Linux users to reduce and prevent repetitive strain injury (RSI)."
 arch=("any")
 url="https://github.com/slgobinath/SafeEyes"
 license=("GPL3")
@@ -13,6 +13,7 @@ depends=("python"
          "python-psutil"
          "python-babel"
          "python-dbus"
+         "python-gobject"
          "alsa-utils"
          "xorg-xprop"
          "xprintidle")
