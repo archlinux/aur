@@ -1,7 +1,7 @@
 pkgbase = electron-cash
 	pkgdesc = Lightweight Bitcoin Cash wallet
 	pkgver = 2.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.electroncash.org/
 	install = electron-cash.install
 	arch = any
@@ -19,11 +19,13 @@ pkgbase = electron-cash
 	depends = python2-pbkdf2
 	depends = python2-protobuf
 	depends = python2-pyaes
+	depends = python2-pyqt4
 	depends = python2-pyqt5
 	depends = python2-pysocks
 	depends = python2-qrcode
 	depends = python2-requests
 	depends = python2-six
+	depends = qt4
 	depends = qt5-base
 	optdepends = desktop-file-utils: update desktop icon
 	optdepends = gtk-update-icon-cache: update desktop icon
@@ -38,10 +40,10 @@ pkgbase = electron-cash
 	optdepends = zbar: QR code reading support
 	provides = electron-cash
 	conflicts = electron-cash
-	source = electron-cash-2.9.4.tar.gz::https://electroncash.org/downloads/2.9.4/win-linux/Electron-Cash-2.9.4.tar.gz
-	source = electron-cash-2.9.4.tar.gz.sig
-	sha256sums = 70939028e5cf9401ab2fdf7cb760e58264cba260a4729128911fad6514ff15f9
-	sha256sums = 39a43abed8b8d4d385d651dcf0b15086a77755a91821eb89d462827f75c66cac
+	source = electron-cash-2.9.4.tar.gz::https://github.com/fyookball/electrum/archive/2.9.4.tar.gz
+	source = electron-cash.install
+	sha256sums = f14c06a71ba97d1f39faa3cfcaba779f6f03ab8d44a9e3f7971d0bced3ea03b7
+	sha256sums = d682766321f9981ee38aee26dc050209882d8c1c6006e3e509649b47fa1bb073
 
 pkgname = electron-cash
 
