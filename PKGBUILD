@@ -9,8 +9,8 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=r1211.414832ad
-pkgrel=2
+pkgver=r1212.a16b8302
+pkgrel=1
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=(any)
@@ -77,12 +77,12 @@ package() {
     [[ -d "$pkg_license_path" ]] && continue
 
     # NOTE: We only care about copying over OFL licenses since Apache and Ubuntu are standard.
-    IFS=\/ read -ra path <<< "$file"; src_license_path="${srcdir}$(printf "/%s" "${path[@]:1:3}")"/OFL.txt
+    src_license_path="${file%/*}"/OFL.txt
     if [[ -f "$src_license_path" ]]; then
       install -dm755 "$pkg_license_path"
       install -Dm644 "$src_license_path" "$pkg_license_path"/OFL.txt
     fi
-  done < <(find . -type f -iname \*.ttf -print0)
+  done < <(find "$srcdir" -type f -iname \*.ttf -print0)
 
   # NOTE: Since the cwtex* Chinese font family has special characters we need to change
   # those folder names to prevent errors during package compression.
