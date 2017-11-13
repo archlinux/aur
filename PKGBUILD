@@ -4,7 +4,7 @@
 
 pkgname=prometheus
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source service monitoring system and time series database."
 arch=('i686' 'x86_64')
 url="http://$pkgname.io"
@@ -16,7 +16,7 @@ backup=("etc/$pkgname/$pkgname.yml")
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
         "${pkgname}.service")
 sha256sums=('6947ae9b2d414d49304034a2635f0e1ecd45ac83a4f4592ea5bcca40d6f7951b'
-            '2d689efe588302346b7065fef1b05be812e4a91df1a8d8845830c0b2397b2ac3')
+            'c38a5ea7b0fbab32d391102a915b73bad98eabf7e18dab3c4c3945f46951c203')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver" || exit 1
