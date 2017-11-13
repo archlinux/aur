@@ -1,6 +1,6 @@
 pkgbase = coreutils-git
 	pkgdesc = Basic file, shell and text manipulation utilities of the GNU operating system
-	pkgver = 8.27.r72.g96101eef3
+	pkgver = 8.28.r32.ga4eedb251
 	pkgrel = 1
 	url = https://www.gnu.org/software/coreutils/coreutils.html
 	arch = i686
