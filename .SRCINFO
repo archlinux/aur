@@ -1,6 +1,6 @@
 pkgbase = vcvrack-sonusmodular-git
 	pkgdesc = Sonus Dept. VCV modules
-	pkgver = r124.a3a1e2b
+	pkgver = r262.f3bfb38
 	pkgrel = 1
 	url = https://sonusmodular.sonusdept.com
 	arch = i686
