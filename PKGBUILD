@@ -9,7 +9,7 @@ arch=('any')
 url='https://fonts.google.com/specimen/Quintessential'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'otf-quintessential-ib')
+conflicts=('ttf-google-fonts-opinionated-git' 'otf-quintessential-ib')
 source=("Quintessential-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/quintessential/Quintessential-Regular.ttf"
         "${pkgname}-${pkgver}-OFL.txt::https://github.com/google/fonts/raw/${_commit}/ofl/quintessential/OFL.txt")
 sha256sums=('73d192f10dbfc716214aae282afb93036f12415d16adc9d6d0e981f34d829d32'
