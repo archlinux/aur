@@ -3,7 +3,7 @@
 
 _pkgname=qutepart
 pkgname=qutepart-git
-pkgver=3.0.1.r13.gbff28f8
+pkgver=3.1.r3.ga869bf5
 pkgrel=1
 pkgdesc="Code editor component for PyQt and Pyside"
 arch=('any')
@@ -21,8 +21,15 @@ pkgver() {
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+build() {
+  cd $pkgname
+  python setup.py build
+}
+
 package() {
   cd $pkgname
-  python setup.py install --root="$pkgdir/" --optimize=1
+  _PYTHON_VERSION="$(echo "$(python --version)" | awk '{ print $2 }' | awk -F'.' '{ print $1 "." $2 }')"
+  install -d "$pkgdir/usr/lib/python$_PYTHON_VERSION/site-packages/"
+  cp -rp build/lib.linux-*-$_PYTHON_VERSION/* "$pkgdir/usr/lib/python$_PYTHON_VERSION/site-packages/"
 }
 
