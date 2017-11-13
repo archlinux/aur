@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-solidity-mode-git
-pkgver=0.1.1r43.d0a09c6
+pkgver=0.1.2r44.b8ddfd6
 pkgrel=1
 pkgdesc='Solidity mode package for Emacs'
 url='https://github.com/ethereum/emacs-solidity'
