@@ -5,7 +5,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=krb5-auth-dialog
-pkgver=3.20.0
+pkgver=3.26.1
 pkgrel=1
 pkgdesc="Monitors Kerberos tickets and pops up a dialog when they are about to expire."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('gtk3' 'libnm-glib' 'libnotify')
 makedepends=('gettext' 'intltool' 'pkgconfig' 'yelp-tools')
 source=("http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz")
-sha256sums=('622f29e61d709f2d5da1b362ed268a974964837deb0849aef99d2f7e0e2291f7')
+sha256sums=('ddb0b6813c833559d5deab52259bc2868b994b44c8e13eaa8a10bb58b77e21f1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
