@@ -1,14 +1,14 @@
 pkgbase = jmeter-plugins-manager
 	pkgdesc = Basic plugins for everyday needs.
-	pkgver = 0.13
+	pkgver = 0.16
 	pkgrel = 1
 	url = http://jmeter-plugins.org/
 	arch = any
 	license = APACHE
 	depends = jmeter>=3.0
 	options = !strip
-	source = jmeter-plugins-manager-0.13.jar::https://jmeter-plugins.org/get/
-	md5sums = 6207f4cf96b5199b49ea3d63044cac69
+	source = jmeter-plugins-manager-0.16.jar::https://jmeter-plugins.org/get/
+	md5sums = 4d70ad3fdf4d61aa78eb90194cba43da
 
 pkgname = jmeter-plugins-manager
 
