@@ -10,7 +10,7 @@ license=('GPL')
 depends=('perl-crypt-openssl-rsa' 'perl-data-uniqid' 'perl-date-manip' 'perl-file-copy-recursive'
           'perl-html-parser' 'perl-io-socket-inet6' 'perl-io-socket-ssl' 'perl-io-tee'
           'perl-json-webtoken' 'perl-libwww' 'perl-module-scandeps' 'perl-mail-imapclient'
-          'perl-ntlm' 'perl-par-packer' 'perl-readonly''perl-sys-meminfo' 'perl-term-readkey'
+          'perl-ntlm' 'perl-par-packer' 'perl-readonly' 'perl-sys-meminfo' 'perl-term-readkey'
           'perl-test-mock-guard' 'perl-test-mockobject' 'perl-test-pod' 'perl-unicode-string')
 makedepends=('time')
 source=(https://github.com/imapsync/imapsync/archive/${pkgname}-${pkgver}.tar.gz)
