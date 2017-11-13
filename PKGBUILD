@@ -12,6 +12,7 @@ license=('MPL' 'GPL' 'LGPL')
 depends=('gtk3' 'libxt' 'dbus-glib' 'nss')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'ffmpeg: additional video and audio decoders'  # Not sure this is useful
+            'hunspell: Spell checking'
             'libnotify: Notification integration'
             'pulseaudio: Audio support')
 makedepends=('perl-file-slurp' 'perl-lwp-protocol-https' 'perl-switch')
