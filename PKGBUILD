@@ -3,8 +3,8 @@
 
 pkgname=emby-server-dev-unlocked
 pkgver=3.2.36.8
-pkgrel=2
-pkgdesc='Emby Server compiled with a patch to unlock Emby Premiere features'
+pkgrel=3
+pkgdesc='Latest development version of Emby Server compiled with a patch to unlock Emby Premiere features'
 arch=('i686' 'x86_64')
 url='https://github.com/nicolahinssen/emby-dev-unlocked'
 license=('GPL2')
@@ -13,15 +13,13 @@ depends=('ffmpeg' 'imagemagick' 'mono' 'referenceassemblies-pcl' 'sqlite')
 install='emby-server.install'
 provides=('emby-server')
 conflicts=('emby-server')
-source=("emby-server-${pkgver}.tar.gz::https://github.com/MediaBrowser/Emby/archive/${pkgver}.tar.gz"
-		'git+https://github.com/nicolahinssen/emby-dev-unlocked.git'
+source=('git+https://github.com/nicolahinssen/emby-dev-unlocked.git'
         'emby-server'
         'emby-migrate-database'
         'emby-server.conf'
         'emby-server.service')
 backup=('etc/conf.d/emby-server')
-sha256sums=('d2db08f27527d98aee4457fbdda3ac6bdb3975cec80f5bab3a68c0724ae73ecb'
-            'SKIP'
+sha256sums=('SKIP'
             '7b1974f7bba8ac4b76e51ef7fe1257d165c7c4abbd0915e192391336048a3d74'
             'b25bf83a0ab371aff3b13b82f7af71b51bfe6d7e51eb8a8a3dd8f0774ffce6a5'
             'c9ad78f3e2f0ffcb4ee66bb3e99249fcd283dc9fee17895b9265dc733288b953'
@@ -32,13 +30,15 @@ pkgver() {
 }
 
 prepare() {
-  cd Emby-$(pkgver)
+  git clone --depth 1 https://github.com/MediaBrowser/Emby.git -b dev
+
+  cd Emby
 
   sed 's/libMagickWand-6.Q8.so/libMagickWand-6.Q16HDRI.so/' -i MediaBrowser.Server.Mono/ImageMagickSharp.dll.config
 }
 
 build() {
-  cd Emby-$(pkgver)
+  cd Emby
 
   patch -N -p1 -r - Emby.Server.Implementations/Security/PluginSecurityManager.cs < \
       ../emby-dev-unlocked/patches/PluginSecurityManager.cs.patch
