@@ -1,18 +1,19 @@
-# Maintainer: Anders Thomsen <mail nospamat andersthomsen nospamdot dk>
+# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Contributor: Anders Thomsen <mail nospamat andersthomsen nospamdot dk>
+
 pkgname=m-air-edit
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control and programm for MIDAS M-AIR mixers"
 arch=('i686' 'x86_64')
-url="https://www.music-group.com/Categories/Behringer/Mixers/Digital-Mixers/XR18/p/P0BI8/downloads"
+url="http://www.music-group.com/Categories/Midas/Mixers/Digital-Mixers/MR18/p/P0C8H/downloads"
 license=('custom:MUSIC Group End User License Agreement')
 depends=('libxext' 'alsa-lib' 'freetype2' 'mesa' 'mesa-libgl')
 source=("http://www.music-group.com/eurocom/assets/EULA_2012-09-12.pdf"
-         "m-air-edit.desktop"
-         "m-air-edit.png")
+        "m-air-edit.desktop"
+        "m-air-edit.png")
 source_i686=("http://downloads.music-group.com/software/midas/M-AIR/M-AIR-Edit_LINUX_V${pkgver}.tar.gz")
 source_x86_64=("https://downloads.music-group.com/software/midas/M-AIR/M-AIR-Edit_LINUX_X64_V${pkgver}.tar.gz")
-
 
 md5sums=('20cca5d2623f1029e30e45d64438b253'
          '41c5295a2a715644c3112a77dbd78f4b'
@@ -30,16 +31,15 @@ sha512sums=('fe39285768937d82f31844b789d1075de8196495727653595e59f4f1b282f6dbe18
 sha512sums_i686=('f7659693754d3ddd0f45abba02d4363abb1efbe4303ade6a8e3283d4ca08bc31bcf2d62097d22a4c65ea6aa66404cf4d0d3df45443b4a0897a2baa71abd7296a')
 sha512sums_x86_64=('6fd08607b68de1c7b3d9c003c9c3c761c1966110fd8b2a6aa2fd2eb6c474de56402dcd844d58a2223ccbec203fa132c24b7a4caba275004438aee10d8541654e')
 
-package()
-{
+
+package() {
     cd "${srcdir}"
-    mkdir -p ${pkgdir}/usr/bin
-    mkdir -p ${pkgdir}/usr/share/licenses/xairedit
-    install -m 755 M-AIR-Edit ${pkgdir}/usr/bin/
-    install -m 644 EULA_2012-09-12.pdf ${pkgdir}/usr/share/licenses/xairedit/license.pdf
+    mkdir -p "${pkgdir}"/usr/bin
+    mkdir -p "${pkgdir}"/usr/share/licenses/${pkgname}
+    install -m 755 M-AIR-Edit "${pkgdir}"/usr/bin
+    install -m 644 EULA_2012-09-12.pdf "${pkgdir}"/usr/share/licenses/${pkgname}/license.pdf
     install -d "${pkgdir}"/usr/share/applications
     install -d "${pkgdir}"/usr/share/pixmaps
     install m-air-edit.desktop "${pkgdir}"/usr/share/applications/m-air-edit.desktop
     install m-air-edit.png "${pkgdir}"/usr/share/pixmaps/m-air-edit.png
 }
-
