@@ -1,6 +1,6 @@
 pkgbase = python-declxml-git
 	pkgdesc = Declarative XML processing for Python.
-	pkgver = r59.e451dab
+	pkgver = r79.b59c66c
 	pkgrel = 1
 	url = https://github.com/gatkin/declxml
 	arch = x86_64

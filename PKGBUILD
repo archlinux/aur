@@ -2,7 +2,7 @@
 
 _name='declxml'
 pkgname='python-declxml-git'
-pkgver=r59.e451dab
+pkgver=r79.b59c66c
 pkgrel=1
 pkgdesc="Declarative XML processing for Python."
 arch=('x86_64')
