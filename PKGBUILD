@@ -2,7 +2,7 @@
 # Maintainer: Paul Gideon Dann <pdgiddie_at_gmail.com>
 
 pkgname=poppler-qt-lcd
-pkgver=0.60.1
+pkgver=0.61.0
 pkgrel=1
 pkgdesc="Poppler Qt bindings, with patches to allow subpixel rendering via Cairo"
 license=('GPL')
@@ -17,11 +17,11 @@ source=(http://poppler.freedesktop.org/poppler-${pkgver}.tar.xz
         0002-Setting-default-Qt4-backend-to-Cairo.patch
         0003-Apply-subpixel-rendering-in-Cairo-Backend.patch
         0004-Don-t-build-the-main-poppler-library.patch)
-md5sums=('7648416d51a6e9fbc4a75b6f8b53dd7c'
-         'cd3400daeea52082e4a5d4395de5d917'
-         'b50d1feba1e8f23740b55a7fe5f432c8'
-         '17c816aea87f765ed26a29923de9b4a6'
-         '8dcdd57d7e92ef7d96c8aaf06cd4c862')
+md5sums=('9feff3fb5e2302bb915e9a55da182c57'
+         '9d378dd11417fa8a9d8d4844d025e7a0'
+         'd21b085d965ed72402d9ec55d92ca8d9'
+         '71475a89f057bb02c377657eefd92f19'
+         '810cb32394fa4ddbc98043a15634015f')
 
 build() {
   cd "${srcdir}/poppler-${pkgver}"
@@ -45,5 +45,6 @@ package() {
 
   make DESTDIR="${pkgdir}" -C qt4/src install
   msg "Removing unwanted pkg-config files"
+  mv "${pkgdir}"/usr/lib{64,}
   rm -f "${pkgdir}"/usr/lib/pkgconfig/poppler{,-splash,-cairo}.pc
 }

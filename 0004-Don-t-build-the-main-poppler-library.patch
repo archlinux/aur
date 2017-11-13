@@ -1,18 +1,18 @@
-From 6b85dd588ac2507f503898e949c9e374ba8382ae Mon Sep 17 00:00:00 2001
+From c97c870f7d8870f456ad9c726fb323c6b4ad41e6 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 20 Oct 2009 18:32:35 +0100
 Subject: [PATCH 4/4] Don't build the main poppler library.
 
 ---
- CMakeLists.txt | 11 -----------
- 1 file changed, 11 deletions(-)
+ CMakeLists.txt | 18 ------------------
+ 1 file changed, 18 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7485b2ad..4dc77251 100644
+index bb74c6a2..8f4f4963 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -543,17 +543,6 @@ if(HAVE_PTHREAD)
-   set(poppler_LIBS ${poppler_LIBS} ${CMAKE_THREAD_LIBS_INIT})
+@@ -537,24 +537,6 @@ if(TIFF_FOUND)
+   set(poppler_LIBS ${poppler_LIBS} ${TIFF_LIBRARIES})
  endif()
  
 -if(MSVC)
@@ -22,13 +22,20 @@ index 7485b2ad..4dc77251 100644
 -else()
 -add_library(poppler ${poppler_SRCS})
 -endif()
--set_target_properties(poppler PROPERTIES VERSION 71.0.0 SOVERSION 71)
+-set_target_properties(poppler PROPERTIES VERSION 72.0.0 SOVERSION 72)
+-if(MINGW)
+-    get_target_property(POPPLER_SOVERSION poppler SOVERSION)
+-    set_target_properties(poppler PROPERTIES SUFFIX "-${POPPLER_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
+-endif()
 -target_link_libraries(poppler LINK_PRIVATE ${poppler_LIBS})
--install(TARGETS poppler RUNTIME DESTINATION bin LIBRARY DESTINATION lib${LIB_SUFFIX} ARCHIVE DESTINATION lib${LIB_SUFFIX})
+-if(CMAKE_USE_PTHREADS_INIT)
+-   target_link_libraries(poppler LINK_PRIVATE Threads::Threads)
+-endif()
+-install(TARGETS poppler RUNTIME DESTINATION bin LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 -
  if(ENABLE_XPDF_HEADERS)
    install(FILES
      poppler/Annot.h
 -- 
-2.14.2
+2.15.0
 

@@ -1,4 +1,4 @@
-From 8f7f0789e20308d9089d9fd6adb0b9c38f9fda95 Mon Sep 17 00:00:00 2001
+From 01951266ac6d701f705432aa015ccca1e9122db9 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
 Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
@@ -104,7 +104,7 @@ index fdbfd38e..0f02a3af 100644
  /* A rectangle on a page, with coordinates in PDF points. */
  #define POPPLER_TYPE_RECTANGLE             (poppler_rectangle_get_type ())
 diff --git a/poppler/CairoFontEngine.cc b/poppler/CairoFontEngine.cc
-index b56d100c..44ab2bef 100644
+index a375e0af..5f23bba9 100644
 --- a/poppler/CairoFontEngine.cc
 +++ b/poppler/CairoFontEngine.cc
 @@ -132,7 +132,7 @@ CairoFont::getSubstitutionCorrection(GfxFont *gfxFont)
@@ -135,7 +135,7 @@ index b56d100c..44ab2bef 100644
    if (cairo_font_face_set_user_data (l->font_face,
  				     &_ft_cairo_key,
 diff --git a/poppler/CairoOutputDev.cc b/poppler/CairoOutputDev.cc
-index ffd39ef7..12f198e2 100644
+index 43c604f0..9ed3c151 100644
 --- a/poppler/CairoOutputDev.cc
 +++ b/poppler/CairoOutputDev.cc
 @@ -208,6 +208,13 @@ void CairoOutputDev::setCairo(cairo_t *cairo)
@@ -191,10 +191,10 @@ index ffd39ef7..12f198e2 100644
    glyphs = NULL;
    if (use_show_text_glyphs) {
 diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
-index eaef798f..cced8572 100644
+index 63346a4c..d051f383 100644
 --- a/poppler/Gfx.cc
 +++ b/poppler/Gfx.cc
-@@ -4616,6 +4616,62 @@ void Gfx::doImage(Object *ref, Stream *str, GBool inlineImg) {
+@@ -4608,6 +4608,62 @@ void Gfx::doImage(Object *ref, Stream *str, GBool inlineImg) {
    error(errSyntaxError, getPos(), "Bad image parameters");
  }
  
@@ -272,7 +272,7 @@ index 293f4551..5dff6fd3 100644
  
    void drawForm(Object *str, Dict *resDict, double *matrix, double *bbox,
 diff --git a/poppler/Page.cc b/poppler/Page.cc
-index 197e2bef..a76ec219 100644
+index ca4a5a6d..b7acbf04 100644
 --- a/poppler/Page.cc
 +++ b/poppler/Page.cc
 @@ -348,6 +348,20 @@ Dict *Page::getResourceDictCopy(XRef *xrefA) {
@@ -297,7 +297,7 @@ index 197e2bef..a76ec219 100644
    Object obj1;
    Dict *pageDict = pageObj.getDict()->copy(xrefA);
 diff --git a/poppler/Page.h b/poppler/Page.h
-index 2a597131..3d44a7ae 100644
+index 97b70a0c..6786b40b 100644
 --- a/poppler/Page.h
 +++ b/poppler/Page.h
 @@ -182,6 +182,9 @@ public:
@@ -311,5 +311,5 @@ index 2a597131..3d44a7ae 100644
    Object getAnnotsObject(XRef *xrefA = nullptr) { return annotsObj.fetch(xrefA ? xrefA : xref); }
    // Add a new annotation to the page
 -- 
-2.14.2
+2.15.0
 

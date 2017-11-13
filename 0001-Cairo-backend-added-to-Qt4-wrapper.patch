@@ -1,4 +1,4 @@
-From f85cda566865fb4f6be2dcb8b84c6dcad4d6f7de Mon Sep 17 00:00:00 2001
+From bc66e168dd4cfe4afee20e90bc5aa2898b1f6008 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 20 May 2009 11:42:28 +0100
 Subject: [PATCH 1/4] Cairo backend added to Qt4 wrapper
@@ -12,7 +12,7 @@ Subject: [PATCH 1/4] Cairo backend added to Qt4 wrapper
  5 files changed, 95 insertions(+), 1 deletion(-)
 
 diff --git a/qt4/src/CMakeLists.txt b/qt4/src/CMakeLists.txt
-index b803f755..1b56b21e 100644
+index f6547726..b0baa84b 100644
 --- a/qt4/src/CMakeLists.txt
 +++ b/qt4/src/CMakeLists.txt
 @@ -6,6 +6,11 @@ include_directories(
@@ -27,7 +27,7 @@ index b803f755..1b56b21e 100644
  set(poppler_qt4_SRCS
    poppler-annotation.cc
    poppler-document.cc
-@@ -28,10 +33,20 @@ set(poppler_qt4_SRCS
+@@ -28,6 +33,13 @@ set(poppler_qt4_SRCS
    poppler-media.cc
    ArthurOutputDev.cc
  )
@@ -41,6 +41,9 @@ index b803f755..1b56b21e 100644
  qt4_automoc(${poppler_qt4_SRCS})
  add_library(poppler-qt4 SHARED ${poppler_qt4_SRCS})
  set_target_properties(poppler-qt4 PROPERTIES VERSION 4.11.0 SOVERSION 4)
+@@ -36,6 +48,9 @@ if(MINGW)
+     set_target_properties(poppler-qt4 PROPERTIES SUFFIX "-${POPPLER_QT4_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
+ endif()
  target_link_libraries(poppler-qt4 poppler ${QT4_QTCORE_LIBRARY} ${QT4_QTGUI_LIBRARY} ${QT4_QTXML_LIBRARY})
 +if (HAVE_CAIRO)
 +  target_link_libraries(poppler-qt4 ${CAIRO_LIBRARIES})
@@ -49,10 +52,10 @@ index b803f755..1b56b21e 100644
  target_link_libraries(poppler-qt4 poppler ${poppler_LIBS})
  endif()
 diff --git a/qt4/src/poppler-document.cc b/qt4/src/poppler-document.cc
-index f5ac11eb..a5cf5930 100644
+index d6e2fbf7..c1f293ad 100644
 --- a/qt4/src/poppler-document.cc
 +++ b/qt4/src/poppler-document.cc
-@@ -693,6 +693,9 @@ namespace Poppler {
+@@ -694,6 +694,9 @@ namespace Poppler {
          ret << Document::SplashBackend;
  #endif
          ret << Document::ArthurBackend;
@@ -63,10 +66,10 @@ index f5ac11eb..a5cf5930 100644
      }
  
 diff --git a/qt4/src/poppler-page.cc b/qt4/src/poppler-page.cc
-index 1a55bb57..bc88ce0d 100644
+index ffe6e99c..084c4a6b 100644
 --- a/qt4/src/poppler-page.cc
 +++ b/qt4/src/poppler-page.cc
-@@ -41,6 +41,7 @@
+@@ -42,6 +42,7 @@
  #include <QtGui/QPainter>
  
  #include <config.h>
@@ -74,7 +77,7 @@ index 1a55bb57..bc88ce0d 100644
  #include <PDFDoc.h>
  #include <Catalog.h>
  #include <Form.h>
-@@ -54,6 +55,9 @@
+@@ -55,6 +56,9 @@
  #include <SplashOutputDev.h>
  #include <splash/SplashBitmap.h>
  #endif
@@ -84,7 +87,7 @@ index 1a55bb57..bc88ce0d 100644
  
  #include "poppler-private.h"
  #include "poppler-page-transition-private.h"
-@@ -415,6 +419,70 @@ QImage Page::renderToImage(double xres, double yres, int x, int y, int w, int h,
+@@ -416,6 +420,70 @@ QImage Page::renderToImage(double xres, double yres, int x, int y, int w, int h,
        img = tmpimg;
        break;
      }
@@ -155,7 +158,7 @@ index 1a55bb57..bc88ce0d 100644
    }
  
    return img;
-@@ -457,6 +525,8 @@ bool Page::renderToPainter(QPainter* painter, double xres, double yres, int x, i
+@@ -458,6 +526,8 @@ bool Page::renderToPainter(QPainter* painter, double xres, double yres, int x, i
           painter->restore();
        return true;
      }
@@ -195,5 +198,5 @@ index a01a638a..69ce63bc 100644
    string(REPLACE "-" "" test_name ${exe})
    set(${test_name}_SOURCES
 -- 
-2.14.2
+2.15.0
 
