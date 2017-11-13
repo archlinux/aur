@@ -5,9 +5,9 @@
 pkgname=jed
 pkgver=0.99.19
 _pkgver=0.99-19
-pkgrel=5
+pkgrel=6
 pkgdesc="A freely available text editor for Unix and others OS"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://www.jedsoft.org/jed"
 license=('GPL')
 depends=('gpm' 'slang' 'libxft')
