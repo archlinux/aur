@@ -9,7 +9,7 @@ arch=('any')
 url='https://fonts.google.com/specimen/Merriweather+Sans'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'ttf-merriweather-sans-ib')
+conflicts=('ttf-google-fonts-opinionated-git' 'ttf-merriweather-sans-ib')
 source=("MerriweatherSans-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweathersans/MerriweatherSans-Bold.ttf"
         "MerriweatherSans-BoldItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweathersans/MerriweatherSans-BoldItalic.ttf"
         "MerriweatherSans-ExtraBold-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweathersans/MerriweatherSans-ExtraBold.ttf"
