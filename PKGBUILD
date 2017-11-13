@@ -1,8 +1,8 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=roger-router
 pkgver=1.9.3
-pkgrel=2
-pkgdesc="Roger Router"
+pkgrel=3
+pkgdesc="Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"
 license=('GPL2')
