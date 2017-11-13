@@ -3,7 +3,7 @@
 
 pkgname=firefox-beta-bin
 _pkgname=firefox-beta
-pkgver=57.0rc4
+pkgver=57.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
