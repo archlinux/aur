@@ -1,6 +1,6 @@
 pkgname=mingw-w64-tcl
-pkgver=8.6.1
-pkgrel=5
+pkgver=8.6.7
+pkgrel=1
 pkgdesc="The Tcl scripting language (mingw-w64)"
 arch=(any)
 depends=(mingw-w64-crt mingw-w64-zlib)
@@ -13,11 +13,12 @@ source=("http://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.g
 "tcl-8.5.14-hidden.patch"
 "tcl-8.6.1-mingwexcept.patch"
 "tcl-mingw-w64-compatibility.patch")
-sha256sums=('16ee769248e64ba1cae6b4834fcc4e4edd7470d881410e8d58f7dd1434343514'
+sha256sums=('7c6b8f84e37332423cfe5bae503440d88450da8cc1243496249faa5268026ba5'
             '3cb435f768052acabe5b1fbef5ae9a8d0967b0f86f7695fb4bae8953ee470357'
             'a809617939336a0068c5dd567f2c25489b2824ca25ad20f9cbf4e74c81396d2e'
             '77b7509f3677fe659a70994f664444c1f0e99899bd3e73cba71caa4ccb24ebd4'
             '866fe923b7d43339bea8a8484299ba71ebdb3a7213508809f2adae4eff60a382')
+
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -25,7 +26,7 @@ prepare() {
   cd "${srcdir}/tcl${pkgver}"
   patch -Np1 -i "${srcdir}/tcl-8.5.14-autopath.patch"
   patch -Np1 -i "${srcdir}/tcl-8.5.14-hidden.patch"
-  patch -Np1 -i "${srcdir}/tcl-8.6.1-mingwexcept.patch"
+  #patch -Np1 -i "${srcdir}/tcl-8.6.1-mingwexcept.patch"
   patch -Np0 -i "${srcdir}/tcl-mingw-w64-compatibility.patch"
 }
 
@@ -54,19 +55,19 @@ package() {
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
     find "$pkgdir/usr/${_arch}" -name '*.sh' | xargs -rtl1 chmod 755
     find "$pkgdir/usr/${_arch}" -name '*.sh' | xargs -rtl1 sed -i "s,libtcl86.a,libtcl86.dll.a,g"
-    rm -r "$pkgdir/usr/${_arch}/"{man,share}
+    rm -r "$pkgdir/usr/${_arch}/"share
     sed -e "s#${srcdir}/tcl${pkgver}/win#/usr/lib#" \
       -e "s#${srcdir}/tcl${pkgver}#/usr/${_arch}/include/tcl-private#" \
       -i "${pkgdir}/usr/${_arch}/lib/tclConfig.sh"
-		sed -e "s#${srcdir}/tcl${pkgver}/win/pkgs/tdbc1.0.0#/usr/${_arch}/lib/tdbc1.0.0#" \
-				-e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc1.0.0/generic#/usr/${_arch}/include#" \
-				-e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc1.0.0/library#/usr/${_arch}/lib/tcl${pkgver%.*}#" \
-				-e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc1.0.0#/usr/${_arch}/include#" \
-				-i "${pkgdir}/usr/${_arch}/lib/tdbc1.0.0/tdbcConfig.sh"
-		sed -e "s#${srcdir}/tcl${pkgver}/win/pkgs/itcl4.0.0#/usr/${_arch}/lib/itcl4.0.0#" \
-				-e "s#${srcdir}/tcl${pkgver}/pkgs/itcl4.0.0/generic#/usr/${_arch}/include/tcl-private#" \
-				-e "s#${srcdir}/tcl${pkgver}/pkgs/itcl4.0.0#/usr/${_arch}/include/tcl-private#" \
-				-i "${pkgdir}/usr/${_arch}/lib/itcl4.0.0/itclConfig.sh"
+		sed -e "s#${srcdir}/tcl${pkgver}/win/pkgs/tdbc1.0.5#/usr/${_arch}/lib/tdbc1.0.5#" \
+				-e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc1.0.5/generic#/usr/${_arch}/include#" \
+				-e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc1.0.5/library#/usr/${_arch}/lib/tcl${pkgver%.*}#" \
+				-e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc1.0.5#/usr/${_arch}/include#" \
+				-i "${pkgdir}/usr/${_arch}/lib/tdbc1.0.5/tdbcConfig.sh"
+		sed -e "s#${srcdir}/tcl${pkgver}/win/pkgs/itcl4.1.0#/usr/${_arch}/lib/itcl4.1.0#" \
+				-e "s#${srcdir}/tcl${pkgver}/pkgs/itcl4.1.0/generic#/usr/${_arch}/include/tcl-private#" \
+				-e "s#${srcdir}/tcl${pkgver}/pkgs/itcl4.1.0#/usr/${_arch}/include/tcl-private#" \
+				-i "${pkgdir}/usr/${_arch}/lib/itcl4.1.0/itclConfig.sh"
 		mv "$pkgdir/usr/${_arch}/lib/libtcl86.a" "$pkgdir/usr/${_arch}/lib/libtcl86.dll.a"
 		ln -s "/usr/${_arch}/lib/libtcl86.dll.a" "$pkgdir/usr/${_arch}/lib/libtcl.dll.a"
 		ln -s /usr/${_arch}/lib/tclConfig.sh "${pkgdir}/usr/${_arch}/lib/tcl${pkgver%.*.*}/tclConfig.sh"
