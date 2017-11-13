@@ -12,28 +12,30 @@ url='https://cgit.kde.org/liquidshell.git/'
 license=('GPL3')
 depends=('networkmanager-qt' 'bluez-qt' 'kcmutils' 'knewstuff')
 makedepends=('cmake' 'extra-cmake-modules' 'git')
-source=("git+git://anongit.kde.org/liquidshell.git")
+optdepends=('ksysguard' 'kconfig')
+source=("git://anongit.kde.org/liquidshell.git")
 sha256sums=('SKIP')
 
 pkgver() {
   
-  cd ${srcdir}/${_gitname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd ${_gitname}
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 
 build() {
   
-  cd ${srcdir}/${_gitname}
-  mkdir build && cd build
-  cmake  ..
+    cd ${_gitname}
+    mkdir build && cd build
+    cmake  ..
     
-  make
+    make
 
 }
 
 package() {
   
-  install -Dm755 ${srcdir}/${_gitname}/build/liquidshell ${pkgdir}/usr/bin/liquidshell
+    install -Dm755 ${_gitname}/build/liquidshell ${pkgdir}/usr/bin/liquidshell
+    install -Dm644 ${_gitname}/COPYING ${pkgdir}/usr/share/licenses/liquidshell/LICENSE
 
 }

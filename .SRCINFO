@@ -12,7 +12,9 @@ pkgbase = liquidshell-git
 	depends = bluez-qt
 	depends = kcmutils
 	depends = knewstuff
-	source = git+git://anongit.kde.org/liquidshell.git
+	optdepends = ksysguard
+	optdepends = kconfig
+	source = git://anongit.kde.org/liquidshell.git
 	sha256sums = SKIP
 
 pkgname = liquidshell-git
