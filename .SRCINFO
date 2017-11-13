@@ -1,14 +1,18 @@
 pkgbase = cliqr
 	pkgdesc = Command line QR code generator
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flipflop97/cliqr
+	arch = i686
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = Creative Commons Attribution-ShareAlike 4.0 International Public License
-	depends = qrencode
+	makedepends = git
+	makedepends = qrencode
 	provides = cliqr
-	source = cliqr::https://github.com/flipflop97/cliqr/releases/download/v1.0.0/cliqr
-	sha256sums = 6dd03ab1388234b3b47cb23285157ef49798a62cca17966b5531c8619f3dfbfc
+	source = https://github.com/flipflop97/cliqr/archive/v1.0.0.zip
+	sha256sums = SKIP
 
 pkgname = cliqr
 
