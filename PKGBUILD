@@ -23,9 +23,10 @@ package()
 {
     cd $srcdir
     mv $pkgname-$pkgver $pkgname
+    
     if [ -d "/srv/http/$pkgname" ];then
         sudo -rf "/srv/http/$pkgname"
     fi  
     
-    sudo mv $pkgname /srv/http
+    install -d "$pkgname/srv/http"
 }
