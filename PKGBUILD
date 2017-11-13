@@ -1,6 +1,6 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=libclassicclient
-_luxver=1.1.0
+_luxver=1.2.1
 pkgver=7.2.0_b04
 pkgrel=4
 pkgdesc="Gemalto PKCS#11 driver"
@@ -20,8 +20,8 @@ optdepends=(
 )
 source_i686=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_${_luxver}_Ubuntu_32bit.tar.gz")
 source_x86_64=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_${_luxver}_Ubuntu_64bit.tar.gz")
-sha256sums_i686=('a79c5809743a49d278583f4d4b501c602d4d12191890cdf32dc068975dc7702e')
-sha256sums_x86_64=('e83565ec6fdb4195f0eabe1cf2fc7d61ea000e1044f3dca5864ace0155058f43')
+sha256sums_i686=('79ee2940496ffeed457eefb6b16013a1b5baa4b65f78bfa43411a3675445b579')
+sha256sums_x86_64=('487c5f60a8dbb6212e24c41f9b80bf7d845bb13b29f129c96a7c3d070006cb80')
 
 prepare() {
   # the main tarball sometimes gets updated without changing its version;
