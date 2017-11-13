@@ -3,7 +3,8 @@
 # Co-maintainer: t-ask <t-ask-aur at agt24.com>
 
 pkgname=substance-painter
-pkgver=2017.3.0
+pkgver=2017.3.1
+_build=1893
 pkgrel=1
 pkgdesc="3D painting software allowing you to texture, render and share your work."
 arch=('x86_64')
@@ -11,11 +12,11 @@ url='https://www.allegorithmic.com/products/substance-painter'
 license=('custom')
 depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
 options=('!strip' '!optipng') # PNG assets here should be left untouched!
-source=("https://download.allegorithmic.com/substance-painter/2017.x/Substance_Painter-${pkgver}-1837-linux-x64-standard-full.rpm"
+source=("https://download.allegorithmic.com/substance-painter/2017.x/Substance_Painter-${pkgver}-${_build}-linux-x64-standard-full.rpm"
         'substance-painter-icon.png'
         'substance-painter.desktop'
         'substance-painter')
-sha256sums=('8306d0fdedce8d132b0c575aa799eda1e7faf2f760651a8d2014f1ba8e004c4c'
+sha256sums=('5bfc1ff42647c04e8ef5a3c8ae55f9fa260a275af7de8ba8d9761e248ffbf76d'
             '6744c1fbe8e9fb1fb91bd291e3ef8ac645bbfec1aa97915f440e6fbfebf4edbd'
             '70d973bbc0459f80285a52d6054c2ac72ab2e639c4c7dc42ca1dad81ef892d1d'
             'e736a5e160be09cfe1588d349084e2f769815687db080b8c7b790e8751f185f1')
