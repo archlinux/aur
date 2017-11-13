@@ -2,7 +2,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theshell-blueprint
 pkgver=7.1b
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Shell that gets out of your way"
 arch=("x86_64")
 url="https://github.com/vicr123/theshell"
@@ -17,6 +17,11 @@ optdepends=('alsa-utils: for volume controls'
 makedepends=('git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theshell#branch=blueprint')
 md5sums=('SKIP')
+
+pkgver() {
+	cd "$pkgname-$pkgver"
+	echo $(cat version)b
+}
 
 build() {
 	cd "$pkgname-$pkgver"
