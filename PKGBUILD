@@ -8,10 +8,10 @@
 # http://bitcoin-otc.com/viewgpg.php?nick=ThomasV
 #
 
-pkgname=electron-cash-git
+pkgname='electron-cash-git'
 pkgdesc="Lightweight Bitcoin Cash wallet"
 pkgver=2.9.4.r0.gf493cadb
-pkgrel=1
+pkgrel=2
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
 arch=('any')
@@ -32,12 +32,15 @@ depends=(
   'python2-pbkdf2'
   'python2-protobuf'
   'python2-pyaes'
+  'python2-pyqt4'
   'python2-pyqt5'
   'python2-pysocks'
   'python2-qrcode'
   'python2-requests'
   'python2-six'
-  'qt5-base')
+  'qt4'
+  'qt5-base'
+)
 optdepends=(
   'desktop-file-utils: update desktop icon'
   'gtk-update-icon-cache: update desktop icon'
