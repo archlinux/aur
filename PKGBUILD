@@ -10,15 +10,15 @@
 
 pkgname=keepassxc-browser-git
 _gitname=keepassxc
-pkgver=2.1.4.r579.g35ffd8f8
+pkgver=2.1.4.r620.gc7dd20a0
 pkgrel=1
 pkgdesc="A reboot of an OpenSource password safe which helps you to manage your passwords in an easy and secure way with a modern browser extension"
 arch=('i686' 'x86_64')
 url="https://github.com/varjolintu/keepassxc"
 license=('GPL2')
-depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme' 'desktop-file-utils' 'yubikey-personalization' 'boost-libs' 'libsodium')
+depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme' 'desktop-file-utils' 'yubikey-personalization' 'libsodium')
 install=keepassxc-browser.install
-makedepends=('git' 'intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt' 'boost')
+makedepends=('git' 'intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
 conflicts=('keepassxc' 'keepassxc-git')
 replaces=('keepassx-http' 'keepassx-reboot-git')
 options=(!emptydirs)
