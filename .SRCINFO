@@ -1,0 +1,14 @@
+pkgbase = mccs
+	pkgdesc = PACKage Upgradability Problem solver
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://sat.inesc-id.pt/~mikolas/sw/packup/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glpk
+	source = http://www.i3s.unice.fr/~cpjm/misc/mccs-1.1-srcs.tgz
+	sha256sums = b69a519eea835a9f489241aa21c5c5d143094739906fe02b0319447e4bb7bec9
+
+pkgname = mccs
+
