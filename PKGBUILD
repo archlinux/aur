@@ -13,7 +13,8 @@ makedepends=('git' 'libtool' 'gcc' 'gzip' 'gawk' 'sed')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 install="${pkgname}.install"
-_kernver="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-ARCH\/$/ {print $2}'`"
+_linux_custom="ARCH"
+_kernver="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-'${_linux_custom}'\/$/ {print $2}'`"
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -23,6 +24,7 @@ pkgver() {
 }
 
 build() {
+  echo ${_kernver}
   cd "${srcdir}/${pkgname}"
   make KERNEL_DIR="${_kernver}build"
 }
