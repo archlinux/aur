@@ -5,7 +5,7 @@
 # Contributor: Zariel <c.bannister@gmail.com>
 
 pkgname=irssi-git
-pkgver=0.8.17.r801.gc890ecaf
+pkgver=1.1.dev.r267.g7e619ed9
 pkgrel=1
 pkgdesc="Modular text mode IRC client with Perl scripting"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
