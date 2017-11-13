@@ -5,8 +5,8 @@ setupVars=/etc/pihole/setupVars.conf
 # official pihole basic-install.sh code here
 getIPv4stuff()
 {
-	IPv4dev=$(ip route get 8.8.8.8 | awk '{for(i=1;i<=NF;i++)if($i~/dev/)print $(i+1)}')
-	IPv4_address=$(ip -o -f inet addr show dev "$IPv4dev" | awk '{print $4}' | awk 'END {print}')
+	IPV4DEV=$(ip route get 8.8.8.8 | awk '{for(i=1;i<=NF;i++)if($i~/dev/)print $(i+1)}')
+	IPV4_ADDRESS=$(ip -o -f inet addr show dev "$IPV4DEV" | awk '{print $4}' | awk 'END {print}')
 }
 
 # official pihole basic-install.sh code here
@@ -50,9 +50,9 @@ finalExports() {
         rm ${setupVars}
     fi
     {
-    echo "PIHOLE_INTERFACE=${IPv4dev}"
-    echo "IPV4_ADDRESS=${IPv4_address}"
-    echo "IPV6_ADDRESS=${IPv6_address}"
+    echo "PIHOLE_INTERFACE=${IPV4DEV}"
+    echo "IPV4_ADDRESS=${IPV4_ADDRESS}"
+    echo "IPV6_ADDRESS=${IPV6_ADDRESS}"
     }>> "${setupVars}"
 }
 
