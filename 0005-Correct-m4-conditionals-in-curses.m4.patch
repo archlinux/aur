@@ -1,7 +1,7 @@
 From 481178f249e965c593db7bc8f31dd5fc3b5427d0 Mon Sep 17 00:00:00 2001
 From: Benjamin Kaduk <kaduk@mit.edu>
 Date: Mon, 16 Oct 2017 16:53:22 -0500
-Subject: [PATCH 5/5] Correct m4 conditionals in curses.m4
+Subject: [PATCH 5/6] Correct m4 conditionals in curses.m4
 
 AS_IF does not invoke the test(1) shell builtin for us, so we must
 take care to consistently use it ourself.
@@ -63,5 +63,5 @@ index a0cdc60f1..dc01469f5 100644
  dnl The top level curses group
  AC_DEFUN([OPENAFS_CURSES],
 -- 
-2.14.2
+2.15.0
 

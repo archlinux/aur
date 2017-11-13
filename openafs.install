@@ -1,7 +1,3 @@
-create_afs() {
-  systemd-tmpfiles --create openafs.conf
-}
-
 output() {
   while IFS= read line; do
     echo "-- $line"
@@ -9,8 +5,6 @@ output() {
 }
 
 post_install() {
-  create_afs
-
   output << EOF
 In order to use the openafs-client you have to install the openafs kernel
 module (openafs-modules or openafs-modules-dkms).
@@ -21,25 +15,6 @@ Afterwards you can enable and start the openafs-client:
   systemctl enable openafs-client.service
   systemctl start openafs-client.service
 EOF
-}
-
-post_upgrade() {
-  create_afs
-
-  if [ $(vercmp "$2" "1.6.11.1-1") -lt 0 ]; then
-    output << EOF
-Please note the following packaging changes:
-
- * The kaserver / kauth suite is no longer installed. It is obsolete for a
-   long time and hopefully not needed anymore. Otherwise please leave a
-   comment in the AUR.
-   See: http://www.openafs.org/pages/no-more-des.html
-
- * The server binaries were moved back to /usr/lib/openafs. If you use the
-   server you will need to modify your bos config. If you only use the client
-   you can safely ignore this.
-EOF
-  fi
 }
 
 post_remove() {

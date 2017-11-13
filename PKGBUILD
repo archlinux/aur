@@ -6,7 +6,7 @@
 
 pkgname=openafs
 pkgver=1.6.21.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -28,17 +28,17 @@ source=(http://openafs.org/dl/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
         0003-Do-not-install-kauth-manpages-when-kauth-is-disabled.patch
         0004-vol-add-missing-include-of-stdint.h-to-volinodes.h.patch
         0005-Correct-m4-conditionals-in-curses.m4.patch
-        tinfo.patch
+        0006-gtx-link-against-libtinfo-if-termlib-is-seperated.patch
         tmpfiles.d-openafs.conf)
 sha256sums=('aed896b0f598e3033e9ceb2a1eae24addff9ec0bb2d713ab63945a449ded3a5a'
             'a8b2482eaa3bd5a3521b8dfde69337e5e01b1b1626c0a2e0a489049834a2983a'
-            'fd1405e9f439c3b38d66cfc3eb824eaccada749bfe1255c2d867dbc29db3cd16'
-            '178c63aa0e92a96a4522c0349e4afe4426b0b5f566254c22a1ac774850148593'
-            '01671cee2ca3e9c42e1b5860c8373e55dd7794b8291486f8659c51e4bd4ceddc'
-            '88303daac553f2a3d24969a8dbea87bd70807b2267d4437092cba60968ddf2a5'
-            '7020a99bbb620ca53b24c793413a0579edb61f749f487c4b9325e7ed76aee14c'
-            'f147ba626028e70ed151100e951bc0f19f3ac941153d6acf03cf0e0416aea925'
-            '5ef549180d1ac4e9530b65df7ddbdc1eceac6d6d6398fb2f32b06e96c1d9b5f0')
+            '87f08df5c1a2e899fe2ef6fb28cb1f7ad9bb0de640eec55e168c1bc93324feff'
+            '5f31cdf2feca73e7b245138a33bc2132a34cfa331d63bb47292ed30528cbf15c'
+            '161a24a29299e30288d0f8ebfbb22eca1d3563fbc5104a6f2e0f76f46d6458c9'
+            '91f3e85e475358d86dd597022420bc98475c5ab644973e83fd54733e616f9f50'
+            '7ee59c390419b2f09c1dc1874f7ea5e8f4a77be6fa2f7b1b051ad4f7a663d021'
+            'd62a3b24d3b86f9f498b89dec9a43be489a0bb7aebce4efe46007424a0f23595'
+            '18d7b0173bbffbdc212f4e58c5b3ce369adf868452aabc3485f2a6a2ddb35d68')
 
 # If you need the kauth tools set this to 1. But be aware that these tools
 # are considered insecure since 2003!
@@ -60,8 +60,12 @@ prepare() {
   # Fix curses checks during configure (https://gerrit.openafs.org/12740/)
   patch -p1 < ${srcdir}/0005-Correct-m4-conditionals-in-curses.m4.patch
 
-  # Fix build when ncurses was compiled with --with-termlib=tinfo (https://rt.central.org/rt/Ticket/Display.html?id=134420)
-  patch -p1 < ${srcdir}/tinfo.patch
+  # Fix build when ncurses was compiled with --with-termlib=tinfo
+  # https://rt.central.org/rt/Ticket/Display.html?id=134420
+  # https://gerrit.openafs.org/12760/
+  # Should not be required anymore: https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/ncurses&id=987faeb8442d44e76a7a58642e8e6432eb220c25
+  # but let's keep it for future ncurses updates.
+  patch -p1 < ${srcdir}/0006-gtx-link-against-libtinfo-if-termlib-is-seperated.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q
@@ -100,10 +104,6 @@ package() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
   make DESTDIR=${pkgdir} install_nolibafs
-
-  # create cache directory
-  install -dm700 ${pkgdir}/var/cache/openafs
-  touch ${pkgdir}/var/cache/openafs/.keepdir
 
   # move PAM libs
   install -dm755 ${pkgdir}/usr/lib/security
