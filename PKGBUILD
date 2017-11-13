@@ -9,7 +9,7 @@ arch=('any')
 url='https://fonts.google.com/specimen/Oswald'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'otf-oswald-ib')
+conflicts=('ttf-google-fonts-opinionated-git' 'otf-oswald-ib')
 source=("Oswald-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/oswald/Oswald-Bold.ttf"
         "Oswald-ExtraLight-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/oswald/Oswald-ExtraLight.ttf"
         "Oswald-Light-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/oswald/Oswald-Light.ttf"
