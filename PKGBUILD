@@ -1,7 +1,6 @@
 # Maintainer: 
-
 pkgname=luxtrust-middleware
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Gemalto PKCS#11 driver"
 url="https://www.luxtrust.lu/en/simple/225"
@@ -9,12 +8,10 @@ arch=(i686 x86_64)
 depends=(
   'libclassicclient>=7.2.0_b04'
 )
-source=("https://www.luxtrust.lu/downloads/middleware/eula.pdf")
 source_i686=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_${pkgver}_Ubuntu_32bit.tar.gz")
 source_x86_64=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_${pkgver}_Ubuntu_64bit.tar.gz")
-sha256sums=('4c9b71b596900700cdbf8f1515df44d9383fd5f336114e38cebfffc30d74f564')
-sha256sums_i686=('771195d2cd48a56ee70b2826fa1c008fed8925ad29dddd46fff155e6d474e775')
-sha256sums_x86_64=('e1f77f5c1eaa479395a62106db0ec4b3aa0df45d428ebe790982159ec6f55283')
+sha256sums_i686=('79ee2940496ffeed457eefb6b16013a1b5baa4b65f78bfa43411a3675445b579')
+sha256sums_x86_64=('487c5f60a8dbb6212e24c41f9b80bf7d845bb13b29f129c96a7c3d070006cb80')
 
 prepare() {
   cd "$srcdir"
