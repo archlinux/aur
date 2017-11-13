@@ -8,7 +8,7 @@
 
 # Maintainer: Tim Diels <youremail@domain.com>
 pkgname=python2-xlsx2csv
-pkgver=0.7
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="xlsx to csv converter"
 arch=(any)
@@ -23,11 +23,11 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=(https://github.com/dilshod/xlsx2csv/archive/release/$pkgver.tar.gz)
-md5sums=('527944a1f4835b4bfb7deec04bc1dd30')  #updpkgsums
+source=(https://github.com/dilshod/xlsx2csv/archive/$pkgver.tar.gz)
+md5sums=('d6622bbb530cd80516aefd9291361ca5')
 
 package() {
-  cd "$srcdir/xlsx2csv-release-$pkgver"
+  cd "$srcdir/xlsx2csv-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
