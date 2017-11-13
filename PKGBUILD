@@ -10,9 +10,16 @@ license=('MIT')
 depends=()
 makedepends=('emscripten' 'cmake')
 source=("https://github.com/WebAssembly/binaryen/archive/version_${pkgver}.tar.gz"
-        "binaryen.sh")
+        "binaryen.sh"
+        "disable_werror.patch")
 sha384sums=('c9ff12f33f54dde4f2333b242d3273d6e17a10ce34322cb45c38e925cb240785a8e8225435acf1c96c547a65cf3ce233'
-            '8466c1191c0e90b6cd40093ed4d1576a2f2a7f011e3e83113ebdba0f59f131ac77b5517d751fd6faa0b936113d3645d5')
+            '8466c1191c0e90b6cd40093ed4d1576a2f2a7f011e3e83113ebdba0f59f131ac77b5517d751fd6faa0b936113d3645d5'
+            'd4c2a03233181883269e37b5f21d90103f60a8f32bf2127794c9f99dddfc706a1c9515c579388815a27eaf4c025087d5')
+
+prepare() {
+    cd binaryen-version_${pkgver}
+    patch -p1 < ../disable_werror.patch
+}
 
 build() {
     cd binaryen-version_${pkgver}
