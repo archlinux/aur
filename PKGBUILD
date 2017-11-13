@@ -2,7 +2,7 @@
 pkgbase=qpmx
 pkgname=(qpmx qpmx-gitsource qpmx-qpmsource)
 group=qpmx-full
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A frontend for qpm, to provide source and build caching"
 arch=('i686' 'x86_64')
@@ -29,23 +29,24 @@ git_submod_rm() {
 
 prepare() {
   mkdir -p build
-  
+
   cd "$_pkgfqn"
-  
+
   git_submod_rm submodules/qpmx-sample-package
   git_submod_rm submodules/qtifw-advanced-setup
-  
+
   git submodule update --init --recursive
   echo "CONFIG += no_installer" >> .qmake.conf
-  
+
   mkdir -p submodules/qtifw-advanced-setup
   echo "" > submodules/qtifw-advanced-setup/de_skycoder42_qtifw-advanced-setup.pri
 }
 
 build() {
   cd build
-  
-  qmake -r "../$_pkgfqn/"
+
+  qmake "../$_pkgfqn/"
+  make qmake_all
   make
 }
 
@@ -57,7 +58,7 @@ package_qpmx() {
 
   cd build/qpmx
   make INSTALL_ROOT="$pkgdir" install
-  
+
   cd "../../$_pkgfqn"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
@@ -68,17 +69,17 @@ package_qpmx-qpmsource() {
 
   cd build/plugins/qpmsource
   make INSTALL_ROOT="$pkgdir" install
-  
+
   cd "../../../$_pkgfqn"
   install -D -m644 "../plugin.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
 }
 
 package_qpmx-gitsource() {
   depends=('qpmx' 'git')
-  
+
   cd build/plugins/gitsource
   make INSTALL_ROOT="$pkgdir" install
-  
+
   cd "../../../$_pkgfqn"
   install -D -m644 "../plugin.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
 }
