@@ -1,7 +1,7 @@
 # Maintainer: Piyush Pangtey <pangteypiyush @ gmail.com>
 
 pkgname=nodejs-lts-carbon
-pkgver=8.9.0
+pkgver=8.9.1
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('npm: nodejs package manager')
 conflicts=('nodejs')
 provides=('nodejs')
 source=("nodejs-$pkgver.tar.gz::https://github.com/nodejs/node/archive/v$pkgver.tar.gz")
-sha512sums=("f95c5edb62e1eba23dafa5455d80c00c4dd87b02563546822ebe3f61b55c3f9a27de4eede235655280baf6958e59744249c07e93012f082b0a4d6098f26d7e18")
+sha512sums=("01d8b235943568ae37f440d45ae19697fb67505d408b1220c5ed5238a8d5a3ed5646b922800303fd0e1d936e7f83122b97faeb81b11bb8618c550f5be20b4273")
 
 prepare() {
   cd node-$pkgver
