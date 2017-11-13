@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ipt_ndpi'
-pkgver=1.2_1.7.0.netfilter.233.64bc701
+pkgver=1.2_1.7.0.netfilter.234.0670f78
 pkgrel=1
 pkgdesc='nDPI as netfilter extension.'
 arch=('any')
@@ -13,7 +13,8 @@ makedepends=('git' 'libtool' 'gcc' 'gzip' 'gawk' 'sed')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 install="${pkgname}.install"
-_kernver="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-ARCH\/$/ {print $2}'`"
+_linux_custom="ARCH"
+_kernver="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-'${_linux_custom}'\/$/ {print $2}'`"
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
