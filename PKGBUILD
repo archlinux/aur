@@ -1,7 +1,7 @@
 # Maintainer: Stephen Martin <hwkiller at gmail dot com>
 pkgname=rhythmbox-plugin-radio-browser-git
-pkgver=3.0
-pkgrel=2
+pkgver=v0.5.2.r0.g19205f0
+pkgrel=1
 pkgdesc="Rhythmbox plugin that shows the radio station lists of icecast and shoutcast directly in rhythmbox"
 arch=(any)
 url="http://www.radio-browser.info"
