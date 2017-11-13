@@ -10,7 +10,7 @@ arch=('any')
 url='http://sorkintype.com/'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'ttf-merriweather-ib')
+conflicts=('ttf-google-fonts-opinionated-git' 'ttf-merriweather-ib')
 source=("Merriweather-Black-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweather/Merriweather-Black.ttf"
         "Merriweather-BlackItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweather/Merriweather-BlackItalic.ttf"
         "Merriweather-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweather/Merriweather-Bold.ttf"
