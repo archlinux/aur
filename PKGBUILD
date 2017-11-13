@@ -1,40 +1,46 @@
 # Contributor: Cyker Way <cykerway at gmail dot com>
 # Maintainer: Cyker Way <cykerway at gmail dot com>
-
+# Maintainer: Nikolay Korotkiy <sikmir at gmail dot com>
 pkgname=spidermonkey
 pkgver=45.0.2
-pkgrel=1
-#epoch=
-pkgdesc="Mozilla's JavaScript engine."
+pkgrel=2
+pkgdesc="Mozilla's JavaScript engine"
 arch=('i686' 'x86_64')
-url="http://www.mozilla.org/js/spidermonkey/"
-license=('MPL')
-#groups=()
-#depends=()
-makedepends=('gcc')
-#checkdepends=()
-#optdepends=()
-#provides=()
-#conflicts=()
-#replaces=()
-#backup=()
-#options=()
-#install=
-#changelog=
-#noextract=()
-#validpgpkeys=()
-source=("$pkgname-$pkgver.tar.bz2::https://people.mozilla.org/~sfink/mozjs-45.0.2.tar.bz2")
-md5sums=('2ca34f998d8b5ea79d8616dd26b5fbab')
+url="http://developer.mozilla.org/en/SpiderMonkey"
+license=('MPL2')
+provides=("${pkgname}=${pkgver}")
+conflicts=(${pkgname}-git)
+source=("https://ftp.mozilla.org/pub/$pkgname/releases/$pkgver/mozjs-$pkgver.tar.bz2"
+        "patch_js_src_configure.diff")
+sha256sums=('570530b1e551bf4a459d7cae875f33f99d5ef0c29ccc7742a1b6f588e5eadbee'
+            '4a3688e7232a9fef0d5c48edc7b28c918e878415af49572008eefc9aa709cdd7')
+
+prepare() {
+	cd mozjs-$pkgver
+	patch -Np1 < ../patch_js_src_configure.diff
+}
 
 build() {
-	cd mozjs-45.0.2/js/src
-    CPPFLAGS="$CPPFLAGS -O2"
-	./configure --prefix=/usr
+	cd mozjs-$pkgver/js/src
+	mkdir build_OPT.OBJ
+	cd build_OPT.OBJ
+	CPPFLAGS="-mno-avx -O2" \
+	../configure \
+	    --with-system-nspr \
+	    --with-system-icu \
+	    --enable-release \
+	    --disable-tests \
+	    --prefix=/usr
 	make
 }
 
 package() {
-	cd mozjs-45.0.2/js/src
+	cd mozjs-$pkgver/js/src/build_OPT.OBJ
 	make DESTDIR="$pkgdir/" install
+	# Resolve symlinks so they don't point to $srcdir
+	for l in $(find "$pkgdir/usr/include/" -type l); do
+		cp --remove-destination $(readlink $l) $l
+	done
+	chmod -x $pkgdir/usr/include/mozjs-45/js-config.h
+	rename .ajs .a $pkgdir/usr/lib/libjs_static.ajs
 }
-
