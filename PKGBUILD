@@ -30,6 +30,6 @@ package() {
   cd $pkgname
   _PYTHON_VERSION="$(echo "$(python --version)" | awk '{ print $2 }' | awk -F'.' '{ print $1 "." $2 }')"
   install -d "$pkgdir/usr/lib/python$_PYTHON_VERSION/site-packages/"
-  cp -rp build/lib.linux-*-$_PYTHON_VERSION/* "$pkgdir/usr/lib/python$_PYTHON_VERSION/site-packages/"
+  cp -rp build/lib.linux-$CARCH-$_PYTHON_VERSION/* "$pkgdir/usr/lib/python$_PYTHON_VERSION/site-packages/"
 }
 
