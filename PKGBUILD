@@ -13,7 +13,7 @@ replaces=()
 backup=()
 source=("https://github.com/wp-cli/wp-cli/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/wp-cli/wp-cli/v${pkgver}/utils/wp-completion.bash")
-md5sums=('aabc98ed481e80813ac6c7841cc874bb'
+md5sums=('729cb1b849f8933dc7f0393b0802dbe9'
          'f8acb424f1460428796451679631be86')
 
 prepare() {
