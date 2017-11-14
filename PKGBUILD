@@ -2,8 +2,8 @@
 
 pkgname=perl-monitoring-plugin
 pkgver=0.39
-pkgrel=2
-pkgdesc="A family of perl modules to streamline writing Naemon, Nagios, Icinga or Shinken (and compatible) plugins."
+pkgrel=3
+pkgdesc="The Perl Monitoring::Plugin modules which is used to streamline writing Naemon, Nagios, Icinga or Shinken (and compatible) plugins."
 _dist=Monitoring-Plugin
 arch=('any')
 url="https://metacpan.org/module/$_dist"
@@ -22,7 +22,7 @@ clean_env() {
 build() (
   cd "$srcdir/$_dist-$pkgver"
   clean_env
-  /usr/bin/perl Makefile.PL
+  /usr/bin/perl -I. Makefile.PL
   make
 )
 
