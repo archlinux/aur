@@ -2,7 +2,7 @@
 # Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp
 pkgver=1.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -14,17 +14,22 @@ conflicts=('accel-ppp-git')
 install='accel-ppp.install'
 options=('docs')
 backup=('etc/accel-ppp.conf' 'etc/accel-ppp.lua' 'etc/snmp/accel-ppp.conf')
-source=(http://sourceforge.net/projects/$pkgname/files/$pkgname-$pkgver.tar.bz2
-	accel-ppp.logrotate
-	accel-ppp.lua
-	accel-ppp.tmpfiles
-	accel-pppd.service
-	dictionary.abills
-        dictionary.accel_ipoe)
+source=("http://sourceforge.net/projects/$pkgname/files/$pkgname-$pkgver.tar.bz2"
+	'accel-ppp.logrotate'
+	'accel-ppp.lua'
+	'accel-ppp.tmpfiles'
+	'accel-pppd.service'
+	'dictionary.abills'
+        'dictionary.accel_ipoe'
+        'shaper.patch')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
-	sed -i 's|RUNTIME DESTINATION sbin|RUNTIME DESTINATION bin|' \
+
+        # Fix error build:
+        patch -p1 <../shaper.patch
+        
+        sed -i 's|RUNTIME DESTINATION sbin|RUNTIME DESTINATION bin|' \
 		"accel-pppd/CMakeLists.txt"
 
 	if [ -d "build" ]; then
@@ -77,4 +82,5 @@ md5sums=('81a3312cd0ff468ab5ee5edad3424a91'
          '312fd63b9688a05b71a6b33ddd3a9f4b'
          'a171d28760bf411be85dc4a964df2c0a'
          '4e0d4fc5975ea8794ea286e8fbfa56cd'
-         '7e58716f1249f924ce218bd348d4c03a')
+         '7e58716f1249f924ce218bd348d4c03a'
+         'c203b966d62f3b04bf413f7b46af4212')
