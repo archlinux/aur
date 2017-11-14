@@ -21,6 +21,8 @@ pkgbase = zim-git
 	optdepends = lilypond: Insert Score plugin
 	optdepends = pygtksourceview2: Source View plugin
 	optdepends = texlive-bin: Insert Equation plugin
+	conflicts = zim
+	replaces = zim
 	source = zim-git::git+https://github.com/jaap-karssenberg/zim-desktop-wiki.git
 	md5sums = SKIP
 

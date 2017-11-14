@@ -13,6 +13,8 @@ arch=(any)
 license=('GPL' 'PerlArtistic')
 url="http://zim-wiki.org/"
 depends=('pygtk' 'ttf-dejavu')
+conflicts=('zim')
+replaces=('zim')
 optdepends=('bzr: Version Control plugin'
             'git: Version Control plugin'
             'mercurial: Version Control plugin'
