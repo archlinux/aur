@@ -1,0 +1,20 @@
+pkgbase = mpb-git
+	pkgdesc = MIT Photonic-Bands: computation of photonic band structures in periodic media
+	pkgver = 1.5.r57.gab32dcc
+	pkgrel = 1
+	url = https://github.com/stevengj/mpb
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-fortran
+	depends = lapack
+	depends = hdf5
+	depends = fftw-mpi
+	depends = libctl
+	provides = mpb
+	conflicts = mpb
+	source = git+https://github.com/stevengj/mpb.git
+	sha256sums = SKIP
+
+pkgname = mpb-git
+
