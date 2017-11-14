@@ -8,7 +8,7 @@ epoch=3
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=('i686' 'x86_64')
-url="http://www.rust-lang.org/"
+url="https://www.rust-lang.org/"
 license=('MIT' 'Apache')
 makedepends=('git' 'libffi' 'perl' 'python2' 'curl' 'llvm' 'cmake' 
 'jemalloc')
