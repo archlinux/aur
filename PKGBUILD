@@ -13,7 +13,7 @@ replaces=()
 source=(${pkgname}::git+https://github.com/nana-4/materia-theme.git)
 sha256sums=('SKIP')
 
-pkgver=r522.dd93698
+pkgver=r551.de1b86d
 pkgver() {
   cd "$srcdir/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
