@@ -10,7 +10,7 @@
 
 pkgname=ttf-google-fonts-git
 pkgver=r1212.a16b8302
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=(any)
