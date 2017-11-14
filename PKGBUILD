@@ -9,6 +9,11 @@ conflicts=("pandoc")
 provides=("pandoc")
 replaces=('pandoc-static' 'pandoc-lite')
 depends=('cmark')
+optdepends=(
+    'pandoc-citeproc-bin: for citation rendering with pandoc-citeproc filter'
+    'pandoc-crossref-bin: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter'
+    'texlive-core: for pdf output'
+)
 
 source=(
     "https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-1-amd64.deb"
