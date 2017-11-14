@@ -3,7 +3,7 @@
 
 pkgname=fhem
 pkgver=5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A perl server for house automation"
 arch=('any')
 url='http://fhem.de'
@@ -42,6 +42,8 @@ package() {
 
   cd "${pkgname}-${pkgver}"
   make ROOT="${pkgdir}" install
+
+  chmod 0775 "${pkgdir}/usr/share/fhem"
 
   # Remove unnecessary stuff
   rm -r "${pkgdir}/usr/share/fhem/contrib/DEBIAN"

@@ -1,8 +1,6 @@
-pkgname='fhem'
-
 post_install() {
-  systemd-sysusers $pkgname.conf
-  systemd-tmpfiles --create $pkgname.conf
+  systemd-sysusers fhem.conf
+  chgrp fhem /usr/share/fhem
 }
 
 post_upgrade() {
