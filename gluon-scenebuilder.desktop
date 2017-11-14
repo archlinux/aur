@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Type=Application
 Name=Gluon Scene Builder
-Comment=Open-source drag & drop UI design tool for JavaFX by Gluon
+Comment=Open-source drag & drop UI design tool for JavaFX (Java 8) by Gluon
 Exec=gluon-scenebuilder
 Icon=gluon-scenebuilder
 Terminal=false
