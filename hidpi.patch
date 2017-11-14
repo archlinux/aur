@@ -1,0 +1,9 @@
+--- a/usr/lib/systemd/user/system76-hidpi.service  2017-09-27 16:50:07.000000000 -0400
++++ b/usr/lib/systemd/user/system76-hidpi.service  2017-11-09 23:57:02.406774919 -0500
+@@ -6,5 +6,5 @@
+ Restart=on-failure
+ 
+ [Install]
+-WantedBy=ubuntu-session.target
++WantedBy=default.target
+ 
