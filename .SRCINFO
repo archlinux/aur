@@ -1,6 +1,6 @@
 pkgbase = pstate-frequency
 	pkgdesc = Easily control Intel p-state driver
-	pkgver = 3.9.3
+	pkgver = 3.9.4
 	pkgrel = 1
 	url = https://github.com/pyamsoft/pstate-frequency
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = pstate-frequency
 	license = GPLv2
 	provides = pstate-frequency
 	conflicts = pstate-frequency
-	source = https://github.com/pyamsoft/pstate-frequency/archive/3.9.3.tar.gz
+	source = https://github.com/pyamsoft/pstate-frequency/archive/3.9.4.tar.gz
 	source = 00-fix-prefix.patch
-	sha256sums = 3290d441a72389eeb057a44fbdde016512b1e09d94b5c6e7ab4c1d87146d0e5b
+	sha256sums = 0bbc67327d445bd8fd1f2f11f4feaedbecf204e85197a9dd9de710f73f15999e
 	sha256sums = e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d
 
 pkgname = pstate-frequency
