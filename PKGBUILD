@@ -1,9 +1,10 @@
 # Current Maintainer: Abuzer Rafey <arafey@vyvygen.org>
 # Original Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
+pkgbase=tboot
 pkgname=tboot-hg
 pkgver=r508+.521c58e51eb5+
-pkgrel=1
+pkgrel=2
 pkgdesc="A pre-kernel/VMM module that uses Intel(R) TXT to perform a measured and verified launch of an OS kernel/VMM."
 arch=(i686 x86_64)
 url="http://sourceforge.net/projects/tboot/"

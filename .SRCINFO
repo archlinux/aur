@@ -1,7 +1,7 @@
 pkgbase = tboot
 	pkgdesc = A pre-kernel/VMM module that uses Intel(R) TXT to perform a measured and verified launch of an OS kernel/VMM.
 	pkgver = r508+.521c58e51eb5+
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/tboot/
 	arch = i686
 	arch = x86_64
@@ -18,3 +18,4 @@ pkgbase = tboot
 	sha512sums = aaec2527587211a5ab07f98ff0c8bbe20c32df09752a7364215625b665337c8ee4c582a06639d36b64dfd78e87974d6bd722df140b268280a539d6492942e87c
 
 pkgname = tboot-hg
+
