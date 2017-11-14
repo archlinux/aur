@@ -1,6 +1,6 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=qgnomeplatform-git
-pkgver=0.0.5
+pkgver=0.3.r7.gd67dae6
 pkgrel=1
 pkgdesc="Qt Platform Theme aimed to accomodate as much of GNOME settings as possible"
 arch=('i686' 'x86_64')
@@ -15,8 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd QGnomePlatform
-	echo -n "0.0."
-	git rev-list --count master
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
