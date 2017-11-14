@@ -7,11 +7,11 @@ pkgver=2.1.0
 pkgrel=3
 pkgdesc="A fast JSON parsing and encoding support for Lua."
 arch=(i686 x86_64)
-url="http://www.kyne.com.au/~mark/software/lua-cjson.php"
+url="https://www.kyne.com.au/~mark/software/lua-cjson.php"
 license=('custom:MIT')
 depends=("lua")
 optdepends=('perl: UTF8 implementation test')
-source=("http://www.kyne.com.au/~mark/software/download/$pkgname-$pkgver.tar.gz")
+source=("https://www.kyne.com.au/~mark/software/download/$pkgname-$pkgver.tar.gz")
 md5sums=('24f270663e9f6ca8ba2a02cef19f7963')
 
 build() {
