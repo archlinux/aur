@@ -1,6 +1,6 @@
 pkgbase = postgresql-src
 	pkgver = 10.1
-	pkgrel = 4
+	pkgrel = 6
 	url = http://www.postgresql.org/
 	arch = aarch64
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = postgresql-src
 	license = custom:PostgreSQL
 	makedepends = python
 	makedepends = perl
-	makedepends = tcl>=8.6.0
 	makedepends = openssl>=1.0.0
 	source = http://ftp.postgresql.org/pub/source/v10.1/postgresql-10.1.tar.bz2
 	source = postgresql-run-socket.patch
@@ -50,7 +49,6 @@ pkgname = postgresql-src
 	install = postgresql.install
 	depends = postgresql-src-libs>=10.1
 	depends = krb5
-	depends = libxml2
 	depends = readline>=6.0
 	depends = openssl>=1.0.0
 	depends = pam

@@ -4,7 +4,7 @@ pkgbase=postgresql-src
 pkgname=('postgresql-src-libs' 'postgresql-src-docs' 'postgresql-src')
 pkgver=10.1
 _majorver=10.1
-pkgrel=4
+pkgrel=6
 CFLAGS=`echo $CFLAGS | sed s/-Ofast/-O3/`
 CFLAGS="${CFLAGS} -flto"
 CXXFLAGS=`echo $CXXFLAGS | sed s/-Ofast/-O3/`
@@ -114,7 +114,7 @@ package_postgresql-src-docs() {
 package_postgresql-src() {
   pkgdesc="A sophisticated object-relational DBMS (from source, LTO enabled)"
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
-  depends=("postgresql-src-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'pam')
+  depends=("postgresql-src-libs>=${pkgver}" 'krb5' 'readline>=6.0' 'openssl>=1.0.0' 'pam')
   optdepends=('python: for PL/Python support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support'
