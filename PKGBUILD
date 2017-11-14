@@ -24,7 +24,7 @@ depends=('gstreamer0.10-base' 'openexr'
          'python'
          'eigen'
          'ceres-solver' # for opencv_contrib's sfm
-         'cuda' 'libcl'
+         'cuda' 'ocl-icd'
          )
 depends_x86_64=('intel-tbb')
 depends_i686=('intel-tbb')
