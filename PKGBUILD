@@ -1,5 +1,7 @@
+# Maintainer: Nicholas Wong <me@nicho1as.wang>
+
 pkgname=emercoin
-pkgver=0.6.2
+pkgver=0.6.3.1
 pkgrel=1
 pkgdesc="Emercoin is a digital currency and blockchain service platform."
 arch=('i686' 'x86_64')    
