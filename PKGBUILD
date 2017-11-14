@@ -3,7 +3,7 @@
 
 pkgname=firefox-beta-bin
 _pkgname=firefox-beta
-pkgver=57.0
+pkgver=58.0b3
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -32,8 +32,8 @@ if [[ $_build = ? ]]; then
 fi
 sha256sums=('367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842'
             '92f58532757365f38382e016d250836e4faf8415599cefb6ddace0de77486658')
-sha256sums_i686=('b0d15547e145ad4073b11f949c6e8f1990e241b340b418299ae1915274028c9c')
-sha256sums_x86_64=('c2cae016089e816c03283a359c582efab3bca34e6048ecc2382b43c1eb342457')
+sha256sums_i686=('d032cf53d7c62a311f7209b3962c5b6cff01381c8efb5c7d95fce29d5a22f382')
+sha256sums_x86_64=('d616a5f57794822d33b547a27df341ab50c727c3039f9efcfa221168aa484feb')
 
 package() {
   # Create directories
