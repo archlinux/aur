@@ -1,6 +1,6 @@
 pkgname=('python-gpapi' 'python2-gpapi')
 pkgbase=python-gpapi
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Google Play Unofficial Python API "
 url="https://github.com/NoMore201/googleplay-api"
@@ -8,7 +8,7 @@ arch=('any')
 license=('GPL3')
 makedepends=("python-setuptools" "python2-setuptools")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NoMore201/googleplay-api/archive/v${pkgver}.tar.gz")
-md5sums=('1b1054501698a4715c970442441746da')
+md5sums=('e6eed945b87e36db54d5d206c69907e0')
  
 package_python-gpapi() {
     depends=("python" "python-crypto" "python-protobuf" "python-clint" "python-requests")
