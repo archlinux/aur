@@ -7,7 +7,7 @@
 pkgbase=('qemu-minimal-git')
 _gitname=qemu
 pkgname=('qemu-minimal-git')
-pkgver=2.9.0.r53387.9964e96dc9
+pkgver=2.11.0.r57280.1fa0f627d0
 pkgrel=5
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
