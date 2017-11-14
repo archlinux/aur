@@ -14,7 +14,7 @@ md5sums=('10a9aa2467b2d112a4a83df58f6eca24')
 
 build()
 {
-    cd $pkgname-$pkgver
+    cd "$pkgname-$pkgver"
     
     make  
 }
@@ -22,9 +22,9 @@ build()
 package()
 {
     cd $srcdir
-    if [ -d "/srv/http/$pkgname" ];then
-        sudo rm -rf "/srv/http/$pkgname"
-    fi
-    sudo mv $pkgname-$pkgver "/srv/http/$pkgname"
+
+    mv $pkgname-$pkgver $pkgname
+
+    install -d "$pkgname/srv/http"
     
 }
