@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.01
+Name=Nekojishi
+Comment=A free furry/kemono visual novel
+Icon=nekojishi.png
+Exec=/usr/bin/nekojishi
+Terminal=false
+Categories=Application;Game;
