@@ -1,7 +1,7 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist
-pkgver=0.7.2.beta1
+pkgver=0.7.2.beta2
 pkgrel=1
 pkgdesc='Screenwriting software, which developed in Russia.'
 url='https://kitscenarist.ru'
@@ -17,7 +17,7 @@ source=(
 md5sums=(
   'SKIP'
   'fda5daa58cdf45b83eb6be4585bfda0f'
-  'e1414aa48f5f87e3df94f5da8c404ee4'
+  '675823c4359fef11810a0229d1f69466'
   'e73bb78f9e7a2de9dbc0abe6c6d3ac78'
 )
 
