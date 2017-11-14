@@ -24,15 +24,15 @@ _bldarch=amd64
 [[ $CARCH = i686 ]] && _bldarch=i386
 
 _url=http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_17.10
-_url2=http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_17.04
+# _url2=http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_17.04
 source=(${_url}/all/${_pkgname}-common_${_pkgver}_all.deb)
-source_i686+=(${_url2}/i386/${_pkgname}-gtk_${_pkgver}_i386.deb
-        ${_url2}/i386/${_pkgname}-plugins_${_pkgver}_i386.deb)
+source_i686+=(${_url}/i386/${_pkgname}-gtk_${_pkgver}_i386.deb
+        ${_url}/i386/${_pkgname}-plugins_${_pkgver}_i386.deb)
 source_x86_64+=(${_url}/amd64/${_pkgname}-gtk_${_pkgver}_amd64.deb
         ${_url}/amd64/${_pkgname}-plugins_${_pkgver}_amd64.deb)
 sha256sums=('9545420857c6241c2a5e3ce766e7d023de2157db6f4a31a64d76564279f114aa')
-sha256sums_i686=('65eb788e3146407fe09a0cf7e7257fa426d8a56b76546cbb013980e60d881780'
-                 'e7d8cf37f9af38655a25d8ff5ecfd39d8c119c9b0e61240496912d8f93b68d07')
+sha256sums_i686=('493caa9055ca446c09b36f85622ddcba4c3576e3fa1e682d5de9f9739f2c4a35'
+                 'ba0c73b0d96cfb36201ce43dca087a0e0c4b92f2a8e190fe094f86af83f26037')
 sha256sums_x86_64=('406e97a229eedf64d9422d324d34d0078d28a0bbc778e10f923390c885901e59'
                    '738eb8f49feef86e3c1dc01d08a2192ac7b32e96f097a7ee594d84158fc02ed2')
 
