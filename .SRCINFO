@@ -1,0 +1,18 @@
+pkgbase = harminv-git
+	pkgdesc = Harmonic inversion algorithm of Mandelshtam: decompose signal into sum of decaying sinusoids
+	pkgver = 1.4.1.r3.gfe6f73d
+	pkgrel = 1
+	url = https://github.com/stevengj/harminv
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-fortran
+	depends = lapack
+	provides = harminv
+	conflicts = harminv
+	options = !libtool
+	source = git+https://github.com/stevengj/harminv.git
+	sha256sums = SKIP
+
+pkgname = harminv-git
+
