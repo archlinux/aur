@@ -31,7 +31,7 @@ if [ -z $_commit ]; then
 else
   source=("https://github.com/openrazer/openrazer/archive/$_commit.tar.gz")
 fi
-sha256sums=('09a9eb8f438207f9fe7d98e6b45a50227394bd727d4152748daa96d0d4d8704f')
+sha256sums=('784cc810a50887c0cdb8169e02ae412c8db67541681cc8191be85b3d65c26fb3')
 
 package_python-openrazer() {
   pkgdesc="Python library for accessing the Razer daemon from Python."
