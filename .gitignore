@@ -3,6 +3,8 @@
 /containerd/
 /libnetwork/
 /moby/
+/docker-ce/
+/tini/
 /pkg/
 /src/
 *.pkg.tar.xz

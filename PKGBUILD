@@ -13,7 +13,7 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=17.06.0.dev.33726.f2afa26235
+pkgver=r33899.aea31ab242
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container.'
@@ -46,8 +46,8 @@ md5sums=('SKIP'
 
 pkgver() {
   pushd "$srcdir/moby" > /dev/null
-    _dockerver="$(cat VERSION)"
-    printf "%s.%s.%s" "${_dockerver//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    ( set -o pipefail;
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
   popd > /dev/null
 }
 
@@ -170,9 +170,8 @@ package() {
   install -Dm755 "$GOPATH/src/github.com/docker/libnetwork/bin/docker-proxy" "$pkgdir/usr/bin/docker-proxy"
 
   msg2 'dockerd binary'
-  _dockerver="$(cat $srcdir/moby/VERSION)"
   pushd "$srcdir/moby/bundles/dynbinary-daemon" >/dev/null
-    install -Dm755 "dockerd-$_dockerver" "$pkgdir/usr/bin/dockerd"
+    install -Dm755 "dockerd-dev" "$pkgdir/usr/bin/dockerd"
   popd >/dev/null
 
   msg2 'docker cli binary'
