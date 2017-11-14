@@ -14,7 +14,7 @@ LDFLAGS="${CFLAGS} -flto"
 arch=('aarch64' 'i686' 'x86_64')
 url="http://www.postgresql.org/"
 license=('custom:PostgreSQL')
-makedepends=('python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0')
+makedepends=('python' 'perl' 'openssl>=1.0.0')
 source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
         postgresql.pam postgresql.logrotate
