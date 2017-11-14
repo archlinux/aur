@@ -3,10 +3,11 @@
 # Contributor: Kevin Piche <kevin@archlinux.org>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgname=zim
+_pkgname=zim
+pkgname=${_pkgname}-git
 pkgver=0.67
 pkgrel=1
-pkgdesc="A WYSIWYG text editor that aims at bringing the concept of a wiki to the desktop."
+pkgdesc="A WYSIWYG text editor that aims at bringing the concept of a wiki to the desktop. Git Version"
 arch=(any)
 license=('GPL' 'PerlArtistic')
 url="http://zim-wiki.org/"
@@ -24,11 +25,17 @@ optdepends=('bzr: Version Control plugin'
             'lilypond: Insert Score plugin'
             'pygtksourceview2: Source View plugin'
             'texlive-bin: Insert Equation plugin')
-source=(http://www.zim-wiki.org/downloads/${pkgname}-${pkgver}.tar.gz)
-md5sums=('e87975727f1166c723912c949bea51f2')
+
+source=('zim-git::git+https://github.com/jaap-karssenberg/zim-desktop-wiki.git')
+md5sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgname}
 
     # python2 fixes
     for file in zim/inc/xdot.py; do
@@ -39,7 +46,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgname}
 
 	python2 setup.py install --root=${pkgdir} --optimize=1
 }

@@ -1,5 +1,5 @@
-pkgbase = zim
-	pkgdesc = A WYSIWYG text editor that aims at bringing the concept of a wiki to the desktop.
+pkgbase = zim-git
+	pkgdesc = A WYSIWYG text editor that aims at bringing the concept of a wiki to the desktop. Git Version
 	pkgver = 0.67
 	pkgrel = 1
 	url = http://zim-wiki.org/
@@ -21,8 +21,8 @@ pkgbase = zim
 	optdepends = lilypond: Insert Score plugin
 	optdepends = pygtksourceview2: Source View plugin
 	optdepends = texlive-bin: Insert Equation plugin
-	source = http://www.zim-wiki.org/downloads/zim-0.67.tar.gz
-	md5sums = e87975727f1166c723912c949bea51f2
+	source = zim-git::git+https://github.com/jaap-karssenberg/zim-desktop-wiki.git
+	md5sums = SKIP
 
-pkgname = zim
+pkgname = zim-git
 
