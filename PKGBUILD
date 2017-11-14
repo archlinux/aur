@@ -24,6 +24,6 @@ package() {
     install -m755 -d $pkgdir/var/lib/texmf/arch/installedpkgs
     install -m644 $pkgname.maps $pkgdir/var/lib/texmf/arch/installedpkgs
     
-    install -m755 -d $pkgdir/usr/share/licenses
+    install -m755 -d $pkgdir/usr/share/licenses/$pkgname
     install -Dm644 $srcdir/license $pkgdir/usr/share/licenses/$pkgname
 }
