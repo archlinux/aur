@@ -2,7 +2,7 @@
 
 pkgname=accel-ppp-vlanmon-dkms-git
 _pkgname=accel-ppp
-pkgver=r1421.b363f17
+pkgver=r1443.34fac26
 pkgrel=1
 pkgdesc='Accel-ppp vlan_mon kernel module sources'
 arch=('i686' 'x86_64')
