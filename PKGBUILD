@@ -2,7 +2,7 @@
 # Contributor: Carlo Casta <carlo.casta@gmail.com>
 
 pkgname=gli
-pkgver=0.8.1.0
+pkgver=0.8.2.0
 pkgrel=1
 pkgdesc="OpenGL Image (GLI) is a header only C++ image library for graphics software"
 arch=('any')
@@ -11,7 +11,7 @@ url="http://gli.g-truc.net"
 provides=('glm=0.9.8.0')
 conflicts=('glm')
 source=("https://github.com/g-truc/gli/releases/download/${pkgver}/gli-${pkgver}.zip")
-sha512sums=('a3a0219903ebd445e377469047d482e5033441c0f610fc0f39b527ef20327892f9817b026a77c22198fec9ed1841d923c274e2b3fe0ed219309846348747c186')
+sha512sums=('192a555dac89add99d3e5e5e022bd112acfb8c1646ef1630c13c22658086077d5a73bbc0528b3666549867bb9eb114ea853f4aca0d5ae0e60e10d30b0ad0652e')
 
 package() {
     cd $pkgname
