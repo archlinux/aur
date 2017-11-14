@@ -1,7 +1,7 @@
 # Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
 
 pkgname=(gtk4-git)
-pkgver=3.93.0.r331.g481b5d1b89
+pkgver=3.93.0.r455.g77efc60a15
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=(i686 x86_64)
@@ -9,7 +9,8 @@ url="http://www.gtk.org/"
 license=(LGPL)
 depends=(at-spi2-atk  'atk-git>=2.15.1' dconf 'glib2-git>=2.53.7' 'libepoxy>=1.4'
          libxcomposite libxcursor libxinerama libxkbcommon libxrandr mesa
-         'pango-git>=1.37.3' 'wayland-git>=1.9.91' 'graphene>=1.5.1')
+         'pango-git>=1.37.3' 'wayland-git>=1.9.91' 'graphene>=1.5.1' json-glib
+         colord libcups rest)
 makedepends=(gobject-introspection-git gtk-doc git colord rest libcups meson ninja)
 optdepends=('gnome-icon-theme: Default icon theme'
             'gnome-themes-standard: Default widget theme'
@@ -50,7 +51,7 @@ build() {
   ninja
 }
 
-package_gtk4-git() {
+package() {
   install="gtk4.install"
 
   cd gtk+/_build

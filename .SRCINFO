@@ -1,6 +1,6 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.93.0.r331.g481b5d1b89
+	pkgver = 3.93.0.r455.g77efc60a15
 	pkgrel = 1
 	url = http://www.gtk.org/
 	arch = i686
@@ -28,6 +28,10 @@ pkgbase = gtk4-git
 	depends = pango-git>=1.37.3
 	depends = wayland-git>=1.9.91
 	depends = graphene>=1.5.1
+	depends = json-glib
+	depends = colord
+	depends = libcups
+	depends = rest
 	optdepends = gnome-icon-theme: Default icon theme
 	optdepends = gnome-themes-standard: Default widget theme
 	optdepends = hicolor-icon-theme: Freedesktop.org Hicolor icon theme
