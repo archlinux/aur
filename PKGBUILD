@@ -53,7 +53,7 @@ build() {
               --disable-docs --libexecdir=/usr/lib/qemu \
               --disable-gtk --enable-linux-aio --enable-seccomp \
               --localstatedir=/var \
-              --enable-tpm --enable-curl --audio-drv-list="pa alsa" \
+              --enable-tpm --enable-curl \
               --enable-modules --disable-spice --disable-werror --enable-jemalloc \
               --target-list=x86_64-softmmu --disable-libiscsi --disable-bluez
   make V=99
