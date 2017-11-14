@@ -1,4 +1,4 @@
-# Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
+# Maintainer: Iván Ruvalcaba <mario.i.ruvalcaba[at]gmail[dot]com>
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 # Contributor: Cedric MATHIEU <me.xenom @ gmail.com>
 
@@ -14,8 +14,8 @@ _pkgname=${_name}-${_channel}
 pkgname=${_pkgname}-${_lang,,}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=58.0a1
-pkgver=58.0a1.20170923
+_version=59.0a1
+pkgver=59.0a1.20171114
 pkgrel=1
 arch=('i686' 'x86_64')
 conflicts=('firefox-nightly')
@@ -76,8 +76,8 @@ package() {
       "${DEST_LOC}"/${i}x${i}/apps/${_pkgname}.png
   done
 
-  install -Dm644 "${SRC_LOC}"/icons/mozicon128.png \
-    "${DEST_LOC}"/128x128/apps/${_pkgname}.png
+  #install -Dm644 "${SRC_LOC}"/icons/mozicon128.png \
+  #  "${DEST_LOC}"/128x128/apps/${_pkgname}.png
 
   # Disable auto-updates
   install -Dm644 "${srcdir}"/vendor.js -t \
