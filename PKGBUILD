@@ -15,9 +15,9 @@ if $build_kernel_modules; then
     _linux_next=4.13
     pkgname+=('openrazer-driver-arch')
 fi
-pkgver=2.0.0
+pkgver=2.1
 #_commit=6ae1f7d55bf10cc6b5cb62a5ce99ff22c43e0701
-pkgrel=2
+pkgrel=1
 pkgdesc="An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux."
 arch=('any')
 url="https://github.com/openrazer/openrazer"
@@ -27,11 +27,11 @@ if $build_kernel_modules; then
     makedepends+=("linux-headers>=$_linux_current" "linux-headers<$_linux_next" "linux>=$_linux_current" "linux<$_linux_next")
 fi
 if [ -z $_commit ]; then
-  source=("https://github.com/openrazer/openrazer/archive/v$pkgver.tar.gz")
+  source=("https://github.com/openrazer/openrazer/releases/download/v$pkgver/openrazer-$pkgver.tar.xz")
 else
   source=("https://github.com/openrazer/openrazer/archive/$_commit.tar.gz")
 fi
-sha256sums=('34a8bef78086d8fb10e59c8e719aca94500c95a9048dd9ef0cfce01e0ae6e89e')
+sha256sums=('09a9eb8f438207f9fe7d98e6b45a50227394bd727d4152748daa96d0d4d8704f')
 
 package_python-openrazer() {
   pkgdesc="Python library for accessing the Razer daemon from Python."
@@ -49,7 +49,7 @@ package_python-openrazer() {
 
 package_openrazer-daemon() {
   pkgdesc="Userspace daemon that abstracts access to the kernel driver. Provides a DBus service for applications to use."
-  depends=('openrazer-driver-dkms' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev' 'gtk3' 'dbus-glib')
+  depends=('openrazer-driver-dkms' 'python-dbus' 'python-gobject' 'python-setproctitle' 'python-daemonize' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev' 'gtk3' 'dbus-glib')
   provides=('razer-daemon')
   conflicts=('razer-daemon')
   replaces=('razer-daemon')
