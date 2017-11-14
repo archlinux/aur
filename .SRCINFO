@@ -1,14 +1,14 @@
 pkgbase = cisco-encrypt
 	pkgdesc = Password encoder for Cisco VPN client
 	pkgver = 1.0
-	pkgrel = 1
-	url = http://staff.science.uva.nl/~bakkerr/obfuscate.c
+	pkgrel = 2
+	url = https://github.com/coldfix/cisco-encrypt.git
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	depends = libgcrypt>=1.1.90
-	source = http://staff.science.uva.nl/~bakkerr/obfuscate.c
-	sha256sums = b19f9cc58c11e9543d4b2021ffec683d8e3995f545399e9dd89059950f479f75
+	source = cisco-encrypt::git+https://github.com/coldfix/cisco-encrypt.git
+	sha256sums = SKIP
 
 pkgname = cisco-encrypt
 
