@@ -16,8 +16,6 @@ pkgbase = aphrodite
 	depends = git
 	depends = composer
 	depends = php-sqlite
-	source = http://git.fumseck.eu/cgit/aphrodite/snapshot/aphrodite-1.0.tar.gz
-	md5sums = 10a9aa2467b2d112a4a83df58f6eca24
 
 pkgname = aphrodite
 
