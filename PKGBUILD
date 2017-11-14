@@ -6,7 +6,7 @@
 
 pkgname=matlab
 pkgver=9.2.0.556344
-pkgrel=3
+pkgrel=4
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -99,7 +99,7 @@ package() {
   rm ${pkgdir}/opt/tmw/${pkgname}/sys/os/glnxa64/{libstdc++.so.6.0.20,libstdc++.so.6,libgcc_s.so.1,libgfortran.so.3.0.0,libgfortran.so.3,libquadmath.so.0.0.0,libquadmath.so.0}
 
   # make sure MATLAB can find libgfortran.so.3
-  sed -i 's,LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`",LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`:/usr/lib/gcc/x86_64-pc-linux-gnu/5.4.0",g' "${pkgdir}/opt/tmw/matlab/bin/matlab"
+  sed -i 's,LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`",LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`:/usr/lib/gcc/x86_64-pc-linux-gnu/5.5.0",g' "${pkgdir}/opt/tmw/matlab/bin/matlab"
 }
 
 if [ ! -z ${_partialinstall+isSet} ] && [ -z ${_products+isSet} ]; then
