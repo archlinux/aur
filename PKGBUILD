@@ -6,7 +6,7 @@
 
 _pkgname=zim
 pkgname=${_pkgname}-git
-pkgver=0.67
+pkgver=0.67.r12.888cabdb
 pkgrel=1
 pkgdesc="A WYSIWYG text editor that aims at bringing the concept of a wiki to the desktop. Git Version"
 arch=(any)

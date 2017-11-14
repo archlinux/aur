@@ -1,6 +1,6 @@
 pkgbase = zim-git
 	pkgdesc = A WYSIWYG text editor that aims at bringing the concept of a wiki to the desktop. Git Version
-	pkgver = 0.67
+	pkgver = 0.67.r12.888cabdb
 	pkgrel = 1
 	url = http://zim-wiki.org/
 	arch = any
