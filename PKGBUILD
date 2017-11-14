@@ -1,24 +1,23 @@
 # Maintainer: Ainola
 # Contributor: Ner0
 # Contributor: quantax
+# Contributor: xyproto
 
 pkgname=ags
-pkgver=3.4.1.6
+pkgver=3.4.1.8
 pkgrel=1
-pkgdesc="A development tool that is primarily used to create graphical adventure games"
+pkgdesc='A development tool that is primarily used to create graphical adventure games'
 arch=('i686' 'x86_64')
-url="https://github.com/adventuregamestudio/ags"
+url='https://github.com/adventuregamestudio/ags'
 license=('Artistic2.0')
-depends=('allegro' 'dumb' 'libogg' 'libtheora' 'libvorbis')
+depends=('allegro4' 'dumb-a4' 'libogg' 'libtheora' 'libvorbis')
 makedepends=('wxgtk')
 optdepends=('wine: for installing and configuring the game')
-install=ags.install
 source=("https://github.com/adventuregamestudio/ags/archive/v.${pkgver}.tar.gz")
-sha256sums=('fb9f8d04fd7c865ccf1e430d61216adcf341f2d5ec37a099075a83f3502468f5')
+sha256sums=('2664dd5fc92c54053ea65334300d2542612d9fea464f86726298a5e08e01c413')
 
 prepare() {
-  cd "$srcdir/ags-v.${pkgver}"
-  sed -i 's/-Wfatal-errors\ //' Engine/Makefile-defs.linux
+  sed -i 's/-Wfatal-errors\ //' "ags-v.$pkgver/Engine/Makefile-defs.linux"
 }
 
 build() {
