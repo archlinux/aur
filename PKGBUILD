@@ -5,8 +5,8 @@
 ## The default installation behavior is to install all licensed products whether or not they are available in the tar file. To install only a subset of licensed products either provide a $_products array or set $_partialinstall and remove unwanted entries from the provided $_products array. To perform a network install set $_networkinstall.
 
 pkgname=matlab
-pkgver=9.2.0.556344
-pkgrel=4
+pkgver=9.3.0.713579
+pkgrel=1
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=('x86_64')
 url='http://www.mathworks.com'
