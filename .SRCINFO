@@ -1,6 +1,6 @@
 pkgbase = libressl-netcat
 	pkgdesc = Low level UDP/TCP connection tool with support for TLS protocol
-	pkgver = 2.6.1
+	pkgver = 2.6.3
 	pkgrel = 1
 	url = https://www.libressl.org
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = libressl-netcat
 	provides = netcat
 	conflicts = openbsd-netcat
 	conflicts = gnu-netcat
-	source = https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.6.1.tar.gz
-	source = https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.6.1.tar.gz.asc
+	source = https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.6.3.tar.gz
+	source = https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.6.3.tar.gz.asc
 	validpgpkeys = A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5
-	sha256sums = c293b3b5f1fc1d6349c019c3905355d577df32734b631d7e656503894e09127e
+	sha256sums = aead6598263171b96970da0d881e616d0813b69b35ebdc5991f87ff2ea7f5c98
 	sha256sums = SKIP
 
 pkgname = libressl-netcat
