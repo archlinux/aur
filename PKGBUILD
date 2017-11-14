@@ -3,14 +3,15 @@
 
 _name=git
 pkgname=$_name-git
-pkgver=2.15.0.r0.gcb5918aa0d
+pkgver=2.15.0.r169.gd8df70f273
 pkgrel=1
 pkgdesc='A fast distributed version control system'
 arch=(i686 x86_64)
 url='http://git-scm.com/'
 license=(GPL2)
-depends=(curl 'expat>=2.0' perl-error 'perl>=5.14.0' openssl pcre2)
-makedepends=(python2 emacs libgnome-keyring xmlto asciidoc)
+depends=(curl 'expat>=2.0' perl-error 'perl>=5.14.0' openssl pcre2
+         libgnome-keyring glib2-git libsecret)
+makedepends=(python2 emacs xmlto asciidoc)
 optdepends=('tk: gitk and git gui'
             'perl-libwww: git svn'
             'perl-term-readkey: git svn'
