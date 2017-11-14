@@ -10,7 +10,7 @@
 # Contributor: Chris Cromer <chris@cromer.cl>
 
 pkgname=networkmanager-consolekit
-pkgver=1.8.4
+pkgver=1.10.0
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
@@ -36,7 +36,7 @@ conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 groups=('gnome')
 install=networkmanager.install
-_commit=51fdc50ab179a0582012d1b50e587761765ad15e  # tags/1.8.4^0
+_commit=1193fb1b08fe45ce8713220132184581c4669362  # tags/1.10.0^0
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         "git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=$_commit"
         NetworkManager.conf
@@ -84,7 +84,7 @@ build() {
     --enable-teamdctl \
     --enable-tests=no \
     --enable-wifi \
-    --with-config-dhcp-default=dhclient \
+    --with-config-dhcp-default=internal \
     --with-config-dns-rc-manager-default=resolvconf \
     --with-config-logging-backend-default=syslog \
     --with-config-plugins-default=keyfile,ibft \
@@ -92,13 +92,12 @@ build() {
     --with-dbus-sys-dir=/usr/share/dbus-1/system.d \
     --with-dhclient=/usr/bin/dhclient \
     --with-dnsmasq=/usr/bin/dnsmasq \
-    --with-dnssec-trigger=/usr/lib/dnssec-trigger \
+    --with-dnssec-trigger=/usr/lib/dnssec-trigger/dnssec-trigger-script \
     --with-hostname-persist=default \
     --with-iptables=/usr/bin/iptables \
     --with-resolvconf=/usr/bin/resolvconf \
     --with-kernel-firmware-dir=/usr/lib/firmware \
     --with-libnm-glib \
-    --with-libsoup \
     --with-modem-manager-1 \
     --with-nmcli \
     --with-nmtui \
