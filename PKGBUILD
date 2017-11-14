@@ -13,19 +13,18 @@
 pkgname=('tuxjdk' 'tuxjdk-src' 'tuxjdk-doc')
 _java_ver=8
 # Found @ http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-_jdk_update=92
-# Found @ http://hg.openjdk.java.net/jdk8u/jdk8u
-_jdk_build=14
+_jdk_update=152
+_jdk_build=16
 _tuxjdk_ver=03
 pkgver=${_java_ver}.${_jdk_update}.${_tuxjdk_ver}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
-pkgrel=3
+pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/tuxjdk/tuxjdk'
 license=('custom')
 makedepends=('jdk7-openjdk' 'ccache' 'cpio' 'unzip' 'zip'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib'
-             'gcc5'
+             'gcc6'
              'quilt')
 _url_src=http://hg.openjdk.java.net/jdk8u/jdk8u
 source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
@@ -36,19 +35,18 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         jaxp-${_repo_ver}.tar.gz::${_url_src}/jaxp/archive/${_repo_ver}.tar.gz
         langtools-${_repo_ver}.tar.gz::${_url_src}/langtools/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}/nashorn/archive/${_repo_ver}.tar.gz
-        tuxjdk_quilt_script.patch
-        https://github.com/tuxjdk/tuxjdk/archive/${pkgver}.tar.gz)
+        https://github.com/guymers/tuxjdk/archive/${_java_ver}u${_jdk_update}.tar.gz)
+        #https://github.com/tuxjdk/tuxjdk/archive/${pkgver}.tar.gz)
 
-sha256sums=('19bc6028c18dd1993f734dc49991c181138e2e85ead42354d7236fb3c6169e16'
-            '287edac284f4b97f48a14fea331455c3807bcffd51612278decb0ac265303069'
-            '653821c6d3e542b4922aeedea6e25efb6d3c6ea2aaa0f5b038e6af972accf814'
-            '9a344a13bb327c5533c22c95b2cf3935d1d4c1612366e1d142b265dd6b93fe69'
-            '77aea5c781d6614b4be391befc59e3017d2d9c9303b6bc2ca9d316cb35954a89'
-            '63eff7fe1f6a0dd7ec0c450724a403dcff986e026b5b9ae9ac46edc7222f798c'
-            '374d12d1434172c775f0ecd944d0a903cd56264a4c9d5ef0be038715e47e67fd'
-            '76a18e240a8498c8d2a3a261b7845c8062dbf85941425adcd96f9e879141b3e6'
-            '23d22c21424785a7bc615a90a37fcdf03937704e95cf32eebd1d9c203486f6b0'
-            '418a9b7fdec14947cb038df4fdf2371215b26130dc0dec2ba891a212f8806a3c')
+sha256sums=('ee7e72948d54de02f3eca1054def65e2a814c8597196cf1d83a52e9eb5d9258b'
+            'f2c293427413fd08129e840428eb80e898060c8764b2df57809c960607ab83f6'
+            '2afe4937e3a472bd3e49b3e03e9df0a1f61606fae31aef245b90f8399898cc56'
+            '267026dac66e5d9b81a62c148aea7df08ccd0ce602096636f13adb72a17c4ec3'
+            '50f2976bf0dbf053a6d36260ffe96fcf03bce633d6277574b76938f6f3bb3a1e'
+            'c9ea746cc4a04f9ccb35e4d2e0e495f3ac18a6b14be0af63803c9d329fe145ce'
+            '15734ef517ec18b01f9af1d1d75277c133faa2c76a33e46320783cc19d054e00'
+            '044d38671b209a0951cbc900a061f821b503580019f3c88015e0c298512e39c9'
+            '8695b5930bd465722d9eab8fecde34d53891866343850fc4acf5eaee12eb16d4')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
@@ -59,16 +57,14 @@ _jdkname=tuxjdk8
 _jvmdir=/usr/lib/jvm/java-8-tuxjdk
 _prefix="jdk8u-${_repo_ver}/image"
 _imgdir="${_prefix}/jvm/openjdk-1.8.0_$(printf '%.2d' ${_jdk_update})"
-_tuxjdkdir="tuxjdk-${pkgver}"
+_tuxjdkdir="tuxjdk-${_java_ver}u${_jdk_update}"
+#_tuxjdkdir="tuxjdk-${pkgver}"
 _nonheadless=(bin/policytool
               lib/${_JARCH}/libjsound.so
               lib/${_JARCH}/libjsoundalsa.so
               lib/${_JARCH}/libsplashscreen.so)
 
 prepare() {
-  cd "${srcdir}/${_tuxjdkdir}"
-  patch -p1 < "${srcdir}/tuxjdk_quilt_script.patch"
-
   cd "${srcdir}/jdk8u-${_repo_ver}"
 
   for subrepo in corba hotspot jdk jaxws jaxp langtools nashorn
@@ -90,9 +86,9 @@ build() {
   # https://hydra.nixos.org/build/41230444/log
   export CFLAGS="-Wno-error=deprecated-declarations"
 
-  # cannot build on gcc 6+
-  export CC=gcc-5
-  export CXX=g++-5
+  # compiling with gcc-7 causes segfault at runtime
+  export CC=gcc-6
+  export CXX=g++-6
 
   install -d -m 755 "${srcdir}/${_prefix}/"
   sh configure \
@@ -102,7 +98,8 @@ build() {
     --with-milestone="fcs" \
     --with-user-release-suffix="tuxjdk" \
     --enable-unlimited-crypto \
-    --with-zlib=system
+    --with-zlib=system \
+    --with-boot-jdk="/usr/lib/jvm/java-7-openjdk"
 
     # TODO OpenJDK does not want last version of giflib (add 'giflib' as dependency once fixed)
     #--with-giflib=system \
@@ -217,7 +214,6 @@ package_tuxjdk() {
     ln -sf /${file} "${pkgdir}${_filepkgpath}"
   done
 
-  #--- jdk
   cd "${srcdir}/${_imgdir}"
 
   # Main files
@@ -250,6 +246,10 @@ package_tuxjdk() {
   # TODO add these when switching to IcedTea
   #install -m 644 "${srcdir}/icedtea-${_icedtea_ver}/jconsole.desktop" \
   #  "${pkgdir}/usr/share/applications"
+
+  # link license
+  install -d -m 755 "${pkgdir}/usr/share/licenses/"
+  ln -sf /usr/share/licenses/${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_tuxjdk-src() {
