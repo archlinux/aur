@@ -1,14 +1,13 @@
 # Maintainer: Sebastian Reuße <seb@wirrsal.net>
 pkgname=mypy-git
 _gitname=mypy
-pkgver=v0.520.r187.g1cbab17f5
+pkgver=v0.520.r188.g51fe653f7
 pkgrel=1
 pkgdesc="Optional static typing for Python"
 arch=(any)
 url=http://www.mypy-lang.org
 license=(MIT)
-depends=(python python-psutil)
-optdepends=("python-typed-ast: faster parsing")
+depends=(python python-psutil python-typed-ast)
 makedepends=(git)
 provides=(mypy)
 conflicts=(mypy)
