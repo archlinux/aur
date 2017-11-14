@@ -4,8 +4,8 @@
 # Contributor: Dr-Shadow <kerdiles.robin@gmail.com>
 
 pkgname=mingw-w64-python
-pkgver=3.4.3
-_pybasever=3.4
+pkgver=3.6.3
+_pybasever=3.6
 pkgrel=1
 pkgdesc="Next generation of the python high-level scripting language (mingw-w64)"
 arch=('any')
@@ -14,20 +14,24 @@ url="http://www.python.org/"
 depends=('mingw-w64-crt'
          'mingw-w64-expat'
          'mingw-w64-bzip2'
-         'mingw-w64-gdbm'
          'mingw-w64-libffi'
+         'mingw-w64-ncurses'
          'mingw-w64-openssl'
          'mingw-w64-readline'
+         'mingw-w64-tcl'
+         'mingw-w64-tk'
          'mingw-w64-zlib'
-         'mingw-w64-xz')
+         'mingw-w64-xz'
+         'mingw-w64-sqlite'
+         'wine')
 
-makedepends=('mingw-w64-configure')
+makedepends=('mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
 options=('staticlibs' '!buildflags' '!strip')
 
 source=("http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
         'patches.tar.gz')
-sha1sums=('7ca5cd664598bea96eec105aa6453223bb6b4456'
-          'f4b0b6f86eb86be2d4c03de80f8bce2091b14193')
+sha1sums=('6c71b14bdbc4d8aa0cfd59d4b6dc356d46abfdf5'
+          'f058e3caa8c5b0b37b9adfa413846a051ae558c6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -66,15 +70,44 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
 
+    CFLAGS+=" -fwrapv -D__USE_MINGW_ANSI_STDIO=1 "
+    CXXFLAGS+=" -fwrapv -D__USE_MINGW_ANSI_STDIO=1"
+    CPPFLAGS+=" -I/usr/${_arch}/include/ncursesw "
+
+  declare -a _extra_config
+  if check_option "strip" "y"; then
+    LDFLAGS+=" -s "
+  fi
+  if check_option "debug" "n"; then
+    CFLAGS+=" -DNDEBUG "
+    CXXFLAGS+=" -DNDEBUG "
+  else
+    plain " -DDEBUG -DPy_DEBUG -D_DEBUG does not work unfortunately .."
+    #    CFLAGS+=" -DDEBUG -DPy_DEBUG -D_DEBUG "
+    #    CXXFLAGS+=" -DDEBUG -DPy_DEBUG -D_DEBUG "
+    CFLAGS+=" -O0 -ggdb"
+    CXXFLAGS+=" -O0 -ggdb"
+    _extra_config+=("--with-pydebug")
+  fi
+
+  # Workaround for conftest error on 64-bit builds
+export ac_cv_working_tzset=no
+
     # export LIBFFI_INCLUDEDIR=`${_arch}-pkg-config libffi --cflags-only-I | sed "s|\-I||g"`
+    CFLAGS+="-I/usr/${_arch}/include" \
+    CXXFLAGS+="-I/usr/${_arch}/include" \
+    CPPFLAGS+="-I/usr/${_arch}/include" \
+    LDFLAGS+="-L/usr/${_arch}/lib" \
     ${_arch}-configure \
-      --with-threads \
+      --with-threads=win32 \
       --with-computed-gotos \
       --with-system-expat \
-      --with-dbmliborder=gdbm:ndbm \
-      --with-system-ffi
-    make
+      --with-system-ffi \
+      --without-ensurepip \
+      "${_extra_config[@]}" \
+      OPT=""
 
+    make
     popd
   done
 }
@@ -83,23 +116,54 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/Python-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
-
+    if check_option "debug" "n"; then
+      VERABI=${_pybasever}m
+    else
+      VERABI=${_pybasever}dm
+    fi
+    
+    [[ -d "${pkgdir}/usr/${_arch}"/share/gdb/python3/ ]] || mkdir -p "${pkgdir}/usr/${_arch}"/share/gdb/python3/
+    install -D -m644 python.exe-gdb.py "${pkgdir}/usr/${_arch}/share/gdb/python3/python_gdb.py"
+    
     chmod 755 "$pkgdir"/usr/${_arch}/bin/*.dll
     install -m 644 libpython${_pybasever}m.a "$pkgdir"/usr/${_arch}/lib
     install -m 644 libpython${_pybasever}m.dll.a "$pkgdir"/usr/${_arch}/lib
+    
+    # Need for building boost python3 module
+    cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/libpython${VERABI}.dll.a "${pkgdir}/usr/${_arch}"/lib/libpython${_pybasever}.dll.a
+    cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/libpython${VERABI}.dll.a "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/libpython${_pybasever}.dll.a
+    
+    # some useful "stuff"
+    install -dm755 "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/Tools/{i18n,scripts}
+    install -m755 "${srcdir}/Python-${pkgver}"/Tools/i18n/{msgfmt,pygettext}.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/Tools/i18n/
+    install -m755 "${srcdir}/Python-${pkgver}"/Tools/scripts/{README,*py} "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/Tools/scripts/
+    
+    # clean up #!s
+    find "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/ -name '*.py' | \
+    xargs sed -i "s|#[ ]*![ ]*/usr/bin/env python$|#!/usr/bin/env python3|"
+    
+    # clean-up reference to build directory
+    sed -i "s#${srcdir}/Python-${pkgver}:##" "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/Makefile
 
-    rm -rf "$pkgdir"/usr/${_arch}/share
-    rm "$pkgdir"/usr/${_arch}/bin/2to3*
-    rm "$pkgdir"/usr/${_arch}/bin/idle*
-    rm "$pkgdir"/usr/${_arch}/bin/pydoc*
-    rm "$pkgdir"/usr/${_arch}/bin/pyvenv*
+    for fscripts in 2to3-${_pybasever} idle3 idle${_pybasever} pydoc3 pydoc${_pybasever} pyvenv pyvenv-${_pybasever}; do
+      sed -e "s|/usr/${_arch}/bin/python${_pybasever}.exe|/usr/bin/env python${_pybasever}.exe|g" -i "${pkgdir}/usr/${_arch}"/bin/$fscripts
+    done
 
-    # remove these, they clash with normal the python package
-    rm "$pkgdir"/usr/bin/pip*
-    rm "$pkgdir"/usr/bin/easy_install*
+    sed -i "s|#!${pkgdir}/usr/${_arch}/bin/python${VERABI}.exe|#!/usr/bin/env python${_pybasever}.exe|" "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/python-config.py
 
-    ${_arch}-strip "$pkgdir"/usr/${_arch}/bin/*.exe
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    # fix permissions
+    find ${pkgdir}/usr/${_arch} -type f \( -name "*.dll" -o -name "*.exe" \) | xargs chmod 0755
+    
+    # replace paths in sysconfig
+    sed -i "s|${pkgdir}/usr/${_arch}|/usr/${_arch}|g" \
+    "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata*.py \
+    "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/smtpd.py
+    
+    # Correct name of _sysconfigdata_m_win32_.py
+    mv -f "${pkgdir}/usr/${_arch}"/lib/python3.6/_sysconfigdata_m_win_.py "${pkgdir}/usr/${_arch}"/lib/python3.6/_sysconfigdata_m_win32_.py
+    
+    # Create python executable with windows subsystem
+    cp -f "${pkgdir}/usr/${_arch}"/bin/python3.exe "${pkgdir}/usr/${_arch}"/bin/python3w.exe
+    /usr/${_arch}/bin/objcopy --subsystem windows "${pkgdir}/usr/${_arch}"/bin/python3w.exe
   done
 }
