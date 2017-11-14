@@ -36,5 +36,5 @@ package(){
 	mkdir -p usr/lib 2> /dev/null; cp -r lib/* usr/lib; rm -rf lib
 
 	cd ..
-
+	tput setaf 1; echo "this is the beta package for the AUR, if you want to stay on the stable builds go and download the synergy2 package. and make sure to remove this one."; tput sgr0
 }
