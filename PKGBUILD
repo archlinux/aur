@@ -1,13 +1,13 @@
 # Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp-git
-pkgver=r1421.b363f17
+pkgver=r1443.34fac26
 pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
 license=('GPL')
-depends=('openssl>=1.0.0' 'pcre>=8.30' 'libnl')
-makedepends=('git' 'cmake>=2.6' 'libnl1' 'net-snmp>=5.x' 'lua51')
+depends=('openssl>=1.0.0' 'pcre>=8.30' 'libnl>=2.0')
+makedepends=('git' 'cmake>=2.6' 'libnl1' 'net-snmp>=5.x' 'lua')
 optdepends=('accel-ppp-ipoe-dkms-git' 'accel-ppp-vlanmon-dkms-git' 'logrotate')
 conflicts=('accel-ppp')
 install='accel-ppp.install'
@@ -19,7 +19,8 @@ source=('accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code'
 	'accel-ppp.tmpfiles'
 	'accel-pppd.service'
 	'dictionary.abills'
-	'dictionary.accel_ipoe')
+	'dictionary.accel_ipoe'
+        'shaper.patch')
 
 md5sums=('SKIP'
          '0536dd60960e76cf5a6cdbf0518782d8'
@@ -27,7 +28,8 @@ md5sums=('SKIP'
          '312fd63b9688a05b71a6b33ddd3a9f4b'
          'a171d28760bf411be85dc4a964df2c0a'
          '4e0d4fc5975ea8794ea286e8fbfa56cd'
-         '7e58716f1249f924ce218bd348d4c03a')
+         '7e58716f1249f924ce218bd348d4c03a'
+         'c203b966d62f3b04bf413f7b46af4212')
 
 _pkgname=accel-ppp
 
@@ -38,6 +40,9 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/${pkgname%-git}"
+
+        # Fix error build tc shaper:
+        patch -p1 <../shaper.patch
 	
 	sed -i 's|RUNTIME DESTINATION sbin|RUNTIME DESTINATION bin|' \
 	"accel-pppd/CMakeLists.txt"
@@ -61,8 +66,8 @@ build() {
 		-DSHAPER=TRUE \
 		-DRADIUS=TRUE \
 		-DNETSNMP=FALSE \
-		-DLUA=TRUE \
-		-DLUA_INCLUDE_DIR="/usr/include/lua5.1" \
+		-DLUA=5.3 \
+		-DLUA_INCLUDE_DIR="/usr/include" \
         "$srcdir/${pkgname%-git}"
 	make || return 1
 }
