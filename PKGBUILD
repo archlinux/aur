@@ -5,7 +5,7 @@ pkgname=firefox-nightly-de
 pkgdesc='Standalone web browser from mozilla.org, nightly build, german'
 url='https://nightly.mozilla.org'
 pkgver=59.0a1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 source=(
@@ -17,7 +17,16 @@ sha512sums=('6318a38b87629153fd4214997449e64d3301a7a3e00410f95e83337fbba90a20176
   'SKIP'
   'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
-depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib')
+depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
+optdepends=('pulseaudio: audio support'
+            'ffmpeg: h.264 video'
+            'gtk2: flash plugin support'
+            'hunspell: spell checking'
+            'hyphen: hyphenation'
+            'libnotify: notification integration'
+            'networkmanager: location detection via available WiFi networks'
+            'speech-dispatcher: text-to-speech'
+            'startup-notification: support for FreeDesktop Startup Notification')
 conflicts=('firefox-nightly')
 provides=('firefox-nightly')
 
@@ -27,6 +36,6 @@ package() {
 
   ln -s /opt/firefox-${pkgver}/firefox "${pkgdir}/usr/bin/firefox-nightly"
   install -m644 "${srcdir}"/{firefox-nightly.desktop,firefox-nightly-safe.desktop} "${pkgdir}/usr/share/applications/"
-  install -m644 "${srcdir}/firefox/browser/icons/mozicon128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}-icon.png"
+  install -m644 "${srcdir}/firefox/browser/chrome/icons/default/default128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}-icon.png"
   install -Dm644 "${srcdir}/vendor.js" "${pkgdir}/opt/firefox-${pkgver}/browser/defaults/preferences/vendor.js"
 }
