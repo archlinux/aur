@@ -16,7 +16,7 @@ depends=('gambas3-gb-image>=3.0.0'
 	'gambas3-gb-image>=3.3.0'
 	'argyllcms')
 
-makedepends=('gambas3-devel git')
+makedepends=('gambas3-devel' 'git')
 
 _gitroot="https://github.com/kokoko3k/caled.git"
 
