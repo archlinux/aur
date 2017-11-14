@@ -38,7 +38,7 @@ spapr-rtas.bin u-boot.e500)
 
 pkgver() {
 	cd "${srcdir}/$_gitname"
-	echo "$(git describe | sed 's/^v//' | cut -c -5).r$(git rev-list --count master).$(git log -1 --format=%h)"
+echo "$(git describe | sed 's/^v\(\([0-9]\+\.\)\+[0-9]\+\).*$/\1/').r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -53,7 +53,7 @@ build() {
               --disable-docs --libexecdir=/usr/lib/qemu \
               --disable-gtk --enable-linux-aio --enable-seccomp \
               --localstatedir=/var \
-              --enable-tpm --enable-curl \
+              --enable-tpm --enable-curl --audio-drv-list="pa alsa" \
               --enable-modules --disable-spice --disable-werror --enable-jemalloc \
               --target-list=x86_64-softmmu --disable-libiscsi --disable-bluez
   make V=99
