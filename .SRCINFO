@@ -18,7 +18,6 @@ pkgbase = budgie-screenshot-applet
 	depends = budgie-desktop
 	depends = json-glib
 	depends = rest
-	depends = gnome-screenshot
 	source = https://github.com/cybre/budgie-screenshot-applet/archive/0.4.3.tar.gz
 	sha256sums = 0a39cd01a76aaa825caccd62a46833163e113098f359074171eb134a27c7b67b
 
