@@ -15,6 +15,7 @@ depends=(
     'glew'
     'libxml2'
     'freetype2'
+    'qtwebkit'
     )
 makedepends=(
     'cmake'
