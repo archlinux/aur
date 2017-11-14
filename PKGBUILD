@@ -1,6 +1,6 @@
 pkgname=wp-cli
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
 arch=('any')
@@ -36,6 +36,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  mkdir -p ".git/hooks"
   composer install --no-interaction --prefer-dist
   php -dphar.readonly=0 utils/make-phar.php wp-cli.phar --quiet
 }
