@@ -1,0 +1,28 @@
+pkgbase = zim
+	pkgdesc = A WYSIWYG text editor that aims at bringing the concept of a wiki to the desktop.
+	pkgver = 0.67
+	pkgrel = 1
+	url = http://zim-wiki.org/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = pygtk
+	depends = ttf-dejavu
+	optdepends = bzr: Version Control plugin
+	optdepends = git: Version Control plugin
+	optdepends = mercurial: Version Control plugin
+	optdepends = gnuplot: Insert Gnuplot plugin
+	optdepends = ditaa: Insert Ditaa plugin
+	optdepends = graphviz: Insert Diagram & Link Map plugins
+	optdepends = python2-gtkspell: Spell Checker plugin
+	optdepends = r: Insert GNU R Plot plugin
+	optdepends = scrot: Insert Screenshot plugin
+	optdepends = zeitgeist: Log events with Zeitgeist plugin
+	optdepends = lilypond: Insert Score plugin
+	optdepends = pygtksourceview2: Source View plugin
+	optdepends = texlive-bin: Insert Equation plugin
+	source = http://www.zim-wiki.org/downloads/zim-0.67.tar.gz
+	md5sums = e87975727f1166c723912c949bea51f2
+
+pkgname = zim
+
