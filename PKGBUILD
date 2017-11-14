@@ -17,6 +17,11 @@ optdepends=('openmpi: message passing library for parallel simulation',
   'java-environment: Java runtime for using OMNeT++/OMNEST IDE')
 install=${pkgname}.install
 _pkgname="omnetpp"
+
+DLAGENTS=(
+  "http::/usr/bin/wget --no-check-certificate -c -r -np -nd -H --referer https://omnetpp.org/ %u"
+  "https::/usr/bin/wget --no-check-certificate -c -r -np -nd -H --referer https://omnetpp.org/ %u"
+)
 source=(
     omnetpp-5.0-src.tgz::https://omnetpp.org/omnetpp/send/30-omnet-releases/2305-omnetpp-50-linux
     OMNeT++.desktop
