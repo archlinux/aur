@@ -4,23 +4,24 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=syslog-ng-nosystemd
-pkgver=3.10.1
+pkgver=3.12.1
 pkgrel=1
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 groups=('eudev-base')
 url="http://www.balabit.com/network-security/syslog-ng/"
-depends=('awk' 'eventlog' 'glib2' 'libcap' 'libdbi' 'glib2' 'udev')
-makedepends=('flex' 'pkg-config' 'python2' 'libxslt' 'json-c' 'libmongoc')
+depends=('awk' 'glib2' 'libcap' 'libdbi' 'glib2' 'udev')
+makedepends=('flex' 'pkg-config' 'python2' 'libxslt' 'json-c' 'libmongoc' 'librabbitmq-c' 'python')
 optdepends=('logrotate: for rotating log files'
             'json-c: for json-plugin'
             'curl: for the HTTP module'
+            'librabbitmq-c: for the AMQP plugin'
             'libmongoc: for the MongoDB plugin'
             'syslog-ng-openrc: syslog-ng openrc initscript')
 provides=("syslog-ng=${pkgver}")
-replaces=('syslog-ng' 'syslog-ng-eudev')
-conflicts=('syslog-ng' 'syslog-ng-eudev')
+replaces=('syslog-ng' 'syslog-ng-eudev' 'eventlog')
+conflicts=('syslog-ng' 'syslog-ng-eudev' 'eventlog')
 backup=('etc/syslog-ng/scl.conf'
         'etc/syslog-ng/syslog-ng.conf'
         'etc/conf.d/initscripts/syslog-ng'
@@ -30,8 +31,8 @@ source=(https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$pkgver
         syslog-ng.conf.d
         syslog-ng.logrotate
         syslog-ng.rc)
-sha1sums=('2325da17d9b6837aae8484ef3b8d5a25ee992ee9'
-          '09b4ae56d083fdae3f8310f0a374dfe7f339a5bf'
+sha1sums=('cc96df76ef2dd9b59a752463eca2a5370c9b3a23'
+          'fd276dd470edb16a10d96f3188e1f9c93c0d8271'
           'eb2aa25737e0cb9453c7b058f0e2dcf16abf21cd'
           '949128fe3d7f77a7aab99048061f885bc758000c'
           '38bf100961fb1858b1c42d3851ffdf92afb74db6')
@@ -53,6 +54,7 @@ build() {
     --enable-manpages \
     --with-jsonc=system \
     --with-mongoc=system \
+    --with-librabbitmq-client=system \
     --disable-systemd
 
   make
