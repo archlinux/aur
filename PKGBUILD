@@ -14,7 +14,9 @@ depends=("ghc" "haskell-fclabels>=1.0")
 options=('strip')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
+md5sums=("7b4a3820d61a105e8ef6080b4dc44b2e")
 sha256sums=("94094b42a472016be310aba00f25a8f442231c9820be08539337786a9e39764d")
+sha512sums=("a03472f4600d1536b2681953625b3c8fc167ac9628585842be68344d6727e007fff17e85896864c69185f428d040d784bbbc8e44cc421c60523586ff4bb150c2")
 
 # PKGBUILD functions
 build() {
