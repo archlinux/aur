@@ -11,10 +11,10 @@ pkgdesc="Component-based simulation package designed for modeling communication 
 url="http://www.omnetpp.org"
 license=("Academic Public License")
 depends=(tcl tk blt)
-makedepends=(libxml2 bison flex)
+makedepends=(libxml2 bison flex qt4)
 arch=('i686' 'x86_64')
 optdepends=('openmpi: message passing library for parallel simulation',
-  'openjdk6: Java runtime for using OMNeT++/OMNEST IDE')
+  'java-environment: Java runtime for using OMNeT++/OMNEST IDE')
 install=${pkgname}.install
 _pkgname="omnetpp"
 source=(
