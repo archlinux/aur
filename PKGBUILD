@@ -5,7 +5,7 @@ _name=firefox
 _channel=developer
 _locale="en-US"
 pkgname="${_name}-${_channel}"
-pkgver=58.0b2
+pkgver=58.0b3
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org, developer build'
 arch=(i686 x86_64)
@@ -22,8 +22,8 @@ source_i686=("${_srcurl}/${pkgver}/linux-${CARCH}/${_locale}/${_name}-${pkgver}.
 source_x86_64=("${_srcurl}/${pkgver}/linux-${CARCH}/${_locale}/${_name}-${pkgver}.tar.bz2")
 sha512sums=('9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
-sha512sums_i686=('d0b071d92c3a882f81b7ac3e295e4234b9912bdca1ab70cae0d79f17b3f5fe04d30c70e91f5639b8c8e0f6759988f0f7bca3a0d4771ba3b60c63b08bbc71c8b')
-sha512sums_x86_64=('b40a42713892b760d659c4fe5ca002b8ccb5309319b57d89b5f9af37c84a021ad67601f5c7f5b02a445dec7a00d671a28df6ab701775f59b1a7be7dda93d673e')
+sha512sums_i686=('624387a778b16df5e592746955b5eaea346173d6931525cdd89d4ec5080fae2d08762187ca41b947a262d759ef524f3bd097145f446eb09701d237fb76bea39c')
+sha512sums_x86_64=('d6bc17d5a9c9adfd6f3a50811b8ffe4955b8b581b6bcff7e611c835842cbd1aaa4ea1da1ce4758f826717dd62501fd38f6e835bf7251e86c7f47a6a707e73f0e')
 
 package() {
   OPT_PATH="opt/${pkgname}"
