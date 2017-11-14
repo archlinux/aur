@@ -1,13 +1,14 @@
 #Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=perl-hash-storediterator
 pkgver=0.008
-pkgrel=1
+pkgrel=2
 pkgdesc='Access to iterator inside Perl hashes, plus helper functions'
 _dist=Hash-StoredIterator
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
 depends=('perl')
+makedepends=('perl-module-build')
 options=('!emptydirs' purge)
 source=("http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/$_dist-$pkgver.tar.gz")
 
