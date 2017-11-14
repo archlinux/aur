@@ -1,6 +1,6 @@
 pkgname=nbmanager-git
 _gitname=nbmanager
-pkgver=27.e45dad3
+pkgver=33.a8cf7f6
 pkgrel=1
 pkgdesc='A GUI to view and manager running IPython notebook servers'
 arch=(any)
@@ -23,9 +23,8 @@ package() {
 	
 	python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 	
-	install -Dm644 nbmanager.desktop "$pkgdir/usr/share/applications/nbmanager.desktop"
-	for size in 16 32 48 64 128 256 512; do
-		install -Dm644 icons/nbmanager-$size.png "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/ipython-nbmanager.png"
+	install -Dm644 jupyter-nbmanager.desktop "$pkgdir/usr/share/applications/jupyter-nbmanager.desktop"
+	for icon in icons/hicolor/*/apps/jupyter-nbmanager.*; do
+		install -Dm644 $icon "$pkgdir/usr/share/$icon"
 	done
-	install -Dm644 icons/nbmanager.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/ipython-nbmanager.svg"
 }

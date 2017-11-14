@@ -1,6 +1,6 @@
 pkgbase = nbmanager-git
 	pkgdesc = A GUI to view and manager running IPython notebook servers
-	pkgver = 27.e45dad3
+	pkgver = 33.a8cf7f6
 	pkgrel = 1
 	url = https://github.com/takluyver/nbmanager
 	arch = any
