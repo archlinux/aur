@@ -1,0 +1,18 @@
+pkgbase = libctl-git
+	pkgdesc = Guile-based library implementing flexible control files for scientific simulations
+	pkgver = 3.2.2.r20.ga1bde30
+	pkgrel = 1
+	url = https://github.com/stevengj/libctl
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = guile
+	depends = gcc-fortran
+	provides = libctl
+	conflicts = libctl
+	options = !libtool
+	source = git+https://github.com/stevengj/libctl.git
+	sha256sums = SKIP
+
+pkgname = libctl-git
+
