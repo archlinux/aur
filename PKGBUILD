@@ -12,7 +12,7 @@ arch=('x86_64')
 license=('MIT')
 depends=('libnotify' 'gconf')
 source=(
-  "${url}/releases/download/${_pkgver}/Whatsapp-linux-x64.tar.gz"
+  "${url}/releases/download/${_pkgver}/WhatsApp-linux-x64.tar.gz"
   "whatsapp-desktop.desktop"
   "whatsapp-desktop.png"
 )
