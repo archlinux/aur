@@ -9,7 +9,7 @@
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
 pkgname=vlc-git
-pkgver=3.0.0.r15332.g3fa85e6a2b
+pkgver=3.0.0.r15342.gfc61f78fae
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=(i686 x86_64)
@@ -18,7 +18,7 @@ license=(LGPL2.1 GPL3)
 depends=(a52dec faad2 ffmpeg libdca libdvbpsi libdvdnav libmad libmatroska
          libmpcdec libmpeg2 libproxy libshout libtar libtiger libupnp
          libxinerama libxpm lua sdl_image wayland-protocols taglib zvbi
-         libsecret libarchive qt5-x11extras opencv-git schroedinger qt5-svg)
+         libsecret libarchive qt5-x11extras schroedinger qt5-svg)
 makedepends=(aalib flac git libavc1394 libbluray libcaca libdc1394 libdvdcss
              libgme libgoom2 libmtp libnotify librsvg libssh2 lirc live-media
              opus portaudio projectm twolame vcdimager xosd smbclient)
@@ -105,7 +105,8 @@ build() {
               --enable-sftp \
               --enable-upnp \
               --enable-vcdx \
-              --enable-wayland
+              --enable-wayland \
+              --disable-opencv
   make
 }
 
