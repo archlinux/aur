@@ -1,0 +1,14 @@
+pkgbase = ibazel-git
+	pkgdesc = Tool for building Bazel targets when source files change.
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/bazelbuild/bazel-watcher
+	arch = i686
+	arch = x86_64
+	license = Apache 2.0
+	depends = bazel
+	source = bazel-watcher::git+https://github.com/bazelbuild/bazel-watcher#branch=master
+	sha512sums = SKIP
+
+pkgname = ibazel-git
+
