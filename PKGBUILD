@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer: Silvio Fricke <silvio.fricke@gmail.com>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Kevin Piche <kevin@archlinux.org>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
