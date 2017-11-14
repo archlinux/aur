@@ -12,13 +12,13 @@
 
 pkgname="opencv-cuda-git"
 _pkgname="opencv-git"
-pkgver=3.1.0.r1522.g1ae27eb
+pkgver=3.3.1.r145.gfcdd833059
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library compiled with extra modules(opencv_contrib) and CUDA"
 url="http://opencv.org/"
 license=('BSD')
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
-depends=('gstreamer0.10-base' 'openexr'
+depends=('gst-plugins-base' 'openexr'
          'xine-lib' 'libdc1394' 'gtkglext'
          'nvidia-utils' 'hdf5-cpp-fortran' # The following variables are used in this project, but they are set to NOTFOUND : CUDA_CUDA_LIBRARY, HDF5_hdf5_cpp_LIBRARY
          'python'
@@ -30,12 +30,12 @@ depends_x86_64=('intel-tbb')
 depends_i686=('intel-tbb')
 depends_armv7h=('intel-tbb')
 makedepends=('git' 'cmake' 'python2-numpy' 'python-numpy' 'mesa'
-             'gcc5'
+             'gcc'
     )
-optdepends=(#'eigen'
-            #'libcl: For coding with OpenCL'
+optdepends=(
             'python-numpy: Python 3 interface'
-            'python2-numpy: Python 2 interface')
+            'python2-numpy: Python 2 interface'
+    )
 options=('staticlibs')
 provides=("opencv" "${_pkgname%-git}")
 conflicts=(opencv "${_pkgname%-git}")
@@ -119,11 +119,7 @@ prepare() {
 
     cd "${srcdir}/${_pkgname%-git}_contrib"
     # opencv_contrib sfm problem, use the complete FindGflags.cmake from ceres-solver
-    patch -p1 -i "${srcdir}/opencv_contrib_sfm_cmake.patch"
-
-    #sudo ln -sf /usr/bin/gcc-5 /opt/cuda/bin/gcc
-    #sudo ln -sf /usr/bin/cpp-5 /opt/cuda/bin/cpp
-    #sudo ln -sf /usr/bin/g++-5 /opt/cuda/bin/g++
+    #patch -p1 -i "${srcdir}/opencv_contrib_sfm_cmake.patch"
 }
 
 build() {
@@ -132,23 +128,24 @@ build() {
     # --expt-relaxed-constexpr to fix the error:
     #    opencv/modules/core/include/opencv2/core/cuda/vec_math.hpp(205): error: calling a constexpr __host__ function("abs") from a __device__ function("abs") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
     # current nvcc don't support gcc6, so use gcc5 instead
-    export CC=$(which gcc-5)
-    export CXX=$(which g++-5)
+    mkdir -p build
+    cd build
     cmake ${_cmakeopts[@]} \
         -D CUDA_NVCC_FLAGS='-std=c++11 -Xcompiler -D__CORRECT_ISO_CPP11_MATH_H_PROTO --expt-relaxed-constexpr' \
         -D OPENCV_EXTRA_MODULES_PATH=$srcdir/${_pkgname%-git}_contrib/modules \
-        .
+        ..
 
     make
 }
 
 package() {
     cd "${srcdir}/${_pkgname%-git}"
+    cd build
 
     make DESTDIR="${pkgdir}" install
 
     # install LICENSE file
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname%-git}/LICENSE"
+    install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname%-git}/LICENSE"
 }
 
 # vim:set ts=4 sw=4 et:
