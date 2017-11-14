@@ -29,22 +29,27 @@ depends=(fontconfig
          ttf-croscore
          ttf-roboto
          ttf-inconsolata
-         cantarell-fonts)
+         cantarell-fonts
+         ttf-merriweather
+         ttf-merriweather-sans
+         ttf-opensans
+         ttf-oswald
+         ttf-quintessential
+         ttf-signika)
 makedepends=(git)
 conflicts=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
            lohit-fonts ttf-andika ttf-anonymous-pro ttf-cardo ttf-comfortaa
            ttf-lato
-           ttf-lora-cyrillic ttf-lekton ttf-medievalsharp ttf-merriweather
-           ttf-merriweather-sans ttf-nova ttf-opensans ttf-oswald ttf-oxygen
-           ttf-oxygen-git ttf-pt-fonts ttf-quintessential ttf-roboto-mono
-           ttf-signika ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx ttf-vollkorn-ibx ttf-arabeyes-fonts)
+           ttf-lora-cyrillic ttf-lekton ttf-medievalsharp
+           ttf-nova ttf-oxygen
+           ttf-oxygen-git ttf-pt-fonts ttf-roboto-mono
+           ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx ttf-vollkorn-ibx ttf-arabeyes-fonts)
 provides=(adobe-source-code-pro-fonts adobe-source-sans-pro-fonts jsmath-fonts
           lohit-fonts ttf-andika ttf-anonymous-pro ttf-cardo ttf-comfortaa
           ttf-lato
-          ttf-lora-cyrillic ttf-lekton ttf-medievalsharp ttf-merriweather
-          ttf-merriweather-sans ttf-nova ttf-opensans ttf-oswald ttf-oxygen
-          ttf-oxygen-git ttf-pt-fonts ttf-quintessential ttf-roboto-mono
-          ttf-signika ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx ttf-vollkorn-ibx)
+          ttf-lora-cyrillic ttf-lekton ttf-medievalsharp ttf-nova ttf-oxygen
+          ttf-oxygen-git ttf-pt-fonts ttf-roboto-mono
+          ttf-sil-fonts ttf-source-code-pro-ibx ttf-source-sans-pro-ibx ttf-vollkorn-ibx)
 source=(git+"${url}".git)
 sha512sums=('SKIP')
 
@@ -60,7 +65,8 @@ package() {
                                     [noto-sans]=1 [fira-sans]=1 [fira-mono]=1
                                     [ubuntu]=1 [ubuntu-mono]=1 [tinos]=1 [arimo]=1
                                     [cousine]=1 [roboto]=1 [roboto-condensed]=1
-                                    [inconsolata]=1)
+                                    [inconsolata]=1 [merriweather]=1 [merriweather-sans]=1
+                                    [open-sans]=1 [oswald]=1 [quintessential]=1)
 
   while IFS= read -rd '' file; do
     font_family=$(fc-query -f '%{family[0]|downcase|translate( ,-)}\n' "$file" | sed -n '2p')
