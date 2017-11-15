@@ -1,7 +1,7 @@
 pkgbase = mos-git
 	pkgdesc = Mongoose-OS build tool (latest)
-	pkgver = 20171115_100329
-	pkgrel = 1
+	pkgver = 20171115_101251
+	pkgrel = 2
 	url = https://mongoose-os.com/software.html
 	arch = i686
 	arch = x86_64
