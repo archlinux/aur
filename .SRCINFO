@@ -4,7 +4,6 @@ pkgbase = nvidia-beta-all
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-beta-all.install
-	arch = i686
 	arch = x86_64
 	license = custom:NVIDIA
 	makedepends = linux-headers
@@ -15,10 +14,8 @@ pkgbase = nvidia-beta-all
 	conflicts = nvidia-173xx
 	conflicts = nvidia
 	options = !strip
-	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/387.22/NVIDIA-Linux-x86-387.22.run
-	md5sums_i686 = abdbb3c813e52148f7435308121e6a37
-	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/387.22/NVIDIA-Linux-x86_64-387.22-no-compat32.run
-	md5sums_x86_64 = b21f9bafb20409b337505c9b1d362c34
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/387.22/NVIDIA-Linux-x86_64-387.22-no-compat32.run
+	md5sums = b21f9bafb20409b337505c9b1d362c34
 
 pkgname = nvidia-beta-all
 

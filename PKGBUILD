@@ -6,7 +6,7 @@ pkgname=nvidia-beta-all
 pkgver=387.22
 pkgrel=1
 pkgdesc="NVIDIA drivers for all kernels on the system (beta)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
 depends=("nvidia-utils-beta>=$pkgver" 'libgl')
@@ -15,20 +15,13 @@ provides=("nvidia=$pkgver")
 conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')
 options=('!strip')
 install=$pkgname.install
+_pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
+source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
+md5sums=('b21f9bafb20409b337505c9b1d362c34')
 
-# Installer name
-case "$CARCH" in
-  i686)   _pkg="NVIDIA-Linux-x86-$pkgver" ;;
-  x86_64) _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32" ;;
-esac
-
-# Source
-#source=('linux-4.11.patch')
-source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
-source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
-#md5sums=('cc8941b6898d9daa0fb67371f57a56b6')
-md5sums_i686=('abdbb3c813e52148f7435308121e6a37')
-md5sums_x86_64=('b21f9bafb20409b337505c9b1d362c34')
+# Patch
+#source+=('linux-4.11.patch')
+#md5sums+=('cc8941b6898d9daa0fb67371f57a56b6')
 
 # Auto-detect patches (e.g. linux-4.1.patch)
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
@@ -41,9 +34,7 @@ done
 
 prepare() {
   # Remove previous builds
-  if [[ -d $_pkg ]]; then
-    rm -rf $_pkg
-  fi
+  [[ -d $_pkg ]] && rm -rf $_pkg
 
   # Extract
   msg2 "Self-Extracting $_pkg.run..."
@@ -59,7 +50,7 @@ prepare() {
     for _patch in $(ls "$srcdir"/*.patch 2>/dev/null); do
       # Patch version
       _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
-        
+
       # Cd in place
       cd kernel-$_kernel
 
@@ -68,7 +59,7 @@ prepare() {
         msg2 "Applying $_patch for $_kernel..."
         patch -p2 -i "$_patch"
       fi
-      
+
       # Return
       cd ..
     done
@@ -96,10 +87,8 @@ package() {
            "$pkgdir"/$_path/nvidia.ko
 
     # Install UVM Module: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
-    if [[ $CARCH = x86_64 ]]; then
-        install -Dm644 $_pkg/kernel-$_extramodules/nvidia-uvm.ko \
-               "$pkgdir"/$_path/nvidia-uvm.ko
-    fi
+    install -Dm644 $_pkg/kernel-$_extramodules/nvidia-uvm.ko \
+           "$pkgdir"/$_path/nvidia-uvm.ko
 
     # Install Modeset module:
     #
