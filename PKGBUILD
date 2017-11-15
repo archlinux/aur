@@ -1,7 +1,7 @@
 # Maintainer: Jesper Jensen <jesper@slashwin.dk>
 pkgname=python-borgmatic-git
 pkgver=1.1.7.r3.gf3d6d7c
-pkgrel=2
+pkgrel=3
 pkgdesc="a simple Python wrapper script for the Borg backup software"
 arch=('any')
 url="https://github.com/witten/borgmatic.git"
@@ -27,6 +27,8 @@ pkgver() {
 package() {
   cd "$srcdir/borgmatic"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 sample/systemd/borgmatic.service "$pkgdir/usr/lib/systemd/system/borgmatic.service" || return 1
+  install -Dm644 sample/systemd/borgmatic.timer "$pkgdir/usr/lib/systemd/system/borgmatic.timer" || return 1
 }
 
 check() {
