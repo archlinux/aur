@@ -10,7 +10,8 @@ url="http://tux4kids.alioth.debian.org/"
 license=('GPL')
 depends=('sdl_image' 'sdl_mixer' 'sdl_pango' 'sdl_net' 'librsvg')
 makedepends=('make')
-#options=('!docs')
+options=('!docs')
+replace=('t4k_common')
 source=("https://github.com/tux4kids/$pkgname/archive/upstream/${pkgver}.tar.gz"
         "libpng15.patch")
 sha256sums=('be4cadbcf2728ed6efb1c71e96c209184a7829b65af3625d9410a29fb2fd775a'

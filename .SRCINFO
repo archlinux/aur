@@ -12,6 +12,7 @@ pkgbase = t4kcommon
 	depends = sdl_pango
 	depends = sdl_net
 	depends = librsvg
+	options = !docs
 	source = https://github.com/tux4kids/t4kcommon/archive/upstream/0.1.1.tar.gz
 	source = libpng15.patch
 	sha256sums = be4cadbcf2728ed6efb1c71e96c209184a7829b65af3625d9410a29fb2fd775a
