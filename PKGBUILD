@@ -12,7 +12,7 @@ pkgdesc='An open source and cross-platform C/C++ IDE'
 arch=('i686' 'x86_64')
 url='http://www.codeblocks.org'
 license=('GPL')
-depends=('wxgtk' 'valgrind' 'bzip2' 'hicolor-icon-theme' 'gamin' 'hunspell' 'webkitgtk2')
+depends=('wxgtk' 'valgrind' 'bzip2' 'hicolor-icon-theme' 'gamin' 'hunspell' 'webkit2gtk')
 makedepends=('boost' 'subversion' 'zip')
 provides=("codeblocks=${pkgver}")
 conflicts=('codeblocks' 'codeblocks-svn-noplugins')
@@ -39,7 +39,7 @@ build() {
     ./configure --prefix='/usr' --with-contrib-plugins='all'
   fi
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  make -s -j"${_nproc}"
+  nice make -s -j"${_nproc}"
   set +u
 }
 
