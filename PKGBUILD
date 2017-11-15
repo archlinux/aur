@@ -2,7 +2,7 @@
 
 pkgname=freelancer-desktop-app
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Freelancer.com desktop client"
 arch=('i686' 'x86_64')
 url='https://www.freelancer.com/desktop-app'
