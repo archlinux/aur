@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/OttoAllmendinger/gnome-shell-screenshot"
 license=('MIT')
 depends=('gnome-shell')
-makedepends=('git')
+makedepends=('git' 'zip')
 source=("${pkgname}::git+https://github.com/OttoAllmendinger/gnome-shell-screenshot.git")
 md5sums=('SKIP')
 
