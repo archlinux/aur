@@ -3,7 +3,6 @@ pkgbase = ruby-hpricot
 	pkgver = 0.8.6
 	pkgrel = 5
 	url = http://code.whytheluckystiff.net/hpricot/
-	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = ruby
