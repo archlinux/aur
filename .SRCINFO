@@ -7,6 +7,7 @@ pkgbase = pcsclite-git
 	arch = x86_64
 	license = BSD
 	makedepends = pkg-config
+	makedepends = git
 	depends = python2
 	depends = systemd
 	provides = pcsclite
