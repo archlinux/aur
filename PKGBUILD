@@ -8,7 +8,7 @@ _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=2
 pkgdesc="Standalone Mail/News reader - Bleeding edge binary version"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('GPL' 'LGPL' 'MPL')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss')
@@ -18,18 +18,15 @@ optdepends=('hunspell: Spell checking'
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta')
 install=$pkgname.install
-source=('thunderbird-beta-bin.desktop'
+source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2"
+        'thunderbird-beta-bin.desktop'
         'vendor.js')
-source_i686=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686/en-US/thunderbird-$pkgver.tar.bz2")
-source_x86_64=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2")
-sha512sums=('e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
+sha512sums=('f9cfafd7caeafc24c5ecc5539e65d38d8a5780ce34cf18fdefef313f3da733547493ef2a9a1d62ff758a0cad9082fa00e2c184a823ba0808786f4377f192ffb5'
+            'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_i686=('19016fe5acf280d212bf555afdb7252237d89d6f1ca5bb51e337f413704aa93c284371b6d4bfe38c0cc3eff6c4afe93bd298987b945ab08ca2f6cca9975a46ca')
-sha512sums_x86_64=('f9cfafd7caeafc24c5ecc5539e65d38d8a5780ce34cf18fdefef313f3da733547493ef2a9a1d62ff758a0cad9082fa00e2c184a823ba0808786f4377f192ffb5')
 # RC
 if [[ $_build = ? ]]; then
-  source_i686=("https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/linux-i686/en-US/thunderbird-$_major.tar.bz2")
-  source_x86_64=("https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/thunderbird-$_major.tar.bz2")
+  source[0]=("https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/thunderbird-$_major.tar.bz2")
 fi
 
 package() {
