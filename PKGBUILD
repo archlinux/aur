@@ -1,7 +1,7 @@
 # Maintainer: Stephen Martin <stephenSRMMartin at gmail dot com>
 pkgname=jamovi-git
 _pkgname=jamovi
-pkgver=r659.a85996f
+pkgver=r664.c538fa4
 pkgrel=1
 pkgdesc="Open Source Software to bridge the gap between researcher and statistician"
 arch=('any')
@@ -19,7 +19,7 @@ source=(git+https://github.com/jamovi/jamovi.git
 md5sums=('SKIP'
          '207b3012a3235d9f9a0ec12fa4027694'
          '38fec18885de4ecbb91aef1f201c20d7'
-         '0981857a116ed685d3b7d91214efd6a9')
+         'f873dbb9ac296cd6f563ed03f018fe97')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -93,4 +93,8 @@ package() {
 
 	# Version
 	cp version $pkgdir/usr/lib/$_pkgname/Resources/jamovi
+
+#	# Add link to R home
+#	mkdir $pkgdir/usr/lib/$_pkgname/lib
+#	ln -s /usr/lib/R $pkgdir/usr/lib/$_pkgname/lib
 }
