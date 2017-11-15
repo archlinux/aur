@@ -1,4 +1,4 @@
-pkgbase = gnome-shell-extension-totp-cliboard-git
+pkgbase = gnome-shell-extension-totp-clipboard-git
 	pkgdesc = Gnome Shell extension for TOTP
 	pkgver = r11.3c798d2
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = gnome-shell-extension-totp-cliboard-git
 	source = git+https://github.com/mardiros/TOTP_Clipboard-guillaume.gauvr.it.git
 	md5sums = SKIP
 
-pkgname = gnome-shell-extension-totp-cliboard-git
+pkgname = gnome-shell-extension-totp-clipboard-git
 

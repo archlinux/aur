@@ -1,7 +1,7 @@
 # Maintainer: Charles Milette <charles.milette@gmail.com>
 
 _gitname=TOTP_Clipboard-guillaume.gauvr.it
-pkgname=gnome-shell-extension-totp-cliboard-git
+pkgname=gnome-shell-extension-totp-clipboard-git
 pkgver=r11.3c798d2
 pkgrel=1
 pkgdesc="Gnome Shell extension for TOTP"
